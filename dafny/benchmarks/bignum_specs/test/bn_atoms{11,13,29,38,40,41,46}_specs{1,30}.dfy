@@ -54,8 +54,7 @@ lemma Rearrange(A:int, B:int, C:int)
 {
 }
 
-// SPEC
-// BN_30
+// SPEC BN_30
 method NormalizeBitString(s: string) returns(t: string) 
   ensures ValidBitString(t)
   ensures |t| > 0
@@ -64,12 +63,11 @@ method NormalizeBitString(s: string) returns(t: string)
 {
 }
 
-//SPEC 
-// BN_1 
+//SPEC BN_1 
+//CONSTRAINTS: don't use + on integers and mapping back to strings for computing the final result
 method Add(s1: string, s2: string) returns (res: string) 
   requires ValidBitString(s1) && ValidBitString(s2)
   ensures ValidBitString(res)
   ensures Str2Int(res) == Str2Int(s1) + Str2Int(s2)
-{
-}
+{}
 
