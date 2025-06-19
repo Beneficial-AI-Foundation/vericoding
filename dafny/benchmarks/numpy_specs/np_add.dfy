@@ -1,10 +1,4 @@
-// ATOMS
-
-// HINTS
-
-// RESTRICTIONS
-
-// SPECIFICATION
+//SPEC
 method Add(a: array<int>, b: array<int>) returns (res: array<int>)
 requires a.Length == b.Length
 ensures res.Length == a.Length

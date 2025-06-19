@@ -1,12 +1,4 @@
-
-
-// ATOMS
-
-// HINTS
-
-// RESTRICTIONS
-
-// SPECIFICATION
+//SPEC
 method FloorDivide(a: array<int>, b: array<int>) returns (res: array<int>)
 requires a.Length == b.Length
 requires forall i :: 0 <= i < b.Length ==> b[i] != 0

@@ -1,0 +1,30 @@
+=== DAFNY SPECIFICATION-TO-CODE PROCESSING SUMMARY (DEBUG VERSION) ===
+
+Test directory: benchmarks/bignum_specs/test/
+Output directory: benchmarks/bignum_specs/test/code_from_spec_on_19-06_12h32
+Max iterations: 5
+Test date: 2025-06-19T12:38:59.280677
+
+Total original files: 3
+
+=== OVERALL STATISTICS ===
+Total successful: 2
+Total failed: 1
+Success rate: 66.7%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ bn_atoms{11,46}_specs{40,41}.dfy -> bn_atoms{11,46}_specs{40,41}_impl.dfy
+✓ bn_atoms{11,40,46}_specs{4,7}.dfy -> bn_atoms{11,40,46}_specs{4,7}_impl.dfy
+
+=== FAILED FILES (VERIFICATION) ===
+✗ bn_atoms{11,40,46}_specs{41}.dfy
+
+=== DEBUG FEATURES ===
+Debug mode: Disabled
+- Saves only final implementation as *_impl.dfy
+- No intermediate files saved (debug mode disabled)
+
+- Debug mode control: Disabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-06-19T12:38:59.280863

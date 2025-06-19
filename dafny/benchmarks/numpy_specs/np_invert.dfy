@@ -1,10 +1,4 @@
-// ATOMS
-
-// HINTS
-
-// RESTRICTIONS
-
-// SPECIFICATION
+//SPEC
 method Invert(a: array<int>) returns (res: array<int>)
 requires a.Length >= 0
 ensures res.Length == a.Length

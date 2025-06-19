@@ -1,10 +1,4 @@
-// ATOMS
-
-// HINTS
-
-// RESTRICTIONS
-
-// SPECIFICATION
+//SPEC
 method Less(a: array<int>, b: array<int>) returns (res: array<bool>)
 requires a.Length == b.Length
 ensures res.Length == a.Length
