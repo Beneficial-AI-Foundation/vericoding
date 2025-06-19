@@ -44,22 +44,23 @@ def parse_arguments():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python spec_to_code.py
-  python spec_to_code.py --dir ./specs --iterations 3
-  python spec_to_code.py --dir ./test --debug --iterations 5
-  python spec_to_code.py -d ./specs -i 10 --debug
+  python spec_to_code.py ./specs
+  python spec_to_code.py ./benchmarks/numpy_specs --iterations 3
+  python spec_to_code.py ./test --debug --iterations 5
+  python spec_to_code.py ./specs --iterations 10 --debug
         """
     )
     
     parser.add_argument(
-        '--dir', '-d',
+        'folder',
         type=str,
-        help='Directory with .dfy specification files (default: ./specs)'
+        help='Directory with .dfy specification files'
     )
     
     parser.add_argument(
         '--iterations', '-i',
         type=int,
+        default=5,
         help='Max verification attempts per file (default: 5)'
     )
     
@@ -67,12 +68,6 @@ Examples:
         '--debug',
         action='store_true',
         help='Enable debug mode (save intermediate files)'
-    )
-    
-    parser.add_argument(
-        '--no-prompt',
-        action='store_true',
-        help='Skip interactive prompts and use command-line arguments only'
     )
     
     parser.add_argument(
@@ -92,13 +87,8 @@ def setup_configuration(args=None):
 
     print("=== Dafny Specification-to-Code Processing Configuration ===\n")
 
-    # Use command-line arguments if provided
-    if args and args.dir:
-        DAFNY_FILES_DIR = args.dir
-    else:
-        # Get directory path
-        default_dir = os.path.join(os.getcwd(), "specs")
-        DAFNY_FILES_DIR = ask_question(f"Enter directory with .dfy specification files", default_dir)
+    # Use command-line arguments (with defaults)
+    DAFNY_FILES_DIR = args.folder
 
     if not os.path.isdir(DAFNY_FILES_DIR):
         print(f"Error: Directory '{DAFNY_FILES_DIR}' does not exist or is not accessible.")
@@ -112,43 +102,10 @@ def setup_configuration(args=None):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     print(f"Created output directory: {OUTPUT_DIR}")
 
-    # Use command-line arguments if provided
-    if args and args.iterations:
-        MAX_ITERATIONS = args.iterations
-    else:
-        # Get number of iterations
-        iter_input = ask_question("Max verification attempts per file", "5")
-        MAX_ITERATIONS = int(iter_input)
-
-    if MAX_ITERATIONS < 1 or MAX_ITERATIONS > 50:
-        print("Warning: Number of iterations should be between 1 and 50. Using default value of 5.")
-        MAX_ITERATIONS = 5
-
-    # Use command-line arguments if provided
-    if args and args.debug:
-        DEBUG_MODE = True
-    elif args and args.no_prompt:
-        DEBUG_MODE = False
-    elif args:
-        # If other args are provided but not debug, default to False
-        DEBUG_MODE = False
-    else:
-        # Get debug mode setting only if no args provided
-        debug_input = ask_question("Enable debug mode (save intermediate files)? (y/N)", "N")
-        DEBUG_MODE = debug_input.lower() in ["y", "yes"]
-
-    # Use command-line arguments if provided
-    if args and args.strict_atoms:
-        STRICT_ATOM_VERIFICATION = True
-    elif args and args.no_prompt:
-        STRICT_ATOM_VERIFICATION = False  # Default to non-strict
-    elif args:
-        # If other args are provided but not strict_atoms, default to False
-        STRICT_ATOM_VERIFICATION = False
-    else:
-        # Get strict atoms setting only if no args provided
-        strict_atoms_input = ask_question("Enable strict ATOM block verification? (y/N)", "N")
-        STRICT_ATOM_VERIFICATION = strict_atoms_input.lower() in ["y", "yes"]
+    # Use command-line arguments (with defaults)
+    MAX_ITERATIONS = args.iterations
+    DEBUG_MODE = args.debug
+    STRICT_ATOM_VERIFICATION = args.strict_atoms
 
     print("\nConfiguration:")
     print(f"- Directory: {DAFNY_FILES_DIR}")
@@ -162,16 +119,7 @@ def setup_configuration(args=None):
         print("- DEBUG MODE: Saves code after each iteration to separate files")
     else:
         print("- NORMAL MODE: Saves only final implementation files")
-
-    # Skip confirmation if --no-prompt is used
-    if args and args.no_prompt:
-        print("\nProceeding with command-line configuration...")
-        return
-
-    confirm = ask_question("Proceed with this configuration? (y/N)", "N")
-    if confirm.lower() not in ["y", "yes"]:
-        print("Operation cancelled by user.")
-        sys.exit(0)
+    print("\nProceeding with configuration...")
 
 def find_dafny_files(directory):
     try:
