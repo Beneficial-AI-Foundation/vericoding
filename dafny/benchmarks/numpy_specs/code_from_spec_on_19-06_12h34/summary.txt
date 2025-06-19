@@ -1,0 +1,56 @@
+=== DAFNY SPECIFICATION-TO-CODE PROCESSING SUMMARY (DEBUG VERSION) ===
+
+Test directory: benchmarks/numpy_specs/
+Output directory: benchmarks/numpy_specs/code_from_spec_on_19-06_12h34
+Max iterations: 3
+Test date: 2025-06-19T12:44:13.440856
+
+Total original files: 29
+
+=== OVERALL STATISTICS ===
+Total successful: 22
+Total failed: 7
+Success rate: 75.9%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ np_invert.dfy -> np_invert_impl.dfy
+✓ np_equal.dfy -> np_equal_impl.dfy
+✓ np_gcd.dfy -> np_gcd_impl.dfy
+✓ np_greater.dfy -> np_greater_impl.dfy
+✓ np_abs.dfy -> np_abs_impl.dfy
+✓ np_less.dfy -> np_less_impl.dfy
+✓ np_power.dfy -> np_power_impl.dfy
+✓ np_substract.dfy -> np_substract_impl.dfy
+✓ np_min.dfy -> np_min_impl.dfy
+✓ np_add.dfy -> np_add_impl.dfy
+✓ np_lcm.dfy -> np_lcm_impl.dfy
+✓ np_floor_divide.dfy -> np_floor_divide_impl.dfy
+✓ np_multiply.dfy -> np_multiply_impl.dfy
+✓ np_not_equal.dfy -> np_not_equal_impl.dfy
+✓ np_less_equal.dfy -> np_less_equal_impl.dfy
+✓ np_cum_prod.dfy -> np_cum_prod_impl.dfy
+✓ np_max.dfy -> np_max_impl.dfy
+✓ np_mod.dfy -> np_mod_impl.dfy
+✓ np_greater_equal.dfy -> np_greater_equal_impl.dfy
+✓ np_sign.dfy -> np_sign_impl.dfy
+✓ np_cum_sum.dfy -> np_cum_sum_impl.dfy
+✓ np_helpers.dfy -> np_helpers_impl.dfy
+
+=== FAILED FILES (VERIFICATION) ===
+✗ np_left_shift.dfy
+✗ np_right_shift.dfy
+✗ np_prod.dfy
+✗ np_bitwise_xor.dfy
+✗ np_bitwise_and.dfy
+✗ np_sum.dfy
+✗ np_bitwise_or.dfy
+
+=== DEBUG FEATURES ===
+Debug mode: Disabled
+- Saves only final implementation as *_impl.dfy
+- No intermediate files saved (debug mode disabled)
+
+- Debug mode control: Disabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-06-19T12:44:13.440991
