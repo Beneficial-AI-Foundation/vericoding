@@ -1,0 +1,90 @@
+=== DAFNY SPECIFICATION-TO-CODE PROCESSING SUMMARY (DEBUG VERSION) ===
+
+Test directory: /Users/sergiu.bursuc/baif/vericoding/dafny/benchmarks/dafny-bench_specs/clover
+Output directory: /Users/sergiu.bursuc/baif/vericoding/dafny/benchmarks/dafny-bench_specs/clover/code_from_spec_on_22-06_21h03
+Max iterations: 5
+Test date: 2025-06-22T21:28:54.629080
+
+Total original files: 62
+
+=== OVERALL STATISTICS ===
+Total successful: 56
+Total failed: 6
+Success rate: 90.3%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ Clover_double_quadruple_spec.dfy -> Clover_double_quadruple_spec_impl.dfy
+✓ Clover_linear_search1_spec.dfy -> Clover_linear_search1_spec_impl.dfy
+✓ Clover_cal_sum_spec.dfy -> Clover_cal_sum_spec_impl.dfy
+✓ Clover_min_of_two_spec.dfy -> Clover_min_of_two_spec_impl.dfy
+✓ Clover_quotient_spec.dfy -> Clover_quotient_spec_impl.dfy
+✓ Clover_bubble_sort_spec.dfy -> Clover_bubble_sort_spec_impl.dfy
+✓ Clover_set_to_seq_spec.dfy -> Clover_set_to_seq_spec_impl.dfy
+✓ Clover_is_palindrome_spec.dfy -> Clover_is_palindrome_spec_impl.dfy
+✓ Clover_replace_spec.dfy -> Clover_replace_spec_impl.dfy
+✓ Clover_test_array_spec.dfy -> Clover_test_array_spec_impl.dfy
+✓ Clover_insert_spec.dfy -> Clover_insert_spec_impl.dfy
+✓ Clover_min_array_spec.dfy -> Clover_min_array_spec_impl.dfy
+✓ Clover_remove_front_spec.dfy -> Clover_remove_front_spec_impl.dfy
+✓ Clover_swap_in_array_spec.dfy -> Clover_swap_in_array_spec_impl.dfy
+✓ Clover_triple3_spec.dfy -> Clover_triple3_spec_impl.dfy
+✓ Clover_triple2_spec.dfy -> Clover_triple2_spec_impl.dfy
+✓ Clover_selectionsort_spec.dfy -> Clover_selectionsort_spec_impl.dfy
+✓ Clover_modify_2d_array_spec.dfy -> Clover_modify_2d_array_spec_impl.dfy
+✓ Clover_is_even_spec.dfy -> Clover_is_even_spec_impl.dfy
+✓ Clover_multi_return_spec.dfy -> Clover_multi_return_spec_impl.dfy
+✓ Clover_swap_bitvector_spec.dfy -> Clover_swap_bitvector_spec_impl.dfy
+✓ Clover_two_sum_spec.dfy -> Clover_two_sum_spec_impl.dfy
+✓ Clover_match_spec.dfy -> Clover_match_spec_impl.dfy
+✓ Clover_triple4_spec.dfy -> Clover_triple4_spec_impl.dfy
+✓ Clover_find_spec.dfy -> Clover_find_spec_impl.dfy
+✓ Clover_cal_ans_spec.dfy -> Clover_cal_ans_spec_impl.dfy
+✓ Clover_array_append_spec.dfy -> Clover_array_append_spec_impl.dfy
+✓ Clover_triple_spec.dfy -> Clover_triple_spec_impl.dfy
+✓ Clover_swap_arith_spec.dfy -> Clover_swap_arith_spec_impl.dfy
+✓ Clover_array_product_spec.dfy -> Clover_array_product_spec_impl.dfy
+✓ Clover_swap_spec.dfy -> Clover_swap_spec_impl.dfy
+✓ Clover_max_array_spec.dfy -> Clover_max_array_spec_impl.dfy
+✓ Clover_update_array_spec.dfy -> Clover_update_array_spec_impl.dfy
+✓ Clover_avg_spec.dfy -> Clover_avg_spec_impl.dfy
+✓ Clover_has_close_elements_spec.dfy -> Clover_has_close_elements_spec_impl.dfy
+✓ Clover_convert_map_key_spec.dfy -> Clover_convert_map_key_spec_impl.dfy
+✓ Clover_canyon_search_spec.dfy -> Clover_canyon_search_spec_impl.dfy
+✓ Clover_longest_prefix_spec.dfy -> Clover_longest_prefix_spec_impl.dfy
+✓ Clover_all_digits_spec.dfy -> Clover_all_digits_spec_impl.dfy
+✓ Clover_binary_search_spec.dfy -> Clover_binary_search_spec_impl.dfy
+✓ Clover_return_seven_spec.dfy -> Clover_return_seven_spec_impl.dfy
+✓ Clover_even_list_spec.dfy -> Clover_even_list_spec_impl.dfy
+✓ Clover_copy_part_spec.dfy -> Clover_copy_part_spec_impl.dfy
+✓ Clover_array_concat_spec.dfy -> Clover_array_concat_spec_impl.dfy
+✓ Clover_swap_sim_spec.dfy -> Clover_swap_sim_spec_impl.dfy
+✓ Clover_linear_search2_spec.dfy -> Clover_linear_search2_spec_impl.dfy
+✓ Clover_linear_search3_spec.dfy -> Clover_linear_search3_spec_impl.dfy
+✓ Clover_slope_search_spec.dfy -> Clover_slope_search_spec_impl.dfy
+✓ Clover_only_once_spec.dfy -> Clover_only_once_spec_impl.dfy
+✓ Clover_array_sum_spec.dfy -> Clover_array_sum_spec_impl.dfy
+✓ Clover_rotate_spec.dfy -> Clover_rotate_spec_impl.dfy
+✓ Clover_double_array_elements_spec.dfy -> Clover_double_array_elements_spec_impl.dfy
+✓ Clover_update_map_spec.dfy -> Clover_update_map_spec_impl.dfy
+✓ Clover_compare_spec.dfy -> Clover_compare_spec_impl.dfy
+✓ Clover_array_copy_spec.dfy -> Clover_array_copy_spec_impl.dfy
+✓ Clover_abs_spec.dfy -> Clover_abs_spec_impl.dfy
+
+=== FAILED FILES (VERIFICATION) ===
+✗ Clover_count_lessthan_spec.dfy
+✗ Clover_seq_to_array_spec.dfy
+✗ Clover_below_zero_spec.dfy
+✗ Clover_online_max_spec.dfy
+✗ Clover_reverse_spec.dfy
+✗ Clover_integer_square_root_spec.dfy
+
+=== DEBUG FEATURES ===
+Debug mode: Disabled
+- Saves only final implementation as *_impl.dfy in main directory
+- No intermediate files saved (debug mode disabled)
+
+- Debug mode control: Disabled
+- Configurable file output based on debug setting
+- Iteration tracking: nr_iter field in CSV shows final iteration
+
+Generated on: 2025-06-22T21:28:54.629794
