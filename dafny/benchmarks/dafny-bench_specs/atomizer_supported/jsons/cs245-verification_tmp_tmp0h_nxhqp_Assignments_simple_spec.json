@@ -1,0 +1,13 @@
+{
+  "skeleton": "//Simple Assignment Example -- Steph Renee McIntyre\n//Based on the code used in the course overheads for Fall 2018\n//ATOM_PLACEHOLDER_simple\n\n/* Proof of implied (a): \n    Let y = 6.\n    Then add 1 to both sides of the equality: y + 1 = 6 + 1\n    Then y + 1 = 7.\n*/\n\n\n\n/* Proof of implied (a): \n    Let y = 6.\n    Then add 1 to both sides of the equality: y + 1 = 6 + 1\n    Then y + 1 = 7.\n*/\n\n",
+  "atoms": {
+    "simple": [
+      [],
+      "// SPEC \n//Simple Assignment Example -- Steph Renee McIntyre\n//Based on the code used in the course overheads for Fall 2018\nmethod simple(y: int) returns (x: int) \n  requires y==6;\n  ensures x==7;\n{\n}\n\n/* Proof of implied (a): \n    Let y = 6.\n    Then add 1 to both sides of the equality: y + 1 = 6 + 1\n    Then y + 1 = 7.\n*/\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_simple": "simple"
+  }
+}

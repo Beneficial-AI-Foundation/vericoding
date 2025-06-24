@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_InArray\n\n//ATOM_PLACEHOLDER_DissimilarElements",
+  "atoms": {
+    "InArray": [
+      [],
+      "// ATOM \npredicate InArray(a: array<int>, x: int)\n    reads a\n{\n    exists i :: 0 <= i < a.Length && a[i] == x\n}\n",
+      "predicate"
+    ],
+    "DissimilarElements": [
+      [
+        "InArray"
+      ],
+      "// SPEC \n\nmethod DissimilarElements(a: array<int>, b: array<int>) returns (result: seq<int>)\n    // All elements in the output are either in a or b, but not in both or neither\n    ensures forall x :: x in result ==> (InArray(a, x) != InArray(b, x))\n    // The elements in the output are all different\n    ensures forall i, j :: 0 <= i < j < |result| ==> result[i] != result[j]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_InArray": "InArray",
+    "//ATOM_PLACEHOLDER_DissimilarElements": "DissimilarElements"
+  }
+}

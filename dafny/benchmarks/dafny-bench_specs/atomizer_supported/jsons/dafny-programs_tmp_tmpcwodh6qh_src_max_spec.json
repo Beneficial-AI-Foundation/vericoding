@@ -1,0 +1,33 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Max\n \n//ATOM_PLACEHOLDER_MaxTest\n\n//ATOM_PLACEHOLDER_max\n\n//ATOM_PLACEHOLDER_maxTest\n\n",
+  "atoms": {
+    "Max": [
+      [],
+      "// SPEC \nmethod Max(a: int, b: int) returns (c: int)\n  ensures a >= b ==> c == a\n  ensures b >= a ==> c == b\n{\n}\n",
+      "method"
+    ],
+    "MaxTest": [
+      [
+        "Max"
+      ],
+      "// SPEC \n \nmethod MaxTest() {\n}\n",
+      "method"
+    ],
+    "max": [
+      [],
+      "// ATOM \n\nfunction max(a: int, b: int): int\n{\n  if a > b then a else b\n}\n",
+      "function"
+    ],
+    "maxTest": [
+      [],
+      "// SPEC \n\nmethod maxTest() {\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Max": "Max",
+    "//ATOM_PLACEHOLDER_MaxTest": "MaxTest",
+    "//ATOM_PLACEHOLDER_max": "max",
+    "//ATOM_PLACEHOLDER_maxTest": "maxTest"
+  }
+}

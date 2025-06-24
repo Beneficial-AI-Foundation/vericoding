@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_fact\n\n//ATOM_PLACEHOLDER_factorial\n\n",
+  "atoms": {
+    "fact": [
+      [],
+      "// ATOM \nfunction fact(n: nat): nat \n    ensures fact(n) >= 1\n{\n    if n == 0 then 1 else n * fact(n - 1)\n}\n",
+      "function"
+    ],
+    "factorial": [
+      [
+        "fact"
+      ],
+      "// SPEC \n\nmethod factorial(n: nat) returns (res: nat)\n    ensures res == fact(n)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_fact": "fact",
+    "//ATOM_PLACEHOLDER_factorial": "factorial"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_AppendArrayToSeq",
+  "atoms": {
+    "AppendArrayToSeq": [
+      [],
+      "// SPEC \nmethod AppendArrayToSeq(s: seq<int>, a: array<int>) returns (r: seq<int>)\n    requires a != null\n    ensures |r| == |s| + a.Length\n    ensures forall i :: 0 <= i < |s| ==> r[i] == s[i]\n    ensures forall i :: 0 <= i < a.Length ==> r[|s| + i] == a[i]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_AppendArrayToSeq": "AppendArrayToSeq"
+  }
+}

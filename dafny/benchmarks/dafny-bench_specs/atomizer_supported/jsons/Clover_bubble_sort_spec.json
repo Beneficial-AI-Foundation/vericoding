@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_BubbleSort\n\n",
+  "atoms": {
+    "BubbleSort": [
+      [],
+      "// SPEC \nmethod BubbleSort(a: array<int>)\n  modifies a\n  ensures forall i,j::0<= i < j < a.Length ==> a[i] <= a[j]\n  ensures multiset(a[..])==multiset(old(a[..]))\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_BubbleSort": "BubbleSort"
+  }
+}

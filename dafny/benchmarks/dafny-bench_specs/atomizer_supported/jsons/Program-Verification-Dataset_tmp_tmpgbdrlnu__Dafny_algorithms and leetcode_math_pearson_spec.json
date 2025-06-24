@@ -1,0 +1,164 @@
+{
+  "skeleton": "\n\n//ATOM_PLACEHOLDER_eight\n\n//ATOM_PLACEHOLDER_isOdd\n\n//ATOM_PLACEHOLDER_isEven\n\n//ATOM_PLACEHOLDER_eightL\n\n//ATOM_PLACEHOLDER_nineteenf\n//ATOM_PLACEHOLDER_nineteens\n\n//ATOM_PLACEHOLDER_nineteenlemma\n\n//ATOM_PLACEHOLDER_relationDomain\n\n//ATOM_PLACEHOLDER_reflexive\n\n//ATOM_PLACEHOLDER_symmetric\n\n//ATOM_PLACEHOLDER_transitive\n\n//ATOM_PLACEHOLDER_equivalenceRelation\n\n//ATOM_PLACEHOLDER_relationOnASet\n\n// lemma equivUnion<T>(R_1: set<(T,T)>, S_1: set<T>, R_2: set<(T,T)>, S_2: set<T>)\n//     requires |R_1| > 0\n//     requires |R_2| > 0\n//     requires |S_1| > 0\n//     requires |S_2| > 0\n//     requires relationOnASet(R_1, S_1)\n//     requires relationOnASet(R_2, S_2)\n//     requires equivalenceRelation(R_1, S_1)\n//     requires equivalenceRelation(R_2, S_2)\n//     ensures equivalenceRelation(R_1+R_2, S_1+S_2)\n// {\n//     reflexiveUnion(R_1, S_1, R_2, S_2);\n//     symmetricUnion(R_1, S_1, R_2, S_2);\n//     transitiveUnion(R_1, S_1, R_2, S_2);\n// }\n\n//ATOM_PLACEHOLDER_reflexiveUnion\n\n//ATOM_PLACEHOLDER_symmetricUnion\n\n    \n//ATOM_PLACEHOLDER_transitiveUnion\n\n// lemma transitiveUnionContra<T>(R_1: set<(T,T)>, S_1: set<T>, R_2: set<(T,T)>, S_2: set<T>)\n//     requires |R_1| > 0\n//     requires |R_2| > 0\n//     requires |S_1| > 0\n//     requires |S_2| > 0\n//     requires relationOnASet(R_1, S_1)\n//     requires relationOnASet(R_2, S_2)\n//     requires transitive(R_1, S_1)\n//     requires transitive(R_2, S_2)\n//     ensures exists (R_1+R_2, S_1+S_2) :: !transitive(R_1+R_2, S_1+S_2) \n// {\n//     assume S_1 * S_2 != {};\n//     if transitive(R_1 + R_2, S_1+S_2) {\n//         forall a,b,c | a in S_1+S_2 && b in S_1+S_2 && c in S_1+S_2 && (a,b) in R_1+R_2 && (b,c) in R_1+R_2 \n//             ensures (a,c) in R_1+R_2 \n//         {\n//             if a in S_1 && a !in S_2 && b in S_1 && b in S_2 && c in S_2 && c !in S_1 {\n//                 assert (a,c) !in R_1;\n//                 assert (a,c) !in R_2;\n//                 assert (a,c) !in R_1+R_2;\n//                 assert false;\n//             }\n//         } \n//     }\n// }\n\n//ATOM_PLACEHOLDER_transitiveUnionContra\n\n//ATOM_PLACEHOLDER_notTrueAlways\n\n//ATOM_PLACEHOLDER_test\n\n",
+  "atoms": {
+    "eight": [
+      [],
+      "// ATOM \n\n\nfunction eight(x: nat):nat {\n    9 * x + 5\n}\n",
+      "function"
+    ],
+    "isOdd": [
+      [],
+      "// ATOM \n\npredicate isOdd(x: nat) {\n    x % 2 == 1\n}\n",
+      "predicate"
+    ],
+    "isEven": [
+      [],
+      "// ATOM \n\npredicate isEven(x: nat) {\n    x % 2 == 0\n}\n",
+      "predicate"
+    ],
+    "eightL": [
+      [
+        "isOdd",
+        "isEven",
+        "eight"
+      ],
+      "// ATOM \n\nlemma eightL(x: nat)\n    requires isOdd(x)\n    ensures isEven(eight(x))\n{\n\n}\n",
+      "lemma"
+    ],
+    "nineteenf": [
+      [],
+      "// ATOM \n\nfunction nineteenf(x: nat): nat {\n    7*x+4\n}\n",
+      "function"
+    ],
+    "nineteens": [
+      [],
+      "// ATOM \nfunction nineteens(x: nat): nat {\n    3*x+11\n}\n",
+      "function"
+    ],
+    "nineteenlemma": [
+      [
+        "isOdd",
+        "isEven",
+        "nineteens",
+        "nineteenf"
+      ],
+      "// ATOM \n\nlemma nineteenlemma(x: nat) \n    requires isEven(nineteenf(x))\n    ensures isOdd(nineteens(x))\n{\n\n}\n",
+      "lemma"
+    ],
+    "relationDomain": [
+      [],
+      "// ATOM \n\nfunction relationDomain<T>(s: set<(T,T)>): set<T> {\n    set z | z in s :: z.1\n}\n",
+      "function"
+    ],
+    "reflexive": [
+      [
+        "relationOnASet"
+      ],
+      "// ATOM \n\npredicate reflexive<T>(R: set<(T,T)>, S: set<T>) \n    requires relationOnASet(R, S)\n{\n    forall s :: s in S ==> (s,s) in R\n}\n",
+      "predicate"
+    ],
+    "symmetric": [
+      [
+        "relationOnASet"
+      ],
+      "// ATOM \n\npredicate symmetric<T>(R: set<(T,T)>, S: set<T>)\n    requires relationOnASet(R, S)\n{\n    forall x: T, y:T :: x in S && y in S && (x,y) in R ==> (y, x) in R\n}\n",
+      "predicate"
+    ],
+    "transitive": [
+      [
+        "relationOnASet"
+      ],
+      "// ATOM \n\npredicate transitive<T>(R: set<(T,T)>, S: set<T>) \n    requires relationOnASet(R, S)\n{\n    forall a,b,c :: a in S && b in S && c in S && (a,b) in R && (b,c) in R ==> (a,c) in R\n}\n",
+      "predicate"
+    ],
+    "equivalenceRelation": [
+      [
+        "relationOnASet",
+        "reflexive",
+        "transitive",
+        "symmetric"
+      ],
+      "// ATOM \n\npredicate equivalenceRelation<T>(R: set<(T,T)>, S: set<T>) \n    requires relationOnASet(R, S)\n{\n    reflexive(R, S) && symmetric(R, S) && transitive(R, S)\n}\n",
+      "predicate"
+    ],
+    "relationOnASet": [
+      [],
+      "// ATOM \n\npredicate relationOnASet<T>(R: set<(T,T)>, S: set<T>) {\n    forall ts :: ts in R ==> ts.0 in S && ts.1 in S\n}\n",
+      "predicate"
+    ],
+    "reflexiveUnion": [
+      [
+        "symmetricUnion",
+        "equivalenceRelation",
+        "transitiveUnion",
+        "relationOnASet"
+      ],
+      "// ATOM \n\n// lemma equivUnion<T>(R_1: set<(T,T)>, S_1: set<T>, R_2: set<(T,T)>, S_2: set<T>)\n//     requires |R_1| > 0\n//     requires |R_2| > 0\n//     requires |S_1| > 0\n//     requires |S_2| > 0\n//     requires relationOnASet(R_1, S_1)\n//     requires relationOnASet(R_2, S_2)\n//     requires equivalenceRelation(R_1, S_1)\n//     requires equivalenceRelation(R_2, S_2)\n//     ensures equivalenceRelation(R_1+R_2, S_1+S_2)\n// {\n//     reflexiveUnion(R_1, S_1, R_2, S_2);\n//     symmetricUnion(R_1, S_1, R_2, S_2);\n//     transitiveUnion(R_1, S_1, R_2, S_2);\n// }\n\nlemma reflexiveUnion<T>(R_1: set<(T,T)>, S_1: set<T>, R_2: set<(T,T)>, S_2: set<T>)\n    requires |R_1| > 0\n    requires |R_2| > 0\n    requires |S_1| > 0\n    requires |S_2| > 0\n    requires relationOnASet(R_1, S_1)\n    requires relationOnASet(R_2, S_2)\n    requires reflexive(R_1, S_1)\n    requires reflexive(R_2, S_2)\n    ensures reflexive(R_1+R_2, S_1+S_2)\n{\n\n}\n",
+      "lemma"
+    ],
+    "symmetricUnion": [
+      [
+        "relationOnASet",
+        "symmetric"
+      ],
+      "// ATOM \n\nlemma symmetricUnion<T>(R_1: set<(T,T)>, S_1: set<T>, R_2: set<(T,T)>, S_2: set<T>)\n    requires |R_1| > 0\n    requires |R_2| > 0\n    requires |S_1| > 0\n    requires |S_2| > 0\n    requires relationOnASet(R_1, S_1)\n    requires relationOnASet(R_2, S_2)\n    requires symmetric(R_1, S_1)\n    requires symmetric(R_2, S_2)\n    ensures symmetric(R_1+R_2, S_1+S_2)\n{\n    // assert R_1 <= (R_1+R_2);\n    // assert R_2 <= (R_1+R_2);\n    // assert symmetric(R_1, S_1);\n    // assert symmetric(R_2, S_2);\n    forall x,y | x in S_1+S_2 && y in S_1+S_2 && (x,y) in R_1+R_2\n        ensures (y,x) in R_1+R_2\n    {\n        // assert x in S_1+S_2;\n        // assert y in S_1+S_2;\n        // assert (x,y) in R_1+R_2;\n        // calc {\n        //     (x,y) in R_1+R_2;\n        //     ==>\n        //     (x,y) in R_1 || (x,y) in R_2;\n        // }\n        // calc {\n        //     x in S_1+S_2;\n        //     ==>\n        //     x in S_1 || x in S_2;\n        // }\n\n        // calc {\n        //     y in S_1+S_2;\n        //     ==>\n        //     y in S_1 || y in S_2;\n        // }\n        // assert (x,y) in R_1 ==> x in S_1 && y in S_1;\n        // assert (x,y) in R_2 ==> x in S_2 && y in S_2;\n\n        // assert (x,y) in R_1 || (x,y) in R_2;\n        if  x in S_1 && y in S_1 && (x,y) in R_1 {\n            // assert x in S_1;\n            // assert y in S_1;\n            // assert (x,y) in R_1;\n            // assert (y,x) in R_1;\n        }else if  x in S_2 && y in S_2 && (x,y) in R_2 {\n            // assert x in S_2;\n            // assert y in S_2;\n            // assert (x,y) in R_2;\n            // assert (y,x) in R_2;\n        }\n    }\n}\n",
+      "lemma"
+    ],
+    "transitiveUnion": [
+      [
+        "relationOnASet",
+        "transitive"
+      ],
+      "// ATOM \n\n    \nlemma transitiveUnion<T>(R_1: set<(T,T)>, S_1: set<T>, R_2: set<(T,T)>, S_2: set<T>)\n    requires |R_1| > 0\n    requires |R_2| > 0\n    requires |S_1| > 0\n    requires |S_2| > 0\n    requires relationOnASet(R_1, S_1)\n    requires relationOnASet(R_2, S_2)\n    requires transitive(R_1, S_1)\n    requires transitive(R_2, S_2)\n    ensures transitive(R_1+R_2, S_1+S_2) \n{\n\n    assume forall a :: a in S_1+S_2 ==> a !in S_1 || a !in S_2;\n\n    forall a,b,c | a in S_1+S_2 && b in S_1+S_2 && c in S_1+S_2 && (a,b) in R_1+R_2 && (b,c) in R_1+R_2 \n        ensures (a,c) in R_1+R_2\n    {\n        if a in S_1 && b in S_1 && c in S_1 && (a,b) in R_1 && (b,c) in R_1 {\n        }else if a in S_2 && b in S_2 && c in S_2 && (a,b) in R_2 && (b,c) in R_2 {\n        }\n    } \n}\n",
+      "lemma"
+    ],
+    "transitiveUnionContra": [
+      [
+        "relationOnASet",
+        "transitive"
+      ],
+      "// ATOM \n\n// lemma transitiveUnionContra<T>(R_1: set<(T,T)>, S_1: set<T>, R_2: set<(T,T)>, S_2: set<T>)\n//     requires |R_1| > 0\n//     requires |R_2| > 0\n//     requires |S_1| > 0\n//     requires |S_2| > 0\n//     requires relationOnASet(R_1, S_1)\n//     requires relationOnASet(R_2, S_2)\n//     requires transitive(R_1, S_1)\n//     requires transitive(R_2, S_2)\n//     ensures exists (R_1+R_2, S_1+S_2) :: !transitive(R_1+R_2, S_1+S_2) \n// {\n//     assume S_1 * S_2 != {};\n//     if transitive(R_1 + R_2, S_1+S_2) {\n//         forall a,b,c | a in S_1+S_2 && b in S_1+S_2 && c in S_1+S_2 && (a,b) in R_1+R_2 && (b,c) in R_1+R_2 \n//             ensures (a,c) in R_1+R_2 \n//         {\n//             if a in S_1 && a !in S_2 && b in S_1 && b in S_2 && c in S_2 && c !in S_1 {\n//                 assert (a,c) !in R_1;\n//                 assert (a,c) !in R_2;\n//                 assert (a,c) !in R_1+R_2;\n//                 assert false;\n//             }\n//         } \n//     }\n// }\n\nlemma transitiveUnionContra<T>()\n  returns (\n  R1: set<(T, T)>, S1: set<T>,\n  R2: set<(T, T)>, S2: set<T>)\n  ensures relationOnASet(R1, S1)\n  ensures relationOnASet(R2, S2)\n  ensures transitive(R1, S1)\n  ensures transitive(R2, S2)\n  ensures ! transitive(R1 + R2, S1 + S2)\n{\n  var a : T :| assume true;\n  var b : T :| assume a != b;\n  var c : T :| assume a != c && b != c;\n  S1 := {a, b};\n  S2 := {b, c};\n  R1 := {(a, b)};\n  R2 := {(b, c)};\n}\n",
+      "lemma"
+    ],
+    "notTrueAlways": [
+      [
+        "relationOnASet",
+        "transitive"
+      ],
+      "// ATOM \n\nlemma notTrueAlways<T>()\n  ensures !\n  (forall S1 : set<T>, S2 : set<T>, R1 : set<(T,T)>, R2 : set<(T, T)> ::\n  relationOnASet(R1, S1) &&\n  relationOnASet(R2, S2) &&\n  transitive(R1, S1) &&\n  transitive(R2, S2)  ==> transitive(R1 + R2, S1 + S2)\n  )\n{\n  var a, b, c, d := transitiveUnionContra<T>();\n}\n",
+      "lemma"
+    ],
+    "test": [
+      [
+        "isEven",
+        "equivalenceRelation",
+        "eight",
+        "reflexive",
+        "nineteenf"
+      ],
+      "// SPEC \n\nmethod test() {\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_eight": "eight",
+    "//ATOM_PLACEHOLDER_isOdd": "isOdd",
+    "//ATOM_PLACEHOLDER_isEven": "isEven",
+    "//ATOM_PLACEHOLDER_eightL": "eightL",
+    "//ATOM_PLACEHOLDER_nineteenf": "nineteenf",
+    "//ATOM_PLACEHOLDER_nineteens": "nineteens",
+    "//ATOM_PLACEHOLDER_nineteenlemma": "nineteenlemma",
+    "//ATOM_PLACEHOLDER_relationDomain": "relationDomain",
+    "//ATOM_PLACEHOLDER_reflexive": "reflexive",
+    "//ATOM_PLACEHOLDER_symmetric": "symmetric",
+    "//ATOM_PLACEHOLDER_transitive": "transitive",
+    "//ATOM_PLACEHOLDER_equivalenceRelation": "equivalenceRelation",
+    "//ATOM_PLACEHOLDER_relationOnASet": "relationOnASet",
+    "//ATOM_PLACEHOLDER_reflexiveUnion": "reflexiveUnion",
+    "//ATOM_PLACEHOLDER_symmetricUnion": "symmetricUnion",
+    "//ATOM_PLACEHOLDER_transitiveUnion": "transitiveUnion",
+    "//ATOM_PLACEHOLDER_transitiveUnionContra": "transitiveUnionContra",
+    "//ATOM_PLACEHOLDER_notTrueAlways": "notTrueAlways",
+    "//ATOM_PLACEHOLDER_test": "test"
+  }
+}

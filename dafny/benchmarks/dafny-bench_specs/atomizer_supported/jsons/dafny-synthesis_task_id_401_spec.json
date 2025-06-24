@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_IndexWiseAddition",
+  "atoms": {
+    "IndexWiseAddition": [
+      [],
+      "// SPEC \nmethod IndexWiseAddition(a: seq<seq<int>>, b: seq<seq<int>>) returns (result: seq<seq<int>>)\n    requires |a| > 0 && |b| > 0\n    requires |a| == |b|\n    requires forall i :: 0 <= i < |a| ==> |a[i]| == |b[i]|\n    ensures |result| == |a|\n    ensures forall i :: 0 <= i < |result| ==> |result[i]| == |a[i]|\n    ensures forall i :: 0 <= i < |result| ==> forall j :: 0 <= j < |result[i]| ==> result[i][j] == a[i][j] + b[i][j]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IndexWiseAddition": "IndexWiseAddition"
+  }
+}

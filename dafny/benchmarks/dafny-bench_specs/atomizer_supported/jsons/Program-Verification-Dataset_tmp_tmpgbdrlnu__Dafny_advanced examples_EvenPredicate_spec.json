@@ -1,0 +1,37 @@
+{
+  "skeleton": "// RUN: /compile:0 /nologo\n\n//ATOM_PLACEHOLDER_IsEven\n\n//ATOM_PLACEHOLDER_EvenSquare\n\n//ATOM_PLACEHOLDER_EvenDouble\n\n//ATOM_PLACEHOLDER_unknown_533 EvenPlus(x: int, y: int)\n    requires x >= 0\n    requires y >= 0\n    requires IsEven(x)\n    requires IsEven(y)\n    ensures IsEven(x + y)\n{\n    if x >= 2 {\n        EvenPlus(x - 2, y);\n    }\n}\n\n\n/*\n//ATOM_PLACEHOLDER_unknown_750 EvenTimes(x: int, y: int)\n    requires x >= 0\n    requires y >= 0\n    requires IsEven(x)\n    requires IsEven(y)\n    ensures IsEven(x * y)\n{\n    if x >= 2 {\n        calc {\n            IsEven(x * y);\n            IsEven((x - 2) * y + 2 * y); { Check1(y); EvenPlus((x - 2) * y, 2 * y); }\n            true;\n        }\n    }\n}\n*/\n\n EvenTimes(x: int, y: int)\n    requires x >= 0\n    requires y >= 0\n    requires IsEven(x)\n    requires IsEven(y)\n    ensures IsEven(x * y)\n{\n    if x >= 2 {\n        calc {\n            IsEven(x * y);\n            IsEven((x - 2) * y + 2 * y); { Check1(y); EvenPlus((x - 2) * y, 2 * y); }\n            true;\n        }\n    }\n}\n*/\n\n",
+  "atoms": {
+    "IsEven": [
+      [],
+      "// ATOM \n// RUN: /compile:0 /nologo\n\nfunction IsEven(a : int) : bool\n    requires a >= 0\n{\n    if a == 0 then      true \n    else if a == 1 then false \n    else                IsEven(a - 2)\n}\n",
+      "function"
+    ],
+    "EvenSquare": [
+      [
+        "IsEven",
+        "EvenDouble"
+      ],
+      "// ATOM \n\nlemma EvenSquare(a : int)\nrequires a >= 0\nensures IsEven(a) ==> IsEven(a * a)\n{\n    if a >= 2 && IsEven(a) {\n        EvenSquare(a - 2);\n        EvenDouble(2 * a - 2);\n        EvenPlus((a - 2) * (a - 2), 4 * a - 4);\n    }\n}\n",
+      "lemma"
+    ],
+    "EvenDouble": [
+      [
+        "IsEven"
+      ],
+      "// ATOM \n\nlemma EvenDouble(a: int)\n    requires a >= 0\n    ensures IsEven(a + a)\n{\n    if a >= 2 {\n        EvenDouble(a - 2);\n    }\n}\n",
+      "lemma"
+    ],
+    "": [
+      [],
+      "// ATOM \nlemma {:induction x} EvenTimes(x: int, y: int)\n    requires x >= 0\n    requires y >= 0\n    requires IsEven(x)\n    requires IsEven(y)\n    ensures IsEven(x * y)\n{\n    if x >= 2 {\n        calc {\n            IsEven(x * y);\n            IsEven((x - 2) * y + 2 * y); { Check1(y); EvenPlus((x - 2) * y, 2 * y); }\n            true;\n        }\n    }\n}\n*/\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsEven": "IsEven",
+    "//ATOM_PLACEHOLDER_EvenSquare": "EvenSquare",
+    "//ATOM_PLACEHOLDER_EvenDouble": "EvenDouble",
+    "//ATOM_PLACEHOLDER_unknown_533": "unknown_533",
+    "//ATOM_PLACEHOLDER_unknown_750": "unknown_750"
+  }
+}

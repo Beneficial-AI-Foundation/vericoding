@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Potencia\n\n//ATOM_PLACEHOLDER_Pot\n/*\nInv = \nPot(2,3)\nTeste de mesa\nx   y   b   e   r           Inv --> b^e * r = x^y\n2   3   2   3   1           2^3 * 2^0 = 2^3\n2   3   2   2   1*2         2^2 * 2^1 = 2^3\n2   3   2   1   1*2*2       2^1 * 2^2 = 2^3\n2   3   2   0   1*2*2*2     2^0 * 2^3 = 2^3\n*/\n\n/*\nInv = \nPot(2,3)\nTeste de mesa\nx   y   b   e   r           Inv --> b^e * r = x^y\n2   3   2   3   1           2^3 * 2^0 = 2^3\n2   3   2   2   1*2         2^2 * 2^1 = 2^3\n2   3   2   1   1*2*2       2^1 * 2^2 = 2^3\n2   3   2   0   1*2*2*2     2^0 * 2^3 = 2^3\n*/\n",
+  "atoms": {
+    "Potencia": [
+      [],
+      "// ATOM \nfunction Potencia(x:nat, y:nat):nat\n{\n    if y == 0\n    then 1\n    else x * Potencia(x, y-1)\n}\n",
+      "function"
+    ],
+    "Pot": [
+      [
+        "Potencia"
+      ],
+      "// SPEC \n\nmethod Pot(x:nat, y:nat) returns (r:nat)\nensures r == Potencia(x,y)\n{\n}\n/*\nInv = \nPot(2,3)\nTeste de mesa\nx   y   b   e   r           Inv --> b^e * r = x^y\n2   3   2   3   1           2^3 * 2^0 = 2^3\n2   3   2   2   1*2         2^2 * 2^1 = 2^3\n2   3   2   1   1*2*2       2^1 * 2^2 = 2^3\n2   3   2   0   1*2*2*2     2^0 * 2^3 = 2^3\n*/\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Potencia": "Potencia",
+    "//ATOM_PLACEHOLDER_Pot": "Pot"
+  }
+}

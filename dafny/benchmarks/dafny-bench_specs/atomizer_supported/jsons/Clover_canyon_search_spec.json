@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_CanyonSearch\n\n\n\n",
+  "atoms": {
+    "CanyonSearch": [
+      [],
+      "// SPEC \nmethod CanyonSearch(a: array<int>, b: array<int>) returns (d:nat)\n  requires a.Length !=0 && b.Length!=0\n  requires forall i,j :: 0<=i<j<a.Length ==> a[i]<=a[j]\n  requires forall i,j :: 0<=i<j<b.Length ==> b[i]<=b[j]\n  ensures exists i,j:: 0<=i<a.Length && 0<=j<b.Length && d==if a[i] < b[j] then (b[j]-a[i]) else (a[i]-b[j])\n  ensures forall i,j:: 0<=i<a.Length && 0<=j<b.Length ==> d<=if a[i] < b[j] then (b[j]-a[i]) else (a[i]-b[j])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_CanyonSearch": "CanyonSearch"
+  }
+}

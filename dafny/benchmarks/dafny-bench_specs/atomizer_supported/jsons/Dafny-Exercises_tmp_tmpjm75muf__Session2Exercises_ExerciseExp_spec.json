@@ -1,0 +1,29 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_exp\n\n//ATOM_PLACEHOLDER_exp3_Lemma\n\n//ATOM_PLACEHOLDER_mult8_Lemma\n\n\n\n",
+  "atoms": {
+    "exp": [
+      [],
+      "// ATOM \nfunction exp(x:int, e:int):int\n\trequires e >= 0\n    ensures x > 0 ==> exp(x,e) > 0\n{\nif e == 0 then 1 else x*exp(x,e-1)\n}\n",
+      "function"
+    ],
+    "exp3_Lemma": [
+      [
+        "exp"
+      ],
+      "// ATOM \n\nlemma   exp3_Lemma(n:int) \n    requires n >= 1\n\tensures (exp(3,n)-1)%2 == 0\n{}\n",
+      "lemma"
+    ],
+    "mult8_Lemma": [
+      [
+        "exp"
+      ],
+      "// ATOM \n\nlemma  mult8_Lemma(n:int)\n\trequires n >= 1\n\tensures (exp(3,2*n) - 1)%8 == 0\n{\n    if(n==1){\n\n    }\n    else{\n        calc =={\n            (exp(3,2*n) -1) % 8;\n            (exp(3, 2*(n-1)) *8 + exp(3,2*(n-1)) - 1) % 8;\n            {\n                mult8_Lemma(n-1);\n            }\n            0;\n        }\n    }\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_exp": "exp",
+    "//ATOM_PLACEHOLDER_exp3_Lemma": "exp3_Lemma",
+    "//ATOM_PLACEHOLDER_mult8_Lemma": "mult8_Lemma"
+  }
+}

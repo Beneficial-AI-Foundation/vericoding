@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_AsciiValue",
+  "atoms": {
+    "AsciiValue": [
+      [],
+      "// SPEC \nmethod AsciiValue(c: char) returns (ascii: int)\n    ensures ascii == c as int\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_AsciiValue": "AsciiValue"
+  }
+}

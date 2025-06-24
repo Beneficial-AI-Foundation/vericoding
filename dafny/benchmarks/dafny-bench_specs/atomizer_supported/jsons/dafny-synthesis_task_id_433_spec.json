@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_IsGreater",
+  "atoms": {
+    "IsGreater": [
+      [],
+      "// SPEC \nmethod IsGreater(n: int, a: array<int>) returns (result: bool)\n    requires a != null\n    ensures result ==> forall i :: 0 <= i < a.Length ==> n > a[i]\n    ensures !result ==> exists i :: 0 <= i < a.Length && n <= a[i]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsGreater": "IsGreater"
+  }
+}

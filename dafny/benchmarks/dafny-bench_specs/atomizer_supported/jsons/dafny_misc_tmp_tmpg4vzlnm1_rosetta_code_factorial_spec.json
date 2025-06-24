@@ -1,0 +1,21 @@
+{
+  "skeleton": "// recursive definition of factorial\n//ATOM_PLACEHOLDER_Factorial\n\n// iterative implementation of factorial\n//ATOM_PLACEHOLDER_IterativeFactorial\n\n\n\n",
+  "atoms": {
+    "Factorial": [
+      [],
+      "// ATOM \n// recursive definition of factorial\nfunction Factorial(n: nat): nat {\n  if n == 0 then 1 else n * Factorial(n - 1)\n}\n",
+      "function"
+    ],
+    "IterativeFactorial": [
+      [
+        "Factorial"
+      ],
+      "// SPEC \n\n// iterative implementation of factorial\nmethod IterativeFactorial(n: nat) returns (result: nat)\n  ensures result == Factorial(n)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Factorial": "Factorial",
+    "//ATOM_PLACEHOLDER_IterativeFactorial": "IterativeFactorial"
+  }
+}

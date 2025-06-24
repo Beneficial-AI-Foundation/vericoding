@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_ComputeIsEven\n\n",
+  "atoms": {
+    "ComputeIsEven": [
+      [],
+      "// SPEC \nmethod ComputeIsEven(x:int) returns (is_even:bool)\n  ensures (x % 2 == 0)==is_even\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_ComputeIsEven": "ComputeIsEven"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "skeleton": "// ASSIGNMENT P1\n// CMSC 433 FALL 2023\n// PERFECT SCORE:  100 POINTS\n//\n// This assignment contains nine questions, each of which involves writing Dafny\n// code. You should include your solutions in a single Dafny file and submit it using\n// Gradescope.\n//\n// Revision history\n//\n// 2023-09-22 2:50 pm   Fixed typo in Problem 3.\n\n\n// Question 1 (5 points)\n//\n// Fill in a requires clause that enables Dafny to verify\n// method PlusOne\n\n//ATOM_PLACEHOLDER_PlusOne\n\n\n// Question 2 (5 points)\n//\n// Fill in requires clause(s) that enable(s) Dafny to verify the array bounds\n// in method Swap (which swaps elements i and j in array a).\n\n//ATOM_PLACEHOLDER_Swap\n\n// Question 3 (5 points)\n//\n// Give ensures clause(s) asserting that d is the result, and r the\n// remainder, of dividing m by n.  Your clauses cannot use \"/\" or \"%\" (which are\n// the Dafny division and mod operators, respectively). By definition, the\n// remainder must be non-negative.\n\n//ATOM_PLACEHOLDER_IntDiv\n\n// Question 4 (5 points)\n//\n// Give ensures clause(s) asserting that the return value has the same\n// length as array a and contains as its elements the sum of the\n// corresponding elements in arrays a and b.\n\n//ATOM_PLACEHOLDER_ArraySum\n\n// Question 5 (10 points)\n\n// Euclid's algorithm is used to compute the greatest common divisor of two\n// positive integers.  If m and n are two such integers, then gcd(m,n) is the\n// largest positve integer that evenly divides both m and n, where j evenly divides i\n// if and only if i % j == 0 (% is the Dafny mod operator).  Write requires and\n// ensures clauses for the method header Euclid below.  Your requires clauses\n// should also specify that the first argument is at least as large as the second.\n// You do *not* need to implement the method!\n\n//ATOM_PLACEHOLDER_Euclid//ATOM_PLACEHOLDER_IsSorted\n\n// Question 7 (20 points)\n//\n// Implement, and have Dafny verify, the method IsPrime below, which returns true\n// if and only if the given positive integer is prime.\n\n//ATOM_PLACEHOLDER_IsPrime\n\n// Question 8 (20 points)\n//\n// Implement, and have Dafny verify, the method Reverse below, which returns a new array\n// aRev consisting of the elements of a, but in reverse order.  To create a new \n// array of ints use the Dafny command \"new int[...]\", where \"...\" is the number\n// of elements in the array.\n\n//ATOM_PLACEHOLDER_Reverse\n\n// Question 9 (20 points)\n//\n// Implement and verify method NoDups, which returns true if and only if there\n// are no duplicate elements in array a.  Note that the requires clause allows\n// you to assume that a is sorted, and that this precondition is necessary for\n// the ensures clause to imply a lack of duplicates.\n\n//ATOM_PLACEHOLDER_NoDups\n\n",
+  "atoms": {
+    "PlusOne": [
+      [],
+      "// SPEC \n// ASSIGNMENT P1\n// CMSC 433 FALL 2023\n// PERFECT SCORE:  100 POINTS\n//\n// This assignment contains nine questions, each of which involves writing Dafny\n// code. You should include your solutions in a single Dafny file and submit it using\n// Gradescope.\n//\n// Revision history\n//\n// 2023-09-22 2:50 pm   Fixed typo in Problem 3.\n\n\n// Question 1 (5 points)\n//\n// Fill in a requires clause that enables Dafny to verify\n// method PlusOne\n\nmethod PlusOne (x : int) returns (y : int)\n    requires x >= 0\n    ensures y > 0\n{\n}\n",
+      "method"
+    ],
+    "Swap": [
+      [],
+      "// SPEC \n\n\n// Question 2 (5 points)\n//\n// Fill in requires clause(s) that enable(s) Dafny to verify the array bounds\n// in method Swap (which swaps elements i and j in array a).\n\nmethod Swap (a : array?<int>, i : int, j : int)\n    requires a != null && 0 <= i < a.Length && 0 <= j < a.Length// TODO\n    modifies a  // Dafny requires listing of objects modified in a method\n{\n}\n",
+      "method"
+    ],
+    "IntDiv": [
+      [],
+      "// SPEC \n\n// Question 3 (5 points)\n//\n// Give ensures clause(s) asserting that d is the result, and r the\n// remainder, of dividing m by n.  Your clauses cannot use \"/\" or \"%\" (which are\n// the Dafny division and mod operators, respectively). By definition, the\n// remainder must be non-negative.\n\nmethod IntDiv (m : int, n : int) returns (d : int, r : int)\n    requires n > 0\n    ensures m == n * d + r && 0 <= r < n // TODO\n{\n}\n",
+      "method"
+    ],
+    "ArraySum": [
+      [],
+      "// SPEC \n\n// Question 4 (5 points)\n//\n// Give ensures clause(s) asserting that the return value has the same\n// length as array a and contains as its elements the sum of the\n// corresponding elements in arrays a and b.\n\nmethod ArraySum (a : array<int>, b : array<int>) returns (c : array<int>)\n    requires a.Length == b.Length\n    ensures c.Length == a.Length && \n        forall i : int :: 0 <= i < c.Length ==> c[i] == a[i] + b[i] // TODO\n{\n}\n",
+      "method"
+    ],
+    "Euclid": [
+      [],
+      "// SPEC \n\n// Question 5 (10 points)\n\n// Euclid's algorithm is used to compute the greatest common divisor of two\n// positive integers.  If m and n are two such integers, then gcd(m,n) is the\n// largest positve integer that evenly divides both m and n, where j evenly divides i\n// if and only if i % j == 0 (% is the Dafny mod operator).  Write requires and\n// ensures clauses for the method header Euclid below.  Your requires clauses\n// should also specify that the first argument is at least as large as the second.\n// You do *not* need to implement the method!\n\nmethod Euclid (m : int, n : int) returns (gcd : int)\n    requires m > 1 && n > 1 && m >= n  // TODO\n    ensures gcd > 0 && gcd <= n && gcd <= m && m % gcd == 0 && n % gcd == 0 // TODO\n",
+      "method"
+    ],
+    "IsSorted": [
+      [],
+      "// SPEC \n    \n\n    // YOU DO NOT NEED TO IMPLEMENT Euclid!!\n\n// Question 6 (10 points)\n//\n// Give invariant(s) that enable(s) Dafny to verify the following program, which\n// returns true if and only if array a is sorted.\n\nmethod IsSorted (a : array<int>) returns (isSorted : bool)\n    ensures isSorted <==> forall j : int :: 1 <= j < a.Length ==> a[j-1] <= a[j]\n{\n}\n",
+      "method"
+    ],
+    "IsPrime": [
+      [],
+      "// SPEC \n\n// Question 7 (20 points)\n//\n// Implement, and have Dafny verify, the method IsPrime below, which returns true\n// if and only if the given positive integer is prime.\n\nmethod IsPrime (m : int) returns (isPrime : bool)\n    requires m > 0 // m must be greater than 0\n    ensures isPrime <==> (m > 1 && forall j : int :: 2 <= j < m ==> m % j != 0) \n\t// ensures states that \"isPrime is true iff m > 1 && not divisible by [2, m-1)\"\n{\n}\n",
+      "method"
+    ],
+    "Reverse": [
+      [],
+      "// SPEC \n\n// Question 8 (20 points)\n//\n// Implement, and have Dafny verify, the method Reverse below, which returns a new array\n// aRev consisting of the elements of a, but in reverse order.  To create a new \n// array of ints use the Dafny command \"new int[...]\", where \"...\" is the number\n// of elements in the array.\n\nmethod Reverse (a : array<int>) returns (aRev : array<int>)\n    ensures aRev.Length == a.Length\n    ensures forall i : int :: 0 <= i < a.Length ==> a[i] == aRev[aRev.Length-i-1]\n    ensures fresh(aRev) // Indicates returned object is newly created in method body\n{\n}\n",
+      "method"
+    ],
+    "NoDups": [
+      [],
+      "// SPEC \n\n// Question 9 (20 points)\n//\n// Implement and verify method NoDups, which returns true if and only if there\n// are no duplicate elements in array a.  Note that the requires clause allows\n// you to assume that a is sorted, and that this precondition is necessary for\n// the ensures clause to imply a lack of duplicates.\n\nmethod NoDups (a : array<int>) returns (noDups : bool)\n    requires forall j : int :: 0 < j < a.Length ==> a[j-1] <= a[j] // a sorted\n    ensures noDups <==> forall j : int :: 1 <= j < a.Length ==> a[j-1] != a[j]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_PlusOne": "PlusOne",
+    "//ATOM_PLACEHOLDER_Swap": "Swap",
+    "//ATOM_PLACEHOLDER_IntDiv": "IntDiv",
+    "//ATOM_PLACEHOLDER_ArraySum": "ArraySum",
+    "//ATOM_PLACEHOLDER_Euclid": "Euclid",
+    "//ATOM_PLACEHOLDER_IsSorted": "IsSorted",
+    "//ATOM_PLACEHOLDER_IsPrime": "IsPrime",
+    "//ATOM_PLACEHOLDER_Reverse": "Reverse",
+    "//ATOM_PLACEHOLDER_NoDups": "NoDups"
+  }
+}

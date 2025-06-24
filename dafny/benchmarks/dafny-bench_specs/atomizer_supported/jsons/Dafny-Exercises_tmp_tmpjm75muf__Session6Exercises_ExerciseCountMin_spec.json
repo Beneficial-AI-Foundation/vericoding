@@ -1,0 +1,28 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_min\n\n\n//ATOM_PLACEHOLDER_countMin\n\n\n\n\n\n//ATOM_PLACEHOLDER_mCountMin\n\n",
+  "atoms": {
+    "min": [
+      [],
+      "// ATOM \nfunction min(v:array<int>,i:int):int\n reads v\n requires 1<=i<=v.Length\n ensures forall k::0<=k<i==> v[k]>=min(v,i)\n {if (i==1) then v[0]\n  else if (v[i-1]<=min(v,i-1)) then v[i-1]\n  else min(v,i-1)\n  }\n",
+      "function"
+    ],
+    "countMin": [
+      [],
+      "// ATOM \n\n\nfunction countMin(v:array<int>,x:int, i:int):int\n reads v\n  requires 0<=i<=v.Length\n  ensures !(x in v[0..i]) ==> countMin(v,x,i)==0\n  {\n   if (i==0) then 0\n   else if (v[i-1]==x) then 1+countMin(v,x,i-1)\n   else countMin(v,x,i-1)\n  \n  }\n",
+      "function"
+    ],
+    "mCountMin": [
+      [
+        "countMin",
+        "min"
+      ],
+      "// SPEC \n\n\n\n\n\n method mCountMin(v:array<int>) returns (c:int)\nrequires v.Length>0\nensures c==countMin(v,min(v,v.Length),v.Length)\n//Implement and verify an O(v.Length) algorithm \n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_min": "min",
+    "//ATOM_PLACEHOLDER_countMin": "countMin",
+    "//ATOM_PLACEHOLDER_mCountMin": "mCountMin"
+  }
+}

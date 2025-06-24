@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_IsPalindrome\n\n",
+  "atoms": {
+    "IsPalindrome": [
+      [],
+      "// SPEC \nmethod IsPalindrome(x: seq<char>) returns (result: bool)\n  ensures result <==> (forall i :: 0 <= i < |x| ==> x[i] == x[|x| - i - 1])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsPalindrome": "IsPalindrome"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "/**\n  Inverts an array of ints.\n */\n//ATOM_PLACEHOLDER_InvertArray\n\n",
+  "atoms": {
+    "InvertArray": [
+      [],
+      "// SPEC \nmethod InvertArray(a: array<int>)\n  modifies a\n  ensures forall i | 0 <= i < a.Length :: a[i] == old(a[a.Length-1-i])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_InvertArray": "InvertArray"
+  }
+}

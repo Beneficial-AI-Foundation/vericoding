@@ -1,0 +1,37 @@
+{
+  "skeleton": "// Predicates\n\n// A common thing you'll want is a function with a boolean result.\n//ATOM_PLACEHOLDER_AtLeastTwiceAsBigFunction\n\n// It's so fantastically common that there's a shorthand for it: `predicate`.\n//ATOM_PLACEHOLDER_AtLeastTwiceAsBigPredicate\n\n//ATOM_PLACEHOLDER_Double\n\n//ATOM_PLACEHOLDER_TheseTwoPredicatesAreEquivalent\n\n// Add a precondition to make this lemma verify.\n//ATOM_PLACEHOLDER_FourTimesIsPrettyBig\n\n\n\n",
+  "atoms": {
+    "AtLeastTwiceAsBigFunction": [
+      [],
+      "// ATOM \n// Predicates\n\n// A common thing you'll want is a function with a boolean result.\nfunction AtLeastTwiceAsBigFunction(a:int, b:int) : bool\n{\n  a >= 2*b\n}\n",
+      "function"
+    ],
+    "AtLeastTwiceAsBigPredicate": [
+      [],
+      "// ATOM \n\n// It's so fantastically common that there's a shorthand for it: `predicate`.\npredicate AtLeastTwiceAsBigPredicate(a:int, b:int)\n{\n  a >= 2*b\n}\n",
+      "predicate"
+    ],
+    "Double": [
+      [],
+      "// ATOM \n\nfunction Double(a:int) : int\n{\n  2 * a\n}\n",
+      "function"
+    ],
+    "TheseTwoPredicatesAreEquivalent": [
+      [],
+      "// ATOM \n\nlemma TheseTwoPredicatesAreEquivalent(x:int, y:int)\n{\n}\n",
+      "lemma"
+    ],
+    "FourTimesIsPrettyBig": [
+      [],
+      "// ATOM \n\n// Add a precondition to make this lemma verify.\nlemma FourTimesIsPrettyBig(x:int)\n  requires x>=0\n{\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_AtLeastTwiceAsBigFunction": "AtLeastTwiceAsBigFunction",
+    "//ATOM_PLACEHOLDER_AtLeastTwiceAsBigPredicate": "AtLeastTwiceAsBigPredicate",
+    "//ATOM_PLACEHOLDER_Double": "Double",
+    "//ATOM_PLACEHOLDER_TheseTwoPredicatesAreEquivalent": "TheseTwoPredicatesAreEquivalent",
+    "//ATOM_PLACEHOLDER_FourTimesIsPrettyBig": "FourTimesIsPrettyBig"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_quickSorted\n\n//ATOM_PLACEHOLDER_threshold\n\n\n//ATOM_PLACEHOLDER_Lemma_1\n\n\n\n//ATOM_PLACEHOLDER_quickSort\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+  "atoms": {
+    "quickSorted": [
+      [],
+      "// ATOM \npredicate quickSorted(Seq: seq<int>)\n{\n  forall idx_1, idx_2 :: 0 <= idx_1 < idx_2 < |Seq| ==> Seq[idx_1] <= Seq[idx_2]\n}\n",
+      "predicate"
+    ],
+    "threshold": [
+      [],
+      "// SPEC \n\nmethod threshold(thres:int,Seq:seq<int>) returns (Seq_1:seq<int>,Seq_2:seq<int>)\n  ensures (forall x | x in Seq_1 :: x <= thres) && (forall x | x in Seq_2 :: x >= thres)\n  ensures |Seq_1| + |Seq_2| == |Seq| \n  ensures multiset(Seq_1) + multiset(Seq_2) == multiset(Seq)\n{\n}\n",
+      "method"
+    ],
+    "Lemma_1": [
+      [],
+      "// ATOM \n\n\nlemma Lemma_1(Seq_1:seq,Seq_2:seq)  // The proof of the lemma is not necessary\n  requires multiset(Seq_1) == multiset(Seq_2)\n  ensures forall x | x in Seq_1 :: x in Seq_2\n\n{\n  forall x | x in Seq_1\n    ensures x in multiset(Seq_1)\n  {\n    var i := 0;\n    while (i < |Seq_1|)\n    {\n      i := i + 1;\n    }\n  }\n\n}\n",
+      "lemma"
+    ],
+    "quickSort": [
+      [
+        "threshold",
+        "Lemma_1"
+      ],
+      "// SPEC \n\n\n\nmethod quickSort(Seq: seq<int>) returns (Seq': seq<int>)\n  ensures multiset(Seq) == multiset(Seq')\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_quickSorted": "quickSorted",
+    "//ATOM_PLACEHOLDER_threshold": "threshold",
+    "//ATOM_PLACEHOLDER_Lemma_1": "Lemma_1",
+    "//ATOM_PLACEHOLDER_quickSort": "quickSort"
+  }
+}

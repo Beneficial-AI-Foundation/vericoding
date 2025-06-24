@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_CylinderVolume",
+  "atoms": {
+    "CylinderVolume": [
+      [],
+      "// SPEC \nmethod CylinderVolume(radius: real, height: real) returns (volume: real)\n    requires radius > 0.0\n    requires height > 0.0\n    ensures volume == 3.14159265359 * radius * radius * height\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_CylinderVolume": "CylinderVolume"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Triple\n\n",
+  "atoms": {
+    "Triple": [
+      [],
+      "// SPEC \nmethod Triple (x:int) returns (r:int)\n  ensures r==3*x\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Triple": "Triple"
+  }
+}

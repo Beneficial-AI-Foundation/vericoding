@@ -1,0 +1,21 @@
+{
+  "skeleton": "/**\n * Find negative numbers from an array of numbers\n **/\n\n//ATOM_PLACEHOLDER_IsNegative\n\n//ATOM_PLACEHOLDER_FindNegativeNumbers",
+  "atoms": {
+    "IsNegative": [
+      [],
+      "// ATOM \n\npredicate IsNegative(n: int)\n{\n    n < 0\n}\n",
+      "predicate"
+    ],
+    "FindNegativeNumbers": [
+      [
+        "IsNegative"
+      ],
+      "// SPEC \n\nmethod FindNegativeNumbers(arr: array<int>) returns (negativeList: seq<int>)\n    // All numbers in the output are negative and exist in the input \n    ensures forall i :: 0 <= i < |negativeList| ==> IsNegative(negativeList[i]) && negativeList[i] in arr[..]\n    // All negative numbers in the input are in the output\n    ensures forall i :: 0 <= i < arr.Length && IsNegative(arr[i]) ==> arr[i] in negativeList\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsNegative": "IsNegative",
+    "//ATOM_PLACEHOLDER_FindNegativeNumbers": "FindNegativeNumbers"
+  }
+}

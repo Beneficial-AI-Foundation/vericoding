@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_ParabolaDirectrix",
+  "atoms": {
+    "ParabolaDirectrix": [
+      [],
+      "// SPEC \nmethod ParabolaDirectrix(a: real, h: real, k: real) returns (directrix: real)\n    requires a != 0.0\n    ensures directrix == k - 1.0 / (4.0 * a)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_ParabolaDirectrix": "ParabolaDirectrix"
+  }
+}

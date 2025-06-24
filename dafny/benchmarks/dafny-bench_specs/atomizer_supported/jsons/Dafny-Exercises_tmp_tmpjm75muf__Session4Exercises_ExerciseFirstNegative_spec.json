@@ -1,0 +1,29 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_positive\n\n\n//ATOM_PLACEHOLDER_mfirstNegative\n\n//ATOM_PLACEHOLDER_mfirstNegative2\n\n",
+  "atoms": {
+    "positive": [
+      [],
+      "// ATOM \npredicate positive(s:seq<int>)\n{forall u::0<=u<|s| ==> s[u]>=0}\n",
+      "predicate"
+    ],
+    "mfirstNegative": [
+      [
+        "positive"
+      ],
+      "// SPEC \n\n\nmethod mfirstNegative(v:array<int>) returns (b:bool, i:int)\nensures b <==> exists k::0<=k<v.Length && v[k]<0\nensures b ==> 0<=i<v.Length && v[i]<0 && positive(v[0..i])\n{\n}\n",
+      "method"
+    ],
+    "mfirstNegative2": [
+      [
+        "positive"
+      ],
+      "// SPEC \n\nmethod mfirstNegative2(v:array<int>) returns (b:bool, i:int)\nensures b <==> exists k::0<=k<v.Length && v[k]<0\nensures b ==> 0<=i<v.Length && v[i]<0 && positive(v[0..i])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_positive": "positive",
+    "//ATOM_PLACEHOLDER_mfirstNegative": "mfirstNegative",
+    "//ATOM_PLACEHOLDER_mfirstNegative2": "mfirstNegative2"
+  }
+}

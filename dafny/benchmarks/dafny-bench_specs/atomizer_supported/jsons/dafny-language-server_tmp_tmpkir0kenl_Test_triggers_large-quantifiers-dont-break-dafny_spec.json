@@ -1,0 +1,313 @@
+{
+  "skeleton": "// RUN: %dafny /compile:0 /print:\"%t.print\" /dprint:\"%t.dprint\" /printTooltips \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n// This test ensures that the trigger  collector (the routine that picks trigger\n// candidates) does not  actually consider all subsets of terms;  if it did, the\n// following would take horribly long\n\n//ATOM_PLACEHOLDER_P0//ATOM_PLACEHOLDER_P1//ATOM_PLACEHOLDER_P2//ATOM_PLACEHOLDER_P3//ATOM_PLACEHOLDER_P4//ATOM_PLACEHOLDER_P5//ATOM_PLACEHOLDER_P6//ATOM_PLACEHOLDER_P7//ATOM_PLACEHOLDER_P8//ATOM_PLACEHOLDER_P9//ATOM_PLACEHOLDER_P10//ATOM_PLACEHOLDER_P11//ATOM_PLACEHOLDER_P12//ATOM_PLACEHOLDER_P13//ATOM_PLACEHOLDER_P14//ATOM_PLACEHOLDER_P15//ATOM_PLACEHOLDER_P16//ATOM_PLACEHOLDER_P17//ATOM_PLACEHOLDER_P18//ATOM_PLACEHOLDER_P19//ATOM_PLACEHOLDER_P20//ATOM_PLACEHOLDER_P21//ATOM_PLACEHOLDER_P22//ATOM_PLACEHOLDER_P23//ATOM_PLACEHOLDER_P24//ATOM_PLACEHOLDER_P25//ATOM_PLACEHOLDER_P26//ATOM_PLACEHOLDER_P27//ATOM_PLACEHOLDER_P28//ATOM_PLACEHOLDER_P29//ATOM_PLACEHOLDER_P30//ATOM_PLACEHOLDER_P31//ATOM_PLACEHOLDER_P32//ATOM_PLACEHOLDER_P33//ATOM_PLACEHOLDER_P34//ATOM_PLACEHOLDER_P35//ATOM_PLACEHOLDER_P36//ATOM_PLACEHOLDER_P37//ATOM_PLACEHOLDER_P38//ATOM_PLACEHOLDER_P39//ATOM_PLACEHOLDER_P40//ATOM_PLACEHOLDER_P41//ATOM_PLACEHOLDER_P42//ATOM_PLACEHOLDER_P43//ATOM_PLACEHOLDER_P44//ATOM_PLACEHOLDER_P45//ATOM_PLACEHOLDER_P46//ATOM_PLACEHOLDER_P47//ATOM_PLACEHOLDER_P48//ATOM_PLACEHOLDER_P49//ATOM_PLACEHOLDER_M\n\n\n\n",
+  "atoms": {
+    "P0": [
+      [],
+      "// ATOM \n// RUN: %dafny /compile:0 /print:\"%t.print\" /dprint:\"%t.dprint\" /printTooltips \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n// This test ensures that the trigger  collector (the routine that picks trigger\n// candidates) does not  actually consider all subsets of terms;  if it did, the\n// following would take horribly long\n\npredicate P0(x: bool)\n",
+      "predicate"
+    ],
+    "P1": [
+      [],
+      "// ATOM \npredicate P1(x: bool)\n",
+      "predicate"
+    ],
+    "P2": [
+      [],
+      "// ATOM \npredicate P2(x: bool)\n",
+      "predicate"
+    ],
+    "P3": [
+      [],
+      "// ATOM \npredicate P3(x: bool)\n",
+      "predicate"
+    ],
+    "P4": [
+      [],
+      "// ATOM \npredicate P4(x: bool)\n",
+      "predicate"
+    ],
+    "P5": [
+      [],
+      "// ATOM \npredicate P5(x: bool)\n",
+      "predicate"
+    ],
+    "P6": [
+      [],
+      "// ATOM \npredicate P6(x: bool)\n",
+      "predicate"
+    ],
+    "P7": [
+      [],
+      "// ATOM \npredicate P7(x: bool)\n",
+      "predicate"
+    ],
+    "P8": [
+      [],
+      "// ATOM \npredicate P8(x: bool)\n",
+      "predicate"
+    ],
+    "P9": [
+      [],
+      "// ATOM \npredicate P9(x: bool)\n",
+      "predicate"
+    ],
+    "P10": [
+      [],
+      "// ATOM \npredicate P10(x: bool)\n",
+      "predicate"
+    ],
+    "P11": [
+      [],
+      "// ATOM \npredicate P11(x: bool)\n",
+      "predicate"
+    ],
+    "P12": [
+      [],
+      "// ATOM \npredicate P12(x: bool)\n",
+      "predicate"
+    ],
+    "P13": [
+      [],
+      "// ATOM \npredicate P13(x: bool)\n",
+      "predicate"
+    ],
+    "P14": [
+      [],
+      "// ATOM \npredicate P14(x: bool)\n",
+      "predicate"
+    ],
+    "P15": [
+      [],
+      "// ATOM \npredicate P15(x: bool)\n",
+      "predicate"
+    ],
+    "P16": [
+      [],
+      "// ATOM \npredicate P16(x: bool)\n",
+      "predicate"
+    ],
+    "P17": [
+      [],
+      "// ATOM \npredicate P17(x: bool)\n",
+      "predicate"
+    ],
+    "P18": [
+      [],
+      "// ATOM \npredicate P18(x: bool)\n",
+      "predicate"
+    ],
+    "P19": [
+      [],
+      "// ATOM \npredicate P19(x: bool)\n",
+      "predicate"
+    ],
+    "P20": [
+      [],
+      "// ATOM \npredicate P20(x: bool)\n",
+      "predicate"
+    ],
+    "P21": [
+      [],
+      "// ATOM \npredicate P21(x: bool)\n",
+      "predicate"
+    ],
+    "P22": [
+      [],
+      "// ATOM \npredicate P22(x: bool)\n",
+      "predicate"
+    ],
+    "P23": [
+      [],
+      "// ATOM \npredicate P23(x: bool)\n",
+      "predicate"
+    ],
+    "P24": [
+      [],
+      "// ATOM \npredicate P24(x: bool)\n",
+      "predicate"
+    ],
+    "P25": [
+      [],
+      "// ATOM \npredicate P25(x: bool)\n",
+      "predicate"
+    ],
+    "P26": [
+      [],
+      "// ATOM \npredicate P26(x: bool)\n",
+      "predicate"
+    ],
+    "P27": [
+      [],
+      "// ATOM \npredicate P27(x: bool)\n",
+      "predicate"
+    ],
+    "P28": [
+      [],
+      "// ATOM \npredicate P28(x: bool)\n",
+      "predicate"
+    ],
+    "P29": [
+      [],
+      "// ATOM \npredicate P29(x: bool)\n",
+      "predicate"
+    ],
+    "P30": [
+      [],
+      "// ATOM \npredicate P30(x: bool)\n",
+      "predicate"
+    ],
+    "P31": [
+      [],
+      "// ATOM \npredicate P31(x: bool)\n",
+      "predicate"
+    ],
+    "P32": [
+      [],
+      "// ATOM \npredicate P32(x: bool)\n",
+      "predicate"
+    ],
+    "P33": [
+      [],
+      "// ATOM \npredicate P33(x: bool)\n",
+      "predicate"
+    ],
+    "P34": [
+      [],
+      "// ATOM \npredicate P34(x: bool)\n",
+      "predicate"
+    ],
+    "P35": [
+      [],
+      "// ATOM \npredicate P35(x: bool)\n",
+      "predicate"
+    ],
+    "P36": [
+      [],
+      "// ATOM \npredicate P36(x: bool)\n",
+      "predicate"
+    ],
+    "P37": [
+      [],
+      "// ATOM \npredicate P37(x: bool)\n",
+      "predicate"
+    ],
+    "P38": [
+      [],
+      "// ATOM \npredicate P38(x: bool)\n",
+      "predicate"
+    ],
+    "P39": [
+      [],
+      "// ATOM \npredicate P39(x: bool)\n",
+      "predicate"
+    ],
+    "P40": [
+      [],
+      "// ATOM \npredicate P40(x: bool)\n",
+      "predicate"
+    ],
+    "P41": [
+      [],
+      "// ATOM \npredicate P41(x: bool)\n",
+      "predicate"
+    ],
+    "P42": [
+      [],
+      "// ATOM \npredicate P42(x: bool)\n",
+      "predicate"
+    ],
+    "P43": [
+      [],
+      "// ATOM \npredicate P43(x: bool)\n",
+      "predicate"
+    ],
+    "P44": [
+      [],
+      "// ATOM \npredicate P44(x: bool)\n",
+      "predicate"
+    ],
+    "P45": [
+      [],
+      "// ATOM \npredicate P45(x: bool)\n",
+      "predicate"
+    ],
+    "P46": [
+      [],
+      "// ATOM \npredicate P46(x: bool)\n",
+      "predicate"
+    ],
+    "P47": [
+      [],
+      "// ATOM \npredicate P47(x: bool)\n",
+      "predicate"
+    ],
+    "P48": [
+      [],
+      "// ATOM \npredicate P48(x: bool)\n",
+      "predicate"
+    ],
+    "P49": [
+      [],
+      "// ATOM \npredicate P49(x: bool)\n",
+      "predicate"
+    ],
+    "M": [
+      [],
+      "// SPEC \n\nmethod M() {\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_P0": "P0",
+    "//ATOM_PLACEHOLDER_P1": "P1",
+    "//ATOM_PLACEHOLDER_P2": "P2",
+    "//ATOM_PLACEHOLDER_P3": "P3",
+    "//ATOM_PLACEHOLDER_P4": "P4",
+    "//ATOM_PLACEHOLDER_P5": "P5",
+    "//ATOM_PLACEHOLDER_P6": "P6",
+    "//ATOM_PLACEHOLDER_P7": "P7",
+    "//ATOM_PLACEHOLDER_P8": "P8",
+    "//ATOM_PLACEHOLDER_P9": "P9",
+    "//ATOM_PLACEHOLDER_P10": "P10",
+    "//ATOM_PLACEHOLDER_P11": "P11",
+    "//ATOM_PLACEHOLDER_P12": "P12",
+    "//ATOM_PLACEHOLDER_P13": "P13",
+    "//ATOM_PLACEHOLDER_P14": "P14",
+    "//ATOM_PLACEHOLDER_P15": "P15",
+    "//ATOM_PLACEHOLDER_P16": "P16",
+    "//ATOM_PLACEHOLDER_P17": "P17",
+    "//ATOM_PLACEHOLDER_P18": "P18",
+    "//ATOM_PLACEHOLDER_P19": "P19",
+    "//ATOM_PLACEHOLDER_P20": "P20",
+    "//ATOM_PLACEHOLDER_P21": "P21",
+    "//ATOM_PLACEHOLDER_P22": "P22",
+    "//ATOM_PLACEHOLDER_P23": "P23",
+    "//ATOM_PLACEHOLDER_P24": "P24",
+    "//ATOM_PLACEHOLDER_P25": "P25",
+    "//ATOM_PLACEHOLDER_P26": "P26",
+    "//ATOM_PLACEHOLDER_P27": "P27",
+    "//ATOM_PLACEHOLDER_P28": "P28",
+    "//ATOM_PLACEHOLDER_P29": "P29",
+    "//ATOM_PLACEHOLDER_P30": "P30",
+    "//ATOM_PLACEHOLDER_P31": "P31",
+    "//ATOM_PLACEHOLDER_P32": "P32",
+    "//ATOM_PLACEHOLDER_P33": "P33",
+    "//ATOM_PLACEHOLDER_P34": "P34",
+    "//ATOM_PLACEHOLDER_P35": "P35",
+    "//ATOM_PLACEHOLDER_P36": "P36",
+    "//ATOM_PLACEHOLDER_P37": "P37",
+    "//ATOM_PLACEHOLDER_P38": "P38",
+    "//ATOM_PLACEHOLDER_P39": "P39",
+    "//ATOM_PLACEHOLDER_P40": "P40",
+    "//ATOM_PLACEHOLDER_P41": "P41",
+    "//ATOM_PLACEHOLDER_P42": "P42",
+    "//ATOM_PLACEHOLDER_P43": "P43",
+    "//ATOM_PLACEHOLDER_P44": "P44",
+    "//ATOM_PLACEHOLDER_P45": "P45",
+    "//ATOM_PLACEHOLDER_P46": "P46",
+    "//ATOM_PLACEHOLDER_P47": "P47",
+    "//ATOM_PLACEHOLDER_P48": "P48",
+    "//ATOM_PLACEHOLDER_P49": "P49",
+    "//ATOM_PLACEHOLDER_M": "M"
+  }
+}

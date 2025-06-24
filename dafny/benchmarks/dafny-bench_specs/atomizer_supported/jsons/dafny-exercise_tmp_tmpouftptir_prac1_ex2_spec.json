@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Deli\n\n//ATOM_PLACEHOLDER_DeliChecker\n\n\n\n",
+  "atoms": {
+    "Deli": [
+      [],
+      "// SPEC \nmethod Deli(a: array<char>, i: nat)\nmodifies a\nrequires a.Length > 0\nrequires 0 <= i < a.Length\nensures forall j :: 0 <= j < i ==> a[j] == old(a[j])\nensures forall j :: i <= j < a.Length - 1 ==> a[j] == old(a[j + 1])\nensures a[a.Length - 1] == '.'\n{\n}\n",
+      "method"
+    ],
+    "DeliChecker": [
+      [
+        "Deli"
+      ],
+      "// SPEC \n\nmethod DeliChecker()\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Deli": "Deli",
+    "//ATOM_PLACEHOLDER_DeliChecker": "DeliChecker"
+  }
+}

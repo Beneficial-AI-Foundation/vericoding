@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_reverse\n\n",
+  "atoms": {
+    "reverse": [
+      [],
+      "// SPEC \nmethod reverse(a: array<int>)\n  modifies a\n  ensures forall i :: 0 <= i < a.Length ==> a[i] == old(a[a.Length - 1 - i])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_reverse": "reverse"
+  }
+}

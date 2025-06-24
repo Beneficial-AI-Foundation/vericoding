@@ -1,0 +1,39 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_f//ATOM_PLACEHOLDER_ff//ATOM_PLACEHOLDER_unknown_51 ff_eq()\n  ensures forall x {:trigger ff(x)} :: ff(x) == f(f(x))\n\n//ATOM_PLACEHOLDER_unknown_131 ff_eq2()\n  ensures forall x {:trigger f(f(x))} :: ff(x) == f(f(x))\n\n//ATOM_PLACEHOLDER_unknown_214 ff_eq_bad()\n  // dafny ignores this trigger because it's an obvious loop\n  ensures forall x {:trigger {f(x)}} :: ff(x) == f(f(x))\n\n//ATOM_PLACEHOLDER_use_ff\n\n//ATOM_PLACEHOLDER_use_ff2\n\n\n\n",
+  "atoms": {
+    "f": [
+      [],
+      "// ATOM \nfunction f(x: int): int\n",
+      "function"
+    ],
+    "ff": [
+      [],
+      "// ATOM \n\nfunction ff(x: int): int\n",
+      "function"
+    ],
+    "": [
+      [],
+      "// ATOM \n\nlemma {:axiom} ff_eq_bad()\n  // dafny ignores this trigger because it's an obvious loop\n  ensures forall x {:trigger {f(x)}} :: ff(x) == f(f(x))\n",
+      "lemma"
+    ],
+    "use_ff": [
+      [],
+      "// ATOM \n\nlemma use_ff(x: int)\n{\n  ff_eq();\n}\n",
+      "lemma"
+    ],
+    "use_ff2": [
+      [],
+      "// ATOM \n\nlemma use_ff2(x: int)\n{\n  ff_eq2();\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_f": "f",
+    "//ATOM_PLACEHOLDER_ff": "ff",
+    "//ATOM_PLACEHOLDER_unknown_51": "unknown_51",
+    "//ATOM_PLACEHOLDER_unknown_131": "unknown_131",
+    "//ATOM_PLACEHOLDER_unknown_214": "unknown_214",
+    "//ATOM_PLACEHOLDER_use_ff": "use_ff",
+    "//ATOM_PLACEHOLDER_use_ff2": "use_ff2"
+  }
+}

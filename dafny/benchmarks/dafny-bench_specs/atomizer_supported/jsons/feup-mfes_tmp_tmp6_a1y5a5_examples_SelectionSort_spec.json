@@ -1,0 +1,44 @@
+{
+  "skeleton": "/* \n* Formal verification of the selection sort algorithm with Dafny.\n* FEUP, MIEIC, MFES, 2020/21.\n*/\n\n// Checks if array 'a' is sorted between positions 'from' (inclusive) and 'to' (exclusive).\n//ATOM_PLACEHOLDER_isSorted\n\n// Sorts array 'a' using the selection sort algorithm.\n//ATOM_PLACEHOLDER_selectionSort\n\n// Finds the position of a miminum value in non-empty subarray 'a' between positions \n// 'from' (inclusive) and 'to' (exclusive)\n//ATOM_PLACEHOLDER_findMin\n\n//ATOM_PLACEHOLDER_testSelectionSort\n\n//ATOM_PLACEHOLDER_testFindMin\n\n",
+  "atoms": {
+    "isSorted": [
+      [],
+      "// ATOM \n\n// Checks if array 'a' is sorted between positions 'from' (inclusive) and 'to' (exclusive).\npredicate isSorted(a: array<real>, from: nat, to: nat)\n  requires 0 <= from <= to <= a.Length\n  reads a\n{\n    forall i, j :: from <= i < j < to ==> a[i] <= a[j] \n}\n",
+      "predicate"
+    ],
+    "selectionSort": [
+      [
+        "findMin",
+        "isSorted"
+      ],
+      "// SPEC \n\n// Sorts array 'a' using the selection sort algorithm.\nmethod selectionSort(a: array<real>)\n  modifies a\n  ensures isSorted(a, 0, a.Length) \n  ensures multiset(a[..]) == multiset(old(a[..]))\n{\n}\n",
+      "method"
+    ],
+    "findMin": [
+      [],
+      "// SPEC \n\n// Finds the position of a miminum value in non-empty subarray 'a' between positions \n// 'from' (inclusive) and 'to' (exclusive)\nmethod findMin(a: array<real>, from: nat, to: nat) returns(index: nat)\n  requires 0 <= from < to <= a.Length\n  ensures from <= index < to\n  ensures forall k :: from <= k < to ==> a[k] >= a[index]\n{\n}\n",
+      "method"
+    ],
+    "testSelectionSort": [
+      [
+        "selectionSort"
+      ],
+      "// SPEC \n\nmethod testSelectionSort() {\n}\n",
+      "method"
+    ],
+    "testFindMin": [
+      [
+        "findMin"
+      ],
+      "// SPEC \n\nmethod testFindMin() {\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_isSorted": "isSorted",
+    "//ATOM_PLACEHOLDER_selectionSort": "selectionSort",
+    "//ATOM_PLACEHOLDER_findMin": "findMin",
+    "//ATOM_PLACEHOLDER_testSelectionSort": "testSelectionSort",
+    "//ATOM_PLACEHOLDER_testFindMin": "testFindMin"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Index\n\n//ATOM_PLACEHOLDER_Min\n\n//ATOM_PLACEHOLDER_Max\n\n\n//ATOM_PLACEHOLDER_MaxSum\n\n\n//ATOM_PLACEHOLDER_MaxSumCaller\n\n//ATOM_PLACEHOLDER_ReconstructFromMaxSum\n\n\n//ATOM_PLACEHOLDER_TestMaxSum\n\n\n\n",
+  "atoms": {
+    "Index": [
+      [],
+      "// SPEC \nmethod Index(n: int) returns (i: int) \nrequires 1 <= n\nensures 0 <= i < n\n{\n}\n",
+      "method"
+    ],
+    "Min": [
+      [],
+      "// SPEC \n\nmethod Min(x: int, y: int) returns (m: int) \nensures m <= x && m <= y\nensures m == x || m == y\n{\n}\n",
+      "method"
+    ],
+    "Max": [
+      [],
+      "// SPEC \n\nmethod Max(x: int, y: int) returns (m: int) {\n}\n",
+      "method"
+    ],
+    "MaxSum": [
+      [],
+      "// SPEC \n\n\nmethod MaxSum(x: int, y: int) returns (s: int, m: int)\n  ensures s == x + y\n  ensures m == if x >= y then x else y\n{\n}\n",
+      "method"
+    ],
+    "MaxSumCaller": [
+      [
+        "MaxSum"
+      ],
+      "// SPEC \n\n\nmethod MaxSumCaller() {\n}\n",
+      "method"
+    ],
+    "ReconstructFromMaxSum": [
+      [],
+      "// SPEC \n\nmethod ReconstructFromMaxSum(s: int, m: int) returns (x: int, y: int)\n    requires s <= 2 * m\n    ensures s == (x + y)\n    ensures (m == x || m == y) && x <= m && y <= m\n{\n}\n",
+      "method"
+    ],
+    "TestMaxSum": [
+      [
+        "MaxSum",
+        "ReconstructFromMaxSum"
+      ],
+      "// SPEC \n\n\nmethod TestMaxSum(x: int, y: int) \n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Index": "Index",
+    "//ATOM_PLACEHOLDER_Min": "Min",
+    "//ATOM_PLACEHOLDER_Max": "Max",
+    "//ATOM_PLACEHOLDER_MaxSum": "MaxSum",
+    "//ATOM_PLACEHOLDER_MaxSumCaller": "MaxSumCaller",
+    "//ATOM_PLACEHOLDER_ReconstructFromMaxSum": "ReconstructFromMaxSum",
+    "//ATOM_PLACEHOLDER_TestMaxSum": "TestMaxSum"
+  }
+}

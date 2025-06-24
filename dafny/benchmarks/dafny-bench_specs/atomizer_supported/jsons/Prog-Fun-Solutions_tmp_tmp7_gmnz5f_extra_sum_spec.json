@@ -1,0 +1,21 @@
+{
+  "skeleton": "\n\n//ATOM_PLACEHOLDER_sum\n\n//ATOM_PLACEHOLDER_Sum\n\n",
+  "atoms": {
+    "sum": [
+      [],
+      "// ATOM \n\n\nghost function sum(n: nat): int\n{\n    if n == 0 then 0 else n + sum(n - 1)\n}\n",
+      "ghost function"
+    ],
+    "Sum": [
+      [
+        "sum"
+      ],
+      "// SPEC \n\nmethod Sum(n: nat) returns (s: int)\nensures s == sum(n)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sum": "sum",
+    "//ATOM_PLACEHOLDER_Sum": "Sum"
+  }
+}
