@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_FindMedian",
+  "atoms": {
+    "FindMedian": [
+      [],
+      "// SPEC \nmethod FindMedian(a: array<int>, b: array<int>) returns (median: int)\n    requires a != null && b != null\n    requires a.Length == b.Length\n    requires a.Length > 0\n    requires forall i :: 0 <= i < a.Length - 1 ==> a[i] <= a[i + 1]\n    requires forall i :: 0 <= i < b.Length - 1 ==> b[i] <= b[i + 1]\n    ensures median == if (a.Length % 2 == 0) then (a[a.Length / 2 - 1] + b[0]) / 2 else a[a.Length / 2]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_FindMedian": "FindMedian"
+  }
+}

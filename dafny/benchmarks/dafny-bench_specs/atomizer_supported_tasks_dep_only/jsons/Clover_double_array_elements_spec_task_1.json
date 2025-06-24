@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_double_array_elements",
+  "atoms": {
+    "double_array_elements": [
+      [],
+      "// SPEC \nmethod double_array_elements(s: array<int>)\n  modifies s\n  ensures forall i :: 0 <= i < s.Length ==> s[i] == 2 * old(s[i])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_double_array_elements": "double_array_elements"
+  }
+}

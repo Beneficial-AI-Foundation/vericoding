@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_rotate",
+  "atoms": {
+    "rotate": [
+      [],
+      "// SPEC \nmethod rotate(a: array<int>, offset:int) returns (b: array<int> )\n  requires 0<=offset\n  ensures b.Length==a.Length\n  ensures forall  i::0<=i<a.Length ==>  b[i]==a[(i+offset)%a.Length]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_rotate": "rotate"
+  }
+}

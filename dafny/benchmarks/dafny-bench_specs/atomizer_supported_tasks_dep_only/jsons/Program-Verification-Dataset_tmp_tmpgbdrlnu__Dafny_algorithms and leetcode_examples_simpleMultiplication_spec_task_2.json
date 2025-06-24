@@ -1,0 +1,13 @@
+{
+  "skeleton": "\n//ATOM_PLACEHOLDER_Foo\n\n//ATOM_PLACEHOLDER_stringToSet\n//ensures forall a, b :: 0 <= a < b < |s|  ==> forall k, j :: a <=k < j <=b ==> k !=j ==> s[k] != s[j] ==> b-a <= longest\n// lemma stringSet(s: string)\n//    \n//   {\n//     if |s| != 0 {\n\n\n//     }\n//   }\n\n\n//ATOM_PLACEHOLDER_Main\n\n",
+  "atoms": {
+    "Main": [
+      [],
+      "// SPEC \n//ensures forall a, b :: 0 <= a < b < |s|  ==> forall k, j :: a <=k < j <=b ==> k !=j ==> s[k] != s[j] ==> b-a <= longest\n// lemma stringSet(s: string)\n//    \n//   {\n}\n\n\nmethod Main() {\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

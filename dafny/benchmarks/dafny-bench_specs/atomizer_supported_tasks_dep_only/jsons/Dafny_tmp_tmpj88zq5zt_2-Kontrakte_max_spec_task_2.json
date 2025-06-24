@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_max\n\n//ATOM_PLACEHOLDER_testMax\n\n",
+  "atoms": {
+    "max": [
+      [],
+      "// SPEC \nmethod max(a: array<int>, b: array<int>, i: int, j: int)\n  returns (m: int)\n  requires 0 <= i < a.Length\n  requires 0 <= j < b.Length\n  ensures  a[i] > b[j] ==> m == a[i]\n  ensures  a[i] <= b[j] ==> m == b[j]\n{\n}\n",
+      "method"
+    ],
+    "testMax": [
+      [
+        "max"
+      ],
+      "// SPEC \n\nmethod testMax(a:array<int>, b:array<int>, i: int, j: int)\n  requires 0 <= i < a.Length\n  requires 0 <= j < b.Length\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_max": "max",
+    "//ATOM_PLACEHOLDER_testMax": "testMax"
+  }
+}

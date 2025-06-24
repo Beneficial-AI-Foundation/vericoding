@@ -1,0 +1,29 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_sorted_between\n  \n//ATOM_PLACEHOLDER_sorted\n\n//ATOM_PLACEHOLDER_bubbleSort\n\n\n\n",
+  "atoms": {
+    "bubbleSort": [
+      [
+        "sorted"
+      ],
+      "// SPEC \n\nmethod bubbleSort (a: array<int>)\n  modifies a;\n  requires a != null;\n  requires a.Length > 0;\n  ensures sorted(a);\n  ensures multiset(old(a[..])) == multiset(a[..]);\n{\n}\n",
+      "method"
+    ],
+    "sorted_between": [
+      [],
+      "// ATOM \npredicate sorted_between (a:array<int>, from:nat, to:nat)\n  reads a;\n  requires a != null;\n  requires from <= to;\n  requires to <= a.Length;\n{\n  forall i,j :: from <= i < j < to && 0 <= i < j < a.Length ==> a[i] <= a[j]\n}\n",
+      "predicate"
+    ],
+    "sorted": [
+      [
+        "sorted_between"
+      ],
+      "// ATOM \n  \npredicate sorted (a:array<int>)\n  reads a;\n  requires a!=null;\n{\n  sorted_between (a, 0, a.Length)\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sorted_between": "sorted_between",
+    "//ATOM_PLACEHOLDER_sorted": "sorted",
+    "//ATOM_PLACEHOLDER_bubbleSort": "bubbleSort"
+  }
+}

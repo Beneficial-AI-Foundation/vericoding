@@ -1,0 +1,13 @@
+{
+  "skeleton": "// Works by dividing the input list into two parts: sorted and unsorted. At the beginning, \n// the sorted part is empty and the unsorted part contains all the elements.\n//ATOM_PLACEHOLDER_SelectionSort\n\n",
+  "atoms": {
+    "SelectionSort": [
+      [],
+      "// SPEC \n// Works by dividing the input list into two parts: sorted and unsorted. At the beginning, \n// the sorted part is empty and the unsorted part contains all the elements.\nmethod SelectionSort(a: array<int>)\n  modifies a\n  // Ensures the final array is sorted in ascending order\n  ensures forall i,j :: 0 <= i < j < a.Length ==> a[i] <= a[j]\n  // Ensures that the final array has the same elements as the initial array\n  ensures multiset(a[..]) == old(multiset(a[..]))\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SelectionSort": "SelectionSort"
+  }
+}

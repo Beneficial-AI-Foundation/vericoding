@@ -1,0 +1,21 @@
+{
+  "skeleton": "\n//Problem01\n//ATOM_PLACEHOLDER_fib\n\n//ATOM_PLACEHOLDER_fibIter\n//# 2 pts\n\n//Problem02\n//ATOM_PLACEHOLDER_fact\n\n//ATOM_PLACEHOLDER_factIter \n//# 3 pts\n//Problem03\n//ATOM_PLACEHOLDER_gcd\n\n//ATOM_PLACEHOLDER_gcdI\n//# 3 pts\n\n\n// # sum: 9 pts\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n//# 3 pts\n\n\n// # sum: 9 pts\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+  "atoms": {
+    "fib": [
+      [],
+      "// ATOM \n\n//Problem01\nfunction fib(n: nat):nat\n{\n    if n < 2 then n else fib(n-2)+fib(n-1)\n}\n",
+      "function"
+    ],
+    "fibIter": [
+      [
+        "fib"
+      ],
+      "// SPEC \n\nmethod fibIter(n:nat) returns (a:nat)\nrequires n > 0\nensures a == fib(n)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_fib": "fib",
+    "//ATOM_PLACEHOLDER_fibIter": "fibIter"
+  }
+}

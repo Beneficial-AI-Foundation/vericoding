@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_square\n\n",
+  "atoms": {
+    "square": [
+      [],
+      "// SPEC \nmethod square (n: int) returns (r: int)\n\trequires 0 <= n;\n\tensures r == n*n;\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_square": "square"
+  }
+}

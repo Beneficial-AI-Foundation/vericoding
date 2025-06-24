@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_NthDecagonalNumber",
+  "atoms": {
+    "NthDecagonalNumber": [
+      [],
+      "// SPEC \nmethod NthDecagonalNumber(n: int) returns (decagonal: int)\n    requires n >= 0\n    ensures decagonal == 4 * n * n - 3 * n\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_NthDecagonalNumber": "NthDecagonalNumber"
+  }
+}

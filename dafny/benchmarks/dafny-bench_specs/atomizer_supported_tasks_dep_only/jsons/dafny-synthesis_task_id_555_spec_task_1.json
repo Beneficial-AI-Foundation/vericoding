@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_DifferenceSumCubesAndSumNumbers",
+  "atoms": {
+    "DifferenceSumCubesAndSumNumbers": [
+      [],
+      "// SPEC \nmethod DifferenceSumCubesAndSumNumbers(n: int) returns (diff: int)\n    requires n >= 0\n    ensures diff == (n * n * (n + 1) * (n + 1)) / 4 - (n * (n + 1)) / 2\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_DifferenceSumCubesAndSumNumbers": "DifferenceSumCubesAndSumNumbers"
+  }
+}

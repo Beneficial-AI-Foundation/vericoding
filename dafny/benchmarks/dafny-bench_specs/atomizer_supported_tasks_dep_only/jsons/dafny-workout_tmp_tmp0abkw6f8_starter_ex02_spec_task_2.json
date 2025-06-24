@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Abs\n\n//ATOM_PLACEHOLDER_Main\n\n\n\n",
+  "atoms": {
+    "Main": [
+      [
+        "Abs"
+      ],
+      "// SPEC \n\nmethod Main()\n{\n}\n",
+      "method"
+    ],
+    "Abs": [
+      [],
+      "// SPEC \nmethod Abs(x: int) returns (y: int)\n\trequires x < 0\n\tensures 0 < y\n\tensures y == -x\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Abs": "Abs",
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

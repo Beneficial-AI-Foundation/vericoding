@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_M\n\n//ATOM_PLACEHOLDER_N//ATOM_PLACEHOLDER_P\n\n\n\n",
+  "atoms": {
+    "N": [
+      [],
+      "// SPEC \n\nmethod N()\n  ensures P();\n",
+      "method"
+    ],
+    "M": [
+      [
+        "N"
+      ],
+      "// SPEC \nmethod M()\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_M": "M",
+    "//ATOM_PLACEHOLDER_N": "N"
+  }
+}

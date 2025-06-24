@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_SphereSurfaceArea",
+  "atoms": {
+    "SphereSurfaceArea": [
+      [],
+      "// SPEC \nmethod SphereSurfaceArea(radius: real) returns (area: real)\n    requires radius > 0.0\n    ensures area == 4.0 * 3.14159265358979323846 * radius * radius\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SphereSurfaceArea": "SphereSurfaceArea"
+  }
+}

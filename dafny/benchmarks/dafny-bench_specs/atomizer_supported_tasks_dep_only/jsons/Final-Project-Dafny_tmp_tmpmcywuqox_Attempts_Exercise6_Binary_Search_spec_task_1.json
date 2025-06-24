@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_binarySearch\n\n",
+  "atoms": {
+    "binarySearch": [
+      [],
+      "// SPEC \nmethod binarySearch(a:array<int>, val:int) returns (pos:int)\n  requires a.Length > 0\n  requires forall i, j :: 0 <= i < j < a.Length ==> a[i] <= a[j]\n\n  ensures 0 <= pos < a.Length ==> a[pos] == val\n  ensures pos < 0 || pos >= a.Length  ==> forall i :: 0 <= i < a.Length ==> a[i] != val\n\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_binarySearch": "binarySearch"
+  }
+}

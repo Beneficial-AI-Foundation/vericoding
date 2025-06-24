@@ -1,0 +1,21 @@
+{
+  "skeleton": "//PRE-CONDITIONS -> REQUIRES\n//POST-CONDITIONS -> ENSURES\n\n//ATOM_PLACEHOLDER_max\n\n//ATOM_PLACEHOLDER_Main\n\n// 3\n//ATOM_PLACEHOLDER_mystery1\n\n//ATOM_PLACEHOLDER_mystery2\n\n// 5a\n//ATOM_PLACEHOLDER_m1\n\n// 5b\n//ATOM_PLACEHOLDER_m2\n\n// 5c\n// pode dar false e eles nao serem iguais\n// \n//ATOM_PLACEHOLDER_m3\n\n// 5d\n//ATOM_PLACEHOLDER_m4\n\n",
+  "atoms": {
+    "mystery1": [
+      [],
+      "// SPEC \n\n// 3\nmethod mystery1(n: nat,m: nat) returns (res: nat)\n  ensures n+m == res\n{\n}\n",
+      "method"
+    ],
+    "mystery2": [
+      [
+        "mystery1"
+      ],
+      "// SPEC \n\nmethod mystery2(n: nat,m: nat) returns (res: nat)\n  ensures n*m == res\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_mystery1": "mystery1",
+    "//ATOM_PLACEHOLDER_mystery2": "mystery2"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_abs\n\n//ATOM_PLACEHOLDER_Testing_abs\n\n\n// Exercise 4. Write a function max that returns the larger of two given integer parameters. Write a test method using an assert that checks that your function is correct.\n\n//ATOM_PLACEHOLDER_max\n//ATOM_PLACEHOLDER_Testing_max\n\n\n// Exercise 6:\n\n//ATOM_PLACEHOLDER_Abs\n\n\n// Ghost\n//ATOM_PLACEHOLDER_Double\n\n//ATOM_PLACEHOLDER_TestDouble\n\n",
+  "atoms": {
+    "Testing_max": [
+      [],
+      "// SPEC \nmethod Testing_max() {\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Testing_max": "Testing_max"
+  }
+}

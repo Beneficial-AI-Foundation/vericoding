@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Max\n\n//ATOM_PLACEHOLDER_Test\n\n//ATOM_PLACEHOLDER_m1\n\n\n\n//ATOM_PLACEHOLDER_fib\n\n//ATOM_PLACEHOLDER_Fib\n\n\n//ATOM_PLACEHOLDER_List//ATOM_PLACEHOLDER_add\n\n\n//ATOM_PLACEHOLDER_addImp\n\n\n//ATOM_PLACEHOLDER_MaxA\n\n\n\n",
+  "atoms": {
+    "add": [
+      [],
+      "// ATOM \n\nfunction add(l:List<int>) : int\n{\n    match l\n    case Nil => 0\n    case Cons(x, xs) => x + add(xs)\n}\n",
+      "function"
+    ],
+    "addImp": [
+      [
+        "add"
+      ],
+      "// SPEC \n\n\nmethod addImp (l: List<int>) returns (s: int)\n    ensures s == add(l)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_add": "add",
+    "//ATOM_PLACEHOLDER_addImp": "addImp"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "skeleton": "// VERIFY USING DAFNY:\n// /Applications/dafny/dafny /Users/apple/GaussianDP/Dafny/gaussian.dfy\n//ATOM_PLACEHOLDER_gaussian\n\n\n//ATOM_PLACEHOLDER_arraySquaredSum\n\n\n\n",
+  "atoms": {
+    "arraySquaredSum": [
+      [],
+      "// ATOM \n\n\nfunction arraySquaredSum(a: seq<real>): real\nrequires |a| > 0\n{\n  if |a| == 1 then \n    a[0]*a[0]\n  else \n    (a[0]*a[0]) + arraySquaredSum(a[1..])\n}\n",
+      "function"
+    ],
+    "gaussian": [
+      [
+        "arraySquaredSum"
+      ],
+      "// SPEC \n// VERIFY USING DAFNY:\n// /Applications/dafny/dafny /Users/apple/GaussianDP/Dafny/gaussian.dfy\nmethod gaussian (size:int, q: array<real>, q_hat: array<real>) returns (out: array<real>)\nrequires q_hat.Length==size\nrequires q.Length==size\nrequires size > 0\nrequires arraySquaredSum(q_hat[..]) <= 1.0\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_gaussian": "gaussian",
+    "//ATOM_PLACEHOLDER_arraySquaredSum": "arraySquaredSum"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_divides\n\n//ATOM_PLACEHOLDER_IsPrime\n\n// Convincing the proof to go through requires adding\n// a loop invariant and a triggering assert.\n//ATOM_PLACEHOLDER_test_prime\n\n//ATOM_PLACEHOLDER_Main\n\n\n\n",
+  "atoms": {
+    "IsPrime": [
+      [
+        "divides"
+      ],
+      "// ATOM \n\npredicate IsPrime(i:nat)\n{\n  && 1<i\n  && ( forall f :: 1 < f < i ==> !divides(f, i) )\n}\n",
+      "predicate"
+    ],
+    "Main": [
+      [
+        "test_prime"
+      ],
+      "// SPEC \n\nmethod Main()\n{\n}\n",
+      "method"
+    ],
+    "test_prime": [
+      [
+        "IsPrime"
+      ],
+      "// SPEC \n\n// Convincing the proof to go through requires adding\n// a loop invariant and a triggering assert.\nmethod test_prime(i:nat) returns (result:bool)\n  requires 1<i\n  ensures result == IsPrime(i)\n{\n}\n",
+      "method"
+    ],
+    "divides": [
+      [],
+      "// ATOM \npredicate divides(f:nat, i:nat)\n  requires 1<=f\n{\n  i % f == 0\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_divides": "divides",
+    "//ATOM_PLACEHOLDER_IsPrime": "IsPrime",
+    "//ATOM_PLACEHOLDER_test_prime": "test_prime",
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

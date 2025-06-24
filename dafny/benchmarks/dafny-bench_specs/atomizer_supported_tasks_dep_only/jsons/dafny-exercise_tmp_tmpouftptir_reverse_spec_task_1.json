@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Reverse\n\n//ATOM_PLACEHOLDER_Main\n\n\n\n",
+  "atoms": {
+    "Reverse": [
+      [],
+      "// SPEC \nmethod Reverse(a: array<char>) returns (b: array<char>)\nrequires a.Length > 0\nensures a == old(a)\nensures b.Length == a.Length\nensures forall i :: 0 <= i < a.Length ==> b[i] == a[a.Length - i - 1]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Reverse": "Reverse"
+  }
+}

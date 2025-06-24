@@ -1,0 +1,13 @@
+{
+  "skeleton": "// RUN: %dafny /compile:0 /dprint:\"%t.dprint\" \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n//ATOM_PLACEHOLDER_NinetyOne\n\n//ATOM_PLACEHOLDER_Gcd\n\n//ATOM_PLACEHOLDER_Determinant\n\n\n\n",
+  "atoms": {
+    "NinetyOne": [
+      [],
+      "// SPEC \n// RUN: %dafny /compile:0 /dprint:\"%t.dprint\" \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\nmethod NinetyOne(x: int, ghost proveFunctionalPostcondition: bool) returns (z: int)\n  ensures proveFunctionalPostcondition ==> z == if x > 101 then x-10 else 91;\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_NinetyOne": "NinetyOne"
+  }
+}

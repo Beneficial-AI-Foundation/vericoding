@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_fib\n\n//ATOM_PLACEHOLDER_Fib\n\n// 2.\n//ATOM_PLACEHOLDER_List//ATOM_PLACEHOLDER_add\n\n//ATOM_PLACEHOLDER_addImp\n\n// 3.\n//ATOM_PLACEHOLDER_maxArray\n\n// 5.\n//ATOM_PLACEHOLDER_maxArrayReverse\n\n// 6\n//ATOM_PLACEHOLDER_sum\n\n//ATOM_PLACEHOLDER_sumBackwards\n\n",
+  "atoms": {
+    "maxArrayReverse": [
+      [],
+      "// SPEC \n\n// 5.\nmethod maxArrayReverse(arr : array<int>) returns (max: int)\n  requires arr.Length > 0\n  ensures forall i: int :: 0 <= i < arr.Length ==> arr[i] <= max\n  ensures exists x::0 <= x < arr.Length && arr[x] == max\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_maxArrayReverse": "maxArrayReverse"
+  }
+}

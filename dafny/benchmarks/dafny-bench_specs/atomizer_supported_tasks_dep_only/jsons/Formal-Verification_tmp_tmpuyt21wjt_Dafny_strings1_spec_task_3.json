@@ -1,0 +1,55 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_isPrefixPredicate\n\n//ATOM_PLACEHOLDER_isPrefix\n\n//ATOM_PLACEHOLDER_isSubstringPredicate\n\n//ATOM_PLACEHOLDER_isSubstring\n\n//ATOM_PLACEHOLDER_haveCommonKSubstringPredicate\n\n\n//ATOM_PLACEHOLDER_haveCommonKSubstring\n\n\n//ATOM_PLACEHOLDER_maxCommonSubstringPredicate\n\n//ATOM_PLACEHOLDER_maxCommonSubstringLength\n\n",
+  "atoms": {
+    "haveCommonKSubstring": [
+      [
+        "isSubstring",
+        "haveCommonKSubstringPredicate"
+      ],
+      "// SPEC \n\n\nmethod haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: bool)\n  ensures |str1| < k || |str2| < k ==> !found\n  ensures haveCommonKSubstringPredicate(k,str1,str2) == found\n{\n}\n",
+      "method"
+    ],
+    "haveCommonKSubstringPredicate": [
+      [
+        "isSubstringPredicate"
+      ],
+      "// ATOM \n\npredicate haveCommonKSubstringPredicate(k: nat, str1: string, str2: string)\n{\n  |str1| >= k && |str2| >= k && (exists i :: 0 <= i <= |str1| - k && isSubstringPredicate((str1[i..])[..k], str2))\n}\n",
+      "predicate"
+    ],
+    "isSubstring": [
+      [
+        "isSubstringPredicate",
+        "isPrefix"
+      ],
+      "// SPEC \n\nmethod isSubstring(sub: string, str: string) returns (res:bool)\nensures res == isSubstringPredicate(sub, str)\n{\n}\n",
+      "method"
+    ],
+    "isPrefixPredicate": [
+      [],
+      "// ATOM \npredicate isPrefixPredicate(pre: string, str:string)\n{\n  |str| >= |pre| && pre <= str\n}\n",
+      "predicate"
+    ],
+    "isPrefix": [
+      [
+        "isPrefixPredicate"
+      ],
+      "// SPEC \n\nmethod isPrefix(pre: string, str: string) returns (res: bool)\n  ensures |pre| > |str| ==> !res\n  ensures res == isPrefixPredicate(pre, str)\n{\n}\n",
+      "method"
+    ],
+    "isSubstringPredicate": [
+      [
+        "isPrefixPredicate"
+      ],
+      "// ATOM \n\npredicate isSubstringPredicate (sub: string, str:string)\n{\n  |str| >= |sub| && (exists i :: 0 <= i <= |str| && isPrefixPredicate(sub, str[i..]))\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_isPrefixPredicate": "isPrefixPredicate",
+    "//ATOM_PLACEHOLDER_isPrefix": "isPrefix",
+    "//ATOM_PLACEHOLDER_isSubstringPredicate": "isSubstringPredicate",
+    "//ATOM_PLACEHOLDER_isSubstring": "isSubstring",
+    "//ATOM_PLACEHOLDER_haveCommonKSubstringPredicate": "haveCommonKSubstringPredicate",
+    "//ATOM_PLACEHOLDER_haveCommonKSubstring": "haveCommonKSubstring"
+  }
+}

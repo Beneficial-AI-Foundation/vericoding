@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_AssignmentsToMark\n\n//ATOM_PLACEHOLDER_DivisionLemma//ATOM_PLACEHOLDER_AssignmentsToMarkOne\n\n//ATOM_PLACEHOLDER_CommonElement  * multiset{b[..]} == multiset([a[0]]) + multiset{a[1..]} * multiset{b[1..]}\n/*\n{\n    var E := multiset{a[0]};\n    calc =={\n        multiset(a[..]) * multiset(b[..]);\n        (E+ multiset(a[1..])) * (E + multiset(a[1..]));\n        E + multiset(a[1..]) * multiset(b[1..]);\n    }\n}*/\n  * multiset{b[..]} == multiset([a[0]]) + multiset{a[1..]} * multiset{b[1..]}\n/*\n{\n    var E := multiset{a[0]};\n    calc =={\n        multiset(a[..]) * multiset(b[..]);\n        (E+ multiset(a[1..])) * (E + multiset(a[1..]));\n        E + multiset(a[1..]) * multiset(b[1..]);\n    }\n}*/\n",
+  "atoms": {
+    "AssignmentsToMarkOne": [
+      [],
+      "// SPEC \n\n\nmethod AssignmentsToMarkOne(students:int, tutors: int) returns (r:int)\n    requires students > 0 && tutors > 1\n    ensures r < students\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_AssignmentsToMarkOne": "AssignmentsToMarkOne"
+  }
+}

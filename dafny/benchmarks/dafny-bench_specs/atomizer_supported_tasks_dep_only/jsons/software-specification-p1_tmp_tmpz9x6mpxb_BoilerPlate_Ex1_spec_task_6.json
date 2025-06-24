@@ -1,0 +1,29 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Tree//ATOM_PLACEHOLDER_Code//ATOM_PLACEHOLDER_serialise\n\n// Ex 1\n//ATOM_PLACEHOLDER_deserialiseAux\n\n//ATOM_PLACEHOLDER_deserialise\n\n// Ex 2\n//ATOM_PLACEHOLDER_testSerializeWithASingleLeaf\n\n//ATOM_PLACEHOLDER_testSerializeNullValues\n\n//ATOM_PLACEHOLDER_testSerializeWithAllElements\n\n// Ex 3 \n\n//ATOM_PLACEHOLDER_testDeseraliseWithASingleLeaf\n\n//ATOM_PLACEHOLDER_testDeserializeWithASingleNode\n\n//ATOM_PLACEHOLDER_testDeserialiseWithAllElements\n\n// Ex 4 \n//ATOM_PLACEHOLDER_SerialiseLemma\n\n\n//ATOM_PLACEHOLDER_DeserialisetAfterSerialiseLemma\n\n\n\n",
+  "atoms": {
+    "deserialise": [
+      [
+        "deserialiseAux"
+      ],
+      "// ATOM \n\nfunction deserialise<T>(s:seq<Code<T>>):seq<Tree<T>>\n  requires |s| > 0\n{\n  deserialiseAux(s, [])\n}\n",
+      "function"
+    ],
+    "testDeserialiseWithAllElements": [
+      [
+        "deserialise"
+      ],
+      "// SPEC \n\nmethod testDeserialiseWithAllElements()\n{\n}\n",
+      "method"
+    ],
+    "deserialiseAux": [
+      [],
+      "// ATOM \n\n// Ex 1\nfunction deserialiseAux<T>(codes: seq<Code<T>>, trees: seq<Tree<T>>): seq<Tree<T>>\n  requires |codes| > 0 || |trees| > 0\n  ensures |deserialiseAux(codes, trees)| >= 0\n{\n  if |codes| == 0 then trees\n  else\n    match codes[0] {\n      case CLf(v) => deserialiseAux(codes[1..], trees + [Leaf(v)])\n      case CSNd(v) => if (|trees| >= 1) then deserialiseAux(codes[1..], trees[..|trees|-1] + [SingleNode(v, trees[|trees|-1])]) else trees\n      case CDNd(v) => if (|trees| >= 2) then deserialiseAux(codes[1..], trees[..|trees|-2] + [DoubleNode(v, trees[|trees|-1], trees[|trees|-2])]) else trees\n    }\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_deserialiseAux": "deserialiseAux",
+    "//ATOM_PLACEHOLDER_deserialise": "deserialise",
+    "//ATOM_PLACEHOLDER_testDeserialiseWithAllElements": "testDeserialiseWithAllElements"
+  }
+}

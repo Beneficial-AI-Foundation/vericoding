@@ -1,0 +1,21 @@
+{
+  "skeleton": "//Bubblesort CS 494 submission\n//References: https://stackoverflow.com/questions/69364687/how-to-prove-time-complexity-of-bubble-sort-using-dafny/69365785#69365785\n\n\n// predicate checks if elements of a are in ascending order, two additional conditions are added to allow us to sort in specific range within array\n//ATOM_PLACEHOLDER_sorted\n\n//helps ensure swapping is valid, it is used inside the nested while loop to make sure linear order is being kept \n//ATOM_PLACEHOLDER_pivot\n\n// Here having the algorithm for the bubblesort\n\n//ATOM_PLACEHOLDER_BubbleSort\n\n\n\n",
+  "atoms": {
+    "BubbleSort": [
+      [
+        "sorted"
+      ],
+      "// SPEC \n\n// Here having the algorithm for the bubblesort\n\nmethod BubbleSort (a: array<int>)\n    requires a != null && a.Length > 0; // makes sure a is not empty and length is greater than 0\n    modifies a; // as method runs, we are changing a\n    ensures sorted(a, 0, a.Length); // makes sure elements of array a are sorted from 0 - a.Length\n    ensures multiset(a[..]) == multiset(old(a[..])); // Since a is being modified, we deference the heap \n                                                      //and compare the previous elements to current elements.\n{\n}\n",
+      "method"
+    ],
+    "sorted": [
+      [],
+      "// ATOM \n//Bubblesort CS 494 submission\n//References: https://stackoverflow.com/questions/69364687/how-to-prove-time-complexity-of-bubble-sort-using-dafny/69365785#69365785\n\n\n// predicate checks if elements of a are in ascending order, two additional conditions are added to allow us to sort in specific range within array\npredicate sorted(a:array<int>, from:int, to:int)\n  requires a != null; // requires array to have n amount of elements\n  reads a; \n  requires 0 <= from <= to <= a.Length; // pre condition checks that from is the start of the range and to is the end of the range, requires values to be within 0 - a.Length\n{\n  forall x, y :: from <= x < y < to ==> a[x] <= a[y]\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sorted": "sorted",
+    "//ATOM_PLACEHOLDER_BubbleSort": "BubbleSort"
+  }
+}

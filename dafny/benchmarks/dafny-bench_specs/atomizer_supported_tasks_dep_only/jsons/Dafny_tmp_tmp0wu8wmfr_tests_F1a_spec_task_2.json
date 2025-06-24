@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_F\n\n//ATOM_PLACEHOLDER_Main\n\n\n//ATOM_PLACEHOLDER_Mid\n\n",
+  "atoms": {
+    "Main": [
+      [
+        "F"
+      ],
+      "// SPEC \n\nmethod Main() \n{\n}\n",
+      "method"
+    ],
+    "F": [
+      [],
+      "// SPEC \nmethod F() returns ( r: int)\n    ensures r <= 0\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_F": "F",
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Fat\n\n//ATOM_PLACEHOLDER_Fatorial\n\n",
+  "atoms": {
+    "Fatorial": [
+      [
+        "Fat"
+      ],
+      "// SPEC \n\nmethod Fatorial(n:nat)  returns (r:nat)\n  ensures r == Fat(n)\n{\n}\n",
+      "method"
+    ],
+    "Fat": [
+      [],
+      "// ATOM \nfunction Fat(n: nat): nat\n{\n   if n == 0 then 1 else n * Fat(n-1)\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Fat": "Fat",
+    "//ATOM_PLACEHOLDER_Fatorial": "Fatorial"
+  }
+}

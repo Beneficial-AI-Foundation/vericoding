@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_MoveZeroesToEnd\n\n//ATOM_PLACEHOLDER_swap\n\n//ATOM_PLACEHOLDER_count\n\n\n\n",
+  "atoms": {
+    "swap": [
+      [],
+      "// SPEC \n\nmethod swap(arr: array<int>, i: int, j: int)\n    requires arr.Length > 0\n    requires 0 <= i < arr.Length && 0 <= j < arr.Length\n    modifies arr\n    ensures arr[i] == old(arr[j]) && arr[j] == old(arr[i])\n    ensures forall k :: 0 <= k < arr.Length && k != i && k != j ==> arr[k] == old(arr[k])\n    ensures multiset(arr[..]) == multiset(old(arr[..]))\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_swap": "swap"
+  }
+}

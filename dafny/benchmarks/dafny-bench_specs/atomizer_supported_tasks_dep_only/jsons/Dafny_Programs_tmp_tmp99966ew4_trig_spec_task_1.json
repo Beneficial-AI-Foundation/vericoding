@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_P//ATOM_PLACEHOLDER_Q//ATOM_PLACEHOLDER_test :: P(x) && Q(x)\n    ensures Q(0)\n{\n}\n :: P(x) && Q(x)\n    ensures Q(0)\n{\n}\n",
+  "atoms": {
+    "test": [
+      [
+        "P"
+      ],
+      "// SPEC \n\nmethod test()\n    requires forall x {\n}\n    ensures Q(0)\n{\n}\n",
+      "method"
+    ],
+    "P": [
+      [],
+      "// ATOM \npredicate P(x: int)\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_P": "P",
+    "//ATOM_PLACEHOLDER_test": "test"
+  }
+}

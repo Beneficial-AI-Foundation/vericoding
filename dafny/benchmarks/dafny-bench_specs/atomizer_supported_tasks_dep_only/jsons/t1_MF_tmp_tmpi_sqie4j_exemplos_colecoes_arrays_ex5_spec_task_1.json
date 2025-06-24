@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Busca\n\n",
+  "atoms": {
+    "Busca": [
+      [],
+      "// SPEC \nmethod Busca<T(==)>(a:array<T>, x:T) returns (r:int)\n  ensures 0 <= r ==> r < a.Length && a[r] == x\n  ensures r < 0 ==> forall i :: 0 <= i < a.Length ==> a[i] != x\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Busca": "Busca"
+  }
+}

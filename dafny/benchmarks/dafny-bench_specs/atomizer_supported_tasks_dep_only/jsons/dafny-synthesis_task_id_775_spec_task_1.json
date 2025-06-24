@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_IsOdd\n\n//ATOM_PLACEHOLDER_IsOddAtIndexOdd",
+  "atoms": {
+    "IsOddAtIndexOdd": [
+      [
+        "IsOdd"
+      ],
+      "// SPEC \n\nmethod IsOddAtIndexOdd(a: array<int>) returns (result: bool)\n    ensures result <==> forall i :: 0 <= i < a.Length ==> (IsOdd(i) ==> IsOdd(a[i]))\n{\n}\n",
+      "method"
+    ],
+    "IsOdd": [
+      [],
+      "// ATOM \npredicate IsOdd(n: int)\n{\n    n % 2 == 1\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsOdd": "IsOdd",
+    "//ATOM_PLACEHOLDER_IsOddAtIndexOdd": "IsOddAtIndexOdd"
+  }
+}

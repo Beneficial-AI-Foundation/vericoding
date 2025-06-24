@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_fillK\n\n\n//ATOM_PLACEHOLDER_containsSubString\n\n\n\n",
+  "atoms": {
+    "containsSubString": [
+      [],
+      "// SPEC \n\n\nmethod containsSubString(a: array<char>, b: array<char>) returns (pos: int)\n    requires 0 <= b.Length <= a.Length\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_containsSubString": "containsSubString"
+  }
+}

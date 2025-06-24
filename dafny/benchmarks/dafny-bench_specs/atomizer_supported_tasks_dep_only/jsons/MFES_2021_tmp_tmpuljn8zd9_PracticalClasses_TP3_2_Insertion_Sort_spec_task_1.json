@@ -1,0 +1,21 @@
+{
+  "skeleton": "// Sorts array 'a' using the insertion sort algorithm.\n//ATOM_PLACEHOLDER_insertionSort\n\n// Checks if array 'a' is sorted.\n//ATOM_PLACEHOLDER_isSorted\n\n// Simple test case to check the postcondition\n//ATOM_PLACEHOLDER_testInsertionSort\n\n\n\n",
+  "atoms": {
+    "isSorted": [
+      [],
+      "// ATOM \n\n// Checks if array 'a' is sorted.\npredicate isSorted(a: array<int>, from: nat, to: nat)\n  reads a\n  requires 0 <= from <= to <= a.Length\n{\n    forall i, j :: from <= i < j < to ==> a[i] <= a[j]\n}\n",
+      "predicate"
+    ],
+    "insertionSort": [
+      [
+        "isSorted"
+      ],
+      "// SPEC \n// Sorts array 'a' using the insertion sort algorithm.\nmethod insertionSort(a: array<int>) \n    modifies a\n    ensures isSorted(a, 0, a.Length)\n    ensures multiset(a[..]) == multiset(old(a[..]))\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_insertionSort": "insertionSort",
+    "//ATOM_PLACEHOLDER_isSorted": "isSorted"
+  }
+}

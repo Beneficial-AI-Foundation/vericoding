@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Main\n\n//ATOM_PLACEHOLDER_foo\n\n",
+  "atoms": {
+    "foo": [
+      [],
+      "// SPEC \n\nmethod foo (s: seq<int>)\nrequires |s| > 1\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_foo": "foo"
+  }
+}

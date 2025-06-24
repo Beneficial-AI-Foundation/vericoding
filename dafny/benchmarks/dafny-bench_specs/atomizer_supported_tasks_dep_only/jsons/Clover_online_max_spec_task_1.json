@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_onlineMax\n\n\n\n",
+  "atoms": {
+    "onlineMax": [
+      [],
+      "// SPEC \nmethod onlineMax(a: array<int>, x: int) returns (ghost m:int, p:int)\n  requires 1<=x<a.Length\n  requires a.Length!=0\n  ensures x<=p<a.Length\n  ensures forall i::0<=i<x==> a[i]<=m\n  ensures exists i::0<=i<x && a[i]==m\n  ensures x<=p<a.Length-1 ==> (forall i::0<=i<p ==> a[i]<a[p])\n  ensures (forall i::x<=i<a.Length && a[i]<=m) ==> p==a.Length-1\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_onlineMax": "onlineMax"
+  }
+}

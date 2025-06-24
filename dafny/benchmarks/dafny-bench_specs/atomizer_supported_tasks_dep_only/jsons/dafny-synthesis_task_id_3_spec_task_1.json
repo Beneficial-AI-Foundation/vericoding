@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_IsNonPrime",
+  "atoms": {
+    "IsNonPrime": [
+      [],
+      "// SPEC \nmethod IsNonPrime(n: int) returns (result: bool)\n    requires n >= 2\n    ensures result <==> (exists k :: 2 <= k < n && n % k == 0)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsNonPrime": "IsNonPrime"
+  }
+}

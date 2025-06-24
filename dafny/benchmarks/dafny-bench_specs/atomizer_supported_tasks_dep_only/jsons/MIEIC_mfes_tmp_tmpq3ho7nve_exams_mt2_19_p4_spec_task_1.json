@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_R\n\n//ATOM_PLACEHOLDER_calcR\n\n",
+  "atoms": {
+    "R": [
+      [],
+      "// ATOM \nfunction R(n: nat): nat {\n    if n == 0 then 0 else if R(n-1) > n then R(n-1) - n else R(n-1) + n\n}\n",
+      "function"
+    ],
+    "calcR": [
+      [
+        "R"
+      ],
+      "// SPEC \n\nmethod calcR(n: nat) returns (r: nat)\n    ensures r == R(n) \n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_R": "R",
+    "//ATOM_PLACEHOLDER_calcR": "calcR"
+  }
+}

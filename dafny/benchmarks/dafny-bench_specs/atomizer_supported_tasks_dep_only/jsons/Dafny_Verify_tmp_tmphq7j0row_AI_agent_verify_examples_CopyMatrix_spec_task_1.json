@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_CopyMatrix\n\n",
+  "atoms": {
+    "CopyMatrix": [
+      [],
+      "// SPEC \nmethod CopyMatrix(src: array2, dst: array2)\n    requires src.Length0 == dst.Length0 && src.Length1 == dst.Length1\n    modifies dst\n    ensures forall i, j :: 0 <= i < src.Length0 && 0 <= j < src.Length1 ==> dst[i,j] == old(src[i,j]) \n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_CopyMatrix": "CopyMatrix"
+  }
+}

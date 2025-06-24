@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_SumAndAverage",
+  "atoms": {
+    "SumAndAverage": [
+      [],
+      "// SPEC \nmethod SumAndAverage(n: int) returns (sum: int, average: real)\n    requires n > 0\n    ensures sum == n * (n + 1) / 2\n    ensures average == sum as real / n as real\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SumAndAverage": "SumAndAverage"
+  }
+}

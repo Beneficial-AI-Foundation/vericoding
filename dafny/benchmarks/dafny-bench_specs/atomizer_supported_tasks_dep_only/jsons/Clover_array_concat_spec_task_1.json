@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_concat\n\n",
+  "atoms": {
+    "concat": [
+      [],
+      "// SPEC \nmethod concat(a:array<int>, b:array<int>) returns (c:array<int>)\n  ensures c.Length==b.Length+a.Length\n  ensures forall k :: 0 <= k < a.Length ==> c[k] == a[k]\n  ensures forall k :: 0 <= k < b.Length ==> c[k+a.Length] == b[k]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_concat": "concat"
+  }
+}

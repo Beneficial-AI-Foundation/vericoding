@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Exp//ATOM_PLACEHOLDER_eval\n\n//fill this function in to make optimizeFeatures work\n//ATOM_PLACEHOLDER_optimize \n\n//as you write optimize this will become unproved\n//you must write proof code so that Dafny can prove this\n//ATOM_PLACEHOLDER_optimizeCorrect\n\n//ATOM_PLACEHOLDER_optimizeFeatures\n\n",
+  "atoms": {
+    "optimizeFeatures": [
+      [],
+      "// SPEC \n\nmethod optimizeFeatures()\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_optimizeFeatures": "optimizeFeatures"
+  }
+}

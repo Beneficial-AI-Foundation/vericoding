@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_SplitAndAppend",
+  "atoms": {
+    "SplitAndAppend": [
+      [],
+      "// SPEC \nmethod SplitAndAppend(l: seq<int>, n: int) returns (r: seq<int>)\n    requires n >= 0 && n < |l|\n    ensures |r| == |l|\n    ensures forall i :: 0 <= i < |l| ==> r[i] == l[(i + n) % |l|]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SplitAndAppend": "SplitAndAppend"
+  }
+}

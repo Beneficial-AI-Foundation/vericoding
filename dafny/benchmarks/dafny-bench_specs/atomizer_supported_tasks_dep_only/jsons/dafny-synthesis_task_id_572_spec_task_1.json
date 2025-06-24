@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_RemoveDuplicates",
+  "atoms": {
+    "RemoveDuplicates": [
+      [],
+      "// SPEC \nmethod RemoveDuplicates(a: array<int>) returns (result: seq<int>)\n    requires a != null\n    ensures forall x :: x in result <==> exists i :: 0 <= i < a.Length && a[i] == x\n    ensures forall i, j :: 0 <= i < j < |result| ==> result[i] != result[j]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_RemoveDuplicates": "RemoveDuplicates"
+  }
+}

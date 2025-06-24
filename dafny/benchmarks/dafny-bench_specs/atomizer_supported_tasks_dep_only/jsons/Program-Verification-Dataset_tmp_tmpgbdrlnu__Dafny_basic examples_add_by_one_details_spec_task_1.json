@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_plus_one\n//ATOM_PLACEHOLDER_add_by_one\n\n\n\n",
+  "atoms": {
+    "plus_one": [
+      [],
+      "// SPEC \nmethod plus_one (x: int) returns (r:int)\n  requires x >= 0;\n  ensures r == x + 1;\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_plus_one": "plus_one"
+  }
+}

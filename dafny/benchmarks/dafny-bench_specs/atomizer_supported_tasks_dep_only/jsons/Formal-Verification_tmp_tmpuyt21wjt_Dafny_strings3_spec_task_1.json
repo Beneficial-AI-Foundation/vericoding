@@ -1,0 +1,28 @@
+{
+  "skeleton": "// We spent 2h each on this assignment\n\n//ATOM_PLACEHOLDER_isPrefixPred\n\n//ATOM_PLACEHOLDER_isNotPrefixPred\n\n//ATOM_PLACEHOLDER_PrefixNegationLemma\n\n//ATOM_PLACEHOLDER_isPrefix\n//ATOM_PLACEHOLDER_isSubstringPred\n\n//ATOM_PLACEHOLDER_isNotSubstringPred\n\n//ATOM_PLACEHOLDER_SubstringNegationLemma\n\n//ATOM_PLACEHOLDER_isSubstring\n\n//ATOM_PLACEHOLDER_haveCommonKSubstringPred\n\n//ATOM_PLACEHOLDER_haveNotCommonKSubstringPred\n\n//ATOM_PLACEHOLDER_commonKSubstringLemma\n\n//ATOM_PLACEHOLDER_haveCommonKSubstring\n\n//ATOM_PLACEHOLDER_maxCommonSubstringLength\n\n\n\n\n\n\n\n",
+  "atoms": {
+    "isPrefix": [
+      [
+        "isPrefixPred",
+        "isNotPrefixPred"
+      ],
+      "// SPEC \n\nmethod isPrefix(pre: string, str: string) returns (res:bool)\n\tensures !res <==> isNotPrefixPred(pre,str)\n\tensures  res <==> isPrefixPred(pre,str)\n{\n}\n",
+      "method"
+    ],
+    "isNotPrefixPred": [
+      [],
+      "// ATOM \n\npredicate isNotPrefixPred(pre:string, str:string)\n{\n\t(|pre| > |str|) || \n\tpre != str[..|pre|]\n}\n",
+      "predicate"
+    ],
+    "isPrefixPred": [
+      [],
+      "// ATOM \n// We spent 2h each on this assignment\n\npredicate isPrefixPred(pre:string, str:string)\n{\n\t(|pre| <= |str|) && \n\tpre == str[..|pre|]\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_isPrefixPred": "isPrefixPred",
+    "//ATOM_PLACEHOLDER_isNotPrefixPred": "isNotPrefixPred",
+    "//ATOM_PLACEHOLDER_isPrefix": "isPrefix"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_MultipleReturns\n\n",
+  "atoms": {
+    "MultipleReturns": [
+      [],
+      "// SPEC \nmethod MultipleReturns(x: int, y: int) returns (more: int, less: int)\n  ensures more == x+y\n  ensures less == x-y\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_MultipleReturns": "MultipleReturns"
+  }
+}
