@@ -4,7 +4,15 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
+
+fn main() {
+}
 
 fn Testing_abs()
 {
@@ -39,8 +47,10 @@ method Testing_max() {
 // Exercise 6:
 
 method Abs(x: int) -> (y: int)
-    ensures abs(x) == y
+    ensures
+        abs(x) == y
 {
+    return 0;
 }
 
 }

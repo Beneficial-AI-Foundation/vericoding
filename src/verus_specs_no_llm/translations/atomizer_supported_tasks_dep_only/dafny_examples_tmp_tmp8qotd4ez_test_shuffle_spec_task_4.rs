@@ -4,9 +4,17 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
-fn random(a: int, b: int) -> r: int)
+fn main() {
+}
+
+fn random(a: int, b: int) -> (r: int)
 //  requires a <= b
   ensures a <= b ==> a <= r <= b
 //ATOM_PLACEHOLDER_eqMultiset_t
@@ -27,11 +35,13 @@ function set_of_seq<T>(s: seq<T>): set<T>
 
 //ATOM_PLACEHOLDER_in_set_of_seq//ATOM_PLACEHOLDER_subset_set_of_seq// SPEC 
   
-method getRandomDataEntry<T(==)>(m_workList: array<T>, avoidSet: Seq<T>
-    requires a <= b,
-             m_workList.len() > 0
+method getRandomDataEntry<T(==)>(m_workList: array<T>, avoidSet: Seq<T>)
+    requires
+        a <= b,
+        m_workList.len() > 0
 //
-    ensures a <= b ==> a <= r <= b
+    ensures
+        a <= b ==> a <= r <= b
 //ATOM_PLACEHOLDER_eqMultiset_t
 
 //ATOM_PLACEHOLDER_eqMultiset
@@ -43,10 +53,11 @@ method getRandomDataEntry<T(==)>(m_workList: array<T>, avoidSet: Seq<T>
 // ATOM 
 
 function set_of_seq<T>(s: seq<T>): set<T>,
-            set_of_seq(avoidSet) < set_of_seq(m_workList[..]) ==> e !in avoidSet
+        set_of_seq(avoidSet) < set_of_seq(m_workList.spec_index(..)) ==> e !in avoidSet
 //,
-            avoidSet < m_workList[..] ==> e in m_workList[..]
+        avoidSet < m_workList.spec_index(..) ==> e in m_workList.spec_index(..)
 {
+    return (0, Seq::empty());
 }
 
 }

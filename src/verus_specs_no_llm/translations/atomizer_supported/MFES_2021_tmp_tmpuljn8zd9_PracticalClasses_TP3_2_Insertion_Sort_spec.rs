@@ -4,7 +4,15 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
+
+fn main() {
+}
 
 spec fn isSorted(a: Vec<int>, from: nat, to: nat)
   reads a

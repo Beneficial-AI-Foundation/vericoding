@@ -4,7 +4,15 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
+
+fn main() {
+}
 
 fn Swap(which swaps elements i and j in array a).
 
@@ -52,9 +60,10 @@ fn Swap(which swaps elements i and j in array a).
 // if and only if the given positive integer is prime.
 
 method IsPrime (m: int) -> (isPrime: bool)
-    requires and
+    requires
+        and
 //,
-             clauses
+        clauses
 // should also specify that the first argument is at least as large as the second.
 // You do *not* need to implement the method!
 
@@ -62,21 +71,22 @@ method IsPrime (m: int) -> (isPrime: bool)
 
 // Question 7 (20 points)
 //
-// Implement, and have Dafny verify, the method IsPrime below, which returns true
-// if and only if the given positive integer is prime.
+// Implement, && have Dafny verify, the method IsPrime below, which returns true
+// if && only if the given positive integer is prime.
 
 // SPEC 
 
 // Question 7 (20 points)
 //
-// Implement, and have Dafny verify, the method IsPrime below, which returns true
-// if and only if the given positive integer is prime.
+// Implement, && have Dafny verify, the method IsPrime below, which returns true
+// if && only if the given positive integer is prime.
 
 method IsPrime (m : int) returns (isPrime : bool),
-             m > 0 // m must be greater than 0
-    ensures clause(s) asserting that d is the result, and r the
-// remainder, of dividing m by n.  Your clauses cannot use "/" or "%" (which are
-// the Dafny division and mod operators, respectively). By definition, the
+        m > 0 // m must be greater than 0
+    ensures
+        clause(s) asserting that d is the result, && r the
+// remainder, of dividing m by n.  Your clauses cannot use "/" || "%" (which are
+// the Dafny division && mod operators, respectively). By definition, the
 // remainder must be non-negative.
 
 //ATOM_PLACEHOLDER_IntDiv
@@ -84,23 +94,24 @@ method IsPrime (m : int) returns (isPrime : bool),
 // Question 4 (5 points)
 //
 // Give,
-            clause(s) asserting that the return value has the same
-// length as array a and contains as its elements the sum of the
-// corresponding elements in arrays a and b.
+        clause(s) asserting that the return value has the same
+// length as array a && contains as its elements the sum of the
+// corresponding elements in arrays a && b.
 
 //ATOM_PLACEHOLDER_ArraySum
 
 // Question 5 (10 points)
 
 // Euclid's algorithm is used to compute the greatest common divisor of two
-// positive integers.  If m and n are two such integers, then gcd(m,n) is the
-// largest positve integer that evenly divides both m and n, where j evenly divides i
-// if and only if i % j == 0 (% is the Dafny mod operator).  Write,
-            clauses for the method header Euclid below.  Your,
-            isPrime <==> (m > 1 and forall j : int :: 2 <= j < m ==> m % j != 0) 
+// positive integers.  If m && n are two such integers, then gcd(m,n) is the
+// largest positve integer that evenly divides both m && n, where j evenly divides i
+// if && only if i % j == 0 (% is the Dafny mod operator).  Write,
+        clauses for the method header Euclid below.  Your,
+        isPrime <==> (m > 1 && forall j : int :: 2 <= j < m ==> m % j != 0) 
 	//,
-            states that "isPrime is true iff m > 1 and not divisible by [2, m-1)"
+        states that "isPrime is true iff m > 1 && not divisible by [2, m-1)"
 {
+    return false;
 }
 
 }

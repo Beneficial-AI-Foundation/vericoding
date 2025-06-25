@@ -4,7 +4,15 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
+
+fn main() {
+}
 
 spec fn SplitPoint(a: Vec<int>, n: int)
     reads a
@@ -43,15 +51,18 @@ method Partition(a: array<int>, lo: int, hi: int) returns (p: int)
 }
 
 fn Partition(a: Vec<int>, lo: int, hi: int) -> (p: int)
-    requires 0 <= lo < hi <= a.len(),
-             SplitPoint(a, lo) and SplitPoint(a, hi)
+    requires
+        0 <= lo < hi <= a.len(),
+        SplitPoint(a, lo) && SplitPoint(a, hi)
     modifies a
-    ensures lo <= p < hi,
-            forall|i: int| lo <= i < p ==> a[i] < a[p],
-            forall|i: int| p <= i < hi ==> a[p] <= a[i],
-            SplitPoint(a, lo) and SplitPoint(a, hi),
-            SwapFrame(a, lo, hi)
+    ensures
+        lo <= p < hi,
+        forall i :: lo <= i < p ==> a.spec_index(i) < a.spec_index(p),
+        forall i :: p <= i < hi ==> a.spec_index(p) <= a.spec_index(i),
+        SplitPoint(a, lo) && SplitPoint(a, hi),
+        SwapFrame(a, lo, hi)
 {
+    return 0;
 }
 
 }

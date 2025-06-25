@@ -4,9 +4,17 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
-fn ComputePower1(N: int) -> y: nat) requires N >= 0
+fn main() {
+}
+
+fn ComputePower1(N: int) -> (y: nat) requires N >= 0
 //     ensures y == Power(N)
 // {
 //     y := 1;
@@ -39,20 +47,23 @@ fn ComputePower1(N: int) -> y: nat) requires N >= 0
 // SPEC 
 
 
-// Original davinci-003 completion: // method ComputePower1(N: int) returns (y: nat
-    requires N >= 0
+// Original davinci-003 completion: // method ComputePower1(N: int) returns (y: nat)
+    requires
+        N >= 0
 //,
-             N >= 0
+        N >= 0
 //,
-             N >= 0
+        N >= 0
 //
-    ensures y == Power(N)
+    ensures
+        y == Power(N)
 //,
-            y == Power(N)
+        y == Power(N)
 //,
-            y == Power(N)
+        y == Power(N)
 //
 {
+    return (0, 0, 0, 0, 0);
 }
 
 }

@@ -4,7 +4,15 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
+
+fn main() {
+}
 
 spec fn reversed(arr: Vec<char>, outarr: Vec<char>, outarr
 {
@@ -21,9 +29,12 @@ ensures outarr != null && arr.Length == outarr.Length && reversed(arr, outarr) -
 }
 
 fn yarra(arr: Vec<char>) -> (outarr: Vec<char>)
-    requires arr != null and arr.len() > 0
-    ensures outarr != null and arr.len() == outarr.len() and reversed(arr,outarr)
+    requires
+        arr != null && arr.len() > 0
+    ensures
+        outarr != null && arr.len() == outarr.len() && reversed(arr,outarr)
 {
+    return Vec::new();
 }
 
 }

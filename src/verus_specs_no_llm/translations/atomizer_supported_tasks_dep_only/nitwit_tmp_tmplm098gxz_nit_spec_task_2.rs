@@ -4,7 +4,15 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
+
+fn main() {
+}
 
 spec fn valid_base(b: nat) -> bool {
     b >= 2
@@ -18,10 +26,13 @@ spec fn is_max_nit(b: nat, q: nat) -> bool {
 }
 
 fn max_nit(b: nat) -> (nmax: nat)
-    requires (valid_base(b))
-    ensures (nitness(b, nmax)),
-            (is_max_nit(b, nmax))
+    requires
+        (valid_base(b))
+    ensures
+        (nitness(b, nmax)),
+        (is_max_nit(b, nmax))
 {
+    return 0;
 }
 
 }

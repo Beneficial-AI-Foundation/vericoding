@@ -4,14 +4,25 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
+fn main() {
+}
+
 fn Tangent(r: Vec<int>, x: Vec<int>) -> (b: bool)
-    requires forall|i: int, j: int| 0 <= i <= j < x.len() ==> x[i] <= x[j] // values in x will be in ascending order or empty,
-             forall|i: int, j: int| (0 <= i < r.len() and 0 <= j < x.len()) ==> (r[i] >= 0 and x[j] >= 0)       // x and r will contain no negative values
-    ensures !b ==> forall|i: int, j: int| 0 <= i< r.len() and 0 <= j < x.len() ==> r[i] != x[j],
-            b ==> exists|i: int, j: int| 0 <= i< r.len() and 0 <= j < x.len() and r[i] == x[j]
+    requires
+        forall i, j :: 0 <= i <= j < x.len() ==> x.spec_index(i) <= x.spec_index(j) // values in x will be in ascending order || empty,
+        forall i, j :: (0 <= i < r.len() && 0 <= j < x.len()) ==> (r.spec_index(i) >= 0 && x.spec_index(j) >= 0)       // x && r will contain no negative values
+    ensures
+        !b ==> forall i, j :: 0 <= i< r.len() && 0 <= j < x.len() ==> r.spec_index(i) != x.spec_index(j),
+        b ==> exists i, j :: 0 <= i< r.len() && 0 <= j < x.len() && r.spec_index(i) == x.spec_index(j)
 {
+    return false;
 }
 
 }

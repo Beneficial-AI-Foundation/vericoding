@@ -4,15 +4,25 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
+fn main() {
+}
+
 spec fn positive(s: Seq<int>) -> bool {
-    forall|u: int|0<=u<s.len() ==> s[u]>=0
+    forall u::0<=u<s.len() ==> s.spec_index(u)>=0
 }
 
 fn mpositive(v: Vec<int>) -> (b: bool)
-    ensures b==positive(v[0..v.len()])
+    ensures
+        b==positive(v.spec_index(0..v.len()))
 {
+    return false;
 }
 
 }

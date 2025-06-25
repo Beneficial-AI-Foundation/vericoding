@@ -4,13 +4,24 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
+fn main() {
+}
+
 fn IsMinHeap(a: Vec<int>) -> (result: bool)
-    requires a != null
-    ensures result ==> forall|i: int| 0 <= i < a.len() / 2 ==> a[i] <= a[2*i + 1] and (2*i + 2 == a.len() or a[i] <= a[2*i + 2]),
-            !result ==> exists|i: int| 0 <= i < a.len() / 2 and (a[i] > a[2*i + 1] or (2*i + 2 != a.len() and a[i] > a[2*i + 2]))
+    requires
+        a != null
+    ensures
+        result ==> forall i :: 0 <= i < a.len() / 2 ==> a.spec_index(i) <= a.spec_index(2*i + 1) && (2*i + 2 == a.len() || a.spec_index(i) <= a.spec_index(2*i + 2)),
+        !result ==> exists i :: 0 <= i < a.len() / 2 && (a.spec_index(i) > a.spec_index(2*i + 1) || (2*i + 2 != a.len() && a.spec_index(i) > a.spec_index(2*i + 2)))
 {
+    return false;
 }
 
 }

@@ -4,11 +4,21 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
+fn main() {
+}
+
 fn mod2(n: nat) -> (a: nat)
-    ensures a == f2(n)
+    ensures
+        a == f2(n)
 {
+    return 0;
 }
 
 }

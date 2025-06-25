@@ -4,7 +4,15 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
+
+fn main() {
+}
 
 spec fn merged(a1: Seq<int>, a2: Seq<int>, b: Vec<int>, start: int, end: int)
   reads b
@@ -28,7 +36,7 @@ predicate sorted_slice(a: array<int>, start: int, end: int)
 // ATOM 
 
 predicate sorted_seq(a: seq<int>) -> bool {
-    forall|i: int, j: int| 0 <= i <= j < a.len() ==> a[i] <= a[j]
+    forall i, j :: 0 <= i <= j < a.len() ==> a.spec_index(i) <= a.spec_index(j)
 }
 
 }

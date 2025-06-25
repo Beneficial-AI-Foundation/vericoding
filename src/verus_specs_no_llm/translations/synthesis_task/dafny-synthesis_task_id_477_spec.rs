@@ -4,7 +4,15 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
+
+fn main() {
+}
 
 spec fn IsUpperCase(c: char) -> bool {
     65 <= c as int <= 90
@@ -14,9 +22,11 @@ spec fn IsUpperLowerPair(C: char, c: char) -> bool {
 }
 
 fn ToLowercase(s: String) -> (v: String)
-    ensures v.len() == s.len(),
-            forall|i: int| 0 <= i < s.len() ==>  if IsUpperCase(s[i]) then IsUpperLowerPair(s[i], v[i]) else v[i] == s[i]
+    ensures
+        v.len() == s.len(),
+        forall i :: 0 <= i < s.len() ==>  if IsUpperCase(s.spec_index(i)) then IsUpperLowerPair(s.spec_index(i), v.spec_index(i)) else v.spec_index(i) == s.spec_index(i)
 {
+    return String::new();
 }
 
 }

@@ -4,12 +4,22 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
+fn main() {
+}
+
 fn Max(x: nat, y: nat) -> (r: nat)
-    ensures (r >= x and r >=y),
-            (r == x or r == y)
+    ensures
+        (r >= x && r >=y),
+        (r == x || r == y)
 {
+    return 0;
 }
 
 }

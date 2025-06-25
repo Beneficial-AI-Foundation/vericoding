@@ -4,10 +4,18 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
+fn main() {
+}
+
 spec fn sorted(a: Seq<int>) -> bool {
-    forall|i  0 < i < .len()a|: int| a[i-1] <= a[i]
+    forall i  0 < i < .len()a| :: a.spec_index(i-1) <= a.spec_index(i)
 }
 
 fn swap(a: Vec<int>, i: nat, j: nat)
@@ -26,13 +34,16 @@ fn swap(a: Vec<int>, i: nat, j: nat)
 //b)
 //Problem04
 method FindMin(a: array<int>, lo: nat) -> (minIdx: nat)
-    requires a != null and a.len() > 0 and i < a.len() and j < a.len(),
-             a != null and a.len() > 0 and lo < a.len()
-    ensures a[i] == old(a[j]),
-            a[j] == old(a[i]),
-            lo <= minIdx < a.len(),
-            forall|x: int| lo <= x < a.len() ==> a[minIdx] <= a[x]
+    requires
+        a != null && a.len() > 0 && i < a.len() && j < a.len(),
+        a != null && a.len() > 0 && lo < a.len()
+    ensures
+        a.spec_index(i) == old(a.spec_index(j)),
+        a.spec_index(j) == old(a.spec_index(i)),
+        lo <= minIdx < a.len(),
+        forall x :: lo <= x < a.len() ==> a.spec_index(minIdx) <= a.spec_index(x)
 {
+    return 0;
 }
 
 }

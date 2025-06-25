@@ -4,13 +4,24 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
+fn main() {
+}
+
 fn max(a: Vec<int>) -> (max: int)
-    requires a != null;
-    ensures forall|j: int| j >= 0 and j < a.len() ==> max >= a[j]; //max is larger then anything in the array,
-            a.len() > 0 ==> exists|j: int| j >= 0 and j < a.len() and max == a[j]; //max is an element in the array
+    requires
+        a != null;
+    ensures
+        forall j :: j >= 0 && j < a.len() ==> max >= a.spec_index(j); //max is larger then anything in the array,
+        a.len() > 0 ==> exists j :: j >= 0 && j < a.len() && max == a.spec_index(j); //max is an element in the array
 {
+    return 0;
 }
 
 }

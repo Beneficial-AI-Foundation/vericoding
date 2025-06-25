@@ -4,13 +4,24 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
+fn main() {
+}
+
 fn ArrayToSeq(a: Vec<int>) -> (s: Seq<int>)
-    requires a != null
-    ensures s.len() == a.len(),
-            forall|i: int| 0 <= i < a.len() ==> s[i] == a[i]
+    requires
+        a != null
+    ensures
+        s.len() == a.len(),
+        forall i :: 0 <= i < a.len() ==> s.spec_index(i) == a.spec_index(i)
 {
+    return Seq::empty();
 }
 
 }

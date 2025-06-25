@@ -4,9 +4,17 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
-fn Triple(x: int) -> r: int)
+fn main() {
+}
+
+fn Triple(x: int) -> (r: int)
     ensures r == 3 * x
 {
     r := Average(2 * x, 4 * x);
@@ -15,10 +23,12 @@ fn Triple(x: int) -> r: int)
 
 // SPEC 
 
-method Triple1(x: int) returns (r: int
-    ensures r == 3 * x,
-            r == 3 * x
+method Triple1(x: int) returns (r: int)
+    ensures
+        r == 3 * x,
+        r == 3 * x
 {
+    return (0, 0);
 }
 
 }

@@ -4,7 +4,15 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
+
+fn main() {
+}
 
 spec fn palindromic(s: String, i: int, j: int)
   requires 0 <= i <= j <= |s|
@@ -25,31 +33,35 @@ lemma lemma_palindromic_contains(s: string, lo: int, hi: int, lo': int, hi': int
     lemma_palindromic_contains(s, lo + 1, hi - 1, lo', hi');
 }
 spec fn inbound_radius(s': String, c: int, r: int) -> bool {
-    r >= 0 and 0 <= c-r and c+r < s'.len()
+    r >= 0 && 0 <= c-r && c+r < s'.len()
 }
 spec fn palindromic_radius(s': String, c: int, r: int)
   requires inbound_radius(s', c, r) -> bool {
     palindromic(s', c-r, c+r+1)
 }
 spec fn max_radius(s': String, c: int, r: int) -> bool {
-    and inbound_radius(s', c, r)
-  and palindromic_radius(s', c, r)
-  and (forall|r' | r' > r and inbound_radius(s': int, c: int, r'): int| !palindromic_radius(s', c, r'))
+    && inbound_radius(s', c, r)
+  && palindromic_radius(s', c, r)
+  && (forall r' | r' > r && inbound_radius(s', c, r') :: !palindromic_radius(s', c, r'))
 }
 spec fn max_interval_for_same_center(s: String, k: int, lo: int, hi: int) -> bool {
-    and 0 <= lo <= hi <= s.len()
-  and lo + hi == k
-  and palindromic(s, lo, hi)
-  and (forall|i: int, j  0 <= i <= j <= .len()s| and palindromic(s: int, i: int, j) and i + j == k: int| j - i <= hi - lo)
+    && 0 <= lo <= hi <= s.len()
+  && lo + hi == k
+  && palindromic(s, lo, hi)
+  && (forall i, j  0 <= i <= j <= .len()s| && palindromic(s, i, j) && i + j == k :: j - i <= hi - lo)
 }
 
-fn expand_from_center(s: String, i0: int, j0: int) -> lo: int, hi: int
-    requires 0 <= i0 <= j0 <= s.len(),
-             palindromic(s, i0, j0)
-    ensures 0 <= lo <= hi <= s.len() and palindromic(s, lo, hi),
-            forall|i: int, j  0 <= i <= j <= .len()s| and palindromic(s: int, i: int, j)  // Among all palindromes
-    and i + j == i0 + j0                                             // sharing the same center: int, : int| j - i <= hi - lo                                             // `s[lo..hi]` is longest.
+fn expand_from_center(s: String, i0: int, j0: int) -> (lo: int, hi: int)
+    requires
+        0 <= i0 <= j0 <= s.len(),
+        palindromic(s, i0, j0)
+    ensures
+        0 <= lo <= hi <= s.len() && palindromic(s, lo, hi),
+        forall i, j  0 <= i <= j <= .len()s| && palindromic(s, i, j)  // Among all palindromes
+    && i + j == i0 + j0                                             // sharing the same center,
+    :: j - i <= hi - lo                                             // `s.spec_index(lo..hi)` is longest.
 {
+    return (0, 0);
 }
 
 }

@@ -4,9 +4,17 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
-fn Search(s: Seq<int>, x: int) -> k: int )
+fn main() {
+}
+
+fn Search(s: Seq<int>, x: int) -> (k: int )
     // Ekki má breyta forskilyrðum eða eftirskilyrðum fallsins
     requires forall p, q | 0 <= p < q < |s|: : s[p] <= s[q];
     ensures 0 <= k <= |s|;
@@ -21,17 +29,20 @@ fn Search(s: Seq<int>, x: int) -> k: int )
 
 // SPEC 
 
-method Sort( m: multiset<int> ) returns ( r: seq<int>
-    requires forall|p: int, q  0 <= p < q < .len()s|: int| s[p] <= s[q];
-    ensures 0 <= k <= s.len();,
-            forall|i | 0 <= i < k: int| s[i] <= x;,
-            forall|i  k <= i < .len()s|: int| s[i] >= x;,
-            forall|z | z in s[..k]: int| z <= x;,
-            forall|z | z in s[k..]: int| z >= x;,
-            s == s[..k]+s[k..];,
-            multiset(r) == m;,
-            forall|p: int, q  0 <= p < q < .len()r|: int| r[p] <= r[q];
+method Sort( m: multiset<int> ) returns ( r: seq<int>)
+    requires
+        forall p,q  0 <= p < q < .len()s| :: s.spec_index(p) <= s.spec_index(q);
+    ensures
+        0 <= k <= s.len();,
+        forall i | 0 <= i < k :: s.spec_index(i) <= x;,
+        forall i  k <= i < .len()s| :: s.spec_index(i) >= x;,
+        forall z | z in s.spec_index(..k) :: z <= x;,
+        forall z | z in s.spec_index(k..) :: z >= x;,
+        s == s.spec_index(..k)+s.spec_index(k..);,
+        multiset(r) == m;,
+        forall p,q  0 <= p < q < .len()r| :: r.spec_index(p) <= r.spec_index(q);
 {
+    return (0, 0);
 }
 
 }

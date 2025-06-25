@@ -4,14 +4,25 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
+fn main() {
+}
+
 fn AppendArrayToSeq(s: Seq<int>, a: Vec<int>) -> (r: Seq<int>)
-    requires a != null
-    ensures r.len() == s.len() + a.len(),
-            forall|i: int| 0 <= i < s.len() ==> r[i] == s[i],
-            forall|i: int| 0 <= i < a.len() ==> r[s.len() + i] == a[i]
+    requires
+        a != null
+    ensures
+        r.len() == s.len() + a.len(),
+        forall i :: 0 <= i < s.len() ==> r.spec_index(i) == s.spec_index(i),
+        forall i :: 0 <= i < a.len() ==> r.spec_index(s.len() + i) == a.spec_index(i)
 {
+    return Seq::empty();
 }
 
 }

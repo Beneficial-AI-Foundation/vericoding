@@ -4,9 +4,17 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
-fn random(a: int, b: int) -> r: int)
+fn main() {
+}
+
+fn random(a: int, b: int) -> (r: int)
 //  requires a <= b
   ensures a <= b ==> a <= r <= b
 //ATOM_PLACEHOLDER_eqMultiset_t
@@ -19,12 +27,14 @@ method swap<T>(a: array<T>, i: int, j: int)
   // requires a != null
   requires 0 <= i < a.Length && 0 <= j < a.Length
   modifies a
-  ensures a[i] == old(a[j]
-    requires a <= b,
-             a != null,
-             0 <= i < a.len() and 0 <= j < a.len()
+  ensures a[i] == old(a[j])
+    requires
+        a <= b,
+        a != null,
+        0 <= i < a.len() && 0 <= j < a.len()
   modifies a
-    ensures a <= b ==> a <= r <= b
+    ensures
+        a <= b ==> a <= r <= b
 //ATOM_PLACEHOLDER_eqMultiset_t
 
 //ATOM_PLACEHOLDER_eqMultiset
@@ -33,11 +43,12 @@ method swap<T>(a: array<T>, i: int, j: int)
 
 method swap<T>(a: array<T>, i: int, j: int)
   //,
-            a[i] == old(a[j]),
-            a[j] == old(a[i]),
-            forall|m: int| 0 <= m < a.len() and m != i and m != j ==> a[m] == old(a[m]),
-            multiset(a[..]) == old(multiset(a[..]))
+        a.spec_index(i) == old(a.spec_index(j)),
+        a.spec_index(j) == old(a.spec_index(i)),
+        forall m :: 0 <= m < a.len() && m != i && m != j ==> a.spec_index(m) == old(a.spec_index(m)),
+        multiset(a.spec_index(..)) == old(multiset(a.spec_index(..)))
 {
+    return (0, 0, 0);
 }
 
 }

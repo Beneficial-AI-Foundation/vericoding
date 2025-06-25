@@ -4,7 +4,15 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
+
+fn main() {
+}
 
 spec fn divides(f: nat, i: nat)
   requires 1<=f
@@ -16,8 +24,8 @@ spec fn divides(f: nat, i: nat)
 // ATOM 
 
 predicate IsPrime(i:nat) -> bool {
-    and 1 < i
-  and forall|f: int| 1 < f < i ==> !divides(f, i)
+    && 1 < i
+  && forall f :: 1 < f < i ==> !divides(f, i)
 }
 
 }

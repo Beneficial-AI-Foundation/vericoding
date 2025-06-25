@@ -4,11 +4,21 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
+fn main() {
+}
+
 fn square0(n: nat) -> (sqn: nat)
-    ensures sqn == n*n
+    ensures
+        sqn == n*n
 {
+    return 0;
 }
 
 }

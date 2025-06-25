@@ -4,7 +4,15 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
+
+fn main() {
+}
 
 spec fn Is2Pow(n: int) -> bool {
     if n < 1 then
@@ -12,17 +20,20 @@ spec fn Is2Pow(n: int) -> bool {
     else if n == 1 then
         true
     else
-        n%2 == 0 and Is2Pow(n/2)
+        n%2 == 0 && Is2Pow(n/2)
 }
 
 fn Search2PowRecursive(a: Vec<int>, i: int, n: int, x: int) -> (k: int)
-    requires 0 <= i <= i+n <= a.len();,
-             forall|p: int, q | i <= p < q < i+n: int| a[p] <= a[q];,
-             Is2Pow(n+1);
-    ensures i <= k <= i+n;,
-            forall|r | i <= r < k: int| a[r] < x;,
-            forall|r | k <= r < i+n: int| a[r] >= x;
+    requires
+        0 <= i <= i+n <= a.len();,
+        forall p,q | i <= p < q < i+n :: a.spec_index(p) <= a.spec_index(q);,
+        Is2Pow(n+1);
+    ensures
+        i <= k <= i+n;,
+        forall r | i <= r < k :: a.spec_index(r) < x;,
+        forall r | k <= r < i+n :: a.spec_index(r) >= x;
 {
+    return 0;
 }
 
 }

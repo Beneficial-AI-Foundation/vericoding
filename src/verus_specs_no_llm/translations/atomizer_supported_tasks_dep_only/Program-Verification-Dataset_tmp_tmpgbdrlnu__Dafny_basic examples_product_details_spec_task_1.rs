@@ -4,11 +4,21 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
+fn main() {
+}
+
 fn CalcProduct(m: nat, n: nat) -> (res: nat)
-    ensures res == m*n;
+    ensures
+        res == m*n;
 {
+    return 0;
 }
 
 }

@@ -4,7 +4,15 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
+
+fn main() {
+}
 
 fn Swap(which swaps elements i and j in array a).
 
@@ -34,10 +42,12 @@ fn Swap(which swaps elements i and j in array a).
 // corresponding elements in arrays a and b.
 
 method ArraySum (a: Vec<int>, b: Vec<int>) -> (c: Vec<int>)
-    requires a.len() == b.len()
-    ensures clause(s) asserting that d is the result, and r the
-// remainder, of dividing m by n.  Your clauses cannot use "/" or "%" (which are
-// the Dafny division and mod operators, respectively). By definition, the
+    requires
+        a.len() == b.len()
+    ensures
+        clause(s) asserting that d is the result, && r the
+// remainder, of dividing m by n.  Your clauses cannot use "/" || "%" (which are
+// the Dafny division && mod operators, respectively). By definition, the
 // remainder must be non-negative.
 
 //ATOM_PLACEHOLDER_IntDiv
@@ -45,23 +55,24 @@ method ArraySum (a: Vec<int>, b: Vec<int>) -> (c: Vec<int>)
 // Question 4 (5 points)
 //
 // Give,
-            clause(s) asserting that the return value has the same
-// length as array a and contains as its elements the sum of the
-// corresponding elements in arrays a and b.
+        clause(s) asserting that the return value has the same
+// length as array a && contains as its elements the sum of the
+// corresponding elements in arrays a && b.
 
 // SPEC 
 
 // Question 4 (5 points)
 //
 // Give,
-            clause(s) asserting that the return value has the same
-// length as array a and contains as its elements the sum of the
-// corresponding elements in arrays a and b.
+        clause(s) asserting that the return value has the same
+// length as array a && contains as its elements the sum of the
+// corresponding elements in arrays a && b.
 
 method ArraySum (a : array<int>, b : array<int>) returns (c : array<int>),
-            c.len() == a.len() and 
-        forall i : int :: 0 <= i < c.len() ==> c[i] == a[i] + b[i] // TODO
+        c.len() == a.len() && 
+        forall i : int :: 0 <= i < c.len() ==> c.spec_index(i) == a.spec_index(i) + b.spec_index(i) // TODO
 {
+    return Vec::new();
 }
 
 }

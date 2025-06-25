@@ -4,12 +4,22 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
-fn SwapArithmetic(X: int, Y: int) -> x: int, y: int
-    ensures x==Y,
-            y==X
+fn main() {
+}
+
+fn SwapArithmetic(X: int, Y: int) -> (x: int, y: int)
+    ensures
+        x==Y,
+        y==X
 {
+    return (0, 0);
 }
 
 }

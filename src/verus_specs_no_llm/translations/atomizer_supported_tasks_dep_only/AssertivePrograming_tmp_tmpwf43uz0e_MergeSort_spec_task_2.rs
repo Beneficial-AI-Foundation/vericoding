@@ -4,10 +4,18 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
+fn main() {
+}
+
 spec fn Sorted(q: Seq<int>) -> bool {
-    forall|i: int, j: int| 0 <= i <= j < q.len() ==> q[i] <= q[j]
+    forall i,j :: 0 <= i <= j < q.len() ==> q.spec_index(i) <= q.spec_index(j)
 }
 
 fn Merge(b: Vec<int>, c: Vec<int>, d: Vec<int>, correctly, efficiently, clearly
@@ -15,7 +23,7 @@ fn Merge(b: Vec<int>, c: Vec<int>, d: Vec<int>, correctly, efficiently, clearly
 DO NOT modify the specification or any other part of the method's signature
 */
 // SPEC 
-method Merge(b: Vec<int>, c: Vec<int>, d: Vec<int>, c: Vec<int>, d: Vec<int>, i0: nat, j0: nat) -> i: nat, j: nat)
+method Merge(b: Vec<int>, c: Vec<int>, d: Vec<int>, c: Vec<int>, d: Vec<int>, i0: nat, j0: nat) -> (i: nat, j: nat)
 		requires b != c && b != d && b.Length == c.Length + d.Length
 		requires Sorted(c[..]) && Sorted(d[..])
 		requires i0 <= c.Length && j0 <= d.Length && i0 + j0 <= b.Length
@@ -65,34 +73,37 @@ method Merge(b: Vec<int>, c: Vec<int>, d: Vec<int>, c: Vec<int>, d: Vec<int>, i0
 // ATOM 
 
 //This lemma helps dafny see that if the prefixs of arrays are the same multiset until the end of the arrays, //all the arrays are the same multiset.
-lemma LemmaMultysetsEquals (b: Seq<int>, c: Seq<int>, d: Seq<int>, i: nat, j: nat
-    requires b != c and b != d and b.len() == c.len() + d.len(),
-             Sorted(c[..]) and Sorted(d[..]),
-             b != c and b != d and b.len() == c.len() + d.len(),
-             Sorted(c[..]) and Sorted(d[..]),
-             b != c and b != d and b.len() == c.len() + d.len(),
-             Sorted(c[..]) and Sorted(d[..]),
-             i0 <= c.len() and j0 <= d.len() and i0 + j0 <= b.len(),
-             InvSubSet(b[..],c[..],d[..],i0,j0),
-             InvSorted(b[..],c[..],d[..],i0,j0),
-             i0 + j0 < b.len()
+lemma LemmaMultysetsEquals (b: Seq<int>, c: Seq<int>, d: Seq<int>, i: nat, j: nat)
+    requires
+        b != c && b != d && b.len() == c.len() + d.len(),
+        Sorted(c.spec_index(..)) && Sorted(d.spec_index(..)),
+        b != c && b != d && b.len() == c.len() + d.len(),
+        Sorted(c.spec_index(..)) && Sorted(d.spec_index(..)),
+        b != c && b != d && b.len() == c.len() + d.len(),
+        Sorted(c.spec_index(..)) && Sorted(d.spec_index(..)),
+        i0 <= c.len() && j0 <= d.len() && i0 + j0 <= b.len(),
+        InvSubSet(b.spec_index(..),c.spec_index(..),d.spec_index(..),i0,j0),
+        InvSorted(b.spec_index(..),c.spec_index(..),d.spec_index(..),i0,j0),
+        i0 + j0 < b.len()
 
 		modifies b,
-             i == c.len();,
-             j == d.len();,
-             i + j == b.len();,
-             multiset(b[..i+j]) == multiset(c[..i]) + multiset(d[..j])
-    ensures Sorted(b[..]) and multiset(b[..]) == multiset(c[..])+multiset(d[..])
+        i == c.len();,
+        j == d.len();,
+        i + j == b.len();,
+        multiset(b.spec_index(..i+j)) == multiset(c.spec_index(..i)) + multiset(d.spec_index(..j))
+    ensures
+        Sorted(b.spec_index(..)) && multiset(b.spec_index(..)) == multiset(c.spec_index(..))+multiset(d.spec_index(..))
 	modifies b,
-            Sorted(b[..]) and multiset(b[..]) == multiset(c[..])+multiset(d[..])
+        Sorted(b.spec_index(..)) && multiset(b.spec_index(..)) == multiset(c.spec_index(..))+multiset(d.spec_index(..))
 	modifies b,
-            i <= c.len() and j <= d.len() and i + j <= b.len(),
-            InvSubSet(b[..],c[..],d[..],i,j),
-            InvSorted(b[..],c[..],d[..],i,j)
+        i <= c.len() && j <= d.len() && i + j <= b.len(),
+        InvSubSet(b.spec_index(..),c.spec_index(..),d.spec_index(..),i,j),
+        InvSorted(b.spec_index(..),c.spec_index(..),d.spec_index(..),i,j)
 		//decreases,
-            ensures 0 <= c.len() - i < c.len() - i0 or (c.len() - i == c.len() - i0 and 0 <= d.len() - j < d.len() - j0),
-            multiset(b[..]) == multiset(c[..])+multiset(d[..]);
+        ensures 0 <= c.len() - i < c.len() - i0 || (c.len() - i == c.len() - i0 && 0 <= d.len() - j < d.len() - j0),
+        multiset(b.spec_index(..)) == multiset(c.spec_index(..))+multiset(d.spec_index(..));
 {
+    return (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Seq::empty(), Seq::empty(), Seq::empty(), 0, 0);
 }
 
 }

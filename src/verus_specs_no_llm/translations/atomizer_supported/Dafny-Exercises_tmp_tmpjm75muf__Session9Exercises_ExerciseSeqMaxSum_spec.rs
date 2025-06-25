@@ -4,7 +4,15 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
+
+fn main() {
+}
 
 spec fn SumMaxToRight(v: Vec<int>, i: int, s: int)
 reads v
@@ -22,10 +30,13 @@ ensures 0<=k<=i && s==Sum(v, k, i+1) &&  SumMaxToRight(v, i, s) -> bool {
     
 }
 
-fn segMaxSum(v: Vec<int>, i: int) -> s: int, k: int
-    requires v.len()>0 and 0<=i<v.len()
-    ensures 0<=k<=i and s==Sum(v,k,i+1) and  SumMaxToRight(v,i,s)
+fn segMaxSum(v: Vec<int>, i: int) -> (s: int, k: int)
+    requires
+        v.len()>0 && 0<=i<v.len()
+    ensures
+        0<=k<=i && s==Sum(v,k,i+1) &&  SumMaxToRight(v,i,s)
 {
+    return (0, 0);
 }
 
 }

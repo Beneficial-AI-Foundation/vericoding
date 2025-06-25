@@ -4,13 +4,20 @@ use builtin::*;
 #[allow(unused_imports)]
 use builtin_macros::*;
 
+#[allow(unused_imports)]
+use builtin::*;
+#[allow(unused_imports)]
+use builtin_macros::*;
+
 verus! {
 
-spec fn Init(v: Variables) -> bool {
-    and v.piles.len() == 3
-  and v.turn.P1? // syntax
+fn main() {
 }
 
+spec fn Init(v: Variables) -> bool {
+    && v.piles.len() == 3
+  && v.turn.P1? // syntax
+}
 spec fn Turn(v: Variables, v': Variables, step: Step)
   requires step.TurnStep?
 {
@@ -31,9 +38,8 @@ ghost predicate NextStep(v: Variables, v': Variables, step: Step) -> bool {
     case TurnStep(_, _) => Turn(v, v', step)
     case NoOpStep() => v' == v // we don't really need to define predicate NoOp
 }
-
 spec fn Next(v: Variables, v': Variables) -> bool {
-    exists|step: int| NextStep(v, v', step)
+    exists step :: NextStep(v, v', step)
 }
 
 }
