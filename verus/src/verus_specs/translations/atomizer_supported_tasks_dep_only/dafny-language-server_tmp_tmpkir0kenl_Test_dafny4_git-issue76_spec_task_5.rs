@@ -1,0 +1,2 @@
+pub fn EqualityOfStrings1() {
+}
