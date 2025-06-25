@@ -1,0 +1,10 @@
+pub fn extract_rear_chars(l: Seq<&str>) -> (r: Seq<char>)
+    requires(
+        forall|i: int| 0 <= i < l.len() ==> l[i].len() > 0
+    )
+    ensures(|r: Seq<char>| 
+        r.len() == l.len() &&
+        forall|i: int| 0 <= i < l.len() ==> r[i] == l[i].get_char(l[i].len() - 1)
+    )
+{
+}
