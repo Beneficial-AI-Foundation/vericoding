@@ -32,7 +32,6 @@ def translate_type(dafny_type: str) -> str:
         'char': 'char',
         'bv32': 'u32',  # Map bitvector types to unsigned integers
         'bv64': 'u64',
-        'real': 'int',  # Map real to int since we skip files with real arithmetic
     }
     
     # Check basic types first
@@ -112,10 +111,7 @@ def translate_expression(expr: str) -> str:
     expr = re.sub(r'(\w+)\[([^\]]+)\]', r'\1.spec_index(\2)', expr)
     
     # Replace logical operators
-    expr = expr.replace('==>', '==>')
     expr = expr.replace('<=>', 'iff')
-    expr = expr.replace('&&', '&&')
-    expr = expr.replace('||', '||')
     expr = expr.replace(' and ', ' && ')
     expr = expr.replace(' or ', ' || ')
     
@@ -261,9 +257,7 @@ def translate_spec(dafny_file: str) -> Optional[str]:
         if not predicates:
             return None
         verus_spec = [
-            '#[allow(unused_imports)]',
             'use builtin::*;',
-            '#[allow(unused_imports)]',
             'use builtin_macros::*;',
             '',
             'verus! {',
@@ -281,9 +275,7 @@ def translate_spec(dafny_file: str) -> Optional[str]:
     
     # Build the Verus method
     verus_spec = []
-    verus_spec.append('#[allow(unused_imports)]')
     verus_spec.append('use builtin::*;')
-    verus_spec.append('#[allow(unused_imports)]')
     verus_spec.append('use builtin_macros::*;')
     verus_spec.append('')
     verus_spec.append('verus! {')
@@ -366,8 +358,8 @@ def process_directory(input_dir: str, output_dir: str):
             # Write the translated spec
             with open(output_file, 'w') as f:
                 f.write('// Translated from Dafny\n')
-                f.write('#[allow(unused_imports)]\nuse builtin::*;\n')
-                f.write('#[allow(unused_imports)]\nuse builtin_macros::*;\n\n')
+                f.write('use builtin::*;\n')
+                f.write('use builtin_macros::*;\n\n')
                 f.write(verus_spec)
                 
             processed_files.append(rel_path)
@@ -388,6 +380,6 @@ def process_directory(input_dir: str, output_dir: str):
             print(f"  - {f}: {error}")
 
 if __name__ == '__main__':
-    input_dir = 'dafny/benchmarks/dafny-bench_specs'
+    input_dir = '../dafny/benchmarks/dafny-bench_specs'
     output_dir = 'src/verus_specs_no_llm/translations'
     process_directory(input_dir, output_dir) 

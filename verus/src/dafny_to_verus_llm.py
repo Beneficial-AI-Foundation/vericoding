@@ -102,7 +102,7 @@ def extract_verus_code(llm_response: str) -> str:
 
 def main():
     # Root directory containing Dafny specs
-    specs_dir = Path("dafny/benchmarks/dafny-bench_specs")
+    specs_dir = Path("../dafny/benchmarks/dafny-bench_specs")
     
     # Create output directory for translations
     output_dir = Path("src/verus_specs")

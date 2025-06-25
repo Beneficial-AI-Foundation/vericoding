@@ -1,12 +1,8 @@
 // Translated from Dafny
-#[allow(unused_imports)]
 use builtin::*;
-#[allow(unused_imports)]
 use builtin_macros::*;
 
-#[allow(unused_imports)]
 use builtin::*;
-#[allow(unused_imports)]
 use builtin_macros::*;
 
 verus! {
@@ -14,7 +10,7 @@ verus! {
 fn main() {
 }
 
-spec fn isSorted(a: Vec<int>, from: nat, to: nat)
+spec fn isSorted(a: Vec<real>, from: nat, to: nat)
  requires 0 <= from <= to <= a.Length
  reads a
 {
@@ -49,7 +45,7 @@ method selectionSort(a: array<real>)
   assume multiset(a.spec_index(..)) ==> multiset(old(a.spec_index(..)))
 }
 
-fn findMin(a: Vec<int>, from: nat, to: nat) -> (index: nat)
+fn findMin(a: Vec<real>, from: nat, to: nat) -> (index: nat)
  requires 0 <= from < to <= a.Length
  ensures from <= index < to
  ensures forall k :: from <= k < to ==> a[k] >= a[index]
