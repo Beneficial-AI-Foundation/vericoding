@@ -388,6 +388,6 @@ def process_directory(input_dir: str, output_dir: str):
             print(f"  - {f}: {error}")
 
 if __name__ == '__main__':
-    input_dir = 'dafny/benchmarks/dafny-bench_specs'
+    input_dir = '../dafny/benchmarks/dafny-bench_specs'
     output_dir = 'src/verus_specs_no_llm/translations'
     process_directory(input_dir, output_dir) 
