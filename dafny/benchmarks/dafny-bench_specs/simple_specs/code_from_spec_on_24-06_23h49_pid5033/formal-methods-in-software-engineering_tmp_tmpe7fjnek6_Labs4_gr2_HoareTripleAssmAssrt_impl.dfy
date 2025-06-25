@@ -1,0 +1,4 @@
+//IMPL HoareTripleAssmAssrt
+method HoareTripleAssmAssrt()
+{
+}
