@@ -32,7 +32,6 @@ def translate_type(dafny_type: str) -> str:
         'char': 'char',
         'bv32': 'u32',  # Map bitvector types to unsigned integers
         'bv64': 'u64',
-        'real': 'int',  # Map real to int since we skip files with real arithmetic
     }
     
     # Check basic types first
@@ -112,10 +111,7 @@ def translate_expression(expr: str) -> str:
     expr = re.sub(r'(\w+)\[([^\]]+)\]', r'\1.spec_index(\2)', expr)
     
     # Replace logical operators
-    expr = expr.replace('==>', '==>')
     expr = expr.replace('<=>', 'iff')
-    expr = expr.replace('&&', '&&')
-    expr = expr.replace('||', '||')
     expr = expr.replace(' and ', ' && ')
     expr = expr.replace(' or ', ' || ')
     
@@ -261,9 +257,7 @@ def translate_spec(dafny_file: str) -> Optional[str]:
         if not predicates:
             return None
         verus_spec = [
-            '#[allow(unused_imports)]',
             'use builtin::*;',
-            '#[allow(unused_imports)]',
             'use builtin_macros::*;',
             '',
             'verus! {',
@@ -281,9 +275,7 @@ def translate_spec(dafny_file: str) -> Optional[str]:
     
     # Build the Verus method
     verus_spec = []
-    verus_spec.append('#[allow(unused_imports)]')
     verus_spec.append('use builtin::*;')
-    verus_spec.append('#[allow(unused_imports)]')
     verus_spec.append('use builtin_macros::*;')
     verus_spec.append('')
     verus_spec.append('verus! {')
