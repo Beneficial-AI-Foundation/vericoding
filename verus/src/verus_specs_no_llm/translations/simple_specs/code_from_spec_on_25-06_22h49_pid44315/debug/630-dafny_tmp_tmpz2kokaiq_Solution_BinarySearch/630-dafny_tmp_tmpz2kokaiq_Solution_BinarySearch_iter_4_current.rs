@@ -1,0 +1,98 @@
+use builtin::*;
+use builtin_macros::*;
+
+verus! {
+
+spec fn sorted(a: Vec<int>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < a.len() ==> a.spec_index(i) <= a.spec_index(j)
+}
+
+fn main() {
+}
+
+fn BinarySearch(a: Vec<int>, x: int) -> (index: int)
+    requires
+        sorted(a)
+    ensures
+        0 <= index < a.len() ==> a.spec_index(index) == x,
+        index == -1 ==> forall|i: int| 0 <= i < a.len() ==> a.spec_index(i) != x
+{
+    if a.len() == 0 {
+        return -1;
+    }
+    
+    let mut low: usize = 0;
+    let mut high: usize = a.len();
+    
+    while low < high
+        invariant
+            0 <= low <= high <= a.len(),
+            forall|i: int| 0 <= i < low ==> a.spec_index(i) < x,
+            forall|i: int| high <= i < a.len() ==> a.spec_index(i) > x,
+            sorted(a)
+    {
+        let mid = low + (high - low) / 2;
+        
+        assert(low <= mid < high);
+        assert(0 <= mid < a.len());
+        
+        if a[mid] == x {
+            assert(a.spec_index(mid as int) == x);
+            return mid as int;
+        } else if a[mid] < x {
+            // Prove that all elements from 0 to mid are < x
+            assert(forall|i: int| 0 <= i <= mid ==> a.spec_index(i) < x) by {
+                assert(forall|i: int| 0 <= i < low ==> a.spec_index(i) < x);
+                assert(forall|i: int| low <= i <= mid ==> a.spec_index(i) <= a.spec_index(mid as int)) by {
+                    if exists|i: int| low <= i <= mid && a.spec_index(i) > a.spec_index(mid as int) {
+                        assert(false);
+                    }
+                }
+                assert(a.spec_index(mid as int) < x);
+            }
+            low = mid + 1;
+        } else {
+            // Prove that all elements from mid to end are > x
+            assert(forall|i: int| mid <= i < a.len() ==> a.spec_index(i) > x) by {
+                assert(forall|i: int| high <= i < a.len() ==> a.spec_index(i) > x);
+                assert(forall|i: int| mid <= i < high ==> a.spec_index(mid as int) <= a.spec_index(i)) by {
+                    if exists|i: int| mid <= i < high && a.spec_index(mid as int) > a.spec_index(i) {
+                        assert(false);
+                    }
+                }
+                assert(a.spec_index(mid as int) > x);
+            }
+            high = mid;
+        }
+    }
+    
+    // At this point low == high, prove no element equals x
+    assert(low == high);
+    assert(forall|i: int| 0 <= i < a.len() ==> a.spec_index(i) != x) by {
+        assert(forall|i: int| 0 <= i < low ==> a.spec_index(i) < x);
+        assert(forall|i: int| high <= i < a.len() ==> a.spec_index(i) > x);
+        // Since low == high, every index is either < low or >= high
+        if exists|i: int| 0 <= i < a.len() && a.spec_index(i) == x {
+            if 0 <= i < low {
+                assert(a.spec_index(i) < x);
+                assert(false);
+            } else {
+                assert(high <= i < a.len());
+                assert(a.spec_index(i) > x);
+                assert(false);
+            }
+        }
+    }
+    
+    return -1;
+}
+
+}
+
+The key improvements made:
+
+
+
+
+
+This should now verify successfully as the logical flow is clearer and the proof obligations are properly established.

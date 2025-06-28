@@ -1,0 +1,95 @@
+use builtin::*;
+use builtin_macros::*;
+
+verus! {
+
+fn main() {
+}
+
+spec fn is_sorted(nums: Seq<int>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] <= nums[j]
+}
+
+spec fn is_sorted_and_distinct(nums: Seq<int>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] < nums[j]
+}
+
+spec fn contains(nums: Seq<int>, val: int) -> bool {
+    exists|i: int| 0 <= i < nums.len() && nums[i] == val
+}
+
+spec fn same_elements(s1: Seq<int>, s2: Seq<int>) -> bool {
+    forall|x: int| contains(s1, x) <==> contains(s2, x)
+}
+
+fn remove_duplicates_from_sorted_array(nums: Seq<int>) -> (result: Seq<int>)
+    requires
+        is_sorted(nums),
+        1 <= nums.len() <= 30000,
+        forall|i: int| 0 <= i < nums.len() ==> -100 <= nums[i] <= 100
+    ensures
+        is_sorted_and_distinct(result),
+        same_elements(nums, result)
+{
+    let mut result = Seq::empty();
+    let mut idx = 0;
+    
+    while idx < nums.len()
+        invariant
+            0 <= idx <= nums.len(),
+            is_sorted_and_distinct(result),
+            // All elements in result come from the first idx elements of nums
+            forall|i: int| 0 <= i < result.len() ==> 
+                exists|j: int| 0 <= j < idx && nums[j] == result[i],
+            // Every unique element in first idx positions appears in result
+            forall|j: int| 0 <= j < idx ==> contains(result, nums[j]),
+            // No element appears twice in result
+            forall|i: int, k: int| 0 <= i < k < result.len() ==> result[i] != result[k]
+    {
+        let current = nums[idx];
+        
+        if result.len() == 0 || result[result.len() - 1] != current {
+            // Prove that current is greater than last element in result
+            if result.len() > 0 {
+                let last_in_result = result[result.len() - 1];
+                // Find where last_in_result came from in nums
+                assert(exists|k: int| 0 <= k < idx && nums[k] == last_in_result);
+                // Since nums is sorted and we haven't seen current before,
+                // current must be > last_in_result
+                assert(current > last_in_result) by {
+                    // current != last_in_result (otherwise we wouldn't add it)
+                    // nums is sorted, so current >= last_in_result
+                    // therefore current > last_in_result
+                };
+            }
+            
+            result = result.push(current);
+            
+            // Prove that result maintains sorted and distinct property
+            assert(is_sorted_and_distinct(result)) by {
+                if result.len() <= 1 {
+                    // Trivially true for sequences of length 0 or 1
+                } else {
+                    // For all pairs i < j, result[i] < result[j]
+                    // This follows from the previous invariant and the fact that
+                    // current > all previous elements
+                }
+            };
+        }
+        
+        idx = idx + 1;
+    }
+    
+    // At this point, we've processed all elements
+    // Prove same_elements property
+    assert(same_elements(nums, result)) by {
+        // From invariants, we know:
+        // 1. Every element in result comes from nums
+        // 2. Every element in nums appears in result
+        // Therefore, they contain the same elements
+    };
+    
+    result
+}
+
+}

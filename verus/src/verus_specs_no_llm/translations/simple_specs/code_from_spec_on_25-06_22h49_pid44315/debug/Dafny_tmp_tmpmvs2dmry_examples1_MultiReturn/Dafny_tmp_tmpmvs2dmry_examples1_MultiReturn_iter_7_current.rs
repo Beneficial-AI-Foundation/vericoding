@@ -1,0 +1,41 @@
+The main problem is that `less <= x <= more` requires `x - y <= x <= x + y`, but `x - y <= x` is only true when `y >= 0`, and we need to ensure the chain `less <= x <= more` holds.
+
+Let me fix the proof assertions:
+
+use builtin::*;
+use builtin_macros::*;
+
+verus! {
+
+fn main() {
+}
+
+fn MultiReturn(x: int, y: int) -> (more: int, less: int)
+    requires
+        y >= 0
+    ensures
+        less <= x <= more
+{
+    let more = x + y;
+    let less = x - y;
+    
+    // Proof assertions to help Verus verify the postcondition
+    assert(less <= x) by {
+        // Since y >= 0, we have -y <= 0, so x - y <= x + 0 = x
+        assert(y >= 0);
+        assert(-y <= 0);
+        assert(x + (-y) <= x + 0);
+        assert(x - y <= x);
+    };
+    
+    assert(x <= more) by {
+        // Since y >= 0, we have x <= x + y
+        assert(y >= 0);
+        assert(x + 0 <= x + y);
+        assert(x <= x + y);
+    };
+    
+    (more, less)
+}
+
+}

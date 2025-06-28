@@ -1,0 +1,47 @@
+use builtin::*;
+use builtin_macros::*;
+
+verus! {
+
+fn main() {
+}
+
+fn ContainsConsecutiveNumbers(a: Vec<int>) -> (result: bool)
+    requires
+        a.len() > 0
+    ensures
+        result <==> (exists|i: int| 0 <= i < a.len() - 1 && a.spec_index(i) + 1 == a.spec_index(i + 1))
+{
+    if a.len() <= 1 {
+        return false;
+    }
+    
+    let mut i: usize = 0;
+    while i < a.len() - 1
+        invariant
+            0 <= i <= a.len() - 1,
+            a.len() > 1,
+            forall|j: int| 0 <= j < i ==> a.spec_index(j) + 1 != a.spec_index(j + 1)
+        decreases a.len() - 1 - i
+    {
+        if a[i] + 1 == a[i + 1] {
+            // Proof: We found consecutive numbers at position i
+            assert(0 <= i < a.len() - 1);
+            assert(a.spec_index(i as int) + 1 == a.spec_index((i + 1) as int));
+            return true;
+        }
+        i = i + 1;
+    }
+    
+    // Proof: We've checked all positions and found no consecutive numbers
+    assert(i == a.len() - 1);
+    assert(forall|j: int| 0 <= j < a.len() - 1 ==> a.spec_index(j) + 1 != a.spec_index(j + 1)) by {
+        // At this point, i == a.len() - 1, so our invariant covers all valid j
+        assert(forall|j: int| 0 <= j < i ==> a.spec_index(j) + 1 != a.spec_index(j + 1));
+        assert(i == a.len() - 1);
+    }
+    
+    return false;
+}
+
+}

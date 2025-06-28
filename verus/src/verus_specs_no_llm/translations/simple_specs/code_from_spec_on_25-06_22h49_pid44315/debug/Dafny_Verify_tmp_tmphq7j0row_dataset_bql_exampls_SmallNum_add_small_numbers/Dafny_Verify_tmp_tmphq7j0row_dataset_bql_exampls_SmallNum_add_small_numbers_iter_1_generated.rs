@@ -1,0 +1,33 @@
+use builtin::*;
+use builtin_macros::*;
+
+verus! {
+
+fn main() {
+}
+
+fn add_small_numbers(a: Vec<int>, n: int, max: int) -> (r: int)
+    requires
+        n > 0,
+        n <= a.len(),
+        (forall i: int :: 0 <= i && i < n ==> a.spec_index(i) <= max)
+    ensures
+        r <= max * n
+{
+    let mut sum = 0;
+    let mut i = 0;
+    
+    while i < n
+        invariant
+            0 <= i && i <= n,
+            sum <= max * i,
+            (forall j: int :: 0 <= j && j < n ==> a.spec_index(j) <= max)
+    {
+        sum = sum + a[i as usize];
+        i = i + 1;
+    }
+    
+    sum
+}
+
+}

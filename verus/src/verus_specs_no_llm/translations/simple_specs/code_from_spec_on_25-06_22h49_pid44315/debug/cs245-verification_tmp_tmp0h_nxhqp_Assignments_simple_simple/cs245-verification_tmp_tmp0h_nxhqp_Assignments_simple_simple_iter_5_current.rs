@@ -1,0 +1,22 @@
+use builtin::*;
+use builtin_macros::*;
+
+verus! {
+
+fn main() {
+}
+
+fn simple(y: int) -> (result: int)
+    requires
+        y == 6
+    ensures
+        result == 7
+{
+    let x = y + 1;
+    assert(y == 6); // This follows from the precondition
+    assert(x == 6 + 1); // Basic arithmetic
+    assert(x == 7); // Therefore x == 7
+    x
+}
+
+}

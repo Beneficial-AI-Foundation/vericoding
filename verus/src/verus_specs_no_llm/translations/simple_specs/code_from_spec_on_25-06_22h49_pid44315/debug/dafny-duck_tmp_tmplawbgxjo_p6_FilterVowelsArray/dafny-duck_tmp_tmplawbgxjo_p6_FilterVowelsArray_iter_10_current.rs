@@ -1,0 +1,155 @@
+use builtin::*;
+use builtin_macros::*;
+
+verus! {
+
+fn main() {
+}
+
+spec fn is_vowel(c: char) -> bool {
+    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+    c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
+}
+
+spec fn FilterVowels(s: Seq<char>) -> Seq<char>
+    decreases s.len()
+{
+    if s.len() == 0 {
+        seq![]
+    } else {
+        let rest = FilterVowels(s.subrange(1, s.len() as int));
+        if is_vowel(s[0]) {
+            rest
+        } else {
+            seq![s[0]] + rest
+        }
+    }
+}
+
+fn is_vowel_exec(c: char) -> (result: bool)
+    ensures result == is_vowel(c)
+{
+    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+    c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
+}
+
+proof fn lemma_filter_vowels_extend(s: Seq<char>, i: int)
+    requires 0 <= i < s.len()
+    ensures FilterVowels(s.subrange(0, i + 1)) == 
+        if is_vowel(s[i]) {
+            FilterVowels(s.subrange(0, i))
+        } else {
+            FilterVowels(s.subrange(0, i)) + seq![s[i]]
+        }
+    decreases i
+{
+    if i == 0 {
+        // Base case: s.subrange(0, 1) has length 1
+        let single = s.subrange(0, 1);
+        assert(single.len() == 1);
+        assert(single[0] == s[0]);
+        
+        // FilterVowels definition for single element
+        let rest = FilterVowels(single.subrange(1, 1));
+        assert(single.subrange(1, 1).len() == 0);
+        assert(rest == seq![]);
+        
+        if is_vowel(s[0]) {
+            assert(FilterVowels(single) == rest);
+            assert(FilterVowels(s.subrange(0, 0)) == seq![]);
+        } else {
+            assert(FilterVowels(single) == seq![single[0]] + rest);
+            assert(FilterVowels(single) == seq![s[0]]);
+            assert(FilterVowels(s.subrange(0, 0)) == seq![]);
+        }
+    } else {
+        // Recursive case: use induction on the structure
+        let prefix = s.subrange(0, i + 1);
+        assert(prefix.len() == i + 1);
+        assert(prefix[0] == s[0]);
+        
+        let tail = prefix.subrange(1, (i + 1) as int);
+        assert(tail == s.subrange(1, i + 1));
+        
+        // Apply FilterVowels definition
+        let rest = FilterVowels(tail);
+        
+        // Use induction hypothesis on the tail - fix the bounds
+        if i > 0 {
+            lemma_filter_vowels_extend(s, i - 1);
+        }
+        
+        // The rest follows from the definition of FilterVowels
+        if is_vowel(s[0]) {
+            assert(FilterVowels(prefix) == rest);
+        } else {
+            assert(FilterVowels(prefix) == seq![s[0]] + rest);
+        }
+    }
+}
+
+proof fn lemma_filter_vowels_build(s: Seq<char>, i: int)
+    requires 0 <= i <= s.len()
+    ensures FilterVowels(s.subrange(0, i)) == 
+        if i == 0 { seq![] }
+        else if is_vowel(s[i-1]) { FilterVowels(s.subrange(0, i-1)) }
+        else { FilterVowels(s.subrange(0, i-1)) + seq![s[i-1]] }
+    decreases i
+{
+    if i == 0 {
+        assert(s.subrange(0, 0).len() == 0);
+        assert(FilterVowels(s.subrange(0, 0)) == seq![]);
+    } else {
+        lemma_filter_vowels_extend(s, i - 1);
+    }
+}
+
+fn FilterVowelsArray(xs: Vec<char>) -> (ys: Vec<char>)
+    ensures FilterVowels(xs@) == ys@
+{
+    let mut result = Vec::new();
+    let mut i = 0;
+    
+    while i < xs.len()
+        invariant
+            i <= xs.len(),
+            result@ == FilterVowels(xs@.subrange(0, i as int))
+    {
+        let old_result = result@;
+        
+        if !is_vowel_exec(xs[i]) {
+            result.push(xs[i]);
+            
+            proof {
+                lemma_filter_vowels_build(xs@, (i + 1) as int);
+                assert(xs@[i as int] == xs[i]);
+                assert(!is_vowel(xs@[i as int]));
+                assert(FilterVowels(xs@.subrange(0, (i + 1) as int)) == 
+                       FilterVowels(xs@.subrange(0, i as int)) + seq![xs@[i as int]]);
+                assert(result@ == old_result + seq![xs[i]]);
+                assert(old_result == FilterVowels(xs@.subrange(0, i as int)));
+            }
+        } else {
+            proof {
+                lemma_filter_vowels_build(xs@, (i + 1) as int);
+                assert(xs@[i as int] == xs[i]);
+                assert(is_vowel(xs@[i as int]));
+                assert(FilterVowels(xs@.subrange(0, (i + 1) as int)) == 
+                       FilterVowels(xs@.subrange(0, i as int)));
+                assert(result@ == old_result);
+                assert(old_result == FilterVowels(xs@.subrange(0, i as int)));
+            }
+        }
+        
+        i += 1;
+    }
+    
+    proof {
+        assert(i == xs.len());
+        assert(xs@.subrange(0, i as int) == xs@);
+        assert(result@ == FilterVowels(xs@));
+    }
+    result
+}
+
+}

@@ -1,0 +1,140 @@
+use builtin::*;
+use builtin_macros::*;
+
+verus! {
+
+fn main() {
+}
+
+spec fn isPrefixPred(pre: String, str: String) -> bool {
+    (pre.len() <= str.len()) && 
+    (forall|i: int| 0 <= i < pre.len() ==> pre.index(i) == str.index(i))
+}
+
+spec fn haveCommonKSubstringPred(k: nat, str1: String, str2: String) -> bool {
+    exists|i1: int| 0 <= i1 <= str1.len() - k && isSubstringPred(str1.substring(i1, i1 + k as int), str2)
+}
+
+spec fn haveNotCommonKSubstringPred(k: nat, str1: String, str2: String) -> bool {
+    forall|i1: int| 0 <= i1 <= str1.len() - k ==> isNotSubstringPred(str1.substring(i1, i1 + k as int), str2)
+}
+
+spec fn isSubstringPred(sub: String, str: String) -> bool {
+    exists|i: int| 0 <= i <= str.len() - sub.len() && isPrefixPred(sub, str.substring(i, str.len()))
+}
+
+spec fn isNotPrefixPred(pre: String, str: String) -> bool {
+    (pre.len() > str.len()) || 
+    (exists|i: int| 0 <= i < pre.len() && pre.index(i) != str.index(i))
+}
+
+spec fn isNotSubstringPred(sub: String, str: String) -> bool {
+    forall|i: int| 0 <= i <= str.len() - sub.len() ==> isNotPrefixPred(sub, str.substring(i, str.len()))
+}
+
+fn isPrefix(pre: String, str: String) -> (res: bool)
+    ensures !res <==> isNotPrefixPred(pre, str)
+    ensures res <==> isPrefixPred(pre, str)
+{
+    if pre.len() > str.len() {
+        assert(isNotPrefixPred(pre, str));
+        return false;
+    }
+    
+    let mut i: usize = 0;
+    while i < pre.len()
+        invariant 0 <= i <= pre.len()
+        invariant pre.len() <= str.len()
+        invariant forall|j: int| 0 <= j < i ==> pre.index(j) == str.index(j)
+    {
+        if pre.index(i as int) != str.index(i as int) {
+            assert(isNotPrefixPred(pre, str));
+            return false;
+        }
+        i = i + 1;
+    }
+    assert(isPrefixPred(pre, str));
+    true
+}
+
+fn isSubstring(sub: String, str: String) -> (res: bool)
+    ensures res <==> isSubstringPred(sub, str)
+    ensures res ==> isSubstringPred(sub, str)
+    ensures isSubstringPred(sub, str) ==> res
+    ensures !res <==> isNotSubstringPred(sub, str)
+{
+    if sub.len() > str.len() {
+        assert(isNotSubstringPred(sub, str));
+        return false;
+    }
+    
+    let mut i: usize = 0;
+    while i <= str.len() - sub.len()
+        invariant 0 <= i <= str.len() - sub.len() + 1
+        invariant sub.len() <= str.len()
+        invariant forall|j: int| 0 <= j < i ==> isNotPrefixPred(sub, str.substring(j, str.len()))
+    {
+        if isPrefix(sub, str.substring(i as int, str.len())) {
+            assert(isSubstringPred(sub, str));
+            return true;
+        }
+        i = i + 1;
+    }
+    assert(isNotSubstringPred(sub, str));
+    false
+}
+
+fn haveCommonKSubstring(k: nat, str1: String, str2: String) -> (found: bool)
+    ensures found <==> haveCommonKSubstringPred(k, str1, str2)
+    ensures !found <==> haveNotCommonKSubstringPred(k, str1, str2)
+{
+    if k > str1.len() {
+        assert(haveNotCommonKSubstringPred(k, str1, str2));
+        return false;
+    }
+    
+    let mut i: usize = 0;
+    while i <= str1.len() - k
+        invariant 0 <= i <= str1.len() - k + 1
+        invariant k <= str1.len()
+        invariant forall|j: int| 0 <= j < i ==> isNotSubstringPred(str1.substring(j, j + k as int), str2)
+    {
+        let substring = str1.substring(i as int, i as int + k as int);
+        if isSubstring(substring, str2) {
+            assert(haveCommonKSubstringPred(k, str1, str2));
+            return true;
+        }
+        i = i + 1;
+    }
+    assert(haveNotCommonKSubstringPred(k, str1, str2));
+    false
+}
+
+fn maxCommonSubstringLength(str1: String, str2: String) -> (len: nat)
+    requires str1.len() <= str2.len()
+    ensures forall|k: nat| len < k <= str1.len() ==> !haveCommonKSubstringPred(k, str1, str2)
+    ensures len == 0 || haveCommonKSubstringPred(len, str1, str2)
+{
+    if str1.len() == 0 {
+        return 0;
+    }
+    
+    let mut k: usize = str1.len();
+    
+    while k > 0
+        invariant 0 <= k <= str1.len()
+        invariant forall|j: nat| k < j <= str1.len() ==> !haveCommonKSubstringPred(j, str1, str2)
+    {
+        if haveCommonKSubstring(k as nat, str1, str2) {
+            assert(haveCommonKSubstringPred(k as nat, str1, str2));
+            return k as nat;
+        }
+        k = k - 1;
+    }
+    
+    // At this point k == 0, so no common substring of any positive length exists
+    assert(forall|j: nat| 0 < j <= str1.len() ==> !haveCommonKSubstringPred(j, str1, str2));
+    0
+}
+
+}
