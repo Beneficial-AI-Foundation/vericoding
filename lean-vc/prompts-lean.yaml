@@ -1,0 +1,92 @@
+generate_code: |
+  The task is to generate a Lean file that is verified from an incomplete Lean file that contains the keyword "sorry" in place of desired code and proof blocks.  
+  
+  INPUT: a Lean file of the form
+         def def_type_1 := sorry     
+         ...
+         def def_type_n := sorry
+         theorem thm_type_1 := sorry
+         ...
+         theorem thm_type_n := sorry
+    WHERE:
+    - where each def_type_i is of the form 
+
+    name {{implicit_args}} (hypotheses) (arguments) : result
+
+    where "sorry" represents a missing implementation for a desired function.
+
+    - each theorem represents a property about one or more of the def_type_i. The theorem thype thm_type_i is of the form
+    {{implicit_arg1 : Type1}} 
+    (explicit_arg2 : Type2) 
+    (hypothesis : Prop) 
+    : Conclusion
+
+    where "Conclusion" is a formula or conjunction of formulas representing the desired properties for some of the missing implementations in def def_type_1, ..., def def_type_n
+
+  OUTPUT: Return ONLY the complete Lean code file, wrapped in a ```lean code block. Do not include any explanations, reasoning, or markdown outside the code block.
+  
+  The output should be a verified Lean file of the form:
+        def def_type_1 := implementation_1
+        ...
+        def def_type_n := implementation_n
+        theorem thm_type_1 := proof_1
+        ...
+        theorem thm_type_n := proof_n
+    
+  CRITICAL RULES:
+  - do not change any of def_type_i or thm_type_i 
+  - do not use sorry in the output file
+  - the input file may contain additional definitions (without "sorry") that you can use in implementations if needed. 
+  - you can add helper definitions, theorems, and lemmas as needed, but the initial definitions and theorems must remain unchanged. 
+  Moreover, for any new definition, lemma or theorem you add, add a comment of the form -- LLM HELPER on the line just before it. 
+  - Return ONLY the Lean code, no explanations or markdown
+  
+  LEAN SPECIFICATION WITH EMPTY DEFINITIONS AND PROOF BODIES:
+  {code}
+
+fix_verification: |
+ The task is to review definitions and theorems in a Lean file that do not verify due to missing or invalid implementations or proofs. 
+ INPUT: a Lean file that contains some definitions and theorems that dont verify due to missing or invalid implementations or proofs. 
+ The file contains:
+ - some atoms (def, lemma, theorem, ...) that have the comment -- LLM HELPER before them. These atoms you can change and remove at will. 
+
+ For all the other atoms (that do not have the comment -- LLM HELPER) your are allowed to change the definition or prooof body, but you are not allowed to change the name, type, or signature of the atom.
+
+  More precisely, these atoms will be of the form:
+  def def_type_1 := implementation_1
+  ...
+  def def_type_n := implementation_n
+  theorem thm_type_1 := proof_1
+  ...
+  theorem thm_type_n := proof_n
+    
+  and you are allowed to change the implementation_i and proof_i, but you are not allowed to change def_type_i or thm_type_i. So the output file should contain:
+
+  def def_type_1 := implementation_upd_1
+  ...
+  def def_type_n := implementation_upd_n
+  theorem thm_type_1 := proof_upd_1
+  ...
+  theorem thm_type_n := proof_upd_n
+  where implementation_upd_i and proof_upd_i are the updated implementations and proofs that should verify.
+
+    
+  POSITIVE CRITICAL RULES:
+  - you can change the implementation of def_type_i and proof of thm_type_i to fix the verification errors
+  - you can add helper definitions, theorems, and lemmas as needed, but the initial definitions and theorems must remain unchanged. 
+  Moreover, for any new definition, lemma or theorem you add, add a comment of the form -- LLM HELPER on the line just before it. 
+  
+  NEGATIVE CRITICAL RULES:
+  - you should not add trivial annotations (requires true, invariant true, ensures true, etc.)
+  - you should not add null checks on non-nullable types
+  - do not use sorry in the output file
+  - output valid Lean code
+  - Return ONLY the Lean code, no explanations or markdown
+
+  OUTPUT: Return ONLY the complete Lean code file, wrapped in a ```lean code block. Do not include any explanations, reasoning, or markdown outside the code block.
+  
+  ERROR DETAILS from Lean verification of the given code:
+  {errorDetails}
+
+  Code Below:
+  {code}
