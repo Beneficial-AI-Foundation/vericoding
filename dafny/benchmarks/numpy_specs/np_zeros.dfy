@@ -1,7 +1,4 @@
-//https://numpy.org/doc/stable/reference/generated/numpy.zeros.html
-
-//zeros(shape, dtype=float, order='C', *, like=None)
-
+//SPEC
 method zeros (shape: array<nat>) returns (ret: array2<int>)
     requires shape.Length == 2;
     requires shape[0] > 0 && shape[1] > 0;

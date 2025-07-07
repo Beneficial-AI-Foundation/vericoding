@@ -1,8 +1,4 @@
-//https://numpy.org/doc/stable/reference/generated/numpy.reshape.html
-
-
-//reshapes
-//one of the inputs can be negative one, in which case the other dimensions is inferred 
+//SPEC
 method reshape(arr: array<int>, shape: array<int>) returns (ret: array2<int>)
     requires shape.Length == 2;
     requires forall i :: 0 <= i < 2 ==> shape[i] > 0 || shape[i] == - 1 

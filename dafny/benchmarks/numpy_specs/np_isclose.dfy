@@ -1,6 +1,4 @@
-//https://numpy.org/doc/stable/reference/generated/numpy.isclose.html#numpy.isclose
-
-//Returns a boolean array where two arrays are element-wise equal within a tolerance.
+//SPEC
 method np_isclose(a: array<int>, b: array<int>, tol : int) returns (ret: array<bool>)
     requires a.Length > 0; 
     requires a.Length == b.Length;

@@ -1,16 +1,11 @@
-//https://numpy.org/doc/stable/reference/generated/numpy.poly.html
-
-//Find the coefficients of a polynomial with the given sequence of roots.
-
-//not complete: needs to be editted
-method poly (roots: array<real>) returns (coeff: array<real>) //only difference is doesn't have val
+//SPEC
+method poly (roots: array<real>) returns (coeff: array<real>)
     requires roots.Length > 0; 
     ensures coeff.Length == roots.Length;
     ensures forall i :: 0 <= i < roots.Length ==> coeff[i] == poly_helper(roots, roots.Length - 1)[i]; //don't know how to fix
 {} 
 
-//will modify to not have two separate functions (can use slicing on array instead)
-
+//SPEC
 method poly_helper (roots: array<real>, val: nat) returns (coeff: array<real>)
     requires roots.Length > 0; 
     requires val > 0 
