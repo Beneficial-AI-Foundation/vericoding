@@ -1,0 +1,57 @@
+name: Claude Assistant
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  claude-assist:
+    runs-on: ubuntu-latest
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'issues' && contains(github.event.issue.body, '@claude')) ||
+      (github.event_name == 'pull_request' && contains(github.event.pull_request.body, '@claude'))
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Claude Response
+      uses: anthropics/claude-code-action@v1
+      with:
+        api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        model: claude-3-5-sonnet-20241022
+        max-response-length: 3000
+        context-window: 128000
+        temperature: 0.2
+        system-prompt: |
+          You are Claude, an AI assistant helping with the vericoding repository.
+          This repository contains tools and benchmarks for verified coding using:
+          - Lean 4 for formal verification
+          - Dafny for verified programming
+          - Verus for verified Rust
+          
+          When responding to questions:
+          - Provide clear, helpful answers about verification techniques
+          - Suggest appropriate verification tools for the task
+          - Include code examples when relevant
+          - Reference existing examples in the repository when applicable
+        
+        response-style: |
+          - Be concise but thorough
+          - Use code blocks with appropriate syntax highlighting
+          - Provide links to relevant documentation
+          - Suggest follow-up resources when appropriate
