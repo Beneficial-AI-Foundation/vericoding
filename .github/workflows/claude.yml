@@ -29,13 +29,12 @@ jobs:
     - name: Claude Response
       uses: anthropics/claude-code-action@beta
       with:
-        api-key: ${{ secrets.ANTHROPIC_API_KEY }}
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        model: claude-opus-4-20250514
-        max-response-length: 7000
-        context-window: 128000
-        temperature: 0.3
-        system-prompt: |
+        anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        anthropic_model: claude-opus-4-20250514
+        max_turns: 5
+        timeout_minutes: 10
+        custom_instructions: |
           You are Claude, an AI assistant helping with the vericoding repository.
           This repository contains tools and benchmarks for verified coding using:
           - Lean 4 for formal verification
@@ -47,9 +46,3 @@ jobs:
           - Suggest appropriate verification tools for the task
           - Include code examples when relevant
           - Reference existing examples in the repository when applicable
-        
-        response-style: |
-          - Be concise but thorough
-          - Use code blocks with appropriate syntax highlighting
-          - Provide links to relevant documentation
-          - Suggest follow-up resources when appropriate
