@@ -27,14 +27,14 @@ jobs:
       uses: actions/checkout@v4
       
     - name: Claude Response
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@beta
       with:
         api-key: ${{ secrets.ANTHROPIC_API_KEY }}
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        model: claude-3-5-sonnet-20241022
-        max-response-length: 3000
+        model: claude-opus-4-20250514
+        max-response-length: 7000
         context-window: 128000
-        temperature: 0.2
+        temperature: 0.3
         system-prompt: |
           You are Claude, an AI assistant helping with the vericoding repository.
           This repository contains tools and benchmarks for verified coding using:
