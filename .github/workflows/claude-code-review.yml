@@ -25,27 +25,12 @@ jobs:
       
     - name: Claude Code Review
       if: steps.changed-files.outputs.any_changed == 'true'
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@beta
       with:
         api-key: ${{ secrets.ANTHROPIC_API_KEY }}
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        model: claude-3-5-sonnet-20241022
+        model: claude-opus-4-20250514
         max-comment-length: 2000
-        review-types: |
-          - code-quality
-          - potential-bugs
-          - performance
-          - security
-          - best-practices
-        include-patterns: |
-          - "**/*.lean"
-          - "**/*.dfy"
-          - "**/*.rs"
-          - "**/*.py"
-          - "**/*.js"
-          - "**/*.ts"
+
         exclude-patterns: |
-          - "**/test/**"
-          - "**/tests/**"
-          - "**/*.test.*"
-          - "**/*.spec.*"
+          - "**/*.json"
