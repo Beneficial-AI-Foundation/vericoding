@@ -8,6 +8,8 @@ which partitions an array of colors (Red, White, Blue) such that
 all reds come before whites, and all whites come before blues.
 -/
 
+import NumpySpec.DafnyBenchmarks.Multiset
+
 namespace DafnyBenchmarks
 
 /-- The three colors of the Dutch flag -/
@@ -15,7 +17,7 @@ inductive Color
   | Red
   | White
   | Blue
-deriving DecidableEq
+deriving DecidableEq, Inhabited
 
 /-- Predicate defining the ordering relation between colors -/
 def below (c d : Color) : Bool :=
@@ -28,24 +30,26 @@ def dutchFlag (a : Array Color) : Array Color :=
     else if h : i < arr.size then
       match arr[i] with
       | Color.Red => 
-        let arr' := arr.swap ⟨i, h⟩ ⟨k, sorry⟩
-        partition arr' (i + 1) j (k + 1)
+        if hk : k < arr.size then
+          let arr' := arr.swap i k
+          partition arr' (i + 1) j (k + 1)
+        else arr
       | Color.White => 
         partition arr (i + 1) j k
       | Color.Blue => 
         if hj : j < arr.size then
-          let arr' := arr.swap ⟨i, h⟩ ⟨j, hj⟩
+          let arr' := arr.swap i j
           partition arr' i (j - 1) k
         else arr
     else arr
-  termination_by j + 1 - i
-  partition a 0 (a.size - 1) 0
+  termination_by sorry
+  partition a 0 (if a.size = 0 then 0 else a.size - 1) 0
 
 /-- Specification for the Dutch Flag algorithm -/
 theorem dutchFlag_spec (a : Array Color) :
     let a' := dutchFlag a
     (∀ i j, 0 ≤ i → i < j → j < a'.size → below a'[i]! a'[j]!) ∧
-    a'.toList.toFinset = a.toList.toFinset := by
+    a'.toList.toMultiset = a.toList.toMultiset := by
   sorry
 
 end DafnyBenchmarks

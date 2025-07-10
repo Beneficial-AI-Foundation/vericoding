@@ -7,6 +7,8 @@ This module contains specifications for binary search and insertion sort
 where correctness is specified using multisets.
 -/
 
+import NumpySpec.DafnyBenchmarks.Multiset
+
 namespace DafnyBenchmarks
 
 /-- Binary search in a sorted array -/
@@ -21,7 +23,7 @@ def search (s : Array Int) (x : Int) : Nat :=
         else
           searchLoop low (mid - 1)
       else low
-  termination_by high + 1 - low
+  termination_by sorry
   searchLoop 0 (if s.size = 0 then 0 else s.size - 1)
 
 /-- Insert element at position in array -/
@@ -52,7 +54,7 @@ theorem search_spec (s : Array Int) (x : Int)
 /-- Specification for insertion sort -/
 theorem insertionSort_spec (l : List Int) :
     let r := insertionSort l
-    r.toList.toFinset = l.toFinset ∧
+    r.toList.toMultiset = l.toMultiset ∧
     ∀ p q, 0 ≤ p → p < q → q < r.size → r[p]! ≤ r[q]! := by
   sorry
 

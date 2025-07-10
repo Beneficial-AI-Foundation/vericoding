@@ -7,6 +7,8 @@ This module contains specifications for partitioning and QuickSelect algorithm
 using multisets to find the k-th smallest element.
 -/
 
+import NumpySpec.DafnyBenchmarks.Multiset
+
 namespace DafnyBenchmarks
 
 /-- Represents a partition result -/
@@ -45,12 +47,13 @@ def quickSelect (lst : List Int) (k : Nat) (h : lst ≠ [] ∧ k < lst.length) :
         part  -- Should not reach here
     else
       part
+termination_by sorry
 
 /-- Specification for partition -/
 theorem partition_spec (lst : List Int) (h : lst ≠ []) :
     let part := partition lst h
     part.pivot ∈ lst ∧
-    lst.toFinset = (part.pre ++ [part.pivot] ++ part.post).toFinset ∧
+    lst.toMultiset = (part.pre ++ [part.pivot] ++ part.post).toMultiset ∧
     (∀ z ∈ part.pre, z ≤ part.pivot) ∧
     (∀ z ∈ part.post, z ≥ part.pivot) := by
   sorry
@@ -59,7 +62,7 @@ theorem partition_spec (lst : List Int) (h : lst ≠ []) :
 theorem quickSelect_spec (lst : List Int) (k : Nat) (h : lst ≠ [] ∧ k < lst.length) :
     let result := quickSelect lst k h
     result.pivot ∈ lst ∧
-    lst.toFinset = (result.pre ++ [result.pivot] ++ result.post).toFinset ∧
+    lst.toMultiset = (result.pre ++ [result.pivot] ++ result.post).toMultiset ∧
     result.pre.length = k ∧
     (∀ z ∈ result.pre, z ≤ result.pivot) ∧
     (∀ z ∈ result.post, z ≥ result.pivot) := by

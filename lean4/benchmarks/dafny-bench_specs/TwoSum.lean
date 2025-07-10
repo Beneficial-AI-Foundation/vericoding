@@ -32,10 +32,9 @@ theorem twoSum_spec (nums : Array Int) (target : Int)
     twoSum nums target
     ⦃⇓result => ⌜let (i, j) := result
                  0 ≤ i ∧ i < j ∧ j < nums.size ∧
-                 nums[i]! + nums[j]! = target ∧
+                 nums[i.toNat]! + nums[j.toNat]! = target ∧
                  (∀ ii jj : Nat, 0 ≤ ii ∧ ii < i ∧ ii < jj ∧ jj < nums.size → 
                    nums[ii]! + nums[jj]! ≠ target) ∧
                  (∀ jj : Nat, i < jj ∧ jj < j → 
-                   nums[i]! + nums[jj]! ≠ target)⌝⦄ := by
-  mvcgen [twoSum]
+                   nums[i.toNat]! + nums[jj]! ≠ target)⌝⦄ := by
   sorry

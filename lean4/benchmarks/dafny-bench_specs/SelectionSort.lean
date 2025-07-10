@@ -13,7 +13,11 @@ open Std.Do
 def selectionSort (a : Array Int) : Id (Array Int) :=
   -- For now, just return a sorted copy
   let sorted := a.toList.toArray.qsort (· < ·)
-  sorted
+  pure sorted
+
+/-- Helper function to count occurrences of an element in an array -/
+def countOccurrences (arr : Array Int) (elem : Int) : Nat :=
+  arr.toList.filter (· = elem) |>.length
 
 /-- Specification: selectionSort sorts the array in ascending order
     while preserving all elements.
@@ -21,10 +25,6 @@ def selectionSort (a : Array Int) : Id (Array Int) :=
     Precondition: True (no special preconditions)
     Postcondition: Array is sorted and contains same elements
 -/
-/-- Helper function to count occurrences of an element in an array -/
-def countOccurrences (arr : Array Int) (elem : Int) : Nat :=
-  arr.toList.filter (· = elem) |>.length
-
 theorem selectionSort_spec (a : Array Int) :
     ⦃⌜True⌝⦄
     selectionSort a

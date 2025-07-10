@@ -31,5 +31,4 @@ theorem find_spec (a : Array Int) (key : Int) :
                 (index ≠ -1 → a[index.toNat]! = key ∧ 
                   (∀ i : Nat, i < index.toNat → a[i]! ≠ key)) ∧
                 (index = -1 → ∀ i : Fin a.size, a[i] ≠ key)⌝⦄ := by
-  mvcgen [find]
   sorry

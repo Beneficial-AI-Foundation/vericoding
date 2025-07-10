@@ -25,7 +25,7 @@ def squareRoot (N : Nat) : Id Nat :=
           findRoot (guess + 1)
       else
         guess
-    termination_by N - guess
+    termination_by n - guess
     findRoot 0
   )
 
@@ -40,5 +40,4 @@ theorem squareRoot_spec (N : Nat) :
     ⦃⌜True⌝⦄
     squareRoot N
     ⦃⇓r => ⌜r * r ≤ N ∧ N < (r + 1) * (r + 1)⌝⦄ := by
-  mvcgen [squareRoot]
   sorry

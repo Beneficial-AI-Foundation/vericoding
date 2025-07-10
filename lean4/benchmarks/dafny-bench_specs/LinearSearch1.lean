@@ -32,5 +32,4 @@ theorem linearSearch_spec (a : Array Int) (e : Int) :
     ⦃⇓n => ⌜0 ≤ n ∧ n ≤ a.size ∧
             (n = a.size ∨ (n < a.size ∧ a[n]! = e)) ∧
             (∀ i : Nat, i < n → a[i]! ≠ e)⌝⦄ := by
-  mvcgen [linearSearch]
   sorry

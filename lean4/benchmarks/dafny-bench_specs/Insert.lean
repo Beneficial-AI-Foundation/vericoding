@@ -45,5 +45,4 @@ theorem insert_spec (line : Array Char) (l : Nat) (nl : Array Char) (p : Nat) (p
     ⦃⇓result => ⌜(∀ i : Nat, i < p → result[pos + i]! = nl[i]!) ∧
                  (∀ i : Nat, i < pos → result[i]! = line[i]!) ∧
                  (∀ i : Nat, pos + p ≤ i ∧ i < l + p → result[i]! = line[i - p]!)⌝⦄ := by
-  mvcgen [insert]
   sorry
