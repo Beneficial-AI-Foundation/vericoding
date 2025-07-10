@@ -22,7 +22,7 @@ def search1000 (a : Array Int) (x : Int) : Nat :=
         else
           searchLoop low (mid - 1)
       else low
-  termination_by high + 1 - low
+  termination_by high - low
   searchLoop 0 999
 
 /-- Predicate to check if n is a power of 2 -/
@@ -30,6 +30,8 @@ def is2Pow : Nat → Bool
   | 0 => false
   | 1 => true
   | n => n % 2 = 0 && is2Pow (n / 2)
+termination_by n => n
+decreasing_by sorry
 
 /-- Binary search using a loop on array segments of size 2^k - 1 -/
 def search2PowLoop (a : Array Int) (i n : Nat) (x : Int) : Nat :=
@@ -45,7 +47,7 @@ def search2PowLoop (a : Array Int) (i n : Nat) (x : Int) : Nat :=
           else
             searchLoop low (if mid > 0 then mid - 1 else 0)
         else low
-    termination_by high + 1 - low
+    termination_by high - low
     searchLoop i (i + n - 1)
 
 /-- Binary search using recursion on array segments of size 2^k - 1 -/
@@ -60,7 +62,7 @@ def search2PowRecursive (a : Array Int) (i n : Nat) (x : Int) : Nat :=
       else
         search2PowRecursive a i m x
     else i
-termination_by n
+termination_by n - i
 
 /-- Specification for search1000 -/
 theorem search1000_spec (a : Array Int) (x : Int)

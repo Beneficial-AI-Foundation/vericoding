@@ -24,7 +24,7 @@ def searchRecursive (a : Array Float) (i j : Nat) (x : Float) : Nat :=
           searchRecursive a i mid x
         else i
     else i
-termination_by j - i
+termination_by high - low
 
 /-- Iterative binary search on a decreasing sequence -/
 def searchLoop (a : Array Float) (i j : Nat) (x : Float) : Nat :=

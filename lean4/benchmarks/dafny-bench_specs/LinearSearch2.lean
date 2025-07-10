@@ -27,5 +27,4 @@ theorem linearSearch2_spec (a : Array Int) (e : Int) :
     ⦃⌜∃ i : Fin a.size, a[i] = e⌝⦄
     linearSearch2 a e
     ⦃⇓n => ⌜n < a.size ∧ a[n]! = e ∧ (∀ k : Nat, k < n → a[k]! ≠ e)⌝⦄ := by
-  mvcgen [linearSearch2]
   sorry

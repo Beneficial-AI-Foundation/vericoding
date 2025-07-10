@@ -7,6 +7,8 @@ This module contains specifications for checking if a sequence is sorted
 and for insertion sort algorithm.
 -/
 
+import NumpySpec.DafnyBenchmarks.Multiset
+
 namespace DafnyBenchmarks
 
 /-- Predicate to check if an array is sorted in non-decreasing order -/
@@ -32,7 +34,7 @@ def insertionSort (s : Array Int) : Array Int :=
 /-- Specification for insertion sort -/
 theorem insertionSort_spec (s : Array Int) :
     let r := insertionSort s
-    r.toList.toFinset = s.toList.toFinset ∧ isSorted r := by
+    r.toList.toMultiset = s.toList.toMultiset ∧ isSorted r := by
   sorry
 
 end DafnyBenchmarks

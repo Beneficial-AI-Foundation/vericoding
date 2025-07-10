@@ -28,5 +28,4 @@ theorem linearSearch3_spec {T : Type} [Inhabited T] (a : Array T) (P : T → Boo
     ⦃⌜∃ i : Fin a.size, P (a[i]) = true⌝⦄
     linearSearch3 a P
     ⦃⇓n => ⌜n < a.size ∧ P (a[n]!) = true ∧ (∀ k : Nat, k < n → P (a[k]!) = false)⌝⦄ := by
-  mvcgen [linearSearch3]
   sorry
