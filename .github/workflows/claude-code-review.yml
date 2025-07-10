@@ -3,34 +3,84 @@ name: Claude Code Review
 on:
   pull_request:
     types: [opened, synchronize]
-
-permissions:
-  contents: read
-  pull-requests: write
+    # Optional: Only run on specific file changes
+    # paths:
+    #   - "src/**/*.ts"
 
 jobs:
   claude-review:
     runs-on: ubuntu-latest
-    if: ${{ github.event.pull_request.draft == false }}
+    permissions:
+      contents: write      # Full write access to repository contents
+      pull-requests: write # Ability to create, update, and merge PRs
+      issues: write       # Ability to manage issues
+      id-token: write     # Required for OIDC authentication
+      actions: write      # Ability to manage GitHub Actions
+      checks: write       # Ability to create and update check runs
+      statuses: write     # Ability to update commit statuses
+      discussions: write  # Ability to manage discussions
+      packages: write     # Ability to manage packages
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    
-    - name: Get changed files
-      id: changed-files
-      uses: tj-actions/changed-files@v44
-      
-    - name: Claude Code Review
-      if: steps.changed-files.outputs.any_changed == 'true'
-      uses: anthropics/claude-code-action@beta
-      with:
-        anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        anthropic_model: claude-opus-4-20250514
-        max_turns: 3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
-        disallowed_tools: |
-          - "none"
+      - name: Run Claude Code Review
+        id: claude-review
+        uses: anthropics/claude-code-action@beta
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          
+          # Optional: Specify model (defaults to Claude Sonnet 4, uncomment for Claude Opus 4)
+          model: "claude-opus-4-20250514"
+          
+          # Direct prompt for automated review (no @claude mention needed)
+          direct_prompt: |
+            Please review this Lean 4 pull request for the NumpySpec project and provide feedback on:
+            - Lean 4 code correctness and idiomatic usage
+            - Mathematical correctness and formal verification
+            - Adherence to Mathlib conventions
+            - Use of proper Lean tactics and proof strategies
+            - Type safety and proper use of Lean's type system
+            - Performance considerations for matrix operations
+            - Python test coverage for NumPy compatibility
+            - Compliance with project guidelines in CLAUDE.md
+            
+            Focus on:
+            - Named holes (?foo) for incremental development
+            - Proper use of typeclasses like GetElem, Add, etc.
+            - Avoiding common Lean pitfalls (see CLAUDE.md)
+            - Ensuring lake build passes without errors
+            
+            Be constructive and helpful in your feedback.
+          
+          # Optional: Customize review based on file types
+          # direct_prompt: |
+          #   Review this PR focusing on:
+          #   - For TypeScript files: Type safety and proper interface usage
+          #   - For API endpoints: Security, input validation, and error handling
+          #   - For React components: Performance, accessibility, and best practices
+          #   - For tests: Coverage, edge cases, and test quality
+          
+          # Optional: Different prompts for different authors
+          # direct_prompt: |
+          #   ${{ github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR' && 
+          #   'Welcome! Please review this PR from a first-time contributor. Be encouraging and provide detailed explanations for any suggestions.' ||
+          #   'Please provide a thorough code review focusing on our coding standards and best practices.' }}
+          
+          # Allow comprehensive tools for Lean 4 project review
+          allowed_tools: |
+            Bash(*),
+            Read(*),
+            Glob(*),
+            Grep(*),
+            LS(*),
+            TodoRead(*)
+          
+          # Optional: Skip review for certain conditions
+          # if: |
+          #   !contains(github.event.pull_request.title, '[skip-review]') &&
+          #   !contains(github.event.pull_request.title, '[WIP]')
+
