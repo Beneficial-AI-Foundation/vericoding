@@ -1,34 +1,36 @@
 import Lake
 open Lake DSL
 
-package "vericoding" where
+require mathlib from git
+  "https://github.com/leanprover-community/mathlib4" @ "master"
+
+package Vericoding where
   version := v!"0.1.0"
+  leanOptions := #[
+    ⟨`pp.unicode.fun, true⟩,
+    ⟨`autoImplicit, true⟩,
+    ⟨`relaxedAutoImplicit, false⟩,
+    ⟨`linter.missingDocs, true⟩
+  ]
+  releaseRepo := "https://github.com/Beneficial-AI-Foundation/vericoding"
+  buildArchive := "Vericoding-{OS}-{ARCH}.tar.gz"
+  preferReleaseBuild := true
 
 /-!
 # Vericoding Project Structure
 
 This project contains formal specifications and verifications ported from various sources,
 particularly Dafny benchmarks and NumPy specifications.
-
-## Main Libraries:
-- `Vericoding`: Core library with basic definitions
-- `Vericoding.Benchmarks.DafnySpecs`: Dafny benchmark specifications (from lean4/ directory)
-
-Note: The lean4/benchmarks/dafny-bench_specs directory contains standalone Lean 4 ports
-of Dafny specifications. These are not currently integrated into the main build but
-can be referenced as examples.
 -/
-
-lean_lib «Vericoding» where
+@[default_target]
+lean_lib Vericoding where
   -- Main library configuration
-  globs := #[.andSubmodules `Vericoding]
-
--- TODO: Add library for lean4/benchmarks/dafny-bench_specs when ready to integrate
--- lean_lib «VericodingBenchmarks» where
---   srcDir := "lean4/benchmarks/dafny-bench_specs"
---   roots := #[`Abs, `AddOne, `AllDigits] -- etc.
+  -- `.andSubmodules` ensures that all `.lean` files in the `Vericoding` directory are built.
+  -- TODO: split out the `code_from_spec` library into a separate `lean_lib` that `needs` this `lean_lib` which provides the specs.
+  globs := #[.andSubmodules `Benchmarks]
+  srcDir := "lean-vc"
 
 @[default_target]
-lean_exe "vericoding" where
+lean_exe vericoding where
   root := `Main
   supportInterpreter := true
