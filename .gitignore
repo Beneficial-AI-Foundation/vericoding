@@ -1,0 +1,24 @@
+# MCP configuration
+.mcp-tools/
+
+# JJ version control
+.jj/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.uv/
+.venv/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
