@@ -1,0 +1,34 @@
+Dafny to Lean 4 Porting Log
+==========================
+
+This directory contains Lean 4 ports of Dafny specifications from the vericoding/dafny/benchmarks/dafny-bench_specs/atomizer_supported/ directory.
+
+Files Ported:
+1. Clover_abs_spec.dfy -> Abs.lean
+2. Clover_all_digits_spec.dfy -> AllDigits.lean
+3. Clover_array_append_spec.dfy -> ArrayAppend.lean
+4. Clover_array_concat_spec.dfy -> ArrayConcat.lean
+5. Clover_array_copy_spec.dfy -> ArrayCopy.lean
+6. Clover_array_product_spec.dfy -> ArrayProduct.lean
+7. Clover_array_sum_spec.dfy -> ArraySum.lean
+8. Clover_avg_spec.dfy -> Avg.lean
+9. Clover_below_zero_spec.dfy -> BelowZero.lean
+10. Clover_binary_search_spec.dfy -> BinarySearch.lean
+
+Porting Notes:
+- All specifications use the Hoare triple style with ⦃⌜precondition⌝⦄ program ⦃⇓result => ⌜postcondition⌝⦄
+- Proofs are left as `sorry` for future completion
+- Some adjustments were made for Lean 4 syntax:
+  - String indexing uses `s.get i` instead of `s[i]`
+  - Array element-wise operations use `Array.ofFn` instead of non-existent `Array.zipWith`
+  - List operations like `scanl` were reimplemented manually where not available
+  - Array indexing with proofs uses notation like `a[i.val]'(by sorry)`
+
+Compilation Status:
+✓ All 10 files compile successfully
+
+Implementation Notes:
+- The `mvcgen` tactic is experimental and was removed in favor of direct `sorry` proofs
+- Some array indexing requires explicit proofs of bounds, currently handled with `by sorry`
+- BelowZero uses a mutable state approach inspired by human-eval-lean PR #185
+- String indexing uses `s.data.get i` to access characters by index
