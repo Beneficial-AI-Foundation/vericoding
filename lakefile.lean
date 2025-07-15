@@ -30,6 +30,11 @@ lean_lib Vericoding where
   globs := #[.andSubmodules `Benchmarks]
   srcDir := "lean-vc"
 
+/-- NumPy specifications using Hoare triple syntax -/
+lean_lib NumpyHoareTriple where
+  globs := #[.andSubmodules `numpy_hoare_triple]
+  srcDir := "lean-vc"
+
 @[default_target]
 lean_exe vericoding where
   root := `Main
