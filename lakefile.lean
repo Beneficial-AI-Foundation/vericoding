@@ -24,9 +24,12 @@ particularly Dafny benchmarks and NumPy specifications.
 -/
 @[default_target]
 lean_lib Vericoding where
-  -- Main library configuration
-  -- `.andSubmodules` ensures that all `.lean` files in the `Vericoding` directory are built.
-  -- TODO: split out the `code_from_spec` library into a separate `lean_lib` that `needs` this `lean_lib` which provides the specs.
+  -- Main library configuration - root file only
+  globs := #[.one `Vericoding]
+  srcDir := "lean-vc"
+
+/-- Benchmarks library for specs -/
+lean_lib Benchmarks where
   globs := #[.andSubmodules `benchmarks]
   srcDir := "lean-vc"
 
