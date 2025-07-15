@@ -19,34 +19,34 @@ def hermmulx {n : Nat} (c : Vector Float n) : Id (Vector Float (n + 1)) :=
   sorry
 
 /-- Specification: hermmulx multiplies a Hermite series by x using the recursion relationship for Hermite polynomials.
-    
-    The algorithm implements the recursion: xP_i(x) = (P_{i+1}(x)/2 + i*P_{i-1}(x))
-    
+
+    The algorithm implements the recursion: $$xP_i(x) = (P_{i+1}(x)/2 + i*P_{i-1}(x))$$
+
     Given input coefficients c[0], c[1], ..., c[n-1], the output has n+1 coefficients where:
     - The first coefficient is always 0
     - Each c[i] contributes c[i]/2 to position i+1 and c[i]*i to position i-1
-    
+
     For example, with input [1, 2, 3]:
     - result[0] = 0 + 2*1 = 2
-    - result[1] = 1/2 + 3*2 = 0.5 + 6 = 6.5  
+    - result[1] = 1/2 + 3*2 = 0.5 + 6 = 6.5
     - result[2] = 2/2 = 1
     - result[3] = 3/2 = 1.5
     Giving [2, 6.5, 1, 1.5] -/
 theorem hermmulx_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
     hermmulx c
-    ⦃⇓result => 
+    ⦃⇓result =>
       -- The output has exactly n+1 coefficients
       ⌜result.size = n + 1⌝ ∧
       -- Mathematical property: each position in result is the sum of contributions
-      -- from the recursion formula xP_i(x) = (P_{i+1}(x)/2 + i*P_{i-1}(x))
-      ⌜∀ k : Fin (n + 1), 
-        result.get k = 
+      -- from the recursion formula $xP_i(x) = (P_{i+1}(x)/2 + i*P_{i-1}(x))$
+      ⌜∀ k : Fin (n + 1),
+        result.get k =
           -- Base case: position 0 starts at 0
           (if k.val = 0 then 0 else 0) +
           -- Contribution from c[k-1]/2 when k > 0 and k-1 < n
           (if h1 : k.val > 0 ∧ k.val - 1 < n then c.get ⟨k.val - 1, sorry⟩ / 2 else 0) +
-          -- Contribution from c[k+1]*(k+1) when k+1 < n  
+          -- Contribution from c[k+1]*(k+1) when k+1 < n
           (if h2 : k.val + 1 < n then c.get ⟨k.val + 1, sorry⟩ * Float.ofNat (k.val + 1) else 0)⌝
     ⦄ := by
   sorry

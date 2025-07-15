@@ -27,7 +27,7 @@ lean_lib Vericoding where
   -- Main library configuration
   -- `.andSubmodules` ensures that all `.lean` files in the `Vericoding` directory are built.
   -- TODO: split out the `code_from_spec` library into a separate `lean_lib` that `needs` this `lean_lib` which provides the specs.
-  globs := #[.andSubmodules `Benchmarks]
+  globs := #[.andSubmodules `benchmarks]
   srcDir := "lean-vc"
 
 /-- NumPy specifications using Hoare triple syntax -/
