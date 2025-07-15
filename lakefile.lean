@@ -29,11 +29,13 @@ lean_lib Vericoding where
   srcDir := "lean-vc"
 
 /-- Benchmarks library for specs -/
+@[default_target]
 lean_lib Benchmarks where
   globs := #[.andSubmodules `benchmarks]
   srcDir := "lean-vc"
 
 /-- NumPy specifications using Hoare triple syntax -/
+@[default_target]
 lean_lib NumpyHoareTriple where
   globs := #[.andSubmodules `numpy_hoare_triple]
   srcDir := "lean-vc"
