@@ -40,6 +40,13 @@ lean_lib NumpyHoareTriple where
   globs := #[.andSubmodules `numpy_hoare_triple]
   srcDir := "lean-vc"
 
+/-- Auto-generated code attempts from spec_to_code_lean.py
+    This is NOT a default target as these files often contain errors.
+    To build: lake build BenchmarksGenerated -/
+lean_lib BenchmarksGenerated where
+  globs := #[.andSubmodules `benchmarks_generated]
+  srcDir := "lean-vc"
+
 @[default_target]
 lean_exe vericoding where
   root := `Main
