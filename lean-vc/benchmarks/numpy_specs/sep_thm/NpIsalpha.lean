@@ -18,8 +18,6 @@ theorem isAlpha_length {n : Nat} (input : Vector String n) :
 theorem isAlpha_spec {n : Nat} (input : Vector String n) :
   let ret := isAlpha input
   ∀ i : Fin n, ret[i] = (input[i].length > 0 ∧
-    ∀ j : Nat, j < input[i].length →
-      let c := input[i].get ⟨j, by sorry⟩
-      ('A' ≤ c ∧ c ≤ 'Z') ∨ ('a' ≤ c ∧ c ≤ 'z')) := sorry
+    input[i].all fun c => ('A' ≤ c ∧ c ≤ 'Z') ∨ ('a' ≤ c ∧ c ≤ 'z')) := sorry
 
 end DafnySpecs.NpIsalpha
