@@ -1,8 +1,10 @@
+import benchmarks.MatrixDef
+
 namespace NpTril
 
-def tril {m n : Nat} (arr : Matrix Int m n) (k : Int) : Matrix Int m n := sorry
+def tril {m n : Nat} (arr : Matrix m n Int) (k : Int) : Matrix m n Int := sorry
 
-theorem tril_spec {m n : Nat} (arr : Matrix Int m n) (k : Int)
+theorem tril_spec {m n : Nat} (arr : Matrix m n Int) (k : Int)
   (h : -m + 1 < k ∧ k < n - 1) :
   let ret := tril arr k
   (ret.toList.length = m * n) ∧

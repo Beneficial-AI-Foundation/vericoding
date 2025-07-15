@@ -1,6 +1,8 @@
+import benchmarks.MatrixDef
+
 namespace NpReshape
 
-def reshape {n : Nat} (arr : Vector Int n) (shape : Vector Int 2) : Matrix Int (if shape[0]! > 0 then shape[0]! else n / shape[1]!) (if shape[1]! > 0 then shape[1]! else n / shape[0]!) := sorry
+def reshape {n : Nat} (arr : Vector Int n) (shape : Vector Int 2) : Matrix (if shape[0]! > 0 then shape[0]! else n / shape[1]!) (if shape[1]! > 0 then shape[1]! else n / shape[0]!) Int := sorry
 
 theorem reshape_spec {n : Nat} (arr : Vector Int n) (shape : Vector Int 2)
   (h1 : ∀ i : Fin 2, shape[i] > 0 ∨ shape[i] = -1)

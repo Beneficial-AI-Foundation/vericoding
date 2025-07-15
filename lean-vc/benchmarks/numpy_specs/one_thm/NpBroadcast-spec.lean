@@ -1,6 +1,8 @@
+import benchmarks.MatrixDef
+
 namespace NpBroadcast
 
-def broadcast {n : Nat} (a : Vector Int n) (shape : Vector Int 2) : Matrix Int (shape[0]!) (shape[1]!) := sorry
+def broadcast {n : Nat} (a : Vector Int n) (shape : Vector Int 2) : Matrix (shape[0]!) (shape[1]!) Int := sorry
 
 theorem broadcast_spec {n : Nat} (a : Vector Int n) (shape : Vector Int 2)
   (h : shape[0]! = n ∨ shape[1]! = n) :

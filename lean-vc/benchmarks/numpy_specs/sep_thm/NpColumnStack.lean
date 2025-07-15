@@ -4,10 +4,12 @@
 Port of np_column_stack.dfy to Lean 4
 -/
 
+import benchmarks.MatrixDef
+
 namespace DafnySpecs.NpColumnStack
 
 /-- Stack vectors as columns to form a matrix -/
-def column_stack {m n : Nat} (input : Vector (Vector Int m) n) : Matrix Int m n := sorry
+def column_stack {m n : Nat} (input : Vector (Vector Int m) n) : Matrix m n Int := sorry
 
 /-- Specification: The result has correct dimensions -/
 theorem column_stack_dimensions {m n : Nat} (input : Vector (Vector Int m) n)

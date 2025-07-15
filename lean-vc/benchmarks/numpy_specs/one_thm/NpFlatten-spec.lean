@@ -1,8 +1,10 @@
+import benchmarks.MatrixDef
+
 namespace NpFlatten
 
-def flatten2 {m n : Nat} (mat : Matrix Int m n) : Vector Int (m * n) := sorry
+def flatten2 {m n : Nat} (mat : Matrix m n Int) : Vector Int (m * n) := sorry
 
-theorem flatten2_spec {m n : Nat} (mat : Matrix Int m n)
+theorem flatten2_spec {m n : Nat} (mat : Matrix m n Int)
   (h1 : m > 0)
   (h2 : n > 0) :
   let ret := flatten2 mat

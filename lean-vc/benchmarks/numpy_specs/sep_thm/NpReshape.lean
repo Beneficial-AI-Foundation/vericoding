@@ -4,10 +4,12 @@
 Port of np_reshape.dfy to Lean 4
 -/
 
+import benchmarks.MatrixDef
+
 namespace DafnySpecs.NpReshape
 
 /-- Reshape vector to new dimensions -/
-def reshape {n m k : Nat} (a : Vector Int n) (newshape : Vector Int 2) : Matrix Int m k := sorry
+def reshape {n m k : Nat} (a : Vector Int n) (newshape : Vector Int 2) : Matrix m k Int := sorry
 
 /-- Specification: Element count is preserved -/
 theorem reshape_count {n m k : Nat} (a : Vector Int n) (newshape : Vector Int 2)

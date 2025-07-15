@@ -4,10 +4,12 @@
 Port of np_broadcast.dfy to Lean 4
 -/
 
+import benchmarks.MatrixDef
+
 namespace DafnySpecs.NpBroadcast
 
 /-- Broadcast a vector to a 2D shape -/
-def broadcast {n : Nat} (a : Vector Int n) (shape : Vector Int 2) : Matrix Int (shape[0]!) (shape[1]!) := sorry
+def broadcast {n : Nat} (a : Vector Int n) (shape : Vector Int 2) : Matrix (shape[0]!) (shape[1]!) Int := sorry
 
 /-- Specification: The result has the correct dimensions -/
 theorem broadcast_length {n : Nat} (a : Vector Int n) (shape : Vector Int 2)
