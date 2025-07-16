@@ -54,8 +54,6 @@ def insert {α : Type} (x : α) (m : Multiset α) : Multiset α := sorry
 /-- Check if multiset is empty -/
 def isEmpty {α : Type} (m : Multiset α) : Bool := sorry
 
--- TODO: Fix membership instance - causes type inference issues
-
 /-- Decidable equality for multisets -/
 instance {α : Type} [DecidableEq α] : DecidableEq (Multiset α) := sorry
 
