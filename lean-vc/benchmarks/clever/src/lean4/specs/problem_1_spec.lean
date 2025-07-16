@@ -1,8 +1,8 @@
+import benchmarks.clever.CommonDefs
 import Mathlib
 import Mathlib.Data.List.Basic
 import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
-import Mathlib.Data.Nat.Defs
 import Mathlib.Tactic.Basic
 
 def problem_spec

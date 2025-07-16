@@ -1,6 +1,8 @@
+import benchmarks.MatrixDef
+
 namespace NpColumnStack
 
-def column_stack {m n : Nat} (input : Vector (Vector Int m) n) : Matrix Int m n := sorry
+def column_stack {m n : Nat} (input : Vector (Vector Int m) n) : Matrix m n Int := sorry
 
 theorem column_stack_spec {m n : Nat} (input : Vector (Vector Int m) n)
   (h1 : n ≠ 0)
