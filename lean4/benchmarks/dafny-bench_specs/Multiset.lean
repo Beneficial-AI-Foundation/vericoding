@@ -54,10 +54,6 @@ def insert {α : Type} (x : α) (m : Multiset α) : Multiset α := sorry
 /-- Check if multiset is empty -/
 def isEmpty {α : Type} (m : Multiset α) : Bool := sorry
 
-/-- Notation for membership -/
-instance {α : Type} [DecidableEq α] : Membership α (Multiset α) where
-  mem x m := mem x m
-
 /-- Decidable equality for multisets -/
 instance {α : Type} [DecidableEq α] : DecidableEq (Multiset α) := sorry
 
