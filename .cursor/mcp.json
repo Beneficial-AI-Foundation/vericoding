@@ -1,0 +1,20 @@
+{
+    "mcpServers": {
+        "lean-lsp": {
+            "command": "uvx",
+            "args": [
+                "lean-lsp-mcp"
+            ],
+            "env": {
+                "LEAN_PROJECT_PATH": "/Users/alokbeniwal/GaussianSpec"
+            }
+        },
+        "leantool": {
+            "command": "uv",
+            "args": [
+                "run",
+                "leanmcp"
+            ]
+        }
+    }
+}
