@@ -22,27 +22,22 @@ package Vericoding where
 This project contains formal specifications and verifications ported from various sources,
 particularly Dafny benchmarks and NumPy specifications.
 -/
+
 @[default_target]
 lean_lib Vericoding where
-  -- Main library configuration - root file only
   globs := #[.one `Vericoding]
   srcDir := "lean-vc"
 
-/-- Benchmarks library for specs -/
 @[default_target]
 lean_lib Benchmarks where
   globs := #[.andSubmodules `benchmarks]
   srcDir := "lean-vc"
 
-/-- NumPy specifications using Hoare triple syntax -/
 @[default_target]
 lean_lib NumpyHoareTriple where
   globs := #[.andSubmodules `numpy_hoare_triple]
   srcDir := "lean-vc"
 
-/-- Auto-generated code attempts from spec_to_code_lean.py
-    This is NOT a default target as these files often contain errors.
-    To build: lake build BenchmarksGenerated -/
 lean_lib BenchmarksGenerated where
   globs := #[.andSubmodules `benchmarks_generated]
   srcDir := "lean-vc"
