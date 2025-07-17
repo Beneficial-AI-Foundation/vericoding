@@ -1,0 +1,78 @@
+2,Write a function in Rust to find the shared elements from the given two lists.
+3,Write a function in Rust to identify non-prime numbers.
+8,Write a function in Rust to find squares of individual elements in a list.
+18,Write a function in Rust to remove characters from the first string which are present in the second string.
+62,Write a function in Rust to find smallest number in a list.
+69,Write a function in Rust to check whether a list contains the given sublist or not.
+70,Write a function in Rust to find whether all the given list of sequences have equal length or not.
+94,"Given a list of sequences, write a function in Rust that returns the first value of the sequence with the smallest second value."
+95,Write a function in Rust to find the length of the smallest list in a list of lists.
+105,Write a function in Rust to count true booleans in the given boolean list.
+113,Write a function in Rust to check if a string represents an integer or not.
+133,Write a function in Rust to calculate the sum of the negative numbers of a given list of numbers.
+142,Write a function in Rust to count number items that are identical in the same position of three given lists.
+145,Write a function in Rust to find the maximum difference between any two elements in a given array.
+161,Write a function in Rust to remove all elements from a given list present in another list.
+170,Write a function in Rust to find the sum of numbers in a list within a range specified by two indices.
+230,Write a function in Rust that takes in a string and character replaces blank spaces in the string with the character and returns the string."
+240,Write a function in Rust that takes in two lists and replaces the last element of the first list with the elements of the second list.
+249,Write a function in Rust to find the intersection of two integers arrays.
+251,Write a function in Rust that takes in a list and an element and inserts the element before each element in the list and returns the resulting list.
+261,Write a function in Rust that takes in two sequences and performs mathematical division operation element-wise across the given sequences.
+262,Write a function in Rust that takes in a list and an integer L and splits the given list into two parts where the length of the first part of the list is L, and returns the resulting lists in a tuple
+273,Write a function in Rust that takes in two sequences and subtracts the elements of the first sequence by the elements of the second sequence with the same index.
+282,Write a function in Rust to subtract two lists element-wise.
+284,Write a function in Rust that takes in an array and element and checks whether all items in the array are equal to the given element.
+290,Write a function in Rust to find the list of maximum length in a list of lists
+307,Write a function in Rust to get a deep clone of a list.
+399,Write a function in Rust to perform the mathematical bitwise xor operation across the given two sequences of Bit-vector.
+412,Write a function in Rust to remove odd numbers from a given list.
+414,Write a function in Rust to check whether any value in a sequence exists in a sequence or not.
+424,Write a function in Rust to extract only the rear index character of each string in the given sequence of strings.
+426,Write a function in Rust to filter odd numbers.
+431,Write a function in Rust that takes two lists and returns true if they have at least one common element.
+433,Write a function in Rust to check whether the given integer is greater than the elements of the given integer array.
+436,Write a function in Rust to return the negative numbers in a list.
+445,Write a function in Rust to perform index wise multiplication of elements in the given two sequences.
+447,Write a function in Rust to find cubes of individual elements in a list.
+454,Write a function in Rust that matches a word containing 'z'.
+457,Write a python function to find the sublist having minimum length.
+460,Write a function in Rust to get the first element of each sublist.
+461,Write a function in Rust to count the upper case characters in a given string.
+472,Write a function in Rust to check whether the given list contains consecutive numbers or not.
+474,Write a function in Rust  to replace characters in a string.
+476,Write a function in Rust to find the sum of the largest and smallest value in a given array.
+477,Write a function in Rust to convert the given string to lower case.
+554,Write a function in Rust which takes a list of integers and only returns the odd ones.
+557,Write a function in Rust to toggle the case of all characters in a string.
+567,Write a function in Rust to check whether a specified list is sorted or not.
+572,Write a function in Rust to remove duplicate numbers from a given list.
+576,Write a function in Rust to check whether a list is sublist of another or not.
+578,Write a function in Rust to interleave 3 lists of the same length into a single flat list.
+579,Write a function in Rust to get the difference between two lists.
+586,Write a function in Rust to split a list at the nth eelment and add the first part to the end.
+588,Write a function in Rust to find the difference between largest and smallest value in a given list.
+602,Write a function in Rust to find the first repeated character in a given string.
+605,Write a function in Rust to check if the given integer is a prime number.
+610,Write a function in Rust which takes a list and returns a list with the same elements but the k'th element removed.
+616,Write a function in Rust which takes two integer arrays of the same length and performs the element wise modulo.
+618,Write a function in Rust to divide two lists element wise.
+624,Write a function in Rust to convert a given string to uppercase.
+629,Write a function in Rust to find even numbers from a list of numbers.
+644,Write a function in Rust to reverse an array upto a given position.
+728,"Write a function in Rust takes as input two lists [a_1,...,a_n] [b_1,...,b_n] and returns [a_1+b_1,...,a_n+b_n]."
+732,Write a function in Rust to replace all occurrences of spaces commas or dots with a colon.
+733,Write a function in Rust to find the index of the first occurrence of a given number in a sorted array.
+741,Write a function in Rust to check whether all the characters are same or not.
+743,Write a method in Rust to rotate a given list by specified N number of items to the right direction.
+755,Write a function to find the second smallest number in a list.
+760,Write a function in Rust to check whether a list of numbers contains only one distinct element or not.
+764,Write a function in Rust to count number of digits in a given string.
+769,Write a function in Rust to get the difference between two lists.
+775,Write a function in Rust to check whether every odd index contains odd numbers of a given list.
+790,Write a function in Rust to check whether every even index contains even numbers of a given list.
+798,Write a function in Rust to find the sum of an array.
+804,Write a function in Rust to check whether the product of numbers in a list is even or not.
+807,Write a function in Rust to find the first odd number in a given list of numbers.
+808,Write a function in Rust to check if the given sequence contain the k or not.
+809,Write a function in Rust to check if each element of second sequence is smaller than its corresponding element in the first sequence.

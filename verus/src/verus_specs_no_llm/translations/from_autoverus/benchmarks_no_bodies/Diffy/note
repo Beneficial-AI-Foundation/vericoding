@@ -1,0 +1,9 @@
+Tasks in this folder are based on SV-Comp/array-fpi, which seems to be based on diffy, with a few exceptions:
+1. All the benchmarks that require non-linear reasoning are removed 
+2. The original array_fpi has an integer version and a long version for every task, we only kept one, the integer one
+
+The unverified and verified folders show the unverified (in Rust) and verified versions, respectively.
+
+The original C version of the array-fpi benchmark suite in sv-comp can be seen at
+https://gitlab.com/sosy-lab/benchmarking/sv-benchmarks/-/tree/main/c/array-fpi?ref_type=heads
+(the archive was at https://github.com/sosy-lab/sv-benchmarks/tree/2e1723fde6aa65a250dcb677efa45edaa4b6b631/c/array-fpi)
