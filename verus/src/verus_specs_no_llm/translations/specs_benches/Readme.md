@@ -1,0 +1,1 @@
+Specs generated from [autoverus](https://github.com/microsoft/verus-proof-synthesis) and [verified-codegen](https://github.com/JetBrains-Research/verified-cogen).
