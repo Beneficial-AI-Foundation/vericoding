@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn ContainsSequence(list: Seq<Seq<int>>, sub: Seq<int>) -> (result: bool)
+spec fn spec_ContainsSequence(list: Seq<Seq<int>>, sub: Seq<int>) -> result: bool
     ensures
-        result <==> (exists i :: 0 <= i < list.len() && sub == list.spec_index(i))
+        result <==> (exists |i: int| 0 <= i < list.len() && sub == list.index(i))
+;
+
+proof fn lemma_ContainsSequence(list: Seq<Seq<int>>, sub: Seq<int>) -> (result: bool)
+    ensures
+        result <==> (exists |i: int| 0 <= i < list.len() && sub == list.index(i))
 {
-    return false;
+    false
 }
 
 }

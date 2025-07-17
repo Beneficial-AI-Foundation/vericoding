@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn HasOppositeSign(a: int, b: int) -> (result: bool)
+spec fn spec_HasOppositeSign(a: int, b: int) -> result: bool
+    ensures
+        result <==> (a < 0 && b > 0) || (a > 0 && b < 0)
+;
+
+proof fn lemma_HasOppositeSign(a: int, b: int) -> (result: bool)
     ensures
         result <==> (a < 0 && b > 0) || (a > 0 && b < 0)
 {
-    return false;
+    false
 }
 
 }

@@ -2,23 +2,29 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn LucidNumbers(n: int) -> (lucid: Seq<int>)
+spec fn spec_LucidNumbers(n: int) -> lucid: seq<int>
     requires
         n >= 0
     ensures
-        forall i :: 0 <= i < lucid.len() ==> lucid.spec_index(i) % 3 == 0,
-        forall i :: 0 <= i < lucid.len() ==> lucid.spec_index(i) <= n,
-        forall i, j :: 0 <= i < j < lucid.len() ==> lucid.spec_index(i) < lucid.spec_index(j)
+        forall |i: int| 0 <= i < lucid.len() ==> lucid.index(i) % 3 == 0,
+        forall |i: int| 0 <= i < lucid.len() ==> lucid.index(i) <= n,
+        forall |i: int, j: int| 0 <= i < j < lucid.len() ==> lucid.index(i) < lucid.index(j)
+;
+
+proof fn lemma_LucidNumbers(n: int) -> (lucid: Seq<int>)
+    requires
+        n >= 0
+    ensures
+        forall |i: int| 0 <= i < lucid.len() ==> lucid.index(i) % 3 == 0,
+        forall |i: int| 0 <= i < lucid.len() ==> lucid.index(i) <= n,
+        forall |i: int, j: int| 0 <= i < j < lucid.len() ==> lucid.index(i) < lucid.index(j)
 {
-    return Seq::empty();
+    Seq::empty()
 }
 
 }

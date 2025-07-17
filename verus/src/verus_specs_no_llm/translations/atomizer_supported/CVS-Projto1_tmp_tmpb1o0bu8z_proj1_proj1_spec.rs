@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -31,13 +28,28 @@ ensures forall j::0 <= j < a.Length ==> mem(a[j], l) -> bool {
     
 }
 
-fn query(a: Vec<int>, i: int, j: int) -> (s: int)
+spec fn sum(a: Vec<int>, i: int, j: int) -> int
+reads a
+    requires
+        0 <= i <= j <= a.len()
+{
+    0
+}
+
+spec fn spec_query(a: Vec<int>, i: int, j: int) -> s:int
+    requires
+        0 <= i <= j <= a.len()
+    ensures
+        s == sum(a, i, j)
+;
+
+proof fn lemma_query(a: Vec<int>, i: int, j: int) -> (s: int)
     requires
         0 <= i <= j <= a.len()
     ensures
         s == sum(a, i, j)
 {
-    return 0;
+    0
 }
 
 }

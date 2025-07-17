@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn toMultiset(s: String) -> (mset: multiset<char>)
+spec fn spec_toMultiset(s: String) -> mset: multiset<char>
+    ensures
+        multiset(s) == mset
+;
+
+proof fn lemma_toMultiset(s: String) -> (mset: multiset<char>)
     ensures
         multiset(s) == mset
 {
-    return 0;
+    0
 }
 
 }

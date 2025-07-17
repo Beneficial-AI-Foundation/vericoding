@@ -2,19 +2,16 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
 spec fn ContainsNothingBut5(s: set<int>) -> bool {
-    forall q :: q in s ==> q == 5
+    forall |q: int| q in s ==> q == 5
 }
 spec fn YeahContains5(s: set<int>) -> bool {
-    exists q :: q in s && q == 5
+    exists |q: int| q in s && q == 5
 }
 spec fn ViaSetComprehension(s: set<int>) -> bool {
     set q .len() q in s && q == 5| != 0

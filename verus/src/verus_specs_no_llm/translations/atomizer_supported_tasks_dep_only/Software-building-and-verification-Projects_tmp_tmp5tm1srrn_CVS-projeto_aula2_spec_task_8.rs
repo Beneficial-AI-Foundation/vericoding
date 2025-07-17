@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn m4(x: int, y: int) -> (z: bool)
+spec fn spec_m4(x: int, y: int) -> z: bool
+    ensures
+        z ==> x==y && x==y ==> z
+;
+
+proof fn lemma_m4(x: int, y: int) -> (z: bool)
     ensures
         z ==> x==y && x==y ==> z
 {
-    return false;
+    false
 }
 
 }

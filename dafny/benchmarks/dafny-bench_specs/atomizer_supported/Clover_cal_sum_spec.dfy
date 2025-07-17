@@ -4,5 +4,3 @@ method Sum(N:int) returns (s:int)
   ensures s == N * (N + 1) / 2
 {
 }
-
-

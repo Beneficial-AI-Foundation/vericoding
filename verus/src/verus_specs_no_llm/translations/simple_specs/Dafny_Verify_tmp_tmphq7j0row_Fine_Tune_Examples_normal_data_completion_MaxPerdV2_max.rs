@@ -2,21 +2,33 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn max(a: Vec<int>, n: int) -> (max: int)
+spec fn is_max(m: int, a: Vec<int>, n: int) -> bool
+reads a
+    requires
+        n <= a.len()
+{
+    0
+}
+
+spec fn spec_max(a: Vec<int>, n: int) -> max: int
+    requires
+        0 < n <= a.len()
+    ensures
+        is_max(max, a, n)
+;
+
+proof fn lemma_max(a: Vec<int>, n: int) -> (max: int)
     requires
         0 < n <= a.len()
     ensures
         is_max(max, a, n)
 {
-    return 0;
+    0
 }
 
 }

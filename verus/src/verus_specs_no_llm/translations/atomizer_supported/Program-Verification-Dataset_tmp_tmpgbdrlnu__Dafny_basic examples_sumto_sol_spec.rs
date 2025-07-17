@@ -2,19 +2,26 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn SumUpTo(n: nat) -> (r: nat)
+spec fn sum_up_to(n: nat) -> nat
+{
+    0
+}
+
+spec fn spec_SumUpTo(n: nat) -> r: nat
+    ensures
+        r == sum_up_to (n)
+;
+
+proof fn lemma_SumUpTo(n: nat) -> (r: nat)
     ensures
         r == sum_up_to (n)
 {
-    return 0;
+    0
 }
 
 }

@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -24,7 +21,19 @@ spec fn requires(valid_base(b))
     
 }
 
-fn nit_increment(b: nat, n: nat) -> (sum: nat, carry: nat)
+spec fn spec_nit_increment(b: nat, n: nat) -> sum : nat, carry : nat)
+ // Note: apparently, you need to explicitly put this here
+ // even though we've got it in the nitness predicate
+ requires (valid_base(b)
+    requires
+        (valid_base(b)),
+        (nitness(b, n))
+    ensures
+        (nitness(b, sum)),
+        (nitness(b, carry))
+;
+
+proof fn lemma_nit_increment(b: nat, n: nat) -> (sum: nat, carry: nat)
  // Note: apparently, you need to explicitly put this here
  // even though we've got it in the nitness predicate
  requires (valid_base(b))
@@ -35,7 +44,7 @@ fn nit_increment(b: nat, n: nat) -> (sum: nat, carry: nat)
         (nitness(b, sum)),
         (nitness(b, carry))
 {
-    return (0, 0, 0);
+    (0, 0, 0)
 }
 
 }

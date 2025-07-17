@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn minArray(a: Vec<int>) -> (r: int)
+spec fn spec_minArray(a: Vec<int>) -> r:int
     requires
         a.len() > 0
     ensures
-        forall i :: 0 <= i < a.len() ==> r <= a.spec_index(i),
-        exists i :: 0 <= i < a.len() && r == a.spec_index(i)
+        forall |i: int| 0 <= i < a.len() ==> r <= a.index(i),
+        exists |i: int| 0 <= i < a.len() && r == a.index(i)
+;
+
+proof fn lemma_minArray(a: Vec<int>) -> (r: int)
+    requires
+        a.len() > 0
+    ensures
+        forall |i: int| 0 <= i < a.len() ==> r <= a.index(i),
+        exists |i: int| 0 <= i < a.len() && r == a.index(i)
 {
-    return 0;
+    0
 }
 
 }

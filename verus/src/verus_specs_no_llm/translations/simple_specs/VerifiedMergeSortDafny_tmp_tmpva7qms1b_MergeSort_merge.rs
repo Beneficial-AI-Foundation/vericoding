@@ -2,16 +2,13 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
 spec fn sorted_seq(a: Seq<int>) -> bool {
-    forall i, j :: 0 <= i <= j < a.len() ==> a.spec_index(i) <= a.spec_index(j)
+    forall |i: int, j: int| 0 <= i <= j < a.len() ==> a.index(i) <= a.index(j)
 }
 spec fn sorted_slice(a: Vec<int>, start: int, end: int)
  requires 0 <= start <= end <= a.Length

@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn maxArrayReverse(arr: Vec<int>) -> (max: int)
+spec fn spec_maxArrayReverse(arr: Vec<int>) -> max: int
     requires
         arr.len() > 0
     ensures
-        forall i: int :: 0 <= i < arr.len() ==> arr.spec_index(i) <= max,
-        exists x::0 <= x < arr.len() && arr.spec_index(x) == max
+        forall |i: int| 0 <= i < arr.len() ==> arr.index(i) <= max,
+        exists |x: int|0 <= x < arr.len() && arr.index(x) == max
+;
+
+proof fn lemma_maxArrayReverse(arr: Vec<int>) -> (max: int)
+    requires
+        arr.len() > 0
+    ensures
+        forall |i: int| 0 <= i < arr.len() ==> arr.index(i) <= max,
+        exists |x: int|0 <= x < arr.len() && arr.index(x) == max
 {
-    return 0;
+    0
 }
 
 }

@@ -2,28 +2,32 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
 spec fn Sorted(q: Seq<int>) -> bool {
-    forall i,j :: 0 <= i <= j < q.len() ==> q.spec_index(i) <= q.spec_index(j)
+    forall |i: int, j: int| 0 <= i <= j < q.len() ==> q.index(i) <= q.index(j)
 }
 spec fn HasAddends(q: Seq<int>, x: int) -> bool {
-    exists i,j :: 0 <= i < j < q.len() && q.spec_index(i) + q.spec_index(j) == x
+    exists |i: int, j: int| 0 <= i < j < q.len() && q.index(i) + q.index(j) == x
 }
 
-fn FindAddends(q: Seq<int>, x: int) -> (i: nat, j: nat)
+spec fn spec_FindAddends(q: Seq<int>, x: int) -> i: nat, j: nat
     requires
         Sorted(q) && HasAddends(q, x)
     ensures
-        i < j < q.len() && q.spec_index(i)+q.spec_index(j) == x
+        i < j < q.len() && q.index(i)+q.index(j) == x
+;
+
+proof fn lemma_FindAddends(q: Seq<int>, x: int) -> (i: nat, j: nat)
+    requires
+        Sorted(q) && HasAddends(q, x)
+    ensures
+        i < j < q.len() && q.index(i)+q.index(j) == x
 {
-    return (0, 0);
+    (0, 0)
 }
 
 }

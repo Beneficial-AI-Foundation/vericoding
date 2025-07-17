@@ -2,19 +2,26 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn FibonacciIterative(n: nat) -> (f: nat)
+spec fn Fibonacci(n: nat) -> nat
+{
+    0
+}
+
+spec fn spec_FibonacciIterative(n: nat) -> f: nat
+    ensures
+        f == Fibonacci(n)
+;
+
+proof fn lemma_FibonacciIterative(n: nat) -> (f: nat)
     ensures
         f == Fibonacci(n)
 {
-    return 0;
+    0
 }
 
 }

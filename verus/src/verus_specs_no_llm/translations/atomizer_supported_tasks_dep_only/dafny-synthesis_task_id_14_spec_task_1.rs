@@ -2,15 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn TriangularPrismVolume(base: int, height: int, length: int) -> (volume: int)
+spec fn spec_TriangularPrismVolume(base: int, height: int, length: int) -> volume: int
+    requires
+        base > 0,
+        height > 0,
+        length > 0
+    ensures
+        volume == (base * height * length) / 2
+;
+
+proof fn lemma_TriangularPrismVolume(base: int, height: int, length: int) -> (volume: int)
     requires
         base > 0,
         height > 0,
@@ -18,7 +24,7 @@ fn TriangularPrismVolume(base: int, height: int, length: int) -> (volume: int)
     ensures
         volume == (base * height * length) / 2
 {
-    return 0;
+    0
 }
 
 }

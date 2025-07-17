@@ -2,21 +2,34 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn FactorialOfLastDigit(n: int) -> (fact: int)
+spec fn Factorial(n: int) -> int
+    requires
+        n >= 0
+    ensures
+        0 <= Factorial(n)
+{
+    0
+}
+
+spec fn spec_FactorialOfLastDigit(n: int) -> fact: int
+    requires
+        n >= 0
+    ensures
+        fact == Factorial(n % 10)
+;
+
+proof fn lemma_FactorialOfLastDigit(n: int) -> (fact: int)
     requires
         n >= 0
     ensures
         fact == Factorial(n % 10)
 {
-    return 0;
+    0
 }
 
 }

@@ -2,20 +2,28 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn Max(x: nat, y: nat) -> (r: nat)
+spec fn fib(n: nat) -> nat
+{
+    0
+}
+
+spec fn spec_Max(x: nat, y: nat) -> r:nat
+    ensures
+        (r >= x && r >=y),
+        (r == x || r == y)
+;
+
+proof fn lemma_Max(x: nat, y: nat) -> (r: nat)
     ensures
         (r >= x && r >=y),
         (r == x || r == y)
 {
-    return 0;
+    0
 }
 
 }

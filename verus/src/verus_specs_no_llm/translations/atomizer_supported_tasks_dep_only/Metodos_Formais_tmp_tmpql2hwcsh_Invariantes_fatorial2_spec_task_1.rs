@@ -2,19 +2,26 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn Fatorial(n: nat) -> (f: nat)
+spec fn Fat(n: nat) -> nat
+{
+    0
+}
+
+spec fn spec_Fatorial(n: nat) -> f:nat
+    ensures
+        f == Fat(n)
+;
+
+proof fn lemma_Fatorial(n: nat) -> (f: nat)
     ensures
         f == Fat(n)
 {
-    return 0;
+    0
 }
 
 }

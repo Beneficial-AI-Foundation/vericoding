@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn append(a: Vec<int>, b: int) -> (c: Vec<int>)
+spec fn spec_append(a: Vec<int>, b: int) -> c:array<int>
     ensures
-        a.spec_index(..) + [b] == c.spec_index(..)
+        a.index(..) + [b] == c.index(..)
+;
+
+proof fn lemma_append(a: Vec<int>, b: int) -> (c: Vec<int>)
+    ensures
+        a.index(..) + [b] == c.index(..)
 {
-    return Vec::new();
+    Vec::new()
 }
 
 }

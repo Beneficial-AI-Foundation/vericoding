@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn LinearSearch(a: Vec<int>, e: int) -> (n: int)
+spec fn spec_LinearSearch(a: Vec<int>, e: int) -> n:int
     ensures
         0<=n<=a.len(),
-        n==a.len() || a.spec_index(n)==e,
-        forall i::0<=i < n ==> e!=a.spec_index(i)
+        n==a.len() || a.index(n)==e,
+        forall |i: int|0<=i < n ==> e!=a.index(i)
+;
+
+proof fn lemma_LinearSearch(a: Vec<int>, e: int) -> (n: int)
+    ensures
+        0<=n<=a.len(),
+        n==a.len() || a.index(n)==e,
+        forall |i: int|0<=i < n ==> e!=a.index(i)
 {
-    return 0;
+    0
 }
 
 }

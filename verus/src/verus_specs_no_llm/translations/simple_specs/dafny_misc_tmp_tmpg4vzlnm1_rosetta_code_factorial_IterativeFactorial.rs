@@ -2,19 +2,26 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn IterativeFactorial(n: nat) -> (result: nat)
+spec fn Factorial(n: nat) -> nat
+{
+    0
+}
+
+spec fn spec_IterativeFactorial(n: nat) -> result: nat
+    ensures
+        result == Factorial(n)
+;
+
+proof fn lemma_IterativeFactorial(n: nat) -> (result: nat)
     ensures
         result == Factorial(n)
 {
-    return 0;
+    0
 }
 
 }

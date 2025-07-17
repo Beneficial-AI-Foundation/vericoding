@@ -2,15 +2,38 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn max(a: Vec<int>, b: Vec<int>, i: int, j: int) -> (m: int)
+spec fn spec_max(a: Vec<int>, b: Vec<int>, i: int, j: int) -> m: int)
+ requires 0 <= i < a.Length
+ requires 0 <= j < b.Length
+ ensures a[i] > b[j] ==> m == a[i]
+ ensures a[i] <= b[j] ==> m == b[j]
+{
+  m := 0;
+  assume a[i] > b[j] ==> m == a[i];
+  assume a[i] <= b[j] ==> m == b[j];
+  return m;
+}
+
+
+// SPEC
+
+method testMax(a:array<int>, b:array<int>, i: int, j: int
+    requires
+        0 <= i < a.len(),
+        0 <= j < b.len(),
+        0 <= i < a.len(),
+        0 <= j < b.len()
+    ensures
+        a.index(i) > b.index(j) ==> m == a.index(i),
+        a.index(i) <= b.index(j) ==> m == b.index(j)
+;
+
+proof fn lemma_max(a: Vec<int>, b: Vec<int>, i: int, j: int) -> (m: int)
  requires 0 <= i < a.Length
  requires 0 <= j < b.Length
  ensures a[i] > b[j] ==> m == a[i]
@@ -32,10 +55,10 @@ method testMax(a:array<int>, b: Vec<int>, i: int, j: int)
         0 <= i < a.len(),
         0 <= j < b.len()
     ensures
-        a.spec_index(i) > b.spec_index(j) ==> m == a.spec_index(i),
-        a.spec_index(i) <= b.spec_index(j) ==> m == b.spec_index(j)
+        a.index(i) > b.index(j) ==> m == a.index(i),
+        a.index(i) <= b.index(j) ==> m == b.index(j)
 {
-    return (0, Vec::new(), 0, 0);
+    (0, Vec::new(), 0, 0)
 }
 
 }

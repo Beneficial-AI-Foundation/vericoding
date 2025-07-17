@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn CalcProduct(m: nat, n: nat) -> (res: nat)
+spec fn spec_CalcProduct(m: nat, n: nat) -> res: nat
+    ensures
+        res == m*n
+;
+
+proof fn lemma_CalcProduct(m: nat, n: nat) -> (res: nat)
     ensures
         res == m*n
 {
-    return 0;
+    0
 }
 
 }

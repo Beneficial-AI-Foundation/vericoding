@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn MinLengthSublist(s: Seq<Seq<int>>) -> (minSublist: Seq<int>)
+spec fn spec_MinLengthSublist(s: Seq<Seq<int>>) -> minSublist: seq<int>
     requires
         s.len() > 0
     ensures
         minSublist in s,
-        forall sublist :: sublist in s ==> minSublist.len() <= sublist.len()
+        forall |sublist: int| sublist in s ==> minSublist.len() <= sublist.len()
+;
+
+proof fn lemma_MinLengthSublist(s: Seq<Seq<int>>) -> (minSublist: Seq<int>)
+    requires
+        s.len() > 0
+    ensures
+        minSublist in s,
+        forall |sublist: int| sublist in s ==> minSublist.len() <= sublist.len()
 {
-    return Seq::empty();
+    Seq::empty()
 }
 
 }

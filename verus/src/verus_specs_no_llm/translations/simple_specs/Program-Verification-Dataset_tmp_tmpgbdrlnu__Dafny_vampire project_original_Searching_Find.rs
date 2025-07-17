@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn Find(blood: Vec<int>, key: int) -> (index: int)
+spec fn spec_Find(blood: Vec<int>, key: int) -> index: int
     requires
         blood != null
     ensures
-        0 <= index ==> index < blood.len() && blood.spec_index(index) == key,
-        index < 0 ==> forall k :: 0 <= k < blood.len() ==> blood.spec_index(k) != key
+        0 <= index ==> index < blood.len() && blood.index(index) == key,
+        index < 0 ==> forall |k: int| 0 <= k < blood.len() ==> blood.index(k) != key
+;
+
+proof fn lemma_Find(blood: Vec<int>, key: int) -> (index: int)
+    requires
+        blood != null
+    ensures
+        0 <= index ==> index < blood.len() && blood.index(index) == key,
+        index < 0 ==> forall |k: int| 0 <= k < blood.len() ==> blood.index(k) != key
 {
-    return 0;
+    0
 }
 
 }

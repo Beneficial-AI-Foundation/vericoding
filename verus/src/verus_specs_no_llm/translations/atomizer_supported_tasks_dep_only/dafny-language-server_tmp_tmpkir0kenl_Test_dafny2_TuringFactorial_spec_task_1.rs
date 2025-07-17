@@ -2,21 +2,30 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn ComputeFactorial(n: int) -> (u: int)
+spec fn Factorial(n: nat) -> nat
+{
+    0
+}
+
+spec fn spec_ComputeFactorial(n: int) -> u: int
+    requires
+        1 <= n
+    ensures
+        u == Factorial(n)
+;
+
+proof fn lemma_ComputeFactorial(n: int) -> (u: int)
     requires
         1 <= n
     ensures
         u == Factorial(n)
 {
-    return 0;
+    0
 }
 
 }

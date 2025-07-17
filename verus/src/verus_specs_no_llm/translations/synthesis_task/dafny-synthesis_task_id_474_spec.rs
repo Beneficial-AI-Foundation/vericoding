@@ -2,20 +2,23 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn ReplaceChars(s: String, oldChar: char, newChar: char) -> (v: String)
+spec fn spec_ReplaceChars(s: String, oldChar: char, newChar: char) -> v: string
     ensures
         v.len() == s.len(),
-        forall i :: 0 <= i < s.len() ==> (s.spec_index(i) == oldChar ==> v.spec_index(i) == newChar) && (s.spec_index(i) != oldChar ==> v.spec_index(i) == s.spec_index(i))
+        forall |i: int| 0 <= i < s.len() ==> (s.index(i) == oldChar ==> v.index(i) == newChar) && (s.index(i) != oldChar ==> v.index(i) == s.index(i))
+;
+
+proof fn lemma_ReplaceChars(s: String, oldChar: char, newChar: char) -> (v: String)
+    ensures
+        v.len() == s.len(),
+        forall |i: int| 0 <= i < s.len() ==> (s.index(i) == oldChar ==> v.index(i) == newChar) && (s.index(i) != oldChar ==> v.index(i) == s.index(i))
 {
-    return String::new();
+    String::new()
 }
 
 }

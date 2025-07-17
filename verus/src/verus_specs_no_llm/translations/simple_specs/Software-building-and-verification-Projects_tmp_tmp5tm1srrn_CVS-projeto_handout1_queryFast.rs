@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -28,14 +25,30 @@ method queryFast(a: Vec<int>, c: Vec<int>, i: int, j: int) returns (r: int)
     
 }
 
-fn queryFast(a: Vec<int>, c: Vec<int>, i: int, j: int) -> (r: int)
+spec fn sum(a: Vec<int>, i: int, j: int) -> int
+    requires
+        0 <= i <= j <= a.len()
+ reads a
+{
+    0
+}
+
+spec fn spec_queryFast(a: Vec<int>, c: Vec<int>, i: int, j: int) -> r: int
+    requires
+        0 <= i <= j <= a.len(),
+        is_prefix_sum_for(a,c)
+    ensures
+        r == sum(a, i, j)
+;
+
+proof fn lemma_queryFast(a: Vec<int>, c: Vec<int>, i: int, j: int) -> (r: int)
     requires
         0 <= i <= j <= a.len(),
         is_prefix_sum_for(a,c)
     ensures
         r == sum(a, i, j)
 {
-    return 0;
+    0
 }
 
 }

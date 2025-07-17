@@ -2,22 +2,32 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn Abs(x: int) -> (y: int)
+spec fn abs(x: int) -> int
+{
+    0
+}
+
+spec fn spec_Abs(x: int) -> y:int
+    ensures
+        y>=0,
+        x>=0 ==> x == y,
+        x<0 ==> -x == y,
+        y == abs(x)
+;
+
+proof fn lemma_Abs(x: int) -> (y: int)
     ensures
         y>=0,
         x>=0 ==> x == y,
         x<0 ==> -x == y,
         y == abs(x)
 {
-    return 0;
+    0
 }
 
 }

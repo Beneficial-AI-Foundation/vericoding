@@ -2,25 +2,36 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
 spec fn positive(s: Seq<int>) -> bool {
-    forall u::0<=u<s.len() ==> s.spec_index(u)>=0
+    forall |u: int|0<=u<s.len() ==> s.index(u)>=0
 }
 
-fn mcountEven(v: Vec<int>) -> (n: int)
+spec fn CountEven(s: Seq<int>) -> int
     requires
-        positive(v.spec_index(..))
-    ensures
-        n==CountEven(v.spec_index(..))
+        positive(s)
 {
-    return 0;
+    0
+}
+
+spec fn spec_mcountEven(v: Vec<int>) -> n:int
+    requires
+        positive(v.index(..))
+    ensures
+        n==CountEven(v.index(..))
+;
+
+proof fn lemma_mcountEven(v: Vec<int>) -> (n: int)
+    requires
+        positive(v.index(..))
+    ensures
+        n==CountEven(v.index(..))
+{
+    0
 }
 
 }

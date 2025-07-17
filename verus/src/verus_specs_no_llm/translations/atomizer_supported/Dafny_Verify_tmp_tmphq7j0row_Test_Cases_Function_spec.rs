@@ -2,19 +2,26 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn TripleConditions(x: int) -> (r: int)
+spec fn Average(a: int, b: int) -> int
+{
+    0
+}
+
+spec fn spec_TripleConditions(x: int) -> r: int
+    ensures
+        r == 3 * x
+;
+
+proof fn lemma_TripleConditions(x: int) -> (r: int)
     ensures
         r == 3 * x
 {
-    return 0;
+    0
 }
 
 }

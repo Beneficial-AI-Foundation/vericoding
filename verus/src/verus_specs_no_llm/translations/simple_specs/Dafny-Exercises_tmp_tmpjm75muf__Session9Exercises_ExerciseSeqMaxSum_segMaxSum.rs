@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -26,13 +23,28 @@ ensures 0<=k<=i && s==Sum(v, k, i+1) && SumMaxToRight(v, i, s) -> bool {
     
 }
 
-fn segMaxSum(v: Vec<int>, i: int) -> (s: int, k: int)
+spec fn Sum(v: Vec<int>, i: int, j: int) -> int
+reads v
+    requires
+        0<=i<=j<=v.len()
+{
+    0
+}
+
+spec fn spec_segMaxSum(v: Vec<int>, i: int) -> s:int,k:int
+    requires
+        v.len()>0 && 0<=i<v.len()
+    ensures
+        0<=k<=i && s==Sum(v,k,i+1) && SumMaxToRight(v,i,s)
+;
+
+proof fn lemma_segMaxSum(v: Vec<int>, i: int) -> (s: int, k: int)
     requires
         v.len()>0 && 0<=i<v.len()
     ensures
         0<=k<=i && s==Sum(v,k,i+1) && SumMaxToRight(v,i,s)
 {
-    return (0, 0);
+    (0, 0)
 }
 
 }

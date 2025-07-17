@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn Find(a: Vec<int>, key: int) -> (index: int)
+spec fn spec_Find(a: Vec<int>, key: int) -> index: int
     ensures
         -1<=index<a.len(),
-        index!=-1 ==> a.spec_index(index)==key && (forall i :: 0 <= i < index ==> a.spec_index(i) != key),
-        index == -1 ==> (forall i::0 <= i < a.len() ==> a.spec_index(i) != key)
+        index!=-1 ==> a.index(index)==key && (forall |i: int| 0 <= i < index ==> a.index(i) != key),
+        index == -1 ==> (forall |i: int|0 <= i < a.len() ==> a.index(i) != key)
+;
+
+proof fn lemma_Find(a: Vec<int>, key: int) -> (index: int)
+    ensures
+        -1<=index<a.len(),
+        index!=-1 ==> a.index(index)==key && (forall |i: int| 0 <= i < index ==> a.index(i) != key),
+        index == -1 ==> (forall |i: int|0 <= i < a.len() ==> a.index(i) != key)
 {
-    return 0;
+    0
 }
 
 }

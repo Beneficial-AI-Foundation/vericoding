@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -14,16 +11,28 @@ spec fn BST(t: Tree) -> bool {
     Ascending(Inorder(t))
 }
 spec fn Ascending(q: Seq<int>) -> bool {
-    forall i,j :: 0 <= i < j < q.len() ==> q.spec_index(i) < q.spec_index(j)
+    forall |i: int, j: int| 0 <= i < j < q.len() ==> q.index(i) < q.index(j)
 }
 
-fn InsertBST(t0: Tree, x: int) -> (t: Tree)
+spec fn NumbersInTree(t: Tree) -> set<int>
+{
+    0
+}
+
+spec fn spec_InsertBST(t0: Tree, x: int) -> t: Tree
+    requires
+        BST(t0) && x !in NumbersInTree(t0)
+    ensures
+        BST(t) && NumbersInTree(t) == NumbersInTree(t0)+
+;
+
+proof fn lemma_InsertBST(t0: Tree, x: int) -> (t: Tree)
     requires
         BST(t0) && x !in NumbersInTree(t0)
     ensures
         BST(t) && NumbersInTree(t) == NumbersInTree(t0)+
 {
-    return 0;
+    0
 }
 
 }

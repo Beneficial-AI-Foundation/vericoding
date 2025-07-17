@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -23,7 +20,7 @@ spec fn is_max_nit(b: nat, q: nat) -> bool {
 spec fn bibble(b: nat, a: Seq<nat>) -> bool {
     valid_base(b) && 
  a.len() == 4 && 
- forall n :: n in a ==> nitness(b, n)
+ forall |n: int| n in a ==> nitness(b, n)
 }
 
 }

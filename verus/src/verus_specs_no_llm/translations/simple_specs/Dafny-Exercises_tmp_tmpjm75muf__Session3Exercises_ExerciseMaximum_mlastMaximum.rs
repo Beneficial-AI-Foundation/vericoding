@@ -2,23 +2,29 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn mlastMaximum(v: Vec<int>) -> (i: int)
+spec fn spec_mlastMaximum(v: Vec<int>) -> i:int
     requires
         v.len()>0
     ensures
         0<=i<v.len(),
-        forall k:: 0<=k<v.len() ==> v.spec_index(i)>=v.spec_index(k),
-        forall l:: i<l<v.len() ==> v.spec_index(i)>v.spec_index(l)
+        forall |k: int| 0<=k<v.len() ==> v.index(i)>=v.index(k),
+        forall |l: int| i<l<v.len() ==> v.index(i)>v.index(l)
+;
+
+proof fn lemma_mlastMaximum(v: Vec<int>) -> (i: int)
+    requires
+        v.len()>0
+    ensures
+        0<=i<v.len(),
+        forall |k: int| 0<=k<v.len() ==> v.index(i)>=v.index(k),
+        forall |l: int| i<l<v.len() ==> v.index(i)>v.index(l)
 {
-    return 0;
+    0
 }
 
 }

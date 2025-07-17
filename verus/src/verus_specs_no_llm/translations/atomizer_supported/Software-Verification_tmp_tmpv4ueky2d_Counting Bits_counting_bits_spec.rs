@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn counting_bits(n: int) -> (result: Vec<int>)
+spec fn spec_counting_bits(n: int) -> result: array<int>
     requires
         0 <= n <= 100000
     ensures
         result.len() == n + 1,
-        forall i :: 1 <= i < n + 1 ==> result.spec_index(i) == result.spec_index(i / 2) + i % 2
+        forall |i: int| 1 <= i < n + 1 ==> result.index(i) == result.index(i / 2) + i % 2
+;
+
+proof fn lemma_counting_bits(n: int) -> (result: Vec<int>)
+    requires
+        0 <= n <= 100000
+    ensures
+        result.len() == n + 1,
+        forall |i: int| 1 <= i < n + 1 ==> result.index(i) == result.index(i / 2) + i % 2
 {
-    return Vec::new();
+    Vec::new()
 }
 
 }

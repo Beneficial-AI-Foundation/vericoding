@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn MinOfMultiset(m: multiset<int>) -> (min: int)
+spec fn spec_MinOfMultiset(m: multiset<int>) -> min: int
+    requires
+        m != multiset
+;
+
+proof fn lemma_MinOfMultiset(m: multiset<int>) -> (min: int)
     requires
         m != multiset
 {
-    return 0;
+    0
 }
 
 }

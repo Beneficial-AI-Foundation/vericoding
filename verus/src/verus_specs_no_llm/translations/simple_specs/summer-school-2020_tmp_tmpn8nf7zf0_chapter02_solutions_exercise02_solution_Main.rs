@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -21,7 +18,7 @@ spec fn divides(f: nat, i: nat)
 
 predicate IsPrime(i:nat) -> bool {
     && 1<i
- && ( forall f :: 1 < f < i ==> !divides(f, i) )
+ && ( forall |f: int| 1 < f < i ==> !divides(f, i) )
 }
 
 }

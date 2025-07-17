@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn KthElement(arr: Vec<int>, k: int) -> (result: int)
+spec fn spec_KthElement(arr: Vec<int>, k: int) -> result: int
     requires
         1 <= k <= arr.len()
     ensures
-        result == arr.spec_index(k - 1)
+        result == arr.index(k - 1)
+;
+
+proof fn lemma_KthElement(arr: Vec<int>, k: int) -> (result: int)
+    requires
+        1 <= k <= arr.len()
+    ensures
+        result == arr.index(k - 1)
 {
-    return 0;
+    0
 }
 
 }

@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn ContainsConsecutiveNumbers(a: Vec<int>) -> (result: bool)
+spec fn spec_ContainsConsecutiveNumbers(a: Vec<int>) -> result: bool
     requires
         a.len()>0
     ensures
-        result <==> (exists i :: 0 <= i < a.len() - 1 && a.spec_index(i) + 1 == a.spec_index(i + 1))
+        result <==> (exists |i: int| 0 <= i < a.len() - 1 && a.index(i) + 1 == a.index(i + 1))
+;
+
+proof fn lemma_ContainsConsecutiveNumbers(a: Vec<int>) -> (result: bool)
+    requires
+        a.len()>0
+    ensures
+        result <==> (exists |i: int| 0 <= i < a.len() - 1 && a.index(i) + 1 == a.index(i + 1))
 {
-    return false;
+    false
 }
 
 }

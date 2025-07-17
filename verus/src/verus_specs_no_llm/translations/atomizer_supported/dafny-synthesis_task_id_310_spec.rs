@@ -2,20 +2,23 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn ToCharArray(s: String) -> (a: Vec<char>)
+spec fn spec_ToCharArray(s: String) -> a: array<char>
     ensures
         a.len() == s.len(),
-        forall i :: 0 <= i < s.len() ==> a.spec_index(i) == s.spec_index(i)
+        forall |i: int| 0 <= i < s.len() ==> a.index(i) == s.index(i)
+;
+
+proof fn lemma_ToCharArray(s: String) -> (a: Vec<char>)
+    ensures
+        a.len() == s.len(),
+        forall |i: int| 0 <= i < s.len() ==> a.index(i) == s.index(i)
 {
-    return Vec::new();
+    Vec::new()
 }
 
 }

@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -33,10 +30,19 @@ ensures multiset{
 {
     b: = a;
     if (b[0] > b[1]) -> bool {
-    b := b.spec_index(0 := b[1)][1 := b.spec_index(0)]
+    b := b.index(0 := b[1)][1 := b.index(0)]
 }
 
-fn String3Sort(a: String) -> (b: String)
+spec fn spec_String3Sort(a: String) -> b: string
+    requires
+        a.len() == 3
+    ensures
+        Sorted(b, 0, b.len()),
+        a.len() == b.len(),
+        multiset
+;
+
+proof fn lemma_String3Sort(a: String) -> (b: String)
     requires
         a.len() == 3
     ensures
@@ -44,7 +50,7 @@ fn String3Sort(a: String) -> (b: String)
         a.len() == b.len(),
         multiset
 {
-    return String::new();
+    String::new()
 }
 
 }

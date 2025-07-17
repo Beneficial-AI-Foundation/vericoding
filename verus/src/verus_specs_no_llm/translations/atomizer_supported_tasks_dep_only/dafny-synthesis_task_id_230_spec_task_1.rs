@@ -2,20 +2,23 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn ReplaceBlanksWithChar(s: String, ch: char) -> (v: String)
+spec fn spec_ReplaceBlanksWithChar(s: String, ch: char) -> v: string
     ensures
         v.len() == s.len(),
-        forall i :: 0 <= i < s.len() ==> (s.spec_index(i) == ' ' ==> v.spec_index(i) == ch) && (s.spec_index(i) != ' ' ==> v.spec_index(i) == s.spec_index(i))
+        forall |i: int| 0 <= i < s.len() ==> (s.index(i) == ' ' ==> v.index(i) == ch) && (s.index(i) != ' ' ==> v.index(i) == s.index(i))
+;
+
+proof fn lemma_ReplaceBlanksWithChar(s: String, ch: char) -> (v: String)
+    ensures
+        v.len() == s.len(),
+        forall |i: int| 0 <= i < s.len() ==> (s.index(i) == ' ' ==> v.index(i) == ch) && (s.index(i) != ' ' ==> v.index(i) == s.index(i))
 {
-    return String::new();
+    String::new()
 }
 
 }

@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn Triple1(x: int) -> (r: int)
+spec fn spec_Triple1(x: int) -> r: int
+    ensures
+        r == 3 * x
+;
+
+proof fn lemma_Triple1(x: int) -> (r: int)
     ensures
         r == 3 * x
 {
-    return 0;
+    0
 }
 
 }

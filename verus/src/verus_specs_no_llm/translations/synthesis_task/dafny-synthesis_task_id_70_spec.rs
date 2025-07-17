@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn AllSequencesEqualLength(sequences: Seq<Seq<int>>) -> (result: bool)
+spec fn spec_AllSequencesEqualLength(sequences: Seq<Seq<int>>) -> result: bool
     ensures
-        result <==> forall i, j :: 0 <= i < sequences.len() && 0 <= j < sequences.len() ==> sequences.spec_index(i).len() == sequences.spec_index(j).len()
+        result <==> forall |i: int, j: int| 0 <= i < sequences.len() && 0 <= j < sequences.len() ==> sequences.index(i).len() == sequences.index(j).len()
+;
+
+proof fn lemma_AllSequencesEqualLength(sequences: Seq<Seq<int>>) -> (result: bool)
+    ensures
+        result <==> forall |i: int, j: int| 0 <= i < sequences.len() && 0 <= j < sequences.len() ==> sequences.index(i).len() == sequences.index(j).len()
 {
-    return false;
+    false
 }
 
 }

@@ -2,19 +2,26 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn ClimbStairs(n: nat) -> (r: nat)
+spec fn Stairs(n: nat) -> nat
+{
+    0
+}
+
+spec fn spec_ClimbStairs(n: nat) -> r: nat
+    ensures
+        r == Stairs(n)
+;
+
+proof fn lemma_ClimbStairs(n: nat) -> (r: nat)
     ensures
         r == Stairs(n)
 {
-    return 0;
+    0
 }
 
 }

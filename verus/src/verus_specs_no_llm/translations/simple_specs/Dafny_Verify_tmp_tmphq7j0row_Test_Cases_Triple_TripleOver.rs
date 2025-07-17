@@ -2,17 +2,17 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn TripleOver(x: int) -> (r: int)
+spec fn spec_TripleOver(x: int) -> r: int
+;
+
+proof fn lemma_TripleOver(x: int) -> (r: int)
 {
-    return 0;
+    0
 }
 
 }

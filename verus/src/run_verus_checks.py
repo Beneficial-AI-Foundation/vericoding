@@ -41,7 +41,6 @@ def process_directory():
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_file = log_dir / f"verus_check_results_{timestamp}.md"
-    stats_file = log_dir / f"verus_check_stats_{timestamp}.json"
     
     total_files = 0
     successful_files = 0
@@ -91,18 +90,32 @@ def process_directory():
     
     # Calculate statistics
     success_rate = (successful_files / total_files * 100) if total_files > 0 else 0
-    stats = {
-        "timestamp": timestamp,
-        "total_files": total_files,
-        "successful_files": successful_files,
-        "success_rate": round(success_rate, 2),
-        "successful_files_list": successful_files_list,
-        "failed_files": failed_files
-    }
     
-    # Save statistics
+    # Save statistics in markdown format
+    stats_file = log_dir / f"verus_check_stats_{timestamp}.md"
     with open(stats_file, "w") as f:
-        json.dump(stats, f, indent=2)
+        f.write("# Verus Check Statistics\n\n")
+        f.write(f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        
+        # Summary section
+        f.write("## Summary\n\n")
+        f.write(f"- Total files processed: {total_files}\n")
+        f.write(f"- Successful compilations: {successful_files}\n")
+        f.write(f"- Failed compilations: {len(failed_files)}\n")
+        f.write(f"- Success rate: {success_rate:.2f}%\n\n")
+        
+        # Successful files section
+        f.write("## Successful Files\n\n")
+        for file_path in successful_files_list:
+            link = get_file_link(specs_path / file_path, workspace_root)
+            f.write(f"- {link}\n")
+        f.write("\n")
+        
+        # Failed files section
+        f.write("## Failed Files\n\n")
+        for file_path in failed_files:
+            link = get_file_link(specs_path / file_path, workspace_root)
+            f.write(f"- {link}\n")
     
     # Print summary
     print(f"\nResults Summary:")

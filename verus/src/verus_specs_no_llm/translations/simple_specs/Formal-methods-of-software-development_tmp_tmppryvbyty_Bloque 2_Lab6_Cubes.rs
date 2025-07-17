@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn Cubes(n: int) -> (s: Seq<int>)
+spec fn spec_Cubes(n: int) -> s:seq<int>
     requires
         n >= 0
     ensures
         s.len() == n,
-        forall i:int :: 0 <= i < n ==> s.spec_index(i) == i*i*i
+        forall |i: int| 0 <= i < n ==> s.index(i) == i*i*i
+;
+
+proof fn lemma_Cubes(n: int) -> (s: Seq<int>)
+    requires
+        n >= 0
+    ensures
+        s.len() == n,
+        forall |i: int| 0 <= i < n ==> s.index(i) == i*i*i
 {
-    return Seq::empty();
+    Seq::empty()
 }
 
 }

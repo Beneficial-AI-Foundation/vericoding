@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -30,9 +27,12 @@ spec fn minValue(tree: Tree, min: int) -> bool {
   case Node(left,v,right) => (min < v) && minValue(left, min) && minValue(right, min)
 }
 
-fn GetMin(tree: Tree) -> (res: int)
+spec fn spec_GetMin(tree: Tree) -> res: int
+;
+
+proof fn lemma_GetMin(tree: Tree) -> (res: int)
 {
-    return 0;
+    0
 }
 
 }

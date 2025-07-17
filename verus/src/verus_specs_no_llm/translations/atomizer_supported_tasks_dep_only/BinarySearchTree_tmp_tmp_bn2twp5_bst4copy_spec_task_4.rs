@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -30,15 +27,24 @@ spec fn minValue(tree: Tree, min: int) -> bool {
   case Node(left,v,right) => (min < v) && minValue(left, min) && minValue(right, min)
 }
 
-fn insertRecursion(tree: Tree, value: int) -> (res: Tree)
+spec fn spec_insertRecursion(tree: Tree, value: int) -> res: Tree
     requires
         BinarySearchTree(tree)
     ensures
         res != Empty ==> BinarySearchTree(res),
-        forall x :: minValue(tree, x) && x < value ==> minValue(res, x),
-        forall x :: maxValue(tree, x) && x > value ==> maxValue(res, x)
+        forall |x: int| minValue(tree, x) && x < value ==> minValue(res, x),
+        forall |x: int| maxValue(tree, x) && x > value ==> maxValue(res, x)
+;
+
+proof fn lemma_insertRecursion(tree: Tree, value: int) -> (res: Tree)
+    requires
+        BinarySearchTree(tree)
+    ensures
+        res != Empty ==> BinarySearchTree(res),
+        forall |x: int| minValue(tree, x) && x < value ==> minValue(res, x),
+        forall |x: int| maxValue(tree, x) && x > value ==> maxValue(res, x)
 {
-    return 0;
+    0
 }
 
 }

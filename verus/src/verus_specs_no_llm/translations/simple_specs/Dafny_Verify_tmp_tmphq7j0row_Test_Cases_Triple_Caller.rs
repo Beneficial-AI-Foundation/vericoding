@@ -2,15 +2,31 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn TripleConditions(x: int) -> (r: int) 
+spec fn spec_TripleConditions(x: int) -> r: int) 
+requires x % 2 == 0
+ensures r == 3 * x
+{
+  r := 0;
+  assume r ==> 3 * x;
+  return r;
+}
+
+
+// SPEC
+
+method Caller(
+    requires
+        x % 2 == 0
+    ensures
+        r == 3 * x
+;
+
+proof fn lemma_TripleConditions(x: int) -> (r: int) 
 requires x % 2 == 0
 ensures r == 3 * x
 {
@@ -28,7 +44,7 @@ method Caller()
     ensures
         r == 3 * x
 {
-    return 0;
+    0
 }
 
 }

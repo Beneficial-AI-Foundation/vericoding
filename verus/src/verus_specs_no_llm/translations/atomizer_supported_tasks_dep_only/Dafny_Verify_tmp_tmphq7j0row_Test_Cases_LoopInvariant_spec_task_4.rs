@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn DownWhileGreater(N: int) -> (i: int)
+spec fn spec_DownWhileGreater(N: int) -> i: int
+    requires
+        0 <= N
+    ensures
+        i == 0
+;
+
+proof fn lemma_DownWhileGreater(N: int) -> (i: int)
     requires
         0 <= N
     ensures
         i == 0
 {
-    return 0;
+    0
 }
 
 }

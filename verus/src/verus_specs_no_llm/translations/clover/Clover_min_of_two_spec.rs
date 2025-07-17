@@ -2,20 +2,23 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn Min(x: int, y: int) -> (z: int)
+spec fn spec_Min(x: int, y: int) -> z: int
+    ensures
+        x<=y ==> z==x,
+        x>y ==> z==y
+;
+
+proof fn lemma_Min(x: int, y: int) -> (z: int)
     ensures
         x<=y ==> z==x,
         x>y ==> z==y
 {
-    return 0;
+    0
 }
 
 }

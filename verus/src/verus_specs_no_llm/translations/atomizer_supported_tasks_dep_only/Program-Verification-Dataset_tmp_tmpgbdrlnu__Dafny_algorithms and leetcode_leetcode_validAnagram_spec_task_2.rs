@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn msetEqual(s: multiset<char>, t: multiset<char>) -> (equal: bool)
+spec fn spec_msetEqual(s: multiset<char>, t: multiset<char>) -> equal: bool
+    ensures
+        s == t <==> equal
+;
+
+proof fn lemma_msetEqual(s: multiset<char>, t: multiset<char>) -> (equal: bool)
     ensures
         s == t <==> equal
 {
-    return false;
+    false
 }
 
 }

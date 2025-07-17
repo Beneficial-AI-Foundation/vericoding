@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn IsBreakEven(costPrice: int, sellingPrice: int) -> (result: bool)
+spec fn spec_IsBreakEven(costPrice: int, sellingPrice: int) -> result: bool
+    requires
+        costPrice >= 0 && sellingPrice >= 0
+    ensures
+        result <==> costPrice == sellingPrice
+;
+
+proof fn lemma_IsBreakEven(costPrice: int, sellingPrice: int) -> (result: bool)
     requires
         costPrice >= 0 && sellingPrice >= 0
     ensures
         result <==> costPrice == sellingPrice
 {
-    return false;
+    false
 }
 
 }

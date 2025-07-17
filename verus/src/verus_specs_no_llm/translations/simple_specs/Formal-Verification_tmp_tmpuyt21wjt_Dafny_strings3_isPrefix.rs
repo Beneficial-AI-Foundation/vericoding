@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -12,19 +9,25 @@ fn main() {
 
 spec fn isPrefixPred(pre: String, str: String) -> bool {
     (pre.len() <= str.len()) && 
-	pre == str.spec_index(..pre.len())
+	pre == str.index(..pre.len())
 }
 spec fn isNotPrefixPred(pre: String, str: String) -> bool {
     (pre.len() > str.len()) | 
-	pre != str.spec_index(...len()pre|)
+	pre != str.index(...len()pre|)
 }
 
-fn isPrefix(pre: String, str: String) -> (res: bool)
+spec fn spec_isPrefix(pre: String, str: String) -> res:bool
+    ensures
+        !res <==> isNotPrefixPred(pre,str),
+        res <==> isPrefixPred(pre,str)
+;
+
+proof fn lemma_isPrefix(pre: String, str: String) -> (res: bool)
     ensures
         !res <==> isNotPrefixPred(pre,str),
         res <==> isPrefixPred(pre,str)
 {
-    return false;
+    false
 }
 
 }

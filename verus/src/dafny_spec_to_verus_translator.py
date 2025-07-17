@@ -30,7 +30,7 @@ def translate_type(dafny_type: str) -> str:
         'bool': 'bool',
         'string': 'String',
         'char': 'char',
-        'bv32': 'u32',  # Map bitvector types to unsigned integers
+        'bv32': 'u32',  # TODO: check if this is correct
         'bv64': 'u64',
     }
     
@@ -107,8 +107,8 @@ def translate_expression(expr: str) -> str:
     expr = re.sub(r'\.Length\b', '.len()', expr)
     expr = re.sub(r'\|([^|]+)\|', r'\1.len()', expr)
     
-    # Replace array indexing with spec_index
-    expr = re.sub(r'(\w+)\[([^\]]+)\]', r'\1.spec_index(\2)', expr)
+    # Replace array indexing with index
+    expr = re.sub(r'(\w+)\[([^\]]+)\]', r'\1.index(\2)', expr)
     
     # Replace logical operators
     expr = expr.replace('<=>', 'iff')
@@ -121,22 +121,58 @@ def translate_expression(expr: str) -> str:
         vars_str = match.group(2)
         # Split variables and add type annotations
         vars = [v.strip() for v in vars_str.split(',')]
-        typed_vars = [f'{v}: int' if ':' not in v else v for v in vars]
+        typed_vars = []
+        for v in vars:
+            if ':' in v:
+                name, type_str = v.split(':', 1)
+                typed_vars.append(f'{name.strip()}: {translate_type(type_str.strip())}')
+            else:
+                typed_vars.append(f'{v}: int')
         return f'{quant_type} |{", ".join(typed_vars)}|'
     
     # Handle quantifiers (forall and exists)
-    expr = re.sub(r'(forall|exists)\s*\|([^|]+)\|', replace_quantifier, expr)
+    expr = re.sub(r'(forall|exists)\s*([^=|]+?)\s*::', replace_quantifier, expr)
     
     return expr
 
-def parse_method(content: str) -> Tuple[str, str, str, List[str], List[str]]:
+def parse_function(content: str) -> Tuple[str, str, str, List[str], List[str], bool]:
+    """Parse a Dafny function and return its components.
+    Returns (name, params, returns, requires, ensures, is_ghost)."""
+    # Extract function signature, handling both regular and ghost functions
+    function_match = re.search(r'(?:ghost\s+)?function\s+(\w+)\s*\((.*?)\)\s*:\s*(.*?)(?:\s*requires[^{]*)*(?:\s*ensures[^{]*)*\s*\{([^}]+)\}', content, re.DOTALL)
+    if not function_match:
+        return '', '', '', [], [], False
+    
+    # Check if it's a ghost function
+    is_ghost = bool(re.search(r'ghost\s+function', function_match.group(0)))
+    
+    name = function_match.group(1)
+    params = function_match.group(2)
+    returns = function_match.group(3)
+    
+    # Extract requires clauses
+    requires = []
+    for req in re.finditer(r'requires\s+([^{;]+?(?:;|\s*(?=requires|ensures|{)))', function_match.group(0)):
+        requires.append(req.group(1).strip())
+    
+    # Extract ensures clauses
+    ensures = []
+    for ens in re.finditer(r'ensures\s+([^{;]+?(?:;|\s*(?=requires|ensures|{)))', function_match.group(0)):
+        ensures.append(ens.group(1).strip())
+    
+    return name, params, returns, requires, ensures, is_ghost
+
+def parse_method(content: str) -> Tuple[str, str, str, List[str], List[str], bool]:
     """Parse a Dafny method and return its components.
     Only matches methods with empty bodies (specification-only methods).
-    Returns (name, params, returns, requires, ensures)."""
-    # Extract method signature with empty body
-    method_match = re.search(r'method\s+(\w+)\s*\((.*?)\)\s*returns\s*\((.*?)\)(?:\s*requires[^{]*)*(?:\s*ensures[^{]*)*\s*{\s*}', content, re.DOTALL)
+    Returns (name, params, returns, requires, ensures, is_ghost)."""
+    # Extract method signature with empty body, handling both regular and ghost methods
+    method_match = re.search(r'(?:ghost\s+)?method\s+(\w+)\s*\((.*?)\)\s*returns\s*\((.*?)\)(?:\s*requires[^{]*)*(?:\s*ensures[^{]*)*\s*{\s*}', content, re.DOTALL)
     if not method_match:
-        return '', '', '', [], []
+        return '', '', '', [], [], False
+    
+    # Check if it's a ghost method
+    is_ghost = bool(re.search(r'ghost\s+method', method_match.group(0)))
     
     name = method_match.group(1)
     params = method_match.group(2)
@@ -152,7 +188,7 @@ def parse_method(content: str) -> Tuple[str, str, str, List[str], List[str]]:
     for ens in re.finditer(r'ensures\s+([^{;]+?(?:;|\s*(?=requires|ensures|{)))', method_match.group(0)):
         ensures.append(ens.group(1).strip())
     
-    return name, params, returns, requires, ensures
+    return name, params, returns, requires, ensures, is_ghost
 
 def translate_params(params: str, is_return_type: bool = False) -> str:
     """Translate Dafny parameters to Verus parameters.
@@ -228,6 +264,47 @@ def get_default_value(type_str: str) -> str:
     # Default to 0 for unknown types
     return '0'
 
+def add_requires_ensures(verus_spec: List[str], requires: List[str], ensures: List[str]) -> None:
+    """Add requires and ensures clauses to the Verus spec."""
+    # Add requires clauses
+    if requires:
+        requires_lines = [translate_expression(req.strip()) for req in requires]
+        verus_spec.append('    requires')
+        for i, req in enumerate(requires_lines):
+            if i == len(requires_lines) - 1:
+                verus_spec.append(f'        {req}')
+            else:
+                verus_spec.append(f'        {req},')
+    
+    # Add ensures clauses
+    if ensures:
+        ensures_lines = [translate_expression(ens.strip()) for ens in ensures]
+        verus_spec.append('    ensures')
+        for i, ens in enumerate(ensures_lines):
+            if i == len(ensures_lines) - 1:
+                verus_spec.append(f'        {ens}')
+            else:
+                verus_spec.append(f'        {ens},')
+
+def add_function_definition(verus_spec: List[str], fn_type: str, name: str, params: str, returns: str, 
+                          requires: List[str], ensures: List[str], add_body: bool = True) -> None:
+    """Add a function definition to the Verus spec."""
+    translated_params = translate_params(params)
+    translated_returns = translate_params(returns, is_return_type=True) if fn_type != 'spec' else translate_type(returns)
+    
+    verus_spec.append(f'{fn_type} fn {name}({translated_params}) -> {translated_returns}')
+    
+    # Add requires/ensures
+    add_requires_ensures(verus_spec, requires, ensures)
+    
+    if add_body:
+        verus_spec.append('{')
+        verus_spec.append(f'    {get_default_value(translated_returns)}')
+        verus_spec.append('}')
+    else:
+        verus_spec.append(';')
+    verus_spec.append('')
+
 def translate_spec(dafny_file: str) -> Optional[str]:
     """Translate a Dafny specification file to Verus."""
     with open(dafny_file, 'r') as f:
@@ -251,9 +328,13 @@ def translate_spec(dafny_file: str) -> Optional[str]:
         predicate = f'spec fn {name}({translated_params}) -> bool {{\n    {translated_body}\n}}'
         predicates.append(predicate)
     
+    # Extract and translate function
+    fn_name, fn_params, fn_returns, fn_requires, fn_ensures, fn_is_ghost = parse_function(content)
+    
     # Extract and translate method
-    name, params, returns, requires, ensures = parse_method(content)
-    if not name:
+    name, params, returns, requires, ensures, is_ghost = parse_method(content)
+    
+    if not name and not fn_name:
         if not predicates:
             return None
         verus_spec = [
@@ -270,10 +351,7 @@ def translate_spec(dafny_file: str) -> Optional[str]:
         verus_spec.extend(['', '}'])
         return '\n'.join(verus_spec)
     
-    translated_params = translate_params(params)
-    translated_returns = translate_params(returns, is_return_type=True)
-    
-    # Build the Verus method
+    # Build the Verus spec
     verus_spec = []
     verus_spec.append('use builtin::*;')
     verus_spec.append('use builtin_macros::*;')
@@ -291,37 +369,24 @@ def translate_spec(dafny_file: str) -> Optional[str]:
         verus_spec.extend(predicates)
         verus_spec.append('')  # Empty line between predicates and function
     
-    # Add the function
-    verus_spec.append(f'fn {name}({translated_params}) -> {translated_returns}')
+    # Add the function if present
+    if fn_name:
+        fn_type = 'proof' if fn_is_ghost else 'spec'
+        add_function_definition(verus_spec, fn_type, fn_name, fn_params, fn_returns, fn_requires, fn_ensures)
     
-    # Combine all requires into one clause
-    if requires:
-        requires_lines = [translate_expression(req.strip()) for req in requires]
-        verus_spec.append('    requires')
-        for i, req in enumerate(requires_lines):
-            if i == len(requires_lines) - 1:
-                verus_spec.append(f'        {req}')
-            else:
-                verus_spec.append(f'        {req},')
+    # Add the method if present
+    if name:
+        if is_ghost:
+            # Ghost methods become just proof functions
+            add_function_definition(verus_spec, 'proof', name, params, returns, requires, ensures)
+        else:
+            # Regular methods get both spec and proof functions
+            # Add spec function
+            add_function_definition(verus_spec, 'spec', f'spec_{name}', params, returns, requires, ensures, add_body=False)
+            
+            # Add proof lemma
+            add_function_definition(verus_spec, 'proof', f'lemma_{name}', params, returns, requires, ensures)
     
-    # Combine all ensures into one clause
-    if ensures:
-        ensures_lines = [translate_expression(ens.strip()) for ens in ensures]
-        verus_spec.append('    ensures')
-        for i, ens in enumerate(ensures_lines):
-            if i == len(ensures_lines) - 1:
-                verus_spec.append(f'        {ens}')
-            else:
-                verus_spec.append(f'        {ens},')
-    
-    verus_spec.append('{')
-    
-    # Add default return value
-    default_value = get_default_value(translated_returns)
-    verus_spec.append(f'    return {default_value};')
-    
-    verus_spec.append('}')
-    verus_spec.append('')  # Empty line for better readability
     verus_spec.append('}')  # Close verus! block
     
     return '\n'.join(verus_spec)
@@ -358,8 +423,6 @@ def process_directory(input_dir: str, output_dir: str):
             # Write the translated spec
             with open(output_file, 'w') as f:
                 f.write('// Translated from Dafny\n')
-                f.write('use builtin::*;\n')
-                f.write('use builtin_macros::*;\n\n')
                 f.write(verus_spec)
                 
             processed_files.append(rel_path)
@@ -370,7 +433,7 @@ def process_directory(input_dir: str, output_dir: str):
     for f in processed_files:
         print(f"  - {f}")
         
-    print(f"\nSkipped {len(skipped_files)} files containing real numbers:")
+    print(f"\nSkipped {len(skipped_files)} files (cannot generate Verus spec):")
     for f in skipped_files:
         print(f"  - {f}")
         

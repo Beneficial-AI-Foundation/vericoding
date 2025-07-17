@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn m2(x: nat) -> (y: int)
+spec fn spec_m2(x: nat) -> y: int
+    requires
+        x <= -1
+    ensures
+        y > x && y < x
+;
+
+proof fn lemma_m2(x: nat) -> (y: int)
     requires
         x <= -1
     ensures
         y > x && y < x
 {
-    return 0;
+    0
 }
 
 }

@@ -2,21 +2,32 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn SqrSum1(n: int) -> (s: int)
+spec fn SqrSumRec(n: int) -> int
+    requires
+        n >= 0
+{
+    0
+}
+
+spec fn spec_SqrSum1(n: int) -> s: int
+    requires
+        n >= 0
+    ensures
+        s == SqrSumRec(n)
+;
+
+proof fn lemma_SqrSum1(n: int) -> (s: int)
     requires
         n >= 0
     ensures
         s == SqrSumRec(n)
 {
-    return 0;
+    0
 }
 
 }

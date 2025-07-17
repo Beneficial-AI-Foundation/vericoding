@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -35,7 +32,12 @@ ghost predicate NextStep(v: Variables, v': Variables, step: Step) -> bool {
     case NoOpStep() => v' == v // we don't really need to define predicate NoOp
 }
 spec fn Next(v: Variables, v': Variables) -> bool {
-    exists step :: NextStep(v, v', step)
+    exists |step: int| NextStep(v, v', step)
+}
+
+spec fn Other() -> Player
+{
+    0
 }
 
 }

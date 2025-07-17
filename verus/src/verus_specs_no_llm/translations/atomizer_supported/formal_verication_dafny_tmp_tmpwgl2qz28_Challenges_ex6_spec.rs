@@ -2,19 +2,33 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
 spec fn nomultiples(u: Seq<nat>) -> bool {
-    forall j, k :: 0<=j<k<u.len() ==> u.spec_index(j) != u.spec_index(k)
+    forall |j: int, k: int| 0<=j<k<u.len() ==> u.index(j) != u.index(k)
 }
 
-fn BullsCows(s: Seq<nat>, u: Seq<nat>) -> (b: nat, c: nat)
+spec fn bullspec(s: Seq<nat>, u: Seq<nat>) -> nat
+    requires
+        0 <= u.len() == s.len() && nomultiples(u)
+{
+    0
+}
+
+spec fn spec_BullsCows(s: Seq<nat>, u: Seq<nat>) -> b:nat, c:nat
+    requires
+        0 < u.len() == s.len() <= 10,
+        nomultiples(u) && nomultiples(s)
+    ensures
+        b >= 0 && c >= 0,
+        b == bullspec(s, u),
+        c == cowspec(s, u)
+;
+
+proof fn lemma_BullsCows(s: Seq<nat>, u: Seq<nat>) -> (b: nat, c: nat)
     requires
         0 < u.len() == s.len() <= 10,
         nomultiples(u) && nomultiples(s)
@@ -23,7 +37,7 @@ fn BullsCows(s: Seq<nat>, u: Seq<nat>) -> (b: nat, c: nat)
         b == bullspec(s, u),
         c == cowspec(s, u)
 {
-    return (0, 0);
+    (0, 0)
 }
 
 }

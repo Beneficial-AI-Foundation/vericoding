@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -14,11 +11,16 @@ spec fn IsDigit(c: char) -> bool {
     48 <= c as int <= 57
 }
 
-fn CountSubstringsWithSumOfDigitsEqualToLength(s: String) -> (count: int)
+spec fn spec_CountSubstringsWithSumOfDigitsEqualToLength(s: String) -> count: int
+    ensures
+        count >= 0
+;
+
+proof fn lemma_CountSubstringsWithSumOfDigitsEqualToLength(s: String) -> (count: int)
     ensures
         count >= 0
 {
-    return 0;
+    0
 }
 
 }

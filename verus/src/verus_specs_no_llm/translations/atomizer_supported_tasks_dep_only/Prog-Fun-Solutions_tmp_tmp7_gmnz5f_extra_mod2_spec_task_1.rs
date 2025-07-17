@@ -2,19 +2,26 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn mod2(n: nat) -> (a: nat)
+proof fn f2(n: nat) -> (nat)
+{
+    0
+}
+
+spec fn spec_mod2(n: nat) -> a:nat
+    ensures
+        a == f2(n)
+;
+
+proof fn lemma_mod2(n: nat) -> (a: nat)
     ensures
         a == f2(n)
 {
-    return 0;
+    0
 }
 
 }

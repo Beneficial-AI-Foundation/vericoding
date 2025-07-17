@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -19,17 +16,28 @@ spec fn Is2Pow(n: int) -> bool {
         n%2 == 0 && Is2Pow(n/2)
 }
 
-fn Search2PowRecursive(a: Vec<int>, i: int, n: int, x: int) -> (k: int)
+spec fn spec_Search2PowRecursive(a: Vec<int>, i: int, n: int, x: int) -> k: int
     requires
         0 <= i <= i+n <= a.len(),
-        forall p,q | i <= p < q < i+n :: a.spec_index(p) <= a.spec_index(q),
+        forall p,q | i <= p < q < i+n :: a.index(p) <= a.index(q),
         Is2Pow(n+1)
     ensures
         i <= k <= i+n,
-        forall r | i <= r < k :: a.spec_index(r) < x,
-        forall r | k <= r < i+n :: a.spec_index(r) >= x
+        forall r | i <= r < k :: a.index(r) < x,
+        forall r | k <= r < i+n :: a.index(r) >= x
+;
+
+proof fn lemma_Search2PowRecursive(a: Vec<int>, i: int, n: int, x: int) -> (k: int)
+    requires
+        0 <= i <= i+n <= a.len(),
+        forall p,q | i <= p < q < i+n :: a.index(p) <= a.index(q),
+        Is2Pow(n+1)
+    ensures
+        i <= k <= i+n,
+        forall r | i <= r < k :: a.index(r) < x,
+        forall r | k <= r < i+n :: a.index(r) >= x
 {
-    return 0;
+    0
 }
 
 }

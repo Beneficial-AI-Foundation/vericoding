@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -24,13 +21,20 @@ ensures outarr != null && arr.Length == outarr.Length && reversed(arr, outarr) -
     
 }
 
-fn yarra(arr: Vec<char>) -> (outarr: Vec<char>)
+spec fn spec_yarra(arr: Vec<char>) -> outarr : array<char>
+    requires
+        arr != null && arr.len() > 0
+    ensures
+        outarr != null && arr.len() == outarr.len() && reversed(arr,outarr)
+;
+
+proof fn lemma_yarra(arr: Vec<char>) -> (outarr: Vec<char>)
     requires
         arr != null && arr.len() > 0
     ensures
         outarr != null && arr.len() == outarr.len() && reversed(arr,outarr)
 {
-    return Vec::new();
+    Vec::new()
 }
 
 }

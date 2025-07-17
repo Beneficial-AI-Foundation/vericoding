@@ -2,15 +2,29 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn mystery1(n: nat, m: nat) -> (res: nat)
+spec fn spec_mystery1(n: nat, m: nat) -> res: nat)
+ ensures n+m == res
+{
+  res := 0;
+  assume n+m ==> res;
+  return res;
+}
+
+
+// SPEC
+
+method mystery2(n: nat,m: nat) returns (res: nat
+    ensures
+        n+m == res,
+        n*m == res
+;
+
+proof fn lemma_mystery1(n: nat, m: nat) -> (res: nat)
  ensures n+m == res
 {
   res := 0;
@@ -26,7 +40,7 @@ method mystery2(n: nat, m: nat) returns (res: nat)
         n+m == res,
         n*m == res
 {
-    return (0, 0);
+    (0, 0)
 }
 
 }

@@ -2,23 +2,29 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn RemoveElement(s: Vec<int>, k: int) -> (v: Vec<int>)
+spec fn spec_RemoveElement(s: Vec<int>, k: int) -> v: array<int>
     requires
         0 <= k < s.len()
     ensures
         v.len() == s.len() - 1,
-        forall i :: 0 <= i < k ==> v.spec_index(i) == s.spec_index(i),
-        forall i :: k <= i < v.len() ==> v.spec_index(i) == s.spec_index(i + 1)
+        forall |i: int| 0 <= i < k ==> v.index(i) == s.index(i),
+        forall |i: int| k <= i < v.len() ==> v.index(i) == s.index(i + 1)
+;
+
+proof fn lemma_RemoveElement(s: Vec<int>, k: int) -> (v: Vec<int>)
+    requires
+        0 <= k < s.len()
+    ensures
+        v.len() == s.len() - 1,
+        forall |i: int| 0 <= i < k ==> v.index(i) == s.index(i),
+        forall |i: int| k <= i < v.len() ==> v.index(i) == s.index(i + 1)
 {
-    return Vec::new();
+    Vec::new()
 }
 
 }

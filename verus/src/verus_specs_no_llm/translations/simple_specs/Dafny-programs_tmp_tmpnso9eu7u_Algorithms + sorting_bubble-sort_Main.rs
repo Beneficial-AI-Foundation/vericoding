@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -26,10 +23,10 @@ predicate sorted_between(A: Vec<int>, from: int, to: int)
 // SPEC
 
 method Main() -> bool {
-    var A := new int.spec_index(10);
-  A.spec_index(0), A.spec_index(1), A.spec_index(2), A.spec_index(3), A.spec_index(4), A.spec_index(5), A.spec_index(6), A.spec_index(7), A.spec_index(8), A.spec_index(9) := 2, 4, 6, 15, 3, 19, 17, 16, 18, 1;
+    var A := new int.index(10);
+  A.index(0), A.index(1), A.index(2), A.index(3), A.index(4), A.index(5), A.index(6), A.index(7), A.index(8), A.index(9) := 2, 4, 6, 15, 3, 19, 17, 16, 18, 1;
   BubbleSort(A);
-  print A.spec_index(..)
+  print A.index(..)
 }
 
 }

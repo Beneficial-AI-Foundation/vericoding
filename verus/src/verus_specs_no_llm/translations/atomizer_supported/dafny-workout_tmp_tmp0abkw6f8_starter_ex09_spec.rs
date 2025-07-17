@@ -2,19 +2,26 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn ComputeFib(n: nat) -> (b: nat)
+spec fn fib(n: nat) -> nat
+{
+    0
+}
+
+spec fn spec_ComputeFib(n: nat) -> b: nat
+    ensures
+        b == fib(n)
+;
+
+proof fn lemma_ComputeFib(n: nat) -> (b: nat)
     ensures
         b == fib(n)
 {
-    return 0;
+    0
 }
 
 }

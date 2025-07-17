@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -30,13 +27,20 @@ spec fn minValue(tree: Tree, min: int) -> bool {
   case Node(left,v,right) => (min < v) && minValue(left, min) && minValue(right, min)
 }
 
-fn insert(tree: Tree, value: int) -> (res: Tree)
+spec fn spec_insert(tree: Tree, value: int) -> res: Tree
+    requires
+        BinarySearchTree(tree)
+    ensures
+        BinarySearchTree(res)
+;
+
+proof fn lemma_insert(tree: Tree, value: int) -> (res: Tree)
     requires
         BinarySearchTree(tree)
     ensures
         BinarySearchTree(res)
 {
-    return 0;
+    0
 }
 
 }

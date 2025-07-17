@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn ContainsK(s: Seq<int>, k: int) -> (result: bool)
+spec fn spec_ContainsK(s: Seq<int>, k: int) -> result: bool
+    ensures
+        result <==> k in s
+;
+
+proof fn lemma_ContainsK(s: Seq<int>, k: int) -> (result: bool)
     ensures
         result <==> k in s
 {
-    return false;
+    false
 }
 
 }

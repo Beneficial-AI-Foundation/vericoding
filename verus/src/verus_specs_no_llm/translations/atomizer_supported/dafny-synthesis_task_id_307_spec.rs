@@ -2,20 +2,23 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn DeepCopySeq(s: Seq<int>) -> (copy: Seq<int>)
+spec fn spec_DeepCopySeq(s: Seq<int>) -> copy: seq<int>
     ensures
         copy.len() == s.len(),
-        forall i :: 0 <= i < s.len() ==> copy.spec_index(i) == s.spec_index(i)
+        forall |i: int| 0 <= i < s.len() ==> copy.index(i) == s.index(i)
+;
+
+proof fn lemma_DeepCopySeq(s: Seq<int>) -> (copy: Seq<int>)
+    ensures
+        copy.len() == s.len(),
+        forall |i: int| 0 <= i < s.len() ==> copy.index(i) == s.index(i)
 {
-    return Seq::empty();
+    Seq::empty()
 }
 
 }

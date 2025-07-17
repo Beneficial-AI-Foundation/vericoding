@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn isPalindrome(s: Vec<char>) -> (result: bool)
+spec fn spec_isPalindrome(s: Vec<char>) -> result: bool
     requires
         1<= s.len() <= 200000
     ensures
-        result <==> (forall i:: 0 <= i < s.len() / 2 ==> s.spec_index(i) == s.spec_index(s.len() - 1 - i))
+        result <==> (forall |i: int| 0 <= i < s.len() / 2 ==> s.index(i) == s.index(s.len() - 1 - i))
+;
+
+proof fn lemma_isPalindrome(s: Vec<char>) -> (result: bool)
+    requires
+        1<= s.len() <= 200000
+    ensures
+        result <==> (forall |i: int| 0 <= i < s.len() / 2 ==> s.index(i) == s.index(s.len() - 1 - i))
 {
-    return false;
+    false
 }
 
 }

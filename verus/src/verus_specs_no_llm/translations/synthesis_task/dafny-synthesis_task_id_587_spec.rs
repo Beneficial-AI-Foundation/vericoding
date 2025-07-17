@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn ArrayToSeq(a: Vec<int>) -> (s: Seq<int>)
+spec fn spec_ArrayToSeq(a: Vec<int>) -> s: seq<int>
     requires
         a != null
     ensures
         s.len() == a.len(),
-        forall i :: 0 <= i < a.len() ==> s.spec_index(i) == a.spec_index(i)
+        forall |i: int| 0 <= i < a.len() ==> s.index(i) == a.index(i)
+;
+
+proof fn lemma_ArrayToSeq(a: Vec<int>) -> (s: Seq<int>)
+    requires
+        a != null
+    ensures
+        s.len() == a.len(),
+        forall |i: int| 0 <= i < a.len() ==> s.index(i) == a.index(i)
 {
-    return Seq::empty();
+    Seq::empty()
 }
 
 }

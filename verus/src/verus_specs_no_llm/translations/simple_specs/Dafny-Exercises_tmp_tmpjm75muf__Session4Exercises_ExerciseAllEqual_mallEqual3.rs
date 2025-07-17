@@ -2,23 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
 spec fn allEqual(s: Seq<int>) -> bool {
-    forall i,j::0<=i<s.len() && 0<=j<s.len() ==> s.spec_index(i)==s.spec_index(j)
+    forall |i: int, j: int|0<=i<s.len() && 0<=j<s.len() ==> s.index(i)==s.index(j)
 }
 
-fn mallEqual3(v: Vec<int>) -> (b: bool)
+spec fn spec_mallEqual3(v: Vec<int>) -> b:bool
     ensures
-        b==allEqual(v.spec_index(0..v.len()))
+        b==allEqual(v.index(0..v.len()))
+;
+
+proof fn lemma_mallEqual3(v: Vec<int>) -> (b: bool)
+    ensures
+        b==allEqual(v.index(0..v.len()))
 {
-    return false;
+    false
 }
 
 }

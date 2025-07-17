@@ -2,20 +2,28 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn FilterVowelsArray(xs: Vec<char>) -> (ys: Vec<char>)
+spec fn FilterVowels(xs: Seq<char>) -> Seq<char>
+{
+    Seq::empty()
+}
+
+spec fn spec_FilterVowelsArray(xs: Vec<char>) -> ys: array<char>
     ensures
         fresh(ys),
-        FilterVowels(xs.spec_index(..)) == ys.spec_index(..)
+        FilterVowels(xs.index(..)) == ys.index(..)
+;
+
+proof fn lemma_FilterVowelsArray(xs: Vec<char>) -> (ys: Vec<char>)
+    ensures
+        fresh(ys),
+        FilterVowels(xs.index(..)) == ys.index(..)
 {
-    return Vec::new();
+    Vec::new()
 }
 
 }

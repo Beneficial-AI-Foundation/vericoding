@@ -2,24 +2,31 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn SmallestMissingNumber(s: Seq<int>) -> (v: int)
+spec fn spec_SmallestMissingNumber(s: Seq<int>) -> v: int
     requires
-        forall i, j :: 0 <= i < j < s.len() ==> s.spec_index(i) <= s.spec_index(j),
-        forall i :: 0 <= i < s.len() ==> s.spec_index(i) >= 0
+        forall |i: int, j: int| 0 <= i < j < s.len() ==> s.index(i) <= s.index(j),
+        forall |i: int| 0 <= i < s.len() ==> s.index(i) >= 0
     ensures
         0 <= v,
         v !in s,
-        forall k :: 0 <= k < v ==> k in s
+        forall |k: int| 0 <= k < v ==> k in s
+;
+
+proof fn lemma_SmallestMissingNumber(s: Seq<int>) -> (v: int)
+    requires
+        forall |i: int, j: int| 0 <= i < j < s.len() ==> s.index(i) <= s.index(j),
+        forall |i: int| 0 <= i < s.len() ==> s.index(i) >= 0
+    ensures
+        0 <= v,
+        v !in s,
+        forall |k: int| 0 <= k < v ==> k in s
 {
-    return 0;
+    0
 }
 
 }

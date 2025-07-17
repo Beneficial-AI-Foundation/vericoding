@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn IsOdd(n: int) -> (result: bool)
+spec fn spec_IsOdd(n: int) -> result: bool
+    ensures
+        result <==> n % 2 == 1
+;
+
+proof fn lemma_IsOdd(n: int) -> (result: bool)
     ensures
         result <==> n % 2 == 1
 {
-    return false;
+    false
 }
 
 }

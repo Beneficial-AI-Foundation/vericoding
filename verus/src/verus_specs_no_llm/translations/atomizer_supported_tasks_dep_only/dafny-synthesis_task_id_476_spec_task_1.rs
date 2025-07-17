@@ -2,21 +2,32 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn SumMinMax(a: Vec<int>) -> (sum: int)
+spec fn Min(a: Seq<int>) -> int
+    requires
+        a.len() > 0
+{
+    0
+}
+
+spec fn spec_SumMinMax(a: Vec<int>) -> sum: int
     requires
         a.len() > 0
     ensures
-        sum == Max(a.spec_index(..)) + Min(a.spec_index(..))
+        sum == Max(a.index(..)) + Min(a.index(..))
+;
+
+proof fn lemma_SumMinMax(a: Vec<int>) -> (sum: int)
+    requires
+        a.len() > 0
+    ensures
+        sum == Max(a.index(..)) + Min(a.index(..))
 {
-    return 0;
+    0
 }
 
 }

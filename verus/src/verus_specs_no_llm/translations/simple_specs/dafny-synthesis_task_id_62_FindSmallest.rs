@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn FindSmallest(s: Vec<int>) -> (min: int)
+spec fn spec_FindSmallest(s: Vec<int>) -> min: int
     requires
         s.len() > 0
     ensures
-        forall i :: 0 <= i < s.len() ==> min <= s.spec_index(i),
-        exists i :: 0 <= i < s.len() && min == s.spec_index(i)
+        forall |i: int| 0 <= i < s.len() ==> min <= s.index(i),
+        exists |i: int| 0 <= i < s.len() && min == s.index(i)
+;
+
+proof fn lemma_FindSmallest(s: Vec<int>) -> (min: int)
+    requires
+        s.len() > 0
+    ensures
+        forall |i: int| 0 <= i < s.len() ==> min <= s.index(i),
+        exists |i: int| 0 <= i < s.len() && min == s.index(i)
 {
-    return 0;
+    0
 }
 
 }

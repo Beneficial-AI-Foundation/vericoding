@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn find(a: Seq<int>, key: int) -> (index: int)
+spec fn spec_find(a: Seq<int>, key: int) -> index: int
+    requires
+        true
+    ensures
+        true
+;
+
+proof fn lemma_find(a: Seq<int>, key: int) -> (index: int)
     requires
         true
     ensures
         true
 {
-    return 0;
+    0
 }
 
 }

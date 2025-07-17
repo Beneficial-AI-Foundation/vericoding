@@ -2,17 +2,17 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn isPalindrome(a: Seq<char>) -> (b: bool)
+spec fn spec_isPalindrome(a: Seq<char>) -> b: bool
+;
+
+proof fn lemma_isPalindrome(a: Seq<char>) -> (b: bool)
 {
-    return false;
+    false
 }
 
 }

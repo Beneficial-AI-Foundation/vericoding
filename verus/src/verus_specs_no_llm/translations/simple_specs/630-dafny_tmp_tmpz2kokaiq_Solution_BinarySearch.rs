@@ -2,22 +2,33 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn BinarySearch(a: Vec<int>, x: int) -> (index: int)
+spec fn sorted(a: Vec<int>) -> bool
+  reads a
+{
+    0
+}
+
+spec fn spec_BinarySearch(a: Vec<int>, x: int) -> index: int
     requires
         sorted(a)
     ensures
-        0 <= index < a.len() ==> a.spec_index(index) == x,
-        index == -1 ==> forall i : int :: 0 <= i < a.len() ==> a.spec_index(i) != x
+        0 <= index < a.len() ==> a.index(index) == x,
+        index == -1 ==> forall |i: int| 0 <= i < a.len() ==> a.index(i) != x
+;
+
+proof fn lemma_BinarySearch(a: Vec<int>, x: int) -> (index: int)
+    requires
+        sorted(a)
+    ensures
+        0 <= index < a.len() ==> a.index(index) == x,
+        index == -1 ==> forall |i: int| 0 <= i < a.len() ==> a.index(i) != x
 {
-    return 0;
+    0
 }
 
 }

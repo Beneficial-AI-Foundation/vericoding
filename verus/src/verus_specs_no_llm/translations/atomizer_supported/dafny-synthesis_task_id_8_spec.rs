@@ -2,20 +2,23 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn SquareElements(a: Vec<int>) -> (squared: Vec<int>)
+spec fn spec_SquareElements(a: Vec<int>) -> squared: array<int>
     ensures
         squared.len() == a.len(),
-        forall i :: 0 <= i < a.len() ==> squared.spec_index(i) == a.spec_index(i) * a.spec_index(i)
+        forall |i: int| 0 <= i < a.len() ==> squared.index(i) == a.index(i) * a.index(i)
+;
+
+proof fn lemma_SquareElements(a: Vec<int>) -> (squared: Vec<int>)
+    ensures
+        squared.len() == a.len(),
+        forall |i: int| 0 <= i < a.len() ==> squared.index(i) == a.index(i) * a.index(i)
 {
-    return Vec::new();
+    Vec::new()
 }
 
 }

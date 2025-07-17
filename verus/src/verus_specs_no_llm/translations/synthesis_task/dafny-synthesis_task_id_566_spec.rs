@@ -2,22 +2,32 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn SumOfDigits(number: nat) -> (sum: nat)
+proof fn ValuesOfn(number: nat, ndigits: nat) -> ((r: Seq<nat>)
+{
+    Seq::empty()
+}
+
+spec fn spec_SumOfDigits(number: nat) -> sum: nat
+    requires
+        number >= 0
+    ensures
+        sum >= 0,
+        sum == SumDigits(number)
+;
+
+proof fn lemma_SumOfDigits(number: nat) -> (sum: nat)
     requires
         number >= 0
     ensures
         sum >= 0,
         sum == SumDigits(number)
 {
-    return 0;
+    0
 }
 
 }

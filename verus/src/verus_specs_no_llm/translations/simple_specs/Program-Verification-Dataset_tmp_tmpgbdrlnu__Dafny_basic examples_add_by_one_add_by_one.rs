@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn add_by_one(x: int, y: int) -> (r: int)
+spec fn spec_add_by_one(x: int, y: int) -> r:int
+    requires
+        y >= 0
+    ensures
+        r == x + y
+;
+
+proof fn lemma_add_by_one(x: int, y: int) -> (r: int)
     requires
         y >= 0
     ensures
         r == x + y
 {
-    return 0;
+    0
 }
 
 }

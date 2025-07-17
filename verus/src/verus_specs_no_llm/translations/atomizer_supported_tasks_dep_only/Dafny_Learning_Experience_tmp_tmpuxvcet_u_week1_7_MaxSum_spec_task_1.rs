@@ -2,20 +2,23 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn MaxSum(x: int, y: int) -> (s: int, m: int)
+spec fn spec_MaxSum(x: int, y: int) -> s:int, m:int
+    ensures
+        s == x+y,
+        (m == x || m == y) && x <= m && y <= m
+;
+
+proof fn lemma_MaxSum(x: int, y: int) -> (s: int, m: int)
     ensures
         s == x+y,
         (m == x || m == y) && x <= m && y <= m
 {
-    return (0, 0);
+    (0, 0)
 }
 
 }

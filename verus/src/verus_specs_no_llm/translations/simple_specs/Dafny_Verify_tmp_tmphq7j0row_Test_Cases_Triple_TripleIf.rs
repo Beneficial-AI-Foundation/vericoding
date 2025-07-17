@@ -2,17 +2,17 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn TripleIf(x: int) -> (r: int)
+spec fn spec_TripleIf(x: int) -> r: int
+;
+
+proof fn lemma_TripleIf(x: int) -> (r: int)
 {
-    return 0;
+    0
 }
 
 }

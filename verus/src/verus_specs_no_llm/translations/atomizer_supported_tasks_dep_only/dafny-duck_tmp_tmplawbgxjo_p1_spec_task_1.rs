@@ -2,19 +2,26 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn SumArray(xs: Vec<int>) -> (s: int)
-    ensures
-        s == Sum(xs.spec_index(..))
+spec fn Sum(xs: Seq<int>) -> int
 {
-    return 0;
+    0
+}
+
+spec fn spec_SumArray(xs: Vec<int>) -> s: int
+    ensures
+        s == Sum(xs.index(..))
+;
+
+proof fn lemma_SumArray(xs: Vec<int>) -> (s: int)
+    ensures
+        s == Sum(xs.index(..))
+{
+    0
 }
 
 }

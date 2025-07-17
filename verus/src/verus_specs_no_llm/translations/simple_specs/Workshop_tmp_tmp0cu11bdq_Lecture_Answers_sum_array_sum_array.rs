@@ -2,21 +2,34 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn sum_array(a: Vec<int>) -> (sum: int)
+spec fn sumTo(a: Vec<int>, n: int) -> int
+    requires
+        a != null,
+        0 <= n && n <= a.len()
+ reads a
+{
+    0
+}
+
+spec fn spec_sum_array(a: Vec<int>) -> sum: int
+    requires
+        a != null
+    ensures
+        sum == sumTo(a, a.len())
+;
+
+proof fn lemma_sum_array(a: Vec<int>) -> (sum: int)
     requires
         a != null
     ensures
         sum == sumTo(a, a.len())
 {
-    return 0;
+    0
 }
 
 }

@@ -2,21 +2,35 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn A8Q1(y0: int, x: int) -> (z: int)
+spec fn power(a: int, n: int) -> int //function for a to the power of n
+    requires
+        0 <= n,
+        y0 >= 0
+    ensures
+        z==power(x,y0)
+{
+    0
+}
+
+spec fn spec_A8Q1(y0: int, x: int) -> z: int
+    requires
+        y0 >= 0
+    ensures
+        z==power(x,y0)
+;
+
+proof fn lemma_A8Q1(y0: int, x: int) -> (z: int)
     requires
         y0 >= 0
     ensures
         z==power(x,y0)
 {
-    return 0;
+    0
 }
 
 }

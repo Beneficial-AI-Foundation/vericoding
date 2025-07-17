@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -21,14 +18,22 @@ spec fn valid_base(b: nat) -> bool {
     b >= 2
 }
 
-fn max_nit(b: nat) -> (nmax: nat)
+spec fn spec_max_nit(b: nat) -> nmax : nat
+    requires
+        (valid_base(b))
+    ensures
+        (nitness(b, nmax)),
+        (is_max_nit(b, nmax))
+;
+
+proof fn lemma_max_nit(b: nat) -> (nmax: nat)
     requires
         (valid_base(b))
     ensures
         (nitness(b, nmax)),
         (is_max_nit(b, nmax))
 {
-    return 0;
+    0
 }
 
 }

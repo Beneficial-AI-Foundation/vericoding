@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn FindEvenNumbers(arr: Vec<int>) -> (evenNumbers: Vec<int>)
+spec fn spec_FindEvenNumbers(arr: Vec<int>) -> evenNumbers: array<int>
+    ensures
+        forall x
+;
+
+proof fn lemma_FindEvenNumbers(arr: Vec<int>) -> (evenNumbers: Vec<int>)
     ensures
         forall x
 {
-    return Vec::new();
+    Vec::new()
 }
 
 }

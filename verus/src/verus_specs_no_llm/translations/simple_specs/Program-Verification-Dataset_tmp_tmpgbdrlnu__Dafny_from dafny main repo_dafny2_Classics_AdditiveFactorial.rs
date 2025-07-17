@@ -2,19 +2,26 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn AdditiveFactorial(n: nat) -> (u: nat)
+proof fn Factorial(n: nat) -> (nat)
+{
+    0
+}
+
+spec fn spec_AdditiveFactorial(n: nat) -> u: nat
+    ensures
+        u == Factorial(n)
+;
+
+proof fn lemma_AdditiveFactorial(n: nat) -> (u: nat)
     ensures
         u == Factorial(n)
 {
-    return 0;
+    0
 }
 
 }

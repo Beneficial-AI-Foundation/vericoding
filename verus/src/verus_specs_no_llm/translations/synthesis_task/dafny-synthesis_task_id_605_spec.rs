@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn IsPrime(n: int) -> (result: bool)
+spec fn spec_IsPrime(n: int) -> result: bool
     requires
         n >= 2
     ensures
-        result <==> (forall k :: 2 <= k < n ==> n % k != 0)
+        result <==> (forall |k: int| 2 <= k < n ==> n % k != 0)
+;
+
+proof fn lemma_IsPrime(n: int) -> (result: bool)
+    requires
+        n >= 2
+    ensures
+        result <==> (forall |k: int| 2 <= k < n ==> n % k != 0)
 {
-    return false;
+    false
 }
 
 }

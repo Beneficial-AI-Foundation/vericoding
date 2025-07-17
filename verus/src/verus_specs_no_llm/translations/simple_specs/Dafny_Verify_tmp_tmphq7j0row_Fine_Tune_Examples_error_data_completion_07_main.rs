@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn main(n: int) -> (a: int, b: int)
+spec fn spec_main(n: int) -> a: int, b: int
+    requires
+        n >= 0
+    ensures
+        a + b == 3 * n
+;
+
+proof fn lemma_main(n: int) -> (a: int, b: int)
     requires
         n >= 0
     ensures
         a + b == 3 * n
 {
-    return (0, 0);
+    (0, 0)
 }
 
 }

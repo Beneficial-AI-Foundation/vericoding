@@ -2,24 +2,31 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn FindFirstOccurrence(arr: Vec<int>, target: int) -> (index: int)
+spec fn spec_FindFirstOccurrence(arr: Vec<int>, target: int) -> index: int
     requires
         arr != null,
-        forall i, j :: 0 <= i < j < arr.len() ==> arr.spec_index(i) <= arr.spec_index(j)
+        forall |i: int, j: int| 0 <= i < j < arr.len() ==> arr.index(i) <= arr.index(j)
     ensures
-        0 <= index < arr.len() ==> arr.spec_index(index) == target,
-        index == -1 ==> forall i :: 0 <= i < arr.len() ==> arr.spec_index(i) != target,
-        forall i :: 0 <= i < arr.len() ==> arr.spec_index(i) == old(arr.spec_index(i))
+        0 <= index < arr.len() ==> arr.index(index) == target,
+        index == -1 ==> forall |i: int| 0 <= i < arr.len() ==> arr.index(i) != target,
+        forall |i: int| 0 <= i < arr.len() ==> arr.index(i) == old(arr.index(i))
+;
+
+proof fn lemma_FindFirstOccurrence(arr: Vec<int>, target: int) -> (index: int)
+    requires
+        arr != null,
+        forall |i: int, j: int| 0 <= i < j < arr.len() ==> arr.index(i) <= arr.index(j)
+    ensures
+        0 <= index < arr.len() ==> arr.index(index) == target,
+        index == -1 ==> forall |i: int| 0 <= i < arr.len() ==> arr.index(i) != target,
+        forall |i: int| 0 <= i < arr.len() ==> arr.index(i) == old(arr.index(i))
 {
-    return 0;
+    0
 }
 
 }

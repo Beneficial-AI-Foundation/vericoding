@@ -2,17 +2,17 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn SqrSum(n: int) -> (s: int)
+spec fn spec_SqrSum(n: int) -> s: int
+;
+
+proof fn lemma_SqrSum(n: int) -> (s: int)
 {
-    return 0;
+    0
 }
 
 }

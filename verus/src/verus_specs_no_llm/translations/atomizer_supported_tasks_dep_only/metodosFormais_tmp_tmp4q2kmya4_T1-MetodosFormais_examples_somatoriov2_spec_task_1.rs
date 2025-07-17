@@ -2,19 +2,29 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn somatorio(a: Vec<nat>) -> (s: nat)
+spec fn somaAteAberto(a: Vec<nat>, i: nat) -> nat
+    requires
+        i <= a.len()
+reads a
+{
+    0
+}
+
+spec fn spec_somatorio(a: Vec<nat>) -> s:nat
+    ensures
+        s == somaAteAberto(a, a.len())
+;
+
+proof fn lemma_somatorio(a: Vec<nat>) -> (s: nat)
     ensures
         s == somaAteAberto(a, a.len())
 {
-    return 0;
+    0
 }
 
 }

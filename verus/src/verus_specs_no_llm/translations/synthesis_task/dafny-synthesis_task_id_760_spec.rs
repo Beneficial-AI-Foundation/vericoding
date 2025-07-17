@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn HasOnlyOneDistinctElement(a: Vec<int>) -> (result: bool)
+spec fn spec_HasOnlyOneDistinctElement(a: Vec<int>) -> result: bool
     requires
         a != null
     ensures
-        result ==> forall i, j :: 0 <= i < a.len() && 0 <= j < a.len() ==> a.spec_index(i) == a.spec_index(j),
-        !result ==> exists i, j :: 0 <= i < a.len() && 0 <= j < a.len() && a.spec_index(i) != a.spec_index(j)
+        result ==> forall |i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> a.index(i) == a.index(j),
+        !result ==> exists |i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() && a.index(i) != a.index(j)
+;
+
+proof fn lemma_HasOnlyOneDistinctElement(a: Vec<int>) -> (result: bool)
+    requires
+        a != null
+    ensures
+        result ==> forall |i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> a.index(i) == a.index(j),
+        !result ==> exists |i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() && a.index(i) != a.index(j)
 {
-    return false;
+    false
 }
 
 }

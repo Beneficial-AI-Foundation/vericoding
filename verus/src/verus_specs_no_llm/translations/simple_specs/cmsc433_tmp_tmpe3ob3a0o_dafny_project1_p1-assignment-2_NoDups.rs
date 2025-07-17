@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn NoDups(a: Vec<int>) -> (noDups: bool)
+spec fn spec_NoDups(a: Vec<int>) -> noDups : bool
     requires
-        forall j : int :: 0 < j < a.len() ==> a.spec_index(j-1) <= a.spec_index(j) // a sorted
+        forall |j: int| 0 < j < a.len() ==> a.index(j-1) <= a.index(j) // a sorted
     ensures
-        noDups <==> forall j : int :: 1 <= j < a.len() ==> a.spec_index(j-1) != a.spec_index(j)
+        noDups <==> forall |j: int| 1 <= j < a.len() ==> a.index(j-1) != a.index(j)
+;
+
+proof fn lemma_NoDups(a: Vec<int>) -> (noDups: bool)
+    requires
+        forall |j: int| 0 < j < a.len() ==> a.index(j-1) <= a.index(j) // a sorted
+    ensures
+        noDups <==> forall |j: int| 1 <= j < a.len() ==> a.index(j-1) != a.index(j)
 {
-    return false;
+    false
 }
 
 }

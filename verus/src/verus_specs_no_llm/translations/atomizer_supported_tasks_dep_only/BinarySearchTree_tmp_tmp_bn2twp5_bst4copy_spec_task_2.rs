@@ -2,17 +2,17 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn GetMax(tree: Tree) -> (res: int)
+spec fn spec_GetMax(tree: Tree) -> res: int
+;
+
+proof fn lemma_GetMax(tree: Tree) -> (res: int)
 {
-    return 0;
+    0
 }
 
 }

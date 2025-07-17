@@ -2,23 +2,29 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn SplitArray(arr: Vec<int>, L: int) -> (firstPart: Seq<int>, secondPart: Seq<int>)
+spec fn spec_SplitArray(arr: Vec<int>, L: int) -> firstPart: seq<int>, secondPart: seq<int>
     requires
         0 <= L <= arr.len()
     ensures
         firstPart.len() == L,
         secondPart.len() == arr.len() - L,
-        firstPart + secondPart == arr.spec_index(..)
+        firstPart + secondPart == arr.index(..)
+;
+
+proof fn lemma_SplitArray(arr: Vec<int>, L: int) -> (firstPart: Seq<int>, secondPart: Seq<int>)
+    requires
+        0 <= L <= arr.len()
+    ensures
+        firstPart.len() == L,
+        secondPart.len() == arr.len() - L,
+        firstPart + secondPart == arr.index(..)
 {
-    return Seq::empty();
+    Seq::empty()
 }
 
 }

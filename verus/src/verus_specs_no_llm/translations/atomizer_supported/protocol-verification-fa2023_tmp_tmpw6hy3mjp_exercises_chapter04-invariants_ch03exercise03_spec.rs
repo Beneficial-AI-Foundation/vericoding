@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -21,7 +18,7 @@ spec fn Init(v: Variables) -> bool {
      // SOLUTION
   && v.server.Unlocked?
   && v.clients.len() == v.clientCount
-  && forall i  0 <= i < .len()v.clients| :: v.clients.spec_index(i).Released?
+  && forall i  0 <= i < .len()v.clients| :: v.clients.index(i).Released?
      // END
 }
 spec fn Acquire(v: Variables, v': Variables, id: int) -> bool {
@@ -32,7 +29,7 @@ spec fn Acquire(v: Variables, v': Variables, id: int) -> bool {
   && v.server.Unlocked?
 
   && v'.server == Client(id)
-  && v'.clients == v.clients.spec_index(id := Acquired)
+  && v'.clients == v.clients.index(id := Acquired)
   && v'.clientCount == v.clientCount
 }
 spec fn Release(v: Variables, v': Variables, id: int) -> bool {
@@ -40,10 +37,10 @@ spec fn Release(v: Variables, v': Variables, id: int) -> bool {
   && v'.WellFormed()
   && v.ValidIdx(id)
 
-  && v.clients.spec_index(id).Acquired?
+  && v.clients.index(id).Acquired?
 
   && v'.server.Unlocked?
-  && v'.clients == v.clients.spec_index(id := Released)
+  && v'.clients == v.clients.index(id := Released)
   && v'.clientCount == v.clientCount
 }
 spec fn NextStep(v: Variables, v': Variables, step: Step) -> bool {
@@ -54,7 +51,7 @@ spec fn NextStep(v: Variables, v': Variables, step: Step) -> bool {
   // END
 }
 spec fn Next(v: Variables, v': Variables) -> bool {
-    exists step :: NextStep(v, v', step)
+    exists |step: int| NextStep(v, v', step)
 }
 spec fn Safety(v: Variables) -> bool {
     // SOLUTION
@@ -65,8 +62,8 @@ spec fn Safety(v: Variables) -> bool {
   forall i,j 
     && 0 <= i < .len()v.clients
     && 0 <= j < .len()v.clients|
-    && v.clients.spec_index(i).Acquired?
-    && v.clients.spec_index(j).Acquired?
+    && v.clients.index(i).Acquired?
+    && v.clients.index(j).Acquired?
     :: i == j
   // END
 }

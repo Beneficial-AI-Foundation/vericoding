@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn IsSorted(a: Vec<int>) -> (sorted: bool)
+spec fn spec_IsSorted(a: Vec<int>) -> sorted: bool
     requires
         a.len() > 0
     ensures
-        sorted <== forall i, j :: 0 <= i < j < a.len() ==> a.spec_index(i) <= a.spec_index(j),
-        !sorted ==> exists i, j :: 0 <= i < j < a.len() && a.spec_index(i) > a.spec_index(j)
+        sorted <== forall |i: int, j: int| 0 <= i < j < a.len() ==> a.index(i) <= a.index(j),
+        !sorted ==> exists |i: int, j: int| 0 <= i < j < a.len() && a.index(i) > a.index(j)
+;
+
+proof fn lemma_IsSorted(a: Vec<int>) -> (sorted: bool)
+    requires
+        a.len() > 0
+    ensures
+        sorted <== forall |i: int, j: int| 0 <= i < j < a.len() ==> a.index(i) <= a.index(j),
+        !sorted ==> exists |i: int, j: int| 0 <= i < j < a.len() && a.index(i) > a.index(j)
 {
-    return false;
+    false
 }
 
 }

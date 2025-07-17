@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn longestPrefix(a: Vec<int>, b: array <int>) -> (i: nat)
+spec fn spec_longestPrefix(a: Vec<int>, b: array <int>) -> i: nat
     ensures
         i <= a.len() && i <= b.len(),
-        a.spec_index(..i) == b.spec_index(..i),
-        i < a.len() && i < b.len() ==> a.spec_index(i) != b.spec_index(i)
+        a.index(..i) == b.index(..i),
+        i < a.len() && i < b.len() ==> a.index(i) != b.index(i)
+;
+
+proof fn lemma_longestPrefix(a: Vec<int>, b: array <int>) -> (i: nat)
+    ensures
+        i <= a.len() && i <= b.len(),
+        a.index(..i) == b.index(..i),
+        i < a.len() && i < b.len() ==> a.index(i) != b.index(i)
 {
-    return 0;
+    0
 }
 
 }

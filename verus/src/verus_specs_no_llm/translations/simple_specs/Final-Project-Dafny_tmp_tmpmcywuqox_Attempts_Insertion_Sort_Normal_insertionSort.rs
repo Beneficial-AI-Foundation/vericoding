@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -49,7 +46,43 @@ method insertionSort (a: Vec<int>) -> bool {
     
 }
 
-fn lookForMin(a: Vec<int>, i: int) -> (m: int)
+spec fn spec_lookForMin(a: Vec<int>, i: int) -> m: int)
+
+	requires 0 <= i < a.Length
+	ensures i <= m < a.Length
+	ensures forall k :: i <= k < a.Length ==> a[k] >= a[m]
+{
+  m := 0;
+  assume i <= m < a.Length;
+  assume forall k :: i <= k < a.Length ==> a[k] >= a[m];
+  return m;
+}
+
+
+//ATOM
+predicate sorted (a: array<int>)
+
+	reads a
+{
+	sortedA(a, a.Length)
+}
+
+
+// SPEC
+
+method insertionSort (a: array<int>)
+
+	modifies a
+	ensures sorted(a
+    requires
+        0 <= i < a.len()
+    ensures
+        i <= m < a.len(),
+        forall |k: int| i <= k < a.len() ==> a.index(k) >= a.index(m),
+        sorted(a)
+;
+
+proof fn lemma_lookForMin(a: Vec<int>, i: int) -> (m: int)
 
 	requires 0 <= i < a.Length
 	ensures i <= m < a.Length
@@ -78,10 +111,10 @@ method insertionSort (a: Vec<int>)
         0 <= i < a.len()
     ensures
         i <= m < a.len(),
-        forall k :: i <= k < a.len() ==> a.spec_index(k) >= a.spec_index(m),
+        forall |k: int| i <= k < a.len() ==> a.index(k) >= a.index(m),
         sorted(a)
 {
-    return (0, Vec::new());
+    (0, Vec::new())
 }
 
 }

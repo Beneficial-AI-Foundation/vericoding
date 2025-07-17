@@ -2,20 +2,23 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn CountCharacters(s: String) -> (count: int)
+spec fn spec_CountCharacters(s: String) -> count: int
+    ensures
+        count >= 0,
+        count == s.len()
+;
+
+proof fn lemma_CountCharacters(s: String) -> (count: int)
     ensures
         count >= 0,
         count == s.len()
 {
-    return 0;
+    0
 }
 
 }

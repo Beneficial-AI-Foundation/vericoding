@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn DoubleQuadruple(x: int) -> (a: int, b: int)
+spec fn spec_DoubleQuadruple(x: int) -> a: int, b: int
+    ensures
+        a == 2 * x && b == 4 * x
+;
+
+proof fn lemma_DoubleQuadruple(x: int) -> (a: int, b: int)
     ensures
         a == 2 * x && b == 4 * x
 {
-    return (0, 0);
+    (0, 0)
 }
 
 }

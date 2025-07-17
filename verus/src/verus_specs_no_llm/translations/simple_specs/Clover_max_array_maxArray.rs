@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn maxArray(a: Vec<int>) -> (m: int)
+spec fn spec_maxArray(a: Vec<int>) -> m: int
     requires
         a.len() >= 1
     ensures
-        forall k :: 0 <= k < a.len() ==> m >= a.spec_index(k),
-        exists k :: 0 <= k < a.len() && m == a.spec_index(k)
+        forall |k: int| 0 <= k < a.len() ==> m >= a.index(k),
+        exists |k: int| 0 <= k < a.len() && m == a.index(k)
+;
+
+proof fn lemma_maxArray(a: Vec<int>) -> (m: int)
+    requires
+        a.len() >= 1
+    ensures
+        forall |k: int| 0 <= k < a.len() ==> m >= a.index(k),
+        exists |k: int| 0 <= k < a.len() && m == a.index(k)
 {
-    return 0;
+    0
 }
 
 }

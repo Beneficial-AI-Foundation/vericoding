@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn m3(x: int, y: int) -> (z: bool)
+spec fn spec_m3(x: int, y: int) -> z: bool
+    ensures
+        z ==> x==y
+;
+
+proof fn lemma_m3(x: int, y: int) -> (z: bool)
     ensures
         z ==> x==y
 {
-    return false;
+    false
 }
 
 }

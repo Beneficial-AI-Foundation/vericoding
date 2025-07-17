@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn RemoveDuplicates(a: Vec<int>) -> (result: Seq<int>)
+spec fn spec_RemoveDuplicates(a: Vec<int>) -> result: seq<int>
     requires
         a != null
     ensures
-        forall x :: x in result <==> exists i :: 0 <= i < a.len() && a.spec_index(i) == x,
-        forall i, j :: 0 <= i < j < result.len() ==> result.spec_index(i) != result.spec_index(j)
+        forall |x: int| x in result <==> exists |i: int| 0 <= i < a.len() && a.index(i) == x,
+        forall |i: int, j: int| 0 <= i < j < result.len() ==> result.index(i) != result.index(j)
+;
+
+proof fn lemma_RemoveDuplicates(a: Vec<int>) -> (result: Seq<int>)
+    requires
+        a != null
+    ensures
+        forall |x: int| x in result <==> exists |i: int| 0 <= i < a.len() && a.index(i) == x,
+        forall |i: int, j: int| 0 <= i < j < result.len() ==> result.index(i) != result.index(j)
 {
-    return Seq::empty();
+    Seq::empty()
 }
 
 }

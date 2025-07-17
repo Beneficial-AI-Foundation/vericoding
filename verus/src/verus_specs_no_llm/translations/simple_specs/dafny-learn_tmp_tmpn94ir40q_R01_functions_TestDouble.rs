@@ -2,19 +2,26 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn TestDouble(val: int) -> (val2: int)
+proof fn Double(val: int) -> (int)
+{
+    0
+}
+
+spec fn spec_TestDouble(val: int) -> val2:int
+    ensures
+        val2 == Double(val)
+;
+
+proof fn lemma_TestDouble(val: int) -> (val2: int)
     ensures
         val2 == Double(val)
 {
-    return 0;
+    0
 }
 
 }

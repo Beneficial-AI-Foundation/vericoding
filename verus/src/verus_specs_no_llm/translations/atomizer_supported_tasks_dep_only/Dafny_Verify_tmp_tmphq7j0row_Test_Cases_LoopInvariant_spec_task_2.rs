@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn UpWhileNotEqual(N: int) -> (i: int)
+spec fn spec_UpWhileNotEqual(N: int) -> i: int
+    requires
+        0 <= N
+    ensures
+        i == N
+;
+
+proof fn lemma_UpWhileNotEqual(N: int) -> (i: int)
     requires
         0 <= N
     ensures
         i == N
 {
-    return 0;
+    0
 }
 
 }

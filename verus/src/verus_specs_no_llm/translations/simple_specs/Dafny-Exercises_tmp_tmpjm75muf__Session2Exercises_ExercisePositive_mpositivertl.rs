@@ -2,23 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
 spec fn positive(s: Seq<int>) -> bool {
-    forall u::0<=u<s.len() ==> s.spec_index(u)>=0
+    forall |u: int|0<=u<s.len() ==> s.index(u)>=0
 }
 
-fn mpositivertl(v: Vec<int>) -> (b: bool)
+spec fn spec_mpositivertl(v: Vec<int>) -> b:bool
     ensures
-        b==positive(v.spec_index(0..v.len()))
+        b==positive(v.index(0..v.len()))
+;
+
+proof fn lemma_mpositivertl(v: Vec<int>) -> (b: bool)
+    ensures
+        b==positive(v.index(0..v.len()))
 {
-    return false;
+    false
 }
 
 }

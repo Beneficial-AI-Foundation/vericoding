@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn square0(n: nat) -> (sqn: nat)
+spec fn spec_square0(n: nat) -> sqn : nat
+    ensures
+        sqn == n*n
+;
+
+proof fn lemma_square0(n: nat) -> (sqn: nat)
     ensures
         sqn == n*n
 {
-    return 0;
+    0
 }
 
 }

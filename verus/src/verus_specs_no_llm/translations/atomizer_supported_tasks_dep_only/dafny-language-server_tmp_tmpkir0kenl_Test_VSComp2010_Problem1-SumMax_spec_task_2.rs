@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn M(N: int, a: Vec<int>) -> (sum: int, max: int)
+spec fn spec_M(N: int, a: Vec<int>) -> sum: int, max: int
     requires
-        0 <= N && a.len() == N && (forall k :: 0 <= k && k < N ==> 0 <= a.spec_index(k))
+        0 <= N && a.len() == N && (forall |k: int| 0 <= k && k < N ==> 0 <= a.index(k))
+    ensures
+        sum <= N * max
+;
+
+proof fn lemma_M(N: int, a: Vec<int>) -> (sum: int, max: int)
+    requires
+        0 <= N && a.len() == N && (forall |k: int| 0 <= k && k < N ==> 0 <= a.index(k))
     ensures
         sum <= N * max
 {
-    return (0, 0);
+    (0, 0)
 }
 
 }

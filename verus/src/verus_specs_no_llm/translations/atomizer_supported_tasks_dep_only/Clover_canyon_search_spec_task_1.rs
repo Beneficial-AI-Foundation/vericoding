@@ -2,24 +2,31 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn CanyonSearch(a: Vec<int>, b: Vec<int>) -> (d: nat)
+spec fn spec_CanyonSearch(a: Vec<int>, b: Vec<int>) -> d:nat
     requires
         a.len() !=0 && b.len()!=0,
-        forall i,j :: 0<=i<j<a.len() ==> a.spec_index(i)<=a.spec_index(j),
-        forall i,j :: 0<=i<j<b.len() ==> b.spec_index(i)<=b.spec_index(j)
+        forall |i: int, j: int| 0<=i<j<a.len() ==> a.index(i)<=a.index(j),
+        forall |i: int, j: int| 0<=i<j<b.len() ==> b.index(i)<=b.index(j)
     ensures
-        exists i,j:: 0<=i<a.len() && 0<=j<b.len() && d==if a.spec_index(i) < b.spec_index(j) then (b.spec_index(j)-a.spec_index(i)) else (a.spec_index(i)-b.spec_index(j)),
-        forall i,j:: 0<=i<a.len() && 0<=j<b.len() ==> d<=if a.spec_index(i) < b.spec_index(j) then (b.spec_index(j)-a.spec_index(i)) else (a.spec_index(i)-b.spec_index(j))
+        exists |i: int, j: int| 0<=i<a.len() && 0<=j<b.len() && d==if a.index(i) < b.index(j) then (b.index(j)-a.index(i)) else (a.index(i)-b.index(j)),
+        forall |i: int, j: int| 0<=i<a.len() && 0<=j<b.len() ==> d<=if a.index(i) < b.index(j) then (b.index(j)-a.index(i)) else (a.index(i)-b.index(j))
+;
+
+proof fn lemma_CanyonSearch(a: Vec<int>, b: Vec<int>) -> (d: nat)
+    requires
+        a.len() !=0 && b.len()!=0,
+        forall |i: int, j: int| 0<=i<j<a.len() ==> a.index(i)<=a.index(j),
+        forall |i: int, j: int| 0<=i<j<b.len() ==> b.index(i)<=b.index(j)
+    ensures
+        exists |i: int, j: int| 0<=i<a.len() && 0<=j<b.len() && d==if a.index(i) < b.index(j) then (b.index(j)-a.index(i)) else (a.index(i)-b.index(j)),
+        forall |i: int, j: int| 0<=i<a.len() && 0<=j<b.len() ==> d<=if a.index(i) < b.index(j) then (b.index(j)-a.index(i)) else (a.index(i)-b.index(j))
 {
-    return 0;
+    0
 }
 
 }

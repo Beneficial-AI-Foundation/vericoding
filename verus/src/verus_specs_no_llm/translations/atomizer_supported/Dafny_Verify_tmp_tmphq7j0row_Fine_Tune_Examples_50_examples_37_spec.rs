@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn main(n: int) -> (x: int, m: int)
+spec fn spec_main(n: int) -> x: int, m: int
+    requires
+        n > 0
+    ensures
+        (n <= 0) || (0 <= m && m < n)
+;
+
+proof fn lemma_main(n: int) -> (x: int, m: int)
     requires
         n > 0
     ensures
         (n <= 0) || (0 <= m && m < n)
 {
-    return (0, 0);
+    (0, 0)
 }
 
 }

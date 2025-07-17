@@ -2,24 +2,31 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn mfirstMaximum(v: Vec<int>) -> (i: int)
+spec fn spec_mfirstMaximum(v: Vec<int>) -> i:int
     requires
         v.len()>0
     ensures
         0<=i<v.len(),
-        forall k:: 0<=k<v.len() ==> v.spec_index(i)>=v.spec_index(k),
-        forall l:: 0<=l<i ==> v.spec_index(i)>v.spec_index(l)
+        forall |k: int| 0<=k<v.len() ==> v.index(i)>=v.index(k),
+        forall |l: int| 0<=l<i ==> v.index(i)>v.index(l)
+//Algorithm: from left to right
+;
+
+proof fn lemma_mfirstMaximum(v: Vec<int>) -> (i: int)
+    requires
+        v.len()>0
+    ensures
+        0<=i<v.len(),
+        forall |k: int| 0<=k<v.len() ==> v.index(i)>=v.index(k),
+        forall |l: int| 0<=l<i ==> v.index(i)>v.index(l)
 //Algorithm: from left to right
 {
-    return 0;
+    0
 }
 
 }

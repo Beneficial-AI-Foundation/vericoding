@@ -2,28 +2,35 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
 spec fn Sorted(q: Seq<int>) -> bool {
-    forall i,j :: 0 <= i <= j < q.len() ==> q.spec_index(i) <= q.spec_index(j)
+    forall |i: int, j: int| 0 <= i <= j < q.len() ==> q.index(i) <= q.index(j)
 }
 
-fn Merge(b: Vec<int>, c: Vec<int>, d: Vec<int>) -> (b: Vec<int>)
+spec fn spec_Merge(b: Vec<int>, c: Vec<int>, d: Vec<int>) -> b: array<int>
     requires
         b != c && b != d && b.len() == c.len() + d.len(),
-        Sorted(c.spec_index(..)) && Sorted(d.spec_index(..))
+        Sorted(c.index(..)) && Sorted(d.index(..))
     ensures
-        Sorted(b.spec_index(..)) && multiset(b.spec_index(..)) == multiset(c.spec_index(..))+multiset(d.spec_index(..))
+        Sorted(b.index(..)) && multiset(b.index(..)) == multiset(c.index(..))+multiset(d.index(..))
 	modifies b,
-        b.len() == a.len() && Sorted(b.spec_index(..)) && multiset(a.spec_index(..)) == multiset(b.spec_index(..))
+        b.len() == a.len() && Sorted(b.index(..)) && multiset(a.index(..)) == multiset(b.index(..))
+;
+
+proof fn lemma_Merge(b: Vec<int>, c: Vec<int>, d: Vec<int>) -> (b: Vec<int>)
+    requires
+        b != c && b != d && b.len() == c.len() + d.len(),
+        Sorted(c.index(..)) && Sorted(d.index(..))
+    ensures
+        Sorted(b.index(..)) && multiset(b.index(..)) == multiset(c.index(..))+multiset(d.index(..))
+	modifies b,
+        b.len() == a.len() && Sorted(b.index(..)) && multiset(a.index(..)) == multiset(b.index(..))
 {
-    return Vec::new();
+    Vec::new()
 }
 
 }

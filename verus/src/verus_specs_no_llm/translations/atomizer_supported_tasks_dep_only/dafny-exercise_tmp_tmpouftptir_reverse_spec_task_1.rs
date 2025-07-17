@@ -2,23 +2,29 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn Reverse(a: Vec<char>) -> (b: Vec<char>)
+spec fn spec_Reverse(a: Vec<char>) -> b: array<char>
     requires
         a.len() > 0
     ensures
         a == old(a),
         b.len() == a.len(),
-        forall i :: 0 <= i < a.len() ==> b.spec_index(i) == a.spec_index(a.len() - i - 1)
+        forall |i: int| 0 <= i < a.len() ==> b.index(i) == a.index(a.len() - i - 1)
+;
+
+proof fn lemma_Reverse(a: Vec<char>) -> (b: Vec<char>)
+    requires
+        a.len() > 0
+    ensures
+        a == old(a),
+        b.len() == a.len(),
+        forall |i: int| 0 <= i < a.len() ==> b.index(i) == a.index(a.len() - i - 1)
 {
-    return Vec::new();
+    Vec::new()
 }
 
 }

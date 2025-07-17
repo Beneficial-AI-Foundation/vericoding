@@ -2,23 +2,29 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn below_zero(operations: Seq<int>) -> (s: Vec<int>, result: bool)
+spec fn spec_below_zero(operations: Seq<int>) -> s:array<int>, result:bool
     ensures
         s.len() == operations.len() + 1,
-        s.spec_index(0)==0,
-        forall i :: 0 <= i < s.len()-1 ==> s.spec_index(i+1)==s.spec_index(i)+operations.spec_index(i),
-        result == true ==> (exists i :: 1 <= i <= operations.len() && s.spec_index(i) < 0),
-        result == false ==> forall i :: 0 <= i < s.len() ==> s.spec_index(i) >= 0
+        s.index(0)==0,
+        forall |i: int| 0 <= i < s.len()-1 ==> s.index(i+1)==s.index(i)+operations.index(i),
+        result == true ==> (exists |i: int| 1 <= i <= operations.len() && s.index(i) < 0),
+        result == false ==> forall |i: int| 0 <= i < s.len() ==> s.index(i) >= 0
+;
+
+proof fn lemma_below_zero(operations: Seq<int>) -> (s: Vec<int>, result: bool)
+    ensures
+        s.len() == operations.len() + 1,
+        s.index(0)==0,
+        forall |i: int| 0 <= i < s.len()-1 ==> s.index(i+1)==s.index(i)+operations.index(i),
+        result == true ==> (exists |i: int| 1 <= i <= operations.len() && s.index(i) < 0),
+        result == false ==> forall |i: int| 0 <= i < s.len() ==> s.index(i) >= 0
 {
-    return Vec::new();
+    Vec::new()
 }
 
 }

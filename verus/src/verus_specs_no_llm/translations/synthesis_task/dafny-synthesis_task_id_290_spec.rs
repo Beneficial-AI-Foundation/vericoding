@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn MaxLengthList(lists: Seq<Seq<int>>) -> (maxList: Seq<int>)
+spec fn spec_MaxLengthList(lists: Seq<Seq<int>>) -> maxList: seq<int>
     requires
         lists.len() > 0
     ensures
-        forall l :: l in lists ==> l.len() <= maxList.len(),
+        forall |l: int| l in lists ==> l.len() <= maxList.len(),
+        maxList in lists
+;
+
+proof fn lemma_MaxLengthList(lists: Seq<Seq<int>>) -> (maxList: Seq<int>)
+    requires
+        lists.len() > 0
+    ensures
+        forall |l: int| l in lists ==> l.len() <= maxList.len(),
         maxList in lists
 {
-    return Seq::empty();
+    Seq::empty()
 }
 
 }

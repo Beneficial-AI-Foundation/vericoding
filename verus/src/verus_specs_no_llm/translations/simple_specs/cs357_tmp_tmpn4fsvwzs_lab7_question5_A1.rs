@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn A1(x: int, y: int) -> (r: int)
+spec fn spec_A1(x: int, y: int) -> r: int
+    ensures
+        r == x + y
+;
+
+proof fn lemma_A1(x: int, y: int) -> (r: int)
     ensures
         r == x + y
 {
-    return 0;
+    0
 }
 
 }

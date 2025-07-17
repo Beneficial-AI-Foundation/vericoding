@@ -2,22 +2,27 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn RectangleArea(length: int, width: int) -> (area: int)
+spec fn spec_RectangleArea(length: int, width: int) -> area: int
+    requires
+        length > 0,
+        width > 0
+    ensures
+        area == length * width
+;
+
+proof fn lemma_RectangleArea(length: int, width: int) -> (area: int)
     requires
         length > 0,
         width > 0
     ensures
         area == length * width
 {
-    return 0;
+    0
 }
 
 }

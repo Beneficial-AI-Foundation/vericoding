@@ -2,19 +2,21 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn F() -> (r: int)
+spec fn spec_F() -> r: int
+    ensures
+        r <= 0
+;
+
+proof fn lemma_F() -> (r: int)
     ensures
         r <= 0
 {
-    return 0;
+    0
 }
 
 }

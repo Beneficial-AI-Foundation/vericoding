@@ -2,9 +2,6 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
@@ -17,12 +14,23 @@ spec fn IsUpperLowerPair(C: char, c: char) -> bool {
     (C as int) == (c as int) - 32
 }
 
-fn ToLowercase(s: String) -> (v: String)
+spec fn Shift32(c: char) -> char
+{
+    '\0'
+}
+
+spec fn spec_ToLowercase(s: String) -> v: string
     ensures
         v.len() == s.len(),
-        forall i :: 0 <= i < s.len() ==>  if IsUpperCase(s.spec_index(i)) then IsUpperLowerPair(s.spec_index(i), v.spec_index(i)) else v.spec_index(i) == s.spec_index(i)
+        forall |i: int| 0 <= i < s.len() ==>  if IsUpperCase(s.index(i)) then IsUpperLowerPair(s.index(i), v.index(i)) else v.index(i) == s.index(i)
+;
+
+proof fn lemma_ToLowercase(s: String) -> (v: String)
+    ensures
+        v.len() == s.len(),
+        forall |i: int| 0 <= i < s.len() ==>  if IsUpperCase(s.index(i)) then IsUpperLowerPair(s.index(i), v.index(i)) else v.index(i) == s.index(i)
 {
-    return String::new();
+    String::new()
 }
 
 }

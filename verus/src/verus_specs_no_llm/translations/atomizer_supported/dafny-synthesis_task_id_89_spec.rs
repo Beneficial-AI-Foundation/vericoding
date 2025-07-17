@@ -2,21 +2,25 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn ClosestSmaller(n: int) -> (m: int)
+spec fn spec_ClosestSmaller(n: int) -> m: int
+    requires
+        n > 0
+    ensures
+        m + 1 == n
+;
+
+proof fn lemma_ClosestSmaller(n: int) -> (m: int)
     requires
         n > 0
     ensures
         m + 1 == n
 {
-    return 0;
+    0
 }
 
 }

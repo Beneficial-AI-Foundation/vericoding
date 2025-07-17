@@ -2,20 +2,23 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn FindFirstRepeatedChar(s: String) -> (found: bool, c: char)
+spec fn spec_FindFirstRepeatedChar(s: String) -> found: bool, c: char
     ensures
-        found ==> exists i, j :: 0 <= i < j < s.len() && s.spec_index(i) == s.spec_index(j) && s.spec_index(i) == c && (forall k, l :: 0 <= k < l < j && s.spec_index(k) == s.spec_index(l) ==> k >= i),
-        !found ==> (forall i, j :: 0 <= i < j < s.len() ==> s.spec_index(i) != s.spec_index(j))
+        found ==> exists |i: int, j: int| 0 <= i < j < s.len() && s.index(i) == s.index(j) && s.index(i) == c && (forall |k: int, l: int| 0 <= k < l < j && s.index(k) == s.index(l) ==> k >= i),
+        !found ==> (forall |i: int, j: int| 0 <= i < j < s.len() ==> s.index(i) != s.index(j))
+;
+
+proof fn lemma_FindFirstRepeatedChar(s: String) -> (found: bool, c: char)
+    ensures
+        found ==> exists |i: int, j: int| 0 <= i < j < s.len() && s.index(i) == s.index(j) && s.index(i) == c && (forall |k: int, l: int| 0 <= k < l < j && s.index(k) == s.index(l) ==> k >= i),
+        !found ==> (forall |i: int, j: int| 0 <= i < j < s.len() ==> s.index(i) != s.index(j))
 {
-    return (false, '\0');
+    (false, '\0')
 }
 
 }

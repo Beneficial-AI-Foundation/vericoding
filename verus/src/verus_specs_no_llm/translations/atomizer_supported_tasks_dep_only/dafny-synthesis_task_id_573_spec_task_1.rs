@@ -2,19 +2,26 @@
 use builtin::*;
 use builtin_macros::*;
 
-use builtin::*;
-use builtin_macros::*;
-
 verus! {
 
 fn main() {
 }
 
-fn UniqueProduct(arr: Vec<int>) -> (product: int)
-    ensures
-        product == SetProduct((set i | 0 <= i < arr.len() :: arr.spec_index(i)))
+proof fn SetProduct(s: set<int>) -> (int)
 {
-    return 0;
+    0
+}
+
+spec fn spec_UniqueProduct(arr: Vec<int>) -> product: int
+    ensures
+        product == SetProduct((set i | 0 <= i < arr.len() :: arr.index(i)))
+;
+
+proof fn lemma_UniqueProduct(arr: Vec<int>) -> (product: int)
+    ensures
+        product == SetProduct((set i | 0 <= i < arr.len() :: arr.index(i)))
+{
+    0
 }
 
 }
