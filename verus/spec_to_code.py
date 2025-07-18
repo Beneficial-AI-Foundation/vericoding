@@ -2,7 +2,7 @@
 """
 Verus Specification-to-Code Processing
 
-This script processes Verus specification files containing ATOM and SPEC blocks,
+This script processes Verus specification files containing spec fn and proof fn declarations,
 generates implementations using Claude API, and iteratively fixes verification errors.
 """
 
@@ -61,7 +61,7 @@ MAX_ITERATIONS = 2
 OUTPUT_DIR = ""
 SUMMARY_FILE = ""
 DEBUG_MODE = False
-STRICT_ATOM_VERIFICATION = False  # New configuration variable
+STRICT_SPEC_VERIFICATION = False  # New configuration variable: strict spec fn preservation
 
 # Environment variables
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
@@ -115,9 +115,9 @@ Examples:
     )
     
     parser.add_argument(
-        '--strict-atoms',
+        '--strict-specs',
         action='store_true',
-        help='Enable strict ATOM block verification (default: relaxed verification)'
+        help='Enable strict spec fn preservation (default: relaxed verification)'
     )
     
     return parser.parse_args()
@@ -127,7 +127,7 @@ def ask_question(question, default=None):
     return answer.strip() or default
 
 def setup_configuration(args=None):
-    global VERUS_FILES_DIR, MAX_ITERATIONS, OUTPUT_DIR, SUMMARY_FILE, DEBUG_MODE, STRICT_ATOM_VERIFICATION
+    global VERUS_FILES_DIR, MAX_ITERATIONS, OUTPUT_DIR, SUMMARY_FILE, DEBUG_MODE, STRICT_SPEC_VERIFICATION
 
     print("=== Verus Specification-to-Code Processing Configuration ===\n")
 
@@ -149,7 +149,7 @@ def setup_configuration(args=None):
     # Use command-line arguments (with defaults)
     MAX_ITERATIONS = args.iterations
     DEBUG_MODE = args.debug
-    STRICT_ATOM_VERIFICATION = args.strict_atoms
+    STRICT_SPEC_VERIFICATION = args.strict_specs
 
     print("\nConfiguration:")
     print(f"- Directory: {VERUS_FILES_DIR}")
@@ -158,7 +158,7 @@ def setup_configuration(args=None):
     print(f"- Verus path: {VERUS_PATH}")
     print(f"- Debug mode: {'Enabled' if DEBUG_MODE else 'Disabled'}")
     print("- Enhanced prompting: Uses hints in method bodies for better code generation")
-    print(f"- ATOM block verification: {'Strict' if STRICT_ATOM_VERIFICATION else 'Relaxed (default)'}")
+    print(f"- Spec fn preservation: {'Strict' if STRICT_SPEC_VERIFICATION else 'Relaxed (default)'}")
     if DEBUG_MODE:
         print("- DEBUG MODE: Saves code after each iteration to separate files")
     else:
@@ -252,18 +252,15 @@ def extract_verus_code(output):
             line.find('verus!') != -1 or
             line.find('fn ') != -1 or 
             line.find('spec fn ') != -1 or 
+            line.find('proof fn ') != -1 or 
             line.find('requires') != -1 or
             line.find('ensures') != -1 or
             line.find('invariant') != -1 or
             line.find('decreases') != -1 or
             line.find('proof ') != -1 or
-            # Block markers
-            line.strip().startswith('//ATOM') or
-            line.strip().startswith('//SPEC') or
-            line.strip().startswith('//IMPL') or
             # Comment markers
             line.strip().startswith('/* code modified by LLM') or
-            line.strip().startswith('// ATOMS') or
+            line.strip().startswith('// Translated from Dafny') or
             line.strip().startswith('/*') or
             line.strip().startswith('*/')):
             in_code = True
@@ -285,35 +282,26 @@ def fix_incomplete_code(code):
     """Fix common incomplete code patterns."""
     lines = code.split('\n')
     fixed_lines = []
-    in_block = None  # Track current block type (ATOM, SPEC, or IMPL)
     in_verus_block = False
     
     for i, line in enumerate(lines):
-        # Track block type
-        if line.strip().startswith('//ATOM'):
-            in_block = 'ATOM'
-        elif line.strip().startswith('//SPEC'):
-            in_block = 'SPEC'
-        elif line.strip().startswith('//IMPL'):
-            in_block = 'IMPL'
-        
         # Track verus! block
         if 'verus!' in line:
             in_verus_block = True
-        elif line.strip() == '} // verus!' or line.strip() == '}':
+        elif line.strip() == '} // verus!' or (line.strip() == '}' and in_verus_block):
             in_verus_block = False
         
-        # Fix incomplete function bodies
-        if line.strip().startswith('fn ') and '{' not in line and not line.strip().endswith(';'):
+        # Fix incomplete function bodies (non-spec functions)
+        if (line.strip().startswith('fn ') or line.strip().startswith('proof fn ')) and '{' not in line and not line.strip().endswith(';'):
             # Look ahead to see if there's a function body
             has_body = False
             for j in range(i + 1, len(lines)):
                 if '{' in lines[j] or lines[j].strip().startswith('unimplemented!') or lines[j].strip().startswith('return'):
                     has_body = True
                     break
-                if lines[j].strip().startswith('//') or lines[j].strip().startswith('fn ') or lines[j].strip().startswith('spec fn'):
+                if lines[j].strip().startswith('fn ') or lines[j].strip().startswith('spec fn') or lines[j].strip().startswith('proof fn'):
                     break
-            if not has_body and in_block != 'SPEC':
+            if not has_body:
                 # Add empty body with TODO comment
                 fixed_lines.append(line)
                 fixed_lines.append('{')
@@ -329,9 +317,9 @@ def fix_incomplete_code(code):
                 if '{' in lines[j] or lines[j].strip() == ';':
                     has_body = True
                     break
-                if lines[j].strip().startswith('//') or lines[j].strip().startswith('fn ') or lines[j].strip().startswith('spec fn'):
+                if lines[j].strip().startswith('fn ') or lines[j].strip().startswith('spec fn') or lines[j].strip().startswith('proof fn'):
                     break
-            if not has_body and in_block != 'SPEC':
+            if not has_body:
                 # Add semicolon for spec functions without body
                 fixed_lines.append(line + ';')
                 continue
@@ -441,7 +429,7 @@ def process_spec_file(file_path):
             print(f"  ⚠️  Original file has issues: {original_verification['error']}")
             print(f"  Will attempt to fix during processing...")
 
-        # Step 1: Generate code from specifications (preserving ATOM blocks and implementing SPEC blocks)
+        # Step 1: Generate code from specifications (preserving spec fn and implementing proof fn)
         print("  Step 1: Generating code from specifications...")
         generate_prompt = prompt_loader.format_prompt(
             "generate_code",
@@ -450,9 +438,9 @@ def process_spec_file(file_path):
         generated_response = call_claude_api(generate_prompt)
         generated_code = extract_verus_code(generated_response)
 
-        # Verify that all ATOM blocks are preserved
-        if STRICT_ATOM_VERIFICATION and not verify_atom_blocks(original_code, generated_code):
-            print("  ⚠️  Warning: ATOM blocks were modified. Restoring original ATOM blocks...")
+        # Verify that all spec fn declarations are preserved
+        if STRICT_SPEC_VERIFICATION and not verify_atom_blocks(original_code, generated_code):
+            print("  ⚠️  Warning: Spec functions were modified. Restoring original spec functions...")
             generated_code = restore_atom_blocks(original_code, generated_code)
 
         # Save initial generated code
@@ -506,9 +494,9 @@ def process_spec_file(file_path):
                     fix_response = call_claude_api(fix_prompt)
                     fixed_code = extract_verus_code(fix_response)
                     
-                    # Verify that all ATOM blocks are still preserved
-                    if STRICT_ATOM_VERIFICATION and not verify_atom_blocks(original_code, fixed_code):
-                        print("    ⚠️  Warning: ATOM blocks were modified during fix. Restoring original ATOM blocks...")
+                    # Verify that all spec fn declarations are still preserved
+                    if STRICT_SPEC_VERIFICATION and not verify_atom_blocks(original_code, fixed_code):
+                        print("    ⚠️  Warning: Spec functions were modified during fix. Restoring original spec functions...")
                         fixed_code = restore_atom_blocks(original_code, fixed_code)
                     
                     current_code = fixed_code
@@ -548,54 +536,62 @@ def process_spec_file(file_path):
         }
 
 def verify_atom_blocks(original_code, generated_code):
-    """Verify that all ATOM blocks from the original code are preserved in the generated code."""
-    # Updated regex to handle new format with spec names and constraints
-    original_atoms = re.findall(r'//ATOM\n(.*?)(?=//(?:ATOM|SPEC|IMPL)|$)', original_code, re.DOTALL)
+    """Verify that all spec fn declarations from the original code are preserved in the generated code."""
+    # Extract spec fn declarations from original code
+    original_specs = re.findall(r'spec fn [^{;]+(?:\{[^}]*\}|;)', original_code, re.DOTALL)
     
-    for atom in original_atoms:
-        atom_content = atom.strip()
+    for spec in original_specs:
+        spec_content = spec.strip()
         
         # Normalize whitespace for comparison
-        normalized_atom = re.sub(r'\s+', ' ', atom_content)
+        normalized_spec = re.sub(r'\s+', ' ', spec_content)
         normalized_generated = re.sub(r'\s+', ' ', generated_code)
         
         # Check if the normalized content is present
-        if normalized_atom not in normalized_generated:
-            print(f"    ⚠️  ATOM block missing or modified: {atom_content[:100]}...")
+        if normalized_spec not in normalized_generated:
+            print(f"    ⚠️  Spec function missing or modified: {spec_content[:100]}...")
             return False
     
     return True
 
 def restore_atom_blocks(original_code, generated_code):
-    """Restore original ATOM blocks in the generated code."""
-    # Updated regex to handle new format with spec names and constraints
-    # Extract all blocks from original code - handle //SPEC [name] and //CONSTRAINTS
-    original_blocks = re.findall(r'//(ATOM|SPEC(?:\s+\[[^\]]+\])?)\n(?://CONSTRAINTS:[^\n]*\n)?(.*?)(?=//(?:ATOM|SPEC|IMPL)|$)', original_code, re.DOTALL)
+    """Restore original spec fn declarations in the generated code."""
+    # Extract spec functions from original code
+    original_specs = re.findall(r'(spec fn [^{;]+(?:\{[^}]*\}|;))', original_code, re.DOTALL)
     
-    # Extract all blocks from generated code - handle //IMPL [name] and //CONSTRAINTS
-    generated_blocks = re.findall(r'//(ATOM|IMPL(?:\s+\[[^\]]+\])?|SPEC(?:\s+\[[^\]]+\])?)\n(?://CONSTRAINTS:[^\n]*\n)?(.*?)(?=//(?:ATOM|IMPL|SPEC)|$)', generated_code, re.DOTALL)
+    # Extract proof/lemma functions from generated code
+    generated_proofs = re.findall(r'((?:proof )?fn [^{]+\{[^}]*\})', generated_code, re.DOTALL)
     
-    # Create a map of SPEC blocks to their implementations
-    impl_map = {}
-    for block_type, content in generated_blocks:
-        if block_type.startswith('IMPL'):
-            spec_name = block_type.replace('IMPL', 'SPEC')
-            impl_map[spec_name] = content.strip()
+    # If we have both specs and implementations, combine them
+    if original_specs and generated_proofs:
+        result = []
+        
+        # Add imports and verus! block opening
+        lines = original_code.split('\n')
+        for line in lines:
+            if line.strip().startswith('use ') or line.strip() == 'verus! {' or line.strip() == 'fn main() {' or line.strip() == '}':
+                result.append(line)
+                if line.strip() == '}' and 'main()' in ''.join(result[-3:]):
+                    result.append('')  # Add blank line after main
+                    break
+        
+        # Add preserved spec functions
+        for spec in original_specs:
+            result.append(spec.strip())
+            result.append('')
+        
+        # Add generated proof/lemma functions
+        for proof in generated_proofs:
+            result.append(proof.strip())
+            result.append('')
+        
+        # Close verus! block
+        result.append('}')
+        
+        return '\n'.join(result)
     
-    # Reconstruct the code preserving order and ATOM blocks
-    result = []
-    for block_type, content in original_blocks:
-        content = content.strip()
-        if block_type == 'ATOM':
-            result.append(f'//{block_type}\n{content}')
-        elif block_type.startswith('SPEC'):
-            impl_name = block_type.replace('SPEC', 'IMPL')
-            if impl_name in impl_map:
-                result.append(f'//{impl_name}\n{impl_map[impl_name]}')
-            else:
-                result.append(f'//{block_type}\n{content}')
-    
-    return '\n\n'.join(result)
+    # Fallback: return generated code if structure doesn't match expected pattern
+    return generated_code
 
 def get_signature(code):
     """Extract function signature from code block."""
@@ -783,7 +779,7 @@ def main():
     print(f"Verus path: {VERUS_PATH}")
     print(f"Max iterations: {MAX_ITERATIONS}")
     print(f"Debug mode: {'Enabled' if DEBUG_MODE else 'Disabled'}")
-    print(f"- ATOM block verification: {'Strict' if STRICT_ATOM_VERIFICATION else 'Relaxed (default)'}")
+    print(f"- Spec fn preservation: {'Strict' if STRICT_SPEC_VERIFICATION else 'Relaxed (default)'}")
     print("Processing each file by generating code from specifications.")
     print("Enhanced prompting: Uses hints in method bodies for better code generation.")
     if DEBUG_MODE:

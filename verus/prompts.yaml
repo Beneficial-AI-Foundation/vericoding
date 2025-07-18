@@ -1,131 +1,62 @@
 generate_code: |
-  The task is to generate a Verus (Rust with verification) file that is verified and satisfies the constraints described in specifications.  
-  INPUT: a Verus file that contain blocks of code marked //ATOM or //SPEC. The file is of the form
-         B_1 
-         ...
-         B_n
-         where each B_i is:
-         - either an ATOM of the form 
-          //ATOM
-          atom_i
-         - or a SPEC of the form 
-          //SPEC [spec name]
-         [//CONSTRAINTS: [constraint_1] ... [constraint_k]]
-          spec_i
-          {{
-            unimplemented!()
-          }}
-    WHERE:
-    - each atom_i is a spec function, predicate, or helper function that should be preserved exactly.
-    - each spec_i is a function with requires and ensures clauses that must be satisfied:
-          fn name(params) -> (result: return_type)
-          requires
-              [precondition_1],
-              ...
-              [precondition_m],
-          ensures
-              [postcondition_1],
-              ...
-              [postcondition_k],
-      OR
-          spec fn name(params) -> return_type
-          requires
-              [precondition_1],
-              ...
-              [precondition_m],
-      The function body may contain:
-          {{
-              unimplemented!()
-          }}
-          OR
-          {{
-              return false;  // TODO: Remove this line and implement the function body
-          }}
-    - if //CONSTRAINTS: is present, then each constraints_i describes some behavior or type of code that is not allowed in spec_impl_i
+  The task is to generate a Verus (Rust with verification) file that is verified and satisfies the constraints described in the specifications.
   
-    
-  OUTPUT: a verified Verus file of the form
-        B_impl_1 
-        ...
-        B_impl_n
-  WHERE:
-    - if B_i is an ATOM, then B_impl_i is equal to B_i 
-    - if B_i is a SPEC, then B_impl_i is of the form: 
-      //IMPL [spec name]
-      [//CONSTRAINTS: [constraint_1] ... [constraint_k]]
-       spec_impl_i 
-      where spec_impl_i is an implementation of spec_i satisfying its ensures and requires clauses. 
-    
-  CRITICAL RULES:
-  - spec_impl_i should have the same function names, parameter types, return type, ensures and requires clauses as spec_i
-  - the atoms are assumed to be true; do not attempt to prove or change them
-  - do not use assume statements in spec_impl_i
-  - do not add trivial or unnecessary annotations in spec_impl_i
-  - output valid Verus/Rust code wrapped in verus! { ... } block if not already present
-  - preserve existing imports and structure (use vstd::prelude::*, use builtin::*, etc.)
-  - use proper Verus syntax: requires, ensures, invariant, decreases (without parentheses)
-  - replace unimplemented!() or TODO comments with actual implementation
-  - use proper Verus types like nat, int, Vec<T>, Seq<T>, etc.
-  - use @ operator for sequence/vector indexing when needed (e.g., v@[i])
-  - use proper proof blocks with proof { ... } when necessary
-  - preserve the exact structure: fn main() {} should remain if present
-  
-  VERUS SPECIFICATION WITH EMPTY METHOD/FUNCTION BODIES:
+  INPUT: a Verus file containing one or more function definitions (including spec functions, helper functions, and main), possibly with empty bodies or bodies containing TODO comments (e.g., `return 0;  // TODO: Remove this line and implement the function body`).
+  - The file may include:
+    - Standard Rust/Verus imports (e.g., `use vstd::prelude::*;`)
+    - A `verus! { ... }` block wrapping the code
+    - Function definitions with `requires` and `ensures` clauses
+    - `spec fn`, `fn`, and possibly proof blocks
+    - Attributes such as `#[verifier::loop_isolation(false)]`
+    - Helper/spec functions that may be used in ensures/requirements
+    - A `fn main() {}` function (which should be preserved)
+  - Function bodies may contain `unimplemented!()`, `return ...; // TODO: ...`, or be empty.
+
+  OUTPUT: a verified Verus file of the same structure, but with all function bodies implemented to satisfy their `requires` and `ensures` clauses.
+  - All function signatures, requirements, and ensures must be preserved.
+  - Implementations must not use `assume` statements.
+  - Do not add trivial or unnecessary annotations.
+  - Output valid Verus/Rust code, wrapped in a `verus! { ... }` block if not already present.
+  - Preserve all imports, structure, and helper/spec functions.
+  - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses).
+  - Replace `unimplemented!()` or TODO comments with actual implementation.
+  - Use Verus types like `nat`, `int`, `Vec<T>`, `Seq<T>`, etc.
+  - Use `@` for sequence/vector indexing when needed (e.g., `v@[i]`).
+  - Use proof blocks with `proof { ... }` when necessary.
+  - Preserve the exact structure: `fn main() {}` should remain if present.
+
+  VERUS SPECIFICATION WITH EMPTY OR TODO METHOD/FUNCTION BODIES:
   {code}
 
 fix_verification: |
- INPUT: a Verus file that contain blocks of code marked //ATOM or //IMPL. The file is of the form
-         B_1 
-         ...
-         B_n
-         where each B_i is:
-         - either an ATOM of the form 
-          //ATOM
-          atom_i
-         - or an IMPL of the form 
-          //IMPL [spec name]
-          [//CONSTRAINTS: [constraint_1] ... [constraint_k]]
-          spec_impl_i
-    WHERE:
-    - each atom_i is a spec function, predicate, or helper function that should be preserved exactly.
-    - each spec_i is a function with requires and ensures clauses that must be satisfied
-    - each spec_impl_i is an implementation of spec_i that cannot be verified
-    - if //CONSTRAINTS: is present, then each constraints_i describes the type of code that is not allowed in implementations of spec_i
-  OUTPUT: a verified Verus file of the form
-        B_impl_1 
-        ...
-        B_impl_n
-  WHERE:
-    - if B_i is an ATOM, then B_impl_i is equal to B_i 
-    - if B_i is an IMPL, then B_impl_i is of the form: 
-      //IMPL [spec name]
-      [//CONSTRAINTS: [constraint_1] ... [constraint_k]]
-      spec_impl_updated_i
-      where spec_impl_updated_i is a revised implementation of spec_i that can be verified. 
-    
-  POSITIVE CRITICAL RULES:
-  - you can add proof annotations to the body of spec_impl_i to fix the verification errors
-  - you can change the code in spec_impl_i to fix the verification errors
-  - you can add helper functions, predicates, and spec functions as needed
-  - PRIORITY: If the error is a compilation error (syntax, type, resolution errors), fix it first before addressing verification issues
-  - For compilation errors: focus on syntax, missing brackets, type mismatches, undefined identifiers, and termination issues
-  - use proper Verus syntax: requires, ensures, invariant, decreases (without parentheses)
-  - use proof blocks with proof { ... } for complex proofs
-  - use assert() statements within proof blocks for intermediate steps
-  - use proper Verus types and operators (nat, int, Vec<T>, Seq<T>, @, etc.)
-  - preserve existing imports and structure (use vstd::prelude::*, use builtin::*, etc.)
-  - maintain verus! { ... } block structure
-  - use @ operator for sequence/vector access (e.g., v@[i] for indexing)
-  
-  NEGATIVE CRITICAL RULES:
-  - preserve each spec_i as it is: do not change function names, parameter types, return type, ensures and requires clauses
-  - the atoms are assumed to be true; do not attempt to prove or change them
-  - you should not use "assume" statements in spec_impl_updated_i
-  - you should not add trivial annotations (requires true, invariant true, ensures true, etc.)
-  - output valid Verus/Rust code
-  - do not change the overall file structure (imports, main function, verus block)
+  INPUT: a Verus file containing one or more function definitions (including spec functions, helper functions, and main), possibly with incomplete or incorrect implementations that do not verify.
+  - The file may include:
+    - Standard Rust/Verus imports (e.g., `use vstd::prelude::*;`)
+    - A `verus! { ... }` block wrapping the code
+    - Function definitions with `requires` and `ensures` clauses
+    - `spec fn`, `fn`, and possibly proof blocks
+    - Attributes such as `#[verifier::loop_isolation(false)]`
+    - Helper/spec functions that may be used in ensures/requirements
+    - A `fn main() {}` function (which should be preserved)
+  - Function bodies may contain incomplete code, `unimplemented!()`, or TODO comments.
 
-  COMMENT FORMAT: add this comment right before any code or annotation block in spec_impl_updated_i that you add or modify
+  OUTPUT: a verified Verus file of the same structure, but with all function bodies implemented or fixed so that they verify.
+  - You may add proof annotations, helper functions, predicates, and spec functions as needed.
+  - PRIORITY: If the error is a compilation error (syntax, type, resolution errors), fix it first before addressing verification issues.
+  - For compilation errors: focus on syntax, missing brackets, type mismatches, undefined identifiers, and termination issues.
+  - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses).
+  - Use proof blocks with `proof { ... }` for complex proofs.
+  - Use `assert()` statements within proof blocks for intermediate steps.
+  - Use Verus types and operators (`nat`, `int`, `Vec<T>`, `Seq<T>`, `@`, etc.).
+  - Preserve all imports, structure, and helper/spec functions.
+  - Maintain the `verus! { ... }` block structure.
+  - Use `@` for sequence/vector access (e.g., `v@[i]` for indexing).
+  - Do not use `assume` statements in implementations.
+  - Do not add trivial annotations (e.g., `requires true`, `invariant true`, `ensures true`).
+  - Output valid Verus/Rust code.
+  - Do not change the overall file structure (imports, main function, verus block).
+
+  COMMENT FORMAT: add this comment right before any code or annotation block in a function body that you add or modify
   /* code modified by LLM (iteration {{iteration}}): [brief description] */
   
   ERROR DETAILS from Verus verification of the given code:
