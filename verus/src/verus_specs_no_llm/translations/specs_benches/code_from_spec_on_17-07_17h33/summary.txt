@@ -1,0 +1,720 @@
+=== VERUS SPECIFICATION-TO-CODE PROCESSING SUMMARY (DEBUG VERSION) ===
+
+Test directory: src/verus_specs_no_llm/translations/specs_benches/
+Output directory: src/verus_specs_no_llm/translations/specs_benches/code_from_spec_on_17-07_17h33
+Max iterations: 5
+Test date: 2025-07-17T23:13:49.950969
+
+Total original files: 693
+
+=== OVERALL STATISTICS ===
+Total successful: 166
+Total failed: 527
+Success rate: 24.0%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ brs3.rs -> brs3_impl.rs
+✓ s42if.rs -> s42if_impl.rs
+✓ sina2.rs -> sina2_impl.rs
+✓ s12if.rs -> s12if_impl.rs
+✓ s1if.rs -> s1if_impl.rs
+✓ s52if.rs -> s52if_impl.rs
+✓ s22if.rs -> s22if_impl.rs
+✓ ms3.rs -> ms3_impl.rs
+✓ res2o.rs -> res2o_impl.rs
+✓ condg.rs -> condg_impl.rs
+✓ s1lif.rs -> s1lif_impl.rs
+✓ ms4.rs -> ms4_impl.rs
+✓ ms5.rs -> ms5_impl.rs
+✓ s2lif.rs -> s2lif_impl.rs
+✓ brs2.rs -> brs2_impl.rs
+✓ brs1.rs -> brs1_impl.rs
+✓ sina5.rs -> sina5_impl.rs
+✓ brs4.rs -> brs4_impl.rs
+✓ basic_nonlinear.rs -> basic_nonlinear_impl.rs
+✓ task_id_2.rs -> task_id_2_impl.rs
+✓ task_id_433.rs -> task_id_433_impl.rs
+✓ task_id_307.rs -> task_id_307_impl.rs
+✓ task_id_3.rs -> task_id_3_impl.rs
+✓ task_id_454.rs -> task_id_454_impl.rs
+✓ task_id_610.rs -> task_id_610_impl.rs
+✓ task_id_808.rs -> task_id_808_impl.rs
+✓ task_id_474.rs -> task_id_474_impl.rs
+✓ task_id_616.rs -> task_id_616_impl.rs
+✓ task_id_790.rs -> task_id_790_impl.rs
+✓ task_id_2.rs -> task_id_2_impl.rs
+✓ task_id_605.rs -> task_id_605_impl.rs
+✓ task_id_732.rs -> task_id_732_impl.rs
+✓ task_id_251.rs -> task_id_251_impl.rs
+✓ task_id_433.rs -> task_id_433_impl.rs
+✓ task_id_307.rs -> task_id_307_impl.rs
+✓ task_id_284.rs -> task_id_284_impl.rs
+✓ task_id_454.rs -> task_id_454_impl.rs
+✓ task_id_808.rs -> task_id_808_impl.rs
+✓ task_id_809.rs -> task_id_809_impl.rs
+✓ task_id_474.rs -> task_id_474_impl.rs
+✓ task_id_624.rs -> task_id_624_impl.rs
+✓ task_id_588.rs -> task_id_588_impl.rs
+✓ 035-max-element.rs -> 035-max-element_impl.rs
+✓ 057-monotonic.rs -> 057-monotonic_impl.rs
+✓ 080-is_happy.rs -> 080-is_happy_impl.rs
+✓ 027-flip_case.rs -> 027-flip_case_impl.rs
+✓ 023-strlen.rs -> 023-strlen_impl.rs
+✓ array_copy.rs -> array_copy_impl.rs
+✓ max_array.rs -> max_array_impl.rs
+✓ max_dafny_lsp.rs -> max_dafny_lsp_impl.rs
+✓ has_only_one_distinct_element.rs -> has_only_one_distinct_element_impl.rs
+✓ arithmetic_weird.rs -> arithmetic_weird_impl.rs
+✓ replace.rs -> replace_impl.rs
+✓ reverse.rs -> reverse_impl.rs
+✓ remove_duplicates.rs -> remove_duplicates_impl.rs
+✓ ms2_impl.rs -> ms2_impl_impl.rs
+✓ brs3.rs -> brs3_impl.rs
+✓ ms2.rs -> ms2_impl.rs
+✓ s42if.rs -> s42if_impl.rs
+✓ sina2.rs -> sina2_impl.rs
+✓ s3lif.rs -> s3lif_impl.rs
+✓ s12if.rs -> s12if_impl.rs
+✓ s1if.rs -> s1if_impl.rs
+✓ sina1.rs -> sina1_impl.rs
+✓ s3if.rs -> s3if_impl.rs
+✓ s52if.rs -> s52if_impl.rs
+✓ s22if.rs -> s22if_impl.rs
+✓ conda.rs -> conda_impl.rs
+✓ ms3.rs -> ms3_impl.rs
+✓ s32if.rs -> s32if_impl.rs
+✓ res2o.rs -> res2o_impl.rs
+✓ condg.rs -> condg_impl.rs
+✓ s1lif.rs -> s1lif_impl.rs
+✓ s5if.rs -> s5if_impl.rs
+✓ res2.rs -> res2_impl.rs
+✓ ms4.rs -> ms4_impl.rs
+✓ condn.rs -> condn_impl.rs
+✓ ms5.rs -> ms5_impl.rs
+✓ s4if.rs -> s4if_impl.rs
+✓ s2lif.rs -> s2lif_impl.rs
+✓ s5lif.rs -> s5lif_impl.rs
+✓ brs2.rs -> brs2_impl.rs
+✓ brs1.rs -> brs1_impl.rs
+✓ s4lif.rs -> s4lif_impl.rs
+✓ res1o.rs -> res1o_impl.rs
+✓ ms1.rs -> ms1_impl.rs
+✓ sina5.rs -> sina5_impl.rs
+✓ brs5.rs -> brs5_impl.rs
+✓ s2if.rs -> s2if_impl.rs
+✓ brs4.rs -> brs4_impl.rs
+✓ brs3.rs -> brs3_impl.rs
+✓ ms2.rs -> ms2_impl.rs
+✓ s42if.rs -> s42if_impl.rs
+✓ sina2.rs -> sina2_impl.rs
+✓ s3lif.rs -> s3lif_impl.rs
+✓ s12if.rs -> s12if_impl.rs
+✓ s1if.rs -> s1if_impl.rs
+✓ sina1.rs -> sina1_impl.rs
+✓ s3if.rs -> s3if_impl.rs
+✓ s52if.rs -> s52if_impl.rs
+✓ s22if.rs -> s22if_impl.rs
+✓ conda.rs -> conda_impl.rs
+✓ ms3.rs -> ms3_impl.rs
+✓ s32if.rs -> s32if_impl.rs
+✓ res2o.rs -> res2o_impl.rs
+✓ condg.rs -> condg_impl.rs
+✓ s1lif.rs -> s1lif_impl.rs
+✓ s5if.rs -> s5if_impl.rs
+✓ ms4.rs -> ms4_impl.rs
+✓ condn.rs -> condn_impl.rs
+✓ ms5.rs -> ms5_impl.rs
+✓ s4if.rs -> s4if_impl.rs
+✓ s2lif.rs -> s2lif_impl.rs
+✓ s5lif.rs -> s5lif_impl.rs
+✓ brs2.rs -> brs2_impl.rs
+✓ brs1.rs -> brs1_impl.rs
+✓ s4lif.rs -> s4lif_impl.rs
+✓ res1o.rs -> res1o_impl.rs
+✓ ms1.rs -> ms1_impl.rs
+✓ sina5.rs -> sina5_impl.rs
+✓ res1.rs -> res1_impl.rs
+✓ brs5.rs -> brs5_impl.rs
+✓ s2if.rs -> s2if_impl.rs
+✓ brs4.rs -> brs4_impl.rs
+✓ brs3.rs -> brs3_impl.rs
+✓ ms2.rs -> ms2_impl.rs
+✓ s1if.rs -> s1if_impl.rs
+✓ mods.rs -> mods_impl.rs
+✓ sina1.rs -> sina1_impl.rs
+✓ s52if.rs -> s52if_impl.rs
+✓ conda.rs -> conda_impl.rs
+✓ ms3.rs -> ms3_impl.rs
+✓ modn.rs -> modn_impl.rs
+✓ res2o.rs -> res2o_impl.rs
+✓ condg.rs -> condg_impl.rs
+✓ res2.rs -> res2_impl.rs
+✓ ms4.rs -> ms4_impl.rs
+✓ condn.rs -> condn_impl.rs
+✓ indp1.rs -> indp1_impl.rs
+✓ ms5.rs -> ms5_impl.rs
+✓ s4if.rs -> s4if_impl.rs
+✓ indp2.rs -> indp2_impl.rs
+✓ brs2.rs -> brs2_impl.rs
+✓ brs1.rs -> brs1_impl.rs
+✓ indp5.rs -> indp5_impl.rs
+✓ res1o.rs -> res1o_impl.rs
+✓ ms1.rs -> ms1_impl.rs
+✓ res1.rs -> res1_impl.rs
+✓ ss4.rs -> ss4_impl.rs
+✓ brs5.rs -> brs5_impl.rs
+✓ s2if.rs -> s2if_impl.rs
+✓ brs4.rs -> brs4_impl.rs
+✓ array_concat_strong.rs -> array_concat_strong_impl.rs
+✓ array_copy_strong.rs -> array_copy_strong_impl.rs
+✓ array_append_strong.rs -> array_append_strong_impl.rs
+✓ linear_search2.rs -> linear_search2_impl.rs
+✓ array_sum_strong.rs -> array_sum_strong_impl.rs
+✓ array_concat_strong.rs -> array_concat_strong_impl.rs
+✓ array_copy_strong.rs -> array_copy_strong_impl.rs
+✓ array_append_strong.rs -> array_append_strong_impl.rs
+✓ linear_search2.rs -> linear_search2_impl.rs
+✓ is_prime.rs -> is_prime_impl.rs
+✓ choose_odd.rs -> choose_odd_impl.rs
+✓ max_index.rs -> max_index_impl.rs
+✓ filter_weak.rs -> filter_weak_impl.rs
+✓ simple_nested.rs -> simple_nested_impl.rs
+
+=== FAILED FILES (VERIFICATION) ===
+✗ ms2.rs
+✗ s3lif.rs
+✗ sina1.rs
+✗ s3if.rs
+✗ conda.rs
+✗ s32if.rs
+✗ s5if.rs
+✗ condn.rs
+✗ s4if.rs
+✗ s5lif.rs
+✗ s4lif.rs
+✗ sina3.rs
+✗ res1o.rs
+✗ ms1.rs
+✗ condm.rs
+✗ sina4.rs
+✗ res1.rs
+✗ brs5.rs
+✗ s2if.rs
+✗ choose_odd.rs
+✗ len_intersect.rs
+✗ bubble_v1.rs
+✗ filter_v2.rs
+✗ arg_free.rs
+✗ filter.rs
+✗ bubble_v2.rs
+✗ max_index.rs
+✗ filter_weak.rs
+✗ simple_nested.rs
+✗ linearsearch.rs
+✗ map.rs
+✗ remove_all_greater_v2.rs
+✗ tail_triangle.rs
+✗ remove_all_greater.rs
+✗ trigger.rs
+✗ fib.rs
+✗ findmax.rs
+✗ conditional_average.rs
+✗ cell_2_sum.rs
+✗ binary_search.rs
+✗ task_id_605.rs
+✗ task_id_732.rs
+✗ task_id_554.rs
+✗ task_id_414.rs
+✗ task_id_426.rs
+✗ task_id_804.rs
+✗ task_id_576.rs
+✗ task_id_161.rs
+✗ task_id_618.rs
+✗ task_id_142.rs
+✗ task_id_261.rs
+✗ task_id_18.rs
+✗ task_id_251.rs
+✗ task_id_249.rs
+✗ task_id_424.rs
+✗ task_id_760.rs
+✗ task_id_95.rs
+✗ task_id_461.rs
+✗ task_id_62.rs
+✗ task_id_436.rs
+✗ task_id_284.rs
+✗ task_id_145.rs
+✗ task_id_769.rs
+✗ task_id_113.rs
+✗ task_id_476.rs
+✗ task_id_412.rs
+✗ task_id_741.rs
+✗ task_id_764.rs
+✗ task_id_578.rs
+✗ task_id_105.rs
+✗ task_id_567.rs
+✗ task_id_94.rs
+✗ task_id_728.rs
+✗ task_id_472.rs
+✗ task_id_282.rs
+✗ task_id_807.rs
+✗ task_id_602.rs
+✗ task_id_743.rs
+✗ task_id_586.rs
+✗ task_id_629.rs
+✗ task_id_431.rs
+✗ task_id_399.rs
+✗ task_id_809.rs
+✗ task_id_644.rs
+✗ task_id_230.rs
+✗ task_id_557.rs
+✗ task_id_69.rs
+✗ task_id_572.rs
+✗ task_id_445.rs
+✗ task_id_273.rs
+✗ task_id_8.rs
+✗ task_id_624.rs
+✗ task_id_70.rs
+✗ task_id_576_v2.rs
+✗ task_id_447.rs
+✗ task_id_588.rs
+✗ task_id_460.rs
+✗ task_id_775.rs
+✗ task_id_579.rs
+✗ task_id_240.rs
+✗ task_id_554.rs
+✗ task_id_414.rs
+✗ task_id_426.rs
+✗ task_id_804.rs
+✗ task_id_576.rs
+✗ task_id_161.rs
+✗ task_id_618.rs
+✗ task_id_142.rs
+✗ task_id_261.rs
+✗ task_id_18.rs
+✗ task_id_249.rs
+✗ task_id_424.rs
+✗ task_id_760.rs
+✗ task_id_95.rs
+✗ task_id_461.rs
+✗ task_id_62.rs
+✗ task_id_436.rs
+✗ task_id_3.rs
+✗ task_id_145.rs
+✗ task_id_769.rs
+✗ task_id_113.rs
+✗ task_id_476.rs
+✗ task_id_412.rs
+✗ task_id_741.rs
+✗ task_id_764.rs
+✗ task_id_578.rs
+✗ task_id_105.rs
+✗ task_id_610.rs
+✗ task_id_567.rs
+✗ task_id_94.rs
+✗ task_id_728.rs
+✗ task_id_472.rs
+✗ task_id_282.rs
+✗ task_id_807.rs
+✗ task_id_602.rs
+✗ task_id_743.rs
+✗ task_id_586.rs
+✗ task_id_629.rs
+✗ task_id_431.rs
+✗ task_id_399.rs
+✗ task_id_644.rs
+✗ task_id_230.rs
+✗ task_id_616.rs
+✗ task_id_557.rs
+✗ task_id_69.rs
+✗ task_id_790.rs
+✗ task_id_572.rs
+✗ task_id_445.rs
+✗ task_id_273.rs
+✗ task_id_8.rs
+✗ task_id_70.rs
+✗ task_id_576_v2.rs
+✗ task_id_447.rs
+✗ task_id_460.rs
+✗ task_id_775.rs
+✗ task_id_579.rs
+✗ task_id_240.rs
+✗ 074-total_match.rs
+✗ 042-incr-list.rs
+✗ 052-below-threshold.rs
+✗ 082-prime_length.rs
+✗ 037-sort_even.rs
+✗ 018-how_many_times.rs
+✗ 073-smallest_change.rs
+✗ 056-correct_bracketing.rs
+✗ 025-factorize.rs
+✗ 048-is-palindrome.rs
+✗ 011-string_xor.rs
+✗ 053-add.rs
+✗ 009-rolling_max.rs
+✗ 049-modp.rs
+✗ 061-correct_bracketing.rs
+✗ 014-all_prefixes.rs
+✗ 030-get-positive.rs
+✗ 085-add.rs
+✗ 034-unique.rs
+✗ 001-separate-paren-groups.rs
+✗ 026-remove_duplicates.rs
+✗ 003-below_zero.rs
+✗ 062-derivative.rs
+✗ 000-has_close_elements.rs
+✗ 024-largest-divisor.rs
+✗ 005-intersperse.rs
+✗ 075-is_multiply_prime.rs
+✗ 055-fib.rs
+✗ 012-longest.rs
+✗ 051-remove_vowels.rs
+✗ 045-triangle_area.rs
+✗ 060-sum_to_n.rs
+✗ 063-fibfib.rs
+✗ 043-pairs-sum-to-zero.rs
+✗ 146-specialFilter.rs
+✗ 064-vowel_count.rs
+✗ 059-largest-prime-factor.rs
+✗ 033-sort_third.rs
+✗ 007-filter_by_substring.rs
+✗ 072-will_it_fly.rs
+✗ barrier.rs
+✗ has_close_elements.rs
+✗ remove_element.rs
+✗ smallest_list_length.rs
+✗ abs.rs
+✗ array_product.rs
+✗ index_wise_addition.rs
+✗ unique.rs
+✗ is_sorted.rs
+✗ rolling_max.rs
+✗ remove_elements.rs
+✗ largest_prime_factor.rs
+✗ binary_search_recursive.rs
+✗ is_non_prime.rs
+✗ two_way_sort.rs
+✗ intersperse.rs
+✗ last_position.rs
+✗ smallest_missing_number.rs
+✗ cubes.rs
+✗ array_concat.rs
+✗ integer_square_root.rs
+✗ unique_better.rs
+✗ sina2_impl.rs
+✗ brs3_impl.rs
+✗ s42if_impl.rs
+✗ sina3.rs
+✗ condm.rs
+✗ sina4.rs
+✗ res1.rs
+✗ sina3.rs
+✗ condm.rs
+✗ sina4.rs
+✗ all_combination_of_size_k.rs
+✗ all_combination_of_size_k_raw.rs
+✗ permutations.rs
+✗ ifeqn4.rs
+✗ modp.rs
+✗ eqn5.rs
+✗ eqn3.rs
+✗ s42if.rs
+✗ sina2.rs
+✗ s3lif.rs
+✗ s12if.rs
+✗ s3if.rs
+✗ s22if.rs
+✗ ncomp.rs
+✗ indp4.rs
+✗ ifcomp.rs
+✗ s32if.rs
+✗ ifeqn5.rs
+✗ sqm.rs
+✗ nsqm-if.rs
+✗ s1lif.rs
+✗ s5if.rs
+✗ pcomp.rs
+✗ indp3.rs
+✗ s2lif.rs
+✗ s5lif.rs
+✗ ifncomp.rs
+✗ ifeqn3.rs
+✗ ifeqn1.rs
+✗ eqn2.rs
+✗ eqn4.rs
+✗ s4lif.rs
+✗ ss3.rs
+✗ sina3.rs
+✗ sqm-if.rs
+✗ ss2.rs
+✗ nsqm.rs
+✗ condm.rs
+✗ sina4.rs
+✗ sina5.rs
+✗ ifeqn2.rs
+✗ ssina.rs
+✗ eqn1.rs
+✗ ss1.rs
+✗ array_sum_strong.rs
+✗ array_product_strong.rs
+✗ all_digits_strong.rs
+✗ is_prime.rs
+✗ binary_search.rs
+✗ array_product_strong.rs
+✗ all_digits_strong.rs
+✗ binary_search.rs
+✗ len_intersect.rs
+✗ bubble.rs
+✗ arg_free.rs
+✗ filter.rs
+✗ linearsearch.rs
+✗ map.rs
+✗ reverse.rs
+✗ tail_triangle.rs
+✗ basic_nonlinear.rs
+✗ remove_all_greater.rs
+✗ havoc_inline_post.rs
+✗ trigger.rs
+✗ fib.rs
+✗ findmax.rs
+✗ sum.rs
+✗ conditional_average.rs
+✗ cell_2_sum.rs
+✗ binary_search.rs
+✗ choose_odd.rs
+✗ len_intersect.rs
+✗ bubble_v1.rs
+✗ filter_v2.rs
+✗ arg_free.rs
+✗ filter.rs
+✗ bubble_v2.rs
+✗ max_index.rs
+✗ filter_weak.rs
+✗ simple_nested.rs
+✗ linearsearch.rs
+✗ map.rs
+✗ remove_all_greater_v2.rs
+✗ tail_triangle.rs
+✗ basic_nonlinear.rs
+✗ remove_all_greater.rs
+✗ havoc_inline_post.rs
+✗ trigger.rs
+✗ fib.rs
+✗ findmax.rs
+✗ sum.rs
+✗ conditional_average.rs
+✗ cell_2_sum.rs
+✗ binary_search.rs
+✗ task_id_554_impl.rs
+✗ task_id_2_impl.rs
+✗ task_id_2_impl_impl.rs
+✗ task_id_605_impl.rs
+✗ task_id_2.rs
+✗ task_id_605.rs
+✗ task_id_554.rs
+✗ task_id_414.rs
+✗ task_id_426.rs
+✗ task_id_804.rs
+✗ task_id_576.rs
+✗ task_id_161.rs
+✗ task_id_618.rs
+✗ task_id_142.rs
+✗ task_id_261.rs
+✗ task_id_18.rs
+✗ task_id_251.rs
+✗ task_id_249.rs
+✗ task_id_424.rs
+✗ task_id_760.rs
+✗ task_id_95.rs
+✗ task_id_433.rs
+✗ task_id_461.rs
+✗ task_id_62.rs
+✗ task_id_307.rs
+✗ task_id_436.rs
+✗ task_id_284.rs
+✗ task_id_3.rs
+✗ task_id_145.rs
+✗ task_id_769.rs
+✗ task_id_113.rs
+✗ task_id_476.rs
+✗ task_id_412.rs
+✗ task_id_741.rs
+✗ task_id_764.rs
+✗ task_id_454.rs
+✗ task_id_578.rs
+✗ task_id_105.rs
+✗ task_id_610.rs
+✗ task_id_567.rs
+✗ task_id_94.rs
+✗ task_id_728.rs
+✗ task_id_472.rs
+✗ task_id_282.rs
+✗ task_id_743.rs
+✗ task_id_586.rs
+✗ task_id_629.rs
+✗ task_id_431.rs
+✗ task_id_808.rs
+✗ task_id_399.rs
+✗ task_id_809.rs
+✗ task_id_644.rs
+✗ task_id_616.rs
+✗ task_id_557.rs
+✗ task_id_69.rs
+✗ task_id_790.rs
+✗ task_id_572.rs
+✗ task_id_445.rs
+✗ task_id_273.rs
+✗ task_id_8.rs
+✗ task_id_70.rs
+✗ task_id_447.rs
+✗ task_id_588.rs
+✗ task_id_460.rs
+✗ task_id_775.rs
+✗ task_id_579.rs
+✗ task_id_240.rs
+✗ task_id_2.rs
+✗ task_id_605.rs
+✗ task_id_554.rs
+✗ task_id_414.rs
+✗ task_id_426.rs
+✗ task_id_804.rs
+✗ task_id_576.rs
+✗ task_id_161.rs
+✗ task_id_618.rs
+✗ task_id_142.rs
+✗ task_id_261.rs
+✗ task_id_18.rs
+✗ task_id_251.rs
+✗ task_id_249.rs
+✗ task_id_424.rs
+✗ task_id_760.rs
+✗ task_id_95.rs
+✗ task_id_433.rs
+✗ task_id_461.rs
+✗ task_id_62.rs
+✗ task_id_307.rs
+✗ task_id_436.rs
+✗ task_id_284.rs
+✗ task_id_3.rs
+✗ task_id_145.rs
+✗ task_id_769.rs
+✗ task_id_113.rs
+✗ task_id_476.rs
+✗ task_id_412.rs
+✗ task_id_741.rs
+✗ task_id_764.rs
+✗ task_id_454.rs
+✗ task_id_578.rs
+✗ task_id_105.rs
+✗ task_id_610.rs
+✗ task_id_567.rs
+✗ task_id_94.rs
+✗ task_id_728.rs
+✗ task_id_472.rs
+✗ task_id_282.rs
+✗ task_id_743.rs
+✗ task_id_586.rs
+✗ task_id_629.rs
+✗ task_id_431.rs
+✗ task_id_808.rs
+✗ task_id_399.rs
+✗ task_id_809.rs
+✗ task_id_644.rs
+✗ task_id_616.rs
+✗ task_id_557.rs
+✗ task_id_69.rs
+✗ task_id_790.rs
+✗ task_id_572.rs
+✗ task_id_445.rs
+✗ task_id_273.rs
+✗ task_id_8.rs
+✗ task_id_70.rs
+✗ task_id_576_v2.rs
+✗ task_id_447.rs
+✗ task_id_588.rs
+✗ task_id_460.rs
+✗ task_id_775.rs
+✗ task_id_579.rs
+✗ task_id_240.rs
+✗ barrier.rs
+✗ has_close_elements.rs
+✗ remove_element.rs
+✗ smallest_list_length.rs
+✗ abs.rs
+✗ index_wise_addition.rs
+✗ unique.rs
+✗ max_dafny_lsp.rs
+✗ remove_duplicates.rs
+✗ binary_search_recursive.rs
+✗ is_non_prime.rs
+✗ last_position.rs
+✗ smallest_missing_number.rs
+✗ unique_better.rs
+✗ array_copy.rs
+✗ barrier.rs
+✗ has_close_elements.rs
+✗ max_array.rs
+✗ remove_element.rs
+✗ smallest_list_length.rs
+✗ array_product.rs
+✗ index_wise_addition.rs
+✗ is_sorted.rs
+✗ unique_no_hints.rs
+✗ rolling_max.rs
+✗ max_dafny_lsp.rs
+✗ has_only_one_distinct_element.rs
+✗ arithmetic_weird.rs
+✗ remove_elements.rs
+✗ replace.rs
+✗ reverse.rs
+✗ remove_duplicates.rs
+✗ is_non_prime.rs
+✗ two_way_sort.rs
+✗ intersperse.rs
+✗ last_position.rs
+✗ smallest_missing_number.rs
+✗ cubes.rs
+✗ array_concat.rs
+✗ integer_square_root.rs
+✗ unique_with_hint.rs
+✗ WIP: mcontained.rs
+✗ WIP: transpose_matrix.rs
+✗ array_copy.rs
+✗ barrier.rs
+✗ has_close_elements.rs
+✗ max_array.rs
+✗ remove_element.rs
+✗ smallest_list_length.rs
+✗ abs.rs
+✗ array_product.rs
+✗ index_wise_addition.rs
+✗ unique.rs
+✗ is_sorted.rs
+✗ rolling_max.rs
+✗ max_dafny_lsp.rs
+✗ has_only_one_distinct_element.rs
+✗ arithmetic_weird.rs
+✗ remove_elements.rs
+✗ replace.rs
+✗ reverse.rs
+✗ largest_prime_factor.rs
+✗ remove_duplicates.rs
+✗ binary_search_recursive.rs
+✗ is_non_prime.rs
+✗ two_way_sort.rs
+✗ intersperse.rs
+✗ last_position.rs
+✗ smallest_missing_number.rs
+✗ cubes.rs
+✗ array_concat.rs
+✗ integer_square_root.rs
+✗ unique_better.rs
+
+=== DEBUG FEATURES ===
+Debug mode: Disabled
+- Saves only final implementation as *_impl.rs
+- No intermediate files saved (debug mode disabled)
+
+- Debug mode control: Disabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-07-17T23:13:49.951328
