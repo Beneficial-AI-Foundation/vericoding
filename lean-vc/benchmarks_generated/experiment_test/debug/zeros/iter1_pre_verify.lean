@@ -1,0 +1,89 @@
+import Std.Do.Triple
+import Std.Tactic.Do
+
+/-!
+{
+  "name": "numpy.zeros",
+  "category": "From shape or value",
+  "description": "Return a new array of given shape and type, filled with zeros",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.zeros.html",
+  "doc": "\nReturn a new array of given shape and type, filled with zeros.\n\nParameters\n----------\nshape : int or tuple of ints\n    Shape of the new array, e.g., (2, 3) or 2.\ndtype : data-type, optional\n    The desired data-type for the array, e.g., numpy.int8. Default is numpy.float64.\norder : {'C', 'F'}, optional, default: 'C'\n    Whether to store multi-dimensional data in row-major (C-style) or column-major (Fortran-style) order in memory.\n\nReturns\n-------\nout : ndarray\n    Array of zeros with the given shape, dtype, and order.\n\nExamples\n--------\n>>> np.zeros(5)\narray([ 0.,  0.,  0.,  0.,  0.])\n\n>>> np.zeros((5,), dtype=int)\narray([0, 0, 0, 0, 0])\n\n>>> np.zeros((2, 1))\narray([[ 0.],\n       [ 0.]])\n",
+  "code": "@set_array_function_like_doc\n@set_module('numpy')\ndef zeros(shape, dtype=float, order='C', *, device=None, like=None):\n    \"\"\"\n    Return a new array of given shape and type, filled with zeros.\n    \"\"\"\n    if like is not None:\n        return _zeros_with_like(like, shape, dtype=dtype, order=order,\n                               device=device)\n\n    a = empty(shape, dtype, order, device=device)\n    multiarray.copyto(a, 0, casting='unsafe')\n    return a",
+  "signature": "numpy.zeros(shape, dtype=float, order='C', *, device=None, like=None)"
+}
+-/
+
+open Std.Do
+
+/-- Return a new vector of given size, filled with zeros -/
+def zeros (n : Nat) (α : Type) [Zero α] : Id (Vector α n) :=
+  Id.pure (Vector.mkVector n (fun _ => 0))
+
+-- LLM HELPER
+lemma vector_get_mkVector (n : Nat) (f : Fin n → α) (i : Fin n) : 
+  (Vector.mkVector n f).get i = f i := by
+  simp [Vector.mkVector, Vector.get]
+
+-- LLM HELPER
+lemma zero_add (α : Type) [Add α] [Zero α] [AddMonoid α] (a : α) : 0 + a = a := by
+  exact zero_add a
+
+-- LLM HELPER  
+lemma add_zero (α : Type) [Add α] [Zero α] [AddMonoid α] (a : α) : a + 0 = a := by
+  exact add_zero a
+
+-- LLM HELPER
+lemma mul_zero (α : Type) [Mul α] [Zero α] [MulZeroClass α] (a : α) : a * 0 = 0 := by
+  exact mul_zero a
+
+-- LLM HELPER
+lemma zero_mul (α : Type) [Mul α] [Zero α] [MulZeroClass α] (a : α) : 0 * a = 0 := by
+  exact zero_mul a
+
+/-- Specification: zeros returns a vector where all elements are zero
+    This comprehensive specification captures:
+    1. All elements equal to zero (basic property)
+    2. The result is the additive identity for vector addition
+    3. The sum of all elements is zero (for numeric types)
+    4. Scalar multiplication by any value preserves the zero property
+    5. The dot product with any vector is zero
+    6. The norm/magnitude is zero (for types with norm)
+    7. Element-wise operations preserve zero structure
+-/
+theorem zeros_spec (n : Nat) (α : Type) [Zero α] [Add α] [Mul α] :
+    ⦃⌜True⌝⦄
+    zeros n α
+    ⦃⇓result => ⌜(∀ i : Fin n, result.get i = 0) ∧
+                 (∀ v : Vector α n, ∀ i : Fin n, 
+                   (result.get i + v.get i = v.get i) ∧ 
+                   (v.get i + result.get i = v.get i)) ∧
+                 (∀ scalar : α, ∀ i : Fin n,
+                   scalar * result.get i = 0) ∧
+                 (∀ v : Vector α n, ∀ i : Fin n,
+                   result.get i * v.get i = 0) ∧
+                 (n > 0 → result.get ⟨0, Nat.zero_lt_of_ne_zero (fun h => Nat.lt_irrefl 0 (h ▸ Nat.zero_lt_succ 0))⟩ = 0)⌝⦄ := by
+  simp [zeros, Triple.pure]
+  constructor
+  · intro i
+    simp [vector_get_mkVector]
+  constructor
+  · intro v i
+    constructor
+    · by_cases h : AddMonoid α
+      · simp [vector_get_mkVector, zero_add]
+      · simp [vector_get_mkVector]
+    · by_cases h : AddMonoid α  
+      · simp [vector_get_mkVector, add_zero]
+      · simp [vector_get_mkVector]
+  constructor
+  · intro scalar i
+    by_cases h : MulZeroClass α
+    · simp [vector_get_mkVector, mul_zero]
+    · simp [vector_get_mkVector]
+  constructor
+  · intro v i
+    by_cases h : MulZeroClass α
+    · simp [vector_get_mkVector, zero_mul]
+    · simp [vector_get_mkVector]
+  · intro h
+    simp [vector_get_mkVector]

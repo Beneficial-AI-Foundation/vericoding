@@ -1,0 +1,57 @@
+# 50 Cherry-picked NumPy Hoare Triple Specs for Experiment
+
+## Simple Operations (15 files)
+numpy_hoare_triple/Numpy_Add.lean
+numpy_hoare_triple/Numpy_Subtract.lean
+numpy_hoare_triple/Numpy_Multiply.lean
+numpy_hoare_triple/Numpy_Square.lean
+numpy_hoare_triple/Numpy_Absolute.lean
+numpy_hoare_triple/Numpy_Sign.lean
+numpy_hoare_triple/Numpy_Min.lean
+numpy_hoare_triple/Numpy_Max.lean
+numpy_hoare_triple/Numpy_Minimum.lean
+numpy_hoare_triple/Numpy_Maximum.lean
+numpy_hoare_triple/Numpy_Clip.lean
+numpy_hoare_triple/Numpy_Where.lean
+numpy_hoare_triple/array_creation/zeros.lean
+numpy_hoare_triple/array_creation/ones.lean
+numpy_hoare_triple/array_creation/copy.lean
+
+## Medium Complexity (20 files)
+numpy_hoare_triple/Numpy_Transpose.lean
+numpy_hoare_triple/Numpy_Reshape.lean
+numpy_hoare_triple/Numpy_Concatenate.lean
+numpy_hoare_triple/Numpy_Stack.lean
+numpy_hoare_triple/Numpy_Split.lean
+numpy_hoare_triple/Numpy_Sqrt.lean
+numpy_hoare_triple/Numpy_Exp.lean
+numpy_hoare_triple/Numpy_Log.lean
+numpy_hoare_triple/Numpy_Sin.lean
+numpy_hoare_triple/Numpy_Cos.lean
+numpy_hoare_triple/Numpy_Mean.lean
+numpy_hoare_triple/Numpy_Sum.lean
+numpy_hoare_triple/Numpy_Prod.lean
+numpy_hoare_triple/array_creation/arange.lean
+numpy_hoare_triple/array_creation/linspace.lean
+numpy_hoare_triple/array_creation/eye.lean
+numpy_hoare_triple/array_creation/identity.lean
+numpy_hoare_triple/array_creation/diag.lean
+numpy_hoare_triple/array_manipulation/ravel.lean
+numpy_hoare_triple/array_manipulation/flip.lean
+
+## Complex Operations (15 files)
+numpy_hoare_triple/Numpy_Dot.lean
+numpy_hoare_triple/Numpy_Matmul.lean
+numpy_hoare_triple/Numpy_Std.lean
+numpy_hoare_triple/Numpy_Var.lean
+numpy_hoare_triple/Numpy_Sort.lean
+numpy_hoare_triple/Numpy_Argsort.lean
+numpy_hoare_triple/Numpy_Argmax.lean
+numpy_hoare_triple/Numpy_Argmin.lean
+numpy_hoare_triple/array_manipulation/broadcast.lean
+numpy_hoare_triple/array_manipulation/expand_dims.lean
+numpy_hoare_triple/array_manipulation/moveaxis.lean
+numpy_hoare_triple/array_creation/meshgrid.lean
+numpy_hoare_triple/array_creation/vander.lean
+numpy_hoare_triple/array_creation/tril.lean
+numpy_hoare_triple/array_creation/triu.lean

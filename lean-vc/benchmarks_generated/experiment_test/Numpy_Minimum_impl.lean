@@ -1,0 +1,41 @@
+import Std.Do.Triple
+import Std.Tactic.Do
+
+open Std.Do
+
+/-- numpy.minimum: Element-wise minimum of array elements.
+
+    Compares two arrays element-wise and returns a new array containing
+    the element-wise minima. If one of the elements being compared is NaN,
+    then that element is returned.
+
+    This is different from numpy.min which returns a single minimum value.
+-/
+def numpy_minimum {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
+  pure (Vector.ofFn fun i => min (x1.get i) (x2.get i))
+
+-- LLM HELPER
+lemma pure_spec {α : Type*} (x : α) (P : α → Prop) (h : P x) :
+    ⦃⌜True⌝⦄ pure x ⦃⇓result => ⌜P result⌝⦄ := by
+  simp [pure]
+  exact h
+
+-- LLM HELPER
+lemma Vector.get_ofFn {α : Type*} {n : Nat} (f : Fin n → α) (i : Fin n) :
+    (Vector.ofFn f).get i = f i := by
+  rfl
+
+/-- Specification: numpy.minimum returns a vector where each element is the minimum
+    of the corresponding elements from x1 and x2.
+
+    Precondition: True (no special preconditions for element-wise minimum)
+    Postcondition: For all indices i, result[i] = min(x1[i], x2[i])
+-/
+theorem numpy_minimum_spec {n : Nat} (x1 x2 : Vector Float n) :
+    ⦃⌜True⌝⦄
+    numpy_minimum x1 x2
+    ⦃⇓result => ⌜∀ i : Fin n, result.get i = min (x1.get i) (x2.get i)⌝⦄ := by
+  simp [numpy_minimum]
+  apply pure_spec
+  intro i
+  simp [Vector.get_ofFn]

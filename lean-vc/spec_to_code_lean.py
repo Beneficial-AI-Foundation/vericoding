@@ -1,3 +1,12 @@
+#!/usr/bin/env -S uv run
+# /// script
+# requires-python = ">=3.8"
+# dependencies = [
+#     "requests",
+#     "pyyaml",
+# ]
+# ///
+
 # Lean version of spec_to_code.py, auto-generated for Lean workflow.
 import os
 import sys
