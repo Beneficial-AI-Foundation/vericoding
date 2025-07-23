@@ -167,6 +167,41 @@ lake build --verbose
 - Practice "sorry-friendly programming": Instead of a comment you put down a spec, but it is only "proved" with `sorry`. This is strictly better than a comment, because the typechecker will use it for program generation.
 - Decompose proofs until tools like `canonical`, `grind`, and `simp` dissolve the pieces. Use them to do the "how", the AI should do the "what".
 - Don't use `i` and `j` as variable names when you could use `r`(ow) and `c`(olumn) instead. Ditto for `m` and `n` as matrix dimensions. Use `R` and `C`.
+
+### Proof Tactics Pipeline
+
+**Primary automation tactics** (use in this order):
+1. **`grind`** - Modern SMT-style solver for first-order logic, equality reasoning, and arithmetic
+2. **`simp`** - Simplification using rewrite rules
+3. **`canonical`** - Canonical form normalization
+
+**Using `grind` effectively:**
+```lean
+-- ✅ Let grind handle equality and arithmetic reasoning
+example (a b c : ℕ) (h1 : a = b) (h2 : b = c) : a = c := by grind
+
+-- ✅ Grind with additional lemmas
+example (x y : ℝ) (h : x + y = 0) : y = -x := by grind [add_eq_zero_iff_neg_eq]
+
+-- ✅ Grind preceded by simp
+def multiply {n : Nat} (a b : Vector Int n) : Vector Int n :=
+  Vector.ofFn fun i => a[i] * b[i]
+theorem multiply_commutative {n : Nat} (a b : Vector Int n) :
+  multiply a b = multiply b a := by
+  ext i
+  simp [multiply]
+  grind
+
+```
+
+**Grind pipeline strategy:**
+- Start with `grind` for goals involving equality, arithmetic, or basic logic
+- Use `simp` to preprocess complex expressions before `grind`
+- Add relevant lemmas to `simp` if necessary
+- Fall back to manual tactics only when automation fails
+- Add relevant lemmas as well to `grind` using `grind [lemma1, lemma2]`
+
+
 ### Import and Module Structure
 
 - Imports MUST come before any syntax elements, including module and doc comments
@@ -175,10 +210,73 @@ lake build --verbose
 
 ### Common Errors and Solutions
 
+#### Mathlib Import and Type Errors
+
+- **`Type*` errors**: Replace `Type*` with `Type _` or specific universe levels
+  ```lean
+  -- ❌ Wrong
+  variable (α : Type*)
+  
+  -- ✅ Correct
+  variable (α : Type _)
+  -- or with explicit universe
+  variable (α : Type u)
+  ```
+
+- **Import errors**: Always import required mathlib modules at the top of your file
+  ```lean
+  -- Common mathlib imports for numerical work
+  import Mathlib.Data.Matrix.Basic
+  import Mathlib.Data.Real.Basic
+  import Mathlib.LinearAlgebra.Matrix.Basic
+  import Mathlib.Tactic.Ring
+  import Mathlib.Tactic.Linarith
+  ```
+
+- **Missing instance errors**: Use `#check` to verify typeclass instances exist
+  ```lean
+  #check (inferInstance : Add ℝ)  -- Verify Add instance for reals
+  ```
+
+- **Universe level mismatches**: Be explicit about universe levels when needed
+  ```lean
+  -- ❌ Can cause universe issues
+  structure Matrix (m n : ℕ) (α : Type*) := ...
+  
+  -- ✅ Better
+  structure Matrix (m n : ℕ) (α : Type u) := ...
+  ```
+
+#### General Lean 4 Errors
+
 - **"unexpected token 'namespace'"**: Module/doc comment placed incorrectly (should be after imports)
 - **"unexpected token"**: Often caused by misplaced docstrings - use multiline comments instead
-  - [ ] use extensible error messages to suggest a fix for AI. Then remove this admonishment.
-- [ ] make a pre-push hook that runs lake build
+- **"function expected"**: Check parentheses and function application syntax
+- **"type mismatch"**: Use `#check` and `#print` to debug type issues
+
+#### Debugging Commands
+
+```lean
+#check expr          -- Check type of expression
+#print definition    -- Print definition
+#synth TypeClass α   -- Find typeclass instance
+#eval expr          -- Evaluate expression
+```
+
+#### Proof Development Commands
+
+```lean
+-- Try automated tactics in this order:
+by grind             -- First try grind for equality/arithmetic
+by simp              -- Then try simplification
+by grind [lemma]     -- Grind with specific lemmas
+by simp; grind       -- Combine: simplify then grind
+```
+
+#### Action Items
+- [ ] Set up extensible error messages to suggest fixes for AI
+- [ ] Create pre-push hook that runs `lake build`
+- [ ] Add linter rules for common mathlib import patterns
 
 
 ## Python Development Guidelines
