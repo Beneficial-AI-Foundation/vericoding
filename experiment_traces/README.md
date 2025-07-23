@@ -1,6 +1,8 @@
 # Experiment Traces
 
-This directory contains detailed conversation traces from spec-to-code generation experiments.
+This directory is used for temporary storage of conversation traces before they are uploaded to WANDB artifacts.
+
+**IMPORTANT**: When WANDB_API_KEY is set, traces are automatically uploaded to WANDB and removed from local storage. This prevents git repository bloat.
 
 ## Overview
 

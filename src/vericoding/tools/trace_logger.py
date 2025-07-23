@@ -7,10 +7,12 @@ Captures full conversation traces for debugging and analysis.
 import os
 import json
 import gzip
+import tempfile
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Any, Union
 from dataclasses import dataclass, asdict, field
+import wandb
 
 
 @dataclass
@@ -44,26 +46,35 @@ class TraceLogger:
     
     def __init__(self, trace_dir: Optional[Path] = None, 
                  compress: bool = True,
-                 gitignore_traces: bool = True):
+                 use_wandb: bool = True,
+                 wandb_project: Optional[str] = None):
         """
         Initialize trace logger.
         
         Args:
-            trace_dir: Directory to store traces (default: ./experiment_traces)
+            trace_dir: Directory to store traces (default: temp dir if using WANDB)
             compress: Whether to gzip traces to save space
-            gitignore_traces: Whether to create .gitignore in trace directory
+            use_wandb: Whether to upload traces to WANDB artifacts
+            wandb_project: WANDB project name (if using WANDB)
         """
-        self.trace_dir = trace_dir or Path.cwd() / "experiment_traces"
-        self.trace_dir.mkdir(exist_ok=True)
-        self.compress = compress
+        self.use_wandb = use_wandb and os.getenv("WANDB_API_KEY") is not None
         
-        # Create .gitignore to prevent traces from being committed
-        if gitignore_traces:
+        if self.use_wandb:
+            # Use temp directory for WANDB artifacts
+            self.trace_dir = Path(tempfile.mkdtemp(prefix="vericoding_traces_"))
+            self.wandb_project = wandb_project or "vericoding-traces"
+        else:
+            # Use local directory only if not using WANDB
+            self.trace_dir = trace_dir or Path.cwd() / "experiment_traces"
+            self.trace_dir.mkdir(exist_ok=True)
+            
+            # Create .gitignore to prevent traces from being committed
             gitignore_path = self.trace_dir / ".gitignore"
             if not gitignore_path.exists():
                 with open(gitignore_path, "w") as f:
                     f.write("# Ignore all trace files\n*.json\n*.json.gz\n")
         
+        self.compress = compress
         self.active_traces: Dict[str, ConversationTrace] = {}
     
     def start_trace(self, experiment_id: str, file_name: str, 
@@ -139,11 +150,12 @@ class TraceLogger:
         return trace
     
     def save_trace(self, trace: ConversationTrace):
-        """Save a trace to disk."""
+        """Save a trace, uploading to WANDB if enabled."""
         # Create filename with timestamp and experiment details
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"trace_{trace.language}_{trace.file_name}_{timestamp}_{trace.experiment_id}"
         
+        # Always save to disk first (temp dir if using WANDB)
         if self.compress:
             filepath = self.trace_dir / f"{filename}.json.gz"
             with gzip.open(filepath, "wt", encoding="utf-8") as f:
@@ -153,7 +165,70 @@ class TraceLogger:
             with open(filepath, "w", encoding="utf-8") as f:
                 json.dump(asdict(trace), f, indent=2)
         
-        print(f"Trace saved to {filepath}")
+        # Upload to WANDB if enabled
+        if self.use_wandb:
+            try:
+                # Initialize a new WANDB run for trace upload
+                run = wandb.init(
+                    project=self.wandb_project,
+                    name=f"trace_{trace.experiment_id}",
+                    tags=["trace", trace.language, "mcp" if trace.use_mcp else "no-mcp"],
+                    config={
+                        "experiment_id": trace.experiment_id,
+                        "file_name": trace.file_name,
+                        "language": trace.language,
+                        "use_mcp": trace.use_mcp,
+                        "total_turns": len(trace.turns),
+                    }
+                )
+                
+                # Create artifact
+                artifact = wandb.Artifact(
+                    name=f"trace_{trace.experiment_id}",
+                    type="experiment_trace",
+                    description=f"Conversation trace for {trace.file_name}",
+                    metadata={
+                        "language": trace.language,
+                        "use_mcp": trace.use_mcp,
+                        "success": trace.verification_results[-1]["success"] if trace.verification_results else None,
+                        "total_turns": len(trace.turns),
+                        "timestamp": timestamp
+                    }
+                )
+                
+                # Add the trace file
+                artifact.add_file(str(filepath))
+                
+                # Also create and add a summary report
+                summary = self.create_trace_summary(trace)
+                summary_path = filepath.parent / f"{filename}_summary.json"
+                with open(summary_path, "w") as f:
+                    json.dump(summary, f, indent=2)
+                artifact.add_file(str(summary_path))
+                
+                # Create and add markdown report
+                report = self.create_markdown_report(trace)
+                report_path = filepath.parent / f"{filename}_report.md"
+                with open(report_path, "w") as f:
+                    f.write(report)
+                artifact.add_file(str(report_path))
+                
+                # Log the artifact
+                run.log_artifact(artifact)
+                
+                # Log summary metrics
+                wandb.log(summary)
+                
+                # Finish the run
+                wandb.finish()
+                
+                print(f"Trace uploaded to WANDB: {artifact.name}")
+                
+            except Exception as e:
+                print(f"Warning: Failed to upload trace to WANDB: {e}")
+                print(f"Trace saved locally to {filepath}")
+        else:
+            print(f"Trace saved to {filepath}")
     
     def load_trace(self, filepath: Union[str, Path]) -> ConversationTrace:
         """Load a trace from disk."""
@@ -256,11 +331,11 @@ class TraceLogger:
 _global_trace_logger = None
 
 
-def get_trace_logger() -> TraceLogger:
+def get_trace_logger(use_wandb: bool = True) -> TraceLogger:
     """Get or create the global trace logger instance."""
     global _global_trace_logger
     if _global_trace_logger is None:
-        _global_trace_logger = TraceLogger()
+        _global_trace_logger = TraceLogger(use_wandb=use_wandb)
     return _global_trace_logger
 
 

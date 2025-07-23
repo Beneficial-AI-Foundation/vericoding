@@ -149,6 +149,7 @@ class ExperimentTracker:
             "mcp_experiments": sum(1 for r in self.results if r.use_mcp),
             "non_mcp_experiments": sum(1 for r in self.results if not r.use_mcp),
             "overall_success_rate": sum(r.success for r in self.results) / len(self.results) if self.results else 0,
+            "traces_uploaded_to_wandb": self.enable_traces and os.getenv("WANDB_API_KEY") is not None,
         }
         
         summary_file = output_dir / f"summary_{self.run_name}.json"
@@ -157,6 +158,11 @@ class ExperimentTracker:
         
         print(f"Results saved to {results_file}")
         print(f"Summary saved to {summary_file}")
+        
+        if self.enable_traces and os.getenv("WANDB_API_KEY"):
+            print("Note: Conversation traces have been uploaded to WANDB artifacts")
+        elif self.enable_traces:
+            print("Note: Conversation traces saved locally (set WANDB_API_KEY to upload to cloud)")
     
     def finish(self):
         """Finish tracking and close WANDB run."""
