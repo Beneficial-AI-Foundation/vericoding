@@ -7,9 +7,10 @@
       ]
     },
     "leanexplore": {
-      "command": "uv",
+      "command": "uvx",
       "args": [
-        "run",
+        "--from",
+        "lean-explore",
         "leanexplore",
         "mcp",
         "serve",

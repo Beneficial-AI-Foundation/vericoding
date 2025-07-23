@@ -1,0 +1,25 @@
+[project]
+name = "vericoding"
+version = "0.1.0"
+description = "Verification-focused coding project with Dafny, Verus, and Lean 4 experiments"
+authors = [
+    { name = "Alok Singh", email = "alokbeniwal@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=0.58.2",
+    "claude-code-sdk>=0.0.16",
+    "pyyaml>=6.0.2",
+    "requests>=2.32.4",
+    "wandb>=0.21.0",
+]
+
+[project.scripts]
+vericoding = "vericoding:main"
+vericode-dafny = "vericoding.dafny.vericoder:main"
+vericode-verus = "vericoding.verus.spec_to_code:main"
+vericode-lean = "vericoding.lean.spec_to_code_lean:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
