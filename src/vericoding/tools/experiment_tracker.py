@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Any
 import wandb
 from dataclasses import dataclass, asdict
+from .trace_logger import TraceLogger, get_trace_logger
 
 
 @dataclass
@@ -27,6 +28,7 @@ class ExperimentResult:
     api_calls: int
     error: Optional[str] = None
     metadata: Optional[Dict[str, Any]] = None
+    trace_file: Optional[str] = None  # Path to the full conversation trace
 
 
 class ExperimentTracker:
@@ -34,11 +36,17 @@ class ExperimentTracker:
     
     def __init__(self, project_name: str = "vericoding-experiments", 
                  run_name: Optional[str] = None,
-                 tags: Optional[List[str]] = None):
+                 tags: Optional[List[str]] = None,
+                 enable_traces: bool = True):
         """Initialize experiment tracker with WANDB."""
         self.project_name = project_name
         self.run_name = run_name or f"run_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
         self.tags = tags or []
+        self.enable_traces = enable_traces
+        
+        # Initialize trace logger
+        if self.enable_traces:
+            self.trace_logger = get_trace_logger()
         
         # Initialize WANDB if API key is set
         if os.getenv("WANDB_API_KEY"):

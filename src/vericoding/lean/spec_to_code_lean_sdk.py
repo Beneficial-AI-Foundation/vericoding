@@ -19,6 +19,8 @@ from claude_code_sdk import ClaudeCodeSession, ClaudeCodeMessage
 
 from vericoding.lean.prompt_loader import PromptLoader
 from vericoding.common.prompt_loader import BasePromptLoader
+from vericoding.tools.trace_logger import get_trace_logger, ConversationTrace
+from vericoding.lean.claude_session_wrapper import create_tracked_session
 
 
 class MCPEnhancedPromptLoader(PromptLoader):
@@ -119,7 +121,8 @@ Report whether the file verifies successfully and list any errors or warnings.
 
 def process_spec_file_with_mcp(file_path: Path, 
                               max_iterations: int = 5,
-                              use_mcp_verification: bool = True) -> Dict:
+                              use_mcp_verification: bool = True,
+                              enable_trace: bool = True) -> Dict:
     """
     Process a Lean specification file using Claude Code SDK with MCP tools.
     
@@ -144,8 +147,26 @@ def process_spec_file_with_mcp(file_path: Path,
     with open(file_path, 'r', encoding='utf-8') as f:
         original_code = f.read()
     
-    # Initialize Claude Code session
-    session = ClaudeCodeSession()
+    # Generate experiment ID
+    experiment_id = f"{base_file_name}_{datetime.now().strftime('%Y%m%d_%H%M%S%f')}"
+    
+    # Initialize Claude Code session with tracing
+    if enable_trace:
+        session = create_tracked_session(
+            experiment_id=experiment_id,
+            file_name=file_path.name,
+            language="lean",
+            use_mcp=True,
+            metadata={
+                "max_iterations": max_iterations,
+                "use_mcp_verification": use_mcp_verification,
+                "original_code_length": len(original_code)
+            }
+        )
+        trace_logger = get_trace_logger()
+    else:
+        session = ClaudeCodeSession()
+        trace_logger = None
     
     # Generate initial implementation
     print("  Generating initial implementation with MCP context...")
@@ -203,6 +224,16 @@ Use the MCP tools actively during implementation to make informed decisions.
                 verified = False
                 output = str(e)
         
+        # Log verification result
+        if trace_logger:
+            trace_logger.add_verification_result(
+                experiment_id=experiment_id,
+                iteration=iteration,
+                success=verified,
+                output=output,
+                metadata={"code_length": len(current_code)}
+            )
+        
         if verified:
             print(f"    ✓ Verification successful!")
             success = True
@@ -243,13 +274,30 @@ Provide the fixed code.
     with open(final_file, 'w', encoding='utf-8') as f:
         f.write(current_code)
     
+    # Finalize trace
+    trace_file = None
+    if trace_logger:
+        trace_logger.set_final_code(experiment_id, current_code)
+        trace = trace_logger.end_trace(experiment_id, save=True)
+        
+        # Also save a markdown report
+        report = trace_logger.create_markdown_report(trace)
+        report_file = output_dir / f"{base_file_name}_trace_report.md"
+        with open(report_file, 'w', encoding='utf-8') as f:
+            f.write(report)
+        
+        trace_file = str(report_file)
+        print(f"  Trace report saved to {report_file}")
+    
     return {
         "success": success,
         "file": file_path.name,
         "output": str(final_file),
         "iterations": iteration,
         "error": None if success else last_error,
-        "output_dir": str(output_dir)
+        "output_dir": str(output_dir),
+        "trace_file": trace_file,
+        "experiment_id": experiment_id
     }
 
 

@@ -19,6 +19,7 @@ vericoding = "vericoding:main"
 vericode-dafny = "vericoding.dafny.vericoder:main"
 vericode-verus = "vericoding.verus.spec_to_code:main"
 vericode-lean = "vericoding.lean.spec_to_code_lean:main"
+vericode-analyze-traces = "vericoding.tools.analyze_traces:main"
 
 [build-system]
 requires = ["hatchling"]
