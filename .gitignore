@@ -1,21 +1,30 @@
-# Experiment traces - NEVER commit these!
-experiment_traces/
-experiment_results/
-*.trace.json
-*.trace.json.gz
-*_trace_report.md
-mcp_output_*/
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+dist/
+*.egg-info/
+
+# UV
+uv.lock
 
 # WANDB
 wandb/
 .wandb/
 
-# Python
-__pycache__/
-*.py[cod]
-.venv/
-uv.lock
-
 # Lean
 .lake/
 build/
+lake-manifest.json
+
+# Experiment outputs
+experiment_results/
+lean_output_*/
+*_impl.lean
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store

@@ -1,25 +1,22 @@
 [project]
-name = "vericoding"
+name = "vericoding-lean"
 version = "0.1.0"
-description = "Verification-focused coding project with Dafny, Verus, and Lean 4 experiments"
+description = "Lean 4 verification experiment framework"
 authors = [
     { name = "Alok Singh", email = "alokbeniwal@gmail.com" }
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "pydantic>=2.0",
     "anthropic>=0.58.2",
     "claude-code-sdk>=0.0.16",
-    "pyyaml>=6.0.2",
-    "requests>=2.32.4",
     "wandb>=0.21.0",
+    "jinja2>=3.1.0",
+    "pyyaml>=6.0.2",  # Keep for backward compatibility during migration
 ]
 
 [project.scripts]
-vericoding = "vericoding:main"
-vericode-dafny = "vericoding.dafny.vericoder:main"
-vericode-verus = "vericoding.verus.spec_to_code:main"
 vericode-lean = "vericoding.lean.spec_to_code_lean:main"
-vericode-analyze-traces = "vericoding.tools.analyze_traces:main"
 
 [build-system]
 requires = ["hatchling"]
