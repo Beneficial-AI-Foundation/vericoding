@@ -17,6 +17,8 @@ import csv
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import quote
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import threading
 
 # Add the parent directory to Python path for imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -62,10 +64,16 @@ OUTPUT_DIR = ""
 SUMMARY_FILE = ""
 DEBUG_MODE = False
 STRICT_SPEC_VERIFICATION = False  # New configuration variable: strict spec fn preservation
+MAX_WORKERS = 4  # Maximum number of parallel workers
+API_RATE_LIMIT_DELAY = 1  # Delay between API calls in seconds
+
+# Thread safety
+print_lock = threading.Lock()
+file_write_lock = threading.Lock()
 
 # Environment variables
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-VERUS_PATH = os.getenv("VERUS_PATH", os.path.expanduser("~/Downloads/verus-0.2025.06.14.9b557d7-x86-linux/verus-x86-linux/verus"))
+VERUS_PATH = os.getenv("VERUS_PATH", os.path.expanduser("~/Downloads/verus-0.2025.07.24.6fad598-x86-linux/verus-x86-linux/verus"))
 
 # Initialize prompt loader
 try:
@@ -120,6 +128,13 @@ Examples:
         help='Enable strict spec fn preservation (default: relaxed verification)'
     )
     
+    parser.add_argument(
+        '--workers', '-w',
+        type=int,
+        default=4,
+        help='Number of parallel workers (default: 4)'
+    )
+    
     return parser.parse_args()
 
 def ask_question(question, default=None):
@@ -127,7 +142,7 @@ def ask_question(question, default=None):
     return answer.strip() or default
 
 def setup_configuration(args=None):
-    global VERUS_FILES_DIR, MAX_ITERATIONS, OUTPUT_DIR, SUMMARY_FILE, DEBUG_MODE, STRICT_SPEC_VERIFICATION
+    global VERUS_FILES_DIR, MAX_ITERATIONS, OUTPUT_DIR, SUMMARY_FILE, DEBUG_MODE, STRICT_SPEC_VERIFICATION, MAX_WORKERS
 
     print("=== Verus Specification-to-Code Processing Configuration ===\n")
 
@@ -138,10 +153,64 @@ def setup_configuration(args=None):
         print(f"Error: Directory '{VERUS_FILES_DIR}' does not exist or is not accessible.")
         sys.exit(1)
 
-    # Create timestamped output directory
+    # Create timestamped output directory outside the input directory
     timestamp = datetime.now().strftime("%d-%m_%Hh%M")
-    OUTPUT_DIR = os.path.join(VERUS_FILES_DIR, f"code_from_spec_on_{timestamp}")
-    SUMMARY_FILE = os.path.join(OUTPUT_DIR, "summary.txt")
+    
+    # Extract the relevant part of the input path for the output hierarchy
+    # For example: "src/verus_specs_no_llm/translations/specs_benches/autoverus" 
+    # should result in output at "src/code_from_spec_on_{timestamp}/autoverus"
+    input_path = Path(VERUS_FILES_DIR).resolve()
+    
+    # Find the src directory or use current working directory as base
+    current_path = input_path
+    src_base = None
+    while current_path.parent != current_path:
+        if current_path.name == 'src':
+            src_base = current_path
+            break
+        current_path = current_path.parent
+    
+    if src_base is None:
+        # If no 'src' directory found, use the directory containing the input as base
+        if input_path.parent.name == 'src':
+            src_base = input_path.parent
+        else:
+            # Fallback: find a reasonable base directory
+            working_dir = Path.cwd()
+            if (working_dir / 'src').exists():
+                src_base = working_dir / 'src'
+            else:
+                src_base = working_dir
+    
+    # Calculate the relative path from src_base to the input directory
+    try:
+        relative_from_src = input_path.relative_to(src_base)
+        # Extract meaningful subdirectory structure
+        # For "verus_specs_no_llm/translations/specs_benches/autoverus", we want "autoverus"
+        # or a meaningful subset
+        path_parts = relative_from_src.parts
+        
+        # Try to find a meaningful subset - look for known patterns
+        meaningful_part = None
+        for i, part in enumerate(path_parts):
+            if part in ['autoverus', 'clover', 'synthesis_task', 'first_8', 'atomizer_supported', 'atomizer_supported_tasks_dep_only']:
+                meaningful_part = Path(part)  # Use just the meaningful part, not the full path from here
+                break
+        
+        if meaningful_part is None:
+            # If no recognized pattern, use the last 1-2 directory levels
+            if len(path_parts) >= 2:
+                meaningful_part = Path(path_parts[-2]) / Path(path_parts[-1])
+            else:
+                meaningful_part = Path(path_parts[-1]) if path_parts else Path("specs")
+            
+    except ValueError:
+        # input_path is not relative to src_base, use the basename
+        meaningful_part = Path(input_path.name)
+    
+    # Create output directory structure
+    OUTPUT_DIR = str(src_base / f"code_from_spec_on_{timestamp}" / meaningful_part)
+    SUMMARY_FILE = str(Path(OUTPUT_DIR) / "summary.txt")
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     print(f"Created output directory: {OUTPUT_DIR}")
@@ -328,26 +397,34 @@ def fix_incomplete_code(code):
     
     return '\n'.join(fixed_lines)
 
-def save_iteration_code(base_file_name, iteration, code, phase):
+def save_iteration_code(relative_path, iteration, code, phase):
     """Save code after each iteration for debugging."""
     # Only save intermediate files if debug mode is enabled
     if not DEBUG_MODE:
         return
     
+    # Get base name without extension for file naming
+    base_name = os.path.splitext(os.path.basename(relative_path))[0]
+    
     if phase == "original":
         # Save original specification
-        iteration_file_name = f"{base_file_name}_iter_{iteration}_{phase}.rs"
+        iteration_file_name = f"{base_name}_iter_{iteration}_{phase}.rs"
     elif phase == "generated":
         # Save initial generated code
-        iteration_file_name = f"{base_file_name}_iter_{iteration}_{phase}.rs"
+        iteration_file_name = f"{base_name}_iter_{iteration}_{phase}.rs"
     elif phase == "current":
         # Save current working version for this iteration
-        iteration_file_name = f"{base_file_name}_iter_{iteration}_current.rs"
+        iteration_file_name = f"{base_name}_iter_{iteration}_current.rs"
     else:
         # Skip other phases (before_verify, after_fix, etc.)
         return
     
-    iteration_path = os.path.join(OUTPUT_DIR, iteration_file_name)
+    # Preserve directory structure in output
+    relative_dir = os.path.dirname(relative_path)
+    output_subdir = os.path.join(OUTPUT_DIR, relative_dir) if relative_dir else OUTPUT_DIR
+    os.makedirs(output_subdir, exist_ok=True)
+    
+    iteration_path = os.path.join(output_subdir, iteration_file_name)
     with open(iteration_path, "w") as f:
         f.write(code)
     print(f"    💾 Saved {phase} code to: {iteration_file_name}")
@@ -378,6 +455,31 @@ def detect_compilation_errors(output):
     ]
     
     return any(indicator in output.lower() for indicator in compilation_error_indicators)
+
+def check_verus_availability():
+    """Check if Verus is available at the specified path."""
+    try:
+        # Check if the Verus executable exists
+        if not os.path.isfile(VERUS_PATH):
+            return False, f"Verus executable not found at: {VERUS_PATH}"
+        
+        # Check if the file is executable
+        if not os.access(VERUS_PATH, os.X_OK):
+            return False, f"Verus executable is not executable: {VERUS_PATH}"
+        
+        # Try to run Verus with --help to verify it works
+        result = subprocess.run([VERUS_PATH, "--help"], 
+                              capture_output=True, text=True, timeout=10)
+        
+        if result.returncode != 0:
+            return False, f"Verus executable failed to run: {result.stderr}"
+        
+        return True, "Verus is available and working"
+        
+    except subprocess.TimeoutExpired:
+        return False, "Verus executable timed out when checking availability"
+    except Exception as e:
+        return False, f"Error checking Verus availability: {str(e)}"
 
 def verify_verus_file(file_path):
     """Verify a Verus file and return the result."""
@@ -416,10 +518,12 @@ def process_spec_file(file_path):
         with open(file_path, "r") as f:
             original_code = f.read()
 
-        base_file_name = os.path.basename(file_path).replace(".rs", "")
+        # Calculate relative path from input directory to preserve hierarchy
+        relative_path = os.path.relpath(file_path, VERUS_FILES_DIR)
+        base_file_name = os.path.splitext(os.path.basename(file_path))[0]
 
         # Save original code
-        save_iteration_code(base_file_name, 0, original_code, "original")
+        save_iteration_code(relative_path, 0, original_code, "original")
 
         # Check if original file has compilation errors
         print("  Checking original file for compilation errors...")
@@ -444,10 +548,14 @@ def process_spec_file(file_path):
             generated_code = restore_atom_blocks(original_code, generated_code)
 
         # Save initial generated code
-        save_iteration_code(base_file_name, 1, generated_code, "generated")
+        save_iteration_code(relative_path, 1, generated_code, "generated")
 
-        # Create output file path
-        output_path = os.path.join(OUTPUT_DIR, f"{base_file_name}_impl.rs")
+        # Create output file path preserving directory structure
+        relative_dir = os.path.dirname(relative_path)
+        output_subdir = os.path.join(OUTPUT_DIR, relative_dir) if relative_dir else OUTPUT_DIR
+        os.makedirs(output_subdir, exist_ok=True)
+        
+        output_path = os.path.join(output_subdir, f"{base_file_name}_impl.rs")
         with open(output_path, "w") as f:
             f.write(generated_code)
 
@@ -464,7 +572,7 @@ def process_spec_file(file_path):
                 f.write(current_code)
 
             # Save current working version for this iteration
-            save_iteration_code(base_file_name, iteration, current_code, "current")
+            save_iteration_code(relative_path, iteration, current_code, "current")
 
             # Verify
             verification = verify_verus_file(output_path)
@@ -509,7 +617,7 @@ def process_spec_file(file_path):
             print(f"  ✓ Successfully generated and verified: {os.path.basename(output_path)}")
             return {
                 "success": True,
-                "file": os.path.basename(file_path),
+                "file": relative_path,
                 "output": output_path,
                 "error": None,
                 "has_bypass": False
@@ -519,7 +627,7 @@ def process_spec_file(file_path):
             print(f"  ✗ Failed to verify after {MAX_ITERATIONS} iterations: {error_msg[:200]}...")
             return {
                 "success": False,
-                "file": os.path.basename(file_path),
+                "file": relative_path,
                 "output": output_path,
                 "error": error_msg,
                 "has_bypass": False
@@ -529,7 +637,7 @@ def process_spec_file(file_path):
         print(f"✗ Failed: {os.path.basename(file_path)} - {str(e)}")
         return {
             "success": False,
-            "file": os.path.basename(file_path),
+            "file": relative_path if 'relative_path' in locals() else os.path.basename(file_path),
             "error": str(e),
             "output": None,
             "has_bypass": False
@@ -677,11 +785,12 @@ def generate_csv_results(results):
         writer.writerow(['spec_name', 'spec_to_code', 'spec_link', 'impl_link'])
         # Write results
         for result in results:
-            spec_name = result["file"].replace(".rs", "")
+            spec_name = os.path.splitext(result["file"])[0]  # Remove .rs extension and preserve path
             spec_to_code = "SUCCESS" if result["success"] else "FAILED"
             
-            # Generate spec link
-            spec_rel_path = os.path.relpath(os.path.join(VERUS_FILES_DIR, result["file"]), repo_root)
+            # Generate spec link - result["file"] now contains relative path from VERUS_FILES_DIR
+            spec_full_path = os.path.join(VERUS_FILES_DIR, result["file"])
+            spec_rel_path = os.path.relpath(spec_full_path, repo_root)
             spec_link = get_github_url(spec_rel_path, repo_url, branch) if repo_url else ""
             
             # Generate impl link
@@ -792,6 +901,19 @@ def main():
         print("Error: ANTHROPIC_API_KEY environment variable is required")
         print('Please set it with: export ANTHROPIC_API_KEY="your-api-key"')
         sys.exit(1)
+    
+    # Check if Verus is available before proceeding
+    print("Checking Verus availability...")
+    verus_available, verus_message = check_verus_availability()
+    if not verus_available:
+        print(f"Error: {verus_message}")
+        print("Please ensure Verus is installed and the VERUS_PATH environment variable is set correctly.")
+        print(f"Current VERUS_PATH: {VERUS_PATH}")
+        print("You can set it with: export VERUS_PATH=/path/to/verus")
+        sys.exit(1)
+    
+    print(f"✓ {verus_message}")
+    print("")
     
     # Find all Verus files
     verus_files = find_verus_files(VERUS_FILES_DIR)
