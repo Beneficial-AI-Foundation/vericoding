@@ -30,7 +30,7 @@ lean_lib Vericoding where
 
 @[default_target]
 lean_lib Benchmarks where
-  globs := #[.andSubmodules `Benchmarks.lean]
+  globs := #[.submodules `benchmarks]
   srcDir := "lean-vc"
 
 @[default_target]
