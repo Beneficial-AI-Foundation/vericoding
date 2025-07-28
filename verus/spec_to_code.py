@@ -100,6 +100,8 @@ Examples:
   python spec_to_code.py ./benchmarks/verus_specs --iterations 3
   python spec_to_code.py ./test --debug --iterations 5
   python spec_to_code.py ./specs --iterations 10 --debug
+  python spec_to_code.py ./specs --workers 8 --iterations 3
+  python spec_to_code.py ./specs --workers 2 --debug --strict-specs
         """
     )
     
@@ -219,11 +221,13 @@ def setup_configuration(args=None):
     MAX_ITERATIONS = args.iterations
     DEBUG_MODE = args.debug
     STRICT_SPEC_VERIFICATION = args.strict_specs
+    MAX_WORKERS = args.workers
 
     print("\nConfiguration:")
     print(f"- Directory: {VERUS_FILES_DIR}")
     print(f"- Output directory: {OUTPUT_DIR}")
     print(f"- Max iterations: {MAX_ITERATIONS}")
+    print(f"- Parallel workers: {MAX_WORKERS}")
     print(f"- Verus path: {VERUS_PATH}")
     print(f"- Debug mode: {'Enabled' if DEBUG_MODE else 'Disabled'}")
     print("- Enhanced prompting: Uses hints in method bodies for better code generation")
@@ -246,9 +250,17 @@ def find_verus_files(directory):
         print(f"Error reading directory {directory}: {e}")
         return []
 
+def thread_safe_print(*args, **kwargs):
+    """Thread-safe print function."""
+    with print_lock:
+        print(*args, **kwargs)
+
 def call_claude_api(prompt):
     if not ANTHROPIC_API_KEY:
         raise ValueError("ANTHROPIC_API_KEY environment variable is required")
+
+    # Add rate limiting delay to avoid overwhelming the API
+    time.sleep(API_RATE_LIMIT_DELAY)
 
     url = "https://api.anthropic.com/v1/messages"
     headers = {
@@ -422,12 +434,15 @@ def save_iteration_code(relative_path, iteration, code, phase):
     # Preserve directory structure in output
     relative_dir = os.path.dirname(relative_path)
     output_subdir = os.path.join(OUTPUT_DIR, relative_dir) if relative_dir else OUTPUT_DIR
-    os.makedirs(output_subdir, exist_ok=True)
     
-    iteration_path = os.path.join(output_subdir, iteration_file_name)
-    with open(iteration_path, "w") as f:
-        f.write(code)
-    print(f"    💾 Saved {phase} code to: {iteration_file_name}")
+    # Thread-safe directory creation and file writing
+    with file_write_lock:
+        os.makedirs(output_subdir, exist_ok=True)
+        iteration_path = os.path.join(output_subdir, iteration_file_name)
+        with open(iteration_path, "w") as f:
+            f.write(code)
+    
+    thread_safe_print(f"    💾 Saved {phase} code to: {iteration_file_name}")
 
 def detect_compilation_errors(output):
     """Detect if the output contains compilation errors."""
@@ -512,7 +527,7 @@ def verify_verus_file(file_path):
 def process_spec_file(file_path):
     """Process a single specification file."""
     try:
-        print(f"Processing: {os.path.basename(file_path)}")
+        thread_safe_print(f"Processing: {os.path.basename(file_path)}")
 
         # Read the original file
         with open(file_path, "r") as f:
@@ -526,15 +541,15 @@ def process_spec_file(file_path):
         save_iteration_code(relative_path, 0, original_code, "original")
 
         # Check if original file has compilation errors
-        print("  Checking original file for compilation errors...")
+        thread_safe_print("  Checking original file for compilation errors...")
         original_verification = verify_verus_file(file_path)
         
         if not original_verification["success"]:
-            print(f"  ⚠️  Original file has issues: {original_verification['error']}")
-            print(f"  Will attempt to fix during processing...")
+            thread_safe_print(f"  ⚠️  Original file has issues: {original_verification['error']}")
+            thread_safe_print(f"  Will attempt to fix during processing...")
 
         # Step 1: Generate code from specifications (preserving spec fn and implementing proof fn)
-        print("  Step 1: Generating code from specifications...")
+        thread_safe_print("  Step 1: Generating code from specifications...")
         generate_prompt = prompt_loader.format_prompt(
             "generate_code",
             code=original_code
@@ -544,7 +559,7 @@ def process_spec_file(file_path):
 
         # Verify that all spec fn declarations are preserved
         if STRICT_SPEC_VERIFICATION and not verify_atom_blocks(original_code, generated_code):
-            print("  ⚠️  Warning: Spec functions were modified. Restoring original spec functions...")
+            thread_safe_print("  ⚠️  Warning: Spec functions were modified. Restoring original spec functions...")
             generated_code = restore_atom_blocks(original_code, generated_code)
 
         # Save initial generated code
@@ -553,7 +568,10 @@ def process_spec_file(file_path):
         # Create output file path preserving directory structure
         relative_dir = os.path.dirname(relative_path)
         output_subdir = os.path.join(OUTPUT_DIR, relative_dir) if relative_dir else OUTPUT_DIR
-        os.makedirs(output_subdir, exist_ok=True)
+        
+        # Thread-safe directory creation
+        with file_write_lock:
+            os.makedirs(output_subdir, exist_ok=True)
         
         output_path = os.path.join(output_subdir, f"{base_file_name}_impl.rs")
         with open(output_path, "w") as f:
@@ -565,7 +583,7 @@ def process_spec_file(file_path):
         last_verification = None
 
         for iteration in range(1, MAX_ITERATIONS + 1):
-            print(f"  Iteration {iteration}/{MAX_ITERATIONS}: Verifying...")
+            thread_safe_print(f"  Iteration {iteration}/{MAX_ITERATIONS}: Verifying...")
 
             # Write current code to file
             with open(output_path, "w") as f:
@@ -579,18 +597,18 @@ def process_spec_file(file_path):
             last_verification = verification
 
             if verification["success"]:
-                print(f"    ✓ Verification successful!")
+                thread_safe_print(f"    ✓ Verification successful!")
                 success = True
                 break
             else:
-                print(f"    ✗ Verification failed: {verification['error'][:200]}...")
+                thread_safe_print(f"    ✗ Verification failed: {verification['error'][:200]}...")
 
             # Try to fix issues (both compilation and verification errors)
             error_details = verification["error"] or "Unknown error"
 
             # Only attempt fix if not on last iteration
             if iteration < MAX_ITERATIONS:
-                print(f"    Attempting to fix errors...")
+                thread_safe_print(f"    Attempting to fix errors...")
                 fix_prompt = prompt_loader.format_prompt(
                     "fix_verification",
                     code=current_code,
@@ -604,17 +622,17 @@ def process_spec_file(file_path):
                     
                     # Verify that all spec fn declarations are still preserved
                     if STRICT_SPEC_VERIFICATION and not verify_atom_blocks(original_code, fixed_code):
-                        print("    ⚠️  Warning: Spec functions were modified during fix. Restoring original spec functions...")
+                        thread_safe_print("    ⚠️  Warning: Spec functions were modified during fix. Restoring original spec functions...")
                         fixed_code = restore_atom_blocks(original_code, fixed_code)
                     
                     current_code = fixed_code
-                    print(f"    Generated fix for iteration {iteration}")
+                    thread_safe_print(f"    Generated fix for iteration {iteration}")
                 except Exception as e:
-                    print(f"    ✗ Failed to generate fix: {str(e)}")
+                    thread_safe_print(f"    ✗ Failed to generate fix: {str(e)}")
                     break
 
         if success:
-            print(f"  ✓ Successfully generated and verified: {os.path.basename(output_path)}")
+            thread_safe_print(f"  ✓ Successfully generated and verified: {os.path.basename(output_path)}")
             return {
                 "success": True,
                 "file": relative_path,
@@ -624,7 +642,7 @@ def process_spec_file(file_path):
             }
         else:
             error_msg = last_verification["error"] if last_verification else "Unknown verification error"
-            print(f"  ✗ Failed to verify after {MAX_ITERATIONS} iterations: {error_msg[:200]}...")
+            thread_safe_print(f"  ✗ Failed to verify after {MAX_ITERATIONS} iterations: {error_msg[:200]}...")
             return {
                 "success": False,
                 "file": relative_path,
@@ -634,7 +652,7 @@ def process_spec_file(file_path):
             }
 
     except Exception as e:
-        print(f"✗ Failed: {os.path.basename(file_path)} - {str(e)}")
+        thread_safe_print(f"✗ Failed: {os.path.basename(file_path)} - {str(e)}")
         return {
             "success": False,
             "file": relative_path if 'relative_path' in locals() else os.path.basename(file_path),
@@ -657,7 +675,7 @@ def verify_atom_blocks(original_code, generated_code):
         
         # Check if the normalized content is present
         if normalized_spec not in normalized_generated:
-            print(f"    ⚠️  Spec function missing or modified: {spec_content[:100]}...")
+            thread_safe_print(f"    ⚠️  Spec function missing or modified: {spec_content[:100]}...")
             return False
     
     return True
@@ -811,11 +829,12 @@ def generate_summary(results):
     failed = [r for r in results if not r["success"]]
 
     summary_lines = [
-        "=== VERUS SPECIFICATION-TO-CODE PROCESSING SUMMARY (DEBUG VERSION) ===",
+        "=== VERUS SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===",
         "",
         f"Test directory: {VERUS_FILES_DIR}",
         f"Output directory: {OUTPUT_DIR}",
         f"Max iterations: {MAX_ITERATIONS}",
+        f"Parallel workers: {MAX_WORKERS}",
         f"Test date: {datetime.now().isoformat()}",
         "",
         f"Total original files: {len(results)}",
@@ -842,7 +861,9 @@ def generate_summary(results):
 
     summary_lines.extend([
         "",
-        "=== DEBUG FEATURES ===",
+        "=== PARALLEL PROCESSING FEATURES ===",
+        f"Parallel workers: {MAX_WORKERS}",
+        f"API rate limiting: {API_RATE_LIMIT_DELAY}s between calls",
         f"Debug mode: {'Enabled' if DEBUG_MODE else 'Disabled'}",
     ])
     
@@ -875,6 +896,48 @@ def generate_summary(results):
     
     return summary
 
+def process_files_parallel(verus_files):
+    """Process files in parallel using ThreadPoolExecutor."""
+    results = []
+    completed_count = 0
+    total_files = len(verus_files)
+    
+    print(f"Processing {total_files} files using {MAX_WORKERS} parallel workers...")
+    print("")
+    
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        # Submit all tasks
+        future_to_file = {executor.submit(process_spec_file, file_path): file_path 
+                         for file_path in verus_files}
+        
+        # Process completed tasks as they finish
+        for future in as_completed(future_to_file):
+            file_path = future_to_file[future]
+            completed_count += 1
+            
+            try:
+                result = future.result()
+                results.append(result)
+                
+                # Print progress update
+                status = "✓" if result["success"] else "✗"
+                thread_safe_print(f"[{completed_count}/{total_files}] {status} {os.path.basename(file_path)}")
+                
+            except Exception as e:
+                # Handle unexpected exceptions
+                relative_path = os.path.relpath(file_path, VERUS_FILES_DIR)
+                error_result = {
+                    "success": False,
+                    "file": relative_path,
+                    "error": f"Unexpected error: {str(e)}",
+                    "output": None,
+                    "has_bypass": False
+                }
+                results.append(error_result)
+                thread_safe_print(f"[{completed_count}/{total_files}] ✗ {os.path.basename(file_path)} - Unexpected error: {str(e)}")
+    
+    return results
+
 def main():
     # Parse command-line arguments first
     args = parse_arguments()
@@ -882,11 +945,12 @@ def main():
     # Set up configuration before printing status
     setup_configuration(args)
     
-    print("Starting specification-to-code processing of Verus files (DEBUG VERSION)...")
+    print("Starting specification-to-code processing of Verus files (PARALLEL VERSION)...")
     print(f"Directory: {VERUS_FILES_DIR}")
     print(f"Output directory: {OUTPUT_DIR}")
     print(f"Verus path: {VERUS_PATH}")
     print(f"Max iterations: {MAX_ITERATIONS}")
+    print(f"Parallel workers: {MAX_WORKERS}")
     print(f"Debug mode: {'Enabled' if DEBUG_MODE else 'Disabled'}")
     print(f"- Spec fn preservation: {'Strict' if STRICT_SPEC_VERIFICATION else 'Relaxed (default)'}")
     print("Processing each file by generating code from specifications.")
@@ -924,15 +988,11 @@ def main():
         print("No Verus files found. Exiting.")
         return
 
-    # Process each file
-    results = []
-
-    for file_path in verus_files:
-        result = process_spec_file(file_path)
-        results.append(result)
-
-        # Small delay between files to avoid rate limiting
-        time.sleep(2)
+    # Process files in parallel
+    start_time = time.time()
+    results = process_files_parallel(verus_files)
+    end_time = time.time()
+    processing_time = end_time - start_time
 
     # Generate summary
     print("")
@@ -945,6 +1005,8 @@ def main():
     print("")
     print(f"Summary saved to: {SUMMARY_FILE}")
     print(f"All generated files saved to: {OUTPUT_DIR}")
+    print(f"Total processing time: {processing_time:.2f} seconds")
+    print(f"Average time per file: {processing_time/len(results):.2f} seconds")
     if DEBUG_MODE:
         print("DEBUG: Files saved: original, generated, current per iteration, and final implementation")
     else:
@@ -952,6 +1014,11 @@ def main():
 
     # Generate CSV results
     csv_file = generate_csv_results(results)
+
+    # Print final statistics
+    successful = [r for r in results if r["success"]]
+    print(f"\n🎉 Processing completed: {len(successful)}/{len(results)} files successful ({len(successful)/len(results)*100:.1f}%)")
+    print(f"⚡ Parallel processing with {MAX_WORKERS} workers completed in {processing_time:.2f}s")
 
 if __name__ == "__main__":
     main()
