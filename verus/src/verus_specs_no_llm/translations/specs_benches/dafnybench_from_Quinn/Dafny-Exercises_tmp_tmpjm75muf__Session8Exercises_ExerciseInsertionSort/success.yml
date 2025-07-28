@@ -1,0 +1,14 @@
+num_iterations: 12
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmp2zkfu_9_.rs:18:9\n   |\n18 |         while i < a.len()\n\
+  \   |         ^^^^^^^^^^^^^^^^^\n\nerror: invariant not satisfied at end of loop\
+  \ body\n  --> /tmp/tmp2zkfu_9_.rs:20:22\n   |\n20 |                 0 <= i <= a.len(),\n\
+  \   |                      ^\n\nerror: invariant not satisfied at end of loop body\n\
+  \  --> /tmp/tmp2zkfu_9_.rs:22:17\n   |\n22 |                 i > 0 ==> sorted_seg(a@,\
+  \ 0, i as int - 1),\n   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: aborting due to 2 previous errors\n\n"
+verification_output: 'verification results:: 2 verified, 1 errors
+
+  '

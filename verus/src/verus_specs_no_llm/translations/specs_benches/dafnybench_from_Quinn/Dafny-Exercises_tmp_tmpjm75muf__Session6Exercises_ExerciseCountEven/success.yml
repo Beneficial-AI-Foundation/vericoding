@@ -1,0 +1,18 @@
+num_iterations: 12
+success: false
+verification_error: "error: postcondition not satisfied\n  --> /tmp/tmpm1_46b43.rs:40:17\n\
+  \   |\n39 |     proof fn CountEvenEquiv(s: Seq<u32>)\n   |           ------------------------------\
+  \ at the end of the function body\n40 |         ensures CountEven(s) == CountEvenPrefix(s,\
+  \ s.len() as int)\n   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n\nnote: while loop: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmpm1_46b43.rs:59:9\n   |\n59 |         while i <\
+  \ v.len()\n   |         ^^^^^^^^^^^^^^^^^\n\nerror: invariant not satisfied at end\
+  \ of loop body\n  --> /tmp/tmpm1_46b43.rs:62:17\n   |\n62 |                 n as\
+  \ int == CountEvenPrefix(v@, i as int),\n   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmpm1_46b43.rs:67:21\n\
+  \   |\n67 |                 n = n + 1;\n   |                     ^^^^^\n\nerror:\
+  \ aborting due to 3 previous errors\n\n"
+verification_output: 'verification results:: 3 verified, 2 errors
+
+  '

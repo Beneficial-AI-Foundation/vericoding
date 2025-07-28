@@ -1,0 +1,1 @@
+result[i] := result[min_idx];
