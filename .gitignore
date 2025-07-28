@@ -1,22 +1,26 @@
-/.lake
-=======
-# MCP configuration
-.mcp-tools/
-
-# JJ version control
-.jj/
-
 # Python
 __pycache__/
-*.pyc
-.pytest_cache/
-.uv/
+*.py[cod]
 .venv/
-
-# Build artifacts
-build/
 dist/
 *.egg-info/
+
+# UV
+uv.lock
+
+# WANDB
+wandb/
+.wandb/
+
+# Lean
+.lake/
+build/
+lake-manifest.json
+
+# Experiment outputs
+experiment_results/
+lean_output_*/
+*_impl.lean
 
 # IDE
 .vscode/

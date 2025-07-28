@@ -1,8 +1,93 @@
-# NumpySpec Project Overview
+# VeriCoding Project Overview
 
-You are a functional programmer working in Lean 4.
+**Project Context**: This is a verification-focused coding project with Lean 4 experiments.
 
-**Main Goal**: Port numpy functionality to Lean 4 with AI, using bootstrapping from feedback like compiler error messages. Formal verification is used as a way to gain signal for bootstrapping.
+## Key Features
+
+1. **Lean 4 Development Environment**: Ready for formal verification experiments
+2. **MCP Integration**: Full lean-lsp-mcp tooling configured for interactive development
+3. **Real-time Feedback**: Diagnostic tools, proof state inspection, and search capabilities
+4. **LeanExplore**: Access to mathematical theorem databases and dependency exploration
+
+## Lean-LSP-MCP Integration
+
+The project is configured with Model Context Protocol (MCP) tools for enhanced Lean development. The `.mcp.json` file configures:
+
+### MCP Servers Available
+
+1. **lean-lsp-mcp**: Provides Lean language server protocol integration
+   - Command: `uvx lean-lsp-mcp`
+   - Offers real-time feedback on Lean code through various diagnostic tools
+
+2. **leanexplore**: Search and exploration tool for Lean mathematics
+   - Command: `uvx --from lean-explore leanexplore mcp serve --backend local`
+   - Enables searching through Lean statement groups and dependencies
+
+3. **LeanTool**: Additional Lean tooling
+   - Located in `.mcp-tools/LeanTool`
+   - Run via Poetry
+
+4. **browsermcp**: Browser automation support
+   - Command: `npx @browsermcp/mcp@latest`
+
+### Lean LSP-MCP Tool Usage
+
+The lean-lsp-mcp tools provide real-time feedback on your Lean code:
+
+#### 1. `lean_diagnostic_messages`
+Get all diagnostic messages (errors, warnings, infos) for a Lean file.
+
+```text
+Example output:
+l20c42-l20c46, severity: 1
+simp made no progress
+
+l21c11-l21c45, severity: 1
+function expected at h_empty term has type T ∩ compl T = ∅
+```
+
+#### 2. `lean_goal`
+Get the proof goals (proof state) at a specific location in a Lean file. Main tool to understand proof state evolution!
+
+```text
+Example output:
+Before:
+S : Type u_1
+inst✝¹ : Fintype S
+inst✝ : Nonempty S
+P : Finset (Set S)
+hPP : ∀ T ∈ P, ∀ U ∈ P, T ∩ U ≠ ∅
+⊢ P.card = 2 ^ (Fintype.card S - 1)
+After:
+no goals
+```
+
+#### 3. `lean_term_goal`
+Get the expected type (term goal) at a specific location.
+
+#### 4. `lean_hover_info`
+Get hover information (documentation) for symbols at a specific location.
+
+#### 5. `lean_completions`
+Code auto-completion for available identifiers or imports.
+
+#### 6. `lean_multi_attempt`
+Try multiple Lean code snippets at a line and return goal state and diagnostics for each.
+
+#### 7. `lean_declaration_file`
+Get file contents where a symbol is declared.
+
+#### 8. Search Tools:
+- `lean_leansearch`: Natural language and Lean term search (limit: 3req/30s)
+- `lean_loogle`: Search by constant, lemma name, type shape, or conclusion (limit: 3req/30s)
+- `lean_state_search`: Search theorems based on proof state (limit: 3req/30s)
+- `lean_hammer_premise`: Search premises using Lean Hammer (limit: 3req/30s)
+
+### LeanExplore MCP Tools
+
+- `mcp__leanexplore__search`: Search Lean statement groups by query
+- `mcp__leanexplore__get_by_id`: Retrieve statement groups by ID
+- `mcp__leanexplore__get_dependencies`: Get direct dependencies for statement groups
 
 ## General Programming Philosophy
 
@@ -16,148 +101,41 @@ Favor statically typed functional programming but use mutability where it makes 
 
 ## Project Structure
 
-- `NumpySpec.lean` and `NumpySpec/` directory - core numpy functionality.
-- `FuncTracker.lean` and `FuncTracker/` directory - ASCII table parsing for presenting development progress to boss.
-- `lakefile.lean` - Lean 4 project configuration.
+- `.mcp.json` - MCP server configuration for Lean development tools
+- `CLAUDE.md` - This file, containing project instructions and Lean development guidelines
+- Additional Lean files and experiments to be created as needed
 
 ## Development Commands
 
-**`just` is our main program runner.** It provides a unified interface for all common development tasks. Run `just` without arguments to see all available commands.
-
-Key commands:
-- `just build` - Build Lean project
-- `just test` - Run the Python test suite  
-- `just bootstrap` - Bootstrap developer environment (Rust, Elan, UV)
-
-You can also run underlying tools directly:
+For Lean development, the key command is:
 - `lake build` - Build Lean project (use frequently for constant feedback)
-- `uv run -m pytest` - Run Python tests directly
 
-Use `uvx lean-lsp-mcp` to get feedback on your code. Usage:
+The lean-lsp-mcp tools are already configured in `.mcp.json` and available through the MCP interface.
 
-- `lean_diagnostic_messages`: Get all diagnostic messages for a Lean file. This includes infos, warnings and errors.
 
-```text
-Example output
-l20c42-l20c46, severity: 1
-simp made no progress
-
-l21c11-l21c45, severity: 1
-function expected at h_empty term has type T ∩ compl T = ∅
-```
-
-- `lean_goal`: Get the proof goal at a specific location (line or line & column) in a Lean file.
-
-Example output (line):
-
-```text
-Before:
-S : Type u_1
-inst✝¹ : Fintype S
-inst✝ : Nonempty S
-P : Finset (Set S)
-hPP : ∀ T ∈ P, ∀ U ∈ P, T ∩ U ≠ ∅
-hPS : ¬∃ T ∉ P, ∀ U ∈ P, T ∩ U ≠ ∅
-compl : Set S → Set S := fun T ↦ univ \ T
-hcompl : ∀ T ∈ P, compl T ∉ P
-all_subsets : Finset (Set S) := Finset.univ
-h_comp_in_P : ∀ T ∉ P, compl T ∈ P
-h_partition : ∀ (T : Set S), T ∈ P ∨ compl T ∈ P
-⊢ P.card = 2 ^ (Fintype.card S - 1)
-After:
-no goals
-```
-
-- `lean_term_goal`: Get the term goal at a specific position (line & column) in a Lean file.
-
-- `lean_hover_info`: Retrieve hover information (documentation) for symbols, terms, and expressions in a Lean file (at a specific line & column).
-
-Example output (hover info on a `sorry`):
-
-```text
-The `sorry` tactic is a temporary placeholder for an incomplete tactic proof,
-closing the main goal using `exact sorry`.
-
-This is intended for stubbing-out incomplete parts of a proof while still having a syntactically correct proof skeleton.
-Lean will give a warning whenever a proof uses sorry, so you aren't likely to miss it,
-but you can double check if a theorem depends on sorry by looking for sorryAx in the output
-of the #print axioms my_thm command, the axiom used by the implementation of sorry.
-```
-
-- `lean_declaration_file`: Get the file contents where a symbol or term is declared. Use this to find the definition of a symbol.
-
-- `lean_completions`: Code auto-completion: Find available identifiers or import suggestions at a specific position (line & column) in a Lean file. Use this to fill in program fragments.
-
-- `lean_multi_attempt`:  Attempt multiple lean code snippets on a line and return goal state and diagnostics for each snippet. This tool is useful to screen different attempts before using the most promising one.
-
-```text
-Example output (attempting `rw [Nat.pow_sub (Fintype.card_pos_of_nonempty S)]` and `by_contra h_neq`)
-rw [Nat.pow_sub (Fintype.card_pos_of_nonempty S)]:
-S : Type u_1
-inst✝¹ : Fintype S
-inst✝ : Nonempty S
-P : Finset (Set S)
-hPP : ∀ T ∈ P, ∀ U ∈ P, T ∩ U ≠ ∅
-hPS : ¬∃ T ∉ P, ∀ U ∈ P, T ∩ U ≠ ∅
-⊢ P.card = 2 ^ (Fintype.card S - 1)
-
-l14c7-l14c51, severity: 1
-unknown constant 'Nat.pow_sub'
-
-by_contra h_neq:
-S : Type u_1
-inst✝¹ : Fintype S
-inst✝ : Nonempty S
-P : Finset (Set S)
-hPP : ∀ T ∈ P, ∀ U ∈ P, T ∩ U ≠ ∅
-hPS : ¬∃ T ∉ P, ∀ U ∈ P, T ∩ U ≠ ∅
-h_neq : ¬P.card = 2 ^ (Fintype.card S - 1)
-⊢ False
-```
-
-### Building and Testing
+## Building and Testing
 
 ```bash
-# Build using just (recommended)
-just build        # Build Lean project
-just test         # Run Python tests
+# Build Lean project
+lake build
 
-# Or use direct commands:
-lake build        # Local Lean build (primary workflow)
-uv run -m pytest -q  # Run tests directly
-
-# Check Lean syntax and types
+# Build with verbose output for debugging
 lake build --verbose
+
+# Clean build artifacts if needed
+lake clean
 ```
 
-## Numpy Port Roadmap
+## Lean 4 Project Focus
 
-### 1. Matrix Types and Core Operations
+This project is set up for Lean 4 verification experiments. The MCP tools provide:
 
-- **Dense matrices** (`Matrix (rows cols : Nat) α`): flat `Vec` under the hood, like Numpy's buffer concept. Possibly a `Bitvec w` for a later, lower-level stage.
+1. **Real-time feedback** through lean-lsp-mcp diagnostic tools
+2. **Proof state exploration** for understanding verification goals
+3. **Search capabilities** for finding relevant theorems and lemmas
+4. **Code completion** and documentation lookup
 
-### 2. Numpy-Compatible API Design
-
-- Indexing & shape/reshape.
-- Operator overloading: `*`, `+`, `-`, `.*`, `./` with standard Lean typeclass instances (`Mul`, `Add`, …).
-- Convenience methods: `.T` for transpose, `.dot` for inner products, broadcasting helpers later.
-
-### 4. Next Steps
-
-1. **Core types**: implement `NDarray` (TODO we have to work out if shape/stride are to be at compile time)
-2. **Extract specs from NumPy docs**: NumPy gives existing implementations and docs. These have implicit specs (like addition should be commutative) that we can extract.
-   - [ ] make `lean_lib` in `lakefile.lean` for HTML -> openai api -> lean code (metaprogramming).
-3. **Property test probe**: Use <https://github.com/leanprover-community/plausible> to test properties of the spec in a cheap way, a sort of Pareto frontier point in between unit tests and formal proofs. Write code with an eye towards generalizing to future use.
-   - [ ] make `lean_lib` in `lakefile.lean` for property tests
-
-4. **API layer**: add `NumpySpec.NumpyCompat` exporting constructors, notation, and overloaded ops to match actual NumPy API where possible.
-2. **Benchmark & test**: small-scale benchmarks (`#eval`, `timeIt`) and `pytest` examples in Python. *Pay particular attention to batched operations*.
-
-- [ ] investigate `lake bench`
-
-1. **Docs & examples**: <https://github.com/leanprover/verso> is the (meta)-doc tool. It is very extensible. `FuncTracker` is (supposed to be) a verso extension.
-   - [ ] add any accumulated verso extensions to `VersoExt`
-     - [ ] update `lakefile.lean` to include `VersoExt`
+Create Lean files as needed for your verification experiments and use the MCP tools for interactive development.
 
 ## Lean 4 Development Guidelines
 
@@ -213,28 +191,6 @@ lake build --verbose
 - Category theory wiring diagram style for complex systems
 - Apply the scientific method for debugging
 
-## Numpy Porting Progress
-
-### Current Status
-
-- ✓ **NDArray Implementation**: NumPy-compatible n-dimensional arrays in `NDArray/`
-- ✓ **Gaussian Elimination Foundation**: Basic linear algebra structure in `NumpySpec.lean`
-- ✓ **Build System**: Lake configuration for Lean 4 mathematics
-
-### Next Priorities for Numpy Porting
-
-1. **Matrix Types**: Define matrix structures compatible with numpy's ndarray
-2. **Linear Algebra Operations**: Implement core operations (dot product, matrix multiplication, etc.)
-3. **Broadcasting**: Implement numpy-style broadcasting semantics
-4. **Numerical Stability**: Add error analysis and numerical stability theorems
-5. **API Compatibility**: Create numpy-compatible function signatures
-
-### Design Principles
-
-- **Correctness First**: Every operation should have formal verification
-- **Performance Later**: Focus on mathematical correctness before optimization
-- **Compositionality**: Build complex operations from verified primitives
-- **Type Safety**: Use Lean's type system to prevent numerical errors
 
 ## Important Lean Documentation Resources
 
@@ -248,11 +204,6 @@ When working with Lean 4, consult these authoritative sources:
 
 ## Development Tools and Workflow
 
-### Task Delegation
-
-- Use `codex` for delegating tasks to sub-agents: `codex -q --project-doc CLAUDE.md -a full-auto "<task>"`
-- Sub-agents can recursively invoke other sub-agents
-- Use `terminal-notifier` to get completion notifications
 
 ### Version Control
 
