@@ -35,11 +35,11 @@ lean_lib Benchmarks where
 
 @[default_target]
 lean_lib NumpyHoareTriple where
-  globs := #[.andSubmodules `Numpy_hoare_triple]
+  globs := #[.andSubmodules `NumpyHoareTriple]
   srcDir := "lean-vc"
 
 lean_lib BenchmarksGenerated where
-  globs := #[.andSubmodules `benchmarks_generated]
+  globs := #[.andSubmodules `BenchmarksGenerated]
   srcDir := "lean-vc"
 
 @[default_target]
