@@ -205,11 +205,14 @@ def setup_configuration(args):
     # Find the src directory or use current working directory as base
     current_path = input_path
     src_base = None
-    while current_path.parent != current_path:
+    MAX_DEPTH = 50  # Maximum depth to prevent excessive traversal
+    depth = 0
+    while current_path.parent != current_path and depth < MAX_DEPTH:
         if current_path.name == 'src':
             src_base = current_path
             break
         current_path = current_path.parent
+        depth += 1
     
     if src_base is None:
         # If no 'src' directory found, use the directory containing the input as base
