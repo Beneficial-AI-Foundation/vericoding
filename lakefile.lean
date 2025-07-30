@@ -30,12 +30,12 @@ lean_lib Vericoding where
 
 @[default_target]
 lean_lib Benchmarks where
-  globs := #[.andSubmodules `benchmarks, .one `Benchmarks]
+  globs := #[.andSubmodules `Benchmarks]
   srcDir := "lean-vc"
 
 @[default_target]
 lean_lib NumpyHoareTriple where
-  globs := #[.andSubmodules `numpy_hoare_triple]
+  globs := #[.andSubmodules `Numpy_hoare_triple]
   srcDir := "lean-vc"
 
 lean_lib BenchmarksGenerated where
