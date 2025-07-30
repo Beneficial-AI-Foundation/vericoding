@@ -158,7 +158,6 @@ Create Lean files as needed for your verification experiments and use the MCP to
   - [ ] use extensible error messages to suggest a fix for AI. Then remove this admonishment.
 - [ ] make a pre-push hook that runs lake build
 
-
 ## Python Development Guidelines
 
 - Always use `uv` for Python package management (not pip). Use `uv add` over `uv pip install`, `uv sync`, and `uv run` over `python`. If a tool requires further build integration, use hatch to do it in the `pyproject.toml`.
@@ -279,4 +278,7 @@ auto-update-stale = true    # Auto-update stale working copies when switching co
 - [Ignoring warnings](https://github.com/nielsvoss/lean-pitfalls#ignoring-warnings)
 - [Ambiguous unicode characters](https://github.com/nielsvoss/lean-pitfalls#ambiguous-unicode-characters)
 
+## misc lean tips
 
+- `#v[..]` is the literal syntax for a `Vector`
+- A good default tactic is `try?`
