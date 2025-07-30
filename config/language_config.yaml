@@ -95,7 +95,7 @@ verus:
   name: "Verus"
   file_extension: ".rs"
   tool_path_env: "VERUS_PATH"
-  default_tool_path: "~/Downloads/verus-0.2025.07.24.6fad598-x86-linux/verus-x86-linux/verus"
+  default_tool_path: "verus"
   prompts_file: "prompts.yaml"
   
   # Verification command patterns

@@ -292,9 +292,10 @@ def find_spec_files(directory):
                     # For Lean, check if file contains 'sorry'
                     if CURRENT_LANGUAGE == 'lean':
                         with open(file_path, 'r') as file:
-                            content = file.read()
-                            if 'sorry' in content:
-                                files.append(file_path)
+                            for line in file:
+                                if 'sorry' in line:
+                                    files.append(file_path)
+                                    break
                     else:
                         files.append(file_path)
         return files
@@ -558,7 +559,8 @@ def verify_file(file_path):
         # Try verification
         cmd = [part.format(tool_path=tool_path, file_path=file_path) 
                for part in LANGUAGE_CONFIG.verify_command]
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+        timeout_value = getattr(LANGUAGE_CONFIG, 'timeout', 120)  # Default to 120 seconds if not specified
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_value)
         full_output = result.stdout + result.stderr
         
         # Check for success indicators
