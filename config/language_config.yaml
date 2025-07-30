@@ -1,0 +1,163 @@
+# Language-specific configuration for spec_to_code.py
+# This file contains paths and settings for each supported language
+
+dafny:
+  name: "Dafny"
+  file_extension: ".dfy"
+  tool_path_env: "DAFNY_PATH"
+  default_tool_path: "dafny"
+  prompts_file: "prompts.yaml"
+  
+  # Verification command patterns
+  verify_command: ["{tool_path}", "/verify", "/compile:0", "{file_path}"]
+  compile_check_command: ["{tool_path}", "/noVerify", "/compile:0", "{file_path}"]
+  
+  # Success/failure indicators
+  success_indicators:
+    - "Dafny program verifier finished with"
+    - "0 errors"
+  
+  # Code extraction patterns
+  code_block_patterns:
+    - 'dafny'
+    - 'dfy'
+  
+  # Language-specific keywords for code detection
+  keywords:
+    - 'method '
+    - 'function '
+    - 'predicate '
+    - 'lemma '
+    - 'requires'
+    - 'ensures'
+    - 'invariant'
+    - 'decreases'
+    - 'ATOM('
+    - 'opaque'
+    - 'module '
+    - 'datatype '
+    - 'class '
+  
+  # Specification preservation patterns
+  spec_patterns:
+    - 'ATOM\([^)]+\)'  # ATOM blocks
+    - 'opaque\s+(?:function|predicate)[^{;]+(?:\{[^}]*\}|;)'  # opaque functions
+
+lean:
+  name: "Lean"
+  file_extension: ".lean"
+  tool_path_env: "LEAN_PATH"
+  default_tool_path: "lean"
+  prompts_file: "prompts-lean.yaml"
+  
+  # Verification command patterns
+  verify_command: ["{tool_path}", "{file_path}"]
+  compile_check_command: ["{tool_path}", "--only-export", "{file_path}"]
+  
+  # Success/failure indicators
+  success_indicators:
+    - "no errors"
+    - "Build completed successfully"
+  
+  # Code extraction patterns
+  code_block_patterns:
+    - 'lean'
+    - 'lean4'
+  
+  # Language-specific keywords for code detection
+  keywords:
+    - 'theorem '
+    - 'lemma '
+    - 'def '
+    - 'example '
+    - 'axiom '
+    - 'structure '
+    - 'inductive '
+    - 'class '
+    - 'instance '
+    - 'where'
+    - 'match'
+    - 'sorry'
+    - 'omit'
+    - 'admit'
+    - ':='
+    - '∀'
+    - '∃'
+    - '→'
+    - '↔'
+  
+  # Specification preservation patterns
+  spec_patterns:
+    - 'axiom\s+[^:]+:[^⊢]*'  # axioms
+    - 'opaque\s+def[^:]+:[^⊢]*'  # opaque definitions
+
+verus:
+  name: "Verus"
+  file_extension: ".rs"
+  tool_path_env: "VERUS_PATH"
+  default_tool_path: "~/Downloads/verus-0.2025.07.24.6fad598-x86-linux/verus-x86-linux/verus"
+  prompts_file: "prompts.yaml"
+  
+  # Verification command patterns
+  verify_command: ["{tool_path}", "{file_path}"]
+  compile_check_command: ["{tool_path}", "--no-verify", "{file_path}"]
+  
+  # Success/failure indicators
+  success_indicators:
+    - "verification results:"
+    - "0 errors"
+    - "verified: 0 errors"
+  
+  # Code extraction patterns
+  code_block_patterns:
+    - 'rust'
+    - 'verus'
+    - 'rs'
+  
+  # Language-specific keywords for code detection
+  keywords:
+    - 'use vstd::'
+    - 'use builtin'
+    - 'fn main()'
+    - 'verus!'
+    - 'fn '
+    - 'spec fn '
+    - 'proof fn '
+    - 'requires'
+    - 'ensures'
+    - 'invariant'
+    - 'decreases'
+    - 'proof '
+    - 'exec '
+    - 'closed spec fn'
+    - 'open spec fn'
+    - 'pub fn'
+    - 'pub spec fn'
+    - 'pub proof fn'
+  
+  # Specification preservation patterns
+  spec_patterns:
+    - 'spec fn [^{;]+(?:\{[^}]*\}|;)'  # spec functions
+
+# Common error patterns across all languages
+common_compilation_errors:
+  - "error:"
+  - "compilation error"
+  - "syntax error"
+  - "parse error"
+  - "type error"
+  - "cannot find"
+  - "unresolved"
+  - "undeclared"
+  - "undefined"
+  - "mismatched types"
+  - "expected"
+  - "found"
+  - "invalid"
+  - "unexpected token"
+  - "unexpected character"
+  - "missing"
+  - "duplicate"
+  - "already defined"
+  - "conflicting"
+  - "incompatible"
