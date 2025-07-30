@@ -23,10 +23,10 @@ This project contains formal specifications and verifications ported from variou
 particularly Dafny benchmarks and NumPy specifications.
 -/
 
--- @[default_target]
--- lean_lib Vericoding where
---   globs := #[.andSubmodules `Vericoding]
---   srcDir := "lean"
+@[default_target]
+lean_lib Vericoding where
+  globs := #[.andSubmodules `Vericoding]
+  srcDir := "lean"
 
 @[default_target]
 lean_lib Benchmarks where
