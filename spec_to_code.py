@@ -25,9 +25,9 @@ from urllib.parse import quote
 import requests
 import yaml
 
-# Thread safety
-print_lock = threading.Lock()
-file_write_lock = threading.Lock()
+# Module-level thread safety locks (need to be shared across all instances)
+_print_lock = threading.Lock()
+_file_write_lock = threading.Lock()
 
 
 # Configuration class to hold language-specific settings
@@ -127,35 +127,53 @@ def load_language_config() -> LanguageConfigResult:
             languages[lang] = LanguageConfig.from_dict(settings)
 
     return LanguageConfigResult(
-        languages=languages, common_compilation_errors=config.get("common_compilation_errors", [])
+        languages=languages,
+        common_compilation_errors=config.get("common_compilation_errors", []),
     )
 
 
-# Global variables
-LANGUAGES: dict[str, LanguageConfig]
-COMMON_COMPILATION_ERRORS: list[str]
-_config_result = load_language_config()
-LANGUAGES = _config_result.languages
-COMMON_COMPILATION_ERRORS = _config_result.common_compilation_errors
-CURRENT_LANGUAGE: str | None = None
-LANGUAGE_CONFIG: LanguageConfig | None = None
-FILES_DIR: str = ""
-MAX_ITERATIONS: int = 2
-OUTPUT_DIR: str = ""
-SUMMARY_FILE: str = ""
-DEBUG_MODE: bool = False
-STRICT_SPEC_VERIFICATION: bool = False
-MAX_WORKERS: int = 4
-API_RATE_LIMIT_DELAY: int = 1
-MAX_DIRECTORY_TRAVERSAL_DEPTH: int = 50  # Maximum depth to prevent excessive directory traversal
+@dataclass
+class ProcessingConfig:
+    """Configuration for the specification-to-code processing."""
 
-# Environment variables
-ANTHROPIC_API_KEY: str | None = os.getenv("ANTHROPIC_API_KEY")
+    language: str
+    language_config: LanguageConfig
+    files_dir: str
+    max_iterations: int
+    output_dir: str
+    summary_file: str
+    debug_mode: bool
+    strict_spec_verification: bool
+    max_workers: int
+    api_rate_limit_delay: int
+    max_directory_traversal_depth: int = (
+        50  # Maximum depth to prevent excessive directory traversal
+    )
+
+    # Static configuration loaded once
+    @classmethod
+    def _get_static_config(cls) -> LanguageConfigResult:
+        """Load static language configuration (called once per module load)."""
+        if not hasattr(cls, "_static_config"):
+            cls._static_config = load_language_config()
+        return cls._static_config
+
+    @classmethod
+    def get_available_languages(cls) -> dict[str, LanguageConfig]:
+        """Get available languages."""
+        return cls._get_static_config().languages
+
+    @classmethod
+    def get_common_compilation_errors(cls) -> list[str]:
+        """Get common compilation errors."""
+        return cls._get_static_config().common_compilation_errors
 
 
-# Simple PromptLoader implementation
 class PromptLoader:
-    def __init__(self, prompts_file: str = "prompts.yaml") -> None:
+    def __init__(
+        self, config: ProcessingConfig, prompts_file: str = "prompts.yaml"
+    ) -> None:
+        self.config = config
         self.prompts_file: str = prompts_file
         self.prompts: dict[str, str] = {}
         self._load_prompts()
@@ -165,12 +183,11 @@ class PromptLoader:
         script_dir = Path(__file__).parent
 
         # First try in the language-specific directory relative to script
-        if CURRENT_LANGUAGE:
-            lang_prompts_path = script_dir / CURRENT_LANGUAGE / self.prompts_file
-            if lang_prompts_path.exists():
-                with lang_prompts_path.open() as f:
-                    self.prompts = yaml.safe_load(f)
-                return
+        lang_prompts_path = script_dir / self.config.language / self.prompts_file
+        if lang_prompts_path.exists():
+            with lang_prompts_path.open() as f:
+                self.prompts = yaml.safe_load(f)
+            return
 
         # Then try in current directory
         if Path(self.prompts_file).exists():
@@ -195,17 +212,22 @@ class PromptLoader:
         required = ["generate_code", "fix_verification"]
         missing = [p for p in required if p not in self.prompts]
         return PromptValidationResult(
-            valid=len(missing) == 0, missing=missing, available=list(self.prompts.keys())
+            valid=len(missing) == 0,
+            missing=missing,
+            available=list(self.prompts.keys()),
         )
 
 
 def parse_arguments():
     """Parse command-line arguments."""
+    # Get available languages for argument choices
+    available_languages = ProcessingConfig.get_available_languages()
+
     parser = argparse.ArgumentParser(
         description="Unified Specification-to-Code Processing",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=f"""
-Supported languages: {", ".join(LANGUAGES.keys())}
+Supported languages: {", ".join(available_languages.keys())}
 
 Examples:
   python spec_to_code.py dafny ./specs
@@ -217,7 +239,10 @@ Examples:
     )
 
     parser.add_argument(
-        "language", type=str, choices=list(LANGUAGES.keys()), help="Programming language to process"
+        "language",
+        type=str,
+        choices=list(available_languages.keys()),
+        help="Programming language to process",
     )
 
     parser.add_argument("folder", type=Path, help="Directory with specification files")
@@ -231,7 +256,9 @@ Examples:
     )
 
     parser.add_argument(
-        "--debug", action="store_true", help="Enable debug mode (save intermediate files)"
+        "--debug",
+        action="store_true",
+        help="Enable debug mode (save intermediate files)",
     )
 
     parser.add_argument(
@@ -241,38 +268,59 @@ Examples:
     )
 
     parser.add_argument(
-        "--workers", "-w", type=int, default=4, help="Number of parallel workers (default: 4)"
+        "--workers",
+        "-w",
+        type=int,
+        default=4,
+        help="Number of parallel workers (default: 4)",
+    )
+
+    parser.add_argument(
+        "--api-rate-limit-delay",
+        type=int,
+        default=1,
+        help="Delay between API calls in seconds (default: 1)",
+    )
+
+    parser.add_argument(
+        "--max-directory-traversal-depth",
+        type=int,
+        default=50,
+        help="Maximum depth for directory traversal (default: 50)",
     )
 
     return parser.parse_args()
 
 
-def setup_configuration(args):
-    global FILES_DIR, MAX_ITERATIONS, OUTPUT_DIR, SUMMARY_FILE, DEBUG_MODE
-    global STRICT_SPEC_VERIFICATION, MAX_WORKERS, CURRENT_LANGUAGE, LANGUAGE_CONFIG
+def setup_configuration(args) -> ProcessingConfig:
+    """Set up processing configuration from command line arguments."""
+    available_languages = ProcessingConfig.get_available_languages()
+    language_config = available_languages[args.language]
 
-    CURRENT_LANGUAGE = args.language
-    LANGUAGE_CONFIG = LANGUAGES[args.language]
+    print(
+        f"=== {language_config.name} Specification-to-Code Processing Configuration ===\n"
+    )
 
-    print(f"=== {LANGUAGE_CONFIG.name} Specification-to-Code Processing Configuration ===\n")
+    files_dir = str(args.folder)
 
-    FILES_DIR = args.folder
-
-    if not Path(FILES_DIR).is_dir():
-        print(f"Error: Directory '{FILES_DIR}' does not exist or is not accessible.")
+    if not Path(files_dir).is_dir():
+        print(f"Error: Directory '{files_dir}' does not exist or is not accessible.")
         sys.exit(1)
 
     # Create timestamped output directory outside the input directory
     timestamp = datetime.now().strftime("%d-%m_%Hh%M")
 
     # Extract the relevant part of the input path for the output hierarchy
-    input_path = Path(FILES_DIR).resolve()
+    input_path = Path(files_dir).resolve()
 
     # Find the src directory or use current working directory as base
     current_path = input_path
     src_base = None
     depth = 0
-    while current_path.parent != current_path and depth < MAX_DIRECTORY_TRAVERSAL_DEPTH:
+    while (
+        current_path.parent != current_path
+        and depth < args.max_directory_traversal_depth
+    ):
         if current_path.name == "src":
             src_base = current_path
             break
@@ -286,7 +334,9 @@ def setup_configuration(args):
         else:
             # Fallback: find a reasonable base directory
             working_dir = Path.cwd()
-            src_base = working_dir / "src" if (working_dir / "src").exists() else working_dir
+            src_base = (
+                working_dir / "src" if (working_dir / "src").exists() else working_dir
+            )
 
     # Calculate the relative path from src_base to the input directory
     try:
@@ -322,58 +372,74 @@ def setup_configuration(args):
         meaningful_part = Path(input_path.name)
 
     # Create output directory structure
-    OUTPUT_DIR = str(
-        src_base / f"code_from_spec_on_{timestamp}" / CURRENT_LANGUAGE / meaningful_part
+    output_dir = str(
+        src_base / f"code_from_spec_on_{timestamp}" / args.language / meaningful_part
     )
-    SUMMARY_FILE = str(Path(OUTPUT_DIR) / "summary.txt")
+    summary_file = str(Path(output_dir) / "summary.txt")
 
-    Path(OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
-    print(f"Created output directory: {OUTPUT_DIR}")
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
+    print(f"Created output directory: {output_dir}")
 
-    # Use command-line arguments (with defaults)
-    MAX_ITERATIONS = args.iterations
-    DEBUG_MODE = args.debug
-    STRICT_SPEC_VERIFICATION = args.strict_specs
-    MAX_WORKERS = args.workers
+    # Create configuration object
+    config = ProcessingConfig(
+        language=args.language,
+        language_config=language_config,
+        files_dir=files_dir,
+        max_iterations=args.iterations,
+        output_dir=output_dir,
+        summary_file=summary_file,
+        debug_mode=args.debug,
+        strict_spec_verification=args.strict_specs,
+        max_workers=args.workers,
+        api_rate_limit_delay=args.api_rate_limit_delay,
+        max_directory_traversal_depth=args.max_directory_traversal_depth,
+    )
 
     print("\nConfiguration:")
-    print(f"- Language: {LANGUAGE_CONFIG.name}")
-    print(f"- Directory: {FILES_DIR}")
-    print(f"- Output directory: {OUTPUT_DIR}")
-    print(f"- Max iterations: {MAX_ITERATIONS}")
-    print(f"- Parallel workers: {MAX_WORKERS}")
-    print(f"- Tool path: {get_tool_path()}")
-    print(f"- Debug mode: {'Enabled' if DEBUG_MODE else 'Disabled'}")
-    print(f"- Spec preservation: {'Strict' if STRICT_SPEC_VERIFICATION else 'Relaxed (default)'}")
+    print(f"- Language: {language_config.name}")
+    print(f"- Directory: {files_dir}")
+    print(f"- Output directory: {output_dir}")
+    print(f"- Max iterations: {config.max_iterations}")
+    print(f"- Parallel workers: {config.max_workers}")
+    print(f"- Tool path: {get_tool_path(config)}")
+    print(f"- Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
+    print(
+        f"- Spec preservation: {'Strict' if config.strict_spec_verification else 'Relaxed (default)'}"
+    )
+    print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
     print("\nProceeding with configuration...")
 
+    return config
 
-def get_tool_path():
+
+def get_tool_path(config: ProcessingConfig):
     """Get the tool path for the current language."""
     # First, try to find the tool in the system PATH
-    tool_name = LANGUAGE_CONFIG.default_tool_path
+    tool_name = config.language_config.default_tool_path
     system_tool_path = shutil.which(tool_name)
 
     if system_tool_path:
         return system_tool_path
 
     # If not found in PATH, fall back to environment variable or default
-    tool_path = os.getenv(LANGUAGE_CONFIG.tool_path_env, LANGUAGE_CONFIG.default_tool_path)
+    tool_path = os.getenv(
+        config.language_config.tool_path_env, config.language_config.default_tool_path
+    )
     if tool_path.startswith("~/"):
         tool_path = str(Path(tool_path).expanduser())
     return tool_path
 
 
-def find_spec_files(directory):
+def find_spec_files(config: ProcessingConfig):
     """Find specification files for the current language."""
     try:
         files = []
-        for root, _dirs, filenames in os.walk(directory):
+        for root, _dirs, filenames in os.walk(config.files_dir):
             for f in filenames:
-                if f.endswith(LANGUAGE_CONFIG.file_extension):
+                if f.endswith(config.language_config.file_extension):
                     file_path = str(Path(root) / f)
                     # For Lean, check if file contains 'sorry'
-                    if CURRENT_LANGUAGE == "lean":
+                    if config.language == "lean":
                         with Path(file_path).open() as file:
                             for line in file:
                                 if "sorry" in line:
@@ -383,28 +449,29 @@ def find_spec_files(directory):
                         files.append(file_path)
         return files
     except Exception as e:
-        print(f"Error reading directory {directory}: {e}")
+        print(f"Error reading directory {config.files_dir}: {e}")
         return []
 
 
 def thread_safe_print(*args, **kwargs):
     """Thread-safe print function."""
-    with print_lock:
+    with _print_lock:
         print(*args, **kwargs)
 
 
-def call_claude_api(prompt):
+def call_claude_api(config: ProcessingConfig, prompt):
     """Call Claude API with the given prompt."""
-    if not ANTHROPIC_API_KEY:
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if not api_key:
         raise ValueError("ANTHROPIC_API_KEY environment variable is required")
 
     # Add rate limiting delay to avoid overwhelming the API
-    time.sleep(API_RATE_LIMIT_DELAY)
+    time.sleep(config.api_rate_limit_delay)
 
     url = "https://api.anthropic.com/v1/messages"
     headers = {
         "Content-Type": "application/json",
-        "x-api-key": ANTHROPIC_API_KEY,
+        "x-api-key": api_key,
         "anthropic-version": "2023-06-01",
     }
     payload = {
@@ -428,21 +495,23 @@ def call_claude_api(prompt):
         raise ValueError("Unexpected response format from Claude API")
 
 
-def extract_code(output):
+def extract_code(config: ProcessingConfig, output):
     """Extract code from LLM response based on current language."""
     # First try to extract from code blocks
-    for pattern in LANGUAGE_CONFIG.code_block_patterns:
-        code_block_match = re.search(rf"```{pattern}\n(.*?)```", output, re.DOTALL | re.IGNORECASE)
+    for pattern in config.language_config.code_block_patterns:
+        code_block_match = re.search(
+            rf"```{pattern}\n(.*?)```", output, re.DOTALL | re.IGNORECASE
+        )
         if code_block_match:
             code = code_block_match.group(1).strip()
-            code = fix_incomplete_code(code)
+            code = fix_incomplete_code(config, code)
             return code
 
     # Generic code block
     code_block_match = re.search(r"```\n(.*?)```", output, re.DOTALL)
     if code_block_match:
         code = code_block_match.group(1).strip()
-        code = fix_incomplete_code(code)
+        code = fix_incomplete_code(config, code)
         return code
 
     # If no code block, try to find language-specific code patterns
@@ -468,7 +537,7 @@ def extract_code(output):
             continue
 
         # Start collecting when we see language keywords
-        for keyword in LANGUAGE_CONFIG.keywords:
+        for keyword in config.language_config.keywords:
             if keyword in line:
                 in_code = True
                 break
@@ -478,22 +547,22 @@ def extract_code(output):
 
     if code_lines:
         code = "\n".join(code_lines).strip()
-        code = fix_incomplete_code(code)
+        code = fix_incomplete_code(config, code)
         return code
 
     # Fallback: return the original output but cleaned
     code = output.strip()
-    code = fix_incomplete_code(code)
+    code = fix_incomplete_code(config, code)
     return code
 
 
-def fix_incomplete_code(code):
+def fix_incomplete_code(config: ProcessingConfig, code):
     """Fix common incomplete code patterns based on language."""
-    if CURRENT_LANGUAGE == "verus":
+    if config.language == "verus":
         return fix_incomplete_verus_code(code)
-    elif CURRENT_LANGUAGE == "dafny":
+    elif config.language == "dafny":
         return fix_incomplete_dafny_code(code)
-    elif CURRENT_LANGUAGE == "lean":
+    elif config.language == "lean":
         return fix_incomplete_lean_code(code)
     return code
 
@@ -579,7 +648,11 @@ def fix_incomplete_dafny_code(code):
     for _i, line in enumerate(lines):
         # Fix incomplete strings in Dafny
         if ':= "' in line and not line.strip().endswith('"'):
-            line = line.rstrip() + '""' if line.strip().endswith(':= "') else line.rstrip() + '"'
+            line = (
+                line.rstrip() + '""'
+                if line.strip().endswith(':= "')
+                else line.rstrip() + '"'
+            )
 
         # Fix incomplete variable declarations
         if "var " in line and " := " in line and not line.endswith(";"):
@@ -626,57 +699,67 @@ def fix_incomplete_lean_code(code):
     return "\n".join(fixed_lines)
 
 
-def detect_compilation_errors(output):
+def detect_compilation_errors(config: ProcessingConfig, output):
     """Detect if the output contains compilation errors."""
-    return any(indicator in output.lower() for indicator in COMMON_COMPILATION_ERRORS)
+    common_errors = config.get_common_compilation_errors()
+    return any(indicator in output.lower() for indicator in common_errors)
 
 
-def check_tool_availability():
+def check_tool_availability(config: ProcessingConfig):
     """Check if the language tool is available at the specified path."""
-    tool_path = get_tool_path()
+    tool_path = get_tool_path(config)
     try:
         # Check if the tool executable exists
         if not Path(tool_path).is_file():
             return ToolAvailabilityResult(
-                False, f"{LANGUAGE_CONFIG.name} executable not found at: {tool_path}"
+                False,
+                f"{config.language_config.name} executable not found at: {tool_path}",
             )
 
         # Check if the file is executable
         if not os.access(tool_path, os.X_OK):
             return ToolAvailabilityResult(
-                False, f"{LANGUAGE_CONFIG.name} executable is not executable: {tool_path}"
+                False,
+                f"{config.language_config.name} executable is not executable: {tool_path}",
             )
 
         # Try to run tool with --help to verify it works
-        result = subprocess.run([tool_path, "--help"], capture_output=True, text=True, timeout=10)
+        result = subprocess.run(
+            [tool_path, "--help"], capture_output=True, text=True, timeout=10
+        )
 
-        if result.returncode != 0 and CURRENT_LANGUAGE != "lean":
+        if result.returncode != 0 and config.language != "lean":
             # Lean might not have --help, so we skip this check for Lean
             return ToolAvailabilityResult(
-                False, f"{LANGUAGE_CONFIG.name} executable failed to run: {result.stderr}"
+                False,
+                f"{config.language_config.name} executable failed to run: {result.stderr}",
             )
 
-        return ToolAvailabilityResult(True, f"{LANGUAGE_CONFIG.name} is available and working")
+        return ToolAvailabilityResult(
+            True, f"{config.language_config.name} is available and working"
+        )
 
     except subprocess.TimeoutExpired:
         return ToolAvailabilityResult(
-            False, f"{LANGUAGE_CONFIG.name} executable timed out when checking availability"
+            False,
+            f"{config.language_config.name} executable timed out when checking availability",
         )
     except Exception as e:
         return ToolAvailabilityResult(
-            False, f"Error checking {LANGUAGE_CONFIG.name} availability: {str(e)}"
+            False,
+            f"Error checking {config.language_config.name} availability: {str(e)}",
         )
 
 
-def verify_file(file_path):
+def verify_file(config: ProcessingConfig, file_path):
     """Verify a file and return the result."""
-    tool_path = get_tool_path()
+    tool_path = get_tool_path(config)
     try:
         # First try compilation check if available
-        if LANGUAGE_CONFIG.compile_check_command:
+        if config.language_config.compile_check_command:
             cmd = [
                 part.format(tool_path=tool_path, file_path=file_path)
-                for part in LANGUAGE_CONFIG.compile_check_command
+                for part in config.language_config.compile_check_command
             ]
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
 
@@ -684,23 +767,27 @@ def verify_file(file_path):
                 # Compilation failed
                 full_output = result.stdout + result.stderr
                 return VerificationResult(
-                    success=False, output=full_output, error=f"Compilation failed: {full_output}"
+                    success=False,
+                    output=full_output,
+                    error=f"Compilation failed: {full_output}",
                 )
 
         # Try verification
         cmd = [
             part.format(tool_path=tool_path, file_path=file_path)
-            for part in LANGUAGE_CONFIG.verify_command
+            for part in config.language_config.verify_command
         ]
         timeout_value = getattr(
-            LANGUAGE_CONFIG, "timeout", 120
+            config.language_config, "timeout", 120
         )  # Default to 120 seconds if not specified
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_value)
+        result = subprocess.run(
+            cmd, capture_output=True, text=True, timeout=timeout_value
+        )
         full_output = result.stdout + result.stderr
 
         # Check for success indicators
         success = result.returncode == 0
-        for indicator in LANGUAGE_CONFIG.success_indicators:
+        for indicator in config.language_config.success_indicators:
             if indicator in full_output:
                 success = True
                 break
@@ -709,33 +796,39 @@ def verify_file(file_path):
             return VerificationResult(success=True, output=full_output, error=None)
         else:
             return VerificationResult(
-                success=False, output=full_output, error=f"Verification failed: {full_output}"
+                success=False,
+                output=full_output,
+                error=f"Verification failed: {full_output}",
             )
 
     except subprocess.TimeoutExpired:
-        return VerificationResult(success=False, output="", error="Verification timeout")
+        return VerificationResult(
+            success=False, output="", error="Verification timeout"
+        )
     except Exception as e:
         return VerificationResult(success=False, output="", error=str(e))
 
 
-def save_iteration_code(relative_path, iteration, code, phase):
+def save_iteration_code(
+    config: ProcessingConfig, relative_path, iteration, code, phase
+):
     """Save code after each iteration for debugging."""
-    if not DEBUG_MODE:
+    if not config.debug_mode:
         return
 
     base_name = Path(relative_path).stem
 
     if phase in ["original", "generated", "current"]:
-        iteration_file_name = (
-            f"{base_name}_iter_{iteration}_{phase}{LANGUAGE_CONFIG.file_extension}"
-        )
+        iteration_file_name = f"{base_name}_iter_{iteration}_{phase}{config.language_config.file_extension}"
 
         relative_dir = Path(relative_path).parent
         output_subdir = (
-            Path(OUTPUT_DIR) / relative_dir if str(relative_dir) != "." else Path(OUTPUT_DIR)
+            Path(config.output_dir) / relative_dir
+            if str(relative_dir) != "."
+            else Path(config.output_dir)
         )
 
-        with file_write_lock:
+        with _file_write_lock:
             output_subdir.mkdir(parents=True, exist_ok=True)
             iteration_path = output_subdir / iteration_file_name
             with iteration_path.open("w") as f:
@@ -744,12 +837,12 @@ def save_iteration_code(relative_path, iteration, code, phase):
         thread_safe_print(f"    💾 Saved {phase} code to: {iteration_file_name}")
 
 
-def verify_spec_preservation(original_code, generated_code):
+def verify_spec_preservation(config: ProcessingConfig, original_code, generated_code):
     """Verify that all specifications from the original code are preserved in the generated code."""
-    if not STRICT_SPEC_VERIFICATION:
+    if not config.strict_spec_verification:
         return True
 
-    for pattern in LANGUAGE_CONFIG.spec_patterns:
+    for pattern in config.language_config.spec_patterns:
         original_specs = re.findall(pattern, original_code, re.DOTALL)
 
         for spec in original_specs:
@@ -769,7 +862,7 @@ def verify_spec_preservation(original_code, generated_code):
     return True
 
 
-def restore_specs(original_code, generated_code):
+def restore_specs(config: ProcessingConfig, original_code, generated_code):
     """Restore original specifications in the generated code."""
     # This is a simplified version - you may need to customize for each language
     # For now, we'll just prepend the original specs
@@ -777,7 +870,7 @@ def restore_specs(original_code, generated_code):
 
     # Extract all specs from original
     all_specs = []
-    for pattern in LANGUAGE_CONFIG.spec_patterns:
+    for pattern in config.language_config.spec_patterns:
         specs = re.findall(f"({pattern})", original_code, re.DOTALL)
         all_specs.extend(specs)
 
@@ -794,7 +887,7 @@ def restore_specs(original_code, generated_code):
     return generated_code
 
 
-def process_spec_file(file_path):
+def process_spec_file(config: ProcessingConfig, prompt_loader: PromptLoader, file_path):
     """Process a single specification file."""
     try:
         thread_safe_print(f"Processing: {Path(file_path).name}")
@@ -804,56 +897,69 @@ def process_spec_file(file_path):
             original_code = f.read()
 
         # Calculate relative path from input directory to preserve hierarchy
-        relative_path = Path(file_path).relative_to(Path(FILES_DIR))
+        relative_path = Path(file_path).relative_to(Path(config.files_dir))
         base_file_name = Path(file_path).stem
 
         # Save original code
-        save_iteration_code(relative_path, 0, original_code, "original")
+        save_iteration_code(config, relative_path, 0, original_code, "original")
 
         # Check if original file has compilation errors
         thread_safe_print("  Checking original file for compilation errors...")
-        original_verification = verify_file(file_path)
+        original_verification = verify_file(config, file_path)
 
         if not original_verification.success:
-            thread_safe_print(f"  ⚠️  Original file has issues: {original_verification.error}")
+            thread_safe_print(
+                f"  ⚠️  Original file has issues: {original_verification.error}"
+            )
             thread_safe_print("  Will attempt to fix during processing...")
 
         # Step 1: Generate code from specifications
         thread_safe_print("  Step 1: Generating code from specifications...")
         try:
-            generate_prompt = prompt_loader.format_prompt("generate_code", code=original_code)
+            generate_prompt = prompt_loader.format_prompt(
+                "generate_code", code=original_code
+            )
         except KeyError as e:
             thread_safe_print(f"  ✗ Prompt error: {e}")
-            thread_safe_print(f"  Available prompts: {list(prompt_loader.prompts.keys())}")
+            thread_safe_print(
+                f"  Available prompts: {list(prompt_loader.prompts.keys())}"
+            )
             raise
         except Exception as e:
             thread_safe_print(f"  ✗ Error formatting prompt: {e}")
             raise
 
-        generated_response = call_claude_api(generate_prompt)
-        generated_code = extract_code(generated_response)
+        generated_response = call_claude_api(config, generate_prompt)
+        generated_code = extract_code(config, generated_response)
 
         # Verify that all specifications are preserved
-        if STRICT_SPEC_VERIFICATION and not verify_spec_preservation(original_code, generated_code):
+        if config.strict_spec_verification and not verify_spec_preservation(
+            config, original_code, generated_code
+        ):
             thread_safe_print(
                 "  ⚠️  Warning: Specifications were modified. Restoring original specifications..."
             )
-            generated_code = restore_specs(original_code, generated_code)
+            generated_code = restore_specs(config, original_code, generated_code)
 
         # Save initial generated code
-        save_iteration_code(relative_path, 1, generated_code, "generated")
+        save_iteration_code(config, relative_path, 1, generated_code, "generated")
 
         # Create output file path preserving directory structure
         relative_dir = Path(relative_path).parent
         output_subdir = (
-            Path(OUTPUT_DIR) / relative_dir if str(relative_dir) != "." else Path(OUTPUT_DIR)
+            Path(config.output_dir) / relative_dir
+            if str(relative_dir) != "."
+            else Path(config.output_dir)
         )
 
         # Thread-safe directory creation
-        with file_write_lock:
+        with _file_write_lock:
             output_subdir.mkdir(parents=True, exist_ok=True)
 
-        output_path = output_subdir / f"{base_file_name}_impl{LANGUAGE_CONFIG.file_extension}"
+        output_path = (
+            output_subdir
+            / f"{base_file_name}_impl{config.language_config.file_extension}"
+        )
         with output_path.open("w") as f:
             f.write(generated_code)
 
@@ -862,18 +968,22 @@ def process_spec_file(file_path):
         success = False
         last_verification = None
 
-        for iteration in range(1, MAX_ITERATIONS + 1):
-            thread_safe_print(f"  Iteration {iteration}/{MAX_ITERATIONS}: Verifying...")
+        for iteration in range(1, config.max_iterations + 1):
+            thread_safe_print(
+                f"  Iteration {iteration}/{config.max_iterations}: Verifying..."
+            )
 
             # Write current code to file
             with output_path.open("w") as f:
                 f.write(current_code)
 
             # Save current working version for this iteration
-            save_iteration_code(relative_path, iteration, current_code, "current")
+            save_iteration_code(
+                config, relative_path, iteration, current_code, "current"
+            )
 
             # Verify
-            verification = verify_file(output_path)
+            verification = verify_file(config, output_path)
             last_verification = verification
 
             if verification.success:
@@ -889,7 +999,7 @@ def process_spec_file(file_path):
             error_details = verification.error or "Unknown error"
 
             # Only attempt fix if not on last iteration
-            if iteration < MAX_ITERATIONS:
+            if iteration < config.max_iterations:
                 thread_safe_print("    Attempting to fix errors...")
                 fix_prompt = prompt_loader.format_prompt(
                     "fix_verification",
@@ -899,17 +1009,17 @@ def process_spec_file(file_path):
                 )
 
                 try:
-                    fix_response = call_claude_api(fix_prompt)
-                    fixed_code = extract_code(fix_response)
+                    fix_response = call_claude_api(config, fix_prompt)
+                    fixed_code = extract_code(config, fix_response)
 
                     # Verify that all specifications are still preserved
-                    if STRICT_SPEC_VERIFICATION and not verify_spec_preservation(
-                        original_code, fixed_code
+                    if config.strict_spec_verification and not verify_spec_preservation(
+                        config, original_code, fixed_code
                     ):
                         thread_safe_print(
                             "    ⚠️  Warning: Specifications were modified during fix. Restoring original specifications..."
                         )
-                        fixed_code = restore_specs(original_code, fixed_code)
+                        fixed_code = restore_specs(config, original_code, fixed_code)
 
                     current_code = fixed_code
                     thread_safe_print(f"    Generated fix for iteration {iteration}")
@@ -918,7 +1028,9 @@ def process_spec_file(file_path):
                     break
 
         if success:
-            thread_safe_print(f"  ✓ Successfully generated and verified: {output_path.name}")
+            thread_safe_print(
+                f"  ✓ Successfully generated and verified: {output_path.name}"
+            )
             return ProcessingResult(
                 success=True,
                 file=str(relative_path),
@@ -928,10 +1040,12 @@ def process_spec_file(file_path):
             )
         else:
             error_msg = (
-                last_verification.error if last_verification else "Unknown verification error"
+                last_verification.error
+                if last_verification
+                else "Unknown verification error"
             )
             thread_safe_print(
-                f"  ✗ Failed to verify after {MAX_ITERATIONS} iterations: {error_msg[:200] if error_msg else 'Unknown error'}..."
+                f"  ✗ Failed to verify after {config.max_iterations} iterations: {error_msg[:200] if error_msg else 'Unknown error'}..."
             )
             return ProcessingResult(
                 success=False,
@@ -963,16 +1077,18 @@ def get_git_remote_url():
         )
         remote_url = result.stdout.strip()
         if remote_url.startswith("git@github.com:"):
-            remote_url = remote_url.replace("git@github.com:", "https://github.com/").replace(
-                ".git", ""
-            )
+            remote_url = remote_url.replace(
+                "git@github.com:", "https://github.com/"
+            ).replace(".git", "")
         elif remote_url.startswith("https://github.com/"):
             remote_url = remote_url.replace(".git", "")
         else:
             print(f"Warning: Unknown remote URL format: {remote_url}")
         return remote_url
     except subprocess.CalledProcessError:
-        print("Error: Could not get git remote URL. Make sure you're in a git repository.")
+        print(
+            "Error: Could not get git remote URL. Make sure you're in a git repository."
+        )
         return None
     except Exception as e:
         print(f"Error getting git remote URL: {e}")
@@ -983,7 +1099,10 @@ def get_current_branch():
     """Get the current git branch."""
     try:
         result = subprocess.run(
-            ["git", "branch", "--show-current"], capture_output=True, text=True, check=True
+            ["git", "branch", "--show-current"],
+            capture_output=True,
+            text=True,
+            check=True,
         )
         return result.stdout.strip()
     except (subprocess.CalledProcessError, FileNotFoundError):
@@ -1016,9 +1135,9 @@ def get_repo_root():
     return Path.cwd()  # Fallback to current directory
 
 
-def generate_csv_results(results):
+def generate_csv_results(config: ProcessingConfig, results):
     """Generate CSV file with spec_name, spec_to_code, spec_link, and impl_link columns."""
-    csv_file = Path(OUTPUT_DIR) / "results.csv"
+    csv_file = Path(config.output_dir) / "results.csv"
 
     # Get repo info
     repo_url = get_git_remote_url() or ""
@@ -1035,14 +1154,18 @@ def generate_csv_results(results):
             spec_to_code = "SUCCESS" if result.success else "FAILED"
 
             # Generate spec link
-            spec_full_path = Path(FILES_DIR) / result.file
+            spec_full_path = Path(config.files_dir) / result.file
             spec_rel_path = spec_full_path.relative_to(Path(repo_root))
-            spec_link = get_github_url(spec_rel_path, repo_url, branch) if repo_url else ""
+            spec_link = (
+                get_github_url(spec_rel_path, repo_url, branch) if repo_url else ""
+            )
 
             # Generate impl link
             if result.output:
                 impl_rel_path = Path(result.output).relative_to(Path(repo_root))
-                impl_link = get_github_url(impl_rel_path, repo_url, branch) if repo_url else ""
+                impl_link = (
+                    get_github_url(impl_rel_path, repo_url, branch) if repo_url else ""
+                )
             else:
                 impl_link = ""
 
@@ -1052,19 +1175,19 @@ def generate_csv_results(results):
     return str(csv_file)
 
 
-def generate_summary(results):
+def generate_summary(config: ProcessingConfig, results):
     """Generate a summary of the processing results."""
     successful = [r for r in results if r.success]
     failed = [r for r in results if not r.success]
 
     summary_lines = [
-        f"=== {LANGUAGE_CONFIG.name.upper()} SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===",
+        f"=== {config.language_config.name.upper()} SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===",
         "",
-        f"Language: {LANGUAGE_CONFIG.name}",
-        f"Test directory: {FILES_DIR}",
-        f"Output directory: {OUTPUT_DIR}",
-        f"Max iterations: {MAX_ITERATIONS}",
-        f"Parallel workers: {MAX_WORKERS}",
+        f"Language: {config.language_config.name}",
+        f"Test directory: {config.files_dir}",
+        f"Output directory: {config.output_dir}",
+        f"Max iterations: {config.max_iterations}",
+        f"Parallel workers: {config.max_workers}",
         f"Test date: {datetime.now().isoformat()}",
         "",
         f"Total original files: {len(results)}",
@@ -1094,29 +1217,31 @@ def generate_summary(results):
         [
             "",
             "=== PARALLEL PROCESSING FEATURES ===",
-            f"Parallel workers: {MAX_WORKERS}",
-            f"API rate limiting: {API_RATE_LIMIT_DELAY}s between calls",
-            f"Debug mode: {'Enabled' if DEBUG_MODE else 'Disabled'}",
+            f"Parallel workers: {config.max_workers}",
+            f"API rate limiting: {config.api_rate_limit_delay}s between calls",
+            f"Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}",
         ]
     )
 
-    if DEBUG_MODE:
+    if config.debug_mode:
         summary_lines.extend(
             [
                 "- Saves original specification as *_iter_0_original"
-                + LANGUAGE_CONFIG.file_extension,
+                + config.language_config.file_extension,
                 "- Saves initial generated code as *_iter_1_generated"
-                + LANGUAGE_CONFIG.file_extension,
+                + config.language_config.file_extension,
                 "- Saves current working version for each iteration as *_iter_N_current"
-                + LANGUAGE_CONFIG.file_extension,
-                "- Saves final implementation as *_impl" + LANGUAGE_CONFIG.file_extension,
+                + config.language_config.file_extension,
+                "- Saves final implementation as *_impl"
+                + config.language_config.file_extension,
                 "- Full debugging: all intermediate files are saved",
             ]
         )
     else:
         summary_lines.extend(
             [
-                "- Saves only final implementation as *_impl" + LANGUAGE_CONFIG.file_extension,
+                "- Saves only final implementation as *_impl"
+                + config.language_config.file_extension,
                 "- No intermediate files saved (debug mode disabled)",
             ]
         )
@@ -1124,7 +1249,7 @@ def generate_summary(results):
     summary_lines.extend(
         [
             "",
-            f"- Debug mode control: {'Enabled' if DEBUG_MODE else 'Disabled'}",
+            f"- Debug mode control: {'Enabled' if config.debug_mode else 'Disabled'}",
             "- Configurable file output based on debug setting",
             "",
             f"Generated on: {datetime.now().isoformat()}",
@@ -1133,25 +1258,32 @@ def generate_summary(results):
 
     summary = "\n".join(summary_lines)
 
-    with Path(SUMMARY_FILE).open("w") as f:
+    with Path(config.summary_file).open("w") as f:
         f.write(summary)
 
     return summary
 
 
-def process_files_parallel(spec_files):
+def process_files_parallel(
+    config: ProcessingConfig, prompt_loader: PromptLoader, spec_files
+):
     """Process files in parallel using ThreadPoolExecutor."""
     results = []
     completed_count = 0
     total_files = len(spec_files)
 
-    print(f"Processing {total_files} files using {MAX_WORKERS} parallel workers...")
+    print(
+        f"Processing {total_files} files using {config.max_workers} parallel workers..."
+    )
     print("")
 
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+    with ThreadPoolExecutor(max_workers=config.max_workers) as executor:
         # Submit all tasks
         future_to_file = {
-            executor.submit(process_spec_file, file_path): file_path for file_path in spec_files
+            executor.submit(
+                process_spec_file, config, prompt_loader, file_path
+            ): file_path
+            for file_path in spec_files
         }
 
         # Process completed tasks as they finish
@@ -1171,7 +1303,7 @@ def process_files_parallel(spec_files):
 
             except Exception as e:
                 # Handle unexpected exceptions
-                relative_path = Path(file_path).relative_to(Path(FILES_DIR))
+                relative_path = Path(file_path).relative_to(Path(config.files_dir))
                 error_result = ProcessingResult(
                     success=False,
                     file=str(relative_path),
@@ -1188,17 +1320,17 @@ def process_files_parallel(spec_files):
 
 
 def main():
-    global prompt_loader
-
     # Parse command-line arguments first
     args = parse_arguments()
 
     # Set up configuration
-    setup_configuration(args)
+    config = setup_configuration(args)
 
     # Initialize prompt loader for the selected language
     try:
-        prompt_loader = PromptLoader(prompts_file=LANGUAGE_CONFIG.prompts_file)
+        prompt_loader = PromptLoader(
+            config, prompts_file=config.language_config.prompts_file
+        )
         # Validate prompts on startup
         validation = prompt_loader.validate_prompts()
         if not validation.valid:
@@ -1208,47 +1340,56 @@ def main():
     except FileNotFoundError as e:
         print(f"Error: {e}")
         print(
-            f"Please ensure the {LANGUAGE_CONFIG.prompts_file} file exists in the {CURRENT_LANGUAGE} directory."
+            f"Please ensure the {config.language_config.prompts_file} file exists in the {config.language} directory."
         )
         print("Expected locations:")
         script_dir = Path(__file__).parent
-        print(f"  - {script_dir / CURRENT_LANGUAGE / LANGUAGE_CONFIG.prompts_file}")
-        print(f"  - {LANGUAGE_CONFIG.prompts_file} (current directory)")
+        print(
+            f"  - {script_dir / config.language / config.language_config.prompts_file}"
+        )
+        print(f"  - {config.language_config.prompts_file} (current directory)")
         sys.exit(1)
 
     print(
-        f"Starting specification-to-code processing of {LANGUAGE_CONFIG.name} files (PARALLEL VERSION)..."
+        f"Starting specification-to-code processing of {config.language_config.name} files (PARALLEL VERSION)..."
     )
-    print(f"Directory: {FILES_DIR}")
-    print(f"Output directory: {OUTPUT_DIR}")
-    print(f"Tool path: {get_tool_path()}")
-    print(f"Max iterations: {MAX_ITERATIONS}")
-    print(f"Parallel workers: {MAX_WORKERS}")
-    print(f"Debug mode: {'Enabled' if DEBUG_MODE else 'Disabled'}")
-    print(f"- Spec preservation: {'Strict' if STRICT_SPEC_VERIFICATION else 'Relaxed (default)'}")
+    print(f"Directory: {config.files_dir}")
+    print(f"Output directory: {config.output_dir}")
+    print(f"Tool path: {get_tool_path(config)}")
+    print(f"Max iterations: {config.max_iterations}")
+    print(f"Parallel workers: {config.max_workers}")
+    print(f"Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
+    print(
+        f"- Spec preservation: {'Strict' if config.strict_spec_verification else 'Relaxed (default)'}"
+    )
     print("Processing each file by generating code from specifications.")
-    if DEBUG_MODE:
-        print("DEBUG MODE: Saves code after each iteration to separate files for analysis.")
+    if config.debug_mode:
+        print(
+            "DEBUG MODE: Saves code after each iteration to separate files for analysis."
+        )
     else:
         print("NORMAL MODE: Saves only final implementation files.")
     print("")
 
-    if not ANTHROPIC_API_KEY:
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if not api_key:
         print("Error: ANTHROPIC_API_KEY environment variable is required")
         print('Please set it with: export ANTHROPIC_API_KEY="your-api-key"')
         sys.exit(1)
 
     # Check if tool is available before proceeding
-    print(f"Checking {LANGUAGE_CONFIG.name} availability...")
-    tool_availability = check_tool_availability()
+    print(f"Checking {config.language_config.name} availability...")
+    tool_availability = check_tool_availability(config)
     if not tool_availability.available:
         print(f"Error: {tool_availability.message}")
         print(
-            f"Please ensure {LANGUAGE_CONFIG.name} is installed and the {LANGUAGE_CONFIG.tool_path_env} environment variable is set correctly."
+            f"Please ensure {config.language_config.name} is installed and the {config.language_config.tool_path_env} environment variable is set correctly."
         )
-        print(f"Current {LANGUAGE_CONFIG.tool_path_env}: {get_tool_path()}")
         print(
-            f"You can set it with: export {LANGUAGE_CONFIG.tool_path_env}=/path/to/{CURRENT_LANGUAGE}"
+            f"Current {config.language_config.tool_path_env}: {get_tool_path(config)}"
+        )
+        print(
+            f"You can set it with: export {config.language_config.tool_path_env}=/path/to/{config.language}"
         )
         sys.exit(1)
 
@@ -1256,36 +1397,36 @@ def main():
     print("")
 
     # Find all specification files
-    spec_files = find_spec_files(FILES_DIR)
-    print(f"Found {len(spec_files)} {LANGUAGE_CONFIG.name} files to process")
-    if CURRENT_LANGUAGE == "lean":
+    spec_files = find_spec_files(config)
+    print(f"Found {len(spec_files)} {config.language_config.name} files to process")
+    if config.language == "lean":
         print("(Only Lean files containing 'sorry' are selected)")
     print("")
 
     if not spec_files:
-        print(f"No {LANGUAGE_CONFIG.name} files found. Exiting.")
+        print(f"No {config.language_config.name} files found. Exiting.")
         return
 
     # Process files in parallel
     start_time = time.time()
-    results = process_files_parallel(spec_files)
+    results = process_files_parallel(config, prompt_loader, spec_files)
     end_time = time.time()
     processing_time = end_time - start_time
 
     # Generate summary
     print("")
     print("Generating summary...")
-    summary = generate_summary(results)
+    summary = generate_summary(config, results)
 
     print("")
     print("=== SUMMARY ===")
     print(summary)
     print("")
-    print(f"Summary saved to: {SUMMARY_FILE}")
-    print(f"All generated files saved to: {OUTPUT_DIR}")
+    print(f"Summary saved to: {config.summary_file}")
+    print(f"All generated files saved to: {config.output_dir}")
     print(f"Total processing time: {processing_time:.2f} seconds")
     print(f"Average time per file: {processing_time / len(results):.2f} seconds")
-    if DEBUG_MODE:
+    if config.debug_mode:
         print(
             "DEBUG: Files saved: original, generated, current per iteration, and final implementation"
         )
@@ -1293,14 +1434,16 @@ def main():
         print("NORMAL: Only final implementation files saved")
 
     # Generate CSV results
-    generate_csv_results(results)
+    generate_csv_results(config, results)
 
     # Print final statistics
     successful = [r for r in results if r.success]
     print(
         f"\n🎉 Processing completed: {len(successful)}/{len(results)} files successful ({len(successful) / len(results) * 100:.1f}%)"
     )
-    print(f"⚡ Parallel processing with {MAX_WORKERS} workers completed in {processing_time:.2f}s")
+    print(
+        f"⚡ Parallel processing with {config.max_workers} workers completed in {processing_time:.2f}s"
+    )
 
 
 if __name__ == "__main__":
