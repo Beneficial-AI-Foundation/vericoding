@@ -17,6 +17,32 @@ wandb/
 build/
 lake-manifest.json
 
+# Development tools
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+htmlcov/
+coverage.xml
+.coverage
+*.cover
+
+# Pre-commit
+.pre-commit-config.yaml
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+.tox/
+.nox/
+
+# Security reports
+bandit-report.json
+safety-report.json
+
 # Experiment outputs
 experiment_results/
 lean_output_*/
