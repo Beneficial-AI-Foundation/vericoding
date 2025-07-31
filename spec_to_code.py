@@ -30,6 +30,36 @@ _print_lock = threading.Lock()
 _file_write_lock = threading.Lock()
 
 
+# Load environment variables from .env file
+def load_environment():
+    """Load environment variables from .env file if it exists."""
+    try:
+        from dotenv import load_dotenv
+        
+        # Look for .env file in current directory and parent directories
+        env_file = Path(".env")
+        if not env_file.exists():
+            # Try parent directory (useful when running from subdirectories)
+            env_file = Path("../.env")
+        
+        if env_file.exists():
+            load_dotenv(env_file)
+            print(f"✓ Loaded environment variables from {env_file}")
+        else:
+            # Try to load from default location
+            load_dotenv()
+    except ImportError:
+        # Fallback if dotenv is not installed
+        print("Note: python-dotenv not installed. Using system environment variables only.")
+        print("To use .env files, install with: pip install python-dotenv")
+    except Exception as e:
+        print(f"Warning: Could not load .env file: {e}")
+
+
+# Initialize environment loading
+load_environment()
+
+
 # Configuration class to hold language-specific settings
 @dataclass
 class LanguageConfig:
@@ -463,7 +493,12 @@ def call_claude_api(config: ProcessingConfig, prompt):
     """Call Claude API with the given prompt."""
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
-        raise ValueError("ANTHROPIC_API_KEY environment variable is required")
+        raise ValueError(
+            "ANTHROPIC_API_KEY environment variable is required.\n"
+            "You can set it by:\n"
+            "1. Creating a .env file with: ANTHROPIC_API_KEY=your-api-key\n"
+            "2. Setting environment variable: export ANTHROPIC_API_KEY=your-api-key"
+        )
 
     # Add rate limiting delay to avoid overwhelming the API
     time.sleep(config.api_rate_limit_delay)
@@ -1374,7 +1409,11 @@ def main():
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
         print("Error: ANTHROPIC_API_KEY environment variable is required")
-        print('Please set it with: export ANTHROPIC_API_KEY="your-api-key"')
+        print("You can set it by:")
+        print('  1. Creating a .env file with: ANTHROPIC_API_KEY="your-api-key"')
+        print('  2. Setting environment variable: export ANTHROPIC_API_KEY="your-api-key"')
+        print("")
+        print("Note: .env files are automatically loaded if they exist in the current or parent directory.")
         sys.exit(1)
 
     # Check if tool is available before proceeding
