@@ -35,13 +35,13 @@ def load_environment():
     """Load environment variables from .env file if it exists."""
     try:
         from dotenv import load_dotenv
-        
+
         # Look for .env file in current directory and parent directories
         env_file = Path(".env")
         if not env_file.exists():
             # Try parent directory (useful when running from subdirectories)
             env_file = Path("../.env")
-        
+
         if env_file.exists():
             load_dotenv(env_file)
             print(f"✓ Loaded environment variables from {env_file}")
@@ -50,7 +50,9 @@ def load_environment():
             load_dotenv()
     except ImportError:
         # Fallback if dotenv is not installed
-        print("Note: python-dotenv not installed. Using system environment variables only.")
+        print(
+            "Note: python-dotenv not installed. Using system environment variables only."
+        )
         print("To use .env files, install with: pip install python-dotenv")
     except Exception as e:
         print(f"Warning: Could not load .env file: {e}")
@@ -1411,9 +1413,13 @@ def main():
         print("Error: ANTHROPIC_API_KEY environment variable is required")
         print("You can set it by:")
         print('  1. Creating a .env file with: ANTHROPIC_API_KEY="your-api-key"')
-        print('  2. Setting environment variable: export ANTHROPIC_API_KEY="your-api-key"')
+        print(
+            '  2. Setting environment variable: export ANTHROPIC_API_KEY="your-api-key"'
+        )
         print("")
-        print("Note: .env files are automatically loaded if they exist in the current or parent directory.")
+        print(
+            "Note: .env files are automatically loaded if they exist in the current or parent directory."
+        )
         sys.exit(1)
 
     # Check if tool is available before proceeding
