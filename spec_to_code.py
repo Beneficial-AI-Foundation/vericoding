@@ -10,6 +10,7 @@ import argparse
 import csv
 import os
 import re
+import shutil
 import subprocess
 import sys
 import threading
@@ -62,8 +63,53 @@ class LanguageConfig:
         )
 
 
+@dataclass
+class ToolAvailabilityResult:
+    """Result of checking tool availability."""
+
+    available: bool
+    message: str
+
+
+@dataclass
+class VerificationResult:
+    """Result of file verification."""
+
+    success: bool
+    output: str
+    error: str | None
+
+
+@dataclass
+class ProcessingResult:
+    """Result of processing a specification file."""
+
+    success: bool
+    file: str
+    output: str | None
+    error: str | None
+    has_bypass: bool
+
+
+@dataclass
+class PromptValidationResult:
+    """Result of prompt validation."""
+
+    valid: bool
+    missing: list[str]
+    available: list[str]
+
+
+@dataclass
+class LanguageConfigResult:
+    """Result of loading language configuration."""
+
+    languages: dict[str, LanguageConfig]
+    common_compilation_errors: list[str]
+
+
 # Load language configuration
-def load_language_config() -> tuple[dict[str, LanguageConfig], list[str]]:
+def load_language_config() -> LanguageConfigResult:
     config_path = Path(__file__).parent / "config" / "language_config.yaml"
     if not config_path.exists():
         # Fallback to looking in current directory
@@ -80,13 +126,17 @@ def load_language_config() -> tuple[dict[str, LanguageConfig], list[str]]:
         if lang != "common_compilation_errors":
             languages[lang] = LanguageConfig.from_dict(settings)
 
-    return languages, config.get("common_compilation_errors", [])
+    return LanguageConfigResult(
+        languages=languages, common_compilation_errors=config.get("common_compilation_errors", [])
+    )
 
 
 # Global variables
 LANGUAGES: dict[str, LanguageConfig]
 COMMON_COMPILATION_ERRORS: list[str]
-LANGUAGES, COMMON_COMPILATION_ERRORS = load_language_config()
+_config_result = load_language_config()
+LANGUAGES = _config_result.languages
+COMMON_COMPILATION_ERRORS = _config_result.common_compilation_errors
 CURRENT_LANGUAGE: str | None = None
 LANGUAGE_CONFIG: LanguageConfig | None = None
 FILES_DIR: str = ""
@@ -141,14 +191,12 @@ class PromptLoader:
             # Catch any other formatting errors
             raise ValueError(f"Error formatting prompt '{prompt_name}': {e}")
 
-    def validate_prompts(self) -> dict[str, Any]:
+    def validate_prompts(self) -> PromptValidationResult:
         required = ["generate_code", "fix_verification"]
         missing = [p for p in required if p not in self.prompts]
-        return {
-            "valid": len(missing) == 0,
-            "missing": missing,
-            "available": list(self.prompts.keys()),
-        }
+        return PromptValidationResult(
+            valid=len(missing) == 0, missing=missing, available=list(self.prompts.keys())
+        )
 
 
 def parse_arguments():
@@ -302,6 +350,14 @@ def setup_configuration(args):
 
 def get_tool_path():
     """Get the tool path for the current language."""
+    # First, try to find the tool in the system PATH
+    tool_name = LANGUAGE_CONFIG.default_tool_path
+    system_tool_path = shutil.which(tool_name)
+
+    if system_tool_path:
+        return system_tool_path
+
+    # If not found in PATH, fall back to environment variable or default
     tool_path = os.getenv(LANGUAGE_CONFIG.tool_path_env, LANGUAGE_CONFIG.default_tool_path)
     if tool_path.startswith("~/"):
         tool_path = str(Path(tool_path).expanduser())
@@ -581,25 +637,35 @@ def check_tool_availability():
     try:
         # Check if the tool executable exists
         if not Path(tool_path).is_file():
-            return False, f"{LANGUAGE_CONFIG.name} executable not found at: {tool_path}"
+            return ToolAvailabilityResult(
+                False, f"{LANGUAGE_CONFIG.name} executable not found at: {tool_path}"
+            )
 
         # Check if the file is executable
         if not os.access(tool_path, os.X_OK):
-            return False, f"{LANGUAGE_CONFIG.name} executable is not executable: {tool_path}"
+            return ToolAvailabilityResult(
+                False, f"{LANGUAGE_CONFIG.name} executable is not executable: {tool_path}"
+            )
 
         # Try to run tool with --help to verify it works
         result = subprocess.run([tool_path, "--help"], capture_output=True, text=True, timeout=10)
 
         if result.returncode != 0 and CURRENT_LANGUAGE != "lean":
             # Lean might not have --help, so we skip this check for Lean
-            return False, f"{LANGUAGE_CONFIG.name} executable failed to run: {result.stderr}"
+            return ToolAvailabilityResult(
+                False, f"{LANGUAGE_CONFIG.name} executable failed to run: {result.stderr}"
+            )
 
-        return True, f"{LANGUAGE_CONFIG.name} is available and working"
+        return ToolAvailabilityResult(True, f"{LANGUAGE_CONFIG.name} is available and working")
 
     except subprocess.TimeoutExpired:
-        return False, f"{LANGUAGE_CONFIG.name} executable timed out when checking availability"
+        return ToolAvailabilityResult(
+            False, f"{LANGUAGE_CONFIG.name} executable timed out when checking availability"
+        )
     except Exception as e:
-        return False, f"Error checking {LANGUAGE_CONFIG.name} availability: {str(e)}"
+        return ToolAvailabilityResult(
+            False, f"Error checking {LANGUAGE_CONFIG.name} availability: {str(e)}"
+        )
 
 
 def verify_file(file_path):
@@ -617,11 +683,9 @@ def verify_file(file_path):
             if result.returncode != 0:
                 # Compilation failed
                 full_output = result.stdout + result.stderr
-                return {
-                    "success": False,
-                    "output": full_output,
-                    "error": f"Compilation failed: {full_output}",
-                }
+                return VerificationResult(
+                    success=False, output=full_output, error=f"Compilation failed: {full_output}"
+                )
 
         # Try verification
         cmd = [
@@ -642,18 +706,16 @@ def verify_file(file_path):
                 break
 
         if success:
-            return {"success": True, "output": full_output, "error": None}
+            return VerificationResult(success=True, output=full_output, error=None)
         else:
-            return {
-                "success": False,
-                "output": full_output,
-                "error": f"Verification failed: {full_output}",
-            }
+            return VerificationResult(
+                success=False, output=full_output, error=f"Verification failed: {full_output}"
+            )
 
     except subprocess.TimeoutExpired:
-        return {"success": False, "output": "", "error": "Verification timeout"}
+        return VerificationResult(success=False, output="", error="Verification timeout")
     except Exception as e:
-        return {"success": False, "output": "", "error": str(e)}
+        return VerificationResult(success=False, output="", error=str(e))
 
 
 def save_iteration_code(relative_path, iteration, code, phase):
@@ -750,8 +812,8 @@ def process_spec_file(file_path):
         thread_safe_print("  Checking original file for compilation errors...")
         original_verification = verify_file(file_path)
 
-        if not original_verification["success"]:
-            thread_safe_print(f"  ⚠️  Original file has issues: {original_verification['error']}")
+        if not original_verification.success:
+            thread_safe_print(f"  ⚠️  Original file has issues: {original_verification.error}")
             thread_safe_print("  Will attempt to fix during processing...")
 
         # Step 1: Generate code from specifications
@@ -812,15 +874,17 @@ def process_spec_file(file_path):
             verification = verify_file(output_path)
             last_verification = verification
 
-            if verification["success"]:
+            if verification.success:
                 thread_safe_print("    ✓ Verification successful!")
                 success = True
                 break
             else:
-                thread_safe_print(f"    ✗ Verification failed: {verification['error'][:200]}...")
+                thread_safe_print(
+                    f"    ✗ Verification failed: {verification.error[:200] if verification.error else 'Unknown error'}..."
+                )
 
             # Try to fix issues (both compilation and verification errors)
-            error_details = verification["error"] or "Unknown error"
+            error_details = verification.error or "Unknown error"
 
             # Only attempt fix if not on last iteration
             if iteration < MAX_ITERATIONS:
@@ -853,37 +917,33 @@ def process_spec_file(file_path):
 
         if success:
             thread_safe_print(f"  ✓ Successfully generated and verified: {Path(output_path).name}")
-            return {
-                "success": True,
-                "file": relative_path,
-                "output": output_path,
-                "error": None,
-                "has_bypass": False,
-            }
+            return ProcessingResult(
+                success=True, file=relative_path, output=output_path, error=None, has_bypass=False
+            )
         else:
             error_msg = (
-                last_verification["error"] if last_verification else "Unknown verification error"
+                last_verification.error if last_verification else "Unknown verification error"
             )
             thread_safe_print(
-                f"  ✗ Failed to verify after {MAX_ITERATIONS} iterations: {error_msg[:200]}..."
+                f"  ✗ Failed to verify after {MAX_ITERATIONS} iterations: {error_msg[:200] if error_msg else 'Unknown error'}..."
             )
-            return {
-                "success": False,
-                "file": relative_path,
-                "output": output_path,
-                "error": error_msg,
-                "has_bypass": False,
-            }
+            return ProcessingResult(
+                success=False,
+                file=relative_path,
+                output=output_path,
+                error=error_msg,
+                has_bypass=False,
+            )
 
     except Exception as e:
         thread_safe_print(f"✗ Failed: {Path(file_path).name} - {str(e)}")
-        return {
-            "success": False,
-            "file": relative_path if "relative_path" in locals() else Path(file_path).name,
-            "error": str(e),
-            "output": None,
-            "has_bypass": False,
-        }
+        return ProcessingResult(
+            success=False,
+            file=relative_path if "relative_path" in locals() else Path(file_path).name,
+            error=str(e),
+            output=None,
+            has_bypass=False,
+        )
 
 
 def get_git_remote_url():
@@ -965,17 +1025,17 @@ def generate_csv_results(results):
         writer.writerow(["spec_name", "spec_to_code", "spec_link", "impl_link"])
         # Write results
         for result in results:
-            spec_name = Path(result["file"]).stem  # Remove extension and preserve path
-            spec_to_code = "SUCCESS" if result["success"] else "FAILED"
+            spec_name = Path(result.file).stem  # Remove extension and preserve path
+            spec_to_code = "SUCCESS" if result.success else "FAILED"
 
             # Generate spec link
-            spec_full_path = str(Path(FILES_DIR) / result["file"])
+            spec_full_path = str(Path(FILES_DIR) / result.file)
             spec_rel_path = os.path.relpath(spec_full_path, repo_root)
             spec_link = get_github_url(spec_rel_path, repo_url, branch) if repo_url else ""
 
             # Generate impl link
-            if result["output"]:
-                impl_rel_path = os.path.relpath(result["output"], repo_root)
+            if result.output:
+                impl_rel_path = os.path.relpath(result.output, repo_root)
                 impl_link = get_github_url(impl_rel_path, repo_url, branch) if repo_url else ""
             else:
                 impl_link = ""
@@ -988,8 +1048,8 @@ def generate_csv_results(results):
 
 def generate_summary(results):
     """Generate a summary of the processing results."""
-    successful = [r for r in results if r["success"]]
-    failed = [r for r in results if not r["success"]]
+    successful = [r for r in results if r.success]
+    failed = [r for r in results if not r.success]
 
     summary_lines = [
         f"=== {LANGUAGE_CONFIG.name.upper()} SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===",
@@ -1012,8 +1072,8 @@ def generate_summary(results):
     ]
 
     for result in successful:
-        output_file = Path(result["output"]).name if result["output"] else "no output"
-        summary_lines.append(f"✓ {result['file']} -> {output_file}")
+        output_file = Path(result.output).name if result.output else "no output"
+        summary_lines.append(f"✓ {result.file} -> {output_file}")
 
     summary_lines.extend(
         [
@@ -1022,7 +1082,7 @@ def generate_summary(results):
         ]
     )
 
-    summary_lines.extend([f"✗ {result['file']}" for result in failed])
+    summary_lines.extend([f"✗ {result.file}" for result in failed])
 
     summary_lines.extend(
         [
@@ -1098,7 +1158,7 @@ def process_files_parallel(spec_files):
                 results.append(result)
 
                 # Print progress update
-                status = "✓" if result["success"] else "✗"
+                status = "✓" if result.success else "✗"
                 thread_safe_print(
                     f"[{completed_count}/{total_files}] {status} {Path(file_path).name}"
                 )
@@ -1106,13 +1166,13 @@ def process_files_parallel(spec_files):
             except Exception as e:
                 # Handle unexpected exceptions
                 relative_path = os.path.relpath(file_path, FILES_DIR)
-                error_result = {
-                    "success": False,
-                    "file": relative_path,
-                    "error": f"Unexpected error: {str(e)}",
-                    "output": None,
-                    "has_bypass": False,
-                }
+                error_result = ProcessingResult(
+                    success=False,
+                    file=relative_path,
+                    error=f"Unexpected error: {str(e)}",
+                    output=None,
+                    has_bypass=False,
+                )
                 results.append(error_result)
                 thread_safe_print(
                     f"[{completed_count}/{total_files}] ✗ {Path(file_path).name} - Unexpected error: {str(e)}"
@@ -1135,9 +1195,9 @@ def main():
         prompt_loader = PromptLoader(prompts_file=LANGUAGE_CONFIG.prompts_file)
         # Validate prompts on startup
         validation = prompt_loader.validate_prompts()
-        if not validation["valid"]:
-            print(f"Warning: Missing required prompts: {', '.join(validation['missing'])}")
-            print(f"Available prompts: {', '.join(validation['available'])}")
+        if not validation.valid:
+            print(f"Warning: Missing required prompts: {', '.join(validation.missing)}")
+            print(f"Available prompts: {', '.join(validation.available)}")
             sys.exit(1)
     except FileNotFoundError as e:
         print(f"Error: {e}")
@@ -1174,9 +1234,9 @@ def main():
 
     # Check if tool is available before proceeding
     print(f"Checking {LANGUAGE_CONFIG.name} availability...")
-    tool_available, tool_message = check_tool_availability()
-    if not tool_available:
-        print(f"Error: {tool_message}")
+    tool_availability = check_tool_availability()
+    if not tool_availability.available:
+        print(f"Error: {tool_availability.message}")
         print(
             f"Please ensure {LANGUAGE_CONFIG.name} is installed and the {LANGUAGE_CONFIG.tool_path_env} environment variable is set correctly."
         )
@@ -1186,7 +1246,7 @@ def main():
         )
         sys.exit(1)
 
-    print(f"✓ {tool_message}")
+    print(f"✓ {tool_availability.message}")
     print("")
 
     # Find all specification files
@@ -1230,7 +1290,7 @@ def main():
     generate_csv_results(results)
 
     # Print final statistics
-    successful = [r for r in results if r["success"]]
+    successful = [r for r in results if r.success]
     print(
         f"\n🎉 Processing completed: {len(successful)}/{len(results)} files successful ({len(successful) / len(results) * 100:.1f}%)"
     )
