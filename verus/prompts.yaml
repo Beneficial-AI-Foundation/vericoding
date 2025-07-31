@@ -57,7 +57,7 @@ fix_verification: |
   - Do not change the overall file structure (imports, main function, verus block).
 
   COMMENT FORMAT: add this comment right before any code or annotation block in a function body that you add or modify
-  /* code modified by LLM (iteration {iteration}): [brief description] */
+  /* code modified by LLM (iteration {{iteration}}): [brief description] */
   
   ERROR DETAILS from Verus verification of the given code:
   {errorDetails}
