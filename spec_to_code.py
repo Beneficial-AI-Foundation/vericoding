@@ -15,8 +15,10 @@ import argparse
 import requests
 import subprocess
 import csv
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
+from typing import List, Optional, Dict, Any
 from urllib.parse import quote
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
@@ -26,22 +28,39 @@ print_lock = threading.Lock()
 file_write_lock = threading.Lock()
 
 # Configuration class to hold language-specific settings
+@dataclass
 class LanguageConfig:
-    def __init__(self, config_dict):
-        self.name = config_dict['name']
-        self.file_extension = config_dict['file_extension']
-        self.tool_path_env = config_dict['tool_path_env']
-        self.default_tool_path = config_dict['default_tool_path']
-        self.prompts_file = config_dict['prompts_file']
-        self.verify_command = config_dict['verify_command']
-        self.compile_check_command = config_dict['compile_check_command']
-        self.success_indicators = config_dict['success_indicators']
-        self.code_block_patterns = config_dict['code_block_patterns']
-        self.keywords = config_dict['keywords']
-        self.spec_patterns = config_dict['spec_patterns']
+    name: str
+    file_extension: str
+    tool_path_env: str
+    default_tool_path: str
+    prompts_file: str
+    verify_command: List[str]
+    compile_check_command: Optional[List[str]]
+    success_indicators: List[str]
+    code_block_patterns: List[str]
+    keywords: List[str]
+    spec_patterns: List[str]
+    
+    @classmethod
+    def from_dict(cls, config_dict: Dict[str, Any]) -> 'LanguageConfig':
+        """Create LanguageConfig from dictionary."""
+        return cls(
+            name=config_dict['name'],
+            file_extension=config_dict['file_extension'],
+            tool_path_env=config_dict['tool_path_env'],
+            default_tool_path=config_dict['default_tool_path'],
+            prompts_file=config_dict['prompts_file'],
+            verify_command=config_dict['verify_command'],
+            compile_check_command=config_dict.get('compile_check_command'),
+            success_indicators=config_dict['success_indicators'],
+            code_block_patterns=config_dict['code_block_patterns'],
+            keywords=config_dict['keywords'],
+            spec_patterns=config_dict['spec_patterns']
+        )
 
 # Load language configuration
-def load_language_config():
+def load_language_config() -> tuple[Dict[str, LanguageConfig], List[str]]:
     config_path = Path(__file__).parent / "config" / "language_config.yaml"
     if not config_path.exists():
         # Fallback to looking in current directory
@@ -56,34 +75,37 @@ def load_language_config():
     languages = {}
     for lang, settings in config.items():
         if lang != 'common_compilation_errors':
-            languages[lang] = LanguageConfig(settings)
+            languages[lang] = LanguageConfig.from_dict(settings)
     
     return languages, config.get('common_compilation_errors', [])
 
 # Global variables
+LANGUAGES: Dict[str, LanguageConfig]
+COMMON_COMPILATION_ERRORS: List[str]
 LANGUAGES, COMMON_COMPILATION_ERRORS = load_language_config()
-CURRENT_LANGUAGE = None
-LANGUAGE_CONFIG = None
-FILES_DIR = ""
-MAX_ITERATIONS = 2
-OUTPUT_DIR = ""
-SUMMARY_FILE = ""
-DEBUG_MODE = False
-STRICT_SPEC_VERIFICATION = False
-MAX_WORKERS = 4
-API_RATE_LIMIT_DELAY = 1
+CURRENT_LANGUAGE: Optional[str] = None
+LANGUAGE_CONFIG: Optional[LanguageConfig] = None
+FILES_DIR: str = ""
+MAX_ITERATIONS: int = 2
+OUTPUT_DIR: str = ""
+SUMMARY_FILE: str = ""
+DEBUG_MODE: bool = False
+STRICT_SPEC_VERIFICATION: bool = False
+MAX_WORKERS: int = 4
+API_RATE_LIMIT_DELAY: int = 1
+MAX_DIRECTORY_TRAVERSAL_DEPTH: int = 50  # Maximum depth to prevent excessive directory traversal
 
 # Environment variables
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+ANTHROPIC_API_KEY: Optional[str] = os.getenv("ANTHROPIC_API_KEY")
 
 # Simple PromptLoader implementation
 class PromptLoader:
-    def __init__(self, prompts_file="prompts.yaml"):
-        self.prompts_file = prompts_file
-        self.prompts = {}
+    def __init__(self, prompts_file: str = "prompts.yaml") -> None:
+        self.prompts_file: str = prompts_file
+        self.prompts: Dict[str, str] = {}
         self._load_prompts()
     
-    def _load_prompts(self):
+    def _load_prompts(self) -> None:
         # Get the script directory
         script_dir = Path(__file__).parent
         
@@ -102,7 +124,7 @@ class PromptLoader:
         else:
             raise FileNotFoundError(f"Prompts file not found: {self.prompts_file}")
     
-    def format_prompt(self, prompt_name, **kwargs):
+    def format_prompt(self, prompt_name: str, **kwargs: Any) -> str:
         if prompt_name not in self.prompts:
             raise KeyError(f"Prompt '{prompt_name}' not found")
         try:
@@ -114,7 +136,7 @@ class PromptLoader:
             # Catch any other formatting errors
             raise ValueError(f"Error formatting prompt '{prompt_name}': {e}")
     
-    def validate_prompts(self):
+    def validate_prompts(self) -> Dict[str, Any]:
         required = ["generate_code", "fix_verification"]
         missing = [p for p in required if p not in self.prompts]
         return {
@@ -205,9 +227,8 @@ def setup_configuration(args):
     # Find the src directory or use current working directory as base
     current_path = input_path
     src_base = None
-    MAX_DEPTH = 50  # Maximum depth to prevent excessive traversal
     depth = 0
-    while current_path.parent != current_path and depth < MAX_DEPTH:
+    while current_path.parent != current_path and depth < MAX_DIRECTORY_TRAVERSAL_DEPTH:
         if current_path.name == 'src':
             src_base = current_path
             break
