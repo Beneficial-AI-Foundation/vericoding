@@ -730,12 +730,14 @@ def save_iteration_code(relative_path, iteration, code, phase):
             f"{base_name}_iter_{iteration}_{phase}{LANGUAGE_CONFIG.file_extension}"
         )
 
-        relative_dir = str(Path(relative_path).parent)
-        output_subdir = str(Path(OUTPUT_DIR) / relative_dir) if relative_dir != "." else OUTPUT_DIR
+        relative_dir = Path(relative_path).parent
+        output_subdir = (
+            Path(OUTPUT_DIR) / relative_dir if str(relative_dir) != "." else Path(OUTPUT_DIR)
+        )
 
         with file_write_lock:
-            Path(output_subdir).mkdir(parents=True, exist_ok=True)
-            iteration_path = Path(output_subdir) / iteration_file_name
+            output_subdir.mkdir(parents=True, exist_ok=True)
+            iteration_path = output_subdir / iteration_file_name
             with iteration_path.open("w") as f:
                 f.write(code)
 
@@ -802,7 +804,7 @@ def process_spec_file(file_path):
             original_code = f.read()
 
         # Calculate relative path from input directory to preserve hierarchy
-        relative_path = os.path.relpath(file_path, FILES_DIR)
+        relative_path = Path(file_path).relative_to(Path(FILES_DIR))
         base_file_name = Path(file_path).stem
 
         # Save original code
@@ -842,17 +844,17 @@ def process_spec_file(file_path):
         save_iteration_code(relative_path, 1, generated_code, "generated")
 
         # Create output file path preserving directory structure
-        relative_dir = str(Path(relative_path).parent)
-        output_subdir = str(Path(OUTPUT_DIR) / relative_dir) if relative_dir != "." else OUTPUT_DIR
+        relative_dir = Path(relative_path).parent
+        output_subdir = (
+            Path(OUTPUT_DIR) / relative_dir if str(relative_dir) != "." else Path(OUTPUT_DIR)
+        )
 
         # Thread-safe directory creation
         with file_write_lock:
-            Path(output_subdir).mkdir(parents=True, exist_ok=True)
+            output_subdir.mkdir(parents=True, exist_ok=True)
 
-        output_path = str(
-            Path(output_subdir) / f"{base_file_name}_impl{LANGUAGE_CONFIG.file_extension}"
-        )
-        with Path(output_path).open("w") as f:
+        output_path = output_subdir / f"{base_file_name}_impl{LANGUAGE_CONFIG.file_extension}"
+        with output_path.open("w") as f:
             f.write(generated_code)
 
         # Run verification iterations
@@ -864,7 +866,7 @@ def process_spec_file(file_path):
             thread_safe_print(f"  Iteration {iteration}/{MAX_ITERATIONS}: Verifying...")
 
             # Write current code to file
-            with Path(output_path).open("w") as f:
+            with output_path.open("w") as f:
                 f.write(current_code)
 
             # Save current working version for this iteration
@@ -916,9 +918,13 @@ def process_spec_file(file_path):
                     break
 
         if success:
-            thread_safe_print(f"  ✓ Successfully generated and verified: {Path(output_path).name}")
+            thread_safe_print(f"  ✓ Successfully generated and verified: {output_path.name}")
             return ProcessingResult(
-                success=True, file=relative_path, output=output_path, error=None, has_bypass=False
+                success=True,
+                file=str(relative_path),
+                output=str(output_path),
+                error=None,
+                has_bypass=False,
             )
         else:
             error_msg = (
@@ -929,8 +935,8 @@ def process_spec_file(file_path):
             )
             return ProcessingResult(
                 success=False,
-                file=relative_path,
-                output=output_path,
+                file=str(relative_path),
+                output=str(output_path),
                 error=error_msg,
                 has_bypass=False,
             )
@@ -1012,14 +1018,14 @@ def get_repo_root():
 
 def generate_csv_results(results):
     """Generate CSV file with spec_name, spec_to_code, spec_link, and impl_link columns."""
-    csv_file = str(Path(OUTPUT_DIR) / "results.csv")
+    csv_file = Path(OUTPUT_DIR) / "results.csv"
 
     # Get repo info
     repo_url = get_git_remote_url() or ""
     branch = get_current_branch() or "main"
     repo_root = get_repo_root()
 
-    with Path(csv_file).open("w", newline="") as csvfile:
+    with csv_file.open("w", newline="") as csvfile:
         writer = csv.writer(csvfile)
         # Write header
         writer.writerow(["spec_name", "spec_to_code", "spec_link", "impl_link"])
@@ -1029,13 +1035,13 @@ def generate_csv_results(results):
             spec_to_code = "SUCCESS" if result.success else "FAILED"
 
             # Generate spec link
-            spec_full_path = str(Path(FILES_DIR) / result.file)
-            spec_rel_path = os.path.relpath(spec_full_path, repo_root)
+            spec_full_path = Path(FILES_DIR) / result.file
+            spec_rel_path = spec_full_path.relative_to(Path(repo_root))
             spec_link = get_github_url(spec_rel_path, repo_url, branch) if repo_url else ""
 
             # Generate impl link
             if result.output:
-                impl_rel_path = os.path.relpath(result.output, repo_root)
+                impl_rel_path = Path(result.output).relative_to(Path(repo_root))
                 impl_link = get_github_url(impl_rel_path, repo_url, branch) if repo_url else ""
             else:
                 impl_link = ""
@@ -1043,7 +1049,7 @@ def generate_csv_results(results):
             writer.writerow([spec_name, spec_to_code, spec_link, impl_link])
 
     print(f"CSV results saved to: {csv_file}")
-    return csv_file
+    return str(csv_file)
 
 
 def generate_summary(results):
@@ -1165,10 +1171,10 @@ def process_files_parallel(spec_files):
 
             except Exception as e:
                 # Handle unexpected exceptions
-                relative_path = os.path.relpath(file_path, FILES_DIR)
+                relative_path = Path(file_path).relative_to(Path(FILES_DIR))
                 error_result = ProcessingResult(
                     success=False,
-                    file=relative_path,
+                    file=str(relative_path),
                     error=f"Unexpected error: {str(e)}",
                     output=None,
                     has_bypass=False,
