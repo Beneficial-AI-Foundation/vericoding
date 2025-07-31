@@ -109,11 +109,3 @@ To add support for a new language:
 2. Implement a `fix_incomplete_<language>_code()` function if needed
 3. Add any special file filtering logic in `find_spec_files()`
 4. Create appropriate prompts file
-
-## Benefits of Unification
-
-1. **Reduced code duplication**: Common functionality is shared
-2. **Easier maintenance**: Bug fixes and features only need to be implemented once
-3. **Consistent behavior**: All languages follow the same processing flow
-4. **Configurable**: Easy to adjust language-specific settings without code changes
-5. **Extensible**: Simple to add new languages
