@@ -220,7 +220,7 @@ Examples:
         "language", type=str, choices=list(LANGUAGES.keys()), help="Programming language to process"
     )
 
-    parser.add_argument("folder", type=str, help="Directory with specification files")
+    parser.add_argument("folder", type=Path, help="Directory with specification files")
 
     parser.add_argument(
         "--iterations",
