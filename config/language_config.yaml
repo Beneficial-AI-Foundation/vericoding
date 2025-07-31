@@ -9,8 +9,8 @@ dafny:
   prompts_file: "prompts.yaml"
   
   # Verification command patterns
-  verify_command: ["{tool_path}", "/verify", "/compile:0", "{file_path}"]
-  compile_check_command: ["{tool_path}", "/noVerify", "/compile:0", "{file_path}"]
+  verify_command: ["{tool_path}", "verify", "{file_path}"]
+  compile_check_command: ["{tool_path}", "build", "{file_path}"]
   
   # Success/failure indicators
   success_indicators:
@@ -52,7 +52,7 @@ lean:
   
   # Verification command patterns
   verify_command: ["{tool_path}", "{file_path}"]
-  compile_check_command: ["{tool_path}", "--only-export", "{file_path}"]
+  compile_check_command: ["{tool_path}", "--deps", "{file_path}"]
   
   # Success/failure indicators
   success_indicators:
