@@ -1,7 +1,12 @@
 """Test LLM provider functionality."""
 
 import pytest
-from vericoding.core.llm_providers import LLMProvider, AnthropicProvider, OpenAIProvider, DeepSeekProvider
+from vericoding.core.llm_providers import (
+    LLMProvider,
+    AnthropicProvider,
+    OpenAIProvider,
+    DeepSeekProvider,
+)
 
 
 class TestLLMProviders:
@@ -17,13 +22,21 @@ class TestLLMProviders:
 
     def test_provider_interface(self):
         """Test that the LLM provider interface is correct."""
-        assert hasattr(LLMProvider, 'call_api'), 'LLMProvider should have call_api method'
+        assert hasattr(LLMProvider, "call_api"), (
+            "LLMProvider should have call_api method"
+        )
 
     def test_provider_inheritance(self):
         """Test that concrete providers inherit properly from base class."""
-        assert issubclass(AnthropicProvider, LLMProvider), 'AnthropicProvider should inherit from LLMProvider'
-        assert issubclass(OpenAIProvider, LLMProvider), 'OpenAIProvider should inherit from LLMProvider'
-        assert issubclass(DeepSeekProvider, LLMProvider), 'DeepSeekProvider should inherit from LLMProvider'
+        assert issubclass(AnthropicProvider, LLMProvider), (
+            "AnthropicProvider should inherit from LLMProvider"
+        )
+        assert issubclass(OpenAIProvider, LLMProvider), (
+            "OpenAIProvider should inherit from LLMProvider"
+        )
+        assert issubclass(DeepSeekProvider, LLMProvider), (
+            "DeepSeekProvider should inherit from LLMProvider"
+        )
 
     def test_abstract_base_class(self):
         """Test that LLMProvider is properly abstract."""

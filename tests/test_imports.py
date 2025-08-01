@@ -1,8 +1,16 @@
 """Test basic package imports and module availability."""
 
-import pytest
-from vericoding.core import load_environment, ProcessingConfig, PromptLoader, create_llm_provider
-from vericoding.core.language_tools import get_tool_path, check_tool_availability, find_spec_files
+from vericoding.core import (
+    load_environment,
+    ProcessingConfig,
+    PromptLoader,
+    create_llm_provider,
+)
+from vericoding.core.language_tools import (
+    get_tool_path,
+    check_tool_availability,
+    find_spec_files,
+)
 from vericoding.processing import process_files_parallel
 from vericoding.utils import generate_summary, generate_csv_results
 
@@ -38,4 +46,4 @@ class TestModularImports:
         config = ProcessingConfig.get_available_languages()
         assert isinstance(config, dict)
         assert len(config) > 0
-        print(f'Configuration loaded: {list(config.keys())}')
+        print(f"Configuration loaded: {list(config.keys())}")
