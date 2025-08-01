@@ -15,7 +15,7 @@ Into a single script that accepts the language as a command-line parameter.
 
 ### 1. Language Configuration File
 
-All language-specific settings are now defined in `config/language_config.yaml`:
+All language-specific settings are now defined in `config/language_config.toml`:
 - File extensions (`.dfy`, `.lean`, `.rs`)
 - Tool paths and environment variables
 - Verification commands
@@ -105,7 +105,7 @@ To migrate from the old scripts to the unified script:
 
 To add support for a new language:
 
-1. Add a new section to `config/language_config.yaml`
+1. Add a new section to `config/language_config.toml`
 2. Implement a `fix_incomplete_<language>_code()` function if needed
 3. Add any special file filtering logic in `find_spec_files()`
 4. Create appropriate prompts file
