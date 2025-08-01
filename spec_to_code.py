@@ -22,7 +22,8 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import quote
 
-import requests
+import anthropic
+from abc import ABC, abstractmethod
 
 try:
     import tomllib  # Python 3.11+
@@ -171,6 +172,168 @@ def load_language_config() -> LanguageConfigResult:
     )
 
 
+# Abstract LLM Interface
+class LLMProvider(ABC):
+    """Abstract interface for LLM providers."""
+    
+    def __init__(self, api_key: str, model: str, max_tokens: int = 8192, timeout: float = 60.0):
+        self.api_key = api_key
+        self.model = model
+        self.max_tokens = max_tokens
+        self.timeout = timeout
+    
+    @abstractmethod
+    def call_api(self, prompt: str) -> str:
+        """Call the LLM API with the given prompt."""
+        pass
+    
+    @abstractmethod
+    def get_required_env_var(self) -> str:
+        """Return the required environment variable name for API key."""
+        pass
+
+
+class AnthropicProvider(LLMProvider):
+    """Anthropic Claude LLM provider."""
+    
+    def __init__(self, api_key: str, model: str = "claude-3-5-sonnet-20241022", **kwargs):
+        super().__init__(api_key, model, **kwargs)
+        self.client = anthropic.Anthropic(api_key=api_key)
+    
+    def call_api(self, prompt: str) -> str:
+        try:
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=self.max_tokens,
+                messages=[{"role": "user", "content": prompt}],
+                timeout=self.timeout
+            )
+            
+            if response.content and len(response.content) > 0:
+                text_content = response.content[0]
+                if hasattr(text_content, 'text'):
+                    return text_content.text
+                else:
+                    return str(text_content)
+            else:
+                raise ValueError("Unexpected response format from Claude API")
+                
+        except anthropic.APIError as e:
+            raise ValueError(f"Anthropic API error: {str(e)}")
+        except Exception as e:
+            raise ValueError(f"Error calling Claude API: {str(e)}")
+    
+    def get_required_env_var(self) -> str:
+        return "ANTHROPIC_API_KEY"
+
+
+class OpenAIProvider(LLMProvider):
+    """OpenAI GPT LLM provider."""
+    
+    def __init__(self, api_key: str, model: str = "gpt-4o", **kwargs):
+        super().__init__(api_key, model, **kwargs)
+        try:
+            import openai
+            self.client = openai.OpenAI(api_key=api_key)
+        except ImportError:
+            raise ImportError("OpenAI package not installed. Install with: pip install openai")
+    
+    def call_api(self, prompt: str) -> str:
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=self.max_tokens,
+                timeout=self.timeout
+            )
+            
+            if response.choices and len(response.choices) > 0:
+                return response.choices[0].message.content
+            else:
+                raise ValueError("Unexpected response format from OpenAI API")
+                
+        except Exception as e:
+            raise ValueError(f"Error calling OpenAI API: {str(e)}")
+    
+    def get_required_env_var(self) -> str:
+        return "OPENAI_API_KEY"
+
+
+class DeepSeekProvider(LLMProvider):
+    """DeepSeek LLM provider."""
+    
+    def __init__(self, api_key: str, model: str = "deepseek-chat", **kwargs):
+        super().__init__(api_key, model, **kwargs)
+        try:
+            import openai  # DeepSeek uses OpenAI-compatible API
+            self.client = openai.OpenAI(
+                api_key=api_key,
+                base_url="https://api.deepseek.com"
+            )
+        except ImportError:
+            raise ImportError("OpenAI package not installed. Install with: pip install openai")
+    
+    def call_api(self, prompt: str) -> str:
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=self.max_tokens,
+                timeout=self.timeout
+            )
+            
+            if response.choices and len(response.choices) > 0:
+                return response.choices[0].message.content
+            else:
+                raise ValueError("Unexpected response format from DeepSeek API")
+                
+        except Exception as e:
+            raise ValueError(f"Error calling DeepSeek API: {str(e)}")
+    
+    def get_required_env_var(self) -> str:
+        return "DEEPSEEK_API_KEY"
+
+
+def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
+    """Factory function to create LLM providers."""
+    provider_configs = {
+        "claude": {
+            "class": AnthropicProvider,
+            "default_model": "claude-3-5-sonnet-20241022",
+            "env_var": "ANTHROPIC_API_KEY"
+        },
+        "openai": {
+            "class": OpenAIProvider,
+            "default_model": "gpt-4o",
+            "env_var": "OPENAI_API_KEY"
+        },
+        "deepseek": {
+            "class": DeepSeekProvider,
+            "default_model": "deepseek-chat",
+            "env_var": "DEEPSEEK_API_KEY"
+        }
+    }
+    
+    if provider_name not in provider_configs:
+        available = ", ".join(provider_configs.keys())
+        raise ValueError(f"Unsupported LLM provider: {provider_name}. Available: {available}")
+    
+    config = provider_configs[provider_name]
+    env_var = config["env_var"]
+    api_key = os.getenv(env_var)
+    
+    if not api_key:
+        raise ValueError(
+            f"{env_var} environment variable is required for {provider_name}.\n"
+            f"You can set it by:\n"
+            f"1. Creating a .env file with: {env_var}=your-api-key\n"
+            f"2. Setting environment variable: export {env_var}=your-api-key"
+        )
+    
+    selected_model = model or config["default_model"]
+    return config["class"](api_key, selected_model)
+
+
 @dataclass
 class ProcessingConfig:
     """Configuration for the specification-to-code processing."""
@@ -185,6 +348,8 @@ class ProcessingConfig:
     strict_spec_verification: bool
     max_workers: int
     api_rate_limit_delay: int
+    llm_provider: str
+    llm_model: str | None
     max_directory_traversal_depth: int = (
         50  # Maximum depth to prevent excessive directory traversal
     )
@@ -267,13 +432,15 @@ def parse_arguments():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=f"""
 Supported languages: {", ".join(available_languages.keys())}
+Supported LLM providers: claude, openai, deepseek
 
 Examples:
   python spec_to_code.py dafny ./specs
   python spec_to_code.py lean ./NumpySpec/DafnySpecs --iterations 3
   python spec_to_code.py verus ./benchmarks/verus_specs --debug --iterations 5
-  python spec_to_code.py dafny ./specs --workers 8 --iterations 3
-  python spec_to_code.py verus ./specs --workers 2 --debug --strict-specs
+  python spec_to_code.py dafny ./specs --workers 8 --iterations 3 --llm-provider openai
+  python spec_to_code.py verus ./specs --workers 2 --debug --llm-provider deepseek --llm-model deepseek-chat
+  python spec_to_code.py dafny ./specs --llm-provider claude --llm-model claude-3-5-sonnet-20241022
         """,
     )
 
@@ -326,6 +493,20 @@ Examples:
         type=int,
         default=50,
         help="Maximum depth for directory traversal (default: 50)",
+    )
+
+    parser.add_argument(
+        "--llm-provider",
+        type=str,
+        choices=["claude", "openai", "deepseek"],
+        default="claude",
+        help="LLM provider to use (default: claude)",
+    )
+
+    parser.add_argument(
+        "--llm-model",
+        type=str,
+        help="Specific model to use (defaults to provider's default model)",
     )
 
     return parser.parse_args()
@@ -431,6 +612,8 @@ def setup_configuration(args) -> ProcessingConfig:
         strict_spec_verification=args.strict_specs,
         max_workers=args.workers,
         api_rate_limit_delay=args.api_rate_limit_delay,
+        llm_provider=args.llm_provider,
+        llm_model=args.llm_model,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
     )
 
@@ -441,6 +624,8 @@ def setup_configuration(args) -> ProcessingConfig:
     print(f"- Max iterations: {config.max_iterations}")
     print(f"- Parallel workers: {config.max_workers}")
     print(f"- Tool path: {get_tool_path(config)}")
+    print(f"- LLM Provider: {config.llm_provider}")
+    print(f"- LLM Model: {config.llm_model or 'default'}")
     print(f"- Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
     print(
         f"- Spec preservation: {'Strict' if config.strict_spec_verification else 'Relaxed (default)'}"
@@ -498,45 +683,17 @@ def thread_safe_print(*args, **kwargs):
         print(*args, **kwargs)
 
 
-def call_claude_api(config: ProcessingConfig, prompt):
-    """Call Claude API with the given prompt."""
-    api_key = os.getenv("ANTHROPIC_API_KEY")
-    if not api_key:
-        raise ValueError(
-            "ANTHROPIC_API_KEY environment variable is required.\n"
-            "You can set it by:\n"
-            "1. Creating a .env file with: ANTHROPIC_API_KEY=your-api-key\n"
-            "2. Setting environment variable: export ANTHROPIC_API_KEY=your-api-key"
-        )
-
+def call_llm_api(config: ProcessingConfig, prompt):
+    """Call LLM API with the given prompt using the configured provider."""
     # Add rate limiting delay to avoid overwhelming the API
     time.sleep(config.api_rate_limit_delay)
-
-    url = "https://api.anthropic.com/v1/messages"
-    headers = {
-        "Content-Type": "application/json",
-        "x-api-key": api_key,
-        "anthropic-version": "2023-06-01",
-    }
-    payload = {
-        "model": "claude-sonnet-4-20250514",
-        "max_tokens": 8192,
-        "messages": [{"role": "user", "content": prompt}],
-    }
-
-    response = requests.post(url, headers=headers, json=payload, timeout=60)
-    response.raise_for_status()
-    data = response.json()
-
-    # Extract text from the response
-    if "content" in data and len(data["content"]) > 0:
-        content = data["content"][0]
-        if "text" in content:
-            return content["text"]
-        else:
-            return str(content)
-    else:
-        raise ValueError("Unexpected response format from Claude API")
+    
+    # Create the LLM provider
+    try:
+        llm_provider = create_llm_provider(config.llm_provider, config.llm_model)
+        return llm_provider.call_api(prompt)
+    except Exception as e:
+        raise ValueError(f"Error calling {config.llm_provider} API: {str(e)}")
 
 
 def extract_code(config: ProcessingConfig, output):
@@ -973,7 +1130,7 @@ def process_spec_file(config: ProcessingConfig, prompt_loader: PromptLoader, fil
             thread_safe_print(f"  ✗ Error formatting prompt: {e}")
             raise
 
-        generated_response = call_claude_api(config, generate_prompt)
+        generated_response = call_llm_api(config, generate_prompt)
         generated_code = extract_code(config, generated_response)
 
         # Verify that all specifications are preserved
@@ -1053,7 +1210,7 @@ def process_spec_file(config: ProcessingConfig, prompt_loader: PromptLoader, fil
                 )
 
                 try:
-                    fix_response = call_claude_api(config, fix_prompt)
+                    fix_response = call_llm_api(config, fix_prompt)
                     fixed_code = extract_code(config, fix_response)
 
                     # Verify that all specifications are still preserved
@@ -1415,21 +1572,20 @@ def main():
         print("NORMAL MODE: Saves only final implementation files.")
     print("")
 
-    api_key = os.getenv("ANTHROPIC_API_KEY")
-    if not api_key:
-        print("Error: ANTHROPIC_API_KEY environment variable is required")
-        print("You can set it by:")
-        print('  1. Creating a .env file with: ANTHROPIC_API_KEY="your-api-key"')
-        print(
-            '  2. Setting environment variable: export ANTHROPIC_API_KEY="your-api-key"'
-        )
+    # Check if the required API key is available for the selected LLM provider
+    try:
+        # This will raise an error if the API key is not available
+        create_llm_provider(config.llm_provider, config.llm_model)
+        print(f"✓ {config.llm_provider.upper()} API key found and provider initialized")
+    except Exception as e:
+        print(f"Error: {str(e)}")
         print("")
         print(
             "Note: .env files are automatically loaded if they exist in the current or parent directory."
         )
         sys.exit(1)
 
-    # Check if tool is available before proceeding
+    print("")
     print(f"Checking {config.language_config.name} availability...")
     tool_availability = check_tool_availability(config)
     if not tool_availability.available:
