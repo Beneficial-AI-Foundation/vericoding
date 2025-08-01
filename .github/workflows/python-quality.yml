@@ -32,16 +32,16 @@ jobs:
       run: uv python install 3.12
 
     - name: Install dependencies
-      run: uv sync
+      run: uv sync --no-install-project
 
     - name: Run Ruff linter
       uses: astral-sh/ruff-action@v3
       with:
-        src: "vericoding/vericoding spec_to_code_modular.py"
+        src: "./vericoding ./spec_to_code_modular.py"
         args: "check --output-format=github"
 
     - name: Check code formatting with Ruff
       uses: astral-sh/ruff-action@v3
       with:
-        src: "vericoding/vericoding spec_to_code_modular.py"
+        src: "./vericoding ./spec_to_code_modular.py"
         args: "format --check"

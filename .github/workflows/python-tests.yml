@@ -39,11 +39,13 @@ jobs:
     - name: Set up Python
       run: uv python install 3.12
 
-    - name: Install dependencies
-      run: uv sync --extra test
+    - name: Create virtual environment and install dependencies
+      run: |
+        uv venv
+        uv pip install pytest pytest-cov pydantic anthropic claude-code-sdk wandb jinja2 pyyaml python-dotenv
 
     - name: Run tests with coverage
-      run: uv run pytest tests/ -v --cov=vericoding --cov-report=xml --cov-report=html --cov-report=term-missing
+      run: source .venv/bin/activate && pytest tests/ -v --cov=vericoding --cov-report=xml --cov-report=html --cov-report=term-missing
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4
