@@ -23,6 +23,7 @@ from typing import Any
 from urllib.parse import quote
 
 import requests
+
 try:
     import tomllib  # Python 3.11+
 except ImportError:
@@ -154,6 +155,8 @@ def load_language_config() -> LanguageConfigResult:
     if not config_path.exists():
         raise FileNotFoundError(f"Language configuration file not found: {config_path}")
 
+    # tomllib.load() requires a binary file object, not text mode.
+    # This differs from most config parsers; do not change to "r".
     with config_path.open("rb") as f:
         config = tomllib.load(f)
 

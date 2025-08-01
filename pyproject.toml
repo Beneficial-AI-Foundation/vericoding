@@ -12,7 +12,6 @@ dependencies = [
     "claude-code-sdk>=0.0.16",
     "wandb>=0.21.0",
     "jinja2>=3.1.0",
-    "tomli>=2.0.0",  # For TOML configuration files
     "pyyaml>=6.0.2",  # Keep for backward compatibility during migration
     "python-dotenv>=1.0.0",  # For easier .env file loading
 ]
