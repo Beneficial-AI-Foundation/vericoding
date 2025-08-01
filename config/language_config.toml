@@ -151,6 +151,9 @@ spec_patterns = [
     "spec fn [^{;]+(?:\\{[^}]*\\}|;)"  # spec functions
 ]
 
+
+
+[common]
 # Common error patterns across all languages
 common_compilation_errors = [
     "error:",
