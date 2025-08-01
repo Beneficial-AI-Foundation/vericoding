@@ -22,6 +22,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import quote
 
+import requests
 import anthropic
 from abc import ABC, abstractmethod
 
