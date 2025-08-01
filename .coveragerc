@@ -1,5 +1,6 @@
 [run]
 source = vericoding
+relative_files = true
 omit = 
     */tests/*
     */test_*
