@@ -16,6 +16,10 @@ dependencies = [
     "python-dotenv>=1.0.0",  # For easier .env file loading
 ]
 
+[project.optional-dependencies]
+openai = ["openai>=1.0.0"]
+all = ["openai>=1.0.0"]
+
 [project.scripts]
 vericode-lean = "vericoding.lean.spec_to_code_lean:main"
 
