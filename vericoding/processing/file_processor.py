@@ -105,9 +105,9 @@ def process_spec_file(
         )
 
         # Thread-safe directory creation
-        from ..utils.io_utils import _file_write_lock
+        from ..utils.io_utils import file_write_lock
 
-        with _file_write_lock:
+        with file_write_lock():
             output_subdir.mkdir(parents=True, exist_ok=True)
 
         output_path = (
