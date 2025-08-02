@@ -29,7 +29,13 @@ from abc import ABC, abstractmethod
 try:
     import tomllib  # Python 3.11+
 except ImportError:
-    import tomli as tomllib  # Fallback for older Python versions
+    try:
+        import tomli as tomllib  # Fallback for older Python versions
+    except ImportError as e:
+        raise ImportError(
+            "TOML support requires Python 3.11+ or the 'tomli' package. "
+            "Install with: pip install tomli"
+        ) from e
 import yaml
 
 # Module-level thread safety locks (need to be shared across all instances)
@@ -157,37 +163,69 @@ def load_language_config() -> LanguageConfigResult:
     if not config_path.exists():
         raise FileNotFoundError(f"Language configuration file not found: {config_path}")
 
-    # tomllib.load() requires a binary file object, not text mode.
-    # This differs from most config parsers; do not change to "r".
-    with config_path.open("rb") as f:
-        config = tomllib.load(f)
+    try:
+        # tomllib.load() requires a binary file object, not text mode.
+        # This differs from most config parsers; do not change to "r".
+        with config_path.open("rb") as f:
+            config = tomllib.load(f)
+    except (OSError, IOError) as e:
+        raise FileNotFoundError(
+            f"Could not read configuration file {config_path}: {e}"
+        ) from e
+    except Exception as e:
+        raise ValueError(
+            f"Invalid TOML syntax in configuration file {config_path}: {e}"
+        ) from e
 
-    languages = {}
-    for lang, settings in config.items():
-        if lang != "common_compilation_errors":
+    try:
+        languages = {}
+        # Extract common compilation errors - check both root level and common section
+        common_compilation_errors = config.get("common_compilation_errors", [])
+        if not common_compilation_errors and "common" in config:
+            common_compilation_errors = config["common"].get(
+                "common_compilation_errors", []
+            )
+
+        # Process each language (the keys in the root of the TOML file)
+        for lang, settings in config.items():
+            # Skip non-language entries
+            if lang in ["common_compilation_errors", "common"]:
+                continue
+            if not isinstance(settings, dict):
+                continue
             languages[lang] = LanguageConfig.from_dict(settings)
 
-    return LanguageConfigResult(
-        languages=languages,
-        common_compilation_errors=config.get("common_compilation_errors", []),
-    )
+        return LanguageConfigResult(
+            languages=languages,
+            common_compilation_errors=common_compilation_errors,
+        )
+    except KeyError as e:
+        raise ValueError(
+            f"Missing required configuration key in {config_path}: {e}"
+        ) from e
+    except Exception as e:
+        raise ValueError(
+            f"Error processing configuration from {config_path}: {e}"
+        ) from e
 
 
 # Abstract LLM Interface
 class LLMProvider(ABC):
     """Abstract interface for LLM providers."""
-    
-    def __init__(self, api_key: str, model: str, max_tokens: int = 8192, timeout: float = 60.0):
+
+    def __init__(
+        self, api_key: str, model: str, max_tokens: int = 8192, timeout: float = 60.0
+    ):
         self.api_key = api_key
         self.model = model
         self.max_tokens = max_tokens
         self.timeout = timeout
-    
+
     @abstractmethod
     def call_api(self, prompt: str) -> str:
         """Call the LLM API with the given prompt."""
         pass
-    
+
     @abstractmethod
     def get_required_env_var(self) -> str:
         """Return the required environment variable name for API key."""
@@ -196,101 +234,108 @@ class LLMProvider(ABC):
 
 class AnthropicProvider(LLMProvider):
     """Anthropic Claude LLM provider."""
-    
-    def __init__(self, api_key: str, model: str = "claude-3-5-sonnet-20241022", **kwargs):
+
+    def __init__(
+        self, api_key: str, model: str = "claude-3-5-sonnet-20241022", **kwargs
+    ):
         super().__init__(api_key, model, **kwargs)
         self.client = anthropic.Anthropic(api_key=api_key)
-    
+
     def call_api(self, prompt: str) -> str:
         try:
             response = self.client.messages.create(
                 model=self.model,
                 max_tokens=self.max_tokens,
                 messages=[{"role": "user", "content": prompt}],
-                timeout=self.timeout
+                timeout=self.timeout,
             )
-            
+
             if response.content and len(response.content) > 0:
                 text_content = response.content[0]
-                if hasattr(text_content, 'text'):
+                if hasattr(text_content, "text"):
                     return text_content.text
                 else:
                     return str(text_content)
             else:
                 raise ValueError("Unexpected response format from Claude API")
-                
+
         except anthropic.APIError as e:
             raise ValueError(f"Anthropic API error: {str(e)}")
         except Exception as e:
             raise ValueError(f"Error calling Claude API: {str(e)}")
-    
+
     def get_required_env_var(self) -> str:
         return "ANTHROPIC_API_KEY"
 
 
 class OpenAIProvider(LLMProvider):
     """OpenAI GPT LLM provider."""
-    
+
     def __init__(self, api_key: str, model: str = "gpt-4o", **kwargs):
         super().__init__(api_key, model, **kwargs)
         try:
             import openai
+
             self.client = openai.OpenAI(api_key=api_key)
         except ImportError:
-            raise ImportError("OpenAI package not installed. Install with: pip install openai")
-    
+            raise ImportError(
+                "OpenAI package not installed. Install with: pip install openai"
+            )
+
     def call_api(self, prompt: str) -> str:
         try:
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=self.max_tokens,
-                timeout=self.timeout
+                timeout=self.timeout,
             )
-            
+
             if response.choices and len(response.choices) > 0:
                 return response.choices[0].message.content
             else:
                 raise ValueError("Unexpected response format from OpenAI API")
-                
+
         except Exception as e:
             raise ValueError(f"Error calling OpenAI API: {str(e)}")
-    
+
     def get_required_env_var(self) -> str:
         return "OPENAI_API_KEY"
 
 
 class DeepSeekProvider(LLMProvider):
     """DeepSeek LLM provider."""
-    
+
     def __init__(self, api_key: str, model: str = "deepseek-chat", **kwargs):
         super().__init__(api_key, model, **kwargs)
         try:
             import openai  # DeepSeek uses OpenAI-compatible API
+
             self.client = openai.OpenAI(
-                api_key=api_key,
-                base_url="https://api.deepseek.com"
+                api_key=api_key, base_url="https://api.deepseek.com"
             )
         except ImportError:
-            raise ImportError("OpenAI package not installed. Install with: pip install openai")
-    
+            raise ImportError(
+                "OpenAI package not installed. Install with: pip install openai"
+            )
+
     def call_api(self, prompt: str) -> str:
         try:
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=self.max_tokens,
-                timeout=self.timeout
+                timeout=self.timeout,
             )
-            
+
             if response.choices and len(response.choices) > 0:
                 return response.choices[0].message.content
             else:
                 raise ValueError("Unexpected response format from DeepSeek API")
-                
+
         except Exception as e:
             raise ValueError(f"Error calling DeepSeek API: {str(e)}")
-    
+
     def get_required_env_var(self) -> str:
         return "DEEPSEEK_API_KEY"
 
@@ -301,28 +346,30 @@ def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
         "claude": {
             "class": AnthropicProvider,
             "default_model": "claude-3-5-sonnet-20241022",
-            "env_var": "ANTHROPIC_API_KEY"
+            "env_var": "ANTHROPIC_API_KEY",
         },
         "openai": {
             "class": OpenAIProvider,
             "default_model": "gpt-4o",
-            "env_var": "OPENAI_API_KEY"
+            "env_var": "OPENAI_API_KEY",
         },
         "deepseek": {
             "class": DeepSeekProvider,
             "default_model": "deepseek-chat",
-            "env_var": "DEEPSEEK_API_KEY"
-        }
+            "env_var": "DEEPSEEK_API_KEY",
+        },
     }
-    
+
     if provider_name not in provider_configs:
         available = ", ".join(provider_configs.keys())
-        raise ValueError(f"Unsupported LLM provider: {provider_name}. Available: {available}")
-    
+        raise ValueError(
+            f"Unsupported LLM provider: {provider_name}. Available: {available}"
+        )
+
     config = provider_configs[provider_name]
     env_var = config["env_var"]
     api_key = os.getenv(env_var)
-    
+
     if not api_key:
         raise ValueError(
             f"{env_var} environment variable is required for {provider_name}.\n"
@@ -330,7 +377,7 @@ def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
             f"1. Creating a .env file with: {env_var}=your-api-key\n"
             f"2. Setting environment variable: export {env_var}=your-api-key"
         )
-    
+
     selected_model = model or config["default_model"]
     return config["class"](api_key, selected_model)
 
@@ -688,7 +735,7 @@ def call_llm_api(config: ProcessingConfig, prompt):
     """Call LLM API with the given prompt using the configured provider."""
     # Add rate limiting delay to avoid overwhelming the API
     time.sleep(config.api_rate_limit_delay)
-    
+
     # Create the LLM provider
     try:
         llm_provider = create_llm_provider(config.llm_provider, config.llm_model)
