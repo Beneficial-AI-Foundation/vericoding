@@ -23,6 +23,11 @@ from typing import Any
 from urllib.parse import quote
 
 import requests
+
+try:
+    import tomllib  # Python 3.11+
+except ImportError:
+    import tomli as tomllib  # Fallback for older Python versions
 import yaml
 
 # Module-level thread safety locks (need to be shared across all instances)
@@ -142,16 +147,18 @@ class LanguageConfigResult:
 
 # Load language configuration
 def load_language_config() -> LanguageConfigResult:
-    config_path = Path(__file__).parent / "config" / "language_config.yaml"
+    config_path = Path(__file__).parent / "config" / "language_config.toml"
     if not config_path.exists():
         # Fallback to looking in current directory
-        config_path = Path("language_config.yaml")
+        config_path = Path("language_config.toml")
 
     if not config_path.exists():
         raise FileNotFoundError(f"Language configuration file not found: {config_path}")
 
-    with config_path.open() as f:
-        config = yaml.safe_load(f)
+    # tomllib.load() requires a binary file object, not text mode.
+    # This differs from most config parsers; do not change to "r".
+    with config_path.open("rb") as f:
+        config = tomllib.load(f)
 
     languages = {}
     for lang, settings in config.items():
