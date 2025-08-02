@@ -1,0 +1,44 @@
+"""File I/O and thread-safe operations."""
+
+import threading
+from pathlib import Path
+
+from ..core.config import ProcessingConfig
+
+# Module-level thread safety locks (need to be shared across all instances)
+_print_lock = threading.Lock()
+_file_write_lock = threading.Lock()
+
+
+def thread_safe_print(*args, **kwargs):
+    """Thread-safe print function."""
+    with _print_lock:
+        print(*args, **kwargs)
+
+
+def save_iteration_code(
+    config: ProcessingConfig, relative_path: Path, iteration: int, code: str, phase: str
+):
+    """Save code after each iteration for debugging."""
+    if not config.debug_mode:
+        return
+
+    base_name = relative_path.stem
+
+    if phase in ["original", "generated", "current"]:
+        iteration_file_name = f"{base_name}_iter_{iteration}_{phase}{config.language_config.file_extension}"
+
+        relative_dir = relative_path.parent
+        output_subdir = (
+            Path(config.output_dir) / relative_dir
+            if str(relative_dir) != "."
+            else Path(config.output_dir)
+        )
+
+        with _file_write_lock:
+            output_subdir.mkdir(parents=True, exist_ok=True)
+            iteration_path = output_subdir / iteration_file_name
+            with iteration_path.open("w") as f:
+                f.write(code)
+
+        thread_safe_print(f"    💾 Saved {phase} code to: {iteration_file_name}")
