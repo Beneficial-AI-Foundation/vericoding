@@ -4,7 +4,16 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-import yaml
+try:
+    import tomllib  # Python 3.11+
+except ImportError:
+    try:
+        import tomli as tomllib  # Fallback for older Python versions
+    except ImportError as e:
+        raise ImportError(
+            "TOML support requires Python 3.11+ or the 'tomli' package. "
+            "Install with: pip install tomli"
+        ) from e
 
 
 # Load environment variables from .env file
@@ -117,37 +126,61 @@ class ProcessingConfig:
 
 
 def load_language_config() -> LanguageConfigResult:
-    """Load language configuration from YAML file."""
+    """Load language configuration from TOML file."""
     # Try to find config file relative to this module's location
     module_dir = Path(__file__).parent.parent.parent  # Go up to the repository root
-    config_path = module_dir / "config" / "language_config.yaml"
+    config_path = module_dir / "config" / "language_config.toml"
 
     if not config_path.exists():
         # Fallback to current directory
-        config_path = Path("config/language_config.yaml")
+        config_path = Path("config/language_config.toml")
         if not config_path.exists():
-            config_path = Path("language_config.yaml")  # Final fallback
+            config_path = Path("language_config.toml")  # Final fallback
 
     if not config_path.exists():
         raise FileNotFoundError(f"Language configuration file not found: {config_path}")
 
-    with open(config_path, "r") as f:
-        config_data = yaml.safe_load(f)
+    try:
+        # tomllib.load() requires a binary file object, not text mode.
+        # This differs from most config parsers; do not change to "r".
+        with config_path.open("rb") as f:
+            config_data = tomllib.load(f)
+    except (OSError, IOError) as e:
+        raise FileNotFoundError(
+            f"Could not read configuration file {config_path}: {e}"
+        ) from e
+    except Exception as e:
+        raise ValueError(
+            f"Invalid TOML syntax in configuration file {config_path}: {e}"
+        ) from e
 
-    languages = {}
-    # Extract common compilation errors if they exist
-    common_compilation_errors = config_data.get("common_compilation_errors", [])
+    try:
+        languages = {}
+        # Extract common compilation errors - check both root level and common section
+        common_compilation_errors = config_data.get("common_compilation_errors", [])
+        if not common_compilation_errors and "common" in config_data:
+            common_compilation_errors = config_data["common"].get(
+                "common_compilation_errors", []
+            )
 
-    # Process each language (the keys in the root of the YAML file)
-    for lang_name, lang_data in config_data.items():
-        # Skip non-language entries
-        if lang_name in ["common_compilation_errors"]:
-            continue
-        if not isinstance(lang_data, dict):
-            continue
+        # Process each language (the keys in the root of the TOML file)
+        for lang_name, lang_data in config_data.items():
+            # Skip non-language entries
+            if lang_name in ["common_compilation_errors", "common"]:
+                continue
+            if not isinstance(lang_data, dict):
+                continue
 
-        languages[lang_name] = LanguageConfig.from_dict(lang_data)
+            languages[lang_name] = LanguageConfig.from_dict(lang_data)
 
-    return LanguageConfigResult(
-        languages=languages, common_compilation_errors=common_compilation_errors
-    )
+        return LanguageConfigResult(
+            languages=languages, common_compilation_errors=common_compilation_errors
+        )
+    except KeyError as e:
+        raise ValueError(
+            f"Missing required configuration key in {config_path}: {e}"
+        ) from e
+    except Exception as e:
+        raise ValueError(
+            f"Error processing configuration from {config_path}: {e}"
+        ) from e

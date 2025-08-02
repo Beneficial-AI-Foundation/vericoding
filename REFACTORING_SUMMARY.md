@@ -118,14 +118,14 @@ Both scripts have identical CLI interfaces and functionality.
 ## Configuration
 
 ### Language Configuration
-Centralized in `config/language_config.yaml`:
-```yaml
-dafny:
-  name: "Dafny"
-  file_extension: ".dfy"
-  tool_path_env: "DAFNY_PATH"
-  verify_command: ["{tool_path}", "verify", "{file_path}"]
-  # ... more configuration
+Centralized in `config/language_config.toml`:
+```toml
+[dafny]
+name = "Dafny"
+file_extension = ".dfy"
+tool_path_env = "DAFNY_PATH"
+verify_command = ["{tool_path}", "verify", "{file_path}"]
+# ... more configuration
 ```
 
 ### Environment Variables
@@ -167,7 +167,7 @@ python spec_to_code_modular.py lean ./specs --strict-specs --llm-provider claude
 ### For Developers
 - Import modules from `vericoding.core`, `vericoding.processing`, `vericoding.utils`
 - Use abstract `LLMProvider` for adding new providers
-- Extend configuration in `language_config.yaml` for new languages
+- Extend configuration in `language_config.toml` for new languages
 
 ## Testing and Validation
 
@@ -199,6 +199,6 @@ The modular architecture enables easy implementation of:
 - `REFACTORING_SUMMARY.md` - This documentation
 
 ### Configuration Files
-- `config/language_config.yaml` - Centralized language configuration
+- `config/language_config.toml` - Centralized language configuration
 
 The refactoring maintains full backward compatibility while providing a clean, extensible foundation for future development.
