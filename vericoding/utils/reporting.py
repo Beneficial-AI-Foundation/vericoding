@@ -32,15 +32,32 @@ def generate_csv_results(config: ProcessingConfig, results: list) -> str:
             spec_to_code = "SUCCESS" if result.success else "FAILED"
 
             # Generate spec link
+            # result.file is already relative to config.files_dir, so construct the full path correctly
             spec_full_path = Path(config.files_dir) / result.file
-            spec_rel_path = spec_full_path.relative_to(Path(repo_root))
+            try:
+                spec_rel_path = spec_full_path.relative_to(Path(repo_root))
+            except ValueError:
+                # If the full path is not within repo_root, try to make it relative from current working directory
+                try:
+                    spec_rel_path = spec_full_path.relative_to(Path.cwd())
+                except ValueError:
+                    # If still not relative, use the path as-is
+                    spec_rel_path = spec_full_path
             spec_link = (
                 get_github_url(spec_rel_path, repo_url, branch) if repo_url else ""
             )
 
             # Generate impl link
             if result.output:
-                impl_rel_path = Path(result.output).relative_to(Path(repo_root))
+                try:
+                    impl_rel_path = Path(result.output).relative_to(Path(repo_root))
+                except ValueError:
+                    # If the output path is not within repo_root, try to make it relative from current working directory
+                    try:
+                        impl_rel_path = Path(result.output).relative_to(Path.cwd())
+                    except ValueError:
+                        # If still not relative, use the path as-is
+                        impl_rel_path = Path(result.output)
                 impl_link = (
                     get_github_url(impl_rel_path, repo_url, branch) if repo_url else ""
                 )
