@@ -28,7 +28,7 @@ def generate_csv_results(config: ProcessingConfig, results: list) -> str:
         writer.writerow(["spec_name", "spec_to_code", "spec_link", "impl_link"])
         # Write results
         for result in results:
-            spec_name = Path(result.file).stem  # Remove extension and preserve path
+            spec_name = str(Path(result.file).with_suffix(''))  # Remove extension and preserve path
             spec_to_code = "SUCCESS" if result.success else "FAILED"
 
             # Generate spec link
