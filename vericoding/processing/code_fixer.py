@@ -1,9 +1,11 @@
 """Code extraction and fixing utilities."""
 
+import logging
 import re
 
 from ..core.config import ProcessingConfig
-from ..utils.io_utils import thread_safe_print
+
+logger = logging.getLogger(__name__)
 
 
 def extract_code(config: ProcessingConfig, output: str) -> str:
@@ -229,8 +231,8 @@ def verify_spec_preservation(
 
             # Check if the normalized content is present
             if normalized_spec not in normalized_generated:
-                thread_safe_print(
-                    f"    ⚠️  Specification missing or modified: {spec_content[:100]}..."
+                logger.warning(
+                    "Specification missing or modified: %s...", spec_content[:100]
                 )
                 return False
 

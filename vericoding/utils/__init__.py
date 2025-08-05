@@ -7,7 +7,6 @@ from .git_utils import (
     get_repo_root,
 )
 from .io_utils import (
-    thread_safe_print,
     save_iteration_code,
 )
 from .reporting import (
@@ -20,7 +19,6 @@ __all__ = [
     "get_current_branch",
     "get_github_url",
     "get_repo_root",
-    "thread_safe_print",
     "save_iteration_code",
     "generate_csv_results",
     "generate_summary",
