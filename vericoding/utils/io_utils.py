@@ -1,19 +1,17 @@
 """File I/O and thread-safe operations."""
 
+import logging
 import threading
 from pathlib import Path
 
 from ..core.config import ProcessingConfig
 
+# Set up a basic logger
+logging.basicConfig(level=logging.INFO, format="%(message)s")
+logger = logging.getLogger(__name__)
+
 # Module-level thread safety locks (need to be shared across all instances)
-_print_lock = threading.Lock()
 _file_write_lock = threading.Lock()
-
-
-def thread_safe_print(*args, **kwargs):
-    """Thread-safe print function."""
-    with _print_lock:
-        print(*args, **kwargs)
 
 
 def file_write_lock():
@@ -46,4 +44,4 @@ def save_iteration_code(
             with iteration_path.open("w") as f:
                 f.write(code)
 
-        thread_safe_print(f"    💾 Saved {phase} code to: {iteration_file_name}")
+        logger.info(f"    💾 Saved {phase} code to: {iteration_file_name}")

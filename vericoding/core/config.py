@@ -2,46 +2,26 @@
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
-
-try:
-    import tomllib  # Python 3.11+
-except ImportError:
-    try:
-        import tomli as tomllib  # Fallback for older Python versions
-    except ImportError as e:
-        raise ImportError(
-            "TOML support requires Python 3.11+ or the 'tomli' package. "
-            "Install with: pip install tomli"
-        ) from e
+import tomllib
 
 
 # Load environment variables from .env file
 def load_environment():
     """Load environment variables from .env file if it exists."""
-    try:
-        from dotenv import load_dotenv
+    from dotenv import load_dotenv
 
-        # Look for .env file in current directory and parent directories
-        env_file = Path(".env")
-        if not env_file.exists():
-            # Try parent directory (useful when running from subdirectories)
-            env_file = Path("../.env")
+    # Look for .env file in current directory and parent directories
+    env_file = Path(".env")
+    if not env_file.exists():
+        # Try parent directory (useful when running from subdirectories)
+        env_file = Path("../.env")
 
-        if env_file.exists():
-            load_dotenv(env_file)
-            print(f"✓ Loaded environment variables from {env_file}")
-        else:
-            # Try to load from default location
-            load_dotenv()
-    except ImportError:
-        # Fallback if dotenv is not installed
-        print(
-            "Note: python-dotenv not installed. Using system environment variables only."
-        )
-        print("To use .env files, install with: pip install python-dotenv")
-    except Exception as e:
-        print(f"Warning: Could not load .env file: {e}")
+    if env_file.exists():
+        load_dotenv(env_file)
+        print(f"✓ Loaded environment variables from {env_file}")
+    else:
+        # Try to load from default location
+        load_dotenv()
 
 
 @dataclass
@@ -49,33 +29,16 @@ class LanguageConfig:
     """Configuration for a specific programming language."""
 
     name: str
-    file_extension: str
-    tool_path_env: str
-    default_tool_path: str
-    prompts_file: str
-    verify_command: list[str]
-    compile_check_command: list[str] | None
-    success_indicators: list[str]
-    code_block_patterns: list[str]
-    keywords: list[str]
-    spec_patterns: list[str]
-
-    @classmethod
-    def from_dict(cls, config_dict: dict[str, Any]) -> "LanguageConfig":
-        """Create LanguageConfig from dictionary."""
-        return cls(
-            name=config_dict["name"],
-            file_extension=config_dict["file_extension"],
-            tool_path_env=config_dict["tool_path_env"],
-            default_tool_path=config_dict["default_tool_path"],
-            prompts_file=config_dict["prompts_file"],
-            verify_command=config_dict["verify_command"],
-            compile_check_command=config_dict.get("compile_check_command"),
-            success_indicators=config_dict["success_indicators"],
-            code_block_patterns=config_dict["code_block_patterns"],
-            keywords=config_dict["keywords"],
-            spec_patterns=config_dict["spec_patterns"],
-        )
+    file_extension: str  # e.g., ".dfy", ".py", ".rs"
+    tool_path_env: str  # Environment variable name
+    default_tool_path: str | Path  # Path to the language tool
+    prompts_file: str | Path  # Path to prompts file
+    verify_command: list[str]  # Command and arguments for verification
+    compile_check_command: list[str] | None  # Optional compilation check
+    success_indicators: list[str]  # Patterns indicating successful verification
+    code_block_patterns: list[str]  # Regex patterns for code blocks
+    keywords: list[str]  # Language-specific keywords
+    spec_patterns: list[str]  # Patterns for specification blocks
 
 
 @dataclass
@@ -171,7 +134,7 @@ def load_language_config() -> LanguageConfigResult:
             if not isinstance(lang_data, dict):
                 continue
 
-            languages[lang_name] = LanguageConfig.from_dict(lang_data)
+            languages[lang_name] = LanguageConfig(**lang_data)
 
         return LanguageConfigResult(
             languages=languages, common_compilation_errors=common_compilation_errors

@@ -1,5 +1,6 @@
 """File processing logic."""
 
+import logging
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
@@ -9,8 +10,12 @@ from ..core.config import ProcessingConfig
 from ..core.llm_providers import create_llm_provider
 from ..core.prompts import PromptLoader
 from ..core.language_tools import verify_file
-from ..utils.io_utils import thread_safe_print, save_iteration_code
+from ..utils.io_utils import save_iteration_code
 from .code_fixer import extract_code, verify_spec_preservation, restore_specs
+
+# Set up a basic logger
+logging.basicConfig(level=logging.INFO, format="%(message)s")
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -42,7 +47,7 @@ def process_spec_file(
 ) -> ProcessingResult:
     """Process a single specification file."""
     try:
-        thread_safe_print(f"Processing: {Path(file_path).name}")
+        logger.info(f"Processing: {Path(file_path).name}")
 
         # Read the original file
         with Path(file_path).open() as f:
@@ -56,29 +61,25 @@ def process_spec_file(
         save_iteration_code(config, relative_path, 0, original_code, "original")
 
         # Check if original file has compilation errors
-        thread_safe_print("  Checking original file for compilation errors...")
+        logger.info("  Checking original file for compilation errors...")
         original_verification = verify_file(config, file_path)
 
         if not original_verification.success:
-            thread_safe_print(
-                f"  ⚠️  Original file has issues: {original_verification.error}"
-            )
-            thread_safe_print("  Will attempt to fix during processing...")
+            logger.info(f"  ⚠️  Original file has issues: {original_verification.error}")
+            logger.info("  Will attempt to fix during processing...")
 
         # Step 1: Generate code from specifications
-        thread_safe_print("  Step 1: Generating code from specifications...")
+        logger.info("  Step 1: Generating code from specifications...")
         try:
             generate_prompt = prompt_loader.format_prompt(
                 "generate_code", code=original_code
             )
         except KeyError as e:
-            thread_safe_print(f"  ✗ Prompt error: {e}")
-            thread_safe_print(
-                f"  Available prompts: {list(prompt_loader.prompts.keys())}"
-            )
+            logger.info(f"  ✗ Prompt error: {e}")
+            logger.info(f"  Available prompts: {list(prompt_loader.prompts.keys())}")
             raise
         except Exception as e:
-            thread_safe_print(f"  ✗ Error formatting prompt: {e}")
+            logger.info(f"  ✗ Error formatting prompt: {e}")
             raise
 
         generated_response = call_llm_api(config, generate_prompt)
@@ -88,7 +89,7 @@ def process_spec_file(
         if config.strict_spec_verification and not verify_spec_preservation(
             config, original_code, generated_code
         ):
-            thread_safe_print(
+            logger.info(
                 "  ⚠️  Warning: Specifications were modified. Restoring original specifications..."
             )
             generated_code = restore_specs(config, original_code, generated_code)
@@ -123,7 +124,7 @@ def process_spec_file(
         last_verification = None
 
         for iteration in range(1, config.max_iterations + 1):
-            thread_safe_print(
+            logger.info(
                 f"  Iteration {iteration}/{config.max_iterations}: Verifying..."
             )
 
@@ -141,11 +142,11 @@ def process_spec_file(
             last_verification = verification
 
             if verification.success:
-                thread_safe_print("    ✓ Verification successful!")
+                logger.info("    ✓ Verification successful!")
                 success = True
                 break
             else:
-                thread_safe_print(
+                logger.info(
                     f"    ✗ Verification failed: {verification.error[:200] if verification.error else 'Unknown error'}..."
                 )
 
@@ -154,7 +155,7 @@ def process_spec_file(
 
             # Only attempt fix if not on last iteration
             if iteration < config.max_iterations:
-                thread_safe_print("    Attempting to fix errors...")
+                logger.info("    Attempting to fix errors...")
                 fix_prompt = prompt_loader.format_prompt(
                     "fix_verification",
                     code=current_code,
@@ -170,21 +171,19 @@ def process_spec_file(
                     if config.strict_spec_verification and not verify_spec_preservation(
                         config, original_code, fixed_code
                     ):
-                        thread_safe_print(
+                        logger.info(
                             "    ⚠️  Warning: Specifications were modified during fix. Restoring original specifications..."
                         )
                         fixed_code = restore_specs(config, original_code, fixed_code)
 
                     current_code = fixed_code
-                    thread_safe_print(f"    Generated fix for iteration {iteration}")
+                    logger.info(f"    Generated fix for iteration {iteration}")
                 except Exception as e:
-                    thread_safe_print(f"    ✗ Failed to generate fix: {str(e)}")
+                    logger.info(f"    ✗ Failed to generate fix: {str(e)}")
                     break
 
         if success:
-            thread_safe_print(
-                f"  ✓ Successfully generated and verified: {output_path.name}"
-            )
+            logger.info(f"  ✓ Successfully generated and verified: {output_path.name}")
             return ProcessingResult(
                 success=True,
                 file=str(relative_path),
@@ -198,7 +197,7 @@ def process_spec_file(
                 if last_verification
                 else "Unknown verification error"
             )
-            thread_safe_print(
+            logger.info(
                 f"  ✗ Failed to verify after {config.max_iterations} iterations: {error_msg[:200] if error_msg else 'Unknown error'}..."
             )
             return ProcessingResult(
@@ -210,7 +209,7 @@ def process_spec_file(
             )
 
     except Exception as e:
-        thread_safe_print(f"✗ Failed: {Path(file_path).name} - {str(e)}")
+        logger.info(f"✗ Failed: {Path(file_path).name} - {str(e)}")
         return ProcessingResult(
             success=False,
             file=str(relative_path)
@@ -255,7 +254,7 @@ def process_files_parallel(
 
                 # Print progress update
                 status = "✓" if result.success else "✗"
-                thread_safe_print(
+                logger.info(
                     f"[{completed_count}/{total_files}] {status} {Path(file_path).name}"
                 )
 
@@ -270,7 +269,7 @@ def process_files_parallel(
                     has_bypass=False,
                 )
                 results.append(error_result)
-                thread_safe_print(
+                logger.info(
                     f"[{completed_count}/{total_files}] ✗ {Path(file_path).name} - Unexpected error: {str(e)}"
                 )
 

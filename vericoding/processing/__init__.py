@@ -11,7 +11,7 @@ from .code_fixer import (
     verify_spec_preservation,
     restore_specs,
 )
-from .verification import verify_file
+from ..core.language_tools import verify_file
 
 __all__ = [
     "ProcessingResult",

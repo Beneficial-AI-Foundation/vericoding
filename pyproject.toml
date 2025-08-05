@@ -16,6 +16,7 @@ dependencies = [
     "pyyaml>=6.0.2",  # Keep for backward compatibility during migration
     "python-dotenv>=1.0.0",  # For easier .env file loading
     "tomli>=1.2.0; python_version<'3.11'",  # TOML parsing for Python < 3.11
+    "GitPython>=3.1.0",  # Git operations
 ]
 
 [project.optional-dependencies]

@@ -1,20 +1,21 @@
 """Git operations and URL generation utilities."""
 
-import subprocess
 from pathlib import Path
 from urllib.parse import quote
+
+import git
+from git.exc import GitCommandError, InvalidGitRepositoryError
 
 
 def get_git_remote_url() -> str | None:
     """Get the GitHub remote URL from git configuration."""
     try:
-        result = subprocess.run(
-            ["git", "config", "--get", "remote.origin.url"],
-            capture_output=True,
-            text=True,
-            check=True,
-        )
-        remote_url = result.stdout.strip()
+        repo = git.Repo(search_parent_directories=True)
+        if "origin" not in repo.remotes:
+            print("Error: No 'origin' remote found.")
+            return None
+
+        remote_url = repo.remotes.origin.url
         if remote_url.startswith("git@github.com:"):
             remote_url = remote_url.replace(
                 "git@github.com:", "https://github.com/"
@@ -24,7 +25,7 @@ def get_git_remote_url() -> str | None:
         else:
             print(f"Warning: Unknown remote URL format: {remote_url}")
         return remote_url
-    except subprocess.CalledProcessError:
+    except InvalidGitRepositoryError:
         print(
             "Error: Could not get git remote URL. Make sure you're in a git repository."
         )
@@ -37,23 +38,15 @@ def get_git_remote_url() -> str | None:
 def get_current_branch() -> str:
     """Get the current git branch."""
     try:
-        result = subprocess.run(
-            ["git", "branch", "--show-current"],
-            capture_output=True,
-            text=True,
-            check=True,
-        )
-        return result.stdout.strip()
-    except (subprocess.CalledProcessError, FileNotFoundError):
+        repo = git.Repo(search_parent_directories=True)
+        return repo.active_branch.name
+    except (InvalidGitRepositoryError, GitCommandError, TypeError):
+        # TypeError can occur if repo.active_branch is None (detached HEAD)
         try:
-            result = subprocess.run(
-                ["git", "rev-parse", "--abbrev-ref", "HEAD"],
-                capture_output=True,
-                text=True,
-                check=True,
-            )
-            return result.stdout.strip()
-        except (subprocess.CalledProcessError, FileNotFoundError):
+            repo = git.Repo(search_parent_directories=True)
+            # Try to get branch name from HEAD in detached state
+            return repo.git.rev_parse("--abbrev-ref", "HEAD")
+        except (InvalidGitRepositoryError, GitCommandError):
             return "main"
 
 
@@ -67,9 +60,14 @@ def get_github_url(file_path: Path, repo_url: str, branch: str = "main") -> str:
 
 def get_repo_root() -> Path:
     """Find the repository root by looking for .git directory."""
-    current = Path.cwd()
-    while current != current.parent:
-        if (current / ".git").exists():
-            return current
-        current = current.parent
-    return Path.cwd()  # Fallback to current directory
+    try:
+        repo = git.Repo(search_parent_directories=True)
+        return Path(repo.working_dir)
+    except InvalidGitRepositoryError:
+        # Fallback to manual search if not in a git repository
+        current = Path.cwd()
+        while current != current.parent:
+            if (current / ".git").exists():
+                return current
+            current = current.parent
+        return Path.cwd()  # Fallback to current directory
