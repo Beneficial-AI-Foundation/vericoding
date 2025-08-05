@@ -11,6 +11,7 @@ from ..core.llm_providers import create_llm_provider
 from ..core.prompts import PromptLoader
 from ..core.language_tools import verify_file
 from ..utils.io_utils import save_iteration_code
+from ..utils.wandb_logger import get_wandb_logger
 from .code_fixer import extract_code, verify_spec_preservation, restore_specs
 
 # Set up a basic logger
@@ -29,7 +30,7 @@ class ProcessingResult:
     has_bypass: bool
 
 
-def call_llm_api(config: ProcessingConfig, prompt: str) -> str:
+def call_llm_api(config: ProcessingConfig, prompt: str, prompt_type: str = "generate_code") -> str:
     """Call LLM API with the given prompt using the configured provider."""
     # Add rate limiting delay to avoid overwhelming the API
     time.sleep(config.api_rate_limit_delay)
@@ -37,7 +38,21 @@ def call_llm_api(config: ProcessingConfig, prompt: str) -> str:
     # Create the LLM provider
     try:
         llm_provider = create_llm_provider(config.llm_provider, config.llm_model)
-        return llm_provider.call_api(prompt)
+        
+        # Log LLM call start
+        start_time = time.time()
+        response = llm_provider.call_api(prompt)
+        latency_ms = (time.time() - start_time) * 1000
+        
+        # Log to wandb
+        wandb_logger = get_wandb_logger()
+        wandb_logger.log_llm_call(
+            prompt_type=prompt_type,
+            model=config.llm_model or config.llm_provider,
+            latency_ms=latency_ms
+        )
+        
+        return response
     except Exception as e:
         raise ValueError(f"Error calling {config.llm_provider} API: {str(e)}")
 
@@ -46,8 +61,18 @@ def process_spec_file(
     config: ProcessingConfig, prompt_loader: PromptLoader, file_path: str
 ) -> ProcessingResult:
     """Process a single specification file."""
+    wandb_logger = get_wandb_logger()
+    
     try:
         logger.info(f"Processing: {Path(file_path).name}")
+        
+        # Log file processing start
+        wandb_logger.log_file_processing(
+            file_path=file_path,
+            language=config.language,
+            status="started",
+            iteration=0
+        )
 
         # Read the original file
         with Path(file_path).open() as f:
@@ -57,8 +82,14 @@ def process_spec_file(
         relative_path = Path(file_path).relative_to(Path(config.files_dir))
         base_file_name = Path(file_path).stem
 
-        # Save original code
+        # Save original code and log as artifact
         save_iteration_code(config, relative_path, 0, original_code, "original")
+        wandb_logger.log_code_artifact(
+            file_path=file_path,
+            code=original_code,
+            version="original",
+            metadata={"language": config.language}
+        )
 
         # Check if original file has compilation errors
         logger.info("  Checking original file for compilation errors...")
@@ -94,8 +125,17 @@ def process_spec_file(
             )
             generated_code = restore_specs(config, original_code, generated_code)
 
-        # Save initial generated code
+        # Save initial generated code and log as artifact
         save_iteration_code(config, relative_path, 1, generated_code, "generated")
+        wandb_logger.log_code_artifact(
+            file_path=file_path,
+            code=generated_code,
+            version="generated",
+            metadata={
+                "language": config.language,
+                "iteration": 1
+            }
+        )
 
         # Create output file path preserving directory structure
         relative_dir = relative_path.parent
@@ -140,6 +180,15 @@ def process_spec_file(
             # Verify
             verification = verify_file(config, str(output_path))
             last_verification = verification
+            
+            # Log verification attempt
+            wandb_logger.log_verification_attempt(
+                file_path=file_path,
+                iteration=iteration,
+                success=verification.success,
+                verification_output=verification.error or "Success",
+                error_count=0 if verification.success else 1
+            )
 
             if verification.success:
                 logger.info("    ✓ Verification successful!")
@@ -164,7 +213,7 @@ def process_spec_file(
                 )
 
                 try:
-                    fix_response = call_llm_api(config, fix_prompt)
+                    fix_response = call_llm_api(config, fix_prompt, "fix_verification")
                     fixed_code = extract_code(config, fix_response)
 
                     # Verify that all specifications are still preserved
@@ -178,12 +227,34 @@ def process_spec_file(
 
                     current_code = fixed_code
                     logger.info(f"    Generated fix for iteration {iteration}")
+                    
+                    # Log fixed code as artifact
+                    wandb_logger.log_code_artifact(
+                        file_path=file_path,
+                        code=fixed_code,
+                        version=f"fixed_iter{iteration}",
+                        metadata={
+                            "language": config.language,
+                            "iteration": iteration,
+                            "fix_applied": "llm_fix"
+                        }
+                    )
                 except Exception as e:
                     logger.info(f"    ✗ Failed to generate fix: {str(e)}")
                     break
 
         if success:
             logger.info(f"  ✓ Successfully generated and verified: {output_path.name}")
+            
+            # Log success
+            wandb_logger.log_file_processing(
+                file_path=file_path,
+                language=config.language,
+                status="success",
+                iteration=iteration,
+                metrics={"total_iterations": iteration}
+            )
+            
             return ProcessingResult(
                 success=True,
                 file=str(relative_path),
@@ -200,6 +271,17 @@ def process_spec_file(
             logger.info(
                 f"  ✗ Failed to verify after {config.max_iterations} iterations: {error_msg[:200] if error_msg else 'Unknown error'}..."
             )
+            
+            # Log failure
+            wandb_logger.log_file_processing(
+                file_path=file_path,
+                language=config.language,
+                status="failed",
+                iteration=config.max_iterations,
+                error=error_msg,
+                metrics={"total_iterations": config.max_iterations}
+            )
+            
             return ProcessingResult(
                 success=False,
                 file=str(relative_path),
@@ -210,6 +292,16 @@ def process_spec_file(
 
     except Exception as e:
         logger.info(f"✗ Failed: {Path(file_path).name} - {str(e)}")
+        
+        # Log exception
+        wandb_logger.log_file_processing(
+            file_path=file_path,
+            language=config.language,
+            status="error",
+            iteration=0,
+            error=str(e)
+        )
+        
         return ProcessingResult(
             success=False,
             file=str(relative_path)

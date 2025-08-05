@@ -85,6 +85,12 @@ Examples:
         action="store_true",
         help="Enable strict specification preservation (default: relaxed verification)",
     )
+    
+    parser.add_argument(
+        "--no-wandb",
+        action="store_true", 
+        help="Disable Weights & Biases experiment tracking",
+    )
 
     parser.add_argument(
         "--workers",
@@ -256,6 +262,39 @@ def main():
 
     # Set up configuration
     config = setup_configuration(args)
+    
+    # Initialize wandb for experiment tracking (unless disabled)
+    from vericoding.utils.wandb_logger import init_wandb_run, get_wandb_logger, WandbConfig
+    
+    logger = None
+    if not args.no_wandb:
+        # Initialize wandb run
+        run_name = f"vericoding_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        wandb_config = {
+            "language": config.language,
+            "max_iterations": config.max_iterations,
+            "llm_provider": config.llm_provider,
+            "llm_model": config.llm_model,
+            "strict_spec_verification": config.strict_spec_verification,
+            "max_workers": config.max_workers,
+            "files_dir": config.files_dir,
+        }
+        
+        init_wandb_run(
+            name=run_name,
+            config=wandb_config,
+            tags=[config.language, config.llm_provider]
+        )
+        
+        logger = get_wandb_logger()
+        logger.log_config(config)
+        print(f"✅ Weights & Biases tracking enabled: {run_name}")
+    else:
+        # Set wandb to disabled mode
+        wandb_config_disabled = WandbConfig(mode="disabled")
+        logger = get_wandb_logger()
+        logger.config = wandb_config_disabled
+        print("⚠️  Weights & Biases tracking disabled")
 
     # Initialize prompt loader for the selected language
     try:
@@ -379,12 +418,31 @@ def main():
 
     # Print final statistics
     successful = [r for r in results if r.success]
+    failed = [r for r in results if not r.success and not r.has_bypass]
+    bypassed = [r for r in results if r.has_bypass]
+    
     print(
         f"\n🎉 Processing completed: {len(successful)}/{len(results)} files successful ({len(successful) / len(results) * 100:.1f}%)"
     )
     print(
         f"⚡ Parallel processing with {config.max_workers} workers completed in {processing_time:.2f}s"
     )
+    
+    # Log experiment summary to wandb (if enabled)
+    if logger and not args.no_wandb:
+        total_iterations = sum(config.max_iterations for _ in results)  # Approximation
+        logger.log_experiment_summary(
+            total_files=len(results),
+            successful_files=len(successful),
+            failed_files=len(failed),
+            bypassed_files=len(bypassed),
+            total_iterations=total_iterations,
+            total_llm_calls=total_iterations * 2,  # Approximation: generate + fix attempts
+            duration_seconds=processing_time
+        )
+        
+        # Finish wandb run
+        logger.finish()
 
 
 if __name__ == "__main__":
