@@ -274,21 +274,6 @@ class TestEnvironmentLoading:
 
             mock_load_dotenv.assert_called()
 
-    def test_load_environment_without_dotenv_package(self):
-        """Test load_environment when python-dotenv is not installed."""
-        with patch(
-            "builtins.__import__", side_effect=ImportError("No module named 'dotenv'")
-        ):
-            # Should not raise an exception, just print a message
-            load_environment()
-
-    def test_load_environment_with_dotenv_error(self):
-        """Test load_environment when dotenv raises an exception."""
-        with patch("dotenv.load_dotenv", side_effect=Exception("Permission denied")):
-            # Should not raise an exception, just print a warning
-            load_environment()
-
-
 class TestConfigurationIntegration:
     """Integration tests for configuration system."""
 

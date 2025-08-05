@@ -139,7 +139,7 @@ def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
     provider_configs = {
         "claude": {
             "class": AnthropicProvider,
-            "default_model": "claude-3-5-sonnet-20241022",
+            "default_model": "claude-sonnet-4-20250514",
             "env_var": "ANTHROPIC_API_KEY",
         },
         "openai": {
