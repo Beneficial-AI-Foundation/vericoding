@@ -38,3 +38,8 @@ vericode-lean = "vericoding.lean.spec_to_code_lean:main"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "wandb>=0.21.0",
+]
