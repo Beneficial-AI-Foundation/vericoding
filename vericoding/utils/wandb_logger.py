@@ -3,7 +3,7 @@
 import os
 from pathlib import Path
 from typing import Any, Dict, Optional, List
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 import wandb
 from datetime import datetime
 
