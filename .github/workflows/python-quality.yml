@@ -5,16 +5,20 @@ on:
     branches: [ main, develop ]
     paths:
       - "spec_to_code.py"
+      - "spec_to_code_modular.py"
+      - "vericoding/**/*.py"
       - ".github/workflows/python-quality.yml"
   pull_request:
     branches: [ main, develop ]
     paths:
       - "spec_to_code.py"
+      - "spec_to_code_modular.py"
+      - "vericoding/**/*.py"
       - ".github/workflows/python-quality.yml"
   workflow_dispatch:
 
 jobs:
-  lint:
+  lint-and-format:
     runs-on: ubuntu-latest
     
     steps:
@@ -27,14 +31,17 @@ jobs:
     - name: Set up Python
       run: uv python install 3.12
 
-    - name: Install and run Ruff (linter)
+    - name: Install dependencies
+      run: uv sync --no-install-project
+
+    - name: Run Ruff linter
       uses: astral-sh/ruff-action@v3
       with:
-        src: "spec_to_code.py"
+        src: "./vericoding ./spec_to_code_modular.py"
         args: "check --output-format=github"
 
-    - name: Install and run Ruff (formatter check)
+    - name: Check code formatting with Ruff
       uses: astral-sh/ruff-action@v3
       with:
-        src: "spec_to_code.py"
+        src: "./vericoding ./spec_to_code_modular.py"
         args: "format --check"

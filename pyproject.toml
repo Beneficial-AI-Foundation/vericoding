@@ -1,5 +1,6 @@
 [project]
-name = "vericoding-lean"
+#name = "vericoding-lean"
+name = "vericoding"
 version = "0.1.0"
 description = "Lean 4 verification experiment framework"
 authors = [
@@ -14,6 +15,21 @@ dependencies = [
     "jinja2>=3.1.0",
     "pyyaml>=6.0.2",  # Keep for backward compatibility during migration
     "python-dotenv>=1.0.0",  # For easier .env file loading
+    "tomli>=1.2.0; python_version<'3.11'",  # TOML parsing for Python < 3.11
+    "GitPython>=3.1.0",  # Git operations
+]
+
+[project.optional-dependencies]
+openai = ["openai>=1.0.0"]
+all = ["openai>=1.0.0"]
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.0.0",
+    "psutil>=5.9.0",
+]
+dev = [
+    "ruff>=0.1.0",
 ]
 
 [project.scripts]
