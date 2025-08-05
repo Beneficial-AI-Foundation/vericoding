@@ -351,7 +351,7 @@ class TestFactoryFunction:
         provider = create_llm_provider("claude")
         assert isinstance(provider, AnthropicProvider)
         assert provider.api_key == "test-anthropic-key"
-        assert provider.model == "claude-3-5-sonnet-20241022"
+        assert provider.model == "claude-sonnet-4-20250514"
 
     @patch.dict(os.environ, {"ANTHROPIC_API_KEY": "test-key"})
     def test_create_claude_provider_custom_model(self):

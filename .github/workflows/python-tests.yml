@@ -42,7 +42,7 @@ jobs:
     - name: Create virtual environment and install dependencies
       run: |
         uv venv
-        uv pip install pytest pytest-cov pydantic anthropic claude-code-sdk wandb jinja2 pyyaml python-dotenv
+        uv pip install -e ".[test]"
 
     - name: Run tests with coverage
       run: source .venv/bin/activate && pytest tests/ -v --cov=vericoding --cov-report=xml --cov-report=html --cov-report=term-missing
