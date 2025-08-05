@@ -16,6 +16,11 @@ def thread_safe_print(*args, **kwargs):
         print(*args, **kwargs)
 
 
+def file_write_lock():
+    """Return the file write lock for thread-safe file operations."""
+    return _file_write_lock
+
+
 def save_iteration_code(
     config: ProcessingConfig, relative_path: Path, iteration: int, code: str, phase: str
 ):
