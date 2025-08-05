@@ -50,7 +50,7 @@ def main():
         pytest_args.extend(sys.argv[1:])
 
     # Run pytest
-    cmd = ["uv", "run", "pytest"] + pytest_args
+    cmd = ["uv", "run", "--extra", "test", "pytest"] + pytest_args
     print(f"Running: {' '.join(cmd)}")
 
     result = subprocess.run(cmd, cwd=project_root)
