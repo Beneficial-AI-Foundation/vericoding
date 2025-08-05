@@ -31,9 +31,7 @@ class LLMProvider(ABC):
 class AnthropicProvider(LLMProvider):
     """Anthropic Claude LLM provider."""
 
-    def __init__(
-        self, api_key: str, model: str = "claude-3-5-sonnet-20241022", **kwargs
-    ):
+    def __init__(self, api_key: str, model: str = "claude-sonnet-4-20250514", **kwargs):
         super().__init__(api_key, model, **kwargs)
         self.client = anthropic.Anthropic(api_key=api_key)
 
