@@ -104,8 +104,10 @@ def load_language_config() -> LanguageConfigResult:
         raise FileNotFoundError(f"Language configuration file not found: {config_path}")
 
     try:
-        # tomllib.load() requires a binary file object, not text mode.
-        # This differs from most config parsers; do not change to "r".
+        # tomllib.load() requires a binary file object (opened with "rb"), not text mode.
+        # This is different from most config parsers (like configparser or json), which accept text mode ("r").
+        # If you use text mode here, tomllib.load() will raise a TypeError because it expects bytes, not str.
+        # Do not change to "r".
         with config_path.open("rb") as f:
             config_data = tomllib.load(f)
     except (OSError, IOError) as e:
