@@ -4,11 +4,13 @@ This directory contains the test suite for the vericoding package.
 
 ## Test Organization
 
-- `test_imports.py` - Tests for package imports and module availability 
 - `test_llm_providers.py` - Comprehensive LLM provider functionality and inheritance tests 
 - `test_config.py` - Configuration validation and language configuration tests 
 - `test_prompts.py` - Robust prompt loading functionality with mocking 
-- `test_cli.py` - CLI interfaces and command-line functionality tests 
+- `test_api_compatibility.py` - Tests for API compatibility
+- `test_end_to_end.py` - End-to-end tests for the main application workflow
+- `test_modular_equivalence.py` - Tests for ensuring equivalence between modular and monolithic implementations
+- `test_performance_regression.py` - Tests to detect performance regressions
 
 
 ## Running Tests
