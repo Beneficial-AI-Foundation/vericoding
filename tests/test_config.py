@@ -274,6 +274,7 @@ class TestEnvironmentLoading:
 
             mock_load_dotenv.assert_called()
 
+
 class TestConfigurationIntegration:
     """Integration tests for configuration system."""
 
