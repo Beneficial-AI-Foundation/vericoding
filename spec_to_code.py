@@ -264,37 +264,43 @@ def main():
     config = setup_configuration(args)
     
     # Initialize wandb for experiment tracking (unless disabled)
-    from vericoding.utils.wandb_logger import init_wandb_run, get_wandb_logger, WandbConfig
+    import wandb
+    import os
     
-    logger = None
-    if not args.no_wandb:
-        # Initialize wandb run
-        run_name = f"vericoding_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-        wandb_config = {
-            "language": config.language,
-            "max_iterations": config.max_iterations,
-            "llm_provider": config.llm_provider,
-            "llm_model": config.llm_model,
-            "strict_spec_verification": config.strict_spec_verification,
-            "max_workers": config.max_workers,
-            "files_dir": config.files_dir,
-        }
-        
-        init_wandb_run(
-            name=run_name,
-            config=wandb_config,
-            tags=[config.language, config.llm_provider]
-        )
-        
-        logger = get_wandb_logger()
-        logger.log_config(config)
-        print(f"✅ Weights & Biases tracking enabled: {run_name}")
+    wandb_run = None
+    if not args.no_wandb and os.getenv("WANDB_API_KEY"):
+        try:
+            # Initialize wandb run
+            run_name = f"vericoding_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+            wandb_config = {
+                "language": config.language,
+                "max_iterations": config.max_iterations,
+                "llm_provider": config.llm_provider,
+                "llm_model": config.llm_model,
+                "strict_spec_verification": config.strict_spec_verification,
+                "max_workers": config.max_workers,
+                "files_dir": config.files_dir,
+            }
+            
+            wandb_run = wandb.init(
+                project=os.getenv("WANDB_PROJECT", "vericoding"),
+                entity=os.getenv("WANDB_ENTITY"),
+                name=run_name,
+                config=wandb_config,
+                tags=[config.language, config.llm_provider],
+                mode=os.getenv("WANDB_MODE", "online")
+            )
+            print(f"✅ Weights & Biases tracking enabled: {run_name}")
+            if wandb_run:
+                print(f"   View at: {wandb_run.url}")
+        except Exception as e:
+            print(f"⚠️  Failed to initialize wandb: {e}")
+            wandb_run = None
     else:
-        # Set wandb to disabled mode
-        wandb_config_disabled = WandbConfig(mode="disabled")
-        logger = get_wandb_logger()
-        logger.config = wandb_config_disabled
-        print("⚠️  Weights & Biases tracking disabled")
+        if args.no_wandb:
+            print("⚠️  Weights & Biases tracking disabled (--no-wandb flag)")
+        else:
+            print("⚠️  Weights & Biases tracking disabled (WANDB_API_KEY not set)")
 
     # Initialize prompt loader for the selected language
     try:
@@ -429,20 +435,21 @@ def main():
     )
     
     # Log experiment summary to wandb (if enabled)
-    if logger and not args.no_wandb:
-        total_iterations = sum(config.max_iterations for _ in results)  # Approximation
-        logger.log_experiment_summary(
-            total_files=len(results),
-            successful_files=len(successful),
-            failed_files=len(failed),
-            bypassed_files=len(bypassed),
-            total_iterations=total_iterations,
-            total_llm_calls=total_iterations * 2,  # Approximation: generate + fix attempts
-            duration_seconds=processing_time
-        )
-        
-        # Finish wandb run
-        logger.finish()
+    if wandb_run:
+        try:
+            # Log final summary metrics
+            wandb.run.summary["total_files"] = len(results)
+            wandb.run.summary["successful_files"] = len(successful)
+            wandb.run.summary["failed_files"] = len(failed)
+            wandb.run.summary["bypassed_files"] = len(bypassed)
+            wandb.run.summary["success_rate"] = len(successful) / len(results) if results else 0
+            wandb.run.summary["duration_seconds"] = processing_time
+            
+            # Finish wandb run
+            wandb.finish()
+            print(f"\n✅ Wandb run completed: {wandb_run.url}")
+        except Exception as e:
+            print(f"⚠️  Error logging to wandb: {e}")
 
 
 if __name__ == "__main__":
