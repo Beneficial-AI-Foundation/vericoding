@@ -5,14 +5,12 @@ on:
     branches: [ main, develop ]
     paths:
       - "spec_to_code.py"
-      - "spec_to_code_modular.py"
       - "vericoding/**/*.py"
       - ".github/workflows/python-quality.yml"
   pull_request:
     branches: [ main, develop ]
     paths:
       - "spec_to_code.py"
-      - "spec_to_code_modular.py"
       - "vericoding/**/*.py"
       - ".github/workflows/python-quality.yml"
   workflow_dispatch:
@@ -37,11 +35,11 @@ jobs:
     - name: Run Ruff linter
       uses: astral-sh/ruff-action@v3
       with:
-        src: "./vericoding ./spec_to_code_modular.py"
+        src: "./vericoding ./spec_to_code.py"
         args: "check --output-format=github"
 
     - name: Check code formatting with Ruff
       uses: astral-sh/ruff-action@v3
       with:
-        src: "./vericoding ./spec_to_code_modular.py"
+        src: "./vericoding ./spec_to_code.py"
         args: "format --check"

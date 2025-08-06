@@ -78,10 +78,10 @@ fn add(x: u32, y: u32) -> (result: u32)
 
     def test_cli_dry_run_no_errors(self, project_root, temp_workspace):
         """Test that CLI can be invoked without runtime errors (dry run)."""
-        script_path = project_root / "spec_to_code_modular.py"
+        script_path = project_root / "spec_to_code.py"
 
         if not script_path.exists():
-            pytest.skip("spec_to_code_modular.py not found")
+            pytest.skip("spec_to_code.py not found")
 
         # Test with dafny (most common case)
         dafny_specs = temp_workspace / "dafny_specs"
@@ -131,10 +131,10 @@ fn add(x: u32, y: u32) -> (result: u32)
 
     def test_language_support_consistency(self, project_root, temp_workspace):
         """Test that all expected languages are supported consistently."""
-        script_path = project_root / "spec_to_code_modular.py"
+        script_path = project_root / "spec_to_code.py"
 
         if not script_path.exists():
-            pytest.skip("spec_to_code_modular.py not found")
+            pytest.skip("spec_to_code.py not found")
 
         # Get help to see supported languages
         result = subprocess.run(
@@ -179,10 +179,10 @@ fn add(x: u32, y: u32) -> (result: u32)
 
     def test_configuration_validation(self, project_root, temp_workspace):
         """Test that configuration validation works properly."""
-        script_path = project_root / "spec_to_code_modular.py"
+        script_path = project_root / "spec_to_code.py"
 
         if not script_path.exists():
-            pytest.skip("spec_to_code_modular.py not found")
+            pytest.skip("spec_to_code.py not found")
 
         # Test with non-existent directory
         result = subprocess.run(
@@ -200,10 +200,10 @@ fn add(x: u32, y: u32) -> (result: u32)
 
     def test_output_directory_creation(self, project_root, temp_workspace):
         """Test that output directories are created properly."""
-        script_path = project_root / "spec_to_code_modular.py"
+        script_path = project_root / "spec_to_code.py"
 
         if not script_path.exists():
-            pytest.skip("spec_to_code_modular.py not found")
+            pytest.skip("spec_to_code.py not found")
 
         dafny_specs = temp_workspace / "dafny_specs"
 
@@ -247,10 +247,10 @@ fn add(x: u32, y: u32) -> (result: u32)
 
     def test_llm_provider_validation(self, project_root, temp_workspace):
         """Test LLM provider selection and validation."""
-        script_path = project_root / "spec_to_code_modular.py"
+        script_path = project_root / "spec_to_code.py"
 
         if not script_path.exists():
-            pytest.skip("spec_to_code_modular.py not found")
+            pytest.skip("spec_to_code.py not found")
 
         dafny_specs = temp_workspace / "dafny_specs"
 
@@ -300,10 +300,10 @@ fn add(x: u32, y: u32) -> (result: u32)
 
     def test_parallel_workers_configuration(self, project_root, temp_workspace):
         """Test parallel workers configuration."""
-        script_path = project_root / "spec_to_code_modular.py"
+        script_path = project_root / "spec_to_code.py"
 
         if not script_path.exists():
-            pytest.skip("spec_to_code_modular.py not found")
+            pytest.skip("spec_to_code.py not found")
 
         dafny_specs = temp_workspace / "dafny_specs"
 
