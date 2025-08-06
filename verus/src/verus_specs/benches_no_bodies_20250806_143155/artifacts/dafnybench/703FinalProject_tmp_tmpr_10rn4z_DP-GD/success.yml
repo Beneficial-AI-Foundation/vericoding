@@ -1,0 +1,23 @@
+num_iterations: 12
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmp_ow9804m.rs:36:13\n   |\n36 |             while i < size\n\
+  \   |             ^^^^^^^^^^^^^^\n\nnote: while loop: not all errors may have been\
+  \ reported; rerun with a higher value for --multiple-errors to find other potential\
+  \ errors in this function\n  --> /tmp/tmp_ow9804m.rs:28:9\n   |\n28 |         while\
+  \ t < iterations\n   |         ^^^^^^^^^^^^^^^^^^^^\n\nerror: possible arithmetic\
+  \ underflow/overflow\n  --> /tmp/tmp_ow9804m.rs:42:24\n   |\n42 |              \
+  \   beta = beta + tau;\n   |                        ^^^^^^^^^^\n\nerror: possible\
+  \ arithmetic underflow/overflow\n  --> /tmp/tmp_ow9804m.rs:43:36\n   |\n43 |   \
+  \              let eta_hat: i32 = -gradient_norm_bound;\n   |                  \
+  \                  ^^^^^^^^^^^^^^^^^^^^\n\nerror: possible arithmetic underflow/overflow\n\
+  \  --> /tmp/tmp_ow9804m.rs:49:21\n   |\n49 |             alpha = alpha + beta;\n\
+  \   |                     ^^^^^^^^^^^^\n\nerror: possible arithmetic underflow/overflow\n\
+  \  --> /tmp/tmp_ow9804m.rs:50:47\n   |\n50 |             thetha_current = thetha_current\
+  \ - learning_rate * summation_gradient;\n   |                                  \
+  \             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: aborting due to 4 previous\
+  \ errors\n\n"
+verification_output: 'verification results:: 1 verified, 2 errors
+
+  '

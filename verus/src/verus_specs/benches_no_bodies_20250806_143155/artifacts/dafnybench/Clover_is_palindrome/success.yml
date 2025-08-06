@@ -1,0 +1,17 @@
+num_iterations: 29
+success: false
+verification_error: "error[E0601]: `main` function not found in crate `tmppgsds65b`\n\
+  \  --> /tmp/tmppgsds65b.rs:35:2\n   |\n35 | }\n   |  ^ consider adding a `main`\
+  \ function to `/tmp/tmppgsds65b.rs`\n\nerror[E0308]: mismatched types\n --> /tmp/tmppgsds65b.rs:8:19\n\
+  \  |\n8 |         if len == 0 {\n  |            ---    ^ expected `nat`, found integer\n\
+  \  |            |\n  |            expected because this is `builtin::nat`\n\nerror[E0308]:\
+  \ mismatched types\n  --> /tmp/tmppgsds65b.rs:13:34\n   |\n13 |         let mut\
+  \ j: usize = len - 1;\n   |                            ---   ^ expected `nat`, found\
+  \ integer\n   |                            |\n   |                            expected\
+  \ because this is `builtin::nat`\n\nerror[E0308]: mismatched types\n  --> /tmp/tmppgsds65b.rs:13:28\n\
+  \   |\n13 |         let mut j: usize = len - 1;\n   |                    ----- \
+  \  ^^^^^^^ expected `usize`, found `nat`\n   |                    |\n   |      \
+  \              expected due to this\n\nerror: aborting due to 4 previous errors\n\
+  \nSome errors have detailed explanations: E0308, E0601.\nFor more information about\
+  \ an error, try `rustc --explain E0308`.\n"
+verification_output: ''

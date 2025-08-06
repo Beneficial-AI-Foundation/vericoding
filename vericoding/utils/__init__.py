@@ -12,6 +12,7 @@ from .io_utils import (
 from .reporting import (
     generate_csv_results,
     generate_summary,
+    generate_subfolder_analysis_csv,
 )
 
 __all__ = [
@@ -22,4 +23,5 @@ __all__ = [
     "save_iteration_code",
     "generate_csv_results",
     "generate_summary",
+    "generate_subfolder_analysis_csv",
 ]

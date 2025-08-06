@@ -25,13 +25,19 @@ def generate_csv_results(config: ProcessingConfig, results: list) -> str:
     with csv_file.open("w", newline="") as csvfile:
         writer = csv.writer(csvfile)
         # Write header
-        writer.writerow(["spec_name", "spec_to_code", "spec_link", "impl_link"])
+        writer.writerow(
+            ["spec_name", "subfolder", "spec_to_code", "spec_link", "impl_link"]
+        )
         # Write results
         for result in results:
             spec_name = str(
                 Path(result.file).with_suffix("")
             )  # Remove extension and preserve path
             spec_to_code = "SUCCESS" if result.success else "FAILED"
+
+            # Extract subfolder
+            file_path = Path(result.file)
+            subfolder = file_path.parts[0] if len(file_path.parts) > 1 else "root"
 
             # Generate spec link
             # result.file is already relative to config.files_dir, so construct the full path correctly
@@ -66,9 +72,57 @@ def generate_csv_results(config: ProcessingConfig, results: list) -> str:
             else:
                 impl_link = ""
 
-            writer.writerow([spec_name, spec_to_code, spec_link, impl_link])
+            writer.writerow([spec_name, subfolder, spec_to_code, spec_link, impl_link])
 
     print(f"CSV results saved to: {csv_file}")
+    return str(csv_file)
+
+
+def generate_subfolder_analysis_csv(config: ProcessingConfig, results: list) -> str:
+    """Generate CSV file with subfolder success rate analysis."""
+    csv_file = Path(config.output_dir) / "subfolder_analysis.csv"
+
+    # Analyze results by subfolder
+    from collections import defaultdict
+
+    subfolder_stats = defaultdict(lambda: {"success": 0, "failed": 0, "total": 0})
+
+    for result in results:
+        # Extract subfolder from file path
+        file_path = Path(result.file)
+        if len(file_path.parts) > 1:
+            subfolder = file_path.parts[0]
+        else:
+            subfolder = "root"
+
+        subfolder_stats[subfolder]["total"] += 1
+        if result.success:
+            subfolder_stats[subfolder]["success"] += 1
+        else:
+            subfolder_stats[subfolder]["failed"] += 1
+
+    with csv_file.open("w", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        # Write header
+        writer.writerow(["subfolder", "successful", "failed", "total", "success_rate"])
+
+        # Write subfolder statistics sorted by name
+        for subfolder in sorted(subfolder_stats.keys()):
+            stats = subfolder_stats[subfolder]
+            success_rate = (
+                (stats["success"] / stats["total"] * 100) if stats["total"] > 0 else 0.0
+            )
+            writer.writerow(
+                [
+                    subfolder,
+                    stats["success"],
+                    stats["failed"],
+                    stats["total"],
+                    f"{success_rate:.1f}%",
+                ]
+            )
+
+    print(f"Subfolder analysis CSV saved to: {csv_file}")
     return str(csv_file)
 
 
@@ -76,6 +130,25 @@ def generate_summary(config: ProcessingConfig, results: list) -> str:
     """Generate a summary of the processing results."""
     successful = [r for r in results if r.success]
     failed = [r for r in results if not r.success]
+
+    # Analyze results by subfolder
+    from collections import defaultdict
+
+    subfolder_stats = defaultdict(lambda: {"success": 0, "failed": 0, "total": 0})
+
+    for result in results:
+        # Extract subfolder from file path
+        file_path = Path(result.file)
+        if len(file_path.parts) > 1:
+            subfolder = file_path.parts[0]
+        else:
+            subfolder = "root"
+
+        subfolder_stats[subfolder]["total"] += 1
+        if result.success:
+            subfolder_stats[subfolder]["success"] += 1
+        else:
+            subfolder_stats[subfolder]["failed"] += 1
 
     summary_lines = [
         f"=== {config.language_config.name.upper()} SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===",
@@ -96,8 +169,31 @@ def generate_summary(config: ProcessingConfig, results: list) -> str:
         f"Total failed: {len(failed)}",
         f"Success rate: {(len(successful) / len(results) * 100) if results else 0.0:.1f}%",
         "",
-        "=== SUCCESSFUL FILES (VERIFIED) ===",
+        "=== SUCCESS RATE BY SUBFOLDER ===",
     ]
+
+    # Sort subfolders by name for consistent output
+    for subfolder in sorted(subfolder_stats.keys()):
+        stats = subfolder_stats[subfolder]
+        success_rate = (
+            (stats["success"] / stats["total"] * 100) if stats["total"] > 0 else 0.0
+        )
+        summary_lines.extend(
+            [
+                f"{subfolder}:",
+                f"  Successful: {stats['success']}",
+                f"  Failed: {stats['failed']}",
+                f"  Total: {stats['total']}",
+                f"  Success rate: {success_rate:.1f}%",
+                "",
+            ]
+        )
+
+    summary_lines.extend(
+        [
+            "=== SUCCESSFUL FILES (VERIFIED) ===",
+        ]
+    )
 
     for result in successful:
         output_file = Path(result.output).name if result.output else "no output"
