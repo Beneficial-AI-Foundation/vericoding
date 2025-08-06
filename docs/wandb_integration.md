@@ -1,6 +1,6 @@
 # Weights & Biases Integration
 
-Track verification experiments with W&B metrics.
+Advanced verification experiment tracking with failure analysis.
 
 ## Setup
 
@@ -10,34 +10,101 @@ export WANDB_PROJECT=vericoding  # optional
 export WANDB_ENTITY=your_team    # optional
 ```
 
-## Usage
+## Features
 
-Metrics are automatically logged during verification runs. Disable with:
-
-```bash
-export WANDB_MODE=disabled
-```
-
-## Tracked Metrics
-
-- **Verification attempts**: Success rate, iteration count, error patterns
-- **LLM usage**: API calls, latency, token usage, cumulative costs
-- **Performance**: Files/minute, average iterations per file
-
-## Example
+### Direct wandb API Usage
+No wrapper needed - use wandb directly:
 
 ```python
-from vericoding.utils.wandb_logger import get_wandb_logger
+import wandb
 
-logger = get_wandb_logger()
-logger.init_run(config={"language": "lean", "model": "claude"})
+# Initialize run
+run = wandb.init(project="vericoding", config={"language": "lean"})
 
-# Metrics logged automatically during processing
-logger.log_verification("file.lean", iteration=1, success=False, error_text="Type error")
-logger.log_llm_call(model="claude", latency_ms=2500, cost_usd=0.02)
+# Log metrics
+wandb.log({"verify/file1/success": 1, "llm/latency_ms": 1500})
 
-logger.summary({"total_files": 10, "success_files": 8})
-logger.finish()
+# Finish run
+wandb.finish()
 ```
 
-See `examples/wandb_integration.py` for complete example.
+### Failure Collection & Analysis
+
+Track verification failures for pattern analysis:
+
+```python
+from vericoding.analysis import FailureCollector
+
+collector = FailureCollector()
+collector.add_failure(
+    file_path="theorem.lean",
+    iteration=1,
+    spec_code=spec,
+    generated_code=code,
+    error_msg=error
+)
+collector.log_to_wandb()  # Creates table and artifacts
+```
+
+### LLM Judge for Post-Hoc Analysis
+
+Analyze failures with LLM to identify root causes:
+
+```python
+from vericoding.analysis import FailureAnalyzer
+
+analyzer = FailureAnalyzer()
+# Analyze specific run
+report = analyzer.analyze_run(run_id)
+
+# Analyze patterns across runs
+patterns = analyzer.analyze_cross_run_patterns(last_n_runs=10)
+
+# Generate improvement recommendations
+recommendations = analyzer.generate_improvement_report(report)
+```
+
+## Key Metrics Tracked
+
+- **Verification attempts**: Success/failure by file and iteration
+- **Error categorization**: Type mismatches, missing lemmas, incomplete proofs
+- **LLM usage**: API calls, latency, cumulative costs
+- **Failure artifacts**: All failed code versions stored for analysis
+- **Cross-run patterns**: Files that consistently fail across experiments
+
+## Advanced Features
+
+### Failure Tables
+Structured tracking of all failures with:
+- File, iteration, spec/code hashes
+- Error messages and proof states  
+- Automatic categorization
+- Queryable via wandb API
+
+### Code Artifacts
+Each failed verification creates versioned artifacts:
+- Complete code lineage from spec to final attempt
+- Enables reproduction of any failure
+- Builds dataset for future training
+
+### Automated Analysis
+Post-run analysis identifies:
+- Root causes via LLM analysis
+- Fix suggestions with confidence scores
+- Problematic specification patterns
+- Success strategies from similar past fixes
+
+## Examples
+
+See complete examples:
+- `examples/wandb_analysis_demo.py` - Full workflow demo
+- `examples/wandb_integration.py` - Basic metrics tracking
+
+## Environment Variables
+
+- `WANDB_API_KEY`: Required for wandb tracking
+- `WANDB_PROJECT`: Project name (default: "vericoding")
+- `WANDB_ENTITY`: Team/organization name
+- `WANDB_MODE`: "online", "offline", or "disabled"
+
+Disable tracking with `--no-wandb` flag or by not setting `WANDB_API_KEY`.
