@@ -1,311 +1,161 @@
-"""Weights & Biases integration for experiment tracking."""
+"""Weights & Biases metrics tracking."""
 
 import os
+import tempfile
 from pathlib import Path
-from typing import Any, Dict, Optional, List
-from dataclasses import dataclass
+from typing import Any, Dict, Optional
+from contextlib import suppress
 import wandb
-from datetime import datetime
-
-
-@dataclass
-class WandbConfig:
-    """Configuration for Weights & Biases integration."""
-    
-    project: str = "vericoding"
-    entity: Optional[str] = None
-    tags: Optional[List[str]] = None
-    notes: Optional[str] = None
-    mode: str = "online"  # online, offline, or disabled
-    save_code: bool = True
-    log_frequency: int = 100
-    
-    @classmethod
-    def from_env(cls) -> "WandbConfig":
-        """Create config from environment variables."""
-        return cls(
-            project=os.getenv("WANDB_PROJECT", "vericoding"),
-            entity=os.getenv("WANDB_ENTITY"),
-            mode=os.getenv("WANDB_MODE", "online"),
-            save_code=os.getenv("WANDB_SAVE_CODE", "true").lower() == "true",
-        )
 
 
 class WandbLogger:
-    """Handles Weights & Biases logging for vericoding experiments."""
+    """Metrics tracking for verification experiments."""
     
-    def __init__(self, config: Optional[WandbConfig] = None):
-        """Initialize the wandb logger."""
-        self.config = config or WandbConfig.from_env()
+    def __init__(self, enabled: Optional[bool] = None):
+        """Initialize logger. Disabled if WANDB_MODE=disabled or wandb not installed."""
+        if enabled is None:
+            enabled = os.getenv("WANDB_MODE", "online") != "disabled"
+        
+        self.enabled = enabled and self._check_wandb()
         self.run = None
-        self._initialized = False
+        self._metrics_cache = {}
+        self._iteration_counts = {}
         
-    def init_run(
-        self,
-        name: Optional[str] = None,
-        config: Optional[Dict[str, Any]] = None,
-        resume: Optional[str] = None,
-        **kwargs
-    ) -> wandb.Run:
-        """Initialize a new wandb run."""
-        if self._initialized and self.run:
-            return self.run
-            
-        # Merge configurations
-        wandb_config = {
-            "project": self.config.project,
-            "entity": self.config.entity,
-            "tags": self.config.tags,
-            "notes": self.config.notes,
-            "mode": self.config.mode,
-            "save_code": self.config.save_code,
-        }
-        wandb_config.update(kwargs)
-        
-        # Initialize run
-        self.run = wandb.init(
-            name=name or f"vericoding_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
-            config=config,
-            resume=resume,
-            **wandb_config
-        )
-        self._initialized = True
-        return self.run
+    def _check_wandb(self) -> bool:
+        """Check if wandb is available and configured."""
+        try:
+            return wandb is not None and os.getenv("WANDB_API_KEY") is not None
+        except:
+            return False
     
-    def log_file_processing(
-        self,
-        file_path: str,
-        language: str,
-        status: str,
-        iteration: int = 0,
-        error: Optional[str] = None,
-        metrics: Optional[Dict[str, Any]] = None
-    ):
-        """Log file processing information."""
-        if not self._initialized:
-            return
+    def init_run(self, name: Optional[str] = None, config: Optional[Dict[str, Any]] = None):
+        """Start a wandb run if enabled."""
+        if not self.enabled:
+            return None
             
-        log_data = {
-            "file": str(Path(file_path).name),
-            "language": language,
-            "status": status,
-            "iteration": iteration,
-            "timestamp": datetime.now().isoformat(),
-        }
-        
-        if error:
-            log_data["error"] = error
-            
-        if metrics:
-            log_data.update(metrics)
-            
-        wandb.log(log_data)
-    
-    def log_verification_attempt(
-        self,
-        file_path: str,
-        iteration: int,
-        success: bool,
-        verification_output: str,
-        fix_applied: Optional[str] = None,
-        error_count: int = 0
-    ):
-        """Log verification attempt details."""
-        if not self._initialized:
-            return
-            
-        log_data = {
-            f"verification/{Path(file_path).stem}/iteration": iteration,
-            f"verification/{Path(file_path).stem}/success": success,
-            f"verification/{Path(file_path).stem}/error_count": error_count,
-        }
-        
-        if fix_applied:
-            log_data[f"verification/{Path(file_path).stem}/fix_type"] = fix_applied
-            
-        wandb.log(log_data)
-        
-        # Log verification output as text artifact if significant
-        if len(verification_output) > 100:
-            self.log_text_artifact(
-                f"verification_output_{Path(file_path).stem}_iter{iteration}",
-                verification_output,
-                metadata={"iteration": iteration, "success": success}
+        try:
+            self.run = wandb.init(
+                project=os.getenv("WANDB_PROJECT", "vericoding"),
+                entity=os.getenv("WANDB_ENTITY"),
+                name=name,
+                config=config or {},
+                mode=os.getenv("WANDB_MODE", "online"),  # type: ignore
+                reinit=True
             )
+            return self.run
+        except Exception as e:
+            print(f"Warning: Failed to init wandb: {e}")
+            self.enabled = False
+            return None
     
-    def log_llm_call(
-        self,
-        prompt_type: str,
-        model: str,
-        input_tokens: Optional[int] = None,
-        output_tokens: Optional[int] = None,
-        latency_ms: Optional[float] = None,
-        cost: Optional[float] = None
-    ):
-        """Log LLM API call metrics."""
-        if not self._initialized:
+    def log_verification(self, file_path: str, iteration: int, success: bool, 
+                        error_text: Optional[str] = None, latency_ms: Optional[float] = None):
+        """Log verification attempt metrics."""
+        if not self.enabled or not self.run:
             return
             
-        log_data = {
-            f"llm/{prompt_type}/calls": 1,
-            f"llm/{prompt_type}/model": model,
+        file_key = Path(file_path).stem
+        self._iteration_counts[file_key] = iteration
+        
+        metrics = {
+            f"verify/{file_key}/iter": iteration,
+            f"verify/{file_key}/success": int(success),
         }
         
-        if input_tokens:
-            log_data[f"llm/{prompt_type}/input_tokens"] = input_tokens
-        if output_tokens:
-            log_data[f"llm/{prompt_type}/output_tokens"] = output_tokens
         if latency_ms:
-            log_data[f"llm/{prompt_type}/latency_ms"] = latency_ms
-        if cost:
-            log_data[f"llm/{prompt_type}/cost_usd"] = cost
+            metrics[f"verify/{file_key}/latency_ms"] = latency_ms
             
-        wandb.log(log_data)
+        if error_text and len(error_text) > 0:
+            # Track error patterns
+            if "Type mismatch" in error_text:
+                metrics[f"errors/{file_key}/type_mismatch"] = 1
+            elif "sorry" in error_text.lower():
+                metrics[f"errors/{file_key}/incomplete_proof"] = 1
+            elif "timeout" in error_text.lower():
+                metrics[f"errors/{file_key}/timeout"] = 1
+                
+        with suppress(Exception):
+            wandb.log(metrics)
     
-    def log_experiment_summary(
-        self,
-        total_files: int,
-        successful_files: int,
-        failed_files: int,
-        bypassed_files: int,
-        total_iterations: int,
-        total_llm_calls: int,
-        duration_seconds: float
-    ):
-        """Log experiment summary statistics."""
-        if not self._initialized:
+    def log_llm_call(self, model: str, latency_ms: float, tokens_in: Optional[int] = None, 
+                     tokens_out: Optional[int] = None, cost_usd: Optional[float] = None):
+        """Log LLM API metrics."""
+        if not self.enabled or not self.run:
             return
             
-        summary = {
-            "summary/total_files": total_files,
-            "summary/successful_files": successful_files,
-            "summary/failed_files": failed_files,
-            "summary/bypassed_files": bypassed_files,
-            "summary/success_rate": successful_files / total_files if total_files > 0 else 0,
-            "summary/total_iterations": total_iterations,
-            "summary/avg_iterations_per_file": total_iterations / total_files if total_files > 0 else 0,
-            "summary/total_llm_calls": total_llm_calls,
-            "summary/duration_seconds": duration_seconds,
-            "summary/files_per_minute": (total_files / duration_seconds) * 60 if duration_seconds > 0 else 0,
+        metrics = {
+            "llm/calls": 1,
+            "llm/latency_ms": latency_ms,
         }
         
-        wandb.log(summary)
+        if tokens_in:
+            metrics["llm/tokens_in"] = tokens_in
+        if tokens_out:
+            metrics["llm/tokens_out"] = tokens_out
+        if cost_usd:
+            metrics["llm/cost_usd"] = cost_usd
+            
+        # Track cumulative costs
+        if "llm/total_cost" not in self._metrics_cache:
+            self._metrics_cache["llm/total_cost"] = 0
+        self._metrics_cache["llm/total_cost"] += cost_usd or 0
+        metrics["llm/total_cost"] = self._metrics_cache["llm/total_cost"]
         
-        # Also set as summary metrics
-        for key, value in summary.items():
-            wandb.run.summary[key] = value
+        with suppress(Exception):
+            wandb.log(metrics)
     
-    def log_code_artifact(
-        self,
-        file_path: str,
-        code: str,
-        version: str,
-        metadata: Optional[Dict[str, Any]] = None
-    ):
-        """Log code as a wandb artifact."""
-        if not self._initialized:
+    def log_artifact(self, name: str, content: str, artifact_type: str = "code"):
+        """Log text content as artifact."""
+        if not self.enabled or not self.run:
             return
             
-        # Determine file extension based on original file
-        ext = Path(file_path).suffix or ".lean"
-        artifact_name = f"code_{Path(file_path).stem}_{version}"
-        
-        artifact = wandb.Artifact(
-            name=artifact_name,
-            type="lean_code" if ext == ".lean" else "code",
-            metadata=metadata or {}
-        )
-        
-        # Save code to temporary file with proper extension
-        temp_path = Path(f"/tmp/{artifact_name}{ext}")
-        temp_path.write_text(code)
-        
-        # Add to artifact
-        artifact.add_file(str(temp_path))
-        
-        # Log artifact
-        wandb.log_artifact(artifact)
-        
-        # Clean up
-        temp_path.unlink()
+        try:
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as f:
+                f.write(content)
+                temp_path = f.name
+                
+            artifact = wandb.Artifact(name=name, type=artifact_type)
+            artifact.add_file(temp_path)
+            self.run.log_artifact(artifact)
+            
+            Path(temp_path).unlink(missing_ok=True)
+        except Exception:
+            pass  # Artifact logging is non-critical
     
-    def log_text_artifact(
-        self,
-        name: str,
-        text: str,
-        metadata: Optional[Dict[str, Any]] = None
-    ):
-        """Log text content as a wandb artifact."""
-        if not self._initialized:
+    def summary(self, metrics: Dict[str, Any]):
+        """Log final summary metrics."""
+        if not self.enabled or not self.run:
             return
             
-        artifact = wandb.Artifact(
-            name=name,
-            type="text",
-            metadata=metadata or {}
-        )
+        # Calculate derived metrics
+        total_files = metrics.get("total_files", 0)
+        success_files = metrics.get("success_files", 0)
         
-        # Save text to temporary file
-        temp_path = Path(f"/tmp/{name}.txt")
-        temp_path.write_text(text)
-        
-        # Add to artifact
-        artifact.add_file(str(temp_path))
-        
-        # Log artifact
-        wandb.log_artifact(artifact)
-        
-        # Clean up
-        temp_path.unlink()
-    
-    def log_config(self, config: Any):
-        """Log configuration object to wandb."""
-        if not self._initialized:
-            return
+        if total_files > 0:
+            metrics["success_rate"] = success_files / total_files
+            metrics["avg_iterations"] = sum(self._iteration_counts.values()) / len(self._iteration_counts) if self._iteration_counts else 0
             
-        # Convert config to dict if it's a dataclass or has __dict__
-        if hasattr(config, "__dict__"):
-            config_dict = {}
-            for key, value in config.__dict__.items():
-                if hasattr(value, "__dict__"):
-                    # Handle nested configs
-                    config_dict[key] = {k: str(v) for k, v in value.__dict__.items()}
-                else:
-                    config_dict[key] = str(value)
-        else:
-            config_dict = config
-            
-        wandb.config.update(config_dict)
+        with suppress(Exception):
+            for key, value in metrics.items():
+                if wandb.run:
+                    wandb.run.summary[key] = value
     
     def finish(self):
-        """Finish the wandb run."""
-        if self._initialized and self.run:
-            self.run.finish()
-            self._initialized = False
+        """Close the wandb run."""
+        if self.enabled and self.run:
+            with suppress(Exception):
+                self.run.finish()
             self.run = None
-    
-    def __enter__(self):
-        """Context manager entry."""
-        return self
-        
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        """Context manager exit."""
-        self.finish()
+            self.enabled = False
 
 
-# Global logger instance
-_global_logger: Optional[WandbLogger] = None
+# Singleton instance
+_logger: Optional[WandbLogger] = None
 
 
 def get_wandb_logger() -> WandbLogger:
-    """Get or create the global wandb logger instance."""
-    global _global_logger
-    if _global_logger is None:
-        _global_logger = WandbLogger()
-    return _global_logger
-
-
-def init_wandb_run(**kwargs) -> wandb.Run:
-    """Initialize a wandb run using the global logger."""
-    logger = get_wandb_logger()
-    return logger.init_run(**kwargs)
+    """Get the global wandb logger instance."""
+    global _logger
+    if _logger is None:
+        _logger = WandbLogger()
+    return _logger
