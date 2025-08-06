@@ -25,7 +25,11 @@ from vericoding.core.language_tools import (
     find_spec_files,
 )
 from vericoding.processing import process_files_parallel
-from vericoding.utils import generate_summary, generate_csv_results
+from vericoding.utils import (
+    generate_summary,
+    generate_csv_results,
+    generate_subfolder_analysis_csv,
+)
 
 # Initialize environment loading
 load_environment()
@@ -369,6 +373,9 @@ def main():
 
     # Generate CSV results
     generate_csv_results(config, results)
+
+    # Generate subfolder analysis CSV
+    generate_subfolder_analysis_csv(config, results)
 
     # Print final statistics
     successful = [r for r in results if r.success]

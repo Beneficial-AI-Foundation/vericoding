@@ -1,0 +1,41 @@
+num_iterations: 18
+success: false
+verification_error: "note: function body check: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmpe2v8iuy0.rs:43:9\n   |\n43 |         fn check_availability(&self)\
+  \ -> (available_spaces: i32)\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmpe2v8iuy0.rs:45:36\n\
+  \   |\n45 |             let normal_available = 2 - self.car_park_count as i32;\n\
+  \   |                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:\
+  \ recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]`\
+  \ on the cast to silence this warning)\n  --> /tmp/tmpe2v8iuy0.rs:45:40\n   |\n\
+  45 |             let normal_available = 2 - self.car_park_count as i32;\n   |  \
+  \                                      ^^^^^^^^^^^^^^^^^^^\n\nerror: possible arithmetic\
+  \ underflow/overflow\n  --> /tmp/tmpe2v8iuy0.rs:46:38\n   |\n46 |             let\
+  \ reserved_available = 3 - self.reserved_car_park_count as i32;\n   |          \
+  \                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote: recommendation\
+  \ not met: value may be out of range of the target type (use `#[verifier::truncate]`\
+  \ on the cast to silence this warning)\n  --> /tmp/tmpe2v8iuy0.rs:46:42\n   |\n\
+  46 |             let reserved_available = 3 - self.reserved_car_park_count as i32;\n\
+  \   |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n\
+  error: possible arithmetic underflow/overflow\n  --> /tmp/tmpe2v8iuy0.rs:49:17\n\
+  \   |\n49 |                 normal_available + reserved_available\n   |        \
+  \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote: function body check: not\
+  \ all errors may have been reported; rerun with a higher value for --multiple-errors\
+  \ to find other potential errors in this function\n   --> /tmp/tmpe2v8iuy0.rs:111:5\n\
+  \    |\n111 |     fn main() {\n    |     ^^^^^^^^^\n\nerror: assertion failed\n\
+  \   --> /tmp/tmpe2v8iuy0.rs:116:16\n    |\n116 |         assert(available_spaces\
+  \ == 2);\n    |                ^^^^^^^^^^^^^^^^^^^^^ assertion failed\n\nerror:\
+  \ assertion failed\n   --> /tmp/tmpe2v8iuy0.rs:119:16\n    |\n119 |         assert(success);\n\
+  \    |                ^^^^^^^ assertion failed\n\nnote: function body check: not\
+  \ all errors may have been reported; rerun with a higher value for --multiple-errors\
+  \ to find other potential errors in this function\n   --> /tmp/tmpe2v8iuy0.rs:147:5\n\
+  \    |\n147 |     fn main_b() {\n    |     ^^^^^^^^^^^\n\nerror: assertion failed\n\
+  \   --> /tmp/tmpe2v8iuy0.rs:155:16\n    |\n155 |         assert(success);\n    |\
+  \                ^^^^^^^ assertion failed\n\nerror: assertion failed\n   --> /tmp/tmpe2v8iuy0.rs:156:16\n\
+  \    |\n156 |         assert(car_park.reserved_car_park_count == 1);\n    |    \
+  \            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed\n\nerror: aborting\
+  \ due to 7 previous errors\n\n"
+verification_output: 'verification results:: 7 verified, 3 errors
+
+  '
