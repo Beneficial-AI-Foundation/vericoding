@@ -87,6 +87,12 @@ Examples:
         action="store_true", 
         help="Disable Weights & Biases experiment tracking",
     )
+    
+    parser.add_argument(
+        "--delete-after-upload",
+        action="store_true",
+        help="Delete local generated files after uploading to wandb (requires wandb to be enabled)",
+    )
 
     parser.add_argument(
         "--workers",
@@ -282,10 +288,11 @@ def main():
                 project=os.getenv("WANDB_PROJECT", "vericoding"),
                 entity=os.getenv("WANDB_ENTITY"),
                 name=run_name,
-                config=wandb_config,
                 tags=[config.language, config.llm_provider],
                 mode=os.getenv("WANDB_MODE", "online")
             )
+            # Update config with allow_val_change to avoid errors when keys already exist
+            wandb.config.update(wandb_config, allow_val_change=True)
             print(f"✅ Weights & Biases tracking enabled: {run_name}")
             if wandb_run:
                 print(f"   View at: {wandb_run.url}")
@@ -437,6 +444,32 @@ def main():
             wandb.run.summary["bypassed_files"] = len(bypassed)
             wandb.run.summary["success_rate"] = len(successful) / len(results) if results else 0
             wandb.run.summary["duration_seconds"] = processing_time
+            
+            # Upload generated files as artifacts
+            print("\n📤 Uploading generated files to wandb...")
+            artifact = wandb.Artifact(
+                name=f"generated_code_{config.language}",
+                type="code",
+                description=f"Generated {config.language} code from specifications"
+            )
+            
+            # Add the output directory to the artifact
+            output_path = Path(config.output_dir)
+            if output_path.exists():
+                artifact.add_dir(str(output_path))
+                wandb.log_artifact(artifact)
+                print(f"✅ Files uploaded to wandb artifact: generated_code_{config.language}")
+                
+                # Delete local files if requested
+                if args.delete_after_upload:
+                    import shutil
+                    try:
+                        shutil.rmtree(output_path)
+                        print(f"🗑️  Local files deleted from {output_path}")
+                    except Exception as e:
+                        print(f"⚠️  Error deleting local files: {e}")
+            else:
+                print(f"⚠️  Output directory not found: {output_path}")
             
             # Finish wandb run
             wandb.finish()
