@@ -1,6 +1,6 @@
 # Code2Verus
 
-A multi-language translator adapted from [Quinn's dafny2verus](https://github.com/Beneficial-AI-Foundation/dafny2verus) for converting formal verification code to [Verus](https://verus-lang.github.io/verus/guide/overview.html) using `PydanticAI`.
+A multi-language translator extending [Quinn's dafny2verus](https://github.com/Beneficial-AI-Foundation/dafny2verus) for converting formal verification code to [Verus](https://verus-lang.github.io/verus/guide/overview.html) using `PydanticAI`.
 
 ## Supported Languages
 
