@@ -27,27 +27,63 @@ particularly Dafny benchmarks and NumPy specifications.
 lean_lib Vericoding where
   globs := #[.andSubmodules `Vericoding]
   srcDir := "lean"
+  leanOptions := #[
+    ⟨`pp.unicode.fun, true⟩,
+    ⟨`autoImplicit, true⟩,
+    ⟨`relaxedAutoImplicit, false⟩,
+    ⟨`linter.missingDocs, false⟩
+  ]
 
 @[default_target]
 lean_lib Benchmarks where
   globs := #[.andSubmodules `Benchmarks]
   srcDir := "lean"
-
+  leanOptions := #[
+    ⟨`pp.unicode.fun, true⟩,
+    ⟨`autoImplicit, true⟩,
+    ⟨`relaxedAutoImplicit, false⟩,
+    ⟨`linter.missingDocs, false⟩
+  ]
 @[default_target]
 lean_lib NumpyHoareTriple where
   globs := #[.andSubmodules `NumpyHoareTriple]
   srcDir := "lean"
+  leanOptions := #[
+    ⟨`pp.unicode.fun, true⟩,
+    ⟨`autoImplicit, true⟩,
+    ⟨`relaxedAutoImplicit, false⟩,
+    -- docs are important here
+    ⟨`linter.missingDocs, true⟩
+  ]
 
 lean_lib BenchmarksGenerated where
   globs := #[.andSubmodules `BenchmarksGenerated]
   srcDir := "lean"
+  leanOptions := #[
+    ⟨`pp.unicode.fun, true⟩,
+    ⟨`autoImplicit, true⟩,
+    ⟨`relaxedAutoImplicit, false⟩,
+    ⟨`linter.missingDocs, true⟩
+  ]
 
 lean_lib DafnyBenchSpecs where
   globs := #[.andSubmodules `DafnyBenchSpecs]
   srcDir := "lean"
+  leanOptions := #[
+    ⟨`pp.unicode.fun, true⟩,
+    ⟨`autoImplicit, true⟩,
+    ⟨`relaxedAutoImplicit, false⟩,
+    ⟨`linter.missingDocs, true⟩
+  ]
 
 @[default_target]
 lean_exe vericoding where
   root := `Main
   srcDir := "lean"
   supportInterpreter := true
+  leanOptions := #[
+    ⟨`pp.unicode.fun, true⟩,
+    ⟨`autoImplicit, true⟩,
+    ⟨`relaxedAutoImplicit, false⟩,
+    ⟨`linter.missingDocs, true⟩
+  ]

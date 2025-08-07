@@ -4,6 +4,9 @@ import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
 import Mathlib.Tactic.Basic
 
+/-- Sum of digits -/
+def digit_sum (n : Nat) : Nat := sorry
+
 def problem_spec
 -- function signature
 (impl: List Int → List Int)

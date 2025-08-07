@@ -4,6 +4,9 @@ import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
 import Mathlib.Tactic.Basic
 
+/-- Fibonacci function -/
+def fibonacci_non_computable (n : Nat) : Nat := sorry
+
 def problem_spec
 -- function signature
 (implementation: Nat → Nat)
@@ -11,7 +14,7 @@ def problem_spec
 (n: Nat) :=
 -- spec
 let spec (result: Nat) :=
-fibonacci_non_computable_3 n result
+result = fibonacci_non_computable n
 -- program termination
 ∃ result, implementation n = result ∧
 spec result

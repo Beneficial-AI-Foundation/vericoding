@@ -4,6 +4,9 @@ import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
 import Mathlib.Tactic.Basic
 
+/-- Check if a string is a palindrome -/
+def is_palindrome (s : String) : Bool := sorry
+
 def problem_spec
 -- function signature
 (implementation: String → String)

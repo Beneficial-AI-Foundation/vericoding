@@ -4,6 +4,9 @@ import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
 import Mathlib.Tactic.Basic
 
+/-- Check derivative of polynomial -/
+def check_derivative (xs : List Int) : List Int := sorry
+
 def problem_spec
 -- function signature
 (impl: List Int → List Int)
