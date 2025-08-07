@@ -4,7 +4,7 @@ A multi-language translator extending [Quinn's dafny2verus](https://github.com/B
 
 ## Supported Languages
 
-- **Dafny**: Translate from Dafny verification language to Verus
+- **Dafny**: Translate from Dafny verification language to Verus (preserves [Quinn's dafny2verus](https://github.com/Beneficial-AI-Foundation/dafny2verus))
 - **Lean 4**: Translate from Lean 4 theorem prover to Verus
 
 ## Features
