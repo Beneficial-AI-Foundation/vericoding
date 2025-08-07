@@ -1,0 +1,31 @@
+[project]
+name = "code2verus"
+version = "0.1.0"
+description = "Translate code from various verification languages to Verus using AI"
+readme = "README.md"
+authors = [
+    { name = "Quinn Dougherty", email = "quinn.dougherty.forall@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "datasets>=4.0.0",
+    "logfire>=3.24.1",
+    "pydantic>=2.11.7",
+    "pydantic-ai[logfire]>=0.4.2",
+    "python-dotenv>=1.1.1",
+    "pyyaml>=6.0.2",
+]
+
+[project.scripts]
+code2verus = "code2verus:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.403",
+    "pytest>=8.4.1",
+    "ruff>=0.12.3",
+]
