@@ -1,0 +1,12 @@
+num_iterations: 8
+success: false
+verification_error: "warning: uninterpreted functions (`spec` functions defined without\
+  \ a body) need to be marked as `uninterp`\n         this will become a hard error\
+  \ in the future\n  --> /tmp/tmp_xcezamj.rs:40:1\n   |\n40 | spec fn clean_string(s:\
+  \ &str) -> Seq<char>;\n   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror:\
+  \ cannot call function `tmp_xcezamj::palindrome_ignore_non_alnum` with mode exec\n\
+  \  --> /tmp/tmp_xcezamj.rs:98:53\n   |\n98 |     ensures palindrome_ignore_non_alnum_postcond(s,\
+  \ palindrome_ignore_non_alnum(s))\n   |                                        \
+  \             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: aborting due to 1 previous\
+  \ error; 1 warning emitted\n\n"
+verification_output: ''

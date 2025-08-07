@@ -1,0 +1,37 @@
+num_iterations: 11
+success: true
+verification_error: "note: automatically chose triggers for this expression:\n  -->\
+  \ /tmp/tmpmzx9z35t.rs:32:13\n   |\n32 | /             exists|second_idx: int| {\n\
+  33 | |                 0 < second_idx < cs.len() &&\n34 | |                 cs[second_idx]\
+  \ == c &&\n35 | |                 appears_before(cs, c, second_idx) &&\n36 | | \
+  \                all_pairwise_different(cs.subrange(0, second_idx))\n37 | |    \
+  \         }\n   | |_____________^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmpmzx9z35t.rs:34:17\n\
+  \   |\n34 |                 cs[second_idx] == c &&\n   |                 ^^^^^^^^^^^^^^\n\
+  \nnote: automatically chose triggers for this expression:\n  --> /tmp/tmpmzx9z35t.rs:75:20\n\
+  \   |\n75 |               assume(exists|second_idx: int| {\n   |  ____________________^\n\
+  76 | |                 0 < second_idx < cs@.len() &&\n77 | |                 cs@[second_idx]\
+  \ == c &&\n78 | |                 appears_before(cs@, c, second_idx) &&\n79 | |\
+  \                 all_pairwise_different(cs@.subrange(0, second_idx))\n80 | |  \
+  \           });\n   | |_____________^\n\nnote:   trigger 1 of 1:\n  --> /tmp/tmpmzx9z35t.rs:77:17\n\
+  \   |\n77 |                 cs@[second_idx] == c &&\n   |                 ^^^^^^^^^^^^^^^\n\
+  \nnote: Verus printed one or more automatically chosen quantifier triggers\n   \
+  \   because it had low confidence in the chosen triggers.\n      To suppress these\
+  \ messages, do one of the following:\n        (1) manually annotate a single desired\
+  \ trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) &&\
+  \ #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired\
+  \ triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger\
+  \ f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen\
+  \ trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto]\
+  \ f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option\
+  \ to suppress all printing of triggers.\n      (Note: triggers are used by the underlying\
+  \ SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates\
+  \ a quantifier whenever some expression matches the\n      pattern specified by\
+  \ one of the quantifier's triggers.)\n  --> /tmp/tmpmzx9z35t.rs:75:20\n   |\n75\
+  \ |               assume(exists|second_idx: int| {\n   |  ____________________^\n\
+  76 | |                 0 < second_idx < cs@.len() &&\n77 | |                 cs@[second_idx]\
+  \ == c &&\n78 | |                 appears_before(cs@, c, second_idx) &&\n79 | |\
+  \                 all_pairwise_different(cs@.subrange(0, second_idx))\n80 | |  \
+  \           });\n   | |_____________^\n\n"
+verification_output: 'verification results:: 4 verified, 0 errors
+
+  '
