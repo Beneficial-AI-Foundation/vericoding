@@ -7,10 +7,14 @@ generates implementations using various LLM APIs, and iteratively fixes verifica
 """
 
 import argparse
+import os
+import shutil
 import sys
 import time
 from datetime import datetime
 from pathlib import Path
+
+import wandb
 
 # Import the modular components
 from vericoding.core import (
@@ -266,9 +270,6 @@ def main():
     config = setup_configuration(args)
     
     # Initialize wandb for experiment tracking (unless disabled)
-    import wandb
-    import os
-    
     wandb_run = None
     if not args.no_wandb and os.getenv("WANDB_API_KEY"):
         try:
@@ -462,7 +463,6 @@ def main():
                 
                 # Delete local files if requested
                 if args.delete_after_upload:
-                    import shutil
                     try:
                         shutil.rmtree(output_path)
                         print(f"🗑️  Local files deleted from {output_path}")
