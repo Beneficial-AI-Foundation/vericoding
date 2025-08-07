@@ -90,9 +90,39 @@ def check_tool_availability(config: ProcessingConfig) -> ToolAvailabilityResult:
         )
 
 
+def find_project_root(file_path: str, marker_files: list[str]) -> Path | None:
+    """Find the project root by looking for marker files in parent directories.
+    
+    Args:
+        file_path: Starting file path
+        marker_files: List of filenames that indicate project root (e.g., ['lakefile.lean', 'lakefile.toml'])
+    
+    Returns:
+        Path to project root or None if not found
+    """
+    current_path = Path(file_path).resolve().parent
+    
+    # Traverse up the directory tree
+    while current_path != current_path.parent:
+        for marker in marker_files:
+            if (current_path / marker).exists():
+                return current_path
+        current_path = current_path.parent
+    
+    return None
+
+
 def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
     """Verify a file and return the result."""
     tool_path = get_tool_path(config)
+    
+    # For Lean, we need to run from the project root where lakefile is
+    cwd = None
+    if config.language == "lean":
+        project_root = find_project_root(file_path, ["lakefile.lean", "lakefile.toml"])
+        if project_root:
+            cwd = str(project_root)
+    
     try:
         # First try compilation check if available
         if config.language_config.compile_check_command:
@@ -100,7 +130,7 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
                 part.format(tool_path=tool_path, file_path=file_path)
                 for part in config.language_config.compile_check_command
             ]
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=60, cwd=cwd)
 
             if result.returncode != 0:
                 # Compilation failed
@@ -120,7 +150,7 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
             config.language_config, "timeout", 120
         )  # Default to 120 seconds if not specified
         result = subprocess.run(
-            cmd, capture_output=True, text=True, timeout=timeout_value
+            cmd, capture_output=True, text=True, timeout=timeout_value, cwd=cwd
         )
         full_output = result.stdout + result.stderr
 

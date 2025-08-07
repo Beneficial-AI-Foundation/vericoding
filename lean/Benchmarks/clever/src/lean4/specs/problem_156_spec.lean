@@ -1,8 +1,15 @@
+import Benchmarks.Clever.CommonDefs
 import Mathlib
 import Mathlib.Data.List.Basic
 import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
 import Mathlib.Tactic.Basic
+
+/-- Check if a string is a valid Roman numeral -/
+def isValidRoman (s : String) : Prop := sorry
+
+/-- Convert a Roman numeral to decimal -/
+def romanToDecimal (s : String) : Nat := sorry
 
 def problem_spec
 -- function signature
