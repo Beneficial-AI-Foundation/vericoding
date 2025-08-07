@@ -1,0 +1,27 @@
+num_iterations: 8
+success: false
+verification_error: "error: postcondition not satisfied\n  --> /tmp/tmpakwlkxgb.rs:18:13\n\
+  \   |\n18 |     ensures result <==> v@.contains(x)\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n...\n32 |     false\n   |     ----- at the end of the\
+  \ function body\n\nerror: invariant not satisfied at end of loop body\n  --> /tmp/tmpakwlkxgb.rs:24:13\n\
+  \   |\n24 |             !v@.subrange(0, i as int).contains(x)\n   |            \
+  \ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: possible arithmetic underflow/overflow\n\
+  \  --> /tmp/tmpakwlkxgb.rs:51:23\n   |\n51 |         map.insert(x, current + 1);\n\
+  \   |                       ^^^^^^^^^^^\n\nerror: invariant not satisfied before\
+  \ loop\n  --> /tmp/tmpakwlkxgb.rs:64:19\n   |\n64 |     for (k, v) in map.iter()\
+  \ {\n   |                   ^^^^^^^^^^ Automatically generated loop invariant failed.\
+  \ You can disable the automatic generation by adding #[verifier::no_auto_loop_invariant]\
+  \ to the loop. You might also try storing the loop expression in a variable outside\
+  \ the loop (e.g. `let e = 0..10; for x in e { ... }`).\n\nerror: invariant not satisfied\
+  \ before loop\n  --> /tmp/tmpakwlkxgb.rs:78:19\n   |\n78 |     for (k, v) in map.iter()\
+  \ {\n   |                   ^^^^^^^^^^ Automatically generated loop invariant failed.\
+  \ You can disable the automatic generation by adding #[verifier::no_auto_loop_invariant]\
+  \ to the loop. You might also try storing the loop expression in a variable outside\
+  \ the loop (e.g. `let e = 0..10; for x in e { ... }`).\n\nerror: precondition not\
+  \ satisfied\n   --> /tmp/tmpakwlkxgb.rs:114:20\n    |\n60  |     requires map.len()\
+  \ > 0\n    |              ------------- failed precondition\n...\n114 |     let\
+  \ max_freq = get_max_frequency(&freq_map);\n    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: aborting due to 6 previous errors\n\n"
+verification_output: 'verification results:: 5 verified, 6 errors
+
+  '
