@@ -4,6 +4,12 @@ import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
 import Mathlib.Tactic.Basic
 
+/-- Check if string is valid Roman numeral -/
+def isValidRoman (s : String) : Bool := sorry
+
+/-- Convert Roman numeral to decimal -/
+def romanToDecimal (s : String) : Nat := sorry
+
 def problem_spec
 -- function signature
 (impl: Nat → String)

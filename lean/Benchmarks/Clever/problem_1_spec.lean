@@ -1,9 +1,14 @@
-import benchmarks.clever.CommonDefs
 import Mathlib
 import Mathlib.Data.List.Basic
 import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
 import Mathlib.Tactic.Basic
+
+/-- Check if parentheses are balanced -/
+def balanced_paren_non_computable (s : String) (openChar : Char) (closeChar : Char) : Prop := sorry
+
+/-- Count number of parenthesis groups -/
+def count_paren_groups (s : String) : Nat := sorry
 
 def problem_spec
 -- function signature
