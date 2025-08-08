@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "Quinn Dougherty", email = "quinn.dougherty.forall@gmail.com" }
 ]
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
     "datasets>=4.0.0",
     "logfire>=3.24.1",
