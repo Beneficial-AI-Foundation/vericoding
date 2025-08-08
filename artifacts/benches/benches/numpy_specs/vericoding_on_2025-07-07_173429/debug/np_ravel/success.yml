@@ -1,0 +1,51 @@
+num_iterations: 9
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmp6msn9j3c.rs:28:9\n   |\n28 |         while col < length1\n\
+  \   |         ^^^^^^^^^^^^^^^^^^^\n\nnote: recommendation not met\n  --> /tmp/tmp6msn9j3c.rs:12:13\n\
+  \   |\n12 |             ret[i * arr[0].len() as int + j] == arr[i][j],\n   |   \
+  \          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   |\n  ::: /home/lacra/verus/vstd/std_specs/vec.rs:23:18\n\
+  \   |\n23 |             0 <= i < self.view().len(),\n   |                  - recommendation\
+  \ not met\n\nnote: recommendation not met\n  --> /tmp/tmp6msn9j3c.rs:12:49\n   |\n\
+  12 |             ret[i * arr[0].len() as int + j] == arr[i][j],\n   |          \
+  \                                       ^^^^^^^^^\n   |\n  ::: /home/lacra/verus/vstd/std_specs/vec.rs:23:18\n\
+  \   |\n23 |             0 <= i < self.view().len(),\n   |                  - recommendation\
+  \ not met\n\nerror: invariant not satisfied at end of loop body\n  --> /tmp/tmp6msn9j3c.rs:22:13\n\
+  \   |\n22 |             ret.len() == row * length1,\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote: recommendation not met\n  --> /tmp/tmp6msn9j3c.rs:24:17\n   |\n24 |    \
+  \             ret[i * length1 as int + j] == arr[i][j],\n   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \   |\n  ::: /home/lacra/verus/vstd/std_specs/vec.rs:23:18\n   |\n23 |         \
+  \    0 <= i < self.view().len(),\n   |                  - recommendation not met\n\
+  \nnote: recommendation not met\n  --> /tmp/tmp6msn9j3c.rs:24:48\n   |\n24 |    \
+  \             ret[i * length1 as int + j] == arr[i][j],\n   |                  \
+  \                              ^^^^^^\n   |\n  ::: /home/lacra/verus/vstd/std_specs/vec.rs:23:18\n\
+  \   |\n23 |             0 <= i < self.view().len(),\n   |                  - recommendation\
+  \ not met\n\nnote: recommendation not met\n  --> /tmp/tmp6msn9j3c.rs:24:48\n   |\n\
+  24 |                 ret[i * length1 as int + j] == arr[i][j],\n   |           \
+  \                                     ^^^^^^^^^\n   |\n  ::: /home/lacra/verus/vstd/std_specs/vec.rs:23:18\n\
+  \   |\n23 |             0 <= i < self.view().len(),\n   |                  - recommendation\
+  \ not met\n\nnote: recommendation not met\n  --> /tmp/tmp6msn9j3c.rs:34:21\n   |\n\
+  34 |                     ret[i * length1 as int + j] == arr[i][j],\n   |       \
+  \              ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   |\n  ::: /home/lacra/verus/vstd/std_specs/vec.rs:23:18\n\
+  \   |\n23 |             0 <= i < self.view().len(),\n   |                  - recommendation\
+  \ not met\n\nnote: recommendation not met\n  --> /tmp/tmp6msn9j3c.rs:36:61\n   |\n\
+  36 |                     ret[row as int * length1 as int + j] == arr[row as int][j],\n\
+  \   |                                                             ^^^^^^^^^^^^^^^\n\
+  \   |\n  ::: /home/lacra/verus/vstd/std_specs/vec.rs:23:18\n   |\n23 |         \
+  \    0 <= i < self.view().len(),\n   |                  - recommendation not met\n\
+  \nnote: recommendation not met\n  --> /tmp/tmp6msn9j3c.rs:36:61\n   |\n36 |    \
+  \                 ret[row as int * length1 as int + j] == arr[row as int][j],\n\
+  \   |                                                             ^^^^^^^^^^^^^^^^^^\n\
+  \   |\n  ::: /home/lacra/verus/vstd/std_specs/vec.rs:23:18\n   |\n23 |         \
+  \    0 <= i < self.view().len(),\n   |                  - recommendation not met\n\
+  \nerror: assertion failed\n  --> /tmp/tmp6msn9j3c.rs:43:20\n   |\n43 |         \
+  \    assert(row * length1 + col < length0 * length1);\n   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ assertion failed\n\nerror: precondition not satisfied\n  --> /tmp/tmp6msn9j3c.rs:45:22\n\
+  \   |\n45 |             ret.push(arr[row][col]);\n   |                      ^^^^^^^^\n\
+  \   |\n  ::: /home/lacra/verus/vstd/std_specs/vec.rs:48:9\n   |\n48 |         i\
+  \ < vec.view().len(),\n   |         -------------------- failed precondition\n\n\
+  error: aborting due to 3 previous errors\n\n"
+verification_output: 'verification results:: 1 verified, 2 errors
+
+  '

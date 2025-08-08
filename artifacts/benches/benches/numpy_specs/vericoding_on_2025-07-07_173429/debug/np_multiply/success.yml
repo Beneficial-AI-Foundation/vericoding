@@ -1,0 +1,44 @@
+num_iterations: 18
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmpfid0464g.rs:15:5\n   |\n15 |     while i < a.len()\n \
+  \  |     ^^^^^^^^^^^^^^^^^\n\nnote: recommendation not met\n  --> /tmp/tmpfid0464g.rs:19:60\n\
+  \   |\n19 |             forall|j: int| 0 <= j < i ==> res[j] == a[j] * b[j],\n \
+  \  |                                                            ^^^^\n   |\n  :::\
+  \ /home/lacra/verus/vstd/std_specs/vec.rs:23:18\n   |\n23 |             0 <= i <\
+  \ self.view().len(),\n   |                  - recommendation not met\n\nerror: possible\
+  \ arithmetic underflow/overflow\n  --> /tmp/tmpfid0464g.rs:22:18\n   |\n22 |   \
+  \      res.push(a[i] * b[i]);\n   |                  ^^^^^^^^^^^\n\nerror: precondition\
+  \ not satisfied\n  --> /tmp/tmpfid0464g.rs:22:25\n   |\n22 |         res.push(a[i]\
+  \ * b[i]);\n   |                         ^^^^\n   |\n  ::: /home/lacra/verus/vstd/std_specs/vec.rs:48:9\n\
+  \   |\n48 |         i < vec.view().len(),\n   |         -------------------- failed\
+  \ precondition\n\nnote: automatically chose triggers for this expression:\n  -->\
+  \ /tmp/tmpfid0464g.rs:10:9\n   |\n10 |         forall|i: int| 0 <= i < a.len() ==>\
+  \ res[i] == a[i] * b[i],\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote:   trigger 1 of 1:\n  --> /tmp/tmpfid0464g.rs:10:45\n   |\n10 |         forall|i:\
+  \ int| 0 <= i < a.len() ==> res[i] == a[i] * b[i],\n   |                       \
+  \                      ^^^^^^\n\nnote: automatically chose triggers for this expression:\n\
+  \  --> /tmp/tmpfid0464g.rs:19:13\n   |\n19 |             forall|j: int| 0 <= j <\
+  \ i ==> res[j] == a[j] * b[j],\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote:   trigger 1 of 1:\n  --> /tmp/tmpfid0464g.rs:19:43\n   |\n19 |         \
+  \    forall|j: int| 0 <= j < i ==> res[j] == a[j] * b[j],\n   |                \
+  \                           ^^^^^^\n\nnote: Verus printed one or more automatically\
+  \ chosen quantifier triggers\n      because it had low confidence in the chosen\
+  \ triggers.\n      To suppress these messages, do one of the following:\n      \
+  \  (1) manually annotate a single desired trigger using #[trigger]\n           \
+  \ (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n\
+  \        (2) manually annotate multiple desired triggers using #![trigger ...]\n\
+  \            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) &&\
+  \ g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n \
+  \           (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n  \
+  \      (4) use the --triggers-silent command-line option to suppress all printing\
+  \ of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover\
+  \ to instantiate quantifiers;\n      the theorem prover instantiates a quantifier\
+  \ whenever some expression matches the\n      pattern specified by one of the quantifier's\
+  \ triggers.)\n  --> /tmp/tmpfid0464g.rs:19:13\n   |\n19 |             forall|j:\
+  \ int| 0 <= j < i ==> res[j] == a[j] * b[j],\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: aborting due to 2 previous errors\n\n"
+verification_output: 'verification results:: 1 verified, 1 errors
+
+  '

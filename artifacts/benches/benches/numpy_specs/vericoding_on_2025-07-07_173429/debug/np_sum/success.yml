@@ -1,0 +1,15 @@
+num_iterations: 13
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmpushb7kgj.rs:24:5\n   |\n24 |     while i < a.len()\n \
+  \  |     ^^^^^^^^^^^^^^^^^\n\nerror: assertion failed\n  --> /tmp/tmpushb7kgj.rs:31:16\n\
+  \   |\n31 |         assert(sum_array(a, 0, (i + 1) as int) == a[i as int] + sum_array(a,\
+  \ (i + 1) as int, (i + 1) as int));\n   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ assertion failed\n\nerror: assertion failed\n  --> /tmp/tmpushb7kgj.rs:33:16\n\
+  \   |\n33 |         assert(sum_array(a, 0, (i + 1) as int) == a[i as int] + sum_array(a,\
+  \ 0, i as int));\n   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ assertion failed\n\nerror: aborting due to 2 previous errors\n\n"
+verification_output: 'verification results:: 3 verified, 1 errors
+
+  '
