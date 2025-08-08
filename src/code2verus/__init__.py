@@ -7,6 +7,7 @@ import tempfile
 import sys
 from pathlib import Path
 import random
+import json
 from dotenv import load_dotenv
 import yaml
 from datasets import load_dataset
@@ -191,20 +192,94 @@ def load_benchmark(benchmark: str = "wendy-sun/DafnyBench", split: str = "test",
     return dataset
 
 
-def is_sample_already_successful(relative_path: Path, benchmark_name: str = "dafnybench") -> bool:
-    """Check if a sample already has success: true in its success.yml file"""
-    artifact_path = ARTIFACTS / benchmark_name / relative_path.parent
-    success_file = artifact_path / "success.yml"
-
-    if not success_file.exists():
+def is_flat_structure(dataset, benchmark_name: str) -> bool:
+    """Check if the dataset represents a flat folder structure (all files in same directory)"""
+    if not dataset:
         return False
+        
+    # For local datasets, check if all files are in the same parent directory
+    if isinstance(dataset, list) and "source_path" in dataset[0]:
+        # Get all parent directories
+        parent_dirs = set()
+        for item in dataset:
+            source_path = Path(item["source_path"])
+            parent_dirs.add(source_path.parent)
+        
+        # If all files share the same parent directory, it's flat
+        return len(parent_dirs) == 1
+    
+    return False
 
-    try:
-        with open(success_file, "r") as success_yaml:
-            data = yaml.safe_load(success_yaml)
-        return data.get("success", False)
-    except Exception:
-        return False
+
+def load_success_tracking(benchmark_name: str, is_flat: bool) -> dict:
+    """Load existing success tracking data"""
+    if is_flat:
+        success_file = ARTIFACTS / benchmark_name / "success_tracking.json"
+        if success_file.exists():
+            try:
+                with open(success_file, "r") as f:
+                    return json.load(f)
+            except Exception:
+                pass
+    return {}
+
+
+def save_success_info(artifact_path: Path, filename: str, info: dict, benchmark_name: str, is_flat: bool):
+    """Save success information either as individual YAML or consolidated JSON"""
+    if is_flat:
+        # Use consolidated JSON file for flat structures
+        success_file = ARTIFACTS / benchmark_name / "success_tracking.json"
+        success_file.parent.mkdir(parents=True, exist_ok=True)
+        
+        # Load existing data
+        existing_data = {}
+        if success_file.exists():
+            try:
+                with open(success_file, "r") as f:
+                    existing_data = json.load(f)
+            except Exception:
+                pass
+        
+        # Update with new info
+        existing_data[filename] = info
+        
+        # Save updated data
+        with open(success_file, "w") as f:
+            json.dump(existing_data, f, indent=2)
+    else:
+        # Use individual YAML files for hierarchical structures
+        with open(artifact_path / "success.yml", "w") as success_file:
+            yaml.dump(info, success_file)
+
+
+def is_sample_already_successful(relative_path: Path, benchmark_name: str = "dafnybench", filename: str = None, is_flat: bool = False) -> bool:
+    """Check if a sample already has success: true in its success file"""
+    if is_flat and filename:
+        # Check consolidated JSON for flat structures
+        success_file = ARTIFACTS / benchmark_name / "success_tracking.json"
+        if not success_file.exists():
+            return False
+        
+        try:
+            with open(success_file, "r") as f:
+                data = json.load(f)
+            return data.get(filename, {}).get("success", False)
+        except Exception:
+            return False
+    else:
+        # Check individual YAML files for hierarchical structures
+        artifact_path = ARTIFACTS / benchmark_name / relative_path.parent
+        success_file = artifact_path / "success.yml"
+
+        if not success_file.exists():
+            return False
+
+        try:
+            with open(success_file, "r") as success_yaml:
+                data = yaml.safe_load(success_yaml)
+            return data.get("success", False)
+        except Exception:
+            return False
 
 
 async def verify_verus_code(verus_code: str) -> tuple[bool, str, str]:
@@ -251,7 +326,7 @@ async def verify_verus_code(verus_code: str) -> tuple[bool, str, str]:
 
 
 async def process_item(
-    idx: int, item: dict, source_language: str = "dafny", benchmark_name: str = "dafnybench", max_retries: int = 32, base_delay: float = 5.0
+    idx: int, item: dict, source_language: str = "dafny", benchmark_name: str = "dafnybench", max_retries: int = 32, base_delay: float = 5.0, is_flat: bool = False
 ) -> dict:
     """Process a single item from the dataset with exponential backoff"""
     
@@ -285,7 +360,7 @@ async def process_item(
     output_filename = relative_path.name
 
     # Check if this sample already succeeded
-    if is_sample_already_successful(relative_path.with_suffix(''), benchmark_name):
+    if is_sample_already_successful(relative_path.with_suffix(''), benchmark_name, source_filename.name, is_flat):
         logfire.info(f"Skipping item {idx + 1}: {source_filename} (already successful)")
         return {"path": artifact_path, "success": True}
 
@@ -310,11 +385,9 @@ async def process_item(
                 "verification_output": verification_output,
                 "verification_error": verification_error,
             }
-            with open(artifact_path / "success.yml", "w") as success_file:
-                yaml.dump(
-                    info,
-                    success_file,
-                )
+            
+            # Save success info using the appropriate method (JSON for flat, YAML for hierarchical)
+            save_success_info(artifact_path, source_filename.name, info, benchmark_name, is_flat)
 
             return {"path": artifact_path, "success": verification_success}
 
@@ -334,7 +407,7 @@ async def process_item(
     return {"path": artifact_path, "success": False}
 
 
-async def check_existing_success(idx: int, item: dict, benchmark_name: str) -> bool:
+async def check_existing_success(idx: int, item: dict, benchmark_name: str, is_flat: bool = False) -> bool:
     """Async helper to check if a sample is already successful"""
     # Handle different dataset structures
     if "test_file" in item:
@@ -351,12 +424,16 @@ async def check_existing_success(idx: int, item: dict, benchmark_name: str) -> b
         source_filename = Path(f"{item['id']}.lean")
         # Use directory structure for each item
         relative_path = Path(item['id'])
+    elif "filename" in item:
+        # Local file format
+        source_filename = Path(item["filename"])
+        relative_path = source_filename.with_suffix('')
     else:
         # Fallback for unknown formats
         source_filename = Path(f"item_{idx}.dfy")
         relative_path = source_filename.with_suffix('')
         
-    return is_sample_already_successful(relative_path, benchmark_name)
+    return is_sample_already_successful(relative_path, benchmark_name, source_filename.name, is_flat)
 
 
 async def main_async(benchmark: str = "wendy-sun/DafnyBench", split: str = "test", source_language: str = "dafny", max_concurrent: int = 3, file_pattern: str = "*.dfy") -> None:
@@ -375,10 +452,15 @@ async def main_async(benchmark: str = "wendy-sun/DafnyBench", split: str = "test
         # For Hugging Face datasets
         benchmark_name = benchmark.split("/")[-1].lower().replace("-", "")
 
+    # Check if we have a flat structure (all files in same directory)
+    is_flat = is_flat_structure(dataset, benchmark_name)
+    if is_flat:
+        print(f"Detected flat folder structure - using consolidated success tracking")
+
     # Check for existing successful samples in parallel
     print("Checking for existing successful samples...")
     existing_success_checks = [
-        check_existing_success(idx, item, benchmark_name) 
+        check_existing_success(idx, item, benchmark_name, is_flat) 
         for idx, item in enumerate(dataset)
     ]
     existing_success_results = await asyncio.gather(*existing_success_checks)
@@ -389,7 +471,7 @@ async def main_async(benchmark: str = "wendy-sun/DafnyBench", split: str = "test
 
     async def process_with_semaphore(idx: int, item: dict) -> dict:
         async with semaphore:
-            return await process_item(idx, item, source_language, benchmark_name)
+            return await process_item(idx, item, source_language, benchmark_name, max_retries=32, base_delay=5.0, is_flat=is_flat)
 
     item_processes = [
         process_with_semaphore(idx, item) for idx, item in enumerate(dataset)
@@ -402,15 +484,11 @@ async def main_async(benchmark: str = "wendy-sun/DafnyBench", split: str = "test
 
     # Calculate statistics
     total_successful = sum(res["success"] for res in results)
-    newly_successful = sum(
-        res["success"] for res in results if not res.get("skipped", False)
-    )
     percentage_successful = total_successful / len(results)
 
     print("Results:")
-    print(f"  Previously successful: {skipped_count}")
-    print(f"  Newly successful: {newly_successful}")
-    print(f"  Total successful: {total_successful}")
+    print(f"  Successful files: {total_successful}")
+    print(f"  Total files: {len(results)}")
     print(f"  Overall success rate: {100 * percentage_successful:.1f}%")
 
 

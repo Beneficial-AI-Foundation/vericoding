@@ -1,8 +1,0 @@
-num_iterations: 17
-success: false
-verification_error: "error: The Verus types 'nat' and 'int' can only be used in ghost\
-  \ code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning\
-  \ to a 'ghost' or 'tracked' variable)\n  --> /tmp/tmp9j2wy9ig.rs:27:30\n   |\n27\
-  \ |         if input[i].len() >= width as int {\n   |                          \
-  \    ^^^^^^^^^^^^\n\nerror: aborting due to 1 previous error\n\n"
-verification_output: ''

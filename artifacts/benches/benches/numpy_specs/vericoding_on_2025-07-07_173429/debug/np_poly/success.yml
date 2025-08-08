@@ -1,6 +1,0 @@
-num_iterations: 24
-success: false
-verification_error: "error: expected curly braces\n  --> /tmp/tmpvtlwpf9y.rs:39:13\n\
-  \   |\n39 |             invariant coeff[0] == 1\n   |             ^^^^^^^^^\n\n\
-  error: aborting due to 1 previous error\n\n"
-verification_output: ''
