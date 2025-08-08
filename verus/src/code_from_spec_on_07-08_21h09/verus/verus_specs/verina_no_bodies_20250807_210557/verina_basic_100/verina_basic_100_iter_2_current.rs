@@ -1,0 +1,26 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn triple_precond(x: int) -> bool {
+    true
+}
+
+spec fn triple_postcond(x: int, result: int) -> bool {
+    result / 3 == x && result / 3 * 3 == result
+}
+
+fn triple(x: u32) -> (result: u32)
+    requires 
+        triple_precond(x as int),
+        x <= u32::MAX / 3
+    ensures 
+        triple_postcond(x as int, result as int)
+{
+    /* code modified by LLM (iteration 1): implemented function body to return 3*x to satisfy postcondition */
+    3 * x
+}
+
+} // verus!
+
+fn main() {}
