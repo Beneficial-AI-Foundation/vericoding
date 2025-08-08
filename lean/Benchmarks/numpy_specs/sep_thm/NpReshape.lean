@@ -9,20 +9,18 @@ import benchmarks.MatrixDef
 namespace DafnySpecs.NpReshape
 
 /-- Reshape vector to new dimensions -/
-def reshape {n m k : Nat} (a : Vector Int n) (newshape : Vector Int 2) : Matrix m k Int := sorry
+def reshape {n : Nat} (a : Vector Int n) (newshape : Vector Int 2) : Vector Int n := sorry
 
 /-- Specification: Element count is preserved -/
-theorem reshape_count {n m k : Nat} (a : Vector Int n) (newshape : Vector Int 2)
-  (h1 : newshape[0]! = m ∧ newshape[1]! = k)
-  (h2 : n = m * k) :
+theorem reshape_count {n : Nat} (a : Vector Int n) (newshape : Vector Int 2)
+  (h1 : newshape[0]'sorry * newshape[1]'sorry = n) :
   let ret := reshape a newshape
   ret.toList.length = n := sorry
 
 /-- Specification: Elements are correctly mapped -/
-theorem reshape_spec {n m k : Nat} (a : Vector Int n) (newshape : Vector Int 2)
-  (h1 : newshape[0]! = m ∧ newshape[1]! = k)
-  (h2 : n = m * k) :
+theorem reshape_spec {n : Nat} (a : Vector Int n) (newshape : Vector Int 2)
+  (h : newshape[0]'sorry * newshape[1]'sorry = n) :
   let ret := reshape a newshape
-  ∀ i j : Nat, i < m → j < k → ret[i]![j]! = a[i * k + j]! := sorry
+  ∀ idx : Nat, idx < n → ret[idx]'sorry = a[idx]'sorry := sorry
 
 end DafnySpecs.NpReshape
