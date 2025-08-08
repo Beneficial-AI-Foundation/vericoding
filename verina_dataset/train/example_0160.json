@@ -1,0 +1,84 @@
+{
+  "id": "verina_advanced_30",
+  "description": "-----Description-----\nThis task requires writing a Lean 4 function that computes the length of the longest strictly increasing contiguous subarray in a list of integers. A subarray is a sequence of consecutive elements, and it is strictly increasing if each element is greater than the previous one.\n\nThe function should correctly handle empty lists, lists with all equal elements, and long stretches of increasing numbers.\n\n-----Input-----\nThe input consists of a single list:\nnums: A list of integers.\n\n-----Output-----\nThe output is a natural number:\nReturns the length of the longest strictly increasing contiguous subarray. If the list is empty, the function should return 0.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef longestIncreasingStreak_precond (nums : List Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef longestIncreasingStreak (nums : List Int) (h_precond : longestIncreasingStreak_precond (nums)) : Nat :=\n  -- !benchmark @start code\n  let rec aux (lst : List Int) (prev : Option Int) (currLen : Nat) (maxLen : Nat) : Nat :=\n    match lst with\n    | [] => max currLen maxLen\n    | x :: xs =>\n      match prev with\n      | none => aux xs (some x) 1 (max 1 maxLen)\n      | some p =>\n        if x > p then aux xs (some x) (currLen + 1) (max (currLen + 1) maxLen)\n        else aux xs (some x) 1 (max currLen maxLen)\n  aux nums none 0 0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef longestIncreasingStreak_postcond (nums : List Int) (result: Nat) (h_precond : longestIncreasingStreak_precond (nums)) : Prop :=\n  -- !benchmark @start postcond\n  -- Case 1: Empty list means result = 0\n  (nums = [] \u2192 result = 0) \u2227\n\n  -- Case 2: If result > 0, there exists a streak of exactly that length\n  (result > 0 \u2192\n    (List.range (nums.length - result + 1) |>.any (fun start =>\n      -- Check bounds are valid\n      start + result \u2264 nums.length \u2227\n      -- Check all consecutive pairs in this streak are increasing\n      (List.range (result - 1) |>.all (fun i =>\n        nums[start + i]! < nums[start + i + 1]!)) \u2227\n      -- Check this streak can't be extended left (if possible)\n      (start = 0 \u2228 nums[start - 1]! \u2265 nums[start]!) \u2227\n      -- Check this streak can't be extended right (if possible)\n      (start + result = nums.length \u2228 nums[start + result - 1]! \u2265 nums[start + result]!)))) \u2227\n\n  -- Case 3: No streak longer than result exists\n  (List.range (nums.length - result) |>.all (fun start =>\n    List.range result |>.any (fun i =>\n      start + i + 1 \u2265 nums.length \u2228 nums[start + i]! \u2265 nums[start + i + 1]!)))\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem longestIncreasingStreak_spec_satisfied (nums: List Int) (h_precond : longestIncreasingStreak_precond (nums)) :\n    longestIncreasingStreak_postcond (nums) (longestIncreasingStreak (nums) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "longestIncreasingStreak",
+    "parameters": {
+      "param_name": [
+        "nums"
+      ],
+      "param_type": [
+        "List Int"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "https://leetcode.com/problems/longest-increasing-subsequence/description/",
+      "task_id": "lab_longestIncreasingStreak_324801033",
+      "student_id": [
+        24
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"nums\": \"[1, 2, 3, 2, 4, 5, 6]\"}",
+      "{\"nums\": \"[10, 20, 30, 40]\"}",
+      "{\"nums\": \"[5, 5, 5, 5]\"}",
+      "{\"nums\": \"[10, 9, 8, 7]\"}",
+      "{\"nums\": \"[]\"}",
+      "{\"nums\": \"[1, 2, 1, 2, 3, 0, 1, 2, 3, 4]\"}"
+    ],
+    "expected": [
+      [
+        "4"
+      ],
+      [
+        "4"
+      ],
+      [
+        "1"
+      ],
+      [
+        "1"
+      ],
+      [
+        "0"
+      ],
+      [
+        "5"
+      ]
+    ],
+    "unexpected": [
+      [
+        "3",
+        "5"
+      ],
+      [
+        "3"
+      ],
+      [
+        "0",
+        "2"
+      ],
+      [
+        "0",
+        "2"
+      ],
+      [
+        "1"
+      ],
+      [
+        "4"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

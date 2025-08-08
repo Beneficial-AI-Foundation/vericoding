@@ -1,0 +1,82 @@
+{
+  "id": "verina_basic_85",
+  "description": "-----Description-----  \nThis problem focuses on reversing an array of integers. The goal is to take an input array and produce a new array with the elements arranged in the reverse order.  \n\n-----Input-----  \nThe input consists of:  \n\u2022 a: An array of integers, which may be empty, contain one element, or many elements.\n\n-----Output-----  \nThe output is an array of integers that:  \n\u2022 Has the same length as the input array.  \n\u2022 Contains the same elements as the input array, but in reverse order.  \n\u2022 For every valid index i in the input array, the output at index i is equal to the element at index (a.size - 1 - i) from the input array.\n\n-----Note-----  \nThere are no specific preconditions; the method should correctly handle any array of integers.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef reverse_precond (a : Array Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef reverse_core (arr : Array Int) (i : Nat) : Array Int :=\n  if i < arr.size / 2 then\n    let j := arr.size - 1 - i\n    let temp := arr[i]!\n    let arr' := arr.set! i (arr[j]!)\n    let arr'' := arr'.set! j temp\n    reverse_core arr'' (i + 1)\n  else\n    arr\n-- !benchmark @end code_aux\n\n\ndef reverse (a : Array Int) (h_precond : reverse_precond (a)) : Array Int :=\n  -- !benchmark @start code\n  reverse_core a 0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef reverse_postcond (a : Array Int) (result: Array Int) (h_precond : reverse_precond (a)) :=\n  -- !benchmark @start postcond\n  (result.size = a.size) \u2227 (\u2200 i : Nat, i < a.size \u2192 result[i]! = a[a.size - 1 - i]!)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem reverse_spec_satisfied (a: Array Int) (h_precond : reverse_precond (a)) :\n    reverse_postcond (a) (reverse (a) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "reverse",
+    "parameters": {
+      "param_name": [
+        "a"
+      ],
+      "param_type": [
+        "Array Int"
+      ]
+    },
+    "return_type": "Array Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_reverse",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[1, 2, 3, 4, 5]\"}",
+      "{\"a\": \"#[10, 20, 30, 40]\"}",
+      "{\"a\": \"#[]\"}",
+      "{\"a\": \"#[7]\"}",
+      "{\"a\": \"#[-1, 0, 1]\"}"
+    ],
+    "expected": [
+      [
+        "#[5, 4, 3, 2, 1]"
+      ],
+      [
+        "#[40, 30, 20, 10]"
+      ],
+      [
+        "#[]"
+      ],
+      [
+        "#[7]"
+      ],
+      [
+        "#[1, 0, -1]"
+      ]
+    ],
+    "unexpected": [
+      [
+        "#[1, 2, 3, 4, 5]",
+        "#[5, 3, 4, 2, 1]",
+        "#[2, 3, 4, 5, 6]"
+      ],
+      [
+        "#[10, 20, 30, 40]",
+        "#[40, 20, 30, 10]",
+        "#[30, 20, 10, 40]"
+      ],
+      [
+        "#[0]",
+        "#[-1]",
+        "#[1]"
+      ],
+      [
+        "#[0]",
+        "#[7, 7]",
+        "#[1]"
+      ],
+      [
+        "#[-1, 0, 1]",
+        "#[0, 1, -1]",
+        "#[1, -1, 0]"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

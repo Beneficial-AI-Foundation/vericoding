@@ -1,0 +1,85 @@
+{
+  "id": "verina_advanced_1",
+  "description": "-----Description-----\nThis task requires writing a Lean 4 function that finds the single number in a non-empty list of integers, where every element appears exactly twice except for one element that appears only once. The function \nshould return the integer that appears only once.\n\n-----Input-----\nThe input is a non-empty list of integers:\n- nums: A list in which each integer appears exactly twice except for one element that appears only once.\n\n-----Output-----\nThe output is a single integer:\nReturns the unique integer that appears exactly once in the list.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\ndef filterlist (x : Int) (nums : List Int) : List Int :=\n  let rec aux (lst : List Int) : List Int :=\n    match lst with\n    | []      => []\n    | y :: ys => if y = x then y :: aux ys else aux ys\n  aux nums\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef FindSingleNumber_precond (nums : List Int) : Prop :=\n  -- !benchmark @start precond\n  let numsCount := nums.map (fun x => nums.count x)\n  numsCount.all (fun count => count = 1 \u2228 count = 2) \u2227 numsCount.count 1 = 1\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n-- !benchmark @end code_aux\n\n\ndef FindSingleNumber (nums : List Int) (h_precond : FindSingleNumber_precond (nums)) : Int :=\n  -- !benchmark @start code\n  let rec findUnique (remaining : List Int) : Int :=\n    match remaining with\n    | [] =>\n      0\n    | x :: xs =>\n      let filtered : List Int :=\n        filterlist x nums\n      let count : Nat :=\n        filtered.length\n      if count = 1 then\n        x\n      else\n        findUnique xs\n  findUnique nums\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef FindSingleNumber_postcond (nums : List Int) (result: Int) (h_precond : FindSingleNumber_precond (nums)) : Prop :=\n  -- !benchmark @start postcond\n  (nums.length > 0)\n  \u2227\n  ((filterlist result nums).length = 1)\n  \u2227\n  (\u2200 (x : Int),\n    x \u2208 nums \u2192\n    (x = result) \u2228 ((filterlist x nums).length = 2))\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem FindSingleNumber_spec_satisfied (nums: List Int) (h_precond : FindSingleNumber_precond (nums)) :\n    FindSingleNumber_postcond (nums) (FindSingleNumber (nums) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "FindSingleNumber",
+    "parameters": {
+      "param_name": [
+        "nums"
+      ],
+      "param_type": [
+        "List Int"
+      ]
+    },
+    "return_type": "Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "N/A",
+      "task_id": "lab_FindSingleNumber_324594979",
+      "student_id": [
+        1
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"nums\": \"[2, 2, 3]\"}",
+      "{\"nums\": \"[1, 2, 2]\"}",
+      "{\"nums\": \"[3, 3, 4, 4, 1]\"}",
+      "{\"nums\": \"[0, 1, 3, 1, 3, 88, 88, 100, 100]\"}",
+      "{\"nums\": \"[-1, -1, 7, 9, 7]\"}"
+    ],
+    "expected": [
+      [
+        "3"
+      ],
+      [
+        "1"
+      ],
+      [
+        "1"
+      ],
+      [
+        "0"
+      ],
+      [
+        "9"
+      ]
+    ],
+    "unexpected": [
+      [
+        "2",
+        "1",
+        "4"
+      ],
+      [
+        "2",
+        "-1"
+      ],
+      [
+        "3",
+        "4"
+      ],
+      [
+        "1",
+        "2",
+        "100"
+      ],
+      [
+        "-1",
+        "7",
+        "10"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'nums': '[2, 2]'}",
+      "{'nums': '[2, 2, 3, 3]'}"
+    ]
+  },
+  "difficulty": "advanced"
+}

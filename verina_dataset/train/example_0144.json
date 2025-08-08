@@ -1,0 +1,91 @@
+{
+  "id": "verina_basic_18",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that computes the sum of the digits of a non-negative integer. The method should process each digit of the input number and return the total sum. The output is guaranteed to be a non-negative natural number.\n\n-----Input-----\nThe input consists of:\nn: A non-negative integer.\n\n-----Output-----\nThe output is a natural number:\nReturns the sum of the digits of the input integer.\n\n-----Note-----\nThe input is assumed to be a valid non-negative integer.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef sumOfDigits_precond (n : Nat) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef sumOfDigits (n : Nat) (h_precond : sumOfDigits_precond (n)) : Nat :=\n  -- !benchmark @start code\n  let rec loop (n : Nat) (acc : Nat) : Nat :=\n    if n = 0 then acc\n    else loop (n / 10) (acc + n % 10)\n  loop n 0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef sumOfDigits_postcond (n : Nat) (result: Nat) (h_precond : sumOfDigits_precond (n)) :=\n  -- !benchmark @start postcond\n  result - List.sum (List.map (fun c => Char.toNat c - Char.toNat '0') (String.toList (Nat.repr n))) = 0 \u2227\n  List.sum (List.map (fun c => Char.toNat c - Char.toNat '0') (String.toList (Nat.repr n))) - result = 0\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem sumOfDigits_spec_satisfied (n: Nat) (h_precond : sumOfDigits_precond (n)) :\n    sumOfDigits_postcond (n) (sumOfDigits (n) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "sumOfDigits",
+    "parameters": {
+      "param_name": [
+        "n"
+      ],
+      "param_type": [
+        "Nat"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_566",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"n\": 12345}",
+      "{\"n\": 0}",
+      "{\"n\": 987654321}",
+      "{\"n\": 11111}",
+      "{\"n\": 1001}",
+      "{\"n\": 9999}"
+    ],
+    "expected": [
+      [
+        "15"
+      ],
+      [
+        "0"
+      ],
+      [
+        "45"
+      ],
+      [
+        "5"
+      ],
+      [
+        "2"
+      ],
+      [
+        "36"
+      ]
+    ],
+    "unexpected": [
+      [
+        "12",
+        "16",
+        "14"
+      ],
+      [
+        "1",
+        "10",
+        "5"
+      ],
+      [
+        "44",
+        "46",
+        "50"
+      ],
+      [
+        "6",
+        "4",
+        "7"
+      ],
+      [
+        "1",
+        "3",
+        "11"
+      ],
+      [
+        "35",
+        "37",
+        "34"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

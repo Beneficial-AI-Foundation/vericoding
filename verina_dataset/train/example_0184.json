@@ -1,0 +1,81 @@
+{
+  "id": "verina_advanced_15",
+  "description": "-----Description-----\nGiven an integer array nums, return true if there exists a triple of indices (i, j, k) such that i < j < k and nums[i] < nums[j] < nums[k]. If no such indices exist, return false.\n\n-----Input-----\nThe input consists of a single list:\nnums: A list of integers.\n\n-----Output-----\nThe output is a boolean:\nReturns true if there exists a triplet (i, j, k) where i < j < k and nums[i] < nums[j] < nums[k]; otherwise, returns false.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef increasingTriplet_precond (nums : List Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef increasingTriplet (nums : List Int) (h_precond : increasingTriplet_precond (nums)) : Bool :=\n  -- !benchmark @start code\n  -- must have at least 3 elements to form a triplet\n  let rec lengthCheck : List Int \u2192 Nat \u2192 Nat\n    | [], acc => acc\n    | _ :: rest, acc => lengthCheck rest (acc + 1)\n\n  let len := lengthCheck nums 0\n\n  if len < 3 then\n    false\n  else\n    -- scan for increasing triplet\n    let rec loop (xs : List Int) (first : Int) (second : Int) : Bool :=\n      match xs with\n      | [] => false\n      | x :: rest =>\n        let nextFirst := if x \u2264 first then x else first\n        let nextSecond := if x > first \u2227 x \u2264 second then x else second\n        if x \u2264 first then\n          loop rest nextFirst second\n        else if x \u2264 second then\n          loop rest first nextSecond\n        else\n          true  -- found triplet\n    match nums with\n    | [] => false\n    | _ :: rest1 =>\n      match rest1 with\n      | [] => false\n      | _ :: rest2 =>\n        match rest2 with\n        | [] => false\n        | _ =>\n          loop nums 2147483647 2147483647\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef increasingTriplet_postcond (nums : List Int) (result: Bool) (h_precond : increasingTriplet_precond (nums)) : Prop :=\n  -- !benchmark @start postcond\n  let nums' := nums.zipIdx\n  (result \u2192\n    nums'.any (fun (x, i) =>\n      nums'.any (fun (y, j) =>\n        nums'.any (fun (z, k) =>\n          i < j \u2227 j < k \u2227 x < y \u2227 y < z\n        )\n      )\n    ))\n  \u2227\n  (\u00ac result \u2192 nums'.all (fun (x, i) =>\n    nums'.all (fun (y, j) =>\n      nums'.all (fun (z, k) =>\n        i \u2265 j \u2228 j \u2265 k \u2228 x \u2265 y \u2228 y \u2265 z\n      )\n    )\n  ))\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem increasingTriplet_spec_satisfied (nums: List Int) (h_precond : increasingTriplet_precond (nums)) :\n    increasingTriplet_postcond (nums) (increasingTriplet (nums) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "increasingTriplet",
+    "parameters": {
+      "param_name": [
+        "nums"
+      ],
+      "param_type": [
+        "List Int"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "https://leetcode.com/problems/increasing-triplet-subsequence?envType=study-plan-v2&envId=leetcode-75",
+      "task_id": "lab_increasingTriplet_324678911",
+      "student_id": [
+        6
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"nums\": \"[1, 2, 3]\"}",
+      "{\"nums\": \"[5, 4, 3, 2, 1]\"}",
+      "{\"nums\": \"[2, 1, 5, 0, 4, 6]\"}",
+      "{\"nums\": \"[1, 5, 0, 4, 1, 3]\"}",
+      "{\"nums\": \"[5, 4, 3]\"}",
+      "{\"nums\": \"[]\"}"
+    ],
+    "expected": [
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

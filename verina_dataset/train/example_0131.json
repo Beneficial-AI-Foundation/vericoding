@@ -1,0 +1,77 @@
+{
+  "id": "verina_advanced_28",
+  "description": "-----Description-----\nThis task requires writing a Lean 4 function that finds the length of the longest sequence of consecutive integers present in a given list. The numbers do not need to appear in order. The elements are unique.\n\nA consecutive sequence consists of integers that can be arranged in increasing order with no gaps. Your function should find the longest such streak.\n\n-----Input-----\n- nums: A list of integers (no duplicates).\n\n-----Output-----\n- A natural number: the length of the longest consecutive sequence.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\nimport Std.Data.HashSet\nimport Mathlib\nopen Std\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef longestConsecutive_precond (nums : List Int) : Prop :=\n  -- !benchmark @start precond\n  List.Nodup nums\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef longestConsecutive (nums : List Int) (h_precond : longestConsecutive_precond (nums)) : Nat :=\n  -- !benchmark @start code\n  Id.run do\n    let mut set := HashSet.empty\n    for x in nums do\n      set := set.insert x\n\n    let mut maxLen := 0\n\n    for x in nums do\n      if !set.contains (x - 1) then\n        let mut curr := x\n        let mut length := 1\n        while set.contains (curr + 1) do\n          curr := curr + 1\n          length := length + 1\n        maxLen := Nat.max maxLen length\n\n    return maxLen\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\ndef isConsecutive (seq : List Int) : Bool :=\n  seq.length = 0 \u2228 seq.zipIdx.all (fun (x, i) => x = i + seq[0]!)\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef longestConsecutive_postcond (nums : List Int) (result: Nat) (h_precond : longestConsecutive_precond (nums)) : Prop :=\n  -- !benchmark @start postcond\n  let sorted_nums := nums.mergeSort\n  let consec_sublist_lens := List.range nums.length |>.flatMap (fun start =>\n    List.range (nums.length - start + 1) |>.map (fun len => sorted_nums.extract start (start + len))) |>.filter isConsecutive |>.map (\u00b7.length)\n\n  (nums = [] \u2192 result = 0) \u2227\n  (nums \u2260 [] \u2192 consec_sublist_lens.contains result \u2227 consec_sublist_lens.all (\u00b7 \u2264 result))\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem longestConsecutive_spec_satisfied (nums: List Int) (h_precond : longestConsecutive_precond (nums)) :\n    longestConsecutive_postcond (nums) (longestConsecutive (nums) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "longestConsecutive",
+    "parameters": {
+      "param_name": [
+        "nums"
+      ],
+      "param_type": [
+        "List Int"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "",
+      "task_id": "lab_longestConsecutive_325601349",
+      "student_id": [
+        22
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"nums\": \"[100, 4, 200, 1, 3, 2]\"}",
+      "{\"nums\": \"[0, 3, 7, 2, 5, 8, 4, 6, 1]\"}",
+      "{\"nums\": \"[1, 2, 0]\"}",
+      "{\"nums\": \"[]\"}",
+      "{\"nums\": \"[10]\"}"
+    ],
+    "expected": [
+      [
+        "4"
+      ],
+      [
+        "9"
+      ],
+      [
+        "3"
+      ],
+      [
+        "0"
+      ],
+      [
+        "1"
+      ]
+    ],
+    "unexpected": [
+      [
+        "3",
+        "5"
+      ],
+      [
+        "8"
+      ],
+      [
+        "2"
+      ],
+      [
+        "1"
+      ],
+      [
+        "0"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'nums': '[1, 1]'}"
+    ]
+  },
+  "difficulty": "advanced"
+}

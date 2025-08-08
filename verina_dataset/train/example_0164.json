@@ -1,0 +1,89 @@
+{
+  "id": "verina_basic_86",
+  "description": "-----Description-----  \nThis task requires writing a Lean 4 method that rotates an array of integers to the left by a specified offset.\n\n-----Input-----  \nThe input consists of:  \n\u2022 a: An array of integers (which may be empty or non-empty).  \n\u2022 offset: An integer representing the number of positions to rotate the array. The offset is assumed to be non-negative.\n\n-----Output-----  \nThe output is an array of integers that:  \n\u2022 Has the same length as the input array.  \n\u2022 For every valid index i, the output element at index i is equal to the input element at index ((i + offset) mod n), where n is the array size.\n\n-----Note-----  \nIf the array is empty, the method should return an empty array.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef rotate_precond (a : Array Int) (offset : Int) : Prop :=\n  -- !benchmark @start precond\n  offset \u2265 0\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef rotateAux (a : Array Int) (offset : Int) (i : Nat) (len : Nat) (b : Array Int) : Array Int :=\n  if i < len then\n    let idx_int : Int := (Int.ofNat i + offset) % (Int.ofNat len)\n    let idx_int_adjusted := if idx_int < 0 then idx_int + Int.ofNat len else idx_int\n    let idx_nat : Nat := Int.toNat idx_int_adjusted\n    let new_b := b.set! i (a[idx_nat]!)\n    rotateAux a offset (i + 1) len new_b\n  else b\n-- !benchmark @end code_aux\n\n\ndef rotate (a : Array Int) (offset : Int) (h_precond : rotate_precond (a) (offset)) : Array Int :=\n  -- !benchmark @start code\n  let len := a.size\n  let default_val : Int := if len > 0 then a[0]! else 0\n  let b0 := Array.mkArray len default_val\n  rotateAux a offset 0 len b0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef rotate_postcond (a : Array Int) (offset : Int) (result: Array Int) (h_precond : rotate_precond (a) (offset)) :=\n  -- !benchmark @start postcond\n  result.size = a.size \u2227\n  (\u2200 i : Nat, i < a.size \u2192\n    result[i]! = a[Int.toNat ((Int.ofNat i + offset) % (Int.ofNat a.size))]!)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem rotate_spec_satisfied (a: Array Int) (offset: Int) (h_precond : rotate_precond (a) (offset)) :\n    rotate_postcond (a) (offset) (rotate (a) (offset) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "rotate",
+    "parameters": {
+      "param_name": [
+        "a",
+        "offset"
+      ],
+      "param_type": [
+        "Array Int",
+        "Int"
+      ]
+    },
+    "return_type": "Array Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_rotate",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[1, 2, 3, 4, 5]\", \"offset\": 2}",
+      "{\"a\": \"#[10, 20, 30, 40]\", \"offset\": 1}",
+      "{\"a\": \"#[]\", \"offset\": 5}",
+      "{\"a\": \"#[7]\", \"offset\": 0}",
+      "{\"a\": \"#[-1, -2, -3, -4]\", \"offset\": 3}",
+      "{\"a\": \"#[5, 10, 15]\", \"offset\": 5}"
+    ],
+    "expected": [
+      [
+        "#[3, 4, 5, 1, 2]"
+      ],
+      [
+        "#[20, 30, 40, 10]"
+      ],
+      [
+        "#[]"
+      ],
+      [
+        "#[7]"
+      ],
+      [
+        "#[-4, -1, -2, -3]"
+      ],
+      [
+        "#[15, 5, 10]"
+      ]
+    ],
+    "unexpected": [
+      [
+        "#[1, 2, 3, 4, 5]",
+        "#[2, 3, 4, 5, 1]"
+      ],
+      [
+        "#[10, 20, 30, 40]",
+        "#[40, 10, 20, 30]"
+      ],
+      [
+        "#[0]",
+        "#[1]"
+      ],
+      [
+        "#[0]",
+        "#[8]"
+      ],
+      [
+        "#[-1, -2, -3, -4]",
+        "#[-3, -4, -1, -2]"
+      ],
+      [
+        "#[5, 10, 15]",
+        "#[10, 15, 5]"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'a': '#[1, 2, 3, 4, 5]', 'offset': -1}"
+    ]
+  },
+  "difficulty": "basic"
+}

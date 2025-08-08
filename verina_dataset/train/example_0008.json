@@ -1,0 +1,70 @@
+{
+  "id": "verina_basic_36",
+  "description": "-----Description-----  \nThis task requires writing a Lean 4 method that takes a given string and returns a new string where every occurrence of a space, comma, or dot is replaced with a colon. The transformation must preserve the original string\u2019s length and leave all other characters unmodified.\n\n-----Input-----  \nThe input consists of:  \ns: A string.\n\n-----Output-----  \nThe output is a string:  \n- The returned string must have the same length as the input string.  \n- Every space, comma, or dot in the input string is replaced with a colon.  \n- All other characters remain unchanged.\n\n-----Note-----  \nThere are no preconditions; the input string is assumed to be non-null.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\ndef isSpaceCommaDot (c : Char) : Bool :=\n  if c = ' ' then true\n  else if c = ',' then true\n  else if c = '.' then true\n  else false\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef replaceWithColon_precond (s : String) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef replaceWithColon (s : String) (h_precond : replaceWithColon_precond (s)) : String :=\n  -- !benchmark @start code\n  let cs := s.toList\n  let cs' := cs.map (fun c => if isSpaceCommaDot c then ':' else c)\n  String.mk cs'\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef replaceWithColon_postcond (s : String) (result: String) (h_precond : replaceWithColon_precond (s)) :=\n  -- !benchmark @start postcond\n  let cs := s.toList\n  let cs' := result.toList\n  result.length = s.length \u2227\n  (\u2200 i, i < s.length \u2192\n    (isSpaceCommaDot cs[i]! \u2192 cs'[i]! = ':') \u2227\n    (\u00acisSpaceCommaDot cs[i]! \u2192 cs'[i]! = cs[i]!))\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem replaceWithColon_spec_satisfied (s: String) (h_precond : replaceWithColon_precond (s)) :\n    replaceWithColon_postcond (s) (replaceWithColon (s) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold replaceWithColon replaceWithColon_postcond\n  simp\n  constructor\n  \u00b7 unfold String.length\n    simp\n  \u00b7 intro i hi\n    have hi' : i < s.data.length := by\n      unfold String.length at hi\n      simp at hi\n      exact hi\n    constructor <;> simp_all\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "replaceWithColon",
+    "parameters": {
+      "param_name": [
+        "s"
+      ],
+      "param_type": [
+        "String"
+      ]
+    },
+    "return_type": "String"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_732",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"s\": \"Hello, world. How are you?\"}",
+      "{\"s\": \"No-changes!\"}",
+      "{\"s\": \",. \"}",
+      "{\"s\": \"\"}"
+    ],
+    "expected": [
+      [
+        "Hello::world::How:are:you?"
+      ],
+      [
+        "No-changes!"
+      ],
+      [
+        ":::"
+      ],
+      [
+        ""
+      ]
+    ],
+    "unexpected": [
+      [
+        "Hello,world,How,are,you?",
+        "Hello: world: How: are: you?"
+      ],
+      [
+        "No changes!",
+        "No\u2013changes!"
+      ],
+      [
+        "::",
+        ";:;",
+        "::: "
+      ],
+      [
+        " ",
+        "a"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

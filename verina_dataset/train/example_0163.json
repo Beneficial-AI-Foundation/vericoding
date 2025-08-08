@@ -1,0 +1,75 @@
+{
+  "id": "verina_basic_32",
+  "description": "-----Description-----  \nThis task requires writing a Lean 4 method that swaps the first and last elements of an array of integers. The method should produce a new array where the first element of the output is the last element of the input, the last element of the output is the first element of the input, and all other elements remain in their original positions.\n\n-----Input-----  \nThe input consists of:  \na: An array of integers (assumed to be non-empty).\n\n-----Output-----  \nThe output is an array of integers:  \nReturns a new array where:  \n- The former last element becomes the first element.  \n- The former first element becomes the last element.  \n- All other elements remain unchanged.",
+  "lean_code": "-- !benchmark @start import type=solution\nimport Mathlib\n-- !benchmark @end import\n\n-- !benchmark @start import type=llm\n-- !benchmark @end import\n\n-- !benchmark @start import type=test\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n-- !benchmark @end solution_aux\n-- !benchmark @start precond_aux\n-- !benchmark @end precond_aux\n\ndef swapFirstAndLast_precond (a : Array Int) : Prop :=\n  -- !benchmark @start precond\n  a.size > 0\n  -- !benchmark @end precond\n\n-- !benchmark @start code_aux\n-- !benchmark @end code_aux\n\n\ndef swapFirstAndLast (a : Array Int) (h_precond: swapFirstAndLast_precond a) : Array Int :=\n  -- !benchmark @start code\n  let first := a[0]!\n  let last := a[a.size - 1]!\n  a.set! 0 last |>.set! (a.size - 1) first\n  -- !benchmark @end code\n\n-- !benchmark @start postcond_aux\n-- !benchmark @end postcond_aux\n\n-- Theorem: The last element of the input array should be the first element of the modified array; The first element of the input array should be the last element of the modified array; All other elements remain unchanged\n@[reducible, simp]\ndef swapFirstAndLast_postcond (a : Array Int) (result : Array Int) (h_precond: swapFirstAndLast_precond a) : Prop :=\n  -- !benchmark @start postcond\n  result.size = a.size \u2227\n  result[0]! = a[a.size - 1]! \u2227\n  result[result.size - 1]! = a[0]! \u2227\n  (List.range (result.size - 2)).all (fun i => result[i + 1]! = a[i + 1]!)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n-- !benchmark @end proof_aux\n\ntheorem swapFirstAndLast_spec_satisfied (a : Array Int) (h_precond: swapFirstAndLast_precond a) :\n    swapFirstAndLast_postcond a (swapFirstAndLast a h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold swapFirstAndLast swapFirstAndLast_postcond\n  unfold swapFirstAndLast_precond at h_precond\n  simp_all\n  -- have ha : 0 < a.toList.length := by simp [h_precond]\n  constructor\n  \u00b7 simp [Array.getElem!_eq_getD]\n    rw [\u2190 Array.getElem?_toList, \u2190 Array.getElem?_toList]\n    simp\n    rw [List.getElem?_set]\n    cases ha' : a.size with\n    | zero => simp_all\n    | succ n =>\n      cases hn : n with\n      | zero =>\n        simp [h_precond]\n      | succ n' => simp_all\n  \u00b7 constructor\n    \u00b7 simp_all [Array.getElem!_eq_getD]\n    \u00b7 intro i hi\n      simp [Array.getElem!_eq_getD]\n      rw [\u2190 Array.getElem?_toList, \u2190 Array.getElem?_toList]\n      simp\n      rw [List.getElem?_set, List.length_set]\n      simp_all\n      have : i + 2 < a.size := by\n        exact Nat.add_lt_of_lt_sub hi\n      have : a.size \u2260 i + 2 := by\n        exact Ne.symm (Nat.ne_of_lt this)\n      simp [this]\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "swapFirstAndLast",
+    "parameters": {
+      "param_name": [
+        "a"
+      ],
+      "param_type": [
+        "Array Int"
+      ]
+    },
+    "return_type": "Array Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_625",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[1, 2, 3, 4, 5]\"}",
+      "{\"a\": \"#[10]\"}",
+      "{\"a\": \"#[1, 2]\"}",
+      "{\"a\": \"#[1, 2, 3]\"}"
+    ],
+    "expected": [
+      [
+        "#[5, 2, 3, 4, 1]"
+      ],
+      [
+        "#[10]"
+      ],
+      [
+        "#[2, 1]"
+      ],
+      [
+        "#[3, 2, 1]"
+      ]
+    ],
+    "unexpected": [
+      [
+        "#[1, 2, 3, 4, 5]",
+        "#[5, 4, 3, 2, 1]",
+        "#[2, 3, 4, 5, 1]"
+      ],
+      [
+        "#[0]",
+        "#[5]",
+        "#[11]"
+      ],
+      [
+        "#[1, 2]",
+        "#[2, 2]",
+        "#[1, 1]"
+      ],
+      [
+        "#[1, 2, 3]",
+        "#[3, 1, 2]",
+        "#[2, 1, 3]"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'a': '#[]'}"
+    ]
+  },
+  "difficulty": "basic"
+}

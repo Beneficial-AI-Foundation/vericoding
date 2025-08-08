@@ -1,0 +1,130 @@
+{
+  "id": "verina_advanced_14",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that determines whether a natural number is a power of four. The method should return a boolean value that indicates whether the given natural number is a power of four. An integer n is a power of four, if there exists an natural number x such that n = 4^x. \n\n-----Input-----\nThe input consists of one natural number:\nn: A natural number.\n\n-----Output-----\nThe output is a boolean value:\nReturn a boolean value that indicates whether the given natural number is a power of four. Return \"true\" if it is a power of four. Otherwise, return \"false\". \n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef ifPowerOfFour_precond (n : Nat) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef ifPowerOfFour (n : Nat) (h_precond : ifPowerOfFour_precond (n)) : Bool :=\n  -- !benchmark @start code\n  let rec helper (n : Nat) : Bool :=\n    match n with\n    | 0 =>\n      false\n    | Nat.succ m =>\n      match m with\n      | 0 =>\n        true\n      | Nat.succ l =>\n        if (l+2)%4=0 then\n          helper ((l+2)/4)\n        else\n          false\n  helper n\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef ifPowerOfFour_postcond (n : Nat) (result: Bool) (h_precond : ifPowerOfFour_precond (n)) : Prop :=\n  -- !benchmark @start postcond\n  result \u2194 (\u2203 m:Nat, n=4^m)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem ifPowerOfFour_spec_satisfied (n: Nat) (h_precond : ifPowerOfFour_precond (n)) :\n    ifPowerOfFour_postcond (n) (ifPowerOfFour (n) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "ifPowerOfFour",
+    "parameters": {
+      "param_name": [
+        "n"
+      ],
+      "param_type": [
+        "Nat"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "https://leetcode.com/problems/power-of-four/",
+      "task_id": "lab_ifPowerOfFour_325708699",
+      "student_id": [
+        12
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"n\": 0}",
+      "{\"n\": 1}",
+      "{\"n\": 2}",
+      "{\"n\": 3}",
+      "{\"n\": 4}",
+      "{\"n\": 8}",
+      "{\"n\": 16}",
+      "{\"n\": 64}",
+      "{\"n\": 95}",
+      "{\"n\": 100}",
+      "{\"n\": 256}",
+      "{\"n\": 520}",
+      "{\"n\": 1024}"
+    ],
+    "expected": [
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ]
+    ],
+    "unexpected": [
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

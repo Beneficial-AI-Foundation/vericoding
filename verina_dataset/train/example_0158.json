@@ -1,0 +1,72 @@
+{
+  "id": "verina_basic_67",
+  "description": "-----Description-----  \nThis task requires determining whether a given list of characters is a palindrome; that is, whether the sequence reads the same forward and backward.\n\n-----Input-----  \nThe input consists of:  \n\u2022 x: A list of characters (List Char). The list can be empty or non-empty.\n\n-----Output-----  \nThe output is a Boolean value (Bool):  \n\u2022 Returns true if the input list is a palindrome.  \n\u2022 Returns false otherwise.\n\n-----Note-----  \nAn empty list is considered a palindrome. The function does not impose any additional preconditions.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef IsPalindrome_precond (x : List Char) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef isPalindromeHelper (x : List Char) (i j : Nat) : Bool :=\n  if i < j then\n    match x[i]?, x[j]? with\n    | some ci, some cj =>\n      if ci \u2260 cj then false else isPalindromeHelper x (i + 1) (j - 1)\n    | _, _ => false  -- This case should not occur due to valid indices\n  else true\n-- !benchmark @end code_aux\n\n\ndef IsPalindrome (x : List Char) (h_precond : IsPalindrome_precond (x)) : Bool :=\n  -- !benchmark @start code\n  if x.length = 0 then true else isPalindromeHelper x 0 (x.length - 1)\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef IsPalindrome_postcond (x : List Char) (result: Bool) (h_precond : IsPalindrome_precond (x)) :=\n  -- !benchmark @start postcond\n  result \u2194 \u2200 i : Nat, i < x.length \u2192 (x[i]! = x[x.length - i - 1]!)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem IsPalindrome_spec_satisfied (x: List Char) (h_precond : IsPalindrome_precond (x)) :\n    IsPalindrome_postcond (x) (IsPalindrome (x) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "IsPalindrome",
+    "parameters": {
+      "param_name": [
+        "x"
+      ],
+      "param_type": [
+        "List Char"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_is_palindrome",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"x\": \"[]\"}",
+      "{\"x\": \"['a']\"}",
+      "{\"x\": \"['a', 'b', 'a']\"}",
+      "{\"x\": \"['a', 'b', 'c']\"}",
+      "{\"x\": \"['r', 'a', 'c', 'e', 'c', 'a', 'r']\"}"
+    ],
+    "expected": [
+      [
+        "true"
+      ],
+      [
+        "true"
+      ],
+      [
+        "true"
+      ],
+      [
+        "false"
+      ],
+      [
+        "true"
+      ]
+    ],
+    "unexpected": [
+      [
+        "false"
+      ],
+      [
+        "false"
+      ],
+      [
+        "false"
+      ],
+      [
+        "true"
+      ],
+      [
+        "false"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

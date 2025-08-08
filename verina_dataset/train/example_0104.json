@@ -1,0 +1,84 @@
+{
+  "id": "verina_basic_92",
+  "description": "-----Description-----  \nThis problem involves swapping the values of two integers. Given two integers as inputs, the objective is to return the two numbers in reversed order.\n\n-----Input-----  \nThe input consists of two integers:  \n\u2022 X: The first integer.  \n\u2022 Y: The second integer.\n\n-----Output-----  \nThe output is a tuple of two integers (Int \u00d7 Int) where:  \n\u2022 The first element is equal to Y.  \n\u2022 The second element is equal to X.\n\n-----Note-----  \nThere are no restrictions on the input values. The function must correctly swap the inputs regardless of whether they are positive, negative, or zero.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef SwapArithmetic_precond (X : Int) (Y : Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef SwapArithmetic (X : Int) (Y : Int) (h_precond : SwapArithmetic_precond (X) (Y)) : (Int \u00d7 Int) :=\n  -- !benchmark @start code\n  let x1 := X\n  let y1 := Y\n  let x2 := y1 - x1\n  let y2 := y1 - x2\n  let x3 := y2 + x2\n  (x3, y2)\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef SwapArithmetic_postcond (X : Int) (Y : Int) (result: (Int \u00d7 Int)) (h_precond : SwapArithmetic_precond (X) (Y)) :=\n  -- !benchmark @start postcond\n  result.1 = Y \u2227 result.2 = X \u2227\n  (X \u2260 Y \u2192 result.fst \u2260 X \u2227 result.snd \u2260 Y)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem SwapArithmetic_spec_satisfied (X: Int) (Y: Int) (h_precond : SwapArithmetic_precond (X) (Y)) :\n    SwapArithmetic_postcond (X) (Y) (SwapArithmetic (X) (Y) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold SwapArithmetic_postcond SwapArithmetic\n  simp\n  rw [Int.sub_sub_self]\n  simp_all\n  exact fun a a_1 => a (id (Eq.symm a_1))\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "SwapArithmetic",
+    "parameters": {
+      "param_name": [
+        "X",
+        "Y"
+      ],
+      "param_type": [
+        "Int",
+        "Int"
+      ]
+    },
+    "return_type": "(Int \u00d7 Int)"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_swap_arith",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"X\": 3, \"Y\": 4}",
+      "{\"X\": -1, \"Y\": 10}",
+      "{\"X\": 0, \"Y\": 0}",
+      "{\"X\": 100, \"Y\": 50}",
+      "{\"X\": -5, \"Y\": -10}"
+    ],
+    "expected": [
+      [
+        "(4, 3)"
+      ],
+      [
+        "(10, -1)"
+      ],
+      [
+        "(0, 0)"
+      ],
+      [
+        "(50, 100)"
+      ],
+      [
+        "(-10, -5)"
+      ]
+    ],
+    "unexpected": [
+      [
+        "(3, 4)",
+        "(3, 3)",
+        "(4, 4)"
+      ],
+      [
+        "(-1, 10)",
+        "(10, 1)",
+        "(-10, -1)"
+      ],
+      [
+        "(0, 1)",
+        "(1, 0)",
+        "(-1, 0)"
+      ],
+      [
+        "(100, 50)",
+        "(50, 50)",
+        "(100, 100)"
+      ],
+      [
+        "(-5, -10)",
+        "(-10, -10)",
+        "(-5, -5)"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

@@ -1,0 +1,84 @@
+{
+  "id": "verina_basic_104",
+  "description": "-----Description-----  \nThis problem involves combining two maps by creating a new map that includes every key from both inputs. When a key is found in both maps, the value from the second map is used in the result.\n\n-----Input-----  \nThe input consists of:  \n\u2022 m1: A Map (represented as a list of key-value pairs) where each key is of type Int and each value is of type Int.  \n\u2022 m2: A Map (similarly represented) where keys may overlap with m1.\n\n-----Output-----  \nThe output is a Map that meets the following conditions:  \n\u2022 Every key present in m2 is present in the result.  \n\u2022 Every key present in m1 is also present in the result.  \n\u2022 For keys that appear in both maps, the resulting value is the one from m2.  \n\u2022 For keys that appear only in m1, the resulting value remains unchanged.  \n\u2022 No keys outside those present in m1 or m2 are included in the result.\n\u2022 The entries in the map should be sorted\n\n-----Note-----  \nIt is assumed that the Map structure ensures key uniqueness in the final result using BEq for key comparison.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start task_aux\nstructure Map (K V : Type) [BEq K] [BEq V] where\n  entries : List (K \u00d7 V)\nderiving Inhabited\n\ninstance  (K V : Type) [BEq K] [BEq V] : BEq (Map K V) where\n  beq m1 m2 := List.length m1.entries = List.length m2.entries \u2227 List.beq m1.entries m2.entries\n\ndef empty {K V : Type} [BEq K] [BEq V] : Map K V := \u27e8[]\u27e9\n\ndef insert {K V : Type} [BEq K] [BEq V] (m : Map K V) (k : K) (v : V) : Map K V :=\n  let entries := m.entries.filter (fun p => \u00ac(p.1 == k)) ++ [(k, v)]\n  \u27e8entries\u27e9\n\n-- !benchmark @end task_aux\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef update_map_precond (m1 : Map Int Int) (m2 : Map Int Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef update_map (m1 : Map Int Int) (m2 : Map Int Int) (h_precond : update_map_precond (m1) (m2)) : Map Int Int :=\n  -- !benchmark @start code\n  let foldFn := fun (acc : Map Int Int) (entry : Int \u00d7 Int) =>\n    insert acc entry.1 entry.2\n  let updated := m2.entries.foldl foldFn m1\n  \u27e8updated.entries.mergeSort (fun a b => a.1 \u2264 b.1)\u27e9\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\ndef find? {K V : Type} [BEq K] [BEq V] (m : Map K V) (k : K) : Option V :=\n  m.entries.find? (fun p => p.1 == k) |>.map (\u00b7.2)\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef update_map_postcond (m1 : Map Int Int) (m2 : Map Int Int) (result: Map Int Int) (h_precond : update_map_precond (m1) (m2)) : Prop :=\n  -- !benchmark @start postcond\n  List.Pairwise (fun a b => a.1 \u2264 b.1) result.entries \u2227\n  m2.entries.all (fun x => find? result x.1 = some x.2) \u2227\n  m1.entries.all (fun x =>\n    match find? m2 x.1 with\n    | some _ => true\n    | none => find? result x.1 = some x.2\n  ) \u2227\n  result.entries.all (fun x =>\n    match find? m1 x.1 with\n    | some v => match find? m2 x.1 with\n      | some v' => x.2 = v'\n      | none => x.2 = v\n    | none => find? m2 x.1 = some x.2\n  )\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem update_map_spec_satisfied (m1: Map Int Int) (m2: Map Int Int) (h_precond : update_map_precond (m1) (m2)) :\n    update_map_postcond (m1) (m2) (update_map (m1) (m2) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "update_map",
+    "parameters": {
+      "param_name": [
+        "m1",
+        "m2"
+      ],
+      "param_type": [
+        "Map Int Int",
+        "Map Int Int"
+      ]
+    },
+    "return_type": "Map Int Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_update_map",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"m1\": \"\\u27e8[(1, 10), (2, 20)]\\u27e9\", \"m2\": \"\\u27e8[(2, 30), (3, 40)]\\u27e9\"}",
+      "{\"m1\": \"\\u27e8[(1, 100)]\\u27e9\", \"m2\": \"\\u27e8[(1, 200)]\\u27e9\"}",
+      "{\"m1\": \"\\u27e8[(5, 50), (6, 60)]\\u27e9\", \"m2\": \"\\u27e8[]\\u27e9\"}",
+      "{\"m1\": \"\\u27e8[]\\u27e9\", \"m2\": \"\\u27e8[(7, 70)]\\u27e9\"}",
+      "{\"m1\": \"\\u27e8[(1, 1), (2, 2), (3, 3)]\\u27e9\", \"m2\": \"\\u27e8[(2, 20), (4, 40)]\\u27e9\"}"
+    ],
+    "expected": [
+      [
+        "\u27e8[(1, 10), (2, 30), (3, 40)]\u27e9"
+      ],
+      [
+        "\u27e8[(1, 200)]\u27e9"
+      ],
+      [
+        "\u27e8[(5, 50), (6, 60)]\u27e9"
+      ],
+      [
+        "\u27e8[(7, 70)]\u27e9"
+      ],
+      [
+        "\u27e8[(1, 1), (2, 20), (3, 3), (4, 40)]\u27e9"
+      ]
+    ],
+    "unexpected": [
+      [
+        "\u27e8[(1, 10), (2, 20), (3, 40)]\u27e9",
+        "\u27e8[(1, 10), (2, 20)]\u27e9",
+        "\u27e8[(2, 30), (3, 40)]\u27e9"
+      ],
+      [
+        "\u27e8[(1, 100)]\u27e9",
+        "\u27e8[(1, 200), (1, 100)]\u27e9",
+        "\u27e8[]\u27e9"
+      ],
+      [
+        "\u27e8[(5, 50)]\u27e9",
+        "\u27e8[(6, 60)]\u27e9",
+        "\u27e8[(5, 50), (6, 60), (7, 70)]\u27e9"
+      ],
+      [
+        "\u27e8[]\u27e9",
+        "\u27e8[(0, 70)]\u27e9",
+        "\u27e8[(7, 0)]\u27e9"
+      ],
+      [
+        "\u27e8[(1, 1), (2, 2), (3, 3)]\u27e9",
+        "\u27e8[(1, 1), (2, 20), (3, 3)]\u27e9",
+        "\u27e8[(1, 1), (2, 20), (3, 3), (4, 30)]\u27e9"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

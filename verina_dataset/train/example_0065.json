@@ -1,0 +1,79 @@
+{
+  "id": "verina_basic_76",
+  "description": "-----Description-----  \nThis task requires determining the smaller of two integers. Given two input numbers, the goal is to compare them and return the one that is less than or equal to the other.\n\n-----Input-----  \nThe input consists of two integers:  \n\u2022 x: The first integer.  \n\u2022 y: The second integer.\n\n-----Output-----  \nThe output is an integer representing the minimum of the two input integers:  \n\u2022 Returns x if x is less than or equal to y.  \n\u2022 Returns y if x is greater than y.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef myMin_precond (x : Int) (y : Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef myMin (x : Int) (y : Int) (h_precond : myMin_precond (x) (y)) : Int :=\n  -- !benchmark @start code\n  if x < y then x else y\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef myMin_postcond (x : Int) (y : Int) (result: Int) (h_precond : myMin_precond (x) (y)) :=\n  -- !benchmark @start postcond\n  (x \u2264 y \u2192 result = x) \u2227 (x > y \u2192 result = y)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem myMin_spec_satisfied (x: Int) (y: Int) (h_precond : myMin_precond (x) (y)) :\n    myMin_postcond (x) (y) (myMin (x) (y) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold myMin_postcond myMin\n  simp\n  have h_left : (x \u2264 y \u2192 y \u2264 x \u2192 y = x) := by\n    intro h\u2081 h\u2082\n    exact Int.le_antisymm h\u2082 h\u2081\n  have h_right : (y < x \u2192 x < y \u2192 x = y) := by\n    intro h\u2081 h\u2082\n    have h_contr : False := Int.lt_irrefl x (Int.lt_trans h\u2082 h\u2081)\n    contradiction\n  exact \u27e8h_left, h_right\u27e9\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "myMin",
+    "parameters": {
+      "param_name": [
+        "x",
+        "y"
+      ],
+      "param_type": [
+        "Int",
+        "Int"
+      ]
+    },
+    "return_type": "Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_min_of_two",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"x\": 3, \"y\": 5}",
+      "{\"x\": 10, \"y\": 7}",
+      "{\"x\": 4, \"y\": 4}",
+      "{\"x\": -5, \"y\": 0}",
+      "{\"x\": 0, \"y\": -10}"
+    ],
+    "expected": [
+      [
+        "3"
+      ],
+      [
+        "7"
+      ],
+      [
+        "4"
+      ],
+      [
+        "-5"
+      ],
+      [
+        "-10"
+      ]
+    ],
+    "unexpected": [
+      [
+        "5",
+        "8"
+      ],
+      [
+        "10",
+        "17"
+      ],
+      [
+        "0",
+        "8"
+      ],
+      [
+        "0",
+        "-4"
+      ],
+      [
+        "0",
+        "-8"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

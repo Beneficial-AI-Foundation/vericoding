@@ -1,0 +1,81 @@
+{
+  "id": "verina_advanced_18",
+  "description": "-----Description-----\nThis task requires writing a Lean 4 method that determines whether a given number `n` is an Armstrong number (also known as a Narcissistic number). An Armstrong number is a number that is equal to the sum of its own digits raised to the power of the number of digits.\n\n-----Input-----\nThe input consists of one natural number:\n- `n: Nat`: The number to check if it satisfies the Armstrong property.\n\n-----Output-----\nThe output is a boolean value:\n- `Bool`: Return `true` if `n` is an Armstrong number, otherwise return `false`.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\ndef countDigits (n : Nat) : Nat :=\n  let rec go (n acc : Nat) : Nat :=\n    if n = 0 then acc\n    else go (n / 10) (acc + 1)\n  go n (if n = 0 then 1 else 0)\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef isArmstrong_precond (n : Nat) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef sumPowers (n : Nat) (k : Nat) : Nat :=\n  let rec go (n acc : Nat) : Nat :=\n    if n = 0 then acc\n    else\n      let digit := n % 10\n      go (n / 10) (acc + digit ^ k)\n  go n 0\n-- !benchmark @end code_aux\n\n\ndef isArmstrong (n : Nat) (h_precond : isArmstrong_precond (n)) : Bool :=\n  -- !benchmark @start code\n  let k := countDigits n\n  sumPowers n k = n\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef isArmstrong_postcond (n : Nat) (result: Bool) (h_precond : isArmstrong_precond (n)) : Prop :=\n  -- !benchmark @start postcond\n  let n' := List.foldl (fun acc d => acc + d ^ countDigits n) 0 (List.map (fun c => c.toNat - '0'.toNat) (toString n).toList)\n  (result \u2192 (n = n')) \u2227\n  (\u00ac result \u2192 (n \u2260 n'))\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem isArmstrong_spec_satisfied (n: Nat) (h_precond : isArmstrong_precond (n)) :\n    isArmstrong_postcond (n) (isArmstrong (n) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "isArmstrong",
+    "parameters": {
+      "param_name": [
+        "n"
+      ],
+      "param_type": [
+        "Nat"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "leetcode 1134: https://leetcode.ca/all/1134.html",
+      "task_id": "lab_isArmstrong_325011347",
+      "student_id": [
+        7
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"n\": 0}",
+      "{\"n\": 1}",
+      "{\"n\": 10}",
+      "{\"n\": 153}",
+      "{\"n\": 9474}",
+      "{\"n\": 9475}"
+    ],
+    "expected": [
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

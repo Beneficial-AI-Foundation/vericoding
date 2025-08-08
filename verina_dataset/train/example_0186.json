@@ -1,0 +1,80 @@
+{
+  "id": "verina_advanced_76",
+  "description": "-----Description-----\nThis task requires writing a Lean 4 method that returns the k most frequent elements from a list of integers. The method should count the frequency of each distinct element in the list and return the k elements with the highest frequency.\n\n-----Input-----\nThe input consists of two values:\nnums: A list of integers, possibly with duplicates.\nk: A natural number indicating how many of the most frequent elements to return. Assimng k <= # of distinct elements in nums. \n\n-----Output-----\nThe output is a list of integers:\nReturns exactly k integers representing the elements that appear most frequently in the input list in the order form the higher frequency to lower frequency.\nIf two numbers have the same frequency, use the order of the first occurance in nums.\n",
+  "lean_code": "-- !benchmark @start import type=solution\nimport Std\nopen Std\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef topKFrequent_precond (nums : List Int) (k : Nat) : Prop :=\n  -- !benchmark @start precond\n  k \u2264 nums.eraseDups.length\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef topKFrequent (nums : List Int) (k : Nat) (h_precond : topKFrequent_precond (nums) (k)) : List Int :=\n  -- !benchmark @start code\n  let freqMap : HashMap Int Nat :=\n    nums.foldl (init := {}) fun acc n =>\n      let oldVal := match acc.toList.find? (fun (key, _) => key == n) with\n                    | some (_, c) => c\n                    | none        => 0\n      acc.insert n (oldVal + 1)\n  let sorted := freqMap.toList.foldl\n    (fun acc pair =>\n      let (x, cx) := pair\n      let rec insertSorted (xs : List (Int \u00d7 Nat)) : List (Int \u00d7 Nat) :=\n        match xs with\n        | [] => [pair]\n        | (y, cy) :: ys =>\n          if cx > cy then\n            pair :: (y, cy) :: ys\n          else\n            (y, cy) :: insertSorted ys\n      insertSorted acc\n    ) []\n\n  sorted.take k |>.map (fun (n, _) => n)\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef topKFrequent_postcond (nums : List Int) (k : Nat) (result: List Int) (h_precond : topKFrequent_precond (nums) (k)) : Prop :=\n  -- !benchmark @start postcond\n  -- Result contains exactly k elements\n  result.length = k \u2227\n\n  -- All elements in result appear in the original list\n  result.all (\u00b7 \u2208 nums) \u2227\n\n  -- All elements in result are distinct\n  List.Pairwise (\u00b7 \u2260 \u00b7) result \u2227\n\n  -- For any element in result and any element not in result, the frequency of the\n  -- element in result is greater or equal\n  (result.all (fun x =>\n    nums.all (fun y =>\n      y \u2209 result \u2192\n        nums.count x > nums.count y \u2228\n        (nums.count x == nums.count y \u2227 nums.idxOf x < nums.idxOf y)\n    ))) \u2227\n\n  -- Elements in result are ordered by decreasing frequency\n  List.Pairwise (fun (x, i) (y, j) =>\n    i < j \u2192 nums.count x > nums.count y \u2228\n    (nums.count x == nums.count y \u2227 nums.idxOf x < nums.idxOf y)\n  ) result.zipIdx\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem topKFrequent_spec_satisfied (nums: List Int) (k: Nat) (h_precond : topKFrequent_precond (nums) (k)) :\n    topKFrequent_postcond (nums) (k) (topKFrequent (nums) (k) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "topKFrequent",
+    "parameters": {
+      "param_name": [
+        "nums",
+        "k"
+      ],
+      "param_type": [
+        "List Int",
+        "Nat"
+      ]
+    },
+    "return_type": "List Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "https://leetcode.com/problems/top-k-frequent-elements/description/",
+      "task_id": "lab_topKFrequent_325315163",
+      "student_id": [
+        54
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"nums\": \"[1, 1, 1, 2, 2, 3]\", \"k\": 2}",
+      "{\"nums\": \"[4, 1, -1, 2, -1, 2, 3]\", \"k\": 2}",
+      "{\"nums\": \"[5]\", \"k\": 1}",
+      "{\"nums\": \"[7, 7, 7, 8, 8, 9]\", \"k\": 1}",
+      "{\"nums\": \"[]\", \"k\": 0}"
+    ],
+    "expected": [
+      [
+        "[1, 2]"
+      ],
+      [
+        "[-1, 2]"
+      ],
+      [
+        "[5]"
+      ],
+      [
+        "[7]"
+      ],
+      [
+        "[]"
+      ]
+    ],
+    "unexpected": [
+      [
+        "[1, 3]",
+        "[2, 3]"
+      ],
+      [
+        "[-1, 4]",
+        "[4, 3]"
+      ],
+      [
+        "[]"
+      ],
+      [
+        "[8]"
+      ],
+      [
+        "[0]"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'nums': '[1, 2, 3]', 'k': 4}"
+    ]
+  },
+  "difficulty": "advanced"
+}

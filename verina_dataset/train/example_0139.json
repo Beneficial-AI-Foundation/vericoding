@@ -1,0 +1,83 @@
+{
+  "id": "verina_advanced_43",
+  "description": "------Description-----\nThis task requires writing a Lean 4 method that given a 0-indexed integer array `nums` representing the scores of students in an exam. A teacher wants to select a non empty group of students such that the strength of group is maximized. \n\nThe strength of a group is defined as the product of the selected student scores.\n\nYou can choose any non-empty subset of students. The goal is to compute the maximum product of any such subset. \n\n\n----Input---\nnums: An non-empty list of integers.\n\n-----Output-----\n\nAn integer representing the maximum strength.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\nimport Mathlib\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef maxStrength_precond (nums : List Int) : Prop :=\n  -- !benchmark @start precond\n  nums \u2260 []\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef maxStrength (nums : List Int) (h_precond : maxStrength_precond (nums)) : Int :=\n  -- !benchmark @start code\n  let powerSet := fun (l : List Int) =>\n    let n := l.length\n    let masks := List.range (2^n)\n    masks.map fun mask =>\n      (List.range n).foldr (fun i acc =>\n        if (mask.shiftRight i).land 1 == 1 then l[i]! :: acc else acc\n      ) []\n\n  let subsets := powerSet nums\n  let nonEmpty := subsets.filter (\u00b7 \u2260 [])\n  let products := List.map (fun subset =>\n    List.foldl (fun acc x =>\n      acc * x) (1 : Int) subset)\n    nonEmpty\n  (List.max? products).getD (-1000000)\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef maxStrength_postcond (nums : List Int) (result: Int) (h_precond : maxStrength_precond (nums)) : Prop :=\n  -- !benchmark @start postcond\n  let sublists := nums.sublists.filter (\u00b7 \u2260 [])\n  let products := sublists.map (List.foldl (\u00b7 * \u00b7) 1)\n  products.contains result \u2227 products.all (\u00b7 \u2264 result)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem maxStrength_spec_satisfied (nums: List Int) (h_precond : maxStrength_precond (nums)) :\n    maxStrength_postcond (nums) (maxStrength (nums) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "maxStrength",
+    "parameters": {
+      "param_name": [
+        "nums"
+      ],
+      "param_type": [
+        "List Int"
+      ]
+    },
+    "return_type": "Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "Livecodebench has problem, but couldn't find that link so using leetcode: https://leetcode.com/problems/maximum-product-subarray/description/",
+      "task_id": "lab_maxStrength_324857110",
+      "student_id": [
+        35
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"nums\": \"[-2]\"}",
+      "{\"nums\": \"[3, -1, -5, 2, 5, -9]\"}",
+      "{\"nums\": \"[-4, -5, -4]\"}",
+      "{\"nums\": \"[0, -3, 4]\"}",
+      "{\"nums\": \"[1, -1, -1]\"}"
+    ],
+    "expected": [
+      [
+        "-2"
+      ],
+      [
+        "1350"
+      ],
+      [
+        "20"
+      ],
+      [
+        "4"
+      ],
+      [
+        "1"
+      ]
+    ],
+    "unexpected": [
+      [
+        "2",
+        "0"
+      ],
+      [
+        "270",
+        "0",
+        "-1"
+      ],
+      [
+        "80",
+        "-80",
+        "-5"
+      ],
+      [
+        "0",
+        "-12"
+      ],
+      [
+        "-1",
+        "-2"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'nums': '[]'}"
+    ]
+  },
+  "difficulty": "advanced"
+}

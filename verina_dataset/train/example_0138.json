@@ -1,0 +1,81 @@
+{
+  "id": "verina_basic_83",
+  "description": "-----Description-----  \nThis task involves concatenating two arrays of integers by appending the second array to the end of the first array. The goal is to produce a new array that sequentially contains all elements from the first array followed by all elements from the second array.\n\n-----Input-----  \nThe input consists of two parameters:  \n\u2022 a: An Array of integers representing the first part of the concatenated array.  \n\u2022 b: An Array of integers representing the second part of the concatenated array.\n\n-----Output-----  \nThe output is an Array of integers that satisfies the following:  \n\u2022 The length of the output array is equal to the sum of the lengths of arrays a and b.  \n\u2022 The first part of the output array (indices 0 to a.size - 1) is identical to array a.  \n\u2022 The remaining part of the output array (indices a.size to a.size + b.size - 1) is identical to array b.\n\n-----Note-----  \nNo additional preconditions are required since the function uses the sizes of the input arrays to build the resulting array.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef concat_precond (a : Array Int) (b : Array Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef concat (a : Array Int) (b : Array Int) (h_precond : concat_precond (a) (b)) : Array Int :=\n  -- !benchmark @start code\n  let n := a.size + b.size\n  let rec loop (i : Nat) (c : Array Int) : Array Int :=\n    if i < n then\n      let value := if i < a.size then a[i]! else b[i - a.size]!\n      loop (i + 1) (c.set! i value)\n    else\n      c\n  loop 0 (Array.mkArray n 0)\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef concat_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_precond : concat_precond (a) (b)) :=\n  -- !benchmark @start postcond\n  result.size = a.size + b.size\n    \u2227 (\u2200 k, k < a.size \u2192 result[k]! = a[k]!)\n    \u2227 (\u2200 k, k < b.size \u2192 result[k + a.size]! = b[k]!)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem concat_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : concat_precond (a) (b)) :\n    concat_postcond (a) (b) (concat (a) (b) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "concat",
+    "parameters": {
+      "param_name": [
+        "a",
+        "b"
+      ],
+      "param_type": [
+        "Array Int",
+        "Array Int"
+      ]
+    },
+    "return_type": "Array Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_array_concat",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[1, 2, 3]\", \"b\": \"#[4, 5]\"}",
+      "{\"a\": \"#[]\", \"b\": \"#[]\"}",
+      "{\"a\": \"#[10]\", \"b\": \"#[20, 30, 40]\"}",
+      "{\"a\": \"#[-1, -2]\", \"b\": \"#[0]\"}",
+      "{\"a\": \"#[7, 8, 9]\", \"b\": \"#[]\"}"
+    ],
+    "expected": [
+      [
+        "#[1, 2, 3, 4, 5]"
+      ],
+      [
+        "#[]"
+      ],
+      [
+        "#[10, 20, 30, 40]"
+      ],
+      [
+        "#[-1, -2, 0]"
+      ],
+      [
+        "#[7, 8, 9]"
+      ]
+    ],
+    "unexpected": [
+      [
+        "#[1, 2, 3, 5, 4]",
+        "#[4, 5, 1, 2, 3]",
+        "#[1, 2, 4, 3, 5]"
+      ],
+      [
+        "#[1]",
+        "#[1, 2]"
+      ],
+      [
+        "#[10, 20, 30]",
+        "#[20, 30, 40, 10]"
+      ],
+      [
+        "#[-1, 0, -2]",
+        "#[0, -1, -2]"
+      ],
+      [
+        "#[7, 8]",
+        "#[8, 9]",
+        "#[]"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

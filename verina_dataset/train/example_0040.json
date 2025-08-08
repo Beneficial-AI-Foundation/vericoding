@@ -1,0 +1,96 @@
+{
+  "id": "verina_advanced_11",
+  "description": "-----Description-----  \nThis task requires writing a Lean 4 method that finds the **majority element** in a list of integers. A majority element is defined as an element that appears **strictly more than half** the number of times in the list.\n\nIf such an element exists, the method should return that element. Otherwise, it should return `-1`. The implementation must ensure that the result is either the majority element (if one exists) or `-1` (when no such element appears more than \u230an/2\u230b times).\n\n-----Input-----  \nThe input consists of a list of integers:\n- lst: A list of integers, which may include duplicates and negative numbers. The list may also be empty.\n\n-----Output-----  \nThe output is a single integer:\n- If a majority element exists in the input list, return that element.\n- If no majority element exists, return `-1`.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef findMajorityElement_precond (lst : List Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef countOccurrences (n : Int) (lst : List Int) : Nat :=\n  lst.foldl (fun acc x => if x = n then acc + 1 else acc) 0\n-- !benchmark @end code_aux\n\n\ndef findMajorityElement (lst : List Int) (h_precond : findMajorityElement_precond (lst)) : Int :=\n  -- !benchmark @start code\n  let n := lst.length\n  let majority := lst.find? (fun x => countOccurrences x lst > n / 2)\n  match majority with\n  | some x => x\n  | none => -1\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef findMajorityElement_postcond (lst : List Int) (result: Int) (h_precond : findMajorityElement_precond (lst)) : Prop :=\n  -- !benchmark @start postcond\n  let count := fun x => (lst.filter (fun y => y = x)).length\n  let n := lst.length\n  let majority := count result > n / 2 \u2227 lst.all (fun x => count x \u2264 n / 2 \u2228 x = result)\n  (result = -1 \u2192 lst.all (count \u00b7 \u2264 n / 2) \u2228 majority) \u2227\n  (result \u2260 -1 \u2192 majority)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem findMajorityElement_spec_satisfied (lst: List Int) (h_precond : findMajorityElement_precond (lst)) :\n    findMajorityElement_postcond (lst) (findMajorityElement (lst) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "findMajorityElement",
+    "parameters": {
+      "param_name": [
+        "lst"
+      ],
+      "param_type": [
+        "List Int"
+      ]
+    },
+    "return_type": "Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "[{\"text_file_id\"=>803067667}]",
+      "task_id": "lab_findMajorityElement_325106966",
+      "student_id": [
+        9
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"lst\": \"[1, 2, 1, 1]\"}",
+      "{\"lst\": \"[1, 2, 3, 4]\"}",
+      "{\"lst\": \"[2, 2, 2, 2, 3, 3]\"}",
+      "{\"lst\": \"[]\"}",
+      "{\"lst\": \"[5, 5, 5, 5, 5, 5]\"}",
+      "{\"lst\": \"[-1, -1, -1, 2, 2]\"}",
+      "{\"lst\": \"[-3, -3, -3, -3, 1]\"}"
+    ],
+    "expected": [
+      [
+        "1"
+      ],
+      [
+        "-1"
+      ],
+      [
+        "2"
+      ],
+      [
+        "-1"
+      ],
+      [
+        "5"
+      ],
+      [
+        "-1"
+      ],
+      [
+        "-3"
+      ]
+    ],
+    "unexpected": [
+      [
+        "2",
+        "-1"
+      ],
+      [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      [
+        "3",
+        "-1"
+      ],
+      [
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "-1"
+      ],
+      [
+        "2"
+      ],
+      [
+        "1",
+        "-1"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

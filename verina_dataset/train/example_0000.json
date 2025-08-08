@@ -1,0 +1,119 @@
+{
+  "id": "verina_advanced_68",
+  "description": "-----Description----- \nThis task requires implementing a Run-Length Encoding (RLE) algorithm in Lean 4. The method should take a string as input and return a compressed string where consecutive duplicate characters are replaced by the character followed by its count. The output must strictly alternate between characters and digits, reconstruct to the original input when decoded, and return a non-empty string if and only if the input is non-empty.\n\n-----Input-----\nThe input is a string consisting of any characters (including special characters and digits).\n\n-----Output-----\nThe output is a string where each sequence of identical characters is replaced by the character followed by its count. The output must:\n1. Alternate between characters and digits (e.g., \"a3b2\").\n2. Reconstruct to the original input when decoded.\n3. Be non-empty if and only if the input is non-empty.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible]\ndef runLengthEncoder_precond (input : String) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef runLengthEncoder (input : String) (h_precond : runLengthEncoder_precond (input)) : String :=\n  -- !benchmark @start code\n  -- Convert string to character list\n  let chars : String \u2192 List Char := fun s => s.data\n\n  -- Check character equality\n  let charEq : Char \u2192 Char \u2192 Bool := fun c1 c2 => c1 == c2\n\n  -- Convert number to string\n  let numToString : Nat \u2192 String := fun n =>\n    let rec digits : Nat \u2192 List Char := fun n =>\n      if n < 10 then\n        [Char.ofNat (n + 48)]  -- ASCII '0' is 48\n      else\n        digits (n / 10) ++ [Char.ofNat (n % 10 + 48)]\n    String.mk (digits n)\n\n  -- Main encoding logic (fixed version)\n  let rec encode : List Char \u2192 Option Char \u2192 Nat \u2192 String :=\n    fun input currentChar count =>\n      match input with\n      | [] =>\n        -- Process remaining characters\n        match currentChar with\n        | none => \"\"\n        | some c => String.mk [c] ++ numToString count\n      | c::rest =>\n        match currentChar with\n        | none => encode rest c 1\n        | some c' =>\n          if charEq c c' then\n            encode rest c' (count + 1)\n          else\n            let currentPart := String.mk [c'] ++ numToString count\n            currentPart ++ encode rest c 1\n\n  -- Handle empty input\n  if input.isEmpty then\n    \"\"\n  else\n    let firstChar := (chars input).head?\n    encode (chars input).tail firstChar 1\n  -- !benchmark @end code\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible]\ndef runLengthEncoder_postcond (input : String) (result: String) (h_precond : runLengthEncoder_precond (input)) : Prop :=\n  -- !benchmark @start postcond\n  -- Helper functions\n  let chars : String \u2192 List Char := fun s => s.data\n\n  -- Parse encoded string into (char, count) pairs\n  let parseEncodedString : String \u2192 List (Char \u00d7 Nat) :=\n    let rec parseState : List Char \u2192 Option Char \u2192 Option Nat \u2192 List (Char \u00d7 Nat) \u2192 List (Char \u00d7 Nat) :=\n      fun remaining currentChar currentCount acc =>\n        match remaining with\n        | [] =>\n          -- Add final pair if we have both char and count\n          match currentChar, currentCount with\n          | some c, some n => (c, n) :: acc\n          | _, _ => acc\n        | c :: cs =>\n          if c.isDigit then\n            match currentChar with\n            | none => [] -- Invalid format: digit without preceding character\n            | some ch =>\n              -- Update current count\n              let digit := c.toNat - 48\n              let newCount :=\n                match currentCount with\n                | none => digit\n                | some n => n * 10 + digit\n              parseState cs currentChar (some newCount) acc\n          else\n            -- We found a new character, save previous pair if exists\n            let newAcc :=\n              match currentChar, currentCount with\n              | some ch, some n => (ch, n) :: acc\n              | _, _ => acc\n            parseState cs (some c) none newAcc\n\n    fun s =>\n      let result := parseState (chars s) none none []\n      result.reverse\n\n  -- Format check: characters followed by at least one digit\n  let formatValid : Bool :=\n    let rec checkPairs (chars : List Char) (nowDigit : Bool) : Bool :=\n      match chars with\n      | [] => true\n      | c :: cs =>\n        if nowDigit && c.isDigit then\n          checkPairs cs true\n        else\n        -- Need at least one digit after character\n          match cs with\n          | [] => false -- Ending with character, no digits\n          | d :: ds =>\n            if d.isDigit then\n              checkPairs ds true\n            else\n              false -- No digit after character\n\n    checkPairs (chars result) false\n\n  -- Content validation\n  let contentValid : Bool :=\n    let pairs := parseEncodedString result\n    let expanded := pairs.flatMap (fun (c, n) => List.replicate n c)\n    expanded == chars input\n\n  -- Empty check\n  let nonEmptyValid : Bool :=\n    input.isEmpty = result.isEmpty\n\n  formatValid && contentValid && nonEmptyValid\n  -- !benchmark @end postcond\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem runLengthEncoder_spec_satisfied (input: String) (h_precond : runLengthEncoder_precond (input)) :\n    runLengthEncoder_postcond (input) (runLengthEncoder (input) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "runLengthEncoder",
+    "parameters": {
+      "param_name": [
+        "input"
+      ],
+      "param_type": [
+        "String"
+      ]
+    },
+    "return_type": "String"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "inspired by: https://leetcode.com/problems/string-compression/description/",
+      "task_id": "lab_runLengthEncoder_325008552",
+      "student_id": [
+        49
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"input\": \"aaabbbcc\"}",
+      "{\"input\": \"!!!$$$%%%\"}",
+      "{\"input\": \"aaaaa\"}",
+      "{\"input\": \"abcd\"}",
+      "{\"input\": \"\"}",
+      "{\"input\": \"AaABb\"}",
+      "{\"input\": \"wwwwwwwwwwwwwwwww\"}",
+      "{\"input\": \"a\"}",
+      "{\"input\": \"  \"}"
+    ],
+    "expected": [
+      [
+        "a3b3c2"
+      ],
+      [
+        "!3$3%3"
+      ],
+      [
+        "a5"
+      ],
+      [
+        "a1b1c1d1"
+      ],
+      [
+        ""
+      ],
+      [
+        "A1a1A1B1b1"
+      ],
+      [
+        "w17"
+      ],
+      [
+        "a1"
+      ],
+      [
+        " 2"
+      ]
+    ],
+    "unexpected": [
+      [
+        "a3b3",
+        "a3b3c2x",
+        "abc"
+      ],
+      [
+        "!3$3%",
+        "!!!$$$%%",
+        "!3$3%4"
+      ],
+      [
+        "a4",
+        "a6",
+        "a"
+      ],
+      [
+        "abcd",
+        "a1b1c1",
+        "a1b1c1d2"
+      ],
+      [
+        "a1",
+        " "
+      ],
+      [
+        "AaABb",
+        "A1a1A1B1",
+        "A1a1A1B1b2"
+      ],
+      [
+        "w16",
+        "w18",
+        "w"
+      ],
+      [
+        "a",
+        "a2",
+        ""
+      ],
+      [
+        " ",
+        " 1",
+        " 3"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

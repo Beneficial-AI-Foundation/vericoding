@@ -1,0 +1,77 @@
+{
+  "id": "verina_advanced_33",
+  "description": "-----Description-----\nThis task requires implementing the \"Longest Increasing Subsequence\" problem in Lean 4.\nGiven a list of integers, the function should compute the length of the longest strictly increasing\nsubsequence. A subsequence is formed by deleting zero or more elements without changing the order.\nIf the list is empty, the function should return 0.\n\n-----Input-----\n- nums: A list of integers.\n\n-----Output-----\n- A natural number representing the length of the longest strictly increasing subsequence.\n- If there is no increasing subsequence, return 0.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\nimport Mathlib.Data.List.Basic\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef longestIncreasingSubsequence_precond (nums : List Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef longestIncreasingSubsequence (nums : List Int) (h_precond : longestIncreasingSubsequence_precond (nums)) : Nat :=\n  -- !benchmark @start code\n  let max2 (a : Nat) (b : Nat) : Nat :=\n    if a > b then a else b\n\n  let rec listLength (l : List Int) : Nat :=\n    match l with\n    | []      => 0\n    | _ :: xs => 1 + listLength xs\n\n  let rec helper (lst : List Int) (prev : Option Int) : Nat :=\n    match lst with\n    | [] => 0\n    | h :: t =>\n        let canTake : Bool :=\n          if prev = none then true\n          else if prev.get! < h then true else false\n        let withTake : Nat :=\n          if canTake then 1 + helper t (some h) else 0\n        let withoutTake : Nat := helper t prev\n        max2 withTake withoutTake\n\n  let result := helper nums none\n  result\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef longestIncreasingSubsequence_postcond (nums : List Int) (result: Nat) (h_precond : longestIncreasingSubsequence_precond (nums)) : Prop :=\n  -- !benchmark @start postcond\n  let allSubseq := (nums.foldl fun acc x => acc ++ acc.map (fun sub => x :: sub)) [[]] |>.map List.reverse\n  let increasingSubseqLens := allSubseq.filter (fun l => List.Pairwise (\u00b7 < \u00b7) l) |>.map (\u00b7.length)\n  increasingSubseqLens.contains result \u2227 increasingSubseqLens.all (\u00b7 \u2264 result)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem longestIncreasingSubsequence_spec_satisfied (nums: List Int) (h_precond : longestIncreasingSubsequence_precond (nums)) :\n    longestIncreasingSubsequence_postcond (nums) (longestIncreasingSubsequence (nums) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "longestIncreasingSubsequence",
+    "parameters": {
+      "param_name": [
+        "nums"
+      ],
+      "param_type": [
+        "List Int"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "[{\"text_file_id\"=>804930699}]",
+      "task_id": "lab_longestIncreasingSubsequence_325684656",
+      "student_id": [
+        27
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"nums\": \"[10, 9, 2, 5, 3, 7, 101, 18]\"}",
+      "{\"nums\": \"[0, 1, 0, 3, 2, 3]\"}",
+      "{\"nums\": \"[7, 7, 7, 7, 7]\"}",
+      "{\"nums\": \"[]\"}",
+      "{\"nums\": \"[4, 10, 4, 3, 8, 9]\"}"
+    ],
+    "expected": [
+      [
+        "4"
+      ],
+      [
+        "4"
+      ],
+      [
+        "1"
+      ],
+      [
+        "0"
+      ],
+      [
+        "3"
+      ]
+    ],
+    "unexpected": [
+      [
+        "3",
+        "5"
+      ],
+      [
+        "3"
+      ],
+      [
+        "0",
+        "2"
+      ],
+      [
+        "1"
+      ],
+      [
+        "2",
+        "4"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

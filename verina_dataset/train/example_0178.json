@@ -1,0 +1,82 @@
+{
+  "id": "verina_basic_12",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that calculates the surface area of a cube based on the length of one of its edges. The method should compute the surface area using the standard formula for a cube.\n\n-----Input-----\nThe input consists of:\nsize: An natural number representing the length of an edge of the cube.\n\n-----Output-----\nThe output is an natural number:\nReturns the surface area of the cube.\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef cubeSurfaceArea_precond (size : Nat) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef cubeSurfaceArea (size : Nat) (h_precond : cubeSurfaceArea_precond (size)) : Nat :=\n  -- !benchmark @start code\n  6 * size * size\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef cubeSurfaceArea_postcond (size : Nat) (result: Nat) (h_precond : cubeSurfaceArea_precond (size)) :=\n  -- !benchmark @start postcond\n  result - 6 * size * size = 0 \u2227 6 * size * size - result = 0\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem cubeSurfaceArea_spec_satisfied (size: Nat) (h_precond : cubeSurfaceArea_precond (size)) :\n    cubeSurfaceArea_postcond (size) (cubeSurfaceArea (size) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold cubeSurfaceArea cubeSurfaceArea_postcond\n  simp\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "cubeSurfaceArea",
+    "parameters": {
+      "param_name": [
+        "size"
+      ],
+      "param_type": [
+        "Nat"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_441",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"size\": 3}",
+      "{\"size\": 1}",
+      "{\"size\": 10}",
+      "{\"size\": 5}",
+      "{\"size\": 2}"
+    ],
+    "expected": [
+      [
+        "54"
+      ],
+      [
+        "6"
+      ],
+      [
+        "600"
+      ],
+      [
+        "150"
+      ],
+      [
+        "24"
+      ]
+    ],
+    "unexpected": [
+      [
+        "27",
+        "48",
+        "60"
+      ],
+      [
+        "1",
+        "2",
+        "3"
+      ],
+      [
+        "100",
+        "500",
+        "610"
+      ],
+      [
+        "25",
+        "100",
+        "125"
+      ],
+      [
+        "8",
+        "16",
+        "20"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

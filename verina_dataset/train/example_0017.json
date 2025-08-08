@@ -1,0 +1,84 @@
+{
+  "id": "verina_basic_68",
+  "description": "-----Description-----  \nThe task is to determine the position of a target integer in a given array. The goal is to return the index corresponding to the first occurrence of the target value. If the target is not present in the array, the result should indicate that by returning the size of the array. This description focuses entirely on understanding the problem without specifying any particular implementation method.\n\n-----Input-----  \nThe input consists of:  \n\u2022 a: An array of integers.  \n\u2022 e: An integer representing the target to search for in the array.\n\n-----Output-----  \nThe output is a natural number (Nat) which is:  \n\u2022 The index of the first occurrence of the target integer if found.  \n\u2022 The size of the array if the target integer is not present.  \n\n-----Note-----  \nThere are no strict preconditions on the input; the method should work correctly for any array of integers. The specification ensures that the returned index is always valid: it is either within the array bounds with a matching element or equals the array\u2019s size if the element is absent.",
+  "lean_code": "-- !benchmark @start import type=solution\nimport Mathlib\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef LinearSearch_precond (a : Array Int) (e : Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef LinearSearch (a : Array Int) (e : Int) (h_precond : LinearSearch_precond (a) (e)) : Nat :=\n  -- !benchmark @start code\n  let rec loop (n : Nat) : Nat :=\n    if n < a.size then\n      if a[n]! = e then n\n      else loop (n + 1)\n    else n\n  loop 0\n  -- !benchmark @end code\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef LinearSearch_postcond (a : Array Int) (e : Int) (result: Nat) (h_precond : LinearSearch_precond (a) (e)) :=\n  -- !benchmark @start postcond\n  result \u2264 a.size \u2227 (result = a.size \u2228 a[result]! = e) \u2227 (\u2200 i, i < result \u2192 a[i]! \u2260 e)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem LinearSearch_spec_satisfied (a: Array Int) (e: Int) (h_precond : LinearSearch_precond (a) (e)) :\n    LinearSearch_postcond (a) (e) (LinearSearch (a) (e) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold LinearSearch_postcond LinearSearch\n  apply And.intro\n  . let aux (x : Nat) : (0 \u2264 x) \u2192 (x \u2264 a.size) \u2192 LinearSearch.loop a e x \u2264 a.size := by\n      intro hx\u2080 hx\u2081\n      let nx := a.size - x\n      have hn\u2081 : nx = a.size - x := by rfl\n      have hn\u2082 : x = a.size - nx := by\n        rw [hn\u2081, Nat.sub_sub_self]\n        apply hx\u2081\n      rw [hn\u2082]\n      induction nx with\n      | zero =>\n        unfold LinearSearch.loop\n        simp\n      | succ n\u2081 ih =>\n        by_cases hp : (a.size \u2264 n\u2081)\n        . rw [Nat.sub_eq_zero_of_le hp] at ih\n          have h_tmp : a.size \u2264 n\u2081 + 1 := Nat.le_add_right_of_le hp\n          rw [Nat.sub_eq_zero_of_le h_tmp]\n          exact ih\n        . have hq : n\u2081 < a.size := Nat.not_le.mp hp\n          unfold LinearSearch.loop\n          simp\n          split_ifs\n          . simp\n          . rw [Nat.sub_add_eq, Nat.sub_add_cancel]\n            exact ih\n            apply Nat.zero_lt_sub_of_lt\n            exact hq\n          simp\n    have h\u2080 : 0 \u2264 a.size := by simp\n    have h_triv : 0 \u2264 0 := by simp\n    exact aux 0 h_triv h\u2080\n  . apply And.intro\n    . let aux (x : Nat) : (x \u2265 0) \u2192 (x \u2264 a.size) \u2192 LinearSearch.loop a e x = a.size \u2228 a[LinearSearch.loop a e x]! = e := by\n        intro hx\u2080 hx\u2081\n        let nx := a.size - x\n        have hn\u2081 : nx = a.size - x := by rfl\n        have hn\u2082 : x = a.size - nx := by\n          rw [hn\u2081, Nat.sub_sub_self]\n          apply hx\u2081\n        rw [hn\u2082]\n        induction nx with\n        | zero =>\n          unfold LinearSearch.loop\n          simp\n        | succ n\u2081 ih =>\n          -- Ohh boy...\n          by_cases hp : (a.size \u2264 n\u2081)\n          . rw [Nat.sub_eq_zero_of_le hp] at ih\n            have h_tmp : a.size \u2264 n\u2081 + 1 := Nat.le_add_right_of_le hp\n            rw [Nat.sub_eq_zero_of_le h_tmp]\n            exact ih\n          . have hq : n\u2081 < a.size := Nat.not_le.mp hp\n            apply Or.elim ih -- Didn't find elem, so we're gonna also return a.size...\n            . intro ih\u2081\n              unfold LinearSearch.loop\n              split_ifs\n              . rename_i h\u2081 h\u2082\n                rw [h\u2082]\n                simp\n              . rename_i ha\u2081 ha\u2082\n                rw [Nat.sub_add_eq, Nat.sub_add_cancel]\n                rw [ih\u2081]\n                simp\n                apply Nat.zero_lt_sub_of_lt\n                exact hq\n              . rename_i h\u2081\n                have ha\u2081 := Nat.not_lt.mp h\u2081\n                have ha\u2082 := Nat.sub_le a.size (n\u2081 + 1)\n                have ha := Nat.eq_iff_le_and_ge.mpr \u27e8ha\u2081, ha\u2082\u27e9\n                rw [\u2190ha]\n                simp\n            . intro ih\u2082\n              unfold LinearSearch.loop\n              split_ifs\n              . rename_i h\u2081 h\u2082\n                rw [h\u2082]\n                simp\n              . rename_i ha\u2081 ha\u2082\n                rw [Nat.sub_add_eq, Nat.sub_add_cancel]\n                rw [ih\u2082]\n                simp\n                apply Nat.zero_lt_sub_of_lt\n                exact hq\n              . rename_i h\u2081\n                have ha\u2081 := Nat.not_lt.mp h\u2081\n                have ha\u2082 := Nat.sub_le a.size (n\u2081 + 1)\n                have ha := Nat.eq_iff_le_and_ge.mpr \u27e8ha\u2081, ha\u2082\u27e9\n                rw [\u2190ha]\n                simp\n      have h\u2080 : 0 \u2264 0 := by simp\n      have h\u2081 : 0 \u2264 a.size := by simp\n      exact aux 0 h\u2080 h\u2081\n    . let aux (x : Nat) : (0 \u2264 x) \u2192 (x \u2264 a.size) \u2192 (\u2200 i, x \u2264 i \u2192 i < LinearSearch.loop a e x \u2192 a[i]! \u2260 e) := by\n        intro hx\u2080 hx\u2081 i\n        let nx := a.size - x\n        have hn\u2081 : nx = a.size - x := by rfl\n        have hn\u2082 : x = a.size - nx := by\n          rw [hn\u2081, Nat.sub_sub_self]\n          apply hx\u2081\n        rw [hn\u2082]\n        induction nx with\n        | zero =>\n          -- There's no such i\n          unfold LinearSearch.loop\n          simp\n          intro hxi hi\n          have h_contr := Nat.lt_of_le_of_lt hxi hi\n          have h : a.size \u2264 a.size := by simp\n          have h : a.size - a.size < a.size - a.size := Nat.sub_lt_sub_right h h_contr\n          simp at h\n        | succ n ih =>\n          intro hxi\n          unfold LinearSearch.loop\n          simp\n          split_ifs\n          . rename_i h\u2081 h\u2082\n            intro h_contr\n            have h := Nat.lt_of_le_of_lt hxi h_contr\n            simp at h\n          . rename_i h\u2081 h\u2082\n            by_cases hp : (a.size \u2264 n)\n            . rw [Nat.sub_eq_zero_iff_le.mpr hp] at ih\n              intro hi\n              have hp\u2081 : a.size \u2264 n + 1 := by\n                have h\u2081' : n \u2264 n + 1 := by simp\n                exact Nat.le_trans hp h\u2081'\n              rw [Nat.sub_eq_zero_iff_le.mpr hp\u2081] at hxi\n              rw [Nat.sub_eq_zero_iff_le.mpr hp\u2081] at hi\n              rw [Nat.sub_eq_zero_iff_le.mpr hp\u2081] at h\u2082\n              have ih\u2081 := ih hxi\n              simp at hi\n              unfold LinearSearch.loop at ih\u2081\n              split_ifs at ih\u2081\n              . rename_i h\u2081'\n                simp at ih\u2081\n                exact ih\u2081 hi\n              . rename_i h\u2081'\n                contradiction\n            . have hq : n < a.size := Nat.not_le.mp hp\n              have hq' : 1 \u2264 a.size - n := by\n                have h : 0 < a.size - n := by\n                  exact Nat.sub_pos_of_lt hq\n                exact Nat.one_le_iff_ne_zero.mpr (Nat.ne_zero_of_lt h)\n              rw [Nat.sub_add_eq, Nat.sub_add_cancel hq']\n              intro hi\n              by_cases h_bounds : (a.size - n \u2264 i)\n              . exact ih h_bounds hi\n              . have h_bounds' : ( i + 1 < a.size - n + 1) := (@Nat.add_lt_add_iff_right 1 i (a.size - n)).mpr (Nat.not_le.mp h_bounds)\n                have h := Nat.le_of_lt_add_one h_bounds'\n                apply Nat.le_sub_of_add_le at h\n                rw [\u2190 Nat.sub_add_eq] at h\n                have hi_fixed := Nat.eq_iff_le_and_ge.mpr \u27e8hxi, h\u27e9\n                rw [hi_fixed] at h\u2082\n                exact h\u2082\n          . intro h_contr\n            have h := Nat.lt_of_le_of_lt hxi h_contr\n            simp at h\n      have h\u2080 : 0 \u2264 a.size := by simp\n      have h_triv : 0 \u2264 0 := by simp\n      intro i\n      have h_tmp : 0 \u2264 i := Nat.zero_le i\n      exact aux 0 h_triv h\u2080 i h_tmp\n\n\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "LinearSearch",
+    "parameters": {
+      "param_name": [
+        "a",
+        "e"
+      ],
+      "param_type": [
+        "Array Int",
+        "Int"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "clover",
+      "link": "https://github.com/ChuyueSun/Clover",
+      "task_id": "Clover_linear_search1",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[1, 3, 5, 7, 9]\", \"e\": 5}",
+      "{\"a\": \"#[2, 4, 6, 8]\", \"e\": 5}",
+      "{\"a\": \"#[5, 5, 5]\", \"e\": 5}",
+      "{\"a\": \"#[10, 9, 8, 7]\", \"e\": 10}",
+      "{\"a\": \"#[1, 2, 3, 3, 4]\", \"e\": 3}"
+    ],
+    "expected": [
+      [
+        "2"
+      ],
+      [
+        "4"
+      ],
+      [
+        "0"
+      ],
+      [
+        "0"
+      ],
+      [
+        "2"
+      ]
+    ],
+    "unexpected": [
+      [
+        "1",
+        "3",
+        "4"
+      ],
+      [
+        "1",
+        "3",
+        "5"
+      ],
+      [
+        "1",
+        "2",
+        "3"
+      ],
+      [
+        "1",
+        "2",
+        "3"
+      ],
+      [
+        "1",
+        "3",
+        "4"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

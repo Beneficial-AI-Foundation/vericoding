@@ -1,0 +1,89 @@
+{
+  "id": "verina_basic_49",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that searches an array of integers to locate the first odd number. The method should return a pair where the first element is a Boolean indicating whether an odd number was found, and the second element is the index of that odd number if found, or -1 if no odd number exists. When an odd number is found, the method should return the smallest index at which an odd number occurs.\n\n-----Input-----\nThe input consists of:\na: An array of integers.\n\n-----Output-----\nThe output is a pair (Bool, Int):\n- If the Boolean is true, then the integer represents the smallest index of an odd number in the array.\n- If the Boolean is false, then there are no odd numbers in the array, and the accompanying integer is -1.\n\n-----Note-----\n- The input array is assumed to be non-null.\n- If multiple odd numbers are present, the index returned should correspond to the first occurrence.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\ndef isOdd (x : Int) : Bool :=\n  x % 2 \u2260 0\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef findFirstOdd_precond (a : Array Int) : Prop :=\n  -- !benchmark @start precond\n  a.size > 0\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef findFirstOdd (a : Array Int) (h_precond : findFirstOdd_precond (a)) : Option Nat :=\n  -- !benchmark @start code\n  -- Creates list of (index, value) pairs\n  let indexed := a.toList.zipIdx\n\n  -- Find the first pair where the value is odd\n  let found := List.find? (fun (x, _) => isOdd x) indexed\n\n  -- Extract the index from the found pair (if any)\n  Option.map (fun (_, i) => i) found\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef findFirstOdd_postcond (a : Array Int) (result: Option Nat) (h_precond : findFirstOdd_precond (a)) :=\n  -- !benchmark @start postcond\n  match result with\n  | some idx => idx < a.size \u2227 isOdd (a[idx]!) \u2227\n    (\u2200 j, j < idx \u2192 \u00ac isOdd (a[j]!))\n  | none => \u2200 i, i < a.size \u2192 \u00ac isOdd (a[i]!)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem findFirstOdd_spec_satisfied (a: Array Int) (h_precond : findFirstOdd_precond (a)) :\n    findFirstOdd_postcond (a) (findFirstOdd (a) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold findFirstOdd findFirstOdd_postcond\n  let la := a.toList\n  have h_la : la = a.toList := by rfl\n  let indexed := la.zipIdx\n  have h_indexed : indexed = la.zipIdx := by rfl\n  let found := List.find? (fun (x, _) => isOdd x) indexed\n  have h_found : found = List.find? (fun (x, _) => isOdd x) indexed := by rfl\n  let res := Option.map (fun (_, i) => i) found\n  have h_res : res = Option.map (fun (_, i) => i) found := by rfl\n  simp_all\n  cases h_rescase : res with\n  | none =>\n    rw [\u2190 h_res, h_rescase]\n    simp\n    rw [h_rescase] at h_res\n    have h_notfound : found = none := by\n      rw [h_found]\n      exact Option.map_eq_none.mp h_rescase\n    rw [List.find?_eq_none] at h_notfound\n    simp at h_notfound\n    intro i hi\n    have hi' : i < la.length := by exact hi\n    have h_mem : (la[i], i) \u2208 indexed := by\n      have : la[i]? = some la[i] := by\n        exact (List.getElem?_eq_some_getElem_iff la i hi').mpr trivial\n      apply List.mem_zipIdx_iff_getElem?.mpr\n      simp\n    have hai : a[i]! = a[i] := by\n      exact getElem!_pos a i hi'\n    rw [hai]\n    exact h_notfound a[i] i h_mem\n  | some i =>\n    rw [\u2190 h_res, h_rescase]\n    rw [h_res] at h_rescase\n    simp\n    rw [Option.map_eq_some'] at h_rescase\n    rcases h_rescase with \u27e8p, \u27e8h_found', hp\u27e9\u27e9\n    have h_mem : p \u2208 indexed := by\n      exact List.mem_of_find?_eq_some h_found'\n    have \u27e8_, hi, hx\u27e9 := List.mem_zipIdx h_mem\n    have \u27e8h_odd, \u27e8i', hi', hii', h_prefix\u27e9\u27e9 := List.find?_eq_some_iff_getElem.mp h_found'\n    simp_all\n    have hai : a[i]! = a[i] := by\n      exact getElem!_pos a i hi\n    rw [hai]\n    constructor\n    \u00b7 exact h_odd\n    \u00b7 intro j hj\n      have hii' : i = i' := by\n        rw [\u2190 hii'] at hp\n        simp_all\n      have hj' : j < a.size := by\n        exact Nat.lt_trans hj hi\n      have haj : a[j]! = a[j] := by\n        exact getElem!_pos a j hj'\n      rw [haj]\n      rw [hii'] at hj\n      exact h_prefix j hj\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "findFirstOdd",
+    "parameters": {
+      "param_name": [
+        "a"
+      ],
+      "param_type": [
+        "Array Int"
+      ]
+    },
+    "return_type": "Option Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_807",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[2, 4, 6, 8]\"}",
+      "{\"a\": \"#[3, 4, 6, 8]\"}",
+      "{\"a\": \"#[2, 4, 5, 8]\"}",
+      "{\"a\": \"#[7]\"}",
+      "{\"a\": \"#[2]\"}",
+      "{\"a\": \"#[1, 2, 3]\"}"
+    ],
+    "expected": [
+      [
+        "none"
+      ],
+      [
+        "some (0)"
+      ],
+      [
+        "some (2)"
+      ],
+      [
+        "some (0)"
+      ],
+      [
+        "none"
+      ],
+      [
+        "some (0)"
+      ]
+    ],
+    "unexpected": [
+      [
+        "some (0)"
+      ],
+      [
+        "some (1)",
+        "some (2)",
+        "none"
+      ],
+      [
+        "some (0)",
+        "some (1)",
+        "some (3)",
+        "none"
+      ],
+      [
+        "some (1)",
+        "none"
+      ],
+      [
+        "some (0)"
+      ],
+      [
+        "some (1)",
+        "some (2)",
+        "none"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'a': '#[]'}"
+    ]
+  },
+  "difficulty": "basic"
+}

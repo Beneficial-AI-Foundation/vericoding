@@ -1,0 +1,84 @@
+{
+  "id": "verina_basic_40",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that finds the second-smallest number in an array of integers. The method should determine and return the number that is larger than the smallest element in the array. It is crucial that the input array remains unchanged after the computation.\n\n-----Input-----\nThe input consists of:\ns: An array of integers containing at least two elements.\n\n-----Output-----\nThe output is an integer:\nReturns the second-smallest number in the input array.\n\n-----Note-----\n- The input array is guaranteed to contain at least two elements and is non-null.\n- It is assumed that there exist at least two distinct values in the array to ensure a unique second-smallest element.\n- The original array must remain unmodified.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef secondSmallest_precond (s : Array Int) : Prop :=\n  -- !benchmark @start precond\n  s.size > 1\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef minListHelper : List Int \u2192 Int\n| [] => panic! \"minListHelper: empty list\"\n| [_] => panic! \"minListHelper: singleton list\"\n| a :: b :: [] => if a \u2264 b then a else b\n| a :: b :: c :: xs =>\n    let m := minListHelper (b :: c :: xs)\n    if a \u2264 m then a else m\n\ndef minList (l : List Int) : Int :=\n  minListHelper l\n\ndef secondSmallestAux (s : Array Int) (i minIdx secondIdx : Nat) : Int :=\n  if i \u2265 s.size then\n    s[secondIdx]!\n  else\n    let x    := s[i]!\n    let m    := s[minIdx]!\n    let smin := s[secondIdx]!\n    if x < m then\n      secondSmallestAux s (i + 1) i minIdx\n    else if x < smin then\n      secondSmallestAux s (i + 1) minIdx i\n    else\n      secondSmallestAux s (i + 1) minIdx secondIdx\ntermination_by s.size - i\n-- !benchmark @end code_aux\n\n\ndef secondSmallest (s : Array Int) (h_precond : secondSmallest_precond (s)) : Int :=\n  -- !benchmark @start code\n  let (minIdx, secondIdx) :=\n    if s[1]! < s[0]! then (1, 0) else (0, 1)\n  secondSmallestAux s 2 minIdx secondIdx\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef secondSmallest_postcond (s : Array Int) (result: Int) (h_precond : secondSmallest_precond (s)) :=\n  -- !benchmark @start postcond\n  (\u2203 i, i < s.size \u2227 s[i]! = result) \u2227\n  (\u2203 j, j < s.size \u2227 s[j]! < result \u2227\n    \u2200 k, k < s.size \u2192 s[k]! \u2260 s[j]! \u2192 s[k]! \u2265 result)\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem secondSmallest_spec_satisfied (s: Array Int) (h_precond : secondSmallest_precond (s)) :\n    secondSmallest_postcond (s) (secondSmallest (s) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "secondSmallest",
+    "parameters": {
+      "param_name": [
+        "s"
+      ],
+      "param_type": [
+        "Array Int"
+      ]
+    },
+    "return_type": "Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_755",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"s\": \"#[5, 3, 1, 4, 2]\"}",
+      "{\"s\": \"#[7, 2, 5, 3]\"}",
+      "{\"s\": \"#[10, 20]\"}",
+      "{\"s\": \"#[20, 10]\"}",
+      "{\"s\": \"#[3, 1, 2]\"}"
+    ],
+    "expected": [
+      [
+        "2"
+      ],
+      [
+        "3"
+      ],
+      [
+        "20"
+      ],
+      [
+        "20"
+      ],
+      [
+        "2"
+      ]
+    ],
+    "unexpected": [
+      [
+        "1",
+        "3",
+        "4"
+      ],
+      [
+        "2",
+        "5",
+        "7"
+      ],
+      [
+        "10",
+        "30",
+        "25"
+      ],
+      [
+        "10",
+        "30",
+        "15"
+      ],
+      [
+        "1",
+        "3",
+        "4"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'s': '#[1]'}"
+    ]
+  },
+  "difficulty": "basic"
+}

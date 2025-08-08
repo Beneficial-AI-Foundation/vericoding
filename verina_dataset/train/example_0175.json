@@ -1,0 +1,95 @@
+{
+  "id": "verina_basic_21",
+  "description": "-----Description-----  \nThis task requires writing a Lean 4 method that determines whether one list is a sublist of another. In other words, the method should check if the first list appears as a contiguous sequence within the second list and return true if it does, and false otherwise.\n\n-----Input-----  \nThe input consists of two lists of integers:  \nsub: A list of integers representing the potential sublist.  \nmain: A list of integers in which to search for the sublist.\n\n-----Output-----  \nThe output is a Boolean value:  \nReturns true if the first list appears as a contiguous sequence within the second list.  \nReturns false if the first list does not appear as a contiguous sequence in the second list.\n\n-----Note-----  \nThere are no preconditions for this method; the sequences are always non-null.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef isSublist_precond (sub : List Int) (main : List Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef isSublist (sub : List Int) (main : List Int) (h_precond : isSublist_precond (sub) (main)) : Bool :=\n  -- !benchmark @start code\n  let subLen := sub.length\n  let mainLen := main.length\n  if subLen > mainLen then\n    false\n  else\n    let rec check (i : Nat) : Bool :=\n      if i + subLen > mainLen then\n        false\n      else if sub = (main.drop i).take subLen then\n        true\n      else if i + 1 \u2264 mainLen then\n        check (i + 1)\n      else\n        false\n    termination_by mainLen - i\n    check 0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef isSublist_postcond (sub : List Int) (main : List Int) (result: Bool) (h_precond : isSublist_precond (sub) (main)) :=\n  -- !benchmark @start postcond\n  (\u2203 i, i + sub.length \u2264 main.length \u2227 sub = (main.drop i).take sub.length) \u2194 result\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem isSublist_spec_satisfied (sub: List Int) (main: List Int) (h_precond : isSublist_precond (sub) (main)) :\n    isSublist_postcond (sub) (main) (isSublist (sub) (main) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "isSublist",
+    "parameters": {
+      "param_name": [
+        "sub",
+        "main"
+      ],
+      "param_type": [
+        "List Int",
+        "List Int"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_576",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"sub\": \"[1, 2]\", \"main\": \"[3, 1, 2, 4]\"}",
+      "{\"sub\": \"[2, 3]\", \"main\": \"[3, 1, 2, 4]\"}",
+      "{\"sub\": \"[3, 1]\", \"main\": \"[3, 1, 2, 4]\"}",
+      "{\"sub\": \"[4]\", \"main\": \"[3, 1, 2, 4]\"}",
+      "{\"sub\": \"[5]\", \"main\": \"[3, 1, 2, 4]\"}",
+      "{\"sub\": \"[]\", \"main\": \"[3, 1, 2, 4]\"}",
+      "{\"sub\": \"[1, 2]\", \"main\": \"[]\"}",
+      "{\"sub\": \"[]\", \"main\": \"[]\"}"
+    ],
+    "expected": [
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

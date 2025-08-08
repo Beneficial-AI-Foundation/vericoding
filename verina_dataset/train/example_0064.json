@@ -1,0 +1,86 @@
+{
+  "id": "verina_basic_19",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that checks whether an array of integers is sorted in non-decreasing order. The method should return true if every element is less than or equal to the element that follows it, and false otherwise.\n\n-----Input-----\nThe input consists of:\na: An array of integers. The array can be empty or have any length.\n\n-----Output-----\nThe output is a Boolean value:\nReturns true if the array is sorted in non-decreasing order.\nReturns false if the array is not sorted in non-decreasing order.\n\n-----Note-----\nA true result guarantees that for every valid pair of indices i and j (with i < j), the element at position i is less than or equal to the element at position j. A false result indicates that there exists at least one adjacent pair of elements where the first element is greater than the second.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef isSorted_precond (a : Array Int) : Prop :=\n  -- !benchmark @start precond\n  True\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef isSorted (a : Array Int) (h_precond : isSorted_precond (a)) : Bool :=\n  -- !benchmark @start code\n  if a.size \u2264 1 then\n    true\n  else\n    a.mapIdx (fun i x =>\n      if h : i + 1 < a.size then\n        decide (x \u2264 a[i + 1])\n      else\n        true) |>.all id\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef isSorted_postcond (a : Array Int) (result: Bool) (h_precond : isSorted_precond (a)) :=\n  -- !benchmark @start postcond\n  (\u2200 i, (hi : i < a.size - 1) \u2192 a[i] \u2264 a[i + 1]) \u2194 result\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem isSorted_spec_satisfied (a: Array Int) (h_precond : isSorted_precond (a)) :\n    isSorted_postcond (a) (isSorted (a) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold isSorted isSorted_postcond\n  simp_all\n  cases a with | mk a =>\n    simp\n    cases a with\n    | nil => simp\n    | cons x xs =>\n      simp\n      cases xs with\n      | nil => simp\n      | cons x' xs =>\n        simp\n        constructor <;> simp_all\n\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "isSorted",
+    "parameters": {
+      "param_name": [
+        "a"
+      ],
+      "param_type": [
+        "Array Int"
+      ]
+    },
+    "return_type": "Bool"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_567",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[1, 2, 3, 4, 5]\"}",
+      "{\"a\": \"#[5, 4, 3, 2, 1]\"}",
+      "{\"a\": \"#[1, 3, 2, 4, 5]\"}",
+      "{\"a\": \"#[]\"}",
+      "{\"a\": \"#[10]\"}",
+      "{\"a\": \"#[2, 2, 2, 2]\"}",
+      "{\"a\": \"#[1, 2, 2, 3]\"}"
+    ],
+    "expected": [
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ]
+    ],
+    "unexpected": [
+      [
+        "False"
+      ],
+      [
+        "True"
+      ],
+      [
+        "True"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ],
+      [
+        "False"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "basic"
+}

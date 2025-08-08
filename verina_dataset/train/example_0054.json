@@ -1,0 +1,93 @@
+{
+  "id": "verina_basic_23",
+  "description": "-----Description----- \nThis task requires writing a Lean 4 method that calculates the difference between the maximum and minimum values in an array of integers. In other words, the method should determine the highest and lowest numbers in the array and return the result of subtracting the minimum from the maximum.\n\n-----Input-----\nThe input consists of:\na: An array of integers.\n\n-----Output-----\nThe output is an integer:\nReturns the difference between the largest and the smallest values in the input array.\n\n-----Note-----\nThe input array is assumed to be non-empty.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef differenceMinMax_precond (a : Array Int) : Prop :=\n  -- !benchmark @start precond\n  a.size > 0\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef differenceMinMax (a : Array Int) (h_precond : differenceMinMax_precond (a)) : Int :=\n  -- !benchmark @start code\n  let rec loop (i : Nat) (minVal maxVal : Int) : Int :=\n    if i < a.size then\n      let x := a[i]!\n      let newMin := if x < minVal then x else minVal\n      let newMax := if x > maxVal then x else maxVal\n      loop (i + 1) newMin newMax\n    else\n      maxVal - minVal\n  loop 1 (a[0]!) (a[0]!)\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef differenceMinMax_postcond (a : Array Int) (result: Int) (h_precond : differenceMinMax_precond (a)) :=\n  -- !benchmark @start postcond\n  result + (a.foldl (fun acc x => if x < acc then x else acc) (a[0]!)) = (a.foldl (fun acc x => if x > acc then x else acc) (a[0]!))\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem differenceMinMax_spec_satisfied (a: Array Int) (h_precond : differenceMinMax_precond (a)) :\n    differenceMinMax_postcond (a) (differenceMinMax (a) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "differenceMinMax",
+    "parameters": {
+      "param_name": [
+        "a"
+      ],
+      "param_type": [
+        "Array Int"
+      ]
+    },
+    "return_type": "Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_588",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"a\": \"#[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]\"}",
+      "{\"a\": \"#[10, 20, 30, 40, 50]\"}",
+      "{\"a\": \"#[-10, -20, -30, -40, -50]\"}",
+      "{\"a\": \"#[7]\"}",
+      "{\"a\": \"#[5, 5, 5, 5]\"}",
+      "{\"a\": \"#[1, -1, 2, -2]\"}"
+    ],
+    "expected": [
+      [
+        "8"
+      ],
+      [
+        "40"
+      ],
+      [
+        "40"
+      ],
+      [
+        "0"
+      ],
+      [
+        "0"
+      ],
+      [
+        "4"
+      ]
+    ],
+    "unexpected": [
+      [
+        "7",
+        "9",
+        "10"
+      ],
+      [
+        "30",
+        "35",
+        "45"
+      ],
+      [
+        "30",
+        "41",
+        "20"
+      ],
+      [
+        "1",
+        "-1",
+        "2"
+      ],
+      [
+        "1",
+        "5",
+        "-1"
+      ],
+      [
+        "3",
+        "0",
+        "5"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'a': '#[]'}"
+    ]
+  },
+  "difficulty": "basic"
+}

@@ -1,0 +1,80 @@
+{
+  "id": "verina_advanced_58",
+  "description": "-----Description-----\nThis task requires writing a Lean 4 function that returns the nth \"ugly number\". Ugly numbers are positive integers whose only prime factors are 2, 3, or 5.\n\nThe function should generate ugly numbers in ascending order and return the nth one. The first ugly number is 1.\n\n-----Input-----\nThe input is a natural number:\n\nn: The index (1-based) of the ugly number to return.\n\n-----Output-----\nThe output is a natural number:\nThe nth smallest ugly number.\n\n",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\n\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n@[reducible, simp]\ndef nthUglyNumber_precond (n : Nat) : Prop :=\n  -- !benchmark @start precond\n  n > 0\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\ndef nextUgly (seq : List Nat) (c2 c3 c5 : Nat) : (Nat \u00d7 Nat \u00d7 Nat \u00d7 Nat) :=\n  let i2 := seq[c2]! * 2\n  let i3 := seq[c3]! * 3\n  let i5 := seq[c5]! * 5\n  let next := min i2 (min i3 i5)\n  let c2' := if next = i2 then c2 + 1 else c2\n  let c3' := if next = i3 then c3 + 1 else c3\n  let c5' := if next = i5 then c5 + 1 else c5\n  (next, c2', c3', c5')\n\n-- !benchmark @end code_aux\n\n\ndef nthUglyNumber (n : Nat) (h_precond : nthUglyNumber_precond (n)) : Nat :=\n  -- !benchmark @start code\n  let rec loop (i : Nat) (seq : List Nat) (c2 c3 c5 : Nat) : List Nat :=\n    match i with\n    | 0 => seq\n    | Nat.succ i' =>\n      let (next, c2', c3', c5') := nextUgly seq c2 c3 c5\n      loop i' (seq ++ [next]) c2' c3' c5'\n  (loop (n - 1) [1] 0 0 0)[(n - 1)]!\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\ndef divideOut : Nat \u2192 Nat \u2192 Nat\n  | n, p =>\n    if h : p > 1 \u2227 n > 0 \u2227 n % p = 0 then\n      have : n / p < n := by\n        apply Nat.div_lt_self\n        \u00b7 exact h.2.1  -- n > 0\n        \u00b7 exact Nat.lt_of_succ_le (Nat.succ_le_of_lt h.1)  -- 1 < p, so 2 \u2264 p\n      divideOut (n / p) p\n    else n\ntermination_by n p => n\n\ndef isUgly (x : Nat) : Bool :=\n  if x = 0 then\n    false\n  else\n    let n1 := divideOut x 2\n    let n2 := divideOut n1 3\n    let n3 := divideOut n2 5\n    n3 = 1\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef nthUglyNumber_postcond (n : Nat) (result: Nat) (h_precond : nthUglyNumber_precond (n)) : Prop :=\n  -- !benchmark @start postcond\n  isUgly result = true \u2227\n  ((List.range (result)).filter (fun i => isUgly i)).length = n - 1\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem nthUglyNumber_spec_satisfied (n: Nat) (h_precond : nthUglyNumber_precond (n)) :\n    nthUglyNumber_postcond (n) (nthUglyNumber (n) h_precond) h_precond := by\n  -- !benchmark @start proof\n  sorry\n  -- !benchmark @end proof\n\n\n",
+  "signature": {
+    "name": "nthUglyNumber",
+    "parameters": {
+      "param_name": [
+        "n"
+      ],
+      "param_type": [
+        "Nat"
+      ]
+    },
+    "return_type": "Nat"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "lab_assignment",
+      "link": "",
+      "task_id": "lab_nthUglyNumber_324647099",
+      "student_id": [
+        43
+      ]
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"n\": 1}",
+      "{\"n\": 10}",
+      "{\"n\": 15}",
+      "{\"n\": 5}",
+      "{\"n\": 7}"
+    ],
+    "expected": [
+      [
+        "1"
+      ],
+      [
+        "12"
+      ],
+      [
+        "24"
+      ],
+      [
+        "5"
+      ],
+      [
+        "8"
+      ]
+    ],
+    "unexpected": [
+      [
+        "0",
+        "2"
+      ],
+      [
+        "13",
+        "10",
+        "15"
+      ],
+      [
+        "20",
+        "25"
+      ],
+      [
+        "6",
+        "7"
+      ],
+      [
+        "9",
+        "10"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": []
+  },
+  "difficulty": "advanced"
+}

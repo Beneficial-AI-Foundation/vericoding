@@ -1,0 +1,66 @@
+{
+  "id": "verina_basic_45",
+  "description": "-----Description-----  \nThis task requires writing a Lean 4 method that computes the product of the first even and the first odd number encountered in a list of integers. The method should search the list for the earliest even number and the earliest odd number, then return the product of these two numbers.\n\n-----Input-----  \nThe input consists of:  \nlst: A list of integers.\n\n-----Output-----  \nThe output is an integer:  \nReturns the product resulting from multiplying the first even number and the first odd number found in the list.\n\n-----Note-----  \nThe input list is assumed to contain at least one even number and one odd number.",
+  "lean_code": "-- !benchmark @start import type=solution\n\n-- !benchmark @end import\n\n-- !benchmark @start solution_aux\ndef isEven (n : Int) : Bool :=\n  n % 2 = 0\n\ndef isOdd (n : Int) : Bool :=\n  n % 2 \u2260 0\n\ndef firstEvenOddIndices (lst : List Int) : Option (Nat \u00d7 Nat) :=\n  let evenIndex := lst.findIdx? isEven\n  let oddIndex := lst.findIdx? isOdd\n  match evenIndex, oddIndex with\n  | some ei, some oi => some (ei, oi)\n  | _, _ => none\n-- !benchmark @end solution_aux\n\n-- !benchmark @start precond_aux\n\n-- !benchmark @end precond_aux\n\n@[reducible, simp]\ndef findProduct_precond (lst : List Int) : Prop :=\n  -- !benchmark @start precond\n  lst.length > 1 \u2227\n  (\u2203 x \u2208 lst, isEven x) \u2227\n  (\u2203 x \u2208 lst, isOdd x)\n  -- !benchmark @end precond\n\n\n-- !benchmark @start code_aux\n\n-- !benchmark @end code_aux\n\n\ndef findProduct (lst : List Int) (h_precond : findProduct_precond (lst)) : Int :=\n  -- !benchmark @start code\n  match firstEvenOddIndices lst with\n  | some (ei, oi) => lst[ei]! * lst[oi]!\n  | none => 0\n  -- !benchmark @end code\n\n\n-- !benchmark @start postcond_aux\n\n-- !benchmark @end postcond_aux\n\n\n@[reducible, simp]\ndef findProduct_postcond (lst : List Int) (result: Int) (h_precond : findProduct_precond (lst)) :=\n  -- !benchmark @start postcond\n  match firstEvenOddIndices lst with\n  | some (ei, oi) => result = lst[ei]! * lst[oi]!\n  | none => True\n  -- !benchmark @end postcond\n\n\n-- !benchmark @start proof_aux\n\n-- !benchmark @end proof_aux\n\n\ntheorem findProduct_spec_satisfied (lst: List Int) (h_precond : findProduct_precond (lst)) :\n    findProduct_postcond (lst) (findProduct (lst) h_precond) h_precond := by\n  -- !benchmark @start proof\n  unfold findProduct findProduct_postcond\n  split\n  case h_1 _ ei oi _ =>\n    split\n    case h_1 _ ei' oi' heq =>\n      have : ei = ei' \u2227 oi = oi' := by\n        rw [Option.some_inj] at heq\n        cases heq with\n        | refl => exact \u27e8rfl, rfl\u27e9\n      simp [this]\n    case h_2 _ heq => contradiction\n  case h_2 => simp\n  -- !benchmark @end proof\n",
+  "signature": {
+    "name": "findProduct",
+    "parameters": {
+      "param_name": [
+        "lst"
+      ],
+      "param_type": [
+        "List Int"
+      ]
+    },
+    "return_type": "Int"
+  },
+  "metadata": {
+    "upstream": {
+      "name": "dafny-synthesis",
+      "link": "https://github.com/Mondego/dafny-synthesis",
+      "task_id": "task_id_784",
+      "student_id": null
+    }
+  },
+  "tests": {
+    "input": [
+      "{\"lst\": \"[2, 3, 4, 5]\"}",
+      "{\"lst\": \"[2, 4, 3, 6]\"}",
+      "{\"lst\": \"[1, 2, 5, 4]\"}"
+    ],
+    "expected": [
+      [
+        "6"
+      ],
+      [
+        "6"
+      ],
+      [
+        "2"
+      ]
+    ],
+    "unexpected": [
+      [
+        "8",
+        "0",
+        "10"
+      ],
+      [
+        "8",
+        "0",
+        "24"
+      ],
+      [
+        "5",
+        "0",
+        "10"
+      ]
+    ]
+  },
+  "reject_inputs": {
+    "input": [
+      "{'lst': '[2]'}"
+    ]
+  },
+  "difficulty": "basic"
+}
