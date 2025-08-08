@@ -9,6 +9,7 @@
     "leanexplore": {
       "command": "uvx",
       "args": [
+        "--upgrade",
         "--from",
         "lean-explore",
         "leanexplore",

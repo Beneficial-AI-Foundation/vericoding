@@ -112,6 +112,10 @@ For Lean development, the key command is:
 
 The lean-lsp-mcp tools are already configured in `.mcp.json` and available through the MCP interface.
 
+## Experiment Tracking
+
+Uses Weights & Biases (wandb) for tracking verification experiments, failure analysis, and LLM usage metrics. Set `WANDB_API_KEY` to enable. See `vericoding/analysis/` for failure collection and LLM judge capabilities.
+
 
 ## Building and Testing
 
