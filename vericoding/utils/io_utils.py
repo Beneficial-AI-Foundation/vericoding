@@ -45,8 +45,5 @@ def save_iteration_code(
             with iteration_path.open("w") as f:
                 f.write(code)
 
-        logger.info(
-            f"    💾 Saved {phase} code to: debug/{relative_dir}/{iteration_file_name}"
-            if str(relative_dir) != "."
-            else f"    💾 Saved {phase} code to: debug/{iteration_file_name}"
-        )
+        debug_path = f"debug/{relative_dir}" if str(relative_dir) != "." else "debug"
+        logger.info(f"    💾 Saved {phase} code to: {debug_path}/{iteration_file_name}")
