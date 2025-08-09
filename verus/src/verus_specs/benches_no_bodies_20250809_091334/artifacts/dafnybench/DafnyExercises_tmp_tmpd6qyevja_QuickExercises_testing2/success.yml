@@ -1,0 +1,47 @@
+num_iterations: 9
+success: false
+verification_error: "error: postcondition not satisfied\n  --> /tmp/tmp2gbexfo4.rs:27:17\n\
+  \   |\n27 |           ensures vowels(s.add(t)) == vowels(s) + vowels(t)\n   |  \
+  \                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition\n\
+  ...\n30 | /         if s.len() > 0 {\n31 | |             let s_tail = s.subrange(1,\
+  \ s.len() as int);\n32 | |             let s_head = seq![s[0]];\n33 | |        \
+  \     assert(s_head.add(s_tail) =~= s);\n34 | |             assert(s_head.add(s_tail.add(t))\
+  \ =~= s_head.add(s_tail).add(t));\n35 | |             VowelsLemma(s_tail, t);\n\
+  36 | |         }\n   | |_________- at the end of the function body\n\nerror: postcondition\
+  \ not satisfied\n  --> /tmp/tmp2gbexfo4.rs:41:17\n   |\n40 |     proof fn VowelsLemmaF(s:\
+  \ Seq<char>, t: Seq<char>)\n   |           -------------------------------------------\
+  \ at the end of the function body\n41 |         ensures vowelsF(s.add(t)) == vowelsF(s)\
+  \ + vowelsF(t)\n   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n\nerror: postcondition not satisfied\n   --> /tmp/tmp2gbexfo4.rs:105:21\n\
+  \    |\n105 |               ensures result.valid()\n    |                      \
+  \ ^^^^^^^^^^^^^^ failed this postcondition\n106 |           {\n107 | /         \
+  \    Stack {\n108 | |                 values: Vec::with_capacity(capacity_),\n109\
+  \ | |                 capacity: capacity_,\n110 | |                 size: 0,\n111\
+  \ | |             }\n    | |_____________- at the end of the function body\n\nerror:\
+  \ postcondition not satisfied\n   --> /tmp/tmp2gbexfo4.rs:119:17\n    |\n114 | \
+  \        fn push(&mut self, i: i32)\n    |         -------------------------- at\
+  \ the end of the function body\n...\n119 |                 self.valid(),\n    |\
+  \                 ^^^^^^^^^^^^ failed this postcondition\n\nerror: postcondition\
+  \ not satisfied\n   --> /tmp/tmp2gbexfo4.rs:133:17\n    |\n133 |               \
+  \  self.valid(),\n    |                 ^^^^^^^^^^^^ failed this postcondition\n\
+  ...\n138 |             self.values.pop().unwrap()\n    |             --------------------------\
+  \ at the end of the function body\n\nnote: function body check: not all errors may\
+  \ have been reported; rerun with a higher value for --multiple-errors to find other\
+  \ potential errors in this function\n   --> /tmp/tmp2gbexfo4.rs:178:5\n    |\n178\
+  \ |     fn verify_stack(s: &mut Stack, i: i32, j: i32)\n    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: precondition not satisfied\n   --> /tmp/tmp2gbexfo4.rs:184:9\n    |\n117\
+  \ |                 old(self).get_size() < old(self).get_capacity(),\n    |    \
+  \             ----------------------------------------------- failed precondition\n\
+  ...\n184 |         s.push(i);\n    |         ^^^^^^^^^\n\nerror: precondition not\
+  \ satisfied\n   --> /tmp/tmp2gbexfo4.rs:185:9\n    |\n117 |                 old(self).get_size()\
+  \ < old(self).get_capacity(),\n    |                 -----------------------------------------------\
+  \ failed precondition\n...\n185 |         s.push(j);\n    |         ^^^^^^^^^\n\n\
+  error: assertion failed\n   --> /tmp/tmp2gbexfo4.rs:187:16\n    |\n187 |       \
+  \  assert(v == j);\n    |                ^^^^^^ assertion failed\n\nerror: precondition\
+  \ not satisfied\n   --> /tmp/tmp2gbexfo4.rs:195:9\n    |\n181 |             old(s).get_size()\
+  \ == 0,\n    |             ---------------------- failed precondition\n...\n195\
+  \ |         verify_stack(&mut stack, 42, 43);\n    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: aborting due to 9 previous errors\n\n"
+verification_output: 'verification results:: 4 verified, 7 errors
+
+  '

@@ -1,0 +1,8 @@
+num_iterations: 18
+success: false
+verification_error: "error: The Verus types 'nat' and 'int' can only be used in ghost\
+  \ code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning\
+  \ to a 'ghost' or 'tracked' variable)\n  --> /tmp/tmpj50m0tk0.rs:20:28\n   |\n20\
+  \ |             result.push(xs[i as int]);\n   |                            ^^^^^^^^\n\
+  \nerror: aborting due to 1 previous error\n\n"
+verification_output: ''

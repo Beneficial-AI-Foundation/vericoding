@@ -1,0 +1,10 @@
+num_iterations: 6
+success: false
+verification_error: "error: postcondition not satisfied\n  --> /tmp/tmpjjcuthf3.rs:38:9\n\
+  \   |\n38 |         semi_ordered_permutation_postcond(nums@.map(|i, x| x as int),\
+  \ result as int),\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n...\n76 |     adjusted_moves\n   |     --------------\
+  \ at the end of the function body\n\nerror: aborting due to 1 previous error\n\n"
+verification_output: 'verification results:: 4 verified, 1 errors
+
+  '

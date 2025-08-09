@@ -1,0 +1,21 @@
+num_iterations: 15
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmpl3__7qx5.rs:15:9\n   |\n15 |         while i < a.len()\n\
+  \   |         ^^^^^^^^^^^^^^^^^\n\nerror: postcondition not satisfied\n  --> /tmp/tmpl3__7qx5.rs:11:13\n\
+  \   |\n11 |             (0 <= index < a.len()) ==> a[index as int] == x,\n   | \
+  \            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition\n\
+  ...\n26 |                 return i as i32;\n   |                 ---------------\
+  \ at this exit\n\nerror: postcondition not satisfied\n  --> /tmp/tmpl3__7qx5.rs:12:13\n\
+  \   |\n12 |             (index == -1) ==> forall|i: int| 0 <= i < a.len() ==> a[i]\
+  \ != x,\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n...\n26 |                 return i as i32;\n   |  \
+  \               --------------- at this exit\n\nnote: recommendation not met: value\
+  \ may be out of range of the target type (use `#[verifier::truncate]` on the cast\
+  \ to silence this warning)\n  --> /tmp/tmpl3__7qx5.rs:26:24\n   |\n26 |        \
+  \         return i as i32;\n   |                        ^\n\nerror: aborting due\
+  \ to 2 previous errors\n\n"
+verification_output: 'verification results:: 1 verified, 1 errors
+
+  '

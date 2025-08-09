@@ -1,0 +1,8 @@
+num_iterations: 10
+success: false
+verification_error: "error: The verifier does not yet support the following Rust feature:\
+  \ function pointer types\n  --> /tmp/tmpivl8aib_.rs:15:43\n   |\n15 |     fn execute_automaton(init:\
+  \ Vec<bool>, rule: fn(bool, bool, bool) -> bool, steps: usize) -> (table: Vec<Vec<bool>>)\n\
+  \   |                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: aborting due to 1 previous error\n\n"
+verification_output: ''

@@ -1,0 +1,20 @@
+num_iterations: 12
+success: false
+verification_error: "note: function body check: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmphktv00vb.rs:30:10\n   |\n30 |     spec fn quickselect(m:\
+  \ Multiset<int>, k: nat) -> (Multiset<int>, int, Multiset<int>)\n   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: could not prove termination\n  --> /tmp/tmphktv00vb.rs:39:46\n   |\n39\
+  \ |             let (pre_prime, p, post_prime) = quickselect(post, k_new);\n   |\
+  \                                              ^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:\
+  \ recommendation not met\n  --> /tmp/tmphktv00vb.rs:39:46\n   |\n31 |         recommends\
+  \ k < m.len()\n   |                    ----------- recommendation not met\n...\n\
+  39 |             let (pre_prime, p, post_prime) = quickselect(post, k_new);\n  \
+  \ |                                              ^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror:\
+  \ could not prove termination\n  --> /tmp/tmphktv00vb.rs:44:46\n   |\n44 |     \
+  \        let (pre_prime, p, post_prime) = quickselect(pre, k);\n   |           \
+  \                                   ^^^^^^^^^^^^^^^^^^^\n\nerror: aborting due to\
+  \ 2 previous errors\n\n"
+verification_output: 'verification results:: 2 verified, 1 errors
+
+  '

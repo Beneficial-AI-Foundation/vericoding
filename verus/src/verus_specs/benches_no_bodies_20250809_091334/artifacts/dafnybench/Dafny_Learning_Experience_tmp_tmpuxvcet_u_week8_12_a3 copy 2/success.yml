@@ -1,0 +1,51 @@
+num_iterations: 9
+success: false
+verification_error: "warning: cannot use external trait core::default::Default as\
+  \ a bound without declaring the trait (use #[verifier::external_trait_specification]\
+  \ to declare the trait); this is a warning for now but will eventually be an error\n\
+  \  --> /tmp/tmp3sgizjrp.rs:17:14\n   |\n17 |         spec fn valid(&self) -> bool\
+  \ {\n   |              ^^^^^^^^^^^^^^^^^^^^^^^\n\nwarning: cannot use external trait\
+  \ core::default::Default as a bound without declaring the trait (use #[verifier::external_trait_specification]\
+  \ to declare the trait); this is a warning for now but will eventually be an error\n\
+  \  --> /tmp/tmp3sgizjrp.rs:24:9\n   |\n24 |         fn new(n: usize) -> (result:\
+  \ Self)\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nwarning: cannot use external\
+  \ trait core::default::Default as a bound without declaring the trait (use #[verifier::external_trait_specification]\
+  \ to declare the trait); this is a warning for now but will eventually be an error\n\
+  \  --> /tmp/tmp3sgizjrp.rs:52:9\n   |\n52 |         fn push1(&mut self, element:\
+  \ T) -> (full_status: bool)\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nwarning: cannot use external trait core::default::Default as a bound without declaring\
+  \ the trait (use #[verifier::external_trait_specification] to declare the trait);\
+  \ this is a warning for now but will eventually be an error\n  --> /tmp/tmp3sgizjrp.rs:71:9\n\
+  \   |\n71 |         fn push2(&mut self, element: T) -> (full_status: bool)\n   |\
+  \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nwarning: cannot\
+  \ use external trait core::default::Default as a bound without declaring the trait\
+  \ (use #[verifier::external_trait_specification] to declare the trait); this is\
+  \ a warning for now but will eventually be an error\n  --> /tmp/tmp3sgizjrp.rs:91:9\n\
+  \   |\n91 |         fn pop1(&mut self) -> (result: (bool, T))\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nwarning: cannot use external trait core::default::Default as a bound without declaring\
+  \ the trait (use #[verifier::external_trait_specification] to declare the trait);\
+  \ this is a warning for now but will eventually be an error\n   --> /tmp/tmp3sgizjrp.rs:111:9\n\
+  \    |\n111 |         fn pop2(&mut self) -> (result: (bool, T))\n    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nwarning: cannot use external trait core::default::Default as a bound without declaring\
+  \ the trait (use #[verifier::external_trait_specification] to declare the trait);\
+  \ this is a warning for now but will eventually be an error\n   --> /tmp/tmp3sgizjrp.rs:131:9\n\
+  \    |\n131 |         fn peek1(&self) -> (result: (bool, T))\n    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nwarning: cannot use external trait core::default::Default as a bound without declaring\
+  \ the trait (use #[verifier::external_trait_specification] to declare the trait);\
+  \ this is a warning for now but will eventually be an error\n   --> /tmp/tmp3sgizjrp.rs:144:9\n\
+  \    |\n144 |         fn peek2(&self) -> (result: (bool, T))\n    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nwarning: cannot use external trait core::default::Default as a bound without declaring\
+  \ the trait (use #[verifier::external_trait_specification] to declare the trait);\
+  \ this is a warning for now but will eventually be an error\n   --> /tmp/tmp3sgizjrp.rs:157:14\n\
+  \    |\n157 |         spec fn empty1(&self) -> bool {\n    |              ^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nwarning: cannot use external trait core::default::Default as a bound without declaring\
+  \ the trait (use #[verifier::external_trait_specification] to declare the trait);\
+  \ this is a warning for now but will eventually be an error\n   --> /tmp/tmp3sgizjrp.rs:161:14\n\
+  \    |\n161 |         spec fn empty2(&self) -> bool {\n    |              ^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: `core::default::Default::default` is not supported (note: you may be able\
+  \ to add a Verus specification to this function with `assume_specification`) (note:\
+  \ the vstd library provides some specification for the Rust std library, but it\
+  \ is currently limited)\n  --> /tmp/tmp3sgizjrp.rs:38:27\n   |\n38 |           \
+  \      data.push(T::default());\n   |                           ^^^^^^^^^^^^\n\n\
+  error: aborting due to 1 previous error; 10 warnings emitted\n\n"
+verification_output: ''
