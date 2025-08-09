@@ -32,16 +32,21 @@ def save_iteration_code(
         iteration_file_name = f"{base_name}_iter_{iteration}_{phase}{config.language_config.file_extension}"
 
         relative_dir = relative_path.parent
-        output_subdir = (
-            Path(config.output_dir) / relative_dir
+        # Save debug files in a separate 'debug' subdirectory
+        debug_output_subdir = (
+            Path(config.output_dir) / "debug" / relative_dir
             if str(relative_dir) != "."
-            else Path(config.output_dir)
+            else Path(config.output_dir) / "debug"
         )
 
         with _file_write_lock:
-            output_subdir.mkdir(parents=True, exist_ok=True)
-            iteration_path = output_subdir / iteration_file_name
+            debug_output_subdir.mkdir(parents=True, exist_ok=True)
+            iteration_path = debug_output_subdir / iteration_file_name
             with iteration_path.open("w") as f:
                 f.write(code)
 
-        logger.info(f"    💾 Saved {phase} code to: {iteration_file_name}")
+        logger.info(
+            f"    💾 Saved {phase} code to: debug/{relative_dir}/{iteration_file_name}"
+            if str(relative_dir) != "."
+            else f"    💾 Saved {phase} code to: debug/{iteration_file_name}"
+        )
