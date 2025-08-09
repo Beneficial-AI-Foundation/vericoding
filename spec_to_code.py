@@ -296,7 +296,7 @@ def main():
     print("Processing each file by generating code from specifications.")
     if config.debug_mode:
         print(
-            "DEBUG MODE: Saves code after each iteration to separate files for analysis."
+            "DEBUG MODE: Saves code after each iteration to debug/ subdirectory for analysis."
         )
     else:
         print("NORMAL MODE: Saves only final implementation files.")
@@ -366,7 +366,7 @@ def main():
     print(f"Average time per file: {processing_time / len(results):.2f} seconds")
     if config.debug_mode:
         print(
-            "DEBUG: Files saved: original, generated, current per iteration, and final implementation"
+            "DEBUG: Debug files saved in debug/ subdirectory (original, generated, current per iteration), final implementation in main output directory"
         )
     else:
         print("NORMAL: Only final implementation files saved")
