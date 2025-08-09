@@ -1,0 +1,95 @@
+=== VERUS SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===
+
+Language: Verus
+LLM Provider: claude
+LLM Model: default
+Test directory: verus/src/verus_specs/vericoding_dafny_to_verus_specs
+Output directory: /home/lacra/git_repos/vericoding/verus/src/code_from_spec_on_09-08_06h57/verus/verus_specs/vericoding_dafny_to_verus_specs
+Max iterations: 5
+Parallel workers: 8
+Test date: 2025-08-09T07:01:34.338172
+
+Total original files: 49
+
+=== OVERALL STATISTICS ===
+Total successful: 43
+Total failed: 6
+Success rate: 87.8%
+
+=== SUCCESS RATE BY SUBFOLDER ===
+bignum_specs:
+  Successful: 7
+  Failed: 1
+  Total: 8
+  Success rate: 87.5%
+
+numpy_specs:
+  Successful: 36
+  Failed: 5
+  Total: 41
+  Success rate: 87.8%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ numpy_specs/np_copy.rs -> np_copy_impl.rs
+✓ numpy_specs/np_prod.rs -> np_prod_impl.rs
+✓ numpy_specs/np_invert.rs -> np_invert_impl.rs
+✓ numpy_specs/np_sum.rs -> np_sum_impl.rs
+✓ numpy_specs/np_multiply.rs -> np_multiply_impl.rs
+✓ numpy_specs/np_right_shift.rs -> np_right_shift_impl.rs
+✓ numpy_specs/np_equal.rs -> np_equal_impl.rs
+✓ numpy_specs/np_max.rs -> np_max_impl.rs
+✓ numpy_specs/np_greater.rs -> np_greater_impl.rs
+✓ numpy_specs/np_min.rs -> np_min_impl.rs
+✓ numpy_specs/np_tril.rs -> np_tril_impl.rs
+✓ numpy_specs/np_square.rs -> np_square_impl.rs
+✓ numpy_specs/np_column_stack.rs -> np_column_stack_impl.rs
+✓ numpy_specs/np_histogram.rs -> np_histogram_impl.rs
+✓ numpy_specs/np_floor_divide.rs -> np_floor_divide_impl.rs
+✓ numpy_specs/np_power.rs -> np_power_impl.rs
+✓ numpy_specs/np_cum_sum.rs -> np_cum_sum_impl.rs
+✓ numpy_specs/np_less_equal.rs -> np_less_equal_impl.rs
+✓ numpy_specs/np_countnonzero.rs -> np_countnonzero_impl.rs
+✓ numpy_specs/np_remainder.rs -> np_remainder_impl.rs
+✓ numpy_specs/np_convolve.rs -> np_convolve_impl.rs
+✓ numpy_specs/np_mod.rs -> np_mod_impl.rs
+✓ numpy_specs/np_left_shift.rs -> np_left_shift_impl.rs
+✓ numpy_specs/np_flatten.rs -> np_flatten_impl.rs
+✓ numpy_specs/np_less.rs -> np_less_impl.rs
+✓ numpy_specs/np_isclose.rs -> np_isclose_impl.rs
+✓ numpy_specs/np_greater_equal.rs -> np_greater_equal_impl.rs
+✓ numpy_specs/np_add.rs -> np_add_impl.rs
+✓ numpy_specs/np_not_equal.rs -> np_not_equal_impl.rs
+✓ numpy_specs/np_bitwise_and.rs -> np_bitwise_and_impl.rs
+✓ numpy_specs/np_ravel.rs -> np_ravel_impl.rs
+✓ numpy_specs/np_bitwise_or.rs -> np_bitwise_or_impl.rs
+✓ numpy_specs/np_argmax.rs -> np_argmax_impl.rs
+✓ numpy_specs/np_cum_prod.rs -> np_cum_prod_impl.rs
+✓ numpy_specs/np_uniqueall.rs -> np_uniqueall_impl.rs
+✓ numpy_specs/np_substract.rs -> np_substract_impl.rs
+✓ bignum_specs/bn_spec_4_BitStringDecomposition_atoms_11_40_46.rs -> bn_spec_4_BitStringDecomposition_atoms_11_40_46_impl.rs
+✓ bignum_specs/bn_spec_5_Bound_atoms_11_40.rs -> bn_spec_5_Bound_atoms_11_40_impl.rs
+✓ bignum_specs/bn_spec_30_NormalizeBitString_atoms_11_40_41_46.rs -> bn_spec_30_NormalizeBitString_atoms_11_40_41_46_impl.rs
+✓ bignum_specs/bn_spec_1_Add_atoms_2_11_40_41_46.rs -> bn_spec_1_Add_atoms_2_11_40_41_46_impl.rs
+✓ bignum_specs/bn_spec_41_Str2IntLemma_atoms_11_40_46.rs -> bn_spec_41_Str2IntLemma_atoms_11_40_46_impl.rs
+✓ bignum_specs/bn_spec_2_AddAuxTop_atoms_11_31-35_40_46.rs -> bn_spec_2_AddAuxTop_atoms_11_31-35_40_46_impl.rs
+✓ bignum_specs/bn_spec_40_Str2Int_atoms_11_46.rs -> bn_spec_40_Str2Int_atoms_11_46_impl.rs
+
+=== FAILED FILES (VERIFICATION) ===
+✗ numpy_specs/np_polyder.rs
+✗ numpy_specs/np_gcd.rs
+✗ numpy_specs/np_poly.rs
+✗ numpy_specs/np_lcm.rs
+✗ numpy_specs/np_isalpha.rs
+✗ bignum_specs/bn_spec_7_Compare_atoms_11_40_46.rs
+
+=== PARALLEL PROCESSING FEATURES ===
+Parallel workers: 8
+API rate limiting: 1s between calls
+Debug mode: Disabled
+- Saves only final implementation as *_impl.rs
+- No intermediate files saved (debug mode disabled)
+
+- Debug mode control: Disabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-08-09T07:01:34.338523
