@@ -1,0 +1,50 @@
+All the files in this directory come from the Algorithm/Rust project.
+https://github.com/TheAlgorithms/Rust
+The original programs all have test cases. 
+Most/all of those test cases are suitable for run-time assert, not for verification and hence are removed.
+
+1. sudoku
+https://github.com/TheAlgorithms/Rust/blob/master/src/backtracking/sudoku.rs
+Some interprocedural specifications and loop invariants are needed to prove that it has no arithmetic over/downflow and no buffer overflow.
+
+2. all_combination_of_size_k
+https://github.com/TheAlgorithms/Rust/blob/master/src/backtracking/all_combination_of_size_k.rs
+It actually contains arithmetic over/downflow.
+I need to add pre-condition to its gate function to get rid of overf/downflow.
+Some interprocedural specifications and loop invariants are needed.
+
+3. permutations
+https://github.com/TheAlgorithms/Rust/blob/master/src/backtracking/permutations.rs
+* Arithmetic under/overflow
+None, no need to add spec/invariants.
+* Buffer under/overflow
+None. Require just a little spec (1 function pre, post condition; and one loop invariant)
+
+4. another_rot13
+https://github.com/TheAlgorithms/Rust/blob/master/src/ciphers/another_rot13.rs
+The conversion is difficult due to Verus' limited support to Rust std::String
+* Arithmetic under/overflow
+None, no need
+* Buffer under/overflow
+Require a little bit of spec, inter-proc and loop
+
+5. n_queens_vecvec
+https://github.com/TheAlgorithms/Rust/blob/master/src/backtracking/n_queens.rs
+There is no easy way to implement board[row][col] = c under Verus at this point.
+So, a Verus-external setBoard function is made.
+* Arithmetic under/overflow
+Yes. I think there is indeed overflow.
+If the external facing function n_queens_solver contains a bound to "n", overflow would disappear.
+And, the proof of that would need some (simple) inter-procedural spec.
+* Buffer under/overflow
+No. The proof of which requires a lot of spec and invariants, as it involves two-dimensional array bound checking.
+
+6. n_queens_vec
+https://github.com/TheAlgorithms/Rust/blob/master/src/backtracking/n_queens.rs
+This is a rather ugly one-dimensional vector implmentation of the original Vec<vec> n-queen solution.
+* Arithmetic under/overflow
+Yes due to my use of flatterned one-d vector with size n*n.
+A lot of non-linear arith is needed as a result for the verification
+simple inter-procedural
+* buffer under/overflow
+none. some simple interproc spec needed

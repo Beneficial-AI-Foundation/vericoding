@@ -1,0 +1,66 @@
+num_iterations: 10
+success: false
+verification_error: "error: invalid suffix `nat` for number literal\n  --> /tmp/tmpfjp8134j.rs:67:21\n\
+  \   |\n67 |             let i = 0nat;\n   |                     ^^^^ invalid suffix\
+  \ `nat`\n   |\n   = help: the suffix must be one of the numeric types (`u32`, `isize`,\
+  \ `f32`, etc.)\n\nerror: invalid suffix `nat` for number literal\n  --> /tmp/tmpfjp8134j.rs:72:21\n\
+  \   |\n72 |             let i = 0nat;\n   |                     ^^^^ invalid suffix\
+  \ `nat`\n   |\n   = help: the suffix must be one of the numeric types (`u32`, `isize`,\
+  \ `f32`, etc.)\n\nerror[E0308]: mismatched types\n  --> /tmp/tmpfjp8134j.rs:65:26\n\
+  \   |\n65 |         if str2.len() == 0 {\n   |            ----------    ^ expected\
+  \ `nat`, found integer\n   |            |\n   |            expected because this\
+  \ is `builtin::nat`\n\nerror[E0308]: mismatched types\n  --> /tmp/tmpfjp8134j.rs:77:38\n\
+  \   |\n77 |             let mut i = str2.len() - 1;\n   |                      \
+  \   ----------   ^ expected `nat`, found integer\n   |                         |\n\
+  \   |                         expected because this is `builtin::nat`\n\nerror[E0308]:\
+  \ mismatched types\n  --> /tmp/tmpfjp8134j.rs:82:66\n   |\n82 |                \
+  \ assert(outter_inv_correctness(str1, str2, false, str2.len() - 1));\n   |     \
+  \                   ----------------------                    ^^^^^^^^^^^^^^ expected\
+  \ `nat`, found `int`\n   |                        |\n   |                      \
+  \  arguments to this function are incorrect\n   |\nnote: function defined here\n\
+  \  --> /tmp/tmpfjp8134j.rs:19:13\n   |\n19 |     spec fn outter_inv_correctness(str1:\
+  \ Seq<char>, str2: Seq<char>, found: bool, i: nat) -> bool {\n   |             ^^^^^^^^^^^^^^^^^^^^^^\
+  \                                                ------\n\nerror[E0308]: mismatched\
+  \ types\n   --> /tmp/tmpfjp8134j.rs:123:70\n    |\n123 | ...                   assert(inner_inv_termination(str1,\
+  \ str2, i - 1, j - 1, old_i, old_j));\n    |                              ---------------------\
+  \             ^^^^^ expected `nat`, found `int`\n    |                         \
+  \     |\n    |                              arguments to this function are incorrect\n\
+  \    |\nnote: function defined here\n   --> /tmp/tmpfjp8134j.rs:38:13\n    |\n38\
+  \  |     spec fn inner_inv_termination(str1: Seq<char>, str2: Seq<char>, i: nat,\
+  \ j: int, old_i: nat, old_j: int) -> bool {\n    |             ^^^^^^^^^^^^^^^^^^^^^\
+  \                                   ------\n\nerror[E0308]: mismatched types\n \
+  \  --> /tmp/tmpfjp8134j.rs:124:70\n    |\n124 | ...                   assert(inner_inv_correctness(str1,\
+  \ str2, i - 1, j - 1, found));\n    |                              ---------------------\
+  \             ^^^^^ expected `nat`, found `int`\n    |                         \
+  \     |\n    |                              arguments to this function are incorrect\n\
+  \    |\nnote: function defined here\n   --> /tmp/tmpfjp8134j.rs:28:13\n    |\n28\
+  \  |     spec fn inner_inv_correctness(str1: Seq<char>, str2: Seq<char>, i: nat,\
+  \ j: int, found: bool) -> bool {\n    |             ^^^^^^^^^^^^^^^^^^^^^      \
+  \                             ------\n\nerror[E0308]: mismatched types\n   --> /tmp/tmpfjp8134j.rs:125:33\n\
+  \    |\n77  |             let mut i = str2.len() - 1;\n    |                   \
+  \      -------------- expected due to this value\n...\n125 |                   \
+  \          i = i - 1;\n    |                                 ^^^^^ expected `nat`,\
+  \ found `int`\n\nerror[E0308]: mismatched types\n   --> /tmp/tmpfjp8134j.rs:152:74\n\
+  \    |\n152 |                         assert(outter_inv_correctness(str1, str2,\
+  \ found, i + str2.len() - j));\n    |                                ----------------------\
+  \                    ^^^^^^^^^^^^^^^^^^ expected `nat`, found `int`\n    |     \
+  \                           |\n    |                                arguments to\
+  \ this function are incorrect\n    |\nnote: function defined here\n   --> /tmp/tmpfjp8134j.rs:19:13\n\
+  \    |\n19  |     spec fn outter_inv_correctness(str1: Seq<char>, str2: Seq<char>,\
+  \ found: bool, i: nat) -> bool {\n    |             ^^^^^^^^^^^^^^^^^^^^^^     \
+  \                                           ------\n\nerror[E0308]: mismatched types\n\
+  \   --> /tmp/tmpfjp8134j.rs:155:42\n    |\n155 |                     i = i + str2.len()\
+  \ - j;\n    |                         --------------   ^ expected `nat`, found `int`\n\
+  \    |                         |\n    |                         expected because\
+  \ this is `builtin::nat`\n\nerror[E0277]: `builtin::nat` doesn't implement `std::fmt::Display`\n\
+  \   --> /tmp/tmpfjp8134j.rs:212:49\n    |\n212 |         println!(\"Found: {}, Index:\
+  \ {}\", found, i);\n    |                                                 ^ `builtin::nat`\
+  \ cannot be formatted with the default formatter\n    |\n    = help: the trait `std::fmt::Display`\
+  \ is not implemented for `builtin::nat`\n    = note: in format strings you may be\
+  \ able to use `{:?}` (or {:#?} for pretty-print) instead\n    = note: this error\
+  \ originates in the macro `$crate::format_args_nl` which comes from the expansion\
+  \ of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more\
+  \ info)\n\nerror: aborting due to 11 previous errors\n\nSome errors have detailed\
+  \ explanations: E0277, E0308.\nFor more information about an error, try `rustc --explain\
+  \ E0277`.\n"
+verification_output: ''

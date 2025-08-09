@@ -1,0 +1,94 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn count_frequency_spec(seq: Seq<i64>, key: i64) -> (result:int)
+    decreases seq.len(),
+{
+    if seq.len() == 0 {
+        0
+    } else {
+        count_frequency_spec(seq.drop_last(), key) + if (seq.last() == key) {
+            1 as int
+        } else {
+            0 as int
+        }
+    }
+}
+// pure-end
+
+fn count_frequency(elements: &Vec<i64>, key: i64) -> (frequency: usize)
+    // post-conditions-start
+    ensures
+        count_frequency_spec(elements@, key) == frequency,
+    // post-conditions-end
+{
+    let mut count = 0usize;
+    let mut i = 0usize;
+    
+    while i < elements.len()
+        invariant
+            i <= elements.len(),
+            count == count_frequency_spec(elements@.subrange(0, i as int), key),
+        /* code modified by LLM (iteration 1): added decreases clause for loop termination */
+        decreases elements.len() - i,
+    {
+        if elements[i] == key {
+            count = count + 1;
+        }
+        i = i + 1;
+    }
+    
+    proof {
+        /* code modified by LLM (iteration 1): cast nat to int for subrange method */
+        assert(elements@.subrange(0, elements@.len() as int) =~= elements@);
+        lemma_count_frequency_spec_subrange_to_full(elements@, key);
+    }
+    
+    count
+}
+
+proof fn lemma_count_frequency_spec_subrange_to_full(seq: Seq<i64>, key: i64)
+    /* code modified by LLM (iteration 1): cast nat to int for subrange method */
+    ensures count_frequency_spec(seq, key) == count_frequency_spec(seq.subrange(0, seq.len() as int), key)
+    decreases seq.len()
+{
+    if seq.len() == 0 {
+    } else {
+        lemma_count_frequency_spec_subrange_to_full(seq.drop_last(), key);
+    }
+}
+
+fn remove_duplicates(numbers: &Vec<i64>) -> (unique_numbers: Vec<i64>)
+    // post-conditions-start
+    ensures
+        unique_numbers@ == numbers@.filter(|x: i64| count_frequency_spec(numbers@, x) == 1),
+    // post-conditions-end
+{
+    let mut result = Vec::new();
+    let mut i = 0usize;
+    
+    while i < numbers.len()
+        invariant
+            i <= numbers.len(),
+            result@ == numbers@.subrange(0, i as int).filter(|x: i64| count_frequency_spec(numbers@, x) == 1),
+        /* code modified by LLM (iteration 1): added decreases clause for loop termination */
+        decreases numbers.len() - i,
+    {
+        let freq = count_frequency(numbers, numbers[i]);
+        if freq == 1 {
+            result.push(numbers[i]);
+        }
+        i = i + 1;
+    }
+    
+    proof {
+        /* code modified by LLM (iteration 1): cast nat to int for subrange method */
+        assert(numbers@.subrange(0, numbers@.len() as int) =~= numbers@);
+    }
+    
+    result
+}
+
+} // verus!
+fn main() {}

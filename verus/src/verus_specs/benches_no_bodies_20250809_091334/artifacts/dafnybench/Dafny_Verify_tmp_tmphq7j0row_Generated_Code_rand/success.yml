@@ -1,0 +1,16 @@
+num_iterations: 18
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmp7ml9lr0t.rs:12:9\n   |\n12 |         while x > 0\n   |\
+  \         ^^^^^^^^^^^\n\nerror: invariant not satisfied at end of loop body\n  -->\
+  \ /tmp/tmp7ml9lr0t.rs:17:17\n   |\n17 |                 y == 0 || z >= y,\n   |\
+  \                 ^^^^^^^^^^^^^^^^\n\nerror: invariant not satisfied before loop\n\
+  \  --> /tmp/tmp7ml9lr0t.rs:17:17\n   |\n17 |                 y == 0 || z >= y,\n\
+  \   |                 ^^^^^^^^^^^^^^^^\n\nerror: assertion failed\n  --> /tmp/tmp7ml9lr0t.rs:32:24\n\
+  \   |\n32 |                 assert((x as int - 1) * (y as int) == (x as int) * (y\
+  \ as int) - (y as int));\n   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ assertion failed\n\nerror: aborting due to 3 previous errors\n\n"
+verification_output: 'verification results:: 0 verified, 2 errors
+
+  '

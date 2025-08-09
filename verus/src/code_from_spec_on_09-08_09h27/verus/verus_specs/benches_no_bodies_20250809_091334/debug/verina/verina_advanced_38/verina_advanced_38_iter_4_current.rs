@@ -1,0 +1,1 @@
+intervals.set(i, intervals[min_idx]);

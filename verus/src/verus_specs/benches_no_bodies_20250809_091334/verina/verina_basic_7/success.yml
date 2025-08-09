@@ -1,0 +1,13 @@
+num_iterations: 15
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmpt4qn_j6d.rs:27:5\n   |\n27 |     while k > 0\n   |   \
+  \  ^^^^^^^^^^^\n\nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmpt4qn_j6d.rs:34:23\n\
+  \   |\n34 |         let odd_num = 2 * k - 1;\n   |                       ^^^^^\n\
+  \nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmpt4qn_j6d.rs:34:23\n\
+  \   |\n34 |         let odd_num = 2 * k - 1;\n   |                       ^^^^^^^^^\n\
+  \nerror: aborting due to 2 previous errors\n\n"
+verification_output: 'verification results:: 3 verified, 1 errors
+
+  '

@@ -1,0 +1,13 @@
+num_iterations: 20
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmpo_n83jrk.rs:12:9\n   |\n12 |         while i < n\n   |\
+  \         ^^^^^^^^^^^\n\nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmpo_n83jrk.rs:27:17\n\
+  \   |\n27 |             r = r + x;\n   |                 ^^^^^\n\nerror: possible\
+  \ arithmetic underflow/overflow\n  --> /tmp/tmpo_n83jrk.rs:29:17\n   |\n29 |   \
+  \          x = x + 2;\n   |                 ^^^^^\n\nerror: aborting due to 2 previous\
+  \ errors\n\n"
+verification_output: 'verification results:: 2 verified, 1 errors
+
+  '

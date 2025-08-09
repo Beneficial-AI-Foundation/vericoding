@@ -1,0 +1,6 @@
+num_iterations: 15
+success: false
+verification_error: "error: expected curly braces\n  --> /tmp/tmp5j5k_5qq.rs:75:9\n\
+  \   |\n75 |         ensures \n   |         ^^^^^^^\n\nerror: aborting due to 1 previous\
+  \ error\n\n"
+verification_output: ''

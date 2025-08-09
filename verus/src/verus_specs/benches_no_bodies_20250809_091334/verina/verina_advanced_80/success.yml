@@ -1,0 +1,11 @@
+num_iterations: 4
+success: true
+verification_error: "warning: verifier mode attribute has no effect because item is\
+  \ already marked external\n   --> /tmp/tmpzrt_te5i.rs:104:7\n    |\n104 |   proof\
+  \ fn two_sum_spec_satisfied(nums: Seq<i32>, target: i32)\n    |  _______^\n105 |\
+  \ |     requires two_sum_precond(nums, target)\n106 | |     ensures \n107 | |  \
+  \       forall|result: Seq<usize>| \n...   |\n112 | | }\n    | |_^\n\nwarning: 1\
+  \ warning emitted\n\n"
+verification_output: 'verification results:: 4 verified, 0 errors
+
+  '

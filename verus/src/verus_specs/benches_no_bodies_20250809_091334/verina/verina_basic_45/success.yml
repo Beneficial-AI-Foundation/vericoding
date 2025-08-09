@@ -1,0 +1,17 @@
+num_iterations: 16
+success: false
+verification_error: "note: function body check: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmpovmlxk4x.rs:83:1\n   |\n83 | fn find_product(lst:\
+  \ &Vec<i32>) -> (result: i32)  \n   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: postcondition not satisfied\n  --> /tmp/tmpovmlxk4x.rs:87:13\n   |\n87\
+  \ |       ensures find_product_postcond(lst, result)\n   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n88 |   {\n89 | /     match first_even_odd_indices(lst)\
+  \ {\n90 | |         Some((ei, oi)) => lst[ei] * lst[oi],\n91 | |         None =>\
+  \ 0,\n92 | |     }\n   | |_____- at the end of the function body\n\nerror: possible\
+  \ arithmetic underflow/overflow\n  --> /tmp/tmpovmlxk4x.rs:90:27\n   |\n90 |   \
+  \      Some((ei, oi)) => lst[ei] * lst[oi],\n   |                           ^^^^^^^^^^^^^^^^^\n\
+  \nerror: aborting due to 2 previous errors\n\n"
+verification_output: 'verification results:: 5 verified, 1 errors
+
+  '

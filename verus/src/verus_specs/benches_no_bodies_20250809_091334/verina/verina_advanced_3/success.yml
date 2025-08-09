@@ -1,0 +1,15 @@
+num_iterations: 9
+success: false
+verification_error: "error: postcondition not satisfied\n  --> /tmp/tmpyz6t00za.rs:28:13\n\
+  \   |\n28 |     ensures longest_common_subsequence_postcond(a@, b@, result as int),\n\
+  \   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed\
+  \ this postcondition\n...\n90 |     prev[n]\n   |     ------- at the end of the\
+  \ function body\n\nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmpyz6t00za.rs:45:9\n\
+  \   |\n45 |         k += 1;\n   |         ^^^^^^\n\nerror: possible arithmetic underflow/overflow\n\
+  \  --> /tmp/tmpyz6t00za.rs:65:13\n   |\n65 |             l += 1;\n   |         \
+  \    ^^^^^^\n\nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmpyz6t00za.rs:78:27\n\
+  \   |\n78 |                 curr[j] = prev[j - 1] + 1;\n   |                   \
+  \        ^^^^^^^^^^^^^^^\n\nerror: aborting due to 4 previous errors\n\n"
+verification_output: 'verification results:: 2 verified, 4 errors
+
+  '

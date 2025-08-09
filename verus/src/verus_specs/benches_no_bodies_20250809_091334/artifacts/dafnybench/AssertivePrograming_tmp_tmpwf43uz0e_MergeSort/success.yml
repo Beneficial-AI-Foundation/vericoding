@@ -1,0 +1,77 @@
+num_iterations: 10
+success: false
+verification_error: "note: function body check: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmptk7yjtyh.rs:82:5\n   |\n82 |     fn merge(c: Vec<i32>,\
+  \ d: Vec<i32>) -> (b: Vec<i32>)\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: postcondition not satisfied\n   --> /tmp/tmptk7yjtyh.rs:87:13\n    |\n\
+  87  |             sorted(b@),\n    |             ^^^^^^^^^^ failed this postcondition\n\
+  ...\n124 |         b\n    |         - at the end of the function body\n\nerror:\
+  \ postcondition not satisfied\n   --> /tmp/tmptk7yjtyh.rs:88:13\n    |\n88  |  \
+  \           b@.to_multiset() == c@.to_multiset().add(d@.to_multiset()),\n    | \
+  \            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this\
+  \ postcondition\n...\n124 |         b\n    |         - at the end of the function\
+  \ body\n\nerror: postcondition not satisfied\n  --> /tmp/tmptk7yjtyh.rs:29:13\n\
+  \   |\n29 |               a@.to_multiset() == b@.to_multiset()\n   |           \
+  \    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition\n...\n32 | /\
+  \         if a.len() <= 1 {\n33 | |             a\n34 | |         } else {\n35 |\
+  \ |             let mid: usize = a.len() / 2;\n...  |\n73 | |             merge(sorted_a1,\
+  \ sorted_a2)\n74 | |         }\n   | |_________- at the end of the function body\n\
+  \nnote: function body check: not all errors may have been reported; rerun with a\
+  \ higher value for --multiple-errors to find other potential errors in this function\n\
+  \   --> /tmp/tmptk7yjtyh.rs:157:11\n    |\n157 |     proof fn lemma_inv_subset_take_value_from_c(b:\
+  \ Seq<i32>, c: Seq<i32>, d: Seq<i32>, i: int, j: int)\n    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote: recommendation not met\n   --> /tmp/tmptk7yjtyh.rs:163:13\n    |\n163 |\
+  \             b.subrange(0, i+j).to_multiset() == c.subrange(0, i).to_multiset().add(d.subrange(0,\
+  \ j).to_multiset()),\n    |             ^^^^^^^^^^^^^^^^^^\n    |\n   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37\n\
+  \    |\n116 |             0 <= start_inclusive <= end_exclusive <= self.len(),\n\
+  \    |                                     ------------- recommendation not met\n\
+  \nnote: recommendation not met\n   --> /tmp/tmptk7yjtyh.rs:163:49\n    |\n163 |\
+  \             b.subrange(0, i+j).to_multiset() == c.subrange(0, i).to_multiset().add(d.subrange(0,\
+  \ j).to_multiset()),\n    |                                                 ^^^^^^^^^^^^^^^^\n\
+  \    |\n   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37\n\
+  \    |\n116 |             0 <= start_inclusive <= end_exclusive <= self.len(),\n\
+  \    |                                     ------------- recommendation not met\n\
+  \nnote: recommendation not met\n   --> /tmp/tmptk7yjtyh.rs:163:84\n    |\n163 |\
+  \             b.subrange(0, i+j).to_multiset() == c.subrange(0, i).to_multiset().add(d.subrange(0,\
+  \ j).to_multiset()),\n    |                                                    \
+  \                                ^^^^^^^^^^^^^^^^\n    |\n   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37\n\
+  \    |\n116 |             0 <= start_inclusive <= end_exclusive <= self.len(),\n\
+  \    |                                     ------------- recommendation not met\n\
+  \nerror: assertion failed\n   --> /tmp/tmptk7yjtyh.rs:167:16\n    |\n167 |     \
+  \    assert(c.subrange(0, i) + seq![c[i]] == c.subrange(0, i+1));\n    |       \
+  \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed\n\
+  \nerror: assertion failed\n   --> /tmp/tmptk7yjtyh.rs:168:16\n    |\n168 |     \
+  \    assert(b.subrange(0, i+j+1) == b.subrange(0, i+j) + seq![b[i+j]]);\n    | \
+  \               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion\
+  \ failed\n\nnote: function body check: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n   --> /tmp/tmptk7yjtyh.rs:172:11\n    |\n172 |     proof fn lemma_inv_subset_take_value_from_d(b:\
+  \ Seq<i32>, c: Seq<i32>, d: Seq<i32>, i: int, j: int)\n    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote: recommendation not met\n   --> /tmp/tmptk7yjtyh.rs:178:13\n    |\n178 |\
+  \             b.subrange(0, i+j).to_multiset() == c.subrange(0, i).to_multiset().add(d.subrange(0,\
+  \ j).to_multiset()),\n    |             ^^^^^^^^^^^^^^^^^^\n    |\n   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37\n\
+  \    |\n116 |             0 <= start_inclusive <= end_exclusive <= self.len(),\n\
+  \    |                                     ------------- recommendation not met\n\
+  \nnote: recommendation not met\n   --> /tmp/tmptk7yjtyh.rs:178:49\n    |\n178 |\
+  \             b.subrange(0, i+j).to_multiset() == c.subrange(0, i).to_multiset().add(d.subrange(0,\
+  \ j).to_multiset()),\n    |                                                 ^^^^^^^^^^^^^^^^\n\
+  \    |\n   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37\n\
+  \    |\n116 |             0 <= start_inclusive <= end_exclusive <= self.len(),\n\
+  \    |                                     ------------- recommendation not met\n\
+  \nnote: recommendation not met\n   --> /tmp/tmptk7yjtyh.rs:178:84\n    |\n178 |\
+  \             b.subrange(0, i+j).to_multiset() == c.subrange(0, i).to_multiset().add(d.subrange(0,\
+  \ j).to_multiset()),\n    |                                                    \
+  \                                ^^^^^^^^^^^^^^^^\n    |\n   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37\n\
+  \    |\n116 |             0 <= start_inclusive <= end_exclusive <= self.len(),\n\
+  \    |                                     ------------- recommendation not met\n\
+  \nerror: assertion failed\n   --> /tmp/tmptk7yjtyh.rs:182:16\n    |\n182 |     \
+  \    assert(d.subrange(0, j) + seq![d[j]] == d.subrange(0, j+1));\n    |       \
+  \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed\n\
+  \nerror: assertion failed\n   --> /tmp/tmptk7yjtyh.rs:183:16\n    |\n183 |     \
+  \    assert(b.subrange(0, i+j+1) == b.subrange(0, i+j) + seq![b[i+j]]);\n    | \
+  \               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion\
+  \ failed\n\nerror: aborting due to 7 previous errors\n\n"
+verification_output: 'verification results:: 5 verified, 4 errors
+
+  '

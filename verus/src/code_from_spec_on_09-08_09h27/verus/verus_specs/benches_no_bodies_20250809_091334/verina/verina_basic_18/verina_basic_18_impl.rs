@@ -1,0 +1,60 @@
+use vstd::prelude::*;
+
+verus! {
+
+// Specification for sum of digits of a natural number  
+spec fn spec_sum_of_digits(n: nat) -> nat
+    decreases n
+{
+    if n < 10 {
+        n
+    } else {
+        (n % 10) + spec_sum_of_digits(n / 10)
+    }
+}
+
+// Precondition (always true in this case, matching Lean's True)
+spec fn sum_of_digits_precond(n: nat) -> bool {
+    true
+}
+
+// Postcondition matching Lean's structure: result - expected = 0 ∧ expected - result = 0
+// This is equivalent to result = expected but matches the original form
+spec fn sum_of_digits_postcond(n: nat, result: nat) -> bool {
+    let expected = spec_sum_of_digits(n);
+    (result - expected == 0) && (expected - result == 0)
+}
+
+// Main function that computes sum of digits using a loop (matching Lean's recursive structure)
+fn sum_of_digits(n: u32) -> (result: u32)
+    requires sum_of_digits_precond(n as nat)
+    ensures sum_of_digits_postcond(n as nat, result as nat)
+{
+    let mut current = n;
+    let mut sum = 0u32;
+    
+    while current > 0
+        invariant 
+            sum as nat + spec_sum_of_digits(current as nat) == spec_sum_of_digits(n as nat),
+            current <= n
+        decreases current
+    {
+        let digit = current % 10;
+        sum = sum + digit;
+        current = current / 10;
+    }
+    
+    sum
+}
+
+// Theorem that the specification is satisfied (matching Lean's theorem structure with sorry)
+proof fn sum_of_digits_spec_satisfied(n: u32)
+    requires sum_of_digits_precond(n as nat)
+    ensures sum_of_digits_postcond(n as nat, spec_sum_of_digits(n as nat))
+{
+    /* code modified by LLM (iteration 1): Fixed mode compatibility by removing exec function call from proof context and using spec function directly in ensures clause */
+}
+
+} // verus!
+
+fn main() {}

@@ -1,0 +1,59 @@
+num_iterations: 6
+success: true
+verification_error: "note: automatically chose triggers for this expression:\n  -->\
+  \ /tmp/tmph0z6tlrs.rs:17:9\n   |\n17 |     &&& exists|i: int| 0 <= i < a.len() &&\
+  \ is_even(a[i])\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote:   trigger 1 of 1:\n  --> /tmp/tmph0z6tlrs.rs:17:52\n   |\n17 |     &&& exists|i:\
+  \ int| 0 <= i < a.len() && is_even(a[i])\n   |                                 \
+  \                   ^^^^\n\nnote: automatically chose triggers for this expression:\n\
+  \  --> /tmp/tmph0z6tlrs.rs:18:9\n   |\n18 |     &&& exists|i: int| 0 <= i < a.len()\
+  \ && is_odd(a[i])\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote:   trigger 1 of 1:\n  --> /tmp/tmph0z6tlrs.rs:18:51\n   |\n18 |     &&& exists|i:\
+  \ int| 0 <= i < a.len() && is_odd(a[i])\n   |                                  \
+  \                 ^^^^\n\nnote: automatically chose triggers for this expression:\n\
+  \  --> /tmp/tmph0z6tlrs.rs:23:5\n   |\n23 | /     exists|i: int, j: int| {\n24 |\
+  \ |         &&& 0 <= i < a.len()\n25 | |         &&& 0 <= j < a.len()\n26 | |  \
+  \       &&& is_even(a[i])\n...  |\n30 | |         &&& forall|k: int| #![auto] 0\
+  \ <= k < j ==> is_even(a[k])\n31 | |     }\n   | |_____^\n\nnote:   trigger 1 of\
+  \ 1:\n  --> /tmp/tmph0z6tlrs.rs:26:21\n   |\n26 |         &&& is_even(a[i])\n  \
+  \ |                     ^^^^\n27 |         &&& is_odd(a[j])\n   |              \
+  \      ^^^^\n\nnote: automatically chose triggers for this expression:\n  --> /tmp/tmph0z6tlrs.rs:92:16\n\
+  \   |\n92 |         assert(exists|i: int| 0 <= i < a.len() && is_even(a@[i]));\n\
+  \   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nnote:\
+  \   trigger 1 of 1:\n  --> /tmp/tmph0z6tlrs.rs:92:59\n   |\n92 |         assert(exists|i:\
+  \ int| 0 <= i < a.len() && is_even(a@[i]));\n   |                              \
+  \                             ^^^^^\n\nnote: automatically chose triggers for this\
+  \ expression:\n  --> /tmp/tmph0z6tlrs.rs:93:16\n   |\n93 |         assert(exists|i:\
+  \ int| 0 <= i < a.len() && is_odd(a@[i]));\n   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote:   trigger 1 of 1:\n  --> /tmp/tmph0z6tlrs.rs:93:58\n   |\n93 |         assert(exists|i:\
+  \ int| 0 <= i < a.len() && is_odd(a@[i]));\n   |                               \
+  \                           ^^^^^\n\nnote: automatically chose triggers for this\
+  \ expression:\n   --> /tmp/tmph0z6tlrs.rs:119:20\n    |\n119 |               assert(exists|i:\
+  \ int, j: int| {\n    |  ____________________^\n120 | |                 &&& 0 <=\
+  \ i < a.len()\n121 | |                 &&& 0 <= j < a.len()\n122 | |           \
+  \      &&& is_even(a@[i])\n...   |\n126 | |                 &&& forall|k: int| #![auto]\
+  \ 0 <= k < j ==> is_even(a@[k])\n127 | |             });\n    | |_____________^\n\
+  \nnote:   trigger 1 of 1:\n   --> /tmp/tmph0z6tlrs.rs:122:29\n    |\n122 |     \
+  \            &&& is_even(a@[i])\n    |                             ^^^^^\n123 |\
+  \                 &&& is_odd(a@[j])\n    |                            ^^^^^\n\n\
+  note: Verus printed one or more automatically chosen quantifier triggers\n     \
+  \ because it had low confidence in the chosen triggers.\n      To suppress these\
+  \ messages, do one of the following:\n        (1) manually annotate a single desired\
+  \ trigger using #[trigger]\n            (example: forall|i: int, j: int| f(i) &&\
+  \ #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired\
+  \ triggers using #![trigger ...]\n            (example: forall|i: int| #![trigger\
+  \ f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen\
+  \ trigger using #![auto]\n            (example: forall|i: int, j: int| #![auto]\
+  \ f(i) && g(i) && h(j))\n        (4) use the --triggers-silent command-line option\
+  \ to suppress all printing of triggers.\n      (Note: triggers are used by the underlying\
+  \ SMT theorem prover to instantiate quantifiers;\n      the theorem prover instantiates\
+  \ a quantifier whenever some expression matches the\n      pattern specified by\
+  \ one of the quantifier's triggers.)\n   --> /tmp/tmph0z6tlrs.rs:119:20\n    |\n\
+  119 |               assert(exists|i: int, j: int| {\n    |  ____________________^\n\
+  120 | |                 &&& 0 <= i < a.len()\n121 | |                 &&& 0 <= j\
+  \ < a.len()\n122 | |                 &&& is_even(a@[i])\n...   |\n126 | |      \
+  \           &&& forall|k: int| #![auto] 0 <= k < j ==> is_even(a@[k])\n127 | | \
+  \            });\n    | |_____________^\n\n"
+verification_output: 'verification results:: 6 verified, 0 errors
+
+  '

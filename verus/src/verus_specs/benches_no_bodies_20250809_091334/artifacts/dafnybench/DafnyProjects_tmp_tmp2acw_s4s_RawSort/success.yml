@@ -1,0 +1,66 @@
+num_iterations: 9
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmpr_ocy2a8.rs:35:13\n   |\n35 | /             for j in (i\
+  \ + 1)..a.len() {\n36 | |                 if a[i] > a[j] {\n37 | |             \
+  \        return Some((i, j));\n38 | |                 }\n39 | |             }\n\
+  \   | |_____________^\n\nerror: postcondition not satisfied\n  --> /tmp/tmpr_ocy2a8.rs:30:13\n\
+  \   |\n30 |             Some((i, j)) => 0 <= i < j < a.len() && a@[i as int] > a@[j\
+  \ as int],\n   |             ^^^^^^^^^^^^ failed this postcondition\n...\n37 | \
+  \                    return Some((i, j));\n   |                     -------------------\
+  \ at this exit\n\nerror: postcondition not satisfied\n  --> /tmp/tmpr_ocy2a8.rs:30:13\n\
+  \   |\n30 |             Some((i, j)) => 0 <= i < j < a.len() && a@[i as int] > a@[j\
+  \ as int],\n   |             ^^^^^^^^^^^^ failed this postcondition\n...\n41 | \
+  \        None\n   |         ---- at the end of the function body\n\nerror: precondition\
+  \ not satisfied\n  --> /tmp/tmpr_ocy2a8.rs:36:20\n   |\n36 |                 if\
+  \ a[i] > a[j] {\n   |                    ^^^^\n   |\n  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/std_specs/vec.rs:48:9\n\
+  \   |\n48 |         i < vec.view().len(),\n   |         -------------------- failed\
+  \ precondition\n\nnote: function body check: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmpr_ocy2a8.rs:84:11\n   |\n84 |     proof fn mappingProp<T1,\
+  \ T2>(a: Set<T1>, b: Set<T2>, k: T2, m: Map<T1, T2>)\n   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: postcondition not satisfied\n  --> /tmp/tmpr_ocy2a8.rs:89:17\n   |\n89\
+  \ |           ensures a.len() < b.len(),\n   |                   ^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n...\n92 | /         if exists|x: T1| a.contains(x)\
+  \ {\n93 | |             let x = choose|x: T1| a.contains(x);\n94 | |           \
+  \  mappingProp(a.remove(x), b.remove(m[x]), k, m);\n95 | |         }\n   | |_________-\
+  \ at the end of the function body\n\nerror: could not prove termination\n  --> /tmp/tmpr_ocy2a8.rs:94:13\n\
+  \   |\n94 |             mappingProp(a.remove(x), b.remove(m[x]), k, m);\n   |  \
+  \           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: postcondition\
+  \ not satisfied\n  --> /tmp/tmpr_ocy2a8.rs:49:13\n   |\n49 |               a@.to_multiset()\
+  \ == old(a)@.to_multiset(),\n   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n...\n52 | /         match find_inversion(a) {\n53 |\
+  \ |             Some((i, j)) => {\n54 | |                 let ghost bef = inversions(a@);\
+  \ // inversions before swapping\n...  |\n78 | |         }\n   | |_________- at the\
+  \ end of the function body\n\nnote: automatically chose triggers for this expression:\n\
+  \  --> /tmp/tmpr_ocy2a8.rs:87:13\n   |\n87 |             forall|x: T1| a.contains(x)\
+  \ ==> m.dom().contains(x) && b.remove(k).contains(m[x]),\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote:   trigger 1 of 1:\n  --> /tmp/tmpr_ocy2a8.rs:87:27\n   |\n87 |         \
+  \    forall|x: T1| a.contains(x) ==> m.dom().contains(x) && b.remove(k).contains(m[x]),\n\
+  \   |                           ^^^^^^^^^^^^^\n\nnote: automatically chose triggers\
+  \ for this expression:\n  --> /tmp/tmpr_ocy2a8.rs:88:13\n   |\n88 |            \
+  \ forall|x: T1, y: T1| a.contains(x) && a.contains(y) && x != y ==> m[x] != m[y],\n\
+  \   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote:   trigger 1 of 1:\n  --> /tmp/tmpr_ocy2a8.rs:88:34\n   |\n88 |         \
+  \    forall|x: T1, y: T1| a.contains(x) && a.contains(y) && x != y ==> m[x] != m[y],\n\
+  \   |                                  ^^^^^^^^^^^^^    ^^^^^^^^^^^^^\n\nnote: Verus\
+  \ printed one or more automatically chosen quantifier triggers\n      because it\
+  \ had low confidence in the chosen triggers.\n      To suppress these messages,\
+  \ do one of the following:\n        (1) manually annotate a single desired trigger\
+  \ using #[trigger]\n            (example: forall|i: int, j: int| f(i) && #[trigger]\
+  \ g(i) && #[trigger] h(j)),\n        (2) manually annotate multiple desired triggers\
+  \ using #![trigger ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger\
+  \ g(i)] f(i) && g(i)),\n        (3) accept the automatically chosen trigger using\
+  \ #![auto]\n            (example: forall|i: int, j: int| #![auto] f(i) && g(i) &&\
+  \ h(j))\n        (4) use the --triggers-silent command-line option to suppress all\
+  \ printing of triggers.\n      (Note: triggers are used by the underlying SMT theorem\
+  \ prover to instantiate quantifiers;\n      the theorem prover instantiates a quantifier\
+  \ whenever some expression matches the\n      pattern specified by one of the quantifier's\
+  \ triggers.)\n  --> /tmp/tmpr_ocy2a8.rs:88:13\n   |\n88 |             forall|x:\
+  \ T1, y: T1| a.contains(x) && a.contains(y) && x != y ==> m[x] != m[y],\n   |  \
+  \           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: aborting due to 6 previous errors\n\n"
+verification_output: 'verification results:: 1 verified, 4 errors
+
+  '

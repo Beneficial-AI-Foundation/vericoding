@@ -1,0 +1,17 @@
+num_iterations: 14
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmpns_npbns.rs:14:9\n   |\n14 |         while i <= p\n  \
+  \ |         ^^^^^^^^^^^^\n\nerror: invariant not satisfied at end of loop body\n\
+  \  --> /tmp/tmpns_npbns.rs:17:17\n   |\n17 |                 max < i,\n   |    \
+  \             ^^^^^^^\n\nerror: precondition not satisfied\n  --> /tmp/tmpns_npbns.rs:22:16\n\
+  \   |\n22 |             if v[i] > v[max] {\n   |                ^^^^\n   |\n  :::\
+  \ /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:62:14\n\
+  \   |\n62 |         0 <= i < slice.view().len(),\n   |              - failed precondition\n\
+  \nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmpns_npbns.rs:26:17\n\
+  \   |\n26 |             i = i + 1;\n   |                 ^^^^^\n\nerror: aborting\
+  \ due to 3 previous errors\n\n"
+verification_output: 'verification results:: 2 verified, 1 errors
+
+  '

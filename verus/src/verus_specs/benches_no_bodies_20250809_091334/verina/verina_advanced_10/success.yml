@@ -1,0 +1,20 @@
+num_iterations: 10
+success: false
+verification_error: "note: function body check: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmpt_z8gt01.rs:33:1\n   |\n33 | fn count_factor(n:\
+  \ u64, p: u64, count: u64) -> (u64, u64)\n   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: could not prove termination\n  --> /tmp/tmpt_z8gt01.rs:40:9\n   |\n40 |\
+  \         count_factor(n / p, p, count + 1)\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmpt_z8gt01.rs:40:32\n\
+  \   |\n40 |         count_factor(n / p, p, count + 1)\n   |                    \
+  \            ^^^^^^^^^\n\nerror: postcondition not satisfied\n  --> /tmp/tmpt_z8gt01.rs:67:13\n\
+  \   |\n67 |     ensures find_exponents_postcond(n as nat, primes@.map(|i: int, x:\
+  \ u64| x as nat), result@.map(|i: int, pair: (u64, u64)| (pair.0 as nat, pair.1\
+  \ as nat))),\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n68 | {\n69 |     count_factors(n, primes, 0)\n   |\
+  \     --------------------------- at the end of the function body\n\nerror: aborting\
+  \ due to 3 previous errors\n\n"
+verification_output: 'verification results:: 2 verified, 2 errors
+
+  '

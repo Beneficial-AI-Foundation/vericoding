@@ -1,0 +1,27 @@
+num_iterations: 10
+success: false
+verification_error: "warning: uninterpreted functions (`spec` functions defined without\
+  \ a body) need to be marked as `uninterp`\n         this will become a hard error\
+  \ in the future\n  --> /tmp/tmp8hhjl9r4.rs:16:9\n   |\n16 |         spec fn elements(self)\
+  \ -> Seq<T>;\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: postcondition\
+  \ not satisfied\n  --> /tmp/tmp8hhjl9r4.rs:33:17\n   |\n33 | /                 result.valid()\
+  \ && \n34 | |                 result.elements().len() == 0\n   | |____________________________________________^\
+  \ failed this postcondition\n35 |           {\n36 | /             ExtensibleArray\
+  \ {\n37 | |                 front: None,\n38 | |                 length: 0,\n39\
+  \ | |                 m: 0,\n40 | |             }\n   | |_____________- at the end\
+  \ of the function body\n\nnote: function body check: not all errors may have been\
+  \ reported; rerun with a higher value for --multiple-errors to find other potential\
+  \ errors in this function\n  --> /tmp/tmp8hhjl9r4.rs:44:9\n   |\n44 |         fn\
+  \ get(&self, i: usize) -> (result: T)\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: postcondition not satisfied\n  --> /tmp/tmp8hhjl9r4.rs:49:21\n   |\n49\
+  \ |             ensures result == self.elements()[i as int]\n   |              \
+  \       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition\n...\n52 |\
+  \             front_ref[i - self.m]\n   |             --------------------- at the\
+  \ end of the function body\n\nerror: precondition not satisfied\n  --> /tmp/tmp8hhjl9r4.rs:52:13\n\
+  \   |\n52 |             front_ref[i - self.m]\n   |             ^^^^^^^^^^^^^^^^^^^^^\n\
+  \   |\n  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/std_specs/vec.rs:48:9\n\
+  \   |\n48 |         i < vec.view().len(),\n   |         -------------------- failed\
+  \ precondition\n\nerror: aborting due to 3 previous errors; 1 warning emitted\n\n"
+verification_output: 'verification results:: 1 verified, 2 errors
+
+  '

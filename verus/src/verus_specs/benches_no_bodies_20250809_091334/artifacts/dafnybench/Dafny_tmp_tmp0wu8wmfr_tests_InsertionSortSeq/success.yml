@@ -1,0 +1,24 @@
+num_iterations: 21
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmpz3i9jg3k.rs:21:9\n   |\n21 |         while i < s.len()\n\
+  \   |         ^^^^^^^^^^^^^^^^^\n\nnote: function body check: not all errors may\
+  \ have been reported; rerun with a higher value for --multiple-errors to find other\
+  \ potential errors in this function\n  --> /tmp/tmpz3i9jg3k.rs:13:5\n   |\n13 |\
+  \     fn insertion_sort(s: &Vec<int>) -> (r: Vec<int>)\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: postcondition not satisfied\n  --> /tmp/tmpz3i9jg3k.rs:15:13\n   |\n15\
+  \ |             s@.to_multiset() == r@.to_multiset(),\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n...\n49 |         r\n   |         - at the end of the\
+  \ function body\n\nerror: invariant not satisfied at end of loop body\n  --> /tmp/tmpz3i9jg3k.rs:24:17\n\
+  \   |\n24 |                 s@.subrange(0, i as int).to_multiset() == r@.to_multiset(),\n\
+  \   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: invariant not satisfied before loop\n  --> /tmp/tmpz3i9jg3k.rs:24:17\n\
+  \   |\n24 |                 s@.subrange(0, i as int).to_multiset() == r@.to_multiset(),\n\
+  \   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: invariant not satisfied at end of loop body\n  --> /tmp/tmpz3i9jg3k.rs:25:17\n\
+  \   |\n25 |                 is_sorted(r@),\n   |                 ^^^^^^^^^^^^^\n\
+  \nerror: aborting due to 4 previous errors\n\n"
+verification_output: 'verification results:: 1 verified, 2 errors
+
+  '

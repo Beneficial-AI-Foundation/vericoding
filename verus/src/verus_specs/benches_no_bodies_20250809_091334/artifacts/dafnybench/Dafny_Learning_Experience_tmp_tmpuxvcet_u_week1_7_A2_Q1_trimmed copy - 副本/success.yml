@@ -1,0 +1,52 @@
+num_iterations: 18
+success: false
+verification_error: "error[E0308]: mismatched types\n  --> /tmp/tmpn0bogv4n.rs:19:50\n\
+  \   |\n19 |         requires(count_index == 0 || (a.len() == b.len() && 1 <= count_index\
+  \ <= a.len()));\n   |                                       -------    ^^^^^^^ expected\
+  \ `nat`, found `usize`\n   |                                       |\n   |     \
+  \                                  expected because this is `builtin::nat`\n\nerror[E0308]:\
+  \ mismatched types\n  --> /tmp/tmpn0bogv4n.rs:26:24\n   |\n26 |             if a.index(count_index\
+  \ - 1) % 2 == 0 {\n   |                  ----- ^^^^^^^^^^^^^^^ expected `int`, found\
+  \ `usize`\n   |                  |\n   |                  arguments to this method\
+  \ are incorrect\n   |\nnote: method defined here\n  --> /home/runner/work/verus/verus/source/vstd/seq.rs:53:26\n\
+  \nerror[E0308]: mismatched types\n  --> /tmp/tmpn0bogv4n.rs:26:43\n   |\n26 |  \
+  \           if a.index(count_index - 1) % 2 == 0 {\n   |                ------------------------\
+  \   ^ expected `int`, found integer\n   |                |\n   |               \
+  \ expected because this is `builtin::int`\n\nerror[E0308]: mismatched types\n  -->\
+  \ /tmp/tmpn0bogv4n.rs:26:48\n   |\n26 |             if a.index(count_index - 1)\
+  \ % 2 == 0 {\n   |                ----------------------------    ^ expected `int`,\
+  \ found integer\n   |                |\n   |                expected because this\
+  \ is `builtin::int`\n\nerror[E0308]: mismatched types\n  --> /tmp/tmpn0bogv4n.rs:48:45\n\
+  \   |\n48 |             let _p = foo_count(count_index, a@, b);\n   |          \
+  \            ---------              ^^ expected `Seq<int>`, found `Seq<i32>`\n \
+  \  |                      |\n   |                      arguments to this function\
+  \ are incorrect\n   |\n   = note: expected struct `vstd::seq::Seq<builtin::int>`\n\
+  \              found struct `vstd::seq::Seq<i32>`\nnote: function defined here\n\
+  \  --> /tmp/tmpn0bogv4n.rs:18:8\n   |\n18 |     fn foo_count(count_index: usize,\
+  \ a: Seq<int>, b: &mut Vec<i32>) -> (p: usize) {\n   |        ^^^^^^^^^        \
+  \             -----------\n\nerror[E0308]: mismatched types\n  --> /tmp/tmpn0bogv4n.rs:55:50\n\
+  \   |\n55 |         requires(count_index == 0 || (a.len() == b.len() && 1 <= count_index\
+  \ <= a.len()));\n   |                                       -------    ^^^^^^^ expected\
+  \ `nat`, found `usize`\n   |                                       |\n   |     \
+  \                                  expected because this is `builtin::nat`\n\nerror[E0308]:\
+  \ mismatched types\n  --> /tmp/tmpn0bogv4n.rs:62:24\n   |\n62 |             if a.index(count_index\
+  \ - 1) % 2 == 0 {\n   |                  ----- ^^^^^^^^^^^^^^^ expected `int`, found\
+  \ `usize`\n   |                  |\n   |                  arguments to this method\
+  \ are incorrect\n   |\nnote: method defined here\n  --> /home/runner/work/verus/verus/source/vstd/seq.rs:53:26\n\
+  \nerror[E0308]: mismatched types\n  --> /tmp/tmpn0bogv4n.rs:62:43\n   |\n62 |  \
+  \           if a.index(count_index - 1) % 2 == 0 {\n   |                ------------------------\
+  \   ^ expected `int`, found integer\n   |                |\n   |               \
+  \ expected because this is `builtin::int`\n\nerror[E0308]: mismatched types\n  -->\
+  \ /tmp/tmpn0bogv4n.rs:62:48\n   |\n62 |             if a.index(count_index - 1)\
+  \ % 2 == 0 {\n   |                ----------------------------    ^ expected `int`,\
+  \ found integer\n   |                |\n   |                expected because this\
+  \ is `builtin::int`\n\nerror[E0308]: mismatched types\n  --> /tmp/tmpn0bogv4n.rs:80:32\n\
+  \   |\n80 |         compute_count(b.len(), a@, b)\n   |         -------------  \
+  \        ^^ expected `Seq<int>`, found `Seq<i32>`\n   |         |\n   |        \
+  \ arguments to this function are incorrect\n   |\n   = note: expected struct `vstd::seq::Seq<builtin::int>`\n\
+  \              found struct `vstd::seq::Seq<i32>`\nnote: function defined here\n\
+  \  --> /tmp/tmpn0bogv4n.rs:54:8\n   |\n54 |     fn compute_count(count_index: usize,\
+  \ a: Seq<int>, b: &mut Vec<i32>) -> (p: usize) {\n   |        ^^^^^^^^^^^^^    \
+  \                 -----------\n\nerror: aborting due to 10 previous errors\n\nFor\
+  \ more information about this error, try `rustc --explain E0308`.\n"
+verification_output: ''

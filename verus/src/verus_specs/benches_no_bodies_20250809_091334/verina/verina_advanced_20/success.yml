@@ -1,0 +1,7 @@
+num_iterations: 11
+success: false
+verification_error: "error: cannot call function `tmp9dq0vvze::is_it_eight` with mode\
+  \ exec\n  --> /tmp/tmp9dq0vvze.rs:59:37\n   |\n59 |     ensures is_it_eight_postcond(n,\
+  \ is_it_eight(n as i64))\n   |                                     ^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: aborting due to 1 previous error\n\n"
+verification_output: ''

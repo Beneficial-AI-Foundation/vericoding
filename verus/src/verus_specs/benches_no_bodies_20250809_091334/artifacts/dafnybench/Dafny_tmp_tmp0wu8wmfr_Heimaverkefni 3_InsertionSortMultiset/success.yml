@@ -1,0 +1,8 @@
+num_iterations: 10
+success: false
+verification_error: "error: expected one of `!` or `::`, found `me`\n --> /tmp/tmpn1ojhx23.rs:1:5\n\
+  \  |\n1 | Let me try using the explicit nat literal:\n  |     ^^ expected one of\
+  \ `!` or `::`\n  |\nhelp: write keyword `let` in lowercase\n  |\n1 - Let me try\
+  \ using the explicit nat literal:\n1 + let me try using the explicit nat literal:\n\
+  \  |\n\nerror: aborting due to 1 previous error\n\n"
+verification_output: ''

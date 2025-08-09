@@ -1,0 +1,7 @@
+num_iterations: 1
+success: false
+verification_error: "error: expected one of `!` or `::`, found `need`\n --> /tmp/tmp3hi_w7nl.rs:1:3\n\
+  \  |\n1 | I need to fix the syntax error. Let me correct the ensures clause:\n \
+  \ |   ^^^^ expected one of `!` or `::`\n\nerror: aborting due to 1 previous error\n\
+  \n"
+verification_output: ''

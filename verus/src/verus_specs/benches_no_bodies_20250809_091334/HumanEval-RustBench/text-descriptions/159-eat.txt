@@ -1,0 +1,3 @@
+You have to write 1 function in verus, using the given helper functions
+The description is as follows:
+function `eat`: You're a hungry rabbit, and you already have eaten a certain number of carrots, but now you need to eat more carrots to complete the day's meals. you should return an array of [ total number of eaten carrots after your meals, the number of carrots left after your meals ] if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.

@@ -1,0 +1,23 @@
+num_iterations: 17
+success: false
+verification_error: "error: postcondition not satisfied\n  --> /tmp/tmpesmxrjc2.rs:55:17\n\
+  \   |\n49 |     proof fn lemma_hash_equality(text_hash: int, text: Seq<char>, i:\
+  \ int, old_text_hash: int, pattern: Seq<char>)\n   |           -------------------------------------------------------------------------------------------------------\
+  \ at the end of the function body\n...\n55 |         ensures text_hash == recursive_sum_down(text.subrange(i,\
+  \ i + pattern.len() as int))\n   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n\nerror: postcondition not satisfied\n  --> /tmp/tmpesmxrjc2.rs:67:13\n\
+  \   |\n61 |     proof fn lemma_adding_one_index(str: Seq<char>, i: int, sum: int)\n\
+  \   |           ----------------------------------------------------------- at the\
+  \ end of the function body\n...\n67 |             sum + str[i] as int == recursive_sum_down(str.subrange(0,\
+  \ i + 1))\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n\nerror: postcondition not satisfied\n  --> /tmp/tmpesmxrjc2.rs:82:17\n\
+  \   |\n82 |           ensures recursive_sum_down(str) == recursive_sum_up(str)\n\
+  \   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed\
+  \ this postcondition\n...\n85 | /         if str.len() == 0 {\n86 | |          \
+  \   // Base case: both are 0\n87 | |         } else if str.len() == 1 {\n...  |\n\
+  91 | |             equivalent_sum_definitions(str.subrange(1, str.len() as int -\
+  \ 1));\n92 | |         }\n   | |_________- at the end of the function body\n\nerror:\
+  \ aborting due to 3 previous errors\n\n"
+verification_output: 'verification results:: 6 verified, 3 errors
+
+  '

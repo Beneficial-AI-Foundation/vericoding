@@ -1,0 +1,17 @@
+num_iterations: 8
+success: false
+verification_error: "error[E0601]: `main` function not found in crate `tmpq438_vxa`\n\
+  \  --> /tmp/tmpq438_vxa.rs:66:2\n   |\n66 | }\n   |  ^ consider adding a `main`\
+  \ function to `/tmp/tmpq438_vxa.rs`\n\nerror[E0061]: this function takes 3 arguments\
+  \ but 4 arguments were supplied\n  --> /tmp/tmpq438_vxa.rs:60:13\n   |\n60 |   \
+  \  ensures only_once_postcond(a@, key, only_once(&a, key), only_once_precond(a@,\
+  \ key))\n   |             ^^^^^^^^^^^^^^^^^^                              --------------------------\
+  \ unexpected argument #4 of type `bool`\n   |\nnote: function defined here\n  -->\
+  \ /tmp/tmpq438_vxa.rs:16:9\n   |\n16 | spec fn only_once_postcond(a: Seq<i32>, key:\
+  \ i32, result: bool) -> bool {\n   |         ^^^^^^^^^^^^^^^^^^\nhelp: remove the\
+  \ extra argument\n   |\n60 -     ensures only_once_postcond(a@, key, only_once(&a,\
+  \ key), only_once_precond(a@, key))\n60 +     ensures only_once_postcond(a@, key,\
+  \ only_once(&a, key))\n   |\n\nerror: aborting due to 2 previous errors\n\nSome\
+  \ errors have detailed explanations: E0061, E0601.\nFor more information about an\
+  \ error, try `rustc --explain E0061`.\n"
+verification_output: ''

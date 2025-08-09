@@ -1,0 +1,7 @@
+num_iterations: 13
+success: false
+verification_error: "error[E0601]: `main` function not found in crate `tmpkyg12lim`\n\
+  \  --> /tmp/tmpkyg12lim.rs:50:2\n   |\n50 | }\n   |  ^ consider adding a `main`\
+  \ function to `/tmp/tmpkyg12lim.rs`\n\nerror: aborting due to 1 previous error\n\
+  \nFor more information about this error, try `rustc --explain E0601`.\n"
+verification_output: ''

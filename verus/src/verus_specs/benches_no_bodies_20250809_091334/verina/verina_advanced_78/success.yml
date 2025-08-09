@@ -1,0 +1,9 @@
+num_iterations: 5
+success: false
+verification_error: "error: This block would be parsed as the function/loop body,\
+  \ but it is followed immediately by another block (if you meant this block to be\
+  \ part of the specification, try parenthesizing it)\n   --> /tmp/tmpswfs_jpj.rs:135:13\n\
+  \    |\n135 |       ensures {\n    |  _____________^\n136 | |         let result\
+  \ = two_sum(nums, target);\n137 | |         two_sum_postcond(nums@, target, result)\n\
+  138 | |     }\n    | |_____^\n\nerror: aborting due to 1 previous error\n\n"
+verification_output: ''

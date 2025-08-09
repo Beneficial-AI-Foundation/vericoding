@@ -1,0 +1,27 @@
+num_iterations: 8
+success: false
+verification_error: "note: function body check: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmpu13hz_sv.rs:40:1\n   |\n40 | fn longest_common_subsequence(a:\
+  \ Vec<i32>, b: Vec<i32>) -> (result: i32)\n   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: postcondition not satisfied\n  --> /tmp/tmpu13hz_sv.rs:42:13\n   |\n42\
+  \ |       ensures longest_common_subsequence_postcond(a@, b@, result)\n   |    \
+  \           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition\n\
+  ...\n60 | /     if min_len > 0 {\n61 | |         // Simple check: if first elements\
+  \ are equal, we have at least 1\n62 | |         if a[0] == b[0] {\n63 | |      \
+  \       1\n...  |\n68 | |         0\n69 | |     }\n   | |_____- at the end of the\
+  \ function body\n\nerror: postcondition not satisfied\n  --> /tmp/tmpu13hz_sv.rs:42:13\n\
+  \   |\n42 |     ensures longest_common_subsequence_postcond(a@, b@, result)\n  \
+  \ |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this\
+  \ postcondition\n...\n48 |         return 0;\n   |         -------- at this exit\n\
+  \nnote: recommendation not met: value may be out of range of the target type (use\
+  \ `#[verifier::truncate]` on the cast to silence this warning)\n  --> /tmp/tmpu13hz_sv.rs:56:30\n\
+  \   |\n56 |     let min_len = if m < n { m as i32 } else { n as i32 };\n   |   \
+  \                           ^\n\nnote: recommendation not met: value may be out\
+  \ of range of the target type (use `#[verifier::truncate]` on the cast to silence\
+  \ this warning)\n  --> /tmp/tmpu13hz_sv.rs:56:48\n   |\n56 |     let min_len = if\
+  \ m < n { m as i32 } else { n as i32 };\n   |                                  \
+  \              ^\n\nerror: aborting due to 2 previous errors\n\n"
+verification_output: 'verification results:: 1 verified, 1 errors
+
+  '

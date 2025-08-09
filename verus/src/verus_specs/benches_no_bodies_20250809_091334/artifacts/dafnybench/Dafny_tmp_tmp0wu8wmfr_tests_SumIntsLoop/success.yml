@@ -1,0 +1,6 @@
+num_iterations: 16
+success: false
+verification_error: "error: expected curly braces\n  --> /tmp/tmp5fu6dtar.rs:17:9\n\
+  \   |\n17 |         ensures s == n * (n + 1) / 2,\n   |         ^^^^^^^\n\nerror:\
+  \ aborting due to 1 previous error\n\n"
+verification_output: ''

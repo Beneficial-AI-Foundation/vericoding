@@ -1,0 +1,7 @@
+num_iterations: 17
+success: false
+verification_error: "error[E0601]: `main` function not found in crate `tmpo58vx2ke`\n\
+  \  --> /tmp/tmpo58vx2ke.rs:34:2\n   |\n34 | }\n   |  ^ consider adding a `main`\
+  \ function to `/tmp/tmpo58vx2ke.rs`\n\nerror: aborting due to 1 previous error\n\
+  \nFor more information about this error, try `rustc --explain E0601`.\n"
+verification_output: ''

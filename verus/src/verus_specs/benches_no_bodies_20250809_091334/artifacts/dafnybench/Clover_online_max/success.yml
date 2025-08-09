@@ -1,0 +1,12 @@
+num_iterations: 18
+success: false
+verification_error: "error: postcondition not satisfied\n  --> /tmp/tmpscbhhead.rs:8:17\n\
+  \   |\n8  |           ensures ({\n   |  _________________^\n9  | |             let\
+  \ (m, p) = result;\n10 | |             &&& x <= p < a.len()\n11 | |            \
+  \ &&& forall|i: int| 0 <= i < x ==> a[i] <= m@\n...  |\n16 | |         })\n   |\
+  \ |__________^ failed this postcondition\n...\n49 |                   return (m,\
+  \ p);\n   |                   ------------- at this exit\n\nerror: aborting due\
+  \ to 1 previous error\n\n"
+verification_output: 'verification results:: 2 verified, 1 errors
+
+  '

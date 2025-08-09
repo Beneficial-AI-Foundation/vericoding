@@ -1,0 +1,7 @@
+num_iterations: 16
+success: false
+verification_error: "error: cannot call function `tmp68ly3hg_::check` with mode exec\n\
+  \  --> /tmp/tmp68ly3hg_.rs:43:39\n   |\n43 |             if n == 0 { true } else\
+  \ { check(n, 1, n) }));\n   |                                       ^^^^^^^^^^^^^^\n\
+  \nerror: aborting due to 1 previous error\n\n"
+verification_output: ''

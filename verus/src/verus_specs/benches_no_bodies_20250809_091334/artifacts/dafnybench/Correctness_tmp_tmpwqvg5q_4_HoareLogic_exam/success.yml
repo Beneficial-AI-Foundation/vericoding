@@ -1,0 +1,10 @@
+num_iterations: 14
+success: true
+verification_error: "warning: uninterpreted functions (`spec` functions defined without\
+  \ a body) need to be marked as `uninterp`\n         this will become a hard error\
+  \ in the future\n --> /tmp/tmpo2u2_5vl.rs:5:5\n  |\n5 |     spec fn gcd(a: nat,\
+  \ b: nat) -> nat;\n  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nwarning: 1 warning\
+  \ emitted\n\n"
+verification_output: 'verification results:: 6 verified, 0 errors
+
+  '

@@ -1,0 +1,35 @@
+num_iterations: 9
+success: false
+verification_error: "error: function body check: Resource limit (rlimit) exceeded;\
+  \ consider rerunning with --profile for more details\n  --> /tmp/tmpbm0ce_jx.rs:10:5\n\
+  \   |\n10 |     fn search1000(a: &[int], x: int) -> (k: usize)\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote: while loop: not all errors may have been reported; rerun with a higher value\
+  \ for --multiple-errors to find other potential errors in this function\n  --> /tmp/tmpbm0ce_jx.rs:60:9\n\
+  \   |\n60 |         while c != 0\n   |         ^^^^^^^^^^^^\n\nnote: function body\
+  \ check: not all errors may have been reported; rerun with a higher value for --multiple-errors\
+  \ to find other potential errors in this function\n  --> /tmp/tmpbm0ce_jx.rs:48:5\n\
+  \   |\n48 |     fn search_2_pow_loop(a: &[int], i: usize, n: usize, x: int) -> (k:\
+  \ usize)\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: postcondition not satisfied\n  --> /tmp/tmpbm0ce_jx.rs:54:13\n   |\n54\
+  \ |             i <= k && k <= i + n,\n   |             ^^^^^^^^^^^^^^^^^^^^ failed\
+  \ this postcondition\n...\n66 |         k\n   |         - at the end of the function\
+  \ body\n\nerror: postcondition not satisfied\n  --> /tmp/tmpbm0ce_jx.rs:55:13\n\
+  \   |\n55 |             forall|r: int| i <= r < k ==> a[r] < x,\n   |          \
+  \   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition\n...\n66 |\
+  \         k\n   |         - at the end of the function body\n\nnote: recommendation\
+  \ not met\n  --> /tmp/tmpbm0ce_jx.rs:55:43\n   |\n55 |             forall|r: int|\
+  \ i <= r < k ==> a[r] < x,\n   |                                           ^^^^\n\
+  \   |\n  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18\n\
+  \   |\n30 |             0 <= i < self.view().len(),\n   |                  - recommendation\
+  \ not met\n\nerror: precondition not satisfied\n  --> /tmp/tmpbm0ce_jx.rs:64:16\n\
+  \   |\n64 |             if a[k + c] < x { k = k + c + 1; }\n   |               \
+  \ ^^^^^^^^\n   |\n  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:62:14\n\
+  \   |\n62 |         0 <= i < slice.view().len(),\n   |              - failed precondition\n\
+  \nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmpbm0ce_jx.rs:64:18\n\
+  \   |\n64 |             if a[k + c] < x { k = k + c + 1; }\n   |               \
+  \   ^^^^^\n\nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmpbm0ce_jx.rs:64:35\n\
+  \   |\n64 |             if a[k + c] < x { k = k + c + 1; }\n   |               \
+  \                    ^^^^^\n\nerror: aborting due to 6 previous errors\n\n"
+verification_output: 'verification results:: 2 verified, 3 errors
+
+  '

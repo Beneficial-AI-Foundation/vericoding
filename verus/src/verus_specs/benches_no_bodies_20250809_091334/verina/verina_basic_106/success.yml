@@ -1,0 +1,8 @@
+num_iterations: 10
+success: false
+verification_error: "error[E0425]: cannot find value `result` in this scope\n  -->\
+  \ /tmp/tmpjvbivgmn.rs:33:54\n   |\n33 |             forall|j: int| 0 <= j < i ==>\
+  \ #[trigger] result[i] == a[j] + b[j]\n   |                                    \
+  \                  ^^^^^^ not found in this scope\n\nerror: aborting due to 1 previous\
+  \ error\n\nFor more information about this error, try `rustc --explain E0425`.\n"
+verification_output: ''

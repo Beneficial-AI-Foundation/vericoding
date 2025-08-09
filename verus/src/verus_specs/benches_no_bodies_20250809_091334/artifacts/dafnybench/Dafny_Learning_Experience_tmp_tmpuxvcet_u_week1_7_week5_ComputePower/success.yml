@@ -1,0 +1,21 @@
+num_iterations: 12
+success: false
+verification_error: "note: function body check: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmp2kbzhpt4.rs:10:5\n   |\n10 |     fn calc_power(n:\
+  \ u32) -> (p: u32)\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: postcondition\
+  \ not satisfied\n  --> /tmp/tmp2kbzhpt4.rs:11:17\n   |\n11 |         ensures p as\
+  \ nat == 2 * n\n   |                 ^^^^^^^^^^^^^^^^^ failed this postcondition\n\
+  12 |     {\n13 |         2 * n\n   |         ----- at the end of the function body\n\
+  \nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmp2kbzhpt4.rs:13:9\n\
+  \   |\n13 |         2 * n\n   |         ^^^^^\n\nerror: postcondition not satisfied\n\
+  \  --> /tmp/tmp2kbzhpt4.rs:17:17\n   |\n17 |         ensures p as nat == power(n\
+  \ as nat)\n   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition\n\
+  ...\n30 |         p\n   |         - at the end of the function body\n\nerror: invariant\
+  \ not satisfied at end of loop body\n  --> /tmp/tmp2kbzhpt4.rs:24:17\n   |\n24 |\
+  \                 p as nat * power((n - i) as nat) == power(n as nat)\n   |    \
+  \             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: aborting\
+  \ due to 4 previous errors\n\n"
+verification_output: 'verification results:: 1 verified, 3 errors
+
+  '

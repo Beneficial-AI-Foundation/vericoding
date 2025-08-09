@@ -1,0 +1,40 @@
+num_iterations: 8
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmphk4y7b3w.rs:11:9\n   |\n11 |         while r < 65536 \n\
+  \   |         ^^^^^^^^^^^^^^^\n\nerror: postcondition not satisfied\n  --> /tmp/tmphk4y7b3w.rs:8:13\n\
+  \   |\n8  |             r >= 0 && (r as int) * (r as int) <= n < ((r + 1) as int)\
+  \ * ((r + 1) as int),\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed\
+  \ this postcondition\n...\n30 |         r\n   |         - at the end of the function\
+  \ body\n\nerror: invariant not satisfied at end of loop body\n  --> /tmp/tmphk4y7b3w.rs:13:17\n\
+  \   |\n13 |                 r >= 0 && (r as int) * (r as int) <= n,\n   |      \
+  \           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: possible arithmetic\
+  \ underflow/overflow\n  --> /tmp/tmphk4y7b3w.rs:20:20\n   |\n20 |              \
+  \   if next_val * next_val <= n as u64 {\n   |                    ^^^^^^^^^^^^^^^^^^^\n\
+  \nnote: function body check: not all errors may have been reported; rerun with a\
+  \ higher value for --multiple-errors to find other potential errors in this function\n\
+  \  --> /tmp/tmphk4y7b3w.rs:34:5\n   |\n34 |     fn mroot2(n: u32) -> (r: u32)\n\
+  \   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: postcondition not satisfied\n \
+  \ --> /tmp/tmphk4y7b3w.rs:37:13\n   |\n37 |             r >= 0 && (r as int) * (r\
+  \ as int) <= n < ((r + 1) as int) * ((r + 1) as int),\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n...\n49 |         r\n   |         - at the end of the\
+  \ function body\n\nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmphk4y7b3w.rs:41:24\n\
+  \   |\n41 |         while r > 0 && (r as u64) * (r as u64) > n as u64\n   |    \
+  \                    ^^^^^^^^^^^^^^^^^^^^^^^\n\nnote: while loop: not all errors\
+  \ may have been reported; rerun with a higher value for --multiple-errors to find\
+  \ other potential errors in this function\n  --> /tmp/tmphk4y7b3w.rs:64:9\n   |\n\
+  64 |         while y > r + 1\n   |         ^^^^^^^^^^^^^^^\n\nerror: postcondition\
+  \ not satisfied\n  --> /tmp/tmphk4y7b3w.rs:58:13\n   |\n58 |             r >= 0\
+  \ && (r as int) * (r as int) <= n < ((r + 1) as int) * ((r + 1) as int),\n   | \
+  \            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition\n...\n\
+  80 |         r\n   |         - at the end of the function body\n\nerror: invariant\
+  \ not satisfied at end of loop body\n  --> /tmp/tmphk4y7b3w.rs:66:17\n   |\n66 |\
+  \                 r >= 0 && (r as int) * (r as int) <= n,\n   |                \
+  \ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: possible arithmetic underflow/overflow\n\
+  \  --> /tmp/tmphk4y7b3w.rs:71:29\n   |\n71 |             let h_squared = (h as u64)\
+  \ * (h as u64);\n   |                             ^^^^^^^^^^^^^^^^^^^^^^^\n\nerror:\
+  \ aborting due to 8 previous errors\n\n"
+verification_output: 'verification results:: 1 verified, 6 errors
+
+  '
