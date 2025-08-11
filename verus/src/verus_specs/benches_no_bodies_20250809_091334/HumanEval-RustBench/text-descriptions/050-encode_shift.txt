@@ -1,0 +1,4 @@
+You have to write 2 functions in verus, using the given helper functions
+The descriptions are as follows:
+function `encode_shift`: returns encoded string by shifting every character by 5 in the alphabet.
+function `decode_shift`: takes as input string encoded with encode_shift function. Returns decoded string.

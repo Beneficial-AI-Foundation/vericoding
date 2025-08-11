@@ -1,0 +1,31 @@
+num_iterations: 11
+success: false
+verification_error: "note: function body check: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmpqxdxtkdk.rs:11:1\n   |\n11 | fn insert(x: int,\
+  \ ys: Vec<int>) -> (result: Vec<int>)\n   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: postcondition not satisfied\n  --> /tmp/tmpqxdxtkdk.rs:13:9\n   |\n13 |\
+  \           result@.len() == ys@.len() + 1,\n   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n...\n17 | /     if ys.len() == 0 {\n18 | |        \
+  \ vec![x]\n19 | |     } else {\n20 | |         let y = ys[0];\n...  |\n39 | |  \
+  \   }\n   | |_____- at the end of the function body\n\nerror: could not prove termination\n\
+  \  --> /tmp/tmpqxdxtkdk.rs:33:28\n   |\n33 |             let inserted = insert(x,\
+  \ ys_tail);\n   |                            ^^^^^^^^^^^^^^^^^^\n\nnote: function\
+  \ body check: not all errors may have been reported; rerun with a higher value for\
+  \ --multiple-errors to find other potential errors in this function\n  --> /tmp/tmpqxdxtkdk.rs:43:1\n\
+  \   |\n43 | fn insertion_sort_impl(arr: Vec<int>) -> (result: Vec<int>)\n   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: postcondition not satisfied\n  --> /tmp/tmpqxdxtkdk.rs:45:9\n   |\n45 |\
+  \           result@.to_multiset() == arr@.to_multiset(),\n   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n...\n48 | /     if arr.len() == 0 {\n49 | |       \
+  \  vec![]\n50 | |     } else {\n51 | |         let x = arr[0];\n...  |\n57 | | \
+  \        insert(x, sorted_xs)\n58 | |     }\n   | |_____- at the end of the function\
+  \ body\n\nerror: could not prove termination\n  --> /tmp/tmpqxdxtkdk.rs:56:25\n\
+  \   |\n56 |         let sorted_xs = insertion_sort_impl(xs);\n   |             \
+  \            ^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: postcondition not satisfied\n  -->\
+  \ /tmp/tmpqxdxtkdk.rs:66:9\n   |\n66 |         forall|i: int, j: int| 0 <= i < j\
+  \ < result@.len() ==> result@[i] <= result@[j],\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n...\n70 |     insertion_sort_impl(xs)\n   |     -----------------------\
+  \ at the end of the function body\n\nerror: aborting due to 5 previous errors\n\n"
+verification_output: 'verification results:: 5 verified, 3 errors
+
+  '

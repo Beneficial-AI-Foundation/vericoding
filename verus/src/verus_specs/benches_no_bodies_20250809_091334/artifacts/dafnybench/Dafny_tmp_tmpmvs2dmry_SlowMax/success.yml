@@ -1,0 +1,7 @@
+num_iterations: 4
+success: false
+verification_error: "error[E0601]: `main` function not found in crate `tmpnl_htd2_`\n\
+  \  --> /tmp/tmpnl_htd2_.rs:35:2\n   |\n35 | }\n   |  ^ consider adding a `main`\
+  \ function to `/tmp/tmpnl_htd2_.rs`\n\nerror: aborting due to 1 previous error\n\
+  \nFor more information about this error, try `rustc --explain E0601`.\n"
+verification_output: ''

@@ -1,0 +1,3224 @@
+directory,num_iterations,success,verification_error,verification_output
+Clover_find,8,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny-Projects_tmp_tmph399drhy_p2_arraySplit,15,False,"error[E0601]: `main` function not found in crate `tmpndpyfjsw`
+  --> /tmp/tmpndpyfjsw.rs:49:2
+   |
+49 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpndpyfjsw.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny-Exercises_tmp_tmpjm75muf__Session9Exercises_ExerciseSeqMaxSum,9,True,,"verification results:: 8 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Generated_Code_ComputePower,20,False,"error[E0601]: `main` function not found in crate `tmp0e4g_s8_`
+  --> /tmp/tmp0e4g_s8_.rs:30:2
+   |
+30 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp0e4g_s8_.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_dataset_C_convert_examples_06_n,10,True,,"verification results:: 2 verified, 0 errors
+"
+Clover_triple4,4,False,"error[E0601]: `main` function not found in crate `tmpvl6fni5f`
+  --> /tmp/tmpvl6fni5f.rs:16:2
+   |
+16 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpvl6fni5f.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_AI_agent_verify_examples_IncrementMatrix,10,False,"error[E0601]: `main` function not found in crate `tmp8ijg4gis`
+  --> /tmp/tmp8ijg4gis.rs:59:2
+   |
+59 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp8ijg4gis.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_linear_search3,14,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_MaxSum,8,True,,"verification results:: 2 verified, 0 errors
+"
+DafnyProjects_tmp_tmp2acw_s4s_sqrt,8,True,,"verification results:: 4 verified, 0 errors
+"
+Clover_swap_arith,3,True,,"verification results:: 1 verified, 0 errors
+"
+CS5232_Project_tmp_tmpai_cfrng_LFUSimple,21,False,"error[E0308]: mismatched types
+  --> /tmp/tmp45hakwy2.rs:18:45
+   |
+18 |         fn new(capacity: usize) -> (result: Self)
+   |            ---                              ^^^^ expected `LFUCache`, found `()`
+   |            |
+   |            implicitly returns `()` as its body has no tail or `return` expression
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0308`.
+",
+Clover_swap_bitvector,5,True,,"verification results:: 5 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_AI_agent_validation_examples,15,False,"error: expected one of `!` or `::`, found keyword `fn`
+ --> /tmp/tmp0rmr7iz9.rs:2:6
+  |
+2 | spec fn power(n: nat) -> nat
+  |      ^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+
+",
+Dafny_Verify_tmp_tmphq7j0row_Fine_Tune_Examples_error_data_completion_06_n,10,True,,"verification results:: 2 verified, 0 errors
+"
+Clover_avg,6,True,,"verification results:: 1 verified, 0 errors
+"
+Clover_swap,5,False,"error[E0601]: `main` function not found in crate `tmp6e437_2p`
+  --> /tmp/tmp6e437_2p.rs:19:2
+   |
+19 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp6e437_2p.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny-Practice_tmp_tmphnmt4ovh_Pattern Matching,17,False,"error: postcondition not satisfied
+  --> /tmp/tmpesmxrjc2.rs:55:17
+   |
+49 |     proof fn lemma_hash_equality(text_hash: int, text: Seq<char>, i: int, old_text_hash: int, pattern: Seq<char>)
+   |           ------------------------------------------------------------------------------------------------------- at the end of the function body
+...
+55 |         ensures text_hash == recursive_sum_down(text.subrange(i, i + pattern.len() as int))
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /tmp/tmpesmxrjc2.rs:67:13
+   |
+61 |     proof fn lemma_adding_one_index(str: Seq<char>, i: int, sum: int)
+   |           ----------------------------------------------------------- at the end of the function body
+...
+67 |             sum + str[i] as int == recursive_sum_down(str.subrange(0, i + 1))
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /tmp/tmpesmxrjc2.rs:82:17
+   |
+82 |           ensures recursive_sum_down(str) == recursive_sum_up(str)
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+85 | /         if str.len() == 0 {
+86 | |             // Base case: both are 0
+87 | |         } else if str.len() == 1 {
+...  |
+91 | |             equivalent_sum_definitions(str.subrange(1, str.len() as int - 1));
+92 | |         }
+   | |_________- at the end of the function body
+
+error: aborting due to 3 previous errors
+
+","verification results:: 6 verified, 3 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_AI_agent_verify_examples_CopyMatrix,13,True,,"verification results:: 4 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_AI_agent_verify_examples_RotateRight,4,False,"error[E0601]: `main` function not found in crate `tmpwmkfp7bb`
+  --> /tmp/tmpwmkfp7bb.rs:28:2
+   |
+28 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpwmkfp7bb.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_below_zero,11,False,"error[E0601]: `main` function not found in crate `tmpxx_shmfa`
+  --> /tmp/tmpxx_shmfa.rs:73:2
+   |
+73 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpxx_shmfa.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_count_lessthan,29,True,,"verification results:: 1 verified, 0 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum,3,False,"error[E0601]: `main` function not found in crate `tmpsg80y1xi`
+   --> /tmp/tmpsg80y1xi.rs:123:2
+    |
+123 | }
+    |  ^ consider adding a `main` function to `/tmp/tmpsg80y1xi.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_Fine_Tune_Examples_error_data_completion_11,9,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny_tmp_tmpmvs2dmry_pancakesort_flip,11,False,"error[E0601]: `main` function not found in crate `tmp66awj9w8`
+  --> /tmp/tmp66awj9w8.rs:40:2
+   |
+40 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp66awj9w8.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny-Exercises_tmp_tmpjm75muf__Session6Exercises_ExerciseCountMin,15,False,"error[E0601]: `main` function not found in crate `tmp3epmqwu5`
+  --> /tmp/tmp3epmqwu5.rs:65:2
+   |
+65 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp3epmqwu5.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_Test_Cases_solved_1_select,8,False,"error[E0601]: `main` function not found in crate `tmpdj5jsapg`
+  --> /tmp/tmpdj5jsapg.rs:45:2
+   |
+45 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpdj5jsapg.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Function,6,True,,"verification results:: 3 verified, 0 errors
+"
+Dafny_tmp_tmp0wu8wmfr_tests_F1a,6,True,,"verification results:: 3 verified, 0 errors
+"
+Clover_is_palindrome,29,False,"error[E0601]: `main` function not found in crate `tmppgsds65b`
+  --> /tmp/tmppgsds65b.rs:35:2
+   |
+35 | }
+   |  ^ consider adding a `main` function to `/tmp/tmppgsds65b.rs`
+
+error[E0308]: mismatched types
+ --> /tmp/tmppgsds65b.rs:8:19
+  |
+8 |         if len == 0 {
+  |            ---    ^ expected `nat`, found integer
+  |            |
+  |            expected because this is `builtin::nat`
+
+error[E0308]: mismatched types
+  --> /tmp/tmppgsds65b.rs:13:34
+   |
+13 |         let mut j: usize = len - 1;
+   |                            ---   ^ expected `nat`, found integer
+   |                            |
+   |                            expected because this is `builtin::nat`
+
+error[E0308]: mismatched types
+  --> /tmp/tmppgsds65b.rs:13:28
+   |
+13 |         let mut j: usize = len - 1;
+   |                    -----   ^^^^^^^ expected `usize`, found `nat`
+   |                    |
+   |                    expected due to this
+
+error: aborting due to 4 previous errors
+
+Some errors have detailed explanations: E0308, E0601.
+For more information about an error, try `rustc --explain E0308`.
+",
+AssertivePrograming_tmp_tmpwf43uz0e_DivMode_Unary,14,True,,"verification results:: 20 verified, 0 errors
+"
+Correctness_tmp_tmpwqvg5q_4_HoareLogic_exam,14,True,"warning: uninterpreted functions (`spec` functions defined without a body) need to be marked as `uninterp`
+         this will become a hard error in the future
+ --> /tmp/tmpo2u2_5vl.rs:5:5
+  |
+5 |     spec fn gcd(a: nat, b: nat) -> nat;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: 1 warning emitted
+
+","verification results:: 6 verified, 0 errors
+"
+DafnyProjects_tmp_tmp2acw_s4s_longestPrefix,26,True,,"verification results:: 4 verified, 0 errors
+"
+Clover_return_seven,4,True,,"verification results:: 1 verified, 0 errors
+"
+Clover_only_once,11,True,,"verification results:: 4 verified, 0 errors
+"
+Clover_has_close_elements,22,False,"error[E0601]: `main` function not found in crate `tmpn2alel26`
+  --> /tmp/tmpn2alel26.rs:55:2
+   |
+55 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpn2alel26.rs`
+
+error[E0308]: mismatched types
+  --> /tmp/tmpn2alel26.rs:21:21
+   |
+21 |         while idx < numbers.len() // Type conversion issue here
+   |               ---   ^^^^^^^^^^^^^ expected `usize`, found `nat`
+   |               |
+   |               expected because this is `usize`
+
+error: aborting due to 2 previous errors
+
+Some errors have detailed explanations: E0308, E0601.
+For more information about an error, try `rustc --explain E0308`.
+",
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed copy - 副本,18,False,"error[E0308]: mismatched types
+  --> /tmp/tmpn0bogv4n.rs:19:50
+   |
+19 |         requires(count_index == 0 || (a.len() == b.len() && 1 <= count_index <= a.len()));
+   |                                       -------    ^^^^^^^ expected `nat`, found `usize`
+   |                                       |
+   |                                       expected because this is `builtin::nat`
+
+error[E0308]: mismatched types
+  --> /tmp/tmpn0bogv4n.rs:26:24
+   |
+26 |             if a.index(count_index - 1) % 2 == 0 {
+   |                  ----- ^^^^^^^^^^^^^^^ expected `int`, found `usize`
+   |                  |
+   |                  arguments to this method are incorrect
+   |
+note: method defined here
+  --> /home/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0308]: mismatched types
+  --> /tmp/tmpn0bogv4n.rs:26:43
+   |
+26 |             if a.index(count_index - 1) % 2 == 0 {
+   |                ------------------------   ^ expected `int`, found integer
+   |                |
+   |                expected because this is `builtin::int`
+
+error[E0308]: mismatched types
+  --> /tmp/tmpn0bogv4n.rs:26:48
+   |
+26 |             if a.index(count_index - 1) % 2 == 0 {
+   |                ----------------------------    ^ expected `int`, found integer
+   |                |
+   |                expected because this is `builtin::int`
+
+error[E0308]: mismatched types
+  --> /tmp/tmpn0bogv4n.rs:48:45
+   |
+48 |             let _p = foo_count(count_index, a@, b);
+   |                      ---------              ^^ expected `Seq<int>`, found `Seq<i32>`
+   |                      |
+   |                      arguments to this function are incorrect
+   |
+   = note: expected struct `vstd::seq::Seq<builtin::int>`
+              found struct `vstd::seq::Seq<i32>`
+note: function defined here
+  --> /tmp/tmpn0bogv4n.rs:18:8
+   |
+18 |     fn foo_count(count_index: usize, a: Seq<int>, b: &mut Vec<i32>) -> (p: usize) {
+   |        ^^^^^^^^^                     -----------
+
+error[E0308]: mismatched types
+  --> /tmp/tmpn0bogv4n.rs:55:50
+   |
+55 |         requires(count_index == 0 || (a.len() == b.len() && 1 <= count_index <= a.len()));
+   |                                       -------    ^^^^^^^ expected `nat`, found `usize`
+   |                                       |
+   |                                       expected because this is `builtin::nat`
+
+error[E0308]: mismatched types
+  --> /tmp/tmpn0bogv4n.rs:62:24
+   |
+62 |             if a.index(count_index - 1) % 2 == 0 {
+   |                  ----- ^^^^^^^^^^^^^^^ expected `int`, found `usize`
+   |                  |
+   |                  arguments to this method are incorrect
+   |
+note: method defined here
+  --> /home/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0308]: mismatched types
+  --> /tmp/tmpn0bogv4n.rs:62:43
+   |
+62 |             if a.index(count_index - 1) % 2 == 0 {
+   |                ------------------------   ^ expected `int`, found integer
+   |                |
+   |                expected because this is `builtin::int`
+
+error[E0308]: mismatched types
+  --> /tmp/tmpn0bogv4n.rs:62:48
+   |
+62 |             if a.index(count_index - 1) % 2 == 0 {
+   |                ----------------------------    ^ expected `int`, found integer
+   |                |
+   |                expected because this is `builtin::int`
+
+error[E0308]: mismatched types
+  --> /tmp/tmpn0bogv4n.rs:80:32
+   |
+80 |         compute_count(b.len(), a@, b)
+   |         -------------          ^^ expected `Seq<int>`, found `Seq<i32>`
+   |         |
+   |         arguments to this function are incorrect
+   |
+   = note: expected struct `vstd::seq::Seq<builtin::int>`
+              found struct `vstd::seq::Seq<i32>`
+note: function defined here
+  --> /tmp/tmpn0bogv4n.rs:54:8
+   |
+54 |     fn compute_count(count_index: usize, a: Seq<int>, b: &mut Vec<i32>) -> (p: usize) {
+   |        ^^^^^^^^^^^^^                     -----------
+
+error: aborting due to 10 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+",
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week8_12_week10_BoundedQueue_01,15,False,"error[E0601]: `main` function not found in crate `tmp9l_xp4a_`
+   --> /tmp/tmp9l_xp4a_.rs:110:2
+    |
+110 | }
+    |  ^ consider adding a `main` function to `/tmp/tmp9l_xp4a_.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_tmp_tmpmvs2dmry_SlowMax,4,False,"error[E0601]: `main` function not found in crate `tmpnl_htd2_`
+  --> /tmp/tmpnl_htd2_.rs:35:2
+   |
+35 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpnl_htd2_.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Programs_tmp_tmp99966ew4_lemma,22,False,"error[E0601]: `main` function not found in crate `tmpcqapx78e`
+  --> /tmp/tmpcqapx78e.rs:40:2
+   |
+40 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpcqapx78e.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny-Grind75_tmp_tmpsxfz3i4r_problems_twoSum,12,False,"error[E0601]: `main` function not found in crate `tmpex8gxpbi`
+  --> /tmp/tmpex8gxpbi.rs:49:2
+   |
+49 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpex8gxpbi.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_remove_front,2,False,"error[E0601]: `main` function not found in crate `tmpcn74g5gv`
+  --> /tmp/tmpcn74g5gv.rs:24:2
+   |
+24 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpcn74g5gv.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_bubble_sort,6,True,,"verification results:: 3 verified, 0 errors
+"
+Dafny_ProgrammingLanguages_tmp_tmp82_e0kji_ExtraCredit,10,False,"error[E0601]: `main` function not found in crate `tmpu49rkqcf`
+  --> /tmp/tmpu49rkqcf.rs:75:2
+   |
+75 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpu49rkqcf.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_cal_sum,19,False,"note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmp43il0qco.rs:10:9
+   |
+10 |         while n != N
+   |         ^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmp43il0qco.rs:13:17
+   |
+13 |                 s == n * (n + 1) / 2,
+   |                 ^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmp43il0qco.rs:17:17
+   |
+17 |             s = s + n;
+   |                 ^^^^^
+
+error: aborting due to 2 previous errors
+
+","verification results:: 1 verified, 1 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Generated_Code_Count,16,False,"error[E0601]: `main` function not found in crate `tmpnhhgr0he`
+  --> /tmp/tmpnhhgr0he.rs:47:2
+   |
+47 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpnhhgr0he.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+FMSE-2022-2023_tmp_tmp6_x_ba46_Lab10_Lab10,6,True,"note: automatically chose triggers for this expression:
+  --> /tmp/tmpw5alkr19.rs:38:13
+   |
+38 |             forall|i: int| 0 <= i < self.vec.len() ==> is_odd(self.vec[i].as_int())
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+  --> /tmp/tmpw5alkr19.rs:38:63
+   |
+38 |             forall|i: int| 0 <= i < self.vec.len() ==> is_odd(self.vec[i].as_int())
+   |                                                               ^^^^^^^^^^^
+
+note: Verus printed one or more automatically chosen quantifier triggers
+      because it had low confidence in the chosen triggers.
+      To suppress these messages, do one of the following:
+        (1) manually annotate a single desired trigger using #[trigger]
+            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),
+        (2) manually annotate multiple desired triggers using #![trigger ...]
+            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),
+        (3) accept the automatically chosen trigger using #![auto]
+            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))
+        (4) use the --triggers-silent command-line option to suppress all printing of triggers.
+      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;
+      the theorem prover instantiates a quantifier whenever some expression matches the
+      pattern specified by one of the quantifier's triggers.)
+  --> /tmp/tmpw5alkr19.rs:38:13
+   |
+38 |             forall|i: int| 0 <= i < self.vec.len() ==> is_odd(self.vec[i].as_int())
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+","verification results:: 10 verified, 0 errors
+"
+Clover_array_append,3,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session5Exercises_ExerciseSumElems,10,False,"error: postcondition not satisfied
+  --> /tmp/tmp0ave954u.rs:73:17
+   |
+73 |           ensures sum_r(s.subrange(i, j)) == sum_l(s.subrange(i, j))
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+76 | /         if i == j {
+77 | |             // Empty subsequence
+78 | |         } else {
+79 | |             equal_sum_r(s, i, j-1);
+...  |
+83 | |             sum_by_parts_l(sub, last);
+84 | |         }
+   | |_________- at the end of the function body
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /tmp/tmp0ave954u.rs:109:9
+    |
+109 |         while i < v.len()
+    |         ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /tmp/tmp0ave954u.rs:102:17
+    |
+102 |         ensures sum as int == sum_r(v@.map(|i, x| x as int))
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+119 |         sum
+    |         --- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /tmp/tmp0ave954u.rs:112:17
+    |
+112 |                 sum as int == sum_r(v@.subrange(0, i as int).map(|i, x| x as int))
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /tmp/tmp0ave954u.rs:115:19
+    |
+115 |             sum = sum + v[i];
+    |                   ^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /tmp/tmp0ave954u.rs:134:9
+    |
+134 |         while i > 0
+    |         ^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /tmp/tmp0ave954u.rs:125:17
+    |
+125 |         ensures sum as int == sum_r(v@.map(|i, x| x as int))
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+144 |         sum
+    |         --- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /tmp/tmp0ave954u.rs:137:17
+    |
+137 |                 sum as int == sum_l(v@.subrange(i as int, v.len() as int).map(|i, x| x as int))
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /tmp/tmp0ave954u.rs:140:19
+    |
+140 |             sum = sum + v[i - 1];
+    |                   ^^^^^^^^^^^^^^
+
+error: aborting due to 7 previous errors
+
+","verification results:: 7 verified, 5 errors
+"
+703FinalProject_tmp_tmpr_10rn4z_DP-GD,12,False,"note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmp_ow9804m.rs:36:13
+   |
+36 |             while i < size
+   |             ^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmp_ow9804m.rs:28:9
+   |
+28 |         while t < iterations
+   |         ^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmp_ow9804m.rs:42:24
+   |
+42 |                 beta = beta + tau;
+   |                        ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmp_ow9804m.rs:43:36
+   |
+43 |                 let eta_hat: i32 = -gradient_norm_bound;
+   |                                    ^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmp_ow9804m.rs:49:21
+   |
+49 |             alpha = alpha + beta;
+   |                     ^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmp_ow9804m.rs:50:47
+   |
+50 |             thetha_current = thetha_current - learning_rate * summation_gradient;
+   |                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+
+","verification results:: 1 verified, 2 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session8Exercises_ExerciseInsertionSort,12,False,"note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmp2zkfu_9_.rs:18:9
+   |
+18 |         while i < a.len()
+   |         ^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmp2zkfu_9_.rs:20:22
+   |
+20 |                 0 <= i <= a.len(),
+   |                      ^
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmp2zkfu_9_.rs:22:17
+   |
+22 |                 i > 0 ==> sorted_seg(a@, 0, i as int - 1),
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+","verification results:: 2 verified, 1 errors
+"
+Clover_modify_2d_array,9,False,"error[E0601]: `main` function not found in crate `tmp7tgge3ea`
+  --> /tmp/tmp7tgge3ea.rs:48:2
+   |
+48 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp7tgge3ea.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+CVS-Projto1_tmp_tmpb1o0bu8z_fact,5,True,,"verification results:: 15 verified, 0 errors
+"
+Dafny_Programs_tmp_tmp99966ew4_binary_search,18,True,,"verification results:: 2 verified, 0 errors
+"
+DafnyExercises_tmp_tmpd6qyevja_Part1_Q1,19,False,"error[E0601]: `main` function not found in crate `tmp07cfilqd`
+  --> /tmp/tmp07cfilqd.rs:29:2
+   |
+29 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp07cfilqd.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_week4_tute_ex4,10,False,"note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpdqllurjn.rs:15:9
+   |
+15 |         while n < a.len()
+   |         ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmpdqllurjn.rs:8:19
+   |
+8  |             -1 <= n < a.len(),
+   |                   ^ failed this postcondition
+...
+22 |                 return n as i32;
+   |                 --------------- at this exit
+
+error: postcondition not satisfied
+  --> /tmp/tmpdqllurjn.rs:9:13
+   |
+9  |             n == -1 || a[n as int] == target,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+22 |                 return n as i32;
+   |                 --------------- at this exit
+
+note: recommendation not met
+  --> /tmp/tmpdqllurjn.rs:9:24
+   |
+9  |             n == -1 || a[n as int] == target,
+   |                        ^^^^^^^^^^^
+   |
+  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18
+   |
+30 |             0 <= i < self.view().len(),
+   |                  - recommendation not met
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /tmp/tmpdqllurjn.rs:22:24
+   |
+22 |                 return n as i32;
+   |                        ^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpdqllurjn.rs:41:9
+   |
+41 |         while n < s1_len
+   |         ^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmpdqllurjn.rs:34:19
+   |
+34 |             -1 <= n < a.len(),
+   |                   ^ failed this postcondition
+...
+48 |                 return n as i32;
+   |                 --------------- at this exit
+
+error: postcondition not satisfied
+  --> /tmp/tmpdqllurjn.rs:35:13
+   |
+35 |             n == -1 || a[n as int] == target,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+48 |                 return n as i32;
+   |                 --------------- at this exit
+
+note: recommendation not met
+  --> /tmp/tmpdqllurjn.rs:35:24
+   |
+35 |             n == -1 || a[n as int] == target,
+   |                        ^^^^^^^^^^^
+   |
+  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18
+   |
+30 |             0 <= i < self.view().len(),
+   |                  - recommendation not met
+
+note: recommendation not met
+  --> /tmp/tmpdqllurjn.rs:44:47
+   |
+44 |                 forall|i: int| 0 <= i < n ==> a[i] != target,
+   |                                               ^^^^
+   |
+  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18
+   |
+30 |             0 <= i < self.view().len(),
+   |                  - recommendation not met
+
+error: precondition not satisfied
+  --> /tmp/tmpdqllurjn.rs:47:16
+   |
+47 |             if a[n] == target {
+   |                ^^^^
+   |
+  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /tmp/tmpdqllurjn.rs:48:24
+   |
+48 |                 return n as i32;
+   |                        ^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpdqllurjn.rs:67:9
+   |
+67 |         while n < s1_len
+   |         ^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /tmp/tmpdqllurjn.rs:70:69
+   |
+70 |                 position >= 1 ==> exists|i: int| 0 <= i < s1_len && data[i] == element,
+   |                                                                     ^^^^^^^
+   |
+  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18
+   |
+30 |             0 <= i < self.view().len(),
+   |                  - recommendation not met
+
+note: recommendation not met
+  --> /tmp/tmpdqllurjn.rs:71:64
+   |
+71 |                 forall|i: int| s1_len - 1 - n < i < s1_len ==> data[i] != element,
+   |                                                                ^^^^^^^
+   |
+  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18
+   |
+30 |             0 <= i < self.view().len(),
+   |                  - recommendation not met
+
+error: precondition not satisfied
+  --> /tmp/tmpdqllurjn.rs:75:16
+   |
+75 |             if data[index] == element {
+   |                ^^^^^^^^^^^
+   |
+  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /tmp/tmpdqllurjn.rs:76:28
+   |
+76 |                 position = n as i32 + 1;
+   |                            ^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmpdqllurjn.rs:76:28
+   |
+76 |                 position = n as i32 + 1;
+   |                            ^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpdqllurjn.rs:96:9
+   |
+96 |         while n < s1_len
+   |         ^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /tmp/tmpdqllurjn.rs:100:78
+    |
+100 |                 forall|i: int| data.len() - n1 < i < data.len() - n1 + n ==> data[i] != element,
+    |                                                                              ^^^^^^^
+    |
+   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18
+    |
+30  |             0 <= i < self.view().len(),
+    |                  - recommendation not met
+
+error: possible arithmetic underflow/overflow
+   --> /tmp/tmpdqllurjn.rs:103:25
+    |
+103 |             let index = data.len() - n1 + n;
+    |                         ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /tmp/tmpdqllurjn.rs:103:25
+    |
+103 |             let index = data.len() - n1 + n;
+    |                         ^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+   --> /tmp/tmpdqllurjn.rs:105:28
+    |
+105 |                 position = n as i32 + 1;
+    |                            ^
+
+error: aborting due to 9 previous errors
+
+","verification results:: 5 verified, 4 errors
+"
+630-dafny_tmp_tmpz2kokaiq_Solution,15,False,"note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpl3__7qx5.rs:15:9
+   |
+15 |         while i < a.len()
+   |         ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmpl3__7qx5.rs:11:13
+   |
+11 |             (0 <= index < a.len()) ==> a[index as int] == x,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+26 |                 return i as i32;
+   |                 --------------- at this exit
+
+error: postcondition not satisfied
+  --> /tmp/tmpl3__7qx5.rs:12:13
+   |
+12 |             (index == -1) ==> forall|i: int| 0 <= i < a.len() ==> a[i] != x,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+26 |                 return i as i32;
+   |                 --------------- at this exit
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /tmp/tmpl3__7qx5.rs:26:24
+   |
+26 |                 return i as i32;
+   |                        ^
+
+error: aborting due to 2 previous errors
+
+","verification results:: 1 verified, 1 errors
+"
+CS494-final-project_tmp_tmp7nof55uq_bubblesort,8,True,,"verification results:: 4 verified, 0 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseExp,4,True,,"verification results:: 4 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Fine_Tune_Examples_50_examples_38,8,True,,"verification results:: 2 verified, 0 errors
+"
+DafnyProjects_tmp_tmp2acw_s4s_partitionOddEven,14,True,,"verification results:: 5 verified, 0 errors
+"
+Clover_triple2,8,False,"error[E0601]: `main` function not found in crate `tmpwlc59ztq`
+  --> /tmp/tmpwlc59ztq.rs:36:2
+   |
+36 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpwlc59ztq.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root,8,False,"note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmphk4y7b3w.rs:11:9
+   |
+11 |         while r < 65536 
+   |         ^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmphk4y7b3w.rs:8:13
+   |
+8  |             r >= 0 && (r as int) * (r as int) <= n < ((r + 1) as int) * ((r + 1) as int),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+30 |         r
+   |         - at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmphk4y7b3w.rs:13:17
+   |
+13 |                 r >= 0 && (r as int) * (r as int) <= n,
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmphk4y7b3w.rs:20:20
+   |
+20 |                 if next_val * next_val <= n as u64 {
+   |                    ^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmphk4y7b3w.rs:34:5
+   |
+34 |     fn mroot2(n: u32) -> (r: u32)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmphk4y7b3w.rs:37:13
+   |
+37 |             r >= 0 && (r as int) * (r as int) <= n < ((r + 1) as int) * ((r + 1) as int),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+49 |         r
+   |         - at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmphk4y7b3w.rs:41:24
+   |
+41 |         while r > 0 && (r as u64) * (r as u64) > n as u64
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmphk4y7b3w.rs:64:9
+   |
+64 |         while y > r + 1
+   |         ^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmphk4y7b3w.rs:58:13
+   |
+58 |             r >= 0 && (r as int) * (r as int) <= n < ((r + 1) as int) * ((r + 1) as int),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+80 |         r
+   |         - at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmphk4y7b3w.rs:66:17
+   |
+66 |                 r >= 0 && (r as int) * (r as int) <= n,
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmphk4y7b3w.rs:71:29
+   |
+71 |             let h_squared = (h as u64) * (h as u64);
+   |                             ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 8 previous errors
+
+","verification results:: 1 verified, 6 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Fine_Tune_Examples_50_examples_SumArray,14,False,"error[E0601]: `main` function not found in crate `tmpv_ft_7dl`
+  --> /tmp/tmpv_ft_7dl.rs:36:2
+   |
+36 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpv_ft_7dl.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_dataset_bql_exampls_SmallNum,17,False,"error[E0601]: `main` function not found in crate `tmpo58vx2ke`
+  --> /tmp/tmpo58vx2ke.rs:34:2
+   |
+34 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpo58vx2ke.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_min_array,3,False,"error[E0601]: `main` function not found in crate `tmpq32gbu9l`
+  --> /tmp/tmpq32gbu9l.rs:26:2
+   |
+26 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpq32gbu9l.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_InsertionSortMultiset,10,False,"error: expected one of `!` or `::`, found `me`
+ --> /tmp/tmpn1ojhx23.rs:1:5
+  |
+1 | Let me try using the explicit nat literal:
+  |     ^^ expected one of `!` or `::`
+  |
+help: write keyword `let` in lowercase
+  |
+1 - Let me try using the explicit nat literal:
+1 + let me try using the explicit nat literal:
+  |
+
+error: aborting due to 1 previous error
+
+",
+Clover_set_to_seq,17,False,"error[E0601]: `main` function not found in crate `tmpqcn9ogq9`
+  --> /tmp/tmpqcn9ogq9.rs:43:2
+   |
+43 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpqcn9ogq9.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_min_of_two,2,False,"error[E0601]: `main` function not found in crate `tmp9cukgixm`
+  --> /tmp/tmp9cukgixm.rs:15:2
+   |
+15 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp9cukgixm.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_tmp_tmpmvs2dmry_pancakesort_findmax,2,False,"error[E0601]: `main` function not found in crate `tmp45z9zzt4`
+  --> /tmp/tmp45z9zzt4.rs:31:2
+   |
+31 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp45z9zzt4.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_tmp_tmp0wu8wmfr_tests_InsertionSortSeq,21,False,"note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpz3i9jg3k.rs:21:9
+   |
+21 |         while i < s.len()
+   |         ^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpz3i9jg3k.rs:13:5
+   |
+13 |     fn insertion_sort(s: &Vec<int>) -> (r: Vec<int>)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmpz3i9jg3k.rs:15:13
+   |
+15 |             s@.to_multiset() == r@.to_multiset(),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+49 |         r
+   |         - at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmpz3i9jg3k.rs:24:17
+   |
+24 |                 s@.subrange(0, i as int).to_multiset() == r@.to_multiset(),
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+  --> /tmp/tmpz3i9jg3k.rs:24:17
+   |
+24 |                 s@.subrange(0, i as int).to_multiset() == r@.to_multiset(),
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmpz3i9jg3k.rs:25:17
+   |
+25 |                 is_sorted(r@),
+   |                 ^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+
+","verification results:: 1 verified, 2 errors
+"
+Clover_linear_search1,3,False,"error[E0601]: `main` function not found in crate `tmp0nm7yab_`
+  --> /tmp/tmp0nm7yab_.rs:25:2
+   |
+25 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp0nm7yab_.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_Generated_Code_rand,18,False,"note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmp7ml9lr0t.rs:12:9
+   |
+12 |         while x > 0
+   |         ^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmp7ml9lr0t.rs:17:17
+   |
+17 |                 y == 0 || z >= y,
+   |                 ^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+  --> /tmp/tmp7ml9lr0t.rs:17:17
+   |
+17 |                 y == 0 || z >= y,
+   |                 ^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /tmp/tmp7ml9lr0t.rs:32:24
+   |
+32 |                 assert((x as int - 1) * (y as int) == (x as int) * (y as int) - (y as int));
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 3 previous errors
+
+","verification results:: 0 verified, 2 errors
+"
+Clover_update_map,9,False,"error[E0601]: `main` function not found in crate `tmpx18usjrc`
+  --> /tmp/tmpx18usjrc.rs:28:2
+   |
+28 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpx18usjrc.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_dataset_bql_exampls_Min,4,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week8_12_week8_CoffeeMaker2,11,False,"error[E0601]: `main` function not found in crate `tmpslrq74l4`
+  --> /tmp/tmpslrq74l4.rs:25:2
+   |
+25 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpslrq74l4.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny-demo_tmp_tmpkgr_dvdi_Dafny_BinarySearch,24,False,"error[E0601]: `main` function not found in crate `tmpd8rm6_6o`
+  --> /tmp/tmpd8rm6_6o.rs:47:2
+   |
+47 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpd8rm6_6o.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_slope_search,13,False,"error[E0601]: `main` function not found in crate `tmpkyg12lim`
+  --> /tmp/tmpkyg12lim.rs:50:2
+   |
+50 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpkyg12lim.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_week5_ComputePower,12,False,"note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmp2kbzhpt4.rs:10:5
+   |
+10 |     fn calc_power(n: u32) -> (p: u32)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmp2kbzhpt4.rs:11:17
+   |
+11 |         ensures p as nat == 2 * n
+   |                 ^^^^^^^^^^^^^^^^^ failed this postcondition
+12 |     {
+13 |         2 * n
+   |         ----- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmp2kbzhpt4.rs:13:9
+   |
+13 |         2 * n
+   |         ^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmp2kbzhpt4.rs:17:17
+   |
+17 |         ensures p as nat == power(n as nat)
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+30 |         p
+   |         - at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmp2kbzhpt4.rs:24:17
+   |
+24 |                 p as nat * power((n - i) as nat) == power(n as nat)
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+
+","verification results:: 1 verified, 3 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Fine_Tune_Examples_50_examples_41,18,False,"error: possible arithmetic underflow/overflow
+  --> /tmp/tmpitfazfgu.rs:24:17
+   |
+24 |             j = j + i;
+   |                 ^^^^^
+
+error: aborting due to 1 previous error
+
+","verification results:: 1 verified, 1 errors
+"
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week8_12_week8_CheckSumCalculator,22,True,,"verification results:: 5 verified, 0 errors
+"
+Clover_multi_return,2,False,"error[E0601]: `main` function not found in crate `tmpngf4weh8`
+  --> /tmp/tmpngf4weh8.rs:11:2
+   |
+11 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpngf4weh8.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_tmp_tmpmvs2dmry_examples2,13,False,"note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpb4fy_d1i.rs:77:10
+   |
+77 |     spec fn gcd(m: int, n: int) -> int
+   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: could not prove termination
+  --> /tmp/tmpb4fy_d1i.rs:84:13
+   |
+84 |             gcd(m - n, n)
+   |             ^^^^^^^^^^^^^
+
+error: could not prove termination
+  --> /tmp/tmpb4fy_d1i.rs:86:13
+   |
+86 |             gcd(m, n - m)
+   |             ^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpb4fy_d1i.rs:11:9
+   |
+11 |         while i < y
+   |         ^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmpb4fy_d1i.rs:14:17
+   |
+14 |                 z as u64 == x as u64 + i as u64,
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmpb4fy_d1i.rs:18:17
+   |
+18 |             z = z + 1;
+   |                 ^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpb4fy_d1i.rs:39:13
+   |
+39 |             while n1 != 0
+   |             ^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmpb4fy_d1i.rs:34:17
+   |
+34 |                 res as u64 == (m - m1) as u64 * n as u64,
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+  --> /tmp/tmpb4fy_d1i.rs:34:17
+   |
+34 |                 res as u64 == (m - m1) as u64 * n as u64,
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmpb4fy_d1i.rs:42:21
+   |
+42 |                     res as u64 == (m - m1) as u64 * n as u64 + (n - n1) as u64,
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /tmp/tmpb4fy_d1i.rs:42:35
+   |
+42 |                     res as u64 == (m - m1) as u64 * n as u64 + (n - n1) as u64,
+   |                                   ^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmpb4fy_d1i.rs:46:23
+   |
+46 |                 res = res + 1;
+   |                       ^^^^^^^
+
+error: aborting due to 8 previous errors
+
+","verification results:: 4 verified, 5 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Fine_Tune_Examples_normal_data_completion_MaxPerdV2,3,False,"error[E0601]: `main` function not found in crate `tmp0oyxkbp5`
+  --> /tmp/tmp0oyxkbp5.rs:39:2
+   |
+39 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp0oyxkbp5.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_canyon_search,11,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_dataset_detailed_examples_SelectionSort,6,False,"error[E0601]: `main` function not found in crate `tmpv616hype`
+  --> /tmp/tmpv616hype.rs:56:2
+   |
+56 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpv616hype.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_max_array,2,False,"error[E0601]: `main` function not found in crate `tmp00165zq9`
+  --> /tmp/tmp00165zq9.rs:24:2
+   |
+24 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp00165zq9.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+DafnyProjects_tmp_tmp2acw_s4s_findMax,4,True,,"verification results:: 3 verified, 0 errors
+"
+CO3408-Advanced-Software-Modelling-Assignment-2022-23-Part-2-A-Specification-Spectacular_tmp_tmp4pj4p2zx_car_park,18,False,"note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpe2v8iuy0.rs:43:9
+   |
+43 |         fn check_availability(&self) -> (available_spaces: i32)
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmpe2v8iuy0.rs:45:36
+   |
+45 |             let normal_available = 2 - self.car_park_count as i32;
+   |                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /tmp/tmpe2v8iuy0.rs:45:40
+   |
+45 |             let normal_available = 2 - self.car_park_count as i32;
+   |                                        ^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmpe2v8iuy0.rs:46:38
+   |
+46 |             let reserved_available = 3 - self.reserved_car_park_count as i32;
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /tmp/tmpe2v8iuy0.rs:46:42
+   |
+46 |             let reserved_available = 3 - self.reserved_car_park_count as i32;
+   |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmpe2v8iuy0.rs:49:17
+   |
+49 |                 normal_available + reserved_available
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /tmp/tmpe2v8iuy0.rs:111:5
+    |
+111 |     fn main() {
+    |     ^^^^^^^^^
+
+error: assertion failed
+   --> /tmp/tmpe2v8iuy0.rs:116:16
+    |
+116 |         assert(available_spaces == 2);
+    |                ^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+   --> /tmp/tmpe2v8iuy0.rs:119:16
+    |
+119 |         assert(success);
+    |                ^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /tmp/tmpe2v8iuy0.rs:147:5
+    |
+147 |     fn main_b() {
+    |     ^^^^^^^^^^^
+
+error: assertion failed
+   --> /tmp/tmpe2v8iuy0.rs:155:16
+    |
+155 |         assert(success);
+    |                ^^^^^^^ assertion failed
+
+error: assertion failed
+   --> /tmp/tmpe2v8iuy0.rs:156:16
+    |
+156 |         assert(car_park.reserved_car_park_count == 1);
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 7 previous errors
+
+","verification results:: 7 verified, 3 errors
+"
+DafnyProjects_tmp_tmp2acw_s4s_CombNK,8,True,,"verification results:: 4 verified, 0 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExerciseContained,4,False,"error[E0601]: `main` function not found in crate `tmp8x32moi2`
+  --> /tmp/tmp8x32moi2.rs:62:2
+   |
+62 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp8x32moi2.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_triple,6,True,,"verification results:: 1 verified, 0 errors
+"
+BinarySearchTree_tmp_tmp_bn2twp5_bst4copy,8,True,,"verification results:: 13 verified, 0 errors
+"
+Dafny-VMC_tmp_tmpzgqv0i1u_src_Math_Exponential,7,True,,"verification results:: 5 verified, 0 errors
+"
+Clover_replace,24,False,"error[E0601]: `main` function not found in crate `tmpf4a2tm2i`
+  --> /tmp/tmpf4a2tm2i.rs:29:2
+   |
+29 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpf4a2tm2i.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+CSC8204-Dafny_tmp_tmp11yhjb53_stack,6,True,,"verification results:: 2 verified, 0 errors
+"
+Clover_seq_to_array,18,False,"error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /tmp/tmpj50m0tk0.rs:20:28
+   |
+20 |             result.push(xs[i as int]);
+   |                            ^^^^^^^^
+
+error: aborting due to 1 previous error
+
+",
+Dafny_Verify_tmp_tmphq7j0row_Generated_Code_Mult,20,False,"error[E0601]: `main` function not found in crate `tmp3mqihfce`
+  --> /tmp/tmp3mqihfce.rs:24:2
+   |
+24 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp3mqihfce.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_array_concat,5,False,"error[E0601]: `main` function not found in crate `tmpd2xqo1jf`
+  --> /tmp/tmpd2xqo1jf.rs:39:2
+   |
+39 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpd2xqo1jf.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_dataset_bql_exampls_Square,20,False,"note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpo_n83jrk.rs:12:9
+   |
+12 |         while i < n
+   |         ^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmpo_n83jrk.rs:27:17
+   |
+27 |             r = r + x;
+   |                 ^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmpo_n83jrk.rs:29:17
+   |
+29 |             x = x + 2;
+   |                 ^^^^^
+
+error: aborting due to 2 previous errors
+
+","verification results:: 2 verified, 1 errors
+"
+Clover_swap_sim,3,True,,"verification results:: 1 verified, 0 errors
+"
+Clover_array_product,14,False,"error[E0601]: `main` function not found in crate `tmppk9zx_56`
+  --> /tmp/tmppk9zx_56.rs:29:2
+   |
+29 | }
+   |  ^ consider adding a `main` function to `/tmp/tmppk9zx_56.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBinarySearch,15,False,"error: expected curly braces
+  --> /tmp/tmp5j5k_5qq.rs:75:9
+   |
+75 |         ensures 
+   |         ^^^^^^^
+
+error: aborting due to 1 previous error
+
+",
+Clover_insert,12,False,"error[E0601]: `main` function not found in crate `tmp7bwoqo2u`
+  --> /tmp/tmp7bwoqo2u.rs:59:2
+   |
+59 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp7bwoqo2u.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_tmp_tmpv_d3qi10_3_cumsum,7,False,"error[E0601]: `main` function not found in crate `tmpmk8pch99`
+  --> /tmp/tmpmk8pch99.rs:55:2
+   |
+55 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpmk8pch99.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_Week4__LinearSearch,8,True,,"verification results:: 6 verified, 0 errors
+"
+Clover_convert_map_key,14,True,"note: automatically chose triggers for this expression:
+  --> /tmp/tmp8ufk1i6_.rs:27:17
+   |
+27 |                 (forall|k: nat| inputs.contains_key(k) ==> r.index(f(k)) == inputs.index(k))
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+  --> /tmp/tmp8ufk1i6_.rs:27:77
+   |
+27 |                 (forall|k: nat| inputs.contains_key(k) ==> r.index(f(k)) == inputs.index(k))
+   |                                                                             ^^^^^^^^^^^^^^^
+
+note: Verus printed one or more automatically chosen quantifier triggers
+      because it had low confidence in the chosen triggers.
+      To suppress these messages, do one of the following:
+        (1) manually annotate a single desired trigger using #[trigger]
+            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),
+        (2) manually annotate multiple desired triggers using #![trigger ...]
+            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),
+        (3) accept the automatically chosen trigger using #![auto]
+            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))
+        (4) use the --triggers-silent command-line option to suppress all printing of triggers.
+      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;
+      the theorem prover instantiates a quantifier whenever some expression matches the
+      pattern specified by one of the quantifier's triggers.)
+  --> /tmp/tmp8ufk1i6_.rs:27:17
+   |
+27 |                 (forall|k: nat| inputs.contains_key(k) ==> r.index(f(k)) == inputs.index(k))
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+","verification results:: 1 verified, 0 errors
+"
+Clover_rotate,16,False,"error[E0601]: `main` function not found in crate `tmpafdung2q`
+  --> /tmp/tmpafdung2q.rs:26:2
+   |
+26 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpafdung2q.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_binary_search,16,True,,"verification results:: 1 verified, 0 errors
+"
+Clover_selectionsort,7,True,,"verification results:: 3 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Fine_Tune_Examples_error_data_completion_07,23,False,"error[E0601]: `main` function not found in crate `tmpecc3ruyb`
+  --> /tmp/tmpecc3ruyb.rs:45:2
+   |
+45 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpecc3ruyb.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_linear_search2,3,True,,"verification results:: 2 verified, 0 errors
+"
+Clover_double_quadruple,9,False,"error[E0601]: `main` function not found in crate `tmp9vlwq5jd`
+  --> /tmp/tmp9vlwq5jd.rs:14:2
+   |
+14 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp9vlwq5jd.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_test_array,2,True,,"verification results:: 1 verified, 0 errors
+"
+CVS-handout1_tmp_tmptm52no3k_2,10,True,,"verification results:: 5 verified, 0 errors
+"
+Clover_array_sum,6,False,"error[E0601]: `main` function not found in crate `tmpswhjwxwe`
+  --> /tmp/tmpswhjwxwe.rs:28:2
+   |
+28 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpswhjwxwe.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_array_copy,2,False,"error[E0601]: `main` function not found in crate `tmp874r065s`
+  --> /tmp/tmp874r065s.rs:25:2
+   |
+25 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp874r065s.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_Fine_Tune_Examples_50_examples_BinarySearch,13,False,"error[E0601]: `main` function not found in crate `tmpopj93xcy`
+  --> /tmp/tmpopj93xcy.rs:43:2
+   |
+43 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpopj93xcy.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_SelectionSortMultiset,28,True,,"verification results:: 7 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_dataset_C_convert_examples_01,8,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny_tmp_tmpv_d3qi10_2_min,5,True,,"verification results:: 6 verified, 0 errors
+"
+Correctness_tmp_tmpwqvg5q_4_MethodCalls_q1,12,False,"warning: uninterpreted functions (`spec` functions defined without a body) need to be marked as `uninterp`
+         this will become a hard error in the future
+ --> /tmp/tmpxgkyzze_.rs:4:5
+  |
+4 |     spec fn fusc(n: int) -> nat;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+  --> /tmp/tmpxgkyzze_.rs:34:26
+   |
+34 |         let mut b: int = 0;
+   |                    ---   ^ expected `int`, found integer
+   |                    |
+   |                    expected due to this
+
+error[E0308]: mismatched types
+  --> /tmp/tmpxgkyzze_.rs:36:26
+   |
+36 |         let mut a: int = 1;
+   |                    ---   ^ expected `int`, found integer
+   |                    |
+   |                    expected due to this
+
+error[E0308]: mismatched types
+  --> /tmp/tmpxgkyzze_.rs:41:20
+   |
+41 |         while n != 0
+   |               -    ^ expected `int`, found integer
+   |               |
+   |               expected because this is `builtin::int`
+
+error[E0308]: mismatched types
+  --> /tmp/tmpxgkyzze_.rs:64:20
+   |
+64 |             if n % 2 == 0 {
+   |                -   ^ expected `int`, found integer
+   |                |
+   |                expected because this is `builtin::int`
+
+error[E0308]: mismatched types
+  --> /tmp/tmpxgkyzze_.rs:64:25
+   |
+64 |             if n % 2 == 0 {
+   |                -----    ^ expected `int`, found integer
+   |                |
+   |                expected because this is `builtin::int`
+
+error[E0308]: mismatched types
+  --> /tmp/tmpxgkyzze_.rs:82:25
+   |
+82 |                 n = n / 2;
+   |                     -   ^ expected `int`, found integer
+   |                     |
+   |                     expected because this is `builtin::int`
+
+error[E0308]: mismatched types
+   --> /tmp/tmpxgkyzze_.rs:132:26
+    |
+132 |                 n = (n - 1) / 2;
+    |                      -   ^ expected `int`, found integer
+    |                      |
+    |                      expected because this is `builtin::int`
+
+error[E0308]: mismatched types
+   --> /tmp/tmpxgkyzze_.rs:132:31
+    |
+132 |                 n = (n - 1) / 2;
+    |                     -------   ^ expected `int`, found integer
+    |                     |
+    |                     expected because this is `builtin::int`
+
+error: aborting due to 8 previous errors; 1 warning emitted
+
+For more information about this error, try `rustc --explain E0308`.
+",
+Clover_integer_square_root,23,True,,"verification results:: 1 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Fine_Tune_Examples_50_examples_28,6,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBubbleSort,7,True,,"verification results:: 6 verified, 0 errors
+"
+Clover_triple3,7,True,,"verification results:: 1 verified, 0 errors
+"
+Clover_double_array_elements,6,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_AI_agent_verify_examples_ComputePower,20,True,,"verification results:: 3 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Generated_Code_15,18,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny_tmp_tmpj88zq5zt_2-Kontrakte_max,2,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny-Practice_tmp_tmphnmt4ovh_BST,10,False,"note: recommendation not met
+   --> /tmp/tmp907qmzpf.rs:176:19
+    |
+176 |             q2 == q1.subrange(i, i + q2.len()) &&
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37
+    |
+116 |             0 <= start_inclusive <= end_exclusive <= self.len(),
+    |                                     ------------- recommendation not met
+
+error: postcondition not satisfied
+   --> /tmp/tmp907qmzpf.rs:178:17
+    |
+173 |     pub proof fn lemma_ascending_subsequence(q1: Seq<int>, q2: Seq<int>, i: int)
+    |     ---------------------------------------------------------------------------- at the end of the function body
+...
+178 |         ensures ascending(q2)
+    |                 ^^^^^^^^^^^^^ failed this postcondition
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /tmp/tmp907qmzpf.rs:157:5
+    |
+157 |     pub proof fn lemma_binary_search_subtree(n: int, left: Tree, right: Tree)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /tmp/tmp907qmzpf.rs:167:9
+    |
+167 |           lemma_ascending_subsequence(q, qleft, 0);
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+175 | /             i <= q1.len() - q2.len() && 
+176 | |             q2 == q1.subrange(i, i + q2.len()) &&
+177 | |             ascending(q1),
+    | |_________________________- failed precondition
+
+error: precondition not satisfied
+   --> /tmp/tmp907qmzpf.rs:169:9
+    |
+169 |           lemma_ascending_subsequence(q, qright, qleft.len() as int + 1);
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+175 | /             i <= q1.len() - q2.len() && 
+176 | |             q2 == q1.subrange(i, i + q2.len()) &&
+177 | |             ascending(q1),
+    | |_________________________- failed precondition
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmp907qmzpf.rs:77:5
+   |
+77 |     pub fn insert_bst(t0: Tree, x: int) -> (t: Tree)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /tmp/tmp907qmzpf.rs:89:31
+   |
+78 |         requires bst(t0) && !numbers_in_tree(t0).contains(x),
+   |                  ------------------------------------------- failed precondition
+...
+89 |                     let tmp = insert_bst(*left, x);
+   |                               ^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+   --> /tmp/tmp907qmzpf.rs:106:32
+    |
+106 |                         assert(ascending(seq![i] + right_nums));
+    |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmp907qmzpf.rs:64:9
+   |
+64 |         while i < q.len()
+   |         ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmp907qmzpf.rs:60:17
+   |
+60 |         ensures bst(t) && numbers_in_tree(t) == numbers_in_sequence(q@)
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+74 |         t
+   |         - at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmp907qmzpf.rs:67:17
+   |
+67 |                 numbers_in_tree(t) == numbers_in_sequence(q@.subrange(0, i as int)),
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /tmp/tmp907qmzpf.rs:71:13
+   |
+71 |             t = insert_bst(t, q[i]);
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+...
+78 |         requires bst(t0) && !numbers_in_tree(t0).contains(x),
+   |                  ------------------------------------------- failed precondition
+
+note: automatically chose triggers for this expression:
+   --> /tmp/tmp907qmzpf.rs:184:13
+    |
+184 |             forall|k: int| 0 <= k < q.len() ==> numbers_in_sequence(q).contains(q[k]),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+   --> /tmp/tmp907qmzpf.rs:184:81
+    |
+184 |             forall|k: int| 0 <= k < q.len() ==> numbers_in_sequence(q).contains(q[k]),
+    |                                                                                 ^^^^
+
+note: automatically chose triggers for this expression:
+   --> /tmp/tmp907qmzpf.rs:191:13
+    |
+191 |             forall|k: int| 0 <= k < q.len() ==> numbers_in_sequence(q).contains(q[k]),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+   --> /tmp/tmp907qmzpf.rs:191:81
+    |
+191 |             forall|k: int| 0 <= k < q.len() ==> numbers_in_sequence(q).contains(q[k]),
+    |                                                                                 ^^^^
+
+note: Verus printed one or more automatically chosen quantifier triggers
+      because it had low confidence in the chosen triggers.
+      To suppress these messages, do one of the following:
+        (1) manually annotate a single desired trigger using #[trigger]
+            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),
+        (2) manually annotate multiple desired triggers using #![trigger ...]
+            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),
+        (3) accept the automatically chosen trigger using #![auto]
+            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))
+        (4) use the --triggers-silent command-line option to suppress all printing of triggers.
+      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;
+      the theorem prover instantiates a quantifier whenever some expression matches the
+      pattern specified by one of the quantifier's triggers.)
+   --> /tmp/tmp907qmzpf.rs:191:13
+    |
+191 |             forall|k: int| 0 <= k < q.len() ==> numbers_in_sequence(q).contains(q[k]),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 8 previous errors
+
+","verification results:: 5 verified, 5 errors
+"
+Clover_reverse,3,False,"error[E0601]: `main` function not found in crate `tmpwrszk_1w`
+  --> /tmp/tmpwrszk_1w.rs:29:2
+   |
+29 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpwrszk_1w.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop,16,False,"error: expected curly braces
+  --> /tmp/tmp5fu6dtar.rs:17:9
+   |
+17 |         ensures s == n * (n + 1) / 2,
+   |         ^^^^^^^
+
+error: aborting due to 1 previous error
+
+",
+Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExercisePositive,13,True,,"verification results:: 8 verified, 0 errors
+"
+Dafny-programs_tmp_tmpnso9eu7u_Algorithms + sorting_bubble-sort,10,True,,"verification results:: 3 verified, 0 errors
+"
+CVS-Projto1_tmp_tmpb1o0bu8z_searchSort,5,True,,"verification results:: 5 verified, 0 errors
+"
+Clover_cal_ans,7,False,"error[E0601]: `main` function not found in crate `tmpldm278hi`
+  --> /tmp/tmpldm278hi.rs:24:2
+   |
+24 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpldm278hi.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_dataset_error_data_real_error_IsEven_success_1,5,True,,"verification results:: 3 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Triple,7,True,,"verification results:: 5 verified, 0 errors
+"
+Dafny_tmp_tmpmvs2dmry_examples1,6,True,,"verification results:: 4 verified, 0 errors
+"
+Clover_is_even,6,True,,"verification results:: 1 verified, 0 errors
+"
+703FinalProject_tmp_tmpr_10rn4z_gaussian,12,True,,
+Dafny_Programs_tmp_tmp99966ew4_trig,6,True,,"verification results:: 1 verified, 0 errors
+"
+CVS-Projto1_tmp_tmpb1o0bu8z_Hoare,12,True,,"verification results:: 7 verified, 0 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseSelSort,6,True,,"verification results:: 3 verified, 0 errors
+"
+Clover_match,4,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExerciseAllEqual,9,True,,"verification results:: 12 verified, 0 errors
+"
+Clover_abs,8,False,"error[E0601]: `main` function not found in crate `tmpfvz9koq5`
+  --> /tmp/tmpfvz9koq5.rs:16:2
+   |
+16 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpfvz9koq5.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_quotient,16,False,"note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpp_yk7e3c.rs:16:9
+   |
+16 |         while y <= r
+   |         ^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmpp_yk7e3c.rs:18:17
+   |
+18 |                 q * y + r == x,
+   |                 ^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmpp_yk7e3c.rs:19:17
+   |
+19 |                 q < 1000,
+   |                 ^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+","verification results:: 1 verified, 1 errors
+"
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week8_12_week10_ExtensibleArray,10,False,"warning: uninterpreted functions (`spec` functions defined without a body) need to be marked as `uninterp`
+         this will become a hard error in the future
+  --> /tmp/tmp8hhjl9r4.rs:16:9
+   |
+16 |         spec fn elements(self) -> Seq<T>;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmp8hhjl9r4.rs:33:17
+   |
+33 | /                 result.valid() && 
+34 | |                 result.elements().len() == 0
+   | |____________________________________________^ failed this postcondition
+35 |           {
+36 | /             ExtensibleArray {
+37 | |                 front: None,
+38 | |                 length: 0,
+39 | |                 m: 0,
+40 | |             }
+   | |_____________- at the end of the function body
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmp8hhjl9r4.rs:44:9
+   |
+44 |         fn get(&self, i: usize) -> (result: T)
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmp8hhjl9r4.rs:49:21
+   |
+49 |             ensures result == self.elements()[i as int]
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+52 |             front_ref[i - self.m]
+   |             --------------------- at the end of the function body
+
+error: precondition not satisfied
+  --> /tmp/tmp8hhjl9r4.rs:52:13
+   |
+52 |             front_ref[i - self.m]
+   |             ^^^^^^^^^^^^^^^^^^^^^
+   |
+  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+error: aborting due to 3 previous errors; 1 warning emitted
+
+","verification results:: 1 verified, 2 errors
+"
+Dafny_Programs_tmp_tmp99966ew4_mymax,4,True,,"verification results:: 2 verified, 0 errors
+"
+DafnyProjects_tmp_tmp2acw_s4s_Power,18,False,"error: assertion failed
+  --> /tmp/tmplhrhsk_t.rs:37:16
+   |
+37 |         assert(power(-2, 2) == 4);
+   |                ^^^^^^^^^^^^^^^^^ assertion failed
+
+error: postcondition not satisfied
+  --> /tmp/tmplhrhsk_t.rs:60:17
+   |
+60 |           ensures power_dc_spec(x, n) == power(x, n)
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+63 | /         if n == 0 {
+64 | |             // Base case
+65 | |         } else if n == 1 {
+...  |
+74 | |             power_dc_correct(x, ((n - 1) / 2) as nat);
+75 | |         }
+   | |_________- at the end of the function body
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmplhrhsk_t.rs:79:11
+   |
+79 |     proof fn test_power_dc_spec() {
+   |           ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /tmp/tmplhrhsk_t.rs:81:16
+   |
+81 |         assert(power_dc_spec(2, 5) == 32);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /tmp/tmplhrhsk_t.rs:83:16
+   |
+83 |         assert(power_dc_spec(-2, 2) == 4);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 4 previous errors
+
+","verification results:: 3 verified, 3 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExerciseFirstNegative,4,False,"error[E0601]: `main` function not found in crate `tmpgb_npcif`
+  --> /tmp/tmpgb_npcif.rs:66:2
+   |
+66 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpgb_npcif.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+DafnyPrograms_tmp_tmp74_f9k_c_map-multiset-implementation,10,True,,"verification results:: 10 verified, 0 errors
+"
+DafnyPrograms_tmp_tmp74_f9k_c_prime-database,10,False,"error: invariant not satisfied at end of loop body
+  --> /tmp/tmppw3r6kqx.rs:30:17
+   |
+30 |                 result == (forall|j: nat| 1 < j < (i as nat) ==> #[trigger] ((n as nat) % j) != 0)
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+","verification results:: 2 verified, 1 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExercisefirstZero,7,False,"error[E0601]: `main` function not found in crate `tmp2wpz1euf`
+  --> /tmp/tmp2wpz1euf.rs:21:2
+   |
+21 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp2wpz1euf.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+DafnyPrograms_tmp_tmp74_f9k_c_invertarray,3,False,"error[E0601]: `main` function not found in crate `tmpmuf0qrl6`
+  --> /tmp/tmpmuf0qrl6.rs:35:2
+   |
+35 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpmuf0qrl6.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny-VMC_tmp_tmpzgqv0i1u_src_Math_Helper,8,False,"error[E0601]: `main` function not found in crate `tmp48tb5zjq`
+  --> /tmp/tmp48tb5zjq.rs:24:2
+   |
+24 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp48tb5zjq.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny-experiences_tmp_tmp150sm9qy_dafny_started_tutorial_dafny_tutorial_array,2,False,"error[E0601]: `main` function not found in crate `tmp28lnho0w`
+  --> /tmp/tmp28lnho0w.rs:28:2
+   |
+28 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp28lnho0w.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+DafnyProjects_tmp_tmp2acw_s4s_Graph,1,False,"error: expected one of `!` or `::`, found `need`
+ --> /tmp/tmp3hi_w7nl.rs:1:3
+  |
+1 | I need to fix the syntax error. Let me correct the ensures clause:
+  |   ^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+
+",
+Clover_even_list,12,True,"note: automatically chose triggers for this expression:
+  --> /tmp/tmpsgdb08fl.rs:12:13
+   |
+12 |             forall|k: int| 0 <= k < even_numbers@.len() ==> is_even_spec(even_numbers@[k] as int),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+  --> /tmp/tmpsgdb08fl.rs:12:74
+   |
+12 |             forall|k: int| 0 <= k < even_numbers@.len() ==> is_even_spec(even_numbers@[k] as int),
+   |                                                                          ^^^^^^^^^^^^^^^^
+
+note: automatically chose triggers for this expression:
+  --> /tmp/tmpsgdb08fl.rs:14:13
+   |
+14 |             forall|k: int| 0 <= k < even_numbers@.len() ==> arr@.contains(even_numbers@[k]),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+  --> /tmp/tmpsgdb08fl.rs:14:75
+   |
+14 |             forall|k: int| 0 <= k < even_numbers@.len() ==> arr@.contains(even_numbers@[k]),
+   |                                                                           ^^^^^^^^^^^^^^^^
+
+note: automatically chose triggers for this expression:
+  --> /tmp/tmpsgdb08fl.rs:16:13
+   |
+16 |             forall|x: i32| even_numbers@.contains(x) ==> (arr@.contains(x) && is_even_spec(x as int))
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+  --> /tmp/tmpsgdb08fl.rs:16:79
+   |
+16 |             forall|x: i32| even_numbers@.contains(x) ==> (arr@.contains(x) && is_even_spec(x as int))
+   |                                                                               ^^^^^^^^^^^^^^^^^^^^^^
+
+note: automatically chose triggers for this expression:
+  --> /tmp/tmpsgdb08fl.rs:24:17
+   |
+24 |                 forall|k: int| 0 <= k < even_list@.len() ==> is_even_spec(even_list@[k] as int),
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+  --> /tmp/tmpsgdb08fl.rs:24:75
+   |
+24 |                 forall|k: int| 0 <= k < even_list@.len() ==> is_even_spec(even_list@[k] as int),
+   |                                                                           ^^^^^^^^^^^^^
+
+note: automatically chose triggers for this expression:
+  --> /tmp/tmpsgdb08fl.rs:26:17
+   |
+26 |                 forall|k: int| 0 <= k < even_list@.len() ==> arr@.contains(even_list@[k]),
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+  --> /tmp/tmpsgdb08fl.rs:26:76
+   |
+26 |                 forall|k: int| 0 <= k < even_list@.len() ==> arr@.contains(even_list@[k]),
+   |                                                                            ^^^^^^^^^^^^^
+
+note: automatically chose triggers for this expression:
+  --> /tmp/tmpsgdb08fl.rs:28:17
+   |
+28 |                 forall|x: i32| even_list@.contains(x) ==> (arr@.contains(x) && is_even_spec(x as int))
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+  --> /tmp/tmpsgdb08fl.rs:28:80
+   |
+28 |                 forall|x: i32| even_list@.contains(x) ==> (arr@.contains(x) && is_even_spec(x as int))
+   |                                                                                ^^^^^^^^^^^^^^^^^^^^^^
+
+note: Verus printed one or more automatically chosen quantifier triggers
+      because it had low confidence in the chosen triggers.
+      To suppress these messages, do one of the following:
+        (1) manually annotate a single desired trigger using #[trigger]
+            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),
+        (2) manually annotate multiple desired triggers using #![trigger ...]
+            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),
+        (3) accept the automatically chosen trigger using #![auto]
+            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))
+        (4) use the --triggers-silent command-line option to suppress all printing of triggers.
+      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;
+      the theorem prover instantiates a quantifier whenever some expression matches the
+      pattern specified by one of the quantifier's triggers.)
+  --> /tmp/tmpsgdb08fl.rs:28:17
+   |
+28 |                 forall|x: i32| even_list@.contains(x) ==> (arr@.contains(x) && is_even_spec(x as int))
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+","verification results:: 2 verified, 0 errors
+"
+AssertivePrograming_tmp_tmpwf43uz0e_MergeSort,10,False,"note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmptk7yjtyh.rs:82:5
+   |
+82 |     fn merge(c: Vec<i32>, d: Vec<i32>) -> (b: Vec<i32>)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /tmp/tmptk7yjtyh.rs:87:13
+    |
+87  |             sorted(b@),
+    |             ^^^^^^^^^^ failed this postcondition
+...
+124 |         b
+    |         - at the end of the function body
+
+error: postcondition not satisfied
+   --> /tmp/tmptk7yjtyh.rs:88:13
+    |
+88  |             b@.to_multiset() == c@.to_multiset().add(d@.to_multiset()),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+124 |         b
+    |         - at the end of the function body
+
+error: postcondition not satisfied
+  --> /tmp/tmptk7yjtyh.rs:29:13
+   |
+29 |               a@.to_multiset() == b@.to_multiset()
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+32 | /         if a.len() <= 1 {
+33 | |             a
+34 | |         } else {
+35 | |             let mid: usize = a.len() / 2;
+...  |
+73 | |             merge(sorted_a1, sorted_a2)
+74 | |         }
+   | |_________- at the end of the function body
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /tmp/tmptk7yjtyh.rs:157:11
+    |
+157 |     proof fn lemma_inv_subset_take_value_from_c(b: Seq<i32>, c: Seq<i32>, d: Seq<i32>, i: int, j: int)
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /tmp/tmptk7yjtyh.rs:163:13
+    |
+163 |             b.subrange(0, i+j).to_multiset() == c.subrange(0, i).to_multiset().add(d.subrange(0, j).to_multiset()),
+    |             ^^^^^^^^^^^^^^^^^^
+    |
+   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37
+    |
+116 |             0 <= start_inclusive <= end_exclusive <= self.len(),
+    |                                     ------------- recommendation not met
+
+note: recommendation not met
+   --> /tmp/tmptk7yjtyh.rs:163:49
+    |
+163 |             b.subrange(0, i+j).to_multiset() == c.subrange(0, i).to_multiset().add(d.subrange(0, j).to_multiset()),
+    |                                                 ^^^^^^^^^^^^^^^^
+    |
+   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37
+    |
+116 |             0 <= start_inclusive <= end_exclusive <= self.len(),
+    |                                     ------------- recommendation not met
+
+note: recommendation not met
+   --> /tmp/tmptk7yjtyh.rs:163:84
+    |
+163 |             b.subrange(0, i+j).to_multiset() == c.subrange(0, i).to_multiset().add(d.subrange(0, j).to_multiset()),
+    |                                                                                    ^^^^^^^^^^^^^^^^
+    |
+   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37
+    |
+116 |             0 <= start_inclusive <= end_exclusive <= self.len(),
+    |                                     ------------- recommendation not met
+
+error: assertion failed
+   --> /tmp/tmptk7yjtyh.rs:167:16
+    |
+167 |         assert(c.subrange(0, i) + seq![c[i]] == c.subrange(0, i+1));
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+   --> /tmp/tmptk7yjtyh.rs:168:16
+    |
+168 |         assert(b.subrange(0, i+j+1) == b.subrange(0, i+j) + seq![b[i+j]]);
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /tmp/tmptk7yjtyh.rs:172:11
+    |
+172 |     proof fn lemma_inv_subset_take_value_from_d(b: Seq<i32>, c: Seq<i32>, d: Seq<i32>, i: int, j: int)
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /tmp/tmptk7yjtyh.rs:178:13
+    |
+178 |             b.subrange(0, i+j).to_multiset() == c.subrange(0, i).to_multiset().add(d.subrange(0, j).to_multiset()),
+    |             ^^^^^^^^^^^^^^^^^^
+    |
+   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37
+    |
+116 |             0 <= start_inclusive <= end_exclusive <= self.len(),
+    |                                     ------------- recommendation not met
+
+note: recommendation not met
+   --> /tmp/tmptk7yjtyh.rs:178:49
+    |
+178 |             b.subrange(0, i+j).to_multiset() == c.subrange(0, i).to_multiset().add(d.subrange(0, j).to_multiset()),
+    |                                                 ^^^^^^^^^^^^^^^^
+    |
+   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37
+    |
+116 |             0 <= start_inclusive <= end_exclusive <= self.len(),
+    |                                     ------------- recommendation not met
+
+note: recommendation not met
+   --> /tmp/tmptk7yjtyh.rs:178:84
+    |
+178 |             b.subrange(0, i+j).to_multiset() == c.subrange(0, i).to_multiset().add(d.subrange(0, j).to_multiset()),
+    |                                                                                    ^^^^^^^^^^^^^^^^
+    |
+   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37
+    |
+116 |             0 <= start_inclusive <= end_exclusive <= self.len(),
+    |                                     ------------- recommendation not met
+
+error: assertion failed
+   --> /tmp/tmptk7yjtyh.rs:182:16
+    |
+182 |         assert(d.subrange(0, j) + seq![d[j]] == d.subrange(0, j+1));
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+   --> /tmp/tmptk7yjtyh.rs:183:16
+    |
+183 |         assert(b.subrange(0, i+j+1) == b.subrange(0, i+j) + seq![b[i+j]]);
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 7 previous errors
+
+","verification results:: 5 verified, 4 errors
+"
+Clover_online_max,18,False,"error: postcondition not satisfied
+  --> /tmp/tmpscbhhead.rs:8:17
+   |
+8  |           ensures ({
+   |  _________________^
+9  | |             let (m, p) = result;
+10 | |             &&& x <= p < a.len()
+11 | |             &&& forall|i: int| 0 <= i < x ==> a[i] <= m@
+...  |
+16 | |         })
+   | |__________^ failed this postcondition
+...
+49 |                   return (m, p);
+   |                   ------------- at this exit
+
+error: aborting due to 1 previous error
+
+","verification results:: 2 verified, 1 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_AI_agent_verify_examples_Cube,16,False,"error[E0601]: `main` function not found in crate `tmp_zs0cjoq`
+  --> /tmp/tmp_zs0cjoq.rs:28:2
+   |
+28 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp_zs0cjoq.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_compare,4,True,,"verification results:: 3 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Ghost,7,True,,"verification results:: 7 verified, 0 errors
+"
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week8_12_a3 copy 2,9,False,"warning: cannot use external trait core::default::Default as a bound without declaring the trait (use #[verifier::external_trait_specification] to declare the trait); this is a warning for now but will eventually be an error
+  --> /tmp/tmp3sgizjrp.rs:17:14
+   |
+17 |         spec fn valid(&self) -> bool {
+   |              ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: cannot use external trait core::default::Default as a bound without declaring the trait (use #[verifier::external_trait_specification] to declare the trait); this is a warning for now but will eventually be an error
+  --> /tmp/tmp3sgizjrp.rs:24:9
+   |
+24 |         fn new(n: usize) -> (result: Self)
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: cannot use external trait core::default::Default as a bound without declaring the trait (use #[verifier::external_trait_specification] to declare the trait); this is a warning for now but will eventually be an error
+  --> /tmp/tmp3sgizjrp.rs:52:9
+   |
+52 |         fn push1(&mut self, element: T) -> (full_status: bool)
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: cannot use external trait core::default::Default as a bound without declaring the trait (use #[verifier::external_trait_specification] to declare the trait); this is a warning for now but will eventually be an error
+  --> /tmp/tmp3sgizjrp.rs:71:9
+   |
+71 |         fn push2(&mut self, element: T) -> (full_status: bool)
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: cannot use external trait core::default::Default as a bound without declaring the trait (use #[verifier::external_trait_specification] to declare the trait); this is a warning for now but will eventually be an error
+  --> /tmp/tmp3sgizjrp.rs:91:9
+   |
+91 |         fn pop1(&mut self) -> (result: (bool, T))
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: cannot use external trait core::default::Default as a bound without declaring the trait (use #[verifier::external_trait_specification] to declare the trait); this is a warning for now but will eventually be an error
+   --> /tmp/tmp3sgizjrp.rs:111:9
+    |
+111 |         fn pop2(&mut self) -> (result: (bool, T))
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: cannot use external trait core::default::Default as a bound without declaring the trait (use #[verifier::external_trait_specification] to declare the trait); this is a warning for now but will eventually be an error
+   --> /tmp/tmp3sgizjrp.rs:131:9
+    |
+131 |         fn peek1(&self) -> (result: (bool, T))
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: cannot use external trait core::default::Default as a bound without declaring the trait (use #[verifier::external_trait_specification] to declare the trait); this is a warning for now but will eventually be an error
+   --> /tmp/tmp3sgizjrp.rs:144:9
+    |
+144 |         fn peek2(&self) -> (result: (bool, T))
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: cannot use external trait core::default::Default as a bound without declaring the trait (use #[verifier::external_trait_specification] to declare the trait); this is a warning for now but will eventually be an error
+   --> /tmp/tmp3sgizjrp.rs:157:14
+    |
+157 |         spec fn empty1(&self) -> bool {
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: cannot use external trait core::default::Default as a bound without declaring the trait (use #[verifier::external_trait_specification] to declare the trait); this is a warning for now but will eventually be an error
+   --> /tmp/tmp3sgizjrp.rs:161:14
+    |
+161 |         spec fn empty2(&self) -> bool {
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: `core::default::Default::default` is not supported (note: you may be able to add a Verus specification to this function with `assume_specification`) (note: the vstd library provides some specification for the Rust std library, but it is currently limited)
+  --> /tmp/tmp3sgizjrp.rs:38:27
+   |
+38 |                 data.push(T::default());
+   |                           ^^^^^^^^^^^^
+
+error: aborting due to 1 previous error; 10 warnings emitted
+
+",
+Dafny_Verify_tmp_tmphq7j0row_AI_agent_verify_examples_DoubleArray,12,False,"error[E0601]: `main` function not found in crate `tmp8wbsru8a`
+  --> /tmp/tmp8wbsru8a.rs:25:2
+   |
+25 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp8wbsru8a.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_longest_prefix,8,False,"error[E0601]: `main` function not found in crate `tmpig0rwhqa`
+  --> /tmp/tmpig0rwhqa.rs:36:2
+   |
+36 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpig0rwhqa.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Correctness_tmp_tmpwqvg5q_4_Sorting_Tangent,12,True,,"verification results:: 5 verified, 0 errors
+"
+DafnyExercises_tmp_tmpd6qyevja_QuickExercises_testing2,9,False,"error: postcondition not satisfied
+  --> /tmp/tmp2gbexfo4.rs:27:17
+   |
+27 |           ensures vowels(s.add(t)) == vowels(s) + vowels(t)
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+30 | /         if s.len() > 0 {
+31 | |             let s_tail = s.subrange(1, s.len() as int);
+32 | |             let s_head = seq![s[0]];
+33 | |             assert(s_head.add(s_tail) =~= s);
+34 | |             assert(s_head.add(s_tail.add(t)) =~= s_head.add(s_tail).add(t));
+35 | |             VowelsLemma(s_tail, t);
+36 | |         }
+   | |_________- at the end of the function body
+
+error: postcondition not satisfied
+  --> /tmp/tmp2gbexfo4.rs:41:17
+   |
+40 |     proof fn VowelsLemmaF(s: Seq<char>, t: Seq<char>)
+   |           ------------------------------------------- at the end of the function body
+41 |         ensures vowelsF(s.add(t)) == vowelsF(s) + vowelsF(t)
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+   --> /tmp/tmp2gbexfo4.rs:105:21
+    |
+105 |               ensures result.valid()
+    |                       ^^^^^^^^^^^^^^ failed this postcondition
+106 |           {
+107 | /             Stack {
+108 | |                 values: Vec::with_capacity(capacity_),
+109 | |                 capacity: capacity_,
+110 | |                 size: 0,
+111 | |             }
+    | |_____________- at the end of the function body
+
+error: postcondition not satisfied
+   --> /tmp/tmp2gbexfo4.rs:119:17
+    |
+114 |         fn push(&mut self, i: i32)
+    |         -------------------------- at the end of the function body
+...
+119 |                 self.valid(),
+    |                 ^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+   --> /tmp/tmp2gbexfo4.rs:133:17
+    |
+133 |                 self.valid(),
+    |                 ^^^^^^^^^^^^ failed this postcondition
+...
+138 |             self.values.pop().unwrap()
+    |             -------------------------- at the end of the function body
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /tmp/tmp2gbexfo4.rs:178:5
+    |
+178 |     fn verify_stack(s: &mut Stack, i: i32, j: i32)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /tmp/tmp2gbexfo4.rs:184:9
+    |
+117 |                 old(self).get_size() < old(self).get_capacity(),
+    |                 ----------------------------------------------- failed precondition
+...
+184 |         s.push(i);
+    |         ^^^^^^^^^
+
+error: precondition not satisfied
+   --> /tmp/tmp2gbexfo4.rs:185:9
+    |
+117 |                 old(self).get_size() < old(self).get_capacity(),
+    |                 ----------------------------------------------- failed precondition
+...
+185 |         s.push(j);
+    |         ^^^^^^^^^
+
+error: assertion failed
+   --> /tmp/tmp2gbexfo4.rs:187:16
+    |
+187 |         assert(v == j);
+    |                ^^^^^^ assertion failed
+
+error: precondition not satisfied
+   --> /tmp/tmp2gbexfo4.rs:195:9
+    |
+181 |             old(s).get_size() == 0,
+    |             ---------------------- failed precondition
+...
+195 |         verify_stack(&mut stack, 42, 43);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 9 previous errors
+
+","verification results:: 4 verified, 7 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Generated_Code_Minimum,2,False,"error[E0601]: `main` function not found in crate `tmptaa34ywh`
+  --> /tmp/tmptaa34ywh.rs:28:2
+   |
+28 | }
+   |  ^ consider adding a `main` function to `/tmp/tmptaa34ywh.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+CVS-Projto1_tmp_tmpb1o0bu8z_proj1_proj1,9,False,"error[E0601]: `main` function not found in crate `tmpm8kp8hcs`
+   --> /tmp/tmpm8kp8hcs.rs:104:2
+    |
+104 | }
+    |  ^ consider adding a `main` function to `/tmp/tmpm8kp8hcs.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+CS5232_Project_tmp_tmpai_cfrng_test,8,True,,"verification results:: 7 verified, 0 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseReplace,2,False,"error[E0601]: `main` function not found in crate `tmpaoandd4a`
+  --> /tmp/tmpaoandd4a.rs:27:2
+   |
+27 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpaoandd4a.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Clover_swap_in_array,3,False,"error[E0601]: `main` function not found in crate `tmp6t7qx2xm`
+  --> /tmp/tmp6t7qx2xm.rs:18:2
+   |
+18 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp6t7qx2xm.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_Test_Cases_Index,10,True,,"verification results:: 7 verified, 0 errors
+"
+Clover_two_sum,10,False,"error[E0601]: `main` function not found in crate `tmpnnu4yw0x`
+  --> /tmp/tmpnnu4yw0x.rs:45:2
+   |
+45 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpnnu4yw0x.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week8_12_a3_search_findPositionOfIndex,16,False,"error[E0428]: the name `main` is defined multiple times
+  --> /tmp/tmp9julr6j1.rs:58:1
+   |
+46 |     fn main() {
+   |     --------- previous definition of the value `main` here
+...
+58 | fn main() {}
+   | ^^^^^^^^^ `main` redefined here
+   |
+   = note: `main` must be defined only once in the value namespace of this module
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0428`.
+",
+Dafny_Verify_tmp_tmphq7j0row_Fine_Tune_Examples_50_examples_37,7,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseFibonacci,10,False,"error[E0601]: `main` function not found in crate `tmpbsklcqwp`
+  --> /tmp/tmpbsklcqwp.rs:92:2
+   |
+92 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpbsklcqwp.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny-Exercises_tmp_tmpjm75muf__Session6Exercises_ExercisePeekSum,4,False,"error[E0601]: `main` function not found in crate `tmp6p9u2or6`
+  --> /tmp/tmp6p9u2or6.rs:62:2
+   |
+62 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp6p9u2or6.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_dataset_C_convert_examples_11,8,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny_tmp_tmp0wu8wmfr_tests_Search1000,9,False,"error: function body check: Resource limit (rlimit) exceeded; consider rerunning with --profile for more details
+  --> /tmp/tmpbm0ce_jx.rs:10:5
+   |
+10 |     fn search1000(a: &[int], x: int) -> (k: usize)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpbm0ce_jx.rs:60:9
+   |
+60 |         while c != 0
+   |         ^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpbm0ce_jx.rs:48:5
+   |
+48 |     fn search_2_pow_loop(a: &[int], i: usize, n: usize, x: int) -> (k: usize)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmpbm0ce_jx.rs:54:13
+   |
+54 |             i <= k && k <= i + n,
+   |             ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+66 |         k
+   |         - at the end of the function body
+
+error: postcondition not satisfied
+  --> /tmp/tmpbm0ce_jx.rs:55:13
+   |
+55 |             forall|r: int| i <= r < k ==> a[r] < x,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+66 |         k
+   |         - at the end of the function body
+
+note: recommendation not met
+  --> /tmp/tmpbm0ce_jx.rs:55:43
+   |
+55 |             forall|r: int| i <= r < k ==> a[r] < x,
+   |                                           ^^^^
+   |
+  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18
+   |
+30 |             0 <= i < self.view().len(),
+   |                  - recommendation not met
+
+error: precondition not satisfied
+  --> /tmp/tmpbm0ce_jx.rs:64:16
+   |
+64 |             if a[k + c] < x { k = k + c + 1; }
+   |                ^^^^^^^^
+   |
+  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmpbm0ce_jx.rs:64:18
+   |
+64 |             if a[k + c] < x { k = k + c + 1; }
+   |                  ^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmpbm0ce_jx.rs:64:35
+   |
+64 |             if a[k + c] < x { k = k + c + 1; }
+   |                                   ^^^^^
+
+error: aborting due to 6 previous errors
+
+","verification results:: 2 verified, 3 errors
+"
+Clover_all_digits,7,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseSeparate,15,True,,"verification results:: 3 verified, 0 errors
+"
+Clover_update_array,4,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_dataset_C_convert_examples_07,13,True,,"verification results:: 3 verified, 0 errors
+"
+DafnyProjects_tmp_tmp2acw_s4s_RawSort,9,False,"note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpr_ocy2a8.rs:35:13
+   |
+35 | /             for j in (i + 1)..a.len() {
+36 | |                 if a[i] > a[j] {
+37 | |                     return Some((i, j));
+38 | |                 }
+39 | |             }
+   | |_____________^
+
+error: postcondition not satisfied
+  --> /tmp/tmpr_ocy2a8.rs:30:13
+   |
+30 |             Some((i, j)) => 0 <= i < j < a.len() && a@[i as int] > a@[j as int],
+   |             ^^^^^^^^^^^^ failed this postcondition
+...
+37 |                     return Some((i, j));
+   |                     ------------------- at this exit
+
+error: postcondition not satisfied
+  --> /tmp/tmpr_ocy2a8.rs:30:13
+   |
+30 |             Some((i, j)) => 0 <= i < j < a.len() && a@[i as int] > a@[j as int],
+   |             ^^^^^^^^^^^^ failed this postcondition
+...
+41 |         None
+   |         ---- at the end of the function body
+
+error: precondition not satisfied
+  --> /tmp/tmpr_ocy2a8.rs:36:20
+   |
+36 |                 if a[i] > a[j] {
+   |                    ^^^^
+   |
+  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpr_ocy2a8.rs:84:11
+   |
+84 |     proof fn mappingProp<T1, T2>(a: Set<T1>, b: Set<T2>, k: T2, m: Map<T1, T2>)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmpr_ocy2a8.rs:89:17
+   |
+89 |           ensures a.len() < b.len(),
+   |                   ^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+92 | /         if exists|x: T1| a.contains(x) {
+93 | |             let x = choose|x: T1| a.contains(x);
+94 | |             mappingProp(a.remove(x), b.remove(m[x]), k, m);
+95 | |         }
+   | |_________- at the end of the function body
+
+error: could not prove termination
+  --> /tmp/tmpr_ocy2a8.rs:94:13
+   |
+94 |             mappingProp(a.remove(x), b.remove(m[x]), k, m);
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /tmp/tmpr_ocy2a8.rs:49:13
+   |
+49 |               a@.to_multiset() == old(a)@.to_multiset(),
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+52 | /         match find_inversion(a) {
+53 | |             Some((i, j)) => {
+54 | |                 let ghost bef = inversions(a@); // inversions before swapping
+...  |
+78 | |         }
+   | |_________- at the end of the function body
+
+note: automatically chose triggers for this expression:
+  --> /tmp/tmpr_ocy2a8.rs:87:13
+   |
+87 |             forall|x: T1| a.contains(x) ==> m.dom().contains(x) && b.remove(k).contains(m[x]),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+  --> /tmp/tmpr_ocy2a8.rs:87:27
+   |
+87 |             forall|x: T1| a.contains(x) ==> m.dom().contains(x) && b.remove(k).contains(m[x]),
+   |                           ^^^^^^^^^^^^^
+
+note: automatically chose triggers for this expression:
+  --> /tmp/tmpr_ocy2a8.rs:88:13
+   |
+88 |             forall|x: T1, y: T1| a.contains(x) && a.contains(y) && x != y ==> m[x] != m[y],
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+  --> /tmp/tmpr_ocy2a8.rs:88:34
+   |
+88 |             forall|x: T1, y: T1| a.contains(x) && a.contains(y) && x != y ==> m[x] != m[y],
+   |                                  ^^^^^^^^^^^^^    ^^^^^^^^^^^^^
+
+note: Verus printed one or more automatically chosen quantifier triggers
+      because it had low confidence in the chosen triggers.
+      To suppress these messages, do one of the following:
+        (1) manually annotate a single desired trigger using #[trigger]
+            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),
+        (2) manually annotate multiple desired triggers using #![trigger ...]
+            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),
+        (3) accept the automatically chosen trigger using #![auto]
+            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))
+        (4) use the --triggers-silent command-line option to suppress all printing of triggers.
+      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;
+      the theorem prover instantiates a quantifier whenever some expression matches the
+      pattern specified by one of the quantifier's triggers.)
+  --> /tmp/tmpr_ocy2a8.rs:88:13
+   |
+88 |             forall|x: T1, y: T1| a.contains(x) && a.contains(y) && x != y ==> m[x] != m[y],
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 6 previous errors
+
+","verification results:: 1 verified, 4 errors
+"
+BPTree-verif_tmp_tmpq1z6xm1d_Utils,9,False,"error: assertion failed
+  --> /tmp/tmpy7k3a846.rs:22:20
+   |
+22 |             assert(t.len() == 0);
+   |                    ^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /tmp/tmpy7k3a846.rs:66:20
+   |
+66 |             assert(t.len() == 0);
+   |                    ^^^^^^^^^^^^ assertion failed
+
+error: postcondition not satisfied
+   --> /tmp/tmpy7k3a846.rs:140:13
+    |
+134 |     proof fn distributive_in(a: Seq<int>, b: Seq<int>, k: int, key: int)
+    |           -------------------------------------------------------------- at the end of the function body
+...
+140 |             forall|i: int| 0 <= i < a.len() ==> b.contains(a[i]),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: automatically chose triggers for this expression:
+   --> /tmp/tmpy7k3a846.rs:140:13
+    |
+140 |             forall|i: int| 0 <= i < a.len() ==> b.contains(a[i]),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+   --> /tmp/tmpy7k3a846.rs:140:60
+    |
+140 |             forall|i: int| 0 <= i < a.len() ==> b.contains(a[i]),
+    |                                                            ^^^^
+
+note: Verus printed one or more automatically chosen quantifier triggers
+      because it had low confidence in the chosen triggers.
+      To suppress these messages, do one of the following:
+        (1) manually annotate a single desired trigger using #[trigger]
+            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),
+        (2) manually annotate multiple desired triggers using #![trigger ...]
+            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),
+        (3) accept the automatically chosen trigger using #![auto]
+            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))
+        (4) use the --triggers-silent command-line option to suppress all printing of triggers.
+      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;
+      the theorem prover instantiates a quantifier whenever some expression matches the
+      pattern specified by one of the quantifier's triggers.)
+   --> /tmp/tmpy7k3a846.rs:140:13
+    |
+140 |             forall|i: int| 0 <= i < a.len() ==> b.contains(a[i]),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 3 previous errors
+
+","verification results:: 4 verified, 3 errors
+"
+Dafny-Exercises_tmp_tmpjm75muf__Session10Exercises_ExerciseBarrier,14,False,"note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpns_npbns.rs:14:9
+   |
+14 |         while i <= p
+   |         ^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmpns_npbns.rs:17:17
+   |
+17 |                 max < i,
+   |                 ^^^^^^^
+
+error: precondition not satisfied
+  --> /tmp/tmpns_npbns.rs:22:16
+   |
+22 |             if v[i] > v[max] {
+   |                ^^^^
+   |
+  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmpns_npbns.rs:26:17
+   |
+26 |             i = i + 1;
+   |                 ^^^^^
+
+error: aborting due to 3 previous errors
+
+","verification results:: 2 verified, 1 errors
+"
+CSU55004---Formal-Verification_tmp_tmp4ki9iaqy_Project_Project_Part_1_project_pt_1,10,True,,"verification results:: 11 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_dataset_C_convert_examples_15,19,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Test_Cases_LoopInvariant,8,True,,"verification results:: 12 verified, 0 errors
+"
+Dafny_tmp_tmpj88zq5zt_2-Kontrakte_reverse3,6,False,"error[E0601]: `main` function not found in crate `tmpc7c3q5lb`
+  --> /tmp/tmpc7c3q5lb.rs:37:2
+   |
+37 | }
+   |  ^ consider adding a `main` function to `/tmp/tmpc7c3q5lb.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
+Dafny_Verify_tmp_tmphq7j0row_dataset_C_convert_examples_23_x,17,True,,"verification results:: 2 verified, 0 errors
+"
+Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 8_H8,12,False,"note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmphktv00vb.rs:30:10
+   |
+30 |     spec fn quickselect(m: Multiset<int>, k: nat) -> (Multiset<int>, int, Multiset<int>)
+   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: could not prove termination
+  --> /tmp/tmphktv00vb.rs:39:46
+   |
+39 |             let (pre_prime, p, post_prime) = quickselect(post, k_new);
+   |                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /tmp/tmphktv00vb.rs:39:46
+   |
+31 |         recommends k < m.len()
+   |                    ----------- recommendation not met
+...
+39 |             let (pre_prime, p, post_prime) = quickselect(post, k_new);
+   |                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: could not prove termination
+  --> /tmp/tmphktv00vb.rs:44:46
+   |
+44 |             let (pre_prime, p, post_prime) = quickselect(pre, k);
+   |                                              ^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+","verification results:: 2 verified, 1 errors
+"
+AssertivePrograming_tmp_tmpwf43uz0e_Find_Substring,10,False,"error: invalid suffix `nat` for number literal
+  --> /tmp/tmpfjp8134j.rs:67:21
+   |
+67 |             let i = 0nat;
+   |                     ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /tmp/tmpfjp8134j.rs:72:21
+   |
+72 |             let i = 0nat;
+   |                     ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0308]: mismatched types
+  --> /tmp/tmpfjp8134j.rs:65:26
+   |
+65 |         if str2.len() == 0 {
+   |            ----------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `builtin::nat`
+
+error[E0308]: mismatched types
+  --> /tmp/tmpfjp8134j.rs:77:38
+   |
+77 |             let mut i = str2.len() - 1;
+   |                         ----------   ^ expected `nat`, found integer
+   |                         |
+   |                         expected because this is `builtin::nat`
+
+error[E0308]: mismatched types
+  --> /tmp/tmpfjp8134j.rs:82:66
+   |
+82 |                 assert(outter_inv_correctness(str1, str2, false, str2.len() - 1));
+   |                        ----------------------                    ^^^^^^^^^^^^^^ expected `nat`, found `int`
+   |                        |
+   |                        arguments to this function are incorrect
+   |
+note: function defined here
+  --> /tmp/tmpfjp8134j.rs:19:13
+   |
+19 |     spec fn outter_inv_correctness(str1: Seq<char>, str2: Seq<char>, found: bool, i: nat) -> bool {
+   |             ^^^^^^^^^^^^^^^^^^^^^^                                                ------
+
+error[E0308]: mismatched types
+   --> /tmp/tmpfjp8134j.rs:123:70
+    |
+123 | ...                   assert(inner_inv_termination(str1, str2, i - 1, j - 1, old_i, old_j));
+    |                              ---------------------             ^^^^^ expected `nat`, found `int`
+    |                              |
+    |                              arguments to this function are incorrect
+    |
+note: function defined here
+   --> /tmp/tmpfjp8134j.rs:38:13
+    |
+38  |     spec fn inner_inv_termination(str1: Seq<char>, str2: Seq<char>, i: nat, j: int, old_i: nat, old_j: int) -> bool {
+    |             ^^^^^^^^^^^^^^^^^^^^^                                   ------
+
+error[E0308]: mismatched types
+   --> /tmp/tmpfjp8134j.rs:124:70
+    |
+124 | ...                   assert(inner_inv_correctness(str1, str2, i - 1, j - 1, found));
+    |                              ---------------------             ^^^^^ expected `nat`, found `int`
+    |                              |
+    |                              arguments to this function are incorrect
+    |
+note: function defined here
+   --> /tmp/tmpfjp8134j.rs:28:13
+    |
+28  |     spec fn inner_inv_correctness(str1: Seq<char>, str2: Seq<char>, i: nat, j: int, found: bool) -> bool {
+    |             ^^^^^^^^^^^^^^^^^^^^^                                   ------
+
+error[E0308]: mismatched types
+   --> /tmp/tmpfjp8134j.rs:125:33
+    |
+77  |             let mut i = str2.len() - 1;
+    |                         -------------- expected due to this value
+...
+125 |                             i = i - 1;
+    |                                 ^^^^^ expected `nat`, found `int`
+
+error[E0308]: mismatched types
+   --> /tmp/tmpfjp8134j.rs:152:74
+    |
+152 |                         assert(outter_inv_correctness(str1, str2, found, i + str2.len() - j));
+    |                                ----------------------                    ^^^^^^^^^^^^^^^^^^ expected `nat`, found `int`
+    |                                |
+    |                                arguments to this function are incorrect
+    |
+note: function defined here
+   --> /tmp/tmpfjp8134j.rs:19:13
+    |
+19  |     spec fn outter_inv_correctness(str1: Seq<char>, str2: Seq<char>, found: bool, i: nat) -> bool {
+    |             ^^^^^^^^^^^^^^^^^^^^^^                                                ------
+
+error[E0308]: mismatched types
+   --> /tmp/tmpfjp8134j.rs:155:42
+    |
+155 |                     i = i + str2.len() - j;
+    |                         --------------   ^ expected `nat`, found `int`
+    |                         |
+    |                         expected because this is `builtin::nat`
+
+error[E0277]: `builtin::nat` doesn't implement `std::fmt::Display`
+   --> /tmp/tmpfjp8134j.rs:212:49
+    |
+212 |         println!(""Found: {}, Index: {}"", found, i);
+    |                                                 ^ `builtin::nat` cannot be formatted with the default formatter
+    |
+    = help: the trait `std::fmt::Display` is not implemented for `builtin::nat`
+    = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
+    = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: aborting due to 11 previous errors
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.
+",
+Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 1_LinearSearch,29,True,,"verification results:: 2 verified, 0 errors
+"
+Clover_copy_part,8,True,,"verification results:: 2 verified, 0 errors
+"
+CVS-handout1_tmp_tmptm52no3k_1,15,True,,"verification results:: 4 verified, 0 errors
+"
+DafnyPrograms_tmp_tmp74_f9k_c_automaton,10,False,"error: The verifier does not yet support the following Rust feature: function pointer types
+  --> /tmp/tmpivl8aib_.rs:15:43
+   |
+15 |     fn execute_automaton(init: Vec<bool>, rule: fn(bool, bool, bool) -> bool, steps: usize) -> (table: Vec<Vec<bool>>)
+   |                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+",
+Dafny-Exercises_tmp_tmpjm75muf__Session6Exercises_ExerciseCountEven,12,False,"error: postcondition not satisfied
+  --> /tmp/tmpm1_46b43.rs:40:17
+   |
+39 |     proof fn CountEvenEquiv(s: Seq<u32>)
+   |           ------------------------------ at the end of the function body
+40 |         ensures CountEven(s) == CountEvenPrefix(s, s.len() as int)
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /tmp/tmpm1_46b43.rs:59:9
+   |
+59 |         while i < v.len()
+   |         ^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /tmp/tmpm1_46b43.rs:62:17
+   |
+62 |                 n as int == CountEvenPrefix(v@, i as int),
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /tmp/tmpm1_46b43.rs:67:21
+   |
+67 |                 n = n + 1;
+   |                     ^^^^^
+
+error: aborting due to 3 previous errors
+
+","verification results:: 3 verified, 2 errors
+"
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week8_12_week9_lemma,13,True,,"verification results:: 3 verified, 0 errors
+"
+Dafny_Verify_tmp_tmphq7j0row_Generated_Code_LinearSearch,8,False,"error[E0601]: `main` function not found in crate `tmp9qxdny_6`
+  --> /tmp/tmp9qxdny_6.rs:31:2
+   |
+31 | }
+   |  ^ consider adding a `main` function to `/tmp/tmp9qxdny_6.rs`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0601`.
+",
