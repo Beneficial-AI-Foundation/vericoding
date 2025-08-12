@@ -5,14 +5,9 @@ import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
 import Mathlib.Tactic.Basic
 
-/-- Check if a list is a subsequence of another -/
-def is_subsequence (sub : List Char) (seq : List Char) : Bool := sorry
-
-/-- Check if parentheses are balanced -/
-def balanced_paren_non_computable (s : String) (open_paren : Char) (close_paren : Char) : Prop := sorry
-
-/-- Count maximum parenthesis depth -/
-def count_max_paren_depth (s : String) : Nat := sorry
+-- Local helper to convert between types
+def is_subsequence_list (sub : List Char) (seq : List Char) : Bool := 
+  is_subsequence sub.asString seq.asString
 
 def problem_spec
 -- function signature
@@ -24,7 +19,7 @@ let spec (result: Bool) :=
 string.toList.all (fun x => x = '(' ∨ x = ')') →
 result = true ↔
   ∃ x : String,
-    is_subsequence x.toList string.toList ∧
+    is_subsequence_list x.toList string.toList ∧
     balanced_paren_non_computable x '(' ')' ∧
     2 ≤ count_max_paren_depth x
 -- program termination
