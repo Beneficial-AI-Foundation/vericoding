@@ -49,10 +49,6 @@ lean_lib DafnyBenchSpecs where
   globs := #[.andSubmodules `DafnyBenchSpecs]
   srcDir := "lean"
 
-lean_lib TestPlausible where
-  globs := #[.andSubmodules `TestPlausible]
-  srcDir := "lean"
-
 lean_lib Testing where
   globs := #[.andSubmodules `Testing]
   srcDir := "lean"
