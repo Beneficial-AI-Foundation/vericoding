@@ -4,7 +4,7 @@
 Port of np_reshape.dfy to Lean 4
 -/
 
-import benchmarks.MatrixDef
+import Benchmarks.MatrixDef
 
 namespace DafnySpecs.NpReshape
 
