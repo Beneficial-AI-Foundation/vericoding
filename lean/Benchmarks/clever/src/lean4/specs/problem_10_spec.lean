@@ -5,9 +5,6 @@ import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
 import Mathlib.Tactic.Basic
 
-/-- Check if a string is a palindrome -/
-def is_palindrome (s : String) : Bool := s == s.data.reverse.asString
-
 def problem_spec
 -- function signature
 (implementation: String → String)

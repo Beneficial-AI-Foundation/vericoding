@@ -5,9 +5,6 @@ import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
 import Mathlib.Tactic.Basic
 
-/-- Check if parentheses are balanced -/
-def balanced_paren_non_computable (s : String) (open_paren : Char) (close_paren : Char) : Prop := sorry
-
 def problem_spec
 -- function signature
 (impl: String → Bool)
