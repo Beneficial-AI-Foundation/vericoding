@@ -21,3 +21,14 @@ instance {m n : Nat} {α : Type} : GetElem (Matrix m n α) (Fin m) (Fin n → α
   getElem mat i _ := mat i
 
 end Matrix
+
+/-- Get element notation for matrices with Nat indices (returns whole row) -/
+instance {m n : Nat} {α : Type} : GetElem (Matrix m n α) Nat (Fin n → α) (fun _ i => i < m) where
+  getElem mat i h := mat ⟨i, h⟩
+
+/-- Get element notation for row functions with Nat indices -/
+instance {n : Nat} {α : Type} : GetElem (Fin n → α) Nat α (fun _ j => j < n) where
+  getElem row j h := row ⟨j, h⟩
+
+/-- Alias for Array2 type -/
+abbrev Array2 (m n : Nat) (α : Type) := Matrix m n α

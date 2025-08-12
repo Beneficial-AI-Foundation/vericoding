@@ -1,3 +1,4 @@
+import Benchmarks.clever.CommonDefs
 import Mathlib
 import Mathlib.Data.List.Basic
 import Mathlib.Data.String.Basic
@@ -14,7 +15,7 @@ let spec (result : List (Nat × Nat)) :=
     row < lst.length ∧
     col < lst[row]!.length ∧
     (lst[row]!)[col]! = x) ∧
-  (∀ (i < lst.length) (j < lst[i]!.length),
+  (∀ i j, i < lst.length → j < lst[i]!.length →
     (lst[i]!)[j]! = x → (i, j) ∈ result) ∧
   (result.map (fun (r, c) => r)).Sorted Nat.le ∧
   (∀ i < result.length,

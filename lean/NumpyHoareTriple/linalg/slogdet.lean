@@ -1,6 +1,6 @@
 import Std.Do.Triple
 import Std.Tactic.Do
-import numpy_hoare_triple.linalg.det
+import NumpyHoareTriple.linalg.det
 
 open Std.Do
 

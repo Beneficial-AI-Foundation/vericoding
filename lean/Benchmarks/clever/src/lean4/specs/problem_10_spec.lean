@@ -1,3 +1,4 @@
+import Benchmarks.clever.CommonDefs
 import Mathlib
 import Mathlib.Data.List.Basic
 import Mathlib.Data.String.Basic

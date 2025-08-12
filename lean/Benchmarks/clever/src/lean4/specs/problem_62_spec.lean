@@ -1,8 +1,12 @@
+import Benchmarks.clever.CommonDefs
 import Mathlib
 import Mathlib.Data.List.Basic
 import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
 import Mathlib.Tactic.Basic
+
+/-- Check derivative of a list -/
+def check_derivative (xs : List Int) : List Int := sorry
 
 def problem_spec
 -- function signature

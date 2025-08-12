@@ -1,8 +1,15 @@
+import Benchmarks.clever.CommonDefs
 import Mathlib
 import Mathlib.Data.List.Basic
 import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
 import Mathlib.Tactic.Basic
+
+/-- Merge two lists alternately -/
+def mergeAlternately (operand : List Nat) (operator : List String) : List String := sorry
+
+/-- Evaluate arithmetic expression with precedence -/
+def evalArith_precedence (tokens : List String) (result : Int) : Prop := sorry
 
 def problem_spec
 (implementation: List String → List Nat → Int)

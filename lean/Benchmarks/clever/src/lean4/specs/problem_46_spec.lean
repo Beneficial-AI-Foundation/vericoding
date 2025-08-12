@@ -1,8 +1,16 @@
+import Benchmarks.clever.CommonDefs
 import Mathlib
 import Mathlib.Data.List.Basic
 import Mathlib.Data.String.Basic
 import Mathlib.Data.Rat.Defs
 import Mathlib.Tactic.Basic
+
+/-- Non-computable Fibonacci function -/
+def fibonacci_non_computable (n : Nat) : Nat := sorry
+
+/-- Fibonacci relation -/
+def fibonacci_non_computable_4 (n : Nat) (result : Nat) : Prop :=
+  result = fibonacci_non_computable n
 
 def problem_spec
 -- function signature
