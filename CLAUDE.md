@@ -143,6 +143,7 @@ Create Lean files as needed for your verification experiments and use the MCP to
 - Wrap reserved names in «guillemets» when needed
 - Implement "notation typeclasses" like `GetElem`, `Add`, etc where appropriate.
 - Practice "sorry-friendly programming": Instead of a comment you put down a spec, but it is only "proved" with `sorry`. This is strictly better than a comment, because the typechecker will use it for program generation.
+- **NEW: Use `plausible` before `sorry`** - The plausible tactic provides quick counterexample finding to validate assumptions before attempting full proofs. This catches spec errors early.
 - Decompose proofs until tools like `canonical`, `grind`, and `simp` dissolve the pieces. Use them to do the "how", the AI should do the "what".
 - Don't use `i` and `j` as variable names when you could use `r`(ow) and `c`(olumn) instead. Ditto for `m` and `n` as matrix dimensions. Use `R` and `C`.
 ### Import and Module Structure
@@ -191,6 +192,109 @@ Create Lean files as needed for your verification experiments and use the MCP to
 - Apply the scientific method for debugging
 
 
+## Plausible Property Testing
+
+### Overview
+Plausible is Lean 4's property-based testing framework (similar to QuickCheck). It provides rapid counterexample finding to validate specifications before attempting full proofs.
+
+### When to Use Plausible
+- **Before writing proofs**: Use `plausible` to quickly check if your spec holds for random inputs
+- **Instead of bare `sorry`**: Replace `sorry` with `by plausible; sorry` to catch early mistakes
+- **During spec development**: Test edge cases and assumptions as you write specifications
+- **For regression testing**: Ensure changes don't break existing properties
+
+### Basic Usage
+
+```lean
+-- As a tactic in proofs
+theorem my_property : ∀ n : Nat, n + 0 = n := by
+  plausible  -- Tests 100 random examples by default
+  -- If no counterexample found, continues like admit
+  sorry  -- Replace with actual proof later
+
+-- With custom configuration
+theorem complex_property : ∀ xs : List Nat, xs.reverse.reverse = xs := by
+  plausible (config := { numInst := 500 })  -- Test 500 examples
+  sorry
+
+-- For quick checks during development
+#eval Plausible.Testable.check <| ∀ xs ys : List Nat, xs ++ ys = ys ++ xs
+-- Output: Found counterexample: xs := [0], ys := [1]
+```
+
+### Using PlausibleUtils
+
+The `Testing.PlausibleUtils` module provides convenient helpers:
+
+```lean
+import Testing.PlausibleUtils
+
+-- Quick tactics
+example : ∀ n : Nat, n * 2 = 2 * n := by
+  quick_plausible  -- Only 20 tests for speed
+
+-- IO-based testing  
+#eval checkWithMsg "My property description" <|
+  ∀ n : Nat, n < n + 1
+
+-- Pattern-based helpers
+#eval checkForAll (fun n : Nat => n + 0 = n) 100
+#eval checkImplication 
+  (fun n : Nat => n > 5)  -- precondition
+  (fun n : Nat => n > 3)  -- postcondition
+  100
+```
+
+### Custom Sampleable Instances
+
+For custom types, implement `Sampleable` and `PrintableProp`:
+
+```lean
+structure Point where
+  x : Int
+  y : Int
+
+instance : Sampleable Point where
+  sample := do
+    let x ← Sampleable.sample (α := Int)
+    let y ← Sampleable.sample (α := Int)
+    pure { x := x, y := y }
+
+instance : PrintableProp Point where
+  printProp p := s!"Point {{ x := {p.x}, y := {p.y} }}"
+```
+
+### Best Practices
+
+1. **Start with plausible**: Before writing complex proofs, use plausible to validate assumptions
+2. **Incremental testing**: Test smaller properties first, then compose
+3. **Document counterexamples**: When plausible finds issues, document them as test cases
+4. **Balance test count**: Use fewer tests (20-50) for quick checks, more (100-500) for critical properties
+5. **Combine with sorry**: Use `by plausible; sorry` as improved sorry-driven development
+
+### Integration with Spec Development
+
+When developing specifications:
+1. Write the spec
+2. Add `plausible` tests for edge cases
+3. Implement incrementally
+4. Use plausible to catch regressions
+5. Replace with full proofs when ready
+
+Example workflow:
+```lean
+def mySpec (impl : Nat → Nat) : Prop :=
+  ∀ n, impl n ≥ n
+
+-- Quick validation
+example : mySpec (fun n => n + 1) := by
+  plausible (config := { numInst := 100 })
+  
+-- Found issue? Add specific test
+example : mySpec (fun n => n - 1) := by
+  plausible  -- Will find counterexample: n := 0
+```
+
 ## Important Lean Documentation Resources
 
 When working with Lean 4, consult these authoritative sources:
@@ -198,6 +302,7 @@ When working with Lean 4, consult these authoritative sources:
 - **Lean 4 Official Documentation**: <https://lean-lang.org/lean4/doc> - The formal Lean documentation covering language features, tactics, and standard library
 - **Mathlib Manual**: <https://leanprover-community.github.io/mathlib-manual/html-multi/Guides/> - Comprehensive guide to mathlib conventions, tactics, and best practices
 - **Lean Language Reference**: <https://lean-lang.org/doc/reference/latest/> - The definitive Lean language reference for syntax and semantics
+- **Plausible Testing**: See `Mathlib.Testing.Plausible` for property-based testing documentation
 
 
 

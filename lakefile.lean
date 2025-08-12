@@ -4,6 +4,9 @@ open Lake DSL
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "master"
 
+require plausible from git
+  "https://github.com/leanprover-community/plausible" @ "main"
+
 package Vericoding where
   version := v!"0.1.0"
   leanOptions := #[
@@ -44,6 +47,14 @@ lean_lib BenchmarksGenerated where
 
 lean_lib DafnyBenchSpecs where
   globs := #[.andSubmodules `DafnyBenchSpecs]
+  srcDir := "lean"
+
+lean_lib TestPlausible where
+  globs := #[.andSubmodules `TestPlausible]
+  srcDir := "lean"
+
+lean_lib Testing where
+  globs := #[.andSubmodules `Testing]
   srcDir := "lean"
 
 @[default_target]
