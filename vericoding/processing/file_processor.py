@@ -11,6 +11,8 @@ from ..core.llm_providers import create_llm_provider
 from ..core.prompts import PromptLoader
 from ..core.language_tools import verify_file
 from ..utils.io_utils import save_iteration_code
+import wandb
+import hashlib
 from .code_fixer import extract_code, verify_spec_preservation, restore_specs
 
 # Set up a basic logger
@@ -37,7 +39,21 @@ def call_llm_api(config: ProcessingConfig, prompt: str) -> str:
     # Create the LLM provider
     try:
         llm_provider = create_llm_provider(config.llm_provider, config.llm_model)
-        return llm_provider.call_api(prompt)
+        
+        # Log LLM call start
+        start_time = time.time()
+        response = llm_provider.call_api(prompt)
+        latency_ms = (time.time() - start_time) * 1000
+        
+        # Log to wandb if run is active
+        if wandb.run:
+            wandb.log({
+                "llm/calls": 1,
+                "llm/latency_ms": latency_ms,
+                "llm/model": config.llm_model or config.llm_provider
+            })
+        
+        return response
     except Exception as e:
         raise ValueError(f"Error calling {config.llm_provider} API: {str(e)}")
 
@@ -46,6 +62,14 @@ def process_spec_file(
     config: ProcessingConfig, prompt_loader: PromptLoader, file_path: str
 ) -> ProcessingResult:
     """Process a single specification file."""
+    # Initialize failure tracking table if wandb is active
+    failure_table = None
+    if wandb.run:
+        failure_table = wandb.Table(columns=[
+            "file", "iteration", "spec_hash", "code_hash",
+            "error_msg", "proof_state", "timestamp"
+        ])
+    
     try:
         logger.info(f"Processing: {Path(file_path).name}")
 
@@ -140,6 +164,26 @@ def process_spec_file(
             # Verify
             verification = verify_file(config, str(output_path))
             last_verification = verification
+            
+            # Log verification attempt to wandb
+            if wandb.run:
+                file_key = Path(file_path).stem
+                wandb.log({
+                    f"verify/{file_key}/iter": iteration,
+                    f"verify/{file_key}/success": int(verification.success)
+                })
+                
+                # Log failure details to table
+                if not verification.success and failure_table is not None:
+                    failure_table.add_data(
+                        file_path,
+                        iteration,
+                        hashlib.md5(original_code.encode()).hexdigest()[:8],
+                        hashlib.md5(current_code.encode()).hexdigest()[:8],
+                        verification.error[:500] if verification.error else "Unknown error",
+                        "",  # Proof state would come from lean tools
+                        time.time()
+                    )
 
             if verification.success:
                 logger.info("    ✓ Verification successful!")
@@ -178,12 +222,24 @@ def process_spec_file(
 
                     current_code = fixed_code
                     logger.info(f"    Generated fix for iteration {iteration}")
+                    
+                    # Fixed code will be saved in next iteration
                 except Exception as e:
                     logger.info(f"    ✗ Failed to generate fix: {str(e)}")
                     break
 
         if success:
             logger.info(f"  ✓ Successfully generated and verified: {output_path.name}")
+            
+            # Track success in wandb
+            if wandb.run:
+                file_key = Path(file_path).stem
+                wandb.log({
+                    f"verify/{file_key}/final_iter": iteration,
+                    f"verify/{file_key}/success": 1,
+                    "success_count": 1
+                })
+            
             return ProcessingResult(
                 success=True,
                 file=str(relative_path),
@@ -200,6 +256,28 @@ def process_spec_file(
             logger.info(
                 f"  ✗ Failed to verify after {config.max_iterations} iterations: {error_msg[:200] if error_msg else 'Unknown error'}..."
             )
+            
+            # Track failure in wandb
+            if wandb.run:
+                file_key = Path(file_path).stem
+                wandb.log({
+                    f"verify/{file_key}/final_iter": config.max_iterations,
+                    f"verify/{file_key}/success": 0,
+                    "failure_count": 1
+                })
+                
+                # Add final failure to table
+                if failure_table is not None:
+                    failure_table.add_data(
+                        file_path,
+                        config.max_iterations,
+                        hashlib.md5(original_code.encode()).hexdigest()[:8],
+                        hashlib.md5(current_code.encode() if 'current_code' in locals() else generated_code.encode()).hexdigest()[:8],
+                        error_msg[:500] if error_msg else "Unknown error",
+                        "",
+                        time.time()
+                    )
+            
             return ProcessingResult(
                 success=False,
                 file=str(relative_path),
@@ -210,6 +288,15 @@ def process_spec_file(
 
     except Exception as e:
         logger.info(f"✗ Failed: {Path(file_path).name} - {str(e)}")
+        
+        # Track exception in wandb
+        if wandb.run:
+            file_key = Path(file_path).stem
+            wandb.log({
+                f"verify/{file_key}/exception": 1,
+                "exception_count": 1
+            })
+        
         return ProcessingResult(
             success=False,
             file=str(relative_path)
@@ -219,6 +306,10 @@ def process_spec_file(
             output=None,
             has_bypass=False,
         )
+    finally:
+        # Log failure table if we have any failures
+        if wandb.run and failure_table is not None and len(failure_table.data) > 0:
+            wandb.log({"verification_failures": failure_table})
 
 
 def process_files_parallel(

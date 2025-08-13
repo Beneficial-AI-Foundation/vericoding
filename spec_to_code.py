@@ -7,10 +7,14 @@ generates implementations using various LLM APIs, and iteratively fixes verifica
 """
 
 import argparse
+import os
+import shutil
 import sys
 import time
 from datetime import datetime
 from pathlib import Path
+
+import wandb
 
 # Import the modular components
 from vericoding.core import (
@@ -84,6 +88,18 @@ Examples:
         "--strict-specs",
         action="store_true",
         help="Enable strict specification preservation (default: relaxed verification)",
+    )
+    
+    parser.add_argument(
+        "--no-wandb",
+        action="store_true", 
+        help="Disable Weights & Biases experiment tracking",
+    )
+    
+    parser.add_argument(
+        "--delete-after-upload",
+        action="store_true",
+        help="Delete local generated files after uploading to wandb (requires wandb to be enabled)",
     )
 
     parser.add_argument(
@@ -256,6 +272,43 @@ def main():
 
     # Set up configuration
     config = setup_configuration(args)
+    
+    # Initialize wandb for experiment tracking (unless disabled)
+    wandb_run = None
+    if not args.no_wandb and os.getenv("WANDB_API_KEY"):
+        try:
+            # Initialize wandb run
+            run_name = f"vericoding_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+            wandb_config = {
+                "language": config.language,
+                "max_iterations": config.max_iterations,
+                "llm_provider": config.llm_provider,
+                "llm_model": config.llm_model,
+                "strict_spec_verification": config.strict_spec_verification,
+                "max_workers": config.max_workers,
+                "files_dir": config.files_dir,
+            }
+            
+            wandb_run = wandb.init(
+                project=os.getenv("WANDB_PROJECT", "vericoding"),
+                entity=os.getenv("WANDB_ENTITY"),
+                name=run_name,
+                tags=[config.language, config.llm_provider],
+                mode=os.getenv("WANDB_MODE", "online")
+            )
+            # Update config with allow_val_change to avoid errors when keys already exist
+            wandb.config.update(wandb_config, allow_val_change=True)
+            print(f"✅ Weights & Biases tracking enabled: {run_name}")
+            if wandb_run:
+                print(f"   View at: {wandb_run.url}")
+        except Exception as e:
+            print(f"⚠️  Failed to initialize wandb: {e}")
+            wandb_run = None
+    else:
+        if args.no_wandb:
+            print("⚠️  Weights & Biases tracking disabled (--no-wandb flag)")
+        else:
+            print("⚠️  Weights & Biases tracking disabled (WANDB_API_KEY not set)")
 
     # Initialize prompt loader for the selected language
     try:
@@ -379,12 +432,57 @@ def main():
 
     # Print final statistics
     successful = [r for r in results if r.success]
+    failed = [r for r in results if not r.success and not r.has_bypass]
+    bypassed = [r for r in results if r.has_bypass]
+    
     print(
         f"\n🎉 Processing completed: {len(successful)}/{len(results)} files successful ({len(successful) / len(results) * 100:.1f}%)"
     )
     print(
         f"⚡ Parallel processing with {config.max_workers} workers completed in {processing_time:.2f}s"
     )
+    
+    # Log experiment summary to wandb (if enabled)
+    if wandb_run:
+        try:
+            # Log final summary metrics
+            wandb.run.summary["total_files"] = len(results)
+            wandb.run.summary["successful_files"] = len(successful)
+            wandb.run.summary["failed_files"] = len(failed)
+            wandb.run.summary["bypassed_files"] = len(bypassed)
+            wandb.run.summary["success_rate"] = len(successful) / len(results) if results else 0
+            wandb.run.summary["duration_seconds"] = processing_time
+            
+            # Upload generated files as artifacts
+            print("\n📤 Uploading generated files to wandb...")
+            artifact = wandb.Artifact(
+                name=f"generated_code_{config.language}",
+                type="code",
+                description=f"Generated {config.language} code from specifications"
+            )
+            
+            # Add the output directory to the artifact
+            output_path = Path(config.output_dir)
+            if output_path.exists():
+                artifact.add_dir(str(output_path))
+                wandb.log_artifact(artifact)
+                print(f"✅ Files uploaded to wandb artifact: generated_code_{config.language}")
+                
+                # Delete local files if requested
+                if args.delete_after_upload:
+                    try:
+                        shutil.rmtree(output_path)
+                        print(f"🗑️  Local files deleted from {output_path}")
+                    except Exception as e:
+                        print(f"⚠️  Error deleting local files: {e}")
+            else:
+                print(f"⚠️  Output directory not found: {output_path}")
+            
+            # Finish wandb run
+            wandb.finish()
+            print(f"\n✅ Wandb run completed: {wandb_run.url}")
+        except Exception as e:
+            print(f"⚠️  Error logging to wandb: {e}")
 
 
 if __name__ == "__main__":
