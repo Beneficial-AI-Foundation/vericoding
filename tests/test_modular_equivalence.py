@@ -117,7 +117,6 @@ def add (x y : ℕ) : ℕ := sorry
                     prompts_file="prompts.yaml",
                     verify_command=["dafny", "verify"],
                     compile_check_command=["dafny", "build"],
-                    success_indicators=["Verification completed successfully"],
                     code_block_patterns=["dafny"],
                     keywords=["method", "function", "predicate"],
                     spec_patterns=[r"ensures.*", r"requires.*"],

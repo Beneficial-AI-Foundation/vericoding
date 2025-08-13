@@ -12,12 +12,6 @@ prompts_file = "prompts.yaml"
 verify_command = ["{tool_path}", "verify", "{file_path}"]
 compile_check_command = ["{tool_path}", "build", "{file_path}"]
 
-# Success/failure indicators
-success_indicators = [
-    "Dafny program verifier finished with",
-    "0 errors"
-]
-
 # Code extraction patterns
 code_block_patterns = [
     "dafny",
@@ -57,12 +51,6 @@ prompts_file = "prompts-lean.yaml"
 # Verification command patterns
 verify_command = ["{tool_path}", "{file_path}"]
 compile_check_command = ["{tool_path}", "--deps", "{file_path}"]
-
-# Success/failure indicators
-success_indicators = [
-    "no errors",
-    "Build completed successfully"
-]
 
 # Code extraction patterns
 code_block_patterns = [
@@ -109,13 +97,6 @@ prompts_file = "prompts.yaml"
 # Verification command patterns
 verify_command = ["{tool_path}", "{file_path}"]
 compile_check_command = ["{tool_path}", "--no-verify", "{file_path}"]
-
-# Success/failure indicators
-success_indicators = [
-    "verification results:",
-    "0 errors",
-    "verified: 0 errors"
-]
 
 # Code extraction patterns
 code_block_patterns = [

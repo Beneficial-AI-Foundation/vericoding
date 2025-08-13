@@ -124,12 +124,7 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
         )
         full_output = result.stdout + result.stderr
 
-        # Check for success indicators
         success = result.returncode == 0
-        for indicator in config.language_config.success_indicators:
-            if indicator in full_output:
-                success = True
-                break
 
         if success:
             return VerificationResult(success=True, output=full_output, error=None)
