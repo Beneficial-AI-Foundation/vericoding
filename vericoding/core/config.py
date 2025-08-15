@@ -35,7 +35,6 @@ class LanguageConfig:
     prompts_file: str | Path  # Path to prompts file
     verify_command: list[str]  # Command and arguments for verification
     compile_check_command: list[str] | None  # Optional compilation check
-    success_indicators: list[str]  # Patterns indicating successful verification
     code_block_patterns: list[str]  # Regex patterns for code blocks
     keywords: list[str]  # Language-specific keywords
     spec_patterns: list[str]  # Patterns for specification blocks

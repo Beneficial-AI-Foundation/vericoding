@@ -213,7 +213,6 @@ class TestLanguageConfig:
             prompts_file="test_prompts.yaml",
             verify_command=["test_tool", "verify"],
             compile_check_command=["test_tool", "compile"],
-            success_indicators=["Success", "Verified"],
             code_block_patterns=["```test", "```"],
             keywords=["function", "method"],
             spec_patterns=["requires", "ensures"],
@@ -225,7 +224,6 @@ class TestLanguageConfig:
         assert config.prompts_file == "test_prompts.yaml"
         assert config.default_tool_path == "test_tool"
         assert config.verify_command == ["test_tool", "verify"]
-        assert config.success_indicators == ["Success", "Verified"]
 
     def test_language_config_equality(self):
         """Test LanguageConfig equality comparison."""
@@ -236,7 +234,6 @@ class TestLanguageConfig:
             "prompts_file": "prompts.yaml",
             "verify_command": ["tool", "verify"],
             "compile_check_command": ["tool", "compile"],
-            "success_indicators": ["Success"],
             "code_block_patterns": ["```"],
             "keywords": ["function"],
             "spec_patterns": ["requires"],
