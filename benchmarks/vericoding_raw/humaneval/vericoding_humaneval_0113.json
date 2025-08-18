@@ -1,0 +1,7 @@
+{
+  "task_id": "HumanEval/112",
+  "prompt": "\ndef reverse_delete(s,c):\n    \"\"\"Task\n    We are given two strings s and c, you have to deleted all the characters in s that are equal to any character in c\n    then check if the result string is palindrome.\n    A string is called palindrome if it reads the same backward as forward.\n    You should return a tuple containing the result string and True/False for the check.\n    Example\n    For s = \"abcde\", c = \"ae\", the result should be ('bcd',False)\n    For s = \"abcdef\", c = \"b\"  the result should be ('acdef',False)\n    For s = \"abcdedcba\", c = \"ab\", the result should be ('cdedc',True)\n    \"\"\"\n",
+  "entry_point": "reverse_delete",
+  "canonical_solution": "    s = ''.join([char for char in s if char not in c])\n    return (s,s[::-1] == s)\n",
+  "test": "def check(candidate):\n\n    assert candidate(\"abcde\",\"ae\") == ('bcd',False)\n    assert candidate(\"abcdef\", \"b\") == ('acdef',False)\n    assert candidate(\"abcdedcba\",\"ab\") == ('cdedc',True)\n    assert candidate(\"dwik\",\"w\") == ('dik',False)\n    assert candidate(\"a\",\"a\") == ('',True)\n    assert candidate(\"abcdedcba\",\"\") == ('abcdedcba',True)\n    assert candidate(\"abcdedcba\",\"v\") == ('abcdedcba',True)\n    assert candidate(\"vabba\",\"v\") == ('abba',True)\n    assert candidate(\"mamma\", \"mia\") == (\"\", True)\n"
+}
