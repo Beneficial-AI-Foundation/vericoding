@@ -1,0 +1,7 @@
+{
+  "task_id": "HumanEval/45",
+  "prompt": "\n\ndef triangle_area(a, h):\n    \"\"\"Given length of a side and high return area for a triangle.\n    >>> triangle_area(5, 3)\n    7.5\n    \"\"\"\n",
+  "entry_point": "triangle_area",
+  "canonical_solution": "    return a * h / 2.0\n",
+  "test": "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(5, 3) == 7.5\n    assert candidate(2, 2) == 2.0\n    assert candidate(10, 8) == 40.0\n\n"
+}
