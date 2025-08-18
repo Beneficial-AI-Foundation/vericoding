@@ -1,0 +1,20 @@
+vc-preamble: |-
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  method mult(a:int, b:int) returns (x:int)
+      requires a >= 0 && b >= 0
+      ensures x == a * b
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
+
