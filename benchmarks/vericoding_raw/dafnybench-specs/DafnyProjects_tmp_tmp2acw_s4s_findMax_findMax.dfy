@@ -1,0 +1,21 @@
+/* 
+* Formal verification of a simple algorithm to find the maximum value in an array.
+* FEUP, MIEIC, MFES, 2020/21.
+*/
+
+// Finds the maximum value in a non-empty array.
+
+// <vc-helpers>
+// </vc-helpers>
+
+method findMax(a: array<real>) returns (max: real)
+  requires a.Length > 0
+  ensures exists k :: 0 <= k < a.Length && max == a[k]
+  ensures forall k :: 0 <= k < a.Length ==> max >= a[k]
+// <vc-code>
+{
+  assume false;
+}
+// </vc-code>
+
+// Test cases checked statically.

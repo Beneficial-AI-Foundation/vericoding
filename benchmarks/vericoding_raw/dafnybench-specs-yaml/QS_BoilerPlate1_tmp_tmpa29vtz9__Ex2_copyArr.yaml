@@ -1,0 +1,30 @@
+vc-preamble: |-
+  function sorted(s : seq<int>) : bool {
+    forall k1, k2 :: 0 <= k1 <= k2 < |s| ==> s[k1] <= s[k2]
+  }
+
+
+  // Ex1
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  method copyArr(a : array<int>, l : int, r : int) returns (ret : array<int>)
+    requires 0 <= l < r <= a.Length 
+    ensures ret[..] == a[l..r]
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  // Ex2
+
+
+  // Ex3
+

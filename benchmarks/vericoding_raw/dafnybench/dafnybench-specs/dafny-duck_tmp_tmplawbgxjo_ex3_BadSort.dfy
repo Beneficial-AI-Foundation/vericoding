@@ -1,0 +1,22 @@
+// program verifies
+
+predicate sortedbad(s: string)
+{
+  // no b's after non-b's
+  forall i, j :: 0 <= i <= j < |s| && s[i] == 'b' && s[j] != 'b' ==> i < j &&
+  // only non-d's before d's
+  forall i, j :: 0 <= i <= j < |s| && s[i] != 'd' && s[j] == 'd' ==> i < j
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+method BadSort(a: string) returns (b: string)
+requires forall i :: 0<=i<|a| ==> a[i] in {'b', 'a', 'd'}
+ensures sortedbad(b)
+ensures multiset(b[..]) == multiset(a[..])
+// <vc-code>
+{
+  assume false;
+}
+// </vc-code>

@@ -1,0 +1,13 @@
+// <vc-helpers>
+// </vc-helpers>
+
+method AppendArrayToSeq(s: seq<int>, a: array<int>) returns (r: seq<int>)
+    requires a != null
+    ensures |r| == |s| + a.Length
+    ensures forall i :: 0 <= i < |s| ==> r[i] == s[i]
+    ensures forall i :: 0 <= i < a.Length ==> r[|s| + i] == a[i]
+// <vc-code>
+{
+  assume false;
+}
+// </vc-code>
