@@ -1,0 +1,55 @@
+vc-preamble: |-
+
+vc-helpers: |-
+  <vc-helpers>
+  </vc-helpers>
+
+vc-spec: |-
+  method FindAllOccurrences(text: string, pattern: string) returns (offsets: set<nat>)
+    ensures forall i:nat :: i in offsets ==> i + |pattern| <= |text|
+    ensures forall i:nat :: 0 <= i <= |text| - |pattern|
+                         ==> (text[i..i+|pattern|] == pattern <==> i in offsets)
+
+vc-code: |-
+  {
+    offsets := {};
+
+    // No occurrences possible.
+    if |pattern| > |text| {
+      return;
+    }
+
+    // Every position (including |text|) matches the empty pattern.
+    if pattern == "" {
+      var i:int := 0;
+      while i < |text|
+        invariant 0 <= i <= |text|
+        invariant offsets == set j:nat | 0 <= j < i
+      {
+        offsets := offsets + {(i as nat)};
+        i := i + 1;
+      }
+      offsets := offsets + {(|text| as nat)};
+      return;
+    }
+
+    // Non-empty pattern: scan all start indices 0..|text|-|pattern|.
+    var i:int := 0;
+    while i <= |text| - |pattern|
+      invariant 0 <= i <= |text| - |pattern| + 1
+      // We've decided correctly for all starts < i
+      invariant forall k:nat :: 0 <= k < i ==> (text[k..k+|pattern|] == pattern <==> k in offsets)
+      // Any recorded offset is a valid start
+      invariant forall j:nat :: j in offsets ==> j + |pattern| <= |text|
+      decreases |text| - |pattern| + 1 - i
+    {
+      assume false;
+      if text[i..i+|pattern|] == pattern {
+        offsets := offsets + {(i as nat)};
+      }
+      i := i + 1;
+    }
+  }
+
+vc-postamble: |-
+
