@@ -1,0 +1,29 @@
+vc-preamble: |-
+  // RUN: %dafny /compile:0 "%s" > "%t"
+  // RUN: %diff "%s.expect" "%t"
+
+  class Node { }
+
+  predicate Q(x: Node)
+  predicate P(x: Node)
+
+  method AuxMethod(y: Node)
+    modifies y
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  method MainMethod(y: Node)
+    modifies y
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
+
