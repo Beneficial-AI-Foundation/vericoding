@@ -1,0 +1,86 @@
+generate_code: |
+  The task is to generate a Lean file that is verified from a specification file that contains the keyword "sorry" in place of desired implementation and proof blocks.  
+  
+  INPUT: a Lean specification file of the form
+         def problem_spec
+         (impl: Type1 → Type2 → ... → ResultType)
+         (arg1: Type1) (arg2: Type2) ... :=
+         let spec (result: ResultType) :=
+           -- specification logic here
+           specification_conditions;
+         ∃ result, impl arg1 arg2 ... = result ∧ spec result
+
+         def implementation (arg1: Type1) (arg2: Type2) ... : ResultType := sorry
+
+         theorem correctness
+         (arg1: Type1) (arg2: Type2) ...
+         : problem_spec implementation arg1 arg2 ... := sorry
+         
+    WHERE:
+    - problem_spec defines the specification for the function to be implemented
+    - implementation has the same signature as the impl parameter in problem_spec but with "sorry" as the body
+    - correctness theorem states that the implementation satisfies the problem_spec and has "sorry" as the proof body
+    - The file may contain additional helper functions and definitions that can be used
+
+  OUTPUT: Return ONLY the complete Lean code file, wrapped in a ```lean code block. Do not include any explanations, reasoning, or markdown outside the code block.
+  
+  The output should be a verified Lean file with:
+        - The original problem_spec definition unchanged
+        - A complete implementation replacing the "sorry" in the implementation definition
+        - A complete proof replacing the "sorry" in the correctness theorem
+        - Any additional helper definitions, lemmas, or theorems needed for the implementation or proof
+    
+  CRITICAL RULES:
+  - do not change the problem_spec definition
+  - do not change the implementation signature (name, arguments, return type)
+  - do not change the correctness theorem signature
+  - do not use sorry in the output file
+  - the input file may contain additional definitions that you can use in implementations if needed
+  - you can add helper definitions, theorems, and lemmas as needed, but the initial problem_spec, implementation signature, and correctness theorem signature must remain unchanged
+  - For any new definition, lemma or theorem you add, add a comment of the form -- LLM HELPER on the line just before it
+  - Return ONLY the Lean code, no explanations or markdown
+  
+  LEAN SPECIFICATION WITH EMPTY IMPLEMENTATION AND PROOF BODIES:
+  {code}
+
+fix_verification: |
+ The task is to review implementation and proof in a Lean specification file that do not verify due to missing or invalid implementations or proofs. 
+ INPUT: a Lean specification file that contains a problem_spec definition, an implementation with a body that doesn't verify, and a correctness theorem with a proof that doesn't verify. 
+ The file contains:
+ - A problem_spec definition that should remain unchanged
+ - An implementation definition that may have verification errors
+ - A correctness theorem that may have verification errors
+ - Some atoms (def, lemma, theorem, ...) that have the comment -- LLM HELPER before them. These atoms you can change and remove at will. 
+
+ For the implementation and correctness theorem (that do not have the comment -- LLM HELPER) you are allowed to change the implementation body and proof body, but you are not allowed to change the name, type, or signature of these atoms.
+
+  More precisely, these atoms will be of the form:
+  def implementation (arg1: Type1) (arg2: Type2) ... : ResultType := implementation_body
+  theorem correctness (arg1: Type1) (arg2: Type2) ... : problem_spec implementation arg1 arg2 ... := proof_body
+    
+  and you are allowed to change the implementation_body and proof_body, but you are not allowed to change the signature. So the output file should contain:
+
+  def implementation (arg1: Type1) (arg2: Type2) ... : ResultType := updated_implementation_body
+  theorem correctness (arg1: Type1) (arg2: Type2) ... : problem_spec implementation arg1 arg2 ... := updated_proof_body
+  where updated_implementation_body and updated_proof_body are the updated implementations and proofs that should verify.
+
+    
+  POSITIVE CRITICAL RULES:
+  - you can change the implementation body and proof body to fix the verification errors
+  - you can add helper definitions, theorems, and lemmas as needed, but the initial problem_spec, implementation signature, and correctness theorem signature must remain unchanged. 
+  Moreover, for any new definition, lemma or theorem you add, add a comment of the form -- LLM HELPER on the line just before it. 
+  
+  NEGATIVE CRITICAL RULES:
+  - you should not add trivial annotations (requires true, invariant true, ensures true, etc.)
+  - you should not add null checks on non-nullable types
+  - do not use sorry in the output file
+  - output valid Lean code
+  - Return ONLY the Lean code, no explanations or markdown
+
+  OUTPUT: Return ONLY the complete Lean code file, wrapped in a ```lean code block. Do not include any explanations, reasoning, or markdown outside the code block.
+  
+  ERROR DETAILS from Lean verification of the given code:
+  {errorDetails}
+
+  Code Below:
+  {code} 

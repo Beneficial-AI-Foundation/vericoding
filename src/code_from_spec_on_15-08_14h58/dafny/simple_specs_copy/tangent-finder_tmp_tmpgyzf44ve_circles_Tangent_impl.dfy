@@ -1,0 +1,27 @@
+// IMPL
+method Tangent(r: array<int>, x: array<int>) returns (b: bool)
+  requires forall i, j :: 0 <= i <= j < x.Length ==> x[i] <= x[j] // values in x will be in ascending order or empty
+  requires forall i, j :: (0 <= i < r.Length && 0 <= j < x.Length) ==> (r[i] >= 0 && x[j] >= 0)    // x and r will contain no negative values
+  ensures !b ==> forall i, j :: 0 <= i< r.Length && 0 <= j < x.Length ==> r[i] != x[j]  
+  ensures b ==> exists i, j :: 0 <= i< r.Length && 0 <= j < x.Length && r[i] == x[j]
+{
+  b := false;
+  
+  for i := 0 to r.Length
+    invariant 0 <= i <= r.Length
+    invariant !b ==> forall k, j :: 0 <= k < i && 0 <= j < x.Length ==> r[k] != x[j]
+    invariant b ==> exists k, j :: 0 <= k < r.Length && 0 <= j < x.Length && r[k] == x[j]
+  {
+    for j := 0 to x.Length
+      invariant 0 <= j <= x.Length
+      invariant !b ==> forall k :: 0 <= k < j ==> r[i] != x[k]
+      invariant !b ==> forall k, l :: 0 <= k < i && 0 <= l < x.Length ==> r[k] != x[l]
+      invariant b ==> exists k, l :: 0 <= k < r.Length && 0 <= l < x.Length && r[k] == x[l]
+    {
+      if r[i] == x[j] {
+        b := true;
+        return;
+      }
+    }
+  }
+}

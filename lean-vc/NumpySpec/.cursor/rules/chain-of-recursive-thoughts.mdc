@@ -1,0 +1,56 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Chain-of-Recursive-Thoughts (CoRT) Reasoning Pattern
+
+This rule distills the core ideas from the open-source repository **[Chain-of-Recursive-Thoughts](mdc:https:/github.com/PhialsBasement/Chain-of-Recursive-Thoughts)**.  The technique is an *iterative self-improvement loop* for LLMs that can be applied whenever we need higher-quality reasoning or code generation.  Treat it as a high-leverage metacognitive tool that can be layered on top of normal prompt-response cycles.
+
+## Why this matters
+CoRT reliably boosts solution quality (especially for programming tasks) by forcing the model to *think harder* and explore multiple solution paths before committing.  It is therefore relevant whenever you are:
+
+* generating non-trivial code or proofs
+* transforming or refactoring large text fragments
+* searching for subtle bugs or optimisations
+
+> **Use CoRT when a single pass feels flaky—let the model argue with itself first.**
+
+## The CoRT Loop
+1. **Initial draft** – Produce a baseline answer.
+2. **Depth decision** – Decide how many refinement rounds are worthwhile (can be static or heuristic).
+3. **For each round**
+   1. Generate *k* alternative answers (the original repo defaults to *k = 3*).
+   2. Evaluate all alternatives using an explicit rubric (e.g. tests, token-level scoring, or verbal critique).
+   3. Select the best candidate to carry forward.
+4. **Return** the survivor after all rounds.
+
+### Practical heuristics
+* Keep *k* small (2-4) to control cost.
+* Use deterministic sampling (temperature ≈ 0) for evaluation phases; use higher temperature for idea generation.
+* Choose an evaluation rubric aligned with the task: unit tests for code, logical consistency for proofs, etc.
+* Terminate early if a candidate scores perfectly.
+
+## Minimal pseudo-code
+```python
+answer = draft(prompt)
+for _ in range(depth):
+    alts = [improve(answer) for _ in range(k)]
+    answer = select_best([answer] + alts)
+return answer
+```
+`draft`, `improve`, and `select_best` can themselves be LLM calls with suitable system prompts.
+
+## Repository landmarks (for reference)
+* `recursive_thinking_ai.py` – CLI implementation of the loop
+* `recthink_web.py`       – minimal Flask web UI
+* `frontend/`              – React interface (optional)
+
+Although these files are **external** to our workspace, the high-level algorithm is easy to re-implement locally or call through your favourite LLM provider.
+
+## When **not** to use
+* Trivial tasks where 1-shot answers already pass all checks.
+* Time-critical paths where extra latency is unacceptable.
+
+---
+_Last synced: 2025-XX-XX.  Update this rule if you copy code or significantly deviate from the stock algorithm._

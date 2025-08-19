@@ -1,0 +1,5 @@
+// SPEC
+
+// SPEC
+method check() {
+}

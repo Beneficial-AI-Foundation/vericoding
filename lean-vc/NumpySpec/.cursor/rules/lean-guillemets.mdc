@@ -1,0 +1,28 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Using Guillemets for Identifiers in Lean
+
+When working with Lean code, you might encounter "unexpected identifier" errors or similar issues if you use a variable name that conflicts with a Lean keyword (e.g., `end`, `structure`, `section`).
+
+To resolve this, you can wrap the identifier in guillemets:
+
+- `«end»`
+- `«structure»`
+- `«section»`
+
+## Guillemet Oriented Programming
+
+You can even extend this idea to use entire sentences or descriptive phrases as identifiers. This can be a way to directly translate prose or specifications into code, especially in initial development stages.
+
+For example:
+```lean
+def «this is a very descriptive variable name for a specific natural number» : Nat := 5
+
+def «the theorem stating that all even numbers are divisible by two» : Prop :=
+  ∀ (n : Nat), Even n → Exists (k : Nat), n = 2 * k
+```
+
+While powerful for expressiveness, consider readability and maintainability when using very long identifiers. It might be better to use shorter, conventional names with good documentation for more complex projects.

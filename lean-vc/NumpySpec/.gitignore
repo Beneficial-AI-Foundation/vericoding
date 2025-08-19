@@ -1,0 +1,35 @@
+/**/.lake/
+external/morphcloud-examples-public/
+
+# Ignore generated artefacts but keep Lean sources
+/generated/**
+!/generated/versobook/
+!/generated/Spec/
+!/generated/versobook/Book/**/*.lean
+!/generated/Spec/**/*.lean
+!/generated/versobook/lakefile.lean
+!/generated/versobook/lake-manifest.json
+!/generated/versobook/lean-toolchain
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Ignore generated textbook PDFs (variants with margin removed or processed)
+/textbook/Numerical_Recipes_in_C_nomargin*.pdf
+
+# Explicitly keep the original source PDF
+!/textbook/Numerical_Recipes_in_C.pdf
+
+# Worktrees directory
+.worktrees/
+
+_out/
+
+# MCP configuration (can be customized per user)
+.cursor/mcp.json
+.vscode/mcp.json
+
+# Claude local settings
+.claude/settings.local.json

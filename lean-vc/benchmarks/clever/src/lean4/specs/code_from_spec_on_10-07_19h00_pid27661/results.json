@@ -1,0 +1,20 @@
+{
+  "results": [
+    {
+      "success": false,
+      "file": "problem_100_spec.lean",
+      "output": "specs/code_from_spec_on_10-07_19h00_pid27661/problem_100_spec_impl.lean",
+      "nr_iter": 1
+    },
+    {
+      "success": false,
+      "file": "problem_26_spec.lean",
+      "output": "specs/code_from_spec_on_10-07_19h00_pid27661/problem_26_spec_impl.lean",
+      "nr_iter": 1
+    }
+  ],
+  "processed_files": [
+    "specs/problem_100_spec.lean",
+    "specs/problem_26_spec.lean"
+  ]
+}

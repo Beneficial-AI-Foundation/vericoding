@@ -1,0 +1,19 @@
+vc-preamble: |-
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  method AsciiValue(c: char) returns (ascii: int)
+      ensures ascii == c as int
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
+

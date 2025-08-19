@@ -1,0 +1,632 @@
+[
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_454.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_460.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_431.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_743.rs",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "    Updating git repository `https://github.com/verus-lang/verus`\n    Updating crates.io index\n    Updating git repository `https://github.com/mystor/synstructure.git`\n     Locking 15 packages to latest compatible versions\n   Compiling proc-macro2 v1.0.95\n   Compiling unicode-ident v1.0.18\n   Compiling syn_verus v2.0.96 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling autocfg v1.5.0\n   Compiling prettyplease_verus v0.2.29 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling hashbrown v0.12.3\n   Compiling unicode-xid v0.2.6\n   Compiling vstd v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking builtin v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling indexmap v1.9.3\n   Compiling quote v1.0.40\n   Compiling syn v2.0.104\n   Compiling synstructure v0.13.0 (https://github.com/mystor/synstructure.git?rev=1079497eb2bea252433dac53afe41291d8779641#1079497e)\n   Compiling state_machines_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling builtin_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking vericode-verus-temp v0.1.0 (/private/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmp3b1mp2ut)\nwarning: function `rotate_right` is never used\n  --> src/main.rs:10:4\n   |\n10 | fn rotate_right(list: &Vec<u32>, n: usize) -> (new_list: Vec<u32>)\n   |    ^^^^^^^^^^^^\n   |\n   = note: `#[warn(dead_code)]` on by default\n\nwarning: `vericode-verus-temp` (bin \"vericode-verus-temp\") generated 1 warning\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.84s\n",
+    "nr_todos": 1,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_586.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_790.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_732.rs",
+    "success": false,
+    "error": "Compilation errors found",
+    "verification_output": "    Updating git repository `https://github.com/verus-lang/verus`\n    Updating crates.io index\n    Updating git repository `https://github.com/mystor/synstructure.git`\n     Locking 15 packages to latest compatible versions\n   Compiling proc-macro2 v1.0.95\n   Compiling unicode-ident v1.0.18\n   Compiling syn_verus v2.0.96 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling autocfg v1.5.0\n   Compiling prettyplease_verus v0.2.29 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling unicode-xid v0.2.6\n   Compiling hashbrown v0.12.3\n   Compiling vstd v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking builtin v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling indexmap v1.9.3\n   Compiling quote v1.0.40\n   Compiling syn v2.0.104\n   Compiling synstructure v0.13.0 (https://github.com/mystor/synstructure.git?rev=1079497eb2bea252433dac53afe41291d8779641#1079497e)\n   Compiling state_machines_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling builtin_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking vericode-verus-temp v0.1.0 (/private/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmp9a3_zl5h)\nerror[E0425]: cannot find function `is_space_comma_dot_spec` in this scope\n  --> src/main.rs:37:12\n   |\n37 |         if is_space_comma_dot_spec(c) {\n   |            ^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope\n\nFor more information about this error, try `rustc --explain E0425`.\nerror: could not compile `vericode-verus-temp` (bin \"vericode-verus-temp\") due to 1 previous error\n",
+    "nr_todos": 1,
+    "nr_spec": 2,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_474.rs",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "    Updating git repository `https://github.com/verus-lang/verus`\n    Updating crates.io index\n    Updating git repository `https://github.com/mystor/synstructure.git`\n     Locking 15 packages to latest compatible versions\n   Compiling proc-macro2 v1.0.95\n   Compiling unicode-ident v1.0.18\n   Compiling syn_verus v2.0.96 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling autocfg v1.5.0\n   Compiling prettyplease_verus v0.2.29 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling unicode-xid v0.2.6\n   Compiling hashbrown v0.12.3\n   Compiling vstd v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking builtin v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling indexmap v1.9.3\n   Compiling quote v1.0.40\n   Compiling syn v2.0.104\n   Compiling synstructure v0.13.0 (https://github.com/mystor/synstructure.git?rev=1079497eb2bea252433dac53afe41291d8779641#1079497e)\n   Compiling state_machines_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling builtin_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking vericode-verus-temp v0.1.0 (/private/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmp9mxa4x6o)\nwarning: function `replace_chars` is never used\n  --> src/main.rs:14:4\n   |\n14 | fn replace_chars(str1: &Vec<char>, old_char: char, new_char: char) -> (result: Vec<char>)\n   |    ^^^^^^^^^^^^^\n   |\n   = note: `#[warn(dead_code)]` on by default\n\nwarning: `vericode-verus-temp` (bin \"vericode-verus-temp\") generated 1 warning\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.21s\n",
+    "nr_todos": 1,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_804.rs",
+    "success": false,
+    "error": "Compilation errors found",
+    "verification_output": "    Updating git repository `https://github.com/verus-lang/verus`\n    Updating crates.io index\n    Updating git repository `https://github.com/mystor/synstructure.git`\n     Locking 15 packages to latest compatible versions\n   Compiling proc-macro2 v1.0.95\n   Compiling unicode-ident v1.0.18\n   Compiling syn_verus v2.0.96 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling autocfg v1.5.0\n   Compiling prettyplease_verus v0.2.29 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling unicode-xid v0.2.6\n   Compiling hashbrown v0.12.3\n   Compiling vstd v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking builtin v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling indexmap v1.9.3\n   Compiling quote v1.0.40\n   Compiling syn v2.0.104\n   Compiling synstructure v0.13.0 (https://github.com/mystor/synstructure.git?rev=1079497eb2bea252433dac53afe41291d8779641#1079497e)\n   Compiling state_machines_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling builtin_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking vericode-verus-temp v0.1.0 (/private/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpjizjqg1a)\nerror[E0425]: cannot find function `is_even` in this scope\n  --> src/main.rs:20:12\n   |\n20 |         if is_even(arr[i]) {\n   |            ^^^^^^^ not found in this scope\n\nFor more information about this error, try `rustc --explain E0425`.\nerror: could not compile `vericode-verus-temp` (bin \"vericode-verus-temp\") due to 1 previous error\n",
+    "nr_todos": 1,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_616.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_399.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_424.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_461.rs",
+    "success": false,
+    "error": "Compilation errors found",
+    "verification_output": "    Updating git repository `https://github.com/verus-lang/verus`\n    Updating crates.io index\n    Updating git repository `https://github.com/mystor/synstructure.git`\n     Locking 15 packages to latest compatible versions\n   Compiling proc-macro2 v1.0.95\n   Compiling unicode-ident v1.0.18\n   Compiling syn_verus v2.0.96 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling autocfg v1.5.0\n   Compiling prettyplease_verus v0.2.29 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling hashbrown v0.12.3\n   Compiling unicode-xid v0.2.6\n   Compiling vstd v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking builtin v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling indexmap v1.9.3\n   Compiling quote v1.0.40\n   Compiling syn v2.0.104\n   Compiling synstructure v0.13.0 (https://github.com/mystor/synstructure.git?rev=1079497eb2bea252433dac53afe41291d8779641#1079497e)\n   Compiling state_machines_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling builtin_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking vericode-verus-temp v0.1.0 (/private/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpfy4tp4be)\nerror[E0425]: cannot find function `is_upper_case` in this scope\n  --> src/main.rs:46:12\n   |\n46 |         if is_upper_case(text[i]) {\n   |            ^^^^^^^^^^^^^ not found in this scope\n\nFor more information about this error, try `rustc --explain E0425`.\nerror: could not compile `vericode-verus-temp` (bin \"vericode-verus-temp\") due to 1 previous error\n",
+    "nr_todos": 1,
+    "nr_spec": 3,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_602.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 2,
+    "nr_spec": 2,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_445.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_554.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_414.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 2,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_588.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 2,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_240.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_70.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_769.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 2,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_629.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_728.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_576_v2.rs",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "    Updating git repository `https://github.com/verus-lang/verus`\n    Updating crates.io index\n    Updating git repository `https://github.com/mystor/synstructure.git`\n     Locking 15 packages to latest compatible versions\n   Compiling proc-macro2 v1.0.95\n   Compiling unicode-ident v1.0.18\n   Compiling syn_verus v2.0.96 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling autocfg v1.5.0\n   Compiling prettyplease_verus v0.2.29 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling unicode-xid v0.2.6\n   Compiling hashbrown v0.12.3\n   Compiling vstd v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking builtin v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling indexmap v1.9.3\n   Compiling quote v1.0.40\n   Compiling syn v2.0.104\n   Compiling synstructure v0.13.0 (https://github.com/mystor/synstructure.git?rev=1079497eb2bea252433dac53afe41291d8779641#1079497e)\n   Compiling state_machines_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling builtin_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking vericode-verus-temp v0.1.0 (/private/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmp96fzv_8z)\nwarning: function `sub_array_at_index` is never used\n --> src/main.rs:5:4\n  |\n5 | fn sub_array_at_index(main: &Vec<i32>, sub: &Vec<i32>, idx: usize) -> (result: bool)\n  |    ^^^^^^^^^^^^^^^^^^\n  |\n  = note: `#[warn(dead_code)]` on by default\n\nwarning: function `is_sub_array` is never used\n  --> src/main.rs:35:4\n   |\n35 | fn is_sub_array(main: &Vec<i32>, sub: &Vec<i32>) -> (result: bool)\n   |    ^^^^^^^^^^^^\n\nwarning: `vericode-verus-temp` (bin \"vericode-verus-temp\") generated 2 warnings\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.31s\n",
+    "nr_todos": 2,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_261.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_230.rs",
+    "success": false,
+    "error": "Compilation errors found",
+    "verification_output": "    Updating git repository `https://github.com/verus-lang/verus`\n    Updating crates.io index\n    Updating git repository `https://github.com/mystor/synstructure.git`\n     Locking 15 packages to latest compatible versions\n   Compiling proc-macro2 v1.0.95\n   Compiling unicode-ident v1.0.18\n   Compiling syn_verus v2.0.96 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling autocfg v1.5.0\n   Compiling prettyplease_verus v0.2.29 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling hashbrown v0.12.3\n   Compiling unicode-xid v0.2.6\n   Compiling vstd v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking builtin v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling indexmap v1.9.3\n   Compiling quote v1.0.40\n   Compiling syn v2.0.104\n   Compiling synstructure v0.13.0 (https://github.com/mystor/synstructure.git?rev=1079497eb2bea252433dac53afe41291d8779641#1079497e)\n   Compiling state_machines_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling builtin_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking vericode-verus-temp v0.1.0 (/private/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmppur9uqoa)\nerror[E0308]: mismatched types\n  --> src/main.rs:31:44\n   |\n31 |         let current_char = if str1[idx] == 32 {\n   |                               ---------    ^^ expected `char`, found `u8`\n   |                               |\n   |                               expected because this is `char`\n\nFor more information about this error, try `rustc --explain E0308`.\nerror: could not compile `vericode-verus-temp` (bin \"vericode-verus-temp\") due to 1 previous error\n",
+    "nr_todos": 1,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_282.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_113.rs",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "    Updating git repository `https://github.com/verus-lang/verus`\n    Updating crates.io index\n    Updating git repository `https://github.com/mystor/synstructure.git`\n     Locking 15 packages to latest compatible versions\n   Compiling proc-macro2 v1.0.95\n   Compiling unicode-ident v1.0.18\n   Compiling syn_verus v2.0.96 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling autocfg v1.5.0\n   Compiling prettyplease_verus v0.2.29 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling unicode-xid v0.2.6\n   Compiling hashbrown v0.12.3\n   Compiling vstd v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking builtin v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling indexmap v1.9.3\n   Compiling quote v1.0.40\n   Compiling syn v2.0.104\n   Compiling synstructure v0.13.0 (https://github.com/mystor/synstructure.git?rev=1079497eb2bea252433dac53afe41291d8779641#1079497e)\n   Compiling state_machines_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling builtin_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking vericode-verus-temp v0.1.0 (/private/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmp3qb2272s)\nwarning: function `is_digit` is never used\n  --> src/main.rs:10:4\n   |\n10 | fn is_digit(c: char) -> (res: bool)\n   |    ^^^^^^^^\n   |\n   = note: `#[warn(dead_code)]` on by default\n\nwarning: function `is_integer` is never used\n  --> src/main.rs:20:4\n   |\n20 | fn is_integer(text: &Vec<char>) -> (result: bool)\n   |    ^^^^^^^^^^\n\nwarning: `vericode-verus-temp` (bin \"vericode-verus-temp\") generated 2 warnings\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.01s\n",
+    "nr_todos": 2,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_142.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_251.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_618.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_62.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_161.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 2,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_579.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 2,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_809.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_95.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_8.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_145.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_105.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_578.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_808.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_94.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_284.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_273.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_307.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_644.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_807.rs",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "    Updating git repository `https://github.com/verus-lang/verus`\n    Updating crates.io index\n    Updating git repository `https://github.com/mystor/synstructure.git`\n     Locking 15 packages to latest compatible versions\n   Compiling proc-macro2 v1.0.95\n   Compiling unicode-ident v1.0.18\n   Compiling syn_verus v2.0.96 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling autocfg v1.5.0\n   Compiling prettyplease_verus v0.2.29 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling unicode-xid v0.2.6\n   Compiling hashbrown v0.12.3\n   Compiling vstd v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking builtin v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling indexmap v1.9.3\n   Compiling quote v1.0.40\n   Compiling syn v2.0.104\n   Compiling synstructure v0.13.0 (https://github.com/mystor/synstructure.git?rev=1079497eb2bea252433dac53afe41291d8779641#1079497e)\n   Compiling state_machines_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling builtin_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking vericode-verus-temp v0.1.0 (/private/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmphd6pj7xo)\nwarning: function `find_first_odd` is never used\n  --> src/main.rs:16:4\n   |\n16 | fn find_first_odd(arr: &Vec<u32>) -> (index: Option<usize>)\n   |    ^^^^^^^^^^^^^^\n   |\n   = note: `#[warn(dead_code)]` on by default\n\nwarning: `vericode-verus-temp` (bin \"vericode-verus-temp\") generated 1 warning\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.45s\n",
+    "nr_todos": 1,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_567.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_476.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 2,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_605.rs",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "    Updating git repository `https://github.com/verus-lang/verus`\n    Updating crates.io index\n    Updating git repository `https://github.com/mystor/synstructure.git`\n     Locking 15 packages to latest compatible versions\n   Compiling proc-macro2 v1.0.95\n   Compiling unicode-ident v1.0.18\n   Compiling syn_verus v2.0.96 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling autocfg v1.5.0\n   Compiling prettyplease_verus v0.2.29 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling unicode-xid v0.2.6\n   Compiling hashbrown v0.12.3\n   Compiling vstd v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking builtin v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling indexmap v1.9.3\n   Compiling quote v1.0.40\n   Compiling syn v2.0.104\n   Compiling synstructure v0.13.0 (https://github.com/mystor/synstructure.git?rev=1079497eb2bea252433dac53afe41291d8779641#1079497e)\n   Compiling state_machines_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling builtin_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking vericode-verus-temp v0.1.0 (/private/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmp8mnws5jo)\nwarning: function `prime_num` is never used\n  --> src/main.rs:10:4\n   |\n10 | fn prime_num(n: u64) -> (result: bool)\n   |    ^^^^^^^^^\n   |\n   = note: `#[warn(dead_code)]` on by default\n\nwarning: `vericode-verus-temp` (bin \"vericode-verus-temp\") generated 1 warning\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.41s\n",
+    "nr_todos": 1,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_433.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_472.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_741.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_557.rs",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "    Updating git repository `https://github.com/verus-lang/verus`\n    Updating crates.io index\n    Updating git repository `https://github.com/mystor/synstructure.git`\n     Locking 15 packages to latest compatible versions\n   Compiling proc-macro2 v1.0.95\n   Compiling unicode-ident v1.0.18\n   Compiling syn_verus v2.0.96 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling autocfg v1.5.0\n   Compiling prettyplease_verus v0.2.29 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling unicode-xid v0.2.6\n   Compiling hashbrown v0.12.3\n   Compiling vstd v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking builtin v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling indexmap v1.9.3\n   Compiling quote v1.0.40\n   Compiling syn v2.0.104\n   Compiling synstructure v0.13.0 (https://github.com/mystor/synstructure.git?rev=1079497eb2bea252433dac53afe41291d8779641#1079497e)\n   Compiling state_machines_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling builtin_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking vericode-verus-temp v0.1.0 (/private/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmp7vs2uisf)\nwarning: function `to_toggle_case` is never used\n  --> src/main.rs:36:4\n   |\n36 | fn to_toggle_case(str1: &Vec<char>) -> (toggle_case: Vec<char>)\n   |    ^^^^^^^^^^^^^^\n   |\n   = note: `#[warn(dead_code)]` on by default\n\nwarning: `vericode-verus-temp` (bin \"vericode-verus-temp\") generated 1 warning\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.23s\n",
+    "nr_todos": 1,
+    "nr_spec": 5,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_2.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 2,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_775.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_764.rs",
+    "success": false,
+    "error": "Compilation errors found",
+    "verification_output": "    Updating git repository `https://github.com/verus-lang/verus`\n    Updating crates.io index\n    Updating git repository `https://github.com/mystor/synstructure.git`\n     Locking 15 packages to latest compatible versions\n   Compiling proc-macro2 v1.0.95\n   Compiling unicode-ident v1.0.18\n   Compiling syn_verus v2.0.96 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling autocfg v1.5.0\n   Compiling prettyplease_verus v0.2.29 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling unicode-xid v0.2.6\n   Compiling hashbrown v0.12.3\n   Compiling vstd v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking builtin v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling indexmap v1.9.3\n   Compiling quote v1.0.40\n   Compiling syn v2.0.104\n   Compiling synstructure v0.13.0 (https://github.com/mystor/synstructure.git?rev=1079497eb2bea252433dac53afe41291d8779641#1079497e)\n   Compiling state_machines_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling builtin_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking vericode-verus-temp v0.1.0 (/private/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpffwmscf4)\nerror[E0425]: cannot find function `is_digit` in this scope\n  --> src/main.rs:41:12\n   |\n41 |         if is_digit(text[i]) {\n   |            ^^^^^^^^ not found in this scope\n   |\nhelp: use the `.` operator to call the method `is_digit` on `char`\n   |\n41 -         if is_digit(text[i]) {\n41 +         if text[i].is_digit() {\n   |\n\nFor more information about this error, try `rustc --explain E0425`.\nerror: could not compile `vericode-verus-temp` (bin \"vericode-verus-temp\") due to 1 previous error\n",
+    "nr_todos": 1,
+    "nr_spec": 2,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_624.rs",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "    Updating git repository `https://github.com/verus-lang/verus`\n    Updating crates.io index\n    Updating git repository `https://github.com/mystor/synstructure.git`\n     Locking 15 packages to latest compatible versions\n   Compiling proc-macro2 v1.0.95\n   Compiling unicode-ident v1.0.18\n   Compiling syn_verus v2.0.96 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling autocfg v1.5.0\n   Compiling prettyplease_verus v0.2.29 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling unicode-xid v0.2.6\n   Compiling hashbrown v0.12.3\n   Compiling vstd v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking builtin v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling indexmap v1.9.3\n   Compiling quote v1.0.40\n   Compiling syn v2.0.104\n   Compiling synstructure v0.13.0 (https://github.com/mystor/synstructure.git?rev=1079497eb2bea252433dac53afe41291d8779641#1079497e)\n   Compiling state_machines_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n   Compiling builtin_macros v0.1.0 (https://github.com/verus-lang/verus?rev=9b557d70faab565829c0642c4d56609a44814d82#9b557d70)\n    Checking vericode-verus-temp v0.1.0 (/private/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpo0f8zk9w)\nwarning: function `to_uppercase` is never used\n  --> src/main.rs:23:4\n   |\n23 | fn to_uppercase(str1: &Vec<char>) -> (result: Vec<char>)\n   |    ^^^^^^^^^^^^\n   |\n   = note: `#[warn(dead_code)]` on by default\n\nwarning: `vericode-verus-temp` (bin \"vericode-verus-temp\") generated 1 warning\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.76s\n",
+    "nr_todos": 1,
+    "nr_spec": 3,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_18.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 2,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_610.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_572.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 2,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_249.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 2,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_3.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 1,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_447.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_576.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 2,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_436.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_760.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_412.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_426.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 1,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  },
+  {
+    "file": "src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_69.rs",
+    "success": false,
+    "error": "No TODO blocks or spec functions found",
+    "verification_output": "",
+    "nr_todos": 2,
+    "nr_spec": 0,
+    "timestamp": "20250721_145911"
+  }
+]

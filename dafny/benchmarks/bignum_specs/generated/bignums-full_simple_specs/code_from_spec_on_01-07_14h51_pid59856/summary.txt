@@ -1,0 +1,43 @@
+=== DAFNY SPECIFICATION-TO-CODE PROCESSING SUMMARY (DEBUG VERSION) ===
+
+Test directory: benchmarks/bignum_specs/generated/bignums-full_simple_specs/
+Output directory: benchmarks/bignum_specs/generated/bignums-full_simple_specs/code_from_spec_on_01-07_14h51_pid59856
+Max iterations: 10
+Test date: 2025-07-01T16:28:04.631796
+
+Total original files: 13
+
+=== OVERALL STATISTICS ===
+Total successful: 6
+Total failed: 7
+Success rate: 46.2%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ bignums-full_ModExp_int.dfy -> bignums-full_ModExp_int_impl.dfy
+✓ bignums-full_NormalizeBitString.dfy -> bignums-full_NormalizeBitString_impl.dfy
+✓ bignums-full_DivMod.dfy -> bignums-full_DivMod_impl.dfy
+✓ bignums-full_ModExpPow2_int.dfy -> bignums-full_ModExpPow2_int_impl.dfy
+✓ bignums-full_Zeros.dfy -> bignums-full_Zeros_impl.dfy
+✓ bignums-full_CompareUnequal.dfy -> bignums-full_CompareUnequal_impl.dfy
+
+=== FAILED FILES (VERIFICATION) ===
+✗ bignums-full_ModExp.dfy
+✗ bignums-full_Compare.dfy
+✗ bignums-full_Sub.dfy
+✗ bignums-full_Add.dfy
+✗ bignums-full_Main.dfy
+✗ bignums-full_Mul.dfy
+✗ bignums-full_ModExpPow2.dfy
+
+=== DEBUG FEATURES ===
+Debug mode: Disabled
+ATOM block verification: Relaxed (default)
+Specification verification: Strict (default)
+- Saves only final implementation as *_impl.dfy in main directory
+- No intermediate files saved (debug mode disabled)
+
+- Debug mode control: Disabled
+- Configurable file output based on debug setting
+- Iteration tracking: nr_iter field in CSV shows final iteration
+
+Generated on: 2025-07-01T16:28:04.633200

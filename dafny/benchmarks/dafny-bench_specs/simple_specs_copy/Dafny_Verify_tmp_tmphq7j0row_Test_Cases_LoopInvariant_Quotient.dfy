@@ -1,0 +1,6 @@
+// SPEC
+
+
+method Quotient()
+{
+}

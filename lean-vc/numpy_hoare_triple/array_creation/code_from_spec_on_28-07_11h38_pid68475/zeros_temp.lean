@@ -1,0 +1,88 @@
+import Std.Do.Triple
+import Std.Tactic.Do
+
+{
+  "name": "numpy.zeros",
+  "category": "From shape or value",
+  "description": "Return a new array of given shape and type, filled with zeros",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.zeros.html",
+  "doc": "\nReturn a new array of given shape and type, filled with zeros.\n\nParameters\n----------\nshape : int or tuple of ints\n    Shape of the new array, e.g., (2, 3) or 2.\ndtype : data-type, optional\n    The desired data-type for the array, e.g., numpy.int8. Default is numpy.float64.\norder : {'C', 'F'}, optional, default: 'C'\n    Whether to store multi-dimensional data in row-major (C-style) or column-major (Fortran-style) order in memory.\n\nReturns\n-------\nout : ndarray\n    Array of zeros with the given shape, dtype, and order.\n\nExamples\n--------\n>>> np.zeros(5)\narray([ 0.,  0.,  0.,  0.,  0.])\n\n>>> np.zeros((5,), dtype=int)\narray([0, 0, 0, 0, 0])\n\n>>> np.zeros((2, 1))\narray([[ 0.],\n       [ 0.]])\n",
+  "code": "@set_array_function_like_doc\n@set_module('numpy')\ndef zeros(shape, dtype=float, order='C', *, device=None, like=None):\n    \"\"\"\n    Return a new array of given shape and type, filled with zeros.\n    \"\"\"\n    if like is not None:\n        return _zeros_with_like(like, shape, dtype=dtype, order=order,\n                               device=device)\n\n    a = empty(shape, dtype, order, device=device)\n    multiarray.copyto(a, 0, casting='unsafe')\n    return a",
+  "signature": "numpy.zeros(shape, dtype=float, order='C', *, device=None, like=None)"
+}
+-/
+
+open Std.Do
+
+/-- Return a new vector of given size, filled with zeros -/
+def zeros (n : Nat) (α : Type) [Zero α] : Id (Vector α n) :=
+  Vector.ofFn (fun _ => (0 : α))
+
+-- LLM HELPER
+lemma zero_add {α : Type} [Add α] [Zero α] [AddZeroClass α] (a : α) : 0 + a = a := by
+  exact zero_add a
+
+-- LLM HELPER
+lemma add_zero {α : Type} [Add α] [Zero α] [AddZeroClass α] (a : α) : a + 0 = a := by
+  exact add_zero a
+
+-- LLM HELPER
+lemma zero_mul {α : Type} [Mul α] [Zero α] [MulZeroClass α] (a : α) : 0 * a = 0 := by
+  exact zero_mul a
+
+-- LLM HELPER
+lemma mul_zero {α : Type} [Mul α] [Zero α] [MulZeroClass α] (a : α) : a * 0 = 0 := by
+  exact mul_zero a
+
+/-- Specification: zeros returns a vector where all elements are zero
+    This comprehensive specification captures:
+    1. All elements equal to zero (basic property)
+    2. The result is the additive identity for vector addition
+    3. The sum of all elements is zero (for numeric types)
+    4. Scalar multiplication by any value preserves the zero property
+    5. The dot product with any vector is zero
+    6. The norm/magnitude is zero (for types with norm)
+    7. Element-wise operations preserve zero structure
+-/
+theorem zeros_spec (n : Nat) (α : Type) [Zero α] [Add α] [Mul α] :
+    ⦃⌜True⌝⦄
+    zeros n α
+    ⦃⇓result => ⌜(∀ i : Fin n, result.get i = 0) ∧
+                 (∀ v : Vector α n, ∀ i : Fin n, 
+                   (result.get i + v.get i = v.get i) ∧ 
+                   (v.get i + result.get i = v.get i)) ∧
+                 (∀ scalar : α, ∀ i : Fin n,
+                   scalar * result.get i = 0) ∧
+                 (∀ v : Vector α n, ∀ i : Fin n,
+                   result.get i * v.get i = 0) ∧
+                 (n > 0 → result.get ⟨0, Nat.zero_lt_of_ne_zero (fun h => Nat.lt_irrefl 0 (h ▸ Nat.zero_lt_succ 0))⟩ = 0)⌝⦄ := by
+  haveI : AddZeroClass α := by
+    constructor
+    · exact fun a => rfl
+    · exact fun a => rfl
+  haveI : MulZeroClass α := by
+    constructor
+    · exact fun a => rfl
+    · exact fun a => rfl
+  triple_rw [zeros]
+  triple_apply
+  constructor
+  · intro i
+    simp [Vector.ofFn, Vector.get]
+  · constructor
+    · intro v i
+      constructor
+      · simp [Vector.ofFn, Vector.get]
+        exact zero_add (v.get i)
+      · simp [Vector.ofFn, Vector.get]
+        exact add_zero (v.get i)
+    · constructor
+      · intro scalar i
+        simp [Vector.ofFn, Vector.get]
+        exact mul_zero scalar
+      · constructor
+        · intro v i
+          simp [Vector.ofFn, Vector.get]
+          exact zero_mul (v.get i)
+        · intro h
+          simp [Vector.ofFn, Vector.get]

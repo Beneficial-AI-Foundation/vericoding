@@ -1,0 +1,44 @@
+end goal: port a whole textbook (currently numerical recipe in C) to lean 4 purely with deep RL bootstrapping through lean's dependent verifier.
+
+current goal: This is a specification for just 1 function: that gaussian elimination is an inverse. it occurs at the beginning of chapter 2.
+
+
+
+To properly add imports: add leansearchclient as a dependency and `import LeanSearchClient` to use `#search` like `#eval`. It's how you can find theorems and lemmas.
+
+example:
+
+```lean
+-- #search queries must end with a period
+#search "nonsingular."
+-- loogle uses type notation not strings
+#loogle List ?a -> ?a
+
+```
+
+reward shaping list: [
+ "get import order right",
+]
+
+If a section of the book is inappropriate to translate (like chapter 1 on C programming language conventions), extract any relevant specs and leave it as prose in verso.
+
+workflow:
+
+1. ocr the book
+2. put the book as comments/prose with verso.
+3. use the agent to write the code
+4. run the code and check the results
+5. loop 3-4 until the code is correct
+
+turn off `relaxedAutoImplicit`. you can set it once and for all in the lakefile. Turn on `linter.missingDocs = true` to ensure you write docstrings. it will also show you WHAT to document in the first place.
+
+unexpected token 'namespace'; expected '#guard_msgs', 'abbrev', 'add_decl_doc', 'axiom', 'binder_predicate', 'builtin_dsimproc' ` probably means you put a doc or module comment in the wrong place.
+
+My setup for adding context to cursor and morph agents is crude. recommend something better.
+
+
+See `deepseek-prover.png` for a pipeline workflow.
+
+TODO see deepseek prover 2 and incroporate it.
+
+> to first analyze the mathematical problem in natural language, then decompose the proof into smaller steps, translating each step into a corresponding Lean formal statement. Since general-purpose models are known to struggle with producing complete Lean proofs, we instruct DeepSeek-V3 to generate only a high-level proof sketch with the details omitted. The resulting chain of thought culminates in a Lean theorem composed of a sequence of have statements, each concluded with a sorry placeholder indicating a subgoal to be solved. This approach mirrors the human style of proof construction, in which a complex theorem is incrementally reduced to a sequence of more manageable lemmas.

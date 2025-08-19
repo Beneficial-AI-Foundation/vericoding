@@ -1,0 +1,79 @@
+[project]
+name = "numpyspec"
+version = "0.1.0"
+description = "Formally verified numpy-compatible operations"
+readme = "README.md"
+authors = [{ name = "Alok Singh", email = "alokbeniwal@gmail.com" }]
+requires-python = ">=3.12"
+dependencies = [
+    # Core scientific computing
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    # HTTP and API clients
+    "requests>=2.31.0",
+    "httpx>=0.28.0",
+    # Data validation and serialization
+    "pydantic>=2.0.0",
+    # Machine learning and RL
+    "gymnasium>=0.29.1",
+    "torch>=2.3.0",
+    "transformers>=4.41.0",
+    "stable-baselines3>=2.3.0",
+    "accelerate>=0.30.0",
+    # Configuration and environment
+    "python-dotenv>=1.0.1",
+    "typer>=0.9.0",
+    # Async programming
+    "asyncio-mqtt>=0.11.0",
+    "aiofiles>=23.0.0",
+    # Cloud dependencies
+    "boto3>=1.28.0",
+    "azure-identity>=1.14.0",
+    "google-cloud-storage>=2.10.0",
+    # AI/ML utilities
+    "huggingface_hub>=0.23.0",
+    "jaxtyping>=0.3.2",
+    "litellm>=1.34.10",
+    "tqdm>=4.66.4",
+    # Project-specific
+    "pantograph @ git+https://github.com/stanford-centaur/PyPantograph.git@main",
+    "leantool @ git+https://github.com/alok/LeanTool.git@v0.4.3+uv",
+    "ast-grep-py>=0.38.6",
+    "lean-explore",
+]
+
+[project.scripts]
+numpyspec = "numpyspec:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    # Testing
+    "pytest>=8.2.1",
+    "pytest-asyncio>=0.21.0",
+    "pytest-xdist>=3.3.0",
+    
+    # Code quality
+    "ruff>=0.11.9",
+    "mypy>=1.5.0",
+    
+    # Interactive development
+    "ipython>=8.0.0",
+    "ipykernel>=6.29.5",
+    "jupyter>=1.0.0",
+]
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.uv.sources]
+lean-explore = { git = "https://github.com/justincasher/lean-explore.git" }

@@ -1,0 +1,48 @@
+{
+  "results": [
+    {
+      "success": false,
+      "file": "problem_100_spec.lean",
+      "output": "/Users/sergiu.bursuc/baif/vericoding/lean-vc/benchmarks/clever/src/lean4/specs/code_from_spec_on_10-07_18h44_pid23529/problem_100_spec_impl.lean",
+      "nr_iter": 10
+    },
+    {
+      "success": false,
+      "file": "problem_26_spec.lean",
+      "output": "/Users/sergiu.bursuc/baif/vericoding/lean-vc/benchmarks/clever/src/lean4/specs/code_from_spec_on_10-07_18h44_pid23529/problem_26_spec_impl.lean",
+      "nr_iter": 10
+    },
+    {
+      "success": true,
+      "file": "problem_95_spec.lean",
+      "output": "/Users/sergiu.bursuc/baif/vericoding/lean-vc/benchmarks/clever/src/lean4/specs/code_from_spec_on_10-07_18h44_pid23529/problem_95_spec_impl.lean",
+      "nr_iter": 3
+    },
+    {
+      "success": false,
+      "file": "problem_48_spec.lean",
+      "output": "/Users/sergiu.bursuc/baif/vericoding/lean-vc/benchmarks/clever/src/lean4/specs/code_from_spec_on_10-07_18h44_pid23529/problem_48_spec_impl.lean",
+      "nr_iter": 10
+    },
+    {
+      "success": false,
+      "file": "problem_81_spec.lean",
+      "output": "/Users/sergiu.bursuc/baif/vericoding/lean-vc/benchmarks/clever/src/lean4/specs/code_from_spec_on_10-07_18h44_pid23529/problem_81_spec_impl.lean",
+      "nr_iter": 10
+    },
+    {
+      "success": false,
+      "file": "problem_32_spec.lean",
+      "output": "/Users/sergiu.bursuc/baif/vericoding/lean-vc/benchmarks/clever/src/lean4/specs/code_from_spec_on_10-07_18h44_pid23529/problem_32_spec_impl.lean",
+      "nr_iter": 10
+    }
+  ],
+  "processed_files": [
+    "/Users/sergiu.bursuc/baif/vericoding/lean-vc/benchmarks/clever/src/lean4/specs/problem_26_spec.lean",
+    "/Users/sergiu.bursuc/baif/vericoding/lean-vc/benchmarks/clever/src/lean4/specs/problem_32_spec.lean",
+    "/Users/sergiu.bursuc/baif/vericoding/lean-vc/benchmarks/clever/src/lean4/specs/problem_95_spec.lean",
+    "/Users/sergiu.bursuc/baif/vericoding/lean-vc/benchmarks/clever/src/lean4/specs/problem_100_spec.lean",
+    "/Users/sergiu.bursuc/baif/vericoding/lean-vc/benchmarks/clever/src/lean4/specs/problem_48_spec.lean",
+    "/Users/sergiu.bursuc/baif/vericoding/lean-vc/benchmarks/clever/src/lean4/specs/problem_81_spec.lean"
+  ]
+}

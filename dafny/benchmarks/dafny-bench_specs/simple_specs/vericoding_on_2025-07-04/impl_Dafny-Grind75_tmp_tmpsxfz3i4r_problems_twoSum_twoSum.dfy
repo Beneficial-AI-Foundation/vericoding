@@ -1,0 +1,40 @@
+//ATOM
+predicate summingPair(i: nat, j: nat, nums: seq<int>, target: int)
+  requires i < |nums|
+  requires j < |nums|
+{
+  i != j && nums[i] + nums[j] == target
+}
+
+//IMPL 
+method twoSum(nums: seq<int>, target: int) returns (pair: (nat, nat))
+  requires exists i:nat,j:nat :: i < j < |nums| && summingPair(i, j, nums, target) && forall l: nat, m: nat :: l < m < |nums| && l != i && m != j ==> !summingPair(l, m, nums, target)
+  ensures 0 <= pair.0 < |nums| && 0 <= pair.1 < |nums| && summingPair(pair.0, pair.1, nums, target)
+{
+  var i := 0;
+  while i < |nums|
+    invariant 0 <= i <= |nums|
+    /* code modified by LLM (iteration 1): Enhanced invariant to track all pairs checked so far */
+    invariant forall x: nat, y: nat :: x < y < |nums| && x < i ==> !summingPair(x, y, nums, target)
+  {
+    var j := i + 1;
+    while j < |nums|
+      invariant i + 1 <= j <= |nums|
+      invariant forall y: nat :: i < y < j ==> !summingPair(i, y, nums, target)
+    {
+      if nums[i] + nums[j] == target {
+        /* code modified by LLM (iteration 1): Added assertion to help prove postcondition */
+        assert summingPair(i, j, nums, target);
+        pair := (i, j);
+        return;
+      }
+      j := j + 1;
+    }
+    i := i + 1;
+  }
+  
+  /* code modified by LLM (iteration 1): Added unreachable code to handle case where no pair found */
+  // This should be unreachable due to precondition guaranteeing existence of a pair
+  assert false;
+  pair := (0, 0);
+}

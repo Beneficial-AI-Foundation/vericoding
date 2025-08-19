@@ -1,0 +1,13 @@
+// <vc-helpers>
+// </vc-helpers>
+
+method TriangularPrismVolume(base: int, height: int, length: int) returns (volume: int)
+    requires base > 0
+    requires height > 0
+    requires length > 0
+    ensures volume == (base * height * length) / 2
+// <vc-code>
+{
+  assume false;
+}
+// </vc-code>

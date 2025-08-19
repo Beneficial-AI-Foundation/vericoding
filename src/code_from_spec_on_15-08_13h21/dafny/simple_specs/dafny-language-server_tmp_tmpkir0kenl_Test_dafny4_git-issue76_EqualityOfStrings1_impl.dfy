@@ -1,0 +1,3 @@
+//IMPL 
+method EqualityOfStrings1() {
+}

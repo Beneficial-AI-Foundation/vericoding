@@ -1,0 +1,22 @@
+
+
+Assume bit vectors are lists of 0s and 1s. 
+Provide a function to convert them to natural numbers.  
+and do arithmetic while keeping them valid.
+
+Core Functions
+--------------
+- `valid_bitvec`: checks all elements are 0 or 1
+- `vec2int`: converts bit vector to natural number  
+- `add`: adds two bit vectors, returns valid result
+
+Data Types
+----------
+- `List Int`: bit vectors (0s and 1s only)
+- `Nat`: natural numbers for calculations
+- `Prop`: logical statements for validation
+
+Specification
+-------------
+`add` preserves valid bit vectors and `vec2int(add v1 v2) = vec2int v1 + vec2int v2`
+

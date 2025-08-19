@@ -1,0 +1,42 @@
+---
+description: 
+globs: **.py
+alwaysApply: false
+---
+# Python Linting & Formatting with Ruff
+
+## Overview
+This rule establishes Ruff as the canonical tool for static-analysis, linting, and code-formatting of all Python sources in this repository.
+
+## Guidelines
+- **Ruff is required**: Every Python file **MUST** pass `ruff check` with no errors.
+- **Auto-fix first**: Run `ruff check --fix` (or use the editor integration) before committing.  Ruff's safe-fix mode should correct most trivial issues (unused imports, unused variables, etc.).
+- **Uniform formatting**: After fixes, run `ruff format` to enforce a consistent style (equivalent to Black but faster).
+- **CI enforcement**: Continuous Integration should execute `ruff check` and fail on any remaining violations.
+- **Pre-commit hook**: Add a pre-commit hook (or Justfile recipe) that chains `ruff check --fix` and `ruff format` for convenience.
+- **Import ordering**: Let Ruff manage import sorting (replaces `isort`).  Do **NOT** manually sort imports.
+- **Max line length**: Follow Ruff's default line length (preferred 88 unless the project overrides via `pyproject.toml`).
+- **uv integration**: Install Ruff via `uv add ruff` and keep it in sync using `uv sync`.
+
+## Commands Cheat-sheet
+```bash
+# One-time install
+uv add --dev ruff
+
+# Fix & format changed files
+ruff check --fix .
+ruff format .
+
+# CI (no fixer) – fails on issues
+ruff check .
+```
+
+## Further Reading
+- Ruff documentation: <https://docs.astral.sh/ruff>
+- Example `pyproject.toml` configuration:
+
+```toml
+[tool.ruff]
+fix = true
+unsafe-fixes = false
+```

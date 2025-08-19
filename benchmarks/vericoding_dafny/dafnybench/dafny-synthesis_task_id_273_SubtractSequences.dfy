@@ -1,0 +1,12 @@
+// <vc-helpers>
+// </vc-helpers>
+
+method SubtractSequences(a: seq<int>, b: seq<int>) returns (result: seq<int>)
+    requires |a| == |b|
+    ensures |result| == |a|
+    ensures forall i :: 0 <= i < |result| ==> result[i] == a[i] - b[i]
+// <vc-code>
+{
+  assume false;
+}
+// </vc-code>

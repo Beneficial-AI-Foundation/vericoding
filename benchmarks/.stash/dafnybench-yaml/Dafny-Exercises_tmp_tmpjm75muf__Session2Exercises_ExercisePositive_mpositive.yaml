@@ -1,0 +1,32 @@
+vc-preamble: |-
+  predicate positive(s:seq<int>)
+  {forall u::0<=u<|s| ==> s[u]>=0}
+
+vc-helpers: |-
+  <vc-helpers>
+  </vc-helpers>
+
+vc-spec: |-
+  method mpositive(v:array<int>) returns (b:bool)
+  ensures b==positive(v[0..v.Length])
+
+vc-code: |-
+  {
+      var i:=0;
+      //1. assert positive(v[..0])
+      while i<v.Length && v[i]>=0
+          decreases v.Length - i 
+          invariant 0<=i<=v.Length
+          invariant positive(v[..i])
+      {
+          //2. assert 0<=i<v.Length && positive(v[..i]);
+          i:=i+1;
+          //2. assert 0<=i<v.Length && positive(v[..i]);
+      }
+      //3. assert i==v.Length ==> positive(v[..]);
+      //3. assert i<v.Length => v[i]<0;
+      b := i==v.Length;
+  }
+
+vc-postamble: |-
+
