@@ -1,20 +1,34 @@
-<vc-dependencies>
+-- VC-PREAMBLE
   [.. some imports ..]
   [.. some spec functions ..]
-</vc-dependencies>
 
-<vc-helpers>
+
+
+
+-- VC-HELPERS
+-- <vc-helpers>
   ..
-</vc-helpers>
+-- </vc-helpers>
 
-<vc-task>
+
+
+
+-- VC-CODE
   [.. some function signature..]
-  <vc-code>
+  -- <vc-code>
     ..
-  </vc-code>
+  -- </vc-code>
 
+
+
+
+-- VC-SPEC
   [.. some theorem signature ..]
-  <vc-proof>
+  -- <vc-proof>
     ..
-  </vc-proof>
-</vc-task>
+  -- </vc-proof>
+
+
+
+
+-- VC-POSTAMBLE
