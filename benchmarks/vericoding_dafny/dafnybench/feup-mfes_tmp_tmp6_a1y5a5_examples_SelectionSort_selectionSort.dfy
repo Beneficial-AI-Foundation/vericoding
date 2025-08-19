@@ -16,10 +16,12 @@ predicate isSorted(a: array<real>, from: nat, to: nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method selectionSort(a: array<real>)
   modifies a
   ensures isSorted(a, 0, a.Length) 
   ensures multiset(a[..]) == multiset(old(a[..]))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

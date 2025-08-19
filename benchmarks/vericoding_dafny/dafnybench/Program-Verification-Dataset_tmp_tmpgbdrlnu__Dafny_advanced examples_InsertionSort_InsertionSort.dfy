@@ -9,10 +9,12 @@ predicate sorted (a:array<int>, start:int, end:int) // all "before" end are sort
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method InsertionSort (a:array<int>)
 requires a!=null && a.Length>1 
 ensures sorted(a, 0, a.Length) 
 modifies a
+// </vc-spec>
 // <vc-code>
 {
   assume false;

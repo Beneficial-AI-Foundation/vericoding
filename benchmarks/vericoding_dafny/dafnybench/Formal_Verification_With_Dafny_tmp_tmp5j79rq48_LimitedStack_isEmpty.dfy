@@ -27,8 +27,10 @@ class LimitedStack{
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method isEmpty() returns (res : bool)
       ensures res == Empty()
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -58,10 +58,12 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method IsPrime (m : int) returns (isPrime : bool)
     requires m > 0 // m must be greater than 0
     ensures isPrime <==> (m > 1 && forall j : int :: 2 <= j < m ==> m % j != 0) 
     // ensures states that "isPrime is true iff m > 1 && not divisible by [2, m-1)"
+// </vc-spec>
 // <vc-code>
 {
   assume false;

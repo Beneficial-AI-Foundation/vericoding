@@ -23,8 +23,10 @@ datatype Datte<T> = AA(a: int, x: int) | BB(b: bool, x: int) | CC(c: real) | DD(
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Matte(d: Datte<real>)
   requires !d.CC?
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -11,11 +11,13 @@ predicate isSorted(a: array<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method binarySearch(a: array<int>, x: int) returns (index: int) 
     requires isSorted(a)
     ensures -1 <= index < a.Length
     ensures if index != -1 then a[index] == x 
         else x !in a[..] //forall i :: 0 <= i < a.Length ==> a[i] != x
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -17,8 +17,10 @@ decreases v
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method vector_Sum(v:seq<int>) returns (x:int)
 ensures x == sum(v)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

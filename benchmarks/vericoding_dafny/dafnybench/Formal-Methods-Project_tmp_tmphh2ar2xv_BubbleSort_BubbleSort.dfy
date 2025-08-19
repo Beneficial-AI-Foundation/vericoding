@@ -14,9 +14,11 @@ predicate partitioned(a: array?<int>, i: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BubbleSort(a: array?<int>)
   modifies a
   requires a != null
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -218,10 +218,12 @@ predicate bibble(b : nat, a : seq<nat>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method bibble_flip(b : nat, p : seq<nat>) returns (fp : seq<nat>)
   requires (valid_base(b))
   requires (bibble(b, p))
   ensures  (bibble(b, fp))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

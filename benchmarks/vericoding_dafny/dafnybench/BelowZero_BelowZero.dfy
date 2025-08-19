@@ -17,8 +17,10 @@ function sum(s: seq<int>, n: nat): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BelowZero(ops: seq<int>) returns (result: bool)
     ensures result <==> exists n: nat :: n <= |ops| && sum(ops, n) < 0
+// </vc-spec>
 // <vc-code>
 {
   assume false;

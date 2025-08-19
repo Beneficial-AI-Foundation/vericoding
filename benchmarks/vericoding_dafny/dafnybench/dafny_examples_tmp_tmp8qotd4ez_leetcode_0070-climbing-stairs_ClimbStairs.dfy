@@ -7,8 +7,10 @@ function Stairs(n: nat): nat {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ClimbStairs(n: nat) returns (r: nat)
   ensures r == Stairs(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

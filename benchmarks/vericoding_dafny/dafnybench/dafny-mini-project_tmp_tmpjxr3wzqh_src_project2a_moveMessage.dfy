@@ -171,6 +171,7 @@ class MailApp {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method moveMessage (m: Message, mb1: Mailbox, mb2: Mailbox)
     modifies mb1, mb2
     requires Valid()
@@ -178,6 +179,7 @@ method moveMessage (m: Message, mb1: Mailbox, mb2: Mailbox)
     requires m !in mb2.messages
     ensures m !in mb1.messages
     ensures m in mb2.messages
+// </vc-spec>
 // <vc-code>
 {
   assume false;

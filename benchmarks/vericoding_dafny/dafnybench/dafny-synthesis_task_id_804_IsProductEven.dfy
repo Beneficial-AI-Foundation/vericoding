@@ -6,8 +6,10 @@ predicate IsEven(n: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method IsProductEven(a: array<int>) returns (result: bool)
     ensures result <==> exists i :: 0 <= i < a.Length && IsEven(a[i])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

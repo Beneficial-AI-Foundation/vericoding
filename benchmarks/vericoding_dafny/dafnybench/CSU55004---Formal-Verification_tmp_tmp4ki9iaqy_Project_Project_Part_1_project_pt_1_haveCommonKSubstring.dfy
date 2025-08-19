@@ -78,8 +78,10 @@ method isSubstring(sub:string, str:string) returns(res:bool)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method haveCommonKSubstring(k:nat, str1:string, str2:string) returns(found:bool)
     requires 0 < k <= |str1| &&  0 < k <= |str2| //This method requires that k > 0 and k is less than or equal to in length to str1 and str2
+// </vc-spec>
 // <vc-code>
 {
   assume false;

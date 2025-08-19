@@ -48,9 +48,11 @@ method InitArray<T>(a: array<T>, d: T)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method IncrementArray(a: array<int>) 
   modifies a 
   ensures forall i :: 0 <= i < a.Length ==> a[i] == old(a[i]) + 1
+// </vc-spec>
 // <vc-code>
 {
   assume false;

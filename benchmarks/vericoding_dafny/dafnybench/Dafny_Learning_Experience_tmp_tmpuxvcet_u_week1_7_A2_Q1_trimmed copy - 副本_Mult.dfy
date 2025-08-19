@@ -9,10 +9,12 @@ ghost function Count(hi: nat, s:seq<int>): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Mult(x:int, y:int) returns (r:int)
     requires x>= 0 && y>=0
     decreases x
     ensures r == x*y
+// </vc-spec>
 // <vc-code>
 {
   assume false;

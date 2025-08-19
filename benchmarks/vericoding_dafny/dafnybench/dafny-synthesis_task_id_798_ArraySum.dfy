@@ -10,8 +10,10 @@ function sumTo( a:array<int>, n:int ) : int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ArraySum(a: array<int>) returns (result: int)
     ensures result == sumTo(a, a.Length)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

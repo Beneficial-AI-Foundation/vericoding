@@ -6,8 +6,10 @@ ghost function f2(n: nat): nat {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mod2(n:nat) returns (a:nat) 
 ensures a == f2(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -10,9 +10,11 @@ function factorial(n: nat): nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ComputeFact (n:int) returns (f:int)
 requires n >=0
 ensures f== factorial(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

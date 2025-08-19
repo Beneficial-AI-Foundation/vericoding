@@ -18,6 +18,7 @@ twostate predicate SwapFrame(a: array<int>, lo: int, hi: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Partition(a: array<int>, lo: int, hi: int) returns (p: int)
     requires 0 <= lo < hi <= a.Length
     requires SplitPoint(a, lo) && SplitPoint(a, hi)
@@ -27,6 +28,7 @@ method Partition(a: array<int>, lo: int, hi: int) returns (p: int)
     ensures forall i :: p <= i < hi ==> a[p] <= a[i]
     ensures SplitPoint(a, lo) && SplitPoint(a, hi)
     ensures SwapFrame(a, lo, hi)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

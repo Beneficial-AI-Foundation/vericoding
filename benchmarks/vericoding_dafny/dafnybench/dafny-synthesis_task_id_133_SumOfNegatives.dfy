@@ -10,8 +10,10 @@ function sumNegativesTo( a:array<int>, n:int ) : int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SumOfNegatives(a: array<int>) returns (result: int)
     ensures result == sumNegativesTo(a, a.Length)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

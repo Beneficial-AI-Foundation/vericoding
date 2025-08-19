@@ -14,9 +14,11 @@ predicate sorted(a: seq<nat>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Isort(a: array<nat>)
     modifies a
     ensures sorted(a[..])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

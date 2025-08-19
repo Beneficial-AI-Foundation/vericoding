@@ -8,11 +8,13 @@ function min(a: int, b: int): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method minMethod(a: int, b: int) returns (c: int)
     ensures c <= a && c <= b
     ensures c == a || c == b
     // Ou encore:
     ensures c == min(a, b)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

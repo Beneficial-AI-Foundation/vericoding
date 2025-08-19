@@ -26,6 +26,7 @@ predicate Is2Pow( n: int )
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Search2PowRecursive( a: array<int>, i: int, n: int, x: int ) returns ( k: int )
     decreases n;
     requires 0 <= i <= i+n <= a.Length;
@@ -34,6 +35,7 @@ method Search2PowRecursive( a: array<int>, i: int, n: int, x: int ) returns ( k:
     ensures i <= k <= i+n;
     ensures forall r | i <= r < k :: a[r] < x;
     ensures forall r | k <= r < i+n :: a[r] >= x;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

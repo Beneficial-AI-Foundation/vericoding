@@ -34,6 +34,7 @@ method binarySearch(v:array<int>, elem:int) returns (p:int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method otherbSearch(v:array<int>, elem:int) returns (b:bool,p:int)
  requires sorted(v[0..v.Length])
  ensures 0<=p<=v.Length
@@ -42,6 +43,7 @@ method otherbSearch(v:array<int>, elem:int) returns (b:bool,p:int)
  ensures !b ==> (forall u::0<=u<p ==> v[u]<elem) && 
                (forall w::p<=w<v.Length ==> v[w]>elem)
  //Implement and verify
+// </vc-spec>
 // <vc-code>
 {
   assume false;

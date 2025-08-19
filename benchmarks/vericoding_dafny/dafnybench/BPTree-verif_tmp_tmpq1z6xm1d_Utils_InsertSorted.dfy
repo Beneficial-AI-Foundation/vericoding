@@ -245,9 +245,11 @@ predicate greaterEqualThan(a:seq<int>, key:int) {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method InsertSorted(a: array<int>, key: int ) returns (b: array<int>)
   requires sorted_eq(a[..])
   ensures sorted_eq(b[..])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -19,9 +19,11 @@ Goal: Implement the well known merge sort algorithm in O(a.Length X log_2(a.Leng
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method MergeSort(a: array<int>) returns (b: array<int>)
     ensures b.Length == a.Length && Sorted(b[..]) && multiset(a[..]) == multiset(b[..])
     decreases a.Length
+// </vc-spec>
 // <vc-code>
 {
   assume false;

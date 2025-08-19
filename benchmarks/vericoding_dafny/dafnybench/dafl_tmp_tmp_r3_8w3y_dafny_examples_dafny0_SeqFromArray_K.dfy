@@ -6,8 +6,10 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method K(a: array<int>, c: array<int>, n: nat)
   requires n <= a.Length && n <= c.Length
+// </vc-spec>
 // <vc-code>
 {
   assume false;

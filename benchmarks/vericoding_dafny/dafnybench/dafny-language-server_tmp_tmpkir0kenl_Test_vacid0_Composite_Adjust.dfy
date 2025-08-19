@@ -28,6 +28,7 @@ class Composite {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Adjust(delta: int, ghost U: set<Composite>, ghost S: set<Composite>)
     requires U <= S && Acyclic(U)
     // everything else is valid:
@@ -42,6 +43,7 @@ method Adjust(delta: int, ghost U: set<Composite>, ghost S: set<Composite>)
     modifies U`sum
     // everything is valid, including this:
     ensures forall c :: c in S ==> c.Valid(S)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

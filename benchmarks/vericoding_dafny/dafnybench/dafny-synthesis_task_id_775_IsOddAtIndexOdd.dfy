@@ -6,8 +6,10 @@ predicate IsOdd(n: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method IsOddAtIndexOdd(a: array<int>) returns (result: bool)
     ensures result <==> forall i :: 0 <= i < a.Length ==> (IsOdd(i) ==> IsOdd(a[i]))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

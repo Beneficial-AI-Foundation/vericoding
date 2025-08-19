@@ -1,6 +1,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mezclar(V: array?<int>, c : int, m : int, f : int)
 
     requires V != null
@@ -10,6 +11,7 @@ method mezclar(V: array?<int>, c : int, m : int, f : int)
     requires 0 <= f <= V.Length
 
     modifies V
+// </vc-spec>
 // <vc-code>
 {
   assume false;

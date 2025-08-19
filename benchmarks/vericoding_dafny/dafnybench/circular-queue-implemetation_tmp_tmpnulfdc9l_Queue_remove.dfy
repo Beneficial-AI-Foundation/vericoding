@@ -42,6 +42,7 @@ class {:autocontracts} Queue {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method remove() returns (item: int)
     requires front < circularQueue.Length
     requires circularQueue.Length > 0
@@ -51,6 +52,7 @@ method remove() returns (item: int)
     ensures front == (old(front) + 1) % circularQueue.Length
     ensures old(front) < rear ==> Content == old(Content)[old(front)..rear]
     ensures old(front) > rear ==> Content == old(Content)[0 .. rear] + old(Content)[old(front)..|old(Content)|]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

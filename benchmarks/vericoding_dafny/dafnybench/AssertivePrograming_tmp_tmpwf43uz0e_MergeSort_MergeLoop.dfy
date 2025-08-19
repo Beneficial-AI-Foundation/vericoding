@@ -34,6 +34,7 @@ DO NOT modify the specification or any other part of the method's signature
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method MergeLoop(b: array<int>, c: array<int>, d: array<int>,i0: nat , j0: nat)  returns (i: nat, j: nat)
         requires b != c && b != d && b.Length == c.Length + d.Length
         requires Sorted(c[..]) && Sorted(d[..])
@@ -49,6 +50,7 @@ method MergeLoop(b: array<int>, c: array<int>, d: array<int>,i0: nat , j0: nat) 
         ensures InvSorted(b[..],c[..],d[..],i,j)
         //decreases ensures
         ensures 0 <= c.Length - i < c.Length - i0 || (c.Length - i == c.Length - i0 && 0 <= d.Length - j < d.Length - j0)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

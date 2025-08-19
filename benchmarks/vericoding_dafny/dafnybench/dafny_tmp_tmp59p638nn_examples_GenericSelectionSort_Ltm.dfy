@@ -68,10 +68,12 @@ trait Measurable<T(==)> extends Comparable<T> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Ltm(x: T, y: T) returns (b: bool)
       modifies this`comparisonCount
       ensures b ==> Lt(x,y)
       ensures comparisonCount == old(comparisonCount) + 1
+// </vc-spec>
 // <vc-code>
 {
   assume false;

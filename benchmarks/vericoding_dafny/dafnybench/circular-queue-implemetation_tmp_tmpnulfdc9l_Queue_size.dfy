@@ -35,8 +35,10 @@ class {:autocontracts} Queue {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method size() returns (size:nat)
     ensures size == counter
+// </vc-spec>
 // <vc-code>
 {
   assume false;

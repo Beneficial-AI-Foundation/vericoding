@@ -19,6 +19,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SearchRecursive( a: seq<real>, i: int, j: int, x: real ) returns ( k: int )
     decreases j-i;
     requires 0 <= i <= j <= |a|;
@@ -26,6 +27,7 @@ method SearchRecursive( a: seq<real>, i: int, j: int, x: real ) returns ( k: int
     ensures i <= k <= j
     ensures forall r | i <= r < k :: a[r] >= x;
     ensures forall r | k <= r < j :: a[r] < x;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

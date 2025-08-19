@@ -12,8 +12,10 @@ method CalcPower(n:nat) returns (p:nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ComputePower(n:nat) returns (p:nat)
     ensures p == Power(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

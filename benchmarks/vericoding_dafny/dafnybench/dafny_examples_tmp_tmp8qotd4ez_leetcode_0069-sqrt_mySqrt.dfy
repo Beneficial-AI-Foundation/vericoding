@@ -12,9 +12,11 @@ ensures sqrt(x, r1) && sqrt(x, r2) ==> r1 == r2
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mySqrt(x: int) returns (res: int)
 requires 0 <= x;
 ensures sqrt(x, res);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -34,6 +34,7 @@ lemma lemma_palindromic_contains(s: string, lo: int, hi: int, lo': int, hi': int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method expand_from_center(s: string, i0: int, j0: int) returns (lo: int, hi: int)
   requires 0 <= i0 <= j0 <= |s|
   requires palindromic(s, i0, j0)
@@ -41,6 +42,7 @@ method expand_from_center(s: string, i0: int, j0: int) returns (lo: int, hi: int
   ensures forall i, j | 0 <= i <= j <= |s| && palindromic(s, i, j)  // Among all palindromes
     && i + j == i0 + j0                                             // sharing the same center,
     :: j - i <= hi - lo                                             // `s[lo..hi]` is longest.
+// </vc-spec>
 // <vc-code>
 {
   assume false;

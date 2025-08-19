@@ -8,6 +8,7 @@ type T = int // example
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method partition(a: array<T>) returns(pivotPos: int) 
     requires a.Length > 0
     ensures 0 <= pivotPos < a.Length
@@ -15,6 +16,7 @@ method partition(a: array<T>) returns(pivotPos: int)
     ensures forall i :: pivotPos < i < a.Length ==> a[i] >= a[pivotPos]
     ensures multiset(a[..]) == multiset(old(a[..]))
     modifies a
+// </vc-spec>
 // <vc-code>
 {
   assume false;

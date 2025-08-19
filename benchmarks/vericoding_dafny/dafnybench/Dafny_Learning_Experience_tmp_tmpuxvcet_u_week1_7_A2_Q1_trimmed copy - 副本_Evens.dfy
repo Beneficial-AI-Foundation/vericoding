@@ -46,10 +46,12 @@ method PreCompute(a:array<int>,b:array<int>)returns(p:nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Evens(a:array<int>) returns (c:array2<int>)
 
     // modifies c
     // ensures  invariant forall i,j:: 0 <=i <m && 0 <= j < a.Length ==> j<i ==> c[i,j] == 0
+// </vc-spec>
 // <vc-code>
 {
   assume false;

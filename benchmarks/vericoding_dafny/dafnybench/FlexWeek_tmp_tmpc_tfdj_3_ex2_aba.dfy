@@ -8,9 +8,11 @@ function abs(a:int):nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method aba(a:array<int>)returns (b:array<int>)
 ensures a.Length == b.Length // needed for next line
 ensures forall x :: 0<=x<b.Length ==> b[x] == abs(a[x])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

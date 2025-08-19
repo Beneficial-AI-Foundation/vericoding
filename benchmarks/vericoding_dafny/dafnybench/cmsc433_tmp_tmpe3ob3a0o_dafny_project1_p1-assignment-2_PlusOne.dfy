@@ -19,9 +19,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method PlusOne (x : int) returns (y : int)
     requires x >= 0
     ensures y > 0
+// </vc-spec>
 // <vc-code>
 {
   assume false;

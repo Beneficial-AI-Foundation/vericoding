@@ -12,8 +12,10 @@ function Fibonacci(n: nat): nat {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method FibonacciIterative(n: nat) returns (f: nat)
   ensures f == Fibonacci(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

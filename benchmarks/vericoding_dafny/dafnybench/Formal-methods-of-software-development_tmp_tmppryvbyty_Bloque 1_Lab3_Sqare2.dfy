@@ -39,9 +39,11 @@ ensures sumSerie(n) == n*n
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Sqare2(a:int) returns (x:int)
 requires a>=1
 ensures x == a*a
+// </vc-spec>
 // <vc-code>
 {
   assume false;

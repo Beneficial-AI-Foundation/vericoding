@@ -9,8 +9,10 @@ requires 0 <= idx <= a.Length
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method CountNeg(a: array<int>) returns (cnt: nat) 
 ensures cnt == verifyNeg(a, a.Length)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

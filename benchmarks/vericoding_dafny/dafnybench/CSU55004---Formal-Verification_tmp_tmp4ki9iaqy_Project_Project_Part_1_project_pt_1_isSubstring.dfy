@@ -34,8 +34,10 @@ method isPrefix(pre:string, str:string) returns(res:bool)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method isSubstring(sub:string, str:string) returns(res:bool)
     requires 0 < |sub| <= |str| //This method requires that sub is less than or equal in length to str
+// </vc-spec>
 // <vc-code>
 {
   assume false;

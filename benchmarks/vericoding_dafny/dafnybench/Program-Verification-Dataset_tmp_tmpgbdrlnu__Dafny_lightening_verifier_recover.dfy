@@ -278,6 +278,7 @@ class UndoLog {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method recover()
         modifies log_;
         modifies mem_;
@@ -288,6 +289,7 @@ method recover()
         requires ghost_state_equiv(gs);
         ensures gs == ghost_recover(old(gs));
         ensures ghost_state_equiv(gs);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -10,9 +10,11 @@ function countTo( a:array<bool>, n:int ) : int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method CountTrue(a: array<bool>) returns (result: int)
     requires a != null
     ensures result == countTo(a, a.Length)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

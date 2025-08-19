@@ -23,9 +23,11 @@ function gcd(m: nat, n: nat): nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method gcdI(m: int, n: int) returns (g: int)
     requires  m > 0 && n > 0 
     ensures g == gcd(m, n);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

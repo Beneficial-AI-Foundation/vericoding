@@ -63,10 +63,12 @@ method expand_from_center(s: string, i0: int, j0: int) returns (lo: int, hi: int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method longestPalindrome(s: string) returns (ans: string, lo: int, hi: int)
   ensures 0 <= lo <= hi <= |s| && ans == s[lo..hi]  // `ans` is indeed a substring in `s`
   ensures palindromic(s, lo, hi)  // `ans` is palindromic
   ensures forall i, j | 0 <= i <= j <= |s| && palindromic(s, i, j) :: j - i <= hi - lo  // `ans` is longest
+// </vc-spec>
 // <vc-code>
 {
   assume false;

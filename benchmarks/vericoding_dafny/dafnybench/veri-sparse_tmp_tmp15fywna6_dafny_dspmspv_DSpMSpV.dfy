@@ -57,6 +57,7 @@ function index(x : nat, y: array<nat>) : (i : nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method DSpMSpV(X_val : array<int>, X_crd : array<nat>, X_pos : array<nat>,
                                   X_crd1 : array<nat>, X_len: nat,
               v_val : array<int>, v_crd : array<nat>) returns (y : array<int>)
@@ -81,6 +82,7 @@ method DSpMSpV(X_val : array<int>, X_crd : array<nat>, X_pos : array<nat>,
       if index(i, X_crd1) < X_crd1.Length then 
         sum(X_val, X_crd, v_val, v_crd, X_pos[index(i, X_crd1)], 0, X_pos[index(i, X_crd1)+1], v_val.Length)
       else 0
+// </vc-spec>
 // <vc-code>
 {
   assume false;

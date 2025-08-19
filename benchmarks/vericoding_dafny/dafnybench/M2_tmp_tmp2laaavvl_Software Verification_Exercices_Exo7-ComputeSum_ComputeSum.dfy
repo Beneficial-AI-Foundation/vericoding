@@ -7,8 +7,10 @@ function Sum(n:nat):nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ComputeSum(n:nat) returns (s:nat)
     ensures s ==Sum(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

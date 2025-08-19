@@ -17,11 +17,13 @@ predicate pivot(a:array<int>, to:int, pvt:int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method bubbleSort (a: array<int>)
   requires a != null && a.Length > 0;
   modifies a;
   ensures sorted(a, 0, a.Length);
   ensures multiset(a[..]) == multiset(old(a[..]));
+// </vc-spec>
 // <vc-code>
 {
   assume false;

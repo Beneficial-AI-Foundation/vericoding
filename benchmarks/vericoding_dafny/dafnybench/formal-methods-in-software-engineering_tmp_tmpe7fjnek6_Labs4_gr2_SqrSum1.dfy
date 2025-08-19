@@ -40,9 +40,11 @@ function SqrSumRec(n: int) : int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SqrSum1(n: int) returns (s: int)
     requires n >= 0
     ensures s == SqrSumRec(n)  // s = 0^2 + 1^2 + 2^2 + ... + n^2 == n(n+1)(2n+1)/6
+// </vc-spec>
 // <vc-code>
 {
   assume false;

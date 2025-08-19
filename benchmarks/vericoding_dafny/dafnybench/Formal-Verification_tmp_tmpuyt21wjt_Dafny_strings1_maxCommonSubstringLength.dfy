@@ -96,10 +96,12 @@ predicate maxCommonSubstringPredicate(str1: string, str2: string, len:nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method maxCommonSubstringLength(str1: string, str2: string) returns (len:nat)
 ensures len <= |str1| && len <= |str2|
 ensures len >= 0
 ensures maxCommonSubstringPredicate(str1, str2, len)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -145,10 +145,12 @@ class MailApp {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method deleteMailbox(mb: Mailbox)
     requires Valid()
     requires mb in userboxList
     // ensures mb !in userboxList
+// </vc-spec>
 // <vc-code>
 {
   assume false;

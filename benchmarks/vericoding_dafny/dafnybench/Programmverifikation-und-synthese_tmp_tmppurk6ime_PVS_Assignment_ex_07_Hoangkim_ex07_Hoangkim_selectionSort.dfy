@@ -31,10 +31,12 @@ ghost predicate sorted(a:seq<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method selectionSort(a: array<int>)
     modifies a
     //ensures multiset(a[..]) == multiset(old(a[..]))
     //ensures sorted(a[..])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

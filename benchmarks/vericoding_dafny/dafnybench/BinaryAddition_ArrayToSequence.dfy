@@ -44,9 +44,11 @@ function ArrayToBv10Helper(arr: array<bool>, index: nat): bv10
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ArrayToSequence(arr: array<bool>) returns (res: seq<bool>) // Converts boolean array to boolean sequence
     ensures |res| == arr.Length
     ensures forall k :: 0 <= k < arr.Length ==> res[k] == arr[k]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -25,12 +25,14 @@ class LFUCache {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method getLFUKey() returns (lfuKey : int) 
       requires Valid();
       requires |cacheMap| > 0;
       ensures Valid();
       ensures lfuKey in cacheMap;
       ensures forall k :: k in cacheMap.Items ==> cacheMap[lfuKey].1 <= cacheMap[k.0].1;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

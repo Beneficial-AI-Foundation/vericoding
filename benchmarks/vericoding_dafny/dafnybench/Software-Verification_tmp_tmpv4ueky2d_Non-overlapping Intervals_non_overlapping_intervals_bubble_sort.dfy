@@ -3,10 +3,12 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method bubble_sort(a: array2<int>)
     modifies a
     requires a.Length1 == 2
     ensures sorted(a, 0, a.Length0 - 1)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -66,11 +66,13 @@ class Node {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method barrier()
     requires valid()
     requires before()
     modifies this, left, right
     decreases *  // allow the method to not terminate
+// </vc-spec>
 // <vc-code>
 {
   assume false;

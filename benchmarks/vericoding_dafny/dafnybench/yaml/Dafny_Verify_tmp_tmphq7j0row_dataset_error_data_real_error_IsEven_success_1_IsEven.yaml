@@ -1,0 +1,17 @@
+vc-preamble: |-
+   function even(n: int): bool
+    requires n >= 0
+
+vc-helpers: |-
+
+vc-spec: |-
+    method IsEven(n: int) returns (r: bool)
+    requires n >= 0;
+    ensures r <==> even(n);
+
+vc-code: |-
+  {
+    assume false;
+  }
+
+vc-postamble: |-

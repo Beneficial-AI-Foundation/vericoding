@@ -125,11 +125,13 @@ class Tree {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ComputeMax() returns (mx: int)
     requires Valid() && !IsEmpty();
     ensures forall x :: x in Contents ==> x <= mx;
     ensures exists x :: x in Contents && x == mx;
     decreases Repr;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

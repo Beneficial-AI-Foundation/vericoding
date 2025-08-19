@@ -121,12 +121,14 @@ class {:autocontracts} CircularArray {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Concatenate(q1: CircularArray) returns(q2: CircularArray)
     requires q1.Valid()
     requires q1 != this
     ensures fresh(q2)
     ensures q2.Capacity == Capacity + q1.Capacity
     ensures q2.Elements == Elements + q1.Elements
+// </vc-spec>
 // <vc-code>
 {
   assume false;

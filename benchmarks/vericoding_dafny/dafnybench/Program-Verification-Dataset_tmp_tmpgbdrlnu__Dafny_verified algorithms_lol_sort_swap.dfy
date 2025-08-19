@@ -30,11 +30,13 @@ predicate valid_permut(a: seq<int>, b: seq<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method swap(a: array<int>, i: int, j: int)
   requires 0 <= i < a.Length && 0 <= j < a.Length
   modifies a
   ensures a[..] == old(a[..]) [i := old(a[j])] [j := old(a[i])]
   ensures valid_permut(a[..], old(a[..]))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

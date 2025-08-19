@@ -100,9 +100,11 @@ lemma commonKSubstringLemma(k:nat, str1:string, str2:string)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: bool)
     ensures found  <==>  haveCommonKSubstringPred(k,str1,str2)
     ensures !found <==> haveNotCommonKSubstringPred(k,str1,str2) // This postcondition follows from the above lemma.
+// </vc-spec>
 // <vc-code>
 {
   assume false;

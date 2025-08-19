@@ -60,8 +60,10 @@ class {:autocontracts}  Fila
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method contem(e: int) returns (r:bool)
     ensures r <==> exists i :: 0 <= i < cauda && e == a[i]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

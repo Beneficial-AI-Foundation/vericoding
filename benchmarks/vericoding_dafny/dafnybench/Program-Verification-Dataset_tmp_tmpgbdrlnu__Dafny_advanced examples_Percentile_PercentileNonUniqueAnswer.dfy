@@ -22,6 +22,7 @@ function Sum(A: array<real>): real
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method PercentileNonUniqueAnswer() returns (p: real, A: array<real>, total: real, i1: int, i2: int)
   ensures forall i | 0 <= i < A.Length :: A[i] > 0.0
   ensures 0.0 <= p <= 100.0
@@ -37,6 +38,7 @@ method PercentileNonUniqueAnswer() returns (p: real, A: array<real>, total: real
   ensures i2+1 < A.Length ==> SumUpto(A, i2+1) >= (p/100.0) * total
 
   ensures i1 != i2
+// </vc-spec>
 // <vc-code>
 {
   assume false;

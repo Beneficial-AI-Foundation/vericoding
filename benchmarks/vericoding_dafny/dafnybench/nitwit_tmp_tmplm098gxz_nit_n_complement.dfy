@@ -252,10 +252,12 @@ method bibble_flip(b : nat, p : seq<nat>) returns (fp : seq<nat>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method n_complement(b : nat, p : seq<nat>) returns (com : seq<nat>)
   requires (valid_base(b))
   requires (bibble(b, p))
   ensures  (bibble(b, com))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

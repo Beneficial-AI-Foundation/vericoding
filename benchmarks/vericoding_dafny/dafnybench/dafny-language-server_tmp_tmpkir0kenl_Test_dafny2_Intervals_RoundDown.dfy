@@ -16,11 +16,13 @@ class Rounding {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method RoundDown(k: int) returns (r: int)
     requires Valid()
     ensures -1 <= r < thresholds.Length
     ensures forall m :: r < m < thresholds.Length ==> k < thresholds[m]
     ensures 0 <= r ==> thresholds[r] <= k
+// </vc-spec>
 // <vc-code>
 {
   assume false;

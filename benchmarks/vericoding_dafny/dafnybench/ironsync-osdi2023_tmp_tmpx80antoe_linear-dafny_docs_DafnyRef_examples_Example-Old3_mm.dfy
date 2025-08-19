@@ -5,10 +5,12 @@ class A {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mm()
     requires z1.Length > 10 && z1[0] == 7
     requires z2.Length > 10 && z2[0] == 17
     modifies z2
+// </vc-spec>
 // <vc-code>
 {
   assume false;

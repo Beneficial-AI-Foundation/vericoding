@@ -149,10 +149,12 @@ lemma ArrayFacts<T>()
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method sumElems(v:array<int>) returns (sum:int)
 //ensures sum==SumL(v[0..v.Length])
 ensures sum==SumR(v[..])
 //ensures sum==SumV(v,0,v.Length)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

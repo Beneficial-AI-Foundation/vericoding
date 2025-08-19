@@ -41,10 +41,12 @@ class Node<T> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SkipHead() returns (r: Node?<T>)
     requires Valid()
     ensures r == null ==> |List| == 1
     ensures r != null ==> r.Valid() && r.List == List[1..] && r.Repr <= Repr
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -55,10 +55,12 @@ modifies a
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method sorting(a: array<int>, low: int, high: int)
 requires 0 <= low && high < a.Length
 decreases high-low
 modifies a
+// </vc-spec>
 // <vc-code>
 {
   assume false;

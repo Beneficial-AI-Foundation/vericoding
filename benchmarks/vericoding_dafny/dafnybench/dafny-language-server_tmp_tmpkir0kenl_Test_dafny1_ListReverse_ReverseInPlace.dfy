@@ -7,6 +7,7 @@ class Node {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ReverseInPlace(x: Node?, r: set<Node>) returns (reverse: Node?)
     requires x == null || x in r;
     requires (forall y :: y in r ==> y.nxt == null || y.nxt in r);  // region closure
@@ -14,6 +15,7 @@ method ReverseInPlace(x: Node?, r: set<Node>) returns (reverse: Node?)
     ensures reverse == null || reverse in r;
     ensures (forall y :: y in r ==> y.nxt == null || y.nxt in r);  // region closure
     decreases *;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

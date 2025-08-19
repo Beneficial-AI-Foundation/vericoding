@@ -41,10 +41,12 @@ ensures sum(r[..k]) + r[k] == sum(r[..k+1]);
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Cubes (n:int) returns (s:seq<int>)
 requires n >= 0
 ensures |s| == n
 ensures forall i:int :: 0 <= i < n ==> s[i] == i*i*i
+// </vc-spec>
 // <vc-code>
 {
   assume false;

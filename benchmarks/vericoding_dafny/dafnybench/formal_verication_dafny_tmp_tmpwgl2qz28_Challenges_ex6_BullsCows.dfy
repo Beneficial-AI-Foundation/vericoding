@@ -32,12 +32,14 @@ predicate nomultiples(u:seq<nat>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BullsCows (s:seq<nat>, u:seq<nat>) returns (b:nat, c:nat) 
 requires 0 < |u| == |s| <= 10
 requires nomultiples(u) && nomultiples(s);
 ensures b >= 0 && c >= 0
 ensures b == bullspec(s, u)
 ensures c == cowspec(s, u)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

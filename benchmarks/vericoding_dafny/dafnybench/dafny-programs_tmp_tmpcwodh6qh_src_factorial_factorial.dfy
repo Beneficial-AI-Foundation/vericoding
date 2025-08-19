@@ -7,8 +7,10 @@ function fact(n: nat): nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method factorial(n: nat) returns (res: nat)
     ensures res == fact(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -269,6 +269,7 @@ class UndoLog {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method init(log_size : int, mem_size : int, countdown : int)
         requires log_size > 1;
         requires mem_size > 0;
@@ -278,6 +279,7 @@ method init(log_size : int, mem_size : int, countdown : int)
         ensures fresh(mem_);
         ensures state_inv();
         ensures ghost_state_equiv(gs);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

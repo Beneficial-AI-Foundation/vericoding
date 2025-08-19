@@ -28,9 +28,11 @@ function isReverse(s: string, s_prime: string): bool{
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Reverse(original: seq<char>) returns (reversed: seq<char>)
   ensures |reversed| == |original| 
   ensures forall i :: 0 <= i < |original| ==> reversed[i] == original[|original| - 1 - i]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

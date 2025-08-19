@@ -66,12 +66,14 @@ class ExtensibleArray<T(0)> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Add(t: T)
     requires Valid()
     modifies Repr
     ensures Valid() && fresh(Repr - old(Repr))
     ensures Elements == old(Elements) + [t]
     decreases |Elements|
+// </vc-spec>
 // <vc-code>
 {
   assume false;

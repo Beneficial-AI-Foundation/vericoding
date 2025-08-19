@@ -41,10 +41,12 @@ class Node<T> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Prepend(d: T) returns (r: Node<T>)
     requires Valid()
     ensures r.Valid() && fresh(r.Repr - old(Repr))
     ensures r.List == [d] + List
+// </vc-spec>
 // <vc-code>
 {
   assume false;

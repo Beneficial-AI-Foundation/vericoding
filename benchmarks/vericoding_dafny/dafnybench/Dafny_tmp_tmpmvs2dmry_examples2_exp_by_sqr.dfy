@@ -10,9 +10,11 @@ decreases m+n
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method exp_by_sqr(x0: real, n0: nat) returns (r:real)
 requires x0 >= 0.0;
 ensures r == exp(x0, n0);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

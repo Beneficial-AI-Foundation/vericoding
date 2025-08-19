@@ -48,10 +48,12 @@ class Set {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method contains(v:int) returns (b:bool)
     requires RepInv()
     ensures RepInv()
     ensures b <==> v in elems
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -34,9 +34,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method max(x: int, y: int) returns (m: int)
 requires true;
 ensures true;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

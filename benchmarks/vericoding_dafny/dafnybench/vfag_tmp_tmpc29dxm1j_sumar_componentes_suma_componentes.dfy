@@ -1,10 +1,12 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method suma_componentes(V : array?<int>) returns (suma : int)
 
   requires V != null
   ensures  suma == suma_aux(V, 0)   // x = V[0] + V[1] + ... + V[N - 1]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

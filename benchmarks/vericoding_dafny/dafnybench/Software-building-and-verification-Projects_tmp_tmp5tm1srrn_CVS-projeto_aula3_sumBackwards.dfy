@@ -28,8 +28,10 @@ function sum(n: nat) : nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method sumBackwards(n: nat) returns (r: nat)
   ensures r == sum(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

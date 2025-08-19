@@ -9,8 +9,10 @@ function Fib(n:nat):nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ComputeFib(n:nat) returns (x:nat)
 ensures x == Fib(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

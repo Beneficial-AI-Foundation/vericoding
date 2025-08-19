@@ -16,11 +16,13 @@ predicate sortedbad(s:string)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BadSort(a: string) returns (b: string)
 requires forall k :: 0 <= k < |a| ==> a[k] == 'b' || a[k] == 'a' || a[k] == 'd';
 ensures sortedbad(b);
 ensures multiset(a[..]) == multiset(b[..]);
 ensures |a| == |b|;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

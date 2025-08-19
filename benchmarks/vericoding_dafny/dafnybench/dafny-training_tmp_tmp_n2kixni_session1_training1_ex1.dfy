@@ -42,9 +42,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ex1(n: int)
     requires true
     ensures true
+// </vc-spec>
 // <vc-code>
 {
   assume false;

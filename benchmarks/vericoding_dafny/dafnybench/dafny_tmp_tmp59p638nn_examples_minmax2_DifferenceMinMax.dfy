@@ -1,9 +1,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method DifferenceMinMax(a: array<int>) returns (diff: int)
     requires a.Length > 0
     ensures diff == (Max(a[..]) - Min(a[..]))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

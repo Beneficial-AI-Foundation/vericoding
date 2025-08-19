@@ -35,6 +35,7 @@ class {:autocontracts} Queue {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method insert(item: int)
     // requires rear <= circularQueue.Length
     // ensures (front == 0 && rear == 0 && circularQueue.Length == 1) ==>
@@ -68,6 +69,7 @@ method insert(item: int)
     //     forall i :: rear + 2 <= i <= circularQueue.Length ==> Content[i] == old(Content[i-1])
     //   )
     // )
+// </vc-spec>
 // <vc-code>
 {
   assume false;

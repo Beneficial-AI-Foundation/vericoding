@@ -19,9 +19,11 @@ class Contador
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Decrementa()
       modifies this
       ensures valor == old(valor) - 1
+// </vc-spec>
 // <vc-code>
 {
   assume false;

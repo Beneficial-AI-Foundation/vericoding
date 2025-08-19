@@ -8,10 +8,12 @@ predicate Below(c: Color, d: Color)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method DutchFlag(a: array<Color>)
     modifies a
     ensures forall i, j :: 0 <= i < j < a.Length ==> Below(a[i], a[j])
     ensures multiset(a[..]) == multiset(old(a[..]))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

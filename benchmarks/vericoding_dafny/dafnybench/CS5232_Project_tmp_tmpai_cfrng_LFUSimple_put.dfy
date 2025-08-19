@@ -72,11 +72,13 @@ class LFUCache {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method put(key: int, value: int)
         requires Valid();
         requires value > 0;
         modifies this
         ensures Valid();
+// </vc-spec>
 // <vc-code>
 {
   assume false;

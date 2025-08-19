@@ -65,10 +65,12 @@ class TicketSystem {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Request(p: Process)
         requires Valid() && p in P && cs[p] == Thinking
         modifies this
         ensures Valid()
+// </vc-spec>
 // <vc-code>
 {
   assume false;

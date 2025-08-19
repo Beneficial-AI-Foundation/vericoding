@@ -25,9 +25,11 @@ function sum(a: array<int>, i: int, j: int): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method query(a: array<int>, i: int, j: int) returns (res:int)
     requires 0 <= i <= j <= a.Length
     ensures res == sum(a, i, j)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -315,6 +315,7 @@ class UndoLog {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method tx_write(offset: int, val : int)
         modifies this;
         modifies log_;
@@ -329,6 +330,7 @@ method tx_write(offset: int, val : int)
         ensures ghost_state_equiv(gs);
         ensures ghost_tx_inv(gs);
         ensures old_mem_equiv(gs);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

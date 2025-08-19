@@ -52,8 +52,10 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method IsSorted (a : array<int>) returns (isSorted : bool)
     ensures isSorted <==> forall j : int :: 1 <= j < a.Length ==> a[j-1] <= a[j]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

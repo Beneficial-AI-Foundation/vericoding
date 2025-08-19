@@ -18,8 +18,10 @@ predicate SortSpec(input:seq<int>, output:seq<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method merge_sort(input:seq<int>) returns (output:seq<int>)
   ensures SortSpec(input, output)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

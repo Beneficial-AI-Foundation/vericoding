@@ -24,9 +24,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Gauss(n:int) returns (sum:int)
 requires n >= 0
 ensures sum == n*(n+1)/2     //
+// </vc-spec>
 // <vc-code>
 {
   assume false;

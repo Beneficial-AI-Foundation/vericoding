@@ -1,6 +1,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method non_overlapping_intervals(intervals: array2<int>) returns (count: int)
     modifies intervals
     requires 1 <= intervals.Length0 <= 100000
@@ -9,6 +10,7 @@ method non_overlapping_intervals(intervals: array2<int>) returns (count: int)
     requires forall i :: 0 <= i < intervals.Length0 ==> -50000 <= intervals[i, 1] <= 50000
     // TODO: modify the ensures clause so that count is indeed equal to the minimum number of intervals we need to remove to make the rest of the intervals non-overlapping.
     ensures count >= 0
+// </vc-spec>
 // <vc-code>
 {
   assume false;

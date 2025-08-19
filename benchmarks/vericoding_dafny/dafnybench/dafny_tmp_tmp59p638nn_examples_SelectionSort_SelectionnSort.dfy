@@ -21,9 +21,11 @@ twostate predicate Sorted(a: array<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SelectionnSort(a: array<int>)
     modifies a
     ensures Sorted(a)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

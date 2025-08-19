@@ -41,12 +41,14 @@ class LimitedStack{
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Shift()
       requires Valid() && !Empty();
       ensures Valid();
       ensures forall i : int :: 0 <= i < capacity - 1 ==> arr[i] == old(arr[i + 1]);
       ensures top == old(top) - 1;
       modifies this.arr, this`top;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -31,12 +31,14 @@ predicate minValue(tree: Tree, min: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method insertRecursion(tree: Tree, value: int) returns (res: Tree)
   requires BinarySearchTree(tree)
   decreases tree;
   ensures res != Empty ==> BinarySearchTree(res)
   ensures forall x :: minValue(tree, x) && x < value ==> minValue(res, x)
   ensures forall x :: maxValue(tree, x) && x > value ==> maxValue(res, x)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

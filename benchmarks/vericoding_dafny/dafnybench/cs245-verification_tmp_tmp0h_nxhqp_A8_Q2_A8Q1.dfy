@@ -4,9 +4,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method A8Q1(x: int, y: int, z: int) returns (m: int)
 /*Pre-Condition*/   requires true;
 /*Post-Condition*/  ensures m<=x && m<=y && m<=z;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -15,9 +15,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SetEndPoints(a: array<int>, left: int, right: int)
   requires a.Length != 0 
   modifies a
+// </vc-spec>
 // <vc-code>
 {
   assume false;

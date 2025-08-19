@@ -51,9 +51,11 @@ lemma Lemma_1(Seq_1:seq,Seq_2:seq)  // The proof of the lemma is not necessary
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method quickSort(Seq: seq<int>) returns (Seq': seq<int>)
   ensures multiset(Seq) == multiset(Seq')
   decreases |Seq|
+// </vc-spec>
 // <vc-code>
 {
   assume false;

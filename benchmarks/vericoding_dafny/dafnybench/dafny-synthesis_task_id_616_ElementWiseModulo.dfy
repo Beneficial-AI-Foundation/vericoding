@@ -1,6 +1,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ElementWiseModulo(a: array<int>, b: array<int>) returns (result: array<int>)
     requires a != null && b != null
     requires a.Length == b.Length
@@ -8,6 +9,7 @@ method ElementWiseModulo(a: array<int>, b: array<int>) returns (result: array<in
     ensures result != null
     ensures result.Length == a.Length
     ensures forall i :: 0 <= i < result.Length ==> result[i] == a[i] % b[i]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

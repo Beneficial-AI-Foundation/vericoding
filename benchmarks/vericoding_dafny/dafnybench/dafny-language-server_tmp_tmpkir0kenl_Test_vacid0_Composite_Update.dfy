@@ -28,6 +28,7 @@ class Composite {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Update(x: int, ghost S: set<Composite>) 
     requires this in S && Acyclic(S)
     requires forall c :: c in S ==> c.Valid(S)
@@ -36,6 +37,7 @@ method Update(x: int, ghost S: set<Composite>)
     ensures forall c :: c in S ==> c.left == old(c.left) && c.right == old(c.right) && c.parent == old(c.parent)
     ensures forall c :: c in S && c != this ==> c.val == old(c.val)
     ensures val == x
+// </vc-spec>
 // <vc-code>
 {
   assume false;

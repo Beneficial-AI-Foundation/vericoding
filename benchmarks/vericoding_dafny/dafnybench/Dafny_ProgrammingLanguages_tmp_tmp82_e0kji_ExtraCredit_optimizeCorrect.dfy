@@ -31,8 +31,10 @@ function optimize(e:Exp):Exp
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method optimizeCorrect(e:Exp, s:map<string, int>)
 ensures eval(e,s) == eval(optimize(e), s)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

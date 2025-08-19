@@ -48,10 +48,12 @@ predicate sorted(a: seq<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method lol_sort(a: array<int>)
   modifies a
   ensures valid_permut(a[..], old(a[..]))
   ensures sorted(a[..])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

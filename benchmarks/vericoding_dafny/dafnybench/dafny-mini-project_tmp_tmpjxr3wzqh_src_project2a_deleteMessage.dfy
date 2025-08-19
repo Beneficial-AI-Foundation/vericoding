@@ -167,11 +167,13 @@ class MailApp {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method deleteMessage (m: Message, mb: Mailbox)
     modifies m, mb, this.trash
     requires Valid()
     requires m in mb.messages
     requires m !in trash.messages
+// </vc-spec>
 // <vc-code>
 {
   assume false;

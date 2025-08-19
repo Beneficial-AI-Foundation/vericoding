@@ -7,8 +7,10 @@ function sum_up_to (n: nat): nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SumUpTo (n: nat) returns (r: nat)
   ensures r == sum_up_to (n);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

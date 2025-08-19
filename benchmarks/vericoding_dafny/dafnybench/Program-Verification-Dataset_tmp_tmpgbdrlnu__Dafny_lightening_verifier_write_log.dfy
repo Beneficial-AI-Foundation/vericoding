@@ -269,6 +269,7 @@ class UndoLog {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method write_log(off : int, val : int)
         modifies this;
         modifies log_;
@@ -287,6 +288,7 @@ method write_log(off : int, val : int)
         ensures gs == old(gs);
         ensures off > 0 ==> ghost_state_equiv(log_write_step(gs, off - 1, val).0);
         ensures off == 0 ==> ghost_state_equiv(set_num_entry(gs, val).0);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

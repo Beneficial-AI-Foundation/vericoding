@@ -47,10 +47,12 @@ method MinOfMultiset( m: multiset<int> ) returns( min: int )
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Sort( m: multiset<int> ) returns ( s: seq<int> )
     // Setjið viðeigandi ensures klausur hér
     ensures multiset(s) == m;
     ensures forall p,q | 0 <= p < q < |s| :: s[p] <= s[q];
+// </vc-spec>
 // <vc-code>
 {
   assume false;

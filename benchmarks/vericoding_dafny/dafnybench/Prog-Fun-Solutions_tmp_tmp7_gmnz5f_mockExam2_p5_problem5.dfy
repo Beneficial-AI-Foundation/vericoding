@@ -10,8 +10,10 @@ ghost function f(n: int): int {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method problem5(n:nat) returns (x: int)
 ensures x == f(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

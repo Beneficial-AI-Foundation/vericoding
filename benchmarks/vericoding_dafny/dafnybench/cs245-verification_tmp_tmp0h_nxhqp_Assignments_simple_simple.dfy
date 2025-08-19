@@ -4,9 +4,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method simple(y: int) returns (x: int) 
   requires y==6;
   ensures x==7;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

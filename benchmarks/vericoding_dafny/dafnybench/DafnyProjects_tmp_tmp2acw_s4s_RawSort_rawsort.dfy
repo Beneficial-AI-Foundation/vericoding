@@ -28,10 +28,12 @@ ghost function inversions(a: array<T>): set<(nat, nat)>
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method rawsort(a: array<T>)
    modifies a
    ensures sorted(a) && multiset(a[..]) == multiset(old(a[..]))
    decreases |inversions(a)|
+// </vc-spec>
 // <vc-code>
 {
   assume false;

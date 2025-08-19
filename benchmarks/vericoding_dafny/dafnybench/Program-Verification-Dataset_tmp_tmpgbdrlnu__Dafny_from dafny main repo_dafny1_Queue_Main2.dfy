@@ -144,6 +144,7 @@ class Main<U(0)> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Main2(t: U, u: U, v: U, q0: Queue<U>, q1: Queue<U>)
     requires q0.Valid()
     requires q1.Valid()
@@ -152,6 +153,7 @@ method Main2(t: U, u: U, v: U, q0: Queue<U>, q1: Queue<U>)
     modifies q0.footprint, q1.footprint
     ensures fresh(q0.footprint - old(q0.footprint))
     ensures fresh(q1.footprint - old(q1.footprint))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

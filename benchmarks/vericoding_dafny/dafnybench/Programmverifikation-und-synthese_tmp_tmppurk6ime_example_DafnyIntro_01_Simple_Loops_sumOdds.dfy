@@ -32,8 +32,10 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method sumOdds(n:nat) returns (sum:nat)
 ensures sum == n*n;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

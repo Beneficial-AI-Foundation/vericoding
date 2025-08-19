@@ -10,8 +10,10 @@ reads a
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method somatorio(a:array<nat>) returns (s:nat)
 ensures s == somaAteAberto(a, a.Length)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

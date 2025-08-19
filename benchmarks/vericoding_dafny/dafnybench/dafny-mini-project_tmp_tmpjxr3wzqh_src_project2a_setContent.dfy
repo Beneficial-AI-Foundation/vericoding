@@ -67,9 +67,11 @@ class Message
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method setContent(c: string)
     modifies this
     ensures content == c
+// </vc-spec>
 // <vc-code>
 {
   assume false;

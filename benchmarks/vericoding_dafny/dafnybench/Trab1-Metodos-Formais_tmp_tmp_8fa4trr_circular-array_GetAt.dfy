@@ -105,9 +105,11 @@ class {:autocontracts} CircularArray {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method GetAt(i: nat) returns (e: int)
     requires i < size
     ensures e == Elements[i]
+// </vc-spec>
 // <vc-code>
 {
   assume false;
