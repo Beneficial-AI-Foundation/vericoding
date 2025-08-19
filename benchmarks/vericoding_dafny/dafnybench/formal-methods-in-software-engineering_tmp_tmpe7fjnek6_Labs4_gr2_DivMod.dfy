@@ -11,8 +11,10 @@ Dafny include 2 limbaje:
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method DivMod(a: int, b: int) returns (q: int, r: int)
 decreases *
+// </vc-spec>
 // <vc-code>
 {
   assume false;

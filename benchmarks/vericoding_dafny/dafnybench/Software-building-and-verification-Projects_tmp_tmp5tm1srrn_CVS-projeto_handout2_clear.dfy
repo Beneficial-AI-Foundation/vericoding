@@ -97,12 +97,14 @@ class Hashtable<K(==,!new),V(!new)> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method clear()
     requires RepInv()
     ensures RepInv()
     ensures elems == map[]
     ensures fresh(Repr - old(Repr))
     modifies Repr
+// </vc-spec>
 // <vc-code>
 {
   assume false;

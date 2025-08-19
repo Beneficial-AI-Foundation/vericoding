@@ -57,9 +57,11 @@ class {:autocontracts} CircularArray {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Enqueue(e: int)
     requires !IsFull()
     ensures Elements == old(Elements) + [e]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -218,6 +218,7 @@ class Hashtable<K(==,!new),V(!new)> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method add(k:K,v:V)
     requires RepInv()
     ensures RepInv()
@@ -225,6 +226,7 @@ method add(k:K,v:V)
     ensures k in elems && elems[k] == Some(v)
     ensures forall key :: key != k && key in old(elems) ==> key in elems
     modifies Repr
+// </vc-spec>
 // <vc-code>
 {
   assume false;

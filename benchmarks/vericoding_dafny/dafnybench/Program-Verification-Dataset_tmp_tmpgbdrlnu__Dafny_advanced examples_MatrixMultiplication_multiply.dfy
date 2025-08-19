@@ -23,12 +23,14 @@ function RowColumnProductFrom(m1: array2<int>, m2: array2<int>, row: nat, column
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method multiply(m1: array2<int>, m2: array2<int>) returns (m3: array2<int>)
     requires m1 != null && m2 != null
     requires m1.Length1 == m2.Length0
     ensures m3 != null && m3.Length0 == m1.Length0 && m3.Length1 == m2.Length1
     ensures forall i, j | 0 <= i < m3.Length0 && 0 <= j < m3.Length1 ::
         m3[i, j] == RowColumnProduct(m1, m2, i, j)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

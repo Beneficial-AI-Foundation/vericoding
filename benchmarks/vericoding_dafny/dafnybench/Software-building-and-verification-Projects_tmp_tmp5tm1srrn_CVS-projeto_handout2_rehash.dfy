@@ -97,6 +97,7 @@ class Hashtable<K(==,!new),V(!new)> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method rehash(l: List<(K,V)>, newData: array<List<(K,V)>>,i: int, oldSize: int, newSize: int)
     requires newData != data
     requires 0 < oldSize == data.Length
@@ -119,6 +120,7 @@ method rehash(l: List<(K,V)>, newData: array<List<(K,V)>>,i: int, oldSize: int, 
                 !mem((k,v),newData[bucket(k, newSize)]))
     modifies newData
     decreases l
+// </vc-spec>
 // <vc-code>
 {
   assume false;

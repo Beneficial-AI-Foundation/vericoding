@@ -39,9 +39,11 @@ predicate NoDuplicates(q: seq<int>) { forall i,j :: 0 <= i < j < |q| ==> q[i] !=
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BuildBST(q: seq<int>) returns (t: Tree)
     requires NoDuplicates(q)
     ensures BST(t) && NumbersInTree(t) == NumbersInSequence(q)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

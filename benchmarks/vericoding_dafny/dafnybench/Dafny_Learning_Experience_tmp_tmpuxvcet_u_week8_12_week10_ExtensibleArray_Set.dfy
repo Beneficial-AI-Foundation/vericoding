@@ -66,11 +66,13 @@ class ExtensibleArray<T(0)> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Set(i: int, t: T)
     requires Valid() && 0 <= i < |Elements|
     modifies Repr
     ensures Valid() && fresh(Repr - old(Repr))
     ensures Elements == old(Elements)[i := t]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

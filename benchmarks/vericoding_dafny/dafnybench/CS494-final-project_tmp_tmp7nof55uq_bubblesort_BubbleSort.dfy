@@ -26,12 +26,14 @@ predicate pivot(a:array<int>, to:int, pvt:int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BubbleSort (a: array<int>)
     requires a != null && a.Length > 0; // makes sure a is not empty and length is greater than 0
     modifies a; // as method runs, we are changing a
     ensures sorted(a, 0, a.Length); // makes sure elements of array a are sorted from 0 - a.Length
     ensures multiset(a[..]) == multiset(old(a[..])); // Since a is being modified, we deference the heap 
                                                       //and compare the previous elements to current elements.
+// </vc-spec>
 // <vc-code>
 {
   assume false;

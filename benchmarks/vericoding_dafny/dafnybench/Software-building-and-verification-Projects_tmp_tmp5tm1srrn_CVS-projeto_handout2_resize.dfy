@@ -97,6 +97,7 @@ class Hashtable<K(==,!new),V(!new)> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method resize()
     requires RepInv()
     ensures RepInv()
@@ -104,6 +105,7 @@ method resize()
     ensures forall key :: key in old(elems) ==> key in elems
     ensures forall k,v :: k in old(elems) && old(elems)[k] == Some(v) ==> k in elems && elems[k] == Some(v)
     modifies Repr
+// </vc-spec>
 // <vc-code>
 {
   assume false;

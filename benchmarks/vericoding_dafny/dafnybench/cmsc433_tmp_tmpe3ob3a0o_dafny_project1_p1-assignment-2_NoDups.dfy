@@ -74,9 +74,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method NoDups (a : array<int>) returns (noDups : bool)
     requires forall j : int :: 0 < j < a.Length ==> a[j-1] <= a[j] // a sorted
     ensures noDups <==> forall j : int :: 1 <= j < a.Length ==> a[j-1] != a[j]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

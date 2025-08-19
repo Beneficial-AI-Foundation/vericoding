@@ -9,9 +9,11 @@ function abs(x:int):nat {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method absx(x:array<int>) returns (y:array<int>) 
 ensures y.Length == x.Length
 ensures forall i :: 0 <= i < y.Length ==>  y[i] == abs(x[i])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

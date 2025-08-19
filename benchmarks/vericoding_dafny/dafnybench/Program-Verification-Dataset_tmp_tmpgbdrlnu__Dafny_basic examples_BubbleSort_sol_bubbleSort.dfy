@@ -17,12 +17,14 @@ predicate sorted (a:array<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method bubbleSort (a: array<int>)
   modifies a;
   requires a != null;
   requires a.Length > 0;
   ensures sorted(a);
   ensures multiset(old(a[..])) == multiset(a[..]);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

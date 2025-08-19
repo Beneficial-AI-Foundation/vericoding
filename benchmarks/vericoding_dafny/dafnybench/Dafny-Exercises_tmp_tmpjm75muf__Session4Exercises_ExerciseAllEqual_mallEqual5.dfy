@@ -44,8 +44,10 @@ ensures (allEqual(s) <== forall i::0<=i<|s|-1 ==> s[i]==s[i+1])
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mallEqual5(v:array<int>) returns (b:bool)
 ensures b==allEqual(v[0..v.Length])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

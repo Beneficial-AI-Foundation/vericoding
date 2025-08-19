@@ -6,9 +6,11 @@ predicate isPrefixPredicate(pre: string, str:string)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method isPrefix(pre: string, str: string) returns (res: bool)
   ensures |pre| > |str| ==> !res
   ensures res == isPrefixPredicate(pre, str)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

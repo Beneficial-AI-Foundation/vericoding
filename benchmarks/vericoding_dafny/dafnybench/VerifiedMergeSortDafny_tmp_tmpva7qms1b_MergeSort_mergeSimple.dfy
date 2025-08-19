@@ -1,6 +1,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mergeSimple(a1: seq<int>, a2: seq<int>, start: int, end: int, b: array<int>)
   modifies b
   requires sorted_seq(a1)
@@ -8,6 +9,7 @@ method mergeSimple(a1: seq<int>, a2: seq<int>, start: int, end: int, b: array<in
   requires 0 <= start <= end <= b.Length
   requires |a1| +  |a2| == end - start + 1
   ensures sorted_slice(b, start, end)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

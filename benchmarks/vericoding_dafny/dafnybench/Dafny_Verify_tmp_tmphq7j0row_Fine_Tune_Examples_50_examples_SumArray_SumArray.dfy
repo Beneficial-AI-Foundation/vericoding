@@ -8,9 +8,11 @@ function Sum(arr: array<int>, len: int): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SumArray(arr: array<int>) returns (sum: int)
     requires arr.Length > 0
     ensures sum == Sum(arr, arr.Length)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

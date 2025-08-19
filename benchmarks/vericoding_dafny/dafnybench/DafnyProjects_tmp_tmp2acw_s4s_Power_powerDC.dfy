@@ -14,8 +14,10 @@ function power(x: real, n: nat) : real {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method powerDC(x: real, n: nat) returns (p : real)
   ensures p == power(x, n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

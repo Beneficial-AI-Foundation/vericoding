@@ -92,9 +92,11 @@ predicate isTerminal()
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method getCharAtIndex(index: nat) returns (c: char)
     requires Valid() && 0 <= index < |Contents|
     ensures c == Contents[index]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

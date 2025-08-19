@@ -9,6 +9,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method sort(A: array<int>, n: int)
 modifies A; requires n==A.Length;
 /* Pre-Condition */   requires n>=0;            
@@ -16,6 +17,7 @@ modifies A; requires n==A.Length;
 
 //Can we write code that does not sort A that still satisfies the requirements? 
 //Consider the following program:
+// </vc-spec>
 // <vc-code>
 {
   assume false;

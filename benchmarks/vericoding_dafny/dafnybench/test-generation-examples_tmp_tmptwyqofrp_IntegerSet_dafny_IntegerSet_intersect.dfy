@@ -45,6 +45,7 @@ module IntegerSet {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method intersect(s : Set) returns (intersection : Set)
         requires forall i, j | 0 <= i < |s.elements| && 0 <= j < |s.elements| && i != j :: s.elements[i] != s.elements[j]
         requires forall i, j | 0 <= i < |this.elements| && 0 <= j < |this.elements| && i != j :: this.elements[i] != this.elements[j]
@@ -52,6 +53,7 @@ method intersect(s : Set) returns (intersection : Set)
         ensures forall i : int :: i !in intersection.elements  <==> i !in s.elements || i !in this.elements
         ensures forall j, k | 0 <= j < |intersection.elements| && 0 <= k < |intersection.elements| && j != k :: intersection.elements[j] != intersection.elements[k]
         ensures fresh(intersection)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

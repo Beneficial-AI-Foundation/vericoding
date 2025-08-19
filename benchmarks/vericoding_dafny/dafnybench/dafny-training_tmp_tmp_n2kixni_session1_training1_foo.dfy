@@ -32,8 +32,10 @@ method abs(x: int) returns (y: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method foo(x: int) 
     requires x >= 0
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -22,11 +22,13 @@ abstract module M0 {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Inc()
       requires Valid()
       modifies Repr
       ensures N == old(N) + 1
       ensures Valid() && fresh(Repr - old(Repr))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

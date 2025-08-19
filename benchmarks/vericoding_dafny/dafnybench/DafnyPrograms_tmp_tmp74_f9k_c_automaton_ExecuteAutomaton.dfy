@@ -14,6 +14,7 @@ Provide the initial row: init, the rule and the desired number of steps
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ExecuteAutomaton(init: seq<bool>, rule: (bool, bool, bool) -> bool, steps: nat)
   returns (table: seq<seq<bool>>)
   // we need the initial row to have the length bigger or equal to two
@@ -32,6 +33,7 @@ method ExecuteAutomaton(init: seq<bool>, rule: (bool, bool, bool) -> bool, steps
   // its neighbour and false
   ensures forall i | 0 <= i < |table| - 1 ::
             table[i + 1][0] == rule(false, table[i][0], table[i][1]) && table[i + 1][|table[i]| - 1] == rule(table[i][|table[i]| - 2], table[i][|table[i]| - 1], false)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -3,9 +3,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method MultipleReturns(x: int, y: int) returns (more: int, less: int)
   requires 0 < y
   ensures less < x < more
+// </vc-spec>
 // <vc-code>
 {
   assume false;

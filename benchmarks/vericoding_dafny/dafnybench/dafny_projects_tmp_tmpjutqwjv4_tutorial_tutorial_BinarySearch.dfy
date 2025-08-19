@@ -17,10 +17,12 @@ predicate sorted(a: array<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BinarySearch(a: array<int>, value: int) returns (index: int)
   requires 0 <= a.Length && sorted(a)
   ensures 0 <= index ==> index < a.Length && a[index] == value
   ensures index < 0 ==> forall k :: 0 <= k < a.Length ==> a[k] != value
+// </vc-spec>
 // <vc-code>
 {
   assume false;

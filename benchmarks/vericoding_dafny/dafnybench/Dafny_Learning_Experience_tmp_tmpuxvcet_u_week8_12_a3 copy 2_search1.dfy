@@ -56,12 +56,14 @@ class TwoStacks<T(0)(==)>
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method search1(Element:T) returns (position:int)
         requires Valid()
         ensures position == -1 || position >= 1
         ensures position >= 1 ==> exists i::0 <=i < |s1| && s1[i] == Element && !Empty1()
         ensures position == -1 ==> forall i :: 0 <= i < |s1| ==> s1[i] != Element || Empty1()
         ensures Valid()
+// </vc-spec>
 // <vc-code>
 {
   assume false;

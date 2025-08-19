@@ -35,9 +35,11 @@ class {:autocontracts} Queue {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method isEmpty() returns (isEmpty: bool)
     ensures isEmpty == true ==> counter == 0;
     ensures isEmpty == false ==> counter != 0;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

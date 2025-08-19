@@ -54,11 +54,13 @@ method Front() returns (x: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Enqueue(t: T)
     requires Valid()
     modifies footprint
     ensures Valid() && fresh(footprint - old(footprint))
     ensures contents == old(contents) + [t]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -6,12 +6,14 @@ predicate Sorted(q: seq<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method FindRange(q: seq<int>, key: int) returns (left: nat, right: nat)
     requires Sorted(q)
     ensures left <= right <= |q|
     ensures forall i :: 0 <= i < left ==> q[i] < key
     ensures forall i :: left <= i < right ==> q[i] == key
     ensures forall i :: right <= i < |q| ==> q[i] > key
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -59,12 +59,14 @@ method FirstEvenOddIndices(lst : seq<int>) returns (evenIndex: int, oddIndex : i
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ProductEvenOdd(lst: seq<int>) returns (product : int)
     requires |lst| >= 2
     requires exists i :: 0 <= i < |lst| && IsEven(lst[i])
     requires exists i :: 0 <= i < |lst| && IsOdd(lst[i])
     ensures exists i, j :: 0 <= i < |lst| && IsEven(lst[i]) && IsFirstEven(i, lst) && 
                            0 <= j < |lst| && IsOdd(lst[j])  && IsFirstOdd(j, lst) && product == lst[i] * lst[j]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

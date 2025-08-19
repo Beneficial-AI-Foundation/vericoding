@@ -35,6 +35,7 @@ class {:autocontracts} Queue {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method auxInsertEmptyQueue(item:int)
     requires front == 0 && rear == 0 && circularQueue.Length == 0
     ensures circularQueue.Length == 1
@@ -43,6 +44,7 @@ method auxInsertEmptyQueue(item:int)
     ensures rear == 1
     ensures counter == old(counter) + 1
     ensures front == 0
+// </vc-spec>
 // <vc-code>
 {
   assume false;

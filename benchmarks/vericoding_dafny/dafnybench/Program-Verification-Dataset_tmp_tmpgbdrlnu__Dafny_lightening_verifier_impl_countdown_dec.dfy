@@ -269,6 +269,7 @@ class UndoLog {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method impl_countdown_dec()
         modifies this;
         requires impl_countdown > 0;
@@ -279,6 +280,7 @@ method impl_countdown_dec()
         ensures gs == old(gs);
         ensures log_[..] == old(log_)[..];
         ensures mem_[..] == old(mem_)[..];
+// </vc-spec>
 // <vc-code>
 {
   assume false;

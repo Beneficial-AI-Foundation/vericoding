@@ -9,6 +9,7 @@ class Secret{
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Guess(g : int) returns (result : bool, guesses : int)
     modifies `known, `count
     requires known == false
@@ -17,6 +18,7 @@ method Guess(g : int) returns (result : bool, guesses : int)
             else 
                 result == false && known == false
     ensures count == old(count) + 1 && guesses == count
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -110,8 +110,10 @@ class {:autocontracts} CircularArray {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method AsSequence() returns (s: seq<int>)
     ensures s == Elements
+// </vc-spec>
 // <vc-code>
 {
   assume false;

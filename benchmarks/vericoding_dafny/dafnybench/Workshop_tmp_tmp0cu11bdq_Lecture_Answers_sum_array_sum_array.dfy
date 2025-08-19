@@ -9,9 +9,11 @@ function sumTo( a:array<int>, n:int ) : int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method sum_array( a: array<int>) returns (sum: int)
   requires a != null;
   ensures sum == sumTo(a, a.Length);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

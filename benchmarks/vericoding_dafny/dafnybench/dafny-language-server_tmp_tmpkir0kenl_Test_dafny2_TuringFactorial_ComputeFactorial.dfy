@@ -9,9 +9,11 @@ function Factorial(n: nat): nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ComputeFactorial(n: int) returns (u: int)
   requires 1 <= n;
   ensures u == Factorial(n);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

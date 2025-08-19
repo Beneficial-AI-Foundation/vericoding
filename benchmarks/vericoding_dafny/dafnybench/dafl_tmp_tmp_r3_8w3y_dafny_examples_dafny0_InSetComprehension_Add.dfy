@@ -50,10 +50,12 @@ class Container<T> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Add(t: T)
     requires Contents == set x | x in elems
     modifies this
     ensures Contents == set x | x in elems
+// </vc-spec>
 // <vc-code>
 {
   assume false;

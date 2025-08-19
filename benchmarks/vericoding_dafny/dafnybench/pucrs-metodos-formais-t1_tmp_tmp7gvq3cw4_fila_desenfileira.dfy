@@ -60,10 +60,12 @@ class {:autocontracts}  Fila
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method desenfileira() returns (e:int)
     requires |Conteudo| > 0
     ensures e == old(Conteudo)[0]
     ensures Conteudo == old(Conteudo)[1..]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

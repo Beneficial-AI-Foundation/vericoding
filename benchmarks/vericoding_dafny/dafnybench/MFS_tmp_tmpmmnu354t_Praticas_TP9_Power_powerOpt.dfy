@@ -39,8 +39,10 @@ lemma distributiveProperty(x: real, a: nat, b: nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method powerOpt(b: real, n: nat) returns (p : real)
     ensures p == power(b, n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

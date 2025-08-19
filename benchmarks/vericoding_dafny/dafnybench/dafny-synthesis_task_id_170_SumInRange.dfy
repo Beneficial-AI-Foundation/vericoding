@@ -10,10 +10,12 @@ function sumTo( a:array<int>, start:int, end:int ) : int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SumInRange(a: array<int>, start: int, end: int) returns (sum: int)
     requires a != null
     requires 0 <= start && start <= end && end <= a.Length
     ensures sum == sumTo(a, start, end)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

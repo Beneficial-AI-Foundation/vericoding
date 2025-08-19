@@ -14,6 +14,7 @@ function sum(X_val: array<int>, X_crd: array<nat>, v : array<int>, b : int, k : 
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SpMV(X_val: array<int>, X_crd: array<nat>, X_pos: array<nat>, v : array<int>) returns (y : array<int>)
   requires X_crd.Length >= 1 
   requires X_crd.Length == X_val.Length;
@@ -23,6 +24,7 @@ method SpMV(X_val: array<int>, X_crd: array<nat>, X_pos: array<nat>, v : array<i
   requires X_pos.Length >= 1
   ensures y.Length + 1 == X_pos.Length
   ensures forall i :: 0 <= i < y.Length ==> y[i] == sum(X_val, X_crd, v, X_pos[i], X_pos[i + 1])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

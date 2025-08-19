@@ -20,8 +20,10 @@ datatype Klef =
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BaseKlef(k: Klef)
   requires !k.C0? && !k.C2? && !k.C1?
+// </vc-spec>
 // <vc-code>
 {
   assume false;

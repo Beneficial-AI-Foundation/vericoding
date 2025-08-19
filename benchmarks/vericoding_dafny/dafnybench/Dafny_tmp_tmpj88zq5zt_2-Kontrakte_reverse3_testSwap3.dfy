@@ -18,12 +18,14 @@ method swap3(a: array<int>, h: int, i: int, j: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method testSwap3(a: array<int>, h: int, i: int, j:int )
   modifies a
   requires 0 <= h < a.Length
   requires 0 <= i < a.Length
   requires 0 <= j < a.Length
   requires i != j && j != h && h != i;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

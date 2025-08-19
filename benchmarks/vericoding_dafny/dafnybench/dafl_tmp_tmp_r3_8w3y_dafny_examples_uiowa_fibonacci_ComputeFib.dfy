@@ -22,8 +22,10 @@ function fib(n: nat): nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ComputeFib(n: nat) returns (f: nat)
   ensures f == fib(n);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -17,11 +17,13 @@ predicate distinct<A(==)>(s: seq<A>) {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method end(links: seq<nat>)
     requires |links| > 0
     requires permutation(links)
     requires derangement(links)
     requires distinct(links)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

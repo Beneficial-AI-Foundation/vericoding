@@ -1,0 +1,16 @@
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  method SplitStringIntoChars(s: string) returns (v: seq<char>)
+      ensures |v| == |s|
+      ensures forall i :: 0 <= i < |s| ==> v[i] == s[i]
+
+vc-code: |-
+  {
+    assume false;
+  }
+
+vc-postamble: |-
+

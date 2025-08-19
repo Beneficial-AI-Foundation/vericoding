@@ -44,12 +44,14 @@ method InitArray<T>(a: array<T>, d: T)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method UpdateElements(a: array<int>) 
   requires a.Length == 10 
   modifies a 
   ensures old(a[4]) < a[4] 
   ensures a[6] <= old(a[6]) 
   ensures a[8] == old(a[8])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

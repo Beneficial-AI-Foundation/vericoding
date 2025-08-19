@@ -44,10 +44,12 @@ method swap<T>(a: array<T>, i: int, j: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method two_way_sort(a: array<bool>)
   modifies a
   ensures forall m,n :: 0 <= m < n < a.Length ==> (!a[m] || a[n])
   ensures multiset(a[..]) == old(multiset(a[..]))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

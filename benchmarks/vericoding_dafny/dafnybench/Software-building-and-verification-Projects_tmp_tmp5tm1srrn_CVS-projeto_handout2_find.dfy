@@ -97,12 +97,14 @@ class Hashtable<K(==,!new),V(!new)> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method find(k: K) returns (r: Option<V>)
     requires RepInv()
     ensures RepInv()
     ensures match r
             case None => (k !in elems || (k in elems && elems[k] == None))
             case Some(v) => (k in elems && elems[k] == Some(v))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

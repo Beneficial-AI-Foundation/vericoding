@@ -3,8 +3,10 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BigFoot(step: nat) // DO NOT CHANGE
 requires 0 < step <= 42;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

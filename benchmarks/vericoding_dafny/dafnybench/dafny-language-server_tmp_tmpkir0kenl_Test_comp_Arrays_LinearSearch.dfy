@@ -7,9 +7,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method LinearSearch(a: array<int>, key: int) returns (n: nat)
   ensures 0 <= n <= a.Length
   ensures n == a.Length || a[n] == key
+// </vc-spec>
 // <vc-code>
 {
   assume false;

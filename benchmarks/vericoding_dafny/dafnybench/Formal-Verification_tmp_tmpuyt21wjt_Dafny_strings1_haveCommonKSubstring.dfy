@@ -66,9 +66,11 @@ predicate haveCommonKSubstringPredicate(k: nat, str1: string, str2: string)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: bool)
   ensures |str1| < k || |str2| < k ==> !found
   ensures haveCommonKSubstringPredicate(k,str1,str2) == found
+// </vc-spec>
 // <vc-code>
 {
   assume false;

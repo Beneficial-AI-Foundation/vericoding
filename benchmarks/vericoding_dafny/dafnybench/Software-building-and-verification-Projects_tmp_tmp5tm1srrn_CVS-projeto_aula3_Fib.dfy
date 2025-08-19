@@ -7,8 +7,10 @@ function fib(n : nat) : nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Fib(n : nat) returns (r:nat)
   ensures r == fib(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

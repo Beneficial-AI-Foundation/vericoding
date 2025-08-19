@@ -19,8 +19,10 @@ method mystery1(n: nat,m: nat) returns (res: nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mystery2(n: nat,m: nat) returns (res: nat)
   ensures n*m == res
+// </vc-spec>
 // <vc-code>
 {
   assume false;

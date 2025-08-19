@@ -12,9 +12,11 @@ reads s
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method sum(s: array<int>) returns (a:int)
 requires s.Length > 0
 ensures sumcheck(s, s.Length) == a
+// </vc-spec>
 // <vc-code>
 {
   assume false;

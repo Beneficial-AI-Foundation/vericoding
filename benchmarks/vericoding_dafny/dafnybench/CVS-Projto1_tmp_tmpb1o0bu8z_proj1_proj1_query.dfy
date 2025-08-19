@@ -15,9 +15,11 @@ requires 0 <= i <= j <= a.Length
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method query (a:array<int>, i:int, j:int) returns (s:int)
 requires 0 <= i <= j <= a.Length
 ensures s == sum(a, i, j)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

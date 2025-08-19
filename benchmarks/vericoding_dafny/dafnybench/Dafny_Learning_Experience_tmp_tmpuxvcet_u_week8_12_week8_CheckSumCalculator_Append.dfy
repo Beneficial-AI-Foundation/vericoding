@@ -31,10 +31,12 @@ class CheckSumCalculator{
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Append(d:string)
         requires Valid()
         modifies this
         ensures Valid() && data == old(data) + d
+// </vc-spec>
 // <vc-code>
 {
   assume false;

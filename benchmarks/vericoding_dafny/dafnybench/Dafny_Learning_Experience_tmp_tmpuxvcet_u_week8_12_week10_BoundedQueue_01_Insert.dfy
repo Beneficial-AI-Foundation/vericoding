@@ -33,6 +33,7 @@ ensures contents == [] && this.N == N
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Insert(x:T)
 requires Valid()
 requires |contents| != N
@@ -40,6 +41,7 @@ modifies Repr
 ensures contents == old(contents) + [x]
 ensures N == old(N)
 ensures Valid() && fresh(Repr - old(Repr))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -35,10 +35,12 @@ method lookForMin (a: array<int>, i: int) returns (m: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method insertionSort (a: array<int>)
 
     modifies a
     ensures sorted(a)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

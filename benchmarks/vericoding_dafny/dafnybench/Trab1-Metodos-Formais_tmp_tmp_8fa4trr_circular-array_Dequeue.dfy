@@ -61,10 +61,12 @@ class {:autocontracts} CircularArray {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Dequeue() returns (e: int)
     requires !IsEmpty()
     ensures Elements == old(Elements)[1..]
     ensures e == old(Elements)[0]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

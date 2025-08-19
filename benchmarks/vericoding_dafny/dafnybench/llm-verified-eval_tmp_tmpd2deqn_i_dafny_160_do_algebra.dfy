@@ -10,9 +10,11 @@ function pow(base: int, exponent: int): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method do_algebra(operators: seq<char>, operands: seq<int>) returns (result: int)
   requires operators != [] && operands != [] && |operators| + 1 == |operands|
   requires forall i :: 0 <= i < |operands| ==> operands[i] >= 0
+// </vc-spec>
 // <vc-code>
 {
   assume false;

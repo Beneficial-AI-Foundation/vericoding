@@ -27,8 +27,10 @@ function soma(a:array<nat>, i:nat):nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method somatorio(a:array<nat>) returns (s:nat)
     ensures s == soma(a, a.Length)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

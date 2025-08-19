@@ -49,9 +49,11 @@ method FooCount(CountIndex:nat, a:seq<int>,b:array<int>) returns (p:nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method FooPreCompute(a:array<int>,b:array<int>)
     requires a.Length == b.Length
     modifies b
+// </vc-spec>
 // <vc-code>
 {
   assume false;

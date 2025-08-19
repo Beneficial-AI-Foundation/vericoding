@@ -37,11 +37,13 @@ predicate bordered(s:seq<Bases>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Sorter(bases: seq<Bases>) returns (sobases:seq<Bases>)
 requires 0 < |bases|
 ensures |sobases| == |bases|
 ensures bordered(sobases)
 ensures multiset(bases) == multiset(sobases);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

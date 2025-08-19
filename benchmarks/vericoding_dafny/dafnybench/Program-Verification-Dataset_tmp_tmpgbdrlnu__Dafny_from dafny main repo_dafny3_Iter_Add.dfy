@@ -29,11 +29,13 @@ class List<T> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Add(t: T)
     requires Valid()
     modifies Repr
     ensures Valid() && fresh(Repr - old(Repr))
     ensures Contents == old(Contents) + [t]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

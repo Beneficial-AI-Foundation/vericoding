@@ -13,9 +13,11 @@ function fact(n:nat):nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method factIter(n:nat) returns (a:nat)
 requires n >= 0;
 ensures a == fact(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

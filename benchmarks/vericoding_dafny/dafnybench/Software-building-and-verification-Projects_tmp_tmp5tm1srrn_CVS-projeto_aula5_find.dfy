@@ -51,11 +51,13 @@ class Set {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method find(x:int) returns (r:int)
     requires RepInv()
     ensures RepInv()
     ensures r < 0 ==> x !in elems
     ensures r >=0 ==> x in elems;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

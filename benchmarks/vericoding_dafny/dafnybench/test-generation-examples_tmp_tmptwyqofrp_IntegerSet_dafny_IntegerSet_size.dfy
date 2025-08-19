@@ -22,8 +22,10 @@ module IntegerSet {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method size() returns (size : int)
         ensures size == |elements|
+// </vc-spec>
 // <vc-code>
 {
   assume false;

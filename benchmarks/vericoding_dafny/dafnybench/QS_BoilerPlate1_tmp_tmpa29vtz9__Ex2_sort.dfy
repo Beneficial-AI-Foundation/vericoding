@@ -22,9 +22,11 @@ function sorted(s : seq<int>) : bool {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method sort(a : array<int>) 
   ensures sorted(a[..])
   modifies a
+// </vc-spec>
 // <vc-code>
 {
   assume false;

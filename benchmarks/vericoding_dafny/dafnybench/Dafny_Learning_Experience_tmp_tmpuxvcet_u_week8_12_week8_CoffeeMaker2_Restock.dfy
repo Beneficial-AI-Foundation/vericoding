@@ -84,10 +84,12 @@ class CoffeeMaker {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Restock() 
         requires Valid() 
         modifies Repr 
         ensures Valid() && ready == true && fresh(Repr - old(Repr))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

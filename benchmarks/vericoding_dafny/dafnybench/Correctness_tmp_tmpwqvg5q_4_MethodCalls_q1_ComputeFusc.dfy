@@ -8,6 +8,7 @@
       Termination proof (2marks)
 */
 
+// <vc-spec>
 function fusc(n: int): nat
 
 lemma rule1()
@@ -28,6 +29,7 @@ lemma rule4(n:nat)
 method ComputeFusc(N: int) returns (b: int)
   requires N >= 0 
   ensures b == fusc(N)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

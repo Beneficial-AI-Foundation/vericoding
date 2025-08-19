@@ -3,8 +3,10 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method isPrefix(pre:string, str:string) returns(res:bool)
     requires 0 < |pre| <= |str| //This line states that this method requires that pre is less than or equal in length to str. Without this line, an out of bounds error is shown on line 14: "str[i] != pre[i]"
+// </vc-spec>
 // <vc-code>
 {
   assume false;

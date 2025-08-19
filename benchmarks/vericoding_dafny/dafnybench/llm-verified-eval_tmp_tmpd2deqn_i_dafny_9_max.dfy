@@ -8,9 +8,11 @@ function isMax(m: int, numbers: seq<int>): bool
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method max(numbers: seq<int>) returns (result: int)
 requires numbers != []
 ensures isMax(result, numbers)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

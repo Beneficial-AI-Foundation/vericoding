@@ -6,8 +6,10 @@ function Power(n:nat):nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method CalcPower(n:nat) returns (p:nat)
     ensures p == 2*n;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

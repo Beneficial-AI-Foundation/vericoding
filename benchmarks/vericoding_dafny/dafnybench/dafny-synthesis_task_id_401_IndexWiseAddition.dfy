@@ -1,6 +1,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method IndexWiseAddition(a: seq<seq<int>>, b: seq<seq<int>>) returns (result: seq<seq<int>>)
     requires |a| > 0 && |b| > 0
     requires |a| == |b|
@@ -8,6 +9,7 @@ method IndexWiseAddition(a: seq<seq<int>>, b: seq<seq<int>>) returns (result: se
     ensures |result| == |a|
     ensures forall i :: 0 <= i < |result| ==> |result[i]| == |a[i]|
     ensures forall i :: 0 <= i < |result| ==> forall j :: 0 <= j < |result[i]| ==> result[i][j] == a[i][j] + b[i][j]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

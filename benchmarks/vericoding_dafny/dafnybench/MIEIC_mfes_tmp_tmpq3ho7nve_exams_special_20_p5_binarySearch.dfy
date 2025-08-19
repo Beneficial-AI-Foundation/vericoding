@@ -12,6 +12,7 @@ predicate sorted(a: array<T>, n: nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method binarySearch(a: array<T>, x: T) returns (index: int) 
     requires sorted(a, a.Length)
     ensures sorted(a, a.Length)
@@ -22,6 +23,7 @@ method binarySearch(a: array<T>, x: T) returns (index: int)
 
     ensures index > 0 ==> a[index-1] <= x
     ensures index < a.Length ==> a[index] >= x
+// </vc-spec>
 // <vc-code>
 {
   assume false;

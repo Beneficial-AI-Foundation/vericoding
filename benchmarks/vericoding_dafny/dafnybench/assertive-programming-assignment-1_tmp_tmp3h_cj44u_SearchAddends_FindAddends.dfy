@@ -11,9 +11,11 @@ predicate HasAddends(q: seq<int>, x: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method FindAddends(q: seq<int>, x: int) returns (i: nat, j: nat)
     requires Sorted(q) && HasAddends(q, x)
     ensures i < j < |q| && q[i]+q[j] == x
+// </vc-spec>
 // <vc-code>
 {
   assume false;

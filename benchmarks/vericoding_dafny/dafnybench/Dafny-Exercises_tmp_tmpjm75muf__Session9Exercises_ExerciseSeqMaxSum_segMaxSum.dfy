@@ -17,9 +17,11 @@ forall l,ss {:induction l}::0<=l<=i && ss==i+1==> Sum(v,l,ss)<=s
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method segMaxSum(v:array<int>,i:int) returns (s:int,k:int)
 requires v.Length>0 && 0<=i<v.Length
 ensures 0<=k<=i && s==Sum(v,k,i+1) &&  SumMaxToRight(v,i,s)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

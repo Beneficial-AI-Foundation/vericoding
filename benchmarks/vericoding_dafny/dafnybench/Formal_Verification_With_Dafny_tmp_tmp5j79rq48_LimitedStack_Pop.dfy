@@ -41,11 +41,13 @@ class LimitedStack{
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Pop() returns (elem : int)
       modifies   this`top
       requires Valid() && !Empty()  
       ensures Valid()  && top == old(top) - 1 
       ensures elem == arr[old(top)]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -1,0 +1,33 @@
+vc-preamble: |-
+  class A {
+    var value: int
+    constructor ()
+       ensures value == 10
+    {
+       value := 10;
+    }
+  }
+
+  class B {
+     var a: A
+     constructor () { a := new A(); }
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  method m()
+       requires a.value == 11
+       modifies this, this.a
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  }
+

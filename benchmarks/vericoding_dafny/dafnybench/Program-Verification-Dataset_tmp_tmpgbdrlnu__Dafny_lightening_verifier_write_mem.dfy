@@ -269,6 +269,7 @@ class UndoLog {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method write_mem(off : int, val : int)
         modifies this;
         modifies mem_;
@@ -281,6 +282,7 @@ method write_mem(off : int, val : int)
         ensures log_ == old(log_);
         ensures gs == old(gs);
         ensures ghost_state_equiv(mem_write_step(gs, off, val).0);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

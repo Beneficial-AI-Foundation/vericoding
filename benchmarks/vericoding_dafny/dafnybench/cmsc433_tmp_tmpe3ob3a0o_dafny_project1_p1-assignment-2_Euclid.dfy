@@ -52,6 +52,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Euclid (m : int, n : int) returns (gcd : int)
     requires m > 1 && n > 1 && m >= n  // TODO
     ensures gcd > 0 && gcd <= n && gcd <= m && m % gcd == 0 && n % gcd == 0 // TODO
@@ -66,6 +67,7 @@ method Euclid (m : int, n : int) returns (gcd : int)
 
 method IsSorted (a : array<int>) returns (isSorted : bool)
     ensures isSorted <==> forall j : int :: 1 <= j < a.Length ==> a[j-1] <= a[j]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

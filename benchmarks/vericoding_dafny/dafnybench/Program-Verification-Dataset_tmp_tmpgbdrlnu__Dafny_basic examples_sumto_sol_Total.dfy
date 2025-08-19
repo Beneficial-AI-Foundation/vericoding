@@ -32,8 +32,10 @@ lemma total_lemma (a: seq<nat>, i:nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Total (a: seq<nat>) returns (r:nat)
   ensures r == total (a[0..|a|]);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

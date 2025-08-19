@@ -1,6 +1,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method swap<T>(a: array<T>, i: int, j: int)
   // requires a != null
   requires 0 <= i < a.Length && 0 <= j < a.Length
@@ -9,6 +10,7 @@ method swap<T>(a: array<T>, i: int, j: int)
   ensures a[j] == old(a[i])
   ensures forall m :: 0 <= m < a.Length && m != i && m != j ==> a[m] == old(a[m])
   ensures multiset(a[..]) == old(multiset(a[..]))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

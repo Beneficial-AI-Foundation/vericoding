@@ -4,9 +4,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method max(a: int, b: int) returns (z: int)
   requires true
   ensures z >= a || z >= b
+// </vc-spec>
 // <vc-code>
 {
   assume false;

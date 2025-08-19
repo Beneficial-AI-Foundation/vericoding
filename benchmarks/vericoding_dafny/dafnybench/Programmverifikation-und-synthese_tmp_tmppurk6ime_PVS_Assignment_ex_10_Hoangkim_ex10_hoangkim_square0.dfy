@@ -3,8 +3,10 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method square0(n:nat) returns (sqn : nat)
 ensures sqn == n*n
+// </vc-spec>
 // <vc-code>
 {
   assume false;

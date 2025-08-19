@@ -136,10 +136,12 @@ predicate is_max_nit(b : nat, q : nat) {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method max_nit(b: nat) returns (nmax : nat)
   requires (valid_base(b))
   ensures (nitness(b, nmax))
   ensures (is_max_nit(b, nmax))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

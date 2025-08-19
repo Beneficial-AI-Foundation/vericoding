@@ -27,12 +27,14 @@ class LimitedStack{
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Init(c : int)
       modifies this;
       requires c > 0
       ensures Valid() && Empty() && c == capacity
       ensures fresh(arr); // ensures arr is a newly created object.
       // Additional post-condition to be given here!
+// </vc-spec>
 // <vc-code>
 {
   assume false;

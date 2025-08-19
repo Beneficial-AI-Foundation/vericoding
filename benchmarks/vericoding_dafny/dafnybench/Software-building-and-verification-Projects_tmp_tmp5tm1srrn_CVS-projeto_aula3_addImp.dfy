@@ -17,8 +17,10 @@ function add(l : List<int>) : int {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method addImp(l : List<int>) returns (r: int)
   ensures r == add(l)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

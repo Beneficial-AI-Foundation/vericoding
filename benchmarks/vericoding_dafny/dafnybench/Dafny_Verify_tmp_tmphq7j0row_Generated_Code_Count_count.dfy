@@ -9,9 +9,11 @@ function has_count(v: int, a: array<int>, n: int): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method count (v: int, a: array<int>, n: int) returns (r: int)
     requires n >= 0 && n <= a.Length;
     ensures has_count(v, a, n) == r;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

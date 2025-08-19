@@ -24,9 +24,11 @@ lemma peasantMultLemma(a:int, b:int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method peasantMult(a: int, b: int) returns (r: int)
     requires b > 0
     ensures r == a * b
+// </vc-spec>
 // <vc-code>
 {
   assume false;

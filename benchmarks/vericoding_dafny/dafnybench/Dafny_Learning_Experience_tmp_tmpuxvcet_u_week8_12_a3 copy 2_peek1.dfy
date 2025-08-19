@@ -34,11 +34,13 @@ class TwoStacks<T(0)(==)>
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method peek1() returns (EmptyStatus:bool, TopItem:T)
         requires Valid()
         ensures Empty1() ==> EmptyStatus == false
         ensures !Empty1() ==> EmptyStatus == true && TopItem == s1[|s1|-1] 
         ensures Valid()
+// </vc-spec>
 // <vc-code>
 {
   assume false;

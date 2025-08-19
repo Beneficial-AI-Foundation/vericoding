@@ -34,12 +34,14 @@ class TwoStacks<T(0)(==)>
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method pop2() returns (EmptyStatus:bool, PopedItem:T)
         requires Valid()
         modifies Repr
         ensures old(|s2|) != 0 ==> s2 == old(s2[0..|s2|-1]) && EmptyStatus == true && PopedItem == old(s2[|s2|-1]) 
         ensures old(|s2|) == 0 ==> EmptyStatus == false 
         ensures Valid() && fresh(Repr - old(Repr))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

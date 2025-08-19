@@ -11,9 +11,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BubbleSort(A: array<int>, n: int)
 modifies A;
 requires A.Length>=0 && n==A.Length;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

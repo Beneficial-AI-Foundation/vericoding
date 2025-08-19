@@ -9,8 +9,10 @@ decreases n
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method fibonacci3(n:nat) returns (f:nat)
 ensures f==fib(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

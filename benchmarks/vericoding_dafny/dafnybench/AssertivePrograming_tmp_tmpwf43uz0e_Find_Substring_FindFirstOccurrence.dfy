@@ -21,8 +21,10 @@ Feel free to add GHOST code, including calls to lemmas. But DO NOT modify the sp
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method FindFirstOccurrence(str1: string, str2: string) returns (found: bool, i: nat)
     ensures Post(str1, str2, found, i)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

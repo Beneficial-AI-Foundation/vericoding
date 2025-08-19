@@ -92,11 +92,13 @@ predicate isTerminal()
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method report(i: nat, j: nat) returns (s: string)
     requires 0 <= i <= j <= |this.Contents|
     requires Valid()
     ensures s == this.Contents[i..j]
     decreases Repr
+// </vc-spec>
 // <vc-code>
 {
   assume false;

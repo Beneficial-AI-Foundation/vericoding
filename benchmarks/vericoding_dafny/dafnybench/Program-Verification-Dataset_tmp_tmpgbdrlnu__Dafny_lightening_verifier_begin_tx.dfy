@@ -297,6 +297,7 @@ class UndoLog {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method begin_tx()
         modifies log_;
         modifies this;
@@ -309,6 +310,7 @@ method begin_tx()
         ensures state_inv();
         ensures ghost_state_equiv(gs);
         ensures ghost_tx_inv(gs);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

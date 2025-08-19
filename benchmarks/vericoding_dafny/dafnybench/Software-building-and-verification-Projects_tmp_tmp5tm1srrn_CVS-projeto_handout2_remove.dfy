@@ -97,6 +97,7 @@ class Hashtable<K(==,!new),V(!new)> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method remove(k: K)
     requires RepInv()
     ensures RepInv()
@@ -104,6 +105,7 @@ method remove(k: K)
     ensures k !in elems || elems[k] == None
     ensures forall key :: key != k && key in old(elems) ==> key in elems && elems[key] == old(elems[key])
     modifies Repr
+// </vc-spec>
 // <vc-code>
 {
   assume false;

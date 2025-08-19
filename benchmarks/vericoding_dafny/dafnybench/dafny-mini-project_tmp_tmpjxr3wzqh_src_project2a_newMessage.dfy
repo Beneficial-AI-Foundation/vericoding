@@ -158,10 +158,12 @@ class MailApp {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method newMessage(s: Address)
     modifies this.drafts
     requires Valid()
     ensures exists m | m in drafts.messages :: m.sender == s
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -7,8 +7,10 @@ ghost function f(n: nat): nat {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mod(n:nat) returns (a:nat) 
 ensures a == f(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

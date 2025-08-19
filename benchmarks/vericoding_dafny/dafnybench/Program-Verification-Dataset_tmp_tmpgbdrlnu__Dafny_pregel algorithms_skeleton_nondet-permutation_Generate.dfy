@@ -33,12 +33,14 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Generate(n: int) returns (perm: array<int>)
         requires n >= 0
         ensures perm != null
         ensures perm.Length == n
         ensures fresh(perm)
         ensures isValid(perm, n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

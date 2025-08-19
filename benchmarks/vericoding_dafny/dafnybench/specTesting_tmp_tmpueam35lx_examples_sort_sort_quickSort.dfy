@@ -1,6 +1,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method quickSort(intSeq:array<int>)
     modifies intSeq
     ensures forall i:nat, j:nat | 0 <= i <= j < intSeq.Length :: intSeq[i] <= intSeq[j]
@@ -12,6 +13,7 @@ lemma sort(prevSeq:seq<int>) returns (curSeq:seq<int>)
     ensures multiset(prevSeq) == multiset(curSeq)
 
 predicate post_sort(prevSeq:seq<int>, curSeq:seq<int>)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

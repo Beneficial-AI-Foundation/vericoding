@@ -80,10 +80,12 @@ class {:autocontracts}  Fila
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method concat(f2: Fila) returns (r: Fila)
     requires Valid()
     requires f2.Valid()
     ensures r.Conteudo == Conteudo + f2.Conteudo
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -6,8 +6,10 @@ predicate IsDigit(c: char)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method CountSubstringsWithSumOfDigitsEqualToLength(s: string) returns (count: int)
     ensures count >= 0
+// </vc-spec>
 // <vc-code>
 {
   assume false;

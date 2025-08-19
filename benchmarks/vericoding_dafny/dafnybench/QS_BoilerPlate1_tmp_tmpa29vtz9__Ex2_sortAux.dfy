@@ -77,6 +77,7 @@ method mergeArr(a : array<int>, l : int, m : int, r : int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method sortAux(a : array<int>, l : int, r : int)
   ensures sorted(a[l..r])
   ensures a[..l] == old(a[..l])
@@ -84,6 +85,7 @@ method sortAux(a : array<int>, l : int, r : int)
   requires 0 <= l < r <= a.Length
   modifies a
   decreases r - l
+// </vc-spec>
 // <vc-code>
 {
   assume false;

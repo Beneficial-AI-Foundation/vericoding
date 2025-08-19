@@ -1,6 +1,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method sortArray(arr: array<int>) returns (arr_sorted: array<int>)
     // Requires array length to be between 0 and 10000
     requires 0 <= arr.Length < 10000
@@ -11,6 +12,7 @@ method sortArray(arr: array<int>) returns (arr_sorted: array<int>)
 
     // Modifies arr
     modifies arr
+// </vc-spec>
 // <vc-code>
 {
   assume false;

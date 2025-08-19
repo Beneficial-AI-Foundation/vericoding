@@ -46,9 +46,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method foo2() 
     ensures false
     decreases *
+// </vc-spec>
 // <vc-code>
 {
   assume false;

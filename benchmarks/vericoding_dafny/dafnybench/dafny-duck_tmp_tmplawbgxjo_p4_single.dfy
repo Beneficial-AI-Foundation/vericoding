@@ -4,11 +4,13 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method single(x:array<int>, y:array<int>) returns (b:array<int>) 
 requires x.Length > 0
 requires y.Length > 0
 // ensuring that the new array is the two arrays joined
 ensures b[..] == x[..] + y[..]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

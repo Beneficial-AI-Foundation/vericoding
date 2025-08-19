@@ -44,6 +44,7 @@ class Node {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ReverseInPlace() returns (reverse: Node)
     requires Valid()
     modifies footprint
@@ -52,6 +53,7 @@ method ReverseInPlace() returns (reverse: Node)
     ensures fresh(reverse.footprint - old(footprint))
     ensures |reverse.list| == |old(list)|
     ensures forall i | 0 <= i < |old(list)| :: old(list)[i] == reverse.list[|old(list)| - 1 - i]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

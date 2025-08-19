@@ -50,9 +50,11 @@ module SimpleBDD
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Eval(s: seq<bool>) returns(b: bool)
       requires valid() && |s| == n
       ensures b == Contents[s]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

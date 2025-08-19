@@ -39,12 +39,14 @@ class LimitedStack{
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Push(elem : int)
       modifies this`top, this.arr 
       requires Valid()
       requires !Full() 
       ensures Valid() && top == old(top) + 1 && arr[top] == elem
       ensures !old(Empty()) ==> forall i : int :: 0 <= i <= old(top)  ==> arr[i] == old(arr[i]);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -40,12 +40,14 @@ class {:autocontracts} CarPark {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method checkAvailability() returns (availableSpaces: int) 
     requires true
     modifies this
     ensures weekend ==> availableSpaces == (normalSpaces - old(|carPark|)) + (reservedSpaces - old(|reservedCarPark|)) - badParkingBuffer;
     ensures !weekend ==> availableSpaces == (normalSpaces - old(|carPark|)) - badParkingBuffer;
     ensures carPark == old(carPark) && reservedCarPark == old(reservedCarPark) && weekend == old(weekend) && subscriptions == old(subscriptions);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

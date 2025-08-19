@@ -8,8 +8,10 @@ function Factorial(n: nat): nat {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method IterativeFactorial(n: nat) returns (result: nat)
   ensures result == Factorial(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

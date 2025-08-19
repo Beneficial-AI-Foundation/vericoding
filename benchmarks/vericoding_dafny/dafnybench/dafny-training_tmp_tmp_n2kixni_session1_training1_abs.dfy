@@ -21,8 +21,10 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method abs(x: int) returns (y: int)
     ensures true
+// </vc-spec>
 // <vc-code>
 {
   assume false;

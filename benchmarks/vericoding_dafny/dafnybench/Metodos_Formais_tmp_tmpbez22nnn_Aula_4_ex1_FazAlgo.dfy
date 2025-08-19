@@ -6,8 +6,10 @@ predicate Par(n:int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method FazAlgo (a:int, b:int) returns (x:int, y:int)
 requires a >= b && Par (a-b)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

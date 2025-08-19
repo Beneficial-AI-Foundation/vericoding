@@ -25,6 +25,7 @@ class LFUCache {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method get(key: int) returns (value: int)
       requires Valid();
       modifies this;
@@ -33,6 +34,7 @@ method get(key: int) returns (value: int)
       ensures forall e :: e in old(cacheMap) <==> e in cacheMap;
       ensures forall e :: e in old(cacheMap) ==> (old(cacheMap[e].0) == cacheMap[e].0);
       ensures key in cacheMap ==> value == cacheMap[key].0 && old(cacheMap[key].1) == cacheMap[key].1-1;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

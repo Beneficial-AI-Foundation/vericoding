@@ -33,6 +33,7 @@ ensures contents == [] && this.N == N
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Remove() returns (x:T)
 requires Valid()
 requires |contents| != 0
@@ -40,6 +41,7 @@ modifies Repr
 ensures contents == old(contents[1..]) && old(contents[0]) == x
 ensures N == old(N)
 ensures Valid() && fresh(Repr - old(Repr))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

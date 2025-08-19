@@ -16,8 +16,10 @@ ghost function fSum(n: nat): int {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method problem6(n:nat) returns (a: int)
 ensures a == fSum(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

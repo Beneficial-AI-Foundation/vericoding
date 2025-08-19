@@ -188,11 +188,13 @@ class MailApp {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method sendMessage(m: Message)
     modifies this.drafts, this.sent
     requires Valid()
     requires m in drafts.messages
     requires m !in sent.messages
+// </vc-spec>
 // <vc-code>
 {
   assume false;

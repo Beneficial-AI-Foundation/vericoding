@@ -40,10 +40,12 @@ method CalculationalStyleProof(a: int, b: int, c: int, x: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method DifferentStyleProof(a: int, b: int, c: int, x: int)
   requires A: c <= x
   requires B: x == f(a, b)
   ensures f(a, f(b, c)) <= x
+// </vc-spec>
 // <vc-code>
 {
   assume false;

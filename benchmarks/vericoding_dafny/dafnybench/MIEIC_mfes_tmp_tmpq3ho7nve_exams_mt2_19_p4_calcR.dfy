@@ -5,8 +5,10 @@ function R(n: nat): nat {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method calcR(n: nat) returns (r: nat)
     ensures r == R(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

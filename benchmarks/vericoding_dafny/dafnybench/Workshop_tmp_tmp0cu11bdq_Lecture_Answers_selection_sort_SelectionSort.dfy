@@ -15,10 +15,12 @@ predicate sorted (a: array<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SelectionSort(a: array<int>) 
   modifies a
   ensures sorted(a)
   //ensures multiset(old(a[..])) == multiset(a[..])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

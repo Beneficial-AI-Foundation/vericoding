@@ -19,11 +19,13 @@ method swap<T>(a: array<T>, i: int, j: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method getAllShuffledDataEntries<T(0)>(m_dataEntries: array<T>) returns (result: array<T>)
   // requires m_dataEntries != null
   // ensures result != null
   ensures result.Length == m_dataEntries.Length
   ensures multiset(result[..]) == multiset(m_dataEntries[..])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

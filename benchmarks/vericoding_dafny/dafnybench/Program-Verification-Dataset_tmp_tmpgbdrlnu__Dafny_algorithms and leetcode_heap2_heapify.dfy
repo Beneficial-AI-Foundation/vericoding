@@ -33,6 +33,7 @@ class Heap {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method heapify(idx: int)
     returns (nidx: int)
     modifies this, this.arr
@@ -41,6 +42,7 @@ method heapify(idx: int)
     ensures nidx == -1 || idx < nidx < this.arr.Length
     ensures nidx == -1 ==> IsMaxHeap(this.arr[..])
     ensures idx < nidx < this.arr.Length ==> IsAlmostMaxHeap(this.arr[..], nidx)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -18,9 +18,11 @@ lemma PrefixNegationLemma(pre:string, str:string)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method isPrefix(pre: string, str: string) returns (res:bool)
     ensures !res <==> isNotPrefixPred(pre,str)
     ensures  res <==> isPrefixPred(pre,str)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

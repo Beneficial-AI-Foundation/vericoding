@@ -45,6 +45,7 @@ module IntegerSet {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method union(s : Set) returns (union : Set)
         requires forall i, j | 0 <= i < |s.elements| && 0 <= j < |s.elements| && i != j :: s.elements[i] != s.elements[j]
         requires forall i, j | 0 <= i < |this.elements| && 0 <= j < |this.elements| && i != j :: this.elements[i] != this.elements[j]
@@ -52,6 +53,7 @@ method union(s : Set) returns (union : Set)
         ensures forall i : int :: i !in s.elements && i !in this.elements <==> i !in union.elements
         ensures forall j, k | 0 <= j < |union.elements| && 0 <= k < |union.elements| && j != k :: union.elements[j] != union.elements[k]
         ensures fresh(union)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

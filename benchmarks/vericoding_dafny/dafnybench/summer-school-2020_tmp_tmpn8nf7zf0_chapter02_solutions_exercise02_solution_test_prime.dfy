@@ -16,9 +16,11 @@ predicate IsPrime(i:nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method test_prime(i:nat) returns (result:bool)
   requires 1<i
   ensures result == IsPrime(i)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

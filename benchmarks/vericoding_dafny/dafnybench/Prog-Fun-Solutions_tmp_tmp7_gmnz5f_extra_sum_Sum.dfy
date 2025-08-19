@@ -6,8 +6,10 @@ ghost function sum(n: nat): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Sum(n: nat) returns (s: int)
 ensures s == sum(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

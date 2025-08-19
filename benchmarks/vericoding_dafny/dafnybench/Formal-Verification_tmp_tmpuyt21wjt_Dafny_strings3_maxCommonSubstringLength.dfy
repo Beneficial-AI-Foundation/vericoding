@@ -82,10 +82,12 @@ method haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: 
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method maxCommonSubstringLength(str1: string, str2: string) returns (len:nat)
     requires (|str1| <= |str2|)
     ensures (forall k :: len < k <= |str1| ==> !haveCommonKSubstringPred(k,str1,str2))
     ensures haveCommonKSubstringPred(len,str1,str2)
+// </vc-spec>
 // <vc-code>
 {
   assume false;
