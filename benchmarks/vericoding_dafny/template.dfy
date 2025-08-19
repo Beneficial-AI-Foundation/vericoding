@@ -1,31 +1,20 @@
-// VC-PREAMBLE
 
 
-
-
-// VC-HELPERS
+PREAMBLE 
+..
 
 // <vc-helpers>
   ..
 // </vc-helpers>
 
-
-
-
-// VC-SPEC
-
-
-
-
-// VC-CODE
-
+// <vc-spec>
+..
+// <vc-spec>
 // <vc-code>
 {
     ..
 }
 // </vc-code>
 
-
-
-
-// VC-POSTAMBLE
+POSTAMBLE
+.. 
