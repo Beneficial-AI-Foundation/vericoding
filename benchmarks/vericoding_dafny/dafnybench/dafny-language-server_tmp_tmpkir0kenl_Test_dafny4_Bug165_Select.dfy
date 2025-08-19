@@ -3,6 +3,7 @@
 
 
 type T
+// <vc-spec>
 function f(a: T) : bool
 
 // <vc-helpers>
@@ -13,6 +14,7 @@ method Select(s1: seq<T>) returns (r: seq<T>)
   ensures (forall e: T  :: (!f(e)) ==> 0 == multiset(r)[e])
 
 method Main(s1: seq<T>)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

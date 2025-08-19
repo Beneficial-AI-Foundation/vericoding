@@ -32,10 +32,12 @@ lemma ArrayFacts<T>()
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mcountEven(v:array<int>) 
 returns (n:int)
 requires positive(v[..])
 ensures  n==CountEven(v[..])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

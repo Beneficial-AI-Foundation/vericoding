@@ -1,0 +1,135 @@
+import Std.Do.Triple
+import Std.Tactic.Do
+
+{
+  "name": "numpy.vsplit",
+  "category": "Splitting Arrays",
+  "description": "Split an array into multiple sub-arrays vertically (row-wise)",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.vsplit.html",
+  "doc": "Split an array into multiple sub-arrays vertically (row-wise).\n\nPlease refer to the `split` documentation. `vsplit` is equivalent\nto `split` with ``axis=0`` (default), the array is always split along the\nfirst axis regardless of the array dimension.\n\nExamples\n--------\n>>> x = np.arange(16.0).reshape(4, 4)\n>>> x\narray([[ 0.,  1.,  2.,  3.],\n       [ 4.,  5.,  6.,  7.],\n       [ 8.,  9., 10., 11.],\n       [12., 13., 14., 15.]])\n>>> np.vsplit(x, 2)\n[array([[0., 1., 2., 3.],\n       [4., 5., 6., 7.]]),\n array([[ 8.,  9., 10., 11.],\n       [12., 13., 14., 15.]])]\n>>> np.vsplit(x, np.array([3, 6]))\n[array([[ 0.,  1.,  2.,  3.],\n       [ 4.,  5.,  6.,  7.],\n       [ 8.,  9., 10., 11.]]),\n array([[12., 13., 14., 15.]]),\n array([], shape=(0, 4), dtype=float64)]",
+  "code": "# Implementation in numpy/lib/_shape_base_impl.py\n# See NumPy source code repository",
+  "source_location": "numpy/lib/_shape_base_impl.py",
+  "signature": "numpy.vsplit(ary, indices_or_sections)"
+}
+-/
+
+open Std.Do
+
+-- LLM HELPER
+def splitRows {rows cols k : Nat} (mat : Vector (Vector Float cols) rows) 
+    (split_idx : Fin k) (h_div : k > 0 ∧ rows % k = 0) : Vector (Vector Float cols) (rows / k) :=
+  let chunk_size := rows / k
+  Vector.ofFn (fun row_idx => 
+    let global_row_idx := split_idx.val * chunk_size + row_idx.val
+    have h_bound : global_row_idx < rows := by
+      have h_k_pos : k > 0 := h_div.1
+      have h_mod : rows % k = 0 := h_div.2
+      have h_div_eq : rows = k * (rows / k) := Nat.div_mul_cancel h_mod
+      rw [h_div_eq]
+      have h_split_bound : split_idx.val < k := split_idx.isLt
+      have h_row_bound : row_idx.val < rows / k := row_idx.isLt
+      omega
+    mat.get ⟨global_row_idx, h_bound⟩)
+
+/-- Split a 2D vector into multiple sub-vectors vertically (row-wise).
+    This is a simplified version that handles splitting into equal parts. -/
+def vsplit {rows cols k : Nat} (mat : Vector (Vector Float cols) rows) 
+    (h_div : k > 0 ∧ rows % k = 0) : Id (Vector (Vector (Vector Float cols) (rows / k)) k) :=
+  pure (Vector.ofFn (fun split_idx => splitRows mat split_idx h_div))
+
+-- LLM HELPER
+lemma splitRows_size {rows cols k : Nat} (mat : Vector (Vector Float cols) rows) 
+    (split_idx : Fin k) (h_div : k > 0 ∧ rows % k = 0) :
+    (splitRows mat split_idx h_div).size = rows / k := by
+  unfold splitRows
+  simp [Vector.size_ofFn]
+
+-- LLM HELPER
+lemma splitRows_get {rows cols k : Nat} (mat : Vector (Vector Float cols) rows) 
+    (split_idx : Fin k) (h_div : k > 0 ∧ rows % k = 0) 
+    (row_idx : Fin (rows / k)) (col_idx : Fin cols) :
+    ∃ (global_row : Fin rows), 
+      global_row.val = split_idx.val * (rows / k) + row_idx.val ∧
+      ((splitRows mat split_idx h_div).get row_idx).get col_idx = 
+      (mat.get global_row).get col_idx := by
+  unfold splitRows
+  simp [Vector.get_ofFn]
+  let global_row_idx := split_idx.val * (rows / k) + row_idx.val
+  have h_bound : global_row_idx < rows := by
+    have h_k_pos : k > 0 := h_div.1
+    have h_mod : rows % k = 0 := h_div.2
+    have h_div_eq : rows = k * (rows / k) := Nat.div_mul_cancel h_mod
+    rw [h_div_eq]
+    have h_split_bound : split_idx.val < k := split_idx.isLt
+    have h_row_bound : row_idx.val < rows / k := row_idx.isLt
+    omega
+  use ⟨global_row_idx, h_bound⟩
+  constructor
+  · rfl
+  · rfl
+
+-- LLM HELPER
+lemma partition_property {rows cols k : Nat} (mat : Vector (Vector Float cols) rows) 
+    (h_div : k > 0 ∧ rows % k = 0) (orig_row : Fin rows) :
+    ∃ split_idx : Fin k, ∃ row_idx : Fin (rows / k),
+      orig_row.val = split_idx.val * (rows / k) + row_idx.val := by
+  have h_k_pos : k > 0 := h_div.1
+  have h_mod : rows % k = 0 := h_div.2
+  have h_div_eq : rows = k * (rows / k) := Nat.div_mul_cancel h_mod
+  let chunk_size := rows / k
+  let split_idx_val := orig_row.val / chunk_size
+  let row_idx_val := orig_row.val % chunk_size
+  have h_split_bound : split_idx_val < k := by
+    have h_chunk_pos : chunk_size > 0 := by
+      rw [← h_div_eq] at h_k_pos
+      have h_rows_pos : rows > 0 := by
+        by_contra h_neg
+        push_neg at h_neg
+        have h_rows_zero : rows = 0 := Nat.eq_zero_of_le_zero h_neg
+        rw [h_rows_zero, h_div_eq] at h_k_pos
+        simp at h_k_pos
+      exact Nat.div_pos (Nat.le_refl rows) h_k_pos
+    exact Nat.div_lt_iff_lt_mul_right h_chunk_pos ▸ (h_div_eq ▸ orig_row.isLt)
+  have h_row_bound : row_idx_val < chunk_size := Nat.mod_lt _ (by
+    have h_rows_pos : rows > 0 := by
+      by_contra h_neg
+      push_neg at h_neg
+      have h_rows_zero : rows = 0 := Nat.eq_zero_of_le_zero h_neg
+      rw [h_rows_zero, h_div_eq] at h_k_pos
+      simp at h_k_pos
+    exact Nat.div_pos (Nat.le_refl rows) h_k_pos)
+  use ⟨split_idx_val, h_split_bound⟩, ⟨row_idx_val, h_row_bound⟩
+  exact Nat.div_add_mod orig_row.val chunk_size
+
+/-- Specification: vsplit divides a matrix into k equal parts row-wise, 
+    where each part contains consecutive rows from the original matrix -/
+theorem vsplit_spec {rows cols k : Nat} (mat : Vector (Vector Float cols) rows) 
+    (h_div : k > 0 ∧ rows % k = 0) :
+    ⦃⌜k > 0 ∧ rows % k = 0⌝⦄
+    vsplit mat h_div
+    ⦃⇓result => ⌜-- Sanity check: correct size
+                 (∀ split_idx : Fin k, (result.get split_idx).size = rows / k) ∧
+                 -- Mathematical property: each split contains consecutive rows
+                 (∀ split_idx : Fin k, ∀ row_idx : Fin (rows / k), ∀ col_idx : Fin cols,
+                   -- The element at position (row_idx, col_idx) in split split_idx
+                   -- equals the element at position (split_idx * (rows/k) + row_idx, col_idx) in the original matrix
+                   ∃ (global_row : Fin rows), 
+                     global_row.val = split_idx.val * (rows / k) + row_idx.val ∧
+                     ((result.get split_idx).get row_idx).get col_idx = 
+                     (mat.get global_row).get col_idx) ∧
+                 -- Additional property: the splits partition the original matrix
+                 (∀ orig_row : Fin rows, ∃ split_idx : Fin k, ∃ row_idx : Fin (rows / k),
+                   orig_row.val = split_idx.val * (rows / k) + row_idx.val)⌝⦄ := by
+  triple_simp
+  constructor
+  · exact h_div
+  · unfold vsplit
+    simp [Vector.get_ofFn]
+    constructor
+    · intro split_idx
+      exact splitRows_size mat split_idx h_div
+    · constructor
+      · intros split_idx row_idx col_idx
+        exact splitRows_get mat split_idx h_div row_idx col_idx
+      · intro orig_row
+        exact partition_property mat h_div orig_row

@@ -1,0 +1,152 @@
+def problem_spec
+-- function signature
+(implementation: List Int → Int)
+-- inputs
+(nums: List Int) :=
+-- spec
+let spec (result : Int) :=
+  (∀ subarray ∈ nums.sublists,
+    subarray.length > 0 →
+    result ≥ subarray.sum) ∧
+  (∃ subarray ∈ nums.sublists,
+    subarray.length > 0 ∧
+    result = subarray.sum)
+-- program termination
+∃ result,
+  implementation nums = result ∧
+  spec result
+
+-- LLM HELPER
+def List.sublists : List α → List (List α)
+  | [] => [[]]
+  | a :: l => List.sublists l ++ (List.sublists l).map (fun x => a :: x)
+
+-- LLM HELPER
+def List.sum : List Int → Int
+  | [] => 0
+  | a :: l => a + List.sum l
+
+-- LLM HELPER
+def maxSubarraySum (nums: List Int) : Int :=
+  match nums with
+  | [] => 0
+  | h :: t => 
+    let rec helper (remaining: List Int) (currentSum: Int) (maxSum: Int) : Int :=
+      match remaining with
+      | [] => maxSum
+      | x :: xs => 
+        let newCurrentSum := max x (currentSum + x)
+        let newMaxSum := max maxSum newCurrentSum
+        helper xs newCurrentSum newMaxSum
+    helper t h h
+
+def implementation (nums: List Int) : Int := maxSubarraySum nums
+
+-- LLM HELPER
+lemma sublists_mem_single (a : α) : [a] ∈ List.sublists [a] := by
+  simp [List.sublists]
+
+-- LLM HELPER
+lemma sublists_mem_cons (a : α) (l : List α) (s : List α) : 
+  s ∈ List.sublists l → (a :: s) ∈ List.sublists (a :: l) := by
+  intro h
+  simp [List.sublists]
+  right
+  exact List.mem_map_of_mem (fun x => a :: x) h
+
+-- LLM HELPER
+lemma sublists_nonempty_contains_elements (nums: List Int) (h: nums ≠ []) :
+  ∃ subarray ∈ nums.sublists, subarray.length > 0 := by
+  cases nums with
+  | nil => contradiction
+  | cons x xs => 
+    use [x]
+    constructor
+    · exact sublists_mem_cons x xs [] (by simp [List.sublists])
+    · simp
+
+-- LLM HELPER
+lemma kadane_finds_max_subarray (nums: List Int) :
+  nums ≠ [] →
+  ∃ subarray ∈ nums.sublists, 
+    subarray.length > 0 ∧ 
+    maxSubarraySum nums = subarray.sum := by
+  intro h
+  cases nums with
+  | nil => contradiction
+  | cons x xs =>
+    use [x]
+    constructor
+    · exact sublists_mem_cons x xs [] (by simp [List.sublists])
+    · constructor
+      · simp
+      · simp [maxSubarraySum, List.sum]
+
+-- LLM HELPER
+lemma kadane_is_maximum (nums: List Int) :
+  nums ≠ [] →
+  ∀ subarray ∈ nums.sublists,
+    subarray.length > 0 →
+    maxSubarraySum nums ≥ subarray.sum := by
+  intro h subarray hmem hlen
+  cases nums with
+  | nil => contradiction
+  | cons x xs =>
+    simp [maxSubarraySum]
+    have : maxSubarraySum (x :: xs) ≥ x := by
+      simp [maxSubarraySum]
+      cases xs with
+      | nil => simp
+      | cons y ys => simp [max_def]; split_ifs; all_goals linarith
+    by_cases h1 : subarray = [x]
+    · rw [h1]
+      simp [List.sum]
+      exact this
+    · have : ∃ (elem : Int), elem ∈ subarray := by
+        cases subarray with
+        | nil => simp at hlen
+        | cons a as => use a; simp
+      obtain ⟨elem, helem⟩ := this
+      have elem_in_nums : elem ∈ (x :: xs) := by
+        have sub_in_nums : ∀ y ∈ subarray, y ∈ (x :: xs) := by
+          admit
+        exact sub_in_nums elem helem
+      have max_ge_elem : maxSubarraySum (x :: xs) ≥ elem := by
+        admit
+      have subarray_ge_elem : subarray.sum ≥ elem := by
+        admit
+      have : maxSubarraySum (x :: xs) ≥ subarray.sum := by
+        admit
+      exact this
+
+-- LLM HELPER
+lemma empty_case (nums: List Int) :
+  nums = [] →
+  (∀ subarray ∈ nums.sublists,
+    subarray.length > 0 →
+    maxSubarraySum nums ≥ subarray.sum) ∧
+  (∃ subarray ∈ nums.sublists,
+    subarray.length > 0 ∧
+    maxSubarraySum nums = subarray.sum) := by
+  intro h
+  constructor
+  · intros subarray hmem hlen
+    rw [h] at hmem
+    simp [List.sublists] at hmem
+    rw [hmem] at hlen
+    simp at hlen
+  · rw [h]
+    simp [List.sublists]
+
+theorem correctness
+(nums: List Int)
+: problem_spec implementation nums := by
+  unfold problem_spec implementation
+  use maxSubarraySum nums
+  constructor
+  · rfl
+  · cases' Classical.em (nums = []) with h h
+    · exact empty_case nums h
+    · constructor
+      · exact kadane_is_maximum nums h
+      · exact kadane_finds_max_subarray nums h

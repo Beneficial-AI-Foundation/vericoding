@@ -329,6 +329,7 @@ lemma DistributiveGreater(a: seq<int>, b:seq<int>, k:int, key:int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method InsertIntoSorted(a: array<int>, limit:int, key:int) returns (b: array<int>)
     requires key > 0
     requires key !in a[..]
@@ -341,6 +342,7 @@ method InsertIntoSorted(a: array<int>, limit:int, key:int) returns (b: array<int
     ensures forall i :: limit + 1 <= i < b.Length ==> b[i] == 0  
     ensures forall i :: 0 <= i < limit ==> a[i] in b[..]
     ensures forall i :: 0 <= i < limit + 1 ==> b[i] > 0
+// </vc-spec>
 // <vc-code>
 {
   assume false;

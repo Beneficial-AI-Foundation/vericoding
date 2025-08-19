@@ -29,9 +29,11 @@ ghost predicate valid_interval(s: string, iv: interval) {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method lengthOfLongestSubstring(s: string) returns (n: int, ghost best_iv: interval)
   ensures valid_interval(s, best_iv) && length(best_iv) == n    /** `best_iv` is valid */
   ensures forall iv | valid_interval(s, iv) :: length(iv) <= n  /** `best_iv` is longest */
+// </vc-spec>
 // <vc-code>
 {
   assume false;

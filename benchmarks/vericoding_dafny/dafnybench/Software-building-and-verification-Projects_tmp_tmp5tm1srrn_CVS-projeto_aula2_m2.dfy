@@ -13,9 +13,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method m2(x: nat) returns (y: int)
   requires x <= -1
   ensures y > x && y < x
+// </vc-spec>
 // <vc-code>
 {
   assume false;

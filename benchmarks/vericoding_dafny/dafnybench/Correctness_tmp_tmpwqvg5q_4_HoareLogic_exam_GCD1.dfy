@@ -1,5 +1,6 @@
 // Redo for exam
 
+// <vc-spec>
 function gcd(a: nat, b: nat): nat
 
 lemma r1(a: nat)
@@ -21,6 +22,7 @@ method GCD1(a: int, b: int) returns (r: int)
     requires a > 0 && b > 0
     ensures gcd(a,b) == r
     decreases b
+// </vc-spec>
 // <vc-code>
 {
   assume false;

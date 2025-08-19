@@ -18,10 +18,12 @@ predicate sorted(A:array<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BubbleSort(A:array<int>)
     modifies A
     ensures sorted(A)
     ensures multiset(A[..]) == multiset(old(A[..]))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

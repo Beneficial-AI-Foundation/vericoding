@@ -1,0 +1,3 @@
+The goal is to rewrite the Dafny code into lean, but use the built-in (and pre imported) `Vector Int n` type to handle all the array concerns (basically all the `requires a.Length == b.Length` in *.dfy) and indexing issues. array indexing theorems should be ~`∀ i : Fin xs.size` and not `∀ i : Nat, i < xs.size → ..` to avoid issues in syntax construction.
+
+Spawn subagents, one per file, so they can devote their full attention to a file, and another agent to orchestrate across file boundaries. but the files are mostly disjoint.

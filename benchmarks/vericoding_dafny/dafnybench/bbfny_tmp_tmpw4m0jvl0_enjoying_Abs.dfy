@@ -20,8 +20,10 @@ function abs(x: int): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Abs(x: int) returns (y: int)
   ensures y == abs(x)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

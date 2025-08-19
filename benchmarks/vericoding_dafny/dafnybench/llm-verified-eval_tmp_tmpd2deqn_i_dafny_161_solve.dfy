@@ -46,11 +46,13 @@ method Reverse(original: seq<char>) returns (reversed: seq<char>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method solve(s: string) returns (result: string)
   ensures |result| == |s| 
   ensures !NoLetters(s, |s|) ==> forall i :: 0 <= i < |s| && IsLetter(s[i]) ==> result[i] == ToggleCase(s[i])
   ensures !NoLetters(s, |s|) ==> forall i :: 0 <= i < |s| && !IsLetter(s[i]) ==> result[i] == s[i] 
   ensures NoLetters(s, |s|) ==> isReverse(result, s)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -22,9 +22,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method NewArray() returns (a: array<int>) 
   ensures a.Length == 20 
   ensures fresh(a)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -196,6 +196,7 @@ ghost predicate SortedSeq(a: seq<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method GetInsertIndex(a: array<int>, limit: int, x:int) returns (idx:int)
   // get index so that array stays sorted
   requires x !in a[..]
@@ -205,6 +206,7 @@ method GetInsertIndex(a: array<int>, limit: int, x:int) returns (idx:int)
   ensures SortedSeq(a[..limit])
   ensures idx > 0 ==> a[idx-1]< x
   ensures idx < limit ==> x < a[idx]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

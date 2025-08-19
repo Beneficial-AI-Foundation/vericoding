@@ -20,10 +20,12 @@ function add(l : List<int>) : int {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method maxArray(arr : array<int>) returns (max: int)
   requires arr.Length > 0
   ensures forall i: int :: 0 <= i < arr.Length ==> arr[i] <= max
   ensures exists x::0 <= x < arr.Length && arr[x] == max
+// </vc-spec>
 // <vc-code>
 {
   assume false;

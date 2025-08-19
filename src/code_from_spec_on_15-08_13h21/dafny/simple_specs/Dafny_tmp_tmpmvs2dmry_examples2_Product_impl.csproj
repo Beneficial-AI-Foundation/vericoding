@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <NoWarn>CS8600;CS8603;CS8604;CS8605;CS8625;CS8629;CS8714;CS8765;CS8769;CS8981</NoWarn>
+    <Nullable>enable</Nullable>
+    <RollForward>Major</RollForward>
+  </PropertyGroup>
+
+  
+  <ItemGroup>
+      <Compile Include="/Users/sergiu.bursuc/baif/vericoding/src/code_from_spec_on_15-08_13h21/dafny/simple_specs/Dafny_tmp_tmpmvs2dmry_examples2_Product_impl.cs" />
+
+      <PackageReference Include="System.Runtime.Numerics" Version="4.3.0" />
+      <PackageReference Include="System.Collections.Immutable" Version="1.7.1" />
+      
+  </ItemGroup>
+</Project>

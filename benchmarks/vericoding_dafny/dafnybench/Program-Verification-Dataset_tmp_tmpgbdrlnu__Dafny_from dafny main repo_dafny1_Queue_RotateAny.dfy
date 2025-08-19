@@ -46,6 +46,7 @@ class Queue<T(0)> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method RotateAny()
     requires Valid()
     requires 0 < |contents|
@@ -54,6 +55,7 @@ method RotateAny()
     ensures |contents| == |old(contents)|
     ensures exists i :: 0 <= i && i <= |contents| &&
               contents == old(contents)[i..] + old(contents)[..i]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

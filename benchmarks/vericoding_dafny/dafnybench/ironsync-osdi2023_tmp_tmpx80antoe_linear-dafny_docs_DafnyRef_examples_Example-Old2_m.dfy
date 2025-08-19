@@ -14,9 +14,11 @@ class B {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method m()
      requires a.value == 11
      modifies this, this.a
+// </vc-spec>
 // <vc-code>
 {
   assume false;

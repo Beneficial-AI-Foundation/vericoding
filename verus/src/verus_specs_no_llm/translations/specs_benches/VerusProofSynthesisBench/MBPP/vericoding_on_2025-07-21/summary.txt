@@ -1,0 +1,103 @@
+=== VERICODE VERUS PROCESSING SUMMARY ===
+
+Test directory: src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/
+Output directory: src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/vericoding_on_2025-07-21
+Test date: 2025-07-21T14:59:11.770707
+
+Total original files: 70
+
+=== OVERALL STATISTICS ===
+Total successful: 0
+Total failed: 70
+Success rate: 0.0%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+
+=== FAILED FILES (VERIFICATION) ===
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_454.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_460.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_431.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_743.rs: Verification failed
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_586.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_790.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_732.rs: Compilation errors found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_474.rs: Verification failed
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_804.rs: Compilation errors found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_616.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_399.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_424.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_461.rs: Compilation errors found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_602.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_445.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_554.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_414.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_588.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_240.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_70.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_769.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_629.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_728.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_576_v2.rs: Verification failed
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_261.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_230.rs: Compilation errors found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_282.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_113.rs: Verification failed
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_142.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_251.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_618.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_62.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_161.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_579.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_809.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_95.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_8.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_145.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_105.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_578.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_808.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_94.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_284.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_273.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_307.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_644.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_807.rs: Verification failed
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_567.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_476.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_605.rs: Verification failed
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_433.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_472.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_741.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_557.rs: Verification failed
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_2.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_775.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_764.rs: Compilation errors found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_624.rs: Verification failed
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_18.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_610.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_572.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_249.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_3.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_447.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_576.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_436.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_760.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_412.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_426.rs: No TODO blocks or spec functions found
+✗ src/verus_specs_no_llm/translations/specs_benches/VerusProofSynthesisBench/MBPP/task_id_69.rs: No TODO blocks or spec functions found
+
+=== CONFIGURATION ===
+Model: claude-sonnet-4-20250514
+Strict todos: True
+Strict specs: True
+Debug mode: Enabled
+Max retries: 3
+Max iterations: 1
+Timeout: 120s
+
+=== OUTPUT FILES ===
+- All generated implementations saved as impl_*.rs
+- Debug files saved in debug/ subdirectory (if debug mode enabled)
+- Results summary saved as summary.txt
+- Detailed results saved as results.csv
+
+Generated on: 2025-07-21T14:59:11.770752

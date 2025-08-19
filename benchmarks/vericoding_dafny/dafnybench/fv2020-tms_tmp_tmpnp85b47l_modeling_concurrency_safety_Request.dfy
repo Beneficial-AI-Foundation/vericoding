@@ -57,10 +57,12 @@ class TicketSystem
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Request(p: Process)
     requires Valid() && p in P && cs[p] == Thinking  // Control process precondition
     modifies this  // Depends on the fields on the current class
     ensures Valid()  // Postcondition
+// </vc-spec>
 // <vc-code>
 {
   assume false;

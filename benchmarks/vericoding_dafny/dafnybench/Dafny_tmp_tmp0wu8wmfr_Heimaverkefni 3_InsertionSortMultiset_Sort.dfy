@@ -56,9 +56,11 @@ method Search( s: seq<int>, x: int ) returns ( k: int )
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Sort( m: multiset<int> ) returns ( r: seq<int> )
     ensures multiset(r) == m;
     ensures forall p,q | 0 <= p < q < |r| :: r[p] <= r[q];
+// </vc-spec>
 // <vc-code>
 {
   assume false;

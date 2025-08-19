@@ -308,11 +308,13 @@ module ModelingTM {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Step(input: TMSystem, pid: ProcessId) returns (system: TMSystem)
         requires pid in input.txQueues
         requires pid in input.procStates
         requires input.validSystem()
         ensures system.validSystem()
+// </vc-spec>
 // <vc-code>
 {
   assume false;

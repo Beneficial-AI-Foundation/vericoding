@@ -12,8 +12,10 @@ ghost function Factorial(n: nat): nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method AdditiveFactorial(n: nat) returns (u: nat)
   ensures u == Factorial(n);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

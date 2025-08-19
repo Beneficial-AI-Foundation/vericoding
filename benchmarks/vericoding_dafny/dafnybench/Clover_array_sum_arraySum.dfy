@@ -1,10 +1,12 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method arraySum(a: array<int>, b: array<int>) returns (c: array<int> )
   requires a.Length==b.Length
   ensures c.Length==a.Length
   ensures forall i:: 0 <= i< a.Length==> a[i] + b[i]==c[i]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

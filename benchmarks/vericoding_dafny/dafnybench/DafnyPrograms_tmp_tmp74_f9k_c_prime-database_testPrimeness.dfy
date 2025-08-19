@@ -48,9 +48,11 @@ method IsPrime?(n: nat) returns (answer: Answer)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method testPrimeness(n: nat) returns (result: bool) 
       requires n >= 0
       ensures result <==> prime(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

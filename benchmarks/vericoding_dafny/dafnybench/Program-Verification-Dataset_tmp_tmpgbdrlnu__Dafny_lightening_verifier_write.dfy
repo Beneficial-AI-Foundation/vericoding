@@ -4,9 +4,11 @@ class CrashableMem<T> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method write(off : int, val : T)
         requires 0 <= off < mem_.Length;
         modifies mem_;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

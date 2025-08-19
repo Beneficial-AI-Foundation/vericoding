@@ -121,9 +121,11 @@ method report(i: nat, j: nat) returns (s: string)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method toString() returns (s: string)
     requires Valid()
     ensures s == Contents
+// </vc-spec>
 // <vc-code>
 {
   assume false;

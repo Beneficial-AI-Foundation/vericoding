@@ -1,44 +1,25 @@
 // CoPilot function converted to dafny
 
-// <vc-helpers>
-// </vc-helpers>
-
 function sum(s: seq<int>, i: nat): int
     requires i <= |s|
+
+// <vc-spec>
+
+method LargestSum(nums: array<int>, k: int) returns (sum: int)
+    requires nums.Length > 0
+    ensures max_sum_subarray(nums, sum, 0, nums.Length)
+
+// </vc-spec>
+
 // <vc-code>
+
 {
   assume false;
 }
+
 // </vc-code>
 
-method largest_sum(nums: array<int>, k: int) returns (sum: int)
-    requires nums.Length > 0 
-    ensures max_sum_subarray(nums, sum, 0, nums.Length)
-{
-    var max_sum := 0;
-    var current_sum := 0;
-
-    var i := 0;
-    while (i < nums.Length)
-        invariant 0 <= i <= nums.Length
-        invariant max_sum_subarray(nums, max_sum, 0, i) // Invariant for the max_sum 
-        invariant forall j :: 0 <= j < i ==> Sum_Array(nums, j, i) <= current_sum // Invariant for the current_sum
-    {
-        current_sum := current_sum + nums[i];
-        if (current_sum > max_sum)
-        {
-            max_sum := current_sum;
-        }
-        if (current_sum < 0)
-        {
-            current_sum := 0;
-        }
-        i := i + 1;
-    }
-    return max_sum;
-}
-
-// Predicate to confirm that sum is the maximum summation of element [start, stop) 
+// Predicate to confirm that sum is the maximum summation of element [start, stop)
 predicate max_sum_subarray(arr: array<int>, sum: int, start: int, stop: int)
     requires arr.Length > 0
     requires 0 <= start <= stop <= arr.Length
@@ -46,7 +27,6 @@ predicate max_sum_subarray(arr: array<int>, sum: int, start: int, stop: int)
 {
     forall u, v :: start <= u < v <= stop ==> Sum_Array(arr, u, v) <= sum
 }
-
 
 //Sums array elements between [start, stop)
 function Sum_Array(arr: array<int>, start: int, stop: int): int

@@ -1,9 +1,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SumMinMax(a: array<int>) returns (sum: int)
     requires a.Length > 0
     ensures sum == Max(a[..]) + Min(a[..])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

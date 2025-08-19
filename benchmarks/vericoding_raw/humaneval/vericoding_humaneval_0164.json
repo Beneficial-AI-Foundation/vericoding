@@ -1,0 +1,7 @@
+{
+  "task_id": "HumanEval/163",
+  "prompt": "\ndef generate_integers(a, b):\n    \"\"\"\n    Given two positive integers a and b, return the even digits between a\n    and b, in ascending order.\n\n    For example:\n    generate_integers(2, 8) => [2, 4, 6, 8]\n    generate_integers(8, 2) => [2, 4, 6, 8]\n    generate_integers(10, 14) => []\n    \"\"\"\n",
+  "entry_point": "generate_integers",
+  "canonical_solution": "    lower = max(2, min(a, b))\n    upper = min(8, max(a, b))\n\n    return [i for i in range(lower, upper+1) if i % 2 == 0]\n",
+  "test": "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(2, 10) == [2, 4, 6, 8], \"Test 1\"\n    assert candidate(10, 2) == [2, 4, 6, 8], \"Test 2\"\n    assert candidate(132, 2) == [2, 4, 6, 8], \"Test 3\"\n    assert candidate(17,89) == [], \"Test 4\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n"
+}

@@ -95,10 +95,12 @@ function BitAddition(s: array<bool>, t: array<bool>): seq<bool> // Performs trad
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BinaryAddition(s: array<bool>, t: array<bool>) returns (sresult: seq<bool>) // Generated program for bit addition
     requires s.Length == 10 && t.Length == 10
     ensures |sresult| == 10
     ensures BitAddition(s, t) == sresult // Verification of correctness
+// </vc-spec>
 // <vc-code>
 {
   assume false;

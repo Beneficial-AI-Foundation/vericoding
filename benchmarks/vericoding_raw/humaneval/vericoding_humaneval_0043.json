@@ -1,0 +1,7 @@
+{
+  "task_id": "HumanEval/42",
+  "prompt": "\n\ndef incr_list(l: list):\n    \"\"\"Return list with elements incremented by 1.\n    >>> incr_list([1, 2, 3])\n    [2, 3, 4]\n    >>> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])\n    [6, 4, 6, 3, 4, 4, 10, 1, 124]\n    \"\"\"\n",
+  "entry_point": "incr_list",
+  "canonical_solution": "    return [(e + 1) for e in l]\n",
+  "test": "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([]) == []\n    assert candidate([3, 2, 1]) == [4, 3, 2]\n    assert candidate([5, 2, 5, 2, 3, 3, 9, 0, 123]) == [6, 3, 6, 3, 4, 4, 10, 1, 124]\n\n"
+}

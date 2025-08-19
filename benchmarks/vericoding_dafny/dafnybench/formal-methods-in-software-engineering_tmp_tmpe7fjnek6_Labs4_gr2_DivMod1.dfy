@@ -101,10 +101,12 @@ inductive lemma L(n: int) // it takes a while
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method DivMod1(a: int, b: int) returns (q: int, r: int)
 requires b > 0 && a >= 0
 ensures a == b*q + r && 0 <= r < b
 //decreases *
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -1,9 +1,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method is_anagram(s: string, t: string) returns (result: bool)
     requires |s| == |t|
     ensures (multiset(s) == multiset(t)) == result
+// </vc-spec>
 // <vc-code>
 {
   assume false;

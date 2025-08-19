@@ -12,6 +12,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BinarySearch(a: array<int>, circle: int)
   returns (n: int)
   requires forall i ::
@@ -27,6 +28,7 @@ method BinarySearch(a: array<int>, circle: int)
   ensures forall i ::
           n <= i < a.Length ==>
           circle <= a[i]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

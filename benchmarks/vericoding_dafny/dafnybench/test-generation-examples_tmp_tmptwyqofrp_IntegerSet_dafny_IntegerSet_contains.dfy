@@ -22,9 +22,11 @@ module IntegerSet {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method contains(element : int) returns (contains : bool)
         ensures contains == (element in elements)
         ensures elements == old(elements)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

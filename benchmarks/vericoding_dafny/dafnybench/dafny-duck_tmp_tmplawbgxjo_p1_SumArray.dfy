@@ -7,8 +7,10 @@ function Sum(xs: seq<int>): int {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SumArray(xs: array<int>) returns (s: int)
     ensures s == Sum(xs[..])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

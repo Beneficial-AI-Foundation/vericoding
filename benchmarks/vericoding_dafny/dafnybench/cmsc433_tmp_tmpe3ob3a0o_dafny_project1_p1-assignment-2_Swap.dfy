@@ -27,9 +27,11 @@
 
 // in method Swap (which swaps elements i and j in array a).
 
+// <vc-spec>
 method Swap (a : array?<int>, i : int, j : int)
     requires a != null && 0 <= i < a.Length && 0 <= j < a.Length// TODO
     modifies a  // Dafny requires listing of objects modified in a method
+// </vc-spec>
 // <vc-code>
 {
   assume false;

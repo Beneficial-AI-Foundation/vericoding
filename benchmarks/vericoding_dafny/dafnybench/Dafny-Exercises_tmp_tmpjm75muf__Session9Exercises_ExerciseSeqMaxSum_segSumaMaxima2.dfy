@@ -34,10 +34,12 @@ requires 0<=j<=i<v.Length
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method segSumaMaxima2(v:array<int>,i:int) returns (s:int,k:int)
 requires v.Length>0 && 0<=i<v.Length
 ensures 0<=k<=i && s==Sum2(v,k,i+1) &&  SumMaxToRight2(v,0,i,s)
 //Implement and verify
+// </vc-spec>
 // <vc-code>
 {
   assume false;

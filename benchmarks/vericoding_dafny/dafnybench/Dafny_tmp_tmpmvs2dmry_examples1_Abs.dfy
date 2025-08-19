@@ -1,11 +1,13 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Abs(x:int) returns (y:int)
 ensures y>=0;
 ensures x>=0 ==> x == y;
 ensures x<0 ==> -x == y;
 ensures y == abs(x); // use this instead of line 3,4
+// </vc-spec>
 // <vc-code>
 {
   assume false;

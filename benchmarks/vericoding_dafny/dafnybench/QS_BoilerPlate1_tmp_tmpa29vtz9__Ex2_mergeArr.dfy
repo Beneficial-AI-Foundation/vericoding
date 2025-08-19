@@ -31,6 +31,7 @@ method copyArr(a : array<int>, l : int, r : int) returns (ret : array<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mergeArr(a : array<int>, l : int, m : int, r : int)
   requires 0 <= l < m < r <= a.Length  
   requires sorted(a[l..m]) && sorted(a[m..r])
@@ -38,6 +39,7 @@ method mergeArr(a : array<int>, l : int, m : int, r : int)
   ensures a[..l] == old(a[..l])
   ensures a[r..] == old(a[r..])
   modifies a
+// </vc-spec>
 // <vc-code>
 {
   assume false;

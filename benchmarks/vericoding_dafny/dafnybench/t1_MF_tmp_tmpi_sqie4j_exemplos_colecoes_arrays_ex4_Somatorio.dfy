@@ -10,8 +10,10 @@ function SomaAte(a:array<nat>, i:nat):nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Somatorio(a:array<nat>) returns (s:nat)
   ensures s == SomaAte(a,a.Length)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

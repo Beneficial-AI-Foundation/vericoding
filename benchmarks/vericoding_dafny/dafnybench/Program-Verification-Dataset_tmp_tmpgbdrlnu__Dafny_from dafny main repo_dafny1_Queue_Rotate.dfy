@@ -46,12 +46,14 @@ class Queue<T(0)> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Rotate()
     requires Valid()
     requires 0 < |contents|
     modifies footprint
     ensures Valid() && fresh(footprint - old(footprint))
     ensures contents == old(contents)[1..] + old(contents)[..1]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -39,10 +39,12 @@ class {:autocontracts} CarPark {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method openReservedArea()
     requires true
     modifies this
     ensures carPark == old(carPark) && reservedCarPark == old(reservedCarPark) && weekend == true && subscriptions == old(subscriptions);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

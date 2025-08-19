@@ -1,0 +1,71 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/sergiu.bursuc/baif/vericoding/src/code_from_spec_on_15-08_13h21/dafny/simple_specs/dafny-learn_tmp_tmpn94ir40q_R01_functions_Testing_abs_impl.csproj": {}
+  },
+  "projects": {
+    "/Users/sergiu.bursuc/baif/vericoding/src/code_from_spec_on_15-08_13h21/dafny/simple_specs/dafny-learn_tmp_tmpn94ir40q_R01_functions_Testing_abs_impl.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/sergiu.bursuc/baif/vericoding/src/code_from_spec_on_15-08_13h21/dafny/simple_specs/dafny-learn_tmp_tmpn94ir40q_R01_functions_Testing_abs_impl.csproj",
+        "projectName": "dafny-learn_tmp_tmpn94ir40q_R01_functions_Testing_abs_impl",
+        "projectPath": "/Users/sergiu.bursuc/baif/vericoding/src/code_from_spec_on_15-08_13h21/dafny/simple_specs/dafny-learn_tmp_tmpn94ir40q_R01_functions_Testing_abs_impl.csproj",
+        "packagesPath": "/Users/sergiu.bursuc/.nuget/packages/",
+        "outputPath": "/Users/sergiu.bursuc/baif/vericoding/src/code_from_spec_on_15-08_13h21/dafny/simple_specs/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/sergiu.bursuc/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "System.Collections.Immutable": {
+              "target": "Package",
+              "version": "[1.7.1, )"
+            },
+            "System.Runtime.Numerics": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet@8/8.0.16/libexec/sdk/8.0.116/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

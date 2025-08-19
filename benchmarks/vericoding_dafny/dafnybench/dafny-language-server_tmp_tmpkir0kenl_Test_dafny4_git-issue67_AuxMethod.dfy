@@ -3,6 +3,7 @@
 
 class Node { }
 
+// <vc-spec>
 predicate Q(x: Node)
 predicate P(x: Node)
 
@@ -14,6 +15,7 @@ method AuxMethod(y: Node)
 
 method MainMethod(y: Node)
   modifies y
+// </vc-spec>
 // <vc-code>
 {
   assume false;

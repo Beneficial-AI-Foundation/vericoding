@@ -15,9 +15,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Aliases(a: array<int>, b: array<int>) 
     requires a.Length >= b.Length > 100  
     modifies a
+// </vc-spec>
 // <vc-code>
 {
   assume false;

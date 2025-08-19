@@ -22,8 +22,10 @@ Simplified VC for square0
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method square1(n:nat) returns (sqn : nat)
 ensures sqn == n*n
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -1,0 +1,7 @@
+{
+  "task_id": "HumanEval/13",
+  "prompt": "\n\ndef greatest_common_divisor(a: int, b: int) -> int:\n    \"\"\" Return a greatest common divisor of two integers a and b\n    >>> greatest_common_divisor(3, 5)\n    1\n    >>> greatest_common_divisor(25, 15)\n    5\n    \"\"\"\n",
+  "entry_point": "greatest_common_divisor",
+  "canonical_solution": "    while b:\n        a, b = b, a % b\n    return a\n",
+  "test": "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate(3, 7) == 1\n    assert candidate(10, 15) == 5\n    assert candidate(49, 14) == 7\n    assert candidate(144, 60) == 12\n"
+}

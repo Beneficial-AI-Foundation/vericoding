@@ -77,10 +77,12 @@ module ProdCons {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method put(p: Process, t : T) 
             requires valid()                
             requires putEnabled(p)          //  |buffer| < maxBufferSize
             modifies this
+// </vc-spec>
 // <vc-code>
 {
   assume false;

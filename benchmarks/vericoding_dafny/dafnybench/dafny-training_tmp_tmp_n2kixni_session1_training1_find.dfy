@@ -72,9 +72,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method find(a: seq<int>, key: int) returns (index: int)
     requires true
     ensures true
+// </vc-spec>
 // <vc-code>
 {
   assume false;

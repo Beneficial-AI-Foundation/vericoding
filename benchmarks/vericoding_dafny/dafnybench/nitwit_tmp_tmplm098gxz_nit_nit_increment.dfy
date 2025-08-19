@@ -106,6 +106,7 @@ predicate nitness(b : nat, n : nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method nit_increment(b : nat, n : nat) returns (sum : nat, carry : nat)
   // Note: apparently, you need to explicitly put this here
   // even though we've got it in the nitness predicate
@@ -113,6 +114,7 @@ method nit_increment(b : nat, n : nat) returns (sum : nat, carry : nat)
   requires (nitness(b, n))
   ensures (nitness(b, sum))
   ensures (nitness(b, carry))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

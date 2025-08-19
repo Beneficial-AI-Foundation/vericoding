@@ -59,11 +59,13 @@ predicate is_permutation2(a:seq<int>, b:seq<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method selection_sort(ns: array<int>) 
 requires ns.Length >= 0
 ensures is_sorted(ns[..])
 ensures is_permutation2(old(ns[..]), ns[..])
 modifies ns
+// </vc-spec>
 // <vc-code>
 {
   assume false;

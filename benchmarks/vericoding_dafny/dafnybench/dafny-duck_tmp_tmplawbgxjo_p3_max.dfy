@@ -3,6 +3,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method max(x:array<nat>) returns (y:nat) 
 // for index loop problems
 requires x.Length > 0
@@ -10,6 +11,7 @@ requires x.Length > 0
 ensures forall j :: 0 <= j < x.Length ==> y >= x[j]
 // ensuring that the return value is in the array
 ensures y in x[..]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -35,12 +35,14 @@ class {:autocontracts} Queue {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method auxInsertSpaceQueue(item:int)
     requires rear < front && front < circularQueue.Length
     ensures rear == old(rear) + 1
     ensures counter == old(counter) + 1
     ensures Content == old(Content[0..rear]) + [item] + old(Content[rear+1..circularQueue.Length])
     ensures |Content| == old(|Content|) + 1
+// </vc-spec>
 // <vc-code>
 {
   assume false;

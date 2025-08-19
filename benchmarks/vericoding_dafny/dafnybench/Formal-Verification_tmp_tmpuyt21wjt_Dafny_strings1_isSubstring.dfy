@@ -33,8 +33,10 @@ predicate isSubstringPredicate (sub: string, str:string)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method isSubstring(sub: string, str: string) returns (res:bool)
 ensures res == isSubstringPredicate(sub, str)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

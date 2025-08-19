@@ -1,6 +1,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method div_ent_it(a: int, b: int) returns (c: int, r: int)
 
 // Algoritmo iterativo de la división de enteros
@@ -8,6 +9,7 @@ method div_ent_it(a: int, b: int) returns (c: int, r: int)
 
     requires a >= 0 && b > 0
     ensures  a == b*c + r && 0 <= r < b
+// </vc-spec>
 // <vc-code>
 {
   assume false;

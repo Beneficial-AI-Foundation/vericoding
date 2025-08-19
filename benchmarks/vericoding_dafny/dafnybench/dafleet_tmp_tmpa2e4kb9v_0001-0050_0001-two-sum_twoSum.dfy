@@ -26,9 +26,11 @@ ghost predicate correct_pair(pair: (int, int), nums: seq<int>, target: int) {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method twoSum(nums: seq<int>, target: int) returns (pair: (int, int))
   requires exists i, j :: correct_pair((i, j), nums, target)
   ensures correct_pair(pair, nums, target)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

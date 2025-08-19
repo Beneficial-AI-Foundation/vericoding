@@ -50,8 +50,10 @@ method haveCommonKSubstring(k:nat, str1:string, str2:string) returns(found:bool)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method maxCommonSubstringLength(str1:string, str2:string) returns(len:nat)
     requires 0 < |str1| && 0 < |str1|
+// </vc-spec>
 // <vc-code>
 {
   assume false;

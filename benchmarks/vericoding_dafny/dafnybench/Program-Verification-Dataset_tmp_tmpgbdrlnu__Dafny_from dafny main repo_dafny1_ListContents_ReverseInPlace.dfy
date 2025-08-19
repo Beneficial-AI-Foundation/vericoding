@@ -41,12 +41,14 @@ class Node<T> {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ReverseInPlace() returns (reverse: Node<T>)
     requires Valid()
     modifies Repr
     ensures reverse.Valid() && reverse.Repr <= old(Repr)
     ensures |reverse.List| == |old(List)|
     ensures forall i :: 0 <= i < |reverse.List| ==> reverse.List[i] == old(List)[|old(List)|-1-i]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

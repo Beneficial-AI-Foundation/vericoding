@@ -1,0 +1,121 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, dev-* ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest-m, macos-latest]
+      fail-fast: false
+    
+    env:
+      # API keys for optional services
+      MORPH_API_KEY: ${{ secrets.MORPH_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      GOOGLE_GEMINI_API_KEY: ${{ secrets.GOOGLE_GEMINI_API_KEY }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # Environment settings
+      GITHUB_ACTIONS: true
+      NON_INTERACTIVE: true
+      LAKE_JOBS: 4
+      LAKE_VERBOSE: 1
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      # Install just (task runner) - this is our only bootstrap requirement
+      - uses: extractions/setup-just@v1
+      
+      # Cache Cargo/Rust dependencies (CLI tools)
+      - name: Cache Cargo dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            ~/.cargo/bin
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock', 'justfile') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+      
+      # Cache Python/UV dependencies
+      - name: Cache Python/UV dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/uv
+            .venv
+          key: ${{ runner.os }}-python-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-python-
+      
+      # Cache Lean toolchain
+      - name: Cache Lean toolchain
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.elan
+          key: ${{ runner.os }}-elan-${{ hashFiles('lean-toolchain') }}
+          restore-keys: |
+            ${{ runner.os }}-elan-
+      
+      # Cache Lake build artifacts with two-tier strategy
+      - name: Cache Lake build artifacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            .lake
+          key: ${{ runner.os }}-lake-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.lean') }}
+          restore-keys: |
+            ${{ runner.os }}-lake-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}
+            ${{ runner.os }}-lake-${{ hashFiles('lean-toolchain') }}
+            ${{ runner.os }}-lake-
+      
+      # Run the unified setup through just
+      - name: Setup NumpySpec environment
+        run: just setup
+        env:
+          GITHUB_ACTIONS: true
+      
+      # Setup build caches for faster compilation
+      - name: Setup build caches
+        run: just cache-setup
+      
+      # Build Lean project
+      - name: Build Lean project
+        run: just build
+      
+      # Run Python tests
+      - name: Run Python tests
+        run: just test
+      
+      # Run Lean tests (if any)
+      - name: Run Lean tests
+        run: |
+          if [ -d "test" ]; then
+            lake test || echo "Lean tests failed"
+          else
+            echo "No Lean test directory found"
+          fi
+      
+      # Lint check
+      - name: Lint check
+        run: just lint || echo "Lint check failed"
+      
+      # Upload artifacts on failure
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failure-logs-${{ matrix.os }}
+          path: |
+            .lake/build/trace
+            logs/
+            *.log

@@ -4,12 +4,14 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BinarySearch(arr: array<int>, target: int) returns (index: int)
     requires distinct(arr)
     requires sorted(arr)
     ensures -1 <= index < arr.Length
     ensures index == -1 ==> not_found(arr, target)
     ensures index != -1 ==> found(arr, target, index)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

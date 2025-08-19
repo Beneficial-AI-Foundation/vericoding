@@ -1,0 +1,7 @@
+{
+  "task_id": "HumanEval/99",
+  "prompt": "\ndef closest_integer(value):\n    '''\n    Create a function that takes a value (string) representing a number\n    and returns the closest integer to it. If the number is equidistant\n    from two integers, round it away from zero.\n\n    Examples\n    >>> closest_integer(\"10\")\n    10\n    >>> closest_integer(\"15.3\")\n    15\n\n    Note:\n    Rounding away from zero means that if the given number is equidistant\n    from two integers, the one you should return is the one that is the\n    farthest from zero. For example closest_integer(\"14.5\") should\n    return 15 and closest_integer(\"-14.5\") should return -15.\n    '''\n",
+  "entry_point": "closest_integer",
+  "canonical_solution": "    from math import floor, ceil\n\n    if value.count('.') == 1:\n        # remove trailing zeros\n        while (value[-1] == '0'):\n            value = value[:-1]\n\n    num = float(value)\n    if value[-2:] == '.5':\n        if num > 0:\n            res = ceil(num)\n        else:\n            res = floor(num)\n    elif len(value) > 0:\n        res = int(round(num))\n    else:\n        res = 0\n\n    return res\n\n",
+  "test": "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"10\") == 10, \"Test 1\"\n    assert candidate(\"14.5\") == 15, \"Test 2\"\n    assert candidate(\"-15.5\") == -16, \"Test 3\"\n    assert candidate(\"15.3\") == 15, \"Test 3\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(\"0\") == 0, \"Test 0\"\n\n"
+}

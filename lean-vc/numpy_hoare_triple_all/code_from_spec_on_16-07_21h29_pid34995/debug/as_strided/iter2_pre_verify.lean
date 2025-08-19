@@ -1,0 +1,47 @@
+import Std.Do.Triple
+import Std.Tactic.Do
+
+open Std.Do
+
+/-- numpy.as_strided: Create a view into the array with the given shape and strides.
+    
+    Creates a new view of an array with specified shape and strides.
+    This is a simplified version that focuses on the core mathematical
+    property: creating a view with a different shape but accessing
+    elements from the original array based on stride patterns.
+    
+    For safety, we restrict to cases where the new shape is smaller
+    than or equal to the original array size.
+-/
+def numpy_as_strided {n m : Nat} (x : Vector Float n) (stride : Nat) 
+    (h_valid : m * stride ≤ n) (h_stride_pos : stride > 0) : Id (Vector Float m) :=
+  Id.mk (Vector.mk (Array.ofFn (fun i => x.get ⟨i.val * stride, by
+    have h1 : i.val < m := i.isLt
+    have h2 : i.val * stride < m * stride := by
+      apply Nat.mul_lt_mul_of_pos_right h1 h_stride_pos
+    exact Nat.lt_of_lt_of_le h2 h_valid⟩)) rfl)
+
+/-- Specification: numpy.as_strided creates a view with specified strides.
+    
+    Precondition: The strided access must be valid (m * stride ≤ n)
+    Postcondition: Each element in the result is taken from the original
+    array at positions determined by the stride pattern.
+    
+    For element i in the result, it equals x[i * stride].
+-/
+theorem numpy_as_strided_spec {n m : Nat} (x : Vector Float n) (stride : Nat) 
+    (h_valid : m * stride ≤ n) (h_stride_pos : stride > 0) :
+    ⦃⌜m * stride ≤ n ∧ stride > 0⌝⦄
+    numpy_as_strided x stride h_valid h_stride_pos
+    ⦃⇓result => ⌜∀ i : Fin m, result.get i = x.get ⟨i.val * stride, 
+                   by have h1 : i.val < m := i.isLt
+                      have h2 : i.val * stride < m * stride := by
+                        apply Nat.mul_lt_mul_of_pos_right h1 h_stride_pos
+                      exact Nat.lt_of_lt_of_le h2 h_valid⟩⌝⦄ := by
+  unfold numpy_as_strided
+  rw [triple_comp]
+  constructor
+  · exact ⟨h_valid, h_stride_pos⟩
+  · intro h
+    intro i
+    simp [Vector.get, Array.get_ofFn]

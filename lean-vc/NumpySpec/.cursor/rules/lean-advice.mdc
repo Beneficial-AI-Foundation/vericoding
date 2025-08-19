@@ -1,0 +1,21 @@
+---
+description: 
+globs: **.lean
+alwaysApply: false
+---
+## How many sorries is too many?
+
+If you sorry the definitions involved in sorried theorems, it becomes unclear what you are even talking about (and obviously it's not possible to prove the theorem while it has a compromised statement). 
+
+## imports
+
+imports must be before any syntax elements including module and doc comments.
+
+```lean
+/-!
+illegal: import must go above or this comment should be a regular multiline comment (`/- .. -/`)
+ -/
+
+import Mathlib
+```
+

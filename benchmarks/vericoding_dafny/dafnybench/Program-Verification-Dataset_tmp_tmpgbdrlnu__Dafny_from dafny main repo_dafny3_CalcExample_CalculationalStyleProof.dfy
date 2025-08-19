@@ -5,6 +5,7 @@
 
 ghost function f(x: int, y: int): int
 
+// <vc-spec>
 lemma Associativity(x: int, y: int, z: int)
   ensures f(x, f(y, z)) == f(f(x, y), z)
 
@@ -23,6 +24,7 @@ lemma DiagonalIdentity(x: int)
 method CalculationalStyleProof(a: int, b: int, c: int, x: int)
   requires c <= x == f(a, b)
   ensures f(a, f(b, c)) <= x
+// </vc-spec>
 // <vc-code>
 {
   assume false;

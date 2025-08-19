@@ -9,9 +9,11 @@ function Factorial(n: int): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method FactorialOfLastDigit(n: int) returns (fact: int)
     requires n >= 0
     ensures fact == Factorial(n % 10)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

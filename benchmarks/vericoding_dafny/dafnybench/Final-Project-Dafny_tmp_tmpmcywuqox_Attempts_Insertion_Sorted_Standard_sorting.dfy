@@ -8,10 +8,12 @@ predicate InsertionSorted(Array: array<int>, left: int, right: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method sorting(Array: array<int>)
   requires Array.Length > 1 
   ensures InsertionSorted(Array, 0, Array.Length) 
   modifies Array
+// </vc-spec>
 // <vc-code>
 {
   assume false;

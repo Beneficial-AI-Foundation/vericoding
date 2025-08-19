@@ -3,10 +3,12 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method insertionSort(a: array<int>) 
     modifies a
     ensures isSorted(a, 0, a.Length)
     ensures multiset(a[..]) == multiset(old(a[..]))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

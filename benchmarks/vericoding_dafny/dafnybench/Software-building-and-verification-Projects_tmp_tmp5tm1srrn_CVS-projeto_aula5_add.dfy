@@ -49,12 +49,14 @@ class Set {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method add(v:int)
     requires RepInv()
     requires size() < maxSize()
     ensures RepInv()
     modifies this,Repr
     ensures fresh(Repr - old(Repr))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

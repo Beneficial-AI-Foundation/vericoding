@@ -1,0 +1,5 @@
+// SPEC
+method WhileRule()
+{
+}
+*/

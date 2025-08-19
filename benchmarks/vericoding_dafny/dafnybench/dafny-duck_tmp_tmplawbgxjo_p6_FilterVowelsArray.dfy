@@ -11,9 +11,11 @@ function FilterVowels(xs: seq<char>): seq<char>
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method FilterVowelsArray(xs: array<char>) returns (ys: array<char>)
     ensures fresh(ys)
     ensures FilterVowels(xs[..]) == ys[..]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

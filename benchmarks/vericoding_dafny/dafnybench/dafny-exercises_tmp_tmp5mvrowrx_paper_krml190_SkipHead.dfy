@@ -39,10 +39,12 @@ class Node {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SkipHead() returns (r: Node?)
     requires Valid()
     ensures r == null ==> |list| == 1
     ensures r != null ==> r.Valid() && r.footprint <= footprint
+// </vc-spec>
 // <vc-code>
 {
   assume false;

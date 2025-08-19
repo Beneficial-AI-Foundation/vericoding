@@ -38,10 +38,12 @@ ensures sum(r[..k]) + r[k] == sum(r[..k+1]);
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method maxSeq(v: seq<int>) returns (max:int)
 requires |v| >= 1
 ensures forall i :: 0 <= i < |v| ==> max >= v[i]
 ensures max in v
+// </vc-spec>
 // <vc-code>
 {
   assume false;

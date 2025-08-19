@@ -297,6 +297,7 @@ class UndoLog {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method commit_tx()
         modifies log_;
         modifies this;
@@ -309,6 +310,7 @@ method commit_tx()
         ensures log_ == old(log_);
         ensures ghost_state_equiv(gs);
         ensures state_inv();
+// </vc-spec>
 // <vc-code>
 {
   assume false;

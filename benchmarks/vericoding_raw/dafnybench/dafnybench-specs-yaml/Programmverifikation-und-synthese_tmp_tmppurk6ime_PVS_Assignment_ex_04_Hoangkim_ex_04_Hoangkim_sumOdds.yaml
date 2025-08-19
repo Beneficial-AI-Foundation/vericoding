@@ -1,0 +1,23 @@
+vc-preamble: |-
+  //Problem 01
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  method sumOdds(n: nat) returns (sum: nat)
+      requires n > 0;
+      ensures sum == n * n;
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  //problem02
+  //a)
+

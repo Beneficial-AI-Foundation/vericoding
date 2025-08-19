@@ -11,6 +11,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Find(a: array<int>, key: int) returns (i: int)
    requires a != null;
    // if i is non-negative then 
@@ -25,6 +26,7 @@ method Find(a: array<int>, key: int) returns (i: int)
    ensures i < 0 ==> 
            // a does not contain key
            forall k :: 0 <= k < a.Length ==> a[k] != key;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

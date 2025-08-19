@@ -13,6 +13,7 @@ predicate sorted(s : seq<int>) {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method binarySearchRec(v:array<int>, elem:int, c:int, f:int) returns (p:int)
  requires sorted(v[0..v.Length])
  requires 0<=c<=f+1<=v.Length//0<=c<=v.Length && -1<=f<v.Length && c<=f+1
@@ -21,6 +22,7 @@ method binarySearchRec(v:array<int>, elem:int, c:int, f:int) returns (p:int)
  decreases f-c
  ensures -1<=p<v.Length
  ensures (forall u::0<=u<=p ==> v[u]<=elem) && (forall w::p<w<v.Length ==> v[w]>elem)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

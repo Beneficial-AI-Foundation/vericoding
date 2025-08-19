@@ -1,12 +1,14 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method suma_it(V: array<int>) returns (x: int)
 
 // Algoritmo iterativo que calcula la
 // suma de las componentes de un vector
 
     ensures  x == suma_vector(V, 0)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

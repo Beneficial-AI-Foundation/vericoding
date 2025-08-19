@@ -1,0 +1,36 @@
+=== LEAN SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===
+
+Language: Lean
+Test directory: test_specs
+Output directory: /Users/sergiu.bursuc/baif/vericoding/src/code_from_spec_on_04-08_12h00/lean/test_specs
+Max iterations: 2
+Parallel workers: 1
+Test date: 2025-08-04T12:00:33.879953
+
+Total original files: 2
+
+=== OVERALL STATISTICS ===
+Total successful: 0
+Total failed: 2
+Success rate: 0.0%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+
+=== FAILED FILES (VERIFICATION) ===
+✗ NpAbs-spec.lean
+✗ NpAdd-spec.lean
+
+=== PARALLEL PROCESSING FEATURES ===
+Parallel workers: 1
+API rate limiting: 1s between calls
+Debug mode: Enabled
+- Saves original specification as *_iter_0_original.lean
+- Saves initial generated code as *_iter_1_generated.lean
+- Saves current working version for each iteration as *_iter_N_current.lean
+- Saves final implementation as *_impl.lean
+- Full debugging: all intermediate files are saved
+
+- Debug mode control: Enabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-08-04T12:00:33.879996

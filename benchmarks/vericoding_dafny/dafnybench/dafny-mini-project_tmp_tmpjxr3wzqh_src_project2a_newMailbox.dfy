@@ -148,11 +148,13 @@ class MailApp {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method newMailbox(n: string)
     modifies this
     requires Valid()
     requires !exists mb | mb in userboxList :: mb.name == n
     ensures exists mb | mb in userboxList :: mb.name == n
+// </vc-spec>
 // <vc-code>
 {
   assume false;

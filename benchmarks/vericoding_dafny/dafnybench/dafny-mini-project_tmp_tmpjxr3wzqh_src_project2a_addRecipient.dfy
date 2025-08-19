@@ -67,6 +67,7 @@ class Message
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method addRecipient(p: nat, r: Address)
     modifies this
     requires p < |recipients|
@@ -74,6 +75,7 @@ method addRecipient(p: nat, r: Address)
     ensures recipients[p] == r
     ensures forall i :: 0 <= i < p ==> recipients[i] == old(recipients[i])
     ensures forall i :: p < i < |recipients| ==> recipients[i] == old(recipients[i-1])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

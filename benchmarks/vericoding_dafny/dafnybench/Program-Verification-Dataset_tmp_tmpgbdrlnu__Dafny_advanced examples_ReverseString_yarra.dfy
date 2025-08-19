@@ -12,9 +12,11 @@ reads arr, outarr
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method yarra(arr : array<char>) returns (outarr : array<char>)
 requires arr != null && arr.Length > 0
 ensures outarr != null && arr.Length == outarr.Length && reversed(arr,outarr)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

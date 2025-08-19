@@ -19,8 +19,10 @@ function max(a: int, b: int): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Abs(x: int) returns (y: int)
     ensures abs(x) == y
+// </vc-spec>
 // <vc-code>
 {
   assume false;

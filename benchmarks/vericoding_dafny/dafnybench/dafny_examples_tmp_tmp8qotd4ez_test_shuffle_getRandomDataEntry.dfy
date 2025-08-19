@@ -10,10 +10,12 @@ function set_of_seq<T>(s: seq<T>): set<T>
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method getRandomDataEntry<T(==)>(m_workList: array<T>, avoidSet: seq<T>) returns (e: T)
   requires m_workList.Length > 0
   ensures set_of_seq(avoidSet) < set_of_seq(m_workList[..]) ==> e !in avoidSet
   ensures avoidSet < m_workList[..] ==> e in m_workList[..]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

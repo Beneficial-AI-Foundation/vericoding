@@ -39,6 +39,7 @@ lemma SubstringNegationLemma(sub:string, str:string)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method isSubstring(sub: string, str: string) returns (res:bool)
     ensures  res <==> isSubstringPred(sub, str)
     ensures  res ==> isSubstringPred(sub, str)
@@ -46,6 +47,7 @@ method isSubstring(sub: string, str: string) returns (res:bool)
     ensures  isSubstringPred(sub, str) ==> res
     ensures  isSubstringPred(sub, str) ==> res
     ensures !res <==> isNotSubstringPred(sub, str) // This postcondition follows from the above lemma.
+// </vc-spec>
 // <vc-code>
 {
   assume false;

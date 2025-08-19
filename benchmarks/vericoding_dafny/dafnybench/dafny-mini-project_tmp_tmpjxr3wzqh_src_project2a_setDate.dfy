@@ -67,9 +67,11 @@ class Message
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method setDate(d: Date)
     modifies this
     ensures date == d
+// </vc-spec>
 // <vc-code>
 {
   assume false;

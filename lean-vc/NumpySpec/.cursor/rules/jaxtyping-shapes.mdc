@@ -1,0 +1,67 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Use jaxtyping for Array Shapes in Python
+
+All Python source files (`*.py`) in this repository **must** annotate the shapes (and dtypes) of any NumPy / Torch / JAX arrays using the [`jaxtyping`](https://github.com/google/jaxtyping) type-hint syntax.
+
+## What to do
+
+* Add an explicit jaxtyping annotation to **every** function parameter and return value whose type is an array/tensor.
+* Import the appropriate aliases from `jaxtyping`:
+
+  ```python
+  from jaxtyping import Float, Int, Array  # choose the alias that matches your backend
+  import torch  # or numpy, jax, etc.
+  ```
+
+* Give each dimension a descriptive name rather than a single letter:
+
+  ```python
+  def linear_forward(
+      x: Float[Array, "batch in_dim"],
+      weight: Float[Array, "out_dim in_dim"],
+      bias: Float[Array, "out_dim"],
+  ) -> Float[Array, "batch out_dim"]:
+      ...
+  ```
+
+* Use `*` or ellipsis (`...`) in the shape string when the rank may vary, per jaxtyping's specification.
+* Scalars remain annotated with the built-in types (`float`, `int`) unless they are rank-0 tensors.
+
+## Rationale
+
+Shape mismatches are a common source of runtime errors in scientific and machine-learning code.  Jaxtyping provides **static** (mypy-level) guarantees that dimensions align, dramatically improving reliability.
+
+## Scope
+
+This rule applies to **all new and modified Python code**.  Existing files should be migrated incrementally whenever they are touched.  Tiny ad-hoc scripts (< 20 lines) that do **not** manipulate arrays are exempt.
+
+## Examples
+
+✔ Correct:
+
+```python
+from jaxtyping import Float, Array
+import torch
+
+def relu(x: Float[Array, "*"], inplace: bool = False) -> Float[Array, "*"]:
+    return torch.relu_(x) if inplace else torch.relu(x)
+```
+
+✘ Incorrect (missing shape hints):
+
+```python
+import torch
+
+def relu(x: torch.Tensor):
+    return torch.relu(x)
+```
+
+Fix by adding the `Float[Array, "*"]` annotation.
+
+---
+
+**Enforcement:** PRs that introduce or modify Python code without jaxtyping shape annotations should be flagged during review.

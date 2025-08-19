@@ -149,10 +149,12 @@ method max_nit(b: nat) returns (nmax : nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method nit_flip(b: nat, n : nat) returns (nf : nat)
   requires (valid_base(b))
   requires (nitness(b, n))
   ensures (nitness (b, nf))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

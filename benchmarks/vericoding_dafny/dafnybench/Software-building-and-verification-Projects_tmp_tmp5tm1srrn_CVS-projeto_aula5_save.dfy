@@ -173,12 +173,14 @@ class SavingsAccount {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method save(amount: int)
     requires amount > 0
     requires PositiveChecking()
     requires RepInv()
     ensures RepInv()
     modifies Repr
+// </vc-spec>
 // <vc-code>
 {
   assume false;

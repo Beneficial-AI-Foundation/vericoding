@@ -34,9 +34,11 @@ method Add(x: int, y: int) returns (r: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Mul(x: int, y: int) returns (r: int)
   ensures r == x*y;
   decreases x < 0, x;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

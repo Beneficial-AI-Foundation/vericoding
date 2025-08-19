@@ -21,9 +21,11 @@ lemma SumRangeNChoose2(n: nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BubbleSort(a: array<int>) returns (n: nat) 
   modifies a
   ensures n <= NChoose2(a.Length)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

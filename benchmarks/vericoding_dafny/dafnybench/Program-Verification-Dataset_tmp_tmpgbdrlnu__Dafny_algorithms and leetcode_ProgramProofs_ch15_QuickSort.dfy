@@ -18,10 +18,12 @@ predicate SplitPoint(a: array<int>, n: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method QuickSort(a: array<int>)
     modifies a
     ensures forall i,j :: 0 <= i < j < a.Length ==> a[i] <= a[j]
     ensures multiset(a[..]) == old(multiset(a[..]))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

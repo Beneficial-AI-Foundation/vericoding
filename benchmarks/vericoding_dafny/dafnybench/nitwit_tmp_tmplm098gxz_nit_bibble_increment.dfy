@@ -201,10 +201,12 @@ method bibble_add(b : nat, p : seq<nat>, q : seq<nat>) returns (r : seq<nat>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method bibble_increment(b : nat, p : seq<nat>) returns (r : seq<nat>)
   requires (valid_base(b))
   requires (bibble(b, p))
   ensures  (bibble(b, r))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

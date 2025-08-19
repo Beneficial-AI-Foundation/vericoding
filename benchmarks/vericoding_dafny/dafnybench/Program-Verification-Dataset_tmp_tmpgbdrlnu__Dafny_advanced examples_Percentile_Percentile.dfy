@@ -19,6 +19,7 @@ function Sum(A: array<real>): real
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Percentile(p: real, A: array<real>, total: real) returns (i: int)
   requires forall i | 0 <= i < A.Length :: A[i] > 0.0
   requires 0.0 <= p <= 100.0
@@ -27,6 +28,7 @@ method Percentile(p: real, A: array<real>, total: real) returns (i: int)
   ensures -1 <= i < A.Length
   ensures SumUpto(A, i) <= (p/100.0) * total
   ensures i+1 < A.Length ==> SumUpto(A, i+1) > (p/100.0) * total
+// </vc-spec>
 // <vc-code>
 {
   assume false;

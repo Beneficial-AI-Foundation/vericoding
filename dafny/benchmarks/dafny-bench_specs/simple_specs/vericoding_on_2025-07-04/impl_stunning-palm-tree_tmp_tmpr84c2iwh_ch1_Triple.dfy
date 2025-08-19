@@ -1,0 +1,21 @@
+//ATOM
+
+// Ex 1.9
+function Average (a: int, b: int): int {
+ (a + b) / 2
+}
+
+//IMPL 
+
+method Triple'(x: int) returns (r: int)
+ // spec 1: ensures Average(r, 3*x) == 3*x
+ ensures Average(2*r, 6*x) == 6*x
+{
+  r := 3 * x;
+  /* code modified by LLM (iteration 1): Added assertion to help Dafny verify that Average(2*r, 6*x) equals 6*x when r = 3*x */
+  assert 2 * r == 6 * x;
+  assert Average(2 * r, 6 * x) == (2 * r + 6 * x) / 2;
+  assert (2 * r + 6 * x) / 2 == (6 * x + 6 * x) / 2;
+  assert (6 * x + 6 * x) / 2 == 12 * x / 2;
+  assert 12 * x / 2 == 6 * x;
+}

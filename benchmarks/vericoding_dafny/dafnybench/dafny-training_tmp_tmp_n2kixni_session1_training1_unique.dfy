@@ -116,9 +116,11 @@ predicate sorted(a: seq<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method unique(a: seq<int>) returns (b: seq<int>) 
     requires sorted(a)
     ensures true
+// </vc-spec>
 // <vc-code>
 {
   assume false;

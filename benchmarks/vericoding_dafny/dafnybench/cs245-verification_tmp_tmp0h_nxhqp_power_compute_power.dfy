@@ -11,9 +11,11 @@ function power(a: int, n: int): int //function for a to the power of n
   decreases n;{if (n == 0) then 1 else a * power(a, n - 1)}
 
 //Our code from class
+// <vc-spec>
 method compute_power(a: int, n: int) returns (s: int)
 /*Pre-Condition*/   requires n >= 0 && a >= 0;
 /*Post-Condition*/  ensures s == power(a,n);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

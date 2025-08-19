@@ -21,6 +21,7 @@ predicate RangeSatisfiesComparerNegation(q: seq<int>, key: int, lowerBound: nat,
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method BinarySearch(q: seq<int>, key: int, lowerBound: nat, upperBound: nat, comparer: (int, int) -> bool) returns (index: nat)
     requires Sorted(q)
     requires 0 <= lowerBound <= upperBound <= |q|
@@ -34,6 +35,7 @@ method BinarySearch(q: seq<int>, key: int, lowerBound: nat, upperBound: nat, com
     ensures lowerBound <= index <= upperBound
     ensures RangeSatisfiesComparerNegation(q, key, 0, index, comparer)
     ensures RangeSatisfiesComparer(q, key, index, |q|, comparer)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

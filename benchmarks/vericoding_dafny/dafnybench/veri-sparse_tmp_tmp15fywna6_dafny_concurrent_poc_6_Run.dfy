@@ -158,6 +158,7 @@ class MatrixVectorMultiplier
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Run(processes: set<Process>, M: array2<int>, x: array<int>) returns (y: array<int>)
     requires |processes| == M.Length0
     requires (forall p, q :: p in processes && q in processes && p != q ==> p.row !=  q.row)
@@ -172,6 +173,7 @@ method Run(processes: set<Process>, M: array2<int>, x: array<int>) returns (y: a
     requires M.Length1 == x.Length
     ensures M.Length0 == y.Length
     modifies processes, M, x
+// </vc-spec>
 // <vc-code>
 {
   assume false;

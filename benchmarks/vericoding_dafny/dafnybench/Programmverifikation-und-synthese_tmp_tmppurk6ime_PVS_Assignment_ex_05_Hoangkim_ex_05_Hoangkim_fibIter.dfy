@@ -7,9 +7,11 @@ function fib(n: nat):nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method fibIter(n:nat) returns (a:nat)
 requires n > 0
 ensures a == fib(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -1,9 +1,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method gcdCalc(m: nat, n: nat) returns (res: nat)
 requires m>0 && n>0;
 ensures res == gcd(m,n);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

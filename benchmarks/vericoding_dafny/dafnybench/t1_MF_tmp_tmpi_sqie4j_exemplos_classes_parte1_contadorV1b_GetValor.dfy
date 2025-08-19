@@ -19,8 +19,10 @@ class Contador
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method GetValor() returns (v:int)
       ensures v == valor
+// </vc-spec>
 // <vc-code>
 {
   assume false;

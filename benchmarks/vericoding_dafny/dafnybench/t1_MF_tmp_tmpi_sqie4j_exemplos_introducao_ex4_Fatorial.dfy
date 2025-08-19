@@ -6,8 +6,10 @@ function Fat(n: nat): nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Fatorial(n:nat)  returns (r:nat)
   ensures r == Fat(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

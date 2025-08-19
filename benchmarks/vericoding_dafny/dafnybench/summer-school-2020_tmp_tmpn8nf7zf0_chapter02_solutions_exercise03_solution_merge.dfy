@@ -18,12 +18,14 @@ predicate SortSpec(input:seq<int>, output:seq<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method merge(a:seq<int>, b:seq<int>) returns (output:seq<int>)
   requires IsSorted(a)
   requires IsSorted(b)
 //  ensures IsSorted(output)
   ensures SortSpec(a+b, output)
   //decreases |a|+|b|
+// </vc-spec>
 // <vc-code>
 {
   assume false;

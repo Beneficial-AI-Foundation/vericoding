@@ -7,8 +7,10 @@ function Expt(b: int, n: nat): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method expt(b: int, n: nat) returns (res: int) 
   ensures res == Expt(b, n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

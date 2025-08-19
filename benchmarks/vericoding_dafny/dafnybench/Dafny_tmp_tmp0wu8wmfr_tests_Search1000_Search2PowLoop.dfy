@@ -23,6 +23,7 @@ predicate Is2Pow( n: int )
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Search2PowLoop( a: array<int>, i: int, n: int, x: int ) returns ( k: int )
     requires 0 <= i <= i+n <= a.Length;
     requires forall p,q | i <= p < q < i+n :: a[p] <= a[q];
@@ -30,6 +31,7 @@ method Search2PowLoop( a: array<int>, i: int, n: int, x: int ) returns ( k: int 
     ensures i <= k <= i+n;
     ensures forall r | i <= r < k :: a[r] < x;
     ensures forall r | k <= r < i+n :: a[r] >= x;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

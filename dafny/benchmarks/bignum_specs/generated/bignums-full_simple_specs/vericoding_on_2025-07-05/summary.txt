@@ -1,0 +1,46 @@
+=== VERICODE DAFNY PROCESSING SUMMARY ===
+
+Test directory: benchmarks/bignum_specs/generated/bignums-full_simple_specs/
+Output directory: benchmarks/bignum_specs/generated/bignums-full_simple_specs/vericoding_on_2025-07-05
+Test date: 2025-07-06T01:30:11.269626
+
+Total original files: 13
+
+=== OVERALL STATISTICS ===
+Total successful: 3
+Total failed: 10
+Success rate: 23.1%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_NormalizeBitString.dfy -> impl_bignums-full_NormalizeBitString.dfy
+✓ benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_Zeros.dfy -> impl_bignums-full_Zeros.dfy
+✓ benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_CompareUnequal.dfy -> impl_bignums-full_CompareUnequal.dfy
+
+=== FAILED FILES (VERIFICATION) ===
+✗ benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_ModExp.dfy: Verification failed
+✗ benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_ModExp_int.dfy: Verification failed
+✗ benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_Compare.dfy: Verification failed
+✗ benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_Sub.dfy: Verification failed
+✗ benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_DivMod.dfy: Verification failed
+✗ benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_Add.dfy: Verification failed
+✗ benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_ModExpPow2_int.dfy: Verification failed
+✗ benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_Main.dfy: Verification failed
+✗ benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_Mul.dfy: Verification failed
+✗ benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_ModExpPow2.dfy: Verification failed
+
+=== CONFIGURATION ===
+Model: claude-sonnet-4-20250514
+Strict atoms: True
+Strict specs: True
+Debug mode: Enabled
+Max retries: 3
+Max iterations: 10
+Timeout: 120s
+
+=== OUTPUT FILES ===
+- All generated implementations saved as impl_*.dfy
+- Debug files saved in debug/ subdirectory (if debug mode enabled)
+- Results summary saved as summary.txt
+- Detailed results saved as results.csv
+
+Generated on: 2025-07-06T01:30:11.269735

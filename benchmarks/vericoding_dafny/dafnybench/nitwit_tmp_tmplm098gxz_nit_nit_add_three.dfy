@@ -187,6 +187,7 @@ method nit_add(b : nat, x : nat, y : nat) returns (z : nat, carry : nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method nit_add_three(b : nat, c : nat, x : nat, y : nat) returns (z : nat, carry : nat)
   requires (valid_base(b))
   requires (c == 0 || c == 1)
@@ -195,6 +196,7 @@ method nit_add_three(b : nat, c : nat, x : nat, y : nat) returns (z : nat, carry
   ensures  (nitness(b, z))
   ensures  (nitness(b, carry))
   ensures  (carry == 0 || carry == 1)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

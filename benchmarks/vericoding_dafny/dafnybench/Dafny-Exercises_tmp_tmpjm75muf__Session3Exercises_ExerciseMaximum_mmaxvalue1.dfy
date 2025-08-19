@@ -27,10 +27,12 @@ ensures forall k:: 0<=k<v.Length ==> v[i]>=v[k]
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mmaxvalue1(v:array<int>) returns (m:int)
 requires v.Length>0
 ensures m in v[..]
 ensures forall k::0<=k<v.Length ==> m>=v[k]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -74,11 +74,13 @@ ghost predicate IsPrefixDuplicate(a: array<int>, k: int, p: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Search(a: array<int>) returns (p: int, q: int)
   requires 4 <= a.Length;
   requires exists p,q :: p != q && IsDuplicate(a, p) && IsDuplicate(a, q);  // two distinct duplicates exist
   requires forall i :: 0 <= i < a.Length ==> 0 <= a[i] < a.Length - 2;  // the elements of "a" in the range [0.. a.Length-2]
   ensures p != q && IsDuplicate(a, p) && IsDuplicate(a, q);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

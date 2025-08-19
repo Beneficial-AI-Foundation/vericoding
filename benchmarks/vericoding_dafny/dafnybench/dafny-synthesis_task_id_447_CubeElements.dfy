@@ -1,9 +1,11 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method CubeElements(a: array<int>) returns (cubed: array<int>)
     ensures cubed.Length == a.Length
     ensures forall i :: 0 <= i < a.Length ==> cubed[i] == a[i] * a[i] * a[i]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

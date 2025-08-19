@@ -118,8 +118,10 @@ module TypeOfThis {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Mutate()
       modifies this
+// </vc-spec>
 // <vc-code>
 {
   assume false;

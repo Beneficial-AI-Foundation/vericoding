@@ -11,8 +11,10 @@ class Counter {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method getValue() returns (x:int)
   ensures x == value;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

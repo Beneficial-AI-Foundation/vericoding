@@ -60,8 +60,10 @@ class {:autocontracts}  Fila
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method enfileira(e:int)
     ensures Conteudo == old(Conteudo) + [e]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

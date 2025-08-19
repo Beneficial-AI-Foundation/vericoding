@@ -24,10 +24,12 @@ decreases i
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mCountMin(v:array<int>) returns (c:int)
 requires v.Length>0
 ensures c==countMin(v,min(v,v.Length),v.Length)
 //Implement and verify an O(v.Length) algorithm
+// </vc-spec>
 // <vc-code>
 {
   assume false;

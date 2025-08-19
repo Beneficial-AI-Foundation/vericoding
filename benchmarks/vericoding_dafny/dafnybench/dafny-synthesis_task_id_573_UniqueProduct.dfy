@@ -1,8 +1,10 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method UniqueProduct (arr: array<int>) returns (product: int)
    ensures product == SetProduct((set i | 0 <= i < arr.Length :: arr[i]))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

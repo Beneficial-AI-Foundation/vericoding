@@ -35,9 +35,11 @@ class {:autocontracts} Queue {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method contains(item: int) returns (contains: bool)
     ensures contains == true ==> item in circularQueue[..]
     ensures contains == false ==> item !in circularQueue[..]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

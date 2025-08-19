@@ -84,10 +84,12 @@ class CoffeeMaker {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Dispense()
         requires Valid() && ready 
         modifies Repr 
         ensures Valid() && fresh(Repr - old(Repr))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

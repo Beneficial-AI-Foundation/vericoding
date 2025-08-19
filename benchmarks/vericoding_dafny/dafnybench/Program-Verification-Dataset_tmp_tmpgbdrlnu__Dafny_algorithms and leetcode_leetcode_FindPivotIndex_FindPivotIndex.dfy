@@ -110,10 +110,12 @@ lemma sumsEqual(nums: seq<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method  FindPivotIndex(nums: seq<int>) returns (index: int)
     requires |nums| > 0
     ensures index == -1 ==> forall k: nat :: k < |nums| ==> sum(nums[0..k]) != sum(nums[(k+1)..])
     ensures 0 <= index < |nums| ==> sum(nums[0..index]) == sum(nums[(index+1)..])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

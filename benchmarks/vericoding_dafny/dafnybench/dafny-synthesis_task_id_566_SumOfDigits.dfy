@@ -1,10 +1,12 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method SumOfDigits(number: nat) returns (sum: nat)
   requires number >= 0
   ensures sum >= 0
   ensures sum == SumDigits(number)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

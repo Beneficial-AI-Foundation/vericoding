@@ -65,10 +65,12 @@ class TicketSystem {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Enter(p: Process)
         requires Valid() && p in P && cs[p] == Hungry
         modifies this
         ensures Valid()
+// </vc-spec>
 // <vc-code>
 {
   assume false;

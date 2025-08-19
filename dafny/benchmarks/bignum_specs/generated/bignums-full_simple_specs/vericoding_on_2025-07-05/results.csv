@@ -1,0 +1,14 @@
+spec_name,spec_to_code,nr_atoms,nr_spec
+benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_ModExp.dfy,failed,8,1
+benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_ModExp_int.dfy,failed,2,1
+benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_NormalizeBitString.dfy,success,2,1
+benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_Compare.dfy,failed,5,1
+benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_Sub.dfy,failed,4,1
+benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_DivMod.dfy,failed,5,1
+benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_Add.dfy,failed,4,1
+benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_ModExpPow2_int.dfy,failed,1,1
+benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_Zeros.dfy,success,4,1
+benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_CompareUnequal.dfy,success,3,1
+benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_Main.dfy,failed,5,1
+benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_Mul.dfy,failed,5,1
+benchmarks/bignum_specs/generated/bignums-full_simple_specs/bignums-full_ModExpPow2.dfy,failed,6,1

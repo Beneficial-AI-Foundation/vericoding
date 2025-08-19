@@ -230,11 +230,13 @@ function Power(n: nat): nat {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method RotateLeft(a: array)
     requires a.Length > 0
     modifies a
     ensures forall i :: 0 <= i < a.Length - 1 ==> a[i] == old(a[(i+1)]) 
     ensures a[a.Length -1] == old(a[0])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

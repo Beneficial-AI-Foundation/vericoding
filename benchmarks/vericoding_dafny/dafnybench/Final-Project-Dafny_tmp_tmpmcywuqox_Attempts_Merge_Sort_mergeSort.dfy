@@ -1,8 +1,10 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mergeSort(a: array<int>)
 modifies a
+// </vc-spec>
 // <vc-code>
 {
   assume false;

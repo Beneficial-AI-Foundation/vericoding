@@ -19,10 +19,12 @@ function sum(a: array<int>, i: int, j: int) : int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method queryFast(a: array<int>, c: array<int>, i: int, j: int) returns (r: int)
   requires 0 <= i <= j <= a.Length
   requires is_prefix_sum_for(a,c)
   ensures r == sum(a, i, j)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

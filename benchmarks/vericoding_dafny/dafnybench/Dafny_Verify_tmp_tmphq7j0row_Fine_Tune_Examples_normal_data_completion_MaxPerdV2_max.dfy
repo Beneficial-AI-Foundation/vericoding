@@ -22,9 +22,11 @@ reads a
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method max(a: array<int>, n: int) returns (max: int)
   requires 0 < n <= a.Length;
   ensures is_max(max, a, n);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

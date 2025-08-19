@@ -1,0 +1,37 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# ✨ Data Pipeline Updates & Augmentation Opportunities
+
+## Purpose
+This rule tracks the *data-ingestion pipeline* (e.g. [`pdf_pipeline.py`](mdc:src/gaussianspec/pdf_pipeline.py) and its sub-agents) and ensures our internal documentation (Cursor rules) stays in lock-step with code changes.  Whenever the pipeline evolves, we:
+
+1. **Regenerate / update relevant Cursor rules** so that navigation aids remain accurate.
+2. **Audit for data-augmentation hooks**—places where we can enrich inputs (e.g. synthetic noise, cropping variants, language translations) to bootstrap downstream training.
+
+## Trigger
+Any non-trivial modification under one of these paths MUST trigger this rule:
+
+* `src/gaussianspec/pdf_pipeline.py`
+* `src/gaussianspec/subagents/`
+* Tests that exercise the above
+
+## Checklist (to copy into PR description)
+- [ ] Update existing pipeline rules or create new ones in `.cursor/rules/`.
+- [ ] Note *explicitly* whether new augmentation opportunities exist and file TODOs in `plan.md`.
+- [ ] Run `ruff check --fix .` to keep Python lint-clean.
+- [ ] Bump `CHANGELOG.md` with a brief entry (use `get_current_time`).
+
+## Example Augmentation Ideas
+- Vary OCR engine (`openai`, `gemini`, `tesseract`) to produce multi-view text.
+- Random crop / rota­tion jitter before OCR on noisy scans.
+- Back-translate Lean comments into natural language and back.
+
+## Rationale
+Keeping Cursor rules synchronised with the pipeline means future agents can *understand* and *extend* the workflow faster.  Flagging augmentation hooks early creates a culture of dataset diversification, improving model robustness down the line.
+
+---
+_Last updated via rule-automation; remember to adjust when the pipeline structure changes._
+

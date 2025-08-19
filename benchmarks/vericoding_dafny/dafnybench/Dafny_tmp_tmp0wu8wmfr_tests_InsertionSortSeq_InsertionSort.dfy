@@ -11,9 +11,11 @@ predicate IsSorted( s: seq<int> )
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method InsertionSort( s: seq<int> ) returns ( r: seq<int> )
     ensures multiset(r) == multiset(s);
     ensures IsSorted(r);
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -18,6 +18,7 @@ twostate predicate SwapFrame(a: array<int>, lo: int, hi: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method QuickSortAux(a: array<int>, lo: int, hi: int)
     requires 0 <= lo <= hi <= a.Length
     requires SplitPoint(a, lo) && SplitPoint(a, hi)
@@ -26,6 +27,7 @@ method QuickSortAux(a: array<int>, lo: int, hi: int)
     ensures SwapFrame(a, lo, hi)
     ensures SplitPoint(a, lo) && SplitPoint(a, hi)
     decreases hi - lo
+// </vc-spec>
 // <vc-code>
 {
   assume false;

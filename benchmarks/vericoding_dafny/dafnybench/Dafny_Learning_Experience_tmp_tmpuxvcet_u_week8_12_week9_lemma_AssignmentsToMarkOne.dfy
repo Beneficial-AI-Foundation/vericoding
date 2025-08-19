@@ -1,3 +1,4 @@
+// <vc-spec>
 lemma DivisionLemma(n:int,d:int) 
     requires n > 0 && d>1
     ensures n/d < n
@@ -8,6 +9,7 @@ lemma DivisionLemma(n:int,d:int)
 method AssignmentsToMarkOne(students:int, tutors: int) returns (r:int)
     requires students > 0 && tutors > 1
     ensures r < students
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -19,10 +19,12 @@ predicate isSorted(a: array<real>, from: nat, to: nat)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method findMin(a: array<real>, from: nat, to: nat) returns(index: nat)
   requires 0 <= from < to <= a.Length
   ensures from <= index < to
   ensures forall k :: from <= k < to ==> a[k] >= a[index]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

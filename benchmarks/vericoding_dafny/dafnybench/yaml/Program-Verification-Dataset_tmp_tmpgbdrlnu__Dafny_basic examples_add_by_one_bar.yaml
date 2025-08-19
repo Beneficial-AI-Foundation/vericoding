@@ -1,0 +1,19 @@
+vc-preamble: |-
+  /*
+   * Illustrates de-sugaring of the while loop.
+  */
+
+vc-helpers: |-
+
+vc-spec: |-
+  method bar (x:int, y:int) returns (r:int)
+    requires y >= 0;
+    ensures r == x + y;
+
+vc-code: |-
+  {
+    assume false;
+  }
+
+vc-postamble: |-
+

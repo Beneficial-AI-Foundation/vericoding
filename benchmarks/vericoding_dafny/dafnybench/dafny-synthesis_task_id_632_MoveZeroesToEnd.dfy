@@ -1,6 +1,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method MoveZeroesToEnd(arr: array<int>)
     requires arr.Length >= 2
     modifies arr
@@ -15,6 +16,7 @@ method MoveZeroesToEnd(arr: array<int>)
             exists k, l /* on new array */:: 0 <= k < l < arr.Length && arr[k] == old(arr[n]) && arr[l] == old(arr[m])
     //ensures IsOrderPreserved(arr[..], old(arr[..]))
     // Number of zeros is preserved
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -13,9 +13,11 @@ function comb(n: nat, k: nat): nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Comb(n: nat, k: nat) returns (res: nat)
   requires 0 <= k <= n
   ensures res == comb(n, k)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

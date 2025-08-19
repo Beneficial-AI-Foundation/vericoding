@@ -173,11 +173,13 @@ class SavingsAccount {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method rescue(amount: int)
     requires amount > 0
     requires RepInv()
     ensures RepInv()
     modifies Repr
+// </vc-spec>
 // <vc-code>
 {
   assume false;

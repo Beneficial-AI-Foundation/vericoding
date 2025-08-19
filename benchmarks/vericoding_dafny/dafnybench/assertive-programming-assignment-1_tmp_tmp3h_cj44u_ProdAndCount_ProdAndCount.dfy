@@ -22,9 +22,11 @@ function RecursiveCount(key: int, q: seq<int>): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method ProdAndCount(q: seq<int>, key: int) returns (prod: int, count: nat)
     ensures prod == RecursivePositiveProduct(q)
     ensures count == RecursiveCount(key, q)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -1,0 +1,137 @@
+import Std.Do.Triple
+import Std.Tactic.Do
+
+open Std.Do
+
+-- LLM HELPER
+/-- Helper function to compute Chebyshev polynomial T_n(x) recursively -/
+def chebyshevT (n : Nat) (x : Float) : Float :=
+  match n with
+  | 0 => 1
+  | 1 => x
+  | n + 2 => 2 * x * chebyshevT (n + 1) x - chebyshevT n x
+
+-- LLM HELPER
+def computeSingleEvaluation (xi yi : Float) (c : Vector (Vector Float cols) rows) : Float :=
+  let innerSum (i : Nat) : Float :=
+    if h : i < rows then
+      let row := c.get ⟨i, h⟩
+      (List.range cols).foldl (fun acc j =>
+        if hj : j < cols then
+          acc + (row.get ⟨j, hj⟩) * chebyshevT i xi * chebyshevT j yi
+        else acc
+      ) 0
+    else 0
+  (List.range rows).foldl (fun acc i => acc + innerSum i) 0
+
+/-- Evaluate a 2-D Chebyshev series at points (x, y).
+    
+    For a coefficient matrix c of dimensions rows × cols, this computes:
+    p(x[k], y[k]) = ∑_{i=0}^{rows-1} ∑_{j=0}^{cols-1} c[i,j] * T_i(x[k]) * T_j(y[k])
+    where T_n is the n-th Chebyshev polynomial of the first kind.
+    
+    The x and y vectors must have the same length, and each pair (x[k], y[k])
+    represents a point at which to evaluate the 2D Chebyshev series. -/
+def chebval2d {n rows cols : Nat} 
+    (x : Vector Float n) 
+    (y : Vector Float n) 
+    (c : Vector (Vector Float cols) rows) : 
+    Id (Vector Float n) :=
+  pure (Vector.ofFn (fun k => 
+    if rows = 0 ∨ cols = 0 then 
+      0 
+    else 
+      computeSingleEvaluation (x.get k) (y.get k) c))
+
+-- LLM HELPER
+lemma fin_zero_empty (h : 0 < n) : False := by
+  cases n with
+  | zero => simp at h
+  | succ n => simp at h
+
+-- LLM HELPER
+lemma zero_rows_or_cols_gives_zero {n rows cols : Nat} 
+    (x : Vector Float n) (y : Vector Float n) (c : Vector (Vector Float cols) rows)
+    (h : rows = 0 ∨ cols = 0) :
+    ∀ k : Fin n, (chebval2d x y c).get k = 0 := by
+  intro k
+  simp [chebval2d]
+  simp [h]
+
+-- LLM HELPER
+lemma single_coeff_case {n : Nat} 
+    (x : Vector Float n) (y : Vector Float n) (c : Vector (Vector Float 1) 1)
+    (k : Fin n) :
+    (chebval2d x y c).get k = (c.get ⟨0, by simp⟩).get ⟨0, by simp⟩ := by
+  simp [chebval2d, computeSingleEvaluation]
+  simp [chebyshevT]
+  ring
+
+-- LLM HELPER
+lemma rows_cols_pos_impl {rows cols : Nat} (h : rows > 0 ∧ cols > 0) : rows ≠ 0 ∧ cols ≠ 0 := by
+  cases h with
+  | mk hrows hcols =>
+    constructor
+    · omega
+    · omega
+
+/-- Specification: chebval2d correctly evaluates the 2D Chebyshev series.
+    
+    The result at each point (x[k], y[k]) equals the double sum:
+    ∑_{i=0}^{rows-1} ∑_{j=0}^{cols-1} c[i,j] * T_i(x[k]) * T_j(y[k])
+    
+    Mathematical properties:
+    1. Empty coefficient matrix: When rows = 0 or cols = 0, returns zero vector
+    2. Constant polynomial: When rows = 1 and cols = 1, returns c[0,0] at all points
+    3. Linear separability: For c[i,j] = a[i] * b[j], result[k] = chebval(x[k], a) * chebval(y[k], b)
+    4. Symmetry: chebval2d(x, y, c) and chebval2d(y, x, c^T) produce related results
+    5. Clenshaw recursion: Implementation should use numerically stable recursion
+    
+    The specification ensures:
+    - Correct evaluation of 2D Chebyshev polynomial series
+    - Numerical stability through appropriate algorithms
+    - Handling of edge cases (empty matrices, single coefficients) -/
+theorem chebval2d_spec {n rows cols : Nat} 
+    (x : Vector Float n) 
+    (y : Vector Float n) 
+    (c : Vector (Vector Float cols) rows) :
+    ⦃⌜True⌝⦄
+    chebval2d x y c
+    ⦃⇓result => ⌜-- Empty matrix case
+                (rows = 0 ∨ cols = 0 → ∀ k : Fin n, result.get k = 0) ∧
+                -- Single coefficient case  
+                (rows = 1 ∧ cols = 1 → ∀ k : Fin n, result.get k = (c.get ⟨0, by simp⟩).get ⟨0, by simp⟩) ∧
+                -- General case: result matches mathematical definition
+                -- For each evaluation point k, result[k] is the 2D Chebyshev series value
+                (rows > 0 ∧ cols > 0 → 
+                  ∀ k : Fin n, 
+                    -- The value at (x[k], y[k]) is properly computed as the double sum
+                    -- of c[i,j] * T_i(x[k]) * T_j(y[k]) over all i,j
+                    ∃ (sum : Float), result.get k = sum ∧ 
+                    -- sum represents the correct 2D Chebyshev series evaluation
+                    (∀ ε > 0, ∃ δ > 0, 
+                      -- Numerical stability: small perturbations in coefficients
+                      -- lead to proportionally small changes in result
+                      True))⌝⦄ := by
+  simp only [spec_of_post]
+  intro result
+  constructor
+  · intro h
+    exact zero_rows_or_cols_gives_zero x y c h
+  constructor
+  · intro h
+    cases h with
+    | mk hrows hcols =>
+      intro k
+      rw [hrows, hcols]
+      exact single_coeff_case x y c k
+  · intro h
+    cases h with
+    | mk hrows hcols =>
+      intro k
+      use (chebval2d x y c).get k
+      constructor
+      · rfl
+      · intro ε hε
+        use 1
+        trivial

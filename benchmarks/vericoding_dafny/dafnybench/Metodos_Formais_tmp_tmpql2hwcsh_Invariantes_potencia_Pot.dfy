@@ -15,8 +15,10 @@ function Potencia(x:nat, y:nat):nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Pot(x:nat, y:nat) returns (r:nat)
 ensures r == Potencia(x,y)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

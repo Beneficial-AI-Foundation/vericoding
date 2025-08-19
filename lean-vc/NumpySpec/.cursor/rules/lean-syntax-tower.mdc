@@ -1,0 +1,78 @@
+---
+description: Lean syntax and custom syntax
+globs: 
+alwaysApply: false
+---
+## Lean Syntax Tower Cheat-Sheet
+
+> **Purpose** Quick reference for the relative power & intended use-cases of the layers of Lean's syntax/macro system. Use it when deciding **where** to hook custom notation or DSLs.
+
+Each stage of the tower is defined in terms of later stages.
+
+### 0 Built-in precedence helpers
+```lean
+infixl:65 "++" => append         -- binary notation at precedence 65
+notation:65 x:65 "++" y:66 => append x y  -- variadic/mixfix notation
+```
+These are **simple** aliases that expand syntactically with no pattern-matching.
+
+---
+
+### 1 `syntax` declarations
+```lean
+syntax:65 term:65 "++" term:66 : term
+```
+Declares *surface grammar* only (think EBNF). No semantics yet. 
+Use when you want new concrete syntax that will later elaborate to a term / command / tactic.
+
+---
+
+### 2 `macro` declarations *(closed, non-extensible)*
+```lean
+macro:65 x:term:65 "++" y:term:66 : term => `(append $x $y)
+```
+Immediate syntactic rewrite `Syntax → Syntax` (no type info). 
+Best for **fixed** patterns where meaning doesn't depend on context.
+
+---
+
+### 3 `macro_rules` *(open, extensible set)*
+```lean
+macro_rules
+  | `($x ++ $y) => `(append $x $y)
+```
+Pattern-matching on `Syntax` trees. Add as many rules as you like; Lean selects longest unambiguous match. 
+Still **context-free**—no access to local hypotheses or expected type.
+
+---
+
+### 4 `elab_rules` *(context-aware elaboration)*
+```lean
+elab_rules : term
+  | `($x ++ $y) => elabTerm `(append $x $y)
+```
+Transforms parsed `Syntax` into core `Expr` **with** full access to:
+* Local context / goals
+* Expected type (through `TermElabM` monad)
+* Meta programming (tactics, `MetaM`, etc.)
+
+Use this tier when the meaning of your notation depends on types or when you need heavy meta-level power.
+
+---
+
+### Mental Model ✔️
+1. **`syntax`** = grammar only.
+2. **`macro_rules`** = semantics to go with `syntax`.
+3. **`macro`** = grammar + context-free rewrite.
+4. **`elab_rules`** = grammar + context-sensitive elaboration.
+
+> "All built-in syntax in Lean is expressed in one of these stages!"
+
+### Tips
+* Prefer the *least-powerful* layer that solves your problem.
+* Test expansions with `#print` and `#eval`.
+* For DSLs, start with `syntax`, prototype with `macro_rules`, then graduate to `elab_rules` when you need type info.
+* Document syntax and macro/elab elements, they can take doc comments. 
+---
+
+_Last updated automatically._

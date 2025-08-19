@@ -9,6 +9,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Search( s: seq<int>, x: int ) returns ( k: int )
     // Ekki má breyta forskilyrðum eða eftirskilyrðum fallsins
     requires forall p,q | 0 <= p < q < |s| :: s[p] <= s[q];
@@ -18,6 +19,7 @@ method Search( s: seq<int>, x: int ) returns ( k: int )
     ensures forall z | z in s[..k] :: z <= x;
     ensures forall z | z in s[k..] :: z >= x;
     ensures s == s[..k]+s[k..];
+// </vc-spec>
 // <vc-code>
 {
   assume false;

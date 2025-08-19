@@ -4,8 +4,10 @@ predicate positive(s:seq<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mpositivertl(v:array<int>) returns (b:bool)
 ensures b==positive(v[0..v.Length])
+// </vc-spec>
 // <vc-code>
 {
   assume false;

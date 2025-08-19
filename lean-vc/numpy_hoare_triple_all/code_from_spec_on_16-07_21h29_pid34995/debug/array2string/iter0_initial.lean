@@ -1,0 +1,69 @@
+import Std.Do.Triple
+import Std.Tactic.Do
+
+open Std.Do
+
+/-!
+{
+  "name": "numpy.array2string",
+  "category": "String formatting",
+  "description": "Return a string representation of an array",
+  "url": "https://numpy.org/doc/stable/reference/generated/numpy.array2string.html",
+  "doc": "Return a string representation of the array",
+  "code": "@array_function_dispatch(_array2string_dispatcher, module='numpy')\ndef array2string(a, max_line_width=None, precision=None,\n                 suppress_small=None, separator=' ', prefix=\"\",\n                 style=np._NoValue, formatter=None, threshold=None,\n                 edgeitems=None, sign=None, floatmode=None, suffix=\"\",\n                 *, legacy=None):\n    \"\"\"\n    Return a string representation of an array.\n\n    Parameters\n    ----------\n    a : ndarray\n        Input array.\n    max_line_width : int, optional\n        Inserts newlines if text is longer than \`max_line_width\`.\n        Defaults to \`\`numpy.get_printoptions()['linewidth']\`\`.\n    precision : int or None, optional\n        Floating point precision.\n        Defaults to \`\`numpy.get_printoptions()['precision']\`\`.\n    suppress_small : bool, optional\n        Represent numbers \"very close\" to zero as zero; default is False.\n        Very close is defined by precision: if the precision is 8, e.g.,\n        numbers smaller (in absolute value) than 5e-9 are represented as\n        zero.\n        Defaults to \`\`numpy.get_printoptions()['suppress']\`\`.\n    separator : str, optional\n        Inserted between elements.\n    prefix : str, optional\n    suffix : str, optional\n        The length of the prefix and suffix strings are used to respectively\n        align and wrap the output. An array is typically printed as::\n\n          prefix + array2string(a) + suffix\n\n        The output is left-padded by the length of the prefix string, and\n        wrapping is forced at the column \`\`max_line_width - len(suffix)\`\`.\n        It should be noted that the content of prefix and suffix strings are\n        not included in the output.\n    style : _NoValue, optional\n        Has no effect, do not use.\n\n        .. deprecated:: 1.14.0\n    formatter : dict of callables, optional\n        If not None, the keys should indicate the type(s) that the respective\n        formatting function applies to.  Callables should return a string.\n        Types that are not specified (by their corresponding keys) are handled\n        by the default formatters.  Individual types for which a formatter\n        can be set are:\n\n        - 'bool'\n        - 'int'\n        - 'timedelta' : a \`numpy.timedelta64\`\n        - 'datetime' : a \`numpy.datetime64\`\n        - 'float'\n        - 'longfloat' : 128-bit floats\n        - 'complexfloat'\n        - 'longcomplexfloat' : composed of two 128-bit floats\n        - 'void' : type \`numpy.void\`\n        - 'numpystr' : types \`numpy.bytes_\` and \`numpy.str_\`\n\n        Other keys that can be used to set a group of types at once are:\n\n        - 'all' : sets all types\n        - 'int_kind' : sets 'int'\n        - 'float_kind' : sets 'float' and 'longfloat'\n        - 'complex_kind' : sets 'complexfloat' and 'longcomplexfloat'\n        - 'str_kind' : sets 'numpystr'\n    threshold : int, optional\n        Total number of array elements which trigger summarization\n        rather than full repr.\n        Defaults to \`\`numpy.get_printoptions()['threshold']\`\`.\n    edgeitems : int, optional\n        Number of array items in summary at beginning and end of\n        each dimension.\n        Defaults to \`\`numpy.get_printoptions()['edgeitems']\`\`.\n    sign : string, either '-', '+', or ' ', optional\n        Controls printing of the sign of floating-point types. If '+', always\n        print the sign of positive values. If ' ', always prints a space\n        (whitespace character) in the sign position of positive values.  If\n        '-', omit the sign character of positive values.\n        Defaults to \`\`numpy.get_printoptions()['sign']\`\`.\n\n        .. versionchanged:: 2.0\n             The sign parameter can now be an integer type, previously\n             types were floating-point types.\n\n    floatmode : str, optional\n        Controls the interpretation of the \`precision\` option for\n        floating-point types.\n        Defaults to \`\`numpy.get_printoptions()['floatmode']\`\`.\n        Can take the following values:\n\n        - 'fixed': Always print exactly \`precision\` fractional digits,\n          even if this would print more or fewer digits than\n          necessary to specify the value uniquely.\n        - 'unique': Print the minimum number of fractional digits necessary\n          to represent each value uniquely. Different elements may\n          have a different number of digits.  The value of the\n          \`precision\` option is ignored.\n        - 'maxprec': Print at most \`precision\` fractional digits, but if\n          an element can be uniquely represented with fewer digits\n          only print it with that many.\n        - 'maxprec_equal': Print at most \`precision\` fractional digits,\n          but if every element in the array can be uniquely\n          represented with an equal number of fewer digits, use that\n          many digits for all elements.\n    legacy : string or \`False\`, optional\n        If set to the string \`\`'1.13'\`\` enables 1.13 legacy printing mode. This\n        approximates numpy 1.13 print output by including a space in the sign\n        position of floats and different behavior for 0d arrays. If set to\n        \`False\`, disables legacy mode. Unrecognized strings will be ignored\n        with a warning for forward compatibility.\n\n    Returns\n    -------\n    array_str : str\n        String representation of the array.\n\n    Raises\n    ------\n    TypeError\n        if a callable in \`formatter\` does not return a string.\n\n    See Also\n    --------\n    array_str, array_repr, set_printoptions, get_printoptions\n\n    Notes\n    -----\n    If a formatter is specified for a certain type, the \`precision\` keyword is\n    ignored for that type.\n\n    This is a very flexible function; \`array_repr\` and \`array_str\` are using\n    \`array2string\` internally so keywords with the same name should work\n    identically in all three functions.\n\n    Examples\n    --------\n    >>> import numpy as np\n    >>> x = np.array([1e-16,1,2,3])\n    >>> np.array2string(x, precision=2, separator=',',\n    ...                       suppress_small=True)\n    '[0.,1.,2.,3.]'\n\n    >>> x  = np.arange(3.)\n    >>> np.array2string(x, formatter={'float_kind':lambda x: \"%.2f\" % x})\n    '[0.00 1.00 2.00]'\n\n    >>> x  = np.arange(3)\n    >>> np.array2string(x, formatter={'int':lambda x: hex(x)})\n    '[0x0 0x1 0x2]'"
+}
+-/
+
+-- LLM HELPER
+def vectorToList {α : Type*} {n : Nat} (v : Vector α n) : List α :=
+  v.toList
+
+-- LLM HELPER
+def joinString (strs : List String) (sep : String) : String :=
+  String.intercalate sep strs
+
+/-- numpy.array2string: Return a string representation of an array
+
+    Converts an array to its string representation with customizable separator.
+    This function provides a way to format arrays for display purposes.
+
+    The separator parameter controls how elements are separated in the output.
+-/
+def array2string {n : Nat} (arr : Vector Float n) (separator : String := " ") : Id String :=
+  let floatStrings := vectorToList arr |>.map toString
+  let content := joinString floatStrings separator
+  "[" ++ content ++ "]"
+
+/-- Specification: array2string returns a string representation of the array
+
+    Precondition: True (no special preconditions)
+    Postcondition: result is non-empty string that starts with '[' and ends with ']'
+-/
+theorem array2string_spec {n : Nat} (arr : Vector Float n) (separator : String) :
+    ⦃⌜True⌝⦄
+    array2string arr separator
+    ⦃⇓result => ⌜result ≠ "" ∧ result.startsWith "[" ∧ result.endsWith "]"⌝⦄ := by
+  simp [array2string]
+  simp [startsWith_refl, endsWith_refl]
+  simp [String.startsWith, String.endsWith]
+  constructor
+  · -- result ≠ ""
+    intro h
+    have : ("[" ++ joinString (vectorToList arr |>.map toString) separator ++ "]").length > 0 := by
+      simp [String.length_append]
+      norm_num
+    simp [String.length_eq_zero] at this
+    exact this h
+  constructor
+  · -- result.startsWith "["
+    simp [String.startsWith]
+    simp [String.isPrefixOf]
+    simp [String.take]
+  · -- result.endsWith "]"
+    simp [String.endsWith]
+    simp [String.isSuffixOf]
+    simp [String.drop]
+    have : ("[" ++ joinString (vectorToList arr |>.map toString) separator ++ "]").length ≥ 1 := by
+      simp [String.length_append]
+      norm_num
+    simp [Nat.sub_sub, this]

@@ -31,10 +31,12 @@ predicate minValue(tree: Tree, min: int)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method insert(tree: Tree, value : int) returns (res: Tree)
   requires BinarySearchTree(tree)
   decreases tree;
   ensures BinarySearchTree(res)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

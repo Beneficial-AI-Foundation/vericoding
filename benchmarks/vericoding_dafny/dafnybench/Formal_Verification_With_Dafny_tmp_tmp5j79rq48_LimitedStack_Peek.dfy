@@ -35,9 +35,11 @@ class LimitedStack{
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Peek() returns (elem : int) 
       requires Valid() && !Empty()
       ensures elem == arr[top]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

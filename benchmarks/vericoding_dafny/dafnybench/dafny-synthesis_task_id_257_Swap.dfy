@@ -1,10 +1,12 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Swap(a: int, b: int) returns (result: seq<int>)
     ensures |result| == 2
     ensures result[0] == b
     ensures result[1] == a
+// </vc-spec>
 // <vc-code>
 {
   assume false;

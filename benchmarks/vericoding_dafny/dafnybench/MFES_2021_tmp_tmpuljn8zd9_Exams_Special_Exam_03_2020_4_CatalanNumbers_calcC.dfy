@@ -7,8 +7,10 @@ function C(n: nat): nat
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method calcC(n: nat) returns (res: nat)
     ensures res == C(n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

@@ -68,8 +68,10 @@ lemma from_bits_append(s: seq<bool>, b: bool)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method FastExp(b: nat, n: nat) returns (r: nat)
   ensures r == exp(b, n)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

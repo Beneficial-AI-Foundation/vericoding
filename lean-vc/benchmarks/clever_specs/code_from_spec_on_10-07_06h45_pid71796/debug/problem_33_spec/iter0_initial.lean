@@ -1,0 +1,100 @@
+def problem_spec
+-- function signature
+(implementation: List Int → List Int)
+-- inputs
+(l: List Int) :=
+-- spec
+let spec (result: List Int) :=
+  l.length = result.length ∧
+  let every_third_idx := (List.range l.length).filter (λ i => i % 3 = 0);
+  let every_third_val_in_result := every_third_idx.map (λ i => result.get! i);
+  let every_third_val := every_third_idx.map (λ i => l.get! i);
+  (∀ i, i < l.length → (i % 3 ≠ 0 → l.get! i = result.get! i)) ∧
+  List.Sorted Int.le every_third_val_in_result ∧
+  every_third_val.all (λ x => every_third_val_in_result.count x = every_third_val.count x);
+-- program termination
+∃ result, implementation l = result ∧
+spec result
+
+-- LLM HELPER
+def extract_every_third (l: List Int) : List Int :=
+  let indices := List.range l.length |>.filter (λ i => i % 3 = 0)
+  indices.map (λ i => l.get! i)
+
+-- LLM HELPER
+def sort_every_third_positions (l: List Int) : List Int :=
+  let indices := List.range l.length |>.filter (λ i => i % 3 = 0)
+  let values := indices.map (λ i => l.get! i)
+  let sorted_values := values.toArray.qsort Int.le |>.toList
+  
+  let rec replace_at_indices (original: List Int) (idx_list: List Nat) (val_list: List Int) : List Int :=
+    match original with
+    | [] => []
+    | h :: t =>
+      if idx_list.contains 0 then
+        match val_list with
+        | [] => h :: replace_at_indices t (idx_list.map (λ x => x - 1)) []
+        | v :: vs => v :: replace_at_indices t (idx_list.map (λ x => x - 1)) vs
+      else
+        h :: replace_at_indices t (idx_list.map (λ x => x - 1)) val_list
+  
+  replace_at_indices l indices sorted_values
+
+def implementation (l: List Int) : List Int := 
+  let indices := List.range l.length |>.filter (λ i => i % 3 = 0)
+  let values := indices.map (λ i => l.get! i)
+  let sorted_values := values.toArray.qsort Int.le |>.toList
+  
+  let rec build_result (i: Nat) (sorted_vals: List Int) : List Int :=
+    if i >= l.length then []
+    else if i % 3 = 0 then
+      match sorted_vals with
+      | [] => (l.get! i) :: build_result (i + 1) []
+      | v :: vs => v :: build_result (i + 1) vs
+    else
+      (l.get! i) :: build_result (i + 1) sorted_vals
+  
+  build_result 0 sorted_values
+
+-- LLM HELPER
+lemma build_result_length (l: List Int) (i: Nat) (sorted_vals: List Int) :
+  (implementation.build_result l i sorted_vals).length = max 0 (l.length - i) := by
+  sorry
+
+-- LLM HELPER  
+lemma implementation_length (l: List Int) : (implementation l).length = l.length := by
+  sorry
+
+-- LLM HELPER
+lemma implementation_preserves_non_third (l: List Int) (i: Nat) :
+  i < l.length → i % 3 ≠ 0 → (implementation l).get! i = l.get! i := by
+  sorry
+
+-- LLM HELPER
+lemma implementation_sorts_third_positions (l: List Int) :
+  let every_third_idx := (List.range l.length).filter (λ i => i % 3 = 0)
+  let every_third_val_in_result := every_third_idx.map (λ i => (implementation l).get! i)
+  List.Sorted Int.le every_third_val_in_result := by
+  sorry
+
+-- LLM HELPER
+lemma implementation_preserves_counts (l: List Int) :
+  let every_third_idx := (List.range l.length).filter (λ i => i % 3 = 0)
+  let every_third_val_in_result := every_third_idx.map (λ i => (implementation l).get! i)
+  let every_third_val := every_third_idx.map (λ i => l.get! i)
+  every_third_val.all (λ x => every_third_val_in_result.count x = every_third_val.count x) := by
+  sorry
+
+theorem correctness
+(l: List Int)
+: problem_spec implementation l := by
+  use implementation l
+  constructor
+  · rfl
+  · constructor
+    · exact implementation_length l
+    · constructor
+      · exact implementation_preserves_non_third l
+      · constructor
+        · exact implementation_sorts_third_positions l
+        · exact implementation_preserves_counts l

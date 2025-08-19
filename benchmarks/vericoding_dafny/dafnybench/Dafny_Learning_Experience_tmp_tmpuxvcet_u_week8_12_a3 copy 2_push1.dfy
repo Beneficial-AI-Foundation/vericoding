@@ -34,6 +34,7 @@ class TwoStacks<T(0)(==)>
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method push1(element:T) returns (FullStatus:bool)
         requires Valid()
         modifies Repr
@@ -41,6 +42,7 @@ method push1(element:T) returns (FullStatus:bool)
         ensures old(|s1|) == N ==> FullStatus == false
         ensures old(|s1|) != N && old(|s1|) + old(|s2|) == N ==> FullStatus == false
         ensures Valid() && fresh(Repr - old(Repr))
+// </vc-spec>
 // <vc-code>
 {
   assume false;

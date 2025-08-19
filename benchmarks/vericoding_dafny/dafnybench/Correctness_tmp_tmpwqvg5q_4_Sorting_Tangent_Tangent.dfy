@@ -10,6 +10,7 @@
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Tangent(r: array<int>, x: array<int>)
   returns (found: bool)
   requires forall i:: 1 <= i < x.Length ==> 
@@ -27,6 +28,7 @@ method Tangent(r: array<int>, x: array<int>)
           0 <= i < r.Length &&
           0 <= j < x.Length &&
           r[i] == x[j]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

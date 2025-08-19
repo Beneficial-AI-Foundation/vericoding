@@ -5,10 +5,12 @@ function abs(x: int): int{
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Max(x:int, y:int) returns (a:int)
 ensures a == x || a == y;
 ensures x > y ==> a == x;
 ensures x <= y ==> a == y;
+// </vc-spec>
 // <vc-code>
 {
   assume false;

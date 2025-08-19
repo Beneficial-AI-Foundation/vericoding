@@ -147,9 +147,11 @@ method{:verify false} IterativeDivMod'(x: Unary, y: Unary) returns (d: Unary, m:
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method IterativeDivMod(x: Unary, y: Unary) returns (d: Unary, m: Unary)
   requires y != Zero
   ensures Add(Mul(d, y), m) == x && Less(m, y)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

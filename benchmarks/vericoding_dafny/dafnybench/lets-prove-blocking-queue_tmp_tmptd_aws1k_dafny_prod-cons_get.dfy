@@ -89,11 +89,13 @@ module ProdCons {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method get(p: Process) 
             requires getEnabled(p)
             requires valid()                //  Invariant is inductive
             ensures |buffer| == |old(buffer)| - 1   //  this invariant is not needed and can be omitted
             modifies this
+// </vc-spec>
 // <vc-code>
 {
   assume false;

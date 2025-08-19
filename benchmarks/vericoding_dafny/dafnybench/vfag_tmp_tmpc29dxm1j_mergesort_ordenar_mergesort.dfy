@@ -20,6 +20,7 @@ method ordenar_mergesort(V : array?<int>)
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method mergesort(V : array?<int>, c : int, f : int) 
 
     requires V != null
@@ -28,6 +29,7 @@ method mergesort(V : array?<int>, c : int, f : int)
     decreases f - c
 
     modifies V
+// </vc-spec>
 // <vc-code>
 {
   assume false;

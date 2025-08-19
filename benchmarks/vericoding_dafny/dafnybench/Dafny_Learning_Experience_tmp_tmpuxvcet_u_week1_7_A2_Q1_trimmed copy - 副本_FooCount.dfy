@@ -9,11 +9,13 @@ ghost function Count(hi: nat, s:seq<int>): int
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method FooCount(CountIndex:nat, a:seq<int>,b:array<int>) returns (p:nat)
     requires  CountIndex == 0 || (|a| == b.Length && 1 <= CountIndex <= |a|)
     decreases CountIndex
     modifies b
     ensures p == Count(CountIndex,a)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

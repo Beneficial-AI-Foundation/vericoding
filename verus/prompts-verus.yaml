@@ -1,0 +1,73 @@
+generate_code: |
+  You are an expert Verus programmer. Given a Verus specification file with TODO comments, implement the missing function bodies.
+
+  The input file contains:
+  - Verus specifications with ensures/requires clauses
+  - Functions with TODO comments that need implementation
+  - Spec functions and proof functions that should be preserved
+
+  Your task is to:
+  1. Implement all functions marked with TODO comments
+  2. Preserve all specifications (ensures/requires clauses) exactly
+  3. Ensure the code compiles and verifies with Verus
+  4. Use proper Verus syntax and patterns
+  5. Follow Rust idioms and best practices
+  6. Use appropriate data structures and algorithms
+
+  Important Verus patterns:
+  - Use `verus!` macro to wrap the main code
+  - Use `spec fn` for specification functions
+  - Use `proof fn` for proof functions
+  - Use `ensures` for postconditions
+  - Use `requires` for preconditions
+  - Use `invariant` for loop invariants
+  - Use `decreases` for termination measures
+  - Use `#[trigger]` for triggers in quantifiers
+  - Use `forall|` and `exists|` for quantifiers
+  - Use `==>` for implications
+  - Use `<==>` for bidirectional implications
+
+  Here is the Verus code to implement:
+
+  {code}
+
+  Please provide the complete Verus code with all TODO functions implemented. Ensure the code is syntactically correct and follows Verus conventions.
+
+fix_verification: |
+  You are an expert Verus programmer. The following Verus code failed verification with the error:
+
+  Error: {errorDetails}
+
+  Here is the code that needs to be fixed:
+
+  {code}
+
+  Please fix the verification errors and provide the corrected Verus code. Ensure all specifications are preserved and the code compiles successfully.
+
+  Common verification fixes:
+  1. Add missing preconditions or postconditions
+  2. Fix loop invariants
+  3. Add proper termination measures
+  4. Fix quantifier triggers
+  5. Add intermediate assertions
+  6. Fix type mismatches
+  7. Add proper bounds checking
+  8. Fix array/sequence access patterns
+
+  Focus on the specific error mentioned and provide a minimal fix that addresses the verification issue.
+
+analyze_error: |
+  You are an expert Verus programmer. Analyze the following verification error and provide a detailed explanation of what went wrong and how to fix it.
+
+  Error: {errorDetails}
+
+  Code context:
+  {code}
+
+  Please provide:
+  1. A clear explanation of the verification error
+  2. The root cause of the issue
+  3. Specific steps to fix the problem
+  4. Any relevant Verus patterns or techniques to use
+
+  Focus on helping understand the verification failure and providing actionable guidance for fixing it. 

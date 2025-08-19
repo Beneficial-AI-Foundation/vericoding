@@ -147,6 +147,7 @@ predicate is_max_nit(b : nat, q : nat) {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method nit_add(b : nat, x : nat, y : nat) returns (z : nat, carry : nat)
   requires (valid_base(b))
   requires (nitness(b, x))
@@ -155,6 +156,7 @@ method nit_add(b : nat, x : nat, y : nat) returns (z : nat, carry : nat)
   ensures  (nitness(b, carry))
   // This is a useful fact for doing general form addition.
   ensures  (carry == 0 || carry == 1)
+// </vc-spec>
 // <vc-code>
 {
   assume false;

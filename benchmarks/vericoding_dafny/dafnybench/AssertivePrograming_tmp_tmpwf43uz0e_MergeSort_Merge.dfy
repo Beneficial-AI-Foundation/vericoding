@@ -31,11 +31,13 @@ DO NOT modify the specification or any other part of the method's signature
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Merge(b: array<int>, c: array<int>, d: array<int>)
     requires b != c && b != d && b.Length == c.Length + d.Length
     requires Sorted(c[..]) && Sorted(d[..])
     ensures Sorted(b[..]) && multiset(b[..]) == multiset(c[..])+multiset(d[..])
     modifies b
+// </vc-spec>
 // <vc-code>
 {
   assume false;

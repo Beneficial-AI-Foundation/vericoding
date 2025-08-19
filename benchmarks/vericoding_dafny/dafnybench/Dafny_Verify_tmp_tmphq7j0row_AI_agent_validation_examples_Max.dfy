@@ -39,9 +39,11 @@ function Power(n: nat): nat {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Max(a: array<nat>) returns (m: int)
     ensures forall i :: 0 <= i < a.Length ==> a[i] <= m
     ensures (m == 0 && a.Length == 0) || exists i :: 0 <= i < a.Length && m == a[i]
+// </vc-spec>
 // <vc-code>
 {
   assume false;

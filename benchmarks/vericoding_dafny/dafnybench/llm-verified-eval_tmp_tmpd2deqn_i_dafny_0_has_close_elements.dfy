@@ -6,6 +6,7 @@ function abs(x: real): real
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method has_close_elements(numbers: seq<real>, threshold: real) returns (result: bool)
     ensures result <==> exists i, j ::
       0 <= i < |numbers| &&
@@ -13,6 +14,7 @@ method has_close_elements(numbers: seq<real>, threshold: real) returns (result: 
       i != j &&
       abs(numbers[i] - numbers[j]) < threshold
     ensures result ==> |numbers| > 1
+// </vc-spec>
 // <vc-code>
 {
   assume false;

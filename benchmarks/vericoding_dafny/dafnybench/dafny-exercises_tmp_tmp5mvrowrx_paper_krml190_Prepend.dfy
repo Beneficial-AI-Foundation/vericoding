@@ -39,10 +39,12 @@ class Node {
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method Prepend(d: Data) returns (r: Node)
     requires Valid()
     ensures r.Valid() && fresh(r.footprint - old(footprint))
     ensures r.list == [d] + list
+// </vc-spec>
 // <vc-code>
 {
   assume false;

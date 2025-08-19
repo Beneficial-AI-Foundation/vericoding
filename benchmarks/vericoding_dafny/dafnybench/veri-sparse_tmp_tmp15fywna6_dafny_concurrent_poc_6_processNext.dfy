@@ -134,6 +134,7 @@ class MatrixVectorMultiplier
 // <vc-helpers>
 // </vc-helpers>
 
+// <vc-spec>
 method processNext(M: array2<int>, x: seq<int>, y: array<int>, P : set<Process>, leftOvers : array<nat>)
         requires Valid(M, x, y, P, leftOvers)
         requires exists p :: (p in P && p.opsLeft > 0)
@@ -143,6 +144,7 @@ method processNext(M: array2<int>, x: seq<int>, y: array<int>, P : set<Process>,
 
         ensures Valid(M, x, y, P, leftOvers)
         ensures sum(leftOvers[..]) == sum(old(leftOvers[..])) - 1
+// </vc-spec>
 // <vc-code>
 {
   assume false;
