@@ -1,7 +1,0 @@
-{
-  "task_id": "HumanEval/139",
-  "prompt": "\ndef special_factorial(n):\n    \"\"\"The Brazilian factorial is defined as:\n    brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1!\n    where n > 0\n\n    For example:\n    >>> special_factorial(4)\n    288\n\n    The function will receive an integer as input and should return the special\n    factorial of this integer.\n    \"\"\"\n",
-  "entry_point": "special_factorial",
-  "canonical_solution": "    fact_i = 1\n    special_fact = 1\n    for i in range(1, n+1):\n        fact_i *= i\n        special_fact *= fact_i\n    return special_fact\n",
-  "test": "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(4) == 288, \"Test 4\"\n    assert candidate(5) == 34560, \"Test 5\"\n    assert candidate(7) == 125411328000, \"Test 7\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(1) == 1, \"Test 1\"\n\n"
-}
