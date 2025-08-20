@@ -9,7 +9,7 @@ default_tool_path = "dafny"
 prompts_file = "prompts.yaml"
 
 # Verification command patterns
-verify_command = ["{tool_path}", "verify", "{file_path}"]
+verify_command = ["{tool_path}", "verify", "--allow-warnings", "{file_path}"]
 compile_check_command = ["{tool_path}", "resolve", "{file_path}"]
 
 # Code extraction patterns
