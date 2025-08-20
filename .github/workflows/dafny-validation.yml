@@ -30,9 +30,6 @@ jobs:
       with:
         dafny-version: "4.9.1"
         
-    - name: Make conversion script executable
-      run: chmod +x src/convert_from_yaml.py
-      
     - name: Convert YAML files and validate with Dafny
       run: |
         set -e  # Exit on any error
@@ -61,7 +58,7 @@ jobs:
           echo "Running dafny resolve on: $dfy_file"
           dafny resolve "$dfy_file"
           
-          echo "✓ Successfully validated: $dfy_file"
+          echo "✓ Successfully validated syntax: $dfy_file"
         done
         
         echo "All Dafny files validated successfully!"
