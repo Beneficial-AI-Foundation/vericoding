@@ -34,18 +34,10 @@ jobs:
       run: |
         set -e  # Exit on any error
         
-        # Find all YAML files in the target directory
-        yaml_files=$(find benchmarks/vericoding_raw/dafnybench -name "*.yaml" -type f)
-        
-        if [ -z "$yaml_files" ]; then
-          echo "No YAML files found in benchmarks/vericoding_raw/dafnybench"
-          exit 1
-        fi
-        
-        echo "Found $(echo "$yaml_files" | wc -l) YAML files to process"
-        
-        # Process each YAML file
-        for yaml_file in $yaml_files; do
+        # Process each YAML file (robust against spaces in filenames)
+        yaml_count=0
+        while IFS= read -r -d '' yaml_file; do
+          yaml_count=$((yaml_count + 1))
           echo "Processing: $yaml_file"
           
           # Convert YAML to .dfy
@@ -59,6 +51,11 @@ jobs:
           dafny resolve "$dfy_file"
           
           echo "✓ Successfully validated syntax: $dfy_file"
-        done
+        done < <(find benchmarks/vericoding_raw/dafnybench -name "*.yaml" -type f -print0)
         
-        echo "All Dafny files validated successfully!"
+        if [ $yaml_count -eq 0 ]; then
+          echo "No YAML files found in benchmarks/vericoding_raw/dafnybench"
+          exit 1
+        fi
+        
+        echo "All $yaml_count Dafny files validated successfully!"
