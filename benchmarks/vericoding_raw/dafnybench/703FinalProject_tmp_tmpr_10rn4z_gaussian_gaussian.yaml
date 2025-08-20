@@ -3,8 +3,8 @@ vc-preamble: |-
   // /Applications/dafny/dafny /Users/apple/GaussianDP/Dafny/gaussian.dfy
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method gaussian (size:int, q: array<real>, q_hat: array<real>) returns (out: array<real>)

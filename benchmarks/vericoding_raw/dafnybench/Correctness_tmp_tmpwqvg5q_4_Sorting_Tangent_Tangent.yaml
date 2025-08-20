@@ -9,8 +9,8 @@ vc-preamble: |-
   // Question 1
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Tangent(r: array<int>, x: array<int>)

@@ -36,8 +36,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Sorter(bases: seq<Bases>) returns (sobases:seq<Bases>)

@@ -11,8 +11,8 @@ vc-preamble: |-
   // iterative calculation of Fibonacci numbers
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method FibonacciIterative(n: nat) returns (f: nat)

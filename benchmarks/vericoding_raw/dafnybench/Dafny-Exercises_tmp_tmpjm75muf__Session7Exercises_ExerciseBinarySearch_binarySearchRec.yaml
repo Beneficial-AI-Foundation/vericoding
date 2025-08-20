@@ -12,8 +12,8 @@ vc-preamble: |-
   //Recursive binary search
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method binarySearchRec(v:array<int>, elem:int, c:int, f:int) returns (p:int)

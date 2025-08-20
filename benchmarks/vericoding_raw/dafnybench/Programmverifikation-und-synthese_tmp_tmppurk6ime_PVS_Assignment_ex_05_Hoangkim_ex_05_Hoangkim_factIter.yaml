@@ -12,8 +12,8 @@ vc-preamble: |-
   {if n==0 then 1 else n*fact(n-1)}
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method factIter(n:nat) returns (a:nat)

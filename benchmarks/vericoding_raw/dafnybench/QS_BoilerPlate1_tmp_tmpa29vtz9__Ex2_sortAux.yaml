@@ -76,8 +76,8 @@ vc-preamble: |-
   // Ex3
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method sortAux(a : array<int>, l : int, r : int)

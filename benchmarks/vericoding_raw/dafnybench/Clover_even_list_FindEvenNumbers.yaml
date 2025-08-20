@@ -1,8 +1,8 @@
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method FindEvenNumbers (arr: array<int>) returns (evenNumbers: array<int>)
@@ -14,6 +14,7 @@ vc-spec: |-
 
 vc-code: |-
   {
+    assume(false);
     var evenList: seq<int> := [];
     ghost var indices: seq<int> := [];
 

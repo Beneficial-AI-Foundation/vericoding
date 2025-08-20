@@ -1,8 +1,8 @@
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method CalcProduct(m: nat, n: nat) returns (res: nat)

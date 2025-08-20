@@ -65,8 +65,8 @@ vc-preamble: |-
   // of elements in the array.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Reverse (a : array<int>) returns (aRev : array<int>)

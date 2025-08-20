@@ -7,8 +7,8 @@ vc-preamble: |-
   // Finds the maximum value in a non-empty array.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method findMax(a: array<real>) returns (max: real)

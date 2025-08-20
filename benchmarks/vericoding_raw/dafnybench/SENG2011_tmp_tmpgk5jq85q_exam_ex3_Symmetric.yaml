@@ -1,8 +1,8 @@
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Symmetric(a: array<int>) returns (flag: bool)

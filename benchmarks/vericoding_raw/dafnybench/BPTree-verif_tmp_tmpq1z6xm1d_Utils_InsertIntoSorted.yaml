@@ -328,8 +328,8 @@ vc-preamble: |-
   // verifies in more than 45 seconds, but less than 100 seconds
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method InsertIntoSorted(a: array<int>, limit:int, key:int) returns (b: array<int>)

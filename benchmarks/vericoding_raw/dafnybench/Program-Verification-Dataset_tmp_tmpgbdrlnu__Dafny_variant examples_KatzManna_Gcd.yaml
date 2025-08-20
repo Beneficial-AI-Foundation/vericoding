@@ -3,8 +3,8 @@ vc-preamble: |-
   // RUN: %diff "%s.expect" "%t"
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Gcd(x1: int, x2: int)

@@ -46,8 +46,8 @@ vc-preamble: |-
   // Klárið að forrita þetta fall.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Sort( m: multiset<int> ) returns ( s: seq<int> )

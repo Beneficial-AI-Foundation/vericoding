@@ -34,8 +34,8 @@ vc-preamble: |-
     } //[tam] ; [1, 2, 3, 4]
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method auxInsertSpaceQueue(item:int)
@@ -47,6 +47,7 @@ vc-spec: |-
 
 vc-code: |-
   {
+    assume(false);
   }
 
 vc-postamble: |-

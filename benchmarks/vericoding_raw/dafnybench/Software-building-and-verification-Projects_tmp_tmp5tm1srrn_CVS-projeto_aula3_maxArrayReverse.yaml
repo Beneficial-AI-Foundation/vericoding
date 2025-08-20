@@ -21,8 +21,8 @@ vc-preamble: |-
   // 5.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method maxArrayReverse(arr : array<int>) returns (max: int)

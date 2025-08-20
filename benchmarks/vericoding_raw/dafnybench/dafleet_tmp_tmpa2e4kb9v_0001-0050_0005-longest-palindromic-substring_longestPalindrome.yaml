@@ -62,8 +62,8 @@ vc-preamble: |-
   // We traverse all centers from left to right, and "expand" each of them, to find the longest palindrome.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method longestPalindrome(s: string) returns (ans: string, lo: int, hi: int)

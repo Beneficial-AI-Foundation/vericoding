@@ -2,8 +2,8 @@ vc-preamble: |-
   // returns an index of the largest element of array 'a' in the range [0..n)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method findMax (a : array<int>, n : int) returns (r:int)

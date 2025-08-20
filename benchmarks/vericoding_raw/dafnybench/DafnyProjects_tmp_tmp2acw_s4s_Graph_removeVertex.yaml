@@ -30,8 +30,8 @@ vc-preamble: |-
      // Removes a vertex v and all the edges incident on v from the graph.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method removeVertex(v: T)

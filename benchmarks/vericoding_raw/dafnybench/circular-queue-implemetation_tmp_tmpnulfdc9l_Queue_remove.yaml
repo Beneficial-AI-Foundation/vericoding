@@ -41,8 +41,8 @@ vc-preamble: |-
     // vai ser sobrescrito pela inserção
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method remove() returns (item: int)

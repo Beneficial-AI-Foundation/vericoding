@@ -115,8 +115,8 @@ vc-preamble: |-
    */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method unique(a: seq<int>) returns (b: seq<int>) 

@@ -27,8 +27,8 @@ vc-preamble: |-
   //Second Exercise
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method euclidianDiv(a: int,b : int) returns (q: int,r: int)

@@ -314,8 +314,8 @@ vc-preamble: |-
       }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method tx_write(offset: int, val : int)

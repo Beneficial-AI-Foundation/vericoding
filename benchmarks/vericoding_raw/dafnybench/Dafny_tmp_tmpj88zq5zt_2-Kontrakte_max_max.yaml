@@ -1,8 +1,8 @@
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method max(a: array<int>, b: array<int>, i: int, j: int)

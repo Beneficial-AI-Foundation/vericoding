@@ -147,8 +147,8 @@ vc-preamble: |-
     // provided that no user-defined mailbox has name n already
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method newMailbox(n: string)

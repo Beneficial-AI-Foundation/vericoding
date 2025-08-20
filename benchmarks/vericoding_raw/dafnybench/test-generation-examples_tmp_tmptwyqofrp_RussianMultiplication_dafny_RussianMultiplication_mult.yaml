@@ -4,8 +4,8 @@ vc-preamble: |-
       export provides mult
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method mult(n0 : int, m0 : int) returns (res : int)

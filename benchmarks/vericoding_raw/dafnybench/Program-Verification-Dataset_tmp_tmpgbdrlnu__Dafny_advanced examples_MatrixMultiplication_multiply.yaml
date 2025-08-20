@@ -22,8 +22,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method multiply(m1: array2<int>, m2: array2<int>) returns (m3: array2<int>)

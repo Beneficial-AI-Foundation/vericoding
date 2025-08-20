@@ -90,8 +90,8 @@ vc-preamble: |-
     // Removes message m from mailbox. m must not be in the mailbox.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method remove(m: Message)

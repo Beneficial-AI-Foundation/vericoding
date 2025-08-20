@@ -7,8 +7,8 @@ vc-preamble: |-
   // preconditions, as proved by the MaximumIsUnique lemma below.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Maximum(values: seq<int>) returns (max: int)

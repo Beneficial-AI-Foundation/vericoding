@@ -47,8 +47,8 @@ vc-preamble: |-
   // (Some invariants were tricky to find, but Dafny was smart enough otherwise)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method lol_sort(a: array<int>)

@@ -26,8 +26,8 @@ vc-preamble: |-
   //Algorithm : from right to left
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method mmaxvalue2(v:array<int>) returns (m:int)

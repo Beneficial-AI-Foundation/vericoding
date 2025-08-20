@@ -10,8 +10,8 @@ vc-preamble: |-
   // or -1 if not found.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method binarySearch(a: array<int>, x: int) returns (index: int) 

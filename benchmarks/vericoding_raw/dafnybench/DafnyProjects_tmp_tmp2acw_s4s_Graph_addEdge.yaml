@@ -23,8 +23,8 @@ vc-preamble: |-
      // Adds a new edge (u, v) to this graph.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method addEdge(u: T, v: T)

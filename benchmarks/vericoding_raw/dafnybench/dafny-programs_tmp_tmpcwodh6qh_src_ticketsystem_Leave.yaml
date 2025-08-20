@@ -64,8 +64,8 @@ vc-preamble: |-
       //     ensures Valid()
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Leave(p: Process)

@@ -15,8 +15,8 @@ vc-preamble: |-
   // Sorts array 'a' using the selection sort algorithm.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method selectionSort(a: array<real>)

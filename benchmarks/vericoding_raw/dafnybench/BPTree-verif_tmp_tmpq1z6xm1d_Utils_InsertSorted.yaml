@@ -244,8 +244,8 @@ vc-preamble: |-
   /*
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method InsertSorted(a: array<int>, key: int ) returns (b: array<int>)

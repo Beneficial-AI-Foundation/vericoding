@@ -5,8 +5,8 @@ vc-preamble: |-
   // table:     XXX
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method problem2(p:int, q:int, X:int, Y:int) returns (r:int, s:int)

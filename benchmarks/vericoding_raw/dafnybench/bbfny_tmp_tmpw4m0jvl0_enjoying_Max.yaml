@@ -2,8 +2,8 @@ vc-preamble: |-
   // shenanigans going through the dafny tutorial
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Max(a: int, b: int) returns (c: int)

@@ -18,8 +18,8 @@ vc-preamble: |-
   // Recursive version, imperative, with time and space complexity O(log n).
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method powerOpt(x: real, n: nat) returns (p : real)

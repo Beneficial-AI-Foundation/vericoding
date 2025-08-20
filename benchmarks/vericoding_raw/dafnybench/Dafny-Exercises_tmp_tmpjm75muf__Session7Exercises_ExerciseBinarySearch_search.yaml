@@ -26,8 +26,8 @@ vc-preamble: |-
    }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method search(v:array<int>,elem:int) returns (b:bool)

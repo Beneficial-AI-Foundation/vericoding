@@ -34,8 +34,8 @@ vc-preamble: |-
         // Returns the top element of the stack, without removing it.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Peek() returns (elem : int) 

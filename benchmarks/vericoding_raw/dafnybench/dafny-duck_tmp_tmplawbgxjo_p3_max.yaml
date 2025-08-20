@@ -2,8 +2,8 @@ vc-preamble: |-
   //Given an array of natural numbers, it returns the maximum value. [5,1,3,6,12,3]->12
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method max(x:array<nat>) returns (y:nat) 

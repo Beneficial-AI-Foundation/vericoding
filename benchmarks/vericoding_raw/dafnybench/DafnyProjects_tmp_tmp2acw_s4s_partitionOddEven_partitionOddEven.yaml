@@ -3,8 +3,8 @@ vc-preamble: |-
   // so that all odd numbers appear before all even numbers.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method partitionOddEven(a: array<nat>) 

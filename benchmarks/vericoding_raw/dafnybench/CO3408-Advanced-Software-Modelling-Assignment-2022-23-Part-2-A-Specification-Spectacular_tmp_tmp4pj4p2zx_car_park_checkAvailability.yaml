@@ -39,8 +39,8 @@ vc-preamble: |-
     // based on the current state of the car park and whether it is a weekend or not
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method checkAvailability() returns (availableSpaces: int) 

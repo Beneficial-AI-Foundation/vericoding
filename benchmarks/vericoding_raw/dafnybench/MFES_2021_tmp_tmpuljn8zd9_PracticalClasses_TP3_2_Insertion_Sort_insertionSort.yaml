@@ -2,8 +2,8 @@ vc-preamble: |-
   // Sorts array 'a' using the insertion sort algorithm.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method insertionSort(a: array<int>) 

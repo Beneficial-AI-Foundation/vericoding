@@ -56,8 +56,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method DSpMSpV(X_val : array<int>, X_crd : array<nat>, X_pos : array<nat>,

@@ -3,8 +3,8 @@ vc-preamble: |-
   // RUN: %diff "%s.expect" "%t"
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method NinetyOne(x: int, ghost proveFunctionalPostcondition: bool) returns (z: int)

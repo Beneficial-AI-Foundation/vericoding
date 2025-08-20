@@ -76,8 +76,8 @@ vc-preamble: |-
           /** Event: a process puts an element in the queue.  */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method put(p: Process, t : T) 

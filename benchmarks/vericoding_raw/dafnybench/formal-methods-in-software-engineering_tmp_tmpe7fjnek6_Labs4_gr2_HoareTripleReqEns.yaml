@@ -20,8 +20,8 @@ vc-preamble: |-
   // varianta requires-ensures
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method HoareTripleReqEns(i: int, k: int) returns (k': int)

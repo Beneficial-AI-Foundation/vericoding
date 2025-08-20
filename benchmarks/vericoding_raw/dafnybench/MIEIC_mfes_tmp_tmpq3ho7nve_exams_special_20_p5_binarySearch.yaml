@@ -11,8 +11,8 @@ vc-preamble: |-
   // in a sorted array 'a', so that it remains sorted.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method binarySearch(a: array<T>, x: T) returns (index: int) 

@@ -10,8 +10,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method FindAddends(q: seq<int>, x: int) returns (i: nat, j: nat)

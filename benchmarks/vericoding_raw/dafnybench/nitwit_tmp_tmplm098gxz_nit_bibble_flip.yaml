@@ -217,8 +217,8 @@ vc-preamble: |-
   */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method bibble_flip(b : nat, p : seq<nat>) returns (fp : seq<nat>)

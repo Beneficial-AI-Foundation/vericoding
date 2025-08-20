@@ -10,8 +10,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method FilterVowelsArray(xs: array<char>) returns (ys: array<char>)

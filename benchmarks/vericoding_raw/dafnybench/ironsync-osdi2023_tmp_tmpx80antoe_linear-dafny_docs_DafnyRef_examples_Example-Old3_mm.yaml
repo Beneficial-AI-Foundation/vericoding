@@ -4,8 +4,8 @@ vc-preamble: |-
     var z2: array<nat>
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method mm()

@@ -40,8 +40,8 @@ vc-preamble: |-
         // Pops the top element off the stack.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Pop() returns (elem : int)

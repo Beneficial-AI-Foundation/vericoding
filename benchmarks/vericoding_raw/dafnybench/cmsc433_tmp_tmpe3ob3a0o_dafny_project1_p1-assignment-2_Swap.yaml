@@ -24,8 +24,8 @@ vc-preamble: |-
   // Fill in requires clause(s) that enable(s) Dafny to verify the array bounds
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   // in method Swap (which swaps elements i and j in array a).

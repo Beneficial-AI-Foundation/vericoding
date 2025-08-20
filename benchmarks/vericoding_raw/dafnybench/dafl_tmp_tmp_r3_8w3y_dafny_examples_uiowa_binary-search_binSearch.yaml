@@ -14,8 +14,8 @@ vc-preamble: |-
   // a[lo] <= a[lo+1] <= ... <= a[hi-2] <= a[hi-1]
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method binSearch(a:array<int>, K:int) returns (b:bool)

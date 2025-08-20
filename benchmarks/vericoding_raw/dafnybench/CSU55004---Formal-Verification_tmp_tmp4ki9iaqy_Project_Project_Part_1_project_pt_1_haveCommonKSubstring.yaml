@@ -77,8 +77,8 @@ vc-preamble: |-
   //This method should return true iff str1 and str1 have a common substring of length k
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method haveCommonKSubstring(k:nat, str1:string, str2:string) returns(found:bool)

@@ -3,8 +3,8 @@ vc-preamble: |-
   // Invariante significa que o valor não muda desde a pré-condição até a pós-condição
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Mult(x:nat, y:nat) returns (r:nat)

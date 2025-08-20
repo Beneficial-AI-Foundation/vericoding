@@ -51,8 +51,8 @@ vc-preamble: |-
   // You do *not* need to implement the method!
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Euclid (m : int, n : int) returns (gcd : int)

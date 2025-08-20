@@ -21,8 +21,8 @@ vc-preamble: |-
   // Ex3
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method sort(a : array<int>) 
