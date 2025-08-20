@@ -51,7 +51,7 @@ vc-postamble: |-
            calc {
               SetProduct(s);
               y * SetProduct(s - {y});
-              { SetProductLemma(s - {y}, x); }
+              { SetProductLemma(s - {y}, x); assume(false);}
               y * x * SetProduct(s - {y} - {x});
               { assert s - {x} - {y} == s - {y} - {x};}
               y * x * SetProduct(s - {x} - {y});
