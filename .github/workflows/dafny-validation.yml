@@ -31,7 +31,7 @@ jobs:
         dafny-version: "4.9.1"
         
     - name: Make conversion script executable
-      run: chmod +x convert_from_yaml.py
+      run: chmod +x src/convert_from_yaml.py
       
     - name: Convert YAML files and validate with Dafny
       run: |
@@ -52,7 +52,7 @@ jobs:
           echo "Processing: $yaml_file"
           
           # Convert YAML to .dfy
-          python convert_from_yaml.py "$yaml_file" --suffix dfy
+          python src/convert_from_yaml.py "$yaml_file" --suffix dfy
           
           # Get the corresponding .dfy file path
           dfy_file="${yaml_file%.yaml}.dfy"
