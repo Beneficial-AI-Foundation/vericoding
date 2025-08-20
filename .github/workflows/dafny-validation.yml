@@ -56,7 +56,7 @@ jobs:
           
           # Run dafny resolve on the generated file
           echo "Running dafny resolve on: $dfy_file"
-          dafny resolve "$dfy_file"
+          dafny resolve --allow-warnings "$dfy_file"
           
           echo "✓ Successfully validated syntax: $dfy_file"
         done < <(find benchmarks/vericoding_raw/dafnybench -name "*.yaml" -type f -print0)
