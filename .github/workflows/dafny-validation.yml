@@ -1,8 +1,7 @@
-name: Dafny Validation
+name: Dafny Syntax Validation
 
 on:
   pull_request:
-    branches: [ main ]
   push:
     branches: [ main ]
 
