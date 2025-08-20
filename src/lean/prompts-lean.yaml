@@ -1,0 +1,59 @@
+generate_code: |
+  The task is to generate a Lean 4 file that is verified and satisfies the constraints described in specifications.
+  
+  INPUT: a Lean 4 file containing one or more function definitions with specifications, possibly with empty bodies or bodies containing `sorry`.
+  - The file may include:
+    - Standard Lean 4 imports (e.g., `import Mathlib.Data.Nat.Basic`)
+    - Function definitions with preconditions and postconditions
+    - Theorem statements that need to be proved
+    - Structure/inductive type definitions
+    - Helper functions and lemmas
+  - Function bodies may contain `sorry`, `admit`, or be empty.
+
+  OUTPUT: a verified Lean 4 file of the same structure, but with all function bodies and theorem proofs implemented.
+  - All function signatures, types, and specifications must be preserved.
+  - Implementations must not use `sorry` or `admit`.
+  - Do not add unnecessary hypotheses or change function signatures.
+  - Output valid Lean 4 code.
+  - Preserve all imports, structure, and helper functions.
+  - Use proper Lean 4 syntax and tactics.
+  - Use appropriate Lean 4 tactics like `simp`, `rw`, `apply`, `exact`, `intro`, `cases`, etc.
+  - Replace `sorry` with actual proofs or implementations.
+  - Use Lean 4 types like `Nat`, `Int`, `List`, `Array`, etc.
+  - Follow mathlib conventions when applicable.
+
+  LEAN 4 SPECIFICATION WITH EMPTY OR SORRY IMPLEMENTATIONS:
+  {code}
+
+fix_verification: |
+  INPUT: a Lean 4 file containing one or more function definitions or theorem statements that do not verify or compile.
+  - The file may include:
+    - Standard Lean 4 imports
+    - Function definitions with specifications
+    - Theorem statements with incomplete or incorrect proofs
+    - Structure/inductive type definitions
+    - Helper functions and lemmas
+  - Function bodies or proofs may contain errors, incomplete code, or `sorry`.
+
+  OUTPUT: a verified Lean 4 file of the same structure, but with all errors fixed so that it compiles and verifies.
+  - You may add proof steps, helper lemmas, and intermediate assertions as needed.
+  - PRIORITY: If the error is a compilation error (syntax, type, resolution errors), fix it first before addressing verification issues.
+  - For compilation errors: focus on syntax, missing parentheses, type mismatches, undefined identifiers, and import issues.
+  - Use proper Lean 4 syntax and tactics.
+  - Use proof tactics like `simp`, `rw`, `apply`, `exact`, `intro`, `cases`, `induction`, etc.
+  - Use `have` statements for intermediate steps when helpful.
+  - Use `calc` for equational reasoning when appropriate.
+  - Preserve all imports, structure, and function signatures.
+  - Do not use `sorry` or `admit` in the final implementation.
+  - Do not add unnecessary hypotheses or change function signatures.
+  - Output valid Lean 4 code.
+  - Follow mathlib conventions and use mathlib lemmas when applicable.
+
+  COMMENT FORMAT: add this comment right before any code block that you add or modify
+  -- code modified by LLM (iteration {{iteration}}): [brief description]
+  
+  ERROR DETAILS from Lean 4 verification of the given code:
+  {errorDetails}
+
+  Code Below:
+  {code}

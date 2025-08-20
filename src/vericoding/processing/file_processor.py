@@ -191,7 +191,7 @@ def process_spec_file(
                 break
             else:
                 logger.info(
-                    f"    ✗ Verification failed: {verification.error[:200] if verification.error else 'Unknown error'}..."
+                    f"    ✗ Verification failed: {verification.error if verification.error else 'Unknown error'}"
                 )
 
             # Try to fix issues (both compilation and verification errors)
