@@ -3,6 +3,13 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
+  ghost function SetProduct(s : set<int>) : int
+  {
+      if s == {} then 1
+      else var x :| x in s; 
+           x * SetProduct(s - {x})
+  }
+
   method UniqueProduct (arr: array<int>) returns (product: int)
      ensures product == SetProduct((set i | 0 <= i < arr.Length :: arr[i]))
 
@@ -24,14 +31,6 @@ vc-code: |-
           }
       }
       product := p;
-  }
-
-vc-postamble: |-
-  ghost function SetProduct(s : set<int>) : int
-  {
-      if s == {} then 1
-      else var x :| x in s; 
-           x * SetProduct(s - {x})
   }
 
   /* 
@@ -62,4 +61,7 @@ vc-postamble: |-
         }
      }
   }
+
+vc-postamble: |-
+
 
