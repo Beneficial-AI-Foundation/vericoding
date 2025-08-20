@@ -2,8 +2,6 @@ vc-preamble: |-
   // Write an *iterative* Dafny method Reverse with signature:
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   //          method Reverse(a: array<char>) returns (b: array<char>)

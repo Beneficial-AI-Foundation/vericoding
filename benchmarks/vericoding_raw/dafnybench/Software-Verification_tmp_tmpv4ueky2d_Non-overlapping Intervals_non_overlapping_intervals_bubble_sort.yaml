@@ -2,8 +2,6 @@ vc-preamble: |-
   // Bubble Sort
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method bubble_sort(a: array2<int>)

@@ -18,8 +18,6 @@ vc-preamble: |-
   // method PlusOne
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method PlusOne (x : int) returns (y : int)

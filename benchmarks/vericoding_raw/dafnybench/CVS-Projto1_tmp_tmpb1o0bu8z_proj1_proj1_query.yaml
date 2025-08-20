@@ -14,8 +14,6 @@ vc-preamble: |-
   //Exercicio 1.b)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method query (a:array<int>, i:int, j:int) returns (s:int)

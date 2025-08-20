@@ -2,8 +2,6 @@ vc-preamble: |-
   // http://verifythus.cost-ic0701.org/common-example/arraymax-in-dafny
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method max(a:array<int>) returns(max:int)

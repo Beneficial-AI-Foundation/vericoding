@@ -4,8 +4,6 @@ vc-preamble: |-
   // Parts have been modified cause you know, arrays are different...
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method QuicksortPartition(X: array<int>, n: int, p: int) returns (a: int, b: int)

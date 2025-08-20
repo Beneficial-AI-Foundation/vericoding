@@ -25,8 +25,6 @@ vc-preamble: |-
   //     forall p,q :: 0 <= p <= f <= q < N ==> A[p] <= A[f] <= A[q]).
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method FIND(A: array<int>, N: int, f: int)

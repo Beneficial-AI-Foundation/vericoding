@@ -5,8 +5,6 @@ vc-preamble: |-
   // /autoTriggers:1 added to suppress instabilities
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method H(a: array<int>, c: array<int>, n: nat, j: nat)

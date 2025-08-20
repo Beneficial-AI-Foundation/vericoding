@@ -1,8 +1,6 @@
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method RotateRight(l: seq<int>, n: int) returns (r: seq<int>)

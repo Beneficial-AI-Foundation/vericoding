@@ -109,8 +109,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method  FindPivotIndex(nums: seq<int>) returns (index: int)

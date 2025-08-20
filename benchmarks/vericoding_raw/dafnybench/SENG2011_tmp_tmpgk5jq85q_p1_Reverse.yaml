@@ -1,8 +1,6 @@
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Reverse(a: array<char>) returns (b: array<char>)

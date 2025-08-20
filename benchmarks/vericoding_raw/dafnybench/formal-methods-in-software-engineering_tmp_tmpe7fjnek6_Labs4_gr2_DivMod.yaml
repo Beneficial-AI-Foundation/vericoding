@@ -10,8 +10,6 @@ vc-preamble: |-
   // Exemplu de program
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method DivMod(a: int, b: int) returns (q: int, r: int)

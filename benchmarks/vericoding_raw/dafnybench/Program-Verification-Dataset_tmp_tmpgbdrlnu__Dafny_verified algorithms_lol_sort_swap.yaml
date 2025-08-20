@@ -29,8 +29,6 @@ vc-preamble: |-
   // note that: if i == j, the spec just says a[..] remains the same.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method swap(a: array<int>, i: int, j: int)

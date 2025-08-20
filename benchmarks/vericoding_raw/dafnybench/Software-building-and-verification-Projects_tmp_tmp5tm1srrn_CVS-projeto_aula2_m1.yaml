@@ -10,8 +10,6 @@ vc-preamble: |-
   // 5a
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method m1(x: int,y: int) returns (z: int)

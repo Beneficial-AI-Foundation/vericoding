@@ -195,8 +195,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method GetInsertIndex(a: array<int>, limit: int, x:int) returns (idx:int)

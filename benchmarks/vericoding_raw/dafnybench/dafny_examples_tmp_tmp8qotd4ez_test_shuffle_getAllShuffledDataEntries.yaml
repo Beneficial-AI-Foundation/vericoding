@@ -18,8 +18,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method getAllShuffledDataEntries<T(0)>(m_dataEntries: array<T>) returns (result: array<T>)

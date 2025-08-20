@@ -57,8 +57,6 @@ vc-preamble: |-
   // if and only if the given positive integer is prime.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method IsPrime (m : int) returns (isPrime : bool)

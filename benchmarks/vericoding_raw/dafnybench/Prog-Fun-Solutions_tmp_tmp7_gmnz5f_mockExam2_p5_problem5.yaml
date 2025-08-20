@@ -9,8 +9,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method problem5(n:nat) returns (x: int)

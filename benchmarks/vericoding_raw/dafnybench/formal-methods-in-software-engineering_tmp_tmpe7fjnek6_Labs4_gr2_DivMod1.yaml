@@ -100,8 +100,6 @@ vc-preamble: |-
   */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method DivMod1(a: int, b: int) returns (q: int, r: int)

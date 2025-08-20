@@ -58,8 +58,6 @@ vc-preamble: |-
     // A Philosopher is Hungry and enters the kitchen
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Enter(p: Process)

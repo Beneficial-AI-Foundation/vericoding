@@ -1,8 +1,6 @@
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method convert_map_key(inputs: map<nat, bool>, f: nat->nat) returns(r:map<nat, bool>)

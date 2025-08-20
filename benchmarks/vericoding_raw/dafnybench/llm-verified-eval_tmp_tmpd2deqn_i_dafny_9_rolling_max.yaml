@@ -7,8 +7,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method rolling_max(numbers: seq<int>) returns (result: seq<int>)

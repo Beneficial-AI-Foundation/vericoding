@@ -40,8 +40,6 @@ vc-preamble: |-
   // Derivar formalmente un calculo incremental de j*j*j
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Cubes (n:int) returns (s:seq<int>)

@@ -11,8 +11,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method yarra(arr : array<char>) returns (outarr : array<char>)

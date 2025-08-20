@@ -2,8 +2,6 @@ vc-preamble: |-
   // flips (i.e., reverses) array elements in the range [0..num]
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method flip (a: array<int>, num: int)

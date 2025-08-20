@@ -67,8 +67,6 @@ vc-preamble: |-
       ghost var comparisonCount: nat
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Ltm(x: T, y: T) returns (b: bool)

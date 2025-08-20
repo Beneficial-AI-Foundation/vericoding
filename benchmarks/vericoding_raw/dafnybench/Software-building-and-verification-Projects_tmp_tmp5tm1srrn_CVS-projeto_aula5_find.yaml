@@ -50,8 +50,6 @@ vc-preamble: |-
     // private method that should not be in the
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method find(x:int) returns (r:int)

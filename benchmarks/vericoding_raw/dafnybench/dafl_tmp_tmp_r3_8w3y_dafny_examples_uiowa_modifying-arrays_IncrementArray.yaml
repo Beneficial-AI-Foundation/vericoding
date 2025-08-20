@@ -47,8 +47,6 @@ vc-preamble: |-
   // Incrementing arrays
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method IncrementArray(a: array<int>) 

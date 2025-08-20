@@ -26,8 +26,6 @@ vc-preamble: |-
         }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method isEmpty() returns (res : bool)

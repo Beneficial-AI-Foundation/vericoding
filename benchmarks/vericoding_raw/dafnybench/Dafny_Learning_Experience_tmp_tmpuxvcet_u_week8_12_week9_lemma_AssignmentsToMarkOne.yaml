@@ -4,8 +4,6 @@ vc-preamble: |-
       ensures n/d < n
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method AssignmentsToMarkOne(students:int, tutors: int) returns (r:int)

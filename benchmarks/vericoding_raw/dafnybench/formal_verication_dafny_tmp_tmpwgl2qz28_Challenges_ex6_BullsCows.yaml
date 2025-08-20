@@ -31,8 +31,6 @@ vc-preamble: |-
   {forall j, k :: 0<=j<k<|u| ==> u[j] != u[k]}
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method BullsCows (s:seq<nat>, u:seq<nat>) returns (b:nat, c:nat) 

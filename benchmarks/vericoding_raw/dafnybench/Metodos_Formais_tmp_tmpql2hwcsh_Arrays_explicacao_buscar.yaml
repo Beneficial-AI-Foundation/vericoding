@@ -27,8 +27,6 @@ vc-preamble: |-
   // forall i :: 0 <= i < a.Length ==> a[i] != x (para todo i tal que i e maior ou igual a zero e menor que o tamanho do array, então a posição i do array a é diferente de x)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method buscar(a:array<int>, x:int) returns (r:int)

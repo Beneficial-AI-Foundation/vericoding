@@ -1,8 +1,6 @@
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method SubtractSequences(a: seq<int>, b: seq<int>) returns (result: seq<int>)

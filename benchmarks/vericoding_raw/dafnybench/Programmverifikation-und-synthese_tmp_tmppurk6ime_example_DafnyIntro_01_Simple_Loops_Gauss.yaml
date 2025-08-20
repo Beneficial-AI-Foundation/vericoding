@@ -23,8 +23,6 @@ vc-preamble: |-
   // Here we use two invariants I1 and I2, which amounts to the same as using I1 && I2:
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Gauss(n:int) returns (sum:int)

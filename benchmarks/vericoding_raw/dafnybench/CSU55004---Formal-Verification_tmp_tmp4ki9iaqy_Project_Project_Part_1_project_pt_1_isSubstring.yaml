@@ -33,8 +33,6 @@ vc-preamble: |-
   //This method should return true iff sub is a substring of str. That is, str contains sub
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method isSubstring(sub:string, str:string) returns(res:bool)

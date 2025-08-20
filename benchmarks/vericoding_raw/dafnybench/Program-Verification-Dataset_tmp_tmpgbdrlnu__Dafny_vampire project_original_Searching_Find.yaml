@@ -4,8 +4,6 @@ vc-preamble: |-
   // index
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Find(blood: array<int>, key: int) returns (index: int)

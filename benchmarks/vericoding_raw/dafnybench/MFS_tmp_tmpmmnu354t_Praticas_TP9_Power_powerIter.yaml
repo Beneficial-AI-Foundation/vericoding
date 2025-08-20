@@ -15,8 +15,6 @@ vc-preamble: |-
   // Iterative version, imperative, with time complexity O(n) and space complexity O(1).
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method powerIter(b: real, n: nat) returns (p : real)

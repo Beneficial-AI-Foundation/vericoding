@@ -9,8 +9,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method RemoveOddNumbers(arr: array<int>) returns (evenList: seq<int>)

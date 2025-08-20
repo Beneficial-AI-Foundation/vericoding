@@ -187,8 +187,6 @@ vc-preamble: |-
     // Moves message m from the drafts mailbox to the sent mailbox
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method sendMessage(m: Message)

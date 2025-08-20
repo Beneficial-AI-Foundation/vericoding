@@ -33,8 +33,6 @@ vc-preamble: |-
       }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method peek1() returns (EmptyStatus:bool, TopItem:T)

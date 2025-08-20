@@ -6,8 +6,6 @@ vc-preamble: |-
     var nxt: Node?
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method ReverseInPlace(x: Node?, r: set<Node>) returns (reverse: Node?)

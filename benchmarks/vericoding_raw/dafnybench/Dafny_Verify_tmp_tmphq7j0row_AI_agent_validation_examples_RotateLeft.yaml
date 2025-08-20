@@ -229,8 +229,6 @@ vc-preamble: |-
   // }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method RotateLeft(a: array)

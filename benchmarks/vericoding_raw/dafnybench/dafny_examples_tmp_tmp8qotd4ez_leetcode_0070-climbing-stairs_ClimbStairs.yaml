@@ -6,8 +6,6 @@ vc-preamble: |-
   // A simple specification
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method ClimbStairs(n: nat) returns (r: nat)

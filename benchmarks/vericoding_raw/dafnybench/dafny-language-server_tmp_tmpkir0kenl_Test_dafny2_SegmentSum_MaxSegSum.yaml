@@ -9,8 +9,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method MaxSegSum(a: seq<int>) returns (k: int, m: int)

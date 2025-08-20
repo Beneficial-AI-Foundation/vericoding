@@ -15,8 +15,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method lookForMin (a: array<int>, i: int) returns (m: int)

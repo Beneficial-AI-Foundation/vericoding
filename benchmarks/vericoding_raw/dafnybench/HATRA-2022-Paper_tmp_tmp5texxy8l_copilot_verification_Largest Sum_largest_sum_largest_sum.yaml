@@ -2,8 +2,6 @@ vc-preamble: |-
   // CoPilot function converted to dafny
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   function sum(s: seq<int>, i: nat): int

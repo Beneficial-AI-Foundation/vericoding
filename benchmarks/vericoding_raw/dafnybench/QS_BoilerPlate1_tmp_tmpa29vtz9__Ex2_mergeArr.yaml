@@ -30,8 +30,6 @@ vc-preamble: |-
   // Ex2
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method mergeArr(a : array<int>, l : int, m : int, r : int)

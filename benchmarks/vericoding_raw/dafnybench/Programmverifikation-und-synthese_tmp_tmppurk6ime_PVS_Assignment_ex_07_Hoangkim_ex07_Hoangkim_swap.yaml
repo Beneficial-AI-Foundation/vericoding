@@ -3,8 +3,6 @@ vc-preamble: |-
   //a)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method swap(a: array<int>, i: nat, j: nat)

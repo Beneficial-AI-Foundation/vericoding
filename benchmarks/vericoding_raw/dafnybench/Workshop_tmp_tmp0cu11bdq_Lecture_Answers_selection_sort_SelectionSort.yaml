@@ -14,8 +14,6 @@ vc-preamble: |-
   // Selection sort on arrays
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method SelectionSort(a: array<int>) 

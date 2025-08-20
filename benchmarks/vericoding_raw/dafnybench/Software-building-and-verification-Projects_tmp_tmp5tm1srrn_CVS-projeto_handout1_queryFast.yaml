@@ -18,8 +18,6 @@ vc-preamble: |-
   // c -> [0, 1, 11, 14, 10, 15]
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method queryFast(a: array<int>, c: array<int>, i: int, j: int) returns (r: int)

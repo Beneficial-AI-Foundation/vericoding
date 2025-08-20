@@ -43,8 +43,6 @@ vc-preamble: |-
     //     which performs an in situ list reversal.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method ReverseInPlace() returns (reverse: Node)

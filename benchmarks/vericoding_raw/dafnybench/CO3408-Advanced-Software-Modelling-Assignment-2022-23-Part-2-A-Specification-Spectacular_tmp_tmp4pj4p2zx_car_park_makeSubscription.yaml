@@ -37,8 +37,6 @@ vc-preamble: |-
     // subscriptions set. Otherwise, the subscriptions set is not modified
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method makeSubscription(car: string) returns (success: bool)

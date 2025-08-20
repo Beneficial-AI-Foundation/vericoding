@@ -200,8 +200,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method bibble_increment(b : nat, p : seq<nat>) returns (r : seq<nat>)

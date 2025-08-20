@@ -56,8 +56,6 @@ vc-preamble: |-
     // A Philosopher is Thinking and gets Hungry
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Request(p: Process)

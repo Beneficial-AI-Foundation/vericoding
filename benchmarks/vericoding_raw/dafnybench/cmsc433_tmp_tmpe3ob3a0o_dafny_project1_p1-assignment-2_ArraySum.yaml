@@ -40,8 +40,6 @@ vc-preamble: |-
   // corresponding elements in arrays a and b.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method ArraySum (a : array<int>, b : array<int>) returns (c : array<int>)

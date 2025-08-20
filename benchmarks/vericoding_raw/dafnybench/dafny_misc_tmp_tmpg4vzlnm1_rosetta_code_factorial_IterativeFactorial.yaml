@@ -7,8 +7,6 @@ vc-preamble: |-
   // iterative implementation of factorial
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method IterativeFactorial(n: nat) returns (result: nat)

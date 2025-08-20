@@ -65,8 +65,6 @@ vc-preamble: |-
     { !sense && 3 <= pc }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method barrier()

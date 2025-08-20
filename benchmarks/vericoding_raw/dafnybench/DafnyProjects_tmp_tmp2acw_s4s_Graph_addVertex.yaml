@@ -22,8 +22,6 @@ vc-preamble: |-
      // Adds a new vertex v to this graph.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method addVertex(v: T)

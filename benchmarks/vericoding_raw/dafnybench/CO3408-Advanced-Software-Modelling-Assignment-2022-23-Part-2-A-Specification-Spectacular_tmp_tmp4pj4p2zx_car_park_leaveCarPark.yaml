@@ -37,8 +37,6 @@ vc-preamble: |-
     // the carPark or the reservedCarPark set. Otherwise, neither set is modified
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method leaveCarPark(car: string) returns (success: bool)

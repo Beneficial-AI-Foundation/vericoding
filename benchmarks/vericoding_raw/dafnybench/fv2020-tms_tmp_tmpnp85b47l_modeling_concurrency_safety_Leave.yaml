@@ -60,8 +60,6 @@ vc-preamble: |-
     // A Philosopher is done Eating and leaves the kitchen
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Leave(p: Process)

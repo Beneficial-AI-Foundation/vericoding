@@ -1,8 +1,6 @@
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method remove_duplicates_from_sorted_array(nums: seq<int>) returns (result: seq<int>) 

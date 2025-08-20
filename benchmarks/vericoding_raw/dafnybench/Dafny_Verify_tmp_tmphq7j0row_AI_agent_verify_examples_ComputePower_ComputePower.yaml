@@ -4,8 +4,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method ComputePower(N: int) returns (y: nat) requires N >= 0

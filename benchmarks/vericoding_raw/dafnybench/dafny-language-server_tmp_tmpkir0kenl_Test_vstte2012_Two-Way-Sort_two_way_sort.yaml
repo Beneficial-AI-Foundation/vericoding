@@ -43,8 +43,6 @@ vc-preamble: |-
   // annotations).
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method two_way_sort(a: array<bool>)

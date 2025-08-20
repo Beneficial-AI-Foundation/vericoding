@@ -3,8 +3,6 @@ vc-preamble: |-
   // RUN: %diff "%s.expect" "%t"
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Determinant(X: array2<int>, M: int) returns (z: int)

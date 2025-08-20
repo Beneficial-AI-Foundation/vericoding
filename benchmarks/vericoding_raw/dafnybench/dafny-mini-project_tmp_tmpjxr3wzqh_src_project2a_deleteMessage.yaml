@@ -166,8 +166,6 @@ vc-preamble: |-
     // that mb is not the trash mailbox
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method deleteMessage (m: Message, mb: Mailbox)

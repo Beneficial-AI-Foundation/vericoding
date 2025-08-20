@@ -38,8 +38,6 @@ vc-preamble: |-
         // Pushed an element to the top of a (non full) stack.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Push(elem : int)

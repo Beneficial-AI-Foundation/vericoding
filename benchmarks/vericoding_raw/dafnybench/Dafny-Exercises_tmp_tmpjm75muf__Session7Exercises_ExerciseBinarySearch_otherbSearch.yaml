@@ -33,8 +33,6 @@ vc-preamble: |-
   //Recursive binary search
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method otherbSearch(v:array<int>, elem:int) returns (b:bool,p:int)

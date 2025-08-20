@@ -7,8 +7,6 @@ vc-preamble: |-
   //swaps two sequence indexes
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Exchanger(s: seq<Bases>, x:nat, y:nat) returns (t: seq<Bases>)

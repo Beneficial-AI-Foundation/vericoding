@@ -48,8 +48,6 @@ vc-preamble: |-
     // adds a new element to the set if space available
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method add(v:int)

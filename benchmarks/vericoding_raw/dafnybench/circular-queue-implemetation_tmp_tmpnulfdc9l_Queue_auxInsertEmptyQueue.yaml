@@ -34,8 +34,6 @@ vc-preamble: |-
     } //[tam] ; [1, 2, 3, 4]
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method auxInsertEmptyQueue(item:int)

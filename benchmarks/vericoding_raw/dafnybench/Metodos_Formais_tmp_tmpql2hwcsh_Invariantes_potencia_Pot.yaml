@@ -14,8 +14,6 @@ vc-preamble: |-
   // Quero agora implementar como uma função não recursiva
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Pot(x:nat, y:nat) returns (r:nat)

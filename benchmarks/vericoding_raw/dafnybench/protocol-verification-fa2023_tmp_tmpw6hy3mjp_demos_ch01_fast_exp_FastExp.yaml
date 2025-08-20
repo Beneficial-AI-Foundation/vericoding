@@ -67,8 +67,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method FastExp(b: nat, n: nat) returns (r: nat)

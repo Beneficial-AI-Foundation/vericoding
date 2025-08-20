@@ -1,8 +1,6 @@
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method InsertBeforeEach(s: seq<string>, x: string) returns (v: seq<string>)

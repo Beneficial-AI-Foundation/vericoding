@@ -6,8 +6,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method fibIter(n:nat) returns (a:nat)

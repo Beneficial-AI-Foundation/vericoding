@@ -45,8 +45,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Evens(a:array<int>) returns (c:array2<int>)

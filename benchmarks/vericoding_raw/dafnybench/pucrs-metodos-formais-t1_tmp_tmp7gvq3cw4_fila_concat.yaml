@@ -79,8 +79,6 @@ vc-preamble: |-
       }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method concat(f2: Fila) returns (r: Fila)

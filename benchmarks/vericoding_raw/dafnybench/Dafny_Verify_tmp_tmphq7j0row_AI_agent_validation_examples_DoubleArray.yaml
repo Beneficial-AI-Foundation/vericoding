@@ -193,8 +193,6 @@ vc-preamble: |-
   //     }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method DoubleArray(src: array<int>, dst: array<int>)

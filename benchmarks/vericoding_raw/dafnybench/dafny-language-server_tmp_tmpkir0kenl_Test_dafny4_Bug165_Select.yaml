@@ -7,8 +7,6 @@ vc-preamble: |-
   function f(a: T) : bool
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
 
 vc-spec: |-
   method Select(s1: seq<T>) returns (r: seq<T>)
