@@ -38,7 +38,7 @@ jobs:
         # Add Dafny to PATH
         echo "/tmp/dafny" >> $GITHUB_PATH
         
-    - name: Convert YAML files and validate with Dafny
+    - name: Convert YAML files and validate syntax with Dafny
       run: |
         set -e  # Exit on any error
         
