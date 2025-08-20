@@ -42,11 +42,15 @@ jobs:
       run: |
         set -e  # Exit on any error
         
+        # Get total count first
+        total_files=$(find benchmarks/vericoding_raw/dafnybench -name "*.yaml" -type f | wc -l)
+        echo "Found $total_files YAML files to process"
+        
         # Process each YAML file (robust against spaces in filenames)
         yaml_count=0
         while IFS= read -r -d '' yaml_file; do
           yaml_count=$((yaml_count + 1))
-          echo "Processing: $yaml_file"
+          echo "Processing [$yaml_count/$total_files]: $yaml_file"
           
           # Convert YAML to .dfy
           python src/convert_from_yaml.py "$yaml_file" --suffix dfy
