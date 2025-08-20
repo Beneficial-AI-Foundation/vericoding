@@ -1,0 +1,67 @@
+name: Dafny Validation
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  validate-dafny:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+        
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install PyYAML
+        
+    - name: Install Dafny
+      uses: dafny-lang/setup-dafny-action@v1
+      with:
+        dafny-version: "4.9.1"
+        
+    - name: Make conversion script executable
+      run: chmod +x convert_from_yaml.py
+      
+    - name: Convert YAML files and validate with Dafny
+      run: |
+        set -e  # Exit on any error
+        
+        # Find all YAML files in the target directory
+        yaml_files=$(find benchmarks/vericoding_raw/dafnybench -name "*.yaml" -type f)
+        
+        if [ -z "$yaml_files" ]; then
+          echo "No YAML files found in benchmarks/vericoding_raw/dafnybench"
+          exit 1
+        fi
+        
+        echo "Found $(echo "$yaml_files" | wc -l) YAML files to process"
+        
+        # Process each YAML file
+        for yaml_file in $yaml_files; do
+          echo "Processing: $yaml_file"
+          
+          # Convert YAML to .dfy
+          python convert_from_yaml.py "$yaml_file" --suffix dfy
+          
+          # Get the corresponding .dfy file path
+          dfy_file="${yaml_file%.yaml}.dfy"
+          
+          # Run dafny resolve on the generated file
+          echo "Running dafny resolve on: $dfy_file"
+          dafny resolve "$dfy_file"
+          
+          echo "✓ Successfully validated: $dfy_file"
+        done
+        
+        echo "All Dafny files validated successfully!"
