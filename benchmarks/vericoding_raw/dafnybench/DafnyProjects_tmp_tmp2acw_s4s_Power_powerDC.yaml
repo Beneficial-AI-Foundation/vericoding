@@ -13,6 +13,8 @@ vc-preamble: |-
   // Computation of x^n in time and space O(log n).
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method powerDC(x: real, n: nat) returns (p : real)

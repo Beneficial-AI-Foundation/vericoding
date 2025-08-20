@@ -9,6 +9,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method exp_by_sqr(x0: real, n0: nat) returns (r:real)

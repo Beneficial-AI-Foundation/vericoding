@@ -11,6 +11,8 @@ vc-preamble: |-
   // Author: Leino, Title: Program Proofs
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method BinarySearch(a: array<int>, circle: int)

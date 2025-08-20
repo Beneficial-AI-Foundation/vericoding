@@ -6,6 +6,8 @@ vc-preamble: |-
   //Problem04
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method FindMin(a: array<int>, lo: nat) returns (minIdx: nat)

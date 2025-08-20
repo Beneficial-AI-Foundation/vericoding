@@ -15,6 +15,8 @@ vc-preamble: |-
    }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method mPeekSum(v:array<int>) returns (sum:int)

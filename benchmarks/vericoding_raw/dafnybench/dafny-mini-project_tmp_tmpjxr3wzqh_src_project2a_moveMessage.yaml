@@ -170,6 +170,8 @@ vc-preamble: |-
     // Moves message m from mailbox mb1 to a different mailbox mb2
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method moveMessage (m: Message, mb1: Mailbox, mb2: Mailbox)

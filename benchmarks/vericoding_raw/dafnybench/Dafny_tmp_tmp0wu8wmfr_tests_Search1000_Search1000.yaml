@@ -7,6 +7,8 @@ vc-preamble: |-
   // to verify the function.
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Search1000( a: array<int>, x: int ) returns ( k: int )

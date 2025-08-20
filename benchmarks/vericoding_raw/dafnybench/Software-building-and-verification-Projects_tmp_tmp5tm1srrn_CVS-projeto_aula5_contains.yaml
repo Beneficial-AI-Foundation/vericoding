@@ -47,6 +47,8 @@ vc-preamble: |-
     // checks if the element given is in the set
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method contains(v:int) returns (b:bool)

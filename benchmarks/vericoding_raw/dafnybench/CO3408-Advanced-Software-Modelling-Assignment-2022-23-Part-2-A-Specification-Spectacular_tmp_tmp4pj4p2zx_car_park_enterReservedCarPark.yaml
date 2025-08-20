@@ -41,6 +41,8 @@ vc-preamble: |-
     // Otherwise, the carPark and reservedCarPark sets are not modified
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method enterReservedCarPark(car: string) returns (success: bool) 

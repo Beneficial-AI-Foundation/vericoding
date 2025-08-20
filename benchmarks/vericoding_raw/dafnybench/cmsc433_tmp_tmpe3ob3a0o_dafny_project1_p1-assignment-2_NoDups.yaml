@@ -73,6 +73,8 @@ vc-preamble: |-
   // the ensures clause to imply a lack of duplicates.
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method NoDups (a : array<int>) returns (noDups : bool)

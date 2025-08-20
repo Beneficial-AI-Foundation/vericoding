@@ -12,6 +12,8 @@ vc-preamble: |-
   //3.Verify the method
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method barrier(v:array<int>,p:int) returns (b:bool)

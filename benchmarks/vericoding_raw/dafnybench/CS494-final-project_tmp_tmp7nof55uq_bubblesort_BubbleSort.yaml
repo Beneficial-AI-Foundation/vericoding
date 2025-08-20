@@ -25,6 +25,8 @@ vc-preamble: |-
   // Here having the algorithm for the bubblesort
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method BubbleSort (a: array<int>)

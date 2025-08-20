@@ -96,6 +96,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method maxCommonSubstringLength(str1: string, str2: string) returns (len:nat)

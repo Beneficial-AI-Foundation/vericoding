@@ -49,6 +49,8 @@ vc-preamble: |-
   //This method should return the natural number len which is equal to the length of the longest common substring of str1 and str2. Note that every two strings have a common substring of length zero.
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method maxCommonSubstringLength(str1:string, str2:string) returns(len:nat)

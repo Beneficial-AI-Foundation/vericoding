@@ -1,6 +1,8 @@
 vc-preamble: |-
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method FindMax(a: array<int>) returns (i: int)

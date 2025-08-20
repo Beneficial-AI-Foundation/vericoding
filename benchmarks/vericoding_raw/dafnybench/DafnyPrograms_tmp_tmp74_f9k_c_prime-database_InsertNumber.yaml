@@ -44,6 +44,8 @@ vc-preamble: |-
     // check the primeness of n and insert it accordingly into the database
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method InsertNumber(n: nat) 

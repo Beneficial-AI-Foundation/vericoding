@@ -1,6 +1,8 @@
 vc-preamble: |-
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Getmini(a:array<int>) returns(mini:nat) 

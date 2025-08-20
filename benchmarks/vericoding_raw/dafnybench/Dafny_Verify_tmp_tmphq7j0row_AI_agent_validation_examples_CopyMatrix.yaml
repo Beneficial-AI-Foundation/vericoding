@@ -153,6 +153,8 @@ vc-preamble: |-
   // }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method CopyMatrix(src: array2, dst: array2)

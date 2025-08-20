@@ -14,6 +14,8 @@ vc-preamble: |-
   /////////////////////
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Aliases(a: array<int>, b: array<int>) 

@@ -3,6 +3,8 @@ vc-preamble: |-
   // remover p caracteres a partir da posição at
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Delete(line:array<char>, l:nat, at:nat, p:nat)

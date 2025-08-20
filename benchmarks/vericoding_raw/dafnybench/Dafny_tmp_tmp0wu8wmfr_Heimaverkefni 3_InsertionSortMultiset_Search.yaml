@@ -8,6 +8,8 @@ vc-preamble: |-
   // Insertion sort með hjálp helmingunarleitar.
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Search( s: seq<int>, x: int ) returns ( k: int )

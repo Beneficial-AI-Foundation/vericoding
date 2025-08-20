@@ -143,6 +143,8 @@ vc-preamble: |-
    {equalSumsV();}
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method sumElemsB(v:array<int>) returns (sum:int)

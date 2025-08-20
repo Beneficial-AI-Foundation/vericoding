@@ -13,6 +13,8 @@ vc-preamble: |-
      constructor () { a := new A(); }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method m()

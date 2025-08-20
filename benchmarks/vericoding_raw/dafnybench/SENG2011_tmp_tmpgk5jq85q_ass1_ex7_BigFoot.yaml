@@ -2,6 +2,8 @@ vc-preamble: |-
   // successfully verifies
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method BigFoot(step: nat) // DO NOT CHANGE

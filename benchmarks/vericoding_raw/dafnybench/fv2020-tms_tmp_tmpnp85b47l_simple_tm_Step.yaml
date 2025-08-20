@@ -307,6 +307,8 @@ vc-preamble: |-
       }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Step(input: TMSystem, pid: ProcessId) returns (system: TMSystem)

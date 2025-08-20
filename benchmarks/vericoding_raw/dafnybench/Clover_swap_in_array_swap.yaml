@@ -1,6 +1,8 @@
 vc-preamble: |-
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method swap(arr: array<int>, i: int, j: int)

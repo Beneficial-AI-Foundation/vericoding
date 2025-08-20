@@ -49,6 +49,8 @@ vc-preamble: |-
     var elems: seq<T>
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Add(t: T)

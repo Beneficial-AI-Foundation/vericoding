@@ -43,6 +43,8 @@ vc-preamble: |-
     // insert an already known prime number into the database
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method InsertPrime(n: nat)

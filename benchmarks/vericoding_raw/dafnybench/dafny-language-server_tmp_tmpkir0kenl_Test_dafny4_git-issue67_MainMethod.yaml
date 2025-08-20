@@ -11,6 +11,8 @@ vc-preamble: |-
     modifies y
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method MainMethod(y: Node)

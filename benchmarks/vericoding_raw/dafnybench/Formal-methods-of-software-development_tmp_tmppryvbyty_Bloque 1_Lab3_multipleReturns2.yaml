@@ -14,6 +14,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method multipleReturns2 (x:int, y:int) returns (more:int, less:int)

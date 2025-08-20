@@ -21,6 +21,8 @@ vc-preamble: |-
   // Creating new arrays
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method NewArray() returns (a: array<int>) 

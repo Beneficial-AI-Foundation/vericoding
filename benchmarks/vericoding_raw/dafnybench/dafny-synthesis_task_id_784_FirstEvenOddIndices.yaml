@@ -24,6 +24,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method FirstEvenOddIndices(lst : seq<int>) returns (evenIndex: int, oddIndex : int)

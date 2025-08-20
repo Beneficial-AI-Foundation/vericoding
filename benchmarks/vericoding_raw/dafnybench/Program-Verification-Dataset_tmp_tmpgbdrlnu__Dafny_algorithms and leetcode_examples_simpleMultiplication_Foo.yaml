@@ -1,6 +1,8 @@
 vc-preamble: |-
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Foo(y: int, x: int) returns (z: int) 

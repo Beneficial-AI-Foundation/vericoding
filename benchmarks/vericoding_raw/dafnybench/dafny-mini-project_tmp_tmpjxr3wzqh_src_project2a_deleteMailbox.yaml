@@ -144,6 +144,8 @@ vc-preamble: |-
     // Deletes user-defined mailbox mb
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method deleteMailbox(mb: Mailbox)

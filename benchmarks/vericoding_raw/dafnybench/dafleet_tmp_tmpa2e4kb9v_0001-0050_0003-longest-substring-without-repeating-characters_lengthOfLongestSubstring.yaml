@@ -28,6 +28,8 @@ vc-preamble: |-
   // `best_iv` is for verification purpose, not returned by the real program, thus `ghost`.
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method lengthOfLongestSubstring(s: string) returns (n: int, ghost best_iv: interval)

@@ -7,6 +7,8 @@ vc-preamble: |-
   // Ex1
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method copyArr(a : array<int>, l : int, r : int) returns (ret : array<int>)

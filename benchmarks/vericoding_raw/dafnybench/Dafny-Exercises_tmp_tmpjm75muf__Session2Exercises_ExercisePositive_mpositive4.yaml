@@ -3,6 +3,8 @@ vc-preamble: |-
   {forall u::0<=u<|s| ==> s[u]>=0}
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method mpositive4(v:array<int>) returns (b:bool)

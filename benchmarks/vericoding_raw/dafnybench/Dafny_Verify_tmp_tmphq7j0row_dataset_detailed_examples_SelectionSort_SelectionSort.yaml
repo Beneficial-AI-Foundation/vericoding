@@ -3,6 +3,8 @@ vc-preamble: |-
   // the sorted part is empty and the unsorted part contains all the elements.
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method SelectionSort(a: array<int>)

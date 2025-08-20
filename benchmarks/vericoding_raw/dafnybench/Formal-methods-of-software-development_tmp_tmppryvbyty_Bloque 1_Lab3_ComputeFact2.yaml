@@ -9,6 +9,8 @@ vc-preamble: |-
   // PROGRAMA VERIFICADOR DE WHILE
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method ComputeFact2 (n:int) returns (f:int)

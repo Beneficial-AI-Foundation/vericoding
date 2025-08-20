@@ -8,6 +8,8 @@ vc-preamble: |-
   // Klárið að forrita föllin tvö.
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Partition( m: multiset<int> )

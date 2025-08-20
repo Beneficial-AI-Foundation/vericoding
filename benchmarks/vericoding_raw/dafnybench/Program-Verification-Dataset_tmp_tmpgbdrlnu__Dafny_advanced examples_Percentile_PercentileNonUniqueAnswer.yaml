@@ -21,6 +21,8 @@ vc-preamble: |-
   // example showing that, with the original postcondition, the answer is non-unique!
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method PercentileNonUniqueAnswer() returns (p: real, A: array<real>, total: real, i1: int, i2: int)

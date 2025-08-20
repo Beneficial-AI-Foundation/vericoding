@@ -14,6 +14,8 @@ vc-preamble: |-
   /////////////////////
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method SetEndPoints(a: array<int>, left: int, right: int)

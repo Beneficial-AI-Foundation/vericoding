@@ -11,6 +11,8 @@ vc-preamble: |-
   // returns sum of array
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method sum(s: array<int>) returns (a:int)

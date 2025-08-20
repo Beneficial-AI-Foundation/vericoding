@@ -157,6 +157,8 @@ vc-preamble: |-
     // Adds a new message with sender s to the drafts mailbox
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method newMessage(s: Address)

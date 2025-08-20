@@ -1,6 +1,8 @@
 vc-preamble: |-
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method ElementAtIndexAfterRotation(l: seq<int>, n: int, index: int) returns (element: int)

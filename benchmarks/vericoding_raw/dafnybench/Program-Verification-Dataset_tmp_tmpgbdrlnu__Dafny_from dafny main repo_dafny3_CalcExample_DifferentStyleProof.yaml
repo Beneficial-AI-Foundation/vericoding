@@ -39,6 +39,8 @@ vc-preamble: |-
   // (An explanation of the constructs in this lemma is found below.)
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method DifferentStyleProof(a: int, b: int, c: int, x: int)

@@ -27,6 +27,8 @@ vc-preamble: |-
     }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Adjust(delta: int, ghost U: set<Composite>, ghost S: set<Composite>)

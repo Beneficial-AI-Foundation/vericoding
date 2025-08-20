@@ -49,6 +49,8 @@ vc-preamble: |-
       ghost var Repr: set<object>
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Eval(s: seq<bool>) returns(b: bool)

@@ -2,6 +2,8 @@ vc-preamble: |-
   //Algorithm 1: From left to right return the first
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method mmaximum1(v:array<int>) returns (i:int) 

@@ -3,6 +3,8 @@ vc-preamble: |-
   // Inspired by: https://ece.uwaterloo.ca/~agurfink/stqam/rise4fun-Dafny/#h211
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method BinarySearch(arr: array<int>, target: int) returns (index: int)

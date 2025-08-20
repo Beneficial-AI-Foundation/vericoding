@@ -91,6 +91,8 @@ vc-preamble: |-
     // Empties the mailbox messages
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method empty()

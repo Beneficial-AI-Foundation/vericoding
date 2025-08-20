@@ -19,6 +19,8 @@ vc-preamble: |-
   // 3.
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method maxArray(arr : array<int>) returns (max: int)

@@ -17,6 +17,8 @@ vc-preamble: |-
   //}
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method fast_sort(input:seq<int>) returns (output:seq<int>)

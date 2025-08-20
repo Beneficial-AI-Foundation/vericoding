@@ -3,6 +3,8 @@ vc-preamble: |-
   //POST-CONDITIONS -> ENSURES
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method max(a: int, b: int) returns (z: int)

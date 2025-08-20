@@ -120,6 +120,8 @@ vc-preamble: |-
     */
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Concatenate(q1: CircularArray) returns(q2: CircularArray)

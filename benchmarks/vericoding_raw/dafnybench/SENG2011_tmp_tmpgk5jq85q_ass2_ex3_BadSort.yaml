@@ -15,6 +15,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method BadSort(a: string) returns (b: string)

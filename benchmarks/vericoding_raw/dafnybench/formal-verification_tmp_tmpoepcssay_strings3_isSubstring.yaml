@@ -38,6 +38,8 @@ vc-preamble: |-
   {}
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method isSubstring(sub: string, str: string) returns (res:bool)

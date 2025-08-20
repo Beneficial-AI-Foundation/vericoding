@@ -28,6 +28,8 @@ vc-preamble: |-
     }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Add(t: T)

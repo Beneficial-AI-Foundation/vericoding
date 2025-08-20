@@ -13,6 +13,8 @@ vc-preamble: |-
   // Hjálparfall sem finnur minnsta gildi í poka
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method MinOfMultiset( m: multiset<int> ) returns( min: int )

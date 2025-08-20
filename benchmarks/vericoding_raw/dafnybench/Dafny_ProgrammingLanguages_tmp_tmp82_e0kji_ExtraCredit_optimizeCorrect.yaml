@@ -30,6 +30,8 @@ vc-preamble: |-
   //you must write proof code so that Dafny can prove this
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method optimizeCorrect(e:Exp, s:map<string, int>)

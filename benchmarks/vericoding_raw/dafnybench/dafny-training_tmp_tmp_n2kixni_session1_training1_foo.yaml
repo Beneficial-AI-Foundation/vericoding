@@ -31,6 +31,8 @@ vc-preamble: |-
   /** Call abs */
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method foo(x: int) 

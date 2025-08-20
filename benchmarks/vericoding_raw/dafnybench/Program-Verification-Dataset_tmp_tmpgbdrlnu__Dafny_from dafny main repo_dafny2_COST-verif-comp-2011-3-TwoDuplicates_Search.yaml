@@ -73,6 +73,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Search(a: array<int>) returns (p: int, q: int)

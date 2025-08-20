@@ -3,6 +3,8 @@ vc-preamble: |-
   //Based on the code used in the course overheads for Fall 2018
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method simple(y: int) returns (x: int) 

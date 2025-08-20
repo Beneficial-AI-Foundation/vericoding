@@ -268,6 +268,8 @@ vc-preamble: |-
       }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method init(log_size : int, mem_size : int, countdown : int)

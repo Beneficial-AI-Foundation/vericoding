@@ -65,6 +65,8 @@ vc-preamble: |-
         //Push onto full stack, oldest element is discarded.
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Push2(elem : int)

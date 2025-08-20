@@ -33,6 +33,8 @@ vc-preamble: |-
   // A useful "helper function" that returns the longest palindrome at a given center (i0, j0).
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method expand_from_center(s: string, i0: int, j0: int) returns (lo: int, hi: int)

@@ -22,6 +22,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method gcdI(m: int, n: int) returns (g: int)

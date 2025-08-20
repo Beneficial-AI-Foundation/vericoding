@@ -29,6 +29,8 @@ vc-preamble: |-
   ensures x < z*z < y
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method strange()

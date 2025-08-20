@@ -3,6 +3,8 @@ vc-preamble: |-
   // [1,5,2,3],[4,3,5]->[1,5,2,3,4,3,5]
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method single(x:array<int>, y:array<int>) returns (b:array<int>) 

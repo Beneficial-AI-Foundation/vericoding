@@ -38,6 +38,8 @@ vc-preamble: |-
     // The method maintains the invariant that the weekend variable is set to true
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method openReservedArea()

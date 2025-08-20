@@ -33,6 +33,8 @@ vc-preamble: |-
       }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method pop1() returns (EmptyStatus:bool, PopedItem:T)

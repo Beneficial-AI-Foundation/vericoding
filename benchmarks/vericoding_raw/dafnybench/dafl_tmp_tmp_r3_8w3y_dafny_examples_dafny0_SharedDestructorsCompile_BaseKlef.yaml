@@ -19,6 +19,8 @@ vc-preamble: |-
     | C3(3: int, 0: int, 1: int, c3: int)
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method BaseKlef(k: Klef)

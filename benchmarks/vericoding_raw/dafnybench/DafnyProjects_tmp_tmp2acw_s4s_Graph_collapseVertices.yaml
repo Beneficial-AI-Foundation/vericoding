@@ -34,6 +34,8 @@ vc-preamble: |-
       // In all other edges, vertices belonging to C are replaced by v.
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method collapseVertices(C: set<T>, v: T)

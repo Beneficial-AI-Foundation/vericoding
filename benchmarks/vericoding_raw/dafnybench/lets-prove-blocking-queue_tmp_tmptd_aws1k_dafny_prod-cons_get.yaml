@@ -88,6 +88,8 @@ vc-preamble: |-
           /** Event: a process gets an element from the queue. */
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method get(p: Process) 

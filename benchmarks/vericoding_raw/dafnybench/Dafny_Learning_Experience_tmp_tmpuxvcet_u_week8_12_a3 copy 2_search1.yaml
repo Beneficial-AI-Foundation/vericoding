@@ -55,6 +55,8 @@ vc-preamble: |-
       }
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method search1(Element:T) returns (position:int)

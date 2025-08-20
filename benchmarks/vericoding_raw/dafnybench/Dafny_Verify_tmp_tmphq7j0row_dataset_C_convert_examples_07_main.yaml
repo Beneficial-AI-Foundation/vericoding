@@ -30,6 +30,8 @@ vc-preamble: |-
   // (let ((.def_201 (<= (+ (* 3 n) (+ (* (- 1) a) (* (- 1) b))) (- 1)))) (let ((.def_392 (<= (+ (* 3 i) (+ (* (- 1) a) (* (- 1) b))) (- 1)))) (not (or (<= 1 (+ (* 3 i) (+ (* (- 1) a) (* (- 1) b)))) (and (or .def_201 .def_392) (or .def_392 (and .def_201 (<= (+ (* 3 i) (+ (* (- 1) a) (* (- 1) b))) 0))))))))
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method main(n: int) returns (a: int, b: int)

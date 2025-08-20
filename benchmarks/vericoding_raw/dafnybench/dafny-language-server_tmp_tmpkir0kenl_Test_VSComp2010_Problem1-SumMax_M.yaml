@@ -12,6 +12,8 @@ vc-preamble: |-
   // the requested postcondition.
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method M(N: int, a: array<int>) returns (sum: int, max: int)

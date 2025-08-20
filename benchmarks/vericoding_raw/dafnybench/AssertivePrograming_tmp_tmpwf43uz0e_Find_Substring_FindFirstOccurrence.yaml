@@ -20,6 +20,8 @@ vc-preamble: |-
   */
 
 vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method FindFirstOccurrence(str1: string, str2: string) returns (found: bool, i: nat)
