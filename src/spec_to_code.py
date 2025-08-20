@@ -418,17 +418,61 @@ def log_experiment_results_to_wandb(
     for key, value in summary_metrics.items():
         wandb.run.summary[key] = value
     
-    # Create results table for detailed file-by-file analysis
+    # Create comprehensive results table with file contents
     results_table = wandb.Table(columns=[
         "file_name", "subfolder", "success", "output_file", "error_message",
-        "has_bypass", "file_path"
+        "has_bypass", "file_path", "original_spec", "final_output", "debug_files"
     ])
     
     for result in results:
         file_path = Path(result.file)
         subfolder = file_path.parts[0] if len(file_path.parts) > 1 else "root"
         output_name = Path(result.output).name if result.output else ""
-        error_preview = (result.error[:200] + "...") if result.error and len(result.error) > 200 else (result.error or "")
+        error_preview = (result.error[:500] + "...") if result.error and len(result.error) > 500 else (result.error or "")
+        
+        # Read original specification file
+        original_spec = ""
+        try:
+            original_file_path = Path(config.files_dir) / result.file
+            if original_file_path.exists():
+                with open(original_file_path, 'r', encoding='utf-8') as f:
+                    original_spec = f.read()
+        except Exception as e:
+            original_spec = f"Error reading original file: {str(e)}"
+        
+        # Read final output file
+        final_output = ""
+        if result.output:
+            try:
+                with open(result.output, 'r', encoding='utf-8') as f:
+                    final_output = f.read()
+            except Exception as e:
+                final_output = f"Error reading output file: {str(e)}"
+        
+        # Collect debug files content
+        debug_files_content = {}
+        if config.debug_mode:
+            # Look for debug files for this specific file
+            relative_path = Path(result.file)
+            debug_dir = Path(config.output_dir) / "debug" / relative_path.parent if relative_path.parent != Path(".") else Path(config.output_dir) / "debug"
+            
+            if debug_dir.exists():
+                file_stem = Path(result.file).stem
+                for debug_file in debug_dir.glob(f"*{file_stem}*"):
+                    try:
+                        with open(debug_file, 'r', encoding='utf-8') as f:
+                            content = f.read()
+                            debug_files_content[debug_file.name] = content
+                    except Exception as e:
+                        debug_files_content[debug_file.name] = f"Error reading: {str(e)}"
+        
+        # Format debug files as readable text
+        debug_files_text = ""
+        if debug_files_content:
+            debug_files_text = "\\n\\n".join([
+                f"=== {filename} ===\\n{content}" 
+                for filename, content in debug_files_content.items()
+            ])
         
         results_table.add_data(
             file_path.name,
@@ -437,7 +481,10 @@ def log_experiment_results_to_wandb(
             output_name,
             error_preview,
             result.has_bypass,
-            str(result.file)
+            str(result.file),
+            original_spec,
+            final_output,
+            debug_files_text or "No debug files"
         )
     
     wandb.log({"detailed_results": results_table})
