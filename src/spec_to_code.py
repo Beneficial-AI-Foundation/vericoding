@@ -445,9 +445,12 @@ def log_experiment_results_to_wandb(
     # Upload comprehensive artifacts with better organization
     print("\\n📤 Uploading experiment artifacts to wandb...")
     
+    # Create unique artifact names using run timestamp
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    
     # 1. Generated code artifact
     code_artifact = wandb.Artifact(
-        name=f"generated_code_{config.language}",
+        name=f"generated_code_{config.language}_{timestamp}",
         type="generated-code",
         description=f"Generated {config.language} code from specifications",
         metadata={
@@ -455,6 +458,7 @@ def log_experiment_results_to_wandb(
             "success_rate": success_percentage,
             "total_files": len(results),
             "llm_model": config.llm_model or f"{config.llm_provider}-default",
+            "timestamp": timestamp,
         }
     )
     
@@ -462,25 +466,27 @@ def log_experiment_results_to_wandb(
     debug_artifact = None
     if config.debug_mode:
         debug_artifact = wandb.Artifact(
-            name=f"debug_files_{config.language}",
+            name=f"debug_files_{config.language}_{timestamp}",
             type="debug-files", 
             description=f"Debug and intermediate files from {config.language} processing",
             metadata={
                 "language": config.language,
                 "debug_mode": True,
                 "iterations": config.max_iterations,
+                "timestamp": timestamp,
             }
         )
     
     # 3. Summary and analysis artifact
     summary_artifact = wandb.Artifact(
-        name=f"analysis_{config.language}",
+        name=f"analysis_{config.language}_{timestamp}",
         type="analysis",
         description=f"Summary reports and CSV analysis for {config.language} experiment",
         metadata={
             "language": config.language,
             "total_files": len(results),
             "success_rate": success_percentage,
+            "timestamp": timestamp,
         }
     )
     
@@ -508,14 +514,14 @@ def log_experiment_results_to_wandb(
     
     # Log all artifacts
     wandb.log_artifact(code_artifact)
-    print(f"✅ Generated code uploaded to wandb artifact: generated_code_{config.language}")
+    print(f"✅ Generated code uploaded to wandb artifact: generated_code_{config.language}_{timestamp}")
     
     if debug_artifact and config.debug_mode:
         wandb.log_artifact(debug_artifact)
-        print(f"✅ Debug files uploaded to wandb artifact: debug_files_{config.language}")
+        print(f"✅ Debug files uploaded to wandb artifact: debug_files_{config.language}_{timestamp}")
     
     wandb.log_artifact(summary_artifact) 
-    print(f"✅ Analysis files uploaded to wandb artifact: analysis_{config.language}")
+    print(f"✅ Analysis files uploaded to wandb artifact: analysis_{config.language}_{timestamp}")
     
     # Store key files directly in wandb.summary for easy access
     if output_path.exists():
