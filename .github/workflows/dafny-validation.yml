@@ -24,10 +24,19 @@ jobs:
         python -m pip install --upgrade pip
         pip install PyYAML
         
-    - name: Install Dafny
-      uses: dafny-lang/setup-dafny-action@v1
-      with:
-        dafny-version: "4.10.0"
+    - name: Install Dafny manually
+      run: |
+        # Create temp directory and download Dafny
+        cd /tmp
+        wget https://github.com/dafny-lang/dafny/releases/download/v4.10.0/dafny-4.10.0-x64-ubuntu-20.04.zip
+        unzip dafny-4.10.0-x64-ubuntu-20.04.zip
+        
+        # Install required dependencies
+        sudo apt-get update
+        sudo apt-get install -y libicu-dev
+        
+        # Add Dafny to PATH
+        echo "/tmp/dafny" >> $GITHUB_PATH
         
     - name: Convert YAML files and validate with Dafny
       run: |
