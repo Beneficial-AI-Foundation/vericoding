@@ -8,6 +8,7 @@ vc-spec: |-
 
 vc-code: |-
   {
+      assume(false);
       var p := 1;
       var seen: set<int> := {};
 

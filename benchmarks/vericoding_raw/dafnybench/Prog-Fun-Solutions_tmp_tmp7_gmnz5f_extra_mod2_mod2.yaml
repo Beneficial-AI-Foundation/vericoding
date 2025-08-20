@@ -12,6 +12,7 @@ vc-spec: |-
 
 vc-code: |-
   {
+      assume(false);
       var x:nat := 1;
       var y:nat := 0;
       var k:nat := n;

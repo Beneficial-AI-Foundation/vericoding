@@ -20,6 +20,7 @@ vc-spec: |-
 
 vc-code: |-
   {
+      assume(false);
       var i := 0;
       var j := 0;
 

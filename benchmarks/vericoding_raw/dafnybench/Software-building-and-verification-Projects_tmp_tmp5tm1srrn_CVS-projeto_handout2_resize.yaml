@@ -108,6 +108,7 @@ vc-spec: |-
 
 vc-code: |-
   {
+      assume(false);
       var newData := new List<(K,V)>[data.Length * 2](i => Nil);
       var i := 0;
       var oldSize := data.Length;

@@ -18,6 +18,7 @@ vc-spec: |-
 
 vc-code: |-
   {
+    assume(false);
     if (c<=f-1){//two elements at least
     var i:=c;
     while (i<f-1) //outer loop

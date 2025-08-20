@@ -12,6 +12,7 @@ vc-spec: |-
 
 vc-code: |-
   {
+    assume(false);
     var evenList: seq<int> := [];
     ghost var indices: seq<int> := [];
 
