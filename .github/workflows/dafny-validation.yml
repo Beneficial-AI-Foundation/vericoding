@@ -27,7 +27,7 @@ jobs:
     - name: Install Dafny
       uses: dafny-lang/setup-dafny-action@v1
       with:
-        dafny-version: "4.9.1"
+        dafny-version: "4.10.0"
         
     - name: Convert YAML files and validate with Dafny
       run: |
