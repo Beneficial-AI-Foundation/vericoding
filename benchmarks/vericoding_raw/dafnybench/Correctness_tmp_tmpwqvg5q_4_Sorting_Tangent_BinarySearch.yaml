@@ -1,0 +1,81 @@
+vc-preamble: |-
+  /**
+    Ather, Mohammad Faiz (s4648481/3)
+    CSSE3100
+    Assignemnt 3
+    The University of Queensland
+   */
+
+  // Question 1
+
+  // Author: Leino, Title: Program Proofs
+
+vc-helpers: |-
+
+vc-spec: |-
+  method BinarySearch(a: array<int>, circle: int)
+    returns (n: int)
+    requires forall i ::
+             1 <= i < a.Length
+             ==> a[i-1] < a[i]
+    requires forall i, j ::
+             0 <= i < j < a.Length ==>
+             a[i] < a[j]
+    ensures 0 <= n <= a.Length
+    ensures forall i ::
+            0 <= i < n ==>
+            a[i] < circle
+    ensures forall i ::
+            n <= i < a.Length ==>
+            circle <= a[i]
+
+vc-code: |-
+  {
+    var lo, hi := 0, a.Length;
+
+    while lo < hi
+      invariant 0 <= lo <= hi <= a.Length
+      invariant forall i ::
+                0 <= i < lo ==>
+                a[i] < circle
+      invariant forall i ::
+                hi <= i < a.Length ==>
+                a[i] >= circle
+      decreases hi - lo
+    {
+      var mid := (lo + hi) / 2;
+      calc {
+        lo;
+      ==
+        (lo + lo) / 2;
+      <= { assert lo <= hi; }
+        (lo + hi) / 2;
+      < { assert lo < hi; }
+        (hi + hi) / 2;
+      ==
+        hi;
+      }
+      /*
+        for a given circle in r,
+        should not iterate over array x
+        once it can be deduced that
+        no tangent will be found for that circle.
+        */ // see if and 1st else if
+      if (a[lo] > circle) {
+        hi := lo;
+      } else if (a[hi-1] < circle) {
+        lo := hi;
+      } else if (a[mid] < circle) {
+        lo := mid + 1;
+      } else {
+        hi := mid;
+      }
+    }
+
+    n := lo;
+    assert
+      !false; // sanity check
+  }
+
+vc-postamble: |-
+
