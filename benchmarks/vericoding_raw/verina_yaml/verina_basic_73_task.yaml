@@ -56,3 +56,67 @@ vc-proof: |-
   -- </vc-proof>
 
 vc-postamble: |-
+  /--
+  -- Reject Inputs
+  [
+      {
+          "input": {
+              "s": "abc",
+              "p": "ac"
+          }
+      }
+  ]
+  -- Test
+  [
+      {
+          "input": {
+              "s": "abc",
+              "p": "a?c"
+          },
+          "expected": true,
+          "unexpected": [
+              false
+          ]
+      },
+      {
+          "input": {
+              "s": "hello",
+              "p": "he?lo"
+          },
+          "expected": true,
+          "unexpected": [
+              false
+          ]
+      },
+      {
+          "input": {
+              "s": "world",
+              "p": "w?rld"
+          },
+          "expected": true,
+          "unexpected": [
+              false
+          ]
+      },
+      {
+          "input": {
+              "s": "test",
+              "p": "te?t"
+          },
+          "expected": true,
+          "unexpected": [
+              false
+          ]
+      },
+      {
+          "input": {
+              "s": "abc",
+              "p": "abd"
+          },
+          "expected": false,
+          "unexpected": [
+              true
+          ]
+      }
+  ]
+  -/

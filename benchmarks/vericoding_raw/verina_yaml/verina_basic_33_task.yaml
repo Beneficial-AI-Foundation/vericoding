@@ -54,3 +54,68 @@ vc-proof: |-
   -- </vc-proof>
 
 vc-postamble: |-
+  /--
+  -- Reject Inputs
+  [
+      {
+          "input": {
+              "s": "[3, 2, 1]"
+          }
+      }
+  ]
+  -- Test
+  [
+      {
+          "input": {
+              "s": "[0, 1, 2, 6, 9]"
+          },
+          "expected": 3,
+          "unexpected": [
+              2,
+              4,
+              5
+          ]
+      },
+      {
+          "input": {
+              "s": "[4, 5, 10, 11]"
+          },
+          "expected": 0,
+          "unexpected": [
+              1,
+              2
+          ]
+      },
+      {
+          "input": {
+              "s": "[0, 1, 2, 3, 4, 5]"
+          },
+          "expected": 6,
+          "unexpected": [
+              5,
+              7
+          ]
+      },
+      {
+          "input": {
+              "s": "[]"
+          },
+          "expected": 0,
+          "unexpected": [
+              1,
+              2
+          ]
+      },
+      {
+          "input": {
+              "s": "[0, 2, 3, 4]"
+          },
+          "expected": 1,
+          "unexpected": [
+              0,
+              2,
+              3
+          ]
+      }
+  ]
+  -/

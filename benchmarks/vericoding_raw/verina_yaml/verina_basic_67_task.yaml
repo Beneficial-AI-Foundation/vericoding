@@ -55,3 +55,55 @@ vc-proof: |-
   -- </vc-proof>
 
 vc-postamble: |-
+  /--
+  -- Reject Inputs
+  []
+  -- Test
+  [
+      {
+          "input": {
+              "x": "[]"
+          },
+          "expected": "true",
+          "unexpected": [
+              "false"
+          ]
+      },
+      {
+          "input": {
+              "x": "['a']"
+          },
+          "expected": "true",
+          "unexpected": [
+              "false"
+          ]
+      },
+      {
+          "input": {
+              "x": "['a', 'b', 'a']"
+          },
+          "expected": "true",
+          "unexpected": [
+              "false"
+          ]
+      },
+      {
+          "input": {
+              "x": "['a', 'b', 'c']"
+          },
+          "expected": "false",
+          "unexpected": [
+              "true"
+          ]
+      },
+      {
+          "input": {
+              "x": "['r', 'a', 'c', 'e', 'c', 'a', 'r']"
+          },
+          "expected": "true",
+          "unexpected": [
+              "false"
+          ]
+      }
+  ]
+  -/
