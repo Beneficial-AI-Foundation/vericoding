@@ -1,0 +1,63 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  def isEven (n : Int) : Bool :=
+    n % 2 = 0
+  
+  def isOdd (n : Int) : Bool :=
+    n % 2 ≠ 0
+  
+  def firstEvenOddIndices (lst : List Int) : Option (Nat × Nat) :=
+    let evenIndex := lst.findIdx? isEven
+    let oddIndex := lst.findIdx? isOdd
+    match evenIndex, oddIndex with
+    | some ei, some oi => some (ei, oi)
+    | _, _ => none
+  -- </vc-helpers>
+
+vc-signature: |-
+  def findProduct (lst : List Int) (h_precond : findProduct_precond (lst)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    match firstEvenOddIndices lst with
+    | some (ei, oi) => lst[ei]! * lst[oi]!
+    | none => 0
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def findProduct_precond (lst : List Int) : Prop :=
+    lst.length > 1 ∧
+    (∃ x ∈ lst, isEven x) ∧
+    (∃ x ∈ lst, isOdd x)
+
+  @[reducible, simp]
+  def findProduct_postcond (lst : List Int) (result: Int) (h_precond : findProduct_precond (lst)) :=
+    match firstEvenOddIndices lst with
+    | some (ei, oi) => result = lst[ei]! * lst[oi]!
+    | none => True
+
+  theorem findProduct_spec_satisfied (lst: List Int) (h_precond : findProduct_precond (lst)) :
+      findProduct_postcond (lst) (findProduct (lst) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold findProduct findProduct_postcond
+    split
+    case h_1 _ ei oi _ =>
+      split
+      case h_1 _ ei' oi' heq =>
+        have : ei = ei' ∧ oi = oi' := by
+          rw [Option.some_inj] at heq
+          cases heq with
+          | refl => exact ⟨rfl, rfl⟩
+        simp [this]
+      case h_2 _ heq => contradiction
+    case h_2 => simp
+  -- </vc-proof>
+
+vc-postamble: |-

@@ -1,0 +1,47 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def ifPowerOfFour (n : Nat) (h_precond : ifPowerOfFour_precond (n)) : Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rec helper (n : Nat) : Bool :=
+      match n with
+      | 0 =>
+        false
+      | Nat.succ m =>
+        match m with
+        | 0 =>
+          true
+        | Nat.succ l =>
+          if (l+2)%4=0 then
+            helper ((l+2)/4)
+          else
+            false
+    helper n
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible]
+  def ifPowerOfFour_precond (n : Nat) : Prop :=
+    True
+
+  @[reducible]
+  def ifPowerOfFour_postcond (n : Nat) (result: Bool) (h_precond : ifPowerOfFour_precond (n)) : Prop :=
+    result ↔ (∃ m:Nat, n=4^m)
+
+  theorem ifPowerOfFour_spec_satisfied (n: Nat) (h_precond : ifPowerOfFour_precond (n)) :
+      ifPowerOfFour_postcond (n) (ifPowerOfFour (n) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

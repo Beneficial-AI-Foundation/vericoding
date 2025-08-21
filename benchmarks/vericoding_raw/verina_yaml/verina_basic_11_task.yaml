@@ -1,0 +1,40 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def lastDigit (n : Nat) (h_precond : lastDigit_precond (n)) : Nat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    n % 10
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def lastDigit_precond (n : Nat) : Prop :=
+    True
+
+  @[reducible, simp]
+  def lastDigit_postcond (n : Nat) (result: Nat) (h_precond : lastDigit_precond (n)) :=
+    (0 ≤ result ∧ result < 10) ∧
+    (n % 10 - result = 0 ∧ result - n % 10 = 0)
+
+  theorem lastDigit_spec_satisfied (n: Nat) (h_precond : lastDigit_precond (n)) :
+      lastDigit_postcond (n) (lastDigit (n) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold lastDigit lastDigit_postcond
+    constructor
+    · constructor
+      · simp
+      · exact Nat.mod_lt n (by decide)
+    · simp
+  -- </vc-proof>
+
+vc-postamble: |-

@@ -1,0 +1,36 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def DoubleQuadruple (x : Int) (h_precond : DoubleQuadruple_precond (x)) : (Int × Int) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let a := 2 * x
+    let b := 2 * a
+    (a, b)
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def DoubleQuadruple_precond (x : Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def DoubleQuadruple_postcond (x : Int) (result: (Int × Int)) (h_precond : DoubleQuadruple_precond (x)) :=
+    result.fst = 2 * x ∧ result.snd = 2 * result.fst
+
+  theorem DoubleQuadruple_spec_satisfied (x: Int) (h_precond : DoubleQuadruple_precond (x)) :
+      DoubleQuadruple_postcond (x) (DoubleQuadruple (x) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

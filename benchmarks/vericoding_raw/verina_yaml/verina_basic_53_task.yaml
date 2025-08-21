@@ -1,0 +1,50 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def CalSum (N : Nat) (h_precond : CalSum_precond (N)) : Nat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rec loop (n : Nat) : Nat :=
+      if n = 0 then 0
+      else n + loop (n - 1)
+    loop N
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def CalSum_precond (N : Nat) : Prop :=
+    True
+
+  @[reducible, simp]
+  def CalSum_postcond (N : Nat) (result: Nat) (h_precond : CalSum_precond (N)) :=
+    2 * result = N * (N + 1)
+
+  theorem CalSum_spec_satisfied (N: Nat) (h_precond : CalSum_precond (N)) :
+      CalSum_postcond (N) (CalSum (N) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold CalSum_postcond CalSum
+    induction N with
+    | zero =>
+      unfold CalSum.loop
+      simp
+    | succ n ih =>
+      unfold CalSum_precond at ih
+      simp at ih
+      unfold CalSum.loop
+      simp
+      rw [Nat.mul_add]
+      rw [ih]
+      rw [← Nat.add_mul]
+      rw [Nat.add_comm, Nat.mul_comm]
+  -- </vc-proof>
+
+vc-postamble: |-

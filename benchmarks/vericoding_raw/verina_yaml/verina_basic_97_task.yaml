@@ -1,0 +1,55 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def TestArrayElements (a : Array Int) (j : Nat) (h_precond : TestArrayElements_precond (a) (j)) : Array Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    a.set! j 60
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def TestArrayElements_precond (a : Array Int) (j : Nat) : Prop :=
+    j < a.size
+
+  @[reducible, simp]
+  def TestArrayElements_postcond (a : Array Int) (j : Nat) (result: Array Int) (h_precond : TestArrayElements_precond (a) (j)) :=
+    (result[j]! = 60) ∧ (∀ k, k < a.size → k ≠ j → result[k]! = a[k]!)
+
+  theorem TestArrayElements_spec_satisfied (a: Array Int) (j: Nat) (h_precond : TestArrayElements_precond (a) (j)) :
+      TestArrayElements_postcond (a) (j) (TestArrayElements (a) (j) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold TestArrayElements_postcond TestArrayElements
+    unfold TestArrayElements_precond at h_precond
+    apply And.intro
+    . rw [Array.getElem!_eq_getD, Array.getD]
+      simp
+      exact h_precond
+    . intro k
+      intro hk hxk
+      simp [Array.getElem!_eq_getD, Array.getD]
+      split
+      . rw [Array.getElem_setIfInBounds]
+        split
+        . rename_i h h₁
+          rw [eq_comm] at h₁
+          contradiction
+        . rfl
+      . rw [Array.getElem_setIfInBounds]
+        split
+        . rename_i h h₁
+          rw [eq_comm] at h₁
+          contradiction
+        . rfl
+  -- </vc-proof>
+
+vc-postamble: |-

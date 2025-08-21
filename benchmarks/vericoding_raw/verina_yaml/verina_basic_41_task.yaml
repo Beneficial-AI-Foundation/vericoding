@@ -1,0 +1,45 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def hasOnlyOneDistinctElement (a : Array Int) (h_precond : hasOnlyOneDistinctElement_precond (a)) : Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    if a.size = 0 then
+      true
+    else
+      let firstElement := a[0]!
+      let rec loop (i : Nat) : Bool :=
+        if h : i < a.size then
+          if a[i]! = firstElement then loop (i + 1) else false
+        else
+          true
+      loop 1
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def hasOnlyOneDistinctElement_precond (a : Array Int) : Prop :=
+    a.size > 0
+
+  @[reducible, simp]
+  def hasOnlyOneDistinctElement_postcond (a : Array Int) (result: Bool) (h_precond : hasOnlyOneDistinctElement_precond (a)) :=
+    let l := a.toList
+    (result → List.Pairwise (· = ·) l) ∧
+    (¬ result → (l.any (fun x => x ≠ l[0]!)))
+
+  theorem hasOnlyOneDistinctElement_spec_satisfied (a: Array Int) (h_precond : hasOnlyOneDistinctElement_precond (a)) :
+      hasOnlyOneDistinctElement_postcond (a) (hasOnlyOneDistinctElement (a) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

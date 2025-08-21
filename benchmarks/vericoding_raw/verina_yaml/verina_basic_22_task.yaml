@@ -1,0 +1,42 @@
+vc-description: |-
+
+vc-preamble: |-
+  import Std.Data.HashSet
+
+vc-helpers: |-
+  -- <vc-helpers>
+  def inArray (a : Array Int) (x : Int) : Bool :=
+    a.any (fun y => y = x)
+  -- </vc-helpers>
+
+vc-signature: |-
+  def dissimilarElements (a : Array Int) (b : Array Int) (h_precond : dissimilarElements_precond (a) (b)) : Array Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let res := a.foldl (fun acc x => if !inArray b x then acc.insert x else acc) Std.HashSet.empty
+    let res := b.foldl (fun acc x => if !inArray a x then acc.insert x else acc) res
+    res.toArray.insertionSort
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def dissimilarElements_precond (a : Array Int) (b : Array Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def dissimilarElements_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_precond : dissimilarElements_precond (a) (b)) :=
+    result.all (fun x => inArray a x ≠ inArray b x)∧
+    result.toList.Pairwise (· ≤ ·) ∧
+    a.all (fun x => if x ∈ b then x ∉ result else x ∈ result) ∧
+    b.all (fun x => if x ∈ a then x ∉ result else x ∈ result)
+
+  theorem dissimilarElements_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : dissimilarElements_precond (a) (b)) :
+      dissimilarElements_postcond (a) (b) (dissimilarElements (a) (b) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

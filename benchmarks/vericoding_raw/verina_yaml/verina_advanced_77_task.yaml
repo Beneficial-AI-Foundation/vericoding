@@ -1,0 +1,63 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def trapRainWater (height : List Nat) (h_precond : trapRainWater_precond (height)) : Nat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    Id.run do
+      let mut left := 0
+      let mut right := height.length - 1
+      let mut leftMax := 0
+      let mut rightMax := 0
+      let mut water := 0
+  
+      while left < right do
+        let hLeft := height[left]!
+        let hRight := height[right]!
+  
+        if hLeft < hRight then
+          if hLeft >= leftMax then
+            leftMax := hLeft
+          else
+            water := water + (leftMax - hLeft)
+          left := left + 1
+        else
+          if hRight >= rightMax then
+            rightMax := hRight
+          else
+            water := water + (rightMax - hRight)
+          right := right - 1
+  
+      return water
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def trapRainWater_precond (height : List Nat) : Prop :=
+    True
+
+  @[reducible, simp]
+  def trapRainWater_postcond (height : List Nat) (result: Nat) (h_precond : trapRainWater_precond (height)) : Prop :=
+    let waterAt := List.range height.length |>.map (fun i =>
+      let lmax := List.take (i+1) height |>.foldl Nat.max 0
+      let rmax := List.drop i height |>.foldl Nat.max 0
+      Nat.min lmax rmax - height[i]!)
+  
+    result - (waterAt.foldl (· + ·) 0) = 0 ∧ (waterAt.foldl (· + ·) 0) ≤ result
+
+  theorem trapRainWater_spec_satisfied (height: List Nat) (h_precond : trapRainWater_precond (height)) :
+      trapRainWater_postcond (height) (trapRainWater (height) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

@@ -1,0 +1,46 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def partitionEvensOdds (nums : List Nat) (h_precond : partitionEvensOdds_precond (nums)) : (List Nat × List Nat) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rec helper (nums : List Nat) : (List Nat × List Nat) :=
+      match nums with
+      | [] => ([], [])
+      | x :: xs =>
+        let (evens, odds) := helper xs
+        if x % 2 == 0 then (x :: evens, odds)
+        else (evens, x :: odds)
+    helper nums
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible]
+  def partitionEvensOdds_precond (nums : List Nat) : Prop :=
+    True
+
+  @[reducible]
+  def partitionEvensOdds_postcond (nums : List Nat) (result: (List Nat × List Nat)) (h_precond : partitionEvensOdds_precond (nums)): Prop :=
+    let evens := result.fst
+    let odds := result.snd
+    -- All elements from nums are in evens ++ odds, no extras
+    evens ++ odds = nums.filter (fun n => n % 2 == 0) ++ nums.filter (fun n => n % 2 == 1) ∧
+    evens.all (fun n => n % 2 == 0) ∧
+    odds.all (fun n => n % 2 == 1)
+
+  theorem partitionEvensOdds_spec_satisfied (nums: List Nat) (h_precond : partitionEvensOdds_precond (nums)) :
+      partitionEvensOdds_postcond (nums) (partitionEvensOdds (nums) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

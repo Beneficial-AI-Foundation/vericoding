@@ -1,0 +1,57 @@
+vc-description: |-
+
+vc-preamble: |-
+  import Mathlib.Data.List.Basic
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def longestIncreasingSubsequence (nums : List Int) (h_precond : longestIncreasingSubsequence_precond (nums)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    Id.run do
+      if nums.isEmpty then return 0
+      let mut sub : Array Int := Array.empty
+      sub := sub.push nums.head!
+      for num in nums.tail do
+        if num > sub[sub.size - 1]! then
+          sub := sub.push num
+        else
+         -- << binary search >>
+          let mut left : Nat := 0
+          let mut right : Nat := sub.size - 1
+          while left < right do
+            let mid := (left + right) / 2
+            if sub[mid]! == num then
+              right := mid
+            else if sub[mid]! < num then
+              left := mid + 1
+            else
+              right := mid
+          sub := sub.set! left num
+      return Int.ofNat sub.size
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible]
+  def longestIncreasingSubsequence_precond (nums : List Int) : Prop :=
+    True
+
+  @[reducible]
+  def longestIncreasingSubsequence_postcond (nums : List Int) (result: Int) (h_precond : longestIncreasingSubsequence_precond (nums)) : Prop :=
+    let allSubseq := (nums.foldl fun acc x => acc ++ acc.map (fun sub => x :: sub)) [[]] |>.map List.reverse
+    let increasingSubseqLens := allSubseq.filter (fun l => List.Pairwise (· < ·) l) |>.map (·.length)
+    increasingSubseqLens.contains result ∧ increasingSubseqLens.all (· ≤ result)
+
+  theorem longestIncreasingSubsequence_spec_satisfied (nums: List Int) (h_precond : longestIncreasingSubsequence_precond (nums)) :
+      longestIncreasingSubsequence_postcond (nums) (longestIncreasingSubsequence (nums) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

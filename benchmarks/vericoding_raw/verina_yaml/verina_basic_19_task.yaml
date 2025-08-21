@@ -1,0 +1,53 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def isSorted (a : Array Int) (h_precond : isSorted_precond (a)) : Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    if a.size ≤ 1 then
+      true
+    else
+      a.mapIdx (fun i x =>
+        if h : i + 1 < a.size then
+          decide (x ≤ a[i + 1])
+        else
+          true) |>.all id
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def isSorted_precond (a : Array Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def isSorted_postcond (a : Array Int) (result: Bool) (h_precond : isSorted_precond (a)) :=
+    (∀ i, (hi : i < a.size - 1) → a[i] ≤ a[i + 1]) ↔ result
+
+  theorem isSorted_spec_satisfied (a: Array Int) (h_precond : isSorted_precond (a)) :
+      isSorted_postcond (a) (isSorted (a) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold isSorted isSorted_postcond
+    simp_all
+    cases a with | mk a =>
+      simp
+      cases a with
+      | nil => simp
+      | cons x xs =>
+        simp
+        cases xs with
+        | nil => simp
+        | cons x' xs =>
+          simp
+          constructor <;> simp_all
+  -- </vc-proof>
+
+vc-postamble: |-

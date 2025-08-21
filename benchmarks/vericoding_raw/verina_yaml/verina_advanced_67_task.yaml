@@ -1,0 +1,58 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def runLengthEncode (s : String) (h_precond : runLengthEncode_precond (s)) : List (Char × Nat) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let chars := s.data
+  
+    let rec encodeAux (acc : List (Char × Nat)) (rest : List Char) : List (Char × Nat) :=
+      match rest with
+      | [] => acc.reverse
+      | h :: t =>
+        match acc with
+        | (ch, count) :: accTail =>
+          if ch = h then
+            encodeAux ((ch, count + 1) :: accTail) t
+          else
+            encodeAux ((h, 1) :: (ch, count) :: accTail) t
+        | [] =>
+          encodeAux ([(h, 1)]) t
+  
+    let encoded := encodeAux [] chars
+    encoded
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def runLengthEncode_precond (s : String) : Prop :=
+    True
+
+  def decodeRLE (lst : List (Char × Nat)) : String :=
+    match lst with
+    | [] => ""
+    | (ch, cnt) :: tail =>
+      let repeated := String.mk (List.replicate cnt ch)
+      repeated ++ decodeRLE tail
+  @[reducible, simp]
+  def runLengthEncode_postcond (s : String) (result: List (Char × Nat)) (h_precond : runLengthEncode_precond (s)) : Prop :=
+    (∀ pair ∈ result, pair.snd > 0) ∧
+    (∀ i : Nat, i < result.length - 1 → (result[i]!).fst ≠ (result[i+1]!).fst) ∧
+    decodeRLE result = s
+
+  theorem runLengthEncode_spec_satisfied (s: String) (h_precond : runLengthEncode_precond (s)) :
+      runLengthEncode_postcond (s) (runLengthEncode (s) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

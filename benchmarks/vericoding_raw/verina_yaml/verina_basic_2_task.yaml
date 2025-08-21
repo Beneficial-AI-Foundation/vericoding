@@ -1,0 +1,46 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def findSmallest (s : Array Nat) (h_precond : findSmallest_precond (s)) : Option Nat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    s.toList.min?
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def findSmallest_precond (s : Array Nat) : Prop :=
+    True
+
+  @[reducible, simp]
+  def findSmallest_postcond (s : Array Nat) (result: Option Nat) (h_precond : findSmallest_precond (s)) :=
+    let xs := s.toList
+    match result with
+    | none => xs = []
+    | some r => r ∈ xs ∧ (∀ x, x ∈ xs → r ≤ x)
+
+  theorem findSmallest_spec_satisfied (s: Array Nat) (h_precond : findSmallest_precond (s)) :
+      findSmallest_postcond (s) (findSmallest (s) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold findSmallest_postcond findSmallest
+    cases res : s.toList.min? with
+    | none =>
+      simp only [res]
+      rw [List.min?_eq_none_iff] at res
+      exact res
+    | some r =>
+      simp only [res]
+      rw [List.min?_eq_some_iff'] at res
+      exact res
+  -- </vc-proof>
+
+vc-postamble: |-

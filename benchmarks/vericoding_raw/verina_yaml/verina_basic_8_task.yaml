@@ -1,0 +1,45 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def myMin (a : Int) (b : Int) (h_precond : myMin_precond (a) (b)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    if a <= b then a else b
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def myMin_precond (a : Int) (b : Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def myMin_postcond (a : Int) (b : Int) (result: Int) (h_precond : myMin_precond (a) (b)) :=
+    (result ≤ a ∧ result ≤ b) ∧
+    (result = a ∨ result = b)
+
+  theorem myMin_spec_satisfied (a: Int) (b: Int) (h_precond : myMin_precond (a) (b)) :
+      myMin_postcond (a) (b) (myMin (a) (b) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold myMin myMin_postcond
+    constructor
+    · split
+      case left.isTrue h =>
+        simp
+        exact h
+      case left.isFalse h =>
+        simp
+        rw [Int.not_le] at h
+        exact Int.le_of_lt h
+    · split <;> simp
+  -- </vc-proof>
+
+vc-postamble: |-

@@ -1,0 +1,56 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  def intMax (x y : Int) : Int :=
+    if x < y then y else x
+  -- </vc-helpers>
+
+vc-signature: |-
+  def LongestCommonSubsequence (a : Array Int) (b : Array Int) (h_precond : LongestCommonSubsequence_precond (a) (b)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let m := a.size
+    let n := b.size
+  
+    let dp := Id.run do
+      let mut dp := Array.mkArray (m + 1) (Array.mkArray (n + 1) 0)
+      for i in List.range (m + 1) do
+        for j in List.range (n + 1) do
+          if i = 0 ∨ j = 0 then
+            ()
+          else if a[i - 1]! = b[j - 1]! then
+            let newVal := ((dp[i - 1]!)[j - 1]!) + 1
+            dp := dp.set! i (dp[i]!.set! j newVal)
+          else
+            let newVal := intMax ((dp[i - 1]!)[j]!) ((dp[i]!)[j - 1]!)
+            dp := dp.set! i (dp[i]!.set! j newVal)
+      return dp
+    (dp[m]!)[n]!
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible]
+  def LongestCommonSubsequence_precond (a : Array Int) (b : Array Int) : Prop :=
+    True
+
+  @[reducible]
+  def LongestCommonSubsequence_postcond (a : Array Int) (b : Array Int) (result: Int) (h_precond : LongestCommonSubsequence_precond (a) (b)) : Prop :=
+    let allSubseq (arr : Array Int) := (arr.foldl fun acc x => acc ++ acc.map (fun sub => x :: sub)) [[]] |>.map List.reverse
+    let subseqA := allSubseq a
+    let subseqB := allSubseq b
+    let commonSubseqLens := subseqA.filter (fun l => subseqB.contains l) |>.map (·.length)
+    commonSubseqLens.contains result ∧ commonSubseqLens.all (· ≤ result)
+
+  theorem LongestCommonSubsequence_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : LongestCommonSubsequence_precond (a) (b)) :
+      LongestCommonSubsequence_postcond (a) (b) (LongestCommonSubsequence (a) (b) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

@@ -1,0 +1,45 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  def toLower (c : Char) : Char :=
+    if 'A' ≤ c && c ≤ 'Z' then
+      Char.ofNat (Char.toNat c + 32)
+    else
+      c
+  
+  def normalize_str (s : String) : List Char :=
+    s.data.map toLower
+  -- </vc-helpers>
+
+vc-signature: |-
+  def allVowels (s : String) (h_precond : allVowels_precond (s)) : Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let chars := normalize_str s
+    let vowelSet := ['a', 'e', 'i', 'o', 'u']
+    vowelSet.all (fun v => chars.contains v)
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible]
+  def allVowels_precond (s : String) : Prop :=
+    True
+
+  @[reducible]
+  def allVowels_postcond (s : String) (result: Bool) (h_precond : allVowels_precond (s)) : Prop :=
+    let chars := normalize_str s
+    (result ↔ List.all ['a', 'e', 'i', 'o', 'u'] (fun v => chars.contains v))
+
+  theorem allVowels_spec_satisfied (s: String) (h_precond : allVowels_precond (s)) :
+      allVowels_postcond (s) (allVowels (s) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

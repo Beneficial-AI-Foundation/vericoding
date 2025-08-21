@@ -1,0 +1,39 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def sumOfFourthPowerOfOddNumbers (n : Nat) (h_precond : sumOfFourthPowerOfOddNumbers_precond (n)) : Nat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    match n with
+    | 0 => 0
+    | n + 1 =>
+      let prev := sumOfFourthPowerOfOddNumbers n h_precond
+      let nextOdd := 2 * n + 1
+      prev + nextOdd^4
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def sumOfFourthPowerOfOddNumbers_precond (n : Nat) : Prop :=
+    True
+
+  @[reducible, simp]
+  def sumOfFourthPowerOfOddNumbers_postcond (n : Nat) (result: Nat) (h_precond : sumOfFourthPowerOfOddNumbers_precond (n)) :=
+    15 * result = n * (2 * n + 1) * (7 + 24 * n^3 - 12 * n^2 - 14 * n)
+
+  theorem sumOfFourthPowerOfOddNumbers_spec_satisfied (n: Nat) (h_precond : sumOfFourthPowerOfOddNumbers_precond (n)) :
+      sumOfFourthPowerOfOddNumbers_postcond (n) (sumOfFourthPowerOfOddNumbers (n) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

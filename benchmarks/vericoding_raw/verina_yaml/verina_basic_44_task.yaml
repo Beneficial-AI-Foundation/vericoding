@@ -1,0 +1,65 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  def isOdd (n : Int) : Bool :=
+    n % 2 == 1
+  -- </vc-helpers>
+
+vc-signature: |-
+  def isOddAtIndexOdd (a : Array Int) (h_precond : isOddAtIndexOdd_precond (a)) : Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    -- First create pairs of (index, value) for all elements in the array
+    let indexedArray := a.mapIdx fun i x => (i, x)
+  
+    -- Check if all elements at odd indices are odd numbers
+    indexedArray.all fun (i, x) => !(isOdd i) || isOdd x
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def isOddAtIndexOdd_precond (a : Array Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def isOddAtIndexOdd_postcond (a : Array Int) (result: Bool) (h_precond : isOddAtIndexOdd_precond (a)) :=
+    result ↔ (∀ i, (hi : i < a.size) → isOdd i → isOdd (a[i]))
+
+  theorem isOddAtIndexOdd_spec_satisfied (a: Array Int) (h_precond : isOddAtIndexOdd_precond (a)) :
+      isOddAtIndexOdd_postcond (a) (isOddAtIndexOdd (a) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold isOddAtIndexOdd isOddAtIndexOdd_postcond
+    simp_all
+    constructor
+    · intro h
+      intro i hi h_odd
+      -- Since the function returns true, all elements in satisfy the predicate
+      have h_all_odd : (a.mapIdx (fun j x => (j, x))).all (fun (i, x) => !(isOdd i) || isOdd x) = true := by
+        simp_all
+      -- Apply the property of Array.all
+      rw [Array.all_iff_forall] at h_all_odd
+      simp_all
+      have h_sat_i : !(isOdd i) || isOdd a[i] := by
+        simp
+        apply h_all_odd i hi
+      simp [h_odd] at h_sat_i
+      exact h_sat_i
+    · intro h
+      apply Array.all_iff_forall.mpr
+      intro i hi
+      simp
+      intro hi'
+      have h_sat : isOdd i → isOdd a[i] := by
+        apply h i hi'
+      rw [Decidable.imp_iff_not_or] at h_sat
+      simp at h_sat
+      exact h_sat
+  -- </vc-proof>
+
+vc-postamble: |-

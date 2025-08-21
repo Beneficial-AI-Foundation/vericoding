@@ -1,0 +1,35 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def cubeSurfaceArea (size : Nat) (h_precond : cubeSurfaceArea_precond (size)) : Nat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    6 * size * size
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def cubeSurfaceArea_precond (size : Nat) : Prop :=
+    True
+
+  @[reducible, simp]
+  def cubeSurfaceArea_postcond (size : Nat) (result: Nat) (h_precond : cubeSurfaceArea_precond (size)) :=
+    result - 6 * size * size = 0 ∧ 6 * size * size - result = 0
+
+  theorem cubeSurfaceArea_spec_satisfied (size: Nat) (h_precond : cubeSurfaceArea_precond (size)) :
+      cubeSurfaceArea_postcond (size) (cubeSurfaceArea (size) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold cubeSurfaceArea cubeSurfaceArea_postcond
+    simp
+  -- </vc-proof>
+
+vc-postamble: |-

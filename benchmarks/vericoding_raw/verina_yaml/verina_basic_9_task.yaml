@@ -1,0 +1,60 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def hasCommonElement (a : Array Int) (b : Array Int) (h_precond : hasCommonElement_precond (a) (b)) : Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    a.any fun x => b.any fun y => x = y
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def hasCommonElement_precond (a : Array Int) (b : Array Int) : Prop :=
+    a.size > 0 ∧ b.size > 0
+
+  @[reducible, simp]
+  def hasCommonElement_postcond (a : Array Int) (b : Array Int) (result: Bool) (h_precond : hasCommonElement_precond (a) (b)) :=
+    (∃ i j, i < a.size ∧ j < b.size ∧ a[i]! = b[j]!) ↔ result
+
+  theorem hasCommonElement_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : hasCommonElement_precond (a) (b)) :
+      hasCommonElement_postcond (a) (b) (hasCommonElement (a) (b) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold hasCommonElement hasCommonElement_postcond
+    constructor
+    · intro h
+      rcases h with ⟨i, j, hi, hj, heq⟩
+      simp [Array.any_eq]
+      exists i
+      exists hi
+      exists j
+      exists hj
+      have heqa : a[i]! = a[i] := by
+        exact getElem!_pos a i hi
+      have heqb : b[j]! = b[j] := by
+        exact getElem!_pos b j hj
+      rw [heqa, heqb] at heq
+      exact heq
+    · intro h
+      simp [Array.any_eq] at h
+      rcases h with ⟨i, hi, j, hj, heq⟩
+      exists i
+      exists j
+      simp [hi, hj]
+      have heqa : a[i]! = a[i] := by
+        exact getElem!_pos a i hi
+      have heqb : b[j]! = b[j] := by
+        exact getElem!_pos b j hj
+      rw [heqa, heqb]
+      exact heq
+  -- </vc-proof>
+
+vc-postamble: |-

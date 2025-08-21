@@ -1,0 +1,41 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def maxOfList (lst : List Nat) (h_precond : maxOfList_precond (lst)) : Nat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rec helper (lst : List Nat) : Nat :=
+      match lst with
+      | [] => 0  -- technically shouldn't happen if input is always non-empty
+      | [x] => x
+      | x :: xs =>
+        let maxTail := helper xs
+        if x > maxTail then x else maxTail
+    helper lst
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible]
+  def maxOfList_precond (lst : List Nat) : Prop :=
+    lst ≠ []  -- Ensure the list is non-empty
+
+  @[reducible]
+  def maxOfList_postcond (lst : List Nat) (result: Nat) (h_precond : maxOfList_precond (lst)) : Prop :=
+    result ∈ lst ∧ ∀ x ∈ lst, x ≤ result
+
+  theorem maxOfList_spec_satisfied (lst: List Nat) (h_precond : maxOfList_precond (lst)) :
+      maxOfList_postcond (lst) (maxOfList (lst) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

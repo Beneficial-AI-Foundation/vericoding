@@ -1,0 +1,38 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def sumOfDigits (n : Nat) (h_precond : sumOfDigits_precond (n)) : Nat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rec loop (n : Nat) (acc : Nat) : Nat :=
+      if n = 0 then acc
+      else loop (n / 10) (acc + n % 10)
+    loop n 0
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def sumOfDigits_precond (n : Nat) : Prop :=
+    True
+
+  @[reducible, simp]
+  def sumOfDigits_postcond (n : Nat) (result: Nat) (h_precond : sumOfDigits_precond (n)) :=
+    result - List.sum (List.map (fun c => Char.toNat c - Char.toNat '0') (String.toList (Nat.repr n))) = 0 ∧
+    List.sum (List.map (fun c => Char.toNat c - Char.toNat '0') (String.toList (Nat.repr n))) - result = 0
+
+  theorem sumOfDigits_spec_satisfied (n: Nat) (h_precond : sumOfDigits_precond (n)) :
+      sumOfDigits_postcond (n) (sumOfDigits (n) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

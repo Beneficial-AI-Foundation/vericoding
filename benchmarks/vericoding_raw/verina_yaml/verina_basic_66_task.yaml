@@ -1,0 +1,37 @@
+vc-description: |-
+
+vc-preamble: |-
+  import Mathlib
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def ComputeIsEven (x : Int) (h_precond : ComputeIsEven_precond (x)) : Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    if x % 2 = 0 then true else false
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def ComputeIsEven_precond (x : Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def ComputeIsEven_postcond (x : Int) (result: Bool) (h_precond : ComputeIsEven_precond (x)) :=
+    result = true ↔ ∃ k : Int, x = 2 * k
+
+  theorem ComputeIsEven_spec_satisfied (x: Int) (h_precond : ComputeIsEven_precond (x)) :
+      ComputeIsEven_postcond (x) (ComputeIsEven (x) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold ComputeIsEven ComputeIsEven_postcond
+    simp
+    rfl
+  -- </vc-proof>
+
+vc-postamble: |-

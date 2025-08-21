@@ -1,0 +1,82 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def increasingTriplet (nums : List Int) (h_precond : increasingTriplet_precond (nums)) : Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    -- must have at least 3 elements to form a triplet
+    let rec lengthCheck : List Int → Nat → Nat
+      | [], acc => acc
+      | _ :: rest, acc => lengthCheck rest (acc + 1)
+  
+    let len := lengthCheck nums 0
+  
+    if len < 3 then
+      false
+    else
+      -- scan for increasing triplet
+      let rec loop (xs : List Int) (first : Int) (second : Int) : Bool :=
+        match xs with
+        | [] => false
+        | x :: rest =>
+          let nextFirst := if x ≤ first then x else first
+          let nextSecond := if x > first ∧ x ≤ second then x else second
+          if x ≤ first then
+            loop rest nextFirst second
+          else if x ≤ second then
+            loop rest first nextSecond
+          else
+            true  -- found triplet
+      match nums with
+      | [] => false
+      | _ :: rest1 =>
+        match rest1 with
+        | [] => false
+        | _ :: rest2 =>
+          match rest2 with
+          | [] => false
+          | _ =>
+            loop nums 2147483647 2147483647
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible]
+  def increasingTriplet_precond (nums : List Int) : Prop :=
+    True
+
+  @[reducible]
+  def increasingTriplet_postcond (nums : List Int) (result: Bool) (h_precond : increasingTriplet_precond (nums)) : Prop :=
+    let nums' := nums.zipIdx
+    (result →
+      nums'.any (fun (x, i) =>
+        nums'.any (fun (y, j) =>
+          nums'.any (fun (z, k) =>
+            i < j ∧ j < k ∧ x < y ∧ y < z
+          )
+        )
+      ))
+    ∧
+    (¬ result → nums'.all (fun (x, i) =>
+      nums'.all (fun (y, j) =>
+        nums'.all (fun (z, k) =>
+          i ≥ j ∨ j ≥ k ∨ x ≥ y ∨ y ≥ z
+        )
+      )
+    ))
+
+  theorem increasingTriplet_spec_satisfied (nums: List Int) (h_precond : increasingTriplet_precond (nums)) :
+      increasingTriplet_postcond (nums) (increasingTriplet (nums) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

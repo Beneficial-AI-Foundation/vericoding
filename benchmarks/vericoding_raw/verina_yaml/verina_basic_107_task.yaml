@@ -1,0 +1,34 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def ComputeAvg (a : Int) (b : Int) (h_precond : ComputeAvg_precond (a) (b)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    (a + b) / 2
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def ComputeAvg_precond (a : Int) (b : Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def ComputeAvg_postcond (a : Int) (b : Int) (result: Int) (h_precond : ComputeAvg_precond (a) (b)) :=
+    2 * result = a + b - ((a + b) % 2)
+
+  theorem ComputeAvg_spec_satisfied (a: Int) (b: Int) (h_precond : ComputeAvg_precond (a) (b)) :
+      ComputeAvg_postcond (a) (b) (ComputeAvg (a) (b) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

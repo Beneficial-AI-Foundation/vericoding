@@ -1,0 +1,51 @@
+vc-description: |-
+
+vc-preamble: |-
+  import Mathlib
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def maxStrength (nums : List Int) (h_precond : maxStrength_precond (nums)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let powerSet := fun (l : List Int) =>
+      let n := l.length
+      let masks := List.range (2^n)
+      masks.map fun mask =>
+        (List.range n).foldr (fun i acc =>
+          if (mask.shiftRight i).land 1 == 1 then l[i]! :: acc else acc
+        ) []
+  
+    let subsets := powerSet nums
+    let nonEmpty := subsets.filter (· ≠ [])
+    let products := List.map (fun subset =>
+      List.foldl (fun acc x =>
+        acc * x) (1 : Int) subset)
+      nonEmpty
+    (List.max? products).getD (-1000000)
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible]
+  def maxStrength_precond (nums : List Int) : Prop :=
+    nums ≠ []
+
+  @[reducible]
+  def maxStrength_postcond (nums : List Int) (result: Int) (h_precond : maxStrength_precond (nums)) : Prop :=
+    let sublists := nums.sublists.filter (· ≠ [])
+    let products := sublists.map (List.foldl (· * ·) 1)
+    products.contains result ∧ products.all (· ≤ result)
+
+  theorem maxStrength_spec_satisfied (nums: List Int) (h_precond : maxStrength_precond (nums)) :
+      maxStrength_postcond (nums) (maxStrength (nums) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

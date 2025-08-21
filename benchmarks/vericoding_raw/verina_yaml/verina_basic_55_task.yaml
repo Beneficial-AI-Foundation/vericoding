@@ -1,0 +1,35 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def Compare (a : Int) (b : Int) (h_precond : Compare_precond (a) (b)) : Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    if a = b then true else false
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def Compare_precond (a : Int) (b : Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def Compare_postcond (a : Int) (b : Int) (result: Bool) (h_precond : Compare_precond (a) (b)) :=
+    (a = b → result = true) ∧ (a ≠ b → result = false)
+
+  theorem Compare_spec_satisfied (a: Int) (b: Int) (h_precond : Compare_precond (a) (b)) :
+      Compare_postcond (a) (b) (Compare (a) (b) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold Compare_postcond Compare
+    simp
+  -- </vc-proof>
+
+vc-postamble: |-

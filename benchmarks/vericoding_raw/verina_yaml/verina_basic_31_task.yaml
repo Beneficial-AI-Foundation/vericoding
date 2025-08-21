@@ -1,0 +1,56 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  def isLowerCase (c : Char) : Bool :=
+    'a' ≤ c ∧ c ≤ 'z'
+  
+  def shiftMinus32 (c : Char) : Char :=
+    Char.ofNat ((c.toNat - 32) % 128)
+  -- </vc-helpers>
+
+vc-signature: |-
+  def toUppercase (s : String) (h_precond : toUppercase_precond (s)) : String :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let cs := s.toList
+    let cs' := cs.map (fun c => if isLowerCase c then shiftMinus32 c else c)
+    String.mk cs'
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def toUppercase_precond (s : String) : Prop :=
+    True
+
+  @[reducible, simp]
+  def toUppercase_postcond (s : String) (result: String) (h_precond : toUppercase_precond (s)) :=
+    let cs := s.toList
+    let cs' := result.toList
+    (result.length = s.length) ∧
+    (∀ i, i < s.length →
+      (isLowerCase cs[i]! → cs'[i]! = shiftMinus32 cs[i]!) ∧
+      (¬isLowerCase cs[i]! → cs'[i]! = cs[i]!))
+
+  theorem toUppercase_spec_satisfied (s: String) (h_precond : toUppercase_precond (s)) :
+      toUppercase_postcond (s) (toUppercase (s) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold toUppercase toUppercase_postcond
+    simp_all
+    constructor
+    · unfold String.length
+      simp
+    · intro i hi
+      have hi' : i < s.data.length := by
+        unfold String.length at hi
+        simp at hi
+        exact hi
+      constructor <;> simp_all
+  -- </vc-proof>
+
+vc-postamble: |-

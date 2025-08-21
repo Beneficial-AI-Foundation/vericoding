@@ -1,0 +1,50 @@
+vc-description: |-
+
+vc-preamble: |-
+  import Mathlib
+
+vc-helpers: |-
+  -- <vc-helpers>
+  def intMax (x y : Int) : Int :=
+    if x < y then y else x
+  -- </vc-helpers>
+
+vc-signature: |-
+  def LongestIncreasingSubsequence (a : Array Int) (h_precond : LongestIncreasingSubsequence_precond (a)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let n := a.size
+    let dp := Id.run do
+      let mut dp := Array.mkArray n 1
+      for i in [1:n] do
+        for j in [0:i] do
+          if a[j]! < a[i]! then
+            let newVal := intMax (dp[i]!) (dp[j]! + 1)
+            dp := dp.set! i newVal
+      return dp
+    match dp with
+    | #[] => 0
+    | _   => dp.foldl intMax 0
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def LongestIncreasingSubsequence_precond (a : Array Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def LongestIncreasingSubsequence_postcond (a : Array Int) (result: Int) (h_precond : LongestIncreasingSubsequence_precond (a)) : Prop :=
+    let allSubseq := (a.foldl fun acc x => acc ++ acc.map (fun sub => x :: sub)) [[]] |>.map List.reverse
+    let increasingSubseqLens := allSubseq.filter (fun l => List.Pairwise (· < ·) l) |>.map (·.length)
+    increasingSubseqLens.contains result ∧ increasingSubseqLens.all (· ≤ result)
+
+  theorem LongestIncreasingSubsequence_spec_satisfied (a: Array Int) (h_precond : LongestIncreasingSubsequence_precond (a)) :
+      LongestIncreasingSubsequence_postcond (a) (LongestIncreasingSubsequence (a) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

@@ -1,0 +1,41 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def Find (a : Array Int) (key : Int) (h_precond : Find_precond (a) (key)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rec search (index : Nat) : Int :=
+      if index < a.size then
+        if a[index]! = key then Int.ofNat index
+        else search (index + 1)
+      else -1
+    search 0
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def Find_precond (a : Array Int) (key : Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def Find_postcond (a : Array Int) (key : Int) (result: Int) (h_precond : Find_precond (a) (key)) :=
+    (result = -1 ∨ (result ≥ 0 ∧ result < Int.ofNat a.size))
+    ∧ ((result ≠ -1) → (a[(Int.toNat result)]! = key ∧ ∀ (i : Nat), i < Int.toNat result → a[i]! ≠ key))
+    ∧ ((result = -1) → ∀ (i : Nat), i < a.size → a[i]! ≠ key)
+
+  theorem Find_spec_satisfied (a: Array Int) (key: Int) (h_precond : Find_precond (a) (key)) :
+      Find_postcond (a) (key) (Find (a) (key) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

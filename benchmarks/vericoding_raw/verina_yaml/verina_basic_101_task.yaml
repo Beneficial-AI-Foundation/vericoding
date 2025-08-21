@@ -1,0 +1,39 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def Triple (x : Int) (h_precond : Triple_precond (x)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let y := x * 2
+    y + x
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def Triple_precond (x : Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def Triple_postcond (x : Int) (result: Int) (h_precond : Triple_precond (x)) :=
+    result / 3 = x ∧ result / 3 * 3 = result
+
+  theorem Triple_spec_satisfied (x: Int) (h_precond : Triple_precond (x)) :
+      Triple_postcond (x) (Triple (x) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold Triple_postcond Triple
+    simp
+    rw (occs := [2]) [←Int.mul_one x]
+    rw [←Int.mul_add]
+    simp +arith
+  -- </vc-proof>
+
+vc-postamble: |-

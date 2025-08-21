@@ -1,0 +1,54 @@
+vc-description: |-
+
+vc-preamble: |-
+  import Mathlib
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def Triple (x : Int) (h_precond : Triple_precond (x)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    if x < 18 then
+      let a := 2 * x
+      let b := 4 * x
+      (a + b) / 2
+    else
+      let y := 2 * x
+      x + y
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def Triple_precond (x : Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def Triple_postcond (x : Int) (result: Int) (h_precond : Triple_precond (x)) :=
+    result / 3 = x ∧ result / 3 * 3 = result
+
+  theorem Triple_spec_satisfied (x: Int) (h_precond : Triple_precond (x)) :
+      Triple_postcond (x) (Triple (x) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold Triple_postcond Triple
+    simp
+    split_ifs with h₁
+    . rw [←Int.add_mul]
+      simp
+      have h : (6: ℤ) = 3 * 2 := by simp
+      rw [h, Int.mul_comm, Int.mul_ediv_assoc, Int.mul_ediv_assoc]
+      simp
+      rw [Int.mul_comm]
+      rfl
+      simp
+    . rw (occs := [1]) [←Int.one_mul x]
+      rw [←Int.add_mul]
+      simp +arith
+  -- </vc-proof>
+
+vc-postamble: |-

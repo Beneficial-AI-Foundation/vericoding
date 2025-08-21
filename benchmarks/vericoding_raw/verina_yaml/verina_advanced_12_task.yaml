@@ -1,0 +1,44 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def firstDuplicate (lst : List Int) (h_precond : firstDuplicate_precond (lst)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rec helper (seen : List Int) (rem : List Int) : Int :=
+      match rem with
+      | [] => -1
+      | h :: t => if seen.contains h then h else helper (h :: seen) t
+    helper [] lst
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible]
+  def firstDuplicate_precond (lst : List Int) : Prop :=
+    True
+
+  @[reducible]
+  def firstDuplicate_postcond (lst : List Int) (result: Int) (h_precond : firstDuplicate_precond (lst)) : Prop :=
+    -- if result = -1, then lst does not contain any duplicates
+    (result = -1 → List.Nodup lst) ∧
+    -- if result is not -1, then it is the first duplicate in lst
+    (result ≠ -1 →
+      lst.count result > 1 ∧
+      (lst.filter (fun x => lst.count x > 1)).head? = some result
+    )
+
+  theorem firstDuplicate_spec_satisfied (lst: List Int) (h_precond : firstDuplicate_precond (lst)) :
+      firstDuplicate_postcond (lst) (firstDuplicate (lst) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

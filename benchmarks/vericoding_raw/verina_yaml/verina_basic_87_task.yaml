@@ -1,0 +1,51 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  def findMinIndexInRange (arr : Array Int) (start finish : Nat) : Nat :=
+    let indices := List.range (finish - start)
+    indices.foldl (fun minIdx i =>
+      let currIdx := start + i
+      if arr[currIdx]! < arr[minIdx]! then currIdx else minIdx
+    ) start
+  
+  def swap (a : Array Int) (i j : Nat) : Array Int :=
+    if i < a.size && j < a.size && i ≠ j then
+      let temp := a[i]!
+      let a' := a.set! i a[j]!
+      a'.set! j temp
+    else a
+  -- </vc-helpers>
+
+vc-signature: |-
+  def SelectionSort (a : Array Int) (h_precond : SelectionSort_precond (a)) : Array Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let indices := List.range a.size
+    indices.foldl (fun arr i =>
+      let minIdx := findMinIndexInRange arr i a.size
+      swap arr i minIdx
+    ) a
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def SelectionSort_precond (a : Array Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def SelectionSort_postcond (a : Array Int) (result: Array Int) (h_precond : SelectionSort_precond (a)) :=
+    List.Pairwise (· ≤ ·) result.toList ∧ List.isPerm a.toList result.toList
+
+  theorem SelectionSort_spec_satisfied (a: Array Int) (h_precond : SelectionSort_precond (a)) :
+      SelectionSort_postcond (a) (SelectionSort (a) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

@@ -1,0 +1,45 @@
+vc-description: |-
+
+vc-preamble: |-
+  import Std.Data.HashSet
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def uniqueProduct (arr : Array Int) (h_precond : uniqueProduct_precond (arr)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rec loop (i : Nat) (seen : Std.HashSet Int) (product : Int) : Int :=
+      if i < arr.size then
+        let x := arr[i]!
+        if seen.contains x then
+          loop (i + 1) seen product
+        else
+          loop (i + 1) (seen.insert x) (product * x)
+      else
+        product
+    loop 0 Std.HashSet.empty 1
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def uniqueProduct_precond (arr : Array Int) : Prop :=
+    True
+
+  @[reducible, simp]
+  def uniqueProduct_postcond (arr : Array Int) (result: Int) (h_precond : uniqueProduct_precond (arr)) :=
+    result - (arr.toList.eraseDups.foldl (· * ·) 1) = 0 ∧
+    (arr.toList.eraseDups.foldl (· * ·) 1) - result = 0
+
+  theorem uniqueProduct_spec_satisfied (arr: Array Int) (h_precond : uniqueProduct_precond (arr)) :
+      uniqueProduct_postcond (arr) (uniqueProduct (arr) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-

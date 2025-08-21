@@ -1,0 +1,56 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def elementWiseModulo (a : Array Int) (b : Array Int) (h_precond : elementWiseModulo_precond (a) (b)) : Array Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    a.mapIdx (fun i x => x % b[i]!)
+  -- </vc-implementation>
+  
+vc-condition: |-
+  @[reducible, simp]
+  def elementWiseModulo_precond (a : Array Int) (b : Array Int) : Prop :=
+    a.size = b.size ∧ a.size > 0 ∧
+    (∀ i, i < b.size → b[i]! ≠ 0)
+
+  @[reducible, simp]
+  def elementWiseModulo_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_precond : elementWiseModulo_precond (a) (b)) :=
+    result.size = a.size ∧
+    (∀ i, i < result.size → result[i]! = a[i]! % b[i]!)
+
+  theorem elementWiseModulo_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : elementWiseModulo_precond (a) (b)) :
+      elementWiseModulo_postcond (a) (b) (elementWiseModulo (a) (b) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold elementWiseModulo elementWiseModulo_postcond
+    unfold elementWiseModulo_precond at h_precond
+    simp_all
+    intro i hi
+    have h_maplen : (Array.mapIdx (fun i x => x % b[i]!) a).size = a.size := by
+      apply Array.size_mapIdx
+    have h1 : (Array.mapIdx (fun i x => x % b[i]!) a)[i] = (fun i x => x % b[i]!) i a[i] := by
+      apply Array.getElem_mapIdx
+    have h_eq : (Array.mapIdx (fun i x => x % b[i]!) a)[i] = (Array.mapIdx (fun i x => x % b[i]!) a)[i]! := by
+      have hi' : i < (Array.mapIdx (fun i x => x % b[i]!) a).size := by
+        simp only [h_precond, hi, h_maplen]
+      rw [Array.getElem!_eq_getD]
+      unfold Array.getD
+      simp [hi', hi, h_precond]
+    rw [← h_eq]
+    simp only [h1]
+    have h_eq' : a[i] = a[i]! := by
+      have hi_a : i < a.size := by
+        simp only [h_precond, hi]
+      simp_all [Array.getElem!_eq_getD]
+    simp only [h_eq']
+  -- </vc-proof>
+
+vc-postamble: |-
