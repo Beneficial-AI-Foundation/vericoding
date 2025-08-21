@@ -29,6 +29,8 @@ class ProcessingResult:
     output: str | None
     error: str | None
     has_bypass: bool
+    generate_prompt: str | None = None
+    fix_prompts: list[str] | None = None
 
 
 def call_llm_api(config: ProcessingConfig, prompt: str) -> str:
@@ -80,6 +82,9 @@ def process_spec_file(
         # Calculate relative path from input directory to preserve hierarchy
         relative_path = Path(file_path).relative_to(Path(config.files_dir))
         base_file_name = Path(file_path).stem
+        
+        # Track prompts for W&B logging
+        all_fix_prompts = []
 
         # Save original code
         save_iteration_code(config, relative_path, 0, original_code, "original")
@@ -207,6 +212,9 @@ def process_spec_file(
                     iteration=iteration,
                 )
 
+                # Track fix prompt for W&B logging
+                all_fix_prompts.append(fix_prompt)
+                
                 try:
                     fix_response = call_llm_api(config, fix_prompt)
                     fixed_code = extract_code(config, fix_response)
@@ -246,6 +254,8 @@ def process_spec_file(
                 output=str(output_path),
                 error=None,
                 has_bypass=False,
+                generate_prompt=generate_prompt,
+                fix_prompts=all_fix_prompts if all_fix_prompts else None,
             )
         else:
             error_msg = (
@@ -284,6 +294,8 @@ def process_spec_file(
                 output=str(output_path),
                 error=error_msg,
                 has_bypass=False,
+                generate_prompt=generate_prompt,
+                fix_prompts=all_fix_prompts if all_fix_prompts else None,
             )
 
     except Exception as e:
@@ -305,6 +317,8 @@ def process_spec_file(
             error=str(e),
             output=None,
             has_bypass=False,
+            generate_prompt=generate_prompt if "generate_prompt" in locals() else None,
+            fix_prompts=all_fix_prompts if "all_fix_prompts" in locals() and all_fix_prompts else None,
         )
     finally:
         # Log failure table if we have any failures
@@ -358,6 +372,8 @@ def process_files_parallel(
                     error=f"Unexpected error: {str(e)}",
                     output=None,
                     has_bypass=False,
+                    generate_prompt=None,
+                    fix_prompts=None,
                 )
                 results.append(error_result)
                 logger.info(
