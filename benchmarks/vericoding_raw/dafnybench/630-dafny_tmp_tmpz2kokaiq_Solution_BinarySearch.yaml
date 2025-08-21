@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function sorted(a: array<int>) : bool
       reads a

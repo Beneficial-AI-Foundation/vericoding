@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate isPrefixPredicate(pre: string, str:string)
   {

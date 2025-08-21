@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function sum(a: array<int>, i: int): int
       requires 0 <= i < a.Length

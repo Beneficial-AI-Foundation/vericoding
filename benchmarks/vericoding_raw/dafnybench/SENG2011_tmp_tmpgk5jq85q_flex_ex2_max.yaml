@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function maxcheck(s: array<nat>, i: int, max: int): int
   requires 0 <= i <= s.Length

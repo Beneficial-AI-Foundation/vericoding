@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function SomaAte(a:array<nat>, i:nat):nat
     requires 0 <= i <= a.Length

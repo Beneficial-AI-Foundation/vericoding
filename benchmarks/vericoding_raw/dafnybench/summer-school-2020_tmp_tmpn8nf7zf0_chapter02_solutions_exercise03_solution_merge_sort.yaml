@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate IsSorted(s:seq<int>)
   {

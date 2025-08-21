@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   method max_nit(b: nat) returns (nmax : nat)
     requires (valid_base(b))

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function countTo( a:array<bool>, n:int ) : int
     requires a != null;

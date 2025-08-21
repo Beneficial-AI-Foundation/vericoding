@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate InArray(a: array<int>, x: int)
       reads a

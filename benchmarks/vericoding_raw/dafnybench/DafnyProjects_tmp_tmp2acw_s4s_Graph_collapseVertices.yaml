@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Simple directed graph with vertices of any type T.
   class {:autocontracts} Graph<T(==)> {

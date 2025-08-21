@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %testDafnyForEachCompiler "%s" -- --relax-definite-assignment
 

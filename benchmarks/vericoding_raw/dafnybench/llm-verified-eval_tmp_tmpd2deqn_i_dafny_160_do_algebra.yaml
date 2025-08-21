@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function pow(base: int, exponent: int): int
     requires exponent >= 0

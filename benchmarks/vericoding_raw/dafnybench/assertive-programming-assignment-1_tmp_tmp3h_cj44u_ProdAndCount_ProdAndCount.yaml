@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   lemma AppendOne<T>(q: seq<T>, n: nat)
       requires n < |q|

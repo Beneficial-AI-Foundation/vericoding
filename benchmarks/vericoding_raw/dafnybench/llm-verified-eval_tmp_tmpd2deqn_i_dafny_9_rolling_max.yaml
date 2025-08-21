@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function isMax(m: int, numbers: seq<int>): bool
   {

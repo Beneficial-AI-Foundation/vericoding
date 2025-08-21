@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   lemma SkippingLemma(a : array<int>, j : int)
      requires a != null

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // If this invariant is added explicitly to the loop then the verfication never finishes.
   // It could be {:opaque} for a more controlled verification:

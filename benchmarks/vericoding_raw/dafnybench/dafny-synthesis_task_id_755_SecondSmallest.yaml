@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function MinPair(s: seq<int>) : (r: int)
       requires |s| == 2

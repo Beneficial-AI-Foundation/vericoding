@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function gcd(m: nat, n: nat) : nat
   requires m>0 && n>0;

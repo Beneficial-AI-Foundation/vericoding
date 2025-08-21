@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // sums from index 0 -> i - 1
   function sumcheck(s: array<int>, i: int): int

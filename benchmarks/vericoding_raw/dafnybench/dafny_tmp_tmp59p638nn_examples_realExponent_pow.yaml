@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   ghost function power(n: real, alpha: real): real
       requires n > 0.0 && alpha > 0.0

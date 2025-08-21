@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   type T = int // for demo purposes, but could be another type
   predicate sorted(a: array<T>, n: nat) 

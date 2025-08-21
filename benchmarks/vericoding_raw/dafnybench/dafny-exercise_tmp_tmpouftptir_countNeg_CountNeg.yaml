@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function verifyNeg(a: array<int>, idx: int) : nat
   reads a

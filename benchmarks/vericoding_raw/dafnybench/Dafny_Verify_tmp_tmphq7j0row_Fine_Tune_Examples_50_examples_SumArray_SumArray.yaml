@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function Sum(arr: array<int>, len: int): int
       reads arr
