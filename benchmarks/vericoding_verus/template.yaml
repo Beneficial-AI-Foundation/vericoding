@@ -1,0 +1,25 @@
+vc-description: |-
+  [... some text description ...]
+
+vc-preamble: |-
+  [... some imports ...]
+  [... some spec functions ...]
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  [... some function signature ...]
+  [... some preconditions ...]
+  [... some postconditions ...]
+
+vc-code: |-
+  // <vc-code>
+  {
+    ...
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  [... some postamble ...]  

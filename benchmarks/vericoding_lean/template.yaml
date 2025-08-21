@@ -10,19 +10,19 @@ vc-helpers: |-
   -- </vc-helpers>
 
 vc-signature: |-
-  [.. some function signature..]
+  [... some function signature ...] :=
 
 vc-implementation: |-
   -- <vc-implementation>
-    ..
+    ...
   -- </vc-implementation>
 
 vc-condition: |-
-  [.. some theorem signature ..]
+  [... some theorem signature ...] :=
 
 vc-proof: |-
   -- <vc-proof>
-    ..
+    ...
   -- </vc-proof>
 
 vc-postamble: |-
