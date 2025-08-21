@@ -16,9 +16,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (numbers: List Int) : List Int :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   let rec rolling_max (numbers: List Int) (results: List Int) (acc: Int) : List Int :=
     match numbers with
     | [] => results
@@ -27,11 +29,9 @@ vc-code: |-
       let new_results := results ++ [new_acc]
       rolling_max ns new_results new_acc
   rolling_max numbers [] 0
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation [1, 2, 3, 2, 3, 4, 2] = [1, 2, 3, 3, 3, 4, 4]
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Int → List Int)
@@ -51,6 +51,8 @@ vc-spec: |-
   (numbers: List Int)
   : problem_spec implementation numbers
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

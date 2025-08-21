@@ -16,20 +16,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (s0 s1: String) : Bool :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation 'eabcdzzzz' 'dddzzzzzzzddeddabc' = true
-  -- #test implementation 'abcd' 'dddddddabc' = true
-  -- #test implementation 'dddddddabc' 'abcd' = true
-  -- #test implementation 'eabcd' 'dddddddabc' = false
-  -- #test implementation 'abcd' 'dddddddabce' = false
-  -- #test implementation 'eabcdzzzz' 'dddzzzzzzzddddabc' = false
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: String → String → Bool)
@@ -47,6 +42,8 @@ vc-spec: |-
   theorem correctness
   (s0 s1: String)
   : problem_spec implementation s0 s1  :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

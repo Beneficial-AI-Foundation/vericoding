@@ -23,18 +23,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (a: Rat) (b: Rat) (c: Rat) : Bool :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation 5 2 7 = true
-  -- #test implementation 3 2 2 = false
-  -- #test implementation 3 (-2) 1 = true
-  -- #test implementation 3.6 (-2.2) 2 = false
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: Rat → Rat → Rat → Bool)
@@ -53,6 +50,8 @@ vc-spec: |-
   (a: Rat) (b: Rat) (c: Rat)
   : problem_spec implementation a b c
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

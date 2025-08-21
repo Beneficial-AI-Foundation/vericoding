@@ -23,19 +23,19 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (numbers: List Rat) : Rat :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   if numbers.length = 0 then 1.0
   else
     let mean := numbers.sum / numbers.length;
     let abs_diffs := numbers.map (fun x => |x - mean|);
     abs_diffs.sum / abs_diffs.length
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation [1.0, 2.0, 3.0, 4.0] = 1.0
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Rat → Rat)
@@ -56,6 +56,8 @@ vc-spec: |-
   (numbers: List Rat)
   : problem_spec implementation numbers
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   -- sometimes we have to create a temporary variable to use in the proof

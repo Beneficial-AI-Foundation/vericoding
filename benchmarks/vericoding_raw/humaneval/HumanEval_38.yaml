@@ -21,17 +21,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (s: String) : String :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation "abcdef" = "bcaefd"
-  -- #test implementation "abcde" = "bcade"
-  -- #test implementation "ab" = "ab"
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   (impl: String → String)
   (s: String) :=
@@ -55,6 +53,8 @@ vc-spec: |-
   theorem correctness
   (s: String)
   : problem_spec implementation s :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

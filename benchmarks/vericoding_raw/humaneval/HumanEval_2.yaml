@@ -19,15 +19,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (number: Rat) : Rat :=
-  -- <vc-code>
-  number - number.floor
-  -- </vc-code>
-  
-  #test implementation 3.5 = 0.5
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  number - number.floor
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: Rat → Rat)
@@ -47,6 +47,8 @@ vc-spec: |-
   theorem correctness
   (number: Rat)
   : problem_spec implementation number :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

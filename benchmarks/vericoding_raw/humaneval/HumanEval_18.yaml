@@ -25,19 +25,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (string: String) (substring: String) : Nat :=
-  -- <vc-code>
-  (string.findAllSubstr substring).size
-  -- </vc-code>
-  
-  #test implementation "aaa" "a" = 3
-  #test implementation "aaaa" "aa" = 3
-  #test implementation "" "a" = 0
-  #test implementation "a" "" = 1
-  #test implementation "a" "a" = 1
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  (string.findAllSubstr substring).size
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → String → Nat)
@@ -64,6 +60,8 @@ vc-spec: |-
   (substring: String)
   : problem_spec implementation string substring
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

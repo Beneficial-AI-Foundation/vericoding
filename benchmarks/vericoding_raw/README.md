@@ -18,7 +18,7 @@ https://github.com/hendrycks/apps
 ## Clever
 https://github.com/trishullab/clever
 
-The Lean and Rust files from the Clever benchmark are in the `benchmarks/raw/humaneval` folder.
+The Lean and Rust files from the Clever benchmark are in the `benchmarks/raw/humaneval` folder. HumanEval problems 22, 137, 162 are missing from Clever for reasons mentioned in the Clever paper.
 
 
 crea 0

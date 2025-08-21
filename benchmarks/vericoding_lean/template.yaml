@@ -9,17 +9,21 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   [.. some function signature..]
-  -- <vc-code>
-    ..
-  -- </vc-code>
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+    ..
+  -- </vc-implementation>
+
+vc-condition: |-
   [.. some theorem signature ..]
+
+vc-proof: |-
   -- <vc-proof>
     ..
   -- </vc-proof>
 
 vc-postamble: |-
-  [... any postamble, e.g. tests ...]
+  [... some postamble ...]  

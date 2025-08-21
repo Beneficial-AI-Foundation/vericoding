@@ -17,16 +17,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (a h: Rat) : Rat :=
-  -- <vc-code>
-  0.5 * a * h
-  -- </vc-code>
-  
-  -- #test implementation 5 3 = 7.5
-  -- #test implementation 8 2 = 8.0
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  0.5 * a * h
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: Rat → Rat -> Rat)
@@ -44,6 +43,8 @@ vc-spec: |-
   (a h : Rat)
   : problem_spec implementation a h
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

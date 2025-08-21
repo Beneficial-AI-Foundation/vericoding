@@ -22,9 +22,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (xs: List Rat) : Rat :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   let rec poly (xs: List Rat) (x: Rat) := xs.reverse.foldl (λ acc a => acc * x + a) 0;
   let rec poly' (xs: List Rat) (x: Rat) := (xs.drop 1).reverse.foldl (λ acc a => acc * x + a) 0;
   let rec eps := (1: Rat) / 1000000;
@@ -40,12 +42,9 @@ vc-code: |-
   -- on the test case [-6, 11, -6, 1] as the derivative of the polynomial
   -- can be zero at if the guess is 0. In such cases, the implementation will not
   -- converge. The implementation can be improved by using a better guess.
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation [1, 2] = -0.5
-  #test implementation [-6, 11, -6, 1] = 1.0
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Rat → Rat)
@@ -68,6 +67,8 @@ vc-spec: |-
   (xs: List Rat)
   : problem_spec implementation xs
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

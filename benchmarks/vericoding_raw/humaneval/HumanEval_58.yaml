@@ -17,16 +17,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (l1 l2: List Int) : List Int :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation [1, 4, 3, 34, 653, 2, 5] [5, 7, 1, 5, 9, 653, 121] = [1, 5, 653]
-  -- #test implementation [5, 3, 2, 8] [3, 2] = [2, 3]
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Int → List Int → List Int)
@@ -51,6 +50,8 @@ vc-spec: |-
   (l1 l2: List Int)
   : problem_spec implementation l1 l2
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

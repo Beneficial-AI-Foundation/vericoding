@@ -18,9 +18,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (numbers: List Rat): (Rat × Rat) :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   let n := numbers.length;
   let sorted_numbers := numbers.mergeSort;
   let min_diff := sorted_numbers.get! 1 - sorted_numbers.get! 0;
@@ -35,12 +37,9 @@ vc-code: |-
     else
       min_pair;
   loop 1 min_diff min_pair
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation [1.0, 2.0, 3.0, 4.0, 5.0, 2.2] = (2.0, 2.2)
-  #test implementation [1.0, 2.0, 3.0, 4.0, 5.0, 2.0] = (2.0, 2.0)
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Rat → (Rat × Rat))
@@ -64,6 +63,8 @@ vc-spec: |-
   (numbers: List Rat)
   : problem_spec implementation numbers
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

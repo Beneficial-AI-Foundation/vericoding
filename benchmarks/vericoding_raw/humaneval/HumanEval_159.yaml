@@ -38,18 +38,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (a b c: Nat) : List Nat :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation 5 6 10 = [11, 4]
-  -- #test implementation 4 8 9 = [12, 1]
-  -- #test implementation 1 10 10 = [11, 0]
-  -- #test implementation 2 11 5 = [7, 0]
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: Nat → Nat → Nat → List Nat)
@@ -71,6 +68,8 @@ vc-spec: |-
   theorem correctness
   (a b c: Nat)
   : problem_spec implementation a b c :=
+
+vc-proof: |-
   -- <vc-proof>
   sorry
   -- </vc-proof>

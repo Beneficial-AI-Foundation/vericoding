@@ -21,9 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (paren_string: String) : List String :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   -- remove space or any other characters that are not '(' or ')'
   let filtered := paren_string.toList.filter (fun c => c == '(' ∨  c == ')');
   -- auxiliary recursive function:
@@ -42,11 +44,9 @@ vc-code: |-
       else
         aux rest new_cur new_balance acc;
   aux filtered [] 0 []
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation "( ) (( )) (( )( ))" = ["()", "(())", "(()())"]
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: String → List String)
@@ -67,6 +67,8 @@ vc-spec: |-
   theorem correctness
   (paren_string: String)
   : problem_spec implementation paren_string :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

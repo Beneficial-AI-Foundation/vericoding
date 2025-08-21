@@ -17,16 +17,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (num: Int) : Int × Int :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation -12 = (1, 1)
-  -- #test implementation 123 = (1, 2)
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: Int → Int × Int)
@@ -49,6 +48,8 @@ vc-spec: |-
   theorem correctness
   (num: Int)
   : problem_spec implementation num :=
+
+vc-proof: |-
   -- <vc-proof>
   sorry
   -- </vc-proof>

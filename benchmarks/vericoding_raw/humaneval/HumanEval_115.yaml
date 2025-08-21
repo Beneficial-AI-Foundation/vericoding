@@ -30,17 +30,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (grid: List (List Nat)) (capacity: Nat) : Nat :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation [[0,0,1,0], [0,1,0,0], [1,1,1,1]] 1 = 6
-  -- #test implementation [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]] 2 = 5
-  -- #test implementation [[0,0,0], [0,0,0]] 5 = 0
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List (List Nat) → Nat → Nat)
@@ -65,6 +63,8 @@ vc-spec: |-
   (capacity: Nat)
   : problem_spec implementation grid capacity
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

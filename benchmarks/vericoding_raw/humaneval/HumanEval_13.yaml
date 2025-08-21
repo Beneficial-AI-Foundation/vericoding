@@ -21,16 +21,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (a b: Int) : Int :=
-  -- <vc-code>
-  (Int.gcd a b)
-  -- </vc-code>
-  
-  #test implementation 25 15 = 5
-  #test implementation 3 5 = 1
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  (Int.gcd a b)
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: Int → Int → Int)
@@ -51,6 +50,8 @@ vc-spec: |-
   (a b: Int)
   : problem_spec implementation a b
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec
