@@ -55,8 +55,8 @@ vc-proof: |-
   -- </vc-proof>
 
 vc-postamble: |-
-  /--
-  -- Reject Inputs
+  /-
+  -- Invalid Inputs
   [
       {
           "input": {
@@ -65,7 +65,7 @@ vc-postamble: |-
           }
       }
   ]
-  -- Test
+  -- Tests
   [
       {
           "input": {

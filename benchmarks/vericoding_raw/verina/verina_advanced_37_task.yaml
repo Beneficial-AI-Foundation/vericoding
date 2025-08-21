@@ -72,10 +72,10 @@ vc-proof: |-
   -- </vc-proof>
 
 vc-postamble: |-
-  /--
-  -- Reject Inputs
+  /-
+  -- Invalid Inputs
   []
-  -- Test
+  -- Tests
   [
       {
           "input": {
