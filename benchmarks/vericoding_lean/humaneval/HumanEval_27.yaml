@@ -15,15 +15,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (string: String) : String :=
-  -- <vc-code>
-  string.map (λ c => if c.isUpper then c.toLower else c.toUpper)
-  -- </vc-code>
-  
-  #test implementation "Hello" = "hELLO"
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  string.map (λ c => if c.isUpper then c.toLower else c.toUpper)
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → String)
@@ -49,6 +49,8 @@ vc-spec: |-
   (string: String)
   : problem_spec implementation string
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

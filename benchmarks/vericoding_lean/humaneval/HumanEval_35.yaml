@@ -17,18 +17,17 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (l: List Int) : Int :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   match List.maximum l with
   | none => panic! "empty list"
   | some x => x
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation [1, 2, 3] = 3
-  #test implementation [5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10] = 123
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Int → Int)
@@ -47,6 +46,8 @@ vc-spec: |-
   (l: List Int)
   : problem_spec implementation l
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

@@ -23,20 +23,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (q: List Int) (w: Int) : Bool :=
-  -- <vc-code>
-  (List.Palindrome q) ∧ (List.sum q ≤ w)
-  -- </vc-code>
-  
-  -- #test implementation [3, 2, 3] 9 = True
-  -- #test implementation [1, 2] 5 = False
-  -- #test implementation [3] 5 = True
-  -- #test implementation [3, 2, 3] 1 = False
-  -- #test implementation [1, 2, 3] 6 = False
-  -- #test implementation [5] 5 = True
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  (List.Palindrome q) ∧ (List.sum q ≤ w)
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Int → Int → Bool)
@@ -56,6 +51,8 @@ vc-spec: |-
   (q: List Int) (w: Int)
   : problem_spec implementation q w
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

@@ -21,16 +21,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (strings: List String) (pref: String) : List String :=
-  -- <vc-code>
-  strings.filter (λ s => s.startsWith pref)
-  -- </vc-code>
-  
-  #test implementation [] "a" = []
-  #test implementation ["abc", "bcd", "cde", "array"] "a" = ["abc", "array"]
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  strings.filter (λ s => s.startsWith pref)
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List String → String → List String)
@@ -52,6 +51,8 @@ vc-spec: |-
   (pref: String)
   : problem_spec implementation strings pref
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

@@ -17,16 +17,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (n: Nat) : String :=
-  -- <vc-code>
-  (String.join (List.map (fun i => String.append i.repr " ") (List.range n))).append (n.repr)
-  -- </vc-code>
-  
-  #test implementation 0 = "0"
-  #test implementation 5 = "0 1 2 3 4 5"
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  (String.join (List.map (fun i => String.append i.repr " ") (List.range n))).append (n.repr)
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: Nat → String)
@@ -45,6 +44,8 @@ vc-spec: |-
   (n: Nat)
   : problem_spec implementation n
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

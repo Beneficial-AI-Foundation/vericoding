@@ -17,17 +17,16 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (string: String) : Nat :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   let char_set := string.toLower.toList.toFinset
   char_set.card
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation "xyzXYZ" = 3
-  #test implementation "Jerry" = 4
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → Nat)
@@ -47,6 +46,8 @@ vc-spec: |-
   (string: String)
   : problem_spec implementation string
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

@@ -27,21 +27,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (n: Nat): Bool :=
-  -- <vc-code>
-  Nat.Prime n
-  -- </vc-code>
-  
-  #test implementation 6 = false
-  #test implementation 101 = true
-  #test implementation 11 = true
-  #test implementation 13441 = true
-  #test implementation 61 = true
-  #test implementation 4 = false
-  #test implementation 1 = false
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  Nat.Prime n
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: Nat → Bool)
@@ -59,6 +53,8 @@ vc-spec: |-
   (n: Nat)
   : problem_spec implementation n
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

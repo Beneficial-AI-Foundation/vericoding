@@ -30,17 +30,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (interval1: Int × Int) (interval2: Int × Int) : String :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation (1, 2) (2, 3) = "NO"
-  -- #test implementation (-1, 1) (0, 4) = "NO"
-  -- #test implementation (-3, -1) (-5, 5) = "YES"
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: Int × Int → Int × Int → String)
@@ -68,6 +66,8 @@ vc-spec: |-
   (interval1: Int × Int)
   (interval2: Int × Int)
   : problem_spec implementation interval1 interval2 :=
+
+vc-proof: |-
   -- <vc-proof>
   sorry
   -- </vc-proof>

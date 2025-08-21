@@ -24,18 +24,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (str: String) : String :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation "hi" = "lm"
-  -- #test implementation "asdfghjkl" = "ewhjklnop"
-  -- #test implementation "gf" = "kj"
-  -- #test implementation "et" = "ix"
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → String)
@@ -58,6 +55,8 @@ vc-spec: |-
   (str: String)
   : problem_spec implementation str
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

@@ -27,15 +27,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (class_name: String) (extensions: List String) : String :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation 'my_class', ['AA', 'Be', 'CC'] = 'my_class.AA'
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: String → List String → String)
@@ -70,6 +70,8 @@ vc-spec: |-
   (class_name: String)
   (extensions: List String)
   : problem_spec implementation class_name extensions :=
+
+vc-proof: |-
   -- <vc-proof>
   sorry
   -- </vc-proof>

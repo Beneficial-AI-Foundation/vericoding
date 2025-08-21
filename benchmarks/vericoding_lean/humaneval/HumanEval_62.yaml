@@ -19,16 +19,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (xs: List Int) : List Int :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation [3, 1, 2, 4, 5] : List Int = [1, 4, 12, 20]
-  -- #test implementation [1, 2, 3] : List Int = [2, 6]
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: List Int → List Int)
@@ -46,6 +45,8 @@ vc-spec: |-
   theorem correctness
   (xs: List Int)
   : problem_spec implementation xs :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec
