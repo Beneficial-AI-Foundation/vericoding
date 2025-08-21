@@ -1,4 +1,15 @@
 vc-description: |-
+  /--
+  -----Description----- 
+  This task requires writing a Lean 4 method that finds the length of the longest strictly increasing subsequence from a given list of integers. 
+
+  -----Input-----
+  The input consists of a list of integers called nums
+
+  -----Output-----
+  The output is an integer:
+  Returns a number representing the length of the longest strictly increasing subsequence found in the input list.
+  -/
 
 vc-preamble: |-
   import Mathlib.Data.List.Basic
