@@ -32,47 +32,115 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     preamble = preamble_match.group(1) + "\n"
     remaining_content = content[preamble_match.end():]
     
-    # Find function signature and ensures clause (spec section)
-    # Look for fn declaration up to the opening brace
-    fn_pattern = r'(fn\s+\w+.*?)(\{)'
-    fn_match = re.search(fn_pattern, remaining_content, re.DOTALL)
+    # Find all function declarations (excluding main)
+    fn_pattern = r'fn\s+(?!main\b)\w+'
+    fn_matches = list(re.finditer(fn_pattern, remaining_content))
     
-    if not fn_match:
-        raise ValueError("Could not find function declaration")
+    if len(fn_matches) == 0:
+        raise ValueError("Could not find any function declarations")
     
-    spec = fn_match.group(1).strip()
+    if len(fn_matches) == 1:
+        # Single function - split between spec and code as before
+        fn_pattern_full = r'(fn\s+\w+.*?)(\{)'
+        fn_match = re.search(fn_pattern_full, remaining_content, re.DOTALL)
+        
+        if not fn_match:
+            raise ValueError("Could not find function declaration")
+        
+        spec = fn_match.group(1).strip()
+        
+        # Find the implementation section (everything between braces)
+        start_pos = fn_match.end() - 1  # Position of opening brace
+        brace_count = 1
+        pos = start_pos + 1
+        
+        while pos < len(remaining_content) and brace_count > 0:
+            if remaining_content[pos] == '{':
+                brace_count += 1
+            elif remaining_content[pos] == '}':
+                brace_count -= 1
+            pos += 1
+        
+        if brace_count > 0:
+            raise ValueError("Unmatched braces in function")
+        
+        # Extract function body (between the braces)
+        function_body = remaining_content[start_pos:pos]
+        
+        # Find the closing verus brace
+        remaining_after_fn = remaining_content[pos:].strip()
+        postamble = "\n" + remaining_after_fn + main_part
+        
+        return {
+            'vc-description': '',
+            'vc-preamble': preamble + '\n',
+            'vc-helpers': '',
+            'vc-spec': spec + '\n',
+            'vc-code': function_body + '\n',
+            'vc-postamble': postamble
+        }
     
-    # Find the implementation section (everything between braces)
-    # Find the matching closing brace for the function
-    start_pos = fn_match.end() - 1  # Position of opening brace
-    brace_count = 1
-    pos = start_pos + 1
-    
-    while pos < len(remaining_content) and brace_count > 0:
-        if remaining_content[pos] == '{':
-            brace_count += 1
-        elif remaining_content[pos] == '}':
-            brace_count -= 1
-        pos += 1
-    
-    if brace_count > 0:
-        raise ValueError("Unmatched braces in function")
-    
-    # Extract function body (between the braces)
-    function_body = remaining_content[start_pos:pos]
-    
-    # Find the closing verus brace
-    remaining_after_fn = remaining_content[pos:].strip()
-    postamble = "\n" + remaining_after_fn + main_part
-    
-    return {
-        'vc-description': '',
-        'vc-preamble': preamble + '\n',
-        'vc-helpers': '',
-        'vc-spec': spec + '\n',
-        'vc-code': function_body + '\n',
-        'vc-postamble': postamble
-    }
+    else:
+        # Multiple functions - put all but last in preamble, split last function
+        last_fn_match = fn_matches[-1]
+        
+        # Find the start of the last function (including any preceding comments/attributes)
+        last_fn_start = last_fn_match.start()
+        # Look backwards for any preceding whitespace, comments, or attributes
+        while last_fn_start > 0 and remaining_content[last_fn_start - 1] in ' \t\n':
+            last_fn_start -= 1
+        
+        # Look for attributes or doc comments before the function
+        attr_pattern = r'(?:\n\s*(?://[^\n]*|#\[.*?\])\s*)*\n\s*fn'
+        attr_search = re.search(attr_pattern, remaining_content[:last_fn_match.end()], re.DOTALL)
+        if attr_search:
+            last_fn_start = attr_search.start() + 1  # +1 to skip the leading newline
+        
+        # All functions before the last one go in preamble
+        functions_for_preamble = remaining_content[:last_fn_start].rstrip()
+        preamble += functions_for_preamble + '\n\n'
+        
+        # Process the last function
+        last_fn_content = remaining_content[last_fn_start:]
+        
+        fn_pattern_full = r'(fn\s+\w+.*?)(\{)'
+        fn_match = re.search(fn_pattern_full, last_fn_content, re.DOTALL)
+        
+        if not fn_match:
+            raise ValueError("Could not find last function declaration")
+        
+        spec = fn_match.group(1).strip()
+        
+        # Find the implementation section (everything between braces)
+        start_pos = fn_match.end() - 1  # Position of opening brace
+        brace_count = 1
+        pos = start_pos + 1
+        
+        while pos < len(last_fn_content) and brace_count > 0:
+            if last_fn_content[pos] == '{':
+                brace_count += 1
+            elif last_fn_content[pos] == '}':
+                brace_count -= 1
+            pos += 1
+        
+        if brace_count > 0:
+            raise ValueError("Unmatched braces in function")
+        
+        # Extract function body (between the braces)
+        function_body = last_fn_content[start_pos:pos]
+        
+        # Find the closing verus brace
+        remaining_after_fn = last_fn_content[pos:].strip()
+        postamble = "\n" + remaining_after_fn + main_part
+        
+        return {
+            'vc-description': '',
+            'vc-preamble': preamble,
+            'vc-helpers': '',
+            'vc-spec': spec + '\n',
+            'vc-code': function_body + '\n',
+            'vc-postamble': postamble
+        }
 
 
 def rust_to_yaml(rust_content: str) -> str:

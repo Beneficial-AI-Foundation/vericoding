@@ -99,7 +99,7 @@ def main():
     print("Testing Rust to YAML converter...\n")
     
     # Test multiple files
-    test_files = ["053-add.rs", "023-strlen.rs"]
+    test_files = ["053-add.rs", "023-strlen.rs", "task_id_576.rs"]
     all_passed = True
     
     for test_file in test_files:
