@@ -5,21 +5,19 @@ vc-preamble: |-
 
   verus! {
 
-vc-helpers: |-
-
-vc-spec: |-
   spec fn is_upper_case(c: char) -> (result:bool) {
       c >= 'A' && c <= 'Z'
   }
-
   // pure-end
 
   spec fn shift32_spec(c: char) -> (result:char) {
       ((c as u8) + 32) as char
   }
-
   // pure-end
 
+vc-helpers: |-
+
+vc-spec: |-
   fn to_lowercase(str1: &Vec<char>) -> (result: Vec<char>)
       // post-conditions-start
       ensures
