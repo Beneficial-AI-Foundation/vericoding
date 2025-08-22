@@ -14,19 +14,6 @@ def load_yaml_sections(yaml_path: Path) -> dict:
         return yaml.safe_load(f)
 
 
-def reconstruct_rust_from_yaml(yaml_sections: dict) -> str:
-    """Reconstruct the original Rust file by concatenating YAML sections."""
-    sections_order = ['vc-preamble', 'vc-helpers', 'vc-spec', 'vc-code', 'vc-postamble']
-    
-    reconstructed = ""
-    for section_name in sections_order:
-        section_content = yaml_sections.get(section_name, '')
-        if section_content:
-            reconstructed += section_content
-    
-    return reconstructed
-
-
 def normalize_whitespace(content: str) -> str:
     """Normalize whitespace for comparison."""
     # Remove trailing whitespace from each line and normalize line endings
