@@ -1,0 +1,67 @@
+{
+  "skeleton": "//Exercicio 1.a)\n//ATOM_PLACEHOLDER_sum\n\n//Exercicio 1.b)\n//ATOM_PLACEHOLDER_query\n\n//Exercicio 1.c)\n//ATOM_PLACEHOLDER_queryLemma\n\n//ATOM_PLACEHOLDER_queryFast\n\n//ATOM_PLACEHOLDER_is_prefix_sum_for\n\n///Exercicio 2.\n//ATOM_PLACEHOLDER_List//ATOM_PLACEHOLDER_from_array\n\n//ATOM_PLACEHOLDER_mem\n\n\n\n",
+  "atoms": {
+    "sum": [
+      [],
+      "// ATOM \n//Exercicio 1.a)\nfunction sum (a:array<int>, i:int, j:int) :int\nreads a\nrequires 0 <= i <= j <= a.Length\n{\n    if i == j then\n        0\n    else\n        a[j-1] + sum(a, i, j-1)\n}\n",
+      "function"
+    ],
+    "query": [
+      [
+        "sum"
+      ],
+      "// SPEC \n\n//Exercicio 1.b)\nmethod query (a:array<int>, i:int, j:int) returns (s:int)\nrequires 0 <= i <= j <= a.Length\nensures s == sum(a, i, j)\n{\n}\n",
+      "method"
+    ],
+    "queryLemma": [
+      [
+        "sum"
+      ],
+      "// ATOM \n\n//Exercicio 1.c)\nlemma queryLemma(a:array<int>, i:int, j:int, k:int)\n    requires 0 <= i <= k <= j <= a.Length\n    ensures  sum(a,i,k) + sum(a,k,j) == sum(a,i,j)\n{\n}\n",
+      "lemma"
+    ],
+    "queryFast": [
+      [
+        "is_prefix_sum_for",
+        "sum",
+        "queryLemma"
+      ],
+      "// SPEC \n\nmethod queryFast (a:array<int>, c:array<int>, i:int, j:int) returns (r:int)\nrequires is_prefix_sum_for(a,c) && 0 <= i <= j <= a.Length < c.Length\nensures r == sum(a, i,j)\n{\n}\n",
+      "method"
+    ],
+    "is_prefix_sum_for": [
+      [
+        "sum"
+      ],
+      "// ATOM \n\npredicate is_prefix_sum_for (a:array<int>, c:array<int>)\nreads c, a\n{\n    a.Length + 1 == c.Length\n    && c[0] == 0\n    && forall j :: 1 <= j <= a.Length ==> c[j] == sum(a,0,j)\n}\n",
+      "predicate"
+    ],
+    "List": [
+      [],
+      "// ATOM \n\n///Exercicio 2.\ndatatype List<T> = Nil | Cons(head: T, tail: List<T>)\n",
+      "datatype"
+    ],
+    "from_array": [
+      [
+        "mem"
+      ],
+      "// SPEC \n\nmethod from_array<T>(a: array<T>) returns (l: List<T>)\nrequires a.Length > 0\nensures forall j::0 <= j < a.Length ==> mem(a[j],l)\n{\n}\n",
+      "method"
+    ],
+    "mem": [
+      [],
+      "// ATOM \n\nfunction mem<T(==)> (x: T, l:List<T>) : bool\n{\n    match l\n    case Nil => false\n    case Cons(y,r)=> if (x==y) then true else mem(x,r)\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sum": "sum",
+    "//ATOM_PLACEHOLDER_query": "query",
+    "//ATOM_PLACEHOLDER_queryLemma": "queryLemma",
+    "//ATOM_PLACEHOLDER_queryFast": "queryFast",
+    "//ATOM_PLACEHOLDER_is_prefix_sum_for": "is_prefix_sum_for",
+    "//ATOM_PLACEHOLDER_List": "List",
+    "//ATOM_PLACEHOLDER_from_array": "from_array",
+    "//ATOM_PLACEHOLDER_mem": "mem"
+  }
+}

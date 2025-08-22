@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_IsOdd",
+  "atoms": {
+    "IsOdd": [
+      [],
+      "// SPEC \nmethod IsOdd(n: int) returns (result: bool)\n    ensures result <==> n % 2 == 1\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsOdd": "IsOdd"
+  }
+}

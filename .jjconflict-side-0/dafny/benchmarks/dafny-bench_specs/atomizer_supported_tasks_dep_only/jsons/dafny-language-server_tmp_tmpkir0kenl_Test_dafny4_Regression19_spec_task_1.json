@@ -1,0 +1,13 @@
+{
+  "skeleton": "// RUN: %dafny \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n//ATOM_PLACEHOLDER_ContainsNothingBut5\n\n//ATOM_PLACEHOLDER_YeahContains5\n\n//ATOM_PLACEHOLDER_ViaSetComprehension\n\n//ATOM_PLACEHOLDER_LambdaTest\n\n//ATOM_PLACEHOLDER_ViaMapComprehension\n\n//ATOM_PLACEHOLDER_Contains5\n\n//ATOM_PLACEHOLDER_R//ATOM_PLACEHOLDER_RIs5\n\n//ATOM_PLACEHOLDER_NonemptySet\n//ATOM_PLACEHOLDER_NonemptyMap\n\n//ATOM_PLACEHOLDER_M && r == MakeR(5)\n{\n\n  NonemptySet(5, set q | q in s && q == 5);\n\n  NonemptyMap(5, map q | q in s && q == 5 :: true);\n\n\n}\n\n && r == MakeR(5)\n{\n\n  NonemptySet(5, set q | q in s && q == 5);\n\n  NonemptyMap(5, map q | q in s && q == 5 :: true);\n\n\n}\n\n",
+  "atoms": {
+    "M": [
+      [],
+      "// SPEC \n\nmethod M(s: set<int>, r: R, q: int)\n  requires s == {\n}\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_M": "M"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "skeleton": "/* https://leetcode.com/problems/two-sum/\nGiven an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\nYou can return the answer in any order.\n\nExample 1:\nInput: nums = [2,7,11,15], target = 9\nOutput: [0,1]\nExplanation: Because nums[0] + nums[1] == 9, we return [0, 1].\n*/\n\n\n//ATOM_PLACEHOLDER_correct_pair\n\n// We actually make a weaker pre-condition: there exists at least one solution.\n// For verification simplicity, we pretend as if:\n// - `seq` were Python list\n// - `map` were Python dict\n//ATOM_PLACEHOLDER_twoSum\n\n/* Discussions\n1. It may be tempting to append `&& e_to_i[nums[i']] == i'` to the invariant (formula A),\n  but this is wrong, because `nums` may contain redundant elements.\n  Redundant elements will share the same key in `e_to_i`, the newer overwriting the older.\n  \n2. Tip: Generally, we often need invariants when copying data from a container to another.\n  To specify a set/map, we often need \"back and forth\" assertions, namely:\n  (a) What elements are in the map/set (like in formula A)\n  (b) What do elements in the set/map satisfy (like in formula B)\n*/\n\n\n\n/* Discussions\n1. It may be tempting to append `&& e_to_i[nums[i']] == i'` to the invariant (formula A),\n  but this is wrong, because `nums` may contain redundant elements.\n  Redundant elements will share the same key in `e_to_i`, the newer overwriting the older.\n  \n2. Tip: Generally, we often need invariants when copying data from a container to another.\n  To specify a set/map, we often need \"back and forth\" assertions, namely:\n  (a) What elements are in the map/set (like in formula A)\n  (b) What do elements in the set/map satisfy (like in formula B)\n*/\n\n",
+  "atoms": {
+    "correct_pair": [
+      [],
+      "// ATOM \n\n\n\nghost predicate correct_pair(pair: (int, int), nums: seq<int>, target: int) {\n  var (i, j) := pair;\n  && 0 <= i < |nums|\n  && 0 <= j < |nums|\n  && i != j  // \"you may not use the same element twice\"\n  && nums[i] + nums[j] == target\n}\n",
+      "ghost predicate"
+    ],
+    "twoSum": [
+      [
+        "correct_pair"
+      ],
+      "// SPEC \n\n// We actually make a weaker pre-condition: there exists at least one solution.\n// For verification simplicity, we pretend as if:\n// - `seq` were Python list\n// - `map` were Python dict\nmethod twoSum(nums: seq<int>, target: int) returns (pair: (int, int))\n  requires exists i, j :: correct_pair((i, j), nums, target)\n  ensures correct_pair(pair, nums, target)\n{\n}\n\n/* Discussions\n1. It may be tempting to append `&& e_to_i[nums[i']] == i'` to the invariant (formula A),\n  but this is wrong, because `nums` may contain redundant elements.\n  Redundant elements will share the same key in `e_to_i`, the newer overwriting the older.\n  \n2. Tip: Generally, we often need invariants when copying data from a container to another.\n  To specify a set/map, we often need \"back and forth\" assertions, namely:\n  (a) What elements are in the map/set (like in formula A)\n  (b) What do elements in the set/map satisfy (like in formula B)\n*/\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_correct_pair": "correct_pair",
+    "//ATOM_PLACEHOLDER_twoSum": "twoSum"
+  }
+}

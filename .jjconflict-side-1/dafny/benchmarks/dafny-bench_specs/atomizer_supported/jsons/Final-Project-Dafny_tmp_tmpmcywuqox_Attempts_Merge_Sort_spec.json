@@ -1,0 +1,29 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_mergeSort\n\n//ATOM_PLACEHOLDER_merging\n\n//ATOM_PLACEHOLDER_sorting\n\n",
+  "atoms": {
+    "mergeSort": [
+      [
+        "sorting"
+      ],
+      "// SPEC \nmethod mergeSort(a: array<int>)\nmodifies a\n{\n}\n",
+      "method"
+    ],
+    "merging": [
+      [],
+      "// SPEC \n\nmethod merging(a: array<int>, low: int, medium: int, high: int)\nrequires 0 <= low <= medium <= high < a.Length\nmodifies a\n{\n}\n",
+      "method"
+    ],
+    "sorting": [
+      [
+        "merging"
+      ],
+      "// SPEC \n\nmethod sorting(a: array<int>, low: int, high: int)\nrequires 0 <= low && high < a.Length\nmodifies a\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_mergeSort": "mergeSort",
+    "//ATOM_PLACEHOLDER_merging": "merging",
+    "//ATOM_PLACEHOLDER_sorting": "sorting"
+  }
+}

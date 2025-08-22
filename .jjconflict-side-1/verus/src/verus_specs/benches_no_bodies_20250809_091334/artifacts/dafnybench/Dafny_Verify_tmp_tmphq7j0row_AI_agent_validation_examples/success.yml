@@ -1,0 +1,6 @@
+num_iterations: 15
+success: false
+verification_error: "error: expected one of `!` or `::`, found keyword `fn`\n -->\
+  \ /tmp/tmp0rmr7iz9.rs:2:6\n  |\n2 | spec fn power(n: nat) -> nat\n  |      ^^ expected\
+  \ one of `!` or `::`\n\nerror: aborting due to 1 previous error\n\n"
+verification_output: ''

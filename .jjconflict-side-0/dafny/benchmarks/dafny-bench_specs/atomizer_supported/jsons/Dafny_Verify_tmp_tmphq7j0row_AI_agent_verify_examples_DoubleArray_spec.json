@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_DoubleArray\n\n",
+  "atoms": {
+    "DoubleArray": [
+      [],
+      "// SPEC \nmethod DoubleArray(src: array<int>, dst: array<int>)\n    requires src.Length == dst.Length\n    modifies dst\n    ensures forall i :: 0 <= i < src.Length ==> dst[i] == 2 * old(src[i])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_DoubleArray": "DoubleArray"
+  }
+}

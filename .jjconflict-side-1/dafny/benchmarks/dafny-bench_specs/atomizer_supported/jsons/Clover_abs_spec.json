@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Abs\n\n",
+  "atoms": {
+    "Abs": [
+      [],
+      "// SPEC \nmethod Abs(x: int) returns (y: int)\n  ensures x>=0 ==> x==y\n  ensures x<0 ==> x+y==0\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Abs": "Abs"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_TriangularPrismVolume",
+  "atoms": {
+    "TriangularPrismVolume": [
+      [],
+      "// SPEC \nmethod TriangularPrismVolume(base: int, height: int, length: int) returns (volume: int)\n    requires base > 0\n    requires height > 0\n    requires length > 0\n    ensures volume == (base * height * length) / 2\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_TriangularPrismVolume": "TriangularPrismVolume"
+  }
+}

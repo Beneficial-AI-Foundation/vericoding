@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Find\n\n",
+  "atoms": {
+    "Find": [
+      [],
+      "// SPEC \nmethod Find(a: array<int>, key: int) returns (index: int)\n  ensures -1<=index<a.Length\n  ensures index!=-1 ==> a[index]==key && (forall i :: 0 <= i < index ==> a[i] != key)\n  ensures index == -1 ==> (forall i::0 <= i < a.Length ==> a[i] != key)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Find": "Find"
+  }
+}

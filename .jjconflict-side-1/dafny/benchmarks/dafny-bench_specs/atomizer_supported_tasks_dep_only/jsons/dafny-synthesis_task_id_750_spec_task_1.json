@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_AddTupleToList",
+  "atoms": {
+    "AddTupleToList": [
+      [],
+      "// SPEC \nmethod AddTupleToList(l: seq<(int, int)>, t: (int, int)) returns (r: seq<(int, int)>)\n    ensures |r| == |l| + 1\n    ensures r[|r| - 1] == t\n    ensures forall i :: 0 <= i < |l| ==> r[i] == l[i]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_AddTupleToList": "AddTupleToList"
+  }
+}

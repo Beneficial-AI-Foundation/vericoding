@@ -1,0 +1,68 @@
+{
+  "skeleton": "\n//ATOM_PLACEHOLDER_unknown_1 FindAllOccurrences(text: string, pattern: string) returns (offsets: set<nat>)\n\tensures forall i :: i in offsets ==> i + |pattern| <= |text|\n\tensures forall i :: 0 <= i <= |text| - |pattern| ==> (text[i..i+|pattern|] == pattern <==> i in offsets)\n{\n    offsets := {};\n    var i:int := 0;\n\t// no pattern in text at all.\n    if |pattern| > |text|\n    {\n        return offsets;\n    }\n\n\t//all offsets are offsets of pattern/ \n    if pattern == \"\"\n    {\n        while i < |text|\n\t\t{\n\t\t\toffsets := offsets + {i};\n            i:=i+1;\n\t\t}\n        offsets := offsets + {|text|};\n\t\treturn offsets;\n    }\n\n    var pattern_hash: int := RecursiveSumDown(pattern);\n    var text_hash: int := RecursiveSumDown(text[..|pattern|]);\n    \n\tif pattern_hash == text_hash{\n        if text[..|pattern|] == pattern\n        {\n            offsets := offsets + {0};\n        }\n    }\n\t\n    else\n\t{\n        LemmaRabinKarp(text[..|pattern|], pattern, text_hash, pattern_hash);\n    }\n\n\twhile i < |text| - |pattern|\n\t{\n\t\t//updating text hash\n\t\tvar old_text_hash := text_hash;\n\t\tvar left_letter_as_int := text[i] as int;\n\t\tvar right_new_letter_as_int := text[i+|pattern|] as int;\n\t\ttext_hash := text_hash - left_letter_as_int + right_new_letter_as_int;\n\t\t//updating i\n\t\ti := i + 1;\n\t\t//checking hash equality\n\t\tif pattern_hash == text_hash{\n\t\t\tif text[i..i + |pattern|] == pattern\n\t\t\t{\n\t\t\t\toffsets := offsets + {i};\n\t\t\t}\n\t\t\tLemmaHashEqualty(text_hash, text, i, old_text_hash, pattern);\n\t\t}\n\t\telse{\n\t\t\tLemmaHashEqualty(text_hash, text, i, old_text_hash, pattern);\n\t\t\tLemmaRabinKarp(text[i..i+|pattern|], pattern, text_hash, pattern_hash);\n\t\t}\n\t\tLemma2Sides(text, pattern, i, offsets);\n\t\t//=>\n\t\t//=>\n\t}\n\t//=>\n}\n\n//ATOM_PLACEHOLDER_RecursiveSumDown\n\n//ATOM_PLACEHOLDER_RecursiveSumUp\n\n//ATOM_PLACEHOLDER_unknown_1940LemmaRabinKarp(t_sub:string, pattern:string, text_hash:int, pattern_hash:int)\n    requires text_hash != pattern_hash\n    requires pattern_hash == RecursiveSumDown(pattern)\n    requires text_hash == RecursiveSumDown(t_sub)\n    ensures t_sub[..] != pattern[..]\n{}\n\n//ATOM_PLACEHOLDER_Lemma2Sides\n\n//ATOM_PLACEHOLDER_LemmaHashEqualty\n\n//ATOM_PLACEHOLDER_LemmaAddingOneIndex\n\n//ATOM_PLACEHOLDER_PrependSumUp\n\n//ATOM_PLACEHOLDER_EquivalentSumDefinitions\n\n\n\n",
+  "atoms": {
+    "": [
+      [],
+      "// ATOM \n\nlemma {:verify true}LemmaRabinKarp(t_sub:string, pattern:string, text_hash:int, pattern_hash:int)\n    requires text_hash != pattern_hash\n    requires pattern_hash == RecursiveSumDown(pattern)\n    requires text_hash == RecursiveSumDown(t_sub)\n    ensures t_sub[..] != pattern[..]\n{}\n",
+      "lemma"
+    ],
+    "RecursiveSumDown": [
+      [],
+      "// ATOM \n\nfunction RecursiveSumDown(str: string): int\n{\n\tif str == \"\" then 0 else str[|str|-1] as int +RecursiveSumDown(str[..|str|-1])\n}\n",
+      "function"
+    ],
+    "RecursiveSumUp": [
+      [],
+      "// ATOM \n\nfunction RecursiveSumUp(str: string): int\n{\n\tif str == \"\" then 0 else str[0] as int + RecursiveSumUp(str[1..])\n}\n",
+      "function"
+    ],
+    "Lemma2Sides": [
+      [],
+      "// ATOM \n\nlemma Lemma2Sides(text: string, pattern: string, i: nat, offsets: set<nat>)\n\trequires 0 <= i <= |text| - |pattern|\n\trequires (text[i..i+|pattern|] == pattern ==> i in offsets)\n\trequires (text[i..i+|pattern|] == pattern <== i in offsets)\n\tensures (text[i..i+|pattern|] == pattern <==> i in offsets)\n{}\n",
+      "lemma"
+    ],
+    "LemmaHashEqualty": [
+      [
+        "LemmaAddingOneIndex",
+        "PrependSumUp",
+        "EquivalentSumDefinitions",
+        "RecursiveSumDown"
+      ],
+      "// ATOM \n\nlemma LemmaHashEqualty(text_hash : int, text: string, i: nat, old_text_hash: int, pattern: string)\nrequires 0 < i <= |text| - |pattern|\nrequires text_hash == old_text_hash - text[i - 1] as int + text[i - 1 + |pattern|] as int\nrequires  old_text_hash == RecursiveSumDown(text[i - 1..i - 1 + |pattern|]);\nensures text_hash == RecursiveSumDown(text[i..i+|pattern|])\n{\n\tghost var temp_val := old_text_hash + text[i - 1 + |pattern|] as int;\n\t//=>\n\tghost var str := text[i - 1..];\n\tLemmaAddingOneIndex(str, |pattern|, old_text_hash);\n\t//=>\n\t//=>\n\tPrependSumUp(text[i - 1..i + |pattern|]);\n\tEquivalentSumDefinitions(text[i - 1..i + |pattern|]);\n\tEquivalentSumDefinitions(text[i..i + |pattern|]);\n\t//=>\n\t//=>\n\t//=>\n\t//=>\n}\n",
+      "lemma"
+    ],
+    "LemmaAddingOneIndex": [
+      [
+        "RecursiveSumDown"
+      ],
+      "// ATOM \n\nlemma LemmaAddingOneIndex(str: string, i: nat, sum: int)\n\trequires 0 <= i < |str| && sum == RecursiveSumDown(str[..i])\n\tensures 0 <= i+1 <= |str| && sum + str[i] as int == RecursiveSumDown(str[..i+1])\n{\n\tvar str1 := str[..i+1];\n\tcalc {\n\t\tRecursiveSumDown(str[..i+1]);\n\t== // def.\n\t\tif str1 == [] then 0 else str1[|str1|-1] as int + RecursiveSumDown(str1[..|str1|-1]);\n\t== { assert str1 != []; } // simplification for a non-empty sequence\n\t\tstr1[|str1|-1] as int + RecursiveSumDown(str1[..|str1|-1]);\n\t== { assert |str1|-1 == i; }\n\t\tstr1[i] as int + RecursiveSumDown(str1[..i]);\n\t== { assert str1[..i] == str[..i]; }\n\t\tstr[i] as int + RecursiveSumDown(str[..i]);\n\t== // inv.\n\t\tstr[i] as int + sum;\n\t==\n\t\tsum + str[i] as int;\n\t}\n}\n",
+      "lemma"
+    ],
+    "PrependSumUp": [
+      [
+        "RecursiveSumUp"
+      ],
+      "// ATOM \n\nlemma PrependSumUp(str: string)\n\trequires str != \"\"\n\tensures RecursiveSumUp(str) == str[0] as int + RecursiveSumUp(str[1..])\n{\n\t// directly from the definition of RecursiveSumUp (for a non-emty sequence)\n}\n",
+      "lemma"
+    ],
+    "EquivalentSumDefinitions": [
+      [
+        "RecursiveSumUp",
+        "RecursiveSumDown"
+      ],
+      "// ATOM \n\nlemma EquivalentSumDefinitions(str: string)\n\tensures RecursiveSumDown(str) == RecursiveSumUp(str)\n{\n\tif |str| == 0\n\t{\n\t}\n\telse if |str| == 1\n\t{\n\t}\n\telse\n\t{\n\t\tvar first: char, mid: string, last:char := str[0], str[1..|str|-1], str[|str|-1];\n\t\tcalc {\n\t\t\tRecursiveSumDown(str);\n\t\t== { assert str != [] && str[|str|-1] == last && str[..|str|-1] == [first] + mid; }\n\t\t\tlast as int + RecursiveSumDown([first] + mid);\n\t\t== // arithmetic\n\t\t\tRecursiveSumDown([first] + mid) + last as int;\n\t\t== { EquivalentSumDefinitions([first] + mid); } // induction hypothesis\n\t\t\tRecursiveSumUp([first] + mid) + last as int;\n\t\t== { assert [first] + mid != []; }\n\t\t\tfirst as int + RecursiveSumUp(mid) + last as int;\n\t\t== { EquivalentSumDefinitions(mid); } // induction hypothesis\n\t\t\tfirst as int + RecursiveSumDown(mid) + last as int;\n\t\t==\n\t\t\tfirst as int + RecursiveSumDown(mid + [last]);\n\t\t== { EquivalentSumDefinitions(mid + [last]); } // induction hypothesis\n\t\t\tfirst as int + RecursiveSumUp(mid + [last]);\n\t\t== { assert str != [] && str[0] == first && str[1..] == mid + [last]; }\n\t\t\tRecursiveSumUp(str);\n\t\t}\n\t}\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_unknown_1": "unknown_1",
+    "//ATOM_PLACEHOLDER_RecursiveSumDown": "RecursiveSumDown",
+    "//ATOM_PLACEHOLDER_RecursiveSumUp": "RecursiveSumUp",
+    "//ATOM_PLACEHOLDER_unknown_1940": "unknown_1940",
+    "//ATOM_PLACEHOLDER_Lemma2Sides": "Lemma2Sides",
+    "//ATOM_PLACEHOLDER_LemmaHashEqualty": "LemmaHashEqualty",
+    "//ATOM_PLACEHOLDER_LemmaAddingOneIndex": "LemmaAddingOneIndex",
+    "//ATOM_PLACEHOLDER_PrependSumUp": "PrependSumUp",
+    "//ATOM_PLACEHOLDER_EquivalentSumDefinitions": "EquivalentSumDefinitions"
+  }
+}

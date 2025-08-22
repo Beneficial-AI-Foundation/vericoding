@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Match\n\n",
+  "atoms": {
+    "Match": [
+      [],
+      "// SPEC \nmethod Match(s: string, p: string) returns (b: bool)\n  requires |s| == |p|\n  ensures b <==> forall n :: 0 <= n < |s| ==> s[n] == p[n] || p[n] == '?'\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Match": "Match"
+  }
+}

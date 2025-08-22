@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_SquareRoot\n\n",
+  "atoms": {
+    "SquareRoot": [
+      [],
+      "// SPEC \nmethod SquareRoot(N:nat) returns (r:nat)\n  ensures r*r <= N < (r+1)*(r+1)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SquareRoot": "SquareRoot"
+  }
+}

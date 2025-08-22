@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_SquarePerimeter",
+  "atoms": {
+    "SquarePerimeter": [
+      [],
+      "// SPEC \nmethod SquarePerimeter(side: int) returns (perimeter: int)\n    requires side > 0\n    ensures perimeter == 4 * side\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SquarePerimeter": "SquarePerimeter"
+  }
+}

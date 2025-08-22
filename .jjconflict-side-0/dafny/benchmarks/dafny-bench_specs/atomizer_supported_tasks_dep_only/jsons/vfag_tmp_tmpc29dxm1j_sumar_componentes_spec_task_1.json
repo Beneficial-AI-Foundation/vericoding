@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_suma_componentes\n\n\n\n//ATOM_PLACEHOLDER_suma_aux\n\n",
+  "atoms": {
+    "suma_componentes": [
+      [
+        "suma_aux"
+      ],
+      "// SPEC \nmethod suma_componentes(V : array?<int>) returns (suma : int)\n\n  requires V != null\n  ensures  suma == suma_aux(V, 0)\t// x = V[0] + V[1] + ... + V[N - 1]\n  \n{\n}\n",
+      "method"
+    ],
+    "suma_aux": [
+      [],
+      "// ATOM \n\n\n\nfunction suma_aux(V : array?<int>, n : int) : int\n\n  // suma_aux(V, n) = V[n] + V[n + 1] + ... + V[N - 1]\n\n  requires V != null\t\t\t// P_0\n  requires 0 <= n <= V.Length\t\t// Q_0\n  \n  \n  reads V\n  \n{\n    \n  if (n == V.Length) then 0 \t\t\t\t\t// Caso base:      n = N\n                     else V[n] + suma_aux(V, n + 1)\t\t// Caso recursivo: n < N\n  \n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_suma_componentes": "suma_componentes",
+    "//ATOM_PLACEHOLDER_suma_aux": "suma_aux"
+  }
+}

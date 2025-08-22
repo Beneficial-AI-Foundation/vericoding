@@ -1,0 +1,37 @@
+use vstd::prelude::*;
+
+fn main() {}
+
+verus! {
+
+spec fn is_digit_spec(c: u8) -> bool {
+    c >= 48 && c <= 57
+}
+
+fn is_digit(c: u8) -> (res: bool)
+    ensures
+        res == is_digit_spec(c),
+{
+    c >= 48 && c <= 57
+}
+
+fn is_integer(text: &[u8]) -> (result: bool)
+    ensures
+        result == (forall|i: int| 0 <= i < text.len() ==> (#[trigger] is_digit_spec(text[i]))),
+{
+    let mut idx = 0;
+    /* code modified by LLM (iteration 1): added decreases clause to fix verification error */
+    while idx < text.len()
+        invariant
+            forall|i: int| 0 <= i < idx ==> is_digit_spec(text[i]),
+        decreases text.len() - idx,
+    {
+        if !is_digit(text[idx]) {
+            return false;
+        }
+        idx += 1;
+    }
+    true
+}
+
+} // verus!

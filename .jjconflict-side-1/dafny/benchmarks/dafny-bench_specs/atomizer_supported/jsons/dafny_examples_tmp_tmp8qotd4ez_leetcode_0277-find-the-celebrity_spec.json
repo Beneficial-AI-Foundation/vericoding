@@ -1,0 +1,49 @@
+{
+  "skeleton": "// Author: Shaobo He\n\n//ATOM_PLACEHOLDER_knows//ATOM_PLACEHOLDER_isCelebrity\n\n//ATOM_PLACEHOLDER_knowerCannotBeCelebrity\n\n//ATOM_PLACEHOLDER_isCelebrityP \n\n//ATOM_PLACEHOLDER_findCelebrity\n\n",
+  "atoms": {
+    "knows": [
+      [],
+      "// ATOM \n// Author: Shaobo He\n\npredicate knows(a: int, b: int)\n",
+      "predicate"
+    ],
+    "isCelebrity": [
+      [
+        "knows"
+      ],
+      "// ATOM \n\npredicate isCelebrity(n : int, i : int)\nrequires n >= 0 && 0 <= i < n;\n{\n    forall j :: 0 <= j < n && i != j ==> knows(j, i) && !knows(i, j)\n}\n",
+      "predicate"
+    ],
+    "knowerCannotBeCelebrity": [
+      [
+        "isCelebrity",
+        "knows"
+      ],
+      "// ATOM \n\nlemma knowerCannotBeCelebrity(n: int, i: int)\nrequires n >= 0 && 0 <= i < n\nensures (exists j :: 0 <= j < n && j != i && knows(i, j)) ==> !isCelebrity(n, i)\n{}\n",
+      "lemma"
+    ],
+    "isCelebrityP": [
+      [
+        "knows",
+        "isCelebrity"
+      ],
+      "// ATOM \n\nghost method isCelebrityP(n: int, i: int) returns (r : bool)\nrequires n >= 0 && 0 <= i < n;\nensures r <==> isCelebrity(n, i);\n{\n    var j := 0;\n    r := true;\n    while j < n\n    {\n        if j != i {\n            if !knows(j, i) || knows(i, j) {\n                return false;\n            }\n        }\n        j := j + 1;\n    }\n    return r;\n}\n",
+      "ghost method"
+    ],
+    "findCelebrity": [
+      [
+        "isCelebrity",
+        "knows",
+        "isCelebrityP"
+      ],
+      "// ATOM \n\nghost method findCelebrity(n : int) returns (r : int)\nrequires 2 <= n <= 100;\nensures 0 <= r < n ==> isCelebrity(n, r);\nensures r == -1 ==> forall i :: 0 <= i < n ==> !isCelebrity(n, i);\n{\n    var candidate := 0;\n    var i := 1;\n    while i < n \n    {\n        if knows(candidate, i) {\n            candidate := i;\n        }\n        i := i + 1;\n    }\n    //assert forall j :: 0 <= j < n && j != candidate ==> !isCelebrity(n, j);\n    var isCelebrityC := isCelebrityP(n, candidate);\n    if isCelebrityC {\n        r := candidate;\n    } else {\n        r := -1;\n    }\n}\n",
+      "ghost method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_knows": "knows",
+    "//ATOM_PLACEHOLDER_isCelebrity": "isCelebrity",
+    "//ATOM_PLACEHOLDER_knowerCannotBeCelebrity": "knowerCannotBeCelebrity",
+    "//ATOM_PLACEHOLDER_isCelebrityP": "isCelebrityP",
+    "//ATOM_PLACEHOLDER_findCelebrity": "findCelebrity"
+  }
+}

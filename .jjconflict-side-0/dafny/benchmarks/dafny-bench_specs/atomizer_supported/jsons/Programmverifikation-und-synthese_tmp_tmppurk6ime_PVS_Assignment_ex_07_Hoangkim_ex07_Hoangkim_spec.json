@@ -1,0 +1,35 @@
+{
+  "skeleton": "//Problem01\n//a)\n//ATOM_PLACEHOLDER_swap\n\n//b)\n//Problem04\n//ATOM_PLACEHOLDER_FindMin\n\n//Problem02\n//ATOM_PLACEHOLDER_sorted\n\n//ATOM_PLACEHOLDER_selectionSort\n\n\n//Problem03\n\n\n\n\n\n\n//Problem03\n\n\n\n",
+  "atoms": {
+    "swap": [
+      [],
+      "// SPEC \n//Problem01\n//a)\nmethod swap(a: array<int>, i: nat, j: nat)\n    modifies a\n    requires a != null && a.Length > 0 && i < a.Length && j < a.Length\n    ensures a[i] == old(a[j])\n    ensures a[j] == old(a[i])\n{\n}\n",
+      "method"
+    ],
+    "FindMin": [
+      [],
+      "// SPEC \n\n//b)\n//Problem04\nmethod FindMin(a: array<int>, lo: nat) returns (minIdx: nat)\n    requires a != null && a.Length > 0 && lo < a.Length\n    ensures lo <= minIdx < a.Length\n    ensures forall x :: lo <= x < a.Length ==> a[minIdx] <= a[x]\n{\n}\n",
+      "method"
+    ],
+    "sorted": [
+      [],
+      "// ATOM \n\n//Problem02\nghost predicate sorted(a:seq<int>)\n{\n    forall i | 0 < i < |a| :: a[i-1] <= a[i]     \n}\n",
+      "ghost predicate"
+    ],
+    "selectionSort": [
+      [
+        "sorted",
+        "FindMin",
+        "swap"
+      ],
+      "// SPEC \n\nmethod selectionSort(a: array<int>)\n    modifies a\n    //ensures multiset(a[..]) == multiset(old(a[..]))\n    //ensures sorted(a[..])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_swap": "swap",
+    "//ATOM_PLACEHOLDER_FindMin": "FindMin",
+    "//ATOM_PLACEHOLDER_sorted": "sorted",
+    "//ATOM_PLACEHOLDER_selectionSort": "selectionSort"
+  }
+}

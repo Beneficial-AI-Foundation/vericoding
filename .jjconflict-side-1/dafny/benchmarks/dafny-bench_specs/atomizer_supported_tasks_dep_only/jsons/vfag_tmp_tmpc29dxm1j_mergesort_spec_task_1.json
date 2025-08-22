@@ -1,0 +1,29 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_ordenar_mergesort\n\n\n\n//ATOM_PLACEHOLDER_mergesort\n\n\n\n//ATOM_PLACEHOLDER_mezclar\n\n",
+  "atoms": {
+    "mergesort": [
+      [
+        "mezclar"
+      ],
+      "// SPEC \n\n\n\nmethod mergesort(V : array?<int>, c : int, f : int) \n\n    requires V != null\n    requires c >= 0 && f <= V.Length\n    \n\n    modifies V\n\n{\n}\n",
+      "method"
+    ],
+    "ordenar_mergesort": [
+      [
+        "mergesort"
+      ],
+      "// SPEC \nmethod ordenar_mergesort(V : array?<int>)\n\n    requires V != null\n    \n    modifies V\n\n{\n}\n",
+      "method"
+    ],
+    "mezclar": [
+      [],
+      "// SPEC \n\n\n\nmethod mezclar(V: array?<int>, c : int, m : int, f : int)\n\n    requires V != null\n    requires c <= m <= f\n    requires 0 <= c <= V.Length\n    requires 0 <= m <= V.Length\n    requires 0 <= f <= V.Length\n\n    modifies V\n\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_ordenar_mergesort": "ordenar_mergesort",
+    "//ATOM_PLACEHOLDER_mergesort": "mergesort",
+    "//ATOM_PLACEHOLDER_mezclar": "mezclar"
+  }
+}

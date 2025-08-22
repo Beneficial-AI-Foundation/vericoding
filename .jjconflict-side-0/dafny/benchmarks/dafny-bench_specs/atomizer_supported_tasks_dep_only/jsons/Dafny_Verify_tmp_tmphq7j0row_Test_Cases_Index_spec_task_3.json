@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Index\n\n//ATOM_PLACEHOLDER_Min\n\n//ATOM_PLACEHOLDER_Max\n\n\n//ATOM_PLACEHOLDER_MaxSum\n\n\n//ATOM_PLACEHOLDER_MaxSumCaller\n\n//ATOM_PLACEHOLDER_ReconstructFromMaxSum\n\n\n//ATOM_PLACEHOLDER_TestMaxSum\n\n\n\n",
+  "atoms": {
+    "Max": [
+      [],
+      "// SPEC \n\nmethod Max(x: int, y: int) returns (m: int) {\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Max": "Max"
+  }
+}

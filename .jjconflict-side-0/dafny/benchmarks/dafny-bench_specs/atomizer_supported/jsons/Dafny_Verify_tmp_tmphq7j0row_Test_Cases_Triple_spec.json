@@ -1,0 +1,39 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Triple\n\n//ATOM_PLACEHOLDER_TripleIf\n\n//ATOM_PLACEHOLDER_TripleOver\n\n//ATOM_PLACEHOLDER_TripleConditions\n\n//ATOM_PLACEHOLDER_Caller\n\n\n\n",
+  "atoms": {
+    "Triple": [
+      [],
+      "// SPEC \nmethod Triple(x: int) returns (r: int)\n{\n}\n",
+      "method"
+    ],
+    "TripleIf": [
+      [],
+      "// SPEC \n\nmethod TripleIf(x: int) returns (r: int) {\n}\n",
+      "method"
+    ],
+    "TripleOver": [
+      [],
+      "// SPEC \n\nmethod TripleOver(x: int) returns (r: int) {\n}\n",
+      "method"
+    ],
+    "TripleConditions": [
+      [],
+      "// SPEC \n\nmethod TripleConditions(x: int) returns (r: int) \nrequires x % 2 == 0\nensures r == 3 * x\n{\n}\n",
+      "method"
+    ],
+    "Caller": [
+      [
+        "TripleConditions"
+      ],
+      "// SPEC \n\nmethod Caller() {\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Triple": "Triple",
+    "//ATOM_PLACEHOLDER_TripleIf": "TripleIf",
+    "//ATOM_PLACEHOLDER_TripleOver": "TripleOver",
+    "//ATOM_PLACEHOLDER_TripleConditions": "TripleConditions",
+    "//ATOM_PLACEHOLDER_Caller": "Caller"
+  }
+}

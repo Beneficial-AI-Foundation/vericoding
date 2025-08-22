@@ -1,0 +1,30 @@
+{
+  "skeleton": "/*predicate palindrome<T(==)> (s:seq<T>)\n{\n    forall i:: 0<=i<|s| ==> s[i] == s[|s|-i-1]\n}\n*/\n// SUM OF A SEQUENCE OF INTEGERS\n//ATOM_PLACEHOLDER_sum\n\n/*\n//ATOM_PLACEHOLDER_vector_Sum\n\n// Structural Induction on Sequences\n//ATOM_PLACEHOLDER_left_sum_Lemma\n\n// MAXIMUM OF A SEQUENCE\n//ATOM_PLACEHOLDER_maxSeq\n\n// TODO: Hacer\n// Derivar formalmente un calculo incremental de j*j*j\n//ATOM_PLACEHOLDER_Cubes\n\n\n// REVERSE OF A SEQUENCE\n//ATOM_PLACEHOLDER_reverse\n\n//ATOM_PLACEHOLDER_seq2set\n\n\n//ATOM_PLACEHOLDER_seq2setRev_Lemma\n\n\n//ATOM_PLACEHOLDER_concat_seq2set_Lemma\n\n\n// REVERSE IS ITS OWN INVERSE\n\n//ATOM_PLACEHOLDER_Rev_Lemma//ATOM_PLACEHOLDER_ItsOwnInverse_Lemma\n\n// SCALAR PRODUCT OF TWO VECTORS OF INTEGER\n//ATOM_PLACEHOLDER_scalar_product\n\n\n//ATOM_PLACEHOLDER_scalar_product_Lemma\n\n// MULTISETS\n\n//ATOM_PLACEHOLDER_multiplicity_examples\n\n// REVERSE HAS THE SAME MULTISET \n\n//ATOM_PLACEHOLDER_seqMultiset_Lemma\n*/\n//ATOM_PLACEHOLDER_empty_Lemma \nensures r == []\n{\n\tif r != []\t{\n\t}\n}\n\n//ATOM_PLACEHOLDER_elem_Lemma//ATOM_PLACEHOLDER_sumElems_Lemma\n\n",
+  "atoms": {
+    "sum": [
+      [],
+      "// ATOM \n// SUM OF A SEQUENCE OF INTEGERS\nfunction sum(v: seq<int>): int \n{\n    if v==[] then 0\n    else if |v|==1 then v[0]\n    else v[0]+sum(v[1..])\n}\n\n/*\n",
+      "function"
+    ],
+    "vector_Sum": [
+      [
+        "left_sum_Lemma",
+        "sum"
+      ],
+      "// SPEC \nmethod vector_Sum(v:seq<int>) returns (x:int)\nensures x == sum(v) \n{\n}\n",
+      "method"
+    ],
+    "left_sum_Lemma": [
+      [
+        "sum"
+      ],
+      "// ATOM \n\n// Structural Induction on Sequences\nlemma left_sum_Lemma(r:seq<int>, k:int)\nrequires 0 <= k < |r|\nensures sum(r[..k]) + r[k] == sum(r[..k+1]);\n{\n    if |r|==1 || k==0{\n    }\n    else {\n        left_sum_Lemma(r[1..], k);\n\n        calc {\n            sum(r[..k+1]);\n            sum(r[..k]) + [r[k]];\n        }\n    }\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sum": "sum",
+    "//ATOM_PLACEHOLDER_vector_Sum": "vector_Sum",
+    "//ATOM_PLACEHOLDER_left_sum_Lemma": "left_sum_Lemma"
+  }
+}

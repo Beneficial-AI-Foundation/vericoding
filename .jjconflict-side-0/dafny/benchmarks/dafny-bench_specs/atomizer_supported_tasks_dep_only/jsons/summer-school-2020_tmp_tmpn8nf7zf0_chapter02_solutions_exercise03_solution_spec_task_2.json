@@ -1,0 +1,30 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_IsSorted\n\n//ATOM_PLACEHOLDER_SortSpec\n\n//lemma SequenceConcat(s:seq<int>, pivot:int)\n//  requires 0<=pivot<|s|\n//  ensures s[..pivot] + s[pivot..] == s\n//{\n//}\n\n//ATOM_PLACEHOLDER_merge_sort\n\n//ATOM_PLACEHOLDER_merge\n\n//ATOM_PLACEHOLDER_fast_sort\n\n\n\n",
+  "atoms": {
+    "SortSpec": [
+      [
+        "IsSorted"
+      ],
+      "// ATOM \n\npredicate SortSpec(input:seq<int>, output:seq<int>)\n{\n  && IsSorted(output)\n  && multiset(output) == multiset(input)\n}\n",
+      "predicate"
+    ],
+    "merge": [
+      [
+        "SortSpec",
+        "IsSorted"
+      ],
+      "// SPEC \n\nmethod merge(a:seq<int>, b:seq<int>) returns (output:seq<int>)\n  requires IsSorted(a)\n  requires IsSorted(b)\n//  ensures IsSorted(output)\n  ensures SortSpec(a+b, output)\n  //decreases |a|+|b|\n{\n}\n",
+      "method"
+    ],
+    "IsSorted": [
+      [],
+      "// ATOM \npredicate IsSorted(s:seq<int>)\n{\n  forall i :: 0 <= i < |s|-1 ==> s[i] <= s[i+1]\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsSorted": "IsSorted",
+    "//ATOM_PLACEHOLDER_SortSpec": "SortSpec",
+    "//ATOM_PLACEHOLDER_merge": "merge"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_IsEven\n\n//ATOM_PLACEHOLDER_IsOdd\n\n//ATOM_PLACEHOLDER_FirstEvenOddDifference",
+  "atoms": {
+    "IsOdd": [
+      [],
+      "// ATOM \n\npredicate IsOdd(n: int)\n{\n    n % 2 != 0\n}\n",
+      "predicate"
+    ],
+    "IsEven": [
+      [],
+      "// ATOM \npredicate IsEven(n: int)\n{\n    n % 2 == 0\n}\n",
+      "predicate"
+    ],
+    "FirstEvenOddDifference": [
+      [
+        "IsEven",
+        "IsOdd"
+      ],
+      "// SPEC \n\nmethod FirstEvenOddDifference(a: array<int>) returns (diff: int)\n    requires a.Length >= 2\n    requires exists i :: 0 <= i < a.Length && IsEven(a[i])\n    requires exists i :: 0 <= i < a.Length && IsOdd(a[i])\n    ensures exists i, j :: 0 <= i < a.Length && 0 <= j < a.Length && IsEven(a[i]) && IsOdd(a[j]) && diff == a[i] - a[j] && \n        (forall k :: 0 <= k < i ==> IsOdd(a[k])) && (forall k :: 0 <= k < j ==> IsEven(a[k]))\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsEven": "IsEven",
+    "//ATOM_PLACEHOLDER_IsOdd": "IsOdd",
+    "//ATOM_PLACEHOLDER_FirstEvenOddDifference": "FirstEvenOddDifference"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_fact\n\n//ATOM_PLACEHOLDER_factAcc\n\n//ATOM_PLACEHOLDER_factAlt\n\n//ATOM_PLACEHOLDER_factAcc_correct\n\n//ATOM_PLACEHOLDER_factAlt_correct\n\n//ATOM_PLACEHOLDER_List//ATOM_PLACEHOLDER_length\n\n//ATOM_PLACEHOLDER_unknown_512 length_non_neg<T> (l:List<T>)\n    ensures length(l) >= 0\n{\n    match l\n    case Nil =>\n    case Cons(_, r) =>\n        length_non_neg(r);\n       //  assert forall k : int :: k >= 0 ==> 1 + k >= 0;\n}\n\n//ATOM_PLACEHOLDER_lengthTL\n//ATOM_PLACEHOLDER_unknown_866lengthTL_aux<T> (l: List<T>, acc: nat)\n    ensures lengthTL(l, acc) == acc + length(l)\n{\n    match l\n    case Nil => assert acc + length<T>(Nil) == acc;\n    case Cons(_, r) =>\n        lengthTL_aux(r, acc + 1);\n}\n//ATOM_PLACEHOLDER_lengthEq\n\n\n\n",
+  "atoms": {
+    "fact": [
+      [],
+      "// ATOM \nfunction fact (n:nat): nat\n{if n == 0 then 1 else n * fact(n-1)}\n",
+      "function"
+    ],
+    "factAcc": [
+      [],
+      "// ATOM \n\nfunction factAcc (n:nat, a:int): int\n{if (n==0) then a else factAcc(n-1,n*a)}\n",
+      "function"
+    ],
+    "factAlt": [
+      [
+        "factAcc"
+      ],
+      "// ATOM \n\nfunction factAlt(n:nat):int\n{factAcc(n,1)}\n",
+      "function"
+    ],
+    "factAcc_correct": [
+      [
+        "fact",
+        "factAcc"
+      ],
+      "// ATOM \n\nlemma factAcc_correct (n:nat, a:int)\n ensures factAcc(n, a) == a*fact(n)\n{\n}\n",
+      "lemma"
+    ],
+    "factAlt_correct": [
+      [
+        "fact",
+        "factAcc_correct",
+        "factAlt"
+      ],
+      "// ATOM \n\nlemma factAlt_correct (n:nat)\n ensures factAlt(n) == fact(n)\n{\n    factAcc_correct(n,1);\n}\n",
+      "lemma"
+    ],
+    "List": [
+      [],
+      "// ATOM \n\ndatatype List<T> = Nil | Cons(T, List<T>)\n",
+      "datatype"
+    ],
+    "length": [
+      [],
+      "// ATOM \n\nfunction length<T> (l: List<T>) : nat\n{\n    match l\n    case Nil => 0\n    case Cons(_, r) => 1 + length(r)\n}\n",
+      "function"
+    ],
+    "": [
+      [],
+      "// ATOM \nlemma {:induction false}lengthTL_aux<T> (l: List<T>, acc: nat)\n    ensures lengthTL(l, acc) == acc + length(l)\n{\n    match l\n    case Nil => assert acc + length<T>(Nil) == acc;\n    case Cons(_, r) =>\n        lengthTL_aux(r, acc + 1);\n}\n",
+      "lemma"
+    ],
+    "lengthTL": [
+      [],
+      "// ATOM \n\nfunction lengthTL<T> (l: List<T>, acc: nat) : nat\n{\n    match l\n    case Nil => acc\n    case Cons(_, r) => lengthTL(r, 1 + acc)\n}\n",
+      "function"
+    ],
+    "lengthEq": [
+      [
+        "length",
+        "lengthTL"
+      ],
+      "// ATOM \nlemma lengthEq<T> (l: List<T>)\n    ensures length(l) == lengthTL(l,0)\n{\n    lengthTL_aux(l, 0);\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_fact": "fact",
+    "//ATOM_PLACEHOLDER_factAcc": "factAcc",
+    "//ATOM_PLACEHOLDER_factAlt": "factAlt",
+    "//ATOM_PLACEHOLDER_factAcc_correct": "factAcc_correct",
+    "//ATOM_PLACEHOLDER_factAlt_correct": "factAlt_correct",
+    "//ATOM_PLACEHOLDER_List": "List",
+    "//ATOM_PLACEHOLDER_length": "length",
+    "//ATOM_PLACEHOLDER_unknown_512": "unknown_512",
+    "//ATOM_PLACEHOLDER_lengthTL": "lengthTL",
+    "//ATOM_PLACEHOLDER_unknown_866": "unknown_866",
+    "//ATOM_PLACEHOLDER_lengthEq": "lengthEq"
+  }
+}

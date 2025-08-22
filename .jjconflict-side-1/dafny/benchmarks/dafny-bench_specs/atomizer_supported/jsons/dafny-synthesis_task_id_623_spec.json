@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_PowerOfListElements\n\n//ATOM_PLACEHOLDER_Power",
+  "atoms": {
+    "PowerOfListElements": [
+      [
+        "Power"
+      ],
+      "// SPEC \nmethod PowerOfListElements(l: seq<int>, n: int) returns (result: seq<int>)\n    requires n >= 0\n    ensures |result| == |l|\n    ensures forall i :: 0 <= i < |l| ==> result[i] == Power(l[i], n)\n{\n}\n",
+      "method"
+    ],
+    "Power": [
+      [],
+      "// ATOM \n\nfunction Power(base: int, exponent: int): int\n    requires exponent >= 0\n{\n    if exponent == 0 then 1\n    else base * Power(base, exponent-1)\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_PowerOfListElements": "PowerOfListElements",
+    "//ATOM_PLACEHOLDER_Power": "Power"
+  }
+}

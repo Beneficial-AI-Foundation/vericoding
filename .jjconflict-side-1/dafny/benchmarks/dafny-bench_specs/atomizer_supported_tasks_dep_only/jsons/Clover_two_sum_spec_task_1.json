@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_twoSum\n\n",
+  "atoms": {
+    "twoSum": [
+      [],
+      "// SPEC \nmethod twoSum(nums: array<int>, target: int) returns (i: int, j: int)\n  requires nums.Length > 1\n  requires exists i,j::0 <= i < j < nums.Length &&  nums[i] + nums[j] == target\n  ensures 0 <= i < j < nums.Length && nums[i] + nums[j] == target\n  ensures forall ii,jj:: (0 <= ii < i && ii < jj < nums.Length)  ==> nums[ii] + nums[jj] != target\n  ensures forall jj:: i < jj < j ==> nums[i] + nums[jj] != target\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_twoSum": "twoSum"
+  }
+}

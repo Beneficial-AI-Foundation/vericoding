@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_NthNonagonalNumber",
+  "atoms": {
+    "NthNonagonalNumber": [
+      [],
+      "// SPEC \nmethod NthNonagonalNumber(n: int) returns (number: int)\n    requires n >= 0\n    ensures number == n * (7 * n - 5) / 2\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_NthNonagonalNumber": "NthNonagonalNumber"
+  }
+}

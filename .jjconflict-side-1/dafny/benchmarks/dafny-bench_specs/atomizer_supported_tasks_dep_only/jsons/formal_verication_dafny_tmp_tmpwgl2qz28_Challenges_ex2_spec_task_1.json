@@ -1,0 +1,13 @@
+{
+  "skeleton": "/*\n    i)  Write a verified method with signature\n//ATOM_PLACEHOLDER_Forbid42//ATOM_PLACEHOLDER_Allow42//ATOM_PLACEHOLDER_Forbid42 \n\n//ATOM_PLACEHOLDER_Allow42\n\n//ATOM_PLACEHOLDER_TEST1\n\n",
+  "atoms": {
+    "Forbid42": [
+      [],
+      "// SPEC \n\nmethod Forbid42(x:int, y:int) returns (z:int)\nrequires y != 42;\nensures z == x/(42-y);\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Forbid42": "Forbid42"
+  }
+}

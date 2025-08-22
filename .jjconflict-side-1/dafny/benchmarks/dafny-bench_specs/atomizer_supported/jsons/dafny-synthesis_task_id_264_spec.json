@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_DogYears",
+  "atoms": {
+    "DogYears": [
+      [],
+      "// SPEC \nmethod DogYears(humanYears: int) returns (dogYears: int)\n    requires humanYears >= 0\n    ensures dogYears == 7 * humanYears\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_DogYears": "DogYears"
+  }
+}

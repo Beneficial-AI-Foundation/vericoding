@@ -1,0 +1,5 @@
+The proof tasks in this folder were first created by Md Rakib Hossain Misu during his summer intern at MSR. 
+
+These 78 Rust/Verus proof tasks are based on the MBPP-Dafny-153 set (https://doi.org/10.1145/3643763).
+67 tasks in MBPP-Dafny-153 that do not require proof annotations are removed;
+8 tasks that cannot be easily translated into Rust/Verus are also removed.

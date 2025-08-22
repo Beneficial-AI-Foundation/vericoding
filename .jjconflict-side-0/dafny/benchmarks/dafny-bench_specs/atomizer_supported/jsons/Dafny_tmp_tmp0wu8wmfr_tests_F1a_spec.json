@@ -1,0 +1,27 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_F\n\n//ATOM_PLACEHOLDER_Main\n\n\n//ATOM_PLACEHOLDER_Mid\n\n",
+  "atoms": {
+    "F": [
+      [],
+      "// SPEC \nmethod F() returns ( r: int)\n    ensures r <= 0\n{\n}\n",
+      "method"
+    ],
+    "Main": [
+      [
+        "F"
+      ],
+      "// SPEC \n\nmethod Main() \n{\n}\n",
+      "method"
+    ],
+    "Mid": [
+      [],
+      "// SPEC \n\n\nmethod Mid( p: int, q: int) returns ( m: int )\n    // | ... | ??? | ... |\n    //        p m   q\n    requires p <= q;\n    ensures p<= m <= q;\n    ensures m-p <= q-m;\n    ensures 0 <= (q-m)-(m-p) <= 1;\n\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_F": "F",
+    "//ATOM_PLACEHOLDER_Main": "Main",
+    "//ATOM_PLACEHOLDER_Mid": "Mid"
+  }
+}

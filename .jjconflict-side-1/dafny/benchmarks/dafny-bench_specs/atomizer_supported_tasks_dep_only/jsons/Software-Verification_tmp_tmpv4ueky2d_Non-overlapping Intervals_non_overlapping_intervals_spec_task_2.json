@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_non_overlapping_intervals\n\n\n// Bubble Sort\n//ATOM_PLACEHOLDER_bubble_sort\n\n\n// Predicates for Bubble Sort\n//ATOM_PLACEHOLDER_sorted\n\n//ATOM_PLACEHOLDER_partitioned\n\n\n\n",
+  "atoms": {
+    "bubble_sort": [
+      [
+        "sorted"
+      ],
+      "// SPEC \n\n\n// Bubble Sort\nmethod bubble_sort(a: array2<int>)\n    modifies a\n    requires a.Length1 == 2\n    ensures sorted(a, 0, a.Length0 - 1)\n{\n}\n",
+      "method"
+    ],
+    "sorted": [
+      [],
+      "// ATOM \n\n\n// Predicates for Bubble Sort\npredicate sorted(a: array2<int>, l: int, u: int)\n    reads a\n    requires a.Length1 == 2\n{\n    forall i, j :: 0 <= l <= i <= j <= u < a.Length0 ==> a[i, 1] <= a[j, 1]\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_bubble_sort": "bubble_sort",
+    "//ATOM_PLACEHOLDER_sorted": "sorted"
+  }
+}

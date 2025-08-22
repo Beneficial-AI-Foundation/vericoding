@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+dist/
+*.egg-info/
+
+# Environment variables
+.env
+
+# UV
+uv.lock
+
+# WANDB
+wandb/
+.wandb/
+
+# Lean
+.lake/
+build/
+lake-manifest.json
+
+# Development tools
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+htmlcov/
+coverage.xml
+.coverage
+*.cover
+
+# Pre-commit
+.pre-commit-config.yaml
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+.tox/
+.nox/
+
+# Security reports
+bandit-report.json
+safety-report.json
+
+# Experiment outputs
+experiment_results/
+lean_output_*/
+*_impl.lean
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+/**/LeanStateSearch/
+

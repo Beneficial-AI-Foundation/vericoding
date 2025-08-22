@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_SquarePyramidSurfaceArea",
+  "atoms": {
+    "SquarePyramidSurfaceArea": [
+      [],
+      "// SPEC \nmethod SquarePyramidSurfaceArea(baseEdge: int, height: int) returns (area: int)\n    requires baseEdge > 0\n    requires height > 0\n    ensures area == baseEdge * baseEdge + 2 * baseEdge * height\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SquarePyramidSurfaceArea": "SquarePyramidSurfaceArea"
+  }
+}

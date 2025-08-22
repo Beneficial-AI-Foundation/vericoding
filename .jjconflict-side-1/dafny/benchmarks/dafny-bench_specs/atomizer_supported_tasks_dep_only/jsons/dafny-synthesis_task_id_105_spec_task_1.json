@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_countTo\n\n//ATOM_PLACEHOLDER_CountTrue",
+  "atoms": {
+    "countTo": [
+      [],
+      "// ATOM \nfunction countTo( a:array<bool>, n:int ) : int\n  requires a != null;\n  requires 0 <= n && n <= a.Length;\n  reads a;\n{\n  if (n == 0) then 0 else countTo(a, n-1) + (if a[n-1] then 1 else 0)\n}\n",
+      "function"
+    ],
+    "CountTrue": [
+      [
+        "countTo"
+      ],
+      "// SPEC \n\nmethod CountTrue(a: array<bool>) returns (result: int)\n    requires a != null\n    ensures result == countTo(a, a.Length)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_countTo": "countTo",
+    "//ATOM_PLACEHOLDER_CountTrue": "CountTrue"
+  }
+}

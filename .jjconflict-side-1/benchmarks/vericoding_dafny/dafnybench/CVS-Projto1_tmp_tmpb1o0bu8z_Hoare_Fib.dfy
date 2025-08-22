@@ -1,0 +1,26 @@
+function fib (n: nat) : nat
+{
+    if n == 0 then 1 else
+    if n == 1 then 1 else
+    fib(n -1) + fib (n-2)
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+method Fib (n: nat) returns (r:nat)
+    ensures r == fib(n)
+// <vc-code>
+{
+  assume false;
+}
+// </vc-code>
+
+datatype List<T> = Nil | Cons(head: T, tail: List<T>)
+
+function add(l:List<int>) : int
+{
+    match l
+    case Nil => 0
+    case Cons(x, xs) => x + add(xs)
+}

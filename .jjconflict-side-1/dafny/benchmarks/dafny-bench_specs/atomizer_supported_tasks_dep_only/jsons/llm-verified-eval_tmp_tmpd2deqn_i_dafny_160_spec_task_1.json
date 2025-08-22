@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_pow\n\n//ATOM_PLACEHOLDER_do_algebra\n\n\n\n",
+  "atoms": {
+    "do_algebra": [
+      [
+        "pow"
+      ],
+      "// SPEC \n\nmethod do_algebra(operators: seq<char>, operands: seq<int>) returns (result: int)\n  requires operators != [] && operands != [] && |operators| + 1 == |operands|\n  requires forall i :: 0 <= i < |operands| ==> operands[i] >= 0\n{\n}\n",
+      "method"
+    ],
+    "pow": [
+      [],
+      "// ATOM \nfunction pow(base: int, exponent: int): int\n  requires exponent >= 0\n{\n  if exponent == 0 then 1\n  else if exponent % 2 == 0 then pow(base * base, exponent / 2)\n  else base * pow(base, exponent - 1)\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_pow": "pow",
+    "//ATOM_PLACEHOLDER_do_algebra": "do_algebra"
+  }
+}

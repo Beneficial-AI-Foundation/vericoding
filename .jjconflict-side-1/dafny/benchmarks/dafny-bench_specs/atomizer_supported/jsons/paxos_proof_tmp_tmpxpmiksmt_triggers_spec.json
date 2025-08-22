@@ -1,0 +1,13 @@
+{
+  "skeleton": "// predicate P(x:int)\n\n// predicate Q(x:int)\n\n\n//ATOM_PLACEHOLDER_M\n\n",
+  "atoms": {
+    "M": [
+      [],
+      "// ATOM \n// predicate P(x:int)\n\n// predicate Q(x:int)\n\n\nlemma M(a: seq<int>, m: map<bool,int>)\n  requires 2 <= |a|\n  requires false in m && true in m\n{\n    assume forall i {:trigger a[i]} :: 0 <= i < |a|-1 ==> a[i] <= a[i+1];\n    var x :| 0 <= x <= |a|-2;\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_M": "M"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "skeleton": "// Deve ser criado uma fun\u00e7\u00e3o explicando o que \u00e9 um somat\u00f3rio\n// Somatorio: Array<N> -> N\n// Pre: True\n// Pos: Somatorio(A) = somat\u00f3rio de i = 0 at\u00e9 |A|-1 os valores das posi\u00e7\u00f5es do array pelo i\n//\n\n// function \u00e9 uma f\u00f3rmula matem\u00e1tica, ele n\u00e3o possui variaveis globais\n// Soma: Array<N>xN -> N\n// { Soma(A,0) = A[0]\n// { Soma(A,i) = A[i] + soma(A, i-1) , se i > 0\n// Teste\n// |A| = 4\n// Soma(A, |A|-1) = Soma(A,3)\n// A[3] + Soma(A,2)\n// A[3] + A[2] + Soma(A,1)\n// A[3] + A[2] + A[1] + Soma(A,0)\n// A[3] + A[2] + A[1] + A[0]\n//ATOM_PLACEHOLDER_soma\n\n\n//ATOM_PLACEHOLDER_somatorio\n\n",
+  "atoms": {
+    "somatorio": [
+      [
+        "soma"
+      ],
+      "// SPEC \n\n\nmethod somatorio(a:array<nat>) returns (s:nat)\n    ensures s == soma(a, a.Length)\n{\n}\n",
+      "method"
+    ],
+    "soma": [
+      [],
+      "// ATOM \n// Deve ser criado uma fun\u00e7\u00e3o explicando o que \u00e9 um somat\u00f3rio\n// Somatorio: Array<N> -> N\n// Pre: True\n// Pos: Somatorio(A) = somat\u00f3rio de i = 0 at\u00e9 |A|-1 os valores das posi\u00e7\u00f5es do array pelo i\n//\n\n// function \u00e9 uma f\u00f3rmula matem\u00e1tica, ele n\u00e3o possui variaveis globais\n// Soma: Array<N>xN -> N\n// { Soma(A,0) = A[0]\n// { Soma(A,i) = A[i] + soma(A, i-1) , se i > 0\n// Teste\n// |A| = 4\n// Soma(A, |A|-1) = Soma(A,3)\n// A[3] + Soma(A,2)\n// A[3] + A[2] + Soma(A,1)\n// A[3] + A[2] + A[1] + Soma(A,0)\n// A[3] + A[2] + A[1] + A[0]\nfunction soma(a:array<nat>, i:nat):nat\n    requires i <= a.Length //Tem que dizer que o i s\u00f3 vai at\u00e9 um valor antes do tamanho do array\n    reads a //serve para dizer que est\u00e1 sendo lido da memoria o array a (\u00e1reas de mem\u00f3ria)\n{\n    if i == 0\n    then 0\n    else a[i-1] + soma(a,i-1)\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_soma": "soma",
+    "//ATOM_PLACEHOLDER_somatorio": "somatorio"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_AnyValueExists",
+  "atoms": {
+    "AnyValueExists": [
+      [],
+      "// SPEC \nmethod AnyValueExists(seq1: seq<int>, seq2: seq<int>) returns (result: bool)\n    ensures result <==> (exists i :: 0 <= i < |seq1| && seq1[i] in seq2)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_AnyValueExists": "AnyValueExists"
+  }
+}

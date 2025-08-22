@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_main\n\n",
+  "atoms": {
+    "main": [
+      [],
+      "// SPEC \nmethod main(n: int) returns(x: int, m: int)\nrequires n > 0\nensures (n <= 0) || (0 <= m && m < n)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_main": "main"
+  }
+}

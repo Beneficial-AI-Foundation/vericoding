@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_CountNonEmptySubstrings",
+  "atoms": {
+    "CountNonEmptySubstrings": [
+      [],
+      "// SPEC \nmethod CountNonEmptySubstrings(s: string) returns (count: int)\n    ensures count >= 0\n    ensures count == (|s| * (|s| + 1)) / 2 // Formula for the number of non-empty substrings of a string\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_CountNonEmptySubstrings": "CountNonEmptySubstrings"
+  }
+}

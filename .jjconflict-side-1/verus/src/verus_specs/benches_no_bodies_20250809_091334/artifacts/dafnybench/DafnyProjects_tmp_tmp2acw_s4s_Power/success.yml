@@ -1,0 +1,21 @@
+num_iterations: 18
+success: false
+verification_error: "error: assertion failed\n  --> /tmp/tmplhrhsk_t.rs:37:16\n  \
+  \ |\n37 |         assert(power(-2, 2) == 4);\n   |                ^^^^^^^^^^^^^^^^^\
+  \ assertion failed\n\nerror: postcondition not satisfied\n  --> /tmp/tmplhrhsk_t.rs:60:17\n\
+  \   |\n60 |           ensures power_dc_spec(x, n) == power(x, n)\n   |         \
+  \          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition\n...\n63\
+  \ | /         if n == 0 {\n64 | |             // Base case\n65 | |         } else\
+  \ if n == 1 {\n...  |\n74 | |             power_dc_correct(x, ((n - 1) / 2) as nat);\n\
+  75 | |         }\n   | |_________- at the end of the function body\n\nnote: function\
+  \ body check: not all errors may have been reported; rerun with a higher value for\
+  \ --multiple-errors to find other potential errors in this function\n  --> /tmp/tmplhrhsk_t.rs:79:11\n\
+  \   |\n79 |     proof fn test_power_dc_spec() {\n   |           ^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: assertion failed\n  --> /tmp/tmplhrhsk_t.rs:81:16\n   |\n81 |         assert(power_dc_spec(2,\
+  \ 5) == 32);\n   |                ^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed\n\n\
+  error: assertion failed\n  --> /tmp/tmplhrhsk_t.rs:83:16\n   |\n83 |         assert(power_dc_spec(-2,\
+  \ 2) == 4);\n   |                ^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed\n\n\
+  error: aborting due to 4 previous errors\n\n"
+verification_output: 'verification results:: 3 verified, 3 errors
+
+  '

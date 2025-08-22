@@ -1,0 +1,4 @@
+//IMPL WhileRule
+method WhileRule()
+{
+}

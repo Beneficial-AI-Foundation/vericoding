@@ -1,0 +1,29 @@
+num_iterations: 8
+success: true
+verification_error: "note: automatically chose triggers for this expression:\n   -->\
+  \ /tmp/tmpmigqd61c.rs:96:5\n    |\n96  | /     forall |i: int| 0 <= i < chars.len()\
+  \ ==> {\n97  | |         if is_upper_case(chars[i]) {\n98  | |             result[i]\
+  \ == shift32(chars[i])\n99  | |         } else {\n...   |\n102 | |     }\n    |\
+  \ |_____^\n\nnote:   trigger 1 of 2:\n  --> /tmp/tmpmigqd61c.rs:97:26\n   |\n97\
+  \ |         if is_upper_case(chars[i]) {\n   |                          ^^^^^^^^\n\
+  \nnote:   trigger 2 of 2:\n  --> /tmp/tmpmigqd61c.rs:98:13\n   |\n98 |         \
+  \    result[i] == shift32(chars[i])\n   |             ^^^^^^^^^\n\nnote: Verus printed\
+  \ one or more automatically chosen quantifier triggers\n      because it had low\
+  \ confidence in the chosen triggers.\n      To suppress these messages, do one of\
+  \ the following:\n        (1) manually annotate a single desired trigger using #[trigger]\n\
+  \            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger]\
+  \ h(j)),\n        (2) manually annotate multiple desired triggers using #![trigger\
+  \ ...]\n            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i)\
+  \ && g(i)),\n        (3) accept the automatically chosen trigger using #![auto]\n\
+  \            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))\n \
+  \       (4) use the --triggers-silent command-line option to suppress all printing\
+  \ of triggers.\n      (Note: triggers are used by the underlying SMT theorem prover\
+  \ to instantiate quantifiers;\n      the theorem prover instantiates a quantifier\
+  \ whenever some expression matches the\n      pattern specified by one of the quantifier's\
+  \ triggers.)\n   --> /tmp/tmpmigqd61c.rs:96:5\n    |\n96  | /     forall |i: int|\
+  \ 0 <= i < chars.len() ==> {\n97  | |         if is_upper_case(chars[i]) {\n98 \
+  \ | |             result[i] == shift32(chars[i])\n99  | |         } else {\n...\
+  \   |\n102 | |     }\n    | |_____^\n\n"
+verification_output: 'verification results:: 5 verified, 0 errors
+
+  '

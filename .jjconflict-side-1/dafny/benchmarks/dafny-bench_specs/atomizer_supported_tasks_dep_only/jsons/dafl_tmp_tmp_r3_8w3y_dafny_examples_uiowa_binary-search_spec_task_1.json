@@ -1,0 +1,21 @@
+{
+  "skeleton": "\n///////////////////\n// Binary search\n///////////////////\n\n\n//ATOM_PLACEHOLDER_isSorted\n\n\n// a[lo] <= a[lo+1] <= ... <= a[hi-2] <= a[hi-1]  \n//ATOM_PLACEHOLDER_binSearch\n\n/* Note: the following definition of isSorted:\n\n//ATOM_PLACEHOLDER_isSorted\n\nalthough equivalent to the one above is not enough for Dafny to be able \nto prove the invariants for the loop in binSearch.\n\nThe given one works because it *explicitly* states that every element \nof the input array is smaller than or equal to all later elements. \nThis fact is implied by the alternative definition of isSorted given \nhere (which only talks about array elements and their successors). \nHowever, it needs to be derived as an auxiliary lemma first, something \nthat Dafny is not currently able to do automatically. \n*/\n\n\n\n\nalthough equivalent to the one above is not enough for Dafny to be able \nto prove the invariants for the loop in binSearch.\n\nThe given one works because it *explicitly* states that every element \nof the input array is smaller than or equal to all later elements. \nThis fact is implied by the alternative definition of isSorted given \nhere (which only talks about array elements and their successors). \nHowever, it needs to be derived as an auxiliary lemma first, something \nthat Dafny is not currently able to do automatically. \n*/\n\n\n",
+  "atoms": {
+    "binSearch": [
+      [
+        "isSorted"
+      ],
+      "// SPEC \n\n\n// a[lo] <= a[lo+1] <= ... <= a[hi-2] <= a[hi-1]  \nmethod binSearch(a:array<int>, K:int) returns (b:bool)\n  requires isSorted(a)\n  ensures b == exists i:nat :: i < a.Length && a[i] == K\n{\n}\n\n/* Note: the following definition of isSorted:\n",
+      "method"
+    ],
+    "isSorted": [
+      [],
+      "// ATOM \n\npredicate isSorted(a:array<int>)\n  reads a\n{\n  forall i:nat :: i < a.Length - 1 ==> a[i] <= a[i+1]\n}\n\nalthough equivalent to the one above is not enough for Dafny to be able \nto prove the invariants for the loop in binSearch.\n\nThe given one works because it *explicitly* states that every element \nof the input array is smaller than or equal to all later elements. \nThis fact is implied by the alternative definition of isSorted given \nhere (which only talks about array elements and their successors). \nHowever, it needs to be derived as an auxiliary lemma first, something \nthat Dafny is not currently able to do automatically. \n*/\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_isSorted": "isSorted",
+    "//ATOM_PLACEHOLDER_binSearch": "binSearch"
+  }
+}

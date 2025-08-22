@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_sorted_seg\n\n//ATOM_PLACEHOLDER_bubbleSorta\n\n\n//ATOM_PLACEHOLDER_bubbleSort\n\n",
+  "atoms": {
+    "bubbleSort": [
+      [
+        "sorted_seg"
+      ],
+      "// SPEC \n\n\nmethod bubbleSort(a:array<int>, c:int, f:int)//f excluded\nmodifies a \nrequires 0 <= c <= f <= a.Length //when c==f empty sequence\nensures sorted_seg(a,c,f) \nensures multiset(a[c..f]) == old(multiset(a[c..f]))\nensures a[..c]==old(a[..c]) && a[f..]==old(a[f..])\n{\n}\n",
+      "method"
+    ],
+    "sorted_seg": [
+      [],
+      "// ATOM \npredicate sorted_seg(a:array<int>, i:int, j:int) //j excluded\nrequires 0 <= i <= j <= a.Length\nreads a\n{\n    forall l, k :: i <= l <= k < j ==> a[l] <= a[k]\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sorted_seg": "sorted_seg",
+    "//ATOM_PLACEHOLDER_bubbleSort": "bubbleSort"
+  }
+}

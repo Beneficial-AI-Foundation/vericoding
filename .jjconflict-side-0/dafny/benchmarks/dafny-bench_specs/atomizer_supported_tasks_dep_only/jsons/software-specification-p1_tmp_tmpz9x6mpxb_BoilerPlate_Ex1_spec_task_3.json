@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Tree//ATOM_PLACEHOLDER_Code//ATOM_PLACEHOLDER_serialise\n\n// Ex 1\n//ATOM_PLACEHOLDER_deserialiseAux\n\n//ATOM_PLACEHOLDER_deserialise\n\n// Ex 2\n//ATOM_PLACEHOLDER_testSerializeWithASingleLeaf\n\n//ATOM_PLACEHOLDER_testSerializeNullValues\n\n//ATOM_PLACEHOLDER_testSerializeWithAllElements\n\n// Ex 3 \n\n//ATOM_PLACEHOLDER_testDeseraliseWithASingleLeaf\n\n//ATOM_PLACEHOLDER_testDeserializeWithASingleNode\n\n//ATOM_PLACEHOLDER_testDeserialiseWithAllElements\n\n// Ex 4 \n//ATOM_PLACEHOLDER_SerialiseLemma\n\n\n//ATOM_PLACEHOLDER_DeserialisetAfterSerialiseLemma\n\n\n\n",
+  "atoms": {
+    "testSerializeWithAllElements": [
+      [
+        "serialise"
+      ],
+      "// SPEC \n\nmethod testSerializeWithAllElements()\n{\n}\n",
+      "method"
+    ],
+    "serialise": [
+      [],
+      "// ATOM \n\nfunction serialise<V>(t : Tree<V>) : seq<Code<V>> \n{\n  match t {\n    case Leaf(v) => [ CLf(v) ]\n    case SingleNode(v, t) => serialise(t) + [ CSNd(v) ]\n    case DoubleNode(v, t1, t2) => serialise(t2) + serialise(t1) + [ CDNd(v) ]\n  }\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_serialise": "serialise",
+    "//ATOM_PLACEHOLDER_testSerializeWithAllElements": "testSerializeWithAllElements"
+  }
+}

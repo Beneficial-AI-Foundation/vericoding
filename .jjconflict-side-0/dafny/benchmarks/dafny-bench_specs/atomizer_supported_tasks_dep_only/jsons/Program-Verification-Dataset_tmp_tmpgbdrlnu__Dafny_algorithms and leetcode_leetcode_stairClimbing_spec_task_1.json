@@ -1,0 +1,150 @@
+{
+  "skeleton": "/*\nYou are climbing a staircase. It takes n steps to reach the top.\n\nEach time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?\n//ATOM_PLACEHOLDER_climbStairs;\n*/\n\n//ATOM_PLACEHOLDER_Steps//ATOM_PLACEHOLDER_stepSum\n\n//ATOM_PLACEHOLDER_stepEndsAt\n//ATOM_PLACEHOLDER_allEndAtN\n\n//ATOM_PLACEHOLDER_stepBaseZero\n//ATOM_PLACEHOLDER_stepBaseOne\n\n//ATOM_PLACEHOLDER_stepBaseTwo\n\n//ATOM_PLACEHOLDER_plusOne\n\n//ATOM_PLACEHOLDER_addOne\n\n//ATOM_PLACEHOLDER_SeqsNotEqualImplication\n\n//ATOM_PLACEHOLDER_UnequalSeqs\n\n//ATOM_PLACEHOLDER_plusOneNotIn\n\n//ATOM_PLACEHOLDER_addOneSize\n\n//ATOM_PLACEHOLDER_addOneSum\n\n//ATOM_PLACEHOLDER_endAtNPlus\n\n//ATOM_PLACEHOLDER_plusTwo\n\n//ATOM_PLACEHOLDER_addTwo\n\n//ATOM_PLACEHOLDER_plusTwoNotIn\n\n//ATOM_PLACEHOLDER_addTwoSize\n\n//ATOM_PLACEHOLDER_addTwoSum\n\n//ATOM_PLACEHOLDER_setSizeAddition\n\n//ATOM_PLACEHOLDER_stepSetsAdd\n\n//ATOM_PLACEHOLDER_climbStairs\n\n\n//ATOM_PLACEHOLDER_Test\n\n",
+  "atoms": {
+    "addTwoSize": [
+      [
+        "plusTwo",
+        "addTwo",
+        "plusTwoNotIn"
+      ],
+      "// ATOM \n\nlemma addTwoSize(ss: set<seq<Steps>>)\n    ensures |addTwo(ss)| == |ss|\n{\n    var size := |ss|;\n    if x :| x in ss {\n        // assert |ss - {x}| == size - 1;\n        addTwoSize(ss - {x});\n        // assert |addTwo(ss-{x})| == size - 1;\n        // assert x !in ss-{x};\n        plusTwoNotIn(ss-{x}, x);\n        // assert plusTwo(x) !in addTwo(ss-{x});\n    }\n}\n",
+      "lemma"
+    ],
+    "allEndAtN": [
+      [
+        "stepEndsAt"
+      ],
+      "// ATOM \nghost predicate allEndAtN(ss: set<seq<Steps> >, n: nat) {\n    forall xs ::  xs in ss ==> stepEndsAt(xs, n)\n}\n",
+      "ghost predicate"
+    ],
+    "addOne": [
+      [
+        "plusOne"
+      ],
+      "// ATOM \n\nghost function addOne(ss: set<seq<Steps>>): set<seq<Steps>> \n    ensures forall x :: x in ss ==> plusOne(x) in addOne(ss)\n    ensures addOne(ss) == set x | x in ss :: plusOne(x)\n{\n    set x | x in ss :: plusOne(x)\n}\n",
+      "ghost function"
+    ],
+    "addTwo": [
+      [
+        "plusTwo"
+      ],
+      "// ATOM \n\nghost function addTwo(ss: set<seq<Steps>>): set<seq<Steps>> \n    ensures forall x :: x in ss ==> plusTwo(x) in addTwo(ss)\n    ensures addTwo(ss) == set x | x in ss :: plusTwo(x)\n{\n    set x | x in ss :: plusTwo(x)\n}\n",
+      "ghost function"
+    ],
+    "plusTwoNotIn": [
+      [
+        "UnequalSeqs",
+        "plusTwo",
+        "addTwo"
+      ],
+      "// ATOM \n\nlemma plusTwoNotIn(ss: set<seq<Steps>>, x: seq<Steps>)\n    requires x !in ss\n    ensures plusTwo(x) !in addTwo(ss)\n{\n    if x == [] {\n    }\n    if plusTwo(x) in addTwo(ss) {\n        forall y | y in ss \n            ensures y != x\n            ensures plusTwo(y) in addTwo(ss)\n            ensures plusTwo(y) != plusTwo(x)\n        {\n            UnequalSeqs(x, y, Two);\n        }\n    }\n}\n",
+      "lemma"
+    ],
+    "stepBaseZero": [
+      [
+        "allEndAtN"
+      ],
+      "// ATOM \n\nlemma stepBaseZero() \n    ensures exists ss: set< seq<Steps> > :: allEndAtN(ss, 0) && |ss| == 0\n{\n}\n",
+      "lemma"
+    ],
+    "stepSum": [
+      [],
+      "// ATOM \n\nfunction stepSum(xs: seq<Steps>): nat {\n    if xs == [] then 0 else (match xs[0] {\n        case One => 1\n        case Two => 2\n    } + stepSum(xs[1..]))\n}\n",
+      "function"
+    ],
+    "stepBaseTwo": [
+      [
+        "allEndAtN"
+      ],
+      "// ATOM \n\nlemma stepBaseTwo() \n    ensures exists ss: set< seq<Steps> > :: allEndAtN(ss, 2) && |ss| == 2\n{\n}\n",
+      "lemma"
+    ],
+    "climbStairs": [
+      [
+        "allEndAtN",
+        "stepBaseTwo",
+        "stepSetsAdd",
+        "stepBaseZero",
+        "stepBaseOne"
+      ],
+      "// SPEC \n\nmethod climbStairs(n: nat) returns (count: nat) \n    ensures exists ss: set< seq<Steps> > :: count == |ss| && allEndAtN(ss, n)\n{\n}\n",
+      "method"
+    ],
+    "plusOneNotIn": [
+      [
+        "addOne",
+        "plusOne",
+        "UnequalSeqs"
+      ],
+      "// ATOM \n\nlemma plusOneNotIn(ss: set<seq<Steps>>, x: seq<Steps>)\n    requires x !in ss\n    ensures plusOne(x) !in addOne(ss)\n{\n    if x == [] {\n    }\n    if plusOne(x) in addOne(ss) {\n        forall y | y in ss \n            ensures y != x\n            ensures plusOne(y) in addOne(ss)\n            ensures plusOne(y) != plusOne(x)\n        {\n            UnequalSeqs(x, y, One);\n        }\n    }\n}\n",
+      "lemma"
+    ],
+    "UnequalSeqs": [
+      [],
+      "// ATOM \n\nlemma UnequalSeqs<T>(xs: seq<T>, ys: seq<T>, someT: T)\n    requires xs != ys\n    ensures [someT]+xs != [someT]+ys\n{\n    if |xs| < |ys| {} else if |ys| > |xs| {}\n    else if i: nat :| i < |xs| && i <|ys| && xs[i] != ys[i] {\n    }\n}\n",
+      "lemma"
+    ],
+    "stepEndsAt": [
+      [
+        "stepSum"
+      ],
+      "// ATOM \n\nghost predicate stepEndsAt(xs: seq<Steps>, n: nat) {\n    stepSum(xs) == n\n}\n",
+      "ghost predicate"
+    ],
+    "plusOne": [
+      [],
+      "// ATOM \n\nghost function plusOne(x: seq<Steps>): seq<Steps> {\n    [One]+x\n}\n",
+      "ghost function"
+    ],
+    "addOneSize": [
+      [
+        "addOne",
+        "plusOneNotIn"
+      ],
+      "// ATOM \n\nlemma addOneSize(ss: set<seq<Steps>>)\n    ensures |addOne(ss)| == |ss|\n{\n    var size := |ss|;\n    if x :| x in ss {\n        addOneSize(ss - {x});\n        plusOneNotIn(ss-{x}, x);\n    }else{\n\n    }\n}\n",
+      "lemma"
+    ],
+    "stepSetsAdd": [
+      [
+        "allEndAtN",
+        "addTwo",
+        "addOne",
+        "addOneSize",
+        "addTwoSize"
+      ],
+      "// ATOM \n\nlemma stepSetsAdd(i: nat, steps: array<nat>) \n    requires i >= 2\n    requires steps.Length >= i+1\n    requires forall k: nat :: k < i ==> exists ss: set< seq<Steps> > :: steps[k] == |ss| && allEndAtN(ss, k)\n    ensures exists sp : set< seq<Steps> > :: |sp| == steps[i-1] + steps[i-2] && allEndAtN(sp, i)\n{\n    var oneStepBack :| steps[i-1] == |oneStepBack| && allEndAtN(oneStepBack, i-1);\n    var twoStepBack :| steps[i-2] == |twoStepBack| && allEndAtN(twoStepBack, i-2);\n    var stepForward := addOne(oneStepBack);\n    var stepTwoForward := addTwo(twoStepBack);\n    // assert stepForward !! stepTwoForward;\n    addOneSize(oneStepBack);\n    addTwoSize(twoStepBack);\n    var sumSet := stepForward + stepTwoForward;\n    // assert |sumSet| == steps[i-1]+steps[i-2];\n}\n",
+      "lemma"
+    ],
+    "plusTwo": [
+      [],
+      "// ATOM \n\nghost function plusTwo(x: seq<Steps>): seq<Steps> {\n    [Two]+x\n}\n",
+      "ghost function"
+    ],
+    "stepBaseOne": [
+      [
+        "allEndAtN"
+      ],
+      "// ATOM \nlemma stepBaseOne() \n    ensures exists ss: set< seq<Steps> > :: allEndAtN(ss, 1) && |ss| == 1\n{\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_climbStairs": "climbStairs",
+    "//ATOM_PLACEHOLDER_stepSum": "stepSum",
+    "//ATOM_PLACEHOLDER_stepEndsAt": "stepEndsAt",
+    "//ATOM_PLACEHOLDER_allEndAtN": "allEndAtN",
+    "//ATOM_PLACEHOLDER_stepBaseZero": "stepBaseZero",
+    "//ATOM_PLACEHOLDER_stepBaseOne": "stepBaseOne",
+    "//ATOM_PLACEHOLDER_stepBaseTwo": "stepBaseTwo",
+    "//ATOM_PLACEHOLDER_plusOne": "plusOne",
+    "//ATOM_PLACEHOLDER_addOne": "addOne",
+    "//ATOM_PLACEHOLDER_UnequalSeqs": "UnequalSeqs",
+    "//ATOM_PLACEHOLDER_plusOneNotIn": "plusOneNotIn",
+    "//ATOM_PLACEHOLDER_addOneSize": "addOneSize",
+    "//ATOM_PLACEHOLDER_plusTwo": "plusTwo",
+    "//ATOM_PLACEHOLDER_addTwo": "addTwo",
+    "//ATOM_PLACEHOLDER_plusTwoNotIn": "plusTwoNotIn",
+    "//ATOM_PLACEHOLDER_addTwoSize": "addTwoSize",
+    "//ATOM_PLACEHOLDER_stepSetsAdd": "stepSetsAdd"
+  }
+}

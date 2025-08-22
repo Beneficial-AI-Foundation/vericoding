@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_MaxArray\n\n//ATOM_PLACEHOLDER_Main\n\n\n\n",
+  "atoms": {
+    "MaxArray": [
+      [],
+      "// SPEC \nmethod MaxArray(a: array<int>) returns (max:int)\nrequires a.Length > 0\nensures forall i :: 0 <= i < a.Length ==> a[i] <= max\nensures exists i :: 0 <= i < a.Length && a[i] == max\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_MaxArray": "MaxArray"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "skeleton": "// Sum of elements of A from indices 0 to end.\n// end is inclusive! (not James's normal way of thinking!!)\n//ATOM_PLACEHOLDER_SumUpto\n\n//ATOM_PLACEHOLDER_Sum\n\n//ATOM_PLACEHOLDER_Percentile\n\n// example showing that, with the original postcondition, the answer is non-unique!\n//ATOM_PLACEHOLDER_PercentileNonUniqueAnswer\n\n\n// proof that, with the corrected postcondition, the answer is unique\n//ATOM_PLACEHOLDER_PercentileUniqueAnswer\n// lemma for previous proof: when an array has strictly positive elements, the\n// sums strictly increase left to right\n//ATOM_PLACEHOLDER_SumUpto_increase\n\n\n\n",
+  "atoms": {
+    "PercentileNonUniqueAnswer": [
+      [
+        "Sum",
+        "SumUpto"
+      ],
+      "// SPEC \n\n// example showing that, with the original postcondition, the answer is non-unique!\nmethod PercentileNonUniqueAnswer() returns (p: real, A: array<real>, total: real, i1: int, i2: int)\n  ensures forall i | 0 <= i < A.Length :: A[i] > 0.0\n  ensures 0.0 <= p <= 100.0\n  ensures total == Sum(A)\n  ensures total > 0.0\n\n  ensures -1 <= i1 < A.Length\n  ensures SumUpto(A, i1) <= (p/100.0) * total\n  ensures i1+1 < A.Length ==> SumUpto(A, i1+1) >= (p/100.0) * total\n\n  ensures -1 <= i2 < A.Length\n  ensures SumUpto(A, i2) <= (p/100.0) * total\n  ensures i2+1 < A.Length ==> SumUpto(A, i2+1) >= (p/100.0) * total\n\n  ensures i1 != i2\n{\n}\n",
+      "method"
+    ],
+    "Sum": [
+      [
+        "SumUpto"
+      ],
+      "// ATOM \n\nfunction Sum(A: array<real>): real\n  reads A\n{\n  SumUpto(A, A.Length-1)\n}\n",
+      "function"
+    ],
+    "SumUpto": [
+      [],
+      "// ATOM \n// Sum of elements of A from indices 0 to end.\n// end is inclusive! (not James's normal way of thinking!!)\nfunction SumUpto(A: array<real>, end: int): real\n  requires -1 <= end < A.Length\n  reads A\n{\n  if end == -1 then\n    0.0\n  else\n    A[end] + SumUpto(A, end-1)\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SumUpto": "SumUpto",
+    "//ATOM_PLACEHOLDER_Sum": "Sum",
+    "//ATOM_PLACEHOLDER_PercentileNonUniqueAnswer": "PercentileNonUniqueAnswer"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "// RUN: %dafny  /compile:3 \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n//ATOM_PLACEHOLDER_Main\n\n// The verification of the following methods requires knowledge\n// about the injectivity of sequence displays.\n\n//ATOM_PLACEHOLDER_M0\n\n//ATOM_PLACEHOLDER_M1\n\n//ATOM_PLACEHOLDER_EqualityOfStrings0\n\n//ATOM_PLACEHOLDER_EqualityOfStrings1\n\n//ATOM_PLACEHOLDER_M2\n\n//ATOM_PLACEHOLDER_M3\n\n\n\n",
+  "atoms": {
+    "M3": [
+      [],
+      "// SPEC \n\nmethod M3()\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_M3": "M3"
+  }
+}

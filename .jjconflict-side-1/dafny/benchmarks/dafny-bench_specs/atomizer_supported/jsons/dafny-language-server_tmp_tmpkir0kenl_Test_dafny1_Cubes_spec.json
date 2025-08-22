@@ -1,0 +1,13 @@
+{
+  "skeleton": "// RUN: %dafny /compile:0 /dprint:\"%t.dprint\" \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n//ATOM_PLACEHOLDER_Cubes\n\n\n\n",
+  "atoms": {
+    "Cubes": [
+      [],
+      "// SPEC \n// RUN: %dafny /compile:0 /dprint:\"%t.dprint\" \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\nmethod Cubes(a: array<int>)\n  modifies a\n  ensures forall i :: 0 <= i < a.Length ==> a[i] == i*i*i\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Cubes": "Cubes"
+  }
+}

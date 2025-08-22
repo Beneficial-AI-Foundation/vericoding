@@ -1,0 +1,12 @@
+num_iterations: 11
+success: false
+verification_error: "error: postcondition not satisfied\n  --> /tmp/tmpbfn75xvq.rs:58:13\n\
+  \   |\n58 |     ensures count_less_than_postcond(seq_to_int(numbers@), threshold\
+  \ as int, result, count_less_than_precond(seq_to_int(numbers@), threshold as int))\n\
+  \   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n59 | {\n60 |     count_less_than(numbers, threshold)\n\
+  \   |     ----------------------------------- at the end of the function body\n\n\
+  error: aborting due to 1 previous error\n\n"
+verification_output: 'verification results:: 3 verified, 1 errors
+
+  '

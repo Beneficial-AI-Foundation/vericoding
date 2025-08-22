@@ -1,0 +1,74 @@
+name: Python Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - "spec_to_code.py"
+      - "vericoding/**/*.py"
+      - "config/**/*.yaml"
+      - "tests/**/*.py"
+      - "pyproject.toml"
+      - "pytest.ini"
+      - ".github/workflows/python-tests.yml"
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - "spec_to_code.py"
+      - "vericoding/**/*.py"
+      - "config/**/*.yaml"
+      - "tests/**/*.py"
+      - "pyproject.toml"
+      - "pytest.ini"
+      - ".github/workflows/python-tests.yml"
+  workflow_dispatch:
+
+#permissions:
+#  contents: read
+#  pull-requests: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+
+    - name: Set up Python
+      run: uv python install 3.12
+
+    - name: Create virtual environment and install dependencies
+      run: |
+        uv venv
+        uv pip install -e ".[test]"
+
+    - name: Run tests with coverage
+      run: source .venv/bin/activate && pytest tests/ -v --cov=vericoding --cov-report=xml --cov-report=html --cov-report=term-missing
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+
+    # - name: Coverage comment
+    #   if: github.event_name == 'pull_request'
+    #   uses: py-cov-action/python-coverage-comment-action@v3
+    #   with:
+    #     GITHUB_TOKEN: ${{ github.token }}
+
+    - name: Upload coverage reports as artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverage-reports
+        path: |
+          coverage.xml
+          htmlcov/
+        retention-days: 7

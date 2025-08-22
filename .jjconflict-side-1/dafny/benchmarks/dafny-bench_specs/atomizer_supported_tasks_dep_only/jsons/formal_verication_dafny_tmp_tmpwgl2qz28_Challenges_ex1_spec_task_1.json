@@ -1,0 +1,13 @@
+{
+  "skeleton": "// ex3errors.dfy in Assignment 1\n// verify that an array of characters is a Palindrome\n/*\nA Palindrome is a word that is the same when written forwards and when written backwards. \nFor example, the word \u201drefer\u201d is a Palindrome.\nThe method PalVerify is supposed to verify whether a word is a Palindrome, \nwhere the word is represented as an array of characters. \nThe method was written by a novice software engineer, and contains many errors.\n\n   i) Without changing the signature or the code in the while loop, \n      fix the method so that it veriifes the code. Do not add any Dafny predicates or functions: \n      keep the changes to a minimum.\n\n   ii) Write a tester method (you may call it anything you like) that verifies that the \n      testcases refer, z and the empty string are Palindromes, and xy and 123421 are not. \n      The tester should not generate any output.\n*/\n\n//ATOM_PLACEHOLDER_PalVerify     \n\n//ATOM_PLACEHOLDER_TEST\n\n",
+  "atoms": {
+    "PalVerify": [
+      [],
+      "// SPEC \n// ex3errors.dfy in Assignment 1\n// verify that an array of characters is a Palindrome\n\n\n\nmethod PalVerify(a: array<char>) returns (yn: bool)\nensures yn == true ==> forall i :: 0 <= i < a.Length/2 ==> a[i] == a[a.Length - i -1]\nensures yn == false ==> exists i :: 0 <= i < a.Length/2 && a[i] != a[a.Length - i -1]\nensures forall j :: 0<=j<a.Length ==> a[j] == old(a[j]) \n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_PalVerify": "PalVerify"
+  }
+}

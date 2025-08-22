@@ -1,0 +1,9 @@
+num_iterations: 10
+success: false
+verification_error: "error: invariant not satisfied at end of loop body\n  --> /tmp/tmppw3r6kqx.rs:30:17\n\
+  \   |\n30 |                 result == (forall|j: nat| 1 < j < (i as nat) ==> #[trigger]\
+  \ ((n as nat) % j) != 0)\n   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: aborting due to 1 previous error\n\n"
+verification_output: 'verification results:: 2 verified, 1 errors
+
+  '

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Eval \t\t\t\t\t\t\t\t\t\t// do not change\n\n \t\t\t\t\t\t\t\t\t\t// do not change\n\n",
+  "atoms": {
+    "Eval": [
+      [],
+      "// SPEC \nmethod Eval(x:int) returns (r:int)\t\t// do not change\nrequires x >= 0\nensures r == x*x\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Eval": "Eval"
+  }
+}

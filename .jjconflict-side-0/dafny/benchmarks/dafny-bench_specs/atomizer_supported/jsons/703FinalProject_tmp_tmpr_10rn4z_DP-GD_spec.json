@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_DPGD_GradientPerturbation\n\n\n\n\n\n",
+  "atoms": {
+    "DPGD_GradientPerturbation": [
+      [],
+      "// SPEC \nmethod DPGD_GradientPerturbation (size:int, learning_rate:real, noise_scale:real, gradient_norm_bound:real, iterations:int) returns (Para:real, PrivacyLost:real)\n  requires iterations>=0\n  requires size>=0\n  requires noise_scale >= 1.0\n  requires -1.0 <= gradient_norm_bound <= 1.0\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_DPGD_GradientPerturbation": "DPGD_GradientPerturbation"
+  }
+}

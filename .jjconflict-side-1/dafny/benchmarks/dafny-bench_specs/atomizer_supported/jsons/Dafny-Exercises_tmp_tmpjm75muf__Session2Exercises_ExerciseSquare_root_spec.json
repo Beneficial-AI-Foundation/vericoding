@@ -1,0 +1,25 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_mroot1\n\n\n//ATOM_PLACEHOLDER_mroot2\n\n//ATOM_PLACEHOLDER_mroot3\n\n\n\n",
+  "atoms": {
+    "mroot1": [
+      [],
+      "// SPEC \nmethod mroot1(n:int) returns (r:int) //Cost O(root n)\nrequires n>=0\nensures r>=0 && r*r <= n <(r+1)*(r+1)\n{\n}\n",
+      "method"
+    ],
+    "mroot2": [
+      [],
+      "// SPEC \n\n\nmethod mroot2(n:int) returns (r:int) //Cost O(n)\nrequires n>=0\nensures r>=0 && r*r <= n <(r+1)*(r+1)\n{\n}\n",
+      "method"
+    ],
+    "mroot3": [
+      [],
+      "// SPEC \n\nmethod mroot3(n:int) returns (r:int) //Cost O(log n)\nrequires n>=0\nensures r>=0 && r*r <= n <(r+1)*(r+1)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_mroot1": "mroot1",
+    "//ATOM_PLACEHOLDER_mroot2": "mroot2",
+    "//ATOM_PLACEHOLDER_mroot3": "mroot3"
+  }
+}

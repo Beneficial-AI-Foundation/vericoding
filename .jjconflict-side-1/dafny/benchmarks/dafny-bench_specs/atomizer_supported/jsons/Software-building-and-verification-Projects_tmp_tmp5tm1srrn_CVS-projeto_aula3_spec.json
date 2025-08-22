@@ -1,0 +1,67 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_fib\n\n//ATOM_PLACEHOLDER_Fib\n\n// 2.\n//ATOM_PLACEHOLDER_List//ATOM_PLACEHOLDER_add\n\n//ATOM_PLACEHOLDER_addImp\n\n// 3.\n//ATOM_PLACEHOLDER_maxArray\n\n// 5.\n//ATOM_PLACEHOLDER_maxArrayReverse\n\n// 6\n//ATOM_PLACEHOLDER_sum\n\n//ATOM_PLACEHOLDER_sumBackwards\n\n",
+  "atoms": {
+    "fib": [
+      [],
+      "// ATOM \nfunction fib(n : nat) : nat\n{\n  if (n==0) then 1 else\n  if (n==1) then 1 else fib(n-1)+fib(n-2)\n}\n",
+      "function"
+    ],
+    "Fib": [
+      [
+        "fib"
+      ],
+      "// SPEC \n\nmethod Fib(n : nat) returns (r:nat)\n  ensures r == fib(n)\n{\n}\n",
+      "method"
+    ],
+    "List": [
+      [],
+      "// ATOM \n\n// 2.\ndatatype List<T> = Nil | Cons(head: T, tail: List<T>)\n",
+      "datatype"
+    ],
+    "add": [
+      [],
+      "// ATOM \n\nfunction add(l : List<int>) : int {\n  match l\n  case Nil => 0\n  case Cons(x,xs) => x + add(xs)\n}\n",
+      "function"
+    ],
+    "addImp": [
+      [
+        "add"
+      ],
+      "// SPEC \n\nmethod addImp(l : List<int>) returns (r: int)\n  ensures r == add(l)\n{\n}\n",
+      "method"
+    ],
+    "maxArray": [
+      [],
+      "// SPEC \n\n// 3.\nmethod maxArray(arr : array<int>) returns (max: int)\n  requires arr.Length > 0\n  ensures forall i: int :: 0 <= i < arr.Length ==> arr[i] <= max\n  ensures exists x::0 <= x < arr.Length && arr[x] == max\n{\n}\n",
+      "method"
+    ],
+    "maxArrayReverse": [
+      [],
+      "// SPEC \n\n// 5.\nmethod maxArrayReverse(arr : array<int>) returns (max: int)\n  requires arr.Length > 0\n  ensures forall i: int :: 0 <= i < arr.Length ==> arr[i] <= max\n  ensures exists x::0 <= x < arr.Length && arr[x] == max\n{\n}\n",
+      "method"
+    ],
+    "sum": [
+      [],
+      "// ATOM \n\n// 6\nfunction sum(n: nat) : nat\n{\n  if (n == 0) then 0 else n + sum(n-1)\n}\n",
+      "function"
+    ],
+    "sumBackwards": [
+      [
+        "sum"
+      ],
+      "// SPEC \n\nmethod sumBackwards(n: nat) returns (r: nat)\n  ensures r == sum(n)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_fib": "fib",
+    "//ATOM_PLACEHOLDER_Fib": "Fib",
+    "//ATOM_PLACEHOLDER_List": "List",
+    "//ATOM_PLACEHOLDER_add": "add",
+    "//ATOM_PLACEHOLDER_addImp": "addImp",
+    "//ATOM_PLACEHOLDER_maxArray": "maxArray",
+    "//ATOM_PLACEHOLDER_maxArrayReverse": "maxArrayReverse",
+    "//ATOM_PLACEHOLDER_sum": "sum",
+    "//ATOM_PLACEHOLDER_sumBackwards": "sumBackwards"
+  }
+}

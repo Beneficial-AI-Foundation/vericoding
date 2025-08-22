@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_ExtractRearChars",
+  "atoms": {
+    "ExtractRearChars": [
+      [],
+      "// SPEC \nmethod ExtractRearChars(l: seq<string>) returns (r: seq<char>)\n    requires forall i :: 0 <= i < |l| ==> |l[i]| > 0\n    ensures |r| == |l|\n    ensures forall i :: 0 <= i < |l| ==> r[i] == l[i][|l[i]| - 1]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_ExtractRearChars": "ExtractRearChars"
+  }
+}

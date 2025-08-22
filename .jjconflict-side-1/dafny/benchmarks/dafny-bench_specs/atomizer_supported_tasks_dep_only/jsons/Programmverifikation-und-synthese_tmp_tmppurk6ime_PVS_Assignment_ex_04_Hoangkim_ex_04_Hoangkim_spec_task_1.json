@@ -1,0 +1,13 @@
+{
+  "skeleton": "//Problem 01\n//ATOM_PLACEHOLDER_sumOdds\n\n//problem02\n//a)\n//ATOM_PLACEHOLDER_intDiv//ATOM_PLACEHOLDER_intDivImpl\n\n\n\n\n\n",
+  "atoms": {
+    "sumOdds": [
+      [],
+      "// SPEC \n//Problem 01\nmethod sumOdds(n: nat) returns (sum: nat)\n    requires n > 0;\n    ensures sum == n * n;\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sumOdds": "sumOdds"
+  }
+}

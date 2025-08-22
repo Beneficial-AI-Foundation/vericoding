@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Cube\n\n",
+  "atoms": {
+    "Cube": [
+      [],
+      "// SPEC \nmethod Cube(n: nat) returns (c: nat) \n    ensures c == n * n * n\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Cube": "Cube"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "skeleton": "// program verifies\n//ATOM_PLACEHOLDER_sortedbad\n\n//ATOM_PLACEHOLDER_BadSort\nensures sortedbad(b)\nensures multiset(b[..]) == multiset(a[..])\n{\n  b := a;\n  var next:int := 0;\n  var aPointer:int := 0;\n  var dPointer:int := |b|;\n\n  while (next != dPointer)\n  {\n                  \n    if(b[next] == 'a'){\n      next := next + 1;\n    } \n    \n    else if(b[next] == 'b'){\n      b := b[next := b[aPointer]][aPointer := b[next]];\n      next := next + 1;\n      aPointer := aPointer + 1;\n    }\n      \n    else{\n      dPointer := dPointer - 1;\n      b := b[next := b[dPointer]][dPointer := b[next]];\n    } \n  } \n}\n\n\nensures sortedbad(b)\nensures multiset(b[..]) == multiset(a[..])\n{\n  b := a;\n  var next:int := 0;\n  var aPointer:int := 0;\n  var dPointer:int := |b|;\n\n  while (next != dPointer)\n  {\n                  \n    if(b[next] == 'a'){\n      next := next + 1;\n    } \n    \n    else if(b[next] == 'b'){\n      b := b[next := b[aPointer]][aPointer := b[next]];\n      next := next + 1;\n      aPointer := aPointer + 1;\n    }\n      \n    else{\n      dPointer := dPointer - 1;\n      b := b[next := b[dPointer]][dPointer := b[next]];\n    } \n  } \n}\n\n",
+  "atoms": {
+    "sortedbad": [
+      [],
+      "// ATOM \n// program verifies\npredicate sortedbad(s: string)\n{\n  // no b's after non-b's\n  forall i, j :: 0 <= i <= j < |s| && s[i] == 'b' && s[j] != 'b' ==> i < j &&\n  // only non-d's before d's\n  forall i, j :: 0 <= i <= j < |s| && s[i] != 'd' && s[j] == 'd' ==> i < j\n}\n",
+      "predicate"
+    ],
+    "BadSort": [
+      [],
+      "// SPEC \n\nmethod BadSort(a: string) returns (b: string)\nrequires forall i :: 0<=i<|a| ==> a[i] in {\n}\nensures sortedbad(b)\nensures multiset(b[..]) == multiset(a[..])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sortedbad": "sortedbad",
+    "//ATOM_PLACEHOLDER_BadSort": "BadSort"
+  }
+}

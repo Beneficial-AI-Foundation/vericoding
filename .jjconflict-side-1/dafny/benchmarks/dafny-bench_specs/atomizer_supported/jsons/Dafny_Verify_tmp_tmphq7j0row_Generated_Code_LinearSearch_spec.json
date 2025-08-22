@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_LinearSearch\n\n",
+  "atoms": {
+    "LinearSearch": [
+      [],
+      "// SPEC \nmethod LinearSearch<T>(a: array<T>, P: T -> bool) returns (n: int)\n    ensures 0 <= n <= a.Length\n    ensures n == a.Length || P(a[n])\n    ensures forall i :: 0 <= i < n ==> !P(a[i])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_LinearSearch": "LinearSearch"
+  }
+}

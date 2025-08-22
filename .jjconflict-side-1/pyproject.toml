@@ -1,0 +1,46 @@
+[project]
+#name = "vericoding-lean"
+name = "vericoding"
+version = "0.1.0"
+description = "Lean 4 verification experiment framework"
+authors = [
+    { name = "Alok Singh", email = "alokbeniwal@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.0",
+    "anthropic>=0.58.2",
+    "claude-code-sdk>=0.0.16",
+    "wandb>=0.21.0",
+    "jinja2>=3.1.0",
+    "pyyaml>=6.0.2", # Keep for backward compatibility during migration
+    "python-dotenv>=1.0.0", # For easier .env file loading
+    "tomli>=1.2.0; python_version<'3.11'", # TOML parsing for Python < 3.11
+    "GitPython>=3.1.0", # Git operations
+    "pandas>=2.3.1",
+]
+
+[project.optional-dependencies]
+openai = ["openai>=1.0.0"]
+all = ["openai>=1.0.0"]
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.0.0",
+    "psutil>=5.9.0",
+]
+dev = [
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+vericode-lean = "vericoding.lean.spec_to_code_lean:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "wandb>=0.21.0",
+]

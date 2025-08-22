@@ -1,0 +1,79 @@
+use vstd::prelude::*;
+
+verus! {
+    fn up_while_less(N: i32) -> (i: i32)
+        requires 0 <= N,
+        ensures i == N,
+    {
+        let mut i = 0;
+        while i < N
+            invariant 0 <= i <= N,
+        {
+            i = i + 1;
+        }
+        i
+    }
+
+    fn up_while_not_equal(N: i32) -> (i: i32)
+        requires 0 <= N,
+        ensures i == N,
+    {
+        let mut i = 0;
+        while i != N
+            invariant 0 <= i <= N,
+        {
+            i = i + 1;
+        }
+        i
+    }
+
+    fn down_while_not_equal(N: i32) -> (i: i32)
+        requires 0 <= N,
+        ensures i == 0,
+    {
+        let mut i = N;
+        while i != 0
+            invariant 0 <= i <= N,
+        {
+            i = i - 1;
+        }
+        i
+    }
+
+    fn down_while_greater(N: i32) -> (i: i32)
+        requires 0 <= N,
+        ensures i == 0,
+    {
+        let mut i = N;
+        while i > 0
+            invariant 0 <= i <= N,
+        {
+            i = i - 1;
+        }
+        i
+    }
+
+    fn quotient()
+    {
+        let x: i32 = 10;
+        let y: i32 = 3;
+        let q = x / y;
+        let r = x % y;
+        /* code modified by LLM (iteration 1): added explicit type annotations to resolve type inference error */
+        assert(x == q * y + r);
+        assert(0 <= r < y);
+    }
+
+    fn quotient1()
+    {
+        let x: i32 = 15;
+        let y: i32 = 4;
+        let q = x / y;
+        let r = x % y;
+        /* code modified by LLM (iteration 1): added explicit type annotations to resolve type inference error */
+        assert(x == q * y + r);
+        assert(0 <= r < y);
+    }
+}
+
+fn main() {}

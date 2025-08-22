@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Reverse\n\n//ATOM_PLACEHOLDER_ReverseUptoK",
+  "atoms": {
+    "ReverseUptoK": [
+      [],
+      "// SPEC \n\nmethod ReverseUptoK(s: array<int>, k: int)\n    modifies s\n    requires 2 <= k <= s.Length\n    ensures forall i :: 0 <= i < k ==> s[i] == old(s[k - 1 - i])\n    ensures forall i :: k <= i < s.Length ==> s[i] == old(s[i])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_ReverseUptoK": "ReverseUptoK"
+  }
+}

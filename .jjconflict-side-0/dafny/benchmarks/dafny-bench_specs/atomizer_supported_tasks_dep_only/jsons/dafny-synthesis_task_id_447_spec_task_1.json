@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_CubeElements",
+  "atoms": {
+    "CubeElements": [
+      [],
+      "// SPEC \nmethod CubeElements(a: array<int>) returns (cubed: array<int>)\n    ensures cubed.Length == a.Length\n    ensures forall i :: 0 <= i < a.Length ==> cubed[i] == a[i] * a[i] * a[i]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_CubeElements": "CubeElements"
+  }
+}

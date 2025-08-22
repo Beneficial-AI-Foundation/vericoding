@@ -1,0 +1,13 @@
+{
+  "skeleton": "// Author: Snorri Agnarsson, snorri@hi.is\n\n// Search1000 is a Dafny version of a function shown\n// by Jon Bentley in his old Programming Pearls\n// column in CACM.  Surprisingly Dafny needs no help\n// to verify the function.\n//ATOM_PLACEHOLDER_Search1000\n\n// Is2Pow(n) is true iff n==2^k for some k>=0.\n//ATOM_PLACEHOLDER_Is2Pow\n\n// This method is a binary search that only works for array\n// segments of size n == 2^k-1 for some k>=0.\n//ATOM_PLACEHOLDER_Search2PowLoop\n\n// This method is a binary search that only works for array\n// segments of size n == 2^k-1 for some k>=0.\n//ATOM_PLACEHOLDER_Search2PowRecursive\n\n",
+  "atoms": {
+    "Search1000": [
+      [],
+      "// SPEC \n// Author: Snorri Agnarsson, snorri@hi.is\n\n// Search1000 is a Dafny version of a function shown\n// by Jon Bentley in his old Programming Pearls\n// column in CACM.  Surprisingly Dafny needs no help\n// to verify the function.\nmethod Search1000( a: array<int>, x: int ) returns ( k: int )\n    requires a.Length >= 1000;\n    requires forall p,q | 0 <= p < q < 1000 :: a[p] <= a[q];\n    ensures 0 <= k <= 1000;\n    ensures forall r | 0 <= r < k :: a[r] < x;\n    ensures forall r | k <= r < 1000 :: a[r] >= x;\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Search1000": "Search1000"
+  }
+}

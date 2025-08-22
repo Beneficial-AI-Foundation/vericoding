@@ -1,0 +1,28 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_mergeSimple\n\n//ATOM_PLACEHOLDER_merge\n\n\n//ATOM_PLACEHOLDER_merged\n\n//ATOM_PLACEHOLDER_sorted_slice\n\n//ATOM_PLACEHOLDER_sorted_seq\n\n//ATOM_PLACEHOLDER_sorted\n\n\n\n",
+  "atoms": {
+    "sorted_seq": [
+      [],
+      "// ATOM \n\npredicate sorted_seq(a: seq<int>)\n{\n  forall i, j :: 0 <= i <= j < |a| ==> a[i] <= a[j]\n}\n",
+      "predicate"
+    ],
+    "mergeSimple": [
+      [
+        "sorted_seq",
+        "sorted_slice"
+      ],
+      "// SPEC \nmethod mergeSimple(a1: seq<int>, a2: seq<int>, start: int, end: int, b: array<int>)\n  modifies b\n  requires sorted_seq(a1)\n  requires sorted_seq(a2)\n  requires 0 <= start <= end <= b.Length\n  requires |a1| +  |a2| == end - start + 1\n  ensures sorted_slice(b, start, end)\n{\n}\n",
+      "method"
+    ],
+    "sorted_slice": [
+      [],
+      "// ATOM \n\npredicate sorted_slice(a: array<int>, start: int, end: int)\n  requires 0 <= start <= end <= a.Length\n  reads a\n{\n  forall i, j :: start <= i <= j < end ==> a[i] <= a[j]\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_mergeSimple": "mergeSimple",
+    "//ATOM_PLACEHOLDER_sorted_slice": "sorted_slice",
+    "//ATOM_PLACEHOLDER_sorted_seq": "sorted_seq"
+  }
+}

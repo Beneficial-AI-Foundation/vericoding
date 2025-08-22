@@ -1,0 +1,15 @@
+num_iterations: 14
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmpqu1fg_3l.rs:43:5\n   |\n43 |     while left < right\n\
+  \   |     ^^^^^^^^^^^^^^^^^^\n\nerror: possible arithmetic underflow/overflow\n\
+  \  --> /tmp/tmpqu1fg_3l.rs:60:57\n   |\n60 |             let trapped = if left_max\
+  \ > heights[left] { left_max - heights[left] } else { 0 };\n   |               \
+  \                                          ^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: possible\
+  \ arithmetic underflow/overflow\n  --> /tmp/tmpqu1fg_3l.rs:61:21\n   |\n61 |   \
+  \          water = water + trapped;\n   |                     ^^^^^^^^^^^^^^^\n\n\
+  error: aborting due to 2 previous errors\n\n"
+verification_output: 'verification results:: 2 verified, 1 errors
+
+  '

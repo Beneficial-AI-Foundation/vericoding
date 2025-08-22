@@ -1,0 +1,121 @@
+{
+  "skeleton": "\n// Model a lock service that consists of a single server and an\n// arbitrary number of clients.\n//\n// The state of the system includes the server's state (whether the server\n// knows that some client holds the lock, and if so which one)\n// and the clients' states (for each client, whether that client knows\n// it holds the lock).\n//\n// The system should begin with the server holding the lock.\n// An acquire step atomically transfers the lock from the server to some client.\n// (Note that we're not modeling the network yet -- the lock disappears from\n// the server and appears at a client in a single atomic transition.)\n// A release step atomically transfers the lock from the client back to the server.\n//\n// The safety property is that no two clients ever hold the lock\n// simultaneously.\n\n// SOLUTION\n//ATOM_PLACEHOLDER_ServerGrant//ATOM_PLACEHOLDER_ClientRecord//ATOM_PLACEHOLDER_Variables//ATOM_PLACEHOLDER_ValidIdx\n//ATOM_PLACEHOLDER_WellFormed\n}\n// END\n\n\n//ATOM_PLACEHOLDER_Init\n// SOLUTION\n//ATOM_PLACEHOLDER_Acquire\n\n//ATOM_PLACEHOLDER_Release\n// END\n// Jay-Normal-Form: pack all the nondeterminism into a single object\n// that gets there-exist-ed once.\n//ATOM_PLACEHOLDER_Step//ATOM_PLACEHOLDER_NextStep\n\n//ATOM_PLACEHOLDER_NextStepDeterministicGivenStep\n\n//ATOM_PLACEHOLDER_Next\n\n// A good definition of safety for the lock server is that no two clients\n// may hold the lock simultaneously. This predicate should capture that\n// idea in terms of the Variables you have defined.\n//ATOM_PLACEHOLDER_Safety\n\n\n// This predicate should be true if and only if the client with index `clientIndex`\n// has the lock acquired.\n// Since you defined the Variables state, you must define this predicate in\n// those terms.\n//ATOM_PLACEHOLDER_ClientHoldsLock\n\n// Show a behavior that the system can release a lock from clientA and deliver\n// it to clientB.\n//ATOM_PLACEHOLDER_PseudoLiveness\n\n\n\n",
+  "atoms": {
+    "ServerGrant": [
+      [],
+      "// ATOM \n\n// Model a lock service that consists of a single server and an\n// arbitrary number of clients.\n//\n// The state of the system includes the server's state (whether the server\n// knows that some client holds the lock, and if so which one)\n// and the clients' states (for each client, whether that client knows\n// it holds the lock).\n//\n// The system should begin with the server holding the lock.\n// An acquire step atomically transfers the lock from the server to some client.\n// (Note that we're not modeling the network yet -- the lock disappears from\n// the server and appears at a client in a single atomic transition.)\n// A release step atomically transfers the lock from the client back to the server.\n//\n// The safety property is that no two clients ever hold the lock\n// simultaneously.\n\n// SOLUTION\ndatatype ServerGrant = Unlocked | Client(id: nat)\n",
+      "datatype"
+    ],
+    "ClientRecord": [
+      [],
+      "// ATOM \ndatatype ClientRecord = Released | Acquired\n",
+      "datatype"
+    ],
+    "Variables": [
+      [],
+      "// ATOM \ndatatype Variables = Variables(\n  clientCount: nat, /* constant */\n  server: ServerGrant, clients: seq<ClientRecord>\n) {\n",
+      "datatype"
+    ],
+    "ValidIdx": [
+      [],
+      "// ATOM \n  ghost predicate ValidIdx(idx: int) {\n    0 <= idx < this.clientCount\n  }\n",
+      "ghost predicate"
+    ],
+    "WellFormed": [
+      [],
+      "// ATOM \n  ghost predicate WellFormed() {\n    |clients| == this.clientCount\n  }\n}\n",
+      "ghost predicate"
+    ],
+    "Init": [
+      [
+        "WellFormed"
+      ],
+      "// ATOM \n// END\n\n\nghost predicate Init(v:Variables) {\n  && v.WellFormed()\n     // SOLUTION\n  && v.server.Unlocked?\n  && |v.clients| == v.clientCount\n  && forall i | 0 <= i < |v.clients| :: v.clients[i].Released?\n     // END\n}\n",
+      "ghost predicate"
+    ],
+    "Acquire": [
+      [
+        "ValidIdx",
+        "WellFormed"
+      ],
+      "// ATOM \n// SOLUTION\nghost predicate Acquire(v:Variables, v':Variables, id:int) {\n  && v.WellFormed()\n  && v'.WellFormed()\n  && v.ValidIdx(id)\n\n  && v.server.Unlocked?\n\n  && v'.server == Client(id)\n  && v'.clients == v.clients[id := Acquired]\n  && v'.clientCount == v.clientCount\n}\n",
+      "ghost predicate"
+    ],
+    "Release": [
+      [
+        "ValidIdx",
+        "WellFormed"
+      ],
+      "// ATOM \n\nghost predicate Release(v:Variables, v':Variables, id:int) {\n  && v.WellFormed()\n  && v'.WellFormed()\n  && v.ValidIdx(id)\n\n  && v.clients[id].Acquired?\n\n  && v'.server.Unlocked?\n  && v'.clients == v.clients[id := Released]\n  && v'.clientCount == v.clientCount\n}\n",
+      "ghost predicate"
+    ],
+    "Step": [
+      [],
+      "// ATOM \n// END\n// Jay-Normal-Form: pack all the nondeterminism into a single object\n// that gets there-exist-ed once.\ndatatype Step =\n    // SOLUTION\n  | AcquireStep(id: int)\n  | ReleaseStep(id: int)\n",
+      "datatype"
+    ],
+    "NextStep": [
+      [
+        "Release",
+        "Acquire"
+      ],
+      "// ATOM \n    // END\n\nghost predicate NextStep(v:Variables, v':Variables, step: Step) {\n  match step\n  // SOLUTION\n  case AcquireStep(id) => Acquire(v, v', id)\n  case ReleaseStep(id) => Release(v, v', id)\n  // END\n}\n",
+      "ghost predicate"
+    ],
+    "NextStepDeterministicGivenStep": [
+      [
+        "NextStep"
+      ],
+      "// ATOM \n\nlemma NextStepDeterministicGivenStep(v:Variables, v':Variables, step: Step)\n  requires NextStep(v, v', step)\n  ensures forall v'' | NextStep(v, v'', step) :: v' == v''\n{}\n",
+      "lemma"
+    ],
+    "Next": [
+      [
+        "NextStep"
+      ],
+      "// ATOM \n\nghost predicate Next(v:Variables, v':Variables) {\n  exists step :: NextStep(v, v', step)\n}\n",
+      "ghost predicate"
+    ],
+    "Safety": [
+      [],
+      "// ATOM \n\n// A good definition of safety for the lock server is that no two clients\n// may hold the lock simultaneously. This predicate should capture that\n// idea in terms of the Variables you have defined.\nghost predicate Safety(v:Variables) {\n  // SOLUTION\n  // HAND-GRADE: The examiner must read the definition of Variables and confirm\n  // that this predicate captures the semantics in the comment at the top of the\n  // predicate.\n\n  forall i,j |\n    && 0 <= i < |v.clients|\n    && 0 <= j < |v.clients|\n    && v.clients[i].Acquired?\n    && v.clients[j].Acquired?\n    :: i == j\n  // END\n}\n",
+      "ghost predicate"
+    ],
+    "ClientHoldsLock": [
+      [
+        "WellFormed"
+      ],
+      "// ATOM \n\n\n// This predicate should be true if and only if the client with index `clientIndex`\n// has the lock acquired.\n// Since you defined the Variables state, you must define this predicate in\n// those terms.\nghost predicate ClientHoldsLock(v: Variables, clientIndex: nat)\n  requires v.WellFormed()\n{\n  // SOLUTION\n  && v.server == Client(clientIndex)\n  // END\n}\n",
+      "ghost predicate"
+    ],
+    "PseudoLiveness": [
+      [
+        "Variables",
+        "Init",
+        "ClientHoldsLock",
+        "Safety",
+        "Next",
+        "WellFormed"
+      ],
+      "// ATOM \n\n// Show a behavior that the system can release a lock from clientA and deliver\n// it to clientB.\nlemma PseudoLiveness(clientA:nat, clientB:nat) returns (behavior:seq<Variables>)\n  requires clientA == 2\n  requires clientB == 0\n  ensures 2 <= |behavior|  // precondition for index operators below\n  ensures Init(behavior[0])\n  ensures forall i | 0 <= i < |behavior|-1 :: Next(behavior[i], behavior[i+1]) // Behavior satisfies your state machine\n  ensures forall i | 0 <= i < |behavior| :: Safety(behavior[i]) // Behavior always satisfies the Safety predicate\n  ensures behavior[|behavior|-1].WellFormed() // precondition for calling ClientHoldsLock\n  ensures ClientHoldsLock(behavior[1], clientA) // first clientA acquires lock\n  ensures ClientHoldsLock(behavior[|behavior|-1], clientB) // eventually clientB acquires lock\n{\n  // SOLUTION\n  var state0 := Variables(clientCount := 3, server := Unlocked, clients := [Released, Released, Released]);\n  var state1 := Variables(clientCount := 3, server := Client(clientA), clients := [Released, Released, Acquired]);\n  var state2 := Variables(clientCount := 3, server := Unlocked, clients := [Released, Released, Released]);\n  var state3 := Variables(clientCount := 3, server := Client(clientB), clients := [Acquired, Released, Released]);\n  behavior := [state0, state1, state2, state3];\n  // END\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_ServerGrant": "ServerGrant",
+    "//ATOM_PLACEHOLDER_ClientRecord": "ClientRecord",
+    "//ATOM_PLACEHOLDER_Variables": "Variables",
+    "//ATOM_PLACEHOLDER_ValidIdx": "ValidIdx",
+    "//ATOM_PLACEHOLDER_WellFormed": "WellFormed",
+    "//ATOM_PLACEHOLDER_Init": "Init",
+    "//ATOM_PLACEHOLDER_Acquire": "Acquire",
+    "//ATOM_PLACEHOLDER_Release": "Release",
+    "//ATOM_PLACEHOLDER_Step": "Step",
+    "//ATOM_PLACEHOLDER_NextStep": "NextStep",
+    "//ATOM_PLACEHOLDER_NextStepDeterministicGivenStep": "NextStepDeterministicGivenStep",
+    "//ATOM_PLACEHOLDER_Next": "Next",
+    "//ATOM_PLACEHOLDER_Safety": "Safety",
+    "//ATOM_PLACEHOLDER_ClientHoldsLock": "ClientHoldsLock",
+    "//ATOM_PLACEHOLDER_PseudoLiveness": "PseudoLiveness"
+  }
+}

@@ -1,0 +1,86 @@
+num_iterations: 10
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmpdqllurjn.rs:15:9\n   |\n15 |         while n < a.len()\n\
+  \   |         ^^^^^^^^^^^^^^^^^\n\nerror: postcondition not satisfied\n  --> /tmp/tmpdqllurjn.rs:8:19\n\
+  \   |\n8  |             -1 <= n < a.len(),\n   |                   ^ failed this\
+  \ postcondition\n...\n22 |                 return n as i32;\n   |              \
+  \   --------------- at this exit\n\nerror: postcondition not satisfied\n  --> /tmp/tmpdqllurjn.rs:9:13\n\
+  \   |\n9  |             n == -1 || a[n as int] == target,\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n...\n22 |                 return n as i32;\n   |  \
+  \               --------------- at this exit\n\nnote: recommendation not met\n \
+  \ --> /tmp/tmpdqllurjn.rs:9:24\n   |\n9  |             n == -1 || a[n as int] ==\
+  \ target,\n   |                        ^^^^^^^^^^^\n   |\n  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18\n\
+  \   |\n30 |             0 <= i < self.view().len(),\n   |                  - recommendation\
+  \ not met\n\nnote: recommendation not met: value may be out of range of the target\
+  \ type (use `#[verifier::truncate]` on the cast to silence this warning)\n  -->\
+  \ /tmp/tmpdqllurjn.rs:22:24\n   |\n22 |                 return n as i32;\n   | \
+  \                       ^\n\nnote: while loop: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmpdqllurjn.rs:41:9\n   |\n41 |         while n <\
+  \ s1_len\n   |         ^^^^^^^^^^^^^^^^\n\nerror: postcondition not satisfied\n\
+  \  --> /tmp/tmpdqllurjn.rs:34:19\n   |\n34 |             -1 <= n < a.len(),\n  \
+  \ |                   ^ failed this postcondition\n...\n48 |                 return\
+  \ n as i32;\n   |                 --------------- at this exit\n\nerror: postcondition\
+  \ not satisfied\n  --> /tmp/tmpdqllurjn.rs:35:13\n   |\n35 |             n == -1\
+  \ || a[n as int] == target,\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed\
+  \ this postcondition\n...\n48 |                 return n as i32;\n   |         \
+  \        --------------- at this exit\n\nnote: recommendation not met\n  --> /tmp/tmpdqllurjn.rs:35:24\n\
+  \   |\n35 |             n == -1 || a[n as int] == target,\n   |                \
+  \        ^^^^^^^^^^^\n   |\n  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18\n\
+  \   |\n30 |             0 <= i < self.view().len(),\n   |                  - recommendation\
+  \ not met\n\nnote: recommendation not met\n  --> /tmp/tmpdqllurjn.rs:44:47\n   |\n\
+  44 |                 forall|i: int| 0 <= i < n ==> a[i] != target,\n   |       \
+  \                                        ^^^^\n   |\n  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18\n\
+  \   |\n30 |             0 <= i < self.view().len(),\n   |                  - recommendation\
+  \ not met\n\nerror: precondition not satisfied\n  --> /tmp/tmpdqllurjn.rs:47:16\n\
+  \   |\n47 |             if a[n] == target {\n   |                ^^^^\n   |\n  :::\
+  \ /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:62:14\n\
+  \   |\n62 |         0 <= i < slice.view().len(),\n   |              - failed precondition\n\
+  \nnote: recommendation not met: value may be out of range of the target type (use\
+  \ `#[verifier::truncate]` on the cast to silence this warning)\n  --> /tmp/tmpdqllurjn.rs:48:24\n\
+  \   |\n48 |                 return n as i32;\n   |                        ^\n\n\
+  note: while loop: not all errors may have been reported; rerun with a higher value\
+  \ for --multiple-errors to find other potential errors in this function\n  --> /tmp/tmpdqllurjn.rs:67:9\n\
+  \   |\n67 |         while n < s1_len\n   |         ^^^^^^^^^^^^^^^^\n\nnote: recommendation\
+  \ not met\n  --> /tmp/tmpdqllurjn.rs:70:69\n   |\n70 |                 position\
+  \ >= 1 ==> exists|i: int| 0 <= i < s1_len && data[i] == element,\n   |         \
+  \                                                            ^^^^^^^\n   |\n  :::\
+  \ /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18\n\
+  \   |\n30 |             0 <= i < self.view().len(),\n   |                  - recommendation\
+  \ not met\n\nnote: recommendation not met\n  --> /tmp/tmpdqllurjn.rs:71:64\n   |\n\
+  71 |                 forall|i: int| s1_len - 1 - n < i < s1_len ==> data[i] != element,\n\
+  \   |                                                                ^^^^^^^\n \
+  \  |\n  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18\n\
+  \   |\n30 |             0 <= i < self.view().len(),\n   |                  - recommendation\
+  \ not met\n\nerror: precondition not satisfied\n  --> /tmp/tmpdqllurjn.rs:75:16\n\
+  \   |\n75 |             if data[index] == element {\n   |                ^^^^^^^^^^^\n\
+  \   |\n  ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:62:14\n\
+  \   |\n62 |         0 <= i < slice.view().len(),\n   |              - failed precondition\n\
+  \nnote: recommendation not met: value may be out of range of the target type (use\
+  \ `#[verifier::truncate]` on the cast to silence this warning)\n  --> /tmp/tmpdqllurjn.rs:76:28\n\
+  \   |\n76 |                 position = n as i32 + 1;\n   |                     \
+  \       ^\n\nerror: possible arithmetic underflow/overflow\n  --> /tmp/tmpdqllurjn.rs:76:28\n\
+  \   |\n76 |                 position = n as i32 + 1;\n   |                     \
+  \       ^^^^^^^^^^^^\n\nnote: while loop: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmpdqllurjn.rs:96:9\n   |\n96 |         while n <\
+  \ s1_len\n   |         ^^^^^^^^^^^^^^^^\n\nnote: recommendation not met\n   -->\
+  \ /tmp/tmpdqllurjn.rs:100:78\n    |\n100 |                 forall|i: int| data.len()\
+  \ - n1 < i < data.len() - n1 + n ==> data[i] != element,\n    |                \
+  \                                                              ^^^^^^^\n    |\n\
+  \   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/slice.rs:30:18\n\
+  \    |\n30  |             0 <= i < self.view().len(),\n    |                  -\
+  \ recommendation not met\n\nerror: possible arithmetic underflow/overflow\n   -->\
+  \ /tmp/tmpdqllurjn.rs:103:25\n    |\n103 |             let index = data.len() -\
+  \ n1 + n;\n    |                         ^^^^^^^^^^^^^^^\n\nerror: possible arithmetic\
+  \ underflow/overflow\n   --> /tmp/tmpdqllurjn.rs:103:25\n    |\n103 |          \
+  \   let index = data.len() - n1 + n;\n    |                         ^^^^^^^^^^^^^^^^^^^\n\
+  \nnote: recommendation not met: value may be out of range of the target type (use\
+  \ `#[verifier::truncate]` on the cast to silence this warning)\n   --> /tmp/tmpdqllurjn.rs:105:28\n\
+  \    |\n105 |                 position = n as i32 + 1;\n    |                  \
+  \          ^\n\nerror: aborting due to 9 previous errors\n\n"
+verification_output: 'verification results:: 5 verified, 4 errors
+
+  '

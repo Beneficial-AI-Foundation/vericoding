@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Multiply",
+  "atoms": {
+    "Multiply": [
+      [],
+      "// SPEC \nmethod Multiply(a: int, b: int) returns (result: int)\n  ensures result == a * b\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Multiply": "Multiply"
+  }
+}

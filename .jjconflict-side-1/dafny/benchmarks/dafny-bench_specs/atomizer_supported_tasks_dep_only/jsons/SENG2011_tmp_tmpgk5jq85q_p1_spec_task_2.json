@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Reverse\n\n//ATOM_PLACEHOLDER_Main\n\n",
+  "atoms": {
+    "Main": [
+      [
+        "Reverse"
+      ],
+      "// SPEC \n\nmethod Main()\n{\n}\n",
+      "method"
+    ],
+    "Reverse": [
+      [],
+      "// SPEC \nmethod Reverse(a: array<char>) returns (b: array<char>)\nrequires a.Length > 0\nensures a.Length == b.Length\nensures forall x :: 0 <= x < a.Length ==> b[x] == a[a.Length - x - 1]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Reverse": "Reverse",
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

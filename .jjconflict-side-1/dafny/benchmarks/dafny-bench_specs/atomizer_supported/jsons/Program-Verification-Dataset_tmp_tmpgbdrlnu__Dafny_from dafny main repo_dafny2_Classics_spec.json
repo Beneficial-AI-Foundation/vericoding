@@ -1,0 +1,27 @@
+{
+  "skeleton": "// RUN: %testDafnyForEachResolver \"%s\" -- --warn-deprecation:false\n\n\n// A version of Turing's additive factorial program [Dr. A. Turing, \"Checking a large routine\",\n// In \"Report of a Conference of High Speed Automatic Calculating Machines\", pp. 67-69, 1949].\n\n//ATOM_PLACEHOLDER_Factorial\n\n//ATOM_PLACEHOLDER_AdditiveFactorial\n\n// Hoare's FIND program [C.A.R. Hoare, \"Proof of a program: FIND\", CACM 14(1): 39-45, 1971].\n// The proof annotations here are not the same as in Hoare's article.\n\n// In Hoare's words:\n//   This program operates on an array A[1:N], and a value of f (1 <= f <= N).\n//   Its effect is to rearrange the elements of A in such a way that:\n//     forall p,q (1 <= p <= f <= q <= N ==> A[p] <= A[f] <= A[q]).\n//\n// Here, we use 0-based indices, so we would say:\n//   This method operates on an array A[0..N], and a value of f (0 <= f < N).\n//   Its effect is to rearrange the elements of A in such a way that:\n//     forall p,q :: 0 <= p <= f <= q < N ==> A[p] <= A[f] <= A[q]).\n\n//ATOM_PLACEHOLDER_FIND\n\n\n\n",
+  "atoms": {
+    "Factorial": [
+      [],
+      "// ATOM \n// RUN: %testDafnyForEachResolver \"%s\" -- --warn-deprecation:false\n\n\n// A version of Turing's additive factorial program [Dr. A. Turing, \"Checking a large routine\",\n// In \"Report of a Conference of High Speed Automatic Calculating Machines\", pp. 67-69, 1949].\n\nghost function Factorial(n: nat): nat\n{\n  if n == 0 then 1 else n * Factorial(n-1)\n}\n",
+      "ghost function"
+    ],
+    "AdditiveFactorial": [
+      [
+        "Factorial"
+      ],
+      "// SPEC \n\nmethod AdditiveFactorial(n: nat) returns (u: nat)\n  ensures u == Factorial(n);\n{\n}\n",
+      "method"
+    ],
+    "FIND": [
+      [],
+      "// SPEC \n\n// Hoare's FIND program [C.A.R. Hoare, \"Proof of a program: FIND\", CACM 14(1): 39-45, 1971].\n// The proof annotations here are not the same as in Hoare's article.\n\n// In Hoare's words:\n//   This program operates on an array A[1:N], and a value of f (1 <= f <= N).\n//   Its effect is to rearrange the elements of A in such a way that:\n//     forall p,q (1 <= p <= f <= q <= N ==> A[p] <= A[f] <= A[q]).\n//\n// Here, we use 0-based indices, so we would say:\n//   This method operates on an array A[0..N], and a value of f (0 <= f < N).\n//   Its effect is to rearrange the elements of A in such a way that:\n//     forall p,q :: 0 <= p <= f <= q < N ==> A[p] <= A[f] <= A[q]).\n\nmethod FIND(A: array<int>, N: int, f: int)\n  requires A.Length == N;\n  requires 0 <= f < N;\n  modifies A;\n  ensures forall p,q :: 0 <= p <= f <= q < N ==> A[p] <= A[q];\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Factorial": "Factorial",
+    "//ATOM_PLACEHOLDER_AdditiveFactorial": "AdditiveFactorial",
+    "//ATOM_PLACEHOLDER_FIND": "FIND"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_SumOfCommonDivisors",
+  "atoms": {
+    "SumOfCommonDivisors": [
+      [],
+      "// SPEC \nmethod SumOfCommonDivisors(a: int, b: int) returns (sum: int)\n    requires a > 0 && b > 0\n    ensures sum >= 0\n    ensures forall d :: 1 <= d <= a && 1 <= d <= b && a % d == 0 && b % d == 0 ==> sum >= d\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SumOfCommonDivisors": "SumOfCommonDivisors"
+  }
+}

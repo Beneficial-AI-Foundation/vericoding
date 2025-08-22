@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_SlopeSearch\n\n\n\n",
+  "atoms": {
+    "SlopeSearch": [
+      [],
+      "// SPEC \nmethod SlopeSearch(a: array2<int>, key: int) returns (m:int, n:int)\n  requires forall i,j,j'::0<=i<a.Length0 && 0<=j<j'<a.Length1 ==> a[i,j]<=a[i,j']\n  requires forall i,i',j::0<=i<i'<a.Length0 && 0<=j<a.Length1 ==> a[i,j]<=a[i',j]\n  requires exists i,j :: 0<=i<a.Length0 && 0<=j<a.Length1 && a[i,j]==key\n  ensures 0<=m<a.Length0 && 0<=n<a.Length1\n  ensures a[m,n]==key\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SlopeSearch": "SlopeSearch"
+  }
+}

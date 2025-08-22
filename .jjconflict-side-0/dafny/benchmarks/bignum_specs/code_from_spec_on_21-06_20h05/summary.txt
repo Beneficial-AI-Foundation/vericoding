@@ -1,0 +1,46 @@
+=== DAFNY SPECIFICATION-TO-CODE PROCESSING SUMMARY (DEBUG VERSION) ===
+
+Test directory: /Users/sergiu.bursuc/baif/vericoding/dafny/benchmarks/bignum_specs
+Output directory: /Users/sergiu.bursuc/baif/vericoding/dafny/benchmarks/bignum_specs/code_from_spec_on_21-06_20h05
+Max iterations: 10
+Test date: 2025-06-21T20:46:33.598351
+
+Total original files: 13
+
+=== OVERALL STATISTICS ===
+Total successful: 10
+Total failed: 3
+Success rate: 76.9%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ bn_spec{30:NormalizeBitString}_atoms{11,,40,41,46}.dfy -> bn_spec{30:NormalizeBitString}_atoms{11,,40,41,46}_impl.dfy
+✓ bn_spec{4:BitStringDecomposition}_atoms{11,40,46}.dfy -> bn_spec{4:BitStringDecomposition}_atoms{11,40,46}_impl.dfy
+✓ bn_spec{7:Compare}_atoms{11,40,46}.dfy -> bn_spec{7:Compare}_atoms{11,40,46}_impl.dfy
+✓ bn_spec{41:Str2IntLemma}_atoms{11,40,46}.dfy -> bn_spec{41:Str2IntLemma}_atoms{11,40,46}_impl.dfy
+✓ bn_spec{27:Mul}_atoms{1,11,31,13,30,40,leftShift}.dfy -> bn_spec{27:Mul}_atoms{1,11,31,13,30,40,leftShift}_impl.dfy
+✓ bn_spec{2:AddAuxTop}_atoms{11,31-35,40,46}.dfy -> bn_spec{2:AddAuxTop}_atoms{11,31-35,40,46}_impl.dfy
+✓ bn_spec{5:Bound}_atoms{11,40}.dfy -> bn_spec{5:Bound}_atoms{11,40}_impl.dfy
+✓ bn_spec{40:Str2Int}_atoms{11,46}.dfy -> bn_spec{40:Str2Int}_atoms{11,46}_impl.dfy
+✓ bn_spec{leftShift}_atoms{11,31,40}.dfy -> bn_spec{leftShift}_atoms{11,31,40}_impl.dfy
+✓ bn_spec{27:Mul}_atoms{11,13,29,38,40,41,46,1,30}.dfy -> bn_spec{27:Mul}_atoms{11,13,29,38,40,41,46,1,30}_impl.dfy
+
+=== FAILED FILES (VERIFICATION) ===
+✗ bn_spec{1:Add}_atoms{11,13,29,38,40,41,46,30}.dfy
+✗ bn_spec{1:Add}_atoms{2,11,40,41,46}.dfy
+✗ bn_spec{27:Mul}_atoms{11,40,41,46}.dfy
+
+=== DEBUG FEATURES ===
+Debug mode: Enabled
+- Debug files saved in: debug/ subdirectory
+- Each file has its own debug subdirectory: debug/filename/
+- Saves original specification as *_iter_0_original.dfy
+- Saves initial generated code as *_iter_1_generated.dfy
+- Saves current working version for each iteration as *_iter_N_current.dfy
+- Final implementation saved as *_impl.dfy in main directory
+- Full debugging: all intermediate files are saved in debug/filename/
+
+- Debug mode control: Enabled
+- Configurable file output based on debug setting
+- Iteration tracking: nr_iter field in CSV shows final iteration
+
+Generated on: 2025-06-21T20:46:33.598585

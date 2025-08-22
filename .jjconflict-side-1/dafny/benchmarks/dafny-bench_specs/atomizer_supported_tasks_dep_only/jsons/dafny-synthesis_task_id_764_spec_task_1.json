@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_IsDigit\n\n\n//ATOM_PLACEHOLDER_CountDigits\n\n\n\n",
+  "atoms": {
+    "CountDigits": [
+      [
+        "IsDigit"
+      ],
+      "// SPEC \n\n\nmethod CountDigits(s: string) returns (count: int)\n    ensures count >= 0\n    ensures count == | set i: int | 0 <= i < |s| && IsDigit(s[i])|\n{\n}\n",
+      "method"
+    ],
+    "IsDigit": [
+      [],
+      "// ATOM \npredicate IsDigit(c: char)\n{\n    48 <= c as int <= 57\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsDigit": "IsDigit",
+    "//ATOM_PLACEHOLDER_CountDigits": "CountDigits"
+  }
+}

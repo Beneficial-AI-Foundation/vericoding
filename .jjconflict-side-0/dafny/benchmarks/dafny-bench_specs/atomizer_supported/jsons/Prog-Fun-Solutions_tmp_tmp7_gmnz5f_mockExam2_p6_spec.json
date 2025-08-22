@@ -1,0 +1,29 @@
+{
+  "skeleton": "// problem 6:\n// name:      Gabriele Berardi\n// s-number: s4878728\n// table:     XXXXX\n\n//ATOM_PLACEHOLDER_f\n\n//ATOM_PLACEHOLDER_fSum\n\n//ATOM_PLACEHOLDER_problem6\n\n\n\n",
+  "atoms": {
+    "f": [
+      [],
+      "// ATOM \n// problem 6:\n// name:      Gabriele Berardi\n// s-number: s4878728\n// table:     XXXXX\n\nghost function f(n: int): int {\n  if n <= 0 then 1 else n + f(n-1)*f(n-2)\n}\n",
+      "ghost function"
+    ],
+    "fSum": [
+      [
+        "f"
+      ],
+      "// ATOM \n\nghost function fSum(n: nat): int {\n // give the body of this function\n  // it should return Sum(i: 0<=i < n: f(i))\n  if n <= 0 then 0 else f(n-1) + fSum(n-1)\n}\n",
+      "ghost function"
+    ],
+    "problem6": [
+      [
+        "fSum"
+      ],
+      "// SPEC \n\nmethod problem6(n:nat) returns (a: int)\nensures a == fSum(n)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_f": "f",
+    "//ATOM_PLACEHOLDER_fSum": "fSum",
+    "//ATOM_PLACEHOLDER_problem6": "problem6"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "// Author of question: Snorri Agnarsson\n// Permalink of question: https://rise4fun.com/Dafny/0HRr\n\n// Author of solution:    Alexander Gu\u00f0mundsson\n// Permalink of solution: https://rise4fun.com/Dafny/8pxWd\n\n// Use the command\n//   dafny LinearSearch-skeleton.dfy\n// or\n//   compile LinearSearch-skeleton.dfy\n// to compile the file.\n// Or use the web page rise4fun.com/dafny.\n\n// When you have solved the problem put\n// the solution on the Dafny web page,\n// generate a permalink and put it in\n// this file.\n\n\n\n//ATOM_PLACEHOLDER_SearchRecursive\n\n\n\n\n\n//ATOM_PLACEHOLDER_SearchLoop\n\n\n\n\n\n\n\n",
+  "atoms": {
+    "SearchRecursive": [
+      [],
+      "// SPEC \n// Author of question: Snorri Agnarsson\n// Permalink of question: https://rise4fun.com/Dafny/0HRr\n\n// Author of solution:    Alexander Gu\u00f0mundsson\n// Permalink of solution: https://rise4fun.com/Dafny/8pxWd\n\n// Use the command\n//   dafny LinearSearch-skeleton.dfy\n// or\n//   compile LinearSearch-skeleton.dfy\n// to compile the file.\n// Or use the web page rise4fun.com/dafny.\n\n// When you have solved the problem put\n// the solution on the Dafny web page,\n// generate a permalink and put it in\n// this file.\n\n\n\nmethod SearchRecursive( a: seq<int>, i: int, j: int, x: int ) returns (k: int)\n    requires 0 <= i <= j <= |a|;\n    ensures i <= k < j || k == -1;\n    ensures k != -1 ==> a[k] == x;\n    ensures k != -1 ==> forall r | k < r < j :: a[r] != x;\n    ensures k == -1 ==> forall r | i <= r < j :: a[r] != x;\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SearchRecursive": "SearchRecursive"
+  }
+}

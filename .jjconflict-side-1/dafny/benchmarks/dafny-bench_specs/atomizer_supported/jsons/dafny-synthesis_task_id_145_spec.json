@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_MaxDifference",
+  "atoms": {
+    "MaxDifference": [
+      [],
+      "// SPEC \nmethod MaxDifference(a: array<int>) returns (diff: int)\n    requires a.Length > 1\n    ensures forall i, j :: 0 <= i < a.Length && 0 <= j < a.Length ==> a[i] - a[j] <= diff\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_MaxDifference": "MaxDifference"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_append\n\n",
+  "atoms": {
+    "append": [
+      [],
+      "// SPEC \nmethod append(a:array<int>, b:int) returns (c:array<int>)\n  ensures  a[..] + [b] == c[..]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_append": "append"
+  }
+}

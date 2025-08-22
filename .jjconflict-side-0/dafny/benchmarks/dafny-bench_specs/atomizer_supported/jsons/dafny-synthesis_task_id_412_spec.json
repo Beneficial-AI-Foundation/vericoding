@@ -1,0 +1,21 @@
+{
+  "skeleton": "/**\n * Remove odd numbers from an array of numbers\n **/\n\n//ATOM_PLACEHOLDER_IsEven\n\n//ATOM_PLACEHOLDER_RemoveOddNumbers",
+  "atoms": {
+    "IsEven": [
+      [],
+      "// ATOM \n\npredicate IsEven(n: int)\n{\n    n % 2 == 0\n}\n",
+      "predicate"
+    ],
+    "RemoveOddNumbers": [
+      [
+        "IsEven"
+      ],
+      "// SPEC \n\nmethod RemoveOddNumbers(arr: array<int>) returns (evenList: seq<int>)\n    // All numbers in the output are even and exist in the input \n    ensures forall i :: 0 <= i < |evenList| ==> IsEven(evenList[i]) && evenList[i] in arr[..]\n    // All even numbers in the input are in the output\n    ensures forall i :: 0 <= i < arr.Length && IsEven(arr[i]) ==> arr[i] in evenList\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsEven": "IsEven",
+    "//ATOM_PLACEHOLDER_RemoveOddNumbers": "RemoveOddNumbers"
+  }
+}

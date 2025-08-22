@@ -1,0 +1,55 @@
+{
+  "skeleton": "// RUN: %dafny /compile:0 \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n//ATOM_PLACEHOLDER_State//ATOM_PLACEHOLDER_Test\n\n//ATOM_PLACEHOLDER_MyDt//ATOM_PLACEHOLDER_AnotherTest\n\n//ATOM_PLACEHOLDER_GenDt//ATOM_PLACEHOLDER_ChangeGen\n\n//ATOM_PLACEHOLDER_Recursive//ATOM_PLACEHOLDER_RecLem\n\n\n\n",
+  "atoms": {
+    "State": [
+      [],
+      "// ATOM \n// RUN: %dafny /compile:0 \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\ndatatype State = State(m:map<int, bool>)\n",
+      "datatype"
+    ],
+    "Test": [
+      [],
+      "// ATOM \n\nlemma Test(s:State)\n  requires 42 in s.m\n  ensures s.(m := s.m[42 := s.m[42]]) == s\n{\n  var s' := s.(m := s.m[42 := s.m[42]]);\n}\n",
+      "lemma"
+    ],
+    "MyDt": [
+      [],
+      "// ATOM \n\ndatatype MyDt = MakeA(x: int, bool) | MakeB(s: multiset<int>, t: State)\n",
+      "datatype"
+    ],
+    "AnotherTest": [
+      [],
+      "// ATOM \n\nlemma AnotherTest(a: MyDt, b: MyDt, c: bool)\n  requires a.MakeB? && b.MakeB?\n  requires a.s == multiset(a.t.m.Keys) && |b.s| == 0\n  requires a.t.m == map[] && |b.t.m| == 0\n{\n}\n",
+      "lemma"
+    ],
+    "GenDt": [
+      [],
+      "// ATOM \n\ndatatype GenDt<X,Y> = Left(X) | Middle(X,int,Y) | Right(y: Y)\n",
+      "datatype"
+    ],
+    "ChangeGen": [
+      [],
+      "// SPEC \n\nmethod ChangeGen(g: GenDt)\n{\n}\n",
+      "method"
+    ],
+    "Recursive": [
+      [],
+      "// ATOM \n\ndatatype Recursive<X> = Red | Green(next: Recursive, m: set)\n",
+      "datatype"
+    ],
+    "RecLem": [
+      [],
+      "// ATOM \n\nlemma RecLem(r: Recursive) returns (s: Recursive)\n  ensures r == s\n{\n  match r\n  case Red =>\n    s := Red;\n  case Green(next, m) =>\n    var n := RecLem(next);\n    s := Green(n, m + m);\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_State": "State",
+    "//ATOM_PLACEHOLDER_Test": "Test",
+    "//ATOM_PLACEHOLDER_MyDt": "MyDt",
+    "//ATOM_PLACEHOLDER_AnotherTest": "AnotherTest",
+    "//ATOM_PLACEHOLDER_GenDt": "GenDt",
+    "//ATOM_PLACEHOLDER_ChangeGen": "ChangeGen",
+    "//ATOM_PLACEHOLDER_Recursive": "Recursive",
+    "//ATOM_PLACEHOLDER_RecLem": "RecLem"
+  }
+}

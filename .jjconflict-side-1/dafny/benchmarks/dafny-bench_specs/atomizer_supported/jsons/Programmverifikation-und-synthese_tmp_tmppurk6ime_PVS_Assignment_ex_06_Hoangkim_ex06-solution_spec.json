@@ -1,0 +1,22 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_gcd\n\n\n//ATOM_PLACEHOLDER_gcdI\n\n//ATOM_PLACEHOLDER_gcd'\n\n\n\n",
+  "atoms": {
+    "gcd": [
+      [],
+      "// ATOM \n\nghost function gcd'(x:int,y:int):int\n  requires x > 0 && y > 0\n{\n  if x==y then x\n  else if x > y then gcd'(x-y,y)\n  else gcd'(y,x)\n}\n",
+      "ghost function"
+    ],
+    "gcdI": [
+      [
+        "gcd"
+      ],
+      "// SPEC \n\n\nmethod gcdI(m:int, n:int) returns (d:int)\n  requires  m > 0 && n > 0\n  ensures   d == gcd(m,n) \n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_gcd": "gcd",
+    "//ATOM_PLACEHOLDER_gcdI": "gcdI",
+    "//ATOM_PLACEHOLDER_gcd'": "gcd'"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_KthElement",
+  "atoms": {
+    "KthElement": [
+      [],
+      "// SPEC \nmethod KthElement(arr: array<int>, k: int) returns (result: int)\n  requires 1 <= k <= arr.Length\n  ensures result == arr[k - 1]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_KthElement": "KthElement"
+  }
+}

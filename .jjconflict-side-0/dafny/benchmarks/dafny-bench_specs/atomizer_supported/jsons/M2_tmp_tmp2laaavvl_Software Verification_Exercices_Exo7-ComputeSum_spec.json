@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Sum\n\n//ATOM_PLACEHOLDER_ComputeSum\n\n",
+  "atoms": {
+    "Sum": [
+      [],
+      "// ATOM \nfunction Sum(n:nat):nat\n \n{\n  if n==0 then  0 else n + Sum(n-1)\n}\n",
+      "function"
+    ],
+    "ComputeSum": [
+      [
+        "Sum"
+      ],
+      "// SPEC \n\nmethod ComputeSum(n:nat) returns (s:nat)\n    ensures s ==Sum(n)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Sum": "Sum",
+    "//ATOM_PLACEHOLDER_ComputeSum": "ComputeSum"
+  }
+}

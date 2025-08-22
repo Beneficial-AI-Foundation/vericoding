@@ -1,0 +1,38 @@
+num_iterations: 13
+success: false
+verification_error: "note: function body check: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmpb4fy_d1i.rs:77:10\n   |\n77 |     spec fn gcd(m:\
+  \ int, n: int) -> int\n   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: could\
+  \ not prove termination\n  --> /tmp/tmpb4fy_d1i.rs:84:13\n   |\n84 |           \
+  \  gcd(m - n, n)\n   |             ^^^^^^^^^^^^^\n\nerror: could not prove termination\n\
+  \  --> /tmp/tmpb4fy_d1i.rs:86:13\n   |\n86 |             gcd(m, n - m)\n   |   \
+  \          ^^^^^^^^^^^^^\n\nnote: while loop: not all errors may have been reported;\
+  \ rerun with a higher value for --multiple-errors to find other potential errors\
+  \ in this function\n  --> /tmp/tmpb4fy_d1i.rs:11:9\n   |\n11 |         while i <\
+  \ y\n   |         ^^^^^^^^^^^\n\nerror: invariant not satisfied at end of loop body\n\
+  \  --> /tmp/tmpb4fy_d1i.rs:14:17\n   |\n14 |                 z as u64 == x as u64\
+  \ + i as u64,\n   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: possible\
+  \ arithmetic underflow/overflow\n  --> /tmp/tmpb4fy_d1i.rs:18:17\n   |\n18 |   \
+  \          z = z + 1;\n   |                 ^^^^^\n\nnote: while loop: not all errors\
+  \ may have been reported; rerun with a higher value for --multiple-errors to find\
+  \ other potential errors in this function\n  --> /tmp/tmpb4fy_d1i.rs:39:13\n   |\n\
+  39 |             while n1 != 0\n   |             ^^^^^^^^^^^^^\n\nerror: invariant\
+  \ not satisfied at end of loop body\n  --> /tmp/tmpb4fy_d1i.rs:34:17\n   |\n34 |\
+  \                 res as u64 == (m - m1) as u64 * n as u64,\n   |              \
+  \   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nerror: invariant not satisfied before\
+  \ loop\n  --> /tmp/tmpb4fy_d1i.rs:34:17\n   |\n34 |                 res as u64 ==\
+  \ (m - m1) as u64 * n as u64,\n   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: invariant not satisfied at end of loop body\n  --> /tmp/tmpb4fy_d1i.rs:42:21\n\
+  \   |\n42 |                     res as u64 == (m - m1) as u64 * n as u64 + (n -\
+  \ n1) as u64,\n   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote: recommendation not met: value may be out of range of the target type (use\
+  \ `#[verifier::truncate]` on the cast to silence this warning)\n  --> /tmp/tmpb4fy_d1i.rs:42:35\n\
+  \   |\n42 |                     res as u64 == (m - m1) as u64 * n as u64 + (n -\
+  \ n1) as u64,\n   |                                   ^^^^^^^^\n\nerror: possible\
+  \ arithmetic underflow/overflow\n  --> /tmp/tmpb4fy_d1i.rs:46:23\n   |\n46 |   \
+  \              res = res + 1;\n   |                       ^^^^^^^\n\nerror: aborting\
+  \ due to 8 previous errors\n\n"
+verification_output: 'verification results:: 4 verified, 5 errors
+
+  '

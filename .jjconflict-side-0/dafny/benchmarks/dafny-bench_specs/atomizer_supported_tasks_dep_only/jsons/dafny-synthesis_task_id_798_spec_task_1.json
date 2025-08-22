@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_sumTo\n\n//ATOM_PLACEHOLDER_ArraySum\n\n",
+  "atoms": {
+    "sumTo": [
+      [],
+      "// ATOM \nfunction sumTo( a:array<int>, n:int ) : int\n  requires a != null;\n  requires 0 <= n && n <= a.Length;\n  reads a;\n{\n  if (n == 0) then 0 else sumTo(a, n-1) + a[n-1]\n}\n",
+      "function"
+    ],
+    "ArraySum": [
+      [
+        "sumTo"
+      ],
+      "// SPEC \n\nmethod ArraySum(a: array<int>) returns (result: int)\n    ensures result == sumTo(a, a.Length)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sumTo": "sumTo",
+    "//ATOM_PLACEHOLDER_ArraySum": "ArraySum"
+  }
+}

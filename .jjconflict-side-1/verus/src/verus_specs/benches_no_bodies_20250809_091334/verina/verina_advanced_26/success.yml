@@ -1,0 +1,10 @@
+num_iterations: 8
+success: false
+verification_error: "error: postcondition not satisfied\n  --> /tmp/tmpswi6hhw0.rs:68:13\n\
+  \   |\n68 |     ensures letter_combinations_postcond(digits@, result@.map_values(|s:\
+  \ Vec<char>| s@))\n   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n69 | {\n70 |     go(&digits, 0)\n   |     --------------\
+  \ at the end of the function body\n\nerror: aborting due to 1 previous error\n\n"
+verification_output: 'verification results:: 7 verified, 1 errors
+
+  '

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_SetToSeq\n\n",
+  "atoms": {
+    "SetToSeq": [
+      [],
+      "// SPEC \nmethod SetToSeq<T>(s: set<T>) returns (xs: seq<T>)\n  ensures multiset(s) == multiset(xs)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SetToSeq": "SetToSeq"
+  }
+}

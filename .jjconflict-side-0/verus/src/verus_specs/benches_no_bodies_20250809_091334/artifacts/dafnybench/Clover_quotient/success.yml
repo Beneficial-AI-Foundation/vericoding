@@ -1,0 +1,13 @@
+num_iterations: 16
+success: false
+verification_error: "note: while loop: not all errors may have been reported; rerun\
+  \ with a higher value for --multiple-errors to find other potential errors in this\
+  \ function\n  --> /tmp/tmpp_yk7e3c.rs:16:9\n   |\n16 |         while y <= r\n  \
+  \ |         ^^^^^^^^^^^^\n\nerror: invariant not satisfied at end of loop body\n\
+  \  --> /tmp/tmpp_yk7e3c.rs:18:17\n   |\n18 |                 q * y + r == x,\n \
+  \  |                 ^^^^^^^^^^^^^^\n\nerror: invariant not satisfied at end of\
+  \ loop body\n  --> /tmp/tmpp_yk7e3c.rs:19:17\n   |\n19 |                 q < 1000,\n\
+  \   |                 ^^^^^^^^\n\nerror: aborting due to 2 previous errors\n\n"
+verification_output: 'verification results:: 1 verified, 1 errors
+
+  '

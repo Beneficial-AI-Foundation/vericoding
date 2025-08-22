@@ -1,0 +1,30 @@
+{
+  "skeleton": "// RUN: %dafny /compile:0  \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n//ATOM_PLACEHOLDER_M1//ATOM_PLACEHOLDER_M2\n\n//ATOM_PLACEHOLDER_L\n\n",
+  "atoms": {
+    "M1": [
+      [],
+      "// ATOM \n// RUN: %dafny /compile:0  \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\nfunction M1(f:map<int, bool>, i:int):bool\n",
+      "function"
+    ],
+    "M2": [
+      [
+        "M1"
+      ],
+      "// ATOM \n\nfunction M2(f:map<int, bool>, i:int):bool\n{\n    M1(map j | j in f :: f[j], i)\n}\n",
+      "function"
+    ],
+    "L": [
+      [
+        "M1",
+        "M2"
+      ],
+      "// ATOM \n\nlemma L(f:map<int, bool>, i:int)\n    requires i in f;\n    requires M2(f, i);\n    requires forall j:int, f:map<int, bool> :: M1(f, j) == (j in f && f[j]);\n{\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_M1": "M1",
+    "//ATOM_PLACEHOLDER_M2": "M2",
+    "//ATOM_PLACEHOLDER_L": "L"
+  }
+}

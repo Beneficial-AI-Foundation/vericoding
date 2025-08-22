@@ -1,0 +1,28 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_DifferenceMinMax\n\n//ATOM_PLACEHOLDER_Min\n\n//ATOM_PLACEHOLDER_Max\n\n",
+  "atoms": {
+    "DifferenceMinMax": [
+      [
+        "Max",
+        "Min"
+      ],
+      "// SPEC \nmethod DifferenceMinMax(a: array<int>) returns (diff: int)\n    requires a.Length > 0\n    ensures diff == (Max(a[..]) - Min(a[..]))\n{\n}\n",
+      "method"
+    ],
+    "Min": [
+      [],
+      "// ATOM \n\nfunction Min(a: seq<int>) : (m: int)\n    requires |a| > 0\n{\n    if |a| == 1 then a[0]\n    else\n      var minPrefix := Min(a[..|a|-1]);\n      if a[|a|-1] <= minPrefix then a[|a|-1] else minPrefix\n}\n",
+      "function"
+    ],
+    "Max": [
+      [],
+      "// ATOM \n\nfunction Max(a: seq<int>) : (m: int)\n    requires |a| > 0\n{\n    if |a| == 1 then a[0]\n    else\n      var maxPrefix := Max(a[..|a|-1]);\n      if a[|a|-1] >= maxPrefix then a[|a|-1] else maxPrefix\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_DifferenceMinMax": "DifferenceMinMax",
+    "//ATOM_PLACEHOLDER_Min": "Min",
+    "//ATOM_PLACEHOLDER_Max": "Max"
+  }
+}

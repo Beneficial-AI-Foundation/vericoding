@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Max\n\n//ATOM_PLACEHOLDER_Test\n\n//ATOM_PLACEHOLDER_m1\n\n\n\n//ATOM_PLACEHOLDER_fib\n\n//ATOM_PLACEHOLDER_Fib\n\n\n//ATOM_PLACEHOLDER_List//ATOM_PLACEHOLDER_add\n\n\n//ATOM_PLACEHOLDER_addImp\n\n\n//ATOM_PLACEHOLDER_MaxA\n\n\n\n",
+  "atoms": {
+    "m1": [
+      [],
+      "// SPEC \n\nmethod m1 (x: int, y: int) returns (z: int)\nrequires 0 < x < y\nensures z >= 0 && z <= y && z != x\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_m1": "m1"
+  }
+}

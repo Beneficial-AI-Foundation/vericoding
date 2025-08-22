@@ -1,0 +1,46 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_sorted\n\n\n// Ex1\n\n//ATOM_PLACEHOLDER_copyArr\n\n\n// Ex2\n\n//ATOM_PLACEHOLDER_mergeArr\n\n// Ex3\n\n//ATOM_PLACEHOLDER_sort\n\n//ATOM_PLACEHOLDER_sortAux\n\n",
+  "atoms": {
+    "sortAux": [
+      [
+        "sorted",
+        "mergeArr"
+      ],
+      "// SPEC \n\nmethod sortAux(a : array<int>, l : int, r : int)\n  ensures sorted(a[l..r])\n  ensures a[..l] == old(a[..l])\n  ensures a[r..] == old(a[r..])\n  requires 0 <= l < r <= a.Length\n  modifies a\n{\n}\n",
+      "method"
+    ],
+    "copyArr": [
+      [],
+      "// SPEC \n\n\n// Ex1\n\nmethod copyArr(a : array<int>, l : int, r : int) returns (ret : array<int>)\n  requires 0 <= l < r <= a.Length \n  ensures ret[..] == a[l..r]\n{\n}\n",
+      "method"
+    ],
+    "sort": [
+      [
+        "sorted",
+        "sortAux"
+      ],
+      "// SPEC \n\n// Ex3\n\nmethod sort(a : array<int>) \n  ensures sorted(a[..])\n  modifies a\n{\n}\n",
+      "method"
+    ],
+    "sorted": [
+      [],
+      "// ATOM \nfunction sorted(s : seq<int>) : bool {\n  forall k1, k2 :: 0 <= k1 <= k2 < |s| ==> s[k1] <= s[k2]\n}\n",
+      "function"
+    ],
+    "mergeArr": [
+      [
+        "sorted",
+        "copyArr"
+      ],
+      "// SPEC \n\n\n// Ex2\n\nmethod mergeArr(a : array<int>, l : int, m : int, r : int)\n  requires 0 <= l < m < r <= a.Length  \n  requires sorted(a[l..m]) && sorted(a[m..r])\n  ensures sorted(a[l..r]) \n  ensures a[..l] == old(a[..l])\n  ensures a[r..] == old(a[r..])\n  modifies a \n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sorted": "sorted",
+    "//ATOM_PLACEHOLDER_copyArr": "copyArr",
+    "//ATOM_PLACEHOLDER_mergeArr": "mergeArr",
+    "//ATOM_PLACEHOLDER_sort": "sort",
+    "//ATOM_PLACEHOLDER_sortAux": "sortAux"
+  }
+}

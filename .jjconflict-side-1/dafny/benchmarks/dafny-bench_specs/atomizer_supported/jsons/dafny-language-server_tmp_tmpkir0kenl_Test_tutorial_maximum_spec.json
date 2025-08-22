@@ -1,0 +1,19 @@
+{
+  "skeleton": "// RUN: %dafny /compile:0 /print:\"%t.print\" /dprint:\"%t.dprint\" /printTooltips \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n// This file shows how to specify and implement a function to compute the\n// largest element of a list. The function is fully specified by two\n// preconditions, as proved by the MaximumIsUnique lemma below.\n\n//ATOM_PLACEHOLDER_Maximum\n\n//ATOM_PLACEHOLDER_MaximumIsUnique\n\n\n\n",
+  "atoms": {
+    "Maximum": [
+      [],
+      "// SPEC \n// RUN: %dafny /compile:0 /print:\"%t.print\" /dprint:\"%t.dprint\" /printTooltips \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n// This file shows how to specify and implement a function to compute the\n// largest element of a list. The function is fully specified by two\n// preconditions, as proved by the MaximumIsUnique lemma below.\n\nmethod Maximum(values: seq<int>) returns (max: int)\n  requires values != []\n  ensures max in values\n  ensures forall i | 0 <= i < |values| :: values[i] <= max\n{\n}\n",
+      "method"
+    ],
+    "MaximumIsUnique": [
+      [],
+      "// ATOM \n\nlemma MaximumIsUnique(values: seq<int>, m1: int, m2: int)\n  requires m1 in values && forall i | 0 <= i < |values| :: values[i] <= m1\n  requires m2 in values && forall i | 0 <= i < |values| :: values[i] <= m2\n  ensures m1 == m2 {\n    // This lemma does not need a body: Dafny is able to prove it correct entirely automatically.\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Maximum": "Maximum",
+    "//ATOM_PLACEHOLDER_MaximumIsUnique": "MaximumIsUnique"
+  }
+}

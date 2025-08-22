@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Swap\n\n",
+  "atoms": {
+    "Swap": [
+      [],
+      "// SPEC \nmethod Swap(X: int, Y: int) returns(x: int, y: int)\n  ensures x==Y\n  ensures y==X\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Swap": "Swap"
+  }
+}

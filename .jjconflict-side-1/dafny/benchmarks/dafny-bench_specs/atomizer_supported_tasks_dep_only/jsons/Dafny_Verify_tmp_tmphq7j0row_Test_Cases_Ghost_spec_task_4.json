@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Average\n\n//ATOM_PLACEHOLDER_Triple\n\n//ATOM_PLACEHOLDER_Triple1\n\n//ATOM_PLACEHOLDER_DoubleQuadruple\n\n//ATOM_PLACEHOLDER_F\n\n//ATOM_PLACEHOLDER_M\n\n//ATOM_PLACEHOLDER_Caller\n\n//ATOM_PLACEHOLDER_MyMethod\n\n",
+  "atoms": {
+    "MyMethod": [
+      [],
+      "// SPEC \n\nmethod MyMethod(x: int) returns (y: int)\n    requires 10 <= x\n    ensures 25 <= y\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_MyMethod": "MyMethod"
+  }
+}

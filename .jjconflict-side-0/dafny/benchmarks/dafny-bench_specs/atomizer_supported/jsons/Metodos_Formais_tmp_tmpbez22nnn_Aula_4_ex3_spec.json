@@ -1,0 +1,29 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Fib\n\n//ATOM_PLACEHOLDER_ComputeFib\n\n//ATOM_PLACEHOLDER_Teste\n\n",
+  "atoms": {
+    "Fib": [
+      [],
+      "// ATOM \nfunction Fib(n:nat):nat\n{\n    if n < 2\n    then n\n    else Fib(n-2) + Fib(n-1)\n}\n",
+      "function"
+    ],
+    "ComputeFib": [
+      [
+        "Fib"
+      ],
+      "// SPEC \n\nmethod ComputeFib(n:nat) returns (x:nat)\nensures x == Fib(n)\n{\n}\n",
+      "method"
+    ],
+    "Teste": [
+      [
+        "ComputeFib"
+      ],
+      "// SPEC \n\nmethod Teste()\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Fib": "Fib",
+    "//ATOM_PLACEHOLDER_ComputeFib": "ComputeFib",
+    "//ATOM_PLACEHOLDER_Teste": "Teste"
+  }
+}

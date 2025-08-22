@@ -1,0 +1,21 @@
+{
+  "skeleton": "\n//Problem01\n//ATOM_PLACEHOLDER_fib\n\n//ATOM_PLACEHOLDER_fibIter\n//# 2 pts\n\n//Problem02\n//ATOM_PLACEHOLDER_fact\n\n//ATOM_PLACEHOLDER_factIter \n//# 3 pts\n//Problem03\n//ATOM_PLACEHOLDER_gcd\n\n//ATOM_PLACEHOLDER_gcdI\n//# 3 pts\n\n\n// # sum: 9 pts\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n//# 3 pts\n\n\n// # sum: 9 pts\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+  "atoms": {
+    "factIter": [
+      [
+        "fact"
+      ],
+      "// SPEC \n\nmethod factIter(n:nat) returns (a:nat)\nrequires n >= 0;\nensures a == fact(n)\n{\n}\n",
+      "method"
+    ],
+    "fact": [
+      [],
+      "// ATOM \n//# 2 pts\n\n//Problem02\nfunction fact(n:nat):nat\n{if n==0 then 1 else n*fact(n-1)}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_fact": "fact",
+    "//ATOM_PLACEHOLDER_factIter": "factIter"
+  }
+}

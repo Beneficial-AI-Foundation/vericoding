@@ -1,0 +1,1 @@
+forall|k: int| 0 <= k < idx ==> #[trigger] main@.subrange(k, k + sub@.len()) !== sub@,

@@ -1,0 +1,515 @@
+[
+  {
+    "file": "benchmarks/numpy_specs/np_isclose.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpxfbefg9_.dfy(3,25): Warning: deprecated style: a semi-colon is not needed here\n  |\n3 |     requires a.Length > 0; \n  |                          ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpxfbefg9_.dfy(4,33): Warning: deprecated style: a semi-colon is not needed here\n  |\n4 |     requires a.Length == b.Length;\n  |                                  ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpxfbefg9_.dfy(5,20): Warning: deprecated style: a semi-colon is not needed here\n  |\n5 |     requires tol > 0;\n  |                     ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpxfbefg9_.dfy(6,34): Warning: deprecated style: a semi-colon is not needed here\n  |\n6 |     ensures ret.Length == a.Length;\n  |                                   ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpxfbefg9_.dfy(7,97): Warning: deprecated style: a semi-colon is not needed here\n  |\n7 |     ensures forall i :: 0<= i < a.Length ==> if -tol < a[i] - b[i] < tol then ret[i] else !ret[i];\n  |                                                                                                  ^\n\n\nDafny program verifier finished with 2 verified, 0 errors\nCompilation failed because warnings were found and --allow-warnings is false\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_invert.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_equal.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_left_shift.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmp7dnea7df.dfy(2,7): Error: Verification of 'LeftShift' timed out after 30 seconds. (the limit can be increased using --verification-time-limit)\n  |\n2 | method LeftShift(a: array<int>, b: array<nat>) returns (res: array<int>)\n  |        ^^^^^^^^^\n\n\nDafny program verifier finished with 1 verified, 0 errors, 1 time out\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_gcd.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 3 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_greater.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_abs.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_less.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_power.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 3 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_where.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_square.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_substract.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_shape.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmp8qi36avr.dfy(30,54): Warning: deprecated style: a semi-colon is not needed here\n   |\n30 |     ensures ret[0] == a.Length0 && ret[1] == a.Length1;\n   |                                                       ^\n\n\nDafny program verifier finished with 4 verified, 0 errors\nCompilation failed because warnings were found and --allow-warnings is false\n",
+    "nr_atoms": 0,
+    "nr_spec": 3,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_right_shift.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmplk0xjdhl.dfy(2,7): Error: Verification of 'RightShift' timed out after 30 seconds. (the limit can be increased using --verification-time-limit)\n  |\n2 | method RightShift(a: array<int>, b: array<nat>) returns (res: array<int>)\n  |        ^^^^^^^^^^\n\n\nDafny program verifier finished with 1 verified, 0 errors, 1 time out\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_argmax.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_zeros.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpw4_ghm02.dfy(3,30): Warning: deprecated style: a semi-colon is not needed here\n  |\n3 |     requires shape.Length == 2;\n  |                               ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpw4_ghm02.dfy(4,41): Warning: deprecated style: a semi-colon is not needed here\n  |\n4 |     requires shape[0] > 0 && shape[1] > 0;\n  |                                          ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpw4_ghm02.dfy(5,62): Warning: deprecated style: a semi-colon is not needed here\n  |\n5 |     ensures ret.Length0 == shape[0] && ret.Length1 == shape[1];\n  |                                                               ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpw4_ghm02.dfy(6,85): Warning: deprecated style: a semi-colon is not needed here\n  |\n6 |     ensures forall i, j :: 0 <= i < shape[0] && 0 <= j < shape[1] ==> ret[i, j ] == 0;\n  |                                                                                      ^\n\n\nDafny program verifier finished with 2 verified, 0 errors\nCompilation failed because warnings were found and --allow-warnings is false\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_transpose.dfy",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmp_ozowd86.dfy(8,11): Error: unless an initializer is provided for the array elements, a new array of 'T' must have empty size\n  |\n8 |     ret := new T[arr.Length1, arr.Length0];\n  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n\nDafny program verifier finished with 1 verified, 1 error\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_poly.dfy",
+    "success": false,
+    "error": "Compilation errors detected in response",
+    "verification_output": "",
+    "nr_atoms": 0,
+    "nr_spec": 2,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_select.dfy",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpftazyssu.dfy(15,18): Error: this invariant could not be proved to be maintained by the loop\n Related message: loop invariant violation\n   |\n15 |         invariant forall pos :: 0 <= pos < j ==> \n   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpftazyssu.dfy(22,22): Error: this invariant could not be proved to be maintained by the loop\n Related message: loop invariant violation\n   |\n22 |             invariant forall k :: 0 <= k < i && condlist[k][j] ==> ret[j] == choicelist[k][j]\n   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpftazyssu.dfy(32,61): Error: this loop invariant could not be proved on entry\n Related message: loop invariant violation\n   |\n32 |                     invariant condlist[prev_i][j] ==> ret[j] == choicelist[prev_i][j]\n   |                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpftazyssu.dfy(32,61): Error: this invariant could not be proved to be maintained by the loop\n Related message: loop invariant violation\n   |\n32 |                     invariant condlist[prev_i][j] ==> ret[j] == choicelist[prev_i][j]\n   |                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n\nDafny program verifier finished with 1 verified, 4 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_prod.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 7 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_min.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_add.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_copy.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpynkpdy5i.dfy(3,36): Warning: deprecated style: a semi-colon is not needed here\n  |\n3 |     ensures ret.Length == arr.Length;\n  |                                     ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpynkpdy5i.dfy(4,64): Warning: deprecated style: a semi-colon is not needed here\n  |\n4 |     ensures forall i :: 0 <= i < arr.Length ==> ret[i] == arr[i];\n  |                                                                 ^\n\n\nDafny program verifier finished with 2 verified, 0 errors\nCompilation failed because warnings were found and --allow-warnings is false\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_broadcast.dfy",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpfod4t5k0.dfy(8,24): Error: array size (dimension 0) might be negative\n  |\n8 |     ret := new int[shape[0], shape[1]];\n  |                    ^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpfod4t5k0.dfy(8,34): Error: array size (dimension 1) might be negative\n  |\n8 |     ret := new int[shape[0], shape[1]];\n  |                              ^^^^^^^^\n\n\nDafny program verifier finished with 1 verified, 2 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_lcm.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 4 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_column_stack.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_uniqueall.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmp8ii4n23_.dfy(2,7): Error: Verification of 'unique_all' timed out after 30 seconds. (the limit can be increased using --verification-time-limit)\n  |\n2 | method unique_all (arr: array<int>) returns (ret: array<int>)\n  |        ^^^^^^^^^^\n\n\nDafny program verifier finished with 1 verified, 0 errors, 1 time out\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_center.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_floor_divide.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_bitwise_xor.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_multiply.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_bitwise_and.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpgxs5alm7.dfy(2,7): Error: Verification of 'BitwiseAnd' timed out after 30 seconds. (the limit can be increased using --verification-time-limit)\n  |\n2 | method BitwiseAnd(a: array<int>, b: array<int>) returns (res: array<int>)\n  |        ^^^^^^^^^^\n\n\nDafny program verifier finished with 1 verified, 0 errors, 1 time out\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_not_equal.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_intersect.dfy",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpfoiew2vs.dfy(3,58): Warning: deprecated style: a semi-colon is not needed here\n  |\n3 |     ensures ret.Length < a.Length && ret.Length < b.Length;\n  |                                                           ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpfoiew2vs.dfy(4,199): Warning: deprecated style: a semi-colon is not needed here\n  |\n4 |     ensures forall i, j :: 0 <= i < a.Length && 0 <= j < b.Length ==> if a[i] == b[j] then exists k :: 0 <= k < ret.Length && ret[k] == a[i] else ! (exists k :: 0 <= k < ret.Length && ret[k] == a[i]);\n  |                                                                                                                                                                                                        ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpfoiew2vs.dfy(9,8): Error: a postcondition could not be proved on this return path\n  |\n9 |         return;\n  |         ^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpfoiew2vs.dfy(3,48): Related location: this is the postcondition that could not be proved\n  |\n3 |     ensures ret.Length < a.Length && ret.Length < b.Length;\n  |                                      ^^^^^^^^^^^^^^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpfoiew2vs.dfy(76,4): Error: assertion might not hold\n   |\n76 |     assert forall x :: 0 <= x < ret.Length ==> exists y :: 0 <= y < a.Length && a[y] == ret[x];\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpfoiew2vs.dfy(77,4): Error: assertion might not hold\n   |\n77 |     assert forall x :: 0 <= x < ret.Length ==> exists y :: 0 <= y < b.Length && b[y] == ret[x];\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpfoiew2vs.dfy(80,4): Error: assertion might not hold\n   |\n80 |     assert forall i, j :: 0 <= i < a.Length && 0 <= j < b.Length && a[i] == b[j] ==> \n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n\nDafny program verifier finished with 1 verified, 4 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_sum.dfy",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpliqsrkz2.dfy(1,0): Error: this symbol not expected in Dafny\n  |\n1 | Let me add a helper lemma to establish this relationship:\n  | ^\n\n1 parse errors detected in tmpliqsrkz2.dfy\n",
+    "nr_atoms": 1,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_bitwise_or.dfy",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmp4brxavdx.dfy(2,7): Error: Verification of 'BitwiseOr' timed out after 30 seconds. (the limit can be increased using --verification-time-limit)\n  |\n2 | method BitwiseOr(a: array<int>, b: array<int>) returns (res: array<int>)\n  |        ^^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmp4brxavdx.dfy(22,7): Error: Verification of 'BitwiseOr'' timed out after 30 seconds. (the limit can be increased using --verification-time-limit)\n   |\n22 | method BitwiseOr' (a: array<bv32>, b: array<bv32>) returns (res: array<int>)\n   |        ^^^^^^^^^^\n\n\nDafny program verifier finished with 2 verified, 0 errors, 2 time outs\n",
+    "nr_atoms": 0,
+    "nr_spec": 2,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_diagonal.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_polyder.dfy",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpboa3mq7s.dfy(28,45): Error: invalid UnaryExpression\n   |\n28 |             invariant coeff == poly[i + m] * real(factorial_partial(i + m, j))\n   |                                              ^\n\n1 parse errors detected in tmpboa3mq7s.dfy\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_less_equal.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_isalpha.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpreoine51.dfy(3,19): Warning: the type of the other operand is a non-null type, so this comparison with 'null' will always return 'true' (to make it possible for variable 'input' to have the value 'null', declare its type to be 'array?<string>')\n  |\n3 |     requires input != null\n  |              ^^^^^^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpreoine51.dfy(4,16): Warning: the type of the other operand is a non-null type, so this comparison with 'null' will always return 'true' (to make it possible for variable 'ret' to have the value 'null', declare its type to be 'array?<bool>')\n  |\n4 |     ensures ret != null && ret.Length == input.Length\n  |             ^^^^^^^^^^^\n\n\nDafny program verifier finished with 2 verified, 0 errors\nCompilation failed because warnings were found and --allow-warnings is false\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_countnonzero.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 4 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_arange.dfy",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmptlawys3j.dfy(64,11): Warning: Could not find a trigger for this quantifier. Without a trigger, the quantifier may cause brittle verification. To silence this warning, add an explicit trigger using the {:trigger} attribute. For more information, see the section quantifier instantiation rules in the reference manual.\n   |\n64 |     assert forall j :: 1 <= j < ret.Length ==> ret[j-1] == start + step * ((j-1) as real);\n   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmptlawys3j.dfy(29,4): Error: assertion might not hold\n   |\n29 |     assert length >= 1;\n   |     ^^^^^^^^^^^^^^^^^^^\n\n\nDafny program verifier finished with 1 verified, 1 error\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_cum_prod.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_max.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_mod.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_convolve.dfy",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpzf41pgi5.dfy(6,48): Error: function precondition could not be proved\n  |\n6 |     seq(|arr1| + |arr2| - 1, n => ConvolutionSum(arr1, arr2, n))\n  |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpzf41pgi5.dfy(12,15): Related location: this proposition could not be proved\n   |\n12 |     requires 0 <= n < |arr1| + |arr2| - 1\n   |              ^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpzf41pgi5.dfy(6,48): Error: function precondition could not be proved\n  |\n6 |     seq(|arr1| + |arr2| - 1, n => ConvolutionSum(arr1, arr2, n))\n  |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpzf41pgi5.dfy(12,20): Related location: this proposition could not be proved\n   |\n12 |     requires 0 <= n < |arr1| + |arr2| - 1\n   |                   ^^^^^^^^^^^^^^^^^^^^^^^\n\n\nDafny program verifier finished with 2 verified, 2 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_tril.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_greater_equal.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_sign.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_reshape.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpnpe_moou.dfy(3,30): Warning: deprecated style: a semi-colon is not needed here\n  |\n3 |     requires shape.Length == 2;\n  |                               ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpnpe_moou.dfy(5,48): Warning: deprecated style: a semi-colon is not needed here\n  |\n5 |     requires !(shape[0] == -1 && shape[1] == -1);\n  |                                                 ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpnpe_moou.dfy(6,171): Warning: deprecated style: a semi-colon is not needed here\n  |\n6 |     requires if shape[0] > 0 && shape[1] > 0 then shape[0] * shape[1] == arr.Length else if shape[0] == -1 then arr.Length % shape[1] == 0 else arr.Length % shape [0] == 0;\n  |                                                                                                                                                                            ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpnpe_moou.dfy(7,96): Warning: deprecated style: a semi-colon is not needed here\n  |\n7 |     ensures if shape[0] > 0 then ret.Length0 == shape[0] else ret.Length0 == arr.Length/shape[1];\n  |                                                                                                 ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpnpe_moou.dfy(8,96): Warning: deprecated style: a semi-colon is not needed here\n  |\n8 |     ensures if shape[1] > 0 then ret.Length1 == shape[1] else ret.Length1 == arr.Length/shape[0];\n  |                                                                                                 ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpnpe_moou.dfy(9,122): Warning: deprecated style: a semi-colon is not needed here\n  |\n9 |     ensures forall i :: 0 <= i < arr.Length ==> i/ret.Length1 < ret.Length0 && ret[i/ret.Length1, i%ret.Length1] == arr[i];\n  |                                                                                                                           ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpnpe_moou.dfy(2,7): Error: Verification of 'reshape' timed out after 30 seconds. (the limit can be increased using --verification-time-limit)\n  |\n2 | method reshape(arr: array<int>, shape: array<int>) returns (ret: array2<int>)\n  |        ^^^^^^^\n\n\nDafny program verifier finished with 1 verified, 0 errors, 1 time out\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_cum_sum.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_histogram.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 3 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 2,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_clip.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "\nDafny program verifier finished with 2 verified, 0 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_ravel.dfy",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmphaz_sk7x.dfy(4,79): Error: index out of range\n  |\n4 |     ensures forall i, j :: 0 <= i < arr.Length0 && 0 <= j < arr.Length1 ==> ret[i * arr.Length1 + j] == arr[i, j]\n  |                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmphaz_sk7x.dfy(6,11): Error: unless an initializer is provided for the array elements, a new array of 'T' must have empty size\n  |\n6 |     ret := new T[arr.Length0 * arr.Length1];\n  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n\nDafny program verifier finished with 0 verified, 2 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_remainder.dfy",
+    "success": true,
+    "error": null,
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpz3b6fn70.dfy(7,33): Warning: deprecated style: a semi-colon is not needed here\n  |\n7 |     requires a.Length == b.Length;\n  |                                  ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpz3b6fn70.dfy(8,56): Warning: deprecated style: a semi-colon is not needed here\n  |\n8 |     requires forall i :: 0 <= i < b.Length ==> b[i] != 0;\n  |                                                         ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpz3b6fn70.dfy(9,34): Warning: deprecated style: a semi-colon is not needed here\n  |\n9 |     ensures ret.Length == a.Length;\n  |                                   ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpz3b6fn70.dfy(10,67): Warning: deprecated style: a semi-colon is not needed here\n   |\n10 |     ensures forall i :: 0 <= i < b.Length ==> ret[i] == a[i] % b[i];\n   |                                                                    ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpz3b6fn70.dfy(15,36): Warning: deprecated style: a semi-colon is not needed here\n   |\n15 |         invariant 0 <= i <= a.Length;\n   |                                     ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpz3b6fn70.dfy(16,66): Warning: deprecated style: a semi-colon is not needed here\n   |\n16 |         invariant forall j :: 0 <= j < i ==> ret[j] == a[j] % b[j];\n   |                                                                   ^\n\n\nDafny program verifier finished with 2 verified, 0 errors\nCompilation failed because warnings were found and --allow-warnings is false\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_flatten.dfy",
+    "success": false,
+    "error": "Verification timeout",
+    "verification_output": "",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  },
+  {
+    "file": "benchmarks/numpy_specs/np_piecewise.dfy",
+    "success": false,
+    "error": "Verification failed",
+    "verification_output": "/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpmsdpmabp.dfy(3,47): Warning: deprecated style: a semi-colon is not needed here\n  |\n3 |     requires condlist.Length == funclist.Length;\n  |                                                ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpmsdpmabp.dfy(4,34): Warning: deprecated style: a semi-colon is not needed here\n  |\n4 |     ensures ret.Length == x.Length;\n  |                                   ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpmsdpmabp.dfy(5,140): Warning: deprecated style: a semi-colon is not needed here\n  |\n5 |     ensures forall i, j :: 0 <= i < x.Length && 0 <= j < condlist.Length ==> if condlist[j](x[i]) then ret[i] == funclist[j](x[i]) else true;\n  |                                                                                                                                             ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpmsdpmabp.dfy(12,36): Warning: deprecated style: a semi-colon is not needed here\n   |\n12 |         invariant 0 <= i <= x.Length;\n   |                                     ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpmsdpmabp.dfy(13,40): Warning: deprecated style: a semi-colon is not needed here\n   |\n13 |         invariant ret.Length == x.Length;\n   |                                         ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpmsdpmabp.dfy(14,139): Warning: deprecated style: a semi-colon is not needed here\n   |\n14 |         invariant forall k, j :: 0 <= k < i && 0 <= j < condlist.Length ==> if condlist[j](x[k]) then ret[k] == funclist[j](x[k]) else true;\n   |                                                                                                                                            ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpmsdpmabp.dfy(21,47): Warning: deprecated style: a semi-colon is not needed here\n   |\n21 |             invariant 0 <= j <= condlist.Length;\n   |                                                ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpmsdpmabp.dfy(22,78): Warning: deprecated style: a semi-colon is not needed here\n   |\n22 |             invariant !found ==> forall l :: 0 <= l < j ==> !condlist[l](x[i]);\n   |                                                                               ^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpmsdpmabp.dfy(14,18): Error: this invariant could not be proved to be maintained by the loop\n Related message: loop invariant violation\n   |\n14 |         invariant forall k, j :: 0 <= k < i && 0 <= j < condlist.Length ==> if condlist[j](x[k]) then ret[k] == funclist[j](x[k]) else true;\n   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n/var/folders/vp/n182s8vd14z9cl70558vhw_m6145_s/T/tmpmsdpmabp.dfy(20,8): Error: cannot prove termination; try supplying a decreases clause for the loop\n   |\n20 |         while j < condlist.Length && !found\n   |         ^^^^^\n\n\nDafny program verifier finished with 1 verified, 2 errors\n",
+    "nr_atoms": 0,
+    "nr_spec": 1,
+    "timestamp": "20250707_181115"
+  }
+]

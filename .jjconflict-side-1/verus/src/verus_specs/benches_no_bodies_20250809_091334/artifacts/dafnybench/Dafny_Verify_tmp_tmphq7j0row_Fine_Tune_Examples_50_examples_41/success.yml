@@ -1,0 +1,8 @@
+num_iterations: 18
+success: false
+verification_error: "error: possible arithmetic underflow/overflow\n  --> /tmp/tmpitfazfgu.rs:24:17\n\
+  \   |\n24 |             j = j + i;\n   |                 ^^^^^\n\nerror: aborting\
+  \ due to 1 previous error\n\n"
+verification_output: 'verification results:: 1 verified, 1 errors
+
+  '

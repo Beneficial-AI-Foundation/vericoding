@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Min\n\n",
+  "atoms": {
+    "Min": [
+      [],
+      "// SPEC \nmethod Min(x: int, y:int) returns (z: int)\n  ensures x<=y ==> z==x\n  ensures x>y ==> z==y\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Min": "Min"
+  }
+}

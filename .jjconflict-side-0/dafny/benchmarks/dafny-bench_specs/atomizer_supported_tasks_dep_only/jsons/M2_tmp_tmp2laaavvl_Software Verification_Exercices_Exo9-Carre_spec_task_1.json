@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Carre\n\n",
+  "atoms": {
+    "Carre": [
+      [],
+      "// SPEC \nmethod Carre(a: nat) returns (c: nat)\nensures c == a*a\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Carre": "Carre"
+  }
+}

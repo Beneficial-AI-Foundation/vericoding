@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_sorted\n\n\n// Ex1\n\n//ATOM_PLACEHOLDER_copyArr\n\n\n// Ex2\n\n//ATOM_PLACEHOLDER_mergeArr\n\n// Ex3\n\n//ATOM_PLACEHOLDER_sort\n\n//ATOM_PLACEHOLDER_sortAux\n\n",
+  "atoms": {
+    "copyArr": [
+      [],
+      "// SPEC \n\n\n// Ex1\n\nmethod copyArr(a : array<int>, l : int, r : int) returns (ret : array<int>)\n  requires 0 <= l < r <= a.Length \n  ensures ret[..] == a[l..r]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_copyArr": "copyArr"
+  }
+}

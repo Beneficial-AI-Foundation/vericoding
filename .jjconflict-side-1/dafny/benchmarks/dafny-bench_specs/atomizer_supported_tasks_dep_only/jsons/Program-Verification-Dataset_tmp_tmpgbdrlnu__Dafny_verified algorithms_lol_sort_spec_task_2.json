@@ -1,0 +1,37 @@
+{
+  "skeleton": "// By `lol sort` here, I refer to a seemingly-broken sorting algorithm,\n// which actually somehow manages to work perfectly:\n//\n// for i in 0..n\n//   for j in 0..n\n//     if i < j\n//       swap a[i], a[j]\n//\n// It is perhaps the simpliest sorting algorithm to \"memorize\",\n// even \"symmetrically beautiful\" as if `i` and `j` just played highly\n// similar roles. And technically it's still O(n^2) time lol...\n//\n// Proving its correctness is tricky (interesting) though.\n\n// Successfully verified with [Dafny 3.3.0.31104] in about 5 seconds.\n\n\n\n// We define \"valid permutation\" using multiset:\n//ATOM_PLACEHOLDER_valid_permut\n\n// This is a swap-based sorting algorithm, so permutedness is trivial:\n// note that: if i == j, the spec just says a[..] remains the same.\n//ATOM_PLACEHOLDER_swap\n\n// We then define \"sorted\" (by increasing order):\n//ATOM_PLACEHOLDER_sorted\n\n\n// Now, the lol sort algorithm:\n// (Some invariants were tricky to find, but Dafny was smart enough otherwise)\n//ATOM_PLACEHOLDER_lol_sort\n\n\n\n//ATOM_PLACEHOLDER_Main\n\n",
+  "atoms": {
+    "lol_sort": [
+      [
+        "sorted",
+        "swap",
+        "valid_permut"
+      ],
+      "// SPEC \n\n\n// Now, the lol sort algorithm:\n// (Some invariants were tricky to find, but Dafny was smart enough otherwise)\nmethod lol_sort(a: array<int>)\n  modifies a\n  ensures valid_permut(a[..], old(a[..]))\n  ensures sorted(a[..])\n{\n}\n",
+      "method"
+    ],
+    "swap": [
+      [
+        "valid_permut"
+      ],
+      "// SPEC \n\n// This is a swap-based sorting algorithm, so permutedness is trivial:\n// note that: if i == j, the spec just says a[..] remains the same.\nmethod swap(a: array<int>, i: int, j: int)\n  requires 0 <= i < a.Length && 0 <= j < a.Length\n  modifies a\n  ensures a[..] == old(a[..]) [i := old(a[j])] [j := old(a[i])]\n  ensures valid_permut(a[..], old(a[..]))\n{\n}\n",
+      "method"
+    ],
+    "valid_permut": [
+      [],
+      "// ATOM \n// By `lol sort` here, I refer to a seemingly-broken sorting algorithm,\n// which actually somehow manages to work perfectly:\n//\n// for i in 0..n\n//   for j in 0..n\n//     if i < j\n//       swap a[i], a[j]\n//\n// It is perhaps the simpliest sorting algorithm to \"memorize\",\n// even \"symmetrically beautiful\" as if `i` and `j` just played highly\n// similar roles. And technically it's still O(n^2) time lol...\n//\n// Proving its correctness is tricky (interesting) though.\n\n// Successfully verified with [Dafny 3.3.0.31104] in about 5 seconds.\n\n\n\n// We define \"valid permutation\" using multiset:\npredicate valid_permut(a: seq<int>, b: seq<int>)\n  requires |a| == |b|\n{\n  multiset(a) == multiset(b)\n}\n",
+      "predicate"
+    ],
+    "sorted": [
+      [],
+      "// ATOM \n\n// We then define \"sorted\" (by increasing order):\npredicate sorted(a: seq<int>)\n{\n  forall i, j | 0 <= i <= j < |a| :: a[i] <= a[j]\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_valid_permut": "valid_permut",
+    "//ATOM_PLACEHOLDER_swap": "swap",
+    "//ATOM_PLACEHOLDER_sorted": "sorted",
+    "//ATOM_PLACEHOLDER_lol_sort": "lol_sort"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_unknown_0 Divby2(n: nat)\nensures (n*(n-1))%2 == 0\n{\n    if n == 0 {\n    } else {\n        Divby2(n - 1); // proved in case n - 1\n    }\n}\n\n Divby2(n: nat)\nensures (n*(n-1))%2 == 0\n{\n    if n == 0 {\n    } else {\n        Divby2(n - 1); // proved in case n - 1\n    }\n}\n\n",
+  "atoms": {
+    "": [
+      [],
+      "// ATOM \nlemma {:induction false} Divby2(n: nat)\nensures (n*(n-1))%2 == 0\n{\n    if n == 0 {\n    } else {\n        Divby2(n - 1); // proved in case n - 1\n    }\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_unknown_0": "unknown_0"
+  }
+}

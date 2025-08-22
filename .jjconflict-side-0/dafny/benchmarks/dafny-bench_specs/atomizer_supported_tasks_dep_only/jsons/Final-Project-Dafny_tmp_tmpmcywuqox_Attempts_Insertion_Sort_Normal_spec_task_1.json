@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_sorted\n\n//ATOM_PLACEHOLDER_sortedA\n\n//ATOM_PLACEHOLDER_lookForMin\n\n//ATOM_PLACEHOLDER_insertionSort\n\n",
+  "atoms": {
+    "lookForMin": [
+      [],
+      "// SPEC \n\nmethod lookForMin (a: array<int>, i: int) returns (m: int)\n\n\trequires 0 <= i < a.Length\n\tensures i <= m < a.Length\n\tensures forall k :: i <= k < a.Length ==> a[k] >= a[m]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_lookForMin": "lookForMin"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_M1\n\n//ATOM_PLACEHOLDER_IntersectionIsSubsetOfBoth\n\n//ATOM_PLACEHOLDER_BothSetsAreSubsetsOfTheirUnion\n\nconst s0 := {3,8,1}\n//var s2 := {4,5}\n\n//ATOM_PLACEHOLDER_M2\n\n//ATOM_PLACEHOLDER_TheEmptySetIsASubsetOfAnySet\n\tensures A <= B // same as writing: B >= A\n{}\n\n//ATOM_PLACEHOLDER_AnySetIsASubsetOfItself\n\n//ATOM_PLACEHOLDER_TheIntersectionOfTwoSetsIsASubsetOfTheirUnion\n\n\n\n",
+  "atoms": {
+    "M1": [
+      [],
+      "// ATOM \nghost method M1()\n{\n\n//\tassert 1 == 2;\n\tassume 1 == 2;\n}\n",
+      "ghost method"
+    ],
+    "IntersectionIsSubsetOfBoth": [
+      [],
+      "// ATOM \n\nlemma IntersectionIsSubsetOfBoth(A: set, B: set, C: set)\n\trequires C == A*B\n\tensures C <= A && C <= B\n{}\n",
+      "lemma"
+    ],
+    "BothSetsAreSubsetsOfTheirUnion": [
+      [],
+      "// ATOM \n\nlemma BothSetsAreSubsetsOfTheirUnion(A: set, B: set, C: set)\n\trequires C == A+B\n\tensures A <= C && B <= C\n{}\n\nconst s0 := {3,8,1}\n",
+      "lemma"
+    ],
+    "M2": [
+      [],
+      "// ATOM \n//var s2 := {4,5}\n\nlemma M2()\n{\n\tvar s1 := {2,4,6,8};\n\t//s0 := {4,1,2};\n\ts1 := {};\n}\n",
+      "lemma"
+    ],
+    "TheEmptySetIsASubsetOfAnySet": [
+      [],
+      "// ATOM \n\nlemma TheEmptySetIsASubsetOfAnySet(A: set, B: set)\n\trequires A == {}\n\tensures A <= B // same as writing: B >= A\n{}\n",
+      "lemma"
+    ],
+    "AnySetIsASubsetOfItself": [
+      [],
+      "// ATOM \n\nlemma AnySetIsASubsetOfItself(A: set)\n\tensures A <= A\n{}\n",
+      "lemma"
+    ],
+    "TheIntersectionOfTwoSetsIsASubsetOfTheirUnion": [
+      [],
+      "// ATOM \n\nlemma TheIntersectionOfTwoSetsIsASubsetOfTheirUnion(A: set, B: set, C: set, D: set)\n\trequires C == A*B && D == A+B\n\tensures C <= D\n{\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_M1": "M1",
+    "//ATOM_PLACEHOLDER_IntersectionIsSubsetOfBoth": "IntersectionIsSubsetOfBoth",
+    "//ATOM_PLACEHOLDER_BothSetsAreSubsetsOfTheirUnion": "BothSetsAreSubsetsOfTheirUnion",
+    "//ATOM_PLACEHOLDER_M2": "M2",
+    "//ATOM_PLACEHOLDER_TheEmptySetIsASubsetOfAnySet": "TheEmptySetIsASubsetOfAnySet",
+    "//ATOM_PLACEHOLDER_AnySetIsASubsetOfItself": "AnySetIsASubsetOfItself",
+    "//ATOM_PLACEHOLDER_TheIntersectionOfTwoSetsIsASubsetOfTheirUnion": "TheIntersectionOfTwoSetsIsASubsetOfTheirUnion"
+  }
+}

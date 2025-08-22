@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_RectangleArea",
+  "atoms": {
+    "RectangleArea": [
+      [],
+      "// SPEC \nmethod RectangleArea(length: int, width: int) returns (area: int)\n    requires length > 0\n    requires width > 0\n    ensures area == length * width\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_RectangleArea": "RectangleArea"
+  }
+}

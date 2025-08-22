@@ -1,0 +1,35 @@
+{
+  "skeleton": "/* \n* Formal verification of an O(log n) algorithm to calculate the natural power of a real number (x^n), \n* illustrating the usage of lemmas and automatic induction in Dafny.\n* J.  Pascoal Faria, FEUP, Jan/2022.\n*/\n\n// Recursive definition of x^n in functional style, with time and space complexity O(n).\n//ATOM_PLACEHOLDER_power\n\n// Computation of x^n in time and space O(log n).\n//ATOM_PLACEHOLDER_powerDC\n\n// States the property x^a * x^b = x^(a+b), that the method power takes advantage of. \n// The property is proved by automatic induction on 'a'.\n//ATOM_PLACEHOLDER_unknown_1066 productOfPowers(x: real, a: nat, b: nat) \n  ensures power(x, a) * power(x, b)  == power(x, a + b) \n{ }\n\n\n// A few test cases (checked statically by Dafny).\n//ATOM_PLACEHOLDER_testPowerDC\n\n",
+  "atoms": {
+    "power": [
+      [],
+      "// ATOM \n\n// Recursive definition of x^n in functional style, with time and space complexity O(n).\nfunction power(x: real, n: nat) : real {\n    if n == 0 then 1.0 else x * power(x, n-1)\n}\n",
+      "function"
+    ],
+    "powerDC": [
+      [
+        "power"
+      ],
+      "// SPEC \n\n// Computation of x^n in time and space O(log n).\nmethod powerDC(x: real, n: nat) returns (p : real)\n  ensures p == power(x, n)\n{\n}\n",
+      "method"
+    ],
+    "": [
+      [],
+      "// ATOM \n\n// States the property x^a * x^b = x^(a+b), that the method power takes advantage of. \n// The property is proved by automatic induction on 'a'.\nlemma {:induction a} productOfPowers(x: real, a: nat, b: nat) \n  ensures power(x, a) * power(x, b)  == power(x, a + b) \n{ }\n",
+      "lemma"
+    ],
+    "testPowerDC": [
+      [
+        "powerDC"
+      ],
+      "// SPEC \n\n\n// A few test cases (checked statically by Dafny).\nmethod testPowerDC() {\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_power": "power",
+    "//ATOM_PLACEHOLDER_powerDC": "powerDC",
+    "//ATOM_PLACEHOLDER_unknown_1066": "unknown_1066",
+    "//ATOM_PLACEHOLDER_testPowerDC": "testPowerDC"
+  }
+}

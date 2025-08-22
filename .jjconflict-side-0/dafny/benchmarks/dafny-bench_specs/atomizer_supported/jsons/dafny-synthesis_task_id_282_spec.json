@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_ElementWiseSubtraction",
+  "atoms": {
+    "ElementWiseSubtraction": [
+      [],
+      "// SPEC \nmethod ElementWiseSubtraction(a: array<int>, b: array<int>) returns (result: array<int>)\n    requires a != null && b != null\n    requires a.Length == b.Length\n    ensures result != null\n    ensures result.Length == a.Length\n    ensures forall i :: 0 <= i < result.Length ==> result[i] == a[i] - b[i]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_ElementWiseSubtraction": "ElementWiseSubtraction"
+  }
+}

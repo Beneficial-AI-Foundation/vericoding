@@ -1,0 +1,109 @@
+{
+  "skeleton": "// RUN: %dafny /compile:0 /rprint:\"%t.rprint\" \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n// Tests that come down to comparing the bodies of (possibly nested) functions.\n// Many of these currently require far more effort than one would like.\n// KRML, 2 May 2016\n\n//ATOM_PLACEHOLDER_Sum\n\n//ATOM_PLACEHOLDER_Exchange\n\n//ATOM_PLACEHOLDER_ExchangeEta\n\n//ATOM_PLACEHOLDER_NestedAlphaRenaming\n\n//ATOM_PLACEHOLDER_DistributePlus1\n\n//ATOM_PLACEHOLDER_Distribute\n\n//ATOM_PLACEHOLDER_unknown_1015 PrettyBasicBetaReduction(n: nat, g: (int,int) -> int, i: int)\n  ensures (x => Sum(n, y => g(x,y)))(i) == Sum(n, y => g(i,y))\n{\n  // NOTE: This proof is by induction on n (it can be done automatically)\n  if n == 0 {\n    calc {\n      (x => Sum(n, y => g(x,y)))(i);\n      0;\n      Sum(n, y => g(i,y));\n    }\n  } else {\n    calc {\n      (x => Sum(n, y => g(x,y)))(i);\n      g(i,n-1) + (x => Sum(n-1, y => g(x,y)))(i);\n      { PrettyBasicBetaReduction(n-1, g, i); }\n      g(i,n-1) + Sum(n-1, y => g(i,y));\n      (y => g(i,y))(n-1) + Sum(n-1, y => g(i,y));\n      Sum(n, y => g(i,y));\n    }\n  }\n}\n\n//ATOM_PLACEHOLDER_BetaReduction0\n\n//ATOM_PLACEHOLDER_BetaReduction1\n\n//ATOM_PLACEHOLDER_BetaReductionInside\n\n//ATOM_PLACEHOLDER_L\n\n//ATOM_PLACEHOLDER_Commute//ATOM_PLACEHOLDER_CommuteSum",
+  "atoms": {
+    "Sum": [
+      [],
+      "// ATOM \n// RUN: %dafny /compile:0 /rprint:\"%t.rprint\" \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n// Tests that come down to comparing the bodies of (possibly nested) functions.\n// Many of these currently require far more effort than one would like.\n// KRML, 2 May 2016\n\nfunction Sum(n: nat, f: int -> int): int\n{\n  if n == 0 then 0 else f(n-1) + Sum(n-1, f)\n}\n",
+      "function"
+    ],
+    "Exchange": [
+      [
+        "Sum"
+      ],
+      "// ATOM \n\nlemma Exchange(n: nat, f: int -> int, g: int -> int)\n  requires forall i :: 0 <= i < n ==> f(i) == g(i)\n  ensures Sum(n, f) == Sum(n, g)\n{\n}\n",
+      "lemma"
+    ],
+    "ExchangeEta": [
+      [
+        "Sum"
+      ],
+      "// ATOM \n\nlemma ExchangeEta(n: nat, f: int -> int, g: int -> int)\n  requires forall i :: 0 <= i < n ==> f(i) == g(i)\n  ensures Sum(n, x => f(x)) == Sum(n, x => g(x))\n{\n}\n",
+      "lemma"
+    ],
+    "NestedAlphaRenaming": [
+      [
+        "Sum"
+      ],
+      "// ATOM \n\nlemma NestedAlphaRenaming(n: nat, g: (int,int) -> int)\n  ensures Sum(n, x => Sum(n, y => g(x,y))) == Sum(n, a => Sum(n, b => g(a,b)))\n{\n}\n",
+      "lemma"
+    ],
+    "DistributePlus1": [
+      [
+        "Sum"
+      ],
+      "// ATOM \n\nlemma DistributePlus1(n: nat, f: int -> int)\n  ensures Sum(n, x => 1 + f(x)) == n + Sum(n, f)\n{\n}\n",
+      "lemma"
+    ],
+    "Distribute": [
+      [
+        "Sum"
+      ],
+      "// ATOM \n\nlemma Distribute(n: nat, f: int -> int, g: int -> int)\n  ensures Sum(n, x => f(x) + g(x)) == Sum(n, f) + Sum(n, g)\n{\n}\n",
+      "lemma"
+    ],
+    "": [
+      [],
+      "// ATOM \n\nlemma {:induction false} PrettyBasicBetaReduction(n: nat, g: (int,int) -> int, i: int)\n  ensures (x => Sum(n, y => g(x,y)))(i) == Sum(n, y => g(i,y))\n{\n  // NOTE: This proof is by induction on n (it can be done automatically)\n  if n == 0 {\n    calc {\n      (x => Sum(n, y => g(x,y)))(i);\n      0;\n      Sum(n, y => g(i,y));\n    }\n  } else {\n    calc {\n      (x => Sum(n, y => g(x,y)))(i);\n      g(i,n-1) + (x => Sum(n-1, y => g(x,y)))(i);\n      { PrettyBasicBetaReduction(n-1, g, i); }\n      g(i,n-1) + Sum(n-1, y => g(i,y));\n      (y => g(i,y))(n-1) + Sum(n-1, y => g(i,y));\n      Sum(n, y => g(i,y));\n    }\n  }\n}\n",
+      "lemma"
+    ],
+    "BetaReduction0": [
+      [
+        "Sum"
+      ],
+      "// ATOM \n\nlemma BetaReduction0(n: nat, g: (int,int) -> int, i: int)\n  ensures (x => Sum(n, y => g(x,y)))(i) == Sum(n, y => g(i,y))\n{\n  // automatic proof by induction on n\n}\n",
+      "lemma"
+    ],
+    "BetaReduction1": [
+      [
+        "Sum"
+      ],
+      "// ATOM \n\nlemma BetaReduction1(n': nat, g: (int,int) -> int, i: int)\n  ensures g(i,n') + Sum(n', y => g(i,y)) == (x => g(x,n') + Sum(n', y => g(x,y)))(i);\n{\n}\n",
+      "lemma"
+    ],
+    "BetaReductionInside": [
+      [
+        "Sum",
+        "Exchange"
+      ],
+      "// ATOM \n\nlemma BetaReductionInside(n': nat, g: (int,int) -> int)\n  ensures Sum(n', x => g(x,n') + Sum(n', y => g(x,y)))\n       == Sum(n', x => (w => g(w,n'))(x) + (w => Sum(n', y => g(w,y)))(x))\n{\n  forall i | 0 <= i < n'\n  {\n    calc {\n      (x => g(x,n') + Sum(n', y => g(x,y)))(i);\n      (x => (w => g(w,n'))(x) + (w => Sum(n', y => g(w,y)))(x))(i);\n    }\n  }\n  Exchange(n', x => g(x,n') + Sum(n', y => g(x,y)), x => (w => g(w,n'))(x) + (w => Sum(n', y => g(w,y)))(x));\n}\n",
+      "lemma"
+    ],
+    "L": [
+      [
+        "Exchange",
+        "Distribute",
+        "BetaReduction0",
+        "BetaReductionInside",
+        "Sum",
+        "BetaReduction1"
+      ],
+      "// ATOM \n\nlemma L(n: nat, n': nat, g: (int, int) -> int)\n  requires && n == n' + 1\n  ensures Sum(n, x => Sum(n, y => g(x,y)))\n       == Sum(n', x => Sum(n', y => g(x,y))) + Sum(n', x => g(x,n')) + Sum(n', y => g(n',y)) + g(n',n')\n{\n  var A := w => g(w,n');\n  var B := w => Sum(n', y => g(w,y));\n\n  calc {\n    Sum(n, x => Sum(n, y => g(x,y)));\n    { assume false;/*TODO*/ }\n    (x => Sum(n, y => g(x,y)))(n') + Sum(n', x => Sum(n, y => g(x,y)));\n    { BetaReduction0(n, g, n'); }\n    Sum(n, y => g(n',y)) + Sum(n', x => Sum(n, y => g(x,y)));\n    { assume false;/*TODO*/ }\n    (y => g(n',y))(n') + Sum(n', y => g(n',y)) + Sum(n', x => Sum(n, y => g(x,y)));\n    { assert (y => g(n',y))(n') == g(n',n'); }\n    g(n',n') + Sum(n', y => g(n',y)) + Sum(n', x => Sum(n, y => g(x,y)));\n    {\n      forall i | 0 <= i < n' {\n        calc {\n          (x => Sum(n, y => g(x,y)))(i);\n          { PrettyBasicBetaReduction(n, g, i); }\n          Sum(n, y => g(i,y));\n          { assume false;/*TODO*/ }\n          (y => g(i,y))(n') + Sum(n', y => g(i,y));\n          // beta reduction\n          g(i,n') + Sum(n', y => g(i,y));\n          { BetaReduction1(n', g, i); }\n          (x => g(x,n') + Sum(n', y => g(x,y)))(i);\n        }\n      }\n      Exchange(n', x => Sum(n, y => g(x,y)), x => g(x,n') + Sum(n', y => g(x,y)));\n    }\n    g(n',n') + Sum(n', y => g(n',y)) + Sum(n', x => g(x,n') + Sum(n', y => g(x,y)));\n    { BetaReductionInside(n', g); }\n    g(n',n') + Sum(n', y => g(n',y)) + Sum(n', x => (w => g(w,n'))(x) + (w => Sum(n', y => g(w,y)))(x));\n    { Exchange(n', x => (w => g(w,n'))(x) + (w => Sum(n', y => g(w,y)))(x), x => A(x) + B(x)); }\n    g(n',n') + Sum(n', y => g(n',y)) + Sum(n', x => A(x) + B(x));\n    { Distribute(n', A, B); }\n    g(n',n') + Sum(n', y => g(n',y)) + Sum(n', A) + Sum(n', B);\n    // defs. A and B\n    g(n',n') + Sum(n', y => g(n',y)) + Sum(n', w => g(w,n')) + Sum(n', w => Sum(n', y => g(w,y)));\n    // alpha renamings, and commutativity of the 4 plus terms\n    Sum(n', x => Sum(n', y => g(x,y))) + Sum(n', y => g(n',y)) + Sum(n', x => g(x,n')) + g(n',n');\n  }\n}\n",
+      "lemma"
+    ],
+    "Commute": [
+      [],
+      "// ATOM \n\nlemma Commute(n: nat, g: (int,int) -> int)\n  ensures Sum(n, x => Sum(n, y => g(x,y))) == Sum(n, x => Sum(n, y => g(y,x)))\n",
+      "lemma"
+    ],
+    "CommuteSum": [
+      [],
+      "// ATOM \n// TODO\n\nlemma CommuteSum(n: nat, g: (int,int) -> int)\n  ensures Sum(n, x => Sum(n, y => g(x,y))) == Sum(n, y => Sum(n, x => g(x,y)))\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Sum": "Sum",
+    "//ATOM_PLACEHOLDER_Exchange": "Exchange",
+    "//ATOM_PLACEHOLDER_ExchangeEta": "ExchangeEta",
+    "//ATOM_PLACEHOLDER_NestedAlphaRenaming": "NestedAlphaRenaming",
+    "//ATOM_PLACEHOLDER_DistributePlus1": "DistributePlus1",
+    "//ATOM_PLACEHOLDER_Distribute": "Distribute",
+    "//ATOM_PLACEHOLDER_unknown_1015": "unknown_1015",
+    "//ATOM_PLACEHOLDER_BetaReduction0": "BetaReduction0",
+    "//ATOM_PLACEHOLDER_BetaReduction1": "BetaReduction1",
+    "//ATOM_PLACEHOLDER_BetaReductionInside": "BetaReductionInside",
+    "//ATOM_PLACEHOLDER_L": "L",
+    "//ATOM_PLACEHOLDER_Commute": "Commute",
+    "//ATOM_PLACEHOLDER_CommuteSum": "CommuteSum"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_SumOfDigits\n\n//lemma DivIsZero()\n//  ensures forall num, den : nat :: den >= 1 && num < den ==> num/den == 0\n\n//ATOM_PLACEHOLDER_X\n\n//ATOM_PLACEHOLDER_NumberIdentity\n\n\n//ATOM_PLACEHOLDER_InIntValues\n\n// ghost function ValuesOfn(number: nat, ndigits: nat) : (r: seq<nat>)\n// {\n//   seq(ndigits+1, i requires 0 <= i <= ndigits => number / PowersOfTen[i])\n// }\n\n//ATOM_PLACEHOLDER_IntValues\n\n//ATOM_PLACEHOLDER_Power10\n\n//ATOM_PLACEHOLDER_NumberToSeq\n\n//ATOM_PLACEHOLDER_Sum\n\n//ATOM_PLACEHOLDER_SumDigits\n\n//ATOM_PLACEHOLDER_SumDigitsRecursive\n\n//ATOM_PLACEHOLDER_NumberOfDigits",
+  "atoms": {
+    "SumOfDigits": [
+      [
+        "X",
+        "SumDigits",
+        "Power10",
+        "NumberIdentity",
+        "NumberOfDigits"
+      ],
+      "// SPEC \nmethod SumOfDigits(number: nat) returns (sum: nat)\n  requires number >= 0\n  ensures sum >= 0\n  ensures sum == SumDigits(number)\n{\n}\n",
+      "method"
+    ],
+    "X": [
+      [
+        "NumberOfDigits",
+        "Power10"
+      ],
+      "// ATOM \n\n//lemma DivIsZero()\n//  ensures forall num, den : nat :: den >= 1 && num < den ==> num/den == 0\n\nlemma X(x: nat)\n  ensures Power10(NumberOfDigits(x)) > x\n{\n  if x <= 9\n  {\n  }\n  else // >= 10\n  {\n    X(x/10);\n  }\n}\n",
+      "lemma"
+    ],
+    "NumberIdentity": [
+      [
+        "NumberOfDigits",
+        "Power10"
+      ],
+      "// ATOM \n\nlemma NumberIdentity(number: nat, pmax: nat)\n  requires pmax == Power10(NumberOfDigits(number))\n  ensures number == number % pmax\n{\n  if NumberOfDigits(number) == 1\n  {\n  }\n  else // > 1\n  {\n    NumberIdentity(number/10, pmax/10);\n  }\n\n}\n",
+      "lemma"
+    ],
+    "InIntValues": [
+      [
+        "IntValues"
+      ],
+      "// ATOM \n\n\nlemma InIntValues(n: nat)\n  ensures 0 in IntValues(n)\n  ensures n in IntValues(n)\n  ensures n/10 in IntValues(n)\n{}\n",
+      "lemma"
+    ],
+    "IntValues": [
+      [],
+      "// ATOM \n\n// ghost function ValuesOfn(number: nat, ndigits: nat) : (r: seq<nat>)\n// {\n//   seq(ndigits+1, i requires 0 <= i <= ndigits => number / PowersOfTen[i])\n// }\n\nghost function IntValues(n: int) : (r: seq<int>)\n  requires n >= 0\n  ensures 0 in r\n  ensures n in r\n  ensures n/10 in r\n  //    ensures forall p :: p in powersOfTen ==> n/p in r\n{\n  if n == 0 then [0]\n  else [n] + IntValues(n/10)\n}\n",
+      "ghost function"
+    ],
+    "Power10": [
+      [],
+      "// ATOM \n\nfunction Power10(n: nat): (r: nat)\n  ensures r >= 1\n  ensures n > 0 ==> r % 10 == 0\n{\n  if (n == 0) then 1 else 10 * Power10(n-1)\n}\n",
+      "function"
+    ],
+    "NumberToSeq": [
+      [],
+      "// ATOM \n\nfunction NumberToSeq(number: int) : seq<int>\n  requires number >= 0\n{\n  if number == 0 then []\n  else [number % 10] + NumberToSeq(number/10)\n}\n",
+      "function"
+    ],
+    "Sum": [
+      [],
+      "// ATOM \n\nfunction Sum(digits: seq<int>) : int\n{\n  if |digits| == 0 then 0 else digits[0] + Sum(digits[1..])\n}\n",
+      "function"
+    ],
+    "SumDigits": [
+      [
+        "NumberOfDigits",
+        "SumDigitsRecursive",
+        "Power10"
+      ],
+      "// ATOM \n\nfunction SumDigits(n: nat) : nat\n{\n  var ndigits := NumberOfDigits(n);\n  var p := Power10(ndigits-1);\n  SumDigitsRecursive(n, p)\n}\n",
+      "function"
+    ],
+    "SumDigitsRecursive": [
+      [],
+      "// ATOM \n\nfunction SumDigitsRecursive(n: nat, p: nat) : (r: nat)\n{\n  if n == 0 || p == 0 then 0\n  else\n    var leftMostDigit := n/p;\n    var rest := n%p;\n    leftMostDigit + SumDigitsRecursive(rest, p/10)\n\n}\n",
+      "function"
+    ],
+    "NumberOfDigits": [
+      [],
+      "// ATOM \n\nfunction NumberOfDigits(n: nat) : (r: nat)\n  ensures r >= 1\n  ensures r == 1 <==> 0 <= n <= 9\n{\n  if 0 <= n <= 9 then 1 else 1+NumberOfDigits(n/10)\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SumOfDigits": "SumOfDigits",
+    "//ATOM_PLACEHOLDER_X": "X",
+    "//ATOM_PLACEHOLDER_NumberIdentity": "NumberIdentity",
+    "//ATOM_PLACEHOLDER_InIntValues": "InIntValues",
+    "//ATOM_PLACEHOLDER_IntValues": "IntValues",
+    "//ATOM_PLACEHOLDER_Power10": "Power10",
+    "//ATOM_PLACEHOLDER_NumberToSeq": "NumberToSeq",
+    "//ATOM_PLACEHOLDER_Sum": "Sum",
+    "//ATOM_PLACEHOLDER_SumDigits": "SumDigits",
+    "//ATOM_PLACEHOLDER_SumDigitsRecursive": "SumDigitsRecursive",
+    "//ATOM_PLACEHOLDER_NumberOfDigits": "NumberOfDigits"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_InsertionSorted\n\n\n//ATOM_PLACEHOLDER_sorting      \n\n      \n\n",
+  "atoms": {
+    "InsertionSorted": [
+      [],
+      "// ATOM \npredicate InsertionSorted(Array: array<int>, left: int, right: int)  \n  requires 0 <= left <= right <= Array.Length       \n  reads Array       \n{           \n  forall i,j :: left <= i < j < right ==> Array[i] <= Array[j]\n}\n",
+      "predicate"
+    ],
+    "sorting": [
+      [
+        "InsertionSorted"
+      ],
+      "// SPEC \n\n\nmethod sorting(Array: array<int>)\n  requires Array.Length > 1 \n  ensures InsertionSorted(Array, 0, Array.Length) \n  modifies Array\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_InsertionSorted": "InsertionSorted",
+    "//ATOM_PLACEHOLDER_sorting": "sorting"
+  }
+}

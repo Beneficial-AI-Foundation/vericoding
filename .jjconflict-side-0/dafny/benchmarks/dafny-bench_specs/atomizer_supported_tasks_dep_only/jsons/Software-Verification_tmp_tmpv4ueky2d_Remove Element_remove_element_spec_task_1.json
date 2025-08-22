@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_remove_element\n\n\n\n",
+  "atoms": {
+    "remove_element": [
+      [],
+      "// SPEC \nmethod remove_element(nums: array<int>, val: int) returns (i: int)\n    modifies nums\n    requires 0 <= nums.Length <= 100\n    requires forall i :: 0 <= i < nums.Length ==> 0 <= nums[i] <= 50\n    requires 0 <= val <= 100\n    ensures forall j :: 0 < j < i < nums.Length ==> nums[j] != val\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_remove_element": "remove_element"
+  }
+}

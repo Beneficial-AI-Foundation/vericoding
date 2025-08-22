@@ -1,0 +1,13 @@
+{
+  "skeleton": "// Ex 1.3\n//ATOM_PLACEHOLDER_Triple\n\n//ATOM_PLACEHOLDER_Caller\n\n// Ex 1.6\n//ATOM_PLACEHOLDER_MinUnderSpec\n\n//ATOM_PLACEHOLDER_Min\n\n// Ex 1.7\n//ATOM_PLACEHOLDER_MaxSum//ATOM_PLACEHOLDER_MaxSumCaller\n\n// Ex 1.8\n//ATOM_PLACEHOLDER_ReconstructFromMaxSum\n\n//ATOM_PLACEHOLDER_TestMaxSum\n\n// Ex 1.9\n//ATOM_PLACEHOLDER_Average\n\n//ATOM_PLACEHOLDER_Triple'\n\n",
+  "atoms": {
+    "MaxSum": [
+      [],
+      "// SPEC \n\n// Ex 1.7\nmethod MaxSum (x: int, y: int) returns (s:int, m: int)\n  ensures s == x + y\n  ensures x <= m && y <= m\n  ensures m == x || m == y\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_MaxSum": "MaxSum"
+  }
+}

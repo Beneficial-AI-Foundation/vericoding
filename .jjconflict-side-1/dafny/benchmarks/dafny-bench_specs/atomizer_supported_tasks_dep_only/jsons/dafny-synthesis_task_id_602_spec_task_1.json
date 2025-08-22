@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_FindFirstRepeatedChar",
+  "atoms": {
+    "FindFirstRepeatedChar": [
+      [],
+      "// SPEC \nmethod FindFirstRepeatedChar(s: string) returns (found: bool, c: char)\n    ensures found ==> exists i, j :: 0 <= i < j < |s| && s[i] == s[j] && s[i] == c && (forall k, l :: 0 <= k < l < j && s[k] == s[l] ==> k >= i)\n    ensures !found ==> (forall i, j :: 0 <= i < j < |s| ==> s[i] != s[j])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_FindFirstRepeatedChar": "FindFirstRepeatedChar"
+  }
+}

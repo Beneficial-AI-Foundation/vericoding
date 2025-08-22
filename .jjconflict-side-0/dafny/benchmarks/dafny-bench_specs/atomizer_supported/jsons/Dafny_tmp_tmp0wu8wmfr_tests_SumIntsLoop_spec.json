@@ -1,0 +1,29 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_sumInts\n\n\n//ATOM_PLACEHOLDER_SumIntsLoop\n\n//ATOM_PLACEHOLDER_Main\n\n\n\n\n\n",
+  "atoms": {
+    "sumInts": [
+      [],
+      "// ATOM \nfunction sumInts( n: int ): int\n    requires n >= 0;\n{\n    if n == 0 then\n        0\n    else\n        sumInts(n-1)+n\n}\n",
+      "function"
+    ],
+    "SumIntsLoop": [
+      [
+        "sumInts"
+      ],
+      "// SPEC \n\n\nmethod SumIntsLoop( n: int ) returns ( s: int )\n    requires n >= 0;\n    ensures s == sumInts(n)\n    ensures s == n*(n+1)/2;\n{\n}\n",
+      "method"
+    ],
+    "Main": [
+      [
+        "SumIntsLoop"
+      ],
+      "// SPEC \n\nmethod Main()\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sumInts": "sumInts",
+    "//ATOM_PLACEHOLDER_SumIntsLoop": "SumIntsLoop",
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

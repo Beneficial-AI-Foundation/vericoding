@@ -1,0 +1,13 @@
+{
+  "skeleton": "// RUN: /print:log.bpl\n\n//ATOM_PLACEHOLDER_ArrayMap\n\n\n/*method GenericSort<A>(cmp: (A, A) -> bool, a: array<A>)\n  requires a != null\n  requires forall x, y :: a !in cmp.reads(x, y)\n  requires forall x, y :: cmp.requires(x, y)\n  modifies a\n  ensures forall x, y :: cmp.requires(x, y)\n  ensures forall x, y :: 0 <= x < y < a.Length ==> cmp(a[x], a[y])\n{\n\n  var i := 0;\n\n  while i < a.Length\n    modifies a\n  {\n    var j := i - 1;\n    while j >= 0 && !cmp(a[j], a[i])\n      modifies a\n    {\n      a[i], a[j] := a[j], a[i];\n      j := j - 1;\n    }\n\n    i := i + 1;\n  }\n\n}*/\n\n\n\n\n/*method GenericSort<A>(cmp: (A, A) -> bool, a: array<A>)\n  requires a != null\n  requires forall x, y :: a !in cmp.reads(x, y)\n  requires forall x, y :: cmp.requires(x, y)\n  modifies a\n  ensures forall x, y :: cmp.requires(x, y)\n  ensures forall x, y :: 0 <= x < y < a.Length ==> cmp(a[x], a[y])\n{\n\n  var i := 0;\n\n  while i < a.Length\n    modifies a\n  {\n    var j := i - 1;\n    while j >= 0 && !cmp(a[j], a[i])\n      modifies a\n    {\n      a[i], a[j] := a[j], a[i];\n      j := j - 1;\n    }\n\n    i := i + 1;\n  }\n\n}*/\n\n",
+  "atoms": {
+    "ArrayMap": [
+      [],
+      "// SPEC \n// RUN: /print:log.bpl\n\nmethod ArrayMap<A>(f: int -> A, a: array<A>)\n  requires a != null\n  requires forall j :: 0 <= j < a.Length ==> f.requires(j)\n  requires forall j :: 0 <= j < a.Length ==> a !in f.reads(j)\n  modifies a\n  ensures forall j :: 0 <= j < a.Length ==> a[j] == f(j)\n{\n}\n\n\n/*method GenericSort<A>(cmp: (A, A) -> bool, a: array<A>)\n  requires a != null\n  requires forall x, y :: a !in cmp.reads(x, y)\n  requires forall x, y :: cmp.requires(x, y)\n  modifies a\n  ensures forall x, y :: cmp.requires(x, y)\n  ensures forall x, y :: 0 <= x < y < a.Length ==> cmp(a[x], a[y])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_ArrayMap": "ArrayMap"
+  }
+}

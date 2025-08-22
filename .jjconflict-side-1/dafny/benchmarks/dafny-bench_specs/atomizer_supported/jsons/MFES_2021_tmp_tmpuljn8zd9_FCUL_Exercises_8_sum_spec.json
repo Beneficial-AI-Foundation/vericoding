@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_calcSum\n\n//ATOM_PLACEHOLDER_sum\n\n",
+  "atoms": {
+    "calcSum": [
+      [],
+      "// ATOM \nfunction calcSum(n: nat) : nat \n{   \n    n * (n - 1) / 2\n}\n",
+      "function"
+    ],
+    "sum": [
+      [
+        "calcSum"
+      ],
+      "// SPEC \n\nmethod sum(n: nat) returns(s: nat)\n    ensures s == calcSum(n + 1)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_calcSum": "calcSum",
+    "//ATOM_PLACEHOLDER_sum": "sum"
+  }
+}

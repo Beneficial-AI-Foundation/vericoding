@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_fillK\n\n\n//ATOM_PLACEHOLDER_containsSubString\n\n\n\n",
+  "atoms": {
+    "fillK": [
+      [],
+      "// SPEC \nmethod fillK(a: array<int>, n: int, k: int, c: int) returns (b: bool)\n    requires 0 <= c <= n\n    requires n == a.Length\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_fillK": "fillK"
+  }
+}

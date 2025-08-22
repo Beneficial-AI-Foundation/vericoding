@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_CubeVolume",
+  "atoms": {
+    "CubeVolume": [
+      [],
+      "// SPEC \nmethod CubeVolume(size: int) returns (volume: int)\n    requires size > 0\n    ensures volume == size * size * size\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_CubeVolume": "CubeVolume"
+  }
+}

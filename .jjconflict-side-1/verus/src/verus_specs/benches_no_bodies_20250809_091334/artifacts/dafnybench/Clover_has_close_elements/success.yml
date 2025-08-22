@@ -1,0 +1,11 @@
+num_iterations: 22
+success: false
+verification_error: "error[E0601]: `main` function not found in crate `tmpn2alel26`\n\
+  \  --> /tmp/tmpn2alel26.rs:55:2\n   |\n55 | }\n   |  ^ consider adding a `main`\
+  \ function to `/tmp/tmpn2alel26.rs`\n\nerror[E0308]: mismatched types\n  --> /tmp/tmpn2alel26.rs:21:21\n\
+  \   |\n21 |         while idx < numbers.len() // Type conversion issue here\n  \
+  \ |               ---   ^^^^^^^^^^^^^ expected `usize`, found `nat`\n   |      \
+  \         |\n   |               expected because this is `usize`\n\nerror: aborting\
+  \ due to 2 previous errors\n\nSome errors have detailed explanations: E0308, E0601.\n\
+  For more information about an error, try `rustc --explain E0308`.\n"
+verification_output: ''

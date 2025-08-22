@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Partition\n\n\n\n\n\n",
+  "atoms": {
+    "Partition": [
+      [],
+      "// SPEC \nmethod Partition(a: array<int>) returns (lo: int, hi: int)\n  modifies a\n  ensures 0 <= lo <= hi <= a.Length\n  ensures forall x | 0 <= x < lo :: a[x] < 0\n  ensures forall x | lo <= x < hi :: a[x] == 0\n  ensures forall x | hi <= x < a.Length :: a[x] > 0\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Partition": "Partition"
+  }
+}

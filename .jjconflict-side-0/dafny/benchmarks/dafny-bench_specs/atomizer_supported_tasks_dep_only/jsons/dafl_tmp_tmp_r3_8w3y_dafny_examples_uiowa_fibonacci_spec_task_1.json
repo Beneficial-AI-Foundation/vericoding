@@ -1,0 +1,21 @@
+{
+  "skeleton": "/*\n   CS:5810 Formal Methods in Software Engineering\n   Fall 2017\n   The University of Iowa\n   \n   Instructor: Cesare Tinelli\n\n   Credits: Example adapted from Dafny tutorial\n*/\n\n\n//      n = 0, 1, 2, 3, 4, 5, 6,  7,  8, ...\n// fib(n) = 0, 1, 1, 2, 3, 5, 8, 13, 21, ...\n//ATOM_PLACEHOLDER_fib\n\n//ATOM_PLACEHOLDER_ComputeFib\n\n",
+  "atoms": {
+    "fib": [
+      [],
+      "// ATOM \n   \n\n\n\n//      n = 0, 1, 2, 3, 4, 5, 6,  7,  8, ...\n// fib(n) = 0, 1, 1, 2, 3, 5, 8, 13, 21, ...\nfunction fib(n: nat): nat\n{\n  if n == 0 then 0 \n  else if n == 1 then 1 \n  else fib(n - 1) + fib(n - 2)\n}\n",
+      "function"
+    ],
+    "ComputeFib": [
+      [
+        "fib"
+      ],
+      "// SPEC \n\nmethod ComputeFib(n: nat) returns (f: nat)\n  ensures f == fib(n);\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_fib": "fib",
+    "//ATOM_PLACEHOLDER_ComputeFib": "ComputeFib"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_SplitArray",
+  "atoms": {
+    "SplitArray": [
+      [],
+      "// SPEC \nmethod SplitArray(arr: array<int>, L: int) returns (firstPart: seq<int>, secondPart: seq<int>)\n    requires 0 <= L <= arr.Length\n    ensures |firstPart| == L\n    ensures |secondPart| == arr.Length - L\n    ensures firstPart + secondPart == arr[..]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SplitArray": "SplitArray"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_CalDiv\n\n",
+  "atoms": {
+    "CalDiv": [
+      [],
+      "// SPEC \nmethod CalDiv() returns (x:int, y:int)\n  ensures x==191/7\n  ensures y==191%7\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_CalDiv": "CalDiv"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "skeleton": "// definition of Fibonacci numbers\n//ATOM_PLACEHOLDER_Fibonacci\n\n// iterative calculation of Fibonacci numbers\n//ATOM_PLACEHOLDER_FibonacciIterative\n\n\n\n",
+  "atoms": {
+    "Fibonacci": [
+      [],
+      "// ATOM \n// definition of Fibonacci numbers\nfunction Fibonacci(n: nat): nat {\n  match n {\n    case 0 => 0\n    case 1 => 1\n    case _ => Fibonacci(n - 1) + Fibonacci(n - 2)\n  }\n}\n",
+      "function"
+    ],
+    "FibonacciIterative": [
+      [
+        "Fibonacci"
+      ],
+      "// SPEC \n\n// iterative calculation of Fibonacci numbers\nmethod FibonacciIterative(n: nat) returns (f: nat)\n  ensures f == Fibonacci(n)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Fibonacci": "Fibonacci",
+    "//ATOM_PLACEHOLDER_FibonacciIterative": "FibonacciIterative"
+  }
+}

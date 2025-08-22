@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_CubeSurfaceArea",
+  "atoms": {
+    "CubeSurfaceArea": [
+      [],
+      "// SPEC \nmethod CubeSurfaceArea(size: int) returns (area: int)\n    requires size > 0\n    ensures area == 6 * size * size\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_CubeSurfaceArea": "CubeSurfaceArea"
+  }
+}

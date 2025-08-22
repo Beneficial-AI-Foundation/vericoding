@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_IsEven",
+  "atoms": {
+    "IsEven": [
+      [],
+      "// SPEC \nmethod IsEven(n: int) returns (result: bool)\n    ensures result <==> n % 2 == 0\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsEven": "IsEven"
+  }
+}

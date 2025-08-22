@@ -1,0 +1,36 @@
+num_iterations: 10
+success: false
+verification_error: "error: postcondition not satisfied\n  --> /tmp/tmp0ave954u.rs:73:17\n\
+  \   |\n73 |           ensures sum_r(s.subrange(i, j)) == sum_l(s.subrange(i, j))\n\
+  \   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed\
+  \ this postcondition\n...\n76 | /         if i == j {\n77 | |             // Empty\
+  \ subsequence\n78 | |         } else {\n79 | |             equal_sum_r(s, i, j-1);\n\
+  ...  |\n83 | |             sum_by_parts_l(sub, last);\n84 | |         }\n   | |_________-\
+  \ at the end of the function body\n\nnote: while loop: not all errors may have been\
+  \ reported; rerun with a higher value for --multiple-errors to find other potential\
+  \ errors in this function\n   --> /tmp/tmp0ave954u.rs:109:9\n    |\n109 |      \
+  \   while i < v.len()\n    |         ^^^^^^^^^^^^^^^^^\n\nerror: postcondition not\
+  \ satisfied\n   --> /tmp/tmp0ave954u.rs:102:17\n    |\n102 |         ensures sum\
+  \ as int == sum_r(v@.map(|i, x| x as int))\n    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \ failed this postcondition\n...\n119 |         sum\n    |         --- at the end\
+  \ of the function body\n\nerror: invariant not satisfied at end of loop body\n \
+  \  --> /tmp/tmp0ave954u.rs:112:17\n    |\n112 |                 sum as int == sum_r(v@.subrange(0,\
+  \ i as int).map(|i, x| x as int))\n    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: possible arithmetic underflow/overflow\n   --> /tmp/tmp0ave954u.rs:115:19\n\
+  \    |\n115 |             sum = sum + v[i];\n    |                   ^^^^^^^^^^\n\
+  \nnote: while loop: not all errors may have been reported; rerun with a higher value\
+  \ for --multiple-errors to find other potential errors in this function\n   -->\
+  \ /tmp/tmp0ave954u.rs:134:9\n    |\n134 |         while i > 0\n    |         ^^^^^^^^^^^\n\
+  \nerror: postcondition not satisfied\n   --> /tmp/tmp0ave954u.rs:125:17\n    |\n\
+  125 |         ensures sum as int == sum_r(v@.map(|i, x| x as int))\n    |      \
+  \           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition\n\
+  ...\n144 |         sum\n    |         --- at the end of the function body\n\nerror:\
+  \ invariant not satisfied at end of loop body\n   --> /tmp/tmp0ave954u.rs:137:17\n\
+  \    |\n137 |                 sum as int == sum_l(v@.subrange(i as int, v.len()\
+  \ as int).map(|i, x| x as int))\n    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: possible arithmetic underflow/overflow\n   --> /tmp/tmp0ave954u.rs:140:19\n\
+  \    |\n140 |             sum = sum + v[i - 1];\n    |                   ^^^^^^^^^^^^^^\n\
+  \nerror: aborting due to 7 previous errors\n\n"
+verification_output: 'verification results:: 7 verified, 5 errors
+
+  '

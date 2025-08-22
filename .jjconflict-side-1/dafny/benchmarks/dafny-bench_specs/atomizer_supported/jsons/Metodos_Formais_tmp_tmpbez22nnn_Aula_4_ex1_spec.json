@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Par\n\n//ATOM_PLACEHOLDER_FazAlgo\n\n",
+  "atoms": {
+    "Par": [
+      [],
+      "// ATOM \npredicate Par(n:int)\n{\n    n % 2 == 0\n}\n",
+      "predicate"
+    ],
+    "FazAlgo": [
+      [
+        "Par"
+      ],
+      "// SPEC \n\nmethod FazAlgo (a:int, b:int) returns (x:int, y:int)\nrequires a >= b && Par (a-b)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Par": "Par",
+    "//ATOM_PLACEHOLDER_FazAlgo": "FazAlgo"
+  }
+}

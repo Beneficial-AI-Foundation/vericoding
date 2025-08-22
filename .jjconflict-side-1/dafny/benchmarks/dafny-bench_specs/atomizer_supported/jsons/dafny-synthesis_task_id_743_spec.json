@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_RotateRight",
+  "atoms": {
+    "RotateRight": [
+      [],
+      "// SPEC \nmethod RotateRight(l: seq<int>, n: int) returns (r: seq<int>)\n    requires n >= 0\n    ensures |r| == |l|\n    ensures forall i :: 0 <= i < |l| ==> r[i] == l[(i - n + |l|) % |l|]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_RotateRight": "RotateRight"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Two\n\n",
+  "atoms": {
+    "Two": [
+      [],
+      "// SPEC \nmethod Two(x: int) returns (y: int)\nensures y == x + 1\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Two": "Two"
+  }
+}

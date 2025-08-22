@@ -1,0 +1,13 @@
+{
+  "skeleton": "// returns an index of the largest element of array 'a' in the range [0..n)\n//ATOM_PLACEHOLDER_findMax\n\n\n\n",
+  "atoms": {
+    "findMax": [
+      [],
+      "// SPEC \n// returns an index of the largest element of array 'a' in the range [0..n)\nmethod findMax (a : array<int>, n : int) returns (r:int)\nrequires a.Length > 0\nrequires 0 < n <= a.Length\nensures 0 <= r < n <= a.Length;\nensures forall k :: 0 <= k < n <= a.Length ==> a[r] >= a[k];\nensures multiset(a[..]) == multiset(old(a[..]));\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_findMax": "findMax"
+  }
+}

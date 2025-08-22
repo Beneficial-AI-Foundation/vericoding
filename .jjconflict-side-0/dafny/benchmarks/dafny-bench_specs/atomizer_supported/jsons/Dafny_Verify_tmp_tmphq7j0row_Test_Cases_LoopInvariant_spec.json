@@ -1,0 +1,43 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_UpWhileLess\n\n\n//ATOM_PLACEHOLDER_UpWhileNotEqual\n\n\n//ATOM_PLACEHOLDER_DownWhileNotEqual\n\n\n//ATOM_PLACEHOLDER_DownWhileGreater\n\n\n//ATOM_PLACEHOLDER_Quotient\n\n//ATOM_PLACEHOLDER_Quotient1\n\n",
+  "atoms": {
+    "UpWhileLess": [
+      [],
+      "// SPEC \nmethod UpWhileLess(N: int) returns (i: int)\nrequires 0 <= N\nensures i == N\n{\n}\n",
+      "method"
+    ],
+    "UpWhileNotEqual": [
+      [],
+      "// SPEC \n\n\nmethod UpWhileNotEqual(N: int) returns (i: int)\nrequires 0 <= N\nensures i == N\n{\n}\n",
+      "method"
+    ],
+    "DownWhileNotEqual": [
+      [],
+      "// SPEC \n\n\nmethod DownWhileNotEqual(N: int) returns (i: int)\nrequires 0 <= N\nensures i == 0\n{\n}\n",
+      "method"
+    ],
+    "DownWhileGreater": [
+      [],
+      "// SPEC \n\n\nmethod DownWhileGreater(N: int) returns (i: int)\nrequires 0 <= N\nensures i == 0\n{\n}\n",
+      "method"
+    ],
+    "Quotient": [
+      [],
+      "// SPEC \n\n\nmethod Quotient()\n{\n}\n",
+      "method"
+    ],
+    "Quotient1": [
+      [],
+      "// SPEC \n\nmethod Quotient1() \n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_UpWhileLess": "UpWhileLess",
+    "//ATOM_PLACEHOLDER_UpWhileNotEqual": "UpWhileNotEqual",
+    "//ATOM_PLACEHOLDER_DownWhileNotEqual": "DownWhileNotEqual",
+    "//ATOM_PLACEHOLDER_DownWhileGreater": "DownWhileGreater",
+    "//ATOM_PLACEHOLDER_Quotient": "Quotient",
+    "//ATOM_PLACEHOLDER_Quotient1": "Quotient1"
+  }
+}

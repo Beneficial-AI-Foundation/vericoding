@@ -1,0 +1,22 @@
+{
+  "skeleton": "//https://homepage.cs.uiowa.edu/~tinelli/classes/181/Fall21/Tools/Dafny/Examples/selection-sort.shtml\n\n//ATOM_PLACEHOLDER_sorted\n\n//ATOM_PLACEHOLDER_sorted'\n\n\n// Selection sort on arrays\n\n//ATOM_PLACEHOLDER_SelectionSort\n\n",
+  "atoms": {
+    "sorted": [
+      [],
+      "// ATOM \n\npredicate sorted' (a: array<int>, i: int)\n\trequires a != null\n\trequires 0 <= i <= a.Length\n\treads a\n{\n\tforall k :: 0 < k < i ==> a[k-1] <= a[k]\n}\n",
+      "predicate"
+    ],
+    "SelectionSort": [
+      [
+        "sorted"
+      ],
+      "// SPEC \n\n\n// Selection sort on arrays\n\nmethod SelectionSort(a: array<int>) \n  modifies a\n  ensures sorted(a)\n  //ensures multiset(old(a[..])) == multiset(a[..])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sorted": "sorted",
+    "//ATOM_PLACEHOLDER_sorted'": "sorted'",
+    "//ATOM_PLACEHOLDER_SelectionSort": "SelectionSort"
+  }
+}

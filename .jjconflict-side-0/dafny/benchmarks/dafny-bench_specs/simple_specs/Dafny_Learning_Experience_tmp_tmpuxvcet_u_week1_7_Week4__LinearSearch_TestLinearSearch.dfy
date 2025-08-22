@@ -1,0 +1,4 @@
+// SPEC
+
+method TestLinearSearch() {
+}

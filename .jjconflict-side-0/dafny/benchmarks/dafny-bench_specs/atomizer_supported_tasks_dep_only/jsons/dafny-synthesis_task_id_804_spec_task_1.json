@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_IsEven\n\n//ATOM_PLACEHOLDER_IsProductEven",
+  "atoms": {
+    "IsProductEven": [
+      [
+        "IsEven"
+      ],
+      "// SPEC \n\nmethod IsProductEven(a: array<int>) returns (result: bool)\n    ensures result <==> exists i :: 0 <= i < a.Length && IsEven(a[i])\n{\n}\n",
+      "method"
+    ],
+    "IsEven": [
+      [],
+      "// ATOM \npredicate IsEven(n: int)\n{\n    n % 2 == 0\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsEven": "IsEven",
+    "//ATOM_PLACEHOLDER_IsProductEven": "IsProductEven"
+  }
+}

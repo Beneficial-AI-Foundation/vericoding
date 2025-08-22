@@ -1,0 +1,21 @@
+{
+  "skeleton": "\n//Problem01\n//ATOM_PLACEHOLDER_fib\n\n//ATOM_PLACEHOLDER_fibIter\n//# 2 pts\n\n//Problem02\n//ATOM_PLACEHOLDER_fact\n\n//ATOM_PLACEHOLDER_factIter \n//# 3 pts\n//Problem03\n//ATOM_PLACEHOLDER_gcd\n\n//ATOM_PLACEHOLDER_gcdI\n//# 3 pts\n\n\n// # sum: 9 pts\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n//# 3 pts\n\n\n// # sum: 9 pts\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+  "atoms": {
+    "gcd": [
+      [],
+      "// ATOM \n//# 3 pts\n//Problem03\nfunction gcd(m: nat, n: nat): nat\n    requires m > 0 && n > 0\n{\n    if m == n then m\n    else if m > n then gcd(m - n, n)\n    else gcd(m, n - m)\n}\n",
+      "function"
+    ],
+    "gcdI": [
+      [
+        "gcd"
+      ],
+      "// SPEC \n\nmethod gcdI(m: int, n: int) returns (g: int)\n    requires  m > 0 && n > 0 \n    ensures g == gcd(m, n);\n    {\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_gcd": "gcd",
+    "//ATOM_PLACEHOLDER_gcdI": "gcdI"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_somaAteAberto\n\n//ATOM_PLACEHOLDER_somatorio \n \n",
+  "atoms": {
+    "somaAteAberto": [
+      [],
+      "// ATOM \nfunction somaAteAberto(a:array<nat>, i:nat):nat\nrequires i <= a.Length\nreads a\n{\n    if i ==0\n    then 0\n    else a[i-1] + somaAteAberto(a,i-1)\n}\n",
+      "function"
+    ],
+    "somatorio": [
+      [
+        "somaAteAberto"
+      ],
+      "// SPEC \n\nmethod somatorio(a:array<nat>) returns (s:nat)\nensures s == somaAteAberto(a, a.Length)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_somaAteAberto": "somaAteAberto",
+    "//ATOM_PLACEHOLDER_somatorio": "somatorio"
+  }
+}

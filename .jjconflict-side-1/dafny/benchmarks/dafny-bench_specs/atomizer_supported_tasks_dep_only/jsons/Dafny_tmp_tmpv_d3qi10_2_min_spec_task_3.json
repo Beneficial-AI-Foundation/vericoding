@@ -1,0 +1,21 @@
+{
+  "skeleton": "\n//ATOM_PLACEHOLDER_min\n\n//ATOM_PLACEHOLDER_minMethod\n\n//ATOM_PLACEHOLDER_minFunction\n\n\n// Return a minimum of a.\n//ATOM_PLACEHOLDER_minArray\n\n//ATOM_PLACEHOLDER_Main\n\n\n\n",
+  "atoms": {
+    "Main": [
+      [
+        "min"
+      ],
+      "// SPEC \n\nmethod Main(){\n}\n",
+      "method"
+    ],
+    "min": [
+      [],
+      "// ATOM \n\nfunction min(a: int, b: int): int\n    ensures min(a, b) <= a && min(a, b) <= b\n    ensures min(a, b) == a || min(a, b) == b\n{\n    if a < b then a else b\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_min": "min",
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

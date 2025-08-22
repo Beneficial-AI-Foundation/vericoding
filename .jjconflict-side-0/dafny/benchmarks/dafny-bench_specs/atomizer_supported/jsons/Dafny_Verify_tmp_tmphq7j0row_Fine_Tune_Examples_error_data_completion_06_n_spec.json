@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Main\n\n\n\n\n\n\n\n",
+  "atoms": {
+    "Main": [
+      [],
+      "// SPEC \nmethod Main() returns (x: int, y: int)\n\tensures x == y;\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "skeleton": "// RUN: %dafny /compile:0 /dprint:\"%t.dprint\" \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n//ATOM_PLACEHOLDER_Abc//ATOM_PLACEHOLDER_SeqRank0\n\n//ATOM_PLACEHOLDER_SeqRank1\n\n//ATOM_PLACEHOLDER_Def//ATOM_PLACEHOLDER_MultisetRank)\n{\n}\n\n//ATOM_PLACEHOLDER_Ghi//ATOM_PLACEHOLDER_SetRank)\n{\n}\n\n)\n{\n}\n\n",
+  "atoms": {
+    "Abc": [
+      [],
+      "// ATOM \n// RUN: %dafny /compile:0 /dprint:\"%t.dprint\" \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\ndatatype Abc = End | Wrapper(seq<Abc>)\n",
+      "datatype"
+    ],
+    "SeqRank0": [
+      [],
+      "// ATOM \n\nlemma SeqRank0(a: Abc)\n  ensures a != Wrapper([a])\n{\n                       // The reason we need the assert is to match the trigger in the rank axioms produced\n                       // for datatypes containing sequences.\n                       // See \"is SeqType\" case of AddDatatype in Translator.cs\n}\n",
+      "lemma"
+    ],
+    "SeqRank1": [
+      [],
+      "// ATOM \n\nlemma SeqRank1(s: seq<Abc>)\n  requires s != []\n  ensures s[0] != Wrapper(s)\n{\n}\n",
+      "lemma"
+    ],
+    "Def": [
+      [],
+      "// ATOM \n\ndatatype Def = End | MultiWrapper(multiset<Def>)\n",
+      "datatype"
+    ],
+    "MultisetRank": [
+      [],
+      "// ATOM \n\nlemma MultisetRank(a: Def)\n  ensures a != MultiWrapper(multiset{a})\n{\n}\n",
+      "lemma"
+    ],
+    "Ghi": [
+      [],
+      "// ATOM \n\ndatatype Ghi = End | SetWrapper(set<Ghi>)\n",
+      "datatype"
+    ],
+    "SetRank": [
+      [],
+      "// ATOM \n\nlemma SetRank(a: Ghi)\n  ensures a != SetWrapper({a})\n{\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Abc": "Abc",
+    "//ATOM_PLACEHOLDER_SeqRank0": "SeqRank0",
+    "//ATOM_PLACEHOLDER_SeqRank1": "SeqRank1",
+    "//ATOM_PLACEHOLDER_Def": "Def",
+    "//ATOM_PLACEHOLDER_MultisetRank": "MultisetRank",
+    "//ATOM_PLACEHOLDER_Ghi": "Ghi",
+    "//ATOM_PLACEHOLDER_SetRank": "SetRank"
+  }
+}

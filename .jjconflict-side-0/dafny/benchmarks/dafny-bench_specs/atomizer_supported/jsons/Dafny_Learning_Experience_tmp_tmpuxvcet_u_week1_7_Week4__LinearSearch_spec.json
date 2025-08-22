@@ -1,0 +1,35 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_LinearSeach0\n\n//ATOM_PLACEHOLDER_P\n\n//ATOM_PLACEHOLDER_TestLinearSearch\n\n//ATOM_PLACEHOLDER_LinearSeach1\n\n",
+  "atoms": {
+    "LinearSeach0": [
+      [
+        "P"
+      ],
+      "// SPEC \nmethod LinearSeach0<T>(a: array<T>, P: T -> bool) returns (n: int)\n    ensures 0 <= n <= a.Length\n    ensures n == a.Length || P(a[n])\n{\n}\n",
+      "method"
+    ],
+    "P": [
+      [],
+      "// ATOM \n\npredicate P(n: int) {\n    n % 2 == 0\n}\n",
+      "predicate"
+    ],
+    "TestLinearSearch": [
+      [],
+      "// SPEC \n\nmethod TestLinearSearch() {\n}\n",
+      "method"
+    ],
+    "LinearSeach1": [
+      [
+        "P"
+      ],
+      "// SPEC \n\nmethod LinearSeach1<T>(a: array<T>, P: T -> bool) returns (n: int)\n    ensures 0 <= n <= a.Length\n    ensures n == a.Length || P(a[n])\n    ensures n == a.Length ==> forall i :: 0 <= i < a.Length ==> !P(a[i])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_LinearSeach0": "LinearSeach0",
+    "//ATOM_PLACEHOLDER_P": "P",
+    "//ATOM_PLACEHOLDER_TestLinearSearch": "TestLinearSearch",
+    "//ATOM_PLACEHOLDER_LinearSeach1": "LinearSeach1"
+  }
+}

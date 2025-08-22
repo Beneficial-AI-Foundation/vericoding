@@ -1,0 +1,47 @@
+{
+  "skeleton": "/*                                      Cumulative Sums over Arrays                                        */\n\n/*\n    Daniel Cavalheiro   57869\n    Pedro Nunes         57854\n*/\n\n\n\n//(a)\n\n//ATOM_PLACEHOLDER_sum\n\n\n\n//(b)\n\n//ATOM_PLACEHOLDER_query\n\n\n\n//(c)\n\n//ATOM_PLACEHOLDER_is_prefix_sum_for\n\n//ATOM_PLACEHOLDER_aux\n\n\n//ATOM_PLACEHOLDER_queryFast\n\n\n\n\n//ATOM_PLACEHOLDER_Main\n\n",
+  "atoms": {
+    "queryFast": [
+      [
+        "is_prefix_sum_for",
+        "sum",
+        "aux"
+      ],
+      "// SPEC \n\n\nmethod queryFast(a: array<int>, c: array<int>, i: int, j: int) returns (r: int)\n    requires a.Length + 1 == c.Length && c[0] == 0\n    requires 0 <= i <= j <= a.Length\n    requires is_prefix_sum_for(a,c)  \n    ensures r == sum(a, i, j)\n{\n}\n",
+      "method"
+    ],
+    "Main": [
+      [
+        "queryFast",
+        "sum"
+      ],
+      "// SPEC \n\n\n\n\nmethod Main()\n{\n}\n",
+      "method"
+    ],
+    "aux": [
+      [
+        "is_prefix_sum_for",
+        "sum"
+      ],
+      "// ATOM \n\nlemma aux(a: array<int>, c: array<int>, i: int, j: int)\n    requires 0 <= i <= j <= a.Length\n    requires a.Length + 1 == c.Length\n    requires c[0] == 0\n    requires is_prefix_sum_for(a, c)\n    ensures forall k: int :: i <= k <= j ==> sum(a, i, k) + sum(a, k, j) == c[k] - c[i] + c[j] - c[k] //sum(a, i, j) == c[j] - c[i]\n{}\n",
+      "lemma"
+    ],
+    "is_prefix_sum_for": [
+      [],
+      "// ATOM \n\n\n\n//(c)\n\npredicate is_prefix_sum_for (a: array<int>, c: array<int>)\n    requires a.Length + 1 == c.Length\n    requires c[0] == 0\n    reads c, a\n{\n    forall i: int :: 0 <= i < a.Length ==> c[i+1] == c[i] + a[i]\n}\n",
+      "predicate"
+    ],
+    "sum": [
+      [],
+      "// ATOM \n\n\n\n\n//(a)\n\nfunction sum(a: array<int>, i: int, j: int): int\n    reads a\n    requires 0 <= i <= j <= a.Length\n{\n    if (i == j) then 0\n    else a[i] + sum(a, i+1, j)\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sum": "sum",
+    "//ATOM_PLACEHOLDER_is_prefix_sum_for": "is_prefix_sum_for",
+    "//ATOM_PLACEHOLDER_aux": "aux",
+    "//ATOM_PLACEHOLDER_queryFast": "queryFast",
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

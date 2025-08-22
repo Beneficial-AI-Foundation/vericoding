@@ -1,0 +1,47 @@
+{
+  "skeleton": "//Algorithm 1: From left to right return the first\n//ATOM_PLACEHOLDER_mmaximum1\n\n//Algorithm 2: From right to left return the last\n//ATOM_PLACEHOLDER_mmaximum2\n\n\n//ATOM_PLACEHOLDER_mfirstMaximum\n\n//ATOM_PLACEHOLDER_mlastMaximum\n\n//Algorithm : from left to right\n//Algorithm : from right to left\n\n//ATOM_PLACEHOLDER_mmaxvalue1\n\n//ATOM_PLACEHOLDER_mmaxvalue2\n\n",
+  "atoms": {
+    "mmaximum1": [
+      [],
+      "// SPEC \n//Algorithm 1: From left to right return the first\nmethod mmaximum1(v:array<int>) returns (i:int) \nrequires v.Length>0\nensures 0<=i<v.Length \nensures forall k:: 0<=k<v.Length ==> v[i]>=v[k]\n{\n}\n",
+      "method"
+    ],
+    "mmaximum2": [
+      [],
+      "// SPEC \n\n//Algorithm 2: From right to left return the last\nmethod mmaximum2(v:array<int>) returns (i:int) \nrequires v.Length>0\nensures 0<=i<v.Length \nensures forall k:: 0<=k<v.Length ==> v[i]>=v[k]\n{\n}\n",
+      "method"
+    ],
+    "mfirstMaximum": [
+      [],
+      "// SPEC \n\n\nmethod mfirstMaximum(v:array<int>) returns (i:int)\nrequires v.Length>0\nensures 0<=i<v.Length \nensures forall k:: 0<=k<v.Length ==> v[i]>=v[k]\nensures forall l:: 0<=l<i ==> v[i]>v[l]\n//Algorithm: from left to right\n{\n}\n",
+      "method"
+    ],
+    "mlastMaximum": [
+      [],
+      "// SPEC \n\nmethod mlastMaximum(v:array<int>) returns (i:int)\nrequires v.Length>0\nensures 0<=i<v.Length \nensures forall k:: 0<=k<v.Length ==> v[i]>=v[k]\nensures forall l:: i<l<v.Length ==> v[i]>v[l]\n{\n}\n",
+      "method"
+    ],
+    "mmaxvalue1": [
+      [
+        "mmaximum1"
+      ],
+      "// SPEC \n\n//Algorithm : from left to right\n//Algorithm : from right to left\n\nmethod mmaxvalue1(v:array<int>) returns (m:int)\nrequires v.Length>0\nensures m in v[..]\nensures forall k::0<=k<v.Length ==> m>=v[k]\n{\n}\n",
+      "method"
+    ],
+    "mmaxvalue2": [
+      [
+        "mmaximum2"
+      ],
+      "// SPEC \n\nmethod mmaxvalue2(v:array<int>) returns (m:int)\nrequires v.Length>0\nensures m in v[..]\nensures forall k::0<=k<v.Length ==> m>=v[k]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_mmaximum1": "mmaximum1",
+    "//ATOM_PLACEHOLDER_mmaximum2": "mmaximum2",
+    "//ATOM_PLACEHOLDER_mfirstMaximum": "mfirstMaximum",
+    "//ATOM_PLACEHOLDER_mlastMaximum": "mlastMaximum",
+    "//ATOM_PLACEHOLDER_mmaxvalue1": "mmaxvalue1",
+    "//ATOM_PLACEHOLDER_mmaxvalue2": "mmaxvalue2"
+  }
+}

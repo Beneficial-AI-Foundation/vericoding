@@ -1,0 +1,78 @@
+{
+  "skeleton": "// Noa Leron 207131871\n// Tsuri Farhana 315016907\n\n\n\n//ATOM_PLACEHOLDER_Sorted\n\n/*\nGoal: Implement the well known merge sort algorithm in O(a.Length X log_2(a.Length)) time, recursively.\n\n- Divide the contents of the original array into two local arrays\n- After sorting the local arrays (recursively), merge the contents of the two returned arrays using the Merge method (see below)\n- DO NOT modify the specification or any other part of the method's signature\n- DO NOT introduce any further methods\n*/\n//ATOM_PLACEHOLDER_MergeSort \n\n//ATOM_PLACEHOLDER_Inv\n\n/*\nGoal: Implement iteratively, correctly, efficiently, clearly\n\nDO NOT modify the specification or any other part of the method's signature\n*/\n//ATOM_PLACEHOLDER_Merge\n\n\n//This is a method that replace the loop body\n//ATOM_PLACEHOLDER_unknown_2074 MergeLoop(b: array<int>, c: array<int>, d: array<int>,i0: nat , j0: nat)  returns (i: nat, j: nat)\n\t\trequires b != c && b != d && b.Length == c.Length + d.Length\n\t\trequires Sorted(c[..]) && Sorted(d[..])\n\t\trequires i0 <= c.Length && j0 <= d.Length && i0 + j0 <= b.Length\n\t\trequires InvSubSet(b[..],c[..],d[..],i0,j0)\n\t\trequires InvSorted(b[..],c[..],d[..],i0,j0)\n\t\trequires i0 + j0 < b.Length\n\n\t\tmodifies b\n\n\t\tensures i <= c.Length && j <= d.Length && i + j <= b.Length\n\t\tensures InvSubSet(b[..],c[..],d[..],i,j)\n\t\tensures InvSorted(b[..],c[..],d[..],i,j)\n\t\t//decreases ensures\n\t\tensures 0 <= c.Length - i < c.Length - i0 || (c.Length - i == c.Length - i0 && 0 <= d.Length - j < d.Length - j0)\n\t\t{\n\n\t\t\ti,j := i0,j0;\n\t\t\t\t\n\t\t\t\tif(i == c.Length || (j< d.Length && d[j] < c[i])){\n\t\t\t\t\t// in this case we take the next value from d\n\t\t\t\tb[i+j] := d[j];\n\t\t\t\tlemmaInvSubsetTakeValueFromD(b[..],c[..],d[..],i,j);\n\n\t\t\t\tj := j + 1;\n\t\t\t}\n\t\t\telse{\n\t\t\t\t\t// in this case we take the next value from c\n\t\t\t\t\n\t\t\t\tb[i+j] := c[i];\n\n\t\t\t\tlemmaInvSubsetTakeValueFromC(b[..],c[..],d[..],i,j);\n\t\t\t\ti := i + 1;\n\t\t\t}\n\n\n\t\t}\n\n\t\n//Loop invariant - b is sprted so far and the next two potential values that will go into b are bigger then the biggest value in b.\n//ATOM_PLACEHOLDER_InvSorted\n\n\n//Loop invariant - the multiset of the prefix of b so far is the same multiset as the prefixes of c and d so far.\n//ATOM_PLACEHOLDER_InvSubSet\n\n//This lemma helps dafny see that if the prefixs of arrays are the same multiset until the end of the arrays,\n//all the arrays are the same multiset.\n//ATOM_PLACEHOLDER_LemmaMultysetsEquals\n\n\n//This lemma helps dafny see that after adding the next value from c to b the prefixes are still the same subsets.\n//ATOM_PLACEHOLDER_lemmaInvSubsetTakeValueFromC\n\n\n\n//This lemma helps dafny see that after adding the next value from d to b the prefixes are still the same subsets.\n//ATOM_PLACEHOLDER_unknown_4896 lemmaInvSubsetTakeValueFromD (b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat)\n\trequires i <= |c|;\n\trequires j < |d|;\n\trequires i + j < |b|;\n\trequires |c| + |d| == |b|;\n\trequires multiset(b[..i+j]) == multiset(c[..i]) + multiset(d[..j])\n\trequires b[i+j] == d[j]\n\tensures multiset(b[..i+j+1]) == multiset(c[..i])+multiset(d[..j+1])\n\t{\n\t}\n\n\n\n\n\n//ATOM_PLACEHOLDER_Main\n\n",
+  "atoms": {
+    "Sorted": [
+      [],
+      "// ATOM \n// Noa Leron 207131871\n// Tsuri Farhana 315016907\n\n\n\npredicate Sorted(q: seq<int>) {\n\tforall i,j :: 0 <= i <= j < |q| ==> q[i] <= q[j]\n}\n\n/*\nGoal: Implement the well known merge sort algorithm in O(a.Length X log_2(a.Length)) time, recursively.\n\n- Divide the contents of the original array into two local arrays\n- After sorting the local arrays (recursively), merge the contents of the two returned arrays using the Merge method (see below)\n- DO NOT modify the specification or any other part of the method's signature\n- DO NOT introduce any further methods\n*/\n",
+      "predicate"
+    ],
+    "MergeSort": [
+      [
+        "Sorted",
+        "Merge"
+      ],
+      "// SPEC \nmethod MergeSort(a: array<int>) returns (b: array<int>)\n\tensures b.Length == a.Length && Sorted(b[..]) && multiset(a[..]) == multiset(b[..])\n{\n}\n",
+      "method"
+    ],
+    "Inv": [
+      [],
+      "// ATOM \n\nghost predicate Inv(a: seq<int>, a1: seq<int>, a2: seq<int>, i: nat, mid: nat){\n    (i <= |a1|) && (i <= |a2|) && (i+mid <= |a|) &&\n    (a1[..i] == a[..i]) && (a2[..i] == a[mid..(i+mid)])\n}\n\n/*\nGoal: Implement iteratively, correctly, efficiently, clearly\n\nDO NOT modify the specification or any other part of the method's signature\n*/\n",
+      "ghost predicate"
+    ],
+    "Merge": [
+      [
+        "Sorted",
+        "LemmaMultysetsEquals"
+      ],
+      "// SPEC \nmethod Merge(b: array<int>, c: array<int>, d: array<int>)\n\trequires b != c && b != d && b.Length == c.Length + d.Length\n\trequires Sorted(c[..]) && Sorted(d[..])\n\tensures Sorted(b[..]) && multiset(b[..]) == multiset(c[..])+multiset(d[..])\n\tmodifies b\n{\n}\n",
+      "method"
+    ],
+    "": [
+      [],
+      "// ATOM \n\n\n\n//This lemma helps dafny see that after adding the next value from d to b the prefixes are still the same subsets.\nlemma{:verify true} lemmaInvSubsetTakeValueFromD (b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat)\n\trequires i <= |c|;\n\trequires j < |d|;\n\trequires i + j < |b|;\n\trequires |c| + |d| == |b|;\n\trequires multiset(b[..i+j]) == multiset(c[..i]) + multiset(d[..j])\n\trequires b[i+j] == d[j]\n\tensures multiset(b[..i+j+1]) == multiset(c[..i])+multiset(d[..j+1])\n\t{\n\t}\n",
+      "lemma"
+    ],
+    "InvSorted": [
+      [
+        "Sorted"
+      ],
+      "// ATOM \n\n\t\n//Loop invariant - b is sprted so far and the next two potential values that will go into b are bigger then the biggest value in b.\nghost predicate InvSorted(b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat){\n\ti <= |c| && j <= |d| && i + j <= |b| &&\n\t((i+j > 0 && i < |c|) ==> (b[j + i - 1] <= c[i])) &&\n\t((i+j > 0 && j < |d|) ==> (b[j + i - 1] <= d[j])) &&\n\tSorted(b[..i+j])\n\t}\n",
+      "ghost predicate"
+    ],
+    "InvSubSet": [
+      [],
+      "// ATOM \n\n\n//Loop invariant - the multiset of the prefix of b so far is the same multiset as the prefixes of c and d so far.\nghost predicate InvSubSet(b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat){\n\ti <= |c| && j <= |d| && i + j <= |b| &&\n\tmultiset(b[..i+j]) == multiset(c[..i]) + multiset(d[..j])\n}\n",
+      "ghost predicate"
+    ],
+    "LemmaMultysetsEquals": [
+      [],
+      "// ATOM \n\n//This lemma helps dafny see that if the prefixs of arrays are the same multiset until the end of the arrays,\n//all the arrays are the same multiset.\nlemma LemmaMultysetsEquals (b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat)\n\trequires i == |c|;\n\trequires j == |d|;\n\trequires i + j == |b|;\n\trequires multiset(b[..i+j]) == multiset(c[..i]) + multiset(d[..j])\n\tensures multiset(b[..]) == multiset(c[..])+multiset(d[..]);\n\t{\n\t}\n",
+      "lemma"
+    ],
+    "lemmaInvSubsetTakeValueFromC": [
+      [],
+      "// ATOM \n\n\n//This lemma helps dafny see that after adding the next value from c to b the prefixes are still the same subsets.\nlemma lemmaInvSubsetTakeValueFromC (b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat)\n\trequires i < |c|;\n\trequires j <= |d|;\n\trequires i + j < |b|;\n\trequires |c| + |d| == |b|;\n\trequires multiset(b[..i+j]) == multiset(c[..i]) + multiset(d[..j])\n\trequires b[i+j] == c[i]\n\tensures multiset(b[..i+j+1]) == multiset(c[..i+1])+multiset(d[..j])\n\t{\n\t}\n",
+      "lemma"
+    ],
+    "Main": [
+      [
+        "MergeSort"
+      ],
+      "// SPEC \n\n\n\n\n\nmethod Main() {\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Sorted": "Sorted",
+    "//ATOM_PLACEHOLDER_MergeSort": "MergeSort",
+    "//ATOM_PLACEHOLDER_Inv": "Inv",
+    "//ATOM_PLACEHOLDER_Merge": "Merge",
+    "//ATOM_PLACEHOLDER_unknown_2074": "unknown_2074",
+    "//ATOM_PLACEHOLDER_InvSorted": "InvSorted",
+    "//ATOM_PLACEHOLDER_InvSubSet": "InvSubSet",
+    "//ATOM_PLACEHOLDER_LemmaMultysetsEquals": "LemmaMultysetsEquals",
+    "//ATOM_PLACEHOLDER_lemmaInvSubsetTakeValueFromC": "lemmaInvSubsetTakeValueFromC",
+    "//ATOM_PLACEHOLDER_unknown_4896": "unknown_4896",
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

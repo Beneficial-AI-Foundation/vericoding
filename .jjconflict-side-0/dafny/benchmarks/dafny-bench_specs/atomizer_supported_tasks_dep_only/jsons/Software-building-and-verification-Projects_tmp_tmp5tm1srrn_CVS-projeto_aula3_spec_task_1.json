@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_fib\n\n//ATOM_PLACEHOLDER_Fib\n\n// 2.\n//ATOM_PLACEHOLDER_List//ATOM_PLACEHOLDER_add\n\n//ATOM_PLACEHOLDER_addImp\n\n// 3.\n//ATOM_PLACEHOLDER_maxArray\n\n// 5.\n//ATOM_PLACEHOLDER_maxArrayReverse\n\n// 6\n//ATOM_PLACEHOLDER_sum\n\n//ATOM_PLACEHOLDER_sumBackwards\n\n",
+  "atoms": {
+    "fib": [
+      [],
+      "// ATOM \nfunction fib(n : nat) : nat\n{\n  if (n==0) then 1 else\n  if (n==1) then 1 else fib(n-1)+fib(n-2)\n}\n",
+      "function"
+    ],
+    "Fib": [
+      [
+        "fib"
+      ],
+      "// SPEC \n\nmethod Fib(n : nat) returns (r:nat)\n  ensures r == fib(n)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_fib": "fib",
+    "//ATOM_PLACEHOLDER_Fib": "Fib"
+  }
+}

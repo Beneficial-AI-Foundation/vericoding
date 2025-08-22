@@ -1,0 +1,36 @@
+{
+  "skeleton": "\n//ATOM_PLACEHOLDER_sqrt//ATOM_PLACEHOLDER_testSqrt\n\n//ATOM_PLACEHOLDER_monotonicMult\n\n\n//ATOM_PLACEHOLDER_monotonicSquare\n\n\n\n\n\n\n\n",
+  "atoms": {
+    "monotonicSquare": [
+      [
+        "monotonicMult"
+      ],
+      "// ATOM \n\n\nlemma monotonicSquare(x: real, y: real)\n  requires 0.0 < x < y\n  ensures 0.0 < x * x < y * y\n{\n    monotonicMult(x, x, y);\n}\n",
+      "lemma"
+    ],
+    "sqrt": [
+      [],
+      "// SPEC \n\nmethod sqrt(x: real) returns (r: real)\n  requires x >= 0.0\n  ensures r * r == x && r >= 0.0\n",
+      "method"
+    ],
+    "monotonicMult": [
+      [],
+      "// ATOM \n\nlemma monotonicMult(c: real, x: real, y: real)\n  requires x < y && c > 0.0\n  ensures c * x < c * y\n{}\n",
+      "lemma"
+    ],
+    "testSqrt": [
+      [
+        "sqrt",
+        "monotonicSquare"
+      ],
+      "// SPEC \n\nmethod testSqrt() {\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sqrt": "sqrt",
+    "//ATOM_PLACEHOLDER_testSqrt": "testSqrt",
+    "//ATOM_PLACEHOLDER_monotonicMult": "monotonicMult",
+    "//ATOM_PLACEHOLDER_monotonicSquare": "monotonicSquare"
+  }
+}

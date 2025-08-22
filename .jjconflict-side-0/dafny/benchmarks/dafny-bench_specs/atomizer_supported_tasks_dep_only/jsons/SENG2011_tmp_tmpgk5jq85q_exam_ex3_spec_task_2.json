@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Symmetric\n/*\n//ATOM_PLACEHOLDER_Main\n*/\n\n*/\n",
+  "atoms": {
+    "Main": [
+      [
+        "Symmetric"
+      ],
+      "// SPEC \nmethod Main() {\n}\n*/\n",
+      "method"
+    ],
+    "Symmetric": [
+      [],
+      "// SPEC \nmethod Symmetric(a: array<int>) returns (flag: bool)\nensures flag == true ==> forall x :: 0 <= x < a.Length ==> a[x] == a[a.Length - x - 1]\nensures flag == false ==> exists x :: 0 <= x < a.Length && a[x] != a[a.Length - x - 1]\n{\n}\n/*\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Symmetric": "Symmetric",
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

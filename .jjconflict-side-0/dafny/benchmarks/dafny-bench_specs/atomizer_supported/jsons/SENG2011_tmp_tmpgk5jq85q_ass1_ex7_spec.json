@@ -1,0 +1,13 @@
+{
+  "skeleton": "// successfully verifies\n//ATOM_PLACEHOLDER_BigFoot\n\n\n\n",
+  "atoms": {
+    "BigFoot": [
+      [],
+      "// SPEC \n// successfully verifies\nmethod BigFoot(step: nat) // DO NOT CHANGE\nrequires 0 < step <= 42;\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_BigFoot": "BigFoot"
+  }
+}

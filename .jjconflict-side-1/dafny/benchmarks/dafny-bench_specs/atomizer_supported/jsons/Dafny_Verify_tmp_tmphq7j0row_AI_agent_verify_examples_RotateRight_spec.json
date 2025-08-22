@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_RotateRight\n\n",
+  "atoms": {
+    "RotateRight": [
+      [],
+      "// SPEC \nmethod RotateRight(a: array)\n    requires a.Length > 0\n    modifies a\n    ensures forall i :: 1<= i < a.Length ==> a[i] == old(a[(i-1)]) \n    ensures a[0] == old(a[a.Length-1])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_RotateRight": "RotateRight"
+  }
+}

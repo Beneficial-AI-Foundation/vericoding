@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_sorted\n\n\n//ATOM_PLACEHOLDER_InsertionSort      \n//ATOM_PLACEHOLDER_Main\n\n\n\n",
+  "atoms": {
+    "InsertionSort": [
+      [
+        "sorted"
+      ],
+      "// SPEC \n\n\nmethod InsertionSort (a:array<int>)\nrequires a!=null && a.Length>1 \nensures sorted(a, 0, a.Length) \nmodifies a\n{\n}\n",
+      "method"
+    ],
+    "sorted": [
+      [],
+      "// ATOM \n predicate sorted (a:array<int>, start:int, end:int) // all \"before\" end are sorted      \n requires a!=null       \n requires 0<=start<=end<=a.Length       \n reads a       \n {           \n   forall j,k:: start<=j<k<end ==> a[j]<=a[k]\n }\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sorted": "sorted",
+    "//ATOM_PLACEHOLDER_InsertionSort": "InsertionSort"
+  }
+}

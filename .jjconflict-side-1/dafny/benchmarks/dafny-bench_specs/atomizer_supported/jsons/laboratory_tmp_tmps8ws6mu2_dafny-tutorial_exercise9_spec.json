@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_fib\n\n//ATOM_PLACEHOLDER_ComputeFib\n\n",
+  "atoms": {
+    "fib": [
+      [],
+      "// ATOM \nfunction fib(n: nat): nat\n{\n    if n == 0 then 0 else\n    if n == 1 then 1 else\n                    fib(n - 1) + fib(n - 2)\n}\n",
+      "function"
+    ],
+    "ComputeFib": [
+      [
+        "fib"
+      ],
+      "// SPEC \n\nmethod ComputeFib(n: nat) returns (b: nat)\n   ensures b == fib(n)  // Do not change this postcondition\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_fib": "fib",
+    "//ATOM_PLACEHOLDER_ComputeFib": "ComputeFib"
+  }
+}

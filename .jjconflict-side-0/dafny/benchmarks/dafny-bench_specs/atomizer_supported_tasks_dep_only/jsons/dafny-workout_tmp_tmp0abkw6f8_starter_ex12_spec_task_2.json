@@ -1,0 +1,21 @@
+{
+  "skeleton": "\n//ATOM_PLACEHOLDER_FindMax\n\n//ATOM_PLACEHOLDER_Main\n\n\n\n",
+  "atoms": {
+    "Main": [
+      [
+        "FindMax"
+      ],
+      "// SPEC \n\nmethod Main()\n{\n}\n",
+      "method"
+    ],
+    "FindMax": [
+      [],
+      "// SPEC \n\nmethod FindMax(a: array<int>) returns (max_idx: nat)\n\trequires a.Length > 0\n\tensures 0 <= max_idx < a.Length\n\tensures forall j :: 0 <= j < a.Length ==> a[max_idx] >= a[j]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_FindMax": "FindMax",
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "skeleton": "\n//ATOM_PLACEHOLDER_derangement\n\n//ATOM_PLACEHOLDER_permutation\n\n//ATOM_PLACEHOLDER_multisetRange\n\n//ATOM_PLACEHOLDER_distinct\n\n//ATOM_PLACEHOLDER_test\n\n//ATOM_PLACEHOLDER_unknown_522 end(links: seq<nat>)\n    requires |links| > 0\n    requires permutation(links)\n    requires derangement(links)\n    requires distinct(links)\n{\n    assume forall x :: x in links ==> 0 <= x < |links|;\n    assume forall x :: x in links ==> multiset(links)[x] ==1;\n    // assume multiset(links) == multisetRange(|links|);\n    var qAct: nat := links[0];\n    var i : nat := 0;\n    ghost var oldIndex := 0;\n    ghost var indices: multiset<nat> := multiset{0};\n    ghost var visited: multiset<nat> := multiset{};\n\n    while qAct != 0\n    {\n        ghost var oldVisit := visited;\n        ghost var oldqAct := qAct;\n        ghost var oldOldIndex := oldIndex;\n        oldIndex := qAct;\n        visited := visited + multiset{qAct};\n        indices := indices + multiset{qAct};\n            // forall x | x in visited \n            //     ensures exists k :: 0 <= k < |links| && links[k] == x && k in indices\n            // {\n            //     if x == oldqAct {\n            //         // assert links[oldOldIndex] == oldqAct;\n            //         // assert exists k :: 0 <= k < |links| && links[k] == x && k in indices;\n            //     }else {\n            //         // assert x in oldVisit;\n            //         // assert exists k :: 0 <= k < |links| && links[k] == x && k in indices;\n            //     }\n            // }\n        //}\n        qAct := links[qAct];\n        i := i + 1;\n    }\n}\n end(links: seq<nat>)\n    requires |links| > 0\n    requires permutation(links)\n    requires derangement(links)\n    requires distinct(links)\n{\n    assume forall x :: x in links ==> 0 <= x < |links|;\n    assume forall x :: x in links ==> multiset(links)[x] ==1;\n    // assume multiset(links) == multisetRange(|links|);\n    var qAct: nat := links[0];\n    var i : nat := 0;\n    ghost var oldIndex := 0;\n    ghost var indices: multiset<nat> := multiset{0};\n    ghost var visited: multiset<nat> := multiset{};\n\n    while qAct != 0\n    {\n        ghost var oldVisit := visited;\n        ghost var oldqAct := qAct;\n        ghost var oldOldIndex := oldIndex;\n        oldIndex := qAct;\n        visited := visited + multiset{qAct};\n        indices := indices + multiset{qAct};\n            // forall x | x in visited \n            //     ensures exists k :: 0 <= k < |links| && links[k] == x && k in indices\n            // {\n            //     if x == oldqAct {\n            //         // assert links[oldOldIndex] == oldqAct;\n            //         // assert exists k :: 0 <= k < |links| && links[k] == x && k in indices;\n            //     }else {\n            //         // assert x in oldVisit;\n            //         // assert exists k :: 0 <= k < |links| && links[k] == x && k in indices;\n            //     }\n            // }\n        //}\n        qAct := links[qAct];\n        i := i + 1;\n    }\n}\n",
+  "atoms": {
+    "derangement": [
+      [],
+      "// ATOM \n\npredicate derangement(s: seq<nat>) {\n    forall i :: 0 <= i < |s| ==> s[i] != i\n}\n",
+      "predicate"
+    ],
+    "permutation": [
+      [],
+      "// ATOM \n\npredicate permutation(s: seq<nat>) {\n    forall i :: 0 <= i < |s| ==> i in s\n}\n",
+      "predicate"
+    ],
+    "multisetRange": [
+      [],
+      "// ATOM \n\nfunction multisetRange(n: nat): multiset<nat> {\n    multiset(seq(n, i => i))\n}\n",
+      "function"
+    ],
+    "distinct": [
+      [],
+      "// ATOM \n\npredicate distinct<A(==)>(s: seq<A>) {\n    forall x,y :: x != y && 0 <= x <= y < |s| ==> s[x] != s[y]\n}\n",
+      "predicate"
+    ],
+    "test": [
+      [
+        "derangement",
+        "multisetRange"
+      ],
+      "// SPEC \n\nmethod test() {\n}\n",
+      "method"
+    ],
+    "": [
+      [],
+      "// SPEC \n\nmethod {\n}\n    requires |links| > 0\n    requires permutation(links)\n    requires derangement(links)\n    requires distinct(links)\n{\n}\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_derangement": "derangement",
+    "//ATOM_PLACEHOLDER_permutation": "permutation",
+    "//ATOM_PLACEHOLDER_multisetRange": "multisetRange",
+    "//ATOM_PLACEHOLDER_distinct": "distinct",
+    "//ATOM_PLACEHOLDER_test": "test",
+    "//ATOM_PLACEHOLDER_unknown_522": "unknown_522"
+  }
+}

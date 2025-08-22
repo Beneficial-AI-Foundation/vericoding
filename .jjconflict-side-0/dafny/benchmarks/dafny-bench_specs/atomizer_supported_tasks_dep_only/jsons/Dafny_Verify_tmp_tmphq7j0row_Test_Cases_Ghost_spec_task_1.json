@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Average\n\n//ATOM_PLACEHOLDER_Triple\n\n//ATOM_PLACEHOLDER_Triple1\n\n//ATOM_PLACEHOLDER_DoubleQuadruple\n\n//ATOM_PLACEHOLDER_F\n\n//ATOM_PLACEHOLDER_M\n\n//ATOM_PLACEHOLDER_Caller\n\n//ATOM_PLACEHOLDER_MyMethod\n\n",
+  "atoms": {
+    "Triple1": [
+      [
+        "DoubleQuadruple"
+      ],
+      "// SPEC \n\nmethod Triple1(x: int) returns (r: int)\n    ensures r == 3 * x\n{\n}\n",
+      "method"
+    ],
+    "DoubleQuadruple": [
+      [],
+      "// ATOM \n\nghost method DoubleQuadruple(x: int) returns (a: int, b: int)\n    ensures a == 2 * x && b == 4 * x\n{\n    a := 2 * x;\n    b := 2 * a;\n}\n",
+      "ghost method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Triple1": "Triple1",
+    "//ATOM_PLACEHOLDER_DoubleQuadruple": "DoubleQuadruple"
+  }
+}

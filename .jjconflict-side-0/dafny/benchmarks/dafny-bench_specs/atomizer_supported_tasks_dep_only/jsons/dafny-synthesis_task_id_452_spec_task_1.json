@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_CalculateLoss",
+  "atoms": {
+    "CalculateLoss": [
+      [],
+      "// SPEC \nmethod CalculateLoss(costPrice: int, sellingPrice: int) returns (loss: int)\n    requires costPrice >= 0 && sellingPrice >= 0\n    ensures (costPrice > sellingPrice ==> loss == costPrice - sellingPrice) && (costPrice <= sellingPrice ==> loss == 0)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_CalculateLoss": "CalculateLoss"
+  }
+}

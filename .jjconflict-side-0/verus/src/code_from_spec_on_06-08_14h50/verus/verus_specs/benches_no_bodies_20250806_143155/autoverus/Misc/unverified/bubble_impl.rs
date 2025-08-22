@@ -1,0 +1,1 @@
+nums.set(j, nums[j + 1]);

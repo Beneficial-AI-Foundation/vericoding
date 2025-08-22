@@ -1,0 +1,21 @@
+{
+  "skeleton": "/*\nhttps://leetcode.com/problems/two-sum/\n//ATOM_PLACEHOLDER_twoSum;\n*/\n//ATOM_PLACEHOLDER_summingPair\n//ATOM_PLACEHOLDER_twoSum\n\n",
+  "atoms": {
+    "summingPair": [
+      [],
+      "// ATOM \npredicate summingPair(i: nat, j: nat, nums: seq<int>, target: int)\n    requires i < |nums|\n    requires j < |nums|\n{\n    i != j &&  nums[i] + nums[j] == target\n}\n",
+      "predicate"
+    ],
+    "twoSum": [
+      [
+        "summingPair"
+      ],
+      "// SPEC \nmethod twoSum(nums: seq<int>, target: int) returns (pair: (nat, nat))\n    requires exists i:nat,j:nat :: i < j < |nums| && summingPair(i, j, nums, target) && forall l: nat, m: nat :: l <  m < |nums| && l != i && m != j ==> !summingPair(l, m, nums, target)\n    ensures 0 <= pair.0 < |nums| && 0 <= pair.1 < |nums| && summingPair(pair.0, pair.1, nums, target)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_twoSum": "twoSum",
+    "//ATOM_PLACEHOLDER_summingPair": "summingPair"
+  }
+}

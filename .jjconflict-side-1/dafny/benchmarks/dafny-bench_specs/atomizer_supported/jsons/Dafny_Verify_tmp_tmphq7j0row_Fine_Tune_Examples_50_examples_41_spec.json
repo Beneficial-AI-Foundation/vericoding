@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_main\n\n",
+  "atoms": {
+    "main": [
+      [],
+      "// SPEC \nmethod main(n: int, k: int) returns (i :int, j: int)\n    requires n >= 0\n    requires k == 1 || k >= 0\n    ensures k + i + j >= 2 * n\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_main": "main"
+  }
+}

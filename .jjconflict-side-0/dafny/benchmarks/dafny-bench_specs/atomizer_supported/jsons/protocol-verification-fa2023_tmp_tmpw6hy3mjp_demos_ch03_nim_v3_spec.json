@@ -1,0 +1,72 @@
+{
+  "skeleton": "// Nim version 3: fix the bug and demonstrate a behavior.\n//\n// In this version, we've fixed the bug by actually flipping whose turn it is in\n// each transition.\n\n//ATOM_PLACEHOLDER_Player//ATOM_PLACEHOLDER_Other\n}\n//ATOM_PLACEHOLDER_Variables//ATOM_PLACEHOLDER_Init\n\n//ATOM_PLACEHOLDER_Step//ATOM_PLACEHOLDER_Turn\n\n// nearly boilerplate (just gather up all transitions)\n//ATOM_PLACEHOLDER_NextStep\n\n// boilerplate\n//ATOM_PLACEHOLDER_NextStepDeterministicGivenStep\n\n// boilerplate\n//ATOM_PLACEHOLDER_Next\n\n// We'll frequently prove a lemma of this form to show some example of the state\n// machine transitioning. You'll prove determinism to avoid accidentally having\n// transitions do things they shouldn't. Proofs will show that your state\n// machine doesn't do anything bad (note this would also catch unintentional\n// non-determinism, but it can be more painful to debug such issues at this\n// stage). These example behaviors will prevent bugs where your state machine\n// just doesn't do anything, especially because of overly restrictive\n// preconditions.\n//ATOM_PLACEHOLDER_ExampleBehavior\n\n\n\n",
+  "atoms": {
+    "Player": [
+      [],
+      "// ATOM \n// Nim version 3: fix the bug and demonstrate a behavior.\n//\n// In this version, we've fixed the bug by actually flipping whose turn it is in\n// each transition.\n\ndatatype Player = P1 | P2\n{\n  function Other(): Player {\n    if this == P1 then P2 else P1\n  }\n}\n",
+      "datatype"
+    ],
+    "Variables": [
+      [],
+      "// ATOM \ndatatype Variables = Variables(piles: seq<nat>, turn: Player)\n",
+      "datatype"
+    ],
+    "Init": [
+      [],
+      "// ATOM \n\nghost predicate Init(v: Variables) {\n  && |v.piles| == 3\n  && v.turn.P1? // syntax\n}\n",
+      "ghost predicate"
+    ],
+    "Step": [
+      [],
+      "// ATOM \n\ndatatype Step =\n  | TurnStep(take: nat, p: nat)\n  | NoOpStep()\n",
+      "datatype"
+    ],
+    "Turn": [
+      [],
+      "// ATOM \n\nghost predicate Turn(v: Variables, v': Variables, step: Step)\n  requires step.TurnStep?\n{\n  var p := step.p;\n  var take := step.take;\n  && p < |v.piles|\n  && take <= v.piles[p]\n  && v' == v.(piles := v.piles[p := v.piles[p] - take]).(turn := v.turn.Other())\n}\n",
+      "ghost predicate"
+    ],
+    "NextStep": [
+      [
+        "Turn"
+      ],
+      "// ATOM \n\n// nearly boilerplate (just gather up all transitions)\nghost predicate NextStep(v: Variables,  v': Variables, step: Step) {\n  match step {\n    case TurnStep(_, _) => Turn(v, v', step)\n    case NoOpStep() => v' == v // we don't really need to define predicate NoOp\n  }\n}\n",
+      "ghost predicate"
+    ],
+    "NextStepDeterministicGivenStep": [
+      [
+        "NextStep"
+      ],
+      "// ATOM \n\n// boilerplate\nlemma NextStepDeterministicGivenStep(v: Variables, v': Variables, v'': Variables, step: Step)\n  requires NextStep(v, v', step)\n  requires NextStep(v, v'', step)\n  ensures v' == v''\n{\n}\n",
+      "lemma"
+    ],
+    "Next": [
+      [
+        "NextStep"
+      ],
+      "// ATOM \n\n// boilerplate\nghost predicate Next(v: Variables,  v': Variables) {\n  exists step :: NextStep(v, v', step)\n}\n",
+      "ghost predicate"
+    ],
+    "ExampleBehavior": [
+      [
+        "Variables",
+        "Init",
+        "Next"
+      ],
+      "// ATOM \n\n// We'll frequently prove a lemma of this form to show some example of the state\n// machine transitioning. You'll prove determinism to avoid accidentally having\n// transitions do things they shouldn't. Proofs will show that your state\n// machine doesn't do anything bad (note this would also catch unintentional\n// non-determinism, but it can be more painful to debug such issues at this\n// stage). These example behaviors will prevent bugs where your state machine\n// just doesn't do anything, especially because of overly restrictive\n// preconditions.\nlemma ExampleBehavior() returns (b: seq<Variables>)\n  ensures |b| >= 3 // for this example, we just demonstrate there is some execution with three states\n  ensures Init(b[0])\n  ensures forall i:nat | i + 1 < |b| :: Next(b[i], b[i+1])\n{\n  // the syntax here constructs a Variables with named fields.\n  var state0 := Variables(piles := [3, 5, 7], turn := P1);\n  b := [\n    state0,\n    Variables(piles := [3, 1, 7], turn := P2),\n    Variables(piles := [3, 1, 0], turn := P1)\n  ];\n  // note that we need these assertions because we need to prove Next, which is\n  // defined with `exists step :: ...` - Dafny needs help to see which value of\n  // `step` will prove this.\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Player": "Player",
+    "//ATOM_PLACEHOLDER_Other": "Other",
+    "//ATOM_PLACEHOLDER_Variables": "Variables",
+    "//ATOM_PLACEHOLDER_Init": "Init",
+    "//ATOM_PLACEHOLDER_Step": "Step",
+    "//ATOM_PLACEHOLDER_Turn": "Turn",
+    "//ATOM_PLACEHOLDER_NextStep": "NextStep",
+    "//ATOM_PLACEHOLDER_NextStepDeterministicGivenStep": "NextStepDeterministicGivenStep",
+    "//ATOM_PLACEHOLDER_Next": "Next",
+    "//ATOM_PLACEHOLDER_ExampleBehavior": "ExampleBehavior"
+  }
+}

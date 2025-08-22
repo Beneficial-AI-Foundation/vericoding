@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_ContainsZ",
+  "atoms": {
+    "ContainsZ": [
+      [],
+      "// SPEC \nmethod ContainsZ(s: string) returns (result: bool)\n    ensures result <==> (exists i :: 0 <= i < |s| && (s[i] == 'z' || s[i] == 'Z'))\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_ContainsZ": "ContainsZ"
+  }
+}

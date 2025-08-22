@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_copy",
+  "atoms": {
+    "copy": [
+      [],
+      "// SPEC \nmethod copy( src: array<int>, sStart: nat, dest: array<int>, dStart: nat, len: nat) returns (r: array<int>)\n  requires src.Length >= sStart + len\n  requires dest.Length >= dStart + len\n  ensures r.Length == dest.Length\n  ensures r[..dStart] == dest[..dStart]\n  ensures r[dStart + len..] == dest[dStart + len..]\n  ensures r[dStart..len+dStart] == src[sStart..len+sStart]\n\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_copy": "copy"
+  }
+}

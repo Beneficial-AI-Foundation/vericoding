@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_AbsIt\n\n\n\n\n\n",
+  "atoms": {
+    "AbsIt": [
+      [],
+      "// SPEC \nmethod AbsIt(s: array<int>) modifies s;\n//requires \nensures forall x :: 0 <= x < s.Length ==> old(s[x]) < 0 ==> s[x] == -old(s[x])\nensures forall x :: 0 <= x < s.Length ==> old(s[x]) >= 0 ==> s[x] == old(s[x])\n\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_AbsIt": "AbsIt"
+  }
+}

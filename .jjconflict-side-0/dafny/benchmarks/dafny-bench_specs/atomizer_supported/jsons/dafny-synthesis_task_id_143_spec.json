@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_CountArrays",
+  "atoms": {
+    "CountArrays": [
+      [],
+      "// SPEC \nmethod CountArrays(arrays: seq<array<int>>) returns (count: int)\n    ensures count >= 0\n    ensures count == |arrays|\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_CountArrays": "CountArrays"
+  }
+}

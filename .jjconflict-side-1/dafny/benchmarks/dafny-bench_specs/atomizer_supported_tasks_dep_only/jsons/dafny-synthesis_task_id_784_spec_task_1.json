@@ -1,0 +1,48 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_IsEven\n\n//ATOM_PLACEHOLDER_IsOdd\n\n//ATOM_PLACEHOLDER_IsFirstEven\n\n//ATOM_PLACEHOLDER_IsFirstOdd\n\n\n//ATOM_PLACEHOLDER_FirstEvenOddIndices\n\n//ATOM_PLACEHOLDER_ProductEvenOdd",
+  "atoms": {
+    "IsOdd": [
+      [],
+      "// ATOM \n\npredicate IsOdd(n: int)\n{\n    n % 2 != 0\n}\n",
+      "predicate"
+    ],
+    "FirstEvenOddIndices": [
+      [
+        "IsFirstEven",
+        "IsOdd",
+        "IsFirstOdd",
+        "IsEven"
+      ],
+      "// SPEC \n\n\nmethod FirstEvenOddIndices(lst : seq<int>) returns (evenIndex: int, oddIndex : int)\n    requires |lst| >= 2\n    requires exists i :: 0 <= i < |lst| && IsEven(lst[i])\n    requires exists i :: 0 <= i < |lst| && IsOdd(lst[i])\n    ensures 0 <= evenIndex < |lst|\n    ensures 0 <= oddIndex < |lst|\n    // This is the postcondition that ensures that it's the first, not just any\n    ensures IsEven(lst[evenIndex]) && IsFirstEven(evenIndex, lst)\n    ensures IsOdd(lst[oddIndex]) && IsFirstOdd(oddIndex, lst)\n{\n}\n",
+      "method"
+    ],
+    "IsFirstEven": [
+      [
+        "IsEven",
+        "IsOdd"
+      ],
+      "// ATOM \n\npredicate IsFirstEven(evenIndex: int, lst: seq<int>)\n    requires 0 <= evenIndex < |lst|\n    requires IsEven(lst[evenIndex])\n{\n    forall i :: 0 <= i < evenIndex ==> IsOdd(lst[i])\n}\n",
+      "predicate"
+    ],
+    "IsFirstOdd": [
+      [
+        "IsOdd",
+        "IsEven"
+      ],
+      "// ATOM \n\npredicate IsFirstOdd(oddIndex: int, lst: seq<int>)\n    requires 0 <= oddIndex < |lst|\n    requires IsOdd(lst[oddIndex])\n{\n    forall i :: 0 <= i < oddIndex ==> IsEven(lst[i])\n}\n",
+      "predicate"
+    ],
+    "IsEven": [
+      [],
+      "// ATOM \npredicate IsEven(n: int)\n{\n    n % 2 == 0\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_IsEven": "IsEven",
+    "//ATOM_PLACEHOLDER_IsOdd": "IsOdd",
+    "//ATOM_PLACEHOLDER_IsFirstEven": "IsFirstEven",
+    "//ATOM_PLACEHOLDER_IsFirstOdd": "IsFirstOdd",
+    "//ATOM_PLACEHOLDER_FirstEvenOddIndices": "FirstEvenOddIndices"
+  }
+}

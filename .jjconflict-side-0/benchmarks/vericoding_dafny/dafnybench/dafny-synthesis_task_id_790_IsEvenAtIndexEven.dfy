@@ -1,0 +1,15 @@
+predicate IsEven(n: int)
+{
+    n % 2 == 0
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+method IsEvenAtIndexEven(lst: seq<int>) returns (result: bool)
+    ensures result <==> forall i :: 0 <= i < |lst| ==> (IsEven(i) ==> IsEven(lst[i]))
+// <vc-code>
+{
+  assume false;
+}
+// </vc-code>

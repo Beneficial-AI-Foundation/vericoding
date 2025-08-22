@@ -1,0 +1,19 @@
+{
+  "skeleton": "// RUN: %dafny /compile:0 \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\n//ATOM_PLACEHOLDER_unknown_70 f(x:int):int { x }\n\n//ATOM_PLACEHOLDER_L\n\n\n\n\n\n",
+  "atoms": {
+    "": [
+      [],
+      "// ATOM \n// RUN: %dafny /compile:0 \"%s\" > \"%t\"\n// RUN: %diff \"%s.expect\" \"%t\"\n\nfunction{:opaque} f(x:int):int { x }\n",
+      "function"
+    ],
+    "L": [
+      [],
+      "// ATOM \n\nlemma L()\n    ensures forall x:int :: f(x) == x\n{\n    forall x:int\n        ensures f(x) == x\n    {\n        reveal f();\n    }\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_unknown_70": "unknown_70",
+    "//ATOM_PLACEHOLDER_L": "L"
+  }
+}

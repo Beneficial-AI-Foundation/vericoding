@@ -1,0 +1,59 @@
+{
+  "skeleton": "//PRE-CONDITIONS -> REQUIRES\n//POST-CONDITIONS -> ENSURES\n\n//ATOM_PLACEHOLDER_max\n\n//ATOM_PLACEHOLDER_Main\n\n// 3\n//ATOM_PLACEHOLDER_mystery1\n\n//ATOM_PLACEHOLDER_mystery2\n\n// 5a\n//ATOM_PLACEHOLDER_m1\n\n// 5b\n//ATOM_PLACEHOLDER_m2\n\n// 5c\n// pode dar false e eles nao serem iguais\n// \n//ATOM_PLACEHOLDER_m3\n\n// 5d\n//ATOM_PLACEHOLDER_m4\n\n",
+  "atoms": {
+    "max": [
+      [],
+      "// SPEC \n//PRE-CONDITIONS -> REQUIRES\n//POST-CONDITIONS -> ENSURES\n\nmethod max(a: int, b: int) returns (z: int)\n  requires true\n  ensures z >= a || z >= b\n{\n}\n",
+      "method"
+    ],
+    "Main": [
+      [
+        "max"
+      ],
+      "// SPEC \n\nmethod Main() {\n}\n",
+      "method"
+    ],
+    "mystery1": [
+      [],
+      "// SPEC \n\n// 3\nmethod mystery1(n: nat,m: nat) returns (res: nat)\n  ensures n+m == res\n{\n}\n",
+      "method"
+    ],
+    "mystery2": [
+      [
+        "mystery1"
+      ],
+      "// SPEC \n\nmethod mystery2(n: nat,m: nat) returns (res: nat)\n  ensures n*m == res\n{\n}\n",
+      "method"
+    ],
+    "m1": [
+      [],
+      "// SPEC \n\n// 5a\nmethod m1(x: int,y: int) returns (z: int)\n  requires 0 < x < y\n  ensures z >= 0 && z < y && z != x\n{\n}\n",
+      "method"
+    ],
+    "m2": [
+      [],
+      "// SPEC \n\n// 5b\nmethod m2(x: nat) returns (y: int)\n  requires x <= -1\n  ensures y > x && y < x\n{\n}\n",
+      "method"
+    ],
+    "m3": [
+      [],
+      "// SPEC \n\n// 5c\n// pode dar false e eles nao serem iguais\n// \nmethod m3(x: int,y: int) returns (z: bool)\n  ensures z ==> x==y\n{\n}\n",
+      "method"
+    ],
+    "m4": [
+      [],
+      "// SPEC \n\n// 5d\nmethod m4(x: int,y: int) returns (z: bool)\n  ensures z ==> x==y && x==y ==> z\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_max": "max",
+    "//ATOM_PLACEHOLDER_Main": "Main",
+    "//ATOM_PLACEHOLDER_mystery1": "mystery1",
+    "//ATOM_PLACEHOLDER_mystery2": "mystery2",
+    "//ATOM_PLACEHOLDER_m1": "m1",
+    "//ATOM_PLACEHOLDER_m2": "m2",
+    "//ATOM_PLACEHOLDER_m3": "m3",
+    "//ATOM_PLACEHOLDER_m4": "m4"
+  }
+}

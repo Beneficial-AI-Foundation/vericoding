@@ -1,0 +1,13 @@
+{
+  "skeleton": "// problem 2:\n// name:      Gabriele Berardi\n// s-number: s4878728\n// table:     XXX\n\n//ATOM_PLACEHOLDER_problem2\n\n\n\n",
+  "atoms": {
+    "problem2": [
+      [],
+      "// SPEC \n// problem 2:\n// name:      Gabriele Berardi\n// s-number: s4878728\n// table:     XXX\n\nmethod problem2(p:int, q:int, X:int, Y:int) returns (r:int, s:int)\nrequires p == 2*X + Y && q == X + 3\nensures r == X && s == Y\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_problem2": "problem2"
+  }
+}

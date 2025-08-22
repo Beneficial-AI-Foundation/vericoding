@@ -1,0 +1,29 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_suma_it\n\n\n//ATOM_PLACEHOLDER_suma_vector\n\n//ATOM_PLACEHOLDER_Main\n\n",
+  "atoms": {
+    "suma_it": [
+      [
+        "suma_vector"
+      ],
+      "// SPEC \nmethod suma_it(V: array<int>) returns (x: int)\n\n// Algoritmo iterativo que calcula la\n// suma de las componentes de un vector\n\n    ensures  x == suma_vector(V, 0)\n{\n}\n",
+      "method"
+    ],
+    "suma_vector": [
+      [],
+      "// ATOM \n\n\nfunction suma_vector(V: array<int>, n: nat): int\n\n// x = V[n] + V[n + 1] + ... + V[N - 1]\n// Funcion auxiliar para la suma de\n// las componentes de un vector\n\n    requires 0 <= n <= V.Length  \n    reads V  \n{    \n    if (n == V.Length) then 0 \n    else V[n] + suma_vector(V, n + 1)  \n}\n",
+      "function"
+    ],
+    "Main": [
+      [
+        "suma_it"
+      ],
+      "// SPEC \n\nmethod Main()\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_suma_it": "suma_it",
+    "//ATOM_PLACEHOLDER_suma_vector": "suma_vector",
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

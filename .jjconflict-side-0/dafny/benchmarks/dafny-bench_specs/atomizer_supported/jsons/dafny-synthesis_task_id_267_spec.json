@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_SumOfSquaresOfFirstNOddNumbers",
+  "atoms": {
+    "SumOfSquaresOfFirstNOddNumbers": [
+      [],
+      "// SPEC \nmethod SumOfSquaresOfFirstNOddNumbers(n: int) returns (sum: int)\n    requires n >= 0\n    ensures sum == (n * (2 * n - 1) * (2 * n + 1)) / 3\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SumOfSquaresOfFirstNOddNumbers": "SumOfSquaresOfFirstNOddNumbers"
+  }
+}

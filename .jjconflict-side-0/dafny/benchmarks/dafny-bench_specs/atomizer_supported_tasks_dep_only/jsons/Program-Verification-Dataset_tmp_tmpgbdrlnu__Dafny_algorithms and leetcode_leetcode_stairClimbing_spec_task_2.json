@@ -1,0 +1,13 @@
+{
+  "skeleton": "/*\nYou are climbing a staircase. It takes n steps to reach the top.\n\nEach time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?\n//ATOM_PLACEHOLDER_climbStairs;\n*/\n\n//ATOM_PLACEHOLDER_Steps//ATOM_PLACEHOLDER_stepSum\n\n//ATOM_PLACEHOLDER_stepEndsAt\n//ATOM_PLACEHOLDER_allEndAtN\n\n//ATOM_PLACEHOLDER_stepBaseZero\n//ATOM_PLACEHOLDER_stepBaseOne\n\n//ATOM_PLACEHOLDER_stepBaseTwo\n\n//ATOM_PLACEHOLDER_plusOne\n\n//ATOM_PLACEHOLDER_addOne\n\n//ATOM_PLACEHOLDER_SeqsNotEqualImplication\n\n//ATOM_PLACEHOLDER_UnequalSeqs\n\n//ATOM_PLACEHOLDER_plusOneNotIn\n\n//ATOM_PLACEHOLDER_addOneSize\n\n//ATOM_PLACEHOLDER_addOneSum\n\n//ATOM_PLACEHOLDER_endAtNPlus\n\n//ATOM_PLACEHOLDER_plusTwo\n\n//ATOM_PLACEHOLDER_addTwo\n\n//ATOM_PLACEHOLDER_plusTwoNotIn\n\n//ATOM_PLACEHOLDER_addTwoSize\n\n//ATOM_PLACEHOLDER_addTwoSum\n\n//ATOM_PLACEHOLDER_setSizeAddition\n\n//ATOM_PLACEHOLDER_stepSetsAdd\n\n//ATOM_PLACEHOLDER_climbStairs\n\n\n//ATOM_PLACEHOLDER_Test\n\n",
+  "atoms": {
+    "Test": [
+      [],
+      "// SPEC \n\n\nmethod Test() {\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Test": "Test"
+  }
+}

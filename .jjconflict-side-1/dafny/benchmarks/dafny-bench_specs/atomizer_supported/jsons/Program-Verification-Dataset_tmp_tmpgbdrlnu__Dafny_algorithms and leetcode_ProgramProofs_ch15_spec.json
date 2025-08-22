@@ -1,0 +1,44 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_SplitPoint\n\n//ATOM_PLACEHOLDER_SelectionSort\n\n//ATOM_PLACEHOLDER_QuickSort\n\ntwostate predicate SwapFrame(a: array<int>, lo: int, hi: int)\n    requires 0 <= lo <= hi <= a.Length\n    reads a\n{\n    (forall i :: 0 <= i < lo || hi <= i < a.Length ==> a[i] == old(a[i])) && multiset(a[..]) == old(multiset(a[..]))\n}\n\n//ATOM_PLACEHOLDER_QuickSortAux\n\n//ATOM_PLACEHOLDER_Partition\n\n",
+  "atoms": {
+    "SplitPoint": [
+      [],
+      "// ATOM \npredicate SplitPoint(a: array<int>, n: int)\n    reads a\n    requires 0 <= n <= n\n\n{\n    forall i,j :: 0 <= i < n <= j < a.Length ==> a[i] <= a[j]\n}\n",
+      "predicate"
+    ],
+    "SelectionSort": [
+      [],
+      "// SPEC \n\nmethod SelectionSort(a: array<int>)\n    modifies a\n    ensures forall i,j :: 0 <= i < j < a.Length ==> a[i] <= a[j]\n    ensures multiset(a[..]) == old(multiset(a[..]))\n{\n}\n",
+      "method"
+    ],
+    "QuickSort": [
+      [
+        "QuickSortAux"
+      ],
+      "// SPEC \n\nmethod QuickSort(a: array<int>)\n    modifies a\n    ensures forall i,j :: 0 <= i < j < a.Length ==> a[i] <= a[j]\n    ensures multiset(a[..]) == old(multiset(a[..]))\n{\n}\n\ntwostate predicate SwapFrame(a: array<int>, lo: int, hi: int)\n    requires 0 <= lo <= hi <= a.Length\n    reads a\n{\n}\n",
+      "method"
+    ],
+    "QuickSortAux": [
+      [
+        "Partition",
+        "SplitPoint"
+      ],
+      "// SPEC \n\nmethod QuickSortAux(a: array<int>, lo: int, hi: int)\n    requires 0 <= lo <= hi <= a.Length\n    requires SplitPoint(a, lo) && SplitPoint(a, hi)\n    modifies a\n    ensures forall i,j :: lo <= i < j < hi ==> a[i] <= a[j]\n    ensures SwapFrame(a, lo, hi)\n    ensures SplitPoint(a, lo) && SplitPoint(a, hi)\n{\n}\n",
+      "method"
+    ],
+    "Partition": [
+      [
+        "SplitPoint"
+      ],
+      "// SPEC \n\nmethod Partition(a: array<int>, lo: int, hi: int) returns (p: int)\n    requires 0 <= lo < hi <= a.Length\n    requires SplitPoint(a, lo) && SplitPoint(a, hi)\n    modifies a\n    ensures lo <= p < hi\n    ensures forall i :: lo <= i < p ==> a[i] < a[p]\n    ensures forall i :: p <= i < hi ==> a[p] <= a[i]\n    ensures SplitPoint(a, lo) && SplitPoint(a, hi)\n    ensures SwapFrame(a, lo, hi)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SplitPoint": "SplitPoint",
+    "//ATOM_PLACEHOLDER_SelectionSort": "SelectionSort",
+    "//ATOM_PLACEHOLDER_QuickSort": "QuickSort",
+    "//ATOM_PLACEHOLDER_QuickSortAux": "QuickSortAux",
+    "//ATOM_PLACEHOLDER_Partition": "Partition"
+  }
+}

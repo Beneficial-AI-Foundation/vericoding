@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_Max",
+  "atoms": {
+    "Max": [
+      [],
+      "// SPEC \nmethod Max(a: int, b: int) returns (maxValue: int)\n    ensures maxValue == a || maxValue == b\n    ensures maxValue >= a && maxValue >= b\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Max": "Max"
+  }
+}

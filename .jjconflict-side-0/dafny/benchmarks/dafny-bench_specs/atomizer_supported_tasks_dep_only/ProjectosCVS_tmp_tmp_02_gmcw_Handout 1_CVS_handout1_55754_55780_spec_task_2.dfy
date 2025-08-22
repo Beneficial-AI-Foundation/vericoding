@@ -1,0 +1,28 @@
+/**
+CVS 2021-22 Handout 1
+Authors
+Gonçalo Martins Lourenço nº55780
+Joana Soares Faria  nº55754
+ */
+
+// First Exercise
+//ATOM_PLACEHOLDER_peasantMultLemma
+
+//ATOM_PLACEHOLDER_peasantMult
+
+
+//Second Exercise
+// SPEC 
+
+
+//Second Exercise
+method euclidianDiv(a: int,b : int) returns (q: int,r: int)
+    requires a >= 0
+    requires b > 0
+    ensures a == b * q + r
+    {
+}
+
+
+
+

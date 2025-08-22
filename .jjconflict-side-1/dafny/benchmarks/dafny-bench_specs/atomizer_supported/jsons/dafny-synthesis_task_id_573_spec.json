@@ -1,0 +1,30 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_UniqueProduct\n\n//ATOM_PLACEHOLDER_SetProduct\n\n/* \n * This is necessary because, when we add one element, we need to make sure\n * that the product of the new set, as a whole, is the same as the product\n * of the old set times the new element.\n */\n//ATOM_PLACEHOLDER_SetProductLemma) * x == SetProduct(s)\n{\n   if s != {}\n   {\n      var y :| y in s && y * SetProduct(s - {y}) == SetProduct(s);\n      if y == x {}\n      else {\n         calc {\n            SetProduct(s);\n            y * SetProduct(s - {y});\n            { SetProductLemma(s - {y}, x); }\n            y * x * SetProduct(s - {y} - {x});\n            y * x * SetProduct(s - {x} - {y});\n            x * y * SetProduct(s - {x} - {y});\n            { SetProductLemma(s - {x}, y); }\n            x * SetProduct(s - {x});\n         }\n      }\n   }\n}) * x == SetProduct(s)\n{\n   if s != {}\n   {\n      var y :| y in s && y * SetProduct(s - {y}) == SetProduct(s);\n      if y == x {}\n      else {\n         calc {\n            SetProduct(s);\n            y * SetProduct(s - {y});\n            { SetProductLemma(s - {y}, x); }\n            y * x * SetProduct(s - {y} - {x});\n            y * x * SetProduct(s - {x} - {y});\n            x * y * SetProduct(s - {x} - {y});\n            { SetProductLemma(s - {x}, y); }\n            x * SetProduct(s - {x});\n         }\n      }\n   }\n}",
+  "atoms": {
+    "UniqueProduct": [
+      [
+        "SetProductLemma",
+        "SetProduct"
+      ],
+      "// SPEC \nmethod UniqueProduct (arr: array<int>) returns (product: int)\n   ensures product == SetProduct((set i | 0 <= i < arr.Length :: arr[i]))\n{\n}\n",
+      "method"
+    ],
+    "SetProduct": [
+      [],
+      "// ATOM \n\nghost function SetProduct(s : set<int>) : int\n{\n    if s == {} then 1\n    else var x :| x in s; \n         x * SetProduct(s - {x})\n}\n\n/* \n * This is necessary because, when we add one element, we need to make sure\n * that the product of the new set, as a whole, is the same as the product\n * of the old set times the new element.\n */\n",
+      "ghost function"
+    ],
+    "SetProductLemma": [
+      [
+        "SetProduct"
+      ],
+      "// ATOM \nlemma SetProductLemma(s: set <int>, x: int) \n requires x in s\n ensures SetProduct(s - {x}) * x == SetProduct(s)\n{\n   if s != {}\n   {\n      var y :| y in s && y * SetProduct(s - {y}) == SetProduct(s);\n      if y == x {}\n      else {\n         calc {\n            SetProduct(s);\n            y * SetProduct(s - {y});\n            { SetProductLemma(s - {y}, x); }\n            y * x * SetProduct(s - {y} - {x});\n            y * x * SetProduct(s - {x} - {y});\n            x * y * SetProduct(s - {x} - {y});\n            { SetProductLemma(s - {x}, y); }\n            x * SetProduct(s - {x});\n         }\n      }\n   }\n}\n",
+      "lemma"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_UniqueProduct": "UniqueProduct",
+    "//ATOM_PLACEHOLDER_SetProduct": "SetProduct",
+    "//ATOM_PLACEHOLDER_SetProductLemma": "SetProductLemma"
+  }
+}

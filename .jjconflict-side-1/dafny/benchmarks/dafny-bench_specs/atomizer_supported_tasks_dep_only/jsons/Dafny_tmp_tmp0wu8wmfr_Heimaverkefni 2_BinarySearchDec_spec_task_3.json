@@ -1,0 +1,28 @@
+{
+  "skeleton": "// Author of question: Snorri Agnarsson\n// Permalink of question: https://rise4fun.com/Dafny/CGB1z\n\n// Authors of solution:   Alexander Gu\u00f0mundsson\n// Permalink of solution: https://rise4fun.com/Dafny/VnB5\n\n// Use the command\n//   dafny H2-skeleton.dfy\n// or\n//   compile H2-skeleton.dfy\n// to compile the file.\n// Or use the web page rise4fun.com/dafny.\n\n// When you have solved the problem put\n// the solution on the Dafny web page,\n// generate a permalink and put it in\n// this file.\n\n//ATOM_PLACEHOLDER_SearchRecursive\n\n//ATOM_PLACEHOLDER_SearchLoop\n\n// Ef eftirfarandi fall er ekki sam\u00feykkt \u00fe\u00e1 eru\n// f\u00f6llin ekki a\u00f0 haga s\u00e9r r\u00e9tt a\u00f0 mati Dafny.\n//ATOM_PLACEHOLDER_Test\n\n",
+  "atoms": {
+    "SearchLoop": [
+      [],
+      "// SPEC \n\nmethod SearchLoop( a: seq<real>, i: int, j: int, x: real ) returns ( k: int )\n    requires 0 <= i <= j <= |a|;\n    requires forall p, q :: i <= p < q < j ==> a[p] >= a[q];\n    ensures i <= k <= j;\n    ensures forall r | i <= r < k :: a[r] >= x;\n    ensures forall r | k <= r < j :: a[r] < x;\n{\n}\n",
+      "method"
+    ],
+    "SearchRecursive": [
+      [],
+      "// SPEC \n// Author of question: Snorri Agnarsson\n// Permalink of question: https://rise4fun.com/Dafny/CGB1z\n\n// Authors of solution:   Alexander Gu\u00f0mundsson\n// Permalink of solution: https://rise4fun.com/Dafny/VnB5\n\n// Use the command\n//   dafny H2-skeleton.dfy\n// or\n//   compile H2-skeleton.dfy\n// to compile the file.\n// Or use the web page rise4fun.com/dafny.\n\n// When you have solved the problem put\n// the solution on the Dafny web page,\n// generate a permalink and put it in\n// this file.\n\nmethod SearchRecursive( a: seq<real>, i: int, j: int, x: real ) returns ( k: int )\n    requires 0 <= i <= j <= |a|;\n    requires forall p, q :: i <= p < q < j ==> a[p] >= a[q];\n    ensures i <= k <= j\n    ensures forall r | i <= r < k :: a[r] >= x;\n    ensures forall r | k <= r < j :: a[r] < x;\n\n{\n}\n",
+      "method"
+    ],
+    "Test": [
+      [
+        "SearchLoop",
+        "SearchRecursive"
+      ],
+      "// SPEC \n\n// Ef eftirfarandi fall er ekki sam\u00feykkt \u00fe\u00e1 eru\n// f\u00f6llin ekki a\u00f0 haga s\u00e9r r\u00e9tt a\u00f0 mati Dafny.\nmethod Test( a: seq<real>, x: real )\n    requires forall p,q | 0 <= p < q < |a| :: a[p] >= a[q];\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_SearchRecursive": "SearchRecursive",
+    "//ATOM_PLACEHOLDER_SearchLoop": "SearchLoop",
+    "//ATOM_PLACEHOLDER_Test": "Test"
+  }
+}

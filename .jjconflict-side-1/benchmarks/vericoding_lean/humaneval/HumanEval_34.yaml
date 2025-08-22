@@ -1,0 +1,64 @@
+vc-description: |-
+  /--
+  function_signature: "def unique(l: list)"
+  docstring: |
+      Return sorted unique elements in a list.
+  test_cases:
+    - input: [5, 3, 5, 2, 3, 3, 9, 0, 123]
+      output: [0, 2, 3, 5, 9, 123]
+  -/
+
+vc-preamble: |-
+  import Imports.AllImports
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-code: |-
+  def implementation (l: List Int) : List Int :=
+  -- <vc-code>
+  l.eraseDup.mergeSort
+  -- </vc-code>
+  
+  #test implementation [5, 3, 5, 2, 3, 3, 9, 0, 123] = [0, 2, 3, 5, 9, 123]
+
+vc-spec: |-
+  def problem_spec
+  -- function signature
+  (implementation: List Int → List Int)
+  -- inputs
+  (l: List Int) :=
+  -- spec
+  let spec (result: List Int) :=
+    (∀ x, x ∈ result ↔ x ∈ l ∧ result.count x = 1) ∧
+    List.Sorted Int.le result
+  -- program termination
+  ∃ result,
+    implementation l = result ∧
+    spec result
+  
+  theorem correctness
+  (l: List Int)
+  : problem_spec implementation l
+  :=
+  -- <vc-proof>
+  by
+  unfold problem_spec
+  let result := implementation l
+  use result
+  simp [result]
+  simp [implementation]
+  apply And.intro
+  intro x
+  apply Iff.intro
+  intro h
+  apply And.intro
+  repeat sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  #test implementation [5, 3, 5, 2, 3, 3, 9, 0, 123] = [0, 2, 3, 5, 9, 123]
+  
+  
+

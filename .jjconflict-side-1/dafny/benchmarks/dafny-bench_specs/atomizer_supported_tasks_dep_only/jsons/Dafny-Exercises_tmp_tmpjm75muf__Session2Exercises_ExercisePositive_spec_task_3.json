@@ -1,0 +1,21 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_positive\n\n\n//ATOM_PLACEHOLDER_mpositive\n\n//ATOM_PLACEHOLDER_mpositive3\n\n//ATOM_PLACEHOLDER_mpositive4\n\n//ATOM_PLACEHOLDER_mpositivertl\n\n\n\n\n\n\n\n",
+  "atoms": {
+    "mpositive4": [
+      [
+        "positive"
+      ],
+      "// SPEC \n\nmethod mpositive4(v:array<int>) returns (b:bool)\nensures b==positive(v[0..v.Length])\n{\n}\n",
+      "method"
+    ],
+    "positive": [
+      [],
+      "// ATOM \npredicate positive(s:seq<int>)\n{forall u::0<=u<|s| ==> s[u]>=0}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_positive": "positive",
+    "//ATOM_PLACEHOLDER_mpositive4": "mpositive4"
+  }
+}

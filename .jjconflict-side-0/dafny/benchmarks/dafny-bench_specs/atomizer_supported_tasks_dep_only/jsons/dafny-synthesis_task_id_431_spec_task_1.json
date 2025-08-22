@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_HasCommonElement",
+  "atoms": {
+    "HasCommonElement": [
+      [],
+      "// SPEC \nmethod HasCommonElement(a: array<int>, b: array<int>) returns (result: bool)\n    requires a != null && b != null\n    ensures result ==> exists i, j :: 0 <= i < a.Length && 0 <= j < b.Length && a[i] == b[j]\n    ensures !result ==> forall i, j :: 0 <= i < a.Length && 0 <= j < b.Length ==> a[i] != b[j]\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_HasCommonElement": "HasCommonElement"
+  }
+}

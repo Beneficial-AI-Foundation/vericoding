@@ -1,0 +1,21 @@
+{
+  "skeleton": "//Exercicio 1.a)\n//ATOM_PLACEHOLDER_sum\n\n//Exercicio 1.b)\n//ATOM_PLACEHOLDER_query\n\n//Exercicio 1.c)\n//ATOM_PLACEHOLDER_queryLemma\n\n//ATOM_PLACEHOLDER_queryFast\n\n//ATOM_PLACEHOLDER_is_prefix_sum_for\n\n///Exercicio 2.\n//ATOM_PLACEHOLDER_List//ATOM_PLACEHOLDER_from_array\n\n//ATOM_PLACEHOLDER_mem\n\n\n\n",
+  "atoms": {
+    "query": [
+      [
+        "sum"
+      ],
+      "// SPEC \n\n//Exercicio 1.b)\nmethod query (a:array<int>, i:int, j:int) returns (s:int)\nrequires 0 <= i <= j <= a.Length\nensures s == sum(a, i, j)\n{\n}\n",
+      "method"
+    ],
+    "sum": [
+      [],
+      "// ATOM \n//Exercicio 1.a)\nfunction sum (a:array<int>, i:int, j:int) :int\nreads a\nrequires 0 <= i <= j <= a.Length\n{\n    if i == j then\n        0\n    else\n        a[j-1] + sum(a, i, j-1)\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_sum": "sum",
+    "//ATOM_PLACEHOLDER_query": "query"
+  }
+}

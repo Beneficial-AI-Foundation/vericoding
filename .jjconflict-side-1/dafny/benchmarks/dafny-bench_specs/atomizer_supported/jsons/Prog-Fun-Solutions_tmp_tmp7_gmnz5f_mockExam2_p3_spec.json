@@ -1,0 +1,13 @@
+{
+  "skeleton": "// problem 3:\n// name:      ....... (fill in your name)\n// s-number: s....... (fill in your student number)\n// table:     ....... (fill in your table number)\n\n//ATOM_PLACEHOLDER_problem3\n\n\n\n",
+  "atoms": {
+    "problem3": [
+      [],
+      "// SPEC \n// problem 3:\n// name:      ....... (fill in your name)\n// s-number: s....... (fill in your student number)\n// table:     ....... (fill in your table number)\n\nmethod problem3(m:int, X:int) returns (r:int)\nrequires X >= 0 && (2*m == 1 - X || m == X + 3)\nensures r == X\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_problem3": "problem3"
+  }
+}

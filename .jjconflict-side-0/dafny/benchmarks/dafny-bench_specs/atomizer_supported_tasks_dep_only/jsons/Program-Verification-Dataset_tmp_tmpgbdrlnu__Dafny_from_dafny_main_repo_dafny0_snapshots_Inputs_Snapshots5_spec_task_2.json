@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_M\n\n\n//ATOM_PLACEHOLDER_N",
+  "atoms": {
+    "N": [
+      [],
+      "// SPEC \n\n\nmethod N()\n  ensures (forall b: bool :: b || !b) || 2 != 2;\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_N": "N"
+  }
+}

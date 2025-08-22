@@ -1,0 +1,81 @@
+num_iterations: 10
+success: false
+verification_error: "note: recommendation not met\n   --> /tmp/tmp907qmzpf.rs:176:19\n\
+  \    |\n176 |             q2 == q1.subrange(i, i + q2.len()) &&\n    |         \
+  \          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    |\n   ::: /home/qd/Projects/safeguarded/baif/dafny2verus/verus-x86-linux/vstd/seq.rs:116:37\n\
+  \    |\n116 |             0 <= start_inclusive <= end_exclusive <= self.len(),\n\
+  \    |                                     ------------- recommendation not met\n\
+  \nerror: postcondition not satisfied\n   --> /tmp/tmp907qmzpf.rs:178:17\n    |\n\
+  173 |     pub proof fn lemma_ascending_subsequence(q1: Seq<int>, q2: Seq<int>, i:\
+  \ int)\n    |     ----------------------------------------------------------------------------\
+  \ at the end of the function body\n...\n178 |         ensures ascending(q2)\n  \
+  \  |                 ^^^^^^^^^^^^^ failed this postcondition\n\nnote: function body\
+  \ check: not all errors may have been reported; rerun with a higher value for --multiple-errors\
+  \ to find other potential errors in this function\n   --> /tmp/tmp907qmzpf.rs:157:5\n\
+  \    |\n157 |     pub proof fn lemma_binary_search_subtree(n: int, left: Tree, right:\
+  \ Tree)\n    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: precondition not satisfied\n   --> /tmp/tmp907qmzpf.rs:167:9\n    |\n167\
+  \ |           lemma_ascending_subsequence(q, qleft, 0);\n    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  ...\n175 | /             i <= q1.len() - q2.len() && \n176 | |             q2 ==\
+  \ q1.subrange(i, i + q2.len()) &&\n177 | |             ascending(q1),\n    | |_________________________-\
+  \ failed precondition\n\nerror: precondition not satisfied\n   --> /tmp/tmp907qmzpf.rs:169:9\n\
+  \    |\n169 |           lemma_ascending_subsequence(q, qright, qleft.len() as int\
+  \ + 1);\n    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  ...\n175 | /             i <= q1.len() - q2.len() && \n176 | |             q2 ==\
+  \ q1.subrange(i, i + q2.len()) &&\n177 | |             ascending(q1),\n    | |_________________________-\
+  \ failed precondition\n\nnote: function body check: not all errors may have been\
+  \ reported; rerun with a higher value for --multiple-errors to find other potential\
+  \ errors in this function\n  --> /tmp/tmp907qmzpf.rs:77:5\n   |\n77 |     pub fn\
+  \ insert_bst(t0: Tree, x: int) -> (t: Tree)\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: precondition not satisfied\n  --> /tmp/tmp907qmzpf.rs:89:31\n   |\n78 |\
+  \         requires bst(t0) && !numbers_in_tree(t0).contains(x),\n   |          \
+  \        ------------------------------------------- failed precondition\n...\n\
+  89 |                     let tmp = insert_bst(*left, x);\n   |                 \
+  \              ^^^^^^^^^^^^^^^^^^^^\n\nerror: assertion failed\n   --> /tmp/tmp907qmzpf.rs:106:32\n\
+  \    |\n106 |                         assert(ascending(seq![i] + right_nums));\n\
+  \    |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion\
+  \ failed\n\nnote: while loop: not all errors may have been reported; rerun with\
+  \ a higher value for --multiple-errors to find other potential errors in this function\n\
+  \  --> /tmp/tmp907qmzpf.rs:64:9\n   |\n64 |         while i < q.len()\n   |    \
+  \     ^^^^^^^^^^^^^^^^^\n\nerror: postcondition not satisfied\n  --> /tmp/tmp907qmzpf.rs:60:17\n\
+  \   |\n60 |         ensures bst(t) && numbers_in_tree(t) == numbers_in_sequence(q@)\n\
+  \   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed\
+  \ this postcondition\n...\n74 |         t\n   |         - at the end of the function\
+  \ body\n\nerror: invariant not satisfied at end of loop body\n  --> /tmp/tmp907qmzpf.rs:67:17\n\
+  \   |\n67 |                 numbers_in_tree(t) == numbers_in_sequence(q@.subrange(0,\
+  \ i as int)),\n   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: precondition not satisfied\n  --> /tmp/tmp907qmzpf.rs:71:13\n   |\n71 |\
+  \             t = insert_bst(t, q[i]);\n   |             ^^^^^^^^^^^^^^^^^^^^^^^\n\
+  ...\n78 |         requires bst(t0) && !numbers_in_tree(t0).contains(x),\n   |  \
+  \                ------------------------------------------- failed precondition\n\
+  \nnote: automatically chose triggers for this expression:\n   --> /tmp/tmp907qmzpf.rs:184:13\n\
+  \    |\n184 |             forall|k: int| 0 <= k < q.len() ==> numbers_in_sequence(q).contains(q[k]),\n\
+  \    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote:   trigger 1 of 1:\n   --> /tmp/tmp907qmzpf.rs:184:81\n    |\n184 |     \
+  \        forall|k: int| 0 <= k < q.len() ==> numbers_in_sequence(q).contains(q[k]),\n\
+  \    |                                                                         \
+  \        ^^^^\n\nnote: automatically chose triggers for this expression:\n   -->\
+  \ /tmp/tmp907qmzpf.rs:191:13\n    |\n191 |             forall|k: int| 0 <= k < q.len()\
+  \ ==> numbers_in_sequence(q).contains(q[k]),\n    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nnote:   trigger 1 of 1:\n   --> /tmp/tmp907qmzpf.rs:191:81\n    |\n191 |     \
+  \        forall|k: int| 0 <= k < q.len() ==> numbers_in_sequence(q).contains(q[k]),\n\
+  \    |                                                                         \
+  \        ^^^^\n\nnote: Verus printed one or more automatically chosen quantifier\
+  \ triggers\n      because it had low confidence in the chosen triggers.\n      To\
+  \ suppress these messages, do one of the following:\n        (1) manually annotate\
+  \ a single desired trigger using #[trigger]\n            (example: forall|i: int,\
+  \ j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),\n        (2) manually annotate\
+  \ multiple desired triggers using #![trigger ...]\n            (example: forall|i:\
+  \ int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),\n        (3) accept the\
+  \ automatically chosen trigger using #![auto]\n            (example: forall|i: int,\
+  \ j: int| #![auto] f(i) && g(i) && h(j))\n        (4) use the --triggers-silent\
+  \ command-line option to suppress all printing of triggers.\n      (Note: triggers\
+  \ are used by the underlying SMT theorem prover to instantiate quantifiers;\n  \
+  \    the theorem prover instantiates a quantifier whenever some expression matches\
+  \ the\n      pattern specified by one of the quantifier's triggers.)\n   --> /tmp/tmp907qmzpf.rs:191:13\n\
+  \    |\n191 |             forall|k: int| 0 <= k < q.len() ==> numbers_in_sequence(q).contains(q[k]),\n\
+  \    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \nerror: aborting due to 8 previous errors\n\n"
+verification_output: 'verification results:: 5 verified, 5 errors
+
+  '

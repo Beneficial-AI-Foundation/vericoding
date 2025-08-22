@@ -1,0 +1,21 @@
+{
+  "skeleton": "// Given an array of integers, it returns the sum. [1,3,3,2]->9\n\n//ATOM_PLACEHOLDER_Sum\n\n//ATOM_PLACEHOLDER_SumArray\n\n",
+  "atoms": {
+    "Sum": [
+      [],
+      "// ATOM \n// Given an array of integers, it returns the sum. [1,3,3,2]->9\n\nfunction Sum(xs: seq<int>): int {\n    if |xs| == 0 then 0 else Sum(xs[..|xs|-1]) + xs[|xs|-1]\n}\n",
+      "function"
+    ],
+    "SumArray": [
+      [
+        "Sum"
+      ],
+      "// SPEC \n\nmethod SumArray(xs: array<int>) returns (s: int)\n    ensures s == Sum(xs[..])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Sum": "Sum",
+    "//ATOM_PLACEHOLDER_SumArray": "SumArray"
+  }
+}

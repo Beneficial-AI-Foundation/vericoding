@@ -1,0 +1,39 @@
+use vstd::prelude::*;
+
+fn main() {
+    // Example usage
+    println!("4 is non-prime: {}", is_non_prime(4));
+    println!("7 is non-prime: {}", is_non_prime(7));
+}
+
+verus! {
+
+spec fn is_divisible(n: int, divisor: int) -> bool {
+    (n % divisor) == 0
+}
+
+fn is_non_prime(n: u64) -> (result: bool)
+    requires
+        n >= 2,
+    ensures
+        result == (exists|k: int| 2 <= k < n && is_divisible(n as int, k)),
+{
+    let mut i: u64 = 2;
+    
+    /* code modified by LLM (iteration 1): added decreases clause for loop termination */
+    while i < n
+        invariant
+            2 <= i <= n,
+            forall|k: int| 2 <= k < i ==> !is_divisible(n as int, k),
+        decreases n - i,
+    {
+        if n % i == 0 {
+            return true;
+        }
+        i = i + 1;
+    }
+    
+    false
+}
+
+} // verus!

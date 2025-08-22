@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_MinSecondValueFirst",
+  "atoms": {
+    "MinSecondValueFirst": [
+      [],
+      "// SPEC \nmethod MinSecondValueFirst(s: array<seq<int>>) returns (firstOfMinSecond: int)\n    requires s.Length > 0\n    requires forall i :: 0 <= i < s.Length ==> |s[i]| >= 2\n    ensures exists i :: 0 <= i < s.Length && firstOfMinSecond == s[i][0] && \n        (forall j :: 0 <= j < s.Length ==> s[i][1] <= s[j][1])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_MinSecondValueFirst": "MinSecondValueFirst"
+  }
+}
