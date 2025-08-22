@@ -1,10 +1,10 @@
+import Mathlib
+
 /-!
 # Common definitions for Clever benchmark specifications
 
 These are helper predicates and functions used across multiple problem specs.
 -/
-
-import Mathlib
 
 /-- Check if parentheses are balanced -/
 def balanced_paren_non_computable (s : String) (open : Char) (close : Char) : Prop := sorry
