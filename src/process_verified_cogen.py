@@ -105,7 +105,7 @@ def main():
     parser = argparse.ArgumentParser(description="Process verified-cogen repository and convert to YAML")
     parser.add_argument("--output-dir", "-o", help="Output directory for YAML files (default: temp directory)")
     parser.add_argument("--keep-duplicates", action="store_true", help="Don't filter duplicate files")
-    parser.add_argument("--no-cleanup", action="store_true", help="Don't clean up the cloned repository")
+    parser.add_argument("--cleanup", action="store_true", help="Clean up the cloned repository (default: keep it)")
     
     args = parser.parse_args()
     
@@ -157,10 +157,12 @@ def main():
         print(f"📂 YAML files written to: {output_dir}")
         
     finally:
-        # Clean up cloned repository
-        if not args.no_cleanup and clone_temp_dir.exists():
+        # Clean up cloned repository only if requested
+        if args.cleanup and clone_temp_dir.exists():
             shutil.rmtree(clone_temp_dir)
             print(f"🧹 Cleaned up temporary directory: {clone_temp_dir}")
+        else:
+            print(f"📁 Cloned repository preserved at: {clone_temp_dir}")
 
 
 if __name__ == "__main__":
