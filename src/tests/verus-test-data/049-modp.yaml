@@ -5,9 +5,6 @@ vc-preamble: |-
 
   verus! {
 
-vc-helpers: |-
-
-vc-spec: |-
   spec fn modp_rec(n: nat, p: nat) -> (result:nat)
       decreases n,
   {
@@ -17,7 +14,26 @@ vc-spec: |-
           (modp_rec((n - 1) as nat, p) * 2) % p
       }
   }
+  // pure-end
 
+vc-helpers: |-
+  fn modmul(a: u32, b: u32, p: u32) -> (mul: u32)
+      by (nonlinear_arith)
+      // pre-conditions-start
+      requires
+          p > 0,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          mul == ((a as int) * (b as int)) % (p as int),
+      // post-conditions-end
+  {
+      // impl-start
+      (((a as u64) * (b as u64)) % (p as u64)) as u32
+      // impl-end
+  }
+
+vc-spec: |-
   #[verifier::loop_isolation(false)]
   fn modp(n: u32, p: u32) -> (r: u32)
       by (nonlinear_arith)
@@ -43,24 +59,6 @@ vc-code: |-
           r = modmul(r, 2, p);
       }
       r
-      // impl-end
-  }
-
-  // pure-end
-
-  fn modmul(a: u32, b: u32, p: u32) -> (mul: u32)
-      by (nonlinear_arith)
-      // pre-conditions-start
-      requires
-          p > 0,
-      // pre-conditions-end
-      // post-conditions-start
-      ensures
-          mul == ((a as int) * (b as int)) % (p as int),
-      // post-conditions-end
-  {
-      // impl-start
-      (((a as u64) * (b as u64)) % (p as u64)) as u32
       // impl-end
   }
 

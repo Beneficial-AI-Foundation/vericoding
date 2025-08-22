@@ -5,9 +5,6 @@ vc-preamble: |-
 
   verus! {
 
-vc-helpers: |-
-
-vc-spec: |-
   #[verifier::memoize]
   spec fn spec_fib(n: nat) -> (ret:nat)
       decreases n,
@@ -20,7 +17,6 @@ vc-spec: |-
           spec_fib((n - 1) as nat) + spec_fib((n - 2) as nat)
       }
   }
-
   // pure-end
 
   spec fn inner_expr_fib(n: u32, ret: Option<u32>) -> (result:bool) {
@@ -29,9 +25,33 @@ vc-spec: |-
           Some(f) => f == spec_fib(n as nat),
       }
   }
-
   // pure-end
 
+vc-helpers: |-
+  proof fn lemma_fib_monotonic(i: nat, j: nat)
+      // pre-conditions-start
+      requires
+          i <= j,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          spec_fib(i) <= spec_fib(j),
+      decreases j - i,
+      // post-conditions-end
+  {
+      // impl-start
+      if (i < 2 && j < 2) || i == j {
+      } else if i == j - 1 {
+          reveal_with_fuel(spec_fib, 2);
+          lemma_fib_monotonic(i, (j - 1) as nat);
+      } else {
+          lemma_fib_monotonic(i, (j - 1) as nat);
+          lemma_fib_monotonic(i, (j - 2) as nat);
+      }
+      // impl-end
+  }
+
+vc-spec: |-
   fn fib(n: u32) -> (ret: Option<u32>)
       // post-conditions-start
       ensures
@@ -66,31 +86,6 @@ vc-code: |-
               let n2 = fib(n - 2)?;
               Some(n1 + n2)
           },
-      }
-      // impl-end
-  }
-
-  // pure-end
-
-  proof fn lemma_fib_monotonic(i: nat, j: nat)
-      // pre-conditions-start
-      requires
-          i <= j,
-      // pre-conditions-end
-      // post-conditions-start
-      ensures
-          spec_fib(i) <= spec_fib(j),
-      decreases j - i,
-      // post-conditions-end
-  {
-      // impl-start
-      if (i < 2 && j < 2) || i == j {
-      } else if i == j - 1 {
-          reveal_with_fuel(spec_fib, 2);
-          lemma_fib_monotonic(i, (j - 1) as nat);
-      } else {
-          lemma_fib_monotonic(i, (j - 1) as nat);
-          lemma_fib_monotonic(i, (j - 2) as nat);
       }
       // impl-end
   }

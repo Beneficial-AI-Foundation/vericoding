@@ -5,15 +5,14 @@ vc-preamble: |-
 
   verus! {
 
-vc-helpers: |-
-
-vc-spec: |-
   spec fn is_even(n: u32) -> (result: bool) {
       (n % 2) == 0
   }
-
   // pure-end
 
+vc-helpers: |-
+
+vc-spec: |-
   fn is_product_even(arr: &Vec<u32>) -> (result: bool)
       // post-conditions-start
       ensures
