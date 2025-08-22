@@ -16,6 +16,10 @@ vc-spec: |-
       ((c as u8) + 32) as char
   }
 
+  // pure-end
+
+  // pure-end
+
   fn to_lowercase(str1: &Vec<char>) -> (result: Vec<char>)
       // post-conditions-start
       ensures
