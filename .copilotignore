@@ -1,0 +1,32 @@
+# Build artifacts and generated files
+.lake/
+build/
+__pycache__/
+*.py[cod]
+dist/
+*.egg-info/
+.venv/
+wandb/
+.wandb/
+
+# Experiment outputs and generated implementations
+experiment_results/
+lean_output_*/
+*_impl.lean
+**/code_from_spec_on_*/
+
+# IDE and tool caches
+.vscode/
+.idea/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+htmlcov/
+
+# Large benchmark directories (focus on core code)
+benchmarks/vericoding_raw/
+experiment_traces/
+
+# Lock files and manifests (generated)
+uv.lock
+lake-manifest.json
