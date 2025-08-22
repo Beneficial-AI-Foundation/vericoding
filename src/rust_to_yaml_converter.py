@@ -14,6 +14,7 @@ def extract_proof_and_spec_functions(content: str) -> tuple[str, list[str], list
     """Extract proof functions and spec functions from content, leave proof blocks inside functions."""
     proof_functions = []
     spec_functions = []
+    extracted_regions = []  # Track (start, end) of extracted regions
     
     # Find proof functions and spec functions (not proof blocks)
     pos = 0
@@ -94,8 +95,44 @@ def extract_proof_and_spec_functions(content: str) -> tuple[str, list[str], list
             search_pos += 1
             
         if brace_count == 0:
-            # Found complete proof function
-            construct = content[construct_start:search_pos]
+            # Found complete function, now look for trailing comments that belong to it
+            construct_end = search_pos
+            
+            # Look forward for trailing comments (like "// pure-end", "// impl-end")
+            lines_after = content[search_pos:].split('\n')
+            trailing_lines = []
+            
+            for line_idx, line in enumerate(lines_after):
+                line_stripped = line.strip()
+                # Check if this is a trailing comment that belongs to the function
+                if (line_stripped.startswith('//') and 
+                    (line_stripped.endswith('-end') or 
+                     line_stripped.endswith('pure-end') or 
+                     line_stripped.endswith('impl-end') or
+                     line_stripped.endswith('spec-end'))):
+                    trailing_lines.append(line)
+                elif not line_stripped:  # Empty line
+                    trailing_lines.append(line)
+                else:
+                    # Non-empty, non-trailing-comment line - stop here
+                    break
+            
+            # Calculate new end position including trailing comments
+            if trailing_lines:
+                # Find the last non-empty trailing line
+                last_content_idx = -1
+                for i in range(len(trailing_lines) - 1, -1, -1):
+                    if trailing_lines[i].strip():
+                        last_content_idx = i
+                        break
+                
+                if last_content_idx >= 0:
+                    # Include up to and including the last meaningful trailing line
+                    trailing_content = '\n'.join(trailing_lines[:last_content_idx + 1])
+                    construct_end = search_pos + len(trailing_content)
+            
+            # Extract the complete function including trailing comments
+            construct = content[construct_start:construct_end]
             # Clean up indentation while preserving structure
             lines = construct.split('\n')
             if lines:
@@ -120,15 +157,28 @@ def extract_proof_and_spec_functions(content: str) -> tuple[str, list[str], list
                 proof_functions.append(construct)
             else:  # match_type == 'spec'
                 spec_functions.append(construct)
-            pos = search_pos
+            
+            # Track the extracted region
+            extracted_regions.append((construct_start, construct_end))
+            pos = construct_end
         else:
             # Unmatched braces, skip this match
             pos = pos + earliest_match.end()
     
-    # Remove all found proof and spec functions from content
-    cleaned_content = content
-    for construct in proof_functions + spec_functions:
-        cleaned_content = cleaned_content.replace(construct, '', 1)
+    # Build cleaned content by excluding extracted regions
+    cleaned_content = ""
+    last_end = 0
+    
+    # Sort regions by start position
+    extracted_regions.sort(key=lambda x: x[0])
+    
+    for start, end in extracted_regions:
+        # Add content between previous extraction and this one
+        cleaned_content += content[last_end:start]
+        last_end = end
+    
+    # Add any remaining content after the last extraction
+    cleaned_content += content[last_end:]
     
     # Clean up extra whitespace  
     cleaned_content = re.sub(r'\n\s*\n\s*\n', '\n\n', cleaned_content)

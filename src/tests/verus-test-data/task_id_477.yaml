@@ -9,16 +9,16 @@ vc-preamble: |-
       c >= 'A' && c <= 'Z'
   }
   // pure-end
+  // pure-end
 
   spec fn shift32_spec(c: char) -> (result:char) {
       ((c as u8) + 32) as char
   }
+  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
-  // pure-end
-
   fn to_lowercase(str1: &Vec<char>) -> (result: Vec<char>)
       // post-conditions-start
       ensures
