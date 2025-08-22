@@ -159,38 +159,67 @@ def parse_rust_file(content: str) -> Dict[str, str]:
         # Single function case
         last_fn_content = remaining_content
     
-    # Split the last function between spec and code using balanced brace/paren matching
+    # Split the last function between spec and code by finding the function body braces
     fn_start = re.search(r'fn\s+\w+', last_fn_content)
     if not fn_start:
         raise ValueError("Could not find function declaration")
     
-    # Find the opening brace of function body by ensuring () and {} are balanced
-    pos = fn_start.end()
-    paren_count = 0
-    brace_count = 0
+    # Find all braces and match them properly from the function start
+    # Look for patterns that indicate the end of function signature/specs
     function_body_start = -1
+    function_body_end = -1
     
-    while pos < len(last_fn_content):
-        char = last_fn_content[pos]
-        
-        if char == '(':
-            paren_count += 1
-        elif char == ')':
-            paren_count -= 1
-        elif char == '{':
-            if paren_count == 0 and brace_count == 0:
-                # This is the function body opening brace
-                function_body_start = pos
+    # Look for specific patterns that mark the end of specifications
+    # The function body typically starts after "// post-conditions-end" or similar
+    spec_end_patterns = [
+        r'//\s*post-conditions-end',
+        r'//\s*ensures-end', 
+        r'//\s*spec-end'
+    ]
+    
+    spec_end_pos = -1
+    for pattern in spec_end_patterns:
+        match = re.search(pattern, last_fn_content)
+        if match:
+            spec_end_pos = match.end()
+            break
+    
+    # If we found a spec end pattern, look for the next opening brace
+    if spec_end_pos != -1:
+        for i in range(spec_end_pos, len(last_fn_content)):
+            if last_fn_content[i] == '{':
+                function_body_start = i
                 break
-            else:
-                brace_count += 1
-        elif char == '}':
-            brace_count -= 1
+    
+    # Fallback: if no spec end pattern found, find the last opening brace before function content
+    if function_body_start == -1:
+        # Count braces and find the outermost opening brace for the function
+        brace_positions = []
+        for i in range(fn_start.end(), len(last_fn_content)):
+            if last_fn_content[i] == '{':
+                brace_positions.append(i)
         
-        pos += 1
+        if brace_positions:
+            # Try the last opening brace (most likely to be the function body)
+            function_body_start = brace_positions[-1]
     
     if function_body_start == -1:
         raise ValueError("Could not find function body opening brace")
+    
+    # Now find the matching closing brace by counting from the opening brace
+    brace_count = 1
+    for i in range(function_body_start + 1, len(last_fn_content)):
+        char = last_fn_content[i]
+        if char == '{':
+            brace_count += 1
+        elif char == '}':
+            brace_count -= 1
+            if brace_count == 0:
+                function_body_end = i
+                break
+    
+    if function_body_end == -1:
+        raise ValueError("Could not find matching function body closing brace")
     
     spec_signature = last_fn_content[fn_start.start():function_body_start].strip()
     
@@ -201,23 +230,8 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     spec_parts.append(spec_signature)
     spec = '\n\n'.join(spec_parts) + '\n' if spec_parts else spec_signature + '\n'
     
-    # Find the implementation section (everything between braces)
-    start_pos = function_body_start  # Position of opening brace
-    brace_count = 1
-    pos = start_pos + 1
-    
-    while pos < len(last_fn_content) and brace_count > 0:
-        if last_fn_content[pos] == '{':
-            brace_count += 1
-        elif last_fn_content[pos] == '}':
-            brace_count -= 1
-        pos += 1
-    
-    if brace_count > 0:
-        raise ValueError("Unmatched braces in function")
-    
-    # Extract function body (between the braces)
-    function_body = last_fn_content[start_pos:pos]
+    # Extract function body (between the braces we already found)
+    function_body = last_fn_content[function_body_start:function_body_end + 1]
     
     # Build code section: function body + other functions + proof functions
     code_parts = []
@@ -236,7 +250,7 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     code_section = '\n\n'.join(code_parts) + '\n' if code_parts else '\n'
     
     # Find the closing verus brace and create postamble
-    remaining_after_fn = last_fn_content[pos:].strip()
+    remaining_after_fn = last_fn_content[function_body_end + 1:].strip()
     postamble = "\n" + remaining_after_fn + main_part
     
     return {
