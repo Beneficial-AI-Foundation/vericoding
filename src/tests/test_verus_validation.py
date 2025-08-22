@@ -47,7 +47,7 @@ def convert_yaml_to_rust(yaml_path: Path, temp_dir: Path) -> tuple[bool, Path]:
             "uv", "run", "src/convert_from_yaml.py",
             str(temp_yaml),
             "--suffix", "rs"
-        ], capture_output=True, text=True, cwd=Path(__file__).parent.parent)
+        ], capture_output=True, text=True, cwd=Path(__file__).parent.parent.parent)
         
         if result.returncode != 0:
             print(f"❌ Failed to convert {yaml_path.name}:")
@@ -94,8 +94,8 @@ def main():
     print(f"✅ Found Verus at: {verus_cmd}")
     
     # Get project root and tests directory
-    project_root = Path(__file__).parent.parent
-    tests_dir = project_root / "tests"
+    project_root = Path(__file__).parent.parent.parent
+    tests_dir = Path(__file__).parent / "verus-test-data"
     
     if not tests_dir.exists():
         print(f"❌ Tests directory not found: {tests_dir}")

@@ -5,6 +5,8 @@ Test script to verify Rust to YAML conversion works correctly.
 
 import yaml
 from pathlib import Path
+import sys
+sys.path.append('..')
 from rust_to_yaml_converter import rust_to_yaml, parse_rust_file
 
 
@@ -29,8 +31,8 @@ def test_conversion_roundtrip(rust_file="053-add.rs"):
     """Test that converting Rust -> YAML -> Rust gives back the original content."""
     
     # Test files
-    original_rust_file = Path(f"tests/{rust_file}")
-    expected_yaml_file = Path(f"tests/{rust_file}").with_suffix('.yaml')
+    original_rust_file = Path(f"verus-test-data/{rust_file}")
+    expected_yaml_file = Path(f"verus-test-data/{rust_file}").with_suffix('.yaml')
     
     print("=== Testing Rust to YAML Conversion ===")
     
@@ -99,7 +101,7 @@ def main():
     print("Testing Rust to YAML converter...\n")
     
     # Find all YAML test files and derive corresponding .rs files
-    yaml_files = list(Path("tests").glob("*.yaml"))
+    yaml_files = list(Path("verus-test-data").glob("*.yaml"))
     test_files = []
     
     for yaml_file in yaml_files:
