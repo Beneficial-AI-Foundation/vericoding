@@ -74,7 +74,7 @@ def spec_to_string(spec: dict, template: list[str]) -> str:
 def get_template(suffix: str) -> list[str]:
     """Get template for the output file."""
     if suffix == 'lean':
-        return ['vc-description', '\n', 'vc-preamble', '\n', 'vc-helpers', '\n', 
+        return ['vc-preamble', '\n', 'vc-description', '\n', 'vc-helpers', '\n', 
                     'vc-signature', 'vc-implementation', '\n', 
                     'vc-condition', 'vc-proof', '\n', 'vc-postamble']
     elif suffix == 'dfy' or suffix == 'rs':
