@@ -10,28 +10,45 @@ from typing import Dict, Any
 import argparse
 
 
-def extract_proof_functions(content: str) -> tuple[str, list[str]]:
-    """Extract only proof functions (proof fn) from content, leave proof blocks inside functions."""
+def extract_proof_and_spec_functions(content: str) -> tuple[str, list[str], list[str]]:
+    """Extract proof functions and spec functions from content, leave proof blocks inside functions."""
     proof_functions = []
+    spec_functions = []
     
-    # Find only proof functions (not proof blocks)
+    # Find proof functions and spec functions (not proof blocks)
     pos = 0
     while pos < len(content):
-        # Look for 'proof fn' only
+        # Look for 'proof fn' or 'spec fn'
         proof_fn_match = re.search(r'proof\s+fn\s+', content[pos:])
+        spec_fn_match = re.search(r'spec\s+fn\s+', content[pos:])
         
-        if not proof_fn_match:
+        # Find the earliest match
+        earliest_match = None
+        earliest_pos = float('inf')
+        match_type = None
+        
+        if proof_fn_match and pos + proof_fn_match.start() < earliest_pos:
+            earliest_pos = pos + proof_fn_match.start()
+            earliest_match = proof_fn_match
+            match_type = 'proof'
+            
+        if spec_fn_match and pos + spec_fn_match.start() < earliest_pos:
+            earliest_pos = pos + spec_fn_match.start()
+            earliest_match = spec_fn_match
+            match_type = 'spec'
+        
+        if not earliest_match:
             break
             
         # Find the opening brace of the function body
-        brace_search_start = pos + proof_fn_match.end()
+        brace_search_start = pos + earliest_match.end()
         brace_match = re.search(r'\{', content[brace_search_start:])
         if not brace_match:
-            pos = pos + proof_fn_match.end()
+            pos = pos + earliest_match.end()
             continue
             
         brace_pos = brace_search_start + brace_match.start()
-        construct_start = pos + proof_fn_match.start()
+        construct_start = earliest_pos
         
         # Find the matching closing brace
         brace_count = 1
@@ -67,21 +84,24 @@ def extract_proof_functions(content: str) -> tuple[str, list[str]]:
                             cleaned_lines.append('')
                     construct = '\n'.join(cleaned_lines).strip()
             
-            proof_functions.append(construct) 
+            if match_type == 'proof':
+                proof_functions.append(construct)
+            else:  # match_type == 'spec'
+                spec_functions.append(construct)
             pos = search_pos
         else:
             # Unmatched braces, skip this match
-            pos = pos + proof_fn_match.end()
+            pos = pos + earliest_match.end()
     
-    # Remove all found proof functions from content
+    # Remove all found proof and spec functions from content
     cleaned_content = content
-    for construct in proof_functions:
+    for construct in proof_functions + spec_functions:
         cleaned_content = cleaned_content.replace(construct, '', 1)
     
     # Clean up extra whitespace  
     cleaned_content = re.sub(r'\n\s*\n\s*\n', '\n\n', cleaned_content)
     
-    return cleaned_content.strip(), proof_functions
+    return cleaned_content.strip(), proof_functions, spec_functions
 
 
 def parse_rust_file(content: str) -> Dict[str, str]:
@@ -106,8 +126,8 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     preamble = preamble_match.group(1) + "\n"
     remaining_content = content[preamble_match.end():]
     
-    # Extract proof functions (not proof blocks) from the remaining content
-    remaining_content, proof_functions = extract_proof_functions(remaining_content)
+    # Extract proof functions and spec functions (not proof blocks) from the remaining content
+    remaining_content, proof_functions, spec_functions = extract_proof_and_spec_functions(remaining_content)
     
     # Find all normal function declarations (excluding main)
     fn_pattern = r'fn\s+(?!main\b)\w+'
@@ -146,7 +166,14 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     if not fn_match:
         raise ValueError("Could not find function declaration")
     
-    spec = fn_match.group(1).strip()
+    spec_signature = fn_match.group(1).strip()
+    
+    # Combine spec functions (at start) + function signature
+    spec_parts = []
+    for spec_fn in spec_functions:
+        spec_parts.append(spec_fn)
+    spec_parts.append(spec_signature)
+    spec = '\n\n'.join(spec_parts) + '\n' if spec_parts else spec_signature + '\n'
     
     # Find the implementation section (everything between braces)
     start_pos = fn_match.end() - 1  # Position of opening brace
@@ -190,7 +217,7 @@ def parse_rust_file(content: str) -> Dict[str, str]:
         'vc-description': '',
         'vc-preamble': preamble + '\n',
         'vc-helpers': '',
-        'vc-spec': spec + '\n', 
+        'vc-spec': spec, 
         'vc-code': code_section,
         'vc-postamble': postamble
     }
