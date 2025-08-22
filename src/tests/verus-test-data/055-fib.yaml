@@ -25,9 +25,10 @@ vc-preamble: |-
           Some(f) => f == spec_fib(n as nat),
       }
   }
-  // pure-end
 
 vc-helpers: |-
+  // pure-end
+
   proof fn lemma_fib_monotonic(i: nat, j: nat)
       // pre-conditions-start
       requires
@@ -52,6 +53,8 @@ vc-helpers: |-
   }
 
 vc-spec: |-
+  // pure-end
+
   fn fib(n: u32) -> (ret: Option<u32>)
       // post-conditions-start
       ensures

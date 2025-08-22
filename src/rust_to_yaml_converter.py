@@ -155,11 +155,19 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     if not preamble_match:
         raise ValueError("Could not find verus! block opening")
     
-    preamble = preamble_match.group(1) + "\n"
+    preamble_base = preamble_match.group(1)
     remaining_content = content[preamble_match.end():]
     
     # Extract proof functions and spec functions (not proof blocks) from the remaining content
     remaining_content, proof_functions, spec_functions = extract_proof_and_spec_functions(remaining_content)
+    
+    # Build preamble: imports + verus opening + spec functions
+    preamble_parts = [preamble_base]
+    if spec_functions:
+        preamble_parts.append("")  # Add empty line before spec functions
+        for spec_fn in spec_functions:
+            preamble_parts.append(spec_fn)
+    preamble = '\n'.join(preamble_parts) + '\n'
     
     # Find all normal function declarations (excluding main)
     fn_pattern = r'fn\s+(?!main\b)\w+'
@@ -283,33 +291,26 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     if function_body_end == -1:
         raise ValueError("Could not find matching function body closing brace")
     
+    # Extract main task function specification (signature + contracts)
     spec_signature = last_fn_content[:function_body_start].strip()
+    spec = spec_signature + '\n'
     
-    # Combine spec functions (at start) + function signature
-    spec_parts = []
-    for spec_fn in spec_functions:
-        spec_parts.append(spec_fn)
-    spec_parts.append(spec_signature)
-    spec = '\n\n'.join(spec_parts) + '\n' if spec_parts else spec_signature + '\n'
-    
-    # Extract function body (between the braces we already found)
+    # Extract main task function body (between the braces)
     function_body = last_fn_content[function_body_start:function_body_end + 1]
+    code_section = function_body.strip() + '\n'
     
-    # Build code section: function body + other functions + proof functions
-    code_parts = []
+    # Build helpers section: other functions + proof functions
+    helper_parts = []
     
-    # Add the last function's body first
-    code_parts.append(function_body.strip())
-    
-    # Add other functions
+    # Add other functions (these are helper functions)
     for func in other_functions:
-        code_parts.append(func)
+        helper_parts.append(func.strip())
     
-    # Add proof functions (proof blocks stay inside functions)
+    # Add proof functions 
     for proof_fn in proof_functions:
-        code_parts.append(proof_fn)
+        helper_parts.append(proof_fn.strip())
     
-    code_section = '\n\n'.join(code_parts) + '\n' if code_parts else '\n'
+    helpers_section = '\n\n'.join(helper_parts) + '\n' if helper_parts else ''
     
     # Find the closing verus brace and create postamble
     remaining_after_fn = last_fn_content[function_body_end + 1:].strip()
@@ -317,8 +318,8 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     
     return {
         'vc-description': '',
-        'vc-preamble': preamble + '\n',
-        'vc-helpers': '',
+        'vc-preamble': preamble,
+        'vc-helpers': helpers_section,
         'vc-spec': spec, 
         'vc-code': code_section,
         'vc-postamble': postamble
