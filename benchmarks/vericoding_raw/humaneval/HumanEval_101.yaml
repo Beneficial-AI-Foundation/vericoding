@@ -18,20 +18,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (s: String) : List String :=
-  -- <vc-code>
-  List.map (fun s => (s.toList.filter (fun c => c != ',')).asString) ((s.splitOn).filter (fun s => s != "" ∧ s != ","))
-  -- </vc-code>
-  
-  -- #test implementation "Hi, my name is John" = ["Hi", "my", "name", "is", "John"]
-  -- #test implementation "One, two, three, four, five, six" = ["One", "two", "three", "four", "five", "six"]
-  -- #test implementation "Hi, my name" = ["Hi", "my", "name"]
-  -- #test implementation "One,, two, three, four, five, six," = ["One", "two", "three", "four", "five", "six"]
-  -- #test implementation "" = []
-  -- #test implementation "ahmed     , gamal" = ["ahmed", "gamal"]
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  List.map (fun s => (s.toList.filter (fun c => c != ',')).asString) ((s.splitOn).filter (fun s => s != "" ∧ s != ","))
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → List String)
@@ -52,6 +47,8 @@ vc-spec: |-
   (s: String)
   : problem_spec implementation s
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

@@ -1,0 +1,115 @@
+vc-description: |-
+  /--
+  -----Description-----
+  This task involves taking an array as input and producing a new array that has the same size and identical elements in the same order as the input.
+  
+  -----Input-----
+  The input consists of:
+  • s: An array of elements (for testing purposes, assume an array of integers, i.e., Array Int).
+  
+  -----Output-----
+  The output is an array of the same type as the input:
+  • The output array has the same size as the input array.
+  • Each element in the output array is identical to the corresponding element in the input array.
+  
+  -----Note-----
+  There are no special preconditions for the input array (it can be empty or non-empty); the function simply performs a straightforward copy operation on the array.
+  -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def iter_copy_precond (s : Array Int) : Prop :=
+    True
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def iter_copy (s : Array Int) (h_precond : iter_copy_precond (s)) : Array Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rec loop (i : Nat) (acc : Array Int) : Array Int :=
+      if i < s.size then
+        match s[i]? with
+        | some val => loop (i + 1) (acc.push val)
+        | none => acc  -- This case shouldn't happen when i < s.size
+      else
+        acc
+    loop 0 Array.empty
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def iter_copy_postcond (s : Array Int) (result: Array Int) (h_precond : iter_copy_precond (s)) :=
+    (s.size = result.size) ∧ (∀ i : Nat, i < s.size → s[i]! = result[i]!)
+  
+  theorem iter_copy_spec_satisfied (s: Array Int) (h_precond : iter_copy_precond (s)) :
+      iter_copy_postcond (s) (iter_copy (s) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  []
+  -- Tests
+  [
+      {
+          "input": {
+              "s": "#[1, 2, 3]"
+          },
+          "expected": "#[1, 2, 3]",
+          "unexpected": [
+              "#[1, 3, 2]",
+              "#[1, 2]"
+          ]
+      },
+      {
+          "input": {
+              "s": "#[10, 20, 30, 40]"
+          },
+          "expected": "#[10, 20, 30, 40]",
+          "unexpected": [
+              "#[10, 20, 30]",
+              "#[10, 20, 40, 30]"
+          ]
+      },
+      {
+          "input": {
+              "s": "#[]"
+          },
+          "expected": "#[]",
+          "unexpected": [
+              "#[0]",
+              "#[1]"
+          ]
+      },
+      {
+          "input": {
+              "s": "#[-1, -2, -3]"
+          },
+          "expected": "#[-1, -2, -3]",
+          "unexpected": [
+              "#[-1, -3, -2]",
+              "#[-1, -2]"
+          ]
+      },
+      {
+          "input": {
+              "s": "#[5, 5, 5, 5]"
+          },
+          "expected": "#[5, 5, 5, 5]",
+          "unexpected": [
+              "#[5, 5, 5]",
+              "#[5, 5, 5, 0]",
+              "#[0, 5, 5, 5]"
+          ]
+      }
+  ]
+  -/
+

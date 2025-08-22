@@ -21,17 +21,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (num: Nat) : String :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation 19 = "xix"
-  -- #test implementation 152 = "clii"
-  -- #test implementation 426 = "cdxxvi"
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: Nat → String)
@@ -49,6 +47,8 @@ vc-spec: |-
   theorem correctness
   (num: Nat)
   : problem_spec implementation num :=
+
+vc-proof: |-
   -- <vc-proof>
   sorry
   -- </vc-proof>

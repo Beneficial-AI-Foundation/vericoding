@@ -26,9 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (operations: List Int) : Bool :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   let rec check (ops : List Int) (acc : Int) : Bool :=
     match ops with
     | []        => false
@@ -36,12 +38,9 @@ vc-code: |-
       let new_acc := acc + op
       if new_acc < 0 then true else check ops' new_acc
   check operations 0
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation [1, 2, 3] = false
-  #test implementation [1, 2, -4, 5] = true
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: List Int → Bool)
@@ -61,6 +60,8 @@ vc-spec: |-
   (operations: List Int)
   : problem_spec implementation operations
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   -- sometimes we have to create a temporary variable to use in the proof

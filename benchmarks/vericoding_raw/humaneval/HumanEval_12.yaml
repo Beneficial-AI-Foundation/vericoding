@@ -20,20 +20,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (strings: List String) : Option String :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   if strings = [] then none
   else
     let longest := (strings.map (λ s => s.length)).maximum.get!
     (strings.find? (λ s => s.length = longest)).get!
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation ["a", "b", "c"] = some "a"
-  #test implementation ["a", "bb", "ccc"] = some "ccc"
-  #test implementation [] = none
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List String → Option String)
@@ -55,6 +53,8 @@ vc-spec: |-
   (strings: List String)
   : problem_spec implementation strings
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

@@ -21,19 +21,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (n p: Nat) : Nat :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation 3 5 = 3
-  -- #test implementation 1101 101 = 2
-  -- #test implementation 0 101 = 1
-  -- #test implementation 3 11 = 8
-  -- #test implementation 100 101 = 1
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: Nat → Nat → Nat)
@@ -52,6 +48,8 @@ vc-spec: |-
   (n p: Nat)
   : problem_spec implementation n p
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

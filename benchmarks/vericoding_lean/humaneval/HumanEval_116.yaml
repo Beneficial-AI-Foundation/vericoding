@@ -19,16 +19,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (lst: List Nat) : List Nat :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation [1, 5, 2, 3, 4] = [1, 2, 3, 4, 5]
-  -- #test implementation [1, 0, 2, 3, 4] = [0, 1, 2, 3, 4]
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Nat → List Nat)
@@ -50,6 +49,8 @@ vc-spec: |-
   (lst: List Nat)
   : problem_spec implementation lst
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

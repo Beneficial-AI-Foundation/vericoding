@@ -16,18 +16,17 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (numbers: List Rat) (threshold: Rat) : Bool :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   match numbers with
   | []       => false
   | (x::xs)  => (xs.any (fun y => (|x - y| < threshold))) || implementation xs threshold
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation ([1, 2, 3]: List Rat) 0.5 = false
-  #test implementation ([1, 2.8, 3, 4, 5, 2]: List Rat) 0.3 = true
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: List Rat → Rat → Bool)
@@ -51,6 +50,8 @@ vc-spec: |-
   (numbers: List Rat)
   (threshold: Rat)
   : problem_spec implementation numbers threshold  :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

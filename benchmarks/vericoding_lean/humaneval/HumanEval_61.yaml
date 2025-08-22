@@ -22,18 +22,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (paren_string: String) : Bool :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation "(" = false
-  -- #test implementation "()" = true
-  -- #test implementation "(()())" = true
-  -- #test implementation ")(()" = false
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: String → Bool)
@@ -51,6 +48,8 @@ vc-spec: |-
   theorem correctness
   (brackets: String)
   : problem_spec implementation brackets :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

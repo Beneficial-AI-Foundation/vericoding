@@ -20,20 +20,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (string: String) : Nat :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation "" = 0
-  -- #test implementation "abAB" = 131
-  -- #test implementation "abcCd" = 67
-  -- #test implementation "helloE" = 69
-  -- #test implementation "woArBld" = 131
-  -- #test implementation "aAaaaXa" = 153
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → Nat)
@@ -55,6 +50,8 @@ vc-spec: |-
   (s: String)
   : problem_spec implementation s
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

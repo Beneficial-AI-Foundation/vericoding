@@ -29,15 +29,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (operator: List String) (operand : List Nat) : Int :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation ['+', '*', '-'] [2,3,4,5] = 9
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: List String → List Nat → Int)
@@ -57,6 +57,8 @@ vc-spec: |-
   theorem correctness
   (operator : List String) (operand : List Nat)
   : problem_spec implementation operator operand :=
+
+vc-proof: |-
   -- <vc-proof>
   sorry
   -- </vc-proof>

@@ -1,0 +1,139 @@
+vc-description: |-
+  /--
+  -----Description-----
+  Implement a Lean 4 function that, given a list of integers, removes all duplicates and returns the resulting list in ascending order.
+  
+  -----Input-----
+  The input consists of a single list of integers:
+  arr: A list of integers.
+  
+  -----Output-----
+  The output is a list of integers:
+  Returns a list containing the unique elements of the input, sorted in ascending order. The returned list must not contain any duplicates, and every element in the output must appear in the original input list.
+  -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def uniqueSorted_precond (arr : List Int) : Prop :=
+    True
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def uniqueSorted (arr : List Int) (h_precond : uniqueSorted_precond (arr)) : List Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rec insert (x : Int) (sorted : List Int) : List Int :=
+    match sorted with
+    | [] =>
+      [x]
+    | head :: tail =>
+      if x <= head then
+        x :: head :: tail
+      else
+        head :: insert x tail
+  
+  let rec insertionSort (xs : List Int) : List Int :=
+    match xs with
+    | [] =>
+      []
+    | h :: t =>
+      let sortedTail := insertionSort t
+      insert h sortedTail
+  
+  let removeDups : List Int → List Int
+  | xs =>
+    let rec aux (remaining : List Int) (seen : List Int) (acc : List Int) : List Int :=
+      match remaining with
+      | [] =>
+        acc.reverse
+      | h :: t =>
+        if h ∈ seen then
+          aux t seen acc
+        else
+          aux t (h :: seen) (h :: acc)
+    aux xs [] []
+  
+  insertionSort (removeDups arr)
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def uniqueSorted_postcond (arr : List Int) (result: List Int) (h_precond : uniqueSorted_precond (arr)) : Prop :=
+    List.isPerm arr.eraseDups result ∧ List.Pairwise (· ≤ ·) result
+  
+  theorem uniqueSorted_spec_satisfied (arr: List Int) (h_precond : uniqueSorted_precond (arr)) :
+      uniqueSorted_postcond (arr) (uniqueSorted (arr) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  []
+  -- Tests
+  [
+      {
+          "input": {
+              "arr": "[1, 1, 2, 3]"
+          },
+          "expected": "[1, 2, 3]",
+          "unexpected": [
+              "[1, 1, 2, 3]",
+              "[2, 3, 1]",
+              "[1, 3, 2]"
+          ]
+      },
+      {
+          "input": {
+              "arr": "[3, 3, 3]"
+          },
+          "expected": "[3]",
+          "unexpected": [
+              "[3, 3, 3]",
+              "[3, 3]",
+              "[3, 3, 3, 3]"
+          ]
+      },
+      {
+          "input": {
+              "arr": "[]"
+          },
+          "expected": "[]",
+          "unexpected": [
+              "[0]",
+              "[1]",
+              "[999]"
+          ]
+      },
+      {
+          "input": {
+              "arr": "[5, 2, 2, 5]"
+          },
+          "expected": "[2, 5]",
+          "unexpected": [
+              "[5, 2]",
+              "[2, 2, 5]",
+              "[2]"
+          ]
+      },
+      {
+          "input": {
+              "arr": "[1, 2, 3, 4, 5]"
+          },
+          "expected": "[1, 2, 3, 4, 5]",
+          "unexpected": [
+              "[1, 2, 3]",
+              "[2, 3, 4, 5]",
+              "[5, 4, 3, 2, 1]"
+          ]
+      }
+  ]
+  -/
+

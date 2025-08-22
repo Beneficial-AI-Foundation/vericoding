@@ -1,0 +1,184 @@
+vc-description: |-
+  /--
+  -----Description-----
+  This task requires writing a Lean 4 method that determines whether two given integers have opposite signs. In other words, the method should return true if one integer is positive and the other is negative. Note that zero is considered neither positive nor negative; therefore, if either integer is zero, the method should return false.
+  
+  -----Input-----
+  The input consists of two integers:
+  a: An integer.
+  b: An integer.
+  
+  -----Output-----
+  The output is a Boolean value:
+  Returns true if one of the integers is positive and the other is negative (i.e., they have opposite signs).
+  Returns false if both integers are either non-negative or non-positive, or if one (or both) is zero.
+  -/
+
+vc-preamble: |-
+  import Mathlib
+  
+  @[reducible, simp]
+  def hasOppositeSign_precond (a : Int) (b : Int) : Prop :=
+    True
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def hasOppositeSign (a : Int) (b : Int) (h_precond : hasOppositeSign_precond (a) (b)) : Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    a * b < 0
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def hasOppositeSign_postcond (a : Int) (b : Int) (result: Bool) (h_precond : hasOppositeSign_precond (a) (b)) :=
+    (((a < 0 ∧ b > 0) ∨ (a > 0 ∧ b < 0)) → result) ∧
+    (¬((a < 0 ∧ b > 0) ∨ (a > 0 ∧ b < 0)) → ¬result)
+  
+  theorem hasOppositeSign_spec_satisfied (a: Int) (b: Int) (h_precond : hasOppositeSign_precond (a) (b)) :
+      hasOppositeSign_postcond (a) (b) (hasOppositeSign (a) (b) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold hasOppositeSign hasOppositeSign_postcond
+    constructor
+  
+    · intro h
+      cases h with
+      | inl h1 =>
+        simp
+        have ⟨ha, hb⟩ := h1
+        exact Int.mul_neg_of_neg_of_pos ha hb
+      | inr h2 =>
+        simp
+        have ⟨ha, hb⟩ := h2
+        rw [Int.mul_comm]
+        exact Int.mul_neg_of_neg_of_pos hb ha
+  
+    · rw [Bool.decide_iff, mul_neg_iff]
+      simp_all
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  []
+  -- Tests
+  [
+      {
+          "input": {
+              "a": -5,
+              "b": 10
+          },
+          "expected": true,
+          "unexpected": [
+              false
+          ]
+      },
+      {
+          "input": {
+              "a": 5,
+              "b": -10
+          },
+          "expected": true,
+          "unexpected": [
+              false
+          ]
+      },
+      {
+          "input": {
+              "a": 5,
+              "b": 10
+          },
+          "expected": false,
+          "unexpected": [
+              true
+          ]
+      },
+      {
+          "input": {
+              "a": -5,
+              "b": -10
+          },
+          "expected": false,
+          "unexpected": [
+              true
+          ]
+      },
+      {
+          "input": {
+              "a": 0,
+              "b": 10
+          },
+          "expected": false,
+          "unexpected": [
+              true
+          ]
+      },
+      {
+          "input": {
+              "a": 10,
+              "b": 0
+          },
+          "expected": false,
+          "unexpected": [
+              true
+          ]
+      },
+      {
+          "input": {
+              "a": 0,
+              "b": -10
+          },
+          "expected": false,
+          "unexpected": [
+              true
+          ]
+      },
+      {
+          "input": {
+              "a": -10,
+              "b": 0
+          },
+          "expected": false,
+          "unexpected": [
+              true
+          ]
+      },
+      {
+          "input": {
+              "a": 0,
+              "b": 0
+          },
+          "expected": false,
+          "unexpected": [
+              true
+          ]
+      },
+      {
+          "input": {
+              "a": -1,
+              "b": 1
+          },
+          "expected": true,
+          "unexpected": [
+              false
+          ]
+      },
+      {
+          "input": {
+              "a": 1,
+              "b": -1
+          },
+          "expected": true,
+          "unexpected": [
+              false
+          ]
+      }
+  ]
+  -/
+

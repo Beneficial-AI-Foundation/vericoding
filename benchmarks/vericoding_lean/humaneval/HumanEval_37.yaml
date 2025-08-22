@@ -19,9 +19,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (l: List Int) : List Int :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   let even_idx := (List.range l.length).filter (λ i => i % 2 = 0);
   let even_val := even_idx.map (λ i => l.get! i);
   let even_val_sorted := List.mergeSort even_val;
@@ -29,12 +31,9 @@ vc-code: |-
     if i % 2 = 0 then even_val_sorted.get! (i / 2)
     else v);
   result
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation [1, 2, 3] = [1, 2, 3]
-  #test implementation [5, 6, 3, 4] = [3, 6, 5, 4]
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Int → List Int)
@@ -57,6 +56,8 @@ vc-spec: |-
   (l: List Int)
   : problem_spec implementation l
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

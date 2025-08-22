@@ -22,17 +22,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (arr: List Int) : Option Int :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation ([1, 2, 2, -4]: List Int) = (-9: Int)
-  -- #test implementation ([0, 1]: List Int) = (0: Int)
-  -- #test implementation ([]: List Int) = none
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: List Int → Option Int)
@@ -59,6 +57,8 @@ vc-spec: |-
   theorem correctness
   (arr: List Int)
   : problem_spec implementation arr :=
+
+vc-proof: |-
   -- <vc-proof>
   sorry
   -- </vc-proof>

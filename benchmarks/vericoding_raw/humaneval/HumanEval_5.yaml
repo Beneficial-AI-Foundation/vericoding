@@ -21,17 +21,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (numbers: List Int) (delimeter: Int) : List Int :=
-  -- <vc-code>
-  numbers.intersperse delimeter
-  -- </vc-code>
-  
-  #test implementation [1, 2, 3] 4 = [1, 4, 2, 4, 3]
-  #test implementation [] 4 = []
-  #test implementation [1] 4 = [1]
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  numbers.intersperse delimeter
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Int → Int → List Int)
@@ -56,6 +54,8 @@ vc-spec: |-
   (delimeter: Int)
   : problem_spec implementation numbers delimeter
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

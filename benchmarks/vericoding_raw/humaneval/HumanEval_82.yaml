@@ -22,18 +22,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (s: String) : Bool :=
-  -- <vc-code>
-  Nat.Prime s.length
-  -- </vc-code>
-  
-  -- #test implementation "Hello" = True
-  -- #test implementation "abcdcba" = True
-  -- #test implementation "kittens" = True
-  -- #test implementation "orange" = False
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  Nat.Prime s.length
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → Bool)
@@ -53,6 +50,8 @@ vc-spec: |-
   (s: String)
   : problem_spec implementation s
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

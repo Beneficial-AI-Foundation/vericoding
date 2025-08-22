@@ -25,23 +25,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (lst1: List String) (lst2: List String) : List String :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation [] [] = []
-  -- #test implementation ["hi", "admin"] ["hi", "hi"] = ["hi", "hi"]
-  -- #test implementation ["hi", "admin"] ["hi", "hi", "admin", "project"] = ["hi", "admin"]
-  -- #test implementation ["4"] ["1", "2", "3", "4", "5"] = ["4"]
-  -- #test implementation ["hi", "admin"] ["hI", "Hi"] = ["hI", "Hi"]
-  -- #test implementation ["hi", "admin"] ["hI", "hi", "hi"] = ["hI", "hi", "hi"]
-  -- #test implementation ["hi", "admin"] ["hI", "hi", "hii"] = ["hi", "admin"]
-  -- #test implementation [] ["this"] = []
-  -- #test implementation ["this"] [] == []
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List String → List String → List String)
@@ -66,6 +58,8 @@ vc-spec: |-
   (lst1: List String) (lst2: List String)
   : problem_spec implementation lst1 lst2
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

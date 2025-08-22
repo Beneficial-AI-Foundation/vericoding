@@ -23,17 +23,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (s: String) : String :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation "1234" = "4321"
-  -- #test implementation "ab" = "AB"
-  -- #test implementation "#a@C" = "#A@c"
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: String → String)
@@ -59,6 +57,8 @@ vc-spec: |-
   theorem correctness
   (s: String)
   : problem_spec implementation s :=
+
+vc-proof: |-
   -- <vc-proof>
   sorry
   -- </vc-proof>

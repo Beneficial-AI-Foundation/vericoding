@@ -37,15 +37,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (grades: List Float) : List String :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation [4.0, 3, 1.7, 2, 3.5] = ['A+', 'B', 'C-', 'C', 'A-']
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Float → List String)
@@ -89,6 +89,8 @@ vc-spec: |-
   (grades: List Float)
   : problem_spec implementation grades
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

@@ -19,20 +19,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (n: Nat) : Nat :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   let all_numbers_lt_n := {x | x < n};
   let multiples_of_11_or_13 := all_numbers_lt_n ∩ {x | x % 11 = 0 ∨ x % 13 = 0};
   let possible_multiple_with_7 := multiples_of_11_or_13 ∩ {x | x.repr.contains '7'};
   possible_multiple_with_7.toFinset.sum (λ x => x.repr.count '7')
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation 50 = 0
-  #test implementation 78 = 2
-  #test implementation 79 = 3
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: Nat → Nat)
@@ -54,6 +52,8 @@ vc-spec: |-
   (n: Nat)
   : problem_spec implementation n
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

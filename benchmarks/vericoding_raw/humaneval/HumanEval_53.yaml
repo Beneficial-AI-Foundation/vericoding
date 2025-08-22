@@ -16,16 +16,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (x y: Int) : Int :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation 2 3 = 5
-  -- #test implementation 5 7 = 12
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: Int → Int → Int)
@@ -43,6 +42,8 @@ vc-spec: |-
   theorem correctness
   (x y: Int)
   : problem_spec implementation x y  :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

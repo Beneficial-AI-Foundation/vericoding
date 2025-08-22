@@ -22,19 +22,19 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (string: String) : List Nat :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   (string.splitOn " ").map (fun
     | "o" => 4
     | "o|" => 2
     | ".|" => 1
     | _ => 0)
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation "o o| .| o| o| .| .| .| .| o o" = [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → List Nat)
@@ -58,6 +58,8 @@ vc-spec: |-
   (string: String)
   : problem_spec implementation string
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

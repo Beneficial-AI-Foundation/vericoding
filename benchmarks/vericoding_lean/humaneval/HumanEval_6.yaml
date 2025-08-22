@@ -17,15 +17,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (paren_string: String) : List Int :=
-  -- <vc-code>
-  (paren_string.split (fun x => x = ' ')).map (fun x => count_max_paren_depth x)
-  -- </vc-code>
-  
-  #test implementation "(()()) ((())) () ((())()())" = [2, 3, 1, 3]
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  (paren_string.split (fun x => x = ' ')).map (fun x => count_max_paren_depth x)
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → List Int)
@@ -48,6 +48,8 @@ vc-spec: |-
   (paren_string: String)
   : problem_spec implementation paren_string
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec
