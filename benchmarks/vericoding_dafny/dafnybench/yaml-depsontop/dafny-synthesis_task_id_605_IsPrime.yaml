@@ -1,0 +1,24 @@
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  method IsPrime(n: int) returns (result: bool)
+      requires n >= 2
+      ensures result <==> (forall k :: 2 <= k < n ==> n % k != 0)
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+    assume false;
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  
+
