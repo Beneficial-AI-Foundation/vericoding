@@ -63,18 +63,18 @@ def read_rust_files(rust_files: List[Path], base_path: Path) -> List[RustFile]:
 
 
 def filter_duplicates(rust_files: List[RustFile]) -> List[RustFile]:
-    """Filter out duplicates based on basename (filename without directory)."""
-    seen_basenames = set()
+    """Filter out duplicates based on file content."""
+    seen_contents = set()
     filtered_files = []
     
     for rust_file in rust_files:
-        basename = Path(rust_file.path).name
+        content_hash = hash(rust_file.content)
         
-        if basename not in seen_basenames:
-            seen_basenames.add(basename)
+        if content_hash not in seen_contents:
+            seen_contents.add(content_hash)
             filtered_files.append(rust_file)
         else:
-            print(f"Filtering out duplicate: {rust_file.path} (basename: {basename})")
+            print(f"Filtering out duplicate: {rust_file.path} (content already seen)")
     
     print(f"Filtered {len(rust_files)} files down to {len(filtered_files)} unique files")
     return filtered_files
