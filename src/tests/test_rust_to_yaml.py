@@ -27,12 +27,15 @@ def normalize_whitespace(content: str) -> str:
     return '\n'.join(normalized_lines)
 
 
-def test_conversion_roundtrip(rust_file="053-add.rs"):
+def test_conversion_roundtrip(rust_file="053-add.rs", test_data_dir=None):
     """Test that converting Rust -> YAML -> Rust gives back the original content."""
     
+    if test_data_dir is None:
+        test_data_dir = Path("verus-test-data")  # Fallback for backwards compatibility
+    
     # Test files
-    original_rust_file = Path(f"verus-test-data/{rust_file}")
-    expected_yaml_file = Path(f"verus-test-data/{rust_file}").with_suffix('.yaml')
+    original_rust_file = test_data_dir / rust_file
+    expected_yaml_file = test_data_dir / rust_file.replace('.rs', '.yaml')
     
     print("=== Testing Rust to YAML Conversion ===")
     
@@ -100,8 +103,30 @@ def main():
     """Run the tests."""
     print("Testing Rust to YAML converter...\n")
     
+    # Find test data directory - check multiple possible locations
+    script_dir = Path(__file__).parent
+    possible_test_dirs = [
+        script_dir / "verus-test-data",           # When run from src/tests/
+        Path("src/tests/verus-test-data"),        # When run from project root
+        Path("tests"),                            # Legacy location
+    ]
+    
+    test_data_dir = None
+    for test_dir in possible_test_dirs:
+        if test_dir.exists():
+            test_data_dir = test_dir
+            break
+    
+    if not test_data_dir:
+        print(f"❌ Could not find test data directory. Searched in:")
+        for test_dir in possible_test_dirs:
+            print(f"   - {test_dir}")
+        return 1
+    
+    print(f"📁 Using test data directory: {test_data_dir}")
+    
     # Find all YAML test files and derive corresponding .rs files
-    yaml_files = list(Path("verus-test-data").glob("*.yaml"))
+    yaml_files = list(test_data_dir.glob("*.yaml"))
     test_files = []
     
     for yaml_file in yaml_files:
@@ -115,7 +140,7 @@ def main():
     
     for test_file in sorted(test_files):
         print(f"Testing {test_file}:")
-        if not test_conversion_roundtrip(test_file):
+        if not test_conversion_roundtrip(test_file, test_data_dir):
             all_passed = False
         print()
     
