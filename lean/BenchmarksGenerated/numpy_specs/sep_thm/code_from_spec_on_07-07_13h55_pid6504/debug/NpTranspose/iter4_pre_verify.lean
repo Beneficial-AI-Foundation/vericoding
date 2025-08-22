@@ -1,0 +1,43 @@
+/-
+# NumPy Transpose Specification
+
+Port of np_transpose.dfy to Lean 4
+-/
+
+namespace DafnySpecs.NpTranspose
+
+-- LLM HELPER
+def Matrix (α : Type) (m n : Nat) : Type := Array (Array α)
+
+-- LLM HELPER
+def Matrix.toList {α : Type} {m n : Nat} (mat : Matrix α m n) : List α :=
+  mat.toList.flatMap (·.toList)
+
+-- LLM HELPER
+def Matrix.get {α : Type} {m n : Nat} (mat : Matrix α m n) (i : Nat) (j : Nat) : α :=
+  mat[i]![j]!
+
+/-- Transpose a 2D matrix -/
+def transpose {m n : Nat} (a : Matrix Int m n) : Matrix Int n m := 
+  Array.ofFn (fun j : Fin n => Array.ofFn (fun i : Fin m => Matrix.get a i.val j.val))
+
+-- LLM HELPER
+theorem Array.toList_ofFn_length {α : Type} {n : Nat} (f : Fin n → α) :
+  (Array.ofFn f).toList.length = n := by
+  simp [Array.toList_ofFn]
+
+/-- Specification: Transpose preserves dimensions -/
+theorem transpose_dimensions {m n : Nat} (a : Matrix Int m n) :
+  let ret := transpose a
+  ret.toList.length = n * m := by
+  simp [transpose, Matrix.toList, Array.toList_ofFn]
+  simp [List.sum_const, List.length_replicate]
+
+/-- Specification: Elements are correctly transposed -/
+theorem transpose_spec {m n : Nat} (a : Matrix Int m n) :
+  let ret := transpose a
+  ∀ i j : Nat, i < m → j < n → Matrix.get ret j i = Matrix.get a i j := by
+  intro i j hi hj
+  simp [transpose, Matrix.get, Array.getElem_ofFn]
+
+end DafnySpecs.NpTranspose
