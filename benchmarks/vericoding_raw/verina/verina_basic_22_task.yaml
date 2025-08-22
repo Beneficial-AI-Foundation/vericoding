@@ -1,13 +1,13 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that identifies the dissimilar elements between two arrays of integers. In other words, the method should return an array containing all elements that appear in one input array but not in the other. The output array must contain no duplicate elements and the order of elements does not matter.
-
+  
   -----Input-----
   The input consists of:
   a: An array of integers.
   b: An array of integers.
-
+  
   -----Output-----
   The output is an array of integers:
   Returns an array containing all distinct elements from both input arrays that are not present in the other array and should be sorted
@@ -15,6 +15,10 @@ vc-description: |-
 
 vc-preamble: |-
   import Std.Data.HashSet
+  
+  @[reducible, simp]
+  def dissimilarElements_precond (a : Array Int) (b : Array Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -31,19 +35,15 @@ vc-implementation: |-
     let res := b.foldl (fun acc x => if !inArray a x then acc.insert x else acc) res
     res.toArray.insertionSort
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def dissimilarElements_precond (a : Array Int) (b : Array Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def dissimilarElements_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_precond : dissimilarElements_precond (a) (b)) :=
     result.all (fun x => inArray a x ≠ inArray b x)∧
     result.toList.Pairwise (· ≤ ·) ∧
     a.all (fun x => if x ∈ b then x ∉ result else x ∈ result) ∧
     b.all (fun x => if x ∈ a then x ∉ result else x ∈ result)
-
+  
   theorem dissimilarElements_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : dissimilarElements_precond (a) (b)) :
       dissimilarElements_postcond (a) (b) (dissimilarElements (a) (b) h_precond) h_precond := by
 
@@ -144,3 +144,4 @@ vc-postamble: |-
       }
   ]
   -/
+

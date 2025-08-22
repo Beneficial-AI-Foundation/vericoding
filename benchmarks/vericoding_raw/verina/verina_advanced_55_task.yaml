@@ -2,11 +2,11 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 method that returns the integer that appears most frequently in the input list. If multiple integers have the same maximum frequency, return the one that appears first in the original list. You should implement a frequency counter using a fold over the list, extract the maximum frequency, and return the first element in the list that matches it.
-
+  
   -----Input-----
   The input consists of:
   xs: A list of integers (possibly with duplicates). The list is guaranteed to be non-empty.
-
+  
   -----Output-----
   The output is an integer:
   Returns the number that appears the most frequently in the list. If there is a tie, the element that occurs first in the original list should be returned.
@@ -15,6 +15,10 @@ vc-description: |-
 vc-preamble: |-
   import Std.Data.HashMap
   open Std
+  
+  @[reducible]
+  def mostFrequent_precond (xs : List Int) : Prop :=
+    xs ≠ []
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -56,19 +60,15 @@ vc-implementation: |-
     let candidates := getCandidates freqMap maxF
     getFirstWithFreq xs candidates
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def mostFrequent_precond (xs : List Int) : Prop :=
-    xs ≠ []
 
+vc-condition: |-
   @[reducible]
   def mostFrequent_postcond (xs : List Int) (result: Int) (h_precond : mostFrequent_precond (xs)) : Prop :=
     let count := fun x => xs.countP (fun y => y = x)
     result ∈ xs ∧
     xs.all (fun x => count x ≤ count result) ∧
     ((xs.filter (fun x => count x = count result)).head? = some result)
-
+  
   theorem mostFrequent_spec_satisfied (xs: List Int) (h_precond : mostFrequent_precond (xs)) :
       mostFrequent_postcond (xs) (mostFrequent (xs) h_precond) h_precond := by
 
@@ -139,3 +139,4 @@ vc-postamble: |-
       }
   ]
   -/
+

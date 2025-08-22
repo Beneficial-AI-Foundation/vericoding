@@ -1,21 +1,24 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   This task involves computing the average of two integers. The objective is to determine a value that closely approximates the true arithmetic mean when using integer division, ensuring that the result reflects the necessary rounding behavior.
-
-  -----Input-----  
-  The input consists of:  
-  • a: An integer.  
+  
+  -----Input-----
+  The input consists of:
+  • a: An integer.
   • b: An integer.
-
-  -----Output-----  
+  
+  -----Output-----
   The output is an integer representing the computed average of a and b using integer division.
-
-  -----Note-----  
+  
+  -----Note-----
   The specification requires that the computed average satisfies the condition that 2 * avg is between (a + b - 1) and (a + b + 1), ensuring that the result meets the expected rounding boundaries.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def ComputeAvg_precond (a : Int) (b : Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -28,16 +31,12 @@ vc-implementation: |-
   -- <vc-implementation>
     (a + b) / 2
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def ComputeAvg_precond (a : Int) (b : Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def ComputeAvg_postcond (a : Int) (b : Int) (result: Int) (h_precond : ComputeAvg_precond (a) (b)) :=
     2 * result = a + b - ((a + b) % 2)
-
+  
   theorem ComputeAvg_spec_satisfied (a: Int) (b: Int) (h_precond : ComputeAvg_precond (a) (b)) :
       ComputeAvg_postcond (a) (b) (ComputeAvg (a) (b) h_precond) h_precond := by
 
@@ -114,3 +113,4 @@ vc-postamble: |-
       }
   ]
   -/
+

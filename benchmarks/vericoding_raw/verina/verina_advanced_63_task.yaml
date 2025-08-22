@@ -2,17 +2,21 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 method that counts the unique elements from a sorted array.
-
+  
   -----Input-----
   The input is a single list of integers:
   nums: An array of integers sorted in non-decreasing order.
-
+  
   -----Output-----
   The output is a single integer:
   Returns the number of unique elements (k).
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def removeDuplicates_precond (nums : List Int) : Prop :=
+    -- nums are sorted in non-decreasing order
+    List.Pairwise (· ≤ ·) nums
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -42,18 +46,13 @@ vc-implementation: |-
             countUniques head tail newK
       countUniques init t initCount
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def removeDuplicates_precond (nums : List Int) : Prop :=
-    -- nums are sorted in non-decreasing order
-    List.Pairwise (· ≤ ·) nums
 
+vc-condition: |-
   @[reducible]
   def removeDuplicates_postcond (nums : List Int) (result: Nat) (h_precond : removeDuplicates_precond (nums)) : Prop :=
     result - nums.eraseDups.length = 0 ∧
     nums.eraseDups.length ≤ result
-
+  
   theorem removeDuplicates_spec_satisfied (nums: List Int) (h_precond : removeDuplicates_precond (nums)) :
       removeDuplicates_postcond (nums) (removeDuplicates (nums) h_precond) h_precond := by
 
@@ -183,3 +182,4 @@ vc-postamble: |-
       }
   ]
   -/
+

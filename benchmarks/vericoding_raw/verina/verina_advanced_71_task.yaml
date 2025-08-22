@@ -2,26 +2,29 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 method that, given a binary string `s` and an integer `k`, finds the shortest contiguous substring that contains exactly `k` characters `'1'`.
-
+  
   Among all substrings of `s` that contain exactly `k` occurrences of `'1'`, return the one that is shortest in length. If there are multiple such substrings with the same length, return the lexicographically smallest one.
-
+  
   If no such substring exists, return the empty string.
-
+  
   -----Input-----
   - s: A binary string (only consisting of characters `'0'` and `'1'`)
   - k: A natural number (k ≥ 0)
-
+  
   -----Output-----
   A string representing the shortest substring of `s` that contains exactly `k` ones. If no such substring exists, return `""`.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def shortestBeautifulSubstring_precond (s : String) (k : Nat) : Prop :=
+    s.toList.all (fun c => c = '0' ∨ c = '1')
 
 vc-helpers: |-
   -- <vc-helpers>
   def countOnes (lst : List Char) : Nat :=
     lst.foldl (fun acc c => if c = '1' then acc + 1 else acc) 0
-
+  
   def listToString (lst : List Char) : String :=
     String.mk lst
   def isLexSmaller (a b : List Char) : Bool :=
@@ -52,12 +55,8 @@ vc-implementation: |-
     | some b => listToString b
     | none => ""
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def shortestBeautifulSubstring_precond (s : String) (k : Nat) : Prop :=
-    s.toList.all (fun c => c = '0' ∨ c = '1')
 
+vc-condition: |-
   @[reducible]
   def shortestBeautifulSubstring_postcond (s : String) (k : Nat) (result: String) (h_precond : shortestBeautifulSubstring_precond (s) (k)) : Prop :=
     let chars := s.data
@@ -70,7 +69,7 @@ vc-condition: |-
     (result = "" ∧ targets = []) ∨
     (result ∈ targets ∧
      ∀ r ∈ targets, r.length ≥ result.length ∨ (r.length = result.length ∧ result ≤ r))
-
+  
   theorem shortestBeautifulSubstring_spec_satisfied (s: String) (k: Nat) (h_precond : shortestBeautifulSubstring_precond (s) (k)) :
       shortestBeautifulSubstring_postcond (s) (k) (shortestBeautifulSubstring (s) (k) h_precond) h_precond := by
 
@@ -190,3 +189,4 @@ vc-postamble: |-
       }
   ]
   -/
+

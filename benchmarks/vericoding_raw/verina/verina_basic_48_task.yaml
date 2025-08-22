@@ -1,20 +1,24 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   This task requires writing a Lean 4 method that determines whether a given non-negative natural number is a perfect square. In other words, the method should return true if there exists a natural number whose square is equal to the input number, and false if no such number exists.
-
-  -----Input-----  
-  The input consists of a single natural number:  
+  
+  -----Input-----
+  The input consists of a single natural number:
   n: A non-negative natural number (Nat).
-
-  -----Output-----  
-  The output is a Boolean value:  
-  Returns true if there exists an integer such that its square equals the input n.  
+  
+  -----Output-----
+  The output is a Boolean value:
+  Returns true if there exists an integer such that its square equals the input n.
   Returns false if no integer squared equals the input n.
   -/
 
 vc-preamble: |-
   import Mathlib
+  
+  @[reducible, simp]
+  def isPerfectSquare_precond (n : Nat) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -118,16 +122,12 @@ vc-implementation: |-
           else check (x + 1) fuel
       check 1 n
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def isPerfectSquare_precond (n : Nat) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def isPerfectSquare_postcond (n : Nat) (result : Bool) : Prop :=
     result ↔ ∃ i : Nat, i * i = n
-
+  
   theorem isPerfectSquare_spec_satisfied (n : Nat) :
       isPerfectSquare_postcond n (isPerfectSquare n) := by
 
@@ -278,3 +278,4 @@ vc-postamble: |-
       }
   ]
   -/
+

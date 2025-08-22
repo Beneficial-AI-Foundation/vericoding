@@ -2,19 +2,22 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 function that computes the length of the longest strictly increasing contiguous subarray in a list of integers. A subarray is a sequence of consecutive elements, and it is strictly increasing if each element is greater than the previous one.
-
+  
   The function should correctly handle empty lists, lists with all equal elements, and long stretches of increasing numbers.
-
+  
   -----Input-----
   The input consists of a single list:
   nums: A list of integers.
-
+  
   -----Output-----
   The output is a natural number:
   Returns the length of the longest strictly increasing contiguous subarray. If the list is empty, the function should return 0.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def longestIncreasingStreak_precond (nums : List Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -36,12 +39,8 @@ vc-implementation: |-
           else aux xs (some x) 1 (max currLen maxLen)
     aux nums none 0 0
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def longestIncreasingStreak_precond (nums : List Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible]
   def longestIncreasingStreak_postcond (nums : List Int) (result: Nat) (h_precond : longestIncreasingStreak_precond (nums)) : Prop :=
     -- Case 1: Empty list means result = 0
@@ -64,7 +63,7 @@ vc-condition: |-
     (List.range (nums.length - result) |>.all (fun start =>
       List.range result |>.any (fun i =>
         start + i + 1 ≥ nums.length ∨ nums[start + i]! ≥ nums[start + i + 1]!)))
-
+  
   theorem longestIncreasingStreak_spec_satisfied (nums: List Int) (h_precond : longestIncreasingStreak_precond (nums)) :
       longestIncreasingStreak_postcond (nums) (longestIncreasingStreak (nums) h_precond) h_precond := by
 
@@ -138,3 +137,4 @@ vc-postamble: |-
       }
   ]
   -/
+

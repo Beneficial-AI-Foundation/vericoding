@@ -2,18 +2,21 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 method that takes two sorted (non-decreasing) integer lists and merges them into a single sorted list. The output must preserve order and include all elements from both input lists.
-
+  
   -----Input-----
   The input consists of:
   a: A list of integers sorted in non-decreasing order.
   b: Another list of integers sorted in non-decreasing order.
-
+  
   -----Output-----
   The output is a list of integers:
   Returns a merged list that contains all elements from both input lists, sorted in non-decreasing order.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def mergeSorted_precond (a : List Int) (b : List Int) : Prop :=
+    List.Pairwise (· ≤ ·) a ∧ List.Pairwise (· ≤ ·) b
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -37,17 +40,13 @@ vc-implementation: |-
     let merged := mergeSortedAux a b
     merged
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def mergeSorted_precond (a : List Int) (b : List Int) : Prop :=
-    List.Pairwise (· ≤ ·) a ∧ List.Pairwise (· ≤ ·) b
 
+vc-condition: |-
   @[reducible, simp]
   def mergeSorted_postcond (a : List Int) (b : List Int) (result: List Int) (h_precond : mergeSorted_precond (a) (b)) : Prop :=
     List.Pairwise (· ≤ ·) result ∧
     List.isPerm result (a ++ b)
-
+  
   theorem mergeSorted_spec_satisfied (a: List Int) (b: List Int) (h_precond : mergeSorted_precond (a) (b)) :
       mergeSorted_postcond (a) (b) (mergeSorted (a) (b) h_precond) h_precond := by
 
@@ -129,3 +128,4 @@ vc-postamble: |-
       }
   ]
   -/
+

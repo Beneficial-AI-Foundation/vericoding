@@ -1,21 +1,24 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   This task requires writing a Lean 4 method that extracts the last digit of a given non-negative integer. The method should return the last digit, which is obtained by computing the remainder when the number is divided by 10. The result must always be between 0 and 9.
-
-  -----Input-----  
-  The input consists of a single value:  
+  
+  -----Input-----
+  The input consists of a single value:
   n: A non-negative integer.
-
-  -----Output-----  
-  The output is an integer:  
+  
+  -----Output-----
+  The output is an integer:
   Returns the last digit of the input number, ensuring that the digit lies within the range 0 to 9.
-
-  -----Note-----  
+  
+  -----Note-----
   It is assumed that the input number n is non-negative.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def lastDigit_precond (n : Nat) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -28,17 +31,13 @@ vc-implementation: |-
   -- <vc-implementation>
     n % 10
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def lastDigit_precond (n : Nat) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def lastDigit_postcond (n : Nat) (result: Nat) (h_precond : lastDigit_precond (n)) :=
     (0 ≤ result ∧ result < 10) ∧
     (n % 10 - result = 0 ∧ result - n % 10 = 0)
-
+  
   theorem lastDigit_spec_satisfied (n: Nat) (h_precond : lastDigit_precond (n)) :
       lastDigit_postcond (n) (lastDigit (n) h_precond) h_precond := by
 
@@ -148,3 +147,4 @@ vc-postamble: |-
       }
   ]
   -/
+

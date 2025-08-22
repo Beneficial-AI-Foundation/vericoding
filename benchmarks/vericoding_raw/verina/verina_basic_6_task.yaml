@@ -1,14 +1,14 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that finds the minimum among three given integers. The method should return the smallest value, ensuring that the result is less than or equal to each of the input numbers and that it is one of the provided integers.
-
+  
   -----Input-----
   The input consists of three integers:
   a: The first integer.
   b: The second integer.
   c: The third integer.
-
+  
   -----Output-----
   The output is an integer:
   Returns the minimum of the three input numbers, assuring that the returned value is less than or equal to a, b, and c, and that it matches one of these values.
@@ -16,6 +16,10 @@ vc-description: |-
 
 vc-preamble: |-
   import Mathlib
+  
+  @[reducible, simp]
+  def minOfThree_precond (a : Int) (b : Int) (c : Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -30,17 +34,13 @@ vc-implementation: |-
     else if b <= a && b <= c then b
     else c
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def minOfThree_precond (a : Int) (b : Int) (c : Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def minOfThree_postcond (a : Int) (b : Int) (c : Int) (result: Int) (h_precond : minOfThree_precond (a) (b) (c)) :=
     (result <= a ∧ result <= b ∧ result <= c) ∧
     (result = a ∨ result = b ∨ result = c)
-
+  
   theorem minOfThree_spec_satisfied (a: Int) (b: Int) (c: Int) (h_precond : minOfThree_precond (a) (b) (c)) :
       minOfThree_postcond (a) (b) (c) (minOfThree (a) (b) (c) h_precond) h_precond := by
 
@@ -217,3 +217,4 @@ vc-postamble: |-
       }
   ]
   -/
+

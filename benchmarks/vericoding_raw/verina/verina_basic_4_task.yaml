@@ -1,23 +1,26 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that finds the kth element in a given array using 1-based indexing. The method should return the element at the specified position, where the first element is at position 1.
-
+  
   -----Input-----
   The input consists of:
   arr: An array of integers.
   k: An integer representing the position (1-based index) of the element to find.
-
+  
   -----Output-----
   The output is an integer:
   Returns the element at the kth position in the array.
-
+  
   -----Note-----
   The input k is assumed to be valid (between 1 and array length inclusive).
   The array is assumed to be non-empty.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def kthElement_precond (arr : Array Int) (k : Nat) : Prop :=
+    k ≥ 1 ∧ k ≤ arr.size
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -30,16 +33,12 @@ vc-implementation: |-
   -- <vc-implementation>
     arr[k - 1]!
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def kthElement_precond (arr : Array Int) (k : Nat) : Prop :=
-    k ≥ 1 ∧ k ≤ arr.size
 
+vc-condition: |-
   @[reducible, simp]
   def kthElement_postcond (arr : Array Int) (k : Nat) (result: Int) (h_precond : kthElement_precond (arr) (k)) :=
     arr.any (fun x => x = result ∧ x = arr[k - 1]!)
-
+  
   theorem kthElement_spec_satisfied (arr: Array Int) (k: Nat) (h_precond : kthElement_precond (arr) (k)) :
       kthElement_postcond (arr) (k) (kthElement (arr) (k) h_precond) h_precond := by
 
@@ -184,3 +183,4 @@ vc-postamble: |-
       }
   ]
   -/
+

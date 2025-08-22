@@ -1,21 +1,26 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that finds the difference between the first even number and the first odd number in an array of integers. The method should process the array sequentially until it identifies the first even number and the first odd number, and then return the difference calculated as (first even number) minus (first odd number).
-
+  
   -----Input-----
   The input consists of:
   a: An array of integers.
-
+  
   -----Output-----
   The output is an integer:
   Returns the difference computed as the first even number minus the first odd number found in the array.
-
+  
   -----Note-----
   The input array is assumed to be non-empty and to contain at least one even number and one odd number.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def firstEvenOddDifference_precond (a : Array Int) : Prop :=
+    a.size > 1 ∧
+    (∃ x ∈ a, isEven x) ∧
+    (∃ x ∈ a, isOdd x)
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -44,20 +49,14 @@ vc-implementation: |-
         0
     findFirstEvenOdd 0 none none
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def firstEvenOddDifference_precond (a : Array Int) : Prop :=
-    a.size > 1 ∧
-    (∃ x ∈ a, isEven x) ∧
-    (∃ x ∈ a, isOdd x)
 
+vc-condition: |-
   @[reducible, simp]
   def firstEvenOddDifference_postcond (a : Array Int) (result: Int) (h_precond : firstEvenOddDifference_precond (a)) :=
     ∃ i j, i < a.size ∧ j < a.size ∧ isEven (a[i]!) ∧ isOdd (a[j]!) ∧
       result = a[i]! - a[j]! ∧
       (∀ k, k < i → isOdd (a[k]!)) ∧ (∀ k, k < j → isEven (a[k]!))
-
+  
   theorem firstEvenOddDifference_spec_satisfied (a: Array Int) (h_precond : firstEvenOddDifference_precond (a)) :
       firstEvenOddDifference_postcond (a) (firstEvenOddDifference (a) h_precond) h_precond := by
 
@@ -135,3 +134,4 @@ vc-postamble: |-
       }
   ]
   -/
+

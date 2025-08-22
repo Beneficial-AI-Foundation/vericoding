@@ -2,17 +2,20 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 method that returns the majority element from a list of integers.
-
+  
   The majority element is the one that appears more than ⌊n / 2⌋ times in the list, where n is the list's length. You may assume that a majority element always exists in the input.
-
+  
   -----Input-----
   - nums: A list of integers (with at least one majority element).
-
+  
   -----Output-----
   Returns the majority element — the value that appears more than ⌊n / 2⌋ times.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def majorityElement_precond (nums : List Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -51,18 +54,14 @@ vc-implementation: |-
     let mid := len / 2
     getAt sorted mid
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def majorityElement_precond (nums : List Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def majorityElement_postcond (nums : List Int) (result: Int) (h_precond : majorityElement_precond (nums)) : Prop :=
     let n := nums.length
     (List.count result nums > n / 2) ∧
     nums.all (fun x => x = result ∨ List.count x nums ≤ n / 2)
-
+  
   theorem majorityElement_spec_satisfied (nums: List Int) (h_precond : majorityElement_precond (nums)) :
       majorityElement_postcond (nums) (majorityElement (nums) h_precond) h_precond := by
 
@@ -175,3 +174,4 @@ vc-postamble: |-
       }
   ]
   -/
+

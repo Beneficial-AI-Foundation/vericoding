@@ -1,22 +1,26 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that calculates the product of all distinct integers in an array. The method should consider each unique integer only once when computing the product and return the resulting value. If the array is empty, the method should return 1.
-
+  
   -----Input-----
   The input consists of:
   arr: An array of integers.
-
+  
   -----Output-----
   The output is an integer:
   Returns the product of all unique integers from the input array.
-
+  
   -----Note-----
   The order in which the unique integers are multiplied does not affect the final product.
   -/
 
 vc-preamble: |-
   import Std.Data.HashSet
+  
+  @[reducible, simp]
+  def uniqueProduct_precond (arr : Array Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -38,17 +42,13 @@ vc-implementation: |-
         product
     loop 0 Std.HashSet.empty 1
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def uniqueProduct_precond (arr : Array Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def uniqueProduct_postcond (arr : Array Int) (result: Int) (h_precond : uniqueProduct_precond (arr)) :=
     result - (arr.toList.eraseDups.foldl (· * ·) 1) = 0 ∧
     (arr.toList.eraseDups.foldl (· * ·) 1) - result = 0
-
+  
   theorem uniqueProduct_spec_satisfied (arr: Array Int) (h_precond : uniqueProduct_precond (arr)) :
       uniqueProduct_postcond (arr) (uniqueProduct (arr) h_precond) h_precond := by
 
@@ -142,3 +142,4 @@ vc-postamble: |-
       }
   ]
   -/
+

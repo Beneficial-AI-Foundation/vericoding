@@ -1,22 +1,25 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   This task requires determining whether a given list of characters is a palindrome; that is, whether the sequence reads the same forward and backward.
-
-  -----Input-----  
-  The input consists of:  
+  
+  -----Input-----
+  The input consists of:
   • x: A list of characters (List Char). The list can be empty or non-empty.
-
-  -----Output-----  
-  The output is a Boolean value (Bool):  
-  • Returns true if the input list is a palindrome.  
+  
+  -----Output-----
+  The output is a Boolean value (Bool):
+  • Returns true if the input list is a palindrome.
   • Returns false otherwise.
-
-  -----Note-----  
+  
+  -----Note-----
   An empty list is considered a palindrome. The function does not impose any additional preconditions.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def IsPalindrome_precond (x : List Char) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -36,16 +39,12 @@ vc-implementation: |-
   -- <vc-implementation>
     if x.length = 0 then true else isPalindromeHelper x 0 (x.length - 1)
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def IsPalindrome_precond (x : List Char) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def IsPalindrome_postcond (x : List Char) (result: Bool) (h_precond : IsPalindrome_precond (x)) :=
     result ↔ ∀ i : Nat, i < x.length → (x[i]! = x[x.length - i - 1]!)
-
+  
   theorem IsPalindrome_spec_satisfied (x: List Char) (h_precond : IsPalindrome_precond (x)) :
       IsPalindrome_postcond (x) (IsPalindrome (x) h_precond) h_precond := by
 
@@ -107,3 +106,4 @@ vc-postamble: |-
       }
   ]
   -/
+

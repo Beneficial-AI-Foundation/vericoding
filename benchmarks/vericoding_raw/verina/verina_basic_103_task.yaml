@@ -1,23 +1,26 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   This problem involves updating an array of integers by modifying two specific positions. Specifically, the element at index 4 should be increased by 3, and the element at index 7 should be changed to 516. The goal is to correctly update these positions while leaving the rest of the array unchanged. The description assumes that the array contains at least 8 elements.
-
-  -----Input-----  
-  The input consists of:  
+  
+  -----Input-----
+  The input consists of:
   • a: An array of integers. The array must contain at least 8 elements.
-
-  -----Output-----  
-  The output is an array of integers that meets the following criteria:  
-  • The element at index 4 is updated to its original value plus 3.  
-  • The element at index 7 is set to 516.  
+  
+  -----Output-----
+  The output is an array of integers that meets the following criteria:
+  • The element at index 4 is updated to its original value plus 3.
+  • The element at index 7 is set to 516.
   • All other elements in the array remain the same as in the input array.
-
-  -----Note-----  
+  
+  -----Note-----
   It is assumed that the input array has a size of at least 8 elements. Indices are 0-indexed.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def UpdateElements_precond (a : Array Int) : Prop :=
+    a.size ≥ 8
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -32,18 +35,14 @@ vc-implementation: |-
     let a2 := a1.set! 7 516
     a2
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def UpdateElements_precond (a : Array Int) : Prop :=
-    a.size ≥ 8
 
+vc-condition: |-
   @[reducible, simp]
   def UpdateElements_postcond (a : Array Int) (result: Array Int) (h_precond : UpdateElements_precond (a)) :=
     result[4]! = (a[4]!) + 3 ∧
     result[7]! = 516 ∧
     (∀ i, i < a.size → i ≠ 4 → i ≠ 7 → result[i]! = a[i]!)
-
+  
   theorem UpdateElements_spec_satisfied (a: Array Int) (h_precond : UpdateElements_precond (a)) :
       UpdateElements_postcond (a) (UpdateElements (a) h_precond) h_precond := by
 
@@ -116,3 +115,4 @@ vc-postamble: |-
       }
   ]
   -/
+

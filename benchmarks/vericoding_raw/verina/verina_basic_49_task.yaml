@@ -1,23 +1,26 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that searches an array of integers to locate the first odd number. The method should return a pair where the first element is a Boolean indicating whether an odd number was found, and the second element is the index of that odd number if found, or -1 if no odd number exists. When an odd number is found, the method should return the smallest index at which an odd number occurs.
-
+  
   -----Input-----
   The input consists of:
   a: An array of integers.
-
+  
   -----Output-----
   The output is a pair (Bool, Int):
   - If the Boolean is true, then the integer represents the smallest index of an odd number in the array.
   - If the Boolean is false, then there are no odd numbers in the array, and the accompanying integer is -1.
-
+  
   -----Note-----
   - The input array is assumed to be non-null.
   - If multiple odd numbers are present, the index returned should correspond to the first occurrence.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def findFirstOdd_precond (a : Array Int) : Prop :=
+    a.size > 0
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -39,19 +42,15 @@ vc-implementation: |-
     -- Extract the index from the found pair (if any)
     Option.map (fun (_, i) => i) found
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def findFirstOdd_precond (a : Array Int) : Prop :=
-    a.size > 0
 
+vc-condition: |-
   @[reducible, simp]
   def findFirstOdd_postcond (a : Array Int) (result: Option Nat) (h_precond : findFirstOdd_precond (a)) :=
     match result with
     | some idx => idx < a.size ∧ isOdd (a[idx]!) ∧
       (∀ j, j < idx → ¬ isOdd (a[j]!))
     | none => ∀ i, i < a.size → ¬ isOdd (a[i]!)
-
+  
   theorem findFirstOdd_spec_satisfied (a: Array Int) (h_precond : findFirstOdd_precond (a)) :
       findFirstOdd_postcond (a) (findFirstOdd (a) h_precond) h_precond := by
 
@@ -193,3 +192,4 @@ vc-postamble: |-
       }
   ]
   -/
+

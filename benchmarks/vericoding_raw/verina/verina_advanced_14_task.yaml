@@ -1,18 +1,21 @@
 vc-description: |-
   /--
-  -----Description----- 
-  This task requires writing a Lean 4 method that determines whether a natural number is a power of four. The method should return a boolean value that indicates whether the given natural number is a power of four. An integer n is a power of four, if there exists an natural number x such that n = 4^x. 
-
+  -----Description-----
+  This task requires writing a Lean 4 method that determines whether a natural number is a power of four. The method should return a boolean value that indicates whether the given natural number is a power of four. An integer n is a power of four, if there exists an natural number x such that n = 4^x.
+  
   -----Input-----
   The input consists of one natural number:
   n: A natural number.
-
+  
   -----Output-----
   The output is a boolean value:
   Return a boolean value that indicates whether the given natural number is a power of four. Return "true" if it is a power of four. Otherwise, return "false".
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def ifPowerOfFour_precond (n : Nat) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -38,16 +41,12 @@ vc-implementation: |-
             false
     helper n
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def ifPowerOfFour_precond (n : Nat) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible]
   def ifPowerOfFour_postcond (n : Nat) (result: Bool) (h_precond : ifPowerOfFour_precond (n)) : Prop :=
     result ↔ (∃ m:Nat, n=4^m)
-
+  
   theorem ifPowerOfFour_spec_satisfied (n: Nat) (h_precond : ifPowerOfFour_precond (n)) :
       ifPowerOfFour_postcond (n) (ifPowerOfFour (n) h_precond) h_precond := by
 
@@ -181,3 +180,4 @@ vc-postamble: |-
       }
   ]
   -/
+

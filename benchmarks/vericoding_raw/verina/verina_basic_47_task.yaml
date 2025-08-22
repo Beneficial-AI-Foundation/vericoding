@@ -1,21 +1,24 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that calculates the sum of all the elements in an array of integers. The method should process the entire array and return the total sum of its elements.
-
+  
   -----Input-----
   The input consists of:
   a: An array of integers.
-
+  
   -----Output-----
   The output is an integer:
   Returns the sum of all elements in the input array.
-
+  
   -----Note-----
   - The input array is assumed not to be null.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def arraySum_precond (a : Array Int) : Prop :=
+    a.size > 0
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -30,12 +33,8 @@ vc-implementation: |-
   -- <vc-implementation>
     a.toList.sum
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def arraySum_precond (a : Array Int) : Prop :=
-    a.size > 0
 
+vc-condition: |-
   def sumTo (a : Array Int) (n : Nat) : Int :=
     if n = 0 then 0
     else sumTo a (n - 1) + a[n - 1]!
@@ -43,7 +42,7 @@ vc-condition: |-
   def arraySum_postcond (a : Array Int) (result: Int) (h_precond : arraySum_precond (a)) :=
     result - sumTo a a.size = 0 ∧
     result ≥ sumTo a a.size
-
+  
   theorem arraySum_spec_satisfied (a: Array Int) (h_precond : arraySum_precond (a)) :
       arraySum_postcond (a) (arraySum (a) h_precond) h_precond := by
 
@@ -150,3 +149,4 @@ vc-postamble: |-
       }
   ]
   -/
+

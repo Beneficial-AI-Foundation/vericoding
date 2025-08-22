@@ -2,19 +2,22 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 method that finds the maximum among three given integers. The method should return the largest value, ensuring that the result is greater than or equal to each of the input numbers and that it is one of the provided integers.
-
+  
   -----Input-----
   The input consists of three integers:
   a: The first integer.
   b: The second integer.
   c: The third integer.
-
+  
   -----Output-----
   The output is an integer:
   Returns the maximum of the three input numbers, assuring that the returned value is greater than or equal to a, b, and c, and that it matches one of these values.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def maxOfThree_precond (a : Int) (b : Int) (c : Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -29,16 +32,12 @@ vc-implementation: |-
     else if b >= a && b >= c then b
     else c
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def maxOfThree_precond (a : Int) (b : Int) (c : Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible]
   def maxOfThree_postcond (a : Int) (b : Int) (c : Int) (result: Int) (h_precond : maxOfThree_precond (a) (b) (c)) : Prop :=
     (result >= a ∧ result >= b ∧ result >= c) ∧ (result = a ∨ result = b ∨ result = c)
-
+  
   theorem maxOfThree_spec_satisfied (a: Int) (b: Int) (c: Int) (h_precond : maxOfThree_precond (a) (b) (c)) :
       maxOfThree_postcond (a) (b) (c) (maxOfThree (a) (b) (c) h_precond) h_precond := by
 
@@ -116,3 +115,4 @@ vc-postamble: |-
       }
   ]
   -/
+

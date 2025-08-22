@@ -2,20 +2,24 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 method that finds the indices of two numbers in an array that add up to a target value. Given an array of integers and a target integer, the function should return the indices of the two numbers such that they add up to the target.
-
+  
   You may assume that each input has exactly one solution, and you may not use the same element twice.
-
+  
   -----Input-----
   The input consists of:
   nums: An array of integers.
   target: An integer representing the target sum.
-
+  
   -----Output-----
   The output is an array of two integers:
   Returns the indices of the two numbers in the array that add up to the target. The indices should be sorted.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def twoSum_precond (nums : Array Int) (target : Int) : Prop :=
+    -- The array must have at least 2 elements
+    nums.size ≥ 2 ∧
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -42,13 +46,8 @@ vc-implementation: |-
   
     findIndices 0 1 (nums.size * nums.size)
   -- </vc-implementation>
-  
+
 vc-condition: |-
-  @[reducible]
-  def twoSum_precond (nums : Array Int) (target : Int) : Prop :=
-    -- The array must have at least 2 elements
-    nums.size ≥ 2 ∧
-  
     -- There exists exactly one pair of indices whose values sum to the target
     (List.range nums.size).any (fun i =>
       (List.range i).any (fun j => nums[i]! + nums[j]! = target)) ∧
@@ -56,7 +55,7 @@ vc-condition: |-
     -- No other pair sums to the target (ensuring uniqueness of solution)
     ((List.range nums.size).flatMap (fun i =>
       (List.range i).filter (fun j => nums[i]! + nums[j]! = target))).length = 1
-
+  
   @[reducible]
   def twoSum_postcond (nums : Array Int) (target : Int) (result: Array Nat) (h_precond : twoSum_precond (nums) (target)) : Prop :=
     -- Result contains exactly 2 indices
@@ -70,7 +69,7 @@ vc-condition: |-
   
     -- The values at these indices sum to the target
     nums[result[0]!]! + nums[result[1]!]! = target
-
+  
   theorem twoSum_spec_satisfied (nums: Array Int) (target: Int) (h_precond : twoSum_precond (nums) (target)) :
       twoSum_postcond (nums) (target) (twoSum (nums) (target) h_precond) h_precond := by
 
@@ -152,3 +151,4 @@ vc-postamble: |-
       }
   ]
   -/
+

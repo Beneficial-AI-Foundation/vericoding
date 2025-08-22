@@ -2,17 +2,20 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 method that determines whether a given number `n` is an Armstrong number (also known as a Narcissistic number). An Armstrong number is a number that is equal to the sum of its own digits raised to the power of the number of digits.
-
+  
   -----Input-----
   The input consists of one natural number:
   - `n: Nat`: The number to check if it satisfies the Armstrong property.
-
+  
   -----Output-----
   The output is a boolean value:
   - `Bool`: Return `true` if `n` is an Armstrong number, otherwise return `false`.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def isArmstrong_precond (n : Nat) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -21,7 +24,7 @@ vc-helpers: |-
       if n = 0 then acc
       else go (n / 10) (acc + 1)
     go n (if n = 0 then 1 else 0)
-
+  
   def sumPowers (n : Nat) (k : Nat) : Nat :=
     let rec go (n acc : Nat) : Nat :=
       if n = 0 then acc
@@ -39,18 +42,14 @@ vc-implementation: |-
     let k := countDigits n
     sumPowers n k = n
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def isArmstrong_precond (n : Nat) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible]
   def isArmstrong_postcond (n : Nat) (result: Bool) (h_precond : isArmstrong_precond (n)) : Prop :=
     let n' := List.foldl (fun acc d => acc + d ^ countDigits n) 0 (List.map (fun c => c.toNat - '0'.toNat) (toString n).toList)
     (result → (n = n')) ∧
     (¬ result → (n ≠ n'))
-
+  
   theorem isArmstrong_spec_satisfied (n: Nat) (h_precond : isArmstrong_precond (n)) :
       isArmstrong_postcond (n) (isArmstrong (n) h_precond) h_precond := by
 
@@ -121,3 +120,4 @@ vc-postamble: |-
       }
   ]
   -/
+

@@ -1,21 +1,24 @@
 vc-description: |-
   /--
   -----Description-----
-  This task requires writing a Lean 4 function that finds the maximum subarray sum from a given list of integers. 
-  A subarray is a contiguous sequence of elements within the list. 
+  This task requires writing a Lean 4 function that finds the maximum subarray sum from a given list of integers.
+  A subarray is a contiguous sequence of elements within the list.
   The function should return the maximum sum that can be obtained from any subarray.
-
+  
   -----Input-----
   The input is a list of integers:
   xs: A list of integers (can include negative numbers).
-
+  
   -----Output-----
   The output is an integer:
-  Returns the maximum sum among all contiguous subarrays of xs. 
+  Returns the maximum sum among all contiguous subarrays of xs.
   If the list is empty, the result should be 0.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def maxSubarraySum_precond (xs : List Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -37,12 +40,8 @@ vc-implementation: |-
     | [] => 0
     | x :: rest => helper rest x x
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def maxSubarraySum_precond (xs : List Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def maxSubarraySum_postcond (xs : List Int) (result: Int) (h_precond : maxSubarraySum_precond (xs)) : Prop :=
     -- Find all possible subarrays and their sums
@@ -54,14 +53,13 @@ vc-condition: |-
     -- Check if there exists a subarray with sum equal to result
     let has_result_subarray := subarray_sums.any (fun sum => sum == result)
   
-  
     -- Check if result is the maximum among all subarray sums
     let is_maximum := subarray_sums.all (· ≤ result)
   
     match xs with
     | [] => result == 0
     | _ => has_result_subarray ∧ is_maximum
-
+  
   theorem maxSubarraySum_spec_satisfied (xs: List Int) (h_precond : maxSubarraySum_precond (xs)) :
       maxSubarraySum_postcond (xs) (maxSubarraySum (xs) h_precond) h_precond := by
 
@@ -125,3 +123,4 @@ vc-postamble: |-
       }
   ]
   -/
+

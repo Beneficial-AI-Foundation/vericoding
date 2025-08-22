@@ -1,17 +1,17 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   You are given a natural number array nums and a natural number k.
   The frequency of an element x is the number of times it occurs in an array.
   An array is called good if the frequency of each element in this array is less than or equal to k.
   Return the length of the longest good subarray of nums.
   A subarray is a contiguous non-empty sequence of elements within an array.
-
+  
   -----Input-----
   The input consists of an array of natural numbers nums and a natural number k:
   nums: an array of natural numbers.
   k: a natural number
-
+  
   -----Output-----
   The output is a natural number:
   Return the length of the longest good subarray of nums.
@@ -20,6 +20,10 @@ vc-description: |-
 vc-preamble: |-
   import Std.Data.HashMap
   open Std
+  
+  @[reducible]
+  def longestGoodSubarray_precond (nums : List Nat) (k : Nat) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -55,12 +59,8 @@ vc-implementation: |-
   
       return maxLen
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def longestGoodSubarray_precond (nums : List Nat) (k : Nat) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible]
   def longestGoodSubarray_postcond (nums : List Nat) (k : Nat) (result: Nat) (h_precond : longestGoodSubarray_precond (nums) (k)) : Prop :=
     let subArrays :=
@@ -74,7 +74,7 @@ vc-condition: |-
     (nums ≠ [] ∧
       validSubArrays.any (fun arr => arr.length = result) ∧
       validSubArrays.all (fun arr => arr.length ≤ result))
-
+  
   theorem longestGoodSubarray_spec_satisfied (nums: List Nat) (k: Nat) (h_precond : longestGoodSubarray_precond (nums) (k)) :
       longestGoodSubarray_postcond (nums) (k) (longestGoodSubarray (nums) (k) h_precond) h_precond := by
 
@@ -151,3 +151,4 @@ vc-postamble: |-
       }
   ]
   -/
+

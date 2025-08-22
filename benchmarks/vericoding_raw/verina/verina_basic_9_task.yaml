@@ -1,23 +1,26 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that checks whether two arrays of integers have any elements in common. In other words, the method should return true if there is at least one element that appears in both arrays, and false if no such element exists.
-
+  
   -----Input-----
   The input consists of:
   a: An array of integers.
   b: An array of integers.
-
+  
   -----Output-----
   The output is a Boolean value:
   Returns true if there is at least one common element between the two arrays.
   Returns false if there are no common elements shared by the arrays.
-
+  
   -----Note-----
   Both arrays are assumed to be non-null.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def hasCommonElement_precond (a : Array Int) (b : Array Int) : Prop :=
+    a.size > 0 ∧ b.size > 0
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -30,16 +33,12 @@ vc-implementation: |-
   -- <vc-implementation>
     a.any fun x => b.any fun y => x = y
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def hasCommonElement_precond (a : Array Int) (b : Array Int) : Prop :=
-    a.size > 0 ∧ b.size > 0
 
+vc-condition: |-
   @[reducible, simp]
   def hasCommonElement_postcond (a : Array Int) (b : Array Int) (result: Bool) (h_precond : hasCommonElement_precond (a) (b)) :=
     (∃ i j, i < a.size ∧ j < b.size ∧ a[i]! = b[j]!) ↔ result
-
+  
   theorem hasCommonElement_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : hasCommonElement_precond (a) (b)) :
       hasCommonElement_postcond (a) (b) (hasCommonElement (a) (b) h_precond) h_precond := by
 
@@ -169,3 +168,4 @@ vc-postamble: |-
       }
   ]
   -/
+

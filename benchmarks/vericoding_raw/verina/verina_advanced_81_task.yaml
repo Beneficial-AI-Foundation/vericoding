@@ -2,17 +2,20 @@ vc-description: |-
   /--
   -----Description-----
   Implement a Lean 4 function that, given a list of integers, removes all duplicates and returns the resulting list in ascending order.
-
+  
   -----Input-----
   The input consists of a single list of integers:
   arr: A list of integers.
-
+  
   -----Output-----
   The output is a list of integers:
   Returns a list containing the unique elements of the input, sorted in ascending order. The returned list must not contain any duplicates, and every element in the output must appear in the original input list.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def uniqueSorted_precond (arr : List Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -56,16 +59,12 @@ vc-implementation: |-
   
   insertionSort (removeDups arr)
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def uniqueSorted_precond (arr : List Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def uniqueSorted_postcond (arr : List Int) (result: List Int) (h_precond : uniqueSorted_precond (arr)) : Prop :=
     List.isPerm arr.eraseDups result ∧ List.Pairwise (· ≤ ·) result
-
+  
   theorem uniqueSorted_spec_satisfied (arr: List Int) (h_precond : uniqueSorted_precond (arr)) :
       uniqueSorted_postcond (arr) (uniqueSorted (arr) h_precond) h_precond := by
 
@@ -137,3 +136,4 @@ vc-postamble: |-
       }
   ]
   -/
+

@@ -1,23 +1,27 @@
 vc-description: |-
   /--
   ------Description-----
-  This task requires writing a Lean 4 method that given a 0-indexed integer array `nums` representing the scores of students in an exam. A teacher wants to select a non empty group of students such that the strength of group is maximized. 
-
+  This task requires writing a Lean 4 method that given a 0-indexed integer array `nums` representing the scores of students in an exam. A teacher wants to select a non empty group of students such that the strength of group is maximized.
+  
   The strength of a group is defined as the product of the selected student scores.
-
-  You can choose any non-empty subset of students. The goal is to compute the maximum product of any such subset. 
-
-
+  
+  You can choose any non-empty subset of students. The goal is to compute the maximum product of any such subset.
+  
+  
   ----Input---
   nums: An non-empty list of integers.
-
+  
   -----Output-----
-
+  
   An integer representing the maximum strength.
   -/
 
 vc-preamble: |-
   import Mathlib
+  
+  @[reducible]
+  def maxStrength_precond (nums : List Int) : Prop :=
+    nums ≠ []
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -44,18 +48,14 @@ vc-implementation: |-
       nonEmpty
     (List.max? products).getD (-1000000)
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def maxStrength_precond (nums : List Int) : Prop :=
-    nums ≠ []
 
+vc-condition: |-
   @[reducible]
   def maxStrength_postcond (nums : List Int) (result: Int) (h_precond : maxStrength_precond (nums)) : Prop :=
     let sublists := nums.sublists.filter (· ≠ [])
     let products := sublists.map (List.foldl (· * ·) 1)
     products.contains result ∧ products.all (· ≤ result)
-
+  
   theorem maxStrength_spec_satisfied (nums: List Int) (h_precond : maxStrength_precond (nums)) :
       maxStrength_postcond (nums) (maxStrength (nums) h_precond) h_precond := by
 
@@ -130,3 +130,4 @@ vc-postamble: |-
       }
   ]
   -/
+

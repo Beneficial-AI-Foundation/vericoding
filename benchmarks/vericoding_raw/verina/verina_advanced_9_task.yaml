@@ -1,19 +1,22 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method of which given a number n and divisor d, it counts all the number that is smaller than
-  n whose sum of digits is divisible by d. 
+  n whose sum of digits is divisible by d.
   -----Input-----
   The input consists of three Nat:
   n: Nat
   d:Nat where d > 0
-
+  
   -----Output-----
   The output is an Natural number:
   Ensure this match the count that satisfy the property.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def countSumDivisibleBy_precond (n : Nat) (d : Nat) : Prop :=
+    d > 0
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -22,7 +25,7 @@ vc-helpers: |-
       if n = 0 then acc
       else go (n / 10) (acc + (n % 10))
     go x 0
-
+  
   def isSumDivisibleBy (x : Nat) (d:Nat) : Bool :=
     (sumOfDigits x) % d = 0
   -- </vc-helpers>
@@ -40,17 +43,13 @@ vc-implementation: |-
         go i' acc'
     go n 0
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def countSumDivisibleBy_precond (n : Nat) (d : Nat) : Prop :=
-    d > 0
 
+vc-condition: |-
   @[reducible]
   def countSumDivisibleBy_postcond (n : Nat) (d : Nat) (result: Nat) (h_precond : countSumDivisibleBy_precond (n) (d)) : Prop :=
     (List.length (List.filter (fun x => x < n ∧ (sumOfDigits x) % d = 0) (List.range n))) - result = 0 ∧
     result ≤ (List.length (List.filter (fun x => x < n ∧ (sumOfDigits x) % d = 0) (List.range n)))
-
+  
   theorem countSumDivisibleBy_spec_satisfied (n: Nat) (d: Nat) (h_precond : countSumDivisibleBy_precond (n) (d)) :
       countSumDivisibleBy_postcond (n) (d) (countSumDivisibleBy (n) (d) h_precond) h_precond := by
 
@@ -127,3 +126,4 @@ vc-postamble: |-
       }
   ]
   -/
+

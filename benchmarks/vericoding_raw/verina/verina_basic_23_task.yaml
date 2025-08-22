@@ -1,21 +1,24 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that calculates the difference between the maximum and minimum values in an array of integers. In other words, the method should determine the highest and lowest numbers in the array and return the result of subtracting the minimum from the maximum.
-
+  
   -----Input-----
   The input consists of:
   a: An array of integers.
-
+  
   -----Output-----
   The output is an integer:
   Returns the difference between the largest and the smallest values in the input array.
-
+  
   -----Note-----
   The input array is assumed to be non-empty.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def differenceMinMax_precond (a : Array Int) : Prop :=
+    a.size > 0
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -36,16 +39,12 @@ vc-implementation: |-
         maxVal - minVal
     loop 1 (a[0]!) (a[0]!)
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def differenceMinMax_precond (a : Array Int) : Prop :=
-    a.size > 0
 
+vc-condition: |-
   @[reducible, simp]
   def differenceMinMax_postcond (a : Array Int) (result: Int) (h_precond : differenceMinMax_precond (a)) :=
     result + (a.foldl (fun acc x => if x < acc then x else acc) (a[0]!)) = (a.foldl (fun acc x => if x > acc then x else acc) (a[0]!))
-
+  
   theorem differenceMinMax_spec_satisfied (a: Array Int) (h_precond : differenceMinMax_precond (a)) :
       differenceMinMax_postcond (a) (differenceMinMax (a) h_precond) h_precond := by
 
@@ -134,3 +133,4 @@ vc-postamble: |-
       }
   ]
   -/
+

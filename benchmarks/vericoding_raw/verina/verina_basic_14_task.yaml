@@ -1,22 +1,25 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that determines whether a given string contains the character 'z' or 'Z'. The method should return true if the string includes either the lowercase or uppercase letter 'z', and false otherwise.
-
+  
   -----Input-----
   The input consists of:
   s: A string.
-
+  
   -----Output-----
   The output is a Boolean value:
   Returns true if the input string contains the character 'z' or 'Z'.
   Returns false if the input string does not contain the character 'z' or 'Z'.
-
+  
   -----Note-----
   There are no preconditions; the method will always work as strings and sequences are considered non-null.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def containsZ_precond (s : String) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -29,17 +32,13 @@ vc-implementation: |-
   -- <vc-implementation>
     s.toList.any fun c => c = 'z' || c = 'Z'
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def containsZ_precond (s : String) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def containsZ_postcond (s : String) (result: Bool) (h_precond : containsZ_precond (s)) :=
     let cs := s.toList
     (∃ x, x ∈ cs ∧ (x = 'z' ∨ x = 'Z')) ↔ result
-
+  
   theorem containsZ_spec_satisfied (s: String) (h_precond : containsZ_precond (s)) :
       containsZ_postcond (s) (containsZ (s) h_precond) h_precond := by
 
@@ -138,3 +137,4 @@ vc-postamble: |-
       }
   ]
   -/
+

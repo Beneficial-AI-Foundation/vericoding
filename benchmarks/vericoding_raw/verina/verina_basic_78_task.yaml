@@ -1,23 +1,26 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   Given two integers, the task is to compute two output values: one being the sum of the integers and the other being their difference.
-
-  -----Input-----  
-  The input consists of two integers:  
-  • x: An integer.  
+  
+  -----Input-----
+  The input consists of two integers:
+  • x: An integer.
   • y: An integer.
-
-  -----Output-----  
-  The output is a tuple of two integers:  
-  • The first element is x + y.  
+  
+  -----Output-----
+  The output is a tuple of two integers:
+  • The first element is x + y.
   • The second element is x - y.
-
-  -----Note-----  
+  
+  -----Note-----
   It is assumed that x and y are valid integers. There are no additional constraints on the inputs.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def MultipleReturns_precond (x : Int) (y : Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -32,16 +35,12 @@ vc-implementation: |-
     let less := x - y
     (more, less)
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def MultipleReturns_precond (x : Int) (y : Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def MultipleReturns_postcond (x : Int) (y : Int) (result: (Int × Int)) (h_precond : MultipleReturns_precond (x) (y)) :=
     result.1 = x + y ∧ result.2 + y = x
-
+  
   theorem MultipleReturns_spec_satisfied (x: Int) (y: Int) (h_precond : MultipleReturns_precond (x) (y)) :
       MultipleReturns_postcond (x) (y) (MultipleReturns (x) (y) h_precond) h_precond := by
 
@@ -119,3 +118,4 @@ vc-postamble: |-
       }
   ]
   -/
+

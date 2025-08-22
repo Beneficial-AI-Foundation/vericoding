@@ -1,20 +1,23 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   This problem asks you to design a solution that transforms a list with possible duplicate entries into a new list where each element appears only once, maintaining the order of its first occurrence.
-
-  -----Input-----  
-  The input consists of:  
+  
+  -----Input-----
+  The input consists of:
   • s: A list of integers (or any type supporting decidable equality) that may contain duplicate elements.
-
-  -----Output-----  
+  
+  -----Output-----
   The output is a list of integers (or the original type) in which every duplicate element is removed. The order of elements is preserved based on their first appearance in the input list, ensuring that the set of elements in the output is identical to the set in the input.
-
-  -----Note-----  
+  
+  -----Note-----
   No additional preconditions are required. The method should correctly handle any list, including an empty list.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def SetToSeq_precond (s : List Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -27,12 +30,8 @@ vc-implementation: |-
   -- <vc-implementation>
     s.foldl (fun acc x => if acc.contains x then acc else acc ++ [x]) []
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def SetToSeq_precond (s : List Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def SetToSeq_postcond (s : List Int) (result: List Int) (h_precond : SetToSeq_precond (s)) :=
     -- Contains exactly the elements of the set
@@ -41,7 +40,7 @@ vc-condition: |-
     result.all (fun a => result.count a = 1) ∧
     -- The order of elements in the result is preserved
     List.Pairwise (fun a b => (result.idxOf a < result.idxOf b) → (s.idxOf a < s.idxOf b)) result
-
+  
   theorem SetToSeq_spec_satisfied (s: List Int) (h_precond : SetToSeq_precond (s)) :
       SetToSeq_postcond (s) (SetToSeq (s) h_precond) h_precond := by
 
@@ -113,3 +112,4 @@ vc-postamble: |-
       }
   ]
   -/
+

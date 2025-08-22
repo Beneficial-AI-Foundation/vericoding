@@ -1,21 +1,25 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   This task requires computing three times the given integer. The goal is to determine the product of the input integer and 3.
-
-  -----Input-----  
-  The input consists of:  
+  
+  -----Input-----
+  The input consists of:
   • x: An integer.
-
-  -----Output-----  
+  
+  -----Output-----
   The output is an integer that represents three times the input value.
-
-  -----Note-----  
+  
+  -----Note-----
   The implementation uses two different branches based on the value of x (i.e., x < 18 or x ≥ 18), but both branches guarantee that the result equals 3*x.
   -/
 
 vc-preamble: |-
   import Mathlib
+  
+  @[reducible, simp]
+  def Triple_precond (x : Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -34,16 +38,12 @@ vc-implementation: |-
       let y := 2 * x
       x + y
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def Triple_precond (x : Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def Triple_postcond (x : Int) (result: Int) (h_precond : Triple_precond (x)) :=
     result / 3 = x ∧ result / 3 * 3 = result
-
+  
   theorem Triple_spec_satisfied (x: Int) (h_precond : Triple_precond (x)) :
       Triple_postcond (x) (Triple (x) h_precond) h_precond := by
 
@@ -128,3 +128,4 @@ vc-postamble: |-
       }
   ]
   -/
+

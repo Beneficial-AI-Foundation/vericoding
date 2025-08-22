@@ -1,21 +1,24 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that returns the smallest natural number missing from a given sorted list of natural numbers. In other words, starting from 0, the method should identify the first natural number that does not appear in the list. The input list is assumed to be sorted in non-decreasing order and contains only natural numbers (including 0).
-
+  
   -----Input-----
   The input consists of:
   s: A list of natural numbers sorted in non-decreasing order.
-
+  
   -----Output-----
   The output is a natural number:
   Returns the smallest natural number that does not appear in the input list.
-
+  
   -----Note-----
   It is assumed that the input list is sorted and contains only natural numbers.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def smallestMissingNumber_precond (s : List Nat) : Prop :=
+    List.Pairwise (· ≤ ·) s
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -35,16 +38,12 @@ vc-implementation: |-
         else findMissing v xs
     findMissing 0 s
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def smallestMissingNumber_precond (s : List Nat) : Prop :=
-    List.Pairwise (· ≤ ·) s
 
+vc-condition: |-
   @[reducible, simp]
   def smallestMissingNumber_postcond (s : List Nat) (result: Nat) (h_precond : smallestMissingNumber_precond (s)) :=
     ¬ List.elem result s ∧ (∀ k : Nat, k < result → List.elem k s)
-
+  
   theorem smallestMissingNumber_spec_satisfied (s: List Nat) (h_precond : smallestMissingNumber_precond (s)) :
       smallestMissingNumber_postcond (s) (smallestMissingNumber (s) h_precond) h_precond := by
 
@@ -119,3 +118,4 @@ vc-postamble: |-
       }
   ]
   -/
+

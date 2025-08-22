@@ -2,20 +2,23 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 function that returns the nth "ugly number". Ugly numbers are positive integers whose only prime factors are 2, 3, or 5.
-
+  
   The function should generate ugly numbers in ascending order and return the nth one. The first ugly number is 1.
-
+  
   -----Input-----
   The input is a natural number:
-
+  
   n: The index (1-based) of the ugly number to return.
-
+  
   -----Output-----
   The output is a natural number:
   The nth smallest ugly number.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def nthUglyNumber_precond (n : Nat) : Prop :=
+    n > 0
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -43,12 +46,8 @@ vc-implementation: |-
         loop i' (seq ++ [next]) c2' c3' c5'
     (loop (n - 1) [1] 0 0 0)[(n - 1)]!
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def nthUglyNumber_precond (n : Nat) : Prop :=
-    n > 0
 
+vc-condition: |-
   def divideOut : Nat → Nat → Nat
     | n, p =>
       if h : p > 1 ∧ n > 0 ∧ n % p = 0 then
@@ -72,7 +71,7 @@ vc-condition: |-
   def nthUglyNumber_postcond (n : Nat) (result: Nat) (h_precond : nthUglyNumber_precond (n)) : Prop :=
     isUgly result = true ∧
     ((List.range (result)).filter (fun i => isUgly i)).length = n - 1
-
+  
   theorem nthUglyNumber_spec_satisfied (n: Nat) (h_precond : nthUglyNumber_precond (n)) :
       nthUglyNumber_postcond (n) (nthUglyNumber (n) h_precond) h_precond := by
 
@@ -140,3 +139,4 @@ vc-postamble: |-
       }
   ]
   -/
+

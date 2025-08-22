@@ -1,23 +1,26 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   This task is about processing an array of integers by producing a new array that excludes the first element. The objective is to define a clear behavior: if the array contains at least one element, return a modified array starting from the second element.
-
-  -----Input-----  
-  The input consists of:  
+  
+  -----Input-----
+  The input consists of:
   • a: An array of integers.
-
-  -----Output-----  
-  The output is an array of integers that:  
-  • Has a length equal to the original array's length minus one.  
-  • Contains the same elements as the input array except for the first element.  
+  
+  -----Output-----
+  The output is an array of integers that:
+  • Has a length equal to the original array's length minus one.
+  • Contains the same elements as the input array except for the first element.
   • Satisfies the condition that for every index i in the output array, the element at position i is equal to the element at position i+1 in the input array.
-
-  -----Note-----  
+  
+  -----Note-----
   It is assumed that the input array is non-empty.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def remove_front_precond (a : Array Int) : Prop :=
+    a.size > 0
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -39,16 +42,12 @@ vc-implementation: |-
     else
       panic "Precondition violation: array is empty"
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def remove_front_precond (a : Array Int) : Prop :=
-    a.size > 0
 
+vc-condition: |-
   @[reducible, simp]
   def remove_front_postcond (a : Array Int) (result: Array Int) (h_precond : remove_front_precond (a)) :=
     a.size > 0 ∧ result.size = a.size - 1 ∧ (∀ i : Nat, i < result.size → result[i]! = a[i + 1]!)
-
+  
   theorem remove_front_spec_satisfied (a: Array Int) (h_precond : remove_front_precond (a)) :
       remove_front_postcond (a) (remove_front (a) h_precond) h_precond := by
 
@@ -126,3 +125,4 @@ vc-postamble: |-
       }
   ]
   -/
+

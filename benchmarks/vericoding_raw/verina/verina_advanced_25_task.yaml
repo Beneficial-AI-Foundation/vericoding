@@ -1,12 +1,12 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires implementing a Lean 4 method that finds the length of the longest strictly increasing subsequence in an array of integers. A subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements.
-
+  
   -----Input-----
   The input consists of one parameter:
   nums: A list of integers representing the input array.
-
+  
   -----Output-----
   The output is an integer:
   Returns the length of the longest strictly increasing subsequence in the input array.
@@ -14,6 +14,10 @@ vc-description: |-
 
 vc-preamble: |-
   import Mathlib.Data.List.Basic
+  
+  @[reducible]
+  def lengthOfLIS_precond (nums : List Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -39,18 +43,14 @@ vc-implementation: |-
   
         maxInArray dp
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def lengthOfLIS_precond (nums : List Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible]
   def lengthOfLIS_postcond (nums : List Int) (result: Nat) (h_precond : lengthOfLIS_precond (nums)) : Prop :=
     let allSubseq := (nums.foldl fun acc x => acc ++ acc.map (fun sub => x :: sub)) [[]] |>.map List.reverse
     let increasingSubseqLens := allSubseq.filter (fun l => List.Pairwise (· < ·) l) |>.map (·.length)
     increasingSubseqLens.contains result ∧ increasingSubseqLens.all (· ≤ result)
-
+  
   theorem lengthOfLIS_spec_satisfied (nums: List Int) (h_precond : lengthOfLIS_precond (nums)) :
       lengthOfLIS_postcond (nums) (lengthOfLIS (nums) h_precond) h_precond := by
 
@@ -161,3 +161,4 @@ vc-postamble: |-
       }
   ]
   -/
+

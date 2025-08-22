@@ -2,23 +2,26 @@ vc-description: |-
   /--
   -----Description-----
   Given a sequence of n integers, your task is to find the largest sum obtainable by choosing a contiguous subarray of the sequence. At least one number must be selected.
-
+  
   The algorithm uses dynamic programming (Kadane’s Algorithm) to solve the problem:
   1. Initialize the current maximum (cur) and the overall maximum (maxSoFar) with the first element.
   2. For each subsequent element, update:
        cur = max(element, cur + element)
        maxSoFar = max(maxSoFar, cur)
   3. Return maxSoFar as the answer.
-
+  
   -----Input-----
   The input is provided as a list of integers:
     sequence: A list of n integers.
-
+  
   -----Output-----
   The output is a single integer representing the maximum subarray sum.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def task_code_precond (sequence : List Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -41,12 +44,8 @@ vc-implementation: |-
           ) (x, x)
         maxSoFar
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def task_code_precond (sequence : List Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def task_code_postcond (sequence : List Int) (result: Int) (h_precond : task_code_precond (sequence)) : Prop :=
     let subArrays :=
@@ -55,7 +54,7 @@ vc-condition: |-
           sequence.drop start |>.take len))
     let subArraySums := subArrays.filter (· ≠ []) |>.map (·.sum)
     subArraySums.contains result ∧ subArraySums.all (· ≤ result)
-
+  
   theorem task_code_spec_satisfied (sequence: List Int) (h_precond : task_code_precond (sequence)) :
       task_code_postcond (sequence) (task_code (sequence) h_precond) h_precond := by
 
@@ -127,3 +126,4 @@ vc-postamble: |-
       }
   ]
   -/
+

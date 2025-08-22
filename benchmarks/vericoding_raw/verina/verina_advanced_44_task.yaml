@@ -1,16 +1,16 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   Given an integer array arr and a positive integer k, this task requires writing a Lean 4 method that finds the
   maximum sum of a subarray of arr, such that the length of the subarray is divisible by k.
-  If the array is empty, or generally if there exists no subarray with length divisible by k, 
+  If the array is empty, or generally if there exists no subarray with length divisible by k,
   the default return value should be 0.
-
+  
   -----Input-----
   The input consists of:
   arr: The array of integers.
   k: An integer larger than 1.
-
+  
   -----Output-----
   The output is an integer:
   Returns the maximum positive integer x such that there exists a subarray where the sum equals x, and the length
@@ -18,6 +18,9 @@ vc-description: |-
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def maxSubarraySumDivisibleByK_precond (arr : Array Int) (k : Int) : Prop :=
+    k > 0
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -57,12 +60,8 @@ vc-implementation: |-
       let default : Int := minElem - 1
       if maxSum = default then 0 else maxSum
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def maxSubarraySumDivisibleByK_precond (arr : Array Int) (k : Int) : Prop :=
-    k > 0
 
+vc-condition: |-
   @[reducible]
   def maxSubarraySumDivisibleByK_postcond (arr : Array Int) (k : Int) (result: Int) : Prop :=
     let subarrays := List.range (arr.size) |>.flatMap (fun start =>
@@ -71,7 +70,7 @@ vc-condition: |-
     let subarraySums := divisibleSubarrays.map (fun subarray => subarray.sum)
     (result = 0 → subarraySums.length = 0) ∧
     (result ≠ 0 → result ∈ subarraySums ∧ subarraySums.all (fun sum => sum ≤ result))
-
+  
   theorem maxSubarraySumDivisibleByK_spec_satisfied (arr: Array Int) (k: Int) :
       maxSubarraySumDivisibleByK_postcond (arr) (k) (maxSubarraySumDivisibleByK (arr) (k)) := by
 
@@ -172,3 +171,4 @@ vc-postamble: |-
       }
   ]
   -/
+

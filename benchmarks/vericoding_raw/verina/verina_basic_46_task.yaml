@@ -1,23 +1,26 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that finds the last occurrence of a specified element in a sorted array of integers. The method should return the index corresponding to the last occurrence of the element if it is present; if the element is absent, it should return -1. Additionally, the array must remain unchanged after the method is executed.
-
+  
   -----Input-----
   The input consists of:
   arr: A sorted array of integers in non-decreasing order.
   elem: An integer whose last occurrence position is to be determined.
-
+  
   -----Output-----
   The output is an integer:
   Returns the index of the last occurrence of the specified integer in the array if it exists.
   Returns -1 if the integer is not found in the array.
-
+  
   -----Note-----
   The input array is assumed to be sorted in non-decreasing order and remains unchanged by the method.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def lastPosition_precond (arr : Array Int) (elem : Int) : Prop :=
+    List.Pairwise (· ≤ ·) arr.toList
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -36,18 +39,14 @@ vc-implementation: |-
       else pos
     loop 0 (-1)
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def lastPosition_precond (arr : Array Int) (elem : Int) : Prop :=
-    List.Pairwise (· ≤ ·) arr.toList
 
+vc-condition: |-
   @[reducible, simp]
   def lastPosition_postcond (arr : Array Int) (elem : Int) (result: Int) (h_precond : lastPosition_precond (arr) (elem)) :=
     (result ≥ 0 →
       arr[result.toNat]! = elem ∧ (arr.toList.drop (result.toNat + 1)).all (· ≠ elem)) ∧
     (result = -1 → arr.toList.all (· ≠ elem))
-
+  
   theorem lastPosition_spec_satisfied (arr: Array Int) (elem: Int) (h_precond : lastPosition_precond (arr) (elem)) :
       lastPosition_postcond (arr) (elem) (lastPosition (arr) (elem) h_precond) h_precond := by
 
@@ -143,3 +142,4 @@ vc-postamble: |-
       }
   ]
   -/
+

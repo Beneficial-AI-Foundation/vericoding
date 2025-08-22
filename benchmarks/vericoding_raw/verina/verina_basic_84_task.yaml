@@ -1,23 +1,26 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   You are given an array of integers and a threshold value k. The problem is to create a new array where every element greater than k is replaced with -1 while every other element remains unchanged.
-
-  -----Input-----  
-  The input consists of:  
-  • arr: An array of integers.  
+  
+  -----Input-----
+  The input consists of:
+  • arr: An array of integers.
   • k: An integer used as the threshold for replacement.
-
-  -----Output-----  
-  The output is an array of integers that satisfies the following conditions:  
-  • For every index i, if arr[i] is greater than k, then the returned array at index i is -1.  
+  
+  -----Output-----
+  The output is an array of integers that satisfies the following conditions:
+  • For every index i, if arr[i] is greater than k, then the returned array at index i is -1.
   • For every index i, if arr[i] is less than or equal to k, then the returned array at index i remains unchanged.
-
-  -----Note-----  
+  
+  -----Note-----
   It is assumed that the input array may be empty or non-empty, and that k can be any integer. There are no additional preconditions.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def replace_precond (arr : Array Int) (k : Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -39,17 +42,13 @@ vc-implementation: |-
   -- <vc-implementation>
     replace_loop arr k 0 arr
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def replace_precond (arr : Array Int) (k : Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def replace_postcond (arr : Array Int) (k : Int) (result: Array Int) (h_precond : replace_precond (arr) (k)) :=
     (∀ i : Nat, i < arr.size → (arr[i]! > k → result[i]! = -1)) ∧
     (∀ i : Nat, i < arr.size → (arr[i]! ≤ k → result[i]! = arr[i]!))
-
+  
   theorem replace_spec_satisfied (arr: Array Int) (k: Int) (h_precond : replace_precond (arr) (k)) :
       replace_postcond (arr) (k) (replace (arr) (k) h_precond) h_precond := by
 
@@ -121,3 +120,4 @@ vc-postamble: |-
       }
   ]
   -/
+

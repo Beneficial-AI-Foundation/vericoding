@@ -4,17 +4,20 @@ vc-description: |-
   This task requires writing a Lean 4 method that determines if a given string is a palindrome, ignoring all
   non-alphanumeric characters and case differences. For example, the string "A man, a plan, a canal: Panama" should return
   true.
-
+  
   -----Input-----
   A single string:
   s: The string to check for palindrome property.
-
+  
   -----Output-----
   A boolean (Bool):
   true if s is a palindrome when ignoring non-alphanumeric characters and case. false otherwise.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def palindromeIgnoreNonAlnum_precond (s : String) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -43,12 +46,8 @@ vc-implementation: |-
   
     check startIndex endIndex
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def palindromeIgnoreNonAlnum_precond (s : String) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible]
   def palindromeIgnoreNonAlnum_postcond (s : String) (result: Bool) (h_precond : palindromeIgnoreNonAlnum_precond (s)) : Prop :=
     let cleaned := s.data.filter (fun c => c.isAlpha || c.isDigit) |>.map Char.toLower
@@ -59,7 +58,7 @@ vc-condition: |-
     forward = backward
   else
     forward ≠ backward
-
+  
   theorem palindromeIgnoreNonAlnum_spec_satisfied (s: String) (h_precond : palindromeIgnoreNonAlnum_precond (s)) :
       palindromeIgnoreNonAlnum_postcond (s) (palindromeIgnoreNonAlnum (s) h_precond) h_precond := by
 
@@ -130,3 +129,4 @@ vc-postamble: |-
       }
   ]
   -/
+

@@ -2,17 +2,20 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 function that returns the maximum element from a non-empty list of natural numbers.
-
+  
   -----Input-----
   The input consists of:
   lst: a non-empty list of natural numbers.
-
+  
   -----Output-----
   The output is:
   A natural number representing the largest element in the list.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def maxOfList_precond (lst : List Nat) : Prop :=
+    lst ≠ []  -- Ensure the list is non-empty
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -32,16 +35,12 @@ vc-implementation: |-
         if x > maxTail then x else maxTail
     helper lst
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def maxOfList_precond (lst : List Nat) : Prop :=
-    lst ≠ []  -- Ensure the list is non-empty
 
+vc-condition: |-
   @[reducible]
   def maxOfList_postcond (lst : List Nat) (result: Nat) (h_precond : maxOfList_precond (lst)) : Prop :=
     result ∈ lst ∧ ∀ x ∈ lst, x ≤ result
-
+  
   theorem maxOfList_spec_satisfied (lst: List Nat) (h_precond : maxOfList_precond (lst)) :
       maxOfList_postcond (lst) (maxOfList (lst) h_precond) h_precond := by
 
@@ -114,3 +113,4 @@ vc-postamble: |-
       }
   ]
   -/
+

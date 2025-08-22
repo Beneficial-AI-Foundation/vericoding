@@ -1,21 +1,24 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   This task requires writing a Lean 4 method that counts the number of digit characters within a given string. A digit is any character between '0' and '9'. The method should determine how many such digit characters appear in the input.
-
-  -----Input-----  
-  The input consists of:  
+  
+  -----Input-----
+  The input consists of:
   s: A string.
-
-  -----Output-----  
-  The output is a natural number (Nat):  
+  
+  -----Output-----
+  The output is a natural number (Nat):
   Returns a non-negative count representing the number of digit characters found in the input string.
-
-  -----Note-----  
+  
+  -----Note-----
   There are no additional preconditions; the method works for any provided string.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def countDigits_precond (s : String) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -30,17 +33,13 @@ vc-implementation: |-
   -- <vc-implementation>
     List.length (List.filter isDigit s.toList)
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def countDigits_precond (s : String) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def countDigits_postcond (s : String) (result: Nat) (h_precond : countDigits_precond (s)) :=
     result - List.length (List.filter isDigit s.toList) = 0 ∧
     List.length (List.filter isDigit s.toList) - result = 0
-
+  
   theorem countDigits_spec_satisfied (s: String) (h_precond : countDigits_precond (s)) :
       countDigits_postcond (s) (countDigits (s) h_precond) h_precond := by
 
@@ -135,3 +134,4 @@ vc-postamble: |-
       }
   ]
   -/
+

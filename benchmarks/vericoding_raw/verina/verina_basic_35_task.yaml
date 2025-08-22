@@ -1,12 +1,12 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that rearranges an array of integers by moving all zero values to the end of the array. The method should ensure that the relative order of the non-zero elements remains the same, the overall size of the array is unchanged, and the number of zeroes in the array stays constant.
-
+  
   -----Input-----
   The input consists of:
   arr: An array of integers.
-
+  
   -----Output-----
   The output is an array of integers:
   Returns an array where:
@@ -14,12 +14,15 @@ vc-description: |-
   - All zero values are positioned at the end.
   - The relative order of non-zero elements is preserved.
   - The count of zero values remains the same as in the input array.
-
+  
   -----Note-----
   There are no preconditions; the method will always work for any array of integers.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def MoveZeroesToEnd_precond (arr : Array Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -34,19 +37,15 @@ vc-implementation: |-
     let zeros := arr.toList.filter (· = 0)
     Array.mk (nonZeros ++ zeros)
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def MoveZeroesToEnd_precond (arr : Array Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def MoveZeroesToEnd_postcond (arr : Array Int) (result: Array Int) (h_precond : MoveZeroesToEnd_precond (arr)) :=
     let firstResZeroIdx := result.toList.idxOf 0
     List.isPerm result.toList arr.toList ∧
     result.toList.take firstResZeroIdx = arr.toList.filter (· ≠ 0) ∧
     result.toList.drop firstResZeroIdx = arr.toList.filter (· = 0)
-
+  
   theorem MoveZeroesToEnd_spec_satisfied (arr: Array Int) (h_precond : MoveZeroesToEnd_precond (arr)) :
       MoveZeroesToEnd_postcond (arr) (MoveZeroesToEnd (arr) h_precond) h_precond := by
 
@@ -113,3 +112,4 @@ vc-postamble: |-
       }
   ]
   -/
+

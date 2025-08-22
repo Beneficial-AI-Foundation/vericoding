@@ -1,23 +1,26 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   This problem involves determining the index of the first occurrence of a specified element within an array of integers. The objective is to identify the correct position where the target element appears for the first time, ensuring that all elements prior to that index are different from the target.
-
-  -----Input-----  
-  The input consists of:  
-  • a: An array of integers.  
+  
+  -----Input-----
+  The input consists of:
+  • a: An array of integers.
   • e: An integer representing the element to search for.
-
-  -----Output-----  
-  The output is a natural number (Nat) representing the index of the first occurrence of e in the array.  
+  
+  -----Output-----
+  The output is a natural number (Nat) representing the index of the first occurrence of e in the array.
   • If the element e exists in the array, the index n will satisfy the conditions specified above.
-
-  -----Note-----  
-  It is assumed that the input satisfies the precondition where at least one index i in a exists such that a[i]! = e.  
+  
+  -----Note-----
+  It is assumed that the input satisfies the precondition where at least one index i in a exists such that a[i]! = e.
   The implementation uses a helper function to iterate through the array recursively.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def LinearSearch_precond (a : Array Int) (e : Int) : Prop :=
+    ∃ i, i < a.size ∧ a[i]! = e
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -35,16 +38,12 @@ vc-implementation: |-
   -- <vc-implementation>
     linearSearchAux a e 0
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def LinearSearch_precond (a : Array Int) (e : Int) : Prop :=
-    ∃ i, i < a.size ∧ a[i]! = e
 
+vc-condition: |-
   @[reducible, simp]
   def LinearSearch_postcond (a : Array Int) (e : Int) (result: Nat) (h_precond : LinearSearch_precond (a) (e)) :=
     (result < a.size) ∧ (a[result]! = e) ∧ (∀ k : Nat, k < result → a[k]! ≠ e)
-
+  
   theorem LinearSearch_spec_satisfied (a: Array Int) (e: Int) (h_precond : LinearSearch_precond (a) (e)) :
       LinearSearch_postcond (a) (e) (LinearSearch (a) (e) h_precond) h_precond := by
 
@@ -128,3 +127,4 @@ vc-postamble: |-
       }
   ]
   -/
+

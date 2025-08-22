@@ -2,10 +2,10 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 function that finds the majority element in a list of integers. The majority element is the element that appears more than ⌊n/2⌋ times, where n is the list’s length. You may assume that a majority element always exists in the input.
-
+  
   -----Input-----
   - nums: A list of integers of length ≥ 1, containing a majority element.
-
+  
   -----Output-----
   - An integer: the element that appears more than ⌊n/2⌋ times.
   -/
@@ -13,6 +13,10 @@ vc-description: |-
 vc-preamble: |-
   import Std.Data.HashMap
   open Std
+  
+  @[reducible]
+  def majorityElement_precond (nums : List Int) : Prop :=
+    nums.length > 0 ∧ nums.any (fun x => nums.count x > nums.length / 2)
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -33,18 +37,14 @@ vc-implementation: |-
       | some (k, _) => k
       | none      => 0
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def majorityElement_precond (nums : List Int) : Prop :=
-    nums.length > 0 ∧ nums.any (fun x => nums.count x > nums.length / 2)
 
+vc-condition: |-
   @[reducible]
   def majorityElement_postcond (nums : List Int) (result: Int) (h_precond : majorityElement_precond (nums)) : Prop :=
     let n := nums.length
     (nums.count result) > n / 2
     ∧ ∀ x, x ≠ result → nums.count x ≤ n / 2
-
+  
   theorem majorityElement_spec_satisfied (nums: List Int) (h_precond : majorityElement_precond (nums)) :
       majorityElement_postcond (nums) (majorityElement (nums) h_precond) h_precond := by
 
@@ -116,3 +116,4 @@ vc-postamble: |-
       }
   ]
   -/
+

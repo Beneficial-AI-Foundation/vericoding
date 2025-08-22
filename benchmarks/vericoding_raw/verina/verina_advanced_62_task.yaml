@@ -1,20 +1,23 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that calculates how much rainwater would be trapped by a terrain represented as an array of heights. Imagine rainwater falls onto a terrain with varying elevation levels. The water can only be trapped between higher elevation points.
-
+  
   Given an array of non-negative integers representing the elevation map where the width of each bar is 1 unit, calculate how much water can be trapped after it rains.
-
+  
   -----Input-----
   The input consists of one array:
   heights: An array of non-negative integers representing elevation levels.
-
+  
   -----Output-----
   The output is an integer:
   Returns the total amount of rainwater that can be trapped.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def rain_precond (heights : List (Int)) : Prop :=
+    heights.all (fun h => h >= 0)
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -47,12 +50,8 @@ vc-implementation: |-
       -- Initialize with two pointers at the ends
       aux 0 (n-1) (heights[0]!) (heights[n-1]!) 0
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def rain_precond (heights : List (Int)) : Prop :=
-    heights.all (fun h => h >= 0)
 
+vc-condition: |-
   @[reducible]
   def rain_postcond (heights : List (Int)) (result: Int) (h_precond : rain_precond (heights)) : Prop :=
     -- The result is the total amount of rainwater trapped by the given terrain
@@ -85,7 +84,7 @@ vc-condition: |-
           termination_by heights.length - i
   
         sum_water 0 0
-
+  
   theorem rain_spec_satisfied (heights: List (Int)) (h_precond : rain_precond (heights)) :
       rain_postcond (heights) (rain (heights) h_precond) h_precond := by
 
@@ -173,3 +172,4 @@ vc-postamble: |-
       }
   ]
   -/
+

@@ -1,22 +1,25 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   This problem requires sorting an array of integers into non-decreasing order, ensuring that the output contains exactly the same elements as the input (i.e., it is a permutation of the original array).
-
-  -----Input-----  
-  The input consists of:  
-  • a: An array of integers (Array Int).  
-
-  -----Output-----  
-  The output is an array of integers that is:  
-  • Sorted in non-decreasing order.  
-  • A permutation of the input, meaning it contains exactly the same elements (with the same multiplicities) as the original array.  
-
-  -----Note-----  
+  
+  -----Input-----
+  The input consists of:
+  • a: An array of integers (Array Int).
+  
+  -----Output-----
+  The output is an array of integers that is:
+  • Sorted in non-decreasing order.
+  • A permutation of the input, meaning it contains exactly the same elements (with the same multiplicities) as the original array.
+  
+  -----Note-----
   It is assumed that the input array is valid and that the swap operations, along with the helper functions, correctly implement the selection sort algorithm.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def SelectionSort_precond (a : Array Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -46,16 +49,12 @@ vc-implementation: |-
       swap arr i minIdx
     ) a
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def SelectionSort_precond (a : Array Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def SelectionSort_postcond (a : Array Int) (result: Array Int) (h_precond : SelectionSort_precond (a)) :=
     List.Pairwise (· ≤ ·) result.toList ∧ List.isPerm a.toList result.toList
-
+  
   theorem SelectionSort_spec_satisfied (a: Array Int) (h_precond : SelectionSort_precond (a)) :
       SelectionSort_postcond (a) (SelectionSort (a) h_precond) h_precond := by
 
@@ -124,3 +123,4 @@ vc-postamble: |-
       }
   ]
   -/
+

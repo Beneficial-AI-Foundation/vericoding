@@ -1,19 +1,22 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   This task requires writing a Lean 4 method that checks whether all characters in an input string are identical. The method should return true if every character in the string is the same, and false if at least one character differs. An empty string or a single-character string is considered to have all characters identical.
-
-  -----Input-----  
-  The input consists of:  
+  
+  -----Input-----
+  The input consists of:
   s: A string.
-
-  -----Output-----  
-  The output is a Boolean value:  
-  Returns true if every character in the string is identical.  
+  
+  -----Output-----
+  The output is a Boolean value:
+  Returns true if every character in the string is identical.
   Returns false if there is at least one differing character.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def allCharactersSame_precond (s : String) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -28,18 +31,14 @@ vc-implementation: |-
     | []      => true
     | c :: cs => cs.all (fun x => x = c)
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def allCharactersSame_precond (s : String) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def allCharactersSame_postcond (s : String) (result: Bool) (h_precond : allCharactersSame_precond (s)) :=
     let cs := s.toList
     (result → List.Pairwise (· = ·) cs) ∧
     (¬ result → (cs ≠ [] ∧ cs.any (fun x => x ≠ cs[0]!)))
-
+  
   theorem allCharactersSame_spec_satisfied (s: String) (h_precond : allCharactersSame_precond (s)) :
       allCharactersSame_postcond (s) (allCharactersSame (s) h_precond) h_precond := by
 
@@ -110,3 +109,4 @@ vc-postamble: |-
       }
   ]
   -/
+

@@ -1,18 +1,21 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that finds the smallest number in an array of integers.
-
+  
   -----Input-----
   The input consists of:
   s: An array of integers.
-
+  
   -----Output-----
   The output is an option integer:
   Returns the smallest number found in the input array or none if the array is empty.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def findSmallest_precond (s : Array Nat) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -25,19 +28,15 @@ vc-implementation: |-
   -- <vc-implementation>
     s.toList.min?
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def findSmallest_precond (s : Array Nat) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def findSmallest_postcond (s : Array Nat) (result: Option Nat) (h_precond : findSmallest_precond (s)) :=
     let xs := s.toList
     match result with
     | none => xs = []
     | some r => r ∈ xs ∧ (∀ x, x ∈ xs → r ≤ x)
-
+  
   theorem findSmallest_spec_satisfied (s: Array Nat) (h_precond : findSmallest_precond (s)) :
       findSmallest_postcond (s) (findSmallest (s) h_precond) h_precond := by
 
@@ -147,3 +146,4 @@ vc-postamble: |-
       }
   ]
   -/
+

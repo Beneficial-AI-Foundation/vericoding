@@ -1,17 +1,21 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This test implements a function in Lean 4 that finds the length of the longest increasing subsequence in a list of integers. A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements. An increasing subsequence is one in which the elements are in strictly increasing order.
-
+  
   -----Input-----
   numbers: A list of integers.
-
+  
   -----Output-----
   A natural number representing the length of the longest increasing subsequence in the input list. If the list is empty, the function returns 0.
   -/
 
 vc-preamble: |-
   import Mathlib
+  
+  @[reducible, simp]
+  def longestIncreasingSubsequence_precond (numbers : List Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -49,18 +53,14 @@ vc-implementation: |-
     | [x] => 1
     | first :: rest => buildTables rest [first] [1] 1
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def longestIncreasingSubsequence_precond (numbers : List Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def longestIncreasingSubsequence_postcond (numbers : List Int) (result: Nat) (h_precond : longestIncreasingSubsequence_precond (numbers)) : Prop :=
     let allSubseq := (numbers.foldl fun acc x => acc ++ acc.map (fun sub => x :: sub)) [[]] |>.map List.reverse
     let increasingSubseqLens := allSubseq.filter (fun l => List.Pairwise (· < ·) l) |>.map (·.length)
     increasingSubseqLens.contains result ∧ increasingSubseqLens.all (· ≤ result)
-
+  
   theorem longestIncreasingSubsequence_spec_satisfied (numbers: List Int) (h_precond : longestIncreasingSubsequence_precond (numbers)) :
       longestIncreasingSubsequence_postcond (numbers) (longestIncreasingSubsequence (numbers) h_precond) h_precond := by
 
@@ -163,3 +163,4 @@ vc-postamble: |-
       }
   ]
   -/
+

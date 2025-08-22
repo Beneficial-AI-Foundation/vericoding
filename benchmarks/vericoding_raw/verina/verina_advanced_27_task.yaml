@@ -6,18 +6,21 @@ vc-description: |-
   The function should return a string that is:
   1) A subsequence of both input strings.
   2) As long as possible among all such common subsequences.
-
+  
   If multiple LCS answers exist (with the same maximum length), returning any one of them is acceptable.
-
+  
   -----Input-----
   s1: The first input string.
   s2: The second input string.
-
+  
   -----Output-----
   A string representing a longest common subsequence of s1 and s2.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def longestCommonSubsequence_precond (s1 : String) (s2 : String) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -50,12 +53,8 @@ vc-implementation: |-
     let resultList := lcsAux xs ys
     fromCharList resultList
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def longestCommonSubsequence_precond (s1 : String) (s2 : String) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible]
   def longestCommonSubsequence_postcond (s1 : String) (s2 : String) (result: String) (h_precond : longestCommonSubsequence_precond (s1) (s2)) : Prop :=
     let allSubseq (arr : List Char) := (arr.foldl fun acc x => acc ++ acc.map (fun sub => x :: sub)) [[]] |>.map List.reverse
@@ -63,7 +62,7 @@ vc-condition: |-
     let subseqB := allSubseq s2.toList
     let commonSubseq := subseqA.filter (fun l => subseqB.contains l)
     commonSubseq.contains result.toList ∧ commonSubseq.all (fun l => l.length ≤ result.length)
-
+  
   theorem longestCommonSubsequence_spec_satisfied (s1: String) (s2: String) (h_precond : longestCommonSubsequence_precond (s1) (s2)) :
       longestCommonSubsequence_postcond (s1) (s2) (longestCommonSubsequence (s1) (s2) h_precond) h_precond := by
 
@@ -139,3 +138,4 @@ vc-postamble: |-
       }
   ]
   -/
+

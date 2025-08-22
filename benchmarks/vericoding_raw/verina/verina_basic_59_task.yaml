@@ -1,22 +1,25 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   Given an integer x, determine a pair (a, b) where the first element is twice the value of x and the second element is four times the value of x.
-
-  -----Input-----  
-  The input consists of:  
+  
+  -----Input-----
+  The input consists of:
   • x: An integer.
-
-  -----Output-----  
-  The output is a tuple (a, b) where:  
-  • a = 2 * x  
+  
+  -----Output-----
+  The output is a tuple (a, b) where:
+  • a = 2 * x
   • b = 4 * x
-
-  -----Note-----  
+  
+  -----Note-----
   There are no additional preconditions; the method is defined for all integers.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def DoubleQuadruple_precond (x : Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -31,16 +34,12 @@ vc-implementation: |-
     let b := 2 * a
     (a, b)
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def DoubleQuadruple_precond (x : Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def DoubleQuadruple_postcond (x : Int) (result: (Int × Int)) (h_precond : DoubleQuadruple_precond (x)) :=
     result.fst = 2 * x ∧ result.snd = 2 * result.fst
-
+  
   theorem DoubleQuadruple_spec_satisfied (x: Int) (h_precond : DoubleQuadruple_precond (x)) :
       DoubleQuadruple_postcond (x) (DoubleQuadruple (x) h_precond) h_precond := by
 
@@ -112,3 +111,4 @@ vc-postamble: |-
       }
   ]
   -/
+

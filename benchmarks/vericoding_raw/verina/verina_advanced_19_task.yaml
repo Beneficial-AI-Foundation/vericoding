@@ -2,17 +2,20 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 method that checks whether a given string is a palindrome. A palindrome is a string that reads the same forwards and backwards. The function should ignore whitespace, punctuation, and capitalization when checking for palindromes.
-
+  
   -----Input-----
   The input consists of:
   s: A string to be checked.
-
+  
   -----Output-----
   The output is a boolean:
   Returns true if the input string is a palindrome when non-alphabetic characters are removed and letters are treated case-insensitively, and false otherwise.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def isCleanPalindrome_precond (s : String) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -43,7 +46,7 @@ vc-helpers: |-
       | some c' => c' :: acc
       | none    => acc
     ) []
-
+  
   -- Reverse the list
   def reverseList (xs : List Char) : List Char :=
     xs.reverse
@@ -57,18 +60,14 @@ vc-implementation: |-
     let norm := normalizeString s
     norm = reverseList norm
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def isCleanPalindrome_precond (s : String) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible]
   def isCleanPalindrome_postcond (s : String) (result: Bool) (h_precond : isCleanPalindrome_precond (s)) : Prop :=
     let norm := normalizeString s
     (result = true → norm = norm.reverse) ∧
     (result = false → norm ≠ norm.reverse)
-
+  
   theorem isCleanPalindrome_spec_satisfied (s: String) (h_precond : isCleanPalindrome_precond (s)) :
       isCleanPalindrome_postcond (s) (isCleanPalindrome (s) h_precond) h_precond := by
 
@@ -130,3 +129,4 @@ vc-postamble: |-
       }
   ]
   -/
+

@@ -1,21 +1,24 @@
 vc-description: |-
   /--
   -----Description-----
-  This task requires writing a Lean 4 method that implementing the "Two Sum" problem. Given a list of integers 
-  and a target integer, the function should return the indices of the two numbers that add up to 
-  the target. If no valid pair exists, the function should return none. And the indices returned must 
+  This task requires writing a Lean 4 method that implementing the "Two Sum" problem. Given a list of integers
+  and a target integer, the function should return the indices of the two numbers that add up to
+  the target. If no valid pair exists, the function should return none. And the indices returned must
   be within the bounds of the list. If multiple pair exists, return the first pair.
-
+  
   -----Input-----
   - nums: A list of integers.
   - target: An integer representing the target sum.
-
+  
   -----Output-----
-  - An option type containing a pair of natural numbers (indices) such that 
+  - An option type containing a pair of natural numbers (indices) such that
     nums[i] + nums[j] = target, if such a pair exists. Otherwise, it returns none.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def twoSum_precond (nums : List Int) (target : Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -49,12 +52,8 @@ vc-implementation: |-
                   outer xs (i + 1)
           outer nums 0
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def twoSum_precond (nums : List Int) (target : Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible]
   def twoSum_postcond (nums : List Int) (target : Int) (result: Option (Nat × Nat)) (h_precond : twoSum_precond (nums) (target)) : Prop :=
       match result with
@@ -68,7 +67,7 @@ vc-condition: |-
           List.all (nums.take i) (fun a => List.all (nums.drop i) (fun b => a + b ≠ target) ) ∧
           -- j must be the first j
           List.all (nums.drop (j + 1)) (fun a => a + nums[j]! ≠ target)
-
+  
   theorem twoSum_spec_satisfied (nums: List Int) (target: Int) (h_precond : twoSum_precond (nums) (target)) :
       twoSum_postcond (nums) (target) (twoSum (nums) (target) h_precond) h_precond := by
 
@@ -139,3 +138,4 @@ vc-postamble: |-
       }
   ]
   -/
+

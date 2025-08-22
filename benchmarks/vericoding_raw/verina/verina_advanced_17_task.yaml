@@ -1,20 +1,23 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires implementing the insertion sort algorithm to sort a list of integers in ascending order. The function should take a list of integers as input and return a new list containing the same elements sorted in non-decreasing order.
-
-  -----Input----- 
+  
+  -----Input-----
   The input is:
-
+  
   l: A list of integers to be sorted.
-
-  -----Output----- 
+  
+  -----Output-----
   The output is:
-
+  
   A list of integers that is sorted in non-decreasing order and is a permutation of the input list.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def insertionSort_precond (l : List Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -44,16 +47,12 @@ vc-implementation: |-
     let result := sortList l
     result
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def insertionSort_precond (l : List Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible]
   def insertionSort_postcond (l : List Int) (result: List Int) (h_precond : insertionSort_precond (l)) : Prop :=
     List.Pairwise (· ≤ ·) result ∧ List.isPerm l result
-
+  
   theorem insertionSort_spec_satisfied (l: List Int) (h_precond : insertionSort_precond (l)) :
       insertionSort_postcond (l) (insertionSort (l) h_precond) h_precond := by
 
@@ -120,3 +119,4 @@ vc-postamble: |-
       }
   ]
   -/
+

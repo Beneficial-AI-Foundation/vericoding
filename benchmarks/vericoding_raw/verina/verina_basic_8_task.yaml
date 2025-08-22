@@ -1,19 +1,22 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that determines the minimum of two integers. The method should return the smaller of the two numbers. When both numbers are equal, either one may be returned.
-
+  
   -----Input-----
   The input consists of two integers:
   a: The first integer.
   b: The second integer.
-
+  
   -----Output-----
   The output is an integer:
   Returns the smaller value between the input integers, ensuring that the result is less than or equal to both inputs.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def myMin_precond (a : Int) (b : Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -26,17 +29,13 @@ vc-implementation: |-
   -- <vc-implementation>
     if a <= b then a else b
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def myMin_precond (a : Int) (b : Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def myMin_postcond (a : Int) (b : Int) (result: Int) (h_precond : myMin_precond (a) (b)) :=
     (result ≤ a ∧ result ≤ b) ∧
     (result = a ∨ result = b)
-
+  
   theorem myMin_spec_satisfied (a: Int) (b: Int) (h_precond : myMin_precond (a) (b)) :
       myMin_postcond (a) (b) (myMin (a) (b) h_precond) h_precond := by
 
@@ -159,3 +158,4 @@ vc-postamble: |-
       }
   ]
   -/
+

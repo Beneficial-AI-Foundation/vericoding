@@ -2,15 +2,18 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 function that calculates how much water can be trapped between elevations after it rains. The input is a list of non-negative integers representing an elevation map. Each index traps water depending on the min of max heights to its left and right.
-
+  
   -----Input-----
   - height: A list of natural numbers representing elevations.
-
+  
   -----Output-----
   - A natural number: total units of water that can be trapped.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def trapRainWater_precond (height : List Nat) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -47,12 +50,8 @@ vc-implementation: |-
   
       return water
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def trapRainWater_precond (height : List Nat) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def trapRainWater_postcond (height : List Nat) (result: Nat) (h_precond : trapRainWater_precond (height)) : Prop :=
     let waterAt := List.range height.length |>.map (fun i =>
@@ -61,7 +60,7 @@ vc-condition: |-
       Nat.min lmax rmax - height[i]!)
   
     result - (waterAt.foldl (· + ·) 0) = 0 ∧ (waterAt.foldl (· + ·) 0) ≤ result
-
+  
   theorem trapRainWater_spec_satisfied (height: List Nat) (h_precond : trapRainWater_precond (height)) :
       trapRainWater_postcond (height) (trapRainWater (height) h_precond) h_precond := by
 
@@ -134,3 +133,4 @@ vc-postamble: |-
       }
   ]
   -/
+

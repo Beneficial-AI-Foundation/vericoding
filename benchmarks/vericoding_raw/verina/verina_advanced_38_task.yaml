@@ -3,7 +3,7 @@ vc-description: |-
   -----Description-----
   This task requires implementing a Lean 4 method that, given a list of intervals, returns the maximum amount that can be spanned after we removed one of the intervals
   You may assume you'll receive at least one interval
-
+  
   -----Input-----
   The input consists of a list of ordered pairs of intervals.
   -----Output-----
@@ -12,6 +12,9 @@ vc-description: |-
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def maxCoverageAfterRemovingOne_precond (intervals : List (Prod Nat Nat)) : Prop :=
+    intervals.length > 0
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -37,12 +40,8 @@ vc-implementation: |-
         max acc coverage
       ) 0
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def maxCoverageAfterRemovingOne_precond (intervals : List (Prod Nat Nat)) : Prop :=
-    intervals.length > 0
 
+vc-condition: |-
   @[reducible, simp]
   def maxCoverageAfterRemovingOne_postcond (intervals : List (Prod Nat Nat)) (result: Nat) (h_precond : maxCoverageAfterRemovingOne_precond (intervals)) : Prop :=
     ∃ i < intervals.length,
@@ -65,7 +64,7 @@ vc-condition: |-
         ) []
         let cov_j := merged_j.reverse.foldl (fun acc (s, e) => acc + (e - s)) 0
         cov ≥ cov_j
-
+  
   theorem maxCoverageAfterRemovingOne_spec_satisfied (intervals: List (Prod Nat Nat)) (h_precond : maxCoverageAfterRemovingOne_precond (intervals)) :
       maxCoverageAfterRemovingOne_postcond (intervals) (maxCoverageAfterRemovingOne (intervals) h_precond) h_precond := by
 
@@ -137,3 +136,4 @@ vc-postamble: |-
       }
   ]
   -/
+

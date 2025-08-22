@@ -1,29 +1,33 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that computes the element-wise modulo between two arrays of integers. The method should produce a new array where each element is the remainder after dividing the corresponding element from the first array by the element from the second array.
-
-  -----Input----- 
+  
+  -----Input-----
   The input consists of:
   a: An array of integers.
   b: An array of integers.
-
-  -----Output----- 
+  
+  -----Output-----
   The output is an array of integers:
   Returns a new array in which each element is the result of taking the modulo of the corresponding elements from the two input arrays.
-
-  -----Note----- 
+  
+  -----Note-----
   Preconditions:
   - Both arrays must be non-null.
   - Both arrays must have the same length.
   - All elements in the second array should be non-zero.
-
+  
   Postconditions:
   - The length of the resulting array is the same as the length of the input arrays.
   - Each element in the resulting array is the modulo of the corresponding elements in the input arrays.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def elementWiseModulo_precond (a : Array Int) (b : Array Int) : Prop :=
+    a.size = b.size ∧ a.size > 0 ∧
+    (∀ i, i < b.size → b[i]! ≠ 0)
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -36,18 +40,13 @@ vc-implementation: |-
   -- <vc-implementation>
     a.mapIdx (fun i x => x % b[i]!)
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def elementWiseModulo_precond (a : Array Int) (b : Array Int) : Prop :=
-    a.size = b.size ∧ a.size > 0 ∧
-    (∀ i, i < b.size → b[i]! ≠ 0)
 
+vc-condition: |-
   @[reducible, simp]
   def elementWiseModulo_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_precond : elementWiseModulo_precond (a) (b)) :=
     result.size = a.size ∧
     (∀ i, i < result.size → result[i]! = a[i]! % b[i]!)
-
+  
   theorem elementWiseModulo_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : elementWiseModulo_precond (a) (b)) :
       elementWiseModulo_postcond (a) (b) (elementWiseModulo (a) (b) h_precond) h_precond := by
 
@@ -125,3 +124,4 @@ vc-postamble: |-
       }
   ]
   -/
+

@@ -2,12 +2,12 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 method that returns the k most frequent elements from a list of integers. The method should count the frequency of each distinct element in the list and return the k elements with the highest frequency.
-
+  
   -----Input-----
   The input consists of two values:
   nums: A list of integers, possibly with duplicates.
-  k: A natural number indicating how many of the most frequent elements to return. Assimng k <= # of distinct elements in nums. 
-
+  k: A natural number indicating how many of the most frequent elements to return. Assimng k <= # of distinct elements in nums.
+  
   -----Output-----
   The output is a list of integers:
   Returns exactly k integers representing the elements that appear most frequently in the input list in the order form the higher frequency to lower frequency.
@@ -17,6 +17,10 @@ vc-description: |-
 vc-preamble: |-
   import Std
   open Std
+  
+  @[reducible]
+  def topKFrequent_precond (nums : List Int) (k : Nat) : Prop :=
+    k ≤ nums.eraseDups.length
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -49,12 +53,8 @@ vc-implementation: |-
   
     sorted.take k |>.map (fun (n, _) => n)
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def topKFrequent_precond (nums : List Int) (k : Nat) : Prop :=
-    k ≤ nums.eraseDups.length
 
+vc-condition: |-
   @[reducible]
   def topKFrequent_postcond (nums : List Int) (k : Nat) (result: List Int) (h_precond : topKFrequent_precond (nums) (k)) : Prop :=
     -- Result contains exactly k elements
@@ -80,7 +80,7 @@ vc-condition: |-
       i < j → nums.count x > nums.count y ∨
       (nums.count x == nums.count y ∧ nums.idxOf x < nums.idxOf y)
     ) result.zipIdx
-
+  
   theorem topKFrequent_spec_satisfied (nums: List Int) (k: Nat) (h_precond : topKFrequent_precond (nums) (k)) :
       topKFrequent_postcond (nums) (k) (topKFrequent (nums) (k) h_precond) h_precond := by
 
@@ -156,3 +156,4 @@ vc-postamble: |-
       }
   ]
   -/
+

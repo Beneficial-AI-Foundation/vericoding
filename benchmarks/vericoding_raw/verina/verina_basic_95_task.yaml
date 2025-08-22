@@ -1,25 +1,31 @@
 vc-description: |-
   /--
-  -----Description-----  
+  -----Description-----
   This problem involves swapping two elements in an array of integers at specified positions. Given an array and two indices, the task is to exchange these elements so that the element from the first index moves to the second index and vice versa, while all other elements remain unchanged.
-
-  -----Input-----  
-  The input consists of:  
-  • arr: An array of integers.  
-  • i: An integer representing the first index (0-indexed) whose element is to be swapped.  
+  
+  -----Input-----
+  The input consists of:
+  • arr: An array of integers.
+  • i: An integer representing the first index (0-indexed) whose element is to be swapped.
   • j: An integer representing the second index (0-indexed) whose element is to be swapped.
-
-  -----Output-----  
-  The output is an array of integers which:  
-  • Has the same size as the input array.  
-  • Contains the element originally at index i in position j and the element originally at index j in position i.  
+  
+  -----Output-----
+  The output is an array of integers which:
+  • Has the same size as the input array.
+  • Contains the element originally at index i in position j and the element originally at index j in position i.
   • Leaves all other elements unchanged.
-
-  -----Note-----  
+  
+  -----Note-----
   It is assumed that both indices i and j are non-negative and within the bounds of the array (i.e., Int.toNat i and Int.toNat j are less than arr.size).
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def swap_precond (arr : Array Int) (i : Int) (j : Int) : Prop :=
+    i ≥ 0 ∧
+    j ≥ 0 ∧
+    Int.toNat i < arr.size ∧
+    Int.toNat j < arr.size
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -36,21 +42,14 @@ vc-implementation: |-
     let arr2 := arr1.set! j_nat (arr[i_nat]!)
     arr2
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def swap_precond (arr : Array Int) (i : Int) (j : Int) : Prop :=
-    i ≥ 0 ∧
-    j ≥ 0 ∧
-    Int.toNat i < arr.size ∧
-    Int.toNat j < arr.size
 
+vc-condition: |-
   @[reducible, simp]
   def swap_postcond (arr : Array Int) (i : Int) (j : Int) (result: Array Int) (h_precond : swap_precond (arr) (i) (j)) :=
     (result[Int.toNat i]! = arr[Int.toNat j]!) ∧
     (result[Int.toNat j]! = arr[Int.toNat i]!) ∧
     (∀ (k : Nat), k < arr.size → k ≠ Int.toNat i → k ≠ Int.toNat j → result[k]! = arr[k]!)
-
+  
   theorem swap_spec_satisfied (arr: Array Int) (i: Int) (j: Int) (h_precond : swap_precond (arr) (i) (j)) :
       swap_postcond (arr) (i) (j) (swap (arr) (i) (j) h_precond) h_precond := by
 
@@ -254,3 +253,4 @@ vc-postamble: |-
       }
   ]
   -/
+

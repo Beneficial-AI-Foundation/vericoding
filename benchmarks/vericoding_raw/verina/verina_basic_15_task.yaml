@@ -1,23 +1,27 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that determines whether an array of integers contains at least one pair of consecutive numbers. The method should return true if there is any index where an element, when increased by one, equals the next element in the array. If no such consecutive pair exists, the method should return false.
-
+  
   -----Input-----
   The input consists of:
   a: An array of integers (the array may be empty or non-empty).
-
+  
   -----Output-----
   The output is a Boolean value:
   Returns true if there is at least one index where an element plus one equals the following element.
   Returns false if the array does not contain any consecutive numbers.
-
+  
   -----Note-----
   There are no additional preconditions; the method will function correctly regardless of the array's size.
   -/
 
 vc-preamble: |-
   import Mathlib
+  
+  @[reducible, simp]
+  def containsConsecutiveNumbers_precond (a : Array Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -35,16 +39,12 @@ vc-implementation: |-
       withIndices.any (fun (i, x) =>
         i < a.size - 1 && x + 1 == a[i+1]!)
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def containsConsecutiveNumbers_precond (a : Array Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def containsConsecutiveNumbers_postcond (a : Array Int) (result: Bool) (h_precond : containsConsecutiveNumbers_precond (a)) :=
     (∃ i, i < a.size - 1 ∧ a[i]! + 1 = a[i + 1]!) ↔ result
-
+  
   theorem containsConsecutiveNumbers_spec_satisfied (a: Array Int) (h_precond : containsConsecutiveNumbers_precond (a)) :
       containsConsecutiveNumbers_postcond (a) (containsConsecutiveNumbers (a) h_precond) h_precond := by
 
@@ -163,3 +163,4 @@ vc-postamble: |-
       }
   ]
   -/
+

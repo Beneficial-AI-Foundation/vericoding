@@ -2,15 +2,15 @@ vc-description: |-
   /--
   -----Description-----
   This task requires writing a Lean 4 function that calculates the minimum number of right shifts required to sort a given list of distinct positive integers.
-
+  
   A right shift operation on a list nums of length n moves the element at index i to index (i + 1) % n for all indices i. Effectively, the last element moves to the first position, and all other elements shift one position to the right.
-
+  
   The function should return the minimum number of right shifts needed to make the list sorted in ascending order. If the list is already sorted, the function should return 0. If it's impossible to sort the list using only right shifts, the function should return -1.
-
+  
   -----Input-----
   The input consists of a single list of integers:
   nums: A list (List Int) containing distinct positive integers.
-
+  
   -----Output-----
   The output is a single integer (Int):
   - If the list can be sorted using right shifts, return the minimum number of shifts required (an integer >= 0).
@@ -18,6 +18,9 @@ vc-description: |-
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def minimumRightShifts_precond (nums : List Int) : Prop :=
+    List.Nodup nums
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -70,12 +73,8 @@ vc-implementation: |-
     -- the initial list (0 shifts) hass already been checked and is not sorted
     checkShifts 1 (rightShiftOnce nums) -- start checking from the state after 1 shift
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def minimumRightShifts_precond (nums : List Int) : Prop :=
-    List.Nodup nums
 
+vc-condition: |-
   @[reducible, simp]
   def minimumRightShifts_postcond (nums : List Int) (result: Int) (h_precond : minimumRightShifts_precond (nums)) : Prop :=
     let n := nums.length
@@ -101,7 +100,7 @@ vc-condition: |-
      -- for all possible shift counts k from 0 to n-1, the resulting list is not sorted
      (List.range n |>.all (fun k => ¬ isSorted (rightShift k nums)))
     )
-
+  
   theorem minimumRightShifts_spec_satisfied (nums: List Int) (h_precond : minimumRightShifts_precond (nums)) :
       minimumRightShifts_postcond (nums) (minimumRightShifts (nums) h_precond) h_precond := by
 
@@ -210,3 +209,4 @@ vc-postamble: |-
       }
   ]
   -/
+

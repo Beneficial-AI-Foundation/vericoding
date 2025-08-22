@@ -1,20 +1,23 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that finds the length of the logest common subsequence of two input arrays.
-
+  
   -----Input-----
   The input consists of two arrays:
   a: The first array.
   b: The second array.
-
-
+  
+  
   -----Output-----
   The output is an integer:
   Returns the length of array a and b's longest common subsequence.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def LongestCommonSubsequence_precond (a : Array Int) (b : Array Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -45,12 +48,8 @@ vc-implementation: |-
       return dp
     (dp[m]!)[n]!
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def LongestCommonSubsequence_precond (a : Array Int) (b : Array Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def LongestCommonSubsequence_postcond (a : Array Int) (b : Array Int) (result: Int) (h_precond : LongestCommonSubsequence_precond (a) (b)) : Prop :=
     let allSubseq (arr : Array Int) := (arr.foldl fun acc x => acc ++ acc.map (fun sub => x :: sub)) [[]] |>.map List.reverse
@@ -58,7 +57,7 @@ vc-condition: |-
     let subseqB := allSubseq b
     let commonSubseqLens := subseqA.filter (fun l => subseqB.contains l) |>.map (·.length)
     commonSubseqLens.contains result ∧ commonSubseqLens.all (· ≤ result)
-
+  
   theorem LongestCommonSubsequence_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : LongestCommonSubsequence_precond (a) (b)) :
       LongestCommonSubsequence_postcond (a) (b) (LongestCommonSubsequence (a) (b) h_precond) h_precond := by
 
@@ -130,3 +129,4 @@ vc-postamble: |-
       }
   ]
   -/
+

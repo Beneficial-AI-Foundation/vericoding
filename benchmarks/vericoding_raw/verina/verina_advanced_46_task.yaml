@@ -1,16 +1,19 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This test implements a function in Lean 4 that finds the maximum sum of any contiguous subarray within a list of integers. A subarray is a continuous section of the original array. If all integers in the list are negative, the function should return 0 (representing the empty subarray).
-
+  
   -----Input-----
   numbers: A list of integers that may contain positive, negative, or zero values.
-
+  
   -----Output-----
   An integer representing the maximum sum of any contiguous subarray. If the list is empty or contains only negative numbers, the function returns 0.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def maxSubarraySum_precond (numbers : List Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -49,12 +52,8 @@ vc-implementation: |-
   
     handleList numbers
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def maxSubarraySum_precond (numbers : List Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def maxSubarraySum_postcond (numbers : List Int) (result: Int) (h_precond : maxSubarraySum_precond (numbers)) : Prop :=
     let subArraySums :=
@@ -62,7 +61,7 @@ vc-condition: |-
         List.range (numbers.length - start + 1) |>.map (fun len =>
           numbers.drop start |>.take len |>.sum))
     subArraySums.contains result ∧ subArraySums.all (· ≤ result)
-
+  
   theorem maxSubarraySum_spec_satisfied (numbers: List Int) (h_precond : maxSubarraySum_precond (numbers)) :
       maxSubarraySum_postcond (numbers) (maxSubarraySum (numbers) h_precond) h_precond := by
 
@@ -163,3 +162,4 @@ vc-postamble: |-
       }
   ]
   -/
+

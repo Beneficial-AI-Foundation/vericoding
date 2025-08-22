@@ -1,16 +1,16 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that generates all possible letter combinations from a string of digits based on the traditional telephone keypad letter mappings.
-
+  
   -----Input-----
   The input consists of a string (String). The string may be empty.
-
+  
   -----Output-----
   The output is a list of strings (List String) where each string represents a unique combination of letters corresponding to the input digits. If the input string is empty, the output is an empty list.
-
+  
   -----Note-----
-
+  
   Here is the mapping from the number to possible letters:
   2: a or b or c
   3: d or e or f
@@ -24,6 +24,9 @@ vc-description: |-
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def letterCombinations_precond (digits : String) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -57,12 +60,8 @@ vc-implementation: |-
         | [] => currentLetters.map (λ c => String.singleton c)
         | _ => currentLetters.flatMap (λ c => restCombinations.map (λ s => String.singleton c ++ s))
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def letterCombinations_precond (digits : String) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible]
   def letterCombinations_postcond (digits : String) (result: List String) (h_precond : letterCombinations_precond (digits)) : Prop :=
     if digits.isEmpty then
@@ -72,7 +71,7 @@ vc-condition: |-
     else
       let expected := digits.toList.map digitToLetters |>.foldl (λ acc ls => acc.flatMap (λ s => ls.map (λ c => s ++ String.singleton c)) ) [""]
       result.length = expected.length ∧ result.all (λ s => s ∈ expected) ∧ expected.all (λ s => s ∈ result)
-
+  
   theorem letterCombinations_spec_satisfied (digits: String) (h_precond : letterCombinations_precond (digits)) :
       letterCombinations_postcond (digits) (letterCombinations (digits) h_precond) h_precond := by
 
@@ -155,3 +154,4 @@ vc-postamble: |-
       }
   ]
   -/
+

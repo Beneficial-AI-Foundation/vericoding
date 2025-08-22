@@ -1,22 +1,28 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that adds two non-empty linked lists representing non-negative integers.
   The digits are stored in reverse order (i.e., the first element is the least significant digit).
-  Each node (list element) holds a single digit (ranging from 0 to 9). The function should add the two numbers and return the sum 
+  Each node (list element) holds a single digit (ranging from 0 to 9). The function should add the two numbers and return the sum
   as a linked list, also in reverse order.
-
+  
   -----Input-----
   The input consists of:
   - l1: A list of natural numbers representing the digits of the first number in reverse order.
   - l2: A list of natural numbers representing the digits of the second number in reverse order.
-
+  
   -----Output-----
   The output is a list of natural numbers:
   Returns a list of digits (in reverse order) representing the sum of the two input numbers.
   -/
 
 vc-preamble: |-
+  @[reducible]
+  def addTwoNumbers_precond (l1 : List Nat) (l2 : List Nat) : Prop :=
+    l1.length > 0 ∧ l2.length > 0 ∧
+    (∀ d ∈ l1, d < 10) ∧ (∀ d ∈ l2, d < 10) ∧
+    (l1.getLast! ≠ 0 ∨ l1 = [0]) ∧
+    (l2.getLast! ≠ 0 ∨ l2 = [0])
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -45,22 +51,15 @@ vc-implementation: |-
         (sum % 10) :: addAux t1 t2 (sum / 10)
     addAux l1 l2 0
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible]
-  def addTwoNumbers_precond (l1 : List Nat) (l2 : List Nat) : Prop :=
-    l1.length > 0 ∧ l2.length > 0 ∧
-    (∀ d ∈ l1, d < 10) ∧ (∀ d ∈ l2, d < 10) ∧
-    (l1.getLast! ≠ 0 ∨ l1 = [0]) ∧
-    (l2.getLast! ≠ 0 ∨ l2 = [0])
 
+vc-condition: |-
   @[reducible]
   def addTwoNumbers_postcond (l1 : List Nat) (l2 : List Nat) (result: List Nat) (h_precond : addTwoNumbers_precond (l1) (l2)) : Prop :=
     listToNat result = listToNat l1 + listToNat l2 ∧
     (∀ d ∈ result, d < 10) ∧
     -- No leading zeros unless the result is zero
     (result.getLast! ≠ 0 ∨ (l1 = [0] ∧ l2 = [0] ∧ result = [0]))
-
+  
   theorem addTwoNumbers_spec_satisfied (l1: List Nat) (l2: List Nat) (h_precond : addTwoNumbers_precond (l1) (l2)) :
       addTwoNumbers_postcond (l1) (l2) (addTwoNumbers (l1) (l2) h_precond) h_precond := by
 
@@ -132,3 +131,4 @@ vc-postamble: |-
       }
   ]
   -/
+

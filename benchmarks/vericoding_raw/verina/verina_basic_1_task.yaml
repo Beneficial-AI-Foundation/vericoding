@@ -1,13 +1,13 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that determines whether two given integers have opposite signs. In other words, the method should return true if one integer is positive and the other is negative. Note that zero is considered neither positive nor negative; therefore, if either integer is zero, the method should return false.
-
+  
   -----Input-----
   The input consists of two integers:
   a: An integer.
   b: An integer.
-
+  
   -----Output-----
   The output is a Boolean value:
   Returns true if one of the integers is positive and the other is negative (i.e., they have opposite signs).
@@ -16,6 +16,10 @@ vc-description: |-
 
 vc-preamble: |-
   import Mathlib
+  
+  @[reducible, simp]
+  def hasOppositeSign_precond (a : Int) (b : Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -28,17 +32,13 @@ vc-implementation: |-
   -- <vc-implementation>
     a * b < 0
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def hasOppositeSign_precond (a : Int) (b : Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def hasOppositeSign_postcond (a : Int) (b : Int) (result: Bool) (h_precond : hasOppositeSign_precond (a) (b)) :=
     (((a < 0 ∧ b > 0) ∨ (a > 0 ∧ b < 0)) → result) ∧
     (¬((a < 0 ∧ b > 0) ∨ (a > 0 ∧ b < 0)) → ¬result)
-
+  
   theorem hasOppositeSign_spec_satisfied (a: Int) (b: Int) (h_precond : hasOppositeSign_precond (a) (b)) :
       hasOppositeSign_postcond (a) (b) (hasOppositeSign (a) (b) h_precond) h_precond := by
 
@@ -181,3 +181,4 @@ vc-postamble: |-
       }
   ]
   -/
+

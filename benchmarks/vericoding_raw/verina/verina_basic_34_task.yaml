@@ -1,24 +1,27 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that extracts even numbers from an array of integers. The method should return a new array containing only the even numbers found in the input array, while preserving the order in which they appear.
-
+  
   -----Input-----
   The input consists of:
   arr: An array of integers.
-
+  
   -----Output-----
   The output is an array of integers:
   Returns an array containing all the even numbers from the input array. Specifically:
   - Every element in the output array is an even integer.
   - All even integers present in the input array are included in the output array.
   - The relative order of the even integers is preserved as in the input array.
-
+  
   -----Note-----
   There are no preconditions for this task; the method will work with any array, including empty arrays (which are not null).
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def findEvenNumbers_precond (arr : Array Int) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -33,12 +36,8 @@ vc-implementation: |-
   -- <vc-implementation>
     arr.foldl (fun acc x => if isEven x then acc.push x else acc) #[]
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def findEvenNumbers_precond (arr : Array Int) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def findEvenNumbers_postcond (arr : Array Int) (result: Array Int) (h_precond : findEvenNumbers_precond (arr)) :=
     (∀ x, x ∈ result → isEven x ∧ x ∈ arr.toList) ∧
@@ -47,7 +46,7 @@ vc-condition: |-
       isEven x → isEven y →
       arr.toList.idxOf x ≤ arr.toList.idxOf y →
       result.toList.idxOf x ≤ result.toList.idxOf y)
-
+  
   theorem findEvenNumbers_spec_satisfied (arr: Array Int) (h_precond : findEvenNumbers_precond (arr)) :
       findEvenNumbers_postcond (arr) (findEvenNumbers (arr) h_precond) h_precond := by
 
@@ -114,3 +113,4 @@ vc-postamble: |-
       }
   ]
   -/
+

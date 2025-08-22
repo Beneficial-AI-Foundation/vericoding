@@ -1,21 +1,24 @@
 vc-description: |-
   /--
-  -----Description----- 
+  -----Description-----
   This task requires writing a Lean 4 method that computes the sum of the digits of a non-negative integer. The method should process each digit of the input number and return the total sum. The output is guaranteed to be a non-negative natural number.
-
+  
   -----Input-----
   The input consists of:
   n: A non-negative integer.
-
+  
   -----Output-----
   The output is a natural number:
   Returns the sum of the digits of the input integer.
-
+  
   -----Note-----
   The input is assumed to be a valid non-negative integer.
   -/
 
 vc-preamble: |-
+  @[reducible, simp]
+  def sumOfDigits_precond (n : Nat) : Prop :=
+    True
 
 vc-helpers: |-
   -- <vc-helpers>
@@ -31,17 +34,13 @@ vc-implementation: |-
       else loop (n / 10) (acc + n % 10)
     loop n 0
   -- </vc-implementation>
-  
-vc-condition: |-
-  @[reducible, simp]
-  def sumOfDigits_precond (n : Nat) : Prop :=
-    True
 
+vc-condition: |-
   @[reducible, simp]
   def sumOfDigits_postcond (n : Nat) (result: Nat) (h_precond : sumOfDigits_precond (n)) :=
     result - List.sum (List.map (fun c => Char.toNat c - Char.toNat '0') (String.toList (Nat.repr n))) = 0 ∧
     List.sum (List.map (fun c => Char.toNat c - Char.toNat '0') (String.toList (Nat.repr n))) - result = 0
-
+  
   theorem sumOfDigits_spec_satisfied (n: Nat) (h_precond : sumOfDigits_precond (n)) :
       sumOfDigits_postcond (n) (sumOfDigits (n) h_precond) h_precond := by
 
@@ -124,3 +123,4 @@ vc-postamble: |-
       }
   ]
   -/
+
