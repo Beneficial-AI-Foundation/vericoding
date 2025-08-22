@@ -12,11 +12,11 @@ vc-spec: |-
       c >= 'A' && c <= 'Z'
   }
 
+  // pure-end
+
   spec fn shift32_spec(c: char) -> (result:char) {
       ((c as u8) + 32) as char
   }
-
-  // pure-end
 
   // pure-end
 
