@@ -44,6 +44,7 @@ vc-helpers: |-
       // impl-start
       // impl-end
   }
+  // pure-end
 
 vc-spec: |-
   fn remove_chars(str1: &Vec<char>, str2: &Vec<char>) -> (result: Vec<char>)
