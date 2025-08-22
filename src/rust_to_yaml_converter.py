@@ -10,50 +10,29 @@ from typing import Dict, Any
 import argparse
 
 
-def extract_proof_constructs(content: str) -> tuple[str, list[str]]:
-    """Extract proof functions and proof blocks from content using balanced brace matching."""
-    proof_constructs = []
+def extract_proof_functions(content: str) -> tuple[str, list[str]]:
+    """Extract only proof functions (proof fn) from content, leave proof blocks inside functions."""
+    proof_functions = []
     
-    # Find proof functions and proof blocks
+    # Find only proof functions (not proof blocks)
     pos = 0
     while pos < len(content):
-        # Look for 'proof fn' or 'proof {'
+        # Look for 'proof fn' only
         proof_fn_match = re.search(r'proof\s+fn\s+', content[pos:])
-        proof_block_match = re.search(r'proof\s*\{', content[pos:])
         
-        # Find the earliest match
-        earliest_match = None
-        earliest_pos = float('inf')
-        match_type = None
-        
-        if proof_fn_match and pos + proof_fn_match.start() < earliest_pos:
-            earliest_pos = pos + proof_fn_match.start()
-            earliest_match = proof_fn_match
-            match_type = 'function'
-            
-        if proof_block_match and pos + proof_block_match.start() < earliest_pos:
-            earliest_pos = pos + proof_block_match.start()
-            earliest_match = proof_block_match
-            match_type = 'block'
-        
-        if not earliest_match:
+        if not proof_fn_match:
             break
             
-        # Find the opening brace for both cases
-        if match_type == 'function':
-            # For proof functions, find the opening brace of the function body
-            brace_search_start = pos + proof_fn_match.end()
-            brace_match = re.search(r'\{', content[brace_search_start:])
-            if not brace_match:
-                pos = earliest_pos + 1
-                continue
-            brace_pos = brace_search_start + brace_match.start()
-            construct_start = earliest_pos
-        else:
-            # For proof blocks, the brace is included in the match
-            brace_pos = pos + proof_block_match.end() - 1  # -1 because the match includes the '{'
-            construct_start = earliest_pos
+        # Find the opening brace of the function body
+        brace_search_start = pos + proof_fn_match.end()
+        brace_match = re.search(r'\{', content[brace_search_start:])
+        if not brace_match:
+            pos = pos + proof_fn_match.end()
+            continue
             
+        brace_pos = brace_search_start + brace_match.start()
+        construct_start = pos + proof_fn_match.start()
+        
         # Find the matching closing brace
         brace_count = 1
         search_pos = brace_pos + 1
@@ -66,23 +45,43 @@ def extract_proof_constructs(content: str) -> tuple[str, list[str]]:
             search_pos += 1
             
         if brace_count == 0:
-            # Found complete construct
-            construct = content[construct_start:search_pos].strip()
-            proof_constructs.append(construct)
+            # Found complete proof function
+            construct = content[construct_start:search_pos]
+            # Clean up indentation while preserving structure
+            lines = construct.split('\n')
+            if lines:
+                # Find minimum indentation (excluding empty lines)
+                min_indent = float('inf')
+                for line in lines:
+                    if line.strip():  # Skip empty lines
+                        indent = len(line) - len(line.lstrip())
+                        min_indent = min(min_indent, indent)
+                
+                # Remove common indentation from all lines
+                if min_indent != float('inf'):
+                    cleaned_lines = []
+                    for line in lines:
+                        if line.strip():  # Non-empty line
+                            cleaned_lines.append(line[min_indent:] if len(line) >= min_indent else line.lstrip())
+                        else:  # Empty line
+                            cleaned_lines.append('')
+                    construct = '\n'.join(cleaned_lines).strip()
+            
+            proof_functions.append(construct) 
             pos = search_pos
         else:
             # Unmatched braces, skip this match
-            pos = earliest_pos + 1
+            pos = pos + proof_fn_match.end()
     
-    # Remove all found proof constructs from content
+    # Remove all found proof functions from content
     cleaned_content = content
-    for construct in proof_constructs:
+    for construct in proof_functions:
         cleaned_content = cleaned_content.replace(construct, '', 1)
     
     # Clean up extra whitespace  
     cleaned_content = re.sub(r'\n\s*\n\s*\n', '\n\n', cleaned_content)
     
-    return cleaned_content.strip(), proof_constructs
+    return cleaned_content.strip(), proof_functions
 
 
 def parse_rust_file(content: str) -> Dict[str, str]:
@@ -107,8 +106,8 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     preamble = preamble_match.group(1) + "\n"
     remaining_content = content[preamble_match.end():]
     
-    # Extract proof functions/blocks from the remaining content
-    remaining_content, proof_constructs = extract_proof_constructs(remaining_content)
+    # Extract proof functions (not proof blocks) from the remaining content
+    remaining_content, proof_functions = extract_proof_functions(remaining_content)
     
     # Find all normal function declarations (excluding main)
     fn_pattern = r'fn\s+(?!main\b)\w+'
@@ -167,7 +166,7 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     # Extract function body (between the braces)
     function_body = last_fn_content[start_pos:pos]
     
-    # Build code section: function body + other functions + proof constructs
+    # Build code section: function body + other functions + proof functions
     code_parts = []
     
     # Add the last function's body first
@@ -177,9 +176,9 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     for func in other_functions:
         code_parts.append(func)
     
-    # Add proof constructs
-    for proof in proof_constructs:
-        code_parts.append(proof)
+    # Add proof functions (proof blocks stay inside functions)
+    for proof_fn in proof_functions:
+        code_parts.append(proof_fn)
     
     code_section = '\n\n'.join(code_parts) + '\n' if code_parts else '\n'
     

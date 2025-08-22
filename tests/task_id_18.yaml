@@ -42,7 +42,10 @@ vc-code: |-
           // invariants-end
       {
           if (!contains(str2, str1[index])) {
-
+              proof {
+                  lemma_vec_push(output_str@, str1[index as int], output_str.len());
+                  output_len = output_len + 1;
+              }
               output_str.push(str1[index]);
           }
           index += 1;
@@ -90,11 +93,6 @@ vc-code: |-
       // impl-start
       // impl-end
   }
-
-  proof {
-                  lemma_vec_push(output_str@, str1[index as int], output_str.len());
-                  output_len = output_len + 1;
-              }
 
 vc-postamble: |-
 
