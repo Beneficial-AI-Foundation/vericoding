@@ -10,7 +10,7 @@ prompts_file = "prompts.yaml"
 
 # Verification command patterns
 verify_command = ["{tool_path}", "verify", "--allow-warnings", "{file_path}"]
-compile_check_command = ["{tool_path}", "resolve", "{file_path}"]
+compile_check_command = ["{tool_path}", "resolve", "--allow-warnings", "{file_path}"]
 
 # Code extraction patterns
 code_block_patterns = [

@@ -90,7 +90,7 @@ class ProcessingConfig:
 def load_language_config() -> LanguageConfigResult:
     """Load language configuration from TOML file."""
     # Try to find config file relative to this module's location
-    module_dir = Path(__file__).parent.parent.parent  # Go up to the repository root
+    module_dir = Path(__file__).parent.parent.parent.parent  # Go up to the repository root
     config_path = module_dir / "config" / "language_config.toml"
 
     if not config_path.exists():
