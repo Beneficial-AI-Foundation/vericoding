@@ -10,6 +10,60 @@ from typing import Dict, Any
 import argparse
 
 
+def parse_return_type(signature: str) -> str:
+    """Parse the return type from a function signature."""
+    # Look for -> (return_type) pattern
+    return_match = re.search(r'->\s*\(?\s*([^)]+?)\s*\)?(?:\s*\n|\s*$|\s*//|\s*ensures|\s*requires)', signature, re.MULTILINE | re.DOTALL)
+    if return_match:
+        return_type = return_match.group(1).strip()
+        # Remove any binding names like 'ret: ' or 'result: '
+        if ':' in return_type:
+            return_type = return_type.split(':')[1].strip()
+        return return_type
+    
+    # If no explicit return type, assume unit type
+    return "()"
+
+
+def generate_default_value(return_type: str) -> str:
+    """Generate a default value for a given return type."""
+    # Normalize the return type
+    return_type = return_type.strip()
+    
+    # Handle common types
+    if return_type in ["()", "unit"]:
+        return "()"
+    elif return_type == "bool":
+        return "false"
+    elif return_type in ["u8", "u16", "u32", "u64", "u128", "usize", "i8", "i16", "i32", "i64", "i128", "isize"]:
+        return "0"
+    elif return_type in ["f32", "f64"]:
+        return "0.0"
+    elif return_type == "char":
+        return "'\\0'"
+    elif return_type.startswith("Vec<"):
+        return "vec![]"
+    elif return_type.startswith("Option<"):
+        return "None"
+    elif return_type.startswith("Result<"):
+        return "Err(())"
+    elif return_type == "String":
+        return 'String::new()'
+    elif return_type.startswith("&Vec<"):
+        return "&vec![]"
+    elif return_type == "&str":
+        return '""'
+    elif return_type.startswith("(") and return_type.endswith(")"):
+        # Tuple type
+        if return_type == "()":
+            return "()"
+        # For simple tuples, just return empty tuple for now
+        return "()"
+    else:
+        # For unknown types, fail the conversion
+        raise ValueError(f"Cannot generate default value for unknown return type: {return_type}")
+
+
 def extract_proof_and_spec_functions(content: str) -> tuple[str, list[str], list[str]]:
     """Extract proof functions and spec functions from content, leave proof blocks inside functions."""
     proof_functions = []
@@ -345,9 +399,13 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     spec_signature = last_fn_content[:function_body_start].strip()
     spec = spec_signature + '\n'
     
-    # Extract main task function body (between the braces)
-    function_body = last_fn_content[function_body_start:function_body_end + 1]
-    code_section = function_body.strip() + '\n'
+    # Generate stub implementation instead of actual function body
+    return_type = parse_return_type(spec_signature)
+    default_value = generate_default_value(return_type)
+    
+    # Create stub implementation
+    stub_body = "{\n    // impl-start\n    assume(false);\n    " + default_value + "\n    // impl-end\n}"
+    code_section = stub_body + '\n'
     
     # Build helpers section: other functions + proof functions
     helper_parts = []
