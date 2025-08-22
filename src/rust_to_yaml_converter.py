@@ -159,14 +159,40 @@ def parse_rust_file(content: str) -> Dict[str, str]:
         # Single function case
         last_fn_content = remaining_content
     
-    # Split the last function between spec and code
-    fn_pattern_full = r'(fn\s+\w+.*?)(\{)'
-    fn_match = re.search(fn_pattern_full, last_fn_content, re.DOTALL)
-    
-    if not fn_match:
+    # Split the last function between spec and code using balanced brace/paren matching
+    fn_start = re.search(r'fn\s+\w+', last_fn_content)
+    if not fn_start:
         raise ValueError("Could not find function declaration")
     
-    spec_signature = fn_match.group(1).strip()
+    # Find the opening brace of function body by ensuring () and {} are balanced
+    pos = fn_start.end()
+    paren_count = 0
+    brace_count = 0
+    function_body_start = -1
+    
+    while pos < len(last_fn_content):
+        char = last_fn_content[pos]
+        
+        if char == '(':
+            paren_count += 1
+        elif char == ')':
+            paren_count -= 1
+        elif char == '{':
+            if paren_count == 0 and brace_count == 0:
+                # This is the function body opening brace
+                function_body_start = pos
+                break
+            else:
+                brace_count += 1
+        elif char == '}':
+            brace_count -= 1
+        
+        pos += 1
+    
+    if function_body_start == -1:
+        raise ValueError("Could not find function body opening brace")
+    
+    spec_signature = last_fn_content[fn_start.start():function_body_start].strip()
     
     # Combine spec functions (at start) + function signature
     spec_parts = []
@@ -176,7 +202,7 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     spec = '\n\n'.join(spec_parts) + '\n' if spec_parts else spec_signature + '\n'
     
     # Find the implementation section (everything between braces)
-    start_pos = fn_match.end() - 1  # Position of opening brace
+    start_pos = function_body_start  # Position of opening brace
     brace_count = 1
     pos = start_pos + 1
     
