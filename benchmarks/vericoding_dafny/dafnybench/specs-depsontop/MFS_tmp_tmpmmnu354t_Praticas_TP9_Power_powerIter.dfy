@@ -1,0 +1,25 @@
+/* 
+* Formal verification of O(n) and O(log n) algorithms to calculate the natural
+* power of a real number (x^n), illustrating the usage of lemmas.
+* FEUP, M.EIC, MFS, 2021/22.
+*/
+
+// Initial specification/definition of x^n, recursive, functional style, 
+// with time and space complexity O(n).
+function power(x: real, n: nat) : real
+{
+    if n == 0 then 1.0 else x * power(x, n-1)
+}
+
+// Iterative version, imperative, with time complexity O(n) and space complexity O(1).
+
+method powerIter(b: real, n: nat) returns (p : real)
+    ensures p == power(b, n)
+
+{
+  assume false;
+}
+
+// Recursive version, imperative, with time and space complexity O(log n).
+
+// A simple test case to make sure the specification is adequate.
