@@ -12,6 +12,8 @@ vc-spec: |-
       (n % 2) == 0
   }
 
+  // pure-end
+
   fn is_product_even(arr: &Vec<u32>) -> (result: bool)
       // post-conditions-start
       ensures
