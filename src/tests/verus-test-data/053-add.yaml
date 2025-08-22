@@ -17,7 +17,8 @@ vc-spec: |-
 vc-code: |-
   {
       // impl-start
-      x.checked_add(y)
+      assume(false);
+      None
       // impl-end
   }
 

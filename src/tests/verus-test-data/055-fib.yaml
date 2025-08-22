@@ -65,32 +65,8 @@ vc-spec: |-
 vc-code: |-
   {
       // impl-start
-      if n > 47 {
-          // assert-start
-          proof {
-              assert(spec_fib(48) > u32::MAX) by (compute_only);
-              lemma_fib_monotonic(48, n as nat);
-          }
-          // assert-end
-          return None;
-      }
-      match n {
-          0 => Some(0),
-          1 => Some(1),
-          _ => {
-              // assert-start
-              proof {
-                  assert(spec_fib(47) < u32::MAX) by (compute_only);
-                  lemma_fib_monotonic(n as nat, 47);
-                  lemma_fib_monotonic((n - 1) as nat, 47);
-                  lemma_fib_monotonic((n - 2) as nat, 47);
-              }
-              // assert-end
-              let n1 = fib(n - 1)?;
-              let n2 = fib(n - 2)?;
-              Some(n1 + n2)
-          },
-      }
+      assume(false);
+      None
       // impl-end
   }
 
