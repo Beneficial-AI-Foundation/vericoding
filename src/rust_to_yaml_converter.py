@@ -48,7 +48,39 @@ def extract_proof_and_spec_functions(content: str) -> tuple[str, list[str], list
             continue
             
         brace_pos = brace_search_start + brace_match.start()
+        
+        # Look backwards to include attributes and comments that belong to this function
         construct_start = earliest_pos
+        lines_before = content[:construct_start].split('\n')
+        
+        # Go backwards through lines to find where the function really starts
+        function_start_line_idx = len(lines_before) - 1
+        
+        # Skip empty lines and find the last non-empty line before the function
+        while function_start_line_idx >= 0 and not lines_before[function_start_line_idx].strip():
+            function_start_line_idx -= 1
+        
+        # Check if there are attributes or comments that belong to this function
+        while function_start_line_idx >= 0:
+            line = lines_before[function_start_line_idx].strip()
+            # If this line is an attribute, comment, or empty line that should be included
+            if (line.startswith('#[') or 
+                line.startswith('//') or 
+                not line):
+                function_start_line_idx -= 1
+            else:
+                # This line doesn't belong to the function, stop here
+                break
+        
+        # Calculate the actual start position
+        if function_start_line_idx < 0:
+            # All lines before belong to the function
+            construct_start = 0
+        else:
+            # Start after the last line that doesn't belong to the function
+            construct_start = len('\n'.join(lines_before[:function_start_line_idx + 1]))
+            if construct_start > 0:
+                construct_start += 1  # Account for the newline character
         
         # Find the matching closing brace
         brace_count = 1
