@@ -14,35 +14,35 @@ from code2verus.benchmarks import is_flat_structure
 
 
 async def process_item(
-    idx: int, item: dict, source_language: str = "dafny", benchmark_name: str = "dafnybench", max_retries: int = 32, base_delay: float = 5.0, is_flat: bool = False
+    idx: int, item: dict, source_language: str = "dafny", benchmark_name: str = "dafnybench", max_retries: int = 32, base_delay: float = 5.0, is_flat: bool = False, is_yaml: bool = False
 ) -> dict:
     """Process a single item from the dataset with exponential backoff"""
-    
+
     # Handle different dataset structures
     if "ground_truth" in item:
         # DafnyBench format
         source_code = item["ground_truth"]
         source_filename = Path(item["test_file"])
         # Preserve the directory structure but change extension to .rs
-        relative_path = source_filename.with_suffix('.rs')
+        relative_path = source_filename.with_suffix('.rs' if not is_yaml else '.yaml')
     elif "org_input" in item:
         # ReForm-DafnyComp-Benchmark format
         source_code = item["org_input"]
         # Generate filename from item ID, preserve any directory structure
         source_filename = Path(f"item_{item.get('org_input_id', idx)}.dfy")
-        relative_path = source_filename.with_suffix('.rs')
+        relative_path = source_filename.with_suffix('.rs' if not is_yaml else '.yaml')
     elif "id" in item and "lean_code" in item:
         # Verina format (sunblaze-ucb/verina)
         source_code = item["lean_code"]
         # Use the actual ID from the dataset (e.g., "verina_basic_70")
         source_filename = Path(f"{item['id']}.lean")
         # Create a directory for each item
-        relative_path = Path(item['id']) / source_filename.with_suffix('.rs').name
+        relative_path = Path(item['id']) / source_filename.with_suffix('.rs' if not is_yaml else '.yaml').name
     else:
         # Fallback for unknown formats
         source_code = item.get("code", item.get("source", ""))
         source_filename = Path(f"item_{idx}.dfy")
-        relative_path = source_filename.with_suffix('.rs')
+        relative_path = source_filename.with_suffix('.rs' if not is_yaml else '.yaml')
     
     artifact_path = ARTIFACTS / benchmark_name / relative_path.parent
     output_filename = relative_path.name
@@ -58,14 +58,14 @@ async def process_item(
     # Exponential backoff retry logic
     for attempt in range(max_retries + 1):
         try:
-            verus_code, num_iterations = await translate_code_to_verus(source_code, source_language)
+            verus_code, num_iterations = await translate_code_to_verus(source_code, source_language, is_yaml)
             verus_output_path = artifact_path / output_filename
             with open(verus_output_path, "w") as verus_file:
                 verus_file.write(verus_code)
             logfire.info(f"Generated Verus code saved to: {verus_output_path}")
 
             # Use async verification
-            verification_success, verification_output, verification_error = await verify_verus_code(verus_code)
+            verification_success, verification_output, verification_error = await verify_verus_code(verus_code, is_yaml)
 
             info = {
                 "success": verification_success,
@@ -159,9 +159,11 @@ async def main_async(benchmark: str = "wendy-sun/DafnyBench", split: str = "test
     # Limit concurrent API calls to prevent rate limiting
     semaphore = asyncio.Semaphore(max_concurrent)
 
+    is_yaml = file_pattern == "*.yaml"
+
     async def process_with_semaphore(idx: int, item: dict) -> dict:
         async with semaphore:
-            return await process_item(idx, item, source_language, benchmark_name, max_retries=32, base_delay=5.0, is_flat=is_flat)
+            return await process_item(idx, item, source_language, benchmark_name, max_retries=32, base_delay=5.0, is_flat=is_flat, is_yaml=is_yaml)
 
     item_processes = [
         process_with_semaphore(idx, item) for idx, item in enumerate(dataset)

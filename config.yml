@@ -83,6 +83,8 @@ system_prompts:
 
     9. **Verification**: Always verify that the translated code type-checks in Verus and preserves the logical behavior of the original Dafny program.
 
+    10. **Output Formatting**: If the input was a YAML file, your output should be presented in the same format, translating each individual section from Dafny to Verus.
+
     If the input is not valid Dafny code, respond with an error message asking the user to provide correct Dafny syntax.
 
   lean: |
