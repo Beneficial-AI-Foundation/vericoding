@@ -38,12 +38,12 @@ def normalize_whitespace(content: str) -> str:
     return '\n'.join(normalized_lines)
 
 
-def test_conversion_roundtrip():
+def test_conversion_roundtrip(rust_file="053-add.rs"):
     """Test that converting Rust -> YAML -> Rust gives back the original content."""
     
     # Test files
-    original_rust_file = Path("tests/053-add.rs")
-    expected_yaml_file = Path("tests/053-add.yaml")
+    original_rust_file = Path(f"tests/{rust_file}")
+    expected_yaml_file = Path(f"tests/{rust_file}").with_suffix('.yaml')
     
     print("=== Testing Rust to YAML Conversion ===")
     
@@ -111,11 +111,21 @@ def main():
     """Run the tests."""
     print("Testing Rust to YAML converter...\n")
     
-    if test_conversion_roundtrip():
-        print("\n🎉 All tests passed!")
+    # Test multiple files
+    test_files = ["053-add.rs", "023-strlen.rs"]
+    all_passed = True
+    
+    for test_file in test_files:
+        print(f"Testing {test_file}:")
+        if not test_conversion_roundtrip(test_file):
+            all_passed = False
+        print()
+    
+    if all_passed:
+        print("🎉 All tests passed!")
         return 0
     else:
-        print("\n❌ Some tests failed!")
+        print("❌ Some tests failed!")
         return 1
 
 
