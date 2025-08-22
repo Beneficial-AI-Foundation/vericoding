@@ -98,11 +98,20 @@ def main():
     """Run the tests."""
     print("Testing Rust to YAML converter...\n")
     
-    # Test multiple files
-    test_files = ["053-add.rs", "023-strlen.rs", "task_id_576.rs"]
+    # Find all YAML test files and derive corresponding .rs files
+    yaml_files = list(Path("tests").glob("*.yaml"))
+    test_files = []
+    
+    for yaml_file in yaml_files:
+        rust_file = yaml_file.with_suffix('.rs')
+        if rust_file.exists():
+            test_files.append(rust_file.name)
+    
+    print(f"Found {len(test_files)} test file pairs: {test_files}\n")
+    
     all_passed = True
     
-    for test_file in test_files:
+    for test_file in sorted(test_files):
         print(f"Testing {test_file}:")
         if not test_conversion_roundtrip(test_file):
             all_passed = False
