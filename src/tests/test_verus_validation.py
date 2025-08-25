@@ -41,7 +41,10 @@ def convert_yaml_to_rust(yaml_path: Path, temp_dir: Path) -> tuple[bool, Path]:
     try:
         # Create a copy of the YAML file in temp directory to avoid modifying tests dir
         temp_yaml = temp_dir / yaml_path.name
-        shutil.copy2(yaml_path, temp_yaml)
+        if temp_yaml != yaml_path:  # Only copy if different paths
+            shutil.copy2(yaml_path, temp_yaml)
+        else:
+            temp_yaml = yaml_path
         
         result = subprocess.run([
             "uv", "run", "src/convert_from_yaml.py",
@@ -80,6 +83,58 @@ def verify_rust_with_verus(rust_path: Path, verus_cmd: str) -> tuple[bool, str]:
     except Exception as e:
         return False, f"Error running verus: {e}"
 
+def create_yaml_without_helpers(yaml_content: str) -> str:
+    """Create a modified YAML with empty vc-helpers section."""
+    lines = yaml_content.split('\n')
+    result_lines = []
+    in_helpers = False
+    
+    for line in lines:
+        if line.startswith('vc-helpers:'):
+            result_lines.append(line)
+            result_lines.append('')  # Empty helpers section
+            in_helpers = True
+        elif line.startswith('vc-spec:') and in_helpers:
+            # End of helpers section, start of spec section
+            result_lines.append(line)
+            in_helpers = False
+        elif not in_helpers:
+            result_lines.append(line)
+        # Skip lines that are part of vc-helpers content
+    
+    return '\n'.join(result_lines)
+
+def test_yaml_without_helpers(yaml_file: Path, temp_path: Path, verus_cmd: str) -> tuple[bool, str]:
+    """Test a YAML file with empty vc-helpers section."""
+    try:
+        # Read original YAML
+        with open(yaml_file, 'r') as f:
+            original_content = f.read()
+        
+        # Skip if there are no helpers to remove
+        if 'vc-helpers: |-' not in original_content:
+            return True, "No helpers to remove - skipped"
+        
+        # Create modified version without helpers
+        modified_content = create_yaml_without_helpers(original_content)
+        
+        # Write modified YAML to temp directory
+        temp_yaml = temp_path / f"no_helpers_{yaml_file.name}"
+        with open(temp_yaml, 'w') as f:
+            f.write(modified_content)
+        
+        # Convert to Rust
+        success, temp_rust_file = convert_yaml_to_rust(temp_yaml, temp_path)
+        if not success:
+            return False, "Conversion failed"
+        
+        # Verify with Verus
+        success, output = verify_rust_with_verus(temp_rust_file, verus_cmd)
+        return success, output
+        
+    except Exception as e:
+        return False, f"Error: {e}"
+
 def main():
     """Main test function."""
     print("🧪 Testing YAML to Rust conversion and Verus validation...")
@@ -115,35 +170,53 @@ def main():
         print(f"📂 Using temporary directory: {temp_path}")
         
         results = []
+        no_helpers_results = []
         
         for yaml_file in yaml_files:
             print(f"\n🔄 Testing {yaml_file.name}...")
             
-            # Step 1: Convert YAML to Rust in temp directory
-            print(f"   Converting to Rust...")
+            # Step 1: Test original YAML
+            print(f"   Converting original to Rust...")
             success, temp_rust_file = convert_yaml_to_rust(yaml_file, temp_path)
             if not success:
                 results.append((yaml_file.name, False, "Conversion failed"))
                 continue
             
-            # Step 2: Verify with Verus --no-verify (syntax check)
-            print(f"   Running Verus syntax check...")
+            print(f"   Running Verus syntax check on original...")
             success, output = verify_rust_with_verus(temp_rust_file, verus_cmd)
             
             if success:
-                print(f"   ✅ Verus syntax check passed")
+                print(f"   ✅ Original Verus syntax check passed")
                 results.append((yaml_file.name, True, "Success"))
             else:
-                print(f"   ❌ Verus syntax check failed")
+                print(f"   ❌ Original Verus syntax check failed")
                 print(f"   Output: {output}")
                 results.append((yaml_file.name, False, f"Verus failed: {output}"))
+                continue  # Skip no-helpers test if original fails
+            
+            # Step 2: Test version without vc-helpers
+            print(f"   Testing without vc-helpers...")
+            success_no_helpers, output_no_helpers = test_yaml_without_helpers(yaml_file, temp_path, verus_cmd)
+            
+            if success_no_helpers:
+                if "skipped" in output_no_helpers:
+                    print(f"   ⏩ No-helpers test skipped (no helpers to remove)")
+                    no_helpers_results.append((yaml_file.name, True, "Skipped - no helpers"))
+                else:
+                    print(f"   ✅ No-helpers Verus syntax check passed")
+                    no_helpers_results.append((yaml_file.name, True, "Success"))
+            else:
+                print(f"   ❌ No-helpers Verus syntax check failed")
+                print(f"   Output: {output_no_helpers}")
+                no_helpers_results.append((yaml_file.name, False, f"No-helpers failed: {output_no_helpers}"))
     
     # Print summary
     print(f"\n📊 Test Results Summary:")
-    print(f"=" * 50)
+    print(f"=" * 70)
     
-    passed = 0
-    failed = 0
+    print(f"\n🔸 Original YAML Tests:")
+    original_passed = 0
+    original_failed = 0
     
     for filename, success, message in results:
         status = "✅ PASS" if success else "❌ FAIL"
@@ -152,20 +225,42 @@ def main():
             print(f"      {message[:100]}{'...' if len(message) > 100 else ''}")
         
         if success:
-            passed += 1
+            original_passed += 1
         else:
-            failed += 1
+            original_failed += 1
+    
+    print(f"\n🔹 No-Helpers YAML Tests:")
+    no_helpers_passed = 0
+    no_helpers_failed = 0
+    no_helpers_skipped = 0
+    
+    for filename, success, message in no_helpers_results:
+        if "skipped" in message.lower():
+            status = "⏩ SKIP"
+            no_helpers_skipped += 1
+        elif success:
+            status = "✅ PASS"
+            no_helpers_passed += 1
+        else:
+            status = "❌ FAIL"
+            no_helpers_failed += 1
+            
+        print(f"{status}: {filename}")
+        if not success and "skipped" not in message.lower():
+            print(f"      {message[:100]}{'...' if len(message) > 100 else ''}")
     
     print(f"\n🏁 Final Results:")
-    print(f"   Passed: {passed}")
-    print(f"   Failed: {failed}")
-    print(f"   Total:  {len(results)}")
+    print(f"   Original tests  - Passed: {original_passed}, Failed: {original_failed}")
+    print(f"   No-helpers tests - Passed: {no_helpers_passed}, Failed: {no_helpers_failed}, Skipped: {no_helpers_skipped}")
+    print(f"   Total files tested: {len(results)}")
     
-    if failed == 0:
-        print(f"\n🎉 All tests passed! YAML roundtrip with Verus syntax check successful.")
+    total_failed = original_failed + no_helpers_failed
+    
+    if total_failed == 0:
+        print(f"\n🎉 All tests passed! YAML files work with and without vc-helpers.")
         return 0
     else:
-        print(f"\n💥 {failed} tests failed. Check output above for details.")
+        print(f"\n💥 {total_failed} tests failed. Check output above for details.")
         return 1
 
 if __name__ == "__main__":
