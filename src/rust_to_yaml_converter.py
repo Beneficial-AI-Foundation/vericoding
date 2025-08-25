@@ -12,17 +12,106 @@ import argparse
 
 def parse_return_type(signature: str) -> str:
     """Parse the return type from a function signature."""
-    # Look for -> (return_type) pattern
-    return_match = re.search(r'->\s*\(?\s*([^)]+?)\s*\)?(?:\s*\n|\s*$|\s*//|\s*ensures|\s*requires)', signature, re.MULTILINE | re.DOTALL)
-    if return_match:
-        return_type = return_match.group(1).strip()
-        # Remove any binding names like 'ret: ' or 'result: '
-        if ':' in return_type:
-            return_type = return_type.split(':')[1].strip()
-        return return_type
+    # Look for -> (return_type) pattern, handling nested parentheses properly
+    arrow_pos = signature.find('->')
+    if arrow_pos == -1:
+        return "()"
     
-    # If no explicit return type, assume unit type
-    return "()"
+    # Start from after the arrow
+    search_start = arrow_pos + 2
+    
+    # Skip whitespace
+    while search_start < len(signature) and signature[search_start].isspace():
+        search_start += 1
+    
+    if search_start >= len(signature):
+        return "()"
+    
+    # Check if we have parentheses around the return type
+    if signature[search_start] == '(':
+        # Find the matching closing parenthesis, handling nested parens
+        paren_count = 1
+        search_pos = search_start + 1
+        
+        while search_pos < len(signature) and paren_count > 0:
+            char = signature[search_pos]
+            if char == '(':
+                paren_count += 1
+            elif char == ')':
+                paren_count -= 1
+            search_pos += 1
+        
+        if paren_count == 0:
+            # Extract the content inside the parentheses
+            return_content = signature[search_start + 1:search_pos - 1].strip()
+        else:
+            # Unmatched parentheses, fall back to simple parsing
+            return "()"
+    else:
+        # No parentheses, find the end of the return type
+        end_patterns = ['\n', 'ensures', 'requires', 'where', '{']
+        end_pos = len(signature)
+        
+        for pattern in end_patterns:
+            pos = signature.find(pattern, search_start)
+            if pos != -1 and pos < end_pos:
+                end_pos = pos
+        
+        return_content = signature[search_start:end_pos].strip()
+    
+    # Handle binding names and tuple field names
+    if ':' in return_content:
+        # Case 1: Simple binding like "result: Type" (no nested structure)
+        colon_pos = return_content.find(':')
+        before_colon = return_content[:colon_pos].strip()
+        after_colon = return_content[colon_pos + 1:].strip()
+        
+        # If what's before the colon is a simple identifier and what's after looks like a type
+        if (before_colon.isidentifier() and 
+            (after_colon.startswith('(') or  # tuple type
+             after_colon in ['i32', 'u32', 'usize', 'bool', 'String'] or  # simple types
+             after_colon.startswith('Vec<') or  # Vec types
+             after_colon.startswith('Option<'))):  # Option types
+            return_content = after_colon
+        # Case 2: Tuple with named fields like "(a: i32, b: i32)"
+        elif return_content.startswith('(') and return_content.endswith(')'):
+            # This shouldn't happen since we extracted content from inside parens already
+            pass
+        # Case 3: We have content that WAS inside parens and may have named fields  
+        elif ',' in return_content:
+            # This looks like tuple fields, process each element
+            elements = []
+            current_element = ""
+            paren_depth = 0
+            
+            for char in return_content + ",":  # Add comma to handle last element
+                if char == "," and paren_depth == 0:
+                    element = current_element.strip()
+                    if element:
+                        # Remove field name if present (e.g., "a: i32" -> "i32")
+                        if ':' in element:
+                            colon_idx = element.find(':')
+                            field_name = element[:colon_idx].strip()
+                            field_type = element[colon_idx + 1:].strip()
+                            if field_name.isidentifier():
+                                element = field_type
+                        elements.append(element)
+                    current_element = ""
+                else:
+                    current_element += char
+                    if char == "(":
+                        paren_depth += 1
+                    elif char == ")":
+                        paren_depth -= 1
+            
+            if elements:
+                return_content = f"({', '.join(elements)})"
+    
+    # Final check: if we have comma-separated content that doesn't have parens, add them
+    if ',' in return_content and not return_content.startswith('('):
+        return_content = f"({return_content})"
+    
+    return return_content if return_content else "()"
 
 
 def generate_default_value(return_type: str) -> str:
@@ -57,8 +146,52 @@ def generate_default_value(return_type: str) -> str:
         # Tuple type
         if return_type == "()":
             return "()"
-        # For simple tuples, just return empty tuple for now
-        return "()"
+        # Parse tuple elements and generate defaults for each
+        inner = return_type[1:-1].strip()  # Remove outer parens
+        if not inner:
+            return "()"
+        
+        # Split by comma, being careful about nested types
+        elements = []
+        current_element = ""
+        paren_depth = 0
+        angle_depth = 0
+        
+        for char in inner + ",":  # Add comma to handle last element
+            if char == "," and paren_depth == 0 and angle_depth == 0:
+                if current_element.strip():
+                    elements.append(current_element.strip())
+                current_element = ""
+            else:
+                current_element += char
+                if char == "(":
+                    paren_depth += 1
+                elif char == ")":
+                    paren_depth -= 1
+                elif char == "<":
+                    angle_depth += 1
+                elif char == ">":
+                    angle_depth -= 1
+        
+        if not elements:
+            return "()"
+        
+        # Generate default values for each tuple element
+        default_elements = []
+        for element in elements:
+            try:
+                default_elements.append(generate_default_value(element))
+            except ValueError:
+                # If we can't generate a default for any element, use a simple default
+                if element.strip() in ["usize", "u32", "u64", "i32", "i64", "isize"]:
+                    default_elements.append("0")
+                elif element.strip() == "bool":
+                    default_elements.append("false")
+                else:
+                    # For unknown types, use a simple default that might work
+                    default_elements.append("Default::default()")
+        
+        return f"({', '.join(default_elements)})"
     else:
         # For unknown types, fail the conversion
         raise ValueError(f"Cannot generate default value for unknown return type: {return_type}")
