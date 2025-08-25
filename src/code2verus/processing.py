@@ -18,31 +18,33 @@ async def process_item(
 ) -> dict:
     """Process a single item from the dataset with exponential backoff"""
 
+    suffix = '.rs' if not is_yaml else '.yaml'
+
     # Handle different dataset structures
     if "ground_truth" in item:
         # DafnyBench format
         source_code = item["ground_truth"]
         source_filename = Path(item["test_file"])
         # Preserve the directory structure but change extension to .rs
-        relative_path = source_filename.with_suffix('.rs' if not is_yaml else '.yaml')
+        relative_path = source_filename.with_suffix(suffix)
     elif "org_input" in item:
         # ReForm-DafnyComp-Benchmark format
         source_code = item["org_input"]
         # Generate filename from item ID, preserve any directory structure
         source_filename = Path(f"item_{item.get('org_input_id', idx)}.dfy")
-        relative_path = source_filename.with_suffix('.rs' if not is_yaml else '.yaml')
+        relative_path = source_filename.with_suffix(suffix)
     elif "id" in item and "lean_code" in item:
         # Verina format (sunblaze-ucb/verina)
         source_code = item["lean_code"]
         # Use the actual ID from the dataset (e.g., "verina_basic_70")
         source_filename = Path(f"{item['id']}.lean")
         # Create a directory for each item
-        relative_path = Path(item['id']) / source_filename.with_suffix('.rs' if not is_yaml else '.yaml').name
+        relative_path = Path(item['id']) / source_filename.with_suffix(suffix).name
     else:
         # Fallback for unknown formats
         source_code = item.get("code", item.get("source", ""))
         source_filename = Path(f"item_{idx}.dfy")
-        relative_path = source_filename.with_suffix('.rs' if not is_yaml else '.yaml')
+        relative_path = source_filename.with_suffix(suffix)
     
     artifact_path = ARTIFACTS / benchmark_name / relative_path.parent
     output_filename = relative_path.name
