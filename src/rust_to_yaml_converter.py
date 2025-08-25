@@ -69,7 +69,7 @@ def parse_return_type(signature: str) -> str:
         # If what's before the colon is a simple identifier and what's after looks like a type
         if (before_colon.isidentifier() and 
             (after_colon.startswith('(') or  # tuple type
-             after_colon in ['i32', 'u32', 'usize', 'bool', 'String'] or  # simple types
+             after_colon in ['i8', 'i16', 'i32', 'i64', 'i128', 'isize', 'u8', 'u16', 'u32', 'u64', 'u128', 'usize', 'bool', 'String', 'f32', 'f64', 'char'] or  # simple types
              after_colon.startswith('Vec<') or  # Vec types
              after_colon.startswith('Option<') or  # Option types
              after_colon.startswith('&'))):  # Reference types
@@ -141,13 +141,13 @@ def generate_default_value(return_type: str) -> str:
         return 'String::new()'
     elif return_type.startswith("&Vec<"):
         # For reference types in stubs, we can't return a reference to a temporary
-        # Use unreachable!() since this is stub code that shouldn't execute
-        return "unreachable!()"
+        # Use assume(false) and a dummy reference (this is stub code)
+        return "{ assume(false); &vec![] }"
     elif return_type == "&str":
         return '""'
     elif return_type.startswith("&"):
-        # General reference types - use unreachable!() since we can't create valid refs in stubs
-        return "unreachable!()"
+        # General reference types - use assume(false) and unsafe pointer cast
+        return "{ assume(false); unsafe { &*(std::ptr::null() as *const _) } }"
     elif return_type.startswith("(") and return_type.endswith(")"):
         # Tuple type
         if return_type == "()":
