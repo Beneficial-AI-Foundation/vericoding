@@ -243,14 +243,8 @@ def extract_proof_and_spec_functions(content: str) -> tuple[str, list[str], list
 def parse_rust_file(content: str) -> Dict[str, str]:
     """Parse a Rust file and extract the different sections for YAML conversion."""
     
-    # Remove the final "fn main() {}" line for processing
+    # Don't extract main function at the beginning - handle it later with postamble
     content = content.rstrip()
-    main_pattern = r'\nfn main\(\) \{\}$'
-    main_match = re.search(main_pattern, content)
-    main_part = ""
-    if main_match:
-        main_part = main_match.group(0)
-        content = content[:main_match.start()]
     
     # Extract imports and opening verus block (preamble)
     preamble_pattern = r'^(.*?verus!\s*\{)\s*'
@@ -365,17 +359,24 @@ def parse_rust_file(content: str) -> Dict[str, str]:
                 function_body_start = i
                 break
     
-    # Fallback: if no spec end pattern found, find the last opening brace before function content
+    # Fallback: if no spec end pattern found, find the first opening brace after ensures/requires
     if function_body_start == -1:
-        # Count braces and find the outermost opening brace for the function
-        brace_positions = []
-        for i in range(fn_start.end(), len(last_fn_content)):
-            if last_fn_content[i] == '{':
-                brace_positions.append(i)
+        # Look for the end of ensures/requires clauses
+        ensures_match = re.search(r'ensures\s*[^{]*', last_fn_content, re.DOTALL)
+        requires_match = re.search(r'requires\s*[^{]*', last_fn_content, re.DOTALL)
         
-        if brace_positions:
-            # Try the last opening brace (most likely to be the function body)
-            function_body_start = brace_positions[-1]
+        # Find the position after the last contract clause
+        search_start = fn_start.end()
+        if ensures_match and ensures_match.end() > search_start:
+            search_start = ensures_match.end()
+        if requires_match and requires_match.end() > search_start:
+            search_start = requires_match.end()
+        
+        # Now find the first opening brace after the contracts
+        for i in range(search_start, len(last_fn_content)):
+            if last_fn_content[i] == '{':
+                function_body_start = i
+                break
     
     if function_body_start == -1:
         raise ValueError("Could not find function body opening brace")
@@ -421,8 +422,12 @@ def parse_rust_file(content: str) -> Dict[str, str]:
     helpers_section = '\n\n'.join(helper_parts) + '\n' if helper_parts else ''
     
     # Find the closing verus brace and create postamble
-    remaining_after_fn = last_fn_content[function_body_end + 1:].strip()
-    postamble = "\n" + remaining_after_fn + main_part
+    remaining_after_fn = last_fn_content[function_body_end + 1:]
+    
+    # The postamble should include everything after the last function's closing brace
+    # This includes the verus! closing brace and any main function
+    # Clean up extra whitespace but preserve structure
+    postamble = "\n" + remaining_after_fn.lstrip('\n').rstrip()
     
     return {
         'vc-description': '',
