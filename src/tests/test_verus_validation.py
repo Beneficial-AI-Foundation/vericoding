@@ -9,100 +9,19 @@ For each YAML file in the tests directory:
 4. Clean up generated files
 """
 
-import subprocess
 import tempfile
 import sys
 from pathlib import Path
-import shutil
-import os
 
-def find_verus_executable():
-    """Find the verus executable in PATH or common locations."""
-    # Check if verus is in PATH
-    if shutil.which("verus"):
-        return "verus"
-    
-    # Check common installation locations
-    common_paths = [
-        "/usr/local/bin/verus",
-        "/usr/bin/verus", 
-        Path.home() / ".cargo/bin/verus",
-        Path.home() / "bin/verus"
-    ]
-    
-    for path in common_paths:
-        if Path(path).exists():
-            return str(path)
-    
-    return None
-
-def convert_yaml_to_rust(yaml_path: Path, temp_dir: Path) -> tuple[bool, Path]:
-    """Convert YAML file to Rust using convert_from_yaml.py, output to temp directory."""
-    try:
-        # Create a copy of the YAML file in temp directory to avoid modifying tests dir
-        temp_yaml = temp_dir / yaml_path.name
-        if temp_yaml != yaml_path:  # Only copy if different paths
-            shutil.copy2(yaml_path, temp_yaml)
-        else:
-            temp_yaml = yaml_path
-        
-        result = subprocess.run([
-            "uv", "run", "src/convert_from_yaml.py",
-            str(temp_yaml),
-            "--suffix", "rs"
-        ], capture_output=True, text=True, cwd=Path(__file__).parent.parent.parent)
-        
-        if result.returncode != 0:
-            print(f"❌ Failed to convert {yaml_path.name}:")
-            print(f"   stdout: {result.stdout}")
-            print(f"   stderr: {result.stderr}")
-            return False, Path()
-            
-        # The convert script creates the .rs file next to the yaml file
-        temp_rust = temp_yaml.with_suffix('.rs')
-        return temp_rust.exists(), temp_rust
-        
-    except Exception as e:
-        print(f"❌ Error converting {yaml_path.name}: {e}")
-        return False, Path()
-
-def verify_rust_with_verus(rust_path: Path, verus_cmd: str) -> tuple[bool, str]:
-    """Run verus --no-verify on the Rust file and return success status and output."""
-    try:
-        result = subprocess.run([
-            verus_cmd, "--no-verify", str(rust_path)
-        ], capture_output=True, text=True, timeout=30)
-        
-        success = result.returncode == 0
-        output = f"stdout: {result.stdout}\nstderr: {result.stderr}" if result.stdout or result.stderr else "No output"
-        
-        return success, output
-        
-    except subprocess.TimeoutExpired:
-        return False, "Verus timed out after 30 seconds"
-    except Exception as e:
-        return False, f"Error running verus: {e}"
-
-def create_yaml_without_helpers(yaml_content: str) -> str:
-    """Create a modified YAML with empty vc-helpers section."""
-    lines = yaml_content.split('\n')
-    result_lines = []
-    in_helpers = False
-    
-    for line in lines:
-        if line.startswith('vc-helpers:'):
-            result_lines.append(line)
-            result_lines.append('')  # Empty helpers section
-            in_helpers = True
-        elif line.startswith('vc-spec:') and in_helpers:
-            # End of helpers section, start of spec section
-            result_lines.append(line)
-            in_helpers = False
-        elif not in_helpers:
-            result_lines.append(line)
-        # Skip lines that are part of vc-helpers content
-    
-    return '\n'.join(result_lines)
+# Import shared validation functionality
+sys.path.append(str(Path(__file__).parent.parent))
+from verus_validation import (
+    find_verus_executable, 
+    verify_rust_with_verus, 
+    create_yaml_without_helpers,
+    convert_yaml_to_rust,
+    VerusNotFoundError
+)
 
 def test_yaml_without_helpers(yaml_file: Path, temp_path: Path, verus_cmd: str) -> tuple[bool, str]:
     """Test a YAML file with empty vc-helpers section."""
@@ -139,14 +58,13 @@ def main():
     """Main test function."""
     print("🧪 Testing YAML to Rust conversion and Verus validation...")
     
-    # Find verus executable
-    verus_cmd = find_verus_executable()
-    if not verus_cmd:
-        print("❌ Verus executable not found. Please install verus or add it to PATH.")
-        print("   Try: cargo install --git https://github.com/verus-lang/verus verus")
+    # Find verus executable - will raise VerusNotFoundError if not found
+    try:
+        verus_cmd = find_verus_executable()
+        print(f"✅ Found Verus at: {verus_cmd}")
+    except VerusNotFoundError as e:
+        print(f"❌ {e}")
         return 1
-    
-    print(f"✅ Found Verus at: {verus_cmd}")
     
     # Get project root and tests directory
     project_root = Path(__file__).parent.parent.parent

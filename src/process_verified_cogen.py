@@ -22,75 +22,20 @@ from clone_verified_cogen_rs import (
     filter_duplicates
 )
 from rust_to_yaml_converter import rust_to_yaml
-from tests.test_verus_validation import (
+from verus_validation import (
     find_verus_executable, 
     verify_rust_with_verus, 
-    create_yaml_without_helpers
+    create_yaml_without_helpers,
+    validate_yaml_with_verus,
+    VerusNotFoundError
 )
 
 
-def yaml_to_rust_temp_file(yaml_content: str, temp_dir: Path) -> Path:
-    """Convert YAML content to Rust and return temporary file path."""
-    import subprocess
-    
-    # Create temporary YAML file
-    temp_yaml = temp_dir / f"temp_{uuid.uuid4().hex[:8]}.yaml"
-    with open(temp_yaml, 'w', encoding='utf-8') as f:
-        f.write(yaml_content)
-    
-    # Convert to Rust using our convert_from_yaml script
-    result = subprocess.run([
-        "uv", "run", "src/convert_from_yaml.py",
-        str(temp_yaml),
-        "--suffix", "rs"
-    ], capture_output=True, text=True, cwd=Path(__file__).parent.parent)
-    
-    if result.returncode != 0:
-        raise RuntimeError(f"YAML to Rust conversion failed: {result.stderr}")
-    
-    # Return path to generated Rust file
-    rust_file = temp_yaml.with_suffix('.rs')
-    if not rust_file.exists():
-        raise RuntimeError("Generated Rust file not found")
-    
-    return rust_file
-
-def validate_yaml_with_verus(yaml_content: str, verus_cmd: str, temp_dir: Path) -> Tuple[bool, bool, str]:
-    """
-    Validate YAML by converting to Rust and checking with Verus.
-    Returns: (original_valid, no_helpers_valid, error_message)
-    """
-    try:
-        # Test original YAML
-        rust_file = yaml_to_rust_temp_file(yaml_content, temp_dir)
-        original_valid, original_msg = verify_rust_with_verus(rust_file, verus_cmd)
-        
-        if not original_valid:
-            return False, False, f"Original failed: {original_msg}"
-        
-        # Test version without helpers (if applicable)
-        if 'vc-helpers: |-' not in yaml_content:
-            # No helpers to remove, consider it valid
-            return True, True, "No helpers to remove"
-        
-        # Create version without helpers
-        no_helpers_yaml = create_yaml_without_helpers(yaml_content)
-        rust_file_no_helpers = yaml_to_rust_temp_file(no_helpers_yaml, temp_dir)
-        no_helpers_valid, no_helpers_msg = verify_rust_with_verus(rust_file_no_helpers, verus_cmd)
-        
-        return original_valid, no_helpers_valid, no_helpers_msg if not no_helpers_valid else "Success"
-        
-    except Exception as e:
-        return False, False, f"Validation error: {e}"
 
 def convert_and_filter_rust_files_to_yaml(rust_files: List[RustFile], output_dir: Path, filtered_dir: Path, log_path: Path) -> None:
     """Convert Rust files to YAML format and filter based on Verus validation."""
-    # Find Verus executable
+    # Find Verus executable - will raise VerusNotFoundError if not found
     verus_cmd = find_verus_executable()
-    if not verus_cmd:
-        print("❌ Verus executable not found. Proceeding without filtering.")
-        convert_rust_files_to_yaml(rust_files, output_dir)
-        return
     
     print(f"✅ Found Verus at: {verus_cmd}")
     print("🔄 Converting and filtering files based on Verus validation...")
