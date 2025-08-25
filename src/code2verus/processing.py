@@ -161,7 +161,7 @@ async def main_async(benchmark: str = "wendy-sun/DafnyBench", split: str = "test
     # Limit concurrent API calls to prevent rate limiting
     semaphore = asyncio.Semaphore(max_concurrent)
 
-    is_yaml = file_pattern == "*.yaml"
+    is_yaml = file_pattern.endswith("yaml")
 
     async def process_with_semaphore(idx: int, item: dict) -> dict:
         async with semaphore:
