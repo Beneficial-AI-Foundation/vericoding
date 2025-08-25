@@ -23,9 +23,23 @@ def create_agent(source_language: str = "dafny"):
     )
 
 
-async def translate_code_to_verus(source_code: str, source_language: str = "dafny") -> tuple[str, int]:
+async def translate_code_to_verus(source_code: str, source_language: str = "dafny", is_yaml: bool = False) -> tuple[str, int]:
     """Translate source code to Verus using the agent"""
     agent = create_agent(source_language)
+
+    yaml_prompt = f"""\
+        The YAML file contains {source_language} code split into segments. Your job is to translate each of them to its corresponding Verus code while maintaining the YAML structure.
+
+        IMPORTANT: In your response, include the final YAML file containing Verus code in a code block marked with ```verus. Do not include explanations or summaries in the code block - only the executable Verus code.    
+        """
+
+    default_prompt = f"""\
+        Use the `verus` tool to make sure your output compiles. 
+
+        IMPORTANT: In your response, include the final Verus code in a code block marked with ```rust or ```verus. Do not include explanations or summaries in the code block - only the executable Verus code.
+        """
+
+    prompt = yaml_prompt if is_yaml else default_prompt
 
     user_prompt = f"""
 Please translate the following {source_language} code to Verus:
@@ -34,9 +48,7 @@ Please translate the following {source_language} code to Verus:
 {source_code}
 ```
 
-Use the `verus` tool to make sure your output compiles. 
-
-IMPORTANT: In your response, include the final Verus code in a code block marked with ```rust or ```verus. Do not include explanations or summaries in the code block - only the executable Verus code.
+{prompt}  
 """
 
     result = await agent.run(user_prompt, deps=source_code)
