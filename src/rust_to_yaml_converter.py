@@ -359,24 +359,56 @@ def parse_rust_file(content: str) -> Dict[str, str]:
                 function_body_start = i
                 break
     
-    # Fallback: if no spec end pattern found, find the first opening brace after ensures/requires
+    # Fallback: if no spec end pattern found, parse ensures/requires clauses properly
     if function_body_start == -1:
-        # Look for the end of ensures/requires clauses
-        ensures_match = re.search(r'ensures\s*[^{]*', last_fn_content, re.DOTALL)
-        requires_match = re.search(r'requires\s*[^{]*', last_fn_content, re.DOTALL)
+        # We need to find the actual function body opening brace, not braces inside ensures/requires
+        # Use a simple approach: find the first standalone opening brace at the beginning of a line
+        # that's not inside a conditional expression
         
-        # Find the position after the last contract clause
-        search_start = fn_start.end()
-        if ensures_match and ensures_match.end() > search_start:
-            search_start = ensures_match.end()
-        if requires_match and requires_match.end() > search_start:
-            search_start = requires_match.end()
-        
-        # Now find the first opening brace after the contracts
-        for i in range(search_start, len(last_fn_content)):
-            if last_fn_content[i] == '{':
-                function_body_start = i
-                break
+        # First, let's try to find a brace that starts a line (with only whitespace before it)
+        brace_at_line_start = re.search(r'^\s*\{', last_fn_content, re.MULTILINE)
+        if brace_at_line_start:
+            function_body_start = brace_at_line_start.start() + len(brace_at_line_start.group()) - 1
+        else:
+            # Fallback: properly parse the ensures/requires clauses
+            # The key insight is that the function body brace will be preceded by a newline
+            # and won't be inside parentheses
+            search_pos = fn_start.end()
+            paren_depth = 0
+            bracket_depth = 0
+            brace_depth = 0
+            
+            for i in range(search_pos, len(last_fn_content)):
+                char = last_fn_content[i]
+                
+                if char == '(':
+                    paren_depth += 1
+                elif char == ')':
+                    paren_depth -= 1
+                elif char == '[':
+                    bracket_depth += 1
+                elif char == ']':
+                    bracket_depth -= 1
+                elif char == '{':
+                    # Check if this could be the function body opening brace
+                    # It should not be inside parentheses or brackets
+                    if paren_depth == 0 and bracket_depth == 0:
+                        # Also check that it's not part of a conditional expression
+                        # by looking at what comes before
+                        before_brace = last_fn_content[max(0, i-20):i].strip()
+                        # If the text before ends with 'if' or 'else', this is likely inside a conditional
+                        if not (before_brace.endswith('if') or before_brace.endswith('else')):
+                            function_body_start = i
+                            break
+                        else:
+                            brace_depth += 1
+                    else:
+                        brace_depth += 1
+                elif char == '}':
+                    if brace_depth > 0:
+                        brace_depth -= 1
+                
+            i += 1
     
     if function_body_start == -1:
         raise ValueError("Could not find function body opening brace")
