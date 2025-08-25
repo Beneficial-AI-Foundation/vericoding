@@ -1,4 +1,4 @@
-import benchmarks.MatrixDef
+import Benchmarks.MatrixDef
 
 namespace NpShape
 
