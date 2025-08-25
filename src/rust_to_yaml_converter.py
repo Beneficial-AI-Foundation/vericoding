@@ -327,102 +327,83 @@ def parse_rust_file(content: str) -> Dict[str, str]:
         # Single function case
         last_fn_content = remaining_content
     
-    # Split the last function between spec and code by finding the function body braces
+    # Improved parsing: find the complete function, then find its final closing brace
+    # and count backwards to find the matching opening brace
     fn_start = re.search(r'fn\s+\w+', last_fn_content)
     if not fn_start:
         raise ValueError("Could not find function declaration")
     
-    # Find all braces and match them properly from the function start
-    # Look for patterns that indicate the end of function signature/specs
+    # We need to find the function body braces, not all braces
+    # The function body is what comes AFTER the function signature and ensures/requires
     function_body_start = -1
     function_body_end = -1
     
-    # Look for specific patterns that mark the end of specifications
-    # The function body typically starts after "// post-conditions-end" or similar
-    spec_end_patterns = [
-        r'//\s*post-conditions-end',
-        r'//\s*ensures-end', 
-        r'//\s*spec-end'
-    ]
+    # Find all opening and closing braces, but only consider those that could be function body braces
+    # Look for braces that come after the function signature
+    brace_positions = []
+    for i, char in enumerate(last_fn_content):
+        if char == '{':
+            brace_positions.append((i, 'open'))
+        elif char == '}':
+            brace_positions.append((i, 'close'))
     
-    spec_end_pos = -1
-    for pattern in spec_end_patterns:
-        match = re.search(pattern, last_fn_content)
-        if match:
-            spec_end_pos = match.end()
-            break
+    if not brace_positions:
+        raise ValueError("Could not find any braces in function")
     
-    # If we found a spec end pattern, look for the next opening brace
-    if spec_end_pos != -1:
-        for i in range(spec_end_pos, len(last_fn_content)):
-            if last_fn_content[i] == '{':
-                function_body_start = i
+    # Strategy: find the last balanced brace pair in the function content
+    # This should be the function body braces
+    # We work backwards through closing braces to find one that matches properly
+    
+    # But we need to exclude braces that belong to the larger structure (like verus! block)
+    # We'll look for the first brace that appears after the function signature
+    
+    # Find where the function signature likely ends (after ensures/requires clauses)
+    signature_end = fn_start.end()
+    
+    # Look for the first opening brace that comes after the function signature
+    # But be careful not to pick braces inside ensures/requires clauses
+    first_open_after_signature = -1
+    
+    # Strategy: Look for a brace that appears at the start of a line (with only whitespace before it)
+    # This is more likely to be the function body opening brace
+    for i, (pos, brace_type) in enumerate(brace_positions):
+        if brace_type == 'open' and pos > signature_end:
+            # Check if this brace starts a line (or has only whitespace before it)
+            line_start = last_fn_content.rfind('\n', 0, pos)
+            if line_start == -1:
+                line_start = 0
+            else:
+                line_start += 1  # Move past the newline
+            
+            before_brace = last_fn_content[line_start:pos]
+            if before_brace.strip() == '':
+                # This brace starts a line (only whitespace before it)
+                first_open_after_signature = i
                 break
     
-    # Fallback: if no spec end pattern found, parse ensures/requires clauses properly
-    if function_body_start == -1:
-        # We need to find the actual function body opening brace, not braces inside ensures/requires
-        # Use a simple approach: find the first standalone opening brace at the beginning of a line
-        # that's not inside a conditional expression
-        
-        # First, let's try to find a brace that starts a line (with only whitespace before it)
-        brace_at_line_start = re.search(r'^\s*\{', last_fn_content, re.MULTILINE)
-        if brace_at_line_start:
-            function_body_start = brace_at_line_start.start() + len(brace_at_line_start.group()) - 1
-        else:
-            # Fallback: properly parse the ensures/requires clauses
-            # The key insight is that the function body brace will be preceded by a newline
-            # and won't be inside parentheses
-            search_pos = fn_start.end()
-            paren_depth = 0
-            bracket_depth = 0
-            brace_depth = 0
-            
-            for i in range(search_pos, len(last_fn_content)):
-                char = last_fn_content[i]
-                
-                if char == '(':
-                    paren_depth += 1
-                elif char == ')':
-                    paren_depth -= 1
-                elif char == '[':
-                    bracket_depth += 1
-                elif char == ']':
-                    bracket_depth -= 1
-                elif char == '{':
-                    # Check if this could be the function body opening brace
-                    # It should not be inside parentheses or brackets
-                    if paren_depth == 0 and bracket_depth == 0:
-                        # Also check that it's not part of a conditional expression
-                        # by looking at what comes before
-                        before_brace = last_fn_content[max(0, i-20):i].strip()
-                        # If the text before ends with 'if' or 'else', this is likely inside a conditional
-                        if not (before_brace.endswith('if') or before_brace.endswith('else')):
-                            function_body_start = i
-                            break
-                        else:
-                            brace_depth += 1
-                    else:
-                        brace_depth += 1
-                elif char == '}':
-                    if brace_depth > 0:
-                        brace_depth -= 1
-                
-            i += 1
+    # Fallback: if no line-starting brace found, use the first brace after signature
+    if first_open_after_signature == -1:
+        for i, (pos, brace_type) in enumerate(brace_positions):
+            if brace_type == 'open' and pos > signature_end:
+                first_open_after_signature = i
+                break
     
-    if function_body_start == -1:
+    if first_open_after_signature == -1:
         raise ValueError("Could not find function body opening brace")
     
-    # Now find the matching closing brace by counting from the opening brace
+    # Now find the matching closing brace for this opening brace
+    function_body_start = brace_positions[first_open_after_signature][0]
     brace_count = 1
-    for i in range(function_body_start + 1, len(last_fn_content)):
-        char = last_fn_content[i]
-        if char == '{':
+    function_body_end = -1
+    
+    for i in range(first_open_after_signature + 1, len(brace_positions)):
+        pos, brace_type = brace_positions[i]
+        if brace_type == 'open':
             brace_count += 1
-        elif char == '}':
+        elif brace_type == 'close':
             brace_count -= 1
             if brace_count == 0:
-                function_body_end = i
+                function_body_end = pos
                 break
     
     if function_body_end == -1:
