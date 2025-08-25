@@ -4,6 +4,7 @@ Process verified-cogen repository: clone, convert Rust files to YAML, and mainta
 DRY version that reuses existing code.
 """
 
+from tqdm import tqdm
 import json
 import tempfile
 import uuid
@@ -48,7 +49,7 @@ def convert_and_filter_rust_files_to_yaml(rust_files: List[RustFile], output_dir
     with tempfile.TemporaryDirectory(prefix="verus_filter_") as temp_dir:
         temp_path = Path(temp_dir)
         
-        for i, rust_file in enumerate(rust_files):
+        for i, rust_file in tqdm(enumerate(rust_files)):
             if (i + 1) % 50 == 0:
                 print(f"Processing {i+1}/{len(rust_files)} files...")
             
