@@ -71,7 +71,8 @@ def parse_return_type(signature: str) -> str:
             (after_colon.startswith('(') or  # tuple type
              after_colon in ['i32', 'u32', 'usize', 'bool', 'String'] or  # simple types
              after_colon.startswith('Vec<') or  # Vec types
-             after_colon.startswith('Option<'))):  # Option types
+             after_colon.startswith('Option<') or  # Option types
+             after_colon.startswith('&'))):  # Reference types
             return_content = after_colon
         # Case 2: Tuple with named fields like "(a: i32, b: i32)"
         elif return_content.startswith('(') and return_content.endswith(')'):
@@ -139,9 +140,14 @@ def generate_default_value(return_type: str) -> str:
     elif return_type == "String":
         return 'String::new()'
     elif return_type.startswith("&Vec<"):
-        return "&vec![]"
+        # For reference types in stubs, we can't return a reference to a temporary
+        # Use unreachable!() since this is stub code that shouldn't execute
+        return "unreachable!()"
     elif return_type == "&str":
         return '""'
+    elif return_type.startswith("&"):
+        # General reference types - use unreachable!() since we can't create valid refs in stubs
+        return "unreachable!()"
     elif return_type.startswith("(") and return_type.endswith(")"):
         # Tuple type
         if return_type == "()":
