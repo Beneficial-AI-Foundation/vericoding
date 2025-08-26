@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 """
 Process verified-cogen repository: clone, convert Rust files to YAML, and maintain directory structure.
-DRY version that reuses existing code.
+
+The Rust-to-yaml converter uses heuristics that aren't 100% reliable. Hence afterwards we filter out
+any yaml if it has incorrect syntax when converted back to Rust.
+
+Also we filter out duplicates
+
+Run with
+uv run src/process_verified_cogen.py
 """
 
 from tqdm import tqdm
