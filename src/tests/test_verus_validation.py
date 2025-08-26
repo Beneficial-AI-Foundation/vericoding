@@ -58,6 +58,13 @@ def main():
     """Main test function."""
     print("🧪 Testing YAML to Rust conversion and Verus validation...")
     
+    # Parse command line arguments for optional path
+    import argparse
+    parser = argparse.ArgumentParser(description="Test YAML to Rust conversion and Verus validation")
+    parser.add_argument("path", nargs="?", default=None, 
+                       help="Optional path to test directory (defaults to verus-test-data)")
+    args = parser.parse_args()
+    
     # Find verus executable - will raise VerusNotFoundError if not found
     try:
         verus_cmd = find_verus_executable()
@@ -66,16 +73,19 @@ def main():
         print(f"❌ {e}")
         return 1
     
-    # Get project root and tests directory
+    # Get project root and determine tests directory
     project_root = Path(__file__).parent.parent.parent
-    tests_dir = Path(__file__).parent / "verus-test-data"
+    if args.path:
+        tests_dir = project_root / args.path
+    else:
+        tests_dir = Path(__file__).parent / "verus-test-data"
     
     if not tests_dir.exists():
         print(f"❌ Tests directory not found: {tests_dir}")
         return 1
     
-    # Find all YAML files in tests directory
-    yaml_files = list(tests_dir.glob("*.yaml"))
+    # Find all YAML files in tests directory (recursively)
+    yaml_files = list(tests_dir.glob("**/*.yaml"))
     if not yaml_files:
         print(f"❌ No YAML files found in {tests_dir}")
         return 1
