@@ -30,6 +30,8 @@ async def translate_code_to_verus(source_code: str, source_language: str = "dafn
     yaml_prompt = f"""\
         The YAML file contains {source_language} code split into segments. Your job is to translate each of them to its corresponding Verus code while maintaining the YAML structure.
 
+        Make sure the preamble starts with `use vstd::prelude::*;`, immediately followed by a `verus!` block, which starts in the preamble, and closes in the postamble, containing `fn main()`.
+
         IMPORTANT: In your response, include the final YAML file containing Verus code in a code block marked with ```verus. Do not include explanations or summaries in the code block - only the executable Verus code.    
         """
 
