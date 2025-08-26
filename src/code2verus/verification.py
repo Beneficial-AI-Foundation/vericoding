@@ -8,13 +8,8 @@ from code2verus.config import cfg
 
 def yaml_to_verus(verus_yaml: str) -> str:     
     try:
-        has_verus = "verus!" in verus_yaml
-        # Remove prelude and main if present so we can ensure they always appear first and last
-        cleaned = verus_yaml.replace("use vstd::prelude::*;", "").replace("fn main() {}", "")
-        as_yaml = yaml.safe_load(cleaned)
-        prefix = f"use vstd::prelude::*;\n{"" if has_verus else "verus! {"}"
-        suffix = f"fn main() {{}}\n{"" if has_verus else "}"}"
-        return  f"{prefix}\n{as_yaml['vc-preamble']}\n{as_yaml['vc-helpers']}\n{as_yaml['vc-spec']}\n{as_yaml['vc-code']}\n{as_yaml['vc-postamble']}\n{suffix}\n"""
+        as_yaml = yaml.safe_load(verus_yaml)
+        return  f"{as_yaml['vc-preamble']}\n{as_yaml['vc-helpers']}\n{as_yaml['vc-spec']}\n{as_yaml['vc-code']}\n{as_yaml['vc-postamble']}\n"""
     except:
         return verus_yaml
 
