@@ -1,0 +1,35 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn smallest_num(nums: &Vec<i32>) -> (min: i32)
+      // pre-conditions-start
+      requires
+          nums.len() > 0,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          forall|i: int| 0 <= i < nums.len() ==> min <= nums[i],
+          exists|i: int| 0 <= i < nums.len() && min == nums[i],
+      // post-conditions-end
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  } // verus!
+
+  fn main() {}

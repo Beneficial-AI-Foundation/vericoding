@@ -1,0 +1,29 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  #[verifier::loop_isolation(false)]
+  fn last_position(a: &[i32], elem: i32) -> (result: usize)
+      ensures
+          0 <= result < a.len(),
+          forall|i: int| result < i < a.len() ==> a[i] != elem,
+          a[result as int] == elem,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  fn main() {}
+  }
