@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /* 
   * Formal verification of a simple algorithm to find the maximum value in an array.
@@ -7,8 +9,8 @@ vc-preamble: |-
   // Finds the maximum value in a non-empty array.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method findMax(a: array<real>) returns (max: real)

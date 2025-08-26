@@ -44,50 +44,35 @@ def get_tool_path(config: ProcessingConfig) -> str:
     return tool_path
 
 
-def check_tool_availability(config: ProcessingConfig) -> ToolAvailabilityResult:
-    """Check if the language tool is available at the specified path."""
+def check_tool_availability(config: ProcessingConfig) -> None:
+    """Check if the language tool is available and exit on failure."""
+    import sys
+    
+    def _exit_with_error(message: str):
+        """Helper to print error and exit."""
+        tool_path = get_tool_path(config)
+        print(f"Error: {message}")
+        print(f"Please ensure {config.language_config.name} is installed and {config.language_config.tool_path_env} is set correctly.")
+        print(f"Current {config.language_config.tool_path_env}: {tool_path}")
+        print(f"You can set it with: export {config.language_config.tool_path_env}=/path/to/{config.language}")
+        sys.exit(1)
+    
     tool_path = get_tool_path(config)
+    print(f"Checking {config.language_config.name} availability...")
+    
     try:
-        # Check if the tool executable exists
-        if not Path(tool_path).is_file():
-            return ToolAvailabilityResult(
-                False,
-                f"{config.language_config.name} executable not found at: {tool_path}",
-            )
+        # Check if tool exists, is executable, and works
+        if (not Path(tool_path).is_file() or 
+            not os.access(tool_path, os.X_OK) or 
+            (config.language != "lean" and 
+             subprocess.run([tool_path, "--help"], capture_output=True, text=True, timeout=10).returncode != 0)):
+            _exit_with_error(f"{config.language_config.name} is not available or not working properly")
 
-        # Check if the file is executable
-        if not os.access(tool_path, os.X_OK):
-            return ToolAvailabilityResult(
-                False,
-                f"{config.language_config.name} executable is not executable: {tool_path}",
-            )
+        print(f"✓ {config.language_config.name} is available and working")
+        print("")
 
-        # Try to run tool with --help to verify it works
-        result = subprocess.run(
-            [tool_path, "--help"], capture_output=True, text=True, timeout=10
-        )
-
-        if result.returncode != 0 and config.language != "lean":
-            # Lean might not have --help, so we skip this check for Lean
-            return ToolAvailabilityResult(
-                False,
-                f"{config.language_config.name} executable failed to run: {result.stderr}",
-            )
-
-        return ToolAvailabilityResult(
-            True, f"{config.language_config.name} is available and working"
-        )
-
-    except subprocess.TimeoutExpired:
-        return ToolAvailabilityResult(
-            False,
-            f"{config.language_config.name} executable timed out when checking availability",
-        )
     except Exception as e:
-        return ToolAvailabilityResult(
-            False,
-            f"Error checking {config.language_config.name} availability: {str(e)}",
-        )
+        _exit_with_error(f"Error checking {config.language_config.name}: {str(e)}")
 
 
 def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
@@ -144,22 +129,14 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
 
 
 def find_spec_files(config: ProcessingConfig) -> list[str]:
-    """Find specification files for the current language."""
+    """Find YAML specification files for the current language."""
     try:
         files = []
         for root, _dirs, filenames in os.walk(config.files_dir):
             for f in filenames:
-                if f.endswith(config.language_config.file_extension):
+                if f.endswith(('.yaml', '.yml')):
                     file_path = str(Path(root) / f)
-                    # For Lean, check if file contains 'sorry'
-                    if config.language == "lean":
-                        with Path(file_path).open() as file:
-                            for line in file:
-                                if "sorry" in line:
-                                    files.append(file_path)
-                                    break
-                    else:
-                        files.append(file_path)
+                    files.append(file_path)
         return files
     except Exception as e:
         print(f"Error reading directory {config.files_dir}: {e}")

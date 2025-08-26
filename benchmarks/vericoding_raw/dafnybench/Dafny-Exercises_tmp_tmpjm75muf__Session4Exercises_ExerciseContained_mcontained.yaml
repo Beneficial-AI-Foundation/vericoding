@@ -1,11 +1,13 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate strictSorted(s : seq<int>) {
       forall u, w :: 0 <= u < w < |s| ==> s[u] < s[w]
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method mcontained(v:array<int>,w:array<int>,n:int,m:int) returns (b:bool)

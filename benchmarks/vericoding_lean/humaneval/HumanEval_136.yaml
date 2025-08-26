@@ -22,17 +22,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (lst: List Int) : (Option Int × Option Int) :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation [2, 4, 1, 3, 5, 7] = (none, some 1)
-  -- #test implementation [] = (none, none)
-  -- #test implementation [0] = (none, none)
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: List Int → Option Int × Option Int)
@@ -55,6 +53,8 @@ vc-spec: |-
   theorem correctness
   (lst: List Int)
   : problem_spec implementation lst :=
+
+vc-proof: |-
   -- <vc-proof>
   sorry
   -- </vc-proof>

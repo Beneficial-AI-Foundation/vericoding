@@ -25,16 +25,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (scores guesses: List Rat) : List Rat :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation [1,2,3,4,5,1] [1,2,3,4,2,-2] = [0,0,0,0,3,3]
-  -- #test implementation [0,5,0,0,0,4] [4,1,1,0,0,-2] = [4,4,1,0,0,6]
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: List Rat → List Rat → List Rat)
@@ -55,6 +54,8 @@ vc-spec: |-
   theorem correctness
   (scores guesses: List Rat)
   : problem_spec implementation scores guesses :=
+
+vc-proof: |-
   -- <vc-proof>
   sorry
   -- </vc-proof>

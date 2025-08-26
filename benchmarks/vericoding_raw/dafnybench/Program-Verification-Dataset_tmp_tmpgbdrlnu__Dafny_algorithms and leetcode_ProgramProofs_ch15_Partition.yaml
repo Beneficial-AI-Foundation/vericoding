@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate SplitPoint(a: array<int>, n: int)
       reads a
@@ -17,8 +19,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Partition(a: array<int>, lo: int, hi: int) returns (p: int)

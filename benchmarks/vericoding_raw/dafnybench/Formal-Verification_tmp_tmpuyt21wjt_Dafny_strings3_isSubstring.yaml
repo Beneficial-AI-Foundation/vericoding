@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // We spent 2h each on this assignment
 
@@ -55,8 +57,8 @@ vc-preamble: |-
   {}
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method isSubstring(sub: string, str: string) returns (res:bool)

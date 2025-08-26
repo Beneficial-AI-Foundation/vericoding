@@ -3,7 +3,7 @@
 
 [dafny]
 name = "Dafny"
-file_extension = ".dfy"
+file_extension = ".yaml"
 tool_path_env = "DAFNY_PATH"
 default_tool_path = "dafny"
 prompts_file = "prompts.yaml"

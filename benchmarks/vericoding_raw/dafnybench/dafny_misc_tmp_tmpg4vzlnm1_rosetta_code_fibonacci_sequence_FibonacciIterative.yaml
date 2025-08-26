@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // definition of Fibonacci numbers
   function Fibonacci(n: nat): nat {
@@ -11,8 +13,8 @@ vc-preamble: |-
   // iterative calculation of Fibonacci numbers
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method FibonacciIterative(n: nat) returns (f: nat)

@@ -1,7 +1,7 @@
 vc-preamble: |-
   /*
     Class CircularArray.
-  
+
     Names:
     Arthur Sudbrack Ibarra,
     Miguel Torres de Castro,
@@ -16,13 +16,13 @@ vc-preamble: |-
     var arr: array<int>; // The array.
     var start: nat; // The index of the first element.
     var size: nat; // The number of elements in the queue.
-  
+
     /*
       Abstraction.
     */
     ghost const Capacity: nat; // The capacity of the queue. (WE WERE UNABLE TO MAKE THE SIZE OF THE ARRAY DYNAMIC).
     ghost var Elements: seq<int>; // The elements in the array represented as a sequence.
-  
+
     /*
       Class invariant.
     */
@@ -35,7 +35,7 @@ vc-preamble: |-
                   then arr[start..start + size]
                   else arr[start..] + arr[..size - (arr.Length - start)]
     }
-  
+
     /*
       Constructor.
     */
@@ -50,15 +50,15 @@ vc-preamble: |-
       Capacity := capacity;
       Elements := [];
     }
-  
+
     /*
       Enqueue Method
     */
-  
+
     /*
       Dequeue method.
     */
-  
+
     /*
       Contains predicate.
     */
@@ -70,7 +70,7 @@ vc-preamble: |-
       else
         e in arr[start..] + arr[..size - (arr.Length - start)]
     }
-  
+
     /*
       Size function.
     */
@@ -79,7 +79,7 @@ vc-preamble: |-
     {
       size
     }
-  
+
     /*
       IsEmpty predicate.
     */
@@ -88,7 +88,7 @@ vc-preamble: |-
     {
       size == 0
     }
-  
+
     /*
       IsFull predicate.
     */
@@ -97,12 +97,12 @@ vc-preamble: |-
     {
       size == arr.Length
     }
-  
+
     /*
       GetAt method.
       (Not requested in the assignment, but useful).
     */
-  
+
     /*
       AsSequence method.
       (Auxiliary method for the Concatenate method)
@@ -112,37 +112,26 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-  
+
     /*
       Concatenate method.
     */
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method Concatenate(q1: CircularArray) returns(q2: CircularArray)
       requires q1.Valid()
       requires q1 != this
       ensures fresh(q2)
       ensures q2.Capacity == Capacity + q1.Capacity
       ensures q2.Elements == Elements + q1.Elements
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
 vc-postamble: |-
   }
-  
+
   /*
     Main method.
     Here the the CircularArray class is demonstrated.
   */
-

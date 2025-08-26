@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
     ===============================================
@@ -66,8 +68,8 @@ vc-preamble: |-
     }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method setContent(c: string)

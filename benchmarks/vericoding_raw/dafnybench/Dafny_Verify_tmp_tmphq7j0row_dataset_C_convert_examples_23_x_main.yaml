@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method main(n: int) returns (sum: int, i: int)

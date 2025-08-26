@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method NthHexagonalNumber(n: int) returns (hexNum: int)

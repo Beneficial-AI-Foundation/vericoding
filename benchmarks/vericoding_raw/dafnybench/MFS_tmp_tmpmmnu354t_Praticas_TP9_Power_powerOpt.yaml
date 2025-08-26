@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /* 
   * Formal verification of O(n) and O(log n) algorithms to calculate the natural
@@ -38,8 +40,8 @@ vc-preamble: |-
   // Recursive version, imperative, with time and space complexity O(log n).
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method powerOpt(b: real, n: nat) returns (p : real)

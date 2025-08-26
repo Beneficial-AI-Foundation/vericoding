@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // ASSIGNMENT P1
   // CMSC 433 FALL 2023
@@ -18,8 +20,8 @@ vc-preamble: |-
   // method PlusOne
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method PlusOne (x : int) returns (y : int)

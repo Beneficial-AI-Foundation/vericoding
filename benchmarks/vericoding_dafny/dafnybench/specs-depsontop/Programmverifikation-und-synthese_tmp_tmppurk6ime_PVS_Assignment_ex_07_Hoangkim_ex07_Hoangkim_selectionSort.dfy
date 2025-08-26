@@ -1,0 +1,30 @@
+//Problem01
+//a)
+
+//b)
+//Problem04
+
+method FindMin(a: array<int>, lo: nat) returns (minIdx: nat)
+    requires a != null && a.Length > 0 && lo < a.Length
+    ensures lo <= minIdx < a.Length
+    ensures forall x :: lo <= x < a.Length ==> a[minIdx] <= a[x]
+{
+  assume{:axiom} false;
+}
+
+//Problem02
+ghost predicate sorted(a:seq<int>)
+{
+    forall i | 0 < i < |a| :: a[i-1] <= a[i]     
+}
+
+method selectionSort(a: array<int>)
+    modifies a
+    //ensures multiset(a[..]) == multiset(old(a[..]))
+    //ensures sorted(a[..])
+
+{
+  assume false;
+}
+
+//Problem03

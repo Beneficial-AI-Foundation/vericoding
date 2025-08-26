@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   lemma AppendOne<T>(q: seq<T>, n: nat)
       requires n < |q|
@@ -21,8 +23,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method ProdAndCount(q: seq<int>, key: int) returns (prod: int, count: nat)

@@ -1,27 +1,27 @@
 vc-preamble: |-
   // RUN: %testDafnyForEachResolver "%s"
-  
-  
+
+
   // Queue.dfy
   // Dafny version of Queue.bpl
   // Rustan Leino, 2008
-  
+
   class Queue<T(0)> {
-  
+
   method Front() returns (x: int)
   {
     assume{:axiom} false;
   }
-  
-  
-  
+
+
+
     var head: Node<T>
     var tail: Node<T>
-  
+
     ghost var contents: seq<T>
     ghost var footprint: set<object>
     ghost var spine: set<Node<T>>
-  
+
     ghost predicate Valid()
       reads this, footprint
     {
@@ -39,7 +39,7 @@ vc-preamble: |-
           n.next != null ==> n.next in spine) &&
       contents == head.tailContents
     }
-  
+
     constructor Init()
       ensures Valid() && fresh(footprint - {this})
       ensures |contents| == 0
@@ -51,37 +51,27 @@ vc-preamble: |-
       footprint := {this} + n.footprint;
       spine := {n};
     }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method Enqueue(t: T)
       requires Valid()
       modifies footprint
       ensures Valid() && fresh(footprint - old(footprint))
       ensures contents == old(contents) + [t]
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
 vc-postamble: |-
   }
-  
+
   class Node<T(0)> {
     var data: T
     var next: Node?<T>
-  
+
     ghost var tailContents: seq<T>
     ghost var footprint: set<object>
-  
+
     ghost predicate Valid()
       reads this, footprint
     {
@@ -90,7 +80,7 @@ vc-postamble: |-
       (next == null ==> tailContents == []) &&
       (next != null ==> tailContents == [next.data] + next.tailContents)
     }
-  
+
     constructor Init()
       ensures Valid() && fresh(footprint - {this})
       ensures next == null
@@ -100,4 +90,3 @@ vc-postamble: |-
       footprint := {this};
     }
   }
-

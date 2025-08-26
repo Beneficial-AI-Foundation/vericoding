@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //PRE-CONDITIONS -> REQUIRES
   //POST-CONDITIONS -> ENSURES
@@ -18,8 +20,8 @@ vc-preamble: |-
   // 5d
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method m4(x: int,y: int) returns (z: bool)

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /**
     (a) Verify whether or not the following program
@@ -24,8 +26,8 @@ vc-preamble: |-
     ensures fusc(2*n+1) == fusc(n) + fusc(n+1)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method ComputeFusc(N: int) returns (b: int)

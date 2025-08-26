@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function fib (n: nat) : nat
   {
@@ -18,8 +20,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method MaxA (a: array<int>) returns (m: int)

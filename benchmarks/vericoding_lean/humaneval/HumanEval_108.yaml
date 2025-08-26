@@ -22,9 +22,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (arr: List Int) : Int :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   let signed_digits(x: Int): List Int :=
       let x': Nat := Int.natAbs x;
       let xs: List Nat := Nat.digits 10 x';
@@ -33,18 +35,9 @@ vc-code: |-
       else
         (-Int.ofNat (xs[0]!)) :: xs.tail;
     ((List.map (fun (x: Int) => (signed_digits x).sum) arr).filter (fun (x: Int) => x > 0)).length
-  -- </vc-code>
+  -- </vc-implementation>
   
-  -- #test implementation [] = 0
-  -- #test implementation [-1, -2, 0] = 0
-  -- #test implementation [1, 1, 2, -2, 3, 4, 5] = 6
-  -- #test implementation [1, 6, 9, -6, 0, 1, 5] = 5
-  -- #test implementation [1, 100, 98, -7, 1, -1] = 4
-  -- #test implementation [12, 23, 34, -45, -56, 0] = 5
-  -- #test implementation [-0, 1^0] = 1
-  -- #test implementation [1] = 1
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Int → Int)
@@ -70,6 +63,8 @@ vc-spec: |-
   (arr: List Int)
   : problem_spec implementation arr
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

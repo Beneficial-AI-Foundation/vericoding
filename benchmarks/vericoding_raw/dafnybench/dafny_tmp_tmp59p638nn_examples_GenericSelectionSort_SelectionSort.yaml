@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   trait Comparable<T(==)> {
       function Lt(x: T, y: T): bool
@@ -30,8 +32,8 @@ vc-preamble: |-
   //   trait SelectionSort<T(==)> extends Comparable<T>, Sorted<T> {
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   //     method SelectionSort(a: array<T>)

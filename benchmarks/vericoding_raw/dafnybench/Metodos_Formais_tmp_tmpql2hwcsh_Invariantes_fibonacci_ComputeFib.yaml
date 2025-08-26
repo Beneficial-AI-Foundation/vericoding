@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Provando fibonacci
   function Fib(n:nat):nat
@@ -8,8 +10,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method ComputeFib(n:nat) returns (x:nat)

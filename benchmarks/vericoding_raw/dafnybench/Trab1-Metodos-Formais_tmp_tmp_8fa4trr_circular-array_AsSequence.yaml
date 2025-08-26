@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
     Class CircularArray.
@@ -109,8 +111,8 @@ vc-preamble: |-
     */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method AsSequence() returns (s: seq<int>)

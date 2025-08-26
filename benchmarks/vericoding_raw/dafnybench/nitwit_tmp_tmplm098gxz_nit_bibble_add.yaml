@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Liam Wynn, 3/13/2021, CS 510p
 
@@ -248,8 +250,8 @@ vc-preamble: |-
   */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method bibble_add(b : nat, p : seq<nat>, q : seq<nat>) returns (r : seq<nat>)

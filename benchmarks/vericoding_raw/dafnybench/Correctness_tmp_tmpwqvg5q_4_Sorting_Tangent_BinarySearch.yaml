@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /**
     Ather, Mohammad Faiz (s4648481/3)
@@ -11,8 +13,8 @@ vc-preamble: |-
   // Author: Leino, Title: Program Proofs
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method BinarySearch(a: array<int>, circle: int)

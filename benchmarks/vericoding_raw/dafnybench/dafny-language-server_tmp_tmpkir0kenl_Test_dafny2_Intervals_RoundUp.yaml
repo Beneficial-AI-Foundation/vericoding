@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %dafny /compile:0 /dprint:"%t.dprint" "%s" > "%t"
   // RUN: %diff "%s.expect" "%t"
@@ -15,8 +17,8 @@ vc-preamble: |-
     }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method RoundUp(k: int) returns (r: int)

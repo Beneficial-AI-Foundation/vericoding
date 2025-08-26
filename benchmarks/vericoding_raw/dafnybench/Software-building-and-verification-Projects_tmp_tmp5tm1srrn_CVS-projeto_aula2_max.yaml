@@ -1,10 +1,12 @@
+vc-description: |-
+
 vc-preamble: |-
   //PRE-CONDITIONS -> REQUIRES
   //POST-CONDITIONS -> ENSURES
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method max(a: int, b: int) returns (z: int)

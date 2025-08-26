@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Noa Leron 207131871
   // Tsuri Farhana 315016907
@@ -146,8 +148,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method IterativeDivMod(x: Unary, y: Unary) returns (d: Unary, m: Unary)

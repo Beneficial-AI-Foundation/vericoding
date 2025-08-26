@@ -18,16 +18,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (numbers: List Int) : (Int × Int) :=
-  -- <vc-code>
-  (numbers.sum, numbers.prod)
-  -- </vc-code>
-  
-  #test implementation [] = (0, 1)
-  #test implementation [1, 2, 3, 4] = (10, 24)
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  (numbers.sum, numbers.prod)
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Int → (Int × Int))
@@ -49,6 +48,8 @@ vc-spec: |-
   (numbers: List Int)
   : problem_spec implementation numbers
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

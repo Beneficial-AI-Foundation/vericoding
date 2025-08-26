@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
      CS:5810 Formal Methods in Software Engineering
@@ -14,8 +16,8 @@ vc-preamble: |-
   /////////////////////
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Aliases(a: array<int>, b: array<int>) 

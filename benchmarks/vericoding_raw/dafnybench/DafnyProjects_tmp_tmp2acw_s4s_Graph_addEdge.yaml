@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Simple directed graph with vertices of any type T.
   class {:autocontracts} Graph<T(==)> {
@@ -23,8 +25,8 @@ vc-preamble: |-
      // Adds a new edge (u, v) to this graph.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method addEdge(u: T, v: T)

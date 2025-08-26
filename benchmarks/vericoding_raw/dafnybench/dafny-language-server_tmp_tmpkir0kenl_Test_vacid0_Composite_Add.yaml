@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %dafny /compile:0 "%s" > "%t"
   // RUN: %diff "%s.expect" "%t"
@@ -27,8 +29,8 @@ vc-preamble: |-
     }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Add(ghost S: set<Composite>, child: Composite, ghost U: set<Composite>) 

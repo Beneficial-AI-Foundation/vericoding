@@ -1,25 +1,25 @@
 vc-preamble: |-
   datatype List<T> = Nil | Cons(head:T,tail:List<T>)
   datatype Option<T> = None | Some(elem:T)
-  
+
   ghost function mem<T>(x:T,l:List<T>) : bool {
     match l {
       case Nil => false
       case Cons(y,xs) => x==y || mem(x,xs)
     }
   }
-  
+
   ghost function length<T>(l:List<T>) : int {
     match l {
       case Nil => 0
       case Cons(_,xs) => 1 + length(xs)
     }
   }
-  
-  
-  
-  
-  
+
+
+
+
+
   function list_find<K(==),V(!new)>(k:K,l:List<(K,V)>) : Option<V>
     ensures match list_find(k,l) {
               case None => forall v :: !mem((k,v),l)
@@ -32,7 +32,7 @@ vc-preamble: |-
       case Cons((k',v),xs) => if k==k' then Some(v) else list_find(k,xs)
     }
   }
-  
+
   function list_remove<K(==,!new),V(!new)>(k:K, l:List<(K,V)>) : List<(K,V)>
     decreases l
     ensures forall k',v :: mem((k',v),list_remove(k,l)) <==> (mem((k',v),l) && k != k')
@@ -43,15 +43,15 @@ vc-preamble: |-
       Cons((k',v),list_remove(k,xs))
     }
   }
-  
-  
+
+
   class Hashtable<K(==,!new),V(!new)> {
     var size : int
     var data : array<List<(K,V)>>
-  
+
     ghost var Repr : set<object>
     ghost var elems : map<K,Option<V>>
-  
+
     ghost predicate RepInv()
       reads this, Repr
     {
@@ -59,35 +59,35 @@ vc-preamble: |-
       (forall i :: 0 <= i < data.Length ==> valid_hash(data, i)) &&
       (forall k,v :: valid_data(k,v,elems,data))
     }
-  
-  
+
+
     function hash(key:K) : int
       ensures hash(key) >= 0
-  
+
     function bucket(k: K, n: int) : int
       requires n > 0
       ensures 0 <= bucket(k, n) < n
     {
       hash(k) % n
     }
-  
+
     ghost predicate valid_hash(data: array<List<(K,V)>>, i: int)
       requires 0 <= i < data.Length
       reads data
     {
       forall k,v :: mem((k,v), data[i]) ==> (bucket(k,data.Length) == i)
     }
-  
-  
+
+
     ghost predicate valid_data(k: K,v: V,elems: map<K, Option<V>>, data: array<List<(K,V)>>)
       reads this, Repr, data
       requires data.Length > 0
     {
       (k in elems && elems[k] == Some(v)) <==> mem((k,v), data[bucket(k, data.Length)])
     }
-  
-  
-  
+
+
+
     constructor(n:int)
       requires n > 0
       ensures RepInv()
@@ -100,7 +100,7 @@ vc-preamble: |-
       Repr := {this, data};
       elems := map[];
     }
-  
+
     method rehash(l: List<(K,V)>, newData: array<List<(K,V)>>,i: int, oldSize: int, newSize: int)
       requires newData != data
       requires 0 < oldSize == data.Length
@@ -126,8 +126,8 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-  
-  
+
+
     method resize()
       requires RepInv()
       ensures RepInv()
@@ -138,11 +138,11 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-  
-  
-  
-  
-  
+
+
+
+
+
     method remove(k: K)
       requires RepInv()
       ensures RepInv()
@@ -153,13 +153,8 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method add(k:K,v:V)
       requires RepInv()
       ensures RepInv()
@@ -167,15 +162,8 @@ vc-spec: |-
       ensures k in elems && elems[k] == Some(v)
       ensures forall key :: key != k && key in old(elems) ==> key in elems
       modifies Repr
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  }
-
+vc-postamble: '}'

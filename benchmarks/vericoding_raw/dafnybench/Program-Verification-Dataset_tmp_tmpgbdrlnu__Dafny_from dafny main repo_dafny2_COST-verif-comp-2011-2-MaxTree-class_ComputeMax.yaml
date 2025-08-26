@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %testDafnyForEachResolver "%s" -- --warn-deprecation:false
 
@@ -124,8 +126,8 @@ vc-preamble: |-
     }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method ComputeMax() returns (mx: int)

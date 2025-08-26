@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //Problem 01
 
@@ -5,8 +7,8 @@ vc-preamble: |-
   //a)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method intDiv(n:int, d:int) returns (q:int, r:int)

@@ -17,9 +17,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (numbers: String) : String :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   let word_to_number_map : String → Int := fun word =>
     match word with
     | "zero" => 0
@@ -55,11 +57,9 @@ vc-code: |-
     let tail := words.drop 1;
     tail.foldl (fun acc word => acc ++ " " ++ word) head;
   join sorted_numbers_mapped_to_words
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation "three one five" = "one three five"
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → String)
@@ -107,6 +107,8 @@ vc-spec: |-
   (numbers: String)
   : problem_spec implementation numbers
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

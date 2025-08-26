@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
   // Permalink spurningar: https://rise4fun.com/Dafny/GW7a
@@ -8,8 +10,8 @@ vc-preamble: |-
   // Klárið að forrita föllin tvö.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Partition( m: multiset<int> )

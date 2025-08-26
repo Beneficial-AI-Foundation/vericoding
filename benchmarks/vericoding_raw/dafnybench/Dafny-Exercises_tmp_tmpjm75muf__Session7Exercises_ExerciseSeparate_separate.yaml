@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate strictNegative(v:array<int>,i:int,j:int)
   reads v
@@ -15,8 +17,8 @@ vc-preamble: |-
   positive first and then strictnegative, i is the firs neg or len if not any */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method separate(v:array<int>) returns (i:int)

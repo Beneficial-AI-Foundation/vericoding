@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //Algorithm 1: From left to right return the first
   method mmaximum1(v:array<int>) returns (i:int) 
@@ -26,8 +28,8 @@ vc-preamble: |-
   //Algorithm : from right to left
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method mmaxvalue1(v:array<int>) returns (m:int)

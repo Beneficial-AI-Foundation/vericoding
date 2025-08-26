@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   method merging(a: array<int>, low: int, medium: int, high: int)
   requires 0 <= low <= medium <= high < a.Length
@@ -54,8 +56,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method sorting(a: array<int>, low: int, high: int)

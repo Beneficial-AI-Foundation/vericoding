@@ -17,16 +17,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (strings: List String) : String :=
-  -- <vc-code>
-  String.join strings
-  -- </vc-code>
-  
-  #test implementation [] = ""
-  #test implementation ["a", "b", "c"] = "abc"
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  String.join strings
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List String → String)
@@ -50,6 +49,8 @@ vc-spec: |-
   (strings: List String)
   : problem_spec implementation strings
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

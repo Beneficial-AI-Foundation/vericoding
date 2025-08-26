@@ -1,0 +1,134 @@
+vc-description: |-
+  /--
+  -----Description-----
+  This task requires writing a Lean 4 method that removes an element from a given array of integers at a specified index. The resulting array should contain all the original elements except for the one at the given index. Elements before the removed element remain unchanged, and elements after it are shifted one position to the left.
+  
+  -----Input-----
+  The input consists of:
+  • s: An array of integers.
+  • k: A natural number representing the index of the element to remove (0-indexed).
+  
+  -----Output-----
+  The output is an array of integers that:
+  • Has a length one less than the input array.
+  • Contains the same elements as the input array, except that the element at index k is omitted.
+  • Preserves the original order with elements after the removed element shifted left by one position.
+  
+  -----Note-----
+  It is assumed that k is a valid index (0 ≤ k < the length of the array).
+  -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def removeElement_precond (s : Array Int) (k : Nat) : Prop :=
+    k < s.size
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def removeElement (s : Array Int) (k : Nat) (h_precond : removeElement_precond (s) (k)) : Array Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    s.eraseIdx! k
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def removeElement_postcond (s : Array Int) (k : Nat) (result: Array Int) (h_precond : removeElement_precond (s) (k)) :=
+    result.size = s.size - 1 ∧
+    (∀ i, i < k → result[i]! = s[i]!) ∧
+    (∀ i, i < result.size → i ≥ k → result[i]! = s[i + 1]!)
+  
+  theorem removeElement_spec_satisfied (s: Array Int) (k: Nat) (h_precond : removeElement_precond (s) (k)) :
+      removeElement_postcond (s) (k) (removeElement (s) (k) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold removeElement removeElement_postcond
+    unfold removeElement_precond at h_precond
+    simp_all
+    unfold Array.eraseIdx!
+    simp [h_precond]
+    constructor
+    · intro i hi
+      have hi' : i < s.size - 1 := by
+        have hk := Nat.le_sub_one_of_lt h_precond
+        exact Nat.lt_of_lt_of_le hi hk
+      rw [Array.getElem!_eq_getD, Array.getElem!_eq_getD]
+      unfold Array.getD
+      simp [hi', Nat.lt_trans hi h_precond, Array.getElem_eraseIdx, hi]
+    · intro i hi hi'
+      rw [Array.getElem!_eq_getD, Array.getElem!_eq_getD]
+      unfold Array.getD
+      have hi'' : i + 1 < s.size := by exact Nat.add_lt_of_lt_sub hi
+      simp [hi, hi'']
+      have : ¬ i < k := by simp [hi']
+      simp [Array.getElem_eraseIdx, this]
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  [
+      {
+          "input": {
+              "s": "#[1]",
+              "k": 2
+          }
+      }
+  ]
+  -- Tests
+  [
+      {
+          "input": {
+              "s": "#[1, 2, 3, 4, 5]",
+              "k": 2
+          },
+          "expected": "#[1, 2, 4, 5]",
+          "unexpected": [
+              "#[1, 2, 3, 5]",
+              "#[1, 3, 4, 5]",
+              "#[2, 3, 4, 5]"
+          ]
+      },
+      {
+          "input": {
+              "s": "#[10, 20, 30, 40]",
+              "k": 0
+          },
+          "expected": "#[20, 30, 40]",
+          "unexpected": [
+              "#[10, 30, 40]",
+              "#[10, 20, 30, 40]",
+              "#[20, 30, 40, 0]"
+          ]
+      },
+      {
+          "input": {
+              "s": "#[10, 20, 30, 40]",
+              "k": 3
+          },
+          "expected": "#[10, 20, 30]",
+          "unexpected": [
+              "#[20, 30, 40]",
+              "#[10, 20, 40]",
+              "#[10, 30, 40]"
+          ]
+      },
+      {
+          "input": {
+              "s": "#[7]",
+              "k": 0
+          },
+          "expected": "#[]",
+          "unexpected": [
+              "#[7]",
+              "#[0]"
+          ]
+      }
+  ]
+  -/
+

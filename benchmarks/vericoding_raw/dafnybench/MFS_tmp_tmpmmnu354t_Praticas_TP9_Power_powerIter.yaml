@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /* 
   * Formal verification of O(n) and O(log n) algorithms to calculate the natural
@@ -15,8 +17,8 @@ vc-preamble: |-
   // Iterative version, imperative, with time complexity O(n) and space complexity O(1).
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method powerIter(b: real, n: nat) returns (p : real)

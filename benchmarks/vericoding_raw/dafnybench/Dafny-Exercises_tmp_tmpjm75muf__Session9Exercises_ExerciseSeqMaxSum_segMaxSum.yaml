@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function Sum(v:array<int>,i:int,j:int):int
   reads v
@@ -16,8 +18,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method segMaxSum(v:array<int>,i:int) returns (s:int,k:int)

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   trait Comparable<T(==)> {
       function Lt(x: T, y: T): bool
@@ -67,8 +69,8 @@ vc-preamble: |-
       ghost var comparisonCount: nat
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Ltm(x: T, y: T) returns (b: bool)

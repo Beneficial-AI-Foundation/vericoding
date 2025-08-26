@@ -1,5 +1,6 @@
 """Prompt loading and validation."""
 
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -66,3 +67,30 @@ class PromptLoader:
             missing=missing,
             available=list(self.prompts.keys()),
         )
+
+
+def init_prompt_loader(language: str, prompts_file: str) -> PromptLoader:
+    """Initialize and validate a prompt loader for the given language."""
+    try:
+        prompt_loader = PromptLoader(language, prompts_file=prompts_file)
+        
+        # Validate prompts on startup
+        validation = prompt_loader.validate_prompts()
+        if not validation.valid:
+            print(f"Warning: Missing required prompts: {', '.join(validation.missing)}")
+            print(f"Available prompts: {', '.join(validation.available)}")
+            sys.exit(1)
+            
+        return prompt_loader
+        
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
+        print(f"Please ensure the {prompts_file} file exists in the {language} directory.")
+        print("Expected locations:")
+        script_dir = Path(__file__).parent.parent.parent
+        print(f"  - {script_dir / language / prompts_file}")
+        print(f"  - {prompts_file} (current directory)")
+        sys.exit(1)
+
+
+

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate divides(f:nat, i:nat)
     requires 1<=f
@@ -15,8 +17,8 @@ vc-preamble: |-
   // a loop invariant and a triggering assert.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method test_prime(i:nat) returns (result:bool)

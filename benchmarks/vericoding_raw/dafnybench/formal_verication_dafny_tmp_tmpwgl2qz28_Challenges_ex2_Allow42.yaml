@@ -1,10 +1,12 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
       i)  Write a verified method with signature
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Allow42(x:int, y:int) returns (z: int, err:bool) 

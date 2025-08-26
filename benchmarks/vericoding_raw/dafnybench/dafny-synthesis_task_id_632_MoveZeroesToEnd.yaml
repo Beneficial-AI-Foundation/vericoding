@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method MoveZeroesToEnd(arr: array<int>)
@@ -22,6 +24,7 @@ vc-spec: |-
 
 vc-code: |-
   {
+      assume(false);
       var i := 0;
       var j := 0;
 

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Forall
 
@@ -8,8 +10,8 @@ vc-preamble: |-
       var count : int;
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Guess(g : int) returns (result : bool, guesses : int)

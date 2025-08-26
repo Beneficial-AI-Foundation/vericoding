@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*                                      Cumulative Sums over Arrays                                        */
 
@@ -24,8 +26,8 @@ vc-preamble: |-
   //(b)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method query(a: array<int>, i: int, j: int) returns (res:int)

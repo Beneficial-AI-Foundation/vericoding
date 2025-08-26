@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   type T = int // example
 
@@ -7,8 +9,8 @@ vc-preamble: |-
   // the pivot. Returns the pivot position.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method partition(a: array<T>) returns(pivotPos: int) 

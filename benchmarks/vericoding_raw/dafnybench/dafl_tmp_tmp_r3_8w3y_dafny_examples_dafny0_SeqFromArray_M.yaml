@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %dafny /compile:3 /print:"%t.print" /dprint:"%t.dprint" "%s" > "%t"
   // RUN: %diff "%s.expect" "%t"
@@ -5,8 +7,8 @@ vc-preamble: |-
   // /autoTriggers:1 added to suppress instabilities
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method M(a: array<int>, c: array<int>, m: nat, n: nat, k: nat, l: nat)

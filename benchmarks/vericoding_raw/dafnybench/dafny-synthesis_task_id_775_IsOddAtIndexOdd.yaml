@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate IsOdd(n: int)
   {
@@ -5,8 +7,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method IsOddAtIndexOdd(a: array<int>) returns (result: bool)

@@ -1,27 +1,10 @@
-vc-preamble: |-
-  function fact(n: nat): nat 
-      ensures fact(n) >= 1
-  {
-      if n == 0 then 1 else n * fact(n - 1)
-  }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-preamble: "function fact(n: nat): nat \n    ensures fact(n) >= 1\n{\n    if n == 0 then 1 else n * fact(n - 1)\n}"
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method factorial(n: nat) returns (res: nat)
       ensures res == fact(n)
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  
-
+vc-postamble: ''

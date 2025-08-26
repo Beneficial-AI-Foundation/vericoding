@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /* 
   * Formal verification of the selection sort algorithm with Dafny.
@@ -18,8 +20,8 @@ vc-preamble: |-
   // 'from' (inclusive) and 'to' (exclusive)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method findMin(a: array<real>, from: nat, to: nat) returns(index: nat)

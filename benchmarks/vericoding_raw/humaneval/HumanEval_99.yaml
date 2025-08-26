@@ -20,16 +20,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (s: String) : Option Int :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation "10" = some 10
-  -- #test implementation "15.3" = some 15
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → Option Int)
@@ -66,6 +65,8 @@ vc-spec: |-
   (s: String)
   : problem_spec implementation s
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

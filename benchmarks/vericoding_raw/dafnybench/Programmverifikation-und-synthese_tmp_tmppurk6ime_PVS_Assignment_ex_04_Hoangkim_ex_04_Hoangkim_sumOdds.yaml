@@ -1,9 +1,11 @@
+vc-description: |-
+
 vc-preamble: |-
   //Problem 01
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method sumOdds(n: nat) returns (sum: nat)

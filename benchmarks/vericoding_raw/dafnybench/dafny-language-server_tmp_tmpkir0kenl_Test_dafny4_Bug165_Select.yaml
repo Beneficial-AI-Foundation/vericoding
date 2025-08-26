@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %dafny /compile:0 "%s" > "%t"
   // RUN: %diff "%s.expect" "%t"
@@ -7,8 +9,8 @@ vc-preamble: |-
   function f(a: T) : bool
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Select(s1: seq<T>) returns (r: seq<T>)

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Redo for exam
 
@@ -16,8 +18,8 @@ vc-preamble: |-
       ensures b > 0 ==> gcd(a, b) == gcd(b, a % b)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method GCD1(a: int, b: int) returns (r: int)

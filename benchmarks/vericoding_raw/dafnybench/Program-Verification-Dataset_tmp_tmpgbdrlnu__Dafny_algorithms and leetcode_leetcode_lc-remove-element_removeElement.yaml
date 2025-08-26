@@ -1,9 +1,11 @@
+vc-description: |-
+
 vc-preamble: |-
   //https://leetcode.com/problems/remove-element/
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method removeElement(nums: array<int>, val: int) returns (i: int)

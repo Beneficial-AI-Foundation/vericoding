@@ -10,31 +10,21 @@ vc-preamble: |-
       else
           a[j-1] + sum(a, i, j-1)
   }
-  
+
   //Exercicio 1.b)
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method query (a:array<int>, i:int, j:int) returns (s:int)
   requires 0 <= i <= j <= a.Length
   ensures s == sum(a, i, j)
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
 vc-postamble: |-
   //Exercicio 1.c)
-  
-  
+
+
   predicate is_prefix_sum_for (a:array<int>, c:array<int>)
   reads c, a
   {
@@ -42,17 +32,17 @@ vc-postamble: |-
       && c[0] == 0
       && forall j :: 1 <= j <= a.Length ==> c[j] == sum(a,0,j)
   }
-  
+
   ///Exercicio 2.
   datatype List<T> = Nil | Cons(head: T, tail: List<T>)
-  
+
   method from_array<T>(a: array<T>) returns (l: List<T>)
   requires a.Length > 0
   ensures forall j::0 <= j < a.Length ==> mem(a[j],l)
   {
     assume{:axiom} false;
   }
-  
+
   function mem<T(==)> (x: T, l:List<T>) : bool
   decreases l
   {
@@ -60,4 +50,3 @@ vc-postamble: |-
       case Nil => false
       case Cons(y,r)=> if (x==y) then true else mem(x,r)
   }
-

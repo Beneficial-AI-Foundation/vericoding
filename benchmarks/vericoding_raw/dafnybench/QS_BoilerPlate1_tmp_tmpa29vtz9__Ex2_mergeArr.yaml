@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function sorted(s : seq<int>) : bool {
     forall k1, k2 :: 0 <= k1 <= k2 < |s| ==> s[k1] <= s[k2]
@@ -30,8 +32,8 @@ vc-preamble: |-
   // Ex2
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method mergeArr(a : array<int>, l : int, m : int, r : int)

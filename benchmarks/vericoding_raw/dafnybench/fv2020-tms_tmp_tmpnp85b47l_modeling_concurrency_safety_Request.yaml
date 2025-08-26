@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
    * Model of the ticket system and correctness theorem
@@ -56,8 +58,8 @@ vc-preamble: |-
     // A Philosopher is Thinking and gets Hungry
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Request(p: Process)

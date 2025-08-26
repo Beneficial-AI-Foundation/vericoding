@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function Potencia(x: nat, y: nat): nat
   {
@@ -7,8 +9,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Pot(x: nat, y: nat) returns (r: nat)

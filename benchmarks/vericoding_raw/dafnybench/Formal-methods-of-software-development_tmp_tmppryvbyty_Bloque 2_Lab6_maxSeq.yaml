@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*predicate palindrome<T(==)> (s:seq<T>)
   {
@@ -37,8 +39,8 @@ vc-preamble: |-
   // MAXIMUM OF A SEQUENCE
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method maxSeq(v: seq<int>) returns (max:int)

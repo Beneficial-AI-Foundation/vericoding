@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*Ex1 Given the leaky specification of class Set found in Appendix ??, use the techniques from
   class (the use of ghost state and dynamic frames) so that the specification no longer leaks
@@ -50,8 +52,8 @@ vc-preamble: |-
     // private method that should not be in the
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method find(x:int) returns (r:int)

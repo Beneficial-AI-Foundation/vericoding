@@ -5,26 +5,10 @@ vc-preamble: |-
   {
       forall l, k :: i <= l <= k <= j ==> a[l] <= a[k]
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method InsertionSort(a: array<int>)
-    modifies a;
-    ensures sorted_seg(a,0,a.Length-1) 
-    ensures multiset(a[..]) == old(multiset(a[..])) //Add and prove this
-  // </vc-spec>
-
+vc-helpers: ''
+vc-spec: "method InsertionSort(a: array<int>)\n  modifies a;\n  ensures sorted_seg(a,0,a.Length-1) \n  ensures multiset(a[..]) == old(multiset(a[..])) //Add and prove this"
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  
-
+vc-postamble: ''

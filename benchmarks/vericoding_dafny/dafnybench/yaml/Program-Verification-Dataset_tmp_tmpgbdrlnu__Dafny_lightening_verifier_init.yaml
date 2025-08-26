@@ -1,13 +1,13 @@
 vc-preamble: |-
   class CrashableMem<T> {
       var mem_ : array<T>;
-  
+
   }
-  
+
   datatype GhostState = GS(
       num_entry : int,
       log : seq<int>,
-  
+
       mem_len : int,
       mem : seq<int>,
       old_mem : seq<int>,
@@ -15,7 +15,7 @@ vc-preamble: |-
       countdown : int,
       first_log_pos : map<int, int>
   )
-  
+
   datatype GhostOp = WriteMem(off : int, val : int)
                    | WriteLog(off : int, val : int)
   predicate ghost_state_inv(s : GhostState) {
@@ -24,7 +24,7 @@ vc-preamble: |-
       && |s.mem| == s.mem_len && |s.ideal_mem| == s.mem_len && |s.old_mem| == s.mem_len
       && s.countdown >= 0
   }
-  
+
   function init_ghost_state(log : seq<int>, mem : seq<int>, countdown : int) : GhostState
       requires |log| > 0;
       requires countdown >= 0;
@@ -32,7 +32,7 @@ vc-preamble: |-
   {
       GS(0, log[..], |mem|, mem[..], mem[..], mem[..], countdown, map[])
   }
-  
+
   function mem_write(s : GhostState, off: int, val: int) : GhostState
       requires ghost_state_inv(s);
       requires 0 <= off < s.mem_len;
@@ -43,7 +43,7 @@ vc-preamble: |-
       s.(mem := new_mem,
          ideal_mem := new_ideal_mem)
   }
-  
+
   function log_write(s : GhostState, off : int, val: int) : GhostState
       requires ghost_state_inv(s);
       requires 0 <= off < |s.log|;
@@ -51,14 +51,14 @@ vc-preamble: |-
   {
        s.(log := s.log[off := val])
   }
-  
+
   predicate valid_op(s : GhostState, op : GhostOp)
   {
       match op
       case WriteMem(off, val) => 0 <= off < |s.mem|
       case WriteLog(off, val) => 0 <= off < |s.log|
   }
-  
+
   function countdown (s : GhostState) : GhostState
   {
       if s.countdown > 0 then
@@ -66,7 +66,7 @@ vc-preamble: |-
       else
           s
   }
-  
+
   function normal_step (s : GhostState, op : GhostOp) : GhostState
       requires valid_op(s, op);
       requires ghost_state_inv(s);
@@ -76,7 +76,7 @@ vc-preamble: |-
       case WriteMem(off, val) => mem_write(s, off, val)
       case WriteLog(off, val) => log_write(s, off, val)
   }
-  
+
   function ghost_step (s : GhostState, op : GhostOp) : (GhostState, bool)
       requires valid_op(s, op);
       requires ghost_state_inv(s);
@@ -88,21 +88,21 @@ vc-preamble: |-
       else
           (s, false)
   }
-  
+
   function mem_write_step (s : GhostState, off : int, val : int) : (GhostState, bool)
       requires 0 <= off < s.mem_len;
       requires ghost_state_inv(s);
   {
       ghost_step(s, WriteMem(off, val))
   }
-  
+
   function log_write_step (s : GhostState, off : int, val : int) : (GhostState, bool)
       requires 0 <= off < |s.log|;
       requires ghost_state_inv(s);
   {
       ghost_step(s, WriteLog(off, val))
   }
-  
+
   function set_num_entry (s : GhostState, n : int) : (GhostState, bool)
       requires 0 <= n * 2 < |s.log|;
   {
@@ -113,18 +113,18 @@ vc-preamble: |-
       else
           (s, false)
   }
-  
+
   predicate crashed (s : GhostState)
   {
       s.countdown <= 0
   }
-  
+
   predicate old_mem_equiv (s : GhostState)
       requires ghost_state_inv(s);
   {
       (forall o :: !(o in s.first_log_pos) && 0 <= o < |s.mem| ==> s.mem[o] == s.old_mem[o])
   }
-  
+
   predicate ghost_tx_inv (s : GhostState)
   {
       ghost_state_inv(s) &&
@@ -136,7 +136,7 @@ vc-preamble: |-
       (forall o :: o in s.first_log_pos ==> forall i :: 0 <= i < s.first_log_pos[o] ==> s.log[i * 2] != o) &&
       (forall i :: 0 <= i < s.num_entry ==> s.log[i * 2] in s.first_log_pos)
   }
-  
+
   function ghost_begin_tx (s : GhostState) : GhostState
       requires ghost_state_inv(s);
       requires s.num_entry == 0;
@@ -148,7 +148,7 @@ vc-preamble: |-
       var s' := s'.(first_log_pos := map[], old_mem := s.mem[..]);
       s'
   }
-  
+
   function ghost_commit_tx (s : GhostState) : (GhostState, bool)
       requires ghost_tx_inv(s);
       requires old_mem_equiv(s);
@@ -162,7 +162,7 @@ vc-preamble: |-
       var s' := if f then s'.(first_log_pos := map[]) else s';
       (s', f)
   }
-  
+
   function ghost_tx_write (s0 : GhostState, off : int, val : int) : GhostState
       requires ghost_tx_inv(s0);
       requires old_mem_equiv(s0);
@@ -186,7 +186,7 @@ vc-preamble: |-
       var (s, f) := mem_write_step(s, off, val);
       s
   }
-  
+
   function reverse_recovery (s0 : GhostState, idx : int) : GhostState
       decreases idx;
       requires ghost_tx_inv(s0);
@@ -222,7 +222,7 @@ vc-preamble: |-
           assert old_mem_equiv(s);
           s
   }
-  
+
   function ghost_recover (s0 : GhostState) : GhostState
       requires ghost_tx_inv(s0);
       requires old_mem_equiv(s0);
@@ -235,17 +235,17 @@ vc-preamble: |-
       assert forall i :: 0 <= i < |s.mem| ==> s.mem[i] == s0.old_mem[i];
       s.(num_entry := 0)
   }
-  
-  
+
+
   class UndoLog {
       var log_ : array<int>;
       var mem_ : array<int>;
-  
+
       var impl_countdown : int;
       ghost var gs : GhostState;
-  
+
       constructor () {}
-  
+
       predicate ghost_state_equiv(gs : GhostState)
           reads this;
           reads mem_;
@@ -266,13 +266,8 @@ vc-preamble: |-
           && forall i : int :: 0 <= i < log_[0] ==> 0 <= log_[i * 2 + 1] < mem_.Length
           && impl_countdown >= 0
       }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method init(log_size : int, mem_size : int, countdown : int)
           requires log_size > 1;
           requires mem_size > 0;
@@ -282,15 +277,8 @@ vc-spec: |-
           ensures fresh(mem_);
           ensures state_inv();
           ensures ghost_state_equiv(gs);
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  // we assume that recover won't crash (though this code works when recover can fail)
-  }  
+vc-postamble: "// we assume that recover won't crash (though this code works when recover can fail)\n}  "

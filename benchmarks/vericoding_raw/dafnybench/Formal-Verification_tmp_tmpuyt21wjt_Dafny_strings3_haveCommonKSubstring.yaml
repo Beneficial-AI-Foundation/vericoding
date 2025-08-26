@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // We spent 2h each on this assignment
 
@@ -94,8 +96,8 @@ vc-preamble: |-
   {}
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: bool)

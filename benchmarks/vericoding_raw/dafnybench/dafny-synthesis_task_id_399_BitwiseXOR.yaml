@@ -1,8 +1,10 @@
+vc-description: |-
+
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method BitwiseXOR(a: seq<bv32>, b: seq<bv32>) returns (result: seq<bv32>)

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //Problem01
   function fib(n: nat):nat
@@ -22,8 +24,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method gcdI(m: int, n: int) returns (g: int)

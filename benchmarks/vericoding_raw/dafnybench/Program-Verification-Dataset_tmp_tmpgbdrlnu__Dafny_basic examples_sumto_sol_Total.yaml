@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function sum_up_to (n: nat): nat
   {
@@ -31,8 +33,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Total (a: seq<nat>) returns (r:nat)

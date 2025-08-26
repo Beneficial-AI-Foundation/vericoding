@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function abs(x: int): int
   {
@@ -18,8 +20,8 @@ vc-preamble: |-
   // Exercise 6:
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Abs(x: int) returns (y: int)

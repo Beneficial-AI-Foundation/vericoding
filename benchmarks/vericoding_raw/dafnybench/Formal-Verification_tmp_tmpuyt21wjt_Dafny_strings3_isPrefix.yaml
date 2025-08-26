@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // We spent 2h each on this assignment
 
@@ -19,8 +21,8 @@ vc-preamble: |-
   {}
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method isPrefix(pre: string, str: string) returns (res:bool)

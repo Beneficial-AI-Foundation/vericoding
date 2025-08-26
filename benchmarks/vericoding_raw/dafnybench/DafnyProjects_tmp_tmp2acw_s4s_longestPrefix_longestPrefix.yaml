@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // MFES, Exam 8/Sept/20201, Exercise 5 
 
@@ -5,8 +7,8 @@ vc-preamble: |-
   // of two arrays a and b.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method longestPrefix(a: array<int>, b: array <int>) returns (i: nat) 

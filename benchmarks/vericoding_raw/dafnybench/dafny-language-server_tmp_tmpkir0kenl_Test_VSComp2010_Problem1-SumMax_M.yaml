@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %dafny /compile:0 "%s" > "%t"
   // RUN: %diff "%s.expect" "%t"
@@ -12,8 +14,8 @@ vc-preamble: |-
   // the requested postcondition.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method M(N: int, a: array<int>) returns (sum: int, max: int)

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   class {:autocontracts} CarPark {
       const totalSpaces: nat := 10;
@@ -37,8 +39,8 @@ vc-preamble: |-
     // the carPark or the reservedCarPark set. Otherwise, neither set is modified
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method leaveCarPark(car: string) returns (success: bool)

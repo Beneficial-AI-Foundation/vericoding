@@ -3,13 +3,8 @@ vc-preamble: |-
   {
     if x < 0.0 then -x else x
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method has_close_elements(numbers: seq<real>, threshold: real) returns (result: bool)
       ensures result <==> exists i, j ::
         0 <= i < |numbers| &&
@@ -17,15 +12,8 @@ vc-spec: |-
         i != j &&
         abs(numbers[i] - numbers[j]) < threshold
       ensures result ==> |numbers| > 1
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  
-
+vc-postamble: ''

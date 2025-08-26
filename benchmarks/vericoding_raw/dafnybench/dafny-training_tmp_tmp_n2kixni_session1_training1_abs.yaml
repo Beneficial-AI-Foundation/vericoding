@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
    * Copyright 2021 ConsenSys Software Inc.
@@ -20,8 +22,8 @@ vc-preamble: |-
    */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method abs(x: int) returns (y: int)

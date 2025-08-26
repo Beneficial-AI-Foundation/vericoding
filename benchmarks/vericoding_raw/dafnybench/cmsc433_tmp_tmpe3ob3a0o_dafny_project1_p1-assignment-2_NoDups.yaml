@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // ASSIGNMENT P1
   // CMSC 433 FALL 2023
@@ -73,8 +75,8 @@ vc-preamble: |-
   // the ensures clause to imply a lack of duplicates.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method NoDups (a : array<int>) returns (noDups : bool)

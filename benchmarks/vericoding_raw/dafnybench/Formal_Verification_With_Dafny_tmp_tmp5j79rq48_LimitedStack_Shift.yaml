@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // A LIFO queue (aka a stack) with limited capacity.
   class LimitedStack{
@@ -40,8 +42,8 @@ vc-preamble: |-
         // Pops the top element off the stack.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Shift()

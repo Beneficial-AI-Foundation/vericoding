@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Author: Snorri Agnarsson, snorri@hi.is
 
@@ -7,8 +9,8 @@ vc-preamble: |-
   // to verify the function.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Search1000( a: array<int>, x: int ) returns ( k: int )

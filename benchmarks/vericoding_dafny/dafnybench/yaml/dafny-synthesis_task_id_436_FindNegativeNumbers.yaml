@@ -2,32 +2,15 @@ vc-preamble: |-
   /**
    * Find negative numbers from an array of numbers
    **/
-  
+
   predicate IsNegative(n: int)
   {
       n < 0
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method FindNegativeNumbers(arr: array<int>) returns (negativeList: seq<int>)
-      // All numbers in the output are negative and exist in the input 
-      ensures forall i :: 0 <= i < |negativeList| ==> IsNegative(negativeList[i]) && negativeList[i] in arr[..]
-      // All negative numbers in the input are in the output
-      ensures forall i :: 0 <= i < arr.Length && IsNegative(arr[i]) ==> arr[i] in negativeList
-  // </vc-spec>
-
+vc-helpers: ''
+vc-spec: "method FindNegativeNumbers(arr: array<int>) returns (negativeList: seq<int>)\n    // All numbers in the output are negative and exist in the input \n    ensures forall i :: 0 <= i < |negativeList| ==> IsNegative(negativeList[i]) && negativeList[i] in arr[..]\n    // All negative numbers in the input are in the output\n    ensures forall i :: 0 <= i < arr.Length && IsNegative(arr[i]) ==> arr[i] in negativeList"
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  
-
+vc-postamble: ''

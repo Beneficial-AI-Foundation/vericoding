@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   lemma SkippingLemma(a : array<int>, j : int)
      requires a != null
@@ -17,8 +19,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method FindZero(a: array<int>) returns (index: int)

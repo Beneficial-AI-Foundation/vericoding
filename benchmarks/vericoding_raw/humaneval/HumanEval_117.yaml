@@ -27,19 +27,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (s: String) (n: Nat) : List String :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation "Mary had a little lamb" 4 = ["little"]
-  -- #test implementation "Mary had a little lamb" 3 = ["Mary", "lamb"]
-  -- #test implementation "simple white space" 2 = []
-  -- #test implementation "Hello world" 4 = ["world"]
-  -- #test implementation "Uncle sam" 3 = ["Uncle"]
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → Nat → List String)
@@ -76,6 +72,8 @@ vc-spec: |-
   (n: Nat)
   : problem_spec implementation s n
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

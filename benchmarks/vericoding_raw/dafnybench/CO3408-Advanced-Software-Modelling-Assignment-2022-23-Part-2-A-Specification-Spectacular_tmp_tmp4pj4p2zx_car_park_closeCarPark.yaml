@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   class {:autocontracts} CarPark {
       const totalSpaces: nat := 10;
@@ -45,8 +47,8 @@ vc-preamble: |-
     // The method maintains the invariant that the carPark, reservedCarPark, and subscriptions sets are all cleared
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method closeCarPark()

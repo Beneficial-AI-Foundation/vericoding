@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
   Dafny include 2 limbaje:
@@ -39,8 +41,8 @@ vc-preamble: |-
   /*
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method SqrSum1(n: int) returns (s: int)

@@ -1,0 +1,127 @@
+vc-description: |-
+  /--
+  -----Description-----
+  This task requires writing a Lean 4 method that computes the element-wise modulo between two arrays of integers. The method should produce a new array where each element is the remainder after dividing the corresponding element from the first array by the element from the second array.
+  
+  -----Input-----
+  The input consists of:
+  a: An array of integers.
+  b: An array of integers.
+  
+  -----Output-----
+  The output is an array of integers:
+  Returns a new array in which each element is the result of taking the modulo of the corresponding elements from the two input arrays.
+  
+  -----Note-----
+  Preconditions:
+  - Both arrays must be non-null.
+  - Both arrays must have the same length.
+  - All elements in the second array should be non-zero.
+  
+  Postconditions:
+  - The length of the resulting array is the same as the length of the input arrays.
+  - Each element in the resulting array is the modulo of the corresponding elements in the input arrays.
+  -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def elementWiseModulo_precond (a : Array Int) (b : Array Int) : Prop :=
+    a.size = b.size ∧ a.size > 0 ∧
+    (∀ i, i < b.size → b[i]! ≠ 0)
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def elementWiseModulo (a : Array Int) (b : Array Int) (h_precond : elementWiseModulo_precond (a) (b)) : Array Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    a.mapIdx (fun i x => x % b[i]!)
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def elementWiseModulo_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_precond : elementWiseModulo_precond (a) (b)) :=
+    result.size = a.size ∧
+    (∀ i, i < result.size → result[i]! = a[i]! % b[i]!)
+  
+  theorem elementWiseModulo_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : elementWiseModulo_precond (a) (b)) :
+      elementWiseModulo_postcond (a) (b) (elementWiseModulo (a) (b) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold elementWiseModulo elementWiseModulo_postcond
+    unfold elementWiseModulo_precond at h_precond
+    simp_all
+    intro i hi
+    have h_maplen : (Array.mapIdx (fun i x => x % b[i]!) a).size = a.size := by
+      apply Array.size_mapIdx
+    have h1 : (Array.mapIdx (fun i x => x % b[i]!) a)[i] = (fun i x => x % b[i]!) i a[i] := by
+      apply Array.getElem_mapIdx
+    have h_eq : (Array.mapIdx (fun i x => x % b[i]!) a)[i] = (Array.mapIdx (fun i x => x % b[i]!) a)[i]! := by
+      have hi' : i < (Array.mapIdx (fun i x => x % b[i]!) a).size := by
+        simp only [h_precond, hi, h_maplen]
+      rw [Array.getElem!_eq_getD]
+      unfold Array.getD
+      simp [hi', hi, h_precond]
+    rw [← h_eq]
+    simp only [h1]
+    have h_eq' : a[i] = a[i]! := by
+      have hi_a : i < a.size := by
+        simp only [h_precond, hi]
+      simp_all [Array.getElem!_eq_getD]
+    simp only [h_eq']
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  [
+      {
+          "input": {
+              "a": "#[1]",
+              "b": "#[4, 0]"
+          }
+      }
+  ]
+  -- Tests
+  [
+      {
+          "input": {
+              "a": "#[10, 20, 30]",
+              "b": "#[3, 7, 5]"
+          },
+          "expected": "#[1, 6, 0]",
+          "unexpected": [
+              "#[1, 0, 0]",
+              "#[0, 6, 0]"
+          ]
+      },
+      {
+          "input": {
+              "a": "#[100, 200, 300, 400]",
+              "b": "#[10, 20, 30, 50]"
+          },
+          "expected": "#[0, 0, 0, 0]",
+          "unexpected": [
+              "#[0, 0, 0, 1]",
+              "#[1, 0, 0, 0]"
+          ]
+      },
+      {
+          "input": {
+              "a": "#[-10, -20, 30]",
+              "b": "#[3, -7, 5]"
+          },
+          "expected": "#[2, 1, 0]",
+          "unexpected": [
+              "#[-1, -5, 0]",
+              "#[-1, -6, 1]",
+              "#[0, -6, 0]"
+          ]
+      }
+  ]
+  -/
+

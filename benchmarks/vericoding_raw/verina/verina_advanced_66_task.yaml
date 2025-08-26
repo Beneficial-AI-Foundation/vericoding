@@ -1,0 +1,121 @@
+vc-description: |-
+  /--
+  -----Description-----
+  Given an input string "words_str", this task requires writing a Lean 4 function that reverses the order of its words. A word is defined as a contiguous sequence of non-space characters. The function must remove any extra spaces so that the output string contains words separated by a single space and has no leading or trailing spaces. The characters within each word must stay the same as the original input.
+  
+  -----Input-----
+  words_str: A string that may contain leading, trailing, or multiple spaces between words.
+  
+  -----Output-----
+  A string with the words from the input reversed, where words are separated by a single space, with no extra spaces at the beginning or end.
+  -/
+
+vc-preamble: |-
+  @[reducible]
+  def reverseWords_precond (words_str : String) : Prop :=
+    True
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def reverseWords (words_str : String) (h_precond : reverseWords_precond (words_str)) : String :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rawWords : List String := words_str.splitOn " "
+    let rec filterNonEmpty (words : List String) : List String :=
+      match words with
+      | [] => []
+      | h :: t =>
+        if h = "" then
+          filterNonEmpty t
+        else
+          h :: filterNonEmpty t
+    let filteredWords : List String := filterNonEmpty rawWords
+    let revWords : List String := filteredWords.reverse
+    let rec joinWithSpace (words : List String) : String :=
+      match words with
+      | [] => ""
+      | [w] => w
+      | h :: t =>
+        -- Append the current word with a space and continue joining the rest.
+        h ++ " " ++ joinWithSpace t
+    let result : String := joinWithSpace revWords
+    result
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible]
+  def reverseWords_postcond (words_str : String) (result: String) (h_precond : reverseWords_precond (words_str)) : Prop :=
+    ∃ words : List String,
+      (words = (words_str.splitOn " ").filter (fun w => w ≠ "")) ∧
+      result = String.intercalate " " (words.reverse)
+  
+  theorem reverseWords_spec_satisfied (words_str: String) (h_precond : reverseWords_precond (words_str)) :
+      reverseWords_postcond (words_str) (reverseWords (words_str) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  []
+  -- Tests
+  [
+      {
+          "input": {
+              "words_str": "the sky is blue"
+          },
+          "expected": "blue is sky the",
+          "unexpected": [
+              "the sky is blue",
+              "sky the blue is"
+          ]
+      },
+      {
+          "input": {
+              "words_str": "  hello world  "
+          },
+          "expected": "world hello",
+          "unexpected": [
+              "hello world",
+              "worldhello"
+          ]
+      },
+      {
+          "input": {
+              "words_str": "a good   example"
+          },
+          "expected": "example good a",
+          "unexpected": [
+              "a good example",
+              "example a good"
+          ]
+      },
+      {
+          "input": {
+              "words_str": "  Bob    Loves  Alice   "
+          },
+          "expected": "Alice Loves Bob",
+          "unexpected": [
+              "Bob Loves Alice",
+              "Alice Loves Bob "
+          ]
+      },
+      {
+          "input": {
+              "words_str": "this lab is interesting"
+          },
+          "expected": "interesting is lab this",
+          "unexpected": [
+              "gnitseretni si bal siht"
+          ]
+      }
+  ]
+  -/
+

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate Sorted(q: seq<int>)
   {
@@ -10,8 +12,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method FindAddends(q: seq<int>, x: int) returns (i: nat, j: nat)

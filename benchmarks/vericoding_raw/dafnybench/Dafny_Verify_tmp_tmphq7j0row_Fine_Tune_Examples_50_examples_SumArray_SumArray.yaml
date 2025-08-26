@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function Sum(arr: array<int>, len: int): int
       reads arr
@@ -7,8 +9,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method SumArray(arr: array<int>) returns (sum: int)

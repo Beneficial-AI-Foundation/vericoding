@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
     ===============================================
@@ -165,8 +167,8 @@ vc-preamble: |-
     // Empties the trash mailbox
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method emptyTrash()

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function IsLetter(c: char): bool 
   {
@@ -45,8 +47,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method solve(s: string) returns (result: string)

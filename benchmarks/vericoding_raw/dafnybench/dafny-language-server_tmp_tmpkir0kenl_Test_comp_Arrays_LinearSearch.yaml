@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %dafny /compile:3 /spillTargetCode:2 /compileTarget:cs "%s" > "%t"
   // RUN: %dafny /compile:3 /spillTargetCode:2 /compileTarget:js "%s" >> "%t"
@@ -6,8 +8,8 @@ vc-preamble: |-
   // RUN: %diff "%s.expect" "%t"
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method LinearSearch(a: array<int>, key: int) returns (n: nat)

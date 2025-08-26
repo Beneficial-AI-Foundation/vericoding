@@ -1,9 +1,11 @@
+vc-description: |-
+
 vc-preamble: |-
   // method verifies
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method StringSwap(s: string, i:nat, j:nat) returns (t: string)

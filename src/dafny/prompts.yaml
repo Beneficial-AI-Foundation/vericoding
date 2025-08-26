@@ -18,13 +18,24 @@ generate_code: |
   
   POSTAMBLE (possibly empty): auxiliary code and definitions.
 
-  The task is to generate a Dafny file that is verified in Dafny and satisfies the following requirements: 
+  The task is to generate code for the CODE and HELPERS sections that will make the Dafny file verified. 
   
-  - The PREAMBLE, SPEC, and POSTAMBLE sections must be preserved as they are, including the tags
-  - The CODE section must be replaced with a verified implementation of the method specified in the SPEC section.
-  - The HELPERS section may be updated to support the verification of the new implementation.
-  - The order of sections should be the same as in the original file.
+  OUTPUT FORMAT:
+  Return the updated sections in this exact format with explicit code blocks:
+  
+  ```vc-helpers
+  [Updated or new helper code and proofs needed for verification]
+  ```
+  
+  ```vc-code
+  [Implementation of the method specified in SPEC]
+  ```
+  
+  REQUIREMENTS:
+  - The CODE section must contain a verified implementation of the method specified in the SPEC section
+  - The HELPERS section may be updated to support the verification of the new implementation
   - Output ONLY valid Dafny code - NO conversational text, explanations, or comments outside the code
+  - Use the exact format: ```vc-helpers and ```vc-code
 
   DAFNY FILE:
   {code}
@@ -50,13 +61,24 @@ fix_verification: |
   
   POSTAMBLE (possibly empty): auxiliary code and definitions.
 
-  The task is to fix the verification errors while satisfying the following requirements: 
+  The task is to fix the verification errors in the CODE and HELPERS sections. 
   
-  - The PREAMBLE, SPEC, and POSTAMBLE sections must be preserved as they are, including the tags
+  OUTPUT FORMAT:
+  Return the fixed sections in this exact format with explicit code blocks:
+  
+  ```vc-helpers
+  [Updated helper code and proofs to fix verification errors]
+  ```
+  
+  ```vc-code
+  [Fixed implementation that passes verification]
+  ```
+  
+  REQUIREMENTS:
   - The CODE section must be fixed to pass verification
   - The HELPERS section may be updated to support the verification of the fixed implementation
-  - The order of sections should be the same as in the original file
   - Output ONLY valid Dafny code - NO conversational text, explanations, or comments outside the code
+  - Use the exact format: ```vc-helpers and ```vc-code
 
   ERROR DETAILS from Dafny verification of the given code:
   {errorDetails}

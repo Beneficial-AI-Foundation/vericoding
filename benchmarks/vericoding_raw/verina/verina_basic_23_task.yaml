@@ -1,0 +1,136 @@
+vc-description: |-
+  /--
+  -----Description-----
+  This task requires writing a Lean 4 method that calculates the difference between the maximum and minimum values in an array of integers. In other words, the method should determine the highest and lowest numbers in the array and return the result of subtracting the minimum from the maximum.
+  
+  -----Input-----
+  The input consists of:
+  a: An array of integers.
+  
+  -----Output-----
+  The output is an integer:
+  Returns the difference between the largest and the smallest values in the input array.
+  
+  -----Note-----
+  The input array is assumed to be non-empty.
+  -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def differenceMinMax_precond (a : Array Int) : Prop :=
+    a.size > 0
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def differenceMinMax (a : Array Int) (h_precond : differenceMinMax_precond (a)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rec loop (i : Nat) (minVal maxVal : Int) : Int :=
+      if i < a.size then
+        let x := a[i]!
+        let newMin := if x < minVal then x else minVal
+        let newMax := if x > maxVal then x else maxVal
+        loop (i + 1) newMin newMax
+      else
+        maxVal - minVal
+    loop 1 (a[0]!) (a[0]!)
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def differenceMinMax_postcond (a : Array Int) (result: Int) (h_precond : differenceMinMax_precond (a)) :=
+    result + (a.foldl (fun acc x => if x < acc then x else acc) (a[0]!)) = (a.foldl (fun acc x => if x > acc then x else acc) (a[0]!))
+  
+  theorem differenceMinMax_spec_satisfied (a: Array Int) (h_precond : differenceMinMax_precond (a)) :
+      differenceMinMax_postcond (a) (differenceMinMax (a) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  [
+      {
+          "input": {
+              "a": "#[]"
+          }
+      }
+  ]
+  -- Tests
+  [
+      {
+          "input": {
+              "a": "#[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]"
+          },
+          "expected": 8,
+          "unexpected": [
+              7,
+              9,
+              10
+          ]
+      },
+      {
+          "input": {
+              "a": "#[10, 20, 30, 40, 50]"
+          },
+          "expected": 40,
+          "unexpected": [
+              30,
+              35,
+              45
+          ]
+      },
+      {
+          "input": {
+              "a": "#[-10, -20, -30, -40, -50]"
+          },
+          "expected": 40,
+          "unexpected": [
+              30,
+              41,
+              20
+          ]
+      },
+      {
+          "input": {
+              "a": "#[7]"
+          },
+          "expected": 0,
+          "unexpected": [
+              1,
+              -1,
+              2
+          ]
+      },
+      {
+          "input": {
+              "a": "#[5, 5, 5, 5]"
+          },
+          "expected": 0,
+          "unexpected": [
+              1,
+              5,
+              -1
+          ]
+      },
+      {
+          "input": {
+              "a": "#[1, -1, 2, -2]"
+          },
+          "expected": 4,
+          "unexpected": [
+              3,
+              0,
+              5
+          ]
+      }
+  ]
+  -/
+

@@ -1,0 +1,139 @@
+vc-description: |-
+  /--
+  -----Description-----
+  This task requires implementing a Lean 4 method that, given a list of intervals, returns the maximum amount that can be spanned after we removed one of the intervals
+  You may assume you'll receive at least one interval
+  
+  -----Input-----
+  The input consists of a list of ordered pairs of intervals.
+  -----Output-----
+  The output is an integer:
+  Return the largest span that is possible after removing one of the intervals.
+  -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def maxCoverageAfterRemovingOne_precond (intervals : List (Prod Nat Nat)) : Prop :=
+    intervals.length > 0
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def maxCoverageAfterRemovingOne (intervals : List (Prod Nat Nat)) (h_precond : maxCoverageAfterRemovingOne_precond (intervals)) : Nat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let n := intervals.length
+    if n ≤ 1 then 0
+    else
+      (List.range n).foldl (fun acc i =>
+        let remaining := List.eraseIdx intervals i
+        let sorted := List.mergeSort remaining (fun (a b : Nat × Nat) => a.1 ≤ b.1)
+        let merged := sorted.foldl (fun acc curr =>
+          match acc with
+          | [] => [curr]
+          | (s, e) :: rest => if curr.1 ≤ e then (s, max e curr.2) :: rest else curr :: acc
+        ) []
+        let coverage := merged.reverse.foldl (fun acc (s, e) => acc + (e - s)) 0
+        max acc coverage
+      ) 0
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def maxCoverageAfterRemovingOne_postcond (intervals : List (Prod Nat Nat)) (result: Nat) (h_precond : maxCoverageAfterRemovingOne_precond (intervals)) : Prop :=
+    ∃ i < intervals.length,
+      let remaining := List.eraseIdx intervals i
+      let sorted := List.mergeSort remaining (fun (a b : Nat × Nat) => a.1 ≤ b.1)
+      let merged := sorted.foldl (fun acc curr =>
+        match acc with
+        | [] => [curr]
+        | (s, e) :: rest => if curr.1 ≤ e then (s, max e curr.2) :: rest else curr :: acc
+      ) []
+      let cov := merged.reverse.foldl (fun acc (s, e) => acc + (e - s)) 0
+      result = cov ∧
+      ∀ j < intervals.length,
+        let rem_j := List.eraseIdx intervals j
+        let sort_j := List.mergeSort rem_j (fun (a b : Nat × Nat) => a.1 ≤ b.1)
+        let merged_j := sort_j.foldl (fun acc curr =>
+          match acc with
+          | [] => [curr]
+          | (s, e) :: rest => if curr.1 ≤ e then (s, max e curr.2) :: rest else curr :: acc
+        ) []
+        let cov_j := merged_j.reverse.foldl (fun acc (s, e) => acc + (e - s)) 0
+        cov ≥ cov_j
+  
+  theorem maxCoverageAfterRemovingOne_spec_satisfied (intervals: List (Prod Nat Nat)) (h_precond : maxCoverageAfterRemovingOne_precond (intervals)) :
+      maxCoverageAfterRemovingOne_postcond (intervals) (maxCoverageAfterRemovingOne (intervals) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  [
+      {
+          "input": {
+              "intervals": "[]"
+          }
+      }
+  ]
+  -- Tests
+  [
+      {
+          "input": {
+              "intervals": "[(1, 3), (2, 5), (6, 8)]"
+          },
+          "expected": 5,
+          "unexpected": [
+              4,
+              6
+          ]
+      },
+      {
+          "input": {
+              "intervals": "[(1, 4), (2, 6), (8, 10), (9, 12)]"
+          },
+          "expected": 8,
+          "unexpected": [
+              7,
+              6
+          ]
+      },
+      {
+          "input": {
+              "intervals": "[(1, 2), (2, 3), (3, 4)]"
+          },
+          "expected": 2,
+          "unexpected": [
+              3
+          ]
+      },
+      {
+          "input": {
+              "intervals": "[(1, 10), (2, 3), (4, 5)]"
+          },
+          "expected": 9,
+          "unexpected": [
+              7,
+              10
+          ]
+      },
+      {
+          "input": {
+              "intervals": "[(5, 6), (1, 2), (3, 4)]"
+          },
+          "expected": 2,
+          "unexpected": [
+              5,
+              3
+          ]
+      }
+  ]
+  -/
+

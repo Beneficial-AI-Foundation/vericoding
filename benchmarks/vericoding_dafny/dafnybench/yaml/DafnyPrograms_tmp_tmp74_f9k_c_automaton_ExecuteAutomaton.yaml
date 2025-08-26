@@ -1,23 +1,6 @@
-vc-preamble: |-
-  /**
-  Consider cellular automata: a row of cells is repeatedly updated according to a rule. In this exercise I dabbled with,
-  each cell has the value either false or true. Each cell's next state depends only on the immediate neighbours, in the 
-  case where the cell is at the edges of the row, the inexistent neighbours are replaced by "false". The automaton table 
-  will contain the initial row, plus a row for each number of steps.
-   */
-  class Automaton {
-  
-  /**
-  This method computes the automaton.
-  Provide the initial row: init, the rule and the desired number of steps
-   */
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-preamble: "/**\nConsider cellular automata: a row of cells is repeatedly updated according to a rule. In this exercise I dabbled with,\neach cell has the value either false or true. Each cell's next state depends only on the immediate neighbours, in the \ncase where the cell is at the edges of the row, the inexistent neighbours are replaced by \"false\". The automaton table \nwill contain the initial row, plus a row for each number of steps.\n */\nclass Automaton {\n\n/**\nThis method computes the automaton.\nProvide the initial row: init, the rule and the desired number of steps\n */"
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method ExecuteAutomaton(init: seq<bool>, rule: (bool, bool, bool) -> bool, steps: nat)
     returns (table: seq<seq<bool>>)
     // we need the initial row to have the length bigger or equal to two
@@ -36,14 +19,8 @@ vc-spec: |-
     // its neighbour and false
     ensures forall i | 0 <= i < |table| - 1 ::
               table[i + 1][0] == rule(false, table[i][0], table[i][1]) && table[i + 1][|table[i]| - 1] == rule(table[i][|table[i]| - 2], table[i][|table[i]| - 1], false)
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  }
+vc-postamble: '}'

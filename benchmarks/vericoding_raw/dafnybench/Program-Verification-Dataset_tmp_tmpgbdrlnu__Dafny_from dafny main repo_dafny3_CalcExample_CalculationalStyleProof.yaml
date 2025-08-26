@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %testDafnyForEachResolver "%s"
 
@@ -19,8 +21,8 @@ vc-preamble: |-
   // From these axioms, we can prove a lemma about "f":
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method CalculationalStyleProof(a: int, b: int, c: int, x: int)

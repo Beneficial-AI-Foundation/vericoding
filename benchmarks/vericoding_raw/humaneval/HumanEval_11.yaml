@@ -18,15 +18,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (a b: String) : String :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation "010" "110" = "100"
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → String → String)
@@ -51,6 +51,8 @@ vc-spec: |-
   (a b: String)
   : problem_spec implementation a b
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

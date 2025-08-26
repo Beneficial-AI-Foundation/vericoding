@@ -1,0 +1,135 @@
+vc-description: |-
+  /--
+  -----Description-----
+  This task requires writing a Lean 4 method that computes the sum of the squares of the first n odd natural numbers. The result should match the formula: (n * (2 * n - 1) * (2 * n + 1)) / 3.
+  
+  -----Input-----
+  The input consists of:
+  n: A natural number representing the count of odd natural numbers to consider (n should be non-negative).
+  
+  -----Output-----
+  The output is a natural number:
+  Returns the sum of the squares of the first n odd natural numbers, as defined by the formula: (n * (2 * n - 1) * (2 * n + 1)) / 3.
+  -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def sumOfSquaresOfFirstNOddNumbers_precond (n : Nat) : Prop :=
+    True
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def sumOfSquaresOfFirstNOddNumbers (n : Nat) (h_precond : sumOfSquaresOfFirstNOddNumbers_precond (n)) : Nat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rec loop (k : Nat) (sum : Nat) : Nat :=
+      if k = 0 then
+        sum
+      else
+        loop (k - 1) (sum + (2 * k - 1) * (2 * k - 1))
+    loop n 0
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def sumOfSquaresOfFirstNOddNumbers_postcond (n : Nat) (result: Nat) (h_precond : sumOfSquaresOfFirstNOddNumbers_precond (n)) :=
+    result - (n * (2 * n - 1) * (2 * n + 1)) / 3 = 0 ∧
+    (n * (2 * n - 1) * (2 * n + 1)) / 3 - result = 0
+  
+  theorem sumOfSquaresOfFirstNOddNumbers_spec_satisfied (n: Nat) (h_precond : sumOfSquaresOfFirstNOddNumbers_precond (n)) :
+      sumOfSquaresOfFirstNOddNumbers_postcond (n) (sumOfSquaresOfFirstNOddNumbers (n) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  []
+  -- Tests
+  [
+      {
+          "input": {
+              "n": 0
+          },
+          "expected": 0,
+          "unexpected": [
+              1,
+              2
+          ]
+      },
+      {
+          "input": {
+              "n": 1
+          },
+          "expected": 1,
+          "unexpected": [
+              0,
+              2,
+              3
+          ]
+      },
+      {
+          "input": {
+              "n": 2
+          },
+          "expected": 10,
+          "unexpected": [
+              9,
+              11,
+              12
+          ]
+      },
+      {
+          "input": {
+              "n": 3
+          },
+          "expected": 35,
+          "unexpected": [
+              30,
+              34,
+              36
+          ]
+      },
+      {
+          "input": {
+              "n": 4
+          },
+          "expected": 84,
+          "unexpected": [
+              80,
+              85,
+              90
+          ]
+      },
+      {
+          "input": {
+              "n": 5
+          },
+          "expected": 165,
+          "unexpected": [
+              160,
+              166,
+              170
+          ]
+      },
+      {
+          "input": {
+              "n": 10
+          },
+          "expected": 1330,
+          "unexpected": [
+              1320,
+              1331,
+              1340
+          ]
+      }
+  ]
+  -/
+

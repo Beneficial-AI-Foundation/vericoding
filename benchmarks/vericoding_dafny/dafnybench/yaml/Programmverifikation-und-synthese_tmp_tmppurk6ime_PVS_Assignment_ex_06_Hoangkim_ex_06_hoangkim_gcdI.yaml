@@ -8,25 +8,12 @@ vc-preamble: |-
       else if x > y then gcd(x - y, y)
       else gcd(x, y - x)
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method gcdI(m: int, n: int) returns (d: int)
-  requires  m > 0 && n > 0 
-  ensures d == gcd(m, n);
-  // </vc-spec>
-
+vc-helpers: ''
+vc-spec: "method gcdI(m: int, n: int) returns (d: int)\nrequires  m > 0 && n > 0 \nensures d == gcd(m, n);"
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
 vc-postamble: |-
   //b)
   ghost function gcd'(x: int, y: int): int
@@ -37,4 +24,3 @@ vc-postamble: |-
       else if x > y then gcd'(x - y, y)
       else gcd(y, x)
   }
-

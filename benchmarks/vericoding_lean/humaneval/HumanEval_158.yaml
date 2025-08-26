@@ -22,17 +22,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (words: List String) : String :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation ["name", "of", "string"]= "string"
-  -- #test implementation ["name", "enam", "game"] = "enam"
-  -- #test implementation ["aaaaaaa", "bb" ,"cc"] = "aaaaaaa"
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (impl: List String → String)
@@ -60,6 +58,8 @@ vc-spec: |-
   theorem correctness
   (words: List String)
   : problem_spec implementation words :=
+
+vc-proof: |-
   -- <vc-proof>
   sorry
   -- </vc-proof>

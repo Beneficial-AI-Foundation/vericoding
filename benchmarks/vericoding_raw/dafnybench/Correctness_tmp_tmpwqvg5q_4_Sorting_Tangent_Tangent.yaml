@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /**
     Ather, Mohammad Faiz (s4648481/3)
@@ -9,8 +11,8 @@ vc-preamble: |-
   // Question 1
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Tangent(r: array<int>, x: array<int>)

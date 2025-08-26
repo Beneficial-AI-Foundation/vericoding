@@ -1,11 +1,13 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
    * Illustrates de-sugaring of the while loop.
   */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method bar (x:int, y:int) returns (r:int)

@@ -1,14 +1,14 @@
 vc-preamble: |-
   // RUN: %dafny /compile:0 "%s" > "%t"
   // RUN: %diff "%s.expect" "%t"
-  
+
   class Composite {
     var left: Composite?
     var right: Composite?
     var parent: Composite?
     var val: int
     var sum: int
-  
+
     function Valid(S: set<Composite>): bool
       reads this, parent, left, right
     {
@@ -18,40 +18,19 @@ vc-preamble: |-
       (right != null ==> right in S && right.parent == this && left != right) &&
       sum == val + (if left == null then 0 else left.sum) + (if right == null then 0 else right.sum)
     }
-  
+
     function Acyclic(S: set<Composite>): bool
       reads S
     {
       this in S &&
       (parent != null ==> parent.Acyclic(S - {this}))
     }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method Dislodge(ghost S: set<Composite>) 
-      requires this in S && Acyclic(S)
-      requires forall c :: c in S ==> c.Valid(S)
-      modifies S
-      ensures forall c :: c in S ==> c.Valid(S)
-      ensures forall c :: c in S ==> c.val == old(c.val)
-      ensures forall c :: c in S && c != this ==> c.parent == old(c.parent)
-      ensures parent == null
-      ensures forall c :: c in S ==> c.left == old(c.left) || (old(c.left) == this && c.left == null)
-      ensures forall c :: c in S ==> c.right == old(c.right) || (old(c.right) == this && c.right == null)
-      ensures Acyclic({this})
-  // </vc-spec>
-
+vc-helpers: ''
+vc-spec: "method Dislodge(ghost S: set<Composite>) \n    requires this in S && Acyclic(S)\n    requires forall c :: c in S ==> c.Valid(S)\n    modifies S\n    ensures forall c :: c in S ==> c.Valid(S)\n    ensures forall c :: c in S ==> c.val == old(c.val)\n    ensures forall c :: c in S && c != this ==> c.parent == old(c.parent)\n    ensures parent == null\n    ensures forall c :: c in S ==> c.left == old(c.left) || (old(c.left) == this && c.left == null)\n    ensures forall c :: c in S ==> c.right == old(c.right) || (old(c.right) == this && c.right == null)\n    ensures Acyclic({this})"
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
 vc-postamble: |-
   /*private*/ method Adjust(delta: int, ghost U: set<Composite>, ghost S: set<Composite>)
       requires U <= S && Acyclic(U)
@@ -71,4 +50,3 @@ vc-postamble: |-
     assume{:axiom} false;
   }
   }
-

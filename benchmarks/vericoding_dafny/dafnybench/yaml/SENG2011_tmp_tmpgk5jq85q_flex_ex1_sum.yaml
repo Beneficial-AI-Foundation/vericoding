@@ -7,27 +7,15 @@ vc-preamble: |-
       if i == 0 then 0
       else s[i - 1] + sumcheck(s, i - 1)
   }
-  
+
   // returns sum of array
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method sum(s: array<int>) returns (a:int)
   requires s.Length > 0
   ensures sumcheck(s, s.Length) == a
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  
-
+vc-postamble: ''

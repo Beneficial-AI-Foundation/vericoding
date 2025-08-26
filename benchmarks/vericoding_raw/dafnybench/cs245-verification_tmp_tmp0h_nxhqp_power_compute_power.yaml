@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //power -- Stephanie Renee McIntyre
   //Based on the code used in the course overheads for Fall 2018
@@ -5,8 +7,8 @@ vc-preamble: |-
   //There is no definition for power, so this function will be used for validating that our imperative program is correct.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   function power(a: int, n: int): int //function for a to the power of n

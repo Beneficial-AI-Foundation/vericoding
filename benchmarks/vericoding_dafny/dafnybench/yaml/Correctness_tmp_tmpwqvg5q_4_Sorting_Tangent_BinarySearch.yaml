@@ -5,17 +5,12 @@ vc-preamble: |-
     Assignemnt 3
     The University of Queensland
    */
-  
+
   // Question 1
-  
+
   // Author: Leino, Title: Program Proofs
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method BinarySearch(a: array<int>, circle: int)
     returns (n: int)
     requires forall i ::
@@ -31,15 +26,8 @@ vc-spec: |-
     ensures forall i ::
             n <= i < a.Length ==>
             circle <= a[i]
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  
-
+vc-postamble: ''

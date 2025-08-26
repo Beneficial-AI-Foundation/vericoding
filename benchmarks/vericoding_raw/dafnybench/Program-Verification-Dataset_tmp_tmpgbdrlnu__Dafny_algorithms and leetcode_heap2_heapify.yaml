@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   class Heap {
     var arr: array<int>
@@ -32,8 +34,8 @@ vc-preamble: |-
     }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method heapify(idx: int)

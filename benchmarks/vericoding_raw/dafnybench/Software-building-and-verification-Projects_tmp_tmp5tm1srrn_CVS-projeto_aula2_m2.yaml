@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //PRE-CONDITIONS -> REQUIRES
   //POST-CONDITIONS -> ENSURES
@@ -12,8 +14,8 @@ vc-preamble: |-
   // 5b
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method m2(x: nat) returns (y: int)

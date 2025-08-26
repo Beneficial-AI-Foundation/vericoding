@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Sum of elements of A from indices 0 to end.
   // end is inclusive! (not James's normal way of thinking!!)
@@ -21,8 +23,8 @@ vc-preamble: |-
   // example showing that, with the original postcondition, the answer is non-unique!
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method PercentileNonUniqueAnswer() returns (p: real, A: array<real>, total: real, i1: int, i2: int)

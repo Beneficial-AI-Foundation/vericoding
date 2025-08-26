@@ -5,28 +5,10 @@ vc-preamble: |-
   {
       forall l, k :: i <= l <= k < j ==> a[l] <= a[k]
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method bubbleSorta(a:array<int>, c:int, f:int)//f excluded
-  modifies a 
-  requires 0 <= c <= f <= a.Length //when c==f empty sequence
-  ensures sorted_seg(a,c,f) 
-  ensures multiset(a[c..f]) == old(multiset(a[c..f]))
-  ensures a[..c]==old(a[..c]) && a[f..]==old(a[f..])
-  // </vc-spec>
-
+vc-helpers: ''
+vc-spec: "method bubbleSorta(a:array<int>, c:int, f:int)//f excluded\nmodifies a \nrequires 0 <= c <= f <= a.Length //when c==f empty sequence\nensures sorted_seg(a,c,f) \nensures multiset(a[c..f]) == old(multiset(a[c..f]))\nensures a[..c]==old(a[..c]) && a[f..]==old(a[f..])"
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  
-
+vc-postamble: ''

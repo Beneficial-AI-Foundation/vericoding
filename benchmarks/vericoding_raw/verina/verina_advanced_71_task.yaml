@@ -1,0 +1,192 @@
+vc-description: |-
+  /--
+  -----Description-----
+  This task requires writing a Lean 4 method that, given a binary string `s` and an integer `k`, finds the shortest contiguous substring that contains exactly `k` characters `'1'`.
+  
+  Among all substrings of `s` that contain exactly `k` occurrences of `'1'`, return the one that is shortest in length. If there are multiple such substrings with the same length, return the lexicographically smallest one.
+  
+  If no such substring exists, return the empty string.
+  
+  -----Input-----
+  - s: A binary string (only consisting of characters `'0'` and `'1'`)
+  - k: A natural number (k ≥ 0)
+  
+  -----Output-----
+  A string representing the shortest substring of `s` that contains exactly `k` ones. If no such substring exists, return `""`.
+  -/
+
+vc-preamble: |-
+  @[reducible]
+  def shortestBeautifulSubstring_precond (s : String) (k : Nat) : Prop :=
+    s.toList.all (fun c => c = '0' ∨ c = '1')
+
+vc-helpers: |-
+  -- <vc-helpers>
+  def countOnes (lst : List Char) : Nat :=
+    lst.foldl (fun acc c => if c = '1' then acc + 1 else acc) 0
+  
+  def listToString (lst : List Char) : String :=
+    String.mk lst
+  def isLexSmaller (a b : List Char) : Bool :=
+    listToString a < listToString b
+  def allSubstrings (s : List Char) : List (List Char) :=
+    let n := s.length
+    (List.range n).flatMap (fun i =>
+      (List.range (n - i)).map (fun j =>
+        s.drop i |>.take (j + 1)))
+  -- </vc-helpers>
+
+vc-signature: |-
+  def shortestBeautifulSubstring (s : String) (k : Nat) (h_precond : shortestBeautifulSubstring_precond (s) (k)) : String :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let chars := s.data
+    let candidates := allSubstrings chars |>.filter (fun sub => countOnes sub = k)
+  
+    let compare (a b : List Char) : Bool :=
+      a.length < b.length ∨ (a.length = b.length ∧ isLexSmaller a b)
+  
+    let best := candidates.foldl (fun acc cur =>
+      match acc with
+      | none => some cur
+      | some best => if compare cur best then some cur else some best) none
+    match best with
+    | some b => listToString b
+    | none => ""
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible]
+  def shortestBeautifulSubstring_postcond (s : String) (k : Nat) (result: String) (h_precond : shortestBeautifulSubstring_precond (s) (k)) : Prop :=
+    let chars := s.data
+    let substrings := (List.range chars.length).flatMap (fun i =>
+      (List.range (chars.length - i + 1)).map (fun len =>
+        chars.drop i |>.take len))
+    let isBeautiful := fun sub => countOnes sub = k
+    let beautiful := substrings.filter (fun sub => isBeautiful sub)
+    let targets := beautiful.map (·.asString) |>.filter (fun s => s ≠ "")
+    (result = "" ∧ targets = []) ∨
+    (result ∈ targets ∧
+     ∀ r ∈ targets, r.length ≥ result.length ∨ (r.length = result.length ∧ result ≤ r))
+  
+  theorem shortestBeautifulSubstring_spec_satisfied (s: String) (k: Nat) (h_precond : shortestBeautifulSubstring_precond (s) (k)) :
+      shortestBeautifulSubstring_postcond (s) (k) (shortestBeautifulSubstring (s) (k) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  [
+      {
+          "input": {
+              "s": "2",
+              "k": 1
+          }
+      }
+  ]
+  -- Tests
+  [
+      {
+          "input": {
+              "s": "100011001",
+              "k": 3
+          },
+          "expected": "11001",
+          "unexpected": [
+              "00011",
+              "10001",
+              ""
+          ]
+      },
+      {
+          "input": {
+              "s": "1011",
+              "k": 2
+          },
+          "expected": "11",
+          "unexpected": [
+              "101",
+              "01",
+              ""
+          ]
+      },
+      {
+          "input": {
+              "s": "000",
+              "k": 1
+          },
+          "expected": "",
+          "unexpected": [
+              "0",
+              "00",
+              "000"
+          ]
+      },
+      {
+          "input": {
+              "s": "11111",
+              "k": 3
+          },
+          "expected": "111",
+          "unexpected": [
+              "11",
+              "1111",
+              ""
+          ]
+      },
+      {
+          "input": {
+              "s": "10100101",
+              "k": 2
+          },
+          "expected": "101",
+          "unexpected": [
+              "010",
+              "1001",
+              "0101"
+          ]
+      },
+      {
+          "input": {
+              "s": "1001001",
+              "k": 2
+          },
+          "expected": "1001",
+          "unexpected": [
+              "0010",
+              "0100",
+              "001"
+          ]
+      },
+      {
+          "input": {
+              "s": "10010001",
+              "k": 1
+          },
+          "expected": "1",
+          "unexpected": [
+              "10",
+              "100",
+              "000"
+          ]
+      },
+      {
+          "input": {
+              "s": "1001",
+              "k": 0
+          },
+          "expected": "0",
+          "unexpected": [
+              "10",
+              "100",
+              "1"
+          ]
+      }
+  ]
+  -/
+

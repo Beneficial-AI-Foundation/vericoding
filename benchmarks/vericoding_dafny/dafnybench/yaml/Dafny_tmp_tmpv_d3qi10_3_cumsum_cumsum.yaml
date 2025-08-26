@@ -5,28 +5,10 @@ vc-preamble: |-
   {
       a[i] + if i == 0 then 0 else sum(a, i - 1)
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method cumsum(a: array<int>, b: array<int>)
-      requires  a.Length == b.Length && a.Length > 0 && a != b
-      // when you change a  , that's not the same object than b . 
-      //requires b.Length > 0 
-      ensures forall i | 0 <= i < a.Length :: b[i] == sum(a, i)
-      modifies b
-  // </vc-spec>
-
+vc-helpers: ''
+vc-spec: "method cumsum(a: array<int>, b: array<int>)\n    requires  a.Length == b.Length && a.Length > 0 && a != b\n    // when you change a  , that's not the same object than b . \n    //requires b.Length > 0 \n    ensures forall i | 0 <= i < a.Length :: b[i] == sum(a, i)\n    modifies b"
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  
-
+vc-postamble: ''

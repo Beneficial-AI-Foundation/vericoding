@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // PROGRAMA VERIFICADOR DE WHILE
 
@@ -16,8 +18,8 @@ vc-preamble: |-
   // TODO: Hacer en casa
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method multipleReturns3 (x:int, y:int) returns (more:int, less:int)

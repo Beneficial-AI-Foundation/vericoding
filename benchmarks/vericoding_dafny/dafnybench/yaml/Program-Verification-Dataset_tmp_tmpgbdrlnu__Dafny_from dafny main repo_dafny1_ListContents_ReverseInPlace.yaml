@@ -1,14 +1,14 @@
 vc-preamble: |-
   // RUN: %testDafnyForEachResolver "%s"
-  
-  
+
+
   class Node<T> {
     ghost var List: seq<T>
     ghost var Repr: set<Node<T>>
-  
+
     var data: T
     var next: Node?<T>
-  
+
     ghost predicate Valid()
       reads this, Repr
     {
@@ -20,7 +20,7 @@ vc-preamble: |-
           List == [data] + next.List &&
           next.Valid())
     }
-  
+
     constructor (d: T)
       ensures Valid() && fresh(Repr)
       ensures List == [d]
@@ -28,7 +28,7 @@ vc-preamble: |-
       data, next := d, null;
       List, Repr := [d], {this};
     }
-  
+
     constructor InitAsPredecessor(d: T, succ: Node<T>)
       requires succ.Valid()
       ensures Valid() && fresh(Repr - succ.Repr)
@@ -38,28 +38,16 @@ vc-preamble: |-
       List := [d] + succ.List;
       Repr := {this} + succ.Repr;
     }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method ReverseInPlace() returns (reverse: Node<T>)
       requires Valid()
       modifies Repr
       ensures reverse.Valid() && reverse.Repr <= old(Repr)
       ensures |reverse.List| == |old(List)|
       ensures forall i :: 0 <= i < |reverse.List| ==> reverse.List[i] == old(List)[|old(List)|-1-i]
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  }
-
+vc-postamble: '}'

@@ -4,13 +4,13 @@ vc-preamble: |-
   {
       if n < 2 then n else fib(n-2)+fib(n-1)
   }
-  
+
   //# 2 pts
-  
+
   //Problem02
   function fact(n:nat):nat
   {if n==0 then 1 else n*fact(n-1)}
-  
+
   //# 3 pts
   //Problem03
   function gcd(m: nat, n: nat): nat
@@ -20,28 +20,14 @@ vc-preamble: |-
       else if m > n then gcd(m - n, n)
       else gcd(m, n - m)
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method gcdI(m: int, n: int) returns (g: int)
-      requires  m > 0 && n > 0 
-      ensures g == gcd(m, n);
-  // </vc-spec>
-
+vc-helpers: ''
+vc-spec: "method gcdI(m: int, n: int) returns (g: int)\n    requires  m > 0 && n > 0 \n    ensures g == gcd(m, n);"
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
 vc-postamble: |-
   //# 3 pts
-  
-  
-  // # sum: 9 pts
 
+
+  // # sum: 9 pts

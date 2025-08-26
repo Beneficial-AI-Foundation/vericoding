@@ -7,24 +7,12 @@ vc-preamble: |-
   {
     if (n == 0) then 0 else sumTo(a, n-1) + a[n-1]
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method ArraySum(a: array<int>) returns (result: int)
       ensures result == sumTo(a, a.Length)
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  
-
+vc-postamble: ''

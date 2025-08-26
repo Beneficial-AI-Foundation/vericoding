@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   ghost function f2(n: nat): nat {
       if n == 0 then 0
@@ -5,8 +7,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method mod2(n:nat) returns (a:nat) 
@@ -14,6 +16,7 @@ vc-spec: |-
 
 vc-code: |-
   {
+      assume(false);
       var x:nat := 1;
       var y:nat := 0;
       var k:nat := n;

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
     Class CircularArray.
@@ -104,8 +106,8 @@ vc-preamble: |-
     */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method GetAt(i: nat) returns (e: int)

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %dafny /compile:0 "%s" > "%t"
   // RUN: %diff "%s.expect" "%t"
@@ -8,8 +10,8 @@ vc-preamble: |-
   predicate P(x: Node)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method AuxMethod(y: Node)

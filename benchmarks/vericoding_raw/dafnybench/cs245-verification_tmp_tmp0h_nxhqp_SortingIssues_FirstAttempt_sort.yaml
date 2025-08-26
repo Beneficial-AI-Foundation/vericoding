@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Sorting: 
   //        Pre/Post Condition Issues - An investigation 
@@ -8,8 +10,8 @@ vc-preamble: |-
   // We want our Hoare triple of (|Pre-Condition|) Code (|Post-Condition|) to hold iff A is properly sorted.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method sort(A: array<int>, n: int)

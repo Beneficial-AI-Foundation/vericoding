@@ -22,18 +22,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (decimal: Nat) : String :=
-  -- <vc-code>
-  "db" ++ (Nat.toDigits 2 decimal).asString ++ "db"
-  -- </vc-code>
-  
-  -- #test implementation 0 = "db0db"
-  -- #test implementation 32 = "db100000db"
-  -- #test implementation 103 = "db1100111db"
-  -- #test implementation 15 = "db1111db"
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  "db" ++ (Nat.toDigits 2 decimal).asString ++ "db"
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: Nat → String)
@@ -54,6 +51,8 @@ vc-spec: |-
   (decimal: Nat)
   : problem_spec implementation decimal
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

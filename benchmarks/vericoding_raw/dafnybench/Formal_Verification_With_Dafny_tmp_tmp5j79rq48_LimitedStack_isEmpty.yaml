@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // A LIFO queue (aka a stack) with limited capacity.
   class LimitedStack{
@@ -26,8 +28,8 @@ vc-preamble: |-
         }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method isEmpty() returns (res : bool)

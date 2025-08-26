@@ -19,22 +19,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (x: Int) (y: Int) : Int :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation 12 15 = 14
-  -- #test implementation 13 12 = -1
-  -- #test implementation 33 12354 = 12354
-  -- #test implementation 5234 5233 = -1
-  -- #test implementation 6 29 = 28
-  -- #test implementation 27 10 = (-1)
-  -- #test implementation 7 7 = -1
-  -- #test implementation 546 546 = 546
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: Int → Int → Int)
@@ -53,6 +46,8 @@ vc-spec: |-
   (x: Int) (y: Int)
   : problem_spec implementation x y
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

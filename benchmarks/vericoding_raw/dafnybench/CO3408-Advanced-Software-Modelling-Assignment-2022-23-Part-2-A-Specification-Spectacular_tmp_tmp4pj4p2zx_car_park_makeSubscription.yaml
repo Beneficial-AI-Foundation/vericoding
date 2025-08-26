@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   class {:autocontracts} CarPark {
       const totalSpaces: nat := 10;
@@ -37,8 +39,8 @@ vc-preamble: |-
     // subscriptions set. Otherwise, the subscriptions set is not modified
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method makeSubscription(car: string) returns (success: bool)

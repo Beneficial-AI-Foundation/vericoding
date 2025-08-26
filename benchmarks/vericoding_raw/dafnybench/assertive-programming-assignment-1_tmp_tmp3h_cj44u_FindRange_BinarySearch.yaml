@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate Sorted(q: seq<int>)
   {
@@ -20,8 +22,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method BinarySearch(q: seq<int>, key: int, lowerBound: nat, upperBound: nat, comparer: (int, int) -> bool) returns (index: nat)

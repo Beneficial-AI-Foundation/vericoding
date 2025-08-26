@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Liam Wynn, 3/13/2021, CS 510p
 
@@ -105,8 +107,8 @@ vc-preamble: |-
   */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method nit_increment(b : nat, n : nat) returns (sum : nat, carry : nat)

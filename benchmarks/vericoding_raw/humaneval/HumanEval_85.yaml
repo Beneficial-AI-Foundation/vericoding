@@ -15,15 +15,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (lst: List Int) : Int :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation [4, 2, 6, 7] = 2
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Int → Int)
@@ -46,6 +46,8 @@ vc-spec: |-
   (lst: List Int)
   : problem_spec implementation lst
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

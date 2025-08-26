@@ -1,10 +1,12 @@
+vc-description: |-
+
 vc-preamble: |-
   class CrashableMem<T> {
       var mem_ : array<T>;
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method read(off : int) returns (r : T)

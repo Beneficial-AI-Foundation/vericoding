@@ -18,21 +18,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (n: Nat) : Nat × Nat :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation 123 = (8, 13)
-  -- #test implementation 12 = (4, 6)
-  -- #test implementation 3 = (1, 2)
-  -- #test implementation 63 = (6, 8)
-  -- #test implementation 25 = (5, 6)
-  -- #test implementation 19 = (4, 6)
-  -- #test implementation 9 = (4, 5)
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: Nat → Nat × Nat)
@@ -63,6 +57,8 @@ vc-spec: |-
   (n: Nat)
   : problem_spec implementation n
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

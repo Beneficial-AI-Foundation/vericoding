@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Dafny is designed to be familiar to those programming in an OOP language like
   // Java, so, we have plain old ordinary mutable arrays rather than the functional
@@ -13,8 +15,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Isort(a: array<nat>)

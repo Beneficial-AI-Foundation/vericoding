@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // ASSIGNMENT P1
   // CMSC 433 FALL 2023
@@ -51,8 +53,8 @@ vc-preamble: |-
   // You do *not* need to implement the method!
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method IsSorted (a : array<int>) returns (isSorted : bool)

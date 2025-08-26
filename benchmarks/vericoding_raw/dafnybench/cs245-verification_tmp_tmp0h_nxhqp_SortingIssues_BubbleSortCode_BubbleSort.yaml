@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Sorting: 
   //        Pre/Post Condition Issues - An investigation 
@@ -10,8 +12,8 @@ vc-preamble: |-
   // What about the pre/post-conditions?
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method BubbleSort(A: array<int>, n: int)

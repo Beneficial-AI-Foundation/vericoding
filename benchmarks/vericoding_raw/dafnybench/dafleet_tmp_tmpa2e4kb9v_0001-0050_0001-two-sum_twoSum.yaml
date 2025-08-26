@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /* https://leetcode.com/problems/two-sum/
   Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -25,8 +27,8 @@ vc-preamble: |-
   // - `map` were Python dict
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method twoSum(nums: seq<int>, target: int) returns (pair: (int, int))

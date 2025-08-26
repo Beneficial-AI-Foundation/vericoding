@@ -1,31 +1,8 @@
-vc-preamble: |-
-  predicate sorted (a:array<int>, start:int, end:int) // all "before" end are sorted      
-   requires a!=null       
-   requires 0<=start<=end<=a.Length       
-   reads a       
-   {           
-     forall j,k:: start<=j<k<end ==> a[j]<=a[k]
-   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method InsertionSort (a:array<int>)
-  requires a!=null && a.Length>1 
-  ensures sorted(a, 0, a.Length) 
-  modifies a
-  // </vc-spec>
-
+vc-preamble: "predicate sorted (a:array<int>, start:int, end:int) // all \"before\" end are sorted      \n requires a!=null       \n requires 0<=start<=end<=a.Length       \n reads a       \n {           \n   forall j,k:: start<=j<k<end ==> a[j]<=a[k]\n }"
+vc-helpers: ''
+vc-spec: "method InsertionSort (a:array<int>)\nrequires a!=null && a.Length>1 \nensures sorted(a, 0, a.Length) \nmodifies a"
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  
-
+vc-postamble: ''

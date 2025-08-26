@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function Sum(v:array<int>,i:int,j:int):int
   reads v
@@ -33,8 +35,8 @@ vc-preamble: |-
   {(forall l,ss {:induction l}::j<=l<=i && ss==i+1 ==> Sum2(v,l,ss)<=s)}
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method segSumaMaxima2(v:array<int>,i:int) returns (s:int,k:int)

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //Bubblesort CS 494 submission
   //References: https://stackoverflow.com/questions/69364687/how-to-prove-time-complexity-of-bubble-sort-using-dafny/69365785#69365785
@@ -25,8 +27,8 @@ vc-preamble: |-
   // Here having the algorithm for the bubblesort
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method BubbleSort (a: array<int>)

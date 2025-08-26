@@ -22,17 +22,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (lst: List String) : List String :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation ['1234567'] = ["the number of odd elements 4n the str4ng 4 of the 4nput."]
-  -- #test implementation ['3',"11111111"] = ["the number of odd elements 1n the str1ng 1 of the 1nput.",
-  --  "the number of odd elements 8n the str8ng 8 of the 8nput."]
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List String → List String)
@@ -55,6 +53,8 @@ vc-spec: |-
   (lst: List String)
   : problem_spec implementation lst
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

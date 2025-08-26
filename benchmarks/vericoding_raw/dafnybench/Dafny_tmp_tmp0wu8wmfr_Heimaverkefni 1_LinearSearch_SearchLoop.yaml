@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Author of question: Snorri Agnarsson
   // Permalink of question: https://rise4fun.com/Dafny/0HRr
@@ -18,8 +20,8 @@ vc-preamble: |-
   // this file.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method SearchLoop( a: seq<int>, i: int, j: int, x: int ) returns (k: int)

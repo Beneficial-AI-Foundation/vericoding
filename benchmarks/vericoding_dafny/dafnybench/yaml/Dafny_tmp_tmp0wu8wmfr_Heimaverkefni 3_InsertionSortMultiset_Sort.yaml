@@ -1,13 +1,13 @@
 vc-preamble: |-
   // Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
   // Permalink spurningar: https://rise4fun.com/Dafny/G4sc3
-  
+
   // Höfundur lausnar:     Alexander Guðmundsson
   // Permalink lausnar:    https://rise4fun.com/Dafny/nujsu
-  
+
   // Insertion sort með hjálp helmingunarleitar.
-  
-  
+
+
   method Search( s: seq<int>, x: int ) returns ( k: int )
       // Ekki má breyta forskilyrðum eða eftirskilyrðum fallsins
       requires forall p,q | 0 <= p < q < |s| :: s[p] <= s[q];
@@ -20,25 +20,13 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method Sort( m: multiset<int> ) returns ( r: seq<int> )
       ensures multiset(r) == m;
       ensures forall p,q | 0 <= p < q < |r| :: r[p] <= r[q];
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  
-
+vc-postamble: ''

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
      CS:5810 Formal Methods in Software Engineering
@@ -47,8 +49,8 @@ vc-preamble: |-
   // Incrementing arrays
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method IncrementArray(a: array<int>) 

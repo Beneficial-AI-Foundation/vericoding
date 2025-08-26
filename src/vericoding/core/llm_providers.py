@@ -2,6 +2,8 @@
 
 import os
 from abc import ABC, abstractmethod
+from time import time, sleep
+from .config import ProcessingConfig
 
 import anthropic
 
@@ -136,6 +138,8 @@ class DeepSeekProvider(LLMProvider):
 
 def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
     """Factory function to create LLM providers."""
+    import sys
+    
     provider_configs = {
         "claude": {
             "class": AnthropicProvider,
@@ -156,21 +160,43 @@ def create_llm_provider(provider_name: str, model: str = None) -> LLMProvider:
 
     if provider_name not in provider_configs:
         available = ", ".join(provider_configs.keys())
-        raise ValueError(
-            f"Unsupported LLM provider: {provider_name}. Available: {available}"
-        )
+        print(f"Error: Unsupported LLM provider: {provider_name}. Available: {available}")
+        sys.exit(1)
 
     config = provider_configs[provider_name]
     env_var = config["env_var"]
     api_key = os.getenv(env_var)
 
     if not api_key:
-        raise ValueError(
-            f"{env_var} environment variable is required for {provider_name}.\n"
+        print(
+            f"Error: {env_var} environment variable is required for {provider_name}.\n"
             f"You can set it by:\n"
             f"1. Creating a .env file with: {env_var}=your-api-key\n"
-            f"2. Setting environment variable: export {env_var}=your-api-key"
+            f"2. Setting environment variable: export {env_var}=your-api-key\n"
+            f"\nNote: .env files are automatically loaded if they exist in the current or parent directory."
         )
+        sys.exit(1)
 
     selected_model = model or config["default_model"]
-    return config["class"](api_key, selected_model)
+    provider = config["class"](api_key, selected_model)
+    print(f"✓ {provider_name.upper()} API key found and provider initialized")
+    return provider
+
+
+
+
+
+def call_llm(provider: LLMProvider, config: ProcessingConfig, prompt: str, wandb=None) -> str:
+    """Call LLM with rate limiting and optional wandb logging."""
+    # Rate limit
+    sleep(config.api_rate_limit_delay)
+    start = time()
+    response = provider.call_api(prompt)
+    latency_ms = (time() - start) * 1000
+    if wandb and hasattr(wandb, "log"):
+        wandb.log({
+            "llm/calls": 1,
+            "llm/latency_ms": latency_ms,
+            "llm/model": config.llm_model or config.llm_provider
+        })
+    return response

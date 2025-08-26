@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
     ===============================================
@@ -89,8 +91,8 @@ vc-preamble: |-
     // Adds message m to the mailbox
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method add(m: Message)

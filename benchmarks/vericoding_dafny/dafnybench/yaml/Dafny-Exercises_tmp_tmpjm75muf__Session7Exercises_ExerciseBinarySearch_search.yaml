@@ -2,7 +2,7 @@ vc-preamble: |-
   predicate sorted(s : seq<int>) {
       forall u, w :: 0 <= u < w < |s| ==> s[u] <= s[w]
   }
-  
+
   method binarySearch(v:array<int>, elem:int) returns (p:int)
    requires sorted(v[0..v.Length])
    ensures -1<=p<v.Length
@@ -10,26 +10,14 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method search(v:array<int>,elem:int) returns (b:bool)
    requires sorted(v[0..v.Length])
   ensures b==(elem in v[0..v.Length])
    //Implement by calling binary search function
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  //Recursive binary search
-
+vc-postamble: //Recursive binary search

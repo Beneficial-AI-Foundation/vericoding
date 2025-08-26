@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //Problem01
 
@@ -26,8 +28,8 @@ vc-preamble: |-
   //strange() we will have that 1=2;
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method q(x:nat, y:nat) returns (z:nat)

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %testDafnyForEachResolver "%s" -- --warn-deprecation:false
 
@@ -73,8 +75,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Search(a: array<int>) returns (p: int, q: int)

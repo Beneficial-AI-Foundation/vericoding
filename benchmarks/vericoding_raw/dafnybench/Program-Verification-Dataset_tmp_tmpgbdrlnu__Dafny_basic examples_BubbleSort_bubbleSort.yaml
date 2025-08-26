@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate sorted(a:array<int>, from:int, to:int)
     requires a != null;
@@ -16,8 +18,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method bubbleSort (a: array<int>)

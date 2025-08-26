@@ -1,10 +1,12 @@
+vc-description: |-
+
 vc-preamble: |-
   // A8Q2 — Steph Renee McIntyre
   // Following the solutions from Carmen Bruni
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method A8Q1(x: int, y: int, z: int) returns (m: int)

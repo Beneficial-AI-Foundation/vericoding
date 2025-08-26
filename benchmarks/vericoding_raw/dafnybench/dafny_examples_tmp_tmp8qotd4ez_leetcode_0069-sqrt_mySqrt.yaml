@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Author: Shaobo He
 
@@ -11,8 +13,8 @@ vc-preamble: |-
   {}
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method mySqrt(x: int) returns (res: int)

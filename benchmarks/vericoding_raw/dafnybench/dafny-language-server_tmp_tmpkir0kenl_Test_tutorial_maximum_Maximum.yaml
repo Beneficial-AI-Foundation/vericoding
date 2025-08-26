@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %dafny /compile:0 /print:"%t.print" /dprint:"%t.dprint" /printTooltips "%s" > "%t"
   // RUN: %diff "%s.expect" "%t"
@@ -7,8 +9,8 @@ vc-preamble: |-
   // preconditions, as proved by the MaximumIsUnique lemma below.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Maximum(values: seq<int>) returns (max: int)

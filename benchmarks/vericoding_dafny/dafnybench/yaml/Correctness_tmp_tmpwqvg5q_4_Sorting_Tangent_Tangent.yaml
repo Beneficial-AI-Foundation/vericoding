@@ -5,41 +5,14 @@ vc-preamble: |-
     Assignemnt 3
     The University of Queensland
    */
-  
+
   // Question 1
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
-vc-spec: |-
-  // <vc-spec>
-  method Tangent(r: array<int>, x: array<int>)
-    returns (found: bool)
-    requires forall i:: 1 <= i < x.Length ==> 
-             x[i-1] < x[i]
-    requires forall i, j ::
-             0 <= i < j < x.Length ==>
-             x[i] < x[j]
-    ensures !found ==>
-            forall i,j ::
-            0 <= i < r.Length &&
-            0 <= j < x.Length ==>
-            r[i] != x[j]
-    ensures found ==>
-            exists i,j ::
-            0 <= i < r.Length &&
-            0 <= j < x.Length &&
-            r[i] == x[j]
-  // </vc-spec>
-
+vc-helpers: ''
+vc-spec: "method Tangent(r: array<int>, x: array<int>)\n  returns (found: bool)\n  requires forall i:: 1 <= i < x.Length ==> \n           x[i-1] < x[i]\n  requires forall i, j ::\n           0 <= i < j < x.Length ==>\n           x[i] < x[j]\n  ensures !found ==>\n          forall i,j ::\n          0 <= i < r.Length &&\n          0 <= j < x.Length ==>\n          r[i] != x[j]\n  ensures found ==>\n          exists i,j ::\n          0 <= i < r.Length &&\n          0 <= j < x.Length &&\n          r[i] == x[j]"
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
 vc-postamble: |-
   // Author: Leino, Title: Program Proofs
   method BinarySearch(a: array<int>, circle: int)
@@ -60,4 +33,3 @@ vc-postamble: |-
   {
     assume{:axiom} false;
   }
-

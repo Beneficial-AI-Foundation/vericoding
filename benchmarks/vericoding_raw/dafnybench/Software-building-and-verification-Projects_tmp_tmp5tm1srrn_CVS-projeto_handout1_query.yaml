@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // 1 a)
 
@@ -14,8 +16,8 @@ vc-preamble: |-
   // 1 b)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method query(a: array<int>, i: int, j: int) returns (res : int)

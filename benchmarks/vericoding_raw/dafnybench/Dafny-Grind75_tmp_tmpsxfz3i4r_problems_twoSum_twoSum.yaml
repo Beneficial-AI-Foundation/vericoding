@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate summingPair(i: nat, j: nat, nums: seq<int>, target: int)
       requires i < |nums|
@@ -7,8 +9,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method twoSum(nums: seq<int>, target: int) returns (pair: (nat, nat))

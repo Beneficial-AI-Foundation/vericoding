@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // ****************************************************************************************
   //                              DafnyIntro.dfy
@@ -31,8 +33,8 @@ vc-preamble: |-
   // Here is the proof using Dafny:
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method sumOdds(n:nat) returns (sum:nat)

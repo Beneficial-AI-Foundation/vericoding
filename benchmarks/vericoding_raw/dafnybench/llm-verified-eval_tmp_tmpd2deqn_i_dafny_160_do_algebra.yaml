@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function pow(base: int, exponent: int): int
     requires exponent >= 0
@@ -9,8 +11,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method do_algebra(operators: seq<char>, operands: seq<int>) returns (result: int)

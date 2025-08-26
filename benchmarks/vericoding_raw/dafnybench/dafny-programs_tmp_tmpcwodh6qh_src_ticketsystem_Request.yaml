@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Code taken from the following paper: http://leino.science/papers/krml260.pdf
 
@@ -64,8 +66,8 @@ vc-preamble: |-
       //     ensures Valid()
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Request(p: Process)

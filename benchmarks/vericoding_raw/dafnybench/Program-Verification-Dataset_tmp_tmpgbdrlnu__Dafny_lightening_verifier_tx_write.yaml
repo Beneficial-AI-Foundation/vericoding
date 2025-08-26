@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   class CrashableMem<T> {
       var mem_ : array<T>;
@@ -314,8 +316,8 @@ vc-preamble: |-
       }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method tx_write(offset: int, val : int)

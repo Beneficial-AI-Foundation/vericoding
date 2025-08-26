@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /**
    *  A proof in Dafny of the non blocking property of a queue.
@@ -76,8 +78,8 @@ vc-preamble: |-
           /** Event: a process puts an element in the queue.  */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method put(p: Process, t : T) 

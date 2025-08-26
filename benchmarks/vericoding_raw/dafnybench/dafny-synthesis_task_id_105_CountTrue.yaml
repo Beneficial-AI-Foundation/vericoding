@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function countTo( a:array<bool>, n:int ) : int
     requires a != null;
@@ -9,8 +11,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method CountTrue(a: array<bool>) returns (result: int)

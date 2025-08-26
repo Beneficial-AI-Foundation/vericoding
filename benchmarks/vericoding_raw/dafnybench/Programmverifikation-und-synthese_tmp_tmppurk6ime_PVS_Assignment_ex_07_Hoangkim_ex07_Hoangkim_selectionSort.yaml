@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //Problem01
   //a)
@@ -30,8 +32,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method selectionSort(a: array<int>)

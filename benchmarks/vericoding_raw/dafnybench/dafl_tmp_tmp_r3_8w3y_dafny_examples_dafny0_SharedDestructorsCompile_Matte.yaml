@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // RUN: %dafny /compile:0 /dprint:"%t.dprint" "%s" > "%t"
   // RUN: %dafny /noVerify /compile:4 /compileTarget:cs "%s" >> "%t"
@@ -22,8 +24,8 @@ vc-preamble: |-
   datatype Datte<T> = AA(a: int, x: int) | BB(b: bool, x: int) | CC(c: real) | DD(x: int, o: set<int>, p: bv27, q: T)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Matte(d: Datte<real>)

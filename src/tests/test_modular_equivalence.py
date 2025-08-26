@@ -226,7 +226,7 @@ fix_verification: "Fix verification errors"
     def test_output_generation_structure(self):
         """Test that output generation maintains expected structure."""
         # Mock results for testing
-        from vericoding.processing.file_processor import ProcessingResult
+        from vericoding.processing.spec_processor import ProcessingResult
 
         mock_results = [
             ProcessingResult(

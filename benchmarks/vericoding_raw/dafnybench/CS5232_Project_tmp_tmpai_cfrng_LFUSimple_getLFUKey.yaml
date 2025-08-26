@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   class LFUCache {
 
@@ -24,8 +26,8 @@ vc-preamble: |-
       }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method getLFUKey() returns (lfuKey : int) 

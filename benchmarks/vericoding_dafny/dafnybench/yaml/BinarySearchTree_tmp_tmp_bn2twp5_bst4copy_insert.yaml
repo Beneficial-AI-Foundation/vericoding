@@ -1,6 +1,6 @@
 vc-preamble: |-
   datatype Tree = Empty | Node(left: Tree, value: int, right: Tree)
-  
+
   predicate BinarySearchTree(tree: Tree)
     decreases tree
   {
@@ -12,7 +12,7 @@ vc-preamble: |-
       && BinarySearchTree(tree.left) && BinarySearchTree(tree.right)
       && minValue(tree.right, tree.value) && maxValue(tree.left, tree.value)
   }
-  
+
   predicate maxValue(tree: Tree, max: int)
     decreases tree
   {
@@ -20,7 +20,7 @@ vc-preamble: |-
     case Empty => true
     case Node(left,v,right) => (max > v) && maxValue(left, max) && maxValue(right, max)
   }
-  
+
   predicate minValue(tree: Tree, min: int)
     decreases tree
   {
@@ -28,26 +28,16 @@ vc-preamble: |-
     case Empty => true
     case Node(left,v,right) => (min < v) && minValue(left, min) && minValue(right, min)
   }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method insert(tree: Tree, value : int) returns (res: Tree)
     requires BinarySearchTree(tree)
     decreases tree;
     ensures BinarySearchTree(res)
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
 vc-postamble: |-
   method insertRecursion(tree: Tree, value: int) returns (res: Tree)
     requires BinarySearchTree(tree)
@@ -58,4 +48,3 @@ vc-postamble: |-
   {
     assume{:axiom} false;
   }
-

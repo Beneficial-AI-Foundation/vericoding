@@ -17,16 +17,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (numbers: List Rat) : Rat :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation [3, 1, 2, 4, 5] = 3
-  -- #test implementation [-10, 4, 6, 1000, 10, 20] = 15.0
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Rat → Rat)
@@ -58,6 +57,8 @@ vc-spec: |-
   (numbers: List Rat)
   : problem_spec implementation numbers
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

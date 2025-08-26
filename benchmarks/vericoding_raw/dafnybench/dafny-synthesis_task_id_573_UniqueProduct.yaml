@@ -1,15 +1,25 @@
+vc-description: |-
+
 vc-preamble: |-
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
+  ghost function SetProduct(s : set<int>) : int
+  {
+      if s == {} then 1
+      else var x :| x in s; 
+           x * SetProduct(s - {x})
+  }
+
   method UniqueProduct (arr: array<int>) returns (product: int)
      ensures product == SetProduct((set i | 0 <= i < arr.Length :: arr[i]))
 
 vc-code: |-
   {
+      assume(false);
       var p := 1;
       var seen: set<int> := {};
 
@@ -25,14 +35,6 @@ vc-code: |-
           }
       }
       product := p;
-  }
-
-vc-postamble: |-
-  ghost function SetProduct(s : set<int>) : int
-  {
-      if s == {} then 1
-      else var x :| x in s; 
-           x * SetProduct(s - {x})
   }
 
   /* 
@@ -52,7 +54,7 @@ vc-postamble: |-
            calc {
               SetProduct(s);
               y * SetProduct(s - {y});
-              { SetProductLemma(s - {y}, x); }
+              { SetProductLemma(s - {y}, x); assume(false);}
               y * x * SetProduct(s - {y} - {x});
               { assert s - {x} - {y} == s - {y} - {x};}
               y * x * SetProduct(s - {x} - {y});
@@ -63,4 +65,7 @@ vc-postamble: |-
         }
      }
   }
+
+vc-postamble: |-
+
 

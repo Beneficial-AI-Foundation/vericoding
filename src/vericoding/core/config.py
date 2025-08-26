@@ -1,6 +1,8 @@
 """Configuration management for vericoding."""
 
+import sys
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 import tomllib
 
@@ -59,7 +61,6 @@ class ProcessingConfig:
     output_dir: str
     summary_file: str
     debug_mode: bool
-    strict_spec_verification: bool
     max_workers: int
     api_rate_limit_delay: int
     llm_provider: str
@@ -148,3 +149,92 @@ def load_language_config() -> LanguageConfigResult:
         raise ValueError(
             f"Error processing configuration from {config_path}: {e}"
         ) from e
+
+
+def setup_configuration(args) -> ProcessingConfig:
+    """Set up processing configuration from command line arguments."""
+    from .language_tools import get_tool_path
+    
+    available_languages = ProcessingConfig.get_available_languages()
+    language_config = available_languages[args.language]
+
+    print(
+        f"=== {language_config.name} Specification-to-Code Processing Configuration ===\n"
+    )
+
+    files_dir = str(args.folder)
+
+    if not Path(files_dir).is_dir():
+        print(f"Error: Directory '{files_dir}' does not exist or is not accessible.")
+        sys.exit(1)
+
+    # Create timestamped output directory outside the input directory
+    timestamp = datetime.now().strftime("%d-%m_%Hh%M")
+
+    # Extract the relevant part of the input path for the output hierarchy
+    input_path = Path(files_dir).resolve()
+
+    # Find the src directory or use current working directory as base
+    current_path = input_path
+    src_base = None
+    depth = 0
+    while (
+        current_path.parent != current_path
+        and depth < args.max_directory_traversal_depth
+    ):
+        if current_path.name == "src":
+            src_base = current_path
+            break
+        current_path = current_path.parent
+        depth += 1
+
+    if src_base is None:
+        # If no 'src' directory found, use the directory containing the input as base
+        if input_path.parent.name == "src":
+            src_base = input_path.parent
+        else:
+            # Fallback: find a reasonable base directory
+            working_dir = Path.cwd()
+            src_base = (
+                working_dir / "src" if (working_dir / "src").exists() else working_dir
+            )
+
+    
+    # Create output directory structure
+    output_dir = str(src_base / f"code_from_spec_on_{timestamp}" / args.language)
+    summary_file = str(Path(output_dir) / "summary.txt")
+
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
+    print(f"Created output directory: {output_dir}")
+
+    # Create configuration object
+    config = ProcessingConfig(
+        language=args.language,
+        language_config=language_config,
+        files_dir=files_dir,
+        max_iterations=args.iterations,
+        output_dir=output_dir,
+        summary_file=summary_file,
+        debug_mode=args.debug,
+
+        max_workers=args.workers,
+        api_rate_limit_delay=args.api_rate_limit_delay,
+        llm_provider=args.llm_provider,
+        llm_model=args.llm_model,
+        max_directory_traversal_depth=args.max_directory_traversal_depth,
+    )
+
+    print("\nConfiguration:")
+    print(f"- Language: {language_config.name}")
+    print(f"- Directory: {files_dir}")
+    print(f"- Output directory: {output_dir}")
+    print(f"- Max iterations: {config.max_iterations}")
+    print(f"- Parallel workers: {config.max_workers}")
+    print(f"- Tool path: {get_tool_path(config)}")
+    print(f"- LLM Provider: {config.llm_provider}")
+    print(f"- LLM Model: {config.llm_model or 'default'}")
+    print(f"- Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
+    print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
+    print("\nProceeding with configuration...")
+
+    return config

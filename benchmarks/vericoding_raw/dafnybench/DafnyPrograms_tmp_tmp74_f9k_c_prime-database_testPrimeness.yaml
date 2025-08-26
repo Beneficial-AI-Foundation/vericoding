@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //predicate for primeness
   ghost predicate prime(n: nat)
@@ -47,8 +49,8 @@ vc-preamble: |-
     // method to test whether a number is prime, returns bool
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method testPrimeness(n: nat) returns (result: bool) 

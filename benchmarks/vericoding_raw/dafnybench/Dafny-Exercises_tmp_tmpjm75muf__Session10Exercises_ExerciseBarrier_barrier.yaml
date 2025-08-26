@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   //Method barrier below receives an array and an integer p
   //and returns a boolean b which is true if and only if 
@@ -12,8 +14,8 @@ vc-preamble: |-
   //3.Verify the method
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method barrier(v:array<int>,p:int) returns (b:bool)

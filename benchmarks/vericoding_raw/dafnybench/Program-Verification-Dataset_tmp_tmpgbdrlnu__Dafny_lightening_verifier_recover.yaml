@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   class CrashableMem<T> {
       var mem_ : array<T>;
@@ -277,8 +279,8 @@ vc-preamble: |-
       // we assume that recover won't crash (though this code works when recover can fail)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method recover()

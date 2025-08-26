@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   type T = int // for demo purposes, but could be another type
   predicate sorted(a: array<T>, n: nat) 
@@ -11,8 +13,8 @@ vc-preamble: |-
   // in a sorted array 'a', so that it remains sorted.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method binarySearch(a: array<T>, x: T) returns (index: int) 

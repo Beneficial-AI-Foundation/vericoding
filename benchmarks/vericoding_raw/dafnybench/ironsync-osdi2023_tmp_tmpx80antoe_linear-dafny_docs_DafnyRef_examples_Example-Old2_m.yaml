@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   class A {
     var value: int
@@ -13,8 +15,8 @@ vc-preamble: |-
      constructor () { a := new A(); }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method m()

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // 2. Given an array of positive and negative integers, it returns an array of the absolute value of all the integers. [-4,1,5,-2,-5]->[4,1,5,2,5]
 
@@ -7,8 +9,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method aba(a:array<int>)returns (b:array<int>)

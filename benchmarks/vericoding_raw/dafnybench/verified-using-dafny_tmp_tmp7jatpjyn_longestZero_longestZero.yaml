@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function getSize(i: int, j:int) : int
   {
@@ -8,8 +10,8 @@ vc-preamble: |-
   // sz: size, pos: position.   a[pos..(pos+sz)] will be all zeros
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method longestZero(a: array<int>) returns (sz:int, pos:int)   

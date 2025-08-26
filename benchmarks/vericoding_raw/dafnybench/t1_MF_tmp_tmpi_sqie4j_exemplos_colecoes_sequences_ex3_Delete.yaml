@@ -1,10 +1,12 @@
+vc-description: |-
+
 vc-preamble: |-
   // line contém uma string de tamanho l
   // remover p caracteres a partir da posição at
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Delete(line:array<char>, l:nat, at:nat, p:nat)

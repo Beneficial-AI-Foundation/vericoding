@@ -1,10 +1,12 @@
+vc-description: |-
+
 vc-preamble: |-
   // Works by dividing the input list into two parts: sorted and unsorted. At the beginning, 
   // the sorted part is empty and the unsorted part contains all the elements.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method SelectionSort(a: array<int>)

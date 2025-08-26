@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   predicate IsOdd(x: int)
   {
@@ -5,8 +7,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method FindFirstOdd(a: array<int>) returns (found: bool, index: int)

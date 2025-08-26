@@ -1,9 +1,11 @@
+vc-description: |-
+
 vc-preamble: |-
   //Problem01
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method square0(n:nat) returns (sqn : nat)

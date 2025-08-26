@@ -23,17 +23,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (s: String) (c: String) : String × Bool :=
-  -- <vc-code>
-  sorry
-  -- </vc-code>
-  
-  -- #test implementation "abcde" "ae" = ("bcd", False)
-  -- #test implementation "abcdef" "b" = ("acdef", False)
-  -- #test implementation "abcdedcba" "ab" = ("cdedc", True)
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  sorry
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → String → (String × Bool))
@@ -60,6 +58,8 @@ vc-spec: |-
   (s c: String)
   : problem_spec implementation s c
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Noa Leron 207131871
   // Tsuri Farhana 315016907
@@ -30,8 +32,8 @@ vc-preamble: |-
   */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Merge(b: array<int>, c: array<int>, d: array<int>)

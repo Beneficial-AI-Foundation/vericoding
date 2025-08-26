@@ -15,15 +15,15 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (l: List Int) : List Int :=
-  -- <vc-code>
-  l.eraseDup.mergeSort
-  -- </vc-code>
-  
-  #test implementation [5, 3, 5, 2, 3, 3, 9, 0, 123] = [0, 2, 3, 5, 9, 123]
 
-vc-spec: |-
+vc-implementation: |-
+  -- <vc-implementation>
+  l.eraseDup.mergeSort
+  -- </vc-implementation>
+  
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: List Int → List Int)
@@ -42,6 +42,8 @@ vc-spec: |-
   (l: List Int)
   : problem_spec implementation l
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

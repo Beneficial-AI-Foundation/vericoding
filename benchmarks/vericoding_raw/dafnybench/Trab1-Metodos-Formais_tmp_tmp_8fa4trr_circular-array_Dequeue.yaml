@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   /*
     Class CircularArray.
@@ -60,8 +62,8 @@ vc-preamble: |-
     */
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Dequeue() returns (e: int)

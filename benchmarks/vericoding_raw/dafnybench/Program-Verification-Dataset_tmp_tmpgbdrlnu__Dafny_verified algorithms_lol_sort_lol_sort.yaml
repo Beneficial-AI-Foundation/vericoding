@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // By `lol sort` here, I refer to a seemingly-broken sorting algorithm,
   // which actually somehow manages to work perfectly:
@@ -47,8 +49,8 @@ vc-preamble: |-
   // (Some invariants were tricky to find, but Dafny was smart enough otherwise)
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method lol_sort(a: array<int>)

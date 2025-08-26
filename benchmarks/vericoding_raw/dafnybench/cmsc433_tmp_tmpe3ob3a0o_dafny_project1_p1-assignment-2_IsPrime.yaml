@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // ASSIGNMENT P1
   // CMSC 433 FALL 2023
@@ -57,8 +59,8 @@ vc-preamble: |-
   // if and only if the given positive integer is prime.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method IsPrime (m : int) returns (isPrime : bool)

@@ -1,9 +1,11 @@
+vc-description: |-
+
 vc-preamble: |-
   //This method should return true iff pre is a prefix of str. That is, str starts with pre
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method isPrefix(pre:string, str:string) returns(res:bool)

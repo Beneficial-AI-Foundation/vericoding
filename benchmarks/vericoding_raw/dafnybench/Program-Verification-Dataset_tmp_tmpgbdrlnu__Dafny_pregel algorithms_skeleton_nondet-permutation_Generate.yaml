@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   ﻿module Permutation
   {
@@ -32,8 +34,8 @@ vc-preamble: |-
       }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Generate(n: int) returns (perm: array<int>)

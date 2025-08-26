@@ -1,57 +1,13 @@
-vc-preamble: |-
-  // see pdf 'ex6 & 7 documentation' for excercise question
-  
-  
-  datatype Bases = A | C | G | T
-  
-  //swaps two sequence indexes
-  method Exchanger(s: seq<Bases>, x:nat, y:nat) returns (t: seq<Bases>)
-  requires 0 < |s| && x < |s| && y < |s|
-  ensures |t| == |s|
-  ensures forall b:nat :: 0 <= b < |s| && b != x && b != y ==> t[b] == s[b]
-  ensures t[x] == s[y] && s[x] == t[y]
-  ensures multiset(s) == multiset(t)
-  {
-    assume{:axiom} false;
-  }
-  
-  //idea from Rustan Leino video "Basics of specification and verification: Lecture 3, the Dutch National Flag algorithm"
-  //modified for 4 elements
-  predicate below(first: Bases, second: Bases)
-  {
-      first == second ||
-      first == A || 
-      (first == C && (second ==  G || second == T)) || 
-      (first == G && second == T) ||
-      second == T
-  }
-  
-  //checks if a sequence is in base order
-  predicate bordered(s:seq<Bases>)
-  {
-      forall j, k :: 0 <= j < k < |s| ==> below(s[j], s[k])
-  }
-
-vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
-
+vc-preamble: "// see pdf 'ex6 & 7 documentation' for excercise question\n\n\ndatatype Bases = A | C | G | T\n\n//swaps two sequence indexes\nmethod Exchanger(s: seq<Bases>, x:nat, y:nat) returns (t: seq<Bases>)\nrequires 0 < |s| && x < |s| && y < |s|\nensures |t| == |s|\nensures forall b:nat :: 0 <= b < |s| && b != x && b != y ==> t[b] == s[b]\nensures t[x] == s[y] && s[x] == t[y]\nensures multiset(s) == multiset(t)\n{\n  assume{:axiom} false;\n}\n\n//idea from Rustan Leino video \"Basics of specification and verification: Lecture 3, the Dutch National Flag algorithm\"\n//modified for 4 elements\npredicate below(first: Bases, second: Bases)\n{\n    first == second ||\n    first == A || \n    (first == C && (second ==  G || second == T)) || \n    (first == G && second == T) ||\n    second == T\n}\n\n//checks if a sequence is in base order\npredicate bordered(s:seq<Bases>)\n{\n    forall j, k :: 0 <= j < k < |s| ==> below(s[j], s[k])\n}"
+vc-helpers: ''
 vc-spec: |-
-  // <vc-spec>
   method Sorter(bases: seq<Bases>) returns (sobases:seq<Bases>)
   requires 0 < |bases|
   ensures |sobases| == |bases|
   ensures bordered(sobases)
   ensures multiset(bases) == multiset(sobases);
-  // </vc-spec>
-
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
-
-vc-postamble: |-
-  
-
+vc-postamble: ''

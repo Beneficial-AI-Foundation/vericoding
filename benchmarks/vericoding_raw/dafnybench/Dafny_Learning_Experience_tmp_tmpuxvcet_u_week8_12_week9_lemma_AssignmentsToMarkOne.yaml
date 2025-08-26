@@ -1,11 +1,13 @@
+vc-description: |-
+
 vc-preamble: |-
   lemma DivisionLemma(n:int,d:int) 
       requires n > 0 && d>1
       ensures n/d < n
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method AssignmentsToMarkOne(students:int, tutors: int) returns (r:int)

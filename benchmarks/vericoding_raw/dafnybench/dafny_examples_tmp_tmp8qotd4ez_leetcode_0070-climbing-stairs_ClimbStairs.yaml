@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function Stairs(n: nat): nat {
     if n <= 1 then 1 else Stairs(n - 2) + Stairs(n - 1)
@@ -6,8 +8,8 @@ vc-preamble: |-
   // A simple specification
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method ClimbStairs(n: nat) returns (r: nat)

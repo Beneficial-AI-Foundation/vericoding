@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function multisets<T>(s: seq<T>): multiset<T>
   {
@@ -27,8 +29,8 @@ vc-preamble: |-
   // Sorts an array by simply swapping elements out of order, chosen randomly.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method rawsort(a: array<T>)

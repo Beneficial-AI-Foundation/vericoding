@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function verifyNeg(a: array<int>, idx: int) : nat
   reads a
@@ -8,8 +10,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method CountNeg(a: array<int>) returns (cnt: nat) 

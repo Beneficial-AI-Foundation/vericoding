@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // A LIFO queue (aka a stack) with limited capacity.
   class LimitedStack{
@@ -34,8 +36,8 @@ vc-preamble: |-
         // Returns the top element of the stack, without removing it.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Peek() returns (elem : int) 

@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   function sum(a: array<int>, i: int): int
       requires 0 <= i < a.Length
@@ -7,8 +9,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method cumsum(a: array<int>, b: array<int>)

@@ -32,23 +32,17 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (num: String) : Int :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   let IsPrimeHexDigit (c: Char): Int :=
       if c = '2' ∨ c = '3' ∨ c = '5' ∨ c = '7' ∨ c = 'B' ∨ c = 'D' then 1 else 0;
     num.foldl (λ acc a => acc + (IsPrimeHexDigit a)) 0
-  -- </vc-code>
+  -- </vc-implementation>
   
-  -- #test implementation "AB" = 1
-  -- #test implementation "1077E" = 2
-  -- #test implementation "ABED1A33" = 4
-  -- #test implementation "2020" = 2
-  -- #test implementation "123456789ABCDEF0" = 6
-  -- #test implementation "112233445566778899AABBCCDDEEFF00" = 12
-  -- #test implementation "" = 0
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: String → Int)
@@ -80,6 +74,8 @@ vc-spec: |-
   (num: String)
   : problem_spec implementation num
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   sorry

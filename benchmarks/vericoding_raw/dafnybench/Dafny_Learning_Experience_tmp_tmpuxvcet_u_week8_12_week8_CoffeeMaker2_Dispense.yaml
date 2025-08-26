@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   class Grinder { 
       ghost var hasBeans: bool 
@@ -83,8 +85,8 @@ vc-preamble: |-
       }
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Dispense()

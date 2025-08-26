@@ -21,9 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-code: |-
+vc-signature: |-
   def implementation (n: Nat) : List Nat :=
-  -- <vc-code>
+
+vc-implementation: |-
+  -- <vc-implementation>
   Id.run do
   let mut result := []
   for num in List.range' 2 n.sqrt do
@@ -32,13 +34,9 @@ vc-code: |-
       n' := n' / num
       result := result ++ [num]
   result
-  -- </vc-code>
+  -- </vc-implementation>
   
-  #test implementation 8 = [2, 2, 2]
-  #test implementation 25 = [5, 5]
-  #test implementation 70 = [2, 5, 7]
-
-vc-spec: |-
+vc-condition: |-
   def problem_spec
   -- function signature
   (implementation: Nat → List Nat)
@@ -58,6 +56,8 @@ vc-spec: |-
   (n: Nat)
   : problem_spec implementation n
   :=
+
+vc-proof: |-
   -- <vc-proof>
   by
   unfold problem_spec

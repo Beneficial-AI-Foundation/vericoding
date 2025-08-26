@@ -1,3 +1,5 @@
+vc-description: |-
+
 vc-preamble: |-
   // Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
   // Permalink spurningar: https://rise4fun.com/Dafny/G4sc3
@@ -8,8 +10,8 @@ vc-preamble: |-
   // Insertion sort með hjálp helmingunarleitar.
 
 vc-helpers: |-
-  <vc-helpers>
-  </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
 vc-spec: |-
   method Search( s: seq<int>, x: int ) returns ( k: int )
