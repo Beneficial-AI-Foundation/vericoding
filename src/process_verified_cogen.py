@@ -9,9 +9,8 @@ import json
 import tempfile
 import uuid
 import shutil
-import subprocess
 from pathlib import Path
-from typing import List, Tuple
+from typing import List
 import argparse
 
 # Import our existing functionality - DRY!
@@ -25,10 +24,7 @@ from clone_verified_cogen_rs import (
 from rust_to_yaml_converter import rust_to_yaml
 from verus_validation import (
     find_verus_executable, 
-    verify_rust_with_verus, 
-    create_yaml_without_helpers,
     validate_yaml_with_verus,
-    VerusNotFoundError
 )
 
 
