@@ -18,6 +18,8 @@ dependencies = [
     "tomli>=1.2.0; python_version<'3.11'", # TOML parsing for Python < 3.11
     "GitPython>=3.1.0", # Git operations
     "pandas>=2.3.1",
+    "dataclasses-json>=0.6.7", # JSON serialization for dataclasses
+    "tqdm>=4.67.1",
 ]
 
 [project.optional-dependencies]
