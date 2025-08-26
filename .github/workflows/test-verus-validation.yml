@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  verus-test-data-syntax:
     runs-on: ubuntu-latest
     
     steps:

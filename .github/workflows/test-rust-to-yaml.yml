@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  test-rust-to-yaml:
     runs-on: ubuntu-latest
     
     steps:
