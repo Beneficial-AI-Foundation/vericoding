@@ -1,0 +1,28 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  fn sum(n: u32) -> (s: u32)
+      requires n >= 0
+      ensures s == n * (n + 1) / 2
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+      assume(false);
+      0
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  fn main() {}
+
+  }
