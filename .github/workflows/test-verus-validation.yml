@@ -1,4 +1,4 @@
-name: Test Verus Validation
+name: Test verus-test-data syntax
 
 on:
   push:
@@ -21,6 +21,8 @@ jobs:
     - name: Install dependencies
       run: uv sync
     
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@1.88.0
     - name: Install Verus
       run: |
         wget https://github.com/verus-lang/verus/releases/download/release%2F0.2025.08.01.33c6cec/verus-0.2025.08.01.33c6cec-x86-linux.zip
