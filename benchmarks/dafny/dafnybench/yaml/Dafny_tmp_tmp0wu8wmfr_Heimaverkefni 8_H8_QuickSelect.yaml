@@ -12,9 +12,9 @@ vc-preamble: |-
     requires |m| > 0;
     ensures p in m;
     ensures m == pre+multiset{p}+post;
-{
+  {
   assume{:axiom} false;
-}
+  }
 
 
 vc-helpers: |-
