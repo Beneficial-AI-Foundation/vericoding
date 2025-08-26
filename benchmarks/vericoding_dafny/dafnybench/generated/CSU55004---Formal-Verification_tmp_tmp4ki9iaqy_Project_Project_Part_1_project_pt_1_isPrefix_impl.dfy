@@ -1,0 +1,33 @@
+//This method should return true iff pre is a prefix of str. That is, str starts with pre
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method isPrefix(pre:string, str:string) returns(res:bool)
+    requires 0 < |pre| <= |str| //This line states that this method requires that pre is less than or equal in length to str. Without this line, an out of bounds error is shown on line 14: "str[i] != pre[i]"
+// </vc-spec>
+// <vc-code>
+{
+  res := true;
+  var i := 0;
+  while i < |pre|
+    invariant 0 <= i <= |pre|
+    invariant res <==> forall j :: 0 <= j < i ==> str[j] == pre[j]
+  {
+    if str[i] != pre[i] {
+      res := false;
+      return;
+    }
+    i := i + 1;
+  }
+}
+// </vc-code>
+
+//This method should return true iff sub is a substring of str. That is, str contains sub
+
+//This method should return true iff str1 and str1 have a common substring of length k
+
+//This method should return the natural number len which is equal to the length of the longest common substring of str1 and str2. Note that every two strings have a common substring of length zero.
+
+//Main to test each method

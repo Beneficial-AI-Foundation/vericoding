@@ -1,0 +1,9 @@
+method IsBreakEven(costPrice: int, sellingPrice: int) returns (result: bool)
+    requires costPrice >= 0 && sellingPrice >= 0
+    ensures result <==> costPrice == sellingPrice
+// </vc-spec>
+// <vc-code>
+{
+  result := costPrice == sellingPrice;
+}
+// </vc-code>

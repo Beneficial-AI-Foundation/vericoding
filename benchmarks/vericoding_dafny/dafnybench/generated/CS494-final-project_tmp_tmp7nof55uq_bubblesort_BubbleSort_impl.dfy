@@ -1,0 +1,1 @@
+invariant forall k :: 0 <= k <= j ==> a[k] <= a[n - 1 - i]
