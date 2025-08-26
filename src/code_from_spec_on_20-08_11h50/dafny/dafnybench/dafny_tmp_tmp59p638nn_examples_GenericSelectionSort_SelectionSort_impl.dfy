@@ -1,0 +1,1 @@
+Sum(x) = if x <= 0 then 0 else Sum(x-1) + (x-1)
