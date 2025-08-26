@@ -1,0 +1,29 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn all_prefixes(s: &Vec<u8>) -> (prefixes: Vec<Vec<u8>>)
+      // post-conditions-start
+      ensures
+          prefixes.len() == s.len(),
+          forall|i: int| #![auto] 0 <= i < s.len() ==> prefixes[i]@ == s@.subrange(0, i + 1),
+      // post-conditions-end
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      vec![]
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}
