@@ -1,0 +1,141 @@
+vc-description: |-
+  /--
+  -----Description-----
+  This task requires writing a Lean 4 function that computes the longest common subsequence (LCS) of two input strings.
+  A subsequence of a string is a sequence that can be derived from the original string by deleting zero or more characters (not necessarily contiguous) without changing the order of the remaining characters.
+  The function should return a string that is:
+  1) A subsequence of both input strings.
+  2) As long as possible among all such common subsequences.
+  
+  If multiple LCS answers exist (with the same maximum length), returning any one of them is acceptable.
+  
+  -----Input-----
+  s1: The first input string.
+  s2: The second input string.
+  
+  -----Output-----
+  A string representing a longest common subsequence of s1 and s2.
+  -/
+
+vc-preamble: |-
+  @[reducible]
+  def longestCommonSubsequence_precond (s1 : String) (s2 : String) : Prop :=
+    True
+
+vc-helpers: |-
+  -- <vc-helpers>
+  partial def toCharList (s : String) : List Char :=
+    s.data
+  
+  partial def fromCharList (cs : List Char) : String :=
+    cs.foldl (fun acc c => acc.push c) ""
+  
+  partial def lcsAux (xs : List Char) (ys : List Char) : List Char :=
+    match xs, ys with
+    | [], _ => []
+    | _, [] => []
+    | x :: xs', y :: ys' =>
+      if x == y then
+        x :: lcsAux xs' ys'
+      else
+        let left  := lcsAux xs' (y :: ys')
+        let right := lcsAux (x :: xs') ys'
+        if left.length >= right.length then left else right
+  -- </vc-helpers>
+
+vc-signature: |-
+  def longestCommonSubsequence (s1 : String) (s2 : String) (h_precond : longestCommonSubsequence_precond (s1) (s2)) : String :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let xs := toCharList s1
+    let ys := toCharList s2
+    let resultList := lcsAux xs ys
+    fromCharList resultList
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible]
+  def longestCommonSubsequence_postcond (s1 : String) (s2 : String) (result: String) (h_precond : longestCommonSubsequence_precond (s1) (s2)) : Prop :=
+    let allSubseq (arr : List Char) := (arr.foldl fun acc x => acc ++ acc.map (fun sub => x :: sub)) [[]] |>.map List.reverse
+    let subseqA := allSubseq s1.toList
+    let subseqB := allSubseq s2.toList
+    let commonSubseq := subseqA.filter (fun l => subseqB.contains l)
+    commonSubseq.contains result.toList ∧ commonSubseq.all (fun l => l.length ≤ result.length)
+  
+  theorem longestCommonSubsequence_spec_satisfied (s1: String) (s2: String) (h_precond : longestCommonSubsequence_precond (s1) (s2)) :
+      longestCommonSubsequence_postcond (s1) (s2) (longestCommonSubsequence (s1) (s2) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  []
+  -- Tests
+  [
+      {
+          "input": {
+              "s1": "abcde",
+              "s2": "ace"
+          },
+          "expected": "ace",
+          "unexpected": [
+              "ab",
+              "abc",
+              "bce"
+          ]
+      },
+      {
+          "input": {
+              "s1": "aaaa",
+              "s2": "bbaaa"
+          },
+          "expected": "aaa",
+          "unexpected": [
+              "aaaaa",
+              "b",
+              "aaab"
+          ]
+      },
+      {
+          "input": {
+              "s1": "xyz",
+              "s2": "abc"
+          },
+          "expected": "",
+          "unexpected": [
+              "x",
+              "y",
+              "a",
+              "abc"
+          ]
+      },
+      {
+          "input": {
+              "s1": "axbxc",
+              "s2": "abxc"
+          },
+          "expected": "abxc",
+          "unexpected": [
+              "axc",
+              "abcx"
+          ]
+      },
+      {
+          "input": {
+              "s1": "AGGTAB",
+              "s2": "GXTXAYB"
+          },
+          "expected": "GTAB",
+          "unexpected": [
+              "GGTAB",
+              "AGGTA"
+          ]
+      }
+  ]
+  -/
+

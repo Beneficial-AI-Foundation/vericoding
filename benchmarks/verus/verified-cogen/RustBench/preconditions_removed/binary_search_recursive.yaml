@@ -1,0 +1,29 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn binary_search_recursive(v: &[i32], elem: i32, c: isize, f: isize) -> (p: isize)
+      ensures
+          -1 <= p < v.len(),
+          forall|u: int| 0 <= u <= p ==> v[u] <= elem,
+          forall|w: int| p < w < v.len() ==> v[w] > elem,
+      decreases f - c + 1
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  fn main() {}
+  }

@@ -1,0 +1,29 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  #[verifier::loop_isolation(false)]
+  fn unique(a: &[i32]) -> (result: Vec<i32>)
+      ensures
+          forall|i: int, j: int|
+              #![trigger result[i], result[j]]
+              0 <= i && i < j && j < result.len() ==> result[i] < result[j],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      vec![]
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  fn main() {}
+  }

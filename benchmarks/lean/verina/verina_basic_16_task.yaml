@@ -1,0 +1,164 @@
+vc-description: |-
+  /--
+  -----Description-----
+  This task requires writing a Lean 4 method that replaces every occurrence of a specified character within a string with a new character. The output should be a new string that maintains the same length as the input string, with all instances of the designated character replaced by the given substitute, and all other characters preserved unchanged.
+  
+  -----Input-----
+  The input consists of:
+  s: A string in which the replacement will occur.
+  oldChar: The character within the string that needs to be replaced.
+  newChar: The character that will substitute for every occurrence of oldChar.
+  
+  -----Output-----
+  The output is a string that meets the following:
+  - It has the same length as the input string.
+  - All occurrences of oldChar in the input string are replaced with newChar.
+  - All characters other than oldChar remain unchanged.
+  
+  -----Note-----
+  There are no preconditions; the method will always work. It is assumed that the input string is valid and non-null.
+  -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def replaceChars_precond (s : String) (oldChar : Char) (newChar : Char) : Prop :=
+    True
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def replaceChars (s : String) (oldChar : Char) (newChar : Char) (h_precond : replaceChars_precond (s) (oldChar) (newChar)) : String :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let cs := s.toList
+    let cs' := cs.map (fun c => if c = oldChar then newChar else c)
+    String.mk cs'
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def replaceChars_postcond (s : String) (oldChar : Char) (newChar : Char) (result: String) (h_precond : replaceChars_precond (s) (oldChar) (newChar)) :=
+    let cs := s.toList
+    let cs' := result.toList
+    result.length = s.length ∧
+    (∀ i, i < cs.length →
+      (cs[i]! = oldChar → cs'[i]! = newChar) ∧
+      (cs[i]! ≠ oldChar → cs'[i]! = cs[i]!))
+  
+  theorem replaceChars_spec_satisfied (s: String) (oldChar: Char) (newChar: Char) (h_precond : replaceChars_precond (s) (oldChar) (newChar)) :
+      replaceChars_postcond (s) (oldChar) (newChar) (replaceChars (s) (oldChar) (newChar) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    -- Unfold the definitions of replaceChars and replaceChars_postcond
+    unfold replaceChars replaceChars_postcond
+    -- Split the goal into two parts
+    constructor
+    · -- First part: length is preserved
+      simp [String.length]
+    · -- Second part: character replacement specification
+      simp_all
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  []
+  -- Tests
+  [
+      {
+          "input": {
+              "s": "hello, world!",
+              "oldChar": ",",
+              "newChar": ";"
+          },
+          "expected": "hello; world!",
+          "unexpected": [
+              "hello, world!",
+              "hello world!",
+              "hello;world!"
+          ]
+      },
+      {
+          "input": {
+              "s": "a,b.c",
+              "oldChar": ",",
+              "newChar": ":"
+          },
+          "expected": "a:b.c",
+          "unexpected": [
+              "a,b.c",
+              "a;b.c",
+              "ab:c"
+          ]
+      },
+      {
+          "input": {
+              "s": "hello, world!",
+              "oldChar": "o",
+              "newChar": "O"
+          },
+          "expected": "hellO, wOrld!",
+          "unexpected": [
+              "hello, world!",
+              "hellO, world!",
+              "hello, wOrld!"
+          ]
+      },
+      {
+          "input": {
+              "s": "",
+              "oldChar": "x",
+              "newChar": "y"
+          },
+          "expected": "",
+          "unexpected": [
+              " ",
+              "abc"
+          ]
+      },
+      {
+          "input": {
+              "s": "test",
+              "oldChar": "x",
+              "newChar": "y"
+          },
+          "expected": "test",
+          "unexpected": [
+              "testy",
+              "tset",
+              "yxest"
+          ]
+      },
+      {
+          "input": {
+              "s": "unchanged",
+              "oldChar": "u",
+              "newChar": "u"
+          },
+          "expected": "unchanged",
+          "unexpected": [
+              "nchanged",
+              "unchanged!",
+              "unchangEd"
+          ]
+      },
+      {
+          "input": {
+              "s": "aaa",
+              "oldChar": "a",
+              "newChar": "b"
+          },
+          "expected": "bbb",
+          "unexpected": [
+              "aaa",
+              "abb",
+              "bba"
+          ]
+      }
+  ]
+  -/
+

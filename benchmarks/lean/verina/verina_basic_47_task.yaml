@@ -1,0 +1,152 @@
+vc-description: |-
+  /--
+  -----Description-----
+  This task requires writing a Lean 4 method that calculates the sum of all the elements in an array of integers. The method should process the entire array and return the total sum of its elements.
+  
+  -----Input-----
+  The input consists of:
+  a: An array of integers.
+  
+  -----Output-----
+  The output is an integer:
+  Returns the sum of all elements in the input array.
+  
+  -----Note-----
+  - The input array is assumed not to be null.
+  -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def arraySum_precond (a : Array Int) : Prop :=
+    a.size > 0
+
+vc-helpers: |-
+  -- <vc-helpers>
+  theorem eq_of_sub_zero_and_ge (a b : Int) : a = b → a - b = 0 ∧ a ≥ b := by
+    omega
+  -- </vc-helpers>
+
+vc-signature: |-
+  def arraySum (a : Array Int) (h_precond : arraySum_precond (a)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    a.toList.sum
+  -- </vc-implementation>
+
+vc-condition: |-
+  def sumTo (a : Array Int) (n : Nat) : Int :=
+    if n = 0 then 0
+    else sumTo a (n - 1) + a[n - 1]!
+  @[reducible, simp]
+  def arraySum_postcond (a : Array Int) (result: Int) (h_precond : arraySum_precond (a)) :=
+    result - sumTo a a.size = 0 ∧
+    result ≥ sumTo a a.size
+  
+  theorem arraySum_spec_satisfied (a: Array Int) (h_precond : arraySum_precond (a)) :
+      arraySum_postcond (a) (arraySum (a) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    unfold arraySum arraySum_postcond
+    apply eq_of_sub_zero_and_ge a.toList.sum (sumTo a a.size)
+    cases a with | mk d =>
+      induction d with
+      | nil => simp [sumTo]
+      | cons x xs ih =>
+        simp [ih]
+  
+        have h1 : sumTo ⟨x::xs⟩ (xs.length + 1) = sumTo ⟨x::xs⟩ xs.length + (x::xs)[xs.length] := by
+          rw [sumTo]
+          simp
+  
+        rw [h1]
+  
+        have h2 : xs = List.nil → (x::xs)[xs.length] = x := by
+          intro h_nil
+          simp [h_nil]
+  
+        have h3 (x' : Int) (xs' : List Int): xs'.length ≠ 0 → sumTo ⟨x'::xs'⟩ xs'.length = x' + sumTo ⟨xs'⟩ (xs'.length - 1) := by
+          induction xs'.length with
+          | zero => simp
+          | succ n ih_len =>
+            simp
+            cases n with
+            | zero => simp [sumTo]
+            | succ n' =>
+              simp at ih_len
+              unfold sumTo
+              simp_all
+              rw [Int.add_assoc]
+  
+        cases xs with
+        | nil => simp [h2, sumTo]
+        | cons y ys =>
+          simp_all
+          have h4 : sumTo ⟨x::y::ys⟩ (ys.length + 1) = x + sumTo ⟨y::ys⟩ ys.length := by
+            apply h3 x (y::ys)
+            simp
+          rw [h4, sumTo]
+          simp
+          rw [Int.add_assoc]
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  [
+      {
+          "input": {
+              "a": "#[]"
+          }
+      }
+  ]
+  -- Tests
+  [
+      {
+          "input": {
+              "a": "#[1, 2, 3, 4, 5]"
+          },
+          "expected": 15,
+          "unexpected": [
+              14,
+              10,
+              16
+          ]
+      },
+      {
+          "input": {
+              "a": "#[13, 14, 15, 16, 17]"
+          },
+          "expected": 75,
+          "unexpected": [
+              74,
+              76,
+              70
+          ]
+      },
+      {
+          "input": {
+              "a": "#[-1, -2, -3]"
+          },
+          "expected": -6,
+          "unexpected": [
+              -5,
+              -7,
+              0
+          ]
+      },
+      {
+          "input": {
+              "a": "#[10, -10]"
+          },
+          "expected": 0,
+          "unexpected": [
+              5,
+              -5,
+              10
+          ]
+      }
+  ]
+  -/
+

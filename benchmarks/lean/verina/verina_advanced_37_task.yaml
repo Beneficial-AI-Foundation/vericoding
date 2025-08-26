@@ -1,0 +1,177 @@
+vc-description: |-
+  /--
+  -----Description-----
+  This task requires writing a Lean 4 method that returns the majority element from a list of integers.
+  
+  The majority element is the one that appears more than ⌊n / 2⌋ times in the list, where n is the list's length. You may assume that a majority element always exists in the input.
+  
+  -----Input-----
+  - nums: A list of integers (with at least one majority element).
+  
+  -----Output-----
+  Returns the majority element — the value that appears more than ⌊n / 2⌋ times.
+  -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def majorityElement_precond (nums : List Int) : Prop :=
+    True
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def majorityElement (nums : List Int) (h_precond : majorityElement_precond (nums)) : Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    let rec insert (x : Int) (xs : List Int) : List Int :=
+      match xs with
+      | [] => [x]
+      | h :: t =>
+        if x ≤ h then
+          x :: h :: t
+        else
+          h :: insert x t
+  
+    let rec insertionSort (xs : List Int) : List Int :=
+      match xs with
+      | [] => []
+      | h :: t =>
+        let sortedTail := insertionSort t
+        let sorted := insert h sortedTail
+        sorted
+  
+    let getAt := fun (xs : List Int) (i : Nat) =>
+      match xs.drop i with
+      | [] => 0
+      | h :: _ => h
+  
+    let sorted := insertionSort nums
+  
+    let len := sorted.length
+    let mid := len / 2
+    getAt sorted mid
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def majorityElement_postcond (nums : List Int) (result: Int) (h_precond : majorityElement_precond (nums)) : Prop :=
+    let n := nums.length
+    (List.count result nums > n / 2) ∧
+    nums.all (fun x => x = result ∨ List.count x nums ≤ n / 2)
+  
+  theorem majorityElement_spec_satisfied (nums: List Int) (h_precond : majorityElement_precond (nums)) :
+      majorityElement_postcond (nums) (majorityElement (nums) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  /-
+  -- Invalid Inputs
+  []
+  -- Tests
+  [
+      {
+          "input": {
+              "nums": "[3, 2, 3]"
+          },
+          "expected": 3,
+          "unexpected": [
+              2
+          ]
+      },
+      {
+          "input": {
+              "nums": "[2, 2, 1, 1, 1, 2, 2]"
+          },
+          "expected": 2,
+          "unexpected": [
+              1
+          ]
+      },
+      {
+          "input": {
+              "nums": "[1]"
+          },
+          "expected": 1,
+          "unexpected": [
+              0
+          ]
+      },
+      {
+          "input": {
+              "nums": "[4, 4, 4, 4, 4, 2, 2, 3, 3]"
+          },
+          "expected": 4,
+          "unexpected": [
+              2,
+              3
+          ]
+      },
+      {
+          "input": {
+              "nums": "[9, 8, 9, 9, 7, 9, 6, 9, 9]"
+          },
+          "expected": 9,
+          "unexpected": [
+              6,
+              7,
+              8
+          ]
+      },
+      {
+          "input": {
+              "nums": "[0, 0, 0, 0, 1]"
+          },
+          "expected": 0,
+          "unexpected": [
+              1
+          ]
+      },
+      {
+          "input": {
+              "nums": "[100000, 100000, 100000, 100000, -100000]"
+          },
+          "expected": 100000,
+          "unexpected": [
+              -100000
+          ]
+      },
+      {
+          "input": {
+              "nums": "[-1, -1, -1, -1, 0, 1, 2]"
+          },
+          "expected": -1,
+          "unexpected": [
+              0,
+              1,
+              2
+          ]
+      },
+      {
+          "input": {
+              "nums": "[5, 5, 5, 5, 5, 5, 5]"
+          },
+          "expected": 5,
+          "unexpected": [
+              0
+          ]
+      },
+      {
+          "input": {
+              "nums": "[1, 2, 3, 3, 3, 3, 3]"
+          },
+          "expected": 3,
+          "unexpected": [
+              1,
+              2
+          ]
+      }
+  ]
+  -/
+
