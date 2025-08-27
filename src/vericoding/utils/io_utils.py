@@ -56,7 +56,7 @@ def save_iteration_code(
     base_name = relative_path.stem
 
     if phase in ["original", "generated", "current"]:
-        iteration_file_name = f"{base_name}_iter_{iteration}_{phase}{config.language_config.file_extension}"
+        iteration_file_name = f"{base_name}_iter_{iteration}_{phase}{config.language_config.output_extension}"
 
         relative_dir = relative_path.parent
         # Save debug files in a separate 'debug' subdirectory
@@ -79,7 +79,7 @@ def save_iteration_code(
 def prepare_output_paths(
     config: ProcessingConfig, source_file_path: Path
 ) -> tuple[Path, Path, str]:
-    """Ensure output directory exists and return (yaml_output_path, dafny_output_path, verification_file_path)."""
+    """Ensure output directory exists and return (yaml_output_path, code_output_path, verification_file_path)."""
     try:
         relative_path = source_file_path.relative_to(Path(config.files_dir))
     except Exception:
@@ -97,23 +97,8 @@ def prepare_output_paths(
         output_subdir.mkdir(parents=True, exist_ok=True)
 
     yaml_output_path = output_subdir / f"{base_file_name}_impl.yaml"
-    dafny_output_path = output_subdir / f"{base_file_name}_impl.dfy"
-    return yaml_output_path, dafny_output_path, str(dafny_output_path)
-
-
-def save_yaml(output_path: Path, yaml_data: dict) -> None:
-    """Save YAML to disk with readable formatting using literal block style."""
-    with output_path.open("w") as f:
-        for key, value in yaml_data.items():
-            if value and value.strip():
-                # Non-empty content: use literal block style with content
-                f.write(f"{key}: |-\n")
-                for line in value.split('\n'):
-                    f.write(f"  {line}\n")
-            else:
-                # Empty content: use literal block style with blank line
-                f.write(f"{key}: |-\n\n")
-            f.write("\n")
+    code_output_path = output_subdir / f"{base_file_name}_impl{config.language_config.output_extension}"
+    return yaml_output_path, code_output_path, str(code_output_path)
 
 
 def parse_command_line_arguments():

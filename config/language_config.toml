@@ -4,6 +4,7 @@
 [dafny]
 name = "Dafny"
 file_extension = ".yaml"
+output_extension = ".dfy"
 tool_path_env = "DAFNY_PATH"
 default_tool_path = "dafny"
 prompts_file = "prompts.yaml"
@@ -44,6 +45,7 @@ spec_patterns = [
 [lean]
 name = "Lean"
 file_extension = ".lean"
+output_extension = ".lean"
 tool_path_env = "LEAN_PATH"
 default_tool_path = "lean"
 prompts_file = "prompts-lean.yaml"
@@ -89,7 +91,8 @@ spec_patterns = [
 
 [verus]
 name = "Verus"
-file_extension = ".rs"
+file_extension = ".yaml"
+output_extension = ".rs"
 tool_path_env = "VERUS_PATH"
 default_tool_path = "verus"
 prompts_file = "prompts.yaml"
