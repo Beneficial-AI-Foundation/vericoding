@@ -1,1 +1,29 @@
-I need to fix the type casting. Let me correct it:
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  fn remove_front(a: &Vec<i32>) -> (c: Vec<i32>)
+      requires a.len() > 0
+      ensures a@.subrange(1, a@.len() as int) == c@
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+      assume(false);
+      Vec::new()
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  
+  fn main() {}
+  
+  }
