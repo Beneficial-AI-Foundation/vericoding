@@ -1,31 +1,94 @@
-"vc-description": "You have a bag of size $n$. Also you have $m$ boxes. The size of\
-  \ $i$-th box is $a_i$, where each $a_i$ is an integer non-negative power of two.\n\
-  \nYou can divide boxes into two parts of equal size. Your goal is to fill the bag\
-  \ completely.\n\nFor example, if $n = 10$ and $a = [1, 1, 32]$ then you have to\
-  \ divide the box of size $32$ into two parts of size $16$, and then divide the box\
-  \ of size $16$. So you can fill the bag with boxes of size $1$, $1$ and $8$.\n\n\
-  Calculate the minimum number of divisions required to fill the bag of size $n$.\n\
-  \n\n-----Input-----\n\nThe first line contains one integer $t$ ($1 \\le t \\le 1000$)\
-  \ — the number of test cases.\n\nThe first line of each test case contains two integers\
-  \ $n$ and $m$ ($1 \\le n \\le 10^{18}, 1 \\le m \\le 10^5$) — the size of bag and\
-  \ the number of boxes, respectively.\n\nThe second line of each test case contains\
-  \ $m$ integers $a_1, a_2, \\dots , a_m$ ($1 \\le a_i \\le 10^9$) — the sizes of\
-  \ boxes. It is guaranteed that each $a_i$ is a power of two.\n\nIt is also guaranteed\
-  \ that sum of all $m$ over all test cases does not exceed $10^5$.\n\n\n-----Output-----\n\
-  \nFor each test case print one integer — the minimum number of divisions required\
-  \ to fill the bag of size $n$ (or $-1$, if it is impossible).\n\n\n-----Example-----\n\
-  Input\n3\n10 3\n1 32 1\n23 4\n16 1 4 1\n20 5\n2 1 16 1 8\n\nOutput\n2\n-1\n0"
-"vc-preamble": "import Imports.AllImports\n\ndef isPowerOfTwo (n : Nat) : Bool :=\n\
-  \  sorry\n\n\ndef sum (xs : List Nat) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def min_divisions (n : Nat) (boxes : List Nat) : Int :=\n  sorry\n"
-"vc-theorems": "theorem min_divisions_properties (n : Nat) (boxes : List Nat)\n  (h1\
-  \ : n ≥ 1) (h2 : ∀ x ∈ boxes, isPowerOfTwo x = true) :\n  let result := min_divisions\
-  \ n boxes;\n  (result ≠ -1 →\n    (result ≥ 0 ∧ \n     sum boxes ≥ n)) ∧\n  (sum\
-  \ boxes < n → \n    result = -1) := by\n  sorry\n\n\ntheorem min_divisions_with_sum\
-  \ (boxes : List Nat)\n  (h : ∀ x ∈ boxes, isPowerOfTwo x = true) :\n  let n := sum\
-  \ boxes;\n  let result := min_divisions n boxes;\n  result = 0 ∨ result = -1 :=\
-  \ by\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_divisions *test1\n\n\
-  /--\ninfo: -1\n-/\n#guard_msgs in\n#eval min_divisions *test2\n\n/--\ninfo: 0\n\
-  -/\n#guard_msgs in\n#eval min_divisions *test3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  You have a bag of size $n$. Also you have $m$ boxes. The size of $i$-th box is $a_i$, where each $a_i$ is an integer non-negative power of two.
+
+  You can divide boxes into two parts of equal size. Your goal is to fill the bag completely.
+
+  For example, if $n = 10$ and $a = [1, 1, 32]$ then you have to divide the box of size $32$ into two parts of size $16$, and then divide the box of size $16$. So you can fill the bag with boxes of size $1$, $1$ and $8$.
+
+  Calculate the minimum number of divisions required to fill the bag of size $n$.
+
+
+  -----Input-----
+
+  The first line contains one integer $t$ ($1 \le t \le 1000$) — the number of test cases.
+
+  The first line of each test case contains two integers $n$ and $m$ ($1 \le n \le 10^{18}, 1 \le m \le 10^5$) — the size of bag and the number of boxes, respectively.
+
+  The second line of each test case contains $m$ integers $a_1, a_2, \dots , a_m$ ($1 \le a_i \le 10^9$) — the sizes of boxes. It is guaranteed that each $a_i$ is a power of two.
+
+  It is also guaranteed that sum of all $m$ over all test cases does not exceed $10^5$.
+
+
+  -----Output-----
+
+  For each test case print one integer — the minimum number of divisions required to fill the bag of size $n$ (or $-1$, if it is impossible).
+
+
+  -----Example-----
+  Input
+  3
+  10 3
+  1 32 1
+  23 4
+  16 1 4 1
+  20 5
+  2 1 16 1 8
+
+  Output
+  2
+  -1
+  0
+vc-preamble: |
+  import Imports.AllImports
+
+  def isPowerOfTwo (n : Nat) : Bool :=
+    sorry
+
+
+  def sum (xs : List Nat) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def min_divisions (n : Nat) (boxes : List Nat) : Int :=
+    sorry
+vc-theorems: |
+  theorem min_divisions_properties (n : Nat) (boxes : List Nat)
+    (h1 : n ≥ 1) (h2 : ∀ x ∈ boxes, isPowerOfTwo x = true) :
+    let result := min_divisions n boxes;
+    (result ≠ -1 →
+      (result ≥ 0 ∧ 
+       sum boxes ≥ n)) ∧
+    (sum boxes < n → 
+      result = -1) := by
+    sorry
+
+
+  theorem min_divisions_with_sum (boxes : List Nat)
+    (h : ∀ x ∈ boxes, isPowerOfTwo x = true) :
+    let n := sum boxes;
+    let result := min_divisions n boxes;
+    result = 0 ∨ result = -1 := by
+    sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_divisions *test1
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval min_divisions *test2
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_divisions *test3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

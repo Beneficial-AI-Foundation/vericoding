@@ -1,14 +1,52 @@
-"vc-description": "Complete the code which should return `true` if the given object\
-  \ is a single ASCII letter (lower or upper case), `false` otherwise."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_letter (s : String) : Bool := sorry\n\ntheorem letter_length_check\
-  \ : \n  ∀ s : String, s.length ≠ 1 → ¬(is_letter s) := sorry\n"
-"vc-theorems": "theorem letter_matches_ascii (s : String) (h: s.length = 1):\n  is_letter\
-  \ s = s.data[0]!.isAlpha := sorry\n\n\ntheorem letters_are_letters :\n  ∀ c : Char,\
-  \ c.isAlpha → is_letter c.toString := sorry\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval is_letter \"\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_letter\
-  \ \"a\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_letter \"X\"\n\n/--\ninfo:\
-  \ False\n-/\n#guard_msgs in\n#eval is_letter \"7\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval is_letter \"ab\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Complete the code which should return `true` if the given object is a single ASCII letter (lower or upper case), `false` otherwise.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_letter (s : String) : Bool := sorry
+
+  theorem letter_length_check : 
+    ∀ s : String, s.length ≠ 1 → ¬(is_letter s) := sorry
+vc-theorems: |
+  theorem letter_matches_ascii (s : String) (h: s.length = 1):
+    is_letter s = s.data[0]!.isAlpha := sorry
+
+
+  theorem letters_are_letters :
+    ∀ c : Char, c.isAlpha → is_letter c.toString := sorry
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_letter ""
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_letter "a"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_letter "X"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_letter "7"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_letter "ab"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

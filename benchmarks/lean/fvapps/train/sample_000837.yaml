@@ -1,27 +1,55 @@
-"vc-description": "Voritex a big data scientist collected huge amount of big data\
-  \ having structure of two rows and n columns.\nVoritex is storing all the valid\
-  \ data for manipulations and pressing invalid command when data not satisfying the\
-  \ constraints.\nVoritex likes brute force method and he calls it as BT, he decided\
-  \ to run newly created BT engine for getting good result.\nAt each instance when\
-  \ BT engine is outputting a newly created number Voritex calls it as BT number.\n\
-  Voritex is daydreaming and thinking that his engine is extremely optimised and will\
-  \ get an interview call in which he will be explaining the structure of BT engine\
-  \ and which will be staring from 1 and simultaneously performing $i$-th xor operation\
-  \ with $i$ and previously(one step before) obtained BT number.\nBT engine is outputting\
-  \ the $K$-th highest BT number in the first $N$ natural numbers.\nChef : (thinking)\
-  \ I also want to create BT engine……..\n\n-----Input:-----\n- The first line of the\
-  \ input contains a single integer $T$ denoting the number of test cases. The description\
-  \ of T test cases follows.\n- The line of each test case contains a two integers\
-  \ $N$ and $K$.\n\n-----Output:-----\nFor each test case, print a single line containing\
-  \ integer $K$-th highest number else print -$1$ when invalid command pressed.\n\n\
-  -----Constraints-----\n- $1 \\leq T \\leq 100000$\n- $1 \\leq N \\leq 100000$\n\
-  - $1 \\leq K \\leq N$\n\n-----Sample Input:-----\n2\n4 2\n5 5\n\n-----Sample Output:-----\n\
-  2\n0\n\n-----EXPLANATION:-----\nFor first valid constraints generating output as\
-  \ 0 2 1 5 \n1^1 first BT number is 0\n2^0 second BT number is 2\n3^2 third BT number\
-  \ is 1\n4^1 fourth BT number is 5\nHence the answer is 2."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_kth_highest_bt_number (n k : Nat) : Int :=\nsorry\n\n\n"
-"vc-theorems": "theorem find_kth_highest_non_negative (n k : Nat) :\n  find_kth_highest_bt_number\
-  \ n k ≠ -1 →\n  find_kth_highest_bt_number n k ≥ 0 :=\nsorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Voritex a big data scientist collected huge amount of big data having structure of two rows and n columns.
+  Voritex is storing all the valid data for manipulations and pressing invalid command when data not satisfying the constraints.
+  Voritex likes brute force method and he calls it as BT, he decided to run newly created BT engine for getting good result.
+  At each instance when BT engine is outputting a newly created number Voritex calls it as BT number.
+  Voritex is daydreaming and thinking that his engine is extremely optimised and will get an interview call in which he will be explaining the structure of BT engine and which will be staring from 1 and simultaneously performing $i$-th xor operation with $i$ and previously(one step before) obtained BT number.
+  BT engine is outputting the $K$-th highest BT number in the first $N$ natural numbers.
+  Chef : (thinking) I also want to create BT engine……..
+
+  -----Input:-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of T test cases follows.
+  - The line of each test case contains a two integers $N$ and $K$.
+
+  -----Output:-----
+  For each test case, print a single line containing integer $K$-th highest number else print -$1$ when invalid command pressed.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100000$
+  - $1 \leq N \leq 100000$
+  - $1 \leq K \leq N$
+
+  -----Sample Input:-----
+  2
+  4 2
+  5 5
+
+  -----Sample Output:-----
+  2
+  0
+
+  -----EXPLANATION:-----
+  For first valid constraints generating output as 0 2 1 5 
+  1^1 first BT number is 0
+  2^0 second BT number is 2
+  3^2 third BT number is 1
+  4^1 fourth BT number is 5
+  Hence the answer is 2.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def find_kth_highest_bt_number (n k : Nat) : Int :=
+  sorry
+
+
+vc-theorems: |-
+  theorem find_kth_highest_non_negative (n k : Nat) :
+    find_kth_highest_bt_number n k ≠ -1 →
+    find_kth_highest_bt_number n k ≥ 0 :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

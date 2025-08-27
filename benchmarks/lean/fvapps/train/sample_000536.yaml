@@ -1,37 +1,88 @@
-"vc-description": "Chef Tobby is playing a rapid fire with Bhuvan. He gives Bhuvan\
-  \ a string S and each time, Bhuvan has to guess whether there exists 2 equal subsequences\
-  \ in the string or not.\nBhuvan got a perfect score in the game with Chef Tobby.\
-  \ However, Chef Tobby has now asked Bhuvan to write a program that will do this\
-  \ automatically given a string S. Bhuvan is an intelligent man but he does not know\
-  \ how to write a code. Can you help him?\nFind two different subsequences such that\
-  \ they are equal in their value, more formally, find two sequences of indices (a1,\
-  \ a2, ..., ak-1, ak) and (b1, b2, ..., bk-1, bk) such that:\n\n- 1≤ ai, bi ≤ |S|\n\
-  - ai < ai+1 for all valid i\n- bi < bi+1 for all valid i\n- Sai = Sbi for all valid\
-  \ i\n- there exist at least one i such that ai is not equal to bi\n\n-----Input\
-  \ section-----\nThe first line contains T, the number of test cases.\nEach of the\
-  \ next T lines contain one string S each.\nInput will only consist of lowercase\
-  \ english characters\n\n-----Output section-----\nFor each test case, output \"\
-  yes\" or \"no\" (without quotes) as the solution to the problem.\n\n-----Input constraints-----\n\
-  1 ≤ T ≤ 1000\n1 ≤ length of S ≤ 100\n\n-----Sample Input-----\n4\nlikecs\nvenivedivici\n\
-  bhuvan\ncodechef\n\n-----Sample Output-----\nno\nyes\nno\nyes\n\n-----Explanation-----\n\
-  In test case 2, one of the possible equal subsequence is \"vi\" and \"vi\". (one\
-  \ at position {0, 3} and other at {4, 7}, assuming 0-based indexing).\nIn test case\
-  \ 4, one of the possible equal subsequence is \"ce\" and \"ce\". (one at position\
-  \ {0, 3} and other at {4, 6}, assuming 0-based indexing)."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def has_equal_subsequences (s: String) : String := sorry\n\ntheorem\
-  \ has_equal_subsequences_output_yes_or_no (s: String) :\n  s ≠ \"\" → has_equal_subsequences\
-  \ s = \"yes\" ∨ has_equal_subsequences s = \"no\" := sorry\n"
-"vc-theorems": "theorem has_equal_subsequences_duplicate_yes {s: String} {c: Char}\
-  \ :\n  s.length ≥ 1 → has_equal_subsequences (String.mk [c, c] ++ s) = \"yes\" :=\
-  \ sorry\n\n\ntheorem has_equal_subsequences_unique_no {s: String} :\n  (∀ (i j :\
-  \ String.Pos), i.1 < s.length → j.1 < s.length → i ≠ j → s.get i ≠ s.get j) →\n\
-  \  has_equal_subsequences s = \"no\" := sorry\n\n\ntheorem has_equal_subsequences_empty_or_single_no\
-  \ (s: String) :\n  s.length ≤ 1 → has_equal_subsequences s = \"no\" := sorry\n\n\
-  /--\ninfo: 'no'\n-/\n#guard_msgs in\n#eval has_equal_subsequences \"likecs\"\n\n\
-  /--\ninfo: 'yes'\n-/\n#guard_msgs in\n#eval has_equal_subsequences \"venivedivici\"\
-  \n\n/--\ninfo: 'no'\n-/\n#guard_msgs in\n#eval has_equal_subsequences \"bhuvan\"\
-  \n\n/--\ninfo: 'yes'\n-/\n#guard_msgs in\n#eval has_equal_subsequences \"codechef\"\
-  \n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Chef Tobby is playing a rapid fire with Bhuvan. He gives Bhuvan a string S and each time, Bhuvan has to guess whether there exists 2 equal subsequences in the string or not.
+  Bhuvan got a perfect score in the game with Chef Tobby. However, Chef Tobby has now asked Bhuvan to write a program that will do this automatically given a string S. Bhuvan is an intelligent man but he does not know how to write a code. Can you help him?
+  Find two different subsequences such that they are equal in their value, more formally, find two sequences of indices (a1, a2, ..., ak-1, ak) and (b1, b2, ..., bk-1, bk) such that:
+
+  - 1≤ ai, bi ≤ |S|
+  - ai < ai+1 for all valid i
+  - bi < bi+1 for all valid i
+  - Sai = Sbi for all valid i
+  - there exist at least one i such that ai is not equal to bi
+
+  -----Input section-----
+  The first line contains T, the number of test cases.
+  Each of the next T lines contain one string S each.
+  Input will only consist of lowercase english characters
+
+  -----Output section-----
+  For each test case, output "yes" or "no" (without quotes) as the solution to the problem.
+
+  -----Input constraints-----
+  1 ≤ T ≤ 1000
+  1 ≤ length of S ≤ 100
+
+  -----Sample Input-----
+  4
+  likecs
+  venivedivici
+  bhuvan
+  codechef
+
+  -----Sample Output-----
+  no
+  yes
+  no
+  yes
+
+  -----Explanation-----
+  In test case 2, one of the possible equal subsequence is "vi" and "vi". (one at position {0, 3} and other at {4, 7}, assuming 0-based indexing).
+  In test case 4, one of the possible equal subsequence is "ce" and "ce". (one at position {0, 3} and other at {4, 6}, assuming 0-based indexing).
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def has_equal_subsequences (s: String) : String := sorry
+
+  theorem has_equal_subsequences_output_yes_or_no (s: String) :
+    s ≠ "" → has_equal_subsequences s = "yes" ∨ has_equal_subsequences s = "no" := sorry
+vc-theorems: |
+  theorem has_equal_subsequences_duplicate_yes {s: String} {c: Char} :
+    s.length ≥ 1 → has_equal_subsequences (String.mk [c, c] ++ s) = "yes" := sorry
+
+
+  theorem has_equal_subsequences_unique_no {s: String} :
+    (∀ (i j : String.Pos), i.1 < s.length → j.1 < s.length → i ≠ j → s.get i ≠ s.get j) →
+    has_equal_subsequences s = "no" := sorry
+
+
+  theorem has_equal_subsequences_empty_or_single_no (s: String) :
+    s.length ≤ 1 → has_equal_subsequences s = "no" := sorry
+
+  /--
+  info: 'no'
+  -/
+  #guard_msgs in
+  #eval has_equal_subsequences "likecs"
+
+  /--
+  info: 'yes'
+  -/
+  #guard_msgs in
+  #eval has_equal_subsequences "venivedivici"
+
+  /--
+  info: 'no'
+  -/
+  #guard_msgs in
+  #eval has_equal_subsequences "bhuvan"
+
+  /--
+  info: 'yes'
+  -/
+  #guard_msgs in
+  #eval has_equal_subsequences "codechef"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

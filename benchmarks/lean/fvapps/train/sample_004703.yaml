@@ -1,18 +1,48 @@
-"vc-description": "Write a function that receives two strings as parameter. This strings\
-  \ are in the following format of date: `YYYY/MM/DD`.\nYour job is: Take the `years`\
-  \ and calculate the difference between them.\n\nExamples:\n```\n'1997/10/10' and\
-  \ '2015/10/10' -> 2015 - 1997 = returns 18 \n'2015/10/10' and '1997/10/10' -> 2015\
-  \ - 1997 = returns 18\n```\nAt this level, you don't need validate months and days\
-  \ to calculate the difference."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def how_many_years (date1 : String) (date2 : String) : Nat := sorry\n\
-  \ntheorem how_many_years_symmetric (date1 date2 : String) :\n  how_many_years date1\
-  \ date2 = how_many_years date2 date1 := sorry \n"
-"vc-theorems": "theorem how_many_years_same_date (date : String) :\n  how_many_years\
-  \ date date = 0 := sorry\n\n\ntheorem how_many_years_nonnegative (date1 date2 :\
-  \ String) :\n  how_many_years date1 date2 ≥ 0 := sorry\n\n/--\ninfo: 18\n-/\n#guard_msgs\
-  \ in\n#eval how_many_years \"1997/10/10\" \"2015/10/10\"\n\n/--\ninfo: 18\n-/\n\
-  #guard_msgs in\n#eval how_many_years \"2015/10/10\" \"1997/10/10\"\n\n/--\ninfo:\
-  \ 0\n-/\n#guard_msgs in\n#eval how_many_years \"2000/01/01\" \"2000/01/01\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Write a function that receives two strings as parameter. This strings are in the following format of date: `YYYY/MM/DD`.
+  Your job is: Take the `years` and calculate the difference between them.
+
+  Examples:
+  ```
+  '1997/10/10' and '2015/10/10' -> 2015 - 1997 = returns 18 
+  '2015/10/10' and '1997/10/10' -> 2015 - 1997 = returns 18
+  ```
+  At this level, you don't need validate months and days to calculate the difference.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def how_many_years (date1 : String) (date2 : String) : Nat := sorry
+
+  theorem how_many_years_symmetric (date1 date2 : String) :
+    how_many_years date1 date2 = how_many_years date2 date1 := sorry 
+vc-theorems: |
+  theorem how_many_years_same_date (date : String) :
+    how_many_years date date = 0 := sorry
+
+
+  theorem how_many_years_nonnegative (date1 date2 : String) :
+    how_many_years date1 date2 ≥ 0 := sorry
+
+  /--
+  info: 18
+  -/
+  #guard_msgs in
+  #eval how_many_years "1997/10/10" "2015/10/10"
+
+  /--
+  info: 18
+  -/
+  #guard_msgs in
+  #eval how_many_years "2015/10/10" "1997/10/10"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval how_many_years "2000/01/01" "2000/01/01"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

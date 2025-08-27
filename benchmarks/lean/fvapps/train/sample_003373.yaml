@@ -1,12 +1,47 @@
-"vc-description": "Given a number **n**, return the number of positive odd numbers\
-  \ below **n**, EASY!\n\nExpect large Inputs!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def odd_count (n : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem odd_count_nonnegative (n : Nat) :\n  odd_count n ≥ 0 :=\n\
-  \  sorry\n\n\ntheorem odd_count_half_input (n : Nat) :\n  odd_count n = n / 2 :=\n\
-  \  sorry\n\n\ntheorem odd_count_consecutive_diff (n : Nat) :\n  odd_count (n + 1)\
-  \ - odd_count n ≤ 1 :=\n  sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval odd_count\
-  \ 15\n\n/--\ninfo: 7511\n-/\n#guard_msgs in\n#eval odd_count 15023\n\n/--\ninfo:\
-  \ 4\n-/\n#guard_msgs in\n#eval odd_count 8\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given a number **n**, return the number of positive odd numbers below **n**, EASY!
+
+  Expect large Inputs!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def odd_count (n : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem odd_count_nonnegative (n : Nat) :
+    odd_count n ≥ 0 :=
+    sorry
+
+
+  theorem odd_count_half_input (n : Nat) :
+    odd_count n = n / 2 :=
+    sorry
+
+
+  theorem odd_count_consecutive_diff (n : Nat) :
+    odd_count (n + 1) - odd_count n ≤ 1 :=
+    sorry
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval odd_count 15
+
+  /--
+  info: 7511
+  -/
+  #guard_msgs in
+  #eval odd_count 15023
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval odd_count 8
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

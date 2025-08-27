@@ -1,19 +1,59 @@
-"vc-description": "The snail crawls up the column. During the day it crawls up some\
-  \ distance. During the night she sleeps, so she slides down for some distance (less\
-  \ than crawls up during the day).\n\nYour function takes three arguments:\n1. The\
-  \ height of the column (meters)\n2. The distance that the snail crawls during the\
-  \ day (meters)\n3. The distance that the snail slides down during the night (meters)\n\
-  \nCalculate number of day when the snail will reach the top of the column."
-"vc-preamble": "import Imports.AllImports\n\ndef snail (column : Int) (day : Int)\
-  \ (night : Int) : Int :=\n  sorry\n\n-- Helper function to simulate ceiling division"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def ceilDiv (a b : Int) : Int :=\n  sorry\n"
-"vc-theorems": "theorem snail_result_positive {column day night : Int}\n  (h1 : column\
-  \ > 0)\n  (h2 : day > night)\n  (h3 : day > 0)\n  (h4 : night ≥ 0) :\n  snail column\
-  \ day night ≥ 1 := sorry\n\n\ntheorem snail_reaches_top {column day night : Int}\n\
-  \  (h1 : column > 0)\n  (h2 : day > night)\n  (h3 : day > 0)\n  (h4 : night ≥ 0)\
-  \ :\n  let result := snail column day night\n  (result * day) - ((result-1) * night)\
-  \ ≥ column := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval snail 3 2 1\n\n/--\n\
-  info: 5\n-/\n#guard_msgs in\n#eval snail 10 3 1\n\n/--\ninfo: 1\n-/\n#guard_msgs\
-  \ in\n#eval snail 5 10 3\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  The snail crawls up the column. During the day it crawls up some distance. During the night she sleeps, so she slides down for some distance (less than crawls up during the day).
+
+  Your function takes three arguments:
+  1. The height of the column (meters)
+  2. The distance that the snail crawls during the day (meters)
+  3. The distance that the snail slides down during the night (meters)
+
+  Calculate number of day when the snail will reach the top of the column.
+vc-preamble: |-
+  import Imports.AllImports
+
+  def snail (column : Int) (day : Int) (night : Int) : Int :=
+    sorry
+
+  -- Helper function to simulate ceiling division
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def ceilDiv (a b : Int) : Int :=
+    sorry
+vc-theorems: |
+  theorem snail_result_positive {column day night : Int}
+    (h1 : column > 0)
+    (h2 : day > night)
+    (h3 : day > 0)
+    (h4 : night ≥ 0) :
+    snail column day night ≥ 1 := sorry
+
+
+  theorem snail_reaches_top {column day night : Int}
+    (h1 : column > 0)
+    (h2 : day > night)
+    (h3 : day > 0)
+    (h4 : night ≥ 0) :
+    let result := snail column day night
+    (result * day) - ((result-1) * night) ≥ column := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval snail 3 2 1
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval snail 10 3 1
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval snail 5 10 3
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

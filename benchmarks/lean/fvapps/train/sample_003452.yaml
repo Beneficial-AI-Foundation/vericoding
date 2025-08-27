@@ -1,32 +1,71 @@
-"vc-description": "Ever the learned traveller, Alan Partridge has pretty strong views\
-  \ on London:\n\n```\n\"Go to London. I guarantee you'll either be mugged or not\
-  \ appreciated.\nCatch the train to London, stopping at Rejection, Disappointment,\
-  \ Backstabbing Central and Shattered Dreams Parkway.\"\n```\nYour job is to check\
-  \ that the provided list of stations contains all of the stops Alan mentions. There\
-  \ will be other stations in the array.  Example:\n\n```\n['Rejection', 'Disappointment',\
-  \ 'Backstabbing Central', 'Shattered Dreams Parkway']\n```\n\nIf the stations all\
-  \ appear, return 'Smell my cheese you mother!', if not,  return 'No, seriously,\
-  \ run. You will miss it.'.\n\nOther katas in this series:\nAlan Partridge I - Partridge\
-  \ Watch\nAlan Partridge II - Apple Turnover"
-"vc-preamble": "import Imports.AllImports\n\ndef REQUIRED_STATIONS : List String :=\
-  \ \n  [\"Rejection\", \"Disappointment\", \"Backstabbing Central\", \"Shattered\
-  \ Dreams Parkway\"]\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isSubset (l1 l2 : List String) : Bool := sorry\n\ndef alan\
-  \ (stations : List String) : String := sorry\n"
-"vc-theorems": "theorem alan_complete {stations : List String} : \n  isSubset REQUIRED_STATIONS\
-  \ stations → \n  alan stations = \"Smell my cheese you mother!\" := sorry\n\n\n\
-  theorem alan_incomplete {stations : List String} :\n  ¬isSubset REQUIRED_STATIONS\
-  \ stations →\n  alan stations = \"No, seriously, run. You will miss it.\" := sorry\n\
-  \n\ntheorem alan_with_additional \n  {additional : List String} (h : additional.length\
-  \ ≥ 4) :\n  alan (REQUIRED_STATIONS ++ additional) = \"Smell my cheese you mother!\"\
-  \ := sorry\n\n\ntheorem alan_with_incomplete_subset\n  {subset : List String} (h\
-  \ : subset.length ≤ 3) \n  (h2 : ∀ x ∈ subset, x ∈ REQUIRED_STATIONS) :\n  alan\
-  \ subset = \"No, seriously, run. You will miss it.\" := sorry\n\n/--\ninfo: 'Smell\
-  \ my cheese you mother!'\n-/\n#guard_msgs in\n#eval alan [\"Norwich\", \"Rejection\"\
-  , \"Disappointment\", \"Backstabbing Central\", \"Shattered Dreams Parkway\", \"\
-  London\"]\n\n/--\ninfo: 'No, seriously, run. You will miss it.'\n-/\n#guard_msgs\
-  \ in\n#eval alan [\"London\", \"Norwich\"]\n\n/--\ninfo: 'Smell my cheese you mother!'\n\
-  -/\n#guard_msgs in\n#eval alan [\"Norwich\", \"Rejection\", \"Disappointment\",\
-  \ \"Backstabbing Central\", \"Shattered Dreams Parkway\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Ever the learned traveller, Alan Partridge has pretty strong views on London:
+
+  ```
+  "Go to London. I guarantee you'll either be mugged or not appreciated.
+  Catch the train to London, stopping at Rejection, Disappointment, Backstabbing Central and Shattered Dreams Parkway."
+  ```
+  Your job is to check that the provided list of stations contains all of the stops Alan mentions. There will be other stations in the array.  Example:
+
+  ```
+  ['Rejection', 'Disappointment', 'Backstabbing Central', 'Shattered Dreams Parkway']
+  ```
+
+  If the stations all appear, return 'Smell my cheese you mother!', if not,  return 'No, seriously, run. You will miss it.'.
+
+  Other katas in this series:
+  Alan Partridge I - Partridge Watch
+  Alan Partridge II - Apple Turnover
+vc-preamble: |
+  import Imports.AllImports
+
+  def REQUIRED_STATIONS : List String := 
+    ["Rejection", "Disappointment", "Backstabbing Central", "Shattered Dreams Parkway"]
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isSubset (l1 l2 : List String) : Bool := sorry
+
+  def alan (stations : List String) : String := sorry
+vc-theorems: |
+  theorem alan_complete {stations : List String} : 
+    isSubset REQUIRED_STATIONS stations → 
+    alan stations = "Smell my cheese you mother!" := sorry
+
+
+  theorem alan_incomplete {stations : List String} :
+    ¬isSubset REQUIRED_STATIONS stations →
+    alan stations = "No, seriously, run. You will miss it." := sorry
+
+
+  theorem alan_with_additional 
+    {additional : List String} (h : additional.length ≥ 4) :
+    alan (REQUIRED_STATIONS ++ additional) = "Smell my cheese you mother!" := sorry
+
+
+  theorem alan_with_incomplete_subset
+    {subset : List String} (h : subset.length ≤ 3) 
+    (h2 : ∀ x ∈ subset, x ∈ REQUIRED_STATIONS) :
+    alan subset = "No, seriously, run. You will miss it." := sorry
+
+  /--
+  info: 'Smell my cheese you mother!'
+  -/
+  #guard_msgs in
+  #eval alan ["Norwich", "Rejection", "Disappointment", "Backstabbing Central", "Shattered Dreams Parkway", "London"]
+
+  /--
+  info: 'No, seriously, run. You will miss it.'
+  -/
+  #guard_msgs in
+  #eval alan ["London", "Norwich"]
+
+  /--
+  info: 'Smell my cheese you mother!'
+  -/
+  #guard_msgs in
+  #eval alan ["Norwich", "Rejection", "Disappointment", "Backstabbing Central", "Shattered Dreams Parkway"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

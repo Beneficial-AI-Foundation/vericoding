@@ -1,17 +1,34 @@
-"vc-description": "# Triple Trouble\n\nCreate a function that will return a string\
-  \ that combines all of the letters of the three inputed strings in groups.  Taking\
-  \ the first letter of all of the inputs and grouping them next to each other.  Do\
-  \ this for every letter, see example below!\n\n**E.g. Input: \"aa\", \"bb\" , \"\
-  cc\" => Output: \"abcabc\"** \n\n*Note: You can expect all of the inputs to be the\
-  \ same length.*"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def triple_trouble (one two three : String) : String := sorry\n\
-  \ntheorem triple_trouble_length {one two three : String} :\n  one.length = two.length\
-  \ → one.length = three.length →\n  (triple_trouble one two three).length = 3 * one.length\
-  \ :=\nsorry\n\n\n"
-"vc-theorems": "theorem triple_trouble_equal_inputs {s : String} {i : Nat} :\n  i\
-  \ < s.length →\n    let result := triple_trouble s s s;\n    ∃ c, s.data.get? i\
-  \ = some c ∧\n         result.data.get? (3 * i) = some c ∧\n         result.data.get?\
-  \ (3 * i + 1) = some c ∧\n         result.data.get? (3 * i + 2) = some c :=\nsorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  # Triple Trouble
+
+  Create a function that will return a string that combines all of the letters of the three inputed strings in groups.  Taking the first letter of all of the inputs and grouping them next to each other.  Do this for every letter, see example below!
+
+  **E.g. Input: "aa", "bb" , "cc" => Output: "abcabc"** 
+
+  *Note: You can expect all of the inputs to be the same length.*
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def triple_trouble (one two three : String) : String := sorry
+
+  theorem triple_trouble_length {one two three : String} :
+    one.length = two.length → one.length = three.length →
+    (triple_trouble one two three).length = 3 * one.length :=
+  sorry
+
+
+vc-theorems: |-
+  theorem triple_trouble_equal_inputs {s : String} {i : Nat} :
+    i < s.length →
+      let result := triple_trouble s s s;
+      ∃ c, s.data.get? i = some c ∧
+           result.data.get? (3 * i) = some c ∧
+           result.data.get? (3 * i + 1) = some c ∧
+           result.data.get? (3 * i + 2) = some c :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

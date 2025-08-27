@@ -1,38 +1,106 @@
-"vc-description": "Given an integer array arr, remove a subarray (can be empty) from arr such\
-  \ that the remaining elements in arr are non-decreasing.\nA subarray is a contiguous subsequence\
-  \ of the array.\nReturn the length of the shortest subarray to remove.\n \nExample\
-  \ 1:\nInput: arr = [1,2,3,10,4,2,3,5]\nOutput: 3\nExplanation: The shortest subarray\
-  \ we can remove is [10,4,2] of length 3. The remaining elements after that will\
-  \ be [1,2,3,3,5] which are sorted.\nAnother correct solution is to remove the subarray\
-  \ [3,10,4].\nExample 2:\nInput: arr = [5,4,3,2,1]\nOutput: 4\nExplanation: Since\
-  \ the array is strictly decreasing, we can only keep a single element. Therefore\
-  \ we need to remove a subarray of length 4, either [5,4,3,2] or [4,3,2,1].\n\nExample\
-  \ 3:\nInput: arr = [1,2,3]\nOutput: 0\nExplanation: The array is already non-decreasing.\
-  \ We do not need to remove any elements.\n\nExample 4:\nInput: arr = [1]\nOutput:\
-  \ 0\n\n \nConstraints:\n\n1 <= arr.length <= 10^5\n0 <= arr[i] <= 10^9"
-"vc-preamble": "import Imports.AllImports\n\ndef find_length_of_shortest_subarray\
-  \ (arr : List Int) : Nat :=\n  sorry\n\n\ndef isNonDecreasing (l : List Int) : Bool\
-  \ :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def removeSubarray (arr : List Int) (start : Nat) (len : Nat) :\
-  \ List Int :=\n  sorry\n\n-- Output is between 0 and length of array"
-"vc-theorems": "theorem output_bounds (arr : List Int) :\n  let result := find_length_of_shortest_subarray\
-  \ arr\n  0 ≤ result ∧ result ≤ arr.length :=\n  sorry\n\n-- There exists some subarray\
-  \ of length result that when removed makes array non-decreasing\n\ntheorem valid_removal_exists\
-  \ (arr : List Int) (h : arr ≠ []) :\n  let result := find_length_of_shortest_subarray\
-  \ arr\n  ∃ i : Nat, i + result ≤ arr.length ∧ \n    isNonDecreasing (removeSubarray\
-  \ arr i result) :=\n  sorry\n\n-- Cannot remove fewer elements to make array non-decreasing\n\
-  \ntheorem cannot_remove_fewer (arr : List Int) (h : arr ≠ []) :\n  let result :=\
-  \ find_length_of_shortest_subarray arr\n  result = 0 → isNonDecreasing arr\n  ∧\n\
-  \  result > 0 → ∀ i : Nat, i + (result - 1) ≤ arr.length →\n    ¬isNonDecreasing\
-  \ (removeSubarray arr i (result - 1)) :=\n  sorry\n\n-- Sorted array returns 0\n\
-  \ntheorem sorted_returns_zero (arr : List Int) (h : arr ≠ []) :\n  isNonDecreasing\
-  \ arr → find_length_of_shortest_subarray arr = 0 :=\n  sorry\n\n-- Small arrays\n\
-  \ntheorem small_arrays (arr : List Int) :\n  arr.length ≤ 1 → find_length_of_shortest_subarray\
-  \ arr = 0\n  ∧\n  (arr.length = 2 → \n    find_length_of_shortest_subarray arr =\
-  \ \n      if arr.get! 0 ≤ arr.get! 1 then 0 else 1) :=\n  sorry\n\n/--\ninfo: 3\n\
-  -/\n#guard_msgs in\n#eval find_length_of_shortest_subarray [1, 2, 3, 10, 4, 2, 3,\
-  \ 5]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval find_length_of_shortest_subarray\
-  \ [5, 4, 3, 2, 1]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_length_of_shortest_subarray\
-  \ [1, 2, 3]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an integer array arr, remove a subarray (can be empty) from arr such that the remaining elements in arr are non-decreasing.
+  A subarray is a contiguous subsequence of the array.
+  Return the length of the shortest subarray to remove.
+   
+  Example 1:
+  Input: arr = [1,2,3,10,4,2,3,5]
+  Output: 3
+  Explanation: The shortest subarray we can remove is [10,4,2] of length 3. The remaining elements after that will be [1,2,3,3,5] which are sorted.
+  Another correct solution is to remove the subarray [3,10,4].
+  Example 2:
+  Input: arr = [5,4,3,2,1]
+  Output: 4
+  Explanation: Since the array is strictly decreasing, we can only keep a single element. Therefore we need to remove a subarray of length 4, either [5,4,3,2] or [4,3,2,1].
+
+  Example 3:
+  Input: arr = [1,2,3]
+  Output: 0
+  Explanation: The array is already non-decreasing. We do not need to remove any elements.
+
+  Example 4:
+  Input: arr = [1]
+  Output: 0
+
+   
+  Constraints:
+
+  1 <= arr.length <= 10^5
+  0 <= arr[i] <= 10^9
+vc-preamble: |
+  import Imports.AllImports
+
+  def find_length_of_shortest_subarray (arr : List Int) : Nat :=
+    sorry
+
+
+  def isNonDecreasing (l : List Int) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def removeSubarray (arr : List Int) (start : Nat) (len : Nat) : List Int :=
+    sorry
+
+  -- Output is between 0 and length of array
+vc-theorems: |
+  theorem output_bounds (arr : List Int) :
+    let result := find_length_of_shortest_subarray arr
+    0 ≤ result ∧ result ≤ arr.length :=
+    sorry
+
+  -- There exists some subarray of length result that when removed makes array non-decreasing
+
+  theorem valid_removal_exists (arr : List Int) (h : arr ≠ []) :
+    let result := find_length_of_shortest_subarray arr
+    ∃ i : Nat, i + result ≤ arr.length ∧ 
+      isNonDecreasing (removeSubarray arr i result) :=
+    sorry
+
+  -- Cannot remove fewer elements to make array non-decreasing
+
+  theorem cannot_remove_fewer (arr : List Int) (h : arr ≠ []) :
+    let result := find_length_of_shortest_subarray arr
+    result = 0 → isNonDecreasing arr
+    ∧
+    result > 0 → ∀ i : Nat, i + (result - 1) ≤ arr.length →
+      ¬isNonDecreasing (removeSubarray arr i (result - 1)) :=
+    sorry
+
+  -- Sorted array returns 0
+
+  theorem sorted_returns_zero (arr : List Int) (h : arr ≠ []) :
+    isNonDecreasing arr → find_length_of_shortest_subarray arr = 0 :=
+    sorry
+
+  -- Small arrays
+
+  theorem small_arrays (arr : List Int) :
+    arr.length ≤ 1 → find_length_of_shortest_subarray arr = 0
+    ∧
+    (arr.length = 2 → 
+      find_length_of_shortest_subarray arr = 
+        if arr.get! 0 ≤ arr.get! 1 then 0 else 1) :=
+    sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_length_of_shortest_subarray [1, 2, 3, 10, 4, 2, 3, 5]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval find_length_of_shortest_subarray [5, 4, 3, 2, 1]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_length_of_shortest_subarray [1, 2, 3]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

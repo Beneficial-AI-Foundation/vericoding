@@ -1,26 +1,62 @@
-"vc-description": "In this Kata your task will be to return the count of pairs that\
-  \ have consecutive numbers as follows:\n```Haskell\npairs([1,2,5,8,-4,-3,7,6,5])\
-  \ = 3\nThe pairs are selected as follows [(1,2),(5,8),(-4,-3),(7,6),5]\n--the first\
-  \ pair is (1,2) and the numbers in the pair are consecutive; Count = 1\n--the second\
-  \ pair is (5,8) and are not consecutive\n--the third pair is (-4,-3), consecutive.\
-  \ Count = 2\n--the fourth pair is (7,6), also consecutive. Count = 3. \n--the last\
-  \ digit has no pair, so we ignore.\n```\n\nMore examples in the test cases. \n\n\
-  Good luck!\n\nPlease also try [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def abs (x : Int) : Int := sorry \n\ndef pairs (nums : List Int)\
-  \ : Nat := sorry\n"
-"vc-theorems": "theorem pairs_consecutive_property {nums : List Int} (h : nums.length\
-  \ ≥ 2) :\n  pairs nums = (List.filter (fun i => \n    (abs (nums.get! (2*i) - nums.get!\
-  \ (2*i + 1))) = 1) (List.range ((nums.length - 1)/2))).length := sorry\n\ntheorem\
-  \ pairs_modification_invariant {nums : List Int} (h : nums.length ≥ 2) \n  (modified\
-  \ : List Int) (h_mod : modified.length = nums.length)\n  (h_even : ∀ i, i % 2 =\
-  \ 0 → i < nums.length → modified.get! i = nums.get! i) :\n  pairs nums = pairs modified\
-  \ ∨ \n  ∃ i, i < nums.length - 1 ∧ (abs (modified.get! i - modified.get! (i+1)))\
-  \ = 1 := sorry\n\n\ntheorem pairs_bounded {nums : List Int} (h : nums.length ≥ 2)\n\
-  \  (h_bounds : ∀ x ∈ nums, -1000 ≤ x ∧ x ≤ 1000) :\n  0 ≤ pairs nums ∧ pairs nums\
-  \ ≤ nums.length / 2 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval pairs [1,\
-  \ 2, 5, 8, -4, -3, 7, 6, 5]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval pairs [21,\
-  \ 20, 22, 40, 39, -56, 30, -55, 95, 94]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval\
-  \ pairs [-55, -56, -7, -6, 56, 55, 63, 62]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In this Kata your task will be to return the count of pairs that have consecutive numbers as follows:
+  ```Haskell
+  pairs([1,2,5,8,-4,-3,7,6,5]) = 3
+  The pairs are selected as follows [(1,2),(5,8),(-4,-3),(7,6),5]
+  --the first pair is (1,2) and the numbers in the pair are consecutive; Count = 1
+  --the second pair is (5,8) and are not consecutive
+  --the third pair is (-4,-3), consecutive. Count = 2
+  --the fourth pair is (7,6), also consecutive. Count = 3. 
+  --the last digit has no pair, so we ignore.
+  ```
+
+  More examples in the test cases. 
+
+  Good luck!
+
+  Please also try [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def abs (x : Int) : Int := sorry 
+
+  def pairs (nums : List Int) : Nat := sorry
+vc-theorems: |
+  theorem pairs_consecutive_property {nums : List Int} (h : nums.length ≥ 2) :
+    pairs nums = (List.filter (fun i => 
+      (abs (nums.get! (2*i) - nums.get! (2*i + 1))) = 1) (List.range ((nums.length - 1)/2))).length := sorry
+
+  theorem pairs_modification_invariant {nums : List Int} (h : nums.length ≥ 2) 
+    (modified : List Int) (h_mod : modified.length = nums.length)
+    (h_even : ∀ i, i % 2 = 0 → i < nums.length → modified.get! i = nums.get! i) :
+    pairs nums = pairs modified ∨ 
+    ∃ i, i < nums.length - 1 ∧ (abs (modified.get! i - modified.get! (i+1))) = 1 := sorry
+
+
+  theorem pairs_bounded {nums : List Int} (h : nums.length ≥ 2)
+    (h_bounds : ∀ x ∈ nums, -1000 ≤ x ∧ x ≤ 1000) :
+    0 ≤ pairs nums ∧ pairs nums ≤ nums.length / 2 := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval pairs [1, 2, 5, 8, -4, -3, 7, 6, 5]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval pairs [21, 20, 22, 40, 39, -56, 30, -55, 95, 94]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval pairs [-55, -56, -7, -6, 56, 55, 63, 62]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

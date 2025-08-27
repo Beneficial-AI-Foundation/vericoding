@@ -1,37 +1,100 @@
-"vc-description": "Based on [this kata, Connect Four.](https://www.codewars.com/kata/connect-four-1)\n\
-  \nIn this kata we play a modified game of connect four. It's connect X, and there\
-  \ can be multiple players.\n\nWrite the function ```whoIsWinner(moves,connect,size)```.\n\
-  \n```2 <= connect <= 10```\n\n```2 <= size <= 52```\n\nEach column is identified\
-  \ by a character, A-Z a-z:  \n``` ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\
-  \ ```\n\n\nMoves come in the form:\n\n```\n['C_R','p_Y','s_S','I_R','Z_Y','d_S']\n\
-  ```\n* Player R puts on C\n* Player Y puts on p\n* Player S puts on s\n* Player\
-  \ R puts on I\n* ...\n\nThe moves are in the order that they are played. \n\nThe\
-  \ first player who connect ``` connect ``` items in same color is the winner. \n\
-  \nNote that a player can win before all moves are done. You should return the first\
-  \ winner.\n\nIf no winner is found, return \"Draw\".\n\nA board with size 7, where\
-  \ yellow has connected 4:\n\nAll inputs are valid, no illegal moves are made.\n\n\
-  ![alt text](https://i.imgur.com/xnJEsIx.png)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def whoIsWinner (moves : List Move) (con sz : Nat) : Color :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem winner_result_valid (moves : List Move) (con sz : Nat) :\n\
-  \  whoIsWinner moves con sz = Color.Red ∨ \n  whoIsWinner moves con sz = Color.Yellow\
-  \ ∨\n  whoIsWinner moves con sz = Color.Draw := \n  sorry\n\n\ntheorem empty_board_is_draw\
-  \ (con sz : Nat) : \n  con ≥ 2 → sz ≥ 2 →\n  whoIsWinner [] con sz = Color.Draw\
-  \ := \n  sorry\n\n\ntheorem single_column_valid (moves : List Move) (col : Nat)\
-  \ (sz : Nat) :\n  moves.length ≤ sz →\n  (∀ m ∈ moves, m.col = col) →\n  whoIsWinner\
-  \ moves 2 sz = Color.Red ∨\n  whoIsWinner moves 2 sz = Color.Yellow ∨ \n  whoIsWinner\
-  \ moves 2 sz = Color.Draw := \n  sorry\n\n\ntheorem valid_board_yields_valid_result\
-  \ (moves : List Move) (con sz : Nat) :\n  sz ≥ con →\n  moves.length ≥ con →\n \
-  \ (∀ m ∈ moves, m.col < sz) →\n  (∀ col, (moves.filter (λ m => m.col = col)).length\
-  \ ≤ sz) →\n  whoIsWinner moves con sz = Color.Red ∨\n  whoIsWinner moves con sz\
-  \ = Color.Yellow ∨\n  whoIsWinner moves con sz = Color.Draw := \n  sorry\n\n/--\n\
-  info: 'R'\n-/\n#guard_msgs in\n#eval whoIsWinner [\"A_R\", \"B_Y\", \"A_R\"] 2 2\n\
-  \n/--\ninfo: 'Y'\n-/\n#guard_msgs in\n#eval whoIsWinner [\"A_R\", \"C_Y\", \"C_R\"\
-  , \"B_Y\", \"A_R\", \"C_Y\", \"B_R\", \"B_Y\", \"D_R\", \"A_Y\", \"D_R\", \"A_Y\"\
-  ] 2 4\n\n/--\ninfo: 'R'\n-/\n#guard_msgs in\n#eval whoIsWinner [\"E_R\", \"E_Y\"\
-  , \"E_R\", \"A_Y\", \"B_R\", \"C_Y\", \"B_R\", \"F_Y\", \"F_R\", \"C_Y\", \"B_R\"\
-  , \"D_Y\", \"D_R\", \"A_Y\", \"C_R\", \"E_Y\", \"B_R\", \"D_Y\", \"D_R\", \"A_Y\"\
-  , \"A_R\", \"D_Y\", \"D_R\"] 3 6\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Based on [this kata, Connect Four.](https://www.codewars.com/kata/connect-four-1)
+
+  In this kata we play a modified game of connect four. It's connect X, and there can be multiple players.
+
+  Write the function ```whoIsWinner(moves,connect,size)```.
+
+  ```2 <= connect <= 10```
+
+  ```2 <= size <= 52```
+
+  Each column is identified by a character, A-Z a-z:  
+  ``` ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ```
+
+
+  Moves come in the form:
+
+  ```
+  ['C_R','p_Y','s_S','I_R','Z_Y','d_S']
+  ```
+  * Player R puts on C
+  * Player Y puts on p
+  * Player S puts on s
+  * Player R puts on I
+  * ...
+
+  The moves are in the order that they are played. 
+
+  The first player who connect ``` connect ``` items in same color is the winner. 
+
+  Note that a player can win before all moves are done. You should return the first winner.
+
+  If no winner is found, return "Draw".
+
+  A board with size 7, where yellow has connected 4:
+
+  All inputs are valid, no illegal moves are made.
+
+  ![alt text](https://i.imgur.com/xnJEsIx.png)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def whoIsWinner (moves : List Move) (con sz : Nat) : Color :=
+    sorry
+vc-theorems: |
+  theorem winner_result_valid (moves : List Move) (con sz : Nat) :
+    whoIsWinner moves con sz = Color.Red ∨ 
+    whoIsWinner moves con sz = Color.Yellow ∨
+    whoIsWinner moves con sz = Color.Draw := 
+    sorry
+
+
+  theorem empty_board_is_draw (con sz : Nat) : 
+    con ≥ 2 → sz ≥ 2 →
+    whoIsWinner [] con sz = Color.Draw := 
+    sorry
+
+
+  theorem single_column_valid (moves : List Move) (col : Nat) (sz : Nat) :
+    moves.length ≤ sz →
+    (∀ m ∈ moves, m.col = col) →
+    whoIsWinner moves 2 sz = Color.Red ∨
+    whoIsWinner moves 2 sz = Color.Yellow ∨ 
+    whoIsWinner moves 2 sz = Color.Draw := 
+    sorry
+
+
+  theorem valid_board_yields_valid_result (moves : List Move) (con sz : Nat) :
+    sz ≥ con →
+    moves.length ≥ con →
+    (∀ m ∈ moves, m.col < sz) →
+    (∀ col, (moves.filter (λ m => m.col = col)).length ≤ sz) →
+    whoIsWinner moves con sz = Color.Red ∨
+    whoIsWinner moves con sz = Color.Yellow ∨
+    whoIsWinner moves con sz = Color.Draw := 
+    sorry
+
+  /--
+  info: 'R'
+  -/
+  #guard_msgs in
+  #eval whoIsWinner ["A_R", "B_Y", "A_R"] 2 2
+
+  /--
+  info: 'Y'
+  -/
+  #guard_msgs in
+  #eval whoIsWinner ["A_R", "C_Y", "C_R", "B_Y", "A_R", "C_Y", "B_R", "B_Y", "D_R", "A_Y", "D_R", "A_Y"] 2 4
+
+  /--
+  info: 'R'
+  -/
+  #guard_msgs in
+  #eval whoIsWinner ["E_R", "E_Y", "E_R", "A_Y", "B_R", "C_Y", "B_R", "F_Y", "F_R", "C_Y", "B_R", "D_Y", "D_R", "A_Y", "C_R", "E_Y", "B_R", "D_Y", "D_R", "A_Y", "A_R", "D_Y", "D_R"] 3 6
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

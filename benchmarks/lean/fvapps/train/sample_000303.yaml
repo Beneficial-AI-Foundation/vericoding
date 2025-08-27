@@ -1,18 +1,67 @@
-"vc-description": "There are N children standing in a line. Each child is assigned\
-  \ a rating value.\n\nYou are giving candies to these children subjected to the following\
-  \ requirements:\n\n\n       Each child must have at least one candy.\n       Children\
-  \ with a higher rating get more candies than their neighbors.\n\n\nWhat is the minimum\
-  \ candies you must give?\n\nExample 1:\n\n\nInput: [1,0,2]\nOutput: 5\nExplanation:\
-  \ You can allocate to the first, second and third child with 2, 1, 2 candies respectively.\n\
-  \n\nExample 2:\n\n\nInput: [1,2,2]\nOutput: 4\nExplanation: You can allocate to\
-  \ the first, second and third child with 1, 2, 1 candies respectively.\n       \
-  \      The third child gets 1 candy because it satisfies the above two conditions."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def candy (ratings : List Nat) : Nat := sorry\n\n\n\n\n\n\n\ntheorem\
-  \ candy_empty :\n  candy [] = 0 := sorry\n"
-"vc-theorems": "theorem candy_single (rating : Nat) :\n  candy [rating] = 1 := sorry\n\
-  \n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval candy [1, 0, 2]\n\n/--\ninfo: 4\n-/\n\
-  #guard_msgs in\n#eval candy [1, 2, 2]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
-  \ candy []\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  There are N children standing in a line. Each child is assigned a rating value.
+
+  You are giving candies to these children subjected to the following requirements:
+
+
+         Each child must have at least one candy.
+         Children with a higher rating get more candies than their neighbors.
+
+
+  What is the minimum candies you must give?
+
+  Example 1:
+
+
+  Input: [1,0,2]
+  Output: 5
+  Explanation: You can allocate to the first, second and third child with 2, 1, 2 candies respectively.
+
+
+  Example 2:
+
+
+  Input: [1,2,2]
+  Output: 4
+  Explanation: You can allocate to the first, second and third child with 1, 2, 1 candies respectively.
+               The third child gets 1 candy because it satisfies the above two conditions.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def candy (ratings : List Nat) : Nat := sorry
+
+
+
+
+
+
+
+  theorem candy_empty :
+    candy [] = 0 := sorry
+vc-theorems: |
+  theorem candy_single (rating : Nat) :
+    candy [rating] = 1 := sorry
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval candy [1, 0, 2]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval candy [1, 2, 2]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval candy []
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

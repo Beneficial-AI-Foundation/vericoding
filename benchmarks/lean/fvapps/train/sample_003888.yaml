@@ -1,25 +1,64 @@
-"vc-description": "Your work is to write a method that takes a value and an index,\
-  \ and returns the value with the bit at given index flipped.\n\nThe bits are numbered\
-  \ from the least significant bit (index 1).\n\nExample:\n```python\nflip_bit(15,\
-  \ 4) == 7 # 15 in binary is 1111, after flipping 4th bit, it becomes 0111, i.e.\
-  \ 7\nflip_bit(15, 5) == 31 # 15 in binary is 1111, 5th bit is 0, after flipping,\
-  \ it becomes 11111, i.e., 31\n```\nNote : index number can be out of number's range\
-  \ : e.g number is 3 (it has 2 bits) and index number is 8(for C# this number is\
-  \ up to 31) -> result will be 131 \n\nSee more examples in test classes\n\nGood\
-  \ luck!"
-"vc-preamble": "import Imports.AllImports\n\ndef flip_bit (value : Int) (bit_index\
-  \ : Nat) : Int := sorry\n\ndef band (x y : Int) : Int := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def shiftLeft (x : Int) (n : Nat) : Int := sorry\n\n-- States that\
-  \ flipping a bit twice returns the original value"
-"vc-theorems": "theorem flip_bit_reversible \n  (value : Int) (bit_index : Nat) \n\
-  \  (h1 : 1 ≤ bit_index) (h2 : bit_index ≤ 32) :\n  flip_bit (flip_bit value bit_index)\
-  \ bit_index = value := sorry\n\n-- States that only the target bit changes\n\ntheorem\
-  \ flip_bit_changes_target_bit \n  (value : Int) (bit_index : Nat)\n  (h1 : 1 ≤ bit_index)\
-  \ (h2 : bit_index ≤ 32) :\n  ∃ bit_mask : Int, \n    bit_mask = shiftLeft 1 (bit_index\
-  \ - 1) ∧\n    band value bit_mask ≠ band (flip_bit value bit_index) bit_mask ∧\n\
-  \    band value (bit_mask - 1) = band (flip_bit value bit_index) (bit_mask - 1)\
-  \ := sorry\n\n/--\ninfo: 32768\n-/\n#guard_msgs in\n#eval flip_bit 0 16\n\n/--\n\
-  info: 1073741823\n-/\n#guard_msgs in\n#eval flip_bit 2147483647 31\n\n/--\ninfo:\
-  \ 255\n-/\n#guard_msgs in\n#eval flip_bit 127 8\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Your work is to write a method that takes a value and an index, and returns the value with the bit at given index flipped.
+
+  The bits are numbered from the least significant bit (index 1).
+
+  Example:
+  ```python
+  flip_bit(15, 4) == 7 # 15 in binary is 1111, after flipping 4th bit, it becomes 0111, i.e. 7
+  flip_bit(15, 5) == 31 # 15 in binary is 1111, 5th bit is 0, after flipping, it becomes 11111, i.e., 31
+  ```
+  Note : index number can be out of number's range : e.g number is 3 (it has 2 bits) and index number is 8(for C# this number is up to 31) -> result will be 131 
+
+  See more examples in test classes
+
+  Good luck!
+vc-preamble: |-
+  import Imports.AllImports
+
+  def flip_bit (value : Int) (bit_index : Nat) : Int := sorry
+
+  def band (x y : Int) : Int := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def shiftLeft (x : Int) (n : Nat) : Int := sorry
+
+  -- States that flipping a bit twice returns the original value
+vc-theorems: |
+  theorem flip_bit_reversible 
+    (value : Int) (bit_index : Nat) 
+    (h1 : 1 ≤ bit_index) (h2 : bit_index ≤ 32) :
+    flip_bit (flip_bit value bit_index) bit_index = value := sorry
+
+  -- States that only the target bit changes
+
+  theorem flip_bit_changes_target_bit 
+    (value : Int) (bit_index : Nat)
+    (h1 : 1 ≤ bit_index) (h2 : bit_index ≤ 32) :
+    ∃ bit_mask : Int, 
+      bit_mask = shiftLeft 1 (bit_index - 1) ∧
+      band value bit_mask ≠ band (flip_bit value bit_index) bit_mask ∧
+      band value (bit_mask - 1) = band (flip_bit value bit_index) (bit_mask - 1) := sorry
+
+  /--
+  info: 32768
+  -/
+  #guard_msgs in
+  #eval flip_bit 0 16
+
+  /--
+  info: 1073741823
+  -/
+  #guard_msgs in
+  #eval flip_bit 2147483647 31
+
+  /--
+  info: 255
+  -/
+  #guard_msgs in
+  #eval flip_bit 127 8
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

@@ -1,37 +1,129 @@
-"vc-description": "Problem Statement:Captain America and Iron Man are at WAR and the\
-  \ rage inside Iron Man is rising.\n\nBut Iron Man faces a problem to identify the\
-  \ location of Captain America.\n\nThere are N buildings situtaed adjacently to each\
-  \ other and Captain America can be at any building.\n\nIron Man has to arrange the\
-  \ Buildings from 1 to N is such a way that Value(i.e abs(Building Number -Position\
-  \ of Building))=K for every building.\n\nCan You help Iron Man to Find The Arrangement\
-  \ of the Buildings?\n\nP.S- If no arrangement exist, then print         \n“CAPTAIN\
-  \ AMERICA EVADES”.\n\nInput Format:\nThe first line of input contains a single integer,T,\
-  \ denoting the number of test cases.\n\nEach of the T  subsequent lines contains\
-  \ 2 space-separated integers describing the respective N and K values for a test\
-  \ case.\n\nOutput Format:\nOn a new line for each test case, \n\nPrint the lexicographically\
-  \ smallest arrangement; \n\nIf no absolute arrangement exists, print “CAPTAIN AMERICA\
-  \ EVADES”.\n\nConstraints:\nSubTask#1\n1<=T<=10\n\n1<=N<=10^5\n\n0<=K<=N\n\nSubTask#2\n\
-  Original Constraints..\n\nSubTask#3\nOriginal Constraints..\n\nSample Input:\n3\n\
-  \n2 1\n\n3 0\n\n3 2\n\nSample Output:\n\n2 1\n\n1 2 3\n\nCAPTAIN AMERICA EVADES\n\
-  \nExplanation:\nCase 1:\n\nN=2 and K=1\n\nTherefore the arrangement is [2,1].\n\n\
-  Case 2:\n\nN=3 and K=0\n\nTherefore arrangement is [1,2,3]."
-"vc-preamble": "import Imports.AllImports\n\ndef find_building_arrangement (n k :\
-  \ Nat) : String := sorry\n\ndef nums_to_nat_list (s : String) : List Nat := sorry\n\
-  \n\ndef range_from_one (n : Nat) : List Nat :=\n  List.range n |>.map (· + 1)\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def list_to_string (l : List Nat) : String :=\n  l.map toString\
-  \ |>.intersperse \" \" |>.foldl (· ++ ·) \"\"\n"
-"vc-theorems": "theorem zero_distance_ascending (n : Nat) (h : n ≥ 2) :\n  find_building_arrangement\
-  \ n 0 = list_to_string (range_from_one n) := sorry\n\n\ntheorem impossible_case_three_two\
-  \ : \n  find_building_arrangement 3 2 = \"CAPTAIN AMERICA EVADES\" := sorry \n\n\
-  \ntheorem impossible_case_two_two :\n  find_building_arrangement 2 2 = \"CAPTAIN\
-  \ AMERICA EVADES\" := sorry\n\n\ntheorem valid_arrangement_condition (n k : Nat)\
-  \ (s : String) :\n  let nums := nums_to_nat_list s\n  find_building_arrangement\
-  \ n k = s →\n  (s = \"CAPTAIN AMERICA EVADES\" ∨\n  (nums.length = n ∧ \n   nums.mergeSort\
-  \ (· ≤ ·) = range_from_one n ∧\n   ∀ i j, i < nums.length → j < nums.length → \n\
-  \     (if i ≥ j then i - j else j - i) = k → \n     (if nums[i]! ≥ nums[j]! then\
-  \ nums[i]! - nums[j]! else nums[j]! - nums[i]!) = 1))\n  := sorry\n\n/--\ninfo:\
-  \ '2 1'\n-/\n#guard_msgs in\n#eval find_building_arrangement 2 1\n\n/--\ninfo: '1\
-  \ 2 3'\n-/\n#guard_msgs in\n#eval find_building_arrangement 3 0\n\n/--\ninfo: 'CAPTAIN\
-  \ AMERICA EVADES'\n-/\n#guard_msgs in\n#eval find_building_arrangement 3 2\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Problem Statement:Captain America and Iron Man are at WAR and the rage inside Iron Man is rising.
+
+  But Iron Man faces a problem to identify the location of Captain America.
+
+  There are N buildings situtaed adjacently to each other and Captain America can be at any building.
+
+  Iron Man has to arrange the Buildings from 1 to N is such a way that Value(i.e abs(Building Number -Position of Building))=K for every building.
+
+  Can You help Iron Man to Find The Arrangement of the Buildings?
+
+  P.S- If no arrangement exist, then print         
+  “CAPTAIN AMERICA EVADES”.
+
+  Input Format:
+  The first line of input contains a single integer,T, denoting the number of test cases.
+
+  Each of the T  subsequent lines contains 2 space-separated integers describing the respective N and K values for a test case.
+
+  Output Format:
+  On a new line for each test case, 
+
+  Print the lexicographically smallest arrangement; 
+
+  If no absolute arrangement exists, print “CAPTAIN AMERICA EVADES”.
+
+  Constraints:
+  SubTask#1
+  1<=T<=10
+
+  1<=N<=10^5
+
+  0<=K<=N
+
+  SubTask#2
+  Original Constraints..
+
+  SubTask#3
+  Original Constraints..
+
+  Sample Input:
+  3
+
+  2 1
+
+  3 0
+
+  3 2
+
+  Sample Output:
+
+  2 1
+
+  1 2 3
+
+  CAPTAIN AMERICA EVADES
+
+  Explanation:
+  Case 1:
+
+  N=2 and K=1
+
+  Therefore the arrangement is [2,1].
+
+  Case 2:
+
+  N=3 and K=0
+
+  Therefore arrangement is [1,2,3].
+vc-preamble: |
+  import Imports.AllImports
+
+  def find_building_arrangement (n k : Nat) : String := sorry
+
+  def nums_to_nat_list (s : String) : List Nat := sorry
+
+
+  def range_from_one (n : Nat) : List Nat :=
+    List.range n |>.map (· + 1)
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def list_to_string (l : List Nat) : String :=
+    l.map toString |>.intersperse " " |>.foldl (· ++ ·) ""
+vc-theorems: |
+  theorem zero_distance_ascending (n : Nat) (h : n ≥ 2) :
+    find_building_arrangement n 0 = list_to_string (range_from_one n) := sorry
+
+
+  theorem impossible_case_three_two : 
+    find_building_arrangement 3 2 = "CAPTAIN AMERICA EVADES" := sorry 
+
+
+  theorem impossible_case_two_two :
+    find_building_arrangement 2 2 = "CAPTAIN AMERICA EVADES" := sorry
+
+
+  theorem valid_arrangement_condition (n k : Nat) (s : String) :
+    let nums := nums_to_nat_list s
+    find_building_arrangement n k = s →
+    (s = "CAPTAIN AMERICA EVADES" ∨
+    (nums.length = n ∧ 
+     nums.mergeSort (· ≤ ·) = range_from_one n ∧
+     ∀ i j, i < nums.length → j < nums.length → 
+       (if i ≥ j then i - j else j - i) = k → 
+       (if nums[i]! ≥ nums[j]! then nums[i]! - nums[j]! else nums[j]! - nums[i]!) = 1))
+    := sorry
+
+  /--
+  info: '2 1'
+  -/
+  #guard_msgs in
+  #eval find_building_arrangement 2 1
+
+  /--
+  info: '1 2 3'
+  -/
+  #guard_msgs in
+  #eval find_building_arrangement 3 0
+
+  /--
+  info: 'CAPTAIN AMERICA EVADES'
+  -/
+  #guard_msgs in
+  #eval find_building_arrangement 3 2
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

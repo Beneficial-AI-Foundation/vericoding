@@ -1,35 +1,78 @@
-"vc-description": "Chef likes prime numbers. However, there is one thing he loves\
-  \ even more. Of course, it's semi-primes! A semi-prime number is an integer which\
-  \ can be expressed as a product of two distinct primes. For example, $15 = 3 \\\
-  cdot 5$ is a semi-prime number, but $1$, $9 = 3 \\cdot 3$ and $5$ are not.\nChef\
-  \ is wondering how to check if an integer can be expressed as a sum of two (not\
-  \ necessarily distinct) semi-primes. Help Chef with this tough task!\n\n-----Input-----\n\
-  - The first line of the input contains a single integer $T$ denoting the number\
-  \ of test cases. The description of $T$ test cases follows.\n- The first and only\
-  \ line of each test case contains a single integer $N$.\n\n-----Output-----\nFor\
-  \ each test case, print a single line containing the string \"YES\" if it is possible\
-  \ to express $N$ as a sum of two semi-primes or \"NO\" otherwise.\n\n-----Constraints-----\n\
-  - $1 \\le T \\le 200$\n- $1 \\le N \\le 200$\n\n-----Example Input-----\n3\n30\n\
-  45\n62\n\n-----Example Output-----\nYES\nYES\nNO\n\n-----Explanation-----\nExample\
-  \ case 1: $N=30$ can be expressed as $15 + 15 = (3 \\cdot 5) + (3 \\cdot 5)$.\n\
-  Example case 2: $45$ can be expressed as $35 + 10 = (5 \\cdot 7) + (2 \\cdot 5)$.\n\
-  Example case 3: $62$ cannot be expressed as a sum of two semi-primes."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def can_sum_two_semiprimes (n : Nat) : Bool := sorry\n\n-- Result\
-  \ must be a boolean "
-"vc-theorems": "theorem can_sum_two_semiprimes_returns_bool (n : Nat) : \n  n ≥ 4\
-  \ → n ≤ 200 → can_sum_two_semiprimes n = true ∨ can_sum_two_semiprimes n = false\
-  \ := sorry\n\n-- Function can be called without error on valid inputs \n\ntheorem\
-  \ can_sum_two_semiprimes_well_defined (n : Nat) :\n  n ≥ 4 → n ≤ 200 → can_sum_two_semiprimes\
-  \ (n-1).succ = can_sum_two_semiprimes n := sorry\n\n-- Function can be called on\
-  \ n+1 if it can be called on n\n\ntheorem can_sum_two_semiprimes_next (n : Nat)\
-  \ :\n  n ≥ 4 → n ≤ 199 → can_sum_two_semiprimes n → can_sum_two_semiprimes (n+1)\
-  \ = true ∨ can_sum_two_semiprimes (n+1) = false := sorry\n\n-- Function can be called\
-  \ on n-1 if it can be called on n and n > 4\n\ntheorem can_sum_two_semiprimes_prev\
-  \ (n : Nat) :\n  n > 4 → n ≤ 200 → can_sum_two_semiprimes n → can_sum_two_semiprimes\
-  \ (n-1) = true ∨ can_sum_two_semiprimes (n-1) = false := sorry\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval can_sum_two_semiprimes 30\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval can_sum_two_semiprimes 45\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
-  #eval can_sum_two_semiprimes 62\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Chef likes prime numbers. However, there is one thing he loves even more. Of course, it's semi-primes! A semi-prime number is an integer which can be expressed as a product of two distinct primes. For example, $15 = 3 \cdot 5$ is a semi-prime number, but $1$, $9 = 3 \cdot 3$ and $5$ are not.
+  Chef is wondering how to check if an integer can be expressed as a sum of two (not necessarily distinct) semi-primes. Help Chef with this tough task!
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first and only line of each test case contains a single integer $N$.
+
+  -----Output-----
+  For each test case, print a single line containing the string "YES" if it is possible to express $N$ as a sum of two semi-primes or "NO" otherwise.
+
+  -----Constraints-----
+  - $1 \le T \le 200$
+  - $1 \le N \le 200$
+
+  -----Example Input-----
+  3
+  30
+  45
+  62
+
+  -----Example Output-----
+  YES
+  YES
+  NO
+
+  -----Explanation-----
+  Example case 1: $N=30$ can be expressed as $15 + 15 = (3 \cdot 5) + (3 \cdot 5)$.
+  Example case 2: $45$ can be expressed as $35 + 10 = (5 \cdot 7) + (2 \cdot 5)$.
+  Example case 3: $62$ cannot be expressed as a sum of two semi-primes.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def can_sum_two_semiprimes (n : Nat) : Bool := sorry
+
+  -- Result must be a boolean 
+vc-theorems: |
+  theorem can_sum_two_semiprimes_returns_bool (n : Nat) : 
+    n ≥ 4 → n ≤ 200 → can_sum_two_semiprimes n = true ∨ can_sum_two_semiprimes n = false := sorry
+
+  -- Function can be called without error on valid inputs 
+
+  theorem can_sum_two_semiprimes_well_defined (n : Nat) :
+    n ≥ 4 → n ≤ 200 → can_sum_two_semiprimes (n-1).succ = can_sum_two_semiprimes n := sorry
+
+  -- Function can be called on n+1 if it can be called on n
+
+  theorem can_sum_two_semiprimes_next (n : Nat) :
+    n ≥ 4 → n ≤ 199 → can_sum_two_semiprimes n → can_sum_two_semiprimes (n+1) = true ∨ can_sum_two_semiprimes (n+1) = false := sorry
+
+  -- Function can be called on n-1 if it can be called on n and n > 4
+
+  theorem can_sum_two_semiprimes_prev (n : Nat) :
+    n > 4 → n ≤ 200 → can_sum_two_semiprimes n → can_sum_two_semiprimes (n-1) = true ∨ can_sum_two_semiprimes (n-1) = false := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval can_sum_two_semiprimes 30
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval can_sum_two_semiprimes 45
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval can_sum_two_semiprimes 62
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

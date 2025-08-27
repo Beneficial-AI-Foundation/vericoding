@@ -1,33 +1,83 @@
-"vc-description": "Rohit has n empty boxes lying on the ground in a line. The size\
-  \ of the boxes is given in the form of an array $a$. The size of the ith box is\
-  \ denoted by $a[i]$. Since Rohit has a tiny room, there is a shortage of space.\
-  \ Therefore, he has to reduce the number of boxes on the ground by putting a box\
-  \ into another box that is at least twice the size of the current box i.e if we\
-  \ have to put the ith box into the jth box then $( 2*a[i] ) <= a[j]$.\nEach box\
-  \ can contain a maximum of one box and the box which is kept in another box cannot\n\
-  hold any box itself.\nFind the minimum number of boxes that will remain on the ground\
-  \ after putting boxes into each other.\n\n-----Input:-----\n- The first line contains\
-  \ a single integer n.\n- The next n lines contain the integer a[i] - the size of\
-  \ the i-th box.\n\n-----Output:-----\nOutput a single integer denoting the minimum\
-  \ number of boxes remaining on the ground.\n\n-----Constraints-----\n- $1 \\leq\
-  \ n \\leq 5*10^5$\n- $1 \\leq a[i] \\leq 10^5$\n\n-----Subtasks-----\n- 30 points\
-  \ : $1 \\leq n \\leq 10^2$\n- 70 points : $1 \\leq n \\leq 5*10^5$\n\n-----Sample\
-  \ Input:-----\n5\n16\n1\n4\n8\n2\n\n-----Sample Output:-----\n3"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def min_boxes_remaining (boxes : List Nat) (n : Nat) : Nat :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem min_boxes_result_bounds (boxes : List Nat) (n : Nat) (h :\
-  \ boxes.length = n) :\n  min_boxes_remaining boxes n ≥ boxes.length / 2 ∧ \n  min_boxes_remaining\
-  \ boxes n ≤ boxes.length := by\n  sorry\n\n\ntheorem min_boxes_is_nat (boxes : List\
-  \ Nat) (n : Nat) (h : boxes.length = n) :\n  ∃ k : Nat, min_boxes_remaining boxes\
-  \ n = k := by\n  sorry\n\n\ntheorem min_boxes_perm (boxes₁ boxes₂ : List Nat) (n\
-  \ : Nat) \n  (h₁ : boxes₁.length = n) (h₂ : boxes₂.length = n)\n  (h₃ : ∀ x, boxes₁.count\
-  \ x = boxes₂.count x) :\n  min_boxes_remaining boxes₁ n = min_boxes_remaining boxes₂\
-  \ n := by\n  sorry\n\n\ntheorem min_boxes_powers_two (size : Nat) :\n  let boxes\
-  \ := List.map (fun i => 2^i) (List.range size)\n  min_boxes_remaining boxes size\
-  \ = size/2 + size%2 := by\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval min_boxes_remaining\
-  \ 5 boxes1.copy()\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_boxes_remaining\
-  \ 3 boxes2.copy()\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_boxes_remaining\
-  \ 4 boxes3.copy()\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Rohit has n empty boxes lying on the ground in a line. The size of the boxes is given in the form of an array $a$. The size of the ith box is denoted by $a[i]$. Since Rohit has a tiny room, there is a shortage of space. Therefore, he has to reduce the number of boxes on the ground by putting a box into another box that is at least twice the size of the current box i.e if we have to put the ith box into the jth box then $( 2*a[i] ) <= a[j]$.
+  Each box can contain a maximum of one box and the box which is kept in another box cannot
+  hold any box itself.
+  Find the minimum number of boxes that will remain on the ground after putting boxes into each other.
+
+  -----Input:-----
+  - The first line contains a single integer n.
+  - The next n lines contain the integer a[i] - the size of the i-th box.
+
+  -----Output:-----
+  Output a single integer denoting the minimum number of boxes remaining on the ground.
+
+  -----Constraints-----
+  - $1 \leq n \leq 5*10^5$
+  - $1 \leq a[i] \leq 10^5$
+
+  -----Subtasks-----
+  - 30 points : $1 \leq n \leq 10^2$
+  - 70 points : $1 \leq n \leq 5*10^5$
+
+  -----Sample Input:-----
+  5
+  16
+  1
+  4
+  8
+  2
+
+  -----Sample Output:-----
+  3
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def min_boxes_remaining (boxes : List Nat) (n : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem min_boxes_result_bounds (boxes : List Nat) (n : Nat) (h : boxes.length = n) :
+    min_boxes_remaining boxes n ≥ boxes.length / 2 ∧ 
+    min_boxes_remaining boxes n ≤ boxes.length := by
+    sorry
+
+
+  theorem min_boxes_is_nat (boxes : List Nat) (n : Nat) (h : boxes.length = n) :
+    ∃ k : Nat, min_boxes_remaining boxes n = k := by
+    sorry
+
+
+  theorem min_boxes_perm (boxes₁ boxes₂ : List Nat) (n : Nat) 
+    (h₁ : boxes₁.length = n) (h₂ : boxes₂.length = n)
+    (h₃ : ∀ x, boxes₁.count x = boxes₂.count x) :
+    min_boxes_remaining boxes₁ n = min_boxes_remaining boxes₂ n := by
+    sorry
+
+
+  theorem min_boxes_powers_two (size : Nat) :
+    let boxes := List.map (fun i => 2^i) (List.range size)
+    min_boxes_remaining boxes size = size/2 + size%2 := by
+    sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_boxes_remaining 5 boxes1.copy()
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_boxes_remaining 3 boxes2.copy()
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_boxes_remaining 4 boxes3.copy()
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

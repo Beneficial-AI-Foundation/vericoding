@@ -1,22 +1,80 @@
-"vc-description": "Given an array arr of integers, check if there exists two integers\
-  \ N and M such that N is the double of M ( i.e. N = 2 * M).\nMore formally check\
-  \ if there exists two indices i and j such that :\n\ni != j\n0 <= i, j < arr.length\n\
-  arr[i] == 2 * arr[j]\n\n \nExample 1:\nInput: arr = [10,2,5,3]\nOutput: true\nExplanation:\
-  \ N = 10 is the double of M = 5,that is, 10 = 2 * 5.\n\nExample 2:\nInput: arr =\
-  \ [7,1,14,11]\nOutput: true\nExplanation: N = 14 is the double of M = 7,that is,\
-  \ 14 = 2 * 7.\n\nExample 3:\nInput: arr = [3,1,7,11]\nOutput: false\nExplanation:\
-  \ In this case does not exist N and M, such that N = 2 * M.\n\n \nConstraints:\n\
-  \n2 <= arr.length <= 500\n-10^3 <= arr[i] <= 10^3"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def check_if_exist (arr : List Int) : Bool :=\n  sorry\n"
-"vc-theorems": "theorem check_if_exist_symmetric {arr : List Int} (n : Int) :\n  arr\
-  \ ≠ [] →\n  check_if_exist (arr ++ [2 * n]) = true :=\nsorry\n\n\ntheorem check_if_exist_no_doubles\
-  \ (arr : List Int) :\n  (∀ x ∈ arr, ∀ y ∈ arr, x ≠ 2 * y ∧ 2 * x ≠ y) →\n  check_if_exist\
-  \ arr = false :=\nsorry\n\n\ntheorem check_if_exist_zero (arr : List Int) :\n  arr\
-  \ ≠ [] →\n  check_if_exist (arr ++ [0, 0]) = true :=\nsorry\n\n\ntheorem check_if_exist_empty\
-  \ :\n  check_if_exist ([] : List Int) = false :=\nsorry\n\n/--\ninfo: True\n-/\n\
-  #guard_msgs in\n#eval check_if_exist [10, 2, 5, 3]\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval check_if_exist [7, 1, 14, 11]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
-  #eval check_if_exist [3, 1, 7, 11]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an array arr of integers, check if there exists two integers N and M such that N is the double of M ( i.e. N = 2 * M).
+  More formally check if there exists two indices i and j such that :
+
+  i != j
+  0 <= i, j < arr.length
+  arr[i] == 2 * arr[j]
+
+   
+  Example 1:
+  Input: arr = [10,2,5,3]
+  Output: true
+  Explanation: N = 10 is the double of M = 5,that is, 10 = 2 * 5.
+
+  Example 2:
+  Input: arr = [7,1,14,11]
+  Output: true
+  Explanation: N = 14 is the double of M = 7,that is, 14 = 2 * 7.
+
+  Example 3:
+  Input: arr = [3,1,7,11]
+  Output: false
+  Explanation: In this case does not exist N and M, such that N = 2 * M.
+
+   
+  Constraints:
+
+  2 <= arr.length <= 500
+  -10^3 <= arr[i] <= 10^3
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def check_if_exist (arr : List Int) : Bool :=
+    sorry
+vc-theorems: |
+  theorem check_if_exist_symmetric {arr : List Int} (n : Int) :
+    arr ≠ [] →
+    check_if_exist (arr ++ [2 * n]) = true :=
+  sorry
+
+
+  theorem check_if_exist_no_doubles (arr : List Int) :
+    (∀ x ∈ arr, ∀ y ∈ arr, x ≠ 2 * y ∧ 2 * x ≠ y) →
+    check_if_exist arr = false :=
+  sorry
+
+
+  theorem check_if_exist_zero (arr : List Int) :
+    arr ≠ [] →
+    check_if_exist (arr ++ [0, 0]) = true :=
+  sorry
+
+
+  theorem check_if_exist_empty :
+    check_if_exist ([] : List Int) = false :=
+  sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval check_if_exist [10, 2, 5, 3]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval check_if_exist [7, 1, 14, 11]
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval check_if_exist [3, 1, 7, 11]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

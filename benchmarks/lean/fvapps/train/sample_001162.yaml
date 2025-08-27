@@ -1,25 +1,78 @@
-"vc-description": "Mark loves eating chocolates and also likes to be fit. Given the\
-  \ calorie count for every chocolate he eats, find what he has to do to burn the\
-  \ calories. \nThe name of the chocolates along with its calorie count are given\
-  \ as follows:\nCalories per one whole bar:\nDairy milk (D)\n238\nTwix (T)\n244\n\
-  Milky Bar (M)\n138\nBounty (B)\n279\nCrunchie (C)\n186\nThe exercises preferred\
-  \ by him and the calories burnt are as follows:\nCalories burnt per km:\nRunning\n\
-  50\nCycling\n5\nWalking\n0.5\nFind the number of kilometers he has to run, cycle\
-  \ or walk to burn all of the calories. \nPriority given to the exercises is as follows:\
-  \ \nRunning > Cycling > Walking\n\n-----Input:-----\n- It is a one line string consisting\
-  \ of the names(initial letter) of all the chocolates he has eaten.\n\n-----Output:-----\n\
-  Print three lines. First line representing how much he ran(in km), second line representing\
-  \ how much he cycled(in km), third line representing how much he walked(in km).\n\
-  \n-----Constraints-----\n- 1 <= length of input string <= 10. \n\n-----Sample Input:-----\n\
-  DDTM\n\n-----Sample Output:-----\n17\n1\n6\n\n-----EXPLANATION:-----\nCalorie intake\
-  \ = 238 + 238 + 244 + 138 = 858\n( 17km x 50 ) + ( 1km x 5 ) + ( 6km x 0.5 ) = 858."
-"vc-preamble": "import Imports.AllImports\n\ndef isUpper (c : Char) : Bool := sorry\n\
-  def isDigit (c : Char) : Bool := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isSpace (c : Char) : Bool := sorry\n\ndef count_elements (s\
-  \ : String) : Nat × Nat × Nat := sorry\n"
-"vc-theorems": "theorem count_elements_totals (s : String) :\n  let (uppers, digits,\
-  \ spaces) := count_elements s\n  let total := uppers + digits + spaces\n  total\
-  \ ≤ s.length := \nsorry\n\n\n\n\n\n\n\n\ntheorem empty_string :\n  count_elements\
-  \ \"\" = (0, 0, 0) :=\nsorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Mark loves eating chocolates and also likes to be fit. Given the calorie count for every chocolate he eats, find what he has to do to burn the calories. 
+  The name of the chocolates along with its calorie count are given as follows:
+  Calories per one whole bar:
+  Dairy milk (D)
+  238
+  Twix (T)
+  244
+  Milky Bar (M)
+  138
+  Bounty (B)
+  279
+  Crunchie (C)
+  186
+  The exercises preferred by him and the calories burnt are as follows:
+  Calories burnt per km:
+  Running
+  50
+  Cycling
+  5
+  Walking
+  0.5
+  Find the number of kilometers he has to run, cycle or walk to burn all of the calories. 
+  Priority given to the exercises is as follows: 
+  Running > Cycling > Walking
+
+  -----Input:-----
+  - It is a one line string consisting of the names(initial letter) of all the chocolates he has eaten.
+
+  -----Output:-----
+  Print three lines. First line representing how much he ran(in km), second line representing how much he cycled(in km), third line representing how much he walked(in km).
+
+  -----Constraints-----
+  - 1 <= length of input string <= 10. 
+
+  -----Sample Input:-----
+  DDTM
+
+  -----Sample Output:-----
+  17
+  1
+  6
+
+  -----EXPLANATION:-----
+  Calorie intake = 238 + 238 + 244 + 138 = 858
+  ( 17km x 50 ) + ( 1km x 5 ) + ( 6km x 0.5 ) = 858.
+vc-preamble: |-
+  import Imports.AllImports
+
+  def isUpper (c : Char) : Bool := sorry
+  def isDigit (c : Char) : Bool := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isSpace (c : Char) : Bool := sorry
+
+  def count_elements (s : String) : Nat × Nat × Nat := sorry
+vc-theorems: |-
+  theorem count_elements_totals (s : String) :
+    let (uppers, digits, spaces) := count_elements s
+    let total := uppers + digits + spaces
+    total ≤ s.length := 
+  sorry
+
+
+
+
+
+
+
+
+  theorem empty_string :
+    count_elements "" = (0, 0, 0) :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

@@ -1,32 +1,88 @@
-"vc-description": "# Back-Story\n\nEvery day I travel on the freeway.\n\nWhen I am\
-  \ more bored than usual I sometimes like to play the following counting game I made\
-  \ up:\n\n* As I join the freeway my count is ```0```\n* Add ```1``` for every car\
-  \ that I overtake\n* Subtract ```1``` for every car that overtakes me\n* Stop counting\
-  \ when I reach my exit\n\nWhat an easy game! What fun!\n\n# Kata Task\n\nYou will\
-  \ be given\n* The distance to my exit (km)\n* How fast I am going (kph)\n* Information\
-  \ about a lot of other cars \n * Their time (relative to me) as I join the freeway.\
-  \ For example,\n   * ```-1.5``` means they already passed my starting point ```1.5```\
-  \ minutes ago\n   * ```2.2``` means they will pass my starting point ```2.2``` minutes\
-  \ from now\n * How fast they are going (kph)\n\nFind what is my \"score\" as I exit\
-  \ the freeway!\n\n# Notes\n\n* Assume all cars travel at a constant speeds\n\n Safety\
-  \ Warning \n\nIf you plan to play this \"game\" remember that it is not really a\
-  \ game. You are in a **real** car.\n\nThere may be a temptation to try to beat your\
-  \ previous best score.\n\nPlease don't do that..."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def Car := Float × Float\n\ndef freeway_game (km : Float) (kph\
-  \ : Float) (cars : List Car) : Int :=\n  sorry\n"
-"vc-theorems": "theorem freeway_game_properties (km : Float) (kph : Float) (cars :\
-  \ List Car)\n  (h1 : 0.1 ≤ km ∧ km ≤ 1000)  \n  (h2 : 1 ≤ kph ∧ kph ≤ 200) :\n \
-  \ let result := freeway_game km kph cars\n  -- Result score cannot exceed number\
-  \ of cars \n  (Int.natAbs result ≤ cars.length) ∧ \n  -- With no cars, score should\
-  \ be 0\n  (cars = [] → result = 0)\n  := sorry\n\n\ntheorem speed_relationship (km\
-  \ : Float) (kph : Float) (cars : List Car)\n  (h1 : 0.1 ≤ km ∧ km ≤ 1000)\n  (h2\
-  \ : 1 ≤ kph ∧ kph ≤ 200) :\n  let result_slow := freeway_game km 60 cars\n  let\
-  \ result_fast := freeway_game km 180 cars\n  cars ≠ [] → result_slow ≤ result_fast\n\
-  \  := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval freeway_game 50.0 130.0 [[-1.0,\
-  \ 120.0], [-1.5, 120.0]]\n\n/--\ninfo: -2\n-/\n#guard_msgs in\n#eval freeway_game\
-  \ 50.0 110.0 [[1.0, 120.0], [1.5, 125.0]]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
-  #eval freeway_game 50.0 120.0 [[-1.0, 115.0], [-1.5, 110.0], [1.0, 130.0], [1.5,\
-  \ 130.0]]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Back-Story
+
+  Every day I travel on the freeway.
+
+  When I am more bored than usual I sometimes like to play the following counting game I made up:
+
+  * As I join the freeway my count is ```0```
+  * Add ```1``` for every car that I overtake
+  * Subtract ```1``` for every car that overtakes me
+  * Stop counting when I reach my exit
+
+  What an easy game! What fun!
+
+  # Kata Task
+
+  You will be given
+  * The distance to my exit (km)
+  * How fast I am going (kph)
+  * Information about a lot of other cars 
+   * Their time (relative to me) as I join the freeway. For example,
+     * ```-1.5``` means they already passed my starting point ```1.5``` minutes ago
+     * ```2.2``` means they will pass my starting point ```2.2``` minutes from now
+   * How fast they are going (kph)
+
+  Find what is my "score" as I exit the freeway!
+
+  # Notes
+
+  * Assume all cars travel at a constant speeds
+
+   Safety Warning 
+
+  If you plan to play this "game" remember that it is not really a game. You are in a **real** car.
+
+  There may be a temptation to try to beat your previous best score.
+
+  Please don't do that...
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def Car := Float × Float
+
+  def freeway_game (km : Float) (kph : Float) (cars : List Car) : Int :=
+    sorry
+vc-theorems: |
+  theorem freeway_game_properties (km : Float) (kph : Float) (cars : List Car)
+    (h1 : 0.1 ≤ km ∧ km ≤ 1000)  
+    (h2 : 1 ≤ kph ∧ kph ≤ 200) :
+    let result := freeway_game km kph cars
+    -- Result score cannot exceed number of cars 
+    (Int.natAbs result ≤ cars.length) ∧ 
+    -- With no cars, score should be 0
+    (cars = [] → result = 0)
+    := sorry
+
+
+  theorem speed_relationship (km : Float) (kph : Float) (cars : List Car)
+    (h1 : 0.1 ≤ km ∧ km ≤ 1000)
+    (h2 : 1 ≤ kph ∧ kph ≤ 200) :
+    let result_slow := freeway_game km 60 cars
+    let result_fast := freeway_game km 180 cars
+    cars ≠ [] → result_slow ≤ result_fast
+    := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval freeway_game 50.0 130.0 [[-1.0, 120.0], [-1.5, 120.0]]
+
+  /--
+  info: -2
+  -/
+  #guard_msgs in
+  #eval freeway_game 50.0 110.0 [[1.0, 120.0], [1.5, 125.0]]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval freeway_game 50.0 120.0 [[-1.0, 115.0], [-1.5, 110.0], [1.0, 130.0], [1.5, 130.0]]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

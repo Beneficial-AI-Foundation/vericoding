@@ -1,20 +1,80 @@
-"vc-description": "The [Sharkovsky's Theorem](https://en.wikipedia.org/wiki/Sharkovskii%27s_theorem)\
-  \ involves the following ordering of the natural numbers:\n```math\n3≺5≺7≺9≺ ...\\\
-  \\\n≺2·3≺2·5≺2·7≺2·9≺...\\\\\n≺2^n·3≺2^n·5≺2^n·7≺2^n·9≺...\\\\\n≺2^{(n+1)}·3≺2^{(n+1)}·5≺2^{(n+1)}·7≺2^{(n+1)}·9≺...\\\
-  \\\n≺2^n≺2^{(n-1)}≺...\\\\\n≺4≺2≺1\\\\\n```\n \nYour task is to complete the function\
-  \ which returns `true` if `$a≺b$` according to this ordering, and `false` otherwise.\n\
-  \ \nYou may assume both `$a$` and `$b$` are non-zero positive integers."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sharkovsky (a b : Nat) : Bool := \n  sorry\n"
-"vc-theorems": "theorem sharkovsky_reflexive {a : Nat} :\n  ¬ sharkovsky a a := \n\
-  \  sorry\n\n\ntheorem sharkovsky_antisymmetric {a b : Nat} :\n  a ≠ b → ¬(sharkovsky\
-  \ a b ∧ sharkovsky b a) :=\n  sorry\n\n\ntheorem sharkovsky_transitive {a b c :\
-  \ Nat} :\n  sharkovsky a b → sharkovsky b c → sharkovsky a c :=\n  sorry\n\n\ntheorem\
-  \ odd_precedes_power_of_two {a : Nat} (h : a ≥ 3) (h2 : a % 2 = 1) :\n  sharkovsky\
-  \ a (2^4) :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval sharkovsky 18\
-  \ 12\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval sharkovsky 3 9\n\n/--\ninfo:\
-  \ True\n-/\n#guard_msgs in\n#eval sharkovsky 10 16\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval sharkovsky 1 22\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval sharkovsky\
-  \ 32 1024\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval sharkovsky 17 17\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  The [Sharkovsky's Theorem](https://en.wikipedia.org/wiki/Sharkovskii%27s_theorem) involves the following ordering of the natural numbers:
+  ```math
+  3≺5≺7≺9≺ ...\\
+  ≺2·3≺2·5≺2·7≺2·9≺...\\
+  ≺2^n·3≺2^n·5≺2^n·7≺2^n·9≺...\\
+  ≺2^{(n+1)}·3≺2^{(n+1)}·5≺2^{(n+1)}·7≺2^{(n+1)}·9≺...\\
+  ≺2^n≺2^{(n-1)}≺...\\
+  ≺4≺2≺1\\
+  ```
+   
+  Your task is to complete the function which returns `true` if `$a≺b$` according to this ordering, and `false` otherwise.
+   
+  You may assume both `$a$` and `$b$` are non-zero positive integers.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sharkovsky (a b : Nat) : Bool := 
+    sorry
+vc-theorems: |
+  theorem sharkovsky_reflexive {a : Nat} :
+    ¬ sharkovsky a a := 
+    sorry
+
+
+  theorem sharkovsky_antisymmetric {a b : Nat} :
+    a ≠ b → ¬(sharkovsky a b ∧ sharkovsky b a) :=
+    sorry
+
+
+  theorem sharkovsky_transitive {a b c : Nat} :
+    sharkovsky a b → sharkovsky b c → sharkovsky a c :=
+    sorry
+
+
+  theorem odd_precedes_power_of_two {a : Nat} (h : a ≥ 3) (h2 : a % 2 = 1) :
+    sharkovsky a (2^4) :=
+    sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval sharkovsky 18 12
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval sharkovsky 3 9
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval sharkovsky 10 16
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval sharkovsky 1 22
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval sharkovsky 32 1024
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval sharkovsky 17 17
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

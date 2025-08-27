@@ -1,46 +1,109 @@
-"vc-description": "Monocarp had a tree which consisted of $n$ vertices and was rooted\
-  \ at vertex $1$. He decided to study BFS (Breadth-first search), so he ran BFS on\
-  \ his tree, starting from the root. BFS can be described by the following pseudocode:a\
-  \ = [] # the order in which vertices were processed\n\nq = Queue()\n\nq.put(1) #\
-  \ place the root at the end of the queue\n\nwhile not q.empty():\n\n    k = q.pop()\
-  \ # retrieve the first vertex from the queue\n\n    a.append(k) # append k to the\
-  \ end of the sequence in which vertices were visited\n\n    for y in g[k]: # g[k]\
-  \ is the list of all children of vertex k, sorted in ascending order\n\n       \
-  \ q.put(y)\n\n\n\nMonocarp was fascinated by BFS so much that, in the end, he lost\
-  \ his tree. Fortunately, he still has a sequence of vertices, in which order vertices\
-  \ were visited by the BFS algorithm (the array a from the pseudocode). Monocarp\
-  \ knows that each vertex was visited exactly once (since they were put and taken\
-  \ from the queue exactly once). Also, he knows that all children of each vertex\
-  \ were viewed in ascending order.\n\nMonocarp knows that there are many trees (in\
-  \ the general case) with the same visiting order $a$, so he doesn't hope to restore\
-  \ his tree. Monocarp is okay with any tree that has minimum height.\n\nThe height\
-  \ of a tree is the maximum depth of the tree's vertices, and the depth of a vertex\
-  \ is the number of edges in the path from the root to it. For example, the depth\
-  \ of vertex $1$ is $0$, since it's the root, and the depth of all root's children\
-  \ are $1$.\n\nHelp Monocarp to find any tree with given visiting order $a$ and minimum\
-  \ height.\n\n\n-----Input-----\n\nThe first line contains a single integer $t$ ($1\
-  \ \\le t \\le 1000$) — the number of test cases.\n\nThe first line of each test\
-  \ case contains a single integer $n$ ($2 \\le n \\le 2 \\cdot 10^5$) — the number\
-  \ of vertices in the tree.\n\nThe second line of each test case contains $n$ integers\
-  \ $a_1, a_2, \\dots, a_n$ ($1 \\le a_i \\le n$; $a_i \\neq a_j$; $a_1 = 1$) — the\
-  \ order in which the vertices were visited by the BFS algorithm.\n\nIt's guaranteed\
-  \ that the total sum of $n$ over test cases doesn't exceed $2 \\cdot 10^5$.\n\n\n\
-  -----Output-----\n\nFor each test case print the minimum possible height of a tree\
-  \ with the given visiting order $a$.\n\n\n-----Example-----\nInput\n3\n4\n1 4 3\
-  \ 2\n2\n1 2\n3\n1 2 3\n\nOutput\n3\n1\n1\n\n\n\n-----Note-----\n\nIn the first test\
-  \ case, there is only one tree with the given visiting order:  [Image] \n\nIn the\
-  \ second test case, there is only one tree with the given visiting order as well:\
-  \  [Image] \n\nIn the third test case, an optimal tree with the given visiting order\
-  \ is shown below:  [Image]"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_minimum_tree_height (n: Nat) (xs: List Int) : Nat :=\
-  \ sorry\n\ntheorem singleton_list_height \n  {n: Nat} (xs: List Int) (h: xs = [1])\
-  \ :\n  solve_minimum_tree_height n xs = 0 := sorry\n\n\n\n\n"
-"vc-theorems": "theorem result_bounds \n  {n: Nat} (xs: List Int) (h: xs.length >\
-  \ 0) :\n  let result := solve_minimum_tree_height n xs\n  0 ≤ result ∧ result ≤\
-  \ xs.length - 1 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_minimum_tree_height\
-  \ 4 [1, 4, 3, 2]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_minimum_tree_height\
-  \ 2 [1, 2]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_minimum_tree_height\
-  \ 3 [1, 2, 3]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Monocarp had a tree which consisted of $n$ vertices and was rooted at vertex $1$. He decided to study BFS (Breadth-first search), so he ran BFS on his tree, starting from the root. BFS can be described by the following pseudocode:a = [] # the order in which vertices were processed
+
+  q = Queue()
+
+  q.put(1) # place the root at the end of the queue
+
+  while not q.empty():
+
+      k = q.pop() # retrieve the first vertex from the queue
+
+      a.append(k) # append k to the end of the sequence in which vertices were visited
+
+      for y in g[k]: # g[k] is the list of all children of vertex k, sorted in ascending order
+
+          q.put(y)
+
+
+
+  Monocarp was fascinated by BFS so much that, in the end, he lost his tree. Fortunately, he still has a sequence of vertices, in which order vertices were visited by the BFS algorithm (the array a from the pseudocode). Monocarp knows that each vertex was visited exactly once (since they were put and taken from the queue exactly once). Also, he knows that all children of each vertex were viewed in ascending order.
+
+  Monocarp knows that there are many trees (in the general case) with the same visiting order $a$, so he doesn't hope to restore his tree. Monocarp is okay with any tree that has minimum height.
+
+  The height of a tree is the maximum depth of the tree's vertices, and the depth of a vertex is the number of edges in the path from the root to it. For example, the depth of vertex $1$ is $0$, since it's the root, and the depth of all root's children are $1$.
+
+  Help Monocarp to find any tree with given visiting order $a$ and minimum height.
+
+
+  -----Input-----
+
+  The first line contains a single integer $t$ ($1 \le t \le 1000$) — the number of test cases.
+
+  The first line of each test case contains a single integer $n$ ($2 \le n \le 2 \cdot 10^5$) — the number of vertices in the tree.
+
+  The second line of each test case contains $n$ integers $a_1, a_2, \dots, a_n$ ($1 \le a_i \le n$; $a_i \neq a_j$; $a_1 = 1$) — the order in which the vertices were visited by the BFS algorithm.
+
+  It's guaranteed that the total sum of $n$ over test cases doesn't exceed $2 \cdot 10^5$.
+
+
+  -----Output-----
+
+  For each test case print the minimum possible height of a tree with the given visiting order $a$.
+
+
+  -----Example-----
+  Input
+  3
+  4
+  1 4 3 2
+  2
+  1 2
+  3
+  1 2 3
+
+  Output
+  3
+  1
+  1
+
+
+
+  -----Note-----
+
+  In the first test case, there is only one tree with the given visiting order:  [Image] 
+
+  In the second test case, there is only one tree with the given visiting order as well:  [Image] 
+
+  In the third test case, an optimal tree with the given visiting order is shown below:  [Image]
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def solve_minimum_tree_height (n: Nat) (xs: List Int) : Nat := sorry
+
+  theorem singleton_list_height 
+    {n: Nat} (xs: List Int) (h: xs = [1]) :
+    solve_minimum_tree_height n xs = 0 := sorry
+
+
+
+
+vc-theorems: |
+  theorem result_bounds 
+    {n: Nat} (xs: List Int) (h: xs.length > 0) :
+    let result := solve_minimum_tree_height n xs
+    0 ≤ result ∧ result ≤ xs.length - 1 := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve_minimum_tree_height 4 [1, 4, 3, 2]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_minimum_tree_height 2 [1, 2]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_minimum_tree_height 3 [1, 2, 3]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

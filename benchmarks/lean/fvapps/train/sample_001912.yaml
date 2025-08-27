@@ -1,20 +1,68 @@
-"vc-description": "Given a list of intervals, remove all intervals that are covered\
-  \ by another interval in the list.\nInterval [a,b) is covered by interval [c,d)\
-  \ if and only if c <= a and b <= d.\nAfter doing so, return the number of remaining\
-  \ intervals.\n \nExample 1:\nInput: intervals = [[1,4],[3,6],[2,8]]\nOutput: 2\n\
-  Explanation: Interval [3,6] is covered by [2,8], therefore it is removed.\n\nExample\
-  \ 2:\nInput: intervals = [[1,4],[2,3]]\nOutput: 1\n\nExample 3:\nInput: intervals\
-  \ = [[0,10],[5,12]]\nOutput: 2\n\nExample 4:\nInput: intervals = [[3,10],[4,10],[5,11]]\n\
-  Output: 2\n\nExample 5:\nInput: intervals = [[1,2],[1,4],[3,4]]\nOutput: 1\n\n \n\
-  Constraints:\n\n1 <= intervals.length <= 1000\nintervals[i].length == 2\n0 <= intervals[i][0]\
-  \ < intervals[i][1] <= 10^5\nAll the intervals are unique."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def remove_covered_intervals (intervals: List Interval) : Int :=\n\
-  \  sorry\n\n\n"
-"vc-theorems": "theorem remove_covered_intervals_empty :\n  remove_covered_intervals\
-  \ [] = 0 :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval remove_covered_intervals\
-  \ [[1, 4], [3, 6], [2, 8]]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval remove_covered_intervals\
-  \ [[1, 4], [2, 3]]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval remove_covered_intervals\
-  \ [[3, 10], [4, 10], [5, 11]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given a list of intervals, remove all intervals that are covered by another interval in the list.
+  Interval [a,b) is covered by interval [c,d) if and only if c <= a and b <= d.
+  After doing so, return the number of remaining intervals.
+   
+  Example 1:
+  Input: intervals = [[1,4],[3,6],[2,8]]
+  Output: 2
+  Explanation: Interval [3,6] is covered by [2,8], therefore it is removed.
+
+  Example 2:
+  Input: intervals = [[1,4],[2,3]]
+  Output: 1
+
+  Example 3:
+  Input: intervals = [[0,10],[5,12]]
+  Output: 2
+
+  Example 4:
+  Input: intervals = [[3,10],[4,10],[5,11]]
+  Output: 2
+
+  Example 5:
+  Input: intervals = [[1,2],[1,4],[3,4]]
+  Output: 1
+
+   
+  Constraints:
+
+  1 <= intervals.length <= 1000
+  intervals[i].length == 2
+  0 <= intervals[i][0] < intervals[i][1] <= 10^5
+  All the intervals are unique.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def remove_covered_intervals (intervals: List Interval) : Int :=
+    sorry
+
+
+vc-theorems: |
+  theorem remove_covered_intervals_empty :
+    remove_covered_intervals [] = 0 :=
+    sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval remove_covered_intervals [[1, 4], [3, 6], [2, 8]]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval remove_covered_intervals [[1, 4], [2, 3]]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval remove_covered_intervals [[3, 10], [4, 10], [5, 11]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

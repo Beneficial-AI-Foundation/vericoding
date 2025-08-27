@@ -1,40 +1,97 @@
-"vc-description": "Given a non-empty list of words, return the k most frequent elements.\n\
-  Your answer should be sorted by frequency from highest to lowest. If two words have\
-  \ the same frequency, then the word with the lower alphabetical order comes first.\n\
-  \nExample 1:\n\nInput: [\"i\", \"love\", \"leetcode\", \"i\", \"love\", \"coding\"\
-  ], k = 2\nOutput: [\"i\", \"love\"]\nExplanation: \"i\" and \"love\" are the two\
-  \ most frequent words.\n    Note that \"i\" comes before \"love\" due to a lower\
-  \ alphabetical order.\n\n\n\nExample 2:\n\nInput: [\"the\", \"day\", \"is\", \"\
-  sunny\", \"the\", \"the\", \"the\", \"sunny\", \"is\", \"is\"], k = 4\nOutput: [\"\
-  the\", \"is\", \"sunny\", \"day\"]\nExplanation: \"the\", \"is\", \"sunny\" and\
-  \ \"day\" are the four most frequent words,\n    with the number of occurrence being\
-  \ 4, 3, 2 and 1 respectively.\n\n\n\nNote:\n\nYou may assume k is always valid,\
-  \ 1 ≤ k ≤ number of unique elements.\nInput words contain only lowercase letters.\n\
-  \n\n\nFollow up:\n\nTry to solve it in O(n log k) time and O(n) extra space."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def top_k_frequent (words : List String) (k : Nat) : List String\
-  \ :=\n  sorry\n"
-"vc-theorems": "theorem top_k_frequent_properties_length \n  (words : List String)\
-  \ (k : Nat) (h : words ≠ []) :\n  let result := top_k_frequent words k\n  List.length\
-  \ result = k := sorry\n\n\ntheorem top_k_frequent_properties_subset\n  (words :\
-  \ List String) (k : Nat) (h : words ≠ []) :\n  let result := top_k_frequent words\
-  \ k\n  ∀ x, x ∈ result → x ∈ words := sorry\n\n\ntheorem top_k_frequent_properties_unique\n\
-  \  (words : List String) (k : Nat) (h : words ≠ []) :\n  let result := top_k_frequent\
-  \ words k\n  ∀ x y, x ∈ result → y ∈ result → x = y → result.indexOf x = result.indexOf\
-  \ y := sorry\n\n\ntheorem top_k_frequent_properties_order\n  (words : List String)\
-  \ (k : Nat) (h : words ≠ []) :\n  let result := top_k_frequent words k\n  let counts\
-  \ := (λ w => (words.filter (· = w)).length)\n  ∀ i < result.length - 1,\n    let\
-  \ curr := counts (result.get ⟨i, sorry⟩)\n    let next := counts (result.get ⟨i+1,\
-  \ sorry⟩)\n    curr > next ∨ (curr = next ∧ result.get ⟨i, sorry⟩ ≤ result.get ⟨i+1,\
-  \ sorry⟩) := sorry\n\n\ntheorem equal_frequencies_lexicographic_order\n  (words\
-  \ : List String) (k : Nat) :\n  let result := top_k_frequent words k\n  let counts\
-  \ := (λ w => (words.filter (· = w)).length)\n  ∀ i < result.length - 1,\n    counts\
-  \ (result.get ⟨i, sorry⟩) = counts (result.get ⟨i+1, sorry⟩) →\n    result.get ⟨i,\
-  \ sorry⟩ ≤ result.get ⟨i+1, sorry⟩ := sorry\n\n/--\ninfo: ['i', 'love']\n-/\n#guard_msgs\
-  \ in\n#eval top_k_frequent [\"i\", \"love\", \"leetcode\", \"i\", \"love\", \"coding\"\
-  ] 2\n\n/--\ninfo: ['the', 'is', 'sunny', 'day']\n-/\n#guard_msgs in\n#eval top_k_frequent\
-  \ [\"the\", \"day\", \"is\", \"sunny\", \"the\", \"the\", \"the\", \"sunny\", \"\
-  is\", \"is\"] 4\n\n/--\ninfo: ['a']\n-/\n#guard_msgs in\n#eval top_k_frequent [\"\
-  a\", \"a\", \"b\"] 1\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a non-empty list of words, return the k most frequent elements.
+  Your answer should be sorted by frequency from highest to lowest. If two words have the same frequency, then the word with the lower alphabetical order comes first.
+
+  Example 1:
+
+  Input: ["i", "love", "leetcode", "i", "love", "coding"], k = 2
+  Output: ["i", "love"]
+  Explanation: "i" and "love" are the two most frequent words.
+      Note that "i" comes before "love" due to a lower alphabetical order.
+
+
+
+  Example 2:
+
+  Input: ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], k = 4
+  Output: ["the", "is", "sunny", "day"]
+  Explanation: "the", "is", "sunny" and "day" are the four most frequent words,
+      with the number of occurrence being 4, 3, 2 and 1 respectively.
+
+
+
+  Note:
+
+  You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
+  Input words contain only lowercase letters.
+
+
+
+  Follow up:
+
+  Try to solve it in O(n log k) time and O(n) extra space.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def top_k_frequent (words : List String) (k : Nat) : List String :=
+    sorry
+vc-theorems: |
+  theorem top_k_frequent_properties_length 
+    (words : List String) (k : Nat) (h : words ≠ []) :
+    let result := top_k_frequent words k
+    List.length result = k := sorry
+
+
+  theorem top_k_frequent_properties_subset
+    (words : List String) (k : Nat) (h : words ≠ []) :
+    let result := top_k_frequent words k
+    ∀ x, x ∈ result → x ∈ words := sorry
+
+
+  theorem top_k_frequent_properties_unique
+    (words : List String) (k : Nat) (h : words ≠ []) :
+    let result := top_k_frequent words k
+    ∀ x y, x ∈ result → y ∈ result → x = y → result.indexOf x = result.indexOf y := sorry
+
+
+  theorem top_k_frequent_properties_order
+    (words : List String) (k : Nat) (h : words ≠ []) :
+    let result := top_k_frequent words k
+    let counts := (λ w => (words.filter (· = w)).length)
+    ∀ i < result.length - 1,
+      let curr := counts (result.get ⟨i, sorry⟩)
+      let next := counts (result.get ⟨i+1, sorry⟩)
+      curr > next ∨ (curr = next ∧ result.get ⟨i, sorry⟩ ≤ result.get ⟨i+1, sorry⟩) := sorry
+
+
+  theorem equal_frequencies_lexicographic_order
+    (words : List String) (k : Nat) :
+    let result := top_k_frequent words k
+    let counts := (λ w => (words.filter (· = w)).length)
+    ∀ i < result.length - 1,
+      counts (result.get ⟨i, sorry⟩) = counts (result.get ⟨i+1, sorry⟩) →
+      result.get ⟨i, sorry⟩ ≤ result.get ⟨i+1, sorry⟩ := sorry
+
+  /--
+  info: ['i', 'love']
+  -/
+  #guard_msgs in
+  #eval top_k_frequent ["i", "love", "leetcode", "i", "love", "coding"] 2
+
+  /--
+  info: ['the', 'is', 'sunny', 'day']
+  -/
+  #guard_msgs in
+  #eval top_k_frequent ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"] 4
+
+  /--
+  info: ['a']
+  -/
+  #guard_msgs in
+  #eval top_k_frequent ["a", "a", "b"] 1
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

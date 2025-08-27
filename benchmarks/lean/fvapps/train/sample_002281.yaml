@@ -1,26 +1,86 @@
-"vc-description": "Polycarp is reading a book consisting of $n$ pages numbered from\
-  \ $1$ to $n$. Every time he finishes the page with the number divisible by $m$,\
-  \ he writes down the last digit of this page number. For example, if $n=15$ and\
-  \ $m=5$, pages divisible by $m$ are $5, 10, 15$. Their last digits are $5, 0, 5$\
-  \ correspondingly, their sum is $10$.\n\nYour task is to calculate the sum of all\
-  \ digits Polycarp has written down.\n\nYou have to answer $q$ independent queries.\n\
-  \n\n-----Input-----\n\nThe first line of the input contains one integer $q$ ($1\
-  \ \\le q \\le 1000$) — the number of queries.\n\nThe following $q$ lines contain\
-  \ queries, one per line. Each query is given as two integers $n$ and $m$ ($1 \\\
-  le n, m \\le 10^{16}$) — the number of pages in the book and required divisor, respectively.\n\
-  \n\n-----Output-----\n\nFor each query print the answer for it — the sum of digits\
-  \ written down by Polycarp.\n\n\n-----Example-----\nInput\n7\n1 1\n10 1\n100 3\n\
-  1024 14\n998244353 1337\n123 144\n1234312817382646 13\n\nOutput\n1\n45\n153\n294\n\
-  3359835\n0\n427262129093995"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_book_pages (n m : Nat) : Nat :=\nsorry\n"
-"vc-theorems": "theorem solve_book_pages_nonnegative (n m : Nat) \n    (h1 : n > 0)\
-  \ (h2 : m > 0) :\n  solve_book_pages n m ≥ 0 :=\nsorry\n\n\ntheorem solve_book_pages_equals_sum\
-  \ (n m : Nat)\n    (h1 : n > 0) (h2 : m > 0) :\n  solve_book_pages n m = \n    (List.range\
-  \ (n / m)).foldl (fun acc i => acc + ((i + 1) * m % 10)) 0 :=\nsorry\n\n\ntheorem\
-  \ divisibility_property (n m : Nat)\n    (h1 : n > 0) (h2 : m > 0) :\n  solve_book_pages\
-  \ n m = solve_book_pages (n - n % m) m :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
-  \ in\n#eval solve_book_pages 1 1\n\n/--\ninfo: 45\n-/\n#guard_msgs in\n#eval solve_book_pages\
-  \ 10 1\n\n/--\ninfo: 153\n-/\n#guard_msgs in\n#eval solve_book_pages 100 3\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Polycarp is reading a book consisting of $n$ pages numbered from $1$ to $n$. Every time he finishes the page with the number divisible by $m$, he writes down the last digit of this page number. For example, if $n=15$ and $m=5$, pages divisible by $m$ are $5, 10, 15$. Their last digits are $5, 0, 5$ correspondingly, their sum is $10$.
+
+  Your task is to calculate the sum of all digits Polycarp has written down.
+
+  You have to answer $q$ independent queries.
+
+
+  -----Input-----
+
+  The first line of the input contains one integer $q$ ($1 \le q \le 1000$) — the number of queries.
+
+  The following $q$ lines contain queries, one per line. Each query is given as two integers $n$ and $m$ ($1 \le n, m \le 10^{16}$) — the number of pages in the book and required divisor, respectively.
+
+
+  -----Output-----
+
+  For each query print the answer for it — the sum of digits written down by Polycarp.
+
+
+  -----Example-----
+  Input
+  7
+  1 1
+  10 1
+  100 3
+  1024 14
+  998244353 1337
+  123 144
+  1234312817382646 13
+
+  Output
+  1
+  45
+  153
+  294
+  3359835
+  0
+  427262129093995
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_book_pages (n m : Nat) : Nat :=
+  sorry
+vc-theorems: |
+  theorem solve_book_pages_nonnegative (n m : Nat) 
+      (h1 : n > 0) (h2 : m > 0) :
+    solve_book_pages n m ≥ 0 :=
+  sorry
+
+
+  theorem solve_book_pages_equals_sum (n m : Nat)
+      (h1 : n > 0) (h2 : m > 0) :
+    solve_book_pages n m = 
+      (List.range (n / m)).foldl (fun acc i => acc + ((i + 1) * m % 10)) 0 :=
+  sorry
+
+
+  theorem divisibility_property (n m : Nat)
+      (h1 : n > 0) (h2 : m > 0) :
+    solve_book_pages n m = solve_book_pages (n - n % m) m :=
+  sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_book_pages 1 1
+
+  /--
+  info: 45
+  -/
+  #guard_msgs in
+  #eval solve_book_pages 10 1
+
+  /--
+  info: 153
+  -/
+  #guard_msgs in
+  #eval solve_book_pages 100 3
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

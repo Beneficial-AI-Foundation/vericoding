@@ -1,30 +1,72 @@
-"vc-description": "=====Function Descriptions=====\nzeros\n\nThe zeros tool returns\
-  \ a new array with a given shape and type filled with 0's.\n\nimport numpy\n\nprint\
-  \ numpy.zeros((1,2))                    #Default type is float\n#Output : [[ 0.\
-  \  0.]] \n\nprint numpy.zeros((1,2), dtype = numpy.int) #Type changes to int\n#Output\
-  \ : [[0 0]]\n\nones\n\nThe ones tool returns a new array with a given shape and\
-  \ type filled with 1's.\n\nimport numpy\n\nprint numpy.ones((1,2))             \
-  \       #Default type is float\n#Output : [[ 1.  1.]] \n\nprint numpy.ones((1,2),\
-  \ dtype = numpy.int) #Type changes to int\n#Output : [[1 1]]   \n\n=====Problem\
-  \ Statement=====\nYou are given the shape of the array in the form of space-separated\
-  \ integers, each integer representing the size of different dimensions, your task\
-  \ is to print an array of the given shape and integer type using the tools numpy.zeros\
-  \ and numpy.ones.\n\n=====Input Format=====\nA single line containing the space-separated\
-  \ integers.\n\n=====Constraints=====\n1≤each integer≤3\n\n=====Output Format=====\n\
-  First, print the array using the numpy.zeros tool and then print the array with\
-  \ the numpy.ones tool."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def createArrays (dimStr : String) : Array (Array Int) × Array\
-  \ (Array Int) :=\n  sorry\n"
-"vc-theorems": "theorem create_arrays_shapes {dims : List Nat} \n  (h : ∀ d ∈ dims,\
-  \ 1 ≤ d ∧ d ≤ 10) :\n  let dimStr := String.join (List.map toString dims)\n  let\
-  \ (zeros, ones) := createArrays dimStr\n  zeros.size = dims.head! ∧ ones.size =\
-  \ dims.head! :=\nsorry\n\n\ntheorem create_arrays_values {dims : List Nat}\n  (h\
-  \ : ∀ d ∈ dims, 1 ≤ d ∧ d ≤ 10) :\n  let dimStr := String.join (List.map toString\
-  \ dims)\n  let (zeros, ones) := createArrays dimStr\n  (∀ arr ∈ zeros, ∀ x ∈ arr,\
-  \ x = 0) ∧ \n  (∀ arr ∈ ones, ∀ x ∈ arr, x = 1) :=\nsorry\n\n\ntheorem create_arrays_distinctness\
-  \ {dims : List Nat}\n  (h : ∀ d ∈ dims, 1 ≤ d ∧ d ≤ 10) :\n  let dimStr := String.join\
-  \ (List.map toString dims)\n  let (zeros, ones) := createArrays dimStr\n  zeros\
-  \ ≠ ones :=\nsorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  =====Function Descriptions=====
+  zeros
+
+  The zeros tool returns a new array with a given shape and type filled with 0's.
+
+  import numpy
+
+  print numpy.zeros((1,2))                    #Default type is float
+  #Output : [[ 0.  0.]] 
+
+  print numpy.zeros((1,2), dtype = numpy.int) #Type changes to int
+  #Output : [[0 0]]
+
+  ones
+
+  The ones tool returns a new array with a given shape and type filled with 1's.
+
+  import numpy
+
+  print numpy.ones((1,2))                    #Default type is float
+  #Output : [[ 1.  1.]] 
+
+  print numpy.ones((1,2), dtype = numpy.int) #Type changes to int
+  #Output : [[1 1]]   
+
+  =====Problem Statement=====
+  You are given the shape of the array in the form of space-separated integers, each integer representing the size of different dimensions, your task is to print an array of the given shape and integer type using the tools numpy.zeros and numpy.ones.
+
+  =====Input Format=====
+  A single line containing the space-separated integers.
+
+  =====Constraints=====
+  1≤each integer≤3
+
+  =====Output Format=====
+  First, print the array using the numpy.zeros tool and then print the array with the numpy.ones tool.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def createArrays (dimStr : String) : Array (Array Int) × Array (Array Int) :=
+    sorry
+vc-theorems: |-
+  theorem create_arrays_shapes {dims : List Nat} 
+    (h : ∀ d ∈ dims, 1 ≤ d ∧ d ≤ 10) :
+    let dimStr := String.join (List.map toString dims)
+    let (zeros, ones) := createArrays dimStr
+    zeros.size = dims.head! ∧ ones.size = dims.head! :=
+  sorry
+
+
+  theorem create_arrays_values {dims : List Nat}
+    (h : ∀ d ∈ dims, 1 ≤ d ∧ d ≤ 10) :
+    let dimStr := String.join (List.map toString dims)
+    let (zeros, ones) := createArrays dimStr
+    (∀ arr ∈ zeros, ∀ x ∈ arr, x = 0) ∧ 
+    (∀ arr ∈ ones, ∀ x ∈ arr, x = 1) :=
+  sorry
+
+
+  theorem create_arrays_distinctness {dims : List Nat}
+    (h : ∀ d ∈ dims, 1 ≤ d ∧ d ≤ 10) :
+    let dimStr := String.join (List.map toString dims)
+    let (zeros, ones) := createArrays dimStr
+    zeros ≠ ones :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

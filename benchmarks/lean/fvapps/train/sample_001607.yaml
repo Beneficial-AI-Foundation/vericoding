@@ -1,28 +1,75 @@
-"vc-description": "Write a function that takes a positive integer and returns the\
-  \ next smaller positive integer containing the same digits.\n\nFor example:\n\n\
-  ```python\nnext_smaller(21) == 12\nnext_smaller(531) == 513\nnext_smaller(2071)\
-  \ == 2017\n```\n\nReturn -1 (for `Haskell`: return `Nothing`, for `Rust`: return\
-  \ `None`), when there is no smaller number that contains the same digits. Also return\
-  \ -1 when the next smaller number with the same digits would require the leading\
-  \ digit to be zero.\n\n```python \nnext_smaller(9) == -1\nnext_smaller(135) == -1\n\
-  next_smaller(1027) == -1  # 0721 is out since we don't write numbers with leading\
-  \ zeros\n```\n```ruby \nnext_smaller(9) == -1\nnext_smaller(135) == -1\nnext_smaller(1027)\
-  \ == -1  # 0721 is out since we don't write numbers with leading zeros\n```\n\n\
-  \ * some tests will include very large numbers.\n * test data only employs positive\
-  \ integers.\n\n*The function you write for this challenge is the inverse of this\
-  \ kata: \"[Next bigger number with the same digits](http://www.codewars.com/kata/next-bigger-number-with-the-same-digits).\"\
-  *"
-"vc-preamble": "import Imports.AllImports\n\ndef next_smaller (n : Nat) : Int := sorry\n\
-  \ntheorem next_smaller_result_positive (n : Nat) (h: n ≥ 10) :\n  next_smaller n\
-  \ = -1 ∨ next_smaller n > 0 := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def has_same_digits (n m : Nat) : Bool := sorry"
-"vc-theorems": "theorem single_digit_returns_negative_one (n : Nat) (h: n < 10) :\n\
-  \  next_smaller n = -1 := sorry \n\n\ntheorem zero_returns_negative_one :\n  next_smaller\
-  \ 0 = -1 := sorry\n\n\ntheorem result_preserves_number_of_digits (n : Nat) (h: n\
-  \ ≥ 10) :\n  next_smaller n ≠ -1 →\n  (String.length (toString (next_smaller n).natAbs)\
-  \ = String.length (toString n)) ∧\n  next_smaller n < n := sorry\n\n\n/--\ninfo:\
-  \ 12\n-/\n#guard_msgs in\n#eval next_smaller 21\n\n/--\ninfo: -1\n-/\n#guard_msgs\
-  \ in\n#eval next_smaller 1027\n\n/--\ninfo: 123456789\n-/\n#guard_msgs in\n#eval\
-  \ next_smaller 123456798\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Write a function that takes a positive integer and returns the next smaller positive integer containing the same digits.
+
+  For example:
+
+  ```python
+  next_smaller(21) == 12
+  next_smaller(531) == 513
+  next_smaller(2071) == 2017
+  ```
+
+  Return -1 (for `Haskell`: return `Nothing`, for `Rust`: return `None`), when there is no smaller number that contains the same digits. Also return -1 when the next smaller number with the same digits would require the leading digit to be zero.
+
+  ```python 
+  next_smaller(9) == -1
+  next_smaller(135) == -1
+  next_smaller(1027) == -1  # 0721 is out since we don't write numbers with leading zeros
+  ```
+  ```ruby 
+  next_smaller(9) == -1
+  next_smaller(135) == -1
+  next_smaller(1027) == -1  # 0721 is out since we don't write numbers with leading zeros
+  ```
+
+   * some tests will include very large numbers.
+   * test data only employs positive integers.
+
+  *The function you write for this challenge is the inverse of this kata: "[Next bigger number with the same digits](http://www.codewars.com/kata/next-bigger-number-with-the-same-digits)."*
+vc-preamble: |
+  import Imports.AllImports
+
+  def next_smaller (n : Nat) : Int := sorry
+
+  theorem next_smaller_result_positive (n : Nat) (h: n ≥ 10) :
+    next_smaller n = -1 ∨ next_smaller n > 0 := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def has_same_digits (n m : Nat) : Bool := sorry
+vc-theorems: |
+  theorem single_digit_returns_negative_one (n : Nat) (h: n < 10) :
+    next_smaller n = -1 := sorry 
+
+
+  theorem zero_returns_negative_one :
+    next_smaller 0 = -1 := sorry
+
+
+  theorem result_preserves_number_of_digits (n : Nat) (h: n ≥ 10) :
+    next_smaller n ≠ -1 →
+    (String.length (toString (next_smaller n).natAbs) = String.length (toString n)) ∧
+    next_smaller n < n := sorry
+
+
+  /--
+  info: 12
+  -/
+  #guard_msgs in
+  #eval next_smaller 21
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval next_smaller 1027
+
+  /--
+  info: 123456789
+  -/
+  #guard_msgs in
+  #eval next_smaller 123456798
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

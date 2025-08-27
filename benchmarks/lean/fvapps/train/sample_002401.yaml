@@ -1,15 +1,66 @@
-"vc-description": "The Tribonacci sequence Tn is defined as follows: \nT0 = 0, T1\
-  \ = 1, T2 = 1, and Tn+3 = Tn + Tn+1 + Tn+2 for n >= 0.\nGiven n, return the value\
-  \ of Tn.\n \nExample 1:\nInput: n = 4\nOutput: 4\nExplanation:\nT_3 = 0 + 1 + 1\
-  \ = 2\nT_4 = 1 + 1 + 2 = 4\n\nExample 2:\nInput: n = 25\nOutput: 1389537\n\n \n\
-  Constraints:\n\n0 <= n <= 37\nThe answer is guaranteed to fit within a 32-bit integer,\
-  \ ie. answer <= 2^31 - 1."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def tribonacci (n : Int) : Int :=\n  sorry\n\n\n"
-"vc-theorems": "theorem tribonacci_base_zero :\n  tribonacci 0 = 0 :=\n  sorry\n\n\
-  \ntheorem tribonacci_base_one :\n  tribonacci 1 = 1 :=\n  sorry\n\n\ntheorem tribonacci_base_two\
-  \ :\n  tribonacci 2 = 1 :=\n  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval tribonacci\
-  \ 4\n\n/--\ninfo: 1389537\n-/\n#guard_msgs in\n#eval tribonacci 25\n\n/--\ninfo:\
-  \ 0\n-/\n#guard_msgs in\n#eval tribonacci 0\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  The Tribonacci sequence Tn is defined as follows: 
+  T0 = 0, T1 = 1, T2 = 1, and Tn+3 = Tn + Tn+1 + Tn+2 for n >= 0.
+  Given n, return the value of Tn.
+   
+  Example 1:
+  Input: n = 4
+  Output: 4
+  Explanation:
+  T_3 = 0 + 1 + 1 = 2
+  T_4 = 1 + 1 + 2 = 4
+
+  Example 2:
+  Input: n = 25
+  Output: 1389537
+
+   
+  Constraints:
+
+  0 <= n <= 37
+  The answer is guaranteed to fit within a 32-bit integer, ie. answer <= 2^31 - 1.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def tribonacci (n : Int) : Int :=
+    sorry
+
+
+vc-theorems: |
+  theorem tribonacci_base_zero :
+    tribonacci 0 = 0 :=
+    sorry
+
+
+  theorem tribonacci_base_one :
+    tribonacci 1 = 1 :=
+    sorry
+
+
+  theorem tribonacci_base_two :
+    tribonacci 2 = 1 :=
+    sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval tribonacci 4
+
+  /--
+  info: 1389537
+  -/
+  #guard_msgs in
+  #eval tribonacci 25
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval tribonacci 0
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

@@ -1,24 +1,78 @@
-"vc-description": "Given an array (a list in Python) of integers and an integer `n`,\
-  \ find all occurrences of `n` in the given array and return another array containing\
-  \ all the index positions of `n` in the given array.\n\nIf `n` is not in the given\
-  \ array, return an empty array `[]`.\n\nAssume that `n` and all values in the given\
-  \ array will always be integers.\n\nExample:\n```python\nfind_all([6, 9, 3, 4, 3,\
-  \ 82, 11], 3)\n> [2, 4]\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_all (xs : List Int) (n : Int) : List Nat :=\n  sorry\n"
-"vc-theorems": "theorem find_all_valid_indices {xs : List Int} {n : Int} :\n  ∀ i\
-  \ ∈ find_all xs n, i < xs.length := by\n  sorry\n\n\ntheorem find_all_ascending\
-  \ {xs : List Int} {n : Int} :\n  ∀ i j, i < j → \n  i ∈ find_all xs n → \n  j ∈\
-  \ find_all xs n → \n  i < j := by\n  sorry\n\n\ntheorem find_all_points_to_target\
-  \ {xs : List Int} {n : Int} :\n  ∀ i, i ∈ find_all xs n → \n  ∃ h : i < xs.length,\
-  \ xs[i]'h = n := by\n  sorry\n\n\ntheorem find_all_complete {xs : List Int} {n :\
-  \ Int} :\n  ∀ i, i < xs.length →\n  (∃ h : i < xs.length, xs[i]'h = n) →\n  i ∈\
-  \ find_all xs n := by\n  sorry\n\n\ntheorem find_all_missing {xs : List Int} {n\
-  \ : Int} :\n  (∀ x ∈ xs, x ≠ n) →\n  find_all xs n = [] := by\n  sorry\n\n\ntheorem\
-  \ find_all_present {xs : List Int} {n : Int} :\n  n ∈ xs →\n  find_all xs n ≠ []\
-  \ := by\n  sorry\n\n/--\ninfo: [2, 4]\n-/\n#guard_msgs in\n#eval find_all [6, 9,\
-  \ 3, 4, 3, 82, 11] 3\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval find_all [6, 9,\
-  \ 3, 4, 3, 82, 11] 99\n\n/--\ninfo: [0, 1, 8]\n-/\n#guard_msgs in\n#eval find_all\
-  \ [20, 20, 10, 13, 15, 2, 7, 2, 20] 20\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Given an array (a list in Python) of integers and an integer `n`, find all occurrences of `n` in the given array and return another array containing all the index positions of `n` in the given array.
+
+  If `n` is not in the given array, return an empty array `[]`.
+
+  Assume that `n` and all values in the given array will always be integers.
+
+  Example:
+  ```python
+  find_all([6, 9, 3, 4, 3, 82, 11], 3)
+  > [2, 4]
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_all (xs : List Int) (n : Int) : List Nat :=
+    sorry
+vc-theorems: |
+  theorem find_all_valid_indices {xs : List Int} {n : Int} :
+    ∀ i ∈ find_all xs n, i < xs.length := by
+    sorry
+
+
+  theorem find_all_ascending {xs : List Int} {n : Int} :
+    ∀ i j, i < j → 
+    i ∈ find_all xs n → 
+    j ∈ find_all xs n → 
+    i < j := by
+    sorry
+
+
+  theorem find_all_points_to_target {xs : List Int} {n : Int} :
+    ∀ i, i ∈ find_all xs n → 
+    ∃ h : i < xs.length, xs[i]'h = n := by
+    sorry
+
+
+  theorem find_all_complete {xs : List Int} {n : Int} :
+    ∀ i, i < xs.length →
+    (∃ h : i < xs.length, xs[i]'h = n) →
+    i ∈ find_all xs n := by
+    sorry
+
+
+  theorem find_all_missing {xs : List Int} {n : Int} :
+    (∀ x ∈ xs, x ≠ n) →
+    find_all xs n = [] := by
+    sorry
+
+
+  theorem find_all_present {xs : List Int} {n : Int} :
+    n ∈ xs →
+    find_all xs n ≠ [] := by
+    sorry
+
+  /--
+  info: [2, 4]
+  -/
+  #guard_msgs in
+  #eval find_all [6, 9, 3, 4, 3, 82, 11] 3
+
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval find_all [6, 9, 3, 4, 3, 82, 11] 99
+
+  /--
+  info: [0, 1, 8]
+  -/
+  #guard_msgs in
+  #eval find_all [20, 20, 10, 13, 15, 2, 7, 2, 20] 20
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

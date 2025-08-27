@@ -1,30 +1,83 @@
-"vc-description": "You are given a string S consisting of a,b and c. Find the number\
-  \ of strings that can be possibly obtained by repeatedly performing the following\
-  \ operation zero or more times, modulo 998244353:\n - Choose an integer i such that\
-  \ 1\\leq i\\leq |S|-1 and the i-th and (i+1)-th characters in S are different. Replace\
-  \ each of the i-th and (i+1)-th characters in S with the character that differs\
-  \ from both of them (among a, b and c).\n\n-----Constraints-----\n - 2 \\leq |S|\
-  \ \\leq 2 × 10^5\n - S consists of a, b and c.\n\n-----Input-----\nInput is given\
-  \ from Standard Input in the following format:\nS\n\n-----Output-----\nPrint the\
-  \ number of strings that can be possibly obtained by repeatedly performing the operation,\
-  \ modulo 998244353.\n\n-----Sample Input-----\nabc\n\n-----Sample Output-----\n\
-  3\n\nabc, aaa and ccc can be obtained."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_abc_strings (s : String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem output_range (s : String) \n  (h : ∀ c ∈ s.data, c = 'a' ∨\
-  \ c = 'b' ∨ c = 'c') \n  (h2 : s ≠ \"\") : \n  let result := solve_abc_strings s\n\
-  \  0 ≤ result ∧ result < 998244353 := sorry\n\n\ntheorem single_char_repeated (n\
-  \ : Nat) (c : Char)\n  (h : c = 'a' ∨ c = 'b' ∨ c = 'c')\n  (h2 : n > 0) :\n  solve_abc_strings\
-  \ (String.mk (List.replicate n c)) = 1 := sorry\n\n\ntheorem alternating_pattern\
-  \ (n : Nat)\n  (h : n > 0) :\n  solve_abc_strings (String.mk (List.join (List.replicate\
-  \ n ['a', 'b']))) ≠ 1 ∧\n  solve_abc_strings (String.mk (List.join (List.replicate\
-  \ n ['b', 'c']))) ≠ 1 ∧ \n  solve_abc_strings (String.mk (List.join (List.replicate\
-  \ n ['a', 'c']))) ≠ 1 := sorry\n\n\ntheorem empty_string :\n  solve_abc_strings\
-  \ \"\" = 0 := sorry\n\n\ntheorem single_char (c : Char)\n  (h : c = 'a' ∨ c = 'b'\
-  \ ∨ c = 'c') :\n  solve_abc_strings (String.mk [c]) = 1 := sorry\n\n\ntheorem valid_chars\
-  \ (s : String) :\n  ∀ c ∈ s.data, c = 'a' ∨ c = 'b' ∨ c = 'c' := sorry\n\n/--\n\
-  info: 3\n-/\n#guard_msgs in\n#eval solve_abc_strings \"abc\"\n\n/--\ninfo: 65\n\
-  -/\n#guard_msgs in\n#eval solve_abc_strings \"abbac\"\n\n/--\ninfo: 6310\n-/\n#guard_msgs\
-  \ in\n#eval solve_abc_strings \"babacabac\"\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"
+vc-description: |-
+  You are given a string S consisting of a,b and c. Find the number of strings that can be possibly obtained by repeatedly performing the following operation zero or more times, modulo 998244353:
+   - Choose an integer i such that 1\leq i\leq |S|-1 and the i-th and (i+1)-th characters in S are different. Replace each of the i-th and (i+1)-th characters in S with the character that differs from both of them (among a, b and c).
+
+  -----Constraints-----
+   - 2 \leq |S| \leq 2 × 10^5
+   - S consists of a, b and c.
+
+  -----Input-----
+  Input is given from Standard Input in the following format:
+  S
+
+  -----Output-----
+  Print the number of strings that can be possibly obtained by repeatedly performing the operation, modulo 998244353.
+
+  -----Sample Input-----
+  abc
+
+  -----Sample Output-----
+  3
+
+  abc, aaa and ccc can be obtained.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_abc_strings (s : String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem output_range (s : String) 
+    (h : ∀ c ∈ s.data, c = 'a' ∨ c = 'b' ∨ c = 'c') 
+    (h2 : s ≠ "") : 
+    let result := solve_abc_strings s
+    0 ≤ result ∧ result < 998244353 := sorry
+
+
+  theorem single_char_repeated (n : Nat) (c : Char)
+    (h : c = 'a' ∨ c = 'b' ∨ c = 'c')
+    (h2 : n > 0) :
+    solve_abc_strings (String.mk (List.replicate n c)) = 1 := sorry
+
+
+  theorem alternating_pattern (n : Nat)
+    (h : n > 0) :
+    solve_abc_strings (String.mk (List.join (List.replicate n ['a', 'b']))) ≠ 1 ∧
+    solve_abc_strings (String.mk (List.join (List.replicate n ['b', 'c']))) ≠ 1 ∧ 
+    solve_abc_strings (String.mk (List.join (List.replicate n ['a', 'c']))) ≠ 1 := sorry
+
+
+  theorem empty_string :
+    solve_abc_strings "" = 0 := sorry
+
+
+  theorem single_char (c : Char)
+    (h : c = 'a' ∨ c = 'b' ∨ c = 'c') :
+    solve_abc_strings (String.mk [c]) = 1 := sorry
+
+
+  theorem valid_chars (s : String) :
+    ∀ c ∈ s.data, c = 'a' ∨ c = 'b' ∨ c = 'c' := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve_abc_strings "abc"
+
+  /--
+  info: 65
+  -/
+  #guard_msgs in
+  #eval solve_abc_strings "abbac"
+
+  /--
+  info: 6310
+  -/
+  #guard_msgs in
+  #eval solve_abc_strings "babacabac"
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded

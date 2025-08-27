@@ -1,39 +1,87 @@
-"vc-description": "Oliver and Nova are true lovers. Inspite of knowing that Nova will\
-  \ die Oliver married her at the lake where they met. But they had a conflict about\
-  \ even and odd numbers. Nova likes the odd numbers and Oliver prefers even. One\
-  \ day they went to a fair where Oliver bought some square shaped marshmallows and\
-  \ Nova bought some round shaped. Then they decided to play a game. They will pick\
-  \ a natural number N . Nova will sum up the odd numbers from 1 to N and and she\
-  \ will notedown LCM of R(R is defined in the picture) and the sum she calculated\
-  \ before. And Oliver will sum up the even numbers from 1 to N and and he will notedown\
-  \ LCM of S(S is defined in the picture) and the sum he calculated before. You must\
-  \ use the ceil value of R and S.\n\nNow  whose LCM is strictly greater than the\
-  \ other will win.If both of their LCM is equal Nova will win because Oliver is afraid\
-  \ of Nova.\n$N.B.$ define the value of pi with $acos(-1)$.\n$N.B.$ Sum of all odd\
-  \ number and sum of all even number will not exceed 10^18. \n\n-----Input:-----\n\
-  The first line contains an integer $T$  — the number of test cases in the input.\
-  \ Next, T test cases are given, one per line.\nEach test case is a positive integer\
-  \ $N$  . \n\n-----Output:-----\nPrint T answers to the test cases.\nIn each test\
-  \ cases,\nIf Oliver wins the game, print \"Nova's gonna kill me\" (without quotes)\
-  \ .\nIf Nova wins the game, print \"YESS(sunglass emo)\" (without quotes) .\n\n\
-  -----Constraints-----\n- $1 \\leq T \\leq 2000$\n- $1 \\leq N \\leq 1845271$\n\n\
-  -----Sample Input:-----\n1\n111\n\n-----Sample Output:-----\nYESS(sunglass emo)"
-"vc-preamble": "import Imports.AllImports\n\ndef lcm (a b : Nat) : Nat := sorry\n\
-  def gcd (a b : Nat) : Nat := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_lovers_lcm (n : Nat) : String := sorry\n\n-- Properties\
-  \ relating to lcm and gcd with same inputs"
-"vc-theorems": "theorem lcm_self (n : Nat) : lcm n n = n := sorry\n\ntheorem gcd_self\
-  \ (n : Nat) (h : n > 0) : gcd n n = n := sorry\n\n-- Properties with 1\n\ntheorem\
-  \ lcm_one (n : Nat) (h : n > 0) : lcm n 1 = n := sorry\n\ntheorem gcd_one (n : Nat)\
-  \ (h : n > 0) : gcd n 1 = 1 := sorry\n\n-- Commutativity properties\n\ntheorem lcm_comm\
-  \ (a b : Nat) : lcm a b = lcm b a := sorry\n\ntheorem gcd_comm (a b : Nat) : gcd\
-  \ a b = gcd b a := sorry\n\n-- Solution validation\n\ntheorem solve_lovers_valid_output\
-  \ (n : Nat) (h : n > 0) : \n  solve_lovers_lcm n = \"Nova's gonna kill me\" ∨ \n\
-  \  solve_lovers_lcm n = \"YESS(sunglass emo)\" := sorry\n\n-- Deterministic output\n\
-  \ntheorem solve_lovers_deterministic (n : Nat) :\n  solve_lovers_lcm n = solve_lovers_lcm\
-  \ n := sorry\n\n/--\ninfo: 'YESS(sunglass emo)'\n-/\n#guard_msgs in\n#eval solve_lovers_lcm\
-  \ 111\n\n/--\ninfo: 'YESS(sunglass emo)'\n-/\n#guard_msgs in\n#eval solve_lovers_lcm\
-  \ 10\n\n/--\ninfo: 'YESS(sunglass emo)'\n-/\n#guard_msgs in\n#eval solve_lovers_lcm\
-  \ 100\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Oliver and Nova are true lovers. Inspite of knowing that Nova will die Oliver married her at the lake where they met. But they had a conflict about even and odd numbers. Nova likes the odd numbers and Oliver prefers even. One day they went to a fair where Oliver bought some square shaped marshmallows and Nova bought some round shaped. Then they decided to play a game. They will pick a natural number N . Nova will sum up the odd numbers from 1 to N and and she will notedown LCM of R(R is defined in the picture) and the sum she calculated before. And Oliver will sum up the even numbers from 1 to N and and he will notedown LCM of S(S is defined in the picture) and the sum he calculated before. You must use the ceil value of R and S.
+
+  Now  whose LCM is strictly greater than the other will win.If both of their LCM is equal Nova will win because Oliver is afraid of Nova.
+  $N.B.$ define the value of pi with $acos(-1)$.
+  $N.B.$ Sum of all odd number and sum of all even number will not exceed 10^18. 
+
+  -----Input:-----
+  The first line contains an integer $T$  — the number of test cases in the input. Next, T test cases are given, one per line.
+  Each test case is a positive integer $N$  . 
+
+  -----Output:-----
+  Print T answers to the test cases.
+  In each test cases,
+  If Oliver wins the game, print "Nova's gonna kill me" (without quotes) .
+  If Nova wins the game, print "YESS(sunglass emo)" (without quotes) .
+
+  -----Constraints-----
+  - $1 \leq T \leq 2000$
+  - $1 \leq N \leq 1845271$
+
+  -----Sample Input:-----
+  1
+  111
+
+  -----Sample Output:-----
+  YESS(sunglass emo)
+vc-preamble: |-
+  import Imports.AllImports
+
+  def lcm (a b : Nat) : Nat := sorry
+  def gcd (a b : Nat) : Nat := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def solve_lovers_lcm (n : Nat) : String := sorry
+
+  -- Properties relating to lcm and gcd with same inputs
+vc-theorems: |
+  theorem lcm_self (n : Nat) : lcm n n = n := sorry
+
+  theorem gcd_self (n : Nat) (h : n > 0) : gcd n n = n := sorry
+
+  -- Properties with 1
+
+  theorem lcm_one (n : Nat) (h : n > 0) : lcm n 1 = n := sorry
+
+  theorem gcd_one (n : Nat) (h : n > 0) : gcd n 1 = 1 := sorry
+
+  -- Commutativity properties
+
+  theorem lcm_comm (a b : Nat) : lcm a b = lcm b a := sorry
+
+  theorem gcd_comm (a b : Nat) : gcd a b = gcd b a := sorry
+
+  -- Solution validation
+
+  theorem solve_lovers_valid_output (n : Nat) (h : n > 0) : 
+    solve_lovers_lcm n = "Nova's gonna kill me" ∨ 
+    solve_lovers_lcm n = "YESS(sunglass emo)" := sorry
+
+  -- Deterministic output
+
+  theorem solve_lovers_deterministic (n : Nat) :
+    solve_lovers_lcm n = solve_lovers_lcm n := sorry
+
+  /--
+  info: 'YESS(sunglass emo)'
+  -/
+  #guard_msgs in
+  #eval solve_lovers_lcm 111
+
+  /--
+  info: 'YESS(sunglass emo)'
+  -/
+  #guard_msgs in
+  #eval solve_lovers_lcm 10
+
+  /--
+  info: 'YESS(sunglass emo)'
+  -/
+  #guard_msgs in
+  #eval solve_lovers_lcm 100
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

@@ -1,42 +1,94 @@
-"vc-description": "Your task is to validate rhythm with a meter.\n\n_________________________________________________\n\
-  Rules:\n\n1. Rhythmic division requires that in one whole note (1) there are two\
-  \ half notes (2) or four quarter notes (4) or eight eighth notes (8). \nExamples:\
-  \ 1 = 2 + 2, 1 = 4 + 4 + 4 + 4 ... \nNote that: 2 = 4 + 4, 4 = 8 + 8, 2 = 8 + 8\
-  \ + 4 ... \n\n2. Meter gives an information how many rhythmic types of notes should\
-  \ be in one bar. Bar is the the primary section of a musical score.\nExamples: \n\
-  \          4/4 -> 4 quarter notes in a bar\n          5/2 -> 5 half notes in a bar\n\
-  \          3/8 -> 3 eighth notes in a bar\nNote that: \nfor 4/4 valid bars are:\
-  \ '4444', '88888888', '2488' ...\nfor 5/2 valid bars are: '22222', '2244244', '8888244888844'\
-  \ ...\nfor 3/8 valid bars are: '888', '48' ...\n\n3. Anacrusis occurs when all bars\
-  \ but the first and last are valid, and the notes in the first and last bars when\
-  \ combined would also make a valid bar.\n\nExamples: \nfor 4/4 valid anacrusis is\
-  \ -> 44|...|44 or 88|...|888888 or 2|...|488 \nfor 5/2 valid anacrusis is -> 22|...|222\
-  \ or 222|...|22 or  2244|...|244\nfor 3/8 valid anacrusis is -> 8|...|88 or 4|...|8\
-  \ or 8|...|4\nNote:\nWhen anacrusis is valid but other bars in score are not ->\
-  \ return 'Invalid rhythm'\n________________________________________________\n\n\
-  Input:\nmeter - array: eg. [4, 4],\nscore - string, bars separated with '|': eg.\
-  \ '4444|8484842|888'\n\nOutput:\nstring message: 'Valid rhythm', 'Valid rhythm with\
-  \ anacrusis' or 'Invalid rhythm'"
-"vc-preamble": "import Imports.AllImports\n\ndef IsPowerOfTwo (n : Nat) : Bool :=\n\
-  \  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def validateRhythm (meter : List Nat) (score : String) : String\
-  \ :=\n  sorry\n"
-"vc-theorems": "theorem validate_rhythm_result_options (meter : List Nat) (score :\
-  \ String) :\n  let result := validateRhythm meter score;\n  result = \"Valid rhythm\"\
-  \ ∨ result = \"Valid rhythm with anacrusis\" ∨ result = \"Invalid rhythm\" :=\n\
-  \  sorry\n\n/-- For valid rhythms, internal bars should sum to the correct total\
-  \ -/\n\ntheorem validate_rhythm_valid_bars_sum (meter : List Nat) (score : String)\n\
-  \  (h1 : meter.length = 2) (h2 : meter[0]! > 0) (h3 : meter[1]! > 0)\n  (h4 : let\
-  \ result := validateRhythm meter score;\n        result = \"Valid rhythm\" ∨ result\
-  \ = \"Valid rhythm with anacrusis\") :\n  let bars := score.splitOn \"|\";\n  ∀\
-  \ bar ∈ bars.tail.dropLast, bar ≠ \"\" →\n  ∃ barSum target : Nat,\n    barSum =\
-  \ target ∧ target = meter[0]! / meter[1]! :=\n  sorry\n\n/-- Invalid meter denominators\
-  \ result in invalid rhythms -/\n\ntheorem validate_rhythm_invalid_meter_denom (meter\
-  \ : List Nat)\n  (h1 : meter.length = 2)\n  (h2 : meter[1]! > 0)\n  (h3 : ¬(IsPowerOfTwo\
-  \ meter[1]!)) :\n  validateRhythm meter \"4|4\" = \"Invalid rhythm\" :=\n  sorry\n\
-  \n/--\ninfo: 'Invalid rhythm'\n-/\n#guard_msgs in\n#eval validate_rhythm [4, 4]\
-  \ \"4444|8484842|888\"\n\n/--\ninfo: 'Valid rhythm with anacrusis'\n-/\n#guard_msgs\
-  \ in\n#eval validate_rhythm [2, 4] \"4|44|88\"\n\n/--\ninfo: 'Valid rhythm'\n-/\n\
-  #guard_msgs in\n#eval validate_rhythm [2, 2] \"22|22|22\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Your task is to validate rhythm with a meter.
+
+  _________________________________________________
+  Rules:
+
+  1. Rhythmic division requires that in one whole note (1) there are two half notes (2) or four quarter notes (4) or eight eighth notes (8). 
+  Examples: 1 = 2 + 2, 1 = 4 + 4 + 4 + 4 ... 
+  Note that: 2 = 4 + 4, 4 = 8 + 8, 2 = 8 + 8 + 4 ... 
+
+  2. Meter gives an information how many rhythmic types of notes should be in one bar. Bar is the the primary section of a musical score.
+  Examples: 
+            4/4 -> 4 quarter notes in a bar
+            5/2 -> 5 half notes in a bar
+            3/8 -> 3 eighth notes in a bar
+  Note that: 
+  for 4/4 valid bars are: '4444', '88888888', '2488' ...
+  for 5/2 valid bars are: '22222', '2244244', '8888244888844' ...
+  for 3/8 valid bars are: '888', '48' ...
+
+  3. Anacrusis occurs when all bars but the first and last are valid, and the notes in the first and last bars when combined would also make a valid bar.
+
+  Examples: 
+  for 4/4 valid anacrusis is -> 44|...|44 or 88|...|888888 or 2|...|488 
+  for 5/2 valid anacrusis is -> 22|...|222 or 222|...|22 or  2244|...|244
+  for 3/8 valid anacrusis is -> 8|...|88 or 4|...|8 or 8|...|4
+  Note:
+  When anacrusis is valid but other bars in score are not -> return 'Invalid rhythm'
+  ________________________________________________
+
+  Input:
+  meter - array: eg. [4, 4],
+  score - string, bars separated with '|': eg. '4444|8484842|888'
+
+  Output:
+  string message: 'Valid rhythm', 'Valid rhythm with anacrusis' or 'Invalid rhythm'
+vc-preamble: |
+  import Imports.AllImports
+
+  def IsPowerOfTwo (n : Nat) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def validateRhythm (meter : List Nat) (score : String) : String :=
+    sorry
+vc-theorems: |
+  theorem validate_rhythm_result_options (meter : List Nat) (score : String) :
+    let result := validateRhythm meter score;
+    result = "Valid rhythm" ∨ result = "Valid rhythm with anacrusis" ∨ result = "Invalid rhythm" :=
+    sorry
+
+  /-- For valid rhythms, internal bars should sum to the correct total -/
+
+  theorem validate_rhythm_valid_bars_sum (meter : List Nat) (score : String)
+    (h1 : meter.length = 2) (h2 : meter[0]! > 0) (h3 : meter[1]! > 0)
+    (h4 : let result := validateRhythm meter score;
+          result = "Valid rhythm" ∨ result = "Valid rhythm with anacrusis") :
+    let bars := score.splitOn "|";
+    ∀ bar ∈ bars.tail.dropLast, bar ≠ "" →
+    ∃ barSum target : Nat,
+      barSum = target ∧ target = meter[0]! / meter[1]! :=
+    sorry
+
+  /-- Invalid meter denominators result in invalid rhythms -/
+
+  theorem validate_rhythm_invalid_meter_denom (meter : List Nat)
+    (h1 : meter.length = 2)
+    (h2 : meter[1]! > 0)
+    (h3 : ¬(IsPowerOfTwo meter[1]!)) :
+    validateRhythm meter "4|4" = "Invalid rhythm" :=
+    sorry
+
+  /--
+  info: 'Invalid rhythm'
+  -/
+  #guard_msgs in
+  #eval validate_rhythm [4, 4] "4444|8484842|888"
+
+  /--
+  info: 'Valid rhythm with anacrusis'
+  -/
+  #guard_msgs in
+  #eval validate_rhythm [2, 4] "4|44|88"
+
+  /--
+  info: 'Valid rhythm'
+  -/
+  #guard_msgs in
+  #eval validate_rhythm [2, 2] "22|22|22"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

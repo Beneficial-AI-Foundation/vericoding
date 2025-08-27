@@ -1,13 +1,44 @@
-"vc-description": "2520 is the smallest number that can be divided by each of the\
-  \ numbers from 1 to 10 without any remainder.\nTask:\nWrite\n```\nsmallest(n)\n\
-  ```\nthat will find the smallest positive number that is evenly divisible by all\
-  \ of the numbers from 1 to n (n <= 40). \nE.g\n```python\nsmallest(5) == 60 # 1\
-  \ to 5 can all divide evenly into 60\nsmallest(10) == 2520\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def smallest (n: Nat) : Nat := sorry\n\ntheorem divides_up_to_n\
-  \ (n: Nat) (h: n > 0) :\n  ∀ i, i > 0 → i ≤ n → (smallest n) % i = 0 := sorry"
-"vc-theorems": "/--\ninfo: 60\n-/\n#guard_msgs in\n#eval smallest 5\n\n/--\ninfo:\
-  \ 2520\n-/\n#guard_msgs in\n#eval smallest 10\n\n/--\ninfo: 360360\n-/\n#guard_msgs\
-  \ in\n#eval smallest 15\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+  Task:
+  Write
+  ```
+  smallest(n)
+  ```
+  that will find the smallest positive number that is evenly divisible by all of the numbers from 1 to n (n <= 40). 
+  E.g
+  ```python
+  smallest(5) == 60 # 1 to 5 can all divide evenly into 60
+  smallest(10) == 2520
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def smallest (n: Nat) : Nat := sorry
+
+  theorem divides_up_to_n (n: Nat) (h: n > 0) :
+    ∀ i, i > 0 → i ≤ n → (smallest n) % i = 0 := sorry
+vc-theorems: |
+  /--
+  info: 60
+  -/
+  #guard_msgs in
+  #eval smallest 5
+
+  /--
+  info: 2520
+  -/
+  #guard_msgs in
+  #eval smallest 10
+
+  /--
+  info: 360360
+  -/
+  #guard_msgs in
+  #eval smallest 15
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

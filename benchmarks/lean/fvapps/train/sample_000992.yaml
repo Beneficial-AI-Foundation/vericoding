@@ -1,30 +1,105 @@
-"vc-description": "The chef is trying to solve some pattern problems, Chef wants your\
-  \ help to code it. Chef has one number K to form a new pattern. Help the chef to\
-  \ code this pattern problem.\n\n-----Input:-----\n- First-line will contain $T$,\
-  \ the number of test cases. Then the test cases follow. \n- Each test case contains\
-  \ a single line of input, one integer $K$. \n\n-----Output:-----\nFor each test\
-  \ case, output as the pattern.\n\n-----Constraints-----\n- $1 \\leq T \\leq 50$\n\
-  - $1 \\leq K \\leq 50$\n\n-----Sample Input:-----\n5\n1\n2\n3\n4\n5\n\n-----Sample\
-  \ Output:-----\n1\n1\n23\n1\n23\n456\n1\n23\n4 5\n6789\n1\n23\n4 5\n6  7\n89101112\n\
-  \n-----EXPLANATION:-----\nNo need, else pattern can be decode easily."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def pattern_generator (n : Nat) : List String := sorry\n\ndef containsSubstr\
-  \ (s : String) (sub : String) : Bool := sorry\n"
-"vc-theorems": "theorem pattern_generator_result_nonempty (k : Nat) (h : k > 0) :\
-  \ \n  pattern_generator k ≠ [] := sorry\n\n\ntheorem pattern_generator_length (k\
-  \ : Nat) (h : k > 0) :\n  (pattern_generator k).length = k := sorry\n\n\ntheorem\
-  \ pattern_generator_valid_chars (k : Nat) (h : k > 0) :\n  ∀ line ∈ pattern_generator\
-  \ k, ∀ c ∈ line.data, c.isDigit ∨ c = ' ' := sorry\n\n\ntheorem pattern_generator_contains_numbers\
-  \ (k : Nat) (h : k > 0) :\n  ∀ i : Nat, 1 ≤ i → i ≤ 3 * (k-1) → \n    ∃ line ∈ pattern_generator\
-  \ k, containsSubstr line (toString i) := sorry\n\n\ntheorem pattern_generator_first_line\
-  \ (k : Nat) (h : k > 0) :\n  (pattern_generator k).head! = \"1\" ∨ \n  (pattern_generator\
-  \ k).head!.startsWith \"1\" := sorry\n\n\ntheorem pattern_generator_last_line (k\
-  \ : Nat) (h : k > 0) :\n  ¬(pattern_generator k).getLast!.contains ' ' := sorry\n\
-  \n\ntheorem pattern_generator_single (k : Nat) (h : k = 1) :\n  pattern_generator\
-  \ k = [\"1\"] := sorry\n\n\ntheorem pattern_generator_two (k : Nat) (h : k = 2)\
-  \ :\n  (pattern_generator k).length = 2 ∧\n  (pattern_generator k).head! = \"1\"\
-  \ := sorry\n\n/--\ninfo: ['1']\n-/\n#guard_msgs in\n#eval pattern_generator 1\n\n\
-  /--\ninfo: ['1', '23']\n-/\n#guard_msgs in\n#eval pattern_generator 2\n\n/--\ninfo:\
-  \ ['1', '23', '456']\n-/\n#guard_msgs in\n#eval pattern_generator 3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  The chef is trying to solve some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+
+  -----Output:-----
+  For each test case, output as the pattern.
+
+  -----Constraints-----
+  - $1 \leq T \leq 50$
+  - $1 \leq K \leq 50$
+
+  -----Sample Input:-----
+  5
+  1
+  2
+  3
+  4
+  5
+
+  -----Sample Output:-----
+  1
+  1
+  23
+  1
+  23
+  456
+  1
+  23
+  4 5
+  6789
+  1
+  23
+  4 5
+  6  7
+  89101112
+
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def pattern_generator (n : Nat) : List String := sorry
+
+  def containsSubstr (s : String) (sub : String) : Bool := sorry
+vc-theorems: |
+  theorem pattern_generator_result_nonempty (k : Nat) (h : k > 0) : 
+    pattern_generator k ≠ [] := sorry
+
+
+  theorem pattern_generator_length (k : Nat) (h : k > 0) :
+    (pattern_generator k).length = k := sorry
+
+
+  theorem pattern_generator_valid_chars (k : Nat) (h : k > 0) :
+    ∀ line ∈ pattern_generator k, ∀ c ∈ line.data, c.isDigit ∨ c = ' ' := sorry
+
+
+  theorem pattern_generator_contains_numbers (k : Nat) (h : k > 0) :
+    ∀ i : Nat, 1 ≤ i → i ≤ 3 * (k-1) → 
+      ∃ line ∈ pattern_generator k, containsSubstr line (toString i) := sorry
+
+
+  theorem pattern_generator_first_line (k : Nat) (h : k > 0) :
+    (pattern_generator k).head! = "1" ∨ 
+    (pattern_generator k).head!.startsWith "1" := sorry
+
+
+  theorem pattern_generator_last_line (k : Nat) (h : k > 0) :
+    ¬(pattern_generator k).getLast!.contains ' ' := sorry
+
+
+  theorem pattern_generator_single (k : Nat) (h : k = 1) :
+    pattern_generator k = ["1"] := sorry
+
+
+  theorem pattern_generator_two (k : Nat) (h : k = 2) :
+    (pattern_generator k).length = 2 ∧
+    (pattern_generator k).head! = "1" := sorry
+
+  /--
+  info: ['1']
+  -/
+  #guard_msgs in
+  #eval pattern_generator 1
+
+  /--
+  info: ['1', '23']
+  -/
+  #guard_msgs in
+  #eval pattern_generator 2
+
+  /--
+  info: ['1', '23', '456']
+  -/
+  #guard_msgs in
+  #eval pattern_generator 3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

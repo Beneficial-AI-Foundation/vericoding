@@ -1,33 +1,109 @@
-"vc-description": "# Definition\n\n**_Disarium number_** is the number that *The sum\
-  \ of its digits powered with their respective positions is equal to the number itself*.\n\
-  \n____\n\n# Task\n\n**_Given_** a number, **_Find if it is Disarium or not_** .\
-  \ \n____\n\n# Warm-up (Highly recommended)\n\n# [Playing With Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
-  ___\n\n# Notes \n\n* **_Number_** *passed is always*  **_Positive_** .\n* **_Return_**\
-  \ *the result as* **_String_**\n___\n\n# Input >> Output Examples\n\n```\ndisariumNumber(89)\
-  \ ==> return \"Disarium !!\"\n```\n## **_Explanation_**:\n\n* Since , **_8^(1) +\
-  \ 9^(2) = 89_** , thus *output* is `\"Disarium !!\"`\n___\n\n```\ndisariumNumber(564)\
-  \ ==> return \"Not !!\"\n```\n## **_Explanation_**:\n\nSince , **_5^(1) + 6^(2)\
-  \ + 4^(3) = 105 != 564_** ,  thus *output* is `\"Not !!\"`\n\n___\n___\n___\n\n\
-  # [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
-  \n# [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
-  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
-  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def disarium_number (n : Nat) : String := sorry\n\ndef digitSum\
-  \ (n : Nat) : Nat := sorry\n"
-"vc-theorems": "theorem disarium_output_format (n : Nat) (h : n > 0 ∧ n ≤ 10000) :\n\
-  \  (disarium_number n = \"Disarium !!\") ∨ (disarium_number n = \"Not !!\") := sorry\n\
-  \n\ntheorem disarium_property (n : Nat) (h : n > 0 ∧ n ≤ 10000) :\n  disarium_number\
-  \ n = \"Disarium !!\" ↔ digitSum n = n := sorry\n\n\ntheorem known_disarium_numbers\
-  \ :\n  disarium_number 1 = \"Disarium !!\" ∧\n  disarium_number 2 = \"Disarium !!\"\
-  \ ∧\n  disarium_number 3 = \"Disarium !!\" ∧\n  disarium_number 4 = \"Disarium !!\"\
-  \ ∧\n  disarium_number 5 = \"Disarium !!\" ∧\n  disarium_number 6 = \"Disarium !!\"\
-  \ ∧\n  disarium_number 7 = \"Disarium !!\" ∧\n  disarium_number 8 = \"Disarium !!\"\
-  \ ∧\n  disarium_number 9 = \"Disarium !!\" ∧\n  disarium_number 89 = \"Disarium\
-  \ !!\" ∧\n  disarium_number 135 = \"Disarium !!\" ∧\n  disarium_number 175 = \"\
-  Disarium !!\" ∧\n  disarium_number 518 = \"Disarium !!\" ∧\n  disarium_number 598\
-  \ = \"Disarium !!\" := sorry\n\n/--\ninfo: 'Not !!'\n-/\n#guard_msgs in\n#eval disarium_number\
-  \ 1024\n\n/--\ninfo: 'Disarium !!'\n-/\n#guard_msgs in\n#eval disarium_number 1306\n\
-  \n/--\ninfo: 'Not !!'\n-/\n#guard_msgs in\n#eval disarium_number 1999\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Definition
+
+  **_Disarium number_** is the number that *The sum of its digits powered with their respective positions is equal to the number itself*.
+
+  ____
+
+  # Task
+
+  **_Given_** a number, **_Find if it is Disarium or not_** . 
+  ____
+
+  # Warm-up (Highly recommended)
+
+  # [Playing With Numbers Series](https://www.codewars.com/collections/playing-with-numbers)
+  ___
+
+  # Notes 
+
+  * **_Number_** *passed is always*  **_Positive_** .
+  * **_Return_** *the result as* **_String_**
+  ___
+
+  # Input >> Output Examples
+
+  ```
+  disariumNumber(89) ==> return "Disarium !!"
+  ```
+  ## **_Explanation_**:
+
+  * Since , **_8^(1) + 9^(2) = 89_** , thus *output* is `"Disarium !!"`
+  ___
+
+  ```
+  disariumNumber(564) ==> return "Not !!"
+  ```
+  ## **_Explanation_**:
+
+  Since , **_5^(1) + 6^(2) + 4^(3) = 105 != 564_** ,  thus *output* is `"Not !!"`
+
+  ___
+  ___
+  ___
+
+  # [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)
+
+  # [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)
+
+  # [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)
+  ___
+
+  ## ALL translations are welcomed
+
+  ## Enjoy Learning !!
+  # Zizou
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def disarium_number (n : Nat) : String := sorry
+
+  def digitSum (n : Nat) : Nat := sorry
+vc-theorems: |
+  theorem disarium_output_format (n : Nat) (h : n > 0 ∧ n ≤ 10000) :
+    (disarium_number n = "Disarium !!") ∨ (disarium_number n = "Not !!") := sorry
+
+
+  theorem disarium_property (n : Nat) (h : n > 0 ∧ n ≤ 10000) :
+    disarium_number n = "Disarium !!" ↔ digitSum n = n := sorry
+
+
+  theorem known_disarium_numbers :
+    disarium_number 1 = "Disarium !!" ∧
+    disarium_number 2 = "Disarium !!" ∧
+    disarium_number 3 = "Disarium !!" ∧
+    disarium_number 4 = "Disarium !!" ∧
+    disarium_number 5 = "Disarium !!" ∧
+    disarium_number 6 = "Disarium !!" ∧
+    disarium_number 7 = "Disarium !!" ∧
+    disarium_number 8 = "Disarium !!" ∧
+    disarium_number 9 = "Disarium !!" ∧
+    disarium_number 89 = "Disarium !!" ∧
+    disarium_number 135 = "Disarium !!" ∧
+    disarium_number 175 = "Disarium !!" ∧
+    disarium_number 518 = "Disarium !!" ∧
+    disarium_number 598 = "Disarium !!" := sorry
+
+  /--
+  info: 'Not !!'
+  -/
+  #guard_msgs in
+  #eval disarium_number 1024
+
+  /--
+  info: 'Disarium !!'
+  -/
+  #guard_msgs in
+  #eval disarium_number 1306
+
+  /--
+  info: 'Not !!'
+  -/
+  #guard_msgs in
+  #eval disarium_number 1999
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

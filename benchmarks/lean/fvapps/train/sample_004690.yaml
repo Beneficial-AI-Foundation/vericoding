@@ -1,25 +1,71 @@
-"vc-description": "----\nVampire Numbers\n----\n\nOur loose definition of [Vampire\
-  \ Numbers](http://en.wikipedia.org/wiki/Vampire_number) can be described as follows:\n\
-  \n```python\n6 * 21 = 126\n# 6 and 21 would be valid 'fangs' for a vampire number\
-  \ as the \n# digits 6, 1, and 2 are present in both the product and multiplicands\n\
-  \n10 * 11 = 110\n# 110 is not a vampire number since there are three 1's in the\n\
-  # multiplicands, but only two 1's in the product\n```\n\nCreate a function that\
-  \ can receive two 'fangs' and determine if the product of the two is a valid vampire\
-  \ number."
-"vc-preamble": "import Imports.AllImports\n\ndef abs (x : Int) : Int := if x < 0 then\
-  \ -x else x\n\nstructure VampireString where\n  digits : List Char\n  length : Nat\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def vampireToString (x : Int) : VampireString := sorry\n\ndef vampire_test\
-  \ (x y : Int) : Bool := sorry\n"
-"vc-theorems": "theorem vampire_commutative (x y : Int) (h₁ : x ≠ 0) (h₂ : y ≠ 0)\
-  \ :\n  vampire_test x y = vampire_test y x := sorry\n\n\ntheorem vampire_self_multiply\
-  \ (x : Int) (h : x ≠ 0) :  \n  vampire_test x x = vampire_test x x := sorry\n\n\n\
-  theorem vampire_digit_preservation (x y : Int) (h₁ : x ≠ 0) (h₂ : y ≠ 0) :\n  vampire_test\
-  \ x y → (vampireToString (abs (x * y))).digits = \n    (vampireToString (abs x)).digits\
-  \ ++ (vampireToString (abs y)).digits := sorry\n\n\ntheorem vampire_positive_length\
-  \ (x y : Int) (h₁ : x > 0) (h₂ : y > 0) :\n  vampire_test x y → (vampireToString\
-  \ (x * y)).length = \n    (vampireToString x).length + (vampireToString y).length\
-  \ := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval vampire_test 6 21\n\n/--\n\
-  info: False\n-/\n#guard_msgs in\n#eval vampire_test 10 11\n\n/--\ninfo: True\n-/\n\
-  #guard_msgs in\n#eval vampire_test 15 93\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ----
+  Vampire Numbers
+  ----
+
+  Our loose definition of [Vampire Numbers](http://en.wikipedia.org/wiki/Vampire_number) can be described as follows:
+
+  ```python
+  6 * 21 = 126
+  # 6 and 21 would be valid 'fangs' for a vampire number as the 
+  # digits 6, 1, and 2 are present in both the product and multiplicands
+
+  10 * 11 = 110
+  # 110 is not a vampire number since there are three 1's in the
+  # multiplicands, but only two 1's in the product
+  ```
+
+  Create a function that can receive two 'fangs' and determine if the product of the two is a valid vampire number.
+vc-preamble: |
+  import Imports.AllImports
+
+  def abs (x : Int) : Int := if x < 0 then -x else x
+
+  structure VampireString where
+    digits : List Char
+    length : Nat
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def vampireToString (x : Int) : VampireString := sorry
+
+  def vampire_test (x y : Int) : Bool := sorry
+vc-theorems: |
+  theorem vampire_commutative (x y : Int) (h₁ : x ≠ 0) (h₂ : y ≠ 0) :
+    vampire_test x y = vampire_test y x := sorry
+
+
+  theorem vampire_self_multiply (x : Int) (h : x ≠ 0) :  
+    vampire_test x x = vampire_test x x := sorry
+
+
+  theorem vampire_digit_preservation (x y : Int) (h₁ : x ≠ 0) (h₂ : y ≠ 0) :
+    vampire_test x y → (vampireToString (abs (x * y))).digits = 
+      (vampireToString (abs x)).digits ++ (vampireToString (abs y)).digits := sorry
+
+
+  theorem vampire_positive_length (x y : Int) (h₁ : x > 0) (h₂ : y > 0) :
+    vampire_test x y → (vampireToString (x * y)).length = 
+      (vampireToString x).length + (vampireToString y).length := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval vampire_test 6 21
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval vampire_test 10 11
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval vampire_test 15 93
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

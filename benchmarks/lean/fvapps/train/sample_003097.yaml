@@ -1,54 +1,79 @@
-"vc-description": "You are to write a function to transpose a guitar tab up or down\
-  \ a number of semitones. The amount to transpose is a number, positive or negative.\
-  \ The tab is given as an array, with six elements for each guitar string (fittingly\
-  \ passed as strings). Output your tab in a similar form.\n\nGuitar tablature (or\
-  \ 'tab') is an alternative to sheet music, where notes are replaced by fret numbers\
-  \ and the five lines of the staff are replaced by six lines to represent each of\
-  \ the guitar's strings. It is still read from left to right like sheet music, and\
-  \ notes written directly above each other are played at the same time.\n\nFor example,\
-  \ Led Zeppelin's Stairway to Heaven begins:\n```\ne|-------5-7-----7-|-8-----8-2-----2-|-0---------0-----|-----------------|\n\
-  B|-----5-----5-----|---5-------3-----|---1---1-----1---|-0-1-1-----------|\nG|---5---------5---|-----5-------2---|-----2---------2-|-0-2-2-----------|\n\
-  D|-7-------6-------|-5-------4-------|-3---------------|-----------------|\nA|-----------------|-----------------|-----------------|-2-0-0---0--/8-7-|\n\
-  E|-----------------|-----------------|-----------------|-----------------|\n```\n\
-  Transposed up two semitones, it would look like this:\n```\ne|-------7-9-----9-|-10-----10-4-----4-|-2---------2-----|------------------|\n\
-  B|-----7-----7-----|----7--------5-----|---3---3-----3---|-2-3-3------------|\n\
-  G|---7---------7---|------7--------4---|-----4---------4-|-2-4-4------------|\n\
-  D|-9-------8-------|-7---------6-------|-5---------------|------------------|\n\
-  A|-----------------|-------------------|-----------------|-4-2-2---2--/10-9-|\n\
-  E|-----------------|-------------------|-----------------|------------------|\n\
-  ```\nNote how when the 8th fret note on the top string in bar 2 gets transposed\
-  \ to the 10th fret, extra '-' are added on the other strings below so as to retain\
-  \ the single '-' that originally separated that beat (i.e. column) from the following\
-  \ note – fret 7 on the B string.\n\nEach beat must retain at least one '-' separator\
-  \ before the next, to keep the tab legible. The inputted test tabs all obey this\
-  \ convention.\n\nElectric guitars usually have 22 frets, with the 0th fret being\
-  \ an open string. If your fret numbers transpose to either negative values or values\
-  \ over 22, you should return 'Out of frets!' (and probably detune your guitar).\n\
-  \nTests include some randomly generated guitar tabs, which come with no guarantee\
-  \ of musical quality and/or playability...!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def transpose (amount : Int) (tab : List String) : List String\
-  \ := sorry\n\ndef Nat.toString (n : Nat) : String := sorry\n"
-"vc-theorems": "theorem transpose_basic_format \n  (tab : List String)\n  (amount\
-  \ : Int)\n  (h1 : -5 ≤ amount)\n  (h2 : amount ≤ 5) :\n  let result := transpose\
-  \ amount tab\n  if result ≠ [\"Out of frets!\"] then\n    (∀ r ∈ result, \n    \
-  \  r.length > 0 ∧ \n      ((r.data.get? 0).isSome ∧\n       ((r.data.get? 0).getD\
-  \ '_' = 'e' ∨ \n        (r.data.get? 0).getD '_' = 'E' ∨\n        (r.data.get? 0).getD\
-  \ '_' = 'B' ∨\n        (r.data.get? 0).getD '_' = 'G' ∨\n        (r.data.get? 0).getD\
-  \ '_' = 'D' ∨\n        (r.data.get? 0).getD '_' = 'A')) ∧\n      (r.data.get? 1).isSome\
-  \ ∧\n      (r.data.get? 1).getD '_' = '|') ∧\n    result.length = 6 ∧\n    (∀ line\
-  \ ∈ result,\n      ∀ n : Nat,\n      (n ≥ 0 ∧ n ≤ 22))\n  else True :=\nsorry\n\n\
-  /--\ninfo: expected1\n-/\n#guard_msgs in\n#eval transpose 2 [\"e|-------5-7-----7-|-8-----8-2-----2-|-0---------0-----|-----------------|\"\
-  , \"B|-----5-----5-----|---5-------3-----|---1---1-----1---|-0-1-1-----------|\"\
-  , \"G|---5---------5---|-----5-------2---|-----2---------2-|-0-2-2-----------|\"\
-  , \"D|-7-------6-------|-5-------4-------|-3---------------|-----------------|\"\
-  , \"A|-----------------|-----------------|-----------------|-2-0-0---0--/8-7-|\"\
-  , \"E|-----------------|-----------------|-----------------|-----------------|\"\
-  ]\n\n/--\ninfo: 'Out of frets!'\n-/\n#guard_msgs in\n#eval transpose -1 [\"e|-----------------|---------------|----------------|------------------|\"\
-  , \"B|-----------------|---------------|----------------|------------------|\",\
-  \ \"G|--0---3---5----0-|---3---6-5-----|-0---3---5----3-|---0----(0)-------|\",\
-  \ \"D|--0---3---5----0-|---3---6-5-----|-0---3---5----3-|---0----(0)-------|\",\
-  \ \"A|-----------------|---------------|----------------|------------------|\",\
-  \ \"E|-----------------|---------------|----------------|------------------|\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  You are to write a function to transpose a guitar tab up or down a number of semitones. The amount to transpose is a number, positive or negative. The tab is given as an array, with six elements for each guitar string (fittingly passed as strings). Output your tab in a similar form.
+
+  Guitar tablature (or 'tab') is an alternative to sheet music, where notes are replaced by fret numbers and the five lines of the staff are replaced by six lines to represent each of the guitar's strings. It is still read from left to right like sheet music, and notes written directly above each other are played at the same time.
+
+  For example, Led Zeppelin's Stairway to Heaven begins:
+  ```
+  e|-------5-7-----7-|-8-----8-2-----2-|-0---------0-----|-----------------|
+  B|-----5-----5-----|---5-------3-----|---1---1-----1---|-0-1-1-----------|
+  G|---5---------5---|-----5-------2---|-----2---------2-|-0-2-2-----------|
+  D|-7-------6-------|-5-------4-------|-3---------------|-----------------|
+  A|-----------------|-----------------|-----------------|-2-0-0---0--/8-7-|
+  E|-----------------|-----------------|-----------------|-----------------|
+  ```
+  Transposed up two semitones, it would look like this:
+  ```
+  e|-------7-9-----9-|-10-----10-4-----4-|-2---------2-----|------------------|
+  B|-----7-----7-----|----7--------5-----|---3---3-----3---|-2-3-3------------|
+  G|---7---------7---|------7--------4---|-----4---------4-|-2-4-4------------|
+  D|-9-------8-------|-7---------6-------|-5---------------|------------------|
+  A|-----------------|-------------------|-----------------|-4-2-2---2--/10-9-|
+  E|-----------------|-------------------|-----------------|------------------|
+  ```
+  Note how when the 8th fret note on the top string in bar 2 gets transposed to the 10th fret, extra '-' are added on the other strings below so as to retain the single '-' that originally separated that beat (i.e. column) from the following note – fret 7 on the B string.
+
+  Each beat must retain at least one '-' separator before the next, to keep the tab legible. The inputted test tabs all obey this convention.
+
+  Electric guitars usually have 22 frets, with the 0th fret being an open string. If your fret numbers transpose to either negative values or values over 22, you should return 'Out of frets!' (and probably detune your guitar).
+
+  Tests include some randomly generated guitar tabs, which come with no guarantee of musical quality and/or playability...!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def transpose (amount : Int) (tab : List String) : List String := sorry
+
+  def Nat.toString (n : Nat) : String := sorry
+vc-theorems: |
+  theorem transpose_basic_format 
+    (tab : List String)
+    (amount : Int)
+    (h1 : -5 ≤ amount)
+    (h2 : amount ≤ 5) :
+    let result := transpose amount tab
+    if result ≠ ["Out of frets!"] then
+      (∀ r ∈ result, 
+        r.length > 0 ∧ 
+        ((r.data.get? 0).isSome ∧
+         ((r.data.get? 0).getD '_' = 'e' ∨ 
+          (r.data.get? 0).getD '_' = 'E' ∨
+          (r.data.get? 0).getD '_' = 'B' ∨
+          (r.data.get? 0).getD '_' = 'G' ∨
+          (r.data.get? 0).getD '_' = 'D' ∨
+          (r.data.get? 0).getD '_' = 'A')) ∧
+        (r.data.get? 1).isSome ∧
+        (r.data.get? 1).getD '_' = '|') ∧
+      result.length = 6 ∧
+      (∀ line ∈ result,
+        ∀ n : Nat,
+        (n ≥ 0 ∧ n ≤ 22))
+    else True :=
+  sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval transpose 2 ["e|-------5-7-----7-|-8-----8-2-----2-|-0---------0-----|-----------------|", "B|-----5-----5-----|---5-------3-----|---1---1-----1---|-0-1-1-----------|", "G|---5---------5---|-----5-------2---|-----2---------2-|-0-2-2-----------|", "D|-7-------6-------|-5-------4-------|-3---------------|-----------------|", "A|-----------------|-----------------|-----------------|-2-0-0---0--/8-7-|", "E|-----------------|-----------------|-----------------|-----------------|"]
+
+  /--
+  info: 'Out of frets!'
+  -/
+  #guard_msgs in
+  #eval transpose -1 ["e|-----------------|---------------|----------------|------------------|", "B|-----------------|---------------|----------------|------------------|", "G|--0---3---5----0-|---3---6-5-----|-0---3---5----3-|---0----(0)-------|", "D|--0---3---5----0-|---3---6-5-----|-0---3---5----3-|---0----(0)-------|", "A|-----------------|---------------|----------------|------------------|", "E|-----------------|---------------|----------------|------------------|"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

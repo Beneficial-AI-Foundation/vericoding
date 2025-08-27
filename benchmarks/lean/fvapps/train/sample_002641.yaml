@@ -1,33 +1,79 @@
-"vc-description": "### Background\n\nWe **all** know about \"balancing parentheses\"\
-  \ (plus brackets, braces and chevrons) and even balancing characters that are identical.\
-  \  \n\nRead that last sentence again, I balanced different characters and identical\
-  \ characters twice and you didn't even notice... :)\n\n### Kata\nYour challenge\
-  \ in this kata is to write a piece of code to validate that a supplied string is\
-  \ balanced.\n\nYou must determine if all that is open is then closed, and nothing\
-  \ is closed which is not already open!\n\nYou will be given a string to validate,\
-  \ and a second string, where each pair of characters defines an opening and closing\
-  \ sequence that needs balancing.\n\nYou may assume that the second string always\
-  \ has an even number of characters.\n\n### Example\n```python\n# In this case '('\
-  \ opens a section, and ')' closes a section\nis_balanced(\"(Sensei says yes!)\"\
-  , \"()\")       # => True\nis_balanced(\"(Sensei says no!\", \"()\")         # =>\
-  \ False\n\n# In this case '(' and '[' open a section, while ')' and ']' close a\
-  \ section\nis_balanced(\"(Sensei [says] yes!)\", \"()[]\")   # => True\nis_balanced(\"\
-  (Sensei [says) no!]\", \"()[]\")    # => False\n\n# In this case a single quote\
-  \ (') both opens and closes a section\nis_balanced(\"Sensei says 'yes'!\", \"''\"\
-  )       # => True\nis_balanced(\"Sensei say's no!\", \"''\")         # => False\n\
-  ```"
-"vc-preamble": "import Imports.AllImports\n\ndef count_char (s : String) (c : Char)\
-  \ : Nat := sorry\n\ndef take_prefix (s : String) (n : Nat) : String := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_balanced (s : String) (caps : String) : Bool := sorry\n\n\
-  theorem single_char_caps_balance\n  (s : String)\n  (h : s.length > 0) :\n  is_balanced\
-  \ s \"xx\" = ((count_char s 'x') % 2 = 0) := sorry\n"
-"vc-theorems": "theorem empty_caps_always_balanced\n  (s : String) :\n  is_balanced\
-  \ s \"\" = true := sorry\n\n\ntheorem standard_parens_properties\n  (s : String)\n\
-  \  (h : is_balanced s \"()\") :\n  (count_char s '(' = count_char s ')') ∧ \n  ∀\
-  \ (p : Nat), p ≤ s.length → \n    count_char (take_prefix s p) '(' ≥ count_char\
-  \ (take_prefix s p) ')' := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_balanced\
-  \ \"(Sensei says yes!)\" \"()\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_balanced\
-  \ \"(Sensei says no!\" \"()\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_balanced\
-  \ \"-Hello Mother can you hear me?-\" \"--\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ### Background
+
+  We **all** know about "balancing parentheses" (plus brackets, braces and chevrons) and even balancing characters that are identical.  
+
+  Read that last sentence again, I balanced different characters and identical characters twice and you didn't even notice... :)
+
+  ### Kata
+  Your challenge in this kata is to write a piece of code to validate that a supplied string is balanced.
+
+  You must determine if all that is open is then closed, and nothing is closed which is not already open!
+
+  You will be given a string to validate, and a second string, where each pair of characters defines an opening and closing sequence that needs balancing.
+
+  You may assume that the second string always has an even number of characters.
+
+  ### Example
+  ```python
+  # In this case '(' opens a section, and ')' closes a section
+  is_balanced("(Sensei says yes!)", "()")       # => True
+  is_balanced("(Sensei says no!", "()")         # => False
+
+  # In this case '(' and '[' open a section, while ')' and ']' close a section
+  is_balanced("(Sensei [says] yes!)", "()[]")   # => True
+  is_balanced("(Sensei [says) no!]", "()[]")    # => False
+
+  # In this case a single quote (') both opens and closes a section
+  is_balanced("Sensei says 'yes'!", "''")       # => True
+  is_balanced("Sensei say's no!", "''")         # => False
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def count_char (s : String) (c : Char) : Nat := sorry
+
+  def take_prefix (s : String) (n : Nat) : String := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_balanced (s : String) (caps : String) : Bool := sorry
+
+  theorem single_char_caps_balance
+    (s : String)
+    (h : s.length > 0) :
+    is_balanced s "xx" = ((count_char s 'x') % 2 = 0) := sorry
+vc-theorems: |
+  theorem empty_caps_always_balanced
+    (s : String) :
+    is_balanced s "" = true := sorry
+
+
+  theorem standard_parens_properties
+    (s : String)
+    (h : is_balanced s "()") :
+    (count_char s '(' = count_char s ')') ∧ 
+    ∀ (p : Nat), p ≤ s.length → 
+      count_char (take_prefix s p) '(' ≥ count_char (take_prefix s p) ')' := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_balanced "(Sensei says yes!)" "()"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_balanced "(Sensei says no!" "()"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_balanced "-Hello Mother can you hear me?-" "--"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

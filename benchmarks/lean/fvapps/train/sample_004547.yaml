@@ -1,31 +1,80 @@
-"vc-description": "While developing a website, you detect that some of the members\
-  \ have troubles logging in. Searching through the code you find that all logins\
-  \ ending with a \"\\_\" make problems. So you want to write a function that takes\
-  \ an array of pairs of login-names and e-mails, and outputs an array of all login-name,\
-  \ e-mails-pairs from the login-names that end with \"\\_\".\n\nIf you have the input-array:\n\
-  \n```\n[ [ \"foo\", \"foo@foo.com\" ], [ \"bar_\", \"bar@bar.com\" ] ]\n```\n\n\
-  it should output\n\n```\n[ [ \"bar_\", \"bar@bar.com\" ] ]\n```\n\nYou *have to*\
-  \ use the *filter*-method which returns each element of the array for which the\
-  \ *filter*-method returns true.\n\n```python\nhttps://docs.python.org/3/library/functions.html#filter\n\
-  ```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def search_names (logins : List (String × String)) : List (String\
-  \ × String) :=\n  sorry\n"
-"vc-theorems": "theorem search_names_subset (logins : List (String × String)) :\n\
-  \  ∀ x, x ∈ search_names logins → x ∈ logins :=\n  sorry\n\n\ntheorem search_names_all_underscore\
-  \ (logins : List (String × String)) :\n  ∀ x ∈ search_names logins, x.1.endsWith\
-  \ \"_\" :=\n  sorry\n\n\ntheorem search_names_contains_all_matching (logins : List\
-  \ (String × String)) :\n  (search_names logins).length = \n    (logins.filter (fun\
-  \ x => x.1.endsWith \"_\")).length :=\n  sorry\n\n\ntheorem search_names_preserves_order\
-  \ (logins : List (String × String)) :\n  search_names logins = logins.filter (fun\
-  \ x => x.1.endsWith \"_\") :=\n  sorry\n\n\ntheorem search_names_empty_input :\n\
-  \  search_names [] = [] :=\n  sorry\n\n\ntheorem search_names_no_matching (logins\
-  \ : List (String × String)) :\n  (∀ x ∈ logins, ¬x.1.endsWith \"_\") →\n  search_names\
-  \ logins = [] :=\n  sorry\n\n/--\ninfo: [['bar_', 'bar@bar.com']]\n-/\n#guard_msgs\
-  \ in\n#eval search_names [[\"foo\", \"foo@foo.com\"], [\"bar_\", \"bar@bar.com\"\
-  ]]\n\n/--\ninfo: [['foo_', 'foo@foo.com'], ['bar_', 'bar@bar.com']]\n-/\n#guard_msgs\
-  \ in\n#eval search_names [[\"foo_\", \"foo@foo.com\"], [\"bar_\", \"bar@bar.com\"\
-  ], [\"baz\", \"baz@baz.com\"]]\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval search_names\
-  \ [[\"foo\", \"foo@foo.com\"], [\"bar\", \"bar@bar.com\"]]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  While developing a website, you detect that some of the members have troubles logging in. Searching through the code you find that all logins ending with a "\_" make problems. So you want to write a function that takes an array of pairs of login-names and e-mails, and outputs an array of all login-name, e-mails-pairs from the login-names that end with "\_".
+
+  If you have the input-array:
+
+  ```
+  [ [ "foo", "foo@foo.com" ], [ "bar_", "bar@bar.com" ] ]
+  ```
+
+  it should output
+
+  ```
+  [ [ "bar_", "bar@bar.com" ] ]
+  ```
+
+  You *have to* use the *filter*-method which returns each element of the array for which the *filter*-method returns true.
+
+  ```python
+  https://docs.python.org/3/library/functions.html#filter
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def search_names (logins : List (String × String)) : List (String × String) :=
+    sorry
+vc-theorems: |
+  theorem search_names_subset (logins : List (String × String)) :
+    ∀ x, x ∈ search_names logins → x ∈ logins :=
+    sorry
+
+
+  theorem search_names_all_underscore (logins : List (String × String)) :
+    ∀ x ∈ search_names logins, x.1.endsWith "_" :=
+    sorry
+
+
+  theorem search_names_contains_all_matching (logins : List (String × String)) :
+    (search_names logins).length = 
+      (logins.filter (fun x => x.1.endsWith "_")).length :=
+    sorry
+
+
+  theorem search_names_preserves_order (logins : List (String × String)) :
+    search_names logins = logins.filter (fun x => x.1.endsWith "_") :=
+    sorry
+
+
+  theorem search_names_empty_input :
+    search_names [] = [] :=
+    sorry
+
+
+  theorem search_names_no_matching (logins : List (String × String)) :
+    (∀ x ∈ logins, ¬x.1.endsWith "_") →
+    search_names logins = [] :=
+    sorry
+
+  /--
+  info: [['bar_', 'bar@bar.com']]
+  -/
+  #guard_msgs in
+  #eval search_names [["foo", "foo@foo.com"], ["bar_", "bar@bar.com"]]
+
+  /--
+  info: [['foo_', 'foo@foo.com'], ['bar_', 'bar@bar.com']]
+  -/
+  #guard_msgs in
+  #eval search_names [["foo_", "foo@foo.com"], ["bar_", "bar@bar.com"], ["baz", "baz@baz.com"]]
+
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval search_names [["foo", "foo@foo.com"], ["bar", "bar@bar.com"]]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

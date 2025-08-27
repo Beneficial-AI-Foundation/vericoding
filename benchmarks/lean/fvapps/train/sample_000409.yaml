@@ -1,19 +1,59 @@
-"vc-description": "There are n bulbs that are initially off. You first turn on all\
-  \ the bulbs. Then, you turn off every second bulb. On the third round, you toggle\
-  \ every third bulb (turning on if it's off or turning off if it's on). For the i-th\
-  \ round, you toggle every i bulb. For the n-th round, you only toggle the last bulb.\
-  \ Find how many bulbs are on after n rounds.\n\nExample:\n\n\nInput: 3\nOutput:\
-  \ 1 \nExplanation: \nAt first, the three bulbs are [off, off, off].\nAfter first\
-  \ round, the three bulbs are [on, on, on].\nAfter second round, the three bulbs\
-  \ are [on, off, on].\nAfter third round, the three bulbs are [on, off, off]. \n\n\
-  So you should return 1, because there is only one bulb is on."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def bulbSwitch (n : Int) : Int :=\n  sorry\n"
-"vc-theorems": "theorem bulb_switch_nonnegative (n : Int) (h : n ≥ 0) : \n  let result\
-  \ := bulbSwitch n\n  result ≥ 0 ∧ result ≤ n :=\n  sorry\n\n\ntheorem bulb_switch_negative\
-  \ (n : Int) (h : n < 0) :\n  bulbSwitch n = -1 :=\n  sorry\n\n\ntheorem bulb_switch_zero\
-  \ :\n  bulbSwitch 0 = 0 :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval bulb_switch\
-  \ 3\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval bulb_switch 0\n\n/--\ninfo: 2\n-/\n\
-  #guard_msgs in\n#eval bulb_switch 4\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  There are n bulbs that are initially off. You first turn on all the bulbs. Then, you turn off every second bulb. On the third round, you toggle every third bulb (turning on if it's off or turning off if it's on). For the i-th round, you toggle every i bulb. For the n-th round, you only toggle the last bulb. Find how many bulbs are on after n rounds.
+
+  Example:
+
+
+  Input: 3
+  Output: 1 
+  Explanation: 
+  At first, the three bulbs are [off, off, off].
+  After first round, the three bulbs are [on, on, on].
+  After second round, the three bulbs are [on, off, on].
+  After third round, the three bulbs are [on, off, off]. 
+
+  So you should return 1, because there is only one bulb is on.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def bulbSwitch (n : Int) : Int :=
+    sorry
+vc-theorems: |
+  theorem bulb_switch_nonnegative (n : Int) (h : n ≥ 0) : 
+    let result := bulbSwitch n
+    result ≥ 0 ∧ result ≤ n :=
+    sorry
+
+
+  theorem bulb_switch_negative (n : Int) (h : n < 0) :
+    bulbSwitch n = -1 :=
+    sorry
+
+
+  theorem bulb_switch_zero :
+    bulbSwitch 0 = 0 :=
+    sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval bulb_switch 3
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval bulb_switch 0
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval bulb_switch 4
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

@@ -1,39 +1,77 @@
-"vc-description": "You are given a sequence of integers $A_1, A_2, \\ldots, A_N$.\
-  \ This sequence is circular ― for each valid $i$, the element $A_{i+1}$ follows\
-  \ after $A_i$, and the element $A_1$ follows after $A_N$.\nYou may insert any positive\
-  \ integers at any positions you choose in this sequence; let's denote the resulting\
-  \ sequence by $B$. This sequence is also circular. For each pair of its elements\
-  \ $B_s$ and $B_f$, let's denote the (non-circular) sequence created by starting\
-  \ at $B_s$ and moving from each element to the one that follows after it, until\
-  \ we reach $B_f$, by $B(s, f)$. This sequence includes the elements $B_s$ and $B_f$.\n\
-  For each $K$ from $2$ to $N$ inclusive, find the smallest possible number of elements\
-  \ that need to be inserted into $A$ to form a sequence $B$ for which there is no\
-  \ subsequence $B(p, q)$ such that:\n- The size of $B(p, q)$ is at least $K$.\n-\
-  \ There is no pair of consecutive elements in $B(p, q)$ such that their GCD is equal\
-  \ to $1$.\n\n-----Input-----\n- The first line of the input contains a single integer\
-  \ $T$ denoting the number of test cases. The description of $T$ test cases follows.\n\
-  - The first line of each test case contains a single integer $N$.\n- The second\
-  \ line contains $N$ space-separated integers $A_1, A_2, \\ldots, A_N$.\n\n-----Output-----\n\
-  For each test case, print a single line containing $N-1$ space-separated integers.\
-  \ For each $i$ ($1 \\le i \\le N-1$), the $i$-th of these integers should be the\
-  \ smallest number of inserted elements in a valid sequence $B$ for $K = i+1$.\n\n\
-  -----Constraints-----\n- $1 \\le T \\le 2,000$\n- $2 \\le N \\le 10^5$\n- $1 \\\
-  le A_i \\le 10^9$ for each valid $i$\n- the sum of $N$ over all test cases does\
-  \ not exceed $2 \\cdot 10^6$\n\n-----Example Input-----\n1\n5\n3 6 4 5 9\n\n-----Example\
-  \ Output-----\n3 1 1 0"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve (N : Nat) (A : List Nat) : List Nat :=\n  sorry\n"
-"vc-theorems": "theorem solve_length_prop {N : Nat} {A : List Nat} \n  (h1 : N ≥ 2)\
-  \ (h2 : A.length = N) :\n  (solve N A).length = N - 1 := by\n  sorry\n\n\ntheorem\
-  \ solve_nonincreasing_prop {N : Nat} {A : List Nat}\n  (h1 : N ≥ 2) (h2 : A.length\
-  \ = N) :\n  ∀ i, i < (solve N A).length - 1 → \n    ((solve N A).get ⟨i, sorry⟩)\
-  \ ≥ ((solve N A).get ⟨i+1, sorry⟩) := by\n  sorry\n\n\ntheorem solve_nonnegative_prop\
-  \ {N : Nat} {A : List Nat}\n  (h1 : N ≥ 2) (h2 : A.length = N) :\n  ∀ x ∈ solve\
-  \ N A, x ≥ 0 := by\n  sorry\n\n\ntheorem solve_consecutive_multiples {N : Nat}\n\
-  \  (h : N ≥ 2) :\n  let A := List.range N |>.map (λ x => x + 2)\n  (solve N A).length\
-  \ = N - 1 := by\n  sorry\n\n\ntheorem solve_powers_of_two {N : Nat}\n  (h : N ≥\
-  \ 2) :\n  let A := List.range N |>.map (λ x => 2^x)\n  (solve N A).length = N -\
-  \ 1 := by\n  sorry\n\n/--\ninfo: [3, 1, 1, 0]\n-/\n#guard_msgs in\n#eval solve 5\
-  \ [3, 6, 4, 5, 9]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  You are given a sequence of integers $A_1, A_2, \ldots, A_N$. This sequence is circular ― for each valid $i$, the element $A_{i+1}$ follows after $A_i$, and the element $A_1$ follows after $A_N$.
+  You may insert any positive integers at any positions you choose in this sequence; let's denote the resulting sequence by $B$. This sequence is also circular. For each pair of its elements $B_s$ and $B_f$, let's denote the (non-circular) sequence created by starting at $B_s$ and moving from each element to the one that follows after it, until we reach $B_f$, by $B(s, f)$. This sequence includes the elements $B_s$ and $B_f$.
+  For each $K$ from $2$ to $N$ inclusive, find the smallest possible number of elements that need to be inserted into $A$ to form a sequence $B$ for which there is no subsequence $B(p, q)$ such that:
+  - The size of $B(p, q)$ is at least $K$.
+  - There is no pair of consecutive elements in $B(p, q)$ such that their GCD is equal to $1$.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains a single integer $N$.
+  - The second line contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
+
+  -----Output-----
+  For each test case, print a single line containing $N-1$ space-separated integers. For each $i$ ($1 \le i \le N-1$), the $i$-th of these integers should be the smallest number of inserted elements in a valid sequence $B$ for $K = i+1$.
+
+  -----Constraints-----
+  - $1 \le T \le 2,000$
+  - $2 \le N \le 10^5$
+  - $1 \le A_i \le 10^9$ for each valid $i$
+  - the sum of $N$ over all test cases does not exceed $2 \cdot 10^6$
+
+  -----Example Input-----
+  1
+  5
+  3 6 4 5 9
+
+  -----Example Output-----
+  3 1 1 0
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve (N : Nat) (A : List Nat) : List Nat :=
+    sorry
+vc-theorems: |
+  theorem solve_length_prop {N : Nat} {A : List Nat} 
+    (h1 : N ≥ 2) (h2 : A.length = N) :
+    (solve N A).length = N - 1 := by
+    sorry
+
+
+  theorem solve_nonincreasing_prop {N : Nat} {A : List Nat}
+    (h1 : N ≥ 2) (h2 : A.length = N) :
+    ∀ i, i < (solve N A).length - 1 → 
+      ((solve N A).get ⟨i, sorry⟩) ≥ ((solve N A).get ⟨i+1, sorry⟩) := by
+    sorry
+
+
+  theorem solve_nonnegative_prop {N : Nat} {A : List Nat}
+    (h1 : N ≥ 2) (h2 : A.length = N) :
+    ∀ x ∈ solve N A, x ≥ 0 := by
+    sorry
+
+
+  theorem solve_consecutive_multiples {N : Nat}
+    (h : N ≥ 2) :
+    let A := List.range N |>.map (λ x => x + 2)
+    (solve N A).length = N - 1 := by
+    sorry
+
+
+  theorem solve_powers_of_two {N : Nat}
+    (h : N ≥ 2) :
+    let A := List.range N |>.map (λ x => 2^x)
+    (solve N A).length = N - 1 := by
+    sorry
+
+  /--
+  info: [3, 1, 1, 0]
+  -/
+  #guard_msgs in
+  #eval solve 5 [3, 6, 4, 5, 9]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

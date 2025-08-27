@@ -1,22 +1,72 @@
-"vc-description": "You are working at a lower league football stadium and you've been\
-  \ tasked with automating the scoreboard.\n\nThe referee will shout out the score,\
-  \ you have already set up the voice recognition module which turns the ref's voice\
-  \ into a string, but the spoken score needs to be converted into a pair for the\
-  \ scoreboard!\n\ne.g. `\"The score is four nil\"` should return `[4,0]`\n\nEither\
-  \ teams score has a range of 0-9, and the ref won't say the same string every time\
-  \ e.g. \n      \n    \"new score: two three\"\n      \n    \"two two\"\n      \n\
-  \    \"Arsenal just conceded another goal, two nil\"\n    \nNote:\n```python\nPlease\
-  \ return an array\n```\n\nPlease rate and enjoy!"
-"vc-preamble": "import Imports.AllImports\n\ndef ValidWords := [\"nil\", \"one\",\
-  \ \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"\
-  ]\n\ndef WordToNum : String → Nat\n  | \"nil\" => 0\n  | \"one\" => 1 \n  | \"two\"\
-  \ => 2\n  | \"three\" => 3\n  | \"four\" => 4\n  | \"five\" => 5\n  | \"six\" =>\
-  \ 6\n  | \"seven\" => 7\n  | \"eight\" => 8\n  | \"nine\" => 9\n  | _ => 0\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def scoreboard (s : String) : List Nat :=\n  sorry\n\n\n"
-"vc-theorems": "theorem scoreboard_output_valid (s : String) :\n  let result := scoreboard\
-  \ s\n  ∀ x ∈ result, 0 ≤ x ∧ x ≤ 9 :=\n  sorry\n\n/--\ninfo: [4, 0]\n-/\n#guard_msgs\
-  \ in\n#eval scoreboard \"The score is four nil\"\n\n/--\ninfo: [2, 3]\n-/\n#guard_msgs\
-  \ in\n#eval scoreboard \"new score: two three\"\n\n/--\ninfo: [2, 0]\n-/\n#guard_msgs\
-  \ in\n#eval scoreboard \"Arsenal just conceded another goal, two nil\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  You are working at a lower league football stadium and you've been tasked with automating the scoreboard.
+
+  The referee will shout out the score, you have already set up the voice recognition module which turns the ref's voice into a string, but the spoken score needs to be converted into a pair for the scoreboard!
+
+  e.g. `"The score is four nil"` should return `[4,0]`
+
+  Either teams score has a range of 0-9, and the ref won't say the same string every time e.g. 
+        
+      "new score: two three"
+        
+      "two two"
+        
+      "Arsenal just conceded another goal, two nil"
+      
+  Note:
+  ```python
+  Please return an array
+  ```
+
+  Please rate and enjoy!
+vc-preamble: |
+  import Imports.AllImports
+
+  def ValidWords := ["nil", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+
+  def WordToNum : String → Nat
+    | "nil" => 0
+    | "one" => 1 
+    | "two" => 2
+    | "three" => 3
+    | "four" => 4
+    | "five" => 5
+    | "six" => 6
+    | "seven" => 7
+    | "eight" => 8
+    | "nine" => 9
+    | _ => 0
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def scoreboard (s : String) : List Nat :=
+    sorry
+
+
+vc-theorems: |
+  theorem scoreboard_output_valid (s : String) :
+    let result := scoreboard s
+    ∀ x ∈ result, 0 ≤ x ∧ x ≤ 9 :=
+    sorry
+
+  /--
+  info: [4, 0]
+  -/
+  #guard_msgs in
+  #eval scoreboard "The score is four nil"
+
+  /--
+  info: [2, 3]
+  -/
+  #guard_msgs in
+  #eval scoreboard "new score: two three"
+
+  /--
+  info: [2, 0]
+  -/
+  #guard_msgs in
+  #eval scoreboard "Arsenal just conceded another goal, two nil"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

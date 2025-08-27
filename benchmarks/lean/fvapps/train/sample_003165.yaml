@@ -1,29 +1,80 @@
-"vc-description": ">When no more interesting kata can be resolved, I just choose to\
-  \ create the new kata, to solve their own, to enjoy the process  --myjinxin2015\
-  \ said\n\n# Description:\n Give you two number `m` and `n`(two positive integer,\
-  \ m < n), make a triangle pattern with number sequence `m to n`. The order is clockwise,\
-  \ starting from the top corner, like this:\n \n```\n When m=1 n=10  triangle is:\n\
-  \    1\n   9 2\n  8 0 3\n 7 6 5 4\n```\n Note: The pattern only uses the last digit\
-  \ of each number; Each row separated by \"\\n\"; Each digit separated by a space;\
-  \ Left side may need pad some spaces, but don't pad the right side; If `m to n`\
-  \ can not make the triangle, return `\"\"`.\n  \n# Some examples:\n\n```\nmakeTriangle(1,3)\
-  \ should return:\n 1\n3 2\n\nmakeTriangle(6,20) should return: \n\n    6\n   7 7\n\
-  \  6 8 8\n 5 0 9 9\n4 3 2 1 0\n\nmakeTriangle(1,12) should return \"\"\n \n```"
-"vc-preamble": "import Imports.AllImports\n\ndef make_triangle (m n : Nat) : String\
-  \ :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isDigitChar (c : Char) : Bool :=\n  '0' ≤ c ∧ c ≤ '9'\n"
-"vc-theorems": "theorem make_triangle_valid_output_type {m n : Nat} :\n  ∀ r : String,\
-  \ r = make_triangle m n → (r = \"\" ∨ String.contains r '\\n') :=\n  sorry\n\n\n\
-  theorem make_triangle_digits_only {m n : Nat} (h : m ≤ n) (h2 : n - m + 1 ≤ 45)\
-  \ :\n  ∀ c : Char, c ∈ (make_triangle m n).toList → \n    (c = ' ' ∨ c = '\\n' ∨\
-  \ isDigitChar c) :=\n  sorry\n\n\ntheorem make_triangle_row_growth {m n : Nat} (h\
-  \ : m ≤ n) (h2 : n - m + 1 ≤ 45) :\n  let lines := String.split (make_triangle m\
-  \ n) (· = '\\n')\n  ∀ i : Nat, i < lines.length →\n    ∀ h : i < lines.length,\n\
-  \    (String.split (String.trim (lines[i]'h)) (· = ' ')).length = i + 1 :=\n  sorry\n\
-  \n\ntheorem make_triangle_total_elements {m n : Nat} (h : m ≤ n) :\n  let size :=\
-  \ n - m + 1\n  let result := make_triangle m n\n  let lines := String.split result\
-  \ (· = '\\n')\n  result ≠ \"\" →\n  (lines.foldl (fun acc line => \n    acc + (String.split\
-  \ (String.trim line) (· = ' ')).length) 0) = size :=\n  sorry\n\n\ntheorem make_triangle_invalid_empty\
-  \ {m n : Nat} :\n  (m > n ∨ n - m + 1 > 45) → make_triangle m n = \"\" :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  >When no more interesting kata can be resolved, I just choose to create the new kata, to solve their own, to enjoy the process  --myjinxin2015 said
+
+  # Description:
+   Give you two number `m` and `n`(two positive integer, m < n), make a triangle pattern with number sequence `m to n`. The order is clockwise, starting from the top corner, like this:
+   
+  ```
+   When m=1 n=10  triangle is:
+      1
+     9 2
+    8 0 3
+   7 6 5 4
+  ```
+   Note: The pattern only uses the last digit of each number; Each row separated by "\n"; Each digit separated by a space; Left side may need pad some spaces, but don't pad the right side; If `m to n` can not make the triangle, return `""`.
+    
+  # Some examples:
+
+  ```
+  makeTriangle(1,3) should return:
+   1
+  3 2
+
+  makeTriangle(6,20) should return: 
+
+      6
+     7 7
+    6 8 8
+   5 0 9 9
+  4 3 2 1 0
+
+  makeTriangle(1,12) should return ""
+   
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def make_triangle (m n : Nat) : String :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isDigitChar (c : Char) : Bool :=
+    '0' ≤ c ∧ c ≤ '9'
+vc-theorems: |-
+  theorem make_triangle_valid_output_type {m n : Nat} :
+    ∀ r : String, r = make_triangle m n → (r = "" ∨ String.contains r '\n') :=
+    sorry
+
+
+  theorem make_triangle_digits_only {m n : Nat} (h : m ≤ n) (h2 : n - m + 1 ≤ 45) :
+    ∀ c : Char, c ∈ (make_triangle m n).toList → 
+      (c = ' ' ∨ c = '\n' ∨ isDigitChar c) :=
+    sorry
+
+
+  theorem make_triangle_row_growth {m n : Nat} (h : m ≤ n) (h2 : n - m + 1 ≤ 45) :
+    let lines := String.split (make_triangle m n) (· = '\n')
+    ∀ i : Nat, i < lines.length →
+      ∀ h : i < lines.length,
+      (String.split (String.trim (lines[i]'h)) (· = ' ')).length = i + 1 :=
+    sorry
+
+
+  theorem make_triangle_total_elements {m n : Nat} (h : m ≤ n) :
+    let size := n - m + 1
+    let result := make_triangle m n
+    let lines := String.split result (· = '\n')
+    result ≠ "" →
+    (lines.foldl (fun acc line => 
+      acc + (String.split (String.trim line) (· = ' ')).length) 0) = size :=
+    sorry
+
+
+  theorem make_triangle_invalid_empty {m n : Nat} :
+    (m > n ∨ n - m + 1 > 45) → make_triangle m n = "" :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

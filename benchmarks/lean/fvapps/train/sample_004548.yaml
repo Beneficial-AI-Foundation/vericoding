@@ -1,21 +1,60 @@
-"vc-description": "No description!!!\n\nInput  :: [10,20,25,0]\n\nOutput :: [\"+0\"\
-  , \"+10\", \"+15\", \"-10\"] \n\n`Show some love, rank and upvote!`"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def equalize (arr : List Int) : List String := sorry\n\ntheorem\
-  \ equalize_format (arr : List Int) (h : arr.length > 0) :\n  let result := equalize\
-  \ arr\n  ∀ x ∈ result, ∃ s : String, (x = s) ∧ (s.get 0 = '+' ∨ s.get 0 = '-') :=\
-  \ sorry\n"
-"vc-theorems": "theorem equalize_first_elem (arr : List Int) (h : arr.length > 0)\
-  \ :\n  (equalize arr).head! = \"+0\" := sorry\n\n\ntheorem equalize_length (arr\
-  \ : List Int) (h : arr.length > 0) :\n  (equalize arr).length = arr.length := sorry\n\
-  \n\ntheorem equalize_relative_diffs (arr : List Int) (h : arr.length > 0) :\n  let\
-  \ result := equalize arr\n  ∀ i, i < arr.length →\n    String.toInt! (result.get!\
-  \ i) = arr.get! i - arr.get! 0 := sorry\n\n\ntheorem equalize_consecutive_diffs\
-  \ (arr : List Int) (h : arr.length > 0) :\n  let result := equalize arr\n  ∀ i,\
-  \ i < arr.length - 1 →\n    String.toInt! (result.get! (i+1)) - String.toInt! (result.get!\
-  \ i) = \n    arr.get! (i+1) - arr.get! i := sorry\n\n/--\ninfo: expected1\n-/\n\
-  #guard_msgs in\n#eval equalize [10, 20, 25, 0]\n\n/--\ninfo: expected2\n-/\n#guard_msgs\
-  \ in\n#eval equalize [0, 5, 10, -5]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n\
-  #eval equalize [-10, 0, 10, 20]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  No description!!!
+
+  Input  :: [10,20,25,0]
+
+  Output :: ["+0", "+10", "+15", "-10"] 
+
+  `Show some love, rank and upvote!`
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def equalize (arr : List Int) : List String := sorry
+
+  theorem equalize_format (arr : List Int) (h : arr.length > 0) :
+    let result := equalize arr
+    ∀ x ∈ result, ∃ s : String, (x = s) ∧ (s.get 0 = '+' ∨ s.get 0 = '-') := sorry
+vc-theorems: |
+  theorem equalize_first_elem (arr : List Int) (h : arr.length > 0) :
+    (equalize arr).head! = "+0" := sorry
+
+
+  theorem equalize_length (arr : List Int) (h : arr.length > 0) :
+    (equalize arr).length = arr.length := sorry
+
+
+  theorem equalize_relative_diffs (arr : List Int) (h : arr.length > 0) :
+    let result := equalize arr
+    ∀ i, i < arr.length →
+      String.toInt! (result.get! i) = arr.get! i - arr.get! 0 := sorry
+
+
+  theorem equalize_consecutive_diffs (arr : List Int) (h : arr.length > 0) :
+    let result := equalize arr
+    ∀ i, i < arr.length - 1 →
+      String.toInt! (result.get! (i+1)) - String.toInt! (result.get! i) = 
+      arr.get! (i+1) - arr.get! i := sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval equalize [10, 20, 25, 0]
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval equalize [0, 5, 10, -5]
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval equalize [-10, 0, 10, 20]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

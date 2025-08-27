@@ -1,39 +1,101 @@
-"vc-description": "Your task in this Kata is to emulate text justification in monospace\
-  \ font. You will be given a single-lined text and the expected justification width.\
-  \ The longest word will never be greater than this width.\n\nHere are the rules:\n\
-  \n  * Use spaces to fill in the gaps between words.\n  * Each line should contain\
-  \ as many words as possible.\n  * Use '\\n' to separate lines.\n  * Gap between\
-  \ words can't differ by more than one space.\n  * Lines should end with a word not\
-  \ a space.\n  * '\\n' is not included in the length of a line.\n  * Large gaps go\
-  \ first, then smaller ones ('Lorem--ipsum--dolor--sit-amet,' (2, 2, 2, 1 spaces)).\n\
-  \  * Last line should not be justified, use only one space between words.\n  * Last\
-  \ line should not contain '\\n'\n  * Strings with one word do not need gaps ('somelongword\\\
-  n').\n\nExample with width=30:\n\n```\nLorem  ipsum  dolor  sit amet,\nconsectetur\
-  \  adipiscing  elit.\nVestibulum    sagittis   dolor\nmauris,  at  elementum  ligula\n\
-  tempor  eget.  In quis rhoncus\nnunc,  at  aliquet orci. Fusce\nat   dolor   sit\
-  \   amet  felis\nsuscipit   tristique.   Nam  a\nimperdiet   tellus.  Nulla  eu\n\
-  vestibulum    urna.    Vivamus\ntincidunt  suscipit  enim, nec\nultrices   nisi\
-  \  volutpat  ac.\nMaecenas   sit   amet  lacinia\narcu,  non dictum justo. Donec\n\
-  sed  quam  vel  risus faucibus\neuismod.  Suspendisse  rhoncus\nrhoncus  felis \
-  \ at  fermentum.\nDonec lorem magna, ultricies a\nnunc    sit    amet,   blandit\n\
-  fringilla  nunc. In vestibulum\nvelit    ac    felis   rhoncus\npellentesque. Mauris\
-  \ at tellus\nenim.  Aliquam eleifend tempus\ndapibus. Pellentesque commodo,\nnisi\
-  \    sit   amet   hendrerit\nfringilla,   ante  odio  porta\nlacus,   ut   elementum\
-  \  justo\nnulla et dolor.\n```\n\nAlso you can always take a look at how justification\
-  \ works in your text editor or directly in HTML (css: text-align: justify).\n\n\
-  Have fun :)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def justify (text: String) (width : Nat) : String := sorry\n\n\
-  -- Property 2: Input words are preserved in order"
-"vc-theorems": "theorem justify_preserves_words (text: String) (width: Nat) (h: width\
-  \ ≥ 10):\n  text ≠ \"\" →\n  let input_words := (text.split (· = ' ')).filter (·\
-  \ ≠ \"\")\n  let output_text := justify text width\n  let output_words := (output_text.split\
-  \ (· = ' ')).filter (· ≠ \"\")\n  input_words = output_words := sorry\n\n-- Property\
-  \ 3: Empty input returns empty output  \n\ntheorem justify_empty (width: Nat):\n\
-  \  justify \"\" width = \"\" := sorry\n\n-- Edge cases\n\ntheorem justify_edge_cases:\n\
-  \  (justify \"\" 5 = \"\") ∧\n  (justify \"a\" 1 = \"a\") ∧ \n  (justify \"a b\"\
-  \ 3 = \"a b\") := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval justify\
-  \ \"123 45 6\" 7\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval justify \"test\"\
-  \ 10\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval justify \"123 456\" 10\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Your task in this Kata is to emulate text justification in monospace font. You will be given a single-lined text and the expected justification width. The longest word will never be greater than this width.
+
+  Here are the rules:
+
+    * Use spaces to fill in the gaps between words.
+    * Each line should contain as many words as possible.
+    * Use '\n' to separate lines.
+    * Gap between words can't differ by more than one space.
+    * Lines should end with a word not a space.
+    * '\n' is not included in the length of a line.
+    * Large gaps go first, then smaller ones ('Lorem--ipsum--dolor--sit-amet,' (2, 2, 2, 1 spaces)).
+    * Last line should not be justified, use only one space between words.
+    * Last line should not contain '\n'
+    * Strings with one word do not need gaps ('somelongword\n').
+
+  Example with width=30:
+
+  ```
+  Lorem  ipsum  dolor  sit amet,
+  consectetur  adipiscing  elit.
+  Vestibulum    sagittis   dolor
+  mauris,  at  elementum  ligula
+  tempor  eget.  In quis rhoncus
+  nunc,  at  aliquet orci. Fusce
+  at   dolor   sit   amet  felis
+  suscipit   tristique.   Nam  a
+  imperdiet   tellus.  Nulla  eu
+  vestibulum    urna.    Vivamus
+  tincidunt  suscipit  enim, nec
+  ultrices   nisi  volutpat  ac.
+  Maecenas   sit   amet  lacinia
+  arcu,  non dictum justo. Donec
+  sed  quam  vel  risus faucibus
+  euismod.  Suspendisse  rhoncus
+  rhoncus  felis  at  fermentum.
+  Donec lorem magna, ultricies a
+  nunc    sit    amet,   blandit
+  fringilla  nunc. In vestibulum
+  velit    ac    felis   rhoncus
+  pellentesque. Mauris at tellus
+  enim.  Aliquam eleifend tempus
+  dapibus. Pellentesque commodo,
+  nisi    sit   amet   hendrerit
+  fringilla,   ante  odio  porta
+  lacus,   ut   elementum  justo
+  nulla et dolor.
+  ```
+
+  Also you can always take a look at how justification works in your text editor or directly in HTML (css: text-align: justify).
+
+  Have fun :)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def justify (text: String) (width : Nat) : String := sorry
+
+  -- Property 2: Input words are preserved in order
+vc-theorems: |
+  theorem justify_preserves_words (text: String) (width: Nat) (h: width ≥ 10):
+    text ≠ "" →
+    let input_words := (text.split (· = ' ')).filter (· ≠ "")
+    let output_text := justify text width
+    let output_words := (output_text.split (· = ' ')).filter (· ≠ "")
+    input_words = output_words := sorry
+
+  -- Property 3: Empty input returns empty output  
+
+  theorem justify_empty (width: Nat):
+    justify "" width = "" := sorry
+
+  -- Edge cases
+
+  theorem justify_edge_cases:
+    (justify "" 5 = "") ∧
+    (justify "a" 1 = "a") ∧ 
+    (justify "a b" 3 = "a b") := sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval justify "123 45 6" 7
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval justify "test" 10
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval justify "123 456" 10
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

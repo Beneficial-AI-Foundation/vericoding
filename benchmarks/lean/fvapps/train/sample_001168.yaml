@@ -1,38 +1,89 @@
-"vc-description": "It's winter and taking a bath is a delicate matter. Chef has two\
-  \ buckets of water. The first bucket has $v_1$ volume of cold water at temperature\
-  \ $t_1$. The second has $v_2$ volume of hot water at temperature $t_2$. Chef wants\
-  \ to take a bath with at least $v_3$ volume of water which is at exactly $t_3$ temperature.\
-  \ To get the required amount of water, Chef can mix some water obtained from the\
-  \ first and second buckets.\nMixing $v_x$ volume of water at temperature $t_x$ with\
-  \ $v_y$ volume of water at temperature $t_y$ yields $v_x + v_y$ volume of water\
-  \ at temperature calculated as\nvxtx+vytyvx+vyvxtx+vytyvx+vy\\frac{v_x t_x + v_y\
-  \ t_y}{v_x + v_y}\nHelp Chef figure out if it is possible for him to take a bath\
-  \ with at least $v_3$ volume of water at temperature $t_3$.\nAssume that Chef has\
-  \ no other source of water and that no heat is lost by the water in the buckets\
-  \ with time, so Chef cannot simply wait for the water to cool.\n\n-----Input-----\n\
-  - The first line contains $n$, the number of test cases. $n$ cases follow.\n- Each\
-  \ testcase contains of a single line containing 6 integers $v_1, t_1, v_2, t_2,\
-  \ v_3, t_3$.\n\n-----Output-----\n- For each test case, print a single line containing\
-  \ \"YES\" if Chef can take a bath the way he wants and \"NO\" otherwise.\n\n-----Constraints-----\n\
-  - $1 \\leq n \\leq 10^5$\n- $1 \\leq v_1, v_2, v_3 \\leq 10^6$\n- $1 \\leq t_1 <\
-  \ t_2 \\leq 10^6$\n- $1 \\leq t_3 \\leq 10^6$\n\n-----Sample Input-----\n3\n5 10\
-  \ 5 20 8 15\n5 10 5 20 1 30\n5 10 5 20 5 20\n\n-----Sample Output-----\nYES\nNO\n\
-  YES\n\n-----Explanation-----\n- Case 1: Mixing all the water in both buckets yields\
-  \ 10 volume of water at temperature 15, which is more than the required 8.\n- Case\
-  \ 2: It is not possible to get water at 30 temperature.\n- Case 3: Chef can take\
-  \ a bath using only the water in the second bucket."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def can_take_bath (v1 v2 v3 : Nat) (t1 t2 t3 : Nat) : Bool :=\n\
-  sorry\n"
-"vc-theorems": "theorem can_take_bath_t3_between : \n  ∀ (v1 v2 v3 t1 t2 t3 : Nat),\n\
-  \    v1 > 0 → v2 > 0 → v3 > 0 →\n    t1 ≤ t2 →\n    can_take_bath v1 t1 v2 t2 v3\
-  \ t3 = true →\n    t1 ≤ t3 ∧ t3 ≤ t2 :=\nsorry\n\n\ntheorem can_take_bath_outside_false\
-  \ :\n  ∀ (v1 v2 v3 t1 t2 t3 : Nat),\n    v1 > 0 → v2 > 0 → v3 > 0 →\n    t1 ≤ t2\
-  \ → \n    (¬(t1 ≤ t3 ∧ t3 ≤ t2)) →\n    can_take_bath v1 t1 v2 t2 v3 t3 = false\
-  \ :=\nsorry\n\n\ntheorem can_take_bath_equal_rates :\n  ∀ (v t1 t2 t3 : Nat),\n\
-  \    v > 0 →\n    t1 ≤ t3 → t3 ≤ t2 →\n    can_take_bath v t1 v t2 v t3 = true :=\n\
-  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval can_take_bath 5 10 5 20 8 15\n\
-  \n/--\ninfo: False\n-/\n#guard_msgs in\n#eval can_take_bath 5 10 5 20 1 30\n\n/--\n\
-  info: True\n-/\n#guard_msgs in\n#eval can_take_bath 5 10 5 20 5 20\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  It's winter and taking a bath is a delicate matter. Chef has two buckets of water. The first bucket has $v_1$ volume of cold water at temperature $t_1$. The second has $v_2$ volume of hot water at temperature $t_2$. Chef wants to take a bath with at least $v_3$ volume of water which is at exactly $t_3$ temperature. To get the required amount of water, Chef can mix some water obtained from the first and second buckets.
+  Mixing $v_x$ volume of water at temperature $t_x$ with $v_y$ volume of water at temperature $t_y$ yields $v_x + v_y$ volume of water at temperature calculated as
+  vxtx+vytyvx+vyvxtx+vytyvx+vy\frac{v_x t_x + v_y t_y}{v_x + v_y}
+  Help Chef figure out if it is possible for him to take a bath with at least $v_3$ volume of water at temperature $t_3$.
+  Assume that Chef has no other source of water and that no heat is lost by the water in the buckets with time, so Chef cannot simply wait for the water to cool.
+
+  -----Input-----
+  - The first line contains $n$, the number of test cases. $n$ cases follow.
+  - Each testcase contains of a single line containing 6 integers $v_1, t_1, v_2, t_2, v_3, t_3$.
+
+  -----Output-----
+  - For each test case, print a single line containing "YES" if Chef can take a bath the way he wants and "NO" otherwise.
+
+  -----Constraints-----
+  - $1 \leq n \leq 10^5$
+  - $1 \leq v_1, v_2, v_3 \leq 10^6$
+  - $1 \leq t_1 < t_2 \leq 10^6$
+  - $1 \leq t_3 \leq 10^6$
+
+  -----Sample Input-----
+  3
+  5 10 5 20 8 15
+  5 10 5 20 1 30
+  5 10 5 20 5 20
+
+  -----Sample Output-----
+  YES
+  NO
+  YES
+
+  -----Explanation-----
+  - Case 1: Mixing all the water in both buckets yields 10 volume of water at temperature 15, which is more than the required 8.
+  - Case 2: It is not possible to get water at 30 temperature.
+  - Case 3: Chef can take a bath using only the water in the second bucket.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def can_take_bath (v1 v2 v3 : Nat) (t1 t2 t3 : Nat) : Bool :=
+  sorry
+vc-theorems: |
+  theorem can_take_bath_t3_between : 
+    ∀ (v1 v2 v3 t1 t2 t3 : Nat),
+      v1 > 0 → v2 > 0 → v3 > 0 →
+      t1 ≤ t2 →
+      can_take_bath v1 t1 v2 t2 v3 t3 = true →
+      t1 ≤ t3 ∧ t3 ≤ t2 :=
+  sorry
+
+
+  theorem can_take_bath_outside_false :
+    ∀ (v1 v2 v3 t1 t2 t3 : Nat),
+      v1 > 0 → v2 > 0 → v3 > 0 →
+      t1 ≤ t2 → 
+      (¬(t1 ≤ t3 ∧ t3 ≤ t2)) →
+      can_take_bath v1 t1 v2 t2 v3 t3 = false :=
+  sorry
+
+
+  theorem can_take_bath_equal_rates :
+    ∀ (v t1 t2 t3 : Nat),
+      v > 0 →
+      t1 ≤ t3 → t3 ≤ t2 →
+      can_take_bath v t1 v t2 v t3 = true :=
+  sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval can_take_bath 5 10 5 20 8 15
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval can_take_bath 5 10 5 20 1 30
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval can_take_bath 5 10 5 20 5 20
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

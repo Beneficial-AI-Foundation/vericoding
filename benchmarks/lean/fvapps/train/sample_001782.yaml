@@ -1,40 +1,105 @@
-"vc-description": "Given a binary tree with the following rules:\n\nroot.val == 0\n\
-  If treeNode.val == x and treeNode.left != null, then treeNode.left.val == 2 * x\
-  \ + 1\nIf treeNode.val == x and treeNode.right != null, then treeNode.right.val\
-  \ == 2 * x + 2\n\nNow the binary tree is contaminated, which means all treeNode.val have been\
-  \ changed to -1.\nYou need to first recover the binary tree and then implement the\
-  \ FindElements class:\n\nFindElements(TreeNode* root) Initializes the object with\
-  \ a contamined binary tree, you need to recover it first.\nbool find(int target) Return\
-  \ if the target value exists in the recovered binary tree.\n\n \nExample 1:\n\n\
-  Input\n[\"FindElements\",\"find\",\"find\"]\n[[[-1,null,-1]],[1],[2]]\nOutput\n\
-  [null,false,true]\nExplanation\nFindElements findElements = new FindElements([-1,null,-1]);\
-  \ \nfindElements.find(1); // return False \nfindElements.find(2); // return True\
-  \ \nExample 2:\n\nInput\n[\"FindElements\",\"find\",\"find\",\"find\"]\n[[[-1,-1,-1,-1,-1]],[1],[3],[5]]\n\
-  Output\n[null,true,true,false]\nExplanation\nFindElements findElements = new FindElements([-1,-1,-1,-1,-1]);\n\
-  findElements.find(1); // return True\nfindElements.find(3); // return True\nfindElements.find(5);\
-  \ // return False\nExample 3:\n\nInput\n[\"FindElements\",\"find\",\"find\",\"find\"\
-  ,\"find\"]\n[[[-1,null,-1,-1,null,-1]],[2],[3],[4],[5]]\nOutput\n[null,true,false,false,true]\n\
-  Explanation\nFindElements findElements = new FindElements([-1,null,-1,-1,null,-1]);\n\
-  findElements.find(2); // return True\nfindElements.find(3); // return False\nfindElements.find(4);\
-  \ // return False\nfindElements.find(5); // return True\n\n \nConstraints:\n\nTreeNode.val\
-  \ == -1\nThe height of the binary tree is less than or equal to 20\nThe total number\
-  \ of nodes is between [1, 10^4]\nTotal calls of find() is between [1, 10^4]\n0 <=\
-  \ target <= 10^6"
-"vc-preamble": "import Imports.AllImports\n\ndef make_tree (values : List Int) (max_depth\
-  \ : Nat := 4) : TreeNode := sorry\n\ndef initFindElements (root : TreeNode) : FindElements\
-  \ := {\n  root := root,\n  find := fun _ => false\n}\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isNode : TreeNode → Prop\n  | TreeNode.node _ _ _ => True\n\
-  \  | _ => False\n"
-"vc-theorems": "theorem initialization_valid {values : List Int} \n  (h : values.length\
-  \ > 0) (h2 : values.length ≤ 15) :\n  let root := make_tree values\n  ∃ fe : FindElements,\
-  \ True := sorry\n\n\ntheorem empty_tree_find {target : Int}\n  (h : target ≥ 0)\
-  \ (h2 : target ≤ 100) :\n  let fe := initFindElements TreeNode.nil\n  fe.find target\
-  \ = false := sorry\n\n\ntheorem negative_values_not_found {target : Int}\n  (h :\
-  \ target < 0) (h2 : target ≥ -100) :\n  let root := make_tree [-1, -1, -1, -1]\n\
-  \  let fe := initFindElements root\n  fe.find target = false := sorry\n\n\ntheorem\
-  \ valid_indices_found {values : List Int}\n  (h : values.length > 0) (h2 : values.length\
-  \ ≤ 15) :\n  let root := make_tree values\n  let fe := initFindElements root\n \
-  \ fe.find 0 = true ∧ \n  (isNode root → fe.find 2 = true) ∧\n  (isNode root → fe.find\
-  \ 1 = true) := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a binary tree with the following rules:
+
+  root.val == 0
+  If treeNode.val == x and treeNode.left != null, then treeNode.left.val == 2 * x + 1
+  If treeNode.val == x and treeNode.right != null, then treeNode.right.val == 2 * x + 2
+
+  Now the binary tree is contaminated, which means all treeNode.val have been changed to -1.
+  You need to first recover the binary tree and then implement the FindElements class:
+
+  FindElements(TreeNode* root) Initializes the object with a contamined binary tree, you need to recover it first.
+  bool find(int target) Return if the target value exists in the recovered binary tree.
+
+   
+  Example 1:
+
+  Input
+  ["FindElements","find","find"]
+  [[[-1,null,-1]],[1],[2]]
+  Output
+  [null,false,true]
+  Explanation
+  FindElements findElements = new FindElements([-1,null,-1]); 
+  findElements.find(1); // return False 
+  findElements.find(2); // return True 
+  Example 2:
+
+  Input
+  ["FindElements","find","find","find"]
+  [[[-1,-1,-1,-1,-1]],[1],[3],[5]]
+  Output
+  [null,true,true,false]
+  Explanation
+  FindElements findElements = new FindElements([-1,-1,-1,-1,-1]);
+  findElements.find(1); // return True
+  findElements.find(3); // return True
+  findElements.find(5); // return False
+  Example 3:
+
+  Input
+  ["FindElements","find","find","find","find"]
+  [[[-1,null,-1,-1,null,-1]],[2],[3],[4],[5]]
+  Output
+  [null,true,false,false,true]
+  Explanation
+  FindElements findElements = new FindElements([-1,null,-1,-1,null,-1]);
+  findElements.find(2); // return True
+  findElements.find(3); // return False
+  findElements.find(4); // return False
+  findElements.find(5); // return True
+
+   
+  Constraints:
+
+  TreeNode.val == -1
+  The height of the binary tree is less than or equal to 20
+  The total number of nodes is between [1, 10^4]
+  Total calls of find() is between [1, 10^4]
+  0 <= target <= 10^6
+vc-preamble: |
+  import Imports.AllImports
+
+  def make_tree (values : List Int) (max_depth : Nat := 4) : TreeNode := sorry
+
+  def initFindElements (root : TreeNode) : FindElements := {
+    root := root,
+    find := fun _ => false
+  }
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isNode : TreeNode → Prop
+    | TreeNode.node _ _ _ => True
+    | _ => False
+vc-theorems: |-
+  theorem initialization_valid {values : List Int} 
+    (h : values.length > 0) (h2 : values.length ≤ 15) :
+    let root := make_tree values
+    ∃ fe : FindElements, True := sorry
+
+
+  theorem empty_tree_find {target : Int}
+    (h : target ≥ 0) (h2 : target ≤ 100) :
+    let fe := initFindElements TreeNode.nil
+    fe.find target = false := sorry
+
+
+  theorem negative_values_not_found {target : Int}
+    (h : target < 0) (h2 : target ≥ -100) :
+    let root := make_tree [-1, -1, -1, -1]
+    let fe := initFindElements root
+    fe.find target = false := sorry
+
+
+  theorem valid_indices_found {values : List Int}
+    (h : values.length > 0) (h2 : values.length ≤ 15) :
+    let root := make_tree values
+    let fe := initFindElements root
+    fe.find 0 = true ∧ 
+    (isNode root → fe.find 2 = true) ∧
+    (isNode root → fe.find 1 = true) := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

@@ -1,38 +1,91 @@
-"vc-description": "Your company was appointed to lay new asphalt on the highway of\
-  \ length $n$. You know that every day you can either repair one unit of the highway\
-  \ (lay new asphalt over one unit of the highway) or skip repairing.\n\nSkipping\
-  \ the repair is necessary because of the climate. The climate in your region is\
-  \ periodical: there are $g$ days when the weather is good and if you lay new asphalt\
-  \ these days it becomes high-quality pavement; after that, the weather during the\
-  \ next $b$ days is bad, and if you lay new asphalt these days it becomes low-quality\
-  \ pavement; again $g$ good days, $b$ bad days and so on.\n\nYou can be sure that\
-  \ you start repairing at the start of a good season, in other words, days $1, 2,\
-  \ \\dots, g$ are good.\n\nYou don't really care about the quality of the highway,\
-  \ you just want to make sure that at least half of the highway will have high-quality\
-  \ pavement. For example, if the $n = 5$ then at least $3$ units of the highway should\
-  \ have high quality; if $n = 4$ then at least $2$ units should have high quality.\n\
-  \nWhat is the minimum number of days is needed to finish the repair of the whole\
-  \ highway?\n\n\n-----Input-----\n\nThe first line contains a single integer $T$\
-  \ ($1 \\le T \\le 10^4$) — the number of test cases.\n\nNext $T$ lines contain test\
-  \ cases — one per line. Each line contains three integers $n$, $g$ and $b$ ($1 \\\
-  le n, g, b \\le 10^9$) — the length of the highway and the number of good and bad\
-  \ days respectively.\n\n\n-----Output-----\n\nPrint $T$ integers — one per test\
-  \ case. For each test case, print the minimum number of days required to repair\
-  \ the whole highway if at least half of it should have high quality.\n\n\n-----Example-----\n\
-  Input\n3\n5 1 1\n8 10 10\n1000000 1 1000000\n\nOutput\n5\n8\n499999500000\n\n\n\n\
-  -----Note-----\n\nIn the first test case, you can just lay new asphalt each day,\
-  \ since days $1, 3, 5$ are good.\n\nIn the second test case, you can also lay new\
-  \ asphalt each day, since days $1$-$8$ are good."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calc_min_days (n g b : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem result_at_least_n {n g b : Nat} (hn : n > 0) (hg : g > 0)\
-  \ (hb : b > 0) :\n  calc_min_days n g b ≥ n := \n  sorry\n\n\ntheorem result_at_least_high_quality\
-  \ {n g b : Nat} (hn : n > 0) (hg : g > 0) (hb : b > 0) :\n  calc_min_days n g b\
-  \ ≥ (n + 1) / 2 :=\n  sorry\n\n\ntheorem zero_bad_weather_equals_n {n g : Nat} (hn\
-  \ : n > 0) (hg : g > 0) :\n  calc_min_days n g 0 = n :=\n  sorry\n\n\ntheorem single_day_road\
-  \ {n : Nat} (hn : n > 0) :\n  calc_min_days 1 n n = 1 :=\n  sorry\n\n/--\ninfo:\
-  \ 5\n-/\n#guard_msgs in\n#eval calc_min_days 5 1 1\n\n/--\ninfo: 8\n-/\n#guard_msgs\
-  \ in\n#eval calc_min_days 8 10 10\n\n/--\ninfo: 499999500000\n-/\n#guard_msgs in\n\
-  #eval calc_min_days 1000000 1 1000000\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Your company was appointed to lay new asphalt on the highway of length $n$. You know that every day you can either repair one unit of the highway (lay new asphalt over one unit of the highway) or skip repairing.
+
+  Skipping the repair is necessary because of the climate. The climate in your region is periodical: there are $g$ days when the weather is good and if you lay new asphalt these days it becomes high-quality pavement; after that, the weather during the next $b$ days is bad, and if you lay new asphalt these days it becomes low-quality pavement; again $g$ good days, $b$ bad days and so on.
+
+  You can be sure that you start repairing at the start of a good season, in other words, days $1, 2, \dots, g$ are good.
+
+  You don't really care about the quality of the highway, you just want to make sure that at least half of the highway will have high-quality pavement. For example, if the $n = 5$ then at least $3$ units of the highway should have high quality; if $n = 4$ then at least $2$ units should have high quality.
+
+  What is the minimum number of days is needed to finish the repair of the whole highway?
+
+
+  -----Input-----
+
+  The first line contains a single integer $T$ ($1 \le T \le 10^4$) — the number of test cases.
+
+  Next $T$ lines contain test cases — one per line. Each line contains three integers $n$, $g$ and $b$ ($1 \le n, g, b \le 10^9$) — the length of the highway and the number of good and bad days respectively.
+
+
+  -----Output-----
+
+  Print $T$ integers — one per test case. For each test case, print the minimum number of days required to repair the whole highway if at least half of it should have high quality.
+
+
+  -----Example-----
+  Input
+  3
+  5 1 1
+  8 10 10
+  1000000 1 1000000
+
+  Output
+  5
+  8
+  499999500000
+
+
+
+  -----Note-----
+
+  In the first test case, you can just lay new asphalt each day, since days $1, 3, 5$ are good.
+
+  In the second test case, you can also lay new asphalt each day, since days $1$-$8$ are good.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def calc_min_days (n g b : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem result_at_least_n {n g b : Nat} (hn : n > 0) (hg : g > 0) (hb : b > 0) :
+    calc_min_days n g b ≥ n := 
+    sorry
+
+
+  theorem result_at_least_high_quality {n g b : Nat} (hn : n > 0) (hg : g > 0) (hb : b > 0) :
+    calc_min_days n g b ≥ (n + 1) / 2 :=
+    sorry
+
+
+  theorem zero_bad_weather_equals_n {n g : Nat} (hn : n > 0) (hg : g > 0) :
+    calc_min_days n g 0 = n :=
+    sorry
+
+
+  theorem single_day_road {n : Nat} (hn : n > 0) :
+    calc_min_days 1 n n = 1 :=
+    sorry
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval calc_min_days 5 1 1
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval calc_min_days 8 10 10
+
+  /--
+  info: 499999500000
+  -/
+  #guard_msgs in
+  #eval calc_min_days 1000000 1 1000000
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

@@ -1,25 +1,75 @@
-"vc-description": "Write a program, which takes an integer N and if the number is\
-  \ less than 10 then display \"Thanks for helping Chef!\" otherwise print \"-1\"\
-  .\n\n-----Input-----\n\nThe first line contains an integer T, total number of testcases.\
-  \ Then follow T lines, each line contains an integer N. \n\n-----Output-----\nFor\
-  \ each test case, output the given string or -1 depending on conditions, in a new\
-  \ line.\n\n-----Constraints-----\n- 1 ≤ T ≤ 1000\n- -20 ≤ N ≤ 20\n\n-----Example-----\n\
-  Input\n3 \n1\n12\n-5\nOutput\nThanks for helping Chef!\n-1\nThanks for helping Chef!"
-"vc-preamble": "import Imports.AllImports\n\ndef solve_helper_thanks (n : Int) : String\
-  \ := sorry\n\ntheorem solve_helper_thanks_result_valid (n : Int) :\n  (solve_helper_thanks\
-  \ n = \"-1\") ∨ \n  (solve_helper_thanks n = \"Thanks for helping Chef!\") := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_multiple_cases (nums : List Int) : List String := sorry\
-  \ \n\ntheorem solve_multiple_cases_length (nums : List Int) :\n  (solve_multiple_cases\
-  \ nums).length = nums.length := sorry\n"
-"vc-theorems": "theorem solve_helper_thanks_condition (n : Int) :\n  (n < 10) = (solve_helper_thanks\
-  \ n = \"Thanks for helping Chef!\") := sorry\n\n\ntheorem solve_multiple_cases_valid_results\
-  \ (nums : List Int) :\n  ∀ x ∈ solve_multiple_cases nums, \n    (x = \"-1\") ∨ (x\
-  \ = \"Thanks for helping Chef!\") := sorry\n\n\ntheorem solve_multiple_cases_condition\
-  \ (nums : List Int) :\n  ∀ (i : Nat), i < nums.length →\n    ((nums[i]! < 10) =\
-  \ \n     ((solve_multiple_cases nums)[i]! = \"Thanks for helping Chef!\")) := sorry\n\
-  \n/--\ninfo: test1_expected\n-/\n#guard_msgs in\n#eval solve_multiple_cases [1,\
-  \ 12, -5]\n\n/--\ninfo: test2_expected\n-/\n#guard_msgs in\n#eval solve_multiple_cases\
-  \ [-20, 0, 20]\n\n/--\ninfo: test3_expected\n-/\n#guard_msgs in\n#eval solve_multiple_cases\
-  \ [9, 10]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a program, which takes an integer N and if the number is less than 10 then display "Thanks for helping Chef!" otherwise print "-1".
+
+  -----Input-----
+
+  The first line contains an integer T, total number of testcases. Then follow T lines, each line contains an integer N. 
+
+  -----Output-----
+  For each test case, output the given string or -1 depending on conditions, in a new line.
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 1000
+  - -20 ≤ N ≤ 20
+
+  -----Example-----
+  Input
+  3 
+  1
+  12
+  -5
+  Output
+  Thanks for helping Chef!
+  -1
+  Thanks for helping Chef!
+vc-preamble: |
+  import Imports.AllImports
+
+  def solve_helper_thanks (n : Int) : String := sorry
+
+  theorem solve_helper_thanks_result_valid (n : Int) :
+    (solve_helper_thanks n = "-1") ∨ 
+    (solve_helper_thanks n = "Thanks for helping Chef!") := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_multiple_cases (nums : List Int) : List String := sorry 
+
+  theorem solve_multiple_cases_length (nums : List Int) :
+    (solve_multiple_cases nums).length = nums.length := sorry
+vc-theorems: |
+  theorem solve_helper_thanks_condition (n : Int) :
+    (n < 10) = (solve_helper_thanks n = "Thanks for helping Chef!") := sorry
+
+
+  theorem solve_multiple_cases_valid_results (nums : List Int) :
+    ∀ x ∈ solve_multiple_cases nums, 
+      (x = "-1") ∨ (x = "Thanks for helping Chef!") := sorry
+
+
+  theorem solve_multiple_cases_condition (nums : List Int) :
+    ∀ (i : Nat), i < nums.length →
+      ((nums[i]! < 10) = 
+       ((solve_multiple_cases nums)[i]! = "Thanks for helping Chef!")) := sorry
+
+  /--
+  info: test1_expected
+  -/
+  #guard_msgs in
+  #eval solve_multiple_cases [1, 12, -5]
+
+  /--
+  info: test2_expected
+  -/
+  #guard_msgs in
+  #eval solve_multiple_cases [-20, 0, 20]
+
+  /--
+  info: test3_expected
+  -/
+  #guard_msgs in
+  #eval solve_multiple_cases [9, 10]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

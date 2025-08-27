@@ -1,41 +1,89 @@
-"vc-description": "Chef and his best friend Aleksa are into mathematical games these\
-  \ days. Today, they have some ( ≥ 0 ) black cells represented as B, and a white\
-  \ cell represented as W, lying randomly in a straight line.\nThey have decided to\
-  \ play with these cells. In a move, a player chooses some ( > 0 ) black cells lying\
-  \ on any one side of the white cell and remove them. It should be noted that a player\
-  \ is not allowed to choose black cells from both side of the given white cell. Both\
-  \ the players alternate their moves, and play optimally. The player who is unable\
-  \ to move in his respective turn will lose the game.\nAleksa, being a girl, has\
-  \ a habit of playing first. But Chef is fairly smart himself, and will not play\
-  \ the game if he is going to lose it. Therefore, he wants to know the winner beforehand.\
-  \ Can you tell him who is going to win the game for the given configuration of cells?\n\
-  \n-----Input-----\nFirst line of input contains a single integer T denoting the\
-  \ number of test cases. First and the only line of each test case contains a string\
-  \ S consisting of the characters 'B' and 'W', denoting black and white cells, respectively.\n\
-  \n-----Output-----\nFor each test case, output \"Chef\" if chef wins the game for\
-  \ the given configuration. Else print \"Aleksa\". (quotes for clarity only).\n\n\
-  -----Constraints-----\n- 1 ≤ T ≤ 10\n- 1 ≤ |S| ≤ 10000\n- S contains exactly 1 white\
-  \ cell.\n\n-----Scoring-----\n-  Subtask 1:  1 ≤ T ≤ 10, 1 ≤ |S| ≤ 10 : ( 30 pts\
-  \ )\n-  Subtask 2:  1 ≤ T ≤ 10, 1 ≤ |S| ≤ 100 : ( 30 pts )\n-  Subtask 3:  1 ≤ T\
-  \ ≤ 10, 1 ≤ |S| ≤ 10000 : ( 40 pts )\n\n-----Example-----\nInput\n3\nW\nBW\nBWBB\n\
-  \nOutput\nChef\nAleksa\nAleksa\n\n----- Explanation-----\n-  Test 1 : Aleksa cannot\
-  \ make a move in her first turn as there is no black cell in the given configuration.\n\
-  -  Test 2 : Aleksa can remove 1 black cell lying on the left of white cell in her\
-  \ turn. But then, Chef cannot make a move in his turn as there will be no black\
-  \ cells left.\n-  Test 3 : Figure out yourself."
-"vc-preamble": "import Imports.AllImports\n\ndef gameWinner (config : String) : String\
-  \ := sorry\n\ntheorem gameWinner_returns_valid_player (config : String) :\n  (gameWinner\
-  \ config = \"Chef\" ∨ gameWinner config = \"Aleksa\") := \nsorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def countBlacksBeforeWhite (s : String) : Nat := sorry\ndef countBlacksAfterWhite\
-  \ (s : String) : Nat := sorry\n"
-"vc-theorems": "theorem chef_wins_equal_blacks (config : String)\n  (h : countBlacksBeforeWhite\
-  \ config = countBlacksAfterWhite config) :\n  gameWinner config = \"Chef\" := \n\
-  sorry\n\n\ntheorem aleksa_wins_unequal_blacks (config : String)\n  (h : countBlacksBeforeWhite\
-  \ config ≠ countBlacksAfterWhite config) :\n  gameWinner config = \"Aleksa\" :=\n\
-  sorry\n\n\ntheorem chef_wins_single_white (config : String)\n  (h : config = \"\
-  W\") :\n  gameWinner config = \"Chef\" :=\nsorry\n\n/--\ninfo: 'Chef'\n-/\n#guard_msgs\
-  \ in\n#eval game_winner \"W\"\n\n/--\ninfo: 'Aleksa'\n-/\n#guard_msgs in\n#eval\
-  \ game_winner \"BW\"\n\n/--\ninfo: 'Aleksa'\n-/\n#guard_msgs in\n#eval game_winner\
-  \ \"BWBB\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Chef and his best friend Aleksa are into mathematical games these days. Today, they have some ( ≥ 0 ) black cells represented as B, and a white cell represented as W, lying randomly in a straight line.
+  They have decided to play with these cells. In a move, a player chooses some ( > 0 ) black cells lying on any one side of the white cell and remove them. It should be noted that a player is not allowed to choose black cells from both side of the given white cell. Both the players alternate their moves, and play optimally. The player who is unable to move in his respective turn will lose the game.
+  Aleksa, being a girl, has a habit of playing first. But Chef is fairly smart himself, and will not play the game if he is going to lose it. Therefore, he wants to know the winner beforehand. Can you tell him who is going to win the game for the given configuration of cells?
+
+  -----Input-----
+  First line of input contains a single integer T denoting the number of test cases. First and the only line of each test case contains a string S consisting of the characters 'B' and 'W', denoting black and white cells, respectively.
+
+  -----Output-----
+  For each test case, output "Chef" if chef wins the game for the given configuration. Else print "Aleksa". (quotes for clarity only).
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 10
+  - 1 ≤ |S| ≤ 10000
+  - S contains exactly 1 white cell.
+
+  -----Scoring-----
+  -  Subtask 1:  1 ≤ T ≤ 10, 1 ≤ |S| ≤ 10 : ( 30 pts )
+  -  Subtask 2:  1 ≤ T ≤ 10, 1 ≤ |S| ≤ 100 : ( 30 pts )
+  -  Subtask 3:  1 ≤ T ≤ 10, 1 ≤ |S| ≤ 10000 : ( 40 pts )
+
+  -----Example-----
+  Input
+  3
+  W
+  BW
+  BWBB
+
+  Output
+  Chef
+  Aleksa
+  Aleksa
+
+  ----- Explanation-----
+  -  Test 1 : Aleksa cannot make a move in her first turn as there is no black cell in the given configuration.
+  -  Test 2 : Aleksa can remove 1 black cell lying on the left of white cell in her turn. But then, Chef cannot make a move in his turn as there will be no black cells left.
+  -  Test 3 : Figure out yourself.
+vc-preamble: |
+  import Imports.AllImports
+
+  def gameWinner (config : String) : String := sorry
+
+  theorem gameWinner_returns_valid_player (config : String) :
+    (gameWinner config = "Chef" ∨ gameWinner config = "Aleksa") := 
+  sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def countBlacksBeforeWhite (s : String) : Nat := sorry
+  def countBlacksAfterWhite (s : String) : Nat := sorry
+vc-theorems: |
+  theorem chef_wins_equal_blacks (config : String)
+    (h : countBlacksBeforeWhite config = countBlacksAfterWhite config) :
+    gameWinner config = "Chef" := 
+  sorry
+
+
+  theorem aleksa_wins_unequal_blacks (config : String)
+    (h : countBlacksBeforeWhite config ≠ countBlacksAfterWhite config) :
+    gameWinner config = "Aleksa" :=
+  sorry
+
+
+  theorem chef_wins_single_white (config : String)
+    (h : config = "W") :
+    gameWinner config = "Chef" :=
+  sorry
+
+  /--
+  info: 'Chef'
+  -/
+  #guard_msgs in
+  #eval game_winner "W"
+
+  /--
+  info: 'Aleksa'
+  -/
+  #guard_msgs in
+  #eval game_winner "BW"
+
+  /--
+  info: 'Aleksa'
+  -/
+  #guard_msgs in
+  #eval game_winner "BWBB"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

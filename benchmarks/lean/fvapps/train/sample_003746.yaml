@@ -1,16 +1,55 @@
-"vc-description": "Welcome. In this kata, you are asked to square every digit of a\
-  \ number and concatenate them.\n\nFor example, if we run 9119 through the function,\
-  \ 811181 will come out, because 9^(2) is 81 and 1^(2) is 1.\n\n**Note:** The function\
-  \ accepts an integer and returns an integer"
-"vc-preamble": "import Imports.AllImports\n\ndef square_digits (n : Nat) : Nat :=\
-  \ sorry\n\ndef digits_to_nat (digits : List Nat) : Nat := sorry\n\n\ndef nat_to_digits\
-  \ (n : Nat) : List Nat := sorry\n\ndef square_len (n : Nat) : Nat := toString (n\
-  \ * n) |>.length \n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def listSum : List Nat → Nat \n| [] => 0\n| x :: xs => x + listSum\
-  \ xs\n\n\n\n\n\n\n"
-"vc-theorems": "theorem single_digit_square {d : Nat} (h : d ≤ 9) :\n  square_digits\
-  \ d = d * d :=\nsorry\n\n/--\ninfo: 9414\n-/\n#guard_msgs in\n#eval square_digits\
-  \ 3212\n\n/--\ninfo: 4114\n-/\n#guard_msgs in\n#eval square_digits 2112\n\n/--\n\
-  info: 811181\n-/\n#guard_msgs in\n#eval square_digits 9119\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Welcome. In this kata, you are asked to square every digit of a number and concatenate them.
+
+  For example, if we run 9119 through the function, 811181 will come out, because 9^(2) is 81 and 1^(2) is 1.
+
+  **Note:** The function accepts an integer and returns an integer
+vc-preamble: |
+  import Imports.AllImports
+
+  def square_digits (n : Nat) : Nat := sorry
+
+  def digits_to_nat (digits : List Nat) : Nat := sorry
+
+
+  def nat_to_digits (n : Nat) : List Nat := sorry
+
+  def square_len (n : Nat) : Nat := toString (n * n) |>.length 
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def listSum : List Nat → Nat 
+  | [] => 0
+  | x :: xs => x + listSum xs
+
+
+
+
+
+
+vc-theorems: |
+  theorem single_digit_square {d : Nat} (h : d ≤ 9) :
+    square_digits d = d * d :=
+  sorry
+
+  /--
+  info: 9414
+  -/
+  #guard_msgs in
+  #eval square_digits 3212
+
+  /--
+  info: 4114
+  -/
+  #guard_msgs in
+  #eval square_digits 2112
+
+  /--
+  info: 811181
+  -/
+  #guard_msgs in
+  #eval square_digits 9119
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

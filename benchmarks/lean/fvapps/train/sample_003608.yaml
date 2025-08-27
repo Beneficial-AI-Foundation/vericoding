@@ -1,16 +1,48 @@
-"vc-description": "If　`a = 1, b = 2, c = 3 ... z = 26`\n\nThen `l + o + v + e = 54`\n\
-  \nand `f + r + i + e + n + d + s + h + i + p = 108`\n\nSo `friendship` is twice\
-  \ stronger than `love` :-)\n\nThe input will always be in lowercase and never be\
-  \ empty."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def words_to_marks (s : String) : Nat := sorry\n\ntheorem words_to_marks_positive\
-  \ (s : String) (h : s.length > 0) : \n  words_to_marks s > 0 := sorry\n"
-"vc-theorems": "theorem words_to_marks_matches_manual_calc (s : String) :\n  words_to_marks\
-  \ s = s.data.foldl (fun acc c => acc + (c.toNat - 'a'.toNat + 1)) 0 := sorry \n\n\
-  \ntheorem words_to_marks_equals_total_letters (s : String) :\n  words_to_marks s\
-  \ = s.data.foldl (fun acc c => acc + (c.toNat - 'a'.toNat + 1)) 0 := sorry\n\n/--\n\
-  info: 100\n-/\n#guard_msgs in\n#eval words_to_marks \"attitude\"\n\n/--\ninfo: 75\n\
-  -/\n#guard_msgs in\n#eval words_to_marks \"friends\"\n\n/--\ninfo: 66\n-/\n#guard_msgs\
-  \ in\n#eval words_to_marks \"family\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  If　`a = 1, b = 2, c = 3 ... z = 26`
+
+  Then `l + o + v + e = 54`
+
+  and `f + r + i + e + n + d + s + h + i + p = 108`
+
+  So `friendship` is twice stronger than `love` :-)
+
+  The input will always be in lowercase and never be empty.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def words_to_marks (s : String) : Nat := sorry
+
+  theorem words_to_marks_positive (s : String) (h : s.length > 0) : 
+    words_to_marks s > 0 := sorry
+vc-theorems: |
+  theorem words_to_marks_matches_manual_calc (s : String) :
+    words_to_marks s = s.data.foldl (fun acc c => acc + (c.toNat - 'a'.toNat + 1)) 0 := sorry 
+
+
+  theorem words_to_marks_equals_total_letters (s : String) :
+    words_to_marks s = s.data.foldl (fun acc c => acc + (c.toNat - 'a'.toNat + 1)) 0 := sorry
+
+  /--
+  info: 100
+  -/
+  #guard_msgs in
+  #eval words_to_marks "attitude"
+
+  /--
+  info: 75
+  -/
+  #guard_msgs in
+  #eval words_to_marks "friends"
+
+  /--
+  info: 66
+  -/
+  #guard_msgs in
+  #eval words_to_marks "family"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

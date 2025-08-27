@@ -1,36 +1,80 @@
-"vc-description": "In a directed graph, we start at some node and every turn, walk\
-  \ along a directed edge of the graph.  If we reach a node that is terminal (that\
-  \ is, it has no outgoing directed edges), we stop.\nNow, say our starting node is\
-  \ eventually safe if and only if we must eventually walk to a terminal node.  More\
-  \ specifically, there exists a natural number K so that for any choice of where\
-  \ to walk, we must have stopped at a terminal node in less than K steps.\nWhich\
-  \ nodes are eventually safe?  Return them as an array in sorted order.\nThe directed\
-  \ graph has N nodes with labels 0, 1, ..., N-1, where N is the length of graph. \
-  \ The graph is given in the following form: graph[i] is a list of labels j such\
-  \ that (i, j) is a directed edge of the graph.\nExample:\nInput: graph = [[1,2],[2,3],[5],[0],[5],[],[]]\n\
-  Output: [2,4,5,6]\nHere is a diagram of the above graph.\n\n\n\nNote:\n\ngraph will\
-  \ have length at most 10000.\nThe number of edges in the graph will not exceed 32000.\n\
-  Each graph[i] will be a sorted list of different integers, chosen within the range\
-  \ [0, graph.length - 1]."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def eventual_safe_nodes (graph: List (List Nat)) : List Nat :=\
-  \ sorry \n\ntheorem eventual_safe_nodes_increasing {graph : List (List Nat)} : \n\
-  \  ∀ i j, i < j → \n  let result := eventual_safe_nodes graph\n  ∀ hi : i < result.length,\n\
-  \  ∀ hj : j < result.length,\n  result[i]'hi ≤ result[j]'hj := sorry\n"
-"vc-theorems": "theorem eventual_safe_nodes_valid_indices {graph : List (List Nat)}\
-  \ :\n  ∀ x, x ∈ eventual_safe_nodes graph → x < graph.length := sorry\n\n\ntheorem\
-  \ eventual_safe_nodes_no_duplicates {graph : List (List Nat)} :\n  ∀ x y, x ∈ eventual_safe_nodes\
-  \ graph → \n  y ∈ eventual_safe_nodes graph →\n  x = y → x = y := sorry\n\n\ntheorem\
-  \ eventual_safe_nodes_contains_terminals {graph : List (List Nat)} :\n  ∀ i h, graph[i]'h\
-  \ = [] →\n  i ∈ eventual_safe_nodes graph := sorry\n\n\ntheorem eventual_safe_nodes_only_points_to_safe\
-  \ {graph : List (List Nat)} :\n  ∀ node h, node ∈ eventual_safe_nodes graph →\n\
-  \  ∀ neighbor, neighbor ∈ graph[node]'h →\n  neighbor ∈ eventual_safe_nodes graph\
-  \ := sorry\n\n\ntheorem eventual_safe_nodes_singleton_empty : \n  eventual_safe_nodes\
-  \ [List.nil] = [0] := sorry\n\n\ntheorem eventual_safe_nodes_singleton_self_loop\
-  \ :\n  eventual_safe_nodes [[0]] = [] := sorry\n\n/--\ninfo: [2, 4, 5, 6]\n-/\n\
-  #guard_msgs in\n#eval eventual_safe_nodes [[1, 2], [2, 3], [5], [0], [5], [], []]\n\
-  \n/--\ninfo: [0, 1, 2, 3, 4]\n-/\n#guard_msgs in\n#eval eventual_safe_nodes [[],\
-  \ [0, 2, 3, 4], [3], [4], []]\n\n/--\ninfo: [4]\n-/\n#guard_msgs in\n#eval eventual_safe_nodes\
-  \ [[1, 2, 3, 4], [1, 2], [3, 4], [0, 4], []]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  In a directed graph, we start at some node and every turn, walk along a directed edge of the graph.  If we reach a node that is terminal (that is, it has no outgoing directed edges), we stop.
+  Now, say our starting node is eventually safe if and only if we must eventually walk to a terminal node.  More specifically, there exists a natural number K so that for any choice of where to walk, we must have stopped at a terminal node in less than K steps.
+  Which nodes are eventually safe?  Return them as an array in sorted order.
+  The directed graph has N nodes with labels 0, 1, ..., N-1, where N is the length of graph.  The graph is given in the following form: graph[i] is a list of labels j such that (i, j) is a directed edge of the graph.
+  Example:
+  Input: graph = [[1,2],[2,3],[5],[0],[5],[],[]]
+  Output: [2,4,5,6]
+  Here is a diagram of the above graph.
+
+
+
+  Note:
+
+  graph will have length at most 10000.
+  The number of edges in the graph will not exceed 32000.
+  Each graph[i] will be a sorted list of different integers, chosen within the range [0, graph.length - 1].
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def eventual_safe_nodes (graph: List (List Nat)) : List Nat := sorry 
+
+  theorem eventual_safe_nodes_increasing {graph : List (List Nat)} : 
+    ∀ i j, i < j → 
+    let result := eventual_safe_nodes graph
+    ∀ hi : i < result.length,
+    ∀ hj : j < result.length,
+    result[i]'hi ≤ result[j]'hj := sorry
+vc-theorems: |
+  theorem eventual_safe_nodes_valid_indices {graph : List (List Nat)} :
+    ∀ x, x ∈ eventual_safe_nodes graph → x < graph.length := sorry
+
+
+  theorem eventual_safe_nodes_no_duplicates {graph : List (List Nat)} :
+    ∀ x y, x ∈ eventual_safe_nodes graph → 
+    y ∈ eventual_safe_nodes graph →
+    x = y → x = y := sorry
+
+
+  theorem eventual_safe_nodes_contains_terminals {graph : List (List Nat)} :
+    ∀ i h, graph[i]'h = [] →
+    i ∈ eventual_safe_nodes graph := sorry
+
+
+  theorem eventual_safe_nodes_only_points_to_safe {graph : List (List Nat)} :
+    ∀ node h, node ∈ eventual_safe_nodes graph →
+    ∀ neighbor, neighbor ∈ graph[node]'h →
+    neighbor ∈ eventual_safe_nodes graph := sorry
+
+
+  theorem eventual_safe_nodes_singleton_empty : 
+    eventual_safe_nodes [List.nil] = [0] := sorry
+
+
+  theorem eventual_safe_nodes_singleton_self_loop :
+    eventual_safe_nodes [[0]] = [] := sorry
+
+  /--
+  info: [2, 4, 5, 6]
+  -/
+  #guard_msgs in
+  #eval eventual_safe_nodes [[1, 2], [2, 3], [5], [0], [5], [], []]
+
+  /--
+  info: [0, 1, 2, 3, 4]
+  -/
+  #guard_msgs in
+  #eval eventual_safe_nodes [[], [0, 2, 3, 4], [3], [4], []]
+
+  /--
+  info: [4]
+  -/
+  #guard_msgs in
+  #eval eventual_safe_nodes [[1, 2, 3, 4], [1, 2], [3, 4], [0, 4], []]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

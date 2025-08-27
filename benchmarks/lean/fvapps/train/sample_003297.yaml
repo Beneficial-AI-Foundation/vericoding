@@ -1,25 +1,69 @@
-"vc-description": "In this Kata, you will write a function `doubles` that will remove\
-  \ double string characters that are adjacent to each other.\n\nFor example:\n\n\
-  `doubles('abbcccdddda') = 'aca'`, because, from left to right:\n```Haskell\na) There\
-  \ is only one 'a' on the left hand side, so it stays.\nb) The 2 b's disappear because\
-  \ we are removing double characters that are adjacent. \nc) Of the 3 c's, we remove\
-  \ two. We are only removing doubles. \nd) The 4 d's all disappear, because we first\
-  \ remove the first double, and again we remove the second double.\ne) There is only\
-  \ one 'a' at the end, so it stays.\n```\n\nTwo more examples: `doubles('abbbzz')\
-  \ = 'ab'` and `doubles('abba') = \"\"`. In the second example, when we remove the\
-  \ b's in `'abba'`, the double `a` that results is then removed.\n\nThe strings will\
-  \ contain lowercase letters only. More examples in the test cases. \n\nGood luck!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def doubles (s : String) : String := sorry\n\ntheorem doubles_idempotent\
-  \ (s : String) :\n  doubles (doubles s) = doubles s := sorry\n"
-"vc-theorems": "theorem doubles_pairwise (s : String) :\n  let result := doubles s\n\
-  \  ∀ i : Nat, i + 1 < result.length → \n  result.data[i]? ≠ result.data[i + 1]?\
-  \ := sorry\n\n\ntheorem doubles_single_char (s : String) :\n  s.length ≤ 1 →\n \
-  \ doubles s = s := sorry\n\n\ntheorem doubles_pair (s : String) (h : s.length =\
-  \ 2) :\n  (s.data[0]? = s.data[1]? → doubles s = \"\") ∧\n  (s.data[0]? ≠ s.data[1]?\
-  \ → doubles s = s) := sorry\n\n\ntheorem doubles_length_parity (s : String) :\n\
-  \  (s.length - (doubles s).length) % 2 = 0 := sorry\n\n/--\ninfo: 'ab'\n-/\n#guard_msgs\
-  \ in\n#eval doubles \"abbbzz\"\n\n/--\ninfo: 'aca'\n-/\n#guard_msgs in\n#eval doubles\
-  \ \"abbcccdddda\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval doubles \"abba\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In this Kata, you will write a function `doubles` that will remove double string characters that are adjacent to each other.
+
+  For example:
+
+  `doubles('abbcccdddda') = 'aca'`, because, from left to right:
+  ```Haskell
+  a) There is only one 'a' on the left hand side, so it stays.
+  b) The 2 b's disappear because we are removing double characters that are adjacent. 
+  c) Of the 3 c's, we remove two. We are only removing doubles. 
+  d) The 4 d's all disappear, because we first remove the first double, and again we remove the second double.
+  e) There is only one 'a' at the end, so it stays.
+  ```
+
+  Two more examples: `doubles('abbbzz') = 'ab'` and `doubles('abba') = ""`. In the second example, when we remove the b's in `'abba'`, the double `a` that results is then removed.
+
+  The strings will contain lowercase letters only. More examples in the test cases. 
+
+  Good luck!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def doubles (s : String) : String := sorry
+
+  theorem doubles_idempotent (s : String) :
+    doubles (doubles s) = doubles s := sorry
+vc-theorems: |
+  theorem doubles_pairwise (s : String) :
+    let result := doubles s
+    ∀ i : Nat, i + 1 < result.length → 
+    result.data[i]? ≠ result.data[i + 1]? := sorry
+
+
+  theorem doubles_single_char (s : String) :
+    s.length ≤ 1 →
+    doubles s = s := sorry
+
+
+  theorem doubles_pair (s : String) (h : s.length = 2) :
+    (s.data[0]? = s.data[1]? → doubles s = "") ∧
+    (s.data[0]? ≠ s.data[1]? → doubles s = s) := sorry
+
+
+  theorem doubles_length_parity (s : String) :
+    (s.length - (doubles s).length) % 2 = 0 := sorry
+
+  /--
+  info: 'ab'
+  -/
+  #guard_msgs in
+  #eval doubles "abbbzz"
+
+  /--
+  info: 'aca'
+  -/
+  #guard_msgs in
+  #eval doubles "abbcccdddda"
+
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval doubles "abba"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

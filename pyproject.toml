@@ -23,6 +23,7 @@ dependencies = [
     "ruamel-yaml>=0.18.15",
     "openai>=1.104.2",
     "datasets>=4.0.0",
+    "ruamel-yaml>=0.18.15",
 ]
 
 [project.optional-dependencies]

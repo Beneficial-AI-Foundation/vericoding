@@ -1,55 +1,127 @@
-"vc-description": "Imagine a funnel filled with letters. The bottom letter drops out\
-  \ of the funnel and onto a conveyor belt:\n\n```\n  \\b,c/  -->   \\b,c/\n   \\\
-  a/   -->    \\ /\n                 a\n-------     -------\n```\nIf there are two\
-  \ letters above a gap, the smaller letter falls into the gap.\n```\n  \\b,c/   -->\
-  \   \\  c/ \n   \\ /    -->    \\b/   \na            a         \n-------      -------\n\
-  ```\nOf course, this can create a new gap, which must also be filled in the same\
-  \ way:\n```\n  \\f,e,d/  -->  \\f, ,d/\n   \\  c/   -->   \\e,c/ \n    \\b/    \
-  \       \\b/   \n   a            a         \n  -------      -------\n```\nOnce all\
-  \ the gaps above it have been filled, the bottom letter drops out of the funnel\
-  \ and onto the conveyorbelt. The process continues until all letters have fallen\
-  \ onto the conveyor. (New letters fall onto the end of the existing string)\n\n\
-  **KATA GOAL: Return the string on the conveyorbelt after all letters have fallen**.\n\
-  ```\n\\f, ,d/      \\f, ,d/   --> etc -->    \\     /\n \\e,c/        \\e,c/   \
-  \ --> etc -->     \\   /\n  \\b/    -->   \\ /     --> etc -->      \\ /\na    \
-  \       a   b                   abcdef\n-------     -------                 -------\n\
-  ```\nAll letters in the funnel will be unique i.e. in every comparison one letter\
-  \ will be strictly smaller than the other. The funnel will be presented as a nested\
-  \ list, e.g:\n```\n[[\"d\",\"a\",\"c\"],\n   [\"b\",\"e\"],\n     [\"f\"]]\n```\n\
-  The value of a letter is defined by its codepoint. Note: this means all capital\
-  \ letters are defined as smaller than all lower-case letters, but your language's\
-  \ comparison operator will probably treat it that way automatically.\n\nThe funnels\
-  \ will always be \"nice\" -- every layer will have 1 item more than the layer below,\
-  \ and every layer will be full, and generally there's no funny business or surprises\
-  \ to consider. The only characters used are standard uppercase and lowercase letters\
-  \ A-Z and a-z. The tests go up to 9 layer funnel.\n\n### Fully Worked Example\n\
-  ```\n\\d,a,c/      \\d,a,c/      \\d,a,c/ -->  \\d   c/     \n \\b,e/        \\\
-  b,e/  -->   \\  e/  -->   \\a,e/\n  \\f/   -->    \\ /   -->    \\b/          \\\
-  b/  --> \n                f        f            f\n------      -------      -------\
-  \      -------\n\n\n\\d   c/      \\d   c/ -->  \\    c/      \\    c/     \n \\\
-  a,e/  -->   \\  e/  -->   \\d,e/        \\d,e/  -->\n  \\ /   -->    \\a/      \
-  \    \\a/   -->    \\ /   -->\nf  b        fb           fb           fb  a\n------\
-  \      -------      -------      -------\n\n\n \\    c/      \\    c/      \\  \
-  \  c/ -->  \\     /     \n  \\  e/        \\  e/  -->   \\   /  -->   \\  c/   \n\
-  \   \\d/   -->    \\ /   -->    \\e/          \\e/  -->\nfba          fba d    \
-  \   fbad          fbad\n-------      -------     --------      -------\n\n\n  \\\
-  \     /      \\     /      \\     /\n   \\  c/  -->   \\   /        \\   / \n  \
-  \  \\ /          \\c/   -->    \\ /   \nfbad e       fbade        fbadec       \
-  \  \n-------      -------      -------\n\nDONE. Return \"fbadec\".\n\n```\n\n**For\
-  \ a bigger funneling challenge, check out [this kata](https://www.codewars.com/kata/create-a-funnel)\
-  \ by @myjinxin2015.**"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def Funnel := List (List Char)\n\ndef funnel_out (f : Funnel) :\
-  \ List Char := sorry\n"
-"vc-theorems": "theorem funnel_structure_preserved (f : Funnel) :\n  let f' := f\n\
-  \  f = f' := sorry\n\n\ntheorem all_letters_output (f : Funnel) :\n  let input_letters\
-  \ := f.join\n  List.length (funnel_out f) = List.length input_letters := sorry\n\
-  \n\ntheorem funnel_fills_bottom (f : Funnel) :\n  let total_letters := f.join.length\
-  \ \n  (funnel_out f).length = total_letters := sorry\n\n\ntheorem simple_cases :\n\
-  \  funnel_out [['a']] = ['a'] ∧  \n  funnel_out [['a', 'b'], ['c']] = ['c', 'a',\
-  \ 'b'] := sorry\n\n/--\ninfo: 'q'\n-/\n#guard_msgs in\n#eval funnel_out [[\"q\"\
-  ]]\n\n/--\ninfo: 'abc'\n-/\n#guard_msgs in\n#eval funnel_out [[\"b\", \"c\"], [\"\
-  a\"]]\n\n/--\ninfo: 'fbadec'\n-/\n#guard_msgs in\n#eval funnel_out [[\"d\", \"a\"\
-  , \"c\"], [\"b\", \"e\"], [\"f\"]]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Imagine a funnel filled with letters. The bottom letter drops out of the funnel and onto a conveyor belt:
+
+  ```
+    \b,c/  -->   \b,c/
+     \a/   -->    \ /
+                   a
+  -------     -------
+  ```
+  If there are two letters above a gap, the smaller letter falls into the gap.
+  ```
+    \b,c/   -->   \  c/ 
+     \ /    -->    \b/   
+  a            a         
+  -------      -------
+  ```
+  Of course, this can create a new gap, which must also be filled in the same way:
+  ```
+    \f,e,d/  -->  \f, ,d/
+     \  c/   -->   \e,c/ 
+      \b/           \b/   
+     a            a         
+    -------      -------
+  ```
+  Once all the gaps above it have been filled, the bottom letter drops out of the funnel and onto the conveyorbelt. The process continues until all letters have fallen onto the conveyor. (New letters fall onto the end of the existing string)
+
+  **KATA GOAL: Return the string on the conveyorbelt after all letters have fallen**.
+  ```
+  \f, ,d/      \f, ,d/   --> etc -->    \     /
+   \e,c/        \e,c/    --> etc -->     \   /
+    \b/    -->   \ /     --> etc -->      \ /
+  a           a   b                   abcdef
+  -------     -------                 -------
+  ```
+  All letters in the funnel will be unique i.e. in every comparison one letter will be strictly smaller than the other. The funnel will be presented as a nested list, e.g:
+  ```
+  [["d","a","c"],
+     ["b","e"],
+       ["f"]]
+  ```
+  The value of a letter is defined by its codepoint. Note: this means all capital letters are defined as smaller than all lower-case letters, but your language's comparison operator will probably treat it that way automatically.
+
+  The funnels will always be "nice" -- every layer will have 1 item more than the layer below, and every layer will be full, and generally there's no funny business or surprises to consider. The only characters used are standard uppercase and lowercase letters A-Z and a-z. The tests go up to 9 layer funnel.
+
+  ### Fully Worked Example
+  ```
+  \d,a,c/      \d,a,c/      \d,a,c/ -->  \d   c/     
+   \b,e/        \b,e/  -->   \  e/  -->   \a,e/
+    \f/   -->    \ /   -->    \b/          \b/  --> 
+                  f        f            f
+  ------      -------      -------      -------
+
+
+  \d   c/      \d   c/ -->  \    c/      \    c/     
+   \a,e/  -->   \  e/  -->   \d,e/        \d,e/  -->
+    \ /   -->    \a/          \a/   -->    \ /   -->
+  f  b        fb           fb           fb  a
+  ------      -------      -------      -------
+
+
+   \    c/      \    c/      \    c/ -->  \     /     
+    \  e/        \  e/  -->   \   /  -->   \  c/   
+     \d/   -->    \ /   -->    \e/          \e/  -->
+  fba          fba d       fbad          fbad
+  -------      -------     --------      -------
+
+
+    \     /      \     /      \     /
+     \  c/  -->   \   /        \   / 
+      \ /          \c/   -->    \ /   
+  fbad e       fbade        fbadec         
+  -------      -------      -------
+
+  DONE. Return "fbadec".
+
+  ```
+
+  **For a bigger funneling challenge, check out [this kata](https://www.codewars.com/kata/create-a-funnel) by @myjinxin2015.**
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def Funnel := List (List Char)
+
+  def funnel_out (f : Funnel) : List Char := sorry
+vc-theorems: |
+  theorem funnel_structure_preserved (f : Funnel) :
+    let f' := f
+    f = f' := sorry
+
+
+  theorem all_letters_output (f : Funnel) :
+    let input_letters := f.join
+    List.length (funnel_out f) = List.length input_letters := sorry
+
+
+  theorem funnel_fills_bottom (f : Funnel) :
+    let total_letters := f.join.length 
+    (funnel_out f).length = total_letters := sorry
+
+
+  theorem simple_cases :
+    funnel_out [['a']] = ['a'] ∧  
+    funnel_out [['a', 'b'], ['c']] = ['c', 'a', 'b'] := sorry
+
+  /--
+  info: 'q'
+  -/
+  #guard_msgs in
+  #eval funnel_out [["q"]]
+
+  /--
+  info: 'abc'
+  -/
+  #guard_msgs in
+  #eval funnel_out [["b", "c"], ["a"]]
+
+  /--
+  info: 'fbadec'
+  -/
+  #guard_msgs in
+  #eval funnel_out [["d", "a", "c"], ["b", "e"], ["f"]]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,45 +1,97 @@
-"vc-description": "Mandarin chinese\n, Russian and Vietnamese as well.\nChef is organising\
-  \ a contest with $P$ problems (numbered $1$ through $P$). Each problem has $S$ subtasks\
-  \ (numbered $1$ through $S$).\nThe difficulty of a problem can be calculated as\
-  \ follows:\n- Let's denote the score of the $k$-th subtask of this problem by $SC_k$\
-  \ and the number of contestants who solved it by $NS_k$.\n- Consider the subtasks\
-  \ sorted in the order of increasing score.\n- Calculate the number $n$ of valid\
-  \ indices $k$ such that $NS_k > NS_{k + 1}$.\n- For problem $i$, the difficulty\
-  \ is a pair of integers $(n, i)$.\nYou should sort the problems in the increasing\
-  \ order of difficulty levels. Since difficulty level is a pair, problem $a$ is more\
-  \ difficult than problem $b$ if the number $n$ is greater for problem $a$ than for\
-  \ problem $b$, or if $a > b$ and $n$ is the same for problems $a$ and $b$.\n\n-----Input-----\n\
-  - The first line of the input contains two space-separated integers $P$ and $S$\
-  \ denoting the number of problems and the number of subtasks in each problem.\n\
-  - $2P$ lines follow. For each valid $i$, the $2i-1$-th of these lines contains $S$\
-  \ space-separated integers $SC_1, SC_2, \\dots, SC_S$ denoting the scores of the\
-  \ $i$-th problem's subtasks, and the $2i$-th of these lines contains $S$ space-separated\
-  \ integers $NS_1, NS_2, \\dots, NS_S$ denoting the number of contestants who solved\
-  \ the $i$-th problem's subtasks.\n\n-----Output-----\nPrint $P$ lines containing\
-  \ one integer each — the indices of the problems in the increasing order of difficulty.\n\
-  \n-----Constraints-----\n- $1 \\le P \\le 100,000$\n- $2 \\le S \\le 30$\n- $1 \\\
-  le SC_i \\le 100$ for each valid $i$\n- $1 \\le NS_i \\le 1,000$ for each valid\
-  \ $i$\n- in each problem, the scores of all subtasks are unique\n\n-----Subtasks-----\n\
-  Subtask #1 (25 points): $S = 2$\nSubtask #2 (75 points): original constraints\n\n\
-  -----Example Input-----\n3 3\n16 24 60\n498 861 589\n14 24 62\n72 557 819\n16 15\
-  \ 69\n435 779 232\n\n-----Example Output-----\n2\n1\n3"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sort_problems_by_difficulty (P S : Nat) (problem_data : List\
-  \ (List Nat)) : List Nat :=\n  sorry\n\n-- Main Properties\n\n\n"
-"vc-theorems": "theorem sort_problems_maintains_difficulty_order\n  (P S : Nat) (problem_data\
-  \ : List (List Nat))\n  (h1 : P > 0) (h2 : S > 0)\n  (h3 : problem_data.length =\
-  \ 2 * P) :\n  let result := sort_problems_by_difficulty P S problem_data\n  let\
-  \ difficulty_score (p : Nat) := \n    let scores := problem_data[2*p-2]!\n    let\
-  \ solvers := problem_data[2*p-1]!\n    (List.filter (fun p => p.1 > p.2) (List.zip\
-  \ solvers (List.drop 1 solvers))).length\n  ∀ i j, i < j → j < result.length →\n\
-  \    difficulty_score (result[i]!) ≤ difficulty_score (result[j]!)\n  := sorry\n\
-  \n\n\n-- Edge Cases\n\n\ntheorem sort_problems_single_problem\n  (S : Nat) (scores\
-  \ solvers : List Nat) (h : S > 0) :\n  sort_problems_by_difficulty 1 S [scores,\
-  \ solvers] = [1]\n  := sorry\n\n\ntheorem sort_problems_minimal_case :\n  sort_problems_by_difficulty\
-  \ 1 1 [[1], [1]] = [1]\n  := sorry\n\n/--\ninfo: [2, 1, 3]\n-/\n#guard_msgs in\n\
-  #eval sort_problems_by_difficulty 3 3 [[16, 24, 60], [498, 861, 589], [14, 24, 62],\
-  \ [72, 557, 819], [16, 15, 69], [435, 779, 232]]\n\n/--\ninfo: [1, 2]\n-/\n#guard_msgs\
-  \ in\n#eval sort_problems_by_difficulty 2 2 [[10, 20], [100, 50], [15, 25], [200,\
-  \ 150]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Mandarin chinese
+  , Russian and Vietnamese as well.
+  Chef is organising a contest with $P$ problems (numbered $1$ through $P$). Each problem has $S$ subtasks (numbered $1$ through $S$).
+  The difficulty of a problem can be calculated as follows:
+  - Let's denote the score of the $k$-th subtask of this problem by $SC_k$ and the number of contestants who solved it by $NS_k$.
+  - Consider the subtasks sorted in the order of increasing score.
+  - Calculate the number $n$ of valid indices $k$ such that $NS_k > NS_{k + 1}$.
+  - For problem $i$, the difficulty is a pair of integers $(n, i)$.
+  You should sort the problems in the increasing order of difficulty levels. Since difficulty level is a pair, problem $a$ is more difficult than problem $b$ if the number $n$ is greater for problem $a$ than for problem $b$, or if $a > b$ and $n$ is the same for problems $a$ and $b$.
+
+  -----Input-----
+  - The first line of the input contains two space-separated integers $P$ and $S$ denoting the number of problems and the number of subtasks in each problem.
+  - $2P$ lines follow. For each valid $i$, the $2i-1$-th of these lines contains $S$ space-separated integers $SC_1, SC_2, \dots, SC_S$ denoting the scores of the $i$-th problem's subtasks, and the $2i$-th of these lines contains $S$ space-separated integers $NS_1, NS_2, \dots, NS_S$ denoting the number of contestants who solved the $i$-th problem's subtasks.
+
+  -----Output-----
+  Print $P$ lines containing one integer each — the indices of the problems in the increasing order of difficulty.
+
+  -----Constraints-----
+  - $1 \le P \le 100,000$
+  - $2 \le S \le 30$
+  - $1 \le SC_i \le 100$ for each valid $i$
+  - $1 \le NS_i \le 1,000$ for each valid $i$
+  - in each problem, the scores of all subtasks are unique
+
+  -----Subtasks-----
+  Subtask #1 (25 points): $S = 2$
+  Subtask #2 (75 points): original constraints
+
+  -----Example Input-----
+  3 3
+  16 24 60
+  498 861 589
+  14 24 62
+  72 557 819
+  16 15 69
+  435 779 232
+
+  -----Example Output-----
+  2
+  1
+  3
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def sort_problems_by_difficulty (P S : Nat) (problem_data : List (List Nat)) : List Nat :=
+    sorry
+
+  -- Main Properties
+
+
+vc-theorems: |
+  theorem sort_problems_maintains_difficulty_order
+    (P S : Nat) (problem_data : List (List Nat))
+    (h1 : P > 0) (h2 : S > 0)
+    (h3 : problem_data.length = 2 * P) :
+    let result := sort_problems_by_difficulty P S problem_data
+    let difficulty_score (p : Nat) := 
+      let scores := problem_data[2*p-2]!
+      let solvers := problem_data[2*p-1]!
+      (List.filter (fun p => p.1 > p.2) (List.zip solvers (List.drop 1 solvers))).length
+    ∀ i j, i < j → j < result.length →
+      difficulty_score (result[i]!) ≤ difficulty_score (result[j]!)
+    := sorry
+
+
+
+  -- Edge Cases
+
+
+  theorem sort_problems_single_problem
+    (S : Nat) (scores solvers : List Nat) (h : S > 0) :
+    sort_problems_by_difficulty 1 S [scores, solvers] = [1]
+    := sorry
+
+
+  theorem sort_problems_minimal_case :
+    sort_problems_by_difficulty 1 1 [[1], [1]] = [1]
+    := sorry
+
+  /--
+  info: [2, 1, 3]
+  -/
+  #guard_msgs in
+  #eval sort_problems_by_difficulty 3 3 [[16, 24, 60], [498, 861, 589], [14, 24, 62], [72, 557, 819], [16, 15, 69], [435, 779, 232]]
+
+  /--
+  info: [1, 2]
+  -/
+  #guard_msgs in
+  #eval sort_problems_by_difficulty 2 2 [[10, 20], [100, 50], [15, 25], [200, 150]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

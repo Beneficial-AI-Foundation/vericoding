@@ -1,26 +1,85 @@
-"vc-description": "A palindrome is a word, phrase, number, or other sequence of characters\
-  \ which reads the same backward as forward. Examples of numerical palindromes are:\
-  \ \n\n2332\n110011\n54322345\n\nFor a given number ```num```, write a function which\
-  \ returns the number of numerical palindromes within each number. For this kata,\
-  \ single digit numbers will NOT be considered numerical palindromes. \n\nReturn\
-  \ \"Not valid\" if the input is not an integer or is less than 0.\n\n```\npalindrome(5)\
-  \ => 0\npalindrome(1221) => 2 \npalindrome(141221001) => 5  \npalindrome(1294) =>\
-  \ 0\npalindrome(\"1221\") => \"Not valid\"\n\n```\n\n```Haskell\nIn Haskell, return\
-  \ a Maybe Int with Nothing for negative numbers.\n```\n\nOther Kata in this Series:\n\
-  Numerical Palindrome #1\nNumerical Palindrome #1.5\nNumerical Palindrome #2\nNumerical\
-  \ Palindrome #3\nNumerical Palindrome #3.5\nNumerical Palindrome #4\nNumerical Palindrome\
-  \ #5"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def palindrome (n : Int) : Int :=\n  sorry\n"
-"vc-theorems": "theorem palindrome_outputs_int {x : Int} (h : x ≥ 0) :\n  ∃ y : Int,\
-  \ palindrome x = y :=\n  sorry\n\n\ntheorem palindrome_negative_rejects (x : Int)\
-  \ (h : x < 0) :\n  palindrome x = -1 := -- assuming -1 represents 'Not valid'\n\
-  \  sorry\n\n\ntheorem palindrome_single_digit {x : Int} (h1 : x ≥ 0) (h2 : x ≤ 9)\
-  \ :\n  palindrome x = 0 :=\n  sorry\n\n\ntheorem palindrome_output_non_negative\
-  \ {x : Int} (h : x ≥ 0) :\n  palindrome x ≥ 0 :=\n  sorry\n\n\ntheorem palindrome_detects_basic\
-  \ {x : Int} (h : x = 1221) :\n  palindrome x > 0 :=\n  sorry\n\n/--\ninfo: 0\n-/\n\
-  #guard_msgs in\n#eval palindrome 2\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval palindrome\
-  \ 141221001\n\n/--\ninfo: 'Not valid'\n-/\n#guard_msgs in\n#eval palindrome \"1551\"\
-  \n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward as forward. Examples of numerical palindromes are: 
+
+  2332
+  110011
+  54322345
+
+  For a given number ```num```, write a function which returns the number of numerical palindromes within each number. For this kata, single digit numbers will NOT be considered numerical palindromes. 
+
+  Return "Not valid" if the input is not an integer or is less than 0.
+
+  ```
+  palindrome(5) => 0
+  palindrome(1221) => 2 
+  palindrome(141221001) => 5  
+  palindrome(1294) => 0
+  palindrome("1221") => "Not valid"
+
+  ```
+
+  ```Haskell
+  In Haskell, return a Maybe Int with Nothing for negative numbers.
+  ```
+
+  Other Kata in this Series:
+  Numerical Palindrome #1
+  Numerical Palindrome #1.5
+  Numerical Palindrome #2
+  Numerical Palindrome #3
+  Numerical Palindrome #3.5
+  Numerical Palindrome #4
+  Numerical Palindrome #5
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def palindrome (n : Int) : Int :=
+    sorry
+vc-theorems: |
+  theorem palindrome_outputs_int {x : Int} (h : x ≥ 0) :
+    ∃ y : Int, palindrome x = y :=
+    sorry
+
+
+  theorem palindrome_negative_rejects (x : Int) (h : x < 0) :
+    palindrome x = -1 := -- assuming -1 represents 'Not valid'
+    sorry
+
+
+  theorem palindrome_single_digit {x : Int} (h1 : x ≥ 0) (h2 : x ≤ 9) :
+    palindrome x = 0 :=
+    sorry
+
+
+  theorem palindrome_output_non_negative {x : Int} (h : x ≥ 0) :
+    palindrome x ≥ 0 :=
+    sorry
+
+
+  theorem palindrome_detects_basic {x : Int} (h : x = 1221) :
+    palindrome x > 0 :=
+    sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval palindrome 2
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval palindrome 141221001
+
+  /--
+  info: 'Not valid'
+  -/
+  #guard_msgs in
+  #eval palindrome "1551"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

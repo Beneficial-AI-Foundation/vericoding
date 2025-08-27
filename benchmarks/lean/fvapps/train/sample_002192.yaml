@@ -1,36 +1,86 @@
-"vc-description": "There is an integer sequence of length 2^N: A_0, A_1, ..., A_{2^N-1}.\
-  \ (Note that the sequence is 0-indexed.)\nFor every integer K satisfying 1 \\leq\
-  \ K \\leq 2^N-1, solve the following problem:\n - Let i and j be integers. Find\
-  \ the maximum value of A_i + A_j where 0 \\leq i < j \\leq 2^N-1 and (i or j) \\\
-  leq K.\nHere, or denotes the bitwise OR.\n\n-----Constraints-----\n - 1 \\leq N\
-  \ \\leq 18\n - 1 \\leq A_i \\leq 10^9\n - All values in input are integers.\n\n\
-  -----Input-----\nInput is given from Standard Input in the following format:\nN\n\
-  A_0 A_1 ... A_{2^N-1}\n\n-----Output-----\nPrint 2^N-1 lines.\nIn the i-th line,\
-  \ print the answer of the problem above for K=i.\n\n-----Sample Input-----\n2\n\
-  1 2 3 1\n\n-----Sample Output-----\n3\n4\n5\n\nFor K=1, the only possible pair of\
-  \ i and j is (i,j)=(0,1), so the answer is A_0+A_1=1+2=3.\nFor K=2, the possible\
-  \ pairs of i and j are (i,j)=(0,1),(0,2).\nWhen (i,j)=(0,2), A_i+A_j=1+3=4. This\
-  \ is the maximum value, so the answer is 4.\nFor K=3, the possible pairs of i and\
-  \ j are (i,j)=(0,1),(0,2),(0,3),(1,2),(1,3),(2,3) .\nWhen (i,j)=(1,2), A_i+A_j=2+3=5.\
-  \ This is the maximum value, so the answer is 5."
-"vc-preamble": "import Imports.AllImports\n\ndef pow2 (n : Nat) : Nat :=\n  1 <<<\
-  \ n\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solveSequencePairs (N : Nat) (A : List Nat) : List Nat :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem result_length (N : Nat) (h : 0 < N) (h2 : N ≤ 4) :\n  let\
-  \ A := List.range (pow2 N)\n  let result := solveSequencePairs N A\n  result.length\
-  \ = pow2 N - 1 :=\nsorry\n\n\ntheorem result_monotonic (N : Nat) (A : List Nat)\
-  \ (h : 0 < N) (h2 : N ≤ 4) :\n  A.length = pow2 N →\n  let result := solveSequencePairs\
-  \ N A\n  ∀ i, i + 1 < result.length → \n    (result.get? i).isSome → (result.get?\
-  \ (i+1)).isSome →\n    (result.get! i) ≤ (result.get! (i+1)) :=\nsorry\n\n\ntheorem\
-  \ result_bounded_by_max_sum (N : Nat) (A : List Nat) (h : 0 < N) (h2 : N ≤ 4) :\n\
-  \  A.length = pow2 N →\n  let result := solveSequencePairs N A\n  let max_elem :=\
-  \ List.foldl Nat.max 0 A\n  let second_max := List.foldl (fun acc x => if x < max_elem\
-  \ then Nat.max acc x else acc) 0 A\n  ∀ x ∈ result, x ≤ max_elem + second_max :=\n\
-  sorry\n\n\ntheorem identical_inputs (N : Nat) (h : 0 < N) (h2 : N ≤ 4) :\n  let\
-  \ A := List.replicate (pow2 N) 1\n  let result := solveSequencePairs N A\n  ∀ x\
-  \ ∈ result, x = 2 :=\nsorry\n\n\ntheorem single_nonzero (N : Nat) (h : 0 < N) (h2\
-  \ : N ≤ 4) :\n  let A := 1 :: List.replicate (pow2 N - 1) 0\n  let result := solveSequencePairs\
-  \ N A\n  (result.get? 0).isSome → 1 ≤ result.get! 0 :=\nsorry"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"
+vc-description: |-
+  There is an integer sequence of length 2^N: A_0, A_1, ..., A_{2^N-1}. (Note that the sequence is 0-indexed.)
+  For every integer K satisfying 1 \leq K \leq 2^N-1, solve the following problem:
+   - Let i and j be integers. Find the maximum value of A_i + A_j where 0 \leq i < j \leq 2^N-1 and (i or j) \leq K.
+  Here, or denotes the bitwise OR.
+
+  -----Constraints-----
+   - 1 \leq N \leq 18
+   - 1 \leq A_i \leq 10^9
+   - All values in input are integers.
+
+  -----Input-----
+  Input is given from Standard Input in the following format:
+  N
+  A_0 A_1 ... A_{2^N-1}
+
+  -----Output-----
+  Print 2^N-1 lines.
+  In the i-th line, print the answer of the problem above for K=i.
+
+  -----Sample Input-----
+  2
+  1 2 3 1
+
+  -----Sample Output-----
+  3
+  4
+  5
+
+  For K=1, the only possible pair of i and j is (i,j)=(0,1), so the answer is A_0+A_1=1+2=3.
+  For K=2, the possible pairs of i and j are (i,j)=(0,1),(0,2).
+  When (i,j)=(0,2), A_i+A_j=1+3=4. This is the maximum value, so the answer is 4.
+  For K=3, the possible pairs of i and j are (i,j)=(0,1),(0,2),(0,3),(1,2),(1,3),(2,3) .
+  When (i,j)=(1,2), A_i+A_j=2+3=5. This is the maximum value, so the answer is 5.
+vc-preamble: |
+  import Imports.AllImports
+
+  def pow2 (n : Nat) : Nat :=
+    1 <<< n
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solveSequencePairs (N : Nat) (A : List Nat) : List Nat :=
+    sorry
+vc-theorems: |-
+  theorem result_length (N : Nat) (h : 0 < N) (h2 : N ≤ 4) :
+    let A := List.range (pow2 N)
+    let result := solveSequencePairs N A
+    result.length = pow2 N - 1 :=
+  sorry
+
+
+  theorem result_monotonic (N : Nat) (A : List Nat) (h : 0 < N) (h2 : N ≤ 4) :
+    A.length = pow2 N →
+    let result := solveSequencePairs N A
+    ∀ i, i + 1 < result.length → 
+      (result.get? i).isSome → (result.get? (i+1)).isSome →
+      (result.get! i) ≤ (result.get! (i+1)) :=
+  sorry
+
+
+  theorem result_bounded_by_max_sum (N : Nat) (A : List Nat) (h : 0 < N) (h2 : N ≤ 4) :
+    A.length = pow2 N →
+    let result := solveSequencePairs N A
+    let max_elem := List.foldl Nat.max 0 A
+    let second_max := List.foldl (fun acc x => if x < max_elem then Nat.max acc x else acc) 0 A
+    ∀ x ∈ result, x ≤ max_elem + second_max :=
+  sorry
+
+
+  theorem identical_inputs (N : Nat) (h : 0 < N) (h2 : N ≤ 4) :
+    let A := List.replicate (pow2 N) 1
+    let result := solveSequencePairs N A
+    ∀ x ∈ result, x = 2 :=
+  sorry
+
+
+  theorem single_nonzero (N : Nat) (h : 0 < N) (h2 : N ≤ 4) :
+    let A := 1 :: List.replicate (pow2 N - 1) 0
+    let result := solveSequencePairs N A
+    (result.get? 0).isSome → 1 ≤ result.get! 0 :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded

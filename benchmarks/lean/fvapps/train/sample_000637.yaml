@@ -1,21 +1,62 @@
-"vc-description": "Write a program to obtain a number $N$ and increment its value\
-  \ by 1 if the number is divisible by 4 $otherwise$ decrement its value by 1.\n\n\
-  -----Input:-----\n- First line will contain a number $N$.\n\n-----Output:-----\n\
-  Output a single line, the new value of the number.\n\n-----Constraints-----\n- $0\
-  \ \\leq N \\leq 1000$\n\n-----Sample Input:-----\n5\n\n-----Sample Output:-----\n\
-  4\n\n-----EXPLANATION:-----\nSince 5 is not divisible by 4 hence, its value is decreased\
-  \ by 1."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def increment_or_decrement (n : Int) : Int := sorry\n\ntheorem\
-  \ increment_or_decrement_divisible_by_4 (n : Int) : \n  n % 4 = 0 → increment_or_decrement\
-  \ n = n + 1 := sorry\n"
-"vc-theorems": "theorem increment_or_decrement_not_divisible_by_4 (n : Int) :\n  n\
-  \ % 4 ≠ 0 → increment_or_decrement n = n - 1 := sorry\n\n\ntheorem increment_or_decrement_distance\
-  \ (n : Int) :\n  (increment_or_decrement n - n = 1) ∨ (increment_or_decrement n\
-  \ - n = -1) := sorry \n\n\ntheorem increment_or_decrement_not_idempotent (n : Int)\
-  \ :\n  increment_or_decrement (increment_or_decrement n) ≠ increment_or_decrement\
-  \ n := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval increment_or_decrement 5\n\
-  \n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval increment_or_decrement 8\n\n/--\ninfo:\
-  \ 2\n-/\n#guard_msgs in\n#eval increment_or_decrement 3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Write a program to obtain a number $N$ and increment its value by 1 if the number is divisible by 4 $otherwise$ decrement its value by 1.
+
+  -----Input:-----
+  - First line will contain a number $N$.
+
+  -----Output:-----
+  Output a single line, the new value of the number.
+
+  -----Constraints-----
+  - $0 \leq N \leq 1000$
+
+  -----Sample Input:-----
+  5
+
+  -----Sample Output:-----
+  4
+
+  -----EXPLANATION:-----
+  Since 5 is not divisible by 4 hence, its value is decreased by 1.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def increment_or_decrement (n : Int) : Int := sorry
+
+  theorem increment_or_decrement_divisible_by_4 (n : Int) : 
+    n % 4 = 0 → increment_or_decrement n = n + 1 := sorry
+vc-theorems: |
+  theorem increment_or_decrement_not_divisible_by_4 (n : Int) :
+    n % 4 ≠ 0 → increment_or_decrement n = n - 1 := sorry
+
+
+  theorem increment_or_decrement_distance (n : Int) :
+    (increment_or_decrement n - n = 1) ∨ (increment_or_decrement n - n = -1) := sorry 
+
+
+  theorem increment_or_decrement_not_idempotent (n : Int) :
+    increment_or_decrement (increment_or_decrement n) ≠ increment_or_decrement n := sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval increment_or_decrement 5
+
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval increment_or_decrement 8
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval increment_or_decrement 3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

@@ -1,33 +1,87 @@
-"vc-description": "Define a method that accepts 2 strings as parameters. The method\
-  \ returns the first string sorted by the second.\n\n```python\nsort_string(\"foos\"\
-  , \"of\")       == \"oofs\"\nsort_string(\"string\", \"gnirts\") == \"gnirts\"\n\
-  sort_string(\"banana\", \"abn\")    == \"aaabnn\"\n```\n\nTo elaborate, the second\
-  \ string defines the ordering. It is possible that in the second string characters\
-  \ repeat, so you should remove repeating characters, leaving only the first occurrence.\n\
-  \nAny character in the first string that does not appear in the second string should\
-  \ be sorted to the end of the result in original order."
-"vc-preamble": "import Imports.AllImports\n\ndef sort_string (s : String) (ordering\
-  \ : String) : String :=\n  sorry\n\n/-- Helper function to count occurrences of\
-  \ a character in a string -/\n\ndef String.countChar (s : String) (c : Char) : Nat\
-  \ :=\n  s.data.filter (· = c) |>.length\n\n/-- Helper function to find first index\
-  \ of character in string -/"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def String.findFirstIndex (s : String) (c : Char) : Nat :=\n  s.data.indexOf?\
-  \ c |>.getD s.length\n"
-"vc-theorems": "theorem sort_string_length_preservation (s ordering : String) :\n\
-  \  (sort_string s ordering).length = s.length :=\nsorry\n\n\ntheorem sort_string_char_preservation\
-  \ (s ordering : String) (c : Char) :\n  c ∈ (sort_string s ordering).data → c ∈\
-  \ s.data :=\nsorry\n\n\ntheorem sort_string_frequency_preservation (s ordering :\
-  \ String) (c : Char) :\n  (sort_string s ordering).countChar c = s.countChar c :=\n\
-  sorry\n\n\ntheorem sort_string_ordering_property (s ordering : String) (i j : Char)\
-  \ :\n  i ∈ s.data → j ∈ s.data → i ∈ ordering.data → j ∈ ordering.data → \n  ordering.findFirstIndex\
-  \ i < ordering.findFirstIndex j →\n  (sort_string s ordering).findFirstIndex i <\
-  \ (sort_string s ordering).findFirstIndex j :=\nsorry\n\n\ntheorem sort_string_empty_string\
-  \ (ordering : String) :\n  sort_string \"\" ordering = \"\" :=\nsorry\n\n\ntheorem\
-  \ sort_string_empty_ordering (s : String) :\n  sort_string s \"\" = s :=\nsorry\n\
-  \n\ntheorem sort_string_idempotent (s ordering : String) :\n  sort_string (sort_string\
-  \ s ordering) ordering = sort_string s ordering :=\nsorry\n\n/--\ninfo: 'oofs'\n\
-  -/\n#guard_msgs in\n#eval sort_string \"foos\" \"of\"\n\n/--\ninfo: 'gnirts'\n-/\n\
-  #guard_msgs in\n#eval sort_string \"string\" \"gnirts\"\n\n/--\ninfo: 'aaabnn'\n\
-  -/\n#guard_msgs in\n#eval sort_string \"banana\" \"abn\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Define a method that accepts 2 strings as parameters. The method returns the first string sorted by the second.
+
+  ```python
+  sort_string("foos", "of")       == "oofs"
+  sort_string("string", "gnirts") == "gnirts"
+  sort_string("banana", "abn")    == "aaabnn"
+  ```
+
+  To elaborate, the second string defines the ordering. It is possible that in the second string characters repeat, so you should remove repeating characters, leaving only the first occurrence.
+
+  Any character in the first string that does not appear in the second string should be sorted to the end of the result in original order.
+vc-preamble: |-
+  import Imports.AllImports
+
+  def sort_string (s : String) (ordering : String) : String :=
+    sorry
+
+  /-- Helper function to count occurrences of a character in a string -/
+
+  def String.countChar (s : String) (c : Char) : Nat :=
+    s.data.filter (· = c) |>.length
+
+  /-- Helper function to find first index of character in string -/
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def String.findFirstIndex (s : String) (c : Char) : Nat :=
+    s.data.indexOf? c |>.getD s.length
+vc-theorems: |
+  theorem sort_string_length_preservation (s ordering : String) :
+    (sort_string s ordering).length = s.length :=
+  sorry
+
+
+  theorem sort_string_char_preservation (s ordering : String) (c : Char) :
+    c ∈ (sort_string s ordering).data → c ∈ s.data :=
+  sorry
+
+
+  theorem sort_string_frequency_preservation (s ordering : String) (c : Char) :
+    (sort_string s ordering).countChar c = s.countChar c :=
+  sorry
+
+
+  theorem sort_string_ordering_property (s ordering : String) (i j : Char) :
+    i ∈ s.data → j ∈ s.data → i ∈ ordering.data → j ∈ ordering.data → 
+    ordering.findFirstIndex i < ordering.findFirstIndex j →
+    (sort_string s ordering).findFirstIndex i < (sort_string s ordering).findFirstIndex j :=
+  sorry
+
+
+  theorem sort_string_empty_string (ordering : String) :
+    sort_string "" ordering = "" :=
+  sorry
+
+
+  theorem sort_string_empty_ordering (s : String) :
+    sort_string s "" = s :=
+  sorry
+
+
+  theorem sort_string_idempotent (s ordering : String) :
+    sort_string (sort_string s ordering) ordering = sort_string s ordering :=
+  sorry
+
+  /--
+  info: 'oofs'
+  -/
+  #guard_msgs in
+  #eval sort_string "foos" "of"
+
+  /--
+  info: 'gnirts'
+  -/
+  #guard_msgs in
+  #eval sort_string "string" "gnirts"
+
+  /--
+  info: 'aaabnn'
+  -/
+  #guard_msgs in
+  #eval sort_string "banana" "abn"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

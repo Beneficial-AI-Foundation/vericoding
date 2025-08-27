@@ -1,25 +1,80 @@
-"vc-description": "Task\n=======\n\nMake a custom esolang interpreter for the language\
-  \ Tick. Tick is a descendant of [Ticker](https://www.codewars.com/kata/esolang-ticker)\
-  \ but also very different data and command-wise.\n\nSyntax/Info\n========\n\nCommands\
-  \ are given in character format. Non-command characters should be ignored. Tick\
-  \ has an potentially infinite memory as opposed to Ticker(which you have a special\
-  \ command to add a new cell) and only has 4 commands(as opposed to 7). Read about\
-  \ this esolang [here](https://esolangs.org/wiki/Tick).\n\nCommands\n========\n\n\
-  `>`: Move data selector right\n\n`<`: Move data selector left(infinite in both directions)\n\
-  \n`+`: Increment memory cell by 1. 255+1=0\n\n`*`: Add ascii value of memory cell\
-  \ to the output tape.\n\nExamples\n========\n\n**Hello world!**\n\n```\n'++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++**>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>++++++++++++++++++++++++++++++++*>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*<<*>>>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*<<<<*>>>>>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>+++++++++++++++++++++++++++++++++*'\n\
-  ```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def interpreter (s : String) : String := sorry\n\ntheorem interpreter_empty\
-  \ :\n  interpreter \"\" = \"\" := sorry\n"
-"vc-theorems": "theorem interpreter_increment_print :\n  interpreter \"+*\" = \"\\\
-  x01\" := sorry\n\n\ntheorem interpreter_double_increment_print :\n  interpreter\
-  \ \"++*\" = \"\\x02\" := sorry\n\n\ntheorem interpreter_move_right_double_increment_print\
-  \ :\n  interpreter \"+>++*\" = \"\\x02\" := sorry\n\n\ntheorem interpreter_increment_print_move_increment_print\
-  \ :\n  interpreter \"+*>+*\" = \"\\x01\\x01\" := sorry\n\n\ntheorem interpreter_right_triple_increment_left_increment_print\
-  \ :\n  interpreter \">+++<+*\" = \"\\x01\" := sorry\n\n/--\ninfo: 'Hello world!'\n\
-  -/\n#guard_msgs in\n#eval interpreter \"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++**>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>++++++++++++++++++++++++++++++++*>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*<<*>>>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*<<<<*>>>>>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>+++++++++++++++++++++++++++++++++*\"\
-  \n\n/--\ninfo: '\\x01'\n-/\n#guard_msgs in\n#eval interpreter \"+*\"\n\n/--\ninfo:\
-  \ ''\n-/\n#guard_msgs in\n#eval interpreter \"\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Task
+  =======
+
+  Make a custom esolang interpreter for the language Tick. Tick is a descendant of [Ticker](https://www.codewars.com/kata/esolang-ticker) but also very different data and command-wise.
+
+  Syntax/Info
+  ========
+
+  Commands are given in character format. Non-command characters should be ignored. Tick has an potentially infinite memory as opposed to Ticker(which you have a special command to add a new cell) and only has 4 commands(as opposed to 7). Read about this esolang [here](https://esolangs.org/wiki/Tick).
+
+  Commands
+  ========
+
+  `>`: Move data selector right
+
+  `<`: Move data selector left(infinite in both directions)
+
+  `+`: Increment memory cell by 1. 255+1=0
+
+  `*`: Add ascii value of memory cell to the output tape.
+
+  Examples
+  ========
+
+  **Hello world!**
+
+  ```
+  '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++**>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>++++++++++++++++++++++++++++++++*>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*<<*>>>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*<<<<*>>>>>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>+++++++++++++++++++++++++++++++++*'
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def interpreter (s : String) : String := sorry
+
+  theorem interpreter_empty :
+    interpreter "" = "" := sorry
+vc-theorems: |
+  theorem interpreter_increment_print :
+    interpreter "+*" = "\x01" := sorry
+
+
+  theorem interpreter_double_increment_print :
+    interpreter "++*" = "\x02" := sorry
+
+
+  theorem interpreter_move_right_double_increment_print :
+    interpreter "+>++*" = "\x02" := sorry
+
+
+  theorem interpreter_increment_print_move_increment_print :
+    interpreter "+*>+*" = "\x01\x01" := sorry
+
+
+  theorem interpreter_right_triple_increment_left_increment_print :
+    interpreter ">+++<+*" = "\x01" := sorry
+
+  /--
+  info: 'Hello world!'
+  -/
+  #guard_msgs in
+  #eval interpreter "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++**>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>++++++++++++++++++++++++++++++++*>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*<<*>>>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*<<<<*>>>>>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*>+++++++++++++++++++++++++++++++++*"
+
+  /--
+  info: '\x01'
+  -/
+  #guard_msgs in
+  #eval interpreter "+*"
+
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval interpreter ""
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,23 +1,88 @@
-"vc-description": "Find the closest prime number under a certain integer ```n``` that\
-  \ has the maximum possible amount of even digits.\n\nFor ```n = 1000```, the highest\
-  \ prime under ```1000``` is ```887```, having two even digits (8 twice)\n\nNaming\
-  \ ```f()```, the function that gives that prime, the above case and others will\
-  \ be like the following below.\n```\nf(1000) ---> 887 (even digits: 8, 8)\n\nf(1210)\
-  \ ---> 1201 (even digits: 2, 0)\n\nf(10000) ---> 8887\n\nf(500) ---> 487\n\nf(487)\
-  \ ---> 467\n``` \nFeatures of the random tests:\n```\nNumber of tests = 28\n1000\
-  \ <= n <= 5000000\n```\n\nEnjoy it!!"
-"vc-preamble": "import Imports.AllImports\n\ndef f (n : Int) : Int :=\n  sorry\n\n\
-  \ndef is_prime (n : Int) : Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_even_digits (n : Int) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem f_result_is_prime (n : Int) (h : n ≥ 2) :\n  is_prime (f n)\
-  \ = true ∨ f n = 0 :=\n  sorry\n\n\ntheorem f_result_less_than_input (n : Int) (h\
-  \ : n ≥ 2) :\n  f n ≤ n :=\n  sorry\n\n\ntheorem f_result_has_max_even_digits (n\
-  \ : Int) (h : n ≥ 2) :\n  f n ≠ 0 →\n  ∀ i : Int, 2 ≤ i → i ≤ n → is_prime i = true\
-  \ →\n  count_even_digits i ≤ count_even_digits (f n) :=\n  sorry\n\n\ntheorem f_result_largest_for_same_even_digits\
-  \ (n : Int) (h : n ≥ 2) :\n  f n ≠ 0 →\n  ∀ i : Int, f n < i → i ≤ n → is_prime\
-  \ i = true →\n  count_even_digits i = count_even_digits (f n) → False :=\n  sorry\n\
-  \n\ntheorem f_small_inputs (n : Int) (h : n ≤ 1) :\n  f n = 0 :=\n  sorry\n\n/--\n\
-  info: 887\n-/\n#guard_msgs in\n#eval f 1000\n\n/--\ninfo: 8887\n-/\n#guard_msgs\
-  \ in\n#eval f 10000\n\n/--\ninfo: 487\n-/\n#guard_msgs in\n#eval f 500\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Find the closest prime number under a certain integer ```n``` that has the maximum possible amount of even digits.
+
+  For ```n = 1000```, the highest prime under ```1000``` is ```887```, having two even digits (8 twice)
+
+  Naming ```f()```, the function that gives that prime, the above case and others will be like the following below.
+  ```
+  f(1000) ---> 887 (even digits: 8, 8)
+
+  f(1210) ---> 1201 (even digits: 2, 0)
+
+  f(10000) ---> 8887
+
+  f(500) ---> 487
+
+  f(487) ---> 467
+  ``` 
+  Features of the random tests:
+  ```
+  Number of tests = 28
+  1000 <= n <= 5000000
+  ```
+
+  Enjoy it!!
+vc-preamble: |
+  import Imports.AllImports
+
+  def f (n : Int) : Int :=
+    sorry
+
+
+  def is_prime (n : Int) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_even_digits (n : Int) : Nat :=
+    sorry
+vc-theorems: |
+  theorem f_result_is_prime (n : Int) (h : n ≥ 2) :
+    is_prime (f n) = true ∨ f n = 0 :=
+    sorry
+
+
+  theorem f_result_less_than_input (n : Int) (h : n ≥ 2) :
+    f n ≤ n :=
+    sorry
+
+
+  theorem f_result_has_max_even_digits (n : Int) (h : n ≥ 2) :
+    f n ≠ 0 →
+    ∀ i : Int, 2 ≤ i → i ≤ n → is_prime i = true →
+    count_even_digits i ≤ count_even_digits (f n) :=
+    sorry
+
+
+  theorem f_result_largest_for_same_even_digits (n : Int) (h : n ≥ 2) :
+    f n ≠ 0 →
+    ∀ i : Int, f n < i → i ≤ n → is_prime i = true →
+    count_even_digits i = count_even_digits (f n) → False :=
+    sorry
+
+
+  theorem f_small_inputs (n : Int) (h : n ≤ 1) :
+    f n = 0 :=
+    sorry
+
+  /--
+  info: 887
+  -/
+  #guard_msgs in
+  #eval f 1000
+
+  /--
+  info: 8887
+  -/
+  #guard_msgs in
+  #eval f 10000
+
+  /--
+  info: 487
+  -/
+  #guard_msgs in
+  #eval f 500
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

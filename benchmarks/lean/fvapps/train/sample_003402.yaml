@@ -1,33 +1,92 @@
-"vc-description": "# Task\n\nJohn has an important number, and he doesn't want others\
-  \ to see it.\n\nHe decided to encrypt the number, using the following steps:\n```\n\
-  His number is always a non strict increasing sequence\nie. \"123\"\n\nHe converted\
-  \ each digit into English words.\nie. \"123\"--> \"ONETWOTHREE\"\n\nAnd then, rearrange\
-  \ the letters randomly.\nie. \"ONETWOTHREE\" --> \"TTONWOHREEE\"\n```\n\nJohn felt\
-  \ that his number were safe in doing so. In fact, such encryption can be easily\
-  \ decrypted :(\n\nGiven the encrypted string `s`, your task is to decrypt it, return\
-  \ the original number in string format.\n\nNote, You can assume that the input string\
-  \ `s` is always valid; It contains only uppercase Letters; The decrypted numbers\
-  \ are arranged in ascending order; The leading zeros are allowed.\n\n\n# Example\n\
-  \nFor `s = \"ONE\"`, the output should be `1`.\n\nFor `s = \"EON\"`, the output\
-  \ should be `1` too.\n\nFor `s = \"ONETWO\"`, the output should be `12`.\n\nFor\
-  \ `s = \"OONETW\"`, the output should be `12` too.\n\nFor `s = \"ONETWOTHREE\"`,\
-  \ the output should be `123`.\n\nFor `s = \"TTONWOHREEE\"`, the output should be\
-  \ `123` too."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def original_number (s : String) : String := sorry\n\ndef generate_number_word\
-  \ (c : Char) : String := sorry\n"
-"vc-theorems": "theorem single_digits_theorem {n : Nat} (h : n ≤ 9) : \n  let word\
-  \ := generate_number_word (Char.ofNat (n + 48))\n  let scrambled := String.mk (List.reverse\
-  \ (word.data))\n  original_number scrambled = String.mk [Char.ofNat (n + 48)] :=\
-  \ sorry\n\n\ntheorem multi_digits_theorem {nums : List Nat} (h : ∀ n ∈ nums, n ≤\
-  \ 9) :\n  let words := List.map (fun n => generate_number_word (Char.ofNat (n +\
-  \ 48))) nums\n  let combined := String.join words\n  let scrambled := String.mk\
-  \ (List.reverse combined.data)\n  original_number scrambled = \n    String.join\
-  \ (List.map (fun n => String.mk [Char.ofNat (n + 48)]) nums) := sorry\n\n/--\ninfo:\
-  \ '1'\n-/\n#guard_msgs in\n#eval original_number \"ONE\"\n\n/--\ninfo: '1'\n-/\n\
-  #guard_msgs in\n#eval original_number \"OEN\"\n\n/--\ninfo: '12'\n-/\n#guard_msgs\
-  \ in\n#eval original_number \"ONETWO\"\n\n/--\ninfo: '12'\n-/\n#guard_msgs in\n\
-  #eval original_number \"OONETW\"\n\n/--\ninfo: '123'\n-/\n#guard_msgs in\n#eval\
-  \ original_number \"TTONWOHREEE\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Task
+
+  John has an important number, and he doesn't want others to see it.
+
+  He decided to encrypt the number, using the following steps:
+  ```
+  His number is always a non strict increasing sequence
+  ie. "123"
+
+  He converted each digit into English words.
+  ie. "123"--> "ONETWOTHREE"
+
+  And then, rearrange the letters randomly.
+  ie. "ONETWOTHREE" --> "TTONWOHREEE"
+  ```
+
+  John felt that his number were safe in doing so. In fact, such encryption can be easily decrypted :(
+
+  Given the encrypted string `s`, your task is to decrypt it, return the original number in string format.
+
+  Note, You can assume that the input string `s` is always valid; It contains only uppercase Letters; The decrypted numbers are arranged in ascending order; The leading zeros are allowed.
+
+
+  # Example
+
+  For `s = "ONE"`, the output should be `1`.
+
+  For `s = "EON"`, the output should be `1` too.
+
+  For `s = "ONETWO"`, the output should be `12`.
+
+  For `s = "OONETW"`, the output should be `12` too.
+
+  For `s = "ONETWOTHREE"`, the output should be `123`.
+
+  For `s = "TTONWOHREEE"`, the output should be `123` too.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def original_number (s : String) : String := sorry
+
+  def generate_number_word (c : Char) : String := sorry
+vc-theorems: |
+  theorem single_digits_theorem {n : Nat} (h : n ≤ 9) : 
+    let word := generate_number_word (Char.ofNat (n + 48))
+    let scrambled := String.mk (List.reverse (word.data))
+    original_number scrambled = String.mk [Char.ofNat (n + 48)] := sorry
+
+
+  theorem multi_digits_theorem {nums : List Nat} (h : ∀ n ∈ nums, n ≤ 9) :
+    let words := List.map (fun n => generate_number_word (Char.ofNat (n + 48))) nums
+    let combined := String.join words
+    let scrambled := String.mk (List.reverse combined.data)
+    original_number scrambled = 
+      String.join (List.map (fun n => String.mk [Char.ofNat (n + 48)]) nums) := sorry
+
+  /--
+  info: '1'
+  -/
+  #guard_msgs in
+  #eval original_number "ONE"
+
+  /--
+  info: '1'
+  -/
+  #guard_msgs in
+  #eval original_number "OEN"
+
+  /--
+  info: '12'
+  -/
+  #guard_msgs in
+  #eval original_number "ONETWO"
+
+  /--
+  info: '12'
+  -/
+  #guard_msgs in
+  #eval original_number "OONETW"
+
+  /--
+  info: '123'
+  -/
+  #guard_msgs in
+  #eval original_number "TTONWOHREEE"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

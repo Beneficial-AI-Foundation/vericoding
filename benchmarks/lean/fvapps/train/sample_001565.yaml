@@ -1,44 +1,100 @@
-"vc-description": "## Story\n\nBefore we dive into the exercise, I would like to show\
-  \ you why these numbers are so important in computer programming today.\n\nIt all\
-  \ goes back to the time of 19th century. Where computers we know today were non-existing.\
-  \ The first ever **computer program** was for the Analytical Engine to compute **Bernoulli\
-  \ numbers**. A woman named Ada Lovelace wrote the very first program. The sad part\
-  \ is the engine was never fully build so her code was never tested. She also predicted\
-  \ the start of **AI** (artificial intelligence).\n\nComputers will be able to compose\
-  \ music by themselves, solve problems (not only numbers) ... So in her honor reproduce\
-  \ what was done back in 1842. The Bernoulli numbers are a sequence of rational numbers\
-  \ with deep connections to number theory. The Swiss mathematician Jakob Bernoulli\
-  \ and the Japanese mathematician Seki Kowa discovered the numbers around the same\
-  \ time at the start of the 18th Century. If you want to read more about her or Bernoulli\
-  \ numbers follow these links:\n\nhttps://en.wikipedia.org/wiki/Ada_Lovelace\n\n\
-  https://en.wikipedia.org/wiki/Bernoulli_number\n\nhttp://mathworld.wolfram.com/BernoulliNumber.html\n\
-  \n## Exercise\n\nYour job is to write a function `bernoulli_number(n)` which outputs\
-  \ the n-th Bernoulli number. The input will always be a non-negative integer so\
-  \ you do not need to worry about exceptions. How you will solve the problem is none\
-  \ of my business but here are some guidelines.  \nYou can make pascal triangle and\
-  \ then with the basic formula generate all Bernoulli numbers. Look example below.\n\
-  \nFor the sake of floating numbers, just use `Fractions` so there will be no problems\
-  \ with rounding.\n\n\n0 = 1 + 2b1 ...............................................................\
-  \ \n  b1 = - 1/2\n\n0 = 1 + 3b1 + 3b2 ...................................................\
-  \    b2        = 1/6\n\n0 = 1 + 4b1 + 6b2 + 4b3 .......................................\
-  \  b3 = 0\n\n0 = 1 + 5b1 + 10b2 + 10b3 + 5b4 ...................... b4 = - 1/30\n\
-  \n... and so on.\n\n```\nbernoulli_number(0) # return 1\nbernoulli_number(1) # return\
-  \ Fraction(-1,2) or Rational(-1,2) or \"1/2\"\nbernoulli_number(6) # return Fraction(1,42)\
-  \ or ...\nbernoulli_number(42) # return Fraction(1520097643918070802691,1806) or\
-  \ ...\nbernoulli_number(22) # return Fraction(854513,138) or ... \"854513/138\"\n\
-  ```\n\n## Note\n\nSee \"Sample Tests\" to see the return type for each language.\n\
-  \nGood luck and happy coding! \n\nPS: be careful some numbers might exceed `1000`.\n\
-  If this kata is too hard for you try to solve pascal triangle and something similar\
-  \ to this and then come back :)."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def bernoulli_number (n : Nat) : Rat :=\n  sorry\n"
-"vc-theorems": "theorem odd_bernoulli_numbers_are_zero (n : Nat)\n  (h : n ≥ 3)\n\
-  \  (h₂ : n % 2 = 1) :\n  bernoulli_number n = 0 :=\nsorry\n\n\ntheorem bernoulli_numbers_are_rational\
-  \ (n : Nat) :\n  ∃ r : Rat, bernoulli_number n = r ∨ bernoulli_number n = 0 :=\n\
-  sorry\n\n\ntheorem first_bernoulli_number :\n  bernoulli_number 0 = 1 :=\nsorry\n\
-  \n\ntheorem second_bernoulli_number :\n  bernoulli_number 1 = -1/2 :=\nsorry\n\n\
-  /--\ninfo: 1\n-/\n#guard_msgs in\n#eval bernoulli_number 0\n\n/--\ninfo: 0\n-/\n\
-  #guard_msgs in\n#eval bernoulli_number 3\n\n/--\ninfo: Fraction(1, 42)\n-/\n#guard_msgs\
-  \ in\n#eval bernoulli_number 6\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  ## Story
+
+  Before we dive into the exercise, I would like to show you why these numbers are so important in computer programming today.
+
+  It all goes back to the time of 19th century. Where computers we know today were non-existing. The first ever **computer program** was for the Analytical Engine to compute **Bernoulli numbers**. A woman named Ada Lovelace wrote the very first program. The sad part is the engine was never fully build so her code was never tested. She also predicted the start of **AI** (artificial intelligence).
+
+  Computers will be able to compose music by themselves, solve problems (not only numbers) ... So in her honor reproduce what was done back in 1842. The Bernoulli numbers are a sequence of rational numbers with deep connections to number theory. The Swiss mathematician Jakob Bernoulli and the Japanese mathematician Seki Kowa discovered the numbers around the same time at the start of the 18th Century. If you want to read more about her or Bernoulli numbers follow these links:
+
+  https://en.wikipedia.org/wiki/Ada_Lovelace
+
+  https://en.wikipedia.org/wiki/Bernoulli_number
+
+  http://mathworld.wolfram.com/BernoulliNumber.html
+
+  ## Exercise
+
+  Your job is to write a function `bernoulli_number(n)` which outputs the n-th Bernoulli number. The input will always be a non-negative integer so you do not need to worry about exceptions. How you will solve the problem is none of my business but here are some guidelines.  
+  You can make pascal triangle and then with the basic formula generate all Bernoulli numbers. Look example below.
+
+  For the sake of floating numbers, just use `Fractions` so there will be no problems with rounding.
+
+
+  0 = 1 + 2b1 ............................................................... 
+    b1 = - 1/2
+
+  0 = 1 + 3b1 + 3b2 ...................................................    b2        = 1/6
+
+  0 = 1 + 4b1 + 6b2 + 4b3 .......................................  b3 = 0
+
+  0 = 1 + 5b1 + 10b2 + 10b3 + 5b4 ...................... b4 = - 1/30
+
+  ... and so on.
+
+  ```
+  bernoulli_number(0) # return 1
+  bernoulli_number(1) # return Fraction(-1,2) or Rational(-1,2) or "1/2"
+  bernoulli_number(6) # return Fraction(1,42) or ...
+  bernoulli_number(42) # return Fraction(1520097643918070802691,1806) or ...
+  bernoulli_number(22) # return Fraction(854513,138) or ... "854513/138"
+  ```
+
+  ## Note
+
+  See "Sample Tests" to see the return type for each language.
+
+  Good luck and happy coding! 
+
+  PS: be careful some numbers might exceed `1000`.
+  If this kata is too hard for you try to solve pascal triangle and something similar to this and then come back :).
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def bernoulli_number (n : Nat) : Rat :=
+    sorry
+vc-theorems: |
+  theorem odd_bernoulli_numbers_are_zero (n : Nat)
+    (h : n ≥ 3)
+    (h₂ : n % 2 = 1) :
+    bernoulli_number n = 0 :=
+  sorry
+
+
+  theorem bernoulli_numbers_are_rational (n : Nat) :
+    ∃ r : Rat, bernoulli_number n = r ∨ bernoulli_number n = 0 :=
+  sorry
+
+
+  theorem first_bernoulli_number :
+    bernoulli_number 0 = 1 :=
+  sorry
+
+
+  theorem second_bernoulli_number :
+    bernoulli_number 1 = -1/2 :=
+  sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval bernoulli_number 0
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval bernoulli_number 3
+
+  /--
+  info: Fraction(1, 42)
+  -/
+  #guard_msgs in
+  #eval bernoulli_number 6
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

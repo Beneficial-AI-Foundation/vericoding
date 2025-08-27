@@ -1,21 +1,60 @@
-"vc-description": "Gordon Ramsay shouts. He shouts and swears. There may be something\
-  \ wrong with him.\n\nAnyway, you will be given a string of four words. Your job\
-  \ is to turn them in to Gordon language. \n\nRules:\n\nObviously the words should\
-  \ be Caps,\nEvery word should end with '!!!!',\nAny letter 'a' or 'A' should become\
-  \ '@',\nAny other vowel should become '*'."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def gordon (s : String) : String := sorry\n\n-- Theorem for the\
-  \ ending"
-"vc-theorems": "theorem gordon_ends_with_bangs {s : String} (h : s ≠ \"\") :\n  (gordon\
-  \ s).endsWith \"!!!!\" := sorry\n\n-- Theorem for no vowels\n\ntheorem gordon_no_vowels\
-  \ {s : String} (h : s ≠ \"\") :\n  ∀ c ∈ (gordon s).data, c ≠ 'A' ∧ c ≠ 'E' ∧ c\
-  \ ≠ 'I' ∧ c ≠ 'O' ∧ c ≠ 'U' := sorry\n\n-- Theorem for length\n\ntheorem gordon_length\
-  \ {s : String} (h : s ≠ \"\") :\n  (gordon s).length ≥ s.length := sorry\n\n-- Theorem\
-  \ for non-empty parts\n\ntheorem gordon_parts_nonempty {s : String} (h : s ≠ \"\"\
-  ) :\n  let parts := (gordon s).dropRight 4\n  ∀ p ∈ parts.split (· = '!'), p ≠ \"\
-  \" := sorry\n\n/--\ninfo: 'WH@T!!!! F*CK!!!! D@MN!!!! C@K*!!!!'\n-/\n#guard_msgs\
-  \ in\n#eval gordon \"What feck damn cake\"\n\n/--\ninfo: '@R*!!!! Y**!!!! ST*!!!!\
-  \ P*D!!!!'\n-/\n#guard_msgs in\n#eval gordon \"are you stu pid\"\n\n/--\ninfo: '*!!!!\
-  \ @M!!!! @!!!! CH*F!!!!'\n-/\n#guard_msgs in\n#eval gordon \"i am a chef\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Gordon Ramsay shouts. He shouts and swears. There may be something wrong with him.
+
+  Anyway, you will be given a string of four words. Your job is to turn them in to Gordon language. 
+
+  Rules:
+
+  Obviously the words should be Caps,
+  Every word should end with '!!!!',
+  Any letter 'a' or 'A' should become '@',
+  Any other vowel should become '*'.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def gordon (s : String) : String := sorry
+
+  -- Theorem for the ending
+vc-theorems: |
+  theorem gordon_ends_with_bangs {s : String} (h : s ≠ "") :
+    (gordon s).endsWith "!!!!" := sorry
+
+  -- Theorem for no vowels
+
+  theorem gordon_no_vowels {s : String} (h : s ≠ "") :
+    ∀ c ∈ (gordon s).data, c ≠ 'A' ∧ c ≠ 'E' ∧ c ≠ 'I' ∧ c ≠ 'O' ∧ c ≠ 'U' := sorry
+
+  -- Theorem for length
+
+  theorem gordon_length {s : String} (h : s ≠ "") :
+    (gordon s).length ≥ s.length := sorry
+
+  -- Theorem for non-empty parts
+
+  theorem gordon_parts_nonempty {s : String} (h : s ≠ "") :
+    let parts := (gordon s).dropRight 4
+    ∀ p ∈ parts.split (· = '!'), p ≠ "" := sorry
+
+  /--
+  info: 'WH@T!!!! F*CK!!!! D@MN!!!! C@K*!!!!'
+  -/
+  #guard_msgs in
+  #eval gordon "What feck damn cake"
+
+  /--
+  info: '@R*!!!! Y**!!!! ST*!!!! P*D!!!!'
+  -/
+  #guard_msgs in
+  #eval gordon "are you stu pid"
+
+  /--
+  info: '*!!!! @M!!!! @!!!! CH*F!!!!'
+  -/
+  #guard_msgs in
+  #eval gordon "i am a chef"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

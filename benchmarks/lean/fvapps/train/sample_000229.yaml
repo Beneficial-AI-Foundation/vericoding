@@ -1,31 +1,136 @@
-"vc-description": "In a N x N grid composed of 1 x 1 squares, each 1 x 1 square consists\
-  \ of a /, \\, or blank space.  These characters divide the square into contiguous\
-  \ regions.\n(Note that backslash characters are escaped, so a \\ is represented\
-  \ as \"\\\\\".)\nReturn the number of regions.\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nExample\
-  \ 1:\nInput:\n[\n  \" /\",\n  \"/ \"\n]\nOutput: 2\nExplanation: The 2x2 grid is\
-  \ as follows:\n\n\n\nExample 2:\nInput:\n[\n  \" /\",\n  \"  \"\n]\nOutput: 1\n\
-  Explanation: The 2x2 grid is as follows:\n\n\n\nExample 3:\nInput:\n[\n  \"\\\\\
-  /\",\n  \"/\\\\\"\n]\nOutput: 4\nExplanation: (Recall that because \\ characters\
-  \ are escaped, \"\\\\/\" refers to \\/, and \"/\\\\\" refers to /\\.)\nThe 2x2 grid\
-  \ is as follows:\n\n\n\nExample 4:\nInput:\n[\n  \"/\\\\\",\n  \"\\\\/\"\n]\nOutput:\
-  \ 5\nExplanation: (Recall that because \\ characters are escaped, \"/\\\\\" refers\
-  \ to /\\, and \"\\\\/\" refers to \\/.)\nThe 2x2 grid is as follows:\n\n\n\nExample\
-  \ 5:\nInput:\n[\n  \"//\",\n  \"/ \"\n]\nOutput: 3\nExplanation: The 2x2 grid is\
-  \ as follows:\n\n\n \nNote:\n\n1 <= grid.length == grid[0].length <= 30\ngrid[i][j]\
-  \ is either '/', '\\', or ' '."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def regions_by_slashes (grid: List String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem regions_always_positive\n  (grid: List String)\n  : regions_by_slashes\
-  \ grid > 0 :=\n  sorry \n\n\ntheorem regions_bounded_by_size\n  (grid: List String)\n\
-  \  (h: grid.length = n)\n  : regions_by_slashes grid ≤ 4 * n * n :=\n  sorry\n\n\
-  \ntheorem empty_grid_one_region\n  (grid: List String)\n  (h1: grid.length > 0)\n\
-  \  (h2: ∀ row ∈ grid, row = (String.mk $ List.replicate 10 ' '))\n  : regions_by_slashes\
-  \ grid = 1 :=\n  sorry\n\n\ntheorem quotes_irrelevant\n  (grid: List String)\n \
-  \ (quoted: List String)\n  (h: quoted = grid.map (fun row => \"\\\"\" ++ row ++\
-  \ \"\\\"\"))\n  : regions_by_slashes grid = regions_by_slashes quoted :=\n  sorry\n\
-  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval regions_by_slashes [\" /\", \"/ \"]\n\n\
-  /--\ninfo: 4\n-/\n#guard_msgs in\n#eval regions_by_slashes [\"\\\\/\", \"/\\\\\"\
-  ]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval regions_by_slashes [\"//\", \"/ \"\
-  ]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  In a N x N grid composed of 1 x 1 squares, each 1 x 1 square consists of a /, \, or blank space.  These characters divide the square into contiguous regions.
+  (Note that backslash characters are escaped, so a \ is represented as "\\".)
+  Return the number of regions.
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Example 1:
+  Input:
+  [
+    " /",
+    "/ "
+  ]
+  Output: 2
+  Explanation: The 2x2 grid is as follows:
+
+
+
+  Example 2:
+  Input:
+  [
+    " /",
+    "  "
+  ]
+  Output: 1
+  Explanation: The 2x2 grid is as follows:
+
+
+
+  Example 3:
+  Input:
+  [
+    "\\/",
+    "/\\"
+  ]
+  Output: 4
+  Explanation: (Recall that because \ characters are escaped, "\\/" refers to \/, and "/\\" refers to /\.)
+  The 2x2 grid is as follows:
+
+
+
+  Example 4:
+  Input:
+  [
+    "/\\",
+    "\\/"
+  ]
+  Output: 5
+  Explanation: (Recall that because \ characters are escaped, "/\\" refers to /\, and "\\/" refers to \/.)
+  The 2x2 grid is as follows:
+
+
+
+  Example 5:
+  Input:
+  [
+    "//",
+    "/ "
+  ]
+  Output: 3
+  Explanation: The 2x2 grid is as follows:
+
+
+   
+  Note:
+
+  1 <= grid.length == grid[0].length <= 30
+  grid[i][j] is either '/', '\', or ' '.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def regions_by_slashes (grid: List String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem regions_always_positive
+    (grid: List String)
+    : regions_by_slashes grid > 0 :=
+    sorry 
+
+
+  theorem regions_bounded_by_size
+    (grid: List String)
+    (h: grid.length = n)
+    : regions_by_slashes grid ≤ 4 * n * n :=
+    sorry
+
+
+  theorem empty_grid_one_region
+    (grid: List String)
+    (h1: grid.length > 0)
+    (h2: ∀ row ∈ grid, row = (String.mk $ List.replicate 10 ' '))
+    : regions_by_slashes grid = 1 :=
+    sorry
+
+
+  theorem quotes_irrelevant
+    (grid: List String)
+    (quoted: List String)
+    (h: quoted = grid.map (fun row => "\"" ++ row ++ "\""))
+    : regions_by_slashes grid = regions_by_slashes quoted :=
+    sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval regions_by_slashes [" /", "/ "]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval regions_by_slashes ["\\/", "/\\"]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval regions_by_slashes ["//", "/ "]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

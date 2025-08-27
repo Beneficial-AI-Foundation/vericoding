@@ -1,15 +1,57 @@
-"vc-description": "Find the largest palindrome made from the product of two n-digit\
-  \ numbers.\n Since the result could be very large, you should return the largest\
-  \ palindrome mod 1337.\n\nExample:\nInput: 2\nOutput: 987\nExplanation: 99 x 91\
-  \ = 9009, 9009 % 1337 = 987\n\n\n\n\nNote:\nThe range of n is [1,8]."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def largest_palindrome (n : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem largest_palindrome_range (n : Nat) (h : 1 ≤ n ∧ n ≤ 8) : \n\
-  \  0 ≤ largest_palindrome n ∧ largest_palindrome n ≤ 1337 :=\nsorry\n\n\ntheorem\
-  \ largest_palindrome_invalid (n : Nat) (h : n ≥ 9) :\n  largest_palindrome n = 0\
-  \ :=\nsorry\n\n\ntheorem largest_palindrome_deterministic (n : Nat) :\n  largest_palindrome\
-  \ n = largest_palindrome n :=\nsorry\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval\
-  \ largest_palindrome 1\n\n/--\ninfo: 987\n-/\n#guard_msgs in\n#eval largest_palindrome\
-  \ 2\n\n/--\ninfo: 123\n-/\n#guard_msgs in\n#eval largest_palindrome 3\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Find the largest palindrome made from the product of two n-digit numbers.
+   Since the result could be very large, you should return the largest palindrome mod 1337.
+
+  Example:
+  Input: 2
+  Output: 987
+  Explanation: 99 x 91 = 9009, 9009 % 1337 = 987
+
+
+
+
+  Note:
+  The range of n is [1,8].
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def largest_palindrome (n : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem largest_palindrome_range (n : Nat) (h : 1 ≤ n ∧ n ≤ 8) : 
+    0 ≤ largest_palindrome n ∧ largest_palindrome n ≤ 1337 :=
+  sorry
+
+
+  theorem largest_palindrome_invalid (n : Nat) (h : n ≥ 9) :
+    largest_palindrome n = 0 :=
+  sorry
+
+
+  theorem largest_palindrome_deterministic (n : Nat) :
+    largest_palindrome n = largest_palindrome n :=
+  sorry
+
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval largest_palindrome 1
+
+  /--
+  info: 987
+  -/
+  #guard_msgs in
+  #eval largest_palindrome 2
+
+  /--
+  info: 123
+  -/
+  #guard_msgs in
+  #eval largest_palindrome 3
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

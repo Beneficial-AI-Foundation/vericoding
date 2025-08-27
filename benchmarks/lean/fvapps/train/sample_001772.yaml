@@ -1,42 +1,101 @@
-"vc-description": "Design a data structure that supports all following operations\
-  \ in average O(1) time.\nNote: Duplicate elements are allowed.\n\n\ninsert(val):\
-  \ Inserts an item val to the collection.\nremove(val): Removes an item val from\
-  \ the collection if present.\ngetRandom: Returns a random element from current collection\
-  \ of elements. The probability of each element being returned is linearly related\
-  \ to the number of same value the collection contains.\n\n\n\nExample:\n\n// Init\
-  \ an empty collection.\nRandomizedCollection collection = new RandomizedCollection();\n\
-  \n// Inserts 1 to the collection. Returns true as the collection did not contain\
-  \ 1.\ncollection.insert(1);\n\n// Inserts another 1 to the collection. Returns false\
-  \ as the collection contained 1. Collection now contains [1,1].\ncollection.insert(1);\n\
-  \n// Inserts 2 to the collection, returns true. Collection now contains [1,1,2].\n\
-  collection.insert(2);\n\n// getRandom should return 1 with the probability 2/3,\
-  \ and returns 2 with the probability 1/3.\ncollection.getRandom();\n\n// Removes\
-  \ 1 from the collection, returns true. Collection now contains [1,2].\ncollection.remove(1);\n\
-  \n// getRandom should return 1 and 2 both equally likely.\ncollection.getRandom();"
-"vc-preamble": "import Imports.AllImports\n\ndef HashMap := List\n\nstructure RandomizedCollection\
-  \ where\n  idx : List (Int × List Nat)  \n  val : List Int\nderiving Repr\n\n\n\
-  def RandomizedCollection.insert : RandomizedCollection → Int → Bool := sorry\ndef\
-  \ RandomizedCollection.remove : RandomizedCollection → Int → Bool := sorry \n\n\
-  def RandomizedCollection.getRandom : RandomizedCollection → Int := sorry\n\ndef\
-  \ find? (l : List (Int × List Nat)) (k : Int) : Option (List Nat) :=\n  (l.find?\
-  \ (fun p => p.1 = k)).map (·.2)\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sum (xs : List Nat) : Nat :=\n  match xs with\n  | [] => 0\n\
-  \  | x :: rest => x + sum rest\n"
-"vc-theorems": "theorem insert_property (rc : RandomizedCollection) (v : Int) :\n\
-  \  let inserted := RandomizedCollection.insert rc v\n  (find? rc.idx v).isSome →\
-  \ inserted = false ∧ \n  (find? rc.idx v).isNone → inserted = true :=\nsorry\n\n\
-  \ntheorem remove_property (rc : RandomizedCollection) (v : Int) :\n  let removed\
-  \ := RandomizedCollection.remove rc v\n  (find? rc.idx v).isSome → removed = true\
-  \ ∧\n  (find? rc.idx v).isNone → removed = false :=\nsorry\n\n\ntheorem getRandom_property\
-  \ (rc : RandomizedCollection) :\n  rc.val.length > 0 →\n  let randVal := RandomizedCollection.getRandom\
-  \ rc\n  (find? rc.idx randVal).isSome :=\nsorry\n\n\ntheorem internal_consistency\
-  \ (rc : RandomizedCollection) :\n  rc.val.length = sum (rc.idx.map (·.2.length))\
-  \ ∧\n  (∀ pair ∈ rc.idx, ∀ idx ∈ pair.2, idx < rc.val.length) :=\nsorry\n\n\ntheorem\
-  \ indices_point_to_values (rc : RandomizedCollection) :\n  ∀ v indices, find? rc.idx\
-  \ v = some indices →\n  ∀ idx ∈ indices, rc.val.get? idx = some v :=\nsorry\n\n\n\
-  theorem random_distribution (rc : RandomizedCollection) (samples : List Int) \n\
-  \  (h : ∀ s ∈ samples, s = RandomizedCollection.getRandom rc) :\n  (∀ s ∈ samples,\
-  \ (find? rc.idx s).isSome) ∧\n  ∃ subset : List Int, subset ≠ [] ∧ ∀ x ∈ subset,\
-  \ x ∈ rc.val :=\nsorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Design a data structure that supports all following operations in average O(1) time.
+  Note: Duplicate elements are allowed.
+
+
+  insert(val): Inserts an item val to the collection.
+  remove(val): Removes an item val from the collection if present.
+  getRandom: Returns a random element from current collection of elements. The probability of each element being returned is linearly related to the number of same value the collection contains.
+
+
+
+  Example:
+
+  // Init an empty collection.
+  RandomizedCollection collection = new RandomizedCollection();
+
+  // Inserts 1 to the collection. Returns true as the collection did not contain 1.
+  collection.insert(1);
+
+  // Inserts another 1 to the collection. Returns false as the collection contained 1. Collection now contains [1,1].
+  collection.insert(1);
+
+  // Inserts 2 to the collection, returns true. Collection now contains [1,1,2].
+  collection.insert(2);
+
+  // getRandom should return 1 with the probability 2/3, and returns 2 with the probability 1/3.
+  collection.getRandom();
+
+  // Removes 1 from the collection, returns true. Collection now contains [1,2].
+  collection.remove(1);
+
+  // getRandom should return 1 and 2 both equally likely.
+  collection.getRandom();
+vc-preamble: |
+  import Imports.AllImports
+
+  def HashMap := List
+
+  structure RandomizedCollection where
+    idx : List (Int × List Nat)  
+    val : List Int
+  deriving Repr
+
+
+  def RandomizedCollection.insert : RandomizedCollection → Int → Bool := sorry
+  def RandomizedCollection.remove : RandomizedCollection → Int → Bool := sorry 
+
+  def RandomizedCollection.getRandom : RandomizedCollection → Int := sorry
+
+  def find? (l : List (Int × List Nat)) (k : Int) : Option (List Nat) :=
+    (l.find? (fun p => p.1 = k)).map (·.2)
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sum (xs : List Nat) : Nat :=
+    match xs with
+    | [] => 0
+    | x :: rest => x + sum rest
+vc-theorems: |-
+  theorem insert_property (rc : RandomizedCollection) (v : Int) :
+    let inserted := RandomizedCollection.insert rc v
+    (find? rc.idx v).isSome → inserted = false ∧ 
+    (find? rc.idx v).isNone → inserted = true :=
+  sorry
+
+
+  theorem remove_property (rc : RandomizedCollection) (v : Int) :
+    let removed := RandomizedCollection.remove rc v
+    (find? rc.idx v).isSome → removed = true ∧
+    (find? rc.idx v).isNone → removed = false :=
+  sorry
+
+
+  theorem getRandom_property (rc : RandomizedCollection) :
+    rc.val.length > 0 →
+    let randVal := RandomizedCollection.getRandom rc
+    (find? rc.idx randVal).isSome :=
+  sorry
+
+
+  theorem internal_consistency (rc : RandomizedCollection) :
+    rc.val.length = sum (rc.idx.map (·.2.length)) ∧
+    (∀ pair ∈ rc.idx, ∀ idx ∈ pair.2, idx < rc.val.length) :=
+  sorry
+
+
+  theorem indices_point_to_values (rc : RandomizedCollection) :
+    ∀ v indices, find? rc.idx v = some indices →
+    ∀ idx ∈ indices, rc.val.get? idx = some v :=
+  sorry
+
+
+  theorem random_distribution (rc : RandomizedCollection) (samples : List Int) 
+    (h : ∀ s ∈ samples, s = RandomizedCollection.getRandom rc) :
+    (∀ s ∈ samples, (find? rc.idx s).isSome) ∧
+    ∃ subset : List Int, subset ≠ [] ∧ ∀ x ∈ subset, x ∈ rc.val :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

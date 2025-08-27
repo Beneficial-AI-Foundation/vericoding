@@ -1,27 +1,72 @@
-"vc-description": "Given the strings s1 and s2 of size n, and the string evil. Return\
-  \ the number of good strings.\nA good string has size n, it is alphabetically greater\
-  \ than or equal to s1, it is alphabetically smaller than or equal to s2, and it\
-  \ does not contain the string evil as a substring. Since the answer can be a huge\
-  \ number, return this modulo 10^9 + 7.\n \nExample 1:\nInput: n = 2, s1 = \"aa\"\
-  , s2 = \"da\", evil = \"b\"\nOutput: 51 \nExplanation: There are 25 good strings\
-  \ starting with 'a': \"aa\",\"ac\",\"ad\",...,\"az\". Then there are 25 good strings\
-  \ starting with 'c': \"ca\",\"cc\",\"cd\",...,\"cz\" and finally there is one good\
-  \ string starting with 'd': \"da\". \n\nExample 2:\nInput: n = 8, s1 = \"leetcode\"\
-  , s2 = \"leetgoes\", evil = \"leet\"\nOutput: 0 \nExplanation: All strings greater\
-  \ than or equal to s1 and smaller than or equal to s2 start with the prefix \"leet\"\
-  , therefore, there is not any good string.\n\nExample 3:\nInput: n = 2, s1 = \"\
-  gx\", s2 = \"gz\", evil = \"x\"\nOutput: 2\n\n \nConstraints:\n\ns1.length == n\n\
-  s2.length == n\ns1 <= s2\n1 <= n <= 500\n1 <= evil.length <= 50\nAll strings consist\
-  \ of lowercase English letters."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def failure (pattern : String) : List Nat := sorry\n\ndef findGoodStrings\
-  \ (n : Nat) (s1 s2 evil : String) : Nat := sorry\n\n\n\n\n"
-"vc-theorems": "theorem findGoodStrings_single_char :\n  findGoodStrings 1 \"a\" \"\
-  a\" \"b\" = 1 := sorry\n\n\ntheorem findGoodStrings_evil_prefix :\n  findGoodStrings\
-  \ 4 \"abcd\" \"abcd\" \"abc\" = 0 := sorry\n\n\ntheorem findGoodStrings_full_range\
-  \ :\n  findGoodStrings 1 \"a\" \"z\" \"zz\" = 26 := sorry\n\n/--\ninfo: 51\n-/\n\
-  #guard_msgs in\n#eval findGoodStrings 2 \"aa\" \"da\" \"b\"\n\n/--\ninfo: 0\n-/\n\
-  #guard_msgs in\n#eval findGoodStrings 8 \"leetcode\" \"leetgoes\" \"leet\"\n\n/--\n\
-  info: 2\n-/\n#guard_msgs in\n#eval findGoodStrings 2 \"gx\" \"gz\" \"x\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given the strings s1 and s2 of size n, and the string evil. Return the number of good strings.
+  A good string has size n, it is alphabetically greater than or equal to s1, it is alphabetically smaller than or equal to s2, and it does not contain the string evil as a substring. Since the answer can be a huge number, return this modulo 10^9 + 7.
+   
+  Example 1:
+  Input: n = 2, s1 = "aa", s2 = "da", evil = "b"
+  Output: 51 
+  Explanation: There are 25 good strings starting with 'a': "aa","ac","ad",...,"az". Then there are 25 good strings starting with 'c': "ca","cc","cd",...,"cz" and finally there is one good string starting with 'd': "da". 
+
+  Example 2:
+  Input: n = 8, s1 = "leetcode", s2 = "leetgoes", evil = "leet"
+  Output: 0 
+  Explanation: All strings greater than or equal to s1 and smaller than or equal to s2 start with the prefix "leet", therefore, there is not any good string.
+
+  Example 3:
+  Input: n = 2, s1 = "gx", s2 = "gz", evil = "x"
+  Output: 2
+
+   
+  Constraints:
+
+  s1.length == n
+  s2.length == n
+  s1 <= s2
+  1 <= n <= 500
+  1 <= evil.length <= 50
+  All strings consist of lowercase English letters.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def failure (pattern : String) : List Nat := sorry
+
+  def findGoodStrings (n : Nat) (s1 s2 evil : String) : Nat := sorry
+
+
+
+
+vc-theorems: |
+  theorem findGoodStrings_single_char :
+    findGoodStrings 1 "a" "a" "b" = 1 := sorry
+
+
+  theorem findGoodStrings_evil_prefix :
+    findGoodStrings 4 "abcd" "abcd" "abc" = 0 := sorry
+
+
+  theorem findGoodStrings_full_range :
+    findGoodStrings 1 "a" "z" "zz" = 26 := sorry
+
+  /--
+  info: 51
+  -/
+  #guard_msgs in
+  #eval findGoodStrings 2 "aa" "da" "b"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval findGoodStrings 8 "leetcode" "leetgoes" "leet"
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval findGoodStrings 2 "gx" "gz" "x"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

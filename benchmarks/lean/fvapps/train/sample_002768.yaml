@@ -1,47 +1,111 @@
-"vc-description": "###Story\nSometimes we are faced with problems when we have a big\
-  \ nested dictionary with which it's hard to work. Now, we need to solve this problem\
-  \ by writing a function that will flatten a given dictionary.\n\n###Info\nPython\
-  \ dictionaries are a convenient data type to store and process configurations. They\
-  \ allow you to store data by keys to create nested structures. You are given a dictionary\
-  \ where the keys are strings and the values are strings or dictionaries. The goal\
-  \ is flatten the dictionary, but save the structures in the keys. The result should\
-  \ be a dictionary without the nested dictionaries. The keys should contain paths\
-  \ that contain the parent keys from the original dictionary. The keys in the path\
-  \ are separated by a `/`. If a value is an empty dictionary, then it should be replaced\
-  \ by an empty string `\"\"`.\n\n###Examples\n```python\n{\n    \"name\": {\n   \
-  \     \"first\": \"One\",\n        \"last\": \"Drone\"\n    },\n    \"job\": \"\
-  scout\",\n    \"recent\": {},\n    \"additional\": {\n        \"place\": {\n   \
-  \         \"zone\": \"1\",\n            \"cell\": \"2\"\n        }\n    }\n}\n```\n\
-  The result will be:\n```python\n{\"name/first\": \"One\",           #one parent\n\
-  \ \"name/last\": \"Drone\",\n \"job\": \"scout\",                #root key\n \"\
-  recent\": \"\",                  #empty dict\n \"additional/place/zone\": \"1\"\
-  ,  #third level\n \"additional/place/cell\": \"2\"}\n```\n\n***`Input: An original\
-  \ dictionary as a dict.`***\n***`Output: The flattened dictionary as a dict.`***\n\
-  ***`Precondition:\nKeys in a dictionary are non-empty strings.\nValues in a dictionary\
-  \ are strings or dicts.\nroot_dictionary != {}`***\n\n```python\nflatten({\"key\"\
-  : \"value\"}) == {\"key\": \"value\"}\nflatten({\"key\": {\"deeper\": {\"more\"\
-  : {\"enough\": \"value\"}}}}) == {\"key/deeper/more/enough\": \"value\"}\nflatten({\"\
-  empty\": {}}) == {\"empty\": \"\"}\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef flatten {α : Type} [ToString α] (d\
-  \ : Dict α (Dict α String)) : Dict α String :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def appendPath (s1 s2 : String) : String :=\n  s1 ++ \"/\" ++ s2\n\
-  \nstructure isFlat (d : Dict String String) : Prop where\n  flat : ∀ k v, d.get\
-  \ k = some v → ¬∃ k' v', k = appendPath k' v'\n"
-"vc-theorems": "theorem flatten_flat_dict_unchanged {d : Dict String String} :\n \
-  \ isFlat d → d = Dict.mk (λ s => d.get s) :=\n  sorry\n\n\ntheorem flatten_nested_dict\
-  \ (d : Dict String (Dict String String))\n    (outer inner : String) (value : String)\
-  \ :\n  (d.get outer >>= (λ innerDict => innerDict.get inner)) = some value →\n \
-  \ (flatten d).get (appendPath outer inner) = some value :=\n  sorry\n\n\ntheorem\
-  \ flatten_empty_dict :\n  flatten (Dict.mk (λ (_ : String) => none)) = Dict.mk (λ\
-  \ (_ : String) => none) :=\n  sorry\n\n\ntheorem flatten_empty_nested_dict :\n \
-  \ flatten (Dict.mk (λ s => if s = \"key\" \n    then some (Dict.mk (λ (_ : String)\
-  \ => none)) \n    else none)) =\n  Dict.mk (λ s => if s = \"key\" then some \"\"\
-  \ else none) :=\n  sorry\n\n/--\ninfo: {'key': 'value'}\n-/\n#guard_msgs in\n#eval\
-  \ flatten {\"key\": \"value\"}\n\n/--\ninfo: {'key/deeper/more/enough': 'value'}\n\
-  -/\n#guard_msgs in\n#eval flatten {\"key\": {\"deeper\": {\"more\": {\"enough\"\
-  : \"value\"}}}}\n\n/--\ninfo: {'empty': ''}\n-/\n#guard_msgs in\n#eval flatten {\"\
-  empty\": {}}\n\n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval flatten {\"name\"\
-  : {\"first\": \"One\", \"last\": \"Drone\"}, \"job\": \"scout\", \"recent\": {},\
-  \ \"additional\": {\"place\": {\"zone\": \"1\", \"cell\": \"2\"}}}\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ###Story
+  Sometimes we are faced with problems when we have a big nested dictionary with which it's hard to work. Now, we need to solve this problem by writing a function that will flatten a given dictionary.
+
+  ###Info
+  Python dictionaries are a convenient data type to store and process configurations. They allow you to store data by keys to create nested structures. You are given a dictionary where the keys are strings and the values are strings or dictionaries. The goal is flatten the dictionary, but save the structures in the keys. The result should be a dictionary without the nested dictionaries. The keys should contain paths that contain the parent keys from the original dictionary. The keys in the path are separated by a `/`. If a value is an empty dictionary, then it should be replaced by an empty string `""`.
+
+  ###Examples
+  ```python
+  {
+      "name": {
+          "first": "One",
+          "last": "Drone"
+      },
+      "job": "scout",
+      "recent": {},
+      "additional": {
+          "place": {
+              "zone": "1",
+              "cell": "2"
+          }
+      }
+  }
+  ```
+  The result will be:
+  ```python
+  {"name/first": "One",           #one parent
+   "name/last": "Drone",
+   "job": "scout",                #root key
+   "recent": "",                  #empty dict
+   "additional/place/zone": "1",  #third level
+   "additional/place/cell": "2"}
+  ```
+
+  ***`Input: An original dictionary as a dict.`***
+  ***`Output: The flattened dictionary as a dict.`***
+  ***`Precondition:
+  Keys in a dictionary are non-empty strings.
+  Values in a dictionary are strings or dicts.
+  root_dictionary != {}`***
+
+  ```python
+  flatten({"key": "value"}) == {"key": "value"}
+  flatten({"key": {"deeper": {"more": {"enough": "value"}}}}) == {"key/deeper/more/enough": "value"}
+  flatten({"empty": {}}) == {"empty": ""}
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def flatten {α : Type} [ToString α] (d : Dict α (Dict α String)) : Dict α String :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def appendPath (s1 s2 : String) : String :=
+    s1 ++ "/" ++ s2
+
+  structure isFlat (d : Dict String String) : Prop where
+    flat : ∀ k v, d.get k = some v → ¬∃ k' v', k = appendPath k' v'
+vc-theorems: |
+  theorem flatten_flat_dict_unchanged {d : Dict String String} :
+    isFlat d → d = Dict.mk (λ s => d.get s) :=
+    sorry
+
+
+  theorem flatten_nested_dict (d : Dict String (Dict String String))
+      (outer inner : String) (value : String) :
+    (d.get outer >>= (λ innerDict => innerDict.get inner)) = some value →
+    (flatten d).get (appendPath outer inner) = some value :=
+    sorry
+
+
+  theorem flatten_empty_dict :
+    flatten (Dict.mk (λ (_ : String) => none)) = Dict.mk (λ (_ : String) => none) :=
+    sorry
+
+
+  theorem flatten_empty_nested_dict :
+    flatten (Dict.mk (λ s => if s = "key" 
+      then some (Dict.mk (λ (_ : String) => none)) 
+      else none)) =
+    Dict.mk (λ s => if s = "key" then some "" else none) :=
+    sorry
+
+  /--
+  info: {'key': 'value'}
+  -/
+  #guard_msgs in
+  #eval flatten {"key": "value"}
+
+  /--
+  info: {'key/deeper/more/enough': 'value'}
+  -/
+  #guard_msgs in
+  #eval flatten {"key": {"deeper": {"more": {"enough": "value"}}}}
+
+  /--
+  info: {'empty': ''}
+  -/
+  #guard_msgs in
+  #eval flatten {"empty": {}}
+
+  /--
+  info: expected
+  -/
+  #guard_msgs in
+  #eval flatten {"name": {"first": "One", "last": "Drone"}, "job": "scout", "recent": {}, "additional": {"place": {"zone": "1", "cell": "2"}}}
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

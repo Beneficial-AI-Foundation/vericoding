@@ -1,21 +1,72 @@
-"vc-description": "Given a binary tree, return the zigzag level order traversal of\
-  \ its nodes' values. (ie, from left to right, then right to left for the next level\
-  \ and alternate between).\n\n\nFor example:\nGiven binary tree [3,9,20,null,null,15,7],\n\
-  \n    3\n   / \\\n  9  20\n    /  \\\n   15   7\n\n\n\nreturn its zigzag level order\
-  \ traversal as:\n\n[\n  [3],\n  [20,9],\n  [15,7]\n]"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def zigzagLevelOrder (root : Option TreeNode) : List (List Int)\
-  \ :=\n  sorry\n"
-"vc-theorems": "theorem zigzagLevelOrder_valid {root : Option TreeNode} :\n  let result\
-  \ := zigzagLevelOrder root\n  -- Result is a list of lists\n  result.all (fun level\
-  \ => level.all (fun x => x ≥ -100 ∧ x ≤ 100)) ∧\n  -- Each level length is at most\
-  \ double the previous\n  result.tail.all (fun level => \n    match result.head?\
-  \ with\n    | some prev => level.length ≤ 2 * prev.length \n    | none => true)\
-  \ :=\n  sorry\n\n\ntheorem zigzagLevelOrder_empty :\n  zigzagLevelOrder none = []\
-  \ :=\n  sorry\n\n\ntheorem zigzagLevelOrder_single_node :\n  zigzagLevelOrder (some\
-  \ (TreeNode.node 1 none none)) = [[1]] := \n  sorry\n\n/--\ninfo: [[3], [20, 9],\
-  \ [15, 7]]\n-/\n#guard_msgs in\n#eval zigzagLevelOrder TreeNode(3)\n\n/--\ninfo:\
-  \ [[1]]\n-/\n#guard_msgs in\n#eval zigzagLevelOrder TreeNode(1)\n\n/--\ninfo: []\n\
-  -/\n#guard_msgs in\n#eval zigzagLevelOrder None\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a binary tree, return the zigzag level order traversal of its nodes' values. (ie, from left to right, then right to left for the next level and alternate between).
+
+
+  For example:
+  Given binary tree [3,9,20,null,null,15,7],
+
+      3
+     / \
+    9  20
+      /  \
+     15   7
+
+
+
+  return its zigzag level order traversal as:
+
+  [
+    [3],
+    [20,9],
+    [15,7]
+  ]
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def zigzagLevelOrder (root : Option TreeNode) : List (List Int) :=
+    sorry
+vc-theorems: |
+  theorem zigzagLevelOrder_valid {root : Option TreeNode} :
+    let result := zigzagLevelOrder root
+    -- Result is a list of lists
+    result.all (fun level => level.all (fun x => x ≥ -100 ∧ x ≤ 100)) ∧
+    -- Each level length is at most double the previous
+    result.tail.all (fun level => 
+      match result.head? with
+      | some prev => level.length ≤ 2 * prev.length 
+      | none => true) :=
+    sorry
+
+
+  theorem zigzagLevelOrder_empty :
+    zigzagLevelOrder none = [] :=
+    sorry
+
+
+  theorem zigzagLevelOrder_single_node :
+    zigzagLevelOrder (some (TreeNode.node 1 none none)) = [[1]] := 
+    sorry
+
+  /--
+  info: [[3], [20, 9], [15, 7]]
+  -/
+  #guard_msgs in
+  #eval zigzagLevelOrder TreeNode(3)
+
+  /--
+  info: [[1]]
+  -/
+  #guard_msgs in
+  #eval zigzagLevelOrder TreeNode(1)
+
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval zigzagLevelOrder None
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

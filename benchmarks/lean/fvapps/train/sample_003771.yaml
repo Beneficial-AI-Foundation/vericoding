@@ -1,20 +1,59 @@
-"vc-description": "Write a function that returns the number of '2's in the factorization\
-  \ of a number.  \nFor example,\n```python\ntwo_count(24)\n```\nshould return 3,\
-  \ since the factorization of 24 is 2^3 x 3\n```python\ntwo_count(17280)\n```\nshould\
-  \ return 7, since the factorization of 17280 is 2^7 x 5 x 3^3  \nThe number passed\
-  \ to two_count (twoCount)  will always be a positive integer greater than or equal\
-  \ to 1."
-"vc-preamble": "import Imports.AllImports\n\ndef two_count (n : Nat) : Nat := sorry\
-  \ \n\ntheorem two_count_non_negative (n : Nat) (h : n > 0) : \n  two_count n ≥ 0\
-  \ := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calc_divisions (n : Nat) : Nat := sorry\n\ntheorem two_count_matches_divisions\
-  \ (n : Nat) (h : n > 0) :\n  two_count n = calc_divisions n := sorry\n"
-"vc-theorems": "theorem two_count_odd (n : Nat) (h₁ : n > 0) (h₂ : n % 2 = 1) :\n\
-  \  two_count n = 0 := sorry\n\n\ntheorem two_count_power_of_two (n : Nat) (h₁ :\
-  \ n > 0) (h₂ : n.isPowerOfTwo) :\n  two_count n = Nat.log2 n := sorry\n\n\ntheorem\
-  \ two_count_multiplication (n k : Nat) (h : n > 0) :\n  two_count (n * 2^k) = two_count\
-  \ n + k := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval two_count 24\n\n/--\n\
-  info: 7\n-/\n#guard_msgs in\n#eval two_count 17280\n\n/--\ninfo: 8\n-/\n#guard_msgs\
-  \ in\n#eval two_count 256\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function that returns the number of '2's in the factorization of a number.  
+  For example,
+  ```python
+  two_count(24)
+  ```
+  should return 3, since the factorization of 24 is 2^3 x 3
+  ```python
+  two_count(17280)
+  ```
+  should return 7, since the factorization of 17280 is 2^7 x 5 x 3^3  
+  The number passed to two_count (twoCount)  will always be a positive integer greater than or equal to 1.
+vc-preamble: |
+  import Imports.AllImports
+
+  def two_count (n : Nat) : Nat := sorry 
+
+  theorem two_count_non_negative (n : Nat) (h : n > 0) : 
+    two_count n ≥ 0 := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def calc_divisions (n : Nat) : Nat := sorry
+
+  theorem two_count_matches_divisions (n : Nat) (h : n > 0) :
+    two_count n = calc_divisions n := sorry
+vc-theorems: |
+  theorem two_count_odd (n : Nat) (h₁ : n > 0) (h₂ : n % 2 = 1) :
+    two_count n = 0 := sorry
+
+
+  theorem two_count_power_of_two (n : Nat) (h₁ : n > 0) (h₂ : n.isPowerOfTwo) :
+    two_count n = Nat.log2 n := sorry
+
+
+  theorem two_count_multiplication (n k : Nat) (h : n > 0) :
+    two_count (n * 2^k) = two_count n + k := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval two_count 24
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval two_count 17280
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval two_count 256
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

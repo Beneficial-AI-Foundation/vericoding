@@ -1,26 +1,52 @@
-"vc-description": "Chef recently learned about ratios and proportions. He wrote some\
-  \ positive integers a, b, c, d on a paper. Chef wants to know whether he can shuffle\
-  \ these numbers so as to make some proportion? Formally, four numbers x, y, z, w\
-  \ are said to make a proportion if ratio of x : y is same as that of z : w.\n\n\
-  -----Input-----\nOnly line of the input contains four space separated positive integers\
-  \ - a, b, c, d.\n\n-----Output-----\nPrint \"Possible\" if it is possible to shuffle\
-  \ a, b, c, d to make proportion, otherwise \"Impossible\" (without quotes).\n\n\
-  -----Constraints-----\n- 1 ≤ a, b, c, d  ≤ 1000\n\n-----Example-----\nInput:\n1\
-  \ 2 4 2\n\nOutput:\nPossible\n\n-----Explanation-----\nBy swapping 4 and the second\
-  \ 2, we get 1 2 2 4. Note that 1 2 2 4 make proportion as 1 : 2 = 2 : 4. Hence answer\
-  \ is \"Possible\""
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def can_make_proportion (a b c d : Int) : String := sorry \n\n\
-  /-- If a:b = c:d where c=2a and d=2b, then a proportion is possible -/"
-"vc-theorems": "theorem proportional_numbers_are_possible {a b : Int} (ha : a > 0)\
-  \ (hb : b > 0) :\n  can_make_proportion a b (2*a) (2*b) = \"Possible\" := sorry\n\
-  \n/-- The result is invariant under reordering the ratios -/\n\ntheorem order_invariant\
-  \ {a b c d : Int} (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) :\n  can_make_proportion\
-  \ a b c d = can_make_proportion b a d c ∧ \n  can_make_proportion a b c d = can_make_proportion\
-  \ c d a b := sorry\n\n/-- Same number always forms valid proportion -/\n\ntheorem\
-  \ same_number_possible {n : Int} (hn : n > 0) :\n  can_make_proportion n n n n =\
-  \ \"Possible\" := sorry\n\n/-- Zero numerator with non-zero denominator is possible,\
-  \ but zero denominator raises error -/\n\ntheorem zero_division {n : Int} (hn :\
-  \ n > 0) :\n  can_make_proportion 0 n 0 (2*n) = \"Possible\" := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Chef recently learned about ratios and proportions. He wrote some positive integers a, b, c, d on a paper. Chef wants to know whether he can shuffle these numbers so as to make some proportion? Formally, four numbers x, y, z, w are said to make a proportion if ratio of x : y is same as that of z : w.
+
+  -----Input-----
+  Only line of the input contains four space separated positive integers - a, b, c, d.
+
+  -----Output-----
+  Print "Possible" if it is possible to shuffle a, b, c, d to make proportion, otherwise "Impossible" (without quotes).
+
+  -----Constraints-----
+  - 1 ≤ a, b, c, d  ≤ 1000
+
+  -----Example-----
+  Input:
+  1 2 4 2
+
+  Output:
+  Possible
+
+  -----Explanation-----
+  By swapping 4 and the second 2, we get 1 2 2 4. Note that 1 2 2 4 make proportion as 1 : 2 = 2 : 4. Hence answer is "Possible"
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def can_make_proportion (a b c d : Int) : String := sorry 
+
+  /-- If a:b = c:d where c=2a and d=2b, then a proportion is possible -/
+vc-theorems: |-
+  theorem proportional_numbers_are_possible {a b : Int} (ha : a > 0) (hb : b > 0) :
+    can_make_proportion a b (2*a) (2*b) = "Possible" := sorry
+
+  /-- The result is invariant under reordering the ratios -/
+
+  theorem order_invariant {a b c d : Int} (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) :
+    can_make_proportion a b c d = can_make_proportion b a d c ∧ 
+    can_make_proportion a b c d = can_make_proportion c d a b := sorry
+
+  /-- Same number always forms valid proportion -/
+
+  theorem same_number_possible {n : Int} (hn : n > 0) :
+    can_make_proportion n n n n = "Possible" := sorry
+
+  /-- Zero numerator with non-zero denominator is possible, but zero denominator raises error -/
+
+  theorem zero_division {n : Int} (hn : n > 0) :
+    can_make_proportion 0 n 0 (2*n) = "Possible" := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

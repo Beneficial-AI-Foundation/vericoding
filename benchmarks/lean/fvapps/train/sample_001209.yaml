@@ -1,19 +1,67 @@
-"vc-description": "Given a number $n$, give the last digit of sum of all the prime\
-  \ numbers from 1 to $n$ inclusive.\n\n-----Input:-----\n- First line contains number\
-  \ of testcase $t$.\n- Each testcase contains of a single line of input, number $n$.\
-  \ \n\n-----Output:-----\nLast digit of sum of every prime number till n.\n\n-----Constraints-----\n\
-  - $1 \\leq T \\leq 10$\n- $2 \\leq N \\leq 10^6$\n\n-----Sample Input:-----\n1\n\
-  10\n\n-----Sample Output:-----\n7"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isPrime (n : Nat) : Bool := sorry\ndef last_digit_prime_sum\
-  \ (n : Nat) : Nat := sorry\n\n-- Results are natural numbers between 0 and 9 inclusive"
-"vc-theorems": "theorem last_digit_bounds (n : Nat) (h : n ≥ 2) : \n  0 ≤ last_digit_prime_sum\
-  \ n ∧ last_digit_prime_sum n ≤ 9 := sorry\n\n-- Known value cases\n\ntheorem small_primes_cases\
-  \ : \n  last_digit_prime_sum 2 = 2 ∧ \n  last_digit_prime_sum 3 = 5 ∧\n  last_digit_prime_sum\
-  \ 4 = 5 ∧\n  last_digit_prime_sum 5 = 0 := sorry\n\n-- Result is equal to its modulo\
-  \ 10\n\ntheorem modulo_property (n : Nat) (h : n ≥ 2) :\n  last_digit_prime_sum\
-  \ n = last_digit_prime_sum n % 10 := sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n\
-  #eval last_digit_prime_sum 10\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval last_digit_prime_sum\
-  \ 5\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval last_digit_prime_sum 100\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Given a number $n$, give the last digit of sum of all the prime numbers from 1 to $n$ inclusive.
+
+  -----Input:-----
+  - First line contains number of testcase $t$.
+  - Each testcase contains of a single line of input, number $n$. 
+
+  -----Output:-----
+  Last digit of sum of every prime number till n.
+
+  -----Constraints-----
+  - $1 \leq T \leq 10$
+  - $2 \leq N \leq 10^6$
+
+  -----Sample Input:-----
+  1
+  10
+
+  -----Sample Output:-----
+  7
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def isPrime (n : Nat) : Bool := sorry
+  def last_digit_prime_sum (n : Nat) : Nat := sorry
+
+  -- Results are natural numbers between 0 and 9 inclusive
+vc-theorems: |
+  theorem last_digit_bounds (n : Nat) (h : n ≥ 2) : 
+    0 ≤ last_digit_prime_sum n ∧ last_digit_prime_sum n ≤ 9 := sorry
+
+  -- Known value cases
+
+  theorem small_primes_cases : 
+    last_digit_prime_sum 2 = 2 ∧ 
+    last_digit_prime_sum 3 = 5 ∧
+    last_digit_prime_sum 4 = 5 ∧
+    last_digit_prime_sum 5 = 0 := sorry
+
+  -- Result is equal to its modulo 10
+
+  theorem modulo_property (n : Nat) (h : n ≥ 2) :
+    last_digit_prime_sum n = last_digit_prime_sum n % 10 := sorry
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval last_digit_prime_sum 10
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval last_digit_prime_sum 5
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval last_digit_prime_sum 100
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

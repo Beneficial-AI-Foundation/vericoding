@@ -1,31 +1,72 @@
-"vc-description": "You are given a binary string S. You need to transform this string\
-  \ into another string of equal length consisting only of zeros, with the minimum\
-  \ number of operations.\nA single operation consists of taking some prefix of the\
-  \ string S and flipping all its values. That is, change all the 0s in this prefix\
-  \ to 1s, and all the 1s in the prefix to 0s. You can use this operation as many\
-  \ number of times as you want over any prefix of the string.\n\n-----Input-----\n\
-  The only line of the input contains the binary string,  S . \n\n-----Output-----\n\
-  Output a single line containing one integer, the minimum number of operations that\
-  \ are needed to transform the given string S into the string of equal length consisting\
-  \ only of zeros.\n\n-----Constraints-----\n- 1 ≤ |S| ≤ 100,000\n\n-----Subtasks-----\n\
-  - Subtask #1 (30 points): 1 ≤ |S| ≤ 2000\n- Subtask #2 (70 points): Original constraints.\n\
-  \n-----Example-----\nInput:\n01001001\n\nOutput:\n6\n\n-----Explanation-----\nFor\
-  \ the given sample case, let us look at the way where we achieved minimum number\
-  \ of operations.\n\nOperation 1: You flip values in the prefix of length 8 and transform\
-  \ the string into 10110110 \nOperation 2: You flip values in the prefix of length\
-  \ 7 and transform the string into 01001000 \nOperation 3: You flip values in the\
-  \ prefix of length 5 and transform the string into 10110000 \nOperation 4: You flip\
-  \ values in the prefix of length 4 and transform the string into 01000000 \nOperation\
-  \ 5: You flip values in the prefix of length 2 and transform the string into 10000000\
-  \ \nOperation 6: You flip values in the prefix of length 1 and finally, transform\
-  \ the string into 00000000"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def min_ops_to_zeros (s : String) : Nat := sorry\n\n\n\n\n\ntheorem\
-  \ output_bounds (s : String) :\n  let result := min_ops_to_zeros s\n  0 ≤ result\
-  \ ∧ result ≤ s.length := sorry\n"
-"vc-theorems": "theorem empty_string :\n  min_ops_to_zeros \"\" = 0 := sorry\n\n/--\n\
-  info: 6\n-/\n#guard_msgs in\n#eval min_ops_to_zeros \"01001001\"\n\n/--\ninfo: 0\n\
-  -/\n#guard_msgs in\n#eval min_ops_to_zeros \"0\"\n\n/--\ninfo: 1\n-/\n#guard_msgs\
-  \ in\n#eval min_ops_to_zeros \"11\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  You are given a binary string S. You need to transform this string into another string of equal length consisting only of zeros, with the minimum number of operations.
+  A single operation consists of taking some prefix of the string S and flipping all its values. That is, change all the 0s in this prefix to 1s, and all the 1s in the prefix to 0s. You can use this operation as many number of times as you want over any prefix of the string.
+
+  -----Input-----
+  The only line of the input contains the binary string,  S . 
+
+  -----Output-----
+  Output a single line containing one integer, the minimum number of operations that are needed to transform the given string S into the string of equal length consisting only of zeros.
+
+  -----Constraints-----
+  - 1 ≤ |S| ≤ 100,000
+
+  -----Subtasks-----
+  - Subtask #1 (30 points): 1 ≤ |S| ≤ 2000
+  - Subtask #2 (70 points): Original constraints.
+
+  -----Example-----
+  Input:
+  01001001
+
+  Output:
+  6
+
+  -----Explanation-----
+  For the given sample case, let us look at the way where we achieved minimum number of operations.
+
+  Operation 1: You flip values in the prefix of length 8 and transform the string into 10110110 
+  Operation 2: You flip values in the prefix of length 7 and transform the string into 01001000 
+  Operation 3: You flip values in the prefix of length 5 and transform the string into 10110000 
+  Operation 4: You flip values in the prefix of length 4 and transform the string into 01000000 
+  Operation 5: You flip values in the prefix of length 2 and transform the string into 10000000 
+  Operation 6: You flip values in the prefix of length 1 and finally, transform the string into 00000000
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def min_ops_to_zeros (s : String) : Nat := sorry
+
+
+
+
+
+  theorem output_bounds (s : String) :
+    let result := min_ops_to_zeros s
+    0 ≤ result ∧ result ≤ s.length := sorry
+vc-theorems: |
+  theorem empty_string :
+    min_ops_to_zeros "" = 0 := sorry
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval min_ops_to_zeros "01001001"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_ops_to_zeros "0"
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_ops_to_zeros "11"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

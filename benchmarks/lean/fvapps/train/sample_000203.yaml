@@ -1,17 +1,63 @@
-"vc-description": "Given a list of non negative integers, arrange them such that they\
-  \ form the largest number.\n\nExample 1:\n\n\nInput: [10,2]\nOutput: \"210\"\n\n\
-  Example 2:\n\n\nInput: [3,30,34,5,9]\nOutput: \"9534330\"\n\n\nNote: The result\
-  \ may be very large, so you need to return a string instead of an integer."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def largest_number (l : List Nat) : String := sorry\n\ntheorem\
-  \ empty_list_returns_zero :\n  largest_number [] = \"0\" := sorry\n"
-"vc-theorems": "theorem singleton_zero_returns_zero :\n  largest_number [0] = \"0\"\
-  \ := sorry\n\n\ntheorem two_zeros_returns_zero :\n  largest_number [0, 0] = \"0\"\
-  \ := sorry\n\n\ntheorem ten_and_two_returns_210 :\n  largest_number [10, 2] = \"\
-  210\" := sorry\n\n\ntheorem multiple_numbers_returns_largest_possible :\n  largest_number\
-  \ [3, 30, 34, 5, 9] = \"9534330\" := sorry\n\n/--\ninfo: '210'\n-/\n#guard_msgs\
-  \ in\n#eval largest_number [10, 2]\n\n/--\ninfo: '9534330'\n-/\n#guard_msgs in\n\
-  #eval largest_number [3, 30, 34, 5, 9]\n\n/--\ninfo: '0'\n-/\n#guard_msgs in\n#eval\
-  \ largest_number [0, 0]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a list of non negative integers, arrange them such that they form the largest number.
+
+  Example 1:
+
+
+  Input: [10,2]
+  Output: "210"
+
+  Example 2:
+
+
+  Input: [3,30,34,5,9]
+  Output: "9534330"
+
+
+  Note: The result may be very large, so you need to return a string instead of an integer.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def largest_number (l : List Nat) : String := sorry
+
+  theorem empty_list_returns_zero :
+    largest_number [] = "0" := sorry
+vc-theorems: |
+  theorem singleton_zero_returns_zero :
+    largest_number [0] = "0" := sorry
+
+
+  theorem two_zeros_returns_zero :
+    largest_number [0, 0] = "0" := sorry
+
+
+  theorem ten_and_two_returns_210 :
+    largest_number [10, 2] = "210" := sorry
+
+
+  theorem multiple_numbers_returns_largest_possible :
+    largest_number [3, 30, 34, 5, 9] = "9534330" := sorry
+
+  /--
+  info: '210'
+  -/
+  #guard_msgs in
+  #eval largest_number [10, 2]
+
+  /--
+  info: '9534330'
+  -/
+  #guard_msgs in
+  #eval largest_number [3, 30, 34, 5, 9]
+
+  /--
+  info: '0'
+  -/
+  #guard_msgs in
+  #eval largest_number [0, 0]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

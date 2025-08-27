@@ -1,28 +1,80 @@
-"vc-description": "You are given positive integers $L$ and $R$. You have to find the\
-  \ sum\nS=∑i=LR(L∧(L+1)∧…∧i),S=∑i=LR(L∧(L+1)∧…∧i),S = \\sum_{i=L}^R \\left(L \\wedge\
-  \ (L+1) \\wedge \\ldots \\wedge i\\right) \\,,\nwhere $\\wedge$ denotes the bitwise\
-  \ AND operation. Since the sum could be large, compute it modulo $10^9+7$.\n\n-----Input-----\n\
-  - The first line of the input contains a single integer $T$ denoting the number\
-  \ of test cases. The description of $T$ test cases follows.\n- The first and only\
-  \ line of each test case contains two space-separated integers $L$ and $R$.\n\n\
-  -----Output-----\nFor each test case, print a single line containing one integer\
-  \ — the sum $S$ modulo $10^9+7$.\n\n-----Constraints-----\n- $1 \\le T \\le 10^5$\n\
-  - $1 \\le L \\le R \\le 10^{18}$\n\n-----Example Input-----\n2\n1 4\n4 10\n\n-----Example\
-  \ Output-----\n1\n16\n\n-----Explanation-----\nExample case 1: The sum is 1 + 1\
-  \ AND 2 + 1 AND 2 AND 3 + 1 AND 2 AND 3 AND 4 = 1 + 0 + 0 + 0 = 1.\nExample case\
-  \ 2: The sum is 4 + 4 AND 5 + 4 AND 5 AND 6 + 4 AND 5 AND 6 AND 7 + … + 4 AND 5\
-  \ AND … AND 10 = 4 + 4 + … + 0 = 16."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calculate_sum (l r : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem calculate_sum_range_bounds (l r : Nat)\n  (h1 : 1 ≤ l) (h2\
-  \ : l ≤ r) (h3 : r ≤ 1000) : \n  0 ≤ calculate_sum l r ∧ calculate_sum l r ≤ 1000000007\
-  \ :=\n  sorry\n\n\ntheorem calculate_sum_identity (n : Nat)\n  (h : 1 ≤ n ∧ n ≤\
-  \ 1000) :\n  calculate_sum n n = n :=\n  sorry \n\n\ntheorem calculate_sum_commutative\
-  \ (l r : Nat)\n  (h1 : 1 ≤ l) (h2 : l ≤ r) (h3 : r ≤ 1000) :\n  calculate_sum l\
-  \ r = calculate_sum l r :=\n  sorry\n\n\ntheorem calculate_sum_consecutive (n :\
-  \ Nat) \n  (h : 1 ≤ n ∧ n ≤ 100) :\n  calculate_sum n (n + 1) = (n + (n &&& (n +\
-  \ 1))) % 1000000007 :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval calculate_sum\
-  \ 1 4\n\n/--\ninfo: 16\n-/\n#guard_msgs in\n#eval calculate_sum 4 10\n\n/--\ninfo:\
-  \ 4\n-/\n#guard_msgs in\n#eval calculate_sum 2 5\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  You are given positive integers $L$ and $R$. You have to find the sum
+  S=∑i=LR(L∧(L+1)∧…∧i),S=∑i=LR(L∧(L+1)∧…∧i),S = \sum_{i=L}^R \left(L \wedge (L+1) \wedge \ldots \wedge i\right) \,,
+  where $\wedge$ denotes the bitwise AND operation. Since the sum could be large, compute it modulo $10^9+7$.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first and only line of each test case contains two space-separated integers $L$ and $R$.
+
+  -----Output-----
+  For each test case, print a single line containing one integer — the sum $S$ modulo $10^9+7$.
+
+  -----Constraints-----
+  - $1 \le T \le 10^5$
+  - $1 \le L \le R \le 10^{18}$
+
+  -----Example Input-----
+  2
+  1 4
+  4 10
+
+  -----Example Output-----
+  1
+  16
+
+  -----Explanation-----
+  Example case 1: The sum is 1 + 1 AND 2 + 1 AND 2 AND 3 + 1 AND 2 AND 3 AND 4 = 1 + 0 + 0 + 0 = 1.
+  Example case 2: The sum is 4 + 4 AND 5 + 4 AND 5 AND 6 + 4 AND 5 AND 6 AND 7 + … + 4 AND 5 AND … AND 10 = 4 + 4 + … + 0 = 16.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def calculate_sum (l r : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem calculate_sum_range_bounds (l r : Nat)
+    (h1 : 1 ≤ l) (h2 : l ≤ r) (h3 : r ≤ 1000) : 
+    0 ≤ calculate_sum l r ∧ calculate_sum l r ≤ 1000000007 :=
+    sorry
+
+
+  theorem calculate_sum_identity (n : Nat)
+    (h : 1 ≤ n ∧ n ≤ 1000) :
+    calculate_sum n n = n :=
+    sorry 
+
+
+  theorem calculate_sum_commutative (l r : Nat)
+    (h1 : 1 ≤ l) (h2 : l ≤ r) (h3 : r ≤ 1000) :
+    calculate_sum l r = calculate_sum l r :=
+    sorry
+
+
+  theorem calculate_sum_consecutive (n : Nat) 
+    (h : 1 ≤ n ∧ n ≤ 100) :
+    calculate_sum n (n + 1) = (n + (n &&& (n + 1))) % 1000000007 :=
+    sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval calculate_sum 1 4
+
+  /--
+  info: 16
+  -/
+  #guard_msgs in
+  #eval calculate_sum 4 10
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval calculate_sum 2 5
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

@@ -1,24 +1,81 @@
-"vc-description": "## Description:\n\n Remove all exclamation marks from the end of\
-  \ words. Words are separated by spaces in the sentence.\n\n### Examples\n\n```\n\
-  remove(\"Hi!\") === \"Hi\"\nremove(\"Hi!!!\") === \"Hi\"\nremove(\"!Hi\") === \"\
-  !Hi\"\nremove(\"!Hi!\") === \"!Hi\"\nremove(\"Hi! Hi!\") === \"Hi Hi\"\nremove(\"\
-  !!!Hi !!hi!!! !hi\") === \"!!!Hi !!hi !hi\"\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def remove (s : String) : String :=\n  sorry\n\n/-- If a word in\
-  \ the input string doesn't contain exclamation marks,\n    it remains unchanged\
-  \ in the output -/"
-"vc-theorems": "theorem words_preserved (s : String) :\n  ∀ w, w ∈ (s.split (· = '\
-  \ ')) → \n  (¬ ('!' ∈ w.data)) → \n  w ∈ (remove s).split (· = ' ') :=\nsorry\n\n\
-  /-- No word in the output string ends with an exclamation mark -/\n\ntheorem no_trailing_exclamations\
-  \ (s : String) :\n  ∀ w, w ∈ (remove s).split (· = ' ') →\n  ¬ w.endsWith \"!\"\
-  \ :=\nsorry\n\n/-- If a word starts with exclamation marks in the input,\n    it\
-  \ starts with the same exclamation marks in the output -/\n\ntheorem leading_exclamations_preserved\
-  \ (s : String) :\n  ∀ w w', w ∈ s.split (· = ' ') →\n  w' ∈ (remove s).split (·\
-  \ = ' ') →\n  w.startsWith \"!\" → w' = w ∨ w'.startsWith \"!\" :=\nsorry\n\n/--\n\
-  info: 'Hi'\n-/\n#guard_msgs in\n#eval remove \"Hi!\"\n\n/--\ninfo: 'Hi'\n-/\n#guard_msgs\
-  \ in\n#eval remove \"Hi!!!\"\n\n/--\ninfo: '!Hi'\n-/\n#guard_msgs in\n#eval remove\
-  \ \"!Hi!\"\n\n/--\ninfo: 'Hi Hi'\n-/\n#guard_msgs in\n#eval remove \"Hi! Hi!\"\n\
-  \n/--\ninfo: '!!!Hi !!hi !hi'\n-/\n#guard_msgs in\n#eval remove \"!!!Hi !!hi!!!\
-  \ !hi\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ## Description:
+
+   Remove all exclamation marks from the end of words. Words are separated by spaces in the sentence.
+
+  ### Examples
+
+  ```
+  remove("Hi!") === "Hi"
+  remove("Hi!!!") === "Hi"
+  remove("!Hi") === "!Hi"
+  remove("!Hi!") === "!Hi"
+  remove("Hi! Hi!") === "Hi Hi"
+  remove("!!!Hi !!hi!!! !hi") === "!!!Hi !!hi !hi"
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def remove (s : String) : String :=
+    sorry
+
+  /-- If a word in the input string doesn't contain exclamation marks,
+      it remains unchanged in the output -/
+vc-theorems: |
+  theorem words_preserved (s : String) :
+    ∀ w, w ∈ (s.split (· = ' ')) → 
+    (¬ ('!' ∈ w.data)) → 
+    w ∈ (remove s).split (· = ' ') :=
+  sorry
+
+  /-- No word in the output string ends with an exclamation mark -/
+
+  theorem no_trailing_exclamations (s : String) :
+    ∀ w, w ∈ (remove s).split (· = ' ') →
+    ¬ w.endsWith "!" :=
+  sorry
+
+  /-- If a word starts with exclamation marks in the input,
+      it starts with the same exclamation marks in the output -/
+
+  theorem leading_exclamations_preserved (s : String) :
+    ∀ w w', w ∈ s.split (· = ' ') →
+    w' ∈ (remove s).split (· = ' ') →
+    w.startsWith "!" → w' = w ∨ w'.startsWith "!" :=
+  sorry
+
+  /--
+  info: 'Hi'
+  -/
+  #guard_msgs in
+  #eval remove "Hi!"
+
+  /--
+  info: 'Hi'
+  -/
+  #guard_msgs in
+  #eval remove "Hi!!!"
+
+  /--
+  info: '!Hi'
+  -/
+  #guard_msgs in
+  #eval remove "!Hi!"
+
+  /--
+  info: 'Hi Hi'
+  -/
+  #guard_msgs in
+  #eval remove "Hi! Hi!"
+
+  /--
+  info: '!!!Hi !!hi !hi'
+  -/
+  #guard_msgs in
+  #eval remove "!!!Hi !!hi!!! !hi"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

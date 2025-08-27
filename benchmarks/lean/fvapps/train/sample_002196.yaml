@@ -1,43 +1,101 @@
-"vc-description": "There is a simple undirected graph with N vertices and M edges.\n\
-  The vertices are numbered 1 through N, and the edges are numbered 1 through M.\n\
-  Edge i connects Vertex U_i and V_i.\nAlso, Vertex i has two predetermined integers\
-  \ A_i and B_i.\nYou will play the following game on this graph.\nFirst, choose one\
-  \ vertex and stand on it, with W yen (the currency of Japan) in your pocket.\nHere,\
-  \ A_s \\leq W must hold, where s is the vertex you choose.\nThen, perform the following\
-  \ two kinds of operations any number of times in any order:\n - Choose one vertex\
-  \ v that is directly connected by an edge to the vertex you are standing on, and\
-  \ move to vertex v. Here, you need to have at least A_v yen in your pocket when\
-  \ you perform this move.\n - Donate B_v yen to the vertex v you are standing on.\
-  \ Here, the amount of money in your pocket must not become less than 0 yen.\nYou\
-  \ win the game when you donate once to every vertex.\nFind the smallest initial\
-  \ amount of money W that enables you to win the game.\n\n-----Constraints-----\n\
-  \ - 1 \\leq N \\leq 10^5\n - N-1 \\leq M \\leq 10^5\n - 1 \\leq A_i,B_i \\leq 10^9\n\
-  \ - 1 \\leq U_i < V_i \\leq N\n - The given graph is connected and simple (there\
-  \ is at most one edge between any pair of vertices).\n\n-----Input-----\nInput is\
-  \ given from Standard Input in the following format:\nN M\nA_1 B_1\nA_2 B_2\n:\n\
-  A_N B_N\nU_1 V_1\nU_2 V_2\n:\nU_M V_M\n\n-----Output-----\nPrint the smallest initial\
-  \ amount of money W that enables you to win the game.\n\n-----Sample Input-----\n\
-  4 5\n3 1\n1 2\n4 1\n6 2\n1 2\n2 3\n2 4\n1 4\n3 4\n\n-----Sample Output-----\n6\n\
-  \nIf you have 6 yen initially, you can win the game as follows:\n - Stand on Vertex\
-  \ 4. This is possible since you have not less than 6 yen.\n - Donate 2 yen to Vertex\
-  \ 4. Now you have 4 yen.\n - Move to Vertex 3. This is possible since you have not\
-  \ less than 4 yen.\n - Donate 1 yen to Vertex 3. Now you have 3 yen.\n - Move to\
-  \ Vertex 2. This is possible since you have not less than 1 yen.\n - Move to Vertex\
-  \ 1. This is possible since you have not less than 3 yen.\n - Donate 1 yen to Vertex\
-  \ 1. Now you have 2 yen.\n - Move to Vertex 2. This is possible since you have not\
-  \ less than 1 yen.\n - Donate 2 yen to Vertex 2. Now you have 0 yen.\nIf you have\
-  \ less than 6 yen initially, you cannot win the game. Thus, the answer is 6."
-"vc-preamble": "import Imports.AllImports\n\ndef DSU.merge (dsu : DSU n) (a b : Nat)\
-  \ : Nat := sorry\ndef DSU.leader (dsu : DSU n) (a : Nat) : Nat := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_game (n m : Nat) (required gain : Array Int) (edges :\
-  \ Array (Nat × Nat)) : Int := sorry\n\n\n\n\n\ntheorem single_node_property (n :\
-  \ Nat) :\n  n > 0 →\n  solve_game 1 0 #[n] #[0] #[] = n := sorry"
-"vc-theorems": "/--\ninfo: 6\n-/\n#guard_msgs in\n#eval solve_game 4 5 #[3, 1, 4,\
-  \ 6] #[1, 2, 1, 2] #[(1, 2), (2, 3), (2, 4), (1, 4), (3, 4)]\n\n/--\ninfo: 44\n\
-  -/\n#guard_msgs in\n#eval solve_game 5 8 #[6, 15, 15, 15, 20] #[4, 13, 19, 1, 7]\
-  \ #[(1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 5), (4, 5)]\n\n/--\ninfo:\
-  \ 582\n-/\n#guard_msgs in\n#eval solve_game 9 10 #[131, 98, 242, 231, 382, 224,\
-  \ 140, 209, 164] #[2, 79, 32, 38, 82, 22, 88, 70, 64] #[(6, 8), (1, 6), (1, 4),\
-  \ (1, 3), (4, 7), (4, 9), (3, 7), (3, 9), (5, 9), (2, 5)]\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  There is a simple undirected graph with N vertices and M edges.
+  The vertices are numbered 1 through N, and the edges are numbered 1 through M.
+  Edge i connects Vertex U_i and V_i.
+  Also, Vertex i has two predetermined integers A_i and B_i.
+  You will play the following game on this graph.
+  First, choose one vertex and stand on it, with W yen (the currency of Japan) in your pocket.
+  Here, A_s \leq W must hold, where s is the vertex you choose.
+  Then, perform the following two kinds of operations any number of times in any order:
+   - Choose one vertex v that is directly connected by an edge to the vertex you are standing on, and move to vertex v. Here, you need to have at least A_v yen in your pocket when you perform this move.
+   - Donate B_v yen to the vertex v you are standing on. Here, the amount of money in your pocket must not become less than 0 yen.
+  You win the game when you donate once to every vertex.
+  Find the smallest initial amount of money W that enables you to win the game.
+
+  -----Constraints-----
+   - 1 \leq N \leq 10^5
+   - N-1 \leq M \leq 10^5
+   - 1 \leq A_i,B_i \leq 10^9
+   - 1 \leq U_i < V_i \leq N
+   - The given graph is connected and simple (there is at most one edge between any pair of vertices).
+
+  -----Input-----
+  Input is given from Standard Input in the following format:
+  N M
+  A_1 B_1
+  A_2 B_2
+  :
+  A_N B_N
+  U_1 V_1
+  U_2 V_2
+  :
+  U_M V_M
+
+  -----Output-----
+  Print the smallest initial amount of money W that enables you to win the game.
+
+  -----Sample Input-----
+  4 5
+  3 1
+  1 2
+  4 1
+  6 2
+  1 2
+  2 3
+  2 4
+  1 4
+  3 4
+
+  -----Sample Output-----
+  6
+
+  If you have 6 yen initially, you can win the game as follows:
+   - Stand on Vertex 4. This is possible since you have not less than 6 yen.
+   - Donate 2 yen to Vertex 4. Now you have 4 yen.
+   - Move to Vertex 3. This is possible since you have not less than 4 yen.
+   - Donate 1 yen to Vertex 3. Now you have 3 yen.
+   - Move to Vertex 2. This is possible since you have not less than 1 yen.
+   - Move to Vertex 1. This is possible since you have not less than 3 yen.
+   - Donate 1 yen to Vertex 1. Now you have 2 yen.
+   - Move to Vertex 2. This is possible since you have not less than 1 yen.
+   - Donate 2 yen to Vertex 2. Now you have 0 yen.
+  If you have less than 6 yen initially, you cannot win the game. Thus, the answer is 6.
+vc-preamble: |-
+  import Imports.AllImports
+
+  def DSU.merge (dsu : DSU n) (a b : Nat) : Nat := sorry
+  def DSU.leader (dsu : DSU n) (a : Nat) : Nat := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def solve_game (n m : Nat) (required gain : Array Int) (edges : Array (Nat × Nat)) : Int := sorry
+
+
+
+
+
+  theorem single_node_property (n : Nat) :
+    n > 0 →
+    solve_game 1 0 #[n] #[0] #[] = n := sorry
+vc-theorems: |
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval solve_game 4 5 #[3, 1, 4, 6] #[1, 2, 1, 2] #[(1, 2), (2, 3), (2, 4), (1, 4), (3, 4)]
+
+  /--
+  info: 44
+  -/
+  #guard_msgs in
+  #eval solve_game 5 8 #[6, 15, 15, 15, 20] #[4, 13, 19, 1, 7] #[(1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 5), (4, 5)]
+
+  /--
+  info: 582
+  -/
+  #guard_msgs in
+  #eval solve_game 9 10 #[131, 98, 242, 231, 382, 224, 140, 209, 164] #[2, 79, 32, 38, 82, 22, 88, 70, 64] #[(6, 8), (1, 6), (1, 4), (1, 3), (4, 7), (4, 9), (3, 7), (3, 9), (5, 9), (2, 5)]
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded_and_plausible

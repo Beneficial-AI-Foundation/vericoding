@@ -1,43 +1,102 @@
-"vc-description": "Amidakuji is a method of lottery designed to create random pairings\
-  \ between two sets comprised of an equal number of elements.\nYour task is to write\
-  \ a function amidakuji that returns the final positions of each element. Note that\
-  \ the elements are an ascending sequence of consecutive integers starting with 0\
-  \ (from left to right).\nInput\nYour function will receive an array/list of equal-length\
-  \ strings consisting of 0 and 1 characters; this represents the \"ladder\" structure.\
-  \ The 1s represent the rungs of the ladder and the 0s represent empty space.\nEach\
-  \ element begins at the top of its corresponding vertical rail, as illustrated in\
-  \ the diagram below.During the descent of the ladder, whenever a vertical rail intersects\
-  \ a horizontal rung, it swaps values with the adjacent connecting vertical rail.\n\
-  Output\nYour function should return an array of integers, with each integer in its\
-  \ final position.\nTest Example\n\nThe diagram above is a visual representation\
-  \ of the test example below. The yellow highlighted path shows the path taken by\
-  \ the 2 value. Each time it encounters a crosspiece, it shifts position.\n\n```python\n\
-  ladder = [\n        '001001',\n        '010000',\n        '100100',\n        '001000',\n\
-  \        '100101',\n        '010010',\n        '101001',\n        '010100'\n]\n\n\
-  amidakuji(ladder) # [4, 2, 0, 5, 3, 6, 1]\n```\n\nOther Technical Details\n\nA function\
-  \ visualizer is preloaded to help illustrate the structure of the ladder; you can\
-  \ call this function with test inputs\nNo two rungs will ever be adjacent (so there\
-  \ is no ambiguity about directional path)\nFull Test Suite: 10 fixed tests and 100\
-  \ randomly-generated tests\nTest input dimension upper bounds:\n\nmaximum width:\
-  \ 20\nmaximum height: 50\n\n\nInputs will always be valid\n\nIf you enjoyed this\
-  \ kata, be sure to check out my other katas"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def amidakuji (ladder : List (List Char)) : List Nat :=\n  sorry\n"
-"vc-theorems": "theorem amidakuji_length\n  {ladder : List (List Char)}\n  (h1 : ∀\
-  \ row ∈ ladder, row.length = (ladder.head!).length)\n  (h2 : ∀ row ∈ ladder, ∀ c\
-  \ ∈ row, c = '0' ∨ c = '1') :\n  (amidakuji ladder).length = (ladder.head!).length\
-  \ + 1 :=\n  sorry\n\n\ntheorem amidakuji_permutation\n  {ladder : List (List Char)}\n\
-  \  (h1 : ∀ row ∈ ladder, row.length = (ladder.head!).length)\n  (h2 : ∀ row ∈ ladder,\
-  \ ∀ c ∈ row, c = '0' ∨ c = '1') :\n  ∃ perm : List Nat,\n    List.Perm perm (List.range\
-  \ ((ladder.head!).length + 1)) ∧\n    amidakuji ladder = perm :=\n  sorry\n\n\n\
-  theorem amidakuji_empty_rows\n  {ladder : List (List Char)}\n  (h : ∀ row ∈ ladder,\
-  \ row.isEmpty) :\n  amidakuji ladder = List.range 1 :=\n  sorry\n\n\ntheorem amidakuji_no_swaps\n\
-  \  {ladder : List (List Char)}\n  (h1 : ∀ row ∈ ladder, row.length = (ladder.head!).length)\n\
-  \  (h2 : ∀ row ∈ ladder, ∀ c ∈ row, c = '0') :\n  amidakuji ladder = List.range\
-  \ ((ladder.head!).length + 1) :=\n  sorry\n\n/--\ninfo: [4, 2, 0, 5, 3, 6, 1]\n\
-  -/\n#guard_msgs in\n#eval amidakuji [\"001001\", \"010000\", \"100100\", \"001000\"\
-  , \"100101\", \"010010\", \"101001\", \"010100\"]\n\n/--\ninfo: [1, 0, 2]\n-/\n\
-  #guard_msgs in\n#eval amidakuji [\"10\"]\n\n/--\ninfo: [0, 1, 2, 3]\n-/\n#guard_msgs\
-  \ in\n#eval amidakuji [\"000\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Amidakuji is a method of lottery designed to create random pairings between two sets comprised of an equal number of elements.
+  Your task is to write a function amidakuji that returns the final positions of each element. Note that the elements are an ascending sequence of consecutive integers starting with 0 (from left to right).
+  Input
+  Your function will receive an array/list of equal-length strings consisting of 0 and 1 characters; this represents the "ladder" structure. The 1s represent the rungs of the ladder and the 0s represent empty space.
+  Each element begins at the top of its corresponding vertical rail, as illustrated in the diagram below.During the descent of the ladder, whenever a vertical rail intersects a horizontal rung, it swaps values with the adjacent connecting vertical rail.
+  Output
+  Your function should return an array of integers, with each integer in its final position.
+  Test Example
+
+  The diagram above is a visual representation of the test example below. The yellow highlighted path shows the path taken by the 2 value. Each time it encounters a crosspiece, it shifts position.
+
+  ```python
+  ladder = [
+          '001001',
+          '010000',
+          '100100',
+          '001000',
+          '100101',
+          '010010',
+          '101001',
+          '010100'
+  ]
+
+  amidakuji(ladder) # [4, 2, 0, 5, 3, 6, 1]
+  ```
+
+  Other Technical Details
+
+  A function visualizer is preloaded to help illustrate the structure of the ladder; you can call this function with test inputs
+  No two rungs will ever be adjacent (so there is no ambiguity about directional path)
+  Full Test Suite: 10 fixed tests and 100 randomly-generated tests
+  Test input dimension upper bounds:
+
+  maximum width: 20
+  maximum height: 50
+
+
+  Inputs will always be valid
+
+  If you enjoyed this kata, be sure to check out my other katas
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def amidakuji (ladder : List (List Char)) : List Nat :=
+    sorry
+vc-theorems: |
+  theorem amidakuji_length
+    {ladder : List (List Char)}
+    (h1 : ∀ row ∈ ladder, row.length = (ladder.head!).length)
+    (h2 : ∀ row ∈ ladder, ∀ c ∈ row, c = '0' ∨ c = '1') :
+    (amidakuji ladder).length = (ladder.head!).length + 1 :=
+    sorry
+
+
+  theorem amidakuji_permutation
+    {ladder : List (List Char)}
+    (h1 : ∀ row ∈ ladder, row.length = (ladder.head!).length)
+    (h2 : ∀ row ∈ ladder, ∀ c ∈ row, c = '0' ∨ c = '1') :
+    ∃ perm : List Nat,
+      List.Perm perm (List.range ((ladder.head!).length + 1)) ∧
+      amidakuji ladder = perm :=
+    sorry
+
+
+  theorem amidakuji_empty_rows
+    {ladder : List (List Char)}
+    (h : ∀ row ∈ ladder, row.isEmpty) :
+    amidakuji ladder = List.range 1 :=
+    sorry
+
+
+  theorem amidakuji_no_swaps
+    {ladder : List (List Char)}
+    (h1 : ∀ row ∈ ladder, row.length = (ladder.head!).length)
+    (h2 : ∀ row ∈ ladder, ∀ c ∈ row, c = '0') :
+    amidakuji ladder = List.range ((ladder.head!).length + 1) :=
+    sorry
+
+  /--
+  info: [4, 2, 0, 5, 3, 6, 1]
+  -/
+  #guard_msgs in
+  #eval amidakuji ["001001", "010000", "100100", "001000", "100101", "010010", "101001", "010100"]
+
+  /--
+  info: [1, 0, 2]
+  -/
+  #guard_msgs in
+  #eval amidakuji ["10"]
+
+  /--
+  info: [0, 1, 2, 3]
+  -/
+  #guard_msgs in
+  #eval amidakuji ["000"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

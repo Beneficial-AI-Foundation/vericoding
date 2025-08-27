@@ -1,35 +1,103 @@
-"vc-description": "In a country called Chef Land, there was a lot of monetary fraud,\
-  \ so Chefu, the head of the country, decided to choose new denominations of the\
-  \ local currency ― all even-valued coins up to an integer $N$ should exist. After\
-  \ a few days, a citizen complained that there was no way to create an odd value,\
-  \ so Chefu decided that he should also introduce coins with value $1$. Formally,\
-  \ you are given an integer $N$; for $v = 1$ and each even positive integer $v \\\
-  le N$, coins with value $v$ exist.\nYou are also given an integer $S$. To handle\
-  \ transactions quickly, find the minimum number of coins needed to pay a price $S$.\n\
-  \n-----Input-----\n- The first line of the input contains a single integer $T$ denoting\
-  \ the number of test cases. The description of $T$ test cases follows.\n- The first\
-  \ and only line of each test case contains two space-separated integers $S$ and\
-  \ $N$.\n\n-----Output-----\nFor each test case, print a single line containing one\
-  \ integer ― the minimum number of coins.\n\n-----Constraints-----\n- $1 \\le T \\\
-  le 10,000$\n- $1 \\le S \\le 10^9$\n- $2 \\le N \\le 10^9$\n- $N$ is even\n\n-----Subtasks-----\n\
-  Subtask #1 (100 points): original constraints\n\n-----Example Input-----\n4\n2 2\n\
-  1 14\n30 10\n31 4\n\n-----Example Output-----\n1\n1\n3\n9\n\n-----Explanation-----\n\
-  Example case 1: One coin with value $2$ is sufficient.\nExample case 2: We need\
-  \ to use one coin with value $1$.\nExample case 3: We need $3$ coins, each with\
-  \ value $10$.\nExample case 4: We can use seven coins with value $4$, one coin with\
-  \ value $2$ and one coin with value $1$."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def min_coins (s n: Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem min_coins_positive (s n : Nat) (h1: s > 0) (h2: n > 0) : \n\
-  \  min_coins s n > 0 :=\nsorry\n\n\ntheorem min_coins_upper_bound (s n : Nat) (h1:\
-  \ s > 0) (h2: n > 0) :\n  min_coins s n ≤ s :=\nsorry\n\n\ntheorem min_coins_deterministic\
-  \ (s n : Nat) (h1: s > 0) (h2: n > 0) :\n  min_coins s n = min_coins s n :=\nsorry\n\
-  \n\ntheorem min_coins_denom_one (s : Nat) (h: s > 0) :\n  min_coins s 1 = s :=\n\
-  sorry\n\n\ntheorem min_coins_even (s n : Nat) (h1: s > 1) (h2: n > 1)\n  (h3: s\
-  \ % 2 = 0) (h4: n % 2 = 0) :\n  min_coins s n ≤ s / 2 + 1 :=\nsorry\n\n\ntheorem\
-  \ min_coins_min_inputs :\n  min_coins 1 1 = 1 ∧ min_coins 1 2 = 1 :=\nsorry\n\n\
-  /--\ninfo: 1\n-/\n#guard_msgs in\n#eval min_coins 2 2\n\n/--\ninfo: 1\n-/\n#guard_msgs\
-  \ in\n#eval min_coins 1 14\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval min_coins\
-  \ 30 10\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval min_coins 31 4\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  In a country called Chef Land, there was a lot of monetary fraud, so Chefu, the head of the country, decided to choose new denominations of the local currency ― all even-valued coins up to an integer $N$ should exist. After a few days, a citizen complained that there was no way to create an odd value, so Chefu decided that he should also introduce coins with value $1$. Formally, you are given an integer $N$; for $v = 1$ and each even positive integer $v \le N$, coins with value $v$ exist.
+  You are also given an integer $S$. To handle transactions quickly, find the minimum number of coins needed to pay a price $S$.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first and only line of each test case contains two space-separated integers $S$ and $N$.
+
+  -----Output-----
+  For each test case, print a single line containing one integer ― the minimum number of coins.
+
+  -----Constraints-----
+  - $1 \le T \le 10,000$
+  - $1 \le S \le 10^9$
+  - $2 \le N \le 10^9$
+  - $N$ is even
+
+  -----Subtasks-----
+  Subtask #1 (100 points): original constraints
+
+  -----Example Input-----
+  4
+  2 2
+  1 14
+  30 10
+  31 4
+
+  -----Example Output-----
+  1
+  1
+  3
+  9
+
+  -----Explanation-----
+  Example case 1: One coin with value $2$ is sufficient.
+  Example case 2: We need to use one coin with value $1$.
+  Example case 3: We need $3$ coins, each with value $10$.
+  Example case 4: We can use seven coins with value $4$, one coin with value $2$ and one coin with value $1$.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def min_coins (s n: Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem min_coins_positive (s n : Nat) (h1: s > 0) (h2: n > 0) : 
+    min_coins s n > 0 :=
+  sorry
+
+
+  theorem min_coins_upper_bound (s n : Nat) (h1: s > 0) (h2: n > 0) :
+    min_coins s n ≤ s :=
+  sorry
+
+
+  theorem min_coins_deterministic (s n : Nat) (h1: s > 0) (h2: n > 0) :
+    min_coins s n = min_coins s n :=
+  sorry
+
+
+  theorem min_coins_denom_one (s : Nat) (h: s > 0) :
+    min_coins s 1 = s :=
+  sorry
+
+
+  theorem min_coins_even (s n : Nat) (h1: s > 1) (h2: n > 1)
+    (h3: s % 2 = 0) (h4: n % 2 = 0) :
+    min_coins s n ≤ s / 2 + 1 :=
+  sorry
+
+
+  theorem min_coins_min_inputs :
+    min_coins 1 1 = 1 ∧ min_coins 1 2 = 1 :=
+  sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_coins 2 2
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_coins 1 14
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_coins 30 10
+
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval min_coins 31 4
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

@@ -1,26 +1,69 @@
-"vc-description": "Take an input string and return a string that is made up of the\
-  \ number of occurences of each english letter in the input followed by that letter,\
-  \ sorted alphabetically. The output string shouldn't contain chars missing from\
-  \ input (chars with 0 occurence); leave them out.\n\nAn empty string, or one with\
-  \ no letters, should return an empty string.\n\nNotes:\n\n* the input will always\
-  \ be valid;\n* treat letters as **case-insensitive**\n\n\n## Examples\n\n```\n\"\
-  This is a test sentence.\"  ==>  \"1a1c4e1h2i2n4s4t\"\n\"\"                    \
-  \      ==>  \"\"\n\"555\"                       ==>  \"\"\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def string_letter_count (s : String) : String :=\n  sorry\n"
-"vc-theorems": "theorem string_letter_count_output_alnum (s : String) : ∀ c ∈ (string_letter_count\
-  \ s).data, \n  c.isAlphanum := by sorry\n\n\ntheorem string_letter_count_unique_letters\
-  \ (s : String) : \n  let letters := (string_letter_count s).data.filter Char.isAlpha\n\
-  \  letters.Nodup := by sorry \n\n\ntheorem string_letter_count_correct_counts (s\
-  \ : String) (c : Char) : \n  let result := string_letter_count s\n  let resultLetters\
-  \ := result.data.filter Char.isAlpha\n  c ∈ resultLetters →\n  let count := (s.data.filter\
-  \ (fun x => x.toLower = c.toLower)).length\n  let numStr := String.mk (result.data.takeWhile\
-  \ Char.isDigit)\n  numStr.length > 0 ∧ String.toNat! numStr = count := by sorry\n\
-  \n\ntheorem string_letter_count_sorted (s : String) :\n  let letters := (string_letter_count\
-  \ s).data.filter Char.isAlpha\n  List.Pairwise (· ≤ ·) letters := by sorry\n\n/--\n\
-  info: expected1\n-/\n#guard_msgs in\n#eval string_letter_count \"The quick brown\
-  \ fox jumps over the lazy dog.\"\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval\
-  \ string_letter_count \"This is a test sentence.\"\n\n/--\ninfo: expected3\n-/\n\
-  #guard_msgs in\n#eval string_letter_count \"\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Take an input string and return a string that is made up of the number of occurences of each english letter in the input followed by that letter, sorted alphabetically. The output string shouldn't contain chars missing from input (chars with 0 occurence); leave them out.
+
+  An empty string, or one with no letters, should return an empty string.
+
+  Notes:
+
+  * the input will always be valid;
+  * treat letters as **case-insensitive**
+
+
+  ## Examples
+
+  ```
+  "This is a test sentence."  ==>  "1a1c4e1h2i2n4s4t"
+  ""                          ==>  ""
+  "555"                       ==>  ""
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def string_letter_count (s : String) : String :=
+    sorry
+vc-theorems: |
+  theorem string_letter_count_output_alnum (s : String) : ∀ c ∈ (string_letter_count s).data, 
+    c.isAlphanum := by sorry
+
+
+  theorem string_letter_count_unique_letters (s : String) : 
+    let letters := (string_letter_count s).data.filter Char.isAlpha
+    letters.Nodup := by sorry 
+
+
+  theorem string_letter_count_correct_counts (s : String) (c : Char) : 
+    let result := string_letter_count s
+    let resultLetters := result.data.filter Char.isAlpha
+    c ∈ resultLetters →
+    let count := (s.data.filter (fun x => x.toLower = c.toLower)).length
+    let numStr := String.mk (result.data.takeWhile Char.isDigit)
+    numStr.length > 0 ∧ String.toNat! numStr = count := by sorry
+
+
+  theorem string_letter_count_sorted (s : String) :
+    let letters := (string_letter_count s).data.filter Char.isAlpha
+    List.Pairwise (· ≤ ·) letters := by sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval string_letter_count "The quick brown fox jumps over the lazy dog."
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval string_letter_count "This is a test sentence."
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval string_letter_count ""
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

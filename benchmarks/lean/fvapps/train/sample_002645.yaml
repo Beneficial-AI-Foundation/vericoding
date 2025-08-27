@@ -1,22 +1,58 @@
-"vc-description": "A faro shuffle of a deck of playing cards is a shuffle in which\
-  \ the deck is split exactly in half and then the cards in the two halves are perfectly\
-  \ interwoven, such that the original bottom card is still on the bottom and the\
-  \ original top card is still on top.\n\nFor example, faro shuffling the list\n```python\n\
-  ['ace', 'two', 'three', 'four', 'five', 'six']\n```\ngives\n```python\n['ace', 'four',\
-  \ 'two', 'five', 'three', 'six' ]\n```\n\nIf 8 perfect faro shuffles are performed\
-  \ on a deck of 52 playing cards, the deck is restored to its original order.\n\n\
-  Write a function that inputs an integer n and returns an integer representing the\
-  \ number of faro shuffles it takes to restore a deck of n cards to its original\
-  \ order.\n\nAssume n is an even number between 2 and 2000."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def faro_cycles (n : Nat) : Nat := sorry\n\n/-- Minimum number\
-  \ of cards (2) requires only one faro cycle -/"
-"vc-theorems": "theorem faro_cycles_min : faro_cycles 2 = 1 := sorry\n\n/-- Faro cycles\
-  \ for even number of cards is always positive -/\n\ntheorem faro_cycles_positive_small\
-  \ (n : Nat) : \n  n = 4 ∨ n = 8 → faro_cycles n > 0 := sorry\n\n/-- Standard deck\
-  \ of 52 cards requires exactly 8 faro cycles -/\n\ntheorem faro_cycles_standard_deck\
-  \ : faro_cycles 52 = 8 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval faro_cycles\
-  \ 2\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval faro_cycles 52\n\n/--\ninfo: 540\n\
-  -/\n#guard_msgs in\n#eval faro_cycles 542\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  A faro shuffle of a deck of playing cards is a shuffle in which the deck is split exactly in half and then the cards in the two halves are perfectly interwoven, such that the original bottom card is still on the bottom and the original top card is still on top.
+
+  For example, faro shuffling the list
+  ```python
+  ['ace', 'two', 'three', 'four', 'five', 'six']
+  ```
+  gives
+  ```python
+  ['ace', 'four', 'two', 'five', 'three', 'six' ]
+  ```
+
+  If 8 perfect faro shuffles are performed on a deck of 52 playing cards, the deck is restored to its original order.
+
+  Write a function that inputs an integer n and returns an integer representing the number of faro shuffles it takes to restore a deck of n cards to its original order.
+
+  Assume n is an even number between 2 and 2000.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def faro_cycles (n : Nat) : Nat := sorry
+
+  /-- Minimum number of cards (2) requires only one faro cycle -/
+vc-theorems: |
+  theorem faro_cycles_min : faro_cycles 2 = 1 := sorry
+
+  /-- Faro cycles for even number of cards is always positive -/
+
+  theorem faro_cycles_positive_small (n : Nat) : 
+    n = 4 ∨ n = 8 → faro_cycles n > 0 := sorry
+
+  /-- Standard deck of 52 cards requires exactly 8 faro cycles -/
+
+  theorem faro_cycles_standard_deck : faro_cycles 52 = 8 := sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval faro_cycles 2
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval faro_cycles 52
+
+  /--
+  info: 540
+  -/
+  #guard_msgs in
+  #eval faro_cycles 542
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

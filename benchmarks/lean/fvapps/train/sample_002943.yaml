@@ -1,22 +1,44 @@
-"vc-description": "Comprised of a team of five incredibly brilliant women, \"The ladies\
-  \ of ENIAC\" were the first “computors” working at the University of Pennsylvania’s\
-  \ Moore School of Engineering (1945). Through their contributions, we gained the\
-  \ first software application and the first programming classes! The ladies of ENIAC\
-  \ were inducted into the WITI Hall of Fame in 1997!\n\nWrite a function which reveals\
-  \ \"The ladies of ENIAC\" names, so that you too can add them to your own hall of\
-  \ tech fame!\n\nTo keep: only alpha characters, space characters and exclamation\
-  \ marks.  \nTo remove: numbers and these characters: ```%$&/£?@```\n\nResult should\
-  \ be all in uppercase."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def rad_ladies (s : String) : String := sorry\n\ntheorem rad_ladies_name_preserved\
-  \ {s : String} (h : s ≠ \"\") :\n  let result := rad_ladies (s ++ \"!\")\n  (result.startsWith\
-  \ s) ∧ (result.endsWith \"!\") := sorry\n"
-"vc-theorems": "theorem rad_ladies_idempotent (s : String) :\n  rad_ladies (rad_ladies\
-  \ s) = rad_ladies s := sorry\n\n/--\ninfo: 'KAY MCNULTY!'\n-/\n#guard_msgs in\n\
-  #eval rad_ladies \"k?%35a&&/y@@@5599 m93753&$$$c$n///79u??@@%l?975$t?%5y%&$3$1!\"\
-  \n\n/--\ninfo: 'MARLYN WESCOFF!'\n-/\n#guard_msgs in\n#eval rad_ladies \"9?9?9?m335%$@a791%&$r$$$l@53$&y&n%$5@\
-  \ $5577w&7e931%s$c$o%%%f351f??%!%%\"\n\n/--\ninfo: 'FRAN BILAS!'\n-/\n#guard_msgs\
-  \ in\n#eval rad_ladies \"%&$557f953//1/$@%r%935$$a@3111$@???%n???5 $%157b%///$i%55&31@l?%&$$a%@$s5757!$$%%%%53\"\
-  \n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Comprised of a team of five incredibly brilliant women, "The ladies of ENIAC" were the first “computors” working at the University of Pennsylvania’s Moore School of Engineering (1945). Through their contributions, we gained the first software application and the first programming classes! The ladies of ENIAC were inducted into the WITI Hall of Fame in 1997!
+
+  Write a function which reveals "The ladies of ENIAC" names, so that you too can add them to your own hall of tech fame!
+
+  To keep: only alpha characters, space characters and exclamation marks.  
+  To remove: numbers and these characters: ```%$&/£?@```
+
+  Result should be all in uppercase.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def rad_ladies (s : String) : String := sorry
+
+  theorem rad_ladies_name_preserved {s : String} (h : s ≠ "") :
+    let result := rad_ladies (s ++ "!")
+    (result.startsWith s) ∧ (result.endsWith "!") := sorry
+vc-theorems: |
+  theorem rad_ladies_idempotent (s : String) :
+    rad_ladies (rad_ladies s) = rad_ladies s := sorry
+
+  /--
+  info: 'KAY MCNULTY!'
+  -/
+  #guard_msgs in
+  #eval rad_ladies "k?%35a&&/y@@@5599 m93753&$$$c$n///79u??@@%l?975$t?%5y%&$3$1!"
+
+  /--
+  info: 'MARLYN WESCOFF!'
+  -/
+  #guard_msgs in
+  #eval rad_ladies "9?9?9?m335%$@a791%&$r$$$l@53$&y&n%$5@ $5577w&7e931%s$c$o%%%f351f??%!%%"
+
+  /--
+  info: 'FRAN BILAS!'
+  -/
+  #guard_msgs in
+  #eval rad_ladies "%&$557f953//1/$@%r%935$$a@3111$@???%n???5 $%157b%///$i%55&31@l?%&$$a%@$s5757!$$%%%%53"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

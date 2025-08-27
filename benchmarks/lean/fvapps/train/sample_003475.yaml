@@ -1,21 +1,58 @@
-"vc-description": "# Exclusive \"or\" (xor) Logical Operator\n\n## Overview\n\nIn\
-  \ some scripting languages like PHP, there exists a logical operator (e.g. ```&&```,\
-  \ ```||```, ```and```, ```or```, etc.) called the \"Exclusive Or\" (hence the name\
-  \ of this Kata).  The exclusive or evaluates two booleans.  It then returns true\
-  \ if **exactly one of the two expressions are true**, false otherwise.  For example:\n\
-  \n## Task\n\nSince we cannot define keywords in Javascript (well, at least I don't\
-  \ know how to do it), your task is to define a function ```xor(a, b)``` where a\
-  \ and b are the two expressions to be evaluated.  Your ```xor``` function should\
-  \ have the behaviour described above, returning true if **exactly one of the two\
-  \ expressions evaluate to true**, false otherwise."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": ""
-"vc-theorems": "theorem xor_commutative (a b : Bool) : \n  Bool.xor a b = Bool.xor\
-  \ b a := sorry\n\n\ntheorem xor_false (a : Bool) :\n  Bool.xor false a = a := sorry\n\
-  \n\ntheorem xor_self (a : Bool) :\n  Bool.xor a a = false := sorry\n\n\ntheorem\
-  \ xor_double (a b : Bool) :\n  Bool.xor (Bool.xor a b) b = a := sorry\n\n/--\ninfo:\
-  \ False\n-/\n#guard_msgs in\n#eval xor False False\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval xor True False\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval xor False\
-  \ True\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval xor True True\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Exclusive "or" (xor) Logical Operator
+
+  ## Overview
+
+  In some scripting languages like PHP, there exists a logical operator (e.g. ```&&```, ```||```, ```and```, ```or```, etc.) called the "Exclusive Or" (hence the name of this Kata).  The exclusive or evaluates two booleans.  It then returns true if **exactly one of the two expressions are true**, false otherwise.  For example:
+
+  ## Task
+
+  Since we cannot define keywords in Javascript (well, at least I don't know how to do it), your task is to define a function ```xor(a, b)``` where a and b are the two expressions to be evaluated.  Your ```xor``` function should have the behaviour described above, returning true if **exactly one of the two expressions evaluate to true**, false otherwise.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+vc-theorems: |
+  theorem xor_commutative (a b : Bool) : 
+    Bool.xor a b = Bool.xor b a := sorry
+
+
+  theorem xor_false (a : Bool) :
+    Bool.xor false a = a := sorry
+
+
+  theorem xor_self (a : Bool) :
+    Bool.xor a a = false := sorry
+
+
+  theorem xor_double (a b : Bool) :
+    Bool.xor (Bool.xor a b) b = a := sorry
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval xor False False
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval xor True False
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval xor False True
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval xor True True
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

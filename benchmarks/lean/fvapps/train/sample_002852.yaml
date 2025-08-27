@@ -1,25 +1,73 @@
-"vc-description": "## Task\n\nLet's say we have a positive integer, `$n$`. You have\
-  \ to find the smallest possible positive integer that when multiplied by `$n$`,\
-  \ becomes a perfect power of integer `$k$`. A perfect power of `$k$` is any positive\
-  \ integer that can be represented as `$a^k$`. For example if `$k = 2$`, then `$36$`\
-  \ is a perfect power of `$k$`, but `$27$` isn't.\n\n## Examples\n\n```python\nn,\
-  \ k = 100, 3  return  10, #because 10*100 becomes 1000, and 1000 = 10**3\nn, k =\
-  \ 36, 2   return   1, #because 36 is already a perfect square 6**2\nn, k = 72, 4\
-  \   return  18, #because 18*72 = 1296 = 6**4\n```\n\n**Notes:** \n+ `$k, n \\in\
-  \ \\mathbb{N} $` and `$ 1 \\lt n \\lt 10^6,\\text{ } 1 \\lt k \\lt 10 $`\n+ However,\
-  \ the output may be way larger than `$10^6$`.\n\nIf you have trouble seeing the\
-  \ numbers, refresh your page ;-) Please rate this kata. All translations are welcome.\n\
-  \nABOVE: [If you see this:](https://imgur.com/TKY59S4), refresh your page."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def mul_power (n k : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem mul_power_perfect_power (n k : Nat) (h1: n > 0) (h2: k > 0)\
-  \ : \n  ∃ m : Nat, ∃ r : Nat, n * (mul_power n k) = r^k \n  := by sorry\n\n\ntheorem\
-  \ mul_power_k_one (n : Nat) (h: n > 0) : \n  mul_power n 1 = 1 \n  := by sorry\n\
-  \n\ntheorem mul_power_n_one (k : Nat) (h: k > 0) :\n  mul_power 1 k = 1\n  := by\
-  \ sorry\n\n\ntheorem mul_power_perfect_square :\n  mul_power 4 2 = 1 ∧ mul_power\
-  \ 9 2 = 1\n  := by sorry\n\n\ntheorem mul_power_perfect_cube :\n  mul_power 8 3\
-  \ = 1 ∧ mul_power 27 3 = 1\n  := by sorry\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n\
-  #eval mul_power 100 3\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval mul_power 36 2\n\
-  \n/--\ninfo: 18\n-/\n#guard_msgs in\n#eval mul_power 72 4\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ## Task
+
+  Let's say we have a positive integer, `$n$`. You have to find the smallest possible positive integer that when multiplied by `$n$`, becomes a perfect power of integer `$k$`. A perfect power of `$k$` is any positive integer that can be represented as `$a^k$`. For example if `$k = 2$`, then `$36$` is a perfect power of `$k$`, but `$27$` isn't.
+
+  ## Examples
+
+  ```python
+  n, k = 100, 3  return  10, #because 10*100 becomes 1000, and 1000 = 10**3
+  n, k = 36, 2   return   1, #because 36 is already a perfect square 6**2
+  n, k = 72, 4   return  18, #because 18*72 = 1296 = 6**4
+  ```
+
+  **Notes:** 
+  + `$k, n \in \mathbb{N} $` and `$ 1 \lt n \lt 10^6,\text{ } 1 \lt k \lt 10 $`
+  + However, the output may be way larger than `$10^6$`.
+
+  If you have trouble seeing the numbers, refresh your page ;-) Please rate this kata. All translations are welcome.
+
+  ABOVE: [If you see this:](https://imgur.com/TKY59S4), refresh your page.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def mul_power (n k : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem mul_power_perfect_power (n k : Nat) (h1: n > 0) (h2: k > 0) : 
+    ∃ m : Nat, ∃ r : Nat, n * (mul_power n k) = r^k 
+    := by sorry
+
+
+  theorem mul_power_k_one (n : Nat) (h: n > 0) : 
+    mul_power n 1 = 1 
+    := by sorry
+
+
+  theorem mul_power_n_one (k : Nat) (h: k > 0) :
+    mul_power 1 k = 1
+    := by sorry
+
+
+  theorem mul_power_perfect_square :
+    mul_power 4 2 = 1 ∧ mul_power 9 2 = 1
+    := by sorry
+
+
+  theorem mul_power_perfect_cube :
+    mul_power 8 3 = 1 ∧ mul_power 27 3 = 1
+    := by sorry
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval mul_power 100 3
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval mul_power 36 2
+
+  /--
+  info: 18
+  -/
+  #guard_msgs in
+  #eval mul_power 72 4
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,26 +1,69 @@
-"vc-description": "Amicable numbers are two different numbers so related that the\
-  \ sum of the proper divisors of each is equal to the other number. (A proper divisor\
-  \ of a number is a positive factor of that number other than the number itself.\
-  \ For example, the proper divisors of 6 are 1, 2, and 3.) \n\nFor example, the smallest\
-  \ pair of amicable numbers is (220, 284); for the proper divisors of 220 are 1,\
-  \ 2, 4, 5, 10, 11, 20, 22, 44, 55 and 110, of which the sum is 284; and the proper\
-  \ divisors of 284 are 1, 2, 4, 71 and 142, of which the sum is 220.\n\nDerive function\
-  \ ```amicableNumbers(num1, num2)``` which returns ```true/True``` if pair ```num1\
-  \ num2``` are amicable, ```false/False``` if not.\n\nSee more at https://en.wikipedia.org/wiki/Amicable_numbers"
-"vc-preamble": "import Imports.AllImports\n\ndef get_divs (n : Nat) : List Nat :=\
-  \ sorry\n\ndef amicable_numbers (n1 n2 : Nat) : Bool := sorry\n\n@[reducible]"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def list_sum : List Nat → Nat \n  | [] => 0\n  | x::xs => x + list_sum\
-  \ xs\n"
-"vc-theorems": "theorem get_divs_properties (n : Nat) (h : n > 0) :\n  let divs :=\
-  \ get_divs n\n  (∀ d ∈ divs, n % d = 0) ∧ \n  (∀ d ∈ divs, d > 0) ∧\n  (1 ∈ divs)\
-  \ ∧\n  (n = 1 → n ∈ divs) :=\nsorry\n\n\ntheorem amicable_symmetric_property (n\
-  \ : Nat) (h : n > 0) :\n  let divs_sum := list_sum (get_divs n)\n  (divs_sum > 0\
-  \ ∧ divs_sum ≠ n) →\n  amicable_numbers n divs_sum = amicable_numbers divs_sum n\
-  \ :=\nsorry\n\n\ntheorem non_amicable_with_self (n : Nat) (h : n > 0) :\n  ¬amicable_numbers\
-  \ n n :=\nsorry\n\n\ntheorem amicable_commutative (n1 n2 : Nat) (h1 : n1 > 0) (h2\
-  \ : n2 > 0) :\n  amicable_numbers n1 n2 = amicable_numbers n2 n1 :=\nsorry\n\n/--\n\
-  info: True\n-/\n#guard_msgs in\n#eval amicable_numbers 220 284\n\n/--\ninfo: False\n\
-  -/\n#guard_msgs in\n#eval amicable_numbers 220 280\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval amicable_numbers 1184 1210\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Amicable numbers are two different numbers so related that the sum of the proper divisors of each is equal to the other number. (A proper divisor of a number is a positive factor of that number other than the number itself. For example, the proper divisors of 6 are 1, 2, and 3.) 
+
+  For example, the smallest pair of amicable numbers is (220, 284); for the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 and 110, of which the sum is 284; and the proper divisors of 284 are 1, 2, 4, 71 and 142, of which the sum is 220.
+
+  Derive function ```amicableNumbers(num1, num2)``` which returns ```true/True``` if pair ```num1 num2``` are amicable, ```false/False``` if not.
+
+  See more at https://en.wikipedia.org/wiki/Amicable_numbers
+vc-preamble: |-
+  import Imports.AllImports
+
+  def get_divs (n : Nat) : List Nat := sorry
+
+  def amicable_numbers (n1 n2 : Nat) : Bool := sorry
+
+  @[reducible]
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def list_sum : List Nat → Nat 
+    | [] => 0
+    | x::xs => x + list_sum xs
+vc-theorems: |
+  theorem get_divs_properties (n : Nat) (h : n > 0) :
+    let divs := get_divs n
+    (∀ d ∈ divs, n % d = 0) ∧ 
+    (∀ d ∈ divs, d > 0) ∧
+    (1 ∈ divs) ∧
+    (n = 1 → n ∈ divs) :=
+  sorry
+
+
+  theorem amicable_symmetric_property (n : Nat) (h : n > 0) :
+    let divs_sum := list_sum (get_divs n)
+    (divs_sum > 0 ∧ divs_sum ≠ n) →
+    amicable_numbers n divs_sum = amicable_numbers divs_sum n :=
+  sorry
+
+
+  theorem non_amicable_with_self (n : Nat) (h : n > 0) :
+    ¬amicable_numbers n n :=
+  sorry
+
+
+  theorem amicable_commutative (n1 n2 : Nat) (h1 : n1 > 0) (h2 : n2 > 0) :
+    amicable_numbers n1 n2 = amicable_numbers n2 n1 :=
+  sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval amicable_numbers 220 284
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval amicable_numbers 220 280
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval amicable_numbers 1184 1210
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

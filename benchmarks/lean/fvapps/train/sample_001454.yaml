@@ -1,26 +1,85 @@
-"vc-description": "The chef is trying to decode some pattern problems, Chef wants\
-  \ your help to code it. Chef has one number K to form a new pattern. Help the chef\
-  \ to code this pattern problem.\n\n-----Input:-----\n- First-line will contain $T$,\
-  \ the number of test cases. Then the test cases follow. \n- Each test case contains\
-  \ a single line of input, one integer $K$. \n\n-----Output:-----\nFor each test\
-  \ case, output as the pattern.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n\
-  - $1 \\leq K \\leq 100$\n\n-----Sample Input:-----\n4\n1\n2\n3\n4\n\n-----Sample\
-  \ Output:-----\n0\n01\n10\n012\n101\n210\n0123\n1012\n2101\n3210\n\n-----EXPLANATION:-----\n\
-  No need, else pattern can be decode easily."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def generate_pattern (k : Nat) : List String := sorry\n\ntheorem\
-  \ pattern_basic_properties {k : Nat} (h : k > 0) (h2 : k ≤ 10) :\n  let result :=\
-  \ generate_pattern k\n  List.length result = k ∧\n  (∀ s ∈ result, String.length\
-  \ s = k) ∧\n  (∀ row ∈ result, ∀ c ∈ row.data, '0' ≤ c ∧ c ≤ '9') ∧\n  (∀ row ∈\
-  \ result, ∀ c ∈ row.data, (c.toNat - '0'.toNat) < k) ∧\n  List.Nodup result := sorry\n"
-"vc-theorems": "theorem pattern_first_row {k : Nat} (h : k > 0) (h2 : k ≤ 10) :\n\
-  \  let result := generate_pattern k\n  if k = 1 then\n    result.head! = \"0\"\n\
-  \  else\n    result.head! = String.mk (List.map (fun i => Char.ofNat (i + '0'.toNat))\
-  \ (List.range k)) := sorry\n\n\ntheorem pattern_subsequent_rows {k : Nat} (h : k\
-  \ > 0) (h2 : k ≤ 10) :\n  k > 1 →\n  let result := generate_pattern k\n  ∀ i, 1\
-  \ ≤ i → i < k →\n    (result.get! i).take 1 = String.mk [Char.ofNat (i + '0'.toNat)]\
-  \ := sorry\n\n/--\ninfo: ['0']\n-/\n#guard_msgs in\n#eval generate_pattern 1\n\n\
-  /--\ninfo: ['01', '10']\n-/\n#guard_msgs in\n#eval generate_pattern 2\n\n/--\ninfo:\
-  \ ['012', '101', '210']\n-/\n#guard_msgs in\n#eval generate_pattern 3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  The chef is trying to decode some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+
+  -----Output:-----
+  For each test case, output as the pattern.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq K \leq 100$
+
+  -----Sample Input:-----
+  4
+  1
+  2
+  3
+  4
+
+  -----Sample Output:-----
+  0
+  01
+  10
+  012
+  101
+  210
+  0123
+  1012
+  2101
+  3210
+
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def generate_pattern (k : Nat) : List String := sorry
+
+  theorem pattern_basic_properties {k : Nat} (h : k > 0) (h2 : k ≤ 10) :
+    let result := generate_pattern k
+    List.length result = k ∧
+    (∀ s ∈ result, String.length s = k) ∧
+    (∀ row ∈ result, ∀ c ∈ row.data, '0' ≤ c ∧ c ≤ '9') ∧
+    (∀ row ∈ result, ∀ c ∈ row.data, (c.toNat - '0'.toNat) < k) ∧
+    List.Nodup result := sorry
+vc-theorems: |
+  theorem pattern_first_row {k : Nat} (h : k > 0) (h2 : k ≤ 10) :
+    let result := generate_pattern k
+    if k = 1 then
+      result.head! = "0"
+    else
+      result.head! = String.mk (List.map (fun i => Char.ofNat (i + '0'.toNat)) (List.range k)) := sorry
+
+
+  theorem pattern_subsequent_rows {k : Nat} (h : k > 0) (h2 : k ≤ 10) :
+    k > 1 →
+    let result := generate_pattern k
+    ∀ i, 1 ≤ i → i < k →
+      (result.get! i).take 1 = String.mk [Char.ofNat (i + '0'.toNat)] := sorry
+
+  /--
+  info: ['0']
+  -/
+  #guard_msgs in
+  #eval generate_pattern 1
+
+  /--
+  info: ['01', '10']
+  -/
+  #guard_msgs in
+  #eval generate_pattern 2
+
+  /--
+  info: ['012', '101', '210']
+  -/
+  #guard_msgs in
+  #eval generate_pattern 3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

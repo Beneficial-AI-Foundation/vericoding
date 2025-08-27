@@ -1,29 +1,70 @@
-"vc-description": "Dinesh is very fond of sweets recently his aunt Riya gifted him\
-  \ an array $a$ of sweets of size $N$. The ith sweet is of the type $a[i]$. His mother\
-  \ told him that he can choose one type of sweet in a day and eat at most 2 sweets\
-  \ of that type. Since he has to eat all the sweets as quickly as possible because\
-  \ his cousins are arriving. Find out the minimum number of days in which he can\
-  \ eat all the sweets gifted by his aunt Riya. \n\n-----Input:-----\n- First-line\
-  \ will contain $N$, the number of sweets.  \n- The next line will contain $N$ space\
-  \ integers denoting the type of sweets.\n\n-----Output:-----\nOutput the minimum\
-  \ number of days in which he can eat all the sweets.\n\n-----Constraints-----\n\
-  - $1 \\leq N \\leq 10000$\n- $1 \\leq a[i] \\leq 10^3$\n\n-----Sample Input:-----\n\
-  3\n1 2 2\n\n-----Sample Output:-----\n2"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def min_days_to_eat_sweets (n : Nat) (sweets : List Nat) : Nat\
-  \ := sorry\n\ntheorem min_days_positive {n : Nat} {sweets : List Nat} :\n  min_days_to_eat_sweets\
-  \ n sweets > 0 := sorry\n"
-"vc-theorems": "theorem min_days_upper_bound {n : Nat} {sweets : List Nat} :\n  min_days_to_eat_sweets\
-  \ n sweets ≤ n := sorry\n\n\ntheorem min_days_lower_bound {n : Nat} {sweets : List\
-  \ Nat} :\n  min_days_to_eat_sweets n sweets ≥ (n + 1) / 2 := sorry\n\n\ntheorem\
-  \ min_days_identical_sweets {n : Nat} {sweets : List Nat} :\n  sweets.length = n\
-  \ →\n  (∀ i j, i < sweets.length → j < sweets.length → sweets[i]! = sweets[j]!)\
-  \ →\n  min_days_to_eat_sweets n sweets = (n + 1) / 2 := sorry\n\n\ntheorem min_days_all_different\
-  \ {n : Nat} {sweets : List Nat} :\n  sweets.length = n →\n  (∀ i j, i < sweets.length\
-  \ → j < sweets.length → i ≠ j → sweets[i]! ≠ sweets[j]!) →\n  min_days_to_eat_sweets\
-  \ n sweets = n := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_days_to_eat_sweets\
-  \ 3 [1, 2, 2]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval min_days_to_eat_sweets\
-  \ 5 [1, 1, 2, 2, 3]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_days_to_eat_sweets\
-  \ 4 [1, 1, 1, 1]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Dinesh is very fond of sweets recently his aunt Riya gifted him an array $a$ of sweets of size $N$. The ith sweet is of the type $a[i]$. His mother told him that he can choose one type of sweet in a day and eat at most 2 sweets of that type. Since he has to eat all the sweets as quickly as possible because his cousins are arriving. Find out the minimum number of days in which he can eat all the sweets gifted by his aunt Riya. 
+
+  -----Input:-----
+  - First-line will contain $N$, the number of sweets.  
+  - The next line will contain $N$ space integers denoting the type of sweets.
+
+  -----Output:-----
+  Output the minimum number of days in which he can eat all the sweets.
+
+  -----Constraints-----
+  - $1 \leq N \leq 10000$
+  - $1 \leq a[i] \leq 10^3$
+
+  -----Sample Input:-----
+  3
+  1 2 2
+
+  -----Sample Output:-----
+  2
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def min_days_to_eat_sweets (n : Nat) (sweets : List Nat) : Nat := sorry
+
+  theorem min_days_positive {n : Nat} {sweets : List Nat} :
+    min_days_to_eat_sweets n sweets > 0 := sorry
+vc-theorems: |
+  theorem min_days_upper_bound {n : Nat} {sweets : List Nat} :
+    min_days_to_eat_sweets n sweets ≤ n := sorry
+
+
+  theorem min_days_lower_bound {n : Nat} {sweets : List Nat} :
+    min_days_to_eat_sweets n sweets ≥ (n + 1) / 2 := sorry
+
+
+  theorem min_days_identical_sweets {n : Nat} {sweets : List Nat} :
+    sweets.length = n →
+    (∀ i j, i < sweets.length → j < sweets.length → sweets[i]! = sweets[j]!) →
+    min_days_to_eat_sweets n sweets = (n + 1) / 2 := sorry
+
+
+  theorem min_days_all_different {n : Nat} {sweets : List Nat} :
+    sweets.length = n →
+    (∀ i j, i < sweets.length → j < sweets.length → i ≠ j → sweets[i]! ≠ sweets[j]!) →
+    min_days_to_eat_sweets n sweets = n := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_days_to_eat_sweets 3 [1, 2, 2]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_days_to_eat_sweets 5 [1, 1, 2, 2, 3]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_days_to_eat_sweets 4 [1, 1, 1, 1]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

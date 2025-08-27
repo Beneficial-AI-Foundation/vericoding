@@ -1,33 +1,86 @@
-"vc-description": "On a table are N cards, with a positive integer printed on the\
-  \ front and back of each card (possibly different).\nWe flip any number of cards,\
-  \ and after we choose one card. \nIf the number X on the back of the chosen card\
-  \ is not on the front of any card, then this number X is good.\nWhat is the smallest\
-  \ number that is good?  If no number is good, output 0.\nHere, fronts[i] and backs[i]\
-  \ represent the number on the front and back of card i. \nA flip swaps the front\
-  \ and back numbers, so the value on the front is now on the back and vice versa.\n\
-  Example:\nInput: fronts = [1,2,4,4,7], backs = [1,3,4,1,3]\nOutput: 2\nExplanation:\
-  \ If we flip the second card, the fronts are [1,3,4,4,7] and the backs are [1,2,4,1,3].\n\
-  We choose the second card, which has number 2 on the back, and it isn't on the front\
-  \ of any card, so 2 is good.\n \nNote:\n\n1 <= fronts.length == backs.length <= 1000.\n\
-  1 <= fronts[i] <= 2000.\n1 <= backs[i] <= 2000."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def flipgame (fronts : List Nat) (backs : List Nat) : Nat :=\n\
-  sorry\n"
-"vc-theorems": "theorem flipgame_result_in_input_lists (fronts backs : List Nat) :\n\
-  \  fronts.length = backs.length →\n  let result := flipgame fronts backs\n  result\
-  \ ≠ 0 →\n  result ∈ fronts ∨ result ∈ backs :=\nsorry\n\n\ntheorem flipgame_result_not_same_card\
-  \ (fronts backs : List Nat) :\n  fronts.length = backs.length →\n  let result :=\
-  \ flipgame fronts backs\n  result ≠ 0 →\n  ¬∃ i, i < fronts.length ∧ fronts[i]!\
-  \ = backs[i]! ∧ fronts[i]! = result :=\nsorry\n\n\ntheorem flipgame_result_is_minimal\
-  \ (fronts backs : List Nat) :\n  fronts.length = backs.length →\n  let result :=\
-  \ flipgame fronts backs\n  result ≠ 0 →\n  ∀ n, (n ∈ fronts ∨ n ∈ backs) →\n   \
-  \ (¬∃ i, i < fronts.length ∧ fronts[i]! = backs[i]! ∧ fronts[i]! = n) →\n    result\
-  \ ≤ n :=\nsorry\n\n\ntheorem flipgame_identical_numbers (n length : Nat) :\n  length\
-  \ > 0 →\n  flipgame (List.replicate length n) (List.replicate length n) = 0 :=\n\
-  sorry\n\n\ntheorem flipgame_two_different_numbers (n1 n2 : Nat) :\n  n1 ≠ n2 →\n\
-  \  n1 > 0 →\n  n2 > 0 →\n  flipgame [n1] [n2] = min n1 n2 :=\nsorry\n\n/--\ninfo:\
-  \ 2\n-/\n#guard_msgs in\n#eval flipgame [1, 2, 4, 4, 7] [1, 3, 4, 1, 3]\n\n/--\n\
-  info: 0\n-/\n#guard_msgs in\n#eval flipgame [1, 1] [1, 1]\n\n/--\ninfo: 1\n-/\n\
-  #guard_msgs in\n#eval flipgame [1, 2] [2, 1]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  On a table are N cards, with a positive integer printed on the front and back of each card (possibly different).
+  We flip any number of cards, and after we choose one card. 
+  If the number X on the back of the chosen card is not on the front of any card, then this number X is good.
+  What is the smallest number that is good?  If no number is good, output 0.
+  Here, fronts[i] and backs[i] represent the number on the front and back of card i. 
+  A flip swaps the front and back numbers, so the value on the front is now on the back and vice versa.
+  Example:
+  Input: fronts = [1,2,4,4,7], backs = [1,3,4,1,3]
+  Output: 2
+  Explanation: If we flip the second card, the fronts are [1,3,4,4,7] and the backs are [1,2,4,1,3].
+  We choose the second card, which has number 2 on the back, and it isn't on the front of any card, so 2 is good.
+   
+  Note:
+
+  1 <= fronts.length == backs.length <= 1000.
+  1 <= fronts[i] <= 2000.
+  1 <= backs[i] <= 2000.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def flipgame (fronts : List Nat) (backs : List Nat) : Nat :=
+  sorry
+vc-theorems: |
+  theorem flipgame_result_in_input_lists (fronts backs : List Nat) :
+    fronts.length = backs.length →
+    let result := flipgame fronts backs
+    result ≠ 0 →
+    result ∈ fronts ∨ result ∈ backs :=
+  sorry
+
+
+  theorem flipgame_result_not_same_card (fronts backs : List Nat) :
+    fronts.length = backs.length →
+    let result := flipgame fronts backs
+    result ≠ 0 →
+    ¬∃ i, i < fronts.length ∧ fronts[i]! = backs[i]! ∧ fronts[i]! = result :=
+  sorry
+
+
+  theorem flipgame_result_is_minimal (fronts backs : List Nat) :
+    fronts.length = backs.length →
+    let result := flipgame fronts backs
+    result ≠ 0 →
+    ∀ n, (n ∈ fronts ∨ n ∈ backs) →
+      (¬∃ i, i < fronts.length ∧ fronts[i]! = backs[i]! ∧ fronts[i]! = n) →
+      result ≤ n :=
+  sorry
+
+
+  theorem flipgame_identical_numbers (n length : Nat) :
+    length > 0 →
+    flipgame (List.replicate length n) (List.replicate length n) = 0 :=
+  sorry
+
+
+  theorem flipgame_two_different_numbers (n1 n2 : Nat) :
+    n1 ≠ n2 →
+    n1 > 0 →
+    n2 > 0 →
+    flipgame [n1] [n2] = min n1 n2 :=
+  sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval flipgame [1, 2, 4, 4, 7] [1, 3, 4, 1, 3]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval flipgame [1, 1] [1, 1]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval flipgame [1, 2] [2, 1]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

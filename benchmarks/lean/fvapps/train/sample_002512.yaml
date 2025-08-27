@@ -1,25 +1,52 @@
-"vc-description": "=====Problem Statement=====\nWhen users post an update on social\
-  \ media,such as a URL, image, status update etc., other users in their network are\
-  \ able to view this new post on their news feed. Users can also see exactly when\
-  \ the post was published, i.e, how many hours, minutes or seconds ago.\nSince sometimes\
-  \ posts are published and viewed in different time zones, this can be confusing.\
-  \ You are given two timestamps of one such post that a user can see on his newsfeed\
-  \ in the following format:\nDay dd Mon yyyy hh:mm:ss +xxxx\nHere +xxxx represents\
-  \ the time zone. Your task is to print the absolute difference (in seconds) between\
-  \ them.\n\n=====Input Format=====\nThe first line contains T, the number of tescases.\n\
-  Each testcase contains 2 lines, representing time t_1 and time t_2."
-"vc-preamble": "import Imports.AllImports\n\ndef parseDateTime (s : String) : DateTime\
-  \ := sorry\n\ndef absTimeDiffInSeconds (t1 t2 : DateTime) : Nat := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def timeDifference (ts1 ts2 : String) : Nat := sorry\n\ntheorem\
-  \ timeDiff_nonneg (ts1 ts2 : String) :\n  timeDifference ts1 ts2 ≥ 0 := sorry\n"
-"vc-theorems": "theorem timeDiff_commutative (ts1 ts2 : String) :\n  timeDifference\
-  \ ts1 ts2 = timeDifference ts2 ts1 := sorry\n\n\ntheorem timeDiff_matches_datetime\
-  \ (ts1 ts2 : String) :\n  let dt1 := parseDateTime ts1\n  let dt2 := parseDateTime\
-  \ ts2\n  timeDifference ts1 ts2 = absTimeDiffInSeconds dt1 dt2 := sorry\n\n\ntheorem\
-  \ timeDiff_same_timestamp (ts : String) :\n  timeDifference ts ts = 0 := sorry\n\
-  \n/--\ninfo: 25200\n-/\n#guard_msgs in\n#eval time_difference \"Sun 10 May 2015\
-  \ 13:54:36 -0700\" \"Sun 10 May 2015 13:54:36 -0000\"\n\n/--\ninfo: 88200\n-/\n\
-  #guard_msgs in\n#eval time_difference \"Sat 02 May 2015 19:54:36 +0530\" \"Fri 01\
-  \ May 2015 13:54:36 -0000\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  =====Problem Statement=====
+  When users post an update on social media,such as a URL, image, status update etc., other users in their network are able to view this new post on their news feed. Users can also see exactly when the post was published, i.e, how many hours, minutes or seconds ago.
+  Since sometimes posts are published and viewed in different time zones, this can be confusing. You are given two timestamps of one such post that a user can see on his newsfeed in the following format:
+  Day dd Mon yyyy hh:mm:ss +xxxx
+  Here +xxxx represents the time zone. Your task is to print the absolute difference (in seconds) between them.
+
+  =====Input Format=====
+  The first line contains T, the number of tescases.
+  Each testcase contains 2 lines, representing time t_1 and time t_2.
+vc-preamble: |
+  import Imports.AllImports
+
+  def parseDateTime (s : String) : DateTime := sorry
+
+  def absTimeDiffInSeconds (t1 t2 : DateTime) : Nat := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def timeDifference (ts1 ts2 : String) : Nat := sorry
+
+  theorem timeDiff_nonneg (ts1 ts2 : String) :
+    timeDifference ts1 ts2 ≥ 0 := sorry
+vc-theorems: |
+  theorem timeDiff_commutative (ts1 ts2 : String) :
+    timeDifference ts1 ts2 = timeDifference ts2 ts1 := sorry
+
+
+  theorem timeDiff_matches_datetime (ts1 ts2 : String) :
+    let dt1 := parseDateTime ts1
+    let dt2 := parseDateTime ts2
+    timeDifference ts1 ts2 = absTimeDiffInSeconds dt1 dt2 := sorry
+
+
+  theorem timeDiff_same_timestamp (ts : String) :
+    timeDifference ts ts = 0 := sorry
+
+  /--
+  info: 25200
+  -/
+  #guard_msgs in
+  #eval time_difference "Sun 10 May 2015 13:54:36 -0700" "Sun 10 May 2015 13:54:36 -0000"
+
+  /--
+  info: 88200
+  -/
+  #guard_msgs in
+  #eval time_difference "Sat 02 May 2015 19:54:36 +0530" "Fri 01 May 2015 13:54:36 -0000"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

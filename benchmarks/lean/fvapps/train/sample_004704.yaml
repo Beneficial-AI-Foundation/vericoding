@@ -1,13 +1,39 @@
-"vc-description": "Now you have to write a function that takes an argument and returns\
-  \ the square of it."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def square (x : Int) : Int := sorry\n\ntheorem square_nonnegative\
-  \ (x : Int) : square x ≥ 0 := sorry\n"
-"vc-theorems": "theorem square_is_multiplication (x : Int) : square x = x * x := sorry\n\
-  \ntheorem square_symmetric (x : Int) : square (-x) = square x := sorry\n\n\ntheorem\
-  \ square_monotonic (x : Int) (h : x ≥ 0) : square (x + 1) > square x ∨ x = 0 :=\
-  \ sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval square 2\n\n/--\ninfo: 16\n-/\n\
-  #guard_msgs in\n#eval square 4\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval square\
-  \ -3\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Now you have to write a function that takes an argument and returns the square of it.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def square (x : Int) : Int := sorry
+
+  theorem square_nonnegative (x : Int) : square x ≥ 0 := sorry
+vc-theorems: |
+  theorem square_is_multiplication (x : Int) : square x = x * x := sorry
+
+  theorem square_symmetric (x : Int) : square (-x) = square x := sorry
+
+
+  theorem square_monotonic (x : Int) (h : x ≥ 0) : square (x + 1) > square x ∨ x = 0 := sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval square 2
+
+  /--
+  info: 16
+  -/
+  #guard_msgs in
+  #eval square 4
+
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval square -3
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

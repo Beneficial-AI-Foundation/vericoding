@@ -1,8 +1,8 @@
-import yaml
 import datasets
 from pathlib import Path
 from typing import Dict, Any, List, Tuple
 import re
+from ruamel.yaml import YAML
 
 
 def load_fvapps_dataset():
@@ -81,6 +81,8 @@ def parse_lean_spec(spec_text: str) -> Tuple[List[str], str, List[str]]:
 
 def convert_sample_to_yaml(sample: Dict[str, Any]) -> str:
     """Convert a single dataset sample to YAML format with vc-* schema."""
+    from ruamel.yaml.scalarstring import LiteralScalarString
+    
     # Map FVAPPS columns to vc-* schema fields
 
     # vc-description maps from apps_question
@@ -118,22 +120,26 @@ def convert_sample_to_yaml(sample: Dict[str, Any]) -> str:
         postamble_parts.append(f"-- Assurance level: {assurance}")
     postamble = "\n".join(postamble_parts)
 
+    # Create YAML content with multiline strings as literal block scalars
     yaml_content = {
-        "vc-description": description,
-        "vc-preamble": preamble,
-        "vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>",
-        "vc-definitions": definitions,
-        "vc-theorems": theorems,
-        "vc-postamble": postamble,
+        "vc-description": LiteralScalarString(description),
+        "vc-preamble": LiteralScalarString(preamble),
+        "vc-helpers": LiteralScalarString("-- <vc-helpers>\n-- </vc-helpers>"),
+        "vc-definitions": LiteralScalarString(definitions),
+        "vc-theorems": LiteralScalarString(theorems),
+        "vc-postamble": LiteralScalarString(postamble),
     }
 
-    return yaml.dump(
-        yaml_content, 
-        default_flow_style=False, 
-        sort_keys=False, 
-        allow_unicode=True,
-        default_style='|-'  # This forces literal block scalars
-    )
+    # Use ruamel.yaml to dump with proper formatting
+    yaml = YAML()
+    yaml.preserve_quotes = True
+    yaml.default_flow_style = False
+    yaml.allow_unicode = True
+    
+    from io import StringIO
+    stream = StringIO()
+    yaml.dump(yaml_content, stream)
+    return stream.getvalue()
 
 
 def save_samples_as_yaml(dataset, output_dir: str = "benchmarks/lean/fvapps"):

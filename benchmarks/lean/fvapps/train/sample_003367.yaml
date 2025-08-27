@@ -1,21 +1,46 @@
-"vc-description": "In this Kata, you're to complete the function `sum_square_even_root_odd`.\n\
-  \nYou will be given a list of numbers, `nums`, as the only argument to the function.\
-  \ Take each number in the list and *square* it if it is even, or *square root* the\
-  \ number if it is odd. Take this new list and find the *sum*, rounding to two decimal\
-  \ places.\n\nThe list will never be empty and will only contain values that are\
-  \ greater than or equal to zero.\n\nGood luck!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sum_square_even_root_odd (nums : List Nat) : Float := sorry\n\
-  \ntheorem sum_square_even_root_odd_nonneg (nums : List Nat) :\n  sum_square_even_root_odd\
-  \ nums ≥ 0 := sorry\n"
-"vc-theorems": "theorem sum_square_even_root_odd_equals_sum (nums : List Nat) :\n\
-  \  let expected := nums.foldr (fun n acc => \n    acc + if n % 2 = 0 \n      then\
-  \ Float.ofNat (n * n)\n      else Float.sqrt (Float.ofNat n)) (0 : Float);\n  Float.abs\
-  \ (sum_square_even_root_odd nums - expected) < 0.1 := sorry\n\n\ntheorem large_evens_dominate\
-  \ (nums : List Nat) (max_even : Nat) :\n  max_even = (nums.filter (fun n => n %\
-  \ 2 = 0)).maximum?.getD 0 →\n  max_even > 10 → \n  sum_square_even_root_odd nums\
-  \ ≥ Float.ofNat max_even := sorry\n\n/--\ninfo: 91.61\n-/\n#guard_msgs in\n#eval\
-  \ sum_square_even_root_odd [4, 5, 7, 8, 1, 2, 3, 0]\n\n/--\ninfo: 272.71\n-/\n#guard_msgs\
-  \ in\n#eval sum_square_even_root_odd [1, 14, 9, 8, 17, 21]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In this Kata, you're to complete the function `sum_square_even_root_odd`.
+
+  You will be given a list of numbers, `nums`, as the only argument to the function. Take each number in the list and *square* it if it is even, or *square root* the number if it is odd. Take this new list and find the *sum*, rounding to two decimal places.
+
+  The list will never be empty and will only contain values that are greater than or equal to zero.
+
+  Good luck!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sum_square_even_root_odd (nums : List Nat) : Float := sorry
+
+  theorem sum_square_even_root_odd_nonneg (nums : List Nat) :
+    sum_square_even_root_odd nums ≥ 0 := sorry
+vc-theorems: |
+  theorem sum_square_even_root_odd_equals_sum (nums : List Nat) :
+    let expected := nums.foldr (fun n acc => 
+      acc + if n % 2 = 0 
+        then Float.ofNat (n * n)
+        else Float.sqrt (Float.ofNat n)) (0 : Float);
+    Float.abs (sum_square_even_root_odd nums - expected) < 0.1 := sorry
+
+
+  theorem large_evens_dominate (nums : List Nat) (max_even : Nat) :
+    max_even = (nums.filter (fun n => n % 2 = 0)).maximum?.getD 0 →
+    max_even > 10 → 
+    sum_square_even_root_odd nums ≥ Float.ofNat max_even := sorry
+
+  /--
+  info: 91.61
+  -/
+  #guard_msgs in
+  #eval sum_square_even_root_odd [4, 5, 7, 8, 1, 2, 3, 0]
+
+  /--
+  info: 272.71
+  -/
+  #guard_msgs in
+  #eval sum_square_even_root_odd [1, 14, 9, 8, 17, 21]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

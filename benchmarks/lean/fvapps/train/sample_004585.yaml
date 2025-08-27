@@ -1,24 +1,50 @@
-"vc-description": "Quite recently it happened to me to join some recruitment interview,\
-  \ where my first task was to write own implementation of built-in split function.\
-  \ It's quite simple, is it not?\n\nHowever, there were the following conditions:\n\
-  \n* the function **cannot** use, in any way, the original `split` or `rsplit` functions,\n\
-  * the new function **must** be a generator,\n* it should behave as the built-in\
-  \ `split`, so it will be tested that way -- think of `split()` and `split('')`\n\
-  \n\n*This Kata will control if the new function is a generator and if it's not using\
-  \ the built-in split method, so you may try to hack it, but let me know if with\
-  \ success, or if something would go wrong!*\n\nEnjoy!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def my_very_own_split (s : String) (delimiter : String) : List\
-  \ String :=\n  sorry\n"
-"vc-theorems": "theorem split_matches_python_split (s : String) (delimiter : String)\
-  \ \n  (h : delimiter.length > 0) :\n  my_very_own_split s delimiter = s.splitOn\
-  \ delimiter := \n  sorry\n\n\ntheorem split_empty_delimiter_raises (s : String)\
-  \ :\n  delimiter.length = 0 → my_very_own_split s delimiter = [] := \n  sorry\n\n\
-  \ntheorem split_parts_recombine (s delimiter : String) \n  (h : delimiter.length\
-  \ > 0) \n  (parts := my_very_own_split s delimiter)\n  (h2 : parts.length > 1) :\n\
-  \  String.intercalate delimiter parts = s :=\n  sorry\n\n\ntheorem split_no_empty_middle_parts\
-  \ (s delimiter : String)\n  (h : delimiter.length > 0) \n  (parts := my_very_own_split\
-  \ s delimiter)\n  (middle_parts := parts.drop 1 |>.take (parts.length - 2)) :\n\
-  \  ∀ p ∈ middle_parts, p ≠ \"\" := \n  sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Quite recently it happened to me to join some recruitment interview, where my first task was to write own implementation of built-in split function. It's quite simple, is it not?
+
+  However, there were the following conditions:
+
+  * the function **cannot** use, in any way, the original `split` or `rsplit` functions,
+  * the new function **must** be a generator,
+  * it should behave as the built-in `split`, so it will be tested that way -- think of `split()` and `split('')`
+
+
+  *This Kata will control if the new function is a generator and if it's not using the built-in split method, so you may try to hack it, but let me know if with success, or if something would go wrong!*
+
+  Enjoy!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def my_very_own_split (s : String) (delimiter : String) : List String :=
+    sorry
+vc-theorems: |-
+  theorem split_matches_python_split (s : String) (delimiter : String) 
+    (h : delimiter.length > 0) :
+    my_very_own_split s delimiter = s.splitOn delimiter := 
+    sorry
+
+
+  theorem split_empty_delimiter_raises (s : String) :
+    delimiter.length = 0 → my_very_own_split s delimiter = [] := 
+    sorry
+
+
+  theorem split_parts_recombine (s delimiter : String) 
+    (h : delimiter.length > 0) 
+    (parts := my_very_own_split s delimiter)
+    (h2 : parts.length > 1) :
+    String.intercalate delimiter parts = s :=
+    sorry
+
+
+  theorem split_no_empty_middle_parts (s delimiter : String)
+    (h : delimiter.length > 0) 
+    (parts := my_very_own_split s delimiter)
+    (middle_parts := parts.drop 1 |>.take (parts.length - 2)) :
+    ∀ p ∈ middle_parts, p ≠ "" := 
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

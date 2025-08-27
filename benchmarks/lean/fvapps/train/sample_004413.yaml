@@ -1,36 +1,77 @@
-"vc-description": "Because my other two parts of the serie were pretty well received\
-  \ I decided to do another part.\n\nPuzzle Tiles\n\nYou will get two Integer n (width)\
-  \ and m (height) and your task is to draw following pattern. Each line is seperated\
-  \ with '\\n'.\n\n\nBoth integers are equal or greater than 1. No need to check for\
-  \ invalid parameters.\nThere are no whitespaces at the end of each line.\n\ne.g.:\n\
-  \n\n \n\n                                       \\_( )\\_\\_ \\_( )\\_\\_ \\_( )\\\
-  _\\_ \\_( )\\_\\_\n                                     \\_|     \\_|     \\_| \
-  \    \\_|     \\_|\n                                    (\\_   \\_ (\\_   \\_ (\\\
-  _   \\_ (\\_   \\_ (\\_\n                                     |\\_\\_( )\\_|\\_\\\
-  _( )\\_|\\_\\_( )\\_|\\_\\_( )\\_|\n                                     |\\_  \
-  \   |\\_     |\\_     |\\_     |\\_\n             puzzleTiles(4,3)=>       \\_)\
-  \ \\_   \\_) \\_   \\_) \\_   \\_) \\_   \\_)\n                                \
-  \     |\\_\\_( )\\_|\\_\\_( )\\_|\\_\\_( )\\_|\\_\\_( )\\_|\n                  \
-  \                   \\_|     \\_|     \\_|     \\_|     \\_|\n                 \
-  \                   (\\_   \\_ (\\_   \\_ (\\_   \\_ (\\_   \\_ (\\_\n         \
-  \                            |\\_\\_( )\\_|\\_\\_( )\\_|\\_\\_( )\\_|\\_\\_( )\\\
-  _|\n                                     \n\n\nFor more informations take a look\
-  \ in the test cases!\n\n\n Serie: ASCII Fun\n\nASCII Fun #1: X-Shape\nASCII Fun\
-  \ #2: Funny Dots\nASCII Fun #3: Puzzle Tiles\nASCII Fun #4: Build a pyramid"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def puzzle_tiles (width height : Nat) : String := sorry\n\ndef\
-  \ String.repeat (s : String) (n : Nat) : String := sorry\n"
-"vc-theorems": "theorem puzzle_tiles_result_lines_first_line {w h : Nat} :\n  let\
-  \ result := puzzle_tiles w h\n  let lines := result.splitOn \"\\n\"\n  lines[0]!\
-  \ = \"  \" ++ (String.repeat \" _( )__\" w) := sorry\n\n\ntheorem puzzle_tiles_even_pattern\
-  \ {w h : Nat} {i : Nat} :\n  let result := puzzle_tiles w h\n  let lines := result.splitOn\
-  \ \"\\n\"\n  let remaining_lines := lines.tail\n  2 * i / 3 % 2 = 0 →\n  i < remaining_lines.length\
-  \ - 2 →\n  (remaining_lines[i]!).endsWith \"_|\" = true ∧\n  (remaining_lines[i+1]!).endsWith\
-  \ \"(_\" = true ∧\n  (remaining_lines[i+2]!).endsWith \"_|\" = true := sorry\n\n\
-  \ntheorem puzzle_tiles_odd_pattern {w h : Nat} {i : Nat} :\n  let result := puzzle_tiles\
-  \ w h\n  let lines := result.splitOn \"\\n\"\n  let remaining_lines := lines.tail\n\
-  \  2 * i / 3 % 2 = 1 →\n  i < remaining_lines.length - 2 →\n  (remaining_lines[i]!).endsWith\
-  \ \"|_\" = true ∧\n  (remaining_lines[i+1]!).endsWith \"_)\" = true ∧\n  (remaining_lines[i+2]!).endsWith\
-  \ \"_|\" = true := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Because my other two parts of the serie were pretty well received I decided to do another part.
+
+  Puzzle Tiles
+
+  You will get two Integer n (width) and m (height) and your task is to draw following pattern. Each line is seperated with '\n'.
+
+
+  Both integers are equal or greater than 1. No need to check for invalid parameters.
+  There are no whitespaces at the end of each line.
+
+  e.g.:
+
+
+   
+
+                                         \_( )\_\_ \_( )\_\_ \_( )\_\_ \_( )\_\_
+                                       \_|     \_|     \_|     \_|     \_|
+                                      (\_   \_ (\_   \_ (\_   \_ (\_   \_ (\_
+                                       |\_\_( )\_|\_\_( )\_|\_\_( )\_|\_\_( )\_|
+                                       |\_     |\_     |\_     |\_     |\_
+               puzzleTiles(4,3)=>       \_) \_   \_) \_   \_) \_   \_) \_   \_)
+                                       |\_\_( )\_|\_\_( )\_|\_\_( )\_|\_\_( )\_|
+                                       \_|     \_|     \_|     \_|     \_|
+                                      (\_   \_ (\_   \_ (\_   \_ (\_   \_ (\_
+                                       |\_\_( )\_|\_\_( )\_|\_\_( )\_|\_\_( )\_|
+                                       
+
+
+  For more informations take a look in the test cases!
+
+
+   Serie: ASCII Fun
+
+  ASCII Fun #1: X-Shape
+  ASCII Fun #2: Funny Dots
+  ASCII Fun #3: Puzzle Tiles
+  ASCII Fun #4: Build a pyramid
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def puzzle_tiles (width height : Nat) : String := sorry
+
+  def String.repeat (s : String) (n : Nat) : String := sorry
+vc-theorems: |-
+  theorem puzzle_tiles_result_lines_first_line {w h : Nat} :
+    let result := puzzle_tiles w h
+    let lines := result.splitOn "\n"
+    lines[0]! = "  " ++ (String.repeat " _( )__" w) := sorry
+
+
+  theorem puzzle_tiles_even_pattern {w h : Nat} {i : Nat} :
+    let result := puzzle_tiles w h
+    let lines := result.splitOn "\n"
+    let remaining_lines := lines.tail
+    2 * i / 3 % 2 = 0 →
+    i < remaining_lines.length - 2 →
+    (remaining_lines[i]!).endsWith "_|" = true ∧
+    (remaining_lines[i+1]!).endsWith "(_" = true ∧
+    (remaining_lines[i+2]!).endsWith "_|" = true := sorry
+
+
+  theorem puzzle_tiles_odd_pattern {w h : Nat} {i : Nat} :
+    let result := puzzle_tiles w h
+    let lines := result.splitOn "\n"
+    let remaining_lines := lines.tail
+    2 * i / 3 % 2 = 1 →
+    i < remaining_lines.length - 2 →
+    (remaining_lines[i]!).endsWith "|_" = true ∧
+    (remaining_lines[i+1]!).endsWith "_)" = true ∧
+    (remaining_lines[i+2]!).endsWith "_|" = true := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

@@ -1,16 +1,33 @@
-"vc-description": "Make a function that will return a greeting statement that uses\
-  \ an input; your program should return, `\"Hello,  how are you doing today?\"`.\n\
-  \nSQL: return results in a column named ```greeting```\n\n*[Make sure you type the\
-  \ exact thing I wrote or the program may not execute properly]*"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def greet (name : String) : String := sorry\n\ntheorem greet_starts_with\
-  \ : ∀ (name : String),\n  (greet name).startsWith \"Hello, \" = true := sorry\n\n\
-  /-- Since the greet_format theorem implies the containment of the name,\nwe can\
-  \ simplify by just using the format theorem -/"
-"vc-theorems": "theorem greet_format : ∀ (name : String),\n  greet name = \"Hello,\
-  \ \" ++ name ++ \" how are you doing today?\" := sorry\n\n\ntheorem greet_ends_with\
-  \ : ∀ (name : String),\n  (greet name).endsWith \" how are you doing today?\" =\
-  \ true := sorry\n\n\ntheorem greet_length : ∀ (name : String),\n  (greet name).length\
-  \ = \"Hello, \".length + name.length + \" how are you doing today?\".length := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Make a function that will return a greeting statement that uses an input; your program should return, `"Hello,  how are you doing today?"`.
+
+  SQL: return results in a column named ```greeting```
+
+  *[Make sure you type the exact thing I wrote or the program may not execute properly]*
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def greet (name : String) : String := sorry
+
+  theorem greet_starts_with : ∀ (name : String),
+    (greet name).startsWith "Hello, " = true := sorry
+
+  /-- Since the greet_format theorem implies the containment of the name,
+  we can simplify by just using the format theorem -/
+vc-theorems: |-
+  theorem greet_format : ∀ (name : String),
+    greet name = "Hello, " ++ name ++ " how are you doing today?" := sorry
+
+
+  theorem greet_ends_with : ∀ (name : String),
+    (greet name).endsWith " how are you doing today?" = true := sorry
+
+
+  theorem greet_length : ∀ (name : String),
+    (greet name).length = "Hello, ".length + name.length + " how are you doing today?".length := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

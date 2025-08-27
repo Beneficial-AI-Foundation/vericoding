@@ -1,28 +1,84 @@
-"vc-description": "-----Problem Statement-----\nLevy's conjecture, named after Hyman\
-  \ Levy, states that all odd integers greater than 5 can be represented as the sum\
-  \ of an odd prime number and an even semiprime. To put it algebraically, 2n + 1\
-  \ = p + 2q always has a solution in primes p and q (not necessary to be distinct)\
-  \ for n > 2. (Source: Wikipedia)\nIn this problem, given a positive integer N (not\
-  \ necessary to be odd integer greater than 5). Your task is to calculate how many\
-  \ distinct ordered pairs (p, q) such that N = p + 2q, where p and q are primes.\n\
-  \n-----Input-----\nThe first line of input contains an integer T, denoting the number\
-  \ of test cases. Then T test cases follow.\n\nEach test case consists of exactly\
-  \ one line containing an integer N.\n\n-----Constraints-----\n- 1 ≤ T ≤ 100000 (105)\n\
-  - 1 ≤ N ≤ 10000 (104)\n\n-----Output-----\nFor each test case, output the number\
-  \ of ordered pairs (p, q) of primes such that N = p + 2q.\n\n-----Example-----\n\
-  Input:\n3\n2\n7\n11\n\nOutput:\n0\n1\n2\n\n-----Explanation-----\nCase #1: There\
-  \ are no ordered pairs (p, q) such that p + 2q = 2.\nCase #2: There is only one\
-  \ ordered pair (p, q) = (3, 2) such that p + 2q = 7.\nCase #3: There are two ordered\
-  \ pairs (p, q) = (7, 2), (5, 3) such that p + 2q = 11."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_prime_pairs (n : Int) : Nat :=\n  sorry\n\n-- Basic properties"
-"vc-theorems": "theorem count_prime_pairs_zero :\n  count_prime_pairs 0 = 0 := by\n\
-  \  sorry\n\n\ntheorem count_prime_pairs_negative {n : Int} (h : n < 0) :\n  count_prime_pairs\
-  \ n = 0 := by\n  sorry\n\n-- Property-based properties\n\ntheorem count_prime_pairs_nonnegative\
-  \ {n : Int} (h : n ≥ 0) :\n  count_prime_pairs n ≥ 0 := by\n  sorry\n\n\ntheorem\
-  \ count_prime_pairs_small_numbers {n : Int} (h1 : n ≥ 0) (h2 : n ≤ 10) :\n  count_prime_pairs\
-  \ n ≤ n/2 := by\n  sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval count_prime_pairs\
-  \ 2\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_prime_pairs 7\n\n/--\ninfo:\
-  \ 2\n-/\n#guard_msgs in\n#eval count_prime_pairs 11\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  -----Problem Statement-----
+  Levy's conjecture, named after Hyman Levy, states that all odd integers greater than 5 can be represented as the sum of an odd prime number and an even semiprime. To put it algebraically, 2n + 1 = p + 2q always has a solution in primes p and q (not necessary to be distinct) for n > 2. (Source: Wikipedia)
+  In this problem, given a positive integer N (not necessary to be odd integer greater than 5). Your task is to calculate how many distinct ordered pairs (p, q) such that N = p + 2q, where p and q are primes.
+
+  -----Input-----
+  The first line of input contains an integer T, denoting the number of test cases. Then T test cases follow.
+
+  Each test case consists of exactly one line containing an integer N.
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 100000 (105)
+  - 1 ≤ N ≤ 10000 (104)
+
+  -----Output-----
+  For each test case, output the number of ordered pairs (p, q) of primes such that N = p + 2q.
+
+  -----Example-----
+  Input:
+  3
+  2
+  7
+  11
+
+  Output:
+  0
+  1
+  2
+
+  -----Explanation-----
+  Case #1: There are no ordered pairs (p, q) such that p + 2q = 2.
+  Case #2: There is only one ordered pair (p, q) = (3, 2) such that p + 2q = 7.
+  Case #3: There are two ordered pairs (p, q) = (7, 2), (5, 3) such that p + 2q = 11.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def count_prime_pairs (n : Int) : Nat :=
+    sorry
+
+  -- Basic properties
+vc-theorems: |
+  theorem count_prime_pairs_zero :
+    count_prime_pairs 0 = 0 := by
+    sorry
+
+
+  theorem count_prime_pairs_negative {n : Int} (h : n < 0) :
+    count_prime_pairs n = 0 := by
+    sorry
+
+  -- Property-based properties
+
+  theorem count_prime_pairs_nonnegative {n : Int} (h : n ≥ 0) :
+    count_prime_pairs n ≥ 0 := by
+    sorry
+
+
+  theorem count_prime_pairs_small_numbers {n : Int} (h1 : n ≥ 0) (h2 : n ≤ 10) :
+    count_prime_pairs n ≤ n/2 := by
+    sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_prime_pairs 2
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_prime_pairs 7
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval count_prime_pairs 11
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

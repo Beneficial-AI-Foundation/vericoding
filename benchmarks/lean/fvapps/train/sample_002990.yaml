@@ -1,22 +1,70 @@
-"vc-description": "Pair of gloves\n=============\n\nWinter is coming, you must prepare\
-  \ your ski holidays. The objective of this kata is to determine the number of pair\
-  \ of gloves you can constitute from the gloves you have in your drawer.\n\nA pair\
-  \ of gloves is constituted of two gloves of the same color.\n\nYou are given an\
-  \ array containing the color of each glove.\n\nYou must return the number of pair\
-  \ you can constitute.\n\nYou must not change the input array.\n\nExample :\n```python\n\
-  my_gloves = [\"red\",\"green\",\"red\",\"blue\",\"blue\"]\nnumber_of_pairs(my_gloves)\
-  \ == 2;// red and blue\n\nred_gloves = [\"red\",\"red\",\"red\",\"red\",\"red\"\
-  ,\"red\"];\nnumber_of_pairs(red_gloves) == 3; // 3 red pairs\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def number_of_pairs (gloves : List String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem pairs_non_negative (gloves : List String) :\n  number_of_pairs\
-  \ gloves ≥ 0 :=\nsorry\n\n\ntheorem pairs_at_most_half (gloves : List String) :\n\
-  \  number_of_pairs gloves ≤ gloves.length / 2 :=\nsorry\n\n\ntheorem empty_list_zero\
-  \ : \n  number_of_pairs [] = 0 :=\nsorry\n\n\ntheorem duplicate_list_pairs (gloves\
-  \ : List String) :\n  number_of_pairs (gloves ++ gloves) = gloves.length :=\nsorry\n\
-  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval number_of_pairs [\"red\", \"red\"]\n\n\
-  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval number_of_pairs [\"red\", \"green\", \"\
-  blue\"]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval number_of_pairs [\"gray\", \"\
-  black\", \"purple\", \"purple\", \"gray\", \"black\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Pair of gloves
+  =============
+
+  Winter is coming, you must prepare your ski holidays. The objective of this kata is to determine the number of pair of gloves you can constitute from the gloves you have in your drawer.
+
+  A pair of gloves is constituted of two gloves of the same color.
+
+  You are given an array containing the color of each glove.
+
+  You must return the number of pair you can constitute.
+
+  You must not change the input array.
+
+  Example :
+  ```python
+  my_gloves = ["red","green","red","blue","blue"]
+  number_of_pairs(my_gloves) == 2;// red and blue
+
+  red_gloves = ["red","red","red","red","red","red"];
+  number_of_pairs(red_gloves) == 3; // 3 red pairs
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def number_of_pairs (gloves : List String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem pairs_non_negative (gloves : List String) :
+    number_of_pairs gloves ≥ 0 :=
+  sorry
+
+
+  theorem pairs_at_most_half (gloves : List String) :
+    number_of_pairs gloves ≤ gloves.length / 2 :=
+  sorry
+
+
+  theorem empty_list_zero : 
+    number_of_pairs [] = 0 :=
+  sorry
+
+
+  theorem duplicate_list_pairs (gloves : List String) :
+    number_of_pairs (gloves ++ gloves) = gloves.length :=
+  sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval number_of_pairs ["red", "red"]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval number_of_pairs ["red", "green", "blue"]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval number_of_pairs ["gray", "black", "purple", "purple", "gray", "black"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

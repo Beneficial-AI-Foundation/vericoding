@@ -1,34 +1,92 @@
-"vc-description": "Polycarp analyzes the prices of the new berPhone. At his disposal\
-  \ are the prices for $n$ last days: $a_1, a_2, \\dots, a_n$, where $a_i$ is the\
-  \ price of berPhone on the day $i$.\n\nPolycarp considers the price on the day $i$\
-  \ to be bad if later (that is, a day with a greater number) berPhone was sold at\
-  \ a lower price. For example, if $n=6$ and $a=[3, 9, 4, 6, 7, 5]$, then the number\
-  \ of days with a bad price is $3$ — these are days $2$ ($a_2=9$), $4$ ($a_4=6$)\
-  \ and $5$ ($a_5=7$).\n\nPrint the number of days with a bad price.\n\nYou have to\
-  \ answer $t$ independent data sets.\n\n\n-----Input-----\n\nThe first line contains\
-  \ an integer $t$ ($1 \\le t \\le 10000$) — the number of sets of input data in the\
-  \ test. Input data sets must be processed independently, one after another.\n\n\
-  Each input data set consists of two lines. The first line contains an integer $n$\
-  \ ($1 \\le n \\le 150000$) — the number of days. The second line contains $n$ integers\
-  \ $a_1, a_2, \\dots, a_n$ ($1 \\le a_i \\le 10^6$), where $a_i$ is the price on\
-  \ the $i$-th day.\n\nIt is guaranteed that the sum of $n$ over all data sets in\
-  \ the test does not exceed $150000$.\n\n\n-----Output-----\n\nPrint $t$ integers,\
-  \ the $j$-th of which should be equal to the number of days with a bad price in\
-  \ the $j$-th input data set.\n\n\n-----Example-----\nInput\n5\n6\n3 9 4 6 7 5\n\
-  1\n1000000\n2\n2 1\n10\n31 41 59 26 53 58 97 93 23 84\n7\n3 2 1 2 3 4 5\n\nOutput\n\
-  3\n0\n1\n8\n2"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_bad_prices (prices : List Int) : Nat := sorry\n\ntheorem\
-  \ count_bad_prices_non_negative (prices : List Int) :\n  count_bad_prices prices\
-  \ ≥ 0 := sorry\n"
-"vc-theorems": "theorem count_bad_prices_upper_bound (prices : List Int) : \n  count_bad_prices\
-  \ prices ≤ prices.length := sorry\n\n\ntheorem count_bad_prices_singleton (price\
-  \ : Int) :\n  count_bad_prices [price] = 0 := sorry\n\n\n\n\ntheorem count_bad_prices_empty\
-  \ :\n  count_bad_prices [] = 0 := sorry\n\n\ntheorem count_bad_prices_all_same (n\
-  \ : Nat) (x : Int) :\n  count_bad_prices (List.replicate n x) = 0 := sorry\n\n/--\n\
-  info: 3\n-/\n#guard_msgs in\n#eval count_bad_prices [3, 9, 4, 6, 7, 5]\n\n/--\n\
-  info: 0\n-/\n#guard_msgs in\n#eval count_bad_prices [1000000]\n\n/--\ninfo: 8\n\
-  -/\n#guard_msgs in\n#eval count_bad_prices [31, 41, 59, 26, 53, 58, 97, 93, 23,\
-  \ 84]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Polycarp analyzes the prices of the new berPhone. At his disposal are the prices for $n$ last days: $a_1, a_2, \dots, a_n$, where $a_i$ is the price of berPhone on the day $i$.
+
+  Polycarp considers the price on the day $i$ to be bad if later (that is, a day with a greater number) berPhone was sold at a lower price. For example, if $n=6$ and $a=[3, 9, 4, 6, 7, 5]$, then the number of days with a bad price is $3$ — these are days $2$ ($a_2=9$), $4$ ($a_4=6$) and $5$ ($a_5=7$).
+
+  Print the number of days with a bad price.
+
+  You have to answer $t$ independent data sets.
+
+
+  -----Input-----
+
+  The first line contains an integer $t$ ($1 \le t \le 10000$) — the number of sets of input data in the test. Input data sets must be processed independently, one after another.
+
+  Each input data set consists of two lines. The first line contains an integer $n$ ($1 \le n \le 150000$) — the number of days. The second line contains $n$ integers $a_1, a_2, \dots, a_n$ ($1 \le a_i \le 10^6$), where $a_i$ is the price on the $i$-th day.
+
+  It is guaranteed that the sum of $n$ over all data sets in the test does not exceed $150000$.
+
+
+  -----Output-----
+
+  Print $t$ integers, the $j$-th of which should be equal to the number of days with a bad price in the $j$-th input data set.
+
+
+  -----Example-----
+  Input
+  5
+  6
+  3 9 4 6 7 5
+  1
+  1000000
+  2
+  2 1
+  10
+  31 41 59 26 53 58 97 93 23 84
+  7
+  3 2 1 2 3 4 5
+
+  Output
+  3
+  0
+  1
+  8
+  2
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_bad_prices (prices : List Int) : Nat := sorry
+
+  theorem count_bad_prices_non_negative (prices : List Int) :
+    count_bad_prices prices ≥ 0 := sorry
+vc-theorems: |
+  theorem count_bad_prices_upper_bound (prices : List Int) : 
+    count_bad_prices prices ≤ prices.length := sorry
+
+
+  theorem count_bad_prices_singleton (price : Int) :
+    count_bad_prices [price] = 0 := sorry
+
+
+
+
+  theorem count_bad_prices_empty :
+    count_bad_prices [] = 0 := sorry
+
+
+  theorem count_bad_prices_all_same (n : Nat) (x : Int) :
+    count_bad_prices (List.replicate n x) = 0 := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_bad_prices [3, 9, 4, 6, 7, 5]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_bad_prices [1000000]
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval count_bad_prices [31, 41, 59, 26, 53, 58, 97, 93, 23, 84]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

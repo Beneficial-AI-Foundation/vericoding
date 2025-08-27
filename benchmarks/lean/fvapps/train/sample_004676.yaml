@@ -1,53 +1,164 @@
-"vc-description": "Our cells go through a process called protein synthesis to translate\
-  \ the instructions in DNA into an amino acid chain, or polypeptide.\n\nYour job\
-  \ is to replicate this!\n\n---\n\n**Step 1: Transcription**\n\nYour input will be\
-  \ a string of DNA that looks like this:\n\n`\"TACAGCTCGCTATGAATC\"`\n\n\nYou then\
-  \ must transcribe it to mRNA. Each letter, or base, gets transcribed.\n\n\n```T\
-  \ -> A\nA -> U\nG -> C\nC -> G```\n\nAlso, you will split it into groups of three,\
-  \ or _codons_.\n\nThe above example would become:\n\n`\"AUG UCG AGC GAU ACU UAG\"\
-  `\n\n---\n\n**Step 2: Translation**\n\nAfter you have the mRNA strand, you will\
-  \ turn it into an amino acid chain.\n\nEach codon corresponds to an amino acid:\n\
-  \n```\nAla     GCU, GCC, GCA, GCG\nLeu     UUA, UUG, CUU, CUC, CUA, CUG\nArg   \
-  \  CGU, CGC, CGA, CGG, AGA, AGG\nLys     AAA, AAG\nAsn     AAU, AAC\nMet     AUG\n\
-  Asp     GAU, GAC\nPhe     UUU, UUC\nCys     UGU, UGC\nPro     CCU, CCC, CCA, CCG\n\
-  Gln     CAA, CAG\nSer     UCU, UCC, UCA, UCG, AGU, AGC\nGlu     GAA, GAG\nThr  \
-  \   ACU, ACC, ACA, ACG\nGly     GGU, GGC, GGA, GGG\nTrp     UGG\nHis     CAU, CAC\n\
-  Tyr     UAU, UAC\nIle     AUU, AUC, AUA\nVal     GUU, GUC, GUA, GUG\nStop   UAG,\
-  \ UGA, UAA```\n\nPhew, that's a long list!\n\nThe above example would become:\n\n\
-  `\"Met Ser Ser Thr Asp Stop\"`\n\nAny additional sets of bases that aren't in a\
-  \ group of three aren't included. For example:\n\n`\"AUG C\"`\n\nwould become\n\n\
-  `\"Met\"`\n\n---\n\nAnyway, your final output will be the mRNA sequence and the\
-  \ polypeptide.\n\nHere are some examples:\n\n*In:*\n\n`\"TACAGCTCGCTATGAATC\"`\n\
-  \n*Out:*\n\n`[\"AUG UCG AGC GAU ACU UAG\",\"Met Ser Ser Asp Thr Stop\"]`\n\n---\n\
-  \n*In:*\n\n`\"ACGTG\"`\n\n*Out:*\n\n`[\"UGC AC\",\"Cys\"]`"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def protein_synthesis (dna_str: String) : List String := sorry\n\
-  \ndef valid_aas : List String := [\"Ala\", \"Arg\", \"Asn\", \"Asp\", \"Cys\", \"\
-  Gln\", \"Glu\", \"Gly\", \"His\", \"Ile\",\n                               \"Leu\"\
-  , \"Lys\", \"Met\", \"Phe\", \"Pro\", \"Ser\", \"Thr\", \"Trp\", \"Tyr\", \"Val\"\
-  , \"Stop\"]\n\ntheorem output_structure {dna_str : String} (h : ∀ c ∈ dna_str.data,\
-  \ c ∈ ['A', 'C', 'G', 'T']) :\n  let result := protein_synthesis dna_str\n  result.length\
-  \ = 2 ∧ \n  (∀ c ∈ result[0]!.data, c ∈ ['A', 'U', 'C', 'G', ' ']) ∧\n  (∀ aa ∈\
-  \ result[1]!.splitOn \" \", aa ∈ valid_aas) := sorry\n"
-"vc-theorems": "theorem dna_to_rna_conversion {dna_str : String} (h : ∀ c ∈ dna_str.data,\
-  \ c ∈ ['A', 'C', 'G', 'T']) :\n  let result := protein_synthesis dna_str\n  let\
-  \ rna := (result[0]!.replace \" \" \"\").data\n  ∀ i, i < dna_str.length → \n  \
-  \  match dna_str.data[i]! with\n    | 'A' => rna[i]! = 'U'\n    | 'T' => rna[i]!\
-  \ = 'A'  \n    | 'C' => rna[i]! = 'G'\n    | 'G' => rna[i]! = 'C'\n    | _ => True\
-  \ := sorry\n\n\ntheorem codon_spacing {dna_str : String} (h : ∀ c ∈ dna_str.data,\
-  \ c ∈ ['A', 'C', 'G', 'T']) :\n  let result := protein_synthesis dna_str\n  let\
-  \ rna_codons := result[0]!.splitOn \" \"\n  (∀ i, i < rna_codons.length - 1 → (rna_codons[i]!).length\
-  \ = 3) ∧ \n  (rna_codons.length > 0 → \n   1 ≤ (rna_codons[rna_codons.length - 1]!).length\
-  \ ∧ \n   (rna_codons[rna_codons.length - 1]!).length ≤ 3) := sorry\n\n\ntheorem\
-  \ translation_consistency {dna_str : String} (h : ∀ c ∈ dna_str.data, c ∈ ['A',\
-  \ 'C', 'G', 'T']) :\n  let result := protein_synthesis dna_str\n  let rna_codons\
-  \ := result[0]!.splitOn \" \"\n  let aas := result[1]!.splitOn \" \"\n  ∀ i j, i\
-  \ < rna_codons.length → j < rna_codons.length →\n    rna_codons[i]!.length = 3 →\
-  \ \n    rna_codons[j]!.length = 3 →\n    rna_codons[i]! = rna_codons[j]! → \n  \
-  \  aas[i]! = aas[j]! := sorry\n\n/--\ninfo: ['AUG UCG AGC GAU ACU UAG', 'Met Ser\
-  \ Ser Asp Thr Stop']\n-/\n#guard_msgs in\n#eval protein_synthesis \"TACAGCTCGCTATGAATC\"\
-  \n\n/--\ninfo: ['UGC AC', 'Cys']\n-/\n#guard_msgs in\n#eval protein_synthesis \"\
-  ACGTG\"\n\n/--\ninfo: ['AUG', 'Met']\n-/\n#guard_msgs in\n#eval protein_synthesis\
-  \ \"TAC\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Our cells go through a process called protein synthesis to translate the instructions in DNA into an amino acid chain, or polypeptide.
+
+  Your job is to replicate this!
+
+  ---
+
+  **Step 1: Transcription**
+
+  Your input will be a string of DNA that looks like this:
+
+  `"TACAGCTCGCTATGAATC"`
+
+
+  You then must transcribe it to mRNA. Each letter, or base, gets transcribed.
+
+
+  ```T -> A
+  A -> U
+  G -> C
+  C -> G```
+
+  Also, you will split it into groups of three, or _codons_.
+
+  The above example would become:
+
+  `"AUG UCG AGC GAU ACU UAG"`
+
+  ---
+
+  **Step 2: Translation**
+
+  After you have the mRNA strand, you will turn it into an amino acid chain.
+
+  Each codon corresponds to an amino acid:
+
+  ```
+  Ala     GCU, GCC, GCA, GCG
+  Leu     UUA, UUG, CUU, CUC, CUA, CUG
+  Arg     CGU, CGC, CGA, CGG, AGA, AGG
+  Lys     AAA, AAG
+  Asn     AAU, AAC
+  Met     AUG
+  Asp     GAU, GAC
+  Phe     UUU, UUC
+  Cys     UGU, UGC
+  Pro     CCU, CCC, CCA, CCG
+  Gln     CAA, CAG
+  Ser     UCU, UCC, UCA, UCG, AGU, AGC
+  Glu     GAA, GAG
+  Thr     ACU, ACC, ACA, ACG
+  Gly     GGU, GGC, GGA, GGG
+  Trp     UGG
+  His     CAU, CAC
+  Tyr     UAU, UAC
+  Ile     AUU, AUC, AUA
+  Val     GUU, GUC, GUA, GUG
+  Stop   UAG, UGA, UAA```
+
+  Phew, that's a long list!
+
+  The above example would become:
+
+  `"Met Ser Ser Thr Asp Stop"`
+
+  Any additional sets of bases that aren't in a group of three aren't included. For example:
+
+  `"AUG C"`
+
+  would become
+
+  `"Met"`
+
+  ---
+
+  Anyway, your final output will be the mRNA sequence and the polypeptide.
+
+  Here are some examples:
+
+  *In:*
+
+  `"TACAGCTCGCTATGAATC"`
+
+  *Out:*
+
+  `["AUG UCG AGC GAU ACU UAG","Met Ser Ser Asp Thr Stop"]`
+
+  ---
+
+  *In:*
+
+  `"ACGTG"`
+
+  *Out:*
+
+  `["UGC AC","Cys"]`
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def protein_synthesis (dna_str: String) : List String := sorry
+
+  def valid_aas : List String := ["Ala", "Arg", "Asn", "Asp", "Cys", "Gln", "Glu", "Gly", "His", "Ile",
+                                 "Leu", "Lys", "Met", "Phe", "Pro", "Ser", "Thr", "Trp", "Tyr", "Val", "Stop"]
+
+  theorem output_structure {dna_str : String} (h : ∀ c ∈ dna_str.data, c ∈ ['A', 'C', 'G', 'T']) :
+    let result := protein_synthesis dna_str
+    result.length = 2 ∧ 
+    (∀ c ∈ result[0]!.data, c ∈ ['A', 'U', 'C', 'G', ' ']) ∧
+    (∀ aa ∈ result[1]!.splitOn " ", aa ∈ valid_aas) := sorry
+vc-theorems: |
+  theorem dna_to_rna_conversion {dna_str : String} (h : ∀ c ∈ dna_str.data, c ∈ ['A', 'C', 'G', 'T']) :
+    let result := protein_synthesis dna_str
+    let rna := (result[0]!.replace " " "").data
+    ∀ i, i < dna_str.length → 
+      match dna_str.data[i]! with
+      | 'A' => rna[i]! = 'U'
+      | 'T' => rna[i]! = 'A'  
+      | 'C' => rna[i]! = 'G'
+      | 'G' => rna[i]! = 'C'
+      | _ => True := sorry
+
+
+  theorem codon_spacing {dna_str : String} (h : ∀ c ∈ dna_str.data, c ∈ ['A', 'C', 'G', 'T']) :
+    let result := protein_synthesis dna_str
+    let rna_codons := result[0]!.splitOn " "
+    (∀ i, i < rna_codons.length - 1 → (rna_codons[i]!).length = 3) ∧ 
+    (rna_codons.length > 0 → 
+     1 ≤ (rna_codons[rna_codons.length - 1]!).length ∧ 
+     (rna_codons[rna_codons.length - 1]!).length ≤ 3) := sorry
+
+
+  theorem translation_consistency {dna_str : String} (h : ∀ c ∈ dna_str.data, c ∈ ['A', 'C', 'G', 'T']) :
+    let result := protein_synthesis dna_str
+    let rna_codons := result[0]!.splitOn " "
+    let aas := result[1]!.splitOn " "
+    ∀ i j, i < rna_codons.length → j < rna_codons.length →
+      rna_codons[i]!.length = 3 → 
+      rna_codons[j]!.length = 3 →
+      rna_codons[i]! = rna_codons[j]! → 
+      aas[i]! = aas[j]! := sorry
+
+  /--
+  info: ['AUG UCG AGC GAU ACU UAG', 'Met Ser Ser Asp Thr Stop']
+  -/
+  #guard_msgs in
+  #eval protein_synthesis "TACAGCTCGCTATGAATC"
+
+  /--
+  info: ['UGC AC', 'Cys']
+  -/
+  #guard_msgs in
+  #eval protein_synthesis "ACGTG"
+
+  /--
+  info: ['AUG', 'Met']
+  -/
+  #guard_msgs in
+  #eval protein_synthesis "TAC"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

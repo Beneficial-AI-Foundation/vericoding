@@ -1,37 +1,118 @@
-"vc-description": "Fox Ciel is playing a card game with her friend Fox Jiro. There\
-  \ are n piles of cards on the table. And there is a positive integer on each card.\n\
-  \nThe players take turns and Ciel takes the first turn. In Ciel's turn she takes\
-  \ a card from the top of any non-empty pile, and in Jiro's turn he takes a card\
-  \ from the bottom of any non-empty pile. Each player wants to maximize the total\
-  \ sum of the cards he took. The game ends when all piles become empty.\n\nSuppose\
-  \ Ciel and Jiro play optimally, what is the score of the game?\n\n\n-----Input-----\n\
-  \nThe first line contain an integer n (1 ≤ n ≤ 100). Each of the next n lines contains\
-  \ a description of the pile: the first integer in the line is s_{i} (1 ≤ s_{i} ≤\
-  \ 100) — the number of cards in the i-th pile; then follow s_{i} positive integers\
-  \ c_1, c_2, ..., c_{k}, ..., c_{s}_{i} (1 ≤ c_{k} ≤ 1000) — the sequence of the\
-  \ numbers on the cards listed from top of the current pile to bottom of the pile.\n\
-  \n\n-----Output-----\n\nPrint two integers: the sum of Ciel's cards and the sum\
-  \ of Jiro's cards if they play optimally.\n\n\n-----Examples-----\nInput\n2\n1 100\n\
-  2 1 10\n\nOutput\n101 10\n\nInput\n1\n9 2 8 6 5 9 4 7 1 3\n\nOutput\n30 15\n\nInput\n\
-  3\n3 1 3 2\n3 5 4 6\n2 8 7\n\nOutput\n18 18\n\nInput\n3\n3 1000 1000 1000\n6 1000\
-  \ 1000 1000 1000 1000 1000\n5 1000 1000 1000 1000 1000\n\nOutput\n7000 7000\n\n\n\
-  \n-----Note-----\n\nIn the first example, Ciel will take the cards with number 100\
-  \ and 1, Jiro will take the card with number 10.\n\nIn the second example, Ciel\
-  \ will take cards with numbers 2, 8, 6, 5, 9 and Jiro will take cards with numbers\
-  \ 4, 7, 1, 3."
-"vc-preamble": "import Imports.AllImports\n\ndef Card := Nat \ndef Pile := List Card\n\
-  \ndef Game := List (Nat × Pile)\n\ndef listSum (l : List Nat) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_card_game (g : Game) : Nat × Nat :=\n  sorry\n"
-"vc-theorems": "theorem solve_card_game_returns_tuple (g : Game) :\n  let (a, b) :=\
-  \ solve_card_game g\n  a ≥ 0 ∧ b ≥ 0 :=\nsorry\n\n\ntheorem sum_scores_equals_input\
-  \ (g : Game) :\n  let (a, b) := solve_card_game g\n  let total := g.map (fun p =>\
-  \ listSum p.2) |> listSum\n  a + b = total :=\nsorry\n\n\ntheorem first_pile_split_correctly\
-  \ (g : Game) (h : g ≠ []) :\n  let first := g.head h\n  let k := first.1 / 2 + 1\n\
-  \  let first_sum := listSum first.2\n  let rest_sum := g.tail.map (fun p => listSum\
-  \ p.2) |> listSum\n  let (a, b) := solve_card_game g\n  a + b = first_sum + rest_sum\
-  \ :=\nsorry\n\n/--\ninfo: (101, 10)\n-/\n#guard_msgs in\n#eval solve_card_game [[1,\
-  \ 100], [2, 1, 10]]\n\n/--\ninfo: (30, 15)\n-/\n#guard_msgs in\n#eval solve_card_game\
-  \ [[9, 2, 8, 6, 5, 9, 4, 7, 1, 3]]\n\n/--\ninfo: (18, 18)\n-/\n#guard_msgs in\n\
-  #eval solve_card_game [[3, 1, 3, 2], [3, 5, 4, 6], [2, 8, 7]]\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"
+vc-description: |-
+  Fox Ciel is playing a card game with her friend Fox Jiro. There are n piles of cards on the table. And there is a positive integer on each card.
+
+  The players take turns and Ciel takes the first turn. In Ciel's turn she takes a card from the top of any non-empty pile, and in Jiro's turn he takes a card from the bottom of any non-empty pile. Each player wants to maximize the total sum of the cards he took. The game ends when all piles become empty.
+
+  Suppose Ciel and Jiro play optimally, what is the score of the game?
+
+
+  -----Input-----
+
+  The first line contain an integer n (1 ≤ n ≤ 100). Each of the next n lines contains a description of the pile: the first integer in the line is s_{i} (1 ≤ s_{i} ≤ 100) — the number of cards in the i-th pile; then follow s_{i} positive integers c_1, c_2, ..., c_{k}, ..., c_{s}_{i} (1 ≤ c_{k} ≤ 1000) — the sequence of the numbers on the cards listed from top of the current pile to bottom of the pile.
+
+
+  -----Output-----
+
+  Print two integers: the sum of Ciel's cards and the sum of Jiro's cards if they play optimally.
+
+
+  -----Examples-----
+  Input
+  2
+  1 100
+  2 1 10
+
+  Output
+  101 10
+
+  Input
+  1
+  9 2 8 6 5 9 4 7 1 3
+
+  Output
+  30 15
+
+  Input
+  3
+  3 1 3 2
+  3 5 4 6
+  2 8 7
+
+  Output
+  18 18
+
+  Input
+  3
+  3 1000 1000 1000
+  6 1000 1000 1000 1000 1000 1000
+  5 1000 1000 1000 1000 1000
+
+  Output
+  7000 7000
+
+
+
+  -----Note-----
+
+  In the first example, Ciel will take the cards with number 100 and 1, Jiro will take the card with number 10.
+
+  In the second example, Ciel will take cards with numbers 2, 8, 6, 5, 9 and Jiro will take cards with numbers 4, 7, 1, 3.
+vc-preamble: |
+  import Imports.AllImports
+
+  def Card := Nat 
+  def Pile := List Card
+
+  def Game := List (Nat × Pile)
+
+  def listSum (l : List Nat) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_card_game (g : Game) : Nat × Nat :=
+    sorry
+vc-theorems: |
+  theorem solve_card_game_returns_tuple (g : Game) :
+    let (a, b) := solve_card_game g
+    a ≥ 0 ∧ b ≥ 0 :=
+  sorry
+
+
+  theorem sum_scores_equals_input (g : Game) :
+    let (a, b) := solve_card_game g
+    let total := g.map (fun p => listSum p.2) |> listSum
+    a + b = total :=
+  sorry
+
+
+  theorem first_pile_split_correctly (g : Game) (h : g ≠ []) :
+    let first := g.head h
+    let k := first.1 / 2 + 1
+    let first_sum := listSum first.2
+    let rest_sum := g.tail.map (fun p => listSum p.2) |> listSum
+    let (a, b) := solve_card_game g
+    a + b = first_sum + rest_sum :=
+  sorry
+
+  /--
+  info: (101, 10)
+  -/
+  #guard_msgs in
+  #eval solve_card_game [[1, 100], [2, 1, 10]]
+
+  /--
+  info: (30, 15)
+  -/
+  #guard_msgs in
+  #eval solve_card_game [[9, 2, 8, 6, 5, 9, 4, 7, 1, 3]]
+
+  /--
+  info: (18, 18)
+  -/
+  #guard_msgs in
+  #eval solve_card_game [[3, 1, 3, 2], [3, 5, 4, 6], [2, 8, 7]]
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded

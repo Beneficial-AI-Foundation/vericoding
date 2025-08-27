@@ -1,27 +1,97 @@
-"vc-description": "Solve a given equation and return the value of x in the form of\
-  \ string \"x=#value\". The equation contains only '+', '-' operation, the variable\
-  \ x and its coefficient.\n\n\n\nIf there is no solution for the equation, return\
-  \ \"No solution\".\n\n\nIf there are infinite solutions for the equation, return\
-  \ \"Infinite solutions\".\n\n\nIf there is exactly one solution for the equation,\
-  \ we ensure that the value of x is an integer.\n\n\nExample 1:\n\nInput: \"x+5-3+x=6+x-2\"\
-  \nOutput: \"x=2\"\n\n\n\nExample 2:\n\nInput: \"x=x\"\nOutput: \"Infinite solutions\"\
-  \n\n\n\nExample 3:\n\nInput: \"2x=x\"\nOutput: \"x=0\"\n\n\n\nExample 4:\n\nInput:\
-  \ \"2x+3x-6x=x+2\"\nOutput: \"x=-1\"\n\n\n\nExample 5:\n\nInput: \"x=x+2\"\nOutput:\
-  \ \"No solution\""
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_equation (eq : String) : String := sorry\n\ntheorem simple_integer_solutions\
-  \ (n : Int) : \n  solve_equation s!\"x={n}\" = s!\"x={n}\" := sorry\n"
-"vc-theorems": "theorem linear_equation_solution (a b : Int) (h : a ≠ 0) :\n  solve_equation\
-  \ s!\"{a}x={b}\" = if b % a = 0 then s!\"x={b/a}\" else \"No solution\" := sorry\n\
-  \n\ntheorem special_cases_identities :\n  solve_equation \"x=x\" = \"Infinite solutions\"\
-  \ ∧\n  solve_equation \"0x=0\" = \"Infinite solutions\" ∧\n  solve_equation \"0x=1\"\
-  \ = \"No solution\" ∧ \n  solve_equation \"2x=x\" = \"x=0\" ∧\n  solve_equation\
-  \ \"-x=x\" = \"x=0\" := sorry\n\n\ntheorem solution_validity (eq result : String)\
-  \ :\n  solve_equation eq = result →\n  (result = \"No solution\" ∨\n   result =\
-  \ \"Infinite solutions\" ∨\n   ∃ x:Int, result = s!\"x={x}\" ∧ \n   -- The solution\
-  \ x satisfies the original equation\n   sorry) := sorry\n\n/--\ninfo: 'x=2'\n-/\n\
-  #guard_msgs in\n#eval solve_equation \"x+5-3+x=6+x-2\"\n\n/--\ninfo: 'Infinite solutions'\n\
-  -/\n#guard_msgs in\n#eval solve_equation \"x=x\"\n\n/--\ninfo: 'x=0'\n-/\n#guard_msgs\
-  \ in\n#eval solve_equation \"2x=x\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Solve a given equation and return the value of x in the form of string "x=#value". The equation contains only '+', '-' operation, the variable x and its coefficient.
+
+
+
+  If there is no solution for the equation, return "No solution".
+
+
+  If there are infinite solutions for the equation, return "Infinite solutions".
+
+
+  If there is exactly one solution for the equation, we ensure that the value of x is an integer.
+
+
+  Example 1:
+
+  Input: "x+5-3+x=6+x-2"
+  Output: "x=2"
+
+
+
+  Example 2:
+
+  Input: "x=x"
+  Output: "Infinite solutions"
+
+
+
+  Example 3:
+
+  Input: "2x=x"
+  Output: "x=0"
+
+
+
+  Example 4:
+
+  Input: "2x+3x-6x=x+2"
+  Output: "x=-1"
+
+
+
+  Example 5:
+
+  Input: "x=x+2"
+  Output: "No solution"
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_equation (eq : String) : String := sorry
+
+  theorem simple_integer_solutions (n : Int) : 
+    solve_equation s!"x={n}" = s!"x={n}" := sorry
+vc-theorems: |
+  theorem linear_equation_solution (a b : Int) (h : a ≠ 0) :
+    solve_equation s!"{a}x={b}" = if b % a = 0 then s!"x={b/a}" else "No solution" := sorry
+
+
+  theorem special_cases_identities :
+    solve_equation "x=x" = "Infinite solutions" ∧
+    solve_equation "0x=0" = "Infinite solutions" ∧
+    solve_equation "0x=1" = "No solution" ∧ 
+    solve_equation "2x=x" = "x=0" ∧
+    solve_equation "-x=x" = "x=0" := sorry
+
+
+  theorem solution_validity (eq result : String) :
+    solve_equation eq = result →
+    (result = "No solution" ∨
+     result = "Infinite solutions" ∨
+     ∃ x:Int, result = s!"x={x}" ∧ 
+     -- The solution x satisfies the original equation
+     sorry) := sorry
+
+  /--
+  info: 'x=2'
+  -/
+  #guard_msgs in
+  #eval solve_equation "x+5-3+x=6+x-2"
+
+  /--
+  info: 'Infinite solutions'
+  -/
+  #guard_msgs in
+  #eval solve_equation "x=x"
+
+  /--
+  info: 'x=0'
+  -/
+  #guard_msgs in
+  #eval solve_equation "2x=x"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

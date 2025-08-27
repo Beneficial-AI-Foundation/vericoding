@@ -1,40 +1,86 @@
-"vc-description": "A policeman wants to catch a thief. Both the policeman and the\
-  \ thief can only move on a line on integer coordinates between $0$ and $N$ (inclusive).\n\
-  Initially, the policeman is at a coordinate $x$ and the thief is at a coordinate\
-  \ $y$. During each second, each of them must move to the left or right (not necessarily\
-  \ both in the same direction) by distance $\\textbf{exactly}$ equal to $K$. No one\
-  \ may go to the left of the coordinate $0$ or to the right of $N$. Both the policeman\
-  \ and the thief move simultaneously and they cannot meet while moving, only at the\
-  \ end of each second.\nWill the policeman be able to catch the thief if they both\
-  \ move optimally? The thief is caught as soon as the policeman and thief meet at\
-  \ the same position at the same time.\n\n-----Input-----\n- The first line of the\
-  \ input contains a single integer $T$ denoting the number of test cases. The description\
-  \ of $T$ test cases follows.\n- The first and only line of each test case contains\
-  \ four space-separated integers $x$, $y$, $K$ and $N$.\n\n-----Output-----\nFor\
-  \ each test case, print a single line containing the string \"Yes\" if the thief\
-  \ can be caught or \"No\" if the thief cannot be caught (without quotes).\n\n-----Constraints-----\n\
-  - $1 \\le T \\le 1,000$\n- $1 \\le N \\le 10^9$\n- $1 \\le K \\le N$\n- $0 \\le\
-  \ x, y \\le N$\n- $x \\neq y$\n\n-----Example Input-----\n5\n0 1 1 1\n1 4 1 5\n\
-  4 2 1 7\n3 7 2 10\n8 2 3 15\n\n-----Example Output-----\nNo\nNo\nYes\nYes\nYes\n\
-  \n-----Explanation-----\nExample case 1: The policeman is at $0$ and the thief is\
-  \ at $1$. After the $1$-st second, the policeman is at $1$ and the thief is at $0$.\
-  \ After the next second, the policeman is again at $0$ and the thief at $1$. They\
-  \ cannot end up at the same coordinate."
-"vc-preamble": "import Imports.AllImports\n\ndef abs (n : Nat) : Nat := \n  if n ≥\
-  \ 0 then n else 0\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def can_catch_thief (x y k n : Nat) : String := sorry\n\ntheorem\
-  \ catch_thief_output_validity (x y k n : Nat) (h : k > 0) (h' : n > 0) :\n  can_catch_thief\
-  \ x y k n = \"Yes\" ∨ can_catch_thief x y k n = \"No\" := sorry\n"
-"vc-theorems": "theorem catch_thief_distance_divisible (x y k n : Nat) (h : k > 0)\
-  \ (h' : n > 0) :\n  let distance := if x ≥ y then x - y else y - x\n  can_catch_thief\
-  \ x y k n = \"Yes\" ↔ distance % (2 * k) = 0 := sorry\n\n\ntheorem catch_thief_symmetric\
-  \ (x y k n : Nat) (h : k > 0) (h' : n > 0) :\n  can_catch_thief x y k n = can_catch_thief\
-  \ y x k n := sorry\n\n\ntheorem catch_thief_translation_invariant (x y k n offset\
-  \ : Nat) (h : k > 0) (h' : n > 0) :\n  can_catch_thief (x + offset) (y + offset)\
-  \ k n = can_catch_thief x y k n := sorry\n\n\ntheorem catch_thief_same_position\
-  \ (x k n : Nat) (h : k > 0) (h' : n > 0) :\n  can_catch_thief x x k n = \"Yes\"\
-  \ := sorry\n\n/--\ninfo: 'No'\n-/\n#guard_msgs in\n#eval can_catch_thief 0 1 1 1\n\
-  \n/--\ninfo: 'No'\n-/\n#guard_msgs in\n#eval can_catch_thief 1 4 1 5\n\n/--\ninfo:\
-  \ 'Yes'\n-/\n#guard_msgs in\n#eval can_catch_thief 4 2 1 7\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  A policeman wants to catch a thief. Both the policeman and the thief can only move on a line on integer coordinates between $0$ and $N$ (inclusive).
+  Initially, the policeman is at a coordinate $x$ and the thief is at a coordinate $y$. During each second, each of them must move to the left or right (not necessarily both in the same direction) by distance $\textbf{exactly}$ equal to $K$. No one may go to the left of the coordinate $0$ or to the right of $N$. Both the policeman and the thief move simultaneously and they cannot meet while moving, only at the end of each second.
+  Will the policeman be able to catch the thief if they both move optimally? The thief is caught as soon as the policeman and thief meet at the same position at the same time.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first and only line of each test case contains four space-separated integers $x$, $y$, $K$ and $N$.
+
+  -----Output-----
+  For each test case, print a single line containing the string "Yes" if the thief can be caught or "No" if the thief cannot be caught (without quotes).
+
+  -----Constraints-----
+  - $1 \le T \le 1,000$
+  - $1 \le N \le 10^9$
+  - $1 \le K \le N$
+  - $0 \le x, y \le N$
+  - $x \neq y$
+
+  -----Example Input-----
+  5
+  0 1 1 1
+  1 4 1 5
+  4 2 1 7
+  3 7 2 10
+  8 2 3 15
+
+  -----Example Output-----
+  No
+  No
+  Yes
+  Yes
+  Yes
+
+  -----Explanation-----
+  Example case 1: The policeman is at $0$ and the thief is at $1$. After the $1$-st second, the policeman is at $1$ and the thief is at $0$. After the next second, the policeman is again at $0$ and the thief at $1$. They cannot end up at the same coordinate.
+vc-preamble: |
+  import Imports.AllImports
+
+  def abs (n : Nat) : Nat := 
+    if n ≥ 0 then n else 0
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def can_catch_thief (x y k n : Nat) : String := sorry
+
+  theorem catch_thief_output_validity (x y k n : Nat) (h : k > 0) (h' : n > 0) :
+    can_catch_thief x y k n = "Yes" ∨ can_catch_thief x y k n = "No" := sorry
+vc-theorems: |
+  theorem catch_thief_distance_divisible (x y k n : Nat) (h : k > 0) (h' : n > 0) :
+    let distance := if x ≥ y then x - y else y - x
+    can_catch_thief x y k n = "Yes" ↔ distance % (2 * k) = 0 := sorry
+
+
+  theorem catch_thief_symmetric (x y k n : Nat) (h : k > 0) (h' : n > 0) :
+    can_catch_thief x y k n = can_catch_thief y x k n := sorry
+
+
+  theorem catch_thief_translation_invariant (x y k n offset : Nat) (h : k > 0) (h' : n > 0) :
+    can_catch_thief (x + offset) (y + offset) k n = can_catch_thief x y k n := sorry
+
+
+  theorem catch_thief_same_position (x k n : Nat) (h : k > 0) (h' : n > 0) :
+    can_catch_thief x x k n = "Yes" := sorry
+
+  /--
+  info: 'No'
+  -/
+  #guard_msgs in
+  #eval can_catch_thief 0 1 1 1
+
+  /--
+  info: 'No'
+  -/
+  #guard_msgs in
+  #eval can_catch_thief 1 4 1 5
+
+  /--
+  info: 'Yes'
+  -/
+  #guard_msgs in
+  #eval can_catch_thief 4 2 1 7
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

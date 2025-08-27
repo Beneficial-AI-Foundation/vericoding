@@ -1,28 +1,83 @@
-"vc-description": "The chef is trying to solve some pattern problems, Chef wants your\
-  \ help to code it. Chef has one number K to form a new pattern. Help the chef to\
-  \ code this pattern problem.\n\n-----Input:-----\n- First-line will contain $T$,\
-  \ the number of test cases. Then the test cases follow. \n- Each test case contains\
-  \ a single line of input, one integer $K$. \n\n-----Output:-----\nFor each test\
-  \ case, output as the pattern.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n\
-  - $1 \\leq K \\leq 100$\n\n-----Sample Input:-----\n4\n1\n2\n3\n4\n\n-----Sample\
-  \ Output:-----\n1 \n1 10 \n11 100 \n1 10 11 \n100 101 110 \n111 1000 1001 \n1 10\
-  \ 11 100 \n101 110 111 1000 \n1001 1010 1011 1100 \n1101 1110 1111 10000 \n\n-----EXPLANATION:-----\n\
-  No need, else pattern can be decode easily."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def generate_binary_pattern (k : Nat) : List (List String) := sorry\n\
-  \ntheorem pattern_length (k : Nat) (h : 0 < k) (h2 : k ≤ 10) :\n  let result :=\
-  \ generate_binary_pattern k\n  (result.length = k) ∧ \n  (∀ row ∈ result, (row.length\
-  \ = k)) := sorry\n"
-"vc-theorems": "theorem all_binary_strings (k : Nat) (h : 0 < k) (h2 : k ≤ 10) :\n\
-  \  let result := generate_binary_pattern k\n  ∀ row ∈ result,\n    ∀ num ∈ row,\n\
-  \      (∀ c ∈ num.data, c = '0' ∨ c = '1') ∧\n      (num.data ≠ [] → List.head!\
-  \ num.data = '1') := sorry\n\n\ntheorem increasing_values (k : Nat) (h : 0 < k)\
-  \ (h2 : k ≤ 10) :\n  let result := generate_binary_pattern k\n  ∀ row ∈ result,\n\
-  \    let binary_nums := row.map (fun s => String.toNat! s)\n    ∀ i, i + 1 < binary_nums.length\
-  \ →\n      binary_nums[i]! < binary_nums[i+1]! := sorry\n\n/--\ninfo: ['1']\n-/\n\
-  #guard_msgs in\n#eval generate_binary_pattern 1\n\n/--\ninfo: ['1 10', '11 100']\n\
-  -/\n#guard_msgs in\n#eval generate_binary_pattern 2\n\n/--\ninfo: ['1 10 11', '100\
-  \ 101 110', '111 1000 1001']\n-/\n#guard_msgs in\n#eval generate_binary_pattern\
-  \ 3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  The chef is trying to solve some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+
+  -----Output:-----
+  For each test case, output as the pattern.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq K \leq 100$
+
+  -----Sample Input:-----
+  4
+  1
+  2
+  3
+  4
+
+  -----Sample Output:-----
+  1 
+  1 10 
+  11 100 
+  1 10 11 
+  100 101 110 
+  111 1000 1001 
+  1 10 11 100 
+  101 110 111 1000 
+  1001 1010 1011 1100 
+  1101 1110 1111 10000 
+
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def generate_binary_pattern (k : Nat) : List (List String) := sorry
+
+  theorem pattern_length (k : Nat) (h : 0 < k) (h2 : k ≤ 10) :
+    let result := generate_binary_pattern k
+    (result.length = k) ∧ 
+    (∀ row ∈ result, (row.length = k)) := sorry
+vc-theorems: |
+  theorem all_binary_strings (k : Nat) (h : 0 < k) (h2 : k ≤ 10) :
+    let result := generate_binary_pattern k
+    ∀ row ∈ result,
+      ∀ num ∈ row,
+        (∀ c ∈ num.data, c = '0' ∨ c = '1') ∧
+        (num.data ≠ [] → List.head! num.data = '1') := sorry
+
+
+  theorem increasing_values (k : Nat) (h : 0 < k) (h2 : k ≤ 10) :
+    let result := generate_binary_pattern k
+    ∀ row ∈ result,
+      let binary_nums := row.map (fun s => String.toNat! s)
+      ∀ i, i + 1 < binary_nums.length →
+        binary_nums[i]! < binary_nums[i+1]! := sorry
+
+  /--
+  info: ['1']
+  -/
+  #guard_msgs in
+  #eval generate_binary_pattern 1
+
+  /--
+  info: ['1 10', '11 100']
+  -/
+  #guard_msgs in
+  #eval generate_binary_pattern 2
+
+  /--
+  info: ['1 10 11', '100 101 110', '111 1000 1001']
+  -/
+  #guard_msgs in
+  #eval generate_binary_pattern 3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

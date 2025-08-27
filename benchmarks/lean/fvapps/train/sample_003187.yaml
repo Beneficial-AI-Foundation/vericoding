@@ -1,9 +1,27 @@
-"vc-description": "Implement a function which convert the given boolean value into\
-  \ its string representation."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def booleanToString (b : Bool) : String := sorry\n\ntheorem booleanToString_is_str\
-  \ (b : Bool) : \n  booleanToString b = toString b := by sorry"
-"vc-theorems": "/--\ninfo: 'True'\n-/\n#guard_msgs in\n#eval boolean_to_string True\n\
-  \n/--\ninfo: 'False'\n-/\n#guard_msgs in\n#eval boolean_to_string False\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Implement a function which convert the given boolean value into its string representation.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def booleanToString (b : Bool) : String := sorry
+
+  theorem booleanToString_is_str (b : Bool) : 
+    booleanToString b = toString b := by sorry
+vc-theorems: |
+  /--
+  info: 'True'
+  -/
+  #guard_msgs in
+  #eval boolean_to_string True
+
+  /--
+  info: 'False'
+  -/
+  #guard_msgs in
+  #eval boolean_to_string False
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

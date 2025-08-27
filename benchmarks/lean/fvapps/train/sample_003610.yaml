@@ -1,33 +1,77 @@
-"vc-description": "You will be given an array which lists the current inventory of\
-  \ stock in your store and another array which lists the new inventory being delivered\
-  \ to your store today.\n\nYour task is to write a function that returns the updated\
-  \ list of your current inventory **in alphabetical order**.\n\n## Example\n\n```python\n\
-  cur_stock = [(25, 'HTC'), (1000, 'Nokia'), (50, 'Samsung'), (33, 'Sony'), (10, 'Apple')]\n\
-  new_stock = [(5, 'LG'), (10, 'Sony'), (4, 'Samsung'), (5, 'Apple')]\n\nupdate_inventory(cur_stock,\
-  \ new_stock)  ==>\n[(15, 'Apple'), (25, 'HTC'), (5, 'LG'), (1000, 'Nokia'), (54,\
-  \ 'Samsung'), (43, 'Sony')]\n```\n\n___\n\n*Kata inspired by the FreeCodeCamp's\
-  \ 'Inventory Update' algorithm.*"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def List.update_inventory (cur_stock: List (Nat × String)) (new_stock:\
-  \ List (Nat × String)) : List (Nat × String) := \n  sorry\n"
-"vc-theorems": "theorem update_inventory_sorted (cur_stock new_stock: List (Nat ×\
-  \ String)) :\n  let result := List.update_inventory cur_stock new_stock\n  ∀ i j,\
-  \ i < j → j < result.length → (result.get ⟨i, by sorry⟩).2 ≤ (result.get ⟨j, by\
-  \ sorry⟩).2 := \n  sorry\n\n\ntheorem update_inventory_unique_length (cur_stock\
-  \ new_stock: List (Nat × String)) :\n  let result := List.update_inventory cur_stock\
-  \ new_stock\n  let unique_items := (cur_stock ++ new_stock).map Prod.snd |>.eraseDups\n\
-  \  result.length = unique_items.length :=\n  sorry\n\n\ntheorem update_inventory_quantities\
-  \ (cur_stock new_stock: List (Nat × String)) (item : String) :\n  let result :=\
-  \ List.update_inventory cur_stock new_stock\n  let expected_sum := (cur_stock ++\
-  \ new_stock).filter (·.2 = item) |>.map Prod.fst |>.foldl (·+·) 0\n  let actual_sum\
-  \ := result.filter (·.2 = item) |>.map Prod.fst |>.foldl (·+·) 0\n  expected_sum\
-  \ = actual_sum :=\n  sorry\n\n\ntheorem update_inventory_empty :\n  List.update_inventory\
-  \ [] [] = [] :=\n  sorry\n\n\ntheorem update_inventory_empty_plus_list (stock: List\
-  \ (Nat × String)) :\n  List.update_inventory stock [] = List.update_inventory []\
-  \ stock :=\n  sorry\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval update_inventory\
-  \ [] []\n\n/--\ninfo: [(8, 'Apple')]\n-/\n#guard_msgs in\n#eval update_inventory\
-  \ [(5, \"Apple\")] [(3, \"Apple\")]\n\n/--\ninfo: [(25, 'HTC'), (5, 'LG'), (1000,\
-  \ 'Nokia'), (54, 'Samsung')]\n-/\n#guard_msgs in\n#eval update_inventory [(25, \"\
-  HTC\"), (1000, \"Nokia\"), (50, \"Samsung\")] [(5, \"LG\"), (4, \"Samsung\")]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  You will be given an array which lists the current inventory of stock in your store and another array which lists the new inventory being delivered to your store today.
+
+  Your task is to write a function that returns the updated list of your current inventory **in alphabetical order**.
+
+  ## Example
+
+  ```python
+  cur_stock = [(25, 'HTC'), (1000, 'Nokia'), (50, 'Samsung'), (33, 'Sony'), (10, 'Apple')]
+  new_stock = [(5, 'LG'), (10, 'Sony'), (4, 'Samsung'), (5, 'Apple')]
+
+  update_inventory(cur_stock, new_stock)  ==>
+  [(15, 'Apple'), (25, 'HTC'), (5, 'LG'), (1000, 'Nokia'), (54, 'Samsung'), (43, 'Sony')]
+  ```
+
+  ___
+
+  *Kata inspired by the FreeCodeCamp's 'Inventory Update' algorithm.*
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def List.update_inventory (cur_stock: List (Nat × String)) (new_stock: List (Nat × String)) : List (Nat × String) := 
+    sorry
+vc-theorems: |
+  theorem update_inventory_sorted (cur_stock new_stock: List (Nat × String)) :
+    let result := List.update_inventory cur_stock new_stock
+    ∀ i j, i < j → j < result.length → (result.get ⟨i, by sorry⟩).2 ≤ (result.get ⟨j, by sorry⟩).2 := 
+    sorry
+
+
+  theorem update_inventory_unique_length (cur_stock new_stock: List (Nat × String)) :
+    let result := List.update_inventory cur_stock new_stock
+    let unique_items := (cur_stock ++ new_stock).map Prod.snd |>.eraseDups
+    result.length = unique_items.length :=
+    sorry
+
+
+  theorem update_inventory_quantities (cur_stock new_stock: List (Nat × String)) (item : String) :
+    let result := List.update_inventory cur_stock new_stock
+    let expected_sum := (cur_stock ++ new_stock).filter (·.2 = item) |>.map Prod.fst |>.foldl (·+·) 0
+    let actual_sum := result.filter (·.2 = item) |>.map Prod.fst |>.foldl (·+·) 0
+    expected_sum = actual_sum :=
+    sorry
+
+
+  theorem update_inventory_empty :
+    List.update_inventory [] [] = [] :=
+    sorry
+
+
+  theorem update_inventory_empty_plus_list (stock: List (Nat × String)) :
+    List.update_inventory stock [] = List.update_inventory [] stock :=
+    sorry
+
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval update_inventory [] []
+
+  /--
+  info: [(8, 'Apple')]
+  -/
+  #guard_msgs in
+  #eval update_inventory [(5, "Apple")] [(3, "Apple")]
+
+  /--
+  info: [(25, 'HTC'), (5, 'LG'), (1000, 'Nokia'), (54, 'Samsung')]
+  -/
+  #guard_msgs in
+  #eval update_inventory [(25, "HTC"), (1000, "Nokia"), (50, "Samsung")] [(5, "LG"), (4, "Samsung")]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

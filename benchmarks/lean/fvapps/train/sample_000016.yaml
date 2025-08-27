@@ -1,82 +1,130 @@
-"vc-description": "Polycarp, Arkady's friend, prepares to the programming competition\
-  \ and decides to write a contest. The contest consists of $n$ problems and lasts\
-  \ for $T$ minutes. Each of the problems is defined by two positive integers $a_i$\
-  \ and $p_i$ — its difficulty and the score awarded by its solution.\n\nPolycarp's\
-  \ experience suggests that his skill level is defined with positive real value $s$,\
-  \ and initially $s=1.0$. To solve the $i$-th problem Polycarp needs $a_i/s$ minutes.\n\
-  \nPolycarp loves to watch series, and before solving each of the problems he will\
-  \ definitely watch one episode. After Polycarp watches an episode, his skill decreases\
-  \ by $10\\%$, that is skill level $s$ decreases to $0.9s$. Each episode takes exactly\
-  \ $10$ minutes to watch. When Polycarp decides to solve some problem, he firstly\
-  \ has to watch one episode, and only then he starts solving the problem without\
-  \ breaks for $a_i/s$ minutes, where $s$ is his current skill level. In calculation\
-  \ of $a_i/s$ no rounding is performed, only division of integer value $a_i$ by real\
-  \ value $s$ happens.\n\nAlso, Polycarp can train for some time. If he trains for\
-  \ $t$ minutes, he increases his skill by $C \\cdot t$, where $C$ is some given positive\
-  \ real constant. Polycarp can train only before solving any problem (and before\
-  \ watching series). Duration of the training can be arbitrary real value.\n\nPolycarp\
-  \ is interested: what is the largest score he can get in the contest? It is allowed\
-  \ to solve problems in any order, while training is only allowed before solving\
-  \ the first problem.\n\n\n-----Input-----\n\nThe first line contains one integer\
-  \ $tc$ ($1 \\le tc \\le 20$) — the number of test cases. Then $tc$ test cases follow.\n\
-  \nThe first line of each test contains one integer $n$ ($1 \\le n \\le 100$) — the\
-  \ number of problems in the contest.\n\nThe second line of the test contains two\
-  \ real values $C, T$ ($0 < C < 10$, $0 \\le T \\le 2 \\cdot 10^5$), where $C$ defines\
-  \ the efficiency of the training and $T$ is the duration of the contest in minutes.\
-  \ Value $C, T$ are given exactly with three digits after the decimal point.\n\n\
-  Each of the next $n$ lines of the test contain characteristics of the corresponding\
-  \ problem: two integers $a_i, p_i$ ($1 \\le a_i \\le 10^4$, $1 \\le p_i \\le 10$) —\
-  \ the difficulty and the score of the problem.\n\nIt is guaranteed that the value\
-  \ of $T$ is such that changing it by the $0.001$ in any direction will not change\
-  \ the test answer.\n\nPlease note that in hacks you can only use $tc = 1$.\n\n\n\
-  -----Output-----\n\nPrint $tc$ integers — the maximum possible score in each test\
-  \ case.\n\n\n-----Examples-----\nInput\n2\n4\n1.000 31.000\n12 3\n20 6\n30 1\n5\
-  \ 1\n3\n1.000 30.000\n1 10\n10 10\n20 8\n\nOutput\n7\n20\n\n\n\n-----Note-----\n\
-  \nIn the first example, Polycarp can get score of $7$ as follows:  Firstly he trains\
-  \ for $4$ minutes, increasing $s$ to the value of $5$;  Then he decides to solve\
-  \ $4$-th problem: he watches one episode in $10$ minutes, his skill level decreases\
-  \ to $s=5*0.9=4.5$ and then he solves the problem in $5/s=5/4.5$, which is roughly\
-  \ $1.111$ minutes;  Finally, he decides to solve $2$-nd problem: he watches one\
-  \ episode in $10$ minutes, his skill level decreases to $s=4.5*0.9=4.05$ and then\
-  \ he solves the problem in $20/s=20/4.05$, which is roughly $4.938$ minutes. \n\n\
-  This way, Polycarp uses roughly $4+10+1.111+10+4.938=30.049$ minutes, to get score\
-  \ of $7$ points. It is not possible to achieve larger score in $31$ minutes.\n\n\
-  In the second example, Polycarp can get $20$ points as follows:  Firstly he trains\
-  \ for $4$ minutes, increasing $s$ to the value of $5$;  Then he decides to solve\
-  \ $1$-st problem: he watches one episode in $10$ minutes, his skill decreases to\
-  \ $s=5*0.9=4.5$ and then he solves problem in $1/s=1/4.5$, which is roughly $0.222$\
-  \ minutes.  Finally, he decides to solve $2$-nd problem: he watches one episode\
-  \ in $10$ minutes, his skill decreases to $s=4.5*0.9=4.05$ and then he solves the\
-  \ problem in $10/s=10/4.05$, which is roughly $2.469$ minutes. \n\nThis way, Polycarp\
-  \ gets score of $20$ in $4+10+0.222+10+2.469=26.691$ minutes. It is not possible\
-  \ to achieve larger score in $30$ minutes."
-"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat \n  | []\
-  \ => 0\n  | x :: xs => x + xs.sum\n\ninstance : LE Problem where\n  le a b := a.difficulty\
-  \ ≤ b.difficulty\n\n\ndef List.sorted [Ord α] (l : List α) : List α :=\n  l.toArray.qsort\
-  \ (fun x y => compare x y == .lt) |>.toList\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_contest (n : Nat) (train_efficiency : Float) (time_limit\
-  \ : Float) (problems : List Problem) : Float :=\n  sorry\n"
-"vc-theorems": "theorem solve_contest_non_negative \n  {n : Nat} {train_efficiency\
-  \ : Float} {time_limit : Float} {problems : List Problem}\n  (h1 : train_efficiency\
-  \ ≥ 0.1) (h2 : train_efficiency ≤ 10) \n  (h3 : time_limit ≥ 1) (h4 : time_limit\
-  \ ≤ 100)\n  (h5 : problems.length = n) (h6 : n ≥ 1) (h7 : n ≤ 10) :\n  solve_contest\
-  \ n train_efficiency time_limit problems ≥ 0 := \nsorry\n\n\ntheorem solve_contest_upper_bound\n\
-  \  {n : Nat} {train_efficiency : Float} {time_limit : Float} {problems : List Problem}\n\
-  \  (h1 : train_efficiency ≥ 0.1) (h2 : train_efficiency ≤ 10)\n  (h3 : time_limit\
-  \ ≥ 1) (h4 : time_limit ≤ 100)\n  (h5 : problems.length = n) (h6 : n ≥ 1) (h7 :\
-  \ n ≤ 10) :\n  solve_contest n train_efficiency time_limit problems ≤ Float.ofNat\
-  \ ((problems.map Problem.score).sum) := \nsorry\n\n\ntheorem solve_contest_time_monotonic\n\
-  \  {n : Nat} {train_efficiency : Float} {time_limit high_time : Float} {problems\
-  \ : List Problem}\n  (h1 : train_efficiency ≥ 0.1) (h2 : train_efficiency ≤ 10)\n\
-  \  (h3 : high_time > 1000) (h4 : time_limit = high_time / 10)\n  (h5 : problems.length\
-  \ = n) (h6 : n ≥ 1) (h7 : n ≤ 10) :\n  solve_contest n train_efficiency high_time\
-  \ problems ≥ solve_contest n train_efficiency time_limit problems :=\nsorry\n\n\n\
-  theorem problem_sorting_property\n  {problems : List Problem} (h1 : problems.length\
-  \ ≥ 1) (h2 : problems.length ≤ 10) :\n  let sorted := problems.sorted\n  ∀ i, i\
-  \ + 1 < sorted.length → \n    (sorted.get! i).difficulty ≥ (sorted.get! (i + 1)).difficulty\
-  \ := \nsorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval solve_contest 4 1.0 31.0\
-  \ #[Problem(12, 3), Problem(20, 6), Problem(30, 1), Problem(5, 1)]\n\n/--\ninfo:\
-  \ 20\n-/\n#guard_msgs in\n#eval solve_contest 3 1.0 30.0 #[Problem(1, 10), Problem(10,\
-  \ 10), Problem(20, 8)]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Polycarp, Arkady's friend, prepares to the programming competition and decides to write a contest. The contest consists of $n$ problems and lasts for $T$ minutes. Each of the problems is defined by two positive integers $a_i$ and $p_i$ — its difficulty and the score awarded by its solution.
+
+  Polycarp's experience suggests that his skill level is defined with positive real value $s$, and initially $s=1.0$. To solve the $i$-th problem Polycarp needs $a_i/s$ minutes.
+
+  Polycarp loves to watch series, and before solving each of the problems he will definitely watch one episode. After Polycarp watches an episode, his skill decreases by $10\%$, that is skill level $s$ decreases to $0.9s$. Each episode takes exactly $10$ minutes to watch. When Polycarp decides to solve some problem, he firstly has to watch one episode, and only then he starts solving the problem without breaks for $a_i/s$ minutes, where $s$ is his current skill level. In calculation of $a_i/s$ no rounding is performed, only division of integer value $a_i$ by real value $s$ happens.
+
+  Also, Polycarp can train for some time. If he trains for $t$ minutes, he increases his skill by $C \cdot t$, where $C$ is some given positive real constant. Polycarp can train only before solving any problem (and before watching series). Duration of the training can be arbitrary real value.
+
+  Polycarp is interested: what is the largest score he can get in the contest? It is allowed to solve problems in any order, while training is only allowed before solving the first problem.
+
+
+  -----Input-----
+
+  The first line contains one integer $tc$ ($1 \le tc \le 20$) — the number of test cases. Then $tc$ test cases follow.
+
+  The first line of each test contains one integer $n$ ($1 \le n \le 100$) — the number of problems in the contest.
+
+  The second line of the test contains two real values $C, T$ ($0 < C < 10$, $0 \le T \le 2 \cdot 10^5$), where $C$ defines the efficiency of the training and $T$ is the duration of the contest in minutes. Value $C, T$ are given exactly with three digits after the decimal point.
+
+  Each of the next $n$ lines of the test contain characteristics of the corresponding problem: two integers $a_i, p_i$ ($1 \le a_i \le 10^4$, $1 \le p_i \le 10$) — the difficulty and the score of the problem.
+
+  It is guaranteed that the value of $T$ is such that changing it by the $0.001$ in any direction will not change the test answer.
+
+  Please note that in hacks you can only use $tc = 1$.
+
+
+  -----Output-----
+
+  Print $tc$ integers — the maximum possible score in each test case.
+
+
+  -----Examples-----
+  Input
+  2
+  4
+  1.000 31.000
+  12 3
+  20 6
+  30 1
+  5 1
+  3
+  1.000 30.000
+  1 10
+  10 10
+  20 8
+
+  Output
+  7
+  20
+
+
+
+  -----Note-----
+
+  In the first example, Polycarp can get score of $7$ as follows:  Firstly he trains for $4$ minutes, increasing $s$ to the value of $5$;  Then he decides to solve $4$-th problem: he watches one episode in $10$ minutes, his skill level decreases to $s=5*0.9=4.5$ and then he solves the problem in $5/s=5/4.5$, which is roughly $1.111$ minutes;  Finally, he decides to solve $2$-nd problem: he watches one episode in $10$ minutes, his skill level decreases to $s=4.5*0.9=4.05$ and then he solves the problem in $20/s=20/4.05$, which is roughly $4.938$ minutes. 
+
+  This way, Polycarp uses roughly $4+10+1.111+10+4.938=30.049$ minutes, to get score of $7$ points. It is not possible to achieve larger score in $31$ minutes.
+
+  In the second example, Polycarp can get $20$ points as follows:  Firstly he trains for $4$ minutes, increasing $s$ to the value of $5$;  Then he decides to solve $1$-st problem: he watches one episode in $10$ minutes, his skill decreases to $s=5*0.9=4.5$ and then he solves problem in $1/s=1/4.5$, which is roughly $0.222$ minutes.  Finally, he decides to solve $2$-nd problem: he watches one episode in $10$ minutes, his skill decreases to $s=4.5*0.9=4.05$ and then he solves the problem in $10/s=10/4.05$, which is roughly $2.469$ minutes. 
+
+  This way, Polycarp gets score of $20$ in $4+10+0.222+10+2.469=26.691$ minutes. It is not possible to achieve larger score in $30$ minutes.
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.sum : List Nat → Nat 
+    | [] => 0
+    | x :: xs => x + xs.sum
+
+  instance : LE Problem where
+    le a b := a.difficulty ≤ b.difficulty
+
+
+  def List.sorted [Ord α] (l : List α) : List α :=
+    l.toArray.qsort (fun x y => compare x y == .lt) |>.toList
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_contest (n : Nat) (train_efficiency : Float) (time_limit : Float) (problems : List Problem) : Float :=
+    sorry
+vc-theorems: |
+  theorem solve_contest_non_negative 
+    {n : Nat} {train_efficiency : Float} {time_limit : Float} {problems : List Problem}
+    (h1 : train_efficiency ≥ 0.1) (h2 : train_efficiency ≤ 10) 
+    (h3 : time_limit ≥ 1) (h4 : time_limit ≤ 100)
+    (h5 : problems.length = n) (h6 : n ≥ 1) (h7 : n ≤ 10) :
+    solve_contest n train_efficiency time_limit problems ≥ 0 := 
+  sorry
+
+
+  theorem solve_contest_upper_bound
+    {n : Nat} {train_efficiency : Float} {time_limit : Float} {problems : List Problem}
+    (h1 : train_efficiency ≥ 0.1) (h2 : train_efficiency ≤ 10)
+    (h3 : time_limit ≥ 1) (h4 : time_limit ≤ 100)
+    (h5 : problems.length = n) (h6 : n ≥ 1) (h7 : n ≤ 10) :
+    solve_contest n train_efficiency time_limit problems ≤ Float.ofNat ((problems.map Problem.score).sum) := 
+  sorry
+
+
+  theorem solve_contest_time_monotonic
+    {n : Nat} {train_efficiency : Float} {time_limit high_time : Float} {problems : List Problem}
+    (h1 : train_efficiency ≥ 0.1) (h2 : train_efficiency ≤ 10)
+    (h3 : high_time > 1000) (h4 : time_limit = high_time / 10)
+    (h5 : problems.length = n) (h6 : n ≥ 1) (h7 : n ≤ 10) :
+    solve_contest n train_efficiency high_time problems ≥ solve_contest n train_efficiency time_limit problems :=
+  sorry
+
+
+  theorem problem_sorting_property
+    {problems : List Problem} (h1 : problems.length ≥ 1) (h2 : problems.length ≤ 10) :
+    let sorted := problems.sorted
+    ∀ i, i + 1 < sorted.length → 
+      (sorted.get! i).difficulty ≥ (sorted.get! (i + 1)).difficulty := 
+  sorry
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval solve_contest 4 1.0 31.0 #[Problem(12, 3), Problem(20, 6), Problem(30, 1), Problem(5, 1)]
+
+  /--
+  info: 20
+  -/
+  #guard_msgs in
+  #eval solve_contest 3 1.0 30.0 #[Problem(1, 10), Problem(10, 10), Problem(20, 8)]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

@@ -1,23 +1,72 @@
-"vc-description": "You need count how many valleys you will pass.\n\nStart is always\
-  \ from zero level.\n\nEvery time you go down below 0 level counts as an entry of\
-  \ a valley, and as you go up to 0 level from valley counts as an exit of a valley.\n\
-  \nOne passed valley is equal one entry and one exit of a valley.\n```\ns='FUFFDDFDUDFUFUF'\n\
-  U=UP\nF=FORWARD\nD=DOWN\n```\n\nTo represent string above\n```\n(level 1)  __\n\
-  (level 0)_/  \\         _(exit we are again on level 0)\n(entry-1)     \\_     _/\n\
-  (level-2)       \\/\\_/\n```\nSo here we passed one valley"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def countValleys (path: List Step) : Nat := sorry\n\ntheorem valley_count_nonnegative\
-  \ (path : List Step) :\n  countValleys path ≥ 0 := sorry\n"
-"vc-theorems": "theorem valley_count_bounded_by_down_steps (path : List Step) \n \
-  \ (h: (path.filter (· = Step.Up)).length = (path.filter (· = Step.Down)).length)\
-  \ :\n  countValleys path ≤ (path.filter (· = Step.Down)).length := sorry\n\n\ntheorem\
-  \ single_step_no_valley (s : Step) :\n  countValleys [s] = 0 := sorry\n\n\ntheorem\
-  \ valley_count_simple_segments (segments : List (Step × Step))\n  (h: ∀ p ∈ segments,\
-  \ p.1 = Step.Down ∧ p.2 = Step.Up) :\n  countValleys (segments.bind (fun p => [p.1,\
-  \ p.2])) = segments.length := sorry\n\n\ntheorem upward_path_no_valleys (path :\
-  \ List Step)\n  (h: ∀ s ∈ path, s = Step.Up) :\n  countValleys path = 0 := sorry\n\
-  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval counting_valleys \"UFFDDFDUDFUFU\"\n\n\
-  /--\ninfo: 2\n-/\n#guard_msgs in\n#eval counting_valleys \"UFFDDFDUDFUFUUFFDDFDUDFUFU\"\
-  \n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval counting_valleys \"DFFFU\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  You need count how many valleys you will pass.
+
+  Start is always from zero level.
+
+  Every time you go down below 0 level counts as an entry of a valley, and as you go up to 0 level from valley counts as an exit of a valley.
+
+  One passed valley is equal one entry and one exit of a valley.
+  ```
+  s='FUFFDDFDUDFUFUF'
+  U=UP
+  F=FORWARD
+  D=DOWN
+  ```
+
+  To represent string above
+  ```
+  (level 1)  __
+  (level 0)_/  \         _(exit we are again on level 0)
+  (entry-1)     \_     _/
+  (level-2)       \/\_/
+  ```
+  So here we passed one valley
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def countValleys (path: List Step) : Nat := sorry
+
+  theorem valley_count_nonnegative (path : List Step) :
+    countValleys path ≥ 0 := sorry
+vc-theorems: |
+  theorem valley_count_bounded_by_down_steps (path : List Step) 
+    (h: (path.filter (· = Step.Up)).length = (path.filter (· = Step.Down)).length) :
+    countValleys path ≤ (path.filter (· = Step.Down)).length := sorry
+
+
+  theorem single_step_no_valley (s : Step) :
+    countValleys [s] = 0 := sorry
+
+
+  theorem valley_count_simple_segments (segments : List (Step × Step))
+    (h: ∀ p ∈ segments, p.1 = Step.Down ∧ p.2 = Step.Up) :
+    countValleys (segments.bind (fun p => [p.1, p.2])) = segments.length := sorry
+
+
+  theorem upward_path_no_valleys (path : List Step)
+    (h: ∀ s ∈ path, s = Step.Up) :
+    countValleys path = 0 := sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval counting_valleys "UFFDDFDUDFUFU"
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval counting_valleys "UFFDDFDUDFUFUUFFDDFDUDFUFU"
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval counting_valleys "DFFFU"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

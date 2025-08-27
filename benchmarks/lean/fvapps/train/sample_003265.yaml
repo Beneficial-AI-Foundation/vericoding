@@ -1,15 +1,52 @@
-"vc-description": "Given an integer `n`, find two integers `a` and `b` such that:\n\
-  ```Pearl\nA) a >= 0 and b >= 0\nB) a + b = n\nC) DigitSum(a) + Digitsum(b) is maximum\
-  \ of all possibilities.  \n```\nYou will return the digitSum(a) + digitsum(b). \n\
-  \n```\nFor example:\nsolve(29) = 11. If we take 15 + 14 = 29 and digitSum = 1 +\
-  \ 5 + 1 + 4 = 11. There is no larger outcome.\n```\n`n` will not exceed `10e10`.\n\
-  \nMore examples in test cases. \n\nGood luck!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve (n : Nat) : Nat := sorry\n\ntheorem solve_non_negative\
-  \ (n : Nat) : \n  solve n ≥ 0 := sorry\n"
-"vc-theorems": "theorem solve_single_digit (n : Nat) (h : n < 10) :\n  solve n = n\
-  \ := sorry\n\n/--\ninfo: 18\n-/\n#guard_msgs in\n#eval solve 18\n\n/--\ninfo: 11\n\
-  -/\n#guard_msgs in\n#eval solve 29\n\n/--\ninfo: 18\n-/\n#guard_msgs in\n#eval solve\
-  \ 45\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given an integer `n`, find two integers `a` and `b` such that:
+  ```Pearl
+  A) a >= 0 and b >= 0
+  B) a + b = n
+  C) DigitSum(a) + Digitsum(b) is maximum of all possibilities.  
+  ```
+  You will return the digitSum(a) + digitsum(b). 
+
+  ```
+  For example:
+  solve(29) = 11. If we take 15 + 14 = 29 and digitSum = 1 + 5 + 1 + 4 = 11. There is no larger outcome.
+  ```
+  `n` will not exceed `10e10`.
+
+  More examples in test cases. 
+
+  Good luck!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve (n : Nat) : Nat := sorry
+
+  theorem solve_non_negative (n : Nat) : 
+    solve n ≥ 0 := sorry
+vc-theorems: |
+  theorem solve_single_digit (n : Nat) (h : n < 10) :
+    solve n = n := sorry
+
+  /--
+  info: 18
+  -/
+  #guard_msgs in
+  #eval solve 18
+
+  /--
+  info: 11
+  -/
+  #guard_msgs in
+  #eval solve 29
+
+  /--
+  info: 18
+  -/
+  #guard_msgs in
+  #eval solve 45
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

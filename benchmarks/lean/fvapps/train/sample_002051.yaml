@@ -1,40 +1,94 @@
-"vc-description": "Arkady plays Gardenscapes a lot. Arkady wants to build two new\
-  \ fountains. There are n available fountains, for each fountain its beauty and cost\
-  \ are known. There are two types of money in the game: coins and diamonds, so each\
-  \ fountain cost can be either in coins or diamonds. No money changes between the\
-  \ types are allowed.\n\nHelp Arkady to find two fountains with maximum total beauty\
-  \ so that he can buy both at the same time.\n\n\n-----Input-----\n\nThe first line\
-  \ contains three integers n, c and d (2 ≤ n ≤ 100 000, 0 ≤ c, d ≤ 100 000) — the\
-  \ number of fountains, the number of coins and diamonds Arkady has.\n\nThe next\
-  \ n lines describe fountains. Each of these lines contain two integers b_{i} and\
-  \ p_{i} (1 ≤ b_{i}, p_{i} ≤ 100 000) — the beauty and the cost of the i-th fountain,\
-  \ and then a letter \"C\" or \"D\", describing in which type of money is the cost\
-  \ of fountain i: in coins or in diamonds, respectively.\n\n\n-----Output-----\n\n\
-  Print the maximum total beauty of exactly two fountains Arkady can build. If he\
-  \ can't build two fountains, print 0.\n\n\n-----Examples-----\nInput\n3 7 6\n10\
-  \ 8 C\n4 3 C\n5 6 D\n\nOutput\n9\n\nInput\n2 4 5\n2 5 C\n2 1 D\n\nOutput\n0\n\n\
-  Input\n3 10 10\n5 5 C\n5 5 C\n10 11 D\n\nOutput\n10\n\n\n\n-----Note-----\n\nIn\
-  \ the first example Arkady should build the second fountain with beauty 4, which\
-  \ costs 3 coins. The first fountain he can't build because he don't have enough\
-  \ coins. Also Arkady should build the third fountain with beauty 5 which costs 6\
-  \ diamonds. Thus the total beauty of built fountains is 9.\n\nIn the second example\
-  \ there are two fountains, but Arkady can't build both of them, because he needs\
-  \ 5 coins for the first fountain, and Arkady has only 4 coins."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def max_fountain_beauty (n : Nat) (coins : Nat) (diamonds : Nat)\
-  \ (fountains : List Fountain) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem max_fountain_beauty_non_negative (n : Nat) (coins : Nat) (diamonds\
-  \ : Nat) \n    (fountains : List Fountain) :\n  max_fountain_beauty n coins diamonds\
-  \ fountains ≥ 0 := sorry\n\n\ntheorem max_fountain_beauty_zero_when_insufficient_fountains\
-  \ (n : Nat) (coins : Nat) \n    (diamonds : Nat) (fountains : List Fountain) :\n\
-  \  let coin_fountains := fountains.filter (fun f => f.type = 'C' ∧ f.price ≤ coins)\n\
-  \  let diamond_fountains := fountains.filter (fun f => f.type = 'D' ∧ f.price ≤\
-  \ diamonds)\n  ¬(coin_fountains.length ≥ 2 ∨ diamond_fountains.length ≥ 2) ∧ \n\
-  \  ¬(coin_fountains.length ≥ 1 ∧ diamond_fountains.length ≥ 1) →\n  max_fountain_beauty\
-  \ n coins diamonds fountains = 0 := sorry\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n\
-  #eval max_fountain_beauty 3 7 6 [(10, 8, \"C\"), (4, 3, \"C\"), (5, 6, \"D\")]\n\
-  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval max_fountain_beauty 2 4 5 [(2, 5, \"C\"\
-  ), (2, 1, \"D\")]\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval max_fountain_beauty\
-  \ 3 10 10 [(5, 5, \"C\"), (5, 5, \"C\"), (10, 11, \"D\")]\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"
+vc-description: |-
+  Arkady plays Gardenscapes a lot. Arkady wants to build two new fountains. There are n available fountains, for each fountain its beauty and cost are known. There are two types of money in the game: coins and diamonds, so each fountain cost can be either in coins or diamonds. No money changes between the types are allowed.
+
+  Help Arkady to find two fountains with maximum total beauty so that he can buy both at the same time.
+
+
+  -----Input-----
+
+  The first line contains three integers n, c and d (2 ≤ n ≤ 100 000, 0 ≤ c, d ≤ 100 000) — the number of fountains, the number of coins and diamonds Arkady has.
+
+  The next n lines describe fountains. Each of these lines contain two integers b_{i} and p_{i} (1 ≤ b_{i}, p_{i} ≤ 100 000) — the beauty and the cost of the i-th fountain, and then a letter "C" or "D", describing in which type of money is the cost of fountain i: in coins or in diamonds, respectively.
+
+
+  -----Output-----
+
+  Print the maximum total beauty of exactly two fountains Arkady can build. If he can't build two fountains, print 0.
+
+
+  -----Examples-----
+  Input
+  3 7 6
+  10 8 C
+  4 3 C
+  5 6 D
+
+  Output
+  9
+
+  Input
+  2 4 5
+  2 5 C
+  2 1 D
+
+  Output
+  0
+
+  Input
+  3 10 10
+  5 5 C
+  5 5 C
+  10 11 D
+
+  Output
+  10
+
+
+
+  -----Note-----
+
+  In the first example Arkady should build the second fountain with beauty 4, which costs 3 coins. The first fountain he can't build because he don't have enough coins. Also Arkady should build the third fountain with beauty 5 which costs 6 diamonds. Thus the total beauty of built fountains is 9.
+
+  In the second example there are two fountains, but Arkady can't build both of them, because he needs 5 coins for the first fountain, and Arkady has only 4 coins.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def max_fountain_beauty (n : Nat) (coins : Nat) (diamonds : Nat) (fountains : List Fountain) : Nat :=
+    sorry
+vc-theorems: |
+  theorem max_fountain_beauty_non_negative (n : Nat) (coins : Nat) (diamonds : Nat) 
+      (fountains : List Fountain) :
+    max_fountain_beauty n coins diamonds fountains ≥ 0 := sorry
+
+
+  theorem max_fountain_beauty_zero_when_insufficient_fountains (n : Nat) (coins : Nat) 
+      (diamonds : Nat) (fountains : List Fountain) :
+    let coin_fountains := fountains.filter (fun f => f.type = 'C' ∧ f.price ≤ coins)
+    let diamond_fountains := fountains.filter (fun f => f.type = 'D' ∧ f.price ≤ diamonds)
+    ¬(coin_fountains.length ≥ 2 ∨ diamond_fountains.length ≥ 2) ∧ 
+    ¬(coin_fountains.length ≥ 1 ∧ diamond_fountains.length ≥ 1) →
+    max_fountain_beauty n coins diamonds fountains = 0 := sorry
+
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval max_fountain_beauty 3 7 6 [(10, 8, "C"), (4, 3, "C"), (5, 6, "D")]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval max_fountain_beauty 2 4 5 [(2, 5, "C"), (2, 1, "D")]
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval max_fountain_beauty 3 10 10 [(5, 5, "C"), (5, 5, "C"), (10, 11, "D")]
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded

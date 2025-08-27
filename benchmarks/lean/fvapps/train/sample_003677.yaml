@@ -1,22 +1,43 @@
-"vc-description": "Write a function that accepts two parameters, i) a string (containing\
-  \ a list of words) and ii) an integer (n).  The function should alphabetize the\
-  \ list based on the nth letter of each word.\n\nThe letters should be compared case-insensitive.\
-  \ If both letters are the same, order them normally (lexicographically), again,\
-  \ case-insensitive.\n\nexample:\n```javascript \nfunction sortIt('bid, zag', 2)\
-  \ //=> 'zag, bid'\n```\n```ruby \nfunction sortIt('bid, zag', 2) //=> 'zag, bid'\n\
-  ```\n```python \nfunction sortIt('bid, zag', 2) #=> 'zag, bid'\n```\n\nThe length\
-  \ of all words provided in the list will be >= n.  The format will be \"x, x, x\"\
-  . In Haskell you'll get a list of `String`s instead."
-"vc-preamble": "import Imports.AllImports\n\ndef sort_it (s : String) (n : Nat) :\
-  \ String := sorry\n\ndef isCharNSorted (words : List String) (n : Nat) : Bool :=\
-  \ sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sameSets (s1 : List String) (s2 : List String) : Bool := sorry\n\
-  def wordsFromString (s : String) : List String := sorry\n"
-"vc-theorems": "theorem sort_it_preserves_words (s : String) (n : Nat) :\n  n > 0\
-  \ → sameSets (wordsFromString s) (wordsFromString (sort_it s n)) := sorry\n\n\n\
-  theorem sort_it_is_n_sorted (s : String) (n : Nat) (h : n > 0) :\n  isCharNSorted\
-  \ (wordsFromString (sort_it s n)) n := sorry\n\n\ntheorem sort_it_first_char_is_normal_sort\
-  \ (s : String) :\n  sort_it s 1 = String.intercalate \", \" (wordsFromString s)\
-  \ := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Write a function that accepts two parameters, i) a string (containing a list of words) and ii) an integer (n).  The function should alphabetize the list based on the nth letter of each word.
+
+  The letters should be compared case-insensitive. If both letters are the same, order them normally (lexicographically), again, case-insensitive.
+
+  example:
+  ```javascript 
+  function sortIt('bid, zag', 2) //=> 'zag, bid'
+  ```
+  ```ruby 
+  function sortIt('bid, zag', 2) //=> 'zag, bid'
+  ```
+  ```python 
+  function sortIt('bid, zag', 2) #=> 'zag, bid'
+  ```
+
+  The length of all words provided in the list will be >= n.  The format will be "x, x, x". In Haskell you'll get a list of `String`s instead.
+vc-preamble: |-
+  import Imports.AllImports
+
+  def sort_it (s : String) (n : Nat) : String := sorry
+
+  def isCharNSorted (words : List String) (n : Nat) : Bool := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sameSets (s1 : List String) (s2 : List String) : Bool := sorry
+  def wordsFromString (s : String) : List String := sorry
+vc-theorems: |-
+  theorem sort_it_preserves_words (s : String) (n : Nat) :
+    n > 0 → sameSets (wordsFromString s) (wordsFromString (sort_it s n)) := sorry
+
+
+  theorem sort_it_is_n_sorted (s : String) (n : Nat) (h : n > 0) :
+    isCharNSorted (wordsFromString (sort_it s n)) n := sorry
+
+
+  theorem sort_it_first_char_is_normal_sort (s : String) :
+    sort_it s 1 = String.intercalate ", " (wordsFromString s) := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

@@ -1,21 +1,73 @@
-"vc-description": "Initially on a notepad only one character 'A' is present. You can\
-  \ perform two operations on this notepad for each step: \n\nCopy All: You can copy\
-  \ all the characters present on the notepad (partial copy is not allowed).\nPaste:\
-  \ You can paste the characters which are copied last time.\n\n\n\n\nGiven a number\
-  \ n. You have to get exactly n 'A' on the notepad by performing the minimum number\
-  \ of steps permitted. Output the minimum number of steps to get n 'A'. \n\n\nExample\
-  \ 1:\n\nInput: 3\nOutput: 3\nExplanation:\nIntitally, we have one character 'A'.\n\
-  In step 1, we use Copy All operation.\nIn step 2, we use Paste operation to get\
-  \ 'AA'.\nIn step 3, we use Paste operation to get 'AAA'.\n\n\n\n\nNote:\n\nThe n\
-  \ will be in the range [1, 1000]."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def min_steps (n : Nat) : Nat := sorry\n\ndef isPrime (n : Nat)\
-  \ : Bool := sorry\n"
-"vc-theorems": "theorem min_steps_nonnegative (n : Nat) (h : n ≥ 1) : \n  min_steps\
-  \ n ≥ 0 := sorry\n\n\ntheorem min_steps_upper_bound (n : Nat) (h : n ≥ 2) :\n  min_steps\
-  \ n ≤ n := sorry \n\n\n\n\ntheorem min_steps_small_numbers :\n  min_steps 1 = 0\
-  \ ∧ \n  min_steps 2 = 2 ∧\n  min_steps 4 = 4 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
-  \ in\n#eval min_steps 3\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval min_steps 1\n\
-  \n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval min_steps 9\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Initially on a notepad only one character 'A' is present. You can perform two operations on this notepad for each step: 
+
+  Copy All: You can copy all the characters present on the notepad (partial copy is not allowed).
+  Paste: You can paste the characters which are copied last time.
+
+
+
+
+  Given a number n. You have to get exactly n 'A' on the notepad by performing the minimum number of steps permitted. Output the minimum number of steps to get n 'A'. 
+
+
+  Example 1:
+
+  Input: 3
+  Output: 3
+  Explanation:
+  Intitally, we have one character 'A'.
+  In step 1, we use Copy All operation.
+  In step 2, we use Paste operation to get 'AA'.
+  In step 3, we use Paste operation to get 'AAA'.
+
+
+
+
+  Note:
+
+  The n will be in the range [1, 1000].
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def min_steps (n : Nat) : Nat := sorry
+
+  def isPrime (n : Nat) : Bool := sorry
+vc-theorems: |
+  theorem min_steps_nonnegative (n : Nat) (h : n ≥ 1) : 
+    min_steps n ≥ 0 := sorry
+
+
+  theorem min_steps_upper_bound (n : Nat) (h : n ≥ 2) :
+    min_steps n ≤ n := sorry 
+
+
+
+
+  theorem min_steps_small_numbers :
+    min_steps 1 = 0 ∧ 
+    min_steps 2 = 2 ∧
+    min_steps 4 = 4 := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_steps 3
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_steps 1
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval min_steps 9
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

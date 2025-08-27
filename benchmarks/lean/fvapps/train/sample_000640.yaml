@@ -1,47 +1,123 @@
-"vc-description": "Binod is a youtuber and he is busy in the fame of social media\
-  \ so he asked you to help him solve a problem.\nYou have been given an array of\
-  \ $positive$ $integers$ $a_{1},a_{2},a_{3},...,a_{i},...,a_{n}$ of size n.You have\
-  \ to find the smallest length of the subarray such that the length of the subarray\
-  \ must be $strictly$ greater than k and it's sum also must be $strictly$ greater\
-  \ than s. \n\n-----Input Format :------\n- The first line of input contains three\
-  \ space-separated integers n, k and s\n- The second line contains n space-separated\
-  \ integers,describing the array a \n\n-----Output Format:-----\n- Print a single\
-  \ integer :- The smallest length of subarray if exists, Otherwise print \"-1\" (without\
-  \ quotes) \n\n-----Constraints:------\n- $1 \\leq n, k \\leq 10^{6}$\n- $1 \\leq\
-  \  a_{1},a_{2},a_{3},...,a_{i},...,a_{n}\\leq 10^{9}$ \n- $1 \\leq s \\leq 10^{15}$\
-  \ Subtask #1 (30 points):\n- $1 \\leq n, k \\leq 10^{3}$ Subtask #2 (70 points):\n\
-  $Original$ $Constraints$ \n\n-----Sample Test Cases:------\n\n-----Example 1:-----\n\
-  5 1 5\n\n1 2 3 4 5 \n\n-----Output :-----\n2 \n\n-----Explanation-----\n$\\textbf{There\
-  \ are two possibles answers} :$ \n- Index starts at 3 and ends at 4 have a sum of\
-  \ 7 which is strictly greater than 5 and has a length of subarray greater than 1.\
-  \  \n- Index starts at 4 and ends at 5 have a sum of 9 which is strictly greater\
-  \ than 5 and has a length of subarray greater than 1.\nAny of the possible scenarios\
-  \ gives the same answer.\n\n-----Example 2:-----\n3 2 1\n\n9 9 1 \n\n-----Output\
-  \ :-----\n3\n\n-----Explanation :-----\n- Each value in array index satisfies the\
-  \ condition sum greater than 1 but to satisfy the condition of length greater than\
-  \ 2 choose the subarray of length 3"
-"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Int → Int \n  | []\
-  \ => 0\n  | x::xs => x + sum xs \n\n\ndef find_subarray_length (n : Nat) (k : Nat)\
-  \ (s : Int) (arr : List Int) : Int :=\nsorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def Int.abs (i : Int) : Int :=\n  if i < 0 then -i else i\n"
-"vc-theorems": "theorem subarray_length_n_leq_k {n k : Nat} {s : Int} {arr : List\
-  \ Int} \n  (h : n ≤ k) : \n  find_subarray_length n k s arr = -1 := \nsorry\n\n\n\
-  theorem subarray_length_valid {n k : Nat} {s : Int} {arr : List Int}\n  (h : find_subarray_length\
-  \ n k s arr ≠ -1) :\n  find_subarray_length n k s arr > k := \nsorry\n\n\ntheorem\
-  \ exists_subarray_sum {n k : Nat} {s : Int} {arr : List Int}\n  (h : find_subarray_length\
-  \ n k s arr ≠ -1) :\n  ∃ i : Nat, i + find_subarray_length n k s arr ≤ n ∧ \n  \
-  \  (List.sum (List.take (find_subarray_length n k s arr).toNat (List.drop i arr))\
-  \ > s) :=\nsorry\n\n\ntheorem no_smaller_length {n k : Nat} {s : Int} {arr : List\
-  \ Int} \n  (h : find_subarray_length n k s arr ≠ -1)\n  (len : Nat)\n  (h1 : k <\
-  \ len)\n  (h2 : len < (find_subarray_length n k s arr).toNat) :\n  ∀ i : Nat, i\
-  \ + len ≤ n → \n    List.sum (List.take len (List.drop i arr)) ≤ s :=\nsorry\n\n\
-  \ntheorem positive_arr_negative_s {n k : Nat} {s : Int} {arr : List Int}\n  (h1\
-  \ : ∀ x ∈ arr, 0 ≤ x)\n  (h2 : s < 0)\n  (h3 : n > k) :\n  find_subarray_length\
-  \ n k s arr = k + 1 :=\nsorry\n\n\ntheorem sum_too_high {n k : Nat} {s : Int} {arr\
-  \ : List Int}\n  (h : s > List.sum (List.map Int.abs arr)) :\n  find_subarray_length\
-  \ n k s arr = -1 :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_subarray_length\
-  \ 5 1 5 [1, 2, 3, 4, 5]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_subarray_length\
-  \ 3 2 1 [9, 9, 1]\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval find_subarray_length\
-  \ 4 3 100 [1, 2, 3, 4]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Binod is a youtuber and he is busy in the fame of social media so he asked you to help him solve a problem.
+  You have been given an array of $positive$ $integers$ $a_{1},a_{2},a_{3},...,a_{i},...,a_{n}$ of size n.You have to find the smallest length of the subarray such that the length of the subarray must be $strictly$ greater than k and it's sum also must be $strictly$ greater than s. 
+
+  -----Input Format :------
+  - The first line of input contains three space-separated integers n, k and s
+  - The second line contains n space-separated integers,describing the array a 
+
+  -----Output Format:-----
+  - Print a single integer :- The smallest length of subarray if exists, Otherwise print "-1" (without quotes) 
+
+  -----Constraints:------
+  - $1 \leq n, k \leq 10^{6}$
+  - $1 \leq  a_{1},a_{2},a_{3},...,a_{i},...,a_{n}\leq 10^{9}$ 
+  - $1 \leq s \leq 10^{15}$ Subtask #1 (30 points):
+  - $1 \leq n, k \leq 10^{3}$ Subtask #2 (70 points):
+  $Original$ $Constraints$ 
+
+  -----Sample Test Cases:------
+
+  -----Example 1:-----
+  5 1 5
+
+  1 2 3 4 5 
+
+  -----Output :-----
+  2 
+
+  -----Explanation-----
+  $\textbf{There are two possibles answers} :$ 
+  - Index starts at 3 and ends at 4 have a sum of 7 which is strictly greater than 5 and has a length of subarray greater than 1.  
+  - Index starts at 4 and ends at 5 have a sum of 9 which is strictly greater than 5 and has a length of subarray greater than 1.
+  Any of the possible scenarios gives the same answer.
+
+  -----Example 2:-----
+  3 2 1
+
+  9 9 1 
+
+  -----Output :-----
+  3
+
+  -----Explanation :-----
+  - Each value in array index satisfies the condition sum greater than 1 but to satisfy the condition of length greater than 2 choose the subarray of length 3
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.sum : List Int → Int 
+    | [] => 0
+    | x::xs => x + sum xs 
+
+
+  def find_subarray_length (n : Nat) (k : Nat) (s : Int) (arr : List Int) : Int :=
+  sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def Int.abs (i : Int) : Int :=
+    if i < 0 then -i else i
+vc-theorems: |
+  theorem subarray_length_n_leq_k {n k : Nat} {s : Int} {arr : List Int} 
+    (h : n ≤ k) : 
+    find_subarray_length n k s arr = -1 := 
+  sorry
+
+
+  theorem subarray_length_valid {n k : Nat} {s : Int} {arr : List Int}
+    (h : find_subarray_length n k s arr ≠ -1) :
+    find_subarray_length n k s arr > k := 
+  sorry
+
+
+  theorem exists_subarray_sum {n k : Nat} {s : Int} {arr : List Int}
+    (h : find_subarray_length n k s arr ≠ -1) :
+    ∃ i : Nat, i + find_subarray_length n k s arr ≤ n ∧ 
+      (List.sum (List.take (find_subarray_length n k s arr).toNat (List.drop i arr)) > s) :=
+  sorry
+
+
+  theorem no_smaller_length {n k : Nat} {s : Int} {arr : List Int} 
+    (h : find_subarray_length n k s arr ≠ -1)
+    (len : Nat)
+    (h1 : k < len)
+    (h2 : len < (find_subarray_length n k s arr).toNat) :
+    ∀ i : Nat, i + len ≤ n → 
+      List.sum (List.take len (List.drop i arr)) ≤ s :=
+  sorry
+
+
+  theorem positive_arr_negative_s {n k : Nat} {s : Int} {arr : List Int}
+    (h1 : ∀ x ∈ arr, 0 ≤ x)
+    (h2 : s < 0)
+    (h3 : n > k) :
+    find_subarray_length n k s arr = k + 1 :=
+  sorry
+
+
+  theorem sum_too_high {n k : Nat} {s : Int} {arr : List Int}
+    (h : s > List.sum (List.map Int.abs arr)) :
+    find_subarray_length n k s arr = -1 :=
+  sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_subarray_length 5 1 5 [1, 2, 3, 4, 5]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_subarray_length 3 2 1 [9, 9, 1]
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval find_subarray_length 4 3 100 [1, 2, 3, 4]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

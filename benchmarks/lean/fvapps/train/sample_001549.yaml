@@ -1,23 +1,77 @@
-"vc-description": "\"QAQ\" is a word to denote an expression of crying. Imagine \"\
-  Q\" as eyes with tears and \"A\" as a mouth.\n\nNow Diamond has given Bort a string\
-  \ consisting of only uppercase English letters of length n. There is a great number\
-  \ of \"QAQ\" in the string (Diamond is so cute!). $8$ illustration by 猫屋 https://twitter.com/nekoyaliu\
-  \ \n\nBort wants to know how many subsequences \"QAQ\" are in the string Diamond\
-  \ has given. Note that the letters \"QAQ\" don't have to be consecutive, but the\
-  \ order of letters should be exact.\n\n\n-----Input-----\n\nThe only line contains\
-  \ a string of length n (1 ≤ n ≤ 100). It's guaranteed that the string only contains\
-  \ uppercase English letters.\n\n\n-----Output-----\n\nPrint a single integer — the\
-  \ number of subsequences \"QAQ\" in the string.\n\n\n-----Examples-----\nInput\n\
-  QAQAQYSYIOIWIN\n\nOutput\n4\n\nInput\nQAQQQZZYNOIWIN\n\nOutput\n3\n\n\n\n-----Note-----\n\
-  \nIn the first example there are 4 subsequences \"QAQ\": \"QAQAQYSYIOIWIN\", \"\
-  QAQAQYSYIOIWIN\", \"QAQAQYSYIOIWIN\", \"QAQAQYSYIOIWIN\"."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_qaq_subsequences (s : String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem count_qaq_subsequences_nonnegative (s : String) :\n  count_qaq_subsequences\
-  \ s ≥ 0 :=\n  sorry\n\n\n\n\ntheorem count_qaq_subsequences_lt_two_q (s : String)\
-  \ :\n  (s.data.filter (· = 'Q')).length < 2 →\n  count_qaq_subsequences s = 0 :=\n\
-  \  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval count_qaq_subsequences \"QAQAQYSYIOIWIN\"\
-  \n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_qaq_subsequences \"QAQQQZZYNOIWIN\"\
-  \n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_qaq_subsequences \"QORZOYAQ\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  "QAQ" is a word to denote an expression of crying. Imagine "Q" as eyes with tears and "A" as a mouth.
+
+  Now Diamond has given Bort a string consisting of only uppercase English letters of length n. There is a great number of "QAQ" in the string (Diamond is so cute!). $8$ illustration by 猫屋 https://twitter.com/nekoyaliu 
+
+  Bort wants to know how many subsequences "QAQ" are in the string Diamond has given. Note that the letters "QAQ" don't have to be consecutive, but the order of letters should be exact.
+
+
+  -----Input-----
+
+  The only line contains a string of length n (1 ≤ n ≤ 100). It's guaranteed that the string only contains uppercase English letters.
+
+
+  -----Output-----
+
+  Print a single integer — the number of subsequences "QAQ" in the string.
+
+
+  -----Examples-----
+  Input
+  QAQAQYSYIOIWIN
+
+  Output
+  4
+
+  Input
+  QAQQQZZYNOIWIN
+
+  Output
+  3
+
+
+
+  -----Note-----
+
+  In the first example there are 4 subsequences "QAQ": "QAQAQYSYIOIWIN", "QAQAQYSYIOIWIN", "QAQAQYSYIOIWIN", "QAQAQYSYIOIWIN".
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_qaq_subsequences (s : String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem count_qaq_subsequences_nonnegative (s : String) :
+    count_qaq_subsequences s ≥ 0 :=
+    sorry
+
+
+
+
+  theorem count_qaq_subsequences_lt_two_q (s : String) :
+    (s.data.filter (· = 'Q')).length < 2 →
+    count_qaq_subsequences s = 0 :=
+    sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval count_qaq_subsequences "QAQAQYSYIOIWIN"
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_qaq_subsequences "QAQQQZZYNOIWIN"
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_qaq_subsequences "QORZOYAQ"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

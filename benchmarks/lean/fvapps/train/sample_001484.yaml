@@ -1,32 +1,88 @@
-"vc-description": "Soma is a fashionable girl. She absolutely loves shiny stones that\
-  \ she can put on as jewellery accessories. She has been collecting stones since\
-  \ her childhood - now she has become really good with identifying which ones are\
-  \ fake and which ones are not.  Her King requested for her help in mining precious\
-  \ stones, so she has told him which all stones are jewels and which are not. Given\
-  \ her description, your task is  to count the number of jewel stones. \n\nMore formally,\
-  \ you're given a string J composed of latin characters where each character is a\
-  \ jewel. You're also given a string S composed of latin characters where each character\
-  \ is a mined stone. You have to find out how many characters of S are in J as well.\
-  \ \n\n-----Input-----\n\nFirst line contains an integer T denoting the number of\
-  \ test cases. Then follow T test cases. Each test case consists of two lines, each\
-  \ of which contains a string composed of English lower case and upper characters.\
-  \ First of these is the jewel string J and the second one is stone string S. \n\
-  You can assume that  1 <= T <= 100, 1 <= |J|, |S| <= 100\n\n\n-----Output-----\n\
-  Output for each test case, a single integer, the number of jewels mined. \n\n-----Example-----\n\
-  Input:\n4\nabc\nabcdef\naA\nabAZ\naaa\na\nwhat\nnone\n\nOutput:\n3\n2\n1\n0"
-"vc-preamble": "import Imports.AllImports\n\ndef count_jewels (jewels stones : String)\
-  \ : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def reverseString (s : String) : String :=\n  sorry"
-"vc-theorems": "theorem count_jewels_properties_non_negative (jewels stones : String)\
-  \ :\n  count_jewels jewels stones ≥ 0 :=\n  sorry\n\n\ntheorem count_jewels_bounded_by_stones\
-  \ (jewels stones : String) :\n  count_jewels jewels stones ≤ stones.length :=\n\
-  \  sorry\n\n\ntheorem count_jewels_empty_jewels (stones : String) :\n  count_jewels\
-  \ \"\" stones = 0 :=\n  sorry\n\n\ntheorem count_jewels_empty_stones (jewels : String)\
-  \ :\n  count_jewels jewels \"\" = 0 :=\n  sorry\n\n\ntheorem count_jewels_duplicates\
-  \ (jewels stones : String) :\n  count_jewels (jewels ++ jewels) stones = count_jewels\
-  \ jewels stones :=\n  sorry\n\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_jewels\
-  \ \"abc\" \"abcdef\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_jewels \"\
-  aA\" \"abAZ\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval count_jewels \"what\" \"\
-  none\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Soma is a fashionable girl. She absolutely loves shiny stones that she can put on as jewellery accessories. She has been collecting stones since her childhood - now she has become really good with identifying which ones are fake and which ones are not.  Her King requested for her help in mining precious stones, so she has told him which all stones are jewels and which are not. Given her description, your task is  to count the number of jewel stones. 
+
+  More formally, you're given a string J composed of latin characters where each character is a jewel. You're also given a string S composed of latin characters where each character is a mined stone. You have to find out how many characters of S are in J as well. 
+
+  -----Input-----
+
+  First line contains an integer T denoting the number of test cases. Then follow T test cases. Each test case consists of two lines, each of which contains a string composed of English lower case and upper characters. First of these is the jewel string J and the second one is stone string S. 
+  You can assume that  1 <= T <= 100, 1 <= |J|, |S| <= 100
+
+
+  -----Output-----
+  Output for each test case, a single integer, the number of jewels mined. 
+
+  -----Example-----
+  Input:
+  4
+  abc
+  abcdef
+  aA
+  abAZ
+  aaa
+  a
+  what
+  none
+
+  Output:
+  3
+  2
+  1
+  0
+vc-preamble: |
+  import Imports.AllImports
+
+  def count_jewels (jewels stones : String) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def reverseString (s : String) : String :=
+    sorry
+vc-theorems: |
+  theorem count_jewels_properties_non_negative (jewels stones : String) :
+    count_jewels jewels stones ≥ 0 :=
+    sorry
+
+
+  theorem count_jewels_bounded_by_stones (jewels stones : String) :
+    count_jewels jewels stones ≤ stones.length :=
+    sorry
+
+
+  theorem count_jewels_empty_jewels (stones : String) :
+    count_jewels "" stones = 0 :=
+    sorry
+
+
+  theorem count_jewels_empty_stones (jewels : String) :
+    count_jewels jewels "" = 0 :=
+    sorry
+
+
+  theorem count_jewels_duplicates (jewels stones : String) :
+    count_jewels (jewels ++ jewels) stones = count_jewels jewels stones :=
+    sorry
+
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_jewels "abc" "abcdef"
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval count_jewels "aA" "abAZ"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_jewels "what" "none"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

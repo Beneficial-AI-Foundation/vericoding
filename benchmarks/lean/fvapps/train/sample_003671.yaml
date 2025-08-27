@@ -1,30 +1,75 @@
-"vc-description": "Three candidates take part in a TV show.\n\nIn order to decide\
-  \ who will take part in the final game and probably become rich, they have to roll\
-  \ the Wheel of Fortune!\n\nThe Wheel of Fortune is divided into 20 sections, each\
-  \ with a number from 5 to 100 (only mulitples of 5).\n\nEach candidate can roll\
-  \ the wheel once or twice and sum up the score of each roll.\nThe winner one that\
-  \ is closest to 100 (while still being lower or equal to 100). \nIn case of a tie,\
-  \ the candidate that rolled the wheel first wins.\n\nYou receive the information\
-  \ about each candidate as an array of objects: each object should have a `name`\
-  \ and a `scores` array with the candidate roll values.\n\nYour solution should return\
-  \ the name of the winner or `false` if there is no winner (all scored more than\
-  \ 100).\n\n__Example:__\n\n```python\nc1 = {\"name\": \"Bob\", \"scores\": [10,\
-  \ 65]}\nc2 = {\"name\": \"Bill\", \"scores\": [90, 5]}\nc3 = {\"name\": \"Charlie\"\
-  , \"scores\": [40, 55]}\nwinner([c1, c2, c3]) #Returns \"Bill\"\n```\n\nPlease note\
-  \ that inputs may be invalid: in this case, the function should return false.\n\n\
-  Potential errors derived from the specifications are:\n- More or less than three\
-  \ candidates take part in the game.\n- A candidate did not roll the wheel or rolled\
-  \ it more than twice.\n- Scores are not valid.\n- Invalid user entry (no name or\
-  \ no score)."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def winner : List Candidate → Option String := sorry\n\ntheorem\
-  \ invalid_candidate_count \n  {cs : List Candidate} : \n  cs.length ≠ 3 → winner\
-  \ cs = none := sorry\n"
-"vc-theorems": "theorem invalid_scores \n  {cs : List Candidate}\n  (h_length : cs.length\
-  \ = 3)\n  (h_invalid : ∃ c, c ∈ cs ∧ ∃ s, s ∈ c.scores ∧ ¬(s % 5 = 0 ∧ 5 ≤ s ∧ s\
-  \ ≤ 100)) :\n  winner cs = none := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval\
-  \ len candidates\n\n/--\ninfo: 'Bill'\n-/\n#guard_msgs in\n#eval winner [c1, c2,\
-  \ c3]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval winner []\n\n/--\ninfo: 'Bill'\n\
-  -/\n#guard_msgs in\n#eval winner [c1, c2, c3]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Three candidates take part in a TV show.
+
+  In order to decide who will take part in the final game and probably become rich, they have to roll the Wheel of Fortune!
+
+  The Wheel of Fortune is divided into 20 sections, each with a number from 5 to 100 (only mulitples of 5).
+
+  Each candidate can roll the wheel once or twice and sum up the score of each roll.
+  The winner one that is closest to 100 (while still being lower or equal to 100). 
+  In case of a tie, the candidate that rolled the wheel first wins.
+
+  You receive the information about each candidate as an array of objects: each object should have a `name` and a `scores` array with the candidate roll values.
+
+  Your solution should return the name of the winner or `false` if there is no winner (all scored more than 100).
+
+  __Example:__
+
+  ```python
+  c1 = {"name": "Bob", "scores": [10, 65]}
+  c2 = {"name": "Bill", "scores": [90, 5]}
+  c3 = {"name": "Charlie", "scores": [40, 55]}
+  winner([c1, c2, c3]) #Returns "Bill"
+  ```
+
+  Please note that inputs may be invalid: in this case, the function should return false.
+
+  Potential errors derived from the specifications are:
+  - More or less than three candidates take part in the game.
+  - A candidate did not roll the wheel or rolled it more than twice.
+  - Scores are not valid.
+  - Invalid user entry (no name or no score).
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def winner : List Candidate → Option String := sorry
+
+  theorem invalid_candidate_count 
+    {cs : List Candidate} : 
+    cs.length ≠ 3 → winner cs = none := sorry
+vc-theorems: |
+  theorem invalid_scores 
+    {cs : List Candidate}
+    (h_length : cs.length = 3)
+    (h_invalid : ∃ c, c ∈ cs ∧ ∃ s, s ∈ c.scores ∧ ¬(s % 5 = 0 ∧ 5 ≤ s ∧ s ≤ 100)) :
+    winner cs = none := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval len candidates
+
+  /--
+  info: 'Bill'
+  -/
+  #guard_msgs in
+  #eval winner [c1, c2, c3]
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval winner []
+
+  /--
+  info: 'Bill'
+  -/
+  #guard_msgs in
+  #eval winner [c1, c2, c3]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

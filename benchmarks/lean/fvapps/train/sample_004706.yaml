@@ -1,18 +1,63 @@
-"vc-description": "Complete the solution so that it returns true if the first argument(string)\
-  \ passed in ends with the 2nd argument (also a string). \n\nExamples:\n\n```python\n\
-  solution('abc', 'bc') # returns true\nsolution('abc', 'd') # returns false\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def stringEndsWith (s ending : String) : Bool :=\n  sorry\n"
-"vc-theorems": "theorem stringEndsWith_matches_endsWith (s ending : String) :\n  stringEndsWith\
-  \ s ending = String.endsWith s ending := by\n  sorry\n\n\ntheorem empty_ending_always_true\
-  \ (s : String) :\n  stringEndsWith s \"\" = true := by\n  sorry\n\n\ntheorem string_ends_with_itself\
-  \ (s : String) :\n  stringEndsWith s s = true := by\n  sorry\n\n\ntheorem longer_ending_is_false\
-  \ {s ending : String} :\n  ending.length > s.length → stringEndsWith s ending =\
-  \ false := by\n  sorry\n\n\ntheorem ends_with_last_n_chars (s : String) (n : Nat)\
-  \ :\n  n ≤ s.length →\n  stringEndsWith s (s.drop (s.length - n)) = true := by\n\
-  \  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval string_ends_with \"abc\"\
-  \ \"bc\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval string_ends_with \"abc\"\
-  \ \"d\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval string_ends_with \"samurai\"\
-  \ \"ai\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string). 
+
+  Examples:
+
+  ```python
+  solution('abc', 'bc') # returns true
+  solution('abc', 'd') # returns false
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def stringEndsWith (s ending : String) : Bool :=
+    sorry
+vc-theorems: |
+  theorem stringEndsWith_matches_endsWith (s ending : String) :
+    stringEndsWith s ending = String.endsWith s ending := by
+    sorry
+
+
+  theorem empty_ending_always_true (s : String) :
+    stringEndsWith s "" = true := by
+    sorry
+
+
+  theorem string_ends_with_itself (s : String) :
+    stringEndsWith s s = true := by
+    sorry
+
+
+  theorem longer_ending_is_false {s ending : String} :
+    ending.length > s.length → stringEndsWith s ending = false := by
+    sorry
+
+
+  theorem ends_with_last_n_chars (s : String) (n : Nat) :
+    n ≤ s.length →
+    stringEndsWith s (s.drop (s.length - n)) = true := by
+    sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval string_ends_with "abc" "bc"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval string_ends_with "abc" "d"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval string_ends_with "samurai" "ai"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

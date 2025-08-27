@@ -1,23 +1,70 @@
-"vc-description": "Given an integer N. Integers A and B are chosen randomly in the\
-  \ range [1..N]. Calculate the probability that the Greatest Common Divisor(GCD)\
-  \ of A and B equals to B.\n\n-----Input-----\nThe first line of the input contains\
-  \ an integer T denoting the number of test cases. The description of T test cases\
-  \ follows. Each test case consists of a single integer N on a separate line.\n\n\
-  -----Output-----\nFor each test case, output a single line containing probability\
-  \ as an irreducible fraction. \n\n-----Example-----\nInput:\n3\n1\n2\n3\n\nOutput:\n\
-  1/1\n3/4\n5/9\n\n-----Constraints-----\n\n1<=T<=103\n\n1<=N<=109"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calc_gcd_prob (n : Nat) : String := sorry\n\ntheorem calc_gcd_prob_fraction_format\
-  \ (n : Nat) \n    (h : n > 0) (h2 : n ≤ 1000) :\n    let result := calc_gcd_prob\
-  \ n\n    let nums := result.splitOn \"/\"\n    let num := String.toNat! (nums.get!\
-  \ 0)\n    let denom := String.toNat! (nums.get! 1)\n    denom > 0 ∧ Nat.gcd num\
-  \ denom = 1 := sorry\n"
-"vc-theorems": "theorem calc_gcd_prob_probability_range (n : Nat)\n    (h : n > 0)\
-  \ (h2 : n ≤ 1000) :\n    let result := calc_gcd_prob n\n    let nums := result.splitOn\
-  \ \"/\"\n    let num := String.toNat! (nums.get! 0) \n    let denom := String.toNat!\
-  \ (nums.get! 1)\n    num / denom ≥ 0 ∧ num / denom ≤ 1 := sorry\n\n/--\ninfo: '1/1'\n\
-  -/\n#guard_msgs in\n#eval calc_gcd_prob 1\n\n/--\ninfo: '3/4'\n-/\n#guard_msgs in\n\
-  #eval calc_gcd_prob 2\n\n/--\ninfo: '5/9'\n-/\n#guard_msgs in\n#eval calc_gcd_prob\
-  \ 3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an integer N. Integers A and B are chosen randomly in the range [1..N]. Calculate the probability that the Greatest Common Divisor(GCD) of A and B equals to B.
+
+  -----Input-----
+  The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows. Each test case consists of a single integer N on a separate line.
+
+  -----Output-----
+  For each test case, output a single line containing probability as an irreducible fraction. 
+
+  -----Example-----
+  Input:
+  3
+  1
+  2
+  3
+
+  Output:
+  1/1
+  3/4
+  5/9
+
+  -----Constraints-----
+
+  1<=T<=103
+
+  1<=N<=109
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def calc_gcd_prob (n : Nat) : String := sorry
+
+  theorem calc_gcd_prob_fraction_format (n : Nat) 
+      (h : n > 0) (h2 : n ≤ 1000) :
+      let result := calc_gcd_prob n
+      let nums := result.splitOn "/"
+      let num := String.toNat! (nums.get! 0)
+      let denom := String.toNat! (nums.get! 1)
+      denom > 0 ∧ Nat.gcd num denom = 1 := sorry
+vc-theorems: |
+  theorem calc_gcd_prob_probability_range (n : Nat)
+      (h : n > 0) (h2 : n ≤ 1000) :
+      let result := calc_gcd_prob n
+      let nums := result.splitOn "/"
+      let num := String.toNat! (nums.get! 0) 
+      let denom := String.toNat! (nums.get! 1)
+      num / denom ≥ 0 ∧ num / denom ≤ 1 := sorry
+
+  /--
+  info: '1/1'
+  -/
+  #guard_msgs in
+  #eval calc_gcd_prob 1
+
+  /--
+  info: '3/4'
+  -/
+  #guard_msgs in
+  #eval calc_gcd_prob 2
+
+  /--
+  info: '5/9'
+  -/
+  #guard_msgs in
+  #eval calc_gcd_prob 3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

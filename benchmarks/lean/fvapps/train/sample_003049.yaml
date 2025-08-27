@@ -1,39 +1,109 @@
-"vc-description": "There is a queue for the self-checkout tills at the supermarket.\
-  \ Your task is write a function to calculate the total time required for all the\
-  \ customers to check out!\n\n### input\n```if-not:c\n* customers: an array of positive\
-  \ integers representing the queue. Each integer represents a customer, and its value\
-  \ is the amount of time they require to check out.\n* n: a positive integer, the\
-  \ number of checkout tills.\n```\n```if:c\n* customers: a pointer to an array of\
-  \ positive integers representing the queue. Each integer represents a customer,\
-  \ and its value is the amount of time they require to check out.\n* customers_length:\
-  \ the length of the array that `customers` points to.\n* n: a positive integer,\
-  \ the number of checkout tills.\n```\n\n### output\nThe function should return an\
-  \ integer, the total time required.\n\n-------------------------------------------\n\
-  \n## Important\n**Please look at the examples and clarifications below, to ensure\
-  \ you understand the task correctly :)**\n\n-------\n\n### Examples\n\n```python\n\
-  queue_time([5,3,4], 1)\n# should return 12\n# because when n=1, the total time is\
-  \ just the sum of the times\n\nqueue_time([10,2,3,3], 2)\n# should return 10\n#\
-  \ because here n=2 and the 2nd, 3rd, and 4th people in the \n# queue finish before\
-  \ the 1st person has finished.\n\nqueue_time([2,3,10], 2)\n# should return 12\n\
-  ```\n\n### Clarifications\n\n * There is only ONE queue serving many tills, and\n\
-  \ * The order of the queue NEVER changes, and\n * The front person in the queue\
-  \ (i.e. the first element in the array/list) proceeds to a till as soon as it becomes\
-  \ free.\n\nN.B. You should assume that all the test input will be valid, as specified\
-  \ above.\n\nP.S. The situation in this kata can be likened to the more-computer-science-related\
-  \ idea of a thread pool, with relation to running multiple processes at the same\
-  \ time: https://en.wikipedia.org/wiki/Thread_pool"
-"vc-preamble": "import Imports.AllImports\n\ndef List.maximum (l : List Nat) : Nat\
-  \ :=\n  match l with\n  | [] => 0\n  | h :: t => List.foldl Nat.max h t\n\n\ndef\
-  \ List.sum (l : List Nat) : Nat :=\n  match l with\n  | [] => 0\n  | h :: t => h\
-  \ + List.sum t\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def queue_time (customers : List Nat) (n : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem queue_time_non_negative (customers : List Nat) (n : Nat) (h\
-  \ : n > 0) :\n  queue_time customers n ≥ 0 :=\n  sorry \n\n\n\n\ntheorem queue_time_empty_list\
-  \ (n : Nat) (h : n > 0) :\n  queue_time [] n = 0 :=\n  sorry\n\n\n\n\n\n\ntheorem\
-  \ queue_time_monotonic (customers : List Nat) (n : Nat) (h : n > 0) :\n  queue_time\
-  \ customers (n + 1) ≤ queue_time customers n :=\n  sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs\
-  \ in\n#eval queue_time [] 1\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval queue_time\
-  \ [2] 5\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval queue_time [2, 2, 3, 3, 4, 4]\
-  \ 2\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  There is a queue for the self-checkout tills at the supermarket. Your task is write a function to calculate the total time required for all the customers to check out!
+
+  ### input
+  ```if-not:c
+  * customers: an array of positive integers representing the queue. Each integer represents a customer, and its value is the amount of time they require to check out.
+  * n: a positive integer, the number of checkout tills.
+  ```
+  ```if:c
+  * customers: a pointer to an array of positive integers representing the queue. Each integer represents a customer, and its value is the amount of time they require to check out.
+  * customers_length: the length of the array that `customers` points to.
+  * n: a positive integer, the number of checkout tills.
+  ```
+
+  ### output
+  The function should return an integer, the total time required.
+
+  -------------------------------------------
+
+  ## Important
+  **Please look at the examples and clarifications below, to ensure you understand the task correctly :)**
+
+  -------
+
+  ### Examples
+
+  ```python
+  queue_time([5,3,4], 1)
+  # should return 12
+  # because when n=1, the total time is just the sum of the times
+
+  queue_time([10,2,3,3], 2)
+  # should return 10
+  # because here n=2 and the 2nd, 3rd, and 4th people in the 
+  # queue finish before the 1st person has finished.
+
+  queue_time([2,3,10], 2)
+  # should return 12
+  ```
+
+  ### Clarifications
+
+   * There is only ONE queue serving many tills, and
+   * The order of the queue NEVER changes, and
+   * The front person in the queue (i.e. the first element in the array/list) proceeds to a till as soon as it becomes free.
+
+  N.B. You should assume that all the test input will be valid, as specified above.
+
+  P.S. The situation in this kata can be likened to the more-computer-science-related idea of a thread pool, with relation to running multiple processes at the same time: https://en.wikipedia.org/wiki/Thread_pool
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.maximum (l : List Nat) : Nat :=
+    match l with
+    | [] => 0
+    | h :: t => List.foldl Nat.max h t
+
+
+  def List.sum (l : List Nat) : Nat :=
+    match l with
+    | [] => 0
+    | h :: t => h + List.sum t
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def queue_time (customers : List Nat) (n : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem queue_time_non_negative (customers : List Nat) (n : Nat) (h : n > 0) :
+    queue_time customers n ≥ 0 :=
+    sorry 
+
+
+
+
+  theorem queue_time_empty_list (n : Nat) (h : n > 0) :
+    queue_time [] n = 0 :=
+    sorry
+
+
+
+
+
+
+  theorem queue_time_monotonic (customers : List Nat) (n : Nat) (h : n > 0) :
+    queue_time customers (n + 1) ≤ queue_time customers n :=
+    sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval queue_time [] 1
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval queue_time [2] 5
+
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval queue_time [2, 2, 3, 3, 4, 4] 2
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

@@ -1,20 +1,59 @@
-"vc-description": "Given a n x n matrix where each of the rows and columns are sorted\
-  \ in ascending order, find the kth smallest element in the matrix.\n\n\nNote that\
-  \ it is the kth smallest element in the sorted order, not the kth distinct element.\n\
-  \n\nExample:\n\nmatrix = [\n   [ 1,  5,  9],\n   [10, 11, 13],\n   [12, 13, 15]\n\
-  ],\nk = 8,\n\nreturn 13.\n\n\n\nNote: \nYou may assume k is always valid, 1 ≤ k\
-  \ ≤ n2."
-"vc-preamble": "import Imports.AllImports\n\ndef kth_smallest_in_sorted_matrix (matrix\
-  \ : List (List Int)) (k : Nat) : Int := sorry\n\ndef is_sorted (row : List Int)\
-  \ : Bool := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_matrix_sorted (matrix : List (List Int)) : Bool := sorry\n\
-  \ntheorem empty_rows_handled_raises\n  (matrix : List (List Int))\n  (h1 : matrix\
-  \ = [] ∨ ¬∃row ∈ matrix, row ≠ []) :\n  ∀k, k ≠ 0 → kth_smallest_in_sorted_matrix\
-  \ matrix k = default := sorry"
-"vc-theorems": "/--\ninfo: 13\n-/\n#guard_msgs in\n#eval kth_smallest_in_sorted_matrix\
-  \ [[1, 5, 9], [10, 11, 13], [12, 13, 15]] 8\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
-  #eval kth_smallest_in_sorted_matrix [[1, 2], [3, 4]] 3\n\n/--\ninfo: 13\n-/\n#guard_msgs\
-  \ in\n#eval kth_smallest_in_sorted_matrix [[1, 5, 9], [10, 11, 13], [12, 13, 15],\
-  \ [], []] 8\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given a n x n matrix where each of the rows and columns are sorted in ascending order, find the kth smallest element in the matrix.
+
+
+  Note that it is the kth smallest element in the sorted order, not the kth distinct element.
+
+
+  Example:
+
+  matrix = [
+     [ 1,  5,  9],
+     [10, 11, 13],
+     [12, 13, 15]
+  ],
+  k = 8,
+
+  return 13.
+
+
+
+  Note: 
+  You may assume k is always valid, 1 ≤ k ≤ n2.
+vc-preamble: |
+  import Imports.AllImports
+
+  def kth_smallest_in_sorted_matrix (matrix : List (List Int)) (k : Nat) : Int := sorry
+
+  def is_sorted (row : List Int) : Bool := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def is_matrix_sorted (matrix : List (List Int)) : Bool := sorry
+
+  theorem empty_rows_handled_raises
+    (matrix : List (List Int))
+    (h1 : matrix = [] ∨ ¬∃row ∈ matrix, row ≠ []) :
+    ∀k, k ≠ 0 → kth_smallest_in_sorted_matrix matrix k = default := sorry
+vc-theorems: |
+  /--
+  info: 13
+  -/
+  #guard_msgs in
+  #eval kth_smallest_in_sorted_matrix [[1, 5, 9], [10, 11, 13], [12, 13, 15]] 8
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval kth_smallest_in_sorted_matrix [[1, 2], [3, 4]] 3
+
+  /--
+  info: 13
+  -/
+  #guard_msgs in
+  #eval kth_smallest_in_sorted_matrix [[1, 5, 9], [10, 11, 13], [12, 13, 15], [], []] 8
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

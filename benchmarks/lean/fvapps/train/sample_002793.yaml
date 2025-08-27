@@ -1,17 +1,51 @@
-"vc-description": "Given a lowercase string that has alphabetic characters only and\
-  \ no spaces, return the highest value of consonant substrings. Consonants are any\
-  \ letters of the alphabet except `\"aeiou\"`. \n\nWe shall assign the following\
-  \ values: `a = 1, b = 2, c = 3, .... z = 26`.\n\nFor example, for the word \"zodiacs\"\
-  , let's cross out the vowels. We get: \"z **~~o~~** d **~~ia~~** cs\"\n\nFor C:\
-  \ do not mutate input.\n\nMore examples in test cases. Good luck!\n\nIf you like\
-  \ this Kata, please try:\n\n[Word values](https://www.codewars.com/kata/598d91785d4ce3ec4f000018)\n\
-  \n[Vowel-consonant lexicon](https://www.codewars.com/kata/59cf8bed1a68b75ffb000026)"
-"vc-preamble": "import Imports.AllImports\n\ndef solve (s : String) : Int := sorry\n\
-  \ndef isVowel (c : Char) : Bool := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isConsonant (c : Char) : Bool := sorry\n\ntheorem solve_returns_nonnegative\
-  \ (s : String) : \n  solve s ≥ 0 := sorry"
-"vc-theorems": "/--\ninfo: 26\n-/\n#guard_msgs in\n#eval solve \"zodiac\"\n\n/--\n\
-  info: 57\n-/\n#guard_msgs in\n#eval solve \"strength\"\n\n/--\ninfo: 73\n-/\n#guard_msgs\
-  \ in\n#eval solve \"catchphrase\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given a lowercase string that has alphabetic characters only and no spaces, return the highest value of consonant substrings. Consonants are any letters of the alphabet except `"aeiou"`. 
+
+  We shall assign the following values: `a = 1, b = 2, c = 3, .... z = 26`.
+
+  For example, for the word "zodiacs", let's cross out the vowels. We get: "z **~~o~~** d **~~ia~~** cs"
+
+  For C: do not mutate input.
+
+  More examples in test cases. Good luck!
+
+  If you like this Kata, please try:
+
+  [Word values](https://www.codewars.com/kata/598d91785d4ce3ec4f000018)
+
+  [Vowel-consonant lexicon](https://www.codewars.com/kata/59cf8bed1a68b75ffb000026)
+vc-preamble: |
+  import Imports.AllImports
+
+  def solve (s : String) : Int := sorry
+
+  def isVowel (c : Char) : Bool := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def isConsonant (c : Char) : Bool := sorry
+
+  theorem solve_returns_nonnegative (s : String) : 
+    solve s ≥ 0 := sorry
+vc-theorems: |
+  /--
+  info: 26
+  -/
+  #guard_msgs in
+  #eval solve "zodiac"
+
+  /--
+  info: 57
+  -/
+  #guard_msgs in
+  #eval solve "strength"
+
+  /--
+  info: 73
+  -/
+  #guard_msgs in
+  #eval solve "catchphrase"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

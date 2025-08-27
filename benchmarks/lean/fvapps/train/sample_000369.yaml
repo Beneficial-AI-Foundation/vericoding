@@ -1,22 +1,85 @@
-"vc-description": "Given a non-empty array containing only positive integers, find\
-  \ if the array can be partitioned into two subsets such that the sum of elements\
-  \ in both subsets is equal.\n\n\nNote:\n\nEach of the array element will not exceed\
-  \ 100.\nThe array size will not exceed 200.\n\n\n\nExample 1:\n\nInput: [1, 5, 11,\
-  \ 5]\n\nOutput: true\n\nExplanation: The array can be partitioned as [1, 5, 5] and\
-  \ [11].\n\n\n\nExample 2:\n\nInput: [1, 2, 3, 5]\n\nOutput: false\n\nExplanation:\
-  \ The array cannot be partitioned into equal sum subsets."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def canPartition (nums : List Nat) : Bool := sorry\n\ndef List.sum\
-  \ : List Nat → Nat \n  | [] => 0\n  | x::xs => x + List.sum xs\n"
-"vc-theorems": "theorem canPartition_returns_bool (nums : List Nat) :\n  canPartition\
-  \ nums = true ∨ canPartition nums = false :=\nsorry\n\n\ntheorem canPartition_odd_sum_false\
-  \ (nums : List Nat) :\n  (List.sum nums % 2 ≠ 0) → canPartition nums = false :=\n\
-  sorry \n\n\ntheorem canPartition_same_nums_even_length (n : Nat) (len : Nat) :\n\
-  \  len % 2 = 0 →\n  canPartition (List.replicate len n) = true :=\nsorry\n\n\ntheorem\
-  \ canPartition_singleton_false (n : Nat) :\n  canPartition [n] = false :=\nsorry\n\
-  \n\ntheorem canPartition_pair_same_true (n : Nat) :\n  canPartition [n, n] = true\
-  \ :=\nsorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval can_partition [1, 5, 5,\
-  \ 11]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval can_partition [1, 2, 3, 5]\n\
-  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval can_partition [2, 2, 2, 2]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
+
+
+  Note:
+
+  Each of the array element will not exceed 100.
+  The array size will not exceed 200.
+
+
+
+  Example 1:
+
+  Input: [1, 5, 11, 5]
+
+  Output: true
+
+  Explanation: The array can be partitioned as [1, 5, 5] and [11].
+
+
+
+  Example 2:
+
+  Input: [1, 2, 3, 5]
+
+  Output: false
+
+  Explanation: The array cannot be partitioned into equal sum subsets.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def canPartition (nums : List Nat) : Bool := sorry
+
+  def List.sum : List Nat → Nat 
+    | [] => 0
+    | x::xs => x + List.sum xs
+vc-theorems: |
+  theorem canPartition_returns_bool (nums : List Nat) :
+    canPartition nums = true ∨ canPartition nums = false :=
+  sorry
+
+
+  theorem canPartition_odd_sum_false (nums : List Nat) :
+    (List.sum nums % 2 ≠ 0) → canPartition nums = false :=
+  sorry 
+
+
+  theorem canPartition_same_nums_even_length (n : Nat) (len : Nat) :
+    len % 2 = 0 →
+    canPartition (List.replicate len n) = true :=
+  sorry
+
+
+  theorem canPartition_singleton_false (n : Nat) :
+    canPartition [n] = false :=
+  sorry
+
+
+  theorem canPartition_pair_same_true (n : Nat) :
+    canPartition [n, n] = true :=
+  sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval can_partition [1, 5, 5, 11]
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval can_partition [1, 2, 3, 5]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval can_partition [2, 2, 2, 2]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

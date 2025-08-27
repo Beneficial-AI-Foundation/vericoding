@@ -1,19 +1,89 @@
-"vc-description": "There's a waiting room with N chairs set in single row. Chairs\
-  \ are consecutively numbered from 1 to N. First is closest to the entrance (which\
-  \ is exit as well).\n \nFor some reason people choose a chair in the following way\n\
-  \n1. Find a place as far from other people as possible\n2. Find a place as close\
-  \ to exit as possible\n\nAll chairs must be occupied before the first person will\
-  \ be served\n\nSo it looks like this for 10 chairs and 10 patients\n\n\n\n\nChairs\n\
-  1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nPatients\n1\n7\n5\n8\n3\n9\n4\n6\n10\n2\n\
-  \n\n\n\nYour task is to find last patient's chair's number. \n\nInput - N - integer\
-  \ greater than 2 - number of chairs.\nOutput should positive integer too - last\
-  \ patient's chair's number\n\nHave fun :)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def last_chair (n : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem last_chair_range {n : Nat} (h : n ≥ 3) :\n  1 ≤ last_chair\
-  \ n ∧ last_chair n ≤ n := by\n  sorry\n\n\ntheorem last_chair_value {n : Nat} (h\
-  \ : n ≥ 3) :\n  last_chair n = n - 1 := by\n  sorry\n\n/--\ninfo: 9\n-/\n#guard_msgs\
-  \ in\n#eval last_chair 10\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval last_chair\
-  \ 5\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval last_chair 3\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  There's a waiting room with N chairs set in single row. Chairs are consecutively numbered from 1 to N. First is closest to the entrance (which is exit as well).
+   
+  For some reason people choose a chair in the following way
+
+  1. Find a place as far from other people as possible
+  2. Find a place as close to exit as possible
+
+  All chairs must be occupied before the first person will be served
+
+  So it looks like this for 10 chairs and 10 patients
+
+
+
+
+  Chairs
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  10
+
+
+
+
+  Patients
+  1
+  7
+  5
+  8
+  3
+  9
+  4
+  6
+  10
+  2
+
+
+
+
+  Your task is to find last patient's chair's number. 
+
+  Input - N - integer greater than 2 - number of chairs.
+  Output should positive integer too - last patient's chair's number
+
+  Have fun :)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def last_chair (n : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem last_chair_range {n : Nat} (h : n ≥ 3) :
+    1 ≤ last_chair n ∧ last_chair n ≤ n := by
+    sorry
+
+
+  theorem last_chair_value {n : Nat} (h : n ≥ 3) :
+    last_chair n = n - 1 := by
+    sorry
+
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval last_chair 10
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval last_chair 5
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval last_chair 3
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

@@ -1,22 +1,67 @@
-"vc-description": "Check if it is a vowel(a, e, i, o, u,) on the ```n``` position\
-  \ in a string (the first argument). Don't forget about uppercase.\n\nA few cases:\n\
-  \n```\n{\ncheckVowel('cat', 1)  ->   true // 'a' is a vowel\ncheckVowel('cat', 0)\
-  \  ->   false // 'c' is not a vowel\ncheckVowel('cat', 4)  ->   false // this position\
-  \ doesn't exist\n}\n```\nP.S. If n < 0, return false"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def Char.isVowel : Char → Bool := sorry\n\ndef check_vowel : String\
-  \ → Int → Bool := sorry\n"
-"vc-theorems": "theorem check_vowel_bounds {s : String} {i : Int} :\n  (i < 0 ∨ i\
-  \ ≥ s.length) → check_vowel s i = false := sorry\n\n\ntheorem check_vowel_is_vowel\
-  \ {s : String} {i : Int} :\n  check_vowel s i = true → \n  ∃ p : String.Pos, (p.byteIdx\
-  \ = i.toNat) ∧ (s.get p).toLower.isVowel := sorry\n\n\ntheorem check_vowel_case_insensitive\
-  \ {s : String} {i : Int} :\n  0 ≤ i ∧ i < s.length →\n  check_vowel s.toLower i\
-  \ = check_vowel s.toUpper i := sorry\n\n\ntheorem check_vowel_non_letters {s : String}\
-  \ {i : Int} : \n  (∀ c ∈ s.data, ¬c.isAlpha) → \n  check_vowel s i = false := sorry\n\
-  \n\ntheorem check_vowel_all_vowels {s : String} {i : Int} :\n  (∀ c ∈ s.data, c.isVowel)\
-  \ →\n  0 ≤ i → i < s.length →\n  check_vowel s i = true := sorry\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval check_vowel \"cat\" 1\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval check_vowel \"cat\" 0\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
-  \ check_vowel \"Amanda\" 0\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Check if it is a vowel(a, e, i, o, u,) on the ```n``` position in a string (the first argument). Don't forget about uppercase.
+
+  A few cases:
+
+  ```
+  {
+  checkVowel('cat', 1)  ->   true // 'a' is a vowel
+  checkVowel('cat', 0)  ->   false // 'c' is not a vowel
+  checkVowel('cat', 4)  ->   false // this position doesn't exist
+  }
+  ```
+  P.S. If n < 0, return false
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def Char.isVowel : Char → Bool := sorry
+
+  def check_vowel : String → Int → Bool := sorry
+vc-theorems: |
+  theorem check_vowel_bounds {s : String} {i : Int} :
+    (i < 0 ∨ i ≥ s.length) → check_vowel s i = false := sorry
+
+
+  theorem check_vowel_is_vowel {s : String} {i : Int} :
+    check_vowel s i = true → 
+    ∃ p : String.Pos, (p.byteIdx = i.toNat) ∧ (s.get p).toLower.isVowel := sorry
+
+
+  theorem check_vowel_case_insensitive {s : String} {i : Int} :
+    0 ≤ i ∧ i < s.length →
+    check_vowel s.toLower i = check_vowel s.toUpper i := sorry
+
+
+  theorem check_vowel_non_letters {s : String} {i : Int} : 
+    (∀ c ∈ s.data, ¬c.isAlpha) → 
+    check_vowel s i = false := sorry
+
+
+  theorem check_vowel_all_vowels {s : String} {i : Int} :
+    (∀ c ∈ s.data, c.isVowel) →
+    0 ≤ i → i < s.length →
+    check_vowel s i = true := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval check_vowel "cat" 1
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval check_vowel "cat" 0
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval check_vowel "Amanda" 0
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

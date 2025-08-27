@@ -1,20 +1,60 @@
-"vc-description": "Your task in this kata is to implement a function that calculates\
-  \ the sum of the integers inside a string. For example, in the string \"The30quick20brown10f0x1203jumps914ov3r1349the102l4zy\
-  \ dog\", the sum of the integers is 3635.\n\n*Note: only positive integers will\
-  \ be tested.*"
-"vc-preamble": "import Imports.AllImports\n\ndef sumOfIntegersInString (s : String)\
-  \ : Nat :=\n  sorry\n\n\ndef sumOfMatchedNumbers (s : String) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def List.sum : List Nat → Nat \n  | [] => 0\n  | x::xs => x + List.sum\
-  \ xs\n"
-"vc-theorems": "theorem sum_matches_individual_numbers (s : String) : \n  sumOfIntegersInString\
-  \ s = sumOfMatchedNumbers s := by \n  sorry\n\n\ntheorem single_number_returns_itself\
-  \ (n : Nat) :\n  sumOfIntegersInString (toString n) = n := by \n  sorry\n\n\ntheorem\
-  \ space_separated_sum (nums : List Nat) :\n  sumOfIntegersInString (String.intercalate\
-  \ \" \" (nums.map toString)) = List.sum nums := by\n  sorry\n\n\ntheorem output_is_nonnegative\
-  \ (s : String) :\n  sumOfIntegersInString s ≥ 0 := by\n  sorry\n\n/--\ninfo: 3635\n\
-  -/\n#guard_msgs in\n#eval sum_of_integers_in_string \"The30quick20brown10f0x1203jumps914ov3r1349the102l4zy\
-  \ dog\"\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval sum_of_integers_in_string \"\
-  12\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval sum_of_integers_in_string \"h3llo\
-  \ w0rld\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Your task in this kata is to implement a function that calculates the sum of the integers inside a string. For example, in the string "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog", the sum of the integers is 3635.
+
+  *Note: only positive integers will be tested.*
+vc-preamble: |
+  import Imports.AllImports
+
+  def sumOfIntegersInString (s : String) : Nat :=
+    sorry
+
+
+  def sumOfMatchedNumbers (s : String) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def List.sum : List Nat → Nat 
+    | [] => 0
+    | x::xs => x + List.sum xs
+vc-theorems: |
+  theorem sum_matches_individual_numbers (s : String) : 
+    sumOfIntegersInString s = sumOfMatchedNumbers s := by 
+    sorry
+
+
+  theorem single_number_returns_itself (n : Nat) :
+    sumOfIntegersInString (toString n) = n := by 
+    sorry
+
+
+  theorem space_separated_sum (nums : List Nat) :
+    sumOfIntegersInString (String.intercalate " " (nums.map toString)) = List.sum nums := by
+    sorry
+
+
+  theorem output_is_nonnegative (s : String) :
+    sumOfIntegersInString s ≥ 0 := by
+    sorry
+
+  /--
+  info: 3635
+  -/
+  #guard_msgs in
+  #eval sum_of_integers_in_string "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog"
+
+  /--
+  info: 12
+  -/
+  #guard_msgs in
+  #eval sum_of_integers_in_string "12"
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval sum_of_integers_in_string "h3llo w0rld"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

@@ -1,55 +1,112 @@
-"vc-description": "Let's consider a simplified version of order book of some stock.\
-  \ The order book is a list of orders (offers) from people that want to buy or sell\
-  \ one unit of the stock, each order is described by direction (BUY or SELL) and\
-  \ price.\n\nAt every moment of time, every SELL offer has higher price than every\
-  \ BUY offer. \n\nIn this problem no two ever existed orders will have the same price.\n\
-  \nThe lowest-price SELL order and the highest-price BUY order are called the best\
-  \ offers, marked with black frames on the picture below. [Image] The presented order\
-  \ book says that someone wants to sell the product at price $12$ and it's the best\
-  \ SELL offer because the other two have higher prices. The best BUY offer has price\
-  \ $10$. \n\nThere are two possible actions in this orderbook:  Somebody adds a new\
-  \ order of some direction with some price. Somebody accepts the best possible SELL\
-  \ or BUY offer (makes a deal). It's impossible to accept not the best SELL or BUY\
-  \ offer (to make a deal at worse price). After someone accepts the offer, it is\
-  \ removed from the orderbook forever.\n\nIt is allowed to add new BUY order only\
-  \ with prices less than the best SELL offer (if you want to buy stock for higher\
-  \ price, then instead of adding an order you should accept the best SELL offer).\
-  \ Similarly, one couldn't add a new SELL order with price less or equal to the best\
-  \ BUY offer. For example, you can't add a new offer \"SELL $20$\" if there is already\
-  \ an offer \"BUY $20$\" or \"BUY $25$\" — in this case you just accept the best\
-  \ BUY offer.\n\nYou have a damaged order book log (in the beginning the are no orders\
-  \ in book). Every action has one of the two types: \"ADD $p$\" denotes adding a\
-  \ new order with price $p$ and unknown direction. The order must not contradict\
-  \ with orders still not removed from the order book.  \"ACCEPT $p$\" denotes accepting\
-  \ an existing best offer with price $p$ and unknown direction.\n\nThe directions\
-  \ of all actions are lost. Information from the log isn't always enough to determine\
-  \ these directions. Count the number of ways to correctly restore all ADD action\
-  \ directions so that all the described conditions are satisfied at any moment. Since\
-  \ the answer could be large, output it modulo $10^9 + 7$. If it is impossible to\
-  \ correctly restore directions, then output $0$.\n\n\n-----Input-----\n\nThe first\
-  \ line contains an integer $n$ ($1 \\le n \\le 363\\,304$) — the number of actions\
-  \ in the log.\n\nEach of the next $n$ lines contains a string \"ACCEPT\" or \"ADD\"\
-  \ and an integer $p$ ($1 \\le p \\le 308\\,983\\,066$), describing an action type\
-  \ and price. \n\nAll ADD actions have different prices. For ACCEPT action it is\
-  \ guaranteed that the order with the same price has already been added but has not\
-  \ been accepted yet.\n\n\n-----Output-----\n\nOutput the number of ways to restore\
-  \ directions of ADD actions modulo $10^9 + 7$.\n\n\n-----Examples-----\nInput\n\
-  6\nADD 1\nACCEPT 1\nADD 2\nACCEPT 2\nADD 3\nACCEPT 3\n\nOutput\n8\n\nInput\n4\n\
-  ADD 1\nADD 2\nADD 3\nACCEPT 2\n\nOutput\n2\n\nInput\n7\nADD 1\nADD 2\nADD 3\nADD\
-  \ 4\nADD 5\nACCEPT 3\nACCEPT 5\n\nOutput\n0\n\n\n\n-----Note-----\n\nIn the first\
-  \ example each of orders may be BUY or SELL.\n\nIn the second example the order\
-  \ with price $1$ has to be BUY order, the order with the price $3$ has to be SELL\
-  \ order."
-"vc-preamble": "import Imports.AllImports\n\ndef Action : Type := (String × Nat)\n\
-  def Actions : Type := List Action\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_order_book (actions: Actions) : Nat := sorry\n\n\n\n\
-  theorem solve_multiple_possibilities :\n  let test_actions := [(\"ADD\", 5), (\"\
-  ADD\", 5), (\"ACCEPT\", 5)]\n  solve_order_book test_actions = 2 := sorry"
-"vc-theorems": "/--\ninfo: 8\n-/\n#guard_msgs in\n#eval solve_order_book [(\"ADD\"\
-  , 1), (\"ACCEPT\", 1), (\"ADD\", 2), (\"ACCEPT\", 2), (\"ADD\", 3), (\"ACCEPT\"\
-  , 3)]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve_order_book [(\"ADD\", 1),\
-  \ (\"ADD\", 2), (\"ADD\", 3), (\"ACCEPT\", 2)]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
-  \ in\n#eval solve_order_book [(\"ADD\", 1), (\"ADD\", 2), (\"ADD\", 3), (\"ADD\"\
-  , 4), (\"ADD\", 5), (\"ACCEPT\", 3), (\"ACCEPT\", 5)]\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Let's consider a simplified version of order book of some stock. The order book is a list of orders (offers) from people that want to buy or sell one unit of the stock, each order is described by direction (BUY or SELL) and price.
+
+  At every moment of time, every SELL offer has higher price than every BUY offer. 
+
+  In this problem no two ever existed orders will have the same price.
+
+  The lowest-price SELL order and the highest-price BUY order are called the best offers, marked with black frames on the picture below. [Image] The presented order book says that someone wants to sell the product at price $12$ and it's the best SELL offer because the other two have higher prices. The best BUY offer has price $10$. 
+
+  There are two possible actions in this orderbook:  Somebody adds a new order of some direction with some price. Somebody accepts the best possible SELL or BUY offer (makes a deal). It's impossible to accept not the best SELL or BUY offer (to make a deal at worse price). After someone accepts the offer, it is removed from the orderbook forever.
+
+  It is allowed to add new BUY order only with prices less than the best SELL offer (if you want to buy stock for higher price, then instead of adding an order you should accept the best SELL offer). Similarly, one couldn't add a new SELL order with price less or equal to the best BUY offer. For example, you can't add a new offer "SELL $20$" if there is already an offer "BUY $20$" or "BUY $25$" — in this case you just accept the best BUY offer.
+
+  You have a damaged order book log (in the beginning the are no orders in book). Every action has one of the two types: "ADD $p$" denotes adding a new order with price $p$ and unknown direction. The order must not contradict with orders still not removed from the order book.  "ACCEPT $p$" denotes accepting an existing best offer with price $p$ and unknown direction.
+
+  The directions of all actions are lost. Information from the log isn't always enough to determine these directions. Count the number of ways to correctly restore all ADD action directions so that all the described conditions are satisfied at any moment. Since the answer could be large, output it modulo $10^9 + 7$. If it is impossible to correctly restore directions, then output $0$.
+
+
+  -----Input-----
+
+  The first line contains an integer $n$ ($1 \le n \le 363\,304$) — the number of actions in the log.
+
+  Each of the next $n$ lines contains a string "ACCEPT" or "ADD" and an integer $p$ ($1 \le p \le 308\,983\,066$), describing an action type and price. 
+
+  All ADD actions have different prices. For ACCEPT action it is guaranteed that the order with the same price has already been added but has not been accepted yet.
+
+
+  -----Output-----
+
+  Output the number of ways to restore directions of ADD actions modulo $10^9 + 7$.
+
+
+  -----Examples-----
+  Input
+  6
+  ADD 1
+  ACCEPT 1
+  ADD 2
+  ACCEPT 2
+  ADD 3
+  ACCEPT 3
+
+  Output
+  8
+
+  Input
+  4
+  ADD 1
+  ADD 2
+  ADD 3
+  ACCEPT 2
+
+  Output
+  2
+
+  Input
+  7
+  ADD 1
+  ADD 2
+  ADD 3
+  ADD 4
+  ADD 5
+  ACCEPT 3
+  ACCEPT 5
+
+  Output
+  0
+
+
+
+  -----Note-----
+
+  In the first example each of orders may be BUY or SELL.
+
+  In the second example the order with price $1$ has to be BUY order, the order with the price $3$ has to be SELL order.
+vc-preamble: |
+  import Imports.AllImports
+
+  def Action : Type := (String × Nat)
+  def Actions : Type := List Action
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def solve_order_book (actions: Actions) : Nat := sorry
+
+
+
+  theorem solve_multiple_possibilities :
+    let test_actions := [("ADD", 5), ("ADD", 5), ("ACCEPT", 5)]
+    solve_order_book test_actions = 2 := sorry
+vc-theorems: |
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval solve_order_book [("ADD", 1), ("ACCEPT", 1), ("ADD", 2), ("ACCEPT", 2), ("ADD", 3), ("ACCEPT", 3)]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve_order_book [("ADD", 1), ("ADD", 2), ("ADD", 3), ("ACCEPT", 2)]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve_order_book [("ADD", 1), ("ADD", 2), ("ADD", 3), ("ADD", 4), ("ADD", 5), ("ACCEPT", 3), ("ACCEPT", 5)]
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded_and_plausible

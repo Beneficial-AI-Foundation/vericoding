@@ -1,44 +1,94 @@
-"vc-description": "According to Gary Chapman, marriage counselor and the author of\
-  \ [\"The Five Love Languages\"](https://en.wikipedia.org/wiki/The_Five_Love_Languages)\
-  \ books, there are five major ways to express our love towards someone: *words of\
-  \ affirmation, quality time, gifts, acts of service,* and *physical touch*. These\
-  \ are called the love languages. Usually, everyone has a main language: the one\
-  \ that he/she \"speaks\" and understands best. In a relationship, it's import to\
-  \ find your partner's main love language, so that you get along better with each\
-  \ other.\n\n## Your task\n\nUnfortunately, your relationship got worse lately...\
-  \ After a long discussion with your partner, you agreed to give yourself a few weeks\
-  \ to improve it, otherwise you split up...\n\nYou will be given a `partner` instance,\
-  \ and `n` weeks. The `partner`  has a `.response` method, and the responses may\
-  \ be: `\"positive\"` or `\"neutral\"`. You can try to get a response once a day,\
-  \ thus you have `n * 7` tries in total to find the main love language of your partner!\n\
-  \n```if-not:haskell\nThe love languages are: `\"words\", \"acts\", \"gifts\", \"\
-  time\", \"touch\"` (available predefined as `LOVE_LANGUAGES`)\n```\n```if:haskell\n\
-  The love languages are: `Words, Acts, Gifts, Time, Touch` ( available `Preloaded`\
-  \ as `LoveLanguage` )\n```\n\nNote: your partner may (and will) sometimes give a\
-  \ positive response to any love language (\"false positive\"), but the main one\
-  \ has a much higher possibility. On the other hand, you may get a neutral response\
-  \ even for the main language, but with a low possibility (\"false negative\").\n\
-  \nThere will be 50 tests. Although it's difficult to fail, in case you get unlucky,\
-  \ just run the tests again. After all, a few weeks may not be enough...\n\n## Examples\n\
-  \n```python\nmain love language: \"words\"\n\npartner.response(\"words\") ==> \"\
-  positive\"\npartner.response(\"acts\")  ==> \"neutral\"\npartner.response(\"words\"\
-  ) ==> \"positive\"\npartner.response(\"time\")  ==> \"neutral\"\npartner.response(\"\
-  acts\")  ==> \"positive\"    # false positive\npartner.response(\"gifts\") ==> \"\
-  neutral\"\npartner.response(\"words\") ==> \"neutral\"     # false negative\netc.\n\
-  ```\n\n~~~if:haskell\n## Notes\n\n`Preloaded` exports the following:\n\n~~~\n\n\
-  Happy coding, and **DO** try this at home! :-)\n\n---\n\n## My other katas\n\nIf\
-  \ you enjoyed this kata then please try [my other katas](https://www.codewars.com/collections/katas-created-by-anter69)!\
-  \ :-)\n\n#### *Translations are welcome!*"
-"vc-preamble": "import Imports.AllImports\n\ndef Response := String\ndef Partner :=\
-  \ LoveLanguage → Response\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def love_language (p : Partner) (weeks : Nat) : LoveLanguage :=\
-  \ sorry\n\ntheorem love_language_returns_valid_language \n  (p : Partner) (weeks\
-  \ : Nat) : \n  ∃ (l : LoveLanguage), love_language p weeks = l :=\nsorry \n"
-"vc-theorems": "theorem preferred_language_detected \n  (main_language : LoveLanguage)\
-  \ \n  (p : Partner) \n  (h : ∀ l, p l = if l = main_language then \"positive\" else\
-  \ \"neutral\") :\n  love_language p 4 = main_language :=\nsorry\n\n/--\ninfo: 'words'\n\
-  -/\n#guard_msgs in\n#eval love_language MockPartner(\"words\") 4\n\n/--\ninfo: 'acts'\n\
-  -/\n#guard_msgs in\n#eval love_language MockPartner(\"acts\") 4\n\n/--\ninfo: 'gifts'\n\
-  -/\n#guard_msgs in\n#eval love_language MockPartner(\"gifts\") 4\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  According to Gary Chapman, marriage counselor and the author of ["The Five Love Languages"](https://en.wikipedia.org/wiki/The_Five_Love_Languages) books, there are five major ways to express our love towards someone: *words of affirmation, quality time, gifts, acts of service,* and *physical touch*. These are called the love languages. Usually, everyone has a main language: the one that he/she "speaks" and understands best. In a relationship, it's import to find your partner's main love language, so that you get along better with each other.
+
+  ## Your task
+
+  Unfortunately, your relationship got worse lately... After a long discussion with your partner, you agreed to give yourself a few weeks to improve it, otherwise you split up...
+
+  You will be given a `partner` instance, and `n` weeks. The `partner`  has a `.response` method, and the responses may be: `"positive"` or `"neutral"`. You can try to get a response once a day, thus you have `n * 7` tries in total to find the main love language of your partner!
+
+  ```if-not:haskell
+  The love languages are: `"words", "acts", "gifts", "time", "touch"` (available predefined as `LOVE_LANGUAGES`)
+  ```
+  ```if:haskell
+  The love languages are: `Words, Acts, Gifts, Time, Touch` ( available `Preloaded` as `LoveLanguage` )
+  ```
+
+  Note: your partner may (and will) sometimes give a positive response to any love language ("false positive"), but the main one has a much higher possibility. On the other hand, you may get a neutral response even for the main language, but with a low possibility ("false negative").
+
+  There will be 50 tests. Although it's difficult to fail, in case you get unlucky, just run the tests again. After all, a few weeks may not be enough...
+
+  ## Examples
+
+  ```python
+  main love language: "words"
+
+  partner.response("words") ==> "positive"
+  partner.response("acts")  ==> "neutral"
+  partner.response("words") ==> "positive"
+  partner.response("time")  ==> "neutral"
+  partner.response("acts")  ==> "positive"    # false positive
+  partner.response("gifts") ==> "neutral"
+  partner.response("words") ==> "neutral"     # false negative
+  etc.
+  ```
+
+  ~~~if:haskell
+  ## Notes
+
+  `Preloaded` exports the following:
+
+  ~~~
+
+  Happy coding, and **DO** try this at home! :-)
+
+  ---
+
+  ## My other katas
+
+  If you enjoyed this kata then please try [my other katas](https://www.codewars.com/collections/katas-created-by-anter69)! :-)
+
+  #### *Translations are welcome!*
+vc-preamble: |
+  import Imports.AllImports
+
+  def Response := String
+  def Partner := LoveLanguage → Response
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def love_language (p : Partner) (weeks : Nat) : LoveLanguage := sorry
+
+  theorem love_language_returns_valid_language 
+    (p : Partner) (weeks : Nat) : 
+    ∃ (l : LoveLanguage), love_language p weeks = l :=
+  sorry 
+vc-theorems: |
+  theorem preferred_language_detected 
+    (main_language : LoveLanguage) 
+    (p : Partner) 
+    (h : ∀ l, p l = if l = main_language then "positive" else "neutral") :
+    love_language p 4 = main_language :=
+  sorry
+
+  /--
+  info: 'words'
+  -/
+  #guard_msgs in
+  #eval love_language MockPartner("words") 4
+
+  /--
+  info: 'acts'
+  -/
+  #guard_msgs in
+  #eval love_language MockPartner("acts") 4
+
+  /--
+  info: 'gifts'
+  -/
+  #guard_msgs in
+  #eval love_language MockPartner("gifts") 4
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

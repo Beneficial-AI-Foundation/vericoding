@@ -1,30 +1,84 @@
-"vc-description": "Given an integer array arr and a target value target, return the\
-  \ integer value such that when we change all the integers larger than value in the\
-  \ given array to be equal to value, the sum of the array gets as close as possible\
-  \ (in absolute difference) to target.\nIn case of a tie, return the minimum such\
-  \ integer.\nNotice that the answer is not neccesarilly a number from arr.\n \nExample\
-  \ 1:\nInput: arr = [4,9,3], target = 10\nOutput: 3\nExplanation: When using 3 arr\
-  \ converts to [3, 3, 3] which sums 9 and that's the optimal answer.\n\nExample 2:\n\
-  Input: arr = [2,3,5], target = 10\nOutput: 5\n\nExample 3:\nInput: arr = [60864,25176,27249,21296,20204],\
-  \ target = 56803\nOutput: 11361\n\n \nConstraints:\n\n1 <= arr.length <= 10^4\n\
-  1 <= arr[i], target <= 10^5"
-"vc-preamble": "import Imports.AllImports\n\ndef find_best_value (arr : List Nat)\
-  \ (target : Nat) : Nat :=\n  sorry\n\n\ndef sum_capped_vals (arr : List Nat) (cap\
-  \ : Nat) : Nat :=\n  sorry\n\n\ndef list_maximum (arr : List Nat) (h : arr ≠ [])\
-  \ : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def abs (n : Int) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem find_best_value_bounds {arr : List Nat} {target : Nat} (h\
-  \ : arr ≠ []) :\n  let result := find_best_value arr target\n  0 ≤ result ∧ result\
-  \ ≤ list_maximum arr h :=\nsorry\n\n\ntheorem find_best_value_minimizes {arr : List\
-  \ Nat} {target : Nat} (h : arr ≠ []) :\n  let result := find_best_value arr target\n\
-  \  let curr_diff := abs (sum_capped_vals arr result - target)\n  let less := max\
-  \ 0 (result - 1)\n  let more := min (list_maximum arr h) (result + 1)\n  curr_diff\
-  \ ≤ abs (sum_capped_vals arr less - target) ∧\n  curr_diff ≤ abs (sum_capped_vals\
-  \ arr more - target) := \nsorry\n\n\ntheorem find_best_value_target_one {arr : List\
-  \ Nat} (h : arr ≠ []) :\n  let result := find_best_value arr 1\n  result = 0 ∨ result\
-  \ = 1 :=\nsorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_best_value [4, 9,\
-  \ 3] 10\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval find_best_value [2, 3, 5] 10\n\
-  \n/--\ninfo: 11361\n-/\n#guard_msgs in\n#eval find_best_value [60864, 25176, 27249,\
-  \ 21296, 20204] 56803\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Given an integer array arr and a target value target, return the integer value such that when we change all the integers larger than value in the given array to be equal to value, the sum of the array gets as close as possible (in absolute difference) to target.
+  In case of a tie, return the minimum such integer.
+  Notice that the answer is not neccesarilly a number from arr.
+   
+  Example 1:
+  Input: arr = [4,9,3], target = 10
+  Output: 3
+  Explanation: When using 3 arr converts to [3, 3, 3] which sums 9 and that's the optimal answer.
+
+  Example 2:
+  Input: arr = [2,3,5], target = 10
+  Output: 5
+
+  Example 3:
+  Input: arr = [60864,25176,27249,21296,20204], target = 56803
+  Output: 11361
+
+   
+  Constraints:
+
+  1 <= arr.length <= 10^4
+  1 <= arr[i], target <= 10^5
+vc-preamble: |
+  import Imports.AllImports
+
+  def find_best_value (arr : List Nat) (target : Nat) : Nat :=
+    sorry
+
+
+  def sum_capped_vals (arr : List Nat) (cap : Nat) : Nat :=
+    sorry
+
+
+  def list_maximum (arr : List Nat) (h : arr ≠ []) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def abs (n : Int) : Nat :=
+    sorry
+vc-theorems: |
+  theorem find_best_value_bounds {arr : List Nat} {target : Nat} (h : arr ≠ []) :
+    let result := find_best_value arr target
+    0 ≤ result ∧ result ≤ list_maximum arr h :=
+  sorry
+
+
+  theorem find_best_value_minimizes {arr : List Nat} {target : Nat} (h : arr ≠ []) :
+    let result := find_best_value arr target
+    let curr_diff := abs (sum_capped_vals arr result - target)
+    let less := max 0 (result - 1)
+    let more := min (list_maximum arr h) (result + 1)
+    curr_diff ≤ abs (sum_capped_vals arr less - target) ∧
+    curr_diff ≤ abs (sum_capped_vals arr more - target) := 
+  sorry
+
+
+  theorem find_best_value_target_one {arr : List Nat} (h : arr ≠ []) :
+    let result := find_best_value arr 1
+    result = 0 ∨ result = 1 :=
+  sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_best_value [4, 9, 3] 10
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval find_best_value [2, 3, 5] 10
+
+  /--
+  info: 11361
+  -/
+  #guard_msgs in
+  #eval find_best_value [60864, 25176, 27249, 21296, 20204] 56803
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

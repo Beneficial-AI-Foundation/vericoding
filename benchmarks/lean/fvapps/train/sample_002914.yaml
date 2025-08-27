@@ -1,17 +1,39 @@
-"vc-description": "Bob needs a fast way to calculate the volume of a cuboid with three\
-  \ values: `length`, `width` and the `height` of the cuboid. Write a function to\
-  \ help Bob with this calculation.\n\n```if:shell\nIn bash the script is ran with\
-  \ the following 3 arguments:\n`length` `width` `height`\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def get_volume_of_cuboid (length width height : Float) : Float\
-  \ := sorry\n\ntheorem volume_is_product {length width height : Float} \n  (h1 :\
-  \ length > 0) (h2 : width > 0) (h3 : height > 0) :\n  let volume := get_volume_of_cuboid\
-  \ length width height \n  volume > 0 ∧ volume = length * width * height := sorry\n"
-"vc-theorems": "theorem volume_respects_scaling {length width height scale : Float}\n\
-  \  (h1 : length > 0) (h2 : width > 0) (h3 : height > 0) (h4 : scale = 2):\n  get_volume_of_cuboid\
-  \ (scale * length) (scale * width) (scale * height) = \n  get_volume_of_cuboid length\
-  \ width height * (scale * scale * scale) := sorry\n\n/--\ninfo: 60\n-/\n#guard_msgs\
-  \ in\n#eval get_volume_of_cuboid 2 5 6\n\n/--\ninfo: 94.5\n-/\n#guard_msgs in\n\
-  #eval get_volume_of_cuboid 6.3 3 5\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Bob needs a fast way to calculate the volume of a cuboid with three values: `length`, `width` and the `height` of the cuboid. Write a function to help Bob with this calculation.
+
+  ```if:shell
+  In bash the script is ran with the following 3 arguments:
+  `length` `width` `height`
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def get_volume_of_cuboid (length width height : Float) : Float := sorry
+
+  theorem volume_is_product {length width height : Float} 
+    (h1 : length > 0) (h2 : width > 0) (h3 : height > 0) :
+    let volume := get_volume_of_cuboid length width height 
+    volume > 0 ∧ volume = length * width * height := sorry
+vc-theorems: |
+  theorem volume_respects_scaling {length width height scale : Float}
+    (h1 : length > 0) (h2 : width > 0) (h3 : height > 0) (h4 : scale = 2):
+    get_volume_of_cuboid (scale * length) (scale * width) (scale * height) = 
+    get_volume_of_cuboid length width height * (scale * scale * scale) := sorry
+
+  /--
+  info: 60
+  -/
+  #guard_msgs in
+  #eval get_volume_of_cuboid 2 5 6
+
+  /--
+  info: 94.5
+  -/
+  #guard_msgs in
+  #eval get_volume_of_cuboid 6.3 3 5
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,42 +1,86 @@
-"vc-description": "In order to establish dominance amongst his friends, Chef has decided\
-  \ that he will only walk in large steps of length exactly $K$ feet. However, this\
-  \ has presented many problems in Chef’s life because there are certain distances\
-  \ that he cannot traverse. Eg. If his step length is $5$ feet, he cannot travel\
-  \ a distance of $12$ feet. Chef has a strict travel plan that he follows on most\
-  \ days, but now he is worried that some of those distances may become impossible\
-  \ to travel. Given $N$ distances, tell Chef which ones he cannot travel.\n\n-----Input:-----\n\
-  - The first line will contain a single integer $T$, the number of test cases.\n\
-  - The first line of each test case will contain two space separated integers - $N$,\
-  \ the number of distances, and $K$, Chef’s step length.\n- The second line of each\
-  \ test case will contain $N$ space separated integers, the $i^{th}$ of which represents\
-  \ $D_i$, the distance of the $i^{th}$ path.\n\n-----Output:-----\nFor each testcase,\
-  \ output a string consisting of $N$ characters. The $i^{th}$ character should be\
-  \ $1$ if the distance is traversable, and $0$ if not. \n\n-----Constraints-----\n\
-  - $1 \\leq T \\leq 1000$\n- $1 \\leq N \\leq 1000$\n- $1 \\leq K \\leq 10^9$\n-\
-  \ $1 \\leq D_i \\leq 10^9$\n\n-----Subtasks-----\n- 100 points : No additional constraints.\n\
-  \n-----Sample Input:-----\n1\n5 3\n12 13 18 20 27216\n\n-----Sample Output:-----\n\
-  10101\n\n-----Explanation:-----\nThe first distance can be traversed in $4$ steps.\n\
-  \nThe second distance cannot be traversed.\n\nThe third distance can be traversed\
-  \ in $6$ steps.\n\nThe fourth distance cannot be traversed.\n\nThe fifth distance\
-  \ can be traversed in $9072$ steps."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def can_traverse_distances (n k : Nat) (distances : List Nat) :\
-  \ String := sorry\n\ntheorem output_length_matches_input (n k : Nat) (distances\
-  \ : List Nat) \n  (h1 : n ≥ 1) (h2 : n ≤ 100) (h3 : k ≥ 1) (h4 : k ≤ 100) (h5 :\
-  \ distances.length ≥ 1) :\n  (can_traverse_distances n k distances).length = distances.length\
-  \ := sorry\n"
-"vc-theorems": "theorem output_only_binary (n k : Nat) (distances : List Nat)\n  (h1\
-  \ : n ≥ 1) (h2 : n ≤ 100) (h3 : k ≥ 1) (h4 : k ≤ 100) (h5 : distances.length ≥ 1)\
-  \ :\n  ∀ c : Char, c ∈ (can_traverse_distances n k distances).data → c = '0' ∨ c\
-  \ = '1' := sorry\n\n\ntheorem multiples_yield_ones (n k : Nat) \n  (h1 : n ≥ 1)\
-  \ (h2 : n ≤ 100) (h3 : k ≥ 1) (h4 : k ≤ 100) :\n  let distances := List.map (fun\
-  \ i => k * i) (List.range n)\n  ∀ c : Char, c ∈ (can_traverse_distances n k distances).data\
-  \ → c = '1' := sorry\n\n\ntheorem non_multiples_yield_zeros (n k : Nat)\n  (h1 :\
-  \ n ≥ 1) (h2 : n ≤ 100) (h3 : k ≥ 2) (h4 : k ≤ 100) :\n  let distances := List.map\
-  \ (fun i => k * i + 1) (List.range n)\n  ∀ c : Char, c ∈ (can_traverse_distances\
-  \ n k distances).data → c = '0' := sorry\n\n/--\ninfo: '10101'\n-/\n#guard_msgs\
-  \ in\n#eval can_traverse_distances 5 3 [12, 13, 18, 20, 27216]\n\n/--\ninfo: '110'\n\
-  -/\n#guard_msgs in\n#eval can_traverse_distances 3 2 [4, 6, 9]\n\n/--\ninfo: '1101'\n\
-  -/\n#guard_msgs in\n#eval can_traverse_distances 4 5 [5, 10, 12, 15]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  In order to establish dominance amongst his friends, Chef has decided that he will only walk in large steps of length exactly $K$ feet. However, this has presented many problems in Chef’s life because there are certain distances that he cannot traverse. Eg. If his step length is $5$ feet, he cannot travel a distance of $12$ feet. Chef has a strict travel plan that he follows on most days, but now he is worried that some of those distances may become impossible to travel. Given $N$ distances, tell Chef which ones he cannot travel.
+
+  -----Input:-----
+  - The first line will contain a single integer $T$, the number of test cases.
+  - The first line of each test case will contain two space separated integers - $N$, the number of distances, and $K$, Chef’s step length.
+  - The second line of each test case will contain $N$ space separated integers, the $i^{th}$ of which represents $D_i$, the distance of the $i^{th}$ path.
+
+  -----Output:-----
+  For each testcase, output a string consisting of $N$ characters. The $i^{th}$ character should be $1$ if the distance is traversable, and $0$ if not. 
+
+  -----Constraints-----
+  - $1 \leq T \leq 1000$
+  - $1 \leq N \leq 1000$
+  - $1 \leq K \leq 10^9$
+  - $1 \leq D_i \leq 10^9$
+
+  -----Subtasks-----
+  - 100 points : No additional constraints.
+
+  -----Sample Input:-----
+  1
+  5 3
+  12 13 18 20 27216
+
+  -----Sample Output:-----
+  10101
+
+  -----Explanation:-----
+  The first distance can be traversed in $4$ steps.
+
+  The second distance cannot be traversed.
+
+  The third distance can be traversed in $6$ steps.
+
+  The fourth distance cannot be traversed.
+
+  The fifth distance can be traversed in $9072$ steps.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def can_traverse_distances (n k : Nat) (distances : List Nat) : String := sorry
+
+  theorem output_length_matches_input (n k : Nat) (distances : List Nat) 
+    (h1 : n ≥ 1) (h2 : n ≤ 100) (h3 : k ≥ 1) (h4 : k ≤ 100) (h5 : distances.length ≥ 1) :
+    (can_traverse_distances n k distances).length = distances.length := sorry
+vc-theorems: |
+  theorem output_only_binary (n k : Nat) (distances : List Nat)
+    (h1 : n ≥ 1) (h2 : n ≤ 100) (h3 : k ≥ 1) (h4 : k ≤ 100) (h5 : distances.length ≥ 1) :
+    ∀ c : Char, c ∈ (can_traverse_distances n k distances).data → c = '0' ∨ c = '1' := sorry
+
+
+  theorem multiples_yield_ones (n k : Nat) 
+    (h1 : n ≥ 1) (h2 : n ≤ 100) (h3 : k ≥ 1) (h4 : k ≤ 100) :
+    let distances := List.map (fun i => k * i) (List.range n)
+    ∀ c : Char, c ∈ (can_traverse_distances n k distances).data → c = '1' := sorry
+
+
+  theorem non_multiples_yield_zeros (n k : Nat)
+    (h1 : n ≥ 1) (h2 : n ≤ 100) (h3 : k ≥ 2) (h4 : k ≤ 100) :
+    let distances := List.map (fun i => k * i + 1) (List.range n)
+    ∀ c : Char, c ∈ (can_traverse_distances n k distances).data → c = '0' := sorry
+
+  /--
+  info: '10101'
+  -/
+  #guard_msgs in
+  #eval can_traverse_distances 5 3 [12, 13, 18, 20, 27216]
+
+  /--
+  info: '110'
+  -/
+  #guard_msgs in
+  #eval can_traverse_distances 3 2 [4, 6, 9]
+
+  /--
+  info: '1101'
+  -/
+  #guard_msgs in
+  #eval can_traverse_distances 4 5 [5, 10, 12, 15]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

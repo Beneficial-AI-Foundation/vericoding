@@ -1,22 +1,79 @@
-"vc-description": "The Collatz conjecture (also known as 3n+1 conjecture) is a conjecture\
-  \ that applying the following algorithm to any number we will always eventually\
-  \ reach one:\n\n```\n[This is writen in pseudocode]\nif(number is even) number =\
-  \ number / 2\nif(number is odd) number = 3*number + 1\n```\n\n#Task\n\nYour task\
-  \ is to make a function ```hotpo``` that takes a positive ```n``` as input and returns\
-  \ the number of times you need to perform this algorithm to get ```n = 1```.\n\n\
-  #Examples\n\n```\nhotpo(1) returns 0\n(1 is already 1)\n\nhotpo(5) returns 5\n5\
-  \ -> 16 -> 8 -> 4 -> 2 -> 1\n\nhotpo(6) returns 8\n6 -> 3 -> 10 -> 5 -> 16 -> 8\
-  \ -> 4 -> 2 -> 1\n\nhotpo(23) returns 15\n23 -> 70 -> 35 -> 106 -> 53 -> 160 ->\
-  \ 80 -> 40 -> 20 -> 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1\n```\n\n#References\n- Collatz\
-  \ conjecture wikipedia page: https://en.wikipedia.org/wiki/Collatz_conjecture"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def hotpo (n : Nat) : Nat := sorry\n\ntheorem hotpo_terminates_at_one\
-  \ (n : Nat) (h : n > 0) : \n  hotpo n ≥ 0 := sorry\n"
-"vc-theorems": "theorem hotpo_base_case :\n  hotpo 1 = 0 := sorry\n\n\ntheorem hotpo_positive_for_greater_than_one\
-  \ (n : Nat) (h : n > 1) :\n  hotpo n > 0 := sorry\n\n\ntheorem hotpo_even_numbers\
-  \ (n : Nat) (h : n > 0) (heven : n % 2 = 0) :\n  hotpo n = hotpo (n / 2) + 1 :=\
-  \ sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval hotpo 1\n\n/--\ninfo: 5\n-/\n\
-  #guard_msgs in\n#eval hotpo 5\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval hotpo 6\n\
-  \n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval hotpo 23\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  The Collatz conjecture (also known as 3n+1 conjecture) is a conjecture that applying the following algorithm to any number we will always eventually reach one:
+
+  ```
+  [This is writen in pseudocode]
+  if(number is even) number = number / 2
+  if(number is odd) number = 3*number + 1
+  ```
+
+  #Task
+
+  Your task is to make a function ```hotpo``` that takes a positive ```n``` as input and returns the number of times you need to perform this algorithm to get ```n = 1```.
+
+  #Examples
+
+  ```
+  hotpo(1) returns 0
+  (1 is already 1)
+
+  hotpo(5) returns 5
+  5 -> 16 -> 8 -> 4 -> 2 -> 1
+
+  hotpo(6) returns 8
+  6 -> 3 -> 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1
+
+  hotpo(23) returns 15
+  23 -> 70 -> 35 -> 106 -> 53 -> 160 -> 80 -> 40 -> 20 -> 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1
+  ```
+
+  #References
+  - Collatz conjecture wikipedia page: https://en.wikipedia.org/wiki/Collatz_conjecture
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def hotpo (n : Nat) : Nat := sorry
+
+  theorem hotpo_terminates_at_one (n : Nat) (h : n > 0) : 
+    hotpo n ≥ 0 := sorry
+vc-theorems: |
+  theorem hotpo_base_case :
+    hotpo 1 = 0 := sorry
+
+
+  theorem hotpo_positive_for_greater_than_one (n : Nat) (h : n > 1) :
+    hotpo n > 0 := sorry
+
+
+  theorem hotpo_even_numbers (n : Nat) (h : n > 0) (heven : n % 2 = 0) :
+    hotpo n = hotpo (n / 2) + 1 := sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval hotpo 1
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval hotpo 5
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval hotpo 6
+
+  /--
+  info: 15
+  -/
+  #guard_msgs in
+  #eval hotpo 23
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

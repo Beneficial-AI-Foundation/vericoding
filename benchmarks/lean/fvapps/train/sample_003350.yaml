@@ -1,18 +1,53 @@
-"vc-description": "A [Mersenne prime](https://en.wikipedia.org/wiki/Mersenne_prime)\
-  \ is a prime number that can be represented as:\nMn = 2^(n) - 1. Therefore, every\
-  \ Mersenne prime is one less than a power of two. \n\nWrite a function that will\
-  \ return whether the given integer `n` will produce a Mersenne prime or not.\n\n\
-  The tests will check random integers up to 2000."
-"vc-preamble": "import Imports.AllImports\n\ndef valid_mersenne (n : Int) : Bool :=\
-  \ sorry\n\ntheorem valid_mersenne_returns_bool (n : Int) :\n  valid_mersenne n =\
-  \ true ∨ valid_mersenne n = false := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def valid_mersenne_numbers : List Int :=\n  [2,3,5,7,13,17,19,31,61,89,107,127,521,607,1279]\n"
-"vc-theorems": "theorem valid_mersenne_outside_range {n : Int} :\n  (n < 1 ∨ n > 1279)\
-  \ → valid_mersenne n = false := sorry\n\n\ntheorem valid_mersenne_deterministic\
-  \ (n : Int) :\n  valid_mersenne n = valid_mersenne n := sorry\n\n\ntheorem valid_mersenne_in_set\
-  \ {n : Int} :\n  1 ≤ n ∧ n ≤ 1279 →\n  valid_mersenne n = true ↔ n ∈ valid_mersenne_numbers\
-  \ := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval valid_mersenne 3\n\n/--\n\
-  info: False\n-/\n#guard_msgs in\n#eval valid_mersenne 11\n\n/--\ninfo: True\n-/\n\
-  #guard_msgs in\n#eval valid_mersenne 127\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  A [Mersenne prime](https://en.wikipedia.org/wiki/Mersenne_prime) is a prime number that can be represented as:
+  Mn = 2^(n) - 1. Therefore, every Mersenne prime is one less than a power of two. 
+
+  Write a function that will return whether the given integer `n` will produce a Mersenne prime or not.
+
+  The tests will check random integers up to 2000.
+vc-preamble: |
+  import Imports.AllImports
+
+  def valid_mersenne (n : Int) : Bool := sorry
+
+  theorem valid_mersenne_returns_bool (n : Int) :
+    valid_mersenne n = true ∨ valid_mersenne n = false := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def valid_mersenne_numbers : List Int :=
+    [2,3,5,7,13,17,19,31,61,89,107,127,521,607,1279]
+vc-theorems: |
+  theorem valid_mersenne_outside_range {n : Int} :
+    (n < 1 ∨ n > 1279) → valid_mersenne n = false := sorry
+
+
+  theorem valid_mersenne_deterministic (n : Int) :
+    valid_mersenne n = valid_mersenne n := sorry
+
+
+  theorem valid_mersenne_in_set {n : Int} :
+    1 ≤ n ∧ n ≤ 1279 →
+    valid_mersenne n = true ↔ n ∈ valid_mersenne_numbers := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval valid_mersenne 3
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval valid_mersenne 11
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval valid_mersenne 127
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

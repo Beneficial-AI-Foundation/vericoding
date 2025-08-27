@@ -1,23 +1,67 @@
-"vc-description": "```if-not:swift\nWrite simple .camelCase method (`camel_case` function\
-  \ in PHP, `CamelCase` in C# or `camelCase` in Java) for strings. All words must\
-  \ have their first letter capitalized without spaces.\n```\n```if:swift\nWrite a\
-  \ simple `camelCase` function for strings. All words must have their first letter\
-  \ capitalized and all spaces removed.\n```\nFor instance:\n\n```python\ncamelcase(\"\
-  hello case\") => HelloCase\ncamelcase(\"camel case word\") => CamelCaseWord\n```\n\
-  ```c#\nusing Kata;\n\n\"hello case\".CamelCase(); // => \"HelloCase\"\n\"camel case\
-  \ word\".CamelCase(); // => \"CamelCaseWord\"\n```\n\nDon't forget to rate this\
-  \ kata! Thanks :)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def camel_case (s : String) : String := sorry\n\ntheorem camel_case_no_spaces\
-  \ (s : String) : \n  ∀ (i : String.Pos), (camel_case s).get i ≠ ' ' := sorry\n"
-"vc-theorems": "theorem camel_case_preserves_length (s : String) :\n  String.length\
-  \ (camel_case s) = String.length (s.replace \" \" \"\") := sorry\n\n\ntheorem camel_case_single_word\
-  \ (s : String) (h : s ≠ \"\") :\n  match (camel_case s).get? 0, s.get? 0 with\n\
-  \  | some c₁, some c₂ => c₁ = Char.toUpper c₂\n  | _, _ => True\n  := sorry\n\n\n\
-  theorem camel_case_only_spaces (s : String) \n  (h : ∀ (i : String.Pos), s.get i\
-  \ = ' ') :\n  camel_case s = \"\" := sorry\n\n/--\ninfo: 'TestCase'\n-/\n#guard_msgs\
-  \ in\n#eval camel_case \"test case\"\n\n/--\ninfo: 'CamelCaseMethod'\n-/\n#guard_msgs\
-  \ in\n#eval camel_case \"camel case method\"\n\n/--\ninfo: 'SayHello'\n-/\n#guard_msgs\
-  \ in\n#eval camel_case \"say hello \"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ```if-not:swift
+  Write simple .camelCase method (`camel_case` function in PHP, `CamelCase` in C# or `camelCase` in Java) for strings. All words must have their first letter capitalized without spaces.
+  ```
+  ```if:swift
+  Write a simple `camelCase` function for strings. All words must have their first letter capitalized and all spaces removed.
+  ```
+  For instance:
+
+  ```python
+  camelcase("hello case") => HelloCase
+  camelcase("camel case word") => CamelCaseWord
+  ```
+  ```c#
+  using Kata;
+
+  "hello case".CamelCase(); // => "HelloCase"
+  "camel case word".CamelCase(); // => "CamelCaseWord"
+  ```
+
+  Don't forget to rate this kata! Thanks :)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def camel_case (s : String) : String := sorry
+
+  theorem camel_case_no_spaces (s : String) : 
+    ∀ (i : String.Pos), (camel_case s).get i ≠ ' ' := sorry
+vc-theorems: |
+  theorem camel_case_preserves_length (s : String) :
+    String.length (camel_case s) = String.length (s.replace " " "") := sorry
+
+
+  theorem camel_case_single_word (s : String) (h : s ≠ "") :
+    match (camel_case s).get? 0, s.get? 0 with
+    | some c₁, some c₂ => c₁ = Char.toUpper c₂
+    | _, _ => True
+    := sorry
+
+
+  theorem camel_case_only_spaces (s : String) 
+    (h : ∀ (i : String.Pos), s.get i = ' ') :
+    camel_case s = "" := sorry
+
+  /--
+  info: 'TestCase'
+  -/
+  #guard_msgs in
+  #eval camel_case "test case"
+
+  /--
+  info: 'CamelCaseMethod'
+  -/
+  #guard_msgs in
+  #eval camel_case "camel case method"
+
+  /--
+  info: 'SayHello'
+  -/
+  #guard_msgs in
+  #eval camel_case "say hello "
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

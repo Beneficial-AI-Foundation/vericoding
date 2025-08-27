@@ -1,34 +1,92 @@
-"vc-description": "Given a list of folders, remove all sub-folders in those folders\
-  \ and return in any order the folders after removing.\nIf a folder[i] is located\
-  \ within another folder[j], it is called a sub-folder of it.\nThe format of a path\
-  \ is one or more concatenated strings of the form: / followed by one or more lowercase\
-  \ English letters. For example, /leetcode and /leetcode/problems are valid paths\
-  \ while an empty string and / are not.\n \nExample 1:\nInput: folder = [\"/a\",\"\
-  /a/b\",\"/c/d\",\"/c/d/e\",\"/c/f\"]\nOutput: [\"/a\",\"/c/d\",\"/c/f\"]\nExplanation:\
-  \ Folders \"/a/b/\" is a subfolder of \"/a\" and \"/c/d/e\" is inside of folder\
-  \ \"/c/d\" in our filesystem.\n\nExample 2:\nInput: folder = [\"/a\",\"/a/b/c\"\
-  ,\"/a/b/d\"]\nOutput: [\"/a\"]\nExplanation: Folders \"/a/b/c\" and \"/a/b/d/\"\
-  \ will be removed because they are subfolders of \"/a\".\n\nExample 3:\nInput: folder\
-  \ = [\"/a/b/c\",\"/a/b/ca\",\"/a/b/d\"]\nOutput: [\"/a/b/c\",\"/a/b/ca\",\"/a/b/d\"\
-  ]\n\n \nConstraints:\n\n1 <= folder.length <= 4 * 10^4\n2 <= folder[i].length <=\
-  \ 100\nfolder[i] contains only lowercase letters and '/'\nfolder[i] always starts\
-  \ with character '/'\nEach folder name is unique."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def remove_subfolders (folders: List String) : List String :=\n\
-  sorry\n"
-"vc-theorems": "theorem empty_folder_list : remove_subfolders [] = [] :=\nsorry\n\n\
-  \ntheorem single_folder_unchanged (a : String) : \n  remove_subfolders [a] = [a]\
-  \ :=\nsorry\n\n\ntheorem folder_with_subfolder : \n  remove_subfolders [\"/a\",\
-  \ \"/a/b\"] = [\"/a\"] :=\nsorry\n\n\ntheorem separate_folders : \n  remove_subfolders\
-  \ [\"/a\", \"/b\"] = [\"/a\", \"/b\"] :=\nsorry\n\n\ntheorem result_subset (folders\
-  \ : List String) :\n  ∀ x, x ∈ remove_subfolders folders → x ∈ folders :=\nsorry\n\
-  \n\ntheorem result_ascending (folders : List String) :\n  ∀ i j, i < j → \n  List.get!\
-  \ (remove_subfolders folders) i ≤ List.get! (remove_subfolders folders) j :=\nsorry\n\
-  \n\ntheorem no_subfolders_in_result (folders : List String) :\n  ∀ p1 p2, p1 ∈ remove_subfolders\
-  \ folders → \n  p2 ∈ remove_subfolders folders →\n  p1 ≠ p2 → ¬(p2.startsWith (p1\
-  \ ++ \"/\")) :=\nsorry\n\n/--\ninfo: sorted(expected1)\n-/\n#guard_msgs in\n#eval\
-  \ sorted remove_subfolders(folders1)\n\n/--\ninfo: sorted(expected2)\n-/\n#guard_msgs\
-  \ in\n#eval sorted remove_subfolders(folders2)\n\n/--\ninfo: sorted(expected3)\n\
-  -/\n#guard_msgs in\n#eval sorted remove_subfolders(folders3)\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a list of folders, remove all sub-folders in those folders and return in any order the folders after removing.
+  If a folder[i] is located within another folder[j], it is called a sub-folder of it.
+  The format of a path is one or more concatenated strings of the form: / followed by one or more lowercase English letters. For example, /leetcode and /leetcode/problems are valid paths while an empty string and / are not.
+   
+  Example 1:
+  Input: folder = ["/a","/a/b","/c/d","/c/d/e","/c/f"]
+  Output: ["/a","/c/d","/c/f"]
+  Explanation: Folders "/a/b/" is a subfolder of "/a" and "/c/d/e" is inside of folder "/c/d" in our filesystem.
+
+  Example 2:
+  Input: folder = ["/a","/a/b/c","/a/b/d"]
+  Output: ["/a"]
+  Explanation: Folders "/a/b/c" and "/a/b/d/" will be removed because they are subfolders of "/a".
+
+  Example 3:
+  Input: folder = ["/a/b/c","/a/b/ca","/a/b/d"]
+  Output: ["/a/b/c","/a/b/ca","/a/b/d"]
+
+   
+  Constraints:
+
+  1 <= folder.length <= 4 * 10^4
+  2 <= folder[i].length <= 100
+  folder[i] contains only lowercase letters and '/'
+  folder[i] always starts with character '/'
+  Each folder name is unique.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def remove_subfolders (folders: List String) : List String :=
+  sorry
+vc-theorems: |
+  theorem empty_folder_list : remove_subfolders [] = [] :=
+  sorry
+
+
+  theorem single_folder_unchanged (a : String) : 
+    remove_subfolders [a] = [a] :=
+  sorry
+
+
+  theorem folder_with_subfolder : 
+    remove_subfolders ["/a", "/a/b"] = ["/a"] :=
+  sorry
+
+
+  theorem separate_folders : 
+    remove_subfolders ["/a", "/b"] = ["/a", "/b"] :=
+  sorry
+
+
+  theorem result_subset (folders : List String) :
+    ∀ x, x ∈ remove_subfolders folders → x ∈ folders :=
+  sorry
+
+
+  theorem result_ascending (folders : List String) :
+    ∀ i j, i < j → 
+    List.get! (remove_subfolders folders) i ≤ List.get! (remove_subfolders folders) j :=
+  sorry
+
+
+  theorem no_subfolders_in_result (folders : List String) :
+    ∀ p1 p2, p1 ∈ remove_subfolders folders → 
+    p2 ∈ remove_subfolders folders →
+    p1 ≠ p2 → ¬(p2.startsWith (p1 ++ "/")) :=
+  sorry
+
+  /--
+  info: sorted(expected1)
+  -/
+  #guard_msgs in
+  #eval sorted remove_subfolders(folders1)
+
+  /--
+  info: sorted(expected2)
+  -/
+  #guard_msgs in
+  #eval sorted remove_subfolders(folders2)
+
+  /--
+  info: sorted(expected3)
+  -/
+  #guard_msgs in
+  #eval sorted remove_subfolders(folders3)
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

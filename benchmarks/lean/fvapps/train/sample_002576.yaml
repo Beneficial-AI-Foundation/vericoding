@@ -1,28 +1,71 @@
-"vc-description": "Write a function `take_umbrella()` that takes two arguments: a\
-  \ string representing the current weather and a float representing the chance of\
-  \ rain today.\n\nYour function should return `True` or `False` based on the following\
-  \ criteria.\n\n* You should take an umbrella if it's currently raining or if it's\
-  \ cloudy and the chance of rain is over `0.20`.\n* You shouldn't take an umbrella\
-  \ if it's sunny unless it's more likely to rain than not.\n\nThe options for the\
-  \ current weather are `sunny`, `cloudy`, and `rainy`.\n\nFor example, `take_umbrella('sunny',\
-  \ 0.40)` should return `False`.\n\nAs an additional challenge, consider solving\
-  \ this kata using only logical operaters and not using any `if` statements."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def take_umbrella (w: Weather) (rain_chance: Float): Bool :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem take_umbrella_rainy (rain_chance: Float):\n  rain_chance ≥\
-  \ 0 ∧ rain_chance ≤ 1 →\n  take_umbrella Weather.Rainy rain_chance = true :=\n \
-  \ sorry\n\n\ntheorem take_umbrella_sunny (rain_chance: Float):\n  rain_chance ≥\
-  \ 0 ∧ rain_chance ≤ 1 →\n  take_umbrella Weather.Sunny rain_chance = (rain_chance\
-  \ > 0.5) :=\n  sorry\n\n\ntheorem take_umbrella_cloudy (rain_chance: Float):\n \
-  \ rain_chance ≥ 0 ∧ rain_chance ≤ 1 →\n  take_umbrella Weather.Cloudy rain_chance\
-  \ = (rain_chance > 0.2) :=\n  sorry\n\n\ntheorem take_umbrella_returns_bool (w:\
-  \ Weather) (rain_chance: Float):\n  rain_chance ≥ 0 ∧ rain_chance ≤ 1 →\n  (take_umbrella\
-  \ w rain_chance = true ∨ take_umbrella w rain_chance = false) :=\n  sorry\n\n\n\
-  theorem take_umbrella_rainy_edge_cases:\n  take_umbrella Weather.Rainy 0.0 = true\
-  \ ∧ \n  take_umbrella Weather.Rainy 1.0 = true :=\n  sorry\n\n/--\ninfo: False\n\
-  -/\n#guard_msgs in\n#eval take_umbrella \"sunny\" 0.4\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval take_umbrella \"rainy\" 0.0\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
-  #eval take_umbrella \"cloudy\" 0.2\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function `take_umbrella()` that takes two arguments: a string representing the current weather and a float representing the chance of rain today.
+
+  Your function should return `True` or `False` based on the following criteria.
+
+  * You should take an umbrella if it's currently raining or if it's cloudy and the chance of rain is over `0.20`.
+  * You shouldn't take an umbrella if it's sunny unless it's more likely to rain than not.
+
+  The options for the current weather are `sunny`, `cloudy`, and `rainy`.
+
+  For example, `take_umbrella('sunny', 0.40)` should return `False`.
+
+  As an additional challenge, consider solving this kata using only logical operaters and not using any `if` statements.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def take_umbrella (w: Weather) (rain_chance: Float): Bool :=
+    sorry
+vc-theorems: |
+  theorem take_umbrella_rainy (rain_chance: Float):
+    rain_chance ≥ 0 ∧ rain_chance ≤ 1 →
+    take_umbrella Weather.Rainy rain_chance = true :=
+    sorry
+
+
+  theorem take_umbrella_sunny (rain_chance: Float):
+    rain_chance ≥ 0 ∧ rain_chance ≤ 1 →
+    take_umbrella Weather.Sunny rain_chance = (rain_chance > 0.5) :=
+    sorry
+
+
+  theorem take_umbrella_cloudy (rain_chance: Float):
+    rain_chance ≥ 0 ∧ rain_chance ≤ 1 →
+    take_umbrella Weather.Cloudy rain_chance = (rain_chance > 0.2) :=
+    sorry
+
+
+  theorem take_umbrella_returns_bool (w: Weather) (rain_chance: Float):
+    rain_chance ≥ 0 ∧ rain_chance ≤ 1 →
+    (take_umbrella w rain_chance = true ∨ take_umbrella w rain_chance = false) :=
+    sorry
+
+
+  theorem take_umbrella_rainy_edge_cases:
+    take_umbrella Weather.Rainy 0.0 = true ∧ 
+    take_umbrella Weather.Rainy 1.0 = true :=
+    sorry
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval take_umbrella "sunny" 0.4
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval take_umbrella "rainy" 0.0
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval take_umbrella "cloudy" 0.2
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

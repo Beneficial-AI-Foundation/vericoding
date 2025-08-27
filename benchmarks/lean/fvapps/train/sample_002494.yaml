@@ -1,17 +1,43 @@
-"vc-description": "=====Problem Statement=====\nThe provided code stub reads two integers,\
-  \ a and b, from STDIN.\nAdd logic to print two lines. The first line should contain\
-  \ the result of integer division,\na // b. The second line should contain the result\
-  \ of float division, a / b.\nNo rounding or formatting is necessary.\n\n=====Example=====\n\
-  a = 3\nb = 5\nThe result of the integer division 3//5 = 0.\nThe result of the float\
-  \ division is 3/5 = 0.6. \n\nPrint:\n0\n0.6\n\n=====Input Format=====\nThe first\
-  \ line contains the first integer, a.\nThe second line contains the second integer,\
-  \ b.\n\n=====Output Format=====\nPrint the two lines as described above."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def integer_and_float_division (a b : Int) : Option (Int × Float)\
-  \ := sorry\n\ntheorem int_div_eq_quotient {a b : Int} (h : b ≠ 0) :\n  (integer_and_float_division\
-  \ a b).map (·.1) = some (a / b) := sorry\n"
-"vc-theorems": "theorem float_div_eq_quotient {a b : Int} (h : b ≠ 0) :\n  (integer_and_float_division\
-  \ a b).map (·.2) = some (Float.ofInt a / Float.ofInt b) := sorry\n\n\ntheorem zero_div_is_none\
-  \ (a : Int) :\n  integer_and_float_division a 0 = none := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  =====Problem Statement=====
+  The provided code stub reads two integers, a and b, from STDIN.
+  Add logic to print two lines. The first line should contain the result of integer division,
+  a // b. The second line should contain the result of float division, a / b.
+  No rounding or formatting is necessary.
+
+  =====Example=====
+  a = 3
+  b = 5
+  The result of the integer division 3//5 = 0.
+  The result of the float division is 3/5 = 0.6. 
+
+  Print:
+  0
+  0.6
+
+  =====Input Format=====
+  The first line contains the first integer, a.
+  The second line contains the second integer, b.
+
+  =====Output Format=====
+  Print the two lines as described above.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def integer_and_float_division (a b : Int) : Option (Int × Float) := sorry
+
+  theorem int_div_eq_quotient {a b : Int} (h : b ≠ 0) :
+    (integer_and_float_division a b).map (·.1) = some (a / b) := sorry
+vc-theorems: |-
+  theorem float_div_eq_quotient {a b : Int} (h : b ≠ 0) :
+    (integer_and_float_division a b).map (·.2) = some (Float.ofInt a / Float.ofInt b) := sorry
+
+
+  theorem zero_div_is_none (a : Int) :
+    integer_and_float_division a 0 = none := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

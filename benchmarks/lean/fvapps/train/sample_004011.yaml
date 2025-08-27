@@ -1,19 +1,60 @@
-"vc-description": "# Task\n Given a string `str`, reverse it omitting all non-alphabetic\
-  \ characters.\n\n# Example\n\n For `str = \"krishan\"`, the output should be `\"\
-  nahsirk\"`.\n \n For `str = \"ultr53o?n\"`, the output should be `\"nortlu\"`.\n\
-  \ \n# Input/Output\n\n\n - `[input]` string `str`\n\n  A string consists of lowercase\
-  \ latin letters, digits and symbols.\n\n \n - `[output]` a string"
-"vc-preamble": "import Imports.AllImports\n\ndef isAlpha (c : Char) : Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def reverse_letter (s : String) : String :=\n  sorry\n"
-"vc-theorems": "theorem reverse_letter_only_letters (s : String) :\n  ∀ (c : Char),\
-  \ c ∈ (reverse_letter s).data → isAlpha c := by\n  sorry\n\n\ntheorem reverse_letter_length\
-  \ (s : String) :\n  (reverse_letter s).length = (s.toList.filter isAlpha).length\
-  \ := by\n  sorry\n\n\ntheorem reverse_letter_idempotent (s : String) :\n  reverse_letter\
-  \ (reverse_letter s) = String.mk (s.toList.filter isAlpha) := by\n  sorry\n\n\n\
-  theorem reverse_letter_preserves_case (s : String) :\n  ∃ (perm : List Char → List\
-  \ Char),\n    (reverse_letter s).data.map Char.toLower = \n    (String.mk (s.toList.filter\
-  \ isAlpha)).data.map Char.toLower := by\n  sorry\n\n\ntheorem reverse_letter_empty_no_letters\
-  \ (s : String) :\n  (∀ c ∈ s.data, ¬isAlpha c) →\n  reverse_letter s = \"\" := by\n\
-  \  sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  # Task
+   Given a string `str`, reverse it omitting all non-alphabetic characters.
+
+  # Example
+
+   For `str = "krishan"`, the output should be `"nahsirk"`.
+   
+   For `str = "ultr53o?n"`, the output should be `"nortlu"`.
+   
+  # Input/Output
+
+
+   - `[input]` string `str`
+
+    A string consists of lowercase latin letters, digits and symbols.
+
+   
+   - `[output]` a string
+vc-preamble: |
+  import Imports.AllImports
+
+  def isAlpha (c : Char) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def reverse_letter (s : String) : String :=
+    sorry
+vc-theorems: |-
+  theorem reverse_letter_only_letters (s : String) :
+    ∀ (c : Char), c ∈ (reverse_letter s).data → isAlpha c := by
+    sorry
+
+
+  theorem reverse_letter_length (s : String) :
+    (reverse_letter s).length = (s.toList.filter isAlpha).length := by
+    sorry
+
+
+  theorem reverse_letter_idempotent (s : String) :
+    reverse_letter (reverse_letter s) = String.mk (s.toList.filter isAlpha) := by
+    sorry
+
+
+  theorem reverse_letter_preserves_case (s : String) :
+    ∃ (perm : List Char → List Char),
+      (reverse_letter s).data.map Char.toLower = 
+      (String.mk (s.toList.filter isAlpha)).data.map Char.toLower := by
+    sorry
+
+
+  theorem reverse_letter_empty_no_letters (s : String) :
+    (∀ c ∈ s.data, ¬isAlpha c) →
+    reverse_letter s = "" := by
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

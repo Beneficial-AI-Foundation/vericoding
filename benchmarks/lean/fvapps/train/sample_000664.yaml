@@ -1,15 +1,56 @@
-"vc-description": "-----Problem Statement-----\nWrite a program that accepts a number,\
-  \ n, and outputs the same.\n\n-----Input-----\nThe only line contains a single integer.\
-  \ \n\n-----Output-----\nOutput the answer in a single line.\n\n-----Constraints-----\n\
-  - 0 ≤ n ≤ 105\n\n-----Sample Input-----\n123\n\n-----Sample Output-----\n123"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def return_number (n : Int) : Int := sorry\n\ntheorem return_number_returns_input\
-  \ (n : Int) : \n  return_number n = n := sorry\n"
-"vc-theorems": "theorem return_number_nonneg (n : Int) (h : n ≥ 0) : \n  return_number\
-  \ n ≥ 0 ∧ return_number n = n := sorry\n\n\ntheorem return_number_nonpos (n : Int)\
-  \ (h : n ≤ 0) :\n  return_number n ≤ 0 ∧ return_number n = n := sorry\n\n/--\ninfo:\
-  \ 123\n-/\n#guard_msgs in\n#eval return_number 123\n\n/--\ninfo: 0\n-/\n#guard_msgs\
-  \ in\n#eval return_number 0\n\n/--\ninfo: 99999\n-/\n#guard_msgs in\n#eval return_number\
-  \ 99999\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  -----Problem Statement-----
+  Write a program that accepts a number, n, and outputs the same.
+
+  -----Input-----
+  The only line contains a single integer. 
+
+  -----Output-----
+  Output the answer in a single line.
+
+  -----Constraints-----
+  - 0 ≤ n ≤ 105
+
+  -----Sample Input-----
+  123
+
+  -----Sample Output-----
+  123
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def return_number (n : Int) : Int := sorry
+
+  theorem return_number_returns_input (n : Int) : 
+    return_number n = n := sorry
+vc-theorems: |
+  theorem return_number_nonneg (n : Int) (h : n ≥ 0) : 
+    return_number n ≥ 0 ∧ return_number n = n := sorry
+
+
+  theorem return_number_nonpos (n : Int) (h : n ≤ 0) :
+    return_number n ≤ 0 ∧ return_number n = n := sorry
+
+  /--
+  info: 123
+  -/
+  #guard_msgs in
+  #eval return_number 123
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval return_number 0
+
+  /--
+  info: 99999
+  -/
+  #guard_msgs in
+  #eval return_number 99999
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

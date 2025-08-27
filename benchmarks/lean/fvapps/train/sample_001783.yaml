@@ -1,28 +1,100 @@
-"vc-description": "Given a m * n matrix of ones and zeros, return how many square\
-  \ submatrices have all ones.\n \nExample 1:\nInput: matrix =\n[\n  [0,1,1,1],\n\
-    [1,1,1,1],\n  [0,1,1,1]\n]\nOutput: 15\nExplanation: \nThere are 10 squares of\
-  \ side 1.\nThere are 4 squares of side 2.\nThere is  1 square of side 3.\nTotal\
-  \ number of squares = 10 + 4 + 1 = 15.\n\nExample 2:\nInput: matrix = \n[\n  [1,0,1],\n\
-  \  [1,1,0],\n  [1,1,0]\n]\nOutput: 7\nExplanation: \nThere are 6 squares of side\
-  \ 1.  \nThere is 1 square of side 2. \nTotal number of squares = 6 + 1 = 7.\n\n\
-   \nConstraints:\n\n1 <= arr.length <= 300\n1 <= arr[0].length <= 300\n0 <= arr[i][j]\
-  \ <= 1"
-"vc-preamble": "import Imports.AllImports\n\ndef Matrix (α : Type) := List (List α)\n\
-  \ndef count_squares (matrix : Matrix Int) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def listSum (xs : List Nat) : Nat :=\n  match xs with\n  | [] =>\
-  \ 0\n  | h::t => h + listSum t\n"
-"vc-theorems": "theorem all_ones_matrix_squares {m n : Nat} (h1 : m > 0) (h2 : n >\
-  \ 0) :\n  let matrix := List.replicate m (List.replicate n 1)\n  count_squares matrix\
-  \ = m * n  -- simplified expected result for type checking\n  := sorry\n\n\ntheorem\
-  \ binary_matrix_bounds (matrix : Matrix Int)\n  (h1 : matrix ≠ []) :\n  let result\
-  \ := count_squares matrix\n  let m := matrix.length\n  let n := (List.head! matrix).length\n\
-  \  result ≥ 0 ∧ \n  result ≤ m * n * (min m n)\n  := sorry\n\n\ntheorem square_all_ones\
-  \ {n : Nat} (h : n > 0) :\n  let matrix := List.replicate n (List.replicate n 1)\n\
-  \  count_squares matrix = n * (n + 1) * (2 * n + 1) / 6\n  := sorry\n\n\ntheorem\
-  \ empty_and_edge_cases :\n  count_squares [[0]] = 0 ∧\n  count_squares [[1]] = 1\
-  \ ∧ \n  count_squares [[0, 0], [0, 0]] = 0\n  := sorry\n\n/--\ninfo: 15\n-/\n#guard_msgs\
-  \ in\n#eval count_squares [[0, 1, 1, 1], [1, 1, 1, 1], [0, 1, 1, 1]]\n\n/--\ninfo:\
-  \ 7\n-/\n#guard_msgs in\n#eval count_squares [[1, 0, 1], [1, 1, 0], [1, 1, 0]]\n\
-  \n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval count_squares [[1, 1], [1, 1]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a m * n matrix of ones and zeros, return how many square submatrices have all ones.
+   
+  Example 1:
+  Input: matrix =
+  [
+    [0,1,1,1],
+    [1,1,1,1],
+    [0,1,1,1]
+  ]
+  Output: 15
+  Explanation: 
+  There are 10 squares of side 1.
+  There are 4 squares of side 2.
+  There is  1 square of side 3.
+  Total number of squares = 10 + 4 + 1 = 15.
+
+  Example 2:
+  Input: matrix = 
+  [
+    [1,0,1],
+    [1,1,0],
+    [1,1,0]
+  ]
+  Output: 7
+  Explanation: 
+  There are 6 squares of side 1.  
+  There is 1 square of side 2. 
+  Total number of squares = 6 + 1 = 7.
+
+   
+  Constraints:
+
+  1 <= arr.length <= 300
+  1 <= arr[0].length <= 300
+  0 <= arr[i][j] <= 1
+vc-preamble: |
+  import Imports.AllImports
+
+  def Matrix (α : Type) := List (List α)
+
+  def count_squares (matrix : Matrix Int) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def listSum (xs : List Nat) : Nat :=
+    match xs with
+    | [] => 0
+    | h::t => h + listSum t
+vc-theorems: |
+  theorem all_ones_matrix_squares {m n : Nat} (h1 : m > 0) (h2 : n > 0) :
+    let matrix := List.replicate m (List.replicate n 1)
+    count_squares matrix = m * n  -- simplified expected result for type checking
+    := sorry
+
+
+  theorem binary_matrix_bounds (matrix : Matrix Int)
+    (h1 : matrix ≠ []) :
+    let result := count_squares matrix
+    let m := matrix.length
+    let n := (List.head! matrix).length
+    result ≥ 0 ∧ 
+    result ≤ m * n * (min m n)
+    := sorry
+
+
+  theorem square_all_ones {n : Nat} (h : n > 0) :
+    let matrix := List.replicate n (List.replicate n 1)
+    count_squares matrix = n * (n + 1) * (2 * n + 1) / 6
+    := sorry
+
+
+  theorem empty_and_edge_cases :
+    count_squares [[0]] = 0 ∧
+    count_squares [[1]] = 1 ∧ 
+    count_squares [[0, 0], [0, 0]] = 0
+    := sorry
+
+  /--
+  info: 15
+  -/
+  #guard_msgs in
+  #eval count_squares [[0, 1, 1, 1], [1, 1, 1, 1], [0, 1, 1, 1]]
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval count_squares [[1, 0, 1], [1, 1, 0], [1, 1, 0]]
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval count_squares [[1, 1], [1, 1]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

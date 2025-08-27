@@ -1,63 +1,129 @@
-"vc-description": "After failing to clear his school mathematics examination, infinitepro\
-  \ decided to prepare very hard for his upcoming re-exam, starting with the topic\
-  \ he is weakest at ― computational geometry.\nBeing an artist, infinitepro has C$C$\
-  \ pencils (numbered 1$1$ through C$C$); each of them draws with one of C$C$ distinct\
-  \ colours. He draws N$N$ lines (numbered 1$1$ through N$N$) in a 2D Cartesian coordinate\
-  \ system; for each valid i$i$, the i$i$-th line is drawn with the ci$c_i$-th pencil\
-  \ and it is described by the equation y=ai⋅x+bi$y = a_i \\cdot x + b_i$.\nNow, infinitepro\
-  \ calls a triangle truly-geometric if each of its sides is part of some line he\
-  \ drew and all three sides have the same colour. He wants to count these triangles,\
-  \ but there are too many of them! After a lot of consideration, he decided to erase\
-  \ a subset of the N$N$ lines he drew. He wants to do it with his eraser, which has\
-  \ length K$K$.\nWhenever erasing a line with a colour i$i$, the length of the eraser\
-  \ decreases by Vi$V_i$. In other words, when the eraser has length k$k$ and we use\
-  \ it to erase a line with a colour i$i$, the length of the eraser decreases to k−Vi$k-V_i$;\
-  \ if k<Vi$k < V_i$, it is impossible to erase such a line.\nSince infinitepro has\
-  \ to study for the re-exam, he wants to minimise the number of truly-geometric triangles.\
-  \ Can you help him find the minimum possible number of truly-geometric triangles\
-  \ which can be obtained by erasing a subset of the N$N$ lines in an optimal way?\
-  \ He promised a grand treat for you if he passes the examination!\n\n-----Input-----\n\
-  - The first line of the input contains a single integer T$T$ denoting the number\
-  \ of test cases. The description of T$T$ test cases follows.\n- The first line of\
-  \ the input contains three space-separated integers N$N$, C$C$ and K$K$.\n- N$N$\
-  \ lines follow. For each i$i$ (1≤i≤N$1 \\le i \\le N$), the i$i$-th of these lines\
-  \ contains three space-separated integers ai$a_i$, bi$b_i$ and ci$c_i$.\n- The last\
-  \ line contains C$C$ space-separated integers V1,V2,…,VC$V_1, V_2, \\ldots, V_C$.\n\
-  \n-----Output-----\nFor each test case, print a single line containing one integer\
-  \ ― the smallest possible number of truly-geometric triangles after erasing lines.\n\
-  \n-----Constraints-----\n- 1≤T≤10$1 \\le T \\le 10$\n- 1≤C≤N≤3,000$1 \\le C \\le\
-  \ N \\le 3,000$\n- 0≤K≤3,000$0 \\le K \\le 3,000$\n- 0≤ai,bi≤109$0 \\le a_i, b_i\
-  \ \\le 10^9$ for each valid i$i$\n- 1≤ci≤C$1 \\le c_i \\le C$ for each valid i$i$\n\
-  - 0≤Vi≤K$0 \\le V_i \\le K$ for each valid i$i$\n- no two lines coincide, regardless\
-  \ of their colours\n- no three lines are concurrent\n\n-----Subtasks-----\nSubtask\
-  \ #1 (10 points):\n- N≤10$N \\le 10$\n- K≤100$K \\le 100$\nSubtask 2 (15 points):\n\
-  - V1=V2=…=VC$V_1 = V_2 = \\ldots = V_C$\n- no two lines are parallel\nSubtask #3\
-  \ (25 points): no two lines are parallel\nSubtask #4 (50 points): original constraints\n\
-  \n-----Example Input-----\n2\n7 2 13\n1 10 1\n1 14 2\n6 4 1\n2 2 1\n0 12 2\n2 11\
-  \ 2\n0 6 1\n8 10\n6 1 20\n1 5 1\n2 11 1\n4 0 1\n6 8 1\n0 11 1\n3 3 1\n9\n\n-----Example\
-  \ Output-----\n2\n4\n\n-----Explanation-----\nExample case 1: We can remove exactly\
-  \ one line. Initially, we have 5$5$ truly geometric triangles (see the image below;\
-  \ red is colour 1$1$ and green is colour 2$2$).\n- Removing any line with colour\
-  \ 2$2$ brings the total number of truly-geometric triangles down to 4+0=4$4+0=4$.\n\
-  - Removing any line with colour 1$1$ brings the total number of truly-geometric\
-  \ triangles down to 1+1=2$1+1=2$.\nThus, the smallest number of truly-geometric\
-  \ triangles we can obtain is 2$2$.\n\nExample case 2: We can remove at most 2$2$\
-  \ lines and removing any 2$2$ lines gives us a total of 4$4$ truly-geometric triangles."
-"vc-preamble": "import Imports.AllImports\n\ndef nc3 (n : Nat) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve (n : Nat) (c : Nat) (k : Nat) (lines : List (List Nat))\
-  \ (v : List Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem nc3_nonnegative (n : Nat) :\n  nc3 n ≥ 0 :=\n  sorry\n\n\n\
-  theorem nc3_zero_for_small_n (n : Nat) : \n  n < 3 → nc3 n = 0 :=\n  sorry\n\n\n\
-  theorem nc3_formula (n : Nat) :\n  nc3 n = n * (n-1) * (n-2) / 6 :=\n  sorry\n\n\
-  \ntheorem solve_nonnegative (n c k : Nat) (lines : List (List Nat)) (v : List Nat)\
-  \ :\n  solve n c k lines v ≥ 0 :=\n  sorry\n\n\ntheorem solve_bounded_by_combinations\
-  \ \n  (n c k : Nat) (lines : List (List Nat)) (v : List Nat)\n  (validLines := List.filter\
-  \ (fun line => line.get! 2 ≤ c) lines) :\n  solve n c k lines v ≤ nc3 validLines.length\
-  \ :=\n  sorry\n\n\ntheorem solve_empty :\n  solve 0 1 1 [] [1] = 0 :=\n  sorry\n\
-  \n\ntheorem solve_minimal :\n  solve 1 1 1 [[0,0,1]] [1] = 0 :=\n  sorry\n\n/--\n\
-  info: 2\n-/\n#guard_msgs in\n#eval solve 7 2 13 [[1, 10, 1], [1, 14, 2], [6, 4,\
-  \ 1], [2, 2, 1], [0, 12, 2], [2, 11, 2], [0, 6, 1]] [8, 10]\n\n/--\ninfo: 4\n-/\n\
-  #guard_msgs in\n#eval solve 6 1 20 [[1, 5, 1], [2, 11, 1], [4, 0, 1], [6, 8, 1],\
-  \ [0, 11, 1], [3, 3, 1]] [9]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  After failing to clear his school mathematics examination, infinitepro decided to prepare very hard for his upcoming re-exam, starting with the topic he is weakest at ― computational geometry.
+  Being an artist, infinitepro has C$C$ pencils (numbered 1$1$ through C$C$); each of them draws with one of C$C$ distinct colours. He draws N$N$ lines (numbered 1$1$ through N$N$) in a 2D Cartesian coordinate system; for each valid i$i$, the i$i$-th line is drawn with the ci$c_i$-th pencil and it is described by the equation y=ai⋅x+bi$y = a_i \cdot x + b_i$.
+  Now, infinitepro calls a triangle truly-geometric if each of its sides is part of some line he drew and all three sides have the same colour. He wants to count these triangles, but there are too many of them! After a lot of consideration, he decided to erase a subset of the N$N$ lines he drew. He wants to do it with his eraser, which has length K$K$.
+  Whenever erasing a line with a colour i$i$, the length of the eraser decreases by Vi$V_i$. In other words, when the eraser has length k$k$ and we use it to erase a line with a colour i$i$, the length of the eraser decreases to k−Vi$k-V_i$; if k<Vi$k < V_i$, it is impossible to erase such a line.
+  Since infinitepro has to study for the re-exam, he wants to minimise the number of truly-geometric triangles. Can you help him find the minimum possible number of truly-geometric triangles which can be obtained by erasing a subset of the N$N$ lines in an optimal way? He promised a grand treat for you if he passes the examination!
+
+  -----Input-----
+  - The first line of the input contains a single integer T$T$ denoting the number of test cases. The description of T$T$ test cases follows.
+  - The first line of the input contains three space-separated integers N$N$, C$C$ and K$K$.
+  - N$N$ lines follow. For each i$i$ (1≤i≤N$1 \le i \le N$), the i$i$-th of these lines contains three space-separated integers ai$a_i$, bi$b_i$ and ci$c_i$.
+  - The last line contains C$C$ space-separated integers V1,V2,…,VC$V_1, V_2, \ldots, V_C$.
+
+  -----Output-----
+  For each test case, print a single line containing one integer ― the smallest possible number of truly-geometric triangles after erasing lines.
+
+  -----Constraints-----
+  - 1≤T≤10$1 \le T \le 10$
+  - 1≤C≤N≤3,000$1 \le C \le N \le 3,000$
+  - 0≤K≤3,000$0 \le K \le 3,000$
+  - 0≤ai,bi≤109$0 \le a_i, b_i \le 10^9$ for each valid i$i$
+  - 1≤ci≤C$1 \le c_i \le C$ for each valid i$i$
+  - 0≤Vi≤K$0 \le V_i \le K$ for each valid i$i$
+  - no two lines coincide, regardless of their colours
+  - no three lines are concurrent
+
+  -----Subtasks-----
+  Subtask #1 (10 points):
+  - N≤10$N \le 10$
+  - K≤100$K \le 100$
+  Subtask 2 (15 points):
+  - V1=V2=…=VC$V_1 = V_2 = \ldots = V_C$
+  - no two lines are parallel
+  Subtask #3 (25 points): no two lines are parallel
+  Subtask #4 (50 points): original constraints
+
+  -----Example Input-----
+  2
+  7 2 13
+  1 10 1
+  1 14 2
+  6 4 1
+  2 2 1
+  0 12 2
+  2 11 2
+  0 6 1
+  8 10
+  6 1 20
+  1 5 1
+  2 11 1
+  4 0 1
+  6 8 1
+  0 11 1
+  3 3 1
+  9
+
+  -----Example Output-----
+  2
+  4
+
+  -----Explanation-----
+  Example case 1: We can remove exactly one line. Initially, we have 5$5$ truly geometric triangles (see the image below; red is colour 1$1$ and green is colour 2$2$).
+  - Removing any line with colour 2$2$ brings the total number of truly-geometric triangles down to 4+0=4$4+0=4$.
+  - Removing any line with colour 1$1$ brings the total number of truly-geometric triangles down to 1+1=2$1+1=2$.
+  Thus, the smallest number of truly-geometric triangles we can obtain is 2$2$.
+
+  Example case 2: We can remove at most 2$2$ lines and removing any 2$2$ lines gives us a total of 4$4$ truly-geometric triangles.
+vc-preamble: |
+  import Imports.AllImports
+
+  def nc3 (n : Nat) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve (n : Nat) (c : Nat) (k : Nat) (lines : List (List Nat)) (v : List Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem nc3_nonnegative (n : Nat) :
+    nc3 n ≥ 0 :=
+    sorry
+
+
+  theorem nc3_zero_for_small_n (n : Nat) : 
+    n < 3 → nc3 n = 0 :=
+    sorry
+
+
+  theorem nc3_formula (n : Nat) :
+    nc3 n = n * (n-1) * (n-2) / 6 :=
+    sorry
+
+
+  theorem solve_nonnegative (n c k : Nat) (lines : List (List Nat)) (v : List Nat) :
+    solve n c k lines v ≥ 0 :=
+    sorry
+
+
+  theorem solve_bounded_by_combinations 
+    (n c k : Nat) (lines : List (List Nat)) (v : List Nat)
+    (validLines := List.filter (fun line => line.get! 2 ≤ c) lines) :
+    solve n c k lines v ≤ nc3 validLines.length :=
+    sorry
+
+
+  theorem solve_empty :
+    solve 0 1 1 [] [1] = 0 :=
+    sorry
+
+
+  theorem solve_minimal :
+    solve 1 1 1 [[0,0,1]] [1] = 0 :=
+    sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve 7 2 13 [[1, 10, 1], [1, 14, 2], [6, 4, 1], [2, 2, 1], [0, 12, 2], [2, 11, 2], [0, 6, 1]] [8, 10]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval solve 6 1 20 [[1, 5, 1], [2, 11, 1], [4, 0, 1], [6, 8, 1], [0, 11, 1], [3, 3, 1]] [9]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

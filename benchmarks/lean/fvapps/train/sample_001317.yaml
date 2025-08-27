@@ -1,35 +1,107 @@
-"vc-description": "There exist certain strings, known as $Unique$ $Strings$. They\
-  \ possess a unique property: \n- The character 'c' gets converted to \"ff\" and\
-  \ the character 'k' gets converted to \"gg\". Any letter besides 'c' and 'k' does\
-  \ not get converted to any other character.\nYour job is to count the number of\
-  \ strings that could possibly be represented by a given unique string. Since the\
-  \ value could be very large, output the remainder when divided by $10^9+7$.\nNote\
-  \ that if the given string is not a unique string, i.e. it contains either 'c' or\
-  \ 'k', output $0$.\n\n-----Input:-----\n- The first line of input contains a string,\
-  \ $s$.\n\n-----Output:-----\n- Output in a single line the possible number of strings\
-  \ modulo $10^9+7$.\n\n-----Constraints-----\n- $1 \\leq |s| \\leq 10^5$\nwhere |s|\
-  \ denotes length of string.\n\n-----Sample Input 1:-----\nthing\n\n-----Sample Input\
-  \ 2:-----\nggdffn\n\n-----Sample Input 3:-----\nfff\n\n-----Sample Input 4:-----\n\
-  cat\n\n-----Sample Output 1:-----\n1\n\n-----Sample Output 2:-----\n4\n\n-----Sample\
-  \ Output 3:-----\n3\n\n-----Sample Output 4:-----\n0\n\n-----EXPLANATION:-----\n\
-  The possible strings that can be represented by the given string in each of the\
-  \ examples are as follows:\n$1)$ 'thing'\n$2)$ 'ggdffn','kdffn','ggdcn','kdcn'\n\
-  $3)$ 'fff','cf','fc'\n$4)$ Since the string 'cat' contains 'c', it is certain that\
-  \ this string is not a unique string. Hence, the output is $0$."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_unique_strings (s : String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem invalid_single_chars :\n  count_unique_strings \"c\" = 0 ∧\
-  \ \n  count_unique_strings \"k\" = 0 :=\nsorry\n\n\ntheorem invalid_chars_property\
-  \ (s : String) :\n  (∀ c ∈ s.data, c = 'c' ∨ c = 'k') →\n  count_unique_strings\
-  \ s = 0 :=\nsorry\n\n\ntheorem valid_chars_bound (s : String) :\n  (∀ c ∈ s.data,\
-  \ c ≠ 'c' ∧ c ≠ 'k') →\n  0 ≤ count_unique_strings s ∧ \n  count_unique_strings\
-  \ s ≤ 10^9 + 7 :=\nsorry\n\n\ntheorem multiplication_property (string_parts : List\
-  \ String) :\n  string_parts.length > 0 →\n  (∀ s ∈ string_parts, s.length > 0) →\n\
-  \  (∀ s ∈ string_parts, ∀ c ∈ s.data, c = 'f' ∨ c = 'g') →\n  count_unique_strings\
-  \ (\"x\".intercalate string_parts) > 0 :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
-  \ in\n#eval count_unique_strings \"thing\"\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n\
-  #eval count_unique_strings \"ggdffn\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval\
-  \ count_unique_strings \"fff\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval count_unique_strings\
-  \ \"cat\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  There exist certain strings, known as $Unique$ $Strings$. They possess a unique property: 
+  - The character 'c' gets converted to "ff" and the character 'k' gets converted to "gg". Any letter besides 'c' and 'k' does not get converted to any other character.
+  Your job is to count the number of strings that could possibly be represented by a given unique string. Since the value could be very large, output the remainder when divided by $10^9+7$.
+  Note that if the given string is not a unique string, i.e. it contains either 'c' or 'k', output $0$.
+
+  -----Input:-----
+  - The first line of input contains a string, $s$.
+
+  -----Output:-----
+  - Output in a single line the possible number of strings modulo $10^9+7$.
+
+  -----Constraints-----
+  - $1 \leq |s| \leq 10^5$
+  where |s| denotes length of string.
+
+  -----Sample Input 1:-----
+  thing
+
+  -----Sample Input 2:-----
+  ggdffn
+
+  -----Sample Input 3:-----
+  fff
+
+  -----Sample Input 4:-----
+  cat
+
+  -----Sample Output 1:-----
+  1
+
+  -----Sample Output 2:-----
+  4
+
+  -----Sample Output 3:-----
+  3
+
+  -----Sample Output 4:-----
+  0
+
+  -----EXPLANATION:-----
+  The possible strings that can be represented by the given string in each of the examples are as follows:
+  $1)$ 'thing'
+  $2)$ 'ggdffn','kdffn','ggdcn','kdcn'
+  $3)$ 'fff','cf','fc'
+  $4)$ Since the string 'cat' contains 'c', it is certain that this string is not a unique string. Hence, the output is $0$.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_unique_strings (s : String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem invalid_single_chars :
+    count_unique_strings "c" = 0 ∧ 
+    count_unique_strings "k" = 0 :=
+  sorry
+
+
+  theorem invalid_chars_property (s : String) :
+    (∀ c ∈ s.data, c = 'c' ∨ c = 'k') →
+    count_unique_strings s = 0 :=
+  sorry
+
+
+  theorem valid_chars_bound (s : String) :
+    (∀ c ∈ s.data, c ≠ 'c' ∧ c ≠ 'k') →
+    0 ≤ count_unique_strings s ∧ 
+    count_unique_strings s ≤ 10^9 + 7 :=
+  sorry
+
+
+  theorem multiplication_property (string_parts : List String) :
+    string_parts.length > 0 →
+    (∀ s ∈ string_parts, s.length > 0) →
+    (∀ s ∈ string_parts, ∀ c ∈ s.data, c = 'f' ∨ c = 'g') →
+    count_unique_strings ("x".intercalate string_parts) > 0 :=
+  sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_unique_strings "thing"
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval count_unique_strings "ggdffn"
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_unique_strings "fff"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_unique_strings "cat"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

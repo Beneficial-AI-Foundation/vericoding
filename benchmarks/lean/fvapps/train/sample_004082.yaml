@@ -1,20 +1,61 @@
-"vc-description": "Write a simple function that takes polar coordinates (an angle\
-  \ in degrees and a radius) and returns the equivalent cartesian coordinates (rouded\
-  \ to 10 places).\n\n```\nFor example:\n\ncoordinates(90,1)\n=> (0.0, 1.0)\n\ncoordinates(45,\
-  \ 1)\n=> (0.7071067812, 0.7071067812)\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def coordinates (angle : Float) (radius : Float) : Float × Float\
-  \ :=\n  sorry\n"
-"vc-theorems": "theorem coordinates_periodic (angle radius : Float) : \n  angle ≥\
-  \ -1000 → angle ≤ 1000 → radius > 0 →\n  coordinates angle radius = coordinates\
-  \ (angle + 360) radius := \n  sorry\n\n\ntheorem coordinates_mirror (angle radius\
-  \ : Float) :\n  angle ≥ 0 → angle ≤ 360 → radius > 0 →\n  let (x₁, y₁) := coordinates\
-  \ angle radius\n  let (x₂, y₂) := coordinates (angle + 180) radius\n  x₁ = -x₂ ∧\
-  \ y₁ = -y₂ :=\n  sorry\n\n\ntheorem coordinates_zero_angle (radius : Float) :\n\
-  \  radius > 0 →\n  let (x, y) := coordinates 0 radius\n  x = radius ∧ y = 0 :=\n\
-  \  sorry\n\n/--\ninfo: (0.0, 1.0)\n-/\n#guard_msgs in\n#eval coordinates 90 1\n\n\
-  /--\ninfo: (0.7071067812, 0.7071067812)\n-/\n#guard_msgs in\n#eval coordinates 45\
-  \ 1\n\n/--\ninfo: (9848.0775301221, 1736.4817766693)\n-/\n#guard_msgs in\n#eval\
-  \ coordinates 1090 10000\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a simple function that takes polar coordinates (an angle in degrees and a radius) and returns the equivalent cartesian coordinates (rouded to 10 places).
+
+  ```
+  For example:
+
+  coordinates(90,1)
+  => (0.0, 1.0)
+
+  coordinates(45, 1)
+  => (0.7071067812, 0.7071067812)
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def coordinates (angle : Float) (radius : Float) : Float × Float :=
+    sorry
+vc-theorems: |
+  theorem coordinates_periodic (angle radius : Float) : 
+    angle ≥ -1000 → angle ≤ 1000 → radius > 0 →
+    coordinates angle radius = coordinates (angle + 360) radius := 
+    sorry
+
+
+  theorem coordinates_mirror (angle radius : Float) :
+    angle ≥ 0 → angle ≤ 360 → radius > 0 →
+    let (x₁, y₁) := coordinates angle radius
+    let (x₂, y₂) := coordinates (angle + 180) radius
+    x₁ = -x₂ ∧ y₁ = -y₂ :=
+    sorry
+
+
+  theorem coordinates_zero_angle (radius : Float) :
+    radius > 0 →
+    let (x, y) := coordinates 0 radius
+    x = radius ∧ y = 0 :=
+    sorry
+
+  /--
+  info: (0.0, 1.0)
+  -/
+  #guard_msgs in
+  #eval coordinates 90 1
+
+  /--
+  info: (0.7071067812, 0.7071067812)
+  -/
+  #guard_msgs in
+  #eval coordinates 45 1
+
+  /--
+  info: (9848.0775301221, 1736.4817766693)
+  -/
+  #guard_msgs in
+  #eval coordinates 1090 10000
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

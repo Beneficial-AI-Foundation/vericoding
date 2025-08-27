@@ -1,24 +1,61 @@
-"vc-description": "You're fed up about changing the version of your software manually.\
-  \ Instead, you will create a little script that will make it for you.\n\n# Exercice\n\
-  \nCreate a function `nextVersion`, that will take a string in parameter, and will\
-  \ return a string containing the next version number.\n\nFor example:\n\n# Rules\n\
-  \nAll numbers, except the first one, must be lower than 10: if there are, you have\
-  \ to set them to 0 and increment the next number in sequence.\n\nYou can assume\
-  \ all tests inputs to be valid."
-"vc-preamble": "import Imports.AllImports\n\ndef splitVersion (v : String) : Version\
-  \ := sorry\ndef joinVersion (v : Version) : String := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def nextVersion (v : String) : String := sorry\n\ntheorem nextVersion_outputs_valid_version\
-  \ (v : String) \n    (h : ∀ n ∈ (splitVersion v).nums, n ≤ 8) :\n  ∀ n ∈ (splitVersion\
-  \ (nextVersion v)).nums, n ≥ 0 := sorry\n"
-"vc-theorems": "theorem nextVersion_preserves_length (v : String)\n    (h : ∀ n ∈\
-  \ (splitVersion v).nums, n ≤ 8) :\n  (splitVersion (nextVersion v)).nums.length\
-  \ = (splitVersion v).nums.length := sorry\n\n\ntheorem nextVersion_preserves_prefix_parts\
-  \ (v : String)\n    (h : ∀ n ∈ (splitVersion v).nums, n ≤ 8)\n    (h2 : (splitVersion\
-  \ v).nums ≠ [])\n    (h3 : ((splitVersion v).nums.getLast h2) < 9) : \n  (splitVersion\
-  \ (nextVersion v)).nums.dropLast = (splitVersion v).nums.dropLast ∧ \n  ((splitVersion\
-  \ (nextVersion v)).nums.getLast h2 = (splitVersion v).nums.getLast h2 + 1) := sorry\n\
-  \n/--\ninfo: '1.2.4'\n-/\n#guard_msgs in\n#eval next_version \"1.2.3\"\n\n/--\n\
-  info: '1.0.0'\n-/\n#guard_msgs in\n#eval next_version \"0.9.9\"\n\n/--\ninfo: '2'\n\
-  -/\n#guard_msgs in\n#eval next_version \"1\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  You're fed up about changing the version of your software manually. Instead, you will create a little script that will make it for you.
+
+  # Exercice
+
+  Create a function `nextVersion`, that will take a string in parameter, and will return a string containing the next version number.
+
+  For example:
+
+  # Rules
+
+  All numbers, except the first one, must be lower than 10: if there are, you have to set them to 0 and increment the next number in sequence.
+
+  You can assume all tests inputs to be valid.
+vc-preamble: |-
+  import Imports.AllImports
+
+  def splitVersion (v : String) : Version := sorry
+  def joinVersion (v : Version) : String := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def nextVersion (v : String) : String := sorry
+
+  theorem nextVersion_outputs_valid_version (v : String) 
+      (h : ∀ n ∈ (splitVersion v).nums, n ≤ 8) :
+    ∀ n ∈ (splitVersion (nextVersion v)).nums, n ≥ 0 := sorry
+vc-theorems: |
+  theorem nextVersion_preserves_length (v : String)
+      (h : ∀ n ∈ (splitVersion v).nums, n ≤ 8) :
+    (splitVersion (nextVersion v)).nums.length = (splitVersion v).nums.length := sorry
+
+
+  theorem nextVersion_preserves_prefix_parts (v : String)
+      (h : ∀ n ∈ (splitVersion v).nums, n ≤ 8)
+      (h2 : (splitVersion v).nums ≠ [])
+      (h3 : ((splitVersion v).nums.getLast h2) < 9) : 
+    (splitVersion (nextVersion v)).nums.dropLast = (splitVersion v).nums.dropLast ∧ 
+    ((splitVersion (nextVersion v)).nums.getLast h2 = (splitVersion v).nums.getLast h2 + 1) := sorry
+
+  /--
+  info: '1.2.4'
+  -/
+  #guard_msgs in
+  #eval next_version "1.2.3"
+
+  /--
+  info: '1.0.0'
+  -/
+  #guard_msgs in
+  #eval next_version "0.9.9"
+
+  /--
+  info: '2'
+  -/
+  #guard_msgs in
+  #eval next_version "1"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

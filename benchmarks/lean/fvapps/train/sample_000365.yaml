@@ -1,22 +1,65 @@
-"vc-description": "Given an array A of strings, find any smallest string that contains\
-  \ each string in A as a substring.\nWe may assume that no string in A is substring\
-  \ of another string in A.\n \n\nExample 1:\nInput: [\"alex\",\"loves\",\"leetcode\"\
-  ]\nOutput: \"alexlovesleetcode\"\nExplanation: All permutations of \"alex\",\"loves\"\
-  ,\"leetcode\" would also be accepted.\n\n\nExample 2:\nInput: [\"catg\",\"ctaagt\"\
-  ,\"gcta\",\"ttca\",\"atgcatc\"]\nOutput: \"gctaagttcatgcatc\"\n \n\n\nNote:\n\n\
-  1 <= A.length <= 12\n1 <= A[i].length <= 20"
-"vc-preamble": "import Imports.AllImports\n\ndef List.sum [Add α] (xs : List α) :\
-  \ α :=\n  match xs with\n  | [] => sorry\n  | x :: xs => x + xs.sum\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def shortest_superstring (strings : List (List Char)) : List Char\
-  \ :=\n  sorry\n"
-"vc-theorems": "theorem superstring_contains_all_inputs (strings : List (List Char))\
-  \ \n  (h : strings ≠ []) : \n  ∀ s ∈ strings, ∃ i, strings.get ⟨i, sorry⟩ = s :=\n\
-  sorry\n\n\ntheorem superstring_length_less_than_sum (strings : List (List Char))\n\
-  \  (h : strings ≠ []) :\n  (shortest_superstring strings).length ≤ List.sum (strings.map\
-  \ List.length) :=\nsorry\n\n\ntheorem superstring_handles_overlaps (strings : List\
-  \ (List Char)) \n  (h₁ : strings ≠ [])\n  (h₂ : strings.length ≥ 2) :\n  (shortest_superstring\
-  \ strings).length ≤ List.sum (strings.map List.length) :=\nsorry\n\n\ntheorem superstring_identity_single\
-  \ (s : List Char) :\n  shortest_superstring [s] = s :=\nsorry\n\n\ntheorem superstring_basic_example\
-  \ :\n  (shortest_superstring [['a','b','c'], ['b','c','d']]).length ≤ 4 :=\nsorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an array A of strings, find any smallest string that contains each string in A as a substring.
+  We may assume that no string in A is substring of another string in A.
+   
+
+  Example 1:
+  Input: ["alex","loves","leetcode"]
+  Output: "alexlovesleetcode"
+  Explanation: All permutations of "alex","loves","leetcode" would also be accepted.
+
+
+  Example 2:
+  Input: ["catg","ctaagt","gcta","ttca","atgcatc"]
+  Output: "gctaagttcatgcatc"
+   
+
+
+  Note:
+
+  1 <= A.length <= 12
+  1 <= A[i].length <= 20
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.sum [Add α] (xs : List α) : α :=
+    match xs with
+    | [] => sorry
+    | x :: xs => x + xs.sum
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def shortest_superstring (strings : List (List Char)) : List Char :=
+    sorry
+vc-theorems: |-
+  theorem superstring_contains_all_inputs (strings : List (List Char)) 
+    (h : strings ≠ []) : 
+    ∀ s ∈ strings, ∃ i, strings.get ⟨i, sorry⟩ = s :=
+  sorry
+
+
+  theorem superstring_length_less_than_sum (strings : List (List Char))
+    (h : strings ≠ []) :
+    (shortest_superstring strings).length ≤ List.sum (strings.map List.length) :=
+  sorry
+
+
+  theorem superstring_handles_overlaps (strings : List (List Char)) 
+    (h₁ : strings ≠ [])
+    (h₂ : strings.length ≥ 2) :
+    (shortest_superstring strings).length ≤ List.sum (strings.map List.length) :=
+  sorry
+
+
+  theorem superstring_identity_single (s : List Char) :
+    shortest_superstring [s] = s :=
+  sorry
+
+
+  theorem superstring_basic_example :
+    (shortest_superstring [['a','b','c'], ['b','c','d']]).length ≤ 4 :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

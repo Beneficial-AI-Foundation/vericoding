@@ -1,20 +1,60 @@
-"vc-description": "## Problem\n\nDetermine whether a positive integer number is **colorful**\
-  \ or not.\n\n`263` is a colorful number because `[2, 6, 3, 2*6, 6*3, 2*6*3]` are\
-  \ all different; whereas `236` is not colorful, because `[2, 3, 6, 2*3, 3*6, 2*3*6]`\
-  \ have `6` twice.\n\nSo take all consecutive subsets of digits, take their product\
-  \ and ensure all the products are different.\n\n## Examples\n```pyhton\n263  -->\
-  \  true\n236  -->  false\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def colorful (n : Nat) : Bool := sorry\n\ndef getSubsequenceProducts\
-  \ (n : Nat) : List Nat := sorry\n"
-"vc-theorems": "theorem single_digit_colorful (n : Nat) (h : n ≤ 9) : \n  colorful\
-  \ n = true := sorry\n\n\ntheorem zero_digit_not_colorful (n : Nat) (h : n ≥ 10)\
-  \ (h2 : ∃ d ∈ getSubsequenceProducts n, d = 0) :\n  colorful n = false := sorry\n\
-  \n\ntheorem colorful_iff_unique_products (n : Nat) (h : n > 0) (h2 : n < 10000)\
-  \ :\n  colorful n = (getSubsequenceProducts n).Nodup := sorry\n\n\ntheorem repeated_digits_not_colorful\
-  \ (n : Nat) (h : n > 0) (h2 : n < 10000)\n  (h3 : (toString n).data.length > ((toString\
-  \ n).data.eraseDups).length) :\n  colorful n = false := sorry\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval colorful 5\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
-  \ colorful 263\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval colorful 236\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ## Problem
+
+  Determine whether a positive integer number is **colorful** or not.
+
+  `263` is a colorful number because `[2, 6, 3, 2*6, 6*3, 2*6*3]` are all different; whereas `236` is not colorful, because `[2, 3, 6, 2*3, 3*6, 2*3*6]` have `6` twice.
+
+  So take all consecutive subsets of digits, take their product and ensure all the products are different.
+
+  ## Examples
+  ```pyhton
+  263  -->  true
+  236  -->  false
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def colorful (n : Nat) : Bool := sorry
+
+  def getSubsequenceProducts (n : Nat) : List Nat := sorry
+vc-theorems: |
+  theorem single_digit_colorful (n : Nat) (h : n ≤ 9) : 
+    colorful n = true := sorry
+
+
+  theorem zero_digit_not_colorful (n : Nat) (h : n ≥ 10) (h2 : ∃ d ∈ getSubsequenceProducts n, d = 0) :
+    colorful n = false := sorry
+
+
+  theorem colorful_iff_unique_products (n : Nat) (h : n > 0) (h2 : n < 10000) :
+    colorful n = (getSubsequenceProducts n).Nodup := sorry
+
+
+  theorem repeated_digits_not_colorful (n : Nat) (h : n > 0) (h2 : n < 10000)
+    (h3 : (toString n).data.length > ((toString n).data.eraseDups).length) :
+    colorful n = false := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval colorful 5
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval colorful 263
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval colorful 236
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

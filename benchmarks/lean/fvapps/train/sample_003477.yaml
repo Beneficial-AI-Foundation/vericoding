@@ -1,23 +1,58 @@
-"vc-description": "You will be given a string (x) featuring a cat 'C' and a mouse\
-  \ 'm'. The rest of the string will be made up of '.'. \n\nYou need to find out if\
-  \ the cat can catch the mouse from it's current position. The cat can jump over\
-  \ three characters. So:\n\nC.....m returns 'Escaped!'  <-- more than three characters\
-  \ between\n\nC...m returns 'Caught!'   <-- as there are three characters between\
-  \ the two, the cat can jump."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def catMouse (s : String) : String := sorry\n\ndef countDots (s\
-  \ : String) : Nat := \n  s.toList.filter (· = '.') |>.length\n"
-"vc-theorems": "theorem catMouse_output_valid (s : String) \n    (h : ∃ n : Nat, n\
-  \ ≤ 10 ∧ s = \"C\" ++ (String.mk (List.replicate n '.')) ++ \"m\") : \n    catMouse\
-  \ s = \"Caught!\" ∨ catMouse s = \"Escaped!\" := sorry\n\n\ntheorem catMouse_dots_escape\
-  \ (s : String) \n    (h : ∃ n : Nat, n ≤ 10 ∧ s = \"C\" ++ (String.mk (List.replicate\
-  \ n '.')) ++ \"m\") :\n    (catMouse s = \"Escaped!\") ↔ (countDots s > 3) := sorry\n\
-  \n\ntheorem catMouse_dots_caught (s : String) \n    (h : ∃ n : Nat, n ≤ 10 ∧ s =\
-  \ \"C\" ++ (String.mk (List.replicate n '.')) ++ \"m\") :\n    (catMouse s = \"\
-  Caught!\") ↔ (countDots s ≤ 3) := sorry\n\n\ntheorem catMouse_edge_cases : \n  \
-  \  (catMouse \"Cm\" = \"Caught!\") ∧ \n    (catMouse \"C....m\" = \"Escaped!\")\
-  \ := sorry\n\n/--\ninfo: 'Escaped!'\n-/\n#guard_msgs in\n#eval cat_mouse \"C....m\"\
-  \n\n/--\ninfo: 'Caught!'\n-/\n#guard_msgs in\n#eval cat_mouse \"C..m\"\n\n/--\n\
-  info: 'Caught!'\n-/\n#guard_msgs in\n#eval cat_mouse \"C.m\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  You will be given a string (x) featuring a cat 'C' and a mouse 'm'. The rest of the string will be made up of '.'. 
+
+  You need to find out if the cat can catch the mouse from it's current position. The cat can jump over three characters. So:
+
+  C.....m returns 'Escaped!'  <-- more than three characters between
+
+  C...m returns 'Caught!'   <-- as there are three characters between the two, the cat can jump.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def catMouse (s : String) : String := sorry
+
+  def countDots (s : String) : Nat := 
+    s.toList.filter (· = '.') |>.length
+vc-theorems: |
+  theorem catMouse_output_valid (s : String) 
+      (h : ∃ n : Nat, n ≤ 10 ∧ s = "C" ++ (String.mk (List.replicate n '.')) ++ "m") : 
+      catMouse s = "Caught!" ∨ catMouse s = "Escaped!" := sorry
+
+
+  theorem catMouse_dots_escape (s : String) 
+      (h : ∃ n : Nat, n ≤ 10 ∧ s = "C" ++ (String.mk (List.replicate n '.')) ++ "m") :
+      (catMouse s = "Escaped!") ↔ (countDots s > 3) := sorry
+
+
+  theorem catMouse_dots_caught (s : String) 
+      (h : ∃ n : Nat, n ≤ 10 ∧ s = "C" ++ (String.mk (List.replicate n '.')) ++ "m") :
+      (catMouse s = "Caught!") ↔ (countDots s ≤ 3) := sorry
+
+
+  theorem catMouse_edge_cases : 
+      (catMouse "Cm" = "Caught!") ∧ 
+      (catMouse "C....m" = "Escaped!") := sorry
+
+  /--
+  info: 'Escaped!'
+  -/
+  #guard_msgs in
+  #eval cat_mouse "C....m"
+
+  /--
+  info: 'Caught!'
+  -/
+  #guard_msgs in
+  #eval cat_mouse "C..m"
+
+  /--
+  info: 'Caught!'
+  -/
+  #guard_msgs in
+  #eval cat_mouse "C.m"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

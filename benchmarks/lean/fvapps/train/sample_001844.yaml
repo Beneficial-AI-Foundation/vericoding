@@ -1,28 +1,74 @@
-"vc-description": "Return the root node of a binary search tree that matches the given\
-  \ preorder traversal.\n(Recall that a binary search tree is a binary tree where\
-  \ for every node, any descendant of node.left has a value < node.val, and any descendant\
-  \ of node.right has a value > node.val.  Also recall that a preorder traversal displays\
-  \ the value of the node first, then traverses node.left, then traverses node.right.)\n\
-  It's guaranteed that for the given test cases there is always possible to find a\
-  \ binary search tree with the given requirements.\nExample 1:\nInput: [8,5,1,7,10,12]\n\
-  Output: [8,5,10,1,7,null,12]\n\n\n \nConstraints:\n\n1 <= preorder.length <= 100\n\
-  1 <= preorder[i] <= 10^8\nThe values of preorder are distinct."
-"vc-preamble": "import Imports.AllImports\n\ndef bstFromPreorder (preorder : List\
-  \ Int) : TreeNode :=\n  sorry\n\n\ndef treeToList (root : TreeNode) : List Int :=\n\
-  \  sorry\n\n\ndef is_valid_bst (preorder : List Int) : Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_bst (node : TreeNode) (min_val max_val : Int) : Bool :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem bst_from_preorder_preserves_values (preorder : List Int) :\n\
-  \  is_valid_bst preorder →\n  let result := treeToList (bstFromPreorder preorder)\n\
-  \  (∀ x, x ∈ preorder → x ∈ result) ∧ \n  (∀ x, x ∈ result → x ∈ preorder) :=\n\
-  \  sorry\n\n\ntheorem bst_from_preorder_maintains_bst_property (preorder : List\
-  \ Int) :\n  is_valid_bst preorder →\n  is_bst (bstFromPreorder preorder) (-1000)\
-  \ 1000 :=\n  sorry\n\n\ntheorem bst_from_preorder_structure (preorder : List Int)\
-  \ :\n  is_valid_bst preorder →\n  treeToList (bstFromPreorder preorder) = treeToList\
-  \ (bstFromPreorder preorder) :=\n  sorry\n\n/--\ninfo: [8, 5, 10, 1, 7, None, 12]\n\
-  -/\n#guard_msgs in\n#eval treeToList bstFromPreorder([8, 5, 1, 7, 10, 12])\n\n/--\n\
-  info: [1]\n-/\n#guard_msgs in\n#eval treeToList bstFromPreorder([1])\n\n/--\ninfo:\
-  \ [5, 3, 7, 1, 4, 6, 8]\n-/\n#guard_msgs in\n#eval treeToList bstFromPreorder([5,\
-  \ 3, 1, 4, 7, 6, 8])\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Return the root node of a binary search tree that matches the given preorder traversal.
+  (Recall that a binary search tree is a binary tree where for every node, any descendant of node.left has a value < node.val, and any descendant of node.right has a value > node.val.  Also recall that a preorder traversal displays the value of the node first, then traverses node.left, then traverses node.right.)
+  It's guaranteed that for the given test cases there is always possible to find a binary search tree with the given requirements.
+  Example 1:
+  Input: [8,5,1,7,10,12]
+  Output: [8,5,10,1,7,null,12]
+
+
+   
+  Constraints:
+
+  1 <= preorder.length <= 100
+  1 <= preorder[i] <= 10^8
+  The values of preorder are distinct.
+vc-preamble: |
+  import Imports.AllImports
+
+  def bstFromPreorder (preorder : List Int) : TreeNode :=
+    sorry
+
+
+  def treeToList (root : TreeNode) : List Int :=
+    sorry
+
+
+  def is_valid_bst (preorder : List Int) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_bst (node : TreeNode) (min_val max_val : Int) : Bool :=
+    sorry
+vc-theorems: |
+  theorem bst_from_preorder_preserves_values (preorder : List Int) :
+    is_valid_bst preorder →
+    let result := treeToList (bstFromPreorder preorder)
+    (∀ x, x ∈ preorder → x ∈ result) ∧ 
+    (∀ x, x ∈ result → x ∈ preorder) :=
+    sorry
+
+
+  theorem bst_from_preorder_maintains_bst_property (preorder : List Int) :
+    is_valid_bst preorder →
+    is_bst (bstFromPreorder preorder) (-1000) 1000 :=
+    sorry
+
+
+  theorem bst_from_preorder_structure (preorder : List Int) :
+    is_valid_bst preorder →
+    treeToList (bstFromPreorder preorder) = treeToList (bstFromPreorder preorder) :=
+    sorry
+
+  /--
+  info: [8, 5, 10, 1, 7, None, 12]
+  -/
+  #guard_msgs in
+  #eval treeToList bstFromPreorder([8, 5, 1, 7, 10, 12])
+
+  /--
+  info: [1]
+  -/
+  #guard_msgs in
+  #eval treeToList bstFromPreorder([1])
+
+  /--
+  info: [5, 3, 7, 1, 4, 6, 8]
+  -/
+  #guard_msgs in
+  #eval treeToList bstFromPreorder([5, 3, 1, 4, 7, 6, 8])
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

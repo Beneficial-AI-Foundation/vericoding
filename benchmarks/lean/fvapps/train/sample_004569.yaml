@@ -1,23 +1,54 @@
-"vc-description": "Part 2/3 of my kata series. [Part 1](http://www.codewars.com/kata/riemann-sums-i-left-side-rule)\n\
-  \nThe description changes little in this second part. Here we simply want to improve\
-  \ our approximation of the integral by using trapezoids instead of rectangles. The\
-  \ left/right side rules have a serious bias and the trapezoidal rules averages those\
-  \ approximations! The same assumptions exist but are pasted here for convenience.\n\
-  \n- f will always take a single float argument \n- f will always be a \"nice\" function,\
-  \ don't worry about NaN\n- n will always be a natural number (0, N] \n- b > a \n\
-  - and n will be chosen appropriately given the length of [a, b] (as in I will not\
-  \ have step sizes smaller than machine epsilon)\n- *!!! round answers to the nearest\
-  \ hundredth!!!*"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def RealFunction := Float → Float\n\ndef riemann_trapezoidal (f\
-  \ : RealFunction) (n : Nat) (a b : Float) : Float := \n  sorry\n"
-"vc-theorems": "theorem riemann_trapezoidal_constant_function \n    (n : Nat) (a b\
-  \ : Float) (h : a ≤ b) (const : Float) :\n    let f := fun x => const\n    (riemann_trapezoidal\
-  \ f n a b - (const * (b - a))).abs < 0.1 :=\n  sorry\n\n\ntheorem riemann_trapezoidal_linear_function\
-  \ (n : Nat) :\n    let f := fun x => x\n    (riemann_trapezoidal f n 0 1 - 0.5).abs\
-  \ < 0.1 :=\n  sorry\n\n/--\ninfo: 0.5\n-/\n#guard_msgs in\n#eval riemann_trapezoidal\
-  \ lambda x: x 1 0 1\n\n/--\ninfo: 2.0\n-/\n#guard_msgs in\n#eval riemann_trapezoidal\
-  \ lambda x: 1 1 0 2\n\n/--\ninfo: 2.0\n-/\n#guard_msgs in\n#eval riemann_trapezoidal\
-  \ lambda x: x 2 0 2\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Part 2/3 of my kata series. [Part 1](http://www.codewars.com/kata/riemann-sums-i-left-side-rule)
+
+  The description changes little in this second part. Here we simply want to improve our approximation of the integral by using trapezoids instead of rectangles. The left/right side rules have a serious bias and the trapezoidal rules averages those approximations! The same assumptions exist but are pasted here for convenience.
+
+  - f will always take a single float argument 
+  - f will always be a "nice" function, don't worry about NaN
+  - n will always be a natural number (0, N] 
+  - b > a 
+  - and n will be chosen appropriately given the length of [a, b] (as in I will not have step sizes smaller than machine epsilon)
+  - *!!! round answers to the nearest hundredth!!!*
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def RealFunction := Float → Float
+
+  def riemann_trapezoidal (f : RealFunction) (n : Nat) (a b : Float) : Float := 
+    sorry
+vc-theorems: |
+  theorem riemann_trapezoidal_constant_function 
+      (n : Nat) (a b : Float) (h : a ≤ b) (const : Float) :
+      let f := fun x => const
+      (riemann_trapezoidal f n a b - (const * (b - a))).abs < 0.1 :=
+    sorry
+
+
+  theorem riemann_trapezoidal_linear_function (n : Nat) :
+      let f := fun x => x
+      (riemann_trapezoidal f n 0 1 - 0.5).abs < 0.1 :=
+    sorry
+
+  /--
+  info: 0.5
+  -/
+  #guard_msgs in
+  #eval riemann_trapezoidal lambda x: x 1 0 1
+
+  /--
+  info: 2.0
+  -/
+  #guard_msgs in
+  #eval riemann_trapezoidal lambda x: 1 1 0 2
+
+  /--
+  info: 2.0
+  -/
+  #guard_msgs in
+  #eval riemann_trapezoidal lambda x: x 2 0 2
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

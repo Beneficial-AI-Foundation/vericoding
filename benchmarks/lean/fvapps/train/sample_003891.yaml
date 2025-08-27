@@ -1,28 +1,61 @@
-"vc-description": "Santa is coming to town and he needs your help finding out who's\
-  \ been naughty or nice. You will be given an entire year of JSON data following\
-  \ this format:\n\nYour function should return `\"Naughty!\"` or `\"Nice!\"` depending\
-  \ on the total number of occurrences in a given year (whichever one is greater).\
-  \ If both are equal, return `\"Nice!\"`"
-"vc-preamble": "import Imports.AllImports\n\ndef Month := String\ndef Day := String\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def BehaviorMap := List (Month × List (Day × BehaviorType))\n\n\
-  def naughty_or_nice (behaviors: BehaviorMap) : String :=\nsorry\n"
-"vc-theorems": "theorem naughty_or_nice_returns_valid_result (behaviors: BehaviorMap)\
-  \ :\n  naughty_or_nice behaviors = \"Nice!\" ∨ naughty_or_nice behaviors = \"Naughty!\"\
-  \ :=\nsorry\n\n\ntheorem naughty_or_nice_matches_count (behaviors: BehaviorMap)\
-  \ :\n  let nice_count := behaviors.foldl (fun acc m => \n    acc + m.2.foldl (fun\
-  \ inner_acc d => \n      inner_acc + match d.2 with\n      | BehaviorType.Nice =>\
-  \ 1\n      | BehaviorType.Naughty => -1) 0) 0\n  naughty_or_nice behaviors = if\
-  \ nice_count >= 0 then \"Nice!\" else \"Naughty!\" :=\nsorry\n\n\ntheorem all_nice_returns_nice\
-  \ (behaviors: BehaviorMap) \n  (h: behaviors.all (fun m => \n      m.2.all (fun\
-  \ d => match d.2 with\n        | BehaviorType.Nice => true\n        | BehaviorType.Naughty\
-  \ => false))) :\n  naughty_or_nice behaviors = \"Nice!\" :=\nsorry\n\n/--\ninfo:\
-  \ 'Nice!'\n-/\n#guard_msgs in\n#eval naughty_or_nice {\"January\": {\"1\": \"Nice\"\
-  , \"2\": \"Naughty\", \"3\": \"Nice\"}, \"February\": {\"1\": \"Naughty\", \"2\"\
-  : \"Nice\", \"3\": \"Naughty\"}}\n\n/--\ninfo: 'Nice!'\n-/\n#guard_msgs in\n#eval\
-  \ naughty_or_nice {\"January\": {\"1\": \"Nice\", \"2\": \"Nice\", \"3\": \"Nice\"\
-  }, \"February\": {\"1\": \"Nice\", \"2\": \"Nice\", \"3\": \"Nice\"}}\n\n/--\ninfo:\
-  \ 'Naughty!'\n-/\n#guard_msgs in\n#eval naughty_or_nice {\"January\": {\"1\": \"\
-  Naughty\", \"2\": \"Naughty\", \"3\": \"Naughty\"}, \"February\": {\"1\": \"Naughty\"\
-  , \"2\": \"Naughty\", \"3\": \"Naughty\"}}\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Santa is coming to town and he needs your help finding out who's been naughty or nice. You will be given an entire year of JSON data following this format:
+
+  Your function should return `"Naughty!"` or `"Nice!"` depending on the total number of occurrences in a given year (whichever one is greater). If both are equal, return `"Nice!"`
+vc-preamble: |
+  import Imports.AllImports
+
+  def Month := String
+  def Day := String
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def BehaviorMap := List (Month × List (Day × BehaviorType))
+
+  def naughty_or_nice (behaviors: BehaviorMap) : String :=
+  sorry
+vc-theorems: |
+  theorem naughty_or_nice_returns_valid_result (behaviors: BehaviorMap) :
+    naughty_or_nice behaviors = "Nice!" ∨ naughty_or_nice behaviors = "Naughty!" :=
+  sorry
+
+
+  theorem naughty_or_nice_matches_count (behaviors: BehaviorMap) :
+    let nice_count := behaviors.foldl (fun acc m => 
+      acc + m.2.foldl (fun inner_acc d => 
+        inner_acc + match d.2 with
+        | BehaviorType.Nice => 1
+        | BehaviorType.Naughty => -1) 0) 0
+    naughty_or_nice behaviors = if nice_count >= 0 then "Nice!" else "Naughty!" :=
+  sorry
+
+
+  theorem all_nice_returns_nice (behaviors: BehaviorMap) 
+    (h: behaviors.all (fun m => 
+        m.2.all (fun d => match d.2 with
+          | BehaviorType.Nice => true
+          | BehaviorType.Naughty => false))) :
+    naughty_or_nice behaviors = "Nice!" :=
+  sorry
+
+  /--
+  info: 'Nice!'
+  -/
+  #guard_msgs in
+  #eval naughty_or_nice {"January": {"1": "Nice", "2": "Naughty", "3": "Nice"}, "February": {"1": "Naughty", "2": "Nice", "3": "Naughty"}}
+
+  /--
+  info: 'Nice!'
+  -/
+  #guard_msgs in
+  #eval naughty_or_nice {"January": {"1": "Nice", "2": "Nice", "3": "Nice"}, "February": {"1": "Nice", "2": "Nice", "3": "Nice"}}
+
+  /--
+  info: 'Naughty!'
+  -/
+  #guard_msgs in
+  #eval naughty_or_nice {"January": {"1": "Naughty", "2": "Naughty", "3": "Naughty"}, "February": {"1": "Naughty", "2": "Naughty", "3": "Naughty"}}
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

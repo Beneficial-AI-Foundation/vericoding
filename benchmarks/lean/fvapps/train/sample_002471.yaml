@@ -1,19 +1,38 @@
-"vc-description": "=====Problem Statement=====\nYou are given n words. Some words\
-  \ may repeat. For each word, output its number of occurrences. The output order\
-  \ should correspond with the input order of appearance of the word. See the sample\
-  \ input/output for clarification.\n\nNote: Each input line ends with a \"\\n\" character.\n\
-  \n=====Constraints=====\n1≤n≤10^5\nThe sum of the lengths of all the words do not\
-  \ exceed 10^6\nAll the words are composed of lowercase English letters only.\n\n\
-  =====Input Format=====\nThe first line contains the integer, n.\nThe next n lines\
-  \ each contain a word.\n\n=====Output Format=====\nOutput 2 lines.\nOn the first\
-  \ line, output the number of distinct words from the input.\nOn the second line,\
-  \ output the number of occurrences for each distinct word according to their appearance\
-  \ in the input."
-"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat\n  | []\
-  \ => 0\n  | (h::t) => h + sum t\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_word_occurrences (words : List String) : WordCountResult\
-  \ :=\n  sorry\n"
-"vc-theorems": "theorem count_word_occurrences_empty_input :\n  count_word_occurrences\
-  \ [] = ⟨0, []⟩ :=\nsorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  =====Problem Statement=====
+  You are given n words. Some words may repeat. For each word, output its number of occurrences. The output order should correspond with the input order of appearance of the word. See the sample input/output for clarification.
+
+  Note: Each input line ends with a "\n" character.
+
+  =====Constraints=====
+  1≤n≤10^5
+  The sum of the lengths of all the words do not exceed 10^6
+  All the words are composed of lowercase English letters only.
+
+  =====Input Format=====
+  The first line contains the integer, n.
+  The next n lines each contain a word.
+
+  =====Output Format=====
+  Output 2 lines.
+  On the first line, output the number of distinct words from the input.
+  On the second line, output the number of occurrences for each distinct word according to their appearance in the input.
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.sum : List Nat → Nat
+    | [] => 0
+    | (h::t) => h + sum t
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_word_occurrences (words : List String) : WordCountResult :=
+    sorry
+vc-theorems: |-
+  theorem count_word_occurrences_empty_input :
+    count_word_occurrences [] = ⟨0, []⟩ :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

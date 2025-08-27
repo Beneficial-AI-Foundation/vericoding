@@ -1,28 +1,75 @@
-"vc-description": "In a far away country called AlgoLandia, there are `N` islands\
-  \ numbered `1` to `N`. Each island is denoted by `k[i]`. King Algolas, king of AlgoLandia,\
-  \ built `N - 1` bridges in the country. A bridge is built between islands `k[i]`\
-  \ and `k[i+1]`. Bridges are two-ways and are expensive to build.\n\nThe problem\
-  \ is that there are gangs who wants to destroy the bridges. In order to protect\
-  \ the bridges, the king wants to assign elite guards to the bridges. A bridge between\
-  \ islands `k[i]` and `k[i+1]` is safe when there is an elite guard in island `k[i]`\
-  \ or `k[i+1]`. There are already elite guards assigned in some islands.\n\nYour\
-  \ task now is to determine the minimum number of additional elite guards that needs\
-  \ to be hired to guard all the bridges.\n\n### Note:\nYou are given a sequence `k`\
-  \ with `N` length.\n`k[i] = true`, means that there is an elite guard in that island;\
-  \ `k[i] = false` means no elite guard. It is guaranteed that AlgoLandia have at\
-  \ least `2` islands.\n\n### Sample Input 1\n```\nk = [true, true, false, true, false]\n\
-  ```\n\n### Sample Output 1\n```\n0\n```\n\n### Sample Input 2\n```\nk = [false,\
-  \ false, true, false, false]\n```\n### Sample Output 2\n```\n2\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_needed_guards (islands : List Bool) : Nat :=\nsorry\n"
-"vc-theorems": "theorem guard_count_nonnegative (islands : List Bool) : \n  find_needed_guards\
-  \ islands ≥ 0 :=\nsorry\n\n\ntheorem guard_count_bounded_by_unguarded (islands :\
-  \ List Bool) :\n  let unguarded := (islands.filter (fun x => !x)).length\n  find_needed_guards\
-  \ islands ≤ (unguarded + 1) / 2 :=\nsorry\n\n\n\n\ntheorem single_island_needs_no_guards\
-  \ (islands : List Bool) :\n  islands.length = 1 → find_needed_guards islands = 0\
-  \ :=\nsorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_needed_guards [True,\
-  \ True, False, True, False]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_needed_guards\
-  \ [False, False, True, False, False]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval\
-  \ find_needed_guards [False, False, False, False, False]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  In a far away country called AlgoLandia, there are `N` islands numbered `1` to `N`. Each island is denoted by `k[i]`. King Algolas, king of AlgoLandia, built `N - 1` bridges in the country. A bridge is built between islands `k[i]` and `k[i+1]`. Bridges are two-ways and are expensive to build.
+
+  The problem is that there are gangs who wants to destroy the bridges. In order to protect the bridges, the king wants to assign elite guards to the bridges. A bridge between islands `k[i]` and `k[i+1]` is safe when there is an elite guard in island `k[i]` or `k[i+1]`. There are already elite guards assigned in some islands.
+
+  Your task now is to determine the minimum number of additional elite guards that needs to be hired to guard all the bridges.
+
+  ### Note:
+  You are given a sequence `k` with `N` length.
+  `k[i] = true`, means that there is an elite guard in that island; `k[i] = false` means no elite guard. It is guaranteed that AlgoLandia have at least `2` islands.
+
+  ### Sample Input 1
+  ```
+  k = [true, true, false, true, false]
+  ```
+
+  ### Sample Output 1
+  ```
+  0
+  ```
+
+  ### Sample Input 2
+  ```
+  k = [false, false, true, false, false]
+  ```
+  ### Sample Output 2
+  ```
+  2
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_needed_guards (islands : List Bool) : Nat :=
+  sorry
+vc-theorems: |
+  theorem guard_count_nonnegative (islands : List Bool) : 
+    find_needed_guards islands ≥ 0 :=
+  sorry
+
+
+  theorem guard_count_bounded_by_unguarded (islands : List Bool) :
+    let unguarded := (islands.filter (fun x => !x)).length
+    find_needed_guards islands ≤ (unguarded + 1) / 2 :=
+  sorry
+
+
+
+
+  theorem single_island_needs_no_guards (islands : List Bool) :
+    islands.length = 1 → find_needed_guards islands = 0 :=
+  sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_needed_guards [True, True, False, True, False]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_needed_guards [False, False, True, False, False]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_needed_guards [False, False, False, False, False]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

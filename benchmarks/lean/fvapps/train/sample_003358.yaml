@@ -1,26 +1,55 @@
-"vc-description": "According to ISO 8601, the first calendar week (1) starts with\
-  \ the week containing the first thursday in january.\nEvery year contains of 52\
-  \ (53 for leap years) calendar weeks.\n\n**Your task is** to calculate the calendar\
-  \ week (1-53) from a given date.\nFor example, the calendar week for the date `2019-01-01`\
-  \ (string) should be 1 (int).\n\nGood luck \U0001F44D\n\nSee also [ISO week date](https://en.wikipedia.org/wiki/ISO_week_date)\
-  \ and [Week Number](https://en.wikipedia.org/wiki/Week#Week_numbering) on Wikipedia\
-  \ for further information about calendar weeks.\n\nOn [whatweekisit.org](http://whatweekisit.org/)\
-  \ you may click through the calender and study calendar weeks in more depth.\n\n\
-  *heads-up:* `require(xxx)` has been disabled\n\n\nThanks to @ZED.CWT, @Unnamed and\
-  \ @proxya for their feedback."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def get_calendar_week (date_str : String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem calendar_week_bounds\n    (date_str : String)\n    (h : ∃\
-  \ year month day : Nat,\n         year ≥ 1900 ∧ year ≤ 2100 ∧\n         month ≥\
-  \ 1 ∧ month ≤ 12 ∧\n         day ≥ 1 ∧ day ≤ 31 ∧\n         date_str = toString\
-  \ year ++ \"-\" ++ toString month ++ \"-\" ++ toString day)\n    : 1 ≤ get_calendar_week\
-  \ date_str ∧ get_calendar_week date_str ≤ 53 :=\n  sorry\n\n\ntheorem invalid_date_format_slash\n\
-  \    (date_str : String)\n    (h : ∃ year month day : Nat,\n         date_str =\
-  \ toString year ++ \"/\" ++ toString month ++ \"/\" ++ toString day)\n    : ∀ n,\
-  \ get_calendar_week date_str ≠ n :=\n  sorry\n\n\ntheorem invalid_date_format_invalid_string\n\
-  \    (date_str : String) \n    (h : ¬∃ year month day : Nat,\n         date_str\
-  \ = toString year ++ \"-\" ++ toString month ++ \"-\" ++ toString day ∨\n      \
-  \   date_str = toString year ++ \"/\" ++ toString month ++ \"/\" ++ toString day)\n\
-  \    : ∀ n, get_calendar_week date_str ≠ n :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  According to ISO 8601, the first calendar week (1) starts with the week containing the first thursday in january.
+  Every year contains of 52 (53 for leap years) calendar weeks.
+
+  **Your task is** to calculate the calendar week (1-53) from a given date.
+  For example, the calendar week for the date `2019-01-01` (string) should be 1 (int).
+
+  Good luck 👍
+
+  See also [ISO week date](https://en.wikipedia.org/wiki/ISO_week_date) and [Week Number](https://en.wikipedia.org/wiki/Week#Week_numbering) on Wikipedia for further information about calendar weeks.
+
+  On [whatweekisit.org](http://whatweekisit.org/) you may click through the calender and study calendar weeks in more depth.
+
+  *heads-up:* `require(xxx)` has been disabled
+
+
+  Thanks to @ZED.CWT, @Unnamed and @proxya for their feedback.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def get_calendar_week (date_str : String) : Nat :=
+    sorry
+vc-theorems: |-
+  theorem calendar_week_bounds
+      (date_str : String)
+      (h : ∃ year month day : Nat,
+           year ≥ 1900 ∧ year ≤ 2100 ∧
+           month ≥ 1 ∧ month ≤ 12 ∧
+           day ≥ 1 ∧ day ≤ 31 ∧
+           date_str = toString year ++ "-" ++ toString month ++ "-" ++ toString day)
+      : 1 ≤ get_calendar_week date_str ∧ get_calendar_week date_str ≤ 53 :=
+    sorry
+
+
+  theorem invalid_date_format_slash
+      (date_str : String)
+      (h : ∃ year month day : Nat,
+           date_str = toString year ++ "/" ++ toString month ++ "/" ++ toString day)
+      : ∀ n, get_calendar_week date_str ≠ n :=
+    sorry
+
+
+  theorem invalid_date_format_invalid_string
+      (date_str : String) 
+      (h : ¬∃ year month day : Nat,
+           date_str = toString year ++ "-" ++ toString month ++ "-" ++ toString day ∨
+           date_str = toString year ++ "/" ++ toString month ++ "/" ++ toString day)
+      : ∀ n, get_calendar_week date_str ≠ n :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

@@ -1,33 +1,78 @@
-"vc-description": "Mohit's girlfriend is playing a game with Nicky. The description\
-  \ of the game is as follows:\n- Initially on a table Player 1 will put N gem-stones.\n\
-  - Players will play alternatively, turn by turn.\n- At each move a player can take\
-  \ at most M gem-stones (at least 1 gem-stone must be taken) from the available gem-stones\
-  \ on the table.(Each gem-stone has same cost.)\n- Each players gem-stone are gathered\
-  \ in player's side.\n- The player that empties the table purchases food from it\
-  \ (using all his gem-stones; one gem-stone can buy one unit of food), and the other\
-  \ one puts all his gem-stones back on to the table. Again the game continues with\
-  \ the \"loser\" player starting.\n- The game continues until all the gem-stones\
-  \ are used to buy food.\n- The main objective of the game is to consume maximum\
-  \ units of food.\n\n\tMohit's girlfriend is weak in mathematics and prediction so\
-  \ she asks help from Mohit, in return she shall kiss Mohit. Mohit task is to predict\
-  \ the maximum units of food her girlfriend can eat, if, she starts first. Being\
-  \ the best friend of Mohit, help him in predicting the answer.\n\n-----Input-----\n\
-  - Single line contains two space separated integers N and M.\n\n-----Output-----\n\
-  - The maximum units of food Mohit's girlfriend can eat.\n\n-----Constraints and\
-  \ Subtasks-----\n- 1 <= M <= N <= 100\nSubtask 1: 10 points\n- 1 <= M <= N <= 5\n\
-  Subtask 2: 20 points\n- 1 <= M <= N <= 10\nSubtask 3: 30 points\n- 1 <= M <= N <=\
-  \ 50\nSubtask 3: 40 points\n- Original Constraints.\n\n-----Example-----\nInput:\n\
-  4 2\n\nOutput:\n2"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_gem_game (n m : Nat) : Nat := sorry\n\n/-- The result\
-  \ of solve_gem_game is never negative -/"
-"vc-theorems": "theorem solve_gem_game_nonneg (n m : Nat) :\n  solve_gem_game n m\
-  \ ≥ 0 := sorry\n\n/-- When m=1, result follows pattern based on n being even/odd\
-  \ -/\n\ntheorem solve_gem_game_m_one (n : Nat) :\n  solve_gem_game n 1 = if n %\
-  \ 2 = 0 then n/2 else n/2 + 1 := sorry\n\n/-- For m > (n+1)/2, result equals m -/\n\
-  \ntheorem solve_gem_game_large_m (n m : Nat) (h : m > (n+1)/2) :\n  solve_gem_game\
-  \ n m = m := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve_gem_game 4 2\n\
-  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_gem_game 6 3\n\n/--\ninfo: 5\n-/\n\
-  #guard_msgs in\n#eval solve_gem_game 10 1\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Mohit's girlfriend is playing a game with Nicky. The description of the game is as follows:
+  - Initially on a table Player 1 will put N gem-stones.
+  - Players will play alternatively, turn by turn.
+  - At each move a player can take at most M gem-stones (at least 1 gem-stone must be taken) from the available gem-stones on the table.(Each gem-stone has same cost.)
+  - Each players gem-stone are gathered in player's side.
+  - The player that empties the table purchases food from it (using all his gem-stones; one gem-stone can buy one unit of food), and the other one puts all his gem-stones back on to the table. Again the game continues with the "loser" player starting.
+  - The game continues until all the gem-stones are used to buy food.
+  - The main objective of the game is to consume maximum units of food.
+
+  	Mohit's girlfriend is weak in mathematics and prediction so she asks help from Mohit, in return she shall kiss Mohit. Mohit task is to predict the maximum units of food her girlfriend can eat, if, she starts first. Being the best friend of Mohit, help him in predicting the answer.
+
+  -----Input-----
+  - Single line contains two space separated integers N and M.
+
+  -----Output-----
+  - The maximum units of food Mohit's girlfriend can eat.
+
+  -----Constraints and Subtasks-----
+  - 1 <= M <= N <= 100
+  Subtask 1: 10 points
+  - 1 <= M <= N <= 5
+  Subtask 2: 20 points
+  - 1 <= M <= N <= 10
+  Subtask 3: 30 points
+  - 1 <= M <= N <= 50
+  Subtask 3: 40 points
+  - Original Constraints.
+
+  -----Example-----
+  Input:
+  4 2
+
+  Output:
+  2
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def solve_gem_game (n m : Nat) : Nat := sorry
+
+  /-- The result of solve_gem_game is never negative -/
+vc-theorems: |
+  theorem solve_gem_game_nonneg (n m : Nat) :
+    solve_gem_game n m ≥ 0 := sorry
+
+  /-- When m=1, result follows pattern based on n being even/odd -/
+
+  theorem solve_gem_game_m_one (n : Nat) :
+    solve_gem_game n 1 = if n % 2 = 0 then n/2 else n/2 + 1 := sorry
+
+  /-- For m > (n+1)/2, result equals m -/
+
+  theorem solve_gem_game_large_m (n m : Nat) (h : m > (n+1)/2) :
+    solve_gem_game n m = m := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve_gem_game 4 2
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve_gem_game 6 3
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval solve_gem_game 10 1
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

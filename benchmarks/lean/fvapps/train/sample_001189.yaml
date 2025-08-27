@@ -1,19 +1,61 @@
-"vc-description": "The chef won a duet singing award at Techsurge & Mridang 2012.\
-  \ From that time he is obsessed with the number 2.\n\nHe just started calculating\
-  \ the powers of two. And adding the digits of the results.\n\nBut he got puzzled\
-  \ after a few calculations. So gave you the job to generate the solutions to 2^n\
-  \ and find their sum of digits.\n\n-----Input-----\nN : number of inputs N<=100\n\
-  \nthen N lines with input T<=2000\n\n-----Output-----\nThe output for the corresponding\
-  \ input T\n\n-----Example-----\nInput:\n3\n5\n10\n4\n\nOutput:\n5\n7\n7\n\nExplanation:\n\
-  2^5=32\n3+2=5\n2^10=1024\n1+0+2+4=7\n2^4=16\n1+6=7"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calc_digit_sums (nums : List Nat) : List Nat := sorry\n\ndef\
-  \ sumDigits (n : Nat) : Nat := sorry\n"
-"vc-theorems": "theorem calc_digit_sums_length {nums : List Nat} :\n  (calc_digit_sums\
-  \ nums).length = nums.length := sorry\n\n\n\n\ntheorem calc_digit_sums_non_negative\
-  \ {nums : List Nat} {i : Nat} :\n  i < nums.length →\n  ∃ n, (calc_digit_sums nums)[i]?\
-  \ = some n ∧ n ≥ 0 := sorry\n\n\ntheorem calc_digit_sums_order_independent {nums1\
-  \ nums2 : List Nat} :\n  List.Perm nums1 nums2 →\n  List.Perm (calc_digit_sums nums1)\
-  \ (calc_digit_sums nums2) := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  The chef won a duet singing award at Techsurge & Mridang 2012. From that time he is obsessed with the number 2.
+
+  He just started calculating the powers of two. And adding the digits of the results.
+
+  But he got puzzled after a few calculations. So gave you the job to generate the solutions to 2^n and find their sum of digits.
+
+  -----Input-----
+  N : number of inputs N<=100
+
+  then N lines with input T<=2000
+
+  -----Output-----
+  The output for the corresponding input T
+
+  -----Example-----
+  Input:
+  3
+  5
+  10
+  4
+
+  Output:
+  5
+  7
+  7
+
+  Explanation:
+  2^5=32
+  3+2=5
+  2^10=1024
+  1+0+2+4=7
+  2^4=16
+  1+6=7
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def calc_digit_sums (nums : List Nat) : List Nat := sorry
+
+  def sumDigits (n : Nat) : Nat := sorry
+vc-theorems: |-
+  theorem calc_digit_sums_length {nums : List Nat} :
+    (calc_digit_sums nums).length = nums.length := sorry
+
+
+
+
+  theorem calc_digit_sums_non_negative {nums : List Nat} {i : Nat} :
+    i < nums.length →
+    ∃ n, (calc_digit_sums nums)[i]? = some n ∧ n ≥ 0 := sorry
+
+
+  theorem calc_digit_sums_order_independent {nums1 nums2 : List Nat} :
+    List.Perm nums1 nums2 →
+    List.Perm (calc_digit_sums nums1) (calc_digit_sums nums2) := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

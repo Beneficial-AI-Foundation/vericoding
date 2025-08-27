@@ -1,15 +1,55 @@
-"vc-description": "# Rock Paper Scissors\n\nLet's play! You have to return which player\
-  \ won! In case of a draw return `Draw!`.\n\nExamples:\n\n![rockpaperscissors](http://i.imgur.com/aimOQVX.png)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def rps (p1 p2 : Move) : Outcome :=\n  sorry\n"
-"vc-theorems": "theorem rps_symmetry (p1 p2 : Move) :\n  match rps p1 p2 with\n  |\
-  \ Outcome.draw => rps p2 p1 = Outcome.draw\n  | Outcome.player1Wins => rps p2 p1\
-  \ = Outcome.player2Wins\n  | Outcome.player2Wins => rps p2 p1 = Outcome.player1Wins\n\
-  \  := sorry\n\n\ntheorem rps_draw (m : Move) :\n  rps m m = Outcome.draw := sorry\n\
-  \n\ntheorem rps_valid_result (p1 p2 : Move) :\n  match rps p1 p2 with\n  | Outcome.player1Wins\
-  \ => True\n  | Outcome.player2Wins => True\n  | Outcome.draw => True := sorry\n\n\
-  /--\ninfo: 'Player 1 won!'\n-/\n#guard_msgs in\n#eval rps \"rock\" \"scissors\"\n\
-  \n/--\ninfo: 'Player 2 won!'\n-/\n#guard_msgs in\n#eval rps \"scissors\" \"rock\"\
-  \n\n/--\ninfo: 'Draw!'\n-/\n#guard_msgs in\n#eval rps \"rock\" \"rock\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Rock Paper Scissors
+
+  Let's play! You have to return which player won! In case of a draw return `Draw!`.
+
+  Examples:
+
+  ![rockpaperscissors](http://i.imgur.com/aimOQVX.png)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def rps (p1 p2 : Move) : Outcome :=
+    sorry
+vc-theorems: |
+  theorem rps_symmetry (p1 p2 : Move) :
+    match rps p1 p2 with
+    | Outcome.draw => rps p2 p1 = Outcome.draw
+    | Outcome.player1Wins => rps p2 p1 = Outcome.player2Wins
+    | Outcome.player2Wins => rps p2 p1 = Outcome.player1Wins
+    := sorry
+
+
+  theorem rps_draw (m : Move) :
+    rps m m = Outcome.draw := sorry
+
+
+  theorem rps_valid_result (p1 p2 : Move) :
+    match rps p1 p2 with
+    | Outcome.player1Wins => True
+    | Outcome.player2Wins => True
+    | Outcome.draw => True := sorry
+
+  /--
+  info: 'Player 1 won!'
+  -/
+  #guard_msgs in
+  #eval rps "rock" "scissors"
+
+  /--
+  info: 'Player 2 won!'
+  -/
+  #guard_msgs in
+  #eval rps "scissors" "rock"
+
+  /--
+  info: 'Draw!'
+  -/
+  #guard_msgs in
+  #eval rps "rock" "rock"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

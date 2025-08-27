@@ -1,24 +1,55 @@
-"vc-description": "At the annual family gathering, the family likes to find the oldest\
-  \ living family member’s age and the youngest family member’s age and calculate\
-  \ the difference between them.\n\nYou will be given an array of all the family members'\
-  \ ages, in any order.  The ages will be given in whole numbers, so a baby of 5 months,\
-  \ will have an ascribed ‘age’ of 0.  Return a new array (a tuple in Python) with\
-  \ [youngest age, oldest age, difference between the youngest and oldest age]."
-"vc-preamble": "import Imports.AllImports\n\ndef List.minimum (l : List Nat) (h :\
-  \ l ≠ []) : Nat :=\nmatch l with\n| [] => by contradiction\n| x::xs => xs.foldl\
-  \ min x\n\n\ndef List.maximum (l : List Nat) (h : l ≠ []) : Nat :=\nmatch l with\n\
-  | [] => by contradiction\n| x::xs => xs.foldl max x\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def differenceInAges (ages : List Nat) : Nat × Nat × Nat := sorry\n\
-  \ntheorem difference_in_ages_basic_properties\n  (ages : List Nat) (h : ages ≠ [])\
-  \ :\n  let result := differenceInAges ages\n  List.minimum ages h = result.1 ∧\n\
-  \  List.maximum ages h = result.2.1 ∧\n  result.2.2 = result.2.1 - result.1 :=\n\
-  sorry\n"
-"vc-theorems": "theorem difference_in_ages_difference_nonnegative\n  (ages : List\
-  \ Nat) (h : ages ≠ []) :\n  let result := differenceInAges ages\n  result.2.2 ≥\
-  \ 0 :=\nsorry\n\n\ntheorem difference_in_ages_youngest_leq_oldest\n  (ages : List\
-  \ Nat) (h : ages ≠ []) :\n  let result := differenceInAges ages\n  result.1 ≤ result.2.1\
-  \ :=\nsorry\n\n\ntheorem difference_in_ages_same_values\n  (ages : List Nat) (h\
-  \ : ages ≠ []) (x : Nat) \n  (h2 : ∀ n, n ∈ ages → n = x) :\n  let result := differenceInAges\
-  \ ages\n  result.1 = result.2.1 ∧\n  result.2.2 = 0 :=\nsorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  At the annual family gathering, the family likes to find the oldest living family member’s age and the youngest family member’s age and calculate the difference between them.
+
+  You will be given an array of all the family members' ages, in any order.  The ages will be given in whole numbers, so a baby of 5 months, will have an ascribed ‘age’ of 0.  Return a new array (a tuple in Python) with [youngest age, oldest age, difference between the youngest and oldest age].
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.minimum (l : List Nat) (h : l ≠ []) : Nat :=
+  match l with
+  | [] => by contradiction
+  | x::xs => xs.foldl min x
+
+
+  def List.maximum (l : List Nat) (h : l ≠ []) : Nat :=
+  match l with
+  | [] => by contradiction
+  | x::xs => xs.foldl max x
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def differenceInAges (ages : List Nat) : Nat × Nat × Nat := sorry
+
+  theorem difference_in_ages_basic_properties
+    (ages : List Nat) (h : ages ≠ []) :
+    let result := differenceInAges ages
+    List.minimum ages h = result.1 ∧
+    List.maximum ages h = result.2.1 ∧
+    result.2.2 = result.2.1 - result.1 :=
+  sorry
+vc-theorems: |-
+  theorem difference_in_ages_difference_nonnegative
+    (ages : List Nat) (h : ages ≠ []) :
+    let result := differenceInAges ages
+    result.2.2 ≥ 0 :=
+  sorry
+
+
+  theorem difference_in_ages_youngest_leq_oldest
+    (ages : List Nat) (h : ages ≠ []) :
+    let result := differenceInAges ages
+    result.1 ≤ result.2.1 :=
+  sorry
+
+
+  theorem difference_in_ages_same_values
+    (ages : List Nat) (h : ages ≠ []) (x : Nat) 
+    (h2 : ∀ n, n ∈ ages → n = x) :
+    let result := differenceInAges ages
+    result.1 = result.2.1 ∧
+    result.2.2 = 0 :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

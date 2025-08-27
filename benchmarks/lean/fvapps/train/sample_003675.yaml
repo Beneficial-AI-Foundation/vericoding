@@ -1,18 +1,55 @@
-"vc-description": "In this Kata, we are going to reverse a string while maintaining\
-  \ the spaces (if any) in their original place.\n\nFor example:\n```\nsolve(\"our\
-  \ code\") = \"edo cruo\"\n-- Normal reversal without spaces is \"edocruo\". \n--\
-  \ However, there is a space at index 3, so the string becomes \"edo cruo\"\n\nsolve(\"\
-  your code rocks\") = \"skco redo cruoy\". \nsolve(\"codewars\") = \"srawedoc\"\n\
-  ```\nMore examples in the test cases. All input will be lower case letters and in\
-  \ some cases spaces.\n\nGood luck!\n\nPlease also try:\n\n[Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)\n\
-  \n[Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve (s : String) : String := sorry \n\ntheorem solve_preserves_length\
-  \ (s : String) : \n  s.length = (solve s).length := sorry\n"
-"vc-theorems": "theorem solve_preserves_spaces (s : String) (i : String.Pos) :\n \
-  \ (s.get i = ' ') = ((solve s).get i = ' ') := sorry\n\n/--\ninfo: 'srawedoc'\n\
-  -/\n#guard_msgs in\n#eval solve \"codewars\"\n\n/--\ninfo: 'edoc ruoy'\n-/\n#guard_msgs\
-  \ in\n#eval solve \"your code\"\n\n/--\ninfo: 'skco redo cruoy'\n-/\n#guard_msgs\
-  \ in\n#eval solve \"your code rocks\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In this Kata, we are going to reverse a string while maintaining the spaces (if any) in their original place.
+
+  For example:
+  ```
+  solve("our code") = "edo cruo"
+  -- Normal reversal without spaces is "edocruo". 
+  -- However, there is a space at index 3, so the string becomes "edo cruo"
+
+  solve("your code rocks") = "skco redo cruoy". 
+  solve("codewars") = "srawedoc"
+  ```
+  More examples in the test cases. All input will be lower case letters and in some cases spaces.
+
+  Good luck!
+
+  Please also try:
+
+  [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
+
+  [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve (s : String) : String := sorry 
+
+  theorem solve_preserves_length (s : String) : 
+    s.length = (solve s).length := sorry
+vc-theorems: |
+  theorem solve_preserves_spaces (s : String) (i : String.Pos) :
+    (s.get i = ' ') = ((solve s).get i = ' ') := sorry
+
+  /--
+  info: 'srawedoc'
+  -/
+  #guard_msgs in
+  #eval solve "codewars"
+
+  /--
+  info: 'edoc ruoy'
+  -/
+  #guard_msgs in
+  #eval solve "your code"
+
+  /--
+  info: 'skco redo cruoy'
+  -/
+  #guard_msgs in
+  #eval solve "your code rocks"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

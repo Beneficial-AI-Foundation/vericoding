@@ -1,19 +1,54 @@
-"vc-description": "Write a function to split a string and convert it into an array\
-  \ of words. For example:\n\n```python\n\"Robin Singh\" ==> [\"Robin\", \"Singh\"\
-  ]\n\n\"I love arrays they are my favorite\" ==> [\"I\", \"love\", \"arrays\", \"\
-  they\", \"are\", \"my\", \"favorite\"]\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def string_to_array (s : String) : Array String := sorry\n\ntheorem\
-  \ string_to_array_split_join\n  (words : Array String)\n  (h₁ : words.size > 0)\n\
-  \  (h₂ : ∀ (i : Fin words.size), words.get i ≠ \"\") :\n  string_to_array (\" \"\
-  .intercalate words.toList) = words := sorry\n"
-"vc-theorems": "theorem string_to_array_empty :\n  string_to_array \"\" = #[\"\"]\
-  \ := sorry\n\n\ntheorem string_to_array_no_empty_elements\n  (s : String)\n  (h\
-  \ : s ≠ \"\")\n  (i : Nat)\n  (h₂ : i < (string_to_array s).size - 1) :\n  ∃ h₃\
-  \ : i < (string_to_array s).size, \n    (string_to_array s).get ⟨i, h₃⟩ ≠ \"\" :=\
-  \ sorry\n\n/--\ninfo: ['Robin', 'Singh']\n-/\n#guard_msgs in\n#eval string_to_array\
-  \ \"Robin Singh\"\n\n/--\ninfo: ['I', 'love', 'arrays', 'they', 'are', 'my', 'favorite']\n\
-  -/\n#guard_msgs in\n#eval string_to_array \"I love arrays they are my favorite\"\
-  \n\n/--\ninfo: ['']\n-/\n#guard_msgs in\n#eval string_to_array \"\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function to split a string and convert it into an array of words. For example:
+
+  ```python
+  "Robin Singh" ==> ["Robin", "Singh"]
+
+  "I love arrays they are my favorite" ==> ["I", "love", "arrays", "they", "are", "my", "favorite"]
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def string_to_array (s : String) : Array String := sorry
+
+  theorem string_to_array_split_join
+    (words : Array String)
+    (h₁ : words.size > 0)
+    (h₂ : ∀ (i : Fin words.size), words.get i ≠ "") :
+    string_to_array (" ".intercalate words.toList) = words := sorry
+vc-theorems: |
+  theorem string_to_array_empty :
+    string_to_array "" = #[""] := sorry
+
+
+  theorem string_to_array_no_empty_elements
+    (s : String)
+    (h : s ≠ "")
+    (i : Nat)
+    (h₂ : i < (string_to_array s).size - 1) :
+    ∃ h₃ : i < (string_to_array s).size, 
+      (string_to_array s).get ⟨i, h₃⟩ ≠ "" := sorry
+
+  /--
+  info: ['Robin', 'Singh']
+  -/
+  #guard_msgs in
+  #eval string_to_array "Robin Singh"
+
+  /--
+  info: ['I', 'love', 'arrays', 'they', 'are', 'my', 'favorite']
+  -/
+  #guard_msgs in
+  #eval string_to_array "I love arrays they are my favorite"
+
+  /--
+  info: ['']
+  -/
+  #guard_msgs in
+  #eval string_to_array ""
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

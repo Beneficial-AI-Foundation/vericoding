@@ -1,26 +1,72 @@
-"vc-description": "Given a square grid of integers arr, a falling path with non-zero\
-  \ shifts is a choice of exactly one element from each row of arr, such that no two\
-  \ elements chosen in adjacent rows are in the same column.\nReturn the minimum sum\
-  \ of a falling path with non-zero shifts.\n \nExample 1:\nInput: arr = [[1,2,3],[4,5,6],[7,8,9]]\n\
-  Output: 13\nExplanation: \nThe possible falling paths are:\n[1,5,9], [1,5,7], [1,6,7],\
-  \ [1,6,8],\n[2,4,8], [2,4,9], [2,6,7], [2,6,8],\n[3,4,8], [3,4,9], [3,5,7], [3,5,9]\n\
-  The falling path with the smallest sum is [1,5,7], so the answer is 13.\n\n \nConstraints:\n\
-  \n1 <= arr.length == arr[i].length <= 200\n-99 <= arr[i][j] <= 99"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def min_falling_path_sum (matrix: List (List Int)) : Int := sorry\n\
-  \n-- Single element matrix theorem"
-"vc-theorems": "theorem single_element_matrix_path_sum (n: Int) (h: n ≥ 1 ∧ n ≤ 10):\n\
-  \  min_falling_path_sum [[n]] = n := sorry\n\n-- 2x2 matrix theorem\n\ntheorem two_by_two_matrix_path_sum\
-  \ (matrix: List (List Int))\n  (hsize: matrix.length = 2 ∧ ∀ row ∈ matrix, row.length\
-  \ = 2)\n  (hbound: ∀ row ∈ matrix, ∀ x ∈ row, -10 ≤ x ∧ x ≤ 10):\n  min_falling_path_sum\
-  \ matrix = \n    min \n      (min \n        ((matrix.get! 0).get! 0 + (matrix.get!\
-  \ 1).get! 0)\n        ((matrix.get! 0).get! 0 + (matrix.get! 1).get! 1))\n     \
-  \ (min\n        ((matrix.get! 0).get! 1 + (matrix.get! 1).get! 0)\n        ((matrix.get!\
-  \ 0).get! 1 + (matrix.get! 1).get! 1)) := sorry\n\n-- Zero matrix theorem  \n\n\
-  theorem zero_matrix_path_sum (n: Nat) (h: 2 ≤ n ∧ n ≤ 5):\n  let matrix := List.replicate\
-  \ n (List.replicate n 0)\n  min_falling_path_sum matrix = 0 := sorry\n\n/--\ninfo:\
-  \ 13\n-/\n#guard_msgs in\n#eval min_falling_path_sum [[2, 1, 3], [6, 5, 4], [7,\
-  \ 8, 9]]\n\n/--\ninfo: -59\n-/\n#guard_msgs in\n#eval min_falling_path_sum arr2\n\
-  \n/--\ninfo: -36\n-/\n#guard_msgs in\n#eval min_falling_path_sum arr3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a square grid of integers arr, a falling path with non-zero shifts is a choice of exactly one element from each row of arr, such that no two elements chosen in adjacent rows are in the same column.
+  Return the minimum sum of a falling path with non-zero shifts.
+   
+  Example 1:
+  Input: arr = [[1,2,3],[4,5,6],[7,8,9]]
+  Output: 13
+  Explanation: 
+  The possible falling paths are:
+  [1,5,9], [1,5,7], [1,6,7], [1,6,8],
+  [2,4,8], [2,4,9], [2,6,7], [2,6,8],
+  [3,4,8], [3,4,9], [3,5,7], [3,5,9]
+  The falling path with the smallest sum is [1,5,7], so the answer is 13.
+
+   
+  Constraints:
+
+  1 <= arr.length == arr[i].length <= 200
+  -99 <= arr[i][j] <= 99
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def min_falling_path_sum (matrix: List (List Int)) : Int := sorry
+
+  -- Single element matrix theorem
+vc-theorems: |
+  theorem single_element_matrix_path_sum (n: Int) (h: n ≥ 1 ∧ n ≤ 10):
+    min_falling_path_sum [[n]] = n := sorry
+
+  -- 2x2 matrix theorem
+
+  theorem two_by_two_matrix_path_sum (matrix: List (List Int))
+    (hsize: matrix.length = 2 ∧ ∀ row ∈ matrix, row.length = 2)
+    (hbound: ∀ row ∈ matrix, ∀ x ∈ row, -10 ≤ x ∧ x ≤ 10):
+    min_falling_path_sum matrix = 
+      min 
+        (min 
+          ((matrix.get! 0).get! 0 + (matrix.get! 1).get! 0)
+          ((matrix.get! 0).get! 0 + (matrix.get! 1).get! 1))
+        (min
+          ((matrix.get! 0).get! 1 + (matrix.get! 1).get! 0)
+          ((matrix.get! 0).get! 1 + (matrix.get! 1).get! 1)) := sorry
+
+  -- Zero matrix theorem  
+
+  theorem zero_matrix_path_sum (n: Nat) (h: 2 ≤ n ∧ n ≤ 5):
+    let matrix := List.replicate n (List.replicate n 0)
+    min_falling_path_sum matrix = 0 := sorry
+
+  /--
+  info: 13
+  -/
+  #guard_msgs in
+  #eval min_falling_path_sum [[2, 1, 3], [6, 5, 4], [7, 8, 9]]
+
+  /--
+  info: -59
+  -/
+  #guard_msgs in
+  #eval min_falling_path_sum arr2
+
+  /--
+  info: -36
+  -/
+  #guard_msgs in
+  #eval min_falling_path_sum arr3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

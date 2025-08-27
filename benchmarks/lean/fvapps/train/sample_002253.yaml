@@ -1,65 +1,100 @@
-"vc-description": "$n$ robots have escaped from your laboratory! You have to find\
-  \ them as soon as possible, because these robots are experimental, and their behavior\
-  \ is not tested yet, so they may be really dangerous!\n\nFortunately, even though\
-  \ your robots have escaped, you still have some control over them. First of all,\
-  \ you know the location of each robot: the world you live in can be modeled as an\
-  \ infinite coordinate plane, and the $i$-th robot is currently located at the point\
-  \ having coordinates ($x_i$, $y_i$). Furthermore, you may send exactly one command\
-  \ to all of the robots. The command should contain two integer numbers $X$ and $Y$,\
-  \ and when each robot receives this command, it starts moving towards the point\
-  \ having coordinates ($X$, $Y$). The robot stops its movement in two cases:  either\
-  \ it reaches ($X$, $Y$);  or it cannot get any closer to ($X$, $Y$). \n\nNormally,\
-  \ all robots should be able to get from any point of the coordinate plane to any\
-  \ other point. Each robot usually can perform four actions to move. Let's denote\
-  \ the current coordinates of the robot as ($x_c$, $y_c$). Then the movement system\
-  \ allows it to move to any of the four adjacent points:  the first action allows\
-  \ it to move from ($x_c$, $y_c$) to ($x_c - 1$, $y_c$);  the second action allows\
-  \ it to move from ($x_c$, $y_c$) to ($x_c$, $y_c + 1$);  the third action allows\
-  \ it to move from ($x_c$, $y_c$) to ($x_c + 1$, $y_c$);  the fourth action allows\
-  \ it to move from ($x_c$, $y_c$) to ($x_c$, $y_c - 1$). \n\nUnfortunately, it seems\
-  \ that some movement systems of some robots are malfunctioning. For each robot you\
-  \ know which actions it can perform, and which it cannot perform.\n\nYou want to\
-  \ send a command so all robots gather at the same point. To do so, you have to choose\
-  \ a pair of integer numbers $X$ and $Y$ so that each robot can reach the point ($X$,\
-  \ $Y$). Is it possible to find such a point?\n\n\n-----Input-----\n\nThe first line\
-  \ contains one integer $q$ ($1 \\le q \\le 10^5$) — the number of queries.\n\nThen\
-  \ $q$ queries follow. Each query begins with one line containing one integer $n$\
-  \ ($1 \\le n \\le 10^5$) — the number of robots in the query. Then $n$ lines follow,\
-  \ the $i$-th of these lines describes the $i$-th robot in the current query: it\
-  \ contains six integer numbers $x_i$, $y_i$, $f_{i, 1}$, $f_{i, 2}$, $f_{i, 3}$\
-  \ and $f_{i, 4}$ ($-10^5 \\le x_i, y_i \\le 10^5$, $0 \\le f_{i, j} \\le 1$). The\
-  \ first two numbers describe the initial location of the $i$-th robot, and the following\
-  \ four numbers describe which actions the $i$-th robot can use to move ($f_{i, j}\
-  \ = 1$ if the $i$-th robot can use the $j$-th action, and $f_{i, j} = 0$ if it cannot\
-  \ use the $j$-th action).\n\nIt is guaranteed that the total number of robots over\
-  \ all queries does not exceed $10^5$.\n\n\n-----Output-----\n\nYou should answer\
-  \ each query independently, in the order these queries appear in the input.\n\n\
-  To answer a query, you should do one of the following:  if it is impossible to find\
-  \ a point that is reachable by all $n$ robots, print one number $0$ on a separate\
-  \ line;  if it is possible to find a point that is reachable by all $n$ robots,\
-  \ print three space-separated integers on the same line: $1$ $X$ $Y$, where $X$\
-  \ and $Y$ are the coordinates of the point reachable by all $n$ robots. Both $X$\
-  \ and $Y$ should not exceed $10^5$ by absolute value; it is guaranteed that if there\
-  \ exists at least one point reachable by all robots, then at least one of such points\
-  \ has both coordinates not exceeding $10^5$ by absolute value.\n\n\n-----Example-----\n\
-  Input\n4\n2\n-1 -2 0 0 0 0\n-1 -2 0 0 0 0\n3\n1 5 1 1 1 1\n2 5 0 1 0 1\n3 5 1 0\
-  \ 0 0\n2\n1337 1337 0 1 1 1\n1336 1337 1 1 0 1\n1\n3 5 1 1 1 1\n\nOutput\n1 -1 -2\n\
-  1 2 5\n0\n1 -100000 -100000"
-"vc-preamble": "import Imports.AllImports\n\ndef Position := Int × Int × Bool × Bool\
-  \ × Bool × Bool\n\ndef find_robot_gather_point (robots : List Position) : List Int\
-  \ :=\nsorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def in_bounds (x y : Int) : Bool :=\n-100000 ≤ x ∧ x ≤ 100000 ∧\
-  \ -100000 ≤ y ∧ y ≤ 100000\n"
-"vc-theorems": "theorem gather_point_valid (robots : List Position) :\n  let result\
-  \ := find_robot_gather_point robots\n  (result.length = 1 ∧ result = [0]) ∨ \n \
-  \ (result.length = 3 ∧ \n   result.get! 0 = 1 ∧\n   let x := result.get! 1\n   let\
-  \ y := result.get! 2\n   in_bounds x y ∧\n   ∀ (robot : Position),\n   robot ∈ robots\
-  \ →\n   let (rx, ry, can_left, can_up, can_right, can_down) := robot\n   (¬can_left\
-  \ → x ≥ rx) ∧\n   (¬can_right → x ≤ rx) ∧\n   (¬can_up → y ≤ ry) ∧\n   (¬can_down\
-  \ → y ≥ ry)) :=\nsorry\n\n/--\ninfo: [1, -1, -2]\n-/\n#guard_msgs in\n#eval find_robot_gather_point\
-  \ [[-1, -2, 0, 0, 0, 0], [-1, -2, 0, 0, 0, 0]]\n\n/--\ninfo: [1, 2, 5]\n-/\n#guard_msgs\
-  \ in\n#eval find_robot_gather_point [[1, 5, 1, 1, 1, 1], [2, 5, 0, 1, 0, 1], [3,\
-  \ 5, 1, 0, 0, 0]]\n\n/--\ninfo: [0]\n-/\n#guard_msgs in\n#eval find_robot_gather_point\
-  \ [[1337, 1337, 0, 1, 1, 1], [1336, 1337, 1, 1, 0, 1]]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  $n$ robots have escaped from your laboratory! You have to find them as soon as possible, because these robots are experimental, and their behavior is not tested yet, so they may be really dangerous!
+
+  Fortunately, even though your robots have escaped, you still have some control over them. First of all, you know the location of each robot: the world you live in can be modeled as an infinite coordinate plane, and the $i$-th robot is currently located at the point having coordinates ($x_i$, $y_i$). Furthermore, you may send exactly one command to all of the robots. The command should contain two integer numbers $X$ and $Y$, and when each robot receives this command, it starts moving towards the point having coordinates ($X$, $Y$). The robot stops its movement in two cases:  either it reaches ($X$, $Y$);  or it cannot get any closer to ($X$, $Y$). 
+
+  Normally, all robots should be able to get from any point of the coordinate plane to any other point. Each robot usually can perform four actions to move. Let's denote the current coordinates of the robot as ($x_c$, $y_c$). Then the movement system allows it to move to any of the four adjacent points:  the first action allows it to move from ($x_c$, $y_c$) to ($x_c - 1$, $y_c$);  the second action allows it to move from ($x_c$, $y_c$) to ($x_c$, $y_c + 1$);  the third action allows it to move from ($x_c$, $y_c$) to ($x_c + 1$, $y_c$);  the fourth action allows it to move from ($x_c$, $y_c$) to ($x_c$, $y_c - 1$). 
+
+  Unfortunately, it seems that some movement systems of some robots are malfunctioning. For each robot you know which actions it can perform, and which it cannot perform.
+
+  You want to send a command so all robots gather at the same point. To do so, you have to choose a pair of integer numbers $X$ and $Y$ so that each robot can reach the point ($X$, $Y$). Is it possible to find such a point?
+
+
+  -----Input-----
+
+  The first line contains one integer $q$ ($1 \le q \le 10^5$) — the number of queries.
+
+  Then $q$ queries follow. Each query begins with one line containing one integer $n$ ($1 \le n \le 10^5$) — the number of robots in the query. Then $n$ lines follow, the $i$-th of these lines describes the $i$-th robot in the current query: it contains six integer numbers $x_i$, $y_i$, $f_{i, 1}$, $f_{i, 2}$, $f_{i, 3}$ and $f_{i, 4}$ ($-10^5 \le x_i, y_i \le 10^5$, $0 \le f_{i, j} \le 1$). The first two numbers describe the initial location of the $i$-th robot, and the following four numbers describe which actions the $i$-th robot can use to move ($f_{i, j} = 1$ if the $i$-th robot can use the $j$-th action, and $f_{i, j} = 0$ if it cannot use the $j$-th action).
+
+  It is guaranteed that the total number of robots over all queries does not exceed $10^5$.
+
+
+  -----Output-----
+
+  You should answer each query independently, in the order these queries appear in the input.
+
+  To answer a query, you should do one of the following:  if it is impossible to find a point that is reachable by all $n$ robots, print one number $0$ on a separate line;  if it is possible to find a point that is reachable by all $n$ robots, print three space-separated integers on the same line: $1$ $X$ $Y$, where $X$ and $Y$ are the coordinates of the point reachable by all $n$ robots. Both $X$ and $Y$ should not exceed $10^5$ by absolute value; it is guaranteed that if there exists at least one point reachable by all robots, then at least one of such points has both coordinates not exceeding $10^5$ by absolute value.
+
+
+  -----Example-----
+  Input
+  4
+  2
+  -1 -2 0 0 0 0
+  -1 -2 0 0 0 0
+  3
+  1 5 1 1 1 1
+  2 5 0 1 0 1
+  3 5 1 0 0 0
+  2
+  1337 1337 0 1 1 1
+  1336 1337 1 1 0 1
+  1
+  3 5 1 1 1 1
+
+  Output
+  1 -1 -2
+  1 2 5
+  0
+  1 -100000 -100000
+vc-preamble: |
+  import Imports.AllImports
+
+  def Position := Int × Int × Bool × Bool × Bool × Bool
+
+  def find_robot_gather_point (robots : List Position) : List Int :=
+  sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def in_bounds (x y : Int) : Bool :=
+  -100000 ≤ x ∧ x ≤ 100000 ∧ -100000 ≤ y ∧ y ≤ 100000
+vc-theorems: |
+  theorem gather_point_valid (robots : List Position) :
+    let result := find_robot_gather_point robots
+    (result.length = 1 ∧ result = [0]) ∨ 
+    (result.length = 3 ∧ 
+     result.get! 0 = 1 ∧
+     let x := result.get! 1
+     let y := result.get! 2
+     in_bounds x y ∧
+     ∀ (robot : Position),
+     robot ∈ robots →
+     let (rx, ry, can_left, can_up, can_right, can_down) := robot
+     (¬can_left → x ≥ rx) ∧
+     (¬can_right → x ≤ rx) ∧
+     (¬can_up → y ≤ ry) ∧
+     (¬can_down → y ≥ ry)) :=
+  sorry
+
+  /--
+  info: [1, -1, -2]
+  -/
+  #guard_msgs in
+  #eval find_robot_gather_point [[-1, -2, 0, 0, 0, 0], [-1, -2, 0, 0, 0, 0]]
+
+  /--
+  info: [1, 2, 5]
+  -/
+  #guard_msgs in
+  #eval find_robot_gather_point [[1, 5, 1, 1, 1, 1], [2, 5, 0, 1, 0, 1], [3, 5, 1, 0, 0, 0]]
+
+  /--
+  info: [0]
+  -/
+  #guard_msgs in
+  #eval find_robot_gather_point [[1337, 1337, 0, 1, 1, 1], [1336, 1337, 1, 1, 0, 1]]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

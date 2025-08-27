@@ -1,24 +1,61 @@
-"vc-description": "Given a string of words (x), you need to return an array of the\
-  \ words, sorted alphabetically by the final character in each.\n\nIf two words have\
-  \ the same last letter, they returned array should show them in the order they appeared\
-  \ in the given string.\n\nAll inputs will be valid."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def last (s : String) : List String := sorry\n\ndef isWordChar\
-  \ (c : Char) : Bool := 32 ≤ c.val ∧ c.val ≤ 126\n\n-- All words from input are present\
-  \ in output with same frequency"
-"vc-theorems": "theorem last_maintains_words (s : String) \n  (h : ∀ c ∈ s.data, isWordChar\
-  \ c) :\n  ∀ w ∈ s.split (· = ' '), \n    (s.split (· = ' ')).count w = (last s).count\
-  \ w := sorry\n\n-- Words are sorted by their last character\n\ntheorem last_sorted_by_last_char\
-  \ (s : String)\n  (h : ∀ c ∈ s.data, isWordChar c) :\n  ∀ i < (last s).length -\
-  \ 1,\n    let w1 := (last s)[i]!\n    let w2 := (last s)[i+1]!\n    match w1.data.getLast?,\
-  \ w2.data.getLast? with\n    | some c1, some c2 => c1 ≤ c2\n    | _, _ => True :=\
-  \ sorry\n\n-- Duplicate words in input remain in output  \n\ntheorem last_preserves_duplicates\
-  \ (s : String)\n  (h : ∀ c ∈ s.data, isWordChar c) :\n  ∀ w ∈ s.split (· = ' '),\n\
-  \    (s.split (· = ' ')).count w = (last s).count w := sorry\n\n/--\ninfo: ['a',\
-  \ 'need', 'ubud', 'i', 'taxi', 'man', 'to', 'up']\n-/\n#guard_msgs in\n#eval last\
-  \ \"man i need a taxi up to ubud\"\n\n/--\ninfo: ['take', 'me', 'semynak', 'to']\n\
-  -/\n#guard_msgs in\n#eval last \"take me to semynak\"\n\n/--\ninfo: ['massage',\
-  \ 'massage', 'massage', 'yes', 'yes']\n-/\n#guard_msgs in\n#eval last \"massage\
-  \ yes massage yes massage\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a string of words (x), you need to return an array of the words, sorted alphabetically by the final character in each.
+
+  If two words have the same last letter, they returned array should show them in the order they appeared in the given string.
+
+  All inputs will be valid.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def last (s : String) : List String := sorry
+
+  def isWordChar (c : Char) : Bool := 32 ≤ c.val ∧ c.val ≤ 126
+
+  -- All words from input are present in output with same frequency
+vc-theorems: |
+  theorem last_maintains_words (s : String) 
+    (h : ∀ c ∈ s.data, isWordChar c) :
+    ∀ w ∈ s.split (· = ' '), 
+      (s.split (· = ' ')).count w = (last s).count w := sorry
+
+  -- Words are sorted by their last character
+
+  theorem last_sorted_by_last_char (s : String)
+    (h : ∀ c ∈ s.data, isWordChar c) :
+    ∀ i < (last s).length - 1,
+      let w1 := (last s)[i]!
+      let w2 := (last s)[i+1]!
+      match w1.data.getLast?, w2.data.getLast? with
+      | some c1, some c2 => c1 ≤ c2
+      | _, _ => True := sorry
+
+  -- Duplicate words in input remain in output  
+
+  theorem last_preserves_duplicates (s : String)
+    (h : ∀ c ∈ s.data, isWordChar c) :
+    ∀ w ∈ s.split (· = ' '),
+      (s.split (· = ' ')).count w = (last s).count w := sorry
+
+  /--
+  info: ['a', 'need', 'ubud', 'i', 'taxi', 'man', 'to', 'up']
+  -/
+  #guard_msgs in
+  #eval last "man i need a taxi up to ubud"
+
+  /--
+  info: ['take', 'me', 'semynak', 'to']
+  -/
+  #guard_msgs in
+  #eval last "take me to semynak"
+
+  /--
+  info: ['massage', 'massage', 'massage', 'yes', 'yes']
+  -/
+  #guard_msgs in
+  #eval last "massage yes massage yes massage"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

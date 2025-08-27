@@ -1,25 +1,81 @@
-"vc-description": "# Task\n Given a sequence of 0s and 1s, determine if it is a prefix\
-  \ of Thue-Morse sequence.\n\n The infinite Thue-Morse sequence is obtained by first\
-  \ taking a sequence containing a single 0 and then repeatedly concatenating the\
-  \ current sequence with its binary complement.\n\n A binary complement of a sequence\
-  \ X is a sequence Y of the same length such that the sum of elements X_i and Y_i\
-  \ on the same positions is equal to 1 for each i.\n\n Thus the first few iterations\
-  \ to obtain Thue-Morse sequence are:\n```\n0\n0 1\n0 1 1 0\n0 1 1 0 1 0 0 1\n...\n\
-  ```\n\n# Examples\n\n For `seq=[0, 1, 1, 0, 1]`, the result should be `true`.\n\
-  \ \n For `seq=[0, 1, 0, 0]`, the result should be `false`.\n\n\n# Inputs & Output\n\
-  \n\n - `[input]` integer array `seq`\n\n  An non-empty array.\n  \n  Constraints:\
-  \ \n  \n  `1 <= seq.length <= 1000`\n  \n  `seq[i] ∈ [0,1]`\n\n\n - `[output]` a\
-  \ boolean value\n\n  `true` if it is a prefix of Thue-Morse sequence. `false` otherwise."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def List.get_thue_morse_seq (n : Nat) : List Nat := sorry\ndef\
-  \ is_thue_morse (seq : List Nat) : Bool := sorry\n"
-"vc-theorems": "theorem valid_sequence_length (n : Nat) (h : n > 0) :\n  is_thue_morse\
-  \ (List.get_thue_morse_seq n) := sorry\n\n\ntheorem invalid_sequences (seq : List\
-  \ Nat) (h₁ : seq.length > 0) (h₂ : ∀ x ∈ seq, x = 0 ∨ x = 1) :\n  seq ≠ List.get_thue_morse_seq\
-  \ seq.length → ¬is_thue_morse seq := sorry\n\n\ntheorem sequence_starts_with_zero\
-  \ (n : Nat) (h : n > 0) :\n  (List.get_thue_morse_seq n).head? = some 0 := sorry\n\
-  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_thue_morse [0, 1, 1, 0, 1]\n\n/--\n\
-  info: True\n-/\n#guard_msgs in\n#eval is_thue_morse [0]\n\n/--\ninfo: False\n-/\n\
-  #guard_msgs in\n#eval is_thue_morse [1]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Task
+   Given a sequence of 0s and 1s, determine if it is a prefix of Thue-Morse sequence.
+
+   The infinite Thue-Morse sequence is obtained by first taking a sequence containing a single 0 and then repeatedly concatenating the current sequence with its binary complement.
+
+   A binary complement of a sequence X is a sequence Y of the same length such that the sum of elements X_i and Y_i on the same positions is equal to 1 for each i.
+
+   Thus the first few iterations to obtain Thue-Morse sequence are:
+  ```
+  0
+  0 1
+  0 1 1 0
+  0 1 1 0 1 0 0 1
+  ...
+  ```
+
+  # Examples
+
+   For `seq=[0, 1, 1, 0, 1]`, the result should be `true`.
+   
+   For `seq=[0, 1, 0, 0]`, the result should be `false`.
+
+
+  # Inputs & Output
+
+
+   - `[input]` integer array `seq`
+
+    An non-empty array.
+    
+    Constraints: 
+    
+    `1 <= seq.length <= 1000`
+    
+    `seq[i] ∈ [0,1]`
+
+
+   - `[output]` a boolean value
+
+    `true` if it is a prefix of Thue-Morse sequence. `false` otherwise.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def List.get_thue_morse_seq (n : Nat) : List Nat := sorry
+  def is_thue_morse (seq : List Nat) : Bool := sorry
+vc-theorems: |
+  theorem valid_sequence_length (n : Nat) (h : n > 0) :
+    is_thue_morse (List.get_thue_morse_seq n) := sorry
+
+
+  theorem invalid_sequences (seq : List Nat) (h₁ : seq.length > 0) (h₂ : ∀ x ∈ seq, x = 0 ∨ x = 1) :
+    seq ≠ List.get_thue_morse_seq seq.length → ¬is_thue_morse seq := sorry
+
+
+  theorem sequence_starts_with_zero (n : Nat) (h : n > 0) :
+    (List.get_thue_morse_seq n).head? = some 0 := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_thue_morse [0, 1, 1, 0, 1]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_thue_morse [0]
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_thue_morse [1]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

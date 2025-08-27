@@ -1,19 +1,72 @@
-"vc-description": "Create a function that takes a number and finds the factors of\
-  \ it, listing them in **descending** order in an **array**.\n\nIf the parameter\
-  \ is not an integer or less than 1, return `-1`. In C# return an empty array.\n\n\
-  For Example:\n`factors(54)` should return `[54, 27, 18, 9, 6, 3, 2, 1]`"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def factors : Int → List Int \n  := sorry\n\nvariable (result :\
-  \ List Int)\n"
-"vc-theorems": "theorem factors_positive_int (x : Int) (h : x > 0) : \n  let result\
-  \ := factors x\n  (∀ f ∈ result, x % f = 0) ∧\n  result.head? = some x ∧\n  result.getLast?\
-  \ = some 1 :=\n  sorry\n\n\ntheorem factors_non_positive (x : Int) (h : x ≤ 0) :\n\
-  \  factors x = [-1] :=\n  sorry\n\n\ntheorem factors_float (x : Float) :\n  factors\
-  \ 0 = [-1] :=\n  sorry\n\n\ntheorem factors_invalid_type (x : String) :\n  factors\
-  \ 0 = [-1] :=\n  sorry\n\n/--\ninfo: [54, 27, 18, 9, 6, 3, 2, 1]\n-/\n#guard_msgs\
-  \ in\n#eval factors 54\n\n/--\ninfo: [49, 7, 1]\n-/\n#guard_msgs in\n#eval factors\
-  \ 49\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval factors -4\n\n/--\ninfo: [1]\n\
-  -/\n#guard_msgs in\n#eval factors 1\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval\
-  \ factors 4.5\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Create a function that takes a number and finds the factors of it, listing them in **descending** order in an **array**.
+
+  If the parameter is not an integer or less than 1, return `-1`. In C# return an empty array.
+
+  For Example:
+  `factors(54)` should return `[54, 27, 18, 9, 6, 3, 2, 1]`
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def factors : Int → List Int 
+    := sorry
+
+  variable (result : List Int)
+vc-theorems: |
+  theorem factors_positive_int (x : Int) (h : x > 0) : 
+    let result := factors x
+    (∀ f ∈ result, x % f = 0) ∧
+    result.head? = some x ∧
+    result.getLast? = some 1 :=
+    sorry
+
+
+  theorem factors_non_positive (x : Int) (h : x ≤ 0) :
+    factors x = [-1] :=
+    sorry
+
+
+  theorem factors_float (x : Float) :
+    factors 0 = [-1] :=
+    sorry
+
+
+  theorem factors_invalid_type (x : String) :
+    factors 0 = [-1] :=
+    sorry
+
+  /--
+  info: [54, 27, 18, 9, 6, 3, 2, 1]
+  -/
+  #guard_msgs in
+  #eval factors 54
+
+  /--
+  info: [49, 7, 1]
+  -/
+  #guard_msgs in
+  #eval factors 49
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval factors -4
+
+  /--
+  info: [1]
+  -/
+  #guard_msgs in
+  #eval factors 1
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval factors 4.5
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

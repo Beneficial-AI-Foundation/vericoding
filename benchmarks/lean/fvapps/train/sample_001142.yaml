@@ -1,19 +1,64 @@
-"vc-description": "Chef has a natural number N. Cheffina challenges chef to check\
-  \ whether the given number is divisible by the sum of its digits or not. If the\
-  \ given number is divisible then print \"Yes\" else \"No\".\n\n-----Input:-----\n\
-  - First-line will contain $T$, the number of test cases. Then the test cases follow.\
-  \ \n- Each test case contains a single line of input, $N$. \n\n-----Output:-----\n\
-  For each test case, output in a single line answer.\n\n-----Constraints-----\n-\
-  \ $1 \\leq T \\leq 10^6$\n- $1 \\leq N \\leq 10^6$\n\n-----Sample Input:-----\n\
-  2\n16\n27\n\n-----Sample Output:-----\nNo\nYes"
-"vc-preamble": "import Imports.AllImports\n\ndef digitSum (n : Nat) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isDivisibleByDigitSum (n : Nat) : String :=\n  sorry\n"
-"vc-theorems": "theorem isDivisibleByDigitSum_spec (n : Nat) (h : n > 0) :\n  let\
-  \ ds := digitSum n\n  isDivisibleByDigitSum n = \"Yes\" ↔ n % ds = 0\n  := sorry\n\
-  \n\ntheorem isDivisibleByDigitSum_returns_valid_result (n : Nat) (h : n > 0) :\n\
-  \  isDivisibleByDigitSum n = \"Yes\" ∨ isDivisibleByDigitSum n = \"No\"\n  := sorry\n\
-  \n/--\ninfo: 'No'\n-/\n#guard_msgs in\n#eval is_divisible_by_digit_sum 16\n\n/--\n\
-  info: 'Yes'\n-/\n#guard_msgs in\n#eval is_divisible_by_digit_sum 27\n\n/--\ninfo:\
-  \ 'Yes'\n-/\n#guard_msgs in\n#eval is_divisible_by_digit_sum 45\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Chef has a natural number N. Cheffina challenges chef to check whether the given number is divisible by the sum of its digits or not. If the given number is divisible then print "Yes" else "No".
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, $N$. 
+
+  -----Output:-----
+  For each test case, output in a single line answer.
+
+  -----Constraints-----
+  - $1 \leq T \leq 10^6$
+  - $1 \leq N \leq 10^6$
+
+  -----Sample Input:-----
+  2
+  16
+  27
+
+  -----Sample Output:-----
+  No
+  Yes
+vc-preamble: |
+  import Imports.AllImports
+
+  def digitSum (n : Nat) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isDivisibleByDigitSum (n : Nat) : String :=
+    sorry
+vc-theorems: |
+  theorem isDivisibleByDigitSum_spec (n : Nat) (h : n > 0) :
+    let ds := digitSum n
+    isDivisibleByDigitSum n = "Yes" ↔ n % ds = 0
+    := sorry
+
+
+  theorem isDivisibleByDigitSum_returns_valid_result (n : Nat) (h : n > 0) :
+    isDivisibleByDigitSum n = "Yes" ∨ isDivisibleByDigitSum n = "No"
+    := sorry
+
+  /--
+  info: 'No'
+  -/
+  #guard_msgs in
+  #eval is_divisible_by_digit_sum 16
+
+  /--
+  info: 'Yes'
+  -/
+  #guard_msgs in
+  #eval is_divisible_by_digit_sum 27
+
+  /--
+  info: 'Yes'
+  -/
+  #guard_msgs in
+  #eval is_divisible_by_digit_sum 45
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

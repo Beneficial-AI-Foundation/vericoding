@@ -1,24 +1,60 @@
-"vc-description": "A variation of determining leap years, assuming only integers are\
-  \ used and years can be negative and positive.\n\nWrite a function which will return\
-  \ the days in the year and the year entered in a string.  For example 2000, entered\
-  \ as an integer, will return as a string 2000 has 366 days\n\nThere are a few assumptions\
-  \ we will accept the year 0, even though there is no year 0 in the Gregorian Calendar.\n\
-  \nAlso the basic rule for validating a leap year are as follows\n\nMost years that\
-  \ can be divided evenly by 4 are leap years. \n\nException: Century years are NOT\
-  \ leap years UNLESS they can be evenly divided by 400.\n\nSo the years 0, -64 and\
-  \ 2016 will return 366 days.\nWhilst 1974, -10 and 666 will return 365 days."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def yearDays (year : Int) : String := sorry\n\ndef isLeapYear (year\
-  \ : Int) : Bool := sorry\n"
-"vc-theorems": "theorem yearDays_format {year : Int} : \n  yearDays year = s!\"{year}\
-  \ has {if isLeapYear year then 366 else 365} days\" := sorry\n\n\ntheorem yearDays_values\
-  \ {year : Int} :\n  yearDays year = s!\"{year} has 365 days\" ∨ yearDays year =\
-  \ s!\"{year} has 366 days\" := sorry\n\n\ntheorem divisible_by_400_is_leap {year\
-  \ : Int} (h : year % 400 = 0) :\n  yearDays year = s!\"{year} has 366 days\" :=\
-  \ sorry\n\n\ntheorem divisible_by_4_not_100_is_leap {year : Int} (h1 : year % 4\
-  \ = 0) (h2 : year % 100 ≠ 0) :\n  yearDays year = s!\"{year} has 366 days\" := sorry\n\
-  \n/--\ninfo: '2000 has 366 days'\n-/\n#guard_msgs in\n#eval year_days 2000\n\n/--\n\
-  info: '1974 has 365 days'\n-/\n#guard_msgs in\n#eval year_days 1974\n\n/--\ninfo:\
-  \ '-64 has 366 days'\n-/\n#guard_msgs in\n#eval year_days -64\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  A variation of determining leap years, assuming only integers are used and years can be negative and positive.
+
+  Write a function which will return the days in the year and the year entered in a string.  For example 2000, entered as an integer, will return as a string 2000 has 366 days
+
+  There are a few assumptions we will accept the year 0, even though there is no year 0 in the Gregorian Calendar.
+
+  Also the basic rule for validating a leap year are as follows
+
+  Most years that can be divided evenly by 4 are leap years. 
+
+  Exception: Century years are NOT leap years UNLESS they can be evenly divided by 400.
+
+  So the years 0, -64 and 2016 will return 366 days.
+  Whilst 1974, -10 and 666 will return 365 days.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def yearDays (year : Int) : String := sorry
+
+  def isLeapYear (year : Int) : Bool := sorry
+vc-theorems: |
+  theorem yearDays_format {year : Int} : 
+    yearDays year = s!"{year} has {if isLeapYear year then 366 else 365} days" := sorry
+
+
+  theorem yearDays_values {year : Int} :
+    yearDays year = s!"{year} has 365 days" ∨ yearDays year = s!"{year} has 366 days" := sorry
+
+
+  theorem divisible_by_400_is_leap {year : Int} (h : year % 400 = 0) :
+    yearDays year = s!"{year} has 366 days" := sorry
+
+
+  theorem divisible_by_4_not_100_is_leap {year : Int} (h1 : year % 4 = 0) (h2 : year % 100 ≠ 0) :
+    yearDays year = s!"{year} has 366 days" := sorry
+
+  /--
+  info: '2000 has 366 days'
+  -/
+  #guard_msgs in
+  #eval year_days 2000
+
+  /--
+  info: '1974 has 365 days'
+  -/
+  #guard_msgs in
+  #eval year_days 1974
+
+  /--
+  info: '-64 has 366 days'
+  -/
+  #guard_msgs in
+  #eval year_days -64
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

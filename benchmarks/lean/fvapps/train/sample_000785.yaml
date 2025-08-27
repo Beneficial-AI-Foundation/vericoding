@@ -1,44 +1,93 @@
-"vc-description": "in Chefland, there is a very famous street where $N$ types of street\
-  \ food (numbered $1$ through $N$) are offered. For each valid $i$, there are $S_i$\
-  \ stores that offer food of the $i$-th type, the price of one piece of food of this\
-  \ type is $V_i$ (the same in each of these stores) and each day, $P_i$ people come\
-  \ to buy it; each of these people wants to buy one piece of food of the $i$-th type.\n\
-  Chef is planning to open a new store at this street, where he would offer food of\
-  \ one of these $N$ types. Chef assumes that the people who want to buy the type\
-  \ of food he'd offer will split equally among all stores that offer it, and if this\
-  \ is impossible, i.e. the number of these people $p$ is not divisible by the number\
-  \ of these stores $s$, then only $\\left\\lfloor\\frac{p}{s}\\right\\rfloor$ people\
-  \ will buy food from Chef.\nChef wants to maximise his daily profit. Help Chef choose\
-  \ which type of food to offer and find the maximum daily profit he can make.\n\n\
-  -----Input-----\n- The first line of the input contains a single integer $T$ denoting\
-  \ the number of test cases. The description of $T$ test cases follows.\n- The first\
-  \ line of each test case contains a single integer $N$. \n- $N$ lines follow. For\
-  \ each $i$ ($1 \\le i \\le N$), the $i$-th of these lines contains three space-separated\
-  \ integers $S_i$, $P_i$ and $V_i$.\n\n-----Output-----\nFor each test case, print\
-  \ a single line containing one integer ― the maximum profit.\n\n-----Constraints-----\n\
-  - $1 \\le T \\le 100$\n- $1 \\le N \\le 100$\n- $1 \\le S_i, V_i, P_i \\le 10,000$\
-  \ for each valid $i$\n\n-----Subtasks-----\nSubtask #1 (100 points): original constraints\n\
-  \n-----Example Input-----\n2\n3\n4 6 8\n2 6 6\n1 4 3\n1\n7 7 4\n\n-----Example Output-----\n\
-  12\n0\n\n-----Explanation-----\nExample case 1: Chef should offer food of the second\
-  \ type. On each day, two people would buy from him, so his daily profit would be\
-  \ $12$.\nExample case 2: Chef has no option other than to offer the only type of\
-  \ food, but he does not expect anyone to buy from him anyway, so his daily profit\
-  \ is $0$."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_street_food (stores : List (Nat × Nat × Nat)) : Nat :=\n\
-  sorry\n"
-"vc-theorems": "theorem solve_street_food_non_negative (stores : List (Nat × Nat ×\
-  \ Nat)) :\n  solve_street_food stores ≥ 0 := by sorry\n\n\ntheorem solve_street_food_empty\
-  \ :\n  solve_street_food [] = 0 := by sorry\n\n\ntheorem solve_street_food_profit_bound\
-  \ \n  (stores : List (Nat × Nat × Nat))\n  (h : stores ≠ []) :\n  ∀ (store : Nat\
-  \ × Nat × Nat), \n  store ∈ stores → \n  let num_stores := store.1\n  let people\
-  \ := store.2.1 \n  let price := store.2.2\n  let profit_per_store := (people / (num_stores\
-  \ + 1)) * price\n  profit_per_store * (num_stores + 1) ≤ people * price := by sorry\n\
-  \n\ntheorem solve_street_food_zero_people :\n  solve_street_food [(1, 0, 10)] =\
-  \ 0 := by sorry\n\n\ntheorem solve_street_food_zero_price :\n  solve_street_food\
-  \ [(1, 100, 0)] = 0 := by sorry\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval solve_street_food\
-  \ [(4, 6, 8), (2, 6, 6), (1, 4, 3)]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval solve_street_food\
-  \ [(7, 7, 4)]\n\n/--\ninfo: 25\n-/\n#guard_msgs in\n#eval solve_street_food [(1,\
-  \ 10, 5), (2, 15, 4)]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  in Chefland, there is a very famous street where $N$ types of street food (numbered $1$ through $N$) are offered. For each valid $i$, there are $S_i$ stores that offer food of the $i$-th type, the price of one piece of food of this type is $V_i$ (the same in each of these stores) and each day, $P_i$ people come to buy it; each of these people wants to buy one piece of food of the $i$-th type.
+  Chef is planning to open a new store at this street, where he would offer food of one of these $N$ types. Chef assumes that the people who want to buy the type of food he'd offer will split equally among all stores that offer it, and if this is impossible, i.e. the number of these people $p$ is not divisible by the number of these stores $s$, then only $\left\lfloor\frac{p}{s}\right\rfloor$ people will buy food from Chef.
+  Chef wants to maximise his daily profit. Help Chef choose which type of food to offer and find the maximum daily profit he can make.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains a single integer $N$. 
+  - $N$ lines follow. For each $i$ ($1 \le i \le N$), the $i$-th of these lines contains three space-separated integers $S_i$, $P_i$ and $V_i$.
+
+  -----Output-----
+  For each test case, print a single line containing one integer ― the maximum profit.
+
+  -----Constraints-----
+  - $1 \le T \le 100$
+  - $1 \le N \le 100$
+  - $1 \le S_i, V_i, P_i \le 10,000$ for each valid $i$
+
+  -----Subtasks-----
+  Subtask #1 (100 points): original constraints
+
+  -----Example Input-----
+  2
+  3
+  4 6 8
+  2 6 6
+  1 4 3
+  1
+  7 7 4
+
+  -----Example Output-----
+  12
+  0
+
+  -----Explanation-----
+  Example case 1: Chef should offer food of the second type. On each day, two people would buy from him, so his daily profit would be $12$.
+  Example case 2: Chef has no option other than to offer the only type of food, but he does not expect anyone to buy from him anyway, so his daily profit is $0$.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_street_food (stores : List (Nat × Nat × Nat)) : Nat :=
+  sorry
+vc-theorems: |
+  theorem solve_street_food_non_negative (stores : List (Nat × Nat × Nat)) :
+    solve_street_food stores ≥ 0 := by sorry
+
+
+  theorem solve_street_food_empty :
+    solve_street_food [] = 0 := by sorry
+
+
+  theorem solve_street_food_profit_bound 
+    (stores : List (Nat × Nat × Nat))
+    (h : stores ≠ []) :
+    ∀ (store : Nat × Nat × Nat), 
+    store ∈ stores → 
+    let num_stores := store.1
+    let people := store.2.1 
+    let price := store.2.2
+    let profit_per_store := (people / (num_stores + 1)) * price
+    profit_per_store * (num_stores + 1) ≤ people * price := by sorry
+
+
+  theorem solve_street_food_zero_people :
+    solve_street_food [(1, 0, 10)] = 0 := by sorry
+
+
+  theorem solve_street_food_zero_price :
+    solve_street_food [(1, 100, 0)] = 0 := by sorry
+
+  /--
+  info: 12
+  -/
+  #guard_msgs in
+  #eval solve_street_food [(4, 6, 8), (2, 6, 6), (1, 4, 3)]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve_street_food [(7, 7, 4)]
+
+  /--
+  info: 25
+  -/
+  #guard_msgs in
+  #eval solve_street_food [(1, 10, 5), (2, 15, 4)]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

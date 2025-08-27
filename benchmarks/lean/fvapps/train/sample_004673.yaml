@@ -1,41 +1,79 @@
-"vc-description": "Lets play some Pong! \n\n![pong](http://gifimage.net/wp-content/uploads/2017/08/pong-gif-3.gif)\n\
-  \nFor those who don't know what Pong is, it is a simple arcade game where two players\
-  \ can move their paddles to hit a ball towards the opponent's side of the screen,\
-  \ gaining a point for each opponent's miss. You can read more about it [here](https://en.wikipedia.org/wiki/Pong).\n\
-  \n___\n\n# Task:\n\nYou must finish the `Pong` class. It has a constructor which\
-  \ accepts the `maximum score` a player can get throughout the game, and a method\
-  \ called `play`. This method determines whether the current player hit the ball\
-  \ or not, i.e. if the paddle is at the sufficient height to hit it back. There're\
-  \ 4 possible outcomes: player successfully hits the ball back, player misses the\
-  \ ball, player misses the ball **and his opponent reaches the maximum score winning\
-  \ the game**, either player tries to hit a ball despite the game being over. You\
-  \ can see the input and output description in detail below.\n\n### \"Play\" method\
-  \ input:\n\n* ball position - The Y coordinate of the ball\n* player position -\
-  \ The Y coordinate of the centre(!) of the current player's paddle\n\n### \"Play\"\
-  \ method output:\n\nOne of the following strings:\n\n* `\"Player X has hit the ball!\"\
-  ` - If the ball \"hits\" the paddle\n* `\"Player X has missed the ball!\"` - If\
-  \ the ball is above/below the paddle\n* `\"Player X has won the game!\"` - If one\
-  \ of the players has reached the maximum score\n* `\"Game Over!\"` - If the game\
-  \ has ended but either player still hits the ball\n\n### Important notes:\n\n* Players\
-  \ take turns hitting the ball, always starting the game with the Player 1.\n* The\
-  \ paddles are `7` pixels in height.\n* The ball is `1` pixel in height.\n\n___\n\
-  \n## Example"
-"vc-preamble": "import Imports.AllImports\n\ndef Pong.play (game : Pong) (ballPos\
-  \ playerPos : Int) : String := sorry\n\ndef Pong.game_over (game : Pong) : Bool\
-  \ := sorry \n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def Int.abs (i : Int) : Int := sorry\n\ntheorem pong_init_properties\
-  \ {maxScore : Nat} (h : maxScore ≥ 1) :\n  let game := Pong.mk maxScore []\n  game.maxScore\
-  \ = maxScore ∧ \n  game.scores = [] := sorry\n"
-"vc-theorems": "theorem hit_or_miss_range {maxScore : Nat} {ballPos playerPos : Int}\
-  \ \n  (h1 : maxScore ≥ 2) :\n  let game := Pong.mk maxScore []\n  let result :=\
-  \ game.play ballPos playerPos\n  (Int.abs (ballPos - playerPos) ≤ 3 → result.contains\
-  \ '.') ∧\n  (Int.abs (ballPos - playerPos) > 3 ∧ ¬result.contains '.' → result.contains\
-  \ ' ') := sorry\n\n\ntheorem alternating_players {maxScore : Nat} (h : maxScore\
-  \ ≥ 1) :\n  let game := Pong.mk maxScore []\n  let plays := [game.play 10 0, game.play\
-  \ 10 0, game.play 10 0, game.play 10 0]\n  ∀ i, i + 1 < plays.length → \n    let\
-  \ p1 := plays[i]!\n    let p2 := plays[i+1]!\n    p1 ≠ p2 := sorry\n\n\ntheorem\
-  \ game_over_condition {maxScore : Nat} (h : maxScore ≥ 1) :\n  let game := Pong.mk\
-  \ maxScore []\n  ∃ plays : List String, \n    let last := plays.getLast! \n    last.contains\
-  \ ' ' ∧\n    game.play 0 0 = \"Game Over!\" := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Lets play some Pong! 
+
+  ![pong](http://gifimage.net/wp-content/uploads/2017/08/pong-gif-3.gif)
+
+  For those who don't know what Pong is, it is a simple arcade game where two players can move their paddles to hit a ball towards the opponent's side of the screen, gaining a point for each opponent's miss. You can read more about it [here](https://en.wikipedia.org/wiki/Pong).
+
+  ___
+
+  # Task:
+
+  You must finish the `Pong` class. It has a constructor which accepts the `maximum score` a player can get throughout the game, and a method called `play`. This method determines whether the current player hit the ball or not, i.e. if the paddle is at the sufficient height to hit it back. There're 4 possible outcomes: player successfully hits the ball back, player misses the ball, player misses the ball **and his opponent reaches the maximum score winning the game**, either player tries to hit a ball despite the game being over. You can see the input and output description in detail below.
+
+  ### "Play" method input:
+
+  * ball position - The Y coordinate of the ball
+  * player position - The Y coordinate of the centre(!) of the current player's paddle
+
+  ### "Play" method output:
+
+  One of the following strings:
+
+  * `"Player X has hit the ball!"` - If the ball "hits" the paddle
+  * `"Player X has missed the ball!"` - If the ball is above/below the paddle
+  * `"Player X has won the game!"` - If one of the players has reached the maximum score
+  * `"Game Over!"` - If the game has ended but either player still hits the ball
+
+  ### Important notes:
+
+  * Players take turns hitting the ball, always starting the game with the Player 1.
+  * The paddles are `7` pixels in height.
+  * The ball is `1` pixel in height.
+
+  ___
+
+  ## Example
+vc-preamble: |
+  import Imports.AllImports
+
+  def Pong.play (game : Pong) (ballPos playerPos : Int) : String := sorry
+
+  def Pong.game_over (game : Pong) : Bool := sorry 
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def Int.abs (i : Int) : Int := sorry
+
+  theorem pong_init_properties {maxScore : Nat} (h : maxScore ≥ 1) :
+    let game := Pong.mk maxScore []
+    game.maxScore = maxScore ∧ 
+    game.scores = [] := sorry
+vc-theorems: |-
+  theorem hit_or_miss_range {maxScore : Nat} {ballPos playerPos : Int} 
+    (h1 : maxScore ≥ 2) :
+    let game := Pong.mk maxScore []
+    let result := game.play ballPos playerPos
+    (Int.abs (ballPos - playerPos) ≤ 3 → result.contains '.') ∧
+    (Int.abs (ballPos - playerPos) > 3 ∧ ¬result.contains '.' → result.contains ' ') := sorry
+
+
+  theorem alternating_players {maxScore : Nat} (h : maxScore ≥ 1) :
+    let game := Pong.mk maxScore []
+    let plays := [game.play 10 0, game.play 10 0, game.play 10 0, game.play 10 0]
+    ∀ i, i + 1 < plays.length → 
+      let p1 := plays[i]!
+      let p2 := plays[i+1]!
+      p1 ≠ p2 := sorry
+
+
+  theorem game_over_condition {maxScore : Nat} (h : maxScore ≥ 1) :
+    let game := Pong.mk maxScore []
+    ∃ plays : List String, 
+      let last := plays.getLast! 
+      last.contains ' ' ∧
+      game.play 0 0 = "Game Over!" := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

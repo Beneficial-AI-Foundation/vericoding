@@ -1,26 +1,80 @@
-"vc-description": "=====Problem Statement=====\nYou are given a positive integer N.\
-  \ Print a numerical triangle of height N - 1 like the one below:\n1\n22\n333\n4444\n\
-  55555\n......\n\nCan you do it using only arithmetic operations, a single for loop\
-  \ and print statement?\n\nUse no more than two lines. The first line (the for statement)\
-  \ is already written for you. You have to complete the print statement.\n\nNote:\
-  \ Using anything related to strings will give a score of 0.\n\n=====Input Format=====\n\
-  A single line containing integer, N.\n\n=====Constraints=====\n1≤N≤9\n\n=====Output\
-  \ Format=====\nPrint N - 1 lines as explained above."
-"vc-preamble": "import Imports.AllImports\n\ndef numerical_triangle (n: Nat) : String\
-  \ := sorry\n\ndef String.splitLines (s : String) : List String := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def String.allDigits (s : String) : Bool := sorry\ndef String.toNat\
-  \ (s : String) : Option Nat := sorry\n"
-"vc-theorems": "theorem numerical_triangle_increasing_length (n: Nat)\n    (h: 1 ≤\
-  \ n ∧ n ≤ 20) :\n    let lines := (numerical_triangle n).splitLines\n    lines ≠\
-  \ [] →\n    ∀ i, 1 ≤ i → i < lines.length →\n    (lines.get! i).length > (lines.get!\
-  \ (i-1)).length := sorry\n\n\ntheorem numerical_triangle_line_count (n: Nat)\n \
-  \   (h: 1 ≤ n ∧ n ≤ 20) :\n    let lines := (numerical_triangle n).splitLines\n\
-  \    lines ≠ [] →\n    lines.length = n - 1 := sorry\n\n\ntheorem numerical_triangle_valid_integers\
-  \ (n: Nat)\n    (h: 1 ≤ n ∧ n ≤ 20) :\n    let lines := (numerical_triangle n).splitLines\n\
-  \    lines ≠ [] →\n    ∀ line, line ∈ lines →\n    line.allDigits ∧\n    (∃ num,\
-  \ line.toNat = some num ∧ num > 0) := sorry\n\n/--\ninfo: '1\\n22\\n333\\n4444'\n\
-  -/\n#guard_msgs in\n#eval numerical_triangle 5\n\n/--\ninfo: '1\\n22'\n-/\n#guard_msgs\
-  \ in\n#eval numerical_triangle 3\n\n/--\ninfo: '1'\n-/\n#guard_msgs in\n#eval numerical_triangle\
-  \ 2\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  =====Problem Statement=====
+  You are given a positive integer N. Print a numerical triangle of height N - 1 like the one below:
+  1
+  22
+  333
+  4444
+  55555
+  ......
+
+  Can you do it using only arithmetic operations, a single for loop and print statement?
+
+  Use no more than two lines. The first line (the for statement) is already written for you. You have to complete the print statement.
+
+  Note: Using anything related to strings will give a score of 0.
+
+  =====Input Format=====
+  A single line containing integer, N.
+
+  =====Constraints=====
+  1≤N≤9
+
+  =====Output Format=====
+  Print N - 1 lines as explained above.
+vc-preamble: |
+  import Imports.AllImports
+
+  def numerical_triangle (n: Nat) : String := sorry
+
+  def String.splitLines (s : String) : List String := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def String.allDigits (s : String) : Bool := sorry
+  def String.toNat (s : String) : Option Nat := sorry
+vc-theorems: |
+  theorem numerical_triangle_increasing_length (n: Nat)
+      (h: 1 ≤ n ∧ n ≤ 20) :
+      let lines := (numerical_triangle n).splitLines
+      lines ≠ [] →
+      ∀ i, 1 ≤ i → i < lines.length →
+      (lines.get! i).length > (lines.get! (i-1)).length := sorry
+
+
+  theorem numerical_triangle_line_count (n: Nat)
+      (h: 1 ≤ n ∧ n ≤ 20) :
+      let lines := (numerical_triangle n).splitLines
+      lines ≠ [] →
+      lines.length = n - 1 := sorry
+
+
+  theorem numerical_triangle_valid_integers (n: Nat)
+      (h: 1 ≤ n ∧ n ≤ 20) :
+      let lines := (numerical_triangle n).splitLines
+      lines ≠ [] →
+      ∀ line, line ∈ lines →
+      line.allDigits ∧
+      (∃ num, line.toNat = some num ∧ num > 0) := sorry
+
+  /--
+  info: '1\n22\n333\n4444'
+  -/
+  #guard_msgs in
+  #eval numerical_triangle 5
+
+  /--
+  info: '1\n22'
+  -/
+  #guard_msgs in
+  #eval numerical_triangle 3
+
+  /--
+  info: '1'
+  -/
+  #guard_msgs in
+  #eval numerical_triangle 2
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

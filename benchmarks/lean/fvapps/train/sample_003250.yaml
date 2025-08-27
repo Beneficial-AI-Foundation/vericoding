@@ -1,26 +1,91 @@
-"vc-description": "Jamie is a programmer, and James' girlfriend. She likes diamonds,\
-  \ and wants a diamond string from James. Since James doesn't know how to make this\
-  \ happen, he needs your help.\n\n## Task\n\nYou need to return a string that looks\
-  \ like a diamond shape when printed on the screen, using asterisk (`*`) characters.\
-  \ Trailing spaces should be removed, and every line must be terminated with a newline\
-  \ character (`\\n`).\n\nReturn `null/nil/None/...` if the input is an even number\
-  \ or negative, as it is not possible to print a diamond of even or negative size.\n\
-  \n\n## Examples\n\nA size 3 diamond:\n\n```\n *\n***\n *\n```\n\n...which would\
-  \ appear as a string of `\" *\\n***\\n *\\n\"`\n\n\nA size 5 diamond:\n\n```\n \
-  \ *\n ***\n*****\n ***\n  *\n```\n\n...that is: `\"  *\\n ***\\n*****\\n ***\\n\
-  \  *\\n\"`"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def diamond (n : Int) : Option String := sorry\n\ndef String.replicate\
-  \ (n : Int) (s : String) : String := sorry\n"
-"vc-theorems": "theorem invalid_inputs_return_none\n  (n : Int)\n  (h : n ≤ 0 ∨ n\
-  \ % 2 = 0) :\n  diamond n = none :=\nsorry\n\n\ntheorem valid_inputs_properties\n\
-  \  (n : Int) \n  (h1 : n > 0)\n  (h2 : n % 2 = 1)\n  (h3 : n < 101) :\n  match diamond\
-  \ n with\n  | none => False\n  | some result =>\n    let lines := String.splitOn\
-  \ result \"\\n\";\n    lines.length = n\n    ∧ (∀ line ∈ lines, String.length line\
-  \ ≤ n)\n    ∧ (∀ line ∈ lines, ∀ c ∈ String.toList line, c = '*' ∨ c = ' ')\n  \
-  \  ∧ (∃ line ∈ lines, line = String.replicate n \"*\") :=\nsorry\n\n\ntheorem basic_case\
-  \ :\n  diamond 3 = some \" *\\n***\\n *\\n\" :=\nsorry\n\n/--\ninfo: expected1\n\
-  -/\n#guard_msgs in\n#eval diamond 3\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval\
-  \ diamond 0\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval diamond -1\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Jamie is a programmer, and James' girlfriend. She likes diamonds, and wants a diamond string from James. Since James doesn't know how to make this happen, he needs your help.
+
+  ## Task
+
+  You need to return a string that looks like a diamond shape when printed on the screen, using asterisk (`*`) characters. Trailing spaces should be removed, and every line must be terminated with a newline character (`\n`).
+
+  Return `null/nil/None/...` if the input is an even number or negative, as it is not possible to print a diamond of even or negative size.
+
+
+  ## Examples
+
+  A size 3 diamond:
+
+  ```
+   *
+  ***
+   *
+  ```
+
+  ...which would appear as a string of `" *\n***\n *\n"`
+
+
+  A size 5 diamond:
+
+  ```
+    *
+   ***
+  *****
+   ***
+    *
+  ```
+
+  ...that is: `"  *\n ***\n*****\n ***\n  *\n"`
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def diamond (n : Int) : Option String := sorry
+
+  def String.replicate (n : Int) (s : String) : String := sorry
+vc-theorems: |
+  theorem invalid_inputs_return_none
+    (n : Int)
+    (h : n ≤ 0 ∨ n % 2 = 0) :
+    diamond n = none :=
+  sorry
+
+
+  theorem valid_inputs_properties
+    (n : Int) 
+    (h1 : n > 0)
+    (h2 : n % 2 = 1)
+    (h3 : n < 101) :
+    match diamond n with
+    | none => False
+    | some result =>
+      let lines := String.splitOn result "\n";
+      lines.length = n
+      ∧ (∀ line ∈ lines, String.length line ≤ n)
+      ∧ (∀ line ∈ lines, ∀ c ∈ String.toList line, c = '*' ∨ c = ' ')
+      ∧ (∃ line ∈ lines, line = String.replicate n "*") :=
+  sorry
+
+
+  theorem basic_case :
+    diamond 3 = some " *\n***\n *\n" :=
+  sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval diamond 3
+
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval diamond 0
+
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval diamond -1
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,16 +1,71 @@
-"vc-description": "# Task\n The sequence of `Chando` is an infinite sequence of all\
-  \ Chando's numbers in ascending order.\n\n A number is called `Chando's` if it is\
-  \ an integer that can be represented as a sum of different positive integer powers\
-  \ of 5.\n\n The first Chando's numbers is 5 (5^1). And the following nth Chando's\
-  \ numbers are:\n ```\n 25  (5^2)\n 30  (5^1 + 5^2)\n 125 (5^3)\n 130 (5^1 + 5^3)\n\
-  \ 150 (5^2 + 5^3)\n ...\n ...\n ```\n\n Your task is to find the Chando's nth number\
-  \ for a given `n`.\n\n# Input/Output\n\n\n - `[input]` integer `n`\n\n  `1 <= n\
-  \ <= 7000`\n\n\n - `[output]` an integer\n\n  nth Chando's number"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def nth_chandos_number (n : Nat) : Nat :=\n  sorry\n\n\n\n\n\n\n"
-"vc-theorems": "theorem small_known_values :\n  nth_chandos_number 1 = 5 ∧\n  nth_chandos_number\
-  \ 2 = 25 ∧\n  nth_chandos_number 9 = 630 :=\n  sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs\
-  \ in\n#eval nth_chandos_number 1\n\n/--\ninfo: 25\n-/\n#guard_msgs in\n#eval nth_chandos_number\
-  \ 2\n\n/--\ninfo: 630\n-/\n#guard_msgs in\n#eval nth_chandos_number 9\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  # Task
+   The sequence of `Chando` is an infinite sequence of all Chando's numbers in ascending order.
+
+   A number is called `Chando's` if it is an integer that can be represented as a sum of different positive integer powers of 5.
+
+   The first Chando's numbers is 5 (5^1). And the following nth Chando's numbers are:
+   ```
+   25  (5^2)
+   30  (5^1 + 5^2)
+   125 (5^3)
+   130 (5^1 + 5^3)
+   150 (5^2 + 5^3)
+   ...
+   ...
+   ```
+
+   Your task is to find the Chando's nth number for a given `n`.
+
+  # Input/Output
+
+
+   - `[input]` integer `n`
+
+    `1 <= n <= 7000`
+
+
+   - `[output]` an integer
+
+    nth Chando's number
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def nth_chandos_number (n : Nat) : Nat :=
+    sorry
+
+
+
+
+
+
+vc-theorems: |
+  theorem small_known_values :
+    nth_chandos_number 1 = 5 ∧
+    nth_chandos_number 2 = 25 ∧
+    nth_chandos_number 9 = 630 :=
+    sorry
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval nth_chandos_number 1
+
+  /--
+  info: 25
+  -/
+  #guard_msgs in
+  #eval nth_chandos_number 2
+
+  /--
+  info: 630
+  -/
+  #guard_msgs in
+  #eval nth_chandos_number 9
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

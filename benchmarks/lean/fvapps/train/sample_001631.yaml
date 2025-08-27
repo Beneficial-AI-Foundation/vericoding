@@ -1,35 +1,98 @@
-"vc-description": "Good job! Now that Heidi is able to distinguish between Poisson\
-  \ and uniform distributions, she is in a good position to actually estimate the\
-  \ populations.\n\nCan you help Heidi estimate each village's population?\n\n\n-----Input-----\n\
-  \nSame as the easy version.\n\n\n-----Output-----\n\nOutput one line per village,\
-  \ in the same order as provided in the input, containing your (integer) population\
-  \ estimate.\n\nYour answer is considered correct if it is an integer that falls\
-  \ into the interval $[ \\lfloor 0.95 \\cdot P \\rfloor, \\lceil 1.05 \\cdot P \\\
-  rceil ]$, where P is the real population of the village, used to create the distribution\
-  \ (either Poisson or uniform) from which the marmots drew their answers."
-"vc-preamble": "import Imports.AllImports\n\ndef minimum (l : List Nat) : Nat :=\n\
-  \  match l with\n  | [] => 0\n  | (x::xs) => xs.foldl min x\n\n\ndef maximum (l\
-  \ : List Nat) : Nat :=\n  match l with\n  | [] => 0\n  | (x::xs) => xs.foldl max\
-  \ x\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isSorted (l : List Nat) : Bool :=\n  match l with\n  | [] =>\
-  \ true\n  | [_] => true\n  | x :: y :: xs => x ≤ y && isSorted (y :: xs)\n"
-"vc-theorems": "theorem estimate_population_returns_in_range \n  {surveys : List Nat}\
-  \ (h1 : surveys ≠ [])\n  {estimate_population : List Nat → Nat}\n  : estimate_population\
-  \ surveys ≥ minimum surveys ∧ \n    estimate_population surveys ≤ maximum surveys\
-  \ := by\n  sorry\n\n\ntheorem estimate_population_returns_nat\n  {surveys : List\
-  \ Nat}\n  {estimate_population : List Nat → Nat}\n  : ∃ n : Nat, estimate_population\
-  \ surveys = n := by\n  sorry\n\n\ntheorem estimate_population_preserves_input \n\
-  \  {surveys : List Nat}\n  {estimate_population : List Nat → Nat}\n  : estimate_population\
-  \ surveys = estimate_population surveys := by\n  sorry\n\n\ntheorem estimate_population_handles_duplicates\
-  \ \n  {surveys : List Nat} (h1 : surveys ≠ [])\n  {estimate_population : List Nat\
-  \ → Nat}\n  : estimate_population (surveys ++ surveys) ≥ minimum surveys ∧ \n  \
-  \  estimate_population (surveys ++ surveys) ≤ maximum surveys := by\n  sorry\n\n\
-  \ntheorem estimate_population_sort_independent\n  {surveys : List Nat}\n  {estimate_population\
-  \ : List Nat → Nat}\n  {sorted_surveys : List Nat}\n  (h : surveys.length = sorted_surveys.length)\n\
-  \  (h2 : isSorted sorted_surveys = true)\n  : estimate_population surveys = estimate_population\
-  \ sorted_surveys := by\n  sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval estimate_population\
-  \ [4, 5, 5, 5, 6, 6]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval estimate_population\
-  \ [2, 3, 4, 5, 6, 7]\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval estimate_population\
-  \ [3, 4, 4, 5, 5, 5, 5, 6, 6, 7]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Good job! Now that Heidi is able to distinguish between Poisson and uniform distributions, she is in a good position to actually estimate the populations.
+
+  Can you help Heidi estimate each village's population?
+
+
+  -----Input-----
+
+  Same as the easy version.
+
+
+  -----Output-----
+
+  Output one line per village, in the same order as provided in the input, containing your (integer) population estimate.
+
+  Your answer is considered correct if it is an integer that falls into the interval $[ \lfloor 0.95 \cdot P \rfloor, \lceil 1.05 \cdot P \rceil ]$, where P is the real population of the village, used to create the distribution (either Poisson or uniform) from which the marmots drew their answers.
+vc-preamble: |
+  import Imports.AllImports
+
+  def minimum (l : List Nat) : Nat :=
+    match l with
+    | [] => 0
+    | (x::xs) => xs.foldl min x
+
+
+  def maximum (l : List Nat) : Nat :=
+    match l with
+    | [] => 0
+    | (x::xs) => xs.foldl max x
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isSorted (l : List Nat) : Bool :=
+    match l with
+    | [] => true
+    | [_] => true
+    | x :: y :: xs => x ≤ y && isSorted (y :: xs)
+vc-theorems: |
+  theorem estimate_population_returns_in_range 
+    {surveys : List Nat} (h1 : surveys ≠ [])
+    {estimate_population : List Nat → Nat}
+    : estimate_population surveys ≥ minimum surveys ∧ 
+      estimate_population surveys ≤ maximum surveys := by
+    sorry
+
+
+  theorem estimate_population_returns_nat
+    {surveys : List Nat}
+    {estimate_population : List Nat → Nat}
+    : ∃ n : Nat, estimate_population surveys = n := by
+    sorry
+
+
+  theorem estimate_population_preserves_input 
+    {surveys : List Nat}
+    {estimate_population : List Nat → Nat}
+    : estimate_population surveys = estimate_population surveys := by
+    sorry
+
+
+  theorem estimate_population_handles_duplicates 
+    {surveys : List Nat} (h1 : surveys ≠ [])
+    {estimate_population : List Nat → Nat}
+    : estimate_population (surveys ++ surveys) ≥ minimum surveys ∧ 
+      estimate_population (surveys ++ surveys) ≤ maximum surveys := by
+    sorry
+
+
+  theorem estimate_population_sort_independent
+    {surveys : List Nat}
+    {estimate_population : List Nat → Nat}
+    {sorted_surveys : List Nat}
+    (h : surveys.length = sorted_surveys.length)
+    (h2 : isSorted sorted_surveys = true)
+    : estimate_population surveys = estimate_population sorted_surveys := by
+    sorry
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval estimate_population [4, 5, 5, 5, 6, 6]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval estimate_population [2, 3, 4, 5, 6, 7]
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval estimate_population [3, 4, 4, 5, 5, 5, 5, 6, 6, 7]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

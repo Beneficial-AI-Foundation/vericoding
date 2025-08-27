@@ -1,22 +1,74 @@
-"vc-description": "Given a string which consists of lowercase or uppercase letters,\
-  \ find the length of the longest palindromes that can be built with those letters.\n\
-  \nThis is case sensitive, for example \"Aa\" is not considered a palindrome here.\n\
-  \nNote:\nAssume the length of given string will not exceed 1,010.\n\n\nExample:\
-  \ \n\nInput:\n\"abccccdd\"\n\nOutput:\n7\n\nExplanation:\nOne longest palindrome\
-  \ that can be built is \"dccaccd\", whose length is 7."
-"vc-preamble": "import Imports.AllImports\n\ndef String.freq (s : String) (c : Char)\
-  \ : Nat :=\n  s.toList.filter (· = c) |>.length\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def longest_palindrome (s : String) : Nat := sorry\n\ntheorem longest_palindrome_length_bounds\
-  \ \n  (s : String) (h : s.length > 0) : \n  let res := longest_palindrome s\n  res\
-  \ ≤ s.length ∧ res ≥ 1 := sorry\n\n\n"
-"vc-theorems": "theorem longest_palindrome_monotonic\n  (s : String) (h : s.length\
-  \ > 0) :\n  let res1 := longest_palindrome s\n  let res2 := longest_palindrome (s.push\
-  \ 'a')\n  res2 ≥ res1 := sorry\n\n\ntheorem longest_palindrome_repeated_char\n \
-  \ (s : String) (h : s.length > 0) :\n  let c := s.get 0\n  let repeated := String.mk\
-  \ (List.replicate s.length c)\n  longest_palindrome repeated = s.length := sorry\n\
-  \n\ntheorem longest_palindrome_single_space :\n  longest_palindrome \" \" = 1 :=\
-  \ sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval longest_palindrome \"abccccdd\"\
-  \n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval longest_palindrome \"ccc\"\n\n/--\n\
-  info: 1\n-/\n#guard_msgs in\n#eval longest_palindrome \"Aa\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters.
+
+  This is case sensitive, for example "Aa" is not considered a palindrome here.
+
+  Note:
+  Assume the length of given string will not exceed 1,010.
+
+
+  Example: 
+
+  Input:
+  "abccccdd"
+
+  Output:
+  7
+
+  Explanation:
+  One longest palindrome that can be built is "dccaccd", whose length is 7.
+vc-preamble: |
+  import Imports.AllImports
+
+  def String.freq (s : String) (c : Char) : Nat :=
+    s.toList.filter (· = c) |>.length
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def longest_palindrome (s : String) : Nat := sorry
+
+  theorem longest_palindrome_length_bounds 
+    (s : String) (h : s.length > 0) : 
+    let res := longest_palindrome s
+    res ≤ s.length ∧ res ≥ 1 := sorry
+
+
+vc-theorems: |
+  theorem longest_palindrome_monotonic
+    (s : String) (h : s.length > 0) :
+    let res1 := longest_palindrome s
+    let res2 := longest_palindrome (s.push 'a')
+    res2 ≥ res1 := sorry
+
+
+  theorem longest_palindrome_repeated_char
+    (s : String) (h : s.length > 0) :
+    let c := s.get 0
+    let repeated := String.mk (List.replicate s.length c)
+    longest_palindrome repeated = s.length := sorry
+
+
+  theorem longest_palindrome_single_space :
+    longest_palindrome " " = 1 := sorry
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval longest_palindrome "abccccdd"
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval longest_palindrome "ccc"
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval longest_palindrome "Aa"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

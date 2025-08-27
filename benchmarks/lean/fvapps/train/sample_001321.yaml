@@ -1,24 +1,77 @@
-"vc-description": "Chef Vivek is good in mathematics and likes solving problems on\
-  \ prime numbers. One day his friend Jatin told him about Victory numbers. Victory\
-  \ number can be defined as a number formed after summing up all the prime numbers\
-  \ till given number n. Now, chef Vivek who is very fond of solving questions on\
-  \ prime numbers got busy in some other tasks. Your task is to help him finding victory\
-  \ number.\n\n-----Input:-----\n- First line will contain $T$, number of test cases.\
-  \ Then the test cases follow. \n- Each test case contains of a single line of input\
-  \ $N$ till which sum of all prime numbers between 1 to n has to be calculated.\n\
-  \n-----Output:-----\nFor each test case, output in a single line answer to the victory\
-  \ number.\n\n-----Constraints-----\n- $1 <= T <= 1000$\n- $1 <= N <= 10^6$\n\n-----Sample\
-  \ Input:-----\n3\n22\n13\n10\n\n-----Sample Output:-----\n77\n41\n17"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_victory_number (n : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem victory_number_nonnegative (n : Nat) :\n  n ≥ 1 → find_victory_number\
-  \ n ≥ 0 :=\n  sorry\n\n\ntheorem victory_number_one :\n  find_victory_number 1 =\
-  \ 0 :=\n  sorry\n\n\ntheorem victory_number_two :\n  find_victory_number 2 = 2 :=\n\
-  \  sorry\n\n\ntheorem victory_number_monotone (n : Nat) :\n  n > 1 → find_victory_number\
-  \ n ≥ find_victory_number (n-1) :=\n  sorry\n\n\ntheorem victory_number_contains_two\
-  \ (n : Nat) :\n  n > 2 → find_victory_number n ≥ 2 :=\n  sorry\n\n/--\ninfo: 77\n\
-  -/\n#guard_msgs in\n#eval find_victory_number 22\n\n/--\ninfo: 41\n-/\n#guard_msgs\
-  \ in\n#eval find_victory_number 13\n\n/--\ninfo: 17\n-/\n#guard_msgs in\n#eval find_victory_number\
-  \ 10\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Chef Vivek is good in mathematics and likes solving problems on prime numbers. One day his friend Jatin told him about Victory numbers. Victory number can be defined as a number formed after summing up all the prime numbers till given number n. Now, chef Vivek who is very fond of solving questions on prime numbers got busy in some other tasks. Your task is to help him finding victory number.
+
+  -----Input:-----
+  - First line will contain $T$, number of test cases. Then the test cases follow. 
+  - Each test case contains of a single line of input $N$ till which sum of all prime numbers between 1 to n has to be calculated.
+
+  -----Output:-----
+  For each test case, output in a single line answer to the victory number.
+
+  -----Constraints-----
+  - $1 <= T <= 1000$
+  - $1 <= N <= 10^6$
+
+  -----Sample Input:-----
+  3
+  22
+  13
+  10
+
+  -----Sample Output:-----
+  77
+  41
+  17
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_victory_number (n : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem victory_number_nonnegative (n : Nat) :
+    n ≥ 1 → find_victory_number n ≥ 0 :=
+    sorry
+
+
+  theorem victory_number_one :
+    find_victory_number 1 = 0 :=
+    sorry
+
+
+  theorem victory_number_two :
+    find_victory_number 2 = 2 :=
+    sorry
+
+
+  theorem victory_number_monotone (n : Nat) :
+    n > 1 → find_victory_number n ≥ find_victory_number (n-1) :=
+    sorry
+
+
+  theorem victory_number_contains_two (n : Nat) :
+    n > 2 → find_victory_number n ≥ 2 :=
+    sorry
+
+  /--
+  info: 77
+  -/
+  #guard_msgs in
+  #eval find_victory_number 22
+
+  /--
+  info: 41
+  -/
+  #guard_msgs in
+  #eval find_victory_number 13
+
+  /--
+  info: 17
+  -/
+  #guard_msgs in
+  #eval find_victory_number 10
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

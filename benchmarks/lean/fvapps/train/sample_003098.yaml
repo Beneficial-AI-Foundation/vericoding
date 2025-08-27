@@ -1,37 +1,122 @@
-"vc-description": "# Background\n\nMy TV remote control has arrow buttons and an `OK`\
-  \ button.\n\nI can use these to move a \"cursor\" on a logical screen keyboard to\
-  \ type words...\n\n# Keyboard\n\nThe screen \"keyboard\" layout looks like this\n\
-  \n\n  #tvkb {\n    width : 400px;\n    border: 5px solid gray; border-collapse:\
-  \ collapse;\n  }\n  #tvkb td {\n    color : orange;\n    background-color : black;\n\
-  \    text-align : center;\n    border: 3px solid gray; border-collapse: collapse;\n\
-  \  }\n\n\nabcde123\nfghij456\nklmno789\npqrst.@0\nuvwxyz_/\naASP\n\n\n\n* `aA` is\
-  \ the SHIFT key. Pressing this key toggles alpha characters between UPPERCASE and\
-  \ lowercase\n* `SP` is the space character\n* The other blank keys in the bottom\
-  \ row have no function\n\n# Kata task\n\nHow many button presses on my remote are\
-  \ required to type the given `words`?\n\n## Notes\n\n* The cursor always starts\
-  \ on the letter `a` (top left)\n* The alpha characters are initially lowercase (as\
-  \ shown above)\n* Remember to also press `OK` to \"accept\" each letter\n* Take\
-  \ a direct route from one letter to the next\n* The cursor does not wrap (e.g. you\
-  \ cannot leave one edge and reappear on the opposite edge)\n* Although the blank\
-  \ keys have no function, you may navigate through them if you want to\n* Spaces\
-  \ may occur anywhere in the `words` string.\n* Do not press the SHIFT key until\
-  \ you need to. For example, with the word `e.Z`, the SHIFT change happens **after**\
-  \ the `.` is pressed (not before)\n \n# Example\n\nwords = `Code Wars`\n\n* C =>\
-  \ `a`-`f`-`k`-`p`-`u`-`aA`-OK-`U`-`P`-`K`-`F`-`A`-`B`-`C`-OK = 14\n* o => `C`-`H`-`M`-`R`-`W`-`V`-`U`-`aA`-OK-`SP`-`v`-`q`-`l`-`m`-`n`-`o`-OK\
-  \ = 16\n* d => `o`-`j`-`e`-`d`-OK = 4\n* e => `d`-`e`-OK = 2\n* space => `e`-`d`-`c`-`b`-`g`-`l`-`q`-`v`-`SP`-OK\
-  \ = 9\n* W => `SP`-`aA`-OK-`SP`-`V`-`W`-OK = 6\n* a => `W`-`V`-`U`-`aA`-OK-`u`-`p`-`k`-`f`-`a`-OK\
-  \ = 10\n* r => `a`-`f`-`k`-`p`-`q`-`r`-OK = 6\n* s => `r`-`s`-OK = 2\n\nAnswer =\
-  \ 14 + 16 + 4 + 2 + 9 + 6 + 10 + 6 + 2 = 69\n\n\n\n*Good Luck!\nDM.*\n\n\n\nSeries\n\
-  * TV Remote\n* TV Remote (shift and space)\n* TV Remote (wrap)\n* TV Remote (symbols)"
-"vc-preamble": "import Imports.AllImports\n\ndef isLower (c : Char) : Bool := sorry\n\
-  def isUpper (c : Char) : Bool := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def tv_remote (s : String) : Nat := sorry\n\ntheorem tv_remote_basic_properties\
-  \ (s : String) : tv_remote s ≥ 0 := sorry\n"
-"vc-theorems": "theorem tv_remote_empty_string : tv_remote \"\" = 0 := sorry \n\n\n\
-  \n\n\ntheorem tv_remote_case_sensitivity (s : String) :\n  s ≠ \"\" → tv_remote\
-  \ (s.map Char.toUpper) ≥ tv_remote (s.map Char.toLower) := sorry\n\n/--\ninfo: 69\n\
-  -/\n#guard_msgs in\n#eval tv_remote \"Code Wars\"\n\n/--\ninfo: 12\n-/\n#guard_msgs\
-  \ in\n#eval tv_remote \"A\"\n\n/--\ninfo: 16\n-/\n#guard_msgs in\n#eval tv_remote\
-  \ \"does\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  # Background
+
+  My TV remote control has arrow buttons and an `OK` button.
+
+  I can use these to move a "cursor" on a logical screen keyboard to type words...
+
+  # Keyboard
+
+  The screen "keyboard" layout looks like this
+
+
+    #tvkb {
+      width : 400px;
+      border: 5px solid gray; border-collapse: collapse;
+    }
+    #tvkb td {
+      color : orange;
+      background-color : black;
+      text-align : center;
+      border: 3px solid gray; border-collapse: collapse;
+    }
+
+
+  abcde123
+  fghij456
+  klmno789
+  pqrst.@0
+  uvwxyz_/
+  aASP
+
+
+
+  * `aA` is the SHIFT key. Pressing this key toggles alpha characters between UPPERCASE and lowercase
+  * `SP` is the space character
+  * The other blank keys in the bottom row have no function
+
+  # Kata task
+
+  How many button presses on my remote are required to type the given `words`?
+
+  ## Notes
+
+  * The cursor always starts on the letter `a` (top left)
+  * The alpha characters are initially lowercase (as shown above)
+  * Remember to also press `OK` to "accept" each letter
+  * Take a direct route from one letter to the next
+  * The cursor does not wrap (e.g. you cannot leave one edge and reappear on the opposite edge)
+  * Although the blank keys have no function, you may navigate through them if you want to
+  * Spaces may occur anywhere in the `words` string.
+  * Do not press the SHIFT key until you need to. For example, with the word `e.Z`, the SHIFT change happens **after** the `.` is pressed (not before)
+   
+  # Example
+
+  words = `Code Wars`
+
+  * C => `a`-`f`-`k`-`p`-`u`-`aA`-OK-`U`-`P`-`K`-`F`-`A`-`B`-`C`-OK = 14
+  * o => `C`-`H`-`M`-`R`-`W`-`V`-`U`-`aA`-OK-`SP`-`v`-`q`-`l`-`m`-`n`-`o`-OK = 16
+  * d => `o`-`j`-`e`-`d`-OK = 4
+  * e => `d`-`e`-OK = 2
+  * space => `e`-`d`-`c`-`b`-`g`-`l`-`q`-`v`-`SP`-OK = 9
+  * W => `SP`-`aA`-OK-`SP`-`V`-`W`-OK = 6
+  * a => `W`-`V`-`U`-`aA`-OK-`u`-`p`-`k`-`f`-`a`-OK = 10
+  * r => `a`-`f`-`k`-`p`-`q`-`r`-OK = 6
+  * s => `r`-`s`-OK = 2
+
+  Answer = 14 + 16 + 4 + 2 + 9 + 6 + 10 + 6 + 2 = 69
+
+
+
+  *Good Luck!
+  DM.*
+
+
+
+  Series
+  * TV Remote
+  * TV Remote (shift and space)
+  * TV Remote (wrap)
+  * TV Remote (symbols)
+vc-preamble: |-
+  import Imports.AllImports
+
+  def isLower (c : Char) : Bool := sorry
+  def isUpper (c : Char) : Bool := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def tv_remote (s : String) : Nat := sorry
+
+  theorem tv_remote_basic_properties (s : String) : tv_remote s ≥ 0 := sorry
+vc-theorems: |
+  theorem tv_remote_empty_string : tv_remote "" = 0 := sorry 
+
+
+
+
+
+  theorem tv_remote_case_sensitivity (s : String) :
+    s ≠ "" → tv_remote (s.map Char.toUpper) ≥ tv_remote (s.map Char.toLower) := sorry
+
+  /--
+  info: 69
+  -/
+  #guard_msgs in
+  #eval tv_remote "Code Wars"
+
+  /--
+  info: 12
+  -/
+  #guard_msgs in
+  #eval tv_remote "A"
+
+  /--
+  info: 16
+  -/
+  #guard_msgs in
+  #eval tv_remote "does"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

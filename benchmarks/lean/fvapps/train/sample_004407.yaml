@@ -1,31 +1,97 @@
-"vc-description": "# Task\n\nAn IP address contains four numbers(0-255) and separated\
-  \ by dots. It can be converted to a number by this way:\n\n\nGiven a string `s`\
-  \ represents a number or an IP address. Your task is to convert it to another representation(`number\
-  \ to IP address` or `IP address to number`).\n\nYou can assume that all inputs are\
-  \ valid.\n\n# Example\n\nExample IP address: `10.0.3.193`\n\nConvert each number\
-  \ to a 8-bit binary string\n(may needs to pad leading zeros to the left side):\n\
-  ```\n10  -->  00001010\n0   -->  00000000\n3   -->  00000011\n193 -->  11000001\n\
-  ```\nCombine these four strings: `00001010 00000000 00000011 11000001` and then\
-  \ convert them to a decimal number:\n`167773121`\n\n\n# Input/Output\n\n\n`[input]`\
-  \ string `s`\n\nA number or IP address in string format.\n\n`[output]` a string\n\
-  \nA converted number or IP address in string format.\n\n# Example\n\nFor `s = \"\
-  10.0.3.193\"`, the output should be `\"167773121\"`.\n\nFor `s = \"167969729\"`,\
-  \ the output should be `\"10.3.3.193\"`."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def numberAndIPaddress (input : String) : String := sorry\n\ntheorem\
-  \ ip_to_num_conversion \n  (ip : String) \n  (h1 : ∃ a b c d, a ≥ 0 ∧ a ≤ 255 ∧\
-  \ \n                   b ≥ 0 ∧ b ≤ 255 ∧\n                   c ≥ 0 ∧ c ≤ 255 ∧ \n\
-  \                   d ≥ 0 ∧ d ≤ 255 ∧\n                   ip = s!\"{a}.{b}.{c}.{d}\"\
-  ) :\n  let num := numberAndIPaddress ip\n  ∃ n : Nat, \n    n ≤ 4294967295 ∧\n \
-  \   num = toString n ∧\n    numberAndIPaddress num = ip := sorry\n"
-"vc-theorems": "theorem num_to_ip_conversion\n  (num : String)\n  (h1 : ∃ n : Nat,\
-  \ n ≤ 4294967295 ∧ num = toString n) :\n  let ip := numberAndIPaddress num\n  ∃\
-  \ a b c d : Nat,\n    a ≤ 255 ∧ b ≤ 255 ∧ c ≤ 255 ∧ d ≤ 255 ∧\n    ip = s!\"{a}.{b}.{c}.{d}\"\
-  \ ∧\n    numberAndIPaddress ip = num := sorry\n\n\ntheorem zero_conversions :\n\
-  \  numberAndIPaddress \"0.0.0.0\" = \"0\" ∧\n  numberAndIPaddress \"0\" = \"0.0.0.0\"\
-  \ := sorry\n\n/--\ninfo: '167773121'\n-/\n#guard_msgs in\n#eval numberAndIPaddress\
-  \ \"10.0.3.193\"\n\n/--\ninfo: '10.3.3.193'\n-/\n#guard_msgs in\n#eval numberAndIPaddress\
-  \ \"167969729\"\n\n/--\ninfo: '0'\n-/\n#guard_msgs in\n#eval numberAndIPaddress\
-  \ \"0.0.0.0\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Task
+
+  An IP address contains four numbers(0-255) and separated by dots. It can be converted to a number by this way:
+
+
+  Given a string `s` represents a number or an IP address. Your task is to convert it to another representation(`number to IP address` or `IP address to number`).
+
+  You can assume that all inputs are valid.
+
+  # Example
+
+  Example IP address: `10.0.3.193`
+
+  Convert each number to a 8-bit binary string
+  (may needs to pad leading zeros to the left side):
+  ```
+  10  -->  00001010
+  0   -->  00000000
+  3   -->  00000011
+  193 -->  11000001
+  ```
+  Combine these four strings: `00001010 00000000 00000011 11000001` and then convert them to a decimal number:
+  `167773121`
+
+
+  # Input/Output
+
+
+  `[input]` string `s`
+
+  A number or IP address in string format.
+
+  `[output]` a string
+
+  A converted number or IP address in string format.
+
+  # Example
+
+  For `s = "10.0.3.193"`, the output should be `"167773121"`.
+
+  For `s = "167969729"`, the output should be `"10.3.3.193"`.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def numberAndIPaddress (input : String) : String := sorry
+
+  theorem ip_to_num_conversion 
+    (ip : String) 
+    (h1 : ∃ a b c d, a ≥ 0 ∧ a ≤ 255 ∧ 
+                     b ≥ 0 ∧ b ≤ 255 ∧
+                     c ≥ 0 ∧ c ≤ 255 ∧ 
+                     d ≥ 0 ∧ d ≤ 255 ∧
+                     ip = s!"{a}.{b}.{c}.{d}") :
+    let num := numberAndIPaddress ip
+    ∃ n : Nat, 
+      n ≤ 4294967295 ∧
+      num = toString n ∧
+      numberAndIPaddress num = ip := sorry
+vc-theorems: |
+  theorem num_to_ip_conversion
+    (num : String)
+    (h1 : ∃ n : Nat, n ≤ 4294967295 ∧ num = toString n) :
+    let ip := numberAndIPaddress num
+    ∃ a b c d : Nat,
+      a ≤ 255 ∧ b ≤ 255 ∧ c ≤ 255 ∧ d ≤ 255 ∧
+      ip = s!"{a}.{b}.{c}.{d}" ∧
+      numberAndIPaddress ip = num := sorry
+
+
+  theorem zero_conversions :
+    numberAndIPaddress "0.0.0.0" = "0" ∧
+    numberAndIPaddress "0" = "0.0.0.0" := sorry
+
+  /--
+  info: '167773121'
+  -/
+  #guard_msgs in
+  #eval numberAndIPaddress "10.0.3.193"
+
+  /--
+  info: '10.3.3.193'
+  -/
+  #guard_msgs in
+  #eval numberAndIPaddress "167969729"
+
+  /--
+  info: '0'
+  -/
+  #guard_msgs in
+  #eval numberAndIPaddress "0.0.0.0"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

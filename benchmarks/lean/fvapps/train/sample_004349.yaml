@@ -1,15 +1,47 @@
-"vc-description": "Create an OR function, without use of the 'or' keyword, that takes\
-  \ an list of boolean values and runs OR against all of them.\n\nAssume there will\
-  \ be between 1 and 6 variables, and return None for an empty list."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def alt_or : List Bool → Option Bool\n  | [] => none\n  | l =>\
-  \ some (sorry)\n"
-"vc-theorems": "theorem alt_or_empty : alt_or [] = none := by sorry\n\ntheorem alt_or_nonempty\
-  \ {l : List Bool} (h : l ≠ []) :\n  ∃ b, alt_or l = some b := by sorry\n\n\ntheorem\
-  \ alt_or_eq_any {l : List Bool} (h : l ≠ []) :\n  ∀ b, alt_or l = some b → b = l.any\
-  \ id := by sorry\n\n\ntheorem alt_or_type {l : List Bool} (h : l ≠ []) :\n  (alt_or\
-  \ l).isSome := by sorry\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval alt_or []\n\
-  \n/--\ninfo: False\n-/\n#guard_msgs in\n#eval alt_or [False]\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval alt_or [False, True, False]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Create an OR function, without use of the 'or' keyword, that takes an list of boolean values and runs OR against all of them.
+
+  Assume there will be between 1 and 6 variables, and return None for an empty list.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def alt_or : List Bool → Option Bool
+    | [] => none
+    | l => some (sorry)
+vc-theorems: |
+  theorem alt_or_empty : alt_or [] = none := by sorry
+
+  theorem alt_or_nonempty {l : List Bool} (h : l ≠ []) :
+    ∃ b, alt_or l = some b := by sorry
+
+
+  theorem alt_or_eq_any {l : List Bool} (h : l ≠ []) :
+    ∀ b, alt_or l = some b → b = l.any id := by sorry
+
+
+  theorem alt_or_type {l : List Bool} (h : l ≠ []) :
+    (alt_or l).isSome := by sorry
+
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval alt_or []
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval alt_or [False]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval alt_or [False, True, False]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

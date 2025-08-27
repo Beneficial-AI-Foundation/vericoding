@@ -1,37 +1,105 @@
-"vc-description": "There are some rabbits in Singapore Zoo. To feed them, Zookeeper\
-  \ bought $n$ carrots with lengths $a_1, a_2, a_3, \\ldots, a_n$. However, rabbits\
-  \ are very fertile and multiply very quickly. Zookeeper now has $k$ rabbits and\
-  \ does not have enough carrots to feed all of them. To solve this problem, Zookeeper\
-  \ decided to cut the carrots into $k$ pieces. For some reason, all resulting carrot\
-  \ lengths must be positive integers.\n\nBig carrots are very difficult for rabbits\
-  \ to handle and eat, so the time needed to eat a carrot of size $x$ is $x^2$.\n\n\
-  Help Zookeeper split his carrots while minimizing the sum of time taken for rabbits\
-  \ to eat the carrots.\n\n\n-----Input-----\n\nThe first line contains two integers\
-  \ $n$ and $k$ $(1 \\leq n \\leq k \\leq 10^5)$: the initial number of carrots and\
-  \ the number of rabbits.\n\nThe next line contains $n$ integers $a_1, a_2, \\ldots,\
-  \ a_n$ $(1 \\leq a_i \\leq 10^6)$: lengths of carrots.\n\nIt is guaranteed that\
-  \ the sum of $a_i$ is at least $k$.\n\n\n-----Output-----\n\nOutput one integer:\
-  \ the minimum sum of time taken for rabbits to eat carrots.\n\n\n-----Examples-----\n\
-  Input\n3 6\n5 3 1\n\nOutput\n15\n\nInput\n1 4\n19\n\nOutput\n91\n\n\n\n-----Note-----\n\
-  \nFor the first test, the optimal sizes of carrots are $\\{1,1,1,2,2,2\\}$. The\
-  \ time taken is $1^2+1^2+1^2+2^2+2^2+2^2=15$\n\nFor the second test, the optimal\
-  \ sizes of carrots are $\\{4,5,5,5\\}$. The time taken is $4^2+5^2+5^2+5^2=91$."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def split_carrots_min_time (n k : Nat) (nums : List Nat) : Nat\
-  \ :=\n  sorry\n"
-"vc-theorems": "theorem splits_res_nonneg \n  (n k : Nat) (nums : List Nat) \n  (h1\
-  \ : ∀ x ∈ nums, x > 0) \n  (h2 : ∀ x ∈ nums, x ≤ 10^6)\n  (h3 : nums.length > 0)\
-  \  \n  (h4 : nums.length ≤ 100)\n  (h5 : k > 0)\n  (h6 : k ≤ 10^3) :\n  split_carrots_min_time\
-  \ n k nums ≥ 0 := sorry\n\n\ntheorem splits_res_nat\n  (n k : Nat) (nums : List\
-  \ Nat)\n  (h1 : ∀ x ∈ nums, x > 0) \n  (h2 : ∀ x ∈ nums, x ≤ 10^6)\n  (h3 : nums.length\
-  \ > 0)\n  (h4 : nums.length ≤ 100)\n  (h5 : k > 0)\n  (h6 : k ≤ 10^3) :\n  split_carrots_min_time\
-  \ n k nums = split_carrots_min_time n k nums := sorry\n\n\ntheorem more_splits_less_time\n\
-  \  (n k : Nat) (nums : List Nat)\n  (h1 : ∀ x ∈ nums, x > 0)\n  (h2 : ∀ x ∈ nums,\
-  \ x ≤ 10^6)\n  (h3 : nums.length > 0)\n  (h4 : nums.length ≤ 100)\n  (h5 : k > nums.length)\n\
-  \  (h6 : k ≤ 10^3) :\n  split_carrots_min_time n k nums ≤ split_carrots_min_time\
-  \ n (k-1) nums := sorry\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval split_carrots_min_time\
-  \ 3 6 [5, 3, 1]\n\n/--\ninfo: 91\n-/\n#guard_msgs in\n#eval split_carrots_min_time\
-  \ 1 4 [19]\n\n/--\ninfo: 333333333334\n-/\n#guard_msgs in\n#eval split_carrots_min_time\
-  \ 1 3 [1000000]\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"
+vc-description: |-
+  There are some rabbits in Singapore Zoo. To feed them, Zookeeper bought $n$ carrots with lengths $a_1, a_2, a_3, \ldots, a_n$. However, rabbits are very fertile and multiply very quickly. Zookeeper now has $k$ rabbits and does not have enough carrots to feed all of them. To solve this problem, Zookeeper decided to cut the carrots into $k$ pieces. For some reason, all resulting carrot lengths must be positive integers.
+
+  Big carrots are very difficult for rabbits to handle and eat, so the time needed to eat a carrot of size $x$ is $x^2$.
+
+  Help Zookeeper split his carrots while minimizing the sum of time taken for rabbits to eat the carrots.
+
+
+  -----Input-----
+
+  The first line contains two integers $n$ and $k$ $(1 \leq n \leq k \leq 10^5)$: the initial number of carrots and the number of rabbits.
+
+  The next line contains $n$ integers $a_1, a_2, \ldots, a_n$ $(1 \leq a_i \leq 10^6)$: lengths of carrots.
+
+  It is guaranteed that the sum of $a_i$ is at least $k$.
+
+
+  -----Output-----
+
+  Output one integer: the minimum sum of time taken for rabbits to eat carrots.
+
+
+  -----Examples-----
+  Input
+  3 6
+  5 3 1
+
+  Output
+  15
+
+  Input
+  1 4
+  19
+
+  Output
+  91
+
+
+
+  -----Note-----
+
+  For the first test, the optimal sizes of carrots are $\{1,1,1,2,2,2\}$. The time taken is $1^2+1^2+1^2+2^2+2^2+2^2=15$
+
+  For the second test, the optimal sizes of carrots are $\{4,5,5,5\}$. The time taken is $4^2+5^2+5^2+5^2=91$.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def split_carrots_min_time (n k : Nat) (nums : List Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem splits_res_nonneg 
+    (n k : Nat) (nums : List Nat) 
+    (h1 : ∀ x ∈ nums, x > 0) 
+    (h2 : ∀ x ∈ nums, x ≤ 10^6)
+    (h3 : nums.length > 0)  
+    (h4 : nums.length ≤ 100)
+    (h5 : k > 0)
+    (h6 : k ≤ 10^3) :
+    split_carrots_min_time n k nums ≥ 0 := sorry
+
+
+  theorem splits_res_nat
+    (n k : Nat) (nums : List Nat)
+    (h1 : ∀ x ∈ nums, x > 0) 
+    (h2 : ∀ x ∈ nums, x ≤ 10^6)
+    (h3 : nums.length > 0)
+    (h4 : nums.length ≤ 100)
+    (h5 : k > 0)
+    (h6 : k ≤ 10^3) :
+    split_carrots_min_time n k nums = split_carrots_min_time n k nums := sorry
+
+
+  theorem more_splits_less_time
+    (n k : Nat) (nums : List Nat)
+    (h1 : ∀ x ∈ nums, x > 0)
+    (h2 : ∀ x ∈ nums, x ≤ 10^6)
+    (h3 : nums.length > 0)
+    (h4 : nums.length ≤ 100)
+    (h5 : k > nums.length)
+    (h6 : k ≤ 10^3) :
+    split_carrots_min_time n k nums ≤ split_carrots_min_time n (k-1) nums := sorry
+
+  /--
+  info: 15
+  -/
+  #guard_msgs in
+  #eval split_carrots_min_time 3 6 [5, 3, 1]
+
+  /--
+  info: 91
+  -/
+  #guard_msgs in
+  #eval split_carrots_min_time 1 4 [19]
+
+  /--
+  info: 333333333334
+  -/
+  #guard_msgs in
+  #eval split_carrots_min_time 1 3 [1000000]
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded

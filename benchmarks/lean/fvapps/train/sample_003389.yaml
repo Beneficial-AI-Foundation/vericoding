@@ -1,32 +1,95 @@
-"vc-description": "You are given three piles of casino chips: white, green and black\
-  \ chips:\n\n* the first pile contains only white chips\n* the second pile contains\
-  \ only green chips\n* the third pile contains only black chips\n\nEach day you take\
-  \ exactly two chips of different colors and head to the casino. You can choose any\
-  \ color, but you are not allowed to take two chips of the same color in a day.\n\
-  \nYou will be given an array representing the number of chips of each color and\
-  \ your task is to return the maximum number of days you can pick the chips. Each\
-  \ day you need to take exactly two chips.\n\n```python \nsolve([1,1,1]) = 1, because\
-  \ after you pick on day one, there will be only one chip left\nsolve([1,2,1] = 2,\
-  \ you can pick twice; you pick two chips on day one then on day two\nsolve([4,1,1])\
-  \ = 2\n```\n\n```javascript \nsolve([1,1,1]) = 1, because after you pick on day\
-  \ one, there will be only one chip left\nsolve([1,2,1]) = 2, you can pick twice;\
-  \ you pick two chips on day one then on day two\nsolve([4,1,1]) = 2\n```\n\n```go\
-  \ \nsolve([1,1,1]) = 1, because after you pick on day one, there will be only one\
-  \ chip left\nsolve([1,2,1]) = 2, you can pick twice; you pick two chips on day one\
-  \ then on day two\nsolve([4,1,1]) = 2\n```\n\n\n```ruby \nsolve([1,1,1]) = 1, because\
-  \ after you pick on day one, there will be only one chip left\nsolve([1,2,1]) =\
-  \ 2, you can pick twice; you pick two chips on day, two chips on day two\nsolve([4,1,1])\
-  \ = 2\n```\n\nMore examples in the test cases. Good luck!\n\nBrute force is not\
-  \ the way to go here. Look for a simplifying mathematical approach."
-"vc-preamble": "import Imports.AllImports\n\ndef solve (chips : List Nat) : Nat :=\
-  \ sorry\n\ndef listSum : List Nat → Nat \n| [] => 0\n| x::xs => x + listSum xs\n\
-  \n\ndef listMin : List Nat → Nat\n| [] => 0\n| [x] => x\n| x::xs => min x (listMin\
-  \ xs)\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def secondMin : List Nat → Nat\n| [] => 0\n| [_] => 0\n| l => \n\
-  \  let m := listMin l\n  listMin (l.filter (fun x => x ≠ m))\n\n\n\n\n\n\n"
-"vc-theorems": "theorem solve_two_identical_bounded (a b : Nat)\n  (h₁ : a > 0)\n\
-  \  (h₂ : b > 0) :\n  solve [a, a, b] ≤ (a + a + b) / 2 := sorry\n\n/--\ninfo: 1\n\
-  -/\n#guard_msgs in\n#eval solve [1, 1, 1]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
-  #eval solve [1, 2, 1]\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval solve [8, 2, 8]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  You are given three piles of casino chips: white, green and black chips:
+
+  * the first pile contains only white chips
+  * the second pile contains only green chips
+  * the third pile contains only black chips
+
+  Each day you take exactly two chips of different colors and head to the casino. You can choose any color, but you are not allowed to take two chips of the same color in a day.
+
+  You will be given an array representing the number of chips of each color and your task is to return the maximum number of days you can pick the chips. Each day you need to take exactly two chips.
+
+  ```python 
+  solve([1,1,1]) = 1, because after you pick on day one, there will be only one chip left
+  solve([1,2,1] = 2, you can pick twice; you pick two chips on day one then on day two
+  solve([4,1,1]) = 2
+  ```
+
+  ```javascript 
+  solve([1,1,1]) = 1, because after you pick on day one, there will be only one chip left
+  solve([1,2,1]) = 2, you can pick twice; you pick two chips on day one then on day two
+  solve([4,1,1]) = 2
+  ```
+
+  ```go 
+  solve([1,1,1]) = 1, because after you pick on day one, there will be only one chip left
+  solve([1,2,1]) = 2, you can pick twice; you pick two chips on day one then on day two
+  solve([4,1,1]) = 2
+  ```
+
+
+  ```ruby 
+  solve([1,1,1]) = 1, because after you pick on day one, there will be only one chip left
+  solve([1,2,1]) = 2, you can pick twice; you pick two chips on day, two chips on day two
+  solve([4,1,1]) = 2
+  ```
+
+  More examples in the test cases. Good luck!
+
+  Brute force is not the way to go here. Look for a simplifying mathematical approach.
+vc-preamble: |
+  import Imports.AllImports
+
+  def solve (chips : List Nat) : Nat := sorry
+
+  def listSum : List Nat → Nat 
+  | [] => 0
+  | x::xs => x + listSum xs
+
+
+  def listMin : List Nat → Nat
+  | [] => 0
+  | [x] => x
+  | x::xs => min x (listMin xs)
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def secondMin : List Nat → Nat
+  | [] => 0
+  | [_] => 0
+  | l => 
+    let m := listMin l
+    listMin (l.filter (fun x => x ≠ m))
+
+
+
+
+
+
+vc-theorems: |
+  theorem solve_two_identical_bounded (a b : Nat)
+    (h₁ : a > 0)
+    (h₂ : b > 0) :
+    solve [a, a, b] ≤ (a + a + b) / 2 := sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve [1, 1, 1]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve [1, 2, 1]
+
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval solve [8, 2, 8]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

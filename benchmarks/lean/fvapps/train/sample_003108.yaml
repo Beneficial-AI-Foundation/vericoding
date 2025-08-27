@@ -1,38 +1,73 @@
-"vc-description": "You are the best freelancer in the city. Everybody knows you, but\
-  \ what they don't know, is that you are actually offloading your work to other freelancers\
-  \ and and you rarely need to do any work. You're living the life!\n\nTo make this\
-  \ process easier you need to write a method called workNeeded to figure out how\
-  \ much time you need to contribute to a project. \n\nGiving the amount of time in\
-  \ `minutes` needed to complete the project and an array of pair values representing\
-  \ other freelancers' time in `[Hours, Minutes]` format ie. `[[2, 33], [3, 44]]`\
-  \ calculate how much time **you** will need to contribute to the project (if at\
-  \ all) and return a string depending on the case.\n\n\n* If we need to contribute\
-  \ time to the project then return `\"I need to work x hour(s) and y minute(s)\"\
-  `\n* If we don't have to contribute any time to the project then return `\"Easy\
-  \ Money!\"`"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def work_needed (project_minutes : Nat) (freelancers : List Time)\
-  \ : String :=\n  sorry\n"
-"vc-theorems": "theorem work_needed_output_valid (project_minutes : Nat) (freelancers\
-  \ : List Time) :\n  let result := work_needed project_minutes freelancers\n  (result\
-  \ = \"Easy Money!\" ∨ result.startsWith \"I need to work\") :=\n  sorry\n\n\ntheorem\
-  \ work_needed_enough_help (project_minutes : Nat) (freelancers : List Time) :\n\
-  \  let total_available := freelancers.foldl (fun acc t => acc + t.hours * 60 + t.minutes)\
-  \ 0\n  total_available ≥ project_minutes → \n  work_needed project_minutes freelancers\
-  \ = \"Easy Money!\" :=\n  sorry\n\n\ntheorem work_needed_not_enough_help (project_minutes\
-  \ : Nat) (freelancers : List Time) :\n  let total_available := freelancers.foldl\
-  \ (fun acc t => acc + t.hours * 60 + t.minutes) 0\n  let deficit := project_minutes\
-  \ - total_available\n  let deficit_hours := deficit / 60\n  let deficit_minutes\
-  \ := deficit % 60\n  total_available < project_minutes →\n  work_needed project_minutes\
-  \ freelancers = s!\"I need to work {deficit_hours} hour(s) and {deficit_minutes}\
-  \ minute(s)\" :=\n  sorry\n\n\ntheorem work_needed_zero_project (freelancers : List\
-  \ Time) :\n  work_needed 0 freelancers = \"Easy Money!\" :=\n  sorry\n\n\ntheorem\
-  \ work_needed_no_freelancers (project_minutes : Nat) :\n  let hours := project_minutes\
-  \ / 60\n  let minutes := project_minutes % 60\n  work_needed project_minutes []\
-  \ = s!\"I need to work {hours} hour(s) and {minutes} minute(s)\" :=\n  sorry\n\n\
-  /--\ninfo: 'Easy Money!'\n-/\n#guard_msgs in\n#eval work_needed 60 [[1, 0]]\n\n\
-  /--\ninfo: 'I need to work 1 hour(s) and 0 minute(s)'\n-/\n#guard_msgs in\n#eval\
-  \ work_needed 60 [[0, 0]]\n\n/--\ninfo: 'I need to work 1 hour(s) and 0 minute(s)'\n\
-  -/\n#guard_msgs in\n#eval work_needed 90 [[0, 30]]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  You are the best freelancer in the city. Everybody knows you, but what they don't know, is that you are actually offloading your work to other freelancers and and you rarely need to do any work. You're living the life!
+
+  To make this process easier you need to write a method called workNeeded to figure out how much time you need to contribute to a project. 
+
+  Giving the amount of time in `minutes` needed to complete the project and an array of pair values representing other freelancers' time in `[Hours, Minutes]` format ie. `[[2, 33], [3, 44]]` calculate how much time **you** will need to contribute to the project (if at all) and return a string depending on the case.
+
+
+  * If we need to contribute time to the project then return `"I need to work x hour(s) and y minute(s)"`
+  * If we don't have to contribute any time to the project then return `"Easy Money!"`
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def work_needed (project_minutes : Nat) (freelancers : List Time) : String :=
+    sorry
+vc-theorems: |
+  theorem work_needed_output_valid (project_minutes : Nat) (freelancers : List Time) :
+    let result := work_needed project_minutes freelancers
+    (result = "Easy Money!" ∨ result.startsWith "I need to work") :=
+    sorry
+
+
+  theorem work_needed_enough_help (project_minutes : Nat) (freelancers : List Time) :
+    let total_available := freelancers.foldl (fun acc t => acc + t.hours * 60 + t.minutes) 0
+    total_available ≥ project_minutes → 
+    work_needed project_minutes freelancers = "Easy Money!" :=
+    sorry
+
+
+  theorem work_needed_not_enough_help (project_minutes : Nat) (freelancers : List Time) :
+    let total_available := freelancers.foldl (fun acc t => acc + t.hours * 60 + t.minutes) 0
+    let deficit := project_minutes - total_available
+    let deficit_hours := deficit / 60
+    let deficit_minutes := deficit % 60
+    total_available < project_minutes →
+    work_needed project_minutes freelancers = s!"I need to work {deficit_hours} hour(s) and {deficit_minutes} minute(s)" :=
+    sorry
+
+
+  theorem work_needed_zero_project (freelancers : List Time) :
+    work_needed 0 freelancers = "Easy Money!" :=
+    sorry
+
+
+  theorem work_needed_no_freelancers (project_minutes : Nat) :
+    let hours := project_minutes / 60
+    let minutes := project_minutes % 60
+    work_needed project_minutes [] = s!"I need to work {hours} hour(s) and {minutes} minute(s)" :=
+    sorry
+
+  /--
+  info: 'Easy Money!'
+  -/
+  #guard_msgs in
+  #eval work_needed 60 [[1, 0]]
+
+  /--
+  info: 'I need to work 1 hour(s) and 0 minute(s)'
+  -/
+  #guard_msgs in
+  #eval work_needed 60 [[0, 0]]
+
+  /--
+  info: 'I need to work 1 hour(s) and 0 minute(s)'
+  -/
+  #guard_msgs in
+  #eval work_needed 90 [[0, 30]]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

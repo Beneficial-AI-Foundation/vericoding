@@ -1,21 +1,77 @@
-"vc-description": "###Task:\n\nYou have to write a function `pattern` which creates\
-  \ the following pattern (see examples) up to the desired number of rows.\n\n* If\
-  \ the Argument is 0 or a Negative Integer then it should return \"\" i.e. empty\
-  \ string.\n\n* If any even number is passed as argument then the pattern should\
-  \ last upto the largest odd number which is smaller than the passed even number.\n\
-  \n###Examples:\n\npattern(9):\n\n    1\n    333\n    55555\n    7777777\n    999999999\n\
-  \npattern(6):\n\n    1\n    333\n    55555\n\n```Note: There are no spaces in the\
-  \ pattern```\n\n```Hint: Use \\n in string to jump to next line```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def pattern (n : Int) : String := sorry\n\ntheorem pattern_nonpos\
-  \ {n : Int} (h : n ≤ 0) : \n  pattern n = \"\" := sorry\n"
-"vc-theorems": "theorem pattern_line_structure {n : Int} (h : n > 0) (i : Nat) (h2\
-  \ : i < n) :\n  let lines := (pattern n).splitOn \"\\n\"\n  let expected_num :=\
-  \ 2 * i + 1\n  lines[i]! = String.mk (List.replicate expected_num (toString expected_num).data[0]!)\
-  \ := sorry\n\n\ntheorem pattern_examples : \n  pattern 0 = \"\" ∧ \n  pattern (-1)\
-  \ = \"\" ∧\n  pattern 4 = \"1\\n333\" ∧\n  pattern 5 = \"1\\n333\\n55555\" := sorry\n\
-  \n/--\ninfo: '1\\n333'\n-/\n#guard_msgs in\n#eval pattern 4\n\n/--\ninfo: '1\\n333\\\
-  n55555'\n-/\n#guard_msgs in\n#eval pattern 5\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n\
-  #eval pattern 0\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval pattern -5\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ###Task:
+
+  You have to write a function `pattern` which creates the following pattern (see examples) up to the desired number of rows.
+
+  * If the Argument is 0 or a Negative Integer then it should return "" i.e. empty string.
+
+  * If any even number is passed as argument then the pattern should last upto the largest odd number which is smaller than the passed even number.
+
+  ###Examples:
+
+  pattern(9):
+
+      1
+      333
+      55555
+      7777777
+      999999999
+
+  pattern(6):
+
+      1
+      333
+      55555
+
+  ```Note: There are no spaces in the pattern```
+
+  ```Hint: Use \n in string to jump to next line```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def pattern (n : Int) : String := sorry
+
+  theorem pattern_nonpos {n : Int} (h : n ≤ 0) : 
+    pattern n = "" := sorry
+vc-theorems: |
+  theorem pattern_line_structure {n : Int} (h : n > 0) (i : Nat) (h2 : i < n) :
+    let lines := (pattern n).splitOn "\n"
+    let expected_num := 2 * i + 1
+    lines[i]! = String.mk (List.replicate expected_num (toString expected_num).data[0]!) := sorry
+
+
+  theorem pattern_examples : 
+    pattern 0 = "" ∧ 
+    pattern (-1) = "" ∧
+    pattern 4 = "1\n333" ∧
+    pattern 5 = "1\n333\n55555" := sorry
+
+  /--
+  info: '1\n333'
+  -/
+  #guard_msgs in
+  #eval pattern 4
+
+  /--
+  info: '1\n333\n55555'
+  -/
+  #guard_msgs in
+  #eval pattern 5
+
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval pattern 0
+
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval pattern -5
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

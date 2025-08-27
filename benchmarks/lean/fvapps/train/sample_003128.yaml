@@ -1,20 +1,64 @@
-"vc-description": "Create a function that takes in the sum and age difference of two\
-  \ people, calculates their individual ages, and returns a pair of values (oldest\
-  \ age first) if those exist or `null/None` if:\n\n* `sum < 0`\n* `difference < 0`\n\
-  * Either of the calculated ages come out to be negative"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def get_ages (sum_ages diff_ages : Int) : Option (Int × Int) :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem get_ages_positive_inputs\n  (sum_ages diff_ages : Int)\n \
-  \ (h1 : 0 ≤ sum_ages)\n  (h2 : sum_ages ≤ 1000)\n  (h3 : 0 ≤ diff_ages)\n  (h4 :\
-  \ diff_ages ≤ 1000) :\n  if sum_ages ≥ diff_ages then\n    match get_ages sum_ages\
-  \ diff_ages with\n    | some (older, younger) =>\n      older ≥ younger ∧ younger\
-  \ ≥ 0\n    | none => False\n  else\n    get_ages sum_ages diff_ages = none :=\n\
-  sorry\n\n\ntheorem get_ages_negative_sum\n  (sum_ages diff_ages : Int)\n  (h : sum_ages\
-  \ < 0) :\n  get_ages sum_ages diff_ages = none :=\nsorry\n\n\ntheorem get_ages_negative_diff\n\
-  \  (sum_ages diff_ages : Int)\n  (h : diff_ages < 0) :\n  get_ages sum_ages diff_ages\
-  \ = none :=\nsorry\n\n/--\ninfo: (14, 10)\n-/\n#guard_msgs in\n#eval get_ages 24\
-  \ 4\n\n/--\ninfo: (38.5, 24.5)\n-/\n#guard_msgs in\n#eval get_ages 63 14\n\n/--\n\
-  info: None\n-/\n#guard_msgs in\n#eval get_ages 63 -14\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Create a function that takes in the sum and age difference of two people, calculates their individual ages, and returns a pair of values (oldest age first) if those exist or `null/None` if:
+
+  * `sum < 0`
+  * `difference < 0`
+  * Either of the calculated ages come out to be negative
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def get_ages (sum_ages diff_ages : Int) : Option (Int × Int) :=
+    sorry
+vc-theorems: |
+  theorem get_ages_positive_inputs
+    (sum_ages diff_ages : Int)
+    (h1 : 0 ≤ sum_ages)
+    (h2 : sum_ages ≤ 1000)
+    (h3 : 0 ≤ diff_ages)
+    (h4 : diff_ages ≤ 1000) :
+    if sum_ages ≥ diff_ages then
+      match get_ages sum_ages diff_ages with
+      | some (older, younger) =>
+        older ≥ younger ∧ younger ≥ 0
+      | none => False
+    else
+      get_ages sum_ages diff_ages = none :=
+  sorry
+
+
+  theorem get_ages_negative_sum
+    (sum_ages diff_ages : Int)
+    (h : sum_ages < 0) :
+    get_ages sum_ages diff_ages = none :=
+  sorry
+
+
+  theorem get_ages_negative_diff
+    (sum_ages diff_ages : Int)
+    (h : diff_ages < 0) :
+    get_ages sum_ages diff_ages = none :=
+  sorry
+
+  /--
+  info: (14, 10)
+  -/
+  #guard_msgs in
+  #eval get_ages 24 4
+
+  /--
+  info: (38.5, 24.5)
+  -/
+  #guard_msgs in
+  #eval get_ages 63 14
+
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval get_ages 63 -14
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

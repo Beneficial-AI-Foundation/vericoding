@@ -1,17 +1,51 @@
-"vc-description": "Write function isPalindrome that checks if a given string (case\
-  \ insensitive) is a palindrome.\n\n```racket\nIn Racket, the function is called\
-  \ palindrome?\n\n(palindrome? \"nope\") ; returns #f\n(palindrome? \"Yay\")  ; returns\
-  \ #t\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_palindrome (s : String) : Bool := sorry\n\ndef String.reverse\
-  \ (s : String) : String := sorry\n"
-"vc-theorems": "theorem empty_single_char_palindrome (s : String) :\n  s.length ≤\
-  \ 1 → is_palindrome s := sorry \n\n\ntheorem case_insensitive (s : String) :\n \
-  \ is_palindrome s = is_palindrome (s.toLower) ∧ \n  is_palindrome s = is_palindrome\
-  \ s.toUpper := sorry\n\n\ntheorem palindrome_reverse_property (s : String) :\n \
-  \ is_palindrome s = (s.toLower = (s.toLower).reverse) := sorry\n\n/--\ninfo: False\n\
-  -/\n#guard_msgs in\n#eval is_palindrome \"nope\"\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval is_palindrome \"Yay\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
-  \ is_palindrome \"racecar\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write function isPalindrome that checks if a given string (case insensitive) is a palindrome.
+
+  ```racket
+  In Racket, the function is called palindrome?
+
+  (palindrome? "nope") ; returns #f
+  (palindrome? "Yay")  ; returns #t
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_palindrome (s : String) : Bool := sorry
+
+  def String.reverse (s : String) : String := sorry
+vc-theorems: |
+  theorem empty_single_char_palindrome (s : String) :
+    s.length ≤ 1 → is_palindrome s := sorry 
+
+
+  theorem case_insensitive (s : String) :
+    is_palindrome s = is_palindrome (s.toLower) ∧ 
+    is_palindrome s = is_palindrome s.toUpper := sorry
+
+
+  theorem palindrome_reverse_property (s : String) :
+    is_palindrome s = (s.toLower = (s.toLower).reverse) := sorry
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_palindrome "nope"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_palindrome "Yay"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_palindrome "racecar"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

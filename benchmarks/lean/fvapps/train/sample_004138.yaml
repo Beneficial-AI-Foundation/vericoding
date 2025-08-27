@@ -1,18 +1,52 @@
-"vc-description": "An isogram is a word that has no repeating letters, consecutive\
-  \ or non-consecutive. Implement a function that determines whether a string that\
-  \ contains only letters is an isogram. Assume the empty string is an isogram. Ignore\
-  \ letter case.\n\n```python\nis_isogram(\"Dermatoglyphics\" ) == true\nis_isogram(\"\
-  aba\" ) == false\nis_isogram(\"moOse\" ) == false # -- ignore letter case\n```\n\
-  ```C\nis_isogram(\"Dermatoglyphics\" ) == true;\nis_isogram(\"aba\" ) == false;\n\
-  is_isogram(\"moOse\" ) == false; // -- ignore letter case\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_isogram (s : String) : Bool := sorry\n\ntheorem empty_and_single_chars_are_isograms\
-  \ (s : String) :\n  s.length ≤ 1 → is_isogram s := sorry\n"
-"vc-theorems": "theorem repeated_chars_not_isogram (s : String) :\n  s.length > 0\
-  \ → ¬(is_isogram (s ++ String.mk [s.get 0])) := sorry\n\n\ntheorem all_unique_chars_is_isogram\
-  \ (s : String) :\n  let unique_chars := String.mk (List.eraseDups s.data)\n  is_isogram\
-  \ unique_chars := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_isogram\
-  \ \"Dermatoglyphics\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_isogram\
-  \ \"moOse\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_isogram \"\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
+
+  ```python
+  is_isogram("Dermatoglyphics" ) == true
+  is_isogram("aba" ) == false
+  is_isogram("moOse" ) == false # -- ignore letter case
+  ```
+  ```C
+  is_isogram("Dermatoglyphics" ) == true;
+  is_isogram("aba" ) == false;
+  is_isogram("moOse" ) == false; // -- ignore letter case
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_isogram (s : String) : Bool := sorry
+
+  theorem empty_and_single_chars_are_isograms (s : String) :
+    s.length ≤ 1 → is_isogram s := sorry
+vc-theorems: |
+  theorem repeated_chars_not_isogram (s : String) :
+    s.length > 0 → ¬(is_isogram (s ++ String.mk [s.get 0])) := sorry
+
+
+  theorem all_unique_chars_is_isogram (s : String) :
+    let unique_chars := String.mk (List.eraseDups s.data)
+    is_isogram unique_chars := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_isogram "Dermatoglyphics"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_isogram "moOse"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_isogram ""
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

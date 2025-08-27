@@ -1,25 +1,80 @@
-"vc-description": "There was a test in your class and you passed it. Congratulations!\n\
-  But you're an ambitious person. You want to know if you're better than the average\
-  \ student in your class.\n\nYou receive an array with your peers' test scores. Now\
-  \ calculate the average and compare your score!\n\n~~~if-not:nasm,racket\nReturn\
-  \ `True` if you're better, else `False`!\n~~~\n\n~~~if:racket\nReturn #t if you're\
-  \ better, else #f.\n~~~\n\n~~~if:nasm\nReturn `1` if you're better, else `0`!\n\
-  ~~~\n\n### Note:\n\nYour points are not included in the array of your class's points.\
-  \ For calculating the average point you may add your point to the given array!"
-"vc-preamble": "import Imports.AllImports\n\ndef sumList : List Int → Int \n  | []\
-  \ => 0\n  | (x::xs) => x + sumList xs\n\n\ndef lengthList : List Int → Int\n  |\
-  \ [] => 0\n  | (_::xs) => 1 + lengthList xs\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def better_than_average (class_points: List Int) (your_points:\
-  \ Int) : Bool :=\n  sorry\n"
-"vc-theorems": "theorem better_than_average_spec {class_points: List Int} {your_points:\
-  \ Int}\n  (h: class_points ≠ []) :\n  better_than_average class_points your_points\
-  \ = \n    (your_points > (sumList class_points / lengthList class_points)) :=\n\
-  \  sorry\n\n\ntheorem better_than_average_edge_cases1 :\n  better_than_average [0]\
-  \ 0 = false :=\n  sorry\n\n\ntheorem better_than_average_edge_cases2 :\n  better_than_average\
-  \ [1] 1 = false :=\n  sorry\n\n\ntheorem better_than_average_edge_cases3 :\n  better_than_average\
-  \ [0] 1 = true :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval better_than_average\
-  \ [2, 3] 5\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval better_than_average [100,\
-  \ 40, 34, 57, 29, 72, 57, 88] 75\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval better_than_average\
-  \ [12, 23, 34, 45, 56, 67, 78, 89, 90] 69\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  There was a test in your class and you passed it. Congratulations!
+  But you're an ambitious person. You want to know if you're better than the average student in your class.
+
+  You receive an array with your peers' test scores. Now calculate the average and compare your score!
+
+  ~~~if-not:nasm,racket
+  Return `True` if you're better, else `False`!
+  ~~~
+
+  ~~~if:racket
+  Return #t if you're better, else #f.
+  ~~~
+
+  ~~~if:nasm
+  Return `1` if you're better, else `0`!
+  ~~~
+
+  ### Note:
+
+  Your points are not included in the array of your class's points. For calculating the average point you may add your point to the given array!
+vc-preamble: |
+  import Imports.AllImports
+
+  def sumList : List Int → Int 
+    | [] => 0
+    | (x::xs) => x + sumList xs
+
+
+  def lengthList : List Int → Int
+    | [] => 0
+    | (_::xs) => 1 + lengthList xs
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def better_than_average (class_points: List Int) (your_points: Int) : Bool :=
+    sorry
+vc-theorems: |
+  theorem better_than_average_spec {class_points: List Int} {your_points: Int}
+    (h: class_points ≠ []) :
+    better_than_average class_points your_points = 
+      (your_points > (sumList class_points / lengthList class_points)) :=
+    sorry
+
+
+  theorem better_than_average_edge_cases1 :
+    better_than_average [0] 0 = false :=
+    sorry
+
+
+  theorem better_than_average_edge_cases2 :
+    better_than_average [1] 1 = false :=
+    sorry
+
+
+  theorem better_than_average_edge_cases3 :
+    better_than_average [0] 1 = true :=
+    sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval better_than_average [2, 3] 5
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval better_than_average [100, 40, 34, 57, 29, 72, 57, 88] 75
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval better_than_average [12, 23, 34, 45, 56, 67, 78, 89, 90] 69
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

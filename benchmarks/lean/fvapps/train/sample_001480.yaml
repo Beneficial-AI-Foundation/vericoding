@@ -1,40 +1,76 @@
-"vc-description": "There are $N$ villages numbered $1$ to $N$. The villages are connected\
-  \ through bi-directional paths in between them. The whole network is in the form\
-  \ of a tree. \nEach village has only $1$ fighter but they help each other in times\
-  \ of crisis by sending their fighter to the village in danger through paths along\
-  \ the villages. Defeating a fighter will mean conquering his village. In particular,\
-  \ If village $X$ is under attack, all villages having a path to $X$ will send their\
-  \ fighters for help. \nNaruto wants to conquer all the villages. But he cannot take\
-  \ on so many fighters at the same time so he plans to use  a secret technique with\
-  \ which he can destroy  any $1$ village (along with paths connected to it) in the\
-  \ blink of an eye.  However, it can be used only once. He realized that if he destroys\
-  \ any village, say $X$, the maximum number of fighters he has to fight at once reduces\
-  \ to $W$. He wants $W$ to be as small as possible. Help him find the optimal $X$.\n\
-  In case of multiple answers, choose the smallest value of $X$.\n\n-----Input:-----\n\
-  - First line will contain $T$, number of testcases. Then the testcases follow. \n\
-  - First Line contains $N$.\n- Next $N - 1$ lines contain $U, V$, denoting a path\
-  \ between village $U$ and $V$. \n\n-----Output:-----\n- For each Test case, print\
-  \ in a new line, optimal $X$ and corresponding value of $W$.\n\n-----Constraints-----\n\
-  - $1 \\leq T \\leq 10$\n- $3 \\leq N \\leq 10^5$\n- $1 \\leq U, V \\leq N$ \n- $U\
-  \ != V$ \n\n-----Sample Input:-----\n2\n5\n1 2\n1 3\n2 4\n3 5\n3\n1 2\n2 3\n\n-----Sample\
-  \ Output:-----\n1 2\n2 1\n\n-----EXPLANATION:-----\nSample 1:  By destroying village\
-  \ $1$,  The fighters Naruto will be fighting at the same time will be from villages\
-  \ $[2, 4]$ and $[3, 5]$.  For this $W$ = $2$. No other choice can give lesser $W$.\
-  \ Hence $1$ is optimal choice."
-"vc-preamble": "import Imports.AllImports\n\ndef isValidTree (n : Nat) (edges : List\
-  \ (Nat × Nat)) : Bool :=\n  sorry\n\n\ndef findOptimalAttack (n : Nat) (edges :\
-  \ List (Nat × Nat)) : Nat × Nat :=\n  sorry\n\n\ndef getAdjList (n : Nat) (edges\
-  \ : List (Nat × Nat)) : List (List Nat) :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def componentSize (adj : List (List Nat)) (start visited : List\
-  \ Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem find_optimal_attack_output_bounds {n : Nat} {edges : List\
-  \ (Nat × Nat)} \n  (h_valid : isValidTree n edges = true) :\n  let (attack_node,\
-  \ max_subgraph) := findOptimalAttack n edges\n  1 ≤ attack_node ∧ attack_node ≤\
-  \ n ∧ \n  1 ≤ max_subgraph ∧ max_subgraph ≤ n-1 :=\nsorry\n\n\ntheorem breaking_point_subgraph_sizes\
-  \ {n : Nat} {edges : List (Nat × Nat)}\n  (h_valid : isValidTree n edges = true)\
-  \ :\n  let (attack_node, max_subgraph) := findOptimalAttack n edges;\n  let adj\
-  \ := getAdjList n edges;\n  ∀ node neighbors, neighbors = (adj.get? (attack_node-1)).getD\
-  \ [] →\n  node ∈ neighbors →\n  componentSize adj [node] [attack_node] ≤ max_subgraph\
-  \ :=\nsorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  There are $N$ villages numbered $1$ to $N$. The villages are connected through bi-directional paths in between them. The whole network is in the form of a tree. 
+  Each village has only $1$ fighter but they help each other in times of crisis by sending their fighter to the village in danger through paths along the villages. Defeating a fighter will mean conquering his village. In particular, If village $X$ is under attack, all villages having a path to $X$ will send their fighters for help. 
+  Naruto wants to conquer all the villages. But he cannot take on so many fighters at the same time so he plans to use  a secret technique with which he can destroy  any $1$ village (along with paths connected to it) in the blink of an eye.  However, it can be used only once. He realized that if he destroys any village, say $X$, the maximum number of fighters he has to fight at once reduces to $W$. He wants $W$ to be as small as possible. Help him find the optimal $X$.
+  In case of multiple answers, choose the smallest value of $X$.
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - First Line contains $N$.
+  - Next $N - 1$ lines contain $U, V$, denoting a path between village $U$ and $V$. 
+
+  -----Output:-----
+  - For each Test case, print in a new line, optimal $X$ and corresponding value of $W$.
+
+  -----Constraints-----
+  - $1 \leq T \leq 10$
+  - $3 \leq N \leq 10^5$
+  - $1 \leq U, V \leq N$ 
+  - $U != V$ 
+
+  -----Sample Input:-----
+  2
+  5
+  1 2
+  1 3
+  2 4
+  3 5
+  3
+  1 2
+  2 3
+
+  -----Sample Output:-----
+  1 2
+  2 1
+
+  -----EXPLANATION:-----
+  Sample 1:  By destroying village $1$,  The fighters Naruto will be fighting at the same time will be from villages $[2, 4]$ and $[3, 5]$.  For this $W$ = $2$. No other choice can give lesser $W$. Hence $1$ is optimal choice.
+vc-preamble: |
+  import Imports.AllImports
+
+  def isValidTree (n : Nat) (edges : List (Nat × Nat)) : Bool :=
+    sorry
+
+
+  def findOptimalAttack (n : Nat) (edges : List (Nat × Nat)) : Nat × Nat :=
+    sorry
+
+
+  def getAdjList (n : Nat) (edges : List (Nat × Nat)) : List (List Nat) :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def componentSize (adj : List (List Nat)) (start visited : List Nat) : Nat :=
+    sorry
+vc-theorems: |-
+  theorem find_optimal_attack_output_bounds {n : Nat} {edges : List (Nat × Nat)} 
+    (h_valid : isValidTree n edges = true) :
+    let (attack_node, max_subgraph) := findOptimalAttack n edges
+    1 ≤ attack_node ∧ attack_node ≤ n ∧ 
+    1 ≤ max_subgraph ∧ max_subgraph ≤ n-1 :=
+  sorry
+
+
+  theorem breaking_point_subgraph_sizes {n : Nat} {edges : List (Nat × Nat)}
+    (h_valid : isValidTree n edges = true) :
+    let (attack_node, max_subgraph) := findOptimalAttack n edges;
+    let adj := getAdjList n edges;
+    ∀ node neighbors, neighbors = (adj.get? (attack_node-1)).getD [] →
+    node ∈ neighbors →
+    componentSize adj [node] [attack_node] ≤ max_subgraph :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

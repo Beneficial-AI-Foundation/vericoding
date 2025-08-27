@@ -1,38 +1,90 @@
-"vc-description": "You were strolling outside the restaurant at the end of the universe.\
-  \ On a metaspiral path you stumble upon a weird device which takes a three-digit\
-  \ number as input and processes it. The Hitchhiker's guide to the galaxy explains\
-  \ that it processes the input in the following manner: \n- Multiplies it with 13,\
-  \ followed by 11 and then 7          \n- Outputs all the distinct three-digit numbers\
-  \ possible from the digits of the new number (each digit can only be used once)\
-  \          \nYour friend Zaphod is in a playful mood, and does the following with\
-  \ the device-           \n- Given a three-digit positive number $K$, he feeds it\
-  \ to the device for processing.          \n- He then takes the numbers it gives\
-  \ as output, and send each of them through the device and again collect all the\
-  \ numbers sent out.          \n- Repeats the above step $N$ times.          \nTo\
-  \ test your wit, he challenges you to find the number of distinct 3-digit numbers\
-  \ which the device outputs over the $N$ steps. Can you?\n\n-----Input:-----\n- First\
-  \ line will contain $T$, number of testcases. Then the testcases follow.\n- Each\
-  \ testcase contains of a single line of input, two integers $K, N$.\n\n-----Output:-----\n\
-  For each testcase, output a single integer denoting the number of distinct 3-digit\
-  \ numbers which the device outputs over the $N$ steps.\n\n-----Constraints-----\n\
-  - $1 \\leq T \\leq 1000$ \n- $5 \\leq N \\leq 10^9$ \n- Each digit of $K$ is non-zero\
-  \           \n\n-----Sample Input:-----\n1\n\n123 5         \n\n-----Sample Output:-----\n\
-  27"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_restaurant_device (k : String) (n : Int) : Int := sorry\n\
-  \ntheorem output_bound \n  (k : String) \n  (n : Int)\n  (h1 : k.length = 3) \n\
-  \  (h2 : ∀ c ∈ k.data, '0' <= c ∧ c <= '9')\n  (h3 : 0 ≤ n ∧ n ≤ 100) :\n  0 ≤ solve_restaurant_device\
-  \ k n ∧ solve_restaurant_device k n ≤ 1000 := sorry\n"
-"vc-theorems": "theorem zero_output_before_five\n  (k : String)\n  (n : Int)\n  (h1\
-  \ : k.length = 3)\n  (h2 : ∀ c ∈ k.data, '0' <= c ∧ c <= '9')\n  (h3 : n ≤ 4) :\n\
-  \  solve_restaurant_device k n = 0 := sorry\n\n\ntheorem output_formula\n  (k :\
-  \ String)\n  (n : Int)\n  (h1 : k.length = 3)\n  (h2 : ∀ c ∈ k.data, '0' <= c ∧\
-  \ c <= '9')\n  (h3 : 5 ≤ n ∧ n ≤ 100) :\n  solve_restaurant_device k n = (k.data.eraseDups.length)^3\
-  \ := sorry\n\n\ntheorem deterministic\n  (k : String)\n  (n : Int)\n  (h1 : k.length\
-  \ = 3)\n  (h2 : ∀ c ∈ k.data, '0' <= c ∧ c <= '9') :\n  solve_restaurant_device\
-  \ k n = solve_restaurant_device k n := sorry\n\n/--\ninfo: 27\n-/\n#guard_msgs in\n\
-  #eval solve_restaurant_device \"123\" 5\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval\
-  \ solve_restaurant_device \"111\" 5\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval solve_restaurant_device\
-  \ \"123\" 4\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  You were strolling outside the restaurant at the end of the universe. On a metaspiral path you stumble upon a weird device which takes a three-digit number as input and processes it. The Hitchhiker's guide to the galaxy explains that it processes the input in the following manner: 
+  - Multiplies it with 13, followed by 11 and then 7          
+  - Outputs all the distinct three-digit numbers possible from the digits of the new number (each digit can only be used once)          
+  Your friend Zaphod is in a playful mood, and does the following with the device-           
+  - Given a three-digit positive number $K$, he feeds it to the device for processing.          
+  - He then takes the numbers it gives as output, and send each of them through the device and again collect all the numbers sent out.          
+  - Repeats the above step $N$ times.          
+  To test your wit, he challenges you to find the number of distinct 3-digit numbers which the device outputs over the $N$ steps. Can you?
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow.
+  - Each testcase contains of a single line of input, two integers $K, N$.
+
+  -----Output:-----
+  For each testcase, output a single integer denoting the number of distinct 3-digit numbers which the device outputs over the $N$ steps.
+
+  -----Constraints-----
+  - $1 \leq T \leq 1000$ 
+  - $5 \leq N \leq 10^9$ 
+  - Each digit of $K$ is non-zero           
+
+  -----Sample Input:-----
+  1
+
+  123 5         
+
+  -----Sample Output:-----
+  27
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_restaurant_device (k : String) (n : Int) : Int := sorry
+
+  theorem output_bound 
+    (k : String) 
+    (n : Int)
+    (h1 : k.length = 3) 
+    (h2 : ∀ c ∈ k.data, '0' <= c ∧ c <= '9')
+    (h3 : 0 ≤ n ∧ n ≤ 100) :
+    0 ≤ solve_restaurant_device k n ∧ solve_restaurant_device k n ≤ 1000 := sorry
+vc-theorems: |
+  theorem zero_output_before_five
+    (k : String)
+    (n : Int)
+    (h1 : k.length = 3)
+    (h2 : ∀ c ∈ k.data, '0' <= c ∧ c <= '9')
+    (h3 : n ≤ 4) :
+    solve_restaurant_device k n = 0 := sorry
+
+
+  theorem output_formula
+    (k : String)
+    (n : Int)
+    (h1 : k.length = 3)
+    (h2 : ∀ c ∈ k.data, '0' <= c ∧ c <= '9')
+    (h3 : 5 ≤ n ∧ n ≤ 100) :
+    solve_restaurant_device k n = (k.data.eraseDups.length)^3 := sorry
+
+
+  theorem deterministic
+    (k : String)
+    (n : Int)
+    (h1 : k.length = 3)
+    (h2 : ∀ c ∈ k.data, '0' <= c ∧ c <= '9') :
+    solve_restaurant_device k n = solve_restaurant_device k n := sorry
+
+  /--
+  info: 27
+  -/
+  #guard_msgs in
+  #eval solve_restaurant_device "123" 5
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_restaurant_device "111" 5
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve_restaurant_device "123" 4
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

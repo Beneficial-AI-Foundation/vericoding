@@ -1,25 +1,58 @@
-"vc-description": "Find out the maximum sub-array of non negative numbers from an\
-  \ array. \n\nThe sub-array should be continuous. That is, a sub-array created by\
-  \ choosing the second and fourth element and skipping the third element is invalid.\n\
-  \nMaximum sub-array is defined in terms of the sum of the elements in the sub-array.\
-  \ Sub-array A is greater than sub-array B if sum(A) > sum(B).\n\nNOTE 1 :If there\
-  \ is a tie, then compare with segment's length and return segment which has maximum\
-  \ length \n\nNOTE 2: If there is still a tie, then return the segment with minimum\
-  \ starting index.\n\n-----Input-----\n\nThe first line contains the number of test\
-  \ cases. Each test cases contains an integer N. next line consists of N integers,\
-  \ the elements of the array.\n\n-----Output-----\n\nPrint out the maximum sub-array\
-  \ as stated above.\n\n-----Constraints-----\n-  1  ≤  T  ≤  100 \n-  1  ≤  N  ≤\
-  \  105 \n-  1  ≤  Ai  ≤  105 \n\n-----Example-----\nInput:\n\n1\n6\n1 2 5 -7 2 3\n\
-  \nOutput:\n\n1 2 5"
-"vc-preamble": "import Imports.AllImports\n\ndef find_max_subarray (arr : List Int)\
-  \ : List Int := sorry\n\ntheorem all_positive_returns_full_array {arr : List Int}\n\
-  \  (h : ∀ x ∈ arr, x ≥ 0) (nonempty : arr ≠ []) :\n  find_max_subarray arr = arr\
-  \ := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sum_list (l : List Int) : Int := sorry\n\ndef all_subarrays_bounded_by_negatives\
-  \ (arr : List Int) : List (List Int) := sorry\n"
-"vc-theorems": "theorem sum_is_maximal {arr : List Int} (nonempty : arr ≠ []) :\n\
-  \  let result := find_max_subarray arr\n  let result_sum := sum_list result\n  ∀\
-  \ subarray ∈ all_subarrays_bounded_by_negatives arr,\n    sum_list subarray ≤ result_sum\
-  \ := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Find out the maximum sub-array of non negative numbers from an array. 
+
+  The sub-array should be continuous. That is, a sub-array created by choosing the second and fourth element and skipping the third element is invalid.
+
+  Maximum sub-array is defined in terms of the sum of the elements in the sub-array. Sub-array A is greater than sub-array B if sum(A) > sum(B).
+
+  NOTE 1 :If there is a tie, then compare with segment's length and return segment which has maximum length 
+
+  NOTE 2: If there is still a tie, then return the segment with minimum starting index.
+
+  -----Input-----
+
+  The first line contains the number of test cases. Each test cases contains an integer N. next line consists of N integers, the elements of the array.
+
+  -----Output-----
+
+  Print out the maximum sub-array as stated above.
+
+  -----Constraints-----
+  -  1  ≤  T  ≤  100 
+  -  1  ≤  N  ≤  105 
+  -  1  ≤  Ai  ≤  105 
+
+  -----Example-----
+  Input:
+
+  1
+  6
+  1 2 5 -7 2 3
+
+  Output:
+
+  1 2 5
+vc-preamble: |
+  import Imports.AllImports
+
+  def find_max_subarray (arr : List Int) : List Int := sorry
+
+  theorem all_positive_returns_full_array {arr : List Int}
+    (h : ∀ x ∈ arr, x ≥ 0) (nonempty : arr ≠ []) :
+    find_max_subarray arr = arr := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sum_list (l : List Int) : Int := sorry
+
+  def all_subarrays_bounded_by_negatives (arr : List Int) : List (List Int) := sorry
+vc-theorems: |-
+  theorem sum_is_maximal {arr : List Int} (nonempty : arr ≠ []) :
+    let result := find_max_subarray arr
+    let result_sum := sum_list result
+    ∀ subarray ∈ all_subarrays_bounded_by_negatives arr,
+      sum_list subarray ≤ result_sum := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

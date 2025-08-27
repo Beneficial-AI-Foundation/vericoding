@@ -1,37 +1,96 @@
-"vc-description": "We will use the Flesch–Kincaid Grade Level to evaluate the readability\
-  \ of a piece of text. This grade level is an approximation for what schoolchildren\
-  \ are able to understand a piece of text. For example, a piece of text with a grade\
-  \ level of 7 can be read by seventh-graders and beyond.\n\nThe way to calculate\
-  \ the grade level is as follows:\n\n    (0.39 * average number of words per sentence)\
-  \ + (11.8 * average number of syllables per word) - 15.59\n\nWrite a function that\
-  \ will calculate the Flesch–Kincaid grade level for any given string. Return the\
-  \ grade level rounded to two decimal points.\n\nIgnore hyphens, dashes, apostrophes,\
-  \ parentheses, ellipses and abbreviations.\n\nRemember that the text can contain\
-  \ more than one sentence: code accordingly!\n\n**HINT**: Count the number of vowels\
-  \ as an approximation for the number of syllables, but count groups of vowels as\
-  \ one (e.g. `deal` is one syllable). **Do not** count `y` as a vowel!\n\n## Example\n\
-  \n```python\n\"The turtle is leaving.\" ==> 3.67\n```\n\nThe average number of words\
-  \ per sentence is `4` and the average number of syllables per word is `1.5`. The\
-  \ score is then `(0.39 * 4) +  (11.8 * 1.5) - 15.59` = `3.67`"
-"vc-preamble": "import Imports.AllImports\n\ndef count (s : String) (pattern : String)\
-  \ : Nat :=\n  sorry\n\n\ndef SENTENCE : String :=\n  sorry\n\n\ndef SYLLABLE : String\
-  \ :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def flesch_kincaid (text : String) : Float :=\n  sorry\n"
-"vc-theorems": "theorem flesch_kincaid_result_is_float (text : String) (h : text.length\
-  \ > 0) :\n  ∃ (f : Float), flesch_kincaid text = f :=\n  sorry\n\n\ntheorem flesch_kincaid_count_properties\
-  \ (text : String) \n  (h₁ : text.length > 0)\n  (h₂ : count text SENTENCE = 1) :\n\
-  \  let words := count text \" \" + 1\n  let sentences := count text SENTENCE\n \
-  \ let syllables := count text SYLLABLE\n  words ≥ 1 ∧ \n  sentences = 1 ∧\n  syllables\
-  \ ≥ 0 ∧\n  syllables ≤ text.length :=\n  sorry\n\n\ntheorem syllable_counting_vowels_only\
-  \ (text : String) \n  (h₁ : text.length > 0)\n  (h₂ : ∀ c ∈ text.data, c ∈ ['a',\
-  \ 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']) :\n  let syllables := count text\
-  \ SYLLABLE\n  syllables ≥ 1 ∧ syllables ≤ text.length :=\n  sorry\n\n\ntheorem flesch_kincaid_is_finite\
-  \ (words : List String)\n  (h : words.length > 0)\n  (h₂ : ∀ w ∈ words, w.length\
-  \ > 0)\n  (h₃ : ∀ w ∈ words, ∀ c ∈ w.data, c.isLower) : \n  let sentence := String.intercalate\
-  \ \" \" words ++ \".\"\n  ∃ (result : Float), flesch_kincaid sentence = result :=\n\
-  \  sorry\n\n/--\ninfo: 3.67\n-/\n#guard_msgs in\n#eval flesch_kincaid \"The turtle\
-  \ is leaving.\"\n\n/--\ninfo: 2.89\n-/\n#guard_msgs in\n#eval flesch_kincaid \"\
-  Hi there.\"\n\n/--\ninfo: 2.89\n-/\n#guard_msgs in\n#eval flesch_kincaid \"Go home.\"\
-  \n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  We will use the Flesch–Kincaid Grade Level to evaluate the readability of a piece of text. This grade level is an approximation for what schoolchildren are able to understand a piece of text. For example, a piece of text with a grade level of 7 can be read by seventh-graders and beyond.
+
+  The way to calculate the grade level is as follows:
+
+      (0.39 * average number of words per sentence) + (11.8 * average number of syllables per word) - 15.59
+
+  Write a function that will calculate the Flesch–Kincaid grade level for any given string. Return the grade level rounded to two decimal points.
+
+  Ignore hyphens, dashes, apostrophes, parentheses, ellipses and abbreviations.
+
+  Remember that the text can contain more than one sentence: code accordingly!
+
+  **HINT**: Count the number of vowels as an approximation for the number of syllables, but count groups of vowels as one (e.g. `deal` is one syllable). **Do not** count `y` as a vowel!
+
+  ## Example
+
+  ```python
+  "The turtle is leaving." ==> 3.67
+  ```
+
+  The average number of words per sentence is `4` and the average number of syllables per word is `1.5`. The score is then `(0.39 * 4) +  (11.8 * 1.5) - 15.59` = `3.67`
+vc-preamble: |
+  import Imports.AllImports
+
+  def count (s : String) (pattern : String) : Nat :=
+    sorry
+
+
+  def SENTENCE : String :=
+    sorry
+
+
+  def SYLLABLE : String :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def flesch_kincaid (text : String) : Float :=
+    sorry
+vc-theorems: |
+  theorem flesch_kincaid_result_is_float (text : String) (h : text.length > 0) :
+    ∃ (f : Float), flesch_kincaid text = f :=
+    sorry
+
+
+  theorem flesch_kincaid_count_properties (text : String) 
+    (h₁ : text.length > 0)
+    (h₂ : count text SENTENCE = 1) :
+    let words := count text " " + 1
+    let sentences := count text SENTENCE
+    let syllables := count text SYLLABLE
+    words ≥ 1 ∧ 
+    sentences = 1 ∧
+    syllables ≥ 0 ∧
+    syllables ≤ text.length :=
+    sorry
+
+
+  theorem syllable_counting_vowels_only (text : String) 
+    (h₁ : text.length > 0)
+    (h₂ : ∀ c ∈ text.data, c ∈ ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']) :
+    let syllables := count text SYLLABLE
+    syllables ≥ 1 ∧ syllables ≤ text.length :=
+    sorry
+
+
+  theorem flesch_kincaid_is_finite (words : List String)
+    (h : words.length > 0)
+    (h₂ : ∀ w ∈ words, w.length > 0)
+    (h₃ : ∀ w ∈ words, ∀ c ∈ w.data, c.isLower) : 
+    let sentence := String.intercalate " " words ++ "."
+    ∃ (result : Float), flesch_kincaid sentence = result :=
+    sorry
+
+  /--
+  info: 3.67
+  -/
+  #guard_msgs in
+  #eval flesch_kincaid "The turtle is leaving."
+
+  /--
+  info: 2.89
+  -/
+  #guard_msgs in
+  #eval flesch_kincaid "Hi there."
+
+  /--
+  info: 2.89
+  -/
+  #guard_msgs in
+  #eval flesch_kincaid "Go home."
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,18 +1,58 @@
-"vc-description": "The goal of this kata is to write a function that takes two inputs:\
-  \ a string and a character. The function will count the number of times that character\
-  \ appears in the string. The count is case insensitive.\n\nFor example: \n\n```python\n\
-  count_char(\"fizzbuzz\",\"z\") => 4\ncount_char(\"Fancy fifth fly aloof\",\"f\"\
-  ) => 5\n```\n\nThe character can be any alphanumeric character. \n\nGood luck."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_char (s : String) (c : Char) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem count_char_case_insensitive_char (s : String) (c : Char) :\n\
-  \  count_char s c = count_char s c.toUpper ∧ \n  count_char s c = count_char s c.toLower\
-  \ :=\nsorry\n\n\ntheorem count_char_bounds (s : String) (c : Char) :\n  0 ≤ count_char\
-  \ s c ∧ count_char s c ≤ s.length :=\nsorry \n\n\ntheorem count_char_case_insensitive_string\
-  \ (s : String) (c : Char) :\n  count_char s c = count_char s.toUpper c ∧\n  count_char\
-  \ s c = count_char s.toLower c :=\nsorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval\
-  \ count_char \"fizzbuzz\" \"z\"\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval count_char\
-  \ \"Fancy fifth fly aloof\" \"f\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_char\
-  \ \"Hello World\" \"l\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  The goal of this kata is to write a function that takes two inputs: a string and a character. The function will count the number of times that character appears in the string. The count is case insensitive.
+
+  For example: 
+
+  ```python
+  count_char("fizzbuzz","z") => 4
+  count_char("Fancy fifth fly aloof","f") => 5
+  ```
+
+  The character can be any alphanumeric character. 
+
+  Good luck.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_char (s : String) (c : Char) : Nat :=
+    sorry
+vc-theorems: |
+  theorem count_char_case_insensitive_char (s : String) (c : Char) :
+    count_char s c = count_char s c.toUpper ∧ 
+    count_char s c = count_char s c.toLower :=
+  sorry
+
+
+  theorem count_char_bounds (s : String) (c : Char) :
+    0 ≤ count_char s c ∧ count_char s c ≤ s.length :=
+  sorry 
+
+
+  theorem count_char_case_insensitive_string (s : String) (c : Char) :
+    count_char s c = count_char s.toUpper c ∧
+    count_char s c = count_char s.toLower c :=
+  sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval count_char "fizzbuzz" "z"
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval count_char "Fancy fifth fly aloof" "f"
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_char "Hello World" "l"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

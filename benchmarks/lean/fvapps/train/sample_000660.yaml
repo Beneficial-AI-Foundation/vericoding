@@ -1,42 +1,66 @@
-"vc-description": "Harry is a bright student. To prepare thoroughly for exams, he\
-  \ completes all the exercises in his book! Now that the exams are approaching fast,\
-  \ he is doing book exercises day and night. He writes down and keeps updating the\
-  \ remaining number of exercises on the back cover of each book.\nHarry has a lot\
-  \ of books messed on the floor. Therefore, he wants to pile up the books that still\
-  \ have some remaining exercises into a single pile. He will grab the books one-by-one\
-  \ and add the books that still have remaining exercises to the top of the pile.\n\
-  Whenever he wants to do a book exercise, he will pick the book with the minimum\
-  \ number of remaining exercises from the pile. In order to pick the book, he has\
-  \ to remove all the books above it. Therefore, if there are more than one books\
-  \ with the minimum number of remaining exercises, he will take the one which requires\
-  \ the least number of books to remove. The removed books are returned to the messy\
-  \ floor. After he picks the book, he will do all the remaining exercises and trash\
-  \ the book.\nSince number of books is rather large, he needs your help to tell him\
-  \ the number of books he must remove, for picking the book with the minimum number\
-  \ of exercises.\n\nNote that more than one book can have the same name.\n\n-----Input-----\n\
-  The first line contains a single integer N denoting the number of actions. Then\
-  \ N lines follow. Each line starts with an integer. If the integer is -1, that means\
-  \ Harry wants to do a book exercise. Otherwise, the integer is number of the remaining\
-  \ exercises in the book he grabs next. This is followed by a string denoting the\
-  \ name of the book.\n\n-----Output-----\nFor each -1 in the input, output a single\
-  \ line containing the number of books Harry must remove, followed by the name of\
-  \ the book that Harry must pick.\n\n-----Constraints-----\n\n1 < N ≤ 1,000,000\n\
-  0 ≤ (the number of remaining exercises of each book) < 100,000\nThe name of each\
-  \ book consists of between 1 and 15 characters 'a' - 'z'.\nWhenever he wants to\
-  \ do a book exercise, there is at least one book in the pile.\n\n-----Example-----\n\
-  Input:\n6\n9 english\n6 mathematics\n8 geography\n-1\n3 graphics\n-1\n\nOutput:\n\
-  1 mathematics\n0 graphics"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_books (books : List String) (queries : List String) :\
-  \ List String :=\n  sorry\n"
-"vc-theorems": "theorem count_books_result_length {books queries : List String} :\n\
-  \  List.length (count_books books queries) = List.length queries :=\n  sorry\n\n\
-  \n\n\ntheorem count_books_nonnegative {books queries : List String} :\n  ∀ result\
-  \ ∈ count_books books queries,\n    ∀ n : Nat, (result.splitOn \" \").head! = toString\
-  \ n → n ≥ 0 :=\n  sorry \n\n\ntheorem count_books_correct_count {books queries :\
-  \ List String} :\n  ∀ (i : Nat), i < queries.length →\n    let result := List.get!\
-  \ (count_books books queries) i\n    let count := ((result.splitOn \" \").head!).toNat!\n\
-  \    let query := List.get! queries i\n    count = List.length (List.filter (fun\
-  \ book => book.startsWith query) books) :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Harry is a bright student. To prepare thoroughly for exams, he completes all the exercises in his book! Now that the exams are approaching fast, he is doing book exercises day and night. He writes down and keeps updating the remaining number of exercises on the back cover of each book.
+  Harry has a lot of books messed on the floor. Therefore, he wants to pile up the books that still have some remaining exercises into a single pile. He will grab the books one-by-one and add the books that still have remaining exercises to the top of the pile.
+  Whenever he wants to do a book exercise, he will pick the book with the minimum number of remaining exercises from the pile. In order to pick the book, he has to remove all the books above it. Therefore, if there are more than one books with the minimum number of remaining exercises, he will take the one which requires the least number of books to remove. The removed books are returned to the messy floor. After he picks the book, he will do all the remaining exercises and trash the book.
+  Since number of books is rather large, he needs your help to tell him the number of books he must remove, for picking the book with the minimum number of exercises.
+
+  Note that more than one book can have the same name.
+
+  -----Input-----
+  The first line contains a single integer N denoting the number of actions. Then N lines follow. Each line starts with an integer. If the integer is -1, that means Harry wants to do a book exercise. Otherwise, the integer is number of the remaining exercises in the book he grabs next. This is followed by a string denoting the name of the book.
+
+  -----Output-----
+  For each -1 in the input, output a single line containing the number of books Harry must remove, followed by the name of the book that Harry must pick.
+
+  -----Constraints-----
+
+  1 < N ≤ 1,000,000
+  0 ≤ (the number of remaining exercises of each book) < 100,000
+  The name of each book consists of between 1 and 15 characters 'a' - 'z'.
+  Whenever he wants to do a book exercise, there is at least one book in the pile.
+
+  -----Example-----
+  Input:
+  6
+  9 english
+  6 mathematics
+  8 geography
+  -1
+  3 graphics
+  -1
+
+  Output:
+  1 mathematics
+  0 graphics
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_books (books : List String) (queries : List String) : List String :=
+    sorry
+vc-theorems: |-
+  theorem count_books_result_length {books queries : List String} :
+    List.length (count_books books queries) = List.length queries :=
+    sorry
+
+
+
+
+  theorem count_books_nonnegative {books queries : List String} :
+    ∀ result ∈ count_books books queries,
+      ∀ n : Nat, (result.splitOn " ").head! = toString n → n ≥ 0 :=
+    sorry 
+
+
+  theorem count_books_correct_count {books queries : List String} :
+    ∀ (i : Nat), i < queries.length →
+      let result := List.get! (count_books books queries) i
+      let count := ((result.splitOn " ").head!).toNat!
+      let query := List.get! queries i
+      count = List.length (List.filter (fun book => book.startsWith query) books) :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

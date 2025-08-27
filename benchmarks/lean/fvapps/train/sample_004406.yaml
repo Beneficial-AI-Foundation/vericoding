@@ -1,41 +1,137 @@
-"vc-description": "### Introduction and Warm-up (Highly recommended)\n\n### [Playing\
-  \ With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
-  ___\n\n## Task\n\n**_Given_** an *array/list [] of integers* , **_Find the product\
-  \ of the k maximal_** numbers.\n___\n\n### Notes \n\n* **_Array/list_** size is\
-  \ *at least 3* .\n\n* **_Array/list's numbers_**  *Will be* **_mixture of positives\
-  \ , negatives and zeros_** \n\n* **_Repetition_** of numbers in *the array/list\
-  \ could occur*.\n___\n\n### Input >> Output Examples \n\n```\nmaxProduct ({4, 3,\
-  \ 5}, 2) ==>  return (20)\n```\n\n#### _Explanation_:\n\n* **_Since_** *the size\
-  \ (k) equal 2* , then **_the subsequence of size 2_** *whose gives* **_product of\
-  \ maxima_**  is `5 * 4 = 20` .\n___\n\n```\nmaxProduct ({8, 10 , 9, 7}, 3) ==> \
-  \ return (720)\n```\n\n#### _Explanation_:\n\n* **_Since_** *the size (k) equal\
-  \ 3* , then **_the subsequence of size 3_** *whose gives* **_product of maxima_**\
-  \  is ` 8 * 9 * 10 = 720` .\n___\n\n```\nmaxProduct ({10, 8, 3, 2, 1, 4, 10}, 5)\
-  \ ==> return (9600)\n```\n\n#### _Explanation_:\n\n* **_Since_** *the size (k) equal\
-  \ 5* , then **_the subsequence of size 5_** *whose gives* **_product of maxima_**\
-  \  is ` 10 * 10 * 8 * 4 * 3 = 9600` .\n___\n\n```\nmaxProduct ({-4, -27, -15, -6,\
-  \ -1}, 2) ==> return (4)\n```\n\n#### _Explanation_:\n\n* **_Since_** *the size\
-  \ (k) equal 2* , then **_the subsequence of size 2_** *whose gives* **_product of\
-  \ maxima_**  is ` -4 * -1 = 4` .\n___\n\n```\nmaxProduct ({10, 3, -1, -27} , 3)\
-  \  return (-30)\n``` \n\n#### _Explanation_:\n* **_Since_** *the size (k) equal\
-  \ 3* , then **_the subsequence of size 3_** *whose gives* **_product of maxima_**\
-  \  is ` 10 * 3 * -1 = -30 ` .\n___\n___\n___\n___\n\n#### [Playing with Numbers\
-  \ Series](https://www.codewars.com/collections/playing-with-numbers)\n\n#### [Playing\
-  \ With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
-  \n#### [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
-  ___\n\n##### ALL translations are welcomed\n\n##### Enjoy Learning !!\n##### Zizou"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def max_product (lst : List Int) (n : Nat) : Int :=\n  sorry\n\n\
-  \n"
-"vc-theorems": "theorem max_product_single_equals_maximum {lst : List Int} \n  (h\
-  \ : lst.length > 0) :\n  ∃ m ∈ lst, (max_product lst 1 = m ∧ ∀ x ∈ lst, x ≤ m) :=\n\
-  \  sorry\n\n\ntheorem max_product_full_list {lst : List Int}\n  (h : lst.length\
-  \ > 0) :\n  max_product lst lst.length = List.foldl (· * ·) 1 lst :=\n  sorry\n\n\
-  \ntheorem max_product_singleton_positive :\n  max_product [1] 1 = 1 :=\n  sorry\n\
-  \n\ntheorem max_product_singleton_negative :\n  max_product [-1] 1 = -1 :=\n  sorry\n\
-  \n\ntheorem max_product_singleton_zero :\n  max_product [0] 1 = 0 :=\n  sorry\n\n\
-  /--\ninfo: 20\n-/\n#guard_msgs in\n#eval max_product [4, 3, 5] 2\n\n/--\ninfo: 720\n\
-  -/\n#guard_msgs in\n#eval max_product [10, 8, 7, 9] 3\n\n/--\ninfo: 4\n-/\n#guard_msgs\
-  \ in\n#eval max_product [-4, -27, -15, -6, -1] 2\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  ### Introduction and Warm-up (Highly recommended)
+
+  ### [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)
+  ___
+
+  ## Task
+
+  **_Given_** an *array/list [] of integers* , **_Find the product of the k maximal_** numbers.
+  ___
+
+  ### Notes 
+
+  * **_Array/list_** size is *at least 3* .
+
+  * **_Array/list's numbers_**  *Will be* **_mixture of positives , negatives and zeros_** 
+
+  * **_Repetition_** of numbers in *the array/list could occur*.
+  ___
+
+  ### Input >> Output Examples 
+
+  ```
+  maxProduct ({4, 3, 5}, 2) ==>  return (20)
+  ```
+
+  #### _Explanation_:
+
+  * **_Since_** *the size (k) equal 2* , then **_the subsequence of size 2_** *whose gives* **_product of maxima_**  is `5 * 4 = 20` .
+  ___
+
+  ```
+  maxProduct ({8, 10 , 9, 7}, 3) ==>  return (720)
+  ```
+
+  #### _Explanation_:
+
+  * **_Since_** *the size (k) equal 3* , then **_the subsequence of size 3_** *whose gives* **_product of maxima_**  is ` 8 * 9 * 10 = 720` .
+  ___
+
+  ```
+  maxProduct ({10, 8, 3, 2, 1, 4, 10}, 5) ==> return (9600)
+  ```
+
+  #### _Explanation_:
+
+  * **_Since_** *the size (k) equal 5* , then **_the subsequence of size 5_** *whose gives* **_product of maxima_**  is ` 10 * 10 * 8 * 4 * 3 = 9600` .
+  ___
+
+  ```
+  maxProduct ({-4, -27, -15, -6, -1}, 2) ==> return (4)
+  ```
+
+  #### _Explanation_:
+
+  * **_Since_** *the size (k) equal 2* , then **_the subsequence of size 2_** *whose gives* **_product of maxima_**  is ` -4 * -1 = 4` .
+  ___
+
+  ```
+  maxProduct ({10, 3, -1, -27} , 3)  return (-30)
+  ``` 
+
+  #### _Explanation_:
+  * **_Since_** *the size (k) equal 3* , then **_the subsequence of size 3_** *whose gives* **_product of maxima_**  is ` 10 * 3 * -1 = -30 ` .
+  ___
+  ___
+  ___
+  ___
+
+  #### [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)
+
+  #### [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)
+
+  #### [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)
+  ___
+
+  ##### ALL translations are welcomed
+
+  ##### Enjoy Learning !!
+  ##### Zizou
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def max_product (lst : List Int) (n : Nat) : Int :=
+    sorry
+
+
+vc-theorems: |
+  theorem max_product_single_equals_maximum {lst : List Int} 
+    (h : lst.length > 0) :
+    ∃ m ∈ lst, (max_product lst 1 = m ∧ ∀ x ∈ lst, x ≤ m) :=
+    sorry
+
+
+  theorem max_product_full_list {lst : List Int}
+    (h : lst.length > 0) :
+    max_product lst lst.length = List.foldl (· * ·) 1 lst :=
+    sorry
+
+
+  theorem max_product_singleton_positive :
+    max_product [1] 1 = 1 :=
+    sorry
+
+
+  theorem max_product_singleton_negative :
+    max_product [-1] 1 = -1 :=
+    sorry
+
+
+  theorem max_product_singleton_zero :
+    max_product [0] 1 = 0 :=
+    sorry
+
+  /--
+  info: 20
+  -/
+  #guard_msgs in
+  #eval max_product [4, 3, 5] 2
+
+  /--
+  info: 720
+  -/
+  #guard_msgs in
+  #eval max_product [10, 8, 7, 9] 3
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval max_product [-4, -27, -15, -6, -1] 2
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

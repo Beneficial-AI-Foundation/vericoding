@@ -1,22 +1,70 @@
-"vc-description": "One day Chef was playing with numbers. He loves Lowest Common Multiple\
-  \ (LCM) too much and he is a very curious guy. He always try to do new things. Now\
-  \ he want to make a large number with it. But he doesn't want to take too many numbers.\n\
-  \nHe is willing to take only three numbers less than or equal to N (not necessarily\
-  \ distinct ) and from those three number he want get the maximum number by taking\
-  \ LCM of the numbers.\n\nAs he is busy in playing some more tricks of maths, he\
-  \ assign this task to you.\n\n-----Input-----\nFirst line of input contains an integer\
-  \ t ( t<=1000 ), Number of test cases.\n\nt line follows an integer N\n\n-----Output-----\n\
-  Print t lines contains a single integer — the maximum possible LCM of three not\
-  \ necessarily distinct positive integers that are not greater than N.\n\n-----Constraints-----\n\
-  1<= N <= 10^6\n\n-----Example-----\nInput:\n2\n9\n7\n\nOutput:\n504\n210\n\n\n-----Explanation-----\n\
-  Example case 2. For the last example, we can chose numbers 7, 6, 5 and the LCM of\
-  \ them is 7•6•5 = 210. It is the maximum value we can get."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def max_lcm_three_nums (n: Nat) : Nat := sorry\n\ndef lcm (a b:\
-  \ Nat) : Nat := sorry\n\n\n\n\n"
-"vc-theorems": "theorem small_cases :\n  max_lcm_three_nums 1 = 1 ∧ \n  max_lcm_three_nums\
-  \ 2 = 2 ∧\n  max_lcm_three_nums 3 = 6 := sorry\n\n/--\ninfo: 504\n-/\n#guard_msgs\
-  \ in\n#eval max_lcm_three_nums 9\n\n/--\ninfo: 210\n-/\n#guard_msgs in\n#eval max_lcm_three_nums\
-  \ 7\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval max_lcm_three_nums 3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  One day Chef was playing with numbers. He loves Lowest Common Multiple (LCM) too much and he is a very curious guy. He always try to do new things. Now he want to make a large number with it. But he doesn't want to take too many numbers.
+
+  He is willing to take only three numbers less than or equal to N (not necessarily distinct ) and from those three number he want get the maximum number by taking LCM of the numbers.
+
+  As he is busy in playing some more tricks of maths, he assign this task to you.
+
+  -----Input-----
+  First line of input contains an integer t ( t<=1000 ), Number of test cases.
+
+  t line follows an integer N
+
+  -----Output-----
+  Print t lines contains a single integer — the maximum possible LCM of three not necessarily distinct positive integers that are not greater than N.
+
+  -----Constraints-----
+  1<= N <= 10^6
+
+  -----Example-----
+  Input:
+  2
+  9
+  7
+
+  Output:
+  504
+  210
+
+
+  -----Explanation-----
+  Example case 2. For the last example, we can chose numbers 7, 6, 5 and the LCM of them is 7•6•5 = 210. It is the maximum value we can get.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def max_lcm_three_nums (n: Nat) : Nat := sorry
+
+  def lcm (a b: Nat) : Nat := sorry
+
+
+
+
+vc-theorems: |
+  theorem small_cases :
+    max_lcm_three_nums 1 = 1 ∧ 
+    max_lcm_three_nums 2 = 2 ∧
+    max_lcm_three_nums 3 = 6 := sorry
+
+  /--
+  info: 504
+  -/
+  #guard_msgs in
+  #eval max_lcm_three_nums 9
+
+  /--
+  info: 210
+  -/
+  #guard_msgs in
+  #eval max_lcm_three_nums 7
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval max_lcm_three_nums 3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

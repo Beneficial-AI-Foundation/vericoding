@@ -1,21 +1,55 @@
-"vc-description": "A binary gap within a positive number ```num``` is any sequence\
-  \ of consecutive zeros that is surrounded by ones at both ends in the binary representation\
-  \ of  ```num```. \n    For example:\n    ```9``` has binary representation ```1001```\
-  \ and contains a binary gap of length ```2```.\n    ```529``` has binary representation\
-  \ ```1000010001``` and contains two binary gaps: one of length ```4``` and one of\
-  \ length ```3```.\n    ```20``` has binary representation ```10100``` and contains\
-  \ one binary gap of length ```1```.\n    ```15``` has binary representation ```1111```\
-  \ and has ```0``` binary gaps.\n    Write ```function gap(num)```\nthat,  given\
-  \ a positive ```num```,  returns the length of its longest binary gap. The function\
-  \ should return ```0``` if ```num``` doesn't contain a binary gap."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def gap (n : Nat) : Nat := sorry\n\ntheorem gap_bounded (n : Nat)\
-  \ (h : n > 0):\n  gap n ≤ n.log2 :=\nsorry\n"
-"vc-theorems": "theorem no_gaps_all_ones (n : Nat):\n  gap ((1 <<< n) - 1) = 0 :=\n\
-  sorry\n\n\ntheorem leading_trailing_zeros (n k : Nat) (h : n > 0):\n  gap n = gap\
-  \ (n <<< k) :=\nsorry\n\n\ntheorem single_bit_no_gap (n : Nat):\n  gap (1 <<< n)\
-  \ = 0 :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval gap 9\n\n/--\ninfo: 4\n\
-  -/\n#guard_msgs in\n#eval gap 529\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval gap\
-  \ 15\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  A binary gap within a positive number ```num``` is any sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of  ```num```. 
+      For example:
+      ```9``` has binary representation ```1001``` and contains a binary gap of length ```2```.
+      ```529``` has binary representation ```1000010001``` and contains two binary gaps: one of length ```4``` and one of length ```3```.
+      ```20``` has binary representation ```10100``` and contains one binary gap of length ```1```.
+      ```15``` has binary representation ```1111``` and has ```0``` binary gaps.
+      Write ```function gap(num)```
+  that,  given a positive ```num```,  returns the length of its longest binary gap. The function should return ```0``` if ```num``` doesn't contain a binary gap.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def gap (n : Nat) : Nat := sorry
+
+  theorem gap_bounded (n : Nat) (h : n > 0):
+    gap n ≤ n.log2 :=
+  sorry
+vc-theorems: |
+  theorem no_gaps_all_ones (n : Nat):
+    gap ((1 <<< n) - 1) = 0 :=
+  sorry
+
+
+  theorem leading_trailing_zeros (n k : Nat) (h : n > 0):
+    gap n = gap (n <<< k) :=
+  sorry
+
+
+  theorem single_bit_no_gap (n : Nat):
+    gap (1 <<< n) = 0 :=
+  sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval gap 9
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval gap 529
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval gap 15
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

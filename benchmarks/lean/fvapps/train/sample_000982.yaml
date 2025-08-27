@@ -1,28 +1,75 @@
-"vc-description": "Navnit is a college student and there are $N$ students in his college\
-  \ .Students are numbered from $1$ to $N$.\nYou are given $M$ facts that \"Student\
-  \ $A_i$ and $B_i$\".The same fact can be given multiple times .If $A_i$ is a friend\
-  \ of $B_i$ ,then $B_i$ is also a friend of $A_i$ . If $A_i$ is a friend of $B_i$\
-  \ and $B_i$ is a friend of $C_i$ then $A_i$ is also a friend of $C_i$.\nFind number\
-  \ of ways in which two students can be selected in such a way that they are not\
-  \ friends. \n\n-----Input:-----\n- First line will contain two integers $N$ and\
-  \ $M$. \n- Then $M$ lines follow. Each line contains two integers $A_i$ and $B_i$\
-  \ denoting the students who are friends.\n\n-----Output:-----\nFor each testcase,\
-  \ output the number of ways in which  two students can be selected in such a way\
-  \ that they are friends.\n\n-----Constraints-----\n- $2 \\leq N \\leq 200000$\n\
-  - $0 \\leq M \\leq 200000$\n- $1 \\leq A_i,B_i \\leq N$\n\n-----Sample Input:-----\n\
-  5 3\n1 2                                                   \n3 4\n1 5\n\n-----Sample\
-  \ Output:-----\n6\n\n-----EXPLANATION:-----\nGroups of friend are $[1,2,5]$ and\
-  \ $[3,4]$.Hence the answer is  3 X 2 =6."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_non_friend_pairs (n m : Nat) (pairs : List (Nat × Nat))\
-  \ : Nat :=\n  sorry\n\n\n"
-"vc-theorems": "theorem count_empty_pairs {n : Nat} (h1 : n > 0) (h2 : n ≤ 20) :\n\
-  \  count_non_friend_pairs n 0 [] = n * (n-1) / 2 :=\n  sorry\n\n\ntheorem count_single_node\
-  \ :\n  count_non_friend_pairs 1 0 [] = 0 :=\n  sorry\n\n\n\n\ntheorem count_empty_graph\
-  \ {n : Nat} (h1 : n ≥ 2) (h2 : n ≤ 20) :\n  count_non_friend_pairs n 0 [] = n *\
-  \ (n-1) / 2 :=\n  sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval count_non_friend_pairs\
-  \ 5 3 [(1, 2), (3, 4), (1, 5)]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval count_non_friend_pairs\
-  \ 4 2 [(1, 2), (3, 4)]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_non_friend_pairs\
-  \ 3 0 []\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Navnit is a college student and there are $N$ students in his college .Students are numbered from $1$ to $N$.
+  You are given $M$ facts that "Student $A_i$ and $B_i$".The same fact can be given multiple times .If $A_i$ is a friend of $B_i$ ,then $B_i$ is also a friend of $A_i$ . If $A_i$ is a friend of $B_i$ and $B_i$ is a friend of $C_i$ then $A_i$ is also a friend of $C_i$.
+  Find number of ways in which two students can be selected in such a way that they are not friends. 
+
+  -----Input:-----
+  - First line will contain two integers $N$ and $M$. 
+  - Then $M$ lines follow. Each line contains two integers $A_i$ and $B_i$ denoting the students who are friends.
+
+  -----Output:-----
+  For each testcase, output the number of ways in which  two students can be selected in such a way that they are friends.
+
+  -----Constraints-----
+  - $2 \leq N \leq 200000$
+  - $0 \leq M \leq 200000$
+  - $1 \leq A_i,B_i \leq N$
+
+  -----Sample Input:-----
+  5 3
+  1 2                                                   
+  3 4
+  1 5
+
+  -----Sample Output:-----
+  6
+
+  -----EXPLANATION:-----
+  Groups of friend are $[1,2,5]$ and $[3,4]$.Hence the answer is  3 X 2 =6.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def count_non_friend_pairs (n m : Nat) (pairs : List (Nat × Nat)) : Nat :=
+    sorry
+
+
+vc-theorems: |
+  theorem count_empty_pairs {n : Nat} (h1 : n > 0) (h2 : n ≤ 20) :
+    count_non_friend_pairs n 0 [] = n * (n-1) / 2 :=
+    sorry
+
+
+  theorem count_single_node :
+    count_non_friend_pairs 1 0 [] = 0 :=
+    sorry
+
+
+
+
+  theorem count_empty_graph {n : Nat} (h1 : n ≥ 2) (h2 : n ≤ 20) :
+    count_non_friend_pairs n 0 [] = n * (n-1) / 2 :=
+    sorry
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval count_non_friend_pairs 5 3 [(1, 2), (3, 4), (1, 5)]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval count_non_friend_pairs 4 2 [(1, 2), (3, 4)]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_non_friend_pairs 3 0 []
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

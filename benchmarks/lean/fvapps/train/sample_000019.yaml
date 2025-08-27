@@ -1,63 +1,154 @@
-"vc-description": "The only difference between easy and hard versions is constraints.\n\
-  \nThe BerTV channel every day broadcasts one episode of one of the $k$ TV shows.\
-  \ You know the schedule for the next $n$ days: a sequence of integers $a_1, a_2,\
-  \ \\dots, a_n$ ($1 \\le a_i \\le k$), where $a_i$ is the show, the episode of which\
-  \ will be shown in $i$-th day.\n\nThe subscription to the show is bought for the\
-  \ entire show (i.e. for all its episodes), for each show the subscription is bought\
-  \ separately.\n\nHow many minimum subscriptions do you need to buy in order to have\
-  \ the opportunity to watch episodes of purchased shows $d$ ($1 \\le d \\le n$) days\
-  \ in a row? In other words, you want to buy the minimum number of TV shows so that\
-  \ there is some segment of $d$ consecutive days in which all episodes belong to\
-  \ the purchased shows.\n\n\n-----Input-----\n\nThe first line contains an integer\
-  \ $t$ ($1 \\le t \\le 10000$) — the number of test cases in the input. Then $t$\
-  \ test case descriptions follow.\n\nThe first line of each test case contains three\
-  \ integers $n, k$ and $d$ ($1 \\le n \\le 2\\cdot10^5$, $1 \\le k \\le 10^6$, $1\
-  \ \\le d \\le n$). The second line contains $n$ integers $a_1, a_2, \\dots, a_n$\
-  \ ($1 \\le a_i \\le k$), where $a_i$ is the show that is broadcasted on the $i$-th\
-  \ day.\n\nIt is guaranteed that the sum of the values ​​of $n$ for all test cases\
-  \ in the input does not exceed $2\\cdot10^5$.\n\n\n-----Output-----\n\nPrint $t$\
-  \ integers — the answers to the test cases in the input in the order they follow.\
-  \ The answer to a test case is the minimum number of TV shows for which you need\
-  \ to purchase a subscription so that you can watch episodes of the purchased TV\
-  \ shows on BerTV for $d$ consecutive days. Please note that it is permissible that\
-  \ you will be able to watch more than $d$ days in a row.\n\n\n-----Example-----\n\
-  Input\n4\n5 2 2\n1 2 1 2 1\n9 3 3\n3 3 3 2 2 2 1 1 1\n4 10 4\n10 8 6 4\n16 9 8\n\
-  3 1 4 1 5 9 2 6 5 3 5 8 9 7 9 3\n\nOutput\n2\n1\n4\n5\n\n\n\n-----Note-----\n\n\
-  In the first test case to have an opportunity to watch shows for two consecutive\
-  \ days, you need to buy a subscription on show $1$ and on show $2$. So the answer\
-  \ is two.\n\nIn the second test case, you can buy a subscription to any show because\
-  \ for each show you can find a segment of three consecutive days, consisting only\
-  \ of episodes of this show.\n\nIn the third test case in the unique segment of four\
-  \ days, you have four different shows, so you need to buy a subscription to all\
-  \ these four shows.\n\nIn the fourth test case, you can buy subscriptions to shows\
-  \ $3,5,7,8,9$, and you will be able to watch shows for the last eight days."
-"vc-preamble": "import Imports.AllImports\n\ndef maximum (l : List Nat) : Nat :=\n\
-  \  match l with\n  | [] => 0\n  | x::xs => List.foldl Nat.max x xs\n\n\ndef listToFinset\
-  \ (l : List Nat) : List Nat :=\n  l.eraseDups\n\n\ndef windowsOfSize (l : List Nat)\
-  \ (size : Nat) : List (List Nat) :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def min_subscriptions (n k d : Nat) (shows : List Nat) : Nat :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem min_subscriptions_output_bounds\n  (shows : List Nat)\n  (h1\
-  \ : shows ≠ [])\n  (h2 : ∀ x ∈ shows, 1 ≤ x ∧ x ≤ 100) :\n  let n := shows.length\n\
-  \  let k := maximum shows\n  let d := min n (maximum shows)\n  let result := min_subscriptions\
-  \ n k d shows\n  1 ≤ result ∧ result ≤ (listToFinset shows).length :=\nsorry\n\n\
-  \ntheorem min_subscriptions_window_size_one\n  (shows : List Nat)\n  (h1 : shows\
-  \ ≠ [])\n  (h2 : ∀ x ∈ shows, 1 ≤ x) :\n  let n := shows.length\n  let k := maximum\
-  \ shows\n  min_subscriptions n k 1 shows = 1 :=\nsorry\n\n\ntheorem min_subscriptions_window_size_equals_length\n\
-  \  (shows : List Nat)\n  (k : Nat)\n  (h1 : shows ≠ [])\n  (h2 : ∀ x ∈ shows, 1\
-  \ ≤ x)\n  (h3 : 1 ≤ k) :\n  let n := shows.length\n  min_subscriptions n k n shows\
-  \ = (listToFinset shows).length :=\nsorry\n\n\ntheorem min_subscriptions_repeated_elements\n\
-  \  (shows : List Nat)\n  (h1 : shows ≠ [])\n  (h2 : ∀ x ∈ shows, 1 ≤ x) :\n  let\
-  \ n := shows.length\n  let k := maximum shows\n  let d := n\n  min_subscriptions\
-  \ n k d shows = min_subscriptions (2*n) k d (shows ++ shows) :=\nsorry\n\n\ntheorem\
-  \ min_subscriptions_sliding_window\n  (shows : List Nat)\n  (window_size : Nat)\n\
-  \  (h1 : shows.length ≥ 2)\n  (h2 : window_size ≥ 2)\n  (h3 : ∀ x ∈ shows, 1 ≤ x)\
-  \ :\n  let n := shows.length\n  let k := maximum shows\n  let d := min window_size\
-  \ n\n  let result := min_subscriptions n k d shows\n  let windows := windowsOfSize\
-  \ shows d\n  let min_unique := (windows.map (fun w => (listToFinset w).length)).foldl\
-  \ Nat.min n\n  result = min_unique :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
-  #eval min_subscriptions 5 2 2 [1, 2, 1, 2, 1]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n\
-  #eval min_subscriptions 9 3 3 [3, 3, 3, 2, 2, 2, 1, 1, 1]\n\n/--\ninfo: 4\n-/\n\
-  #guard_msgs in\n#eval min_subscriptions 4 10 4 [10, 8, 6, 4]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  The only difference between easy and hard versions is constraints.
+
+  The BerTV channel every day broadcasts one episode of one of the $k$ TV shows. You know the schedule for the next $n$ days: a sequence of integers $a_1, a_2, \dots, a_n$ ($1 \le a_i \le k$), where $a_i$ is the show, the episode of which will be shown in $i$-th day.
+
+  The subscription to the show is bought for the entire show (i.e. for all its episodes), for each show the subscription is bought separately.
+
+  How many minimum subscriptions do you need to buy in order to have the opportunity to watch episodes of purchased shows $d$ ($1 \le d \le n$) days in a row? In other words, you want to buy the minimum number of TV shows so that there is some segment of $d$ consecutive days in which all episodes belong to the purchased shows.
+
+
+  -----Input-----
+
+  The first line contains an integer $t$ ($1 \le t \le 10000$) — the number of test cases in the input. Then $t$ test case descriptions follow.
+
+  The first line of each test case contains three integers $n, k$ and $d$ ($1 \le n \le 2\cdot10^5$, $1 \le k \le 10^6$, $1 \le d \le n$). The second line contains $n$ integers $a_1, a_2, \dots, a_n$ ($1 \le a_i \le k$), where $a_i$ is the show that is broadcasted on the $i$-th day.
+
+  It is guaranteed that the sum of the values ​​of $n$ for all test cases in the input does not exceed $2\cdot10^5$.
+
+
+  -----Output-----
+
+  Print $t$ integers — the answers to the test cases in the input in the order they follow. The answer to a test case is the minimum number of TV shows for which you need to purchase a subscription so that you can watch episodes of the purchased TV shows on BerTV for $d$ consecutive days. Please note that it is permissible that you will be able to watch more than $d$ days in a row.
+
+
+  -----Example-----
+  Input
+  4
+  5 2 2
+  1 2 1 2 1
+  9 3 3
+  3 3 3 2 2 2 1 1 1
+  4 10 4
+  10 8 6 4
+  16 9 8
+  3 1 4 1 5 9 2 6 5 3 5 8 9 7 9 3
+
+  Output
+  2
+  1
+  4
+  5
+
+
+
+  -----Note-----
+
+  In the first test case to have an opportunity to watch shows for two consecutive days, you need to buy a subscription on show $1$ and on show $2$. So the answer is two.
+
+  In the second test case, you can buy a subscription to any show because for each show you can find a segment of three consecutive days, consisting only of episodes of this show.
+
+  In the third test case in the unique segment of four days, you have four different shows, so you need to buy a subscription to all these four shows.
+
+  In the fourth test case, you can buy subscriptions to shows $3,5,7,8,9$, and you will be able to watch shows for the last eight days.
+vc-preamble: |
+  import Imports.AllImports
+
+  def maximum (l : List Nat) : Nat :=
+    match l with
+    | [] => 0
+    | x::xs => List.foldl Nat.max x xs
+
+
+  def listToFinset (l : List Nat) : List Nat :=
+    l.eraseDups
+
+
+  def windowsOfSize (l : List Nat) (size : Nat) : List (List Nat) :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def min_subscriptions (n k d : Nat) (shows : List Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem min_subscriptions_output_bounds
+    (shows : List Nat)
+    (h1 : shows ≠ [])
+    (h2 : ∀ x ∈ shows, 1 ≤ x ∧ x ≤ 100) :
+    let n := shows.length
+    let k := maximum shows
+    let d := min n (maximum shows)
+    let result := min_subscriptions n k d shows
+    1 ≤ result ∧ result ≤ (listToFinset shows).length :=
+  sorry
+
+
+  theorem min_subscriptions_window_size_one
+    (shows : List Nat)
+    (h1 : shows ≠ [])
+    (h2 : ∀ x ∈ shows, 1 ≤ x) :
+    let n := shows.length
+    let k := maximum shows
+    min_subscriptions n k 1 shows = 1 :=
+  sorry
+
+
+  theorem min_subscriptions_window_size_equals_length
+    (shows : List Nat)
+    (k : Nat)
+    (h1 : shows ≠ [])
+    (h2 : ∀ x ∈ shows, 1 ≤ x)
+    (h3 : 1 ≤ k) :
+    let n := shows.length
+    min_subscriptions n k n shows = (listToFinset shows).length :=
+  sorry
+
+
+  theorem min_subscriptions_repeated_elements
+    (shows : List Nat)
+    (h1 : shows ≠ [])
+    (h2 : ∀ x ∈ shows, 1 ≤ x) :
+    let n := shows.length
+    let k := maximum shows
+    let d := n
+    min_subscriptions n k d shows = min_subscriptions (2*n) k d (shows ++ shows) :=
+  sorry
+
+
+  theorem min_subscriptions_sliding_window
+    (shows : List Nat)
+    (window_size : Nat)
+    (h1 : shows.length ≥ 2)
+    (h2 : window_size ≥ 2)
+    (h3 : ∀ x ∈ shows, 1 ≤ x) :
+    let n := shows.length
+    let k := maximum shows
+    let d := min window_size n
+    let result := min_subscriptions n k d shows
+    let windows := windowsOfSize shows d
+    let min_unique := (windows.map (fun w => (listToFinset w).length)).foldl Nat.min n
+    result = min_unique :=
+  sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_subscriptions 5 2 2 [1, 2, 1, 2, 1]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_subscriptions 9 3 3 [3, 3, 3, 2, 2, 2, 1, 1, 1]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval min_subscriptions 4 10 4 [10, 8, 6, 4]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

@@ -1,32 +1,73 @@
-"vc-description": "Given is a md5 hash of a five digits long PIN. It is given as string.\n\
-  Md5 is a function to hash your password:\n\"password123\" ===> \"482c811da5d5b4bc6d497ffa98491e38\"\
-  \n\nWhy is this useful?\nHash functions like md5 can create a hash from string in\
-  \ a short time and it is impossible to find out the password, if you only got the\
-  \ hash. The only way is cracking it, means try every combination, hash it and compare\
-  \ it with the hash you want to crack. (There are also other ways of attacking md5\
-  \ but that's another story)\nEvery Website and OS is storing their passwords as\
-  \ hashes, so if a hacker gets access to the database, he can do nothing, as long\
-  \ the password is safe enough.\n\nWhat is a hash:\nhttps://en.wikipedia.org/wiki/Hash_function#:~:text=A%20hash%20function%20is%20any,table%20called%20a%20hash%20table.\n\
-  \nWhat is md5:\nhttps://en.wikipedia.org/wiki/MD5\n\nNote: Many languages have build\
-  \ in tools to hash md5. If not, you can write your own md5 function or google for\
-  \ an example.\n\nHere is another kata on generating md5 hashes:\nhttps://www.codewars.com/kata/password-hashes\n\
-  \nYour task is to return the cracked PIN as string.\n\nThis is a little fun kata,\
-  \ to show you, how weak PINs are and how important a bruteforce protection is, if\
-  \ you create your own login.\n\nIf you liked this kata, here is an extension with\
-  \ short passwords:\nhttps://www.codewars.com/kata/59146f7b4670ba520900000a"
-"vc-preamble": "import Imports.AllImports\n\ndef isDigit (c : Char) : Bool := sorry\n\
-  \ndef allDigits (s : String) : Bool := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def md5hash (s : String) : String := sorry\n\ndef crack (hash :\
-  \ String) : String := sorry\n"
-"vc-theorems": "theorem crack_roundtrip {num : Nat} (h : num ≤ 99999) :\n  let numStr\
-  \ := toString num\n  let paddedStr := if numStr.length < 5 then String.mk (List.replicate\
-  \ (5 - numStr.length) '0') ++ numStr else numStr\n  crack (md5hash paddedStr) =\
-  \ paddedStr := sorry\n\n\ntheorem crack_invalid_hash (s : String) \n  (h1 : s =\
-  \ \"invalid_hash\" ∨ s = \"\") : \n  crack s = \"\" := sorry\n\n\ntheorem crack_random_hash\
-  \ (hash : String) \n  (h1 : hash.length = 32) :\n  let result := crack hash\n  (result\
-  \ = \"\") ∨ \n  (result.length = 5 ∧ \n   allDigits result = true ∧\n   md5hash\
-  \ result = hash) := sorry\n\n/--\ninfo: '12345'\n-/\n#guard_msgs in\n#eval crack\
-  \ \"827ccb0eea8a706c4c34a16891f84e7b\"\n\n/--\ninfo: '00078'\n-/\n#guard_msgs in\n\
-  #eval crack \"86aa400b65433b608a9db30070ec60cd\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given is a md5 hash of a five digits long PIN. It is given as string.
+  Md5 is a function to hash your password:
+  "password123" ===> "482c811da5d5b4bc6d497ffa98491e38"
+
+  Why is this useful?
+  Hash functions like md5 can create a hash from string in a short time and it is impossible to find out the password, if you only got the hash. The only way is cracking it, means try every combination, hash it and compare it with the hash you want to crack. (There are also other ways of attacking md5 but that's another story)
+  Every Website and OS is storing their passwords as hashes, so if a hacker gets access to the database, he can do nothing, as long the password is safe enough.
+
+  What is a hash:
+  https://en.wikipedia.org/wiki/Hash_function#:~:text=A%20hash%20function%20is%20any,table%20called%20a%20hash%20table.
+
+  What is md5:
+  https://en.wikipedia.org/wiki/MD5
+
+  Note: Many languages have build in tools to hash md5. If not, you can write your own md5 function or google for an example.
+
+  Here is another kata on generating md5 hashes:
+  https://www.codewars.com/kata/password-hashes
+
+  Your task is to return the cracked PIN as string.
+
+  This is a little fun kata, to show you, how weak PINs are and how important a bruteforce protection is, if you create your own login.
+
+  If you liked this kata, here is an extension with short passwords:
+  https://www.codewars.com/kata/59146f7b4670ba520900000a
+vc-preamble: |
+  import Imports.AllImports
+
+  def isDigit (c : Char) : Bool := sorry
+
+  def allDigits (s : String) : Bool := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def md5hash (s : String) : String := sorry
+
+  def crack (hash : String) : String := sorry
+vc-theorems: |
+  theorem crack_roundtrip {num : Nat} (h : num ≤ 99999) :
+    let numStr := toString num
+    let paddedStr := if numStr.length < 5 then String.mk (List.replicate (5 - numStr.length) '0') ++ numStr else numStr
+    crack (md5hash paddedStr) = paddedStr := sorry
+
+
+  theorem crack_invalid_hash (s : String) 
+    (h1 : s = "invalid_hash" ∨ s = "") : 
+    crack s = "" := sorry
+
+
+  theorem crack_random_hash (hash : String) 
+    (h1 : hash.length = 32) :
+    let result := crack hash
+    (result = "") ∨ 
+    (result.length = 5 ∧ 
+     allDigits result = true ∧
+     md5hash result = hash) := sorry
+
+  /--
+  info: '12345'
+  -/
+  #guard_msgs in
+  #eval crack "827ccb0eea8a706c4c34a16891f84e7b"
+
+  /--
+  info: '00078'
+  -/
+  #guard_msgs in
+  #eval crack "86aa400b65433b608a9db30070ec60cd"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

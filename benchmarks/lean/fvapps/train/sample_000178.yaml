@@ -1,28 +1,78 @@
-"vc-description": "Say you have an array for which the ith element is the price of\
-  \ a given stock on day i.\n\nDesign an algorithm to find the maximum profit. You\
-  \ may complete as many transactions as you like (ie, buy one and sell one share\
-  \ of the stock multiple times) with the following restrictions:\n\n\n       You\
-  \ may not engage in multiple transactions at the same time (ie, you must sell the\
-  \ stock before you buy again).\n       After you sell your stock, you cannot buy\
-  \ stock on next day. (ie, cooldown 1 day)\n\n\nExample:\n\n\nInput: [1,2,3,0,2]\n\
-  Output: 3 \nExplanation: transactions = [buy, sell, cooldown, buy, sell]"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def max_stock_profit_with_cooldown (prices : List Nat) : Nat :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem empty_or_single_price_zero (prices : List Nat) \n  (h : prices.length\
-  \ ≤ 1) : \n  max_stock_profit_with_cooldown prices = 0 :=\n  sorry\n\n\ntheorem\
-  \ result_always_non_negative (prices : List Nat) :\n  max_stock_profit_with_cooldown\
-  \ prices ≥ 0 :=\n  sorry\n\n\ntheorem decreasing_prices_zero_profit {prices : List\
-  \ Nat}\n  (h₁ : prices.length ≥ 2)\n  (h₂ : ∀ i j, i < j → j < prices.length → prices[i]!\
-  \ ≥ prices[j]!) :\n  max_stock_profit_with_cooldown prices = 0 :=\n  sorry\n\n\n\
-  theorem profit_bounded_by_adjacent_diffs {prices : List Nat}\n  (h : prices.length\
-  \ ≥ 2) :\n  max_stock_profit_with_cooldown prices ≤ \n    (List.zip prices prices.tail!).foldl\n\
-  \      (fun acc (p : Nat × Nat) => acc + max (p.2 - p.1) 0)\n      0 :=\n  sorry\n\
-  \n\ntheorem repeated_list_profit_geq {prices : List Nat}\n  (h : prices.length ≥\
-  \ 1) :\n  max_stock_profit_with_cooldown (prices ++ prices) ≥ \n  max_stock_profit_with_cooldown\
-  \ prices :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval max_stock_profit_with_cooldown\
-  \ [1, 2, 3, 0, 2]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval max_stock_profit_with_cooldown\
-  \ [1]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval max_stock_profit_with_cooldown\
-  \ [2, 1, 4]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Say you have an array for which the ith element is the price of a given stock on day i.
+
+  Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times) with the following restrictions:
+
+
+         You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
+         After you sell your stock, you cannot buy stock on next day. (ie, cooldown 1 day)
+
+
+  Example:
+
+
+  Input: [1,2,3,0,2]
+  Output: 3 
+  Explanation: transactions = [buy, sell, cooldown, buy, sell]
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def max_stock_profit_with_cooldown (prices : List Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem empty_or_single_price_zero (prices : List Nat) 
+    (h : prices.length ≤ 1) : 
+    max_stock_profit_with_cooldown prices = 0 :=
+    sorry
+
+
+  theorem result_always_non_negative (prices : List Nat) :
+    max_stock_profit_with_cooldown prices ≥ 0 :=
+    sorry
+
+
+  theorem decreasing_prices_zero_profit {prices : List Nat}
+    (h₁ : prices.length ≥ 2)
+    (h₂ : ∀ i j, i < j → j < prices.length → prices[i]! ≥ prices[j]!) :
+    max_stock_profit_with_cooldown prices = 0 :=
+    sorry
+
+
+  theorem profit_bounded_by_adjacent_diffs {prices : List Nat}
+    (h : prices.length ≥ 2) :
+    max_stock_profit_with_cooldown prices ≤ 
+      (List.zip prices prices.tail!).foldl
+        (fun acc (p : Nat × Nat) => acc + max (p.2 - p.1) 0)
+        0 :=
+    sorry
+
+
+  theorem repeated_list_profit_geq {prices : List Nat}
+    (h : prices.length ≥ 1) :
+    max_stock_profit_with_cooldown (prices ++ prices) ≥ 
+    max_stock_profit_with_cooldown prices :=
+    sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval max_stock_profit_with_cooldown [1, 2, 3, 0, 2]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval max_stock_profit_with_cooldown [1]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval max_stock_profit_with_cooldown [2, 1, 4]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

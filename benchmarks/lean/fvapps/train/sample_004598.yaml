@@ -1,14 +1,47 @@
-"vc-description": "Implement a function which multiplies two numbers."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def multiply (x y : Int) : Int := sorry\n\ntheorem multiply_commutative\
-  \ (x y : Int) : multiply x y = multiply y x := sorry\n"
-"vc-theorems": "theorem multiply_identity_right (x : Int) : multiply x 1 = x := sorry\n\
-  \ntheorem multiply_zero_right (x : Int) : multiply x 0 = 0 := sorry\n\n\ntheorem\
-  \ multiply_negative_one (x : Int) : multiply x (-1) = -x := sorry\n\ntheorem multiply_distributive\
-  \ (x y z : Int) :\n  multiply x (y + z) = multiply x y + multiply x z := sorry\n\
-  \n\ntheorem multiply_identity_left (x : Int) : multiply 1 x = x := sorry\n\ntheorem\
-  \ multiply_zero_left (x : Int) : multiply 0 x = 0 := sorry\n\n/--\ninfo: 6\n-/\n\
-  #guard_msgs in\n#eval multiply 2 3\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval multiply\
-  \ 0 5\n\n/--\ninfo: -8\n-/\n#guard_msgs in\n#eval multiply -2 4\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Implement a function which multiplies two numbers.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def multiply (x y : Int) : Int := sorry
+
+  theorem multiply_commutative (x y : Int) : multiply x y = multiply y x := sorry
+vc-theorems: |
+  theorem multiply_identity_right (x : Int) : multiply x 1 = x := sorry
+
+  theorem multiply_zero_right (x : Int) : multiply x 0 = 0 := sorry
+
+
+  theorem multiply_negative_one (x : Int) : multiply x (-1) = -x := sorry
+
+  theorem multiply_distributive (x y z : Int) :
+    multiply x (y + z) = multiply x y + multiply x z := sorry
+
+
+  theorem multiply_identity_left (x : Int) : multiply 1 x = x := sorry
+
+  theorem multiply_zero_left (x : Int) : multiply 0 x = 0 := sorry
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval multiply 2 3
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval multiply 0 5
+
+  /--
+  info: -8
+  -/
+  #guard_msgs in
+  #eval multiply -2 4
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

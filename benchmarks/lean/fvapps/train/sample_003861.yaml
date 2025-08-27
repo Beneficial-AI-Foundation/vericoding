@@ -1,16 +1,60 @@
-"vc-description": "#Permutation  position\nIn this kata you will have to permutate\
-  \ through a string of lowercase letters, each permutation will start at ```a```\
-  \ and you must calculate how many iterations it takes to reach the current permutation.\n\
-  \n##examples\n```\ninput: 'a'\nresult: 1\n\ninput: 'c'\nresult: 3\n\ninput: 'z'\n\
-  result: 26\n\ninput: 'foo'\nresult: 3759\n\ninput: 'aba'\nresult: 27\n\ninput: 'abb'\n\
-  result: 28\n\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def permutation_position (s : String) : Nat := sorry \n\ndef position_to_perm\
-  \ (pos : Nat) : String := sorry\n\n\n"
-"vc-theorems": "theorem permutation_position_positive (s : String) (h : s ≠ \"\")\
-  \ :\n  permutation_position s > 0 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n\
-  #eval permutation_position \"a\"\n\n/--\ninfo: 26\n-/\n#guard_msgs in\n#eval permutation_position\
-  \ \"z\"\n\n/--\ninfo: 3759\n-/\n#guard_msgs in\n#eval permutation_position \"foo\"\
-  \n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  #Permutation  position
+  In this kata you will have to permutate through a string of lowercase letters, each permutation will start at ```a``` and you must calculate how many iterations it takes to reach the current permutation.
+
+  ##examples
+  ```
+  input: 'a'
+  result: 1
+
+  input: 'c'
+  result: 3
+
+  input: 'z'
+  result: 26
+
+  input: 'foo'
+  result: 3759
+
+  input: 'aba'
+  result: 27
+
+  input: 'abb'
+  result: 28
+
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def permutation_position (s : String) : Nat := sorry 
+
+  def position_to_perm (pos : Nat) : String := sorry
+
+
+vc-theorems: |
+  theorem permutation_position_positive (s : String) (h : s ≠ "") :
+    permutation_position s > 0 := sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval permutation_position "a"
+
+  /--
+  info: 26
+  -/
+  #guard_msgs in
+  #eval permutation_position "z"
+
+  /--
+  info: 3759
+  -/
+  #guard_msgs in
+  #eval permutation_position "foo"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

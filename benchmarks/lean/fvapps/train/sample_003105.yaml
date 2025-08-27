@@ -1,23 +1,62 @@
-"vc-description": "# Fix the Bugs (Syntax) - My First Kata\n\n## Overview\n\nHello,\
-  \ this is my first Kata so forgive me if it is of poor quality.\n\nIn this Kata\
-  \ you should fix/create a program that ```return```s the following values:\n\n -\
-  \ ```false/False``` if either a or b (or both) are not numbers\n - ```a % b``` plus\
-  \ ```b % a``` if both arguments are numbers\n\nYou may assume the following:\n\n\
-  1. If ```a``` and ```b``` are both numbers, neither of ```a``` or ```b``` will be\
-  \ ```0```.\n\n## Language-Specific Instructions\n\n### Javascript and PHP\n\nIn\
-  \ this Kata you should try to fix all the syntax errors found in the code.\n\nOnce\
-  \ you think all the bugs are fixed run the code to see if it works.  A correct solution\
-  \ should return the values specified in the overview.\n\n**Extension: Once you have\
-  \ fixed all the syntax errors present in the code (basic requirement), you may attempt\
-  \ to optimise the code or try a different approach by coding it from scratch.**"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def my_first_kata (a b : Int) : Int ⊕ Bool := sorry\n\ndef string_kata\
-  \ (a : String) (b : Int) : Int ⊕ Bool := sorry \n"
-"vc-theorems": "theorem result_is_sum_of_mods {a b : Int} (h1 : b ≠ 0) (h2 : a ≠ 0)\
-  \ :\n  my_first_kata a b = .inl (a % b + b % a) := sorry\n\n\ntheorem invalid_string_input\
-  \ {a : String} {b : Int} :\n  string_kata a b = .inr false := sorry\n\n/--\ninfo:\
-  \ 5\n-/\n#guard_msgs in\n#eval my_first_kata 3 5\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval my_first_kata \"hello\" 3\n\n/--\ninfo: 207\n-/\n#guard_msgs in\n#eval\
-  \ my_first_kata 314 107\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Fix the Bugs (Syntax) - My First Kata
+
+  ## Overview
+
+  Hello, this is my first Kata so forgive me if it is of poor quality.
+
+  In this Kata you should fix/create a program that ```return```s the following values:
+
+   - ```false/False``` if either a or b (or both) are not numbers
+   - ```a % b``` plus ```b % a``` if both arguments are numbers
+
+  You may assume the following:
+
+  1. If ```a``` and ```b``` are both numbers, neither of ```a``` or ```b``` will be ```0```.
+
+  ## Language-Specific Instructions
+
+  ### Javascript and PHP
+
+  In this Kata you should try to fix all the syntax errors found in the code.
+
+  Once you think all the bugs are fixed run the code to see if it works.  A correct solution should return the values specified in the overview.
+
+  **Extension: Once you have fixed all the syntax errors present in the code (basic requirement), you may attempt to optimise the code or try a different approach by coding it from scratch.**
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def my_first_kata (a b : Int) : Int ⊕ Bool := sorry
+
+  def string_kata (a : String) (b : Int) : Int ⊕ Bool := sorry 
+vc-theorems: |
+  theorem result_is_sum_of_mods {a b : Int} (h1 : b ≠ 0) (h2 : a ≠ 0) :
+    my_first_kata a b = .inl (a % b + b % a) := sorry
+
+
+  theorem invalid_string_input {a : String} {b : Int} :
+    string_kata a b = .inr false := sorry
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval my_first_kata 3 5
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval my_first_kata "hello" 3
+
+  /--
+  info: 207
+  -/
+  #guard_msgs in
+  #eval my_first_kata 314 107
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

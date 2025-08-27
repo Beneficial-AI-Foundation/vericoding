@@ -1,16 +1,59 @@
-"vc-description": "The chef is trying to solve some pattern problems, Chef wants your\
-  \ help to code it. Chef has one number K to form a new pattern. Help the chef to\
-  \ code this pattern problem.\n\n-----Input:-----\n- First-line will contain $T$,\
-  \ the number of test cases. Then the test cases follow. \n- Each test case contains\
-  \ a single line of input, one integer $K$. \n\n-----Output:-----\nFor each test\
-  \ case, output as the pattern.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n\
-  - $1 \\leq K \\leq 100$\n\n-----Sample Input:-----\n2\n2\n4\n\n-----Sample Output:-----\n\
-  2\n21\n210\n21\n2\n4\n43\n432\n4321\n43210\n4321\n432\n43\n4\n\n-----EXPLANATION:-----\n\
-  No need, else pattern can be decode easily."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def generate_pattern (k : Nat) : List String := sorry\n\n\n\n\n\
-  \n\n\ntheorem valid_chars {k : Nat} :\n  ∀ line ∈ generate_pattern k,\n  ∀ c ∈ line.data,\n\
-  \  c.isDigit ∨ c = ' ' := sorry"
-"vc-theorems": ""
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  The chef is trying to solve some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+
+  -----Output:-----
+  For each test case, output as the pattern.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq K \leq 100$
+
+  -----Sample Input:-----
+  2
+  2
+  4
+
+  -----Sample Output:-----
+  2
+  21
+  210
+  21
+  2
+  4
+  43
+  432
+  4321
+  43210
+  4321
+  432
+  43
+  4
+
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def generate_pattern (k : Nat) : List String := sorry
+
+
+
+
+
+
+
+  theorem valid_chars {k : Nat} :
+    ∀ line ∈ generate_pattern k,
+    ∀ c ∈ line.data,
+    c.isDigit ∨ c = ' ' := sorry
+vc-theorems: |
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

@@ -1,20 +1,55 @@
-"vc-description": "You are playing the following Nim Game with your friend: There\
-  \ is a heap of stones on the table, each time one of you take turns to remove 1\
-  \ to 3 stones. The one who removes the last stone will be the winner. You will take\
-  \ the first turn to remove the stones.\n\nBoth of you are very clever and have optimal\
-  \ strategies for the game. Write a function to determine whether you can win the\
-  \ game given the number of stones in the heap.\n\nExample:\n\n\nInput: 4\nOutput:\
-  \ false \nExplanation: If there are 4 stones in the heap, then you will never win\
-  \ the game;\n             No matter 1, 2, or 3 stones you remove, the last stone\
-  \ will always be \n             removed by your friend."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def can_win_nim (n : Nat) : Bool := sorry\n\ntheorem can_win_nim_returns_bool\
-  \ (n : Nat) :\n  can_win_nim n = true ∨ can_win_nim n = false := sorry\n"
-"vc-theorems": "theorem can_win_nim_period_four (n : Nat) :\n  can_win_nim n = can_win_nim\
-  \ (n + 4) := sorry\n\n\ntheorem can_win_nim_losing_position (n : Nat) :\n  n % 4\
-  \ = 0 → can_win_nim n = false := sorry\n\n\ntheorem can_win_nim_winning_position\
-  \ (n : Nat) :\n  n % 4 ≠ 0 → can_win_nim n = true := sorry\n\n/--\ninfo: False\n\
-  -/\n#guard_msgs in\n#eval can_win_nim 4\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
-  #eval can_win_nim 1\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval can_win_nim 2\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.
+
+  Both of you are very clever and have optimal strategies for the game. Write a function to determine whether you can win the game given the number of stones in the heap.
+
+  Example:
+
+
+  Input: 4
+  Output: false 
+  Explanation: If there are 4 stones in the heap, then you will never win the game;
+               No matter 1, 2, or 3 stones you remove, the last stone will always be 
+               removed by your friend.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def can_win_nim (n : Nat) : Bool := sorry
+
+  theorem can_win_nim_returns_bool (n : Nat) :
+    can_win_nim n = true ∨ can_win_nim n = false := sorry
+vc-theorems: |
+  theorem can_win_nim_period_four (n : Nat) :
+    can_win_nim n = can_win_nim (n + 4) := sorry
+
+
+  theorem can_win_nim_losing_position (n : Nat) :
+    n % 4 = 0 → can_win_nim n = false := sorry
+
+
+  theorem can_win_nim_winning_position (n : Nat) :
+    n % 4 ≠ 0 → can_win_nim n = true := sorry
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval can_win_nim 4
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval can_win_nim 1
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval can_win_nim 2
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

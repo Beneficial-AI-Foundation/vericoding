@@ -1,27 +1,59 @@
-"vc-description": "As a treat, I'll let you read part of the script from a classic\
-  \ 'I'm Alan Partridge episode:\n```\nLynn: Alan, there’s that teacher chap.\nAlan:\
-  \ Michael, if he hits me, will you hit him first?\nMichael: No, he’s a customer.\
-  \ I cannot hit customers. I’ve been told. I’ll go and get some stock.\nAlan: Yeah,\
-  \ chicken stock.\nPhil: Hello Alan.\nAlan: Lynn, hand me an apple pie. And remove\
-  \ yourself from the theatre of conflict.\nLynn: What do you mean?\nAlan: Go and\
-  \ stand by the yakults. The temperature inside this apple turnover is 1,000 degrees.\
-  \ If I squeeze it, a jet of molten Bramley apple is going to squirt out. Could go\
-  \ your way, could go mine. Either way, one of us is going down.\n```\n\nAlan is\
-  \ known for referring to the temperature of the apple turnover as 'Hotter than the\
-  \ sun!'. According to  space.com the temperature of the sun's corona is 2,000,000\
-  \ degrees C, but we will ignore the science for now. \n\nYour job is simple, if\
-  \ (x) squared is more than 1000, return  'It's hotter than the sun!!', else, return\
-  \ 'Help yourself to a honeycomb Yorkie for the glovebox.'.\n\nX will be either a\
-  \ number or a string. Both are valid. \n\nOther katas in this series:\nAlan Partridge\
-  \ I - Partridge Watch\nAlan Partridge III - London"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def apple (x : Int) : String := sorry\n\ntheorem apple_output_valid\
-  \ (x : Int) :\n  apple x = \"It's hotter than the sun!!\" ∨ \n  apple x = \"Help\
-  \ yourself to a honeycomb Yorkie for the glovebox.\" :=\nsorry\n"
-"vc-theorems": "theorem apple_squared_condition (x : Int) :\n  (x * x > 1000) = (apple\
-  \ x = \"It's hotter than the sun!!\") := \nsorry\n\n/--\ninfo: \"It's hotter than\
-  \ the sun!!\"\n-/\n#guard_msgs in\n#eval apple \"50\"\n\n/--\ninfo: 'Help yourself\
-  \ to a honeycomb Yorkie for the glovebox.'\n-/\n#guard_msgs in\n#eval apple 4\n\n\
-  /--\ninfo: \"It's hotter than the sun!!\"\n-/\n#guard_msgs in\n#eval apple 60\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  As a treat, I'll let you read part of the script from a classic 'I'm Alan Partridge episode:
+  ```
+  Lynn: Alan, there’s that teacher chap.
+  Alan: Michael, if he hits me, will you hit him first?
+  Michael: No, he’s a customer. I cannot hit customers. I’ve been told. I’ll go and get some stock.
+  Alan: Yeah, chicken stock.
+  Phil: Hello Alan.
+  Alan: Lynn, hand me an apple pie. And remove yourself from the theatre of conflict.
+  Lynn: What do you mean?
+  Alan: Go and stand by the yakults. The temperature inside this apple turnover is 1,000 degrees. If I squeeze it, a jet of molten Bramley apple is going to squirt out. Could go your way, could go mine. Either way, one of us is going down.
+  ```
+
+  Alan is known for referring to the temperature of the apple turnover as 'Hotter than the sun!'. According to  space.com the temperature of the sun's corona is 2,000,000 degrees C, but we will ignore the science for now. 
+
+  Your job is simple, if (x) squared is more than 1000, return  'It's hotter than the sun!!', else, return 'Help yourself to a honeycomb Yorkie for the glovebox.'.
+
+  X will be either a number or a string. Both are valid. 
+
+  Other katas in this series:
+  Alan Partridge I - Partridge Watch
+  Alan Partridge III - London
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def apple (x : Int) : String := sorry
+
+  theorem apple_output_valid (x : Int) :
+    apple x = "It's hotter than the sun!!" ∨ 
+    apple x = "Help yourself to a honeycomb Yorkie for the glovebox." :=
+  sorry
+vc-theorems: |
+  theorem apple_squared_condition (x : Int) :
+    (x * x > 1000) = (apple x = "It's hotter than the sun!!") := 
+  sorry
+
+  /--
+  info: "It's hotter than the sun!!"
+  -/
+  #guard_msgs in
+  #eval apple "50"
+
+  /--
+  info: 'Help yourself to a honeycomb Yorkie for the glovebox.'
+  -/
+  #guard_msgs in
+  #eval apple 4
+
+  /--
+  info: "It's hotter than the sun!!"
+  -/
+  #guard_msgs in
+  #eval apple 60
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,35 +1,74 @@
-"vc-description": "Every  positive integer number, that is not prime, may be decomposed\
-  \ in prime factors. For example the prime factors of 20, are:\n```\n2, 2, and 5,\
-  \ because: 20 = 2 . 2 . 5\n```\nThe first prime factor (the smallest one) of ```20```\
-  \ is ```2``` and the last one (the largest one) is ```5```. The sum of the first\
-  \ and the last prime factors, ```sflpf``` of 20 is: ```sflpf = 2 + 5 = 7```\n\n\
-  The number ```998 ```is the only integer in the range ```[4, 1000]``` that has a\
-  \ value of ```501``` , so its ```sflpf``` equals to 501, but in the range ```[4,\
-  \ 5000]``` we will have more integers with ```sflpf = 501``` and are: ```998, 1996,\
-  \ 2994, 3992, 4990```.\n\nWe need a function ```sflpf_data()``` (javascript: ```sflpfData()```that\
-  \ receives two arguments, ```val``` as the value of sflpf and ```nMax``` as a limit,\
-  \ and the function will output a sorted list of the numbers between ```4``` to ```nMax```(included)\
-  \ that have the same value of sflpf equals to ```val```.\n\nLet's see some cases:\n\
-  ```python\nsflpf_data(10, 100) == [21, 25, 63]\n/// the prime factorization of these\
-  \ numbers are:\nNumber  Prime Factorization     Sum First and Last Prime Factor\n\
-  21       = 3 . 7      ---->                 3 + 7 = 10\n25       = 5 . 5      ---->\
-  \                 5 + 5 = 10\n63       = 3 . 3 . 7  ---->                 3 + 7\
-  \ = 10\n```\n```python\nsflpf_data(10, 200) == [21, 25, 63, 105, 125, 147, 189]\n\
-  sflpf_data(15, 150) == [26, 52, 78, 104, 130]\n```\n(Advice:Try to discard primes\
-  \ in a fast way to have a more agile code)\n\nEnjoy it!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def primef (n : Nat) : List Nat := sorry\n\ndef sflpf_data (val\
-  \ : Nat) (nmax : Nat) : List Nat := sorry\n"
-"vc-theorems": "theorem primef_product_equals_input (n : Nat) (h : n ≥ 2) : \n  (List.foldl\
-  \ (· * ·) 1 (primef n)) = n := sorry\n\n\ntheorem primef_all_prime (n : Nat) (h\
-  \ : n ≥ 2) :\n  ∀ f ∈ primef n, ∀ i : Nat, 2 ≤ i → i < f → i ∣ f → i = f := sorry\n\
-  \n\ntheorem sflpf_data_bounds (val nmax : Nat) (h1 : val ≥ 2) (h2 : nmax ≥ 4) :\n\
-  \  ∀ n ∈ sflpf_data val nmax, 4 ≤ n ∧ n ≤ nmax := sorry\n\n\ntheorem sflpf_data_sum_property\
-  \ (val nmax : Nat) (h1 : val ≥ 2) (h2 : nmax ≥ 4) :\n  ∀ n ∈ sflpf_data val nmax,\
-  \ \n    List.length (primef n) > 1 ∧ \n    List.head! (primef n) + List.getLast!\
-  \ (primef n) = val := sorry\n\n/--\ninfo: [21, 25, 63]\n-/\n#guard_msgs in\n#eval\
-  \ sflpf_data 10 100\n\n/--\ninfo: [26, 52, 78, 104, 130]\n-/\n#guard_msgs in\n#eval\
-  \ sflpf_data 15 150\n\n/--\ninfo: [998]\n-/\n#guard_msgs in\n#eval sflpf_data 501\
-  \ 1000\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Every  positive integer number, that is not prime, may be decomposed in prime factors. For example the prime factors of 20, are:
+  ```
+  2, 2, and 5, because: 20 = 2 . 2 . 5
+  ```
+  The first prime factor (the smallest one) of ```20``` is ```2``` and the last one (the largest one) is ```5```. The sum of the first and the last prime factors, ```sflpf``` of 20 is: ```sflpf = 2 + 5 = 7```
+
+  The number ```998 ```is the only integer in the range ```[4, 1000]``` that has a value of ```501``` , so its ```sflpf``` equals to 501, but in the range ```[4, 5000]``` we will have more integers with ```sflpf = 501``` and are: ```998, 1996, 2994, 3992, 4990```.
+
+  We need a function ```sflpf_data()``` (javascript: ```sflpfData()```that receives two arguments, ```val``` as the value of sflpf and ```nMax``` as a limit, and the function will output a sorted list of the numbers between ```4``` to ```nMax```(included) that have the same value of sflpf equals to ```val```.
+
+  Let's see some cases:
+  ```python
+  sflpf_data(10, 100) == [21, 25, 63]
+  /// the prime factorization of these numbers are:
+  Number  Prime Factorization     Sum First and Last Prime Factor
+  21       = 3 . 7      ---->                 3 + 7 = 10
+  25       = 5 . 5      ---->                 5 + 5 = 10
+  63       = 3 . 3 . 7  ---->                 3 + 7 = 10
+  ```
+  ```python
+  sflpf_data(10, 200) == [21, 25, 63, 105, 125, 147, 189]
+  sflpf_data(15, 150) == [26, 52, 78, 104, 130]
+  ```
+  (Advice:Try to discard primes in a fast way to have a more agile code)
+
+  Enjoy it!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def primef (n : Nat) : List Nat := sorry
+
+  def sflpf_data (val : Nat) (nmax : Nat) : List Nat := sorry
+vc-theorems: |
+  theorem primef_product_equals_input (n : Nat) (h : n ≥ 2) : 
+    (List.foldl (· * ·) 1 (primef n)) = n := sorry
+
+
+  theorem primef_all_prime (n : Nat) (h : n ≥ 2) :
+    ∀ f ∈ primef n, ∀ i : Nat, 2 ≤ i → i < f → i ∣ f → i = f := sorry
+
+
+  theorem sflpf_data_bounds (val nmax : Nat) (h1 : val ≥ 2) (h2 : nmax ≥ 4) :
+    ∀ n ∈ sflpf_data val nmax, 4 ≤ n ∧ n ≤ nmax := sorry
+
+
+  theorem sflpf_data_sum_property (val nmax : Nat) (h1 : val ≥ 2) (h2 : nmax ≥ 4) :
+    ∀ n ∈ sflpf_data val nmax, 
+      List.length (primef n) > 1 ∧ 
+      List.head! (primef n) + List.getLast! (primef n) = val := sorry
+
+  /--
+  info: [21, 25, 63]
+  -/
+  #guard_msgs in
+  #eval sflpf_data 10 100
+
+  /--
+  info: [26, 52, 78, 104, 130]
+  -/
+  #guard_msgs in
+  #eval sflpf_data 15 150
+
+  /--
+  info: [998]
+  -/
+  #guard_msgs in
+  #eval sflpf_data 501 1000
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

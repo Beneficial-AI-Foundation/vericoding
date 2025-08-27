@@ -1,22 +1,83 @@
-"vc-description": "```if-not:sql\nCreate a function (or write a script in Shell) that\
-  \ takes an integer as an argument and returns \"Even\" for even numbers or \"Odd\"\
-  \ for odd numbers.\n```\n\n```if:sql\n## SQL Notes:\nYou will be given a table,\
-  \ `numbers`, with one column `number`.\n\nReturn a table with a column `is_even`\
-  \ containing \"Even\" or \"Odd\" depending on `number` column values.\n\n### numbers\
-  \ table schema\n* number INT\n\n### output table schema\n* is_even STRING\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def even_or_odd (n : Int) : EvenOdd := sorry\n\ntheorem even_or_odd_valid\
-  \ (x : Int) : \n  even_or_odd x = (if x % 2 = 0 then EvenOdd.Even else EvenOdd.Odd)\
-  \ := sorry\n"
-"vc-theorems": "theorem even_or_odd_consistent_add2 (x : Int) :\n  even_or_odd x =\
-  \ even_or_odd (x + 2) := sorry \n\n\ntheorem even_or_odd_alternates (x : Int) :\n\
-  \  even_or_odd x ≠ even_or_odd (x + 1) := sorry\n\n\ntheorem even_or_odd_negation\
-  \ (x : Int) :\n  even_or_odd x = even_or_odd (-x) := sorry\n\n/--\ninfo: 'Even'\n\
-  -/\n#guard_msgs in\n#eval even_or_odd 2\n\n/--\ninfo: 'Odd'\n-/\n#guard_msgs in\n\
-  #eval even_or_odd 1\n\n/--\ninfo: 'Even'\n-/\n#guard_msgs in\n#eval even_or_odd\
-  \ 0\n\n/--\ninfo: 'Even'\n-/\n#guard_msgs in\n#eval even_or_odd 1545452\n\n/--\n\
-  info: 'Odd'\n-/\n#guard_msgs in\n#eval even_or_odd 74156741\n\n/--\ninfo: 'Odd'\n\
-  -/\n#guard_msgs in\n#eval even_or_odd -123\n\n/--\ninfo: 'Even'\n-/\n#guard_msgs\
-  \ in\n#eval even_or_odd -456\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ```if-not:sql
+  Create a function (or write a script in Shell) that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.
+  ```
+
+  ```if:sql
+  ## SQL Notes:
+  You will be given a table, `numbers`, with one column `number`.
+
+  Return a table with a column `is_even` containing "Even" or "Odd" depending on `number` column values.
+
+  ### numbers table schema
+  * number INT
+
+  ### output table schema
+  * is_even STRING
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def even_or_odd (n : Int) : EvenOdd := sorry
+
+  theorem even_or_odd_valid (x : Int) : 
+    even_or_odd x = (if x % 2 = 0 then EvenOdd.Even else EvenOdd.Odd) := sorry
+vc-theorems: |
+  theorem even_or_odd_consistent_add2 (x : Int) :
+    even_or_odd x = even_or_odd (x + 2) := sorry 
+
+
+  theorem even_or_odd_alternates (x : Int) :
+    even_or_odd x ≠ even_or_odd (x + 1) := sorry
+
+
+  theorem even_or_odd_negation (x : Int) :
+    even_or_odd x = even_or_odd (-x) := sorry
+
+  /--
+  info: 'Even'
+  -/
+  #guard_msgs in
+  #eval even_or_odd 2
+
+  /--
+  info: 'Odd'
+  -/
+  #guard_msgs in
+  #eval even_or_odd 1
+
+  /--
+  info: 'Even'
+  -/
+  #guard_msgs in
+  #eval even_or_odd 0
+
+  /--
+  info: 'Even'
+  -/
+  #guard_msgs in
+  #eval even_or_odd 1545452
+
+  /--
+  info: 'Odd'
+  -/
+  #guard_msgs in
+  #eval even_or_odd 74156741
+
+  /--
+  info: 'Odd'
+  -/
+  #guard_msgs in
+  #eval even_or_odd -123
+
+  /--
+  info: 'Even'
+  -/
+  #guard_msgs in
+  #eval even_or_odd -456
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

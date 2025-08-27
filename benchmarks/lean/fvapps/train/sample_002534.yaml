@@ -1,24 +1,73 @@
-"vc-description": "Your job at E-Corp is both boring and difficult. It isn't made\
-  \ any easier by the fact that everyone constantly wants to have a meeting with you,\
-  \ and that the meeting rooms are always taken!\n\nIn this kata, you will be given\
-  \ an array. Each value represents a meeting room. Your job? Find the **first** empty\
-  \ one and return its index (N.B. There may be more than one empty room in some test\
-  \ cases). \n\n'X' --> busy\n'O' --> empty\n\nIf all rooms are busy, return 'None\
-  \ available!'.\n\n\nMore in this series:\n\nThe Office I - Outed\nThe Office II\
-  \ - Boredeom Score\nThe Office III - Broken Photocopier\nThe Office V - Find a Chair"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def meeting (rooms : List Char) : String ⊕ Nat := sorry\n\ntheorem\
-  \ meeting_first_O {rooms : List Char} :\n  rooms.contains 'O' →\n  ∃ (n : Nat),\n\
-  \    meeting rooms = Sum.inr n ∧\n    rooms.get! n = 'O' ∧ \n    ∀ i, i < n → rooms.get!\
-  \ i = 'X'\n  := sorry\n"
-"vc-theorems": "theorem meeting_no_O {rooms : List Char} :\n  rooms ≠ [] →\n  (¬ rooms.contains\
-  \ 'O') → \n  meeting rooms = Sum.inl \"None available!\"\n  := sorry\n\n\ntheorem\
-  \ meeting_all_X {rooms : List Char} :\n  rooms ≠ [] →\n  (∀ x ∈ rooms, x = 'X')\
-  \ →\n  meeting rooms = Sum.inl \"None available!\"\n  := sorry\n\n\ntheorem meeting_all_O\
-  \ {rooms : List Char} :\n  rooms ≠ [] →\n  (∀ x ∈ rooms, x = 'O') →\n  meeting rooms\
-  \ = Sum.inr 0\n  := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval meeting [\"\
-  X\", \"O\", \"X\"]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval meeting [\"O\", \"\
-  X\", \"X\", \"X\", \"X\"]\n\n/--\ninfo: 'None available!'\n-/\n#guard_msgs in\n\
-  #eval meeting [\"X\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Your job at E-Corp is both boring and difficult. It isn't made any easier by the fact that everyone constantly wants to have a meeting with you, and that the meeting rooms are always taken!
+
+  In this kata, you will be given an array. Each value represents a meeting room. Your job? Find the **first** empty one and return its index (N.B. There may be more than one empty room in some test cases). 
+
+  'X' --> busy
+  'O' --> empty
+
+  If all rooms are busy, return 'None available!'.
+
+
+  More in this series:
+
+  The Office I - Outed
+  The Office II - Boredeom Score
+  The Office III - Broken Photocopier
+  The Office V - Find a Chair
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def meeting (rooms : List Char) : String ⊕ Nat := sorry
+
+  theorem meeting_first_O {rooms : List Char} :
+    rooms.contains 'O' →
+    ∃ (n : Nat),
+      meeting rooms = Sum.inr n ∧
+      rooms.get! n = 'O' ∧ 
+      ∀ i, i < n → rooms.get! i = 'X'
+    := sorry
+vc-theorems: |
+  theorem meeting_no_O {rooms : List Char} :
+    rooms ≠ [] →
+    (¬ rooms.contains 'O') → 
+    meeting rooms = Sum.inl "None available!"
+    := sorry
+
+
+  theorem meeting_all_X {rooms : List Char} :
+    rooms ≠ [] →
+    (∀ x ∈ rooms, x = 'X') →
+    meeting rooms = Sum.inl "None available!"
+    := sorry
+
+
+  theorem meeting_all_O {rooms : List Char} :
+    rooms ≠ [] →
+    (∀ x ∈ rooms, x = 'O') →
+    meeting rooms = Sum.inr 0
+    := sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval meeting ["X", "O", "X"]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval meeting ["O", "X", "X", "X", "X"]
+
+  /--
+  info: 'None available!'
+  -/
+  #guard_msgs in
+  #eval meeting ["X"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

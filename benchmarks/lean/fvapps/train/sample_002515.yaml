@@ -1,38 +1,106 @@
-"vc-description": "=====Function Descriptions=====\nPython has built-in string validation\
-  \ methods for basic data. It can check if a string is composed of alphabetical characters,\
-  \ alphanumeric characters, digits, etc.\n\nstr.isalnum()\nThis method checks if\
-  \ all the characters of a string are alphanumeric (a-z, A-Z and 0-9).\n\n>>> print\
-  \ 'ab123'.isalnum()\nTrue\n>>> print 'ab123#'.isalnum()\nFalse\n\nstr.isalpha()\n\
-  This method checks if all the characters of a string are alphabetical (a-z and A-Z).\n\
-  \n>>> print 'abcD'.isalpha()\nTrue\n>>> print 'abcd1'.isalpha()\nFalse\n\nstr.isdigit()\n\
-  This method checks if all the characters of a string are digits (0-9).\n\n>>> print\
-  \ '1234'.isdigit()\nTrue\n>>> print '123edsd'.isdigit()\nFalse\n\nstr.islower()\n\
-  This method checks if all the characters of a string are lowercase characters (a-z).\n\
-  \n>>> print 'abcd123#'.islower()\nTrue\n>>> print 'Abcd123#'.islower()\nFalse\n\n\
-  str.isupper()\nThis method checks if all the characters of a string are uppercase\
-  \ characters (A-Z).\n\n>>> print 'ABCD123#'.isupper()\nTrue\n>>> print 'Abcd123#'.isupper()\n\
-  False\n\n=====Problem Statement=====\nYou are given a string S.\nYour task is to\
-  \ find out if the string S contains: alphanumeric characters, alphabetical characters,\
-  \ digits, lowercase and uppercase characters.\n\n=====Input Format=====\nA single\
-  \ line containing a string S.\n\n=====Constraints=====\n0 < len(S) < 1000\n\n=====Output\
-  \ Format=====\nIn the first line, print True if S has any alphanumeric characters.\
-  \ Otherwise, print False.\nIn the second line, print True if S has any alphabetical\
-  \ characters. Otherwise, print False.\nIn the third line, print True if S has any\
-  \ digits. Otherwise, print False.\nIn the fourth line, print True if S has any lowercase\
-  \ characters. Otherwise, print False.\nIn the fifth line, print True if S has any\
-  \ uppercase characters. Otherwise, print False."
-"vc-preamble": "import Imports.AllImports\n\ndef isAlnum (c : Char) : Bool := sorry\n\
-  def isAlpha (c : Char) : Bool := sorry  \n\ndef isDigit (c : Char) : Bool := sorry\n\
-  def isLower (c : Char) : Bool := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isUpper (c : Char) : Bool := sorry\n\ndef check_string_properties\
-  \ (s : String) : List Bool := sorry\n\n\n"
-"vc-theorems": "theorem check_string_properties_bool (s : String) :\n  ∀ x ∈ check_string_properties\
-  \ s, x = true ∨ x = false := sorry\n\n\n\n\n\n\n\n\n\n\n\n\ntheorem alpha_implies_alnum\
-  \ (s : String) :\n  (check_string_properties s).get! 1 = true → (check_string_properties\
-  \ s).get! 0 = true := sorry\n\n\ntheorem digit_implies_alnum (s : String) :\n  (check_string_properties\
-  \ s).get! 2 = true → (check_string_properties s).get! 0 = true := sorry\n\n\ntheorem\
-  \ case_implies_alpha (s : String) :\n  ((check_string_properties s).get! 3 = true\
-  \ ∨ (check_string_properties s).get! 4 = true) →\n  (check_string_properties s).get!\
-  \ 1 = true := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  =====Function Descriptions=====
+  Python has built-in string validation methods for basic data. It can check if a string is composed of alphabetical characters, alphanumeric characters, digits, etc.
+
+  str.isalnum()
+  This method checks if all the characters of a string are alphanumeric (a-z, A-Z and 0-9).
+
+  >>> print 'ab123'.isalnum()
+  True
+  >>> print 'ab123#'.isalnum()
+  False
+
+  str.isalpha()
+  This method checks if all the characters of a string are alphabetical (a-z and A-Z).
+
+  >>> print 'abcD'.isalpha()
+  True
+  >>> print 'abcd1'.isalpha()
+  False
+
+  str.isdigit()
+  This method checks if all the characters of a string are digits (0-9).
+
+  >>> print '1234'.isdigit()
+  True
+  >>> print '123edsd'.isdigit()
+  False
+
+  str.islower()
+  This method checks if all the characters of a string are lowercase characters (a-z).
+
+  >>> print 'abcd123#'.islower()
+  True
+  >>> print 'Abcd123#'.islower()
+  False
+
+  str.isupper()
+  This method checks if all the characters of a string are uppercase characters (A-Z).
+
+  >>> print 'ABCD123#'.isupper()
+  True
+  >>> print 'Abcd123#'.isupper()
+  False
+
+  =====Problem Statement=====
+  You are given a string S.
+  Your task is to find out if the string S contains: alphanumeric characters, alphabetical characters, digits, lowercase and uppercase characters.
+
+  =====Input Format=====
+  A single line containing a string S.
+
+  =====Constraints=====
+  0 < len(S) < 1000
+
+  =====Output Format=====
+  In the first line, print True if S has any alphanumeric characters. Otherwise, print False.
+  In the second line, print True if S has any alphabetical characters. Otherwise, print False.
+  In the third line, print True if S has any digits. Otherwise, print False.
+  In the fourth line, print True if S has any lowercase characters. Otherwise, print False.
+  In the fifth line, print True if S has any uppercase characters. Otherwise, print False.
+vc-preamble: |-
+  import Imports.AllImports
+
+  def isAlnum (c : Char) : Bool := sorry
+  def isAlpha (c : Char) : Bool := sorry  
+
+  def isDigit (c : Char) : Bool := sorry
+  def isLower (c : Char) : Bool := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def isUpper (c : Char) : Bool := sorry
+
+  def check_string_properties (s : String) : List Bool := sorry
+
+
+vc-theorems: |-
+  theorem check_string_properties_bool (s : String) :
+    ∀ x ∈ check_string_properties s, x = true ∨ x = false := sorry
+
+
+
+
+
+
+
+
+
+
+
+
+  theorem alpha_implies_alnum (s : String) :
+    (check_string_properties s).get! 1 = true → (check_string_properties s).get! 0 = true := sorry
+
+
+  theorem digit_implies_alnum (s : String) :
+    (check_string_properties s).get! 2 = true → (check_string_properties s).get! 0 = true := sorry
+
+
+  theorem case_implies_alpha (s : String) :
+    ((check_string_properties s).get! 3 = true ∨ (check_string_properties s).get! 4 = true) →
+    (check_string_properties s).get! 1 = true := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

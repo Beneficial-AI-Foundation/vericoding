@@ -1,49 +1,189 @@
-"vc-description": "# Introduction\n\n\nFish are an integral part of any ecosystem.\
-  \ Unfortunately, fish are often seen as high maintenance. Contrary to popular belief,\
-  \ fish actually reduce pond maintenance as they graze on string algae and bottom\
-  \ feed from the pond floor. They also make very enjoyable pets, providing hours\
-  \ of natural entertainment.\n\n\n\n# Task\n\n\nIn this Kata you are fish in a pond\
-  \ that needs to survive by eating other fish. You can only eat fish that are the\
-  \ same size or smaller than yourself. \nYou must create a function called fish that\
-  \ takes a shoal of fish as an input string. From this you must work out how many\
-  \ fish you can eat and ultimately the size you will grow to.\n\n\n# Rules\n\n1. \
-  \ Your size starts at 1\n\n2.  The shoal string will contain fish integers between\
-  \ 0-9\n\n3.  0 = algae and wont help you feed.\n\n4.  The fish integer represents\
-  \ the size of the fish (1-9).\n\n5.  You can only eat fish the same size or less\
-  \ than yourself.\n\n6.  You can eat the fish in any order you choose to maximize\
-  \ your size.\n\n7   You can and only eat each fish once.\n\n8.  The bigger fish\
-  \ you eat, the faster you grow. A size 2 fish equals two size 1 fish, size 3 fish\
-  \ equals three size 1 fish, and so on.\n\n9.  Your size increments by one each time\
-  \ you reach the amounts below.\n\n\n# Increase your size\nYour size will increase\
-  \ depending how many fish you eat and on the size of the fish.\nThis chart shows\
-  \ the amount of size 1 fish you have to eat in order to increase your size.\n\n\n\
-  \n\nCurrent size\nAmount extra needed for next size\nTotal size 1 fish\nIncrease\
-  \ to size\n\n\n1\n4\n4\n2\n\n\n2\n8\n12\n3\n\n\n3\n12\n24\n4\n\n\n4\n16\n40\n5\n\
-  \n\n5\n20\n60\n6\n\n\n6\n24\n84\n7\n\n\n \n\n\n\nPlease note: The chart represents\
-  \ fish of size 1\n\n# Returns\n\nReturn an integer of the maximum size you could\
-  \ be.\n\n\n# Example 1\nYou eat the 4 fish of size 1 (4 * 1 = 4) which increases\
-  \ your size to 2\nNow that you are size 2 you can eat the fish that are sized 1\
-  \ or 2.\nYou then eat the 4 fish of size 2 (4 * 2 = 8) which increases your size\
-  \ to 3\n\n\n\n```python\nfish(\"11112222\") => 3\n```\n\n# Example 2\n\nYou eat\
-  \ the 4 fish of size 1 (4 * 1 = 4) which increases your size to 2\nYou then eat\
-  \ the remainding 8 fish of size 1 (8 * 1 = 8) which increases your size to 3\n\n\
-  ```python\nfish(\"111111111111\") => 3\n```\n\nGood luck and enjoy!\n\n# Kata Series\n\
-  If you enjoyed this, then please try one of my other Katas. Any feedback, translations\
-  \ and grading of beta Katas are greatly appreciated. Thank you.\n\n Maze Runner\n\
-   Scooby Doo Puzzle\n Driving License\n Connect 4\n Vending Machine\n Snakes and\
-  \ Ladders\n Mastermind\n Guess Who?\n Am I safe to drive?\n Mexican Wave\n Pigs\
-  \ in a Pen\n Hungry Hippos\n Plenty of Fish in the Pond\n Fruit Machine\n Car Park\
-  \ Escape"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def fish (input : String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem fish_minimum (nums : String) :\n  fish nums ≥ 1 := by\n  sorry\n\
-  \n\ntheorem fish_maximum (nums : String) :\n  fish nums ≤ String.length nums + 1\
-  \ := by\n  sorry\n\n\ntheorem fish_monotonic_identical_digits (s : String) (h: ∀\
-  \ (i j : Nat), i < s.length → j < s.length → s.data[i]! = s.data[j]!) :\n  fish\
-  \ s ≤ (String.length s + 3) / 4 + 1 := by\n  sorry\n\n\ntheorem fish_sorted_same_result\
-  \ (s1 s2 : String) (h: s1.data = s2.data) :\n  fish s1 = fish s2 := by\n  sorry\n\
-  \n\ntheorem fish_empty_string :\n  fish \"\" = 1 := by\n  sorry\n\n/--\ninfo: 1\n\
-  -/\n#guard_msgs in\n#eval fish \"\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval fish\
-  \ \"1111\"\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval fish \"111122223333\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  # Introduction
+
+
+  Fish are an integral part of any ecosystem. Unfortunately, fish are often seen as high maintenance. Contrary to popular belief, fish actually reduce pond maintenance as they graze on string algae and bottom feed from the pond floor. They also make very enjoyable pets, providing hours of natural entertainment.
+
+
+
+  # Task
+
+
+  In this Kata you are fish in a pond that needs to survive by eating other fish. You can only eat fish that are the same size or smaller than yourself. 
+  You must create a function called fish that takes a shoal of fish as an input string. From this you must work out how many fish you can eat and ultimately the size you will grow to.
+
+
+  # Rules
+
+  1.  Your size starts at 1
+
+  2.  The shoal string will contain fish integers between 0-9
+
+  3.  0 = algae and wont help you feed.
+
+  4.  The fish integer represents the size of the fish (1-9).
+
+  5.  You can only eat fish the same size or less than yourself.
+
+  6.  You can eat the fish in any order you choose to maximize your size.
+
+  7   You can and only eat each fish once.
+
+  8.  The bigger fish you eat, the faster you grow. A size 2 fish equals two size 1 fish, size 3 fish equals three size 1 fish, and so on.
+
+  9.  Your size increments by one each time you reach the amounts below.
+
+
+  # Increase your size
+  Your size will increase depending how many fish you eat and on the size of the fish.
+  This chart shows the amount of size 1 fish you have to eat in order to increase your size.
+
+
+
+
+  Current size
+  Amount extra needed for next size
+  Total size 1 fish
+  Increase to size
+
+
+  1
+  4
+  4
+  2
+
+
+  2
+  8
+  12
+  3
+
+
+  3
+  12
+  24
+  4
+
+
+  4
+  16
+  40
+  5
+
+
+  5
+  20
+  60
+  6
+
+
+  6
+  24
+  84
+  7
+
+
+   
+
+
+
+  Please note: The chart represents fish of size 1
+
+  # Returns
+
+  Return an integer of the maximum size you could be.
+
+
+  # Example 1
+  You eat the 4 fish of size 1 (4 * 1 = 4) which increases your size to 2
+  Now that you are size 2 you can eat the fish that are sized 1 or 2.
+  You then eat the 4 fish of size 2 (4 * 2 = 8) which increases your size to 3
+
+
+
+  ```python
+  fish("11112222") => 3
+  ```
+
+  # Example 2
+
+  You eat the 4 fish of size 1 (4 * 1 = 4) which increases your size to 2
+  You then eat the remainding 8 fish of size 1 (8 * 1 = 8) which increases your size to 3
+
+  ```python
+  fish("111111111111") => 3
+  ```
+
+  Good luck and enjoy!
+
+  # Kata Series
+  If you enjoyed this, then please try one of my other Katas. Any feedback, translations and grading of beta Katas are greatly appreciated. Thank you.
+
+   Maze Runner
+   Scooby Doo Puzzle
+   Driving License
+   Connect 4
+   Vending Machine
+   Snakes and Ladders
+   Mastermind
+   Guess Who?
+   Am I safe to drive?
+   Mexican Wave
+   Pigs in a Pen
+   Hungry Hippos
+   Plenty of Fish in the Pond
+   Fruit Machine
+   Car Park Escape
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def fish (input : String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem fish_minimum (nums : String) :
+    fish nums ≥ 1 := by
+    sorry
+
+
+  theorem fish_maximum (nums : String) :
+    fish nums ≤ String.length nums + 1 := by
+    sorry
+
+
+  theorem fish_monotonic_identical_digits (s : String) (h: ∀ (i j : Nat), i < s.length → j < s.length → s.data[i]! = s.data[j]!) :
+    fish s ≤ (String.length s + 3) / 4 + 1 := by
+    sorry
+
+
+  theorem fish_sorted_same_result (s1 s2 : String) (h: s1.data = s2.data) :
+    fish s1 = fish s2 := by
+    sorry
+
+
+  theorem fish_empty_string :
+    fish "" = 1 := by
+    sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval fish ""
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval fish "1111"
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval fish "111122223333"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

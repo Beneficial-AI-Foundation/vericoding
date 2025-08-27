@@ -1,34 +1,104 @@
-"vc-description": "Given a binary tree root, a ZigZag path for a binary tree is defined\
-  \ as follow:\n\nChoose any node in the binary tree and a direction (right or left).\n\
-  If the current direction is right then move to the right child of the current node\
-  \ otherwise move to the left child.\nChange the direction from right to left or\
-  \ right to left.\nRepeat the second and third step until you can't move in the tree.\n\
-  \nZigzag length is defined as the number of nodes visited - 1. (A single node has\
-  \ a length of 0).\nReturn the longest ZigZag path contained in that tree.\n \nExample\
-  \ 1:\n\nInput: root = [1,null,1,1,1,null,null,1,1,null,1,null,null,null,1,null,1]\n\
-  Output: 3\nExplanation: Longest ZigZag path in blue nodes (right -> left -> right).\n\
-  \nExample 2:\n\nInput: root = [1,1,1,null,1,null,null,1,1,null,1]\nOutput: 4\nExplanation:\
-  \ Longest ZigZag path in blue nodes (left -> right -> left -> right).\n\nExample\
-  \ 3:\nInput: root = [1]\nOutput: 0\n\n \nConstraints:\n\nEach tree has at most 50000\
-  \ nodes..\nEach node's value is between [1, 100]."
-"vc-preamble": "import Imports.AllImports\n\ndef is_straight_path {α : Type} (t :\
-  \ Tree α) (xs : List α) : Prop :=\n  sorry\n\n\ndef build_zigzag_tree {α : Type}\
-  \ (n : Nat) (x : α) : Tree α :=\n  sorry\n\n\ndef corresponds_to_list {α : Type}\
-  \ (t : Tree α) (xs : List α) : Prop :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def longest_zigzag {α : Type} (t : Tree α) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem empty_or_single_node {α : Type} (t : Tree α) : \n  (t = Tree.nil\
-  \ ∨ (∃ x, t = Tree.node x Tree.nil Tree.nil)) →\n  longest_zigzag t = 0 :=\nsorry\n\
-  \n\ntheorem straight_path_bound {α : Type} (root : Tree α) (xs : List α) :\n  is_straight_path\
-  \ root xs →\n  longest_zigzag root ≤ 1 :=\nsorry\n\n\ntheorem zigzag_monotone {α\
-  \ : Type} (x y z : α) :\n  let t1 := Tree.node x Tree.nil Tree.nil\n  let t2 :=\
-  \ Tree.node x Tree.nil (Tree.node y Tree.nil Tree.nil)\n  let t3 := Tree.node x\
-  \ Tree.nil (Tree.node y (Tree.node z Tree.nil Tree.nil) Tree.nil)\n  longest_zigzag\
-  \ t1 = 0 ∧\n  longest_zigzag t2 ≥ 1 ∧  \n  longest_zigzag t3 ≥ 2 :=\nsorry\n\n\n\
-  theorem perfect_zigzag_length {α : Type} (n : Nat) (x : α) :\n  longest_zigzag (build_zigzag_tree\
-  \ n x) = n :=\nsorry\n\n\ntheorem result_bounds {α : Type} (t : Tree α) (xs : List\
-  \ α) :\n  corresponds_to_list t xs →\n  0 ≤ longest_zigzag t ∧ longest_zigzag t\
-  \ ≤ xs.length - 1 :=\nsorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval longest_zigzag\
-  \ TreeNode(1)\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval longest_zigzag TreeNode(1)\n\
-  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval longest_zigzag TreeNode(1)\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a binary tree root, a ZigZag path for a binary tree is defined as follow:
+
+  Choose any node in the binary tree and a direction (right or left).
+  If the current direction is right then move to the right child of the current node otherwise move to the left child.
+  Change the direction from right to left or right to left.
+  Repeat the second and third step until you can't move in the tree.
+
+  Zigzag length is defined as the number of nodes visited - 1. (A single node has a length of 0).
+  Return the longest ZigZag path contained in that tree.
+   
+  Example 1:
+
+  Input: root = [1,null,1,1,1,null,null,1,1,null,1,null,null,null,1,null,1]
+  Output: 3
+  Explanation: Longest ZigZag path in blue nodes (right -> left -> right).
+
+  Example 2:
+
+  Input: root = [1,1,1,null,1,null,null,1,1,null,1]
+  Output: 4
+  Explanation: Longest ZigZag path in blue nodes (left -> right -> left -> right).
+
+  Example 3:
+  Input: root = [1]
+  Output: 0
+
+   
+  Constraints:
+
+  Each tree has at most 50000 nodes..
+  Each node's value is between [1, 100].
+vc-preamble: |
+  import Imports.AllImports
+
+  def is_straight_path {α : Type} (t : Tree α) (xs : List α) : Prop :=
+    sorry
+
+
+  def build_zigzag_tree {α : Type} (n : Nat) (x : α) : Tree α :=
+    sorry
+
+
+  def corresponds_to_list {α : Type} (t : Tree α) (xs : List α) : Prop :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def longest_zigzag {α : Type} (t : Tree α) : Nat :=
+    sorry
+vc-theorems: |
+  theorem empty_or_single_node {α : Type} (t : Tree α) : 
+    (t = Tree.nil ∨ (∃ x, t = Tree.node x Tree.nil Tree.nil)) →
+    longest_zigzag t = 0 :=
+  sorry
+
+
+  theorem straight_path_bound {α : Type} (root : Tree α) (xs : List α) :
+    is_straight_path root xs →
+    longest_zigzag root ≤ 1 :=
+  sorry
+
+
+  theorem zigzag_monotone {α : Type} (x y z : α) :
+    let t1 := Tree.node x Tree.nil Tree.nil
+    let t2 := Tree.node x Tree.nil (Tree.node y Tree.nil Tree.nil)
+    let t3 := Tree.node x Tree.nil (Tree.node y (Tree.node z Tree.nil Tree.nil) Tree.nil)
+    longest_zigzag t1 = 0 ∧
+    longest_zigzag t2 ≥ 1 ∧  
+    longest_zigzag t3 ≥ 2 :=
+  sorry
+
+
+  theorem perfect_zigzag_length {α : Type} (n : Nat) (x : α) :
+    longest_zigzag (build_zigzag_tree n x) = n :=
+  sorry
+
+
+  theorem result_bounds {α : Type} (t : Tree α) (xs : List α) :
+    corresponds_to_list t xs →
+    0 ≤ longest_zigzag t ∧ longest_zigzag t ≤ xs.length - 1 :=
+  sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval longest_zigzag TreeNode(1)
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval longest_zigzag TreeNode(1)
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval longest_zigzag TreeNode(1)
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

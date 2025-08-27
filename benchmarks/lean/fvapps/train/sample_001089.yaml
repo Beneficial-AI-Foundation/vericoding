@@ -1,26 +1,76 @@
-"vc-description": "\"How did you get the deal,how did he agree?\"\n\"Its's simple\
-  \ Tom I just made him an offer he couldn't refuse\" \nAyush is the owner of a big\
-  \ construction company and a close aide of Don Vito The Godfather, recently with\
-  \ the help of the Godfather his company has been assigned a big contract according\
-  \ to the contract he has to make n number of V shaped infinitely long roads(two\
-  \ V shaped roads may or  not intersect) on an infinitely large field.\nNow the company\
-  \ assigning the contract needs to know the maximum number of regions they can get\
-  \ after making n such roads.\nHelp Ayush by answering the above question.\n\n-----Input:-----\n\
-  - The first line consists of the number of test cases $T$. \n- Next T lines consists\
-  \ of the number of V shaped roads $n$.\n\n-----Output:-----\nFor each test case\
-  \ print a single line consisting of the maximum regions obtained.\n\n-----Constraints-----\n\
-  - $1 \\leq T \\leq 10$\n- $1 \\leq n \\leq 10^9$\n\n-----Sample Input:-----\n2\n\
-  1\n2\n\n-----Sample Output:-----\n2\n7\n\n-----EXPLANATION:-----\nTest case 1: \
-  \      For one V shaped road there will be 2 regions\n\nTest case 2:       For n=2\
-  \ the following figure depicts the case of maximum regions:"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def max_regions_after_v_roads (n: Nat) : Nat :=\nsorry\n"
-"vc-theorems": "theorem max_regions_always_positive (n: Nat) (h: n > 0) : \n  max_regions_after_v_roads\
-  \ n > 0 :=\nsorry\n\n\ntheorem max_regions_monotonic (n: Nat) (h: n > 0) :\n  max_regions_after_v_roads\
-  \ n < max_regions_after_v_roads (n + 1) := \nsorry\n\n\ntheorem max_regions_known_values\
-  \ :\n  max_regions_after_v_roads 1 = 2 ∧ \n  max_regions_after_v_roads 2 = 7 ∧\n\
-  \  max_regions_after_v_roads 3 = 16 :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
-  #eval max_regions_after_v_roads 1\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval max_regions_after_v_roads\
-  \ 2\n\n/--\ninfo: 16\n-/\n#guard_msgs in\n#eval max_regions_after_v_roads 3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  "How did you get the deal,how did he agree?"
+  "Its's simple Tom I just made him an offer he couldn't refuse" 
+  Ayush is the owner of a big construction company and a close aide of Don Vito The Godfather, recently with the help of the Godfather his company has been assigned a big contract according to the contract he has to make n number of V shaped infinitely long roads(two V shaped roads may or  not intersect) on an infinitely large field.
+  Now the company assigning the contract needs to know the maximum number of regions they can get after making n such roads.
+  Help Ayush by answering the above question.
+
+  -----Input:-----
+  - The first line consists of the number of test cases $T$. 
+  - Next T lines consists of the number of V shaped roads $n$.
+
+  -----Output:-----
+  For each test case print a single line consisting of the maximum regions obtained.
+
+  -----Constraints-----
+  - $1 \leq T \leq 10$
+  - $1 \leq n \leq 10^9$
+
+  -----Sample Input:-----
+  2
+  1
+  2
+
+  -----Sample Output:-----
+  2
+  7
+
+  -----EXPLANATION:-----
+  Test case 1:       For one V shaped road there will be 2 regions
+
+  Test case 2:       For n=2 the following figure depicts the case of maximum regions:
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def max_regions_after_v_roads (n: Nat) : Nat :=
+  sorry
+vc-theorems: |
+  theorem max_regions_always_positive (n: Nat) (h: n > 0) : 
+    max_regions_after_v_roads n > 0 :=
+  sorry
+
+
+  theorem max_regions_monotonic (n: Nat) (h: n > 0) :
+    max_regions_after_v_roads n < max_regions_after_v_roads (n + 1) := 
+  sorry
+
+
+  theorem max_regions_known_values :
+    max_regions_after_v_roads 1 = 2 ∧ 
+    max_regions_after_v_roads 2 = 7 ∧
+    max_regions_after_v_roads 3 = 16 :=
+  sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval max_regions_after_v_roads 1
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval max_regions_after_v_roads 2
+
+  /--
+  info: 16
+  -/
+  #guard_msgs in
+  #eval max_regions_after_v_roads 3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

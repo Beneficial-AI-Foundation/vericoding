@@ -1,24 +1,94 @@
-"vc-description": "# Summary:\nGiven a number, `num`, return the shortest amount of\
-  \ `steps` it would take from 1, to land exactly on that number.\n\n# Description:\n\
-  A `step` is defined as either:\n- Adding 1 to the number: `num += 1`\n- Doubling\
-  \ the number: `num *= 2`\n\nYou will always start from the number `1` and you will\
-  \ have to return the shortest count of steps it would take to land exactly on that\
-  \ number.\n\n`1 <= num <= 10000`\n\nExamples:\n\n`num == 3` would return `2` steps:\n\
-  \n```\n1 -- +1 --> 2:        1 step\n2 -- +1 --> 3:        2 steps\n\n2 steps\n\
-  ```\n\n`num == 12` would return `4` steps:\n\n```\n1 -- +1 --> 2:        1 step\n\
-  2 -- +1 --> 3:        2 steps\n3 -- x2 --> 6:        3 steps\n6 -- x2 --> 12:  \
-  \     4 steps\n\n4 steps\n```\n\n`num == 16` would return `4` steps:\n\n```\n1 --\
-  \ +1 --> 2:        1 step\n2 -- x2 --> 4:        2 steps\n4 -- x2 --> 8:       \
-  \ 3 steps\n8 -- x2 --> 16:       4 steps\n\n4 steps\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def shortest_steps_to_num (n : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem steps_always_positive (n : Nat) (h : n > 0) : \n  shortest_steps_to_num\
-  \ n ≥ 0 :=\nsorry\n\n\ntheorem reaches_one (n : Nat) (h : n > 0) :\n  let steps\
-  \ := shortest_steps_to_num n\n  let result := (n : Nat)\n  let final := Nat.recOn\
-  \ steps result (λ _ acc => \n    if acc % 2 = 0 \n    then acc / 2\n    else acc\
-  \ - 1)\n  final = 1 :=\nsorry\n\n\ntheorem powers_of_two (n : Nat) (h : n > 0) :\n\
-  \  shortest_steps_to_num (2^n) = n :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
-  #eval shortest_steps_to_num 3\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval shortest_steps_to_num\
-  \ 16\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval shortest_steps_to_num 100\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Summary:
+  Given a number, `num`, return the shortest amount of `steps` it would take from 1, to land exactly on that number.
+
+  # Description:
+  A `step` is defined as either:
+  - Adding 1 to the number: `num += 1`
+  - Doubling the number: `num *= 2`
+
+  You will always start from the number `1` and you will have to return the shortest count of steps it would take to land exactly on that number.
+
+  `1 <= num <= 10000`
+
+  Examples:
+
+  `num == 3` would return `2` steps:
+
+  ```
+  1 -- +1 --> 2:        1 step
+  2 -- +1 --> 3:        2 steps
+
+  2 steps
+  ```
+
+  `num == 12` would return `4` steps:
+
+  ```
+  1 -- +1 --> 2:        1 step
+  2 -- +1 --> 3:        2 steps
+  3 -- x2 --> 6:        3 steps
+  6 -- x2 --> 12:       4 steps
+
+  4 steps
+  ```
+
+  `num == 16` would return `4` steps:
+
+  ```
+  1 -- +1 --> 2:        1 step
+  2 -- x2 --> 4:        2 steps
+  4 -- x2 --> 8:        3 steps
+  8 -- x2 --> 16:       4 steps
+
+  4 steps
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def shortest_steps_to_num (n : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem steps_always_positive (n : Nat) (h : n > 0) : 
+    shortest_steps_to_num n ≥ 0 :=
+  sorry
+
+
+  theorem reaches_one (n : Nat) (h : n > 0) :
+    let steps := shortest_steps_to_num n
+    let result := (n : Nat)
+    let final := Nat.recOn steps result (λ _ acc => 
+      if acc % 2 = 0 
+      then acc / 2
+      else acc - 1)
+    final = 1 :=
+  sorry
+
+
+  theorem powers_of_two (n : Nat) (h : n > 0) :
+    shortest_steps_to_num (2^n) = n :=
+  sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval shortest_steps_to_num 3
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval shortest_steps_to_num 16
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval shortest_steps_to_num 100
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

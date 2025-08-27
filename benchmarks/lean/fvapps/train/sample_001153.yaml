@@ -1,35 +1,92 @@
-"vc-description": "There are $N$ robots who work for $Y$ days and on each day they\n\
-  produce some toys .on some days a few robots are given rest.\nSo depending on the\
-  \ availability of robots owner has \nmade a time table which decides which robots\
-  \ will work on \nthe particular day.\nOnly contiguous robots must be selected as\
-  \ they can form \na link of communication among themselves.\nInitially, all robots\
-  \ have the capacity of one toy.\nOn each day capacity for the chosen robot is updated\
-  \ i.e\ncapacity = capacity $+$$ ($minimum capacity of given range % $1000000007)$\
-  \ .\nAfter calculating the minimum capacity of a given range, compute\nit as modulo\
-  \ 1000000007 ($10^9 + 7$).\nAfter $Y$ days find the minimum capacity of the $N$\
-  \ robots and compute it as modulo 1000000007 ($10^9 + 7$).   \n\n-----Input:-----\n\
-  - First-line will contain $T$, the number of test cases. Then the test cases follow.\
-  \ \n- Next Line contains a single integer N.\n- Next Line contains a single integer\
-  \ Y.\n- Next $Y$ lines contains l and r range of chosen robots .\n\n-----Output:-----\n\
-  For each testcase, output in a single line answer , the minimum capacity of the\
-  \ $N$ robots after $Y$ days and compute it as modulo 1000000007 ($10^9 + 7$) .\n\
-  \n-----Constraints-----\n- $1 \\leq T \\leq 100$\n- $100 \\leq N \\leq 10^4$\n-\
-  \ $200 \\leq Y \\leq 1000$\n- $0<=l , r<=N-1$  , $l<=r$\n\n-----Sample Input:-----\n\
-  1\n5\n4\n0 3\n1 2\n4 4\n0 4\n\n-----Sample Output:-----\n4\n\n-----EXPLANATION:-----\n\
-  Initial capacity of the $5$ robots\n1 1 1 1 1 \nMinimum in range [0,3] = 1\nUpdate\
-  \ the capacity in the range [0,3]\nNow capacity becomes, \nDay 1 - 2 2 2 2 1\nSimilarly\
-  \ capacities changes for each day \nDay 2 - 2 4 4 2 1\nDay 3 - 2 4 4 2 2\nDay 4\
-  \ - 4 6 6 4 4\nso after 4 days minimum capacity is $4$."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def MOD := 1000000007\n\ndef solve_robot_capacity (n : Nat) (y\
-  \ : Nat) (schedules : List (Nat × Nat)) : Nat :=\nsorry\n"
-"vc-theorems": "theorem solve_robot_capacity_output_bounds\n  (n : Nat) (y : Nat)\
-  \ (schedules : List (Nat × Nat))\n  (h1 : 1 ≤ n ∧ n ≤ 1000)\n  (h2 : 1 ≤ y ∧ y ≤\
-  \ 100)\n  (h3 : ∀ (s : Nat × Nat), s ∈ schedules → s.1 ≤ s.2 ∧ s.2 < n)\n  (h4 :\
-  \ schedules.length ≤ 100)\n  (h5 : schedules.length ≥ 1) :\n  let result := solve_robot_capacity\
-  \ n y schedules\n  0 ≤ result ∧ result < MOD :=\nsorry\n\n\ntheorem solve_robot_capacity_empty_schedule\n\
-  \  (n : Nat) (y : Nat)\n  (h1 : 1 ≤ n ∧ n ≤ 100)\n  (h2 : 1 ≤ y ∧ y ≤ 10) :\n  solve_robot_capacity\
-  \ n y [] = 1 :=\nsorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve_robot_capacity\
-  \ 5 4 [[0, 3], [1, 2], [4, 4], [0, 4]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  There are $N$ robots who work for $Y$ days and on each day they
+  produce some toys .on some days a few robots are given rest.
+  So depending on the availability of robots owner has 
+  made a time table which decides which robots will work on 
+  the particular day.
+  Only contiguous robots must be selected as they can form 
+  a link of communication among themselves.
+  Initially, all robots have the capacity of one toy.
+  On each day capacity for the chosen robot is updated i.e
+  capacity = capacity $+$$ ($minimum capacity of given range % $1000000007)$ .
+  After calculating the minimum capacity of a given range, compute
+  it as modulo 1000000007 ($10^9 + 7$).
+  After $Y$ days find the minimum capacity of the $N$ robots and compute it as modulo 1000000007 ($10^9 + 7$).   
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Next Line contains a single integer N.
+  - Next Line contains a single integer Y.
+  - Next $Y$ lines contains l and r range of chosen robots .
+
+  -----Output:-----
+  For each testcase, output in a single line answer , the minimum capacity of the $N$ robots after $Y$ days and compute it as modulo 1000000007 ($10^9 + 7$) .
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $100 \leq N \leq 10^4$
+  - $200 \leq Y \leq 1000$
+  - $0<=l , r<=N-1$  , $l<=r$
+
+  -----Sample Input:-----
+  1
+  5
+  4
+  0 3
+  1 2
+  4 4
+  0 4
+
+  -----Sample Output:-----
+  4
+
+  -----EXPLANATION:-----
+  Initial capacity of the $5$ robots
+  1 1 1 1 1 
+  Minimum in range [0,3] = 1
+  Update the capacity in the range [0,3]
+  Now capacity becomes, 
+  Day 1 - 2 2 2 2 1
+  Similarly capacities changes for each day 
+  Day 2 - 2 4 4 2 1
+  Day 3 - 2 4 4 2 2
+  Day 4 - 4 6 6 4 4
+  so after 4 days minimum capacity is $4$.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def MOD := 1000000007
+
+  def solve_robot_capacity (n : Nat) (y : Nat) (schedules : List (Nat × Nat)) : Nat :=
+  sorry
+vc-theorems: |
+  theorem solve_robot_capacity_output_bounds
+    (n : Nat) (y : Nat) (schedules : List (Nat × Nat))
+    (h1 : 1 ≤ n ∧ n ≤ 1000)
+    (h2 : 1 ≤ y ∧ y ≤ 100)
+    (h3 : ∀ (s : Nat × Nat), s ∈ schedules → s.1 ≤ s.2 ∧ s.2 < n)
+    (h4 : schedules.length ≤ 100)
+    (h5 : schedules.length ≥ 1) :
+    let result := solve_robot_capacity n y schedules
+    0 ≤ result ∧ result < MOD :=
+  sorry
+
+
+  theorem solve_robot_capacity_empty_schedule
+    (n : Nat) (y : Nat)
+    (h1 : 1 ≤ n ∧ n ≤ 100)
+    (h2 : 1 ≤ y ∧ y ≤ 10) :
+    solve_robot_capacity n y [] = 1 :=
+  sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval solve_robot_capacity 5 4 [[0, 3], [1, 2], [4, 4], [0, 4]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

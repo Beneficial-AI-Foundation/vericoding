@@ -1,16 +1,57 @@
-"vc-description": "Is every value in the array an array?\n\nThis should only test\
-  \ the second array dimension of the array. The values of the nested arrays don't\
-  \ have to be arrays. \n\nExamples:\n\n```python\n[[1],[2]] => true\n['1','2'] =>\
-  \ false\n[{1:1},{2:2}] => false\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def arr_check (arr : List α) : Bool :=\n  sorry\n"
-"vc-theorems": "theorem valid_array_of_arrays {α : Type} (arr : List (List α)) :\n\
-  \  arr_check arr = true :=\nsorry\n\n\ntheorem invalid_array_of_non_arrays {α :\
-  \ Type} (arr : List α) \n  (h : arr.length ≥ 1) :\n  arr_check arr = false :=\n\
-  sorry\n\n\ntheorem array_of_empty_lists {α : Type} (arr : List (List α))\n  (h :\
-  \ ∀ l ∈ arr, l.length = 0) :  \n  arr_check arr = true :=\nsorry\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval arr_check [[]]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
-  #eval arr_check [[1], [2], [3]]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval arr_check\
-  \ [\"A\", \"R\", \"R\", \"A\", \"Y\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Is every value in the array an array?
+
+  This should only test the second array dimension of the array. The values of the nested arrays don't have to be arrays. 
+
+  Examples:
+
+  ```python
+  [[1],[2]] => true
+  ['1','2'] => false
+  [{1:1},{2:2}] => false
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def arr_check (arr : List α) : Bool :=
+    sorry
+vc-theorems: |
+  theorem valid_array_of_arrays {α : Type} (arr : List (List α)) :
+    arr_check arr = true :=
+  sorry
+
+
+  theorem invalid_array_of_non_arrays {α : Type} (arr : List α) 
+    (h : arr.length ≥ 1) :
+    arr_check arr = false :=
+  sorry
+
+
+  theorem array_of_empty_lists {α : Type} (arr : List (List α))
+    (h : ∀ l ∈ arr, l.length = 0) :  
+    arr_check arr = true :=
+  sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval arr_check [[]]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval arr_check [[1], [2], [3]]
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval arr_check ["A", "R", "R", "A", "Y"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

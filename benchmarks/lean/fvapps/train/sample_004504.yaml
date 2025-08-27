@@ -1,18 +1,60 @@
-"vc-description": "Write function toAcronym which takes a string and make an acronym\
-  \ of it.\n\nRule of making acronym in this kata:\n\n1. split string to words by\
-  \ space char\n2. take every first letter from word in given string\n3. uppercase\
-  \ it\n4. join them toghether\n\n\n\nEg:\n\n\nCode wars -> C, w -> C W -> CW"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def to_acronym (s: String) : String :=\n  sorry\n"
-"vc-theorems": "theorem to_acronym_property {words: List String} (h: ∀ w ∈ words,\
-  \ w.length > 0)\n  (h₂: words.length > 0) :\n  let phrase := String.join (\" \"\
-  \ :: words.intersperse \" \") \n  let acronym := to_acronym phrase\n  acronym.length\
-  \ = words.length ∧                    -- Length matches\n  (∀ c ∈ acronym.data,\
-  \ c.isUpper) ∧                 -- All chars uppercase\n  acronym.data = words.map\
-  \ (λ w => w.front.toUpper) -- First letters match\n:= sorry\n\n\ntheorem to_acronym_empty_input\
-  \ (s: String)\n  (h: s.trim = \"\") : \n  to_acronym s = \"\"\n:= sorry\n\n/--\n\
-  info: 'CW'\n-/\n#guard_msgs in\n#eval to_acronym \"Code wars\"\n\n/--\ninfo: 'HW'\n\
-  -/\n#guard_msgs in\n#eval to_acronym \"Hello world\"\n\n/--\ninfo: 'PIA'\n-/\n#guard_msgs\
-  \ in\n#eval to_acronym \"Python is awesome\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write function toAcronym which takes a string and make an acronym of it.
+
+  Rule of making acronym in this kata:
+
+  1. split string to words by space char
+  2. take every first letter from word in given string
+  3. uppercase it
+  4. join them toghether
+
+
+
+  Eg:
+
+
+  Code wars -> C, w -> C W -> CW
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def to_acronym (s: String) : String :=
+    sorry
+vc-theorems: |
+  theorem to_acronym_property {words: List String} (h: ∀ w ∈ words, w.length > 0)
+    (h₂: words.length > 0) :
+    let phrase := String.join (" " :: words.intersperse " ") 
+    let acronym := to_acronym phrase
+    acronym.length = words.length ∧                    -- Length matches
+    (∀ c ∈ acronym.data, c.isUpper) ∧                 -- All chars uppercase
+    acronym.data = words.map (λ w => w.front.toUpper) -- First letters match
+  := sorry
+
+
+  theorem to_acronym_empty_input (s: String)
+    (h: s.trim = "") : 
+    to_acronym s = ""
+  := sorry
+
+  /--
+  info: 'CW'
+  -/
+  #guard_msgs in
+  #eval to_acronym "Code wars"
+
+  /--
+  info: 'HW'
+  -/
+  #guard_msgs in
+  #eval to_acronym "Hello world"
+
+  /--
+  info: 'PIA'
+  -/
+  #guard_msgs in
+  #eval to_acronym "Python is awesome"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

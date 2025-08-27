@@ -1,36 +1,78 @@
-"vc-description": "This kata provides you with a list of parent-child pairs `family_list`,\
-  \ and from this family description you'll need to find the relationship between\
-  \ two members(what is the relation of latter with former) which is given as `target_pair`.\n\
-  \nFor example, the family list may be given as:\n\n`[('Enid', 'Susan'), ('Susan',\
-  \ 'Deborah'), ('Enid', 'Dianne')]`\n\nThis describes the family:\n\n          Enid\n\
-  \            |\n       |---------|\n     Susan     Dianne\n       |\n    Deborah\n\
-  \nThe relationship pair `('Deborah', 'Enid')` should return 'Grandmother' as Enid\
-  \ is Deborah's Grandmother.\n\nThis family tree can cover up to 3 generations, with\
-  \ varying numbers of children for each parent. We only focus on the females in the\
-  \ family, and so children will have only one parent.\n\nThe possible responses are\
-  \ Mother, Daughter, Grandmother, Granddaughter, Sister, Cousin, Aunt, Niece (each\
-  \ matching their 'real life' equivalents). There will always be a valid answer.\n\
-  \nEnjoy, and be nice to your Mother!"
-"vc-preamble": "import Imports.AllImports\n\ndef FamilyRelation := String\n\ndef FamilyList\
-  \ := List (String × String)\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def relations (family : FamilyList) (pair : String × String) :\
-  \ Option FamilyRelation := sorry\n\ntheorem relation_returns_valid (family : FamilyList)\
-  \ (pair : String × String) :\n  let result := relations family pair\n  match result\
-  \ with\n  | some rel => rel = \"Mother\" ∨ rel = \"Grandmother\" ∨ rel = \"Daughter\"\
-  \ ∨ \n                rel = \"Granddaughter\" ∨ rel = \"Sister\" ∨ rel = \"Cousin\"\
-  \ ∨ \n                rel = \"Aunt\" ∨ rel = \"Niece\"\n  | none => True\n  := sorry\n"
-"vc-theorems": "theorem grandmother_granddaughter_symmetry (family : FamilyList) (a\
-  \ b : String) :\n  relations family (a, b) = some \"Grandmother\" → \n  relations\
-  \ family (b, a) = some \"Granddaughter\" := sorry\n\n\ntheorem sister_symmetry (family\
-  \ : FamilyList) (a b : String) :\n  relations family (a, b) = some \"Sister\" →\n\
-  \  relations family (b, a) = some \"Sister\" := sorry\n\n\ntheorem aunt_niece_symmetry\
-  \ (family : FamilyList) (a b : String) :\n  relations family (a, b) = some \"Aunt\"\
-  \ →\n  relations family (b, a) = some \"Niece\" := sorry\n\n/--\ninfo: 'Grandmother'\n\
-  -/\n#guard_msgs in\n#eval relations [(\"Enid\", \"Susan\"), (\"Susan\", \"Deborah\"\
-  ), (\"Enid\", \"Dianne\")] (\"Deborah\", \"Enid\")\n\n/--\ninfo: 'Sister'\n-/\n\
-  #guard_msgs in\n#eval relations [(\"Sarah\", \"Emily\"), (\"Sarah\", \"Kate\")]\
-  \ (\"Emily\", \"Kate\")\n\n/--\ninfo: 'Aunt'\n-/\n#guard_msgs in\n#eval relations\
-  \ [(\"Mary\", \"Sarah\"), (\"Sarah\", \"Emily\"), (\"Mary\", \"Jane\")] (\"Emily\"\
-  , \"Jane\")\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  This kata provides you with a list of parent-child pairs `family_list`, and from this family description you'll need to find the relationship between two members(what is the relation of latter with former) which is given as `target_pair`.
+
+  For example, the family list may be given as:
+
+  `[('Enid', 'Susan'), ('Susan', 'Deborah'), ('Enid', 'Dianne')]`
+
+  This describes the family:
+
+            Enid
+              |
+         |---------|
+       Susan     Dianne
+         |
+      Deborah
+
+  The relationship pair `('Deborah', 'Enid')` should return 'Grandmother' as Enid is Deborah's Grandmother.
+
+  This family tree can cover up to 3 generations, with varying numbers of children for each parent. We only focus on the females in the family, and so children will have only one parent.
+
+  The possible responses are Mother, Daughter, Grandmother, Granddaughter, Sister, Cousin, Aunt, Niece (each matching their 'real life' equivalents). There will always be a valid answer.
+
+  Enjoy, and be nice to your Mother!
+vc-preamble: |
+  import Imports.AllImports
+
+  def FamilyRelation := String
+
+  def FamilyList := List (String × String)
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def relations (family : FamilyList) (pair : String × String) : Option FamilyRelation := sorry
+
+  theorem relation_returns_valid (family : FamilyList) (pair : String × String) :
+    let result := relations family pair
+    match result with
+    | some rel => rel = "Mother" ∨ rel = "Grandmother" ∨ rel = "Daughter" ∨ 
+                  rel = "Granddaughter" ∨ rel = "Sister" ∨ rel = "Cousin" ∨ 
+                  rel = "Aunt" ∨ rel = "Niece"
+    | none => True
+    := sorry
+vc-theorems: |
+  theorem grandmother_granddaughter_symmetry (family : FamilyList) (a b : String) :
+    relations family (a, b) = some "Grandmother" → 
+    relations family (b, a) = some "Granddaughter" := sorry
+
+
+  theorem sister_symmetry (family : FamilyList) (a b : String) :
+    relations family (a, b) = some "Sister" →
+    relations family (b, a) = some "Sister" := sorry
+
+
+  theorem aunt_niece_symmetry (family : FamilyList) (a b : String) :
+    relations family (a, b) = some "Aunt" →
+    relations family (b, a) = some "Niece" := sorry
+
+  /--
+  info: 'Grandmother'
+  -/
+  #guard_msgs in
+  #eval relations [("Enid", "Susan"), ("Susan", "Deborah"), ("Enid", "Dianne")] ("Deborah", "Enid")
+
+  /--
+  info: 'Sister'
+  -/
+  #guard_msgs in
+  #eval relations [("Sarah", "Emily"), ("Sarah", "Kate")] ("Emily", "Kate")
+
+  /--
+  info: 'Aunt'
+  -/
+  #guard_msgs in
+  #eval relations [("Mary", "Sarah"), ("Sarah", "Emily"), ("Mary", "Jane")] ("Emily", "Jane")
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

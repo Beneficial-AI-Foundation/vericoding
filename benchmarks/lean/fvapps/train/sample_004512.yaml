@@ -1,53 +1,125 @@
-"vc-description": "A company is opening a bank, but the coder who is designing the\
-  \ user class made some errors. They need  you  to help them. \n\nYou must include\
-  \ the following:\n\n- A withdraw method\n  - Subtracts money from balance\n  - One\
-  \ parameter, money to withdraw\n  - Raise ValueError if there isn't enough money\
-  \ to withdraw\n  - Return a string with name and balence(see examples)\n  \n* A\
-  \ check method\n  - Adds money to baleance\n  - Two parameters, other user and money\n\
-  \  - Other user will always be valid\n  - Raise a ValueError if other user doesn't\
-  \ have enough money\n  - Raise a ValueError if checking_account isn't true for other\
-  \ user\n  - Return a string with name and balance plus other name and other balance(see\
-  \ examples)\n  \n- An add_cash method\n  - Adds money to balance\n  - One parameter,\
-  \ money to add\n  - Return a string with name and balance(see examples)\n\nAdditional\
-  \ Notes:\n  * Checking_account should be stored as a boolean\n  - No input numbers\
-  \ will be negitive\n  * Output must end with period\n  - Float numbers will not\
-  \ be used so, balance should be integer\n  * No currency will be used\n  \nExamples:\n\
-  ``` Python\nJeff = User('Jeff', 70, True)\nJoe = User('Joe', 70, False)\n\nJeff.withdraw(2)\
-  \ # Returns 'Jeff has 68.'\n\nJoe.check(Jeff, 50) # Returns 'Joe has 120 and Jeff\
-  \ has 18.'\n\nJeff.check(Joe, 80) # Raises a ValueError\n\nJoe.checking_account\
-  \ = True # Enables checking for Joe\n\nJeff.check(Joe, 80) # Returns 'Jeff has 98\
-  \ and Joe has 40'\n\nJoe.check(Jeff, 100) # Raises a ValueError\n\nJeff.add_cash(20.00)\
-  \ # Returns 'Jeff has 118.'\n```\n\n Good Luck"
-"vc-preamble": "import Imports.AllImports\n\ndef User.withdraw (u : User) (amt : Nat)\
-  \ : Option (String × User) := sorry\ndef User.add_cash (u : User) (amt : Nat) :\
-  \ String × User := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def User.check (u1 : User) (u2 : User) (amt : Nat) : Option (String\
-  \ × User × User) := sorry\n\ntheorem user_creation_preserves_fields \n  (name :\
-  \ String) (balance : Nat) (has_checking : Bool) :\n  let u := User.mk name balance\
-  \ has_checking\n  u.name = name ∧ u.balance = balance ∧ u.checking_account = has_checking\
-  \ := sorry\n"
-"vc-theorems": "theorem withdraw_decreases_balance\n  (name : String) (initial_balance\
-  \ withdrawal : Nat) :\n  withdrawal ≤ initial_balance →\n  let u := User.mk name\
-  \ initial_balance true\n  match u.withdraw withdrawal with\n  | some (msg, u') =>\
-  \ \n      u'.balance = initial_balance - withdrawal ∧\n      msg = s!\"{name} has\
-  \ {initial_balance - withdrawal}\"\n  | none => False\n  := sorry\n\n\ntheorem withdraw_fails_if_insufficient\n\
-  \  (name : String) (initial_balance withdrawal : Nat) :\n  withdrawal > initial_balance\
-  \ →\n  let u := User.mk name initial_balance true\n  u.withdraw withdrawal = none\
-  \ := sorry\n\n\ntheorem add_cash_increases_balance\n  (name : String) (initial_balance\
-  \ deposit : Nat) :\n  let u := User.mk name initial_balance true\n  let (msg, u')\
-  \ := u.add_cash deposit\n  u'.balance = initial_balance + deposit ∧\n  msg = s!\"\
-  {name} has {initial_balance + deposit}\" := sorry\n\n\ntheorem check_transfers_amount\n\
-  \  (name1 name2 : String) (balance1 balance2 transfer : Nat) :\n  transfer ≤ balance2\
-  \ →\n  let u1 := User.mk name1 balance1 true\n  let u2 := User.mk name2 balance2\
-  \ true\n  match u1.check u2 transfer with\n  | some (msg, u1', u2') => \n      u1'.balance\
-  \ = balance1 + transfer ∧\n      u2'.balance = balance2 - transfer ∧\n      msg\
-  \ = s!\"{name1} has {balance1 + transfer} and {name2} has {balance2 - transfer}\"\
-  \n  | none => False\n  := sorry\n\n\ntheorem check_fails_without_checking\n  (name1\
-  \ name2 : String) (balance1 balance2 transfer : Nat) :\n  let u1 := User.mk name1\
-  \ balance1 true\n  let u2 := User.mk name2 balance2 false\n  u1.check u2 transfer\
-  \ = none := sorry\n\n\ntheorem check_fails_insufficient_balance\n  (name1 name2\
-  \ : String) (balance1 balance2 transfer : Nat) :\n  transfer > balance2 →\n  let\
-  \ u1 := User.mk name1 balance1 true\n  let u2 := User.mk name2 balance2 true\n \
-  \ u1.check u2 transfer = none := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  A company is opening a bank, but the coder who is designing the user class made some errors. They need  you  to help them. 
+
+  You must include the following:
+
+  - A withdraw method
+    - Subtracts money from balance
+    - One parameter, money to withdraw
+    - Raise ValueError if there isn't enough money to withdraw
+    - Return a string with name and balence(see examples)
+    
+  * A check method
+    - Adds money to baleance
+    - Two parameters, other user and money
+    - Other user will always be valid
+    - Raise a ValueError if other user doesn't have enough money
+    - Raise a ValueError if checking_account isn't true for other user
+    - Return a string with name and balance plus other name and other balance(see examples)
+    
+  - An add_cash method
+    - Adds money to balance
+    - One parameter, money to add
+    - Return a string with name and balance(see examples)
+
+  Additional Notes:
+    * Checking_account should be stored as a boolean
+    - No input numbers will be negitive
+    * Output must end with period
+    - Float numbers will not be used so, balance should be integer
+    * No currency will be used
+    
+  Examples:
+  ``` Python
+  Jeff = User('Jeff', 70, True)
+  Joe = User('Joe', 70, False)
+
+  Jeff.withdraw(2) # Returns 'Jeff has 68.'
+
+  Joe.check(Jeff, 50) # Returns 'Joe has 120 and Jeff has 18.'
+
+  Jeff.check(Joe, 80) # Raises a ValueError
+
+  Joe.checking_account = True # Enables checking for Joe
+
+  Jeff.check(Joe, 80) # Returns 'Jeff has 98 and Joe has 40'
+
+  Joe.check(Jeff, 100) # Raises a ValueError
+
+  Jeff.add_cash(20.00) # Returns 'Jeff has 118.'
+  ```
+
+   Good Luck
+vc-preamble: |-
+  import Imports.AllImports
+
+  def User.withdraw (u : User) (amt : Nat) : Option (String × User) := sorry
+  def User.add_cash (u : User) (amt : Nat) : String × User := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def User.check (u1 : User) (u2 : User) (amt : Nat) : Option (String × User × User) := sorry
+
+  theorem user_creation_preserves_fields 
+    (name : String) (balance : Nat) (has_checking : Bool) :
+    let u := User.mk name balance has_checking
+    u.name = name ∧ u.balance = balance ∧ u.checking_account = has_checking := sorry
+vc-theorems: |-
+  theorem withdraw_decreases_balance
+    (name : String) (initial_balance withdrawal : Nat) :
+    withdrawal ≤ initial_balance →
+    let u := User.mk name initial_balance true
+    match u.withdraw withdrawal with
+    | some (msg, u') => 
+        u'.balance = initial_balance - withdrawal ∧
+        msg = s!"{name} has {initial_balance - withdrawal}"
+    | none => False
+    := sorry
+
+
+  theorem withdraw_fails_if_insufficient
+    (name : String) (initial_balance withdrawal : Nat) :
+    withdrawal > initial_balance →
+    let u := User.mk name initial_balance true
+    u.withdraw withdrawal = none := sorry
+
+
+  theorem add_cash_increases_balance
+    (name : String) (initial_balance deposit : Nat) :
+    let u := User.mk name initial_balance true
+    let (msg, u') := u.add_cash deposit
+    u'.balance = initial_balance + deposit ∧
+    msg = s!"{name} has {initial_balance + deposit}" := sorry
+
+
+  theorem check_transfers_amount
+    (name1 name2 : String) (balance1 balance2 transfer : Nat) :
+    transfer ≤ balance2 →
+    let u1 := User.mk name1 balance1 true
+    let u2 := User.mk name2 balance2 true
+    match u1.check u2 transfer with
+    | some (msg, u1', u2') => 
+        u1'.balance = balance1 + transfer ∧
+        u2'.balance = balance2 - transfer ∧
+        msg = s!"{name1} has {balance1 + transfer} and {name2} has {balance2 - transfer}"
+    | none => False
+    := sorry
+
+
+  theorem check_fails_without_checking
+    (name1 name2 : String) (balance1 balance2 transfer : Nat) :
+    let u1 := User.mk name1 balance1 true
+    let u2 := User.mk name2 balance2 false
+    u1.check u2 transfer = none := sorry
+
+
+  theorem check_fails_insufficient_balance
+    (name1 name2 : String) (balance1 balance2 transfer : Nat) :
+    transfer > balance2 →
+    let u1 := User.mk name1 balance1 true
+    let u2 := User.mk name2 balance2 true
+    u1.check u2 transfer = none := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

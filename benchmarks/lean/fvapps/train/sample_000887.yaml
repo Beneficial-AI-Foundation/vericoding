@@ -1,43 +1,139 @@
-"vc-description": "k kids seem to have visited your home for the festival. It seems\
-  \ like the kids\nhad all been fighting with each other, so you decided to keep them\
-  \ as far as\npossible from each other. You had placed n chairs on the positive number\
-  \ line,\neach at position x i , 1 ≤ i ≤ n. You can make the kids sit in any of the\
-  \ chairs.\nNow you want to know the largest possible minimum distance between each\
-  \ kid.\n\n-----Input:-----\n- First line will contain $T$, number of testcases.\
-  \ Then the testcases follow. \n- Each testcase contains two lines. First line contains\
-  \ two space separated integers n and k. Second line contains n space separated values,\
-  \ x1, x2, x3, … ,xn.\n\n-----Output:-----\nFor each test case print the largest\
-  \ possible minimum distance.\n\n-----Sample Input:-----\n1\n\n2 2\n\n1 2    \n\n\
-  -----Sample Output:-----\n1  \n\n-----Constraints-----\n- $2 \\leq n \\leq 100000$\n\
-  - $0 \\leq xi \\leq 10^9$\n- $k \\leq n $"
-"vc-preamble": "import Imports.AllImports\n\ndef find_max_min_distance (n k : Nat)\
-  \ (x : List Int) : Nat :=\n  sorry\n\n-- Helper functions for max/min\n\ndef listMax\
-  \ (xs : List Int) : Int :=\n  match xs with\n  | [] => 0\n  | (h::t) => List.foldl\
-  \ max h t\n\n\ndef listMin (xs : List Int) : Int :=\n  match xs with\n  | [] =>\
-  \ 0  \n  | (h::t) => List.foldl min h t\n\n\ndef listToSorted (xs : List Int) :\
-  \ List Int :=\n  match xs with\n  | [] => []\n  | (h::t) => h :: t -- simplified\
-  \ for theorem statement\n\n-- Non-negative result"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def generateRange (n : Nat) : List Int :=\n  List.map Int.ofNat\
-  \ (List.range n)\n\n-- Evenly spaced points"
-"vc-theorems": "theorem find_max_min_distance_nonneg\n    {n k : Nat} {x : List Int}\n\
-  \    (h1 : n ≥ 2)\n    (h2 : k ≥ 2) \n    (h3 : k ≤ n)\n    (h4 : x.length = n)\n\
-  \    (h5 : ∀ i ∈ x, i ≥ 1 ∧ i ≤ 1000)\n    (h6 : x.Nodup) :\n    find_max_min_distance\
-  \ n k x ≥ 0 :=\n  sorry\n\n-- Result bounded by max distance\n\ntheorem find_max_min_distance_bounded\n\
-  \    {n k : Nat} {x : List Int}\n    (h1 : n ≥ 2)\n    (h2 : k ≥ 2)\n    (h3 : k\
-  \ ≤ n)\n    (h4 : x.length = n)\n    (h5 : ∀ i ∈ x, i ≥ 1 ∧ i ≤ 1000)\n    (h6 :\
-  \ x.Nodup) :\n    find_max_min_distance n k x ≤ listMax x - listMin x :=\n  sorry\n\
-  \n-- Special case for k=2\n\ntheorem find_max_min_distance_k2\n    {n : Nat} {x\
-  \ : List Int}\n    (h1 : n ≥ 2)\n    (h2 : x.length = n)\n    (h3 : ∀ i ∈ x, i ≥\
-  \ 1 ∧ i ≤ 1000)\n    (h4 : x.Nodup) :\n    find_max_min_distance n 2 x ≤ listMax\
-  \ x - listMin x :=\n  sorry\n\n-- Sorting invariance\n\ntheorem find_max_min_distance_sort_invariant\n\
-  \    {n : Nat} {x : List Int}\n    (h1 : n ≥ 2)\n    (h2 : x.length = n)\n    (h3\
-  \ : ∀ i ∈ x, i ≥ 1 ∧ i ≤ 1000)\n    (h4 : x.Nodup) :\n    find_max_min_distance\
-  \ n 2 x = find_max_min_distance n 2 (listToSorted x) :=\n  sorry\n\n-- Evenly spaced\
-  \ integers\n\ntheorem find_max_min_distance_evenly_spaced\n    {n k : Nat}\n   \
-  \ (h1 : n ≥ 2)\n    (h2 : k ≥ 2)\n    (h3 : k ≤ n) :\n    find_max_min_distance\
-  \ n k (generateRange n) = (n-1) / (k-1) :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
-  \ in\n#eval find_max_min_distance 2 2 [1, 2]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
-  #eval find_max_min_distance 5 3 [1, 2, 8, 4, 9]\n\n/--\ninfo: 3\n-/\n#guard_msgs\
-  \ in\n#eval find_max_min_distance 4 2 [1, 2, 3, 4]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  k kids seem to have visited your home for the festival. It seems like the kids
+  had all been fighting with each other, so you decided to keep them as far as
+  possible from each other. You had placed n chairs on the positive number line,
+  each at position x i , 1 ≤ i ≤ n. You can make the kids sit in any of the chairs.
+  Now you want to know the largest possible minimum distance between each kid.
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - Each testcase contains two lines. First line contains two space separated integers n and k. Second line contains n space separated values, x1, x2, x3, … ,xn.
+
+  -----Output:-----
+  For each test case print the largest possible minimum distance.
+
+  -----Sample Input:-----
+  1
+
+  2 2
+
+  1 2    
+
+  -----Sample Output:-----
+  1  
+
+  -----Constraints-----
+  - $2 \leq n \leq 100000$
+  - $0 \leq xi \leq 10^9$
+  - $k \leq n $
+vc-preamble: |-
+  import Imports.AllImports
+
+  def find_max_min_distance (n k : Nat) (x : List Int) : Nat :=
+    sorry
+
+  -- Helper functions for max/min
+
+  def listMax (xs : List Int) : Int :=
+    match xs with
+    | [] => 0
+    | (h::t) => List.foldl max h t
+
+
+  def listMin (xs : List Int) : Int :=
+    match xs with
+    | [] => 0  
+    | (h::t) => List.foldl min h t
+
+
+  def listToSorted (xs : List Int) : List Int :=
+    match xs with
+    | [] => []
+    | (h::t) => h :: t -- simplified for theorem statement
+
+  -- Non-negative result
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def generateRange (n : Nat) : List Int :=
+    List.map Int.ofNat (List.range n)
+
+  -- Evenly spaced points
+vc-theorems: |
+  theorem find_max_min_distance_nonneg
+      {n k : Nat} {x : List Int}
+      (h1 : n ≥ 2)
+      (h2 : k ≥ 2) 
+      (h3 : k ≤ n)
+      (h4 : x.length = n)
+      (h5 : ∀ i ∈ x, i ≥ 1 ∧ i ≤ 1000)
+      (h6 : x.Nodup) :
+      find_max_min_distance n k x ≥ 0 :=
+    sorry
+
+  -- Result bounded by max distance
+
+  theorem find_max_min_distance_bounded
+      {n k : Nat} {x : List Int}
+      (h1 : n ≥ 2)
+      (h2 : k ≥ 2)
+      (h3 : k ≤ n)
+      (h4 : x.length = n)
+      (h5 : ∀ i ∈ x, i ≥ 1 ∧ i ≤ 1000)
+      (h6 : x.Nodup) :
+      find_max_min_distance n k x ≤ listMax x - listMin x :=
+    sorry
+
+  -- Special case for k=2
+
+  theorem find_max_min_distance_k2
+      {n : Nat} {x : List Int}
+      (h1 : n ≥ 2)
+      (h2 : x.length = n)
+      (h3 : ∀ i ∈ x, i ≥ 1 ∧ i ≤ 1000)
+      (h4 : x.Nodup) :
+      find_max_min_distance n 2 x ≤ listMax x - listMin x :=
+    sorry
+
+  -- Sorting invariance
+
+  theorem find_max_min_distance_sort_invariant
+      {n : Nat} {x : List Int}
+      (h1 : n ≥ 2)
+      (h2 : x.length = n)
+      (h3 : ∀ i ∈ x, i ≥ 1 ∧ i ≤ 1000)
+      (h4 : x.Nodup) :
+      find_max_min_distance n 2 x = find_max_min_distance n 2 (listToSorted x) :=
+    sorry
+
+  -- Evenly spaced integers
+
+  theorem find_max_min_distance_evenly_spaced
+      {n k : Nat}
+      (h1 : n ≥ 2)
+      (h2 : k ≥ 2)
+      (h3 : k ≤ n) :
+      find_max_min_distance n k (generateRange n) = (n-1) / (k-1) :=
+    sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_max_min_distance 2 2 [1, 2]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_max_min_distance 5 3 [1, 2, 8, 4, 9]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_max_min_distance 4 2 [1, 2, 3, 4]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

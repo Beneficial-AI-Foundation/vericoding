@@ -1,36 +1,88 @@
-"vc-description": "Shaun was given $N$ pairs of parenthesis ( )  by his teacher who\
-  \ gave him a difficult task.The task consists of two steps. First,Shaun should colour\
-  \ all $N$ pairs of parenthesis each with different color but opening and closing\
-  \ bracket of a particular pair should be of same colour. Then,Shaun should report\
-  \ to his teacher the number of ways he can arrange all $2*N$ brackets such that\
-  \ sequence form is valid. Teacher defined valid sequence by these rules:\n- Any\
-  \ left parenthesis '(' must have a corresponding right parenthesis ')'.\n- Any right\
-  \ parenthesis ')' must have a corresponding left parenthesis '('.\n- Left parenthesis\
-  \ '(' must go before the corresponding right parenthesis ')'. \nNote: Shaun could\
-  \ match opening and closing brackets of different colours. \nSince number of ways\
-  \ can be large, Shaun would report the answer as modulo 1000000007 ($10^9 + 7$).\n\
-  \n-----Input:-----\n- First line will contain $T$, number of testcases. Then the\
-  \ testcases follow. \n- Each testcase contains of a single line of input, one integer\
-  \ $N$. \n\n-----Output:-----\nFor each testcase, output in a single line answer\
-  \ given by Shaun to his teacher modulo 1000000007.\n\n-----Constraints-----\n- $1\
-  \ \\leq T \\leq 100000$\n- $1 \\leq N \\leq 100000$\n\n-----Sample Input:-----\n\
-  3\n1\n2\n3\n\n-----Sample Output:-----\n1\n6\n90\n\n-----EXPLANATION:-----\nHere\
-  \ numbers from $1$ to $N$ have been used to denote parenthesis.A unique number corresponds\
-  \ to a unique pair of parenthesis.\n-In the first test case , you can use only one\
-  \ color to color the parenthesis  you could arrange it only in one way i.e, 1 1\n\
-  -In the second test case  you can use two colors and the possible ways of arranging\
-  \ it are\n1 1 2 2\n1 2 2 1\n1 2 1 2\n2 2 1 1\n2 1 1 2\n2 1 2 1"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_colored_parentheses (n: Nat) : Nat := sorry\n\ndef MOD\
-  \ : Nat := 1000000007\n"
-"vc-theorems": "theorem result_in_valid_range (n: Nat) :\n  solve_colored_parentheses\
-  \ n ≥ 0 ∧ solve_colored_parentheses n < MOD := sorry\n\n\ntheorem result_deterministic\
-  \ (n: Nat) :\n  solve_colored_parentheses n = solve_colored_parentheses n := sorry\n\
-  \n\ntheorem base_cases :\n  solve_colored_parentheses 0 = 1 ∧\n  solve_colored_parentheses\
-  \ 1 = 1 := sorry\n\n\ntheorem known_sequence_values :\n  solve_colored_parentheses\
-  \ 1 = 1 ∧\n  solve_colored_parentheses 2 = 6 ∧\n  solve_colored_parentheses 3 =\
-  \ 90 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_colored_parentheses\
-  \ 1\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval solve_colored_parentheses 2\n\n/--\n\
-  info: 90\n-/\n#guard_msgs in\n#eval solve_colored_parentheses 3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Shaun was given $N$ pairs of parenthesis ( )  by his teacher who gave him a difficult task.The task consists of two steps. First,Shaun should colour all $N$ pairs of parenthesis each with different color but opening and closing bracket of a particular pair should be of same colour. Then,Shaun should report to his teacher the number of ways he can arrange all $2*N$ brackets such that sequence form is valid. Teacher defined valid sequence by these rules:
+  - Any left parenthesis '(' must have a corresponding right parenthesis ')'.
+  - Any right parenthesis ')' must have a corresponding left parenthesis '('.
+  - Left parenthesis '(' must go before the corresponding right parenthesis ')'. 
+  Note: Shaun could match opening and closing brackets of different colours. 
+  Since number of ways can be large, Shaun would report the answer as modulo 1000000007 ($10^9 + 7$).
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - Each testcase contains of a single line of input, one integer $N$. 
+
+  -----Output:-----
+  For each testcase, output in a single line answer given by Shaun to his teacher modulo 1000000007.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100000$
+  - $1 \leq N \leq 100000$
+
+  -----Sample Input:-----
+  3
+  1
+  2
+  3
+
+  -----Sample Output:-----
+  1
+  6
+  90
+
+  -----EXPLANATION:-----
+  Here numbers from $1$ to $N$ have been used to denote parenthesis.A unique number corresponds to a unique pair of parenthesis.
+  -In the first test case , you can use only one color to color the parenthesis  you could arrange it only in one way i.e, 1 1
+  -In the second test case  you can use two colors and the possible ways of arranging it are
+  1 1 2 2
+  1 2 2 1
+  1 2 1 2
+  2 2 1 1
+  2 1 1 2
+  2 1 2 1
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_colored_parentheses (n: Nat) : Nat := sorry
+
+  def MOD : Nat := 1000000007
+vc-theorems: |
+  theorem result_in_valid_range (n: Nat) :
+    solve_colored_parentheses n ≥ 0 ∧ solve_colored_parentheses n < MOD := sorry
+
+
+  theorem result_deterministic (n: Nat) :
+    solve_colored_parentheses n = solve_colored_parentheses n := sorry
+
+
+  theorem base_cases :
+    solve_colored_parentheses 0 = 1 ∧
+    solve_colored_parentheses 1 = 1 := sorry
+
+
+  theorem known_sequence_values :
+    solve_colored_parentheses 1 = 1 ∧
+    solve_colored_parentheses 2 = 6 ∧
+    solve_colored_parentheses 3 = 90 := sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_colored_parentheses 1
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval solve_colored_parentheses 2
+
+  /--
+  info: 90
+  -/
+  #guard_msgs in
+  #eval solve_colored_parentheses 3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

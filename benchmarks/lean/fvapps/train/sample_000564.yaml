@@ -1,28 +1,84 @@
-"vc-description": "The chef is trying to decode some pattern problems, Chef wants\
-  \ your help to code it. Chef has one number K(odd) to form a new pattern. Help the\
-  \ chef to code this pattern problem.\n\n-----Input:-----\n- First-line will contain\
-  \ $T$, the number of test cases. Then the test cases follow. \n- Each test case\
-  \ contains a single line of input, one integer $K$. \n\n-----Output:-----\nFor each\
-  \ test case, output as the pattern.\n\n-----Constraints-----\n- $1 \\leq T \\leq\
-  \ 100$\n- $1 \\leq K \\leq 100$\n\n-----Sample Input:-----\n4\n1\n3\n5\n7\n\n-----Sample\
-  \ Output:-----\n1\n111\n111\n111\n11111\n11 11\n1 1 1\n11 11\n11111\n1111111\n11\
-  \   11\n1 1 1 1\n1  1  1\n1 1 1 1\n11   11\n1111111\n\n-----EXPLANATION:-----\n\
-  No need, else pattern can be decode easily."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def print_pattern (n: Nat) : List (List Char) := sorry\n\ntheorem\
-  \ print_pattern_dimensions {n : Nat} (h : n > 0) :\n  let result := print_pattern\
-  \ n\n  List.length result = n ∧ \n  ∀ row ∈ result, List.length row = n := sorry\n"
-"vc-theorems": "theorem print_pattern_valid_chars {n : Nat} (h : n > 0) :\n  let result\
-  \ := print_pattern n\n  ∀ row ∈ result, ∀ c ∈ row, c = '1' ∨ c = ' ' := sorry\n\n\
-  \ntheorem print_pattern_border {n : Nat} (h : n > 0) :\n  let result := print_pattern\
-  \ n\n  (∀ j < n, (result.get! 0).get! j = '1') ∧\n  (∀ j < n, (result.get! (n-1)).get!\
-  \ j = '1') ∧\n  (∀ i < n, (result.get! i).get! 0 = '1') ∧\n  (∀ i < n, (result.get!\
-  \ i).get! (n-1) = '1') := sorry\n\n\ntheorem print_pattern_diagonals {n : Nat} (h\
-  \ : n > 0) :\n  let result := print_pattern n\n  (∀ i < n, (result.get! i).get!\
-  \ i = '1') ∧\n  (∀ i < n, (result.get! i).get! (n-1-i) = '1') := sorry\n\n\ntheorem\
-  \ print_pattern_minimum_size :\n  print_pattern 1 = [['1']] := sorry\n\n\ntheorem\
-  \ print_pattern_symmetry {n : Nat} (h : n > 0) :\n  let result := print_pattern\
-  \ n\n  (∀ row ∈ result, row = List.reverse row) ∧\n  result = List.reverse result\
-  \ := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  The chef is trying to decode some pattern problems, Chef wants your help to code it. Chef has one number K(odd) to form a new pattern. Help the chef to code this pattern problem.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+
+  -----Output:-----
+  For each test case, output as the pattern.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq K \leq 100$
+
+  -----Sample Input:-----
+  4
+  1
+  3
+  5
+  7
+
+  -----Sample Output:-----
+  1
+  111
+  111
+  111
+  11111
+  11 11
+  1 1 1
+  11 11
+  11111
+  1111111
+  11   11
+  1 1 1 1
+  1  1  1
+  1 1 1 1
+  11   11
+  1111111
+
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def print_pattern (n: Nat) : List (List Char) := sorry
+
+  theorem print_pattern_dimensions {n : Nat} (h : n > 0) :
+    let result := print_pattern n
+    List.length result = n ∧ 
+    ∀ row ∈ result, List.length row = n := sorry
+vc-theorems: |-
+  theorem print_pattern_valid_chars {n : Nat} (h : n > 0) :
+    let result := print_pattern n
+    ∀ row ∈ result, ∀ c ∈ row, c = '1' ∨ c = ' ' := sorry
+
+
+  theorem print_pattern_border {n : Nat} (h : n > 0) :
+    let result := print_pattern n
+    (∀ j < n, (result.get! 0).get! j = '1') ∧
+    (∀ j < n, (result.get! (n-1)).get! j = '1') ∧
+    (∀ i < n, (result.get! i).get! 0 = '1') ∧
+    (∀ i < n, (result.get! i).get! (n-1) = '1') := sorry
+
+
+  theorem print_pattern_diagonals {n : Nat} (h : n > 0) :
+    let result := print_pattern n
+    (∀ i < n, (result.get! i).get! i = '1') ∧
+    (∀ i < n, (result.get! i).get! (n-1-i) = '1') := sorry
+
+
+  theorem print_pattern_minimum_size :
+    print_pattern 1 = [['1']] := sorry
+
+
+  theorem print_pattern_symmetry {n : Nat} (h : n > 0) :
+    let result := print_pattern n
+    (∀ row ∈ result, row = List.reverse row) ∧
+    result = List.reverse result := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

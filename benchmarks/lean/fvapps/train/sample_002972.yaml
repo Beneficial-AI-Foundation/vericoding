@@ -1,25 +1,90 @@
-"vc-description": "# Task\n Given a string `s`, find out if its characters can be\
-  \ rearranged to form a palindrome.\n\n# Example\n\n For `s = \"aabb\"`, the output\
-  \ should be `true`.\n\n We can rearrange `\"aabb\"` to make `\"abba\"`, which is\
-  \ a palindrome.\n\n# Input/Output\n\n\n - `[input]` string `s`\n\n    A string consisting\
-  \ of lowercase English letters.\n\n    Constraints:\n\n    `4 ≤ inputString.length\
-  \ ≤ 50.`\n\n\n - `[output]` a boolean value\n\n    `true` if the characters of the\
-  \ inputString can be rearranged to form a palindrome, `false` otherwise."
-"vc-preamble": "import Imports.AllImports\n\ndef palindrome_rearranging (s : String)\
-  \ : Bool :=\n  sorry\n\n\ndef String.reverse (s : String) : String :=\n  sorry\n\
-  \n\ndef String.repeating (c : Char) (n : Nat) : String :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def odd_char_count (s : String) : Nat :=\nsorry\n"
-"vc-theorems": "theorem palindrome_rearranging_symmetry (s : String) :\n  palindrome_rearranging\
-  \ s = palindrome_rearranging (String.reverse s) :=\nsorry\n\n\ntheorem palindrome_rearranging_duplicates\
-  \ (s : String) (h : s.length > 0) :\n  palindrome_rearranging (s ++ s) = true :=\n\
-  sorry\n\n\ntheorem palindrome_rearranging_single_char (s : String) (h : s.length\
-  \ > 0) (c : Char) :\n  palindrome_rearranging (String.repeating c s.length) = true\
-  \ :=\nsorry\n\n\ntheorem palindrome_rearranging_empty_and_single (s : String) (h\
-  \ : s.length ≤ 1) :\n  palindrome_rearranging s = true :=\nsorry\n\n/-- Count of\
-  \ chars with odd occurrences -/\n\ntheorem palindrome_rearranging_odd_counts (s\
-  \ : String) :\n  palindrome_rearranging s = (odd_char_count s ≤ 1) :=\nsorry\n\n\
-  /--\ninfo: True\n-/\n#guard_msgs in\n#eval palindrome_rearranging \"aabb\"\n\n/--\n\
-  info: True\n-/\n#guard_msgs in\n#eval palindrome_rearranging \"abbcabb\"\n\n/--\n\
-  info: False\n-/\n#guard_msgs in\n#eval palindrome_rearranging \"aaabbb\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Task
+   Given a string `s`, find out if its characters can be rearranged to form a palindrome.
+
+  # Example
+
+   For `s = "aabb"`, the output should be `true`.
+
+   We can rearrange `"aabb"` to make `"abba"`, which is a palindrome.
+
+  # Input/Output
+
+
+   - `[input]` string `s`
+
+      A string consisting of lowercase English letters.
+
+      Constraints:
+
+      `4 ≤ inputString.length ≤ 50.`
+
+
+   - `[output]` a boolean value
+
+      `true` if the characters of the inputString can be rearranged to form a palindrome, `false` otherwise.
+vc-preamble: |
+  import Imports.AllImports
+
+  def palindrome_rearranging (s : String) : Bool :=
+    sorry
+
+
+  def String.reverse (s : String) : String :=
+    sorry
+
+
+  def String.repeating (c : Char) (n : Nat) : String :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def odd_char_count (s : String) : Nat :=
+  sorry
+vc-theorems: |
+  theorem palindrome_rearranging_symmetry (s : String) :
+    palindrome_rearranging s = palindrome_rearranging (String.reverse s) :=
+  sorry
+
+
+  theorem palindrome_rearranging_duplicates (s : String) (h : s.length > 0) :
+    palindrome_rearranging (s ++ s) = true :=
+  sorry
+
+
+  theorem palindrome_rearranging_single_char (s : String) (h : s.length > 0) (c : Char) :
+    palindrome_rearranging (String.repeating c s.length) = true :=
+  sorry
+
+
+  theorem palindrome_rearranging_empty_and_single (s : String) (h : s.length ≤ 1) :
+    palindrome_rearranging s = true :=
+  sorry
+
+  /-- Count of chars with odd occurrences -/
+
+  theorem palindrome_rearranging_odd_counts (s : String) :
+    palindrome_rearranging s = (odd_char_count s ≤ 1) :=
+  sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval palindrome_rearranging "aabb"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval palindrome_rearranging "abbcabb"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval palindrome_rearranging "aaabbb"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

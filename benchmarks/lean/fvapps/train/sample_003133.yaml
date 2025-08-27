@@ -1,21 +1,60 @@
-"vc-description": "The aim of this kata is to split a given string into different\
-  \ strings of equal size (note size of strings is passed to the method)\n\nExample:\n\
-  \n    Split the below string into other strings of size #3\n\n    'supercalifragilisticexpialidocious'\n\
-  \n    Will return a new string\n    'sup erc ali fra gil ist ice xpi ali doc iou\
-  \ s'\n\n\nAssumptions:\n\n    String length is always greater than 0\n    String\
-  \ has no spaces\n    Size is always positive"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def split_in_parts (s : String) (part_length : Nat) : String :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem split_in_parts_max_length {s : String} {part_length : Nat}\
-  \ \n    (h1 : s.length > 0) (h2 : part_length > 0) :\n  let parts := (split_in_parts\
-  \ s part_length).split fun c => c = ' '\n  ∀ p ∈ parts, p.length ≤ part_length :=\n\
-  \  sorry\n\n\ntheorem split_in_parts_no_change_when_long_enough {s : String} \n\
-  \    (h : s.length > 0) :\n  split_in_parts s s.length = s ∧ \n  split_in_parts\
-  \ s (s.length + 1) = s :=\n  sorry\n\n/--\ninfo: 'sup erc ali fra gil ist ice xpi\
-  \ ali doc iou s'\n-/\n#guard_msgs in\n#eval split_in_parts \"supercalifragilisticexpialidocious\"\
-  \ 3\n\n/--\ninfo: 'H e l l o K a t a'\n-/\n#guard_msgs in\n#eval split_in_parts\
-  \ \"HelloKata\" 1\n\n/--\ninfo: 'HelloKata'\n-/\n#guard_msgs in\n#eval split_in_parts\
-  \ \"HelloKata\" 9\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  The aim of this kata is to split a given string into different strings of equal size (note size of strings is passed to the method)
+
+  Example:
+
+      Split the below string into other strings of size #3
+
+      'supercalifragilisticexpialidocious'
+
+      Will return a new string
+      'sup erc ali fra gil ist ice xpi ali doc iou s'
+
+
+  Assumptions:
+
+      String length is always greater than 0
+      String has no spaces
+      Size is always positive
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def split_in_parts (s : String) (part_length : Nat) : String :=
+    sorry
+vc-theorems: |
+  theorem split_in_parts_max_length {s : String} {part_length : Nat} 
+      (h1 : s.length > 0) (h2 : part_length > 0) :
+    let parts := (split_in_parts s part_length).split fun c => c = ' '
+    ∀ p ∈ parts, p.length ≤ part_length :=
+    sorry
+
+
+  theorem split_in_parts_no_change_when_long_enough {s : String} 
+      (h : s.length > 0) :
+    split_in_parts s s.length = s ∧ 
+    split_in_parts s (s.length + 1) = s :=
+    sorry
+
+  /--
+  info: 'sup erc ali fra gil ist ice xpi ali doc iou s'
+  -/
+  #guard_msgs in
+  #eval split_in_parts "supercalifragilisticexpialidocious" 3
+
+  /--
+  info: 'H e l l o K a t a'
+  -/
+  #guard_msgs in
+  #eval split_in_parts "HelloKata" 1
+
+  /--
+  info: 'HelloKata'
+  -/
+  #guard_msgs in
+  #eval split_in_parts "HelloKata" 9
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,31 +1,66 @@
-"vc-description": "There is a secret string which is unknown to you. Given a collection\
-  \ of random triplets from the string, recover the original string. \n\nA triplet\
-  \ here is defined as a sequence of three letters such that each letter occurs somewhere\
-  \ before the next in the given string. \"whi\" is a triplet for the string \"whatisup\"\
-  .\n\nAs a simplification, you may assume that no letter occurs more than once in\
-  \ the secret string.\n\nYou can assume nothing about the triplets given to you other\
-  \ than that they are valid triplets and that they contain sufficient information\
-  \ to deduce the original string. In particular, this means that the secret string\
-  \ will never contain letters that do not occur in one of the triplets given to you."
-"vc-preamble": "import Imports.AllImports\n\ndef recoverSecret (triplets : List (List\
-  \ Char)) : String := sorry\n\ndef isConsistentWithTriplets (result : String) (triplets\
-  \ : List (List Char)) : Bool := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def containsAllChars (result : String) (triplets : List (List Char))\
-  \ : Bool := sorry\n\ntheorem recoverSecret_produces_string (triplets : List (List\
-  \ Char)) :\n  String.length (recoverSecret triplets) > 0 := sorry\n"
-"vc-theorems": "theorem recoverSecret_contains_all_chars (triplets : List (List Char))\
-  \ : \n  containsAllChars (recoverSecret triplets) triplets = true := sorry\n\n\n\
-  theorem recoverSecret_consistent_with_triplets (triplets : List (List Char)) :\n\
-  \  isConsistentWithTriplets (recoverSecret triplets) triplets = true := sorry\n\n\
-  \ntheorem recoverSecret_basic_case :\n  recoverSecret [['a', 'b', 'c'], ['a', 'c',\
-  \ 'd']] = \"abcd\" := sorry\n\n\ntheorem recoverSecret_complex_case :\n  recoverSecret\
-  \ [\n    ['t','u','p'], \n    ['w','h','i'],\n    ['t','s','u'],\n    ['a','t','s'],\n\
-  \    ['h','a','p'],\n    ['t','i','s'],\n    ['w','h','s']\n  ] = \"whatisup\" :=\
-  \ sorry\n\n/--\ninfo: 'whatisup'\n-/\n#guard_msgs in\n#eval recoverSecret [[\"t\"\
-  , \"u\", \"p\"], [\"w\", \"h\", \"i\"], [\"t\", \"s\", \"u\"], [\"a\", \"t\", \"\
-  s\"], [\"h\", \"a\", \"p\"], [\"t\", \"i\", \"s\"], [\"w\", \"h\", \"s\"]]\n\n/--\n\
-  info: 'abcd'\n-/\n#guard_msgs in\n#eval recoverSecret [[\"a\", \"b\", \"c\"], [\"\
-  a\", \"c\", \"d\"]]\n\n/--\ninfo: 'great'\n-/\n#guard_msgs in\n#eval recoverSecret\
-  \ [[\"g\", \"r\", \"t\"], [\"e\", \"a\", \"t\"]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  There is a secret string which is unknown to you. Given a collection of random triplets from the string, recover the original string. 
+
+  A triplet here is defined as a sequence of three letters such that each letter occurs somewhere before the next in the given string. "whi" is a triplet for the string "whatisup".
+
+  As a simplification, you may assume that no letter occurs more than once in the secret string.
+
+  You can assume nothing about the triplets given to you other than that they are valid triplets and that they contain sufficient information to deduce the original string. In particular, this means that the secret string will never contain letters that do not occur in one of the triplets given to you.
+vc-preamble: |
+  import Imports.AllImports
+
+  def recoverSecret (triplets : List (List Char)) : String := sorry
+
+  def isConsistentWithTriplets (result : String) (triplets : List (List Char)) : Bool := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def containsAllChars (result : String) (triplets : List (List Char)) : Bool := sorry
+
+  theorem recoverSecret_produces_string (triplets : List (List Char)) :
+    String.length (recoverSecret triplets) > 0 := sorry
+vc-theorems: |
+  theorem recoverSecret_contains_all_chars (triplets : List (List Char)) : 
+    containsAllChars (recoverSecret triplets) triplets = true := sorry
+
+
+  theorem recoverSecret_consistent_with_triplets (triplets : List (List Char)) :
+    isConsistentWithTriplets (recoverSecret triplets) triplets = true := sorry
+
+
+  theorem recoverSecret_basic_case :
+    recoverSecret [['a', 'b', 'c'], ['a', 'c', 'd']] = "abcd" := sorry
+
+
+  theorem recoverSecret_complex_case :
+    recoverSecret [
+      ['t','u','p'], 
+      ['w','h','i'],
+      ['t','s','u'],
+      ['a','t','s'],
+      ['h','a','p'],
+      ['t','i','s'],
+      ['w','h','s']
+    ] = "whatisup" := sorry
+
+  /--
+  info: 'whatisup'
+  -/
+  #guard_msgs in
+  #eval recoverSecret [["t", "u", "p"], ["w", "h", "i"], ["t", "s", "u"], ["a", "t", "s"], ["h", "a", "p"], ["t", "i", "s"], ["w", "h", "s"]]
+
+  /--
+  info: 'abcd'
+  -/
+  #guard_msgs in
+  #eval recoverSecret [["a", "b", "c"], ["a", "c", "d"]]
+
+  /--
+  info: 'great'
+  -/
+  #guard_msgs in
+  #eval recoverSecret [["g", "r", "t"], ["e", "a", "t"]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

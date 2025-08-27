@@ -1,23 +1,79 @@
-"vc-description": "Debug the functions\nShould be easy, begin by looking at the code.\
-  \ Debug the code and the functions should work.\nThere are three functions: ```Multiplication\
-  \ (x)``` ```Addition (+)``` and ```Reverse (!esreveR)```\n\ni {\n  font-size:16px;\n\
-  }\n\n#heading {\n  padding: 2em;\n  text-align: center;\n  background-color: #0033FF;\n\
-  \  width: 100%;\n  height: 5em;\n}"
-"vc-preamble": "import Imports.AllImports\n\ndef multi (l : List Int) : Int := sorry\n\
-  def add (l : List Int) : Int := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def reverse (s : String) : String := sorry\n\ntheorem multi_neutral\
-  \ (l : List Int) (h : l.length ≥ 1) :\n  multi (l ++ [1]) = multi l := sorry\n"
-"vc-theorems": "theorem multi_order_indep (l : List Int) (h : l.length ≥ 1) :\n  multi\
-  \ l = multi l.reverse := sorry\n\n\ntheorem add_neutral (l : List Int) :\n  add\
-  \ (l ++ [0]) = add l := sorry\n\n\ntheorem add_order_indep (l : List Int) :\n  add\
-  \ l = add l.reverse := sorry\n\n\ntheorem add_recursive (l : List Int) (h : l ≠\
-  \ []) :\n  add l = add (l.take (l.length - 1)) + l.getLast h := sorry\n\n\ntheorem\
-  \ reverse_involution (s : String) :\n  reverse (reverse s) = s := sorry\n\n\ntheorem\
-  \ reverse_preserves_length (s : String) :\n  (reverse s).length = s.length := sorry\n\
-  \n\ntheorem reverse_first_last_char (s : String) (h₁ : s.length > 0) :\n  let n\
-  \ := s.length\n  let rs := reverse s\n  rs.front = s.back ∧ rs.back = s.front :=\
-  \ sorry\n\n/--\ninfo: 80\n-/\n#guard_msgs in\n#eval multi [8, 2, 5]\n\n/--\ninfo:\
-  \ 6\n-/\n#guard_msgs in\n#eval add [1, 2, 3]\n\n/--\ninfo: 'olleh'\n-/\n#guard_msgs\
-  \ in\n#eval reverse \"hello\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Debug the functions
+  Should be easy, begin by looking at the code. Debug the code and the functions should work.
+  There are three functions: ```Multiplication (x)``` ```Addition (+)``` and ```Reverse (!esreveR)```
+
+  i {
+    font-size:16px;
+  }
+
+  #heading {
+    padding: 2em;
+    text-align: center;
+    background-color: #0033FF;
+    width: 100%;
+    height: 5em;
+  }
+vc-preamble: |-
+  import Imports.AllImports
+
+  def multi (l : List Int) : Int := sorry
+  def add (l : List Int) : Int := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def reverse (s : String) : String := sorry
+
+  theorem multi_neutral (l : List Int) (h : l.length ≥ 1) :
+    multi (l ++ [1]) = multi l := sorry
+vc-theorems: |
+  theorem multi_order_indep (l : List Int) (h : l.length ≥ 1) :
+    multi l = multi l.reverse := sorry
+
+
+  theorem add_neutral (l : List Int) :
+    add (l ++ [0]) = add l := sorry
+
+
+  theorem add_order_indep (l : List Int) :
+    add l = add l.reverse := sorry
+
+
+  theorem add_recursive (l : List Int) (h : l ≠ []) :
+    add l = add (l.take (l.length - 1)) + l.getLast h := sorry
+
+
+  theorem reverse_involution (s : String) :
+    reverse (reverse s) = s := sorry
+
+
+  theorem reverse_preserves_length (s : String) :
+    (reverse s).length = s.length := sorry
+
+
+  theorem reverse_first_last_char (s : String) (h₁ : s.length > 0) :
+    let n := s.length
+    let rs := reverse s
+    rs.front = s.back ∧ rs.back = s.front := sorry
+
+  /--
+  info: 80
+  -/
+  #guard_msgs in
+  #eval multi [8, 2, 5]
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval add [1, 2, 3]
+
+  /--
+  info: 'olleh'
+  -/
+  #guard_msgs in
+  #eval reverse "hello"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

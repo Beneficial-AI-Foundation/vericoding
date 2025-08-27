@@ -1,18 +1,66 @@
-"vc-description": "Given a non-empty array of integers, return the third maximum number\
-  \ in this array. If it does not exist, return the maximum number. The time complexity\
-  \ must be in O(n).\n\nExample 1:\n\nInput: [3, 2, 1]\n\nOutput: 1\n\nExplanation:\
-  \ The third maximum is 1.\n\n\n\nExample 2:\n\nInput: [1, 2]\n\nOutput: 2\n\nExplanation:\
-  \ The third maximum does not exist, so the maximum (2) is returned instead.\n\n\n\
-  \nExample 3:\n\nInput: [2, 2, 3, 1]\n\nOutput: 1\n\nExplanation: Note that the third\
-  \ maximum here means the third maximum distinct number.\nBoth numbers with value\
-  \ 2 are both considered as second maximum."
-"vc-preamble": "import Imports.AllImports\n\ndef third_max (nums : List Int) : Int\
-  \ := sorry\n\ndef max (nums : List Int) : Int := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def uniqueSorted (nums : List Int) : List Int := sorry\n\ntheorem\
-  \ third_max_is_in_list {nums : List Int} (h : nums ≠ []) :\n  third_max nums ∈ nums\
-  \ := sorry"
-"vc-theorems": "/--\ninfo: 1\n-/\n#guard_msgs in\n#eval third_max [3, 2, 1]\n\n/--\n\
-  info: 2\n-/\n#guard_msgs in\n#eval third_max [1, 2]\n\n/--\ninfo: 1\n-/\n#guard_msgs\
-  \ in\n#eval third_max [2, 2, 3, 1]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given a non-empty array of integers, return the third maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n).
+
+  Example 1:
+
+  Input: [3, 2, 1]
+
+  Output: 1
+
+  Explanation: The third maximum is 1.
+
+
+
+  Example 2:
+
+  Input: [1, 2]
+
+  Output: 2
+
+  Explanation: The third maximum does not exist, so the maximum (2) is returned instead.
+
+
+
+  Example 3:
+
+  Input: [2, 2, 3, 1]
+
+  Output: 1
+
+  Explanation: Note that the third maximum here means the third maximum distinct number.
+  Both numbers with value 2 are both considered as second maximum.
+vc-preamble: |
+  import Imports.AllImports
+
+  def third_max (nums : List Int) : Int := sorry
+
+  def max (nums : List Int) : Int := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def uniqueSorted (nums : List Int) : List Int := sorry
+
+  theorem third_max_is_in_list {nums : List Int} (h : nums ≠ []) :
+    third_max nums ∈ nums := sorry
+vc-theorems: |
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval third_max [3, 2, 1]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval third_max [1, 2]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval third_max [2, 2, 3, 1]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

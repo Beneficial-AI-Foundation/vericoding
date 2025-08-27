@@ -1,16 +1,47 @@
-"vc-description": "Write a function that takes a string which has integers inside\
-  \ it separated by spaces, and your task is to convert each integer in the string\
-  \ into an integer and return their sum.\n\n### Example\n```python\nsummy(\"1 2 3\"\
-  )  ==> 6\n```\n\nGood luck!"
-"vc-preamble": "import Imports.AllImports\n\ndef summy (s : String) : Int := sorry\n\
-  \ndef sum (l : List Int) : Int := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def stringToList (s : String) : List Int := sorry\n\ntheorem summy_matches_direct_sum\
-  \ (l : List Int) (h : l.length > 0) : \n  summy (String.intercalate \" \" (List.map\
-  \ toString l)) = sum l := sorry\n"
-"vc-theorems": "theorem summy_handles_whitespace (l : List Int) (h : l.length > 0)\
-  \ :\n  summy (String.intercalate \"   \" (List.map toString l)) = sum l := sorry\n\
-  \n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval summy \"1 2 3\"\n\n/--\ninfo: 20\n-/\n\
-  #guard_msgs in\n#eval summy \"10 10\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
-  \ summy \"0 0\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Write a function that takes a string which has integers inside it separated by spaces, and your task is to convert each integer in the string into an integer and return their sum.
+
+  ### Example
+  ```python
+  summy("1 2 3")  ==> 6
+  ```
+
+  Good luck!
+vc-preamble: |
+  import Imports.AllImports
+
+  def summy (s : String) : Int := sorry
+
+  def sum (l : List Int) : Int := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def stringToList (s : String) : List Int := sorry
+
+  theorem summy_matches_direct_sum (l : List Int) (h : l.length > 0) : 
+    summy (String.intercalate " " (List.map toString l)) = sum l := sorry
+vc-theorems: |
+  theorem summy_handles_whitespace (l : List Int) (h : l.length > 0) :
+    summy (String.intercalate "   " (List.map toString l)) = sum l := sorry
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval summy "1 2 3"
+
+  /--
+  info: 20
+  -/
+  #guard_msgs in
+  #eval summy "10 10"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval summy "0 0"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

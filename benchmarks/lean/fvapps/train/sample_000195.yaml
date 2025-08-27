@@ -1,23 +1,68 @@
-"vc-description": "Given an unsorted array of integers, find the length of the longest\
-  \ consecutive elements sequence.\n\nYour algorithm should run in O(n) complexity.\n\
-  \nExample:\n\n\nInput: [100, 4, 200, 1, 3, 2]\nOutput: 4\nExplanation: The longest\
-  \ consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4."
-"vc-preamble": "import Imports.AllImports\n\ndef longest_consecutive (nums : List\
-  \ Int) : Nat := sorry\n\ntheorem output_nonnegative (nums : List Int) : \n  longest_consecutive\
-  \ nums ≥ 0 := sorry\n\n\ndef removeDuplicates (nums : List Int) : List Int := sorry\n\
-  \ntheorem same_as_deduplicated (nums : List Int) :\n  longest_consecutive nums =\
-  \ longest_consecutive (removeDuplicates nums) := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sortList (nums : List Int) : List Int := sorry \n\ntheorem\
-  \ sorted_same_as_unsorted (nums : List Int) :\n  nums ≠ [] → longest_consecutive\
-  \ nums = longest_consecutive (sortList nums) := sorry\n"
-"vc-theorems": "theorem output_leq_input_len (nums : List Int) :\n  longest_consecutive\
-  \ nums ≤ nums.length := sorry\n\n\ntheorem empty_list_zero (nums : List Int) :\n\
-  \  nums = [] → longest_consecutive nums = 0 := sorry\n\n\ntheorem single_element_one\
-  \ (nums : List Int) (x : Int) :\n  nums = [x] → longest_consecutive nums = 1 :=\
-  \ sorry\n\n\ntheorem reversed_same (nums : List Int) :\n  nums ≠ [] → longest_consecutive\
-  \ nums = longest_consecutive nums.reverse := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs\
-  \ in\n#eval longest_consecutive [100, 4, 200, 1, 3, 2]\n\n/--\ninfo: 3\n-/\n#guard_msgs\
-  \ in\n#eval longest_consecutive [1, 2, 0, 1]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
-  #eval longest_consecutive []\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+
+  Your algorithm should run in O(n) complexity.
+
+  Example:
+
+
+  Input: [100, 4, 200, 1, 3, 2]
+  Output: 4
+  Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+vc-preamble: |
+  import Imports.AllImports
+
+  def longest_consecutive (nums : List Int) : Nat := sorry
+
+  theorem output_nonnegative (nums : List Int) : 
+    longest_consecutive nums ≥ 0 := sorry
+
+
+  def removeDuplicates (nums : List Int) : List Int := sorry
+
+  theorem same_as_deduplicated (nums : List Int) :
+    longest_consecutive nums = longest_consecutive (removeDuplicates nums) := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sortList (nums : List Int) : List Int := sorry 
+
+  theorem sorted_same_as_unsorted (nums : List Int) :
+    nums ≠ [] → longest_consecutive nums = longest_consecutive (sortList nums) := sorry
+vc-theorems: |
+  theorem output_leq_input_len (nums : List Int) :
+    longest_consecutive nums ≤ nums.length := sorry
+
+
+  theorem empty_list_zero (nums : List Int) :
+    nums = [] → longest_consecutive nums = 0 := sorry
+
+
+  theorem single_element_one (nums : List Int) (x : Int) :
+    nums = [x] → longest_consecutive nums = 1 := sorry
+
+
+  theorem reversed_same (nums : List Int) :
+    nums ≠ [] → longest_consecutive nums = longest_consecutive nums.reverse := sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval longest_consecutive [100, 4, 200, 1, 3, 2]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval longest_consecutive [1, 2, 0, 1]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval longest_consecutive []
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

@@ -1,43 +1,116 @@
-"vc-description": "You want to schedule a list of jobs in d days. Jobs are dependent\
-  \ (i.e To work on the i-th job, you have to finish all the jobs j where 0 <= j <\
-  \ i).\nYou have to finish at least one task every day. The difficulty of a job schedule\
-  \ is the sum of difficulties of each day of the d days. The difficulty of a day\
-  \ is the maximum difficulty of a job done in that day.\nGiven an array of integers\
-  \ jobDifficulty and an integer d. The difficulty of the i-th job is jobDifficulty[i].\n\
-  Return the minimum difficulty of a job schedule. If you cannot find a schedule for\
-  \ the jobs return -1.\n \nExample 1:\n\nInput: jobDifficulty = [6,5,4,3,2,1], d\
-  \ = 2\nOutput: 7\nExplanation: First day you can finish the first 5 jobs, total\
-  \ difficulty = 6.\nSecond day you can finish the last job, total difficulty = 1.\n\
-  The difficulty of the schedule = 6 + 1 = 7 \n\nExample 2:\nInput: jobDifficulty\
-  \ = [9,9,9], d = 4\nOutput: -1\nExplanation: If you finish a job per day you will\
-  \ still have a free day. you cannot find a schedule for the given jobs.\n\nExample\
-  \ 3:\nInput: jobDifficulty = [1,1,1], d = 3\nOutput: 3\nExplanation: The schedule\
-  \ is one job per day. total difficulty will be 3.\n\nExample 4:\nInput: jobDifficulty\
-  \ = [7,1,7,1,7,1], d = 3\nOutput: 15\n\nExample 5:\nInput: jobDifficulty = [11,111,22,222,33,333,44,444],\
-  \ d = 6\nOutput: 843\n\n \nConstraints:\n\n1 <= jobDifficulty.length <= 300\n0 <= jobDifficulty[i]\
-  \ <= 1000\n1 <= d <= 10"
-"vc-preamble": "import Imports.AllImports\n\ndef min_difficulty (difficulties: List\
-  \ Nat) (days: Nat) : Int :=\nsorry\n\n\ndef list_maximum (l: List Nat) : Nat :=\n\
-  match l with\n| [] => 0\n| [x] => x\n| x::xs => max x (list_maximum xs)\n\n\ndef\
-  \ list_sort (l: List Nat) : List Nat :=\nsorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def list_sum (l: List Nat) : Nat :=\nmatch l with\n| [] => 0\n\
-  | x::xs => x + list_sum xs\n"
-"vc-theorems": "theorem min_difficulty_invalid_days {difficulties : List Nat} {days\
-  \ : Nat} :\n  days > difficulties.length → min_difficulty difficulties days = -1\n\
-  \  := sorry\n\n\ntheorem min_difficulty_lb_max {difficulties : List Nat} {days :\
-  \ Nat} :\n  days ≤ difficulties.length →\n  min_difficulty difficulties days ≥ 0\
-  \ →\n  min_difficulty difficulties days ≥ list_maximum difficulties\n  := sorry\n\
-  \n\ntheorem min_difficulty_lb_sum_min {difficulties : List Nat} {days : Nat} :\n\
-  \  days ≤ difficulties.length →\n  min_difficulty difficulties days ≥ 0 →\n  min_difficulty\
-  \ difficulties days ≥ list_sum (List.take days (list_sort difficulties))\n  := sorry\n\
-  \n\ntheorem min_difficulty_single_day {difficulties : List Nat} :\n  difficulties.length\
-  \ > 0 →\n  min_difficulty difficulties 1 = list_maximum difficulties\n  := sorry\n\
-  \n\ntheorem min_difficulty_monotonic {difficulties : List Nat} {days : Nat} :\n\
-  \  days > 1 →\n  days ≤ difficulties.length →\n  min_difficulty difficulties days\
-  \ ≥ 0 →\n  min_difficulty difficulties (days-1) ≥ 0 →\n  min_difficulty difficulties\
-  \ days ≥ min_difficulty difficulties (days-1)\n  := sorry\n\n/--\ninfo: 7\n-/\n\
-  #guard_msgs in\n#eval min_difficulty [6, 5, 4, 3, 2, 1] 2\n\n/--\ninfo: -1\n-/\n\
-  #guard_msgs in\n#eval min_difficulty [9, 9, 9] 4\n\n/--\ninfo: 3\n-/\n#guard_msgs\
-  \ in\n#eval min_difficulty [1, 1, 1] 3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  You want to schedule a list of jobs in d days. Jobs are dependent (i.e To work on the i-th job, you have to finish all the jobs j where 0 <= j < i).
+  You have to finish at least one task every day. The difficulty of a job schedule is the sum of difficulties of each day of the d days. The difficulty of a day is the maximum difficulty of a job done in that day.
+  Given an array of integers jobDifficulty and an integer d. The difficulty of the i-th job is jobDifficulty[i].
+  Return the minimum difficulty of a job schedule. If you cannot find a schedule for the jobs return -1.
+   
+  Example 1:
+
+  Input: jobDifficulty = [6,5,4,3,2,1], d = 2
+  Output: 7
+  Explanation: First day you can finish the first 5 jobs, total difficulty = 6.
+  Second day you can finish the last job, total difficulty = 1.
+  The difficulty of the schedule = 6 + 1 = 7 
+
+  Example 2:
+  Input: jobDifficulty = [9,9,9], d = 4
+  Output: -1
+  Explanation: If you finish a job per day you will still have a free day. you cannot find a schedule for the given jobs.
+
+  Example 3:
+  Input: jobDifficulty = [1,1,1], d = 3
+  Output: 3
+  Explanation: The schedule is one job per day. total difficulty will be 3.
+
+  Example 4:
+  Input: jobDifficulty = [7,1,7,1,7,1], d = 3
+  Output: 15
+
+  Example 5:
+  Input: jobDifficulty = [11,111,22,222,33,333,44,444], d = 6
+  Output: 843
+
+   
+  Constraints:
+
+  1 <= jobDifficulty.length <= 300
+  0 <= jobDifficulty[i] <= 1000
+  1 <= d <= 10
+vc-preamble: |
+  import Imports.AllImports
+
+  def min_difficulty (difficulties: List Nat) (days: Nat) : Int :=
+  sorry
+
+
+  def list_maximum (l: List Nat) : Nat :=
+  match l with
+  | [] => 0
+  | [x] => x
+  | x::xs => max x (list_maximum xs)
+
+
+  def list_sort (l: List Nat) : List Nat :=
+  sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def list_sum (l: List Nat) : Nat :=
+  match l with
+  | [] => 0
+  | x::xs => x + list_sum xs
+vc-theorems: |
+  theorem min_difficulty_invalid_days {difficulties : List Nat} {days : Nat} :
+    days > difficulties.length → min_difficulty difficulties days = -1
+    := sorry
+
+
+  theorem min_difficulty_lb_max {difficulties : List Nat} {days : Nat} :
+    days ≤ difficulties.length →
+    min_difficulty difficulties days ≥ 0 →
+    min_difficulty difficulties days ≥ list_maximum difficulties
+    := sorry
+
+
+  theorem min_difficulty_lb_sum_min {difficulties : List Nat} {days : Nat} :
+    days ≤ difficulties.length →
+    min_difficulty difficulties days ≥ 0 →
+    min_difficulty difficulties days ≥ list_sum (List.take days (list_sort difficulties))
+    := sorry
+
+
+  theorem min_difficulty_single_day {difficulties : List Nat} :
+    difficulties.length > 0 →
+    min_difficulty difficulties 1 = list_maximum difficulties
+    := sorry
+
+
+  theorem min_difficulty_monotonic {difficulties : List Nat} {days : Nat} :
+    days > 1 →
+    days ≤ difficulties.length →
+    min_difficulty difficulties days ≥ 0 →
+    min_difficulty difficulties (days-1) ≥ 0 →
+    min_difficulty difficulties days ≥ min_difficulty difficulties (days-1)
+    := sorry
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval min_difficulty [6, 5, 4, 3, 2, 1] 2
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval min_difficulty [9, 9, 9] 4
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_difficulty [1, 1, 1] 3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

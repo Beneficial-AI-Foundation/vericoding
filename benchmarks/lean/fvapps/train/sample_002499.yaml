@@ -1,33 +1,73 @@
-"vc-description": "=====Problem Statement=====\nA valid postal code P have to fullfil\
-  \ both below requirements:\n\n1. P must be a number in the range from 100000 to\
-  \ 999999 inclusive.\n2. P must not contain more than one alternating repetitive\
-  \ digit pair.\n\nAlternating repetitive digits are digits which repeat immediately\
-  \ after the next digit. In other words, an alternating repetitive digit pair is\
-  \ formed by two equal digits that have just a single digit between them.\n\nFor\
-  \ example:\n\n121426 # Here, 1 is an alternating repetitive digit.\n523563 # Here,\
-  \ NO digit is an alternating repetitive digit.\n552523 # Here, both 2 and 5 are\
-  \ alternating repetitive digits.\n\nYour task is to provide two regular expressions\
-  \ regex_integer_in_range and regex_alternating_repetitive_digit_pair. Where:\n\n\
-  regex_integer_in_range should match only integers range from 100000 to 999999 inclusive\n\
-  \nregex_alternating_repetitive_digit_pair should find alternating repetitive digits\
-  \ pairs in a given string.\n\nBoth these regular expressions will be used by the\
-  \ provided code template to check if the input string P is a valid postal code using\
-  \ the following expression:\n(bool(re.match(regex_integer_in_range, P)) \nand len(re.findall(regex_alternating_repetitive_digit_pair,\
-  \ P)) < 2)\n\n=====Input Format=====\nLocked stub code in the editor reads a single\
-  \ string denoting P from stdin and uses provided expression and your regular expressions\
-  \ to validate if P is a valid postal code.\n\n=====Output Format=====\nYou are not\
-  \ responsible for printing anything to stdout. Locked stub code in the editor does\
-  \ that."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def validate_postal_code (s : String) : Bool := sorry\n\ntheorem\
-  \ invalid_format_postal_code {s : String} :\n  (¬ s.all Char.isDigit) ∨ (s.length\
-  \ ≠ 6) ∨ (s.data[0]! = '0') →\n  validate_postal_code s = false := sorry\n"
-"vc-theorems": "theorem valid_format_postal_codes {s : String} \n  (h₁ : s.length\
-  \ = 6)\n  (h₂ : s.all Char.isDigit) \n  (h₃ : s.data[0]! ≠ '0') :\n  validate_postal_code\
-  \ s = \n    ¬ (∃ i : Fin 4, ∃ j : Fin 4, i ≠ j ∧ \n       s.data[i.val]! = s.data[(i.val\
-  \ + 2)]! ∧\n       s.data[j.val]! = s.data[(j.val + 2)]!) := sorry\n\nend PostalCode\n\
-  \n/--\ninfo: False\n-/\n#guard_msgs in\n#eval validate_postal_code \"110000\"\n\n\
-  /--\ninfo: True\n-/\n#guard_msgs in\n#eval validate_postal_code \"121426\"\n\n/--\n\
-  info: False\n-/\n#guard_msgs in\n#eval validate_postal_code \"552523\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  =====Problem Statement=====
+  A valid postal code P have to fullfil both below requirements:
+
+  1. P must be a number in the range from 100000 to 999999 inclusive.
+  2. P must not contain more than one alternating repetitive digit pair.
+
+  Alternating repetitive digits are digits which repeat immediately after the next digit. In other words, an alternating repetitive digit pair is formed by two equal digits that have just a single digit between them.
+
+  For example:
+
+  121426 # Here, 1 is an alternating repetitive digit.
+  523563 # Here, NO digit is an alternating repetitive digit.
+  552523 # Here, both 2 and 5 are alternating repetitive digits.
+
+  Your task is to provide two regular expressions regex_integer_in_range and regex_alternating_repetitive_digit_pair. Where:
+
+  regex_integer_in_range should match only integers range from 100000 to 999999 inclusive
+
+  regex_alternating_repetitive_digit_pair should find alternating repetitive digits pairs in a given string.
+
+  Both these regular expressions will be used by the provided code template to check if the input string P is a valid postal code using the following expression:
+  (bool(re.match(regex_integer_in_range, P)) 
+  and len(re.findall(regex_alternating_repetitive_digit_pair, P)) < 2)
+
+  =====Input Format=====
+  Locked stub code in the editor reads a single string denoting P from stdin and uses provided expression and your regular expressions to validate if P is a valid postal code.
+
+  =====Output Format=====
+  You are not responsible for printing anything to stdout. Locked stub code in the editor does that.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def validate_postal_code (s : String) : Bool := sorry
+
+  theorem invalid_format_postal_code {s : String} :
+    (¬ s.all Char.isDigit) ∨ (s.length ≠ 6) ∨ (s.data[0]! = '0') →
+    validate_postal_code s = false := sorry
+vc-theorems: |
+  theorem valid_format_postal_codes {s : String} 
+    (h₁ : s.length = 6)
+    (h₂ : s.all Char.isDigit) 
+    (h₃ : s.data[0]! ≠ '0') :
+    validate_postal_code s = 
+      ¬ (∃ i : Fin 4, ∃ j : Fin 4, i ≠ j ∧ 
+         s.data[i.val]! = s.data[(i.val + 2)]! ∧
+         s.data[j.val]! = s.data[(j.val + 2)]!) := sorry
+
+  end PostalCode
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval validate_postal_code "110000"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval validate_postal_code "121426"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval validate_postal_code "552523"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

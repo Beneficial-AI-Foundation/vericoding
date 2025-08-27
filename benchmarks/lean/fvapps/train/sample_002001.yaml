@@ -1,45 +1,101 @@
-"vc-description": "Sereja has a bracket sequence s_1, s_2, ..., s_{n}, or, in other\
-  \ words, a string s of length n, consisting of characters \"(\" and \")\".\n\nSereja\
-  \ needs to answer m queries, each of them is described by two integers l_{i}, r_{i}\
-  \ (1 ≤ l_{i} ≤ r_{i} ≤ n). The answer to the i-th query is the length of the maximum\
-  \ correct bracket subsequence of sequence s_{l}_{i}, s_{l}_{i} + 1, ..., s_{r}_{i}.\
-  \ Help Sereja answer all queries.\n\nYou can find the definitions for a subsequence\
-  \ and a correct bracket sequence in the notes.\n\n\n-----Input-----\n\nThe first\
-  \ line contains a sequence of characters s_1, s_2, ..., s_{n} (1 ≤ n ≤ 10^6) without\
-  \ any spaces. Each character is either a \"(\" or a \")\". The second line contains\
-  \ integer m (1 ≤ m ≤ 10^5) — the number of queries. Each of the next m lines contains\
-  \ a pair of integers. The i-th line contains integers l_{i}, r_{i} (1 ≤ l_{i} ≤\
-  \ r_{i} ≤ n) — the description of the i-th query.\n\n\n-----Output-----\n\nPrint\
-  \ the answer to each question on a single line. Print the answers in the order they\
-  \ go in the input.\n\n\n-----Examples-----\nInput\n())(())(())(\n7\n1 1\n2 3\n1\
-  \ 2\n1 12\n8 12\n5 11\n2 10\n\nOutput\n0\n0\n2\n10\n4\n6\n6\n\n\n\n-----Note-----\n\
-  \nA subsequence of length |x| of string s = s_1s_2... s_{|}s| (where |s| is the\
-  \ length of string s) is string x = s_{k}_1s_{k}_2... s_{k}_{|}x| (1 ≤ k_1 < k_2\
-  \ < ... < k_{|}x| ≤ |s|).\n\nA correct bracket sequence is a bracket sequence that\
-  \ can be transformed into a correct aryphmetic expression by inserting characters\
-  \ \"1\" and \"+\" between the characters of the string. For example, bracket sequences\
-  \ \"()()\", \"(())\" are correct (the resulting expressions \"(1)+(1)\", \"((1+1)+1)\"\
-  ), and \")(\" and \"(\" are not.\n\nFor the third query required sequence will be\
-  \ «()».\n\nFor the fourth query required sequence will be «()(())(())»."
-"vc-preamble": "import Imports.AllImports\n\ndef next_pow_2 (n: Nat) : Nat := sorry\n\
-  \ntheorem next_pow_2_properties (n: Nat) (h: n ≥ 1) : \n  let result := next_pow_2\
-  \ n\n  result ≥ n ∧ \n  result &&& (result - 1) = 0 ∧\n  (result / 2 < n ∨ n = 1)\
-  \ := sorry\n\nstructure SegTree where\n  size : Nat\n  answer : Array Nat \n  opened\
-  \ : Array Nat\n  closed : Array Nat\nderiving Inhabited\n\n\ndef SegTree.build (self\
-  \ : SegTree) (s : String) : SegTree := sorry\n\ntheorem segtree_build_properties\
-  \ (s : String) (h: s.length > 0) :\n  let tree := SegTree.build (SegTree.mk s.length\
-  \ #[] #[] #[]) s\n  tree.answer.size = 2 * tree.size ∧\n  tree.opened.size = 2 *\
-  \ tree.size ∧\n  tree.closed.size = 2 * tree.size ∧\n  ∀ i < s.length, \n    let\
-  \ idx := tree.size + i\n    (tree.opened.get! idx = 0 ∨ tree.opened.get! idx = 1)\
-  \ ∧\n    (tree.closed.get! idx = 0 ∨ tree.closed.get! idx = 1) ∧\n    tree.opened.get!\
-  \ idx + tree.closed.get! idx ≤ 1 := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_brackets (s: String) (queries: List (Nat × Nat)) : List\
-  \ Nat := sorry\n\ntheorem solve_brackets_properties (s: String) (queries: List (Nat\
-  \ × Nat)) \n  (h₁: s.length > 0)\n  (h₂: ∀ q, q ∈ queries → \n    q.1 > 0 ∧ q.2\
-  \ > 0 ∧ q.1 ≤ q.2 ∧ q.2 ≤ s.length) :\n  let results := solve_brackets s queries\n\
-  \  (∀ r, r ∈ results → r ≥ 0) ∧ \n  (∀ r, r ∈ results → r % 2 = 0) ∧\n  (∀ q r,\
-  \ q ∈ queries → r ∈ results →\n    r ≤ 2 * (q.2 - q.1 + 1) ∧\n    (r > 0 → q.2 -\
-  \ q.1 ≥ 1)) := sorry"
-"vc-theorems": ""
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"
+vc-description: |-
+  Sereja has a bracket sequence s_1, s_2, ..., s_{n}, or, in other words, a string s of length n, consisting of characters "(" and ")".
+
+  Sereja needs to answer m queries, each of them is described by two integers l_{i}, r_{i} (1 ≤ l_{i} ≤ r_{i} ≤ n). The answer to the i-th query is the length of the maximum correct bracket subsequence of sequence s_{l}_{i}, s_{l}_{i} + 1, ..., s_{r}_{i}. Help Sereja answer all queries.
+
+  You can find the definitions for a subsequence and a correct bracket sequence in the notes.
+
+
+  -----Input-----
+
+  The first line contains a sequence of characters s_1, s_2, ..., s_{n} (1 ≤ n ≤ 10^6) without any spaces. Each character is either a "(" or a ")". The second line contains integer m (1 ≤ m ≤ 10^5) — the number of queries. Each of the next m lines contains a pair of integers. The i-th line contains integers l_{i}, r_{i} (1 ≤ l_{i} ≤ r_{i} ≤ n) — the description of the i-th query.
+
+
+  -----Output-----
+
+  Print the answer to each question on a single line. Print the answers in the order they go in the input.
+
+
+  -----Examples-----
+  Input
+  ())(())(())(
+  7
+  1 1
+  2 3
+  1 2
+  1 12
+  8 12
+  5 11
+  2 10
+
+  Output
+  0
+  0
+  2
+  10
+  4
+  6
+  6
+
+
+
+  -----Note-----
+
+  A subsequence of length |x| of string s = s_1s_2... s_{|}s| (where |s| is the length of string s) is string x = s_{k}_1s_{k}_2... s_{k}_{|}x| (1 ≤ k_1 < k_2 < ... < k_{|}x| ≤ |s|).
+
+  A correct bracket sequence is a bracket sequence that can be transformed into a correct aryphmetic expression by inserting characters "1" and "+" between the characters of the string. For example, bracket sequences "()()", "(())" are correct (the resulting expressions "(1)+(1)", "((1+1)+1)"), and ")(" and "(" are not.
+
+  For the third query required sequence will be «()».
+
+  For the fourth query required sequence will be «()(())(())».
+vc-preamble: |
+  import Imports.AllImports
+
+  def next_pow_2 (n: Nat) : Nat := sorry
+
+  theorem next_pow_2_properties (n: Nat) (h: n ≥ 1) : 
+    let result := next_pow_2 n
+    result ≥ n ∧ 
+    result &&& (result - 1) = 0 ∧
+    (result / 2 < n ∨ n = 1) := sorry
+
+  structure SegTree where
+    size : Nat
+    answer : Array Nat 
+    opened : Array Nat
+    closed : Array Nat
+  deriving Inhabited
+
+
+  def SegTree.build (self : SegTree) (s : String) : SegTree := sorry
+
+  theorem segtree_build_properties (s : String) (h: s.length > 0) :
+    let tree := SegTree.build (SegTree.mk s.length #[] #[] #[]) s
+    tree.answer.size = 2 * tree.size ∧
+    tree.opened.size = 2 * tree.size ∧
+    tree.closed.size = 2 * tree.size ∧
+    ∀ i < s.length, 
+      let idx := tree.size + i
+      (tree.opened.get! idx = 0 ∨ tree.opened.get! idx = 1) ∧
+      (tree.closed.get! idx = 0 ∨ tree.closed.get! idx = 1) ∧
+      tree.opened.get! idx + tree.closed.get! idx ≤ 1 := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def solve_brackets (s: String) (queries: List (Nat × Nat)) : List Nat := sorry
+
+  theorem solve_brackets_properties (s: String) (queries: List (Nat × Nat)) 
+    (h₁: s.length > 0)
+    (h₂: ∀ q, q ∈ queries → 
+      q.1 > 0 ∧ q.2 > 0 ∧ q.1 ≤ q.2 ∧ q.2 ≤ s.length) :
+    let results := solve_brackets s queries
+    (∀ r, r ∈ results → r ≥ 0) ∧ 
+    (∀ r, r ∈ results → r % 2 = 0) ∧
+    (∀ q r, q ∈ queries → r ∈ results →
+      r ≤ 2 * (q.2 - q.1 + 1) ∧
+      (r > 0 → q.2 - q.1 ≥ 1)) := sorry
+vc-theorems: |
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded

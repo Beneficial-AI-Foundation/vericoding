@@ -1,14 +1,49 @@
-"vc-description": "We want an array, but not just any old array, an array with contents!\n\
-  \nWrite a function that produces an array with the numbers `0` to `N-1` in it.\n\
-  \nFor example, the following code will result in an array containing the numbers\
-  \ `0` to `4`:\n\n```\narr(5) // => [0,1,2,3,4]\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def arr : Nat → List Nat\n| n => sorry\n"
-"vc-theorems": "theorem arr_length (n : Nat) : (arr n).length = n := sorry\n\ntheorem\
-  \ arr_sequence (n : Nat) (i : Nat) (h : i < n) : \n  (arr n).get ⟨i, by rw [arr_length\
-  \ n]; exact h⟩ = i := sorry \n\n\n\n\ntheorem arr_empty : arr 0 = [] := sorry\n\n\
-  /--\ninfo: [0, 1, 2, 3]\n-/\n#guard_msgs in\n#eval arr 4\n\n/--\ninfo: []\n-/\n\
-  #guard_msgs in\n#eval arr 0\n\n/--\ninfo: [0, 1]\n-/\n#guard_msgs in\n#eval arr\
-  \ 2\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  We want an array, but not just any old array, an array with contents!
+
+  Write a function that produces an array with the numbers `0` to `N-1` in it.
+
+  For example, the following code will result in an array containing the numbers `0` to `4`:
+
+  ```
+  arr(5) // => [0,1,2,3,4]
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def arr : Nat → List Nat
+  | n => sorry
+vc-theorems: |
+  theorem arr_length (n : Nat) : (arr n).length = n := sorry
+
+  theorem arr_sequence (n : Nat) (i : Nat) (h : i < n) : 
+    (arr n).get ⟨i, by rw [arr_length n]; exact h⟩ = i := sorry 
+
+
+
+
+  theorem arr_empty : arr 0 = [] := sorry
+
+  /--
+  info: [0, 1, 2, 3]
+  -/
+  #guard_msgs in
+  #eval arr 4
+
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval arr 0
+
+  /--
+  info: [0, 1]
+  -/
+  #guard_msgs in
+  #eval arr 2
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

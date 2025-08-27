@@ -1,25 +1,72 @@
-"vc-description": "Implement `String.eight_bit_signed_number?` (Ruby), `String.eightBitSignedNumber()`\
-  \ (Python), `eight_bit_signed_number()` (JS) or `StringUtils.isSignedEightBitNumber(String)`\
-  \ (Java) which should return `true/True` if given object is a number representable\
-  \ by 8 bit signed integer (-128 to -1 or 0 to 127), `false/False` otherwise.\n\n\
-  It should only accept numbers in canonical representation, so no leading `+`, extra\
-  \ `0`s, spaces etc."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def signed_eight_bit_number (s : String) : Bool := sorry\n\ntheorem\
-  \ valid_range_numbers {x : Int}\n  (h : -128 ≤ x ∧ x ≤ 127) :\n  signed_eight_bit_number\
-  \ (toString x) = true := sorry\n"
-"vc-theorems": "theorem out_of_range_numbers {x : Int}\n  (h : x < -128 ∨ x > 127)\
-  \ : \n  signed_eight_bit_number (toString x) = false := sorry\n\n\ntheorem non_numeric_strings\
-  \ {s : String}\n  (h : ¬s.all (fun c => c.isDigit ∨ c = '-')) :\n  signed_eight_bit_number\
-  \ s = false := sorry\n\n\ntheorem no_whitespace_prefix {x : Int} \n  (h : -128 ≤\
-  \ x ∧ x ≤ 127) :\n  signed_eight_bit_number (\" \" ++ toString x) = false := sorry\n\
-  \n\ntheorem no_whitespace_suffix {x : Int}\n  (h : -128 ≤ x ∧ x ≤ 127) :\n  signed_eight_bit_number\
-  \ (toString x ++ \" \") = false := sorry\n\n\ntheorem no_whitespace_both {x : Int}\n\
-  \  (h : -128 ≤ x ∧ x ≤ 127) :\n  signed_eight_bit_number (\" \" ++ toString x ++\
-  \ \" \") = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval signed_eight_bit_number\
-  \ \"0\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval signed_eight_bit_number \"\
-  127\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval signed_eight_bit_number \"-128\"\
-  \n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval signed_eight_bit_number \"128\"\n\
-  \n/--\ninfo: False\n-/\n#guard_msgs in\n#eval signed_eight_bit_number \" 1\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Implement `String.eight_bit_signed_number?` (Ruby), `String.eightBitSignedNumber()` (Python), `eight_bit_signed_number()` (JS) or `StringUtils.isSignedEightBitNumber(String)` (Java) which should return `true/True` if given object is a number representable by 8 bit signed integer (-128 to -1 or 0 to 127), `false/False` otherwise.
+
+  It should only accept numbers in canonical representation, so no leading `+`, extra `0`s, spaces etc.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def signed_eight_bit_number (s : String) : Bool := sorry
+
+  theorem valid_range_numbers {x : Int}
+    (h : -128 ≤ x ∧ x ≤ 127) :
+    signed_eight_bit_number (toString x) = true := sorry
+vc-theorems: |
+  theorem out_of_range_numbers {x : Int}
+    (h : x < -128 ∨ x > 127) : 
+    signed_eight_bit_number (toString x) = false := sorry
+
+
+  theorem non_numeric_strings {s : String}
+    (h : ¬s.all (fun c => c.isDigit ∨ c = '-')) :
+    signed_eight_bit_number s = false := sorry
+
+
+  theorem no_whitespace_prefix {x : Int} 
+    (h : -128 ≤ x ∧ x ≤ 127) :
+    signed_eight_bit_number (" " ++ toString x) = false := sorry
+
+
+  theorem no_whitespace_suffix {x : Int}
+    (h : -128 ≤ x ∧ x ≤ 127) :
+    signed_eight_bit_number (toString x ++ " ") = false := sorry
+
+
+  theorem no_whitespace_both {x : Int}
+    (h : -128 ≤ x ∧ x ≤ 127) :
+    signed_eight_bit_number (" " ++ toString x ++ " ") = false := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval signed_eight_bit_number "0"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval signed_eight_bit_number "127"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval signed_eight_bit_number "-128"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval signed_eight_bit_number "128"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval signed_eight_bit_number " 1"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

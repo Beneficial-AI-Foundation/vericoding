@@ -1,29 +1,79 @@
-"vc-description": "Given a string s, a k duplicate removal consists of choosing k adjacent\
-  \ and equal letters from s and removing them causing the left and the right side\
-  \ of the deleted substring to concatenate together.\nWe repeatedly make k duplicate\
-  \ removals on s until we no longer can.\nReturn the final string after all such\
-  \ duplicate removals have been made.\nIt is guaranteed that the answer is unique.\n\
-   \nExample 1:\nInput: s = \"abcd\", k = 2\nOutput: \"abcd\"\nExplanation: There's\
-  \ nothing to delete.\nExample 2:\nInput: s = \"deeedbbcccbdaa\", k = 3\nOutput:\
-  \ \"aa\"\nExplanation: \nFirst delete \"eee\" and \"ccc\", get \"ddbbbdaa\"\nThen\
-  \ delete \"bbb\", get \"dddaa\"\nFinally delete \"ddd\", get \"aa\"\nExample 3:\n\
-  Input: s = \"pbbcggttciiippooaais\", k = 2\nOutput: \"ps\"\n\n \nConstraints:\n\n\
-  1 <= s.length <= 10^5\n2 <= k <= 10^4\ns only contains lower case English letters."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def removeDuplicates (s : String) (k : Nat) : String := sorry\n\
-  \ntheorem result_length_le_input (s : String) (k : Nat) : \n  (removeDuplicates\
-  \ s k).length ≤ s.length := sorry\n"
-"vc-theorems": "theorem result_chars_from_input (s : String) (k : Nat) (c : Char)\
-  \ :\n  c ∈ (removeDuplicates s k).data → c ∈ s.data := sorry\n\n\ntheorem result_idempotent\
-  \ (s : String) (k : Nat) :\n  removeDuplicates (removeDuplicates s k) k = removeDuplicates\
-  \ s k := sorry\n\n\ntheorem empty_string_identity (k : Nat) :\n  removeDuplicates\
-  \ \"\" k = \"\" := sorry\n\n\ntheorem k_one_no_consecutive_dupes (s : String) :\n\
-  \  let result := removeDuplicates s 1\n  ∀ n m : Nat, n + 1 = m → m < result.length\
-  \ → \n    result.data[n]? ≠ result.data[m]? := sorry \n\n\ntheorem k_gt_length_identity\
-  \ (s : String) (k : Nat) :\n  k > s.length → removeDuplicates s k = s := sorry\n\
-  \n/--\ninfo: 'abcd'\n-/\n#guard_msgs in\n#eval remove_duplicates \"abcd\" 2\n\n\
-  /--\ninfo: 'aa'\n-/\n#guard_msgs in\n#eval remove_duplicates \"deeedbbcccbdaa\"\
-  \ 3\n\n/--\ninfo: 'ps'\n-/\n#guard_msgs in\n#eval remove_duplicates \"pbbcggttciiippooaais\"\
-  \ 2\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a string s, a k duplicate removal consists of choosing k adjacent and equal letters from s and removing them causing the left and the right side of the deleted substring to concatenate together.
+  We repeatedly make k duplicate removals on s until we no longer can.
+  Return the final string after all such duplicate removals have been made.
+  It is guaranteed that the answer is unique.
+   
+  Example 1:
+  Input: s = "abcd", k = 2
+  Output: "abcd"
+  Explanation: There's nothing to delete.
+  Example 2:
+  Input: s = "deeedbbcccbdaa", k = 3
+  Output: "aa"
+  Explanation: 
+  First delete "eee" and "ccc", get "ddbbbdaa"
+  Then delete "bbb", get "dddaa"
+  Finally delete "ddd", get "aa"
+  Example 3:
+  Input: s = "pbbcggttciiippooaais", k = 2
+  Output: "ps"
+
+   
+  Constraints:
+
+  1 <= s.length <= 10^5
+  2 <= k <= 10^4
+  s only contains lower case English letters.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def removeDuplicates (s : String) (k : Nat) : String := sorry
+
+  theorem result_length_le_input (s : String) (k : Nat) : 
+    (removeDuplicates s k).length ≤ s.length := sorry
+vc-theorems: |
+  theorem result_chars_from_input (s : String) (k : Nat) (c : Char) :
+    c ∈ (removeDuplicates s k).data → c ∈ s.data := sorry
+
+
+  theorem result_idempotent (s : String) (k : Nat) :
+    removeDuplicates (removeDuplicates s k) k = removeDuplicates s k := sorry
+
+
+  theorem empty_string_identity (k : Nat) :
+    removeDuplicates "" k = "" := sorry
+
+
+  theorem k_one_no_consecutive_dupes (s : String) :
+    let result := removeDuplicates s 1
+    ∀ n m : Nat, n + 1 = m → m < result.length → 
+      result.data[n]? ≠ result.data[m]? := sorry 
+
+
+  theorem k_gt_length_identity (s : String) (k : Nat) :
+    k > s.length → removeDuplicates s k = s := sorry
+
+  /--
+  info: 'abcd'
+  -/
+  #guard_msgs in
+  #eval remove_duplicates "abcd" 2
+
+  /--
+  info: 'aa'
+  -/
+  #guard_msgs in
+  #eval remove_duplicates "deeedbbcccbdaa" 3
+
+  /--
+  info: 'ps'
+  -/
+  #guard_msgs in
+  #eval remove_duplicates "pbbcggttciiippooaais" 2
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

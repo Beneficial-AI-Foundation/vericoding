@@ -1,12 +1,29 @@
-"vc-description": "=====Problem Statement=====\nYou are given a string S.\nYour task\
-  \ is to find out whether is a valid regex or not.\n\n=====Input Format=====\nThe\
-  \ first line contains integer T, the number of test cases.\nThe next T lines contains\
-  \ the string S.\n\n=====Constraints=====\n0<T<100\n\n=====Output Format=====\nPrint\
-  \ \"True\" or \"False\" for each test case without quotes."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_valid_regex (s : String) : Bool := sorry \n\ntheorem any_string_input_returns_bool\
-  \ (s : String) :\n  (is_valid_regex s = true) ∨ (is_valid_regex s = false) :=\n\
-  sorry"
-"vc-theorems": ""
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  =====Problem Statement=====
+  You are given a string S.
+  Your task is to find out whether is a valid regex or not.
+
+  =====Input Format=====
+  The first line contains integer T, the number of test cases.
+  The next T lines contains the string S.
+
+  =====Constraints=====
+  0<T<100
+
+  =====Output Format=====
+  Print "True" or "False" for each test case without quotes.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def is_valid_regex (s : String) : Bool := sorry 
+
+  theorem any_string_input_returns_bool (s : String) :
+    (is_valid_regex s = true) ∨ (is_valid_regex s = false) :=
+  sorry
+vc-theorems: |
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

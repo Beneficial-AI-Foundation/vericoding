@@ -1,22 +1,60 @@
-"vc-description": "\"The Shell Game\" involves cups upturned on a playing surface,\
-  \ with a ball placed underneath one of them.  The index of the cups are swapped\
-  \ around multiple times. After that the players will try to find which cup contains\
-  \ the ball.\n\nYour task is as follows.  Given the cup that the ball starts under,\
-  \ and list of swaps, return the location of the ball at the end.  Cups are given\
-  \ like array/list indices.\n\nFor example, given the starting position `0` and the\
-  \ swaps `[(0, 1), (1, 2), (1, 0)]`:\n\n * The first swap moves the ball from `0`\
-  \ to `1`\n * The second swap moves the ball from `1` to `2`\n * The final swap doesn't\
-  \ affect the position of the ball.\n \n So\n\n```python\nfind_the_ball(0, [(0, 1),\
-  \ (2, 1), (0, 1)]) == 2\n```\n\nThere aren't necessarily only three cups in this\
-  \ game, but there will be at least two.  You can assume all swaps are valid, and\
-  \ involve two distinct indices."
-"vc-preamble": "import Imports.AllImports\n\ndef find_the_ball (start : Nat) (swaps\
-  \ : List (Nat × Nat)) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def iterateN (f : Nat → Nat) : Nat → Nat → Nat\n  | 0, x => x\n\
-  \  | n+1, x => iterateN f n (f x)"
-"vc-theorems": "theorem find_the_ball_no_swaps (start : Nat) :\n  find_the_ball start\
-  \ [] = start :=\nsorry\n\n\n\n\n\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval find_the_ball\
-  \ 5 []\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_the_ball 0 [(0, 1), (1, 2)]\n\
-  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_the_ball 0 [(0, 1), (1, 2), (2, 3)]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  "The Shell Game" involves cups upturned on a playing surface, with a ball placed underneath one of them.  The index of the cups are swapped around multiple times. After that the players will try to find which cup contains the ball.
+
+  Your task is as follows.  Given the cup that the ball starts under, and list of swaps, return the location of the ball at the end.  Cups are given like array/list indices.
+
+  For example, given the starting position `0` and the swaps `[(0, 1), (1, 2), (1, 0)]`:
+
+   * The first swap moves the ball from `0` to `1`
+   * The second swap moves the ball from `1` to `2`
+   * The final swap doesn't affect the position of the ball.
+   
+   So
+
+  ```python
+  find_the_ball(0, [(0, 1), (2, 1), (0, 1)]) == 2
+  ```
+
+  There aren't necessarily only three cups in this game, but there will be at least two.  You can assume all swaps are valid, and involve two distinct indices.
+vc-preamble: |
+  import Imports.AllImports
+
+  def find_the_ball (start : Nat) (swaps : List (Nat × Nat)) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def iterateN (f : Nat → Nat) : Nat → Nat → Nat
+    | 0, x => x
+    | n+1, x => iterateN f n (f x)
+vc-theorems: |
+  theorem find_the_ball_no_swaps (start : Nat) :
+    find_the_ball start [] = start :=
+  sorry
+
+
+
+
+
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval find_the_ball 5 []
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_the_ball 0 [(0, 1), (1, 2)]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_the_ball 0 [(0, 1), (1, 2), (2, 3)]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

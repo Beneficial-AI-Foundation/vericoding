@@ -1,22 +1,65 @@
-"vc-description": "In this Kata, you will be given a string and your task is to determine\
-  \ if that string can be a palindrome if we rotate one or more characters to the\
-  \ left.\n\n```Haskell\nsolve(\"4455\") = true, because after 1 rotation, we get\
-  \ \"5445\" which is a palindrome\nsolve(\"zazcbaabc\") = true, because after 3 rotations,\
-  \ we get \"abczazcba\", a palindrome\n```\n\nMore examples in test cases. Input\
-  \ will be strings of lowercase letters or numbers only.\n\nGood luck!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve (s : String) : Bool := sorry\n\ndef reverse (s : String)\
-  \ : String := sorry\n"
-"vc-theorems": "theorem solve_returns_bool (s : String) : \n  solve s = true ∨ solve\
-  \ s = false := sorry\n\n\ntheorem empty_or_single_char_is_palindrome (s : String)\
-  \ :\n  s.length ≤ 1 → solve s = true := sorry\n\n\ntheorem palindrome_concat_is_palindrome\
-  \ (s : String) :\n  let palindrome := s ++ reverse s\n  solve palindrome = true\
-  \ := sorry\n\n\ntheorem same_chars_is_palindrome (s : String) (n : Nat) :\n  let\
-  \ same_chars := String.mk (List.replicate n 'a')\n  solve same_chars = true := sorry\n\
-  \n\ntheorem palindrome_stays_after_rotation (s : String) :\n  s.length ≥ 2 →\n \
-  \ solve s = true →\n  let rotated := (s.drop 1) ++ (s.take 1)\n  solve rotated =\
-  \ true := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval solve \"4455\"\n\n\
-  /--\ninfo: True\n-/\n#guard_msgs in\n#eval solve \"zazcbaabc\"\n\n/--\ninfo: False\n\
-  -/\n#guard_msgs in\n#eval solve \"aaab\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In this Kata, you will be given a string and your task is to determine if that string can be a palindrome if we rotate one or more characters to the left.
+
+  ```Haskell
+  solve("4455") = true, because after 1 rotation, we get "5445" which is a palindrome
+  solve("zazcbaabc") = true, because after 3 rotations, we get "abczazcba", a palindrome
+  ```
+
+  More examples in test cases. Input will be strings of lowercase letters or numbers only.
+
+  Good luck!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve (s : String) : Bool := sorry
+
+  def reverse (s : String) : String := sorry
+vc-theorems: |
+  theorem solve_returns_bool (s : String) : 
+    solve s = true ∨ solve s = false := sorry
+
+
+  theorem empty_or_single_char_is_palindrome (s : String) :
+    s.length ≤ 1 → solve s = true := sorry
+
+
+  theorem palindrome_concat_is_palindrome (s : String) :
+    let palindrome := s ++ reverse s
+    solve palindrome = true := sorry
+
+
+  theorem same_chars_is_palindrome (s : String) (n : Nat) :
+    let same_chars := String.mk (List.replicate n 'a')
+    solve same_chars = true := sorry
+
+
+  theorem palindrome_stays_after_rotation (s : String) :
+    s.length ≥ 2 →
+    solve s = true →
+    let rotated := (s.drop 1) ++ (s.take 1)
+    solve rotated = true := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval solve "4455"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval solve "zazcbaabc"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval solve "aaab"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

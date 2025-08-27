@@ -1,27 +1,76 @@
-"vc-description": "In this kata you need to create a function that takes a 2D array/list\
-  \ of non-negative integer pairs and returns the sum of all the \"saving\" that you\
-  \ can have getting the [LCM](https://en.wikipedia.org/wiki/Least_common_multiple)\
-  \ of each couple of number compared to their simple product.\n\nFor example, if\
-  \ you are given:\n```\n[[15,18], [4,5], [12,60]]\n```\nTheir product would be:\n\
-  ```\n[270, 20, 720]\n```\nWhile their respective LCM would be:\n```\n[90, 20, 60]\n\
-  ```\nThus the result should be:\n```\n(270-90)+(20-20)+(720-60)==840\n```\nThis\
-  \ is a kata that I made, among other things, to let some of my trainees familiarize\
-  \ with the [euclidean algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm),\
-  \ a really neat tool to have on your belt ;)"
-"vc-preamble": "import Imports.AllImports\n\ndef sumDifferencesBetweenProductsAndLCMs\
-  \ (pairs : List (Nat × Nat)) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def List.sum (l : List Nat) : Nat :=\n  match l with\n  | [] =>\
-  \ 0\n  | h :: t => h + List.sum t\n"
-"vc-theorems": "theorem empty_list_gives_zero :\n  sumDifferencesBetweenProductsAndLCMs\
-  \ [] = 0 :=\nsorry\n\n\ntheorem zero_pairs_give_zero (n : Nat) :\n  sumDifferencesBetweenProductsAndLCMs\
-  \ (List.replicate n (0, 0)) = 0 :=\nsorry\n\n\ntheorem result_leq_sum_products (pairs\
-  \ : List (Nat × Nat)) :\n  pairs ≠ [] →\n  sumDifferencesBetweenProductsAndLCMs\
-  \ pairs ≤ \n    List.sum (pairs.map (fun p => p.fst * p.snd)) :=\nsorry\n\n\ntheorem\
-  \ commutative (pairs : List (Nat × Nat)) :\n  sumDifferencesBetweenProductsAndLCMs\
-  \ pairs = \n  sumDifferencesBetweenProductsAndLCMs (pairs.map fun p => (p.snd, p.fst))\
-  \ :=\nsorry\n\n/--\ninfo: 840\n-/\n#guard_msgs in\n#eval sum_differences_between_products_and_LCMs\
-  \ [[15, 18], [4, 5], [12, 60]]\n\n/--\ninfo: 1092\n-/\n#guard_msgs in\n#eval sum_differences_between_products_and_LCMs\
-  \ [[1, 1], [0, 0], [13, 91]]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval sum_differences_between_products_and_LCMs\
-  \ []\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In this kata you need to create a function that takes a 2D array/list of non-negative integer pairs and returns the sum of all the "saving" that you can have getting the [LCM](https://en.wikipedia.org/wiki/Least_common_multiple) of each couple of number compared to their simple product.
+
+  For example, if you are given:
+  ```
+  [[15,18], [4,5], [12,60]]
+  ```
+  Their product would be:
+  ```
+  [270, 20, 720]
+  ```
+  While their respective LCM would be:
+  ```
+  [90, 20, 60]
+  ```
+  Thus the result should be:
+  ```
+  (270-90)+(20-20)+(720-60)==840
+  ```
+  This is a kata that I made, among other things, to let some of my trainees familiarize with the [euclidean algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm), a really neat tool to have on your belt ;)
+vc-preamble: |
+  import Imports.AllImports
+
+  def sumDifferencesBetweenProductsAndLCMs (pairs : List (Nat × Nat)) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def List.sum (l : List Nat) : Nat :=
+    match l with
+    | [] => 0
+    | h :: t => h + List.sum t
+vc-theorems: |
+  theorem empty_list_gives_zero :
+    sumDifferencesBetweenProductsAndLCMs [] = 0 :=
+  sorry
+
+
+  theorem zero_pairs_give_zero (n : Nat) :
+    sumDifferencesBetweenProductsAndLCMs (List.replicate n (0, 0)) = 0 :=
+  sorry
+
+
+  theorem result_leq_sum_products (pairs : List (Nat × Nat)) :
+    pairs ≠ [] →
+    sumDifferencesBetweenProductsAndLCMs pairs ≤ 
+      List.sum (pairs.map (fun p => p.fst * p.snd)) :=
+  sorry
+
+
+  theorem commutative (pairs : List (Nat × Nat)) :
+    sumDifferencesBetweenProductsAndLCMs pairs = 
+    sumDifferencesBetweenProductsAndLCMs (pairs.map fun p => (p.snd, p.fst)) :=
+  sorry
+
+  /--
+  info: 840
+  -/
+  #guard_msgs in
+  #eval sum_differences_between_products_and_LCMs [[15, 18], [4, 5], [12, 60]]
+
+  /--
+  info: 1092
+  -/
+  #guard_msgs in
+  #eval sum_differences_between_products_and_LCMs [[1, 1], [0, 0], [13, 91]]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval sum_differences_between_products_and_LCMs []
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

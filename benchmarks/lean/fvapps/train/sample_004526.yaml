@@ -1,26 +1,63 @@
-"vc-description": "#Task:\nWrite a function `get_member_since` which accepts a username\
-  \ from someone at Codewars and returns an string containing the month and year separated\
-  \ by a space that they joined CodeWars.\n\n###If you want/don't want your username\
-  \ to be in the tests, ask me in the discourse area. There can't be too many though\
-  \ because the server may time out.\n\n#Example:\n\n```python\n>>> get_member_since('dpleshkov')\n\
-  Jul 2016\n>>> get_member_since('jhoffner')\nOct 2012\n```\n\n#Libraries/Recommendations:\n\
-  \n##Python:\n\n* `urllib.request.urlopen`: Opens up a webpage.\n* `re`: The RegEx\
-  \ library for Python.\n* `bs4`([BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc)):\
-  \ A tool for scraping HTML and XML.\n* **Python 2 is not working for this kata.\
-  \ :(**\n\n#Notes:\n\n* Time out / server errors often happen with the test cases\
-  \ depending on the status of the codewars website. Try submitting your code a few\
-  \ times or at different hours of the day if needed.\n* Feel free to voice your comments\
-  \ and concerns in the discourse area."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def get_member_since (username : String) : String := sorry\n\n\
-  theorem get_member_since_returns_nonempty_string (username : String) :\n  get_member_since\
-  \ username ≠ \"\" := sorry\n"
-"vc-theorems": "theorem get_member_since_unknown_users (username : String) :\n  username\
-  \ ≠ \"dpleshkov\" →\n  username ≠ \"jhoffner\" →\n  get_member_since username =\
-  \ \"Unknown\" := sorry\n\n\ntheorem get_member_since_known_values :\n  get_member_since\
-  \ \"dpleshkov\" = \"Jul 2016\" ∧\n  get_member_since \"jhoffner\" = \"Oct 2012\"\
-  \ := sorry\n\n/--\ninfo: 'Jul 2016'\n-/\n#guard_msgs in\n#eval get_member_since\
-  \ \"dpleshkov\"\n\n/--\ninfo: 'Oct 2012'\n-/\n#guard_msgs in\n#eval get_member_since\
-  \ \"jhoffner\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  #Task:
+  Write a function `get_member_since` which accepts a username from someone at Codewars and returns an string containing the month and year separated by a space that they joined CodeWars.
+
+  ###If you want/don't want your username to be in the tests, ask me in the discourse area. There can't be too many though because the server may time out.
+
+  #Example:
+
+  ```python
+  >>> get_member_since('dpleshkov')
+  Jul 2016
+  >>> get_member_since('jhoffner')
+  Oct 2012
+  ```
+
+  #Libraries/Recommendations:
+
+  ##Python:
+
+  * `urllib.request.urlopen`: Opens up a webpage.
+  * `re`: The RegEx library for Python.
+  * `bs4`([BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc)): A tool for scraping HTML and XML.
+  * **Python 2 is not working for this kata. :(**
+
+  #Notes:
+
+  * Time out / server errors often happen with the test cases depending on the status of the codewars website. Try submitting your code a few times or at different hours of the day if needed.
+  * Feel free to voice your comments and concerns in the discourse area.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def get_member_since (username : String) : String := sorry
+
+  theorem get_member_since_returns_nonempty_string (username : String) :
+    get_member_since username ≠ "" := sorry
+vc-theorems: |
+  theorem get_member_since_unknown_users (username : String) :
+    username ≠ "dpleshkov" →
+    username ≠ "jhoffner" →
+    get_member_since username = "Unknown" := sorry
+
+
+  theorem get_member_since_known_values :
+    get_member_since "dpleshkov" = "Jul 2016" ∧
+    get_member_since "jhoffner" = "Oct 2012" := sorry
+
+  /--
+  info: 'Jul 2016'
+  -/
+  #guard_msgs in
+  #eval get_member_since "dpleshkov"
+
+  /--
+  info: 'Oct 2012'
+  -/
+  #guard_msgs in
+  #eval get_member_since "jhoffner"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

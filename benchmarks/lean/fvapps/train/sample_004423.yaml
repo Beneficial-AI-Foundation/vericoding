@@ -1,20 +1,52 @@
-"vc-description": "Write a function named setAlarm which receives two parameters.\
-  \ The first parameter, employed, is true whenever you are employed and the second\
-  \ parameter, vacation is true whenever you are on vacation.\nThe function should\
-  \ return true if you are employed and not on vacation (because these are the circumstances\
-  \ under which you need to set an alarm). It should return false otherwise. Examples:\n\
-  \n```if-not:julia,racket\nsetAlarm(true, true) -> false\nsetAlarm(false, true) ->\
-  \ false\nsetAlarm(false, false) -> false\nsetAlarm(true, false) -> true\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def set_alarm (employed : Bool) (vacation : Bool) : Bool := sorry\n\
-  \ntheorem set_alarm_spec (employed vacation : Bool) :\n  set_alarm employed vacation\
-  \ = (employed && !vacation) := sorry\n"
-"vc-theorems": "theorem set_alarm_output_bool (employed vacation : Bool) : \n  set_alarm\
-  \ employed vacation = true ∨ set_alarm employed vacation = false := sorry\n\n\n\
-  theorem unemployed_no_alarm (vacation : Bool) :\n  set_alarm false vacation = false\
-  \ := sorry\n\n\ntheorem vacation_no_alarm (employed : Bool) :\n  set_alarm employed\
-  \ true = false := sorry\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval set_alarm\
-  \ True True\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval set_alarm False True\n\
-  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval set_alarm True False\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function named setAlarm which receives two parameters. The first parameter, employed, is true whenever you are employed and the second parameter, vacation is true whenever you are on vacation.
+  The function should return true if you are employed and not on vacation (because these are the circumstances under which you need to set an alarm). It should return false otherwise. Examples:
+
+  ```if-not:julia,racket
+  setAlarm(true, true) -> false
+  setAlarm(false, true) -> false
+  setAlarm(false, false) -> false
+  setAlarm(true, false) -> true
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def set_alarm (employed : Bool) (vacation : Bool) : Bool := sorry
+
+  theorem set_alarm_spec (employed vacation : Bool) :
+    set_alarm employed vacation = (employed && !vacation) := sorry
+vc-theorems: |
+  theorem set_alarm_output_bool (employed vacation : Bool) : 
+    set_alarm employed vacation = true ∨ set_alarm employed vacation = false := sorry
+
+
+  theorem unemployed_no_alarm (vacation : Bool) :
+    set_alarm false vacation = false := sorry
+
+
+  theorem vacation_no_alarm (employed : Bool) :
+    set_alarm employed true = false := sorry
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval set_alarm True True
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval set_alarm False True
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval set_alarm True False
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

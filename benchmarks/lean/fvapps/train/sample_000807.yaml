@@ -1,40 +1,98 @@
-"vc-description": "Limak has a string S, that consists of N lowercase English letters.\n\
-  Limak then created a new string by repeating S exactly K times.\nFor example, for\
-  \ S = \"abcb\" and K = 2, he would get \"abcbabcb\".\nYour task is to count the\
-  \ number of subsequences \"ab\" (not necessarily consecutive) in the new string.\n\
-  In other words, find the number pairs of indices i < j, such that the i-th and j-th\
-  \ characters in the new string are 'a' and 'b' respectively.\n\n-----Input-----\n\
-  The first line of the input contains an integer T denoting the number of test cases.\
-  \ The description of T test cases follows.\nThe first line of each test case contains\
-  \ two integers N and K, denoting the length of the initial string S and the number\
-  \ of repetitions respectively.\nThe second line contains a string S.\nIts length\
-  \ is exactly N, and each of its characters is a lowercase English letter.\n\n-----Output-----\n\
-  For each test case, output a single line containing one integer — the number of\
-  \ subsequences \"ab\" in the new string.\nFor the given constraints, it can be proved\
-  \ that the answer fits in the 64-bit signed type.\n\n-----Constraints-----\n- 1\
-  \ ≤ T ≤ 10\n- 1 ≤ N ≤ 105\n- 1 ≤ N * K ≤ 109 (in other words, the new string has\
-  \ length up to 109)\n\n-----Example-----\nInput:\n3\n4 2\nabcb\n7 1\naayzbaa\n12\
-  \ 80123123\nabzbabzbazab\n\nOutput:\n6\n2\n64197148392731290\n\n-----Explanation-----\n\
-  Test case 1. Limak repeated the string \"abcb\" 2 times, and so he got \"abcbabcb\"\
-  . There are 6 occurrences of the subsequence \"ab\":\n- ABcbabcb (the two letters\
-  \ marked uppercase)\n- AbcBabcb\n- AbcbaBcb\n- AbcbabcB\n- abcbABcb\n- abcbAbcB\n\
-  Test case 2. Since K = 1, the new string is equal to the given S (\"aayzbaa\").\
-  \ There are 2 occurrences of the subsequence \"ab\" in this string: AayzBaa and\
-  \ aAyzBaa."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_subsequences (n k : Nat) (s : List Char) : Nat :=\n \
-  \ sorry\n"
-"vc-theorems": "theorem count_subsequences_nonnegative (n k : Nat) (s : List Char)\
-  \ :\n  count_subsequences n k s ≥ 0 := sorry\n\n\ntheorem no_b_implies_zero (n k\
-  \ : Nat) (s : List Char) :\n  (∀ c, c ∈ s → c ≠ 'b') → count_subsequences n k s\
-  \ = 0 := sorry\n\n\ntheorem no_a_implies_zero (n k : Nat) (s : List Char) :\n  (∀\
-  \ c, c ∈ s → c ≠ 'a') → count_subsequences n k s = 0 := sorry\n\n\ntheorem count_monotone_in_k\
-  \ (n k : Nat) (s : List Char) :\n  k > 0 → count_subsequences n k s ≥ count_subsequences\
-  \ n (k-1) s := sorry\n\n\ntheorem empty_k_gives_zero (s : List Char) :\n  count_subsequences\
-  \ s.length 0 s = 0 := sorry\n\n\ntheorem empty_string_gives_zero (n k : Nat) :\n\
-  \  count_subsequences n k [] = 0 := sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n\
-  #eval count_subsequences 4 2 \"abcb\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval\
-  \ count_subsequences 7 1 \"aayzbaa\"\n\n/--\ninfo: 64197148392731290\n-/\n#guard_msgs\
-  \ in\n#eval count_subsequences 12 80123123 \"abzbabzbazab\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Limak has a string S, that consists of N lowercase English letters.
+  Limak then created a new string by repeating S exactly K times.
+  For example, for S = "abcb" and K = 2, he would get "abcbabcb".
+  Your task is to count the number of subsequences "ab" (not necessarily consecutive) in the new string.
+  In other words, find the number pairs of indices i < j, such that the i-th and j-th characters in the new string are 'a' and 'b' respectively.
+
+  -----Input-----
+  The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+  The first line of each test case contains two integers N and K, denoting the length of the initial string S and the number of repetitions respectively.
+  The second line contains a string S.
+  Its length is exactly N, and each of its characters is a lowercase English letter.
+
+  -----Output-----
+  For each test case, output a single line containing one integer — the number of subsequences "ab" in the new string.
+  For the given constraints, it can be proved that the answer fits in the 64-bit signed type.
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 10
+  - 1 ≤ N ≤ 105
+  - 1 ≤ N * K ≤ 109 (in other words, the new string has length up to 109)
+
+  -----Example-----
+  Input:
+  3
+  4 2
+  abcb
+  7 1
+  aayzbaa
+  12 80123123
+  abzbabzbazab
+
+  Output:
+  6
+  2
+  64197148392731290
+
+  -----Explanation-----
+  Test case 1. Limak repeated the string "abcb" 2 times, and so he got "abcbabcb". There are 6 occurrences of the subsequence "ab":
+  - ABcbabcb (the two letters marked uppercase)
+  - AbcBabcb
+  - AbcbaBcb
+  - AbcbabcB
+  - abcbABcb
+  - abcbAbcB
+  Test case 2. Since K = 1, the new string is equal to the given S ("aayzbaa"). There are 2 occurrences of the subsequence "ab" in this string: AayzBaa and aAyzBaa.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_subsequences (n k : Nat) (s : List Char) : Nat :=
+    sorry
+vc-theorems: |
+  theorem count_subsequences_nonnegative (n k : Nat) (s : List Char) :
+    count_subsequences n k s ≥ 0 := sorry
+
+
+  theorem no_b_implies_zero (n k : Nat) (s : List Char) :
+    (∀ c, c ∈ s → c ≠ 'b') → count_subsequences n k s = 0 := sorry
+
+
+  theorem no_a_implies_zero (n k : Nat) (s : List Char) :
+    (∀ c, c ∈ s → c ≠ 'a') → count_subsequences n k s = 0 := sorry
+
+
+  theorem count_monotone_in_k (n k : Nat) (s : List Char) :
+    k > 0 → count_subsequences n k s ≥ count_subsequences n (k-1) s := sorry
+
+
+  theorem empty_k_gives_zero (s : List Char) :
+    count_subsequences s.length 0 s = 0 := sorry
+
+
+  theorem empty_string_gives_zero (n k : Nat) :
+    count_subsequences n k [] = 0 := sorry
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval count_subsequences 4 2 "abcb"
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval count_subsequences 7 1 "aayzbaa"
+
+  /--
+  info: 64197148392731290
+  -/
+  #guard_msgs in
+  #eval count_subsequences 12 80123123 "abzbabzbazab"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

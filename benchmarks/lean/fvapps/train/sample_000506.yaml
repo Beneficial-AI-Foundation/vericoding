@@ -1,37 +1,78 @@
-"vc-description": "Indian National Olympiad in Informatics 2015\nA string is any nonempty\
-  \ sequence of 0s and 1s. Examples of strings are 00, 101, 111000, 1, 0, 01. The\
-  \ length of a string is the number of symbols in it. For example, the length of\
-  \ 111000 is 6. If u and v are strings, then uv is the string obtained by concatenating\
-  \ u and v. For example if u = 110 and v = 0010 then uv = 1100010.\nA string w is\
-  \ periodic if there exists a string v such that w = vn = vv · · · v (n times), for\
-  \ some n ≥ 2. Note that in this case the length of v is strictly less than that\
-  \ of w. For example, 110110 is periodic, because it is vv for v = 110.\nGiven a\
-  \ positive integer N , find the number of strings of length N which are not periodic.\
-  \ Report the answer modulo M . The non-periodic strings of length 2 are 10 and 01.\
-  \ The non- periodic strings of length 3 are 001, 010, 011, 100, 101, and 110.\n\n\
-  -----Input format-----\nA single line, with two space-separated integers, N and\
-  \ M .\n\n-----Output format-----\nA single integer, the number of non-periodic strings\
-  \ of length N , modulo M .\n\n-----Test Data-----\nIn all subtasks, 2 ≤ M ≤ 108.\
-  \ The testdata is grouped into 4 subtasks.\nSubtask 1 (10 marks) 1 ≤ N ≤ 4000. N\
-  \ is the product of two distinct prime numbers.\nSubtask 2 (20 marks) 1 ≤ N ≤ 4000.\
-  \ N is a power of a prime number.\nSubtask 3 (35 marks) 1 ≤ N ≤ 4000.\nSubtask 4\
-  \ (35 marks) 1 ≤ N ≤ 150000.\n\n-----Example-----\nHere is the sample input and\
-  \ output corresponding to the example above:\n\n-----Sample input-----\n3 176\n\n\
-  -----Sample output-----\n6\n\nNote: Your program should not print anything other\
-  \ than what is specified in the output format. Please remove all diagnostic print\
-  \ statements before making your final submission. A program with extraneous output\
-  \ will be treated as incorrect!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_non_periodic_strings (n : Nat) (m : Nat) : Nat :=\n \
-  \ sorry\n"
-"vc-theorems": "theorem solve_result_bounds (n m : Nat) \n  (h1 : n ≥ 2) (h2 : n ≤\
-  \ 10000) (h3 : m > 0) (h4 : m ≤ 1000000000) :\n  let result := solve_non_periodic_strings\
-  \ n m\n  result ≥ 0 ∧ result < m ∧ result < 2^n :=\n  sorry\n\n\n\n\ntheorem solve_small_n\
-  \ (n m : Nat)\n  (h1 : 2 ≤ n) (h2 : n ≤ 4) (h3 : m = 1000000000) :\n  let result\
-  \ := solve_non_periodic_strings n m\n  result > 0 ∧ result ≤ 2^n - 2 :=\n  sorry\n\
-  \n\ntheorem solve_n_one (m : Nat) (h : m > 0) :\n  solve_non_periodic_strings 1\
-  \ m = 1 :=\n  sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval solve_non_periodic_strings\
-  \ 3 176\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval solve_non_periodic_strings 4\
-  \ 100\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve_non_periodic_strings 2 50\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Indian National Olympiad in Informatics 2015
+  A string is any nonempty sequence of 0s and 1s. Examples of strings are 00, 101, 111000, 1, 0, 01. The length of a string is the number of symbols in it. For example, the length of 111000 is 6. If u and v are strings, then uv is the string obtained by concatenating u and v. For example if u = 110 and v = 0010 then uv = 1100010.
+  A string w is periodic if there exists a string v such that w = vn = vv · · · v (n times), for some n ≥ 2. Note that in this case the length of v is strictly less than that of w. For example, 110110 is periodic, because it is vv for v = 110.
+  Given a positive integer N , find the number of strings of length N which are not periodic. Report the answer modulo M . The non-periodic strings of length 2 are 10 and 01. The non- periodic strings of length 3 are 001, 010, 011, 100, 101, and 110.
+
+  -----Input format-----
+  A single line, with two space-separated integers, N and M .
+
+  -----Output format-----
+  A single integer, the number of non-periodic strings of length N , modulo M .
+
+  -----Test Data-----
+  In all subtasks, 2 ≤ M ≤ 108. The testdata is grouped into 4 subtasks.
+  Subtask 1 (10 marks) 1 ≤ N ≤ 4000. N is the product of two distinct prime numbers.
+  Subtask 2 (20 marks) 1 ≤ N ≤ 4000. N is a power of a prime number.
+  Subtask 3 (35 marks) 1 ≤ N ≤ 4000.
+  Subtask 4 (35 marks) 1 ≤ N ≤ 150000.
+
+  -----Example-----
+  Here is the sample input and output corresponding to the example above:
+
+  -----Sample input-----
+  3 176
+
+  -----Sample output-----
+  6
+
+  Note: Your program should not print anything other than what is specified in the output format. Please remove all diagnostic print statements before making your final submission. A program with extraneous output will be treated as incorrect!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_non_periodic_strings (n : Nat) (m : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem solve_result_bounds (n m : Nat) 
+    (h1 : n ≥ 2) (h2 : n ≤ 10000) (h3 : m > 0) (h4 : m ≤ 1000000000) :
+    let result := solve_non_periodic_strings n m
+    result ≥ 0 ∧ result < m ∧ result < 2^n :=
+    sorry
+
+
+
+
+  theorem solve_small_n (n m : Nat)
+    (h1 : 2 ≤ n) (h2 : n ≤ 4) (h3 : m = 1000000000) :
+    let result := solve_non_periodic_strings n m
+    result > 0 ∧ result ≤ 2^n - 2 :=
+    sorry
+
+
+  theorem solve_n_one (m : Nat) (h : m > 0) :
+    solve_non_periodic_strings 1 m = 1 :=
+    sorry
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval solve_non_periodic_strings 3 176
+
+  /--
+  info: 12
+  -/
+  #guard_msgs in
+  #eval solve_non_periodic_strings 4 100
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve_non_periodic_strings 2 50
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

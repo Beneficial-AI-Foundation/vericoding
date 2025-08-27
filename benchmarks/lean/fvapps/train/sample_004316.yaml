@@ -1,21 +1,62 @@
-"vc-description": "Simple, given a string of words, return the length of the shortest\
-  \ word(s).\n\nString will never be empty and you do not need to account for different\
-  \ data types."
-"vc-preamble": "import Imports.AllImports\n\ndef min_list : List Nat → Nat \n  | []\
-  \ => 0\n  | (x::xs) => min x (min_list xs)\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_short (s : String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem find_short_is_shortest (s : String) :\n  find_short s = min_list\
-  \ ((s.split fun c => c = ' ').map String.length)\n  := by sorry\n\n\ntheorem find_short_positive\
-  \ (s : String) (h : s ≠ \"\") :\n  find_short s > 0 := by sorry\n\n\ntheorem find_short_not_longer_than_any_word\
-  \ (s : String) (w : String) \n  (h : w ∈ s.split fun c => c = ' ') :\n  find_short\
-  \ s ≤ w.length := by sorry\n\n\ntheorem find_short_empty (s : String) :\n  s = \"\
-  \" → find_short s = 0 := by sorry  \n\n\ntheorem find_short_single_word (s : String)\
-  \ (h : ¬ s.contains ' ') : \n  find_short s = s.length := by sorry\n\n\ntheorem\
-  \ find_short_two_words (s₁ s₂ : String) :\n  find_short (s₁ ++ \" \" ++ s₂) = min\
-  \ s₁.length s₂.length := by sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_short\
-  \ \"bitcoin take over the world maybe who knows perhaps\"\n\n/--\ninfo: 1\n-/\n\
-  #guard_msgs in\n#eval find_short \"i want to travel the world writing code one day\"\
-  \n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_short \"Lets all go on holiday\
-  \ somewhere very cold\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Simple, given a string of words, return the length of the shortest word(s).
+
+  String will never be empty and you do not need to account for different data types.
+vc-preamble: |
+  import Imports.AllImports
+
+  def min_list : List Nat → Nat 
+    | [] => 0
+    | (x::xs) => min x (min_list xs)
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_short (s : String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem find_short_is_shortest (s : String) :
+    find_short s = min_list ((s.split fun c => c = ' ').map String.length)
+    := by sorry
+
+
+  theorem find_short_positive (s : String) (h : s ≠ "") :
+    find_short s > 0 := by sorry
+
+
+  theorem find_short_not_longer_than_any_word (s : String) (w : String) 
+    (h : w ∈ s.split fun c => c = ' ') :
+    find_short s ≤ w.length := by sorry
+
+
+  theorem find_short_empty (s : String) :
+    s = "" → find_short s = 0 := by sorry  
+
+
+  theorem find_short_single_word (s : String) (h : ¬ s.contains ' ') : 
+    find_short s = s.length := by sorry
+
+
+  theorem find_short_two_words (s₁ s₂ : String) :
+    find_short (s₁ ++ " " ++ s₂) = min s₁.length s₂.length := by sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_short "bitcoin take over the world maybe who knows perhaps"
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_short "i want to travel the world writing code one day"
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_short "Lets all go on holiday somewhere very cold"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

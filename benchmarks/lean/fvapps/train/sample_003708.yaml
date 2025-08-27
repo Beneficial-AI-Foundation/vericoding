@@ -1,15 +1,50 @@
-"vc-description": "Write a function that takes an array/list of numbers and returns\
-  \ a number such that \n\nExplanation\ntotal([1,2,3,4,5]) => 48\n\n1+2=3--\\ 3+5\
-  \ =>     8 \\\n2+3=5--/ \\            ==  8+12=>20\\     \n          ==>5+7=> 12\
-  \ / \\           20+28 => 48\n3+4=7--\\ /            == 12+16=>28/\n4+5=9--/ 7+9\
-  \ =>     16  /\n\n\nif total([1,2,3]) => 8 then \n\n\nfirst+second => 3 \\\n   \
-  \                then 3+5 => 8\nsecond+third => 5 /\n\n\n### Examples\n```python\n\
-  total([-1,-1,-1]) => -4\ntotal([1,2,3,4])  => 20\n```\n\n**Note:** each array/list\
-  \ will have at least an element and all elements will be valid numbers."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def total (arr: List Int) : Int :=\n  sorry\n\n\n\n\n\n\n"
-"vc-theorems": "theorem total_sequence_property {arr: List Int} (h: arr.length ≥ 2)\
-  \ :\n  let first_iter := (arr.zip (arr.tail!)).map (fun p => p.1 + p.2)\n  first_iter.length\
-  \ = arr.length - 1 :=\nsorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Write a function that takes an array/list of numbers and returns a number such that 
+
+  Explanation
+  total([1,2,3,4,5]) => 48
+
+  1+2=3--\ 3+5 =>     8 \
+  2+3=5--/ \            ==  8+12=>20\     
+            ==>5+7=> 12 / \           20+28 => 48
+  3+4=7--\ /            == 12+16=>28/
+  4+5=9--/ 7+9 =>     16  /
+
+
+  if total([1,2,3]) => 8 then 
+
+
+  first+second => 3 \
+                     then 3+5 => 8
+  second+third => 5 /
+
+
+  ### Examples
+  ```python
+  total([-1,-1,-1]) => -4
+  total([1,2,3,4])  => 20
+  ```
+
+  **Note:** each array/list will have at least an element and all elements will be valid numbers.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def total (arr: List Int) : Int :=
+    sorry
+
+
+
+
+
+
+vc-theorems: |-
+  theorem total_sequence_property {arr: List Int} (h: arr.length ≥ 2) :
+    let first_iter := (arr.zip (arr.tail!)).map (fun p => p.1 + p.2)
+    first_iter.length = arr.length - 1 :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

@@ -1,18 +1,46 @@
-"vc-description": "Given a non-empty array of numbers, a0, a1, a2, … , an-1, where\
-  \ 0 ≤ ai < 231.\n\nFind the maximum result of ai XOR aj, where 0 ≤ i, j < n.\n\n\
-  Could you do this in O(n) runtime?\n\nExample:\n\nInput: [3, 10, 5, 25, 2, 8]\n\n\
-  Output: 28\n\nExplanation: The maximum result is 5 ^ 25 = 28."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_maximum_xor (nums : List Nat) : Nat := sorry\n\ntheorem\
-  \ find_maximum_xor_non_negative (nums : List Nat) (h : nums ≠ []) :\n  find_maximum_xor\
-  \ nums ≥ 0 := sorry\n"
-"vc-theorems": "theorem find_maximum_xor_upper_bound (nums : List Nat) (h : nums ≠\
-  \ []) :\n  find_maximum_xor nums ≤ List.foldr (fun i acc => \n    List.foldr (fun\
-  \ j acc' => max acc' (i.xor j)) acc nums\n  ) 0 nums := sorry\n\n\ntheorem find_maximum_xor_achievable\
-  \ (nums : List Nat) (h : nums.length > 1) :\n  ∃ i j, i < nums.length ∧ j < nums.length\
-  \ ∧ i < j ∧ \n    (nums.get ⟨i, sorry⟩).xor (nums.get ⟨j, sorry⟩) = find_maximum_xor\
-  \ nums := sorry\n\n\ntheorem find_maximum_xor_single_number (n : Nat) :\n  find_maximum_xor\
-  \ [n] = 0 := sorry\n\n\ntheorem find_maximum_xor_all_zeros (nums : List Nat) (h\
-  \ : nums ≠ []) \n  (h₂ : ∀ x ∈ nums, x = 0) :\n  find_maximum_xor nums = 0 := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Given a non-empty array of numbers, a0, a1, a2, … , an-1, where 0 ≤ ai < 231.
+
+  Find the maximum result of ai XOR aj, where 0 ≤ i, j < n.
+
+  Could you do this in O(n) runtime?
+
+  Example:
+
+  Input: [3, 10, 5, 25, 2, 8]
+
+  Output: 28
+
+  Explanation: The maximum result is 5 ^ 25 = 28.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_maximum_xor (nums : List Nat) : Nat := sorry
+
+  theorem find_maximum_xor_non_negative (nums : List Nat) (h : nums ≠ []) :
+    find_maximum_xor nums ≥ 0 := sorry
+vc-theorems: |-
+  theorem find_maximum_xor_upper_bound (nums : List Nat) (h : nums ≠ []) :
+    find_maximum_xor nums ≤ List.foldr (fun i acc => 
+      List.foldr (fun j acc' => max acc' (i.xor j)) acc nums
+    ) 0 nums := sorry
+
+
+  theorem find_maximum_xor_achievable (nums : List Nat) (h : nums.length > 1) :
+    ∃ i j, i < nums.length ∧ j < nums.length ∧ i < j ∧ 
+      (nums.get ⟨i, sorry⟩).xor (nums.get ⟨j, sorry⟩) = find_maximum_xor nums := sorry
+
+
+  theorem find_maximum_xor_single_number (n : Nat) :
+    find_maximum_xor [n] = 0 := sorry
+
+
+  theorem find_maximum_xor_all_zeros (nums : List Nat) (h : nums ≠ []) 
+    (h₂ : ∀ x ∈ nums, x = 0) :
+    find_maximum_xor nums = 0 := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

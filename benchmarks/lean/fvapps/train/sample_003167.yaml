@@ -1,31 +1,63 @@
-"vc-description": "Your friend won't stop texting his girlfriend.  It's all he does.\
-  \ All day. Seriously.  The texts are so mushy too! The whole situation just makes\
-  \ you feel ill.\nBeing the wonderful friend that you are, you hatch an evil plot.\
-  \  While he's sleeping, you take his phone and change the autocorrect options so\
-  \ that every time he types \"you\" or \"u\" it gets changed to \"your sister.\"\n\
-  \nWrite a function called autocorrect that takes a string and replaces all instances\
-  \ of \"you\" or \"u\" (not case sensitive) with \"your sister\" (always lower case).\n\
-  \nReturn the resulting string.\n\nHere's the slightly tricky part: These are text\
-  \ messages, so there are different forms of \"you\" and \"u\".\n\nFor the purposes\
-  \ of this kata, here's what you need to support:\n\n\"youuuuu\" with any number\
-  \ of u characters tacked onto the end\n\"u\" at the beginning, middle, or end of\
-  \ a string, but NOT part of a word\n\"you\" but NOT as part of another word like\
-  \ youtube or bayou"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def autocorrect (s : String) : String :=\n  sorry\n"
-"vc-theorems": "theorem basic_replacement (s : String)\n  (h : s = \"u\" ∨ (∃ n :\
-  \ Nat, s = \"y\" ++ String.mk (List.replicate n 'o') ++ \"u\")) :\n  autocorrect\
-  \ s = \"your sister\" := \n  sorry\n\n\ntheorem no_replacement (s : String)\n  (h\
-  \ : ∀ c ∈ s.data, c ≠ 'u' ∧ c ≠ 'y' ∧ c.isAlpha) :\n  autocorrect s = s :=\n  sorry\n\
-  \n\ntheorem multiple_replacements (ls : List String)\n  (h : ls ≠ [] ∧ ∀ s ∈ ls,\
-  \ s = \"u\" ∨ (∃ n : Nat, s = \"y\" ++ String.mk (List.replicate n 'o') ++ \"u\"\
-  )) :\n  autocorrect (String.intercalate \" \" ls) = \n    \"your sister\" ++ String.mk\
-  \ (List.replicate (ls.length - 1) ' ') ++ \n    String.intercalate \" \" (List.replicate\
-  \ (ls.length - 1) \"your sister\") :=\n  sorry\n\n/--\ninfo: 'I miss your sister!'\n\
-  -/\n#guard_msgs in\n#eval autocorrect \"I miss you!\"\n\n/--\ninfo: 'your sister\
-  \ want to go to the movies?'\n-/\n#guard_msgs in\n#eval autocorrect \"u want to\
-  \ go to the movies?\"\n\n/--\ninfo: 'I want to film the bayou with your sister and\
-  \ put it on youtube'\n-/\n#guard_msgs in\n#eval autocorrect \"I want to film the\
-  \ bayou with you and put it on youtube\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Your friend won't stop texting his girlfriend.  It's all he does. All day. Seriously.  The texts are so mushy too! The whole situation just makes you feel ill.
+  Being the wonderful friend that you are, you hatch an evil plot.  While he's sleeping, you take his phone and change the autocorrect options so that every time he types "you" or "u" it gets changed to "your sister."
+
+  Write a function called autocorrect that takes a string and replaces all instances of "you" or "u" (not case sensitive) with "your sister" (always lower case).
+
+  Return the resulting string.
+
+  Here's the slightly tricky part: These are text messages, so there are different forms of "you" and "u".
+
+  For the purposes of this kata, here's what you need to support:
+
+  "youuuuu" with any number of u characters tacked onto the end
+  "u" at the beginning, middle, or end of a string, but NOT part of a word
+  "you" but NOT as part of another word like youtube or bayou
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def autocorrect (s : String) : String :=
+    sorry
+vc-theorems: |
+  theorem basic_replacement (s : String)
+    (h : s = "u" ∨ (∃ n : Nat, s = "y" ++ String.mk (List.replicate n 'o') ++ "u")) :
+    autocorrect s = "your sister" := 
+    sorry
+
+
+  theorem no_replacement (s : String)
+    (h : ∀ c ∈ s.data, c ≠ 'u' ∧ c ≠ 'y' ∧ c.isAlpha) :
+    autocorrect s = s :=
+    sorry
+
+
+  theorem multiple_replacements (ls : List String)
+    (h : ls ≠ [] ∧ ∀ s ∈ ls, s = "u" ∨ (∃ n : Nat, s = "y" ++ String.mk (List.replicate n 'o') ++ "u")) :
+    autocorrect (String.intercalate " " ls) = 
+      "your sister" ++ String.mk (List.replicate (ls.length - 1) ' ') ++ 
+      String.intercalate " " (List.replicate (ls.length - 1) "your sister") :=
+    sorry
+
+  /--
+  info: 'I miss your sister!'
+  -/
+  #guard_msgs in
+  #eval autocorrect "I miss you!"
+
+  /--
+  info: 'your sister want to go to the movies?'
+  -/
+  #guard_msgs in
+  #eval autocorrect "u want to go to the movies?"
+
+  /--
+  info: 'I want to film the bayou with your sister and put it on youtube'
+  -/
+  #guard_msgs in
+  #eval autocorrect "I want to film the bayou with you and put it on youtube"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

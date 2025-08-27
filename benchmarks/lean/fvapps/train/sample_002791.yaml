@@ -1,30 +1,76 @@
-"vc-description": "Colour plays an important role in our lifes. Most of us like this\
-  \ colour better then another. User experience specialists believe that certain colours\
-  \ have certain psychological meanings for us.\n\nYou are given a 2D array, composed\
-  \ of a colour and its 'common' association in each array element. The function you\
-  \ will write needs to return the colour as 'key' and association as its 'value'.\n\
-  \nFor example:\n```python\nvar array = [[\"white\", \"goodness\"], ...] returns\
-  \ [{'white': 'goodness'}, ...]\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def colourAssociation {α β : Type} (pairs : List (α × β)) : List\
-  \ (Dict α β) :=\n  sorry\n"
-"vc-theorems": "theorem colourAssociation_length_eq\n  {α β : Type} [Inhabited α]\
-  \ [Inhabited β]\n  (pairs : List (α × β))\n  (h : pairs.length > 0) :\n  (colourAssociation\
-  \ pairs).length = pairs.length :=\nsorry\n\n\ntheorem colourAssociation_valid_structure\n\
-  \  {α β : Type} [Inhabited α] [Inhabited β]\n  (pairs : List (α × β))\n  (h : pairs.length\
-  \ > 0)\n  (i : Nat)\n  (hi : i < pairs.length) :\n  let result := colourAssociation\
-  \ pairs\n  have hi' : i < result.length := by\n    rw [colourAssociation_length_eq\
-  \ pairs h]\n    exact hi\n  (result[i]'hi').keys.length = 1 ∧ \n  (result[i]'hi').values.length\
-  \ = 1 ∧\n  (result[i]'hi').keys[0]! = (pairs[i]'hi).1 ∧\n  (result[i]'hi').values[0]!\
-  \ = (pairs[i]'hi).2 :=\nsorry\n\n\ntheorem colourAssociation_maintains_order\n \
-  \ {α β : Type} [Inhabited α] [Inhabited β]\n  (pairs : List (α × β))\n  (h : pairs.length\
-  \ > 0)\n  (i : Nat)\n  (hi : i < pairs.length) :\n  let result := colourAssociation\
-  \ pairs\n  have hi' : i < result.length := by\n    rw [colourAssociation_length_eq\
-  \ pairs h]\n    exact hi\n  (result[i]'hi').keys[0]! = (pairs[i]'hi).1 :=\nsorry\n\
-  \n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval colour_association [[\"white\"\
-  , \"goodness\"], [\"blue\", \"tranquility\"]]\n\n/--\ninfo: expected2\n-/\n#guard_msgs\
-  \ in\n#eval colour_association [[\"red\", \"energy\"], [\"yellow\", \"creativity\"\
-  ]]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval colour_association [[\"gray\"\
-  , \"intelligence\"], [\"black\", \"classy\"]]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Colour plays an important role in our lifes. Most of us like this colour better then another. User experience specialists believe that certain colours have certain psychological meanings for us.
+
+  You are given a 2D array, composed of a colour and its 'common' association in each array element. The function you will write needs to return the colour as 'key' and association as its 'value'.
+
+  For example:
+  ```python
+  var array = [["white", "goodness"], ...] returns [{'white': 'goodness'}, ...]
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def colourAssociation {α β : Type} (pairs : List (α × β)) : List (Dict α β) :=
+    sorry
+vc-theorems: |
+  theorem colourAssociation_length_eq
+    {α β : Type} [Inhabited α] [Inhabited β]
+    (pairs : List (α × β))
+    (h : pairs.length > 0) :
+    (colourAssociation pairs).length = pairs.length :=
+  sorry
+
+
+  theorem colourAssociation_valid_structure
+    {α β : Type} [Inhabited α] [Inhabited β]
+    (pairs : List (α × β))
+    (h : pairs.length > 0)
+    (i : Nat)
+    (hi : i < pairs.length) :
+    let result := colourAssociation pairs
+    have hi' : i < result.length := by
+      rw [colourAssociation_length_eq pairs h]
+      exact hi
+    (result[i]'hi').keys.length = 1 ∧ 
+    (result[i]'hi').values.length = 1 ∧
+    (result[i]'hi').keys[0]! = (pairs[i]'hi).1 ∧
+    (result[i]'hi').values[0]! = (pairs[i]'hi).2 :=
+  sorry
+
+
+  theorem colourAssociation_maintains_order
+    {α β : Type} [Inhabited α] [Inhabited β]
+    (pairs : List (α × β))
+    (h : pairs.length > 0)
+    (i : Nat)
+    (hi : i < pairs.length) :
+    let result := colourAssociation pairs
+    have hi' : i < result.length := by
+      rw [colourAssociation_length_eq pairs h]
+      exact hi
+    (result[i]'hi').keys[0]! = (pairs[i]'hi).1 :=
+  sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval colour_association [["white", "goodness"], ["blue", "tranquility"]]
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval colour_association [["red", "energy"], ["yellow", "creativity"]]
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval colour_association [["gray", "intelligence"], ["black", "classy"]]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

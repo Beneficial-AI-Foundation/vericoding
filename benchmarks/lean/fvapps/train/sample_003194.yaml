@@ -1,19 +1,61 @@
-"vc-description": "Given an array of integers as strings and numbers, return the sum\
-  \ of the array values as if all were numbers.\n\nReturn your answer as a number."
-"vc-preamble": "import Imports.AllImports\n\ndef sum_mix (arr : List (String ⊕ Int))\
-  \ : Int :=\n  sorry\n\n\ndef List.sum (xs : List Int) : Int :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def List.perm {α : Type} (xs ys : List α) : Prop :=\n  sorry\n"
-"vc-theorems": "theorem sum_mix_equals_int_conversion {arr : List (String ⊕ Int)}\
-  \ :\n  sum_mix arr = arr.foldl (fun acc x => acc + match x with \n             \
-  \                               | Sum.inl s => s.toInt!\n                      \
-  \                      | Sum.inr n => n) 0 := by\n  sorry\n\n\ntheorem sum_mix_order_independent\
-  \ {arr₁ arr₂ : List (String ⊕ Int)} :\n  List.perm arr₁ arr₂ → sum_mix arr₁ = sum_mix\
-  \ arr₂ := by\n  sorry\n\n\ntheorem sum_mix_all_ints {arr : List Int} :\n  sum_mix\
-  \ (arr.map Sum.inr) = List.sum arr := by\n  sorry\n\n\ntheorem sum_mix_all_strings\
-  \ {arr : List String} :\n  sum_mix (arr.map Sum.inl) = List.sum (arr.map String.toInt!)\
-  \ := by\n  sorry\n\n/--\ninfo: 22\n-/\n#guard_msgs in\n#eval sum_mix [9, 3, \"7\"\
-  , \"3\"]\n\n/--\ninfo: 42\n-/\n#guard_msgs in\n#eval sum_mix [\"5\", \"0\", 9, 3,\
-  \ 2, 1, \"9\", 6, 7]\n\n/--\ninfo: 41\n-/\n#guard_msgs in\n#eval sum_mix [\"3\"\
-  , 6, 6, 0, \"5\", 8, 5, \"6\", 2, \"0\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Given an array of integers as strings and numbers, return the sum of the array values as if all were numbers.
+
+  Return your answer as a number.
+vc-preamble: |
+  import Imports.AllImports
+
+  def sum_mix (arr : List (String ⊕ Int)) : Int :=
+    sorry
+
+
+  def List.sum (xs : List Int) : Int :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def List.perm {α : Type} (xs ys : List α) : Prop :=
+    sorry
+vc-theorems: |
+  theorem sum_mix_equals_int_conversion {arr : List (String ⊕ Int)} :
+    sum_mix arr = arr.foldl (fun acc x => acc + match x with 
+                                              | Sum.inl s => s.toInt!
+                                              | Sum.inr n => n) 0 := by
+    sorry
+
+
+  theorem sum_mix_order_independent {arr₁ arr₂ : List (String ⊕ Int)} :
+    List.perm arr₁ arr₂ → sum_mix arr₁ = sum_mix arr₂ := by
+    sorry
+
+
+  theorem sum_mix_all_ints {arr : List Int} :
+    sum_mix (arr.map Sum.inr) = List.sum arr := by
+    sorry
+
+
+  theorem sum_mix_all_strings {arr : List String} :
+    sum_mix (arr.map Sum.inl) = List.sum (arr.map String.toInt!) := by
+    sorry
+
+  /--
+  info: 22
+  -/
+  #guard_msgs in
+  #eval sum_mix [9, 3, "7", "3"]
+
+  /--
+  info: 42
+  -/
+  #guard_msgs in
+  #eval sum_mix ["5", "0", 9, 3, 2, 1, "9", 6, 7]
+
+  /--
+  info: 41
+  -/
+  #guard_msgs in
+  #eval sum_mix ["3", 6, 6, 0, "5", 8, 5, "6", 2, "0"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

@@ -1,34 +1,109 @@
-"vc-description": "# Definition (Primorial Of a Number)\n\n*Is similar to factorial\
-  \ of a number*, **_In primorial_**, not all the natural numbers get multiplied,\
-  \ **_only prime numbers are multiplied to calculate the primorial of a number_**.\
-  \ It's denoted with **_P_****_#_** and it is the product of the first n prime numbers.\n\
-  ___ \n\n# Task\n\n**_Given_** *a number N* , **_calculate its primorial_**. ![!alt](https://i.imgur.com/mdX8dJP.png)\
-  \  ![!alt](https://i.imgur.com/mdX8dJP.png)  \n___\n\n# Notes\n\n* **_Only positive_**\
-  \ numbers *will be passed (N > 0)* .\n___\n\n# Input >> Output Examples:\n\n```\
-  \ cpp\n1- numPrimorial (3) ==> return (30)\n```\n\n## **_Explanation_**:\n\n**_Since_**\
-  \ *the passed number is (3)* ,**_Then_** **_the primorial_** *should obtained by\
-  \ multiplying*  ```2 * 3 * 5 = 30 .```\n\n### Mathematically written as , **_P_**3**_#_**\
-  \ = 30 .\n___ \n\n## **_Explanation_**:\n\n**_Since_** *the passed number is (5)*\
-  \ ,**_Then_** **_the primorial_** *should obtained by multiplying*  ``` 2 * 3 *\
-  \ 5 * 7 * 11 = 2310 .```\n\n### Mathematically written as , **_P_**5**_#_** = 2310\
-  \ .\n___\n\n## **_Explanation_**: \n\n**_Since_** *the passed number is (6)* ,**_Then_**\
-  \ **_the primorial_** *should obtained by multiplying*  ``` 2 * 3 * 5 * 7 * 11 *\
-  \ 13 = 30030 .```\n\n### Mathematically written as , **_P_**6**_#_** = 30030 .\n\
-  ___\n___\n___\n\n# [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
-  \n# [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
-  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
-  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
-"vc-preamble": "import Imports.AllImports\n\ndef isPrime (n : Nat) : Bool :=\n  sorry\n\
-  \n\ndef getFirstNPrimes (n : Nat) : List Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def numPrimorial (n : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem primorial_equals_product_of_first_n_primes (n : Nat) \n  (h\
-  \ : n ≥ 1 ∧ n ≤ 10) : \n  numPrimorial n = (getFirstNPrimes n).foldl (·*·) 1 :=\n\
-  sorry\n\n\ntheorem primorial_is_strictly_increasing {n : Nat}\n  (h1 : n ≥ 1 ∧ n\
-  \ ≤ 10) (h2 : n > 1) :\n  numPrimorial n > numPrimorial (n-1) :=\nsorry\n\n\ntheorem\
-  \ primorial_is_divisible_by_smaller_primorials {n : Nat}\n  (h1 : n ≥ 1 ∧ n ≤ 10)\
-  \ (h2 : n > 1) :\n  numPrimorial n % numPrimorial (n-1) = 0 :=\nsorry\n\n/--\ninfo:\
-  \ 30\n-/\n#guard_msgs in\n#eval num_primorial 3\n\n/--\ninfo: 2310\n-/\n#guard_msgs\
-  \ in\n#eval num_primorial 5\n\n/--\ninfo: 9699690\n-/\n#guard_msgs in\n#eval num_primorial\
-  \ 8\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  # Definition (Primorial Of a Number)
+
+  *Is similar to factorial of a number*, **_In primorial_**, not all the natural numbers get multiplied, **_only prime numbers are multiplied to calculate the primorial of a number_**. It's denoted with **_P_****_#_** and it is the product of the first n prime numbers.
+  ___ 
+
+  # Task
+
+  **_Given_** *a number N* , **_calculate its primorial_**. ![!alt](https://i.imgur.com/mdX8dJP.png)  ![!alt](https://i.imgur.com/mdX8dJP.png)  
+  ___
+
+  # Notes
+
+  * **_Only positive_** numbers *will be passed (N > 0)* .
+  ___
+
+  # Input >> Output Examples:
+
+  ``` cpp
+  1- numPrimorial (3) ==> return (30)
+  ```
+
+  ## **_Explanation_**:
+
+  **_Since_** *the passed number is (3)* ,**_Then_** **_the primorial_** *should obtained by multiplying*  ```2 * 3 * 5 = 30 .```
+
+  ### Mathematically written as , **_P_**3**_#_** = 30 .
+  ___ 
+
+  ## **_Explanation_**:
+
+  **_Since_** *the passed number is (5)* ,**_Then_** **_the primorial_** *should obtained by multiplying*  ``` 2 * 3 * 5 * 7 * 11 = 2310 .```
+
+  ### Mathematically written as , **_P_**5**_#_** = 2310 .
+  ___
+
+  ## **_Explanation_**: 
+
+  **_Since_** *the passed number is (6)* ,**_Then_** **_the primorial_** *should obtained by multiplying*  ``` 2 * 3 * 5 * 7 * 11 * 13 = 30030 .```
+
+  ### Mathematically written as , **_P_**6**_#_** = 30030 .
+  ___
+  ___
+  ___
+
+  # [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)
+
+  # [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)
+
+  # [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)
+  ___
+
+  ## ALL translations are welcomed
+
+  ## Enjoy Learning !!
+  # Zizou
+vc-preamble: |
+  import Imports.AllImports
+
+  def isPrime (n : Nat) : Bool :=
+    sorry
+
+
+  def getFirstNPrimes (n : Nat) : List Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def numPrimorial (n : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem primorial_equals_product_of_first_n_primes (n : Nat) 
+    (h : n ≥ 1 ∧ n ≤ 10) : 
+    numPrimorial n = (getFirstNPrimes n).foldl (·*·) 1 :=
+  sorry
+
+
+  theorem primorial_is_strictly_increasing {n : Nat}
+    (h1 : n ≥ 1 ∧ n ≤ 10) (h2 : n > 1) :
+    numPrimorial n > numPrimorial (n-1) :=
+  sorry
+
+
+  theorem primorial_is_divisible_by_smaller_primorials {n : Nat}
+    (h1 : n ≥ 1 ∧ n ≤ 10) (h2 : n > 1) :
+    numPrimorial n % numPrimorial (n-1) = 0 :=
+  sorry
+
+  /--
+  info: 30
+  -/
+  #guard_msgs in
+  #eval num_primorial 3
+
+  /--
+  info: 2310
+  -/
+  #guard_msgs in
+  #eval num_primorial 5
+
+  /--
+  info: 9699690
+  -/
+  #guard_msgs in
+  #eval num_primorial 8
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

@@ -1,19 +1,46 @@
-"vc-description": "HELP! Jason can't find his textbook! It is two days before the\
-  \ test date, and Jason's textbooks are all out of order! Help him sort a list (ArrayList\
-  \ in java) full of textbooks by subject, so he can study before the test.\n\nThe\
-  \ sorting should **NOT** be case sensitive"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sorter (texts : List String) : List String := sorry \n\ntheorem\
-  \ sorter_maintains_length (texts : List String) : \n  List.length (sorter texts)\
-  \ = List.length texts := sorry\n"
-"vc-theorems": "theorem sorter_same_elements (texts : List String) :\n  ∀ x, x ∈ sorter\
-  \ texts ↔ x ∈ texts := sorry\n\n\ntheorem sorter_case_insensitive_sorted (texts\
-  \ : List String) (i : Nat) :\n  i < (sorter texts).length - 1 →\n  String.toLower\
-  \ ((sorter texts).get! i) ≤ String.toLower ((sorter texts).get! (i+1)) := sorry\n\
-  \n\ntheorem sorter_empty : sorter [] = [] := sorry\n\n/--\ninfo: expected1\n-/\n\
-  #guard_msgs in\n#eval sorter [\"Algebra\", \"History\", \"Geometry\", \"English\"\
-  ]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval sorter [\"Algebra\", \"history\"\
-  , \"Geometry\", \"english\"]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval\
-  \ sorter [\"Alg#bra\", \"$istory\", \"Geom^try\", \"**english\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  HELP! Jason can't find his textbook! It is two days before the test date, and Jason's textbooks are all out of order! Help him sort a list (ArrayList in java) full of textbooks by subject, so he can study before the test.
+
+  The sorting should **NOT** be case sensitive
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sorter (texts : List String) : List String := sorry 
+
+  theorem sorter_maintains_length (texts : List String) : 
+    List.length (sorter texts) = List.length texts := sorry
+vc-theorems: |
+  theorem sorter_same_elements (texts : List String) :
+    ∀ x, x ∈ sorter texts ↔ x ∈ texts := sorry
+
+
+  theorem sorter_case_insensitive_sorted (texts : List String) (i : Nat) :
+    i < (sorter texts).length - 1 →
+    String.toLower ((sorter texts).get! i) ≤ String.toLower ((sorter texts).get! (i+1)) := sorry
+
+
+  theorem sorter_empty : sorter [] = [] := sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval sorter ["Algebra", "History", "Geometry", "English"]
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval sorter ["Algebra", "history", "Geometry", "english"]
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval sorter ["Alg#bra", "$istory", "Geom^try", "**english"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

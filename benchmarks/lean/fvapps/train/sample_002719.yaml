@@ -1,16 +1,44 @@
-"vc-description": "Write function ```splitSentence``` which will create a list of\
-  \ strings from a string.\n\nExample:\n\n```\"hello world\" -> [\"hello\", \"world\"\
-  ]```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def splitSentence (s : String) : List String := sorry\n\ntheorem\
-  \ split_sentence_rejoin (s : String) : \n  String.intercalate \" \" (splitSentence\
-  \ s) = String.intercalate \" \" (s.split (· = ' ')) := sorry\n"
-"vc-theorems": "theorem split_sentence_nonempty_parts (s : String) :\n  ∀ part ∈ splitSentence\
-  \ s, part.length > 0 := sorry\n\n\ntheorem split_sentence_no_whitespace (s : String)\
-  \ :\n  ∀ part ∈ splitSentence s, ' ' ∉ part.data := sorry\n\n/--\ninfo: ['This',\
-  \ 'string', 'is', 'splitsville']\n-/\n#guard_msgs in\n#eval splitSentence \"This\
-  \ string is splitsville\"\n\n/--\ninfo: ['something']\n-/\n#guard_msgs in\n#eval\
-  \ splitSentence \"something\"\n\n/--\ninfo: ['hello', 'world']\n-/\n#guard_msgs\
-  \ in\n#eval splitSentence \"hello world\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write function ```splitSentence``` which will create a list of strings from a string.
+
+  Example:
+
+  ```"hello world" -> ["hello", "world"]```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def splitSentence (s : String) : List String := sorry
+
+  theorem split_sentence_rejoin (s : String) : 
+    String.intercalate " " (splitSentence s) = String.intercalate " " (s.split (· = ' ')) := sorry
+vc-theorems: |
+  theorem split_sentence_nonempty_parts (s : String) :
+    ∀ part ∈ splitSentence s, part.length > 0 := sorry
+
+
+  theorem split_sentence_no_whitespace (s : String) :
+    ∀ part ∈ splitSentence s, ' ' ∉ part.data := sorry
+
+  /--
+  info: ['This', 'string', 'is', 'splitsville']
+  -/
+  #guard_msgs in
+  #eval splitSentence "This string is splitsville"
+
+  /--
+  info: ['something']
+  -/
+  #guard_msgs in
+  #eval splitSentence "something"
+
+  /--
+  info: ['hello', 'world']
+  -/
+  #guard_msgs in
+  #eval splitSentence "hello world"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

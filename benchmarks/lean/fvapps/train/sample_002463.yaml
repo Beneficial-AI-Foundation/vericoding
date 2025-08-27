@@ -1,31 +1,69 @@
-"vc-description": "=====Problem Statement=====\nAn extra day is added to the calendar\
-  \ almost every four years as February 29, and the day is called a leap day. It corrects\
-  \ the calendar for the fact that our planet takes approximately 365.25 days to orbit\
-  \ the sun. A leap year contains a leap day.\n\nIn the Gregorian calendar, three\
-  \ conditions are used to identify leap years:\n    The year can be evenly divided\
-  \ by 4, is a leap year, unless:\n        The year can be evenly divided by 100,\
-  \ it is NOT a leap year, unless:\n            The year is also evenly divisible\
-  \ by 400. Then it is a leap year.\n\nThis means that in the Gregorian calendar,\
-  \ the years 2000 and 2400 are leap years, while 1800, 1900, 2100, 2200, 2300 and\
-  \ 2500 are NOT leap years. Source\n\nTask\nGiven a year, determine whether it is\
-  \ a leap year. If it is a leap year, return the Boolean True, otherwise return False.\n\
-  Note that the code stub provided reads from STDIN and passes arguments to the is_leap\
-  \ function. It is only necessary to complete the is_leap function.\n\n=====Input\
-  \ Format=====\nRead year, the year to test.\n\n=====Constraints=====\n1900≤year≤10^5\n\
-  \n=====Output Format=====\nThe function must return a Boolean value (True/False).\
-  \ Output is handled by the provided code stub."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isLeap (year : Int) : Bool := sorry\n\ntheorem leap_year_400\
-  \ (year : Int) (h : year > 0) (h400 : year % 400 = 0) : \n  isLeap year = true :=\
-  \ sorry\n"
-"vc-theorems": "theorem leap_year_100 (year : Int) (h : year > 0) (h100 : year % 100\
-  \ = 0) (h400 : year % 400 ≠ 0) :\n  isLeap year = false := sorry\n\n\ntheorem leap_year_4\
-  \ (year : Int) (h : year > 0) (h4 : year % 4 = 0) (h100 : year % 100 ≠ 0) :\n  isLeap\
-  \ year = true := sorry\n\n\ntheorem non_leap_year (year : Int) (h : year > 0) (h4\
-  \ : year % 4 ≠ 0) :\n  isLeap year = false := sorry\n\n\ntheorem nonpositive_years\
-  \ (year : Int) (h : year ≤ 0) :\n  isLeap year = true ∨ isLeap year = false := sorry\n\
-  \n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_leap 1990\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval is_leap 2000\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
-  #eval is_leap 1900\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  =====Problem Statement=====
+  An extra day is added to the calendar almost every four years as February 29, and the day is called a leap day. It corrects the calendar for the fact that our planet takes approximately 365.25 days to orbit the sun. A leap year contains a leap day.
+
+  In the Gregorian calendar, three conditions are used to identify leap years:
+      The year can be evenly divided by 4, is a leap year, unless:
+          The year can be evenly divided by 100, it is NOT a leap year, unless:
+              The year is also evenly divisible by 400. Then it is a leap year.
+
+  This means that in the Gregorian calendar, the years 2000 and 2400 are leap years, while 1800, 1900, 2100, 2200, 2300 and 2500 are NOT leap years. Source
+
+  Task
+  Given a year, determine whether it is a leap year. If it is a leap year, return the Boolean True, otherwise return False.
+  Note that the code stub provided reads from STDIN and passes arguments to the is_leap function. It is only necessary to complete the is_leap function.
+
+  =====Input Format=====
+  Read year, the year to test.
+
+  =====Constraints=====
+  1900≤year≤10^5
+
+  =====Output Format=====
+  The function must return a Boolean value (True/False). Output is handled by the provided code stub.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isLeap (year : Int) : Bool := sorry
+
+  theorem leap_year_400 (year : Int) (h : year > 0) (h400 : year % 400 = 0) : 
+    isLeap year = true := sorry
+vc-theorems: |
+  theorem leap_year_100 (year : Int) (h : year > 0) (h100 : year % 100 = 0) (h400 : year % 400 ≠ 0) :
+    isLeap year = false := sorry
+
+
+  theorem leap_year_4 (year : Int) (h : year > 0) (h4 : year % 4 = 0) (h100 : year % 100 ≠ 0) :
+    isLeap year = true := sorry
+
+
+  theorem non_leap_year (year : Int) (h : year > 0) (h4 : year % 4 ≠ 0) :
+    isLeap year = false := sorry
+
+
+  theorem nonpositive_years (year : Int) (h : year ≤ 0) :
+    isLeap year = true ∨ isLeap year = false := sorry
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_leap 1990
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_leap 2000
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_leap 1900
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

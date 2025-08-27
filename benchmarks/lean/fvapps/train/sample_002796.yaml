@@ -1,16 +1,58 @@
-"vc-description": "Complete the function that takes two integers (`a, b`, where `a\
-  \ < b`) and return an array of all integers between the input parameters, **including**\
-  \ them.\n\nFor example:\n```\na = 1\nb = 4\n--> [1, 2, 3, 4]\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def between (a b : Int) : List Int :=\n  sorry\n"
-"vc-theorems": "theorem between_length_matches_inputs {a b : Int} (h : a ≤ b) :\n\
-  \  (between a b).length = b - a + 1 :=\n  sorry\n\n\ntheorem between_sequential\
-  \ {a b : Int} (h : a ≤ b) :\n  ∀ i h1 h2, ((between a b)[i+1]'h1 = (between a b)[i]'h2\
-  \ + 1) :=\n  sorry\n\n\ntheorem between_bounds {a b : Int} (h : a ≤ b) :\n  (between\
-  \ a b).head? = some a ∧ \n  (between a b).getLast? = some b :=\n  sorry\n\n\ntheorem\
-  \ between_all_integers {a b : Int} (h : a ≤ b) :\n  ∀ x, x ∈ between a b → x = x\
-  \ :=\n  sorry\n\n/--\ninfo: [1, 2, 3, 4]\n-/\n#guard_msgs in\n#eval between 1 4\n\
-  \n/--\ninfo: [-2, -1, 0, 1, 2]\n-/\n#guard_msgs in\n#eval between -2 2\n\n/--\n\
-  info: [-1, 0, 1]\n-/\n#guard_msgs in\n#eval between -1 1\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Complete the function that takes two integers (`a, b`, where `a < b`) and return an array of all integers between the input parameters, **including** them.
+
+  For example:
+  ```
+  a = 1
+  b = 4
+  --> [1, 2, 3, 4]
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def between (a b : Int) : List Int :=
+    sorry
+vc-theorems: |
+  theorem between_length_matches_inputs {a b : Int} (h : a ≤ b) :
+    (between a b).length = b - a + 1 :=
+    sorry
+
+
+  theorem between_sequential {a b : Int} (h : a ≤ b) :
+    ∀ i h1 h2, ((between a b)[i+1]'h1 = (between a b)[i]'h2 + 1) :=
+    sorry
+
+
+  theorem between_bounds {a b : Int} (h : a ≤ b) :
+    (between a b).head? = some a ∧ 
+    (between a b).getLast? = some b :=
+    sorry
+
+
+  theorem between_all_integers {a b : Int} (h : a ≤ b) :
+    ∀ x, x ∈ between a b → x = x :=
+    sorry
+
+  /--
+  info: [1, 2, 3, 4]
+  -/
+  #guard_msgs in
+  #eval between 1 4
+
+  /--
+  info: [-2, -1, 0, 1, 2]
+  -/
+  #guard_msgs in
+  #eval between -2 2
+
+  /--
+  info: [-1, 0, 1]
+  -/
+  #guard_msgs in
+  #eval between -1 1
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

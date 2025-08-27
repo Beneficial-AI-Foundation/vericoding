@@ -1,18 +1,55 @@
-"vc-description": "You are given an array of integers. Your task is to sort odd numbers\
-  \ within the array in ascending order, and even numbers in descending order.\n\n\
-  Note that zero is an even number. If you have an empty array, you need to return\
-  \ it.\n\n\nFor example:\n```\n[5, 3, 2, 8, 1, 4]  -->  [1, 3, 8, 4, 5, 2]\n\nodd\
-  \ numbers ascending:   [1, 3,       5   ]\neven numbers descending: [      8, 4,\
-  \    2]\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sort_array (arr : List Int) : List Int := sorry\n\ntheorem\
-  \ sort_array_preserves_length {arr : List Int} : \n  (sort_array arr).length = arr.length\
-  \ := sorry\n\n\n\n\n"
-"vc-theorems": "theorem sort_array_preserves_elements {arr : List Int} :\n  ∀ x, (List.count\
-  \ x arr) = (List.count x (sort_array arr)) := sorry\n\n\ntheorem sort_array_empty\
-  \ :\n  sort_array [] = [] := sorry\n\n/--\ninfo: [1, 3, 8, 4, 5, 2]\n-/\n#guard_msgs\
-  \ in\n#eval sort_array [5, 3, 2, 8, 1, 4]\n\n/--\ninfo: [22, 4, 1, 5, 2, 11, 37,\
-  \ 0]\n-/\n#guard_msgs in\n#eval sort_array [2, 22, 37, 11, 4, 1, 5, 0]\n\n/--\n\
-  info: []\n-/\n#guard_msgs in\n#eval sort_array []\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  You are given an array of integers. Your task is to sort odd numbers within the array in ascending order, and even numbers in descending order.
+
+  Note that zero is an even number. If you have an empty array, you need to return it.
+
+
+  For example:
+  ```
+  [5, 3, 2, 8, 1, 4]  -->  [1, 3, 8, 4, 5, 2]
+
+  odd numbers ascending:   [1, 3,       5   ]
+  even numbers descending: [      8, 4,    2]
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def sort_array (arr : List Int) : List Int := sorry
+
+  theorem sort_array_preserves_length {arr : List Int} : 
+    (sort_array arr).length = arr.length := sorry
+
+
+
+
+vc-theorems: |
+  theorem sort_array_preserves_elements {arr : List Int} :
+    ∀ x, (List.count x arr) = (List.count x (sort_array arr)) := sorry
+
+
+  theorem sort_array_empty :
+    sort_array [] = [] := sorry
+
+  /--
+  info: [1, 3, 8, 4, 5, 2]
+  -/
+  #guard_msgs in
+  #eval sort_array [5, 3, 2, 8, 1, 4]
+
+  /--
+  info: [22, 4, 1, 5, 2, 11, 37, 0]
+  -/
+  #guard_msgs in
+  #eval sort_array [2, 22, 37, 11, 4, 1, 5, 0]
+
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval sort_array []
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

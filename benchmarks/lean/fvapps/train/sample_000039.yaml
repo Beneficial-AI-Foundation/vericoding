@@ -1,56 +1,104 @@
-"vc-description": "After a long party Petya decided to return home, but he turned\
-  \ out to be at the opposite end of the town from his home. There are $n$ crossroads\
-  \ in the line in the town, and there is either the bus or the tram station at each\
-  \ crossroad.\n\nThe crossroads are represented as a string $s$ of length $n$, where\
-  \ $s_i = \\texttt{A}$, if there is a bus station at $i$-th crossroad, and $s_i =\
-  \ \\texttt{B}$, if there is a tram station at $i$-th crossroad. Currently Petya\
-  \ is at the first crossroad (which corresponds to $s_1$) and his goal is to get\
-  \ to the last crossroad (which corresponds to $s_n$).\n\nIf for two crossroads $i$\
-  \ and $j$ for all crossroads $i, i+1, \\ldots, j-1$ there is a bus station, one\
-  \ can pay $a$ roubles for the bus ticket, and go from $i$-th crossroad to the $j$-th\
-  \ crossroad by the bus (it is not necessary to have a bus station at the $j$-th\
-  \ crossroad). Formally, paying $a$ roubles Petya can go from $i$ to $j$ if $s_t\
-  \ = \\texttt{A}$ for all $i \\le t < j$. \n\nIf for two crossroads $i$ and $j$ for\
-  \ all crossroads $i, i+1, \\ldots, j-1$ there is a tram station, one can pay $b$\
-  \ roubles for the tram ticket, and go from $i$-th crossroad to the $j$-th crossroad\
-  \ by the tram (it is not necessary to have a tram station at the $j$-th crossroad).\
-  \ Formally, paying $b$ roubles Petya can go from $i$ to $j$ if $s_t = \\texttt{B}$\
-  \ for all $i \\le t < j$.\n\nFor example, if $s$=\"AABBBAB\", $a=4$ and $b=3$ then\
-  \ Petya needs:[Image]  buy one bus ticket to get from $1$ to $3$,  buy one tram\
-  \ ticket to get from $3$ to $6$,  buy one bus ticket to get from $6$ to $7$. \n\n\
-  Thus, in total he needs to spend $4+3+4=11$ roubles. Please note that the type of\
-  \ the stop at the last crossroad (i.e. the character $s_n$) does not affect the\
-  \ final expense.\n\nNow Petya is at the first crossroad, and he wants to get to\
-  \ the $n$-th crossroad. After the party he has left with $p$ roubles. He's decided\
-  \ to go to some station on foot, and then go to home using only public transport.\n\
-  \nHelp him to choose the closest crossroad $i$ to go on foot the first, so he has\
-  \ enough money to get from the $i$-th crossroad to the $n$-th, using only tram and\
-  \ bus tickets.\n\n\n-----Input-----\n\nEach test contains one or more test cases.\
-  \ The first line contains the number of test cases $t$ ($1 \\le t \\le 10^4$).\n\
-  \nThe first line of each test case consists of three integers $a, b, p$ ($1 \\le\
-  \ a, b, p \\le 10^5$) — the cost of bus ticket, the cost of tram ticket and the\
-  \ amount of money Petya has.\n\nThe second line of each test case consists of one\
-  \ string $s$, where $s_i = \\texttt{A}$, if there is a bus station at $i$-th crossroad,\
-  \ and $s_i = \\texttt{B}$, if there is a tram station at $i$-th crossroad ($2 \\\
-  le |s| \\le 10^5$).\n\nIt is guaranteed, that the sum of the length of strings $s$\
-  \ by all test cases in one test doesn't exceed $10^5$.\n\n\n-----Output-----\n\n\
-  For each test case print one number — the minimal index $i$ of a crossroad Petya\
-  \ should go on foot. The rest of the path (i.e. from $i$ to $n$ he should use public\
-  \ transport).\n\n\n-----Example-----\nInput\n5\n2 2 1\nBB\n1 1 1\nAB\n3 2 8\nAABBBBAABB\n\
-  5 3 4\nBBBBB\n2 1 1\nABABAB\n\nOutput\n2\n1\n3\n1\n6"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_min_start_point (cost1: Nat) (cost2: Nat) (cost3: Nat)\
-  \ (str: String) : Nat := sorry\n\n-- Single character string theorems"
-"vc-theorems": "theorem single_A_start_point (c: Nat) :\n  c > 0 → find_min_start_point\
-  \ c c c \"A\" = (1 : Nat) := sorry\n\n\ntheorem single_B_start_point (c: Nat) :\n\
-  \  c > 0 → find_min_start_point c c c \"B\" = (1 : Nat) := sorry\n\n-- Example case\
-  \ theorems\n\ntheorem two_B_start_point :\n  find_min_start_point (2 : Nat) (2 :\
-  \ Nat) (1 : Nat) \"BB\" = (2 : Nat) := sorry\n\n\ntheorem AB_start_point :\n  find_min_start_point\
-  \ (1 : Nat) (1 : Nat) (1 : Nat) \"AB\" = (1 : Nat) := sorry\n\n\ntheorem long_string_start_point\
-  \ :\n  find_min_start_point (3 : Nat) (2 : Nat) (8 : Nat) \"AABBBBAABB\" = (3 :\
-  \ Nat) := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_min_start_point\
-  \ 2 2 1 \"BB\"\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_min_start_point 1\
-  \ 1 1 \"AB\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_min_start_point 3 2\
-  \ 8 \"AABBBBAABB\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  After a long party Petya decided to return home, but he turned out to be at the opposite end of the town from his home. There are $n$ crossroads in the line in the town, and there is either the bus or the tram station at each crossroad.
+
+  The crossroads are represented as a string $s$ of length $n$, where $s_i = \texttt{A}$, if there is a bus station at $i$-th crossroad, and $s_i = \texttt{B}$, if there is a tram station at $i$-th crossroad. Currently Petya is at the first crossroad (which corresponds to $s_1$) and his goal is to get to the last crossroad (which corresponds to $s_n$).
+
+  If for two crossroads $i$ and $j$ for all crossroads $i, i+1, \ldots, j-1$ there is a bus station, one can pay $a$ roubles for the bus ticket, and go from $i$-th crossroad to the $j$-th crossroad by the bus (it is not necessary to have a bus station at the $j$-th crossroad). Formally, paying $a$ roubles Petya can go from $i$ to $j$ if $s_t = \texttt{A}$ for all $i \le t < j$. 
+
+  If for two crossroads $i$ and $j$ for all crossroads $i, i+1, \ldots, j-1$ there is a tram station, one can pay $b$ roubles for the tram ticket, and go from $i$-th crossroad to the $j$-th crossroad by the tram (it is not necessary to have a tram station at the $j$-th crossroad). Formally, paying $b$ roubles Petya can go from $i$ to $j$ if $s_t = \texttt{B}$ for all $i \le t < j$.
+
+  For example, if $s$="AABBBAB", $a=4$ and $b=3$ then Petya needs:[Image]  buy one bus ticket to get from $1$ to $3$,  buy one tram ticket to get from $3$ to $6$,  buy one bus ticket to get from $6$ to $7$. 
+
+  Thus, in total he needs to spend $4+3+4=11$ roubles. Please note that the type of the stop at the last crossroad (i.e. the character $s_n$) does not affect the final expense.
+
+  Now Petya is at the first crossroad, and he wants to get to the $n$-th crossroad. After the party he has left with $p$ roubles. He's decided to go to some station on foot, and then go to home using only public transport.
+
+  Help him to choose the closest crossroad $i$ to go on foot the first, so he has enough money to get from the $i$-th crossroad to the $n$-th, using only tram and bus tickets.
+
+
+  -----Input-----
+
+  Each test contains one or more test cases. The first line contains the number of test cases $t$ ($1 \le t \le 10^4$).
+
+  The first line of each test case consists of three integers $a, b, p$ ($1 \le a, b, p \le 10^5$) — the cost of bus ticket, the cost of tram ticket and the amount of money Petya has.
+
+  The second line of each test case consists of one string $s$, where $s_i = \texttt{A}$, if there is a bus station at $i$-th crossroad, and $s_i = \texttt{B}$, if there is a tram station at $i$-th crossroad ($2 \le |s| \le 10^5$).
+
+  It is guaranteed, that the sum of the length of strings $s$ by all test cases in one test doesn't exceed $10^5$.
+
+
+  -----Output-----
+
+  For each test case print one number — the minimal index $i$ of a crossroad Petya should go on foot. The rest of the path (i.e. from $i$ to $n$ he should use public transport).
+
+
+  -----Example-----
+  Input
+  5
+  2 2 1
+  BB
+  1 1 1
+  AB
+  3 2 8
+  AABBBBAABB
+  5 3 4
+  BBBBB
+  2 1 1
+  ABABAB
+
+  Output
+  2
+  1
+  3
+  1
+  6
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def find_min_start_point (cost1: Nat) (cost2: Nat) (cost3: Nat) (str: String) : Nat := sorry
+
+  -- Single character string theorems
+vc-theorems: |
+  theorem single_A_start_point (c: Nat) :
+    c > 0 → find_min_start_point c c c "A" = (1 : Nat) := sorry
+
+
+  theorem single_B_start_point (c: Nat) :
+    c > 0 → find_min_start_point c c c "B" = (1 : Nat) := sorry
+
+  -- Example case theorems
+
+  theorem two_B_start_point :
+    find_min_start_point (2 : Nat) (2 : Nat) (1 : Nat) "BB" = (2 : Nat) := sorry
+
+
+  theorem AB_start_point :
+    find_min_start_point (1 : Nat) (1 : Nat) (1 : Nat) "AB" = (1 : Nat) := sorry
+
+
+  theorem long_string_start_point :
+    find_min_start_point (3 : Nat) (2 : Nat) (8 : Nat) "AABBBBAABB" = (3 : Nat) := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_min_start_point 2 2 1 "BB"
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_min_start_point 1 1 1 "AB"
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_min_start_point 3 2 8 "AABBBBAABB"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

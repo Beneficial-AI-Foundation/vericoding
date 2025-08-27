@@ -1,34 +1,133 @@
-"vc-description": "Given an input string (s) and a pattern (p), implement regular\
-  \ expression matching with support for '.' and '*'.\n\n\n'.' Matches any single\
-  \ character.\n'*' Matches zero or more of the preceding element.\n\n\nThe matching\
-  \ should cover the entire input string (not partial).\n\nNote:\n\n\n       s could\
-  \ be empty and contains only lowercase letters a-z.\n       p could be empty and\
-  \ contains only lowercase letters a-z, and characters like . or *.\n\n\nExample\
-  \ 1:\n\n\nInput:\ns = \"aa\"\np = \"a\"\nOutput: false\nExplanation: \"a\" does\
-  \ not match the entire string \"aa\".\n\n\nExample 2:\n\n\nInput:\ns = \"aa\"\n\
-  p = \"a*\"\nOutput: true\nExplanation: '*' means zero or more of the precedeng element,\
-  \ 'a'. Therefore, by repeating 'a' once, it becomes \"aa\".\n\n\nExample 3:\n\n\n\
-  Input:\ns = \"ab\"\np = \".*\"\nOutput: true\nExplanation: \".*\" means \"zero or\
-  \ more (*) of any character (.)\".\n\n\nExample 4:\n\n\nInput:\ns = \"aab\"\np =\
-  \ \"c*a*b\"\nOutput: true\nExplanation: c can be repeated 0 times, a can be repeated\
-  \ 1 time. Therefore it matches \"aab\".\n\n\nExample 5:\n\n\nInput:\ns = \"mississippi\"\
-  \np = \"mis*is*p*.\"\nOutput: false"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isMatch (s : String) (p : String) : Bool := sorry \n\n@[simp]"
-"vc-theorems": "theorem empty_pattern_matches_empty_string (s : String) : \n  isMatch\
-  \ s \"\" = !s.isEmpty = false := by sorry\n\n@[simp]\n\ntheorem dot_star_matches_everything\
-  \ (s : String) : \n  isMatch s \".*\" = true := by sorry \n\n@[simp]\n\ntheorem\
-  \ pattern_without_special_chars_exact_match (s p : String) \n  (h1 : ∀ c ∈ p.data,\
-  \ c ≠ '*' ∧ c ≠ '.') :\n  isMatch s p = (s = p) := by sorry\n\n@[simp]\n\ntheorem\
-  \ star_matches_zero_or_more (s : String) :\n  isMatch s \"a*\" = (∀ c ∈ s.data,\
-  \ c = 'a') := by sorry\n\n@[simp]\n\ntheorem self_matching (s : String) :\n  isMatch\
-  \ s s = true := by sorry\n\n@[simp]\n\ntheorem dots_match_same_length (s : String)\
-  \ :\n  isMatch s (String.mk (List.replicate s.length '.')) = true := by sorry\n\n\
-  @[simp]\n\ntheorem empty_string_cases_1 : isMatch \"\" \"\" = true := by sorry\n\
-  @[simp]\n\ntheorem empty_string_cases_2 : isMatch \"\" \"a*\" = true := by sorry\n\
-  @[simp] \n\ntheorem empty_string_cases_3 : isMatch \"a\" \"\" = false := by sorry\n\
-  \n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_match \"aa\" \"a\"\n\n/--\ninfo:\
-  \ True\n-/\n#guard_msgs in\n#eval is_match \"aa\" \"a*\"\n\n/--\ninfo: True\n-/\n\
-  #guard_msgs in\n#eval is_match \"ab\" \".*\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
+
+
+  '.' Matches any single character.
+  '*' Matches zero or more of the preceding element.
+
+
+  The matching should cover the entire input string (not partial).
+
+  Note:
+
+
+         s could be empty and contains only lowercase letters a-z.
+         p could be empty and contains only lowercase letters a-z, and characters like . or *.
+
+
+  Example 1:
+
+
+  Input:
+  s = "aa"
+  p = "a"
+  Output: false
+  Explanation: "a" does not match the entire string "aa".
+
+
+  Example 2:
+
+
+  Input:
+  s = "aa"
+  p = "a*"
+  Output: true
+  Explanation: '*' means zero or more of the precedeng element, 'a'. Therefore, by repeating 'a' once, it becomes "aa".
+
+
+  Example 3:
+
+
+  Input:
+  s = "ab"
+  p = ".*"
+  Output: true
+  Explanation: ".*" means "zero or more (*) of any character (.)".
+
+
+  Example 4:
+
+
+  Input:
+  s = "aab"
+  p = "c*a*b"
+  Output: true
+  Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore it matches "aab".
+
+
+  Example 5:
+
+
+  Input:
+  s = "mississippi"
+  p = "mis*is*p*."
+  Output: false
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def isMatch (s : String) (p : String) : Bool := sorry 
+
+  @[simp]
+vc-theorems: |
+  theorem empty_pattern_matches_empty_string (s : String) : 
+    isMatch s "" = !s.isEmpty = false := by sorry
+
+  @[simp]
+
+  theorem dot_star_matches_everything (s : String) : 
+    isMatch s ".*" = true := by sorry 
+
+  @[simp]
+
+  theorem pattern_without_special_chars_exact_match (s p : String) 
+    (h1 : ∀ c ∈ p.data, c ≠ '*' ∧ c ≠ '.') :
+    isMatch s p = (s = p) := by sorry
+
+  @[simp]
+
+  theorem star_matches_zero_or_more (s : String) :
+    isMatch s "a*" = (∀ c ∈ s.data, c = 'a') := by sorry
+
+  @[simp]
+
+  theorem self_matching (s : String) :
+    isMatch s s = true := by sorry
+
+  @[simp]
+
+  theorem dots_match_same_length (s : String) :
+    isMatch s (String.mk (List.replicate s.length '.')) = true := by sorry
+
+  @[simp]
+
+  theorem empty_string_cases_1 : isMatch "" "" = true := by sorry
+  @[simp]
+
+  theorem empty_string_cases_2 : isMatch "" "a*" = true := by sorry
+  @[simp] 
+
+  theorem empty_string_cases_3 : isMatch "a" "" = false := by sorry
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_match "aa" "a"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_match "aa" "a*"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_match "ab" ".*"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

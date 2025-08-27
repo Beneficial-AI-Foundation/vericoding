@@ -1,27 +1,82 @@
-"vc-description": "An array is **circularly sorted** if the elements are sorted in\
-  \ ascending order, but displaced, or rotated, by any number of steps. \n\nComplete\
-  \ the function/method that determines if the given array of integers is circularly\
-  \ sorted.\n\n\n## Examples\n\nThese arrays are circularly sorted (`true`):\n```\n\
-  [2, 3, 4, 5, 0, 1]       -->  [0, 1] + [2, 3, 4, 5]\n[4, 5, 6, 9, 1]          -->\
-  \  [1] + [4, 5, 6, 9]\n[10, 11, 6, 7, 9]        -->  [6, 7, 9] + [10, 11]\n[1, 2,\
-  \ 3, 4, 5]          -->  [1, 2, 3, 4, 5]\n[5, 7, 43, 987, -9, 0]   -->  [-9, 0]\
-  \ + [5, 7, 43, 987]\n[1, 2, 3, 4, 1]          -->  [1] + [1, 2, 3, 4]\n```\n\nWhile\
-  \ these are not (`false`):\n```\n[4, 1, 2, 5]\n[8, 7, 6, 5, 4, 3]\n[6, 7, 4, 8]\n\
-  [7, 6, 5, 4, 3, 2, 1]\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef circularly_sorted (xs : List Int)\
-  \ : Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isSorted (xs : List Int) : Bool :=\n  sorry\n"
-"vc-theorems": "theorem sorted_is_circular {xs : List Int} (h : xs.length > 0) : \n\
-  \  isSorted xs → circularly_sorted xs = true :=\nsorry\n\n\ntheorem rotated_sorted_is_circular\
-  \ {xs : List Int} (h : xs.length > 0) (distinct : List.Nodup xs) :\n  ∀ i, i < xs.length\
-  \ → circularly_sorted (List.drop i xs ++ List.take i xs) = true :=\nsorry\n\n\n\
-  theorem singleton_is_circular {x : Int} :\n  circularly_sorted [x] = true :=\nsorry\n\
-  \n\ntheorem empty_raises {xs : List Int} (h : xs.length = 0) :\n  circularly_sorted\
-  \ xs = false :=\nsorry\n\n\ntheorem unsorted_not_circular {xs : List Int} (h : xs.length\
-  \ > 1)\n  (not_sorted : ∀ i, i < xs.length → ¬(isSorted (List.drop i xs ++ List.take\
-  \ i xs))) :\n  circularly_sorted xs = false :=\nsorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval circularly_sorted [2, 3, 4, 5, 0, 1]\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval circularly_sorted [1, 2, 3, 4, 5]\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval circularly_sorted [4, 1, 2, 5]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  An array is **circularly sorted** if the elements are sorted in ascending order, but displaced, or rotated, by any number of steps. 
+
+  Complete the function/method that determines if the given array of integers is circularly sorted.
+
+
+  ## Examples
+
+  These arrays are circularly sorted (`true`):
+  ```
+  [2, 3, 4, 5, 0, 1]       -->  [0, 1] + [2, 3, 4, 5]
+  [4, 5, 6, 9, 1]          -->  [1] + [4, 5, 6, 9]
+  [10, 11, 6, 7, 9]        -->  [6, 7, 9] + [10, 11]
+  [1, 2, 3, 4, 5]          -->  [1, 2, 3, 4, 5]
+  [5, 7, 43, 987, -9, 0]   -->  [-9, 0] + [5, 7, 43, 987]
+  [1, 2, 3, 4, 1]          -->  [1] + [1, 2, 3, 4]
+  ```
+
+  While these are not (`false`):
+  ```
+  [4, 1, 2, 5]
+  [8, 7, 6, 5, 4, 3]
+  [6, 7, 4, 8]
+  [7, 6, 5, 4, 3, 2, 1]
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def circularly_sorted (xs : List Int) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isSorted (xs : List Int) : Bool :=
+    sorry
+vc-theorems: |
+  theorem sorted_is_circular {xs : List Int} (h : xs.length > 0) : 
+    isSorted xs → circularly_sorted xs = true :=
+  sorry
+
+
+  theorem rotated_sorted_is_circular {xs : List Int} (h : xs.length > 0) (distinct : List.Nodup xs) :
+    ∀ i, i < xs.length → circularly_sorted (List.drop i xs ++ List.take i xs) = true :=
+  sorry
+
+
+  theorem singleton_is_circular {x : Int} :
+    circularly_sorted [x] = true :=
+  sorry
+
+
+  theorem empty_raises {xs : List Int} (h : xs.length = 0) :
+    circularly_sorted xs = false :=
+  sorry
+
+
+  theorem unsorted_not_circular {xs : List Int} (h : xs.length > 1)
+    (not_sorted : ∀ i, i < xs.length → ¬(isSorted (List.drop i xs ++ List.take i xs))) :
+    circularly_sorted xs = false :=
+  sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval circularly_sorted [2, 3, 4, 5, 0, 1]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval circularly_sorted [1, 2, 3, 4, 5]
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval circularly_sorted [4, 1, 2, 5]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

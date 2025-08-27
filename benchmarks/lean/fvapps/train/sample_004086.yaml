@@ -1,19 +1,61 @@
-"vc-description": "When provided with a String, capitalize all vowels\n\nFor example:\n\
-  \nInput : \"Hello World!\"\n\nOutput : \"HEllO WOrld!\"\n\nNote: Y is not a vowel\
-  \ in this kata."
-"vc-preamble": "import Imports.AllImports\n\ndef String.swap : String → String\n \
-  \ | _ => sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def Char.isVowel (c : Char) : Bool :=\n  let vowels := ['a', 'e',\
-  \ 'i', 'o', 'u']\n  sorry\n"
-"vc-theorems": "theorem swap_preserves_length (s : String) : \n  (String.swap s).length\
-  \ = s.length := sorry \n\n\ntheorem swap_idempotent (s : String) :\n  String.swap\
-  \ (String.swap s) = String.swap s := sorry\n\n\ntheorem swap_preserves_non_vowels\
-  \ (s : String) (i : String.Pos) :\n  ¬(Char.isVowel (s.get i)) →\n  (String.swap\
-  \ s).get i = s.get i := sorry\n\n\ntheorem swap_capitalizes_vowels (s : String)\
-  \ (i : String.Pos) :\n  (Char.isVowel (s.get i)) → \n  ((String.swap s).get i).isUpper\
-  \ = true ∧\n  ((String.swap s).get i).toLower = (s.get i).toLower := sorry\n\n/--\n\
-  info: 'HEllOWOrld!'\n-/\n#guard_msgs in\n#eval swap \"HelloWorld!\"\n\n/--\ninfo:\
-  \ 'SUndAy'\n-/\n#guard_msgs in\n#eval swap \"Sunday\"\n\n/--\ninfo: 'AbrAcAdAbrA'\n\
-  -/\n#guard_msgs in\n#eval swap \"abracadabra\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  When provided with a String, capitalize all vowels
+
+  For example:
+
+  Input : "Hello World!"
+
+  Output : "HEllO WOrld!"
+
+  Note: Y is not a vowel in this kata.
+vc-preamble: |
+  import Imports.AllImports
+
+  def String.swap : String → String
+    | _ => sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def Char.isVowel (c : Char) : Bool :=
+    let vowels := ['a', 'e', 'i', 'o', 'u']
+    sorry
+vc-theorems: |
+  theorem swap_preserves_length (s : String) : 
+    (String.swap s).length = s.length := sorry 
+
+
+  theorem swap_idempotent (s : String) :
+    String.swap (String.swap s) = String.swap s := sorry
+
+
+  theorem swap_preserves_non_vowels (s : String) (i : String.Pos) :
+    ¬(Char.isVowel (s.get i)) →
+    (String.swap s).get i = s.get i := sorry
+
+
+  theorem swap_capitalizes_vowels (s : String) (i : String.Pos) :
+    (Char.isVowel (s.get i)) → 
+    ((String.swap s).get i).isUpper = true ∧
+    ((String.swap s).get i).toLower = (s.get i).toLower := sorry
+
+  /--
+  info: 'HEllOWOrld!'
+  -/
+  #guard_msgs in
+  #eval swap "HelloWorld!"
+
+  /--
+  info: 'SUndAy'
+  -/
+  #guard_msgs in
+  #eval swap "Sunday"
+
+  /--
+  info: 'AbrAcAdAbrA'
+  -/
+  #guard_msgs in
+  #eval swap "abracadabra"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

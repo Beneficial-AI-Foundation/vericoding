@@ -1,37 +1,88 @@
-"vc-description": "*SCHEDULE YOUR DA(RRA)Y*\n        \nThe best way to have a productive\
-  \ day is to plan out your work schedule. Given the following three inputs, please\
-  \ create an an array of time alloted to work, broken up with time alloted with breaks:\n\
-  \        \nInput 1: Hours - Number of hours available to you to get your work done!\
-  \ \nInput 2: Tasks - How many tasks you have to do througout the day\nInput 3: Duration\
-  \ (minutes)- How long each of your tasks will take to complete\nCriteria to bear\
-  \ in mind:\n- Your schedule should start with work and end with work.\n- It should\
-  \ also be in minutes, rounded to the nearest whole minute. \n- If your work is going\
-  \ to take more time than you have, return \"You're not sleeping tonight!\"\nExample:\n\
-  \n```python\nday_plan(8, 5, 30) == [ 30, 82, 30, 82, 30, 82, 30, 82, 30 ]\nday_plan(3,\
-  \ 5, 60) == \"You're not sleeping tonight!\"\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef day_plan (hours tasks duration :\
-  \ Int) : List Int ⊕ String := sorry\n\ndef List.get_even_indices (l : List Int)\
-  \ : List Int := \n  l.enum.filter (fun p => p.fst % 2 = 0) |>.map (fun p => p.snd)\n\
-  \n\ndef List.get_odd_indices (l : List Int) : List Int :=\n  l.enum.filter (fun\
-  \ p => p.fst % 2 = 1) |>.map (fun p => p.snd)\n\n\ndef List.allDistinctEq (l : List\
-  \ Int) : Bool :=\n  match l with\n  | [] => true\n  | x::xs => xs.all (fun y =>\
-  \ y = x)\n\n\ndef validDurationDistribution (schedule : List Int) (duration : Int)\
-  \ (tasks : Nat) : Prop :=\n  schedule.get? 0 = some duration ∧ \n  schedule.get_even_indices\
-  \ = List.replicate tasks duration\n\n\ndef validBreakDistribution (schedule : List\
-  \ Int) : Prop := \n  let breaks := schedule.get_odd_indices\n  breaks.all (· ≥ 0)\
-  \ ∧ breaks.allDistinctEq\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def validTotalDuration (schedule : List Int) (hours : Int) : Prop\
-  \ :=\n  schedule.foldl (· + ·) 0 ≤ hours * 60\n"
-"vc-theorems": "theorem day_plan_properties {hours tasks duration : Int} \n  (h_hours\
-  \ : hours ≥ 4 ∧ hours ≤ 24)\n  (h_tasks : tasks ≥ 1 ∧ tasks ≤ 8)  \n  (h_duration\
-  \ : duration ≥ 5 ∧ duration ≤ 60) :\n  let result := day_plan hours tasks duration\n\
-  \  if tasks * duration > hours * 60 then\n    result = Sum.inr \"You're not sleeping\
-  \ tonight!\"\n  else\n    (∃ schedule : List Int,\n      result = Sum.inl schedule\
-  \ ∧\n      schedule.length = 2 * tasks - 1 ∧\n      validDurationDistribution schedule\
-  \ duration tasks.toNat ∧\n      validBreakDistribution schedule ∧\n      validTotalDuration\
-  \ schedule hours) := \nsorry\n\n/--\ninfo: [30, 82, 30, 82, 30, 82, 30, 82, 30]\n\
-  -/\n#guard_msgs in\n#eval day_plan 8 5 30\n\n/--\ninfo: \"You're not sleeping tonight!\"\
-  \n-/\n#guard_msgs in\n#eval day_plan 3 5 60\n\n/--\ninfo: [60]\n-/\n#guard_msgs\
-  \ in\n#eval day_plan 2 1 60\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  *SCHEDULE YOUR DA(RRA)Y*
+          
+  The best way to have a productive day is to plan out your work schedule. Given the following three inputs, please create an an array of time alloted to work, broken up with time alloted with breaks:
+          
+  Input 1: Hours - Number of hours available to you to get your work done! 
+  Input 2: Tasks - How many tasks you have to do througout the day
+  Input 3: Duration (minutes)- How long each of your tasks will take to complete
+  Criteria to bear in mind:
+  - Your schedule should start with work and end with work.
+  - It should also be in minutes, rounded to the nearest whole minute. 
+  - If your work is going to take more time than you have, return "You're not sleeping tonight!"
+  Example:
+
+  ```python
+  day_plan(8, 5, 30) == [ 30, 82, 30, 82, 30, 82, 30, 82, 30 ]
+  day_plan(3, 5, 60) == "You're not sleeping tonight!"
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def day_plan (hours tasks duration : Int) : List Int ⊕ String := sorry
+
+  def List.get_even_indices (l : List Int) : List Int := 
+    l.enum.filter (fun p => p.fst % 2 = 0) |>.map (fun p => p.snd)
+
+
+  def List.get_odd_indices (l : List Int) : List Int :=
+    l.enum.filter (fun p => p.fst % 2 = 1) |>.map (fun p => p.snd)
+
+
+  def List.allDistinctEq (l : List Int) : Bool :=
+    match l with
+    | [] => true
+    | x::xs => xs.all (fun y => y = x)
+
+
+  def validDurationDistribution (schedule : List Int) (duration : Int) (tasks : Nat) : Prop :=
+    schedule.get? 0 = some duration ∧ 
+    schedule.get_even_indices = List.replicate tasks duration
+
+
+  def validBreakDistribution (schedule : List Int) : Prop := 
+    let breaks := schedule.get_odd_indices
+    breaks.all (· ≥ 0) ∧ breaks.allDistinctEq
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def validTotalDuration (schedule : List Int) (hours : Int) : Prop :=
+    schedule.foldl (· + ·) 0 ≤ hours * 60
+vc-theorems: |
+  theorem day_plan_properties {hours tasks duration : Int} 
+    (h_hours : hours ≥ 4 ∧ hours ≤ 24)
+    (h_tasks : tasks ≥ 1 ∧ tasks ≤ 8)  
+    (h_duration : duration ≥ 5 ∧ duration ≤ 60) :
+    let result := day_plan hours tasks duration
+    if tasks * duration > hours * 60 then
+      result = Sum.inr "You're not sleeping tonight!"
+    else
+      (∃ schedule : List Int,
+        result = Sum.inl schedule ∧
+        schedule.length = 2 * tasks - 1 ∧
+        validDurationDistribution schedule duration tasks.toNat ∧
+        validBreakDistribution schedule ∧
+        validTotalDuration schedule hours) := 
+  sorry
+
+  /--
+  info: [30, 82, 30, 82, 30, 82, 30, 82, 30]
+  -/
+  #guard_msgs in
+  #eval day_plan 8 5 30
+
+  /--
+  info: "You're not sleeping tonight!"
+  -/
+  #guard_msgs in
+  #eval day_plan 3 5 60
+
+  /--
+  info: [60]
+  -/
+  #guard_msgs in
+  #eval day_plan 2 1 60
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

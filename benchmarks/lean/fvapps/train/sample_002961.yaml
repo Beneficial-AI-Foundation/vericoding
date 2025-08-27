@@ -1,27 +1,71 @@
-"vc-description": "Given a square matrix (i.e. an array of subarrays), find the sum\
-  \ of values from the first value of the first array, the second value of the second\
-  \ array, the third value of the third array, and so on...\n\n## Examples\n\n```\n\
-  array = [[1, 2],\n         [3, 4]]\n\ndiagonal sum: 1 + 4 = 5\n```\n           \
-  \     \n```\narray = [[5, 9, 1, 0],\n         [8, 7, 2, 3],\n         [1, 4, 1,\
-  \ 9],\n         [2, 3, 8, 2]]\n\ndiagonal sum: 5 + 7 + 1 + 2 = 15\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sum (xs : List Int) : Int := xs.foldl (· + ·) 0\n\ndef diagonal_sum\
-  \ (matrix : List (List Int)) : Int := sorry\n"
-"vc-theorems": "theorem diagonal_sum_square_matrix (matrix : List (List Int)) : \n\
-  \  let size := min (matrix.length) (matrix.map List.length |>.minimum?.getD 0)\n\
-  \  let square_matrix := matrix.take size |>.map (List.take size)\n  diagonal_sum\
-  \ square_matrix = \n  sum ((List.range size).map (fun i => (square_matrix.get! i).get!\
-  \ i)) := sorry\n\n\ntheorem diagonal_sum_uniform_matrix (size : Nat) (value : Int)\
-  \ : \n  diagonal_sum (List.replicate size (List.replicate size value)) = \n  value\
-  \ * size := sorry\n\n\ntheorem diagonal_sum_bounds (matrix : List (List Int)) :\n\
-  \  !matrix.isEmpty →\n  let size := min matrix.length (matrix.map List.length |>.minimum?.getD\
-  \ 0)\n  let square_matrix := matrix.take size |>.map (List.take size)\n  let min_val\
-  \ := (square_matrix.map (λ row => (row.minimum?.getD 0))).minimum?.getD 0\n  let\
-  \ max_val := (square_matrix.map (λ row => (row.maximum?.getD 0))).maximum?.getD\
-  \ 0\n  min_val * size ≤ diagonal_sum square_matrix ∧ \n  diagonal_sum square_matrix\
-  \ ≤ max_val * size := sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval diagonal_sum\
-  \ [[1, 2], [3, 4]]\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval diagonal_sum [[1,\
-  \ 2, 3], [4, 5, 6], [7, 8, 9]]\n\n/--\ninfo: 34\n-/\n#guard_msgs in\n#eval diagonal_sum\
-  \ [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Given a square matrix (i.e. an array of subarrays), find the sum of values from the first value of the first array, the second value of the second array, the third value of the third array, and so on...
+
+  ## Examples
+
+  ```
+  array = [[1, 2],
+           [3, 4]]
+
+  diagonal sum: 1 + 4 = 5
+  ```
+                  
+  ```
+  array = [[5, 9, 1, 0],
+           [8, 7, 2, 3],
+           [1, 4, 1, 9],
+           [2, 3, 8, 2]]
+
+  diagonal sum: 5 + 7 + 1 + 2 = 15
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sum (xs : List Int) : Int := xs.foldl (· + ·) 0
+
+  def diagonal_sum (matrix : List (List Int)) : Int := sorry
+vc-theorems: |
+  theorem diagonal_sum_square_matrix (matrix : List (List Int)) : 
+    let size := min (matrix.length) (matrix.map List.length |>.minimum?.getD 0)
+    let square_matrix := matrix.take size |>.map (List.take size)
+    diagonal_sum square_matrix = 
+    sum ((List.range size).map (fun i => (square_matrix.get! i).get! i)) := sorry
+
+
+  theorem diagonal_sum_uniform_matrix (size : Nat) (value : Int) : 
+    diagonal_sum (List.replicate size (List.replicate size value)) = 
+    value * size := sorry
+
+
+  theorem diagonal_sum_bounds (matrix : List (List Int)) :
+    !matrix.isEmpty →
+    let size := min matrix.length (matrix.map List.length |>.minimum?.getD 0)
+    let square_matrix := matrix.take size |>.map (List.take size)
+    let min_val := (square_matrix.map (λ row => (row.minimum?.getD 0))).minimum?.getD 0
+    let max_val := (square_matrix.map (λ row => (row.maximum?.getD 0))).maximum?.getD 0
+    min_val * size ≤ diagonal_sum square_matrix ∧ 
+    diagonal_sum square_matrix ≤ max_val * size := sorry
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval diagonal_sum [[1, 2], [3, 4]]
+
+  /--
+  info: 15
+  -/
+  #guard_msgs in
+  #eval diagonal_sum [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+  /--
+  info: 34
+  -/
+  #guard_msgs in
+  #eval diagonal_sum [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

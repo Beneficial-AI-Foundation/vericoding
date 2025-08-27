@@ -1,54 +1,91 @@
-"vc-description": "You have an infinite number of stacks arranged in a row and numbered\
-  \ (left to right) from 0, each of the stacks has the same maximum capacity.\nImplement\
-  \ the DinnerPlates class:\n\nDinnerPlates(int capacity) Initializes the object with\
-  \ the maximum capacity of the stacks.\nvoid push(int val) Pushes the given positive\
-  \ integer val into the leftmost stack with size less than capacity.\nint pop() Returns\
-  \ the value at the top of the rightmost non-empty stack and removes it from that\
-  \ stack, and returns -1 if all stacks are empty.\nint popAtStack(int index) Returns\
-  \ the value at the top of the stack with the given index and removes it from that\
-  \ stack, and returns -1 if the stack with that given index is empty.\n\nExample:\n\
-  Input: \n[\"DinnerPlates\",\"push\",\"push\",\"push\",\"push\",\"push\",\"popAtStack\"\
-  ,\"push\",\"push\",\"popAtStack\",\"popAtStack\",\"pop\",\"pop\",\"pop\",\"pop\"\
-  ,\"pop\"]\n[[2],[1],[2],[3],[4],[5],[0],[20],[21],[0],[2],[],[],[],[],[]]\nOutput:\
-  \ \n[null,null,null,null,null,null,2,null,null,20,21,5,4,3,1,-1]\n\nExplanation:\
-  \ \nDinnerPlates D = DinnerPlates(2);  // Initialize with capacity = 2\nD.push(1);\n\
-  D.push(2);\nD.push(3);\nD.push(4);\nD.push(5);         // The stacks are now:  2\
-  \  4\n                                           1  3  5\n                     \
-  \                      ﹈ ﹈ ﹈\nD.popAtStack(0);   // Returns 2.  The stacks are now:\
-  \     4\n                                                       1  3  5\n      \
-  \                                                 ﹈ ﹈ ﹈\nD.push(20);        // The\
-  \ stacks are now: 20  4\n                                           1  3  5\n  \
-  \                                         ﹈ ﹈ ﹈\nD.push(21);        // The stacks\
-  \ are now: 20  4 21\n                                           1  3  5\n      \
-  \                                     ﹈ ﹈ ﹈\nD.popAtStack(0);   // Returns 20. \
-  \ The stacks are now:     4 21\n                                               \
-  \         1  3  5\n                                                        ﹈ ﹈ ﹈\n\
-  D.popAtStack(2);   // Returns 21.  The stacks are now:     4\n                 \
-  \                                       1  3  5\n                              \
-  \                          ﹈ ﹈ ﹈ \nD.pop()            // Returns 5.  The stacks\
-  \ are now:      4\n                                                        1  3\
-  \ \n                                                        ﹈ ﹈  \nD.pop()     \
-  \       // Returns 4.  The stacks are now:   1  3 \n                           \
-  \                             ﹈ ﹈   \nD.pop()            // Returns 3.  The stacks\
-  \ are now:   1 \n                                                        ﹈   \n\
-  D.pop()            // Returns 1.  There are no stacks.\nD.pop()            // Returns\
-  \ -1.  There are still no stacks.\n\n \nConstraints:\n\n1 <= capacity <= 20000\n\
-  1 <= val <= 20000\n0 <= index <= 100000\nAt most 200000 calls will be made to push,\
-  \ pop, and popAtStack."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": ""
-"vc-theorems": "theorem test_empty_pop {α : Type} (plates : DinnerPlates α) (cap :\
-  \ Nat)\n    (h : cap > 0) (h2 : cap ≤ 100) :\n    plates.pop = none := sorry\n\n\
-  \ntheorem test_push_pop_sequence {α : Type} (plates : DinnerPlates α) \n    (cap\
-  \ : Nat) (values : List α)\n    (h : cap > 0) (h2 : cap ≤ 10) (h3 : values.length\
-  \ > 0) (h4 : values.length ≤ 20) :\n    ∀ v ∈ values, plates.pop = some v ∨ plates.pop\
-  \ = none := sorry\n\n\ntheorem test_pop_at_stack {α : Type} (plates : DinnerPlates\
-  \ α)\n    (cap : Nat) (values : List α) (stackIdx : Nat)\n    (h : cap > 0) (h2\
-  \ : cap ≤ 10) (h3 : values.length > 0) \n    (h4 : values.length ≤ 20) (h5 : stackIdx\
-  \ ≤ 5) :\n    plates.stacks ≠ [] →\n    ∃ v, plates.popAtStack stackIdx = some v\
-  \ ∧ v ∈ values ∨ plates.popAtStack stackIdx = none := sorry\n\n\ntheorem test_sequential_operations\
-  \ {α : Type} (plates : DinnerPlates α)\n    (cap : Nat) (values : List α)\n    (h\
-  \ : cap > 0) (h2 : cap ≤ 10) (h3 : values.length ≤ 20) :\n    values.length > 2\
-  \ →\n    ∃ v, plates.pop = some v ∧ v ∈ values ∨ plates.pop = none := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  You have an infinite number of stacks arranged in a row and numbered (left to right) from 0, each of the stacks has the same maximum capacity.
+  Implement the DinnerPlates class:
+
+  DinnerPlates(int capacity) Initializes the object with the maximum capacity of the stacks.
+  void push(int val) Pushes the given positive integer val into the leftmost stack with size less than capacity.
+  int pop() Returns the value at the top of the rightmost non-empty stack and removes it from that stack, and returns -1 if all stacks are empty.
+  int popAtStack(int index) Returns the value at the top of the stack with the given index and removes it from that stack, and returns -1 if the stack with that given index is empty.
+
+  Example:
+  Input: 
+  ["DinnerPlates","push","push","push","push","push","popAtStack","push","push","popAtStack","popAtStack","pop","pop","pop","pop","pop"]
+  [[2],[1],[2],[3],[4],[5],[0],[20],[21],[0],[2],[],[],[],[],[]]
+  Output: 
+  [null,null,null,null,null,null,2,null,null,20,21,5,4,3,1,-1]
+
+  Explanation: 
+  DinnerPlates D = DinnerPlates(2);  // Initialize with capacity = 2
+  D.push(1);
+  D.push(2);
+  D.push(3);
+  D.push(4);
+  D.push(5);         // The stacks are now:  2  4
+                                             1  3  5
+                                             ﹈ ﹈ ﹈
+  D.popAtStack(0);   // Returns 2.  The stacks are now:     4
+                                                         1  3  5
+                                                         ﹈ ﹈ ﹈
+  D.push(20);        // The stacks are now: 20  4
+                                             1  3  5
+                                             ﹈ ﹈ ﹈
+  D.push(21);        // The stacks are now: 20  4 21
+                                             1  3  5
+                                             ﹈ ﹈ ﹈
+  D.popAtStack(0);   // Returns 20.  The stacks are now:     4 21
+                                                          1  3  5
+                                                          ﹈ ﹈ ﹈
+  D.popAtStack(2);   // Returns 21.  The stacks are now:     4
+                                                          1  3  5
+                                                          ﹈ ﹈ ﹈ 
+  D.pop()            // Returns 5.  The stacks are now:      4
+                                                          1  3 
+                                                          ﹈ ﹈  
+  D.pop()            // Returns 4.  The stacks are now:   1  3 
+                                                          ﹈ ﹈   
+  D.pop()            // Returns 3.  The stacks are now:   1 
+                                                          ﹈   
+  D.pop()            // Returns 1.  There are no stacks.
+  D.pop()            // Returns -1.  There are still no stacks.
+
+   
+  Constraints:
+
+  1 <= capacity <= 20000
+  1 <= val <= 20000
+  0 <= index <= 100000
+  At most 200000 calls will be made to push, pop, and popAtStack.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+vc-theorems: |-
+  theorem test_empty_pop {α : Type} (plates : DinnerPlates α) (cap : Nat)
+      (h : cap > 0) (h2 : cap ≤ 100) :
+      plates.pop = none := sorry
+
+
+  theorem test_push_pop_sequence {α : Type} (plates : DinnerPlates α) 
+      (cap : Nat) (values : List α)
+      (h : cap > 0) (h2 : cap ≤ 10) (h3 : values.length > 0) (h4 : values.length ≤ 20) :
+      ∀ v ∈ values, plates.pop = some v ∨ plates.pop = none := sorry
+
+
+  theorem test_pop_at_stack {α : Type} (plates : DinnerPlates α)
+      (cap : Nat) (values : List α) (stackIdx : Nat)
+      (h : cap > 0) (h2 : cap ≤ 10) (h3 : values.length > 0) 
+      (h4 : values.length ≤ 20) (h5 : stackIdx ≤ 5) :
+      plates.stacks ≠ [] →
+      ∃ v, plates.popAtStack stackIdx = some v ∧ v ∈ values ∨ plates.popAtStack stackIdx = none := sorry
+
+
+  theorem test_sequential_operations {α : Type} (plates : DinnerPlates α)
+      (cap : Nat) (values : List α)
+      (h : cap > 0) (h2 : cap ≤ 10) (h3 : values.length ≤ 20) :
+      values.length > 2 →
+      ∃ v, plates.pop = some v ∧ v ∈ values ∨ plates.pop = none := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

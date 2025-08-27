@@ -1,25 +1,74 @@
-"vc-description": "There is a task in Among Us in which $N$ temperature scale with\
-  \ unique readings are given and you have to make all of them equal. In one second\
-  \ you can choose an odd number and add or subtract that number in any one temperature\
-  \ value. Find minimum time (in seconds) required to complete the task.\n$Note$:\
-  \ Equal value may or may not belong to array.\n\n-----Input:-----\n- First line\
-  \ will contain $T$, number of testcases. Then the testcases follow. \n- First line\
-  \ of each testcase contains single integer $N$, the number of temperature scales\n\
-  - Next line contain $A_i$ for $1 \\leq i \\leq N$, reading of temperature scales\n\
-  \n-----Output:-----\nFor each testcase, output a single line the time (in seconds)\
-  \ required to complete the task.\n\n-----Constraints-----\n- $1 \\leq T \\leq 10^3$\n\
-  - $1 \\leq N \\leq 10^3$\n- $0 \\leq A_i \\leq 10^9$\n\n-----Sample Input:-----\n\
-  3\n\n5\n\n1 2 3 4 5\n\n4\n\n5 2 3 8\n\n2\n\n50 53  \n\n-----Sample Output:-----\n\
-  5\n\n4\n\n1 \n\n-----EXPLANATION:-----\n- In the $2^{nd}$ test case we need $2$\
-  \ seconds to change $2$ to $8$ , $1$ second to change $3$ and $5$ to $8$ . So total\
-  \ time required is $2+1+1=4$ seconds."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_temperature_scales (n : Nat) (temps : List Nat) : Nat\
-  \ := sorry \n\n\n\ntheorem single_element_is_zero (t : Nat) (h : t ≥ 1) :\n  solve_temperature_scales\
-  \ 1 [t] = 0 := sorry"
-"vc-theorems": "/--\ninfo: 5\n-/\n#guard_msgs in\n#eval solve_temperature_scales 5\
-  \ [1, 2, 3, 4, 5]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve_temperature_scales\
-  \ 4 [5, 2, 3, 8]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_temperature_scales\
-  \ 2 [50, 53]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  There is a task in Among Us in which $N$ temperature scale with unique readings are given and you have to make all of them equal. In one second you can choose an odd number and add or subtract that number in any one temperature value. Find minimum time (in seconds) required to complete the task.
+  $Note$: Equal value may or may not belong to array.
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - First line of each testcase contains single integer $N$, the number of temperature scales
+  - Next line contain $A_i$ for $1 \leq i \leq N$, reading of temperature scales
+
+  -----Output:-----
+  For each testcase, output a single line the time (in seconds) required to complete the task.
+
+  -----Constraints-----
+  - $1 \leq T \leq 10^3$
+  - $1 \leq N \leq 10^3$
+  - $0 \leq A_i \leq 10^9$
+
+  -----Sample Input:-----
+  3
+
+  5
+
+  1 2 3 4 5
+
+  4
+
+  5 2 3 8
+
+  2
+
+  50 53  
+
+  -----Sample Output:-----
+  5
+
+  4
+
+  1 
+
+  -----EXPLANATION:-----
+  - In the $2^{nd}$ test case we need $2$ seconds to change $2$ to $8$ , $1$ second to change $3$ and $5$ to $8$ . So total time required is $2+1+1=4$ seconds.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def solve_temperature_scales (n : Nat) (temps : List Nat) : Nat := sorry 
+
+
+
+  theorem single_element_is_zero (t : Nat) (h : t ≥ 1) :
+    solve_temperature_scales 1 [t] = 0 := sorry
+vc-theorems: |
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval solve_temperature_scales 5 [1, 2, 3, 4, 5]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval solve_temperature_scales 4 [5, 2, 3, 8]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_temperature_scales 2 [50, 53]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

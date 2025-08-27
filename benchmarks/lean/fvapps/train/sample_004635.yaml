@@ -1,20 +1,64 @@
-"vc-description": "Write a class Random that does the following:\n\n1. Accepts a seed\n\
-  ```python\n>>> random = Random(10)\n>>> random.seed\n10\n```\n\n2. Gives a random\
-  \ number between 0 and 1\n```python\n>>> random.random()\n0.347957\n>>> random.random()\n\
-  0.932959\n```\n\n3. Gives a random int from a range\n```python\n>>> random.randint(0,\
-  \ 100)\n67\n>>> random.randint(0, 100)\n93\n```\n\nModules `random` and `os` are\
-  \ forbidden.\nDont forget to give feedback and your opinion on this kata even if\
-  \ you didn't solve it!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def Random.new (s : Int) : Random := sorry\n\ntheorem seed_initialization\
-  \ (s : Int) :\n  (Random.new s).seed = s := sorry\n"
-"vc-theorems": "theorem random_bounds (r : Random) :\n  0 ≤ r.random ∧ r.random ≤\
-  \ 1 := sorry\n\n\ntheorem randint_bounds (s start finish : Int) :\n  let r := Random.new\
-  \ s\n  let lo := min start finish\n  let hi := max start finish\n  lo ≤ r.randint\
-  \ lo hi ∧ r.randint lo hi ≤ hi := sorry\n\n\ntheorem randint_deterministic (s start\
-  \ : Int) :\n  let r1 := Random.new s\n  let r2 := Random.new s\n  let finish :=\
-  \ start + Int.natAbs (s % 1000)\n  r1.randint start finish = r2.randint start finish\
-  \ := sorry\n\n\ntheorem random_advances_seed (s : Int) :\n  let r := Random.new\
-  \ s\n  let initial_seed := r.seed\n  r.seed + 1 = initial_seed + 1 := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Write a class Random that does the following:
+
+  1. Accepts a seed
+  ```python
+  >>> random = Random(10)
+  >>> random.seed
+  10
+  ```
+
+  2. Gives a random number between 0 and 1
+  ```python
+  >>> random.random()
+  0.347957
+  >>> random.random()
+  0.932959
+  ```
+
+  3. Gives a random int from a range
+  ```python
+  >>> random.randint(0, 100)
+  67
+  >>> random.randint(0, 100)
+  93
+  ```
+
+  Modules `random` and `os` are forbidden.
+  Dont forget to give feedback and your opinion on this kata even if you didn't solve it!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def Random.new (s : Int) : Random := sorry
+
+  theorem seed_initialization (s : Int) :
+    (Random.new s).seed = s := sorry
+vc-theorems: |-
+  theorem random_bounds (r : Random) :
+    0 ≤ r.random ∧ r.random ≤ 1 := sorry
+
+
+  theorem randint_bounds (s start finish : Int) :
+    let r := Random.new s
+    let lo := min start finish
+    let hi := max start finish
+    lo ≤ r.randint lo hi ∧ r.randint lo hi ≤ hi := sorry
+
+
+  theorem randint_deterministic (s start : Int) :
+    let r1 := Random.new s
+    let r2 := Random.new s
+    let finish := start + Int.natAbs (s % 1000)
+    r1.randint start finish = r2.randint start finish := sorry
+
+
+  theorem random_advances_seed (s : Int) :
+    let r := Random.new s
+    let initial_seed := r.seed
+    r.seed + 1 = initial_seed + 1 := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

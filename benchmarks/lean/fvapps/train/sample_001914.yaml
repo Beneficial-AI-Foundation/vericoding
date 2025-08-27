@@ -1,33 +1,81 @@
-"vc-description": "Given the head of a linked list, we repeatedly delete consecutive\
-  \ sequences of nodes that sum to 0 until there are no such sequences.\nAfter doing\
-  \ so, return the head of the final linked list.  You may return any such answer.\n\
-   \n(Note that in the examples below, all sequences are serializations of ListNode\
-  \ objects.)\nExample 1:\nInput: head = [1,2,-3,3,1]\nOutput: [3,1]\nNote: The answer\
-  \ [1,2,1] would also be accepted.\n\nExample 2:\nInput: head = [1,2,3,-3,4]\nOutput:\
-  \ [1,2,4]\n\nExample 3:\nInput: head = [1,2,3,-3,-2]\nOutput: [1]\n\n \nConstraints:\n\
-  \nThe given linked list will contain between 1 and 1000 nodes.\nEach node in the\
-  \ linked list has -1000 <= node.val <= 1000."
-"vc-preamble": "import Imports.AllImports\n\ndef ListNode.next : ListNode → Option\
-  \ ListNode\n  | mk _ next => next\n\n\ndef ListNode.val : ListNode → Int\n  | mk\
-  \ val _ => val\n\n\ndef removeZeroSumSublists : ListNode → Option ListNode := sorry\n\
-  def listToArray : Option ListNode → List Int := sorry \n\ndef arrayToList : List\
-  \ Int → Option ListNode := sorry\n\ndef sumList (l : List Int) : Int :=\n  l.foldl\
-  \ (· + ·) 0\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isSubsequence (sub post : List Int) : Bool :=\n  match sub,\
-  \ post with\n  | [], _ => true\n  | _, [] => false\n  | x::xs, y::ys => if x = y\
-  \ \n                    then isSubsequence xs ys\n                    else isSubsequence\
-  \ (x::xs) ys\n"
-"vc-theorems": "theorem no_zero_sum_sublists_after_removal (l : List Int) :\n  let\
-  \ result := listToArray (removeZeroSumSublists (arrayToList l).get!)\n  ∀ i j, i\
-  \ ≤ j → j < result.length →\n    sumList ((result.take (j + 1)).drop i) ≠ 0 := sorry\n\
-  \n\ntheorem result_is_subsequence (l : List Int) :\n  let result := listToArray\
-  \ (removeZeroSumSublists (arrayToList l).get!)\n  isSubsequence result l = true\
-  \ := sorry\n\n\ntheorem all_positive_unchanged (l : List Int) :\n  (∀ x ∈ l, x >\
-  \ 0) →\n  listToArray (removeZeroSumSublists (arrayToList l).get!) = l := sorry\n\
-  \ninductive IsAcyclic : ListNode → Prop where\n  | nil : (n : ListNode) → Option.isNone\
-  \ (n.next) → IsAcyclic n\n  | cons : (n : ListNode) → Option.isSome (n.next) → \n\
-  \          IsAcyclic (Option.get! n.next) → IsAcyclic n\n\n\ntheorem linked_list_valid\
-  \ (l : List Int) :\n  l ≠ [] →\n  let result := (removeZeroSumSublists (arrayToList\
-  \ l).get!)\n  ∀ node, result = some node → IsAcyclic node := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Given the head of a linked list, we repeatedly delete consecutive sequences of nodes that sum to 0 until there are no such sequences.
+  After doing so, return the head of the final linked list.  You may return any such answer.
+   
+  (Note that in the examples below, all sequences are serializations of ListNode objects.)
+  Example 1:
+  Input: head = [1,2,-3,3,1]
+  Output: [3,1]
+  Note: The answer [1,2,1] would also be accepted.
+
+  Example 2:
+  Input: head = [1,2,3,-3,4]
+  Output: [1,2,4]
+
+  Example 3:
+  Input: head = [1,2,3,-3,-2]
+  Output: [1]
+
+   
+  Constraints:
+
+  The given linked list will contain between 1 and 1000 nodes.
+  Each node in the linked list has -1000 <= node.val <= 1000.
+vc-preamble: |
+  import Imports.AllImports
+
+  def ListNode.next : ListNode → Option ListNode
+    | mk _ next => next
+
+
+  def ListNode.val : ListNode → Int
+    | mk val _ => val
+
+
+  def removeZeroSumSublists : ListNode → Option ListNode := sorry
+  def listToArray : Option ListNode → List Int := sorry 
+
+  def arrayToList : List Int → Option ListNode := sorry
+
+  def sumList (l : List Int) : Int :=
+    l.foldl (· + ·) 0
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isSubsequence (sub post : List Int) : Bool :=
+    match sub, post with
+    | [], _ => true
+    | _, [] => false
+    | x::xs, y::ys => if x = y 
+                      then isSubsequence xs ys
+                      else isSubsequence (x::xs) ys
+vc-theorems: |-
+  theorem no_zero_sum_sublists_after_removal (l : List Int) :
+    let result := listToArray (removeZeroSumSublists (arrayToList l).get!)
+    ∀ i j, i ≤ j → j < result.length →
+      sumList ((result.take (j + 1)).drop i) ≠ 0 := sorry
+
+
+  theorem result_is_subsequence (l : List Int) :
+    let result := listToArray (removeZeroSumSublists (arrayToList l).get!)
+    isSubsequence result l = true := sorry
+
+
+  theorem all_positive_unchanged (l : List Int) :
+    (∀ x ∈ l, x > 0) →
+    listToArray (removeZeroSumSublists (arrayToList l).get!) = l := sorry
+
+  inductive IsAcyclic : ListNode → Prop where
+    | nil : (n : ListNode) → Option.isNone (n.next) → IsAcyclic n
+    | cons : (n : ListNode) → Option.isSome (n.next) → 
+            IsAcyclic (Option.get! n.next) → IsAcyclic n
+
+
+  theorem linked_list_valid (l : List Int) :
+    l ≠ [] →
+    let result := (removeZeroSumSublists (arrayToList l).get!)
+    ∀ node, result = some node → IsAcyclic node := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

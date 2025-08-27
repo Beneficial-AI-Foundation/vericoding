@@ -1,20 +1,69 @@
-"vc-description": "In this Kata, you will be given two positive integers `a` and `b`\
-  \ and your task will be to apply the following operations:\n\n```\ni) If a = 0 or\
-  \ b = 0, return [a,b]. Otherwise, go to step (ii);\nii) If a ≥ 2*b, set a = a - 2*b,\
-  \ and repeat step (i). Otherwise, go to step (iii);\niii) If b ≥ 2*a, set b = b - 2*a,\
-  \ and repeat step (i). Otherwise, return [a,b].\n```\n\n`a` and `b` will both be\
-  \ lower than 10E8.\n\nMore examples in tests cases. Good luck!\n\nPlease also try\
-  \ [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve (a b : Nat) : Nat × Nat :=\n  sorry\n\n#check solve\n"
-"vc-theorems": "theorem solve_returns_non_negative {a b : Nat} : \n  let result :=\
-  \ solve a b\n  result.1 ≥ 0 ∧ result.2 ≥ 0 := by \n  sorry\n\n\ntheorem solve_reduces_max\
-  \ {a b : Nat} :\n  let result := solve a b \n  max result.1 result.2 ≤ max a b :=\
-  \ by\n  sorry \n\n\ntheorem solve_final_state {a b : Nat} :\n  let result := solve\
-  \ a b\n  result.1 > 0 ∧ result.2 > 0 →\n  result.1 < 2 * result.2 ∧ result.2 < 2\
-  \ * result.1 := by\n  sorry\n\n\ntheorem solve_zero_input {a b : Nat} :\n  a = 0\
-  \ ∨ b = 0 →\n  solve a b = (a, b) := by\n  sorry\n\n/--\ninfo: [6, 7]\n-/\n#guard_msgs\
-  \ in\n#eval solve 6 19\n\n/--\ninfo: [0, 1]\n-/\n#guard_msgs in\n#eval solve 2 1\n\
-  \n/--\ninfo: [7, 11]\n-/\n#guard_msgs in\n#eval solve 7 11\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In this Kata, you will be given two positive integers `a` and `b` and your task will be to apply the following operations:
+
+  ```
+  i) If a = 0 or b = 0, return [a,b]. Otherwise, go to step (ii);
+  ii) If a ≥ 2*b, set a = a - 2*b, and repeat step (i). Otherwise, go to step (iii);
+  iii) If b ≥ 2*a, set b = b - 2*a, and repeat step (i). Otherwise, return [a,b].
+  ```
+
+  `a` and `b` will both be lower than 10E8.
+
+  More examples in tests cases. Good luck!
+
+  Please also try [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve (a b : Nat) : Nat × Nat :=
+    sorry
+
+  #check solve
+vc-theorems: |
+  theorem solve_returns_non_negative {a b : Nat} : 
+    let result := solve a b
+    result.1 ≥ 0 ∧ result.2 ≥ 0 := by 
+    sorry
+
+
+  theorem solve_reduces_max {a b : Nat} :
+    let result := solve a b 
+    max result.1 result.2 ≤ max a b := by
+    sorry 
+
+
+  theorem solve_final_state {a b : Nat} :
+    let result := solve a b
+    result.1 > 0 ∧ result.2 > 0 →
+    result.1 < 2 * result.2 ∧ result.2 < 2 * result.1 := by
+    sorry
+
+
+  theorem solve_zero_input {a b : Nat} :
+    a = 0 ∨ b = 0 →
+    solve a b = (a, b) := by
+    sorry
+
+  /--
+  info: [6, 7]
+  -/
+  #guard_msgs in
+  #eval solve 6 19
+
+  /--
+  info: [0, 1]
+  -/
+  #guard_msgs in
+  #eval solve 2 1
+
+  /--
+  info: [7, 11]
+  -/
+  #guard_msgs in
+  #eval solve 7 11
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

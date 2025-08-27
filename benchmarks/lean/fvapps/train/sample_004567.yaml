@@ -1,20 +1,67 @@
-"vc-description": "Some numbers can be expressed as a difference of two squares, for\
-  \ example, 20 = 6^(2)-4^(2) and 21 = 5^(2)-2^(2). Many numbers can be written this\
-  \ way, but not all.\n\n## Your Task\nComplete the function that takes a positive\
-  \ integer `n` and returns the amount of numbers between `1` and `n` (inclusive)\
-  \ that can be represented as the difference of two perfect squares.\n\n**Note**:\
-  \ Your code should be able to handle `n` values up to 45000\n\n## Examples\n\n```\n\
-  n = 4 ==> 3\nn = 5 ==> 4\nn = 10 ==> 7\nn = 20 ==> 15\nn = 6427 ==> 4820\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_squareable (n : Nat) : Nat := sorry\n\ntheorem count_squareable_positive\
-  \ (n : Nat) (h : n > 0) : count_squareable n > 0 := sorry\n"
-"vc-theorems": "theorem count_squareable_upper_bound (n : Nat) : count_squareable\
-  \ n ≤ n := sorry\n\ntheorem count_squareable_formula (n : Nat) : count_squareable\
-  \ n = n/4 + (n+1)/2 := sorry\n\n\ntheorem count_squareable_monotonic (n : Nat) (h\
-  \ : n > 1) : \n  count_squareable (n-1) ≤ count_squareable n := sorry\n\n/--\ninfo:\
-  \ 3\n-/\n#guard_msgs in\n#eval count_squareable 4\n\n/--\ninfo: 4\n-/\n#guard_msgs\
-  \ in\n#eval count_squareable 5\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval count_squareable\
-  \ 10\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval count_squareable 20\n\n/--\ninfo:\
-  \ 4820\n-/\n#guard_msgs in\n#eval count_squareable 6427\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Some numbers can be expressed as a difference of two squares, for example, 20 = 6^(2)-4^(2) and 21 = 5^(2)-2^(2). Many numbers can be written this way, but not all.
+
+  ## Your Task
+  Complete the function that takes a positive integer `n` and returns the amount of numbers between `1` and `n` (inclusive) that can be represented as the difference of two perfect squares.
+
+  **Note**: Your code should be able to handle `n` values up to 45000
+
+  ## Examples
+
+  ```
+  n = 4 ==> 3
+  n = 5 ==> 4
+  n = 10 ==> 7
+  n = 20 ==> 15
+  n = 6427 ==> 4820
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_squareable (n : Nat) : Nat := sorry
+
+  theorem count_squareable_positive (n : Nat) (h : n > 0) : count_squareable n > 0 := sorry
+vc-theorems: |
+  theorem count_squareable_upper_bound (n : Nat) : count_squareable n ≤ n := sorry
+
+  theorem count_squareable_formula (n : Nat) : count_squareable n = n/4 + (n+1)/2 := sorry
+
+
+  theorem count_squareable_monotonic (n : Nat) (h : n > 1) : 
+    count_squareable (n-1) ≤ count_squareable n := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_squareable 4
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval count_squareable 5
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval count_squareable 10
+
+  /--
+  info: 15
+  -/
+  #guard_msgs in
+  #eval count_squareable 20
+
+  /--
+  info: 4820
+  -/
+  #guard_msgs in
+  #eval count_squareable 6427
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

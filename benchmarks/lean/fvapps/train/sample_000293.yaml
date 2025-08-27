@@ -1,30 +1,64 @@
-"vc-description": "Given a single positive integer x, we will write an expression\
-  \ of the form x (op1) x (op2) x (op3) x ... where each operator op1, op2, etc. is\
-  \ either addition, subtraction, multiplication, or division (+, -, *, or /).  For\
-  \ example, with x = 3, we might write 3 * 3 / 3 + 3 - 3 which is a value of 3.\n\
-  When writing such an expression, we adhere to the following conventions:\n\nThe\
-  \ division operator (/) returns rational numbers.\nThere are no parentheses placed\
-  \ anywhere.\nWe use the usual order of operations: multiplication and division happens\
-  \ before addition and subtraction.\nIt's not allowed to use the unary negation operator\
-  \ (-).  For example, \"x - x\" is a valid expression as it only uses subtraction,\
-  \ but \"-x + x\" is not because it uses negation.\n\nWe would like to write an expression\
-  \ with the least number of operators such that the expression equals the given target. \
-  \ Return the least number of operators used.\n \n\nExample 1:\nInput: x = 3, target\
-  \ = 19\nOutput: 5\nExplanation: 3 * 3 + 3 * 3 + 3 / 3.  The expression contains\
-  \ 5 operations.\n\nExample 2:\n\nInput: x = 5, target = 501\nOutput: 8\nExplanation:\
-  \ 5 * 5 * 5 * 5 - 5 * 5 * 5 + 5 / 5.  The expression contains 8 operations.\n\n\n\
-  Example 3:\nInput: x = 100, target = 100000000\nOutput: 3\nExplanation: 100 * 100\
-  \ * 100 * 100.  The expression contains 3 operations.\n \n\n\n\nNote:\n\n2 <= x\
-  \ <= 100\n1 <= target <= 2 * 10^8"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def least_ops_express_target (x : Nat) (target : Nat) : Nat :=\
-  \ sorry\n\ntheorem output_is_non_negative\n  (x : Nat) (target : Nat)\n  (h1 : x\
-  \ ≥ 2) (h2 : x ≤ 100)\n  (h3 : target ≥ 1) (h4 : target ≤ 1000000) :\n  least_ops_express_target\
-  \ x target ≥ 0 := sorry\n"
-"vc-theorems": "theorem target_equals_x_minimal_ops\n  (x : Nat)\n  (h1 : x ≥ 2) (h2\
-  \ : x ≤ 100) :\n  least_ops_express_target x x ≤ 2 := sorry\n\n\ntheorem power_requires_fewer_ops\n\
-  \  (x power : Nat)\n  (h1 : x ≥ 2) (h2 : x ≤ 20)\n  (h3 : power ≥ 2) (h4 : power\
-  \ ≤ 5) :\n  least_ops_express_target x (x^power) ≤ least_ops_express_target x (x^power\
-  \ + 1) := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a single positive integer x, we will write an expression of the form x (op1) x (op2) x (op3) x ... where each operator op1, op2, etc. is either addition, subtraction, multiplication, or division (+, -, *, or /).  For example, with x = 3, we might write 3 * 3 / 3 + 3 - 3 which is a value of 3.
+  When writing such an expression, we adhere to the following conventions:
+
+  The division operator (/) returns rational numbers.
+  There are no parentheses placed anywhere.
+  We use the usual order of operations: multiplication and division happens before addition and subtraction.
+  It's not allowed to use the unary negation operator (-).  For example, "x - x" is a valid expression as it only uses subtraction, but "-x + x" is not because it uses negation.
+
+  We would like to write an expression with the least number of operators such that the expression equals the given target.  Return the least number of operators used.
+   
+
+  Example 1:
+  Input: x = 3, target = 19
+  Output: 5
+  Explanation: 3 * 3 + 3 * 3 + 3 / 3.  The expression contains 5 operations.
+
+  Example 2:
+
+  Input: x = 5, target = 501
+  Output: 8
+  Explanation: 5 * 5 * 5 * 5 - 5 * 5 * 5 + 5 / 5.  The expression contains 8 operations.
+
+
+  Example 3:
+  Input: x = 100, target = 100000000
+  Output: 3
+  Explanation: 100 * 100 * 100 * 100.  The expression contains 3 operations.
+   
+
+
+
+  Note:
+
+  2 <= x <= 100
+  1 <= target <= 2 * 10^8
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def least_ops_express_target (x : Nat) (target : Nat) : Nat := sorry
+
+  theorem output_is_non_negative
+    (x : Nat) (target : Nat)
+    (h1 : x ≥ 2) (h2 : x ≤ 100)
+    (h3 : target ≥ 1) (h4 : target ≤ 1000000) :
+    least_ops_express_target x target ≥ 0 := sorry
+vc-theorems: |-
+  theorem target_equals_x_minimal_ops
+    (x : Nat)
+    (h1 : x ≥ 2) (h2 : x ≤ 100) :
+    least_ops_express_target x x ≤ 2 := sorry
+
+
+  theorem power_requires_fewer_ops
+    (x power : Nat)
+    (h1 : x ≥ 2) (h2 : x ≤ 20)
+    (h3 : power ≥ 2) (h4 : power ≤ 5) :
+    least_ops_express_target x (x^power) ≤ least_ops_express_target x (x^power + 1) := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

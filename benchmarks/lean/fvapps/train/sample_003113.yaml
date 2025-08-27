@@ -1,27 +1,66 @@
-"vc-description": "In this Kata, you will be given a string and your task will be\
-  \ to return the length of the longest prefix that is also a suffix. A prefix is\
-  \ the start of a string while the suffix is the end of a string.  For instance,\
-  \ the prefixes of the string `\"abcd\"` are `[\"a\",\"ab\",\"abc\"]`. The suffixes\
-  \ are `[\"bcd\", \"cd\", \"d\"]`. You should not overlap the prefix and suffix.\n\
-  \n```Haskell\nfor example:\nsolve(\"abcd\") = 0, because no prefix == suffix. \n\
-  solve(\"abcda\") = 1, because the longest prefix which == suffix is \"a\".\nsolve(\"\
-  abcdabc\") = 3. Longest prefix which == suffix is \"abc\".\nsolve(\"aaaa\") = 2.\
-  \ Longest prefix which == suffix is \"aa\". You should not overlap the prefix and\
-  \ suffix\nsolve(\"aa\") = 1. You should not overlap the prefix and suffix.\nsolve(\"\
-  a\") = 0. You should not overlap the prefix and suffix.\n```\n\nAll strings will\
-  \ be lowercase and string lengths are `1 <= length <= 500`\n\nMore examples in test\
-  \ cases. Good luck!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve : String → Nat := sorry\n\ntheorem solve_length_bound\
-  \ (s : String) : \n  solve s ≤ (s.length / 2) := sorry\n"
-"vc-theorems": "theorem solve_nonnegative (s : String) :\n  solve s ≥ 0 := sorry\n\
-  \n\ntheorem solve_valid_match (s : String) :\n  solve s > 0 → solve s ≤ s.length\
-  \ / 2 ∧ \n  s.take (solve s) = s.takeRight (solve s) := sorry\n\n\ntheorem solve_concatenation\
-  \ {s1 s2 : String} \n  (h1 : s1.length > 0) (h2 : s2.length > 0) :\n  solve (s1\
-  \ ++ s2 ++ s1) ≥ s1.length := sorry\n\n\ntheorem solve_empty : solve \"\" = 0 :=\
-  \ sorry\n\ntheorem solve_single (c : Char) :\n  solve (String.mk [c]) = 0 := sorry\n\
-  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval solve \"abcd\"\n\n/--\ninfo: 1\n-/\n#guard_msgs\
-  \ in\n#eval solve \"abcda\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve \"\
-  abcdabc\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  In this Kata, you will be given a string and your task will be to return the length of the longest prefix that is also a suffix. A prefix is the start of a string while the suffix is the end of a string.  For instance, the prefixes of the string `"abcd"` are `["a","ab","abc"]`. The suffixes are `["bcd", "cd", "d"]`. You should not overlap the prefix and suffix.
+
+  ```Haskell
+  for example:
+  solve("abcd") = 0, because no prefix == suffix. 
+  solve("abcda") = 1, because the longest prefix which == suffix is "a".
+  solve("abcdabc") = 3. Longest prefix which == suffix is "abc".
+  solve("aaaa") = 2. Longest prefix which == suffix is "aa". You should not overlap the prefix and suffix
+  solve("aa") = 1. You should not overlap the prefix and suffix.
+  solve("a") = 0. You should not overlap the prefix and suffix.
+  ```
+
+  All strings will be lowercase and string lengths are `1 <= length <= 500`
+
+  More examples in test cases. Good luck!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve : String → Nat := sorry
+
+  theorem solve_length_bound (s : String) : 
+    solve s ≤ (s.length / 2) := sorry
+vc-theorems: |
+  theorem solve_nonnegative (s : String) :
+    solve s ≥ 0 := sorry
+
+
+  theorem solve_valid_match (s : String) :
+    solve s > 0 → solve s ≤ s.length / 2 ∧ 
+    s.take (solve s) = s.takeRight (solve s) := sorry
+
+
+  theorem solve_concatenation {s1 s2 : String} 
+    (h1 : s1.length > 0) (h2 : s2.length > 0) :
+    solve (s1 ++ s2 ++ s1) ≥ s1.length := sorry
+
+
+  theorem solve_empty : solve "" = 0 := sorry
+
+  theorem solve_single (c : Char) :
+    solve (String.mk [c]) = 0 := sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve "abcd"
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve "abcda"
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve "abcdabc"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

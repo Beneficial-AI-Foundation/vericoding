@@ -1,28 +1,77 @@
-"vc-description": "Complete the function/method (depending on the language) to return\
-  \ `true`/`True` when its argument is an array that has the same nesting structures\
-  \ and same corresponding length of nested arrays as the first array.\n\nFor example:\n\
-  \n```python\n# should return True\nsame_structure_as([ 1, 1, 1 ], [ 2, 2, 2 ] )\n\
-  same_structure_as([ 1, [ 1, 1 ] ], [ 2, [ 2, 2 ] ] )\n\n# should return False \n\
-  same_structure_as([ 1, [ 1, 1 ] ], [ [ 2, 2 ], 2 ] )\nsame_structure_as([ 1, [ 1,\
-  \ 1 ] ], [ [ 2 ], 2 ] )\n\n# should return True\nsame_structure_as([ [ [ ], [ ]\
-  \ ] ], [ [ [ ], [ ] ] ] )\n\n# should return False\nsame_structure_as([ [ [ ], [\
-  \ ] ] ], [ [ 1, 1 ] ] )\n```\n\n~~~if:javascript\nFor your convenience, there is\
-  \ already a function 'isArray(o)' declared and defined that returns true if its\
-  \ argument is an array, false otherwise.\n~~~\n\n~~~if:php\nYou may assume that\
-  \ all arrays passed in will be non-associative.\n~~~"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def same_structure_as {α β : Type} (x : NestedList α) (y : NestedList\
-  \ β) : Bool :=\n  sorry\n"
-"vc-theorems": "theorem same_structure_reflexive {α : Type} (x : NestedList α) :\n\
-  \  same_structure_as x x = true :=\n  sorry\n\n\ntheorem same_structure_value_independent\
-  \ {α β : Type} (x : NestedList α) (y : NestedList β) :\n  same_structure_as x y\
-  \ = true ∨ same_structure_as x y = false :=\n  sorry\n\n\ntheorem same_structure_symmetric\
-  \ {α β : Type} (x : NestedList α) (y : NestedList β) :\n  same_structure_as x y\
-  \ = same_structure_as y x :=\n  sorry\n\n\ntheorem flat_vs_nested_mismatch {α β\
-  \ : Type} (l : List (NestedList α)) (b : β) :\n  l ≠ [] →\n  same_structure_as (NestedList.node\
-  \ l) (NestedList.leaf b) = false :=\n  sorry\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval same_structure_as [1, [1, 1]] [[2, 2], 2]\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval same_structure_as [1, [1, 1]] [2, [2, 2]]\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval same_structure_as [[[], []]] [[[], []]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Complete the function/method (depending on the language) to return `true`/`True` when its argument is an array that has the same nesting structures and same corresponding length of nested arrays as the first array.
+
+  For example:
+
+  ```python
+  # should return True
+  same_structure_as([ 1, 1, 1 ], [ 2, 2, 2 ] )
+  same_structure_as([ 1, [ 1, 1 ] ], [ 2, [ 2, 2 ] ] )
+
+  # should return False 
+  same_structure_as([ 1, [ 1, 1 ] ], [ [ 2, 2 ], 2 ] )
+  same_structure_as([ 1, [ 1, 1 ] ], [ [ 2 ], 2 ] )
+
+  # should return True
+  same_structure_as([ [ [ ], [ ] ] ], [ [ [ ], [ ] ] ] )
+
+  # should return False
+  same_structure_as([ [ [ ], [ ] ] ], [ [ 1, 1 ] ] )
+  ```
+
+  ~~~if:javascript
+  For your convenience, there is already a function 'isArray(o)' declared and defined that returns true if its argument is an array, false otherwise.
+  ~~~
+
+  ~~~if:php
+  You may assume that all arrays passed in will be non-associative.
+  ~~~
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def same_structure_as {α β : Type} (x : NestedList α) (y : NestedList β) : Bool :=
+    sorry
+vc-theorems: |
+  theorem same_structure_reflexive {α : Type} (x : NestedList α) :
+    same_structure_as x x = true :=
+    sorry
+
+
+  theorem same_structure_value_independent {α β : Type} (x : NestedList α) (y : NestedList β) :
+    same_structure_as x y = true ∨ same_structure_as x y = false :=
+    sorry
+
+
+  theorem same_structure_symmetric {α β : Type} (x : NestedList α) (y : NestedList β) :
+    same_structure_as x y = same_structure_as y x :=
+    sorry
+
+
+  theorem flat_vs_nested_mismatch {α β : Type} (l : List (NestedList α)) (b : β) :
+    l ≠ [] →
+    same_structure_as (NestedList.node l) (NestedList.leaf b) = false :=
+    sorry
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval same_structure_as [1, [1, 1]] [[2, 2], 2]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval same_structure_as [1, [1, 1]] [2, [2, 2]]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval same_structure_as [[[], []]] [[[], []]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

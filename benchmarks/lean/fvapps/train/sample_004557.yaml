@@ -1,22 +1,72 @@
-"vc-description": "You must create a function, `spread`, that takes a function and\
-  \ a list of arguments to be applied to that function. You must make this function\
-  \ return the result of calling the given function/lambda with the given arguments.\n\
-  \neg:\n```python\nspread(someFunction, [1, true, \"Foo\", \"bar\"] ) \n# is the\
-  \ same as...\nsomeFunction(1, true, \"Foo\", \"bar\")\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef spread {α β : Type u} (f : α → β)\
-  \ (args : List α) : β :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sum (xs : List Nat) : Nat :=\n  match xs with\n  | [] => 0\n\
-  \  | h :: t => h + sum t\n"
-"vc-theorems": "theorem spread_matches_direct_call {α β : Type u} (f : α → β) (x :\
-  \ α) : \n  spread f [x] = f x :=\nsorry\n\n\ntheorem spread_list_sum (nums : List\
-  \ Nat) :\n  spread (fun xs => sum xs) [nums] = sum nums :=\nsorry\n\n\ntheorem spread_concat_strings\
-  \ (strings : List String) :\n  spread (fun args => String.join args) [strings] =\
-  \ String.join strings :=\nsorry\n\n\ntheorem spread_empty_unit (f : Unit → Option\
-  \ α) :\n  spread f [] = f () :=\nsorry\n\n\ntheorem spread_single_identity :\n \
-  \ spread (fun x:Nat => x) [42] = 42 :=\nsorry\n\n\ntheorem spread_too_many_args_fails\
-  \ :\n  ¬(∃ (res:Nat), spread (fun x:Nat => x) [1, 2] = res) :=\nsorry\n\n/--\ninfo:\
-  \ 5\n-/\n#guard_msgs in\n#eval spread lambda x, y: x + y [2, 3]\n\n/--\ninfo: 'abc'\n\
-  -/\n#guard_msgs in\n#eval spread lambda x, y, z: x + y + z [\"a\", \"b\", \"c\"\
-  ]\n\n/--\ninfo: 42\n-/\n#guard_msgs in\n#eval spread lambda: 42 []\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  You must create a function, `spread`, that takes a function and a list of arguments to be applied to that function. You must make this function return the result of calling the given function/lambda with the given arguments.
+
+  eg:
+  ```python
+  spread(someFunction, [1, true, "Foo", "bar"] ) 
+  # is the same as...
+  someFunction(1, true, "Foo", "bar")
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def spread {α β : Type u} (f : α → β) (args : List α) : β :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sum (xs : List Nat) : Nat :=
+    match xs with
+    | [] => 0
+    | h :: t => h + sum t
+vc-theorems: |
+  theorem spread_matches_direct_call {α β : Type u} (f : α → β) (x : α) : 
+    spread f [x] = f x :=
+  sorry
+
+
+  theorem spread_list_sum (nums : List Nat) :
+    spread (fun xs => sum xs) [nums] = sum nums :=
+  sorry
+
+
+  theorem spread_concat_strings (strings : List String) :
+    spread (fun args => String.join args) [strings] = String.join strings :=
+  sorry
+
+
+  theorem spread_empty_unit (f : Unit → Option α) :
+    spread f [] = f () :=
+  sorry
+
+
+  theorem spread_single_identity :
+    spread (fun x:Nat => x) [42] = 42 :=
+  sorry
+
+
+  theorem spread_too_many_args_fails :
+    ¬(∃ (res:Nat), spread (fun x:Nat => x) [1, 2] = res) :=
+  sorry
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval spread lambda x, y: x + y [2, 3]
+
+  /--
+  info: 'abc'
+  -/
+  #guard_msgs in
+  #eval spread lambda x, y, z: x + y + z ["a", "b", "c"]
+
+  /--
+  info: 42
+  -/
+  #guard_msgs in
+  #eval spread lambda: 42 []
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

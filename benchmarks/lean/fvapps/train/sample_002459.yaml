@@ -1,30 +1,72 @@
-"vc-description": "=====Problem Statement=====\nYou are given a string S. S contains\
-  \ alphanumeric characters only. Your task is to sort the string S in the following\
-  \ manner:\nAll sorted lowercase letters are ahead of uppercase letters.\nAll sorted\
-  \ uppercase letters are ahead of digits.\nAll sorted odd digits are ahead of sorted\
-  \ even digits.\n\n=====Input Format=====\nA single line of input contains the string\
-  \ S.\n\n=====Constraints=====\n0<len(S)<1000\n\n=====Output Format=====\nOutput\
-  \ the sorted string S."
-"vc-preamble": "import Imports.AllImports\n\ndef sort_str_special (s : String) : String\
-  \ :=\n  sorry\n\n\ndef isDigit (c : Char) : Bool :=\n  sorry\n\n\ndef isLower (c\
-  \ : Char) : Bool := \n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isUpper (c : Char) : Bool :=\n  sorry\n"
-"vc-theorems": "theorem sort_str_preserves_length (s : String) :\n  String.length\
-  \ (sort_str_special s) = String.length s := by\n  sorry\n\n\ntheorem sort_str_preserves_chars\
-  \ (s : String) :\n  String.toList (sort_str_special s) = String.toList s := by\n\
-  \  sorry\n\n\ntheorem digits_ordered_by_parity_and_value (s : String) (i j : String.Pos)\
-  \ \n    (h1 : i.1 < String.length (sort_str_special s))\n    (h2 : j.1 < String.length\
-  \ (sort_str_special s))\n    (h3 : i.1 < j.1)\n    (hd1 : isDigit ((sort_str_special\
-  \ s).get i))\n    (hd2 : isDigit ((sort_str_special s).get j)) :\n    let d1 :=\
-  \ (sort_str_special s).get i\n    let d2 := (sort_str_special s).get j\n    (d1.toNat\
-  \ % 2 = 0 → d2.toNat % 2 ≠ 1) ∧\n    (d1.toNat % 2 = d2.toNat % 2 → d1.toNat ≤ d2.toNat)\
-  \ := by\n  sorry\n\n\ntheorem letters_ordered_by_case_and_value (s : String) (i\
-  \ j : String.Pos)\n    (h1 : i.1 < String.length (sort_str_special s))\n    (h2\
-  \ : j.1 < String.length (sort_str_special s))\n    (h3 : i.1 < j.1)\n    (hl1 :\
-  \ (isLower ((sort_str_special s).get i) ∨ isUpper ((sort_str_special s).get i)))\n\
-  \    (hl2 : (isLower ((sort_str_special s).get j) ∨ isUpper ((sort_str_special s).get\
-  \ j))) :\n    let c1 := (sort_str_special s).get i\n    let c2 := (sort_str_special\
-  \ s).get j\n    (isUpper c1 → ¬isLower c2) ∧\n    ((isUpper c1 = isUpper c2) → c1\
-  \ ≤ c2) := by\n  sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  =====Problem Statement=====
+  You are given a string S. S contains alphanumeric characters only. Your task is to sort the string S in the following manner:
+  All sorted lowercase letters are ahead of uppercase letters.
+  All sorted uppercase letters are ahead of digits.
+  All sorted odd digits are ahead of sorted even digits.
+
+  =====Input Format=====
+  A single line of input contains the string S.
+
+  =====Constraints=====
+  0<len(S)<1000
+
+  =====Output Format=====
+  Output the sorted string S.
+vc-preamble: |
+  import Imports.AllImports
+
+  def sort_str_special (s : String) : String :=
+    sorry
+
+
+  def isDigit (c : Char) : Bool :=
+    sorry
+
+
+  def isLower (c : Char) : Bool := 
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isUpper (c : Char) : Bool :=
+    sorry
+vc-theorems: |-
+  theorem sort_str_preserves_length (s : String) :
+    String.length (sort_str_special s) = String.length s := by
+    sorry
+
+
+  theorem sort_str_preserves_chars (s : String) :
+    String.toList (sort_str_special s) = String.toList s := by
+    sorry
+
+
+  theorem digits_ordered_by_parity_and_value (s : String) (i j : String.Pos) 
+      (h1 : i.1 < String.length (sort_str_special s))
+      (h2 : j.1 < String.length (sort_str_special s))
+      (h3 : i.1 < j.1)
+      (hd1 : isDigit ((sort_str_special s).get i))
+      (hd2 : isDigit ((sort_str_special s).get j)) :
+      let d1 := (sort_str_special s).get i
+      let d2 := (sort_str_special s).get j
+      (d1.toNat % 2 = 0 → d2.toNat % 2 ≠ 1) ∧
+      (d1.toNat % 2 = d2.toNat % 2 → d1.toNat ≤ d2.toNat) := by
+    sorry
+
+
+  theorem letters_ordered_by_case_and_value (s : String) (i j : String.Pos)
+      (h1 : i.1 < String.length (sort_str_special s))
+      (h2 : j.1 < String.length (sort_str_special s))
+      (h3 : i.1 < j.1)
+      (hl1 : (isLower ((sort_str_special s).get i) ∨ isUpper ((sort_str_special s).get i)))
+      (hl2 : (isLower ((sort_str_special s).get j) ∨ isUpper ((sort_str_special s).get j))) :
+      let c1 := (sort_str_special s).get i
+      let c2 := (sort_str_special s).get j
+      (isUpper c1 → ¬isLower c2) ∧
+      ((isUpper c1 = isUpper c2) → c1 ≤ c2) := by
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

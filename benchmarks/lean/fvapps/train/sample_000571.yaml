@@ -1,37 +1,69 @@
-"vc-description": "On a planet called RUIZ LAND, which is ruled by the queen, Erika\
-  \ Ruiz. Each person on that planet has a strength value (strength value >0).\nThat\
-  \ planet has a special rule made by the queen that a boy and a girl will form a\
-  \ couple if their Hate value is a prime number where $Hate$ is given by the formula:-\n\
-  Hate = (boy's strength value)  XOR (girl's strength value )\nYou are given $N$ numbers\
-  \ denoting the strength value of $N$ girls, and each of the $N$ girls has to form\
-  \ a couple with a boy such that sum of $Hate$ value of all the $N$ couples will\
-  \ be minimum.\nYou need to print the strength value of each boy, Where the boy at\
-  \ index $i$ will form a couple with the girl at index $i$, where $1 \\leq i \\leq\
-  \ N$.\nAssume that you can always find at least one boy having that strength for\
-  \ each girl.\n\n-----Input:-----\n- First line will contain $N$, the number of Girls.\
-  \ \n- Next line contains $N$ numbers separated by space denoting strength value\
-  \ for each girl.\n\n-----Output:-----\nPrint the required $N$ numbers denoting strength\
-  \ of boys.\n\n-----Constraints-----\n- $1 \\leq N \\leq 100000$\n- $1 \\leq A_i\
-  \ \\leq 10^9$ , (where $1 \\leq i \\leq N$) and $A_i$ denotes strength of i'th girl.\n\
-  \n-----Sample Input:-----\n2\n10 16\n\n-----Sample Output:-----\n8 18"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_boy_strengths (n : Nat) (girls : List Nat) : List Nat\
-  \ := sorry\n\ntheorem find_boy_strengths_length \n  (girls : List Nat) (n : Nat)\
-  \ (h : 0 < n) :\n  List.length (find_boy_strengths n girls) = List.length girls\
-  \ := sorry\n"
-"vc-theorems": "theorem find_boy_strengths_naturals\n  (girls : List Nat) (n : Nat)\
-  \ (h : 0 < n) :\n  ∀ x ∈ find_boy_strengths n girls, x ≥ 0 := sorry\n\n\ntheorem\
-  \ find_boy_strengths_special_case_two\n  (girls : List Nat) (n : Nat) (h : 0 < n)\
-  \ :\n  ∀ (i : Fin (List.length girls)),\n    have h2 : i.val < (find_boy_strengths\
-  \ n girls).length := \n      by rw [find_boy_strengths_length girls n h]; exact\
-  \ i.isLt\n    let girl := girls[i]\n    let boy := (find_boy_strengths n girls)[i.val]'h2\n\
-  \    if girl = 2 then boy = 1 \n    else boy = girl.xor 2 := sorry\n\n\ntheorem\
-  \ find_boy_strengths_all_twos\n  (girls : List Nat) (n : Nat) (h : 0 < n)\n  (h2\
-  \ : ∀ x ∈ girls, x = 2) :\n  ∀ x ∈ find_boy_strengths n girls, x = 1 := sorry\n\n\
-  \ntheorem find_boy_strengths_no_twos\n  (girls : List Nat) (n : Nat) (h : 0 < n)\n\
-  \  (h2 : ∀ x ∈ girls, x ≥ 3) :\n  ∀ (i : Fin (List.length girls)),\n    have h3\
-  \ : i.val < (find_boy_strengths n girls).length := \n      by rw [find_boy_strengths_length\
-  \ girls n h]; exact i.isLt\n    (find_boy_strengths n girls)[i.val]'h3 = girls[i].xor\
-  \ 2 := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  On a planet called RUIZ LAND, which is ruled by the queen, Erika Ruiz. Each person on that planet has a strength value (strength value >0).
+  That planet has a special rule made by the queen that a boy and a girl will form a couple if their Hate value is a prime number where $Hate$ is given by the formula:-
+  Hate = (boy's strength value)  XOR (girl's strength value )
+  You are given $N$ numbers denoting the strength value of $N$ girls, and each of the $N$ girls has to form a couple with a boy such that sum of $Hate$ value of all the $N$ couples will be minimum.
+  You need to print the strength value of each boy, Where the boy at index $i$ will form a couple with the girl at index $i$, where $1 \leq i \leq N$.
+  Assume that you can always find at least one boy having that strength for each girl.
+
+  -----Input:-----
+  - First line will contain $N$, the number of Girls. 
+  - Next line contains $N$ numbers separated by space denoting strength value for each girl.
+
+  -----Output:-----
+  Print the required $N$ numbers denoting strength of boys.
+
+  -----Constraints-----
+  - $1 \leq N \leq 100000$
+  - $1 \leq A_i \leq 10^9$ , (where $1 \leq i \leq N$) and $A_i$ denotes strength of i'th girl.
+
+  -----Sample Input:-----
+  2
+  10 16
+
+  -----Sample Output:-----
+  8 18
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_boy_strengths (n : Nat) (girls : List Nat) : List Nat := sorry
+
+  theorem find_boy_strengths_length 
+    (girls : List Nat) (n : Nat) (h : 0 < n) :
+    List.length (find_boy_strengths n girls) = List.length girls := sorry
+vc-theorems: |-
+  theorem find_boy_strengths_naturals
+    (girls : List Nat) (n : Nat) (h : 0 < n) :
+    ∀ x ∈ find_boy_strengths n girls, x ≥ 0 := sorry
+
+
+  theorem find_boy_strengths_special_case_two
+    (girls : List Nat) (n : Nat) (h : 0 < n) :
+    ∀ (i : Fin (List.length girls)),
+      have h2 : i.val < (find_boy_strengths n girls).length := 
+        by rw [find_boy_strengths_length girls n h]; exact i.isLt
+      let girl := girls[i]
+      let boy := (find_boy_strengths n girls)[i.val]'h2
+      if girl = 2 then boy = 1 
+      else boy = girl.xor 2 := sorry
+
+
+  theorem find_boy_strengths_all_twos
+    (girls : List Nat) (n : Nat) (h : 0 < n)
+    (h2 : ∀ x ∈ girls, x = 2) :
+    ∀ x ∈ find_boy_strengths n girls, x = 1 := sorry
+
+
+  theorem find_boy_strengths_no_twos
+    (girls : List Nat) (n : Nat) (h : 0 < n)
+    (h2 : ∀ x ∈ girls, x ≥ 3) :
+    ∀ (i : Fin (List.length girls)),
+      have h3 : i.val < (find_boy_strengths n girls).length := 
+        by rw [find_boy_strengths_length girls n h]; exact i.isLt
+      (find_boy_strengths n girls)[i.val]'h3 = girls[i].xor 2 := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

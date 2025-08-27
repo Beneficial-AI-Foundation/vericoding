@@ -1,28 +1,58 @@
-"vc-description": "You are given an undirected weighted graph of n nodes (0-indexed),\
-  \ represented by an edge list where edges[i] = [a, b] is an undirected edge connecting\
-  \ the nodes a and b with a probability of success of traversing that edge succProb[i].\n\
-  Given two nodes start and end, find the path with the maximum probability of success\
-  \ to go from start to end and return its success probability.\nIf there is no path\
-  \ from start to end, return 0. Your answer will be accepted if it differs from the\
-  \ correct answer by at most 1e-5.\n \nExample 1:\n\nInput: n = 3, edges = [[0,1],[1,2],[0,2]],\
-  \ succProb = [0.5,0.5,0.2], start = 0, end = 2\nOutput: 0.25000\nExplanation: There\
-  \ are two paths from start to end, one having a probability of success = 0.2 and\
-  \ the other has 0.5 * 0.5 = 0.25.\n\nExample 2:\n\nInput: n = 3, edges = [[0,1],[1,2],[0,2]],\
-  \ succProb = [0.5,0.5,0.3], start = 0, end = 2\nOutput: 0.30000\n\nExample 3:\n\n\
-  Input: n = 3, edges = [[0,1]], succProb = [0.5], start = 0, end = 2\nOutput: 0.00000\n\
-  Explanation: There is no path between 0 and 2.\n\n \nConstraints:\n\n2 <= n <= 10^4\n\
-  0 <= start, end < n\nstart != end\n0 <= a, b < n\na != b\n0 <= succProb.length ==\
-  \ edges.length <= 2*10^4\n0 <= succProb[i] <= 1\nThere is at most one edge between\
-  \ every two nodes."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def maxProbability (n : Nat) (edges : List (List Nat)) (probs :\
-  \ List Float) \n  (s : Nat) (t : Nat) : Float := sorry\n"
-"vc-theorems": "theorem maxProbability_bounded (n : Nat) (edges : List (List Nat))\
-  \ (probs : List Float)\n  (s t : Nat) :\n  0 ≤ maxProbability n edges probs s t\
-  \ ∧ maxProbability n edges probs s t ≤ 1 := sorry\n\n\ntheorem maxProbability_same_node\
-  \ (n : Nat) (edges : List (List Nat)) (probs : List Float)\n  (s : Nat) :\n  maxProbability\
-  \ n edges probs s s = 1 := sorry\n\n\ntheorem maxProbability_symmetry (n : Nat)\
-  \ (edges : List (List Nat)) (probs : List Float)\n  (s t : Nat) :\n  (maxProbability\
-  \ n edges probs s t - maxProbability n edges probs t s).abs < 1e-10 := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  You are given an undirected weighted graph of n nodes (0-indexed), represented by an edge list where edges[i] = [a, b] is an undirected edge connecting the nodes a and b with a probability of success of traversing that edge succProb[i].
+  Given two nodes start and end, find the path with the maximum probability of success to go from start to end and return its success probability.
+  If there is no path from start to end, return 0. Your answer will be accepted if it differs from the correct answer by at most 1e-5.
+   
+  Example 1:
+
+  Input: n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.2], start = 0, end = 2
+  Output: 0.25000
+  Explanation: There are two paths from start to end, one having a probability of success = 0.2 and the other has 0.5 * 0.5 = 0.25.
+
+  Example 2:
+
+  Input: n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.3], start = 0, end = 2
+  Output: 0.30000
+
+  Example 3:
+
+  Input: n = 3, edges = [[0,1]], succProb = [0.5], start = 0, end = 2
+  Output: 0.00000
+  Explanation: There is no path between 0 and 2.
+
+   
+  Constraints:
+
+  2 <= n <= 10^4
+  0 <= start, end < n
+  start != end
+  0 <= a, b < n
+  a != b
+  0 <= succProb.length == edges.length <= 2*10^4
+  0 <= succProb[i] <= 1
+  There is at most one edge between every two nodes.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def maxProbability (n : Nat) (edges : List (List Nat)) (probs : List Float) 
+    (s : Nat) (t : Nat) : Float := sorry
+vc-theorems: |-
+  theorem maxProbability_bounded (n : Nat) (edges : List (List Nat)) (probs : List Float)
+    (s t : Nat) :
+    0 ≤ maxProbability n edges probs s t ∧ maxProbability n edges probs s t ≤ 1 := sorry
+
+
+  theorem maxProbability_same_node (n : Nat) (edges : List (List Nat)) (probs : List Float)
+    (s : Nat) :
+    maxProbability n edges probs s s = 1 := sorry
+
+
+  theorem maxProbability_symmetry (n : Nat) (edges : List (List Nat)) (probs : List Float)
+    (s t : Nat) :
+    (maxProbability n edges probs s t - maxProbability n edges probs t s).abs < 1e-10 := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

@@ -1,36 +1,76 @@
-"vc-description": "One of the first chain emails I ever received was about a supposed\
-  \ Cambridge  University study that suggests your brain can read words no matter\
-  \ what order the letters are in, as long as the first and last letters of each word\
-  \ are correct.\n\nYour task is to **create a function that can take any string and\
-  \ randomly jumble the letters within each word while leaving the first and last\
-  \ letters of the word in place.**\n\nFor example,\n    \n    mixwords('Winter is\
-  \ coming') // returns 'Wntier is cminog' or 'Wtiner is conimg'\n    mixwords('Hey,\
-  \ friends!') // returns 'Hey, fierdns!' or 'Hey, fernids!'\n\n* All punctuation\
-  \ should remain in place\n* Words smaller than 3 letters should not change\n* Letters\
-  \ must be randomly moved (and so calling the function multiple times with the same\
-  \ string should return different values\n* Parameters that are not strings should\
-  \ return undefined\n\nThe tests do the following things to ensure a valid string\
-  \ is returned:\n    \n1. Check that the string returned is not equal to the string\
-  \ passed (you may have to revalidate the solution if your function randomly returns\
-  \ the same string)\n2. Check that first and last letters of words remain in place\n\
-  3. Check that punctuation remains in place\n4. Checks string length remains the\
-  \ same\n5. Checks the function returns `undefined` for non-strings\n6. Checks that\
-  \ word interiors (the letters between the first and last) maintain the same letters,\
-  \ albeit in a different order\n7. Checks that letters are randomly assigned."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def mix_words (s : String) : Option String := sorry\n\ndef is_properly_scrambled\
-  \ (original scrambled : String) : Bool := sorry\n"
-"vc-theorems": "theorem output_length_matches_input (s : String) :\n  ∀ res, mix_words\
-  \ s = some res → res.length = s.length := sorry\n\n\ntheorem non_letter_strings_unchanged\
-  \ (s : String) :\n  (∀ c ∈ s.data, !c.isAlpha) → mix_words s = some s := sorry\n\
-  \n\ntheorem word_boundaries_preserved (s : String) (res : String) :\n  s.length\
-  \ ≥ 4 → \n  mix_words s = some res →\n  res.front = s.front ∧ \n  res.back = s.back\
-  \ := sorry\n\n\ntheorem preserve_chars (s : String) (res : String) :\n  mix_words\
-  \ s = some res →\n  s.data.toArray = res.data.toArray := sorry\n\n\ntheorem words_properly_scrambled\
-  \ (words : List String) (text : String) (res : String) :\n  words ≠ [] →\n  (∀ w\
-  \ ∈ words, w ≠ \"\") →\n  text = String.intercalate \" \" words →\n  mix_words text\
-  \ = some res →\n  let result_words := res.split (· = ' ')\n  words.length = result_words.length\
-  \ := sorry\n\n/--\ninfo: len(test1)\n-/\n#guard_msgs in\n#eval len mix_words(test1)\n\
-  \n/--\ninfo: sorted(mixed[1:-1])\n-/\n#guard_msgs in\n#eval sorted orig[1:-1]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  One of the first chain emails I ever received was about a supposed Cambridge  University study that suggests your brain can read words no matter what order the letters are in, as long as the first and last letters of each word are correct.
+
+  Your task is to **create a function that can take any string and randomly jumble the letters within each word while leaving the first and last letters of the word in place.**
+
+  For example,
+      
+      mixwords('Winter is coming') // returns 'Wntier is cminog' or 'Wtiner is conimg'
+      mixwords('Hey, friends!') // returns 'Hey, fierdns!' or 'Hey, fernids!'
+
+  * All punctuation should remain in place
+  * Words smaller than 3 letters should not change
+  * Letters must be randomly moved (and so calling the function multiple times with the same string should return different values
+  * Parameters that are not strings should return undefined
+
+  The tests do the following things to ensure a valid string is returned:
+      
+  1. Check that the string returned is not equal to the string passed (you may have to revalidate the solution if your function randomly returns the same string)
+  2. Check that first and last letters of words remain in place
+  3. Check that punctuation remains in place
+  4. Checks string length remains the same
+  5. Checks the function returns `undefined` for non-strings
+  6. Checks that word interiors (the letters between the first and last) maintain the same letters, albeit in a different order
+  7. Checks that letters are randomly assigned.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def mix_words (s : String) : Option String := sorry
+
+  def is_properly_scrambled (original scrambled : String) : Bool := sorry
+vc-theorems: |
+  theorem output_length_matches_input (s : String) :
+    ∀ res, mix_words s = some res → res.length = s.length := sorry
+
+
+  theorem non_letter_strings_unchanged (s : String) :
+    (∀ c ∈ s.data, !c.isAlpha) → mix_words s = some s := sorry
+
+
+  theorem word_boundaries_preserved (s : String) (res : String) :
+    s.length ≥ 4 → 
+    mix_words s = some res →
+    res.front = s.front ∧ 
+    res.back = s.back := sorry
+
+
+  theorem preserve_chars (s : String) (res : String) :
+    mix_words s = some res →
+    s.data.toArray = res.data.toArray := sorry
+
+
+  theorem words_properly_scrambled (words : List String) (text : String) (res : String) :
+    words ≠ [] →
+    (∀ w ∈ words, w ≠ "") →
+    text = String.intercalate " " words →
+    mix_words text = some res →
+    let result_words := res.split (· = ' ')
+    words.length = result_words.length := sorry
+
+  /--
+  info: len(test1)
+  -/
+  #guard_msgs in
+  #eval len mix_words(test1)
+
+  /--
+  info: sorted(mixed[1:-1])
+  -/
+  #guard_msgs in
+  #eval sorted orig[1:-1]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

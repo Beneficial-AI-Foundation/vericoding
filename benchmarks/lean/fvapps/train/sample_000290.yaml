@@ -1,20 +1,68 @@
-"vc-description": "You have n  tiles, where each tile has one letter tiles[i] printed\
-  \ on it.\nReturn the number of possible non-empty sequences of letters you can make\
-  \ using the letters printed on those tiles.\n \nExample 1:\nInput: tiles = \"AAB\"\
-  \nOutput: 8\nExplanation: The possible sequences are \"A\", \"B\", \"AA\", \"AB\"\
-  , \"BA\", \"AAB\", \"ABA\", \"BAA\".\n\nExample 2:\nInput: tiles = \"AAABBC\"\n\
-  Output: 188\n\nExample 3:\nInput: tiles = \"V\"\nOutput: 1\n\n \nConstraints:\n\n\
-  1 <= tiles.length <= 7\ntiles consists of uppercase English letters."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def numTilePossibilities (s : String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem tile_possibilities_bounds {s : String} (h : s.length ≥ 1)\
-  \ (h2 : s.length ≤ 7) :\n  let result := numTilePossibilities s\n  result ≥ 0 ∧\
-  \ \n  result ≥ s.data.eraseDups.length - 1 ∧\n  result ≤ s.length ^ s.length :=\n\
-  \  sorry\n\n\ntheorem single_tile_case {s : String} (h : s.length = 1) :\n  numTilePossibilities\
-  \ s = 1 :=\n  sorry\n\n\ntheorem permutations_exceed_unique {s : String} (h : s.length\
-  \ ≥ 2) (h2 : s.length ≤ 7) :\n  numTilePossibilities s ≥ s.data.eraseDups.length\
-  \ :=\n  sorry\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval numTilePossibilities \"\
-  AAB\"\n\n/--\ninfo: 188\n-/\n#guard_msgs in\n#eval numTilePossibilities \"AAABBC\"\
-  \n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval numTilePossibilities \"V\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  You have n  tiles, where each tile has one letter tiles[i] printed on it.
+  Return the number of possible non-empty sequences of letters you can make using the letters printed on those tiles.
+   
+  Example 1:
+  Input: tiles = "AAB"
+  Output: 8
+  Explanation: The possible sequences are "A", "B", "AA", "AB", "BA", "AAB", "ABA", "BAA".
+
+  Example 2:
+  Input: tiles = "AAABBC"
+  Output: 188
+
+  Example 3:
+  Input: tiles = "V"
+  Output: 1
+
+   
+  Constraints:
+
+  1 <= tiles.length <= 7
+  tiles consists of uppercase English letters.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def numTilePossibilities (s : String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem tile_possibilities_bounds {s : String} (h : s.length ≥ 1) (h2 : s.length ≤ 7) :
+    let result := numTilePossibilities s
+    result ≥ 0 ∧ 
+    result ≥ s.data.eraseDups.length - 1 ∧
+    result ≤ s.length ^ s.length :=
+    sorry
+
+
+  theorem single_tile_case {s : String} (h : s.length = 1) :
+    numTilePossibilities s = 1 :=
+    sorry
+
+
+  theorem permutations_exceed_unique {s : String} (h : s.length ≥ 2) (h2 : s.length ≤ 7) :
+    numTilePossibilities s ≥ s.data.eraseDups.length :=
+    sorry
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval numTilePossibilities "AAB"
+
+  /--
+  info: 188
+  -/
+  #guard_msgs in
+  #eval numTilePossibilities "AAABBC"
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval numTilePossibilities "V"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

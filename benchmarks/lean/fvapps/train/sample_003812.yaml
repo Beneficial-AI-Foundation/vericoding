@@ -1,18 +1,65 @@
-"vc-description": "Given a string s, write a method (function) that will return true\
-  \ if its a valid single integer or floating number or false if its not.\n\nValid\
-  \ examples, should return true:\n\nshould return false:"
-"vc-preamble": "import Imports.AllImports\n\ndef isDigit (s : String) : Bool :=\n\
-  \  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def String.toFloat? (s : String) : Option Float :=\n  sorry\n"
-"vc-theorems": "theorem valid_float_strings (f : Float) : \n  isDigit (toString f)\
-  \ = true :=\n  sorry\n\n\ntheorem arbitrary_text (s : String) :\n  match s.toFloat?\
-  \ with\n  | some _ => isDigit s = true  \n  | none => isDigit s = false\n  :=\n\
-  \  sorry\n\n\ntheorem whitespace_padding (s : String) (f : Float) :\n  isDigit (s\
-  \ ++ toString f ++ s) = true := \n  sorry\n\n\ntheorem edge_cases :\n  isDigit \"\
-  \" = false ∧ \n  isDigit \" \" = false ∧\n  isDigit \"-0\" = true ∧\n  isDigit \"\
-  +0\" = true ∧\n  isDigit \"-.1\" = true ∧\n  isDigit \"+.1\" = true :=\n  sorry\n\
-  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval isDigit \"-234.4\"\n\n/--\ninfo: False\n\
-  -/\n#guard_msgs in\n#eval isDigit \"3 4\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
-  #eval isDigit \"0.0\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a string s, write a method (function) that will return true if its a valid single integer or floating number or false if its not.
+
+  Valid examples, should return true:
+
+  should return false:
+vc-preamble: |
+  import Imports.AllImports
+
+  def isDigit (s : String) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def String.toFloat? (s : String) : Option Float :=
+    sorry
+vc-theorems: |
+  theorem valid_float_strings (f : Float) : 
+    isDigit (toString f) = true :=
+    sorry
+
+
+  theorem arbitrary_text (s : String) :
+    match s.toFloat? with
+    | some _ => isDigit s = true  
+    | none => isDigit s = false
+    :=
+    sorry
+
+
+  theorem whitespace_padding (s : String) (f : Float) :
+    isDigit (s ++ toString f ++ s) = true := 
+    sorry
+
+
+  theorem edge_cases :
+    isDigit "" = false ∧ 
+    isDigit " " = false ∧
+    isDigit "-0" = true ∧
+    isDigit "+0" = true ∧
+    isDigit "-.1" = true ∧
+    isDigit "+.1" = true :=
+    sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval isDigit "-234.4"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval isDigit "3 4"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval isDigit "0.0"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

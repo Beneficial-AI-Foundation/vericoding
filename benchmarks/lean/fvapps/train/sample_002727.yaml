@@ -1,15 +1,52 @@
-"vc-description": "Complete the solution so that it reverses the string passed into\
-  \ it. \n\n```\n'world'  =>  'dlrow'\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solution (s : String) : String := sorry \n\ntheorem solution_reverse_involution\
-  \ (s : String) : \n  solution (solution s) = s := sorry\n"
-"vc-theorems": "theorem solution_length_preserved (s : String) :\n  (solution s).length\
-  \ = s.length := sorry\n\n\ntheorem solution_chars_preserved (s : String) : ∀ c,\n\
-  \  (s.data.count c) = ((solution s).data.count c) := sorry\n\n\ntheorem solution_eq_reverse\
-  \ (s : String) :\n  solution s = String.mk s.data.reverse := sorry\n\n\ntheorem\
-  \ solution_empty : \n  solution \"\" = \"\" := sorry\n\n/--\ninfo: 'dlrow'\n-/\n\
-  #guard_msgs in\n#eval solution \"world\"\n\n/--\ninfo: 'olleh'\n-/\n#guard_msgs\
-  \ in\n#eval solution \"hello\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval solution\
-  \ \"\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Complete the solution so that it reverses the string passed into it. 
+
+  ```
+  'world'  =>  'dlrow'
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solution (s : String) : String := sorry 
+
+  theorem solution_reverse_involution (s : String) : 
+    solution (solution s) = s := sorry
+vc-theorems: |
+  theorem solution_length_preserved (s : String) :
+    (solution s).length = s.length := sorry
+
+
+  theorem solution_chars_preserved (s : String) : ∀ c,
+    (s.data.count c) = ((solution s).data.count c) := sorry
+
+
+  theorem solution_eq_reverse (s : String) :
+    solution s = String.mk s.data.reverse := sorry
+
+
+  theorem solution_empty : 
+    solution "" = "" := sorry
+
+  /--
+  info: 'dlrow'
+  -/
+  #guard_msgs in
+  #eval solution "world"
+
+  /--
+  info: 'olleh'
+  -/
+  #guard_msgs in
+  #eval solution "hello"
+
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval solution ""
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

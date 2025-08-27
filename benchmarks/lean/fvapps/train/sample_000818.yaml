@@ -1,45 +1,112 @@
-"vc-description": "Dhiraj loves Chocolates.He loves chocolates so much that he can\
-  \ eat up to $1000$ chocolates a day. But his mom is fed up by this habit of him\
-  \ and decides to take things in her hand.\nIts diwali Season and Dhiraj has got\
-  \ a lot of boxes of chocolates and Dhiraj's mom is afraid that dhiraj might eat\
-  \ all boxes of chocolates.\nSo she told Dhiraj that he can eat only exactly $k$\
-  \ number of chocolates and dhiraj has to finish all the chocolates in box selected\
-  \ by him and then move on to next box of chocolate.Now Dhiraj is confused that whether\
-  \ he will be able to eat $k$ number of chocolates or not. Since dhiraj is weak at\
-  \ maths,he asks for your help to tell him whether he can eat $k$ number of chocolates\
-  \ or not. \nSo given number of chocolates  are $k$ which dhiraj has to eat and the\
-  \ boxes of chocolates each containing some number of chocolates, tell whether dhiraj\
-  \ will be able to eat $k$ number of chocolates or not.\n\n-----Input:-----\n- First\
-  \ line will contain $T$, number of testcases. Then the testcases follow. \n- $k$,\
-  \ representing the number of chocolates dhiraj has to eat.\n- the third line contains\
-  \ $N$ representing the no. of boxes of chocolates.\n- fourth line contains list\
-  \ of $a[]$ size $N$ specifying the number of chocolates in each Box.\n\n-----Output:-----\n\
-  - For each testcase, output in a single line answer $0$ or $1$.\n- $0$ if dhiraj\
-  \ cant eat $k$ chocolates from given combination and $1$ if he can eat $k$ chocolates\
-  \ from given combination.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n- $1\
-  \ \\leq K \\leq 10^7$\n- $1 \\leq  N \\leq 800$\n- $1 \\leq a[i] \\leq 10^3$\n\n\
-  -----Sample Input:-----\n2\n20\n5\n8 7 2 10 5\n11\n4\n6 8 2 10\n\n-----Sample Output:-----\n\
-  1\n0"
-"vc-preamble": "import Imports.AllImports\n\ndef sumList (list : List Int) : Int :=\n\
-  \  sorry\n\n\ndef isSubsetSum (arr : List Int) (n : Int) (k : Int) : Bool :=\n \
-  \ sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def can_eat_chocolates (k : Int) (n : Int) (arr : List Int) : Int\
-  \ :=\n  sorry\n"
-"vc-theorems": "theorem sum_less_than_k_returns_0 (arr : List Int) (k : Int):\n  arr.length\
-  \ > 0 → \n  (∀ x ∈ arr, x > 0 ∧ x ≤ 100) →\n  k > 0 →\n  k ≤ 1000 →\n  sumList arr\
-  \ < k →\n  can_eat_chocolates k arr.length arr = 0 :=\n  sorry\n\n\ntheorem target_sum_of_array_is_possible\
-  \ (arr : List Int):\n  arr.length > 0 →\n  (∀ x ∈ arr, x > 0 ∧ x ≤ 100) →\n  can_eat_chocolates\
-  \ (sumList arr) arr.length arr = 1 :=\n  sorry\n\n\ntheorem k_less_than_min_returns_0\
-  \ (arr : List Int):\n  arr.length > 0 →\n  (∀ x ∈ arr, x > 0 ∧ x ≤ 100) →\n  let\
-  \ k := (arr.minimum?.getD 0) - 1\n  k > 0 →\n  can_eat_chocolates k arr.length arr\
-  \ = 0 :=\n  sorry\n\n\ntheorem subset_sum_matches_chocolates (arr : List Int) (k\
-  \ : Int):\n  arr.length > 0 →\n  (∀ x ∈ arr, x > 0 ∧ x ≤ 100) →\n  k > 0 →\n  k\
-  \ ≤ 1000 →\n  (can_eat_chocolates k arr.length arr = 1) = isSubsetSum arr arr.length\
-  \ k :=\n  sorry\n\n\ntheorem single_matching_element_returns_1 (arr : List Int):\n\
-  \  arr.length > 0 →\n  (∀ x ∈ arr, x > 0 ∧ x ≤ 100) →\n  let k := arr[0]!\n  can_eat_chocolates\
-  \ k arr.length arr = 1 :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval can_eat_chocolates\
-  \ 20 5 [8, 7, 2, 10, 5]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval can_eat_chocolates\
-  \ 11 4 [6, 8, 2, 10]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval can_eat_chocolates\
-  \ 15 3 [5, 5, 5]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Dhiraj loves Chocolates.He loves chocolates so much that he can eat up to $1000$ chocolates a day. But his mom is fed up by this habit of him and decides to take things in her hand.
+  Its diwali Season and Dhiraj has got a lot of boxes of chocolates and Dhiraj's mom is afraid that dhiraj might eat all boxes of chocolates.
+  So she told Dhiraj that he can eat only exactly $k$ number of chocolates and dhiraj has to finish all the chocolates in box selected by him and then move on to next box of chocolate.Now Dhiraj is confused that whether he will be able to eat $k$ number of chocolates or not. Since dhiraj is weak at maths,he asks for your help to tell him whether he can eat $k$ number of chocolates or not. 
+  So given number of chocolates  are $k$ which dhiraj has to eat and the boxes of chocolates each containing some number of chocolates, tell whether dhiraj will be able to eat $k$ number of chocolates or not.
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - $k$, representing the number of chocolates dhiraj has to eat.
+  - the third line contains $N$ representing the no. of boxes of chocolates.
+  - fourth line contains list of $a[]$ size $N$ specifying the number of chocolates in each Box.
+
+  -----Output:-----
+  - For each testcase, output in a single line answer $0$ or $1$.
+  - $0$ if dhiraj cant eat $k$ chocolates from given combination and $1$ if he can eat $k$ chocolates from given combination.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq K \leq 10^7$
+  - $1 \leq  N \leq 800$
+  - $1 \leq a[i] \leq 10^3$
+
+  -----Sample Input:-----
+  2
+  20
+  5
+  8 7 2 10 5
+  11
+  4
+  6 8 2 10
+
+  -----Sample Output:-----
+  1
+  0
+vc-preamble: |
+  import Imports.AllImports
+
+  def sumList (list : List Int) : Int :=
+    sorry
+
+
+  def isSubsetSum (arr : List Int) (n : Int) (k : Int) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def can_eat_chocolates (k : Int) (n : Int) (arr : List Int) : Int :=
+    sorry
+vc-theorems: |
+  theorem sum_less_than_k_returns_0 (arr : List Int) (k : Int):
+    arr.length > 0 → 
+    (∀ x ∈ arr, x > 0 ∧ x ≤ 100) →
+    k > 0 →
+    k ≤ 1000 →
+    sumList arr < k →
+    can_eat_chocolates k arr.length arr = 0 :=
+    sorry
+
+
+  theorem target_sum_of_array_is_possible (arr : List Int):
+    arr.length > 0 →
+    (∀ x ∈ arr, x > 0 ∧ x ≤ 100) →
+    can_eat_chocolates (sumList arr) arr.length arr = 1 :=
+    sorry
+
+
+  theorem k_less_than_min_returns_0 (arr : List Int):
+    arr.length > 0 →
+    (∀ x ∈ arr, x > 0 ∧ x ≤ 100) →
+    let k := (arr.minimum?.getD 0) - 1
+    k > 0 →
+    can_eat_chocolates k arr.length arr = 0 :=
+    sorry
+
+
+  theorem subset_sum_matches_chocolates (arr : List Int) (k : Int):
+    arr.length > 0 →
+    (∀ x ∈ arr, x > 0 ∧ x ≤ 100) →
+    k > 0 →
+    k ≤ 1000 →
+    (can_eat_chocolates k arr.length arr = 1) = isSubsetSum arr arr.length k :=
+    sorry
+
+
+  theorem single_matching_element_returns_1 (arr : List Int):
+    arr.length > 0 →
+    (∀ x ∈ arr, x > 0 ∧ x ≤ 100) →
+    let k := arr[0]!
+    can_eat_chocolates k arr.length arr = 1 :=
+    sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval can_eat_chocolates 20 5 [8, 7, 2, 10, 5]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval can_eat_chocolates 11 4 [6, 8, 2, 10]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval can_eat_chocolates 15 3 [5, 5, 5]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

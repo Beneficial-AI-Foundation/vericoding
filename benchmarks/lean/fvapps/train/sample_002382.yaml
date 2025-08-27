@@ -1,33 +1,70 @@
-"vc-description": "In an alien language, surprisingly they also use english lowercase\
-  \ letters, but possibly in a different order. The order of the alphabet is some\
-  \ permutation of lowercase letters.\nGiven a sequence of words written in the alien\
-  \ language, and the order of the alphabet, return true if and only if the given\
-  \ words are sorted lexicographicaly in this alien language.\n \nExample 1:\nInput:\
-  \ words = [\"hello\",\"leetcode\"], order = \"hlabcdefgijkmnopqrstuvwxyz\"\nOutput:\
-  \ true\nExplanation: As 'h' comes before 'l' in this language, then the sequence\
-  \ is sorted.\n\nExample 2:\nInput: words = [\"word\",\"world\",\"row\"], order =\
-  \ \"worldabcefghijkmnpqstuvxyz\"\nOutput: false\nExplanation: As 'd' comes after\
-  \ 'l' in this language, then words[0] > words[1], hence the sequence is unsorted.\n\
-  \nExample 3:\nInput: words = [\"apple\",\"app\"], order = \"abcdefghijklmnopqrstuvwxyz\"\
-  \nOutput: false\nExplanation: The first three characters \"app\" match, and the\
-  \ second string is shorter (in size.) According to lexicographical rules \"apple\"\
-  \ > \"app\", because 'l' > '∅', where '∅' is defined as the blank character which\
-  \ is less than any other character (More info).\n\n \nConstraints:\n\n1 <= words.length\
-  \ <= 100\n1 <= words[i].length <= 20\norder.length == 26\nAll characters in words[i]\
-  \ and order are English lowercase letters."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isAlienSorted (words : List String) (order : String) : Bool\
-  \ := sorry\n\ntheorem single_word_always_sorted (w : String) (order : String) \n\
-  \  (h : ∀ c, c ∈ w.data → c ∈ order.data) :\n  isAlienSorted [w] order := sorry\n"
-"vc-theorems": "theorem identical_words_sorted (w : String) (order : String) \n  (h\
-  \ : ∀ c, c ∈ w.data → c ∈ order.data) :\n  isAlienSorted [w, w] order := sorry\n\
-  \n\ntheorem prefix_property (w longer : String) (order : String)\n  (h₁ : ∀ c, c\
-  \ ∈ w.data → c ∈ order.data)\n  (h₂ : ∀ c, c ∈ longer.data → c ∈ order.data)\n \
-  \ (h₃ : ∃ s, longer = w.append s) :\n  (¬ isAlienSorted [longer, w] order) ∧ \n\
-  \  isAlienSorted [w, longer] order := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval is_alien_sorted [\"hello\", \"leetcode\"] \"hlabcdefgijkmnopqrstuvwxyz\"\
-  \n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_alien_sorted [\"word\", \"world\"\
-  , \"row\"] \"worldabcefghijkmnpqstuvxyz\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
-  #eval is_alien_sorted [\"apple\", \"app\"] \"abcdefghijklmnopqrstuvwxyz\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In an alien language, surprisingly they also use english lowercase letters, but possibly in a different order. The order of the alphabet is some permutation of lowercase letters.
+  Given a sequence of words written in the alien language, and the order of the alphabet, return true if and only if the given words are sorted lexicographicaly in this alien language.
+   
+  Example 1:
+  Input: words = ["hello","leetcode"], order = "hlabcdefgijkmnopqrstuvwxyz"
+  Output: true
+  Explanation: As 'h' comes before 'l' in this language, then the sequence is sorted.
+
+  Example 2:
+  Input: words = ["word","world","row"], order = "worldabcefghijkmnpqstuvxyz"
+  Output: false
+  Explanation: As 'd' comes after 'l' in this language, then words[0] > words[1], hence the sequence is unsorted.
+
+  Example 3:
+  Input: words = ["apple","app"], order = "abcdefghijklmnopqrstuvwxyz"
+  Output: false
+  Explanation: The first three characters "app" match, and the second string is shorter (in size.) According to lexicographical rules "apple" > "app", because 'l' > '∅', where '∅' is defined as the blank character which is less than any other character (More info).
+
+   
+  Constraints:
+
+  1 <= words.length <= 100
+  1 <= words[i].length <= 20
+  order.length == 26
+  All characters in words[i] and order are English lowercase letters.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isAlienSorted (words : List String) (order : String) : Bool := sorry
+
+  theorem single_word_always_sorted (w : String) (order : String) 
+    (h : ∀ c, c ∈ w.data → c ∈ order.data) :
+    isAlienSorted [w] order := sorry
+vc-theorems: |
+  theorem identical_words_sorted (w : String) (order : String) 
+    (h : ∀ c, c ∈ w.data → c ∈ order.data) :
+    isAlienSorted [w, w] order := sorry
+
+
+  theorem prefix_property (w longer : String) (order : String)
+    (h₁ : ∀ c, c ∈ w.data → c ∈ order.data)
+    (h₂ : ∀ c, c ∈ longer.data → c ∈ order.data)
+    (h₃ : ∃ s, longer = w.append s) :
+    (¬ isAlienSorted [longer, w] order) ∧ 
+    isAlienSorted [w, longer] order := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_alien_sorted ["hello", "leetcode"] "hlabcdefgijkmnopqrstuvwxyz"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_alien_sorted ["word", "world", "row"] "worldabcefghijkmnpqstuvxyz"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_alien_sorted ["apple", "app"] "abcdefghijklmnopqrstuvwxyz"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

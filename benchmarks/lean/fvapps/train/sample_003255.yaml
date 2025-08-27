@@ -1,21 +1,59 @@
-"vc-description": "There is an array with some numbers. All numbers are equal except\
-  \ for one. Try to find it!\n\n```python\nfind_uniq([ 1, 1, 1, 2, 1, 1 ]) == 2\n\
-  find_uniq([ 0, 0, 0.55, 0, 0 ]) == 0.55\n```\n\nIt’s guaranteed that array contains\
-  \ at least 3 numbers.\n\nThe tests contain some very huge arrays, so think about\
-  \ performance.\n\nThis is the first kata in series:\n\n1. Find the unique number\
-  \ (this kata)\n2. [Find the unique string](https://www.codewars.com/kata/585d8c8a28bc7403ea0000c3)\n\
-  3. [Find The Unique](https://www.codewars.com/kata/5862e0db4f7ab47bed0000e5)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_uniq (arr : List Float) : Float := sorry\n\ntheorem find_uniq_returns_unique\
-  \ (numbers : List Float) (unique_num : Float) (base_num : Float)\n    (h1 : numbers.length\
-  \ ≥ 3)\n    (h2 : base_num ≠ unique_num)\n    (arr := List.replicate (numbers.length\
-  \ + 1) base_num)\n    (h3 : ∀ (i : Fin arr.length), (\n      if i.val = numbers.length/2\
-  \ \n      then arr.get i = unique_num\n      else arr.get i = base_num)) :\n   \
-  \ find_uniq arr = unique_num := sorry\n"
-"vc-theorems": "theorem find_uniq_basic (common unique : Float)\n    (h : common ≠\
-  \ unique) :\n    find_uniq [common, common, unique, common, common] = unique :=\
-  \ sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_uniq [1, 1, 1, 2, 1, 1]\n\
-  \n/--\ninfo: 0.55\n-/\n#guard_msgs in\n#eval find_uniq [0, 0, 0.55, 0, 0]\n\n/--\n\
-  info: 3\n-/\n#guard_msgs in\n#eval find_uniq [4, 4, 4, 3, 4, 4, 4, 4]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  There is an array with some numbers. All numbers are equal except for one. Try to find it!
+
+  ```python
+  find_uniq([ 1, 1, 1, 2, 1, 1 ]) == 2
+  find_uniq([ 0, 0, 0.55, 0, 0 ]) == 0.55
+  ```
+
+  It’s guaranteed that array contains at least 3 numbers.
+
+  The tests contain some very huge arrays, so think about performance.
+
+  This is the first kata in series:
+
+  1. Find the unique number (this kata)
+  2. [Find the unique string](https://www.codewars.com/kata/585d8c8a28bc7403ea0000c3)
+  3. [Find The Unique](https://www.codewars.com/kata/5862e0db4f7ab47bed0000e5)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_uniq (arr : List Float) : Float := sorry
+
+  theorem find_uniq_returns_unique (numbers : List Float) (unique_num : Float) (base_num : Float)
+      (h1 : numbers.length ≥ 3)
+      (h2 : base_num ≠ unique_num)
+      (arr := List.replicate (numbers.length + 1) base_num)
+      (h3 : ∀ (i : Fin arr.length), (
+        if i.val = numbers.length/2 
+        then arr.get i = unique_num
+        else arr.get i = base_num)) :
+      find_uniq arr = unique_num := sorry
+vc-theorems: |
+  theorem find_uniq_basic (common unique : Float)
+      (h : common ≠ unique) :
+      find_uniq [common, common, unique, common, common] = unique := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_uniq [1, 1, 1, 2, 1, 1]
+
+  /--
+  info: 0.55
+  -/
+  #guard_msgs in
+  #eval find_uniq [0, 0, 0.55, 0, 0]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_uniq [4, 4, 4, 3, 4, 4, 4, 4]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

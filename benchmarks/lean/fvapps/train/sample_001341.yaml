@@ -1,16 +1,44 @@
-"vc-description": "Chef and Chefina are best friends. Chefina wants to test the Problem\
-  \ Solving skills of chef so she provides Chef 2 integer number  $X$ and $Y$\nThe\
-  \ task of chef is to take the  two numbers $X$ and $Y$ and return their SUM.\nIdentify\
-  \ whether Chef can solve the problem or not? \n\n-----Input:-----\n- First line\
-  \ will contain the two integers $X$ and $Y$.\n\n-----Output:-----\nFor each testcase,\
-  \ output in a single line the SUM of these two numbers $X$ and $Y$.\n\n-----Constraints-----\n\
-  - $1 \\leq X \\leq 100$\n- $1 \\leq Y \\leq 100$\n\n-----Sample Input:-----\n6 70\n\
-  \n-----Sample Output:-----\n76"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calc_sum (x y : Int) : Int := sorry\n\ntheorem calc_sum_commutative\
-  \ (x y : Int) : \n  calc_sum x y = calc_sum y x := sorry\n"
-"vc-theorems": "theorem calc_sum_identity (x : Int) :\n  calc_sum x 0 = x := sorry\n\
-  \n\ntheorem calc_sum_associative (x y : Int) :\n  calc_sum x y = x + y := sorry\n\
-  \n\ntheorem calc_sum_inverse (x : Int) :\n  calc_sum x (-x) = 0 := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Chef and Chefina are best friends. Chefina wants to test the Problem Solving skills of chef so she provides Chef 2 integer number  $X$ and $Y$
+  The task of chef is to take the  two numbers $X$ and $Y$ and return their SUM.
+  Identify whether Chef can solve the problem or not? 
+
+  -----Input:-----
+  - First line will contain the two integers $X$ and $Y$.
+
+  -----Output:-----
+  For each testcase, output in a single line the SUM of these two numbers $X$ and $Y$.
+
+  -----Constraints-----
+  - $1 \leq X \leq 100$
+  - $1 \leq Y \leq 100$
+
+  -----Sample Input:-----
+  6 70
+
+  -----Sample Output:-----
+  76
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def calc_sum (x y : Int) : Int := sorry
+
+  theorem calc_sum_commutative (x y : Int) : 
+    calc_sum x y = calc_sum y x := sorry
+vc-theorems: |-
+  theorem calc_sum_identity (x : Int) :
+    calc_sum x 0 = x := sorry
+
+
+  theorem calc_sum_associative (x y : Int) :
+    calc_sum x y = x + y := sorry
+
+
+  theorem calc_sum_inverse (x : Int) :
+    calc_sum x (-x) = 0 := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

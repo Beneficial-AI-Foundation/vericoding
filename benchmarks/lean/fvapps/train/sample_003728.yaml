@@ -1,20 +1,53 @@
-"vc-description": "You can print your name on a billboard ad. Find out how much it\
-  \ will cost you. Each letter has a default price of £30, but that can be different\
-  \ if you are given 2 parameters instead of 1.\n\nYou can not use multiplier \"*\"\
-  \ operator.\n\nIf your name would be Jeong-Ho Aristotelis, ad would cost £600.\n\
-  20 leters * 30 = 600 (Space counts as a letter)."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def billboard (name : String) (price : Nat := 30) : Nat := sorry\n\
-  \ntheorem billboard_properties {name : String} {price : Nat} \n  (h1 : name.length\
-  \ > 0) (h2 : price > 0) (h3 : price ≤ 1000) :\n  let result := billboard name price\n\
-  \  (result = name.length * price) ∧ \n  (result ≥ price) ∧\n  (result % price =\
-  \ 0) := sorry\n"
-"vc-theorems": "theorem billboard_default_price {name : String} (h : name.length >\
-  \ 0) : \n  let result := billboard name\n  (result = name.length * 30) ∧ \n  (result\
-  \ % 30 = 0) := sorry\n\n\ntheorem billboard_general {name : String} :\n  let result\
-  \ := billboard name\n  (result ≥ 0) ∧\n  (name.length * 30 = result) := sorry\n\n\
-  /--\ninfo: 600\n-/\n#guard_msgs in\n#eval billboard \"Jeong-Ho Aristotelis\"\n\n\
-  /--\ninfo: 260\n-/\n#guard_msgs in\n#eval billboard \"Hadufuns John\" 20\n\n/--\n\
-  info: 270\n-/\n#guard_msgs in\n#eval billboard \"Paolo Oli\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  You can print your name on a billboard ad. Find out how much it will cost you. Each letter has a default price of £30, but that can be different if you are given 2 parameters instead of 1.
+
+  You can not use multiplier "*" operator.
+
+  If your name would be Jeong-Ho Aristotelis, ad would cost £600.
+  20 leters * 30 = 600 (Space counts as a letter).
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def billboard (name : String) (price : Nat := 30) : Nat := sorry
+
+  theorem billboard_properties {name : String} {price : Nat} 
+    (h1 : name.length > 0) (h2 : price > 0) (h3 : price ≤ 1000) :
+    let result := billboard name price
+    (result = name.length * price) ∧ 
+    (result ≥ price) ∧
+    (result % price = 0) := sorry
+vc-theorems: |
+  theorem billboard_default_price {name : String} (h : name.length > 0) : 
+    let result := billboard name
+    (result = name.length * 30) ∧ 
+    (result % 30 = 0) := sorry
+
+
+  theorem billboard_general {name : String} :
+    let result := billboard name
+    (result ≥ 0) ∧
+    (name.length * 30 = result) := sorry
+
+  /--
+  info: 600
+  -/
+  #guard_msgs in
+  #eval billboard "Jeong-Ho Aristotelis"
+
+  /--
+  info: 260
+  -/
+  #guard_msgs in
+  #eval billboard "Hadufuns John" 20
+
+  /--
+  info: 270
+  -/
+  #guard_msgs in
+  #eval billboard "Paolo Oli"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

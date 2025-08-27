@@ -1,55 +1,102 @@
-"vc-description": "LeetCode company workers use key-cards to unlock office doors.\
-  \ Each time a worker uses their key-card, the security system saves the worker's\
-  \ name and the time when it was used. The system emits an alert if any worker uses\
-  \ the key-card three or more times in a one-hour period.\nYou are given a list of\
-  \ strings keyName and keyTime where [keyName[i], keyTime[i]] corresponds to a person's\
-  \ name and the time when their key-card was used in a single day.\nAccess times\
-  \ are given in the 24-hour time format \"HH:MM\", such as \"23:51\" and \"09:49\"\
-  .\nReturn a list of unique worker names who received an alert for frequent keycard\
-  \ use. Sort the names in ascending order alphabetically.\nNotice that \"10:00\"\
-  \ - \"11:00\" is considered to be within a one-hour period, while \"22:51\" - \"\
-  23:52\" is not considered to be within a one-hour period.\n \nExample 1:\nInput:\
-  \ keyName = [\"daniel\",\"daniel\",\"daniel\",\"luis\",\"luis\",\"luis\",\"luis\"\
-  ], keyTime = [\"10:00\",\"10:40\",\"11:00\",\"09:00\",\"11:00\",\"13:00\",\"15:00\"\
-  ]\nOutput: [\"daniel\"]\nExplanation: \"daniel\" used the keycard 3 times in a one-hour\
-  \ period (\"10:00\",\"10:40\", \"11:00\").\n\nExample 2:\nInput: keyName = [\"alice\"\
-  ,\"alice\",\"alice\",\"bob\",\"bob\",\"bob\",\"bob\"], keyTime = [\"12:01\",\"12:00\"\
-  ,\"18:00\",\"21:00\",\"21:20\",\"21:30\",\"23:00\"]\nOutput: [\"bob\"]\nExplanation:\
-  \ \"bob\" used the keycard 3 times in a one-hour period (\"21:00\",\"21:20\", \"\
-  21:30\").\n\nExample 3:\nInput: keyName = [\"john\",\"john\",\"john\"], keyTime\
-  \ = [\"23:58\",\"23:59\",\"00:01\"]\nOutput: []\n\nExample 4:\nInput: keyName =\
-  \ [\"leslie\",\"leslie\",\"leslie\",\"clare\",\"clare\",\"clare\",\"clare\"], keyTime\
-  \ = [\"13:00\",\"13:20\",\"14:00\",\"18:00\",\"18:51\",\"19:30\",\"19:49\"]\nOutput:\
-  \ [\"clare\",\"leslie\"]\n\n \nConstraints:\n\n1 <= keyName.length, keyTime.length\
-  \ <= 105\nkeyName.length == keyTime.length\nkeyTime are in the format \"HH:MM\"\
-  .\n[keyName[i], keyTime[i]] is unique.\n1 <= keyName[i].length <= 10\nkeyName[i]\
-  \ contains only lowercase English letters."
-"vc-preamble": "import Imports.AllImports\n\ndef Time := String\nderiving Inhabited\n\
-  \n\ndef alertNames (names : List String) (times : List Time) : List String :=\n\
-  \  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def parseTime (t : Time) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem alertNames_output_ordered (names : List String) (times : List\
-  \ Time) :\n  let result := alertNames names times\n  ∀ i j, i < j → j < result.length\
-  \ → result[i]! ≤ result[j]! := by sorry\n\n\ntheorem alertNames_subset_of_input\
-  \ (names : List String) (times : List Time) :\n  let result := alertNames names\
-  \ times\n  ∀ x ∈ result, x ∈ names := by sorry\n\n\ntheorem alertNames_unique (names\
-  \ : List String) (times : List Time) :\n  let result := alertNames names times\n\
-  \  List.Nodup result := by sorry\n\n\ntheorem alertNames_violation_exists (names\
-  \ : List String) (times : List Time) :\n  let result := alertNames names times\n\
-  \  ∀ name ∈ result,\n    let personTimes := (List.zip names times).filterMap \n\
-  \      (fun p => if p.1 = name then some (parseTime p.2) else none)\n    List.length\
-  \ personTimes ≥ 3 ∧\n    ∃ t0 t1 t2, \n      t0 ∈ personTimes ∧ \n      t1 ∈ personTimes\
-  \ ∧\n      t2 ∈ personTimes ∧\n      t0 < t1 ∧ t1 < t2 ∧\n      t2 - t0 ≤ 100 :=\
-  \ by sorry\n\n\ntheorem alertNames_short_inputs (names : List String) (times : List\
-  \ Time) :\n  List.length names ≤ 2 → alertNames names times = [] := by sorry\n\n\
-  /--\ninfo: ['daniel']\n-/\n#guard_msgs in\n#eval alert_names [\"daniel\", \"daniel\"\
-  , \"daniel\", \"luis\", \"luis\", \"luis\", \"luis\"] [\"10:00\", \"10:40\", \"\
-  11:00\", \"09:00\", \"11:00\", \"13:00\", \"15:00\"]\n\n/--\ninfo: ['bob']\n-/\n\
-  #guard_msgs in\n#eval alert_names [\"alice\", \"alice\", \"alice\", \"bob\", \"\
-  bob\", \"bob\", \"bob\"] [\"12:01\", \"12:00\", \"18:00\", \"21:00\", \"21:20\"\
-  , \"21:30\", \"23:00\"]\n\n/--\ninfo: ['clare', 'leslie']\n-/\n#guard_msgs in\n\
-  #eval alert_names [\"leslie\", \"leslie\", \"leslie\", \"clare\", \"clare\", \"\
-  clare\", \"clare\"] [\"13:00\", \"13:20\", \"14:00\", \"18:00\", \"18:51\", \"19:30\"\
-  , \"19:49\"]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  LeetCode company workers use key-cards to unlock office doors. Each time a worker uses their key-card, the security system saves the worker's name and the time when it was used. The system emits an alert if any worker uses the key-card three or more times in a one-hour period.
+  You are given a list of strings keyName and keyTime where [keyName[i], keyTime[i]] corresponds to a person's name and the time when their key-card was used in a single day.
+  Access times are given in the 24-hour time format "HH:MM", such as "23:51" and "09:49".
+  Return a list of unique worker names who received an alert for frequent keycard use. Sort the names in ascending order alphabetically.
+  Notice that "10:00" - "11:00" is considered to be within a one-hour period, while "22:51" - "23:52" is not considered to be within a one-hour period.
+   
+  Example 1:
+  Input: keyName = ["daniel","daniel","daniel","luis","luis","luis","luis"], keyTime = ["10:00","10:40","11:00","09:00","11:00","13:00","15:00"]
+  Output: ["daniel"]
+  Explanation: "daniel" used the keycard 3 times in a one-hour period ("10:00","10:40", "11:00").
+
+  Example 2:
+  Input: keyName = ["alice","alice","alice","bob","bob","bob","bob"], keyTime = ["12:01","12:00","18:00","21:00","21:20","21:30","23:00"]
+  Output: ["bob"]
+  Explanation: "bob" used the keycard 3 times in a one-hour period ("21:00","21:20", "21:30").
+
+  Example 3:
+  Input: keyName = ["john","john","john"], keyTime = ["23:58","23:59","00:01"]
+  Output: []
+
+  Example 4:
+  Input: keyName = ["leslie","leslie","leslie","clare","clare","clare","clare"], keyTime = ["13:00","13:20","14:00","18:00","18:51","19:30","19:49"]
+  Output: ["clare","leslie"]
+
+   
+  Constraints:
+
+  1 <= keyName.length, keyTime.length <= 105
+  keyName.length == keyTime.length
+  keyTime are in the format "HH:MM".
+  [keyName[i], keyTime[i]] is unique.
+  1 <= keyName[i].length <= 10
+  keyName[i] contains only lowercase English letters.
+vc-preamble: |
+  import Imports.AllImports
+
+  def Time := String
+  deriving Inhabited
+
+
+  def alertNames (names : List String) (times : List Time) : List String :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def parseTime (t : Time) : Nat :=
+    sorry
+vc-theorems: |
+  theorem alertNames_output_ordered (names : List String) (times : List Time) :
+    let result := alertNames names times
+    ∀ i j, i < j → j < result.length → result[i]! ≤ result[j]! := by sorry
+
+
+  theorem alertNames_subset_of_input (names : List String) (times : List Time) :
+    let result := alertNames names times
+    ∀ x ∈ result, x ∈ names := by sorry
+
+
+  theorem alertNames_unique (names : List String) (times : List Time) :
+    let result := alertNames names times
+    List.Nodup result := by sorry
+
+
+  theorem alertNames_violation_exists (names : List String) (times : List Time) :
+    let result := alertNames names times
+    ∀ name ∈ result,
+      let personTimes := (List.zip names times).filterMap 
+        (fun p => if p.1 = name then some (parseTime p.2) else none)
+      List.length personTimes ≥ 3 ∧
+      ∃ t0 t1 t2, 
+        t0 ∈ personTimes ∧ 
+        t1 ∈ personTimes ∧
+        t2 ∈ personTimes ∧
+        t0 < t1 ∧ t1 < t2 ∧
+        t2 - t0 ≤ 100 := by sorry
+
+
+  theorem alertNames_short_inputs (names : List String) (times : List Time) :
+    List.length names ≤ 2 → alertNames names times = [] := by sorry
+
+  /--
+  info: ['daniel']
+  -/
+  #guard_msgs in
+  #eval alert_names ["daniel", "daniel", "daniel", "luis", "luis", "luis", "luis"] ["10:00", "10:40", "11:00", "09:00", "11:00", "13:00", "15:00"]
+
+  /--
+  info: ['bob']
+  -/
+  #guard_msgs in
+  #eval alert_names ["alice", "alice", "alice", "bob", "bob", "bob", "bob"] ["12:01", "12:00", "18:00", "21:00", "21:20", "21:30", "23:00"]
+
+  /--
+  info: ['clare', 'leslie']
+  -/
+  #guard_msgs in
+  #eval alert_names ["leslie", "leslie", "leslie", "clare", "clare", "clare", "clare"] ["13:00", "13:20", "14:00", "18:00", "18:51", "19:30", "19:49"]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

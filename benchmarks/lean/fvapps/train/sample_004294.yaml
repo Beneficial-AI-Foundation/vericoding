@@ -1,24 +1,64 @@
-"vc-description": "Truncate the given string (first argument) if it is longer than\
-  \ the given maximum length (second argument). Return the truncated string with a\
-  \ `\"...\"` ending.\n\nNote that inserting the three dots to the end will add to\
-  \ the string length.\n\nHowever, if the given maximum string length num is less\
-  \ than or equal to 3, then the addition of the three dots does not add to the string\
-  \ length in determining the truncated string.\n\n\n## Examples\n```\n('codewars',\
-  \ 9)  ==>  'codewars'\n('codewars', 7)  ==>  'code...'\n('codewars', 2)  ==>  'co...'\n\
-  ```\n\n[Taken from FCC](https://www.freecodecamp.com/challenges/truncate-a-string)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def truncateString (s : String) (n : Nat) : String := sorry\n\n\
-  theorem truncateString_length (s : String) (n : Nat) : \n  (truncateString s n).length\
-  \ ≤ max n 3 := sorry\n"
-"vc-theorems": "theorem truncateString_preserves_short (s : String) (n : Nat) :\n\
-  \  s.length ≤ n → truncateString s n = s := sorry\n\n\ntheorem truncateString_ellipsis\
-  \ (s : String) (n : Nat) :\n  s.length > n → (truncateString s n).endsWith \"...\"\
-  \ := sorry\n\n\ntheorem truncateString_prefix_long (s : String) (n : Nat) :\n  n\
-  \ > 3 → s.length > n → \n  (truncateString s n).dropRight 3 = s.take (n-3) := sorry\
-  \ \n\n\ntheorem truncateString_prefix_short (s : String) (n : Nat) :\n  n ≤ 3 →\
-  \ s.length > n →\n  (truncateString s n).dropRight 3 = s.take n := sorry\n\n/--\n\
-  info: 'codewars'\n-/\n#guard_msgs in\n#eval truncate_string \"codewars\" 9\n\n/--\n\
-  info: 'code...'\n-/\n#guard_msgs in\n#eval truncate_string \"codewars\" 7\n\n/--\n\
-  info: 'co...'\n-/\n#guard_msgs in\n#eval truncate_string \"codewars\" 2\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Truncate the given string (first argument) if it is longer than the given maximum length (second argument). Return the truncated string with a `"..."` ending.
+
+  Note that inserting the three dots to the end will add to the string length.
+
+  However, if the given maximum string length num is less than or equal to 3, then the addition of the three dots does not add to the string length in determining the truncated string.
+
+
+  ## Examples
+  ```
+  ('codewars', 9)  ==>  'codewars'
+  ('codewars', 7)  ==>  'code...'
+  ('codewars', 2)  ==>  'co...'
+  ```
+
+  [Taken from FCC](https://www.freecodecamp.com/challenges/truncate-a-string)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def truncateString (s : String) (n : Nat) : String := sorry
+
+  theorem truncateString_length (s : String) (n : Nat) : 
+    (truncateString s n).length ≤ max n 3 := sorry
+vc-theorems: |
+  theorem truncateString_preserves_short (s : String) (n : Nat) :
+    s.length ≤ n → truncateString s n = s := sorry
+
+
+  theorem truncateString_ellipsis (s : String) (n : Nat) :
+    s.length > n → (truncateString s n).endsWith "..." := sorry
+
+
+  theorem truncateString_prefix_long (s : String) (n : Nat) :
+    n > 3 → s.length > n → 
+    (truncateString s n).dropRight 3 = s.take (n-3) := sorry 
+
+
+  theorem truncateString_prefix_short (s : String) (n : Nat) :
+    n ≤ 3 → s.length > n →
+    (truncateString s n).dropRight 3 = s.take n := sorry
+
+  /--
+  info: 'codewars'
+  -/
+  #guard_msgs in
+  #eval truncate_string "codewars" 9
+
+  /--
+  info: 'code...'
+  -/
+  #guard_msgs in
+  #eval truncate_string "codewars" 7
+
+  /--
+  info: 'co...'
+  -/
+  #guard_msgs in
+  #eval truncate_string "codewars" 2
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

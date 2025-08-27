@@ -1,31 +1,101 @@
-"vc-description": "In this Kata, you will be given an array of numbers in which two\
-  \ numbers occur once and the rest occur only twice. Your task will be to return\
-  \ the sum of the numbers that occur only once. \n\nFor example, `repeats([4,5,7,5,4,8])\
-  \ = 15` because only the numbers `7` and `8` occur once, and their sum is `15`.\n\
-  \nMore examples in the test cases. \n\n\n```if:csharp\nDocumentation:\nKata.Repeats\
-  \ Method (List<Int32>)\n\nTakes a list where all ints are repeated twice, except\
-  \ two ints, and returns the sum of the ints of a list where those ints only occur\
-  \ once.\n\nSyntax\n\n\npublic\nstatic\nint Repeats(\nList<int> source\n    )\n \
-  \ \n\n\n\nParameters\n\nsource\n\nType: System.Collections.Generic.List<Int32>\n\
-  The list to process.\n\nReturn Value\n\nType: System.Int32\n  The sum of the elements\
-  \ of the list where those elements have no duplicates.\n\n```\n\n\nGood luck!\n\n\
-  If you like this Kata, please try: \n\n[Sum of prime-indexed elements](https://www.codewars.com/kata/59f38b033640ce9fc700015b)\n\
-  \n[Sum of integer combinations](https://www.codewars.com/kata/59f3178e3640cef6d90000d5)"
-"vc-preamble": "import Imports.AllImports\n\ndef repeats (arr : List Int) : Int :=\
-  \ sorry\n\ndef sumList : List Int → Int\n  | [] => 0\n  | (h::t) => h + sumList\
-  \ t\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def countList (x : Int) : List Int → Nat\n  | [] => 0\n  | (h::t)\
-  \ => (if h = x then 1 else 0) + countList x t\n\ninductive Perm : List Int → List\
-  \ Int → Prop where\n  | nil : Perm [] []\n  | cons : (x : Int) → {l₁ l₂ : List Int}\
-  \ → Perm l₁ l₂ → Perm (x::l₁) (x::l₂)\n"
-"vc-theorems": "theorem repeats_singles {arr : List Int} (h : arr.length ≥ 1) :\n\
-  \  repeats arr = sumList (arr.filter (fun x => countList x arr = 1)) := sorry\n\n\
-  \ntheorem repeats_duplicate_array {arr : List Int} (h : arr.length ≥ 1) :\n  repeats\
-  \ (arr ++ arr) = 0 := sorry\n\n\ntheorem repeats_permutation {arr₁ arr₂ : List Int}\
-  \ \n  (h₁ : arr₁.length ≥ 2)\n  (h₂ : Perm arr₁ arr₂) :\n  repeats arr₁ = repeats\
-  \ arr₂ := sorry\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval repeats [4, 5, 7, 5,\
-  \ 4, 8]\n\n/--\ninfo: 19\n-/\n#guard_msgs in\n#eval repeats [9, 10, 19, 13, 19,\
-  \ 13]\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval repeats [16, 0, 11, 4, 8, 16,\
-  \ 0, 11]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  In this Kata, you will be given an array of numbers in which two numbers occur once and the rest occur only twice. Your task will be to return the sum of the numbers that occur only once. 
+
+  For example, `repeats([4,5,7,5,4,8]) = 15` because only the numbers `7` and `8` occur once, and their sum is `15`.
+
+  More examples in the test cases. 
+
+
+  ```if:csharp
+  Documentation:
+  Kata.Repeats Method (List<Int32>)
+
+  Takes a list where all ints are repeated twice, except two ints, and returns the sum of the ints of a list where those ints only occur once.
+
+  Syntax
+
+
+  public
+  static
+  int Repeats(
+  List<int> source
+      )
+    
+
+
+
+  Parameters
+
+  source
+
+  Type: System.Collections.Generic.List<Int32>
+  The list to process.
+
+  Return Value
+
+  Type: System.Int32
+    The sum of the elements of the list where those elements have no duplicates.
+
+  ```
+
+
+  Good luck!
+
+  If you like this Kata, please try: 
+
+  [Sum of prime-indexed elements](https://www.codewars.com/kata/59f38b033640ce9fc700015b)
+
+  [Sum of integer combinations](https://www.codewars.com/kata/59f3178e3640cef6d90000d5)
+vc-preamble: |
+  import Imports.AllImports
+
+  def repeats (arr : List Int) : Int := sorry
+
+  def sumList : List Int → Int
+    | [] => 0
+    | (h::t) => h + sumList t
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def countList (x : Int) : List Int → Nat
+    | [] => 0
+    | (h::t) => (if h = x then 1 else 0) + countList x t
+
+  inductive Perm : List Int → List Int → Prop where
+    | nil : Perm [] []
+    | cons : (x : Int) → {l₁ l₂ : List Int} → Perm l₁ l₂ → Perm (x::l₁) (x::l₂)
+vc-theorems: |
+  theorem repeats_singles {arr : List Int} (h : arr.length ≥ 1) :
+    repeats arr = sumList (arr.filter (fun x => countList x arr = 1)) := sorry
+
+
+  theorem repeats_duplicate_array {arr : List Int} (h : arr.length ≥ 1) :
+    repeats (arr ++ arr) = 0 := sorry
+
+
+  theorem repeats_permutation {arr₁ arr₂ : List Int} 
+    (h₁ : arr₁.length ≥ 2)
+    (h₂ : Perm arr₁ arr₂) :
+    repeats arr₁ = repeats arr₂ := sorry
+
+  /--
+  info: 15
+  -/
+  #guard_msgs in
+  #eval repeats [4, 5, 7, 5, 4, 8]
+
+  /--
+  info: 19
+  -/
+  #guard_msgs in
+  #eval repeats [9, 10, 19, 13, 19, 13]
+
+  /--
+  info: 12
+  -/
+  #guard_msgs in
+  #eval repeats [16, 0, 11, 4, 8, 16, 0, 11]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

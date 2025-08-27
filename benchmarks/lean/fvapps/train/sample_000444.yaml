@@ -1,16 +1,69 @@
-"vc-description": "Given a non-negative integer, you could swap two digits at most\
-  \ once to get the maximum valued number. Return the maximum valued number you could\
-  \ get.\n\n\nExample 1:\n\nInput: 2736\nOutput: 7236\nExplanation: Swap the number\
-  \ 2 and the number 7.\n\n\n\nExample 2:\n\nInput: 9973\nOutput: 9973\nExplanation:\
-  \ No swap.\n\n\n\n\nNote:\n\nThe given number is in the range [0, 108]"
-"vc-preamble": "import Imports.AllImports\n\ndef maximum_swap (n : Nat) : Nat := sorry\n\
-  \ndef countDigit (d n : Nat) : Nat := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def numDigits (n : Nat) : Nat := sorry\n\ntheorem maximum_swap_result_ge\
-  \ (n : Nat) :\n  maximum_swap n ≥ n := sorry\n\n\n\n\n"
-"vc-theorems": "theorem maximum_swap_edge_cases :\n  maximum_swap 0 = 0 ∧\n  maximum_swap\
-  \ 1 = 1 ∧\n  maximum_swap 10 = 10 ∧\n  maximum_swap 99 = 99 := sorry\n\n/--\ninfo:\
-  \ 7236\n-/\n#guard_msgs in\n#eval maximum_swap 2736\n\n/--\ninfo: 9973\n-/\n#guard_msgs\
-  \ in\n#eval maximum_swap 9973\n\n/--\ninfo: 9913\n-/\n#guard_msgs in\n#eval maximum_swap\
-  \ 1993\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given a non-negative integer, you could swap two digits at most once to get the maximum valued number. Return the maximum valued number you could get.
+
+
+  Example 1:
+
+  Input: 2736
+  Output: 7236
+  Explanation: Swap the number 2 and the number 7.
+
+
+
+  Example 2:
+
+  Input: 9973
+  Output: 9973
+  Explanation: No swap.
+
+
+
+
+  Note:
+
+  The given number is in the range [0, 108]
+vc-preamble: |
+  import Imports.AllImports
+
+  def maximum_swap (n : Nat) : Nat := sorry
+
+  def countDigit (d n : Nat) : Nat := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def numDigits (n : Nat) : Nat := sorry
+
+  theorem maximum_swap_result_ge (n : Nat) :
+    maximum_swap n ≥ n := sorry
+
+
+
+
+vc-theorems: |
+  theorem maximum_swap_edge_cases :
+    maximum_swap 0 = 0 ∧
+    maximum_swap 1 = 1 ∧
+    maximum_swap 10 = 10 ∧
+    maximum_swap 99 = 99 := sorry
+
+  /--
+  info: 7236
+  -/
+  #guard_msgs in
+  #eval maximum_swap 2736
+
+  /--
+  info: 9973
+  -/
+  #guard_msgs in
+  #eval maximum_swap 9973
+
+  /--
+  info: 9913
+  -/
+  #guard_msgs in
+  #eval maximum_swap 1993
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

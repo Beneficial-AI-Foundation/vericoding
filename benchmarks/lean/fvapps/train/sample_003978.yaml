@@ -1,17 +1,50 @@
-"vc-description": "# Summation Of Primes\n\nThe sum of the primes below or equal to\
-  \ 10 is **2 + 3 + 5 + 7 = 17**. Find the sum of all the primes **_below or equal\
-  \ to the number passed in_**.\n\nFrom Project Euler's [Problem #10](https://projecteuler.net/problem=10\
-  \ \"Project Euler - Problem 10\")."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def summation_of_primes (n : Nat) : Nat := sorry\n\ntheorem summation_increases\
-  \ (n : Nat) (h : n ≥ 2) : \n  summation_of_primes n ≥ summation_of_primes (n-1)\
-  \ := sorry\n"
-"vc-theorems": "theorem sum_less_than_square (n : Nat) (h : n ≥ 2) :\n  summation_of_primes\
-  \ n < n * n := sorry\n\n\ntheorem known_small_values :\n  summation_of_primes 2\
-  \ = 2 ∧ \n  summation_of_primes 3 = 5 ∧\n  summation_of_primes 5 = 10 := sorry\n\
-  \n\ntheorem sum_is_positive (n : Nat) (h : n ≥ 2) :\n  summation_of_primes n > 0\
-  \ := sorry\n\n/--\ninfo: 17\n-/\n#guard_msgs in\n#eval summation_of_primes 10\n\n\
-  /--\ninfo: 77\n-/\n#guard_msgs in\n#eval summation_of_primes 20\n\n/--\ninfo: 1060\n\
-  -/\n#guard_msgs in\n#eval summation_of_primes 100\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  # Summation Of Primes
+
+  The sum of the primes below or equal to 10 is **2 + 3 + 5 + 7 = 17**. Find the sum of all the primes **_below or equal to the number passed in_**.
+
+  From Project Euler's [Problem #10](https://projecteuler.net/problem=10 "Project Euler - Problem 10").
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def summation_of_primes (n : Nat) : Nat := sorry
+
+  theorem summation_increases (n : Nat) (h : n ≥ 2) : 
+    summation_of_primes n ≥ summation_of_primes (n-1) := sorry
+vc-theorems: |
+  theorem sum_less_than_square (n : Nat) (h : n ≥ 2) :
+    summation_of_primes n < n * n := sorry
+
+
+  theorem known_small_values :
+    summation_of_primes 2 = 2 ∧ 
+    summation_of_primes 3 = 5 ∧
+    summation_of_primes 5 = 10 := sorry
+
+
+  theorem sum_is_positive (n : Nat) (h : n ≥ 2) :
+    summation_of_primes n > 0 := sorry
+
+  /--
+  info: 17
+  -/
+  #guard_msgs in
+  #eval summation_of_primes 10
+
+  /--
+  info: 77
+  -/
+  #guard_msgs in
+  #eval summation_of_primes 20
+
+  /--
+  info: 1060
+  -/
+  #guard_msgs in
+  #eval summation_of_primes 100
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

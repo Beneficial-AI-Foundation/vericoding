@@ -1,30 +1,90 @@
-"vc-description": "Given an array of integers nums and an integer target.\nReturn\
-  \ the number of non-empty subsequences of nums such that the sum of the minimum\
-  \ and maximum element on it is less or equal than target.\nSince the answer may\
-  \ be too large, return it modulo 10^9 + 7.\n \nExample 1:\nInput: nums = [3,5,6,7],\
-  \ target = 9\nOutput: 4\nExplanation: There are 4 subsequences that satisfy the\
-  \ condition.\n[3] -> Min value + max value <= target (3 + 3 <= 9)\n[3,5] -> (3 +\
-  \ 5 <= 9)\n[3,5,6] -> (3 + 6 <= 9)\n[3,6] -> (3 + 6 <= 9)\n\nExample 2:\nInput:\
-  \ nums = [3,3,6,8], target = 10\nOutput: 6\nExplanation: There are 6 subsequences\
-  \ that satisfy the condition. (nums can have repeated numbers).\n[3] , [3] , [3,3],\
-  \ [3,6] , [3,6] , [3,3,6]\nExample 3:\nInput: nums = [2,3,3,4,6,7], target = 12\n\
-  Output: 61\nExplanation: There are 63 non-empty subsequences, two of them don't\
-  \ satisfy the condition ([6,7], [7]).\nNumber of valid subsequences (63 - 2 = 61).\n\
-  \nExample 4:\nInput: nums = [5,2,4,1,7,6,8], target = 16\nOutput: 127\nExplanation:\
-  \ All non-empty subset satisfy the condition (2^7 - 1) = 127\n \nConstraints:\n\n\
-  1 <= nums.length <= 10^5\n1 <= nums[i] <= 10^6\n1 <= target <= 10^6"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def numSubseq (nums : List Nat) (target : Nat) : Nat := sorry\n\
-  \ndef minimum (l : List Nat) : Option Nat := sorry\n"
-"vc-theorems": "theorem numSubseq_non_negative (nums : List Nat) (target : Nat) :\n\
-  \  target ≥ 2 →\n  nums.length ≥ 1 →\n  ∀ x ∈ nums, x ≥ 1 ∧ x ≤ 1000 →\n  numSubseq\
-  \ nums target ≥ 0 := sorry\n\n\ntheorem numSubseq_modulo_bound (nums : List Nat)\
-  \ (target : Nat) :\n  target ≥ 2 →\n  nums.length ≥ 1 →\n  ∀ x ∈ nums, x ≥ 1 ∧ x\
-  \ ≤ 1000 →\n  numSubseq nums target < 10^9 + 7 := sorry\n\n\n\n\n\n\n\n\ntheorem\
-  \ numSubseq_single_element (x : Nat) :\n  x ≥ 1 →\n  x ≤ 100 →\n  numSubseq [x]\
-  \ (x * 3) = if x * 2 ≤ x * 3 then 1 else 0 := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs\
-  \ in\n#eval numSubseq [3, 5, 6, 7] 9\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval\
-  \ numSubseq [3, 3, 6, 8] 10\n\n/--\ninfo: 61\n-/\n#guard_msgs in\n#eval numSubseq\
-  \ [2, 3, 3, 4, 6, 7] 12\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given an array of integers nums and an integer target.
+  Return the number of non-empty subsequences of nums such that the sum of the minimum and maximum element on it is less or equal than target.
+  Since the answer may be too large, return it modulo 10^9 + 7.
+   
+  Example 1:
+  Input: nums = [3,5,6,7], target = 9
+  Output: 4
+  Explanation: There are 4 subsequences that satisfy the condition.
+  [3] -> Min value + max value <= target (3 + 3 <= 9)
+  [3,5] -> (3 + 5 <= 9)
+  [3,5,6] -> (3 + 6 <= 9)
+  [3,6] -> (3 + 6 <= 9)
+
+  Example 2:
+  Input: nums = [3,3,6,8], target = 10
+  Output: 6
+  Explanation: There are 6 subsequences that satisfy the condition. (nums can have repeated numbers).
+  [3] , [3] , [3,3], [3,6] , [3,6] , [3,3,6]
+  Example 3:
+  Input: nums = [2,3,3,4,6,7], target = 12
+  Output: 61
+  Explanation: There are 63 non-empty subsequences, two of them don't satisfy the condition ([6,7], [7]).
+  Number of valid subsequences (63 - 2 = 61).
+
+  Example 4:
+  Input: nums = [5,2,4,1,7,6,8], target = 16
+  Output: 127
+  Explanation: All non-empty subset satisfy the condition (2^7 - 1) = 127
+   
+  Constraints:
+
+  1 <= nums.length <= 10^5
+  1 <= nums[i] <= 10^6
+  1 <= target <= 10^6
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def numSubseq (nums : List Nat) (target : Nat) : Nat := sorry
+
+  def minimum (l : List Nat) : Option Nat := sorry
+vc-theorems: |
+  theorem numSubseq_non_negative (nums : List Nat) (target : Nat) :
+    target ≥ 2 →
+    nums.length ≥ 1 →
+    ∀ x ∈ nums, x ≥ 1 ∧ x ≤ 1000 →
+    numSubseq nums target ≥ 0 := sorry
+
+
+  theorem numSubseq_modulo_bound (nums : List Nat) (target : Nat) :
+    target ≥ 2 →
+    nums.length ≥ 1 →
+    ∀ x ∈ nums, x ≥ 1 ∧ x ≤ 1000 →
+    numSubseq nums target < 10^9 + 7 := sorry
+
+
+
+
+
+
+
+
+  theorem numSubseq_single_element (x : Nat) :
+    x ≥ 1 →
+    x ≤ 100 →
+    numSubseq [x] (x * 3) = if x * 2 ≤ x * 3 then 1 else 0 := sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval numSubseq [3, 5, 6, 7] 9
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval numSubseq [3, 3, 6, 8] 10
+
+  /--
+  info: 61
+  -/
+  #guard_msgs in
+  #eval numSubseq [2, 3, 3, 4, 6, 7] 12
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

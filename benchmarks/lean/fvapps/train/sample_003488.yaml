@@ -1,20 +1,55 @@
-"vc-description": "In programming you know the use of the logical negation operator\
-  \ (**!**), it reverses the meaning of a condition.\n\nYour task is to complete the\
-  \ function 'negationValue()' that takes a string of negations with a value and returns\
-  \ what the value would be if those negations were applied to it.\n\n```python\n\
-  negation_value(\"!\", False) #=> True\nnegation_value(\"!!!!!\", True) #=> False\n\
-  negation_value(\"!!\", []) #=> False\n```\n\nDo not use the `eval()` function or\
-  \ the `Function()` constructor in JavaScript.\n\nNote: Always return a boolean value,\
-  \ even if there're no negations."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def toBool (b : Bool) : Bool := b\n\ndef negation_value (s : String)\
-  \ (value : Bool) : Bool := sorry\n"
-"vc-theorems": "theorem double_negation (value : Bool) :\n  negation_value \"!!\"\
-  \ value = value := sorry\n\n\ntheorem basic_negation (value : Bool) :\n  negation_value\
-  \ \"!\" value = !value := sorry\n\n\ntheorem empty_negation (value : Bool) : \n\
-  \  negation_value \"\" value = value := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval negation_value \"!\" False\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
-  #eval negation_value \"!\" True\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval negation_value\
-  \ \"!!!\" []\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In programming you know the use of the logical negation operator (**!**), it reverses the meaning of a condition.
+
+  Your task is to complete the function 'negationValue()' that takes a string of negations with a value and returns what the value would be if those negations were applied to it.
+
+  ```python
+  negation_value("!", False) #=> True
+  negation_value("!!!!!", True) #=> False
+  negation_value("!!", []) #=> False
+  ```
+
+  Do not use the `eval()` function or the `Function()` constructor in JavaScript.
+
+  Note: Always return a boolean value, even if there're no negations.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def toBool (b : Bool) : Bool := b
+
+  def negation_value (s : String) (value : Bool) : Bool := sorry
+vc-theorems: |
+  theorem double_negation (value : Bool) :
+    negation_value "!!" value = value := sorry
+
+
+  theorem basic_negation (value : Bool) :
+    negation_value "!" value = !value := sorry
+
+
+  theorem empty_negation (value : Bool) : 
+    negation_value "" value = value := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval negation_value "!" False
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval negation_value "!" True
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval negation_value "!!!" []
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,26 +1,76 @@
-"vc-description": "Given an array of 2n integers, your task is to group these integers\
-  \ into n pairs of integer, say (a1, b1), (a2, b2), ..., (an, bn) which makes sum\
-  \ of min(ai, bi) for all i from 1 to n as large as possible.\n\n\nExample 1:\n\n\
-  Input: [1,4,3,2]\n\nOutput: 4\nExplanation: n is 2, and the maximum sum of pairs\
-  \ is 4 = min(1, 2) + min(3, 4).\n\n\n\nNote:\n\nn is a positive integer, which is\
-  \ in the range of [1, 10000].\nAll the integers in the array will be in the range\
-  \ of [-10000, 10000]."
-"vc-preamble": "import Imports.AllImports\n\ndef array_pair_sum (nums : List Int)\
-  \ : Int := sorry\n\ndef List.sorted (xs : List Int) : List Int := xs -- placeholder\
-  \ for sorting\n\n\ndef evenIndexSum (xs : List Int) : Int :=\n  let rec loop : List\
-  \ Int → Int → Int → Int\n    | [], _, acc => acc \n    | (x::xs), i, acc => loop\
-  \ xs (i+1) (if i % 2 = 0 then acc + x else acc)\n  loop xs 0 0\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def halfListSum (xs : List Int) : Int :=\n  let rec loop : List\
-  \ Int → Nat → Int → Int\n    | [], _, acc => acc\n    | _, 0, acc => acc\n    |\
-  \ (x::xs), n+1, acc => loop xs n (acc + x)\n  loop xs (xs.length / 2) 0\n"
-"vc-theorems": "theorem array_pair_sum_equals_even_indexed_sum {nums : List Int} \n\
-  \  (h : nums.length % 2 = 0) :\n  array_pair_sum nums = evenIndexSum (nums.sorted)\
-  \ := sorry\n\n\ntheorem array_pair_sum_geq_smallest_half_sum {nums : List Int}\n\
-  \  (h : nums.length % 2 = 0) :\n  array_pair_sum nums ≥ halfListSum (nums.sorted)\
-  \ := sorry\n\n\ntheorem array_pair_sum_positive {nums : List Int}\n  (h1 : nums.length\
-  \ % 2 = 0)\n  (h2 : ∀ x ∈ nums, x > 0) :\n  array_pair_sum nums > 0 := sorry\n\n\
-  /--\ninfo: 4\n-/\n#guard_msgs in\n#eval array_pair_sum [1, 4, 3, 2]\n\n/--\ninfo:\
-  \ 4\n-/\n#guard_msgs in\n#eval array_pair_sum [1, 2, 3, 4]\n\n/--\ninfo: 3\n-/\n\
-  #guard_msgs in\n#eval array_pair_sum [1, 1, 2, 2]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), ..., (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.
+
+
+  Example 1:
+
+  Input: [1,4,3,2]
+
+  Output: 4
+  Explanation: n is 2, and the maximum sum of pairs is 4 = min(1, 2) + min(3, 4).
+
+
+
+  Note:
+
+  n is a positive integer, which is in the range of [1, 10000].
+  All the integers in the array will be in the range of [-10000, 10000].
+vc-preamble: |
+  import Imports.AllImports
+
+  def array_pair_sum (nums : List Int) : Int := sorry
+
+  def List.sorted (xs : List Int) : List Int := xs -- placeholder for sorting
+
+
+  def evenIndexSum (xs : List Int) : Int :=
+    let rec loop : List Int → Int → Int → Int
+      | [], _, acc => acc 
+      | (x::xs), i, acc => loop xs (i+1) (if i % 2 = 0 then acc + x else acc)
+    loop xs 0 0
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def halfListSum (xs : List Int) : Int :=
+    let rec loop : List Int → Nat → Int → Int
+      | [], _, acc => acc
+      | _, 0, acc => acc
+      | (x::xs), n+1, acc => loop xs n (acc + x)
+    loop xs (xs.length / 2) 0
+vc-theorems: |
+  theorem array_pair_sum_equals_even_indexed_sum {nums : List Int} 
+    (h : nums.length % 2 = 0) :
+    array_pair_sum nums = evenIndexSum (nums.sorted) := sorry
+
+
+  theorem array_pair_sum_geq_smallest_half_sum {nums : List Int}
+    (h : nums.length % 2 = 0) :
+    array_pair_sum nums ≥ halfListSum (nums.sorted) := sorry
+
+
+  theorem array_pair_sum_positive {nums : List Int}
+    (h1 : nums.length % 2 = 0)
+    (h2 : ∀ x ∈ nums, x > 0) :
+    array_pair_sum nums > 0 := sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval array_pair_sum [1, 4, 3, 2]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval array_pair_sum [1, 2, 3, 4]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval array_pair_sum [1, 1, 2, 2]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

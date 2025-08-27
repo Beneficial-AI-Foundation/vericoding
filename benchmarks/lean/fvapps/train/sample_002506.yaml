@@ -1,36 +1,87 @@
-"vc-description": "=====Function Descriptions=====\nThe NumPy module also comes with\
-  \ a number of built-in routines for linear algebra calculations. These can be found\
-  \ in the sub-module linalg.\n\nlinalg.det\n\nThe linalg.det tool computes the determinant\
-  \ of an array.\n\nprint numpy.linalg.det([[1 , 2], [2, 1]])       #Output : -3.0\n\
-  \nlinalg.eig\n\nThe linalg.eig computes the eigenvalues and right eigenvectors of\
-  \ a square array.\n\nvals, vecs = numpy.linalg.eig([[1 , 2], [2, 1]])\nprint vals\
-  \                                      #Output : [ 3. -1.]\nprint vecs         \
-  \                             #Output : [[ 0.70710678 -0.70710678]\n           \
-  \                                     #          [ 0.70710678  0.70710678]]\n\n\
-  linalg.inv\n\nThe linalg.inv tool computes the (multiplicative) inverse of a matrix.\n\
-  \nprint numpy.linalg.inv([[1 , 2], [2, 1]])       #Output : [[-0.33333333  0.66666667]\n\
-  \                                                #          [ 0.66666667 -0.33333333]]\n\
-  \n=====Problem Statement=====\nYou are given a square matrix A with dimensions NXN.\
-  \ Your task is to find the determinant. Note: Round the answer to 2 places after\
-  \ the decimal.\n\n=====Input Format=====\nThe first line contains the integer N.\n\
-  The next N lines contains the space separated elements of array A. \n\n=====Output\
-  \ Format=====\nPrint the determinant of A."
-"vc-preamble": "import Imports.AllImports\n\ndef identityMatrix (n : Nat) : Matrix\
-  \ n Float := sorry\ndef zeroMatrix (n : Nat) : Matrix n Float := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calculateMatrixDeterminant {n : Nat} (matrix : Matrix n Float)\
-  \ : Float := sorry\ndef transpose {n : Nat} (matrix : Matrix n Float) : Matrix n\
-  \ Float := sorry\n"
-"vc-theorems": "theorem identity_matrix_det {n : Nat} (h : n > 0) : \n  calculateMatrixDeterminant\
-  \ (identityMatrix n) = 1 := sorry\n\n\ntheorem zero_matrix_det {n : Nat} (h : n\
-  \ > 0) :\n  calculateMatrixDeterminant (zeroMatrix n) = 0 := sorry\n\n\ntheorem\
-  \ det_2x2_formula (matrix : Matrix 2 Float) (h : matrix.data.length = 2) :\n  calculateMatrixDeterminant\
-  \ matrix = \n    let rows := matrix.data\n    let r0 := rows[0]!\n    let r1 :=\
-  \ rows[1]!\n    r0[0]! * r1[1]! - r0[1]! * r1[0]! := sorry\n\n\ntheorem det_transpose_eq\
-  \ {n : Nat} (matrix : Matrix n Float) :\n  calculateMatrixDeterminant (transpose\
-  \ matrix) = \n    calculateMatrixDeterminant matrix := sorry\n\n/--\ninfo: 0.0\n\
-  -/\n#guard_msgs in\n#eval calculate_matrix_determinant [[1.1, 1.1], [1.1, 1.1]]\n\
-  \n/--\ninfo: -3.0\n-/\n#guard_msgs in\n#eval calculate_matrix_determinant [[1, 2],\
-  \ [2, 1]]\n\n/--\ninfo: 0.0\n-/\n#guard_msgs in\n#eval calculate_matrix_determinant\
-  \ [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  =====Function Descriptions=====
+  The NumPy module also comes with a number of built-in routines for linear algebra calculations. These can be found in the sub-module linalg.
+
+  linalg.det
+
+  The linalg.det tool computes the determinant of an array.
+
+  print numpy.linalg.det([[1 , 2], [2, 1]])       #Output : -3.0
+
+  linalg.eig
+
+  The linalg.eig computes the eigenvalues and right eigenvectors of a square array.
+
+  vals, vecs = numpy.linalg.eig([[1 , 2], [2, 1]])
+  print vals                                      #Output : [ 3. -1.]
+  print vecs                                      #Output : [[ 0.70710678 -0.70710678]
+                                                  #          [ 0.70710678  0.70710678]]
+
+  linalg.inv
+
+  The linalg.inv tool computes the (multiplicative) inverse of a matrix.
+
+  print numpy.linalg.inv([[1 , 2], [2, 1]])       #Output : [[-0.33333333  0.66666667]
+                                                  #          [ 0.66666667 -0.33333333]]
+
+  =====Problem Statement=====
+  You are given a square matrix A with dimensions NXN. Your task is to find the determinant. Note: Round the answer to 2 places after the decimal.
+
+  =====Input Format=====
+  The first line contains the integer N.
+  The next N lines contains the space separated elements of array A. 
+
+  =====Output Format=====
+  Print the determinant of A.
+vc-preamble: |-
+  import Imports.AllImports
+
+  def identityMatrix (n : Nat) : Matrix n Float := sorry
+  def zeroMatrix (n : Nat) : Matrix n Float := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def calculateMatrixDeterminant {n : Nat} (matrix : Matrix n Float) : Float := sorry
+  def transpose {n : Nat} (matrix : Matrix n Float) : Matrix n Float := sorry
+vc-theorems: |
+  theorem identity_matrix_det {n : Nat} (h : n > 0) : 
+    calculateMatrixDeterminant (identityMatrix n) = 1 := sorry
+
+
+  theorem zero_matrix_det {n : Nat} (h : n > 0) :
+    calculateMatrixDeterminant (zeroMatrix n) = 0 := sorry
+
+
+  theorem det_2x2_formula (matrix : Matrix 2 Float) (h : matrix.data.length = 2) :
+    calculateMatrixDeterminant matrix = 
+      let rows := matrix.data
+      let r0 := rows[0]!
+      let r1 := rows[1]!
+      r0[0]! * r1[1]! - r0[1]! * r1[0]! := sorry
+
+
+  theorem det_transpose_eq {n : Nat} (matrix : Matrix n Float) :
+    calculateMatrixDeterminant (transpose matrix) = 
+      calculateMatrixDeterminant matrix := sorry
+
+  /--
+  info: 0.0
+  -/
+  #guard_msgs in
+  #eval calculate_matrix_determinant [[1.1, 1.1], [1.1, 1.1]]
+
+  /--
+  info: -3.0
+  -/
+  #guard_msgs in
+  #eval calculate_matrix_determinant [[1, 2], [2, 1]]
+
+  /--
+  info: 0.0
+  -/
+  #guard_msgs in
+  #eval calculate_matrix_determinant [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

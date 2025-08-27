@@ -1,14 +1,44 @@
-"vc-description": "In this kata, you will do addition and subtraction on a given string.\
-  \ The return value must be also a string.\n\n**Note:** the input will not be empty.\n\
-  \n## Examples\n\n```\n\"1plus2plus3plus4\"  --> \"10\"\n\"1plus2plus3minus4\" -->\
-  \  \"2\"\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calculate (s : String) : String := sorry\n\ntheorem calculate_plus_list\
-  \ (nums : List Int) (h : nums ≠ []) : \n  toString (nums.foldl Int.add 0) = \n \
-  \ calculate (String.intercalate \"plus\" (nums.map toString)) :=\nsorry"
-"vc-theorems": "/--\ninfo: '10'\n-/\n#guard_msgs in\n#eval calculate \"1plus2plus3plus4\"\
-  \n\n/--\ninfo: '-8'\n-/\n#guard_msgs in\n#eval calculate \"1minus2minus3minus4\"\
-  \n\n/--\ninfo: '-1'\n-/\n#guard_msgs in\n#eval calculate \"1plus2minus3plus4minus5\"\
-  \n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In this kata, you will do addition and subtraction on a given string. The return value must be also a string.
+
+  **Note:** the input will not be empty.
+
+  ## Examples
+
+  ```
+  "1plus2plus3plus4"  --> "10"
+  "1plus2plus3minus4" -->  "2"
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def calculate (s : String) : String := sorry
+
+  theorem calculate_plus_list (nums : List Int) (h : nums ≠ []) : 
+    toString (nums.foldl Int.add 0) = 
+    calculate (String.intercalate "plus" (nums.map toString)) :=
+  sorry
+vc-theorems: |
+  /--
+  info: '10'
+  -/
+  #guard_msgs in
+  #eval calculate "1plus2plus3plus4"
+
+  /--
+  info: '-8'
+  -/
+  #guard_msgs in
+  #eval calculate "1minus2minus3minus4"
+
+  /--
+  info: '-1'
+  -/
+  #guard_msgs in
+  #eval calculate "1plus2minus3plus4minus5"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

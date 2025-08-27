@@ -1,26 +1,73 @@
-"vc-description": "Write a function that will encrypt a given sentence into International\
-  \ Morse Code, both the input and out puts will be strings.\n\nCharacters should\
-  \ be separated by a single space.\nWords should be separated by a triple space.\n\
-  \nFor example, \"HELLO WORLD\" should return -> \".... . .-.. .-.. ---   .-- ---\
-  \ .-. .-.. -..\"\n\nTo find out more about Morse Code follow this link: https://en.wikipedia.org/wiki/Morse_code\n\
-  \nA preloaded object/dictionary/hash called CHAR_TO_MORSE will be provided to help\
-  \ convert characters to Morse Code."
-"vc-preamble": "import Imports.AllImports\n\ndef validMorseChar (c : Char) : Bool\
-  \ :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def encryption (s : String) : String :=\n  sorry\n"
-"vc-theorems": "theorem encryption_morse_chars\n  (s : String)\n  (h : ∀ c, c ∈ s.data\
-  \ → c.isUpper)\n  : ∀ c, c ∈ (encryption s).data → (c = '.' ∨ c = '-' ∨ c = ' ')\
-  \ :=\n  sorry\n\n\ntheorem encryption_word_separation\n  (s : String)\n  (h : ∀\
-  \ c, c ∈ s.data → c.isUpper)\n  : ((encryption s).splitOn \"   \").length = (s.splitOn\
-  \ \" \").length :=\n  sorry\n\n\ntheorem encryption_letter_separation\n  (s : String)\n\
-  \  (h : ∀ c, c ∈ s.data → c.isUpper)\n  : ∀ word, word ∈ ((encryption s).splitOn\
-  \ \"   \") →\n    ∀ letter, letter ∈ (word.splitOn \" \") →\n    letter.length >\
-  \ 0 :=\n  sorry\n\n\ntheorem encryption_case_insensitive\n  (s : String)\n  (h :\
-  \ ∀ c, c ∈ s.data → c.isUpper)\n  : encryption s = encryption s.toLower ∧\n    encryption\
-  \ s = encryption s.toUpper :=\n  sorry\n\n/--\ninfo: '.... . .-.. .-.. ---   .--\
-  \ --- .-. .-.. -..'\n-/\n#guard_msgs in\n#eval encryption \"HELLO WORLD\"\n\n/--\n\
-  info: '... --- ...'\n-/\n#guard_msgs in\n#eval encryption \"SOS\"\n\n/--\ninfo:\
-  \ '- .... .   --.- ..- .. -.-. -.-   -... .-. --- .-- -.   ..-. --- -..-'\n-/\n\
-  #guard_msgs in\n#eval encryption \"THE QUICK BROWN FOX\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function that will encrypt a given sentence into International Morse Code, both the input and out puts will be strings.
+
+  Characters should be separated by a single space.
+  Words should be separated by a triple space.
+
+  For example, "HELLO WORLD" should return -> ".... . .-.. .-.. ---   .-- --- .-. .-.. -.."
+
+  To find out more about Morse Code follow this link: https://en.wikipedia.org/wiki/Morse_code
+
+  A preloaded object/dictionary/hash called CHAR_TO_MORSE will be provided to help convert characters to Morse Code.
+vc-preamble: |
+  import Imports.AllImports
+
+  def validMorseChar (c : Char) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def encryption (s : String) : String :=
+    sorry
+vc-theorems: |
+  theorem encryption_morse_chars
+    (s : String)
+    (h : ∀ c, c ∈ s.data → c.isUpper)
+    : ∀ c, c ∈ (encryption s).data → (c = '.' ∨ c = '-' ∨ c = ' ') :=
+    sorry
+
+
+  theorem encryption_word_separation
+    (s : String)
+    (h : ∀ c, c ∈ s.data → c.isUpper)
+    : ((encryption s).splitOn "   ").length = (s.splitOn " ").length :=
+    sorry
+
+
+  theorem encryption_letter_separation
+    (s : String)
+    (h : ∀ c, c ∈ s.data → c.isUpper)
+    : ∀ word, word ∈ ((encryption s).splitOn "   ") →
+      ∀ letter, letter ∈ (word.splitOn " ") →
+      letter.length > 0 :=
+    sorry
+
+
+  theorem encryption_case_insensitive
+    (s : String)
+    (h : ∀ c, c ∈ s.data → c.isUpper)
+    : encryption s = encryption s.toLower ∧
+      encryption s = encryption s.toUpper :=
+    sorry
+
+  /--
+  info: '.... . .-.. .-.. ---   .-- --- .-. .-.. -..'
+  -/
+  #guard_msgs in
+  #eval encryption "HELLO WORLD"
+
+  /--
+  info: '... --- ...'
+  -/
+  #guard_msgs in
+  #eval encryption "SOS"
+
+  /--
+  info: '- .... .   --.- ..- .. -.-. -.-   -... .-. --- .-- -.   ..-. --- -..-'
+  -/
+  #guard_msgs in
+  #eval encryption "THE QUICK BROWN FOX"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

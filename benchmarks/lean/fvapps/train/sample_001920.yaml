@@ -1,25 +1,85 @@
-"vc-description": "Toad Rash has a binary string $s$. A binary string consists only\
-  \ of zeros and ones.\n\nLet $n$ be the length of $s$.\n\nRash needs to find the\
-  \ number of such pairs of integers $l$, $r$ that $1 \\leq l \\leq r \\leq n$ and\
-  \ there is at least one pair of integers $x$, $k$ such that $1 \\leq x, k \\leq\
-  \ n$, $l \\leq x < x + 2k \\leq r$, and $s_x = s_{x+k} = s_{x+2k}$.\n\nFind this\
-  \ number of pairs for Rash.\n\n\n-----Input-----\n\nThe first line contains the\
-  \ string $s$ ($1 \\leq |s| \\leq 300\\,000$), consisting of zeros and ones.\n\n\n\
-  -----Output-----\n\nOutput one integer: the number of such pairs of integers $l$,\
-  \ $r$ that $1 \\leq l \\leq r \\leq n$ and there is at least one pair of integers\
-  \ $x$, $k$ such that $1 \\leq x, k \\leq n$, $l \\leq x < x + 2k \\leq r$, and $s_x\
-  \ = s_{x+k} = s_{x+2k}$.\n\n\n-----Examples-----\nInput\n010101\n\nOutput\n3\n\n\
-  Input\n11001100\n\nOutput\n0\n\n\n\n-----Note-----\n\nIn the first example, there\
-  \ are three $l$, $r$ pairs we need to count: $1$, $6$; $2$, $6$; and $1$, $5$.\n\
-  \nIn the second example, there are no values $x$, $k$ for the initial string, so\
-  \ the answer is $0$."
-"vc-preamble": "import Imports.AllImports\n\ndef count_valid_pairs (s : String) :\
-  \ Nat :=\n  sorry\n\n\n\n\n\n\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def complement (s : String) : String :=\nsorry\n\n\n"
-"vc-theorems": "theorem count_valid_pairs_bounds {s : String} (h : s.length ≥ 3) (h2\
-  \ : s.length ≤ 8) :\n  let n := s.length\n  0 ≤ count_valid_pairs s ∧ count_valid_pairs\
-  \ s ≤ (n-1)*(n-2)/2 :=\nsorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_valid_pairs\
-  \ \"010101\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval count_valid_pairs \"11001100\"\
-  \n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_valid_pairs \"0000\"\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Toad Rash has a binary string $s$. A binary string consists only of zeros and ones.
+
+  Let $n$ be the length of $s$.
+
+  Rash needs to find the number of such pairs of integers $l$, $r$ that $1 \leq l \leq r \leq n$ and there is at least one pair of integers $x$, $k$ such that $1 \leq x, k \leq n$, $l \leq x < x + 2k \leq r$, and $s_x = s_{x+k} = s_{x+2k}$.
+
+  Find this number of pairs for Rash.
+
+
+  -----Input-----
+
+  The first line contains the string $s$ ($1 \leq |s| \leq 300\,000$), consisting of zeros and ones.
+
+
+  -----Output-----
+
+  Output one integer: the number of such pairs of integers $l$, $r$ that $1 \leq l \leq r \leq n$ and there is at least one pair of integers $x$, $k$ such that $1 \leq x, k \leq n$, $l \leq x < x + 2k \leq r$, and $s_x = s_{x+k} = s_{x+2k}$.
+
+
+  -----Examples-----
+  Input
+  010101
+
+  Output
+  3
+
+  Input
+  11001100
+
+  Output
+  0
+
+
+
+  -----Note-----
+
+  In the first example, there are three $l$, $r$ pairs we need to count: $1$, $6$; $2$, $6$; and $1$, $5$.
+
+  In the second example, there are no values $x$, $k$ for the initial string, so the answer is $0$.
+vc-preamble: |+
+  import Imports.AllImports
+
+  def count_valid_pairs (s : String) : Nat :=
+    sorry
+
+
+
+
+
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def complement (s : String) : String :=
+  sorry
+
+
+vc-theorems: |
+  theorem count_valid_pairs_bounds {s : String} (h : s.length ≥ 3) (h2 : s.length ≤ 8) :
+    let n := s.length
+    0 ≤ count_valid_pairs s ∧ count_valid_pairs s ≤ (n-1)*(n-2)/2 :=
+  sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_valid_pairs "010101"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_valid_pairs "11001100"
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_valid_pairs "0000"
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded_and_plausible

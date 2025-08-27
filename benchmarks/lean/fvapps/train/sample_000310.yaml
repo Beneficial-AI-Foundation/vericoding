@@ -1,33 +1,104 @@
-"vc-description": "There is a pizza with 3n slices of varying size, you and your friends\
-  \ will take slices of pizza as follows:\n\nYou will pick any pizza slice.\nYour\
-  \ friend Alice will pick next slice in anti clockwise direction of your pick. \n\
-  Your friend Bob will pick next slice in clockwise direction of your pick.\nRepeat until there\
-  \ are no more slices of pizzas.\n\nSizes of Pizza slices is represented by circular\
-  \ array slices in clockwise direction.\nReturn the maximum possible sum of slice\
-  \ sizes which you can have.\n \nExample 1:\n\nInput: slices = [1,2,3,4,5,6]\nOutput:\
-  \ 10\nExplanation: Pick pizza slice of size 4, Alice and Bob will pick slices with\
-  \ size 3 and 5 respectively. Then Pick slices with size 6, finally Alice and Bob\
-  \ will pick slice of size 2 and 1 respectively. Total = 4 + 6.\n\nExample 2:\n\n\
-  Input: slices = [8,9,8,6,1,1]\nOutput: 16\nOutput: Pick pizza slice of size 8 in\
-  \ each turn. If you pick slice with size 9 your partners will pick slices of size\
-  \ 8.\n\nExample 3:\nInput: slices = [4,1,2,5,8,3,1,9,7]\nOutput: 21\n\nExample 4:\n\
-  Input: slices = [3,1,2]\nOutput: 3\n\n \nConstraints:\n\n1 <= slices.length <= 500\n\
-  slices.length % 3 == 0\n1 <= slices[i] <= 1000"
-"vc-preamble": "import Imports.AllImports\n\ndef maxSizeSlices (slices: List Nat)\
-  \ : Nat :=\nsorry\n\n\ndef sumList : List Nat → Nat \n  | [] => 0\n  | x::xs =>\
-  \ x + sumList xs\n\n\ndef maxList : List Nat → Nat\n  | [] => 0\n  | [x] => x\n\
-  \  | x::xs => Nat.max x (maxList xs)\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sortList : List Nat → List Nat :=\nsorry\n"
-"vc-theorems": "theorem max_size_bounds {slices : List Nat} \n  (h1: slices.length\
-  \ ≥ 3) \n  (h2: ∀ x ∈ slices, x ≥ 1 ∧ x ≤ 100) :\n  let result := maxSizeSlices\
-  \ slices\n  result > 0 ∧ \n  result ≤ sumList slices ∧\n  result ≥ maxList slices\
-  \ :=\nsorry\n\n\ntheorem max_size_elements {slices : List Nat}\n  (h1: slices.length\
-  \ ≥ 3)\n  (h2: ∀ x ∈ slices, x ≥ 1 ∧ x ≤ 100) :\n  let n := slices.length\n  maxSizeSlices\
-  \ slices ≤ sumList (List.take (n/3) (sortList slices)) :=\nsorry\n\n\ntheorem min_case_three\
-  \ {slices : List Nat}\n  (h1: slices.length = 3)\n  (h2: ∀ x ∈ slices, x ≥ 1 ∧ x\
-  \ ≤ 100) :\n  maxSizeSlices slices = maxList slices :=\nsorry\n\n/--\ninfo: 10\n\
-  -/\n#guard_msgs in\n#eval maxSizeSlices [1, 2, 3, 4, 5, 6]\n\n/--\ninfo: 16\n-/\n\
-  #guard_msgs in\n#eval maxSizeSlices [8, 9, 8, 6, 1, 1]\n\n/--\ninfo: 21\n-/\n#guard_msgs\
-  \ in\n#eval maxSizeSlices [4, 1, 2, 5, 8, 3, 1, 9, 7]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  There is a pizza with 3n slices of varying size, you and your friends will take slices of pizza as follows:
+
+  You will pick any pizza slice.
+  Your friend Alice will pick next slice in anti clockwise direction of your pick. 
+  Your friend Bob will pick next slice in clockwise direction of your pick.
+  Repeat until there are no more slices of pizzas.
+
+  Sizes of Pizza slices is represented by circular array slices in clockwise direction.
+  Return the maximum possible sum of slice sizes which you can have.
+   
+  Example 1:
+
+  Input: slices = [1,2,3,4,5,6]
+  Output: 10
+  Explanation: Pick pizza slice of size 4, Alice and Bob will pick slices with size 3 and 5 respectively. Then Pick slices with size 6, finally Alice and Bob will pick slice of size 2 and 1 respectively. Total = 4 + 6.
+
+  Example 2:
+
+  Input: slices = [8,9,8,6,1,1]
+  Output: 16
+  Output: Pick pizza slice of size 8 in each turn. If you pick slice with size 9 your partners will pick slices of size 8.
+
+  Example 3:
+  Input: slices = [4,1,2,5,8,3,1,9,7]
+  Output: 21
+
+  Example 4:
+  Input: slices = [3,1,2]
+  Output: 3
+
+   
+  Constraints:
+
+  1 <= slices.length <= 500
+  slices.length % 3 == 0
+  1 <= slices[i] <= 1000
+vc-preamble: |
+  import Imports.AllImports
+
+  def maxSizeSlices (slices: List Nat) : Nat :=
+  sorry
+
+
+  def sumList : List Nat → Nat 
+    | [] => 0
+    | x::xs => x + sumList xs
+
+
+  def maxList : List Nat → Nat
+    | [] => 0
+    | [x] => x
+    | x::xs => Nat.max x (maxList xs)
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sortList : List Nat → List Nat :=
+  sorry
+vc-theorems: |
+  theorem max_size_bounds {slices : List Nat} 
+    (h1: slices.length ≥ 3) 
+    (h2: ∀ x ∈ slices, x ≥ 1 ∧ x ≤ 100) :
+    let result := maxSizeSlices slices
+    result > 0 ∧ 
+    result ≤ sumList slices ∧
+    result ≥ maxList slices :=
+  sorry
+
+
+  theorem max_size_elements {slices : List Nat}
+    (h1: slices.length ≥ 3)
+    (h2: ∀ x ∈ slices, x ≥ 1 ∧ x ≤ 100) :
+    let n := slices.length
+    maxSizeSlices slices ≤ sumList (List.take (n/3) (sortList slices)) :=
+  sorry
+
+
+  theorem min_case_three {slices : List Nat}
+    (h1: slices.length = 3)
+    (h2: ∀ x ∈ slices, x ≥ 1 ∧ x ≤ 100) :
+    maxSizeSlices slices = maxList slices :=
+  sorry
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval maxSizeSlices [1, 2, 3, 4, 5, 6]
+
+  /--
+  info: 16
+  -/
+  #guard_msgs in
+  #eval maxSizeSlices [8, 9, 8, 6, 1, 1]
+
+  /--
+  info: 21
+  -/
+  #guard_msgs in
+  #eval maxSizeSlices [4, 1, 2, 5, 8, 3, 1, 9, 7]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

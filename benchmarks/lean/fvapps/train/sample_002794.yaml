@@ -1,20 +1,60 @@
-"vc-description": "Implement the function which should return `true` if given object\
-  \ is a vowel (meaning `a, e, i, o, u`), and `false` otherwise."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_vowel (s : String) : Bool := sorry\n\ntheorem is_vowel_length_property\
-  \ {s : String} :\n  is_vowel s → s.length = 1 := sorry\n"
-"vc-theorems": "theorem is_vowel_case_insensitive {s : String} :\n  s.length = 1 →\
-  \ is_vowel s = is_vowel s.toLower := sorry\n\n\ntheorem is_vowel_set_membership\
-  \ {s : String} :\n  is_vowel s → s.toLower = \"a\" ∨ s.toLower = \"e\" ∨ s.toLower\
-  \ = \"i\" ∨ s.toLower = \"o\" ∨ s.toLower = \"u\" := sorry\n\n\ntheorem non_vowel_property\
-  \ {s : String} :\n  s.length = 1 → (s.toLower ≠ \"a\" ∧ s.toLower ≠ \"e\" ∧ s.toLower\
-  \ ≠ \"i\" ∧ s.toLower ≠ \"o\" ∧ s.toLower ≠ \"u\") → ¬is_vowel s := sorry\n\n\n\
-  theorem vowels_are_true_property {v : String} :\n  (v = \"a\" ∨ v = \"e\" ∨ v =\
-  \ \"i\" ∨ v = \"o\" ∨ v = \"u\" ∨ \n   v = \"A\" ∨ v = \"E\" ∨ v = \"I\" ∨ v = \"\
-  O\" ∨ v = \"U\") → \n  is_vowel v := sorry\n\n\ntheorem multiple_chars_are_false\
-  \ {s : String} :\n  s.length ≥ 2 → ¬is_vowel s := sorry\n\n/--\ninfo: False\n-/\n\
-  #guard_msgs in\n#eval is_vowel \"\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
-  \ is_vowel \"a\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_vowel \"E\"\n\n\
-  /--\ninfo: False\n-/\n#guard_msgs in\n#eval is_vowel \"z\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Implement the function which should return `true` if given object is a vowel (meaning `a, e, i, o, u`), and `false` otherwise.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_vowel (s : String) : Bool := sorry
+
+  theorem is_vowel_length_property {s : String} :
+    is_vowel s → s.length = 1 := sorry
+vc-theorems: |
+  theorem is_vowel_case_insensitive {s : String} :
+    s.length = 1 → is_vowel s = is_vowel s.toLower := sorry
+
+
+  theorem is_vowel_set_membership {s : String} :
+    is_vowel s → s.toLower = "a" ∨ s.toLower = "e" ∨ s.toLower = "i" ∨ s.toLower = "o" ∨ s.toLower = "u" := sorry
+
+
+  theorem non_vowel_property {s : String} :
+    s.length = 1 → (s.toLower ≠ "a" ∧ s.toLower ≠ "e" ∧ s.toLower ≠ "i" ∧ s.toLower ≠ "o" ∧ s.toLower ≠ "u") → ¬is_vowel s := sorry
+
+
+  theorem vowels_are_true_property {v : String} :
+    (v = "a" ∨ v = "e" ∨ v = "i" ∨ v = "o" ∨ v = "u" ∨ 
+     v = "A" ∨ v = "E" ∨ v = "I" ∨ v = "O" ∨ v = "U") → 
+    is_vowel v := sorry
+
+
+  theorem multiple_chars_are_false {s : String} :
+    s.length ≥ 2 → ¬is_vowel s := sorry
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_vowel ""
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_vowel "a"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_vowel "E"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_vowel "z"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

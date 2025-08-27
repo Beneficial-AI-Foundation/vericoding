@@ -1,23 +1,56 @@
-"vc-description": "You have two arguments: ```string``` - a string of random letters(only\
-  \ lowercase) and ```array``` - an array of strings(feelings). Your task is to return\
-  \ how many specific feelings are in the ```array```. \n\nFor example: \n\n```\n\
-  string -> 'yliausoenvjw'\narray -> ['anger', 'awe', 'joy', 'love', 'grief']\noutput\
-  \ -> '3 feelings.' // 'awe', 'joy', 'love'\n\n\nstring -> 'griefgriefgrief'\narray\
-  \ -> ['anger', 'awe', 'joy', 'love', 'grief']\noutput -> '1 feeling.' // 'grief'\n\
-  \n\nstring -> 'abcdkasdfvkadf'\narray -> ['desire', 'joy', 'shame', 'longing', 'fear']\n\
-  output -> '0 feelings.'\n```\n\nIf the feeling can be formed once - plus one to\
-  \ the answer.\n\nIf the feeling can be formed several times from different letters\
-  \ - plus one to the answer.\n\nEeach letter in ```string``` participates in the\
-  \ formation of all feelings. 'angerw' -> 2 feelings: 'anger' and 'awe'."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_feelings (input : String) (feelings : List String) :\
-  \ String :=\n  sorry\n\n\n"
-"vc-theorems": "theorem count_feelings_bounds\n  {input : String}\n  {feelings : List\
-  \ String}\n  (h1 : input.length > 0)\n  (h2 : feelings ≠ [])\n  : let result :=\
-  \ count_feelings input feelings\n    let count := String.toNat! (result.take (result.length\
-  \ - (if result.startsWith \"1 \" then 9 else 10)))\n    count ≥ 0 ∧ count ≤ feelings.length\
-  \ :=\n  sorry\n\n\ntheorem count_feelings_exact_match\n  {feeling : String}\n  (h\
-  \ : feeling.length > 0)\n  : count_feelings feeling [feeling] = \"1 feeling.\" :=\n\
-  \  sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  You have two arguments: ```string``` - a string of random letters(only lowercase) and ```array``` - an array of strings(feelings). Your task is to return how many specific feelings are in the ```array```. 
+
+  For example: 
+
+  ```
+  string -> 'yliausoenvjw'
+  array -> ['anger', 'awe', 'joy', 'love', 'grief']
+  output -> '3 feelings.' // 'awe', 'joy', 'love'
+
+
+  string -> 'griefgriefgrief'
+  array -> ['anger', 'awe', 'joy', 'love', 'grief']
+  output -> '1 feeling.' // 'grief'
+
+
+  string -> 'abcdkasdfvkadf'
+  array -> ['desire', 'joy', 'shame', 'longing', 'fear']
+  output -> '0 feelings.'
+  ```
+
+  If the feeling can be formed once - plus one to the answer.
+
+  If the feeling can be formed several times from different letters - plus one to the answer.
+
+  Eeach letter in ```string``` participates in the formation of all feelings. 'angerw' -> 2 feelings: 'anger' and 'awe'.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def count_feelings (input : String) (feelings : List String) : String :=
+    sorry
+
+
+vc-theorems: |-
+  theorem count_feelings_bounds
+    {input : String}
+    {feelings : List String}
+    (h1 : input.length > 0)
+    (h2 : feelings ≠ [])
+    : let result := count_feelings input feelings
+      let count := String.toNat! (result.take (result.length - (if result.startsWith "1 " then 9 else 10)))
+      count ≥ 0 ∧ count ≤ feelings.length :=
+    sorry
+
+
+  theorem count_feelings_exact_match
+    {feeling : String}
+    (h : feeling.length > 0)
+    : count_feelings feeling [feeling] = "1 feeling." :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

@@ -1,34 +1,81 @@
-"vc-description": "Let's say that in a hypothetical platform that resembles Codewars\
-  \ there is a clan with 2 warriors. The 2nd one in ranking (lets call him **D**)\
-  \ wants to at least reach the honor score of his ally (lets call her **M**). \n\
-  *(Let's say that there is no antagonism here, he just wants to prove his ally that\
-  \ she should be proud to have him in the clan and sees this as the only way to achieve\
-  \ it! :P )*\n\nYour task is to help **D** by providing him with the **quickest path**\
-  \ to reach **M**'s honor score.\n\nIn this hypothetical platform there are 2 kinds\
-  \ of kata to be solved:\n```\n'2kyu' worth of 1 point \n'1kyu' worth of 2 points\
-  \ \n```\n\nSo if for example:\n```\nM has honor 11\nD has honor 2\n```\n**D** could\
-  \ reach **M`s** honor by solving kata worth of `9`. He has many options to do this:\n\
-  ```\nSolve 9 '2kyus' (9*1 -> 9) => Solve 9 kata\nSolve 4 '1kyus' and 1 '2kyus' (4*2\
-  \ + 1*1-> 9) => Solve 5 kata\nSolve 2 '1kyus' and 5 '2kyus' (2*2 + 5*1 -> 9) =>\
-  \ Solve 7 kata\netc etc...\n```\nThe **quickest path** to reach the honor score\
-  \ is: \n```\n4 '1kyus' and 1 '2kyus' => Solve only 5 kata\n```\n\nCreate a function\
-  \ `getHonorPath` that accepts 2 arguments `honorScore` & `targetHonorScore` with\
-  \ score integers of 2 warriors and returns an object with the **quickest path**\
-  \ for the first one to reach the 2nd's honor. For example:\n\n```\ngetHonorPath(2,\
-  \ 11) should return { '1kyus': 4, '2kyus': 1 }\ngetHonorPath(20, 11) should return\
-  \ {}\n```\n\n**For the purpose of this kata you do not have to worry about any non-integer\
-  \ arguments for honor scores**"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def get_honor_path (honor : Int) (target : Int) : Option (Int ×\
-  \ Int) := sorry\n\ntheorem honor_path_empty_when_target_not_greater {honor target\
-  \ : Int} :\n  target ≤ honor → get_honor_path honor target = none := sorry\n"
-"vc-theorems": "theorem honor_path_reaches_target {honor target : Int} (h: target\
-  \ > honor) : \n  match get_honor_path honor target with\n  | none => False \n  |\
-  \ some (kyus1, kyus2) => honor + (kyus1 * 2 + kyus2) = target\n  := sorry\n\n\n\
-  theorem honor_path_optimal {honor target : Int} (h: target > honor) :\n  match get_honor_path\
-  \ honor target with\n  | none => False\n  | some (kyus1, kyus2) => kyus2 ≤ 1 ∧ kyus1\
-  \ ≥ 0\n  := sorry\n\n/--\ninfo: {}\n-/\n#guard_msgs in\n#eval get_honor_path 11\
-  \ 2\n\n/--\ninfo: {}\n-/\n#guard_msgs in\n#eval get_honor_path 11 11\n\n/--\ninfo:\
-  \ {'1kyus': 4, '2kyus': 1}\n-/\n#guard_msgs in\n#eval get_honor_path 2 11\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Let's say that in a hypothetical platform that resembles Codewars there is a clan with 2 warriors. The 2nd one in ranking (lets call him **D**) wants to at least reach the honor score of his ally (lets call her **M**). 
+  *(Let's say that there is no antagonism here, he just wants to prove his ally that she should be proud to have him in the clan and sees this as the only way to achieve it! :P )*
+
+  Your task is to help **D** by providing him with the **quickest path** to reach **M**'s honor score.
+
+  In this hypothetical platform there are 2 kinds of kata to be solved:
+  ```
+  '2kyu' worth of 1 point 
+  '1kyu' worth of 2 points 
+  ```
+
+  So if for example:
+  ```
+  M has honor 11
+  D has honor 2
+  ```
+  **D** could reach **M`s** honor by solving kata worth of `9`. He has many options to do this:
+  ```
+  Solve 9 '2kyus' (9*1 -> 9) => Solve 9 kata
+  Solve 4 '1kyus' and 1 '2kyus' (4*2 + 1*1-> 9) => Solve 5 kata
+  Solve 2 '1kyus' and 5 '2kyus' (2*2 + 5*1 -> 9) => Solve 7 kata
+  etc etc...
+  ```
+  The **quickest path** to reach the honor score is: 
+  ```
+  4 '1kyus' and 1 '2kyus' => Solve only 5 kata
+  ```
+
+  Create a function `getHonorPath` that accepts 2 arguments `honorScore` & `targetHonorScore` with score integers of 2 warriors and returns an object with the **quickest path** for the first one to reach the 2nd's honor. For example:
+
+  ```
+  getHonorPath(2, 11) should return { '1kyus': 4, '2kyus': 1 }
+  getHonorPath(20, 11) should return {}
+  ```
+
+  **For the purpose of this kata you do not have to worry about any non-integer arguments for honor scores**
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def get_honor_path (honor : Int) (target : Int) : Option (Int × Int) := sorry
+
+  theorem honor_path_empty_when_target_not_greater {honor target : Int} :
+    target ≤ honor → get_honor_path honor target = none := sorry
+vc-theorems: |
+  theorem honor_path_reaches_target {honor target : Int} (h: target > honor) : 
+    match get_honor_path honor target with
+    | none => False 
+    | some (kyus1, kyus2) => honor + (kyus1 * 2 + kyus2) = target
+    := sorry
+
+
+  theorem honor_path_optimal {honor target : Int} (h: target > honor) :
+    match get_honor_path honor target with
+    | none => False
+    | some (kyus1, kyus2) => kyus2 ≤ 1 ∧ kyus1 ≥ 0
+    := sorry
+
+  /--
+  info: {}
+  -/
+  #guard_msgs in
+  #eval get_honor_path 11 2
+
+  /--
+  info: {}
+  -/
+  #guard_msgs in
+  #eval get_honor_path 11 11
+
+  /--
+  info: {'1kyus': 4, '2kyus': 1}
+  -/
+  #guard_msgs in
+  #eval get_honor_path 2 11
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

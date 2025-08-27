@@ -1,20 +1,62 @@
-"vc-description": "Given a string s, return the last substring of s in lexicographical\
-  \ order.\n \nExample 1:\nInput: \"abab\"\nOutput: \"bab\"\nExplanation: The substrings\
-  \ are [\"a\", \"ab\", \"aba\", \"abab\", \"b\", \"ba\", \"bab\"]. The lexicographically\
-  \ maximum substring is \"bab\".\n\nExample 2:\nInput: \"leetcode\"\nOutput: \"tcode\"\
-  \n\n \nNote:\n\n1 <= s.length <= 4 * 10^5\ns contains only lowercase English letters."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def last_substring (s : String) : String := sorry\n\ntheorem last_substring_returns_valid_suffix\
-  \ {s : String} (h : s.length > 0) :\n  let result := last_substring s\n  result.length\
-  \ > 0 ∧ s.endsWith result := sorry\n"
-"vc-theorems": "theorem last_substring_is_lexicographically_largest {s : String} (h\
-  \ : s.length > 0) :\n  let result := last_substring s\n  ∀ (i : Nat), i < s.length\
-  \ → result ≥ s.drop i := sorry\n\n\ntheorem single_char_returns_itself {s : String}\
-  \ (h : s.length = 1) :\n  last_substring s = s := sorry\n\n\ntheorem same_char_repeated_returns_whole_string\
-  \ {s : String} (h : s.length > 0)\n  (h2 : ∀ (i j : String.Pos), s.get i = s.get\
-  \ j) :\n  last_substring s = s := sorry\n\n/--\ninfo: 'bab'\n-/\n#guard_msgs in\n\
-  #eval last_substring \"abab\"\n\n/--\ninfo: 'tcode'\n-/\n#guard_msgs in\n#eval last_substring\
-  \ \"leetcode\"\n\n/--\ninfo: 'zzz'\n-/\n#guard_msgs in\n#eval last_substring \"\
-  zzz\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a string s, return the last substring of s in lexicographical order.
+   
+  Example 1:
+  Input: "abab"
+  Output: "bab"
+  Explanation: The substrings are ["a", "ab", "aba", "abab", "b", "ba", "bab"]. The lexicographically maximum substring is "bab".
+
+  Example 2:
+  Input: "leetcode"
+  Output: "tcode"
+
+   
+  Note:
+
+  1 <= s.length <= 4 * 10^5
+  s contains only lowercase English letters.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def last_substring (s : String) : String := sorry
+
+  theorem last_substring_returns_valid_suffix {s : String} (h : s.length > 0) :
+    let result := last_substring s
+    result.length > 0 ∧ s.endsWith result := sorry
+vc-theorems: |
+  theorem last_substring_is_lexicographically_largest {s : String} (h : s.length > 0) :
+    let result := last_substring s
+    ∀ (i : Nat), i < s.length → result ≥ s.drop i := sorry
+
+
+  theorem single_char_returns_itself {s : String} (h : s.length = 1) :
+    last_substring s = s := sorry
+
+
+  theorem same_char_repeated_returns_whole_string {s : String} (h : s.length > 0)
+    (h2 : ∀ (i j : String.Pos), s.get i = s.get j) :
+    last_substring s = s := sorry
+
+  /--
+  info: 'bab'
+  -/
+  #guard_msgs in
+  #eval last_substring "abab"
+
+  /--
+  info: 'tcode'
+  -/
+  #guard_msgs in
+  #eval last_substring "leetcode"
+
+  /--
+  info: 'zzz'
+  -/
+  #guard_msgs in
+  #eval last_substring "zzz"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

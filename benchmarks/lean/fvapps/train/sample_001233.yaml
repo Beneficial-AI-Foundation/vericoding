@@ -1,51 +1,126 @@
-"vc-description": "Chef Tobby is trying to run a code given to him by Bhuvan for an\
-  \ experiment they want to include in the manuscript to be submitted to a conference.\
-  \ The deadline to submit the manuscript is within a couple of hours and Chef Tobby\
-  \ needs to finish the experiments before then.\nThe code given by Bhuvan is the\
-  \ following which runs given an array of N integers and another integer K :\nvoid\
-  \ recurse ( array a, int n )\n{\n\t// n = size of array\n\tdefine array b currently\
-  \ empty\n\tconsider all 2^n subsets of a[]\n\t{\n\t\tx = bitwise OR of elements\
-  \ in the subsets\n\t\tadd x into \"b\" if it is not present yet\n\t}\n\tif (sizeof(\
-  \ b ) == 1 << k)\n\t{\n\t\tprintf(“Won”);\n\t\treturn;\n\t}\n\trecurse ( b, sizeof(\
-  \ b ) );\n}\n\nChef Tobby tried to run an experiment with only one integer in the\
-  \ array with value 2 and K = 3. To his horror, he found out that the algorithm is\
-  \ resulting in an infinite loop. He is livid with the possibility that the algorithm\
-  \ can lead to infinite loops for certain cases. On closer inspection he determines\
-  \ that it might be possible to insert additional elements in the initial array to\
-  \ subvert the problem. Since time is very less, Chef Tobby would like to insert\
-  \ the minimum number of elements.\nChef Tobby has to finish writing the paper, so\
-  \ he asks his graduate student Leamas to fix it. Leamas has no idea how to fix the\
-  \ problem so he asks you for help.\n\n-----Input section-----\nThe first line contains\
-  \ T, the number of test cases.\nEach test case consists of 2 lines. The first line\
-  \ contains 2 integers N and K, denoting the number of elements in the array and\
-  \ parameter mentioned in problem statement.\nNext line contains N space separated\
-  \ integers, denoting the elements of the array.\n\n-----Output section-----\nOutput\
-  \ the minimum number of elements that need to be inserted so that inifinite loop\
-  \ can be avoided.\n\n-----Input constraints-----\n1 ≤ T ≤ 10\n1 ≤ Sum of N over\
-  \ all test cases ≤ 105\n1 ≤ K ≤ 20\n0 ≤ A[i] ≤ 2K-1, where A[i] denotes the ith\
-  \ element of the array.\n\n-----Sample Input - 1-----\n1\n2 2\n3 1\n\n-----Sample\
-  \ Output - 1-----\n1\n\n-----Explanation - 1-----\nYou can win the game by inserting\
-  \ the element 2 into the array.\n\n-----Sample Input - 2-----\n1\n7 3\n3 7 5 4 6\
-  \ 2 1\n\n-----Sample Output - 2-----\n0\n\n-----Explanation - 2-----\nThe initial\
-  \ array will result will terminate in the first step of algorithm only. Thus there\
-  \ is no need to insert any new element."
-"vc-preamble": "import Imports.AllImports\n\ndef min_elements_needed (N K : Nat) (arr\
-  \ : List Nat) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def permutation (l1 l2 : List Nat) : Prop :=\n  l1.length = l2.length\
-  \ ∧ ∀ x, x ∈ l1 ↔ x ∈ l2\n"
-"vc-theorems": "theorem min_elements_non_negative (N K : Nat) (arr : List Nat) :\n\
-  \  min_elements_needed N K arr ≥ 0 :=\n  sorry\n\n\ntheorem min_elements_upper_bound\
-  \ (N K : Nat) (arr : List Nat) :\n  min_elements_needed N K arr ≤ K :=\n  sorry\n\
-  \n\ntheorem min_elements_complete_powers (N K : Nat) (arr : List Nat) :\n  (∀ i\
-  \ : Nat, i < K → (2^i) ∈ arr) →\n  min_elements_needed N K arr = 0 :=\n  sorry\n\
-  \n\ntheorem min_elements_empty (K : Nat) :\n  min_elements_needed 0 K [] = K :=\n\
-  \  sorry\n\n\ntheorem min_elements_singleton_min (K : Nat) :\n  min_elements_needed\
-  \ 1 K [1] = K - 1 :=\n  sorry\n\n\ntheorem min_elements_singleton_max (K : Nat)\
-  \ :\n  min_elements_needed 1 K [2^K] = K :=\n  sorry\n\n\ntheorem min_elements_perm_invariant\
-  \ (N K : Nat) (arr₁ arr₂ : List Nat) :\n  permutation arr₁ arr₂ →\n  min_elements_needed\
-  \ N K arr₁ = min_elements_needed N K arr₂ :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
-  \ in\n#eval min_elements_needed 2 2 [3, 1]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
-  #eval min_elements_needed 7 3 [3, 7, 5, 4, 6, 2, 1]\n\n/--\ninfo: 2\n-/\n#guard_msgs\
-  \ in\n#eval min_elements_needed 1 3 [2]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Chef Tobby is trying to run a code given to him by Bhuvan for an experiment they want to include in the manuscript to be submitted to a conference. The deadline to submit the manuscript is within a couple of hours and Chef Tobby needs to finish the experiments before then.
+  The code given by Bhuvan is the following which runs given an array of N integers and another integer K :
+  void recurse ( array a, int n )
+  {
+  	// n = size of array
+  	define array b currently empty
+  	consider all 2^n subsets of a[]
+  	{
+  		x = bitwise OR of elements in the subsets
+  		add x into "b" if it is not present yet
+  	}
+  	if (sizeof( b ) == 1 << k)
+  	{
+  		printf(“Won”);
+  		return;
+  	}
+  	recurse ( b, sizeof( b ) );
+  }
+
+  Chef Tobby tried to run an experiment with only one integer in the array with value 2 and K = 3. To his horror, he found out that the algorithm is resulting in an infinite loop. He is livid with the possibility that the algorithm can lead to infinite loops for certain cases. On closer inspection he determines that it might be possible to insert additional elements in the initial array to subvert the problem. Since time is very less, Chef Tobby would like to insert the minimum number of elements.
+  Chef Tobby has to finish writing the paper, so he asks his graduate student Leamas to fix it. Leamas has no idea how to fix the problem so he asks you for help.
+
+  -----Input section-----
+  The first line contains T, the number of test cases.
+  Each test case consists of 2 lines. The first line contains 2 integers N and K, denoting the number of elements in the array and parameter mentioned in problem statement.
+  Next line contains N space separated integers, denoting the elements of the array.
+
+  -----Output section-----
+  Output the minimum number of elements that need to be inserted so that inifinite loop can be avoided.
+
+  -----Input constraints-----
+  1 ≤ T ≤ 10
+  1 ≤ Sum of N over all test cases ≤ 105
+  1 ≤ K ≤ 20
+  0 ≤ A[i] ≤ 2K-1, where A[i] denotes the ith element of the array.
+
+  -----Sample Input - 1-----
+  1
+  2 2
+  3 1
+
+  -----Sample Output - 1-----
+  1
+
+  -----Explanation - 1-----
+  You can win the game by inserting the element 2 into the array.
+
+  -----Sample Input - 2-----
+  1
+  7 3
+  3 7 5 4 6 2 1
+
+  -----Sample Output - 2-----
+  0
+
+  -----Explanation - 2-----
+  The initial array will result will terminate in the first step of algorithm only. Thus there is no need to insert any new element.
+vc-preamble: |
+  import Imports.AllImports
+
+  def min_elements_needed (N K : Nat) (arr : List Nat) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def permutation (l1 l2 : List Nat) : Prop :=
+    l1.length = l2.length ∧ ∀ x, x ∈ l1 ↔ x ∈ l2
+vc-theorems: |
+  theorem min_elements_non_negative (N K : Nat) (arr : List Nat) :
+    min_elements_needed N K arr ≥ 0 :=
+    sorry
+
+
+  theorem min_elements_upper_bound (N K : Nat) (arr : List Nat) :
+    min_elements_needed N K arr ≤ K :=
+    sorry
+
+
+  theorem min_elements_complete_powers (N K : Nat) (arr : List Nat) :
+    (∀ i : Nat, i < K → (2^i) ∈ arr) →
+    min_elements_needed N K arr = 0 :=
+    sorry
+
+
+  theorem min_elements_empty (K : Nat) :
+    min_elements_needed 0 K [] = K :=
+    sorry
+
+
+  theorem min_elements_singleton_min (K : Nat) :
+    min_elements_needed 1 K [1] = K - 1 :=
+    sorry
+
+
+  theorem min_elements_singleton_max (K : Nat) :
+    min_elements_needed 1 K [2^K] = K :=
+    sorry
+
+
+  theorem min_elements_perm_invariant (N K : Nat) (arr₁ arr₂ : List Nat) :
+    permutation arr₁ arr₂ →
+    min_elements_needed N K arr₁ = min_elements_needed N K arr₂ :=
+    sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_elements_needed 2 2 [3, 1]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_elements_needed 7 3 [3, 7, 5, 4, 6, 2, 1]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_elements_needed 1 3 [2]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

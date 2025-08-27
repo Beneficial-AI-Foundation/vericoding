@@ -1,39 +1,97 @@
-"vc-description": "#Unflatten a list (Easy)\n\nThere are several katas like \"Flatten\
-  \ a list\".\nThese katas are done by so many warriors, that the count of available\
-  \ list to flattin goes down!\n\nSo you have to build a method, that creates new\
-  \ arrays, that can be flattened!\n\n#Shorter: You have to unflatten a list/an array.\n\
-  \nYou get an array of integers and have to unflatten it by these rules:\n```\n-\
-  \ You start at the first number.\n- If this number x is smaller than 3, take this\
-  \ number x direct \n  for the new array and continue with the next number.\n- If\
-  \ this number x is greater than 2, take the next x numbers (inclusive this number)\
-  \ as a \n  sub-array in the new array. Continue with the next number AFTER this\
-  \ taken numbers.\n- If there are too few numbers to take by number, take the last\
-  \ available numbers.\n```\n\nThe given array will always contain numbers. There\
-  \ will only be numbers > 0.\n\nExample:\n```\n [1,4,5,2,1,2,4,5,2,6,2,3,3] -> [1,[4,5,2,1],2,[4,5,2,6],2,[3,3]]\n\
-  \nSteps: \n1. The 1 is added directly to the new array.\n2. The next number is 4.\
-  \ So the next 4 numbers (4,5,2,1) are added as sub-array in the new array.\n3. The\
-  \ 2 is added directly to the new array.\n4. The next number is 4. So the next 4\
-  \ numbers (4,5,2,6) are added as sub-array in the new array.\n5. The 2 is added\
-  \ directly to the new array.\n6. The next number is 3. So the next 3 numbers would\
-  \ be taken. There are only 2, \n   so take these (3,3) as sub-array in the new array.\n\
-  ```\n\nThere is a harder version of this kata!\nUnflatten a list (Harder than easy)\n\
-  \nHave fun coding it and please don't forget to vote and rank this kata! :-) \n\n\
-  I have created other katas. Have a look if you like coding and challenges."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def unflatten (arr : List Nat) : List (Sum (List Nat) Nat) := sorry\n\
-  \ndef flatten {α} (l : List (Sum (List α) α)) : List α := sorry\n"
-"vc-theorems": "theorem unflatten_type (arr : List Nat) :\n  unflatten arr ≠ [] →\
-  \ unflatten arr ≠ [] := sorry\n\n\ntheorem unflatten_preserves_flatten (arr : List\
-  \ Nat) (h : arr ≠ []) :\n  flatten (unflatten arr) = arr := sorry\n\n\ntheorem unflatten_sublist_len\
-  \ (arr : List Nat) (sublist : List Nat) :\n  (Sum.inl sublist) ∈ unflatten arr →\
-  \ \n  sublist ≠ [] → sublist[0]! ≥ sublist.length := sorry\n\n\ntheorem unflatten_small_nums\
-  \ (arr : List Nat) (item : Nat) :\n  (Sum.inr item) ∈ unflatten arr →\n  item ≤\
-  \ 2 := sorry\n\n\ntheorem unflatten_all_small (arr : List Nat) :\n  (∀ x ∈ arr,\
-  \ x ≤ 2) → unflatten arr = arr.map Sum.inr := sorry\n\n\ntheorem unflatten_single_large\
-  \ (n : Nat) :\n  n ≥ 3 → unflatten [n] = [Sum.inl [n]] := sorry\n\n/--\ninfo: [[3,\
-  \ 5, 2], 1]\n-/\n#guard_msgs in\n#eval unflatten [3, 5, 2, 1]\n\n/--\ninfo: [1,\
-  \ [4, 5, 2, 1], 2, [4, 5, 2, 6], 2, [3, 3]]\n-/\n#guard_msgs in\n#eval unflatten\
-  \ [1, 4, 5, 2, 1, 2, 4, 5, 2, 6, 2, 3, 3]\n\n/--\ninfo: [[99, 1, 1, 1]]\n-/\n#guard_msgs\
-  \ in\n#eval unflatten [99, 1, 1, 1]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  #Unflatten a list (Easy)
+
+  There are several katas like "Flatten a list".
+  These katas are done by so many warriors, that the count of available list to flattin goes down!
+
+  So you have to build a method, that creates new arrays, that can be flattened!
+
+  #Shorter: You have to unflatten a list/an array.
+
+  You get an array of integers and have to unflatten it by these rules:
+  ```
+  - You start at the first number.
+  - If this number x is smaller than 3, take this number x direct 
+    for the new array and continue with the next number.
+  - If this number x is greater than 2, take the next x numbers (inclusive this number) as a 
+    sub-array in the new array. Continue with the next number AFTER this taken numbers.
+  - If there are too few numbers to take by number, take the last available numbers.
+  ```
+
+  The given array will always contain numbers. There will only be numbers > 0.
+
+  Example:
+  ```
+   [1,4,5,2,1,2,4,5,2,6,2,3,3] -> [1,[4,5,2,1],2,[4,5,2,6],2,[3,3]]
+
+  Steps: 
+  1. The 1 is added directly to the new array.
+  2. The next number is 4. So the next 4 numbers (4,5,2,1) are added as sub-array in the new array.
+  3. The 2 is added directly to the new array.
+  4. The next number is 4. So the next 4 numbers (4,5,2,6) are added as sub-array in the new array.
+  5. The 2 is added directly to the new array.
+  6. The next number is 3. So the next 3 numbers would be taken. There are only 2, 
+     so take these (3,3) as sub-array in the new array.
+  ```
+
+  There is a harder version of this kata!
+  Unflatten a list (Harder than easy)
+
+  Have fun coding it and please don't forget to vote and rank this kata! :-) 
+
+  I have created other katas. Have a look if you like coding and challenges.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def unflatten (arr : List Nat) : List (Sum (List Nat) Nat) := sorry
+
+  def flatten {α} (l : List (Sum (List α) α)) : List α := sorry
+vc-theorems: |
+  theorem unflatten_type (arr : List Nat) :
+    unflatten arr ≠ [] → unflatten arr ≠ [] := sorry
+
+
+  theorem unflatten_preserves_flatten (arr : List Nat) (h : arr ≠ []) :
+    flatten (unflatten arr) = arr := sorry
+
+
+  theorem unflatten_sublist_len (arr : List Nat) (sublist : List Nat) :
+    (Sum.inl sublist) ∈ unflatten arr → 
+    sublist ≠ [] → sublist[0]! ≥ sublist.length := sorry
+
+
+  theorem unflatten_small_nums (arr : List Nat) (item : Nat) :
+    (Sum.inr item) ∈ unflatten arr →
+    item ≤ 2 := sorry
+
+
+  theorem unflatten_all_small (arr : List Nat) :
+    (∀ x ∈ arr, x ≤ 2) → unflatten arr = arr.map Sum.inr := sorry
+
+
+  theorem unflatten_single_large (n : Nat) :
+    n ≥ 3 → unflatten [n] = [Sum.inl [n]] := sorry
+
+  /--
+  info: [[3, 5, 2], 1]
+  -/
+  #guard_msgs in
+  #eval unflatten [3, 5, 2, 1]
+
+  /--
+  info: [1, [4, 5, 2, 1], 2, [4, 5, 2, 6], 2, [3, 3]]
+  -/
+  #guard_msgs in
+  #eval unflatten [1, 4, 5, 2, 1, 2, 4, 5, 2, 6, 2, 3, 3]
+
+  /--
+  info: [[99, 1, 1, 1]]
+  -/
+  #guard_msgs in
+  #eval unflatten [99, 1, 1, 1]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

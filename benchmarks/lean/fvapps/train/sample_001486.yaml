@@ -1,62 +1,87 @@
-"vc-description": "Tennis is a popular game. Consider a simplified view of a tennis\
-  \ game from directly above. The game will appear to be played on a 2 dimensional\
-  \ rectangle, where each player has his own court, a half of the rectangle. Consider\
-  \ the players and the ball to be points moving on this 2D plane. The ball can be\
-  \ assumed to always move with fixed velocity (speed and direction) when it is hit\
-  \ by a player. The ball changes its velocity when hit by the other player. And so\
-  \ on, the game continues.\nChef also enjoys playing tennis, but in n+1$n + 1$ dimensions\
-  \ instead of just 3. From the perspective of the previously discussed overhead view,\
-  \ Chef's court is an n$n$-dimensional hyperrectangle which is axis-aligned with\
-  \ one corner at (0,0,0,…,0)$(0, 0, 0, \\dots, 0)$ and the opposite corner at (l1,l2,l3,…,ln$(l_1,\
-  \ l_2, l_3, \\dots, l_n$). The court of his opponent is the reflection of Chef's\
-  \ court across the n−1$n - 1$ dimensional surface with equation x1=0$x_1 = 0$.\n\
-  At time t=0$t=0$, Chef notices that the ball is at position (0,b2,…,bn)$(0, b_2,\
-  \ \\dots, b_n)$ after being hit by his opponent. The velocity components of the\
-  \ ball in each of the n$n$ dimensions are also immediately known to Chef, the component\
-  \ in the ith$i^{th}$ dimension being vi$v_i$. The ball will continue to move with\
-  \ fixed velocity until it leaves Chef's court. The ball is said to leave Chef's\
-  \ court when it reaches a position strictly outside the bounds of Chef's court.\
-  \ Chef is currently at position (c1,c2,…,cn)$(c_1, c_2, \\dots, c_n)$. To hit the\
-  \ ball back, Chef must intercept the ball before it leaves his court, which means\
-  \ at a certain time the ball's position and Chef's position must coincide.\nTo achieve\
-  \ this, Chef is free to change his speed and direction at any time starting from\
-  \ time t=0$t=0$. However, Chef is lazy so he does not want to put in more effort\
-  \ than necessary. Chef wants to minimize the maximum speed that he needs to acquire\
-  \ at any point in time until he hits the ball. Find this minimum value of speed\
-  \ smin$s_{min}$.\nNote: If an object moves with fixed velocity →v$\\vec{v}$ and\
-  \ is at position →x$\\vec{x}$ at time 0$0$, its position at time t$t$ is given by\
-  \ →x+→v⋅t$\\vec{x} + \\vec{v} \\cdot t$.\n\n-----Input-----\n- The first line contains\
-  \ t$t$, the number of test cases. t$t$ cases follow.\n- The first line of each test\
-  \ case contains n$n$, the number of dimensions.\n- The next line contains n$n$ integers\
-  \ l1,l2,…,ln$l_1, l_2, \\dots, l_n$, the bounds of Chef's court.\n- The next line\
-  \ contains n$n$ integers b1,b2,…,bn$b_1, b_2, \\dots, b_n$, the position of the\
-  \ ball at t=0$t=0$.\n- The next line contains n$n$ integers v1,v2,…,vn$v_1, v_2,\
-  \ \\dots, v_n$, the velocity components of the ball.\n- The next line contains n$n$\
-  \ integers, c1,c2,…,cn$c_1, c_2, \\dots, c_n$, Chef's position at t=0$t=0$.\n\n\
-  -----Output-----\n- For each test case, output a single line containing the value\
-  \ of smin$s_{min}$. Your answer will be considered correct if the absolute error\
-  \ does not exceed 10−2$10^{-2}$.\n\n-----Constraints-----\n- 1≤t≤1500$1 \\leq t\
-  \ \\leq 1500$\n- 2≤n≤50$2 \\leq n \\leq 50$\n- 1≤li≤50$1 \\leq l_i \\leq 50$\n-\
-  \ 0≤bi≤li$0 \\leq b_i \\leq l_i$ and b1=0$b_1 = 0$\n- −10≤vi≤10$-10 \\leq v_i \\\
-  leq 10$ and v1>0$v_1 > 0$\n- 0≤ci≤li$0 \\leq c_i \\leq l_i$\n- It is guaranteed\
-  \ that the ball stays in the court for a non-zero amount of time.\n\n-----Sample\
-  \ Input-----\n2\n2\n3 4\n0 2\n2 -2\n2 2\n3\n10 10 10\n0 0 0\n1 1 1\n5 5 5\n\n-----Sample\
-  \ Output-----\n2.0000\n0.0000\n\n-----Explanation-----\nCase 1:  The court is 2-dimentional.\n\
-  \nThe ball's trajectory is marked in red. For Chef it is optimal to move along the\
-  \ blue line at a constant speed of 2 until he meets the ball at the boundary.\n\
-  Case 2: The court is 3-dimensional and the ball is coming straight at Chef. So it\
-  \ is best for Chef to not move at all, thus smin=0$s_{min} = 0$."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solveTennis (n : Nat) (bounds : List Float) (ballPos : List\
-  \ Float) (velocities : List Float) \n  (chefPos : List Float) : Float :=\n  sorry\n"
-"vc-theorems": "theorem dimensions_match (n : Nat) \n  (h1 : 0 < n) (h2 : n ≤ 10)\
-  \ \n  (bounds : List Float) \n  (hb : bounds.length = n)\n  (ball_pos : List Float)\n\
-  \  (hbp : ball_pos.length = n) \n  (velocities : List Float)\n  (hv : velocities.length\
-  \ = n)\n  (chef_pos : List Float)\n  (hc : chef_pos.length = n) :\n  ∃ (t : Float),\
-  \ solveTennis n bounds ball_pos velocities chef_pos = t :=\n  sorry\n\n\ntheorem\
-  \ same_position_zero_time\n  (n : Nat)\n  (h1 : 0 < n) (h2 : n ≤ 10)\n  (bounds\
-  \ : List Float)\n  (hb : bounds.length = n)\n  (pos : List Float) \n  (hp : pos.length\
-  \ = n)\n  (vel : List Float)\n  (hv : vel.length = n) :\n  Float.abs (solveTennis\
-  \ n bounds pos vel pos) < 1e-8 :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Tennis is a popular game. Consider a simplified view of a tennis game from directly above. The game will appear to be played on a 2 dimensional rectangle, where each player has his own court, a half of the rectangle. Consider the players and the ball to be points moving on this 2D plane. The ball can be assumed to always move with fixed velocity (speed and direction) when it is hit by a player. The ball changes its velocity when hit by the other player. And so on, the game continues.
+  Chef also enjoys playing tennis, but in n+1$n + 1$ dimensions instead of just 3. From the perspective of the previously discussed overhead view, Chef's court is an n$n$-dimensional hyperrectangle which is axis-aligned with one corner at (0,0,0,…,0)$(0, 0, 0, \dots, 0)$ and the opposite corner at (l1,l2,l3,…,ln$(l_1, l_2, l_3, \dots, l_n$). The court of his opponent is the reflection of Chef's court across the n−1$n - 1$ dimensional surface with equation x1=0$x_1 = 0$.
+  At time t=0$t=0$, Chef notices that the ball is at position (0,b2,…,bn)$(0, b_2, \dots, b_n)$ after being hit by his opponent. The velocity components of the ball in each of the n$n$ dimensions are also immediately known to Chef, the component in the ith$i^{th}$ dimension being vi$v_i$. The ball will continue to move with fixed velocity until it leaves Chef's court. The ball is said to leave Chef's court when it reaches a position strictly outside the bounds of Chef's court. Chef is currently at position (c1,c2,…,cn)$(c_1, c_2, \dots, c_n)$. To hit the ball back, Chef must intercept the ball before it leaves his court, which means at a certain time the ball's position and Chef's position must coincide.
+  To achieve this, Chef is free to change his speed and direction at any time starting from time t=0$t=0$. However, Chef is lazy so he does not want to put in more effort than necessary. Chef wants to minimize the maximum speed that he needs to acquire at any point in time until he hits the ball. Find this minimum value of speed smin$s_{min}$.
+  Note: If an object moves with fixed velocity →v$\vec{v}$ and is at position →x$\vec{x}$ at time 0$0$, its position at time t$t$ is given by →x+→v⋅t$\vec{x} + \vec{v} \cdot t$.
+
+  -----Input-----
+  - The first line contains t$t$, the number of test cases. t$t$ cases follow.
+  - The first line of each test case contains n$n$, the number of dimensions.
+  - The next line contains n$n$ integers l1,l2,…,ln$l_1, l_2, \dots, l_n$, the bounds of Chef's court.
+  - The next line contains n$n$ integers b1,b2,…,bn$b_1, b_2, \dots, b_n$, the position of the ball at t=0$t=0$.
+  - The next line contains n$n$ integers v1,v2,…,vn$v_1, v_2, \dots, v_n$, the velocity components of the ball.
+  - The next line contains n$n$ integers, c1,c2,…,cn$c_1, c_2, \dots, c_n$, Chef's position at t=0$t=0$.
+
+  -----Output-----
+  - For each test case, output a single line containing the value of smin$s_{min}$. Your answer will be considered correct if the absolute error does not exceed 10−2$10^{-2}$.
+
+  -----Constraints-----
+  - 1≤t≤1500$1 \leq t \leq 1500$
+  - 2≤n≤50$2 \leq n \leq 50$
+  - 1≤li≤50$1 \leq l_i \leq 50$
+  - 0≤bi≤li$0 \leq b_i \leq l_i$ and b1=0$b_1 = 0$
+  - −10≤vi≤10$-10 \leq v_i \leq 10$ and v1>0$v_1 > 0$
+  - 0≤ci≤li$0 \leq c_i \leq l_i$
+  - It is guaranteed that the ball stays in the court for a non-zero amount of time.
+
+  -----Sample Input-----
+  2
+  2
+  3 4
+  0 2
+  2 -2
+  2 2
+  3
+  10 10 10
+  0 0 0
+  1 1 1
+  5 5 5
+
+  -----Sample Output-----
+  2.0000
+  0.0000
+
+  -----Explanation-----
+  Case 1:  The court is 2-dimentional.
+
+  The ball's trajectory is marked in red. For Chef it is optimal to move along the blue line at a constant speed of 2 until he meets the ball at the boundary.
+  Case 2: The court is 3-dimensional and the ball is coming straight at Chef. So it is best for Chef to not move at all, thus smin=0$s_{min} = 0$.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solveTennis (n : Nat) (bounds : List Float) (ballPos : List Float) (velocities : List Float) 
+    (chefPos : List Float) : Float :=
+    sorry
+vc-theorems: |-
+  theorem dimensions_match (n : Nat) 
+    (h1 : 0 < n) (h2 : n ≤ 10) 
+    (bounds : List Float) 
+    (hb : bounds.length = n)
+    (ball_pos : List Float)
+    (hbp : ball_pos.length = n) 
+    (velocities : List Float)
+    (hv : velocities.length = n)
+    (chef_pos : List Float)
+    (hc : chef_pos.length = n) :
+    ∃ (t : Float), solveTennis n bounds ball_pos velocities chef_pos = t :=
+    sorry
+
+
+  theorem same_position_zero_time
+    (n : Nat)
+    (h1 : 0 < n) (h2 : n ≤ 10)
+    (bounds : List Float)
+    (hb : bounds.length = n)
+    (pos : List Float) 
+    (hp : pos.length = n)
+    (vel : List Float)
+    (hv : vel.length = n) :
+    Float.abs (solveTennis n bounds pos vel pos) < 1e-8 :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

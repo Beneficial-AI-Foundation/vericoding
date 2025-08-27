@@ -1,38 +1,96 @@
-"vc-description": "There are $N$ cells numbered 1,2,….., N, and every cell has some\
-  \ positive value. you will be given an array $A_1$,$A_2$,…,$A_N$ where $A_i$ is\
-  \ the value of $ith$ cell and an integer $K$.\nThere is a monkey who wants to reach\
-  \ the $right$ side of the last ($Nth$) cell, initially, the monkey was left side\
-  \ of the first ($1st$) cell. \nIn the first step, he can jump into any cell numbered\
-  \ 1,2,….., K.Once he jumped into any cell $i$ next he can only jump to the cell\
-  \ $j$ such that-\n- j>i\n- j-i <= K  \n- A[i]%2 == A[j]%2\nYou have to find out\
-  \ what is the minimum number of steps required to reach the right side of the cell\
-  \ or In case it's not possible to reach the right side of the cell your answer should\
-  \ be $-1$.NOTE: As soon as monkey reach any cell whose distance from the last cell\
-  \ is less than K, then in the last step, he will jump out to the right side of the\
-  \ ($Nth$) cell.\n\n-----Input:-----\n- First-line will contain $T$, the number of\
-  \ test cases. Then the test cases follow. \n- The first line of each test case contains\
-  \ two space-separated integers $N$ and $K$.\n- The second line contains $N$ space-separated\
-  \ integers $A_1$,$A_2$,…,$A_N$\n\n-----Output:-----\nFor each test case, output\
-  \ in a single line minimum steps or $-1$.\n\n-----Constraints-----\n- $1 \\leq T\
-  \ \\leq 100$\n- $1 \\leq N \\leq 2*10^5$\n- $1 \\leq K \\leq N$\n- $0 \\leq A_i\
-  \ \\leq 10^6$\n- $\\text{the sum of N over all test cases does not exceed $5*10^{5}$}$\n\
-  \n-----Sample Input:-----\n1\n2 2\n3 4\n\n-----Sample Output:-----\n2 \n\n-----EXPLANATION:-----\n\
-  in the first step, you can jump into any cell 1 or 2 and then in the second step\
-  \ you will jump \nout to the right side of 2nd cell\nremember we don't want to reach\
-  \ $Nth$ cell we want to reach the right side of the nth cell."
-"vc-preamble": "import Imports.AllImports\n\ndef find_min_steps (i j : Nat) (nums\
-  \ : List Nat) : Nat := sorry\n\ndef list_max : List Nat → Nat \n| [] => 0\n| [x]\
-  \ => x\n| (x::xs) => Nat.max x (list_max xs)\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def iterate_steps (i j steps : Nat) : Nat × Nat :=\n  match steps\
-  \ with\n  | 0 => (i, j)\n  | n+1 => \n    let (cur_i, cur_j) := iterate_steps i\
-  \ j n\n    if cur_i ≤ cur_j then\n      (cur_i + cur_j, cur_j)\n    else\n     \
-  \ (cur_i, cur_j + cur_i)\n"
-"vc-theorems": "theorem find_min_steps_nonnegative {i j : Nat} {nums : List Nat} :\n\
-  \  find_min_steps i j nums ≥ 0 := sorry\n\n\n\n\n\n\ntheorem find_min_steps_monotonic\
-  \ {i j target : Nat} (hi : i > 1) (hj : j > 1) :\n  find_min_steps i j [target]\
-  \ ≤ find_min_steps (i-1) (j-1) [target] := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
-  \ in\n#eval find_min_steps 1 2 [5]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_min_steps\
-  \ 2 2 [3, 4]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval find_min_steps 1 1 [3, 4,\
-  \ 5]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_min_steps 2 1 [5]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  There are $N$ cells numbered 1,2,….., N, and every cell has some positive value. you will be given an array $A_1$,$A_2$,…,$A_N$ where $A_i$ is the value of $ith$ cell and an integer $K$.
+  There is a monkey who wants to reach the $right$ side of the last ($Nth$) cell, initially, the monkey was left side of the first ($1st$) cell. 
+  In the first step, he can jump into any cell numbered 1,2,….., K.Once he jumped into any cell $i$ next he can only jump to the cell $j$ such that-
+  - j>i
+  - j-i <= K  
+  - A[i]%2 == A[j]%2
+  You have to find out what is the minimum number of steps required to reach the right side of the cell or In case it's not possible to reach the right side of the cell your answer should be $-1$.NOTE: As soon as monkey reach any cell whose distance from the last cell is less than K, then in the last step, he will jump out to the right side of the ($Nth$) cell.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - The first line of each test case contains two space-separated integers $N$ and $K$.
+  - The second line contains $N$ space-separated integers $A_1$,$A_2$,…,$A_N$
+
+  -----Output:-----
+  For each test case, output in a single line minimum steps or $-1$.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq N \leq 2*10^5$
+  - $1 \leq K \leq N$
+  - $0 \leq A_i \leq 10^6$
+  - $\text{the sum of N over all test cases does not exceed $5*10^{5}$}$
+
+  -----Sample Input:-----
+  1
+  2 2
+  3 4
+
+  -----Sample Output:-----
+  2 
+
+  -----EXPLANATION:-----
+  in the first step, you can jump into any cell 1 or 2 and then in the second step you will jump 
+  out to the right side of 2nd cell
+  remember we don't want to reach $Nth$ cell we want to reach the right side of the nth cell.
+vc-preamble: |
+  import Imports.AllImports
+
+  def find_min_steps (i j : Nat) (nums : List Nat) : Nat := sorry
+
+  def list_max : List Nat → Nat 
+  | [] => 0
+  | [x] => x
+  | (x::xs) => Nat.max x (list_max xs)
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def iterate_steps (i j steps : Nat) : Nat × Nat :=
+    match steps with
+    | 0 => (i, j)
+    | n+1 => 
+      let (cur_i, cur_j) := iterate_steps i j n
+      if cur_i ≤ cur_j then
+        (cur_i + cur_j, cur_j)
+      else
+        (cur_i, cur_j + cur_i)
+vc-theorems: |
+  theorem find_min_steps_nonnegative {i j : Nat} {nums : List Nat} :
+    find_min_steps i j nums ≥ 0 := sorry
+
+
+
+
+
+
+  theorem find_min_steps_monotonic {i j target : Nat} (hi : i > 1) (hj : j > 1) :
+    find_min_steps i j [target] ≤ find_min_steps (i-1) (j-1) [target] := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_min_steps 1 2 [5]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_min_steps 2 2 [3, 4]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval find_min_steps 1 1 [3, 4, 5]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_min_steps 2 1 [5]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

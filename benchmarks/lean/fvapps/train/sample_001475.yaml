@@ -1,21 +1,87 @@
-"vc-description": "The chef is trying to solve some pattern problems, Chef wants your\
-  \ help to code it. Chef has one number K to form a new pattern. Help the chef to\
-  \ code this pattern problem.\n\n-----Input:-----\n- First-line will contain $T$,\
-  \ the number of test cases. Then the test cases follow. \n- Each test case contains\
-  \ a single line of input, one integer $K$. \n\n-----Output:-----\nFor each test\
-  \ case, output as the pattern.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n\
-  - $1 \\leq K \\leq 100$\n\n-----Sample Input:-----\n5\n1\n2\n3\n4\n5\n\n-----Sample\
-  \ Output:-----\n1\n1\n32\n1\n32\n654\n1\n32\n654\n10987\n1\n32\n654\n10987\n1514131211\n\
-  \n-----EXPLANATION:-----\nNo need, else pattern can be decode easily."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def print_pattern (n: Nat) : List String := sorry\n\ntheorem print_pattern_basic_2\
-  \ : \n  print_pattern 2 = [\"1\", \"32\"] := sorry\n"
-"vc-theorems": "theorem print_pattern_basic_3 :\n  print_pattern 3 = [\"1\", \"32\"\
-  , \"654\"] := sorry\n\n\ntheorem print_pattern_basic_4 :\n  print_pattern 4 = [\"\
-  1\", \"32\", \"654\", \"10987\"] := sorry\n\n\ntheorem print_pattern_zero :\n  print_pattern\
-  \ 0 = [] := sorry\n\n\ntheorem print_pattern_one :\n  print_pattern 1 = [\"1\"]\
-  \ := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval print_pattern 2\n\n\
-  /--\ninfo: expected2\n-/\n#guard_msgs in\n#eval print_pattern 3\n\n/--\ninfo: expected3\n\
-  -/\n#guard_msgs in\n#eval print_pattern 4\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  The chef is trying to solve some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+
+  -----Output:-----
+  For each test case, output as the pattern.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq K \leq 100$
+
+  -----Sample Input:-----
+  5
+  1
+  2
+  3
+  4
+  5
+
+  -----Sample Output:-----
+  1
+  1
+  32
+  1
+  32
+  654
+  1
+  32
+  654
+  10987
+  1
+  32
+  654
+  10987
+  1514131211
+
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def print_pattern (n: Nat) : List String := sorry
+
+  theorem print_pattern_basic_2 : 
+    print_pattern 2 = ["1", "32"] := sorry
+vc-theorems: |
+  theorem print_pattern_basic_3 :
+    print_pattern 3 = ["1", "32", "654"] := sorry
+
+
+  theorem print_pattern_basic_4 :
+    print_pattern 4 = ["1", "32", "654", "10987"] := sorry
+
+
+  theorem print_pattern_zero :
+    print_pattern 0 = [] := sorry
+
+
+  theorem print_pattern_one :
+    print_pattern 1 = ["1"] := sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval print_pattern 2
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval print_pattern 3
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval print_pattern 4
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

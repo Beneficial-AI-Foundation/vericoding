@@ -1,14 +1,43 @@
-"vc-description": "The n-queens puzzle is the problem of placing n queens on an n×n\
-  \ chessboard such that no two queens attack each other.\n\n\n\nGiven an integer n,\
-  \ return the number of distinct solutions to the n-queens puzzle.\n\nExample:\n\n\
-  \nInput: 4\nOutput: 2\nExplanation: There are two distinct solutions to the 4-queens\
-  \ puzzle as shown below.\n[\n [\".Q..\",  // Solution 1\n  \"...Q\",\n  \"Q...\"\
-  ,\n  \"..Q.\"],\n\n [\"..Q.\",  // Solution 2\n  \"Q...\",\n  \"...Q\",\n  \".Q..\"\
-  ]\n]"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def total_n_queens (n: Nat) : Nat := sorry \n\ntheorem total_n_queens_nonneg\
-  \ (n: Nat) : \n  total_n_queens n ≥ 0 := sorry\n\n\n"
-"vc-theorems": "theorem total_n_queens_unique :\n  ∀ n₁ n₂, \n  n₁ = n₂ → total_n_queens\
-  \ n₁ = total_n_queens n₂ := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
+
+
+
+  Given an integer n, return the number of distinct solutions to the n-queens puzzle.
+
+  Example:
+
+
+  Input: 4
+  Output: 2
+  Explanation: There are two distinct solutions to the 4-queens puzzle as shown below.
+  [
+   [".Q..",  // Solution 1
+    "...Q",
+    "Q...",
+    "..Q."],
+
+   ["..Q.",  // Solution 2
+    "Q...",
+    "...Q",
+    ".Q.."]
+  ]
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def total_n_queens (n: Nat) : Nat := sorry 
+
+  theorem total_n_queens_nonneg (n: Nat) : 
+    total_n_queens n ≥ 0 := sorry
+
+
+vc-theorems: |-
+  theorem total_n_queens_unique :
+    ∀ n₁ n₂, 
+    n₁ = n₂ → total_n_queens n₁ = total_n_queens n₂ := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
