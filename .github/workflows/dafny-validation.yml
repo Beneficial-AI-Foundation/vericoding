@@ -127,7 +127,7 @@ jobs:
           
           # Run dafny verify on the generated file (don't exit on failure)
           echo "Running dafny verify on: $dfy_file"
-          if ! dafny verify --allow-warnings "$dfy_file"; then
+          if ! dafny verify --allow-warnings --verification-time-limit=60 "$dfy_file"; then
             echo "❌ Failed to verify: $dfy_file"
             failed_files+=("$dfy_file")
           else
