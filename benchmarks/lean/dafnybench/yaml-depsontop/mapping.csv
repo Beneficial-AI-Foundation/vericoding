@@ -3,11 +3,13 @@ Abs.lean,Clover_abs_Abs.yaml
 AllDigits.lean,Clover_all_digits_allDigits.yaml
 ArrayAppend.lean,Clover_array_append_append.yaml
 ArrayConcat.lean,Clover_array_concat_concat.yaml
+ArrayCopy.lean,Clover_copy_part_copy.yaml
 ArrayProduct.lean,Clover_array_product_arrayProduct.yaml
 ArraySum.lean,Clover_array_sum_arraySum.yaml
 Avg.lean,Clover_avg_ComputeAvg.yaml
 BelowZero.lean,BelowZero_BelowZero.yaml
 BinarySearch.lean,Clover_binary_search_BinarySearch.yaml
+BinarySearch2.lean,Clover_binary_search_BinarySearch.yaml
 BinarySearchDec.lean,Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 2_BinarySearchDec_SearchRecursive.yaml
 BinarySearchTree.lean,BinarySearchTree_tmp_tmp_bn2twp5_bst4copy_insert.yaml
 BubbleSort.lean,Clover_bubble_sort_BubbleSort.yaml
@@ -36,6 +38,7 @@ IsPalindrome.lean,Clover_is_palindrome_IsPalindrome.yaml
 LinearSearch.lean,Clover_linear_search1_LinearSearch.yaml
 LinearSearch1.lean,Clover_linear_search1_LinearSearch.yaml
 LinearSearch2.lean,Clover_linear_search2_LinearSearch.yaml
+ListReverse.lean,Clover_reverse_reverse.yaml
 LongestPalindrome.lean,dafleet_tmp_tmpa2e4kb9v_0001-0050_0005-longest-palindromic-substring_longestPalindrome.yaml
 LongestPrefix.lean,DafnyProjects_tmp_tmp2acw_s4s_longestPrefix_longestPrefix.yaml
 Match.lean,Clover_match_Match.yaml
@@ -48,6 +51,7 @@ Modify2DArray.lean,Clover_modify_2d_array_modify_array_element.yaml
 MultiReturn.lean,Clover_multi_return_MultipleReturns.yaml
 Multiset.lean,Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_InsertionSortMultiset_Sort.yaml
 OnlineMax.lean,Clover_online_max_onlineMax.yaml
+PowerFunction.lean,DafnyProjects_tmp_tmp2acw_s4s_Power_powerDC.yaml
 Quotient.lean,Clover_quotient_Quotient.yaml
 RemoveElement.lean,dafny-synthesis_task_id_610_RemoveElement.yaml
 RemoveFront.lean,Clover_remove_front_remove_front.yaml
@@ -62,6 +66,7 @@ SelectionSortMultiset.lean,Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_SelectionSortMu
 Shuffle.lean,dafny_examples_tmp_tmp8qotd4ez_test_shuffle_swap.yaml
 SlopeSearch.lean,Clover_slope_search_SlopeSearch.yaml
 SumIntsLoop.lean,Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop_SumIntsLoop.yaml
+SwapArithReconstructed.lean,Clover_swap_arith_SwapArithmetic.yaml
 SwapArithmetic.lean,Clover_swap_arith_SwapArithmetic.yaml
 SwapBitvector.lean,Clover_swap_bitvector_SwapBitvectors.yaml
 SwapInArray.lean,Clover_swap_in_array_swap.yaml
@@ -72,4 +77,6 @@ Triple2.lean,Clover_triple2_Triple.yaml
 Triple3.lean,Clover_triple3_Triple.yaml
 Triple4.lean,Clover_triple4_Triple.yaml
 TwoSum.lean,Clover_two_sum_twoSum.yaml
+TwoSum2.lean,Clover_two_sum_twoSum.yaml
+TwoSum3.lean,Clover_two_sum_twoSum.yaml
 UpdateArray.lean,Clover_update_array_UpdateElements.yaml

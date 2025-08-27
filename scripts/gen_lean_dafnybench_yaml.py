@@ -33,6 +33,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LEAN_SRC = ROOT / "lean" / "DafnyBenchSpecs"
 DAFNY_YAML = ROOT / "benchmarks" / "dafny" / "dafnybench" / "yaml-depsontop"
 LEAN_YAML_OUT = ROOT / "benchmarks" / "lean" / "dafnybench" / "yaml-depsontop"
+ALIASES_CSV = ROOT / "scripts" / "lean_dafnybench_aliases.csv"
 
 
 def norm(s: str) -> str:
@@ -85,7 +86,13 @@ def build_yaml_name_index(yaml_dir: Path) -> Dict[str, List[Path]]:
     return idx
 
 
-def find_yaml_match(lean_name: str, yaml_files: List[Path], idx_by_tail: Dict[str, List[Path]]) -> Optional[Path]:
+def find_yaml_match(lean_name: str, yaml_files: List[Path], idx_by_tail: Dict[str, List[Path]], aliases: Dict[str, str]) -> Optional[Path]:
+    # alias wins
+    if lean_name in aliases:
+        alias = aliases[lean_name]
+        ap = next((p for p in yaml_files if p.name == alias), None)
+        if ap is not None:
+            return ap
     key = norm(lean_name)
     cands = list(idx_by_tail.get(key, []))
     if not cands:
@@ -148,13 +155,25 @@ def main() -> None:
     units = [parse_lean_unit(p) for p in sorted(LEAN_SRC.glob("*.lean"))]
     yaml_files = sorted(DAFNY_YAML.glob("*.y*ml"))
     idx_by_tail = build_yaml_name_index(DAFNY_YAML)
+    # load aliases if present
+    aliases: Dict[str, str] = {}
+    if ALIASES_CSV.exists():
+        for line in ALIASES_CSV.read_text(encoding="utf-8").splitlines():
+            line=line.strip()
+            if not line or line.startswith("#"):
+                continue
+            parts=line.split(",")
+            if len(parts)>=2:
+                lean_key=parts[0].strip()
+                yaml_name=parts[1].strip()
+                aliases[lean_key]=yaml_name
 
     LEAN_YAML_OUT.mkdir(parents=True, exist_ok=True)
     mapping_lines = ["lean_file,yaml_name"]
     missing: List[str] = []
 
     for u in units:
-        match = find_yaml_match(u.name, yaml_files, idx_by_tail)
+        match = find_yaml_match(u.name, yaml_files, idx_by_tail, aliases)
         if match is None:
             missing.append(u.name)
             continue

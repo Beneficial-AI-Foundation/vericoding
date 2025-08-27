@@ -1,8 +1,7 @@
 vc-description: |-
-  Two Sum Problem: Given an array of integers and a target value,
-find two indices such that the elements at those indices sum to the target.
-This is based on the LeetCode problem:
-https://leetcode.com/problems/two-sum/
+  Predicate to check if all elements that could form a pair with target
+are already in the map.
+This is used as a loop invariant in the two-sum implementation.
 
 vc-preamble: |-
   
@@ -13,7 +12,7 @@ vc-helpers: |-
 
 vc-spec: |-
   // <vc-spec>
-  -- def twoSum :=
+  -- def InMap :=
   -- theorem twoSum_spec :=
   // </vc-spec>
 
@@ -23,4 +22,4 @@ vc-code: |-
   // </vc-code>
 
 vc-postamble: |-
-  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/TwoSum.lean
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/TwoSum3.lean

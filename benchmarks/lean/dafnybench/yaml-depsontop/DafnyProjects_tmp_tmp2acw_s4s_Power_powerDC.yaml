@@ -1,0 +1,23 @@
+vc-description: |-
+  Power function for specification
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  -- def power :=
+  -- theorem computePower_spec :=
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/PowerFunction.lean
