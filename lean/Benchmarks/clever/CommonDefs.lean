@@ -11,3 +11,4 @@ import Benchmarks.clever.CommonDefs
 -- Re-export common definitions (optional; simple import is sufficient)
 -- open the namespace as needed here, if there was one.
 
+-- shim updated to fix CI on case-sensitive filesystems

@@ -28,8 +28,9 @@ def True_ : Id Bool :=
 theorem True__spec :
     ⦃⌜True⌝⦄
     True_
-    ⦃⇓result => ⌜result = true ∧ 
+    ⦃⇓result => ⌜result = true ∧
                  (∀ b : Bool, result && b = b) ∧
                  (∀ b : Bool, result || b = true) ∧
                  (!result = false)⌝⦄ := by
   sorry
+
