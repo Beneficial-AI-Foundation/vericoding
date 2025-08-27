@@ -93,10 +93,6 @@ vc-spec: |-
       requires y - x > 2
       ensures x < z*z < y
 
-  fn strange()
-      ensures 1 == 2
-  // </vc-spec>
-
 vc-code: |-
   // <vc-code>
   {
