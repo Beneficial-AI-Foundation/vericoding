@@ -50,14 +50,11 @@ safety-report.json
 experiment_results/
 lean_output_*/
 *_impl.lean
-
-# IDE
-.vscode/
-.idea/
+/**/LeanStateSearch/
+lean/Generated
 
 # OS
 .DS_Store
 
-/**/LeanStateSearch/
-
-lean/Generated
+# Verus
+verus-x86-linux/
