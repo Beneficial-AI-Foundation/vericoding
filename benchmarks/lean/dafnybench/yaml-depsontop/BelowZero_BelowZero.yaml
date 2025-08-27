@@ -11,25 +11,19 @@ vc-preamble: |-
   
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
-vc-signature: |-
-  def belowZero :=
+vc-spec: |-
+  // <vc-spec>
+  -- def belowZero :=
+  -- theorem belowZero_spec :=
+  // </vc-spec>
 
-vc-implementation: |-
-  -- <vc-implementation>
-  -- TODO: Provide implementation for belowZero
-  -- </vc-implementation>
-
-vc-condition: |-
-  theorem belowZero_spec :=
-
-vc-proof: |-
-  -- <vc-proof>
-  by
-    sorry
-  -- </vc-proof>
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
 
 vc-postamble: |-
   -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/BelowZero.lean

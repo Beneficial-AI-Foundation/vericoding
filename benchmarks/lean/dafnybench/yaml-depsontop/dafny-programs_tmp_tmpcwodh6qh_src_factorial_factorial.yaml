@@ -5,25 +5,19 @@ vc-preamble: |-
   
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
-vc-signature: |-
-  def factorial :=
+vc-spec: |-
+  // <vc-spec>
+  -- def factorial :=
+  -- theorem iterativeFactorial_spec :=
+  // </vc-spec>
 
-vc-implementation: |-
-  -- <vc-implementation>
-  -- TODO: Provide implementation for factorial
-  -- </vc-implementation>
-
-vc-condition: |-
-  theorem iterativeFactorial_spec :=
-
-vc-proof: |-
-  -- <vc-proof>
-  by
-    sorry
-  -- </vc-proof>
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
 
 vc-postamble: |-
   -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Factorial.lean

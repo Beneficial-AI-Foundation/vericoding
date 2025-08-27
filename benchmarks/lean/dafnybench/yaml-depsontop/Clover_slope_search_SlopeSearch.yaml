@@ -5,25 +5,19 @@ vc-preamble: |-
   
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
-vc-signature: |-
-  def Array2D :=
+vc-spec: |-
+  // <vc-spec>
+  -- def Array2D :=
+  -- theorem slopeSearch_spec :=
+  // </vc-spec>
 
-vc-implementation: |-
-  -- <vc-implementation>
-  -- TODO: Provide implementation for Array2D
-  -- </vc-implementation>
-
-vc-condition: |-
-  theorem slopeSearch_spec :=
-
-vc-proof: |-
-  -- <vc-proof>
-  by
-    sorry
-  -- </vc-proof>
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
 
 vc-postamble: |-
   -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/SlopeSearch.lean

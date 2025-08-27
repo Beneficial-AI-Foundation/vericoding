@@ -8,25 +8,19 @@ vc-preamble: |-
   
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
-vc-signature: |-
-  def quotient :=
+vc-spec: |-
+  // <vc-spec>
+  -- def quotient :=
+  -- theorem quotient_spec :=
+  // </vc-spec>
 
-vc-implementation: |-
-  -- <vc-implementation>
-  -- TODO: Provide implementation for quotient
-  -- </vc-implementation>
-
-vc-condition: |-
-  theorem quotient_spec :=
-
-vc-proof: |-
-  -- <vc-proof>
-  by
-    sorry
-  -- </vc-proof>
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
 
 vc-postamble: |-
   -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Quotient.lean

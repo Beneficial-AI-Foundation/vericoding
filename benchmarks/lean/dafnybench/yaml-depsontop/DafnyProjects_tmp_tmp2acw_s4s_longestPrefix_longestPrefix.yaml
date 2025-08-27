@@ -8,25 +8,19 @@ vc-preamble: |-
   
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
-vc-signature: |-
-  def longestCommonPrefix :=
+vc-spec: |-
+  // <vc-spec>
+  -- def longestCommonPrefix :=
+  -- theorem longestCommonPrefix_spec :=
+  // </vc-spec>
 
-vc-implementation: |-
-  -- <vc-implementation>
-  -- TODO: Provide implementation for longestCommonPrefix
-  -- </vc-implementation>
-
-vc-condition: |-
-  theorem longestCommonPrefix_spec :=
-
-vc-proof: |-
-  -- <vc-proof>
-  by
-    sorry
-  -- </vc-proof>
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
 
 vc-postamble: |-
   -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/LongestPrefix.lean

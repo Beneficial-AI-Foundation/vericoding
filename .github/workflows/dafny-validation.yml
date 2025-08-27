@@ -43,7 +43,7 @@ jobs:
         set -e  # Exit on any error
         
         # Get total count first
-        total_files=$(find benchmarks/vericoding_raw/dafnybench -name "*.yaml" -type f | wc -l)
+        total_files=$(find benchmarks/dafny/dafnybench/yaml-depsontop -name "*.yaml" -type f | wc -l)
         echo "Found $total_files YAML files to process"
         
         # Process each YAML file (robust against spaces in filenames)
@@ -63,10 +63,10 @@ jobs:
           dafny resolve --allow-warnings "$dfy_file"
           
           echo "✓ Successfully validated syntax: $dfy_file"
-        done < <(find benchmarks/vericoding_raw/dafnybench -name "*.yaml" -type f -print0)
+        done < <(find benchmarks/dafny/dafnybench/yaml-depsontop -name "*.yaml" -type f -print0)
         
         if [ $yaml_count -eq 0 ]; then
-          echo "No YAML files found in benchmarks/vericoding_raw/dafnybench"
+          echo "No YAML files found in benchmarks/dafny/dafnybench/yaml-depsontop"
           exit 1
         fi
         
@@ -107,7 +107,7 @@ jobs:
     - name: Convert YAML files and verify with Dafny
       run: |
         # Get total count first
-        total_files=$(find benchmarks/vericoding_raw/dafnybench -name "*.yaml" -type f | wc -l)
+        total_files=$(find benchmarks/dafny/dafnybench/yaml-depsontop -name "*.yaml" -type f | wc -l)
         echo "Found $total_files YAML files to process"
         
         # Track failures
@@ -133,10 +133,10 @@ jobs:
           else
             echo "✓ Successfully verified: $dfy_file"
           fi
-        done < <(find benchmarks/vericoding_raw/dafnybench -name "*.yaml" -type f -print0)
+        done < <(find benchmarks/dafny/dafnybench/yaml-depsontop -name "*.yaml" -type f -print0)
         
         if [ $yaml_count -eq 0 ]; then
-          echo "No YAML files found in benchmarks/vericoding_raw/dafnybench"
+          echo "No YAML files found in benchmarks/dafny/dafnybench/yaml-depsontop"
           exit 1
         fi
         

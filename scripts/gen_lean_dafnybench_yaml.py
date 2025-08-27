@@ -104,6 +104,7 @@ def find_yaml_match(lean_name: str, yaml_files: List[Path], idx_by_tail: Dict[st
 
 
 def make_yaml(unit: LeanUnit) -> str:
+    """Emit YAML matching the Dafny deps-on-top schema (vc-spec/vc-code)."""
     desc = unit.doc.strip() if unit.doc.strip() else f"Lean translation of {unit.name} benchmark."
     def_sig = unit.def_name or unit.name
     thr_sig = unit.theorem_name or f"{unit.name}_spec"
@@ -115,25 +116,19 @@ vc-preamble: |-
   
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
+  // <vc-helpers>
+  // </vc-helpers>
 
-vc-signature: |-
-  def {def_sig} :=
+vc-spec: |-
+  // <vc-spec>
+  -- def {def_sig} :=
+  -- theorem {thr_sig} :=
+  // </vc-spec>
 
-vc-implementation: |-
-  -- <vc-implementation>
-  -- TODO: Provide implementation for {def_sig}
-  -- </vc-implementation>
-
-vc-condition: |-
-  theorem {thr_sig} :=
-
-vc-proof: |-
-  -- <vc-proof>
-  by
-    sorry
-  -- </vc-proof>
+vc-code: |-
+  // <vc-code>
+  {{- Lean implementation and proof go here -}}
+  // </vc-code>
 
 vc-postamble: |-
   -- Source: {unit.path.as_posix()}
@@ -179,4 +174,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
