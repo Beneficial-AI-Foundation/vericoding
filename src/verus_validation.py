@@ -11,6 +11,7 @@ import tempfile
 import shutil
 from pathlib import Path
 from typing import Tuple
+from convert_from_yaml import convert_yaml_to_file
 
 
 class VerusNotFoundError(Exception):
@@ -109,7 +110,7 @@ def create_yaml_without_helpers(yaml_content: str) -> str:
 
 def convert_yaml_to_rust(yaml_path: Path, temp_dir: Path) -> Tuple[bool, Path]:
     """
-    Convert YAML file to Rust using convert_from_yaml.py, output to temp directory.
+    Convert YAML file to Rust using convert_from_yaml functions directly.
     
     Args:
         yaml_path: Path to the YAML file to convert
@@ -126,21 +127,12 @@ def convert_yaml_to_rust(yaml_path: Path, temp_dir: Path) -> Tuple[bool, Path]:
         else:
             temp_yaml = yaml_path
         
-        # Find the project root to run the conversion script
-        current_file = Path(__file__)
-        project_root = current_file.parent.parent
-        
-        result = subprocess.run([
-            "uv", "run", "src/convert_from_yaml.py",
-            str(temp_yaml),
-            "--suffix", "rs"
-        ], capture_output=True, text=True, cwd=project_root)
-        
-        if result.returncode != 0:
-            return False, Path()
-            
-        # The convert script creates the .rs file next to the yaml file
+        # Create the output Rust file path
         temp_rust = temp_yaml.with_suffix('.rs')
+        
+        # Convert directly using the imported function
+        convert_yaml_to_file(temp_yaml, temp_rust)
+        
         return temp_rust.exists(), temp_rust
         
     except Exception as e:
