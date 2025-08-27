@@ -177,6 +177,25 @@ def main():
         if not success and "skipped" not in message.lower():
             print(f"      {message[:100]}{'...' if len(message) > 100 else ''}")
     
+    # Print failing tests summary before final results
+    failing_tests = []
+    
+    # Collect original test failures
+    for filename, success, message in results:
+        if not success:
+            failing_tests.append(f"❌ {filename} (Original): {message}")
+    
+    # Collect no-helpers test failures
+    for filename, success, message in no_helpers_results:
+        if not success and "skipped" not in message.lower():
+            failing_tests.append(f"❌ {filename} (No-helpers): {message}")
+    
+    if failing_tests:
+        print(f"\n💥 Failing Tests:")
+        print("=" * 70)
+        for failure in failing_tests:
+            print(failure)
+    
     print(f"\n🏁 Final Results:")
     print(f"   Original tests  - Passed: {original_passed}, Failed: {original_failed}")
     print(f"   No-helpers tests - Passed: {no_helpers_passed}, Failed: {no_helpers_failed}, Skipped: {no_helpers_skipped}")
