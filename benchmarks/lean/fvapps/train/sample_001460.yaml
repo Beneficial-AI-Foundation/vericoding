@@ -1,0 +1,30 @@
+"vc-description": "Chefina  is  always interested to play with string. But due to\
+  \ exam pressure she has no time to solve a string problem. She wants your help.\
+  \ Can you help her to solve that problem?\nYou are given a string. You have to find\
+  \ out the $Wonder$ $Sum$ of the string. $Wonder$ $Sum$ of a string is defined as\
+  \ the sum of the value of each character of the string. \nThe value of each character\
+  \ means:\n- If the string is started with \"a\" , then the value of each character\
+  \ of the string is like \"a\"=100, \"b\"=101, \"c\"=\"102\" ………\"z\"=125.\n- If\
+  \ the string is started with \"z\" , then the value of each character of the string\
+  \ is like \"a\"=2600, \"b\"=2601, \"c\"=\"2602\" ………\"z\"=2625.\nSince even the\
+  \ $Wonder$ $Sum$ can be large, output $Wonder$ $Sum$ modulo  ($10^9 + 7$).\n\n-----Input:-----\n\
+  - First line will contain $T$, number of testcases. Then the testcases follow. \n\
+  - Each testcase contains of a single line of input, a string $S$ with lower case\
+  \ alphabet \nonly.\n\n-----Output:-----\nFor each testcase, output in a single line\
+  \ integer i.e.  $Wonder$ $Sum$ modulo  ($10^9 + 7$).\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 1000$\n- $1 \\leq |S| \\leq 10^5$\n\n-----Sample Input:-----\n\
+  $2$$cab$\n$sdef$\n\n-----Sample Output:-----\n$903$\n$7630$\n\n-----EXPLANATION:-----\n\
+  i) For the first test case, since the string is started with \"$c$\", so output\
+  \ is ($302$+$300$+$301$)=$903$\nii)For the second test case, since the string is\
+  \ started with \"$s$\", so output is ($1918$+$1903$+$1904$+$1905$)=$7630$"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD := 1000000007\n\ndef calculate_wonder_sum (strings : List\
+  \ String) : List Nat :=\n  sorry\n"
+"vc-theorems": "theorem calculate_wonder_sum_length (strings : List String) :\n  strings\
+  \ ≠ [] →\n  List.length (calculate_wonder_sum strings) = List.length strings :=\n\
+  \  sorry\n\n/--\ninfo: [903, 7630]\n-/\n#guard_msgs in\n#eval calculate_wonder_sum\
+  \ [\"cab\", \"sdef\"]\n\n/--\ninfo: [100]\n-/\n#guard_msgs in\n#eval calculate_wonder_sum\
+  \ [\"a\"]\n\n/--\ninfo: [2625]\n-/\n#guard_msgs in\n#eval calculate_wonder_sum [\"\
+  z\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

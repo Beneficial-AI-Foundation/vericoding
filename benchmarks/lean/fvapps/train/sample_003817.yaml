@@ -1,0 +1,23 @@
+"vc-description": "Given a string of words, you need to find the highest scoring word.\n\
+  \nEach letter of a word scores points according to its position in the alphabet:\
+  \ `a = 1, b = 2, c = 3` etc.\n\nYou need to return the highest scoring word as a\
+  \ string.\n\nIf two words score the same, return the word that appears earliest\
+  \ in the original string.\n\nAll letters will be lowercase and all inputs will be\
+  \ valid."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def high (s : String) : String := sorry\n\ndef wordScore (word\
+  \ : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem high_gives_highest_score_word (text : String) : \n  text ≠\
+  \ \"\" → (∀ c ∈ text.data, c = ' ' ∨ (97 ≤ c.val ∧ c.val ≤ 122)) →\n  let words\
+  \ := text.split (· = ' ')\n  words.length > 0 →\n  ∀ w ∈ words, w ≠ \"\" →\n  let\
+  \ result := high text\n  result ∈ words ∧ \n  ∀ w ∈ words, wordScore result ≥ wordScore\
+  \ w := by\n  sorry\n\n\ntheorem high_single_word (word : String) :\n  word ≠ \"\"\
+  \ →\n  (∀ c ∈ word.data, 97 ≤ c.val ∧ c.val ≤ 122) →\n  high word = word := by\n\
+  \  sorry\n\n\ntheorem high_only_spaces (text : String) :\n  text ≠ \"\" →\n  (∀\
+  \ c ∈ text.data, c = ' ') →\n  ¬∃ result, result = high text := by\n  sorry\n\n\
+  /--\ninfo: 'taxi'\n-/\n#guard_msgs in\n#eval high \"man i need a taxi up to ubud\"\
+  \n\n/--\ninfo: 'volcano'\n-/\n#guard_msgs in\n#eval high \"what time are we climbing\
+  \ up the volcano\"\n\n/--\ninfo: 'semynak'\n-/\n#guard_msgs in\n#eval high \"take\
+  \ me to semynak\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

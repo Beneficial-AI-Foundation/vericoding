@@ -1,0 +1,16 @@
+"vc-description": "Jack really likes his number five: the trick here is that you have\
+  \ to multiply each number by 5 raised to the number of digits of each numbers, so,\
+  \ for example:\n```python\nmultiply(3)==15\nmultiply(10)==250\nmultiply(200)==25000\n\
+  multiply(0)==0\nmultiply(-3)==-15\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def multiply (n : Int) : Int := sorry\n\ntheorem multiply_sign_preservation\
+  \ (n : Int) :\n  (multiply n ≥ 0) = (n ≥ 0) := sorry\n"
+"vc-theorems": "theorem multiply_digit_length_scaling (n : Int) (h : -999999 ≤ n ∧\
+  \ n ≤ 999999) :\n  let digit_count := String.length (toString n.natAbs)\n  multiply\
+  \ n = n * (5 ^ digit_count) := sorry\n\n\ntheorem multiply_single_digit (n : Int)\
+  \ (h : -9 ≤ n ∧ n ≤ 9) : \n  multiply n = n * 5 := sorry\n\n\ntheorem multiply_zero_preservation\
+  \ (n : Int) :\n  n = 0 → multiply n = 0 := sorry\n\n/--\ninfo: 250\n-/\n#guard_msgs\
+  \ in\n#eval multiply 10\n\n/--\ninfo: 25000\n-/\n#guard_msgs in\n#eval multiply\
+  \ 200\n\n/--\ninfo: -10\n-/\n#guard_msgs in\n#eval multiply -2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

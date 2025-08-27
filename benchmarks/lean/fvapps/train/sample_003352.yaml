@@ -1,0 +1,28 @@
+"vc-description": "# Task\n\nWrite a function `deNico`/`de_nico()` that accepts two\
+  \ parameters:\n- `key`/`$key` - string consists of unique letters and digits\n-\
+  \ `message`/`$message` - string with encoded message \n\nand decodes the `message`\
+  \ using the `key`.  \n\nFirst create a numeric key basing on the provided `key`\
+  \ by assigning each letter position in which it is located after setting the letters\
+  \ from `key` in an alphabetical order.\n\nFor example, for the key `crazy` we will\
+  \ get `23154` because of `acryz` (sorted letters from the key).  \nLet's decode\
+  \  `cseerntiofarmit on  ` using our `crazy` key.\n\n```\n1 2 3 4 5\n---------\n\
+  c s e e r\nn t i o f\na r m i t\n  o n   \n```\n\nAfter using the key:\n```\n2 3\
+  \ 1 5 4\n---------\ns e c r e\nt i n f o\nr m a t i\no n\n```\n\n# Notes \n\n- The\
+  \ `message` is never shorter than the `key`.\n- Don't forget to remove trailing\
+  \ whitespace after decoding the message\n\n# Examples\n\nCheck the test cases for\
+  \ more examples.\n\n# Related Kata\n\n[Basic Nico - encode](https://www.codewars.com/kata/5968bb83c307f0bb86000015)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def de_nico (key : String) (msg : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem de_nico_length_bounded (key : String) (msg : String) :\n \
+  \ (de_nico key msg).length ≤ msg.length := by\n  sorry\n\n\ntheorem de_nico_chars_subset\
+  \ (key : String) (msg : String) (c : Char) :\n  c ∈ (de_nico key msg).data → c ∈\
+  \ msg.data := by\n  sorry\n\n\ntheorem de_nico_deterministic (key : String) (msg\
+  \ : String) :\n  de_nico key msg = de_nico key msg := by\n  sorry\n\n\ntheorem de_nico_empty_msg\
+  \ (key : String) :  \n  de_nico key \"\" = \"\" := by\n  sorry\n\n\ntheorem de_nico_no_trailing_spaces\
+  \ (key : String) (msg : String) :\n  String.trimRight (de_nico key msg) = de_nico\
+  \ key msg := by\n  sorry\n\n/--\ninfo: 'secretinformation'\n-/\n#guard_msgs in\n\
+  #eval de_nico \"crazy\" \"cseerntiofarmit on  \"\n\n/--\ninfo: '1234567890'\n-/\n\
+  #guard_msgs in\n#eval de_nico \"ba\" \"2143658709\"\n\n/--\ninfo: 'key'\n-/\n#guard_msgs\
+  \ in\n#eval de_nico \"key\" \"eky\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

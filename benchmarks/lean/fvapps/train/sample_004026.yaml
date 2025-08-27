@@ -1,0 +1,34 @@
+"vc-description": "## Description\n\nYou've been working with a lot of different file\
+  \ types recently as your interests have broadened.\n\nBut what file types are you\
+  \ using the most? With this question in mind we look at the following problem.\n\
+  \nGiven a `List/Array` of Filenames (strings) `files` return a `List/Array of string(s)`\
+  \ contatining the most common extension(s). If there is a tie, return a sorted list\
+  \ of all extensions.\n\n### Important Info:\n\n* Don't forget, you've been working\
+  \ with a lot of different file types, so expect some interesting extensions/file\
+  \ names/lengths in the random tests.\n* Filenames and extensions will only contain\
+  \ letters (case sensitive), and numbers.\n* If a file has multiple extensions (ie:\
+  \ `mysong.mp3.als`) only count the the last extension (`.als` in this case)\n\n\n\
+  ## Examples\n\n```\nfiles = ['Lakey - Better days.mp3', \n         'Wheathan - Superlove.wav',\
+  \ \n         'groovy jam.als', \n         '#4 final mixdown.als', \n         'album\
+  \ cover.ps', \n         'good nights.mp3']\n```\n\nwould return: `['.als', '.mp3']`,\
+  \ as both of the extensions appear two times in files.\n\n```\nfiles = ['Lakey -\
+  \ Better days.mp3', \n         'Fisher - Stop it.mp3', \n         'Fisher - Losing\
+  \ it.mp3', \n         '#4 final mixdown.als', \n         'album cover.ps', \n  \
+  \       'good nights.mp3']\n```\nwould return `['.mp3']`, because it appears more\
+  \ times then any other extension, and no other extension has an equal amount of\
+  \ appearences."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (files : List String) : List String := sorry\n\ntheorem\
+  \ empty_list_gives_empty_result :\n  solve [] = [] := sorry\n"
+"vc-theorems": "theorem single_txt_file_gives_txt_extension :\n  solve [\"test1.txt\"\
+  ] = [\".txt\"] := sorry\n\n\ntheorem multiple_files_same_extension :\n  solve [\"\
+  a.txt\", \"b.txt\", \"c.mp3\"] = [\".txt\"] := sorry\n\n\ntheorem multiple_files_multiple_extensions\
+  \ :\n  solve [\"a.txt\", \"b.txt\", \"c.mp3\", \"d.mp3\"] = [\".mp3\", \".txt\"\
+  ] := sorry\n\n/--\ninfo: ['.als', '.mp3']\n-/\n#guard_msgs in\n#eval solve [\"Lakey\
+  \ - Better days.mp3\", \"Wheathan - Superlove.wav\", \"groovy jam.als\", \"#4 final\
+  \ mixdown.als\", \"album cover.ps\", \"good nights.mp3\"]\n\n/--\ninfo: ['.mp3']\n\
+  -/\n#guard_msgs in\n#eval solve [\"Lakey - Better days.mp3\", \"Fisher - Stop it.mp3\"\
+  , \"Fisher - Losing it.mp3\", \"#4 final mixdown.als\", \"album cover.ps\", \"good\
+  \ nights.mp3\"]\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval solve []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

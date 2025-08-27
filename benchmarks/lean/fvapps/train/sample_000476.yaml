@@ -1,0 +1,18 @@
+"vc-description": "Given a binary string S (a string consisting only of '0' and '1's)\
+  \ and a positive integer N, return true if and only if for every integer X from\
+  \ 1 to N, the binary representation of X is a substring of S.\n \nExample 1:\nInput:\
+  \ S = \"0110\", N = 3\nOutput: true\n\nExample 2:\nInput: S = \"0110\", N = 4\n\
+  Output: false\n\n \nNote:\n\n1 <= S.length <= 1000\n1 <= N <= 10^9"
+"vc-preamble": "import Imports.AllImports\n\ndef bin (n : Nat) : String := sorry\n\
+  def query_string (s : String) (n : Nat) : Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def containsSubstring (s : String) (sub : String) : Bool := sorry\n\
+  \ntheorem query_string_with_all_prefixes (n : Nat) (h : 0 < n ∧ n ≤ 20) : \n  let\
+  \ binary_nums := String.join (List.map bin (List.range n))\n  query_string binary_nums\
+  \ n = true\n  := sorry\n"
+"vc-theorems": "theorem query_string_correct (s : String) (n : Nat) (h : 0 < n ∧ n\
+  \ ≤ 20) :\n  query_string s n = true ↔ \n    ∀ i : Nat, 1 ≤ i ∧ i ≤ n → containsSubstring\
+  \ s (bin i)\n  := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval query_string\
+  \ \"0110\" 3\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval query_string \"0110\"\
+  \ 4\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval query_string \"11011\" 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,33 @@
+"vc-description": "You are given a list of directions in the form of a list:\n\ngoal\
+  \ = [\"N\", \"S\", \"E\", \"W\"]\n\nPretend that each direction counts for 1 step\
+  \ in that particular direction.\n\nYour task is to create a function called directions,\
+  \ that will return a reduced list that will get you to the same point.The order\
+  \ of directions must be returned as N then S then E then W.\n\nIf you get back to\
+  \ beginning, return an empty array."
+"vc-preamble": "import Imports.AllImports\n\ndef Direction.toString : Direction →\
+  \ String\n  | Direction.N => \"N\"\n  | Direction.S => \"S\"\n  | Direction.E =>\
+  \ \"E\"\n  | Direction.W => \"W\"\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Path := List Direction\n\ndef directions (p : Path) : Path\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem directions_preserves_endpoint (p : Path) :\n  let result :=\
+  \ directions p\n  let orig_ns := (p.filter (· = Direction.N)).length - (p.filter\
+  \ (· = Direction.S)).length\n  let orig_ew := (p.filter (· = Direction.E)).length\
+  \ - (p.filter (· = Direction.W)).length\n  let result_ns := (result.filter (· =\
+  \ Direction.N)).length - (result.filter (· = Direction.S)).length  \n  let result_ew\
+  \ := (result.filter (· = Direction.E)).length - (result.filter (· = Direction.W)).length\n\
+  \  orig_ns = result_ns ∧ orig_ew = result_ew :=\nsorry\n\n\ntheorem directions_ordering\
+  \ (p : Path) : \n  let result := directions p\n  let result_str := String.join (result.map\
+  \ Direction.toString)\n  ¬(result_str.any (fun cs => cs.toString = \"SN\")) ∧ \n\
+  \  ¬(result_str.any (fun cs => cs.toString = \"WE\")) := \nsorry\n\n\ntheorem directions_empty_at_origin\
+  \ (p : Path) :\n  let ns_movement := (p.filter (· = Direction.N)).length - (p.filter\
+  \ (· = Direction.S)).length\n  let ew_movement := (p.filter (· = Direction.E)).length\
+  \ - (p.filter (· = Direction.W)).length\n  ns_movement = 0 ∧ ew_movement = 0 → directions\
+  \ p = [] :=\nsorry\n\n\ntheorem directions_output_types (p : Path) :\n  let result\
+  \ := directions p\n  result.all (fun x => match x with\n    | Direction.N => true\n\
+  \    | Direction.S => true\n    | Direction.E => true\n    | Direction.W => true)\
+  \ :=\nsorry\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval directions [\"N\", \"S\"\
+  , \"E\", \"W\"]\n\n/--\ninfo: ['N', 'E']\n-/\n#guard_msgs in\n#eval directions [\"\
+  N\", \"N\", \"E\", \"S\"]\n\n/--\ninfo: ['S', 'W', 'W']\n-/\n#guard_msgs in\n#eval\
+  \ directions [\"S\", \"S\", \"W\", \"W\", \"N\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

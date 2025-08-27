@@ -1,0 +1,36 @@
+"vc-description": "A [Word Square](https://en.wikipedia.org/wiki/Word_square) is a\
+  \ set of words written out in a square grid, such that the same words can be read\
+  \ both horizontally and vertically. The number of words, equal to the number of\
+  \ letters in each word, is known as the *order* of the square.\n\nFor example, this\
+  \ is an *order* `5` square found in the ruins of Herculaneum:\n\n![](https://i.gyazo.com/e226262e3ada421d4323369fb6cf66a6.jpg)\n\
+  \nGiven a string of various uppercase `letters`, check whether a *Word Square* can\
+  \ be formed from it. \n\nNote that you should use each letter from `letters` the\
+  \ exact number of times it occurs in the string. If a *Word Square* can be formed,\
+  \ return `true`, otherwise return `false`.\n\n__Example__\n\n  * For `letters =\
+  \ \"SATORAREPOTENETOPERAROTAS\"`, the output should be\n  `WordSquare(letters) =\
+  \ true`.\n    It is possible to form a *word square* in the example above.\n\n \
+  \ * For `letters = \"AAAAEEEENOOOOPPRRRRSSTTTT\"`, (which is sorted form of `\"\
+  SATORAREPOTENETOPERAROTAS\"`), the output should also be\n  `WordSquare(letters)\
+  \ = true`.\n\n  * For `letters = \"NOTSQUARE\"`, the output should be\n  `WordSquare(letters)\
+  \ = false`.\n  \n__Input/Output__\n\n* [input] string letters\n\n  A string of uppercase\
+  \ English letters.\n  \n  Constraints: `3 ≤ letters.length ≤ 100`.\n\n\n* [output]\
+  \ boolean\n\n  `true`, if a Word Square can be formed;\n  \n  `false`, if a Word\
+  \ Square cannot be formed."
+"vc-preamble": "import Imports.AllImports\n\ndef word_square (s : String) : Bool :=\
+  \ sorry\n\ntheorem non_square_length_strings_are_false {s : String} \n  (h : ∃ n\
+  \ : Nat, n * n ≠ s.length) : \n  word_square s = false := sorry\n\n\ndef countChar\
+  \ (c : Char) (s : List Char) : Nat :=\n  (s.filter (fun x => x = c)).length\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_odd_occurrences (s : String) : Nat :=\n  let chars :=\
+  \ s.toList\n  let counts := chars.map (fun c => countChar c chars)\n  (counts.filter\
+  \ (fun n => n % 2 = 1)).length\n"
+"vc-theorems": "theorem all_same_letter_square_strings_are_valid (n : Nat) :\n  word_square\
+  \ (String.mk (List.replicate (n*n) 'A')) = true := sorry\n\n\ntheorem alternating_letters_within_bounds\
+  \ (n : Nat) (h : n ≥ 2) :\n  let letters := List.replicate (n*n) 'A'\n  word_square\
+  \ (String.mk letters) = true := sorry\n\n\ntheorem odd_count_characters_within_bounds\
+  \ (s : String) :\n  let n := s.length\n  if n*n ≠ s.length then\n    word_square\
+  \ s = false\n  else \n    word_square s = (count_odd_occurrences s ≤ n) := sorry\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval word_square \"SATORAREPOTENETOPERAROTAS\"\
+  \n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval word_square \"NOTSQUARE\"\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval word_square \"CARDAREAREARDART\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

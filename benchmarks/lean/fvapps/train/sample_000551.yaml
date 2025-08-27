@@ -1,0 +1,34 @@
+"vc-description": "Chef likes strings a lot but he likes palindromic strings more.\
+  \ Today, Chef has two strings A and B, each consisting of lower case alphabets.\n\
+  \nChef is eager to know whether it is possible to choose some non empty strings\
+  \ s1 and s2 where s1 is a substring of A, s2 is a substring of B such that s1 +\
+  \ s2 is a palindromic string. Here '+' denotes the concatenation between the strings.\n\
+  Note:\nA string is a palindromic string if it can be read same both forward as well\
+  \ as backward. To know more about palindromes click here.\n\n-----Input-----\n-\
+  \ First line of input contains a single integer T denoting the number of test cases.\n\
+  - For each test case:\n\t\n- First line contains the string A\n- Second line contains\
+  \ the string B.\n\n-----Output-----\nFor each test case, Print \"Yes\" (without\
+  \ quotes) if it possible to choose such strings s1 & s2. Print \"No\" (without quotes)\
+  \ otherwise.\n\n\n-----Constraints-----\n- 1 ≤ T ≤ 10 \n- 1 ≤ |A|, |B| ≤ 1000 \n\
+  \n-----Subtasks-----\n-  Subtask 1: 1 ≤ |A|, |B| ≤ 10 : ( 40 pts )\n-  Subtask 2:\
+  \ 1 ≤ |A|, |B| ≤ 1000 : ( 60 pts )\n\n-----Example-----Input\n3\nabc\nabc\na\nb\n\
+  abba\nbaab\n\nOutput\nYes\nNo\nYes\n\n-----Explanation-----\n- Test 1: One possible\
+  \ way of choosing s1 & s2 is s1 = \"ab\", s2 = \"a\" such that s1 + s2 i.e \"aba\"\
+  \ is a palindrome.\n- Test 2: There is no possible way to choose s1 & s2 such that\
+  \ s1 + s2 is a palindrome.\n- Test 3: You can figure it out yourself."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_palindrome_possible (s1 s2 : String) : String := sorry\n\
+  \ntheorem check_palindrome_possible_symmetric \n  (s1 s2 : String) :\n  check_palindrome_possible\
+  \ s1 s2 = check_palindrome_possible s2 s1 := \nsorry\n"
+"vc-theorems": "theorem check_palindrome_possible_self\n  (s : String) :\n  s ≠ \"\
+  \" → check_palindrome_possible s s = \"Yes\" := \nsorry\n\n\ntheorem check_palindrome_possible_output_valid\n\
+  \  (s1 s2 : String) : \n  check_palindrome_possible s1 s2 = \"Yes\" ∨ check_palindrome_possible\
+  \ s1 s2 = \"No\" :=\nsorry\n\n\ntheorem check_palindrome_possible_common_char\n\
+  \  (s1 s2 : String) :\n  s1 ≠ \"\" →\n  s2 ≠ \"\" →\n  (∃ c, c ∈ s1.data ∧ c ∈ s2.data)\
+  \ →\n  check_palindrome_possible s1 s2 = \"Yes\" :=\nsorry\n\n/--\ninfo: 'Yes'\n\
+  -/\n#guard_msgs in\n#eval check_palindrome_possible \"abc\" \"abc\"\n\n/--\ninfo:\
+  \ 'No'\n-/\n#guard_msgs in\n#eval check_palindrome_possible \"a\" \"b\"\n\n/--\n\
+  info: 'Yes'\n-/\n#guard_msgs in\n#eval check_palindrome_possible \"abba\" \"baab\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

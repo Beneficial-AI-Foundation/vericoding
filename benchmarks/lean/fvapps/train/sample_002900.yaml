@@ -1,0 +1,21 @@
+"vc-description": "### Description:\n\n Remove all exclamation marks from sentence\
+  \ except at the end.\n\n### Examples\n\n```\nremove(\"Hi!\") == \"Hi!\"\nremove(\"\
+  Hi!!!\") == \"Hi!!!\"\nremove(\"!Hi\") == \"Hi\"\nremove(\"!Hi!\") == \"Hi!\"\n\
+  remove(\"Hi! Hi!\") == \"Hi Hi!\"\nremove(\"Hi\") == \"Hi\"\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef remove (s : String) : String := sorry\n\
+  \ndef countChar (s : String) (c : Char) : Nat :=\n  s.data.filter (· = c) |>.length\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def trimRight (s : String) (c : Char) : String :=\n  let rec dropRightWhile\
+  \ (xs : List Char) : List Char :=\n    match xs with\n    | [] => []\n    | _::xs'\
+  \ => \n      match dropRightWhile xs' with\n      | [] => if xs.getLast! = c then\
+  \ [] else xs\n      | ys => xs.head! :: ys\n  String.mk (dropRightWhile s.data)\n"
+"vc-theorems": "theorem remove_preserves_length_of_end_exclamations (s : String) :\n\
+  \  let originalEndExclamations := s.length - (trimRight s '!').length\n  countChar\
+  \ (remove s) '!' = originalEndExclamations := sorry\n\n\ntheorem remove_no_interior_exclamations\
+  \ (s : String) :  \n  let resultWithoutEnd := trimRight (remove s) '!'\n  (resultWithoutEnd.data.filter\
+  \ (· = '!')).length = 0 := sorry\n\n\ntheorem remove_preserves_other_chars (s :\
+  \ String) :\n  (s.replace \"!\" \"\").data = ((remove s).replace \"!\" \"\").data\
+  \ := sorry\n\n/--\ninfo: 'Hi!'\n-/\n#guard_msgs in\n#eval remove \"Hi!\"\n\n/--\n\
+  info: 'Hi!!!'\n-/\n#guard_msgs in\n#eval remove \"Hi!!!\"\n\n/--\ninfo: 'Hi!'\n\
+  -/\n#guard_msgs in\n#eval remove \"!Hi!\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

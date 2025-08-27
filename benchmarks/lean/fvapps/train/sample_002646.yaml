@@ -1,0 +1,23 @@
+"vc-description": "In his publication Liber Abaci Leonardo Bonacci, aka Fibonacci,\
+  \ posed a problem involving a population of idealized rabbits. These rabbits bred\
+  \ at a fixed rate, matured over the course of one month, had unlimited resources,\
+  \ and were immortal.\n\nBeginning with one immature pair of these idealized rabbits\
+  \ that produce b pairs of offspring at the end of each month. Create a function\
+  \ that determines the number of pair of mature rabbits after n months.\n\nTo illustrate\
+  \ the problem, consider the following example:\n\n```python\nfib_rabbits(5, 3) returns\
+  \ 19\n```\n\n\n\n\nMonth\nImmature Pairs\nAdult Pairs\n\n\n\n\n0\n1\n0\n\n\n1\n\
+  0\n1\n\n\n2\n3\n1\n\n\n3\n3\n4\n\n\n4\n12\n7\n\n\n5\n21\n19\n\n\n\n            \
+  \                    \n        \nHint: any Fibonacci number can be computed using\
+  \ the following equation Fn = F(n-1) + F(n-2)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def fib_rabbits (n : Nat) (b : Nat) : Nat := sorry\n\ntheorem fib_rabbits_nonnegative\
+  \ (n : Nat) (b : Nat) (h : b > 0) :\n  fib_rabbits n b ≥ 0 := sorry\n"
+"vc-theorems": "theorem fib_rabbits_monotone (n : Nat) (b : Nat) (h1 : b > 0) (h2\
+  \ : n > 2) :\n  fib_rabbits n b ≥ fib_rabbits (n-1) b := sorry\n\n\ntheorem fib_rabbits_bound\
+  \ (n : Nat) (b : Nat) (h1 : b > 0) (h2 : n > 1) :\n  fib_rabbits n b ≤ fib_rabbits\
+  \ (n-1) b * b + fib_rabbits (n-2) b := sorry \n\n\ntheorem fib_rabbits_zero (b :\
+  \ Nat) (h : b > 0) :\n  fib_rabbits 0 b = 0 := sorry\n\n/--\ninfo: 19\n-/\n#guard_msgs\
+  \ in\n#eval fib_rabbits 5 3\n\n/--\ninfo: 40\n-/\n#guard_msgs in\n#eval fib_rabbits\
+  \ 6 3\n\n/--\ninfo: 201\n-/\n#guard_msgs in\n#eval fib_rabbits 4 100\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

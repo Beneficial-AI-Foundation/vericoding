@@ -1,0 +1,37 @@
+"vc-description": "John Doe started thinking about graphs. After some thought he decided\
+  \ that he wants to paint an undirected graph, containing exactly k cycles of length\
+  \ 3. \n\nA cycle of length 3 is an unordered group of three distinct graph vertices\
+  \ a, b and c, such that each pair of them is connected by a graph edge. \n\nJohn\
+  \ has been painting for long, but he has not been a success. Help him find such\
+  \ graph. Note that the number of vertices there shouldn't exceed 100, or else John\
+  \ will have problems painting it.\n\n\n-----Input-----\n\nA single line contains\
+  \ an integer k (1 ≤ k ≤ 10^5) — the number of cycles of length 3 in the required\
+  \ graph.\n\n\n-----Output-----\n\nIn the first line print integer n (3 ≤ n ≤ 100)\
+  \ — the number of vertices in the found graph. In each of next n lines print n characters\
+  \ \"0\" and \"1\": the i-th character of the j-th line should equal \"0\", if vertices\
+  \ i and j do not have an edge between them, otherwise it should equal \"1\". Note\
+  \ that as the required graph is undirected, the i-th character of the j-th line\
+  \ must equal the j-th character of the i-th line. The graph shouldn't contain self-loops,\
+  \ so the i-th character of the i-th line must equal \"0\" for all i.\n\n\n-----Examples-----\n\
+  Input\n1\n\nOutput\n3\n011\n101\n110\n\nInput\n10\n\nOutput\n5\n01111\n10111\n11011\n\
+  11101\n11110"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def generateGraphWithTriangleCycles (k : Nat) : Nat × List String\
+  \ := sorry\n\ndef countTriangles (size : Nat) (matrix : List String) : Nat := sorry\
+  \ \n"
+"vc-theorems": "theorem triangle_count_matches_input (k : Nat) (h : k > 0) :\n  let\
+  \ (size, matrix) := generateGraphWithTriangleCycles k\n  countTriangles size matrix\
+  \ = k := sorry\n\n\ntheorem valid_matrix_dimensions (k : Nat) (h : k > 0) :\n  let\
+  \ (size, matrix) := generateGraphWithTriangleCycles k\n  matrix.length = size ∧\
+  \ \n  ∀ row ∈ matrix, row.length = size := sorry\n\n\ntheorem matrix_is_symmetric\
+  \ (k : Nat) (h : k > 0) :\n  let (size, matrix) := generateGraphWithTriangleCycles\
+  \ k\n  ∀ i j, i < size → j < size →\n    (do \n      let row ← matrix.get? i\n \
+  \     row.data.get? j) = \n    (do\n      let row ← matrix.get? j \n      row.data.get?\
+  \ i) := sorry\n\n\ntheorem diagonal_is_zero (k : Nat) (h : k > 0) :\n  let (size,\
+  \ matrix) := generateGraphWithTriangleCycles k\n  ∀ i, i < size →\n    (do\n   \
+  \   let row ← matrix.get? i\n      row.data.get? i) = some '0' := sorry\n\n\ntheorem\
+  \ contains_only_zeros_and_ones (k : Nat) (h : k > 0) :\n  let (size, matrix) :=\
+  \ generateGraphWithTriangleCycles k\n  ∀ row ∈ matrix, ∀ c ∈ row.data, c = '0' ∨\
+  \ c = '1' := sorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

@@ -1,0 +1,25 @@
+"vc-description": "Chef has an array of N integers. He wants to play a special game.\
+  \ In this game he needs to make all the integers in the array greater than or equal\
+  \ to 0. \nChef can use two types of operations. The first type is to  increase all\
+  \ the integers of the given array by 1, but it costs X coins. The operation of the\
+  \ second type is to add 1 to only one integer of the given array and to use this\
+  \ operation you need to pay 1 coin. You need to calculate the minimal cost to win\
+  \ this game (to make all integers greater than or equal to 0)  \n\n-----Input-----\n\
+  \nThe first line of the input contains an integer N denoting the number of elements\
+  \ in the given array. The second line contains N space-separated integers A1, A2,\
+  \ ..., AN denoting the given array. The third line contains number X - cost of the\
+  \ first type operation. \n\n\n-----Output-----\nFor each test case, output a single\
+  \ line containing minimal cost required to make all the integers greater than or\
+  \ equal to zero.\n\n-----Constraints-----\n\n- 1 ≤ N ≤ 105\n- -109 ≤ Ai ≤  109 \n\
+  - 0 ≤ X  ≤ 109\n\n-----Example-----\nInput:\n3\n-1 -2 -3\n2\n\nOutput:\n5\n\n-----Explanation-----\n\
+  Example case 1: Use the first type operation twice and the second type once."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_min_cost (n: Nat) (arr: List Int) (x: Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem find_min_cost_nonnegative (n: Nat) (arr: List Int) (x: Nat)\
+  \ :\n  find_min_cost n arr x ≥ 0 :=\n  sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n\
+  #eval find_min_cost 3 [-1, -2, -3] 2\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval\
+  \ find_min_cost 4 [-1, 0, 2, -3] 1\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_min_cost\
+  \ 2 [1, 2] 5\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

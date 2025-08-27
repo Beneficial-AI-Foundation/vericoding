@@ -1,0 +1,26 @@
+"vc-description": "Mr. E Ven only likes even length words.\nPlease create a translator\
+  \ so that he doesn't have to hear those pesky odd length words.\nFor some reason\
+  \ he also hates punctuation, he likes his sentences to flow.\n\nYour translator\
+  \ should take in a string and output it with all odd length words having an extra\
+  \ letter (the last letter in the word). It should also remove all punctuation (.,?!)\
+  \ as well as any underscores (_).\n\n\"How did we end up here? We go?\"\ntranslated\
+  \ becomes-> \n\"Howw didd we endd up here We go\""
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def evenize_word (word : String) : String := sorry\n\ndef evenator\
+  \ (s : String) : String := sorry\n"
+"vc-theorems": "theorem evenize_word_properties (word : String) (h : word.length >\
+  \ 0) : \n  let result := evenize_word word\n  (result.length % 2 = 0) ∧ \n  (result.startsWith\
+  \ word) ∧\n  (word.length % 2 = 1 → result = word ++ word.back.toString) ∧\n  (word.length\
+  \ % 2 = 0 → result = word) := sorry\n\n\ntheorem evenator_properties (words : List\
+  \ String) :\n  let input_string := String.join words\n  let result := evenator input_string\n\
+  \  let result_words := result.split (· = ' ')\n  (∀ w ∈ result_words, w.length %\
+  \ 2 = 0) ∧\n  (∀ c ∈ result.data, c.isAlphanum ∨ c.isWhitespace) ∧\n  (let input_alnum_words\
+  \ := (input_string.split (· = ' ')).filter (fun w => ∃ c ∈ w.data, c.isAlphanum)\n\
+  \   result_words.length = input_alnum_words.length) := sorry\n\n\ntheorem evenator_empty_and_whitespace\
+  \ (s : String) \n  (h : ∀ c ∈ s.data, ¬c.isAlpha ∧ ¬c.isDigit) :\n  evenator s =\
+  \ \"\" := sorry\n\n/--\ninfo: 'II gott aa hole in 11'\n-/\n#guard_msgs in\n#eval\
+  \ evenator \"I got a hole in 1!\"\n\n/--\ninfo: 'hi howw aree youu Byee'\n-/\n#guard_msgs\
+  \ in\n#eval evenator test2\n\n/--\ninfo: 'underr thee seAA'\n-/\n#guard_msgs in\n\
+  #eval evenator test3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,31 @@
+"vc-description": "You receive the name of a city as a string, and you need to return\
+  \ a string that shows how many times each letter shows up in the string by using\
+  \ an asterisk (`*`).\n\nFor example:\n\n```\n\"Chicago\"  -->  \"c:**,h:*,i:*,a:*,g:*,o:*\"\
+  \n```\n\nAs you can see, the letter `c` is shown only once, but with 2 asterisks.\n\
+  \nThe return string should include **only the letters** (not the dashes, spaces,\
+  \ apostrophes, etc). There should be no spaces in the output, and the different\
+  \ letters are separated by a comma (`,`) as seen in the example above.\n\nNote that\
+  \ the return string must list the letters in order of their first appearence in\
+  \ the original string.\n\nMore examples:\n```\n\"Bangkok\"    -->  \"b:*,a:*,n:*,g:*,k:**,o:*\"\
+  \n\"Las Vegas\"  -->  \"l:*,a:**,s:**,v:*,e:*,g:*\"\n```\n\nHave fun! ;)"
+"vc-preamble": "import Imports.AllImports\n\ndef get_strings (s : String) : String\
+  \ := sorry\n\ndef is_alpha (c : Char) : Bool := sorry\n\ndef to_lower (c : Char)\
+  \ : Char := sorry\n\nstructure SegmentInfo where\n  letter : Char\n  stars : String\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def parse_segment (s : String) : Option SegmentInfo := sorry\n\n\
+  theorem get_strings_format_valid (s : String) (h : s ≠ \"\") :\n  let result :=\
+  \ get_strings s\n  let segments := result.splitOn \",\"\n  ∀ part ∈ segments,\n\
+  \  part ≠ \"\" →\n  match parse_segment part with\n  | some info => \n    is_alpha\
+  \ info.letter ∧ \n    ∀ c ∈ info.stars.data, c = '*'\n  | none => False := sorry\n"
+"vc-theorems": "theorem get_strings_count_matches_freq (s : String) (h : s ≠ \"\"\
+  ) :\n  let result := get_strings s\n  let segments := result.splitOn \",\" |>.filter\
+  \ (·≠ \"\")\n  ∀ seg ∈ segments,\n  match parse_segment seg with\n  | some info\
+  \ =>\n    let count := s.data.filter (fun c => to_lower c = to_lower info.letter)\
+  \ |>.length\n    info.stars.length = count\n  | none => False := sorry\n\n\ntheorem\
+  \ get_strings_empty :\n  get_strings \"\" = \"\" := sorry\n\n\ntheorem get_strings_example\
+  \ :\n  get_strings \"Chicago\" = \"c:**,h:*,i:*,a:*,g:*,o:*\" := sorry\n\n/--\n\
+  info: 'c:**,h:*,i:*,a:*,g:*,o:*'\n-/\n#guard_msgs in\n#eval get_strings \"Chicago\"\
+  \n\n/--\ninfo: 'b:*,a:*,n:*,g:*,k:**,o:*'\n-/\n#guard_msgs in\n#eval get_strings\
+  \ \"Bangkok\"\n\n/--\ninfo: 'l:*,a:**,s:**,v:*,e:*,g:*'\n-/\n#guard_msgs in\n#eval\
+  \ get_strings \"Las Vegas\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

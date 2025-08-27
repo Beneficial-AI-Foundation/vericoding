@@ -1,0 +1,40 @@
+"vc-description": "You probably know that the \"mode\" of a set of data is the data\
+  \ point that appears most frequently. Looking at the characters that make up the\
+  \ string `\"sarsaparilla\"` we can see that the letter `\"a\"` appears four times,\
+  \ more than any other letter, so the mode of `\"sarsaparilla\"` is `\"a\"`.\n\n\
+  But do you know what happens when two or more data points occur the most? For example,\
+  \ what is the mode of the letters in `\"tomato\"`? Both `\"t\"` and `\"o\"` seem\
+  \ to be tied for appearing most frequently.\n\nTurns out that a set of data can,\
+  \ in fact, have multiple modes, so `\"tomato\"` has two modes: `\"t\"` and `\"o\"\
+  `. It's important to note, though, that if *all* data appears the same number of\
+  \ times there is no mode. So `\"cat\"`, `\"redder\"`, and `[1, 2, 3, 4, 5]` do not\
+  \ have a mode.\n\nYour job is to write a function `modes()` that will accept one\
+  \ argument `data` that is a sequence like a string or a list of numbers and return\
+  \ a sorted list containing the mode(s) of the input sequence. If data does not contain\
+  \ a mode you should return an empty list.\n\nFor example:\n\n```python\n>>> modes(\"\
+  tomato\")\n[\"o\", \"t\"]\n>>> modes([1, 3, 3, 7])\n[3]\n>>> modes([\"redder\"])\n\
+  []\n```\n\nYou can trust that your input data will always be a sequence and will\
+  \ always contain orderable types (no inputs like `[1, 2, 2, \"a\", \"b\", \"b\"\
+  ]`)."
+"vc-preamble": "import Imports.AllImports\n\ndef count {α : Type} [BEq α] (x : α)\
+  \ (xs : List α) : Nat :=\n  xs.filter (· == x) |>.length\n\n/-- Test if list is\
+  \ sorted -/\n\ndef IsSorted {α : Type} [LE α] : List α → Prop\n  | [] => True\n\
+  \  | [_] => True\n  | x :: y :: xs => x ≤ y ∧ IsSorted (y :: xs)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def modes {α : Type} [Ord α] [BEq α] [LE α] (xs : List α) : List\
+  \ α := sorry\n\ntheorem modes_list_sorted {α : Type} [Ord α] [BEq α] [LE α] (xs\
+  \ : List α) (h : xs ≠ []) :\n  IsSorted (modes xs) := sorry\n"
+"vc-theorems": "theorem modes_elements_in_input {α : Type} [Ord α] [BEq α] [LE α]\
+  \ (xs : List α) (x : α) :\n  x ∈ modes xs → x ∈ xs := sorry\n\n\ntheorem modes_counts_equal\
+  \ {α : Type} [Ord α] [BEq α] [LE α] (xs : List α) (h : modes xs ≠ []) :\n  ∀ (x\
+  \ y : α), x ∈ modes xs → y ∈ modes xs → count x xs = count y xs := sorry\n\n\ntheorem\
+  \ modes_is_max_count {α : Type} [Ord α] [BEq α] [LE α] (xs : List α) (h : modes\
+  \ xs ≠ []) :\n  ∀ (x : α), x ∈ modes xs → ∀ (y : α), y ∈ xs → count x xs ≥ count\
+  \ y xs := sorry\n\n\ntheorem modes_not_min_count {α : Type} [Ord α] [BEq α] [LE\
+  \ α] (xs : List α) (h₁ : modes xs ≠ []) (h₂ : xs ≠ []) :\n  ∀ (x : α), x ∈ modes\
+  \ xs → ∃ (y : α), y ∈ xs ∧ count x xs > count y xs := sorry\n\n\ntheorem modes_string_length\
+  \ (s : String) (h : s.length > 0) :\n  ∀ (x : Char), x ∈ modes s.data → true :=\
+  \ sorry\n\n/--\ninfo: ['o', 't']\n-/\n#guard_msgs in\n#eval modes \"tomato\"\n\n\
+  /--\ninfo: [3]\n-/\n#guard_msgs in\n#eval modes [1, 3, 3, 7]\n\n/--\ninfo: []\n\
+  -/\n#guard_msgs in\n#eval modes \"redder\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

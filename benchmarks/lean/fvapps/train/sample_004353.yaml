@@ -1,0 +1,37 @@
+"vc-description": "# Task\n In the Land Of Chess, bishops don't really like each other.\
+  \ In fact, when two bishops happen to stand on the same diagonal, they immediately\
+  \ rush towards the opposite ends of that same diagonal.\n\n Given the initial positions\
+  \ (in chess notation) of two bishops, `bishop1` and `bishop2`, calculate their future\
+  \ positions. Keep in mind that bishops won't move unless they see each other along\
+  \ the same diagonal.\n\n# Example\n\n For `bishop1 = \"d7\" and bishop2 = \"f5\"\
+  `, the output should be `[\"c8\", \"h3\"]`.\n\n ![](https://codefightsuserpics.s3.amazonaws.com/tasks/bishopDiagonal/img/ex_1.jpg?_tm=1473766087137)\n\
+  \n For `bishop1 = \"d8\" and bishop2 = \"b5\"`, the output should be `[\"b5\", \"\
+  d8\"]`.\n\n The bishops don't belong to the same diagonal, so they don't move.\n\
+  \n ![](https://codefightsuserpics.s3.amazonaws.com/tasks/bishopDiagonal/img/ex_2.jpg?_tm=1473766087425)\n\
+  \n# Input/Output\n\n\n - `[input]` string `bishop1`\n\n    Coordinates of the first\
+  \ bishop in chess notation.\n\n\n - `[input]` string `bishop2`\n\n    Coordinates\
+  \ of the second bishop in the same notation.\n\n\n - `[output]` a string array\n\
+  \n    Coordinates of the bishops in lexicographical order after they check the diagonals\
+  \ they stand on."
+"vc-preamble": "import Imports.AllImports\n\ndef chars := ['a', 'b', 'c', 'd', 'e',\
+  \ 'f', 'g', 'h']\ndef digits := ['1', '2', '3', '4', '5', '6', '7', '8']\n\nstructure\
+  \ Square where\n  file : Char\n  rank : Char\n  h_file : file ∈ chars\n  h_rank\
+  \ : rank ∈ digits\n\ninstance : Ord Square where\n  compare a b := \n    match compare\
+  \ a.file b.file with\n    | .eq => compare a.rank b.rank\n    | c => c\n\ninstance\
+  \ : LE Square where\n  le a b := compare a b ≠ .gt\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def bishop_diagonal (sq1 sq2 : Square) : List Square := sorry\n\
+  \ntheorem bishop_diagonal_output_format {sq1 sq2 : Square} :\n  let result := bishop_diagonal\
+  \ sq1 sq2\n  List.length result = 2 ∧ \n  (∀ sq ∈ result, sq.file ∈ chars ∧ sq.rank\
+  \ ∈ digits) ∧\n  List.Pairwise (. ≤ .) result := sorry\n"
+"vc-theorems": "theorem bishop_diagonal_same_square {sq : Square} :\n  bishop_diagonal\
+  \ sq sq = [sq, sq] := sorry \n\n\ntheorem bishop_diagonal_symmetry {sq1 sq2 : Square}\
+  \ :\n  bishop_diagonal sq1 sq2 = bishop_diagonal sq2 sq1 := sorry\n\n\ntheorem bishop_diagonal_bounds\
+  \ {sq1 sq2 : Square} :\n  let result := bishop_diagonal sq1 sq2\n  ∀ sq ∈ result,\
+  \ \n    0 ≤ (Char.toNat sq.file - Char.toNat 'a') ∧ \n    (Char.toNat sq.file -\
+  \ Char.toNat 'a') ≤ 7 ∧\n    0 ≤ (Char.toNat sq.rank - Char.toNat '1') ∧\n    (Char.toNat\
+  \ sq.rank - Char.toNat '1') ≤ 7 := sorry\n\n/--\ninfo: ['c8', 'h3']\n-/\n#guard_msgs\
+  \ in\n#eval bishop_diagonal \"d7\" \"f5\"\n\n/--\ninfo: ['b5', 'd8']\n-/\n#guard_msgs\
+  \ in\n#eval bishop_diagonal \"d8\" \"b5\"\n\n/--\ninfo: ['a1', 'h8']\n-/\n#guard_msgs\
+  \ in\n#eval bishop_diagonal \"a1\" \"h8\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

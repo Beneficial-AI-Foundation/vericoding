@@ -1,0 +1,16 @@
+"vc-description": "Very simple, given a number, find its opposite.\n\nExamples:\n\
+  ```\n1: -1\n14: -14\n-34: 34\n```\n\n~~~if:sql\nYou will be given a table: `opposite`,\
+  \ with a column: `number`. Return a table with a column: `res`.\n~~~"
+"vc-preamble": "import Imports.AllImports\n\ndef opposite (x : Int) : Int := sorry\n\
+  \ntheorem double_negative_int (x : Int) :\n  opposite (opposite x) = x := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def opposite_real (x : Float) : Float := sorry \n\ntheorem double_negative_real\
+  \ (x : Float) :\n  opposite_real (opposite_real x) = x := sorry\n"
+"vc-theorems": "theorem zero_is_self_opposite :\n  opposite 0 = 0 := sorry\n\n\ntheorem\
+  \ nonzero_not_self_opposite (x : Int) :\n  x ≠ 0 → opposite x ≠ x := sorry\n\n\n\
+  theorem sum_with_opposite_int (x : Int) :\n  x + opposite x = 0 := sorry\n\n/--\
+  \ Same theorems for real numbers -/\n\n\ntheorem sum_with_opposite_real (x : Float)\
+  \ :\n  x + opposite_real x = 0 := sorry\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval\
+  \ opposite 1\n\n/--\ninfo: 34\n-/\n#guard_msgs in\n#eval opposite -34\n\n/--\ninfo:\
+  \ 0\n-/\n#guard_msgs in\n#eval opposite 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

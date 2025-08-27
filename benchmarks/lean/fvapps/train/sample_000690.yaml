@@ -1,0 +1,28 @@
+"vc-description": "$Gogi$, $Tapu$ and $Sonu$ are the elite members of $Tapu$ $Sena$.\
+  \ $Gogi$ is always stoned and asks absurd questions, But this time he asked a question\
+  \ which seems to be very serious and interesting. $Tapu$ wants to solve this question\
+  \ to impress $Sonu$. He  gave an array of length N to $Tapu$, $Tapu$ can perform\
+  \ the following operations exactly once:\n- Remove any subarray from the given array\
+  \ given the resulting array formed after the removal is non-empty.    \n- Reverse\
+  \ the whole array.\nRemember you can’t shuffle the elements of the array.\nTapu\
+  \ needs to find out the maximum possible GCD of all the numbers in the array after\
+  \ applying the given operations exactly once. Tapu is very weak at programming,\
+  \ he wants you to solve this problem so that he can impress $Sonu$.\n\n-----Input:-----\n\
+  - The first line contains $T$, the number of test cases.\n- For each test case\n\
+  -FIrst line contains $N$.\n- Last line contains $N$ numbers of the array. \n\n-----Output:-----\n\
+  A single integer in a new line, maximum possible GCD. \n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 10^2$\n- $1 \\leq N \\leq 10^4$\n- $1 \\leq a[i] \\leq 10^9$\n\
+  \nSummation of N for all testcases is less than $10^6$ \n\n-----Sample Input 1:-----\n\
+  1\n1\n2\n\n-----Sample Output 1:-----\n2"
+"vc-preamble": "import Imports.AllImports\n\ndef solve (n : Nat) (arr : List Nat)\
+  \ : Nat := \n  sorry\n\n\ndef find_max_gcd (arr : List Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def gcd_of_list (numbers : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem solve_returns_valid : ∀ (n : Nat) (arr : List Nat),\n  arr\
+  \ ≠ [] → solve n arr = arr.head! ∨ solve n arr = arr.getLast! :=\nsorry\n\n\ntheorem\
+  \ solve_optimality : ∀ (n : Nat) (arr : List Nat),\n  arr ≠ [] → \n  (arr.length\
+  \ = 1 → solve n arr = arr.head!) ∧\n  (arr.length > 1 → solve n arr ≥ arr.head!\
+  \ ∧ solve n arr ≥ arr.getLast!) :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval solve 1 [2]\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval solve 3 [6, 9, 3]\n\
+  \n/--\ninfo: 36\n-/\n#guard_msgs in\n#eval solve 4 [12, 18, 24, 36]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

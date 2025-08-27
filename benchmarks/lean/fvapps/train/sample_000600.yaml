@@ -1,0 +1,44 @@
+"vc-description": "We all know that Share market is place where drastic change occurs\
+  \ within moments. So we have one Stockholder, Isabella, who wants to maximize her\
+  \ profit by selling her shares. She has $N$ shares of a Doofenshmirtz Corporation\
+  \ which is represented by $N$ different lines where each line contains two space\
+  \ separated integers $a_i$ , $b_i$ corresponding to initial and final values of\
+  \ the share prize. Isabella can sell any number of shares. But, she will sell those\
+  \ shares only if the following condition is satisfied - \n- for any pair $(i,j)$\
+  \ of shares that she choses to sell, $a_i \\leq a_j$  and $b_i < b_j$ must be satisfied.\
+  \ \nYou need to tell Isabella the maximum number of Shares she can sell.\n\n-----Input:-----\n\
+  - First line will contain $T$, number of test cases. \n- Each test case has the\
+  \ following format:\n- First line of each test case contain single integer $N$,\
+  \ the number of shares of Isabella.  \n- Next $N$ lines of each test case contain\
+  \ two space separated integers $a_i$, $b_i$ (initial and final value of share prize\
+  \ respectively) for each $1 \\leq i \\leq N$.\n\n-----Output:-----\nFor each test\
+  \ case output a single integer: the maximum number of shares that can be sold by\
+  \ Isabella.\n\n-----Constraints-----\n- $1 \\leq T \\leq 5$\n- $1 \\leq N \\leq\
+  \ 10^5$\n- $1 \\leq a_i , b_i \\leq 10^9 , for  each $1$ \\leq $i$ \\leq $N \n\n\
+  -----Sample Input:-----\n$1$\n$4$ \n$1$ $2$\n$4$ $3$\n$3$ $5$ \n$2$ $4$ \n\n-----Sample\
+  \ Output:-----\n$3$   \n\n-----Explanation:-----\nHere, Isabella decided to sell\
+  \ share 1, share 3 and share 4 as any two pair of \nchosen share hold the given\
+  \ condition."
+"vc-preamble": "import Imports.AllImports\n\ndef find_max_shares_to_sell (shares:\
+  \ List Share) : Nat :=\n  sorry\n\n\ndef is_unique_shares (shares: List Share) :\
+  \ Bool :=\n  sorry\n\n\ndef is_strictly_increasing (l: List Nat) : Bool :=\n  match\
+  \ l with\n  | [] => true\n  | [_] => true\n  | x :: y :: xs => x < y && is_strictly_increasing\
+  \ (y :: xs)\n\n\ndef is_strictly_decreasing (l: List Nat) : Bool :=\n  match l with\n\
+  \  | [] => true\n  | [_] => true\n  | x :: y :: xs => x > y && is_strictly_decreasing\
+  \ (y :: xs)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sorted_shares (shares: List Share) : List Share :=\n  sorry\n"
+"vc-theorems": "theorem max_shares_bounds {shares: List Share} (h: shares ≠ []) :\n\
+  \  1 ≤ find_max_shares_to_sell shares ∧ find_max_shares_to_sell shares ≤ shares.length\
+  \ :=\nsorry\n\n\ntheorem max_shares_sort_invariant (shares: List Share) :\n  find_max_shares_to_sell\
+  \ shares = find_max_shares_to_sell (sorted_shares shares) :=\nsorry\n\n\ntheorem\
+  \ strictly_increasing_max_shares {shares: List Share} (h1: shares ≠ []) \n  (h2:\
+  \ is_strictly_increasing (shares.map Share.value)) :\n  find_max_shares_to_sell\
+  \ (sorted_shares shares) = shares.length :=\nsorry\n\n\ntheorem strictly_decreasing_max_shares\
+  \ {shares: List Share} (h1: shares ≠ [])\n  (h2: is_strictly_decreasing (shares.map\
+  \ Share.value)) :\n  find_max_shares_to_sell (sorted_shares shares) = 1 :=\nsorry\n\
+  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_max_shares_to_sell [[1, 2], [4, 3],\
+  \ [3, 5], [2, 4]]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_max_shares_to_sell\
+  \ [[1, 2], [2, 3], [3, 4]]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_max_shares_to_sell\
+  \ [[5, 1], [4, 2], [3, 3], [2, 4], [1, 5]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

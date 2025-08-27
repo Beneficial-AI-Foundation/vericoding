@@ -1,0 +1,30 @@
+"vc-description": "Given an array (or list or vector) of arrays (or, guess what, lists\
+  \ or vectors) of integers, your goal is to return the sum of a specific set of numbers,\
+  \ starting with elements whose position is equal to the main array length and going\
+  \ down by one at each step.\n\nSay for example the parent array (etc, etc) has 3\
+  \ sub-arrays inside: you should consider the third  element of the first sub-array,\
+  \ the second of the second array and the first element in the third one: `[[3, 2,\
+  \ 1, 0], [4, 6, 5, 3, 2], [9, 8, 7, 4]]` would have you considering `1` for `[3,\
+  \ 2, 1, 0]`, `6` for `[4, 6, 5, 3, 2]` and `9` for `[9, 8, 7, 4]`, which sums up\
+  \ to `16`.\n\nOne small note is that not always each sub-array will have enough\
+  \ elements, in which case you should then use a default value (if provided) or `0`\
+  \ (if not provided), as shown in the test cases."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def elements_sum (arr : List (List Int)) (default : Int := 0) :\
+  \ Int := sorry\n\ntheorem elements_sum_with_default \n  (arr : List (List Int))\
+  \ (default : Int) :\n  elements_sum arr default = \n  let reversed := arr.reverse\n\
+  \  (List.range reversed.length).foldl\n    (fun sum i => sum + \n      match reversed.get?\
+  \ i with\n      | some row => match row.get? i with\n                   | some x\
+  \ => x\n                   | none => default\n      | none => default) 0\n  := sorry\n"
+"vc-theorems": "theorem elements_sum_type (arr : List (List Int)) :\n  ∃ (n : Int),\
+  \ elements_sum arr = n := sorry\n\n\ntheorem elements_sum_nonempty\n  (arr : List\
+  \ (List Int))\n  (h : ∀ l ∈ arr, l.length > 0) :\n  elements_sum arr = \n  let reversed\
+  \ := arr.reverse\n  (List.range reversed.length).foldl\n    (fun sum i => sum +\
+  \ \n      match reversed.get? i with\n      | some row => match row.get? i with\n\
+  \                   | some x => x\n                   | none => 0\n      | none\
+  \ => 0) 0\n  := sorry\n\n/--\ninfo: 16\n-/\n#guard_msgs in\n#eval elements_sum [[3,\
+  \ 2, 1, 0], [4, 6, 5, 3, 2], [9, 8, 7, 4]]\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n\
+  #eval elements_sum [[3], [4, 6, 5, 3, 2], [9, 8, 7, 4]]\n\n/--\ninfo: 7\n-/\n#guard_msgs\
+  \ in\n#eval elements_sum [[3, 2, 1, 0], [4, 6, 5, 3, 2], []]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

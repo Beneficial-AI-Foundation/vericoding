@@ -1,0 +1,69 @@
+"vc-description": "You might have heard about our new goodie distribution program\
+  \ aka the \"Laddu Accrual System\". This problem is designed to give you a glimpse\
+  \ of its rules. You can read the page once before attempting the problem if you\
+  \ wish, nonetheless we will be providing all the information needed here itself.\
+  \ \n\nLaddu Accrual System is our new goodie distribution program. In this program,\
+  \ we will be distributing Laddus in place of goodies for your winnings and various\
+  \ other activities (described below), that you perform on our system. Once you collect\
+  \ enough number of Laddus, you can then redeem them to get yourself anything from\
+  \ a wide range of CodeChef goodies.  \n\nLet us know about various activities and\
+  \ amount of laddus you get corresponding to them.\n\n- Contest Win (CodeChef’s Long,\
+  \ Cook-Off, LTIME, or any contest hosted with us) : 300 + Bonus (Bonus = 20 - contest\
+  \ rank). Note that if your rank is > 20, then you won't get any bonus.\n- Top Contributor\
+  \ on Discuss : 300\n- Bug Finder\t: 50 - 1000 (depending on the bug severity). It\
+  \ may also fetch you a CodeChef internship! \n- Contest Hosting\t : 50 \n\nYou can\
+  \ do a checkout for redeeming laddus once a month. The minimum laddus redeemable\
+  \ at Check Out are 200 for Indians and 400 for the rest of the world.\n\nYou are\
+  \ given history of various activities of a user. The user has not redeemed any of\
+  \ the its laddus accrued.. Now the user just wants to redeem as less amount of laddus\
+  \ he/she can, so that the laddus can last for as long as possible. Find out for\
+  \ how many maximum number of months he can redeem the laddus.\n\n-----Input-----\n\
+  - The first line of input contains a single integer T denoting number of test cases\n\
+  - For each test case:\n\t\n- First line contains an integer followed by a string\
+  \ denoting activities, origin respectively, where activities denotes number of activities\
+  \ of the user, origin denotes whether the user is Indian or the rest of the world.\
+  \ origin can be \"INDIAN\" or \"NON_INDIAN\".\n- For each of the next activities\
+  \ lines, each line contains an activity. \n\n\t\t\tAn activity can be of four types\
+  \ as defined above. \n\t\t\t\n- Contest Win : Input will be of form of CONTEST_WON\
+  \ rank, where rank denotes the rank of the user. \n- Top Contributor : Input will\
+  \ be of form of TOP_CONTRIBUTOR.\n- Bug Finder : Input will be of form of BUG_FOUND\
+  \ severity, where severity denotes the severity of the bug. \n- Contest Hosting\
+  \ : Input will be of form of CONTEST_HOSTED.\n\n-----Output-----\n- For each test\
+  \ case, find out the maximum number of months for which the user can redeem the\
+  \ laddus accrued.\n\n-----Constraints-----\n- 1 ≤ T, activities ≤ 100\n- 1 ≤ rank\
+  \ ≤ 5000\n- 50 ≤ severity ≤ 1000\n\n-----Subtasks-----\nThere is only a single subtask\
+  \ with 100 points.\n\n-----Example-----\nInput:\n2\n4 INDIAN\nCONTEST_WON 1\nTOP_CONTRIBUTOR\n\
+  BUG_FOUND 100\nCONTEST_HOSTED\n4 NON_INDIAN\nCONTEST_WON 1\nTOP_CONTRIBUTOR\nBUG_FOUND\
+  \ 100\nCONTEST_HOSTED\n\nOutput:\n3\n1\n\n-----Explanation-----\nIn the first example,\
+  \ \n\n- For winning contest with rank 1, user gets 300 + 20 - 1 = 319 laddus. \n\
+  - For top contributor, user gets 300 laddus. \n- For finding a bug with severity\
+  \ of 100, user gets 100 laddus. \n- For hosting a contest, user gets 50 laddus.\
+  \ \n\nSo, overall user gets 319 + 300 + 100 + 50 = 769 laddus.\nNow, the user is\
+  \ an Indian user, he can redeem only 200 laddus per month. So, for first three months,\
+  \ he will redeem 200 * 3 = 600 laddus. The remaining 169 laddus, he can not redeem\
+  \ as he requires at least 200 laddues in a month to redeem. \n\nSo, answer is 3.\n\
+  \nIn the second example, user is a non-Indian user, he can redeem 400 laddues per\
+  \ month. So, in the first month, he will redeem 400 laddus. The remaining 369 laddus,\
+  \ he can not redeem as he requires at least 400 laddues in a month to redeem. \n\
+  \nSo, answer is 1."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Activity := String × Nat\n\ndef calculate_max_months (input\
+  \ : List String) : List Nat :=\n  sorry\n\n\n"
+"vc-theorems": "theorem multiple_test_cases_properties\n  (n : Nat)\n  (h : n > 0\
+  \ ∧ n ≤ 5) :\n  let result := calculate_max_months ([toString n] ++ \n    (List.range\
+  \ n).bind (fun i => \n      [s!\"1 {if i % 2 = 0 then \"INDIAN\" else \"NON_INDIAN\"\
+  }\", \n       \"BUG_FOUND 1000\"]))\n  result.length = n ∧\n  (∀ i, i < n → result[i]!\
+  \ > 0) ∧\n  (∀ i, 0 < i → i < n → i % 2 = 1 → result[i]! ≤ result[i-1]!) :=\nsorry\n\
+  \n\ntheorem contest_won_rank_bonus\n  (rank : Nat)\n  (h : rank > 0 ∧ rank ≤ 20)\
+  \ :\n  let result := calculate_max_months [\"1\", \"2 INDIAN\", s!\"CONTEST_WON\
+  \ {rank}\", \"CONTEST_WON 21\"]\n  let worse_result := calculate_max_months [\"\
+  1\", \"2 INDIAN\", \"CONTEST_WON 21\", \"CONTEST_WON 21\"]\n  result[0]! ≥ worse_result[0]!\
+  \ :=\nsorry\n\n/--\ninfo: [3, 1]\n-/\n#guard_msgs in\n#eval calculate_max_months\
+  \ [\"2\", \"4 INDIAN\", \"CONTEST_WON 1\", \"TOP_CONTRIBUTOR\", \"BUG_FOUND 100\"\
+  , \"CONTEST_HOSTED\", \"4 NON_INDIAN\", \"CONTEST_WON 1\", \"TOP_CONTRIBUTOR\",\
+  \ \"BUG_FOUND 100\", \"CONTEST_HOSTED\"]\n\n/--\ninfo: [3]\n-/\n#guard_msgs in\n\
+  #eval calculate_max_months [\"1\", \"2 INDIAN\", \"CONTEST_WON 5\", \"TOP_CONTRIBUTOR\"\
+  ]\n\n/--\ninfo: [2]\n-/\n#guard_msgs in\n#eval calculate_max_months [\"1\", \"1\
+  \ NON_INDIAN\", \"BUG_FOUND 1000\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,33 @@
+"vc-description": "You start with a value in dollar form, e.g. $5.00. You must convert\
+  \ this value to a string in which the value is said, like '5 dollars' for example.\
+  \ This should account for ones, cents, zeroes, and negative values. Here are some\
+  \ examples:\n```python\ndollar_to_speech('$0.00') == '0 dollars.'\ndollar_to_speech('$1.00')\
+  \ == '1 dollar.'\ndollar_to_speech('$0.01') == '1 cent.'\ndollar_to_speech('$5.00')\
+  \ == '5 dollars.'\ndollar_to_speech('$20.18') == '20 dollars and 18 cents.'\ndollar_to_speech('$-1.00')\
+  \ == 'No negative numbers are allowed!'\n```\nThese examples account for pretty\
+  \ much everything. This kata has many specific outputs, so good luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef dollar_to_speech (s : String) : String\
+  \ := sorry\n\ndef String.containsStr (s₁ s₂ : String) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def formatDollarString (d c : Nat) : String :=\n  s!\"${d}.{c}\"\
+  \n"
+"vc-theorems": "theorem dollar_to_speech_ends_with_period (d c : Nat) (h : c < 100)\
+  \ :\n  (dollar_to_speech (formatDollarString d c)).endsWith \".\" := sorry\n\n\n\
+  theorem dollar_to_speech_single_dollar (d c : Nat) (h : c < 100)\n    (s := formatDollarString\
+  \ d c) (h₂ : d = 1) :\n  (dollar_to_speech s).containsStr \"1 dollar\" ∧\n  ¬(dollar_to_speech\
+  \ s).containsStr \"dollars\" := sorry\n\n\ntheorem dollar_to_speech_multiple_dollars\
+  \ (d c : Nat) (h : c < 100)\n    (s := formatDollarString d c) (h₂ : d > 1) :\n\
+  \  (dollar_to_speech s).containsStr s!\"{d} dollars\" := sorry\n\n\ntheorem dollar_to_speech_single_cent\
+  \ (d c : Nat) (h : c < 100)\n    (s := formatDollarString d c) (h₂ : c = 1) :\n\
+  \  (dollar_to_speech s).containsStr \"1 cent\" ∧\n  ¬(dollar_to_speech s).containsStr\
+  \ \"cents\" := sorry\n\n\ntheorem dollar_to_speech_multiple_cents (d c : Nat) (h\
+  \ : c < 100)\n    (s := formatDollarString d c) (h₂ : c > 1) :\n  (dollar_to_speech\
+  \ s).containsStr s!\"{c} cents\" := sorry\n\n\ntheorem dollar_to_speech_and_connector\
+  \ (d c : Nat) (h : c < 100)\n    (s := formatDollarString d c) :\n  (d > 0 ∧ c >\
+  \ 0) ↔ (dollar_to_speech s).containsStr \" and \" := sorry\n\n/--\ninfo: '0 dollars.'\n\
+  -/\n#guard_msgs in\n#eval dollar_to_speech \"$0.00\"\n\n/--\ninfo: '1 dollar.'\n\
+  -/\n#guard_msgs in\n#eval dollar_to_speech \"$1.00\"\n\n/--\ninfo: '20 dollars and\
+  \ 18 cents.'\n-/\n#guard_msgs in\n#eval dollar_to_speech \"$20.18\"\n\n/--\ninfo:\
+  \ 'No negative numbers are allowed!'\n-/\n#guard_msgs in\n#eval dollar_to_speech\
+  \ \"$-5.00\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

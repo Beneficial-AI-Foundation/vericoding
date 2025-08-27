@@ -1,0 +1,34 @@
+"vc-description": "You are driving a vehicle that has capacity empty seats initially\
+  \ available for passengers.  The vehicle only drives east (ie. it cannot turn around\
+  \ and drive west.)\nGiven a list of trips, trip[i] = [num_passengers, start_location,\
+  \ end_location] contains information about the i-th trip: the number of passengers\
+  \ that must be picked up, and the locations to pick them up and drop them off. \
+  \ The locations are given as the number of kilometers due east from your vehicle's\
+  \ initial location.\nReturn true if and only if it is possible to pick up and drop\
+  \ off all passengers for all the given trips. \n \nExample 1:\nInput: trips = [[2,1,5],[3,3,7]],\
+  \ capacity = 4\nOutput: false\n\n\nExample 2:\nInput: trips = [[2,1,5],[3,3,7]],\
+  \ capacity = 5\nOutput: true\n\n\nExample 3:\nInput: trips = [[2,1,5],[3,5,7]],\
+  \ capacity = 3\nOutput: true\n\n\nExample 4:\nInput: trips = [[3,2,7],[3,7,9],[8,3,9]],\
+  \ capacity = 11\nOutput: true\n\n\n\n\n\n\n\n \n\n\n\n \nConstraints:\n\ntrips.length\
+  \ <= 1000\ntrips[i].length == 3\n1 <= trips[i][0] <= 100\n0 <= trips[i][1] < trips[i][2]\
+  \ <= 1000\n1 <= capacity <= 100000"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def carPooling (trips : List Trip) (capacity : Int) : Bool :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem capacity_zero (trips : List Trip) :\n  carPooling trips 0\
+  \ = (trips.length = 0) :=\n  sorry\n\n\ntheorem timeline_under_capacity (trips :\
+  \ List Trip) (capacity : Int) :\n  carPooling trips capacity = true →\n  ∀ t : Int,\
+  \ \n    (trips.foldl (λ acc trip =>\n      if t ≥ trip.startLoc ∧ t < trip.endLoc\n\
+  \      then acc + trip.passengers \n      else acc) 0) ≤ capacity :=\n  sorry\n\n\
+  \ntheorem large_capacity_always_works (trips : List Trip) :\n  carPooling trips\
+  \ 1000000 = true :=\n  sorry\n\n\ntheorem timeline_consistency (trips : List Trip)\
+  \ :\n  (trips.foldl (λ acc trip => acc + trip.passengers - trip.passengers) 0) =\
+  \ 0 :=\n  sorry\n\n\ntheorem trip_valid (t : Trip) : \n  t.passengers > 0 ∧ \n \
+  \ t.passengers ≤ 1000 ∧ \n  t.startLoc ≥ 0 ∧ \n  t.startLoc < 1000 ∧ \n  t.endLoc\
+  \ > 0 ∧ \n  t.endLoc ≤ 1000 ∧ \n  t.startLoc < t.endLoc :=\n  sorry\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval car_pooling [[2, 1, 5], [3, 3, 7]] 4\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval car_pooling [[2, 1, 5], [3, 3, 7]] 5\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval car_pooling [[3, 2, 7], [3, 7, 9], [8, 3,\
+  \ 9]] 11\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

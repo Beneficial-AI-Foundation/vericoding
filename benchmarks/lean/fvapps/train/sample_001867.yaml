@@ -1,0 +1,21 @@
+"vc-description": "Given a sorted linked list, delete all nodes that have duplicate\
+  \ numbers, leaving only distinct numbers from the original list.\n\nExample 1:\n\
+  \n\nInput: 1->2->3->3->4->4->5\nOutput: 1->2->5\n\n\nExample 2:\n\n\nInput: 1->1->1->2->3\n\
+  Output: 2->3"
+"vc-preamble": "import Imports.AllImports\n\ndef array_to_list : List Int → Option\
+  \ ListNode := \n  sorry\n\n\ndef list_to_array : Option ListNode → List Int :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def deleteDuplicates : Option ListNode → Option ListNode :=\n \
+  \ sorry\n"
+"vc-theorems": "theorem output_is_subset_of_input (arr : List Int) : \n  let result\
+  \ := list_to_array (deleteDuplicates (array_to_list arr))\n  ∀ x, x ∈ result → x\
+  \ ∈ arr :=\nsorry\n\n\ntheorem empty_list_gives_empty_result (arr : List Int) :\n\
+  \  arr = [] → list_to_array (deleteDuplicates (array_to_list arr)) = [] :=\nsorry\n\
+  \n\ntheorem singleton_values_preserved (arr : List Int) (val : Int) :\n  arr ≠ []\
+  \ →\n  List.countP (· = val) arr = 1 → \n  val ∈ list_to_array (deleteDuplicates\
+  \ (array_to_list arr)) :=\nsorry\n\n/--\ninfo: [1, 2, 5]\n-/\n#guard_msgs in\n#eval\
+  \ list_to_array deleteDuplicates(test1)\n\n/--\ninfo: [2, 3]\n-/\n#guard_msgs in\n\
+  #eval list_to_array deleteDuplicates(test2)\n\n/--\ninfo: []\n-/\n#guard_msgs in\n\
+  #eval list_to_array deleteDuplicates(test3)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

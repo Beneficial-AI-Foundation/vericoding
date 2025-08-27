@@ -1,0 +1,15 @@
+"vc-description": "Calculate the sum of two integers a and b, but you are not allowed\
+  \ to use the operator + and -.\n\nExample:\nGiven a = 1 and b = 2, return 3.\n\n\
+  \nCredits:Special thanks to @fujiaozhu for adding this problem and creating all\
+  \ test cases."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def getSum (a b : Int) : Int := sorry\n\ntheorem getSum_with_zero\
+  \ (a : Int) : \n  getSum a 0 = a ∧ getSum 0 a = a := sorry\n"
+"vc-theorems": "theorem getSum_commutative (a b : Int) :\n  getSum a b = getSum b\
+  \ a := sorry\n\n\ntheorem getSum_associative (a b c : Int) :\n  getSum (getSum a\
+  \ b) c = getSum a (getSum b c) := sorry\n\n\ntheorem getSum_negation (a : Int) :\n\
+  \  getSum a (-a) = 0 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval getSum\
+  \ 1 2\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval getSum 5 0\n\n/--\ninfo: 1\n-/\n\
+  #guard_msgs in\n#eval getSum -2 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

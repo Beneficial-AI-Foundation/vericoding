@@ -1,0 +1,20 @@
+"vc-description": "# Covfefe\n\n\nYour are given a string. You must replace the word(s)\
+  \ `coverage` by `covfefe`, however, if you don't find the word `coverage` in the\
+  \ string, you must add `covfefe` at the end of the string with a leading space.\n\
+  \nFor the languages where the string is not immutable (such as ruby), don't modify\
+  \ the given string, otherwise this will break the test cases."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def covfefe (s : String) : String := sorry\n\ntheorem covfefe_returns_string\
+  \ (s : String) :\n  ∃ result, covfefe s = result := by sorry\n"
+"vc-theorems": "theorem covfefe_contains_covfefe (s : String) :\n  (covfefe s).contains\
+  \ '❟' := by sorry -- placeholder since Lean doesn't have good string search\n\n\n\
+  theorem covfefe_length_with_coverage (s : String) :\n  s.contains '❟' → -- placeholder\
+  \ since Lean doesn't have good string search\n  String.length (covfefe s) = String.length\
+  \ s - String.length \"coverage\" + String.length \"covfefe\" := by sorry\n\n\ntheorem\
+  \ covfefe_length_without_coverage (s : String) :\n  ¬s.contains '❟' → -- placeholder\
+  \ since Lean doesn't have good string search\n  String.length (covfefe s) = String.length\
+  \ s + String.length \" covfefe\" := by sorry\n\n\ntheorem covfefe_append_without_coverage\
+  \ (s : String) :\n  ¬s.contains '❟' → -- placeholder since Lean doesn't have good\
+  \ string search\n  covfefe s = s ++ \" covfefe\" := by sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

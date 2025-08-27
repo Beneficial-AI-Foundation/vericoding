@@ -1,0 +1,23 @@
+"vc-description": "In this kata you should simply determine, whether a given year\
+  \ is a leap year or not. In case you don't know the rules, here they are:\n\n* years\
+  \ divisible by 4 are leap years\n* but years divisible by 100 are **not** leap years\n\
+  * but years divisible by 400 are leap years\n\nAdditional Notes:\n\n* Only valid\
+  \ years (positive integers) will be tested, so you don't have to validate them\n\
+  \nExamples can be found in the test fixture."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_leap_year (year : Nat) : Bool := sorry\n\ntheorem leap_year_div_400\
+  \ (year : Nat) (h : year > 0) (h2 : year % 400 = 0) :\n  is_leap_year year = true\
+  \ := sorry\n"
+"vc-theorems": "theorem non_leap_year_div_100_not_400 (year : Nat) (h : year > 0)\
+  \ \n    (h2 : year % 100 = 0) (h3 : year % 400 ≠ 0) :\n  is_leap_year year = false\
+  \ := sorry\n\n\ntheorem leap_year_div_4_not_100 (year : Nat) (h : year > 0)\n  \
+  \  (h2 : year % 4 = 0) (h3 : year % 100 ≠ 0) :\n  is_leap_year year = true := sorry\n\
+  \n\ntheorem non_leap_year_others (year : Nat) (h : year > 0)\n    (h2 : year % 4\
+  \ ≠ 0) :\n  is_leap_year year = false := sorry\n\n\ntheorem four_year_cycle (year\
+  \ : Nat) (h : year > 0) (h2 : year % 100 ≠ 0) :\n  let next_leap := year + (4 -\
+  \ year % 4)\n  is_leap_year next_leap = true ∧ next_leap % 4 = 0 := sorry\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval is_leap_year 1984\n\n/--\ninfo: True\n-/\n\
+  #guard_msgs in\n#eval is_leap_year 2000\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
+  #eval is_leap_year 1234\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

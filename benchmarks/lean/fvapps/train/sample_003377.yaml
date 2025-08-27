@@ -1,0 +1,33 @@
+"vc-description": "Another Fibonacci... yes but with other kinds of result.\nThe function\
+  \ is named `aroundFib` or `around_fib`, depending of the language.\nIts parameter\
+  \ is `n` (positive integer).\n\nFirst you have to calculate `f` the value of `fibonacci(n)`\
+  \ with `fibonacci(0) --> 0` and\n`fibonacci(1) --> 1` (see: )\n\n- 1) Find the count\
+  \ of each digit `ch` in `f` (`ch`: digit from 0 to 9), call this count `cnt` and\
+  \ find the maximum\nvalue of `cnt`, call this maximum `maxcnt`. If there are ties,\
+  \ the digit `ch` to consider is the first one - in natural digit order - giving\
+  \ `maxcnt`.\n\n- 2) Cut the value `f` into chunks of length at most `25`. The last\
+  \ chunk may be 25 long or less.\n\n```\nExample: for `n=100` you have only one chunk\
+  \ `354224848179261915075`\nExample: for `n=180` f is `18547707689471986212190138521399707760`\
+  \ and you have two chunks \n`1854770768947198621219013` and `8521399707760`. First\
+  \ length here is 25 and second one is 13.\n```\n\n- At last return a string in the\
+  \ following format:\n\"Last chunk ...; Max is ... for digit ...\"\n\nwhere Max is\
+  \ `maxcnt` and digit the first `ch` (in 0..9) leading to `maxcnt`.\n\n\n```\nExample:\
+  \ for `n=100` -> \"Last chunk 354224848179261915075; Max is 3 for digit 1\" \nExample:\
+  \ for `n=180` -> \"Last chunk 8521399707760; Max is 7 for digit 7\"\nExample: for\
+  \ `n=18000` -> \"Last chunk 140258776000; Max is 409 for digit 1\"\n```\n# Beware:\
+  \ \n`fib(18000)` has `3762` digits. Values of `n` are between `500` and `25000`.\n\
+  \n# Note\nTranslators are welcome for all languages, except for Ruby since the Bash\
+  \ tests needing Ruby a Ruby reference solution is already there though not yet published."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def around_fib (n : Nat) : String := sorry\n\ntheorem around_fib_result_format\
+  \ (n : Nat) (h : n ≤ 1000) : \n  let result := around_fib n\n  ∃ last_chunk max_count\
+  \ max_digit, \n    String.startsWith result \"Last chunk \" ∧\n    result.any (fun\
+  \ c => c = ';') ∧\n    String.length result > 0 ∧\n    0 ≤ max_digit ∧ max_digit\
+  \ ≤ 9 ∧\n    max_count > 0 ∧\n    String.length last_chunk ≤ 25 := sorry\n"
+"vc-theorems": "theorem around_fib_string_properties (n : Nat) (h : n ≤ 100) :\n \
+  \ let result := around_fib n\n  let parts := String.split result (· == ';')\n  let\
+  \ lastChunk := (String.split (parts.head!) (· == ' ')).getLast!\n  ∃ maxCount :\
+  \ Nat,\n    maxCount > 0 ∧\n    (parts.length = 2) ∧\n    String.any result (· ==\
+  \ ';') ∧\n    String.any result (· == 'f') := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

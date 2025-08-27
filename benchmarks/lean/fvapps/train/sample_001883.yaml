@@ -1,0 +1,33 @@
+"vc-description": "Given a rows * columns matrix mat of ones and zeros, return how\
+  \ many submatrices have all ones.\n \nExample 1:\nInput: mat = [[1,0,1],\n     \
+  \         [1,1,0],\n              [1,1,0]]\nOutput: 13\nExplanation:\nThere are\
+  \ 6 rectangles of side 1x1.\nThere are 2 rectangles of side 1x2.\nThere are 3 rectangles\
+  \ of side 2x1.\nThere is 1 rectangle of side 2x2. \nThere is 1 rectangle of side\
+  \ 3x1.\nTotal number of rectangles = 6 + 2 + 3 + 1 + 1 = 13.\n\nExample 2:\nInput:\
+  \ mat = [[0,1,1,0],\n              [0,1,1,1],\n              [1,1,1,0]]\nOutput:\
+  \ 24\nExplanation:\nThere are 8 rectangles of side 1x1.\nThere are 5 rectangles\
+  \ of side 1x2.\nThere are 2 rectangles of side 1x3. \nThere are 4 rectangles of\
+  \ side 2x1.\nThere are 2 rectangles of side 2x2. \nThere are 2 rectangles of side\
+  \ 3x1. \nThere is 1 rectangle of side 3x2. \nTotal number of rectangles = 8 + 5\
+  \ + 2 + 4 + 2 + 2 + 1 = 24.\n\nExample 3:\nInput: mat = [[1,1,1,1,1,1]]\nOutput:\
+  \ 21\n\nExample 4:\nInput: mat = [[1,0,1],[0,1,0],[1,0,1]]\nOutput: 5\n\n \nConstraints:\n\
+  \n1 <= rows <= 150\n1 <= columns <= 150\n0 <= mat[i][j] <= 1"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_submatrices (matrix : Matrix Int) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_submatrices_nonnegative (matrix : Matrix Int) :\n  count_submatrices\
+  \ matrix ≥ 0 := sorry\n\n\ntheorem count_submatrices_at_least_ones (matrix : Matrix\
+  \ Int) :\n  count_submatrices matrix ≥ ((matrix.data).join.filter (· = 1)).length\
+  \ := sorry\n\n\ntheorem count_submatrices_all_zeros (matrix : Matrix Int) :\n  ((matrix.data).all\
+  \ (fun row => row.all (fun x => x = 0))) → count_submatrices matrix = 0 := sorry\n\
+  \n\ntheorem count_submatrices_all_ones {n m : Nat} (matrix : Matrix Int) \n  (h1\
+  \ : (matrix.data).length = n)\n  (h2 : ∀ row ∈ matrix.data, row.length = m)\n  (h3\
+  \ : (matrix.data).all (fun row => row.all (fun x => x = 1))) :\n  count_submatrices\
+  \ matrix = n * m * (n * m + 1) / 2 := sorry\n\n\ntheorem count_submatrices_single_row_ones\
+  \ (n : Nat) :\n  count_submatrices ⟨[List.replicate n 1]⟩ = n * (n + 1) / 2 := sorry\n\
+  \n\ntheorem count_submatrices_single_col_ones (n : Nat) :\n  count_submatrices ⟨List.replicate\
+  \ n [1]⟩ = n * (n + 1) / 2 := sorry\n\n/--\ninfo: 13\n-/\n#guard_msgs in\n#eval\
+  \ count_submatrices [[1, 0, 1], [1, 1, 0], [1, 1, 0]]\n\n/--\ninfo: 24\n-/\n#guard_msgs\
+  \ in\n#eval count_submatrices [[0, 1, 1, 0], [0, 1, 1, 1], [1, 1, 1, 0]]\n\n/--\n\
+  info: 21\n-/\n#guard_msgs in\n#eval count_submatrices [[1, 1, 1, 1, 1, 1]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

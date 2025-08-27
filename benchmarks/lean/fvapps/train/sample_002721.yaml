@@ -1,0 +1,27 @@
+"vc-description": "Given an array of numbers, calculate the largest sum of all possible\
+  \ blocks of consecutive elements within the array. The numbers will be a mix of\
+  \ positive and negative values. If all numbers of the sequence are nonnegative,\
+  \ the answer will be the sum of the entire array. If all numbers in the array are\
+  \ negative, your algorithm should return zero. Similarly, an empty array should\
+  \ result in a zero return from your algorithm.\n\n```\nlargestSum([-1,-2,-3]) ==\
+  \ 0\nlargestSum([]) == 0\nlargestSum([1,2,3]) == 6\n```\n\nEasy, right? This becomes\
+  \ a lot more interesting with a mix of positive and negative numbers:\n\n```\nlargestSum([31,-41,59,26,-53,58,97,-93,-23,84])\
+  \ == 187\n```\n\nThe largest sum comes from elements in positions 3 through 7:\n\
+  ```59+26+(-53)+58+97 == 187```\n\nOnce your algorithm works with these, the test-cases\
+  \ will try your submission with increasingly larger random problem sizes."
+"vc-preamble": "import Imports.AllImports\n\ndef largest_sum (arr : List Int) : Int\
+  \ := sorry\n\ntheorem largest_sum_nonnegative (arr : List Int) :\n  largest_sum\
+  \ arr ≥ 0 := sorry\n\n\ndef sum_positives (arr : List Int) : Int := \n  (arr.filter\
+  \ (fun x => x > 0)).foldl (· + ·) 0\n\n\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_contiguous_subsequence_sum (arr : List Int) (target : Int)\
+  \ : Bool := \n  let n := arr.length\n  let indices := List.range n\n  indices.any\
+  \ fun i =>\n    let subSeqLengths := List.range (n - i)\n    subSeqLengths.any fun\
+  \ len =>\n      let subseqSum := (List.range len).foldl (fun sum j => \n       \
+  \ match arr.get? (i + j) with\n        | none => sum\n        | some v => sum +\
+  \ v\n      ) 0\n      subseqSum = target"
+"vc-theorems": "/--\ninfo: 0\n-/\n#guard_msgs in\n#eval largest_sum [-1, -2, -3]\n\
+  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval largest_sum []\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval largest_sum [1, 2, 3]\n\n/--\ninfo: 187\n-/\n#guard_msgs in\n#eval largest_sum\
+  \ [31, -41, 59, 26, -53, 58, 97, -93, -23, 84]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

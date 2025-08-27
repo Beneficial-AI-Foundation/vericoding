@@ -1,0 +1,30 @@
+"vc-description": "John wants to decorate a room with wallpaper. He's heard that \n\
+  making sure he has the right amount of wallpaper is more complex than it sounds.\
+  \ \nHe wants a fool-proof method for getting it right.\n\nJohn knows that the rectangular\
+  \ room has a length of `l` meters, a width of `w` meters, a height of `h` meters.\n\
+  The standard width of the rolls he wants to buy is `52` centimeters. The \nlength\
+  \ of a roll is `10` meters.\nHe bears in mind however, that it’s best to have an\
+  \ extra length of wallpaper handy in case of mistakes or miscalculations so he wants\
+  \ to buy a length `15%` greater than the one he needs.\n\nLast time he did these\
+  \ calculations he got a headache, so could you help John? Your function `wallpaper(l,\
+  \ w, h)` should return as a plain English word\nin lower case the number of rolls\
+  \ he must buy.\n\n### Example:\n\n`wallpaper(4.0, 3.5, 3.0) should return \"ten\"\
+  `\n\n`wallpaper(0.0, 3.5, 3.0) should return \"zero\"`\n\n# Notes:\n- all rolls\
+  \ (even with incomplete width) are put edge to edge \n- 0 <= l, w, h (floating numbers),\
+  \ it can happens that `w x h x l` is zero\n- the integer `r` (number of rolls) will\
+  \ always be less or equal to 20\n\n\n- FORTH: the number of rolls will be a *positive\
+  \ or null integer* (not a plain English word; this number can be greater than 20)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def wallpaper (l w h : Float) : NumberWord := sorry\n\n/-- If either\
+  \ width or length is 0, result is zero -/"
+"vc-theorems": "theorem wallpaper_zero {l w h : Float} :\n  l * w = 0 → wallpaper\
+  \ l w h = NumberWord.zero := sorry\n\n/-- Result is always a valid number word between\
+  \ 0 and 20 -/\n\ntheorem wallpaper_valid_output {l w h : Float} :\n  ∃ n : NumberWord,\
+  \ wallpaper l w h = n := sorry\n\n/-- Non-negative inputs result in non-negative\
+  \ outputs -/\n\ntheorem wallpaper_nonneg {l w h : Float} :\n  l ≥ 0 → w ≥ 0 → h\
+  \ ≥ 0 → \n  ∃ n : NumberWord, wallpaper l w h = n := sorry\n\n/--\ninfo: 'ten'\n\
+  -/\n#guard_msgs in\n#eval wallpaper 4.0 3.5 3.0\n\n/--\ninfo: 'zero'\n-/\n#guard_msgs\
+  \ in\n#eval wallpaper 0.0 3.5 3.0\n\n/--\ninfo: 'sixteen'\n-/\n#guard_msgs in\n\
+  #eval wallpaper 6.3 4.5 3.29\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

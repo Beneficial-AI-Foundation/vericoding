@@ -1,0 +1,42 @@
+"vc-description": "For a string $S$ let the unique set of characters that occur in\
+  \ it one or more times be $C$. Consider a permutation of the elements of $C$ as\
+  \ $(c_1, c_2, c_3 ... )$. Let $f(c)$ be the number of times $c$ occurs in $S$.\n\
+  If any such permutation of the elements of $C$ satisfies $f(c_i) = f(c_{i-1}) +\
+  \ f(c_{i-2})$ for all $i \\ge 3$, the string is said to be a dynamic string.\nMr\
+  \ Bancroft is given the task to check if the string is dynamic, but he is busy playing\
+  \ with sandpaper. Would you help him in such a state?\nNote that if the number of\
+  \ distinct characters in the string is less than 3, i.e. if $|C| < 3$, then the\
+  \ string is always dynamic.\n\n-----Input:-----\n- First line will contain $T$,\
+  \ number of testcases. Then the testcases follow. \n- Each testcase contains of\
+  \ a single line of input, a string $S$.\n\n-----Output:-----\nFor each testcase,\
+  \ output in a single line \"Dynamic\" if the given string is dynamic, otherwise\
+  \ print \"Not\". (Note that the judge is case sensitive)\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 10$\n- $1 \\leq |S| \\leq 10^5$\n- $S$ contains only lower case\
+  \ alphabets: $a$, $b$, …, $z$\n\n-----Sample Input:-----\n3\naaaabccc\naabbcc\n\
+  ppppmmnnoooopp\n\n-----Sample Output:-----\nDynamic\nNot\nDynamic\n\n-----Explanation:-----\n\
+  - Testase 1: For the given string, $C = \\{a, b, c\\}$ and $f(a)=4, f(b)=1, f(c)=3$.\
+  \ $f(a) = f(c) + f(b)$ so the permutation $(b, c, a)$ satisfies the requirement.\n\
+  - Testcase 2: Here too $C = \\{a, b, c\\}$ but no permutation satisfies the requirement\
+  \ of a dynamic string.\n- Testcase 3: Here $C = \\{m, n, o, p\\}$ and $(m, n, o,\
+  \ p)$ is a permutation that makes it a dynamic string."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_dynamic_string (s : String) : String := sorry\n\ntheorem\
+  \ dynamic_string_returns_valid_outputs (s : String) (h : s.length > 0) :\n  is_dynamic_string\
+  \ s = \"Dynamic\" ∨ is_dynamic_string s = \"Not\" := sorry\n"
+"vc-theorems": "theorem few_unique_chars_is_dynamic (s : String) (h1 : s.length >\
+  \ 0) \n    (h2 : (List.map Char.toString s.data).eraseDups.length < 3) : \n  is_dynamic_string\
+  \ s = \"Dynamic\" := sorry\n\n\ntheorem binary_string_is_dynamic (s : String) (h1\
+  \ : s.length > 0)\n    (h2 : ∀ c ∈ s.data, c = 'a' ∨ c = 'b') :\n  is_dynamic_string\
+  \ s = \"Dynamic\" := sorry\n\n\ntheorem single_char_is_dynamic (c : Char) :\n  is_dynamic_string\
+  \ (String.mk [c]) = \"Dynamic\" := sorry\n\n\ntheorem repeated_char_is_dynamic (c\
+  \ : Char) (n : Nat) (h : n > 0) :\n  is_dynamic_string (String.mk (List.replicate\
+  \ n c)) = \"Dynamic\" := sorry\n\n\ntheorem equal_freq_three_chars_not_dynamic (s\
+  \ : String) (h1 : s.length ≥ 6)\n    (h2 : ∀ c ∈ s.data, c = 'a' ∨ c = 'b' ∨ c =\
+  \ 'c')\n    (h3 : (s.data.filter (· = 'a')).length = (s.data.filter (· = 'b')).length)\n\
+  \    (h4 : (s.data.filter (· = 'b')).length = (s.data.filter (· = 'c')).length)\
+  \ :\n  is_dynamic_string s = \"Not\" := sorry\n\n/--\ninfo: 'Dynamic'\n-/\n#guard_msgs\
+  \ in\n#eval is_dynamic_string \"aaaabccc\"\n\n/--\ninfo: 'Not'\n-/\n#guard_msgs\
+  \ in\n#eval is_dynamic_string \"aabbcc\"\n\n/--\ninfo: 'Dynamic'\n-/\n#guard_msgs\
+  \ in\n#eval is_dynamic_string \"ppppmmnnoooopp\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

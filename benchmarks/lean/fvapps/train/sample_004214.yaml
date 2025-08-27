@@ -1,0 +1,39 @@
+"vc-description": "[Haikus](https://en.wikipedia.org/wiki/Haiku_in_English) are short\
+  \ poems in a three-line format, with 17 syllables arranged in a 5–7–5 pattern. Your\
+  \ task is to check if the supplied text is a haiku or not.\n\n\n### About syllables\n\
+  \n[Syllables](https://en.wikipedia.org/wiki/Syllable) are the phonological building\
+  \ blocks of words. *In this kata*, a syllable is a part of a word including a vowel\
+  \ (\"a-e-i-o-u-y\") or a group of vowels (e.g. \"ou\", \"ee\", \"ay\"). A few examples:\
+  \ \"tea\", \"can\", \"to·day\", \"week·end\", \"el·e·phant\".\n\n**However**, silent\
+  \ \"E\"s **do not** create syllables. *In this kata*, an \"E\" is considered silent\
+  \ if it's alone at the end of the word, preceded by one (or more) consonant(s) and\
+  \ there is at least one other syllable in the word. Examples: \"age\", \"ar·range\"\
+  , \"con·crete\"; but not in \"she\", \"blue\", \"de·gree\".\n\nSome more examples:\n\
+  * one syllable words: \"cat\", \"cool\", \"sprout\", \"like\", \"eye\", \"squeeze\"\
+  \n* two syllables words: \"ac·count\", \"hon·est\", \"beau·ty\", \"a·live\", \"\
+  be·cause\", \"re·store\"\n\n\n## Examples\n```\nAn old silent pond...\nA frog jumps\
+  \ into the pond,\nsplash! Silence again.\n```\n\n...should return `True`, as this\
+  \ is a valid 5–7–5 haiku:\n```\nAn old si·lent pond...            # 5 syllables\n\
+  A frog jumps in·to the pond,      # 7\nsplash! Si·lence a·gain.          # 5\n```\n\
+  \nAnother example:\n\n```\nAutumn moonlight -\na worm digs silently\ninto the chestnut.\n\
+  ```\n\n...should return `False`, because the number of syllables per line is not\
+  \ correct:\n```\nAu·tumn moon·light -          # 4 syllables\na worm digs si·lent·ly\
+  \        # 6\nin·to the chest·nut.          # 5\n```\n\n---\n\n## My other katas\n\
+  \nIf you enjoyed this kata then please try [my other katas](https://www.codewars.com/collections/katas-created-by-anter69)!\
+  \ :-)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_haiku (text : String) : Bool := sorry\n\ndef make_line (syllables\
+  \ : Nat) : String := sorry\n"
+"vc-theorems": "theorem wrong_lines_not_haiku\n  {ls : List String}\n  (h : ls.length\
+  \ ≠ 3) :\n  is_haiku (String.intercalate \"\\n\" ls) = false := sorry\n\n\ntheorem\
+  \ wrong_syllable_pattern\n  (s1 s2 s3 : Nat)\n  (h : (s1, s2, s3) ≠ (5, 7, 5)) :\n\
+  \  is_haiku (make_line s1 ++ \"\\n\" ++ make_line s2 ++ \"\\n\" ++ make_line s3)\
+  \ = false := sorry\n\n\ntheorem correct_syllable_pattern :\n  is_haiku (make_line\
+  \ 5 ++ \"\\n\" ++ make_line 7 ++ \"\\n\" ++ make_line 5) = true := sorry\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval is_haiku \"An old silent pond...\\nA frog\
+  \ jumps into the pond,\\nsplash! Silence again.\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval is_haiku \"Autumn moonlight -\\na worm digs silently\\ninto the chestnut.\"\
+  \n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_haiku \"My code is cool, right?\\\
+  nJava # Pyhton ; Ruby // Go:\\nI know them all, yay! ;-)\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

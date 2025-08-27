@@ -1,0 +1,30 @@
+"vc-description": "You are given two sorted arrays that contain only integers. Your\
+  \ task is to find a way to merge them into a single one, sorted in **ascending order**.\
+  \ Complete the function `mergeArrays(arr1, arr2)`, where `arr1` and `arr2` are the\
+  \ original sorted arrays.\n\nYou don't need to worry about validation, since `arr1`\
+  \ and `arr2` must be arrays with 0 or more Integers. If both `arr1` and `arr2` are\
+  \ empty, then just return an empty array.\n\n**Note:** `arr1` and `arr2` may be\
+  \ sorted in different orders. Also `arr1` and `arr2` may have same integers. Remove\
+  \ duplicated in the returned result.\n\n## Examples\n\nHappy coding!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def merge_arrays (arr1 : List Int) (arr2 : List Int) : List Int\
+  \ := sorry\n\ntheorem merge_arrays_ordered (arr1 arr2 : List Int) :\n  ∀ i j, i\
+  \ < j → i < (merge_arrays arr1 arr2).length → j < (merge_arrays arr1 arr2).length\
+  \ →\n  (merge_arrays arr1 arr2)[i]! ≤ (merge_arrays arr1 arr2)[j]! := sorry\n"
+"vc-theorems": "theorem merge_arrays_unique (arr1 arr2 : List Int) :\n  ∀ i j, i <\
+  \ (merge_arrays arr1 arr2).length → j < (merge_arrays arr1 arr2).length →\n  i ≠\
+  \ j → (merge_arrays arr1 arr2)[i]! ≠ (merge_arrays arr1 arr2)[j]! := sorry\n\n\n\
+  theorem merge_arrays_contains_inputs (arr1 arr2 : List Int) :\n  (∀ x ∈ arr1, x\
+  \ ∈ merge_arrays arr1 arr2) ∧ \n  (∀ x ∈ arr2, x ∈ merge_arrays arr1 arr2) := sorry\n\
+  \n\ntheorem merge_arrays_no_extra_elements (arr1 arr2 : List Int) :\n  ∀ x ∈ merge_arrays\
+  \ arr1 arr2, x ∈ arr1 ∨ x ∈ arr2 := sorry\n\n\ntheorem merge_array_with_itself (arr\
+  \ : List Int) (x : Int) :\n  x ∈ merge_arrays arr arr ↔ x ∈ arr := sorry\n\n\ntheorem\
+  \ merge_with_empty_left (arr : List Int) :\n  merge_arrays arr [] = merge_arrays\
+  \ arr arr := sorry\n\n\ntheorem merge_with_empty_right (arr : List Int) :\n  merge_arrays\
+  \ [] arr = merge_arrays arr arr := sorry\n\n/--\ninfo: [1, 2, 3, 4, 5, 6, 7, 8]\n\
+  -/\n#guard_msgs in\n#eval merge_arrays [1, 2, 3, 4] [5, 6, 7, 8]\n\n/--\ninfo: [-201,\
+  \ -73, -4, 73, 105]\n-/\n#guard_msgs in\n#eval merge_arrays [105, 73, -4, -73, -201]\
+  \ [-201, -73, -4, 73, 105]\n\n/--\ninfo: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n-/\n#guard_msgs\
+  \ in\n#eval merge_arrays [10, 8, 6, 4, 2] [9, 7, 5, 3, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

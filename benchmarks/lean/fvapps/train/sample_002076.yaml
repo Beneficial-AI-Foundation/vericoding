@@ -1,0 +1,38 @@
+"vc-description": "Iahub is very proud of his recent discovery, propagating trees.\
+  \ Right now, he invented a new tree, called xor-tree. After this new revolutionary\
+  \ discovery, he invented a game for kids which uses xor-trees.\n\nThe game is played\
+  \ on a tree having n nodes, numbered from 1 to n. Each node i has an initial value\
+  \ init_{i}, which is either 0 or 1. The root of the tree is node 1.\n\nOne can perform\
+  \ several (possibly, zero) operations on the tree during the game. The only available\
+  \ type of operation is to pick a node x. Right after someone has picked node x,\
+  \ the value of node x flips, the values of sons of x remain the same, the values\
+  \ of sons of sons of x flips, the values of sons of sons of sons of x remain the\
+  \ same and so on.\n\nThe goal of the game is to get each node i to have value goal_{i},\
+  \ which can also be only 0 or 1. You need to reach the goal of the game by using\
+  \ minimum number of operations.\n\n\n-----Input-----\n\nThe first line contains\
+  \ an integer n (1 ≤ n ≤ 10^5). Each of the next n - 1 lines contains two integers\
+  \ u_{i} and v_{i} (1 ≤ u_{i}, v_{i} ≤ n; u_{i} ≠ v_{i}) meaning there is an edge\
+  \ between nodes u_{i} and v_{i}. \n\nThe next line contains n integer numbers, the\
+  \ i-th of them corresponds to init_{i} (init_{i} is either 0 or 1). The following\
+  \ line also contains n integer numbers, the i-th number corresponds to goal_{i}\
+  \ (goal_{i} is either 0 or 1).\n\n\n-----Output-----\n\nIn the first line output\
+  \ an integer number cnt, representing the minimal number of operations you perform.\
+  \ Each of the next cnt lines should contain an integer x_{i}, representing that\
+  \ you pick a node x_{i}.\n\n\n-----Examples-----\nInput\n10\n2 1\n3 1\n4 2\n5 1\n\
+  6 2\n7 5\n8 6\n9 8\n10 5\n1 0 1 1 0 1 0 1 0 1\n1 0 1 0 0 1 1 1 0 1\n\nOutput\n2\n\
+  4\n7"
+"vc-preamble": "import Imports.AllImports\n\ndef solve_xor_tree (n : Nat) (edges :\
+  \ List (Nat × Nat)) (init : List Nat) (goal : List Nat) : List Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_valid_tree (n : Nat) (edges : List (Nat × Nat)) : Bool :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem basic_properties {n : Nat} {xor_values : List Nat} \n  (h1\
+  \ : n ≥ 2) (h2 : n ≤ 20) (h3 : ∀ x ∈ xor_values, x = 0 ∨ x = 1)\n  (h4 : xor_values.length\
+  \ = n) :\n  let edges := List.map (fun i => (i + 2, (i + 2)/2)) (List.range (n-1))\n\
+  \  let goal := xor_values\n  let init := List.replicate n 0\n  let result := solve_xor_tree\
+  \ n edges init goal\n  (∀ x ∈ result, x ≥ 1 ∧ x ≤ n) :=\n  sorry\n\n\ntheorem single_node_zero\
+  \ {init goal : List Nat} \n  (h1 : init.length = 1) (h2 : goal.length = 1) \n  (h3\
+  \ : init = [0]) (h4 : goal = [0]) :\n  solve_xor_tree 1 [] init goal = [] :=\n \
+  \ sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval len solve_xor_tree(n, edges,\
+  \ init, goal)\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

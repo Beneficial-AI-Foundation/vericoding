@@ -1,0 +1,25 @@
+"vc-description": "Find the area of a rectangle when provided with one diagonal and\
+  \ one side of the rectangle. If the input diagonal is less than or equal to the\
+  \ length of the side, return \"Not a rectangle\". If the resultant area has decimals\
+  \ round it to two places.\n\n`This kata is meant for beginners. Rank and upvote\
+  \ to bring it out of beta!`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def area (d l : Float) : Sum Float String := sorry \n\ntheorem\
+  \ area_properties (d l : Float) (h1 : d ≥ 0) (h2 : l ≥ 0) (h3 : d ≤ 1000) (h4 :\
+  \ l ≤ 1000) :\n  let result := area d l\n  if d ≤ l then\n    result = Sum.inr \"\
+  Not a rectangle\"\n  else\n    (∃ r : Float, result = Sum.inl r) ∧ \n    (∃ r :\
+  \ Float, result = Sum.inl r → r ≥ 0) ∧\n    (∃ r : Float, result = Sum.inl r → r\
+  \ ≤ d * d) ∧\n    (∃ r : Float, result = Sum.inl r → \n      let h := Float.sqrt\
+  \ (d*d - l*l)\n      (r - l * h).abs < 0.1) := sorry\n"
+"vc-theorems": "theorem square_diagonal (d : Float) (h1 : d ≥ 0) (h2 : d ≤ 1000) :\n\
+  \  let l := d / Float.sqrt 2\n  let result := area d l\n  result ≠ Sum.inr \"Not\
+  \ a rectangle\" →\n  ∃ r : Float, result = Sum.inl r ∧ (r - l * l).abs < 0.1 :=\
+  \ sorry\n\n\ntheorem invalid_inputs_negative (d l : Float) (h1 : d < 0) :\n  let\
+  \ result := area d l\n  result = Sum.inr \"Not a rectangle\" := sorry\n\n\ntheorem\
+  \ invalid_inputs_nan (d l : Float) (h1 : Float.isNaN d ∨ Float.isNaN l) :\n  let\
+  \ result := area d l\n  result = Sum.inr \"Not a rectangle\" := sorry\n\n/--\ninfo:\
+  \ 12.0\n-/\n#guard_msgs in\n#eval area 5 4\n\n/--\ninfo: 'Not a rectangle'\n-/\n\
+  #guard_msgs in\n#eval area 6 8\n\n/--\ninfo: 48.0\n-/\n#guard_msgs in\n#eval area\
+  \ 10 6\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

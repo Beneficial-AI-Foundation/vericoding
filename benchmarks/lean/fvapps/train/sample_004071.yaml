@@ -1,0 +1,26 @@
+"vc-description": "Write\n```python\nremove(text, what)\n```\nthat takes in a string\
+  \ ```str```(```text``` in Python) and an object/hash/dict/Dictionary ```what```\
+  \ and returns a string with the chars removed in ```what```.\nFor example:\n```python\n\
+  remove('this is a string',{'t':1, 'i':2}) == 'hs s a string'\n# remove from 'this\
+  \ is a string' the first 1 't' and the first 2 i's.\nremove('hello world',{'x':5,\
+  \ 'i':2}) == 'hello world'\n# there are no x's or i's, so nothing gets removed\n\
+  remove('apples and bananas',{'a':50, 'n':1}) == 'pples d bnns'\n# we don't have\
+  \ 50 a's, so just remove it till we hit end of string.\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def String.count (s : String) (c : Char) : Nat := sorry\n\ndef\
+  \ remove (text : String) (what : Char → Nat) : String := sorry\n"
+"vc-theorems": "theorem remove_length_le_input (text : String) (what : Char → Nat)\
+  \ :\n  (remove text what).length ≤ text.length := sorry\n\n\ntheorem remove_preserves_nonremoved_chars\
+  \ (text : String) (what : Char → Nat) (c : Char) :\n  what c = 0 → (remove text\
+  \ what).count c = text.count c := sorry\n\n\ntheorem remove_chars_count (text :\
+  \ String) (what : Char → Nat) (c : Char) :\n  (remove text what).count c = max 0\
+  \ (text.count c - what c) := sorry\n\n\ntheorem remove_empty_unchanged (text : String)\
+  \ :\n  remove text (fun _ => 0) = text := sorry\n\n\ntheorem remove_repeated_char\
+  \ (n : Nat) (what : Char → Nat) :\n  remove (String.mk (List.replicate n 'a')) what\
+  \ = \n    String.mk (List.replicate (max 0 (n - what 'a')) 'a') := sorry\n\n/--\n\
+  info: 'hs s a string'\n-/\n#guard_msgs in\n#eval remove \"this is a string\" {\"\
+  t\": 1, \"i\": 2}\n\n/--\ninfo: 'hello world'\n-/\n#guard_msgs in\n#eval remove\
+  \ \"hello world\" {\"x\": 5, \"i\": 2}\n\n/--\ninfo: 'pples d bnns'\n-/\n#guard_msgs\
+  \ in\n#eval remove \"apples and bananas\" {\"a\": 50, \"n\": 1}\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

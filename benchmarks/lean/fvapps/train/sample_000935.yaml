@@ -1,0 +1,32 @@
+"vc-description": "-----Problem-----\n\nThere is an infinite one dimensional array\
+  \ ranging from (-infinity, infinity).A Zombie is currently at cell number 0. The\
+  \ zombie wants to reach cell number H. The Zombie moves in only two ways. The Zombie\
+  \ either\n\nMakes U steps to the right (positive side) or\n\nMakes D steps to the\
+  \ left (negative side).\n\nYour task is to find the minimum number of moves the\
+  \ Zombie require to reach the goal.\n\n-----Input-----\n\nThe first line contains\
+  \ the number of test cases T. Each of the next T lines contains 3 space\n\nseparated\
+  \ integers, H U D.\n\n-----Output-----\n\nFor each test case, output one line with\
+  \ an integer, the minimum number of moves required to reach H from 0. If it is impossible,\
+  \ print -1 instead.\n\n-----Constraints-----\n\n- \n\nT ≤ 10000\n\n- \n\n1 ≤ H,\
+  \ U, D ≤ 109\n\n-----Sample Input-----\n2\n\n3 2 1\n\n3 2 2\n\n-----Sample Output-----\n\
+  3\n\n-1\n\n-----Explanation-----\n\n- \n\nIn the first sample case, first move 2\
+  \ steps to the right to reach cell number 2. Then 1 step to the left  to reach cell\
+  \ number 1 and finally 2 more steps to the right to reach the goal. Thus 3 moves\
+  \ are required\n\nwhich is the minimum.\n\n- \n\nBecause both U and D are even,\
+  \ you will always be in an even cell.Thus there is no way to reach cell      number\
+  \ 3.\n\np { text-align:justify }"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_min_zombie_moves (h u d : Nat) : Int := sorry\n\ntheorem\
+  \ find_min_zombie_moves_non_negative \n  (h u d : Nat) (h_pos : h > 0) (u_pos :\
+  \ u > 0) (d_pos : d > 0) :\n  let result := find_min_zombie_moves h u d\n  result\
+  \ ≠ -1 → result ≥ 0 := sorry\n"
+"vc-theorems": "theorem find_min_zombie_moves_height_reached \n  (h u d : Nat) (h_pos\
+  \ : h > 0) (u_pos : u > 0) (d_pos : d > 0) :\n  let result := find_min_zombie_moves\
+  \ h u d\n  result ≠ -1 → result * u - (result - result) * d ≥ h := sorry\n\n\ntheorem\
+  \ find_min_zombie_moves_no_solution\n  (h u d : Nat) (h_pos : h > 0) (u_pos : u\
+  \ > 0) (d_pos : d > 0) :\n  let result := find_min_zombie_moves h u d\n  result\
+  \ = -1 → h % Nat.gcd u d ≠ 0 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval\
+  \ find_min_zombie_moves 3 2 1\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval find_min_zombie_moves\
+  \ 3 2 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

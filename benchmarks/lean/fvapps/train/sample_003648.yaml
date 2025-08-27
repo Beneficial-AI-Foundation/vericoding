@@ -1,0 +1,43 @@
+"vc-description": "Your job is to write a function that takes a string and a maximum\
+  \ number of characters per line and then inserts line breaks as necessary so that\
+  \ no line in the resulting string is longer than the specified limit.\n\nIf possible,\
+  \ line breaks should not split words. However, if a single word is longer than the\
+  \ limit, it obviously has to be split. In this case, the line break should be placed\
+  \ after the first part of the word (see examples below).\n\nReally long words may\
+  \ need to be split multiple times.\n\n#Input\n\nA word consists of one or more letters.\n\
+  \nInput text will be the empty string or a string consisting of one or more words\
+  \ separated by single spaces. It will not contain any punctiation or other special\
+  \ characters.\n\nThe limit will always be an integer greater or equal to one.\n\n\
+  #Examples\n\n**Note:** Line breaks in the results have been replaced with two dashes\
+  \ to improve readability.\n\n1. (\"test\", 7) -> \"test\"\n2. (\"hello world\",\
+  \ 7) -> \"hello--world\"\n3. (\"a lot of words for a single line\", 10) -> \"a lot\
+  \ of--words for--a single--line\"\n4. (\"this is a test\", 4) -> \"this--is a--test\"\
+  \n5. (\"a longword\", 6) -> \"a long--word\"\n6. (\"areallylongword\", 6) -> \"\
+  areall--ylongw--ord\"\n\n**Note:** Sometimes spaces are hard to see in the test\
+  \ results window."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def word_wrap (text : String) (limit : Nat) : String := sorry\n\
+  \ntheorem word_wrap_line_length {text : String} {limit : Nat}\n  (h_text : ∀ c ∈\
+  \ text.data, c.isAlpha ∨ c = ' ')\n  (h_limit : limit > 0) :\n  let result := word_wrap\
+  \ text limit\n  ∀ line ∈ result.splitOn \"\\n\", line.length ≤ limit := sorry\n"
+"vc-theorems": "theorem word_wrap_preserves_content {text : String} {limit : Nat}\n\
+  \  (h_text : ∀ c ∈ text.data, c.isAlpha ∨ c = ' ')\n  (h_limit : limit > 0) :\n\
+  \  let result := word_wrap text limit\n  (String.join (text.splitOn \" \")).data\
+  \ = (String.join (result.replace \"\\n\" \"\" |>.splitOn \" \")).data := sorry\n\
+  \n\ntheorem single_word_wrap_properties {text : String} {limit : Nat}\n  (h_text\
+  \ : ∀ c ∈ text.data, c.isAlpha)\n  (h_text_nonempty : text.length > 0)\n  (h_limit\
+  \ : limit > 0)\n  (h_limit_bound : limit ≤ text.length) :\n  let result := word_wrap\
+  \ text limit\n  let lines := result.splitOn \"\\n\"\n  (∀ i : Fin lines.length,\
+  \ i.val < lines.length - 1 → (lines[i]).length = limit) ∧\n  (match lines.get? (lines.length\
+  \ - 1) with\n   | none => 0\n   | some lastLine => lastLine.length) ≤ limit ∧\n\
+  \  String.join lines = text := sorry\n\n\ntheorem multiple_words_no_splitting {words\
+  \ : List String} {limit : Nat}\n  (h_words_nonempty : words ≠ [])\n  (h_words_alpha\
+  \ : ∀ w ∈ words, ∀ c ∈ w.data, c.isAlpha)\n  (h_max_word := words.map String.length\
+  \ |>.maximum?)\n  (h_limit : ∀ w ∈ words, w.length < limit) :\n  let text := String.join\
+  \ (List.intersperse \" \" words)\n  let result := word_wrap text limit\n  (result.replace\
+  \ \"\\n\" \" \").splitOn \" \" = words := sorry\n\n/--\ninfo: 'test'\n-/\n#guard_msgs\
+  \ in\n#eval word_wrap \"test\" 7\n\n/--\ninfo: 'hello\\nworld'\n-/\n#guard_msgs\
+  \ in\n#eval word_wrap \"hello world\" 7\n\n/--\ninfo: 'areall\\nylongw\\nord'\n\
+  -/\n#guard_msgs in\n#eval word_wrap \"areallylongword\" 6\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,17 @@
+"vc-description": "Given an unsorted integer array, find the smallest missing positive\
+  \ integer.\n\nExample 1:\n\n\nInput: [1,2,0]\nOutput: 3\n\n\nExample 2:\n\n\nInput:\
+  \ [3,4,-1,1]\nOutput: 2\n\n\nExample 3:\n\n\nInput: [7,8,9,11,12]\nOutput: 1\n\n\
+  \nNote:\n\nYour algorithm should run in O(n) time and uses constant extra space."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_first_missing_positive (xs : List Int) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem find_first_missing_positive_is_positive\n    {xs : List Int}\
+  \ :\n    find_first_missing_positive xs > 0 :=\n  sorry\n\n\n\n\ntheorem find_first_missing_positive_handles_duplicates\n\
+  \    {xs : List Int} :\n    find_first_missing_positive xs = find_first_missing_positive\
+  \ (List.eraseDups xs) :=\n  sorry\n\n\n\n\n\n\ntheorem find_first_missing_positive_continuity\n\
+  \    {xs : List Int} :\n    let result := find_first_missing_positive xs\n    ∀\
+  \ i : Int, 1 ≤ i ∧ i < result → i ∈ xs :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval find_first_missing_positive [1, 2, 0]\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval find_first_missing_positive [3, 4, -1, 1]\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval find_first_missing_positive [7, 8, 9, 11, 12]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

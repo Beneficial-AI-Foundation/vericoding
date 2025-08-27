@@ -1,0 +1,18 @@
+"vc-description": "In this Kata, you will be given a string that has lowercase letters\
+  \ and numbers. Your task is to compare the number groupings and return the largest\
+  \ number. Numbers will not have leading zeros. \n\nFor example, `solve(\"gh12cdy695m1\"\
+  ) = 695`, because this is the largest of all number groupings. \n\nGood luck!\n\n\
+  Please also try [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem solve_returns_max_number (numbers : List Nat) :\n  let s :=\
+  \ numbers.foldr (fun n acc => s!\"a{n}b\" ++ acc) \"\"\n  solve s = numbers.maximum?.getD\
+  \ 0\n  := by sorry\n\n\ntheorem solve_returns_nat (s : String) :\n  0 ≤ solve s\n\
+  \  := by sorry\n\n\ntheorem solve_is_max_in_string (s : String) :\n  let digits\
+  \ := s.toList.filter Char.isDigit\n  let numbers := digits.map (λ c => c.toNat -\
+  \ '0'.toNat)\n  solve s = numbers.maximum?.getD 0\n  := by sorry\n\n/--\ninfo: 695\n\
+  -/\n#guard_msgs in\n#eval solve \"gh12cdy695m1\"\n\n/--\ninfo: 9\n-/\n#guard_msgs\
+  \ in\n#eval solve \"2ti9iei7qhr5\"\n\n/--\ninfo: 61\n-/\n#guard_msgs in\n#eval solve\
+  \ \"vih61w8oohj5\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

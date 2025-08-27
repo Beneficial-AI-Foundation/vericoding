@@ -1,0 +1,44 @@
+"vc-description": "=====Function Descriptions=====\ncollections.Counter()\nA counter\
+  \ is a container that stores elements as dictionary keys, and their counts are stored\
+  \ as dictionary values.\n\nSample Code\n>>> from collections import Counter\n>>>\
+  \ \n>>> myList = [1,1,2,3,4,5,3,2,3,4,2,1,2,3]\n>>> print Counter(myList)\nCounter({2:\
+  \ 4, 3: 4, 1: 3, 4: 2, 5: 1})\n>>>\n>>> print Counter(myList).items()\n[(1, 3),\
+  \ (2, 4), (3, 4), (4, 2), (5, 1)]\n>>> \n>>> print Counter(myList).keys()\n[1, 2,\
+  \ 3, 4, 5]\n>>> \n>>> print Counter(myList).values()\n[3, 4, 4, 2, 1]\n\n=====Problem\
+  \ Statement=====\nRaghu is a shoe shop owner. His shop has X number of shoes.\n\
+  He has a list containing the size of each shoe he has in his shop.\nThere are N\
+  \ number of customers who are willing to pay x_i amount of money only if they get\
+  \ the shoe of their desired size. Your task is to compute how much money Raghu earned.\n\
+  \n=====Input Format=====\nThe first line contains X, the number of shoes.\nThe second\
+  \ line contains the space separated list of all the shoe sizes in the shop.\nThe\
+  \ third line contains N, the number of customers.\nThe next N lines contain the\
+  \ space separated values of the shoe size desired by the customer and x_i, the price\
+  \ of the shoe.\n\n\n=====Constraints=====\n0<X<10^3\n0<N≤10^3\n0<x_i<100\n2<shoe\
+  \ size<20\n\n=====Output Format=====\nPrint the amount of money earned by Raghu."
+"vc-preamble": "import Imports.AllImports\n\ndef calculate_shoe_shop_earnings (num_shoes\
+  \ : Nat) (shoe_sizes : List Nat) \n    (customer_requests : List (Nat × Nat)) :\
+  \ Nat :=\n  sorry\n\n\ndef count_successful_sales (shoe_sizes : List Nat) (customer_requests\
+  \ : List (Nat × Nat)) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum_request_prices (requests : List (Nat × Nat)) : Nat :=\n\
+  \  sorry\n\n-- Earnings cannot be negative (this is implied by Nat return type)"
+"vc-theorems": "theorem earnings_nonnegative\n    (num_shoes : Nat) (shoe_sizes :\
+  \ List Nat) (customer_requests : List (Nat × Nat)) :\n    calculate_shoe_shop_earnings\
+  \ num_shoes shoe_sizes customer_requests ≥ 0 := sorry\n\n-- Earnings cannot exceed\
+  \ sum of requested prices\n\ntheorem earnings_upper_bound\n    (num_shoes : Nat)\
+  \ (shoe_sizes : List Nat) (customer_requests : List (Nat × Nat)) :\n    calculate_shoe_shop_earnings\
+  \ num_shoes shoe_sizes customer_requests ≤ \n    sum_request_prices customer_requests\
+  \ := sorry\n\n-- Cannot sell more shoes than inventory\n\ntheorem sales_limited_by_inventory\n\
+  \    (num_shoes : Nat) (shoe_sizes : List Nat) (customer_requests : List (Nat ×\
+  \ Nat)) :\n    count_successful_sales shoe_sizes customer_requests ≤ shoe_sizes.length\
+  \ := sorry\n\n-- Empty inventory yields zero earnings\n\ntheorem empty_inventory_zero_earnings\
+  \ (requests : List (Nat × Nat)) :\n    calculate_shoe_shop_earnings 0 [] requests\
+  \ = 0 := sorry\n\n-- Order of inventory doesn't affect earnings\n\ntheorem inventory_order_invariant\n\
+  \    (num_shoes : Nat) (shoe_sizes : List Nat) (requests : List (Nat × Nat)) :\n\
+  \    calculate_shoe_shop_earnings num_shoes shoe_sizes requests = \n    calculate_shoe_shop_earnings\
+  \ num_shoes shoe_sizes.reverse requests := sorry\n\n/--\ninfo: 200\n-/\n#guard_msgs\
+  \ in\n#eval calculate_shoe_shop_earnings 10 [2, 3, 4, 5, 6, 8, 7, 6, 5, 18] [(6,\
+  \ 55), (6, 45), (6, 55), (4, 40), (18, 60), (10, 50)]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval calculate_shoe_shop_earnings 0 [] [(6, 55)]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval calculate_shoe_shop_earnings 1 [2] [(3, 50)]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

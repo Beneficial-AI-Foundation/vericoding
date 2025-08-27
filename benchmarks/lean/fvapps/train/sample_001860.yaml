@@ -1,0 +1,39 @@
+"vc-description": "With respect to a given puzzle string, a word is valid if both\
+  \ the following conditions are satisfied:\n\nword contains the first letter of puzzle.\n\
+  For each letter in word, that letter is in puzzle.\n        For example, if the\
+  \ puzzle is \"abcdefg\", then valid words are \"faced\", \"cabbage\", and \"baggage\"\
+  ; while invalid words are \"beefed\" (doesn't include \"a\") and \"based\" (includes\
+  \ \"s\" which isn't in the puzzle).\n\nReturn an array answer, where answer[i] is\
+  \ the number of words in the given word list words that are valid with respect to\
+  \ the puzzle puzzles[i].\n \nExample :\nInput: \nwords = [\"aaaa\",\"asas\",\"able\"\
+  ,\"ability\",\"actt\",\"actor\",\"access\"], \npuzzles = [\"aboveyz\",\"abrodyz\"\
+  ,\"abslute\",\"absoryz\",\"actresz\",\"gaswxyz\"]\nOutput: [1,1,3,2,4,0]\nExplanation:\n\
+  1 valid word for \"aboveyz\" : \"aaaa\" \n1 valid word for \"abrodyz\" : \"aaaa\"\
+  \n3 valid words for \"abslute\" : \"aaaa\", \"asas\", \"able\"\n2 valid words for \"\
+  absoryz\" : \"aaaa\", \"asas\"\n4 valid words for \"actresz\" : \"aaaa\", \"asas\"\
+  , \"actt\", \"access\"\nThere're no valid words for \"gaswxyz\" cause none of the\
+  \ words in the list contains letter 'g'.\n\n \nConstraints:\n\n1 <= words.length\
+  \ <= 10^5\n4 <= words[i].length <= 50\n1 <= puzzles.length <= 10^4\npuzzles[i].length\
+  \ == 7\nwords[i][j], puzzles[i][j] are English lowercase letters.\nEach puzzles[i]\
+  \ doesn't contain repeated characters."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_num_valid_words (words: List String) (puzzles: List String)\
+  \ : List Nat :=\n  sorry\n"
+"vc-theorems": "theorem output_length_matches_puzzles {words: List String} {puzzles:\
+  \ List String}\n  (h1: words.length > 0)\n  (h2: puzzles.length > 0)\n  (h3: ∀ p\
+  \ ∈ puzzles, p.length = 7)\n  : (find_num_valid_words words puzzles).length = puzzles.length\
+  \ := by\n  sorry\n\n\ntheorem outputs_are_non_negative {words: List String} {puzzles:\
+  \ List String} \n  (h1: words.length > 0)\n  (h2: puzzles.length > 0)\n  (h3: ∀\
+  \ p ∈ puzzles, p.length = 7)\n  : ∀ x ∈ (find_num_valid_words words puzzles), x\
+  \ ≥ 0 := by\n  sorry\n\n\ntheorem empty_puzzles {words: List String}\n  (h1: words.length\
+  \ > 0) :\n  find_num_valid_words words [] = [] := by\n  sorry\n\n\ntheorem empty_words\
+  \ {puzzles: List String}\n  (h1: puzzles.length > 0)\n  (h2: ∀ p ∈ puzzles, p.length\
+  \ = 7)\n  : ∀ x ∈ (find_num_valid_words [] puzzles), x = 0 := by\n  sorry\n\n/--\n\
+  info: expected1\n-/\n#guard_msgs in\n#eval find_num_valid_words [\"aaaa\", \"asas\"\
+  , \"able\", \"ability\", \"actt\", \"actor\", \"access\"] [\"aboveyz\", \"abrodyz\"\
+  , \"abslute\", \"absoryz\", \"actresz\", \"gaswxyz\"]\n\n/--\ninfo: expected2\n\
+  -/\n#guard_msgs in\n#eval find_num_valid_words [\"apple\", \"pleas\", \"please\"\
+  ] [\"aelwxyz\", \"aelpxyz\", \"aelpsxy\", \"saelpxy\"]\n\n/--\ninfo: expected3\n\
+  -/\n#guard_msgs in\n#eval find_num_valid_words [\"a\"] [\"abcdefg\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

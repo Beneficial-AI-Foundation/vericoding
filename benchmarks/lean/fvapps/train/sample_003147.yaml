@@ -1,0 +1,21 @@
+"vc-description": "Reverse and invert all integer values in a given list. \n\nPython:\n\
+  \n    reverse_invert([1,12,'a',3.4,87,99.9,-42,50,5.6]) = [-1,-21,-78,24,-5]\n \
+  \   \nIgnore all other types than integer."
+"vc-preamble": "import Imports.AllImports\n\ndef reverseInvert (lst : List Int) :\
+  \ List Int := sorry\n\ntheorem reverseInvert_returns_list_of_ints {lst : List Int}\
+  \ : \n  ∀ x, x ∈ reverseInvert lst → x ∈ lst := by sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def numReverse (n : Int) : Int := sorry \n\ntheorem reverseInvert_bounded\
+  \ {lst : List Int} \n    (h : ∀ x ∈ lst, -999 ≤ x ∧ x ≤ 999) :\n    ∀ (i : Fin lst.length),\n\
+  \      let orig := lst.get i\n      let revNum := numReverse (Int.natAbs orig)\n\
+  \      (reverseInvert lst).get ⟨i, by sorry⟩ = if orig > 0 then -revNum else revNum\
+  \ := by sorry"
+"vc-theorems": "theorem reverseInvert_single_digits {lst : List Int} (h : ∀ x ∈ lst,\
+  \ 0 ≤ x ∧ x ≤ 9) :\n  ∀ (i : Fin lst.length),\n    (reverseInvert lst).get ⟨i, by\
+  \ sorry⟩ = -(lst.get i) := by sorry\n\n\ntheorem reverseInvert_length_preservation\
+  \ {lst : List Int} :\n  (reverseInvert lst).length = lst.length := by sorry\n\n\n\
+  /--\ninfo: [-1, -2, -3, -4, -5]\n-/\n#guard_msgs in\n#eval reverse_invert [1, 2,\
+  \ 3, 4, 5]\n\n/--\ninfo: [-1, -21, -78, 24, -5]\n-/\n#guard_msgs in\n#eval reverse_invert\
+  \ [1, 12, \"a\", 3.4, 87, 99.9, -42, 50, 5.6]\n\n/--\ninfo: [9, 81, -99]\n-/\n#guard_msgs\
+  \ in\n#eval reverse_invert [-9, -18, 99]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

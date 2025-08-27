@@ -1,0 +1,52 @@
+"vc-description": "Once again, Boris needs the help of Anton in creating a task. This\
+  \ time Anton needs to solve the following problem:\n\nThere are two arrays of integers\
+  \ $a$ and $b$ of length $n$. It turned out that array $a$ contains only elements\
+  \ from the set $\\{-1, 0, 1\\}$.\n\nAnton can perform the following sequence of\
+  \ operations any number of times:  Choose any pair of indexes $(i, j)$ such that\
+  \ $1 \\le i < j \\le n$. It is possible to choose the same pair $(i, j)$ more than\
+  \ once.   Add $a_i$ to $a_j$. In other words, $j$-th element of the array becomes\
+  \ equal to $a_i + a_j$. \n\nFor example, if you are given array $[1, -1, 0]$, you\
+  \ can transform it only to $[1, -1, -1]$, $[1, 0, 0]$ and $[1, -1, 1]$ by one operation.\n\
+  \nAnton wants to predict if it is possible to apply some number (zero or more) of\
+  \ these operations to the array $a$ so that it becomes equal to array $b$. Can you\
+  \ help him?\n\n\n-----Input-----\n\nEach test contains multiple test cases. \n\n\
+  The first line contains the number of test cases $t$ ($1 \\le t \\le 10000$). The\
+  \ description of the test cases follows.\n\nThe first line of each test case contains\
+  \ a single integer $n$ ($1 \\le n \\le 10^5$)  — the length of arrays.\n\nThe second\
+  \ line of each test case contains $n$ integers $a_1, a_2, \\dots, a_n$ ($-1 \\le\
+  \ a_i \\le 1$)  — elements of array $a$. There can be duplicates among elements.\n\
+  \nThe third line of each test case contains $n$ integers $b_1, b_2, \\dots, b_n$\
+  \ ($-10^9 \\le b_i \\le 10^9$)  — elements of array $b$. There can be duplicates\
+  \ among elements.\n\nIt is guaranteed that the sum of $n$ over all test cases doesn't\
+  \ exceed $10^5$.\n\n\n-----Output-----\n\nFor each test case, output one line containing\
+  \ \"YES\" if it's possible to make arrays $a$ and $b$ equal by performing the described\
+  \ operations, or \"NO\" if it's impossible.\n\nYou can print each letter in any\
+  \ case (upper or lower).\n\n\n-----Example-----\nInput\n5\n3\n1 -1 0\n1 1 -2\n3\n\
+  0 1 1\n0 2 2\n2\n1 0\n1 41\n2\n-1 0\n-1 -41\n5\n0 1 -1 1 -1\n1 1 -1 1 -1\n\nOutput\n\
+  YES\nNO\nYES\nYES\nNO\n\n\n\n-----Note-----\n\nIn the first test-case we can choose\
+  \ $(i, j)=(2, 3)$ twice and after that choose $(i, j)=(1, 2)$ twice too. These operations\
+  \ will transform $[1, -1, 0] \\to [1, -1, -2] \\to [1, 1, -2]$\n\nIn the second\
+  \ test case we can't make equal numbers on the second position.\n\nIn the third\
+  \ test case we can choose $(i, j)=(1, 2)$ $41$ times. The same about the fourth\
+  \ test case.\n\nIn the last lest case, it is impossible to make array $a$ equal\
+  \ to the array $b$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_transform_array (n : Nat) (a : List Int) (b : List Int)\
+  \ : Bool := sorry\n\ntheorem identical_arrays_transform (n : Nat) (a b : List Int)\
+  \ :\n  a = b → can_transform_array n a b = true := sorry\n"
+"vc-theorems": "theorem zero_array_no_transform (n : Nat) (a b : List Int) :\n  a\
+  \ ≠ b → (∀ x ∈ a, x = 0) → can_transform_array n a b = false := sorry\n\n\ntheorem\
+  \ no_positives_cant_increase (n : Nat) (a b : List Int) :\n  a.length = n →\n  b.length\
+  \ = n →\n  (∃ i, i < n ∧ b.getD i 0 > a.getD i 0) → \n  (∀ x ∈ a, x ≤ 0) → \n  can_transform_array\
+  \ n a b = false := sorry\n\n\ntheorem no_negatives_cant_decrease (n : Nat) (a b\
+  \ : List Int) :\n  a.length = n →\n  b.length = n →\n  (∃ i, i < n ∧ b.getD i 0\
+  \ < a.getD i 0) → \n  (∀ x ∈ a, x ≥ 0) → \n  can_transform_array n a b = false :=\
+  \ sorry\n\n\ntheorem single_element_zero_same :\n  can_transform_array 1 [0] [0]\
+  \ = true := sorry\n\n\ntheorem single_element_zero_increase :\n  can_transform_array\
+  \ 1 [0] [1] = false := sorry\n\n\ntheorem single_element_zero_decrease :\n  can_transform_array\
+  \ 1 [0] [-1] = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval can_transform_array\
+  \ 3 [1, -1, 0] [1, 1, -2]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval can_transform_array\
+  \ 3 [0, 1, 1] [0, 2, 2]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval can_transform_array\
+  \ 5 [0, 1, -1, 1, -1] [1, 1, -1, 1, -1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

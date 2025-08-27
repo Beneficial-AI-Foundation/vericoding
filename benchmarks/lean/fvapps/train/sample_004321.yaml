@@ -1,0 +1,19 @@
+"vc-description": "The [Ones' Complement](https://en.wikipedia.org/wiki/Ones%27_complement)\
+  \ of a binary number is the number obtained by swapping all the 0s for 1s and all\
+  \ the 1s for 0s. For example:\n\n```\nonesComplement(1001) = 0110\nonesComplement(1001)\
+  \ = 0110\n```\n\nFor any given binary number,formatted as a string, return the Ones'\
+  \ Complement of that number."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def ones_complement (s: String) : String := sorry\n\ntheorem ones_complement_double_complement\
+  \ (s: String) :\n  ones_complement (ones_complement s) = s := sorry\n"
+"vc-theorems": "theorem ones_complement_length_preservation (s: String) :\n  (ones_complement\
+  \ s).length = s.length := sorry\n\n\ntheorem ones_complement_valid_output (s: String)\
+  \ (i: String.Pos) :\n  ((ones_complement s).get i = '0' ∨ (ones_complement s).get\
+  \ i = '1') := sorry\n\n\ntheorem ones_complement_flips_bits (s: String) (i: String.Pos)\
+  \ :\n  (ones_complement s).get i ≠ s.get i := sorry\n\n\ntheorem ones_complement_empty\
+  \ :\n  ones_complement \"\" = \"\" := sorry\n\n/--\ninfo: '1'\n-/\n#guard_msgs in\n\
+  #eval ones_complement \"0\"\n\n/--\ninfo: '0'\n-/\n#guard_msgs in\n#eval ones_complement\
+  \ \"1\"\n\n/--\ninfo: '0010'\n-/\n#guard_msgs in\n#eval ones_complement \"1101\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

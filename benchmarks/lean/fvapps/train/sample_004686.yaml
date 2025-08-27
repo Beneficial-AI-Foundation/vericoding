@@ -1,0 +1,54 @@
+"vc-description": "You and your friends have been battling it out with your Rock 'Em,\
+  \ Sock 'Em robots, but things have gotten a little boring. You've each decided to\
+  \ add some amazing new features to your robot and automate them to battle to the\
+  \ death.\n\nEach robot will be represented by an object. You will be given two robot\
+  \ objects, and an object of battle tactics and how much damage they produce. Each\
+  \ robot will have a name, hit points, speed, and then a list of battle tacitcs they\
+  \ are to perform in order. Whichever robot has the best speed, will attack first\
+  \ with one battle tactic. \n\nYour job is to decide who wins.\n\nExample:\n```python\n\
+  \ robot_1 = {\n  \"name\": \"Rocky\",\n  \"health\": 100,\n  \"speed\": 20,\n  \"\
+  tactics\": [\"punch\", \"punch\", \"laser\", \"missile\"]\n }\n robot_2 = {\n  \
+  \ \"name\": \"Missile Bob\",\n   \"health\": 100,\n   \"speed\": 21,\n   \"tactics\"\
+  : [\"missile\", \"missile\", \"missile\", \"missile\"]\n }\n tactics = {\n   \"\
+  punch\": 20,\n   \"laser\": 30,\n   \"missile\": 35\n }\n \n fight(robot_1, robot_2,\
+  \ tactics) -> \"Missile Bob has won the fight.\"\n```\n\nrobot2 uses the first tactic,\
+  \ \"missile\" because he has the most speed. This reduces robot1's health by 35.\
+  \ Now robot1 uses a punch, and so on. \n\n**Rules**\n\n- A robot with the most speed\
+  \ attacks first. If they are tied, the first robot passed in attacks first.\n- Robots\
+  \ alternate turns attacking. Tactics are used in order.\n- A fight is over when\
+  \ a robot has 0 or less health or both robots have run out of tactics.\n- A robot\
+  \ who has no tactics left does no more damage, but the other robot may use the rest\
+  \ of his tactics.\n- If both robots run out of tactics, whoever has the most health\
+  \ wins. Return the message \"{Name} has won the fight.\"\n- If both robots run out\
+  \ of tactics and are tied for health, the fight is a draw. Return \"The fight was\
+  \ a draw.\"\n\n**To Java warriors**\n\n`Robot` class is immutable.\n\n\nCheck out\
+  \ my other 80's Kids Katas:\n\n\n80's Kids #1: How Many Licks Does It Take\n80's\
+  \ Kids #2: Help Alf Find His Spaceship\n80's Kids #3: Punky Brewster's Socks\n80's\
+  \ Kids #4: Legends of the Hidden Temple\n80's Kids #5: You Can't Do That on Television\n\
+  80's Kids #6: Rock 'Em, Sock 'Em Robots\n80's Kids #7: She's a Small Wonder\n80's\
+  \ Kids #8: The Secret World of Alex Mack\n80's Kids #9: Down in Fraggle Rock \n\
+  80's Kids #10: Captain Planet"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def fight (r1 r2 : Robot) (t : Tactics) : String :=\n  sorry\n"
+"vc-theorems": "theorem fight_returns_valid_result (r1 r2 : Robot) (t : Tactics) :\n\
+  \  let result := fight r1 r2 t\n  (result = s!\"{r1.name} has won the fight.\" ∨\
+  \ \n   result = s!\"{r2.name} has won the fight.\" ∨\n   result = \"The fight was\
+  \ a draw.\") :=\nsorry\n\n\ntheorem faster_robot_attacks_first (r1 r2 : Robot) (t\
+  \ : Tactics) :\n  r1.speed ≠ r2.speed →\n  r1.tactics ≠ [] →\n  r2.tactics ≠ []\
+  \ →\n  let faster := if r1.speed > r2.speed then r1 else r2\n  let slower := if\
+  \ r1.speed > r2.speed then r2 else r1\n  let firstDamage := match faster.tactics.head?\
+  \ with\n    | none => 0 \n    | some tactic => match t.val.lookup tactic with\n\
+  \      | none => 0\n      | some dmg => dmg\n  firstDamage ≥ slower.health →\n \
+  \ fight r1 r2 t = s!\"{faster.name} has won the fight.\" :=\nsorry\n\n\ntheorem\
+  \ equal_health_no_tactics_draws (r1 r2 : Robot) (t : Tactics) :\n  r1.health = r2.health\
+  \ →\n  r1.tactics = [] →\n  r2.tactics = [] →\n  fight r1 r2 t = \"The fight was\
+  \ a draw.\" :=\nsorry\n\n/--\ninfo: 'Missile Bob has won the fight.'\n-/\n#guard_msgs\
+  \ in\n#eval fight {\"name\": \"Rocky\", \"health\": 100, \"speed\": 20, \"tactics\"\
+  : [\"punch\", \"punch\", \"laser\", \"missile\"]} {\"name\": \"Missile Bob\", \"\
+  health\": 100, \"speed\": 21, \"tactics\": [\"missile\", \"missile\", \"missile\"\
+  , \"missile\"]} {\"punch\": 20, \"laser\": 30, \"missile\": 35}\n\n/--\ninfo: 'The\
+  \ fight was a draw.'\n-/\n#guard_msgs in\n#eval fight {\"name\": \"Bot1\", \"health\"\
+  : 100, \"speed\": 20, \"tactics\": [\"punch\"]} {\"name\": \"Bot2\", \"health\"\
+  : 100, \"speed\": 20, \"tactics\": [\"punch\"]} tactics\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

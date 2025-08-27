@@ -1,0 +1,49 @@
+"vc-description": "Chef Ada is preparing $N$ dishes (numbered $1$ through $N$). For\
+  \ each valid $i$, it takes $C_i$ minutes to prepare the $i$-th dish. The dishes\
+  \ can be prepared in any order.\nAda has a kitchen with two identical burners. For\
+  \ each valid $i$, to prepare the $i$-th dish, she puts it on one of the burners\
+  \ and after $C_i$ minutes, removes it from this burner; the dish may not be removed\
+  \ from the burner before those $C_i$ minutes pass, because otherwise it cools down\
+  \ and gets spoiled. Any two dishes may be prepared simultaneously, however, no two\
+  \ dishes may be on the same burner at the same time. Ada may remove a dish from\
+  \ a burner and put another dish on the same burner at the same time.\nWhat is the\
+  \ minimum time needed to prepare all dishes, i.e. reach the state where all dishes\
+  \ are prepared?\n\n-----Input-----\n- The first line of the input contains a single\
+  \ integer $T$ denoting the number of test cases. The description of $T$ test cases\
+  \ follows.\n- The first line of each test case contains a single integer $N$.\n\
+  - The second line contains $N$ space-separated integers $C_1, C_2, \\ldots, C_N$.\n\
+  \n-----Output-----\nFor each test case, print a single line containing one integer\
+  \ ― the minimum number of minutes needed to prepare all dishes.\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 1,000$\n- $1 \\le N \\le 4$\n- $1 \\le C_i \\le 5$ for each valid\
+  \ $i$\n\n-----Subtasks-----\nSubtask #1 (1 points): $C_1 = C_2 = \\ldots = C_N$\n\
+  Subtask #2 (99 points): original constraints\n\n-----Example Input-----\n3\n3\n\
+  2 2 2\n3\n1 2 3\n4\n2 3 4 5\n\n-----Example Output-----\n4\n3\n7\n\n-----Explanation-----\n\
+  Example case 1: Place the first two dishes on the burners, wait for two minutes,\
+  \ remove both dishes and prepare the last one on one burner.\nExample case 2: Place\
+  \ the first and third dish on the burners. When the first dish is prepared, remove\
+  \ it and put the second dish on the same burner.\nExample case 3: Place the third\
+  \ and fourth dish on the burners. When the third dish is prepared, remove it and\
+  \ put the second dish on the same burner. Similarly, replace the fourth dish (when\
+  \ it is prepared) by the first dish on the other burner."
+"vc-preamble": "import Imports.AllImports\n\ndef min_cooking_time (n: Nat) (times:\
+  \ List Nat) : Nat :=\n  sorry\n\n\ndef list_maximum (l: List Nat) : Nat :=\n  sorry\n\
+  \n\ndef list_sorted_take (l: List Nat) (n: Nat) : List Nat :=\n  sorry \n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_sum (l: List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem min_cooking_time_lower_bound_half_sum {n: Nat} {times: List\
+  \ Nat} \n  (h1: 1 ≤ n) (h2: n ≤ 100) (h3: times.length ≥ 1) :\n  let usedTimes :=\
+  \ list_sorted_take times (min n times.length)\n  min_cooking_time n times ≥ (list_sum\
+  \ usedTimes) / 2 := by\n  sorry\n\n\ntheorem min_cooking_time_lower_bound_max {n:\
+  \ Nat} {times: List Nat}\n  (h1: 1 ≤ n) (h2: n ≤ 100) (h3: times.length ≥ 1) :\n\
+  \  min_cooking_time n times ≥ list_maximum (times.take n) := by\n  sorry\n\n\ntheorem\
+  \ min_cooking_time_upper_bound_sum {n: Nat} {times: List Nat}\n  (h1: 1 ≤ n) (h2:\
+  \ n ≤ 100) (h3: times.length ≥ 1) :\n  let usedTimes := list_sorted_take times (min\
+  \ n times.length)\n  min_cooking_time n times ≤ list_sum usedTimes := by\n  sorry\n\
+  \n\ntheorem min_cooking_time_equal_times {n: Nat} (h1: 1 ≤ n) (h2: n ≤ 100) :\n\
+  \  let times := List.replicate n 10\n  min_cooking_time n times = ((n + 1) / 2)\
+  \ * 10 := by\n  sorry\n\n\ntheorem min_cooking_time_single_item {times: List Nat}\
+  \ (h: times.length ≥ 1) :\n  min_cooking_time 1 times = list_maximum times := by\n\
+  \  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval min_cooking_time 3 [2, 2, 2]\n\
+  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval min_cooking_time 3 [1, 2, 3]\n\n/--\n\
+  info: 7\n-/\n#guard_msgs in\n#eval min_cooking_time 4 [2, 3, 4, 5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

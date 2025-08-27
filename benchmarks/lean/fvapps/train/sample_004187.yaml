@@ -1,0 +1,24 @@
+"vc-description": "This is a follow-up from my previous Kata which can be found here:\
+  \ http://www.codewars.com/kata/5476f4ca03810c0fc0000098\n\nThis time, for any given\
+  \ linear sequence, calculate the function [f(x)] and return it as a function in\
+  \ Javascript or Lambda/Block in Ruby.\n\nFor example:\n\n```python\nget_function([0,\
+  \ 1, 2, 3, 4])(5) => 5\nget_function([0, 3, 6, 9, 12])(10) => 30\nget_function([1,\
+  \ 4, 7, 10, 13])(20) => 61\n```\n\nAssumptions for this kata are:\n```\nThe sequence\
+  \ argument will always contain 5 values equal to f(0) - f(4).\nThe function will\
+  \ always be in the format \"nx +/- m\", 'x +/- m', 'nx', 'x' or 'm'\nIf a non-linear\
+  \ sequence simply return 'Non-linear sequence' for javascript, ruby, and python.\
+  \ For C#, throw an ArgumentException.\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isLinear (xs : List Int) : Bool := sorry\n\ntheorem linear_sequence_gives_linear_function\n\
+  \  {seq : List Int} (h : seq.length = 5) (hlin : isLinear seq) :\n  ∃ f : Int →\
+  \ Int, get_function seq = Sum.inl f ∧\n  ∀ x : Int, f x = (seq[1]! - seq[0]!) *\
+  \ x + seq[0]! :=\nsorry\n"
+"vc-theorems": "theorem nonlinear_sequence_gives_error\n  {seq : List Int} (h : seq.length\
+  \ = 5) (hnlin : ¬isLinear seq) :\n  get_function seq = Sum.inr \"Non-linear sequence\"\
+  \ :=\nsorry\n\n\ntheorem linear_function_matches_input_points\n  {seq : List Int}\
+  \ (h : seq.length = 5) (hlin : isLinear seq) :\n  match get_function seq with\n\
+  \  | Sum.inl f => ∀ i : Fin 5, f i.val = seq[i]!\n  | Sum.inr _ => False :=\nsorry\n\
+  \n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval f1 5\n\n/--\ninfo: 30\n-/\n#guard_msgs\
+  \ in\n#eval f2 10\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

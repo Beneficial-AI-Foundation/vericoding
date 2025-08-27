@@ -1,0 +1,22 @@
+"vc-description": "Chef is good at making pancakes. Generally he gets requests to\
+  \ serve N pancakes at once.\nHe serves them in the form of a stack.\nA pancake can\
+  \ be treated as a circular disk with some radius.\nChef needs to take care that\
+  \ when he places a pancake on the top of the stack the radius of the pancake should\
+  \ not exceed the radius of the largest pancake in the stack by more than 1. \nAdditionally\
+  \ all radii should be positive integers, and the bottom most pancake should have\
+  \ its radius as 1.\nChef wants you to find out in how many ways can he create a\
+  \ stack containing N pancakes.\nInput\nFirst line of the input contains T (T <=\
+  \ 1000) denoting the number of test cases.\nT lines follow each containing a single\
+  \ integer N (1 <= N <= 1000) denoting the size of the required stack.\nOutput\n\
+  For each case the output should be a single integer representing the number of ways\
+  \ a stack of size N can be created. As the answer can be large print it modulo 1000000007.\n\
+  Example\nInput\n2\n1\n2\n\nOutput\n1\n2"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_pancake_stacks (n: Nat) : Nat := sorry\n\ntheorem valid_input_range_theorem\
+  \ (n: Nat) (h: n ≥ 1) (h2: n ≤ 1000) :\n  let result := solve_pancake_stacks n\n\
+  \  result ≥ 0 ∧ result < 1000000007 := sorry\n"
+"vc-theorems": "theorem base_cases_theorem : \n  solve_pancake_stacks 1 = 1 ∧\n  solve_pancake_stacks\
+  \ 2 = 2 ∧\n  solve_pancake_stacks 3 = 5 := sorry\n\n\ntheorem invalid_high_inputs_theorem\
+  \ (n: Nat) (h: n > 1000) :\n  solve_pancake_stacks n = 0 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

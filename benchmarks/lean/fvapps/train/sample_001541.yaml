@@ -1,0 +1,40 @@
+"vc-description": "Mr. Das is a teacher teaching for several years in a school. He\
+  \ is not computer savvy. Due to lockdown, now he has to take classes online. Recently\
+  \ he took an online exam for students of different classes. Now, he will call parents\
+  \ of all the students who scored lower than average marks for the class. He has\
+  \ requested you to give the name $X$, parent's phone number $P$, and marks obtained\
+  \ $M$ to him.\n\n-----Input:-----\n- First line contains $T$ no. of test cases\n\
+  - for every test case, first line contains an integer $N$, no. of students of his\
+  \ class \n- Next $N$ lines contain $X$, $P$ , and $M$ separated by space\n\n-----Output:-----\n\
+  For every test case, find details of the students who scored below average, then\
+  \ print $X, P, M$  separated by space on a new line as per the increasing order\
+  \ of their marks. In case there are multiple students with the same marks, print\
+  \ them as per the order of their occurrence in the input\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 20$\n- X contains characters between a-z and A-Z  with a maximum\
+  \ length of 20\n- $1 \\leq N \\leq 100$\n- P is 10 digits\n- $0 \\leq M \\leq 100$\n\
+  \n-----Sample Input:-----\n2  \n3\nRahul 1345964789 47\nRupendra 1457856987 58\n\
+  Priya 1478569820 45\n2\nTanuja 4310779415 97\nAkash 3689781245 43\n\n-----Sample\
+  \ Output:-----\nPriya 1478569820 45\nRahul 1345964789 47\nAkash 3689781245 43\n\n\
+  -----EXPLANATION:-----\nIn #1, Priya and Rahul's number was lower than average.\n\
+  In #2, Akash's number was lower than average"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_below_average_students (input : List (List String)) :\
+  \ List String := sorry\n\ndef sumList (xs : List Nat) : Nat :=\n  match xs with\n\
+  \  | [] => 0\n  | x :: rest => x + sumList rest\n"
+"vc-theorems": "theorem find_below_average_students_returns_below_average \n  (input\
+  \ : List (List String)) (result : List String) \n  (h : result = find_below_average_students\
+  \ input)\n  (student : String) (h2 : student ∈ result) \n  (parsed := student.split\
+  \ (· == ' '))\n  (marks := String.toNat! (parsed.get! 2))\n  (input_head := input.head!)\n\
+  \  (student_records := input_head.tail!)\n  (total_marks := sumList (student_records.map\
+  \ (fun s => String.toNat! ((s.split (· == ' ')).get! 2))))\n  (avg := total_marks\
+  \ / student_records.length) :\n  marks < avg := sorry\n\n\ntheorem find_below_average_students_valid_phone_numbers\n\
+  \  (input : List (List String)) (result : List String)\n  (h : result = find_below_average_students\
+  \ input)\n  (student : String) (h2 : student ∈ result) \n  (phone := (student.split\
+  \ (· == ' ')).get! 1) :\n  phone.length = 10 ∧ phone.all Char.isDigit := sorry\n\
+  \n\ntheorem find_below_average_students_sorted_marks\n  (input : List (List String))\
+  \ (result : List String)\n  (h : result = find_below_average_students input) :\n\
+  \  List.Pairwise (fun s1 s2 => \n    let marks1 := String.toNat! ((s1.split (· ==\
+  \ ' ')).get! 2)\n    let marks2 := String.toNat! ((s2.split (· == ' ')).get! 2)\n\
+  \    marks1 ≤ marks2\n  ) result := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

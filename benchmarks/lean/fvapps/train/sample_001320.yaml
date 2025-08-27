@@ -1,0 +1,33 @@
+"vc-description": "The students of Codechef Middle School are visiting an amusement\
+  \ park. The children want to go on a ride, however, there is a minimum height requirement\
+  \ of $X$ cm. Determine if the children are eligible to go on the ride. \nPrint \"\
+  Yes\" if they are eligible, \"No\" otherwise.\n\n-----Input:-----\n- First line\
+  \ will contain $T$, number of testcases. Then the testcases follow. \n- Each testcase\
+  \ contains of a single line of input, two integers $H$ which is a child's height\
+  \ in cm and $X$ which is the minimum permissible height. \n\n-----Output:-----\n\
+  For each testcase, output in a single line $\"Yes\"$ or $\"No\"$. You cannot give\
+  \ your answer as \"YeS\", \"YES\", \"yes\" or any other variation.\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 10^4$\n- $50 \\leq H \\leq 200$\n- $50 \\leq X \\leq 200$\n\n\
+  -----Sample Input:-----\n2\n120 100\n90 100\n\n-----Sample Output:-----\nYes\nNo\n\
+  \n-----EXPLANATION:-----\nThe first child has height more than minimum permissible\
+  \ height, so he can go on the ride while the other person cannot!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_height_eligibility (height min_height : Int) : String\
+  \ := sorry\n\ndef process_test_cases (cases : List (Int × Int)) : List String :=\
+  \ sorry\n"
+"vc-theorems": "theorem check_height_eligibility_valid (height min_height : Int) :\n\
+  \  let result := check_height_eligibility height min_height\n  result = \"Yes\"\
+  \ ∨ result = \"No\" ∧ \n  (result = \"Yes\" ↔ height ≥ min_height) := sorry\n\n\n\
+  theorem process_test_cases_length (cases : List (Int × Int)) :\n  (process_test_cases\
+  \ cases).length = cases.length := sorry\n\n\ntheorem process_test_cases_valid_outputs\
+  \ (cases : List (Int × Int)) :\n  ∀ x ∈ process_test_cases cases, x = \"Yes\" ∨\
+  \ x = \"No\" := sorry\n\n\ntheorem process_test_cases_correct (cases : List (Int\
+  \ × Int)) (i : Nat) (h : i < cases.length) :\n  let result := (process_test_cases\
+  \ cases)[i]'(by rw [process_test_cases_length]; exact h)\n  let case := cases[i]'h\n\
+  \  result = (if case.1 ≥ case.2 then \"Yes\" else \"No\") := sorry\n\n/--\ninfo:\
+  \ ['Yes', 'No']\n-/\n#guard_msgs in\n#eval process_test_cases [(120, 100), (90,\
+  \ 100)]\n\n/--\ninfo: ['Yes']\n-/\n#guard_msgs in\n#eval process_test_cases [(100,\
+  \ 100)]\n\n/--\ninfo: ['Yes', 'No', 'Yes']\n-/\n#guard_msgs in\n#eval process_test_cases\
+  \ [(150, 120), (80, 90), (200, 200)]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

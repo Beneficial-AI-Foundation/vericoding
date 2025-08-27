@@ -1,0 +1,51 @@
+"vc-description": "Chef would like go shopping to buy ingredients for his special\
+  \ dish. The local grocery store has some special discount offers. If you want to\
+  \ buy some set of ingredients you will pay for all ingredients except the cheapest\
+  \ one. Chef would like to spend as little money as possible. You have to help him.\
+  \ :)\n\nThe store is pretty small and stocks only one unit of each ingredients.\
+  \ Opposite each ingredient is a hanging price tag corresponding to it. The salesman\
+  \ walked away for a minute, giving Chef an opportunity to swap some price tags.\
+  \ He would like to swap some tags to minimize his purchase cost.\n\n-----Input-----\n\
+  The first line of the input contains an integer T denoting the number of test cases.\
+  \ The description of T test cases follows. \n\nThe first line of each test case\
+  \ contains a single integer N denoting the number of ingredients Chef needs to buy.\
+  \ The second line contains N space-separated integers A1, A2, ... , AN denoting\
+  \ the value  written on the price tags opposite the needed ingredients. The third\
+  \ line contains a single integer M denoting the number of special offers. The following\
+  \ M lines lists inventory of special offers, one offer per line. Each line contains\
+  \ an integer Ci followed by Ci integers denoting the indices of ingredients constituting\
+  \ the ith discount offer.\n\n-----Output-----\nFor each test case, output a single\
+  \ line containing the minimal purchase cost.\n\n-----Constraints-----\n- T ≤ 5\n\
+  - 1 ≤ N ≤ 15\n- 1 ≤ Ai ≤ 106\n- 0 ≤ M ≤ 2N-1\n- 2 ≤ Ci ≤ N\n- Subtask 1 (15 points):\
+  \  1 ≤ N ≤  5\n- Subtask 2 (25 points):  1 ≤ N ≤ 10\n- Subtask 3 (60 points):  1\
+  \ ≤ N ≤ 15\n\n-----Example-----\nInput:\n1\n4 \n1 2 3 4\n3\n2 1 2\n2 3 4\n3 1 2\
+  \ 3\n\nOutput:\n6"
+"vc-preamble": "import Imports.AllImports\n\ndef sum (l : List Nat) : Nat :=\n  match\
+  \ l with\n  | [] => 0\n  | h::t => h + sum t\n\n\ndef minimum (l : List Nat) : Nat\
+  \ := \n  match l with\n  | [] => 0\n  | h::t => min h (minimum t)\n\n\ndef maximum\
+  \ (l : List Nat) : Nat :=\n  match l with\n  | [] => 0\n  | h::t => max h (maximum\
+  \ t)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_min_cost (n : Nat) (arr : List Nat) (m : Nat) (offers\
+  \ : List (List Nat)) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem calculate_min_cost_bounded_by_sum \n  (n : Nat) (arr : List\
+  \ Nat) (m : Nat) (offers : List (List Nat)) :\n  calculate_min_cost n arr m offers\
+  \ ≤ sum arr :=\n  sorry\n\n\ntheorem calculate_min_cost_nonnegative \n  (n : Nat)\
+  \ (arr : List Nat) (m : Nat) (offers : List (List Nat)) :\n  calculate_min_cost\
+  \ n arr m offers ≥ 0 :=\n  sorry\n\n\ntheorem calculate_min_cost_singleton \n  (arr\
+  \ : List Nat) (m : Nat) (offers : List (List Nat)) :\n  arr.length = 1 → calculate_min_cost\
+  \ 1 arr m offers = arr.head! :=\n  sorry\n\n\ntheorem calculate_min_cost_pair_with_offer\n\
+  \  (arr : List Nat) (m : Nat) (offers : List (List Nat)) :\n  arr.length = 2 → \n\
+  \  (∃ o ∈ offers, o.head! = 2) → \n  calculate_min_cost 2 arr m offers ≤ sum arr\
+  \ ∧ \n  calculate_min_cost 2 arr m offers ≥ maximum arr :=\n  sorry\n\n\ntheorem\
+  \ calculate_min_cost_four_items_with_max_discounts\n  (arr : List Nat) :\n  arr.length\
+  \ = 4 →\n  let offers := [[2,1,2], [2,3,4], [3,1,2,3], [4,1,2,3,4]]\n  let m :=\
+  \ offers.length\n  calculate_min_cost 4 arr m offers ≤ sum arr - minimum arr :=\n\
+  \  sorry\n\n\ntheorem calculate_min_cost_monotonicity\n  (arr : List Nat) :\n  let\
+  \ n := arr.length\n  let offers := [[n] ++ (List.range n).map (fun x => x + 1)]\n\
+  \  let m := 1\n  calculate_min_cost n arr m offers ≤ sum arr :=\n  sorry\n\n/--\n\
+  info: 6\n-/\n#guard_msgs in\n#eval calculate_min_cost 4 [1, 2, 3, 4] 3 [[2, 1, 2],\
+  \ [2, 3, 4], [3, 1, 2, 3]]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval calculate_min_cost\
+  \ 3 [1, 2, 3] 1 [[2, 1, 2]]\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval calculate_min_cost\
+  \ 2 [5, 10] 1 [[2, 1, 2]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,53 @@
+"vc-description": "When Misha hits his favorite gym, he comes across an interesting\
+  \ problem with the barbell. In the gym, someone always leaves the weight plates\
+  \ in the strangest places you can imagine and sometime it's difficult to equip the\
+  \ barbell the way you want. Let's imagine that you have N weight plates placed in\
+  \ any order (remember that any gym has no more than K different types of weight\
+  \ plates and all weights are square-free). As a preliminary step towards solving\
+  \ this problem, Misha wants to simulate a simple gym, and for this purpose you have\
+  \ to deal with some queries:\n\n- [1 I X] Set the weight of the ith weight plate\
+  \ to value X.\n\n- [2 L R] Reverse the sequence of weight plates in the interval\
+  \ from L to R, where 1 ≤ L ≤ R ≤ N.\n\n- [3 L R W] Check the interval from L to\
+  \ R to find out if you can make the weight W using only weight plates on this interval.\
+  \ (Note: this type of query will appear no more than P times)\n\nPlease help Misha\
+  \ in solving this problem. \n\n-----Input-----\nFirst line of input contains the\
+  \ number of weight plates N, and number of queries Q. Next line contains N integers\
+  \ w1, w2, ..., wN, where wi is the weight of the ith weight plate. Next Q lines\
+  \ contain some queries described above. \n\n-----Output-----\nFor all queries of\
+  \ the third type: print \"Yes\" if your check returns a positive outcome, and \"\
+  No\" otherwise.\n\n-----Constraints-----\n- 1 ≤ N, W, Q ≤ 105\n- K ≤ 10\n- P ≤ 1000\n\
+  - All numbers in the input are positive integers and ≤ 105.\n- All the weights are\
+  \ square-free.\n\n-----Subtasks-----\n- Subtask 1: 1 ≤ N ≤ 103, 1 ≤ W ≤ 103, Q =\
+  \ 1 - 10 pts.\n\n- Subtask 2: 1 ≤ N ≤ 103, 1 ≤ W ≤ 103, 1 ≤ Q ≤ 103, P ≤ 100 - 15\
+  \ pts\n- Subtask 3: 1 ≤ N ≤ 104, 1 ≤ W ≤ 104, 1 ≤ Q ≤ 104, P ≤ 300 - 25 pts.\n\n\
+  - Subtask 4: 1 ≤ N ≤ 105, 1 ≤ W ≤ 105, 1 ≤ Q ≤ 105, K ≤ 2 - 20 pts.\n\n- Subtask\
+  \ 5: Original constraints - 30 pts.\n\n-----Example-----First\nInput:5 10\n1 2 3\
+  \ 5 6\n3 2 3 3\n3 2 3 4\n3 2 3 5\n2 2 5\n3 2 4 8\n1 2 1\n3 2 4 8\n2 1 4 \n3 2 4\
+  \ 3 \n3 1 5 7 \n\nOutput:Yes\nNo\nYes\nYes\nYes\nNo\nYesSecond\nInput:3 4\n2013\
+  \ 2015 2017\n3 1 3 4030\n1 1 111\n3 1 3 4030\n3 1 2 111\n\nOutput:Yes\nNo\nYes\n\
+  \n-----Explanation:-----First test explanation (step by step)\n1 2 3 5 6\n3 2 3\
+  \ 3 ([2, 3] 3=3 => Yes)\n3 2 3 4 ([2, 3] can't make 4 => No)\n3 2 3 5 ([2, 3] 2+3=5\
+  \ => Yes)\n2 2 5 (Reverse: [1, 6, 5, 3, 2])\n3 2 4 8 ([6, 5, 3] 5+3=8 => Yes)\n\
+  1 2 1 (Set: [1, 1, 5, 3, 2])\n3 2 4 8 ([1, 5, 3] 5+3=8 => Yes)\n2 1 4  (Reverse:\
+  \ [3, 5, 1, 1, 2])\n3 2 4 3 ([5, 1, 1] can't make 3 => No)\n3 1 5 7 ([3, 5, 1, 1,\
+  \ 2] 2+1+1+3=7 => Yes)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def WeightList := List Nat\n\ndef process_weight_queries (n : Nat)\
+  \ (weights : WeightList) (queries : List (List Nat)) : List String := \n  sorry\n"
+"vc-theorems": "theorem weights_length_matches_n (n : Nat) (weights : WeightList)\
+  \ :\n  weights.length ≤ n → True := \n  sorry\n\n\ntheorem query_results_valid_format\
+  \ (n : Nat) (weights : WeightList) (queries : List (List Nat)) \n    (results :\
+  \ List String) :\n  results.all (fun r => r = \"Yes\" ∨ r = \"No\") := \n  sorry\n\
+  \n\ntheorem double_reverse_idempotent (n : Nat) (weights : WeightList) :\n  let\
+  \ queries := [[2, 1, weights.length], [2, 1, weights.length]]\n  let original :=\
+  \ weights\n  let _ := process_weight_queries n weights queries\n  weights = original\
+  \ :=\n  sorry\n\n\ntheorem sum_bounds (n : Nat) (weights : WeightList) : \n  let\
+  \ total := weights.foldl (· + ·) 0\n  let queries := [[3, 1, weights.length, total\
+  \ + 1]]\n  let results := process_weight_queries n weights queries\n  results =\
+  \ [\"No\"] :=\n  sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval process_weight_queries\
+  \ 5 [1, 2, 3, 5, 6] [[3, 2, 3, 3], [3, 2, 3, 4], [3, 2, 3, 5], [2, 2, 5], [3, 2,\
+  \ 4, 8], [1, 2, 1], [3, 2, 4, 8], [2, 1, 4], [3, 2, 4, 3], [3, 1, 5, 7]]\n\n/--\n\
+  info: expected2\n-/\n#guard_msgs in\n#eval process_weight_queries 3 [2013, 2015,\
+  \ 2017] [[3, 1, 3, 4030], [1, 1, 111], [3, 1, 3, 4030], [3, 1, 2, 111]]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

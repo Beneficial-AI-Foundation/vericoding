@@ -1,0 +1,44 @@
+"vc-description": "Chef has decided to start home delivery from his restaurant. He\
+  \ hopes that he will get a lot of orders for delivery, however there is a concern.\
+  \ He doesn't have enough work forces for all the deliveries.  For this he has came\
+  \ up with an idea - he will group together all those orders which have to be delivered\
+  \ in nearby areas. \n\nIn particular, he has identified certain bidirectional roads\
+  \ which he calls as fast roads. They are short and usually traffic free, so the\
+  \ fast travel is possible along these roads. His plan is that he will send orders\
+  \ to locations A and B together if and only if it is possible to travel between\
+  \ A and B using only fast roads. Your task is, given the configuration of fast roads,\
+  \ identify which orders are to be sent together.\n\n-----Input-----\nFirst line\
+  \ of input contains an integer T, the number of test cases. Then T test cases follow.\
+  \ First line of each test case contains two space separated integers N and M, denoting\
+  \ number of locations and the number of fast roads. Then M lines follow each containing\
+  \ two space separated integers A and B, denoting that there is a fast road between\
+  \ locations A and B. Assume that locations are indexed by numbers from 0 to N-1.\
+  \ \n\nNext line contains an integer Q denoting the number of queries. Each of the\
+  \ next Q lines contain two integers X and Y. For each query you have to find out\
+  \ if orders meant for locations X and Y are to be sent together or not.\n\nNote\
+  \ that there might be multiple fast roads between same pair of locations, also there\
+  \ might be a fast road that links a location to itself.\n\n-----Output-----\nFor\
+  \ each test case print Q lines - one for each query. Output \"YO\" if the orders\
+  \ are to be \ndelivered together and \"NO\" otherwise (quotes for clarity).\n\n\
+  -----Constraints-----\n1 ≤ T ≤ 100\n1 ≤ N ≤ 100\n1 ≤ M ≤ 1000\n0 ≤ A, B, X, Y ≤\
+  \ N-1\n1 ≤ Q ≤ 3000\n\n-----Example-----\nInput:\n1\n4 2\n0 1\n1 2\n3\n0 2\n0 3\n\
+  2 1\n\nOutput:\nYO\nNO\nYO\n\n-----Warning!-----\nThere are large input and output\
+  \ files in this problem. Make sure you use fast enough I/O methods."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_delivery_problem (n m : Nat) (roads : List (Nat × Nat))\
+  \ (deliveries : List (Nat × Nat)) : List String :=\n  sorry\n"
+"vc-theorems": "theorem delivery_reflexive {n m : Nat} {roads : List (Nat × Nat)}\
+  \ {i : Nat} (h : i < n) :\n  (solve_delivery_problem n m roads [(i,i)]).head! =\
+  \ \"YO\" :=\n  sorry\n\n\ntheorem delivery_symmetric {n m : Nat} {roads : List (Nat\
+  \ × Nat)} {x y : Nat} \n  (hx : x < n) (hy : y < n) :\n  solve_delivery_problem\
+  \ n m roads [(x,y)] = solve_delivery_problem n m roads [(y,x)] :=\n  sorry\n\n\n\
+  theorem empty_roads_only_self_reachable {n : Nat} {i j : Nat} (hi : i < n) (hj :\
+  \ j < n) :\n  solve_delivery_problem n 0 [] [(i,j)] = [\"YO\"] ↔ i = j :=\n  sorry\n\
+  \n\ntheorem valid_output_format {n m : Nat} {roads : List (Nat × Nat)} {x y : Nat}\
+  \ \n  (hx : x < n) (hy : y < n) :\n  (solve_delivery_problem n m roads [(x,y)]).head!\
+  \ = \"YO\" ∨ \n  (solve_delivery_problem n m roads [(x,y)]).head! = \"NO\" :=\n\
+  \  sorry\n\n/--\ninfo: ['YO', 'NO', 'YO']\n-/\n#guard_msgs in\n#eval solve_delivery_problem\
+  \ 4 2 [(0, 1), (1, 2)] [(0, 2), (0, 3), (2, 1)]\n\n/--\ninfo: ['YO']\n-/\n#guard_msgs\
+  \ in\n#eval solve_delivery_problem 3 2 [(0, 1), (1, 2)] [(0, 2)]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

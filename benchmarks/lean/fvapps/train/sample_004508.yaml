@@ -1,0 +1,13 @@
+"vc-description": "Each test case will generate a variable whose value is 777. Find\
+  \ the name of the variable."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_variable_with_777 : String := sorry\n\ntheorem no_777_variable\n\
+  \  (h : find_variable_with_777.isEmpty = true) :\n  ¬ (∃ x : String, find_variable_with_777\
+  \ = x) := sorry\n"
+"vc-theorems": "theorem wrong_value\n  (name : String)\n  (val : Int)\n  (h1 : name.length\
+  \ > 0)\n  (h2 : val ≠ 777) :\n  ¬ (∃ x : String, find_variable_with_777 = x) :=\
+  \ sorry\n\n/--\ninfo: 'secret_var'\n-/\n#guard_msgs in\n#eval find_variable_with_777\
+  \ \n\n/--\ninfo: 'magic_number'\n-/\n#guard_msgs in\n#eval find_variable_with_777\
+  \ \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

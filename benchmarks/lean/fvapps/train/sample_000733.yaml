@@ -1,0 +1,34 @@
+"vc-description": "Many internet protocols these days include the option of associating\
+  \ a\nmedia type with the content being sent.\nThe type is usually inferred from\
+  \ the file extension.\nYou are to write a program that facilitates the lookup of\
+  \ media types for\na number of files.\nYou will be given a table of media type associations\
+  \ that associate a certain\nfile extension with a certain media type.\nYou will\
+  \ then be given a number of file names, and tasked to determine the correct\nmedia\
+  \ type for each file.\nA file extension is defined as the part of the file name\
+  \ after the final period.\nIf a file name has no periods, then it has no extension\
+  \ and the media type cannot\nbe determined.\nIf the file extension is not present\
+  \ in the table, then the media type cannot be\ndetermined.\nIn such cases you will\
+  \ print \"unknown\" as the media type.\nIf the file extension does appear in the\
+  \ table (case matters), then print the associated\nmedia type.\n\n-----Input-----\n\
+  Input begins with 2 integers N and Q on a line.\nN is the number of media type associations,\
+  \ and Q is the number of file names.\nFollowing this are N lines, each containing\
+  \ a file extension and a media type, separated by a space.\nFinally, Q lines, each\
+  \ containing the name of a file.\nN and Q will be no greater than 100 each.\nFile\
+  \ extensions will consist only of alphanumeric characters, will have length at most\
+  \ 10, and will be distinct.\nMedia types will have length at most 50, and will contain\
+  \ only alphanumeric characters and punctuation.\nFile names will consist only of\
+  \ alphanumeric characters and periods and have length at most 50.\n\n-----Output-----\n\
+  For each of the Q file names, print on a line the media type of the file.\nIf there\
+  \ is no matching entry, print \"unknown\" (quotes for clarity).\n\n-----Sample Input-----\n\
+  5 6\nhtml text/html\nhtm text/html\npng image/png\nsvg image/svg+xml\ntxt text/plain\n\
+  index.html\nthis.file.has.lots.of.dots.txt\nnodotsatall\nvirus.exe\ndont.let.the.png.fool.you\n\
+  case.matters.TXT\n\n-----Sample Output-----\ntext/html\ntext/plain\nunknown\nunknown\n\
+  unknown\nunknown"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def determine_media_types (associations : List (String × String))\
+  \ (filenames : List String) : List String :=\nsorry\n"
+"vc-theorems": "theorem empty_associations_gives_unknown (filenames : List String)\
+  \ : \n  determine_media_types [] filenames = List.replicate filenames.length \"\
+  unknown\" := \nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

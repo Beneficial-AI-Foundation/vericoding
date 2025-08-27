@@ -1,0 +1,17 @@
+"vc-description": "If you have not ever heard the term **Arithmetic Progrossion**,\
+  \ refer to: \nhttp://www.codewars.com/kata/find-the-missing-term-in-an-arithmetic-progression/python\n\
+  \nAnd here is an unordered version. Try if you can survive lists of **MASSIVE**\
+  \ numbers (which means time limit should be considered). :D\n\nNote: Don't be afraid\
+  \ that the minimum or the maximum element in the list is missing, e.g. [4, 6, 3,\
+  \ 5, 2] is missing 1 or 7, but this case is excluded from the kata.\n\nExample:\n\
+  \n```python\nfind([3, 9, 1, 11, 13, 5]) # => 7\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find (seq : List Int) : Int := sorry\n\ntheorem find_simple_sequence\n\
+  \    (start : Int) :\n    find [start, start + 2, start + 6] = start + 4 := sorry\n"
+"vc-theorems": "theorem find_symmetric_sequence\n    (center : Int) :\n    find [center\
+  \ - 4, center - 2, center + 2, center + 4] = center := sorry\n\n/--\ninfo: 7\n-/\n\
+  #guard_msgs in\n#eval find [3, 9, 1, 11, 13, 5]\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval find [5, -1, 0, 3, 4, -3, 2, -2]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
+  #eval find [2, -2, 8, -8, 4, -4, 6, -6]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,29 @@
+"vc-description": "Find the longest substring within a string that contains at most\
+  \ 2 unique characters.\n\n```\nsubstring(\"a\") => \"a\"\nsubstring(\"aaa\") =>\
+  \ \"aaa\"\nsubstring(\"abacd\") => \"aba\"\nsubstring(\"abacddcd\") => \"cddcd\"\
+  \nsubstring(\"cefageaacceaccacca\") => \"accacca\"\n```\n\nThis function will take\
+  \ alphanumeric characters as input.\n\nIn cases where there could be more than one\
+  \ correct answer, the first string occurrence should be used. For example, substring('abc')\
+  \ should return 'ab' instead of 'bc'.\n\nAlthough there are O(N^2) solutions to\
+  \ this problem, you should try to solve this problem in O(N) time. Tests may pass\
+  \ for O(N^2) solutions but, this is not guaranteed.\n\nThis question is much harder\
+  \ than some of the other substring questions. It's easy to think that you have a\
+  \ solution and then get hung up on the implementation."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def substring (s : String) : String := sorry\n\ntheorem substring_empty_or_single_char\
+  \ (s : String) :\n  let result := substring s\n  (s = \"\" → result = \"\") ∧ result.length\
+  \ ≤ s.length := sorry\n"
+"vc-theorems": "theorem substring_at_most_two_unique_chars (s : String) :\n  s ≠ \"\
+  \" →\n  let result := substring s\n  let chars := result.data\n  chars.eraseDups.length\
+  \ ≤ 2 := sorry\n\n\ntheorem substring_is_contiguous (s : String) :\n  let result\
+  \ := substring s\n  result ≠ \"\" →\n  ∃ start len, (s.drop start).take len = result\
+  \ := sorry\n\n\ntheorem substring_is_maximal (s : String) :\n  let result := substring\
+  \ s\n  ∀ start len,\n    let candidate := (s.drop start).take len\n    let candidateChars\
+  \ := candidate.data\n    candidateChars.eraseDups.length ≤ 2 →\n    candidate.length\
+  \ ≤ result.length := sorry\n\n\ntheorem two_char_string_returns_full (s : String)\
+  \ :\n  s ≠ \"\" →\n  (∀ c ∈ s.data, c = 'a' ∨ c = 'b') →\n  substring s = s := sorry\n\
+  \n/--\ninfo: 'aba'\n-/\n#guard_msgs in\n#eval substring \"abacd\"\n\n/--\ninfo:\
+  \ 'aaa'\n-/\n#guard_msgs in\n#eval substring \"aaa\"\n\n/--\ninfo: 'cddcd'\n-/\n\
+  #guard_msgs in\n#eval substring \"abacddcd\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

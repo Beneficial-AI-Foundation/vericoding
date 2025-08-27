@@ -1,0 +1,28 @@
+"vc-description": "Welcome young Jedi! In this Kata you must create a function that\
+  \ takes an amount of US currency in `cents`, and returns a dictionary/hash which\
+  \ shows the least amount of coins used to make up that amount. The only coin denominations\
+  \ considered in this exercise are: `Pennies (1¢), Nickels (5¢), Dimes (10¢) and\
+  \ Quarters (25¢)`.\nTherefor the dictionary returned should contain exactly 4 key/value\
+  \ pairs.\n\nNotes:\n\n* If the function is passed either 0 or a negative number,\
+  \ the function should return the dictionary with all values equal to 0.\n* If a\
+  \ float is passed into the function, its value should be be rounded down, and the\
+  \ resulting dictionary should never contain fractions of a coin.\n\n\n## Examples\n\
+  ```\nloose_change(56)    ==>  {'Nickels': 1, 'Pennies': 1, 'Dimes': 0, 'Quarters':\
+  \ 2}\nloose_change(-435)  ==>  {'Nickels': 0, 'Pennies': 0, 'Dimes': 0, 'Quarters':\
+  \ 0}\nloose_change(4.935) ==>  {'Nickels': 0, 'Pennies': 4, 'Dimes': 0, 'Quarters':\
+  \ 0}\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def looseChange (cents : Int) : CoinChange := sorry\n\ntheorem\
+  \ loose_change_valid_values (cents : Int) :\n  let result := looseChange cents\n\
+  \  result.quarters ≥ 0 ∧ \n  result.dimes ≥ 0 ∧\n  result.nickels ≥ 0 ∧ \n  result.pennies\
+  \ ≥ 0 := sorry\n"
+"vc-theorems": "theorem loose_change_optimal (cents : Int) (h : cents ≥ 0) (h2 : cents\
+  \ ≤ 1000) :\n  let result := looseChange cents\n  result.pennies < 5 ∧ \n  result.nickels\
+  \ < 2 ∧ \n  result.dimes < 3 ∧\n  result.quarters * 25 + result.dimes * 10 + result.nickels\
+  \ * 5 + result.pennies = cents := sorry\n\n/--\ninfo: {'Nickels': 1, 'Pennies':\
+  \ 1, 'Dimes': 0, 'Quarters': 2}\n-/\n#guard_msgs in\n#eval loose_change 56\n\n/--\n\
+  info: {'Nickels': 0, 'Pennies': 0, 'Dimes': 0, 'Quarters': 4}\n-/\n#guard_msgs in\n\
+  #eval loose_change 100\n\n/--\ninfo: {'Nickels': 1, 'Pennies': 2, 'Dimes': 0, 'Quarters':\
+  \ 0}\n-/\n#guard_msgs in\n#eval loose_change 7.9\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

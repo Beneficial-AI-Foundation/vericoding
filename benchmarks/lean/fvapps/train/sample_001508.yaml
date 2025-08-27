@@ -1,0 +1,25 @@
+"vc-description": "A reversed arabic no is one whose digits have been written in the\
+  \ reversed order. However in this any trailing zeroes are omitted. The task at hand\
+  \ here is a simple one. You need to add two numbers which have been written in reversed\
+  \ arabic and return the output back in reversed arabic form, assuming no zeroes\
+  \ were lost while reversing.\n\n\n-----Input-----\nThe input consists of N cases.\
+  \ The first line of the input contains only a positive integer N. Then follow the\
+  \ cases. Each case consists of exactly one line with two positive integers seperated\
+  \ by space. These are the reversednumbers you are to add.\n\n\n-----Output-----\n\
+  For each case, print exactly one line containing only one integer- the reversed\
+  \ sum of two reversed numbers. Omit any leading zeroes in the output.\n\n\n-----Example-----\n\
+  Input:\n1\n24 1\n\nOutput:\n34"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def StringNum := String\ndef reversed_sum (s1 s2 : StringNum) :\
+  \ Int := sorry\n"
+"vc-theorems": "theorem reversed_sum_is_integer (s1 s2 : StringNum) : \n  ∃ n : Int,\
+  \ reversed_sum s1 s2 = n := sorry\n\n\ntheorem reversed_sum_logic (s1 s2 : StringNum)\
+  \ :\n  let reverse_int (s : StringNum) := sorry\n  let a := reverse_int s1\n  let\
+  \ b := reverse_int s2\n  reversed_sum s1 s2 = reverse_int (toString (a + b)) :=\
+  \ sorry\n\n\ntheorem reversed_sum_symmetric (s1 s2 : StringNum) :\n  reversed_sum\
+  \ s1 s2 = reversed_sum s2 s1 := sorry\n\n/--\ninfo: 34\n-/\n#guard_msgs in\n#eval\
+  \ reversed_sum \"24\" \"1\"\n\n/--\ninfo: 33\n-/\n#guard_msgs in\n#eval reversed_sum\
+  \ \"11\" \"22\"\n\n/--\ninfo: 579\n-/\n#guard_msgs in\n#eval reversed_sum \"123\"\
+  \ \"456\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

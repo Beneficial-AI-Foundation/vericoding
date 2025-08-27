@@ -1,0 +1,49 @@
+"vc-description": "Tic-tac-toe is played by two players A and B on a 3 x 3 grid.\n\
+  Here are the rules of Tic-Tac-Toe:\n\nPlayers take turns placing characters into\
+  \ empty squares (\" \").\nThe first player A always places \"X\" characters, while\
+  \ the second player B always places \"O\" characters.\n\"X\" and \"O\" characters\
+  \ are always placed into empty squares, never on filled ones.\nThe game ends when\
+  \ there are 3 of the same (non-empty) character filling any row, column, or diagonal.\n\
+  The game also ends if all squares are non-empty.\nNo more moves can be played if\
+  \ the game is over.\n\nGiven an array moves where each element is another array\
+  \ of size 2 corresponding to the row and column of the grid where they mark their\
+  \ respective character in the order in which A and B play.\nReturn the winner of\
+  \ the game if it exists (A or B), in case the game ends in a draw return \"Draw\"\
+  , if there are still movements to play return \"Pending\".\nYou can assume that moves\
+  \ is valid (It follows the rules of Tic-Tac-Toe), the grid is initially empty and\
+  \ A will play first.\n \nExample 1:\nInput: moves = [[0,0],[2,0],[1,1],[2,1],[2,2]]\n\
+  Output: \"A\"\nExplanation: \"A\" wins, he always plays first.\n\"X  \"    \"X \
+  \ \"    \"X  \"    \"X  \"    \"X  \"\n\"   \" -> \"   \" -> \" X \" -> \" X \"\
+  \ -> \" X \"\n\"   \"    \"O  \"    \"O  \"    \"OO \"    \"OOX\"\n\nExample 2:\n\
+  Input: moves = [[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]\nOutput: \"B\"\nExplanation:\
+  \ \"B\" wins.\n\"X  \"    \"X  \"    \"XX \"    \"XXO\"    \"XXO\"    \"XXO\"\n\"\
+  \   \" -> \" O \" -> \" O \" -> \" O \" -> \"XO \" -> \"XO \" \n\"   \"    \"  \
+  \ \"    \"   \"    \"   \"    \"   \"    \"O  \"\n\nExample 3:\nInput: moves = [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]\n\
+  Output: \"Draw\"\nExplanation: The game ends in a draw since there are no moves\
+  \ to make.\n\"XXO\"\n\"OOX\"\n\"XOX\"\n\nExample 4:\nInput: moves = [[0,0],[1,1]]\n\
+  Output: \"Pending\"\nExplanation: The game has not finished yet.\n\"X  \"\n\" O\
+  \ \"\n\"   \"\n\n \nConstraints:\n\n1 <= moves.length <= 9\nmoves[i].length == 2\n\
+  0 <= moves[i][j] <= 2\nThere are no repeated elements on moves.\nmoves follow the\
+  \ rules of tic tac toe."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Move := Nat × Nat\n\ndef tictactoe (moves: List Move) : String\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem valid_output (moves: List Move) :\n  let result := tictactoe\
+  \ moves\n  result = \"A\" ∨ result = \"B\" ∨ result = \"Draw\" ∨ result = \"Pending\"\
+  \ := by\n  sorry\n\n\ntheorem moves_in_bounds (moves: List Move) :\n  ∀ move ∈ moves,\
+  \ move.1 ≤ 2 ∧ move.2 ≤ 2 := by \n  sorry\n\n\ntheorem alternating_players (moves:\
+  \ List Move) :\n  moves.length ≥ 2 →\n  let player_a := (List.enum moves).filter\
+  \ (λ x => x.1 % 2 = 0)\n  let player_b := (List.enum moves).filter (λ x => x.1 %\
+  \ 2 = 1)\n  player_a.length ≥ player_b.length ∧ \n  player_a.length - player_b.length\
+  \ ≤ 1 := by\n  sorry\n\n\ntheorem win_implies_three_in_line (moves: List Move) :\n\
+  \  let result := tictactoe moves\n  (result = \"A\" → ((List.enum moves).filter\
+  \ (λ x => x.1 % 2 = 0)).length ≥ 3) ∧\n  (result = \"B\" → ((List.enum moves).filter\
+  \ (λ x => x.1 % 2 = 1)).length ≥ 3) := by\n  sorry\n\n\ntheorem draw_implies_full_board\
+  \ (moves: List Move) :\n  tictactoe moves = \"Draw\" → moves.length = 9 := by\n\
+  \  sorry\n\n/--\ninfo: 'A'\n-/\n#guard_msgs in\n#eval tictactoe [[0, 0], [2, 0],\
+  \ [1, 1], [2, 1], [2, 2]]\n\n/--\ninfo: 'B'\n-/\n#guard_msgs in\n#eval tictactoe\
+  \ [[0, 0], [1, 1], [0, 1], [0, 2], [1, 0], [2, 0]]\n\n/--\ninfo: 'Draw'\n-/\n#guard_msgs\
+  \ in\n#eval tictactoe [[0, 0], [1, 1], [2, 0], [1, 0], [1, 2], [2, 1], [0, 1], [0,\
+  \ 2], [2, 2]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

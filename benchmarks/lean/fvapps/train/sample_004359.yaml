@@ -1,0 +1,26 @@
+"vc-description": "The Mormons are trying to find new followers and in order to do\
+  \ that they embark on missions.\n\nEach time they go on a mission, every Mormons\
+  \ converts a fixed number of people (reach) into followers. This continues and every\
+  \ freshly converted Mormon as well as every original Mormon go on another mission\
+  \ and convert the same fixed number of people each. The process continues until\
+  \ they reach a predefined target number of followers (input into the model).\n\n\
+  Converted Mormons are unique so that there's no duplication amongst them.\n\nCreate\
+  \ a function Mormons(startingNumber, reach, target) that calculates how many missions\
+  \ Mormons need to embark on, in order to reach their target. While each correct\
+  \ solution will pass, for more fun try to make a recursive function.\n\nAll model\
+  \ inputs are valid positive integers."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def mormons (starting reach target : Nat) : Nat := sorry\n\ntheorem\
+  \ mormons_non_negative (starting reach target : Nat) :\n  mormons starting reach\
+  \ target ≥ 0 := sorry\n"
+"vc-theorems": "theorem mormons_zero_if_target_leq_starting (starting reach target\
+  \ : Nat) :\n  target ≤ starting →\n  mormons starting reach target = 0 := sorry\n\
+  \n\ntheorem mormons_reaches_target (starting reach target : Nat) :\n  starting *\
+  \ ((reach + 1) ^ (mormons starting reach target)) ≥ target := sorry\n\n\ntheorem\
+  \ mormons_minimal (starting reach target : Nat) :\n  mormons starting reach target\
+  \ > 0 →\n  starting * ((reach + 1) ^ (mormons starting reach target - 1)) < target\
+  \ := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval mormons 40 2 120\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval mormons 40 2 121\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval mormons 20 3 500\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

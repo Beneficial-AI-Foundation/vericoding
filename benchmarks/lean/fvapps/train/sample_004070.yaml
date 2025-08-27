@@ -1,0 +1,30 @@
+"vc-description": "You just got done with your set at the gym, and you are wondering\
+  \ how much weight you could lift if you did a single repetition. Thankfully, a few\
+  \ scholars have devised formulas for this purpose (from [Wikipedia](https://en.wikipedia.org/wiki/One-repetition_maximum))\
+  \ :\n\n\n### Epley\n\n\n### McGlothin\n\n\n### Lombardi\n\n\nYour function will\
+  \ receive a weight `w` and a number of repetitions `r` and must return your projected\
+  \ one repetition maximum. Since you are not sure which formula to use and you are\
+  \ feeling confident, your function will return the largest value from the three\
+  \ formulas shown above, rounded to the nearest integer. However, if the number of\
+  \ repetitions passed in is `1` (i.e., it is already a one rep max), your function\
+  \ must return `w`. Also, if the number of repetitions passed in is `0` (i.e., no\
+  \ repetitions were completed), your function must return `0`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_1RM (weight : Int) (reps : Int) : Int := sorry\n\n\
+  -- Non-negative result"
+"vc-theorems": "theorem rm_nonnegative (weight reps : Int) \n  (hw : weight ≥ 0) (hr\
+  \ : reps ≥ 0) :\n  calculate_1RM weight reps ≥ 0 := sorry\n\n-- Zero reps gives\
+  \ zero result  \n\ntheorem rm_zero_reps (weight : Int) \n  (hw : weight ≥ 0) :\n\
+  \  calculate_1RM weight 0 = 0 := sorry\n\n-- One rep equals weight\n\ntheorem rm_one_rep\
+  \ (weight : Int)\n  (hw : weight ≥ 0) :\n  calculate_1RM weight 1 = weight := sorry\n\
+  \n-- Result >= weight for multiple reps\n\ntheorem rm_ge_weight (weight reps : Int)\n\
+  \  (hw : weight ≥ 0) (hr : reps > 1) :\n  calculate_1RM weight reps ≥ weight :=\
+  \ sorry\n\n-- Result is integer \n\ntheorem rm_is_int (weight reps : Int)\n  (hw\
+  \ : weight ≥ 0) (hr : reps ≥ 0) :\n  calculate_1RM weight reps = (calculate_1RM\
+  \ weight reps) := sorry\n\n/--\ninfo: 282\n-/\n#guard_msgs in\n#eval calculate_1RM\
+  \ 135 20\n\n/--\ninfo: 253\n-/\n#guard_msgs in\n#eval calculate_1RM 200 8\n\n/--\n\
+  info: 289\n-/\n#guard_msgs in\n#eval calculate_1RM 270 2\n\n/--\ninfo: 360\n-/\n\
+  #guard_msgs in\n#eval calculate_1RM 360 1\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
+  #eval calculate_1RM 400 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,22 @@
+"vc-description": "We are given hours, a list of the number of hours worked per day\
+  \ for a given employee.\nA day is considered to be a tiring day if and only if the\
+  \ number of hours worked is (strictly) greater than 8.\nA well-performing interval\
+  \ is an interval of days for which the number of tiring days is strictly larger\
+  \ than the number of non-tiring days.\nReturn the length of the longest well-performing\
+  \ interval.\n \nExample 1:\nInput: hours = [9,9,6,0,6,6,9]\nOutput: 3\nExplanation:\
+  \ The longest well-performing interval is [9,9,6].\n\n \nConstraints:\n\n1 <= hours.length\
+  \ <= 10000\n0 <= hours[i] <= 16"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def longestWPI (hours : List Nat) : Nat := sorry\n\ntheorem longestWPI_non_negative\
+  \ (hours : List Nat) : \n  longestWPI hours ≥ 0 := sorry\n"
+"vc-theorems": "theorem longestWPI_bounded (hours : List Nat) :\n  longestWPI hours\
+  \ ≤ hours.length := sorry\n\n\ntheorem longestWPI_empty :\n  longestWPI [] = 0 :=\
+  \ sorry\n\n\n\n\n\n\ntheorem longestWPI_optimal (hours : List Nat) (start len :\
+  \ Nat) :\n  start < hours.length →\n  len > longestWPI hours →\n  len ≤ hours.length\
+  \ - start →\n  let subseq := (hours.drop start).take len\n  let productive := (subseq.filter\
+  \ (· > 8)).length \n  let tired := len - productive\n  productive ≤ tired := sorry\n\
+  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval longestWPI [9, 9, 6, 0, 6, 6, 9]\n\n/--\n\
+  info: 0\n-/\n#guard_msgs in\n#eval longestWPI [6, 6, 6]\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval longestWPI [9, 9, 9]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

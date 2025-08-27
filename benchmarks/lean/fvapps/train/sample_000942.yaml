@@ -1,0 +1,34 @@
+"vc-description": "You are given a sequence $A_1, A_2, \\ldots, A_N$. You want all\
+  \ the elements of the sequence to be equal. In order to achieve that, you may perform\
+  \ zero or more moves. In each move, you must choose an index $i$ ($1 \\le i \\le\
+  \ N$), then choose $j = i-1$ or $j = i+1$ (it is not allowed to choose $j = 0$ or\
+  \ $j = N+1$) and change the value of $A_i$ to $A_j$ — in other words, you should\
+  \ replace the value of one element of the sequence by one of its adjacent elements.\n\
+  What is the minimum number of moves you need to make in order to make all the elements\
+  \ of the sequence equal?\n\n-----Input-----\n- The first line of the input contains\
+  \ a single integer $T$ denoting the number of test cases. The description of $T$\
+  \ test cases follows.\n- The first line of each test case contains a single integer\
+  \ $N$.\n- The second line contains $N$ space-separated integers $A_1, A_2, \\ldots,\
+  \ A_N$.\n\n-----Output-----\nFor each test case, print a single line containing\
+  \ one integer — the minimum required number of moves.\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 100$\n- $1 \\le N \\le 100$\n- $1 \\le A_i \\le 100$ for each valid\
+  \ $i$\n\n-----Example Input-----\n3\n5\n1 1 1 1 1\n4\n9 8 1 8\n2\n1 9\n\n-----Example\
+  \ Output-----\n0\n2\n1\n\n-----Explanation-----\nExample case 1: No moves are needed\
+  \ since all the elements are already equal.\nExample case 3: We can perform one\
+  \ move on either $A_1$ or $A_2$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_min_moves (n: Nat) (arr: List Int) : Nat := sorry\n\n\
+  theorem find_min_moves_result_range {n: Nat} {arr: List Int} (h: n > 0) :\n  find_min_moves\
+  \ n arr ≤ n := sorry \n"
+"vc-theorems": "theorem find_min_moves_result_nonneg {n: Nat} {arr: List Int} :\n\
+  \  find_min_moves n arr ≥ 0 := sorry\n\n\ntheorem find_min_moves_all_same {n: Nat}\
+  \ {v: Int} (h: n > 0) :\n  find_min_moves n (List.replicate n v) = 0 := sorry\n\n\
+  \ntheorem find_min_moves_single_different {n: Nat} {v w: Int} (h1: n ≥ 2) (h2: v\
+  \ ≠ w) :\n  find_min_moves n ([v] ++ List.replicate (n-1) w) = 1 := sorry\n\n\n\
+  theorem find_min_moves_reverse {n: Nat} {arr: List Int} (h: n > 0) :\n  find_min_moves\
+  \ n arr = find_min_moves n arr.reverse := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval find_min_moves 5 [1, 1, 1, 1, 1]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval find_min_moves 4 [9, 8, 1, 8]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_min_moves\
+  \ 2 [1, 9]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

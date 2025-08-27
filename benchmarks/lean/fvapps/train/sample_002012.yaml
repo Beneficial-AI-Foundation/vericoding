@@ -1,0 +1,54 @@
+"vc-description": "Andrewid the Android is a galaxy-famous detective. He is now chasing\
+  \ a criminal hiding on the planet Oxa-5, the planet almost fully covered with water.\n\
+  \nThe only dry land there is an archipelago of n narrow islands located in a row.\
+  \ For more comfort let's represent them as non-intersecting segments on a straight\
+  \ line: island i has coordinates [l_{i}, r_{i}], besides, r_{i} < l_{i} + 1 for\
+  \ 1 ≤ i ≤ n - 1.\n\nTo reach the goal, Andrewid needs to place a bridge between\
+  \ each pair of adjacent islands. A bridge of length a can be placed between the\
+  \ i-th and the (i + 1)-th islads, if there are such coordinates of x and y, that\
+  \ l_{i} ≤ x ≤ r_{i}, l_{i} + 1 ≤ y ≤ r_{i} + 1 and y - x = a. \n\nThe detective\
+  \ was supplied with m bridges, each bridge can be used at most once. Help him determine\
+  \ whether the bridges he got are enough to connect each pair of adjacent islands.\n\
+  \n\n-----Input-----\n\nThe first line contains integers n (2 ≤ n ≤ 2·10^5) and m\
+  \ (1 ≤ m ≤ 2·10^5) — the number of islands and bridges.\n\nNext n lines each contain\
+  \ two integers l_{i} and r_{i} (1 ≤ l_{i} ≤ r_{i} ≤ 10^18) — the coordinates of\
+  \ the island endpoints.\n\nThe last line contains m integer numbers a_1, a_2, ...,\
+  \ a_{m} (1 ≤ a_{i} ≤ 10^18) — the lengths of the bridges that Andrewid got.\n\n\n\
+  -----Output-----\n\nIf it is impossible to place a bridge between each pair of adjacent\
+  \ islands in the required manner, print on a single line \"No\" (without the quotes),\
+  \ otherwise print in the first line \"Yes\" (without the quotes), and in the second\
+  \ line print n - 1 numbers b_1, b_2, ..., b_{n} - 1, which mean that between islands\
+  \ i and i + 1 there must be used a bridge number b_{i}. \n\nIf there are multiple\
+  \ correct answers, print any of them. Note that in this problem it is necessary\
+  \ to print \"Yes\" and \"No\" in correct case.\n\n\n-----Examples-----\nInput\n\
+  4 4\n1 4\n7 8\n9 10\n12 14\n4 5 3 8\n\nOutput\nYes\n2 3 1 \n\nInput\n2 2\n11 14\n\
+  17 18\n2 9\n\nOutput\nNo\n\nInput\n2 1\n1 1\n1000000000000000000 1000000000000000000\n\
+  999999999999999999\n\nOutput\nYes\n1 \n\n\n\n-----Note-----\n\nIn the first sample\
+  \ test you can, for example, place the second bridge between points 3 and 8, place\
+  \ the third bridge between points 7 and 10 and place the first bridge between points\
+  \ 10 and 14.\n\nIn the second sample test the first bridge is too short and the\
+  \ second bridge is too long, so the solution doesn't exist."
+"vc-preamble": "import Imports.AllImports\n\ndef solve_bridge_problem (n m : Nat)\
+  \ (islands : List (List Int)) (bridges : List Int) : String := sorry\n\ndef verify_bridge_placement\
+  \ (bridges : List Int) (gaps : List (Int × Int)) (result : String) : Bool := sorry\n\
+  \n\ndef string_to_nat_array (s : String) : List Nat := sorry\n\nstructure BridgeProblemInputs\
+  \ where\n  n : Nat\n  m : Nat \n  islands : List (List Int)\n  bridges : List Int\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_indices (result : String) : List Nat :=\n  if result =\
+  \ \"No\" then []\n  else string_to_nat_array (result.splitOn \"\\n\").head!\n"
+"vc-theorems": "theorem result_format_valid (n m : Nat) (islands : List (List Int))\
+  \ (bridges : List Int) :\n  let result := solve_bridge_problem n m islands bridges\n\
+  \  (result = \"No\") ∨ \n  (∃ nums : List Nat, result = s!\"Yes\\n{nums}\" ∧ nums.length\
+  \ = n - 1) := sorry\n\n\ntheorem bridge_placement_valid (n m : Nat) (islands : List\
+  \ (List Int)) (bridges : List Int) :\n  let result := solve_bridge_problem n m islands\
+  \ bridges\n  let gaps := List.range (n-1) |>.map (λ i => (1, 1))  -- Simplified\
+  \ gaps for type checking\n  verify_bridge_placement bridges gaps result = true :=\
+  \ sorry\n\n\ntheorem bridge_indices_valid (n m : Nat) (islands : List (List Int))\
+  \ (bridges : List Int) :\n  let result := solve_bridge_problem n m islands bridges\
+  \ \n  let indices := get_indices result\n  result = \"No\" ∨ \n  (∀ i ∈ indices,\
+  \ 1 ≤ i ∧ i ≤ m) := sorry\n\n/--\ninfo: 'Yes\\n2 3 1'\n-/\n#guard_msgs in\n#eval\
+  \ solve_bridge_problem 4 4 [[1, 4], [7, 8], [9, 10], [12, 14]] [4, 5, 3, 8]\n\n\
+  /--\ninfo: 'No'\n-/\n#guard_msgs in\n#eval solve_bridge_problem 2 2 [[11, 14], [17,\
+  \ 18]] [2, 9]\n\n/--\ninfo: 'Yes\\n1'\n-/\n#guard_msgs in\n#eval solve_bridge_problem\
+  \ 2 1 [[1, 1], [1000000000000000000, 1000000000000000000]] [999999999999999999]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

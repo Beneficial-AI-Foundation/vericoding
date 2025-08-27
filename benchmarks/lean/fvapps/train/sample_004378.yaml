@@ -1,0 +1,24 @@
+"vc-description": "Your job is to build a function which determines whether or not\
+  \ there are double characters in a string (including whitespace characters). For\
+  \ example ```aa```, ``!!`` or ```  ```.\n \n\nYou want the function to return true\
+  \ if the string contains double characters and false if not.  The test should not\
+  \ be case sensitive; for example both ```aa``` & ```aA``` return true.\n\nExamples:\n\
+  ```python\n  double_check(\"abca\")\n  #returns False\n  \n  double_check(\"aabc\"\
+  )\n  #returns True\n  \n  double_check(\"a 11 c d\")\n  #returns True\n  \n  double_check(\"\
+  AabBcC\")\n  #returns True\n  \n  double_check(\"a b  c\")\n  #returns True\n  \n\
+  \  double_check(\"a b c d e f g h i h k\")\n  #returns False\n  \n  double_check(\"\
+  2020\")\n  #returns False\n  \n  double_check(\"a!@€£#$%^&*()_-+=}]{[|\\\"':;?/>.<,~\"\
+  )\n  #returns False\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def double_check (s : String) : Bool := sorry\n\ntheorem double_check_returns_bool\
+  \ (s : String) :\n  double_check s = true ∨ double_check s = false := sorry\n"
+"vc-theorems": "theorem double_check_repeating_chars {s : String} \n  (h : ∃ (c :\
+  \ Char) (i j : String.Pos), i < j ∧ \n    s.get i = c ∧ s.get j = c) :\n  double_check\
+  \ s = true := sorry\n\n\ntheorem double_check_case_insensitive {s : String}\n  (h\
+  \ : s.length ≥ 2) :\n  ∃ i j : String.Pos, i < j → double_check s = true := sorry\n\
+  \n\ntheorem double_check_single_char {s : String}\n  (h : s.length = 1) :\n  double_check\
+  \ s = false := sorry\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval double_check\
+  \ \"abca\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval double_check \"aabc\"\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval double_check \"a 11 c d\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,31 @@
+"vc-description": "=====Function Descriptions=====\nidentity\n\nThe identity tool\
+  \ returns an identity array. An identity array is a square matrix with all the main\
+  \ diagonal elements as 1 and the rest as 0. The default type of elements is float.\n\
+  \nimport numpy\nprint numpy.identity(3) #3 is for  dimension 3 X 3\n\n#Output\n\
+  [[ 1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0.  1.]]\n\neye\n\nThe eye tool returns a\
+  \ 2-D array with 1's as the diagonal and 0's elsewhere. The diagonal can be main,\
+  \ upper or lower depending on the optional parameter k. A positive k is for the\
+  \ upper diagonal, a negative k is for the lower, and a 0 k (default) is for the\
+  \ main diagonal.\n\nimport numpy\nprint numpy.eye(8, 7, k = 1)    # 8 X 7 Dimensional\
+  \ array with first upper diagonal 1.\n\n#Output\n[[ 0.  1.  0.  0.  0.  0.  0.]\n\
+  \ [ 0.  0.  1.  0.  0.  0.  0.]\n [ 0.  0.  0.  1.  0.  0.  0.]\n [ 0.  0.  0. \
+  \ 0.  1.  0.  0.]\n [ 0.  0.  0.  0.  0.  1.  0.]\n [ 0.  0.  0.  0.  0.  0.  1.]\n\
+  \ [ 0.  0.  0.  0.  0.  0.  0.]\n [ 0.  0.  0.  0.  0.  0.  0.]]\n\nprint numpy.eye(8,\
+  \ 7, k = -2)   # 8 X 7 Dimensional array with second lower diagonal 1.\n\n=====Problem\
+  \ Statement=====\nYour task is to print an array of size NXM with its main diagonal\
+  \ elements as 1's and 0's everywhere else.\n\n=====Input Format=====\nA single line\
+  \ containing the space separated values of N and M.\nN denotes the rows.\nM denotes\
+  \ the columns.\n\n=====Output Format=====\nPrint the desired NXM array."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Matrix (n m : Nat) := Fin n → Fin m → Nat\n\ndef generate_eye_matrix\
+  \ (n m : Nat) : Matrix n m := sorry\n"
+"vc-theorems": "theorem eye_matrix_valid_dimensions {n m : Nat} (h1 : n > 0) (h2 :\
+  \ m > 0) :\n  ∃ (M : Matrix n m), M = generate_eye_matrix n m := sorry\n\n\ntheorem\
+  \ eye_matrix_diagonal_ones {n m : Nat} (h1 : n > 0) (h2 : m > 0) \n  (i : Fin n)\
+  \ (h3 : i.val < m) :\n  (generate_eye_matrix n m) i ⟨i.val, h3⟩ = 1 := sorry\n\n\
+  \ntheorem eye_matrix_off_diagonal_zeros {n m : Nat} (h1 : n > 0) (h2 : m > 0)\n\
+  \  (i : Fin n) (j : Fin m) :\n  i.val ≠ j.val → (generate_eye_matrix n m) i j =\
+  \ 0 := sorry\n\n\ntheorem eye_matrix_invalid_input {n m : Int} :\n  n < 0 ∨ m <\
+  \ 0 → generate_eye_matrix n.natAbs m.natAbs = λ i j => 0 := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

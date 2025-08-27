@@ -1,0 +1,22 @@
+"vc-description": "Given a non-negative integer num represented as a string, remove\
+  \ k digits from the number so that the new number is the smallest possible.\n\n\n\
+  Note:\n\nThe length of num is less than 10002 and will be ≥ k.\nThe given num does\
+  \ not contain any leading zero.\n\n\n\n\nExample 1:\n\nInput: num = \"1432219\"\
+  , k = 3\nOutput: \"1219\"\nExplanation: Remove the three digits 4, 3, and 2 to form\
+  \ the new number 1219 which is the smallest.\n\n\n\nExample 2:\n\nInput: num = \"\
+  10200\", k = 1\nOutput: \"200\"\nExplanation: Remove the leading 1 and the number\
+  \ is 200. Note that the output must not contain leading zeroes.\n\n\n\nExample 3:\n\
+  \nInput: num = \"10\", k = 2\nOutput: \"0\"\nExplanation: Remove all the digits\
+  \ from the number and it is left with nothing which is 0."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def removeKDigits (num : String) (k : Nat) : String := sorry\n\n\
+  theorem remove_zero_digits \n  (num : String)\n  (h : num.any (fun c => '0' ≤ c\
+  \ ∧ c ≤ '9')) :\n  removeKDigits num 0 = \n    if (num.dropWhile (· = '0')).isEmpty\
+  \ \n    then \"0\" \n    else num.dropWhile (· = '0')\n  := sorry\n"
+"vc-theorems": "theorem remove_all_digits\n  (num : String) \n  (h1 : num.any (fun\
+  \ c => '0' ≤ c ∧ c ≤ '9'))\n  (h2 : num.length ≤ 10) :\n  removeKDigits num num.length\
+  \ = \"0\"\n  := sorry\n\n/--\ninfo: '1219'\n-/\n#guard_msgs in\n#eval remove_k_digits\
+  \ \"1432219\" 3\n\n/--\ninfo: '200'\n-/\n#guard_msgs in\n#eval remove_k_digits \"\
+  10200\" 1\n\n/--\ninfo: '0'\n-/\n#guard_msgs in\n#eval remove_k_digits \"10\" 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

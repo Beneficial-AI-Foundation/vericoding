@@ -1,0 +1,42 @@
+"vc-description": "There is a country with $n$ citizens. The $i$-th of them initially\
+  \ has $a_{i}$ money. The government strictly controls the wealth of its citizens.\
+  \ Whenever a citizen makes a purchase or earns some money, they must send a receipt\
+  \ to the social services mentioning the amount of money they currently have.\n\n\
+  Sometimes the government makes payouts to the poor: all citizens who have strictly\
+  \ less money than $x$ are paid accordingly so that after the payout they have exactly\
+  \ $x$ money. In this case the citizens don't send a receipt.\n\nYou know the initial\
+  \ wealth of every citizen and the log of all events: receipts and payouts. Restore\
+  \ the amount of money each citizen has after all events.\n\n\n-----Input-----\n\n\
+  The first line contains a single integer $n$ ($1 \\le n \\le 2 \\cdot 10^{5}$) —\
+  \ the numer of citizens.\n\nThe next line contains $n$ integers $a_1$, $a_2$, ...,\
+  \ $a_n$ ($0 \\le a_{i} \\le 10^{9}$) — the initial balances of citizens.\n\nThe\
+  \ next line contains a single integer $q$ ($1 \\le q \\le 2 \\cdot 10^{5}$) — the\
+  \ number of events.\n\nEach of the next $q$ lines contains a single event. The events\
+  \ are given in chronological order.\n\nEach event is described as either 1 p x ($1\
+  \ \\le p \\le n$, $0 \\le x \\le 10^{9}$), or 2 x ($0 \\le x \\le 10^{9}$). In the\
+  \ first case we have a receipt that the balance of the $p$-th person becomes equal\
+  \ to $x$. In the second case we have a payoff with parameter $x$.\n\n\n-----Output-----\n\
+  \nPrint $n$ integers — the balances of all citizens after all events.\n\n\n-----Examples-----\n\
+  Input\n4\n1 2 3 4\n3\n2 3\n1 2 2\n2 1\n\nOutput\n3 2 3 4 \n\nInput\n5\n3 50 2 1\
+  \ 10\n3\n1 2 0\n2 8\n1 3 20\n\nOutput\n8 8 20 8 10 \n\n\n\n-----Note-----\n\nIn\
+  \ the first example the balances change as follows: 1 2 3 4 $\\rightarrow$ 3 3 3\
+  \ 4 $\\rightarrow$ 3 2 3 4 $\\rightarrow$ 3 2 3 4\n\nIn the second example the balances\
+  \ change as follows: 3 50 2 1 10 $\\rightarrow$ 3 0 2 1 10 $\\rightarrow$ 8 8 8\
+  \ 8 10 $\\rightarrow$ 8 8 20 8 10"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_money_events (n : Nat) (balances : List Int) (events\
+  \ : List (Nat × Int)) : List Int := sorry\n\ndef solve_money_events_multi (n : Nat)\
+  \ (balances : List Int) (events : List (Nat × Nat × Int)) : List Int := sorry\n"
+"vc-theorems": "theorem empty_events_preserves_balances (n : Nat) (h : n ≥ 1) (balances\
+  \ : List Int) : \n  solve_money_events n balances [] = balances := sorry\n\n\ntheorem\
+  \ single_payout_distributes_evenly (n : Nat) (amount : Int) (h1 : n ≥ 1) (h2 : n\
+  \ ≤ 100) (h3 : amount ≥ 0) (h4 : amount ≤ 1000) :\n  let balances := List.replicate\
+  \ n 0\n  let events := [(2, amount)]\n  let result := solve_money_events n balances\
+  \ events\n  ∀ x ∈ result, x = amount := sorry\n\n\ntheorem single_receipt_maintains_minimum\
+  \ (n person : Nat) (amount : Int) \n  (h1 : n ≥ 1) (h2 : n ≤ 10) (h3 : person ≥\
+  \ 1) (h4 : person ≤ n) \n  (h5 : amount ≥ 0) (h6 : amount ≤ 1000) :\n  let balances\
+  \ := List.replicate n 0\n  let events := [(1, person, amount)]\n  let result :=\
+  \ solve_money_events_multi n balances events\n  List.get! result (person - 1) ≥\
+  \ amount := sorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

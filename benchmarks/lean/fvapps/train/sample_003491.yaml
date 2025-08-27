@@ -1,0 +1,14 @@
+"vc-description": "You've just entered a programming contest and have a chance to\
+  \ win a million dollars. This is the last question you have to solve, so your victory\
+  \ (and your vacation) depend on it. Can you guess the function just by looking at\
+  \ the test cases? There are two numerical inputs and one numerical output. Goodluck!\n\
+  \nhint: go\n here"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def code (a b : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem code_non_negative (a b : Nat) :\n  0 ≤ code a b := by\n  sorry\n\
+  \n\ntheorem code_commutative (a b : Nat) :\n  code a b = code b a := by\n  sorry\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval code 9 8\n\n/--\ninfo: 1419\n-/\n#guard_msgs\
+  \ in\n#eval code 123 456\n\n/--\ninfo: 1698\n-/\n#guard_msgs in\n#eval code 200\
+  \ 100\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

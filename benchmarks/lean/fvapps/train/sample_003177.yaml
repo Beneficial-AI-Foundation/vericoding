@@ -1,0 +1,30 @@
+"vc-description": "Create a function which checks a number for three different properties.\n\
+  \n- is the number prime?\n- is the number even?\n- is the number a multiple of 10?\n\
+  \nEach should return either true or false, which should be given as an array. Remark:\
+  \ The Haskell variant uses `data Property`.\n\n### Examples\n```python\nnumber_property(7)\
+  \  # ==> [true,  false, false] \nnumber_property(10) # ==> [false, true,  true]\
+  \ \n```\nThe number will always be an integer, either positive or negative. Note\
+  \ that negative numbers cannot be primes, but they can be multiples of 10:\n\n```python\n\
+  number_property(-7)  # ==> [false, false, false] \nnumber_property(-10) # ==> [false,\
+  \ true,  true] \n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def numberProperty (n : Int) : List Bool := sorry\ndef isPrime\
+  \ (n : Int) : Bool := sorry\n\n/-- The number_property function always returns a\
+  \ list of exactly 3 booleans -/"
+"vc-theorems": "theorem numberProperty_returns_three_bools (n : Int) : \n  let result\
+  \ := numberProperty n\n  result.length = 3 ∧ result.all (λ x => x = true ∨ x = false)\
+  \ := sorry\n\n/-- The second element of number_property indicates if the number\
+  \ is even -/\n\ntheorem even_property_matches_modulo (n : Int) :\n  (numberProperty\
+  \ n).get! 1 = (n % 2 = 0) := sorry\n\n/-- The third element of number_property indicates\
+  \ if the number is divisible by 10 -/\n\ntheorem multiple_of_ten_property (n : Int)\
+  \ :\n  (numberProperty n).get! 2 = (n % 10 = 0) := sorry\n\n/-- For positive numbers,\
+  \ the first element indicates primality -/\n\ntheorem prime_property_positive (n\
+  \ : Int) :\n  0 ≤ n → n ≤ 100 →\n  (if n ≤ 1 \n   then (numberProperty n).get! 0\
+  \ = false\n   else (numberProperty n).get! 0 = isPrime n) := sorry\n\n/-- Negative\
+  \ numbers are never marked as prime -/\n\ntheorem negative_numbers_not_prime (n\
+  \ : Int) :\n  n < 0 → (numberProperty n).get! 0 = false := sorry\n\n/-- Multiples\
+  \ of 10 are always marked as even -/\n\ntheorem multiples_of_ten_are_even (n : Int)\
+  \ :\n  (numberProperty n).get! 2 = true → \n  (numberProperty n).get! 1 = true :=\
+  \ sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

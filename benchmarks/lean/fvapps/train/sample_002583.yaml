@@ -1,0 +1,26 @@
+"vc-description": "**Step 1:** Create a function called `encode()` to replace all\
+  \ the lowercase vowels in a given string with numbers according to the following\
+  \ pattern:\n```\na -> 1\ne -> 2\ni -> 3\no -> 4\nu -> 5\n```\n\nFor example, `encode(\"\
+  hello\")` would return `\"h2ll4\"`. There is no need to worry about uppercase vowels\
+  \ in this kata.\n\n**Step 2:** Now create a function called `decode()` to turn the\
+  \ numbers back into vowels according to the same pattern shown above.\n\nFor example,\
+  \ `decode(\"h3 th2r2\")` would return `\"hi there\"`.\n\nFor the sake of simplicity,\
+  \ you can assume that any numbers passed into the function will correspond to vowels."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def encode (s : String) : String := sorry \ndef decode (s : String)\
+  \ : String := sorry\n"
+"vc-theorems": "theorem encode_length_preserving (s : String) : \n  (encode s).length\
+  \ = s.length := sorry\n\n\ntheorem decode_length_preserving (s : String) :\n  (decode\
+  \ s).length = s.length := sorry\n\n\ntheorem encode_non_vowels_unchanged (s : String)\
+  \ :\n  ∀ c, c ∈ s.data → c ∉ ['a', 'e', 'i', 'o', 'u'] → \n  c ∈ (encode s).data\
+  \ := sorry\n\n\ntheorem decode_non_numbers_unchanged (s : String) :\n  ∀ c, c ∈\
+  \ s.data → c ∉ ['1', '2', '3', '4', '5'] →\n  c ∈ (decode s).data := sorry\n\n/--\n\
+  info: 'h2ll4'\n-/\n#guard_msgs in\n#eval encode \"hello\"\n\n/--\ninfo: 'hello'\n\
+  -/\n#guard_msgs in\n#eval decode \"h2ll4\"\n\n/--\ninfo: 'H4w 1r2 y45 t4d1y?'\n\
+  -/\n#guard_msgs in\n#eval encode \"How are you today?\"\n\n/--\ninfo: 'How are you\
+  \ today?'\n-/\n#guard_msgs in\n#eval decode \"H4w 1r2 y45 t4d1y?\"\n\n/--\ninfo:\
+  \ 'Th3s 3s 1n 2nc4d3ng t2st.'\n-/\n#guard_msgs in\n#eval encode \"This is an encoding\
+  \ test.\"\n\n/--\ninfo: 'This is an encoding test.'\n-/\n#guard_msgs in\n#eval decode\
+  \ \"Th3s 3s 1n 2nc4d3ng t2st.\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

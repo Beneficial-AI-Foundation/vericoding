@@ -1,0 +1,20 @@
+"vc-description": "In this Kata, you will be given two numbers, `a` and `b`, and your\
+  \ task is to determine if the first number `a` is divisible by `all` the prime factors\
+  \ of the second number `b`. For example: `solve(15,12) = False` because `15` is\
+  \ not divisible by all the prime factors of `12` (which include`2`).\n\nSee test\
+  \ cases for more examples. \n\nGood luck!\n\nIf you like this Kata, please try:\n\
+  \n[Sub-array division](https://www.codewars.com/kata/59eb64cba954273cd4000099)\n\
+  \n[Divisor harmony](https://www.codewars.com/kata/59bf97cd4f98a8b1cd00007e)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (a b : Nat) : Bool := sorry\n\ntheorem same_number_always_true\
+  \ (n : Nat) (h : n > 0) :\n  solve n n = true := sorry\n"
+"vc-theorems": "theorem multiple_always_true (n m : Nat) (h₁ : n > 0) (h₂ : m > 0)\
+  \ :\n  solve (n * m) m = true := sorry\n\n\ntheorem coprime_one_property (n : Nat)\
+  \ (h : n > 1) :\n  solve 1 n = false := sorry\n\n\ntheorem divisibility_property\
+  \ (a b : Nat) (h₁ : a > 0) (h₂ : b > 0) :\n  solve a b = true → ∃ p : Nat, p > 0\
+  \ ∧ p ≤ 9 ∧ a % p = 0 ∧ b % p = 0 := sorry\n\n\ntheorem power_relationship (n :\
+  \ Nat) (h : n > 0) :\n  solve n (n * n) = true := sorry\n\n/--\ninfo: True\n-/\n\
+  #guard_msgs in\n#eval solve 2 256\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval\
+  \ solve 15 12\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval solve 9 243\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

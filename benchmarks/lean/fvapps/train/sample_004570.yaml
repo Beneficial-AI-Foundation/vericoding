@@ -1,0 +1,31 @@
+"vc-description": "Tired of those repetitive javascript challenges? Here's a unique\
+  \ hackish one that should keep you busy for a while ;)\n\nThere's a mystery function\
+  \ which is already available for you to use. It's a simple function called `mystery`.\
+  \ It accepts a string as a parameter and outputs a string. The exercise depends\
+  \ on guessing what this function actually does.\n\nYou can call the mystery function\
+  \ like this:\n\n```python\nmy_output = mystery(\"my_input\")\n```\n\nUsing your\
+  \ own test cases, try to call the mystery function with different input strings\
+  \ and try to analyze its output in order to guess what is does. You are free to\
+  \ call the mystery function in your own test cases however you want.\n\nWhen you\
+  \ think you've understood how my mystery function works, prove it by reimplementing\
+  \ its logic in a function that you should call 'solved(x)'. To validate your code,\
+  \ your function 'solved' should return the same output as my function 'mystery'\
+  \ given the same inputs.\n\nBeware! Passing your own test cases doesn't imply you'll\
+  \ pass mine.\n\nCheaters are welcome :)\n\nHave fun!\n\n---\n\nToo easy? Then this\
+  \ kata will totally blow your mind:\n\nhttp://www.codewars.com/kata/mystery-function-number-2"
+"vc-preamble": "import Imports.AllImports\n\ndef sorted (s : String) : Bool := \n\
+  \  let chars := s.data\n  chars.zip (chars.drop 1) |>.all (fun (a, b) => a ≤ b)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solved (s : String) : String := sorry\n\ntheorem solved_returns_sorted\
+  \ (s : String) :\n  sorted (solved s) = true := sorry\n"
+"vc-theorems": "theorem solved_maintains_even_length (s : String) :\n  s.length %\
+  \ 2 = 0 → (solved s).length = s.length := sorry\n\n\ntheorem solved_reduces_odd_length\
+  \ (s : String) :\n  s.length % 2 = 1 → (solved s).length = s.length - 1 := sorry\n\
+  \n\ntheorem solved_maintains_character_set (s : String) :\n  ∀ c ∈ (solved s).data,\
+  \ c ∈ s.data := sorry\n\n\ntheorem solved_reduces_char_set_odd (s : String) :\n\
+  \  s.length % 2 = 1 → (solved s).length = s.length - 1 ∧ \n  (∀ c ∈ (solved s).data,\
+  \ c ∈ s.data) := sorry\n\n\ntheorem solved_idempotent (s : String) :\n  solved (solved\
+  \ s) = solved s := sorry\n\n/--\ninfo: 'abcd'\n-/\n#guard_msgs in\n#eval solved\
+  \ \"abcd\"\n\n/--\ninfo: 'abde'\n-/\n#guard_msgs in\n#eval solved \"bacde\"\n\n\
+  /--\ninfo: 'abcd'\n-/\n#guard_msgs in\n#eval solved \"dcba\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

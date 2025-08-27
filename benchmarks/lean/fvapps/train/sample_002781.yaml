@@ -1,0 +1,33 @@
+"vc-description": "You have stumbled across the divine pleasure that is owning a dog\
+  \ and a garden. Now time to pick up all the cr@p! :D\n\nGiven a 2D array to represent\
+  \ your garden, you must find and collect all of the dog cr@p - represented by '@'.\n\
+  \nYou will also be given the number of bags you have access to (bags), and the capactity\
+  \ of a bag (cap). If there are no bags then you can't pick anything up, so you can\
+  \ ignore cap.\n\nYou need to find out if you have enough capacity to collect all\
+  \ the cr@p and make your garden clean again. \n\nIf you do, return 'Clean', else\
+  \ return 'Cr@p'.\n\nWatch out though - if your dog is out there ('D'), he gets very\
+  \ touchy about being watched. If he is there you need to return 'Dog!!'.\n\nFor\
+  \ example:\n\nx=\n[[\\_,\\_,\\_,\\_,\\_,\\_]\n [\\_,\\_,\\_,\\_,@,\\_]\n [@,\\_,\\\
+  _,\\_,\\_,\\_]]\n\nbags = 2, cap = 2\n\nreturn  --> 'Clean'"
+"vc-preamble": "import Imports.AllImports\n\ndef crap (garden : List (List Cell))\
+  \ (bags : Nat) (cap : Nat) : GardenResult :=\n  sorry\n\n\ndef countCrap (garden\
+  \ : List (List Cell)) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def hasDog (garden : List (List Cell)) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem crap_result_always_valid (garden : List (List Cell)) (bags\
+  \ cap : Nat) :\n  let result := crap garden bags cap\n  result = GardenResult.Clean\
+  \ ∨ result = GardenResult.Crap ∨ result = GardenResult.Dog :=\n  sorry\n\n\ntheorem\
+  \ dog_implies_dog_result (garden : List (List Cell)) (bags cap : Nat) :\n  hasDog\
+  \ garden → crap garden bags cap = GardenResult.Dog :=\n  sorry\n\n\ntheorem clean_implies_sufficient_capacity\
+  \ (garden : List (List Cell)) (bags cap : Nat) :\n  crap garden bags cap = GardenResult.Clean\
+  \ →\n  countCrap garden ≤ bags * cap :=\n  sorry\n\n\ntheorem crap_implies_insufficient_capacity\
+  \ (garden : List (List Cell)) (bags cap : Nat) :\n  crap garden bags cap = GardenResult.Crap\
+  \ →\n  countCrap garden > bags * cap :=\n  sorry\n\n\ntheorem zero_capacity_behavior\
+  \ (garden : List (List Cell)) :\n  ¬hasDog garden →\n  (crap garden 0 0 = GardenResult.Clean\
+  \ ↔ countCrap garden = 0) ∧\n  (crap garden 0 0 = GardenResult.Crap ↔ countCrap\
+  \ garden > 0) :=\n  sorry\n\n/--\ninfo: 'Clean'\n-/\n#guard_msgs in\n#eval crap\
+  \ [[\"_\", \"_\", \"_\", \"_\"], [\"_\", \"_\", \"_\", \"@\"], [\"_\", \"_\", \"\
+  @\", \"_\"]] 2 2\n\n/--\ninfo: 'Dog!!'\n-/\n#guard_msgs in\n#eval crap [[\"_\",\
+  \ \"_\"], [\"_\", \"@\"], [\"D\", \"_\"]] 2 2\n\n/--\ninfo: 'Clean'\n-/\n#guard_msgs\
+  \ in\n#eval crap [[\"@\", \"@\"], [\"@\", \"@\"], [\"@\", \"@\"]] 3 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

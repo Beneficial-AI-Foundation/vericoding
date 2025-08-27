@@ -1,0 +1,54 @@
+"vc-description": "Motivation\n---------\n\nWhen compressing sequences of symbols,\
+  \ it is useful to have many equal symbols follow each other, because then they can\
+  \ be encoded with a run length encoding. For example, RLE encoding of `\"aaaabbbbbbbbbbbcccccc\"\
+  ` would give something like `4a 11b 6c`.\n\n(Look [here](http://www.codewars.com/kata/run-length-encoding/)\
+  \ for learning more about the run-length-encoding.)\n\nOf course, RLE is interesting\
+  \ only if the string contains many identical consecutive characters. But what bout\
+  \ human readable text? Here comes the Burrows-Wheeler-Transformation.\n\nTransformation\n\
+  -------------\nThere even exists a transformation, which brings equal symbols closer\
+  \ together, it is called the **Burrows-Wheeler-Transformation**. The forward transformation\
+  \ works as follows: Let's say we have a sequence with length n, first write every\
+  \ shift of that string into a *n x n* matrix:\n```\nInput: \"bananabar\"\n\nb a\
+  \ n a n a b a r\nr b a n a n a b a\na r b a n a n a b\nb a r b a n a n a\na b a\
+  \ r b a n a n\nn a b a r b a n a\na n a b a r b a n\nn a n a b a r b a\na n a n\
+  \ a b a r b\n```\nThen we sort that matrix by its rows. The output of the transformation\
+  \ then is the **last column** and the **row index** in which the original string\
+  \ is in:\n```\n               .-.\na b a r b a n a n\na n a b a r b a n\na n a n\
+  \ a b a r b\na r b a n a n a b\nb a n a n a b a r <- 4\nb a r b a n a n a\nn a b\
+  \ a r b a n a\nn a n a b a r b a\nr b a n a n a b a\n               '-'\n\nOutput:\
+  \ (\"nnbbraaaa\", 4)\n```\n\n```if:java\nTo handle the two kinds of output data,\
+  \ we will use the preloaded class `BWT`, whose contract is the following:\n\n  \
+  \  public class BWT {\n        \n        public String s;\n        public int n;\n\
+  \        \n        public BWT(String s, int n)\n        \n        @Override public\
+  \ String  toString()\n        @Override public boolean equals(Object o)\n      \
+  \  @Override public int     hashCode()\n    }\n\n```\n\nOf course we want to restore\
+  \ the original input, therefore you get the following hints:\n\n1. The output contains\
+  \ the last matrix column.\n2. The first column can be acquired by sorting the last\
+  \ column.\n3. **For every row of the table:** Symbols in the first column follow\
+  \ on symbols in the last column, in the same way they do in the input string.\n\
+  4. You don't need to reconstruct the whole table to get the input back.\n\nGoal\n\
+  ----\n\nThe goal of this Kata is to write both, the `encode` and `decode` functions.\
+  \ Together they should work as the identity function on lists. (*Note:* For the\
+  \ empty input, the row number is ignored.)\n\nFurther studies\n--------------\n\
+  You may have noticed that symbols are not always consecutive, but just in proximity,\
+  \ after the transformation. If you're interested in how to deal with that, you should\
+  \ have a look at [this Kata](http://www.codewars.com/kata/move-to-front-encoding/)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def encode (s : String) : String × Nat := sorry\ndef decode (s\
+  \ : String) (n : Nat) : String := sorry\n"
+"vc-theorems": "theorem encode_decode_roundtrip {s : String} (h : s ≠ \"\") : \n \
+  \ let (encoded, idx) := encode s\n  decode encoded idx = s := sorry\n\n\ntheorem\
+  \ encode_length {s : String} (h : s ≠ \"\") :\n  let (encoded, idx) := encode s\n\
+  \  String.length encoded = String.length s ∧ \n  idx < String.length s := sorry\
+  \ \n\n\ntheorem encode_empty :\n  encode \"\" = (\"\", 0) := sorry\n\n\ntheorem\
+  \ decode_empty :\n  decode \"\" 0 = \"\" := sorry\n\n\ntheorem encoded_chars_permutation\
+  \ {s : String} (h : s ≠ \"\") :\n  let (encoded, _) := encode s\n  encoded.data.length\
+  \ = s.data.length := sorry\n\n\ntheorem encode_output_type {s : String} (h : s ≠\
+  \ \"\") :\n  let (encoded, idx) := encode s\n  encoded.length > 0 ∧ idx ≥ 0 := sorry\n\
+  \n\ntheorem decode_output_type {s : String} (h : s ≠ \"\") :\n  let (encoded, idx)\
+  \ := encode s\n  let decoded := decode encoded idx\n  decoded.length = s.length\
+  \ := sorry\n\n/--\ninfo: s1\n-/\n#guard_msgs in\n#eval decode *encoded1\n\n/--\n\
+  info: s2\n-/\n#guard_msgs in\n#eval decode *encoded2\n\n/--\ninfo: s3\n-/\n#guard_msgs\
+  \ in\n#eval decode *encoded3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

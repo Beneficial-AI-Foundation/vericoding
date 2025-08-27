@@ -1,0 +1,26 @@
+"vc-description": "# Do you speak retsec?\nYou and your friends want to play undercover\
+  \ agents. In order to exchange your *secret* messages, you've come up with the following\
+  \ system: you take the word, cut it in half, and place the first half behind the\
+  \ latter. If the word has an uneven number of characters, you leave the middle at\
+  \ its previous place:\n\n![retsec examples](http://i.imgur.com/Ozy6p09.png)\n\n\
+  That way, you'll be able to exchange your messages in private.\n\n# Task\nYou're\
+  \ given a single word. Your task is to swap the halves. If the word has an uneven\
+  \ length, leave the character in the middle at that position and swap the chunks\
+  \ around it.\n\n## Examples\n```python\nreverse_by_center(\"secret\")  == \"retsec\"\
+  \ # no center character\nreverse_by_center(\"agent\")   == \"nteag\"  # center character\
+  \ is \"e\"\n```\n\n## Remarks\nDon't use this to actually exchange messages in private."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverseByCenter (s : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem reverseByCenter_length_preserved (s : String) :\n  (reverseByCenter\
+  \ s).length = s.length :=\nsorry\n\n\ntheorem reverseByCenter_is_reversible (s :\
+  \ String) :\n  reverseByCenter (reverseByCenter s) = s :=\nsorry\n\n\ntheorem reverseByCenter_ends_swapped\
+  \ {s : String} (h : s.length ≥ 2) :\n  let n := s.length/2\n  (reverseByCenter s).take\
+  \ n = s.takeRight n ∧\n  (reverseByCenter s).takeRight n = s.take n :=\nsorry\n\n\
+  \ntheorem reverseByCenter_middle_preserved {s : String} (h : s.length ≥ 3) :\n \
+  \ let n := s.length/2\n  (reverseByCenter s).drop n = s.drop n :=\nsorry\n\n\ntheorem\
+  \ reverseByCenter_empty :\n  reverseByCenter \"\" = \"\" :=\nsorry\n\n/--\ninfo:\
+  \ 'retsec'\n-/\n#guard_msgs in\n#eval reverse_by_center \"secret\"\n\n/--\ninfo:\
+  \ 'nteag'\n-/\n#guard_msgs in\n#eval reverse_by_center \"agent\"\n\n/--\ninfo: 'war'\n\
+  -/\n#guard_msgs in\n#eval reverse_by_center \"raw\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

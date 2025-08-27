@@ -1,0 +1,24 @@
+"vc-description": "Johnny was asked by his math teacher to compute nn (n to the power\
+  \ of n, where n is an integer), and has to read his answer out loud. This is a bit\
+  \ of a tiring task, since the result is probably an extremely large number, and\
+  \ would certainly keep Johnny occupied for a while if he were to do it honestly.\
+  \ But Johnny knows that the teacher will certainly get bored when listening to his\
+  \ answer, and will sleep through most of it! So, Johnny feels he will get away with\
+  \ reading only the first k digits of the result before the teacher falls asleep,\
+  \ and then the last k digits when the teacher wakes up.\n\nWrite a program to help\
+  \ Johnny to compute the digits he will need to read out.\n\n-----Input-----\nThe\
+  \ first line contains t, the number of test cases (about 30000). Then t test cases\
+  \ follow.\nEach test case consists of one line containing two numbers n and k (1\
+  \ ≤ n ≤ 109, 1 ≤ k ≤ 9). It is guaranteed that k is not more than the number of\
+  \ digits of nn.\n\n-----Output-----\nFor each test case, print out one line containing\
+  \ two numbers, separated by a space, which are the first and the last k digits of\
+  \ nn.\n\n-----Example-----\nInput\n2\n4 2\n9 3\n\nOutput\n25 56\n387 489"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (n: Nat) (k: Nat) : String × String := sorry \n\ndef\
+  \ stringToNat (s: String) : Nat := sorry\n\n\n"
+"vc-theorems": "theorem solve_outputs_are_digits (n: Nat) (k: Nat)\n    (h1: n ≥ 2)\
+  \ (h2: k ≥ 1) (h3: n ≤ 1000000) (h4: k ≤ 10) :\n    let (first, last) := solve n\
+  \ k\n    (∀ c ∈ first.data, '0' ≤ c ∧ c ≤ '9') ∧\n    (∀ c ∈ last.data, '0' ≤ c\
+  \ ∧ c ≤ '9') := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

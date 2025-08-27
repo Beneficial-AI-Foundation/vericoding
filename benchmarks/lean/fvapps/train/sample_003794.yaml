@@ -1,0 +1,39 @@
+"vc-description": "# Definition\n\n**_Strong number_** is the number that *the sum\
+  \ of the factorial of its digits is equal to number itself*.\n\n## **_For example_**:\
+  \  **_145_**, since \n```\n1! + 4! + 5! = 1 + 24 + 120 = 145\n```\nSo, **_145_**\
+  \ is a **_Strong number_**. \n____\n\n# Task\n\n**_Given_** a number, **_Find if\
+  \ it is Strong or not_**.\n____\n\n# Warm-up (Highly recommended)\n\n# [Playing\
+  \ With Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
+  ___\n\n# Notes \n\n* **_Number_** *passed is always*  **_Positive_**.\n* **_Return_**\
+  \ *the result as* **_String_**\n___\n\n# Input >> Output Examples\n\n\n```\nstrong_num(1)\
+  \ ==> return \"STRONG!!!!\"\n```\n\n## **_Explanation_**:\n\nSince , **_the sum\
+  \ of its digits' factorial of (1) is equal to number itself (1)_** , **_Then_**\
+  \ its a **_Strong_** .  \n____\n\n```\nstrong_num(123) ==> return \"Not Strong !!\"\
+  \n```\n\n## **_Explanation_**:\n\nSince **_the sum of its digits' factorial of 1!\
+  \ + 2! + 3! = 9 is not equal to number itself (123)_** , **_Then_** it's  **_Not\
+  \ Strong_** . \n___\n\n```\nstrong_num(2)  ==>  return \"STRONG!!!!\"\n```\n\n##\
+  \ **_Explanation_**:\n\nSince **_the sum of its digits' factorial of 2! = 2 is equal\
+  \ to number itself (2)_** , **_Then_** its a **_Strong_** .  \n____\n\n```\nstrong_num(150)\
+  \ ==> return \"Not Strong !!\"\n```\n\n## **_Explanation_**:\n\nSince **_the sum\
+  \ of its digits' factorial of 1! + 5! + 0! = 122 is not equal to number itself (150)_**,\
+  \ **_Then_** it's **_Not Strong_** . \n___\n___\n___\n\n# [Playing with Numbers\
+  \ Series](https://www.codewars.com/collections/playing-with-numbers)\n\n# [Playing\
+  \ With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
+  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
+  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
+"vc-preamble": "import Imports.AllImports\n\ndef strong_num (n : Nat) : String :=\
+  \ sorry\n\ndef factorial (n : Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sumDigitFactorials (n : Nat) : Nat := sorry\n\ndef digitsOfNat\
+  \ (n : Nat) : List Nat := sorry\n"
+"vc-theorems": "theorem strong_num_outputs_valid_string (n : Nat) :\n  (strong_num\
+  \ n = \"STRONG!!!!\" ∨ strong_num n = \"Not Strong !!\") := sorry\n\n\ntheorem strong_num_correctness\
+  \ (n : Nat) :\n  (strong_num n = \"STRONG!!!!\" ↔ sumDigitFactorials n = n) := sorry\n\
+  \n\ntheorem single_digit_strong_nums (n : Nat) :\n  n ≤ 9 →\n  (strong_num n = \"\
+  STRONG!!!!\" ↔ (n = 1 ∨ n = 2)) := sorry\n\n\ntheorem digit_composition_property\
+  \ (digits : List Nat) :\n  (∀ d ∈ digits, d ≤ 9) →\n  let n := sorry -- conversion\
+  \ of digits to number\n  (strong_num n = \"STRONG!!!!\" ↔ (sumDigitFactorials n\
+  \ = n)) := sorry\n\n/--\ninfo: 'STRONG!!!!'\n-/\n#guard_msgs in\n#eval strong_num\
+  \ 145\n\n/--\ninfo: 'Not Strong !!'\n-/\n#guard_msgs in\n#eval strong_num 123\n\n\
+  /--\ninfo: 'STRONG!!!!'\n-/\n#guard_msgs in\n#eval strong_num 40585\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

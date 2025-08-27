@@ -1,0 +1,23 @@
+"vc-description": "Given an array arr of positive integers, consider all binary trees\
+  \ such that:\n\nEach node has either 0 or 2 children;\nThe values of arr correspond\
+  \ to the values of each leaf in an in-order traversal of the tree.  (Recall that\
+  \ a node is a leaf if and only if it has 0 children.)\nThe value of each non-leaf\
+  \ node is equal to the product of the largest leaf value in its left and right subtree\
+  \ respectively.\n\nAmong all possible binary trees considered, return the smallest\
+  \ possible sum of the values of each non-leaf node.  It is guaranteed this sum fits\
+  \ into a 32-bit integer.\n \nExample 1:\nInput: arr = [6,2,4]\nOutput: 32\nExplanation:\n\
+  There are two possible trees.  The first has non-leaf node sum 36, and the second\
+  \ has non-leaf node sum 32.\n\n    24            24\n   /  \\          /  \\\n \
+  \ 12   4        6    8\n /  \\               / \\\n6    2             2   4\n\n\
+   \nConstraints:\n\n2 <= arr.length <= 40\n1 <= arr[i] <= 15\nIt is guaranteed that\
+  \ the answer fits into a 32-bit signed integer (ie. it is less than 2^31)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def mct_from_leaf_values (arr : List Int) : Int :=\n  sorry\n\n\
+  \n"
+"vc-theorems": "theorem base_cases :\n  mct_from_leaf_values [] = 0 ∧\n  mct_from_leaf_values\
+  \ [5] = 0 ∧ \n  mct_from_leaf_values [4, 11] = 44 :=\n  sorry\n\n/--\ninfo: 32\n\
+  -/\n#guard_msgs in\n#eval mct_from_leaf_values [6, 2, 4]\n\n/--\ninfo: 44\n-/\n\
+  #guard_msgs in\n#eval mct_from_leaf_values [4, 11]\n\n/--\ninfo: 500\n-/\n#guard_msgs\
+  \ in\n#eval mct_from_leaf_values [15, 13, 5, 3, 15]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

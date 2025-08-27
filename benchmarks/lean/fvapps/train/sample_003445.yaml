@@ -1,0 +1,21 @@
+"vc-description": "The __Hamming weight__ of a string is the number of symbols that\
+  \ are different from the zero-symbol of the alphabet used. There are several algorithms\
+  \ for efficient computing of the Hamming weight for numbers. In this Kata, speaking\
+  \ technically, you have to find out the number of '1' bits in a binary representation\
+  \ of a number. Thus,\n\nThe interesting part of this task is that you have to do\
+  \ it *without* string operation (hey, it's not really interesting otherwise)\n\n\
+  \ ;)"
+"vc-preamble": "import Imports.AllImports\n\ndef hammingWeight (n: Nat) : Nat := sorry\n\
+  \ndef bitLength (n: Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isPowerOfTwo (n: Nat) : Bool := sorry\n\ntheorem hamming_weight_nonnegative_and_bounded\
+  \ (x: Nat) : \n  hammingWeight x ≥ 0 ∧ hammingWeight x ≤ bitLength x := sorry\n"
+"vc-theorems": "theorem hamming_weight_power_of_two (x: Nat) :\n  x > 0 → isPowerOfTwo\
+  \ x → hammingWeight x = 1 := sorry\n\n\ntheorem hamming_weight_zero_and_nonzero\
+  \ (x: Nat) :\n  hammingWeight 0 = 0 ∧ (x > 0 → hammingWeight x > 0) := sorry\n\n\
+  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval hamming_weight 0\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval hamming_weight 1\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval hamming_weight\
+  \ 2\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval hamming_weight 10\n\n/--\ninfo: 3\n\
+  -/\n#guard_msgs in\n#eval hamming_weight 21\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n\
+  #eval hamming_weight 2048\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

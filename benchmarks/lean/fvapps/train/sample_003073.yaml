@@ -1,0 +1,37 @@
+"vc-description": "# Task\n We have a N×N `matrix` (N<10) and a robot. \n \n We wrote\
+  \ in each point of matrix x and y coordinates of a point of matrix. \n \n When robot\
+  \ goes to a point of matrix, reads x and y and transfer to point with x and y coordinates.\n\
+  \ \n For each point in the matrix we want to know if robot returns back to it after\
+  \ `EXACTLY k` moves. So your task is to count points to which Robot returns in `EXACTLY\
+  \ k` moves. \n \n You should stop counting moves as soon as the robot returns to\
+  \ the starting point. That is, if the robot returns to the starting point in fewer\
+  \ than k moves, that point should not count as a valid point.\n \n# example\n\n\
+  \ For:\n ```\n matrix=[\n [\"0,1\",\"0,0\",\"1,2\"], \n [\"1,1\",\"1,0\",\"0,2\"\
+  ], \n [\"2,1\",\"2,0\",\"0,0\"]]\n k= 2\n ```\n The result should be `8`\n```\n\
+  Robot start at (0,0) --> (0,1) --> (0,0), total 2 moves\nRobot start at (0,1) -->\
+  \ (0,0) --> (0,1), total 2 moves\nRobot start at (0,2) --> (1,2) --> (0,2), total\
+  \ 2 moves\nRobot start at (1,2) --> (0,2) --> (1,2), total 2 moves\nRobot start\
+  \ at (1,0) --> (1,1) --> (1,0), total 2 moves\nRobot start at (1,1) --> (1,0) -->\
+  \ (1,1), total 2 moves\nRobot start at (2,0) --> (2,1) --> (2,0), total 2 moves\n\
+  Robot start at (2,1) --> (2,0) --> (2,1), total 2 moves\nRobot start at (2,2) -->\
+  \ (0,0) --> (0,1) --> (0,0) --> (0,1) ....\n(Robot can not transfer back to 2,2)\n\
+  ```\nSo the result is 8.\n\n# Input/Output\n\n\n - `[input]` 2D integer array matrix\n\
+  \ \n n x n matrix. 3 <= n <=9\n \n \n - `[input]` integer `k`\n \n `2 <= k <= 5`\n\
+  \ \n \n - `[output]` an integer"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def robotTransfer : List (List String) → Nat → Nat := sorry\n\n\
+  def parseCoords (s : String) : Option (Nat × Nat) := sorry\n"
+"vc-theorems": "theorem robotTransfer_2x2_valid_output \n  (matrix : List (List String))\
+  \ \n  (k : Nat) \n  (h1 : matrix.length = 2)\n  (h2 : ∀ row ∈ matrix, row.length\
+  \ = 2)\n  (h3 : ∀ row ∈ matrix, ∀ cell ∈ row, \n    match parseCoords cell with\n\
+  \    | some (x, y) => x ≤ 1 ∧ y ≤ 1\n    | none => False)\n  (h4 : 1 ≤ k ∧ k ≤ 10)\n\
+  \  : 0 ≤ robotTransfer matrix k ∧ robotTransfer matrix k ≤ 4 := sorry\n\n\ntheorem\
+  \ robotTransfer_2x2_valid_matrix_format\n  (matrix : List (List String)) \n  (h1\
+  \ : matrix.length = 2)\n  (h2 : ∀ row ∈ matrix, row.length = 2)\n  : ∀ row ∈ matrix,\
+  \ ∀ cell ∈ row,\n    match parseCoords cell with\n    | some (x, y) => x ≤ 1 ∧ y\
+  \ ≤ 1\n    | none => False := sorry\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval robot_transfer\
+  \ [[\"0,1\", \"0,0\", \"1,2\"], [\"1,1\", \"1,0\", \"0,2\"], [\"2,1\", \"2,0\",\
+  \ \"0,0\"]] 2\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval robot_transfer [[\"0,1\"\
+  , \"0,0\"], [\"1,1\", \"1,0\"]] 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

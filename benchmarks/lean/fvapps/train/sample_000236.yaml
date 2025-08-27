@@ -1,0 +1,16 @@
+"vc-description": "Given a string, sort it in decreasing order based on the frequency\
+  \ of characters.\n\nExample 1:\n\nInput:\n\"tree\"\n\nOutput:\n\"eert\"\n\nExplanation:\n\
+  'e' appears twice while 'r' and 't' both appear once.\nSo 'e' must appear before\
+  \ both 'r' and 't'. Therefore \"eetr\" is also a valid answer.\n\n\n\nExample 2:\n\
+  \nInput:\n\"cccaaa\"\n\nOutput:\n\"cccaaa\"\n\nExplanation:\nBoth 'c' and 'a' appear\
+  \ three times, so \"aaaccc\" is also a valid answer.\nNote that \"cacaca\" is incorrect,\
+  \ as the same characters must be together.\n\n\n\nExample 3:\n\nInput:\n\"Aabb\"\
+  \n\nOutput:\n\"bbAa\"\n\nExplanation:\n\"bbaA\" is also a valid answer, but \"Aabb\"\
+  \ is incorrect.\nNote that 'A' and 'a' are treated as two different characters."
+"vc-preamble": "import Imports.AllImports\n\ndef frequency_sort (s : String) : String\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countOccurrences (c : Char) (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem frequency_sort_maintains_length (s : String) :\n  (frequency_sort\
+  \ s).length = s.length :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

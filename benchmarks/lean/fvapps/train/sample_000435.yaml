@@ -1,0 +1,26 @@
+"vc-description": "Given an array nums, you are allowed to choose one element of nums\
+  \ and change it by any value in one move.\nReturn the minimum difference between\
+  \ the largest and smallest value of nums after perfoming at most 3 moves.\n \nExample\
+  \ 1:\nInput: nums = [5,3,2,4]\nOutput: 0\nExplanation: Change the array [5,3,2,4]\
+  \ to [2,2,2,2].\nThe difference between the maximum and minimum is 2-2 = 0.\nExample\
+  \ 2:\nInput: nums = [1,5,0,10,14]\nOutput: 1\nExplanation: Change the array [1,5,0,10,14]\
+  \ to [1,1,0,1,1]. \nThe difference between the maximum and minimum is 1-0 = 1.\n\
+  \nExample 3:\nInput: nums = [6,6,0,1,1,4,6]\nOutput: 2\n\nExample 4:\nInput: nums\
+  \ = [1,5,6,14,15]\nOutput: 1\n\n \nConstraints:\n\n1 <= nums.length <= 10^5\n-10^9\
+  \ <= nums[i] <= 10^9"
+"vc-preamble": "import Imports.AllImports\n\ndef min_difference (nums : List Int)\
+  \ : Int := sorry\n\ntheorem min_difference_small_list {nums : List Int} (h : nums.length\
+  \ ≤ 4) : \n  min_difference nums = 0 := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSorted (nums : List Int) : Bool := sorry\n\ntheorem min_difference_sort_invariant\
+  \ {nums : List Int} :\n  min_difference nums = min_difference (List.filter (fun\
+  \ x => true) nums) := sorry\n"
+"vc-theorems": "theorem min_difference_nonnegative {nums : List Int} :\n  min_difference\
+  \ nums ≥ 0 := sorry\n\n\ntheorem min_difference_bounded {nums : List Int} (h : nums.length\
+  \ > 0) :\n  min_difference nums ≤ (nums.maximum? |>.getD 0) - (nums.minimum? |>.getD\
+  \ 0) := sorry\n\n\ntheorem min_difference_large_lists {nums : List Int} (h : nums.length\
+  \ ≥ 5) :\n  ∃ d1 d2 d3 d4 : Int, min_difference nums = min d1 (min d2 (min d3 d4))\
+  \ := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval min_difference [2, 3, 4, 5]\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval min_difference [1, 5, 0, 10, 14]\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval min_difference [6, 6, 0, 1, 1, 4, 6]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

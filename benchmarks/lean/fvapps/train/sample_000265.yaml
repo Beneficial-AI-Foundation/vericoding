@@ -1,0 +1,57 @@
+"vc-description": "Given n boxes, each box is given in the format [status, candies,\
+  \ keys, containedBoxes] where:\n\nstatus[i]: an integer which is 1 if box[i] is\
+  \ open and 0 if box[i] is closed.\ncandies[i]: an integer representing the number\
+  \ of candies in box[i].\nkeys[i]: an array contains the indices of the boxes you\
+  \ can open with the key in box[i].\ncontainedBoxes[i]: an array contains the indices\
+  \ of the boxes found in box[i].\n\nYou will start with some boxes given in initialBoxes\
+  \ array. You can take all the candies in any open box and you can use the keys in\
+  \ it to open new boxes and you also can use the boxes you find in it.\nReturn the\
+  \ maximum number of candies you can get following the rules above.\n \nExample 1:\n\
+  Input: status = [1,0,1,0], candies = [7,5,4,100], keys = [[],[],[1],[]], containedBoxes\
+  \ = [[1,2],[3],[],[]], initialBoxes = [0]\nOutput: 16\nExplanation: You will be\
+  \ initially given box 0. You will find 7 candies in it and boxes 1 and 2. Box 1\
+  \ is closed and you don't have a key for it so you will open box 2. You will find\
+  \ 4 candies and a key to box 1 in box 2.\nIn box 1, you will find 5 candies and\
+  \ box 3 but you will not find a key to box 3 so box 3 will remain closed.\nTotal\
+  \ number of candies collected = 7 + 4 + 5 = 16 candy.\n\nExample 2:\nInput: status\
+  \ = [1,0,0,0,0,0], candies = [1,1,1,1,1,1], keys = [[1,2,3,4,5],[],[],[],[],[]],\
+  \ containedBoxes = [[1,2,3,4,5],[],[],[],[],[]], initialBoxes = [0]\nOutput: 6\n\
+  Explanation: You have initially box 0. Opening it you can find boxes 1,2,3,4 and\
+  \ 5 and their keys. The total number of candies will be 6.\n\nExample 3:\nInput:\
+  \ status = [1,1,1], candies = [100,1,100], keys = [[],[0,2],[]], containedBoxes\
+  \ = [[],[],[]], initialBoxes = [1]\nOutput: 1\n\nExample 4:\nInput: status = [1],\
+  \ candies = [100], keys = [[]], containedBoxes = [[]], initialBoxes = []\nOutput:\
+  \ 0\n\nExample 5:\nInput: status = [1,1,1], candies = [2,3,2], keys = [[],[],[]],\
+  \ containedBoxes = [[],[],[]], initialBoxes = [2,1,0]\nOutput: 7\n\n \nConstraints:\n\
+  \n1 <= status.length <= 1000\nstatus.length == candies.length == keys.length ==\
+  \ containedBoxes.length == n\nstatus[i] is 0 or 1.\n1 <= candies[i] <= 1000\n0 <=\
+  \ keys[i].length <= status.length\n0 <= keys[i][j] < status.length\nAll values in\
+  \ keys[i] are unique.\n0 <= containedBoxes[i].length <= status.length\n0 <= containedBoxes[i][j]\
+  \ < status.length\nAll values in containedBoxes[i] are unique.\nEach box is contained\
+  \ in one box at most.\n0 <= initialBoxes.length <= status.length\n0 <= initialBoxes[i]\
+  \ < status.length"
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat \n  | []\
+  \ => 0\n  | (x::xs) => x + sum xs\n\nstructure Box where\n  n : Nat\n  status :\
+  \ List Bool\n  candies : List Nat\n  keys : List (List Nat)\n  contained_boxes :\
+  \ List (List Nat)\n  initial_boxes : List Nat\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def maxCandies (status : List Bool) (candies : List Nat) (keys\
+  \ : List (List Nat))\n  (contained_boxes : List (List Nat)) (initial_boxes : List\
+  \ Nat) : Nat :=\n  sorry\n\n-- Result should be non-negative"
+"vc-theorems": "theorem maxCandies_nonnegative \n  (status : List Bool) (candies :\
+  \ List Nat) (keys : List (List Nat))\n  (contained_boxes : List (List Nat)) (initial_boxes\
+  \ : List Nat) :\n  maxCandies status candies keys contained_boxes initial_boxes\
+  \ ≥ 0 := sorry\n\n-- Result should not exceed sum of all candies\n\ntheorem maxCandies_upper_bound\
+  \ \n  (status : List Bool) (candies : List Nat) (keys : List (List Nat))\n  (contained_boxes\
+  \ : List (List Nat)) (initial_boxes : List Nat) :\n  maxCandies status candies keys\
+  \ contained_boxes initial_boxes ≤ List.sum candies := sorry\n\n-- Result should\
+  \ be zero if no boxes are unlocked\n\ntheorem maxCandies_all_locked \n  (status\
+  \ : List Bool) (candies : List Nat) (keys : List (List Nat))\n  (contained_boxes\
+  \ : List (List Nat)) (initial_boxes : List Nat) :\n  (∀ s ∈ status, s = false) →\
+  \ \n  maxCandies status candies keys contained_boxes initial_boxes = 0 := sorry\n\
+  \n/--\ninfo: 16\n-/\n#guard_msgs in\n#eval maxCandies [1, 0, 1, 0] [7, 5, 4, 100]\
+  \ [[], [], [1], []] [[1, 2], [3], [], []] [0]\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n\
+  #eval maxCandies [1, 0, 0, 0, 0, 0] [1, 1, 1, 1, 1, 1] [[1, 2, 3, 4, 5], [], [],\
+  \ [], [], []] [[1, 2, 3, 4, 5], [], [], [], [], []] [0]\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval maxCandies [1, 1, 1] [100, 1, 100] [[], [0, 2], []] [[], [], []] [1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

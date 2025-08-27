@@ -1,0 +1,30 @@
+"vc-description": "Let's say you have a bunch of points, and you want to round them\
+  \ all up and calculate the area of the smallest polygon containing all of the points\
+  \ (nevermind why, you just want a challenge). What you're looking for is the area\
+  \ of the *convex hull* of these points. Here is an example, delimited in blue :\n\
+  \n\n\n## Your task\n\nImplement a function that will compute the area covered by\
+  \ the convex hull that can be formed from an array of points, the area being rounded\
+  \ to two decimal places. The points are given as `(x,y)`, like in an orthonormal\
+  \ coordinates system.\n\n```python\npoints = [(0, 0), (0, 3), (4, 0)]\nconvex_hull_area(points)\
+  \ == 6.00\n```\n\n*Note* : In Python, the scipy module has a [ready made solution](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.ConvexHull.html)\
+  \ for this. Of course, if you use it here, you are lame.\n\n*P. S.* : If you enjoy\
+  \ this kata, you may also like this one, which asks you to compute a convex hull,\
+  \ without finding its area."
+"vc-preamble": "import Imports.AllImports\n\ndef Point := Float × Float\n\ndef convex_hull_area\
+  \ (points : List Point) : Float :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_internal_point (p : Point) (points : List Point) : Prop\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem convex_hull_area_non_negative (points : List Point) :\n  convex_hull_area\
+  \ points ≥ 0 :=\nsorry\n\n\ntheorem convex_hull_area_less_than_three_points (points\
+  \ : List Point) :\n  points.length < 3 → convex_hull_area points = 0 :=\nsorry\n\
+  \n\ntheorem convex_hull_area_permutation_invariant {points perm : List Point} :\n\
+  \  points.length > 0 →\n  points.Perm perm →\n  convex_hull_area points = convex_hull_area\
+  \ perm :=\nsorry\n\n\ntheorem convex_hull_area_internal_points {points : List Point}\
+  \ {p : Point} :\n  points.length ≥ 3 →\n  is_internal_point p points →\n  convex_hull_area\
+  \ (p::points) = convex_hull_area points :=\nsorry\n\n/--\ninfo: 6.0\n-/\n#guard_msgs\
+  \ in\n#eval convex_hull_area [(0, 0), (0, 3), (4, 0)]\n\n/--\ninfo: 4.0\n-/\n#guard_msgs\
+  \ in\n#eval convex_hull_area [(0, 0), (0, 2), (2, 2), (2, 0)]\n\n/--\ninfo: 6.0\n\
+  -/\n#guard_msgs in\n#eval convex_hull_area [(0, 0), (0, 3), (4, 0), (1, 1), (2,\
+  \ 1)]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

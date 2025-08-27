@@ -1,0 +1,43 @@
+"vc-description": "We have an integer array with unique elements and we want to do\
+  \ the permutations that have an element fixed, in other words, these permutations\
+  \ should have a certain element at the same position than the original.\n\nThese\
+  \ permutations will be called: **permutations with one fixed point**.\n\nLet's see\
+  \ an example with an array of four elements and we want the permutations that have\
+  \ a coincidence **only at  index 0**, so these permutations are (the permutations\
+  \ between parenthesis):\n``` \narr = [1, 2, 3, 4]\n      (1, 3, 4, 2)\n      (1,\
+  \ 4, 2, 3)\nTwo permutations matching with arr only at index 0\n``` \n\nLet's see\
+  \ the permutations of the same array with only one coincidence at index **1**:\n\
+  ``` \narr = [1, 2, 3, 4]\n      (3, 2, 4, 1)\n      (4, 2, 1, 3)\nTwo permutations\
+  \ matching with arr only at index 1\n```\nOnce again, let's see the permutations\
+  \ of the same array with only one coincidence at index **2**:\n``` \narr = [1, 2,\
+  \ 3, 4]\n      (2, 4, 3, 1)\n      (4, 1, 3, 2)\nTwo permutations matching with\
+  \ arr only at index 2\n```\nFinally, let's see the permutations of the same array\
+  \ with only one coincidence at index **3**:\n``` \narr = [1, 2, 3, 4]\n      (2,\
+  \ 3, 1, 4)\n      (3, 1, 2, 4)\nTwo permutations matching with arr only at index\
+  \ 3\n```\nFor this array given above (arr) :\n\n- We conclude that we have 8 permutations\
+  \ with one fixed point (two at each index of arr).\n\n- We may do the same development\
+  \ for our array, `arr`, with two fixed points and we will get `6` permutations.\n\
+  \n- There are no permutations with coincidences only at three indexes.\n\n- It's\
+  \ good to know that the amount of permutations with no coincidences at all are `9`.\
+  \ See the kata Shuffle It Up!!\n\nIn general:\n\n- When the amount of fixed points\
+  \ is equal to the array length, there is only one permutation, the original array.\n\
+  \n- When the amount of fixed points surpasses the length of the array, obvously,\
+  \ there are no permutations at all.\n\nCreate a function that receives the length\
+  \ of the array and the number of fixed points and may output the total amount of\
+  \ permutations for these constraints.\n\nFeatures of the random tests:\n```\nlength\
+  \ of the array = l\nnumber of fixed points = k\n10 ≤ k ≤ l ≤ 9000\n```\nSee the\
+  \ example tests!\nEnjoy it!!\n\nRuby versin will be released soon.\n\n#Note: This\
+  \ kata was published previously but in a version not well optimized."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def fixed_points_perms (n k : Nat) : Nat := sorry\n\ntheorem fixed_points_perms_zero_when_k_gt_n\
+  \ (n k : Nat) :\n  k > n → fixed_points_perms n k = 0 := sorry\n"
+"vc-theorems": "theorem fixed_points_perms_nonnegative (n k : Nat) :\n  k ≤ n → fixed_points_perms\
+  \ n k ≥ 0 := sorry\n\n\ntheorem fixed_points_perms_all_elements_fixed (n : Nat)\
+  \ :\n  fixed_points_perms n n = 1 := sorry\n\n\ntheorem fixed_points_perms_zero_case\
+  \ :\n  fixed_points_perms 0 0 = 1 := sorry\n\n\ntheorem fixed_points_perms_recurrence\
+  \ (n k : Nat) :\n  0 < k → k < n → \n  fixed_points_perms n k = fixed_points_perms\
+  \ (n-1) (k-1) * n / k := sorry\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval fixed_points_perms\
+  \ 4 1\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval fixed_points_perms 4 2\n\n/--\n\
+  info: 9\n-/\n#guard_msgs in\n#eval fixed_points_perms 4 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

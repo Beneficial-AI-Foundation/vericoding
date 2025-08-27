@@ -1,0 +1,27 @@
+"vc-description": "Your task is to get Zodiac Sign using input ```day``` and ```month```.\n\
+  \nFor exapmle: \n\n```python\nget_zodiac_sign(1,5) => 'Taurus'\nget_zodiac_sign(10,10)\
+  \ => 'Libra'\n```\n\nCorrect answers are (preloaded): \n```python\nSIGNS = ['Capricorn',\
+  \ 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra',\
+  \ 'Scorpio', 'Sagittarius']\n```\n\nP.S. Each argument is correct integer number.\n\
+  \nWESTERN ASTROLOGY STAR SIGN DATES\n\n* Aries (March 21-April 19)\n* Taurus (April\
+  \ 20-May 20)\n* Gemini (May 21-June 20)\n* Cancer (June 21-July 22)\n* Leo (July\
+  \ 23-August 22)\n* Virgo (August 23-September 22)\n* Libra (September 23-October\
+  \ 22)\n* Scorpio (October 23-November 21)\n* Sagittarius (November 22-December 21)\n\
+  * Capricorn (December 22-January 19)\n* Aquarius (January 20 to February 18)\n*\
+  \ Pisces (February 19 to March 20)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_zodiac_sign (day : Nat) (month : Nat) : ZodiacSign := sorry\n\
+  \ntheorem zodiac_sign_january_ranges (day : Nat) (h1 : 1 ≤ day) (h2 : day ≤ 31)\
+  \ :\n  day ≤ 19 → get_zodiac_sign day 1 = ZodiacSign.Capricorn ∧\n  day ≥ 20 → get_zodiac_sign\
+  \ day 1 = ZodiacSign.Aquarius := sorry\n"
+"vc-theorems": "theorem zodiac_sign_year_boundaries :\n  get_zodiac_sign 1 1 = ZodiacSign.Capricorn\
+  \ ∧ \n  get_zodiac_sign 31 12 = ZodiacSign.Capricorn := sorry\n\n\ntheorem zodiac_sign_february_special\
+  \ :\n  get_zodiac_sign 19 2 = ZodiacSign.Pisces := sorry\n\n\ntheorem zodiac_sign_valid_days\
+  \ (month : Nat) (day : Nat)\n  (h1 : 1 ≤ month) (h2 : month ≤ 12) (h3 : 1 ≤ day)\
+  \ :\n  (month ∈ [4,6,9,11] → day ≤ 30) →\n  (month = 2 → day ≤ 29) →\n  (month ∉\
+  \ [2,4,6,9,11] → day ≤ 31) → \n  ∃ sign : ZodiacSign, get_zodiac_sign day month\
+  \ = sign := sorry\n\n/--\ninfo: 'Libra'\n-/\n#guard_msgs in\n#eval get_zodiac_sign\
+  \ 10 10\n\n/--\ninfo: 'Taurus'\n-/\n#guard_msgs in\n#eval get_zodiac_sign 1 5\n\n\
+  /--\ninfo: 'Sagittarius'\n-/\n#guard_msgs in\n#eval get_zodiac_sign 25 11\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

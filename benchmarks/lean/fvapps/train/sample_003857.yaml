@@ -1,0 +1,46 @@
+"vc-description": "# Task\n Mr.Nam has `n` candies, he wants to put one candy in each\
+  \ cell of a table-box. The table-box has `r` rows and `c` columns.\n\n Each candy\
+  \ was labeled by its cell number. The cell numbers are in range from 1 to N and\
+  \ the direction begins from right to left and from bottom to top.\n\n Nam wants\
+  \ to know the position of a specific `candy` and which box is holding it.\n\n The\
+  \ result should be an array and contain exactly 3 elements. The first element is\
+  \ the `label` of the table; The second element is the `row` of the candy; The third\
+  \ element is the `column` of the candy.\n \n If there is no candy with the given\
+  \ number, return `[-1, -1, -1]`.\n\n Note: \n \n When the current box is filled\
+  \ up, Nam buys another one. \n \n The boxes are labeled from `1`.\n\n Rows and columns\
+  \ are `0`-based numbered from left to right and from top to bottom.\n \n# Example\n\
+  \n For `n=6,r=2,c=2,candy=3`, the result should be `[1,0,1]`\n \n the candies will\
+  \ be allocated like this:\n```\nBox 1\n+-----+-----+\n|  4  | (3) | --> box 1,row\
+  \ 0, col 1\n+-----+-----+\n|  2  |  1  |\n+-----+-----+\nBox 2\n+-----+-----+\n\
+  |  x  |  x  |\n+-----+-----+\n|  6  | (5) | --> box 2,row 1, col 1\n+-----+-----+```\n\
+  \ For `candy = 5(n,r,c same as above)`, the output should be `[2,1,1]`.\n \n For\
+  \ `candy = 7(n,r,c same as above)`, the output should be `[-1,-1,-1]`.\n \n For\
+  \ `n=8,r=4,c=2,candy=3`, the result should be `[1,2,1]` \n```\nBox 1\n+-----+-----+\n\
+  |  8  |  7  |\n+-----+-----+\n|  6  |  5  |\n+-----+-----+\n|  4  | (3) |--> box\
+  \ 1,row 2, col 1\n+-----+-----+\n|  2  |  1  |\n+-----+-----+\n```\n\n# Input/Output\n\
+  \n\n - `[input]` integer `n`\n\n  The number of candies. \n  \n  `0 < n <= 100`\n\
+  \n\n - `[input]` integer `r`\n\n  The number of rows. \n  \n  `0 < r <= 100`\n\n\
+  \n - `[input]` integer `c`\n\n The number of columns.\n\n `0 < c <= 100`\n\n\n -\
+  \ `[input]` integer `candy`\n\n The label of the candy Nam wants to get position\
+  \ of.\n \n `0 < c <= 120`\n\n - `[output]` an integer array\n\n  Array of 3 elements:\
+  \ a label, a row and a column."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_candy_position (n r c candy : Nat) : Array Int :=\n  sorry\n"
+"vc-theorems": "theorem candy_position_returns_three_elements {n r c candy : Nat}\
+  \ :\n  let result := get_candy_position n r c candy\n  result.size = 3 := by sorry\n\
+  \n\ntheorem candy_beyond_n_returns_negative_ones {n r c candy : Nat} :\n  candy\
+  \ > n →\n  get_candy_position n r c candy = #[-1, -1, -1] := by sorry\n\n\ntheorem\
+  \ position_coordinates_within_bounds {n r c candy : Nat} :\n  candy ≤ n →\n  let\
+  \ result := get_candy_position n r c candy\n  let level := result[0]!\n  let row\
+  \ := result[1]!\n  let col := result[2]!\n  (level ≠ -1 →\n   (1 ≤ level ∧ level\
+  \ ≤ (n / (r * c)) + 1) ∧\n   (0 ≤ row ∧ row < r) ∧\n   (0 ≤ col ∧ col < c)) := by\
+  \ sorry\n\n\ntheorem first_candy_at_bottom_right {r c : Nat} (hr : r > 0) (hc :\
+  \ c > 0) :\n  get_candy_position 1 r c 1 = #[1, Int.ofNat (r-1), Int.ofNat (c-1)]\
+  \ := by sorry\n\n\ntheorem last_candy_level_one_if_fits {n r c : Nat} (hr : r >\
+  \ 0) (hc : c > 0) :\n  n ≤ r * c →\n  (get_candy_position n r c n)[0]! = 1 := by\
+  \ sorry\n\n/--\ninfo: [1, 0, 1]\n-/\n#guard_msgs in\n#eval get_candy_position 6\
+  \ 2 2 3\n\n/--\ninfo: [2, 1, 1]\n-/\n#guard_msgs in\n#eval get_candy_position 6\
+  \ 2 2 5\n\n/--\ninfo: [-1, -1, -1]\n-/\n#guard_msgs in\n#eval get_candy_position\
+  \ 6 2 2 7\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,26 @@
+"vc-description": "You are given three non-negative integers $X$, $Y$ and $N$. Find\
+  \ the number of integers $Z$ such that $0 \\le Z \\le N$ and $(X \\oplus Z) < (Y\
+  \ \\oplus Z)$, where $\\oplus$ denotes the bitwise XOR operation.\n\n-----Input-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first and only\
+  \ line of each test case contains three space-separated integers $X$, $Y$ and $N$.\n\
+  \n-----Output-----\nFor each test case, print a single line containing one integer\
+  \ ― the number of integers $Z$ which satisfy all conditions.\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 1,000$\n- $0 \\le X, Y, N \\le 2^{30} - 1$\n\n-----Subtasks-----\n\
+  Subtask #1 (5 points): $X, Y, N \\le 2^6 - 1$\nSubtask #2 (95 points): original\
+  \ constraints\n\n-----Example Input-----\n3\n1 2 10\n2 1 10\n0 0 7\n\n-----Example\
+  \ Output-----\n6\n5\n0"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_xor_pairs (x y n : Nat) : Nat := sorry \n\ntheorem count_xor_pairs_equal_nums\
+  \ {x n : Nat} :\n  count_xor_pairs x x n = 0 := sorry\n"
+"vc-theorems": "theorem count_xor_pairs_nonneg {x y n : Nat} :\n  count_xor_pairs\
+  \ x y n ≥ 0 := sorry\n\n\ntheorem count_xor_pairs_upper_bound {x y n : Nat} :\n\
+  \  count_xor_pairs x y n ≤ n + 1 := sorry\n\n\ntheorem count_xor_pairs_complement\
+  \ {x y n : Nat} (h : x ≠ y) :\n  count_xor_pairs x y n + count_xor_pairs y x n =\
+  \ n + 1 := sorry\n\n\ntheorem count_xor_pairs_monotonic {x y n₁ n₂ : Nat} (h : n₁\
+  \ ≤ n₂) :\n  count_xor_pairs x y n₁ ≤ count_xor_pairs x y n₂ := sorry\n\n/--\ninfo:\
+  \ 6\n-/\n#guard_msgs in\n#eval count_xor_pairs 1 2 10\n\n/--\ninfo: 5\n-/\n#guard_msgs\
+  \ in\n#eval count_xor_pairs 2 1 10\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval count_xor_pairs\
+  \ 0 0 7\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

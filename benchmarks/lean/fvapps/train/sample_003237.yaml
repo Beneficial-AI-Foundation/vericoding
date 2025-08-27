@@ -1,0 +1,21 @@
+"vc-description": "Mutual Recursion allows us to take the fun of regular recursion\
+  \ (where a function calls itself until a terminating condition) and apply it to\
+  \ multiple functions calling each other! \n\nLet's use the Hofstadter Female and\
+  \ Male sequences to demonstrate this technique. You'll want to create two functions\
+  \ `F` and `M` such that the following equations are true: \n\n```\nF(0) = 1\nM(0)\
+  \ = 0\nF(n) = n - M(F(n - 1))\nM(n) = n - F(M(n - 1))\n```\n\nDon't worry about\
+  \ negative numbers, `n` will always be greater than or equal to zero.\n\n~~~if:php,csharp\n\
+  You *do* have to worry about performance though, mutual recursion uses up a lot\
+  \ of stack space (and is highly inefficient) so you may have to find a way to make\
+  \ your solution consume less stack space (and time).  Good luck :)\n~~~\n\nHofstadter\
+  \ Wikipedia Reference http://en.wikipedia.org/wiki/Hofstadter_sequence#Hofstadter_Female_and_Male_sequences"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def f (n : Nat) : Nat := sorry\ndef m (n : Nat) : Nat := sorry\n"
+"vc-theorems": "theorem f_non_negative (n : Nat) : f n ≥ 0 := sorry\n\ntheorem m_non_negative\
+  \ (n : Nat) : m n ≥ 0 := sorry\n\n\ntheorem f_less_than_input (n : Nat) : n > 0\
+  \ → f n ≤ n := sorry\n\ntheorem m_less_than_input (n : Nat) : n > 0 → m n ≤ n :=\
+  \ sorry\n\n\ntheorem f_base_case : f 0 = 1 := sorry\n\ntheorem m_base_case : m 0\
+  \ = 0 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval f 0\n\n/--\ninfo: 3\n\
+  -/\n#guard_msgs in\n#eval f 5\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval f 10\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

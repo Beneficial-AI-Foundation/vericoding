@@ -1,0 +1,22 @@
+"vc-description": "Complete the solution so that it returns the number of times the\
+  \ search_text is found within the full_text.\n\n```python\nsearch_substr( fullText,\
+  \ searchText, allowOverlap = true )\n```\n\nso that overlapping solutions are (not)\
+  \ counted. If the searchText is empty, it should return `0`. Usage examples:\n\n\
+  ```python\nsearch_substr('aa_bb_cc_dd_bb_e', 'bb') # should return 2 since bb shows\
+  \ up twice\nsearch_substr('aaabbbcccc', 'bbb') # should return 1\nsearch_substr(\
+  \ 'aaa', 'aa' ) # should return 2\nsearch_substr( 'aaa', '' ) # should return 0\n\
+  search_substr( 'aaa', 'aa', false ) # should return 1\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def search_substr (text pattern : String) (case_sensitive : Bool\
+  \ := true) : Nat := sorry\n\ntheorem empty_inputs_return_zero (text pattern : String)\
+  \ : \n  text = \"\" ∨ pattern = \"\" → \n  search_substr text pattern = 0 ∧ \n \
+  \ search_substr text pattern false = 0 := sorry\n"
+"vc-theorems": "theorem substring_length_property (text pattern : String) : \n  text\
+  \ ≠ \"\" → pattern ≠ \"\" →\n  (search_substr text pattern false) * (pattern.length)\
+  \ ≤ text.length := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval search_substr\
+  \ \"aa_bb_cc_dd_bb_e\" \"bb\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval search_substr\
+  \ \"aaa\" \"aa\"\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval search_substr \"aaa\"\
+  \ \"aa\" False\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval search_substr \"abc\"\
+  \ \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

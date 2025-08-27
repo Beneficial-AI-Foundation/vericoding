@@ -1,0 +1,31 @@
+"vc-description": "-----Problem Statement-----\nHarry Potter has one biscuit and zero\
+  \ rupee in his pocket. He will perform the following operations exactly $K$ times\
+  \ in total, in the order he likes:\n- Hit his pocket, which magically increases\
+  \ the number of biscuits by one.\n- Exchange $A$ biscuits to $1$ rupee.\n- Exchange\
+  \ $1$ rupee to $B$ biscuits.\nFind the maximum possible number of biscuits in Harry's\
+  \ pocket after $K$ operations.\n\n-----Input-----\nInput is given in the following\
+  \ format:\nK A B\n\n-----Output-----\nPrint the maximum possible number of biscuits\
+  \ in Harry's pocket after $K$operations.\n\n-----Constraints-----\n- $1 \\leq K,\
+  \ A, B \\leq 10^9$\n- $K$, $A$ and  are integers.\n\n-----Sample Input-----\n4 2\
+  \ 6\n\n-----Sample Output-----\n7\n\n-----EXPLANATION-----\nThe number of biscuits\
+  \ in Harry's pocket after $K$ operations is maximized as follows:\n- Hit his pocket.\
+  \ Now he has $2$ biscuits and $0$ rupee.\n- Exchange $2$ biscuits to $1$ rupee in\
+  \ his pocket .Now he has $0$ biscuits and $1$ rupee.\n- Hit his pocket. Now he has\
+  \ $1$ biscuits and $1$ rupee.\n- Exchange $1$ rupee to $6$ biscuits. his pocket.\
+  \ Now he has $7$ biscuits and $0$ rupee."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def harry_biscuits (K A B : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem harry_biscuits_positive (K A B : Nat) : \n  A > 0 → B > 0\
+  \ → harry_biscuits K A B ≥ 0 :=\n  sorry\n\n\ntheorem harry_biscuits_no_exchange\
+  \ (K A B : Nat) :\n  A > 0 → B > 0 → A + 2 > B → harry_biscuits K A B = K + 1 :=\n\
+  \  sorry\n\n\ntheorem harry_biscuits_small_k (K A B : Nat) :\n  A > 0 → B > 0 →\
+  \ K < A - 1 → harry_biscuits K A B = min (K + 1) A :=\n  sorry\n\n\ntheorem harry_biscuits_small_b\
+  \ (K A B : Nat) :\n  A > 0 → B > 0 → B ≤ A + 2 → harry_biscuits K A B = K + 1 :=\n\
+  \  sorry\n\n\ntheorem harry_biscuits_zero_k :\n  harry_biscuits 0 5 10 = 1 :=\n\
+  \  sorry\n\n\ntheorem harry_biscuits_equal_exchange :\n  harry_biscuits 4 3 5 =\
+  \ 5 :=\n  sorry\n\n\ntheorem harry_biscuits_no_profitable_exchange (K : Nat) :\n\
+  \  harry_biscuits K 5 7 = K + 1 :=\n  sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n\
+  #eval harry_biscuits 4 2 6\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval harry_biscuits\
+  \ 3 3 4\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval harry_biscuits 5 2 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

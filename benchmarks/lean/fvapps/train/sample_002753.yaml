@@ -1,0 +1,24 @@
+"vc-description": "# Task\n Lonerz got some crazy growing plants and he wants to grow\
+  \ them nice and well.\n \n Initially, the garden is completely barren. \n \n Each\
+  \ morning, Lonerz can put any number of plants into the garden to grow. \n \n And\
+  \ at night, each plant mutates into two plants. \n \n Lonerz really hopes to see\
+  \ `n` plants in his garden.\n\n Your task is to find the minimum number of plants\
+  \ Lonerz has to plant to get `n` plants one day.\n\n# Example\n\n For `n = 5`, the\
+  \ output should be `2`.\n \n Lonerz hopes to see `5` plants. He adds `1` plant on\
+  \ the first morning and on the third morning there would be `4` plants in the garden.\
+  \ He then adds `1` more and sees `5` plants. \n \n So, Lonerz only needs to add\
+  \ 2 plants to his garden.\n \n For `n = 8,` the output should be `1`.\n \n Lonerz\
+  \ hopes to see `8` plants. Thus, he just needs to add `1` plant in the beginning\
+  \ and wait for it to double till 8.\n \n# Input/Output\n\n The number of plant lonerz\
+  \ hopes to see in his garden.\n \n \n - `[input]` integer `n`\n \n   `1 <= n <=\
+  \ 10^7`\n\n\n - `[output]` an integer\n\n The number of plants Lonerz needs to plant."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def plant_doubling (n : Nat) : Nat := sorry\n\ntheorem plant_doubling_output_range\
+  \ (n : Nat) (h : n > 0) :\n  1 ≤ plant_doubling n ∧ plant_doubling n ≤ n := sorry\
+  \ \n\n\n\n\n"
+"vc-theorems": "theorem plant_doubling_edge_cases :\n  plant_doubling 1 = 1 ∧\n  plant_doubling\
+  \ 2 = 1 ∧  \n  plant_doubling 3 = 2 := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval plant_doubling 5\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval plant_doubling\
+  \ 8\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval plant_doubling 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

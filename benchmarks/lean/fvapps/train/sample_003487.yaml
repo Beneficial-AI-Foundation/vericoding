@@ -1,0 +1,16 @@
+"vc-description": "Implement a function that adds two numbers together and returns\
+  \ their sum in binary. The conversion can be done before, or after the addition.\n\
+  \nThe binary number returned should be a string."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def add_binary (a b : Nat) : String := sorry\n\ntheorem add_binary_matches_built_in\
+  \ \n  (a b : Nat) : \n  add_binary a b = toString (Nat.toDigits 2 (a + b)) := \n\
+  \  sorry\n"
+"vc-theorems": "theorem add_binary_is_valid_binary\n  (a b : Nat) : \n  add_binary\
+  \ a b = toString (Nat.toDigits 2 (a + b)) ∧\n  ∃ n : Nat, toString n = add_binary\
+  \ a b :=\n  sorry\n\n\ntheorem add_binary_with_zero\n  (n : Nat) :\n  add_binary\
+  \ n 0 = toString (Nat.toDigits 2 n) ∧\n  add_binary 0 n = toString (Nat.toDigits\
+  \ 2 n) :=\n  sorry\n\n/--\ninfo: '10'\n-/\n#guard_msgs in\n#eval add_binary 1 1\n\
+  \n/--\ninfo: '111111'\n-/\n#guard_msgs in\n#eval add_binary 51 12\n\n/--\ninfo:\
+  \ '1000000000001'\n-/\n#guard_msgs in\n#eval add_binary 4096 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

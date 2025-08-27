@@ -1,0 +1,40 @@
+"vc-description": "Chef is the event manager of his college. He has been assigned\
+  \ the task to manage the upcoming tech fest. There are $K$ rooms where the event\
+  \ can take place, and at a particular time only one event can be organized in a\
+  \ room for a particular time interval.\nEach event coordinator has their strictly\
+  \ preferred room $P_i$, and if the room is already occupied he simply cancels that\
+  \ event.Chef wants to maximize the total number of events,and so he allows or disallows\
+  \ certain events in order to achieve the task . Chef is busy handling his events\
+  \ so the chef needs your help .\nGiven a list of $N$ events with their start time\
+  \ $S_i$,end time $E_i$ and preferred room $P_i$,you need to calculate the maximum\
+  \ number of events that can take place.\nNote that the $i$th event wants to occupy\
+  \ the $p_i$ room from [$s_i$, $f_i$) .\n\n-----Input:-----\nThe first line contains\
+  \ an integer $T$ denoting the number of test cases . Each of the next $T$ lines\
+  \ contains two integers $N$ and $K$ , the number of events and the number of rooms\
+  \ respectively . Each of the next $N$ lines contains three integers $s_i$ ,$e_i$\
+  \ and $p_i$,the start time ,end time and the preferred room of ith event.\n\n-----Output:-----\n\
+  Print the maximum number of events that can take place.\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 100$\n- $1 \\leq N \\leq 10^3$\n- $1 \\leq  K \\leq 10^5$\n-\
+  \ $1 \\leq  Si <  Ei \\leq 10^9$\n- $1 \\leq Pi \\leq K$\n\n-----Sample Input:-----\n\
+  1\n\n4 2\n1 10 1\n10 20 2\n15 50 2\n20 30 2\n\n-----Sample Output:-----\n3\n\n-----EXPLANATION:-----\n\
+  Chef can allow events 1st ,2nd and 4th,to get the maximum 3."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_events (n k : Nat) (events : List Event) : Nat :=\n \
+  \ sorry\n"
+"vc-theorems": "theorem solve_events_basic_properties {n k : Nat} {events : List Event}\n\
+  \  (h1 : n > 0)\n  (h2 : k > 0)\n  (h3 : n ≤ 100)\n  (h4 : k ≤ 100)\n  (h5 : ∀ e\
+  \ ∈ events, e.room ≥ 1 ∧ e.room ≤ k)\n  (h6 : ∀ e ∈ events, e.start < e.stop)\n\
+  \  (h7 : ∀ e ∈ events, e.start ≤ 10^5-1)\n  (h8 : ∀ e ∈ events, e.stop ≤ 10^5) :\n\
+  \  let result := solve_events n k events\n  result ≥ 0 ∧ result ≤ events.length\
+  \ ∧ result ≤ n :=\n  sorry\n\n\ntheorem solve_events_empty (n k : Nat)\n  (h1 :\
+  \ n > 0)\n  (h2 : k > 0)\n  (h3 : n ≤ 100)\n  (h4 : k ≤ 100) :\n  solve_events n\
+  \ k [] = 0 :=\n  sorry\n\n\ntheorem solve_events_single (n k start duration : Nat)\n\
+  \  (h1 : n > 0)\n  (h2 : k > 0)\n  (h3 : n ≤ 100)\n  (h4 : k ≤ 100)\n  (h5 : start\
+  \ > 0)\n  (h6 : start ≤ 10^5-1)\n  (h7 : duration > 0)\n  (h8 : duration ≤ 100)\
+  \ :\n  solve_events n k [{start := start, stop := start + duration, room := 1}]\
+  \ = 1 :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_events 4 2 [[1,\
+  \ 10, 1], [10, 20, 2], [15, 50, 2], [20, 30, 2]]\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval solve_events 2 1 [[1, 5, 1], [2, 3, 1]]\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval solve_events 3 2 [[1, 2, 1], [2, 3, 1], [1, 3, 2]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

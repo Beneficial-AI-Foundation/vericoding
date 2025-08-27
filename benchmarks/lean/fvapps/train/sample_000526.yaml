@@ -1,0 +1,30 @@
+"vc-description": "Chef has a sequence of positive integers $A_1, A_2, \\ldots, A_N$.\
+  \ He wants to choose some elements of this sequence (possibly none or all of them)\
+  \ and compute their MEX, i.e. the smallest positive integer which does not occur\
+  \ among the chosen elements. For example, the MEX of $[1, 2, 4]$ is $3$.\nHelp Chef\
+  \ find the largest number of elements of the sequence $A$ which he can choose such\
+  \ that their MEX is equal to $M$, or determine that it is impossible.\n\n-----Input-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first line of\
+  \ each test case contains two space-separated integers $N$ and $M$.\n- The second\
+  \ line contains $N$ space-separated integers $A_1, A_2, \\ldots, A_N$.\n\n-----Output-----\n\
+  For each test case, print a single line containing one integer ― the maximum number\
+  \ of elements Chef can choose, or $-1$ if he cannot choose elements in such a way\
+  \ that their MEX is $M$.\n\n-----Constraints-----\n- $1 \\le T \\le 100$\n- $2 \\\
+  le M \\le N \\le 10^5$\n- $1 \\le A_i \\le 10^9$ for each valid $i$\n- the sum of\
+  \ $N$ over all test cases does not exceed $10^6$\n\n-----Example Input-----\n1\n\
+  3 3\n1 2 4\n\n-----Example Output-----\n3\n\n-----Explanation-----\nExample case\
+  \ 1: The MEX of whole array is 3. Hence, we can choose all the elements."
+"vc-preamble": "import Imports.AllImports\n\ndef find_largest_subset_with_mex (n m\
+  \ : Nat) (arr : List Nat) : Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def mex (arr : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem find_largest_subset_result_valid (n m : Nat) (arr : List Nat)\
+  \ :\n  let result := find_largest_subset_with_mex n m arr\n  result ≤ n := sorry\n\
+  \n\ntheorem find_largest_subset_result_cases (n m : Nat) (arr : List Nat) :\n  let\
+  \ result := find_largest_subset_with_mex n m arr\n  (result = -1 ∨ result = n ∨\
+  \ result = n - (List.count m arr)) := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
+  #eval find_largest_subset_with_mex 3 3 [1, 2, 4]\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval find_largest_subset_with_mex 4 2 [1, 3, 4, 5]\n\n/--\ninfo: -1\n-/\n\
+  #guard_msgs in\n#eval find_largest_subset_with_mex 3 5 [1, 2, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

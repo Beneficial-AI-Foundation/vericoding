@@ -1,0 +1,28 @@
+"vc-description": "Given an array of integers, find out whether there are two distinct\
+  \ indices i and j in the array such that the absolute difference between nums[i]\
+  \ and nums[j] is at most t and the absolute difference between i and j is at most\
+  \ k.\n\n\nExample 1:\n\n\nInput: nums = [1,2,3,1], k = 3, t = 0\nOutput: true\n\n\
+  \n\nExample 2:\n\n\nInput: nums = [1,0,1,1], k = 1, t = 2\nOutput: true\n\n\n\n\
+  Example 3:\n\n\nInput: nums = [1,5,9,1,5,9], k = 2, t = 3\nOutput: false"
+"vc-preamble": "import Imports.AllImports\n\ndef abs (i : Int) : Int :=\n  if i ≥\
+  \ 0 then i else -i\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def containsNearbyAlmostDuplicate (nums : List Int) (k : Int) (t\
+  \ : Int) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem invalid_inputs_property (nums : List Int) (k : Int) (t : Int)\
+  \ :\n  k ≤ 0 → t < 0 → ¬containsNearbyAlmostDuplicate nums k t :=\n  sorry\n\n\n\
+  theorem sliding_window_symmetry (nums : List Int) (k : Int) (t : Int) :\n  k > 0\
+  \ → t ≥ 0 → nums.length ≥ 2 → nums.length ≤ 100 →\n  containsNearbyAlmostDuplicate\
+  \ nums k t = containsNearbyAlmostDuplicate nums.reverse k t :=\n  sorry\n\n\ntheorem\
+  \ zero_threshold_property (nums : List Int) (k : Int) :\n  k > 0 → nums.length ≥\
+  \ 2 → nums.length ≤ 100 →\n  containsNearbyAlmostDuplicate nums k 0 = \n    (∃ i\
+  \ j, 0 ≤ i ∧ i < nums.length ∧ \n            0 ≤ j ∧ j < nums.length ∧\n       \
+  \     i ≠ j ∧ abs (i - j) ≤ k ∧\n            nums[i]! = nums[j]!) :=\n  sorry\n\n\
+  \ntheorem scaling_invariance (nums : List Int) (k t scale : Int) :\n  k > 0 → t\
+  \ ≥ 0 → scale > 0 → nums.length ≥ 2 → nums.length ≤ 100 →\n  containsNearbyAlmostDuplicate\
+  \ nums k t = \n  containsNearbyAlmostDuplicate (nums.map (· * scale)) k (t * scale)\
+  \ :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval contains_nearby_almost_duplicate\
+  \ [1, 2, 3, 1] 3 0\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval contains_nearby_almost_duplicate\
+  \ [1, 0, 1, 1] 1 2\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval contains_nearby_almost_duplicate\
+  \ [1, 5, 9, 1, 5, 9] 2 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

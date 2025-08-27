@@ -1,0 +1,18 @@
+"vc-description": "Given a positive integer N, how many ways can we write it as a\
+  \ sum of consecutive positive integers?\nExample 1:\nInput: 5\nOutput: 2\nExplanation:\
+  \ 5 = 5 = 2 + 3\nExample 2:\nInput: 9\nOutput: 3\nExplanation: 9 = 9 = 4 + 5 = 2\
+  \ + 3 + 4\nExample 3:\nInput: 15\nOutput: 4\nExplanation: 15 = 15 = 8 + 7 = 4 +\
+  \ 5 + 6 = 1 + 2 + 3 + 4 + 5\nNote: 1 <= N <= 10 ^ 9."
+"vc-preamble": "import Imports.AllImports\n\ndef consecutive_numbers_sum (n : Nat)\
+  \ : Nat :=\n  sorry\n\n\ndef isPrime (n : Nat) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSquare (n : Nat) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem result_always_positive (n : Nat) (h : n > 0) : \n  consecutive_numbers_sum\
+  \ n ≥ 1 :=\n  sorry\n\n\ntheorem result_less_than_input (n : Nat) (h : n > 0) :\n\
+  \  consecutive_numbers_sum n ≤ n :=\n  sorry\n\n\n\n\n\n\ntheorem known_edge_cases\
+  \ :\n  consecutive_numbers_sum 1 = 1 ∧ \n  consecutive_numbers_sum 2 = 1 ∧\n  consecutive_numbers_sum\
+  \ 3 = 2 ∧\n  consecutive_numbers_sum 4 = 1 :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval consecutive_numbers_sum 5\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval\
+  \ consecutive_numbers_sum 9\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval consecutive_numbers_sum\
+  \ 15\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

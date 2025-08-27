@@ -1,0 +1,21 @@
+"vc-description": "Given two non-negative integers num1 and num2 represented as strings,\
+  \ return the product of num1 and num2, also represented as a string.\n\nExample\
+  \ 1:\n\n\nInput: num1 = \"2\", num2 = \"3\"\nOutput: \"6\"\n\nExample 2:\n\n\nInput:\
+  \ num1 = \"123\", num2 = \"456\"\nOutput: \"56088\"\n\n\nNote:\n\n\n       The length\
+  \ of both num1 and num2 is < 110.\n       Both num1 and num2 contain only digits\
+  \ 0-9.\n       Both num1 and num2 do not contain any leading zero, except the number\
+  \ 0 itself.\n       You must not use any built-in BigInteger library or convert\
+  \ the inputs to integer directly."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def multiply (a b : String) : String := sorry \n\ntheorem multiply_matches_integer_multiplication\
+  \ {a b : Nat} : \n  multiply (toString a) (toString b) = toString (a * b) := sorry\n"
+"vc-theorems": "theorem multiply_by_zero {n : String} : \n  (multiply n \"0\" = \"\
+  0\") ∧ (multiply \"0\" n = \"0\") := sorry\n\n\ntheorem multiply_by_one {n : String}\
+  \ :\n  (multiply n \"1\" = n) ∧ (multiply \"1\" n = n) := sorry\n\n\ntheorem multiply_commutative\
+  \ {a b : String} :\n  multiply a b = multiply b a := sorry\n\n\ntheorem multiply_associative\
+  \ {a b c : String} :\n  multiply (multiply a b) c = multiply a (multiply b c) :=\
+  \ sorry\n\n/--\ninfo: '6'\n-/\n#guard_msgs in\n#eval multiply \"2\" \"3\"\n\n/--\n\
+  info: '56088'\n-/\n#guard_msgs in\n#eval multiply \"123\" \"456\"\n\n/--\ninfo:\
+  \ '0'\n-/\n#guard_msgs in\n#eval multiply \"0\" \"0\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

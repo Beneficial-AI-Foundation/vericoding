@@ -1,0 +1,21 @@
+"vc-description": "\"Point reflection\" or \"point symmetry\" is a basic concept in\
+  \ geometry where a given point, P, at a given position relative to a mid-point,\
+  \ Q has a corresponding point, P1, which is the same distance from Q but in the\
+  \ opposite direction.\n\n## Task\n\nGiven two points P and Q, output the symmetric\
+  \ point of point P about Q.\nEach argument is a two-element array of integers representing\
+  \ the point's X and Y coordinates.  Output should be in the same format, giving\
+  \ the X and Y coordinates of point P1.  You do not have to validate the input.\n\
+  \nThis kata was inspired by the Hackerrank challenge [Find Point](https://www.hackerrank.com/challenges/find-point)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def symmetric_point (p q : List Int) : List Int := sorry\n\ndef\
+  \ distance (p q : List Int) : Float := sorry\n"
+"vc-theorems": "theorem symmetric_point_involution (p q : List Int) : \n  symmetric_point\
+  \ (symmetric_point p q) q = p := sorry\n\n\ntheorem symmetric_point_preserves_distance\
+  \ (p q : List Int) : \n  distance p q = distance q (symmetric_point p q) := sorry\
+  \ \n\n\ntheorem symmetric_point_self_center (p : List Int) :\n  symmetric_point\
+  \ p p = p := sorry\n\n/--\ninfo: [2, 2]\n-/\n#guard_msgs in\n#eval symmetric_point\
+  \ [0, 0] [1, 1]\n\n/--\ninfo: [-6, -18]\n-/\n#guard_msgs in\n#eval symmetric_point\
+  \ [2, 6] [-2, -6]\n\n/--\ninfo: [0, 0]\n-/\n#guard_msgs in\n#eval symmetric_point\
+  \ [0, 0] [0, 0]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

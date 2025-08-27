@@ -1,0 +1,25 @@
+"vc-description": "You are given an integer num. You will apply the following steps\
+  \ exactly two times:\n\nPick a digit x (0 <= x <= 9).\nPick another digit y (0 <=\
+  \ y <= 9). The digit y can be equal to x.\nReplace all the occurrences of x in the\
+  \ decimal representation of num by y.\nThe new integer cannot have any leading zeros,\
+  \ also the new integer cannot be 0.\n\nLet a and b be the results of applying the\
+  \ operations to num the first and second times, respectively.\nReturn the max difference\
+  \ between a and b.\n \nExample 1:\nInput: num = 555\nOutput: 888\nExplanation: The\
+  \ first time pick x = 5 and y = 9 and store the new integer in a.\nThe second time\
+  \ pick x = 5 and y = 1 and store the new integer in b.\nWe have now a = 999 and\
+  \ b = 111 and max difference = 888\n\nExample 2:\nInput: num = 9\nOutput: 8\nExplanation:\
+  \ The first time pick x = 9 and y = 9 and store the new integer in a.\nThe second\
+  \ time pick x = 9 and y = 1 and store the new integer in b.\nWe have now a = 9 and\
+  \ b = 1 and max difference = 8\n\nExample 3:\nInput: num = 123456\nOutput: 820000\n\
+  \nExample 4:\nInput: num = 10000\nOutput: 80000\n\nExample 5:\nInput: num = 9288\n\
+  Output: 8700\n\n \nConstraints:\n\n1 <= num <= 10^8"
+"vc-preamble": "import Imports.AllImports\n\ndef maxDiff (n : Nat) : Nat := sorry\n\
+  \ntheorem maxDiff_single_digit (n : Nat) (h : n < 10) : maxDiff n = 8 := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def numDigits (n : Nat) : Nat := sorry"
+"vc-theorems": "theorem maxDiff_properties (n : Nat) :\n  n ≥ 10 →\n  maxDiff n ≥\
+  \ 0 ∧ \n  maxDiff n ≤ 999999 := sorry\n\n\ntheorem maxDiff_nonnegative (n : Nat)\
+  \ : maxDiff n ≥ 0 := sorry\n\n-- Helper function to get number of digits\n\n/--\n\
+  info: 888\n-/\n#guard_msgs in\n#eval maxDiff 555\n\n/--\ninfo: 8\n-/\n#guard_msgs\
+  \ in\n#eval maxDiff 9\n\n/--\ninfo: 820000\n-/\n#guard_msgs in\n#eval maxDiff 123456\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,17 @@
+"vc-description": "Given an array of numbers, return the difference between the largest\
+  \ and smallest values. \n\nFor example:\n\n`[23, 3, 19, 21, 16]` should return `20`\
+  \ (i.e., `23 - 3`).\n\n`[1, 434, 555, 34, 112]` should return `554` (i.e., `555\
+  \ - 1`).\n\nThe array will contain a minimum of two elements. Input data range guarantees\
+  \ that `max-min` will cause no integer overflow."
+"vc-preamble": "import Imports.AllImports\n\ndef List.maximum : List Int → Option\
+  \ Int \n  | [] => none\n  | (h::t) => some (t.foldl max h)\n\n\ndef List.minimum\
+  \ : List Int → Option Int\n  | [] => none\n  | (h::t) => some (t.foldl min h)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def between_extremes (nums : List Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem between_extremes_nonnegative (nums : List Int) (h : nums ≠\
+  \ []) :\n  between_extremes nums ≥ 0 := \n  sorry\n\n\n\n\n\n\ntheorem between_extremes_singleton\
+  \ (n : Int) :\n  between_extremes [n] = 0 :=\n  sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval between_extremes [1, 1]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval between_extremes\
+  \ [1, -1]\n\n/--\ninfo: 42\n-/\n#guard_msgs in\n#eval between_extremes [21, 34,\
+  \ 54, 43, 26, 12]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

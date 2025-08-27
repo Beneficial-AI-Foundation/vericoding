@@ -1,0 +1,32 @@
+"vc-description": "Alice and Bob take turns playing a game, with Alice starting first.\n\
+  Initially, there are n stones in a pile.  On each player's turn, that player makes\
+  \ a move consisting of removing any non-zero square number of stones in the pile.\n\
+  Also, if a player cannot make a move, he/she loses the game.\nGiven a positive integer\
+  \ n. Return True if and only if Alice wins the game otherwise return False, assuming\
+  \ both players play optimally.\n \nExample 1:\nInput: n = 1\nOutput: true\nExplanation:\
+  \ Alice can remove 1 stone winning the game because Bob doesn't have any moves.\n\
+  Example 2:\nInput: n = 2\nOutput: false\nExplanation: Alice can only remove 1 stone,\
+  \ after that Bob removes the last one winning the game (2 -> 1 -> 0).\nExample 3:\n\
+  Input: n = 4\nOutput: true\nExplanation: n is already a perfect square, Alice can\
+  \ win with one move, removing 4 stones (4 -> 0).\n\nExample 4:\nInput: n = 7\nOutput:\
+  \ false\nExplanation: Alice can't win the game if Bob plays optimally.\nIf Alice\
+  \ starts removing 4 stones, Bob will remove 1 stone then Alice should remove only\
+  \ 1 stone and finally Bob removes the last one (7 -> 3 -> 2 -> 1 -> 0). \nIf Alice\
+  \ starts removing 1 stone, Bob will remove 4 stones then Alice only can remove 1\
+  \ stone and finally Bob removes the last one (7 -> 6 -> 2 -> 1 -> 0).\nExample 5:\n\
+  Input: n = 17\nOutput: false\nExplanation: Alice can't win the game if Bob plays\
+  \ optimally.\n\n \nConstraints:\n\n1 <= n <= 10^5"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_alice_win_stones (n : Nat) : Bool := sorry\n\ntheorem always_returns_bool\
+  \ (n : Nat) (h : n > 0) :\n  ∃ b : Bool, can_alice_win_stones n = b :=\nsorry\n"
+"vc-theorems": "theorem perfect_squares_winnable (n : Nat) (h₁ : n > 0) (h₂ : ∃ k,\
+  \ n = k * k) :\n  can_alice_win_stones n = true :=\nsorry\n\n\ntheorem two_stones_loses\
+  \ :\n  can_alice_win_stones 2 = false :=\nsorry\n\n\ntheorem removing_squares_possible\
+  \ (n : Nat) (h₁ : n > 0) (h₂ : ∃ k : Nat, n = k * k) :\n  can_alice_win_stones n\
+  \ = true :=\nsorry\n\n\ntheorem large_inputs_return_bool (n : Nat) (h₁ : n ≥ 1000)\
+  \ (h₂ : n ≤ 10000) :\n  ∃ b : Bool, can_alice_win_stones n = b :=\nsorry\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval can_alice_win_stones 1\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval can_alice_win_stones 2\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval can_alice_win_stones 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,34 @@
+"vc-description": ">When no more interesting kata can be resolved, I just choose to\
+  \ create the new kata, to solve their own, to enjoy the process  --myjinxin2015\
+  \ said\n\n# Description:\n Given a string `str` that contains some \"(\" or \")\"\
+  . Your task is to find the longest substring in `str`(all brackets in the substring\
+  \ are closed). The result is the length of the longest substring.\n\n For example:\n\
+  \ ```\n str = \"()()(\"\n findLongest(str) === 4 \n \"()()\" is the longest substring\n\
+  \ ```\n \n# Note:\n - All inputs are valid.\n - If no such substring found, return\
+  \ 0.\n - Please pay attention to the performance of code. ;-)\n - In the performance\
+  \ test(100000 brackets str x 100 testcases), the time consuming of each test case\
+  \ should be within 35ms. This means, your code should run as fast as a rocket ;-)\
+  \ \n \n# Some Examples\n ```\n findLongest(\"()\") === 2\n findLongest(\"()(\")\
+  \ === 2\n findLongest(\"()()\") === 4\n findLongest(\"()()(\") === 4\n findLongest(\"\
+  (()())\") === 6\n findLongest(\"(()(())\") === 6\n findLongest(\"())(()))\") ===\
+  \ 4\n findLongest(\"))((\") === 0\n findLongest(\"\") === 0\n ```"
+"vc-preamble": "import Imports.AllImports\n\ndef findLongest (s : String) : Nat :=\n\
+  \  sorry\n\n\ndef isValidParens (s : String) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def substringFromTo (s : String) (i j : Nat) : String :=\n  sorry\n"
+"vc-theorems": "theorem findLongest_valid (s : String) :\n  let result := findLongest\
+  \ s\n  result ≤ s.length ∧ \n  result % 2 = 0 :=\nsorry\n\n\ntheorem findLongest_optimal\
+  \ (s : String) :\n  let result := findLongest s\n  ∀ i j, i < s.length → j ≤ s.length\
+  \ → j > i →\n    let substr := substringFromTo s i j\n    isValidParens substr →\
+  \ substr.length ≤ result :=\nsorry\n\n\ntheorem findLongest_exists (s : String)\
+  \ :\n  let result := findLongest s\n  result > 0 →\n  ∃ i j, i < s.length ∧ j ≤\
+  \ s.length ∧ j > i ∧\n    let substr := substringFromTo s i j\n    substr.length\
+  \ = result ∧ \n    isValidParens substr :=\nsorry\n\n\ntheorem findLongest_matched_pairs\
+  \ (n : Nat) :\n  let s := String.mk (List.replicate n '(' ++ List.replicate n ')')\n\
+  \  findLongest s = 2 * n :=\nsorry\n\n\ntheorem findLongest_unmatched_surround (n\
+  \ : Nat) :\n  n > 0 →\n  let balanced := String.mk (List.replicate n '(' ++ List.replicate\
+  \ n ')')\n  let s := \")\" ++ balanced ++ \"(\"\n  findLongest s = 2 * n :=\nsorry\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_longest \")()\"\n\n/--\ninfo: 2\n\
+  -/\n#guard_msgs in\n#eval find_longest \"((()\"\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval find_longest \"())(()))\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

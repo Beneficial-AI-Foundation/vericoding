@@ -1,0 +1,16 @@
+"vc-description": "Give the summation of all even numbers in a Fibonacci sequence\
+  \ up to, but not including, the maximum value.\n\nThe Fibonacci sequence is a series\
+  \ of numbers where the next value is the addition of the previous two values. The\
+  \ series starts with 0 and 1:\n\n0 1 1 2 3 5 8 13 21...\n\nFor example:\n```python\n\
+  eve_fib(0)==0\neve_fib(33)==10\neve_fib(25997544)==19544084\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def evenFib (n : Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem evenFib_nonnegative (n : Int) : evenFib n ≥ 0 :=\n  sorry\n\
+  \n\ntheorem evenFib_nonpositive_input (n : Int) (h : n ≤ 0) : evenFib n = 0 :=\n\
+  \  sorry\n\n\ntheorem evenFib_monotonic (n : Int) (h : n > 0) : evenFib n ≥ evenFib\
+  \ (n-1) :=\n  sorry\n\n\ntheorem evenFib_even (n : Int) (h : n > 0) : evenFib n\
+  \ % 2 = 0 :=\n  sorry\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval even_fib 10\n\n\
+  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval even_fib 0\n\n/--\ninfo: 44\n-/\n#guard_msgs\
+  \ in\n#eval even_fib 100\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

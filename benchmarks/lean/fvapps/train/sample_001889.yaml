@@ -1,0 +1,27 @@
+"vc-description": "S and T are strings composed of lowercase letters. In S, no letter\
+  \ occurs more than once.\n\nS was sorted in some custom order previously. We want\
+  \ to permute the characters of T so that they match the order that S was sorted.\
+  \ More specifically, if x occurs before y in S, then x should occur before y in\
+  \ the returned string.\n\nReturn any permutation of T (as a string) that satisfies\
+  \ this property.\n\n\nExample :\nInput: \nS = \"cba\"\nT = \"abcd\"\nOutput: \"\
+  cbad\"\nExplanation: \n\"a\", \"b\", \"c\" appear in S, so the order of \"a\", \"\
+  b\", \"c\" should be \"c\", \"b\", and \"a\". \nSince \"d\" does not appear in S,\
+  \ it can be at any position in T. \"dcba\", \"cdba\", \"cbda\" are also valid outputs.\n\
+  \n\n \n\nNote:\n\n\n       S has length at most 26, and no character is repeated\
+  \ in S.\n       T has length at most 200.\n       S and T consist of lowercase letters\
+  \ only."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sort (l : List α) (f : α → α\
+  \ → Bool) : List α :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def custom_sort_string (s t : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem length_preserved {s t : String} (h : s.length > 0) :\n  (custom_sort_string\
+  \ s t).length = t.length :=\nsorry\n\n\ntheorem chars_preserved {s t : String} (h\
+  \ : s.length > 0) :\n  List.sort (custom_sort_string s t).data (· ≤ ·) = List.sort\
+  \ t.data (· ≤ ·) :=\nsorry\n\n\ntheorem single_char_pattern {s t : String} (h1 :\
+  \ s.length = 1) (h2 : t.length > 0) :\n  s.get 0 ∈ t.data →\n  (custom_sort_string\
+  \ s t).startsWith (String.mk (List.replicate (t.data.count (s.get 0)) (s.get 0)))\
+  \ :=\nsorry\n\n\ntheorem idempotent {s t : String} (h : s.length > 0) :\n  custom_sort_string\
+  \ s (custom_sort_string s t) = custom_sort_string s t :=\nsorry\n\n/--\ninfo: 'kqeep'\n\
+  -/\n#guard_msgs in\n#eval custom_sort_string \"kqep\" \"pekeq\"\n\n/--\ninfo: 'zyxw'\n\
+  -/\n#guard_msgs in\n#eval custom_sort_string \"abc\" \"zyxw\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

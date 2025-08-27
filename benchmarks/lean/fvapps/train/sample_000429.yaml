@@ -1,0 +1,28 @@
+"vc-description": "A subarray A[i], A[i+1], ..., A[j] of A is said to be turbulent\
+  \ if and only if:\n\nFor i <= k < j, A[k] > A[k+1] when k is odd, and A[k] < A[k+1]\
+  \ when k is even;\nOR, for i <= k < j, A[k] > A[k+1] when k is even, and A[k] <\
+  \ A[k+1] when k is odd.\n\nThat is, the subarray is turbulent if the comparison\
+  \ sign flips between each adjacent pair of elements in the subarray.\nReturn the\
+  \ length of a maximum size turbulent subarray of A.\n \n\nExample 1:\nInput: [9,4,2,10,7,8,8,1,9]\n\
+  Output: 5\nExplanation: (A[1] > A[2] < A[3] > A[4] < A[5])\n\n\nExample 2:\nInput:\
+  \ [4,8,12,16]\nOutput: 2\n\n\nExample 3:\nInput: [100]\nOutput: 1\n\n\n\n\n \nNote:\n\
+  \n1 <= A.length <= 40000\n0 <= A[i] <= 10^9"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_turbulence_size (arr : List Int) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem turbulence_size_bounds {arr : List Int} (h : arr.length ≥\
+  \ 1) : \n  1 ≤ max_turbulence_size arr ∧ max_turbulence_size arr ≤ arr.length :=\n\
+  \  sorry\n\n\ntheorem same_elements_turbulence {arr : List Int} (h : arr.length\
+  \ ≥ 1) :\n  let same := List.replicate arr.length (arr.get ⟨0, by exact Nat.zero_lt_of_lt\
+  \ h⟩)\n  max_turbulence_size same = 1 :=\n  sorry\n\n\ntheorem strictly_increasing_turbulence\
+  \ {arr : List Int} (h : arr.length ≥ 2) :\n  max_turbulence_size arr = 2 :=\n  sorry\n\
+  \n\ntheorem single_element_turbulence {arr : List Int} (h : arr.length ≥ 1) :\n\
+  \  max_turbulence_size [arr.get ⟨0, by exact Nat.zero_lt_of_lt h⟩] = 1 :=\n  sorry\n\
+  \n\ntheorem pair_turbulence {arr : List Int} (h : arr.length ≥ 2) :\n  let first\
+  \ := arr.get ⟨0, by exact Nat.zero_lt_of_lt h⟩\n  let second := arr.get ⟨1, by exact\
+  \ h⟩\n  max_turbulence_size [first, second] = if first = second then 1 else 2 :=\n\
+  \  sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval max_turbulence_size [9, 4, 2,\
+  \ 10, 7, 8, 8, 1, 9]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval max_turbulence_size\
+  \ [4, 8, 12, 16]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval max_turbulence_size\
+  \ [100]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

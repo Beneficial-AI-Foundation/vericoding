@@ -1,0 +1,24 @@
+"vc-description": "Mike and Joe are fratboys that love beer and games that involve\
+  \ drinking. They play the following game: Mike chugs one beer, then Joe chugs 2\
+  \ beers, then Mike chugs 3 beers, then Joe chugs 4 beers, and so on. Once someone\
+  \ can't drink what he is supposed to drink, he loses.\n\nMike can chug at most A\
+  \ beers in total (otherwise he would pass out), while Joe can chug at most B beers\
+  \ in total. Who will win the game? \n\nWrite the function ```game(A,B)``` that returns\
+  \ the winner, ```\"Mike\"``` or ```\"Joe\"``` accordingly, for any given integer\
+  \ values of A and B.\n\nNote: If either Mike or Joe cannot drink at least 1 beer,\
+  \ return the string  ```\"Non-drinkers can't play\"```."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def game (mike : Nat) (joe : Nat) : GameResult :=\n  sorry\n"
+"vc-theorems": "theorem game_returns_valid_result (mike joe : Nat) :\n  let result\
+  \ := game mike joe\n  result = GameResult.Mike ∨ result = GameResult.Joe ∨ result\
+  \ = GameResult.NonDrinkers\n  := sorry\n\n\ntheorem game_deterministic (mike joe\
+  \ : Nat) :\n  game mike joe = game mike joe := sorry\n\n\ntheorem game_non_drinkers\
+  \ :\n  (game 0 1 = GameResult.NonDrinkers) ∧\n  (game 1 0 = GameResult.NonDrinkers)\
+  \ ∧\n  (game 0 0 = GameResult.NonDrinkers) := sorry\n\n\ntheorem game_positive_inputs_valid_winner\
+  \ (mike joe : Nat) :\n  mike > 0 → joe > 0 →\n  let result := game mike joe\n  result\
+  \ = GameResult.Mike ∨ result = GameResult.Joe := sorry\n\n/--\ninfo: 'Joe'\n-/\n\
+  #guard_msgs in\n#eval game 3 2\n\n/--\ninfo: 'Mike'\n-/\n#guard_msgs in\n#eval game\
+  \ 4 2\n\n/--\ninfo: \"Non-drinkers can't play\"\n-/\n#guard_msgs in\n#eval game\
+  \ 0 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

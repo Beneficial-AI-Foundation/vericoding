@@ -1,0 +1,30 @@
+"vc-description": "Tom  has finally taken over the business empire and now looking\
+  \ for \na new Name of the business to make a new start.\n\nJoe  (Tom's dear friend)\
+  \  suggested a string $S$  consisting of\nUppercase and lowercase letters   \n\n\
+  Tom wants to make some changes as per the following criteria:\n\n1) String should\
+  \ $not$ have any vowels .\n\n2) Every other uppercase consonant(other characters\
+  \ except vowels) should \nbe in lowercase\n\nFor ex:\n\nIf the consonant character\
+  \ is Z then it should be z\n\n3)  There should be  a character \".\" before each\
+  \ consonant.\n\nHelp Tom to make the required Changes.\n\n-----Input:-----\n- First\
+  \ line will contain string  $S$,This string only consists of uppercase and lowercase\
+  \ letters.\n\n-----Output:-----\nPrint the resulting string. It is guaranteed that\
+  \ this string is not empty.\n\n-----Constraints-----\n- Length of string is in [1\
+  \ .. 100]\n\n-----Sample Input:-----\n$CodeSprInT$\n\n-----Sample Output:-----\n\
+  .c.d.s.p.r.n.t \n\n-----EXPLANATION:-----\nC is a consonant and it is in uppercase\
+  \ so turn it in lower case and add a “.” before it\no is a vowel so it is deleted\n\
+  d  is a consonant and in lowercase so just  add a “.” before it\ne  is a vowel so\
+  \ it is deleted\nS is a consonant and it is in uppercase so turn it in lower case\
+  \ and add a “.” before it\np is a consonant and in lowercase so just  add a “.”\
+  \ before it\nr is a consonant and in lowercase so just  add a “.” before it\nI is\
+  \ a vowel so it is deleted\nn is a consonant and in lowercase so just  add a “.”\
+  \ before it\nT is a consonant and it is in uppercase so turn it in lower case and\
+  \ add a “.” before it"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def convert_string (s : String) : String := sorry\n\n\n\ntheorem\
+  \ result_structure \n    (s : String) :\n    let result := convert_string s\n  \
+  \  result = \"\" ∨ \n    (result.data.head? = some '.' ∧\n     ∀ part ∈ result.split\
+  \ (· = '.'), part.length ≤ 1) := sorry\n"
+"vc-theorems": "theorem vowels_removed\n    (s : String) :\n    let result := convert_string\
+  \ s\n    let vowels := \"aeiou\".data\n    ∀ c ∈ result.data, c ∉ vowels := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

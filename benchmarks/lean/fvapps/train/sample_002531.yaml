@@ -1,0 +1,39 @@
+"vc-description": "Pete and his mate Phil are out in the countryside shooting clay\
+  \ pigeons with a shotgun - amazing fun. \n\nThey decide to have a competition. 3\
+  \ rounds, 2 shots each. Winner is the one with the most hits.\n\nSome of the clays\
+  \ have something attached to create lots of smoke when hit, guarenteed by the packaging\
+  \ to generate 'real excitement!' (genuinely this happened). None of the explosive\
+  \ things actually worked, but for this kata lets say they did.\n\nFor each round\
+  \ you will receive the following format:\n\n[{P1:'XX', P2:'XO'}, true]\n\nThat is\
+  \ an array containing an object and a boolean. Pl represents Pete, P2 represents\
+  \ Phil. X represents a hit and O represents a miss. If the boolean is true, any\
+  \ hit is worth 2. If it is false, any hit is worth 1.\n\nFind out who won. If it's\
+  \ Pete, return 'Pete Wins!'. If it is Phil, return 'Phil Wins!'. If the scores are\
+  \ equal, return 'Draw!'.\n\nNote that as there are three rounds, the actual input\
+  \ (x) will look something like this:\n\n[[{P1:'XX', P2:'XO'}, true], [{P1:'OX',\
+  \ P2:'OO'}, false], [{P1:'XX', P2:'OX'}, true]]"
+"vc-preamble": "import Imports.AllImports\n\ndef GameResults := List (RoundData ×\
+  \ Bool)\n\ndef shoot : GameResults → String := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculateScore (shots : String) (double : Bool) : Nat :=\n\
+  \  (shots.foldl (fun acc c => if c = 'X' then acc + 1 else acc) 0) * \n  (if double\
+  \ then 2 else 1)\n"
+"vc-theorems": "theorem shoot_returns_valid_result (results : GameResults) :\n  shoot\
+  \ results = \"Pete Wins!\" ∨ \n  shoot results = \"Phil Wins!\" ∨\n  shoot results\
+  \ = \"Draw!\" := sorry\n\n\ntheorem shoot_gives_correct_winner (results : GameResults)\
+  \ :\n  let peteScore := results.foldl \n    (fun acc (round, double) => acc + calculateScore\
+  \ round.P1 double) 0\n  let philScore := results.foldl \n    (fun acc (round, double)\
+  \ => acc + calculateScore round.P2 double) 0\n  (peteScore > philScore → shoot results\
+  \ = \"Pete Wins!\") ∧\n  (philScore > peteScore → shoot results = \"Phil Wins!\"\
+  ) ∧\n  (peteScore = philScore → shoot results = \"Draw!\") := sorry\n\n\ntheorem\
+  \ shoot_symmetrical_draw (results : GameResults) :\n  let symmetricalResults :=\
+  \ results.map \n    (fun (round, double) => ({P1 := round.P1, P2 := round.P1}, double))\n\
+  \  shoot symmetricalResults = \"Draw!\" := sorry\n\n/--\ninfo: 'Pete Wins!'\n-/\n\
+  #guard_msgs in\n#eval shoot [[{\"P1\": \"XX\", \"P2\": \"XO\"}, True], [{\"P1\"\
+  : \"OX\", \"P2\": \"OO\"}, False], [{\"P1\": \"XX\", \"P2\": \"OX\"}, True]]\n\n\
+  /--\ninfo: 'Draw!'\n-/\n#guard_msgs in\n#eval shoot [[{\"P1\": \"XX\", \"P2\": \"\
+  XX\"}, True], [{\"P1\": \"OO\", \"P2\": \"OO\"}, False], [{\"P1\": \"XX\", \"P2\"\
+  : \"XX\"}, True]]\n\n/--\ninfo: 'Phil Wins!'\n-/\n#guard_msgs in\n#eval shoot [[{\"\
+  P1\": \"XX\", \"P2\": \"XO\"}, False], [{\"P1\": \"OX\", \"P2\": \"XX\"}, False],\
+  \ [{\"P1\": \"OO\", \"P2\": \"XX\"}, True]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

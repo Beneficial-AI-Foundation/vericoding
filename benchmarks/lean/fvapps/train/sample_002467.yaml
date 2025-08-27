@@ -1,0 +1,43 @@
+"vc-description": "=====Function Descriptions=====\nExceptions\nErrors detected during\
+  \ execution are called exceptions.\n\nExamples:\nZeroDivisionError\nThis error is\
+  \ raised when the second argument of a division or modulo operation is zero.\n>>>\
+  \ a = '1'\n>>> b = '0'\n>>> print int(a) / int(b)\n>>> ZeroDivisionError: integer\
+  \ division or modulo by zero\n\nValueError\nThis error is raised when a built-in\
+  \ operation or function receives an argument that has the right type but an inappropriate\
+  \ value.\n>>> a = '1'\n>>> b = '#'\n>>> print int(a) / int(b)\n>>> ValueError: invalid\
+  \ literal for int() with base 10: '#'\n\nHandling Exceptions\nThe statements try\
+  \ and except can be used to handle selected exceptions. A try statement may have\
+  \ more than one except clause to specify handlers for different exceptions.\n\n\
+  #Code\ntry:\n    print 1/0\nexcept ZeroDivisionError as e:\n    print \"Error Code:\"\
+  ,e\nOutput\n\nError Code: integer division or modulo by zero\n\n=====Problem Statement=====\n\
+  You are given two values a and b.\nPerform integer division and print a/b.\n\n=====Input\
+  \ Format=====\nThe first line contains T, the number of test cases.\nThe next T\
+  \ lines each contain the space separated values of a and b.\n\n=====Constraints=====\n\
+  0<T<10\n\n=====Output Format=====\nPrint the value of a/b.\nIn the case of ZeroDivisionError\
+  \ or ValueError, print the error code."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def process_divisions (l : List String) : List String := sorry\n\
+  \ntheorem valid_divisions {test_cases : List String} \n  (h : ∀ tc ∈ test_cases,\
+  \ ∃ a b : Int, tc = toString a ++ \" \" ++ toString b) :\n  let results := process_divisions\
+  \ test_cases\n  -- Length preservation\n  results.length = test_cases.length ∧\n\
+  \  -- Each result matches expected division behavior\n  ∀ i : Fin test_cases.length,\n\
+  \    let tc := test_cases[i]\n    let parts := tc.splitOn \" \"\n    let a := parts[0]!\n\
+  \    let b := parts[1]!\n    if (String.toInt? b = some 0) then\n      results[i]!\
+  \ = \"Error Code: integer division or modulo by zero\"\n    else\n      results[i]!\
+  \ = toString ((String.toInt? a).get! / (String.toInt? b).get!) := sorry\n"
+"vc-theorems": "theorem invalid_first_number {test_cases : List String}\n  (h : ∀\
+  \ tc ∈ test_cases, ∃ inv valid : String,\n    tc = inv ++ \" \" ++ valid ∧ \n  \
+  \  String.toInt? inv = none ∧\n    String.toInt? valid ≠ none) :\n  let results\
+  \ := process_divisions test_cases\n  results.length = test_cases.length ∧\n  ∀ r\
+  \ ∈ results, (r.startsWith \"Error Code:\") := sorry\n\n\ntheorem invalid_second_number\
+  \ {test_cases : List String}\n  (h : ∀ tc ∈ test_cases, ∃ valid inv : String,\n\
+  \    tc = valid ++ \" \" ++ inv ∧\n    String.toInt? valid ≠ none ∧\n    String.toInt?\
+  \ inv = none) :\n  let results := process_divisions test_cases\n  results.length\
+  \ = test_cases.length ∧\n  ∀ r ∈ results, (r.startsWith \"Error Code:\") := sorry\n\
+  \n/--\ninfo: ['Error Code: integer division or modulo by zero']\n-/\n#guard_msgs\
+  \ in\n#eval process_divisions [\"1 0\"]\n\n/--\ninfo: [\"Error Code: invalid literal\
+  \ for int() with base 10: '$'\"]\n-/\n#guard_msgs in\n#eval process_divisions [\"\
+  2 $\"]\n\n/--\ninfo: ['3']\n-/\n#guard_msgs in\n#eval process_divisions [\"3 1\"\
+  ]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

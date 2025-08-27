@@ -1,0 +1,21 @@
+"vc-description": "Write a function that takes in a string of one or more words, and\
+  \ returns the same string, but with all five or more letter words reversed (Just\
+  \ like the name of this Kata). Strings passed in will consist of only letters and\
+  \ spaces. Spaces will be included only when more than one word is present.\n\nExamples:\n\
+  spinWords( \"Hey fellow warriors\" ) => returns \"Hey wollef sroirraw\" \nspinWords(\
+  \ \"This is a test\") => returns \"This is a test\" \nspinWords( \"This is another\
+  \ test\" )=> returns \"This is rehtona test\""
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverseString (s : String) : String := sorry\n\ndef spinWords\
+  \ (s : String) : String := sorry\n"
+"vc-theorems": "theorem spin_words_length_five_or_more {word : String} \n  (h : word.length\
+  \ ≥ 5) : \n  spinWords word = reverseString word := sorry\n\n\ntheorem spin_words_length_less_than_five\
+  \ {word : String} \n  (h : word.length < 5) : \n  spinWords word = word := sorry\n\
+  \n\ntheorem spin_words_preserves_length (word : String) :\n  (spinWords word).length\
+  \ = word.length := sorry\n\n\ntheorem spin_words_empty : \n  spinWords \"\" = \"\
+  \" := sorry\n\n/--\ninfo: 'emocleW'\n-/\n#guard_msgs in\n#eval spin_words \"Welcome\"\
+  \n\n/--\ninfo: 'Hey wollef sroirraw'\n-/\n#guard_msgs in\n#eval spin_words \"Hey\
+  \ fellow warriors\"\n\n/--\ninfo: 'This ecnetnes is a ecnetnes'\n-/\n#guard_msgs\
+  \ in\n#eval spin_words \"This sentence is a sentence\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

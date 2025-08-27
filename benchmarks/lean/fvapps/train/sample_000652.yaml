@@ -1,0 +1,58 @@
+"vc-description": "Chef is going to start playing Fantasy Football League (FFL) this\
+  \ season. In FFL, each team consists of exactly $15$ players: $2$ goalkeepers, $5$\
+  \ defenders, $5$ midfielders and $3$ forwards. Chef has already bought $13$ players;\
+  \ he is only missing one defender and one forward.\nThere are $N$ available players\
+  \ (numbered $1$ through $N$). For each valid $i$, the $i$-th player is either a\
+  \ defender or a forward and has a price $P_i$. The sum of prices of all players\
+  \ in a team must not exceed $100$ dollars and the players Chef bought already cost\
+  \ him $S$ dollars.\nCan you help Chef determine if he can complete the team by buying\
+  \ one defender and one forward in such a way that he does not exceed the total price\
+  \ limit?\n\n-----Input-----\n- The first line of the input contains a single integer\
+  \ $T$ denoting the number of test cases. The description of $T$ test cases follows.\n\
+  - The first line of each test case contains two space-separated integers $N$ and\
+  \ $S$.\n- The second line contains $N$ space-separated integers $P_1, P_2, \\ldots,\
+  \ P_N$.\n- The last line contains $N$ space-separated integers. For each valid $i$,\
+  \ the $i$-th of these integers is $0$ if the $i$-th player is a defender or $1$\
+  \ if the $i$-th player is a forward.\n\n-----Output-----\nFor each test case, print\
+  \ a single line containing the string \"yes\" if it is possible to build a complete\
+  \ team or \"no\" otherwise (without quotes).\n\n-----Constraints-----\n- $1 \\le\
+  \ T \\le 100$\n- $1 \\le N \\le 100$\n- $13 \\le S \\le 100$\n- $1 \\le P_i \\le\
+  \ 100$ for each valid $i$\n\n-----Subtasks-----\nSubtask #1 (100 points): original\
+  \ constraints\n\n-----Example Input-----\n2\n4 90\n3 8 6 5\n0 1 1 0\n4 90\n5 7 6\
+  \ 5\n0 1 1 0\n\n-----Example Output-----\nyes\nno\n\n-----Explanation-----\nExample\
+  \ case 1: If Chef buys the $1$-st and $3$-rd player, the total price of his team\
+  \ is $90 + 9 = 99$, which is perfectly fine. There is no other valid way to pick\
+  \ two players.\nExample case 2: Chef cannot buy two players in such a way that all\
+  \ conditions are satisfied."
+"vc-preamble": "import Imports.AllImports\n\ndef can_complete_team (N : Nat) (S :\
+  \ Nat) (prices : List Nat) (positions : List Nat) : String := sorry\n\ntheorem empty_lists\
+  \ :\n  can_complete_team 0 0 [] [] = \"no\" := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_list (l : List Nat) : Nat :=\nmatch l with\n| [] => 0 \n\
+  | h::t => List.foldl min h t\n"
+"vc-theorems": "theorem all_defenders_or_forwards_only (p₁ p₂ p₃ : Nat) :\n  can_complete_team\
+  \ 3 50 [p₁, p₂, p₃] [0, 0, 0] = \"no\" ∧\n  can_complete_team 3 50 [p₁, p₂, p₃]\
+  \ [1, 1, 1] = \"no\" := sorry\n\n\ntheorem valid_input_result {N S : Nat} {prices\
+  \ positions : List Nat} \n  (h₁ : N ≥ 2)\n  (h₂ : S < 100)\n  (h₃ : prices.length\
+  \ = N)\n  (h₄ : positions.length = N) \n  (h₅ : ∀ p ∈ prices, p ≥ 1 ∧ p ≤ 100)\n\
+  \  (h₆ : ∀ p ∈ positions, p = 0 ∨ p = 1)\n  (h₇ : positions.get! 0 = 0)\n  (h₈ :\
+  \ positions.get! 1 = 1) :\n  can_complete_team N S prices positions = \"yes\" ∨\
+  \ \n  can_complete_team N S prices positions = \"no\" := sorry\n\n\ntheorem valid_input_cost\
+  \ {N S : Nat} {prices positions : List Nat}\n  (h₁ : N ≥ 2)\n  (h₂ : S < 100)\n\
+  \  (h₃ : prices.length = N)\n  (h₄ : positions.length = N)\n  (h₅ : ∀ p ∈ prices,\
+  \ p ≥ 1 ∧ p ≤ 100)\n  (h₆ : ∀ p ∈ positions, p = 0 ∨ p = 1)\n  (h₇ : positions.get!\
+  \ 0 = 0)\n  (h₈ : positions.get! 1 = 1) :\n  let min_defender := min_list (List.filterMap\
+  \ (λ i => if positions.get! i = 0 then some (prices.get! i) else none) (List.range\
+  \ N))\n  let min_forward := min_list (List.filterMap (λ i => if positions.get! i\
+  \ = 1 then some (prices.get! i) else none) (List.range N))\n  100 - S ≥ min_defender\
+  \ + min_forward ↔ can_complete_team N S prices positions = \"yes\" := sorry\n\n\n\
+  theorem team_costs {N S : Nat} {prices : List Nat}\n  (h₁ : N ≥ 2)\n  (h₂ : S <\
+  \ 100)\n  (h₃ : prices.length = N)\n  (h₄ : ∀ p ∈ prices, p ≥ 1 ∧ p ≤ 100)\n  (h₅\
+  \ : can_complete_team N S prices (List.map (λ i => i % 2) (List.range N)) = \"yes\"\
+  ) :\n  100 - S ≥ min_list (List.filterMap (λ i => if i % 2 = 0 then some (prices.get!\
+  \ i) else none) (List.range N)) + \n           min_list (List.filterMap (λ i =>\
+  \ if i % 2 = 1 then some (prices.get! i) else none) (List.range N)) := sorry\n\n\
+  /--\ninfo: 'yes'\n-/\n#guard_msgs in\n#eval can_complete_team 4 90 [3, 8, 6, 5]\
+  \ [0, 1, 1, 0]\n\n/--\ninfo: 'no'\n-/\n#guard_msgs in\n#eval can_complete_team 4\
+  \ 90 [5, 7, 6, 5] [0, 1, 1, 0]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

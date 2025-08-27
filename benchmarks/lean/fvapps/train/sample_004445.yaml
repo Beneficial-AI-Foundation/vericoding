@@ -1,0 +1,27 @@
+"vc-description": "Imagine two rings with numbers on them. The inner ring spins clockwise\
+  \ (decreasing by 1 each spin) and the outer ring spins counter clockwise (increasing\
+  \ by 1 each spin). We start with both rings aligned on 0 at the top, and on each\
+  \ move we spin each ring one increment. How many moves will it take before both\
+  \ rings show the same number at the top again?\n\nThe inner ring has integers from\
+  \ 0 to innerMax and the outer ring has integers from 0 to outerMax, where innerMax\
+  \ and outerMax are integers >= 1.\n\n```\ne.g. if innerMax is 2 and outerMax is\
+  \ 3 then after\n1 move: inner = 2, outer = 1\n2 moves: inner = 1, outer = 2\n3 moves:\
+  \ inner = 0, outer = 3\n4 moves: inner = 2, outer = 0\n5 moves: inner = 1, outer\
+  \ = 1\nTherefore it takes 5 moves for the two rings to reach the same number\nTherefore\
+  \ spinningRings(2, 3) = 5\n```\n```\ne.g. if innerMax is 3 and outerMax is 2 then\
+  \ after\n1 move: inner = 3, outer = 1\n2 moves: inner = 2, outer = 2\nTherefore\
+  \ it takes 2 moves for the two rings to reach the same number\nspinningRings(3,\
+  \ 2) = 2\n```\n\n---\n\nfor a bigger challenge, check out the [Performance Version](https://www.codewars.com/kata/59b0b7cd2a00d219ab0000c5)\
+  \ of this kata by @Voile"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def spinning_rings (inner_max outer_max : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem spinning_rings_always_positive (inner_max outer_max : Nat)\
+  \ \n  (h1 : inner_max > 0) (h2 : outer_max > 0) :\n  spinning_rings inner_max outer_max\
+  \ > 0 :=\nsorry\n\n\n\n\ntheorem spinning_rings_same_size_bound (n : Nat) (h : n\
+  \ > 0) :\n  spinning_rings n n ≤ n + 1 :=\nsorry\n\n\ntheorem spinning_rings_edge_cases\
+  \ :\n  spinning_rings 1 1 = 1 ∧\n  (spinning_rings 1 2 = 1 ∨ spinning_rings 1 2\
+  \ = 2 ∨ spinning_rings 1 2 = 3) :=\nsorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n\
+  #eval spinning_rings 2 3\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval spinning_rings\
+  \ 3 2\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval spinning_rings 1 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

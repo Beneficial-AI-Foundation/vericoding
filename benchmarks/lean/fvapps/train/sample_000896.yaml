@@ -1,0 +1,26 @@
+"vc-description": "Chef has three baskets and two of them have multiple balls(Natural\
+  \ numbers written on them). The first basket has N balls, the second basket has\
+  \ M balls and the third basket is empty. Chef starts choosing all the unique balls(only\
+  \ occurring once in both the baskets) and puts into the third basket and throw the\
+  \ repetitive ones. Print numbers on the balls of the third basket in ascending order.\
+  \ \n\n-----Input:-----\n- First line will contain $T$, number of testcases. Then\
+  \ the testcases follow. \n- Each testcase contains three lines of input.\n- First-line\
+  \ has two integers $N, M$. \n- Second-line with N space-separated numbers.\n- Third-line\
+  \ with M space-separated numbers.\n\n-----Output:-----\nFor each testcase, output\
+  \ in a single line answer.\n\n-----Constraints-----\n- $1 \\leq T \\leq 10$\n- $1\
+  \ \\leq N \\leq 10^5$\n- $1 \\leq M \\leq 10^5$\n\n-----Sample Input:-----\n1\n\
+  4 5\n1 2 3 4\n2 3 4 5 6\n\n-----Sample Output:-----\n1 5 6"
+"vc-preamble": "import Imports.AllImports\n\ndef find_unique_balls (arr1 arr2 : List\
+  \ Int) : List Int := sorry\n\ndef isSorted (l : List Int) : Bool := \n  match l\
+  \ with\n  | [] => true\n  | [_] => true\n  | x::y::xs => x ≤ y ∧ isSorted (y::xs)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count (x : Int) (l : List Int) : Nat :=\n  match l with\n \
+  \ | [] => 0\n  | h::t => (if h = x then 1 else 0) + count x t\n\n\n"
+"vc-theorems": "theorem unique_balls_elements_from_inputs {arr1 arr2 : List Int} :\
+  \ \n  let result := find_unique_balls arr1 arr2\n  ∀ x ∈ result, x ∈ arr1 ++ arr2\
+  \ := sorry\n\n\n\n\n\n\ntheorem identical_arrays_empty {arr : List Int} :\n  find_unique_balls\
+  \ arr arr = [] := sorry\n\n/--\ninfo: [1, 5, 6]\n-/\n#guard_msgs in\n#eval find_unique_balls\
+  \ [1, 2, 3, 4] [2, 3, 4, 5, 6]\n\n/--\ninfo: [1, 2, 3, 4, 5, 6]\n-/\n#guard_msgs\
+  \ in\n#eval find_unique_balls [1, 2, 3] [4, 5, 6]\n\n/--\ninfo: [4]\n-/\n#guard_msgs\
+  \ in\n#eval find_unique_balls [1, 1, 2, 3] [2, 2, 3, 4]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,33 @@
+"vc-description": "Given a string s. Can you make it a palindrome by deleting exactly\
+  \ one character? Note that size of the string after deletion would be one less than\
+  \ it was before. \n\n-----Input-----\nFirst line of the input contains a single\
+  \ integer T denoting number of test cases.\nFor each test case, you are given a\
+  \ single line containing string  s. \n\n-----Output-----\nFor each test case, print\
+  \ YES or NO depending on the answer of the problem. \n\n-----Constraints-----\n\
+  Subtask 1, 35 points \n-  1 ≤ T ≤ 100\n- 2 ≤  size of string s ≤ 1000\n-  String\
+  \ s contains lowercase English alphabets (ie. from 'a' to 'z').\n\nSubtask 2, 65\
+  \ points \n- 2 ≤  size of string s ≤ 10^5\n-  Sum of size of string s over all the\
+  \ input test cases won't exceed 10^6\n-  String s contains lowercase English alphabets\
+  \ (ie. from 'a' to 'z').\n\n-----Example-----\nInput:\n4\naaa\nabc\nabdbca\nabba\n\
+  \nOutput:\nYES\nNO\nYES\nYES\n\n-----Explanation-----\nExample case 1. Delete any\
+  \ one 'a', resulting string is \"aa\" which is a palindrome.\nExample case 2. It\
+  \ is not possible to delete exactly one character and having a palindrome.\nExample\
+  \ case 3. Delete 'c', resulting string is \"abdba\" which is a palindrome. \nExample\
+  \ case 4. Delete 'b', resulting string is \"aba\" which is a palindrome."
+"vc-preamble": "import Imports.AllImports\n\ndef can_make_palindrome (s : String)\
+  \ : Bool := sorry\ndef process_test_case (s : String) : String := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverse (s : String) : String := sorry\n\ntheorem palindrome_stays_true\
+  \ {s : String} :\n  s = reverse s → can_make_palindrome s = true := sorry\n"
+"vc-theorems": "theorem single_char_is_palindrome {s : String} :\n  s.length = 1 →\
+  \ can_make_palindrome s = true := sorry\n\n\ntheorem reverse_preserves_palindrome\
+  \ {s : String} :\n  can_make_palindrome s = can_make_palindrome (reverse s) := sorry\n\
+  \n\ntheorem process_returns_yes_no {s : String} \n  (h : s.length > 0) :\n  process_test_case\
+  \ s = \"YES\" ∨ process_test_case s = \"NO\" := sorry\n\n\ntheorem process_matches_can_make\
+  \ {s : String} :\n  (process_test_case s = \"YES\") = can_make_palindrome s := sorry\n\
+  \n\ntheorem basic_palindrome_cases :\n  can_make_palindrome \"a\" ∧ \n  can_make_palindrome\
+  \ \"aa\" ∧\n  can_make_palindrome \"aba\" := sorry\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs\
+  \ in\n#eval process_test_case \"aaa\"\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval\
+  \ process_test_case \"abc\"\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval process_test_case\
+  \ \"abdbca\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

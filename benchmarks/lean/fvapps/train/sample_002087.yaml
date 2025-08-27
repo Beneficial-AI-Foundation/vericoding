@@ -1,0 +1,61 @@
+"vc-description": "Oleg the client and Igor the analyst are good friends. However,\
+  \ sometimes they argue over little things. Recently, they started a new company,\
+  \ but they are having trouble finding a name for the company.\n\nTo settle this\
+  \ problem, they've decided to play a game. The company name will consist of n letters.\
+  \ Oleg and Igor each have a set of n letters (which might contain multiple copies\
+  \ of the same letter, the sets can be different). Initially, the company name is\
+  \ denoted by n question marks. Oleg and Igor takes turns to play the game, Oleg\
+  \ moves first. In each turn, a player can choose one of the letters c in his set\
+  \ and replace any of the question marks with c. Then, a copy of the letter c is\
+  \ removed from his set. The game ends when all the question marks has been replaced\
+  \ by some letter.\n\nFor example, suppose Oleg has the set of letters {i, o, i}\
+  \ and Igor has the set of letters {i, m, o}. One possible game is as follows :\n\
+  \nInitially, the company name is ???.\n\nOleg replaces the second question mark\
+  \ with 'i'. The company name becomes ?i?. The set of letters Oleg have now is {i,\
+  \ o}.\n\nIgor replaces the third question mark with 'o'. The company name becomes\
+  \ ?io. The set of letters Igor have now is {i, m}.\n\nFinally, Oleg replaces the\
+  \ first question mark with 'o'. The company name becomes oio. The set of letters\
+  \ Oleg have now is {i}.\n\nIn the end, the company name is oio.\n\nOleg wants the\
+  \ company name to be as lexicographically small as possible while Igor wants the\
+  \ company name to be as lexicographically large as possible. What will be the company\
+  \ name if Oleg and Igor always play optimally?\n\nA string s = s_1s_2...s_{m} is\
+  \ called lexicographically smaller than a string t = t_1t_2...t_{m} (where s ≠ t)\
+  \ if s_{i} < t_{i} where i is the smallest index such that s_{i} ≠ t_{i}. (so s_{j}\
+  \ = t_{j} for all j < i)\n\n\n-----Input-----\n\nThe first line of input contains\
+  \ a string s of length n (1 ≤ n ≤ 3·10^5). All characters of the string are lowercase\
+  \ English letters. This string denotes the set of letters Oleg has initially.\n\n\
+  The second line of input contains a string t of length n. All characters of the\
+  \ string are lowercase English letters. This string denotes the set of letters Igor\
+  \ has initially.\n\n\n-----Output-----\n\nThe output should contain a string of\
+  \ n lowercase English letters, denoting the company name if Oleg and Igor plays\
+  \ optimally.\n\n\n-----Examples-----\nInput\ntinkoff\nzscoder\n\nOutput\nfzfsirk\n\
+  \nInput\nxxxxxx\nxxxxxx\n\nOutput\nxxxxxx\n\nInput\nioi\nimo\n\nOutput\nioi\n\n\n\
+  \n-----Note-----\n\nOne way to play optimally in the first sample is as follows\
+  \ : Initially, the company name is ???????. Oleg replaces the first question mark\
+  \ with 'f'. The company name becomes f??????. Igor replaces the second question\
+  \ mark with 'z'. The company name becomes fz?????. Oleg replaces the third question\
+  \ mark with 'f'. The company name becomes fzf????. Igor replaces the fourth question\
+  \ mark with 's'. The company name becomes fzfs???. Oleg replaces the fifth question\
+  \ mark with 'i'. The company name becomes fzfsi??. Igor replaces the sixth question\
+  \ mark with 'r'. The company name becomes fzfsir?. Oleg replaces the seventh question\
+  \ mark with 'k'. The company name becomes fzfsirk.\n\nFor the second sample, no\
+  \ matter how they play, the company name will always be xxxxxx."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_company_name (oleg igor : String) : String := sorry\n\n\
+  theorem output_length_matches_input\n  (oleg igor : String)\n  (h : oleg.length\
+  \ = igor.length) :\n  (find_company_name oleg igor).length = oleg.length := sorry\n"
+"vc-theorems": "theorem output_uses_input_characters\n  (oleg igor : String)\n  (h\
+  \ : oleg.length = igor.length)\n  (c : Char)\n  (h2 : c ∈ (find_company_name oleg\
+  \ igor).data) :\n  c ∈ oleg.data ∨ c ∈ igor.data := sorry\n\n\ntheorem identical_inputs_have_same_chars\n\
+  \  (s : String) :\n  ∀ c, (c ∈ (find_company_name s s).data ↔ c ∈ s.data) := sorry\n\
+  \n\ntheorem output_preserves_min_char_counts\n  (oleg igor : String)\n  (h : oleg.length\
+  \ = igor.length) :\n  let result := find_company_name oleg igor\n  let oleg_turns\
+  \ := (oleg.length + 1) / 2\n  let igor_turns := oleg.length / 2\n  let oleg_result\
+  \ := (result.data.filter (· ∈ oleg.data)).length\n  let igor_result := (result.data.filter\
+  \ (· ∈ igor.data)).length\n  oleg_result ≥ oleg_turns ∧ igor_result ≥ igor_turns\
+  \ := sorry\n\n/--\ninfo: 'fzfsirk'\n-/\n#guard_msgs in\n#eval find_company_name\
+  \ \"tinkoff\" \"zscoder\"\n\n/--\ninfo: 'xxxxxx'\n-/\n#guard_msgs in\n#eval find_company_name\
+  \ \"xxxxxx\" \"xxxxxx\"\n\n/--\ninfo: 'ioi'\n-/\n#guard_msgs in\n#eval find_company_name\
+  \ \"ioi\" \"imo\"\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

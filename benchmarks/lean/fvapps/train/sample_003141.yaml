@@ -1,0 +1,32 @@
+"vc-description": "An array is defined to be `inertial`if the following conditions\
+  \ hold:\n```\na. it contains at least one odd value  \nb. the maximum value in the\
+  \ array is even \nc. every odd value is greater than every even value that is not\
+  \ the maximum value.\n```\neg:-\n```\nSo [11, 4, 20, 9, 2, 8] is inertial because\
+  \ \na. it contains at least one odd value [11,9] \nb. the maximum value in the array\
+  \ is 20 which is even \nc. the two odd values (11 and 9) are greater than all the\
+  \ even values that are not equal to 20 (the maximum), i.e., [4, 2, 8]\n```\nWrite\
+  \ a function called `is_inertial` that accepts an integer array and returns `true`\
+  \ if the array is inertial; otherwise it returns `false`."
+"vc-preamble": "import Imports.AllImports\n\ndef isInertial (arr : List Int) : Bool\
+  \ := sorry\n\ndef maximum? : List Int → Option Int\n  | [] => none\n  | x::xs =>\
+  \ some (xs.foldl max x)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def minimum? : List Int → Option Int\n  | [] => none\n  | x::xs\
+  \ => some (xs.foldl min x)\n"
+"vc-theorems": "theorem empty_array\n  : ∀ (arr : List Int), arr = [] → isInertial\
+  \ arr = false := by\n  sorry\n\n\ntheorem no_odds\n  : ∀ (arr : List Int),\n   \
+  \ arr ≠ [] →\n    (∀ x ∈ arr, x % 2 = 0) →\n    isInertial arr = false := by\n \
+  \ sorry\n\n\ntheorem max_must_be_even\n  : ∀ (arr : List Int),\n    arr ≠ [] →\n\
+  \    match maximum? arr with\n    | none => True\n    | some max => max % 2 = 1\
+  \ → isInertial arr = false := by\n  sorry\n\n\ntheorem odds_vs_evens\n  : ∀ (arr\
+  \ : List Int),\n    arr ≠ [] →\n    (∃ x ∈ arr, x % 2 = 1) →\n    match maximum?\
+  \ arr with\n    | none => True\n    | some max =>\n      max % 2 = 0 →\n      let\
+  \ odds := arr.filter (fun x => x % 2 = 1)\n      let evens := arr.filter (fun x\
+  \ => x % 2 = 0 && x ≠ max)\n      odds ≠ [] →\n      evens ≠ [] →\n      match minimum?\
+  \ odds, maximum? evens with\n      | some min_odd, some max_even => isInertial arr\
+  \ = (min_odd > max_even)\n      | _, _ => True := by\n  sorry\n\n\ntheorem single_element\n\
+  \  : ∀ (n : Int), isInertial [n] = false := by\n  sorry\n\n/--\ninfo: False\n-/\n\
+  #guard_msgs in\n#eval is_inertial []\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval\
+  \ is_inertial [581, -384, 140, -287]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ is_inertial [11, 4, 20, 9, 2, 8]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

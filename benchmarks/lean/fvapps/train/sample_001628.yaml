@@ -1,0 +1,64 @@
+"vc-description": "Chef has a rectangular matrix A of nxm integers. Rows are numbered\
+  \ by integers from 1 to n from top to bottom, columns - from 1 to m from left to\
+  \ right. Ai, j denotes the j-th integer of the i-th row.\nChef wants you to guess\
+  \ his matrix. To guess integers, you can ask Chef questions of next type: \"How\
+  \ many integers from submatrix iL, iR, jL, jR are grater than or equal to x and\
+  \ less than or equal to y?\". By submatrix iL, iR, jL, jR we mean all elements Ai,\
+  \ j for all iL ≤ i ≤ iR and jL ≤ j ≤ jR. \nAlso Chef can answer not more than C\
+  \ questions of next type: \"What is the sum of integers from submatrix iL, iR, jL,\
+  \ jR?\"\nAs soon as you think you know the Chefs matrix, you can stop asking questions\
+  \ and tell to the Chef your variant of the matrix. Please see \"Scoring\" part to\
+  \ understand how your solution will be evaluated. \n\n-----Input-----\nThe first\
+  \ line of the input contains three space-separated integers n, m and C denoting\
+  \ the sizes of the matrix and the maximum number of the second-type questions. After\
+  \ that the judge will answer your questions and evaluate the resuts. Read more about\
+  \ that in the \"Interaction with the judge\" part of the statement. \n\n-----Interaction\
+  \ with the judge-----\nTo ask a first-type question you should print to the standard\
+  \ output one line containing seven space-separated integers 1 iL iR jL jR x y. To\
+  \ ask a second-type question you should print one line containing five space-separated\
+  \ integers 2 iL iR jL jR. After that you should read from the standard input one\
+  \ integer - answer to the question. To end the game you should print 3 and starting\
+  \ from next line print n lines, each of them contains m space-separated integers\
+  \ - your variant of the matrix A. After that your program must stop. Remember to\
+  \ flush the output after every line you print.\n\n-----Constraints-----\n- 1 ≤ n,\
+  \ m ≤ 2.5 * 105\n- 1 ≤ n * m ≤ 2.5 * 105\n- 103 ≤ C ≤ 104\n- 1 ≤ Ai, j ≤ 50\n- 1\
+  \ ≤ iL ≤ iR ≤ n\n- 1 ≤ jL ≤ jR ≤ m\n- 1 ≤ x ≤ y ≤ 50\n- 0 ≤ number of asked questions\
+  \ ≤ 5 * 105\n- 1 ≤ Bi, j ≤ 50\n- 1 ≤ a1, a2, a3 ≤ 10\n\n----- Scoring -----\nLet\
+  \ B will be the matrix you output and diff = ∑ |Ai, j - Bi, j| for all 1 ≤ i ≤ n,\
+  \ 1 ≤ j ≤ m. The number of questions you asked is questions. The number of integers,\
+  \ you correctly guessed is correct(i. e. the number of elements i, j such that Ai,\
+  \ j = Bi, j). \nThe score for each test case will be: score = a1 * questions + \
+  \ a2 * diff +  a3 * (n * m - correct).\nYour goal is to minimize this score.\nYour\
+  \ total score for the problem will be the sum of scores on all the test cases.\n\
+  \n-----Example-----\nInput:\n3 3 10\n4\n0\n3\n1\n6\n\nOutput:\n1 1 2 1 2 1 3\n1\
+  \ 3 3 1 3 1 1\n1 3 3 1 3 2 2\n1 1 2 3 3 1 1\n2 3 3 1 3\n3\n2 2 1\n2 2 1\n2 2 2\n\
+  \n\n-----Explanation-----\n\n[1, 2, 3]\nA = [3, 2, 1]\n[2, 2, 2]\n\nFor this test\
+  \ case a1 = 1, a2 = 1 and a3 = 1.\nThe score for this test case will be 1 * 5 +\
+  \ 1 * 4 + 1 * (9 - 6) = 12.\n\n----- Test data generation -----\nThere will be four\
+  \ types of the test files.\n- Type #1: n = 10,  m = 25000\n- Type #2: n = 100, \
+  \ m = 2500\n- Type #3: n = 250,  m = 1000\n- Type #4: n = 500,  m = 500\nThere will\
+  \ be 5 test files of each type. During the contest, you will be shown the score\
+  \ for only one test file of each type.\nAll elements of matrix A are randomly chosen.\n\
+  For each test case C is randomly chosen from interval [103 .. 104].\nFor each test\
+  \ case values a1, a2 and a3 are manually chosen. "
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_matrix_guessing (n m K : Nat) (queryFunc : Nat → Nat\
+  \ → Nat → Nat → Nat → Nat → Nat → Nat) : List (List Nat) := sorry\n\n/-- Query function\
+  \ is consistent for matrices with small values (1-25) -/"
+"vc-theorems": "theorem solve_matrix_query_consistency_small {n m : Nat} {K : Nat}\
+  \ (hn : 0 < n) (hm : 0 < m) (hK : K = 50)\n  (queryFunc : Nat → Nat → Nat → Nat\
+  \ → Nat → Nat → Nat → Nat) :\n  let result := solve_matrix_guessing n m K queryFunc\n\
+  \  ∀ i j, i < n → j < m → \n  1 ≤ ((result.get! i).get! j) ∧ ((result.get! i).get!\
+  \ j) ≤ 25 := sorry\n\n/-- Query function is consistent for matrices with large values\
+  \ (26-50) -/\n\ntheorem solve_matrix_query_consistency_large {n m : Nat} {K : Nat}\
+  \ (hn : 0 < n) (hm : 0 < m) (hK : K = 50)\n  (queryFunc : Nat → Nat → Nat → Nat\
+  \ → Nat → Nat → Nat → Nat) :\n  let result := solve_matrix_guessing n m K queryFunc\n\
+  \  ∀ i j, i < n → j < m →\n  26 ≤ ((result.get! i).get! j) ∧ ((result.get! i).get!\
+  \ j) ≤ 50 := sorry\n\n/-- Result matrix has correct dimensions -/\n\ntheorem basic_dimensions\
+  \ {n m : Nat} {K : Nat} (hn : 0 < n) (hm : 0 < m) (hK : K = 50)\n  (queryFunc :\
+  \ Nat → Nat → Nat → Nat → Nat → Nat → Nat → Nat) :\n  let result := solve_matrix_guessing\
+  \ n m K queryFunc\n  result.length = n ∧ ∀ row ∈ result, row.length = m := sorry\n\
+  \n/--\ninfo: n\n-/\n#guard_msgs in\n#eval len solve_matrix_guessing(n, m, c, mock_query_func)\n\
+  \n/--\ninfo: m\n-/\n#guard_msgs in\n#eval len result[0]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

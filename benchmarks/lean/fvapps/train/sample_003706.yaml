@@ -1,0 +1,26 @@
+"vc-description": "Same as [the original](https://www.codewars.com/kata/simple-fun-number-258-is-divisible-by-6)\
+  \ (same rules, really, go there for example and I strongly recommend completing\
+  \ it first), but with more than one asterisk (but always at least one).\n\nFor example,\
+  \ `\"*2\"` should return `[\"12\", \"42\", \"72\"]`.\n\nSimilarly, `\"*2*\"` should\
+  \ return `[\"024\", \"120\", \"126\", \"222\", \"228\", \"324\", \"420\", \"426\"\
+  , \"522\", \"528\", \"624\", \"720\", \"726\", \"822\", \"828\", \"924\"]`. Order\
+  \ matters and returning the right one is part of the challenge itself, yep!\n\n\
+  More examples in the test codes and, of course, if you cannot generate any number\
+  \ divisible by 6, just return `[]` (or `[] of String` in Crystal)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_divisible_by_6 (s: String): List String := sorry\n\ndef\
+  \ verify_divisible_by_6 (s: String): Bool := sorry\n"
+"vc-theorems": "theorem valid_number_without_wildcards (n: Nat) :\n  let s := toString\
+  \ n\n  n % 6 = 0 → is_divisible_by_6 s = [s] ∧\n  n % 6 ≠ 0 → is_divisible_by_6\
+  \ s = [] :=\nsorry  \n\n\ntheorem wildcard_pattern_properties (n: Nat) (h: 1 ≤ n\
+  \ ∧ n ≤ 5) :\n  let pattern := String.mk (List.replicate n '*')\n  ∀ num ∈ is_divisible_by_6\
+  \ pattern,\n    String.length num = n ∧\n    verify_divisible_by_6 num = true ∧\
+  \ \n    ∀ c ∈ String.toList num, '0' ≤ c ∧ c ≤ '9' :=\nsorry\n\n\ntheorem odd_ending_gives_empty\
+  \ {d: Char} (h: d ∈ ['1', '3', '5', '7', '9']) : \n  is_divisible_by_6 (\"*\" ++\
+  \ toString d) = [] :=\nsorry\n\n/--\ninfo: ['12', '42', '72']\n-/\n#guard_msgs in\n\
+  #eval is_divisible_by_6 \"*2\"\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval is_divisible_by_6\
+  \ \"*21\"\n\n/--\ninfo: ['024', '120', '126', '222', '228', '324', '420', '426',\
+  \ '522', '528', '624', '720', '726', '822', '828', '924']\n-/\n#guard_msgs in\n\
+  #eval is_divisible_by_6 \"*2*\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

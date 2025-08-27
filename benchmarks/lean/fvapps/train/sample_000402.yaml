@@ -1,0 +1,26 @@
+"vc-description": "You have d dice, and each die has f faces numbered 1, 2, ..., f.\n\
+  Return the number of possible ways (out of fd total ways) modulo 10^9 + 7 to roll\
+  \ the dice so the sum of the face up numbers equals target.\n \nExample 1:\nInput:\
+  \ d = 1, f = 6, target = 3\nOutput: 1\nExplanation: \nYou throw one die with 6 faces.\
+  \  There is only one way to get a sum of 3.\n\nExample 2:\nInput: d = 2, f = 6,\
+  \ target = 7\nOutput: 6\nExplanation: \nYou throw two dice, each with 6 faces. \
+  \ There are 6 ways to get a sum of 7:\n1+6, 2+5, 3+4, 4+3, 5+2, 6+1.\n\nExample\
+  \ 3:\nInput: d = 2, f = 5, target = 10\nOutput: 1\nExplanation: \nYou throw two\
+  \ dice, each with 5 faces.  There is only one way to get a sum of 10: 5+5.\n\nExample\
+  \ 4:\nInput: d = 1, f = 2, target = 3\nOutput: 0\nExplanation: \nYou throw one die\
+  \ with 2 faces.  There is no way to get a sum of 3.\n\nExample 5:\nInput: d = 30,\
+  \ f = 30, target = 500\nOutput: 222616187\nExplanation: \nThe answer must be returned\
+  \ modulo 10^9 + 7.\n\n \nConstraints:\n\n1 <= d, f <= 30\n1 <= target <= 1000"
+"vc-preamble": "import Imports.AllImports\n\ndef numRollsToTarget (d f t : Nat) :\
+  \ Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def M := 1000000007\n\n\n\ntheorem impossible_target (d f t : Nat)\
+  \ :\n  (t < d ∨ t > d*f) → numRollsToTarget d f t = 0 :=\nsorry\n"
+"vc-theorems": "theorem single_die_possible (f t : Nat) :\n  1 ≤ t ∧ t ≤ f → numRollsToTarget\
+  \ 1 f t = 1 :=\nsorry\n\n\ntheorem single_die_impossible (f t : Nat) :\n  (t < 1\
+  \ ∨ t > f) → numRollsToTarget 1 f t = 0 :=\nsorry\n\n\n\n\n\n\n\n\ntheorem above_max_target\
+  \ (d f : Nat) :\n  numRollsToTarget d f (d*f+1) = 0 :=\nsorry\n\n/--\ninfo: 1\n\
+  -/\n#guard_msgs in\n#eval numRollsToTarget 1 6 3\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval numRollsToTarget 2 6 7\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval numRollsToTarget\
+  \ 2 5 10\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

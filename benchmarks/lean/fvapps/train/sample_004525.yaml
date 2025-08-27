@@ -1,0 +1,33 @@
+"vc-description": "## Debug celsius converter\n\nYour friend is traveling abroad to\
+  \ the United States so he wrote a program to convert fahrenheit to celsius. Unfortunately\
+  \ his code has some bugs.\n\nFind the errors in the code to get the celsius converter\
+  \ working properly.\n\nTo convert fahrenheit to celsius:\n```\ncelsius = (fahrenheit\
+  \ - 32) * (5/9)\n```\n```if-not:ruby,typescript\nRemember that typically temperatures\
+  \ in the current weather conditions are given in whole numbers. It is possible for\
+  \ temperature sensors to report temperatures with a higher accuracy such as to the\
+  \ nearest tenth. Instrument error though makes this sort of accuracy unreliable\
+  \ for many types of temperature measuring sensors. \n```\n\n```if:ruby\nPlease round\
+  \ to 5dp (use `.round(5)`)\n```\n\n```if:typescript\nPlease round to 5dp (use `Math.round()`)\n\
+  ```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def weather_info (temp : Float) : String := sorry\n\ndef celsius_conversion\
+  \ (f : Float) : Float := (f - 32) * (5/9)\n"
+"vc-theorems": "theorem weather_info_returns_string (temp : Float) :\n  ∃ s, weather_info\
+  \ temp = s := sorry\n\n\ntheorem weather_info_contains_celsius (temp : Float) :\n\
+  \  ∃ s₁ s₂ : String, weather_info temp = s₁ ++ toString (celsius_conversion temp)\
+  \ ++ s₂ := sorry\n\n\ntheorem weather_info_contains_patterns (temp : Float) :\n\
+  \  ∃ s₁ s₂ s₃ : String, \n    weather_info temp = s₁ ++ \"is\" ++ s₂ ∧\n    weather_info\
+  \ temp = s₃ ++ \"temperature\" := sorry\n\n\ntheorem weather_info_freezing_threshold\
+  \ (temp : Float) :\n  celsius_conversion temp ≤ 0 → \n    ∃ s₁ s₂ : String, weather_info\
+  \ temp = s₁ ++ \"freezing temperature\" ++ s₂ ∧\n  celsius_conversion temp > 0 →\
+  \ \n    ∃ s₁ s₂ : String, weather_info temp = s₁ ++ \"above freezing temperature\"\
+  \ ++ s₂ := sorry\n\n\ntheorem weather_info_above_freezing {temp : Float} (h : temp\
+  \ > 32) :\n  ∃ s₁ s₂ : String, weather_info temp = s₁ ++ \"above freezing temperature\"\
+  \ ++ s₂ := sorry\n\n\ntheorem weather_info_freezing {temp : Float} (h : temp < 32)\
+  \ :\n  ∃ s₁ s₂ : String, weather_info temp = s₁ ++ \"freezing temperature\" ++ s₂\
+  \ := sorry\n\n/--\ninfo: '10.0 is above freezing temperature'\n-/\n#guard_msgs in\n\
+  #eval weather_info 50\n\n/--\ninfo: '-5.0 is freezing temperature'\n-/\n#guard_msgs\
+  \ in\n#eval weather_info 23\n\n/--\ninfo: '0.0 is freezing temperature'\n-/\n#guard_msgs\
+  \ in\n#eval weather_info 32\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

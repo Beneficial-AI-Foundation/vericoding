@@ -1,0 +1,26 @@
+"vc-description": "Ms. E.T. came from planet Hex. She has 8 fingers in each hand which\
+  \ makes her count in hexadecimal way. When she meets you, she tells you that she\
+  \ came from 7E light years from the planet Earth. You see she means that it is 126\
+  \ light years far away and she is telling you the numbers in hexadecimal. Now, you\
+  \ are in trouble to understand what those numbers really mean. Therefore, you have\
+  \ to convert the hexadecimal numbers to decimals.\n\nInput:\n\nFirst line of code\
+  \ contain T test cases.\n\nevery line of text case contain a Hex-value \n\nOutput:\n\
+  \nEvery line of output contain a decimal conversion of given nunmber\n\nSample Input:\n\
+  \n3\n\nA\n\n1A23\n\n2C2A\n\nSample Output:\n\n10\n\n6691\n\n11306"
+"vc-preamble": "import Imports.AllImports\n\ndef Nat.toHexString (n: Nat) : String\
+  \ :=\n  sorry\n\n\ndef String.trimLeftZeros (s: String) : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def hexToDecimal (l: List String) : List Nat :=\n  sorry\n"
+"vc-theorems": "theorem hex_to_decimal_length (l: List String) :\n  l.length = (hexToDecimal\
+  \ l).length := by\n  sorry\n\n\ntheorem hex_to_decimal_non_negative (l: List String)\
+  \ (i: Nat) (h: i < (hexToDecimal l).length) :\n  (hexToDecimal l).get ⟨i, h⟩ ≥ 0\
+  \ := by \n  sorry\n\n\ntheorem hex_to_decimal_roundtrip (l: List String) :\n  let\
+  \ converted := hexToDecimal l\n  let back_to_hex := converted.map Nat.toHexString\n\
+  \  let normalized := l.map String.trimLeftZeros\n  back_to_hex = normalized := by\n\
+  \  sorry\n\n\ntheorem hex_to_decimal_increasing (l: List String) (i: Nat) (h₁: i\
+  \ < l.length) (h₂: i < (hexToDecimal l).length) :\n  let num := l.get ⟨i, h₁⟩\n\
+  \  num.length > 1 → \n  (hexToDecimal l).get ⟨i, h₂⟩ > 0 := by\n  sorry\n\n/--\n\
+  info: [10]\n-/\n#guard_msgs in\n#eval hex_to_decimal [\"A\"]\n\n/--\ninfo: [6691]\n\
+  -/\n#guard_msgs in\n#eval hex_to_decimal [\"1A23\"]\n\n/--\ninfo: [10, 6691, 11306]\n\
+  -/\n#guard_msgs in\n#eval hex_to_decimal [\"A\", \"1A23\", \"2C2A\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

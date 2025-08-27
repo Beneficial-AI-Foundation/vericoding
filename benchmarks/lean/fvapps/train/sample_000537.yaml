@@ -1,0 +1,43 @@
+"vc-description": "Chef has gone shopping with his 5-year old son. They have bought\
+  \ N items so far. The items are numbered from 1 to N, and the item i weighs Wi grams.\n\
+  \nChef's son insists on helping his father in carrying the items. He wants his dad\
+  \ to give him a few items. Chef does not want to burden his son. But he won't stop\
+  \ bothering him unless he is given a few items to carry. So Chef decides to give\
+  \ him some items. Obviously, Chef wants to give the kid less weight to carry.\n\n\
+  However, his son is a smart kid. To avoid being given the bare minimum weight to\
+  \ carry, he suggests that the items are split into two groups, and one group contains\
+  \ exactly K items. Then Chef will carry the heavier group, and his son will carry\
+  \ the other group.\n\nHelp the Chef in deciding which items should the son take.\
+  \ Your task will be simple. Tell the Chef the maximum possible difference between\
+  \ the weight carried by him and the weight carried by the kid.\n\n-----Input:-----\n\
+  The first line of input contains an integer T, denoting the number of test cases.\
+  \ Then T test cases follow. The first line of each test contains two space-separated\
+  \ integers N and K. The next line contains N space-separated integers W1, W2, ...,\
+  \ WN.\n\n-----Output:-----\nFor each test case, output the maximum possible difference\
+  \ between the weights carried by both in grams.\n\n-----Constraints:-----\n- 1 ≤\
+  \ T ≤ 100\n- 1 ≤ K < N ≤ 100\n- 1 ≤ Wi ≤ 100000 (105)\n\n-----Example:-----\nInput:\n\
+  2\n5 2\n8 4 5 2 10\n8 3\n1 1 1 1 1 1 1 1\n\nOutput:\n17\n2\n\n-----Explanation:-----\n\
+  Case #1: The optimal way is that Chef gives his son K=2 items with weights 2 and\
+  \ 4. Chef carries the rest of the items himself. Thus the difference is: (8+5+10)\
+  \ − (4+2) = 23 − 6 = 17.\n\nCase #2: Chef gives his son 3 items and he carries 5\
+  \ items himself."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat \n  | []\
+  \ => 0\n  | x::xs => x + sum xs\n\n\ndef List.sort (l : List Nat) : List Nat :=\n\
+  sorry\n\n\ndef abs (n : Nat) : Nat :=\n  if n ≥ 0 then n else 0\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_max_weight_difference (N : Nat) (K : Nat) (weights : List\
+  \ Nat) : Int :=\nsorry\n"
+"vc-theorems": "theorem reverse_invariant {N K : Nat} {weights : List Nat} :\n  weights.length\
+  \ = N →\n  K ≤ N →\n  get_max_weight_difference N K weights = get_max_weight_difference\
+  \ N K weights.reverse :=\nsorry\n\n\ntheorem complement_invariant {N K : Nat} {weights\
+  \ : List Nat} :\n  weights.length = N →\n  K ≤ N →\n  get_max_weight_difference\
+  \ N K weights = get_max_weight_difference N (N-K) weights :=\nsorry \n\n\ntheorem\
+  \ sort_preserves_sum {weights : List Nat} :\n  List.sum weights = List.sum (List.sort\
+  \ weights) :=\nsorry\n\n\ntheorem identical_weights_property {N K w : Nat} {weights\
+  \ : List Nat} :\n  weights = List.replicate N w →\n  K ≤ N →\n  get_max_weight_difference\
+  \ N K weights = if 2*K ≥ N \n    then Int.ofNat ((2*K - N)*w)\n    else Int.ofNat\
+  \ ((N - 2*K)*w) :=\nsorry\n\n/--\ninfo: 17\n-/\n#guard_msgs in\n#eval get_max_weight_difference\
+  \ 5 2 [8, 4, 5, 2, 10]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval get_max_weight_difference\
+  \ 8 3 [1, 1, 1, 1, 1, 1, 1, 1]\n\n/--\ninfo: 13\n-/\n#guard_msgs in\n#eval get_max_weight_difference\
+  \ 4 1 [5, 2, 7, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,24 @@
+"vc-description": "Ronny the robot is watching someone perform the Cups and Balls\
+  \ magic trick. The magician has one ball and three cups, he shows Ronny which cup\
+  \ he hides the ball under (b), he then mixes all the cups around by performing multiple\
+  \ two-cup switches (arr). Ronny can record the switches but can't work out where\
+  \ the ball is. Write a programme to help him do this. \n\nRules: \n- There will\
+  \ only ever be three cups.\n- Only two cups will be swapped at a time. \n- The cups\
+  \ and their switches will be refered to by their index in a row of three, beginning\
+  \ at one. So [[1,2]] means the cup at position one, is swapped with the cup at position\
+  \ two. \n- Arr will be an array of integers 1 - 3 organised in pairs. \n- There\
+  \ won't be any empty sub-arrays.\n- If arr is just an empty array b should be returned.\n\
+  \nExamples: \n\n(b) = 2, \n(arr) = [[1,2]]\n\nThe ball is under cup number : 1\n\
+  \n-------\n\n(b) = 1, \n(arr) = [[2,3],[1,2],[1,2]]\n\nThe ball is under cup number\
+  \ : 1\n\n-------\n\n(b) = 2, \n(arr) = [[1,3],[1,2],[2,1],[2,3]]\n\nThe ball is\
+  \ under cup number : 3"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def cup_and_balls (b : Nat) (swaps : List (List Nat)) : Nat :=\
+  \ sorry\n\n\n\ntheorem empty_swaps_preserves_position {b : Nat}\n  (h1 : b > 0)\
+  \ (h2 : b ≤ 100) :\n  cup_and_balls b [] = b := sorry"
+"vc-theorems": "/--\ninfo: 1\n-/\n#guard_msgs in\n#eval cup_and_balls 2 [[1, 2]]\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval cup_and_balls 1 [[2, 3], [1, 2], [1, 2]]\n\
+  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval cup_and_balls 2 [[1, 3], [1, 2], [2, 1],\
+  \ [2, 3]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

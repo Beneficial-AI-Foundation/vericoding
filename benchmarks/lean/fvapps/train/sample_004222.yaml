@@ -1,0 +1,38 @@
+"vc-description": "Consider integer coordinates x, y in the Cartesian plan and three\
+  \ functions f, g, h\ndefined by:\n```\nf: 1 <= x <= n, 1 <= y <= n --> f(x, y) =\
+  \ min(x, y)\ng: 1 <= x <= n, 1 <= y <= n --> g(x, y) = max(x, y)\nh: 1 <= x <= n,\
+  \ 1 <= y <= n --> h(x, y) = x + y\n``` \nwhere n is a given integer (n >= 1, guaranteed)\
+  \ and x, y are integers.\n\nIn the table below you can see the value of the function\
+  \ f with n = 6.\n\n  ---|*0* |*1*|*2*|*3*|*4*|*5*|*6*|\n  -- |--|--|--|--|--|--|--|\n\
+  \  *6*|- |1 |2 |3 |4 |5 |6 |\n  *5*|- |1 |2 |3 |4 |5 |5 |\n  *4*|- |1 |2 |3 |4 |4\
+  \ |4 |\n  *3*|- |1 |2 |3 |3 |3 |3 |\n  *2*|- |1 |2 |2 |2 |2 |2 |\n  *1*|- |1 |1\
+  \ |1 |1 |1 |1 |\n  *0*|- |- |- |- |- |- |- |\n\nThe task is to calculate the sum\
+  \ of f(x, y), g(x, y) and h(x, y) for all integers x and y such that (1 <= x <=\
+  \ n, 1 <= y <= n).\n\nThe function sumin (sum of f) will take n as a parameter and\
+  \ return the sum of min(x, y) in the domain 1 <= x <= n, 1 <= y <= n.\nThe function\
+  \ sumax (sum of g) will take n as a parameter and return the sum of max(x, y) in\
+  \ the same domain.\nThe function sumsum (sum of h) will take n as a parameter and\
+  \ return the sum of x + y in the same domain.\n\n\n#Examples:\n```\nsumin(6) -->\
+  \ 91\nsumin(45) --> 31395\nsumin(999) --> 332833500\nsumin(5000) --> 41679167500\n\
+  \nsumax(6) --> 161\nsumax(45) --> 61755\nsumax(999) --> 665167500\nsumax(5000) -->\
+  \ 83345832500\n\nsumsum(6) --> 252\nsumsum(45) --> 93150\nsumsum(999) --> 998001000\n\
+  sumsum(5000) --> 125025000000\n```\n\n#Hint:\n1. Try to avoid nested loops\n2. Note\
+  \ that h = f + g"
+"vc-preamble": "import Imports.AllImports\n\ndef sumin (n : Nat) : Nat := sorry\n\
+  def sumax (n : Nat) : Nat := sorry\n\ndef sumsum (n : Nat) : Nat := sorry\n\ndef\
+  \ sumOfMins (n : Nat) : Nat := sorry\n\n\n\n\ndef sumOfMaxs (n : Nat) : Nat := sorry\n\
+  \n\n\ntheorem sumax_positive (n : Nat) (h : n > 0) :\n  sumax n > 0 :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sumOfSums (n : Nat) : Nat := sorry\n\n\n\ntheorem sumsum_equals_sumin_plus_sumax\
+  \ (n : Nat) :\n  sumsum n = sumin n + sumax n :=\nsorry\n"
+"vc-theorems": "theorem sumin_positive (n : Nat) (h : n > 0) : \n  sumin n > 0 :=\n\
+  sorry\n\n\ntheorem sumin_le_sumax (n : Nat) :\n  sumin n ≤ sumax n :=\nsorry\n\n\
+  \ntheorem sumax_ge_sumin (n : Nat) :\n  sumax n ≥ sumin n :=\nsorry\n\n\ntheorem\
+  \ sumsum_positive (n : Nat) (h : n > 0) :\n  sumsum n > 0 :=\nsorry\n\n/--\ninfo:\
+  \ 55\n-/\n#guard_msgs in\n#eval sumin 5\n\n/--\ninfo: 91\n-/\n#guard_msgs in\n#eval\
+  \ sumin 6\n\n/--\ninfo: 1240\n-/\n#guard_msgs in\n#eval sumin 15\n\n/--\ninfo: 161\n\
+  -/\n#guard_msgs in\n#eval sumax 6\n\n/--\ninfo: 61755\n-/\n#guard_msgs in\n#eval\
+  \ sumax 45\n\n/--\ninfo: 671650\n-/\n#guard_msgs in\n#eval sumax 100\n\n/--\ninfo:\
+  \ 252\n-/\n#guard_msgs in\n#eval sumsum 6\n\n/--\ninfo: 93150\n-/\n#guard_msgs in\n\
+  #eval sumsum 45\n\n/--\ninfo: 1010000\n-/\n#guard_msgs in\n#eval sumsum 100\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

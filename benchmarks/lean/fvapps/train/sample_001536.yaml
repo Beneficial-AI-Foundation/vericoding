@@ -1,0 +1,23 @@
+"vc-description": "Consider a currency system in which there are notes of six denominations,\
+  \ namely, Rs. 1, Rs. 2, Rs. 5, Rs. 10, Rs. 50, Rs. 100.\nIf the sum of Rs. N is\
+  \ input, write a program to computer smallest number of notes that will combine\
+  \ to give Rs. N.\n\n-----Input-----\n\nThe first line contains an integer T, total\
+  \ number of testcases. Then follow T lines, each line contains an integer N. \n\n\
+  -----Output-----\nFor each test case, display the smallest number of notes that\
+  \ will combine to give N, in a new line.\n\n-----Constraints-----\n- 1 ≤ T ≤ 1000\n\
+  - 1 ≤ N ≤ 1000000\n\n-----Example-----\nInput\n3 \n1200\n500\n242\n\nOutput\n12\n\
+  5\n7"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_notes_needed (amount : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem min_notes_needed_nonnegative (amount : Nat) : \n  min_notes_needed\
+  \ amount ≥ 0 :=\n  sorry\n\n\n\n\ntheorem min_notes_needed_exact_change (amount\
+  \ : Nat) :\n  let notes := [100, 50, 10, 5, 2, 1]\n  let count := min_notes_needed\
+  \ amount\n  let remainingAndCount := notes.foldl \n    (fun (acc : Nat × Nat) (note\
+  \ : Nat) => \n      let remaining := acc.1\n      let count := acc.2\n      let\
+  \ notes_used := remaining / note\n      (remaining - notes_used * note, count +\
+  \ notes_used))\n    (amount, 0)\n  count = remainingAndCount.2 ∧ remainingAndCount.1\
+  \ = 0 :=\n  sorry\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval min_notes_needed 1200\n\
+  \n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval min_notes_needed 500\n\n/--\ninfo: 7\n\
+  -/\n#guard_msgs in\n#eval min_notes_needed 242\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

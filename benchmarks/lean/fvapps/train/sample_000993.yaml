@@ -1,0 +1,63 @@
+"vc-description": "Note : This question carries $100$ $points$\nCodeLand is celebrating\
+  \ a festival by baking cakes! In order to avoid wastage, families follow a unique\
+  \ way of distributing cakes.\nFor $T$ families in the locality, $i$-th family (1\
+  \ <= $i$ <= $T$) has $N$ members. They baked $S$ slices of cakes. The smallest member\
+  \ of the family gets $K$ slices of cakes. Each family has a lucky number of $R$\
+  \ and they agree to distribute the slices such that the member gets $R$ times more\
+  \ slices than the member just smaller than them. Since the family is busy in festival\
+  \ preparations, find out if the number of slices would be sufficient for the family\
+  \ or not. Also, find how many extra slices they have or how many slices are they\
+  \ short of.\nAlso, the locality is kind and believes in sharing. So, you also need\
+  \ to determine if each family would have sufficient slices if families shared their\
+  \ cakes among each other!\n\n-----Input :-----\n- First line of input will have\
+  \ a single integer $T$ i.e. the number of families in the locality\n- For next $T$\
+  \ lines, each line will describe one family through 4 integers i.e. $S$, $N$, $K$,\
+  \ $R$ separated by spaces\n\n-----Output-----\n- First $T$ lines of output will\
+  \ show if slices are enough for the family or not, followed by extra or required\
+  \ slices. For example, if slices are sufficient, the output would be $POSSIBLE$\
+  \ $10$ which implies 10 slices are extra. If slices are insufficient, the output\
+  \ would be $IMPOSSIBLE$ $15$ which implies 15 slices are required to fulfill the\
+  \ requirement.\n- Last line of output would be $IMPOSSIBLE$ or $POSSIBLE$ depending\
+  \ on whether each family would get enough slices after sharing.\n\n-----Constraints:-----\n\
+  - 1 ≤ $T$ ≤ 50\n- 1 ≤ $N$ ≤ 15\n- 1 ≤ $S$ ≤ 10^9\n- 1 ≤ $K$ ≤ 5\n- 1 ≤ $R$ ≤ 5\n\
+  \n-----Sample Input:-----\n5\n100 4 2 2\n100 4 3 2\n100 4 3 3\n200 4 4 2\n10 3 2\
+  \ 2\n\n-----Sample Output:-----\nPOSSIBLE 70\nPOSSIBLE 55\nIMPOSSIBLE 20\nPOSSIBLE\
+  \ 140\nIMPOSSIBLE 4\nPOSSIBLE\n\n-----Explanation-----\nFor the first home, the\
+  \ youngest member has got 2 slices, the one older than them gets 2 times more slices,\
+  \ and so forth. So, first home needs 2 + 4 + 8 + 16 = 30 slices. But since they\
+  \ made 100, they have 70 extra, hence we print 'POSSIBLE 70'.\nDoing the same for\
+  \ other houses, we find 20 + 4 = 24 slices extra are required so that all families\
+  \ have enough slices. In this case we have 70 + 55 + 140 = 265 extra slices which\
+  \ is > 24, so we print 'POSSIBLE' in last line."
+"vc-preamble": "import Imports.AllImports\n\ndef solve_cake_festival (families : List\
+  \ (Nat × Nat × Nat × Nat)) : List String := sorry\n\ndef isVerdict (s : String)\
+  \ : Bool :=\n  s = \"POSSIBLE\" || s = \"IMPOSSIBLE\"\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isVerdictWithNumber (s : String) : Bool :=\n  let parts :=\
+  \ s.splitOn \" \"\n  match parts with\n  | [verdict, num] => isVerdict verdict &&\
+  \ (num.toInt?.isSome)\n  | _ => false\n\n-- Output format theorem"
+"vc-theorems": "theorem cake_festival_output_format (families : List (Nat × Nat ×\
+  \ Nat × Nat)) :\n  let results := solve_cake_festival families;\n  -- Results is\
+  \ non-empty\n  results.length > 0\n  -- All but last result have format \"VERDICT\
+  \ N\"\n  ∧ (∀ i : Fin (results.length - 1), isVerdictWithNumber results[i]!)\n \
+  \ -- Last result is just POSSIBLE/IMPOSSIBLE\n  ∧ isVerdict results[results.length\
+  \ - 1]! := sorry\n\n-- Valid differences theorem\n\ntheorem cake_festival_valid_diffs\
+  \ (families : List (Nat × Nat × Nat × Nat)) :\n  let results := solve_cake_festival\
+  \ families;\n  results.length = families.length + 1\n  ∧ ∀ i : Fin families.length,\n\
+  \    let (slices, _, _, _) := families[i];\n    let parts := (results[i]!).splitOn\
+  \ \" \";\n    match parts with\n    | [\"POSSIBLE\", n] => (n.toInt?.get! ≥ 0)\n\
+  \    | [\"IMPOSSIBLE\", n] => (n.toInt?.get! > 0)\n    | _ => False := sorry\n\n\
+  -- Final verdict theorem \n\ntheorem cake_festival_final_verdict (families : List\
+  \ (Nat × Nat × Nat × Nat)) :\n  let results := solve_cake_festival families;\n \
+  \ let extra := results.take (results.length - 1) |>.foldl (λ acc res => \n    let\
+  \ parts := res.splitOn \" \"\n    match parts with\n    | [\"POSSIBLE\", n] => acc\
+  \ + n.toInt?.getD 0\n    | _ => acc) 0;\n  let less := results.take (results.length\
+  \ - 1) |>.foldl (λ acc res =>\n    let parts := res.splitOn \" \"\n    match parts\
+  \ with \n    | [\"IMPOSSIBLE\", n] => acc + n.toInt?.getD 0\n    | _ => acc) 0;\n\
+  \  results[results.length - 1]! = \"POSSIBLE\" ↔ extra ≥ less := sorry\n\n-- Single\
+  \ member family theorem\n\ntheorem single_member_family \n  (slices smallest luck\
+  \ : Nat)\n  (h1 : slices > 0) (h2 : smallest > 0) (h3 : luck > 0) :\n  let results\
+  \ := solve_cake_festival [(slices, 1, smallest, luck)];\n  results.length = 2\n\
+  \  ∧ if smallest ≤ slices then\n      results[0]! = s!\"POSSIBLE {slices - smallest}\"\
+  \n    else  \n      results[0]! = s!\"IMPOSSIBLE {smallest - slices}\" := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

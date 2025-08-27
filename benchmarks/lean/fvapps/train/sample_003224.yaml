@@ -1,0 +1,18 @@
+"vc-description": "Create a function `sierpinski` to generate an ASCII representation\
+  \ of a Sierpinski triangle of order **N**. \n\nSeperate each line with `\\n`. You\
+  \ don't have to check the input value.\n\nThe output should look like this: \n\n\
+  \     sierpinski(4)\n                   *               \n                  * *\
+  \              \n                 *   *             \n                * * * *  \
+  \          \n               *       *           \n              * *     * *    \
+  \      \n             *   *   *   *         \n            * * * * * * * *      \
+  \  \n           *               *       \n          * *             * *      \n\
+  \         *   *           *   *     \n        * * * *         * * * *    \n    \
+  \   *       *       *       *   \n      * *     * *     * *     * *  \n     *  \
+  \ *   *   *   *   *   *   * \n    * * * * * * * * * * * * * * * *"
+"vc-preamble": "import Imports.AllImports\n\ndef String.lines (s : String) : List\
+  \ String := sorry\n\ndef String.count (s : String) (c : Char) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sierpinski (n : Nat) : String := sorry\n\n\n\n\n\n\n\n\n\n\n\
+  \ntheorem sierpinski_base : sierpinski 0 = \"*\" := sorry"
+"vc-theorems": ""
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,29 @@
+"vc-description": "A group of rebels travelling on a square hoverboard is ambushed\
+  \ by Imperial Stormtroopers.Their big hoverboard is an easy target, so they decide\
+  \ to split the board into smaller square hoverboards so that they can bolt away\
+  \ easily.But they should also make sure they don't get too spread out.Help the rebels\
+  \ split the craft into minimum number of smaller crafts possible.\n\n-----Input-----\n\
+  A single integer N denoting the side length of the big hoverboard.\n\n-----Output-----\n\
+  In the first line, output the integer 'k' which is the minimum number of square\
+  \ boards into which the bigger board can be split up.\n\nIn the second line, output\
+  \ k space separated integers which denote the sizes of the smaller square hoverboards.This\
+  \ must be in increasing order of sizes.\n\n-----Constraints-----\nN ranges from\
+  \ 2 to 50.\n\n-----Example-----\nInput:\n3\n\nOutput:\n6\n1 1 1 1 1 2\n\n-----Explanation-----\n\
+  A square of side length 3 can be split into smaller squares in two ways: Either\
+  \ into 9 squares of side1 or 5 squares of side 1 and 1 square of size 2.The second\
+  \ case is the favourable one."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def split_hoverboard (n : Nat) : (Nat × List Nat) := sorry\n\n\
+  theorem split_hoverboard_count_even_odd (n : Nat) (h : n ≥ 2) :\n  let (count, _)\
+  \ := split_hoverboard n\n  count = if n % 2 = 0 then 4 else 6 := sorry\n"
+"vc-theorems": "theorem split_hoverboard_squares_length (n : Nat) (h : n ≥ 2) :\n\
+  \  let (count, squares) := split_hoverboard n  \n  squares.length = count := sorry\n\
+  \n\ntheorem split_hoverboard_dimensions_near_half (n : Nat) (h : n ≥ 2) :\n  let\
+  \ (_, squares) := split_hoverboard n\n  ∀ x, x ∈ squares → (x : Int) - n/2 ≤ 1 ∧\
+  \ (x : Int) - n/2 ≥ -1 := sorry\n\n\ntheorem split_hoverboard_positive_squares (n\
+  \ : Nat) (h : n ≥ 2) :\n  let (_, squares) := split_hoverboard n\n  ∀ x, x ∈ squares\
+  \ → x > 0 := sorry\n\n\ntheorem split_hoverboard_even_case (n : Nat) (h : n ≥ 2)\
+  \ (h2 : n % 2 = 0) :\n  let (_, squares) := split_hoverboard n\n  ∀ x, x ∈ squares\
+  \ → x = n/2 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

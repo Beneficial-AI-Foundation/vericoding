@@ -1,0 +1,34 @@
+"vc-description": "\"I don't have any fancy quotes.\" - vijju123\nChef was reading\
+  \ some quotes by great people. Now, he is interested in classifying all the fancy\
+  \ quotes he knows. He thinks that all fancy quotes which contain the word \"not\"\
+  \ are Real Fancy; quotes that do not contain it are regularly fancy.\nYou are given\
+  \ some quotes. For each quote, you need to tell Chef if it is Real Fancy or just\
+  \ regularly fancy.\n\n-----Input-----\n- The first line of the input contains a\
+  \ single integer $T$ denoting the number of test cases. The description of $T$ test\
+  \ cases follows.\n- The first and only line of each test case contains a single\
+  \ string $S$ denoting a quote.\n\n-----Output-----\nFor each test case, print a\
+  \ single line containing the string \"Real Fancy\" or \"regularly fancy\" (without\
+  \ quotes).\n\n-----Constraints-----\n- $1 \\le T \\le 50$\n- $1 \\le |S| \\le 100$\n\
+  - each character of $S$ is either a lowercase English letter or a space\n\n-----Subtasks-----\n\
+  Subtask #1 (100 points): original constraints\n\n-----Example Input-----\n2\ni do\
+  \ not have any fancy quotes\nwhen nothing goes right go left\n\n-----Example Output-----\n\
+  Real Fancy\nregularly fancy\n\n-----Explanation-----\nExample case 1: \"i do not\
+  \ have any fancy quotes\"\nExample case 2: The word \"not\" does not appear in the\
+  \ given quote."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def classify_quotes (quote : String) : String := sorry\n\ndef splitString\
+  \ (s : String) : List String := sorry\n"
+"vc-theorems": "theorem classify_quotes_result_valid (quote : String) :\n  classify_quotes\
+  \ quote = \"Real Fancy\" ∨ classify_quotes quote = \"regularly fancy\" := sorry\n\
+  \n\ntheorem classify_quotes_not_condition (quote : String) :\n  classify_quotes\
+  \ quote = (if (splitString quote).contains \"not\" then \"Real Fancy\" else \"regularly\
+  \ fancy\") := sorry\n\n\ntheorem classify_quotes_regular (quote : String) :\n  ¬(splitString\
+  \ quote).contains \"not\" → classify_quotes quote = \"regularly fancy\" := sorry\n\
+  \n\ntheorem classify_quotes_all_not (n : Nat) (h : n > 0) :\n  classify_quotes (String.join\
+  \ (List.replicate n \"not\" |>.intersperse \" \")) = \"Real Fancy\" := sorry\n\n\
+  /--\ninfo: 'Real Fancy'\n-/\n#guard_msgs in\n#eval classify_quotes \"i do not have\
+  \ any fancy quotes\"\n\n/--\ninfo: 'regularly fancy'\n-/\n#guard_msgs in\n#eval\
+  \ classify_quotes \"when nothing goes right go left\"\n\n/--\ninfo: 'Real Fancy'\n\
+  -/\n#guard_msgs in\n#eval classify_quotes \"this is not fancy at all\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

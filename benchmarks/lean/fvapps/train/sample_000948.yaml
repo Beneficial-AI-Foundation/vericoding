@@ -1,0 +1,43 @@
+"vc-description": "Chef recently graduated Computer Science in university, so he was\
+  \ looking for a job. He applied for several job offers, but he eventually settled\
+  \ for a software engineering job at ShareChat. Chef was very enthusiastic about\
+  \ his new job and the first mission assigned to him was to implement a message encoding\
+  \ feature to ensure the chat is private and secure.\nChef has a message, which is\
+  \ a string $S$ with length $N$ containing only lowercase English letters. It should\
+  \ be encoded in two steps as follows: \n- Swap the first and second character of\
+  \ the string $S$, then swap the 3rd and 4th character, then the 5th and 6th character\
+  \ and so on. If the length of $S$ is odd, the last character should not be swapped\
+  \ with any other.\n- Replace each occurrence of the letter 'a' in the message obtained\
+  \ after the first step by the letter 'z', each occurrence of 'b' by 'y', each occurrence\
+  \ of 'c' by 'x', etc, and each occurrence of 'z' in the message obtained after the\
+  \ first step by 'a'.\nThe string produced in the second step is the encoded message.\
+  \ Help Chef and find this message.\n\n-----Input-----\n- The first line of the input\
+  \ contains a single integer $T$ denoting the number of test cases. The description\
+  \ of $T$ test cases follows.\n- The first line of each test case contains a single\
+  \ integer $N$.\n- The second line contains the message string $S$.\n\n-----Output-----\n\
+  For each test case, print a single line containing one string — the encoded message.\n\
+  \n-----Constraints-----\n- $1 \\le T \\le 1,000$\n- $1 \\le N \\le 100$\n- $|S|\
+  \ = N$\n- $S$ contains only lowercase English letters\n\n-----Example Input-----\n\
+  2\n9\nsharechat\n4\nchef\n\n-----Example Output-----\nshizxvzsg\nsxuv\n\n-----Explanation-----\n\
+  Example case 1: The original message is \"sharechat\". In the first step, we swap\
+  \ four pairs of letters (note that the last letter is not swapped), so it becomes\
+  \ \"hsraceaht\". In the second step, we replace the first letter ('h') by 's', the\
+  \ second letter ('s') by 'h', and so on, so the resulting encoded message is \"\
+  shizxvzsg\"."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def encode_message (s : String) : String := sorry\n\ntheorem encode_preserves_length\
+  \ (s : String) : \n  (encode_message s).length = s.length := sorry\n"
+"vc-theorems": "theorem encode_double_is_identity (s : String) : \n  encode_message\
+  \ (encode_message s) = s := sorry\n\n\ntheorem encode_reflection_property (s : String)\
+  \ (i : Nat) \n  (h1 : i + 1 < s.length) :\n  let encoded := encode_message s\n \
+  \ have h_len : (encode_message s).length = s.length := encode_preserves_length s\n\
+  \  have h2 : i < s.length := Nat.lt_of_succ_lt h1\n  have h3 : i < (encode_message\
+  \ s).length := by simp [h_len, h2]\n  have h4 : i + 1 < (encode_message s).length\
+  \ := by simp [h_len, h1]\n  (s.data[i]'h2).isLower = true →\n  (s.data[i+1]'h1).isLower\
+  \ = true →\n  Char.toNat 'a' + (Char.toNat 'z' - Char.toNat (s.data[i+1]'h1)) =\
+  \ Char.toNat ((encode_message s).data[i]'h3) ∧\n  Char.toNat 'a' + (Char.toNat 'z'\
+  \ - Char.toNat (s.data[i]'h2)) = Char.toNat ((encode_message s).data[i+1]'h4) :=\
+  \ sorry\n\n\ntheorem encode_output_lowercase (s : String) (i : Nat) (h : i < (encode_message\
+  \ s).length) :\n  ((encode_message s).data[i]'h).isLower = true := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

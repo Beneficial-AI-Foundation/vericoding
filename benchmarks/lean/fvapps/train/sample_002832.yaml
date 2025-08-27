@@ -1,0 +1,33 @@
+"vc-description": "The numbers 12, 63 and 119 have something in common related with\
+  \ their divisors and their prime factors, let's see it.\n```\nNumbers PrimeFactorsSum(pfs)\
+  \        DivisorsSum(ds)              Is ds divisible by pfs\n12         2 + 2 +\
+  \ 3 = 7         1 + 2 + 3 + 4 + 6 + 12 = 28            28 / 7 = 4,  Yes\n63    \
+  \     3 + 3 + 7 = 13        1 + 3 + 7 + 9 + 21 + 63 = 104         104 / 13 = 8,\
+  \ Yes\n119        7 + 17 = 24           1 + 7 + 17 + 119 = 144                144\
+  \ / 24 = 6, Yes\n```\nThere is an obvius property you can see: the sum of the divisors\
+  \ of a number is divisible by the sum of its prime factors.\n\nWe need the function\
+  \ ```ds_multof_pfs()``` that receives two arguments: ```nMin``` and  ```nMax```,\
+  \ as a lower and upper limit (inclusives), respectively, and outputs a sorted list\
+  \ with the numbers that fulfill the property described above.\n\nWe represent the\
+  \ features of the described function:\n```python\nds_multof_pfs(nMin, nMax) ----->\
+  \ [n1, n2, ....., nl] # nMin ≤ n1 < n2 < ..< nl ≤ nMax\n```\nLet's see some cases:\n\
+  ```python\nds_multof_pfs(10, 100) == [12, 15, 35, 42, 60, 63, 66, 68, 84, 90, 95]\n\
+  \nds_multof_pfs(20, 120) == [35, 42, 60, 63, 66, 68, 84, 90, 95, 110, 114, 119]\n\
+  ```\nEnjoy it!!"
+"vc-preamble": "import Imports.AllImports\n\ndef sqrt (n : Nat) : Nat := sorry\n\n\
+  def is_prime (n : Nat) : Bool := sorry\n\n\ndef prime_factors_sum (n : Nat) : Nat\
+  \ := sorry \n\ndef divisors_sum (n : Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def ds_multof_pfs (nMin nMax : Nat) : List Nat := sorry\n\nstructure\
+  \ IsSorted (xs : List Nat) : Prop where\n  sorted : ∀ i j, i < xs.length → j < xs.length\
+  \ → i ≤ j → xs[i]! ≤ xs[j]!\n"
+"vc-theorems": "theorem is_prime_properties {n : Nat} : \n  (n < 2 → is_prime n =\
+  \ false) ∧ \n  (is_prime n = true → n ≥ 2) ∧\n  (is_prime n = true → ∀ i : Nat,\
+  \ 2 ≤ i ∧ i ≤ sqrt n → n % i ≠ 0) := sorry\n\n\ntheorem prime_factors_sum_properties\
+  \ {n : Nat} (h : n ≥ 2) :\n  prime_factors_sum n > 0 ∧ \n  prime_factors_sum n ≤\
+  \ n * n := sorry\n\n\ntheorem ds_multof_pfs_properties {nMin nMax : Nat} (h : nMin\
+  \ ≤ nMax) :\n  let result := ds_multof_pfs nMin nMax \n  IsSorted result ∧\n  (∀\
+  \ x ∈ result, nMin ≤ x ∧ x ≤ nMax) ∧\n  (∀ n ∈ result, prime_factors_sum n > 0 ∧\
+  \ (divisors_sum n) % (prime_factors_sum n) = 0) ∧\n  (∀ i j, i < result.length →\
+  \ j < result.length → i ≠ j → result[i]! ≠ result[j]!) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

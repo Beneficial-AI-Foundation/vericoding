@@ -1,0 +1,20 @@
+"vc-description": "Consider the string `\"1 2 36 4 8\"`. Lets take pairs of these\
+  \ numbers, concatenate each pair and determine how many of them of divisible by\
+  \ `k`. \n\n```Pearl \nIf k = 3, we get following numbers ['12', '18', '21', '24',\
+  \ '42', '48', '81', '84'], all divisible by 3.   \nNote:\n-- 21 and 12 are different\
+  \ pairs. \n-- Elements must be from different indices, so '3636` is not a valid.\
+  \ \n```\n\nGiven a string of numbers and an integer `k`, return the number of pairs\
+  \ that when concatenated, are divisible by `k`.\n\n```\nsolve(\"1 2 36 4 8\", 3)\
+  \ = 8, because they are ['12', '18', '21', '24', '42', '48', '81', '84']\nsolve(\"\
+  1 3 6 3\", 3) = 6. They are ['36', '33', '63', '63', '33', '36']\n```\n\nMore examples\
+  \ in test cases. Good luck!\n\nPlease also try [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (s : String) (k : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem solve_non_negative (s : String) (k : Nat) :\n  solve s k ≥\
+  \ 0 :=\n  sorry\n\n\ntheorem solve_bounded (s : String) (k : Nat) :\n  let n :=\
+  \ (s.split (· = ' ')).length\n  solve s k ≤ n * (n-1) :=\n  sorry\n\n/--\ninfo:\
+  \ 16\n-/\n#guard_msgs in\n#eval solve \"1 2 36 4 8\" 2\n\n/--\ninfo: 8\n-/\n#guard_msgs\
+  \ in\n#eval solve \"1 2 36 4 8\" 3\n\n/--\ninfo: 11\n-/\n#guard_msgs in\n#eval solve\
+  \ \"1 2 36 4 8\" 4\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,40 @@
+"vc-description": "Diana is planning to make a very long journey. Her journey consists\
+  \ of $N$ bus routes, numbered from $1 to N$ in the order she must take them. The\
+  \ buses themselves are very fast but do not run often. The $i-th$ bus route only\
+  \ runs every $Xi$ days.\n\nMore specifically, she can only take the $i-th$ bus on\
+  \ day $Xi, 2Xi, 3Xi$, and so on. Since the buses are very fast, she can take multiple\
+  \ buses on the same day.\n\nDiana must finish her journey by day D, but she would\
+  \ like to start the journey as late as possible. What is the latest day she could\
+  \ take the first bus, and still finish her journey by day $D$?\nIt is guaranteed\
+  \ that it is possible for Diana to finish her journey by day $D$.  \n\n-----Input:-----\n\
+  The first line of the input gives the number of test cases, $T$. $T$ test cases\
+  \ follow. Each test case begins with a line containing the two integers N and D.\
+  \ Then, another line follows containing $N$ integers, the $i-th$ one is $Xi$.\n\n\
+  -----Output:-----\nFor each test case, output one line containing an integer $Y$,\
+  \ where $Y$ is the latest day she could take the first bus, and still finish her\
+  \ journey by day $D$.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n- $1 \\\
+  leq Xi \\leq D.$\n- $1 \\leq N \\leq 1000.$\nIt is guaranteed that it is possible\
+  \ for Diana to finish her journey by day $D$.\n\n-----Sample Input:-----\n3\n\n\
+  3 10\n\n3 7 2\n\n4 100\n\n11 10 5 50\n\n1 1\n\n1  \n\n-----Sample Output:-----\n\
+  6  \n\n99\n\n1  \n\n-----EXPLANATION:-----\nIn Sample $Case 1$, there are $N = 3$\
+  \ bus routes and Bucket must arrive by day $D = 10$. She could:\n- Take the 1st\
+  \ bus on day 6 $(X1 = 3)$,\n- Take the 2nd bus on day 7 $(X2 = 7)$ and\n- Take the\
+  \ 3rd bus on day 8 $(X3 = 2)$.  \nIn Sample $Case 2$, there are $N = 4$ bus routes\
+  \ and Bucket must arrive by day $D = 100$. She could:\n- Take the 1st bus on day\
+  \ 99 $(X1 = 11)$,\n- Take the 2nd bus on day 100$ (X2 = 10)$,\n- Take the 3rd bus\
+  \ on day 100 $(X3 = 5)$ and\n- Take the 4th bus on day 100 $(X4 = 50)$,  \nIn Sample\
+  \ Case 3, there is $N = 1$ bus route, and Bucket must arrive by day $D = 1$. She\
+  \ could:\n- Take the 1st bus on day 1 $(X1 = 1)$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_latest_bus (n : Nat) (d : Nat) (buses : List Nat) : Nat\
+  \ :=\nsorry\n\n\n"
+"vc-theorems": "theorem solve_latest_bus_single_bus\n    (d : Nat) (h1 : d > 0) (h2\
+  \ : d ≤ 1000) :\n    solve_latest_bus 1 d [1] = d :=\nsorry\n\n\ntheorem solve_latest_bus_identical_buses\n\
+  \    (d bus : Nat) (h1 : d > 0) (h2 : d ≤ 100) \n    (h3 : bus > 0) (h4 : bus ≤\
+  \ 10) :\n    let result := solve_latest_bus 5 d (List.replicate 5 bus)\n    result\
+  \ ≤ d ∧ result % bus = 0 :=\nsorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval solve_latest_bus\
+  \ 3 10 [3, 7, 2]\n\n/--\ninfo: 99\n-/\n#guard_msgs in\n#eval solve_latest_bus 4\
+  \ 100 [11, 10, 5, 50]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_latest_bus\
+  \ 1 1 [1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

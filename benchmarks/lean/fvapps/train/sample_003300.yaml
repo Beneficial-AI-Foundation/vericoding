@@ -1,0 +1,21 @@
+"vc-description": "# Task\n The number is considered to be `unlucky` if it does not\
+  \ have digits `4` and `7` and is divisible by `13`. Please count all unlucky numbers\
+  \ not greater than `n`.\n\n# Example\n\n For `n = 20`, the result should be `2`\
+  \ (numbers `0 and 13`).\n \n For `n = 100`, the result should be `7` (numbers `0,\
+  \ 13, 26, 39, 52, 65, and 91`)\n \n# Input/Output\n\n\n - `[input]` integer `n`\n\
+  \n `1 ≤ n ≤ 10^8(10^6 in Python)`\n\n\n - `[output]` an integer"
+"vc-preamble": "import Imports.AllImports\n\ndef unlucky_number (n : Nat) : Nat :=\n\
+  \  sorry\n\n\ndef containsChar (s : String) (c : Char) : Bool :=\n  s.any (fun x\
+  \ => x == c)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isDivisibleBy13AndNoUnluckyDigits (i : Nat) : Bool :=\n  i\
+  \ % 13 == 0 && \n  !containsChar (toString i) '4' && \n  !containsChar (toString\
+  \ i) '7'\n\n\n"
+"vc-theorems": "theorem unlucky_number_non_negative (n : Nat) :\n  unlucky_number\
+  \ n ≥ 0 :=\n  sorry\n\n\ntheorem unlucky_number_zero :\n  unlucky_number 0 = 1 :=\n\
+  \  sorry\n\n\ntheorem unlucky_number_twelve :\n  unlucky_number 12 = 1 :=\n  sorry\n\
+  \n\ntheorem unlucky_number_thirteen :\n  unlucky_number 13 = 2 :=\n  sorry\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval unlucky_number 20\n\n/--\ninfo: 7\n-/\n#guard_msgs\
+  \ in\n#eval unlucky_number 100\n\n/--\ninfo: 40\n-/\n#guard_msgs in\n#eval unlucky_number\
+  \ 1000\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

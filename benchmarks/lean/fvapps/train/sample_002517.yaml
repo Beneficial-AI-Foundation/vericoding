@@ -1,0 +1,23 @@
+"vc-description": "=====Problem Statement=====\nCSS colors are defined using a hexadecimal\
+  \ (HEX) notation for the combination of Red, Green, and Blue color values (RGB).\n\
+  \nSpecifications of HEX Color Code\n\nIt must start with a '#' symbol.\nIt can have\
+  \ 3 or 6 digits.\nEach digit is in the range of 0 to F. (1, 2, 3, 4, 5, 6, 7, 8,\
+  \ 9, 0, A, B, C, D, E and F).\nA – F letters can be lower case. (a, b, c, d, e and\
+  \ f are also valid digits).\n\nExamples\n\nValid Hex Color Codes\n#FFF \n#025 \n\
+  #F0A1FB \n\nInvalid Hex Color Codes\n#fffabg\n#abcf\n#12365erff\n\nYou are given\
+  \ N lines of CSS code. Your task is to print all valid Hex Color Codes, in order\
+  \ of their occurrence from top to bottom.\n\nCSS Code Pattern\n\nSelector\n{\n \
+  \       Property: Value;\n}\n\n=====Input Format=====\nThe first line contains N,\
+  \ the number of code lines.\nThe next N lines contains CSS Codes.\n\n=====Constraints=====\n\
+  0<N<50\n\n=====Output Format=====\nOutput the color codes with '#' symbols on separate\
+  \ lines."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def extract_valid_hex_colors (s : String) : List String :=\n  sorry\n"
+"vc-theorems": "theorem extract_hex_empty_string :\n  extract_valid_hex_colors \"\"\
+  \ = [] := \n  sorry\n\n\ntheorem extract_hex_simple_color :\n  extract_valid_hex_colors\
+  \ \"color: #fff;\" = [\"#fff\"] :=\n  sorry\n\n\ntheorem extract_hex_six_digit :\n\
+  \  extract_valid_hex_colors \"color: #123456,\" = [\"#123456\"] :=\n  sorry\n\n\n\
+  theorem extract_hex_invalid :\n  extract_valid_hex_colors \"invalid\" = [] :=\n\
+  \  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

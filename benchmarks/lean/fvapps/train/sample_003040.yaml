@@ -1,0 +1,15 @@
+"vc-description": "Say hello!\n\nWrite a function to greet a person. Function will\
+  \ take name as input and greet the person by saying hello.\nReturn null/nil/None\
+  \ if input is empty string or null/nil/None.\n\nExample: \n\n```python\ngreet(\"\
+  Niks\") --> \"hello Niks!\"\ngreet(\"\")    --> None # Return None if input is empty\
+  \ string\ngreet(None)  --> None # Return None if input is None\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def greet (name : Option String) : Option String := sorry\n\ntheorem\
+  \ greet_with_name (name : String) :\n  greet (some name) = some s!\"hello {name}!\"\
+  \ := sorry\n"
+"vc-theorems": "theorem greet_with_none :\n  greet none = none := sorry\n\n/--\ninfo:\
+  \ 'hello Niks!'\n-/\n#guard_msgs in\n#eval greet \"Niks\"\n\n/--\ninfo: None\n-/\n\
+  #guard_msgs in\n#eval greet \"\"\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval greet\
+  \ None\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

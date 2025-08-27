@@ -1,0 +1,30 @@
+"vc-description": "`late_clock` function receive an array with 4 digits and should\
+  \ return the latest time that can be built with those digits.\nThe time should be\
+  \ in `HH:MM` format.\n\nExamples:\n```\n[1, 9, 8, 3] => 19:38\n[9, 1, 2, 5] => 21:59\n\
+  ```\n\nYou can suppose the input is correct and you can build from it a correct\
+  \ 24-hour time."
+"vc-preamble": "import Imports.AllImports\n\ndef isValidTime (t : Time) : Prop :=\
+  \ \n  t.hours ≤ 23 ∧ t.minutes ≤ 59\n\n\ndef lateClock (digits : List Nat) : String\
+  \ :=\nsorry\n\n\ndef toNat (c : Char) : Nat :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def getDigit (s : String) (i : Nat) : Char :=\ns.data.get! i\n"
+"vc-theorems": "theorem late_clock_output_format \n  {digits : List Nat}\n  (h : digits.length\
+  \ = 4)\n  (h' : ∀ d ∈ digits, d ≤ 9)\n  (h'' : ∃ t : Time, isValidTime t) :\n  let\
+  \ result := lateClock digits\n  (result.length = 5) ∧ \n  (getDigit result 2 = ':')\
+  \ ∧\n  (getDigit result 0).isDigit ∧\n  (getDigit result 1).isDigit ∧\n  (getDigit\
+  \ result 3).isDigit ∧\n  (getDigit result 4).isDigit :=\nsorry\n\n\ntheorem late_clock_valid_time\n\
+  \  {digits : List Nat}\n  (h : digits.length = 4)\n  (h' : ∀ d ∈ digits, d ≤ 9)\n\
+  \  (h'' : ∃ t : Time, isValidTime t) :\n  let result := lateClock digits\n  let\
+  \ t : Time := {\n    hours := toNat (getDigit result 0) * 10 + toNat (getDigit result\
+  \ 1)\n    minutes := toNat (getDigit result 3) * 10 + toNat (getDigit result 4)\n\
+  \  }\n  isValidTime t :=\nsorry\n\n\ntheorem late_clock_uses_all_digits\n  {digits\
+  \ : List Nat}\n  (h : digits.length = 4)\n  (h' : ∀ d ∈ digits, d ≤ 9)\n  (h'' :\
+  \ ∃ t : Time, isValidTime t) :\n  let result := lateClock digits\n  let result_digits\
+  \ := [\n    toNat (getDigit result 0),\n    toNat (getDigit result 1),\n    toNat\
+  \ (getDigit result 3),\n    toNat (getDigit result 4)\n  ]\n  ∃ σ : Fin 4 → Fin\
+  \ 4, \n    (∀ a b : Fin 4, σ a = σ b → a = b) ∧ \n    (∀ b : Fin 4, ∃ a : Fin 4,\
+  \ σ a = b) ∧\n    (∀ i : Fin 4, digits.get! i.val = result_digits.get! (σ i).val)\
+  \ :=\nsorry\n\n/--\ninfo: '21:59'\n-/\n#guard_msgs in\n#eval late_clock [9, 1, 2,\
+  \ 5]\n\n/--\ninfo: '19:38'\n-/\n#guard_msgs in\n#eval late_clock [1, 9, 8, 3]\n\n\
+  /--\ninfo: '22:20'\n-/\n#guard_msgs in\n#eval late_clock [0, 2, 2, 2]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

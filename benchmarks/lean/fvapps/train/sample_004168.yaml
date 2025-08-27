@@ -1,0 +1,27 @@
+"vc-description": "Imagine you start on the 5th floor of a building, then travel down\
+  \ to the 2nd floor, then back up to the 8th floor. You have travelled a total of\
+  \ 3 + 6 = 9 floors of distance.\n\nGiven an array representing a series of floors\
+  \ you must reach by elevator, return an integer representing the total distance\
+  \ travelled for visiting each floor in the array in order. \n\n```\n// simple examples\n\
+  elevatorDistance([5,2,8]) = 9\nelevatorDistance([1,2,3]) = 2\nelevatorDistance([7,1,7,1])\
+  \ = 18\n\n// if two consecutive floors are the same,\n//distance travelled between\
+  \ them is 0\nelevatorDistance([3,3]) = 0\n```\n\nArray will always contain at least\
+  \ 2 floors. Random tests will contain 2-20 elements in array, and floor values between\
+  \ 0 and 30."
+"vc-preamble": "import Imports.AllImports\n\ndef abs (n : Int) : Nat := \n  if n ≥\
+  \ 0 then n.toNat else (-n).toNat\n\n\ndef sum (l : List Nat) : Nat :=\n  l.foldl\
+  \ (·+·) 0\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def elevator_distance (floors : List Int) : Nat := sorry\n\ntheorem\
+  \ elevator_distance_non_negative (floors : List Int) \n  (h : floors.length ≥ 2)\
+  \ : \n  elevator_distance floors ≥ 0 := sorry\n"
+"vc-theorems": "theorem elevator_distance_reversal (floors : List Int)\n  (h : floors.length\
+  \ ≥ 2) :\n  elevator_distance floors = elevator_distance floors.reverse := sorry\n\
+  \n\n\n\n\n\ntheorem elevator_distance_same_floor (n : Int) :\n  elevator_distance\
+  \ [n, n] = 0 := sorry\n\n\ntheorem elevator_distance_all_zero (n : Nat) \n  (h :\
+  \ n ≥ 2) :\n  elevator_distance (List.replicate n 0) = 0 := sorry\n\n\ntheorem elevator_distance_up_down\
+  \ : \n  elevator_distance [1, -1] = 2 := sorry\n\n/--\ninfo: 9\n-/\n#guard_msgs\
+  \ in\n#eval elevator_distance [5, 2, 8]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval\
+  \ elevator_distance [1, 2, 3]\n\n/--\ninfo: 18\n-/\n#guard_msgs in\n#eval elevator_distance\
+  \ [7, 1, 7, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

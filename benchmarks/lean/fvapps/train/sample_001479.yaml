@@ -1,0 +1,25 @@
+"vc-description": "Sereja has two integers — A and B — in 7-ary system. He wants to\
+  \ calculate the number C, such that B * C = A. It is guaranteed that B is a divisor\
+  \ of A.\n\nPlease, help Sereja calculate the number C modulo 7L.\n\n-----Input-----\n\
+  \nFirst line of input contains an integer T — the number of test cases. T tests\
+  \ follow.\n\nFor each test case, the first line contains the integer A, and the\
+  \ second line contains the integer B, and the third line contains the integer L.\
+  \ A and B are given in 7-ary system.\n\n-----Output-----\nOutput the answer in 7-ary\
+  \ system.\n\n-----Constraints-----\n- 1 ≤ T ≤ 10\n- A and B are both positive integers.\n\
+  - Length of A is a positive integer and doesn't exceed 106.\n- L and length of B\
+  \ are positive integers and do not exceed 10000.\n\n-----Subtasks-----\n- Sub task\
+  \ #1 (20 points): Length of A is a positive integer and doesn't exceed 20.\n- Sub\
+  \ task #2 (30 points): Length of A is a positive integer and doesn't exceed 2000.\n\
+  - Sub task #3 (50 points): Original constraints.\n\n-----Example-----\nInput:3\n\
+  21\n5\n10\n202\n13\n1\n202\n13\n2\n\nOutput:3\n3\n13"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_division (a : String) (b : String) (l : Nat) : Nat :=\n\
+  \  sorry\n\n\n"
+"vc-theorems": "theorem division_by_zero :\n  ∀ l : Nat, solve_division \"1\" \"0\"\
+  \ l = 0 ∨ solve_division \"1\" \"0\" l = 0 :=\nsorry\n\n\ntheorem zero_numerator\n\
+  \  (l : Nat)\n  (h : 1 ≤ l ∧ l ≤ 5) :\n  solve_division \"0\" \"1\" l = 0 :=\nsorry\n\
+  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_division \"21\" \"5\" 10\n\n/--\n\
+  info: 3\n-/\n#guard_msgs in\n#eval solve_division \"202\" \"13\" 1\n\n/--\ninfo:\
+  \ 13\n-/\n#guard_msgs in\n#eval solve_division \"202\" \"13\" 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

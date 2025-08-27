@@ -1,0 +1,41 @@
+"vc-description": "You know combinations: for example, \nif you take 5 cards from\
+  \ a 52 cards deck you have 2,598,960 different combinations.\n\nIn mathematics the\
+  \ number of x combinations you can take from a set of n elements\nis called the\
+  \ binomial coefficient of n and x, or more often `n choose x`.\nThe formula to compute\
+  \ `m = n choose x` is: `m = n! / (x! * (n - x)!)`\nwhere ! is the factorial operator.\n\
+  \nYou are a renowned poster designer and painter. You are asked to provide 6 posters\
+  \ \nall having the same design each in 2 colors. Posters must all have a different\
+  \ color combination and you have the choice of 4 colors: red, blue, yellow, green.\
+  \ \nHow many colors can you choose for each poster?\n\nThe answer is two since `4\
+  \ choose 2 = 6`. The combinations will be:\n{red, blue}, {red, yellow}, {red, green},\
+  \ {blue, yellow}, {blue, green}, {yellow, green}.\n\nNow same question but you have\
+  \ 35 posters to provide and 7 colors available. How many colors for each poster?\n\
+  If you take combinations `7 choose 2` you will get 21 with the above formula.\n\
+  But 21 schemes aren't enough for 35 posters. If you take `7 choose 5` combinations\
+  \ you will get 21 too.\nFortunately if you take `7 choose 3` or `7 choose 4` combinations\
+  \ you get 35 and so each poster will have a different combination of\n3 colors or\
+  \ 5 colors. You will take 3 colors because it's less expensive.\n\nHence the problem\
+  \ is: \n\nknowing `m` (number of posters to design), \nknowing `n` (total number\
+  \ of available colors), \nlet us \nsearch `x` (number of colors for each poster\
+  \ so that each poster has a unique combination of colors and the number of combinations\
+  \ is exactly the same as the number of posters).\n\nIn other words we must find\
+  \ **x** such as `n choose x = m (1)` for a given m and a given n;\n`m >= 0 and n\
+  \ > 0`. If many x are solutions give as result the smallest x.\nIt can happen that\
+  \ when m is given at random there are no x satisfying `equation (1)` then\nreturn\
+  \ -1.\n\nExamples:\n```\ncheckchoose(6, 4) --> 2\ncheckchoose(4, 4) --> 1\ncheckchoose(4,\
+  \ 2) --> -1\ncheckchoose(35, 7) --> 3\ncheckchoose(36, 7) --> -1\n\na = 47129212243960\n\
+  checkchoose(a, 50) --> 20\ncheckchoose(a + 1, 50) --> -1\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def checkchoose (m n : Int) : Int := sorry\n\ndef choose (n k :\
+  \ Int) : Int := sorry\n"
+"vc-theorems": "theorem checkchoose_valid_range (n : Int) (h : n ≥ 1) (h2 : n ≤ 20)\
+  \ : \n  let res := checkchoose (choose n 2) n;\n  res ≠ -1 → choose n res = choose\
+  \ n 2 := sorry\n\n\ntheorem checkchoose_bounds (n x : Int) (h : n ≥ 1) (h2 : n ≤\
+  \ 20) (h3 : x ≥ 0) (h4 : x ≤ 20) :\n  let res := checkchoose x n;\n  res ≤ n/2 ∨\
+  \ res = -1 := sorry\n\n\ntheorem checkchoose_impossible_m (m n : Int) (h : m ≤ 0)\
+  \ (h2 : n ≥ 1) (h3 : n ≤ 20) :\n  checkchoose m n = -1 := sorry\n\n/--\ninfo: 2\n\
+  -/\n#guard_msgs in\n#eval checkchoose 6 4\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
+  #eval checkchoose 35 7\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval checkchoose 4\
+  \ 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

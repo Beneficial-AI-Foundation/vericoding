@@ -1,0 +1,27 @@
+"vc-description": "Given an integer array arr, you should partition the array into\
+  \ (contiguous) subarrays of length at most k. After partitioning, each subarray\
+  \ has their values changed to become the maximum value of that subarray.\nReturn\
+  \ the largest sum of the given array after partitioning.\n \nExample 1:\nInput:\
+  \ arr = [1,15,7,9,2,5,10], k = 3\nOutput: 84\nExplanation: arr becomes [15,15,15,9,10,10,10]\n\
+  \nExample 2:\nInput: arr = [1,4,1,5,7,3,6,1,9,9,3], k = 4\nOutput: 83\n\nExample\
+  \ 3:\nInput: arr = [1], k = 1\nOutput: 1\n\n \nConstraints:\n\n1 <= arr.length <=\
+  \ 500\n0 <= arr[i] <= 109\n1 <= k <= arr.length"
+"vc-preamble": "import Imports.AllImports\n\ndef max_sum_after_partitioning (arr :\
+  \ List Int) (k : Nat) : Int :=\nsorry\n\n\ndef sum (l : List Int) : Int :=\nsorry\n\
+  \n\ndef max (l : List Int) : Int :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def len (l : List Int) : Nat :=\nsorry\n"
+"vc-theorems": "theorem result_bounds {arr : List Int} {k : Nat}\n  (h1 : arr.length\
+  \ > 0)\n  (h2 : ∀ x ∈ arr, x > 0)\n  (h3 : k > 0)\n  (h4 : k ≤ 100) :\n  sum arr\
+  \ ≤ max_sum_after_partitioning arr k ∧ \n  max_sum_after_partitioning arr k ≤ len\
+  \ arr * max arr :=\nsorry\n\n\ntheorem k_equals_one {arr : List Int}\n  (h1 : arr.length\
+  \ > 0)\n  (h2 : ∀ x ∈ arr, x > 0) :\n  max_sum_after_partitioning arr 1 = sum arr\
+  \ :=\nsorry\n\n\ntheorem k_equals_length {arr : List Int}\n  (h1 : arr.length >\
+  \ 0)\n  (h2 : ∀ x ∈ arr, x > 0) :\n  max_sum_after_partitioning arr arr.length =\
+  \ len arr * max arr :=\nsorry\n\n\ntheorem single_element {arr : List Int} {k :\
+  \ Nat}\n  (h1 : arr.length = 1)\n  (h2 : k > 0) :\n  max_sum_after_partitioning\
+  \ arr k = arr[0] :=\nsorry\n\n/--\ninfo: 84\n-/\n#guard_msgs in\n#eval max_sum_after_partitioning\
+  \ [1, 15, 7, 9, 2, 5, 10] 3\n\n/--\ninfo: 83\n-/\n#guard_msgs in\n#eval max_sum_after_partitioning\
+  \ [1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3] 4\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval\
+  \ max_sum_after_partitioning [1] 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

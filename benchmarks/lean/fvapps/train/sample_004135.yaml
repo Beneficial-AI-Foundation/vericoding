@@ -1,0 +1,17 @@
+"vc-description": "Have a look at the following numbers.\n\n```\n n | score\n---+-------\n\
+  \ 1 |  50\n 2 |  150\n 3 |  300\n 4 |  500\n 5 |  750\n```\n\nCan you find a pattern\
+  \ in it? If so, then write a function `getScore(n)`/`get_score(n)`/`GetScore(n)`\
+  \ which returns the score for any positive number `n`:\n\n```c++\nint getScore(1)\
+  \ = return 50;\nint getScore(2) = return 150;\nint getScore(3) = return 300;\nint\
+  \ getScore(4) = return 500;\nint getScore(5) = return 750;\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_score (n : Int) : Int := sorry\n\ntheorem get_score_returns_integer\
+  \ (n : Int) :\n  get_score n = get_score n := by sorry\n"
+"vc-theorems": "theorem get_score_non_negative (n : Int) (h : n ≥ 0) :\n  get_score\
+  \ n ≥ 0 := by sorry\n\n\ntheorem get_score_monotonic (a b : Int) (h1 : a ≥ 0) (h2\
+  \ : b ≥ 0) (h3 : a < b) :\n  get_score a < get_score b := by sorry\n\n\ntheorem\
+  \ get_score_formula (n : Int) :\n  get_score n = n * (n + 1) * 25 := by sorry\n\n\
+  /--\ninfo: 50\n-/\n#guard_msgs in\n#eval get_score 1\n\n/--\ninfo: 150\n-/\n#guard_msgs\
+  \ in\n#eval get_score 2\n\n/--\ninfo: 750\n-/\n#guard_msgs in\n#eval get_score 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

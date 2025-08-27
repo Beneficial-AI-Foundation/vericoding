@@ -1,0 +1,79 @@
+"vc-description": "#SKRZAT\n\n\n\nGeek Challenge [SKRZAT] is an old, old game from\
+  \ Poland that uses a game console with two buttons plus a joy stick. As is true\
+  \ to its name, the game communicates in binary, so that one button represents a\
+  \ zero and the other a one. Even more true to its name, the game chooses to communicate\
+  \ so that the base of the number system is minus two, not plus two, so we'll call\
+  \ this representation \"Weird Binary\". Thus the bit positions label the powers\
+  \ of minus two, as seen in the following five-bit tables:\n\n    | -------------------------------------------------------------------------\
+  \ |\n    |  Bits  |  Value  |  Bits  |  Value  |  Bits  |  Value  |  Bits  |  Value\
+  \  |\n    | ------ | ------- | ------ | ------- | ------ | ------- | ------ | -------\
+  \ |\n    | 00000  |    0    | 01000  |    -8   | 10000  |    16   | 11000  |   \
+  \ 8    |\n    | 00001  |    1    | 01001  |    -7   | 10001  |    17   | 11001 \
+  \ |    9    |\n    | 00010  |   -2    | 01010  |   -10   | 10010  |    14   | 11010\
+  \  |    6    |\n    | 00011  |   -1    | 01011  |    -9   | 10011  |    15   | 11011\
+  \  |    7    |\n    | 00100  |    4    | 01100  |    -4   | 10100  |    20   | 11100\
+  \  |    12   |\n    | 00101  |    5    | 01101  |    -3   | 10101  |    21   | 11101\
+  \  |    13   |\n    | 00110  |    2    | 01110  |    -6   | 10110  |    18   | 11110\
+  \  |    10   |\n    | 00111  |    3    | 01111  |    -5   | 10111  |    19   | 11111\
+  \  |    11   |\n    | -------------------------------------------------------------------------\
+  \ |\n\n    | -------------------------------------------------------------------------\
+  \ |\n    |  Bits  |  Value  |  Bits  |  Value  |  Bits  |  Value  |  Bits  |  Value\
+  \  |\n    | ------ | ------- | ------ | ------- | ------ | ------- | ------ | -------\
+  \ |\n    | 01010  |   -10   | 00010  |    -2   | 11010  |    6    | 10010  |   \
+  \ 14   |\n    | 01011  |    -9   | 00011  |    -1   | 11011  |    7    | 10011 \
+  \ |    15   |\n    | 01000  |    -8   | 00000  |    0    | 11000  |    8    | 10000\
+  \  |    16   |\n    | 01001  |    -7   | 00001  |    1    | 11001  |    9    | 10001\
+  \  |    17   |\n    | 01110  |    -6   | 00110  |    2    | 11110  |    10   | 10110\
+  \  |    18   |\n    | 01111  |    -5   | 00111  |    3    | 11111  |    11   | 10111\
+  \  |    19   |\n    | 01100  |    -4   | 00100  |    4    | 11100  |    12   | 10100\
+  \  |    20   |\n    | 01101  |    -3   | 00101  |    5    | 11101  |    13   | 10101\
+  \  |    21   |\n    | -------------------------------------------------------------------------\
+  \ |\n\nNumbers are presented on the screen in Weird Binary, and then numbers are\
+  \ accepted in response from the console as a stream of zeroes and ones, terminated\
+  \ by a five-second pause.  You are writing a computer program to support the novice\
+  \ geek in playing the game by translating numbers between decimal and Weird Binary.\n\
+  \n#Input\n\nThe `skrzat` function will either convert into Weird Binary or out of\
+  \ Weird Binary: The first parameter will be either the letter `\"b\"`, which indicates\
+  \ that the second parameter is written in Weird Binary and needs to be converted\
+  \ to decimal; the letter `\"d\"` indicates that the second parameter is a decimal\
+  \ and needs to be converted to Weird Binary.  The second parameter will be in the\
+  \ range to fit within a 15-bit Weird Binary number, which represents the decimal\
+  \ number range -10922 to 21845, inclusive.\n\n#Output\n\nFor each conversion problem,\
+  \ return the type of problem, its input string, and the converted result in the\
+  \ format shown below, replicating even the spacing exactly as shown. Leading zeroes\
+  \ are not allowed.\n\nreturn format: `'From {binary || decimal}: {non-converted\
+  \ value} is {converted value}'`\n\n#Sample Input\n\n    skrzat('b', '1001101')\n\
+  \    skrzat('b', '0111111')\n    skrzat('b', '101001000100001')\n    skrzat('b',\
+  \ '010010001000010')\n    skrzat('b', '100110100110100')\n    skrzat('d', -137)\n\
+  \    skrzat('d', 137)\n    skrzat('d', 8191)\n    skrzat('d', -10000)\n    skrzat('d',\
+  \ 21000)\n\n#Sample Output\n\n    'From binary: 1001101 is 61'\n    'From binary:\
+  \ 0111111 is -21'\n    'From binary: 101001000100001 is 19937'\n    'From binary:\
+  \ 010010001000010 is -7106'\n    'From binary: 100110100110100 is 15604'\n    'From\
+  \ decimal: -137 is 10001011'\n    'From decimal: 137 is 110011001'\n    'From decimal:\
+  \ 8191 is 110000000000011'\n    'From decimal: -10000 is 10100100110000'\n    'From\
+  \ decimal: 21000 is 101011000011000'"
+"vc-preamble": "import Imports.AllImports\n\ndef b (n : Int) : String := sorry\n\n\
+  def d (s : String) : Int := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def skrzat (mode : String) (input : Int ⊕ String) : String := sorry\n\
+  \ndef is_valid_binary (s : String) : Bool := sorry\n"
+"vc-theorems": "theorem bidirectional_conversion : ∀ (n : Int),  \n  let bin := b\
+  \ n; d bin = n := sorry\n\n\ntheorem binary_valid : ∀ (n : Int),\n  is_valid_binary\
+  \ (b n) = true := sorry\n\n\ntheorem skrzat_binary_format : ∀ (binary : String),\
+  \ \n  is_valid_binary binary = true →\n  ∃ n : Int, skrzat \"b\" (Sum.inr binary)\
+  \ = s!\"From binary: {binary} is {n}\" := sorry\n\n\ntheorem skrzat_decimal_format\
+  \ : ∀ (decimal : Int),\n  ∃ binary : String, \n    skrzat \"d\" (Sum.inl decimal)\
+  \ = s!\"From decimal: {decimal} is {binary}\" ∧ \n    is_valid_binary binary = true\
+  \ := sorry\n\n\ntheorem skrzat_invalid_base : ∀ (input : Int ⊕ String),\n  skrzat\
+  \ \"x\" input ≠ skrzat \"d\" input ∧ skrzat \"x\" input ≠ skrzat \"b\" input :=\
+  \ sorry\n\n\ntheorem positive_conversion : ∀ (n : Int),\n  n ≥ 0 →\n  let bin :=\
+  \ b n\n  ¬bin.startsWith \"-\" ∧ d bin = n := sorry\n\n\ntheorem zero_negative_conversion\
+  \ : ∀ (n : Int),\n  n ≤ 0 →\n  let bin := b n\n  d bin = n := sorry\n\n/--\ninfo:\
+  \ 'From binary: 1001101 is 61'\n-/\n#guard_msgs in\n#eval skrzat \"b\" \"1001101\"\
+  \n\n/--\ninfo: 'From binary: 0111111 is -21'\n-/\n#guard_msgs in\n#eval skrzat \"\
+  b\" \"0111111\"\n\n/--\ninfo: 'From binary: 101001000100001 is 19937'\n-/\n#guard_msgs\
+  \ in\n#eval skrzat \"b\" \"101001000100001\"\n\n/--\ninfo: 'From decimal: -137 is\
+  \ 10001011'\n-/\n#guard_msgs in\n#eval skrzat \"d\" -137\n\n/--\ninfo: 'From decimal:\
+  \ 137 is 110011001'\n-/\n#guard_msgs in\n#eval skrzat \"d\" 137\n\n/--\ninfo: 'From\
+  \ decimal: 8191 is 110000000000011'\n-/\n#guard_msgs in\n#eval skrzat \"d\" 8191\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

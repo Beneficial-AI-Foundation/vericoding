@@ -1,0 +1,18 @@
+"vc-description": "Round any given number to the closest 0.5 step\n\nI.E.\n```\nsolution(4.2)\
+  \ = 4\nsolution(4.3) = 4.5\nsolution(4.6) = 4.5\nsolution(4.8) = 5\n```\n\nRound\
+  \ **up** if number is as close to previous and next 0.5 steps.\n\n```\nsolution(4.75)\
+  \ == 5\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef solution (x : Float) : Float := sorry\n\
+  \ndef floor (x : Float) : Float := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def ceil (x : Float) : Float := sorry\n\ntheorem solution_output_options\
+  \ (x : Float) :\n  let floorX := floor x\n  solution x = floorX ∨ solution x = floorX\
+  \ + 0.5 ∨ solution x = ceil x\n  := sorry\n"
+"vc-theorems": "theorem solution_within_half (x : Float) :\n  (solution x - x) ≤ 0.5\
+  \ ∧ (x - solution x) ≤ 0.5\n  := sorry\n\n\ntheorem solution_cases (x : Float) :\n\
+  \  let floorX := floor x\n  (x - floorX < 0.25 → solution x = floorX) ∧ \n  (x -\
+  \ floorX < 0.75 ∧ x - floorX ≥ 0.25 → solution x = floorX + 0.5) ∧\n  (x - floorX\
+  \ ≥ 0.75 → solution x = ceil x)\n  := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n\
+  #eval solution 4.2\n\n/--\ninfo: 4.5\n-/\n#guard_msgs in\n#eval solution 4.6\n\n\
+  /--\ninfo: 5\n-/\n#guard_msgs in\n#eval solution 4.75\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

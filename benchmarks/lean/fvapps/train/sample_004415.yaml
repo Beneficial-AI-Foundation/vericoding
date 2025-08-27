@@ -1,0 +1,59 @@
+"vc-description": "# Story\n\nWell, here I am stuck in another traffic jam.\n\n\n\
+  *Damn all those courteous people!*\n\nCars are trying to enter the main road from\
+  \ side-streets somewhere ahead of me and people keep letting them cut in.\n\nEach\
+  \ time somebody is let in the effect ripples back down the road, so pretty soon\
+  \ I am not moving at all.\n\n(Sigh... late again...)\n\n\n\n## Visually\n\nThe diagram\
+  \ below shows lots of cars all attempting to go North.\n* the `a`,`b`,`c`... cars\
+  \ are on the main road with me (`X`)\n* the `B` cars and `C` cars are merging from\
+  \ side streets\n\n\n\n          |  a  |   \n          |  b  | ↑  \n  --------+ \
+  \ c  |  \n     BBBBBB  d  |   \n  --------+  e  |  \n          |  f  | ↑\n     \
+  \     |  g  |   \n  --------+  h  |\n      CCCCC  i  |\n  --------+  j  | ↑\n  \
+  \        |  k  |\n          |  l  |\n          |  m  |\n          |  X  | \n   \
+  \        \n\n\nThis can be represented as\n\n* `mainRoad` = `\"abcdefghijklmX\"\
+  `\n* `sideStreets` = `[\"\",\"\",\"\",\"BBBBBB\",\"\",\"\",\"\",\"\",\"CCCCC\"]`\n\
+  \n# Kata Task\n\nAssume every car on the main road will \"give way\" to 1 car entering\
+  \ from each side street.\n\nReturn a string representing the cars (up to and including\
+  \ me) in the order they exit off the top of the diagram.\n\n## Notes\n\n* My car\
+  \ is the only `X`, and I am always on the main road\n* Other cars may be any alpha-numeric\
+  \ character (except `X` of course)\n* There are no \"gaps\" between cars\n* Assume\
+  \ side streets are always on the left (as in the diagram)\n* The `sideStreets` array\
+  \ length may vary but is never more than the length of the main road\n* A pre-loaded\
+  \ `Util.display(mainRoad,sideStreets)` method is provided which may help to visualise\
+  \ the data\n * (Util.Display for C#)\n\n## Example\nHere are the first few iterations\
+  \ of my example, showing that I am hardly moving at all...\n\n\nInitialIter 1Iter\
+  \ 2Iter 3Iter 4Iter 5Iter 6Iter 7\n\n\n\n      a   \n      b\n      c  \nBBBBBBd\
+  \   \n      e  \n      f\n      g   \n      h\n CCCCCi\n      j\n      k\n     \
+  \ l\n      m\n      X \n\n\n\n      b   \n      c\n      d \n BBBBBB   \n      e\
+  \  \n      f\n      g   \n      h\n CCCCCi\n      j\n      k\n      l\n      m\n\
+  \      X\n\n\n\n      c   \n      d\n      B\n BBBBBe\n      f  \n      g\n    \
+  \  h   \n      i\n  CCCCC\n      j\n      k\n      l\n      m\n      X\n\n\n\n \
+  \      d\n       B\n       e\n   BBBBB\n       f\n       g\n       h\n       i\n\
+  \   CCCCC\n       j\n       k\n       l\n       m\n       X\n\n\n\n     B\n    \
+  \ e\n     B\n BBBBf\n     g\n     h\n     i\n     C\n CCCCj\n     k\n     l\n  \
+  \   m\n     X\n    \n\n\n\n     e\n     B\n     f\n  BBBB\n     g\n     h\n    \
+  \ i\n     C\n CCCCj\n     k\n     l\n     m\n     X\n\n\n\n\n     B\n     f\n  \
+  \   B\n  BBBg\n     h\n     i\n     C\n     j\n  CCCC\n     k\n     l\n     m\n\
+  \     X\n\n\n\n\n     f\n     B\n     g\n   BBB\n     h\n     i\n     C\n     j\n\
+  \  CCCC\n     k\n     l\n     m\n     X\n\n\n\n\n\n:-) \n\nDM"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def trafficJam (road: String) (sides: List String) : String :=\
+  \ sorry \n\ntheorem trafficJam_endsWith_X (road: String) (sides: List String) \n\
+  \  (h1: ∃ i, road.get i = 'X') :\n  ∃ j, (trafficJam road sides).get j = 'X' :=\
+  \ sorry\n"
+"vc-theorems": "theorem trafficJam_result_length \n  (road: String) (sides: List String)\
+  \ \n  (h1: ∃ i, road.get i = 'X')\n  (h2: road.length > 0) :\n  (trafficJam road\
+  \ sides).length ≥ road.length := sorry\n\n\ntheorem trafficJam_preserve_first_char\n\
+  \  (road: String) (sides: List String)\n  (h1: sides.length > 0)\n  (h2: sides[0]\
+  \ = \"\") \n  (h3: road.length > 0) :\n  (trafficJam road sides).front = road.front\
+  \ := sorry\n\n\ntheorem trafficJam_minimal_case :\n  trafficJam \"X\" [] = \"X\"\
+  \ := sorry\n\n\ntheorem trafficJam_single_char\n  (road: String) (sides: List String)\n\
+  \  (h1: road.length = 2)\n  (h2: road.back = 'X')\n  (h3: sides = [\"\"]) :\n  (trafficJam\
+  \ road sides).length ≥ 2 ∧\n  ∃ i, (trafficJam road sides).get i = 'X' := sorry\n\
+  \n/--\ninfo: 'abcCdCeCECX'\n-/\n#guard_msgs in\n#eval traffic_jam \"abcdeXghi\"\
+  \ [\"\", \"\", \"CCCCC\", \"\", \"EEEEEEEEEE\", \"FFFFFF\", \"\", \"\", \"IIIIII\"\
+  ]\n\n/--\ninfo: 'abcdefX'\n-/\n#guard_msgs in\n#eval traffic_jam \"abcdefX\" []\n\
+  \n/--\ninfo: 'abcdBeBfBgBhBiBCjCkClCmCX'\n-/\n#guard_msgs in\n#eval traffic_jam\
+  \ \"abcdefghijklmX\" [\"\", \"\", \"\", \"BBBBBB\", \"\", \"\", \"\", \"\", \"CCCCC\"\
+  ]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

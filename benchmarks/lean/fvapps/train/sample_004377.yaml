@@ -1,0 +1,20 @@
+"vc-description": "---\n\n# Story\n\nThe Pied Piper has been enlisted to play his\
+  \ magical tune and coax all the rats out of town.\n\nBut some of the rats are deaf\
+  \ and are going the wrong way!\n\n# Kata Task\n\nHow many deaf rats are there?\n\
+  \n# Legend\n\n* ```P``` = The Pied Piper\n* ```O~``` = Rat going left\n* ```~O```\
+  \ = Rat going right\n\n# Example\n\n* ex1 ```~O~O~O~O P``` has 0 deaf rats\n\n\n\
+  * ex2 ```P O~ O~ ~O O~``` has 1 deaf rat\n\n\n* ex3 ```~O~O~O~OP~O~OO~``` has 2\
+  \ deaf rats\n\n---\n\n# Series\n\n* [The deaf rats of Hamelin (2D)](https://www.codewars.com/kata/the-deaf-rats-of-hamelin-2d)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Town := String\ndef countDeafRats (t : Town) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem non_negative_count : ∀ (t : Town),\n  countDeafRats t ≥ 0\
+  \ :=\n  sorry\n\n\ntheorem count_below_total : ∀ (t : Town) (n : Nat),\n  countDeafRats\
+  \ t ≤ n :=\n  sorry\n\n\ntheorem spaces_dont_matter : ∀ (t1 t2 : Town),\n  countDeafRats\
+  \ t1 = countDeafRats t2 :=\n  sorry\n\n\ntheorem single_rat_direction : ∀ (t : Town)\
+  \ (r : RatPair),\n  countDeafRats t ≤ 1 :=\n  sorry\n\n\ntheorem empty_town_count\
+  \ :  \n  countDeafRats \"P\" = 0 :=\n  sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
+  #eval count_deaf_rats \"~O~O~O~O P\"\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval\
+  \ count_deaf_rats \"P O~ O~ ~O O~\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_deaf_rats\
+  \ \"~O~O~O~OP~O~OO~\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

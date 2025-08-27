@@ -1,0 +1,31 @@
+"vc-description": "=====Problem Statement=====\nYou are given two sets, A and B.\n\
+  Your job is to find whether set A is a subset of set B.\n\nIf set A is subset of\
+  \ set B, print True.\nIf set A is not a subset of set B, print False.\n\n=====Input\
+  \ Format=====\nThe first line will contain the number of test cases, T.\nThe first\
+  \ line of each test case contains the number of elements in set A.\nThe second line\
+  \ of each test case contains the space separated elements of set A.\nThe third line\
+  \ of each test case contains the number of elements in set B.\nThe fourth line of\
+  \ each test case contains the space separated elements of set B.\n\n=====Constraints=====\n\
+  0<T<21\n0<Number of elements in each set<1001\n\n=====Output Format=====\nOutput\
+  \ True or False for each test case on separate lines."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_subset {α} [BEq α] (subset : List α) (fullset : List\
+  \ α) : Bool := sorry\n\ntheorem proper_subset_property {α} [BEq α] (subset additional\
+  \ : List α) \n  (h1 : List.Nodup subset) (h2 : List.Nodup additional) :\n  check_subset\
+  \ subset (subset ++ additional) = true := sorry\n"
+"vc-theorems": "theorem subset_reflexive {α} [BEq α] (set_a set_b : List α) \n  (h1\
+  \ : List.Nodup set_a) (h2 : List.Nodup set_b) :\n  check_subset set_a set_b = \n\
+  \    (∀ x, x ∈ set_a → x ∈ set_b) := sorry\n\n\ntheorem empty_set_is_subset {α}\
+  \ [BEq α] (set_b : List α) \n  (h : List.Nodup set_b) :\n  check_subset [] set_b\
+  \ = true := sorry\n\n\ntheorem set_is_subset_of_itself {α} [BEq α] (set_a : List\
+  \ α)\n  (h : List.Nodup set_a) :\n  check_subset set_a set_a = true := sorry\n\n\
+  \ntheorem disjoint_sets_not_subset {α} [BEq α] (set_a set_b : List α)\n  (h1 : List.Nodup\
+  \ set_a) (h2 : List.Nodup set_b)\n  (h3 : ¬List.isEmpty set_a)\n  (h4 : ∀ x, x ∈\
+  \ set_a → x ∉ set_b) :\n  check_subset set_a set_b = false := sorry\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval check_subset [\"1\", \"2\", \"3\", \"5\", \"6\"\
+  ] [\"9\", \"8\", \"5\", \"6\", \"3\", \"2\", \"1\", \"4\", \"7\"]\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval check_subset [\"2\"] [\"3\", \"6\", \"5\", \"\
+  4\", \"1\"]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval check_subset [\"9\", \"\
+  8\", \"2\"] [\"1\", \"2\", \"3\", \"5\", \"6\", \"8\", \"9\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

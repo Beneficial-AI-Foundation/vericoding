@@ -1,0 +1,67 @@
+"vc-description": "Given the array orders, which represents the orders that customers\
+  \ have done in a restaurant. More specifically orders[i]=[customerNamei,tableNumberi,foodItemi]\
+  \ where customerNamei is the name of the customer, tableNumberi is the table customer\
+  \ sit at, and foodItemi is the item customer orders.\nReturn the restaurant's “display\
+  \ table”. The “display table” is a table whose row entries denote how many of each\
+  \ food item each table ordered. The first column is the table number and the remaining\
+  \ columns correspond to each food item in alphabetical order. The first row should\
+  \ be a header whose first column is “Table”, followed by the names of the food items.\
+  \ Note that the customer names are not part of the table. Additionally, the rows\
+  \ should be sorted in numerically increasing order.\n \nExample 1:\nInput: orders\
+  \ = [[\"David\",\"3\",\"Ceviche\"],[\"Corina\",\"10\",\"Beef Burrito\"],[\"David\"\
+  ,\"3\",\"Fried Chicken\"],[\"Carla\",\"5\",\"Water\"],[\"Carla\",\"5\",\"Ceviche\"\
+  ],[\"Rous\",\"3\",\"Ceviche\"]]\nOutput: [[\"Table\",\"Beef Burrito\",\"Ceviche\"\
+  ,\"Fried Chicken\",\"Water\"],[\"3\",\"0\",\"2\",\"1\",\"0\"],[\"5\",\"0\",\"1\"\
+  ,\"0\",\"1\"],[\"10\",\"1\",\"0\",\"0\",\"0\"]] \nExplanation:\nThe displaying table\
+  \ looks like:\nTable,Beef Burrito,Ceviche,Fried Chicken,Water\n3    ,0         \
+  \  ,2      ,1            ,0\n5    ,0           ,1      ,0            ,1\n10   ,1\
+  \           ,0      ,0            ,0\nFor the table 3: David orders \"Ceviche\"\
+  \ and \"Fried Chicken\", and Rous orders \"Ceviche\".\nFor the table 5: Carla orders\
+  \ \"Water\" and \"Ceviche\".\nFor the table 10: Corina orders \"Beef Burrito\".\
+  \ \n\nExample 2:\nInput: orders = [[\"James\",\"12\",\"Fried Chicken\"],[\"Ratesh\"\
+  ,\"12\",\"Fried Chicken\"],[\"Amadeus\",\"12\",\"Fried Chicken\"],[\"Adam\",\"1\"\
+  ,\"Canadian Waffles\"],[\"Brianna\",\"1\",\"Canadian Waffles\"]]\nOutput: [[\"Table\"\
+  ,\"Canadian Waffles\",\"Fried Chicken\"],[\"1\",\"2\",\"0\"],[\"12\",\"0\",\"3\"\
+  ]] \nExplanation: \nFor the table 1: Adam and Brianna order \"Canadian Waffles\"\
+  .\nFor the table 12: James, Ratesh and Amadeus order \"Fried Chicken\".\n\nExample\
+  \ 3:\nInput: orders = [[\"Laura\",\"2\",\"Bean Burrito\"],[\"Jhon\",\"2\",\"Beef\
+  \ Burrito\"],[\"Melissa\",\"2\",\"Soda\"]]\nOutput: [[\"Table\",\"Bean Burrito\"\
+  ,\"Beef Burrito\",\"Soda\"],[\"2\",\"1\",\"1\",\"1\"]]\n\n \nConstraints:\n\n1 <= orders.length\
+  \ <= 5 * 10^4\norders[i].length == 3\n1 <= customerNamei.length, foodItemi.length\
+  \ <= 20\ncustomerNamei and foodItemi consist of lowercase and uppercase English\
+  \ letters and the space character.\ntableNumberi is a valid integer between 1 and\
+  \ 500."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def display_table (orders : List (String × String × String)) :\
+  \ List (List String) :=\n  sorry\n"
+"vc-theorems": "theorem display_table_empty (orders : List (String × String × String))\
+  \ :\n  orders = [] → display_table orders = [] :=\n  sorry\n\n\ntheorem display_table_header\
+  \ (orders : List (String × String × String)) :\n  orders ≠ [] → \n  match (display_table\
+  \ orders), (display_table orders).head? with\n  | _, none => True\n  | _, some h\
+  \ => match h.head? with\n    | none => True\n    | some x => x = \"Table\"\n  :=\n\
+  \  sorry\n\n\ntheorem display_table_row_lengths (orders : List (String × String\
+  \ × String)) :\n  orders ≠ [] →\n  match (display_table orders).head? with\n  |\
+  \ none => True\n  | some first => ∀ row ∈ display_table orders, row.length = first.length\
+  \ :=\n  sorry\n\n\ntheorem display_table_numeric_values (orders : List (String ×\
+  \ String × String)) :\n  orders ≠ [] →\n  ∀ row ∈ List.tail (display_table orders),\n\
+  \  ∀ val ∈ List.tail row,\n  ∀ c ∈ val.data,\n  '0' ≤ c ∧ c ≤ '9' :=\n  sorry\n\n\
+  \ntheorem display_table_sorted_tables (orders : List (String × String × String))\
+  \ :\n  orders ≠ [] →\n  let table_nums := List.map (λ row => match row.head? with\
+  \ | none => \"0\" | some x => x) \n                    (List.tail (display_table\
+  \ orders))\n  ∀ (i : Fin table_nums.length) (j : Fin table_nums.length), \n  i.val\
+  \ < j.val → \n  String.toNat! (table_nums.get i) ≤ String.toNat! (table_nums.get\
+  \ j) :=\n  sorry\n\n\ntheorem display_table_sorted_items (orders : List (String\
+  \ × String × String)) :\n  orders ≠ [] →\n  match (display_table orders).head? with\n\
+  \  | none => True\n  | some header => \n    let items := List.tail header\n    ∀\
+  \ (i : Fin items.length) (j : Fin items.length),\n    i.val < j.val →\n    items.get\
+  \ i ≤ items.get j :=\n  sorry\n\n\ntheorem display_table_min_size (orders : List\
+  \ (String × String × String)) :\n  orders ≠ [] →\n  (display_table orders).length\
+  \ ≥ 2 ∧\n  ∀ row ∈ display_table orders, row.length ≥ 2 :=\n  sorry\n\n/--\ninfo:\
+  \ expected1\n-/\n#guard_msgs in\n#eval display_table [[\"David\", \"3\", \"Ceviche\"\
+  ], [\"Corina\", \"10\", \"Beef Burrito\"], [\"David\", \"3\", \"Fried Chicken\"\
+  ], [\"Carla\", \"5\", \"Water\"], [\"Carla\", \"5\", \"Ceviche\"], [\"Rous\", \"\
+  3\", \"Ceviche\"]]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval display_table\
+  \ [[\"Laura\", \"2\", \"Bean Burrito\"], [\"Jhon\", \"2\", \"Beef Burrito\"], [\"\
+  Melissa\", \"2\", \"Soda\"]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

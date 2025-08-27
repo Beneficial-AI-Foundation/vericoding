@@ -1,0 +1,28 @@
+"vc-description": "A bus has n stops numbered from 0 to n - 1 that form a circle.\
+  \ We know the distance between all pairs of neighboring stops where distance[i]\
+  \ is the distance between the stops number i and (i + 1) % n.\nThe bus goes along\
+  \ both directions i.e. clockwise and counterclockwise.\nReturn the shortest distance\
+  \ between the given start and destination stops.\n \nExample 1:\n\nInput: distance\
+  \ = [1,2,3,4], start = 0, destination = 1\nOutput: 1\nExplanation: Distance between\
+  \ 0 and 1 is 1 or 9, minimum is 1.\n \nExample 2:\n\nInput: distance = [1,2,3,4],\
+  \ start = 0, destination = 2\nOutput: 3\nExplanation: Distance between 0 and 2 is\
+  \ 3 or 7, minimum is 3.\n\n \nExample 3:\n\nInput: distance = [1,2,3,4], start =\
+  \ 0, destination = 3\nOutput: 4\nExplanation: Distance between 0 and 3 is 6 or 4,\
+  \ minimum is 4.\n\n \nConstraints:\n\n1 <= n <= 10^4\ndistance.length == n\n0 <=\
+  \ start, destination < n\n0 <= distance[i] <= 10^4"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def distanceBetweenBusStops (distance : List Nat) (start dest :\
+  \ Nat) : Nat := sorry \n\ndef sumList : List Nat → Nat \n  | [] => 0\n  | (x::xs)\
+  \ => x + sumList xs\n"
+"vc-theorems": "theorem distance_symmetric {distance : List Nat} {start dest : Nat}\
+  \ \n  (h : distance.length > 0) :\n  distanceBetweenBusStops distance start dest\
+  \ = \n  distanceBetweenBusStops distance dest start := sorry\n\n\n\n\ntheorem distance_nonnegative\
+  \ {distance : List Nat} {start dest : Nat}\n  (h : distance.length > 0) :\n  distanceBetweenBusStops\
+  \ distance start dest ≥ 0 := sorry\n\n\ntheorem same_stop_zero {distance : List\
+  \ Nat} {start : Nat}\n  (h : distance.length > 0) :\n  distanceBetweenBusStops distance\
+  \ start start = 0 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval distanceBetweenBusStops\
+  \ [1, 2, 3, 4] 0 1\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval distanceBetweenBusStops\
+  \ [1, 2, 3, 4] 0 2\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval distanceBetweenBusStops\
+  \ [1, 2, 3, 4] 0 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

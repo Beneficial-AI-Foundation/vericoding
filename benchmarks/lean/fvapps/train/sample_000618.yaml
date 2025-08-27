@@ -1,0 +1,33 @@
+"vc-description": "A balanced parenthesis string is defined as follows:\n- The empty\
+  \ string is balanced\n- If P is balanced, (P) is also \n- If P and Q are balanced,\
+  \ PQ is also balanced\nYou are given two even integers n$n$ and k$k$. Find any balanced\
+  \ paranthesis string of length n$n$ that doesn't contain a balanced substring of\
+  \ length k$k$, or claim that no such string exists.\n\n-----Input-----\n- First\
+  \ line will contain T$T$, number of testcases. Then the testcases follow. \n- Each\
+  \ testcase contains of a single line containing n$n$ and k$k$.\n\n-----Output-----\n\
+  For every testcase, print on a new line, any balanced paranthesis string of length\
+  \ n$n$ that doesn't contain a balanced substring of length k$k$. If there doesn't\
+  \ exist any such string, print −1$-1$ instead.\n\n-----Constraints-----\n- 1≤T≤50000$1\
+  \ \\leq T \\leq 50000$\n- 2≤k≤n≤105$2 \\leq k \\leq n \\leq 10^5$\n- Sum of n$n$\
+  \ over all testcases doesn't exceed 105$10^5$.\n- n$n$ and k$k$ are both even integers.\n\
+  \n-----Example Input-----\n2\n4 2\n8 6\n\n-----Example Output-----\n-1\n(())(())\n\
+  \n-----Explanation-----\nIn the first testcase, the only balanced strings of length\
+  \ 4$4$ are (()) and ()(), both of which contain () as a substring.\nIn the second\
+  \ testcase, (())(()) is a balanced string that doesn't contain any balanced substring\
+  \ of length 6$6$."
+"vc-preamble": "import Imports.AllImports\n\ndef is_valid_parens (s : String) : Bool\
+  \ := sorry\n\ndef max_nested_depth (s : String) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_balanced_parens (n : Nat) (k : Nat) : String := sorry\n\
+  \ntheorem balanced_parens_properties (n k : Nat) (h1 : n > 0) (h2 : k > 0) (h3 :\
+  \ n ≤ 100) (h4 : k ≤ 100) :\n  let result := solve_balanced_parens n k\n  if result\
+  \ = \"-1\" then\n    k = 2 ∨ k = 4 ∨ n % 2 ≠ 0 ∨ n = k\n  else\n    result.length\
+  \ = n ∧ \n    (∀ c, c ∈ result.data → c = '(' ∨ c = ')') ∧\n    is_valid_parens\
+  \ result :=\n  sorry\n"
+"vc-theorems": "theorem odd_k_cases (n : Nat) (h1 : n > 1) (h2 : n ≤ 100) (h3 : n\
+  \ % 2 = 0) :\n  let k := 3\n  let result := solve_balanced_parens n k\n  if result\
+  \ ≠ \"-1\" then \n    result = String.mk (List.replicate (n/2) '(' ++ List.replicate\
+  \ (n/2) ')') else True :=\n  sorry\n\n/--\ninfo: '-1'\n-/\n#guard_msgs in\n#eval\
+  \ solve_balanced_parens 4 2\n\n/--\ninfo: '(())(())'\n-/\n#guard_msgs in\n#eval\
+  \ solve_balanced_parens 8 6\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

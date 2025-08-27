@@ -1,0 +1,64 @@
+"vc-description": "and Bengali as well.\nThere are N$N$ cats (numbered 1$1$ through\
+  \ N$N$) and M$M$ rats (numbered 1$1$ through M$M$) on a line. Each cat and each\
+  \ rat wants to move from some point to some (possibly the same) point on this line.\
+  \ Naturally, the cats also want to eat the rats when they get a chance. Both the\
+  \ cats and the rats can only move with constant speed 1$1$.\nFor each valid i$i$,\
+  \ the i$i$-th cat is initially sleeping at a point a_i$a_i$. At a time s_i$s_i$,\
+  \ this cat wakes up and starts moving to a final point b_i$b_i$ with constant velocity\
+  \ and without any detours (so it arrives at this point at the time e_i = s_i + |a_i-b_i|$e_i\
+  \ = s_i + |a_i-b_i|$). After it arrives at the point b_i$b_i$, it falls asleep again.\n\
+  For each valid i$i$, the i$i$-th rat is initially hiding at a point c_i$c_i$. At\
+  \ a time r_i$r_i$, this rat stops hiding and starts moving to a final point d_i$d_i$\
+  \ in the same way as the cats ― with constant velocity and without any detours,\
+  \ arriving at the time q_i = r_i + |c_i-d_i|$q_i = r_i + |c_i-d_i|$ (if it does\
+  \ not get eaten). After it arrives at the point d_i$d_i$, it hides again.\nIf a\
+  \ cat and a rat meet each other (they are located at the same point at the same\
+  \ time), the cat eats the rat, the rat disappears and cannot be eaten by any other\
+  \ cat. A sleeping cat cannot eat a rat and a hidden rat cannot be eaten ― formally,\
+  \ cat i$i$ can eat rat j$j$ only if they meet at a time t$t$ satisfying s_i \\le\
+  \ t \\le e_i$s_i \\le t \\le e_i$ and r_j \\le t \\le q_j$r_j \\le t \\le q_j$.\n\
+  Your task is to find out which rats get eaten by which cats. It is guaranteed that\
+  \ no two cats will meet a rat at the same time.\n\n-----Input-----\n- The first\
+  \ line of the input contains a single integer T$T$ denoting the number of test cases.\
+  \ The description of T$T$ test cases follows.\n- The first line of each test case\
+  \ contains two space-separated integers N$N$ and M$M$.\n- N$N$ lines follow. For\
+  \ each i$i$ (1 \\le i \\le N$1 \\le i \\le N$), the i$i$-th of these lines contains\
+  \ three space-separated integers a_i$a_i$, b_i$b_i$ and s_i$s_i$.\n- M$M$ more lines\
+  \ follow. For each i$i$ (1 \\le i \\le M$1 \\le i \\le M$), the i$i$-th of these\
+  \ lines contains three space-separated integers c_i$c_i$, d_i$d_i$ and r_i$r_i$.\n\
+  \n-----Output-----\nFor each test case, print M$M$ lines. For each valid i$i$, the\
+  \ i$i$-th of these lines should contain a single integer ― the number of the cat\
+  \ that will eat the i$i$-th rat, or -1$-1$ if no cat will eat this rat.\n\n-----Constraints-----\n\
+  - 1 \\le T \\le 10$1 \\le T \\le 10$\n- 0 \\le N \\le 1,000$0 \\le N \\le 1,000$\n\
+  - 1 \\le M \\le 1,000$1 \\le M \\le 1,000$\n- 1 \\le a_i, b_i, s_i \\le 10^9$1 \\\
+  le a_i, b_i, s_i \\le 10^9$ for each valid i$i$\n- 1 \\le c_i, d_i, r_i \\le 10^9$1\
+  \ \\le c_i, d_i, r_i \\le 10^9$ for each valid i$i$\n- all initial and final positions\
+  \ of all cats and rats are pairwise distinct\n\n-----Example Input-----\n2\n8 7\n\
+  2 5 1\n1 4 1\n9 14 10\n20 7 9\n102 99 1\n199 202 1\n302 299 3\n399 402 3\n6 3 1\n\
+  10 15 10\n100 101 1\n201 200 1\n300 301 5\n401 400 5\n1000 1010 1020\n8 8\n2 8 2\n\
+  12 18 2\n22 28 4\n32 38 4\n48 42 2\n58 52 3\n68 62 1\n78 72 3\n3 6 3\n13 19 3\n\
+  21 25 3\n31 39 3\n46 43 4\n59 53 2\n65 61 4\n79 71 2\n\n-----Example Output-----\n\
+  1\n4\n5\n6\n7\n8\n-1\n1\n2\n3\n4\n5\n6\n7\n8"
+"vc-preamble": "import Imports.AllImports\n\ndef absInt (n : Int) : Int :=\n  if n\
+  \ ≥ 0 then n else -n\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Animal.will_collide : Animal → Animal → Option Float := sorry\n\
+  \ndef solve : Int → Int → List (Int × Int × Int) → List (Int × Int × Int) → List\
+  \ Int := sorry\n"
+"vc-theorems": "theorem animal_init_properties (start endpoint starting_time : Int)\
+  \ (a : Animal) \n    (h : a = Animal.mk start endpoint starting_time sorry sorry\
+  \ sorry) :\n  a.ending_time = starting_time + absInt (start - endpoint) ∧\n  (a.velocity\
+  \ = 1 ∨ a.velocity = -1) ∧\n  (endpoint ≥ start → a.velocity = 1) ∧\n  (endpoint\
+  \ < start → a.velocity = -1) ∧\n  a.eaten_by = (Int.neg 1, 10000000000) := sorry\n\
+  \n\ntheorem solve_output_properties (n m : Int) (cats rats : List (Int × Int × Int))\
+  \ \n    (hn : n > 0) (hm : m > 0) :\n  let result := solve n m cats rats\n  List.length\
+  \ result = m ∧ \n  ∀ r ∈ result, -1 ≤ r ∧ r ≤ n := sorry\n\n\ntheorem collision_symmetry\
+  \ (s1 e1 t1 s2 e2 t2 : Int) :\n  let a1 := Animal.mk s1 e1 t1 sorry sorry sorry\n\
+  \  let a2 := Animal.mk s2 e2 t2 sorry sorry sorry\n  match a1.will_collide a2, a2.will_collide\
+  \ a1 with\n  | some x, some y => Float.abs (x - y) < 0.0000000001\n  | none, none\
+  \ => True\n  | _, _ => False := sorry\n\n\ntheorem self_collision (start endpoint\
+  \ time : Int) :\n  let animal := Animal.mk start endpoint time sorry sorry sorry\n\
+  \  match animal.will_collide animal with\n  | some t => Float.toUInt64 t ≥ Float.toUInt64\
+  \ (Float.ofInt time) ∧ \n              Float.toUInt64 t ≤ Float.toUInt64 (Float.ofInt\
+  \ animal.ending_time)  \n  | none => True := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

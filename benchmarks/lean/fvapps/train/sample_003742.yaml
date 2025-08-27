@@ -1,0 +1,14 @@
+"vc-description": "# Task:\n\nBased on the received dimensions, `a` and `b`, of an\
+  \ ellipse, calculare its area and perimeter.\n\n## Example:\n```python\nInput: ellipse(5,2)\n\
+  \nOutput: \"Area: 31.4, perimeter: 23.1\"\n```\n\n**Note:** The perimeter approximation\
+  \ formula you should use: `π * (3/2(a+b) - sqrt(ab))`\n\n___\n\n## Have fun :)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def ellipse (a b : Float) : String := sorry\n\ntheorem ellipse_format_valid\
+  \ (a b : Float)\n  (h1 : a > 1)\n  (h2 : b > 1) :\n  let result := ellipse a b\n\
+  \  ∃ area perim : Float,\n  area > 0 ∧ \n  perim > 0 ∧\n  (result.any fun c => c\
+  \ = 'A') ∧ \n  (result.any fun c => c = 'p') := sorry\n"
+"vc-theorems": "theorem ellipse_circle_case (r : Float)\n  (h : r > 1) :\n  let result\
+  \ := ellipse r r\n  ∃ perim : Float,\n  let expected := 2 * (3.14159 : Float) *\
+  \ r\n  (perim - expected).abs ≤ 0.2 * expected := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

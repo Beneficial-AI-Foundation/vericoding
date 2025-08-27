@@ -1,0 +1,33 @@
+"vc-description": "The chef is playing a game of long distance. Chef has a number\
+  \ K and he wants to find the longest distance between the index of the first and\
+  \ the last occurrence of K in a given array of N numbers.\n\n-----Input:-----\n\
+  - First-line will contain $T$, the number of test cases. Then the test cases follow.\
+  \ \n- Each test case contains two lines of input.\n- Next line with Two integers\
+  \ in one line $K, N$.\n- Next line with $N$ space-separated integers.\n\n-----Output:-----\n\
+  For each test case, output in a single line answer as the index of first and last\
+  \ occurrence of K in the given array.\nNote: Here Indexing is from 1 not  0 based.\n\
+  \n-----Constraints-----\n- $1 \\leq T \\leq 100$\n- $1 \\leq k \\leq 10^5$\n- $1\
+  \ \\leq N \\leq 10^5$\n\n-----Sample Input:-----\n2\n2 6\n2 3 4 2 1 6\n4 6\n2 3\
+  \ 4 2 1 6\n\n-----Sample Output:-----\n3\n0\n\n-----EXPLANATION:-----\nFor 1) Index\
+  \ of First and last occurrence of 2 in the given array is at 1 and 4, i.e. distance\
+  \ is 3. \nFor 2) 4 occurs only once in the given array hence print 0."
+"vc-preamble": "import Imports.AllImports\n\ndef find_longest_distance (k : Int) (arr\
+  \ : List Int) : Int := sorry\n\n-- Value not in array gives 0 distance"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def findLastIndex (p : α → Bool) (l : List α) : Option Nat :=\n\
+  \  let indexed := List.enumFrom 0 l\n  (indexed.find? (fun (i, x) => p x)).map Prod.fst\n\
+  \n-- Distance equals last occurrence minus first occurrence"
+"vc-theorems": "theorem missing_value_distance \n  {k : Int} {arr : List Int} \n \
+  \ (h : ¬ k ∈ arr) : \n  find_longest_distance k arr = 0 := sorry\n\n-- Distance\
+  \ is always non-negative  \n\ntheorem distance_non_negative\n  (k : Int) (arr :\
+  \ List Int) :\n  find_longest_distance k arr ≥ 0 := sorry\n\n-- Distance is bounded\
+  \ by array length minus 1\n\ntheorem distance_upper_bound \n  (k : Int) (arr : List\
+  \ Int) :\n  find_longest_distance k arr ≤ max (arr.length - 1) 0 := sorry\n\n--\
+  \ Function to find last index\n\ntheorem distance_matches_occurrences \n  (k : Int)\
+  \ (arr : List Int) :\n  find_longest_distance k arr = \n    let first := arr.findIdx?\
+  \ (· = k)\n    let last := findLastIndex (· = k) arr\n    match first, last with\n\
+  \    | some i, some j => j - i \n    | _, _ => 0 := sorry\n\n/--\ninfo: 3\n-/\n\
+  #guard_msgs in\n#eval find_longest_distance 2 [2, 3, 4, 2, 1, 6]\n\n/--\ninfo: 0\n\
+  -/\n#guard_msgs in\n#eval find_longest_distance 4 [2, 3, 4, 2, 1, 6]\n\n/--\ninfo:\
+  \ 6\n-/\n#guard_msgs in\n#eval find_longest_distance 1 [1, 2, 3, 1, 2, 3, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

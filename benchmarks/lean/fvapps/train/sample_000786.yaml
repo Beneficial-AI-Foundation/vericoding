@@ -1,0 +1,64 @@
+"vc-description": "John was learning mathematics and was very bored. Jane his best\
+  \ friend gave him a problem to solve. \nThe description of the problem was as follows:-\
+  \ \nYou are given a decimal number $N$(1<=$N$<=$10^9$) and three integers $A$, $B$,\
+  \ $C$. \nSteps to perform:\n1) You have to create a $LIST$. \n2) You have to initialize\
+  \ the $LIST$ by adding N to the $LIST$ as its first element. \n3) Divide$N$ by $A$\
+  \ and if the first digit of the fractional part is Non-Zero then add this digit\
+  \ to the  $LIST$ otherwise add the first digit of the integral part(Leftmost digit).\n\
+  (The integer part or integral part of a decimal is the integer written to the left\
+  \ of the decimal separator.  The part from the decimal separator i.e to the right\
+  \ is the fractional part. )\n4) Update $N$  by Last element of the $LIST$. \nN =\
+  \ Last element of $LIST$\n5) You have to perform the same process from step 3 on\
+  \ $N$ for $B$ and $C$ respectively \n6) Repeat from step 3 \nYou have to answer$Q$(1\
+  \ <= $Q$<= 100 ) queries\nFor each query you are given an integer $i$ (0 <= $i$\
+  \ <= $10^9$ ). You have to print the element present at the ith position of the\
+  \ $LIST$. \nHelp John solve this problem.\n\n-----Input:-----\n- The First Line\
+  \ of input contains a single integer $T$ denoting the number of test cases. The\
+  \ description of $T$ test cases follows.\n- The First Line of each test case contains\
+  \ the  integer $N$.\n- The second line of each test case contains three integers\
+  \ $A$, $B$, and $C$ separated by a space\n- The third line of each test case contains\
+  \ an integer $Q$.\n- Then the next $Q$ line follows.  \n- An integer $i$ (0 <= $i$\
+  \ <= 10^9 )\n\n-----Output:-----\nYou have to answer the $Q$ queries in the next\
+  \ $Q$ lines. \n\n-----Constraints-----\n- $1 \\leq T \\leq 10$\n- $1 \\leq N \\\
+  leq 10^9$\n- $2 \\leq A \\leq 10$\n- $2 \\leq B \\leq 10$\n- $2 \\leq C \\leq 10$\n\
+  - $2 \\leq Q \\leq 100$\n- $0 \\leq i \\leq 10^9$\n\n-----Sample Input:-----\n1\n\
+  56\n3 5 7\n4\n0\n1\n2\n3\n\n-----Sample Output:-----\n56\n6\n2\n2\n\n-----EXPLANATION:-----\n\
+  This list is :\n$N$ = 56 and $A$ = 3, $B$ = 5, $C$ = 7. \nInitially $LIST$ = $[\
+  \ 56 ]$\n$N$$/$$A$ =  56/3 = 18.666666666666668 \nAdd 6 to the $LIST$ \n$LIST$ =\
+  \ $[ 56, 6 ]$\n$N$ = 6 \n$N$$/$$B$ = 6/5 = 1.2 \nAdd 2 to the$LIST$ \n$LIST$ = $[\
+  \ 56, 6, 2 ]$\nN = 2 \n$N$$/$$C$ = 2/7 =0. 2857142857142857\nAdd 2 to the $LIST$.\
+  \  \n$LIST$ = $[ 56, 6, 2, 2 ]$\n$N$  = 2\nWe have to keep repeating this process.\
+  \ If any of the numbers got by $N$ dividing by either $A$, $B$, $C$ have 0 after\
+  \ the decimal point then we have to take the first digit of the number. \nfor example:\
+  \ if we got 12.005 then here we take 1 and add it to the list and then assign N\
+  \ = 1 \nNow the queries ask for the elements at index 0, 1, 2, 3 of the $LIST$ which\
+  \ is 56,6, 2, 2"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_list_pattern (n : Nat) (a b c : Nat) (queries : List\
+  \ Nat) : List Nat :=\nsorry\n\n/-- Output list length matches query list length\
+  \ -/"
+"vc-theorems": "theorem solve_list_pattern_length {n a b c : Nat} {queries : List\
+  \ Nat} \n  (h1 : n ≥ 1) (h2 : n ≤ 10^9)\n  (h3 : a ≥ 1) (h4 : a ≤ 100)\n  (h5 :\
+  \ b ≥ 1) (h6 : b ≤ 100) \n  (h7 : c ≥ 1) (h8 : c ≤ 100)\n  (h9 : queries.length\
+  \ ≥ 1) (h10 : queries.length ≤ 100)\n  (h11 : ∀ q ∈ queries, q ≥ 0 ∧ q ≤ 100) :\n\
+  \  (solve_list_pattern n a b c queries).length = queries.length :=\nsorry\n\n/--\
+  \ All output values are single digits except possibly first -/\n\ntheorem solve_list_pattern_range\
+  \ {n a b c : Nat} {queries : List Nat}\n  (h1 : n ≥ 1) (h2 : n ≤ 10^9)\n  (h3 :\
+  \ a ≥ 1) (h4 : a ≤ 100)\n  (h5 : b ≥ 1) (h6 : b ≤ 100)\n  (h7 : c ≥ 1) (h8 : c ≤\
+  \ 100)\n  (h9 : queries.length ≥ 1) (h10 : queries.length ≤ 100)\n  (h11 : ∀ q ∈\
+  \ queries, q ≥ 0 ∧ q ≤ 100) :\n  ∀ i ∈ (solve_list_pattern n a b c queries).tail,\
+  \ i ≤ 9 :=\nsorry\n\n/-- First query at index 0 returns initial n -/\n\ntheorem\
+  \ solve_list_pattern_init {n a b c : Nat} {queries : List Nat}\n  (h1 : n ≥ 1) (h2\
+  \ : n ≤ 10^9)\n  (h3 : a ≥ 1) (h4 : a ≤ 100)\n  (h5 : b ≥ 1) (h6 : b ≤ 100)\n  (h7\
+  \ : c ≥ 1) (h8 : c ≤ 100)\n  (h9 : queries.length ≥ 1) (h10 : queries.length ≤ 100)\n\
+  \  (h11 : ∀ q ∈ queries, q ≥ 0 ∧ q ≤ 100)\n  (h12 : 0 ∈ queries) :\n  (solve_list_pattern\
+  \ n a b c queries)[queries.indexOf 0]? = some n :=\nsorry\n\n/-- Function is idempotent\
+  \ (same inputs produce same outputs) -/\n\ntheorem solve_list_pattern_idempotent\
+  \ {n a b c : Nat} {queries : List Nat}\n  (h1 : n ≥ 1) (h2 : n ≤ 10^9)\n  (h3 :\
+  \ a ≥ 1) (h4 : a ≤ 100)\n  (h5 : b ≥ 1) (h6 : b ≤ 100)\n  (h7 : c ≥ 1) (h8 : c ≤\
+  \ 100)\n  (h9 : queries.length ≥ 1) (h10 : queries.length ≤ 100)\n  (h11 : ∀ q ∈\
+  \ queries, q ≥ 0 ∧ q ≤ 100) :\n  solve_list_pattern n a b c queries = solve_list_pattern\
+  \ n a b c queries :=\nsorry\n\n/--\ninfo: [56, 6, 2, 2]\n-/\n#guard_msgs in\n#eval\
+  \ solve_list_pattern 56 3 5 7 [0, 1, 2, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

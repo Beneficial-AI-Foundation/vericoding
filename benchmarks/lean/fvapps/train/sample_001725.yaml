@@ -1,0 +1,34 @@
+"vc-description": "Construct a function that, when given a string containing an expression\
+  \ in infix notation, will return an identical expression in postfix notation.\n\n\
+  The operators used will be `+`, `-`, `*`, `/`, and `^` with standard precedence\
+  \ rules and left-associativity of all operators but `^`.\n\nThe operands will be\
+  \ single-digit integers between 0 and 9, inclusive.\n\nParentheses may be included\
+  \ in the input, and are guaranteed to be in correct pairs.\n\n```javascript \ntoPostfix(\"\
+  2+7*5\"); // Should return \"275*+\"\ntoPostfix(\"3*3/(7+1)\"); // Should return\
+  \ \"33*71+/\"\ntoPostfix(\"5+(6-2)*9+3^(7-1)\"); // Should return \"562-9*+371-^+\"\
+  \n```\n```python\nto_postfix(\"2+7*5\") # Should return \"275*+\"\nto_postfix(\"\
+  3*3/(7+1)\") # Should return \"33*71+/\"\nto_postfix(\"5+(6-2)*9+3^(7-1)\") # Should\
+  \ return \"562-9*+371-^+\"\n```\n\nYou may read more about postfix notation, also\
+  \ called Reverse Polish notation, here:\nhttp://en.wikipedia.org/wiki/Reverse_Polish_notation"
+"vc-preamble": "import Imports.AllImports\n\ndef isDigit (c : Char) : Bool := sorry\n\
+  def toPostfix (expr : String) : String := sorry\n\n\ndef isOperator (c : Char) :\
+  \ Bool :=\n  c = '+' ∨ c = '-' ∨ c = '*' ∨ c = '/' ∨ c = '^'\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def evalStackSize (s : List Char) : Int :=\n  s.foldl (fun acc\
+  \ c => \n    if isDigit c then acc + 1\n    else if isOperator c then acc - 1\n\
+  \    else acc) 0\n"
+"vc-theorems": "theorem toPostfix_only_valid_chars {expr : String} :\n  ∀ c, c ∈ (toPostfix\
+  \ expr).data → \n    c ∈ expr.data ∨ c.isDigit ∨ c = '+' ∨ c = '-' ∨ c = '*' ∨ c\
+  \ = '/' ∨ c = '^' := sorry\n\n\ntheorem toPostfix_no_parens {expr : String} :\n\
+  \  ∀ c, c ∈ (toPostfix expr).data → c ≠ '(' ∧ c ≠ ')' := sorry\n\n\ntheorem toPostfix_preserves_operators\
+  \ {expr : String} :\n  List.length (List.filter isOperator expr.data) =\n  List.length\
+  \ (List.filter isOperator (toPostfix expr).data) := sorry\n\n\ntheorem toPostfix_preserves_operands\
+  \ {expr : String} :\n  List.length (List.filter isDigit expr.data) =\n  List.length\
+  \ (List.filter isDigit (toPostfix expr).data) := sorry\n\n\ntheorem toPostfix_final_stack\
+  \ {expr : String} :\n  evalStackSize (toPostfix expr).data = 1 := sorry\n\n\ntheorem\
+  \ toPostfix_stack_invariant {expr : String} :\n  ∀ (n : Nat), n ≤ (toPostfix expr).data.length\
+  \ →\n    evalStackSize ((toPostfix expr).data.take n) ≥ 1 := sorry\n\n/--\ninfo:\
+  \ '275*+'\n-/\n#guard_msgs in\n#eval to_postfix \"2+7*5\"\n\n/--\ninfo: '33*71+/'\n\
+  -/\n#guard_msgs in\n#eval to_postfix \"3*3/(7+1)\"\n\n/--\ninfo: '562-9*+371-^+'\n\
+  -/\n#guard_msgs in\n#eval to_postfix \"5+(6-2)*9+3^(7-1)\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

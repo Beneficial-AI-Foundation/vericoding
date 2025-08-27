@@ -1,0 +1,46 @@
+"vc-description": "Shivam owns a gambling house, which has a special wheel called\
+  \ The Wheel of Fortune. \nThis wheel is meant for giving free coins to people coming\
+  \ in the house. \n\nThe wheel of fortune is a game of chance. It uses a spinning\
+  \ wheel with exactly N numbered pockets and a coin is placed in between every consecutive\
+  \ pocket. The wheel is spun in either of the two ways.\nBefore the wheel is turned,\
+  \ all the coins are restored and players bet on a number K.\nThen a needle is made\
+  \ to point to any one of the pocket which has number K written on it.\nWheel is\
+  \ then spun till the needle encounters number K again and the player gets all the\
+  \ coins the needle has encountered.\n\nShivam being the owner of the gambling house,\
+  \ has the authority to place the needle on any of the K numbered pockets and also\
+  \ he could rotate the wheel in either of the two ways.\nShivam has to figure out\
+  \ a way to minimize number of coins that he has to spend on every given bet.\nYou\
+  \ are given a wheel having N elements and Q players. Each player bets on a number\
+  \ K from the wheel. For each player you have to print minimum number of coins Shivam\
+  \ has to spend.\n\n\n-----Input-----\n- The first line of the input contains an\
+  \ integer T denoting the number of test cases . The description of T testcases follow.\n\
+  \n- The first line of each test case contains single integer N .\n\n- The second\
+  \ line of each test case contains N space seperated integers denoting the numbers\
+  \ on the wheel.\n\n- The third line of each test case contains a single integer\
+  \ Q denoting the number of players.\n- Then, Q lines follow a single integer K from\
+  \ the N numbers of the wheel \n\n-----Output-----\nFor each player, output the minimum\
+  \ number of coins Shivam has to spend.\n\n\n-----Constraints-----\n\n- 1 ≤ T ≤ 10\n\
+  - 1 ≤ N ≤ 100000\n- 1 ≤ Number written on the Wheel ≤ 1000\n- 1 ≤ Q ≤ 10000\n- 1\
+  \ ≤ K ≤ 1000\n-  It is guaranteed that K belongs to the N numbers written on the\
+  \ wheel.\n\n-----Example-----\nInput:\n\n2\n\n3\n\n1 2 3\n\n3\n\n1\n\n2\n\n3\n\n\
+  6\n\n2 1 5 3 2 1\n\n4\n\n1\n\n2\n\n3\n\n5\nOutput:\n\n3\n\n3\n\n3\n\n2\n\n2\n\n\
+  6\n\n6"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_wheel_of_fortune (n : Nat) (wheel : List Nat) (queries\
+  \ : List Nat) : List Nat := sorry\n\ntheorem results_length_matches_queries_length\n\
+  \  (n : Nat) (wheel : List Nat) (queries : List Nat) :\n  List.length (solve_wheel_of_fortune\
+  \ n wheel queries) = List.length queries := \n  sorry\n"
+"vc-theorems": "theorem results_are_bounded \n  (n : Nat) (wheel : List Nat) (queries\
+  \ : List Nat) :\n  ∀ x ∈ solve_wheel_of_fortune n wheel queries, \n  1 ≤ x ∧ x ≤\
+  \ n :=\n  sorry\n\n\ntheorem single_occurrence_gives_n\n  (n : Nat) (wheel : List\
+  \ Nat) (queries : List Nat) :\n  ∀ (q : Nat) (i : Fin (List.length queries)),\n\
+  \  queries.get i = q →\n  List.count q wheel = 1 →\n  (solve_wheel_of_fortune n\
+  \ wheel queries).get ⟨i.1, by\n    rw [results_length_matches_queries_length]\n\
+  \    exact i.2⟩ = n :=\n  sorry\n\n\ntheorem multiple_occurrences_bound\n  (n :\
+  \ Nat) (wheel : List Nat) (queries : List Nat) :\n  ∀ (q : Nat) (i : Fin (List.length\
+  \ queries)),\n  queries.get i = q →\n  List.count q wheel ≥ 2 →\n  (solve_wheel_of_fortune\
+  \ n wheel queries).get ⟨i.1, by \n    rw [results_length_matches_queries_length]\n\
+  \    exact i.2⟩ ≤ n / 2 :=\n  sorry\n\n\ntheorem identical_wheel_gives_ones\n  (n\
+  \ : Nat) :\n  solve_wheel_of_fortune n (List.replicate n 1) [1] = [1] :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

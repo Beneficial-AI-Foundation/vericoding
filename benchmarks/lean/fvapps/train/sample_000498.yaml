@@ -1,0 +1,44 @@
+"vc-description": "Given is an undirected connected graph with N vertices numbered\
+  \ 1 to N, and M edges numbered 1 to M.\nThe given graph may contain multi-edges\
+  \ but not self loops.\nEach edge has an integer label between 1 and N (inclusive).\n\
+  Edge i has a label c_i, and it connects Vertex u_i and v_i bidirectionally.\nSnuke\
+  \ will write an integer between 1 and N (inclusive) on each vertex (multiple vertices\
+  \ may have the same integer written on them) and then keep only the edges satisfying\
+  \ the condition below, removing the other edges.\nCondition: Let x and y be the\
+  \ integers written on the vertices that are the endpoints of the edge. Exactly one\
+  \ of x and y equals the label of the edge.\nWe call a way of writing integers on\
+  \ the vertices good if (and only if) the graph is still connected after removing\
+  \ the edges not satisfying the condition above. Determine whether a good way of\
+  \ writing integers exists, and present one such way if it exists.\n\n-----Constraints-----\n\
+  \ - 2 \\leq N \\leq 10^5\n - N-1 \\leq M \\leq 2 \\times 10^5\n - 1 \\leq u_i,v_i,c_i\
+  \ \\leq N\n - The given graph is connected and has no self-loops.\n\n-----Input-----\n\
+  Input is given from Standard Input in the following format:\nN M\nu_1 v_1 c_1\n\\\
+  vdots\nu_M v_M c_M\n\n-----Output-----\nIf there is no good way of writing integers,\
+  \ print No.\nOtherwise, print N lines. The i-th line should contain the integer\
+  \ written on Vertex i.\nAny good way of writing integers will be accepted.\n\n-----Sample\
+  \ Input-----\n3 4\n1 2 1\n2 3 2\n3 1 3\n1 3 1\n\n-----Sample Output-----\n1\n2\n\
+  1\n\n - We write 1, 2, and 1 on Vertex 1, 2, and 3, respectively.\n - Edge 1 connects\
+  \ Vertex 1 and 2, and its label is 1.\n - Only the integer written on Vertex 1 equals\
+  \ the label, so this edge will not get removed.\n - Edge 2 connects Vertex 2 and\
+  \ 3, and its label is 2.\n - Only the integer written on Vertex 2 equals the label,\
+  \ so this edge will not be removed.\n - Edge 3 connects Vertex 1 and 3, and its\
+  \ label is 3.\n - Both integers written on the vertices differ from the label, so\
+  \ this edge will be removed.\n - Edge 4 connects Vertex 1 and 3, and its label is\
+  \ 1.\n - Both integers written on the vertices equal the label, so this edge will\
+  \ be removed.\n - After Edge 3 and 4 are removed, the graph will still be connected,\
+  \ so this is a good way of writing integers."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_graph_labeling (n : Nat) (edges : List (Nat × Nat × Nat))\
+  \ : List Nat := sorry\n\ntheorem solve_impossible_n2 :\n  solve_graph_labeling 2\
+  \ [(1,2,1)] = [] := sorry\n"
+"vc-theorems": "theorem solve_disconnected_graph :\n  solve_graph_labeling 4 [(1,2,1)]\
+  \ = [] := sorry\n\n\ntheorem solve_triangle :\n  solve_graph_labeling 3 [(1,2,1),\
+  \ (2,3,2), (3,1,3)] = [1,2,1] := sorry\n\n\ntheorem solve_square_exists (result\
+  \ : List Nat) :\n  solve_graph_labeling 4 [(1,2,1), (2,3,2), (3,4,1), (4,1,2)] =\
+  \ result →\n  result.length = 4 := sorry\n\n\ntheorem solve_square_valid_colors\
+  \ (result : List Nat) (u v c : Nat) \n  (h1 : u - 1 < result.length) (h2 : v - 1\
+  \ < result.length) :\n  solve_graph_labeling 4 [(1,2,1), (2,3,2), (3,4,1), (4,1,2)]\
+  \ = result →\n  (u,v,c) ∈ [(1,2,1), (2,3,2), (3,4,1), (4,1,2)] →\n  (result.get\
+  \ ⟨u-1, h1⟩ = c) ≠ (result.get ⟨v-1, h2⟩ = c) := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

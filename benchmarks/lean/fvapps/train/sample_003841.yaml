@@ -1,0 +1,16 @@
+"vc-description": "Task:\nMake a function that converts a word to pig latin. The rules\
+  \ of pig latin are:\n\n```\nIf the word has more than 3 letters:\n  1. Take the\
+  \ first letter of a word and move it to the end\n  2. Add -ay to the word\nOtherwise\
+  \ leave the word alone.\n```\n\nExample: `hello` = `ellohay`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pig_latin (word : String) : String := sorry\n\ntheorem pig_latin_long_words\
+  \ (word : String)\n  (h1 : word.length ≥ 4)\n  : let result := pig_latin word\n\
+  \    (result.length = word.length + 2) ∧\n    (result.endsWith \"ay\") ∧ \n    (result.dropRight\
+  \ 2 = word.drop 1 ++ word.take 1) := sorry\n"
+"vc-theorems": "theorem pig_latin_short_words (word : String)\n  (h1 : word.length\
+  \ ≤ 3)\n  : pig_latin word = word := sorry\n\n\ntheorem pig_latin_empty \n  : pig_latin\
+  \ \"\" = \"\" := sorry\n\n/--\ninfo: 'ellohay'\n-/\n#guard_msgs in\n#eval pig_latin\
+  \ \"hello\"\n\n/--\ninfo: 'hi'\n-/\n#guard_msgs in\n#eval pig_latin \"hi\"\n\n/--\n\
+  info: 'orldway'\n-/\n#guard_msgs in\n#eval pig_latin \"world\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

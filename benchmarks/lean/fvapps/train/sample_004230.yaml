@@ -1,0 +1,22 @@
+"vc-description": "Welcome.\n\nIn this kata you are required to, given a string, replace\
+  \ every letter with its position in the alphabet.\n\nIf anything in the text isn't\
+  \ a letter, ignore it and don't return it.\n\n`\"a\" = 1`, `\"b\" = 2`, etc.\n\n\
+  ## Example\n\n```python\nalphabet_position(\"The sunset sets at twelve o' clock.\"\
+  )\n```\nShould return `\"20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5\
+  \ 15 3 12 15 3 11\"` (as a string)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def alphabetPosition (s : String) : String := sorry\n\ntheorem\
+  \ output_matches_input_letters (s : String) :\n  let result := alphabetPosition\
+  \ s\n  let inputLetters := s.data.filter Char.isAlpha\n  if inputLetters = [] then\n\
+  \    result = \"\"\n  else\n    let outputNums := (result.split (· = ' '))\n   \
+  \ outputNums.length = inputLetters.length ∧\n    (List.zip inputLetters outputNums).all\
+  \ (fun (letter, num) => \n      match num.toNat? with\n      | some n => n = letter.toLower.toNat\
+  \ - 96\n      | none => false) := sorry\n"
+"vc-theorems": "theorem only_letters_full_conversion {s : String} (h₁ : s.length >\
+  \ 0) \n  (h₂ : s.data.all Char.isAlpha) : \n  ((alphabetPosition s).split (· = '\
+  \ ')).length = s.length := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval\
+  \ alphabet_position \"The sunset sets at twelve o\" clock.\"\n\n/--\ninfo: expected2\n\
+  -/\n#guard_msgs in\n#eval alphabet_position \"-.-\"\"\n\n/--\ninfo: expected3\n\
+  -/\n#guard_msgs in\n#eval alphabet_position \"aBc\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

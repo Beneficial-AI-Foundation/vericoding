@@ -1,0 +1,37 @@
+"vc-description": "Dexter, being irritated by DD, gave her a lucrative game to play\
+  \ to keep her busy.\nThere are $N$ bags numbered $1$ to $N$. The $i_{th}$ bag contains\
+  \ $A_i$ coins. The bags are placed in a circular order such that the $N_{th}$ bag\
+  \ is adjacent to the $1^{st}$ bag. \nDD can select $K$ consecutive adjacent bags\
+  \ and take all the coins in them.   Help her find the maximum number of coins she\
+  \ can take by making the ideal choice.\nNote that the selected bags must be consecutive.\
+  \ Since they are placed in circular order, bag number $1$ and $N$ are considered\
+  \ to be consecutive.\n\n-----Input:-----\n- First-line will contain $T$, the number\
+  \ of test cases. Then the test cases follow. \n- First-line contains $N$ and $K$.\n\
+  - Second-line contains $N$ numbers $A_1, A_2,...,A_N$,  \n\n-----Output:-----\n\
+  For each test case, output in a single line, the maximum money that can be collected\
+  \ by DD.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n- $5 \\leq N \\leq 10^5$\n\
+  - $1 \\leq K < N$\n- $1 \\leq A_i \\leq 10^5$\nSum of $N$ over all test cases is\
+  \ less than $10^6$\n\n-----Sample Input:-----\n1\n5 3\n8 6 9 4 10\n\n-----Sample\
+  \ Output:-----\n24\n\n-----EXPLANATION:-----\nThe ideal choice would be to take\
+  \ the last bag with $10$ coins and the first $2$ bags with $8$ and $6$ coins."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum (xs : List Int) : Int :=\n\
+  match xs with\n| [] => 0\n| h :: t => h + List.sum t\n\n\ndef max_list (xs : List\
+  \ Int) : Int :=\nmatch xs with\n| [] => 0\n| [x] => x\n| x::xs => max x (max_list\
+  \ xs)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_max_coins (n k : Nat) (arr : List Int) : Int :=\nsorry\n"
+"vc-theorems": "theorem find_max_coins_k_exceeds_n {n k : Nat} {arr : List Int} \n\
+  \  (h1 : arr.length = n)\n  (h2 : k > n) :\n  find_max_coins n k arr = 0 :=\nsorry\n\
+  \n\ntheorem find_max_coins_k_equals_n {n k : Nat} {arr : List Int}\n  (h1 : arr.length\
+  \ = n)\n  (h2 : k = n)\n  (h3 : n > 0) :\n  find_max_coins n k arr = List.sum arr\
+  \ :=\nsorry\n\n\ntheorem find_max_coins_sliding_window {n k : Nat} {arr : List Int}\n\
+  \  (h1 : arr.length = n)\n  (h2 : k > 0)\n  (h3 : k ≤ n) :\n  find_max_coins n k\
+  \ arr = max_list ((List.range n).map (fun i => \n    List.sum (List.take k (List.drop\
+  \ i (arr ++ arr)))\n  )) :=\nsorry\n\n\ntheorem find_max_coins_monotonic {n k :\
+  \ Nat} {arr : List Int}\n  (h1 : arr.length = n)\n  (h2 : k ≤ n)\n  (h3 : k > 1)\n\
+  \  (h4 : ∀x ∈ arr, x ≥ 0) :\n  find_max_coins n k arr ≥ find_max_coins n (k-1) arr\
+  \ :=\nsorry\n\n/--\ninfo: 24\n-/\n#guard_msgs in\n#eval find_max_coins 5 3 [8, 6,\
+  \ 9, 4, 10]\n\n/--\ninfo: 18\n-/\n#guard_msgs in\n#eval find_max_coins 6 4 [1, 2,\
+  \ 3, 4, 5, 6]\n\n/--\ninfo: 90\n-/\n#guard_msgs in\n#eval find_max_coins 5 2 [10,\
+  \ 20, 30, 40, 50]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

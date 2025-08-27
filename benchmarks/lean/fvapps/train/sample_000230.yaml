@@ -1,0 +1,22 @@
+"vc-description": "Given a string S of '(' and ')' parentheses, we add the minimum\
+  \ number of parentheses ( '(' or ')', and in any positions ) so that the resulting\
+  \ parentheses string is valid.\nFormally, a parentheses string is valid if and only\
+  \ if:\n\nIt is the empty string, or\nIt can be written as AB (A concatenated with\
+  \ B), where A and B are valid strings, or\nIt can be written as (A), where A is\
+  \ a valid string.\n\nGiven a parentheses string, return the minimum number of parentheses\
+  \ we must add to make the resulting string valid.\n \nExample 1:\nInput: \"())\"\
+  \nOutput: 1\n\n\nExample 2:\nInput: \"(((\"\nOutput: 3\n\n\nExample 3:\nInput: \"\
+  ()\"\nOutput: 0\n\n\nExample 4:\nInput: \"()))((\"\nOutput: 4\n \n\n\n\nNote:\n\n\
+  S.length <= 1000\nS only consists of '(' and ')' characters."
+"vc-preamble": "import Imports.AllImports\n\ndef min_parens_to_add (s : String) :\
+  \ Nat := sorry\n\ndef is_balanced (s : String) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_char (s : String) (c : Char) : Nat := sorry\n\n\n\n\n\
+  \ntheorem empty_string : min_parens_to_add \"\" = 0 := sorry\n"
+"vc-theorems": "theorem unmatched_open (n : Nat) :\n  min_parens_to_add (String.mk\
+  \ (List.replicate n '(')) = n := sorry\n\ntheorem unmatched_close (n : Nat) :\n\
+  \  min_parens_to_add (String.mk (List.replicate n ')')) = n := sorry\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval min_parens_to_add \"())\"\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval min_parens_to_add \"(((\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ min_parens_to_add \"()\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

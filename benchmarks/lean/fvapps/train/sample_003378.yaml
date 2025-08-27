@@ -1,0 +1,24 @@
+"vc-description": "In computer science and discrete mathematics, an [inversion](https://en.wikipedia.org/wiki/Inversion_%28discrete_mathematics%29)\
+  \ is a pair of places in a sequence where the elements in these places are out of\
+  \ their natural order. So, if we use ascending order for a group of numbers, then\
+  \ an inversion is when larger numbers appear before lower number in a sequence.\n\
+  \nCheck out this example sequence: ```(1, 2, 5, 3, 4, 7, 6)``` and we can see here\
+  \ three inversions\n```5``` and ```3```; ```5``` and ```4```; ```7``` and ```6```.\n\
+  \nYou are given a sequence of numbers and you should count the number of inversions\
+  \ in this sequence.\n\n```Input```: A sequence as a tuple of integers.\n\n```Output```:\
+  \ The inversion number as an integer.\n\nExample:\n```python\n  count_inversion((1,\
+  \ 2, 5, 3, 4, 7, 6)) == 3\n  count_inversion((0, 1, 2, 3)) == 0\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef countInversion (s : List Int) : Nat\
+  \ := sorry\n\ndef isSorted (s : List Int) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isAntiSorted (s : List Int) : Bool := sorry\n\ntheorem countInversion_nonnegative\
+  \ (s : List Int) :\n  countInversion s ≥ 0 := sorry\n"
+"vc-theorems": "theorem countInversion_sorted_zero (s : List Int) :\n  isSorted s\
+  \ = true → countInversion s = 0 := sorry\n\n\ntheorem countInversion_reverse_sorted_max\
+  \ (s : List Int) :\n  let maxInv := s.length * (s.length - 1) / 2\n  isAntiSorted\
+  \ s = true → countInversion s ≤ maxInv := sorry\n\n\ntheorem countInversion_small_seq\
+  \ (s : List Int) : \n  s.length ≤ 1 → countInversion s = 0 := sorry\n\n/--\ninfo:\
+  \ 3\n-/\n#guard_msgs in\n#eval count_inversion (1, 2, 5, 3, 4, 7, 6)\n\n/--\ninfo:\
+  \ 0\n-/\n#guard_msgs in\n#eval count_inversion (0, 1, 2, 3)\n\n/--\ninfo: 6\n-/\n\
+  #guard_msgs in\n#eval count_inversion (3, 2, 1, 0)\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

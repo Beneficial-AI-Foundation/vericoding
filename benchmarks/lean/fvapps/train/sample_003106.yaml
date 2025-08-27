@@ -1,0 +1,25 @@
+"vc-description": "For every good kata idea there seem to be quite a few bad ones!\n\
+  \nIn this kata you need to check the provided array (x) for good ideas 'good' and\
+  \ bad ideas 'bad'. If there are one or two good ideas, return 'Publish!', if there\
+  \ are more than 2 return 'I smell a series!'. If there are no good ideas, as is\
+  \ often the case, return 'Fail!'.\n\n~~~if:c\nFor C: do not dynamically allocate\
+  \ memory,\n      instead return a string literal\n~~~"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def well (ideas : List String) : String := sorry\n\ntheorem well_output_valid\
+  \ (ideas : List String) (h : ideas ≠ []) :\n  well ideas = \"Fail!\" ∨ well ideas\
+  \ = \"Publish!\" ∨ well ideas = \"I smell a series!\" := sorry\n"
+"vc-theorems": "theorem well_case_no_good (ideas : List String) (h1 : ideas ≠ [])\
+  \ \n  (h2 : ∀ x ∈ ideas, x ≠ \"good\") :\n  well ideas = \"Fail!\" := sorry\n\n\n\
+  theorem well_case_one_or_two_good (ideas : List String) (h : ideas ≠ [])\n  (h_count\
+  \ : (ideas.filter (· = \"good\")).length ≥ 1 ∧ \n             (ideas.filter (· =\
+  \ \"good\")).length ≤ 2) :\n  well ideas = \"Publish!\" := sorry\n\n\ntheorem well_case_many_good\
+  \ (ideas : List String) (h : ideas ≠ [])\n  (h_count : (ideas.filter (· = \"good\"\
+  )).length > 2) :\n  well ideas = \"I smell a series!\" := sorry\n\n\ntheorem well_case_sensitive\
+  \ (ideas : List String) (h : ideas ≠ [])\n  (h_no_good : \"good\" ∉ ideas) :\n \
+  \ well ideas = \"Fail!\" := sorry\n\n/--\ninfo: 'Fail!'\n-/\n#guard_msgs in\n#eval\
+  \ well [\"bad\", \"bad\", \"bad\"]\n\n/--\ninfo: 'Publish!'\n-/\n#guard_msgs in\n\
+  #eval well [\"good\", \"bad\", \"bad\", \"bad\", \"bad\"]\n\n/--\ninfo: 'I smell\
+  \ a series!'\n-/\n#guard_msgs in\n#eval well [\"good\", \"bad\", \"bad\", \"bad\"\
+  , \"bad\", \"good\", \"bad\", \"bad\", \"good\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

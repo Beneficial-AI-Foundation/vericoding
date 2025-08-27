@@ -1,0 +1,37 @@
+"vc-description": "# Task\n You are given a regular array `arr`. Let's call a `step`\
+  \ the difference between two adjacent elements. \n \n Your task is to sum the elements\
+  \ which belong to the sequence of consecutive elements of length `at least 3 (but\
+  \ as long as possible)`, such that the steps between the elements in this sequence\
+  \ are the same.\n\n Note that some elements belong to two sequences and have to\
+  \ be counted twice.\n\n# Example\n\n For `arr = [54, 70, 86, 1, -2, -5, 0, 5, 78,\
+  \ 145, 212, 15]`, the output should be `639`.\n```\nThere are 4 sequences of equal\
+  \ steps in the given array:\n{54, 70, 86} => step +16\n{1, -2, -5} => step -3\n\
+  {-5, 0, 5} => step +5\n{78, 145, 212} => step +67\nSo the answer is \n(54 + 70 +\
+  \ 86) + \n(1 - 2 - 5) + \n(-5 + 0 + 5) + \n(78 + 145 + 212) = 639.\nThe last element\
+  \ 15 was not be counted.\n```\n\n For `arr = [7, 2, 3, 2, -2, 400, 802]`, the output\
+  \ should be `1200`.\n ```\n There is only 1 sequence in arr:\n {-2, 400, 802} =>\
+  \ step +402\n So the answer is: -2 + 400 + 802 = 1200\n ```\n \n For `arr = [1,\
+  \ 2, 3, 4, 5]`, the output should be `15`.\n \n Note that we should only count {1,\
+  \ 2, 3, 4, 5} as a whole, any other small subset such as {1, 2, 3},{2, 3, 4},{3,\
+  \ 4, 5} are belong to {1, 2, 3, 4, 5}.\n \n# Input/Output\n\n\n - `[input]` array.integer\
+  \ `arr`\n\n `3 ≤ arr.length ≤ 100`\n\n\n - `[output]` an integer\n \n The sum of\
+  \ sequences."
+"vc-preamble": "import Imports.AllImports\n\ndef isArithmeticSequence (arr : List\
+  \ Int) : Bool :=\n  sorry\n\n\ndef sumOfRegularNumbers (arr : List Int) : Int :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum (l : List Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem regular_numbers_properties {arr : List Int} (h : arr.length\
+  \ ≥ 3) :\n  let result := sumOfRegularNumbers arr\n  (result ≥ 0 ∨ (result < 0 ∧\
+  \ ∃ x ∈ arr, x < 0)) ∧\n  (result ≠ 0 → ∃ i, i + 2 < arr.length ∧ \n    isArithmeticSequence\
+  \ (arr.take 3))\n  :=\nsorry\n\n\ntheorem three_element_sequence {arr : List Int}\
+  \ (h : arr.length = 3) :\n  let d₁ := arr[0]! - arr[1]!\n  let d₂ := arr[1]! - arr[2]!\n\
+  \  d₁ = d₂ → sumOfRegularNumbers arr = sum arr ∧\n  d₁ ≠ d₂ → sumOfRegularNumbers\
+  \ arr = 0 :=\nsorry\n\n\ntheorem non_overlapping_sequences {arr : List Int} (h :\
+  \ arr.length ≥ 4) :\n  let result := sumOfRegularNumbers arr\n  result > 0 →\n \
+  \ ∃ i, i + 2 < arr.length ∧\n  (arr[i]! - arr[i+1]! = arr[i+1]! - arr[i+2]!) :=\n\
+  sorry\n\n/--\ninfo: 639\n-/\n#guard_msgs in\n#eval sum_of_regular_numbers [54, 70,\
+  \ 86, 1, -2, -5, 0, 5, 78, 145, 212, 15]\n\n/--\ninfo: 1200\n-/\n#guard_msgs in\n\
+  #eval sum_of_regular_numbers [7, 2, 3, 2, -2, 400, 802]\n\n/--\ninfo: -13994\n-/\n\
+  #guard_msgs in\n#eval sum_of_regular_numbers [-1, 7000, 1, -6998, -13997]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

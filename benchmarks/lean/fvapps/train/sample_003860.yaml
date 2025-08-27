@@ -1,0 +1,30 @@
+"vc-description": "# Scenario \n\n*You're saying good-bye your best friend* , **_See\
+  \ you next happy year_** . \n\n**_Happy Year_** *is the year with only distinct\
+  \ digits* , (e.g) **_2018_**\n\n___\n# Task\n\n**_Given_** a year, **_Find_** **_The\
+  \ next happy year_** or **_The closest year You'll see your best friend_**     \
+  \ ![!alt](https://i.imgur.com/mdX8dJP.png) ![!alt](https://i.imgur.com/mdX8dJP.png)\n\
+  \n___\n# Notes\n\n* **_Year_** Of Course always **_Positive_** .\n* **_Have no fear_**\
+  \ , *It is guaranteed that the answer exists* . \n* **_It's not necessary_** *that\
+  \ the year passed to the function is Happy one* .   \n* **_Input Year with in range_**\
+  \ *(1000  ≤  y  ≤  9000)*\n\n____\n# Input >> Output Examples:\n\n```\nnextHappyYear\
+  \ (7712) ==> return (7801)\n```\n\n## **_Explanation_**:\n\nAs the **_Next closest\
+  \ year with only distinct digits is_**  *7801* . \n___\n\n```\nnextHappyYear (8989)\
+  \ ==> return (9012)\n```\n\n## **_Explanation_**:\n\nAs the **_Next closest year\
+  \ with only distinct digits is_**  *9012* . \n___\n\n```\nnextHappyYear (1001) ==>\
+  \ return (1023)\n```\n\n## **_Explanation_**:\n\nAs the **_Next closest year with\
+  \ only distinct digits is_**  *1023* .\n___\n___\n___\n\n# [Playing with Numbers\
+  \ Series](https://www.codewars.com/collections/playing-with-numbers)\n\n# [Playing\
+  \ With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
+  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
+  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
+"vc-preamble": "import Imports.AllImports\n\ndef next_happy_year (year : Nat) : Nat\
+  \ := sorry\n\n-- Helper functions"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def number_to_digits (n : Nat) : List Nat := sorry \ndef count_unique\
+  \ (l : List Nat) : Nat := sorry\n"
+"vc-theorems": "theorem next_happy_year_increases (year : Nat) \n  (h : year ≥ 1000\
+  \ ∧ year ≤ 8999) :\n  next_happy_year year > year := sorry\n\n/--\ninfo: 1023\n\
+  -/\n#guard_msgs in\n#eval next_happy_year 1001\n\n/--\ninfo: 7801\n-/\n#guard_msgs\
+  \ in\n#eval next_happy_year 7712\n\n/--\ninfo: 9012\n-/\n#guard_msgs in\n#eval next_happy_year\
+  \ 8999\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

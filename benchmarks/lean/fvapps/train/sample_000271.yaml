@@ -1,0 +1,24 @@
+"vc-description": "Given an integer array of digits, return the largest multiple of\
+  \ three that can be formed by concatenating some of the given digits in any order.\n\
+  Since the answer may not fit in an integer data type, return the answer as a string.\n\
+  If there is no answer return an empty string.\n \nExample 1:\nInput: digits = [8,1,9]\n\
+  Output: \"981\"\n\nExample 2:\nInput: digits = [8,6,7,1,0]\nOutput: \"8760\"\n\n\
+  Example 3:\nInput: digits = [1]\nOutput: \"\"\n\nExample 4:\nInput: digits = [0,0,0,0,0,0]\n\
+  Output: \"0\"\n\n \nConstraints:\n\n1 <= digits.length <= 10^4\n0 <= digits[i] <=\
+  \ 9\nThe returning answer must not contain unnecessary leading zeros."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def largestMultipleOfThree (digits : List Nat) : Option String\
+  \ := sorry\n\ndef stringToNat (s : String) : Nat := sorry\n"
+"vc-theorems": "theorem result_is_multiple_of_three (digits : List Nat) :\n  ∀ result\
+  \ : String,\n  largestMultipleOfThree digits = some result →\n  (stringToNat result\
+  \ % 3 = 0) := sorry\n\n\ntheorem result_uses_valid_digits (digits : List Nat) :\n\
+  \  ∀ result : String,\n  largestMultipleOfThree digits = some result →\n  ∀ d :\
+  \ Nat,\n  (result.data.count (Char.ofNat d)) ≤ (digits.count d) := sorry\n\n\ntheorem\
+  \ handles_leading_zeros (digits : List Nat) :\n  ∀ result : String,\n  largestMultipleOfThree\
+  \ digits = some result →\n  (result = \"0\" ∨ result.data.get! 0 ≠ '0') := sorry\n\
+  \n/--\ninfo: '981'\n-/\n#guard_msgs in\n#eval largest_multiple_of_three [9, 8, 1]\n\
+  \n/--\ninfo: '8760'\n-/\n#guard_msgs in\n#eval largest_multiple_of_three [8, 6,\
+  \ 7, 1, 0]\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval largest_multiple_of_three\
+  \ [1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

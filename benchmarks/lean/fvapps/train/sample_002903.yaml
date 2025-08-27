@@ -1,0 +1,17 @@
+"vc-description": "Create a function that takes 2 positive integers in form of a string\
+  \ as an input, and outputs the sum (also as a string):\n\nIf either input is an\
+  \ empty string, consider it as zero."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum_str (a b : String) : String := sorry\n\ndef isValidInt\
+  \ (s : String) : Bool := sorry\n"
+"vc-theorems": "theorem sum_str_matches_actual_sum (a b : Int) : \n  sum_str (toString\
+  \ a) (toString b) = toString (a + b) := sorry\n\n\ntheorem empty_string_treated_as_zero\
+  \ (empty : Option String) : \n  sum_str \"1\" (empty.getD \"\") = \"1\" ∧ \n  sum_str\
+  \ (empty.getD \"\") \"1\" = \"1\" ∧\n  sum_str (empty.getD \"\") (empty.getD \"\"\
+  ) = \"0\" := sorry\n\n\ntheorem invalid_inputs_raise (s : String) : \n  ¬s.trim.isEmpty\
+  \ → ¬(isValidInt s) →\n  (∀ (t : String), sum_str s t = \"error\" ∧ sum_str t s\
+  \ = \"error\") := sorry\n\n/--\ninfo: '9'\n-/\n#guard_msgs in\n#eval sum_str \"\
+  4\" \"5\"\n\n/--\ninfo: '39'\n-/\n#guard_msgs in\n#eval sum_str \"34\" \"5\"\n\n\
+  /--\ninfo: '9'\n-/\n#guard_msgs in\n#eval sum_str \"9\" \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

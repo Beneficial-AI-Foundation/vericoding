@@ -1,0 +1,35 @@
+"vc-description": "A game on an undirected graph is played by two players, Mouse and\
+  \ Cat, who alternate turns.\nThe graph is given as follows: graph[a] is a list of\
+  \ all nodes b such that ab is an edge of the graph.\nMouse starts at node 1 and\
+  \ goes first, Cat starts at node 2 and goes second, and there is a Hole at node\
+  \ 0.\nDuring each player's turn, they must travel along one edge of the graph that\
+  \ meets where they are.  For example, if the Mouse is at node 1, it must travel\
+  \ to any node in graph[1].\nAdditionally, it is not allowed for the Cat to travel\
+  \ to the Hole (node 0.)\nThen, the game can end in 3 ways:\n\nIf ever the Cat occupies\
+  \ the same node as the Mouse, the Cat wins.\nIf ever the Mouse reaches the Hole,\
+  \ the Mouse wins.\nIf ever a position is repeated (ie. the players are in the same\
+  \ position as a previous turn, and it is the same player's turn to move), the game\
+  \ is a draw.\n\nGiven a graph, and assuming both players play optimally, return\
+  \ 1 if the game is won by Mouse, 2 if the game is won by Cat, and 0 if the game\
+  \ is a draw.\n \n\n\n\nExample 1:\nInput: [[2,5],[3],[0,4,5],[1,4,5],[2,3],[0,2,3]]\n\
+  Output: 0\nExplanation:\n4---3---1\n|   |\n2---5\n \\ /\n  0\n\n \nNote:\n\n3 <=\
+  \ graph.length <= 50\nIt is guaranteed that graph[1] is non-empty.\nIt is guaranteed\
+  \ that graph[2] contains a non-zero element."
+"vc-preamble": "import Imports.AllImports\n\ndef CatMouseGame (graph : List (List\
+  \ Nat)) : Nat := sorry\n\n/-- For a valid graph input, the output is either 0, 1\
+  \ or 2 -/"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def IsValidGraph (graph : List (List Nat)) : Prop :=\n  graph ≠\
+  \ [] ∧ \n  ∀ neighbors ∈ graph, ∀ x ∈ neighbors, x < graph.length\n\n/-- The cat-mouse\
+  \ game output range theorem only applies to valid graphs -/"
+"vc-theorems": "theorem cat_mouse_game_output_range (graph : List (List Nat)) :\n\
+  \  CatMouseGame graph = 0 ∨ CatMouseGame graph = 1 ∨ CatMouseGame graph = 2 := sorry\n\
+  \n/-- A graph is valid if:\n1. It is non-empty\n2. Each node's neighbors are valid\
+  \ indices into the graph -/\n\ntheorem cat_mouse_game_output_range_valid (graph\
+  \ : List (List Nat)) :\n  IsValidGraph graph →\n  CatMouseGame graph = 0 ∨ CatMouseGame\
+  \ graph = 1 ∨ CatMouseGame graph = 2 := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
+  #eval cat_mouse_game [[2, 5], [3], [0, 4, 5], [1, 4, 5], [2, 3], [0, 2, 3]]\n\n\
+  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval cat_mouse_game [[2, 5], [3], [0, 4, 5],\
+  \ [1, 4, 5], [2, 3], [0, 2, 3], [], []]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval\
+  \ cat_mouse_game [[1, 3], [0], [3], [0, 2]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

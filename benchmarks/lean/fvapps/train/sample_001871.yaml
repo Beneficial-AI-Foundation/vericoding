@@ -1,0 +1,42 @@
+"vc-description": "In a project, you have a list of required skills req_skills, and\
+  \ a list of people.  The i-th person people[i] contains a list of skills that person\
+  \ has.\nConsider a sufficient team: a set of people such that for every required\
+  \ skill in req_skills, there is at least one person in the team who has that skill. \
+  \ We can represent these teams by the index of each person: for example, team =\
+  \ [0, 1, 3] represents the people with skills people[0], people[1], and people[3].\n\
+  Return any sufficient team of the smallest possible size, represented by the index\
+  \ of each person.\nYou may return the answer in any order.  It is guaranteed an\
+  \ answer exists.\n \nExample 1:\nInput: req_skills = [\"java\",\"nodejs\",\"reactjs\"\
+  ], people = [[\"java\"],[\"nodejs\"],[\"nodejs\",\"reactjs\"]]\nOutput: [0,2]\n\
+  Example 2:\nInput: req_skills = [\"algorithms\",\"math\",\"java\",\"reactjs\",\"\
+  csharp\",\"aws\"], people = [[\"algorithms\",\"math\",\"java\"],[\"algorithms\"\
+  ,\"math\",\"reactjs\"],[\"java\",\"csharp\",\"aws\"],[\"reactjs\",\"csharp\"],[\"\
+  csharp\",\"math\"],[\"aws\",\"java\"]]\nOutput: [1,2]\n\n \nConstraints:\n\n1 <=\
+  \ req_skills.length <= 16\n1 <= people.length <= 60\n1 <= people[i].length, req_skills[i].length,\
+  \ people[i][j].length <= 16\nElements of req_skills and people[i] are (respectively)\
+  \ distinct.\nreq_skills[i][j], people[i][j][k] are lowercase English letters.\n\
+  Every skill in people[i] is a skill in req_skills.\nIt is guaranteed a sufficient\
+  \ team exists."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_smallest_team (required_skills : List String) (people\
+  \ : List Person) : List Nat :=\n  sorry\n"
+"vc-theorems": "theorem find_smallest_team_result_valid\n  (required_skills : List\
+  \ String)\n  (people : List Person) \n  (h1 : required_skills ≠ [])\n  (h2 : people\
+  \ ≠ []) :\n  let result := find_smallest_team required_skills people\n  -- Result\
+  \ indices are valid\n  ∀ i ∈ result, i < people.length := sorry\n\n\ntheorem find_smallest_team_covers_skills\n\
+  \  (required_skills : List String)\n  (people : List Person)\n  (h1 : required_skills\
+  \ ≠ [])\n  (h2 : people ≠ []) :\n  let result := find_smallest_team required_skills\
+  \ people\n  let covered_skills := (result.filterMap (λ i => if h : i < people.length\
+  \ then some (people[i]'h).skills else none)).join\n  ∀ skill ∈ required_skills,\
+  \ skill ∈ covered_skills := sorry\n\n\ntheorem find_smallest_team_singleton\n  (required_skills\
+  \ : List String)\n  (people : List Person)\n  (h : ∃ p ∈ people, ∀ s ∈ required_skills,\
+  \ s ∈ p.skills) :\n  let result := find_smallest_team required_skills people\n \
+  \ result.length = 1 := sorry\n\n\ntheorem find_smallest_team_disjoint_skills\n \
+  \ (skills : List String)\n  (people : List Person)\n  (h1 : skills.length = people.length)\n\
+  \  (h2 : ∀ (i : Fin people.length), (people[i]).skills = [skills[i]]) :\n  let result\
+  \ := find_smallest_team skills people\n  result.length = skills.length := sorry\n\
+  \n/--\ninfo: [0, 2]\n-/\n#guard_msgs in\n#eval sorted find_smallest_team(req_skills1,\
+  \ people1)\n\n/--\ninfo: [1, 2]\n-/\n#guard_msgs in\n#eval sorted find_smallest_team(req_skills2,\
+  \ people2)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

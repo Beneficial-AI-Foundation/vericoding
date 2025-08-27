@@ -1,0 +1,28 @@
+"vc-description": "Given a char array representing tasks CPU need to do. It contains\
+  \ capital letters A to Z where different letters represent different tasks.Tasks\
+  \ could be done without original order. Each task could be done in one interval.\
+  \ For each interval, CPU could finish one task or just be idle.\n\nHowever, there\
+  \ is a non-negative cooling interval n that means between two same tasks, there\
+  \ must be at least n intervals that CPU are doing different tasks or just be idle.\
+  \ \n\nYou need to return the least number of intervals the CPU will take to finish\
+  \ all the given tasks.\n\nExample 1:\n\nInput: tasks = [\"A\",\"A\",\"A\",\"B\"\
+  ,\"B\",\"B\"], n = 2\nOutput: 8\nExplanation: A -> B -> idle -> A -> B -> idle ->\
+  \ A -> B.\n\n\n\nNote:\n\nThe number of tasks is in the range [1, 10000].\nThe integer\
+  \ n is in the range [0, 100]."
+"vc-preamble": "import Imports.AllImports\n\ndef least_interval (tasks : List Char)\
+  \ (n : Nat) : Nat :=\n  sorry\n\n\ndef countFrequencies (tasks : List Char) : List\
+  \ Nat :=\n  sorry \n\n\ndef maxFrequency (tasks : List Char) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def maxFrequencyCount (tasks : List Char) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem least_interval_zero_cooldown (tasks : List Char) (h : tasks\
+  \ ≠ []) :\n  least_interval tasks 0 = tasks.length :=\nsorry\n\n\ntheorem least_interval_basic_properties\
+  \ (tasks : List Char) (n : Nat) (h : tasks ≠ []) :\n  let result := least_interval\
+  \ tasks n\n  let max_freq := maxFrequency tasks\n  let max_freq_count := maxFrequencyCount\
+  \ tasks\n  let min_possible := (max_freq - 1) * (n + 1) + max_freq_count\n  result\
+  \ ≥ tasks.length ∧ result ≥ min_possible :=\nsorry\n\n\ntheorem least_interval_upper_bound\
+  \ (tasks : List Char) (n : Nat) (h : tasks ≠ []) :\n  least_interval tasks n ≤ tasks.length\
+  \ * (n + 1) :=\nsorry\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval least_interval\
+  \ [\"A\", \"A\", \"A\", \"B\", \"B\", \"B\"] 2\n\n/--\ninfo: 5\n-/\n#guard_msgs\
+  \ in\n#eval least_interval [\"A\", \"A\", \"A\"] 1\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval least_interval [\"A\", \"B\", \"C\", \"D\"] 0\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,40 @@
+"vc-description": ">When no more interesting kata can be resolved, I just choose to\
+  \ create the new kata, to solve their own, to enjoy the process  --myjinxin2015\
+  \ said\n\n# Description:\n In kindergarten, the teacher gave the children some candies.\
+  \ The number of candies each child gets is not always the same. Here is an array\
+  \ `candies`(all elements are positive integer). It's the number of candy for each\
+  \ child:\n ```\n candies = [10,2,8,22,16,4,10,6,14,20]\n ```\n The teacher asked\
+  \ the children to form a circle and play a game: Each child gives half of his candies\
+  \ to the child on his right(at the same time). If the number of children's candy\
+  \ is an odd number, the teacher will give him an extra candy, so that he can evenly\
+  \ distribute his candy. \n \n Repeat such distribute process, until all the children's\
+  \ candies are equal in number.\n \n You should return two numbers: 1.How many times\
+  \ of distribution; 2. After the game, the number of each child's candy. Returns\
+  \ the result using an array that contains two elements.\n \n  \n# Some examples:\n\
+  \n```\n      candies = [ 1,2,3,4,5 ]\nDistribution 1: [ 4,2,3,4,5 ]\nDistribution\
+  \ 2: [ 5,3,3,4,5 ]\nDistribution 3: [ 6,5,4,4,5 ]\nDistribution 4: [ 6,6,5,4,5 ]\n\
+  Distribution 5: [ 6,6,6,5,5 ]\nDistribution 6: [ 6,6,6,6,6 ]\nSo, we need return:\
+  \ [6,6]\n\ndistributionOfCandy([1,2,3,4,5]) === [6,6]\n\n       candies = [ 10,\
+  \  2,  8, 22, 16,  4, 10,  6, 14, 20 ]\ndistribution  1: [ 15,  6,  5, 15, 19, 10,\
+  \  7,  8, 10, 17 ]\ndistribution  2: [ 17, 11,  6, 11, 18, 15,  9,  8,  9, 14 ]\n\
+  distribution  3: [ 16, 15,  9,  9, 15, 17, 13,  9,  9, 12 ]\ndistribution  4: [\
+  \ 14, 16, 13, 10, 13, 17, 16, 12, 10, 11 ]\ndistribution  5: [ 13, 15, 15, 12, 12,\
+  \ 16, 17, 14, 11, 11 ]\ndistribution  6: [ 13, 15, 16, 14, 12, 14, 17, 16, 13, 12\
+  \ ]\ndistribution  7: [ 13, 15, 16, 15, 13, 13, 16, 17, 15, 13 ]\ndistribution \
+  \ 8: [ 14, 15, 16, 16, 15, 14, 15, 17, 17, 15 ]\ndistribution  9: [ 15, 15, 16,\
+  \ 16, 16, 15, 15, 17, 18, 17 ]\ndistribution 10: [ 17, 16, 16, 16, 16, 16, 16, 17,\
+  \ 18, 18 ]\ndistribution 11: [ 18, 17, 16, 16, 16, 16, 16, 17, 18, 18 ]\ndistribution\
+  \ 12: [ 18, 18, 17, 16, 16, 16, 16, 17, 18, 18 ]\ndistribution 13: [ 18, 18, 18,\
+  \ 17, 16, 16, 16, 17, 18, 18 ]\ndistribution 14: [ 18, 18, 18, 18, 17, 16, 16, 17,\
+  \ 18, 18 ]\ndistribution 15: [ 18, 18, 18, 18, 18, 17, 16, 17, 18, 18 ]\ndistribution\
+  \ 16: [ 18, 18, 18, 18, 18, 18, 17, 17, 18, 18 ]\ndistribution 17: [ 18, 18, 18,\
+  \ 18, 18, 18, 18, 18, 18, 18 ]\nSo, we need return: [17,18]\n\ndistributionOfCandy([10,2,8,22,16,4,10,6,14,20])\
+  \ === [17,18]\n\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def distribution_of_candy (candies: List Nat) : Nat × Nat :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem distribution_result_type_ranges\n  (candies: List Nat) \n\
+  \  (h: candies.length > 0) :\n  let result := distribution_of_candy candies\n  --\
+  \ Result components are natural numbers\n  result.1 ≥ 0 ∧ result.2 ≥ 0 :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

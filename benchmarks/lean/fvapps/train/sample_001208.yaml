@@ -1,0 +1,75 @@
+"vc-description": "Chef likes to travel very much. He plans some travel routes and\
+  \ wants to know their lengths. He hired you to make these calculations. But be careful,\
+  \ some of the routes are incorrect. There may be some misspelling in city names\
+  \ or there will be no road between some two consecutive cities in the route. Also\
+  \ note that Chef hates to visit the same city twice during his travel. Even the\
+  \ last city should differ from the first. Two consecutive cities in the route should\
+  \ also be different. So you need to check these conditions for the given routes\
+  \ too.\n\nYou will be given the list of all cities and all roads between them with\
+  \ their lengths. All roads are one-way. Also you will be given the list of all travel\
+  \ routes that Chef plans. For each route you should check whether it is correct\
+  \ and find its length in this case.\n\n-----Input-----\n\nThe first line contains\
+  \ positive integer N, the number of cities. The second line contains space separated\
+  \ list of N strings, city names. All city names are distinct.\n\nThe third line\
+  \ contains non-negative integer M, the number of available roads. Each of the next\
+  \ M lines describes one road and contains names C1 and C2 of two cities followed\
+  \ by the positive integer D, the length of the one-way road that connects C1 with\
+  \ C2. It is guaranteed that C1 and C2 will be correct names of two different cities\
+  \ from the list of N cities given in the second line of the input file. For each\
+  \ pair of different cities there is at most one road in each direction and each\
+  \ road will be described exactly once in the input file.\n\nNext line contains positive\
+  \ integer T, the number of travel routes planned by the Chef. Each of the next T\
+  \ lines contains positive integer K followed by K strings, names of cities of the\
+  \ current route. Cities are given in order in which Chef will visit them during\
+  \ his travel.\n\nAll strings in the input file composed only of lowercase, uppercase\
+  \ letters of the English alphabet and hyphens. Each string is non-empty and has\
+  \ length at most 20. If some line of the input file contains more then one element\
+  \ than consecutive elements of this line are separated by exactly one space. Each\
+  \ line of the input file has no leading or trailing spaces.\n\n-----Output-----\n\
+  For each travel route from the input file output a single line containing word ERROR\
+  \ if the route is incorrect and its length otherwise.\n\n-----Constraints-----\n\
+  \n1 <= N <= 50\n\n0 <= M <= N * (N - 1)\n\n1 <= D <= 20000\n\n1 <= T <= 50\n\n1\
+  \ <= K <= 50\n\n1 <= length of each string <= 20\n\n-----Example-----\nInput:\n\
+  5\nDonetsk Kiev New-York Miami Hollywood\n9\nDonetsk Kiev 560\nKiev New-York 7507\n\
+  New-York Miami 1764\nMiami Hollywood 28\nHollywood Miami 30\nMiami New-York 1764\n\
+  Kiev Donetsk 550\nHollywood New-York 1736\nNew-York Hollywood 1738\n13\n5 Donetsk\
+  \ Kiev New-York Miami Hollywood\n5 Hollywood Miami New-York Kiev Donetsk\n3 Donetsk\
+  \ Kiev Donetsk\n2 Kyiv New-York\n3 New-York Hollywood Miami\n2 New-York Miami\n\
+  3 Hollywood New-York Miami\n4 Donetsk Kiev Miami Hollywood\n2 Donetsk Hollywood\n\
+  1 Donetsk\n2 Mumbai Deli\n6 Donetsk Kiev New-York Miami Hollywood New-York\n2 Miami\
+  \ Miami\n\nOutput:\n9859\nERROR\nERROR\nERROR\n1768\n1764\n3500\nERROR\nERROR\n\
+  0\nERROR\nERROR\nERROR\n\n-----Explanation-----\nThe 2nd route is incorrect since\
+  \ there is no road from New-York to Kiev. Note however that inverse road from Kiev\
+  \ to New-York exists. \n\nThe 3rd route is incorrect since the first city coincides\
+  \ with the last one. \n\nThe 4th route is incorrect since there is no city with\
+  \ name Kyiv (Probably Chef means Kiev but he misspells this word). \n\nThe 8th route\
+  \ is incorrect since there is no road from Miami to Kiev. \n\nThe 9th route is incorrect\
+  \ since there is no road from Donetsk to  Hollywood. \n\nThe 10th route is correct.\
+  \ Note that a route composed of exactly one city is always correct provided that\
+  \ city name is written correctly. \n\nThe 11th route is incorrect since there is\
+  \ no cities with names Mumbai and Deli. (Probably Chef is not so good in geography\
+  \ :)) \n\nThe 12th route is incorrect since city New-York is visited twice. \n\n\
+  Finally the 13th route is incorrect since we have equal consecutive cities."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_travel_routes (cities : List String) (roads : List (String\
+  \ × String × Int)) \n  (routes : List (List String)) : List Answer := sorry\n"
+"vc-theorems": "theorem empty_roads_case {cities : List String} \n  (h1 : cities =\
+  \ [\"A\", \"B\"]) : \n  solve_travel_routes cities [] [[\"A\", \"B\"]] = [Answer.error]\
+  \ := sorry\n\n\ntheorem single_city_case {cities : List String}\n  (h1 : cities\
+  \ = [\"A\", \"B\"]) :\n  solve_travel_routes cities [] [[\"A\"]] = [Answer.value\
+  \ 0] := sorry\n\n\ntheorem non_existent_city {cities : List String}\n  (h1 : cities\
+  \ = [\"A\", \"B\"]) :\n  solve_travel_routes cities [] [[\"C\"]] = [Answer.error]\
+  \ := sorry\n\n\ntheorem valid_simple_route {cities : List String} {roads : List\
+  \ (String × String × Int)}\n  (h1 : cities = [\"A\", \"B\", \"C\"])\n  (h2 : roads\
+  \ = [(\"A\", \"B\", 5), (\"B\", \"C\", 3)]) :\n  solve_travel_routes cities roads\
+  \ [[\"A\", \"B\", \"C\"]] = [Answer.value 8] := sorry\n\n\ntheorem duplicate_cities_route\
+  \ {cities : List String} {roads : List (String × String × Int)}\n  (h1 : cities\
+  \ = [\"A\", \"B\", \"C\"]) \n  (h2 : roads = [(\"A\", \"B\", 5), (\"B\", \"C\",\
+  \ 3)]) :\n  solve_travel_routes cities roads [[\"A\", \"B\", \"B\"]] = [Answer.error]\
+  \ := sorry\n\n\ntheorem multiple_routes {cities : List String} {roads : List (String\
+  \ × String × Int)}\n  (h1 : cities = [\"A\", \"B\", \"C\"])\n  (h2 : roads = [(\"\
+  A\", \"B\", 1), (\"B\", \"C\", 2), (\"A\", \"C\", 5)]) :\n  solve_travel_routes\
+  \ cities roads [[\"A\", \"B\"], [\"B\", \"C\"], [\"A\", \"C\"]] = \n    [Answer.value\
+  \ 1, Answer.value 2, Answer.value 5] := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

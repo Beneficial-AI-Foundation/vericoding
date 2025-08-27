@@ -1,0 +1,26 @@
+"vc-description": "Your users passwords were all stole in the Yahoo! hack, and it\
+  \ turns out they have been lax in creating secure passwords.  Create a function\
+  \ that checks their new password (passed as a string) to make sure it meets the\
+  \ following requirements:\n\n\nBetween 8 - 20 characters\n\nContains only the following\
+  \ characters: (and at least one character from each category): uppercase letters,\
+  \ lowercase letters, digits, and the special characters !@#$%^&*?\n\n\n\n\nReturn\
+  \ \"valid\" if passed or else \"not valid\""
+"vc-preamble": "import Imports.AllImports\n\ndef check_password (s : String) : String\
+  \ :=\n  sorry\n\n\ndef is_special_char (c : Char) : Bool :=\n  sorry\n\n\ndef has_lowercase\
+  \ (s : String) : Bool :=\n  sorry \n\n\ndef has_uppercase (s : String) : Bool :=\n\
+  \  sorry\n\n\ndef has_digit (s : String) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def has_special (s : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem password_too_short {s : String} (h : s.length < 8) : \n  check_password\
+  \ s = \"not valid\" :=\nsorry\n\n\ntheorem password_too_long {s : String} (h : s.length\
+  \ > 20) :\n  check_password s = \"not valid\" :=\nsorry\n\n\ntheorem password_invalid_chars\
+  \ {s : String} (h : ∃ c ∈ s.data, \n  ¬(c.isLower ∨ c.isUpper ∨ c.isDigit ∨ is_special_char\
+  \ c)) :\n  check_password s = \"not valid\" :=\nsorry\n\n\ntheorem password_missing_required_chars\
+  \ {s : String}\n  (h1 : s.length ≥ 8)\n  (h2 : s.length ≤ 20)\n  (h3 : ∀ c ∈ s.data,\
+  \ (c.isLower ∨ c.isUpper ∨ c.isDigit ∨ is_special_char c))\n  (h4 : ¬(has_lowercase\
+  \ s ∧ has_uppercase s ∧ has_digit s ∧ has_special s)) :\n  check_password s = \"\
+  not valid\" :=\nsorry\n\n/--\ninfo: 'not valid'\n-/\n#guard_msgs in\n#eval check_password\
+  \ \"\"\n\n/--\ninfo: 'not valid'\n-/\n#guard_msgs in\n#eval check_password \"Password123\"\
+  \n\n/--\ninfo: 'valid'\n-/\n#guard_msgs in\n#eval check_password \"P@ssw0rd123\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,23 @@
+"vc-description": "In an array A of 0s and 1s, how many non-empty subarrays have sum\
+  \ S?\n \nExample 1:\nInput: A = [1,0,1,0,1], S = 2\nOutput: 4\nExplanation: \nThe\
+  \ 4 subarrays are bolded below:\n[1,0,1,0,1]\n[1,0,1,0,1]\n[1,0,1,0,1]\n[1,0,1,0,1]\n\
+  \n \nNote:\n\nA.length <= 30000\n0 <= S <= A.length\nA[i] is either 0 or 1."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def num_subarrays_with_sum (nums : List Nat) (target : Nat) : Nat\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem binary_array_properties_nonneg {nums : List Nat} (h : ∀ x\
+  \ ∈ nums, x ≤ 1) :\n  num_subarrays_with_sum nums 0 ≥ 0 :=\n  sorry\n\n\ntheorem\
+  \ binary_array_properties_beyond_sum {nums : List Nat} (h : ∀ x ∈ nums, x ≤ 1) :\n\
+  \  num_subarrays_with_sum nums ((List.sum nums) + 1) = 0 :=\n  sorry\n\n\ntheorem\
+  \ binary_array_properties_total {nums : List Nat} (h : ∀ x ∈ nums, x ≤ 1) (total\
+  \ : Nat)\n  (h_total : total = List.sum nums) (h_pos : total > 0) :\n  num_subarrays_with_sum\
+  \ nums total ≥ 1 :=\n  sorry\n\n\ntheorem consecutive_zeros {nums : List Nat} (h\
+  \ : nums ≠ []) (h_zeros : ∀ x ∈ nums, x = 0) :\n  num_subarrays_with_sum nums 0\
+  \ = (nums.length * (nums.length + 1)) / 2 :=\n  sorry\n\n\ntheorem single_element_subarrays\
+  \ {nums : List Nat} (h : nums ≠ []) (h_bin : ∀ x ∈ nums, x ≤ 1)\n  (ones_count :\
+  \ Nat) (h_ones : ones_count = List.sum nums) (h_pos : ones_count > 0) :\n  num_subarrays_with_sum\
+  \ nums 1 ≥ ones_count :=\n  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval num_subarrays_with_sum\
+  \ [1, 0, 1, 0, 1] 2\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval num_subarrays_with_sum\
+  \ [0, 0, 0, 0, 0] 0\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

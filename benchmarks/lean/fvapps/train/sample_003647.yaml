@@ -1,0 +1,19 @@
+"vc-description": "Given a hash of letters and the number of times they occur, recreate\
+  \ all of the possible anagram combinations that could be created using all of the\
+  \ letters, sorted alphabetically.\n\nThe inputs will never include numbers, spaces\
+  \ or any special characters, only lowercase letters a-z.\n\nE.g. get_words({2=>[\"\
+  a\"], 1=>[\"b\", \"c\"]}) => [\"aabc\", \"aacb\", \"abac\", \"abca\", \"acab\",\
+  \ \"acba\", \"baac\", \"baca\", \"bcaa\", \"caab\", \"caba\", \"cbaa\"]"
+"vc-preamble": "import Imports.AllImports\n\ndef HashMap (α β : Type) := List (α ×\
+  \ β)\n\nvariable (input: HashMap String (List Char))\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_words (input: HashMap String (List Char)) : List String\
+  \ := sorry\n\ndef IsSorted (l: List String) : Prop :=\n  ∀ i j, i < j → j < l.length\
+  \ → (l.get ⟨i, by sorry⟩) ≤ (l.get ⟨j, by sorry⟩)\n\n-- Words returned are sorted"
+"vc-theorems": "theorem words_are_sorted : IsSorted (get_words input) := sorry\n\n\
+  -- All words have the same length\n\ntheorem words_same_length\n  (w1 w2: String)\n\
+  \  (hw1: w1 ∈ get_words input)\n  (hw2: w2 ∈ get_words input)\n  : w1.length = w2.length\
+  \ := sorry\n\n-- All words are permutations of each other\n\ntheorem words_are_permutations\n\
+  \  (w1 w2: String)\n  (hw1: w1 ∈ get_words input)\n  (hw2: w2 ∈ get_words input)\n\
+  \  : ∃ (perm: List Char), w2.data = perm ∧ perm.length = w1.data.length := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

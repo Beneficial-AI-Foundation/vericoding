@@ -1,0 +1,56 @@
+"vc-description": "People in Karunanagar are infected with Coronavirus. To understand\
+  \ the spread of disease and help contain it as early as possible, Chef wants to\
+  \ analyze the situation in the town. Therefore, he does the following:\n- Chef represents\
+  \ the population of Karunanagar as a binary string of length $N$ standing in a line\
+  \ numbered from $1$ to $N$ from left to right, where an infected person is represented\
+  \ as $1$ and an uninfected person as $0$.\n- Every day, an infected person in this\
+  \ binary string can infect an adjacent (the immediate left and right) uninfected\
+  \ person.\n- Therefore, if before Day 1, the population is $00100$, then at the\
+  \ end of Day 1, it becomes $01110$ and at the end of Day 2, it becomes $11111$.\n\
+  But people of Karunanagar are smart and they know that if they 'socially isolate'\
+  \ themselves as early as possible, they reduce the chances of the virus spreading.\
+  \ Therefore on $i$-th day, person numbered $P_i$ isolates himself from person numbered\
+  \ $P_i - 1$, thus cannot affect each other. This continues in the town for $D$ days.\n\
+  Given the population binary string before Day 1, Chef wants to calculate the total\
+  \ number of infected people in Karunanagar at the end of the day $D$. Since Chef\
+  \ has gone to wash his hands now, can you help do the calculation for him?\n\n-----Input:-----\n\
+  - First line will contain $T$, number of testcases. Then the test cases follow.\
+  \ \n- The first line of each test case contains a single integer $N$ denoting the\
+  \ length of the binary string.\n- The next line contains a binary string of length\
+  \ $N$ denoting the population before the first day, with $1$ for an infected person\
+  \ and $0$ for uninfected.\n- The next line contains a single integer $D$ - the number\
+  \ of days people isolate themselves.\n- The next line contains $P$ - a list of $D$\
+  \ distinct space-separated integers where each $P_{i}$ denotes that at the start\
+  \ of $i^{th}$ day, person $P_{i}$ isolated him/herself from the person numbered\
+  \ $P_i-1$.\n\n-----Output:-----\nFor each test case, print a single integer denoting\
+  \ the total number of people who are infected after the end of $D^{th}$ day.\n\n\
+  -----Constraints-----\n- $1 \\leq T \\leq 200$\n- $2 \\leq N \\leq 10^{4}$\n- $1\
+  \ \\leq D < N$\n- $2 \\leq P_{i} \\leq N$ for $1 \\le i \\le D$\n\n-----Subtasks-----\n\
+  Subtask #1(30 points): $1 \\leq T \\leq 100$, $2 \\leq N \\leq 2000$\nSubtask #2(70\
+  \ points): Original Constraints\n\n-----Sample Input:-----\n2\n9\n000010000\n3\n\
+  2 5 8\n5\n00001\n1\n5\n\n-----Sample Output:-----\n6\n1\n\n-----EXPLANATION:-----\n\
+  For the purpose of this explanation, a social distance can be denoted with a '$|$'.\n\
+  For the first testcase:\n- \nBefore Day $1$, the population is: $0|00010000$\n-\
+  \ \nBefore Day $2$, the population is: $0|001|11000$\n- \nBefore Day $3$, the population\
+  \ is: $0|011|111|00$\n- \nTherefore, after Day $3$, the population will be: $0|111|111|00$\n\
+  So, there are $6$ infected persons.\nFor the second testcase:\nBefore Day $1$, the\
+  \ population is: $0000|1$\nTherefore, there is one infected person."
+"vc-preamble": "import Imports.AllImports\n\ndef solve_virus_spread (N : Nat) (init_pop\
+  \ : String) (D : Nat) (isolations : List Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countOnes (s : String) : Nat :=\n  s.data.filter (· = '1')\
+  \ |>.length\n"
+"vc-theorems": "theorem solve_virus_spread_type (N : Nat) (init_pop : String) (D :\
+  \ Nat) (isolations : List Nat) :\n  Nat.le 0 (solve_virus_spread N init_pop D isolations)\
+  \ ∧ \n  Nat.le (solve_virus_spread N init_pop D isolations) N :=\nsorry\n\n\ntheorem\
+  \ solve_virus_spread_no_infected (N : Nat) (init_pop : String) (D : Nat) (isolations\
+  \ : List Nat) :\n  (∀ c, c ∈ init_pop.data → c ≠ '1') → \n  solve_virus_spread N\
+  \ init_pop D isolations = 0 :=\nsorry\n\n\ntheorem solve_virus_spread_no_isolation\
+  \ (N : Nat) (init_pop : String) (D : Nat) (isolations : List Nat) :\n  D = 0 →\n\
+  \  solve_virus_spread N init_pop D isolations = countOnes init_pop :=\nsorry\n\n\
+  \ntheorem solve_virus_spread_monotonic (N : Nat) (init_pop : String) (D : Nat) (isolations\
+  \ : List Nat) :\n  Nat.le (countOnes init_pop) (solve_virus_spread N init_pop D\
+  \ isolations) :=\nsorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval solve_virus_spread\
+  \ 9 \"000010000\" 3 [2, 5, 8]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_virus_spread\
+  \ 5 \"00001\" 1 [5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,27 @@
+"vc-description": "We say that a binary string (a string containing only characters\
+  \ '0' and '1') is pure if it does not contain either of the strings \"0101\" or\
+  \ \"1010\" as a subsequence.\nRecall that string T is a subsequence of string S\
+  \ if we can delete some of the letters of S (possibly none) such that the resulting\
+  \ string will become T.\nYou are given a binary string $S$ with length $N$. We want\
+  \ to make this string pure by deleting some (possibly zero) characters from it.\
+  \ What is the minimum number of characters we have to delete?\n\n-----Input-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first and only\
+  \ line of each test case contains a single string $S$ with length $N$.\n\n-----Output-----\n\
+  For each test case, print a single line containing one integer — the minimum number\
+  \ of characters we have to delete from $S$.\n\n-----Constraints-----\n- $1 \\le\
+  \ T \\le 40$\n- $1 \\le N \\le 1,000$\n- $S$ contains only characters '0' and '1'\n\
+  \n-----Example Input-----\n4\n010111101\n1011100001011101\n0110\n111111\n\n-----Example\
+  \ Output-----\n2\n3\n0\n0\n\n-----Explanation-----\nExample case 1: We can delete\
+  \ the first and third character of our string. There is no way to make the string\
+  \ pure by deleting only one character.\nExample case 3: The given string is already\
+  \ pure, so the answer is zero."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_deletes_for_pure_string (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem result_is_non_negative (s : String) : \n  s.length > 0 → min_deletes_for_pure_string\
+  \ s ≥ 0 :=\n  sorry\n\n\ntheorem result_less_than_input_length (s : String) :\n\
+  \  s.length > 0 → min_deletes_for_pure_string s ≤ s.length :=\n  sorry\n\n\ntheorem\
+  \ single_digit_requires_no_deletions (s : String) :\n  s.length = 1 → min_deletes_for_pure_string\
+  \ s = 0 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

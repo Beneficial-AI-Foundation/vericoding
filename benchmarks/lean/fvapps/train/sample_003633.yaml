@@ -1,0 +1,27 @@
+"vc-description": "Below is a right-angled triangle:\n\n```\n  |\\\n  | \\\n  |  \\\
+  \n  |   \\ \no |    \\ h \n  |     \\\n  |    θ \\\n  |_______\\ \n     a\n```\n\
+  \nYour challange is to write a function (```missingAngle``` in C/C#, ```missing_angle```\
+  \ in Ruby), that calculates the angle θ in degrees to the nearest integer. You will\
+  \ be given three arguments representing each side: o, h and a. One of the arguments\
+  \ equals zero. Use the length of the two other sides to calculate θ. You will not\
+  \ be expected to handle any erronous data in your solution."
+"vc-preamble": "import Imports.AllImports\n\ndef Float.toDegrees (x : Float) : Float\
+  \ :=\n  sorry\n\n\ndef Int.toFloat (x : Int) : Float :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def missing_angle (h a o : Float) : Int :=\n  sorry\n"
+"vc-theorems": "theorem missing_angle_output_range (h a o : Float) :\n  h > 0 ∨ a\
+  \ > 0 ∨ o > 0 →\n  let angle := missing_angle h a o\n  0 ≤ angle ∧ angle ≤ 90 :=\n\
+  sorry\n\n\ntheorem missing_angle_with_missing_hyp (a o : Float) :\n  a > 0 ∧ o >\
+  \ 0 →\n  let angle := missing_angle 0 a o\n  (Int.toFloat angle - Float.toDegrees\
+  \ ((o/a).atan)).abs ≤ 1 :=\nsorry\n\n\ntheorem missing_angle_with_missing_adj (h\
+  \ o : Float) :\n  h > 0 ∧ o > 0 →\n  let angle := missing_angle h 0 o  \n  (Int.toFloat\
+  \ angle - Float.toDegrees ((o/h).asin)).abs ≤ 1 :=\nsorry\n\n\ntheorem missing_angle_with_missing_opp\
+  \ (h a : Float) :\n  h > 0 ∧ a > 0 →\n  let angle := missing_angle h a 0\n  (Int.toFloat\
+  \ angle - Float.toDegrees ((a/h).acos)).abs ≤ 1 :=\nsorry\n\n\ntheorem missing_angle_two_zeros\
+  \ (o : Float) :\n  o > 0 →\n  ¬∃angle, missing_angle 0 0 o = angle :=\nsorry\n\n\
+  \ntheorem missing_angle_invalid_triangle (h a : Float) :\n  h > 0 ∧ a > 0 →\n  a\
+  \ > h →\n  ¬∃angle, missing_angle h a 0 = angle :=\nsorry\n\n/--\ninfo: 37\n-/\n\
+  #guard_msgs in\n#eval missing_angle 0 400 300\n\n/--\ninfo: 37\n-/\n#guard_msgs\
+  \ in\n#eval missing_angle 5 4 0\n\n/--\ninfo: 39\n-/\n#guard_msgs in\n#eval missing_angle\
+  \ 8 0 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,26 @@
+"vc-description": "Given a binary search tree, write a function kthSmallest to find\
+  \ the kth smallest element in it.\n\nNote: \nYou may assume k is always valid, 1\
+  \ ≤ k ≤ BST's total elements.\n\nExample 1:\n\n\nInput: root = [3,1,4,null,2], k\
+  \ = 1\n   3\n  / \\\n 1   4\n  \\\n   2\nOutput: 1\n\nExample 2:\n\n\nInput: root\
+  \ = [5,3,6,2,4,null,null,1], k = 3\n       5\n      / \\\n     3   6\n    / \\\n\
+  \   2   4\n  /\n 1\nOutput: 3\n\n\nFollow up:\nWhat if the BST is modified (insert/delete\
+  \ operations) often and you need to find the kth smallest frequently? How would\
+  \ you optimize the kthSmallest routine?"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def kthSmallest (root : TreeNode) (k : Nat) : Int := sorry\n\n\
+  def getSortedValues (root : TreeNode) : List Int := sorry\n\n-- Main theorem for\
+  \ kth smallest element matching sorted list"
+"vc-theorems": "theorem kth_smallest_matches_sorted\n  {root : TreeNode} {vals : List\
+  \ Int} {k : Nat}\n  (h1 : k > 0)\n  (h2 : k ≤ vals.length)\n  (h3 : vals = getSortedValues\
+  \ root) :\n  kthSmallest root k = vals[k-1] := sorry\n\n-- Theorem for sorted property\
+  \ of values\n\ntheorem sorted_values_ordered\n  {root : TreeNode} {vals : List Int}\n\
+  \  (h : vals = getSortedValues root)\n  {i : Nat} (hi : i < vals.length - 1) :\n\
+  \  vals[i] ≤ vals[i+1] := sorry\n\n-- Edge case theorems\n\ntheorem single_node_kth_smallest\n\
+  \  {n : Int} (root : TreeNode)\n  (h1 : root = TreeNode.mk n none none) :\n  kthSmallest\
+  \ root 1 = n := sorry\n\n\ntheorem linear_left_tree_first_element\n  (root : TreeNode)\n\
+  \  (h1 : root = TreeNode.mk 3 (some (TreeNode.mk 2 (some (TreeNode.mk 1 none none))\
+  \ none)) none) :\n  kthSmallest root 1 = 1 := sorry\n\n\ntheorem linear_right_tree_last_element\n\
+  \  (root : TreeNode)\n  (h1 : root = TreeNode.mk 1 none (some (TreeNode.mk 2 none\
+  \ (some (TreeNode.mk 3 none none))))) :\n  kthSmallest root 3 = 3 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

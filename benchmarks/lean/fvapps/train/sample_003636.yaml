@@ -1,0 +1,29 @@
+"vc-description": "Every natural number, ```n```, may have a prime factorization like:\n\
+  \n\n\nWe define the arithmetic derivative of ```n```, ```n'``` the value of the\
+  \ expression:\n\n\n\nLet's do the calculation for ```n = 231525```.\n```\n231525\
+  \ = 3³5²7³ \nn' = (3*3²)*5²7³ + 3³*(2*5)*7³ + 3³*5²*(3*7²) = 231525 + 92610 + 99225\
+  \ = 423360\n```\nWe may make a chain of arithmetic derivatives, starting from a\
+  \ number we apply to the result the transformation and so on until we get the result\
+  \ ```1```.\n```\nn ---> n'  ---> (n')' ---> ((n')')' ---> ..... ---> ((...(n')...)')'\n\
+  ```\nLet's do it starting with our number, ```n = 231525``` and making a chain of\
+  \ 5 terms:\n```\n231525 ---> 423360 ---> 1899072 ---> 7879680 ---> 51895296\n```\n\
+  We need a function ```chain_arith_deriv()``` that receives two arguments: ```start```\
+  \ and ```k```, amount of terms of the chain.\n\nThe function should output the chain\
+  \ in an array format:\n```\nchain_arith_deriv(start, k) ---> [start, term1, term2,\
+  \ .....term(k-1)] # a total of k-terms\n```\nFor the case presented above:\n```python\n\
+  chain_arith_deriv(231525, 5) == [231525, 423360, 1899072, 7879680, 51895296]\n```\n\
+  The function has to reject prime numbers giving an alerting message\n```python\n\
+  chain_arith_deriv(997, 5) == \"997 is a prime number\"\n```\nFeatures of the tests:\n\
+  ```\nNumber of Random Tests: 50\n1000 ≤ start ≤ 99000000\n3 ≤ k ≤ 15\n```\nEnjoy\
+  \ it and do your best!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isPrime (n : Nat) : Bool := sorry\n\ndef chain_arith_deriv\
+  \ (n : Nat) (k : Nat) : String ⊕ List Nat := sorry \n"
+"vc-theorems": "theorem chain_length {n k : Nat} (h1 : n ≥ 2) (h2 : k ≥ 1) (h3 : k\
+  \ ≤ 10) :\n  let result := chain_arith_deriv n k\n  match result with\n  | Sum.inl\
+  \ s => ∃ p, isPrime p ∧ s = s!\"{p} is a prime number\" \n  | Sum.inr l => l.length\
+  \ = k ∧ l.head? = some n\n  := sorry\n\n\ntheorem small_primes {p k : Nat} \n  (h1\
+  \ : p ≥ 2) (h2 : p ≤ 100) (h3 : k ≥ 1) (h4 : k ≤ 10)\n  (h5 : isPrime p) :\n  chain_arith_deriv\
+  \ p k = Sum.inl s!\"{p} is a prime number\" := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

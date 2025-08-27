@@ -1,0 +1,21 @@
+"vc-description": "Check if given numbers are prime numbers. \nIf number N is prime\
+  \ ```return \"Probable Prime\"``` else ``` return \"Composite\"```. \nHINT: Upper\
+  \ bount is really big so you should use an efficient algorithm.\n\nInput\n  1 <\
+  \ N ≤ 10^(100)\n\nExample\n  prime_or_composite(2)  # should return Probable Prime\n\
+    prime_or_composite(200)  # should return Composite"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def prime_or_composite (n : Int) : Result :=\n  sorry\n"
+"vc-theorems": "theorem even_numbers_are_composite {n : Int} \n  (h1 : n ≥ 4) (h2\
+  \ : n % 2 = 0) : \n  prime_or_composite n = Result.Composite :=\nsorry\n\n\ntheorem\
+  \ two_and_three_are_prime {n : Int}\n  (h : n = 2 ∨ n = 3) :\n  prime_or_composite\
+  \ n = Result.ProbablePrime := \nsorry\n\n\ntheorem numbers_less_than_2_are_probable_prime\
+  \ {n : Int}\n  (h : n ≤ 1) :\n  prime_or_composite n = Result.ProbablePrime :=\n\
+  sorry\n\n\ntheorem perfect_squares_are_composite {n : Int}\n  (h1 : n > 1) :\n \
+  \ prime_or_composite (n * n) = Result.Composite :=\nsorry\n\n\ntheorem product_greater_than_one_is_composite\
+  \ {a b : Int}\n  (h1 : a > 1) (h2 : b > 1) :\n  prime_or_composite (a * b) = Result.Composite\
+  \ :=\nsorry\n\n/--\ninfo: 'Probable Prime'\n-/\n#guard_msgs in\n#eval prime_or_composite\
+  \ 2\n\n/--\ninfo: 'Probable Prime'\n-/\n#guard_msgs in\n#eval prime_or_composite\
+  \ 3\n\n/--\ninfo: 'Composite'\n-/\n#guard_msgs in\n#eval prime_or_composite 9\n\n\
+  /--\ninfo: 'Composite'\n-/\n#guard_msgs in\n#eval prime_or_composite 12\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

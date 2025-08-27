@@ -1,0 +1,29 @@
+"vc-description": "The sports centre needs repair. Vandals have been kicking balls\
+  \ so hard into the roof that some of the tiles have started sticking up. The roof\
+  \ is represented by r.\n\nAs a quick fix, the committee have decided to place another\
+  \ old roof over the top, if they can find one that fits. This is your job.\n\nA\
+  \ 'new' roof (f) will fit if it currently has a hole in it at the location where\
+  \ the old roof has a tile sticking up.\n\nSticking up tiles are represented by either\
+  \ '\\\\' or '/'. Holes in the 'new' roof are represented by spaces (' '). Any other\
+  \ character can not go over a sticking up tile.\n\nReturn true if the new roof fits,\
+  \ false if it does not."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def roof_fix (new old : List Char) : Bool := sorry\n\ntheorem roof_fix_slashes_spaces\
+  \ {new old : List Char} (h : new.length = old.length) :\n  roof_fix new old = true\
+  \ →\n  ∀ (i : Fin new.length), \n    (old.get ⟨i.val, h ▸ i.isLt⟩ = '\\\\' ∨ old.get\
+  \ ⟨i.val, h ▸ i.isLt⟩ = '/') →\n    new.get i = ' ' :=\nsorry\n"
+"vc-theorems": "theorem roof_fix_false_case {new old : List Char} (h : new.length\
+  \ = old.length) :\n  roof_fix new old = false →\n  ∃ (i : Fin new.length),\n   \
+  \ (old.get ⟨i.val, h ▸ i.isLt⟩ = '\\\\' ∨ old.get ⟨i.val, h ▸ i.isLt⟩ = '/') ∧\n\
+  \    new.get i ≠ ' ' :=\nsorry\n\n\ntheorem roof_fix_all_spaces_underscores {new\
+  \ old : List Char} \n  (h : new.length = old.length)\n  (h_new : ∀ (i : Fin new.length),\
+  \ new.get i = ' ')\n  (h_old : ∀ (i : Fin old.length), old.get i = '_') :\n  roof_fix\
+  \ new old = true :=\nsorry\n\n\ntheorem roof_fix_empty : roof_fix [] [] = true :=\
+  \ sorry\n\ntheorem roof_fix_singleton_space : \n  roof_fix [' '] ['_'] = true :=\
+  \ sorry\n\n\ntheorem roof_fix_double_space :\n  roof_fix [' ', ' '] ['_', '_'] =\
+  \ true := sorry\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval roof_fix \"  l  \
+  \ f l k djmi k\" \"___\\\\_____//_____/_\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
+  #eval roof_fix \"    ikm il  h  llmmc   a i\" \"__\\\\_______________________\"\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval roof_fix \"   h c \" \"__/____\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

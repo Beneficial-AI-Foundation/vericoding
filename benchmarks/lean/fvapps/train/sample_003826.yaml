@@ -1,0 +1,23 @@
+"vc-description": "An AI has infected a text with a character!! \n\nThis text is now\
+  \ **fully mutated** to this character.\n\nIf the text or the character are empty,\
+  \ return an empty string.  \nThere will never be a case when both are empty as nothing\
+  \ is going on!!\n\n**Note:** The character is a string of length 1 or an empty string.\n\
+  \n# Example\n```python\ntext before = \"abc\"\ncharacter   = \"z\"\ntext after \
+  \ = \"zzz\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def contamination (text char : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem contamination_length_matches_input\n  (text char : String)\n\
+  \  (h : char.length = 1) :\n  (contamination text char).length = text.length :=\n\
+  sorry\n\n\ntheorem contamination_uses_char\n  (text char : String)\n  (h : char.length\
+  \ = 1)\n  (i : Nat)\n  (hi : i < (contamination text char).length)\n  (h0 : 0 <\
+  \ char.data.length) :\n  (contamination text char).data[i]'hi = char.data[0]'h0\
+  \ :=\nsorry\n\n\ntheorem contamination_empty_char\n  (text : String) :\n  contamination\
+  \ text \"\" = \"\" :=\nsorry\n\n\ntheorem contamination_empty_text\n  (char : String)\
+  \ :\n  contamination \"\" char = \"\" :=\nsorry\n\n/--\ninfo: 'zzz'\n-/\n#guard_msgs\
+  \ in\n#eval contamination \"abc\" \"z\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval\
+  \ contamination \"\" \"z\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval contamination\
+  \ \"abc\" \"\"\n\n/--\ninfo: '&&&&&&&&'\n-/\n#guard_msgs in\n#eval contamination\
+  \ \"_3ebzgh4\" \"&\"\n\n/--\ninfo: '      '\n-/\n#guard_msgs in\n#eval contamination\
+  \ \"//case\" \" \"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,26 @@
+"vc-description": "You are given a secret message you need to decipher. Here are the\
+  \ things you need to know to decipher it:\n\nFor each word:\n- the second and the\
+  \ last letter is switched (e.g. `Hello` becomes `Holle`)\n- the first letter is\
+  \ replaced by its character code (e.g. `H` becomes `72`)\n\nNote: there are no special\
+  \ characters used, only letters and spaces\n\nExamples\n```\ndecipherThis('72olle\
+  \ 103doo 100ya'); // 'Hello good day'\ndecipherThis('82yade 115te 103o'); // 'Ready\
+  \ set go'\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def decipher_word (s : String) : String := sorry\n\ndef decipher_this\
+  \ (s : String) : String := sorry\n"
+"vc-theorems": "theorem decipher_this_preserves_word_count {words : List String} :\n\
+  \  let encoded := String.intercalate \" \" words\n  let result := decipher_this\
+  \ encoded \n  words.length = (result.split (· = ' ')).length := sorry\n\n\ntheorem\
+  \ decipher_word_length {word : String} :\n  let result := decipher_word word\n \
+  \ result.length ≤ word.length := sorry \n\n\ntheorem decipher_word_first_char {word\
+  \ : String} \n  (h1 : (word.takeWhile Char.isDigit) ≠ \"\") \n  (h2 : (word.takeWhile\
+  \ Char.isDigit).all Char.isDigit) :\n  let result := decipher_word word\n  let n\
+  \ := String.toNat! (word.takeWhile Char.isDigit)\n  result.length > 0 ∧ result.get!\
+  \ 0 = Char.ofNat n := sorry\n\n\ntheorem decipher_this_total (s : String) :\n  ∃\
+  \ result, decipher_this s = result := sorry\n\n/--\ninfo: 'Hello good day'\n-/\n\
+  #guard_msgs in\n#eval decipher_this \"72olle 103doo 100ya\"\n\n/--\ninfo: 'Ready\
+  \ set go'\n-/\n#guard_msgs in\n#eval decipher_this \"82yade 115te 103o\"\n\n/--\n\
+  info: 'Thank you Piotr'\n-/\n#guard_msgs in\n#eval decipher_this \"84kanh 121uo\
+  \ 80roti\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

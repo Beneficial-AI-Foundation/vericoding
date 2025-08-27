@@ -1,0 +1,31 @@
+"vc-description": "Why would we want to stop to only 50 shades of grey? Let's see\
+  \ to how many we can go. \n\nWrite a function that takes a number n as a parameter\
+  \ and return an array containing n shades of grey in hexadecimal code (`#aaaaaa`\
+  \ for example). The array should be sorted in ascending order starting with `#010101`,\
+  \ `#020202`, etc. (using lower case letters).\n\n```python\ndef shades_of_grey(n):\n\
+  \  return '''n shades of grey in an array'''\n```\n\nAs a reminder, the grey color\
+  \ is composed by the same number of red, green and blue: `#010101`, `#aeaeae`, `#555555`,\
+  \ etc. Also, `#000000` and `#ffffff` are not accepted values.\n\nWhen n is negative,\
+  \ just return an empty array.\nIf n is higher than 254, just return an array of\
+  \ 254 elements.\n\nHave fun"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isValidHexColor (color : String) : Bool := sorry\n\ndef shadesOfGrey\
+  \ (n : Int) : List String := sorry\n\n/- Each output is a valid list of strings\
+  \ where each string is a valid hex color -/"
+"vc-theorems": "theorem shadesOfGrey_outputs_valid_list (n : Int) : \n  ∀ x ∈ shadesOfGrey\
+  \ n, isValidHexColor x := sorry\n\n/- Non-positive inputs return empty list -/\n\
+  \ntheorem nonpositive_input_returns_empty {n : Int} (h : n ≤ 0) :\n  shadesOfGrey\
+  \ n = [] := sorry\n\n/- Output length is constrained between 0 and min(n, 254) -/\n\
+  \ntheorem output_length_constraints (n : Int) :\n  List.length (shadesOfGrey n)\
+  \ = min (max 0 n) 254 := sorry\n\n/- Values are monotonically increasing -/\n\n\
+  theorem values_monotonic_increasing {n : Int} (h1 : 1 ≤ n) (h2 : n ≤ 254) :\n  let\
+  \ result := shadesOfGrey n\n  let values := result.map (fun color => (color.take\
+  \ 3).toNat!)\n  ∀ i j, i < j → j < values.length → values[i]! < values[j]! := sorry\n\
+  \n/- RGB components are equal for each color -/\n\ntheorem rgb_components_equal\
+  \ {n : Int} (h1 : 1 ≤ n) (h2 : n ≤ 254) :\n  let result := shadesOfGrey n\n  ∀ color\
+  \ ∈ result, \n    color.get! ⟨1⟩ = color.get! ⟨3⟩ ∧ \n    color.get! ⟨3⟩ = color.get!\
+  \ ⟨5⟩ := sorry\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval shades_of_grey -1\n\n\
+  /--\ninfo: ['#010101']\n-/\n#guard_msgs in\n#eval shades_of_grey 1\n\n/--\ninfo:\
+  \ ['#010101', '#020202', '#030303']\n-/\n#guard_msgs in\n#eval shades_of_grey 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

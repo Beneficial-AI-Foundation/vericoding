@@ -1,0 +1,29 @@
+"vc-description": "A city of dimension N x N is constructed with grid of lanes. These\
+  \ lanes are fenced by government so that no one can cross any grid diagonally. Although\
+  \ a train \nline runs diagonally from (0,0) to (N,N).\nOur chef has a weird kind\
+  \ of phobia and is very afraid to cross the railway line. He is at point (0,0) and\
+  \ wants to get to the point (N,N). Calculate number of path \nthrough which it is\
+  \ possible to reach to its destination travelling the minimum distance. .\nNote\
+  \ that: \n\n1. Since he is already at position (0,0) he can go to either part of\
+  \ grid (i.e. left or right part - divided by diagonal) but he will remain in that\
+  \ part for the whole path.\n2. He is only afraid to \"cross\" the line, i.e. during\
+  \ the route he can go to position (m,m) where 0\n3. You have to calculate the number\
+  \ of path possible. If there is more than one path then you have to print the number\
+  \ of path of minimum distances. \n\n-----Input-----\nThe first line of the input\
+  \ contains an integer T denoting the number of test cases, for each test case enter\
+  \ the grid size i.e value of N.\n\n-----Output-----\nFor each test case, output\
+  \ a single line with number of such paths possible.\n(Note : If no such path possible\
+  \ print 0)\n\n-----Constraints-----\n- 1 <= T <= 100\n- 0 <= N <= 30\n\n-----Example-----\n\
+  Input:\n2\n2\n5\nOutput:\n4\n84"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_paths (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_paths_nonnegative (n : Nat) :\n  count_paths n ≥ 0 ∧\
+  \ count_paths n % 2 = 0 :=\nsorry \n\n\ntheorem count_paths_zero :\n  count_paths\
+  \ 0 = 0 :=\nsorry\n\n\ntheorem count_paths_monotonic {n : Nat} (h : n > 0) :\n \
+  \ count_paths n > count_paths (n-1) :=\nsorry\n\n\ntheorem count_paths_superlinear\
+  \ {n : Nat} (h1 : n > 1) :\n  count_paths n / count_paths (n-1) > 1 :=\nsorry\n\n\
+  /--\ninfo: 4\n-/\n#guard_msgs in\n#eval count_paths 2\n\n/--\ninfo: 84\n-/\n#guard_msgs\
+  \ in\n#eval count_paths 5\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval count_paths\
+  \ 0\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

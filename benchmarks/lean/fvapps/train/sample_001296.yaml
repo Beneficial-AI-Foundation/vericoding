@@ -1,0 +1,47 @@
+"vc-description": "Chef is multi-talented. He has developed a cure for coronavirus\
+  \ called COVAC-19. Now that everyone in the world is infected, it is time to distribute\
+  \ it throughout the world efficiently to wipe out coronavirus from the Earth. Chef\
+  \ just cooks the cure, you are his distribution manager.\nIn the world, there are\
+  \ $N$ countries (numbered $1$ through $N$) with populations $a_1, a_2, \\ldots,\
+  \ a_N$. Each cure can be used to cure one infected person once. Due to lockdown\
+  \ rules, you may only deliver cures to one country per day, but you may choose that\
+  \ country arbitrarily and independently on each day. Days are numbered by positive\
+  \ integers. On day $1$, Chef has $x$ cures ready. On each subsequent day, Chef can\
+  \ supply twice the number of cures that were delivered (i.e. people that were cured)\
+  \ on the previous day. Chef cannot supply leftovers from the previous or any earlier\
+  \ day, as the cures expire in a day. The number of cures delivered to some country\
+  \ on some day cannot exceed the number of infected people it currently has, either.\n\
+  However, coronavirus is not giving up so easily. It can infect a cured person that\
+  \ comes in contact with an infected person again ― formally, it means that the number\
+  \ of infected people in a country doubles at the end of each day, i.e. after the\
+  \ cures for this day are used (obviously up to the population of that country).\n\
+  Find the minimum number of days needed to make the world corona-free.\n\n-----Input-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first line of\
+  \ each test case contains two space-separated integers $N$ and $x$.\n- The second\
+  \ line contains $N$ space-separated integers $a_1, a_2, \\ldots, a_N$.\n\n-----Output-----\n\
+  For each test case, print a single line containing one integer ― the minimum number\
+  \ of days.\n\n-----Constraints-----\n- $1 \\le T \\le 10^3$\n- $1 \\le N \\le 10^5$\n\
+  - $1 \\le a_i \\le 10^9$ for each valid $i$\n- $1 \\le x \\le 10^9$\n- the sum of\
+  \ $N$ over all test cases does not exceed $10^6$\n\n-----Subtasks-----\nSubtask\
+  \ #1 (20 points): $a_1 = a_2 = \\ldots = a_N$\nSubtask #2 (80 points): original\
+  \ constraints\n\n-----Example Input-----\n3\n5 5\n1 2 3 4 5\n5 1\n40 30 20 10 50\n\
+  3 10\n20 1 110\n\n-----Example Output-----\n5\n9\n6"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_covac (n x : Nat) (populations : List Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem solve_covac_result_exceeds_country_count \n  {n x : Nat} {populations\
+  \ : List Nat}\n  (h1 : 0 < n) (h2 : 0 < x)\n  (h3 : populations.length = n) :\n\
+  \  solve_covac n x populations ≥ populations.length :=\n  sorry\n\n\ntheorem solve_covac_result_is_nat\n\
+  \  {n x : Nat} {populations : List Nat}\n  (h1 : 0 < n) (h2 : 0 < x)\n  (h3 : populations.length\
+  \ = n) :\n  ∃ (k : Nat), solve_covac n x populations = k :=\n  sorry\n\n-- Removing\
+  \ the exponential growth theorem as it requires more complex math libraries\n\n\n\
+  theorem solve_covac_all_under_capacity\n  {n x : Nat} (h1 : 0 < n) (h2 : 0 < x)\n\
+  \  (populations : List Nat)\n  (h3 : populations.length = n)\n  (h4 : ∀ p ∈ populations,\
+  \ p < x) :\n  solve_covac n x populations = n :=\n  sorry\n\n\ntheorem solve_covac_single_country\n\
+  \  {x : Nat} (h : 0 < x) :\n  solve_covac 1 x [x] = 1 :=\n  sorry\n\n/--\ninfo:\
+  \ 5\n-/\n#guard_msgs in\n#eval solve_covac 5 5 [1, 2, 3, 4, 5]\n\n/--\ninfo: 9\n\
+  -/\n#guard_msgs in\n#eval solve_covac 5 1 [40, 30, 20, 10, 50]\n\n/--\ninfo: 6\n\
+  -/\n#guard_msgs in\n#eval solve_covac 3 10 [20, 1, 110]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

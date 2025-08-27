@@ -1,0 +1,24 @@
+"vc-description": "Your task is to make two functions, ```max``` and ```min``` (`maximum`\
+  \ and `minimum` in PHP and Python) that take a(n) array/vector of integers ```list```\
+  \ as input and outputs, respectively, the largest and lowest number in that array/vector.\n\
+  \n#Examples\n```python\nmaximun([4,6,2,1,9,63,-134,566]) returns 566\nminimun([-52,\
+  \ 56, 30, 29, -54, 0, -110]) returns -110\nmaximun([5]) returns 5\nminimun([42,\
+  \ 54, 65, 87, 0]) returns 0\n```\n\n#Notes\n- You may consider that there will not\
+  \ be any empty arrays/vectors."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def minimum (l : List Int) : Int := sorry\ndef maximum (l : List\
+  \ Int) : Int := sorry\n"
+"vc-theorems": "theorem min_leq_all_elements (l : List Int) (h : l ≠ []) :\n  ∀ x\
+  \ ∈ l, minimum l ≤ x := sorry\n\n\ntheorem max_geq_all_elements (l : List Int) (h\
+  \ : l ≠ []) :\n  ∀ x ∈ l, maximum l ≥ x := sorry\n\n\ntheorem min_in_list (l : List\
+  \ Int) (h : l ≠ []) :\n  minimum l ∈ l := sorry\n\n\ntheorem max_in_list (l : List\
+  \ Int) (h : l ≠ []) :\n  maximum l ∈ l := sorry\n\n\ntheorem min_leq_max (l : List\
+  \ Int) (h : l ≠ []) :\n  minimum l ≤ maximum l := sorry\n\n\ntheorem min_eq_max_singleton\
+  \ (l : List Int) (h : ∃ x, l = [x]) :\n  minimum l = maximum l := sorry\n\n/--\n\
+  info: -110\n-/\n#guard_msgs in\n#eval minimum [-52, 56, 30, 29, -54, 0, -110]\n\n\
+  /--\ninfo: 56\n-/\n#guard_msgs in\n#eval maximum arr1\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval minimum [42, 54, 65, 87, 0]\n\n/--\ninfo: 87\n-/\n#guard_msgs in\n#eval\
+  \ maximum arr2\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval minimum [9]\n\n/--\ninfo:\
+  \ 9\n-/\n#guard_msgs in\n#eval maximum arr3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,27 @@
+"vc-description": "Alex and Lee continue their games with piles of stones.  There\
+  \ are a number of piles arranged in a row, and each pile has a positive integer\
+  \ number of stones piles[i].  The objective of the game is to end with the most stones. \n\
+  Alex and Lee take turns, with Alex starting first.  Initially, M = 1.\nOn each player's\
+  \ turn, that player can take all the stones in the first X remaining piles, where\
+  \ 1 <= X <= 2M.  Then, we set M = max(M, X).\nThe game continues until all the stones\
+  \ have been taken.\nAssuming Alex and Lee play optimally, return the maximum number\
+  \ of stones Alex can get.\n \nExample 1:\nInput: piles = [2,7,9,4,4]\nOutput: 10\n\
+  Explanation:  If Alex takes one pile at the beginning, Lee takes two piles, then\
+  \ Alex takes 2 piles again. Alex can get 2 + 4 + 4 = 10 piles in total. If Alex\
+  \ takes two piles at the beginning, then Lee can take all three piles left. In this\
+  \ case, Alex get 2 + 7 = 9 piles in total. So we return 10 since it's larger. \n\
+  \n \nConstraints:\n\n1 <= piles.length <= 100\n1 <= piles[i] <= 10 ^ 4"
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat \n  | []\
+  \ => 0\n  | (x::xs) => x + sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def stone_game_ii (piles : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem stone_game_ii_positive (piles : List Nat) \n  (h : piles.all\
+  \ (λ x => x > 0)) :\n  stone_game_ii piles > 0 :=\nsorry\n\n\ntheorem stone_game_ii_bounded\
+  \ (piles : List Nat) :\n  stone_game_ii piles ≤ List.sum piles :=\nsorry  \n\n\n\
+  theorem stone_game_ii_singleton (pile : Nat) \n  (h : pile > 0) : \n  stone_game_ii\
+  \ [pile] = pile :=\nsorry\n\n\ntheorem stone_game_ii_same_values (x : Nat)\n  (h\
+  \ : x > 0) :\n  stone_game_ii [x, x, x] ≤ 3 * x :=\nsorry\n\n/--\ninfo: 10\n-/\n\
+  #guard_msgs in\n#eval stone_game_ii [2, 7, 9, 4, 4]\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval stone_game_ii [1]\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval stone_game_ii\
+  \ [8, 7, 1, 2]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

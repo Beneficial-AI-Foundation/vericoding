@@ -1,0 +1,43 @@
+"vc-description": "For encrypting strings this region of chars is given (in this order!):\n\
+  \n* all letters (ascending, first all UpperCase, then all LowerCase)\n* all digits\
+  \ (ascending)\n* the following chars: `.,:;-?! '()$%&\"` \n\nThese are 77 chars!\
+  \ (This region is zero-based.)\n\nWrite two methods: \n```python\ndef encrypt(text)\n\
+  def decrypt(encrypted_text)\n```\n\nPrechecks:\n1. If the input-string has chars,\
+  \ that are not in the region, throw an Exception(C#, Python) or Error(JavaScript).\n\
+  2. If the input-string is null or empty return exactly this value!\n\nFor building\
+  \ the encrypted string:\n1. For every second char do a switch of the case.\n2. For\
+  \ every char take the index from the region. Take the difference from the region-index\
+  \ of the char before (from the input text! Not from the fresh encrypted char before!).\
+  \ (Char2 = Char1-Char2)\nReplace the original char by the char of the difference-value\
+  \ from the region. In this step the first letter of the text is unchanged.\n3. Replace\
+  \ the first char by the mirror in the given region. (`'A' -> '\"'`, `'B' -> '&'`,\
+  \ ...)\n\nSimple example:\n\n* Input:  `\"Business\"`\n* Step 1: `\"BUsInEsS\"`\n\
+  * Step 2: `\"B61kujla\"`\n  * `B -> U`\n    * `B (1) - U (20) = -19`\n    * `-19\
+  \ + 77 = 58`\n    * `Region[58] = \"6\"`\n  * `U -> s`\n    * `U (20) - s (44) =\
+  \ -24`\n    * `-24 + 77 = 53`\n    * `Region[53] = \"1\"`\n* Step 3: `\"&61kujla\"\
+  `\n\nThis kata is part of the Simple Encryption Series:\nSimple Encryption #1 -\
+  \ Alternating Split\nSimple Encryption #2 - Index-Difference\nSimple Encryption\
+  \ #3 - Turn The Bits Around\nSimple Encryption #4 - Qwerty\n\nHave fun coding it\
+  \ and please don't forget to vote and rank this kata! :-)"
+"vc-preamble": "import Imports.AllImports\n\ndef REGION : String := \"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\"\
+  \n\ndef encrypt (s : String) : String := sorry\n\ndef decrypt (s : String) : String\
+  \ := sorry\ndef isValidText (s : String) : Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def charAtPos (s : String) (pos : Nat) : Char := s.data[pos]!\n\
+  \ntheorem encryption_decryption_roundtrip (s : String) (h : isValidText s = true)\
+  \ :\n  decrypt (encrypt s) = s := sorry\n"
+"vc-theorems": "theorem encrypted_uses_valid_chars (s : String) (h : isValidText s\
+  \ = true) (h2 : s ≠ \"\") :\n  isValidText (encrypt s) = true := sorry\n\n\ntheorem\
+  \ invalid_chars_raise_exception (s : String) (h : isValidText s = false) :\n  encrypt\
+  \ s = \"\" ∧ decrypt s = \"\" := sorry\n\n\ntheorem empty_string :\n  encrypt \"\
+  \" = \"\" ∧ decrypt \"\" = \"\" := sorry\n\n\ntheorem second_chars_different (s\
+  \ : String) (h : isValidText s = true) (h2 : s.length ≥ 2) :\n  encrypt s ≠ s :=\
+  \ sorry\n\n\ntheorem first_char_mirrored (s : String) (h : isValidText s = true)\
+  \ (h2 : s ≠ \"\") :\n  (charAtPos (encrypt s) 0) = (charAtPos REGION (REGION.length\
+  \ - 1)) := sorry\n\n/--\ninfo: encrypted1\n-/\n#guard_msgs in\n#eval encrypt \"\
+  Business\"\n\n/--\ninfo: text1\n-/\n#guard_msgs in\n#eval decrypt encrypted1\n\n\
+  /--\ninfo: encrypted2\n-/\n#guard_msgs in\n#eval encrypt \"This is a test!\"\n\n\
+  /--\ninfo: text2\n-/\n#guard_msgs in\n#eval decrypt encrypted2\n\n/--\ninfo: ''\n\
+  -/\n#guard_msgs in\n#eval encrypt \"\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval\
+  \ decrypt \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

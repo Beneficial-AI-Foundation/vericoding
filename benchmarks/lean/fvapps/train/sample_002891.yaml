@@ -1,0 +1,30 @@
+"vc-description": "Calculate the trace of a square matrix. A square matrix has `n`\
+  \ rows and `n` columns, where `n` is any integer > 0. The entries of the matrix\
+  \ can contain any number of integers. The function should return the calculated\
+  \ trace of the matrix, or `nil/None` if the array is empty or not square; you can\
+  \ otherwise assume the input will be valid (of the form described below).\n\nThe\
+  \ trace of an n-by-n square matrix **A** is defined to be the sum of the elements\
+  \ on the main diagonal (the diagonal from the upper left to the lower right) of\
+  \ **A**.\n\nA matrix will be defined as an array of arrays, where the 1st entry\
+  \ represents the 1st row, the 2nd entry the 2nd row, and so on.\n\nFor example,\
+  \ the following code...\n```ruby,python\n[[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n```\n\
+  represents the matrix\n```\n|1 2 3|\n|4 5 6|\n|7 8 9|\n```\nwhich has a trace of\
+  \ `1 + 5 + 9 = 15`.\n\nYou can read more about the trace of a matrix at these sources:\n\
+  \n * http://en.wikipedia.org/wiki/Trace_(linear_algebra)\n * http://mathworld.wolfram.com/MatrixTrace.html\n\
+  \n~~~if:ruby\nNote: The `Matrix` class is disabled.\n~~~\n~~~if:python\nNote: `Numpy`\
+  \ is disabled.\n~~~"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Matrix (α : Type) := List (List α)\n\ndef trace (m : Matrix\
+  \ Int) : Option Int :=\n  sorry\n"
+"vc-theorems": "theorem trace_square_matrix {m : List (List Int)} \n  (h : ∀ (l :\
+  \ List Int), List.elem l m → l.length = m.length) \n  (h' : m.length > 0) :\n  ∃\
+  \ result, trace m = some result ∧ \n    result = (List.range m.length).foldr (λ\
+  \ i acc => acc + ((m.get! i).get! i)) 0 :=\n  sorry\n\n\ntheorem trace_non_square_matrix\
+  \ {m : List (List Int)}\n  (h : ∃ (l : List Int), List.elem l m ∧ l.length ≠ m.length)\
+  \ :\n  trace m = none :=\n  sorry\n\n\ntheorem trace_empty_matrix :\n  trace ([]\
+  \ : Matrix Int) = none :=\n  sorry\n\n\ntheorem trace_empty_row :\n  trace [[]]\
+  \ = none :=\n  sorry\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval trace [[1, 2, 3],\
+  \ [4, 5, 6], [7, 8, 9]]\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval trace []\n\
+  \n/--\ninfo: None\n-/\n#guard_msgs in\n#eval trace [[1, 2], [1, 2], [1, 2]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,27 @@
+"vc-description": "In this kata, you'll be given an integer of range `0 <= x <= 99`\
+  \ and have to return that number spelt out in English. A few examples:\n\n```python\n\
+  name_that_number(4)   # returns \"four\"\nname_that_number(19)  # returns \"nineteen\"\
+  \nname_that_number(99)  # returns \"ninety nine\"\n```\n\nWords should be separated\
+  \ by only spaces and not hyphens. No need to validate parameters, they will always\
+  \ be in the range [0, 99]. Make sure that the returned String has no leading of\
+  \ trailing spaces. Good luck!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def name_that_number (n : Nat) : String := sorry\n\ntheorem name_that_number_string_properties\
+  \ {n : Nat} (h : n ≤ 99) :\n  let result := name_that_number n\n  result.length\
+  \ > 0 ∧ \n  result.all (fun c => c.isAlpha ∨ c = ' ') ∧\n  result.all Char.isLower\
+  \ := sorry\n"
+"vc-theorems": "theorem name_that_number_deterministic {n : Nat} :\n  name_that_number\
+  \ n = name_that_number n := sorry\n\n\ntheorem name_that_number_zero :\n  name_that_number\
+  \ 0 = \"zero\" := sorry\n\n\ntheorem name_that_number_single_digit {n : Nat} (h₁\
+  \ : n > 0) (h₂ : n ≤ 9) :\n  let result := name_that_number n\n  ¬ result.contains\
+  \ ' ' := sorry\n\n\ntheorem name_that_number_teens {n : Nat} (h₁ : n ≥ 10) (h₂ :\
+  \ n ≤ 19) :\n  let result := name_that_number n\n  (¬ result.contains ' ') ∧\n \
+  \ ((result.endsWith \"teen\") ∨ \n   result = \"ten\" ∨ \n   result = \"eleven\"\
+  \ ∨ \n   result = \"twelve\") := sorry\n\n\ntheorem name_that_number_two_digits\
+  \ {n : Nat} (h₁ : n ≥ 20) (h₂ : n ≤ 99) :\n  let result := name_that_number n\n\
+  \  if n % 10 = 0 then\n    ¬ result.contains ' '\n  else\n    (result.split (· =\
+  \ ' ')).length = 2 := sorry\n\n/--\ninfo: 'four'\n-/\n#guard_msgs in\n#eval name_that_number\
+  \ 4\n\n/--\ninfo: 'nineteen'\n-/\n#guard_msgs in\n#eval name_that_number 19\n\n\
+  /--\ninfo: 'ninety nine'\n-/\n#guard_msgs in\n#eval name_that_number 99\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

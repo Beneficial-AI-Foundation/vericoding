@@ -1,0 +1,22 @@
+"vc-description": "In this Kata, you will be given a string and your task is to return\
+  \ the most valuable character. The value of a character is the difference between\
+  \ the index of its last occurrence and the index of its first occurrence. Return\
+  \ the character that has the highest value. If there is a tie, return the alphabetically\
+  \ lowest character. `[For Golang return rune]`\n\nAll inputs will be lower case.\
+  \ \n\n```\nFor example:\nsolve('a') = 'a'\nsolve('ab') = 'a'. Last occurrence is\
+  \ equal to first occurrence of each character. Return lexicographically lowest.\n\
+  solve(\"axyzxyz\") = 'x'\n```\n\nMore examples in test cases. Good luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef firstIndex (s: String) (c: Char)\
+  \ : Nat :=\n  sorry\n\n\ndef lastIndex (s: String) (c: Char) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (s: String) : Char :=\n  sorry\n"
+"vc-theorems": "theorem solve_returns_char_from_input (s: String) (h: s.length > 0)\
+  \ :\n  ∃ p: String.Pos, solve s = s.get p :=\n  sorry\n\n\ntheorem solve_returns_char_with_minimal_first_last_diff\
+  \ (s: String) (h: s.length > 0) :\n  ∀ c: Char, \n  firstIndex s (solve s) - lastIndex\
+  \ s (solve s) \n  ≤ firstIndex s c - lastIndex s c :=\n  sorry\n\n\ntheorem solve_returns_lexicographically_first_when_tied\
+  \ (s: String) (h: s.length > 0) :\n  ∀ c: Char,\n  (firstIndex s c - lastIndex s\
+  \ c = firstIndex s (solve s) - lastIndex s (solve s))\n  → solve s ≤ c :=\n  sorry\n\
+  \n/--\ninfo: 'a'\n-/\n#guard_msgs in\n#eval solve \"a\"\n\n/--\ninfo: 'x'\n-/\n\
+  #guard_msgs in\n#eval solve \"axyzxyz\"\n\n/--\ninfo: 'a'\n-/\n#guard_msgs in\n\
+  #eval solve \"dcbadcba\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

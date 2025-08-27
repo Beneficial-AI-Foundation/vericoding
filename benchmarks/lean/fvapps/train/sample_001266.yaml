@@ -1,0 +1,36 @@
+"vc-description": "Bohan loves milk tea so much and he drinks one cup of milk tea\
+  \ every day. The local shop sells milk tea in two sizes: a Medium cup for $3 and\
+  \ a Large cup for $4. For every cup of milk tea purchased Bohan receives a promotional\
+  \ stamp. Bohan may redeem 6 stamps for a free drink of milk tea regardless of the\
+  \ size. No stamp will be given for a free drink.\n\n\nDetermine the amount of money\
+  \ Bohan have spent on milk tea, given a sequence of milk tea sizes he got in the\
+  \ past a few days. Assume Bohan had no stamps in the beginning and he always redeemed\
+  \ the stamps for the next drink once he had collected 6 stamps.\n\n-----Input-----\n\
+  The input begins with the number of test cases T.\nEach test case has a single line\
+  \ of letters. The i-th letter is either 'M' or 'L' denoting a Medium cup or a Large\
+  \ cup of milk tea Bohan got on the i-th day.\n\n-----Output-----\nFor each case,\
+  \ output the amount of money in dollars Bohan have spent on milk tea.\n\n-----Constraints-----\n\
+  - T ≤ 100 \n- 1 ≤  length of each sequence ≤ 100 \n\n-----Example-----\nInput:\n\
+  3\nMLM\nMMLLMMLL\nMMMMMMML\n\nOutput:\n10\n24\n22\n\n-----Explanation-----\nExample\
+  \ 1: Bohan didn't redeem any stamps.\nExample 2: Bohan redeemed 6 stamps for the\
+  \ Large cup of milk tea on the 7th day.\nExample 3: Bohan redeemed 6 stamps for\
+  \ the Medium cup of milk tea on the 7th day."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def DrinkType := Char\n\ndef calculate_milk_tea_cost (sequence\
+  \ : List DrinkType) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem milk_tea_cost_non_negative (sequence : List DrinkType) :\n\
+  \  calculate_milk_tea_cost sequence ≥ 0 :=\nsorry\n\n\ntheorem milk_tea_cost_upper_bound\
+  \ (sequence : List DrinkType) :\n  calculate_milk_tea_cost sequence ≤ sequence.length\
+  \ * 4 :=\nsorry\n\n\ntheorem milk_tea_cost_lower_bound (sequence : List DrinkType)\
+  \ :\n  let stamp_redemptions := sequence.length / 6\n  calculate_milk_tea_cost sequence\
+  \ ≥ max 0 (sequence.length * 3 - stamp_redemptions * 3) :=\nsorry\n\n\ntheorem sixth_drink_reduces_cost\
+  \ (sequence : List DrinkType) (d : DrinkType) :\n  sequence.length = 6 →\n  calculate_milk_tea_cost\
+  \ sequence ≥ calculate_milk_tea_cost (sequence ++ [d]) :=\nsorry\n\n\ntheorem seventh_drink_free\
+  \ (sequence : List DrinkType) :\n  sequence.length = 7 →\n  calculate_milk_tea_cost\
+  \ (sequence.take 6) = calculate_milk_tea_cost sequence :=\nsorry\n\n\ntheorem cost_by_drink_type\
+  \ (sequence : List DrinkType) :\n  let m_count := (sequence.filter (fun x => x =\
+  \ 'M')).length\n  let l_count := (sequence.filter (fun x => x = 'L')).length\n \
+  \ sequence.length > 0 →\n  calculate_milk_tea_cost sequence ≤ (m_count * 3) + (l_count\
+  \ * 4) :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,34 @@
+"vc-description": "You are the judge at a competitive eating competition and you need\
+  \ to choose a winner!\n\nThere are three foods at the competition and each type\
+  \ of food is worth a different amount of points.\nPoints are as follows:\n\n- Chickenwings:\
+  \ 5 points  \n\n- Hamburgers: 3 points   \n\n- Hotdogs: 2 points\n\nWrite a function\
+  \ that helps you create a scoreboard. \nIt takes as a parameter a list of objects\
+  \ representing the participants, for example:\n```\n[\n  {name: \"Habanero Hillary\"\
+  , chickenwings: 5 , hamburgers: 17, hotdogs: 11},\n  {name: \"Big Bob\" , chickenwings:\
+  \ 20, hamburgers: 4, hotdogs: 11}\n]\n```\nIt should return \n\"name\" and \"score\"\
+  \ properties sorted by score; if scores are equals, sort alphabetically by name.\n\
+  ```\n[\n  {name: \"Big Bob\", score: 134},\n  {name: \"Habanero Hillary\", score:\
+  \ 98}\n]\n```\nHappy judging!"
+"vc-preamble": "import Imports.AllImports\n\ndef contestant_score (c : Contestant)\
+  \ : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def scoreboard (contestants : List Contestant) : List Contestant\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem scoreboard_preserves_length (contestants : List Contestant)\
+  \ :\n  List.length (scoreboard contestants) = List.length contestants :=\n  sorry\n\
+  \n\ntheorem scoreboard_sorted_scores (contestants : List Contestant) \n    (h :\
+  \ contestants.length > 1) :\n  let result := scoreboard contestants\n  ∀ i : Fin\
+  \ (result.length),\n    i.val + 1 < result.length →\n    let score₁ := contestant_score\
+  \ (result.get i)\n    let score₂ := contestant_score (result.get ⟨i.val + 1, by\
+  \ sorry⟩)\n    if score₁ = score₂ \n    then (result.get i).name ≤ (result.get ⟨i.val\
+  \ + 1, by sorry⟩).name \n    else score₁ > score₂ :=\n  sorry\n\n\ntheorem empty_scoreboard\
+  \ :\n  scoreboard [] = [] :=\n  sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n\
+  #eval scoreboard [{\"name\": \"Billy The Beast\", \"chickenwings\": 17, \"hamburgers\"\
+  : 7, \"hotdogs\": 8}, {\"name\": \"Habanero Hillary\", \"chickenwings\": 5, \"hamburgers\"\
+  : 17, \"hotdogs\": 11}, {\"name\": \"Joey Jaws\", \"chickenwings\": 8, \"hamburgers\"\
+  : 8, \"hotdogs\": 15}, {\"name\": \"Big Bob\", \"chickenwings\": 20, \"hamburgers\"\
+  : 4, \"hotdogs\": 11}]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval scoreboard\
+  \ [{\"name\": \"Joey Jaws\", \"chickenwings\": 0, \"hamburgers\": 1, \"hotdogs\"\
+  : 1}, {\"name\": \"Big Bob\", \"chickenwings\": 1, \"hamburgers\": 0, \"hotdogs\"\
+  : 0}]\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval scoreboard []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

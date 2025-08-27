@@ -1,0 +1,18 @@
+"vc-description": "_Friday 13th or Black Friday is considered as unlucky day. Calculate\
+  \ how many unlucky days are in the given year._\n\nFind the number of Friday 13th\
+  \ in the given year.\n\n__Input:__ Year as an integer.\n\n__Output:__ Number of\
+  \ Black Fridays in the year as an integer.\n\n__Examples:__\n\n        unluckyDays(2015)\
+  \ == 3\n        unluckyDays(1986) == 1\n\n***Note:*** In Ruby years will start from\
+  \ 1593."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def unlucky_days (year: Nat) : Nat := sorry\n\ndef is_friday_13th\
+  \ (year month: Nat) : Bool := sorry\n"
+"vc-theorems": "theorem unlucky_days_bounds (year: Nat) (h: year ≥ 1583): \n  unlucky_days\
+  \ year ≤ 12 := sorry\n\n\ntheorem unlucky_days_nonneg (year: Nat) (h: year ≥ 1583):\n\
+  \  unlucky_days year ≥ 0 := sorry\n\n\n\n\ntheorem unlucky_days_400_year_cycle (year:\
+  \ Nat) (h: year ≥ 1583) (i: Nat):\n  unlucky_days (year + i) = unlucky_days (year\
+  \ + i + 400) := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval unlucky_days 2015\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval unlucky_days 1986\n\n/--\ninfo: 2\n-/\n\
+  #guard_msgs in\n#eval unlucky_days 1634\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,28 @@
+"vc-description": "⚠️ The world is in quarantine! There is a new pandemia that struggles\
+  \ mankind. Each continent is isolated from each other but infected people have spread\
+  \ before the warning. ⚠️\n\n\U0001F5FA️ You would be given a map of the world in\
+  \ a type of string:\n\n    string s = \"01000000X000X011X0X\"\n\n    '0' : uninfected\n\
+  \n    '1' : infected\n\n    'X' : ocean\n\n⚫ The virus can't spread in the other\
+  \ side of the ocean.\n\n⚫ If one person is infected every person in this continent\
+  \ gets infected too.\n\n⚫ Your task is to find the percentage of human population\
+  \ that got infected in the end.\n\n☑️ Return the percentage % of the total population\
+  \ that got infected.\n\n❗❗ The first and the last continent are not connected!\n\
+  \n\U0001F4A1 Example:\n\n     start: map1 = \"01000000X000X011X0X\"\n     end: \
+  \  map1 = \"11111111X000X111X0X\"\n     total = 15\n     infected = 11\n     percentage\
+  \ = 100*11/15 = 73.33333333333333\n\n➕ For maps without oceans \"X\" the whole world\
+  \ is connected.\n\n➕ For maps without \"0\" and \"1\" return 0 as there is no population."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def infected (s : String) : Float := sorry\n\ntheorem infected_bounds\
+  \ (s : String) :\n  0 ≤ infected s ∧ infected s ≤ 100 := sorry\n"
+"vc-theorems": "theorem zero_population (s : String) :\n  (∀ c, c ∈ s.data → c ≠ '0'\
+  \ ∧ c ≠ '1') →\n  infected s = 0 := sorry\n\n\ntheorem all_infected (s : String)\
+  \ :\n  (∀ c, c ∈ s.data → c ≠ 'X') →\n  ('1' ∈ s.data) →\n  infected s = 100 :=\
+  \ sorry\n\n\ntheorem ocean_separation (s : String) :\n  let lands := s.split (·\
+  \ = 'X')\n  let clean_lands := lands.filter (λ land => land.length > 0 ∧ ∀ c, c\
+  \ ∈ land.data → c ≠ '1')\n  let infected_lands := lands.filter (λ land => land.length\
+  \ > 0 ∧ ∃ c, c ∈ land.data ∧ c = '1')\n  clean_lands.length > 0 →\n  infected_lands.length\
+  \ > 0 →\n  0 < infected s ∧ infected s < 100 := sorry\n\n/--\ninfo: 100.0\n-/\n\
+  #guard_msgs in\n#eval infected \"01000\"\n\n/--\ninfo: 0.0\n-/\n#guard_msgs in\n\
+  #eval infected \"XXXXX\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

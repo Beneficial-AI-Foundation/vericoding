@@ -1,0 +1,27 @@
+"vc-description": "Chef wants to select a subset $S$ of the set $\\{1, 2, \\ldots,\
+  \ N\\}$ such that there are no two integers $x, y \\in S$ which satisfy $\\frac{x}{y}\
+  \ = M$.\nHelp Chef find the maximum size of a subset $S$ he can choose and the number\
+  \ of ways in which he can choose a subset $S$ with this maximum size. Since the\
+  \ number of ways to choose $S$ can be very large, calculate it modulo $998,244,353$.\n\
+  \n-----Input-----\n- The first line of the input contains a single integer $T$ denoting\
+  \ the number of test cases. The description of $T$ test cases follows.\n- The first\
+  \ and only line of each test case contains two space-separated integers $N$ and\
+  \ $M$.\n\n-----Output-----\nFor each test case, print a single line containing two\
+  \ space-separated integers ― the maximum size of a subset Chef can choose and the\
+  \ number of ways to choose a subset with this maximum size modulo $998,244,353$.\
+  \ Note that only the number of ways to choose a subset should be printed modulo\
+  \ $998,244,353$.\n\n-----Constraints-----\n- $1 \\le T \\le 10,000$\n- $2 \\le M\
+  \ \\le N \\le 10^{18}$\n\n-----Example Input-----\n3\n5 2\n10 2\n100 3\n\n-----Example\
+  \ Output-----\n4 1\n6 12\n76 49152\n\n-----Explanation-----\nExample case 1: The\
+  \ only subset $S$ with the maximum size which Chef can choose is $\\{1, 3, 4, 5\\\
+  }$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_subset_problem (N : Nat) (M : Nat) : Nat × Nat := sorry\
+  \ \n\ntheorem subset_problem_output_ranges {N M : Nat} \n  (h1 : N ≥ 1) (h2 : N\
+  \ ≤ 100) \n  (h3 : M ≥ 2) (h4 : M ≤ 10) :\n  let (count, perm) := solve_subset_problem\
+  \ N M\n  count ≤ N*(N+1)/2 ∧ count ≥ 0 ∧ perm < 998244353 ∧ perm ≥ 0 := sorry"
+"vc-theorems": "/--\ninfo: (4, 1)\n-/\n#guard_msgs in\n#eval solve_subset_problem\
+  \ 5 2\n\n/--\ninfo: (6, 12)\n-/\n#guard_msgs in\n#eval solve_subset_problem 10 2\n\
+  \n/--\ninfo: (76, 49152)\n-/\n#guard_msgs in\n#eval solve_subset_problem 100 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

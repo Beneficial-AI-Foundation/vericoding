@@ -1,0 +1,23 @@
+"vc-description": "Write a function \n\n```python\nvowel_2_index```\n\nthat takes\
+  \ in a string and replaces all the vowels [a,e,i,o,u] with their respective positions\
+  \ within that string. \nE.g: \n\n```python\nvowel_2_index('this is my string') ==\
+  \ 'th3s 6s my str15ng'\nvowel_2_index('Codewars is the best site in the world')\
+  \ == 'C2d4w6rs 10s th15 b18st s23t25 27n th32 w35rld'\nvowel_2_index('') == ''\n\
+  ```\n Your function should be case insensitive to the vowels."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def vowel_2_index (s : String) : String := sorry\n\ndef isVowel\
+  \ (c : Char) : Bool :=\n  c = 'a' ∨ c = 'e' ∨ c = 'i' ∨ c = 'o' ∨ c = 'u' ∨ \n \
+  \ c = 'A' ∨ c = 'E' ∨ c = 'I' ∨ c = 'O' ∨ c = 'U'\n"
+"vc-theorems": "theorem vowels_replaced_with_position {s : String} :\n  ∀ (i : Nat)\
+  \ (h : i < s.length), \n  isVowel (s.data[i]'h) →\n  ∃ (h' : 0 < (toString (i +\
+  \ 1)).length),\n  String.contains (vowel_2_index s) ((toString (i + 1)).data[0]'h')\
+  \ := sorry\n\n\ntheorem empty_string :\n  vowel_2_index \"\" = \"\" := sorry\n\n\
+  \ntheorem consonants_only_unchanged {s : String} :\n  (∀ c ∈ s.data, ¬isVowel c)\
+  \ →\n  vowel_2_index s = s := sorry\n\n\ntheorem punctuation_unchanged {s : String}\
+  \ :\n  (∀ c ∈ s.data, c = ' ' ∨ c = '.' ∨ c = ',' ∨ c = '!' ∨ c = '?') →\n  vowel_2_index\
+  \ s = s := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval vowel_2_index\
+  \ \"this is my string\"\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval vowel_2_index\
+  \ \"Codewars is the best site in the world\"\n\n/--\ninfo: expected3\n-/\n#guard_msgs\
+  \ in\n#eval vowel_2_index \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

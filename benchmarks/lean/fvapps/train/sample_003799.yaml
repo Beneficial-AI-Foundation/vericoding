@@ -1,0 +1,19 @@
+"vc-description": "Write a function that reverses the bits in an integer.\n\nFor example,\
+  \ the number `417` is `110100001` in binary. Reversing the binary is `100001011`\
+  \ which is `267`.\n\nYou can assume that the number is not negative."
+"vc-preamble": "import Imports.AllImports\n\ndef reverse_bits (n : Nat) : Nat := sorry\n\
+  \n-- Result is non-negative (trivial in Lean since Nat is used)"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_ones (n : Nat) : Nat := sorry\n\n-- Number of 1 bits\
+  \ is preserved"
+"vc-theorems": "theorem reverse_bits_nonneg (n : Nat) :\n  reverse_bits n ≥ 0 := sorry\n\
+  \n-- Helper function to count ones\n\ntheorem reverse_bits_preserves_ones (n : Nat)\
+  \ (h : n < 2^32) :\n  count_ones n = count_ones (reverse_bits n) := sorry \n\n--\
+  \ Power of 2 input results in power of 2 output\n\ntheorem reverse_bits_preserves_power_of_two\
+  \ (n : Nat) (h : n < 2^32) \n  (h₁ : n ≠ 0) (h₂ : n &&& (n - 1) = 0) :\n  (reverse_bits\
+  \ n) &&& ((reverse_bits n) - 1) = 0 := sorry\n\n-- Edge cases\n\ntheorem reverse_bits_zero\
+  \ :\n  reverse_bits 0 = 0 := sorry\n\n\ntheorem reverse_bits_one :\n  reverse_bits\
+  \ 1 = 1 := sorry\n\n/--\ninfo: 267\n-/\n#guard_msgs in\n#eval reverse_bits 417\n\
+  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval reverse_bits 0\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval reverse_bits 1024\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

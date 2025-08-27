@@ -1,0 +1,27 @@
+"vc-description": "Write a function to find the longest common prefix string amongst\
+  \ an array of strings.\n\nIf there is no common prefix, return an empty string \"\
+  \".\n\nExample 1:\n\n\nInput: [\"flower\",\"flow\",\"flight\"]\nOutput: \"fl\"\n\
+  \n\nExample 2:\n\n\nInput: [\"dog\",\"racecar\",\"car\"]\nOutput: \"\"\nExplanation:\
+  \ There is no common prefix among the input strings.\n\n\nNote:\n\nAll given inputs\
+  \ are in lowercase letters a-z."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def longest_common_prefix (strs : List String) : String := sorry\n\
+  \ndef min (a b : Nat) : Nat := if a ≤ b then a else b \n"
+"vc-theorems": "theorem empty_list_returns_empty :\n  longest_common_prefix [] = \"\
+  \" := sorry\n\n\ntheorem single_string_returns_self (s : String) :\n  longest_common_prefix\
+  \ [s] = s := sorry\n\n\ntheorem result_is_prefix_of_all {strs : List String} (h\
+  \ : strs ≠ []) :\n  ∀ s ∈ strs, longest_common_prefix strs = s.take (longest_common_prefix\
+  \ strs).length := sorry\n\n\ntheorem not_longer_than_shortest {strs : List String}\
+  \ (h : strs ≠ []) :\n  (longest_common_prefix strs).length ≤ List.foldl min (String.length\
+  \ (List.get! strs 0)) (strs.map String.length) := sorry\n\n\ntheorem different_prefix_shortens\
+  \ {strs : List String} (h₁ : strs ≠ [])\n  (h₂ : (longest_common_prefix strs).length\
+  \ > 0) (different_prefix : String) :\n  (longest_common_prefix (strs ++ [\"x\" ++\
+  \ different_prefix])).length < (longest_common_prefix strs).length := sorry\n\n\n\
+  theorem substring_of_first {strs : List String} (h : strs ≠ []) :\n  longest_common_prefix\
+  \ strs = (List.get! strs 0).take (longest_common_prefix strs).length := sorry\n\n\
+  /--\ninfo: 'fl'\n-/\n#guard_msgs in\n#eval longest_common_prefix [\"flower\", \"\
+  flow\", \"flight\"]\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval longest_common_prefix\
+  \ [\"dog\", \"racecar\", \"car\"]\n\n/--\ninfo: 'inters'\n-/\n#guard_msgs in\n#eval\
+  \ longest_common_prefix [\"interspecies\", \"interstellar\", \"interstate\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

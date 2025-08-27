@@ -1,0 +1,28 @@
+"vc-description": "# Background\n\nA spider web is defined by\n\n* \"rings\" numbered\
+  \ out from the centre as `0`, `1`, `2`, `3`, `4`\n\n\n* \"radials\" labelled clock-wise\
+  \ from the top as `A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`\n\nHere is a picture to\
+  \ help explain:\n\n\n\n\n\n# Web Coordinates\n\nAs you can see, each point where\
+  \ the rings and the radials intersect can be described by a \"web coordinate\".\n\
+  \nSo in this example the spider is at `H3` and the fly is at `E2`\n\n\n# Kata Task\n\
+  \nOur friendly jumping spider is resting and minding his own spidery business at\
+  \ web-coordinate `spider`.\n\nAn inattentive fly bumbles into the web at web-coordinate\
+  \ `fly` and gets itself stuck.\n\nYour task is to calculate and return **the \n\
+  \ distance** the spider must jump to get to the fly.\n\n# Example\n\nThe solution\
+  \ to the scenario described by the picture is ``4.63522``\n\n# Notes\n\n* The centre\
+  \ of the web will always be referred to as `A0` \n* The rings intersect the radials\
+  \ at **evenly** spaced distances of **1 unit**\n\n\n____\n\n\nGood Luck!DM"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def spider_to_fly (spider fly : WebCoord) : Float := sorry\n\n\
+  def number_to_float (n : WebNumber) : Float := sorry\n"
+"vc-theorems": "theorem distance_nonnegative (spider fly : WebCoord) :\n  spider_to_fly\
+  \ spider fly ≥ 0 := sorry\n\n\ntheorem distance_symmetric (spider fly : WebCoord)\
+  \ :\n  spider_to_fly spider fly = spider_to_fly fly spider := sorry\n\n\ntheorem\
+  \ distance_self (coord : WebCoord) :\n  spider_to_fly coord coord = 0 := sorry\n\
+  \n\ntheorem triangle_inequality (spider mid fly : WebCoord) :\n  spider_to_fly spider\
+  \ fly ≤ spider_to_fly spider mid + spider_to_fly mid fly := sorry\n\n\ntheorem distance_to_origin\
+  \ (coord : WebCoord) :\n  spider_to_fly coord ⟨WebLetter.A, WebNumber.N0⟩ = number_to_float\
+  \ coord.number := sorry\n\n\ntheorem same_radial_distance (coord : WebCoord) :\n\
+  \  spider_to_fly coord ⟨coord.letter, WebNumber.N0⟩ = number_to_float coord.number\
+  \ := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

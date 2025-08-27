@@ -1,0 +1,17 @@
+"vc-description": "Complete the solution so that it returns the number of times the\
+  \ search_text is found within the full_text. \n\nUsage example:"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solution (fullText : String) (searchText : String) : Nat :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem solution_basic_properties (fullText searchText : String) :\
+  \ \n  let result := solution fullText searchText\n  (result ≥ 0) ∧ \n  (searchText\
+  \ = \"\" → \n    if fullText = \"\" then result = 1\n    else result = fullText.length\
+  \ + 1) ∧\n  (searchText ≠ \"\" → result ≤ fullText.length) :=\nsorry\n\n\ntheorem\
+  \ solution_identical_strings (s : String) :\n  solution s s = if s = \"\" then s.length\
+  \ + 1 else 1 :=\nsorry\n\n\ntheorem solution_concatenation (s1 s2 : String) :\n\
+  \  s2 ≠ \"\" → solution (s1 ++ s2) s2 ≥ solution s1 s2 :=\nsorry\n\n/--\ninfo: 2\n\
+  -/\n#guard_msgs in\n#eval solution \"abcdeb\" \"b\"\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval solution \"ccddeeccddeecc\" \"cc\"\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval solution \"abab\" \"a\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,30 @@
+"vc-description": "Motu wants to learn Cricket from a coach, but firstly coach wants\
+  \ to test his IQ level, so he gave Motu $1$ $Red$ $ball$ and $1$ $Black$ $ball$\
+  \ , and asked him to buy other $x – 1$ red balls and other $y – 1$ black balls from\
+  \ the market. But he put some conditions on buying balls, that if he has $R$ red\
+  \ and $B$ black balls then he can either buy $B$ red balls or $R$ black balls in\
+  \ one operation. He can perform this operation as many times as he want. But as\
+  \ Motu is not so good in solving problems so he needs your help. So you have to\
+  \ tell him whether his coach’s task possible or not.\n\n-----Input:-----\n- First\
+  \ line will contain $T$, number of testcases. Then the testcases follow. \n- Each\
+  \ testcase contains of a single line of input, two integers $x , y$. \n\n-----Output:-----\n\
+  For each testcase, print $YES$, if it is possible to complete coach task, else print\
+  \ $NO$(without quotes) in a separate line.\n\n-----Constraints-----\n- $1 \\leq\
+  \ T \\leq 100000$\n- $1 \\leq x, y \\leq$ 10^18\n\n-----Sample Input:-----\n2\n\
+  1 2\n2 3\n\n-----Sample Output:-----\nYES\nYES"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_complete_task (x y : Nat) : String := sorry\n\ntheorem\
+  \ can_complete_task_output_valid (x y : Nat) \n    (hx : x > 0) (hy : y > 0) :\n\
+  \    can_complete_task x y = \"YES\" ∨ can_complete_task x y = \"NO\" := sorry\n"
+"vc-theorems": "theorem can_complete_task_coprime (x y : Nat) \n    (hx : x > 0) (hy\
+  \ : y > 0) :\n    can_complete_task x y = \"YES\" ↔ Nat.gcd x y = 1 := sorry\n\n\
+  \ntheorem can_complete_task_not_coprime (x y : Nat)\n    (hx : x > 0) (hy : y >\
+  \ 0) :\n    can_complete_task x y = \"NO\" ↔ Nat.gcd x y > 1 := sorry\n\n\ntheorem\
+  \ can_complete_task_with_one (n : Nat) (h : n > 0) :\n    can_complete_task n 1\
+  \ = \"YES\" ∧ can_complete_task 1 n = \"YES\" := sorry\n\n\ntheorem can_complete_task_same_number\
+  \ (n : Nat) (h : n > 0) :\n    can_complete_task n n = (if n = 1 then \"YES\" else\
+  \ \"NO\") := sorry\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval can_complete_task\
+  \ 1 2\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval can_complete_task 2 3\n\n/--\n\
+  info: 'NO'\n-/\n#guard_msgs in\n#eval can_complete_task 4 6\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

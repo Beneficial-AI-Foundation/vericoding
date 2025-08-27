@@ -1,0 +1,22 @@
+"vc-description": "Write a function which makes a list of strings representing all\
+  \ of the ways you can balance `n` pairs of parentheses\n\n### Examples\n\n```python\n\
+  balanced_parens(0) => [\"\"]\nbalanced_parens(1) => [\"()\"]\nbalanced_parens(2)\
+  \ => [\"()()\",\"(())\"]\nbalanced_parens(3) => [\"()()()\",\"(())()\",\"()(())\"\
+  ,\"(()())\",\"((()))\"]\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef isBalanced (s : String) : Bool :=\
+  \ sorry\ndef balancedParens (n : Nat) : List String := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def catalan (n : Nat) : Nat := sorry\n\ntheorem balanced_parens_output_is_balanced\
+  \ (n : Nat) (h : n ≤ 5) :\n  ∀ s ∈ balancedParens n, isBalanced s = true := sorry\n"
+"vc-theorems": "theorem balanced_parens_length (n : Nat) (h : n ≤ 5) : \n  ∀ s ∈ balancedParens\
+  \ n, s.length = 2 * n := sorry\n\n\ntheorem balanced_parens_unique (n : Nat) (h\
+  \ : n ≤ 5) :\n  (balancedParens n).Nodup := sorry\n\n\ntheorem balanced_parens_only_parens\
+  \ (n : Nat) (h : n ≤ 5) :\n  ∀ s ∈ balancedParens n, ∀ c ∈ s.toList, c = '(' ∨ c\
+  \ = ')' := sorry\n\n\ntheorem balanced_parens_catalan (n : Nat) (h : n ≤ 5) :\n\
+  \  (balancedParens n).length = catalan n := sorry\n\n\ntheorem balanced_parens_non_negative\
+  \ (n : Int) :\n  n ≥ 0 → ∃ (l : List String), l = balancedParens n.toNat := sorry\n\
+  \n/--\ninfo: ['']\n-/\n#guard_msgs in\n#eval balanced_parens 0\n\n/--\ninfo: ['()']\n\
+  -/\n#guard_msgs in\n#eval balanced_parens 1\n\n/--\ninfo: ['(())', '()()']\n-/\n\
+  #guard_msgs in\n#eval balanced_parens 2\n\n/--\ninfo: ['((()))', '(()())', '(())()',\
+  \ '()(())', '()()()']\n-/\n#guard_msgs in\n#eval balanced_parens 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,14 @@
+"vc-description": "Ask a small girl - \"How old are you?\". She always says strange\
+  \ things... Lets help her!\n\n\nFor correct answer program should return int from\
+  \ 0 to 9.\n\nAssume test input string always valid and may look like \n\"1 year\
+  \ old\" or \"5 years old\", etc.. The first char is number only."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_age : String → Except String Nat :=\n  sorry\n"
+"vc-theorems": "theorem get_age_single_digit_extracts_first {n : Nat} (h : n < 10)\
+  \ :\n  get_age s!\"${n} years old\" = .ok n :=\n  sorry\n\n\ntheorem get_age_non_digit_first\
+  \ (s : String) (h: !s.front.isDigit) :\n  ∃ e, get_age s = .error e :=\n  sorry\n\
+  \n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval get_age \"5 years old\"\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval get_age \"1 year old\"\n\n/--\ninfo: 9\n-/\n#guard_msgs\
+  \ in\n#eval get_age \"9 years old\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

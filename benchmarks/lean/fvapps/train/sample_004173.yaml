@@ -1,0 +1,32 @@
+"vc-description": "In computing, there are two primary byte order formats: big-endian\
+  \ and little-endian. Big-endian is used primarily for networking (e.g., IP addresses\
+  \ are transmitted in big-endian) whereas little-endian is used mainly by computers\
+  \ with microprocessors.\n\nHere is an example (using 32-bit integers in hex format):\n\
+  \nLittle-Endian: 00 6D F4 C9 = 7,206,089\n\nBig-Endian:    C9 F4 6D 00 = 3,388,239,104\n\
+  \nYour job is to write a function that switches the byte order of a given integer.\
+  \ The function should take an integer n for the first argument, and the bit-size\
+  \ of the integer for the second argument. The bit size must be a power of 2 greater\
+  \ than or equal to 8. Your function should return a None value if the integer is\
+  \ negative, if the specified bit size is not a power of 2 that is 8 or larger, or\
+  \ if the integer is larger than the specified bit size can handle. In this kata,\
+  \ assume that all integers are unsigned (non-negative) and that all input arguments\
+  \ are integers (no floats, strings, None/nil values, etc.). Remember that you will\
+  \ need to account for padding of null (00) bytes.\n\nHint: bitwise operators are\
+  \ very helpful! :)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def switch_endian (n : Nat) (bits : Nat) : Option Nat := sorry\n\
+  \ntheorem switch_twice_identity \n  (n : Nat) (bits : Nat) : \n  n < 2^bits → \n\
+  \  (bits = 8 ∨ bits = 16 ∨ bits = 32) →\n  ∀ first_switch, switch_endian n bits\
+  \ = some first_switch → \n  switch_endian first_switch bits = some n := \nsorry\n"
+"vc-theorems": "theorem invalid_inputs_return_none \n  (n : Nat) (bits : Nat) :\n\
+  \  bits < 8 → switch_endian n bits = none := \nsorry\n\n\ntheorem number_too_large_returns_none\
+  \ \n  (n : Nat) (bits : Nat) :\n  (bits = 8 ∨ bits = 16 ∨ bits = 32) →\n  n ≥ 2^bits\
+  \ → switch_endian n bits = none :=\nsorry\n\n\ntheorem eight_bit_numbers_unchanged\
+  \ \n  (n : Nat) :\n  n ≤ 255 → \n  switch_endian n 8 = some n :=\nsorry\n\n\ntheorem\
+  \ output_in_valid_range \n  (n : Nat) (bits : Nat) (result : Nat) :\n  (bits = 8\
+  \ ∨ bits = 16 ∨ bits = 32) →\n  switch_endian n bits = some result → \n  0 ≤ result\
+  \ ∧ result < 2^bits :=\nsorry\n\n/--\ninfo: 153\n-/\n#guard_msgs in\n#eval switch_endian\
+  \ 153 8\n\n/--\ninfo: 4261740544\n-/\n#guard_msgs in\n#eval switch_endian 1534 32\n\
+  \n/--\ninfo: None\n-/\n#guard_msgs in\n#eval switch_endian 256 8\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

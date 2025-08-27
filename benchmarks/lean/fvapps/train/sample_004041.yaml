@@ -1,0 +1,30 @@
+"vc-description": "For every string, after every occurrence of `'and'` and `'but'`,\
+  \ insert the substring `'apparently'` directly after the occurrence.\n\nIf input\
+  \ does not contain 'and' or 'but', return the original string. If a blank string,\
+  \ return `''`.\n\nIf substring `'apparently'` is already directly after an `'and'`\
+  \ and/or `'but'`, do not add another. (Do not add duplicates).\n\n\n# Examples:\n\
+  \nInput 1 \n\n    'It was great and I've never been on live television before but\
+  \ sometimes I don't watch this.'\n\nOutput 1\n\n    'It was great and apparently\
+  \ I've never been on live television before but apparently sometimes I don't watch\
+  \ this.'\n\nInput 2\n\n    'but apparently'\n\nOutput 2\n\n    'but apparently'\
+  \ \n(no changes because `'apparently'` is already directly after `'but'` and there\
+  \ should not be a duplicate.)\n\nAn occurrence of `'and'` and/or `'but'` only counts\
+  \ when it is at least one space separated. For example `'andd'` and `'bbut'` do\
+  \ not count as occurrences, whereas `'b but'` and `'and d'` does count.\n\nreference\
+  \ that may help:\nhttps://www.youtube.com/watch?v=rz5TGN7eUcM"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def apparently (s : String) : String := sorry\n\ndef String.occurrences\
+  \ (needle haystack : String) : Nat := sorry\n"
+"vc-theorems": "theorem and_but_count_preserved (s : String) :\n  let result := apparently\
+  \ s\n  (s.occurrences \"and\" = result.occurrences \"and\") ∧ \n  (s.occurrences\
+  \ \"but\" = result.occurrences \"but\") := sorry\n\n\ntheorem length_increases_by_apparently\
+  \ (s : String) :\n  let result := apparently s\n  let len_diff := result.length\
+  \ - s.length\n  len_diff ≥ 0 ∧ len_diff % 11 = 0 := sorry\n\n\ntheorem empty_input_unchanged\
+  \ (s : String) :\n  s = \"\" ∨ s = \" \" ∨ s = \"  \" →\n  apparently s = s := sorry\n\
+  \n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval apparently \"It was great and\
+  \ I\"ve never been on live television before but sometimes I don\"t watch this.\"\
+  \n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval apparently \"but apparently\"\
+  \n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval apparently \"but and apparently\
+  \ apparently apparently apparently\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

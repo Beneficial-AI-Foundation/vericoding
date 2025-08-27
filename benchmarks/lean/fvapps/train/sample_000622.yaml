@@ -1,0 +1,54 @@
+"vc-description": "A key feature of the Siruseri railway network is that it has exactly\
+  \ one route between any pair of stations.\nThe government has chosen three contractors\
+  \ to run the canteens at the stations on the railway network. To ensure that there\
+  \ are no disputes between the contractors it has been decided that if two stations,\
+  \ say $A$ and $B$, are assigned to a particular contractor then all the stations\
+  \ that lie on the route from $A$ to $B$ will also be awarded to the same contractor.\n\
+  The government would like the assignment of stations to the contractors to be as\
+  \ equitable as possible. The government has data on the number of passengers who\
+  \ pass through each station each year. They would like to assign stations so that\
+  \ the maximum number of passengers passing through any contractor's collection of\
+  \ stations is minimized.\nFor instance, suppose the railway network is as follows,\
+  \ where the volume of passenger traffic is indicated by the side of each station.\n\
+  \nOne possible assignment would to award stations $1$ and $3$ to one contractor\
+  \ (there by giving him a traffic of $35$ passengers), station $2$ to the second\
+  \ contractor (traffic of $20$) and stations $4, 5$ and $6$ to the third contractor\
+  \ (traffic of $100$). In this assignment, the maximum traffic for any one contractor\
+  \ is 100. On the other hand if we assigned stations $1, 2$ and $3$ to one contractor,\
+  \ station $4$ and $6$ to the second contractor and station $5$ to the third contractor\
+  \ the maximum traffic for any one contractor is $70$. You can check that you cannot\
+  \ do better. (The assignment $1$, $2$ and $3$ to one contractor, $4$ to the second\
+  \ contractor, and $5$ and $6$ to the third contractor has a lower value for the\
+  \ maximum traffic ($55$) but it is not a valid assignment as the route from $5$\
+  \ to $6$ passes through $4$.)\n\n-----Input:-----\nThe first line of the input contains\
+  \ one integer $N$ indicating the number of railways stations in the network. The\
+  \ stations are numbered $1,2,..., N$. This is followed by $N$ lines of input, lines\
+  \ $2,3,...,N+1$, indicating the volume of traffic at each station. The volume of\
+  \ traffic at station $i$, $1 \\leq i \\leq N$, is given by a single integer in line\
+  \ $i+1$. The next $N-1$ lines of input, lines $N+2, N+3, ..., 2 \\cdot N$, describe\
+  \ the railway network. Each of these lines contains two integers, denoting a pair\
+  \ of stations that are neighbours.\n\n-----Output:-----\nThe output should be a\
+  \ single integer, corresponding to the minimum possible value of the maximum traffic\
+  \ of any contractor among all valid assignment of the stations to the three contractors.\n\
+  \n-----Constraints:-----\n- $1 \\leq N \\leq 3000$.\n\n-----Sample Input-----\n\
+  6\n10\n20\n25\n40\n30\n30\n4 5\n1 3\n3 4\n2 3\n6 4\n\n-----Sample Output-----\n\
+  70"
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum (xs : List Nat) : Nat :=\n\
+  \  match xs with\n  | [] => 0\n  | x :: xs => x + xs.sum\n\n\ndef find_min_max_traffic\
+  \ (n: Nat) (traffic: List Nat) (edges: List (Nat × Nat)) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def abs (n : Nat) : Nat :=\n  n\n"
+"vc-theorems": "theorem min_max_traffic_bounds {n: Nat} {traffic: List Nat} {edges:\
+  \ List (Nat × Nat)}\n  (h₁: n ≥ 3)\n  (h₂: traffic.length = n)\n  (h₃: edges.length\
+  \ = n - 1) :\n  let result := find_min_max_traffic n traffic edges\n  result ≤ traffic.sum\
+  \ ∧ \n  result ≥ Option.get! (List.maximum? traffic) ∧\n  result * 3 ≥ traffic.sum\
+  \ := by\n  sorry\n\n\ntheorem min_max_traffic_symmetric {n: Nat} {traffic: List\
+  \ Nat} {edges: List (Nat × Nat)} \n  (h₁: n ≥ 3)\n  (h₂: traffic.length = n)\n \
+  \ (h₃: edges.length = n - 1) :\n  let reversed_edges := edges.map (fun (e: Nat ×\
+  \ Nat) => (e.2, e.1))\n  find_min_max_traffic n traffic edges = find_min_max_traffic\
+  \ n traffic reversed_edges := by\n  sorry\n\n\ntheorem min_max_traffic_balanced_line\
+  \ {n: Nat}\n  (h: n ≥ 3) :\n  let traffic := List.replicate n 100\n  let edges :=\
+  \ (List.range (n-1)).map (fun i => (i+1, i+2))\n  let result := find_min_max_traffic\
+  \ n traffic edges\n  let expected := (n * 100) / 3\n  abs (result - expected) ≤\
+  \ 100 := by\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

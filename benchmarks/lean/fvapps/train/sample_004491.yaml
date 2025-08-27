@@ -1,0 +1,37 @@
+"vc-description": "Ever since you started work at the grocer, you have been faithfully\
+  \ logging down each item and its category that passes through. One day, your boss\
+  \ walks in and asks, \"Why are we just randomly placing the items everywhere? It's\
+  \ too difficult to find anything in this place!\" Now's your chance to improve the\
+  \ system, impress your boss, and get that raise!\n\nThe input is a comma-separated\
+  \ list with category as the prefix in the form `\"fruit_banana\"`. Your task is\
+  \ to group each item into the 4 categories `Fruit, Meat, Other, Vegetable` and output\
+  \ a string with a category on each line followed by a sorted comma-separated list\
+  \ of items.\n\nFor example, given:\n\n```\n\"fruit_banana,vegetable_carrot,fruit_apple,canned_sardines,drink_juice,fruit_orange\"\
+  \n```\n\noutput:\n\n```\n\"fruit:apple,banana,orange\\nmeat:\\nother:juice,sardines\\\
+  nvegetable:carrot\"\n```\n\nAssume that:\n1. Only strings of the format `category_item`\
+  \ will be passed in\n2. Strings will always be in lower case\n3. Input will not\
+  \ be empty\n4. Category and/or item will not be empty\n5. There will be no duplicate\
+  \ items\n6. All categories may not have items"
+"vc-preamble": "import Imports.AllImports\n\ndef group_groceries (input : String)\
+  \ : String :=\n  sorry\n\ninductive Category where\n  | fruit : Category\n  | meat\
+  \ : Category\n  | vegetable : Category\n  | other : Category\nderiving BEq, Repr\n\
+  \nstructure GroceryItem where\n  category : Category\n  name : String\nderiving\
+  \ Repr\n\n\ndef isValidCategoryName (name : String) : Bool :=  \n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def length4 (s : List α) : Prop := s.length = 4\n\ninductive isSorted\
+  \ : List String → Prop where\n  | nil : isSorted []\n  | single : (x : String) →\
+  \ isSorted [x] \n  | cons : (x y : String) → (rest : List String) → \n         \
+  \ x <= y → isSorted (y::rest) → isSorted (x::y::rest)\n"
+"vc-theorems": "theorem group_groceries_produces_four_lines (input : String) : \n\
+  \  length4 ((group_groceries input).splitOn \"\\n\") :=\n  sorry\n\n\ntheorem group_groceries_uses_expected_categories\
+  \ (input : String) :\n  let lines := (group_groceries input).splitOn \"\\n\"\n \
+  \ lines[0]!.startsWith \"fruit:\" ∧\n  lines[1]!.startsWith \"meat:\" ∧ \n  lines[2]!.startsWith\
+  \ \"other:\" ∧\n  lines[3]!.startsWith \"vegetable:\" :=\n  sorry\n\n\ntheorem group_groceries_items_sorted\
+  \ (input : String) (i : Nat) :\n  let lines := (group_groceries input).splitOn \"\
+  \\n\"\n  let items := (lines[i]!.splitOn \":\")[1]!.splitOn \",\"\n  items.length\
+  \ > 0 → isSorted items :=\n  sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n\
+  #eval group_groceries \"fruit_banana,vegetable_carrot,meat_chicken,drink_juice\"\
+  \n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval group_groceries \"fruit_banana,vegetable_carrot,fruit_apple,canned_sardines,drink_juice,fruit_orange\"\
+  \n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval group_groceries \"fruit_orange\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

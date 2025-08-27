@@ -1,0 +1,12 @@
+"vc-description": "Your task is simply to count the total number of lowercase letters\
+  \ in a string.\n\n## Examples"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def lowercase_count (s : String) : Nat := sorry\n\ntheorem lowercase_count_matches_filter\
+  \ (s : String) :\n  lowercase_count s = (s.data.filter Char.isLower).length := sorry\n"
+"vc-theorems": "theorem lowercase_count_non_negative (s : String) :\n  lowercase_count\
+  \ s ≥ 0 := sorry\n\n\ntheorem all_lowercase_matches_length (s : String) :\n  (s.data.all\
+  \ Char.isLower) → lowercase_count s = s.length := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval lowercase_count \"abc\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval lowercase_count\
+  \ \"abcABC123\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval lowercase_count \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

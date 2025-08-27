@@ -1,0 +1,26 @@
+"vc-description": "Chef loves lucky numbers. Everybody knows that lucky numbers are\
+  \ positive integers whose decimal representation contains only the lucky digits\
+  \ 4 and 7. For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.\n\n\
+  Chef has a positive integer N. He can apply any of the following operations as many\
+  \ times as he want in any order:\n\n-  Add 1 to the number N.\n\n-  Take some digit\
+  \ of N and replace it by any non-zero digit.\n\n-  Add any non-zero leading digit\
+  \ to N.\n\nFind the minimum number of operations that is needed for changing N to\
+  \ the lucky number.\n\n-----Input-----\nThe first line contains a single positive\
+  \ integer T, the number of test cases. T test cases follow. The only line of each\
+  \ test case contains a positive integer N without leading zeros. \n\n-----Output-----\n\
+  For each T test cases print one integer, the minimum number of operations that is\
+  \ needed for changing N to the lucky number.\n\n-----Constraints-----\n\n1 ≤ T ≤\
+  \ 10\n\n1 ≤ N < 10100000\n\n-----Example-----\nInput:\n3\n25\n46\n99\n\nOutput:\n\
+  2\n1\n2"
+"vc-preamble": "import Imports.AllImports\n\ndef calcMinOpsLuckyNum (n : String) :\
+  \ Nat :=\n  sorry\n\n/- Basic properties about operation counting -/"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countNonLuckyDigits (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem result_is_nonnegative (n : String) : \n  calcMinOpsLuckyNum\
+  \ n ≥ 0 :=\nsorry\n\n\ntheorem max_ops_is_length (n : String) :\n  calcMinOpsLuckyNum\
+  \ n ≤ n.length :=\nsorry\n\n/- Helper function to count non-lucky digits -/\n\n\
+  theorem ops_equals_non_lucky_digits (n : String) :\n  calcMinOpsLuckyNum n = countNonLuckyDigits\
+  \ n :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval calc_min_ops_lucky_num\
+  \ \"25\"\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval calc_min_ops_lucky_num \"46\"\
+  \n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval calc_min_ops_lucky_num \"99\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,34 @@
+"vc-description": "A number m of the form 10x + y is divisible by 7 if and only if\
+  \ x − 2y is divisible by 7. In other words, subtract twice the last digit \nfrom\
+  \ the number formed by the remaining digits. Continue to do this until a number\
+  \ known to be divisible or not by 7 is obtained; \nyou can stop when this number\
+  \ has *at most* 2 digits because you are supposed to know if a number of at most\
+  \ 2 digits is divisible by 7 or not.\n\nThe original number is divisible by 7 if\
+  \ and only if the last number obtained using this procedure is divisible by 7. \n\
+  \nExamples:\n\n1 - `m = 371 -> 37 − (2×1) -> 37 − 2 = 35` ; thus, since 35 is divisible\
+  \ by 7, 371 is divisible by 7. \n\nThe number of steps to get the result is `1`.\n\
+  \n2 - `m = 1603 -> 160 - (2 x 3) -> 154 -> 15 - 8 = 7` and 7 is divisible by 7.\
+  \ \n\n3 - `m = 372 -> 37 − (2×2) -> 37 − 4 = 33` ; thus, since 33 is not divisible\
+  \ by 7, 372 is not divisible by 7. \n\nThe number of steps to get the result is\
+  \ `1`.\n\n4 - `m = 477557101->47755708->4775554->477547->47740->4774->469->28` and\
+  \ 28 is divisible by 7, so is 477557101. \n\nThe number of steps is 7.\n\n# Task:\n\
+  Your task is to return to the function ```seven(m)``` (m integer >= 0) an array\
+  \ (or a pair, depending on the language) of numbers, \nthe first being the *last*\
+  \ number `m` with at most 2 digits obtained by your function (this last `m` will\
+  \ be divisible or not by 7), the second one being the number of steps to get the\
+  \ result.\n\n## Forth Note:\nReturn on the stack `number-of-steps, last-number-m-with-at-most-2-digits\
+  \ `\n\n## Examples:\n```\nseven(371) should return [35, 1]\nseven(1603) should return\
+  \ [7, 2]\nseven(477557101) should return [28, 7]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def seven (n : Nat) : Nat × Nat := sorry\n\ntheorem seven_returns_pair\
+  \ (n : Nat) :\n  ∃ (res num : Nat), seven n = (res, num) := sorry\n"
+"vc-theorems": "theorem seven_step_count_non_negative (n : Nat) :\n  (seven n).2 ≥\
+  \ 0 := sorry\n\n\ntheorem seven_result_below_100 (n : Nat) :\n  (seven n).1 < 100\
+  \ := sorry\n\n\ntheorem seven_smaller_inputs (n : Nat) : \n  n < 100 → (seven n).2\
+  \ = 0 ∧ (seven n).1 = n := sorry\n\n\ntheorem seven_order_invariant (n1 n2 : Nat)\
+  \ :\n  (seven n1).1 = (seven n2).1 → \n    (n1 ≤ n2 → (seven n1).2 ≤ (seven n2).2)\
+  \ ∧\n    (n1 ≥ n2 → (seven n1).2 ≥ (seven n2).2) := sorry\n\n/--\ninfo: [35, 1]\n\
+  -/\n#guard_msgs in\n#eval seven 371\n\n/--\ninfo: [7, 2]\n-/\n#guard_msgs in\n#eval\
+  \ seven 1603\n\n/--\ninfo: [28, 7]\n-/\n#guard_msgs in\n#eval seven 477557101\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,22 @@
+"vc-description": "Given a sequence of numbers, find the largest pair sum in the sequence.\n\
+  \nFor example\n```\n[10, 14, 2, 23, 19] -->  42 (= 23 + 19)\n[99, 2, 2, 23, 19]\
+  \  --> 122 (= 99 + 23)\n```\n\nInput sequence contains minimum two elements and\
+  \ every element is an integer."
+"vc-preamble": "import Imports.AllImports\n\ndef largest_pair_sum (l : List Int) :\
+  \ Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSorted (l : List Int) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem output_greater_than_min_pair\n  {l : List Int} (h : l.length\
+  \ ≥ 2) :\n  largest_pair_sum l ≥ 2 * (l.minimum?.getD 0) :=\nsorry\n\n\ntheorem\
+  \ output_less_than_max_pair \n  {l : List Int} (h : l.length ≥ 2) :\n  largest_pair_sum\
+  \ l ≤ 2 * (l.maximum?.getD 0) :=\nsorry\n\n\ntheorem sorted_input_same_output \n\
+  \  {l : List Int} (h : l.length ≥ 2) (sorted : List Int) (h₂ : isSorted sorted)\
+  \ :\n  largest_pair_sum l = largest_pair_sum sorted :=\nsorry\n\n\ntheorem reversed_input_same_output\n\
+  \  {l : List Int} (h : l.length ≥ 2) :\n  largest_pair_sum l = largest_pair_sum\
+  \ l.reverse :=\nsorry\n\n\ntheorem non_negative_sum_non_negative\n  {l : List Int}\
+  \ (h : l.length ≥ 2) (h₂ : ∀ x ∈ l, x ≥ 0) :\n  largest_pair_sum l ≥ 0 :=\nsorry\n\
+  \n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval largest_pair_sum [10, 14, 2, 23,\
+  \ 19]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval largest_pair_sum [-100,\
+  \ -29, -24, -19, 19]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval largest_pair_sum\
+  \ [-10, -8, -16, -18, -19]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,37 @@
+"vc-description": "Given a string (`str`) containing a base-10 integer between `0`\
+  \ and `10000`, convert the integer to its binary representation. At that point,\
+  \ obtain a count of the maximum amount of consecutive 0s. From there, return the\
+  \ count in written form with a capital letter.\n\nIn the very first example, we\
+  \ have an argument of `\"9\"` which is being passed to the method. The binary representation\
+  \ of `9` is `1001` which can be read as: one, zero, zero, one. There are, at most,\
+  \ two consecutive 0s, resulting in the integer `2` as the value of the count. The\
+  \ output in the block of code above reflects the final step of taking `2` from standard\
+  \ form to the written form `\"Two\"` as prompted.\n\nIn the very last example, we\
+  \ have an argument of `\"550\"` which is being passed to the method. The binary\
+  \ representation of `550` is `1000100110` which can be read as: one, zero, zero,\
+  \ zero, one, zero, zero, one, one, zero. There are, at most, three consecutive 0s,\
+  \ resulting in the integer `3` as the value of the count. The output in the block\
+  \ of code above reflects the final step of taking `3` from standard form to the\
+  \ written form of `\"Three\"` as prompted.\n\nOne way, among many, to visualize\
+  \ the end of each step might look like:\n```\nmax_consec_zeros(\"777\")\n1: \"777\"\
+  \n2: 777\n3: 1100001001\n4: 4\n5: \"Four\"\nmax_consec_zeros(\"777\") => \"Four\"\
+  \n```\nHappy coding!"
+"vc-preamble": "import Imports.AllImports\n\ndef max_consec_zeros (n: String) : String\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def toWord (n: Nat) : String :=\n  sorry\n\n-- Property 1: Function\
+  \ should work for any valid positive integer string input"
+"vc-theorems": "theorem max_consec_zeros_valid_input {n: String} (h: ∃ (k: Nat), k\
+  \ > 0 ∧ k ≤ 10^6 ∧ n = toString k) :\n  let result := max_consec_zeros n\n  ∃ word,\
+  \ word ∈ [\"Zero\", \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"\
+  Seven\", \"Eight\", \"Nine\",\n                  \"Ten\", \"Eleven\", \"Twelve\"\
+  , \"Thirteen\"] ∧ result = word :=\nsorry\n\n-- Property 2: Powers of 2 should have\
+  \ n-1 consecutive zeros\n\ntheorem powers_of_two_zeros {n: Nat} (h: n > 0 ∧ n ≤\
+  \ 12) :\n  max_consec_zeros (toString (2^n)) = toWord (n-1) :=\nsorry\n\n-- Property\
+  \ 3: Result should be same for equivalent decimal values\n\ntheorem equivalent_decimal_values\
+  \ {n: Nat} (h: n > 0 ∧ n ≤ 10000) :\n  max_consec_zeros (toString n) = max_consec_zeros\
+  \ (toString (n : Nat)) :=\nsorry\n\n/--\ninfo: 'Two'\n-/\n#guard_msgs in\n#eval\
+  \ max_consec_zeros \"9\"\n\n/--\ninfo: 'Three'\n-/\n#guard_msgs in\n#eval max_consec_zeros\
+  \ \"550\"\n\n/--\ninfo: 'Eight'\n-/\n#guard_msgs in\n#eval max_consec_zeros \"256\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

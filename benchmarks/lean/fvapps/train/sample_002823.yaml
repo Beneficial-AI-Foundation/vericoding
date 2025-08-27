@@ -1,0 +1,29 @@
+"vc-description": "Define two functions: `hex_to_bin` and `bin_to_hex` (or `hexToBin`\
+  \ and `binToHex`)\n\n\n# hex_to_bin\n\nTakes a hexadecimal string as an argument\
+  \ .\n\n**Note:** This string can contain upper or lower case characters and start\
+  \ with any amount of zeros.\n\nReturns the binary representation (without leading\
+  \ zeros) of the numerical value of the hexadecimal string.\n\nExamples:\n\n```\n\
+  \"00F\"    -->  \"1111\"\n\"5\"      -->  \"101\"\n\"00000\"  -->  \"0\"\n\"04D2\"\
+  \   -->  \"10011010010\"\n```\n\n# bin_to_hex\n\nTakes a binary string (with or\
+  \ without leading zeros) as an argument .\n\nReturns the hexadecimal representation\
+  \ of the numerical value of the binary string.\n\n**Note:** Any non-numerical characters\
+  \ should be lower case\n\n\nExamples:\n\n```\n\"1111\"         -->  \"f\"\n\"000101\"\
+  \       -->  \"5\"\n\"10011010010\"  -->  \"4d2\"\n```\n\n**Note:** You can assume\
+  \ all arguments are valid so there is no need for error checking.\n\nOh, and I've\
+  \ disabled a few things.\n\n\nAny feedback would be much appreciated"
+"vc-preamble": "import Imports.AllImports\n\ndef bin_to_hex (b : String) : String\
+  \ := sorry \ndef hex_to_bin (h : String) : String := sorry\n\n\ndef is_hex_digit\
+  \ (c : Char) : Bool := sorry \n\n-- Helper for theorem statement"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_hex_string (s : String) : Bool := \n  s.all is_hex_digit\n"
+"vc-theorems": "theorem hex_to_bin_roundtrip (h : String) :\n  is_hex_string h → \n\
+  \  bin_to_hex (hex_to_bin h) = \n    if h = \"\" then \"0\" \n    else if h = \"\
+  0\" then \"0\"\n    else h := sorry\n\n\ntheorem empty_and_zero_bin_to_hex :\n \
+  \ bin_to_hex \"\" = \"0\" ∧ \n  bin_to_hex \"0\" = \"0\" := sorry\n\n\ntheorem empty_and_zero_hex_to_bin\
+  \ :\n  hex_to_bin \"\" = \"0\" ∧\n  hex_to_bin \"0\" = \"0\" := sorry\n\n/--\ninfo:\
+  \ '5'\n-/\n#guard_msgs in\n#eval bin_to_hex \"000101\"\n\n/--\ninfo: '4d2'\n-/\n\
+  #guard_msgs in\n#eval bin_to_hex \"10011010010\"\n\n/--\ninfo: '0'\n-/\n#guard_msgs\
+  \ in\n#eval bin_to_hex \"000\"\n\n/--\ninfo: '1111'\n-/\n#guard_msgs in\n#eval hex_to_bin\
+  \ \"00F\"\n\n/--\ninfo: '101'\n-/\n#guard_msgs in\n#eval hex_to_bin \"5\"\n\n/--\n\
+  info: '10011010010'\n-/\n#guard_msgs in\n#eval hex_to_bin \"04D2\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

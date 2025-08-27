@@ -1,0 +1,46 @@
+"vc-description": "Design a stack which supports the following operations.\nImplement\
+  \ the CustomStack class:\n\nCustomStack(int maxSize) Initializes the object with\
+  \ maxSize which is the maximum number of elements in the stack or do nothing if\
+  \ the stack reached the maxSize.\nvoid push(int x) Adds x to the top of the stack\
+  \ if the stack hasn't reached the maxSize.\nint pop() Pops and returns the top of\
+  \ stack or -1 if the stack is empty.\nvoid inc(int k, int val) Increments the bottom\
+  \ k elements of the stack by val. If there are less than k elements in the stack,\
+  \ just increment all the elements in the stack.\n\n \nExample 1:\nInput\n[\"CustomStack\"\
+  ,\"push\",\"push\",\"pop\",\"push\",\"push\",\"push\",\"increment\",\"increment\"\
+  ,\"pop\",\"pop\",\"pop\",\"pop\"]\n[[3],[1],[2],[],[2],[3],[4],[5,100],[2,100],[],[],[],[]]\n\
+  Output\n[null,null,null,2,null,null,null,null,null,103,202,201,-1]\nExplanation\n\
+  CustomStack customStack = new CustomStack(3); // Stack is Empty []\ncustomStack.push(1);\
+  \                          // stack becomes [1]\ncustomStack.push(2);          \
+  \                // stack becomes [1, 2]\ncustomStack.pop();                   \
+  \         // return 2 --> Return top of the stack 2, stack becomes [1]\ncustomStack.push(2);\
+  \                          // stack becomes [1, 2]\ncustomStack.push(3);       \
+  \                   // stack becomes [1, 2, 3]\ncustomStack.push(4);           \
+  \               // stack still [1, 2, 3], Don't add another elements as size is\
+  \ 4\ncustomStack.increment(5, 100);                // stack becomes [101, 102, 103]\n\
+  customStack.increment(2, 100);                // stack becomes [201, 202, 103]\n\
+  customStack.pop();                            // return 103 --> Return top of the\
+  \ stack 103, stack becomes [201, 202]\ncustomStack.pop();                      \
+  \      // return 202 --> Return top of the stack 102, stack becomes [201]\ncustomStack.pop();\
+  \                            // return 201 --> Return top of the stack 101, stack\
+  \ becomes []\ncustomStack.pop();                            // return -1 --> Stack\
+  \ is empty return -1.\n\n \nConstraints:\n\n1 <= maxSize <= 1000\n1 <= x <= 1000\n\
+  1 <= k <= 1000\n0 <= val <= 100\nAt most 1000 calls will be made to each method\
+  \ of increment, push and pop each separately."
+"vc-preamble": "import Imports.AllImports\n\ndef CustomStack.new (maxSize : Nat) :\
+  \ CustomStack :=\n  sorry\n\n\ndef CustomStack.push (s : CustomStack) (x : Int)\
+  \ : CustomStack :=\n  sorry\n\n\ndef CustomStack.pop (s : CustomStack) : Int × CustomStack\
+  \ :=\n  sorry\n\n\ndef CustomStack.size (s : CustomStack) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def CustomStack.increment (s : CustomStack) (k : Nat) (val : Int)\
+  \ : CustomStack :=\n  sorry\n"
+"vc-theorems": "theorem stack_size_limit {maxSize : Nat} {items : List Int} (s : CustomStack)\
+  \ :\n  s = CustomStack.new maxSize →\n  (∀ x ∈ items, CustomStack.size (CustomStack.push\
+  \ s x) ≤ maxSize) :=\n  sorry\n\n\ntheorem pop_empty_returns_neg_one {maxSize :\
+  \ Nat} (s : CustomStack) :\n  s = CustomStack.new maxSize →\n  CustomStack.size\
+  \ s = 0 →\n  (CustomStack.pop s).1 = -1 :=\n  sorry\n\n\ntheorem push_pop_single\
+  \ {maxSize : Nat} {val : Int} (s : CustomStack) :\n  maxSize > 0 →\n  s = CustomStack.new\
+  \ maxSize →\n  (CustomStack.pop (CustomStack.push s val)).1 = val :=\n  sorry\n\n\
+  \ntheorem empty_increment_no_effect {maxSize : Nat} (s : CustomStack) :\n  s = CustomStack.new\
+  \ maxSize →\n  CustomStack.size s = 0 →\n  (CustomStack.pop (CustomStack.increment\
+  \ s 1 100)).1 = -1 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

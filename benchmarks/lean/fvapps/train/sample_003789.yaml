@@ -1,0 +1,28 @@
+"vc-description": "Everybody knows the classic [\"half your age plus seven\"](https://en.wikipedia.org/wiki/Age_disparity_in_sexual_relationships#The_.22half-your-age-plus-seven.22_rule)\
+  \ dating rule that a lot of people follow (including myself). It's the 'recommended'\
+  \ age range in which to date someone. \n\n\n\n\n```minimum age <= your age <= maximum\
+  \ age```\n#Task\n\nGiven an integer (1 <= n <= 100) representing a person's age,\
+  \ return their minimum and maximum age range.\n\nThis equation doesn't work when\
+  \ the age <= 14, so use this equation instead:\n```\nmin = age - 0.10 * age\nmax\
+  \ = age + 0.10 * age\n```\nYou should floor all your answers so that an integer\
+  \ is given instead of a float (which doesn't represent age). ```Return your answer\
+  \ in the form [min]-[max]```\n\n##Examples:\n\n```\nage = 27   =>   20-40\nage =\
+  \ 5    =>   4-5\nage = 17   =>   15-20\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def dating_range (age : Int) : String := sorry\n\ntheorem dating_range_child\
+  \ (age : Int) (h : 1 ≤ age ∧ age ≤ 14) : \n  let result := dating_range age\n  let\
+  \ min_age := (result.splitOn \"-\").head!.toInt!\n  let max_age := (result.splitOn\
+  \ \"-\").getLast!.toInt!\n  min_age = (age * 9/10) ∧ \n  max_age = (age * 11/10)\
+  \ ∧\n  min_age ≤ age ∧ age ≤ max_age := sorry \n"
+"vc-theorems": "theorem dating_range_adult (age : Int) (h : 15 ≤ age ∧ age ≤ 100)\
+  \ :\n  let result := dating_range age\n  let min_age := (result.splitOn \"-\").head!.toInt!\n\
+  \  let max_age := (result.splitOn \"-\").getLast!.toInt!\n  min_age = age/2 + 7\
+  \ ∧\n  max_age = (age-7) * 2 ∧\n  min_age ≤ age ∧ age ≤ max_age := sorry\n\n\ntheorem\
+  \ dating_range_format (age : Int) (h : 1 ≤ age ∧ age ≤ 100) :\n  let result := dating_range\
+  \ age\n  let parts := result.splitOn \"-\"\n  result.length > 0 ∧\n  parts.length\
+  \ = 2 ∧\n  let min_age := parts.head!.toInt!\n  let max_age := parts.getLast!.toInt!\n\
+  \  min_age ≤ max_age := sorry\n\n/--\ninfo: '15-20'\n-/\n#guard_msgs in\n#eval dating_range\
+  \ 17\n\n/--\ninfo: '9-11'\n-/\n#guard_msgs in\n#eval dating_range 10\n\n/--\ninfo:\
+  \ '24-56'\n-/\n#guard_msgs in\n#eval dating_range 35\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

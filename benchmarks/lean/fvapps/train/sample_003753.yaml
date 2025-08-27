@@ -1,0 +1,25 @@
+"vc-description": "Write a function which outputs the positions of matching bracket\
+  \ pairs. The output should be a dictionary with keys the positions of the open brackets\
+  \ '(' and values the corresponding positions of the closing brackets ')'.\n\nFor\
+  \ example: input = \"(first)and(second)\" should return {0:6, 10:17}\n\nIf brackets\
+  \ cannot be paired or if the order is invalid (e.g. ')(') return False. In this\
+  \ kata we care only about the positions of round brackets '()', other types of brackets\
+  \ should be ignored."
+"vc-preamble": "import Imports.AllImports\n\ndef Pos2Nat (p : String.Pos) : Nat :=\
+  \ sorry\ndef Nat2Pos (n : Nat) : String.Pos := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def bracket_pairs (s : String) : Option (List (String.Pos × String.Pos))\
+  \ := sorry\n\ntheorem bracket_pairs_valid_indices {s : String} {pairs : List (String.Pos\
+  \ × String.Pos)} \n    (h1 : bracket_pairs s = some pairs)\n    (open_pos close_pos\
+  \ : String.Pos)\n    (h2 : (open_pos, close_pos) ∈ pairs) :\n    s.get open_pos\
+  \ = '(' ∧ \n    s.get close_pos = ')' ∧ \n    Pos2Nat open_pos < Pos2Nat close_pos\
+  \ :=\nsorry\n"
+"vc-theorems": "theorem no_brackets_empty_result {s : String} :\n  (∀ c, c ∈ s.data\
+  \ → c ≠ '(' ∧ c ≠ ')') →\n  bracket_pairs s = some [] :=\nsorry\n\n\ntheorem only_closing_brackets_false\
+  \ {s : String} :\n  (∀ c, c ∈ s.data → c = ')') →\n  s ≠ \"\" →\n  bracket_pairs\
+  \ s = none :=\nsorry\n\n\ntheorem only_opening_brackets_false {s : String} :\n \
+  \ (∀ c, c ∈ s.data → c = '(') →\n  s ≠ \"\" →\n  bracket_pairs s = none :=\nsorry\n\
+  \n/--\ninfo: {3: 8}\n-/\n#guard_msgs in\n#eval bracket_pairs \"len(list)\"\n\n/--\n\
+  info: {}\n-/\n#guard_msgs in\n#eval bracket_pairs \"string\"\n\n/--\ninfo: {0: 9,\
+  \ 2: 4, 6: 7}\n-/\n#guard_msgs in\n#eval bracket_pairs \"(a(b)c()d)\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

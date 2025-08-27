@@ -1,0 +1,20 @@
+"vc-description": "Program the function distance(p1, p2) which returns the distance\
+  \ between the points p1 and p2 in n-dimensional space. p1 and p2 will be given as\
+  \ arrays.\n\nYour program should work for all lengths of arrays, and should return\
+  \ -1 if the arrays aren't of the same length or if both arrays are empty sets.\n\
+  \nIf you don't know how to measure the distance between two points, go here:\nhttp://mathworld.wolfram.com/Distance.html"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def distance (p1 p2 : List Float) : Float :=\n  sorry\n"
+"vc-theorems": "theorem same_point_zero_distance (point : List Float) :\n  distance\
+  \ point point = (if point.isEmpty then -1 else 0) :=\nsorry\n\n\ntheorem different_length_arrays\
+  \ {p1 p2 : List Float} :\n  p1.length ≠ p2.length → distance p1 p2 = -1 :=\nsorry\n\
+  \n\ntheorem distance_is_symmetric {point : List Float} (h : point.length > 0) :\n\
+  \  let origin := List.replicate point.length 0\n  distance origin point = distance\
+  \ point origin :=\nsorry\n\n\ntheorem triangle_inequality {point : List Float} (h\
+  \ : point.length > 0) :\n  let origin := List.replicate point.length 0\n  let midpoint\
+  \ := point.map (fun x => x / 2)\n  distance origin point ≤ distance origin midpoint\
+  \ + distance midpoint point :=\nsorry\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval\
+  \ distance [] []\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval distance [1] [1, 1,\
+  \ 1, 1, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

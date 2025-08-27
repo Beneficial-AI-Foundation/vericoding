@@ -1,0 +1,57 @@
+"vc-description": "Introduction \n\nMr. Safety loves numeric locks and his Nokia 3310.\
+  \ He locked almost everything in his house. He is so smart and he doesn't need to\
+  \ remember the combinations. He has an algorithm to generate new passcodes on his\
+  \ Nokia cell phone. \n\n\n Task \n\nCan you crack his numeric locks? Mr. Safety's\
+  \ treasures wait for you. Write an algorithm to open his numeric locks. Can you\
+  \ do it without his Nokia 3310? \n\nInput \n\nThe `str` or `message` (Python) input\
+  \ string consists of lowercase and upercase characters. It's a real object that\
+  \ you want to unlock.\n\nOutput \nReturn a string that only consists of digits.\n\
+  \nExample\n```\nunlock(\"Nokia\")  // => 66542\nunlock(\"Valut\")  // => 82588\n\
+  unlock(\"toilet\") // => 864538\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def unlock (s : String) : String := sorry \n\ntheorem unlock_concatenation\
+  \ (s1 s2 : String) : \n  unlock (s1 ++ s2) = unlock s1 ++ unlock s2 := sorry\n"
+"vc-theorems": "theorem unlock_lowercase_a : unlock \"a\" = \"2\" := sorry\ntheorem\
+  \ unlock_lowercase_b : unlock \"b\" = \"2\" := sorry\n\ntheorem unlock_lowercase_c\
+  \ : unlock \"c\" = \"2\" := sorry\n\ntheorem unlock_lowercase_d : unlock \"d\" =\
+  \ \"3\" := sorry\n\ntheorem unlock_lowercase_e : unlock \"e\" = \"3\" := sorry\n\
+  theorem unlock_lowercase_f : unlock \"f\" = \"3\" := sorry\n\n\ntheorem unlock_lowercase_g\
+  \ : unlock \"g\" = \"4\" := sorry\ntheorem unlock_lowercase_h : unlock \"h\" = \"\
+  4\" := sorry\n\ntheorem unlock_lowercase_i : unlock \"i\" = \"4\" := sorry\n\ntheorem\
+  \ unlock_lowercase_j : unlock \"j\" = \"5\" := sorry\n\ntheorem unlock_lowercase_k\
+  \ : unlock \"k\" = \"5\" := sorry\ntheorem unlock_lowercase_l : unlock \"l\" = \"\
+  5\" := sorry\n\n\ntheorem unlock_lowercase_m : unlock \"m\" = \"6\" := sorry\ntheorem\
+  \ unlock_lowercase_n : unlock \"n\" = \"6\" := sorry\n\ntheorem unlock_lowercase_o\
+  \ : unlock \"o\" = \"6\" := sorry\n\ntheorem unlock_lowercase_p : unlock \"p\" =\
+  \ \"7\" := sorry\n\ntheorem unlock_lowercase_q : unlock \"q\" = \"7\" := sorry\n\
+  theorem unlock_lowercase_r : unlock \"r\" = \"7\" := sorry\n\ntheorem unlock_lowercase_s\
+  \ : unlock \"s\" = \"7\" := sorry\n\ntheorem unlock_lowercase_t : unlock \"t\" =\
+  \ \"8\" := sorry\n\ntheorem unlock_lowercase_u : unlock \"u\" = \"8\" := sorry\n\
+  theorem unlock_lowercase_v : unlock \"v\" = \"8\" := sorry\n\n\ntheorem unlock_lowercase_w\
+  \ : unlock \"w\" = \"9\" := sorry\ntheorem unlock_lowercase_x : unlock \"x\" = \"\
+  9\" := sorry\n\ntheorem unlock_lowercase_y : unlock \"y\" = \"9\" := sorry\ntheorem\
+  \ unlock_lowercase_z : unlock \"z\" = \"9\" := sorry\n\n\ntheorem unlock_uppercase_a\
+  \ : unlock \"A\" = \"2\" := sorry\ntheorem unlock_uppercase_b : unlock \"B\" = \"\
+  2\" := sorry\n\ntheorem unlock_uppercase_c : unlock \"C\" = \"2\" := sorry\n\ntheorem\
+  \ unlock_uppercase_d : unlock \"D\" = \"3\" := sorry\n\ntheorem unlock_uppercase_e\
+  \ : unlock \"E\" = \"3\" := sorry\ntheorem unlock_uppercase_f : unlock \"F\" = \"\
+  3\" := sorry\n\n\ntheorem unlock_uppercase_g : unlock \"G\" = \"4\" := sorry\ntheorem\
+  \ unlock_uppercase_h : unlock \"H\" = \"4\" := sorry\n\ntheorem unlock_uppercase_i\
+  \ : unlock \"I\" = \"4\" := sorry\n\ntheorem unlock_uppercase_j : unlock \"J\" =\
+  \ \"5\" := sorry\n\ntheorem unlock_uppercase_k : unlock \"K\" = \"5\" := sorry\n\
+  theorem unlock_uppercase_l : unlock \"L\" = \"5\" := sorry\n\n\ntheorem unlock_uppercase_m\
+  \ : unlock \"M\" = \"6\" := sorry\ntheorem unlock_uppercase_n : unlock \"N\" = \"\
+  6\" := sorry\n\ntheorem unlock_uppercase_o : unlock \"O\" = \"6\" := sorry\n\ntheorem\
+  \ unlock_uppercase_p : unlock \"P\" = \"7\" := sorry\n\ntheorem unlock_uppercase_q\
+  \ : unlock \"Q\" = \"7\" := sorry\ntheorem unlock_uppercase_r : unlock \"R\" = \"\
+  7\" := sorry\n\ntheorem unlock_uppercase_s : unlock \"S\" = \"7\" := sorry\n\ntheorem\
+  \ unlock_uppercase_t : unlock \"T\" = \"8\" := sorry\n\ntheorem unlock_uppercase_u\
+  \ : unlock \"U\" = \"8\" := sorry\ntheorem unlock_uppercase_v : unlock \"V\" = \"\
+  8\" := sorry\n\n\ntheorem unlock_uppercase_w : unlock \"W\" = \"9\" := sorry\ntheorem\
+  \ unlock_uppercase_x : unlock \"X\" = \"9\" := sorry\n\ntheorem unlock_uppercase_y\
+  \ : unlock \"Y\" = \"9\" := sorry\ntheorem unlock_uppercase_z : unlock \"Z\" = \"\
+  9\" := sorry\n\n/--\ninfo: '66542'\n-/\n#guard_msgs in\n#eval unlock \"Nokia\"\n\
+  \n/--\ninfo: '82588'\n-/\n#guard_msgs in\n#eval unlock \"Valut\"\n\n/--\ninfo: '864538'\n\
+  -/\n#guard_msgs in\n#eval unlock \"toilet\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,24 @@
+"vc-description": "The alphabetized kata\n---------------------\n\nRe-order the characters\
+  \ of a string, so that they are concatenated into a new string in \"case-insensitively-alphabetical-order-of-appearance\"\
+  \ order. Whitespace and punctuation shall simply be removed!\n\nThe input is restricted\
+  \ to contain no numerals and only words containing the english alphabet letters.\n\
+  \nExample: \n\n```python\nalphabetized(\"The Holy Bible\") # \"BbeehHilloTy\"\n\
+  ```\n\n_Inspired by [Tauba Auerbach](http://www.taubaauerbach.com/view.php?id=73)_"
+"vc-preamble": "import Imports.AllImports\n\ndef alphabetized (s : String) : String\
+  \ := sorry\n\ndef sorted_list (l : List Char) : List Char := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isAlpha (c : Char) : Bool := sorry\n\ntheorem alphabetized_is_sorted\
+  \ (s : String) :\n  let result := alphabetized s\n  result = String.mk (sorted_list\
+  \ (result.data)) := sorry\n"
+"vc-theorems": "theorem alphabetized_only_letters (s : String) :\n  let result :=\
+  \ alphabetized s\n  ∀ c ∈ result.data, isAlpha c := sorry\n\n\ntheorem alphabetized_preserves_count\
+  \ (s : String) :\n  let result := alphabetized s\n  let original_letters := s.data.filter\
+  \ isAlpha\n  result.length = original_letters.length ∧ \n  sorted_list (result.data.map\
+  \ Char.toLower) = sorted_list (original_letters.map Char.toLower) := sorry\n\n\n\
+  theorem alphabetized_empty_string :\n  alphabetized \"\" = \"\" := sorry\n\n\ntheorem\
+  \ alphabetized_no_letters (s : String) :\n  (∀ c ∈ s.data, ¬isAlpha c) →\n  alphabetized\
+  \ s = \"\" := sorry\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval alphabetized \"\"\
+  \n\n/--\ninfo: 'BbeehHilloTy'\n-/\n#guard_msgs in\n#eval alphabetized \"The Holy\
+  \ Bible\"\n\n/--\ninfo: 'aaaaCcdddeLnooorstTWy'\n-/\n#guard_msgs in\n#eval alphabetized\
+  \ \"CodeWars can\"t Load Today\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

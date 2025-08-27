@@ -1,0 +1,27 @@
+"vc-description": "Consider an infinite full binary tree (each node has two children\
+  \ except the leaf nodes) defined as follows. For a node labelled v its left child\
+  \ will be labelled 2*v and its right child will be labelled 2*v+1. The root is labelled\
+  \ as 1.\nYou are given N queries of the form i j. For each query, you have to print\
+  \ the length of the shortest path between node labelled i and  node labelled j.\n\
+  \n-----Input-----\nFirst line contains N, the number of queries. Each query consists\
+  \ of two space separated integers i and j in one line.\n\n-----Output-----\nFor\
+  \ each query, print the required answer in one line.\n\n-----Constraints-----\n\
+  - 1 ≤ N ≤ 105\n- 1 ≤ i,j ≤ 109\n\n-----Example-----\nInput:\n3\n1 2\n2 3\n4 3\n\n\
+  Output:\n1\n2\n3\n\n-----Explanation-----\nFor first query, 1 is directly connected\
+  \ to 2 by an edge. Hence distance 1."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def shortest_path_binary_tree (i j : Nat) : Nat := sorry\n\ntheorem\
+  \ path_to_self {i : Nat} (h : i > 0) : \n  shortest_path_binary_tree i i = 0 :=\
+  \ sorry\n"
+"vc-theorems": "theorem path_is_symmetric {i j : Nat} (hi : i > 0) (hj : j > 0) :\n\
+  \  shortest_path_binary_tree i j = shortest_path_binary_tree j i := sorry\n\n\n\
+  theorem path_is_nonneg {i j : Nat} (hi : i > 0) (hj : j > 0) :\n  shortest_path_binary_tree\
+  \ i j ≥ 0 := sorry \n\n\ntheorem parent_child_distance {i : Nat} (h : i > 1) :\n\
+  \  shortest_path_binary_tree i (i / 2) = 1 := sorry\n\n\ntheorem triangle_inequality\
+  \ {i j k : Nat} (hi : i > 0) (hj : j > 0) (hk : k > 0) :\n  shortest_path_binary_tree\
+  \ i j ≤ shortest_path_binary_tree i k + shortest_path_binary_tree k j := sorry\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval shortest_path_binary_tree 1 2\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval shortest_path_binary_tree 2 3\n\n/--\ninfo: 3\n\
+  -/\n#guard_msgs in\n#eval shortest_path_binary_tree 4 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

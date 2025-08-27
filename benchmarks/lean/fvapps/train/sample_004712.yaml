@@ -1,0 +1,34 @@
+"vc-description": "## **Instructions**\n\nThe goal of this kata is two-fold:\n\n1.)\
+  \ You must produce a fibonacci sequence in the form of an array, containing a number\
+  \ of items equal to the input provided.\n  \n2.) You must replace all numbers in\
+  \ the sequence `divisible by 3` with `Fizz`, those `divisible by 5` with `Buzz`,\
+  \ and those `divisible by both 3 and 5` with `FizzBuzz`.\n\nFor the sake of this\
+  \ kata, you can assume all input will be a positive integer.\n\n## **Use Cases**\n\
+  \nReturn output must be in the form of an array, with the numbers as integers and\
+  \ the replaced numbers (fizzbuzz) as strings.\n\n## **Examples**\n\nInput: \n\n\
+  ```python\nfibs_fizz_buzz(5)\n```\nOutput:\n~~~~\n[ 1, 1, 2, 'Fizz', 'Buzz' ]\n\
+  ~~~~\n\nInput:\n\n```python\nfibs_fizz_buzz(1)\n```\nOutput:\n~~~~\n[1]\n~~~~\n\n\
+  Input:\n\n```python\nfibs_fizz_buzz(20)\n```\nOutput:\n~~~~\n[1,1,2,\"Fizz\",\"\
+  Buzz\",8,13,\"Fizz\",34,\"Buzz\",89,\"Fizz\",233,377,\"Buzz\",\"Fizz\",1597,2584,4181,\"\
+  FizzBuzz\"]\n~~~~\n\n##Good Luck!##"
+"vc-preamble": "import Imports.AllImports\n\ndef fib : Nat → Nat \n| 0 => 0\n| 1 =>\
+  \ 1\n| n + 2 => fib (n + 1) + fib n\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def fibs_fizz_buzz (n : Nat) : List (String ⊕ Nat) :=\n  sorry\n"
+"vc-theorems": "theorem fibs_fizz_buzz_length (n : Nat) :\n  List.length (fibs_fizz_buzz\
+  \ n) = n :=\nsorry\n\n\ntheorem fibs_fizz_buzz_first_values {n : Nat} (h : n ≥ 1)\
+  \ :\n  match fibs_fizz_buzz n with\n  | [] => False\n  | x::_ => x = Sum.inr 1\n\
+  :=\nsorry\n\n\ntheorem fibs_fizz_buzz_first_two {n : Nat} (h : n ≥ 2) :\n  match\
+  \ fibs_fizz_buzz n with\n  | []      => False \n  | [_]     => False\n  | x::y::_\
+  \ => x = Sum.inr 1 ∧ y = Sum.inr 1\n:=\nsorry\n\n\ntheorem fibs_fizz_buzz_rules\
+  \ {n : Nat} (i : Nat) (h : i < n) :\n  let result := (fibs_fizz_buzz n).get ⟨i,\
+  \ by {\n    rw [fibs_fizz_buzz_length n]\n    exact h\n  }⟩\n  let fibonacci :=\
+  \ fib i\n  match result with\n  | Sum.inl s => \n    (fibonacci % 15 = 0 ∧ s = \"\
+  FizzBuzz\") ∨\n    (fibonacci % 3 = 0 ∧ fibonacci % 5 ≠ 0 ∧ s = \"Fizz\") ∨\n  \
+  \  (fibonacci % 5 = 0 ∧ fibonacci % 3 ≠ 0 ∧ s = \"Buzz\")\n  | Sum.inr k => fibonacci\
+  \ % 3 ≠ 0 ∧ fibonacci % 5 ≠ 0 ∧ k = fibonacci\n:=\nsorry\n\n/--\ninfo: [1, 1, 2,\
+  \ 'Fizz', 'Buzz']\n-/\n#guard_msgs in\n#eval fibs_fizz_buzz 5\n\n/--\ninfo: [1]\n\
+  -/\n#guard_msgs in\n#eval fibs_fizz_buzz 1\n\n/--\ninfo: [1, 1, 2, 'Fizz', 'Buzz',\
+  \ 8, 13, 'Fizz', 34, 'Buzz', 89, 'Fizz', 233, 377, 'Buzz', 'Fizz', 1597, 2584, 4181,\
+  \ 'FizzBuzz']\n-/\n#guard_msgs in\n#eval fibs_fizz_buzz 20\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

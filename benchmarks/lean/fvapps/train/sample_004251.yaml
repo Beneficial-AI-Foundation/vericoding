@@ -1,0 +1,34 @@
+"vc-description": "You task is to implement an simple interpreter for the notorious\
+  \ esoteric language [HQ9+](https://esolangs.org/wiki/HQ9+) that will work for a\
+  \ single character input:\n\n- If the input is `'H'`, return `'Hello World!'`\n\
+  - If the input is `'Q'`, return the input\n- If the input is `'9'`, return the full\
+  \ lyrics of [99 Bottles of Beer](http://www.99-bottles-of-beer.net/lyrics.html).\
+  \ It should be formatted like this:\n\n```if:rust\n__Note__: In Rust, return `Some`\
+  \ containing the appropriate value.\n```\n\n```\n99 bottles of beer on the wall,\
+  \ 99 bottles of beer.\nTake one down and pass it around, 98 bottles of beer on the\
+  \ wall.\n98 bottles of beer on the wall, 98 bottles of beer.\nTake one down and\
+  \ pass it around, 97 bottles of beer on the wall.\n97 bottles of beer on the wall,\
+  \ 97 bottles of beer.\nTake one down and pass it around, 96 bottles of beer on the\
+  \ wall.\n...\n...\n...\n2 bottles of beer on the wall, 2 bottles of beer.\nTake\
+  \ one down and pass it around, 1 bottle of beer on the wall.\n1 bottle of beer on\
+  \ the wall, 1 bottle of beer.\nTake one down and pass it around, no more bottles\
+  \ of beer on the wall.\nNo more bottles of beer on the wall, no more bottles of\
+  \ beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n```\n\
+  \n- For everything else, don't return anything (return `null` in C#, `None` in Rust).\n\
+  \n(`+` has no visible effects so we can safely ignore it.)"
+"vc-preamble": "import Imports.AllImports\n\ndef HQ9 (s : String) : Option String\
+  \ :=\n  sorry\n\n\ndef contains (haystack needle : String) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count (haystack needle : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem hq9_invalid_none :\n  HQ9 \"\" = none ∧ HQ9 \" \" = none :=\n\
+  \  sorry\n\n\ntheorem h_returns_hello :\n  HQ9 \"H\" = some \"Hello World!\" :=\n\
+  \  sorry\n\n\ntheorem q_returns_q :\n  HQ9 \"Q\" = some \"Q\" :=\n  sorry\n\n\n\
+  theorem nine_returns_song (result : String) :\n  HQ9 \"9\" = some result →\n  contains\
+  \ result \"99 bottles of beer\" = true ∧\n  contains result \"1 bottle of beer\"\
+  \ = true ∧\n  contains (String.toLower result) \"no more bottles of beer\" = true\
+  \ ∧\n  count result \"of beer\" ≥ 190 ∧\n  count result \"\\n\" ≥ 99 :=\n  sorry\n\
+  \n\ntheorem non_hq9_returns_none (s : String) :\n  s ≠ \"H\" → s ≠ \"Q\" → s ≠ \"\
+  9\" →\n  HQ9 s = none :=\n  sorry\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval\
+  \ HQ9 \"X\"\n\n/--\ninfo: 'Hello World!'\n-/\n#guard_msgs in\n#eval HQ9 \"H\"\n\n\
+  /--\ninfo: 'Q'\n-/\n#guard_msgs in\n#eval HQ9 \"Q\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

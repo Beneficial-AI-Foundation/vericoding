@@ -1,0 +1,18 @@
+"vc-description": "Goal\nGiven a list of elements [a1, a2, ..., an], with each ai\
+  \ being a string, write a function **majority** that returns the value that appears\
+  \ the most in the list. \n\nIf there's no winner, the function should return None,\
+  \ NULL, nil, etc, based on the programming language.\n\nExample\nmajority([\"A\"\
+  , \"B\", \"A\"]) returns \"A\"\nmajority([\"A\", \"B\", \"B\", \"A\"]) returns None"
+"vc-preamble": "import Imports.AllImports\n\ndef count (xs : List α) (a : α) : Nat\
+  \ :=\n  xs.foldl (fun acc x => if x = a then acc + 1 else acc) 0\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def majority : List α → Option α := sorry\n\ntheorem majority_exists\
+  \ {arr : List α} {x : α}\n  (h : count arr x > arr.length / 2) :\n  majority arr\
+  \ = some x := sorry\n"
+"vc-theorems": "theorem majority_empty :\n  majority ([] : List α) = none := sorry\n\
+  \n\ntheorem majority_single_element {arr : List α} {x : α}\n  (h_nonempty : arr\
+  \ ≠ [])\n  (h_all_same : ∀ i, arr.get ⟨i, sorry⟩ = x) :\n  majority arr = some x\
+  \ := sorry\n\n/--\ninfo: 'A'\n-/\n#guard_msgs in\n#eval majority [\"A\", \"B\",\
+  \ \"A\"]\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval majority [\"A\", \"B\", \"\
+  C\"]\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval majority []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

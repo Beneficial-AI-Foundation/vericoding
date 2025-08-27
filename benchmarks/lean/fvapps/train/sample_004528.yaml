@@ -1,0 +1,19 @@
+"vc-description": "# Description:\n\n Move all exclamation marks to the end of the\
+  \ sentence\n\n# Examples\n\n```\nremove(\"Hi!\") === \"Hi!\"\nremove(\"Hi! Hi!\"\
+  ) === \"Hi Hi!!\"\nremove(\"Hi! Hi! Hi!\") === \"Hi Hi Hi!!!\"\nremove(\"Hi! !Hi\
+  \ Hi!\") === \"Hi Hi Hi!!!\"\nremove(\"Hi! Hi!! Hi!\") === \"Hi Hi Hi!!!!\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def remove (s : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem remove_preserves_length (s : String) :\n  s.length = (remove\
+  \ s).length :=\nsorry\n\n\ntheorem remove_preserves_exclamation_count (s : String)\
+  \ :\n  (s.data.filter (· = '!')).length = ((remove s).data.filter (· = '!')).length\
+  \ :=\nsorry\n\n\ntheorem remove_exclamations_at_end (s : String) : \n  let result\
+  \ := remove s\n  let firstExcl := result.data.findIdx (· = '!')\n  firstExcl ≠ result.length\
+  \ →\n  (∀ i, firstExcl ≤ i ∧ i < result.length → result.data[i]! = '!') ∧\n  (∀\
+  \ i, 0 ≤ i ∧ i < firstExcl → result.data[i]! ≠ '!') :=\nsorry\n\n\ntheorem remove_preserves_non_exclamations\
+  \ (s : String) :\n  (s.data.filter (· ≠ '!')) = ((remove s).data.filter (· ≠ '!'))\
+  \ := \nsorry\n\n/--\ninfo: 'Hi!'\n-/\n#guard_msgs in\n#eval remove \"Hi!\"\n\n/--\n\
+  info: 'Hi Hi!!'\n-/\n#guard_msgs in\n#eval remove \"Hi! Hi!\"\n\n/--\ninfo: 'Hi\
+  \ Hi Hi!!!!'\n-/\n#guard_msgs in\n#eval remove \"Hi! Hi!! Hi!\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

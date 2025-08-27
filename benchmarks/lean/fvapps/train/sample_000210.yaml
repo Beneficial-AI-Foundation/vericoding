@@ -1,0 +1,25 @@
+"vc-description": "Given an array nums of integers, a move consists of choosing any\
+  \ element and decreasing it by 1.\nAn array A is a zigzag array if either:\n\nEvery\
+  \ even-indexed element is greater than adjacent elements, ie. A[0] > A[1] < A[2]\
+  \ > A[3] < A[4] > ...\nOR, every odd-indexed element is greater than adjacent elements,\
+  \ ie. A[0] < A[1] > A[2] < A[3] > A[4] < ...\n\nReturn the minimum number of moves\
+  \ to transform the given array nums into a zigzag array.\n \nExample 1:\nInput:\
+  \ nums = [1,2,3]\nOutput: 2\nExplanation: We can decrease 2 to 0 or 3 to 1.\n\n\
+  Example 2:\nInput: nums = [9,6,1,6,2]\nOutput: 4\n\n \nConstraints:\n\n1 <= nums.length\
+  \ <= 1000\n1 <= nums[i] <= 1000"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def moves_to_make_zigzag (nums: List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem moves_nonnegative (nums: List Nat) :\n  moves_to_make_zigzag\
+  \ nums ≥ 0 :=\nsorry\n\n\ntheorem single_element_zero (nums: List Nat) :\n  nums.length\
+  \ = 1 → moves_to_make_zigzag nums = 0 :=\nsorry\n\n\ntheorem zigzag_no_moves (nums:\
+  \ List Nat) (h1: nums.length ≥ 2) \n  (h2: moves_to_make_zigzag nums = 0) \n  (i:\
+  \ Fin nums.length) (h3: 1 ≤ i.val) (h4: i.val < nums.length - 1) :\n  let im1 :\
+  \ Fin nums.length := ⟨i.val - 1, sorry⟩\n  let ip1 : Fin nums.length := ⟨i.val +\
+  \ 1, sorry⟩\n  ((nums.get i > nums.get im1 ∧ nums.get i > nums.get ip1) ∨\n   (nums.get\
+  \ i < nums.get im1 ∧ nums.get i < nums.get ip1)) :=\nsorry\n\n\ntheorem symmetric_solution\
+  \ (nums: List Nat) :\n  moves_to_make_zigzag nums = moves_to_make_zigzag nums.reverse\
+  \ :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval moves_to_make_zigzag [1,\
+  \ 2, 3]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval moves_to_make_zigzag [9, 6, 1,\
+  \ 6, 2]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval moves_to_make_zigzag [1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

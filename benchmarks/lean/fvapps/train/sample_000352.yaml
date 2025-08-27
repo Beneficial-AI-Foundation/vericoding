@@ -1,0 +1,18 @@
+"vc-description": "Given a rectangle of size n x m, find the minimum number of integer-sided\
+  \ squares that tile the rectangle.\n \nExample 1:\n\nInput: n = 2, m = 3\nOutput:\
+  \ 3\nExplanation: 3 squares are necessary to cover the rectangle.\n2 (squares of\
+  \ 1x1)\n1 (square of 2x2)\nExample 2:\n\nInput: n = 5, m = 8\nOutput: 5\n\nExample\
+  \ 3:\n\nInput: n = 11, m = 13\nOutput: 6\n\n \nConstraints:\n\n1 <= n <= 13\n1 <=\
+  \ m <= 13"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def tileRectangle (n m : Nat) : Nat := sorry\n\ntheorem square_input\
+  \ {n : Nat} (h : n > 0) : \n  tileRectangle n n = 1 := sorry\n"
+"vc-theorems": "theorem multiples {n : Nat} (h : n > 0) :\n  tileRectangle n (2 *\
+  \ n) = 2 ∧ tileRectangle (2 * n) n = 2 := sorry\n\n\ntheorem lower_bound {n m :\
+  \ Nat} (hn : n > 0) (hm : m > 0) :\n  tileRectangle n m ≥ 1 := sorry\n\n\ntheorem\
+  \ upper_bound {n m : Nat} (hn : n > 0) (hm : m > 0) :\n  tileRectangle n m ≤ n *\
+  \ m := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval tile_rectangle 2 3\n\n/--\n\
+  info: 5\n-/\n#guard_msgs in\n#eval tile_rectangle 5 8\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval tile_rectangle 11 13\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

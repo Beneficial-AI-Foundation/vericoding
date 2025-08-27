@@ -1,0 +1,32 @@
+"vc-description": "Suppose we abstract our file system by a string in the following\
+  \ manner:\n\nThe string \"dir\\n\\tsubdir1\\n\\tsubdir2\\n\\t\\tfile.ext\" represents:\n\
+  \ndir\n    subdir1\n    subdir2\n        file.ext\n\n\nThe directory dir contains\
+  \ an empty sub-directory subdir1 and a sub-directory subdir2 containing a file file.ext.\n\
+  \nThe string \"dir\\n\\tsubdir1\\n\\t\\tfile1.ext\\n\\t\\tsubsubdir1\\n\\tsubdir2\\\
+  n\\t\\tsubsubdir2\\n\\t\\t\\tfile2.ext\" represents:\n\ndir\n    subdir1\n     \
+  \   file1.ext\n        subsubdir1\n    subdir2\n        subsubdir2\n           \
+  \ file2.ext\n\n\nThe directory dir contains two sub-directories subdir1 and subdir2.\
+  \ subdir1 contains a file file1.ext and an empty second-level sub-directory subsubdir1.\
+  \ subdir2 contains a second-level sub-directory subsubdir2 containing a file file2.ext.\n\
+  \nWe are interested in finding the longest (number of characters) absolute path\
+  \ to a file within our file system. For example, in the second example above, the\
+  \ longest absolute path is \"dir/subdir2/subsubdir2/file2.ext\", and its length\
+  \ is 32 (not including the double quotes).\n\nGiven a string representing the file\
+  \ system in the above format, return the length of the longest absolute path to\
+  \ file in the abstracted file system. If there is no file in the system, return\
+  \ 0.\n\nNote:\n\nThe name of a file contains at least a . and an extension.\nThe\
+  \ name of a directory or sub-directory will not contain a ..\n\n\n\nTime complexity\
+  \ required: O(n) where n is the size of the input string.\n\nNotice that a/aa/aaa/file1.txt\
+  \ is not the longest file path, if there is another path aaaaaaaaaaaaaaaaaaaaa/sth.png."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def lengthLongestPath (input : String) : Nat :=\n  sorry\n\n\n"
+"vc-theorems": "theorem root_level_file_or_dir\n  (name : String)\n  (h_nonempty :\
+  \ name.length > 0) :\n  if name.contains '.' then\n    lengthLongestPath name =\
+  \ name.length \n  else \n    lengthLongestPath name = 0 :=\nsorry\n\n/--\ninfo:\
+  \ 20\n-/\n#guard_msgs in\n#eval lengthLongestPath \"dir\\n\\tsubdir1\\n\\tsubdir2\\\
+  n\\t\\tfile.ext\"\n\n/--\ninfo: 32\n-/\n#guard_msgs in\n#eval lengthLongestPath\
+  \ \"dir\\n\\tsubdir1\\n\\t\\tfile1.ext\\n\\t\\tsubsubdir1\\n\\tsubdir2\\n\\t\\tsubsubdir2\\\
+  n\\t\\t\\tfile2.ext\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval lengthLongestPath\
+  \ \"\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

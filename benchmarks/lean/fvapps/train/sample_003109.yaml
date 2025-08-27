@@ -1,0 +1,27 @@
+"vc-description": "The pair of integer numbers `(m, n)`, such that `10 > m > n > 0`,\
+  \  (below 10), that its sum, `(m + n)`, and rest, `(m - n)`, are perfect squares,\
+  \ is (5, 4).\n\nLet's see what we have explained with numbers.\n```\n5 + 4 = 9 =\
+  \ 3²\n5 - 4 = 1 = 1²\n(10 > 5 > 4 > 0)\n```\n\nThe pair of numbers `(m, n)`, closest\
+  \ to and below 50, having the property described above is `(45, 36)`.\n```\n45 +\
+  \ 36 = 81 = 9²\n45 - 36 = 9 = 3²\n(50 > 45 > 36 > 0)\n```\n\nWith the function `closest_pair_tonum()`,\
+  \ that receives a number `upper_limit`, as an upper limit, we should be able to\
+  \ obtain the closest pair to `upper_limit`, that fulfills the property described\
+  \ above.\n\nThe function should return the largest pair of numbers `(m, n)`, satisfying\
+  \ `upper_limit > m > n > 0`. Note that we say pair A `(a0, a1)` is larger than pair\
+  \ B `(b0, b1)` when `a0 > b0` or `a0 == b0 and\na1 > b1`.\n\nLet's see some cases:\n\
+  \n```python\nclosest_pair_tonum(10) == (5, 4) # (m = 5, n = 4)\n\nclosest_pair_tonum(30)\
+  \ == (29, 20)\n\nclosest_pair_tonum(50) == (45, 36)\n```\n\nHappy coding and enjoy\
+  \ it!!\n(We will be having a second part of a similar exercise (in some days) that\
+  \ will need a faster algorithm for values of `upper_limit` < 1000)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def closest_pair_tonum (n : Nat) : Nat × Nat := sorry\n\ntheorem\
+  \ valid_pair_exists (upper_limit : Nat) (h : upper_limit ≥ 30) :\n  let (x, y) :=\
+  \ closest_pair_tonum upper_limit\n  x > y ∧ \n  x < upper_limit ∧ \n  y < upper_limit\
+  \ ∧\n  ∃ a b : Nat, x + y = a * a ∧ x - y = b * b :=\nsorry\n"
+"vc-theorems": "theorem no_pairs_for_small_input (n : Nat) (h : n ≤ 4) :\n  ¬∃ x y\
+  \ : Nat, x < n ∧ y < n ∧ x > y ∧\n  ∃ a b : Nat, x + y = a * a ∧ x - y = b * b :=\n\
+  sorry\n\n/--\ninfo: (5, 4)\n-/\n#guard_msgs in\n#eval closest_pair_tonum 10\n\n\
+  /--\ninfo: (29, 20)\n-/\n#guard_msgs in\n#eval closest_pair_tonum 30\n\n/--\ninfo:\
+  \ (45, 36)\n-/\n#guard_msgs in\n#eval closest_pair_tonum 50\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

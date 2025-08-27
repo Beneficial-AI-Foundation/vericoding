@@ -1,0 +1,21 @@
+"vc-description": "=====Problem Statement=====\nYou are given the firstname and lastname\
+  \ of a person on two different lines. Your task is to read them and print the following:\n\
+  \n    Hello firstname lastname! You just delved into python.\n\n=====Input Format=====\n\
+  The first line contains the first name, and the second line contains the last name.\n\
+  \n=====Constraints=====\nThe length of the first and last name ≤ 10.\n\n=====Output\
+  \ Format=====\nPrint the output as mentioned above."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def greetPerson (firstname : String) (lastname : String) : String\
+  \ := sorry\n\ntheorem greet_person_is_string (firstname lastname : String) : \n\
+  \  greetPerson firstname lastname = greetPerson firstname lastname := sorry\n"
+"vc-theorems": "theorem greet_person_substrings (firstname lastname : String) :\n\
+  \  let result := greetPerson firstname lastname\n  ∃ i j k l, (result.drop i).take\
+  \ j = firstname ∧ \n             (result.drop k).take l = lastname := sorry\n\n\n\
+  theorem greet_person_starts_with_hello (firstname lastname : String) :\n  (greetPerson\
+  \ firstname lastname).startsWith \"Hello\" = true := sorry\n\n\ntheorem greet_person_ends_with_python\
+  \ (firstname lastname : String) :\n  (greetPerson firstname lastname).endsWith \"\
+  ! You just delved into python.\" = true := sorry\n\n\ntheorem greet_person_exact_format\
+  \ (firstname lastname : String) :\n  greetPerson firstname lastname = s!\"Hello\
+  \ {firstname} {lastname}! You just delved into python.\" := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

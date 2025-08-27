@@ -1,0 +1,27 @@
+"vc-description": "Positive integers have so many gorgeous features. \nSome of them\
+  \ could be expressed as a sum of two or more consecutive positive numbers.\n___\n\
+  \n# Consider an Example :\n\n* `10` , could be expressed as a sum of `1 + 2 + 3\
+  \ + 4 `.\n___\n# Task\n\n**_Given_** *Positive integer*, N , **_Return_** true if\
+  \ it could be expressed as a sum of two or more consecutive positive numbers , OtherWise\
+  \ return false .\n___\n\n# Notes \n\n~~~if-not:clojure,csharp,java\n* Guaranteed\
+  \ constraint  :  **_2  ≤  N  ≤  (2^32) -1_** .\n~~~\n~~~if:clojure,csharp,java\n\
+  * Guaranteed constraint  :  **_2  ≤  N  ≤  (2^31) -1_** .\n~~~\n___\n# Input >>\
+  \ Output Examples:\n\n___\n___\n___\n\n# [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
+  \n# [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
+  \n# [Bizarre Sorting-katas](https://www.codewars.com/collections/bizarre-sorting-katas)\n\
+  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
+  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def consecutive_ducks (n : Nat) : Bool := sorry\n\ndef isPowerOfTwo\
+  \ (n : Nat) : Bool := sorry\n"
+"vc-theorems": "theorem powers_of_two_are_false (n : Nat) : \n  n ≥ 2 → isPowerOfTwo\
+  \ n = true → consecutive_ducks n = false := \nsorry\n\n\ntheorem odd_numbers_are_true\
+  \ (n : Nat) :\n  n ≥ 3 → n % 2 = 1 → consecutive_ducks n = true :=\nsorry\n\n\n\
+  theorem result_is_boolean (n : Nat) :\n  n ≥ 1 → consecutive_ducks n = true ∨ consecutive_ducks\
+  \ n = false :=\nsorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval consecutive_ducks\
+  \ 10\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval consecutive_ducks 8\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval consecutive_ducks 57\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval consecutive_ducks 69\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval consecutive_ducks 1024\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

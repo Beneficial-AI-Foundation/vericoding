@@ -1,0 +1,26 @@
+"vc-description": "# Task\n Mr.Odd is my friend. Some of his common dialogues are\
+  \ “Am I looking odd?” , “It’s looking very odd” etc. Actually “odd” is his favorite\
+  \ word.\n\n In this valentine when he went to meet his girlfriend. But he forgot\
+  \ to take gift. Because of this he told his gf that he did an odd thing. His gf\
+  \ became angry and gave him punishment.\n\n His gf gave him a string str of contain\
+  \ only lowercase letter and told him,\n \n “You have to take 3 index `i,j,k` such\
+  \ that `i \".u..dbo\"(no more odd)`\n \n For `str=\"ooudddbd\"`, the result should\
+  \ be `2`.\n \n `\"ooudddbd\"(cut 1st odd)--> \".ou..dbd\"(cut 2nd odd) --> \"..u...b.\"\
+  `\n \n# Input/Output\n\n\n - `[input]` string `str`\n\n  a non-empty string that\
+  \ contains only lowercase letters.\n  \n  `0 < str.length <= 10000`\n\n\n - `[output]`\
+  \ an integer\n\n  the maximum number of \"odd\"."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def odd (s : String) : Nat := sorry\n\ntheorem odd_non_negative\
+  \ (s : String) : odd s ≥ 0 := sorry\n"
+"vc-theorems": "theorem odd_smaller_than_string (s : String) : odd s ≤ s.length :=\
+  \ sorry\n\ntheorem odd_deterministic (s : String) : odd s = odd s := sorry\n\n\n\
+  theorem odd_bounded_by_chars (s : String) (h : s.data.all (fun c => c = 'o' ∨ c\
+  \ = 'd')) :\n  odd s ≤ (s.data.filter (· = 'o')).length := sorry\n\n\ntheorem odd_bounded_by_d_chars\
+  \ (s : String) (h : s.data.all (fun c => c = 'o' ∨ c = 'd')) :\n  odd s ≤ (s.data.filter\
+  \ (· = 'd')).length / 2 := sorry\n\n\ntheorem odd_empty_string : odd \"\" = 0 :=\
+  \ sorry\n\ntheorem odd_no_pattern (s : String) :\n  s.data.all (fun c => c = 'x')\
+  \ →\n  odd s = 0 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval odd \"oudddbo\"\
+  \n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval odd \"ooudddbd\"\n\n/--\ninfo: 6\n-/\n\
+  #guard_msgs in\n#eval odd \"qoddoldfoodgodnooofostorodrnvdmddddeidfoi\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

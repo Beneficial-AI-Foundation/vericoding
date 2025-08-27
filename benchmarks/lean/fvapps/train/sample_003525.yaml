@@ -1,0 +1,17 @@
+"vc-description": "An ordered sequence of numbers from 1 to N is given. One number\
+  \ might have deleted from it, then the remaining numbers were mixed. Find the number\
+  \ that was deleted.\n\nExample: \n - The starting array sequence is `[1,2,3,4,5,6,7,8,9]`\n\
+  \ - The mixed array with one deleted number is `[3,2,4,6,7,8,1,9]`\n - Your function\
+  \ should return the int `5`.\n\nIf no number was deleted from the array and no difference\
+  \ with it, your function should return the int `0`.\n\nNote that N may be 1 or less\
+  \ (in the latter case, the first array will be `[]`)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_deleted_number (arr : List Int) (mixed : List Int) : Int\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem empty_arrays : \n  find_deleted_number [] [] = 0 :=\nsorry\n\
+  \n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval find_deleted_number [1, 2, 3, 4, 5, 6,\
+  \ 7, 8, 9] [5, 7, 9, 4, 8, 1, 2, 3]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_deleted_number\
+  \ [1, 2, 3, 4, 5, 6, 7] [2, 3, 6, 1, 5, 4, 7]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n\
+  #eval find_deleted_number [1] []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

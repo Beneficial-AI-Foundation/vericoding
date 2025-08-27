@@ -1,0 +1,34 @@
+"vc-description": "In this kata, your task is to create a function that takes a single\
+  \ list as an argument and returns a flattened list. The input list will have a maximum\
+  \ of one level of nesting (list(s) inside of a list).\n\n```python\n# no nesting\n\
+  [1, 2, 3]\n\n# one level of nesting\n[1, [2, 3]]\n```\n---\n\n# Examples\n\n```python\n\
+  >>> flatten_me(['!', '?'])\n['!', '?']\n\n>>> flatten_me([1, [2, 3], 4])\n[1, 2,\
+  \ 3, 4]\n\n>>> flatten_me([['a', 'b'], 'c', ['d']])\n['a', 'b', 'c', 'd']\n\n>>>\
+  \ flatten_me([[True, False], ['!'], ['?'], [71, '@']]) \n[True, False, '!', '?',\
+  \ 71, '@']\n```\n\nGood luck!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def flatten_me {α : Type u} (lst : List (List α ⊕ α)) : List α\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem flatten_no_nesting {α : Type u} :\n  ∀ (lst : List α), flatten_me\
+  \ (lst.map fun x => Sum.inr x) = lst :=\n  sorry\n\n\ntheorem flatten_properties\
+  \ {α : Type u} (lst : List (List α ⊕ α)) :\n  let flattened := flatten_me lst\n\
+  \  let atomic_elements := lst.filterMap (fun x => match x with\n               \
+  \                                | Sum.inl _ => none\n                         \
+  \                      | Sum.inr a => some a)\n  let nested_elements := lst.filterMap\
+  \ (fun x => match x with \n                                               | Sum.inl\
+  \ l => some l\n                                               | Sum.inr _ => none)\n\
+  \  let nested_lengths := lst.filterMap (fun x => match x with \n               \
+  \                               | Sum.inl l => some l.length\n                 \
+  \                             | Sum.inr _ => none)\n  -- Property 1: All elements\
+  \ in output are atomic (implicitly handled by return type)\n  -- Property 2: All\
+  \ original elements are preserved (through list membership)\n  (∀ x, x ∈ atomic_elements\
+  \ → x ∈ flattened) ∧\n  (∀ l x, l ∈ nested_elements → x ∈ l → x ∈ flattened) ∧\n\
+  \  (∀ x, x ∈ flattened → x ∈ atomic_elements ∨ ∃ l, l ∈ nested_elements ∧ x ∈ l)\
+  \ ∧\n  -- Property 3: Length is sum of atomic elements and nested lengths\n  flattened.length\
+  \ = atomic_elements.length + nested_lengths.foldl (·+·) 0 :=\n  sorry\n\n/--\ninfo:\
+  \ [1, 2, 3, 4]\n-/\n#guard_msgs in\n#eval flatten_me [1, [2, 3], 4]\n\n/--\ninfo:\
+  \ ['a', 'b', 'c', 'd']\n-/\n#guard_msgs in\n#eval flatten_me [[\"a\", \"b\"], \"\
+  c\", [\"d\"]]\n\n/--\ninfo: ['!', '?']\n-/\n#guard_msgs in\n#eval flatten_me [\"\
+  !\", \"?\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

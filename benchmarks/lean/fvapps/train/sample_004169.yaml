@@ -1,0 +1,44 @@
+"vc-description": "# Task\n\nThe function `fold_cube(number_list)` should return a\
+  \ boolean based on a net (given as a number list), if the net can fold into a cube.\
+  \ \nYour code must be effecient and complete the tests within 500ms. \n\n## Input\n\
+  \nImagine a net such as the one below.\n\n```\n@\n@ @ @ @\n    @\n```\nThen, put\
+  \ it on the table with each `@` being one cell.\n\n```\n--------------------------\n\
+  |  1 |  2 |  3 |  4 |  5 |\n--------------------------\n|  6 |  7 |  8 |  9 | 10\
+  \ |\n--------------------------\n| 11 | 12 | 13 | 14 | 15 |\n--------------------------\n\
+  | 16 | 17 | 18 | 19 | 20 |\n--------------------------\n| 21 | 22 | 23 | 24 | 25\
+  \ |\n--------------------------\n```\nThe number list for a net will be the numbers\
+  \ the net falls on when placed on the table. Note that the numbers in the list won't\
+  \ always be in order. The position of the net can be anywhere on the table, it can\
+  \ also be rotated.\n\nFor the example above, a possible number list will be `[1,\
+  \ 7, 8, 6, 9, 13]`.\n\n## Output\n\n`fold_cube` should return `True` if the net\
+  \ can be folded into a cube. `False` if not.\n\n---\n\n# Examples\n\n### Example\
+  \ 1:\n\n`number_list` = `[24, 20, 14, 19, 18, 9]`\n\nShape and rotation of net:\n\
+  ```\n  @\n  @\n@ @ @\n  @\n```\nDisplayed on the table:\n```\n--------------------------\n\
+  |  1 |  2 |  3 |  4 |  5 |\n--------------------------\n|  6 |  7 |  8 |  @ | 10\
+  \ |\n--------------------------\n| 11 | 12 | 13 |  @ | 15 |\n--------------------------\n\
+  | 16 | 17 |  @ |  @ |  @ |\n--------------------------\n| 21 | 22 | 23 |  @ | 25\
+  \ |\n--------------------------\n```\nSo, `fold_cube([24, 20, 14, 19, 18, 9])` should\
+  \ return `True`.\n\n### Example 2:\n\n`number_list` = `[1, 7, 6, 17, 12, 16]`\n\n\
+  Shape and rotation of net:\n```\n@\n@ @\n  @ \n@ @\n```\nDisplayed on the table:\n\
+  ```\n--------------------------\n|  @ |  2 |  3 |  4 |  5 |\n--------------------------\n\
+  |  @ |  @ |  8 |  9 | 10 |\n--------------------------\n| 11 |  @ | 13 | 14 | 15\
+  \ |\n--------------------------\n|  @ |  @ | 18 | 19 | 20 |\n--------------------------\n\
+  | 21 | 22 | 23 | 24 | 25 |\n--------------------------\n```\n`fold_cube([1, 7, 6,\
+  \ 17, 12, 16])` should return `False`.\n\n#### *Translations appreciated!!*\n\n\
+  ---\n\n### If you liked this kata.... check out these!             \n- [Folding\
+  \ a 4D Cube (Tesseract)](https://www.codewars.com/kata/5f3b561bc4a71f000f191ef7)\
+  \  \n- [Wraping a net around a cube](https://www.codewars.com/kata/5f4af9c169f1cd0001ae764d)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def fold_cube (nums : List Nat) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem fold_cube_valid_input_range \n  {nums : List Nat}\n  (h1:\
+  \ nums.length = 6)\n  (h2: ∀ x ∈ nums, 1 ≤ x ∧ x ≤ 24) \n  (h3: List.Nodup nums)\n\
+  \  : fold_cube nums = true ∨ fold_cube nums = false :=\nsorry\n\n\ntheorem fold_cube_consistent_results\n\
+  \  {nums : List Nat}\n  (h1: nums.length = 6)\n  (h2: ∀ x ∈ nums, 1 ≤ x ∧ x ≤ 24)\n\
+  \  (h3: List.Nodup nums)\n  : fold_cube nums = fold_cube nums :=\nsorry\n\n\ntheorem\
+  \ fold_cube_known_valid\n  : fold_cube [24, 20, 14, 19, 18, 9] = true :=\nsorry\n\
+  \n\ntheorem fold_cube_known_invalid\n  : fold_cube [1, 7, 6, 17, 12, 16] = false\
+  \ :=\nsorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval fold_cube test1.copy()\n\
+  \n/--\ninfo: False\n-/\n#guard_msgs in\n#eval fold_cube test2.copy()\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval fold_cube test3.copy()\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

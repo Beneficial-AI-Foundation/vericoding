@@ -1,0 +1,42 @@
+"vc-description": "All techniques in the ninja world consist of hand seals. At the\
+  \ moment Naruto is learning a new technique, which consists of $n\\cdot m$ different\
+  \ seals, denoted by distinct numbers. All of them were written in an $n\\times m$\
+  \ table.\n\nThe table is lost now. Naruto managed to remember elements of each row\
+  \ from left to right, and elements of each column from top to bottom, but he doesn't\
+  \ remember the order of rows and columns. Please restore the table consistent with\
+  \ this data so that Naruto will be able to learn the new technique.\n\n\n-----Input-----\n\
+  \nThe first line of the input contains the only integer $t$ ($1\\leq t\\leq 100\\\
+  ,000$) denoting the number of test cases. Their descriptions follow.\n\nThe first\
+  \ line of each test case description consists of two space-separated integers $n$\
+  \ and $m$ ($1 \\leq n, m \\leq 500$) standing for the number of rows and columns\
+  \ in the table, respectively. All hand seals are encoded by the positive integers\
+  \ from $1$ to $n\\cdot m$.\n\nThe following $n$ lines contain $m$ space separated\
+  \ integers each, denoting elements of an arbitrary row in the table left to right.\n\
+  \nThe following $m$ lines contain $n$ space separated integers each, denoting elements\
+  \ of an arbitrary column in the table top to bottom.\n\nSum of $nm$ over all test\
+  \ cases does not exceed $250\\,000$. It is guaranteed that each row occurs in the\
+  \ input exactly once, as well as each column. It is also guaranteed that each number\
+  \ from $1$ to $nm$ occurs exactly once in all rows, as well as in all columns. Finally,\
+  \ it is guaranteed that a table consistent with the input exists.\n\n\n-----Output-----\n\
+  \nFor each test case, output $n$ lines with $m$ space-separated integers each, denoting\
+  \ the restored table. One can show that the answer is always unique.\n\n\n-----Example-----\n\
+  Input\n2\n2 3\n6 5 4\n1 2 3\n1 6\n2 5\n3 4\n3 1\n2\n3\n1\n3 1 2\n\nOutput\n1 2 3\
+  \ \n6 5 4 \n3 \n1 \n2 \n\n\n\n-----Note-----\n\nConsider the first test case. The\
+  \ matrix is $2 \\times 3$. You are given the rows and columns in arbitrary order.\n\
+  \nOne of the rows is $[6, 5, 4]$. One of the rows is $[1, 2, 3]$.\n\nOne of the\
+  \ columns is $[1, 6]$. One of the columns is $[2, 5]$. One of the columns is $[3,\
+  \ 4]$.\n\nYou are to reconstruct the matrix. The answer is given in the output."
+"vc-preamble": "import Imports.AllImports\n\ndef solve_naruto_seals (n m : Nat) (rows\
+  \ cols : List (List Nat)) : List (List Nat) := sorry\n\ndef is_valid_matrix (result\
+  \ : List (List Nat)) (n m : Nat) (rows cols : List (List Nat)) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def makeMatrix (n m : Nat) : List (List Nat) := sorry \n\ntheorem\
+  \ dimensions_check (n m : Nat) (h1 : 0 < n) (h2 : 0 < m) : \n  let matrix := makeMatrix\
+  \ n m\n  let result := solve_naruto_seals n m matrix matrix\n  List.length result\
+  \ = n ∧ ∀ row ∈ result, List.length row = m := sorry\n"
+"vc-theorems": "theorem permutations_check (n m : Nat) (h1 : 0 < n) (h2 : n ≤ 5) (h3\
+  \ : 0 < m) (h4 : m ≤ 5) :\n  let matrix := makeMatrix n m\n  let result := solve_naruto_seals\
+  \ n m matrix matrix\n  is_valid_matrix result n m matrix matrix = true := sorry\n\
+  \n\ntheorem single_cell_check :\n  solve_naruto_seals 1 1 [[1]] [[1]] = [[1]] :=\
+  \ sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

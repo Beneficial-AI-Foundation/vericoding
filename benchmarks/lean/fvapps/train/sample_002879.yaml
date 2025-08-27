@@ -1,0 +1,27 @@
+"vc-description": "The factorial of a number, `n!`, is defined for whole numbers as\
+  \ the product of all integers from `1` to `n`. \n\nFor example, `5!` is `5 * 4 *\
+  \ 3 * 2 * 1 = 120`\n\nMost factorial implementations use a recursive function to\
+  \ determine the value of `factorial(n)`. However, this blows up the stack for large\
+  \ values of `n` - most systems cannot handle stack depths much greater than 2000\
+  \ levels.\n\nWrite an implementation to calculate the factorial of arbitrarily large\
+  \ numbers, *without recursion.*\n\n# Rules\n\n* `n < 0` should return `nil`/  `None`\n\
+  * `n = 0` should return `1`\n* `n > 0` should return `n!`\n\n# Note\n\nCodewars\
+  \ limits the amount of data it will send back and forth, which may introduce a false\
+  \ ceiling for how high of a value of `n` it will accept. All tests use values less\
+  \ than this limit."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def factorial : Int → Option Int\n  | n => sorry\n\n-- Basic factorial\
+  \ properties"
+"vc-theorems": "theorem factorial_negative {n : Int} : \n  n < 0 → factorial n = none\
+  \ := sorry\n\n\ntheorem factorial_zero : \n  factorial 0 = some 1 := sorry\n\n\n\
+  theorem factorial_multiplicative {n : Int} : \n  n > 0 → factorial n = some (n *\
+  \ (factorial (n-1)).get!) := sorry\n\n\ntheorem factorial_positive {n : Int} :\n\
+  \  n ≥ 0 → (factorial n).isSome ∧ (factorial n).get! > 0 := sorry\n\n-- Recurrence\
+  \ relation\n\ntheorem factorial_recurrence {n : Int} :\n  n > 0 → factorial n =\
+  \ some (n * (factorial (n-1)).get!) := sorry\n\n-- Monotonicity\n\ntheorem factorial_increasing\
+  \ {n : Int} :\n  n > 1 → (factorial n).get! > (factorial (n-1)).get! := sorry\n\n\
+  /--\ninfo: 120\n-/\n#guard_msgs in\n#eval factorial 5\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval factorial 0\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval factorial\
+  \ -5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

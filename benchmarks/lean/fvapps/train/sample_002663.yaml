@@ -1,0 +1,26 @@
+"vc-description": "You're in ancient Greece and giving Philoctetes a hand in preparing\
+  \ a training exercise for Hercules! You've filled a pit with two different ferocious\
+  \ mythical creatures for Hercules to battle!\n\nThe formidable **\"Orthus\"** is\
+  \ a 2 headed dog with 1 tail.  The mighty **\"Hydra\"** has 5 heads and 1 tail.\
+  \ \n\nBefore Hercules goes in, he asks you \"How many of each beast am  I up against!?\"\
+  .\n\nYou know the total number of heads and the total number of tails, that's the\
+  \ dangerous parts, right? But you didn't consider how many of each beast. \n\n##\
+  \ Task\n\nGiven the number of heads and the number of tails, work out the number\
+  \ of each mythical beast! \n\nThe data is given as two parameters. Your answer should\
+  \ be returned as an array:\n```python \n VALID ->      [24 , 15]           INVALID\
+  \ ->  \"No solutions\"\n```\n\nIf there aren't any cases for the given amount of\
+  \ heads and tails - return \"No solutions\" or null (C#)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def beasts (heads tails : Int) : Option (Int × Int) := sorry\n\n\
+  theorem beasts_valid_solution {heads tails : Int} (orthus hydra : Int) \n  (h :\
+  \ beasts heads tails = some (orthus, hydra)) : \n  orthus * 2 + hydra * 5 = heads\
+  \ ∧ orthus + hydra = tails := sorry\n"
+"vc-theorems": "theorem beasts_negative_inputs {n : Int} (h : n < 0) :\n  beasts n\
+  \ n = none ∧ beasts n 0 = none ∧ beasts 0 n = none := sorry\n\n\ntheorem beasts_zero\
+  \ :\n  beasts 0 0 = some (0, 0) := sorry\n\n\ntheorem beasts_impossible_ratios {n\
+  \ : Int} (h : n > 0) :\n  beasts n 0 = none ∧ \n  beasts (6*n) n = none ∧\n  beasts\
+  \ n n = none := sorry\n\n/--\ninfo: [24, 15]\n-/\n#guard_msgs in\n#eval beasts 123\
+  \ 39\n\n/--\ninfo: 'No solutions'\n-/\n#guard_msgs in\n#eval beasts -1 -1\n\n/--\n\
+  info: [0, 0]\n-/\n#guard_msgs in\n#eval beasts 0 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

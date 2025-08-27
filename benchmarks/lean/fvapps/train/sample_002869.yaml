@@ -1,0 +1,22 @@
+"vc-description": "# Task\n Vanya gets bored one day and decides to enumerate a large\
+  \ pile of rocks. He first counts the rocks and finds out that he has `n` rocks in\
+  \ the pile, then he goes to the store to buy labels for enumeration. \n \n Each\
+  \ of the labels is a digit from 0 to 9 and each of the `n` rocks should be assigned\
+  \ a unique number from `1` to `n`.\n\n If each label costs `$1`, how much money\
+  \ will Vanya spend on this project?\n\n# Input/Output\n\n\n - `[input]` integer\
+  \ `n`\n\n  The number of rocks in the pile.\n\n  `1  ≤  n  ≤  10^9`\n\n\n - `[output]`\
+  \ an integer\n\n  the cost of the enumeration.\n  \n# Example\n\n For `n = 13`,\
+  \ the result should be `17`.\n ```\n the numbers from 1 to n are:\n 1 2 3 4 5 6\
+  \ 7 8 9 10 11 12 13\n we need 17 single digit labels:\n 1 2 3 4 5 6 7 8 9 1 0 1\
+  \ 1 1 2 1 3\n each label cost $1, so the output should be 17.\n ```"
+"vc-preamble": "import Imports.AllImports\n\ndef log10 (n : Nat) : Nat :=\n  if n\
+  \ < 10 then 0\n  else 1 + log10 (n / 10)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def rocks (n : Nat) : Nat := sorry\n\ntheorem rocks_monotonically_increasing\
+  \ \n  (n : Nat)\n  (h : n > 1) :\n  rocks n ≥ rocks (n-1) := sorry\n"
+"vc-theorems": "theorem rocks_minimum_bound\n  (n : Nat)\n  (h : n > 0) : \n  rocks\
+  \ n ≥ n := sorry\n\n\n\n\ntheorem rocks_single_digit \n  (n : Nat)\n  (h1 : n >\
+  \ 0)\n  (h2 : n ≤ 9) :\n  rocks n = n := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval rocks 1\n\n/--\ninfo: 17\n-/\n#guard_msgs in\n#eval rocks 13\n\n/--\n\
+  info: 192\n-/\n#guard_msgs in\n#eval rocks 100\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

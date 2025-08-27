@@ -1,0 +1,24 @@
+"vc-description": "In this Kata, you will be given an array of arrays and your task\
+  \ will be to return the number of unique arrays that can be formed by picking exactly\
+  \ one element from each subarray. \n\nFor example: `solve([[1,2],[4],[5,6]]) = 4`,\
+  \ because it results in only `4` possiblites. They are `[1,4,5],[1,4,6],[2,4,5],[2,4,6]`.\
+  \ \n\n```if:r\nIn R, we will use a list data structure.\nSo the argument for `solve`\
+  \ is a list of numeric vectors.\n~~~\nsolve(list(c(1, 2), 4, c(5, 6)))\n[1] 4\n\
+  ~~~\n```\n\nMake sure that you don't count duplicates; for example `solve([[1,2],[4,4],[5,6,6]])\
+  \ = 4`, since the extra outcomes are just duplicates. \n\nSee test cases for more\
+  \ examples.\n\nGood luck!\n\nIf you like this Kata, please try:\n\n[Sum of integer\
+  \ combinations](https://www.codewars.com/kata/59f3178e3640cef6d90000d5)\n\n[Sum\
+  \ of array singles](https://www.codewars.com/kata/59f11118a5e129e591000134)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (lists : List (List Int)) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem solve_positive (lists : List (List Int)) :\n  solve lists\
+  \ ≥ 1 := by\n  sorry\n\n\ntheorem solve_equals_product_unique (lists : List (List\
+  \ Int)) :\n  solve lists = lists.foldl (fun acc l => acc * (l.eraseDups).length)\
+  \ 1 := by\n  sorry\n\n\ntheorem solve_empty_list :\n  solve [] = 1 := by\n  sorry\
+  \ \n\n\ntheorem solve_single_list (lst : List Int) :\n  solve [lst] = (lst.eraseDups).length\
+  \ := by\n  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve [[1, 2], [4],\
+  \ [5, 6]]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve [[1, 2], [4, 4], [5,\
+  \ 6, 6]]\n\n/--\ninfo: 72\n-/\n#guard_msgs in\n#eval solve [[1, 2, 3], [3, 4, 6,\
+  \ 6, 7], [8, 9, 10, 12, 5, 6]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

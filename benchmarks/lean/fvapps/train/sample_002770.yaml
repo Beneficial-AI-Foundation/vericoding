@@ -1,0 +1,27 @@
+"vc-description": "*** No Loops Allowed ***\n\nYou will be given an array (a) and\
+  \ a limit value (limit). You must check that all values in the array are below or\
+  \ equal to the limit value. If they are, return true. Else, return false.\n\nYou\
+  \ can assume all values in the array are numbers.\n\nDo not use loops. Do not modify\
+  \ input array.\n\nLooking for more, loop-restrained fun? Check out the other kata\
+  \ in the series:\n\n https://www.codewars.com/kata/no-loops-2-you-only-need-one\n\
+  \ https://www.codewars.com/kata/no-loops-3-copy-within"
+"vc-preamble": "import Imports.AllImports\n\ndef small_enough (numbers : List Int)\
+  \ (limit : Int) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_maximum (l : List Int) : Option Int :=\n  l.foldl (fun\
+  \ acc x => match acc with\n    | none => some x\n    | some m => some (max m x))\
+  \ none\n"
+"vc-theorems": "theorem small_enough_characterization (numbers : List Int) (limit\
+  \ : Int) \n    (h : numbers ≠ []) : \n  small_enough numbers limit = ((list_maximum\
+  \ numbers).getD 0 ≤ limit) :=\n  sorry\n\n\ntheorem small_enough_at_maximum (numbers\
+  \ : List Int) (h : numbers ≠ []) :\n  let max_val := (list_maximum numbers).getD\
+  \ 0\n  small_enough numbers max_val = true ∧\n  small_enough numbers (max_val -\
+  \ 1) = false :=\n  sorry\n\n\ntheorem small_enough_scaling (numbers : List Int)\
+  \ (factor : Int)\n    (h : numbers ≠ []) (h_pos : factor > 0) :\n  let max_val :=\
+  \ (list_maximum numbers).getD 0\n  let scaled_numbers := numbers.map (· * factor)\n\
+  \  small_enough scaled_numbers (max_val * factor) = small_enough numbers max_val\
+  \ :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval small_enough [66, 101]\
+  \ 200\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval small_enough [78, 117, 110,\
+  \ 99, 104, 117, 107, 115] 100\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval small_enough\
+  \ [101, 45, 75, 105, 99, 107] 107\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

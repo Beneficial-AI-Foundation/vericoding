@@ -1,0 +1,33 @@
+"vc-description": "# Task\n  You are given `N` ropes, where the length of each rope\
+  \ is a positive integer. At each step, you have to reduce all the ropes by the length\
+  \ of the smallest rope.\n\n The step will be repeated until no ropes are left. Given\
+  \ the length of N ropes, print the number of ropes that are left before each step.\n\
+  \n# Example\n\n For `a = [3, 3, 2, 9, 7]`, the result should be `[5, 4, 2, 1]`\n\
+  \ ```\nYou have 5 ropes:       \n                   3 3 2 9 7   ( 5 left)\nstep\
+  \ 1:          1 1 0 7 5   ( 4 left)\nstep 2:          0 0 0 6 4   ( 2 left)\nstep\
+  \ 3:          0 0 0 0 2   ( 1 left)\nstep 4:          0 0 0 0 0    \nHence the result\
+  \ is [5, 4, 2, 1]```\n\n# Input/Output\n  \n - `[input]` integer array `a`\n\n \
+  \ length of each rope.\n  \n  `3 <= a.length <= 2000`\n  \n  `1 <= a[i] <= 100`\n\
+  \n\n - `[output]` an integer array\n\n  number of ropes before each step."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.uniques {α : Type u} [BEq α] (xs : List α) : List α :=\
+  \ sorry\n\ndef cut_the_ropes (arr : List Nat) : List Nat := sorry\n"
+"vc-theorems": "theorem cut_ropes_first_element (arr : List Nat) \n  (h : arr.length\
+  \ ≥ 1) :\n  let result := cut_the_ropes arr\n  result.head! = arr.length := sorry\n\
+  \n\ntheorem cut_ropes_strictly_decreasing (arr : List Nat) \n  (h : arr.length ≥\
+  \ 1) :\n  let result := cut_the_ropes arr\n  ∀ i, i + 1 < result.length → result[i]!\
+  \ > result[i+1]! := sorry\n\n\ntheorem cut_ropes_length_bounded (arr : List Nat)\n\
+  \  (h : arr.length ≥ 1) :\n  let result := cut_the_ropes arr  \n  result.length\
+  \ ≤ (List.uniques arr).length := sorry\n\n\ntheorem cut_ropes_all_positive (arr\
+  \ : List Nat)\n  (h : arr.length ≥ 1) :\n  let result := cut_the_ropes arr\n  ∀\
+  \ x ∈ result, x > 0 := sorry\n\n\ntheorem cut_ropes_identical_elements (n : Nat)\
+  \ (len : Nat)\n  (h : len ≥ 1)\n  (arr : List Nat)\n  (h_arr : arr = List.replicate\
+  \ len n) :\n  let result := cut_the_ropes arr\n  result = [len] := sorry\n\n\ntheorem\
+  \ cut_ropes_min_decrease (arr : List Nat)\n  (h : arr.length ≥ 2) :\n  let result\
+  \ := cut_the_ropes arr\n  ∀ i, i + 1 < result.length → result[i]! - result[i+1]!\
+  \ ≥ 1 := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval cut_the_ropes\
+  \ [3, 3, 2, 9, 7]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval cut_the_ropes\
+  \ [1, 2, 3, 4, 3, 3, 2, 1]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval cut_the_ropes\
+  \ [9, 9, 9, 9, 7]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

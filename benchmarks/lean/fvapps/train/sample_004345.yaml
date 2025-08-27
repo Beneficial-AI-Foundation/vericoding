@@ -1,0 +1,36 @@
+"vc-description": "# Background\n\nMy TV remote control has arrow buttons and an `OK`\
+  \ button.\n\nI can use these to move a \"cursor\" on a logical screen keyboard to\
+  \ type \"words\"...\n\nThe screen \"keyboard\" layout looks like this\n\n\n  #tvkb\
+  \ {\n    width : 300px;\n    border: 5px solid gray; border-collapse: collapse;\n\
+  \  }\n  #tvkb td {\n    color : orange;\n    background-color : black;\n    text-align\
+  \ : right;\n    border: 3px solid gray; border-collapse: collapse;\n  }\n\n\nabcde123\n\
+  fghij456\nklmno789\npqrst.@0\nuvwxyz_/\n\n\n# Kata task\n\nHow many button presses\
+  \ on my remote are required to type a given `word`?\n\n## Notes\n\n* The cursor\
+  \ always starts on the letter `a` (top left)\n* Remember to also press `OK` to \"\
+  accept\" each character.\n* Take a direct route from one character to the next\n\
+  * The cursor does not wrap (e.g. you cannot leave one edge and reappear on the opposite\
+  \ edge)\n* A \"word\" (for the purpose of this Kata) is any sequence of characters\
+  \ available on my virtual \"keyboard\" \n\n# Example\n\nword = `codewars`\n\n* c\
+  \ => `a`-`b`-`c`-OK = 3\n* o => `c`-`d`-`e`-`j`-`o`-OK = 5\n* d => `o`-`j`-`e`-`d`-OK\
+  \ = 4\n* e => `d`-`e`-OK = 2\n* w => `e`-`j`-`o`-`t`-`y`-`x`-`w`-OK = 7\n* a =>\
+  \ `w`-`r`-`m`-`h`-`c`-`b`-`a`-OK = 7\n* r => `a`-`f`-`k`-`p`-`q`-`r`-OK = 6\n* s\
+  \ => `r`-`s`-OK = 2\n\nAnswer = 3 + 5 + 4 + 2 + 7 + 7 + 6 + 2 = 36\n\n\n\n*Good\
+  \ Luck!\nDM.*\n\n\n\nSeries\n* TV Remote\n* TV Remote (shift and space)\n* TV Remote\
+  \ (wrap)\n* TV Remote (symbols)"
+"vc-preamble": "import Imports.AllImports\n\ndef KEYBOARD := \"abcde123fghij456klmno789pqrst.@0uvwxyz_/\"\
+  \n\ndef manhattan (p1 p2 : Nat × Nat) : Nat := \n  let (x1, y1) := p1\n  let (x2,\
+  \ y2) := p2\n  Nat.sub (if x2 ≥ x1 then x2 else x1) (if x2 ≥ x1 then x1 else x2)\
+  \ + \n  Nat.sub (if y2 ≥ y1 then y2 else y1) (if y2 ≥ y1 then y1 else y2)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def tv_remote (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem tv_remote_min_length (s : String) :\n  tv_remote s ≥ s.length\
+  \ := by\n  sorry\n\n\ntheorem tv_remote_nonnegative (s : String) :\n  tv_remote\
+  \ s ≥ 0 := by\n  sorry\n\n\ntheorem tv_remote_empty :\n  tv_remote \"\" = 0 := by\n\
+  \  sorry\n\n\ntheorem tv_remote_repeat_chars (c : Char) (n : Nat) :\n  tv_remote\
+  \ (String.mk (List.replicate n c)) = \n    n + manhattan (0, 0) (0, 0) := by\n \
+  \ sorry\n\n\ntheorem tv_remote_substring_cost (s : String) (h : s.length ≥ 2) :\n\
+  \  tv_remote (String.dropRight s 1) < tv_remote s := by\n  sorry\n\n/--\ninfo: 36\n\
+  -/\n#guard_msgs in\n#eval tv_remote \"codewars\"\n\n/--\ninfo: 16\n-/\n#guard_msgs\
+  \ in\n#eval tv_remote \"does\"\n\n/--\ninfo: 35\n-/\n#guard_msgs in\n#eval tv_remote\
+  \ \"mississippi\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,15 @@
+"vc-description": "# Task\n Mobius function - an important function in number theory.\
+  \ For each given n, it only has 3 values:\n```\n0  -- if n divisible by square of\
+  \ a prime. Such as: 4, 8, 9\n1  -- if n not divisible by any square of a prime \n\
+  \        and have even number of prime factor. Such as: 6, 10, 21\n-1 -- otherwise.\
+  \ Such as: 3, 5, 7, 30```\nYour task is to find mobius(`n`)\n\n# Input/Output\n\n\
+  \n - `[input]` integer `n`\n\n\n `2 <= n <= 1e12`\n\n\n - `[output]` an integer"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def mobius (n : Nat) : Int :=\n  sorry\n"
+"vc-theorems": "theorem mobius_output_range (n : Nat) (h : n > 0) : \n  mobius n =\
+  \ -1 ∨ mobius n = 0 ∨ mobius n = 1 :=\n  sorry\n\n\ntheorem mobius_square_factors\
+  \ (n : Nat) (h : n > 1) :\n  mobius (n * n) = 0 :=\n  sorry\n\n/--\ninfo: 1\n-/\n\
+  #guard_msgs in\n#eval mobius 10\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval mobius\
+  \ 9\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval mobius 7\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

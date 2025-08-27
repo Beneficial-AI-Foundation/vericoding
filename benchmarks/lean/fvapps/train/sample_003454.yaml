@@ -1,0 +1,35 @@
+"vc-description": "In genetic the reverse complement of a sequence is formed by **reversing**\
+  \ the sequence and then taking the complement of each symbol.\n\nThe four nucleotides\
+  \ in DNA is Adenine (A), Cytosine (C), Guanine (G) and Thymine (Thymine). \n\n-\
+  \ A is the complement of T \n- C is the complement of G.\n\nThis is a bi-directional\
+  \ relation so:\n\n- T is the complement of A\n- G is the complement of C.\n\nFor\
+  \ this kata you need to complete the reverse complement function that take a DNA\
+  \ string and return the reverse complement string.\n\n**Note**: You need to take\
+  \ care of lower and upper case. And if a sequence conatains some invalid characters\
+  \ you need to return \"Invalid sequence\".\n\nThis kata is based on the following\
+  \ [one](http://www.codewars.com/kata/complementary-dna/ruby) but with a little step\
+  \ in addition."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverse_complement (s : String) : String := sorry\n\ntheorem\
+  \ valid_dna_properties {dna : String}\n  (h : ∀ c ∈ dna.data, c = 'A' ∨ c = 'T'\
+  \ ∨ c = 'C' ∨ c = 'G') :\n  let result := reverse_complement dna\n  -- Result only\
+  \ contains valid nucleotides\n  (∀ c ∈ result.data, c = 'A' ∨ c = 'T' ∨ c = 'C'\
+  \ ∨ c = 'G') ∧\n  -- Length preserved \n  result.length = dna.length ∧\n  -- Complement\
+  \ relations hold (stated more abstractly without indexed access)\n  (∀ c ∈ dna.data,\
+  \ \n    match c with\n    | 'A' => 'T' ∈ result.data\n    | 'T' => 'A' ∈ result.data\n\
+  \    | 'C' => 'G' ∈ result.data\n    | 'G' => 'C' ∈ result.data\n    | _ => True)\
+  \ := sorry\n"
+"vc-theorems": "theorem invalid_dna_result {dna : String}\n  (h : ∃ c ∈ dna.data,\
+  \ c ≠ 'A' ∧ c ≠ 'T' ∧ c ≠ 'C' ∧ c ≠ 'G') :\n  reverse_complement dna = \"Invalid\
+  \ sequence\" := sorry\n\n\ntheorem empty_sequence :\n  reverse_complement \"\" =\
+  \ \"\" := sorry\n\n\ntheorem reverse_twice_identity {dna : String}\n  (h : ∀ c ∈\
+  \ dna.data, c = 'A' ∨ c = 'T' ∨ c = 'C' ∨ c = 'G') :\n  reverse_complement (reverse_complement\
+  \ dna) = dna.toUpper := sorry\n\n\ntheorem case_insensitive {dna : String}\n  (h\
+  \ : ∀ c ∈ dna.data, c.toLower = 'a' ∨ c.toLower = 't' ∨ c.toLower = 'c' ∨ c.toLower\
+  \ = 'g') :\n  reverse_complement dna = reverse_complement dna.toUpper := sorry\n\
+  \n/--\ninfo: 'TTCCGGAA'\n-/\n#guard_msgs in\n#eval reverse_complement \"TTCCGGAA\"\
+  \n\n/--\ninfo: 'TACAGTCAGTC'\n-/\n#guard_msgs in\n#eval reverse_complement \"GACTGACTGTA\"\
+  \n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval reverse_complement \"\"\n\n/--\ninfo:\
+  \ 'Invalid sequence'\n-/\n#guard_msgs in\n#eval reverse_complement \"XYZ\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

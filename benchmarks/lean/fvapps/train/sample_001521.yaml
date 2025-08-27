@@ -1,0 +1,25 @@
+"vc-description": "Given an alphanumeric string made up of digits and lower case Latin\
+  \ characters only, find the sum of all the digit characters in the string.\n\n-----Input-----\n\
+  - The first line of the input contains an integer T denoting the number of test\
+  \ cases. Then T test cases follow.\n- Each test case is described with a single\
+  \ line containing a string S, the alphanumeric string.\n\n-----Output-----\n- For\
+  \ each test case, output a single line containing the sum of all the digit characters\
+  \ in that string.\n\n-----Constraints-----\n- 1 ≤ T ≤ 1000\n- 1 ≤ |S| ≤ 1000, where\
+  \ |S| is the length of the string S.\n\n-----Example-----\nInput:\n1\nab1231da\n\
+  \nOutput:\n7\n\n-----Explanation-----\nThe digits in this string are 1, 2, 3 and\
+  \ 1. Hence, the sum of all of them is 7."
+"vc-preamble": "import Imports.AllImports\n\ndef sum_of_digits (s : String) : Nat\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.sum : List Nat → Nat \n  | [] => 0\n  | x::xs => x + sum\
+  \ xs\n"
+"vc-theorems": "theorem sum_of_digits_no_digits (s : String) \n  (h : ∀ c ∈ s.data,\
+  \ !c.isDigit) : \n  sum_of_digits s = 0 := \n  sorry\n\n\ntheorem sum_of_digits_all_digits\
+  \ (digits : List Nat)\n  (h : ∀ d ∈ digits, d ≤ 9) :\n  sum_of_digits (String.join\
+  \ (digits.map toString)) = List.sum digits := \n  sorry\n\n\ntheorem sum_of_digits_mixed\
+  \ (letters digits : String)\n  (h1 : ∀ c ∈ letters.data, !c.isDigit)\n  (h2 : ∀\
+  \ c ∈ digits.data, c.isDigit) :\n  sum_of_digits (letters ++ digits) = sum_of_digits\
+  \ digits :=\n  sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval sum_of_digits \"\
+  ab1231da\"\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval sum_of_digits \"a1b2c3\"\n\
+  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval sum_of_digits \"nodigits\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

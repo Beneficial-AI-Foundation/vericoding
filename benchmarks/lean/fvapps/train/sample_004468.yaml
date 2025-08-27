@@ -1,0 +1,35 @@
+"vc-description": "# Challenge : \n\nWrite a function that takes a single argument\
+  \ `n` that is a string representation of a simple mathematical expression and evaluates\
+  \ it as a floating point value. \n\n# Commands : \n- positive or negative decimal\
+  \ numbers\n- `+, -, *, /, ( / ).`\n\n---\n\nExpressions use [infix notation](https://en.wikipedia.org/wiki/Infix_notation).\
+  \ \n\n# Evaluation : \n\nOperators should be evaluated in the order they appear\
+  \ and not as in `BODMAS`, though brackets __should__ be correctly observed. \n\n\
+  The function should return the correct result for any possible expression of this\
+  \ form.\n\n# Note : \n\n- All given input will be valid.\n- It will consist entirely\
+  \ of numbers or one of the operators.\n- Parentheses will alway be matched.\n- Use\
+  \ of `eval` or its equivalent is forbidden\n- use of `exec` is forbidden (Python)\
+  \ \n- Use of `Function` or any of their (Function, eval) equivalent is also forbidden.\n\
+  - Using `require` is also forbidden. (`import` for python)\n- Using more than 7\
+  \ (8 for python) lines is also forbidden.\n- Using more than 260 (JS) / 240 (python)\
+  \ characters is also forbidden.\n- Having more than 100 chars per line is forbidden.\n\
+  - Having more than 6 semi-colons is forbidden\n\nand that is about it.\n\n--- \n\
+  \n# Examples : \n\n    e(\"2*3*4*5+99\")               ---> 219\n    e(\"2*3*4*5+99*321-12312312\"\
+  )  ---> -12242013\n    e(\"1-2*2/2*2-1*7+3\")          ---> -18\n\n---"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def evaluate (s : String) : Int :=\n  sorry\n"
+"vc-theorems": "theorem evaluate_single_number {n : Int} (h : 1 ≤ n ∧ n ≤ 999) :\n\
+  \  evaluate (toString n) = n :=\n  sorry\n\n\ntheorem evaluate_multiplication {a\
+  \ b : Int} (ha : 1 ≤ a ∧ a ≤ 99) (hb : 1 ≤ b ∧ b ≤ 99) :\n  evaluate (toString a\
+  \ ++ \"*\" ++ toString b) = a * b :=\n  sorry\n\n\ntheorem evaluate_multiply_by_one_left\
+  \ {n : Int} (h : 1 ≤ n ∧ n ≤ 99) :\n  evaluate (\"1*\" ++ toString n) = n :=\n \
+  \ sorry\n\n\ntheorem evaluate_multiply_by_one_right {n : Int} (h : 1 ≤ n ∧ n ≤ 99)\
+  \ :\n  evaluate (toString n ++ \"*1\") = n :=\n  sorry\n\n\ntheorem evaluate_specific_multiplication\
+  \ :\n  evaluate \"2*3*4\" = 24 :=\n  sorry\n\n\ntheorem evaluate_specific_addition\
+  \ :\n  evaluate \"10+20\" = 30 :=\n  sorry\n\n\ntheorem evaluate_specific_mixed\
+  \ :\n  evaluate \"5*4+2\" = 22 :=\n  sorry\n\n\ntheorem evaluate_division_by_zero_error\
+  \ :\n  ∀ (result : Int), evaluate \"1/0\" ≠ result :=\n  sorry\n\n/--\ninfo: 219\n\
+  -/\n#guard_msgs in\n#eval evaluate \"2*3*4*5+99\"\n\n/--\ninfo: -12242013\n-/\n\
+  #guard_msgs in\n#eval evaluate \"2*3*4*5+99*321-12312312\"\n\n/--\ninfo: -18\n-/\n\
+  #guard_msgs in\n#eval evaluate \"1-2*2/2*2-1*7+3\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,29 @@
+"vc-description": "Given positive integers N, K and M, solve the following problem\
+  \ for every integer x between 1 and N (inclusive):\n - Find the number, modulo M,\
+  \ of non-empty multisets containing between 0 and K (inclusive) instances of each\
+  \ of the integers 1, 2, 3 \\cdots, N such that the average of the elements is x.\n\
+  \n-----Constraints-----\n - 1 \\leq N, K \\leq 100\n - 10^8 \\leq M \\leq 10^9 +\
+  \ 9\n - M is prime.\n - All values in input are integers.\n\n-----Input-----\nInput\
+  \ is given from Standard Input in the following format:\nN K M\n\n-----Output-----\n\
+  Use the following format:\nc_1\nc_2\n:\nc_N\n\nHere, c_x should be the number, modulo\
+  \ M, of multisets such that the average of the elements is x.\n\n-----Sample Input-----\n\
+  3 1 998244353\n\n-----Sample Output-----\n1\n3\n1\n\nConsider non-empty multisets\
+  \ containing between 0 and 1 instance(s) of each of the integers between 1 and 3.\
+  \ Among them, there are:\n - one multiset such that the average of the elements\
+  \ is k = 1: \\{1\\};\n - three multisets such that the average of the elements is\
+  \ k = 2: \\{2\\}, \\{1, 3\\}, \\{1, 2, 3\\};\n - one multiset such that the average\
+  \ of the elements is k = 3: \\{3\\}."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_multiset_averages (N K M : Nat) : List Nat :=\n  sorry\n\
+  \n\n\n\n"
+"vc-theorems": "theorem common_moduli {N K : Nat} (h1 : N > 0) (h2 : K > 0) :\n  let\
+  \ primes := [998244353, 1000000007]\n  ∀ M ∈ primes,\n    ∀ x ∈ solve_multiset_averages\
+  \ N K M,\n      0 ≤ x ∧ x < M :=\n  sorry\n\n\ntheorem edge_case_n1 :\n  (solve_multiset_averages\
+  \ 1 1 (10^9 + 7)).length = 1 :=\n  sorry\n\n\ntheorem edge_case_min_input :\n  let\
+  \ result := solve_multiset_averages 1 1 2\n  result.length = 1 ∧ result.head! <\
+  \ 2 :=\n  sorry\n\n/--\ninfo: [1, 3, 1]\n-/\n#guard_msgs in\n#eval solve_multiset_averages\
+  \ 3 1 998244353\n\n/--\ninfo: [2]\n-/\n#guard_msgs in\n#eval solve_multiset_averages\
+  \ 1 2 1000000007\n\n/--\ninfo: [1, 1]\n-/\n#guard_msgs in\n#eval solve_multiset_averages\
+  \ 2 1 905589253\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,28 @@
+"vc-description": "You are given two strings s1 and s2 of equal length consisting\
+  \ of letters \"x\" and \"y\" only. Your task is to make these two strings equal\
+  \ to each other. You can swap any two characters that belong to different strings, which\
+  \ means: swap s1[i] and s2[j].\nReturn the minimum number of swaps required to make s1 and\
+  \ s2 equal, or return -1 if it is impossible to do so.\n \nExample 1:\nInput: s1\
+  \ = \"xx\", s2 = \"yy\"\nOutput: 1\nExplanation: \nSwap s1[0] and s2[1], s1 = \"\
+  yx\", s2 = \"yx\".\nExample 2: \nInput: s1 = \"xy\", s2 = \"yx\"\nOutput: 2\nExplanation:\
+  \ \nSwap s1[0] and s2[0], s1 = \"yy\", s2 = \"xx\".\nSwap s1[0] and s2[1], s1 =\
+  \ \"xy\", s2 = \"xy\".\nNote that you can't swap s1[0] and s1[1] to make s1 equal\
+  \ to \"yx\", cause we can only swap chars in different strings.\nExample 3:\nInput:\
+  \ s1 = \"xx\", s2 = \"xy\"\nOutput: -1\n\nExample 4:\nInput: s1 = \"xxyyxyxyxx\"\
+  , s2 = \"xyyxyxxxyx\"\nOutput: 4\n\n \nConstraints:\n\n1 <= s1.length, s2.length\
+  \ <= 1000\ns1, s2 only contain 'x' or 'y'."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def minimumSwap (s1 s2 : List XY) : Int := sorry\n\ntheorem string_length_equal\
+  \ (s1 s2 : List XY) :\n  minimumSwap s1 s2 ≠ -1 → s1.length = s2.length := sorry\n"
+"vc-theorems": "theorem result_bounds (s1 s2 : List XY) : \n  let result := minimumSwap\
+  \ s1 s2\n  result ≠ -1 → 0 ≤ result ∧ result ≤ s1.length := sorry\n\n\ntheorem invalid_case_parity\
+  \ (s1 s2 : List XY) :\n  let xy := (List.zip s1 s2).filter (fun p => decide (p.1\
+  \ = XY.x) && decide (p.2 = XY.y)) |>.length\n  let yx := (List.zip s1 s2).filter\
+  \ (fun p => decide (p.1 = XY.y) && decide (p.2 = XY.x)) |>.length\n  (xy + yx) %\
+  \ 2 = 1 → minimumSwap s1 s2 = -1 := sorry\n\n\ntheorem identical_strings_no_swaps\
+  \ (s : List XY) :\n  minimumSwap s s = 0 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval minimumSwap \"xx\" \"yy\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval\
+  \ minimumSwap \"xy\" \"yx\"\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval minimumSwap\
+  \ \"xx\" \"xy\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

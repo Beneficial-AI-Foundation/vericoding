@@ -1,0 +1,30 @@
+"vc-description": "Consider the fraction, $a/b$, where $a$ and $b$ are positive integers.\
+  \ If $a < b$ and $GCD(a,b) = 1$, it is called a reduced proper fraction.\nIf we\
+  \ list the set of a reduced proper fraction for $d \\leq 8$, (where $d$ is the denominator)\
+  \ in ascending order of size, we get:\n$1/8$, $1/7$, $1/6$, $1/5$, $1/4$, $2/7$,\
+  \ $1/3$, $3/8$, $2/5$ , $3/7$, $1/2$, $4/7$, $3/5$, $5/8$, $2/3$, $5/7$, $3/4$,\
+  \ $4/5$,  $5/6$, $6/7$, $7/8$\nIt can be seen that $2/5$ is the fraction immediately\
+  \ to the left of $3/7$.\nBy listing the set of reduced proper fractions for $d \\\
+  leq N$ in ascending order of value, find the numerator and denominator of the fraction\
+  \ immediately to the left of $a/b$ when $a$ and $b$ are given.\n\n-----Input:-----\n\
+  - First line of input contains an integer $T$, number of test cases\n- Next $T$\
+  \ lines contain $a$ $b$ $N$ separated by space\n\n-----Output:-----\nPrint the numerator\
+  \ and denominator separated by a space corresponding to each test case on a new\
+  \ line\n\n-----Constraints-----\n- $1 \\leq T \\leq 50$\n- $1 \\leq a < b \\leq\
+  \ 10^9$\n- $GCD(a,b) = 1$\n- $b < N \\leq 10^{15}$\n\n-----Subtasks-----\n- 10 points:\
+  \ $1 \\leq N \\leq 100$\n- 30 points : $1 \\leq N \\leq 10^6$\n- 60 points : $1\
+  \ \\leq N \\leq 10^{15}$\n\n-----Sample Input:-----\n5\n3 7 8\n3 5 8\n4 5 8\n6 7\
+  \ 8\n1 5 8\n\n-----Sample Output:-----\n2 5\n4 7\n3 4\n5 6\n1 6"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_left_fraction (a b n : Nat) : Nat × Nat := sorry\n\ntheorem\
+  \ find_left_fraction_properties {a b n : Nat}\n  (ha : 2 ≤ a) (hb : 3 ≤ b) (hn :\
+  \ 3 ≤ n)\n  (hab : a < b) (hbn : b ≤ n) :\n  let (num, den) := find_left_fraction\
+  \ a b n\n  -- Result is proper fraction within bounds\n  0 < num ∧ num < den ∧ den\
+  \ ≤ n ∧\n  -- Result is less than target\n  num * b < a * den ∧\n  -- Result is\
+  \ maximal among such fractions\n  ∀ n2 d : Nat,\n    1 ≤ d → d ≤ n →\n    1 ≤ n2\
+  \ → n2 < d →\n    n2 * b < a * d →\n    n2 * den ≤ num * d := sorry\n"
+"vc-theorems": "theorem find_left_fraction_reduced {a b n : Nat}\n  (ha : 2 ≤ a) (hb\
+  \ : 3 ≤ b) (hn : 3 ≤ n)\n  (hab : a < b) (hbn : b ≤ n) :\n  let (num, den) := find_left_fraction\
+  \ a b n\n  ∀ k : Nat,\n    k > 1 →\n    ¬(k ∣ num ∧ k ∣ den) := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

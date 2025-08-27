@@ -1,0 +1,43 @@
+"vc-description": "Indian National Olympiad in Informatics 2015\nIn this problem you\
+  \ are given two lists of N integers, a1, a2, ..., aN and b1, b2, ... bN. For any\
+  \ pair (i, j) with i, j ϵ {1, 2, ..., N} we define the segment from i to j, written\
+  \ as [i, j], to be i, i + 1, ..., j if i ≤ j and i, i + 1, ..., N, 1, 2, ...,j if\
+  \ i > j. Thus if N = 5 then the [2, 4] = {2, 3, 4} and [4, 2] = {4, 5, 1, 2}.\n\
+  With each segment [i, j] we associate a special sum SSum[i, j] as follows:\n- SSum[i,\
+  \ i] = ai.\n- If i ≠ j then, \n\nThe positions i and j contribute ai and aj, respectively,\
+  \ to the sum while every other position k in [i, j] contributes bk.\nSuppose N =\
+  \ 5 and that the two given sequences are as follows:\ni\n1\n2\n3\n4\n5\nai\n2\n\
+  3\n2\n3\n1\nbi\n3\n4\n4\n6\n3\n\nThen, SSum[1, 1] = 2, SSum[2, 4] = 3 + 4 + 3 =\
+  \ 10 and SSum[4, 2] = 3 + 3 + 3 + 3 = 12. Your aim is to compute the maximum value\
+  \ of SSum[i, j] over all segments [i, j]. In this example you can verify that this\
+  \ value is 18 (SSum[2, 1] = 18).\n\n-----Input format-----\n- The first line contains\
+  \ a single positive integer N.\n- This is followed by a line containing N integers\
+  \ giving the values of the ais and this is followed by a line containing N integers\
+  \ giving the values of the bis.\n\n-----Output format-----\nA single integer in\
+  \ a single line giving the maximum possible special segment sum.\nNote: The final\
+  \ value may not fit in a 32 bit integer. Use variables of an appropriate type to\
+  \ store and manipulate this value (long long in C/C++, long in Java).\n\n-----Test\
+  \ Data-----\nYou may assume that -109 ≤ ai, bi ≤ 109.\nSubtask 1 (10 Marks) 1 ≤\
+  \ N ≤ 3000.\nSubtask 2 (20 Marks) 1 ≤ N ≤ 106 and ai = bi for all 1 ≤ i ≤ N.\nSubtask\
+  \ 3 (30 Marks) 3 ≤ N ≤106. Further a1 = b1 = aN = bN = -109 and for each\n1 < k\
+  \ < N we have -999 ≤ ak, bk ≤ 999.\nSubtask 4 (40 Marks) 1 ≤ N ≤ 106.\n\n-----Example-----\n\
+  Here is the sample input and output corresponding to the example above:\n\n-----Sample\
+  \ input-----\n5\n2 3 2 3 1\n3 4 4 6 3\n\n-----Sample output-----\n18\n\nNote: Your\
+  \ program should not print anything other than what is specified in the output format.\
+  \ Please remove all diagnostic print statements before making your final submission.\
+  \ A program with extraneous output will be treated as incorrect!"
+"vc-preamble": "import Imports.AllImports\n\ndef max (a b : Int) : Int :=\nif a ≥\
+  \ b then a else b\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_special_segment_sum (n: Nat) (a b: List Int) : Int :=\n\
+  sorry\n"
+"vc-theorems": "theorem max_special_segment_sum_geq_max_a {n: Nat} {a b: List Int}\
+  \ \n  (hn: n ≥ 2) (ha: a.length = n) (hb: b.length = n) :\n  max_special_segment_sum\
+  \ n a b ≥ a.foldl max 0 :=\nsorry\n\n\ntheorem max_special_segment_sum_monotonic\
+  \ {n: Nat} {a b: List Int} \n  (hn: n ≥ 2) (ha: a.length = n) (hb: b.length = n)\n\
+  \  (hb_nonneg: ∀ x ∈ b, x ≥ 0) :\n  let a_increased := a.map (· + 1)\n  max_special_segment_sum\
+  \ n a_increased b ≥ max_special_segment_sum n a b :=\nsorry\n\n\ntheorem zero_b_equals_max_a\
+  \ {n: Nat} {a: List Int} \n  (hn: n ≥ 2) (ha: a.length = n)\n  (h_pos: ∀ x ∈ a,\
+  \ x > 0) :\n  let b := List.replicate n (0:Int)\n  max_special_segment_sum n a b\
+  \ ≥ a.foldl max 0 :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

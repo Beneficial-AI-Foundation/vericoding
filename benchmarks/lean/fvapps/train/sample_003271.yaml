@@ -1,0 +1,57 @@
+"vc-description": "#### Task:\n\nYour job here is to implement a method, `approx_root`\
+  \ in Ruby/Python/Crystal and `approxRoot` in JavaScript/CoffeeScript, that takes\
+  \ one argument, `n`, and returns the approximate square root of that number, rounded\
+  \ to the nearest hundredth and computed in the following manner.\n\n1.      Start\
+  \ with `n = 213` (as an example). \n2.      To approximate the square root of n,\
+  \ we will first find the greatest perfect square that is below or equal to `n`.\
+  \ (In this example, that would be 196, or 14 squared.) We will call the square root\
+  \ of this number (which means sqrt 196, or 14) `base`.\n3.      Then, we will take\
+  \ the lowest perfect square that is greater than or equal to `n`. (In this example,\
+  \ that would be 225, or 15 squared.)\n4.      Next, subtract 196 (greatest perfect\
+  \ square less than or equal to `n`) from `n`. (213 - 196 = **17**) We will call\
+  \ this value `diff_gn`.\n5.      Find the difference between the lowest perfect\
+  \ square greater than or equal to `n` and the greatest perfect square less than\
+  \ or equal to `n`. (225 – 196 = **29**) We will call this value `diff_lg`.\n6. \
+  \     Your final answer is `base` + (`diff_gn` / `diff_lg`). In this example: 14\
+  \ + (17 / 29) which is 14.59, rounded to the nearest hundredth.\n\nJust to clarify,\
+  \ if the input is a perfect square itself, you should return the exact square of\
+  \ the input.\n\nIn case you are curious, the approximation (computed like above)\
+  \ for 213 rounded to four decimal places is 14.5862. The actual square root of 213\
+  \ is 14.5945. \n\nInputs will always be positive whole numbers. If you are having\
+  \ trouble understanding it, let me know with a comment, or take a look at the second\
+  \ group of the example cases.\n\n#### Some examples:\n\n```python\napprox_root(400)\
+  \ #=> 20\napprox_root(401) #=> \n  # smallest perfect square above 401 is 441 or\
+  \ 21 squared\n  # greatest perfect square below 401 is 400 or 20 squared\n  # difference\
+  \ between 441 and 400 is 41\n  # difference between 401 and 400 is 1\n  # answer\
+  \ is 20 + (1 / 41) which becomes 20.02, rounded to the nearest hundredth\n  # final\
+  \ answer = 20.02.\napprox_root(2) #=>\n  # smallest perfect square above 2 is 4\
+  \ or 2 squared\n  # greatest perfect square below 2 is 1 or 1 squared\n  # difference\
+  \ between 4 and 1 is 3\n  # difference between 2 and 1 is 1\n  # answer is 1 + (1\
+  \ / 3), which becomes 1.33, rounded to the nearest hundredth\n  # final answer =\
+  \ 1.33.\n\n# math.sqrt() isn't disabled.\n```\n\nAlso check out my other creations\
+  \ — [Square Roots: Simplifying/Desimplifying](https://www.codewars.com/kata/square-roots-simplify-slash-desimplify/),\
+  \ [Square and Cubic Factors](https://www.codewars.com/kata/square-and-cubic-factors),\
+  \ [Keep the Order](https://www.codewars.com/kata/keep-the-order), [Naming Files](https://www.codewars.com/kata/naming-files),\
+  \ [Elections: Weighted Average](https://www.codewars.com/kata/elections-weighted-average),\
+  \ [Identify Case](https://www.codewars.com/kata/identify-case), [Split Without Loss](https://www.codewars.com/kata/split-without-loss),\
+  \ [Adding Fractions](https://www.codewars.com/kata/adding-fractions),\n[Random Integers](https://www.codewars.com/kata/random-integers),\
+  \ [Implement String#transpose](https://www.codewars.com/kata/implement-string-number-transpose),\
+  \ [Implement Array#transpose!](https://www.codewars.com/kata/implement-array-number-transpose),\
+  \ [Arrays and Procs #1](https://www.codewars.com/kata/arrays-and-procs-number-1),\
+  \ and [Arrays and Procs #2](https://www.codewars.com/kata/arrays-and-procs-number-2).\n\
+  \nIf you notice any issues or have any suggestions/comments whatsoever, please don't\
+  \ hesitate to mark an issue or just comment. Thanks!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def approx_root (n : Nat) : Float := sorry\n\ntheorem approx_root_close_to_actual\
+  \ (n : Nat) (h : n ≤ 1000000) : \n  (approx_root n - Float.sqrt (n.toFloat)).abs\
+  \ < 0.1 := sorry\n"
+"vc-theorems": "theorem approx_root_perfect_squares (n : Nat) (h : n ≤ 1000) :\n \
+  \ approx_root (n * n) = n.toFloat := sorry\n\n\ntheorem approx_root_bounds (n :\
+  \ Nat) (h : n ≤ 1000000) :\n  Float.floor (Float.sqrt (n.toFloat)) ≤ approx_root\
+  \ n ∧ \n  approx_root n ≤ Float.floor (Float.sqrt (n.toFloat)) + 1 := sorry\n\n\n\
+  theorem approx_root_precision (n : Nat) (h : n ≤ 1000000) :\n  (approx_root n -\
+  \ approx_root n).abs < 0.00001 := sorry\n\n/--\ninfo: 20\n-/\n#guard_msgs in\n#eval\
+  \ approx_root 400\n\n/--\ninfo: 20.02\n-/\n#guard_msgs in\n#eval approx_root 401\n\
+  \n/--\ninfo: 1.33\n-/\n#guard_msgs in\n#eval approx_root 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

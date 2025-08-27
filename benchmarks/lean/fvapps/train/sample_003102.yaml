@@ -1,0 +1,27 @@
+"vc-description": "In this Kata, you will be given a series of times at which an alarm\
+  \ goes off. Your task will be to determine the maximum time interval between alarms.\
+  \ Each alarm starts ringing at the beginning of the corresponding minute and rings\
+  \ for exactly one minute. The times in the array are not in chronological order.\
+  \ Ignore duplicate times, if any.\n\n```Haskell\nFor example:\nsolve([\"14:51\"\
+  ]) = \"23:59\". If the alarm goes off now, it will not go off for another 23 hours\
+  \ and 59 minutes.\nsolve([\"23:00\",\"04:22\",\"18:05\",\"06:24\"]) == \"11:40\"\
+  . The max interval that the alarm will not go off is 11 hours and 40 minutes.\n\
+  ```\nIn the second example, the alarm goes off `4` times in a day.\n\nMore examples\
+  \ in test cases. Good luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef Time.toString (t : Time) : String\
+  \ := sorry\n\ndef parseTime (s : String) : Option Time := sorry \n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (times : List String) : String := sorry\n\ndef toMinutes\
+  \ (t : Time) : Nat :=\n  t.hour * 60 + t.minute\n"
+"vc-theorems": "theorem solve_valid_format (times : List String) :\n  let result :=\
+  \ solve times\n  let hrs := result.take 2\n  let mins := result.drop 3\n  result.length\
+  \ = 5 ∧ \n  result.data.get? 2 = some ':' ∧\n  (parseTime result).isSome := sorry\n\
+  \n\ntheorem solve_under_24h (times : List String) :\n  let result := solve times\n\
+  \  let t := Option.get! (parseTime result)\n  toMinutes t < 24 * 60 := sorry\n\n\
+  \ntheorem solve_single_time (t : Time) :\n  solve [t.toString] = \"23:59\" := sorry\n\
+  \n\ntheorem solve_unique_times (times : List String) :\n  solve times = solve (times\
+  \ ++ times) := sorry\n\n/--\ninfo: '23:59'\n-/\n#guard_msgs in\n#eval solve [\"\
+  14:51\"]\n\n/--\ninfo: '11:40'\n-/\n#guard_msgs in\n#eval solve [\"23:00\", \"04:22\"\
+  , \"18:05\", \"06:24\"]\n\n/--\ninfo: '09:10'\n-/\n#guard_msgs in\n#eval solve [\"\
+  21:14\", \"15:34\", \"14:51\", \"06:25\", \"15:30\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

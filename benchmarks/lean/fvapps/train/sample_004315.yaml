@@ -1,0 +1,20 @@
+"vc-description": "You are given an array of unique numbers. The numbers represent\
+  \ points. The higher the number the higher the points.  \nIn the array [1,3,2] 3\
+  \ is the highest point value so it gets 1st place. 2 is the second highest so it\
+  \ gets second place. 1 is the 3rd highest so it gets 3rd place. \n\nYour task is\
+  \ to return an array giving each number its rank in the array.  \ninput // [1,3,2]\
+  \ \noutput // [3,1,2]\n\n```rankings([1,2,3,4,5]) // [5,4,3,2,1]``` \n```rankings([3,4,1,2,5])//\
+  \  [3,2,5,4,1]``` \n```rankings([10,20,40,50,30]) //  [5, 4, 2, 1, 3]``` \n```rankings([1,\
+  \ 10]) //   [2, 1]``` \n```rankings([22, 33, 18, 9, 110, 4, 1, 88, 6, 50]) //```\n\
+  ```[5, 4, 6, 7, 1, 9, 10, 2, 8, 3]```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def rankings (arr : List Int) : List Nat :=\n  sorry\n"
+"vc-theorems": "theorem rankings_length {arr : List Int} (h : arr ≠ []) :\n  (rankings\
+  \ arr).length = arr.length :=\nsorry\n\n\ntheorem rankings_range {arr : List Int}\
+  \ (h : arr ≠ []) :\n  let ranks := rankings arr \n  (∀ r ∈ ranks, 1 ≤ r ∧ r ≤ arr.length)\
+  \ ∧ \n  (ranks.length = arr.length) :=\nsorry\n\n/--\ninfo: [3, 1, 2]\n-/\n#guard_msgs\
+  \ in\n#eval rankings [1, 3, 2]\n\n/--\ninfo: [5, 4, 3, 2, 1]\n-/\n#guard_msgs in\n\
+  #eval rankings [1, 2, 3, 4, 5]\n\n/--\ninfo: [5, 4, 6, 7, 1, 9, 10, 2, 8, 3]\n-/\n\
+  #guard_msgs in\n#eval rankings [22, 33, 18, 9, 110, 4, 1, 88, 6, 50]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

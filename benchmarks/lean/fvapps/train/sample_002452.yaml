@@ -1,0 +1,23 @@
+"vc-description": "=====Function Descriptions=====\ndot\n\nThe dot tool returns the\
+  \ dot product of two arrays.\n\nimport numpy\n\nA = numpy.array([ 1, 2 ])\nB = numpy.array([\
+  \ 3, 4 ])\n\nprint numpy.dot(A, B)       #Output : 11\n\ncross\n\nThe cross tool\
+  \ returns the cross product of two arrays.\n\nimport numpy\n\nA = numpy.array([\
+  \ 1, 2 ])\nB = numpy.array([ 3, 4 ])\n\nprint numpy.cross(A, B)     #Output : -2\n\
+  \n=====Problem Statement=====\nYou are given two arrays A and B. Both have dimensions\
+  \ of NXN.\nYour task is to compute their matrix product.\n\n=====Input Format=====\n\
+  The first line contains the integer N.\nThe next N lines contains N space separated\
+  \ integers of array A.\nThe following N lines contains N space separated integers\
+  \ of array B.\n\n=====Output Format=====\nPrint the matrix multiplication of A and\
+  \ B."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def matrix_multiply (n : Nat) (A B : List (List Int)) : List (List\
+  \ Int) := sorry\n\ntheorem matrix_multiply_shape (n : Nat) (A B : List (List Int))\
+  \ :\n  let result := matrix_multiply n A B \n  result.length = n ∧ \n  (∀ row ∈\
+  \ result, row.length = n) := sorry\n"
+"vc-theorems": "theorem matrix_multiply_matches_expected (n : Nat) (A : List (List\
+  \ Int)) : \n  matrix_multiply n A A = \n    let expected := List.replicate n (List.replicate\
+  \ n 0) -- simplified for theorem\n    expected := sorry\n\n\ntheorem matrix_multiply_identity\
+  \ (n : Nat) (A : List (List Int)) :\n  let I := List.replicate n (List.replicate\
+  \ n 0) -- identity matrix\n  matrix_multiply n A I = A := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

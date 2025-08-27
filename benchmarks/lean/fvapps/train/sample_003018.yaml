@@ -1,0 +1,14 @@
+"vc-description": "Implement `String#to_cents`, which should parse prices expressed\
+  \ as `$1.23` and return number of cents, or in case of bad format return `nil`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def to_cents (s: String) : Option Nat :=\n  sorry\n"
+"vc-theorems": "theorem test_whole_dollar_amounts (amount: String) (h: ∃ n: Nat, amount\
+  \ = s!\"${n}.00\") : \n  let n := Classical.choose h \n  to_cents amount = some\
+  \ (n * 100) := \n  sorry\n\n\ntheorem test_invalid_formats (amount: String) \n \
+  \ (h: ¬∃ d₁ d₂: Nat, amount = s!\"${d₁}.{d₂}\" ∧ d₂ < 100) :\n  to_cents amount\
+  \ = none :=\n  sorry\n\n\ntheorem test_empty_string :\n  to_cents \"\" = none :=\n\
+  \  sorry\n\n/--\ninfo: 123\n-/\n#guard_msgs in\n#eval to_cents \"$1.23\"\n\n/--\n\
+  info: 9999\n-/\n#guard_msgs in\n#eval to_cents \"$99.99\"\n\n/--\ninfo: 1234567890\n\
+  -/\n#guard_msgs in\n#eval to_cents \"$12345678.90\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

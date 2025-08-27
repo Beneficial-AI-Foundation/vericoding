@@ -1,0 +1,26 @@
+"vc-description": "Alex is transitioning from website design to coding and wants to\
+  \ sharpen his skills with CodeWars.  \nHe can do ten kata in an hour, but when he\
+  \ makes a mistake, he must do pushups. These pushups really tire poor Alex out,\
+  \ so every time he does them they take twice as long. His first set of redemption\
+  \ pushups takes 5 minutes. Create a function, `alexMistakes`, that takes two arguments:\
+  \ the number of kata he needs to complete, and the time in minutes he has to complete\
+  \ them. Your function should return how many mistakes Alex can afford to make."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def alex_mistakes (num_kata : Nat) (total_time : Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem alex_mistakes_nonnegative\n  (num_kata : Nat) (total_time\
+  \ : Nat) :\n  alex_mistakes num_kata total_time ≥ 0 :=\nsorry\n\n\ntheorem alex_mistakes_time_limit\n\
+  \  (num_kata total_time : Nat)\n  (h1 : total_time > num_kata * 6) :\n  let result\
+  \ := alex_mistakes num_kata total_time\n  let remaining_time := total_time - num_kata\
+  \ * 6\n  let mistake_time := (2^result - 1) * 5\n  mistake_time ≤ remaining_time\
+  \ ∧\n  ((2^(result+1) - 1) * 5 > remaining_time ∨ result ≥ 32) :=\nsorry\n\n\ntheorem\
+  \ alex_mistakes_no_extra_time \n  (num_kata : Nat)\n  (h1 : num_kata > 0) :\n  alex_mistakes\
+  \ num_kata (num_kata * 6) = 0 ∧\n  alex_mistakes num_kata (num_kata * 6 - 1) = 0\
+  \ :=\nsorry\n\n\ntheorem alex_mistakes_monotonic\n  (num_kata : Nat)\n  (extra_time\
+  \ : Nat)\n  (h1 : extra_time > 0) :\n  alex_mistakes num_kata (num_kata * 6 + extra_time\
+  \ + 1) ≥ \n  alex_mistakes num_kata (num_kata * 6 + extra_time) :=\nsorry\n\n/--\n\
+  info: 3\n-/\n#guard_msgs in\n#eval alex_mistakes 10 120\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval alex_mistakes 3 45\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval alex_mistakes\
+  \ 20 120\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

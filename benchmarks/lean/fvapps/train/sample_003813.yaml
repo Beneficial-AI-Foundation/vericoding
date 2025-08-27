@@ -1,0 +1,35 @@
+"vc-description": "# Task\n\n**_Given_** a **_Divisor and a Bound_** , *Find the largest\
+  \ integer N* , Such That , \n\n# Conditions :\n\n* **_N_**  is *divisible by divisor*\n\
+  \n* **_N_**  is *less than or equal to bound* \n\n* **_N_**  is *greater than 0*.\n\
+  ___\n\n# Notes \n\n* The **_parameters (divisor, bound)_** passed to the function\
+  \ are *only positive values* .\n* *It's guaranteed that* a **divisor is Found**\
+  \ .\n___\n# Input >> Output Examples \n\n```\nmaxMultiple (2,7) ==> return (6)\n\
+  ```\n## Explanation: \n\n**_(6)_** is divisible by **_(2)_** , **_(6)_** is less\
+  \ than or equal to bound **_(7)_** , and **_(6)_** is > 0 .\n___\n```\nmaxMultiple\
+  \ (10,50)  ==> return (50)\n```\n## Explanation:\n\n**_(50)_** *is divisible by*\
+  \ **_(10)_** , **_(50)_** is less than or equal to bound **_(50)_** , and **_(50)_**\
+  \ is > 0 .*\n___\n```\nmaxMultiple (37,200) ==> return (185)\n```\n## Explanation:\n\
+  \n**_(185)_** is divisible by **_(37)_** , **_(185)_** is less than or equal to\
+  \ bound **_(200)_** , and **_(185)_** is > 0 .\n___\n___\n\n## [Playing with Numbers\
+  \ Series](https://www.codewars.com/collections/playing-with-numbers)\n\n# [Playing\
+  \ With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
+  \n# [Bizarre Sorting-katas](https://www.codewars.com/collections/bizarre-sorting-katas)\n\
+  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
+  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou\n\n~~~if:java\n\
+  Java's default return statement can be any `int`, a divisor **will** be found.\n\
+  ~~~\n\n~~~if:nasm\n## NASM-specific notes\n\nThe function declaration is `int max_multiple(int\
+  \ divisor, int bound)` where the first argument is the divisor and the second one\
+  \ is the bound.\n~~~"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def maxMultiple (divisor: Nat) (bound: Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem max_multiple_is_divisible (divisor: Nat) (bound: Nat) (h1:\
+  \ divisor > 0)\n    : divisor ∣ maxMultiple divisor bound :=\n  sorry\n\n\ntheorem\
+  \ max_multiple_within_bound (divisor: Nat) (bound: Nat) (h1: divisor > 0)\n    :\
+  \ maxMultiple divisor bound ≤ bound :=\n  sorry\n\n\ntheorem max_multiple_is_maximal\
+  \ (divisor: Nat) (bound: Nat) (h1: divisor > 0)\n    : maxMultiple divisor bound\
+  \ + divisor > bound :=\n  sorry\n\n\ntheorem max_multiple_when_equal (divisor: Nat)\
+  \ (h1: divisor > 0) \n    : maxMultiple divisor divisor = divisor :=\n  sorry\n\n\
+  \ntheorem max_multiple_zero_invalid (bound: Nat)\n    : maxMultiple 0 bound = 0\
+  \ :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

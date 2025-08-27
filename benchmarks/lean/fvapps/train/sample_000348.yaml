@@ -1,0 +1,31 @@
+"vc-description": "You are given an array representing a row of seats where seats[i]\
+  \ = 1 represents a person sitting in the ith seat, and seats[i] = 0 represents that\
+  \ the ith seat is empty (0-indexed).\nThere is at least one empty seat, and at least\
+  \ one person sitting.\nAlex wants to sit in the seat such that the distance between\
+  \ him and the closest person to him is maximized. \nReturn that maximum distance\
+  \ to the closest person.\n \nExample 1:\n\nInput: seats = [1,0,0,0,1,0,1]\nOutput:\
+  \ 2\nExplanation: \nIf Alex sits in the second open seat (i.e. seats[2]), then the\
+  \ closest person has distance 2.\nIf Alex sits in any other open seat, the closest\
+  \ person has distance 1.\nThus, the maximum distance to the closest person is 2.\n\
+  \nExample 2:\nInput: seats = [1,0,0,0]\nOutput: 3\nExplanation: \nIf Alex sits in\
+  \ the last seat (i.e. seats[3]), the closest person is 3 seats away.\nThis is the\
+  \ maximum distance possible, so the answer is 3.\n\nExample 3:\nInput: seats = [0,1]\n\
+  Output: 1\n\n \nConstraints:\n\n2 <= seats.length <= 2 * 104\nseats[i] is 0 or 1.\n\
+  At least one seat is empty.\nAt least one seat is occupied."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_dist_to_closest : List Nat → Nat := sorry\n\ndef List.longestConsecutiveOnes\
+  \ (xs : List Nat) (n : Nat) : Nat := sorry\n"
+"vc-theorems": "theorem max_dist_non_negative (seats : List Nat) \n  (h : ∃ x ∈ seats,\
+  \ x = 1) :\n  max_dist_to_closest seats ≥ 0 := sorry\n\n\ntheorem max_dist_bounded_by_length\
+  \ (seats : List Nat)\n  (h : ∃ x ∈ seats, x = 1) :\n  max_dist_to_closest seats\
+  \ ≤ seats.length := sorry\n\n\ntheorem max_dist_gap_bound (seats : List Nat) (i\
+  \ j : Nat)\n  (h1 : ∃ x ∈ seats, x = 1)\n  (h2 : i < seats.length)\n  (h3 : j <\
+  \ seats.length) \n  (h4 : seats.get ⟨i, h2⟩ = 1)\n  (h5 : seats.get ⟨j, h3⟩ = 1)\n\
+  \  (h6 : i < j) :\n  ((j - i - 1) + 1) / 2 ≤ max_dist_to_closest seats := sorry\n\
+  \n\n\n\n\n\ntheorem max_dist_symmetry (seats : List Nat)\n  (h : ∃ x ∈ seats, x\
+  \ = 1) :\n  max_dist_to_closest seats = max_dist_to_closest seats.reverse := sorry\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval max_dist_to_closest [1, 0, 0, 0, 1, 0,\
+  \ 1]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval max_dist_to_closest [1, 0, 0, 0]\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval max_dist_to_closest [0, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

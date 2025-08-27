@@ -1,0 +1,31 @@
+"vc-description": "Given an array of integers arr, you are initially positioned at\
+  \ the first index of the array.\nIn one step you can jump from index i to index:\n\
+  \ni + 1 where: i + 1 < arr.length.\ni - 1 where: i - 1 >= 0.\nj where: arr[i] ==\
+  \ arr[j] and i != j.\n\nReturn the minimum number of steps to reach the last index\
+  \ of the array.\nNotice that you can not jump outside of the array at any time.\n\
+   \nExample 1:\nInput: arr = [100,-23,-23,404,100,23,23,23,3,404]\nOutput: 3\nExplanation:\
+  \ You need three jumps from index 0 --> 4 --> 3 --> 9. Note that index 9 is the\
+  \ last index of the array.\n\nExample 2:\nInput: arr = [7]\nOutput: 0\nExplanation:\
+  \ Start index is the last index. You don't need to jump.\n\nExample 3:\nInput: arr\
+  \ = [7,6,9,6,9,6,9,7]\nOutput: 1\nExplanation: You can jump directly from index\
+  \ 0 to index 7 which is last index of the array.\n\nExample 4:\nInput: arr = [6,1,9]\n\
+  Output: 2\n\nExample 5:\nInput: arr = [11,22,7,7,7,7,7,7,7,22,13]\nOutput: 3\n\n\
+   \nConstraints:\n\n1 <= arr.length <= 5 * 10^4\n-10^8 <= arr[i] <= 10^8"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_jumps (arr : List Int) : Int := sorry\n\ntheorem min_jumps_single_element\
+  \ (x : Int) :\n  min_jumps [x] = 0 := sorry\n"
+"vc-theorems": "theorem min_jumps_non_negative (arr : List Int) : \n  min_jumps arr\
+  \ ≥ -1 := sorry\n\n\ntheorem min_jumps_bound_by_length (arr : List Int) :\n  min_jumps\
+  \ arr ≤ arr.length := sorry\n\n\ntheorem min_jumps_all_same {arr : List Int} (h\
+  \ : arr.length > 1) \n  (h2 : ∀ x ∈ arr, x = arr.head!) :\n  min_jumps arr = 1 :=\
+  \ sorry\n\n\ntheorem min_jumps_same_ends {arr : List Int} (h : arr.length > 1)\n\
+  \  (h2 : arr.head! = arr.getLast!) :\n  min_jumps arr = 1 := sorry\n\n\ntheorem\
+  \ min_jumps_identical_elements (n : Nat) (h : n ≥ 2) :\n  min_jumps (List.replicate\
+  \ n 1) = 1 := sorry\n\n\ntheorem min_jumps_adjacent_reachable {arr : List Int} (h\
+  \ : arr.length ≥ 2)\n  (h2 : ∀ i, i < arr.length - 1 → arr[i]! = arr[i+1]!) :\n\
+  \  min_jumps arr ≤ arr.length - 1 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
+  #eval min_jumps [100, -23, -23, 404, 100, 23, 23, 23, 3, 404]\n\n/--\ninfo: 0\n\
+  -/\n#guard_msgs in\n#eval min_jumps [7]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval\
+  \ min_jumps [7, 6, 9, 6, 9, 6, 9, 7]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

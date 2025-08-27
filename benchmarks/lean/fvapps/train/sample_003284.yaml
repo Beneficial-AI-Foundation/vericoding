@@ -1,0 +1,24 @@
+"vc-description": "Given a string ``string`` that contains only letters, you have\
+  \ to find out the number of **unique** strings (including ``string`` itself) that\
+  \ can be produced by re-arranging the letters of the ``string``.  Strings are case\
+  \ **insensitive**.\n\nHINT: Generating all the unique strings and calling length\
+  \ on that isn't a great solution for this problem. It can be done a lot faster...\n\
+  \n## Examples\n\n```python\nuniqcount(\"AB\") = 2      # \"AB\", \"BA\"\nuniqcount(\"\
+  ABC\") = 6     # \"ABC\", \"ACB\", \"BAC\", \"BCA\", \"CAB\", \"CBA\"\nuniqcount(\"\
+  ABA\") = 3     # \"AAB\", \"ABA\", \"BAA\"\nuniqcount(\"ABBb\") = 4    # \"ABBB\"\
+  , \"BABB\", \"BBAB\", \"BBBA\"\nuniqcount(\"AbcD\") = 24   # \"ABCD\", etc.\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef factorial : Nat → Nat\n  | 0 => 1\
+  \ \n  | n + 1 => (n + 1) * factorial n\n\n\ndef List.prod : List Nat → Nat\n  |\
+  \ [] => 1\n  | x :: xs => x * prod xs\n\n\ndef isAscii (s : String) : Bool :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def uniq_count (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem uniq_count_positive (s : String) :\n  uniq_count s > 0 :=\n\
+  \  sorry\n\n\n\n\ntheorem uniq_count_empty :\n  uniq_count \"\" = 1 :=\n  sorry\n\
+  \n\ntheorem uniq_count_factorial_bound (s : String) :\n  uniq_count s ≤ factorial\
+  \ s.length :=\n  sorry\n\n\ntheorem uniq_count_unique_chars {s : String} (h₁ : s\
+  \ ≠ \"\") \n  (h₂ : (s.toLower.data.eraseDups).length = s.length) :\n  uniq_count\
+  \ s = factorial s.length :=\n  sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval\
+  \ uniq_count \"ABC\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval uniq_count \"ABA\"\
+  \n\n/--\ninfo: 24\n-/\n#guard_msgs in\n#eval uniq_count \"AbcD\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

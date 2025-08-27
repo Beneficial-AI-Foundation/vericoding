@@ -1,0 +1,29 @@
+"vc-description": "# One is the loneliest number\n\n## Task\n\nThe range of vision\
+  \ of a digit is its own value. `1` can see one digit to the left and one digit to\
+  \ the right,` 2` can see two digits, and so on.\n\nThus, the loneliness of a digit\
+  \ `N` is the sum of the digits which it can see.\n\nGiven a non-negative integer,\
+  \ your funtion must determine if there's at least one digit `1` in this integer\
+  \ such that its loneliness value is minimal.\n\n## Example\n\n```\nnumber = 34315\n\
+  ```\n\ndigit | can see on the left | can see on the right | loneliness\n--- | ---\
+  \ | --- | ---\n3 | - | 431 | 4 + 3 + 1 = 8\n4 | 3 | 315 | 3 + 3 + 1 + 5 = 12\n3\
+  \ | 34 | 15 | 3 + 4 + 1 + 5 = 13\n1 | 3 | 5 | 3 + 5 = 8\n5 | 3431 | - | 3 + 4 +\
+  \ 3 + 1 = 11\n\nIs there a `1` for which the loneliness is minimal? Yes."
+"vc-preamble": "import Imports.AllImports\n\ndef digits (n: Nat) : List Nat := sorry\n\
+  def visible_sum (n i: Nat) : Nat := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_visible_sum (n: Nat) : Nat := sorry\ndef loneliest (n:\
+  \ Nat) : Bool := sorry\n"
+"vc-theorems": "theorem loneliest_returns_bool (n: Nat) :\n  loneliest n = true ∨\
+  \ loneliest n = false := sorry\n\n\ntheorem loneliest_zero_one : \n  ∀ n: Nat, (∀\
+  \ d: Nat, d ∈ (digits n) → d = 0 ∨ d = 1) →\n  loneliest n = true ↔ ∃ i, (digits\
+  \ n).get? i = some 1 ∧ \n  (∀ j, j ≠ i → (digits n).get? j = some 0) := sorry\n\n\
+  \ntheorem loneliest_same_digit :\n  ∀ n: Nat, (∀ i j: Nat, i < (digits n).length\
+  \ → j < (digits n).length → \n    (digits n).get ⟨i, sorry⟩ = (digits n).get ⟨j,\
+  \ sorry⟩) →\n  loneliest n = true ↔ (digits n).get ⟨0, sorry⟩ = 1 := sorry\n\n\n\
+  theorem loneliest_no_ones :\n  ∀ n: Nat, (∀ i: Nat, i < (digits n).length → (digits\
+  \ n).get ⟨i, sorry⟩ ≠ 1) →\n  loneliest n = false := sorry\n\n\ntheorem loneliest_min_loneliness\
+  \ :\n  ∀ n: Nat, loneliest n = true ↔ \n  (∃ i: Nat, (digits n).get? i = some 1\
+  \ ∧\n   visible_sum n i = min_visible_sum n) := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval loneliest 34315\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval loneliest\
+  \ 8854778\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval loneliest 11111\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

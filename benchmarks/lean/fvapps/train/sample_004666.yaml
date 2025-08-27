@@ -1,0 +1,32 @@
+"vc-description": "A great flood has hit the land, and just as in Biblical times we\
+  \ need to get the animals to the ark in pairs. We are only interested in getting\
+  \ one pair of each animal, and not interested in any animals where there are less\
+  \ than 2....they need to mate to repopulate the planet after all!\n\nYou will be\
+  \ given a list of animals, which you need to check to see which animals there are\
+  \ at least two of, and then return a dictionary containing the name of the animal\
+  \ along with the fact that there are 2 of them to bring onto the ark.\n\n---\n\n\
+  ```python\n>>> two_by_two(['goat', 'goat', 'rabbit', 'rabbit', 'rabbit', 'duck',\
+  \ 'horse', 'horse', 'swan'])\n{'goat': 2, 'horse': 2, 'rabbit': 2}\n\n# If the list\
+  \ of animals is empty, return False as there are no animals to bring onto the ark\
+  \ and we are all doomed!!!\n>>> two_by_two([])\nFalse\n\n# If there are no pairs\
+  \ of animals, return an empty dictionary\n>>> two_by_two(['goat'])\n{}\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def two_by_two (animals : List String) : Option (List (String ×\
+  \ Nat)) :=\n  sorry\n"
+"vc-theorems": "theorem two_by_two_empty_list :\n  two_by_two [] = none := sorry\n\
+  \n\ntheorem two_by_two_values_are_two (animals : List String) (result : List (String\
+  \ × Nat)) :\n  two_by_two animals = some result →\n  ∀ x ∈ result, x.2 = 2 := sorry\n\
+  \n\ntheorem two_by_two_keys_appear_multiple_times (animals : List String) (result\
+  \ : List (String × Nat)) :\n  two_by_two animals = some result →\n  ∀ k ∈ result.map\
+  \ Prod.fst, \n    (animals.filter (· = k)).length > 1 := sorry\n\n\ntheorem two_by_two_contains_all_duplicates\
+  \ (animals : List String) (result : List (String × Nat)) :\n  two_by_two animals\
+  \ = some result →\n  ∀ k ∈ animals, \n    (animals.filter (· = k)).length > 1 →\n\
+  \    k ∈ result.map Prod.fst := sorry\n\n\ntheorem two_by_two_keys_subset_input\
+  \ (animals : List String) (result : List (String × Nat)) :\n  two_by_two animals\
+  \ = some result →\n  ∀ k ∈ result.map Prod.fst, k ∈ animals := sorry\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval two_by_two []\n\n/--\ninfo: {}\n-/\n#guard_msgs\
+  \ in\n#eval two_by_two [\"goat\"]\n\n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval\
+  \ two_by_two [\"goat\", \"goat\", \"rabbit\", \"rabbit\", \"rabbit\", \"duck\",\
+  \ \"horse\", \"horse\", \"swan\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

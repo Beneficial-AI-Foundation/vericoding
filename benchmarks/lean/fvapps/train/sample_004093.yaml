@@ -1,0 +1,52 @@
+"vc-description": "Lеt's create function to play cards. Our rules:\n\nWe have the\
+  \ preloaded `deck`:\n\n```\ndeck = ['joker','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣','A♣',\n\
+  \                '2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦','A♦',\n\
+  \                '2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥','A♥',\n\
+  \                '2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠','A♠']\n\
+  ```\n\nWe have 3 arguments:\n\n`card1` and `card2` - any card of our deck.\n\n`trump`\
+  \ - the main suit of four ('♣', '♦', '♥', '♠').\n\nIf both cards have the same suit,\
+  \ the big one wins.\n\nIf the cards have different suits (and no one has trump)\
+  \ return 'Let's play again.'\n\nIf one card has `trump` unlike another, wins the\
+  \ first one.\n\nIf both cards have `trump`, the big one wins.\n\nIf `card1` wins,\
+  \ return 'The first card won.' and vice versa.\n\nIf the cards are equal, return\
+  \ 'Someone cheats.'\n\nA few games:\n\n```\n('3♣', 'Q♣', '♦') -> 'The second card\
+  \ won.'\n\n('5♥', 'A♣', '♦') -> 'Let us play again.'\n\n('8♠', '8♠', '♣') -> 'Someone\
+  \ cheats.'\n\n('2♦', 'A♠', '♦') -> 'The first card won.'\n\n('joker', 'joker', '♦')\
+  \ -> 'Someone cheats.'\n\n```\nP.S. As a card you can also get the string 'joker'\
+  \ - it means this card always wins."
+"vc-preamble": "import Imports.AllImports\n\ndef card_game : Card → Card → String\
+  \ → String := sorry\n\ntheorem identical_cards_cheating\n  (card1 card2 : Card)\
+  \ (trump : String) :\n  card1 = card2 → card_game card1 card2 trump = \"Someone\
+  \ cheats.\" := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def card_values := [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"\
+  8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n\naxiom card_value_index : String\
+  \ → Nat\n\naxiom card_value_index_valid :\n  ∀ s₁ s₂, s₁ ≠ s₂ → card_value_index\
+  \ s₁ ≠ card_value_index s₂\n"
+"vc-theorems": "theorem joker_always_wins_first\n  (card1 card2 : Card) (trump : String)\
+  \ :\n  card1 = Card.joker → card2 ≠ Card.joker →\n  card_game card1 card2 trump\
+  \ = \"The first card won.\" := sorry\n\n\ntheorem joker_always_wins_second\n  (card1\
+  \ card2 : Card) (trump : String) :\n  card2 = Card.joker → card1 ≠ Card.joker →\n\
+  \  card_game card1 card2 trump = \"The second card won.\" := sorry\n\n\ntheorem\
+  \ same_suit_comparison\n  (val1 val2 suit trump : String) :\n  val1 ≠ val2 →\n \
+  \ let card1 := Card.regular val1 suit\n  let card2 := Card.regular val2 suit\n \
+  \ card_value_index val2 > card_value_index val1 →\n  card_game card1 card2 trump\
+  \ = \"The second card won.\" := sorry\n\n\ntheorem same_suit_comparison_first_wins\n\
+  \  (val1 val2 suit trump : String) :\n  val1 ≠ val2 →\n  let card1 := Card.regular\
+  \ val1 suit\n  let card2 := Card.regular val2 suit\n  card_value_index val1 > card_value_index\
+  \ val2 →\n  card_game card1 card2 trump = \"The first card won.\" := sorry\n\n\n\
+  theorem trump_wins_first\n  (val1 val2 suit1 suit2 trump : String) :\n  suit1 ≠\
+  \ suit2 →\n  suit1 = trump →\n  let card1 := Card.regular val1 suit1\n  let card2\
+  \ := Card.regular val2 suit2\n  card_game card1 card2 trump = \"The first card won.\"\
+  \ := sorry\n\n\ntheorem trump_wins_second\n  (val1 val2 suit1 suit2 trump : String)\
+  \ :\n  suit1 ≠ suit2 →\n  suit2 = trump →\n  let card1 := Card.regular val1 suit1\n\
+  \  let card2 := Card.regular val2 suit2\n  card_game card1 card2 trump = \"The second\
+  \ card won.\" := sorry\n\n\ntheorem no_trump_rematch\n  (val1 val2 suit1 suit2 trump\
+  \ : String) :\n  suit1 ≠ suit2 →\n  suit1 ≠ trump →\n  suit2 ≠ trump →\n  let card1\
+  \ := Card.regular val1 suit1\n  let card2 := Card.regular val2 suit2\n  card_game\
+  \ card1 card2 trump = \"Let us play again.\" := sorry\n\n/--\ninfo: 'The second\
+  \ card won.'\n-/\n#guard_msgs in\n#eval card_game \"3♣\" \"Q♣\" \"♦\"\n\n/--\ninfo:\
+  \ 'Let us play again.'\n-/\n#guard_msgs in\n#eval card_game \"5♥\" \"A♣\" \"♦\"\n\
+  \n/--\ninfo: 'The first card won.'\n-/\n#guard_msgs in\n#eval card_game \"2♦\" \"\
+  A♠\" \"♦\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,47 @@
+"vc-description": "The Dynamic Connectivity Problem\n\nGiven a set of of N objects,\
+  \ is there a path connecting the two objects?\n\nImplement an class that implements\
+  \ the following API:\n\n  *  Takes n as input, initializing a data-structure with\
+  \ N objects (0...N-1)\n  *  Implements a Union command that adds a connection between\
+  \ point p and point q\n  *  Implements a Connected command that returns a boolean\
+  \ and asks is there a connection between point p and point q\n\nAs a simple example:\
+  \ \nImagine you initialize an data structure filled with integers from 0 to 9 (N\
+  \ = 10)\n```python\n  results1 = DynamicConnectivity(10)\n```\nYou will receive\
+  \ a series of union commands linking various points\n```python\n  results1.union(4,3)\n\
+  \  results1.union(3,8)\n  results1.union(6,5)\n  results1.union(9,4)\n  results1.union(2,1)\n\
+  ```\nThis should result in 5 groups of connections:\n  \n  * 3,4,8,9\n  * 5,6\n\
+  \  * 2,1\n  * 0\n  * 7\n\nAll members of a groups (set) are conected to every other\
+  \ member\nIf you asked is 0 connected to 7, it should return False\nIf you asked\
+  \ is 8 connected to 9 you should return True even if 8,9 wern't directly joined.\n\
+  (8 is connected to 3 which is connected to 4 which is connected to 9)\n```python\n\
+  \  results1.connected(0,7) == False\n  results1.connected(8,9) == True\n```\n\n\
+  For the purposes of this problem, you do not have to mainatin the order of the connections,\
+  \ you just have to know that the connection is there.\n\nHint:\n  There is a naive\
+  \ implenetation that takes time proportional to O(n^2) (Quadratic Funtion)\n  **This\
+  \ will time out the problem**\n  (Because every time you double the input like from\
+  \ 50 nodes to 100 nodes, the function takes **4** times as long)\n  Test will check\
+  \ that you are able to outrun this naive implementation. If you can't that means\
+  \ that your code is too slow\n  \n  There is a solution that takes linearitmic time\
+  \ or faster O(n * lg n)\n\nHint Two: (Take it or leave it)\n  If you find yourself\
+  \ nesting a loop inside a loop, you are creating a quadratic function\n\nImplementation\
+  \ must be able to handle initializing 1 million nodes, and creating connections\
+  \ between those nodes.\n\nFull Tests before submission generate random connections\
+  \ to make sure you can't hard code the connections into your class."
+"vc-preamble": "import Imports.AllImports\n\ndef DynamicConnectivity.connected (dc\
+  \ : DynamicConnectivity) (p q : Nat) : Bool := sorry\ndef DynamicConnectivity.root\
+  \ (dc : DynamicConnectivity) (p : Nat) : Nat := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def DynamicConnectivity.union (dc : DynamicConnectivity) (p q :\
+  \ Nat) : DynamicConnectivity := sorry\n\ntheorem init_creates_valid_parent_array\
+  \ {n : Nat} (h : 0 < n) (dc : DynamicConnectivity) :\n  ∀ i, i < n → dc.par[i]!\
+  \ = i := sorry\n"
+"vc-theorems": "theorem unions_create_valid_connections {n : Nat} (h : 1 < n) (dc\
+  \ : DynamicConnectivity) \n  (p q : Nat) (hp : p < n) (hq : q < n) : \n  let dc'\
+  \ := dc.union p q\n  dc'.connected p q := sorry\n\n\ntheorem connectivity_is_transitive\
+  \ {n : Nat} (h : 1 < n) (dc : DynamicConnectivity)\n  (i j k : Nat) (hi : i < n)\
+  \ (hj : j < n) (hk : k < n) :\n  dc.connected i j → dc.connected j k → dc.connected\
+  \ i k := sorry\n\n\ntheorem root_returns_valid_parent {n : Nat} (h : 1 < n) (dc\
+  \ : DynamicConnectivity)\n  (i : Nat) (hi : i < n) :\n  let r := dc.root i\n  0\
+  \ ≤ r ∧ r < n ∧ dc.root r = r := sorry\n\n\ntheorem connectivity_is_reflexive {n\
+  \ : Nat} (h : 1 < n) (dc : DynamicConnectivity)\n  (i : Nat) (hi : i < n) :\n  dc.connected\
+  \ i i := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,29 @@
+"vc-description": "In this simple exercise, you will build a program that takes a\
+  \ value, `integer `, and returns a list of its multiples up to another value, `limit\
+  \ `. If `limit` is a multiple of ```integer```, it should be included as well. There\
+  \ will only ever be positive integers passed into the function, not consisting of\
+  \ 0. The limit will always be higher than the base.\n\nFor example, if the parameters\
+  \ passed are `(2, 6)`, the function should return `[2, 4, 6]` as 2, 4, and 6 are\
+  \ the multiples of 2 up to 6.\n\nIf you can, try writing it in only one line of\
+  \ code."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_multiples (n : Nat) (limit : Nat) : List Nat :=\nsorry\n"
+"vc-theorems": "theorem find_multiples_empty_when_limit_less {n : Nat} {limit : Nat}\
+  \ \n  (h : limit < n) : find_multiples n limit = [] :=\nsorry\n\n\ntheorem find_multiples_all_divisible\
+  \ {n : Nat} {limit : Nat} {x : Nat}\n  (h : x ∈ find_multiples n limit) : \n  x\
+  \ % n = 0 :=\nsorry\n\n\ntheorem find_multiples_all_within_limit {n : Nat} {limit\
+  \ : Nat} {x : Nat}\n  (h : x ∈ find_multiples n limit) :\n  x ≤ limit :=\nsorry\n\
+  \n\ntheorem find_multiples_ordered {n : Nat} {limit : Nat} {i j : Nat}\n  (hi :\
+  \ i < (find_multiples n limit).length)\n  (hj : j < (find_multiples n limit).length)\n\
+  \  (h : i < j) :\n  (find_multiples n limit)[i] < (find_multiples n limit)[j] :=\n\
+  sorry\n\n\ntheorem find_multiples_first_element {n : Nat} {limit : Nat}\n  (h :\
+  \ limit ≥ n) :\n  (find_multiples n limit).head? = some n :=\nsorry\n\n\ntheorem\
+  \ find_multiples_consecutive_diff {n : Nat} {limit : Nat} {i : Nat}\n  (h : i +\
+  \ 1 < (find_multiples n limit).length) :\n  (find_multiples n limit)[i+1] - (find_multiples\
+  \ n limit)[i] = n :=\nsorry\n\n\n\n\ntheorem find_multiples_same_limit {n : Nat}\
+  \ :\n  find_multiples n n = [n] :=\nsorry\n\n/--\ninfo: [5, 10, 15, 20, 25]\n-/\n\
+  #guard_msgs in\n#eval find_multiples 5 25\n\n/--\ninfo: [1, 2]\n-/\n#guard_msgs\
+  \ in\n#eval find_multiples 1 2\n\n/--\ninfo: [4, 8, 12, 16, 20, 24]\n-/\n#guard_msgs\
+  \ in\n#eval find_multiples 4 27\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

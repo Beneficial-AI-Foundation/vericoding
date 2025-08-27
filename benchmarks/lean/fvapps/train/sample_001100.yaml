@@ -1,0 +1,40 @@
+"vc-description": "Vishal Wants to buy 2 gifts for his best friend whose name is Annabelle(her\
+  \ age is 20), So they both went for shopping in a store. But Annabelle gave, Vishal\
+  \ a condition that she will accept this gifts only when the total price of the gifts\
+  \ is the same as her age times 100.\nThe store contains, a list of items whose prices\
+  \ are also displayed, Now Vishal is asking for your help to buy gifts, as he wants\
+  \ to impress Annabelle this time.\nNote: Vishal cannot buy the same item more than\
+  \ once.\n\n-----Input:-----\n- The first line of the input contains a single integer\
+  \ $T$. $T$ denoting the number of test cases. The description of $T$ test cases\
+  \ is as follows.\n- The next line of the input contains a single integer $N$. $N$\
+  \ denotes the total number of items in store.\n- The next line of the input contains\
+  \ $N$ space-separated integers $A1, A2, A3...An$ where $ith$ number denotes the\
+  \ price of $ith$ element.\n\n-----Output:-----\n- For each test-case print \"Accepted\"\
+  (without quotes) if the gifts are accepted by Annabelle, else print \"Rejected\"\
+  (without quotes)\n\n-----Constraints:-----\n- $1 \\leq T \\leq 10^3$\n- $1 \\leq\
+  \ N \\leq 10^5$\n- $1 \\leq A1, A2, A3...An \\leq 10^7$\n\n-----Sample Input:-----\n\
+  1\n5\n10 2 1000 50 1000\n\n-----Sample Output:-----\nAccepted\n\n-----Explanation:-----\n\
+  - As the given list of items have 2 items whose price sum up to the age times 100\
+  \ of Annabelle i.e. 1000+1000 = (20 *100)"
+"vc-preamble": "import Imports.AllImports\n\ndef find_gift_pair (n : Nat) (prices\
+  \ : List Nat) : String := sorry\ndef process_test_cases (numCases : Nat) (cases\
+  \ : List (Nat × List Nat)) : List String := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def permutation (xs : List Nat) : List Nat := sorry\n\ntheorem\
+  \ find_gift_pair_order_independence (n : Nat) (prices : List Nat) :\n  find_gift_pair\
+  \ n prices = find_gift_pair n (permutation prices) := sorry\n"
+"vc-theorems": "theorem find_gift_pair_result (n : Nat) (prices : List Nat) :\n  find_gift_pair\
+  \ n prices = \"Accepted\" ∨ find_gift_pair n prices = \"Rejected\" := sorry\n\n\n\
+  theorem find_gift_pair_deterministic (n : Nat) (prices : List Nat) : \n  find_gift_pair\
+  \ n prices = find_gift_pair n prices := sorry\n\n\ntheorem process_test_cases_preserves_result\
+  \ (n : Nat) (prices : List Nat) :\n  let test_cases := [(n, prices)]\n  let results\
+  \ := process_test_cases 1 test_cases\n  results.length = 1 ∧\n  results[0]! = find_gift_pair\
+  \ n prices := sorry\n\n\ntheorem find_gift_pair_empty : find_gift_pair 0 [] = \"\
+  Rejected\" := sorry\n\ntheorem find_gift_pair_single : find_gift_pair 1 [1000] =\
+  \ \"Rejected\" := sorry\n\n\ntheorem find_gift_pair_too_small : find_gift_pair 3\
+  \ [1, 1, 1] = \"Rejected\" := sorry\n\ntheorem find_gift_pair_too_large : find_gift_pair\
+  \ 3 [2001, 2001, 2001] = \"Rejected\" := sorry\n\n/--\ninfo: 'Accepted'\n-/\n#guard_msgs\
+  \ in\n#eval find_gift_pair 5 [10, 2, 1000, 50, 1000]\n\n/--\ninfo: 'Rejected'\n\
+  -/\n#guard_msgs in\n#eval find_gift_pair 3 [500, 500, 500]\n\n/--\ninfo: 'Accepted'\n\
+  -/\n#guard_msgs in\n#eval find_gift_pair 4 [1000, 1000, 50, 60]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

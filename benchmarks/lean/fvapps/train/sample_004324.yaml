@@ -1,0 +1,34 @@
+"vc-description": "Flash has invited his nemesis The Turtle (He actually was a real\
+  \ villain! ) to play his favourite card game, SNAP. In this game a 52 card deck\
+  \ is dealt out so both Flash and the Turtle get 26 random cards. \n\nEach players\
+  \ cards will be represented by an array like below\n\nFlash’s pile:\n```[ 'A', '5',\
+  \ 'Q', 'Q', '6', '2', 'A', '9', '10', '6', '4', '3', '10', '9', '3', '8', 'K', 'J',\
+  \ 'J', 'K', '7', '9', '5', 'J', '7', '2' ]```\n\nTurtle’s pile:\n```[ '8', 'A',\
+  \ '2', 'Q', 'K', '8', 'J', '6', '4', '8', '7', 'A', '5', 'K', '3', 'Q', '6', '9',\
+  \ '4', '3', '4', '10', '2', '7', '10', '5' ]```\n\nThe players take it in turn to\
+  \ take the top card from their deck (the first element in their array) and place\
+  \ it in a face up pile in the middle. Flash goes first.\n\nWhen a card is placed\
+  \ on the face up pile that matches the card it is placed on top of the first player\
+  \ to shout ‘SNAP!’ wins that round. Due to Flash's speed he wins every round.\n\n\
+  Face up pile in the middle:\n```[ 'A', '8', '5', 'A', 'Q', '2', 'Q', 'Q',```  =>\
+  \  SNAP!\n\nThe face up pile of cards in the middle are added to the bottom of Flash's\
+  \ pile.\n\nFlash’s pile after one round:\n```['6', '2', 'A', '9', '10', '6', '4',\
+  \ '3', '10', '9', '3', '8', 'K', 'J', 'J', 'K', '7', '9', '5', 'J', '7', '2', 'A',\
+  \ '8', '5', 'A', 'Q', '2', 'Q', 'Q' ]```\n\nFlash then starts the next round by\
+  \ putting down the next card.\n\nWhen Turtle runs out of cards the game is over.\n\
+  \nHow many times does Flash get to call Snap before Turtle runs out of cards?\n\n\
+  If both the player put down all their cards into the middle without any matches\
+  \ then the game ends a draw and Flash calls SNAP 0 times."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isCard (c : String) : Bool := sorry\n\ndef snap (flashPile\
+  \ : List String) (turtlePile : List String) : Nat := sorry\n"
+"vc-theorems": "theorem snap_output_basic {flashPile turtlePile : List String} \n\
+  \  (h1 : flashPile.length > 0)\n  (h2 : turtlePile.length > 0)\n  (h3 : ∀ c ∈ flashPile,\
+  \ isCard c)\n  (h4 : ∀ c ∈ turtlePile, isCard c) :\n  snap flashPile turtlePile\
+  \ ≥ 0 := sorry\n\n\ntheorem snap_empty_piles :\n  snap [] [] = 0 ∧ \n  (∀ c, isCard\
+  \ c → snap [c] [] = 0) ∧\n  (∀ c, isCard c → snap [] [c] = 0) := sorry\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval snap flash_pile[:] turtle_pile[:]\n\n/--\ninfo:\
+  \ 6\n-/\n#guard_msgs in\n#eval snap flash_pile[:] turtle_pile[:]\n\n/--\ninfo: 0\n\
+  -/\n#guard_msgs in\n#eval snap flash_pile[:] turtle_pile[:]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

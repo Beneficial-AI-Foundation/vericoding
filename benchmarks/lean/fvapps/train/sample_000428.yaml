@@ -1,0 +1,32 @@
+"vc-description": "Given an array arr that represents a permutation of numbers from\
+  \ 1 to n. You have a binary string of size n that initially has all its bits set\
+  \ to zero.\nAt each step i (assuming both the binary string and arr are 1-indexed)\
+  \ from 1 to n, the bit at position arr[i] is set to 1. You are given an integer m and\
+  \ you need to find the latest step at which there exists a group of ones of length m.\
+  \ A group of ones is a contiguous substring of 1s such that it cannot be extended\
+  \ in either direction.\nReturn the latest step at which there exists a group of\
+  \ ones of length exactly m. If no such group exists, return -1.\n \nExample 1:\n\
+  Input: arr = [3,5,1,2,4], m = 1\nOutput: 4\nExplanation:\nStep 1: \"00100\", groups:\
+  \ [\"1\"]\nStep 2: \"00101\", groups: [\"1\", \"1\"]\nStep 3: \"10101\", groups:\
+  \ [\"1\", \"1\", \"1\"]\nStep 4: \"11101\", groups: [\"111\", \"1\"]\nStep 5: \"\
+  11111\", groups: [\"11111\"]\nThe latest step at which there exists a group of size\
+  \ 1 is step 4.\nExample 2:\nInput: arr = [3,1,5,4,2], m = 2\nOutput: -1\nExplanation:\n\
+  Step 1: \"00100\", groups: [\"1\"]\nStep 2: \"10100\", groups: [\"1\", \"1\"]\n\
+  Step 3: \"10101\", groups: [\"1\", \"1\", \"1\"]\nStep 4: \"10111\", groups: [\"\
+  1\", \"111\"]\nStep 5: \"11111\", groups: [\"11111\"]\nNo group of size 2 exists\
+  \ during any step.\n\nExample 3:\nInput: arr = [1], m = 1\nOutput: 1\n\nExample\
+  \ 4:\nInput: arr = [2,1], m = 2\nOutput: 2\n\n \nConstraints:\n\nn == arr.length\n\
+  1 <= n <= 10^5\n1 <= arr[i] <= n\nAll integers in arr are distinct.\n1 <= m <= arr.length"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_latest_step (arr : List Nat) (target : Nat) : Int := sorry\
+  \ \n\ntheorem find_latest_step_basic_cases_1 :\n  find_latest_step [3,5,1,2,4] 1\
+  \ = 4 := \nsorry\n"
+"vc-theorems": "theorem find_latest_step_basic_cases_2 :\n  find_latest_step [3,1,5,4,2]\
+  \ 2 = -1 := \nsorry\n\n\ntheorem find_latest_step_basic_cases_3 :\n  find_latest_step\
+  \ [1] 1 = 1 :=\nsorry\n\n\ntheorem find_latest_step_basic_cases_4 :\n  find_latest_step\
+  \ [2,1] 2 = 2 :=\nsorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval find_latest_step\
+  \ [3, 5, 1, 2, 4] 1\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval find_latest_step\
+  \ [3, 1, 5, 4, 2] 2\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_latest_step\
+  \ [1] 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

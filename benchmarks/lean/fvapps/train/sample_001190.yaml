@@ -1,0 +1,48 @@
+"vc-description": "AND gates and OR gates are basic components used in building digital\
+  \ circuits. Both gates have two input lines and one output line. The output of an\
+  \ AND gate is 1 if both inputs are 1, otherwise the output is 0. The output of an\
+  \ OR gate is 1 if at least one input is 1, otherwise the output is 0.\n\nYou are\
+  \ given a digital circuit composed of only AND and OR gates where one node (gate\
+  \ or input) is specially designated as the output. Furthermore, for any gate G and\
+  \ any input node I, at most one of the inputs to G depends on the value of node\
+  \ I.\n\nNow consider the following random experiment. Fix some probability p in\
+  \ [0,1] and set each input bit to 1 independently at random with probability p (and\
+  \ to 0 with probability 1-p). The output is then 1 with some probability that depends\
+  \ on p. You wonder what value of p causes the circuit to output a 1 with probability\
+  \ 1/2.\n\n-----Input-----\n\nThe first line indicates the number of test cases to\
+  \ follow (about 100).\n\nEach test case begins with a single line containing a single\
+  \ integer n with 1 ≤ n ≤ 100 indicating the number of nodes (inputs and gates) in\
+  \ the circuit. Following this, n lines follow where the i'th line describes the\
+  \ i'th node. If the node is an input, the line simply consists of the integer 0.\
+  \ Otherwise, if the node is an OR gate then the line begins with a 1 and if the\
+  \ node is an AND gate then the line begins with a 2. In either case, two more integers\
+  \ a,b follow, both less than i, which indicate that the outputs from both a and\
+  \ b are used as the two input to gate i.\n\nAs stated before, the circuit will be\
+  \ such that no gate has both of its inputs depending on the value of a common input\
+  \ node.\n\nTest cases are separated by a blank line including a blank line preceding\
+  \ the first test case.\n\n\n-----Output-----\n\nFor each test case you are to output\
+  \ a single line containing the value p for which the output of node n is 1 with\
+  \ probability exactly 1/2 if the inputs are independently and randomly set to value\
+  \ 1 with probability p. The value p should be printed with exactly 5 digits after\
+  \ the decimal.\n\n\n-----Example-----\nInput:\n\n4\n\n1\n0\n\n3\n0\n0\n1 1 2\n\n\
+  3\n0\n0\n2 1 2\n\n5\n0\n0\n0\n2 1 2\n1 3 4\n\nOutput:\n\n0.50000\n0.29289\n0.70711\n\
+  0.40303\n\n-----Temporary Stuff-----\n\nA horizontal rule follows.\n\n***\n\nHere's\
+  \ a definition list (with `definitionLists` option):\n\napples\n: Good for making\
+  \ applesauce.\noranges\n: Citrus!\ntomatoes\n: There's no \"e\" in tomatoe.\n\n\
+  #PRACTICE\n- This must be done\n[http:codechef.com/users/dpraveen](http:codechef.com/users/dpraveen)\n\
+  \n(0.8944272−0.44721360.4472136−0.8944272)(10005)(0.89442720.4472136−0.4472136−0.8944272)(10005)\n\
+  \\left(\\begin{array}{cc} \n0.8944272 & 0.4472136\\\\\n-0.4472136 & -0.8944272\n\
+  \\end{array}\\right)\n\\left(\\begin{array}{cc} \n10 & 0\\\\ \n0 & 5\n\\end{array}\\\
+  right)"
+"vc-preamble": "import Imports.AllImports\n\ndef parseNode (spec : Nat ⊕ (Nat × Nat\
+  \ × Nat)) : Node :=\n  match spec with\n  | Sum.inl n => { nodeType := n, inputA\
+  \ := 0, inputB := 0 }\n  | Sum.inr (t, a, b) => { nodeType := t, inputA := a, inputB\
+  \ := b }\n\n\ndef calcOutputProb (nodes : List Node) (p : Float) : Float :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def findPForHalf (nodes : List Node) : Float :=\n  sorry\n"
+"vc-theorems": "theorem input_only_nodes_half_prob (nodes : List Node)\n  (h : ∀ n\
+  \ ∈ nodes, n.nodeType = 0) :\n  Float.abs (findPForHalf nodes - 0.5) < 0.00001 :=\
+  \ sorry\n\n\ntheorem output_prob_bounded (nodes : List Node) (p : Float)\n  (h1\
+  \ : 0 ≤ p ∧ p ≤ 1) : \n  let out := calcOutputProb nodes p\n  0 ≤ out ∧ out ≤ 1\
+  \ := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

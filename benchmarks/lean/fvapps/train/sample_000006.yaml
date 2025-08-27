@@ -1,0 +1,58 @@
+"vc-description": "Arthur owns a ski resort on a mountain. There are $n$ landing spots\
+  \ on the mountain numbered from $1$ to $n$ from the top to the foot of the mountain.\
+  \ The spots are connected with one-directional ski tracks. All tracks go towards\
+  \ the foot of the mountain, so there are no directed cycles formed by the tracks.\
+  \ There are at most two tracks leaving each spot, but many tracks may enter the\
+  \ same spot.\n\nA skier can start skiing from one spot and stop in another spot\
+  \ if there is a sequence of tracks that lead from the starting spot and end in the\
+  \ ending spot. Unfortunately, recently there were many accidents, because the structure\
+  \ of the resort allows a skier to go through dangerous paths, by reaching high speed\
+  \ and endangering himself and the other customers. Here, a path is called dangerous,\
+  \ if it consists of at least two tracks.\n\nArthur wants to secure his customers\
+  \ by closing some of the spots in a way that there are no dangerous paths in the\
+  \ resort. When a spot is closed, all tracks entering and leaving that spot become\
+  \ unusable. \n\nFormally, after closing some of the spots, there should not be a\
+  \ path that consists of two or more tracks.\n\nArthur doesn't want to close too\
+  \ many spots. He will be happy to find any way to close at most $\\frac{4}{7}n$\
+  \ spots so that the remaining part is safe. Help him find any suitable way to do\
+  \ so.\n\n\n-----Input-----\n\nThe first line contains a single positive integer\
+  \ $T$ — the number of test cases. $T$ test case description follows.\n\nThe first\
+  \ line of each description contains two integers $n$ and $m$ ($1 \\leq n \\leq 2\
+  \ \\cdot 10^5$) — the number of landing spots and tracks respectively.\n\nThe following\
+  \ $m$ lines describe the tracks. Each of these lines contains two integers $x$ and\
+  \ $y$ ($1 \\leq x < y \\leq n$) — indices of the starting and finishing spots for\
+  \ the respective track. It is guaranteed that at most two tracks start at each spot.\
+  \ There may be tracks in which starting and finishing spots both coincide.\n\nIt\
+  \ is guaranteed that the sum of $n$ over all test cases does not exceed $2 \\cdot\
+  \ 10^5$.\n\n\n-----Output-----\n\nFor each test case, print a single integer $k$\
+  \ ($0 \\leq k \\leq \\frac{4}{7}n$) — the number of spots to be closed. In the next\
+  \ line, print $k$ distinct integers — indices of all spots to be closed, in any\
+  \ order.\n\nIf there are several answers, you may output any of them. Note that\
+  \ you don't have to minimize $k$. It can be shown that a suitable answer always\
+  \ exists.\n\n\n-----Example-----\nInput\n2\n4 6\n1 2\n1 3\n2 3\n2 4\n3 4\n3 4\n\
+  7 6\n1 2\n1 3\n2 4\n2 5\n3 6\n3 7\n\nOutput\n2\n3 4 \n4\n4 5 6 7 \n\n\n\n-----Note-----\n\
+  \nIn the first sample case, closing any two spots is suitable.\n\nIn the second\
+  \ sample case, closing only the spot $1$ is also suitable."
+"vc-preamble": "import Imports.AllImports\n\ndef valid_track (n : Nat) (track : Nat\
+  \ × Nat) : Prop :=\n  let (u, v) := track\n  1 ≤ u ∧ u ≤ n ∧ 1 ≤ v ∧ v ≤ n ∧ u ≠\
+  \ v\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_ski_resort : List (Nat × Nat × List (Nat × Nat)) → List\
+  \ (Nat × List Nat) := sorry\n\ntheorem ski_resort_result_valid \n  (test_cases :\
+  \ List (Nat × Nat × List (Nat × Nat)))\n  (h_nonempty : test_cases ≠ []) :\n  let\
+  \ results := solve_ski_resort test_cases\n  -- Results length matches input length\n\
+  \  results.length = test_cases.length ∧\n  -- For each test case and result\n  (∀\
+  \ (tc : Nat × Nat × List (Nat × Nat)) (res : Nat × List Nat),\n    tc ∈ test_cases\
+  \ → res ∈ results →\n    let (n, m, tracks) := tc\n    let (count, closed) := res\n\
+  \    -- Count equals length of closed list\n    count = closed.length ∧\n    --\
+  \ All closed points are valid station numbers\n    (∀ x ∈ closed, 1 ≤ x ∧ x ≤ n)\
+  \ ∧\n    -- Closed points are unique\n    closed.Nodup) := by sorry\n"
+"vc-theorems": "theorem ski_resort_input_bounds\n  (test_cases : List (Nat × Nat ×\
+  \ List (Nat × Nat)))\n  (h_nonempty : test_cases ≠ []) :\n  ∀ (n m : Nat) (tracks\
+  \ : List (Nat × Nat)),\n  (n, m, tracks) ∈ test_cases →\n  -- n is between 2 and\
+  \ 10\n  2 ≤ n ∧ n ≤ 10 ∧\n  -- m is between 0 and min(20, n*(n-1))\n  0 ≤ m ∧ m\
+  \ ≤ min 20 (n*(n-1)) ∧\n  -- tracks length equals m\n  tracks.length = m ∧\n  --\
+  \ all tracks are valid\n  (∀ t ∈ tracks, valid_track n t) := by sorry\n\n/--\ninfo:\
+  \ [3, 4]\n-/\n#guard_msgs in\n#eval sorted res1[0][1]\n\n/--\ninfo: [4, 5, 6, 7]\n\
+  -/\n#guard_msgs in\n#eval sorted res2[0][1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

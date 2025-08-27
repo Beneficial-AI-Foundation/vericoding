@@ -1,0 +1,31 @@
+"vc-description": "Given an array arr.  You can choose a set of integers and remove\
+  \ all the occurrences of these integers in the array.\nReturn the minimum size of\
+  \ the set so that at least half of the integers of the array are removed.\n \nExample\
+  \ 1:\nInput: arr = [3,3,3,3,5,5,5,2,2,7]\nOutput: 2\nExplanation: Choosing {3,7}\
+  \ will make the new array [5,5,5,2,2] which has size 5 (i.e equal to half of the\
+  \ size of the old array).\nPossible sets of size 2 are {3,5},{3,2},{5,2}.\nChoosing\
+  \ set {2,7} is not possible as it will make the new array [3,3,3,3,5,5,5] which\
+  \ has size greater than half of the size of the old array.\n\nExample 2:\nInput:\
+  \ arr = [7,7,7,7,7,7]\nOutput: 1\nExplanation: The only possible set you can choose\
+  \ is {7}. This will make the new array empty.\n\nExample 3:\nInput: arr = [1,9]\n\
+  Output: 1\n\nExample 4:\nInput: arr = [1000,1000,3,7]\nOutput: 1\n\nExample 5:\n\
+  Input: arr = [1,2,3,4,5,6,7,8,9,10]\nOutput: 5\n\n \nConstraints:\n\n1 <= arr.length\
+  \ <= 10^5\narr.length is even.\n1 <= arr[i] <= 10^5"
+"vc-preamble": "import Imports.AllImports\n\ndef sum (l : List Nat) : Nat :=\n  match\
+  \ l with\n  | [] => 0\n  | h :: t => h + sum t\n\n\ndef min_set_size (arr : List\
+  \ Int) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def listRange (n : Nat) : List Int :=\n  (List.range n).map Int.ofNat\n"
+"vc-theorems": "theorem min_set_size_positive (arr : List Int) (h : arr ≠ []) :\n\
+  \  min_set_size arr > 0 :=\n  sorry\n\n\ntheorem min_set_size_upper_bound (arr :\
+  \ List Int) (h : arr ≠ []) :\n  min_set_size arr ≤ arr.length :=\n  sorry\n\n\n\
+  theorem min_set_size_removes_half (arr : List Int) (h : arr ≠ []) :\n  let countMap\
+  \ := arr.map (fun x => (arr.filter (· = x)).length)\n  let removed := countMap.take\
+  \ (min_set_size arr)\n  sum removed ≥ arr.length / 2 :=\n  sorry\n\n\ntheorem min_set_size_all_same\
+  \ (arr : List Int) (h : arr ≠ []) :\n  (∀ i j, i < arr.length → j < arr.length →\
+  \ arr[i]! = arr[j]!) →\n  min_set_size arr = 1 :=\n  sorry\n\n\ntheorem min_set_size_all_unique\
+  \ (n : Nat) :\n  min_set_size (listRange n) = (n + 1) / 2 :=\n  sorry\n\n/--\ninfo:\
+  \ 2\n-/\n#guard_msgs in\n#eval min_set_size [3, 3, 3, 3, 5, 5, 5, 2, 2, 7]\n\n/--\n\
+  info: 1\n-/\n#guard_msgs in\n#eval min_set_size [7, 7, 7, 7, 7, 7]\n\n/--\ninfo:\
+  \ 5\n-/\n#guard_msgs in\n#eval min_set_size [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

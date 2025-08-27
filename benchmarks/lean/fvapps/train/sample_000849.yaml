@@ -1,0 +1,48 @@
+"vc-description": "\tThe following graph G is called a Petersen graph and its vertices\
+  \ have been numbered from 0 to 9. Some letters have also been assigned to vertices\
+  \ of G, as can be seen from the following picture:\n\n\tLet's consider a walk W\
+  \ in graph G, which consists of L vertices W1, W2, ..., WL, such that Wi is connected\
+  \ with Wi + 1 for 1 ≤ i < L. A string S of L letters 'A'-'E' is realized by walk\
+  \ W if the sequence of letters written along W is equal to S. Vertices can be visited\
+  \ multiple times while walking along W.\n\nFor example, S = 'ABBECCD' is realized\
+  \ by W = (0, 1, 6, 9, 7, 2, 3).\nYour task is to determine whether there is a walk\
+  \ W which realizes a given string S in graph G, and if so, find the lexicographically\
+  \ least such walk.\n\n-----Input-----\n\n\tThe first line of the input contains\
+  \ one integer T denoting the number of testcases to process.\n\n\tThe only line\
+  \ of each testcase contains one string S. It is guaranteed that S only consists\
+  \ of symbols 'A'-'E'.\n\n-----Output-----\n\n\tThe output should contain exactly\
+  \ T lines, one line per each testcase in the order of their appearance. For each\
+  \ testcase, if there is no walk W which realizes S, then output -1. Otherwise, you\
+  \ should output the least lexicographical walk W which realizes S. Since all of\
+  \ the vertices are numbered from 0 to 9, then it can be encoded as a string consisting\
+  \ of symbols '0'-'9' (see the \"Examples\" section for more details).\n\n-----Constraints-----\n\
+  1 ≤ T ≤ 8;\n1 ≤ |S| ≤ 100000(105).\n\n-----Examples-----\nInput:\n2\nAAB\nAABE\n\
+  \nOutput:\n501\n-1"
+"vc-preamble": "import Imports.AllImports\n\ndef find_petersen_walk : List Letter\
+  \ → Option (List Nat) :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isAdjacent (v1 v2: Nat) : Bool :=\n  match v1, v2 with\n  |\
+  \ 0, n => n = 1 ∨ n = 4 ∨ n = 5\n  | 1, n => n = 0 ∨ n = 2 ∨ n = 6\n  | 2, n =>\
+  \ n = 1 ∨ n = 3 ∨ n = 7\n  | 3, n => n = 2 ∨ n = 4 ∨ n = 8\n  | 4, n => n = 0 ∨\
+  \ n = 3 ∨ n = 9\n  | 5, n => n = 0 ∨ n = 7 ∨ n = 8\n  | 6, n => n = 1 ∨ n = 8 ∨\
+  \ n = 9\n  | 7, n => n = 2 ∨ n = 5 ∨ n = 9\n  | 8, n => n = 3 ∨ n = 5 ∨ n = 6\n\
+  \  | 9, n => n = 4 ∨ n = 6 ∨ n = 7\n  | _, _ => false\n"
+"vc-theorems": "theorem petersen_walk_properties (input: List Letter) :\n  match find_petersen_walk\
+  \ input with\n  | none => True \n  | some result => \n    -- Length matches\n  \
+  \  result.length = input.length ∧\n    -- First vertex validation\n    (match input.head?\
+  \ with\n     | none => True\n     | some Letter.A => result.head? = some 0 ∨ result.head?\
+  \ = some 5\n     | some Letter.B => result.head? = some 1 ∨ result.head? = some\
+  \ 6 \n     | some Letter.C => result.head? = some 2 ∨ result.head? = some 7\n  \
+  \   | some Letter.D => result.head? = some 3 ∨ result.head? = some 8\n     | some\
+  \ Letter.E => result.head? = some 4 ∨ result.head? = some 9)\n  := sorry\n\n\ntheorem\
+  \ adjacent_vertices (input: List Letter) :\n  match find_petersen_walk input with\n\
+  \  | none => True\n  | some result =>\n    input.length ≥ 2 →\n    ∀ i, i < result.length\
+  \ - 1 →\n      match result.get? i, result.get? (i+1) with\n      | some v1, some\
+  \ v2 => isAdjacent v1 v2\n      | _, _ => False\n  := sorry\n\n\ntheorem minimum_path\
+  \ (input: List Letter) (h: input.length > 0) :\n  match find_petersen_walk input\
+  \ with\n  | none => True\n  | some result =>\n    match input.head?, result.head?\
+  \ with\n    | some Letter.A, some n => n = 0 ∨ n = 5\n    | some Letter.B, some\
+  \ n => n = 1 ∨ n = 6\n    | some Letter.C, some n => n = 2 ∨ n = 7\n    | some Letter.D,\
+  \ some n => n = 3 ∨ n = 8\n    | some Letter.E, some n => n = 4 ∨ n = 9\n    | _,\
+  \ _ => False\n  := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

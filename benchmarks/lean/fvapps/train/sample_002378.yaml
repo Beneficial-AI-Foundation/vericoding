@@ -1,0 +1,33 @@
+"vc-description": "Given a valid (IPv4) IP address, return a defanged version of that\
+  \ IP address.\nA defanged IP address replaces every period \".\" with \"[.]\".\n\
+   \nExample 1:\nInput: address = \"1.1.1.1\"\nOutput: \"1[.]1[.]1[.]1\"\nExample\
+  \ 2:\nInput: address = \"255.100.50.0\"\nOutput: \"255[.]100[.]50[.]0\"\n\n \nConstraints:\n\
+  \nThe given address is a valid IPv4 address."
+"vc-preamble": "import Imports.AllImports\n\ndef defang_ip_addr (s : String) : String\
+  \ := sorry\n\ntheorem defang_valid_ip_length {octets : List Nat} \n  (h1 : octets.length\
+  \ = 4)\n  (h2 : ∀ x ∈ octets, x ≤ 255) :\n  let ip := String.intercalate \".\" (octets.map\
+  \ toString)\n  let defanged := defang_ip_addr ip\n  defanged.length = ip.length\
+  \ + 6 := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countChar (s : String) (c : Char) : Nat :=\n  s.toList.filter\
+  \ (· = c) |>.length\n"
+"vc-theorems": "theorem defang_valid_ip_reversible {octets : List Nat}\n  (h1 : octets.length\
+  \ = 4)\n  (h2 : ∀ x ∈ octets, x ≤ 255) :\n  let ip := String.intercalate \".\" (octets.map\
+  \ toString)\n  let defanged := defang_ip_addr ip\n  String.replace \"[.]\" \".\"\
+  \ defanged = ip := sorry\n\n\ntheorem defang_valid_ip_count_dots {octets : List\
+  \ Nat}\n  (h1 : octets.length = 4)\n  (h2 : ∀ x ∈ octets, x ≤ 255) :\n  let ip :=\
+  \ String.intercalate \".\" (octets.map toString)\n  let defanged := defang_ip_addr\
+  \ ip \n  countChar defanged '[' = countChar ip '.' := sorry\n\n\ntheorem defang_valid_ip_chars_match\
+  \ {octets : List Nat}\n  (h1 : octets.length = 4)\n  (h2 : ∀ x ∈ octets, x ≤ 255)\
+  \ :\n  let ip := String.intercalate \".\" (octets.map toString)\n  let defanged\
+  \ := defang_ip_addr ip\n  let original_chars := ip.toList.filter (· ≠ '.')\n  let\
+  \ defanged_chars := defanged.toList.filter (fun c => c ≠ '[' ∧ c ≠ ']' ∧ c ≠ '.')\n\
+  \  original_chars = defanged_chars := sorry\n\n\ntheorem defang_generic_string_length\
+  \ (s : String) :\n  let defanged := defang_ip_addr s\n  defanged.length = s.length\
+  \ + (2 * countChar s '.') := sorry\n\n\ntheorem defang_generic_string_reversible\
+  \ (s : String) :\n  let defanged := defang_ip_addr s\n  String.replace \"[.]\" \"\
+  .\" defanged = s := sorry\n\n/--\ninfo: '1[.]1[.]1[.]1'\n-/\n#guard_msgs in\n#eval\
+  \ defang_ip_addr \"1.1.1.1\"\n\n/--\ninfo: '255[.]100[.]50[.]0'\n-/\n#guard_msgs\
+  \ in\n#eval defang_ip_addr \"255.100.50.0\"\n\n/--\ninfo: '192[.]168[.]1[.]1'\n\
+  -/\n#guard_msgs in\n#eval defang_ip_addr \"192.168.1.1\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,19 @@
+"vc-description": "Trigrams are a special case of the n-gram, where n is 3. One trigram\
+  \ is a continious sequence of 3 chars in phrase. [Wikipedia](https://en.wikipedia.org/wiki/Trigram)\n\
+  \n - return all trigrams for the given phrase \n - replace spaces with \\_ \n -\
+  \ return an empty string for phrases shorter than 3\n\nExample:\n\ntrigrams('the\
+  \ quick red') ==  the he\\_ e\\_q \\_qu qui uic ick ck\\_ k\\_r \\_re red"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def trigrams (s : String) : String := sorry \n\ndef stringToGrams\
+  \ (s : String) : List String := sorry\n"
+"vc-theorems": "theorem trigrams_empty_if_short (s : String) :\n  s.length < 3 → trigrams\
+  \ s = \"\" := sorry \n\n\ntheorem trigrams_length (s : String) :\n  s.length ≥ 3\
+  \ → \n  let res := trigrams s\n  res ≠ \"\" →\n  (stringToGrams res).length = s.length\
+  \ - 2 := sorry\n\n\ntheorem trigrams_no_spaces_in_grams (s : String) :\n  let res\
+  \ := trigrams s\n  let grams := stringToGrams res\n  ∀ g ∈ grams, ¬ g.contains '\
+  \ ' := sorry\n\n/--\ninfo: 'the he_ e_q _qu qui uic ick ck_ k_r _re red'\n-/\n#guard_msgs\
+  \ in\n#eval trigrams \"the quick red\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval\
+  \ trigrams \"Hi\"\n\n/--\ninfo: 'abc bc_ c_d _de def'\n-/\n#guard_msgs in\n#eval\
+  \ trigrams \"abc def\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

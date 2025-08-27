@@ -1,0 +1,26 @@
+"vc-description": "An integer has sequential digits if and only if each digit in the\
+  \ number is one more than the previous digit.\nReturn a sorted list of all the integers in\
+  \ the range [low, high] inclusive that have sequential digits.\n \nExample 1:\n\
+  Input: low = 100, high = 300\nOutput: [123,234]\nExample 2:\nInput: low = 1000,\
+  \ high = 13000\nOutput: [1234,2345,3456,4567,5678,6789,12345]\n\n \nConstraints:\n\
+  \n10 <= low <= high <= 10^9"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSequential (n: Nat) : Bool := sorry\ndef sequentialDigits\
+  \ (low high: Nat) : List Nat := sorry\n\n-- Results should be between the given\
+  \ bounds"
+"vc-theorems": "theorem result_between_bounds {low high : Nat} {n : Nat} (h: n ∈ sequentialDigits\
+  \ low high) : \n  low ≤ n ∧ n ≤ high := sorry\n\n-- All returned numbers should\
+  \ have sequential digits\n\ntheorem all_sequential {low high : Nat} {n : Nat} (h:\
+  \ n ∈ sequentialDigits low high) :\n  isSequential n = true := sorry\n\n-- Results\
+  \ should be sorted ascending\n\ntheorem results_sorted {low high : Nat} {i j : Nat}\
+  \ (hi: i < (sequentialDigits low high).length) \n  (hj: j < (sequentialDigits low\
+  \ high).length) (h_lt: i < j) :\n  (sequentialDigits low high)[i]! ≤ (sequentialDigits\
+  \ low high)[j]! := sorry\n\n-- Edge case behavior\n\ntheorem edge_case_same_number_12\
+  \ :\n  sequentialDigits 12 12 = [12] := sorry\n\n\ntheorem edge_case_same_number_10\
+  \ :\n  sequentialDigits 10 10 = [] := sorry\n\n/--\ninfo: [123, 234]\n-/\n#guard_msgs\
+  \ in\n#eval sequential_digits 100 300\n\n/--\ninfo: [1234, 2345, 3456, 4567, 5678,\
+  \ 6789, 12345]\n-/\n#guard_msgs in\n#eval sequential_digits 1000 13000\n\n/--\n\
+  info: [12, 23, 34, 45, 56, 67, 78, 89]\n-/\n#guard_msgs in\n#eval sequential_digits\
+  \ 10 100\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

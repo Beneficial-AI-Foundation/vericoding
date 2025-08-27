@@ -1,0 +1,26 @@
+"vc-description": "A palindrome is a series of characters that read the same forwards\
+  \ as backwards such as \"hannah\", \"racecar\" and \"lol\".\n\nFor this Kata you\
+  \ need to write a function that takes a string of characters and returns the length,\
+  \ as an integer value, of longest alphanumeric palindrome that could be made by\
+  \ combining the characters in any order but using each character only once. The\
+  \ function should not be case sensitive.\n\nFor example if passed \"Hannah\" it\
+  \ should return 6 and if passed \"aabbcc_yYx_\" it should return 9 because one possible\
+  \ palindrome would be \"abcyxycba\"."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def longestPalindrome (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem longestPalindrome_nonnegative (s : String) :\n  longestPalindrome\
+  \ s ≥ 0 := sorry\n\n\ntheorem longestPalindrome_leq_alphanum_count (s : String)\
+  \ :\n  longestPalindrome s ≤ (s.toList.filter Char.isAlphanum).length := sorry\n\
+  \n\ntheorem longestPalindrome_single_char (s : String) (h1 : s.length = 1) \n  (h2\
+  \ : Char.isAlphanum (s.get 0)) :\n  longestPalindrome s = 1 := sorry\n\n\ntheorem\
+  \ longestPalindrome_parity_odd (s : String) :\n  let chars := s.toLower.toList.filter\
+  \ Char.isAlphanum\n  let counts := fun c => (chars.filter (· = c)).length\n  (∃\
+  \ c, counts c % 2 = 1) →\n  longestPalindrome s % 2 = 1 := sorry\n\n\ntheorem longestPalindrome_parity_even\
+  \ (s : String) :\n  let chars := s.toLower.toList.filter Char.isAlphanum\n  let\
+  \ counts := fun c => (chars.filter (· = c)).length\n  (¬∃ c, counts c % 2 = 1) →\n\
+  \  longestPalindrome s > 0 →\n  longestPalindrome s % 2 = 0 := sorry\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval longest_palindrome \"A\"\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval longest_palindrome \"Hannah\"\n\n/--\ninfo: 13\n-/\n#guard_msgs in\n\
+  #eval longest_palindrome \"xyz__a_/b0110//a_zyx\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

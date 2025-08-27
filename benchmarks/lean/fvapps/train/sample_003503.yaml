@@ -1,0 +1,33 @@
+"vc-description": "In this Kata, you will be given a string with brackets and an index\
+  \ of an opening bracket and your task will be to return the index of the matching\
+  \ closing bracket.  Both the input and returned index are 0-based **except in Fortran\
+  \ where it is 1-based**. An opening brace will always have a closing brace. Return\
+  \ `-1` if there is no answer (in Haskell, return `Nothing`; in Fortran, return `0`;\
+  \ in Go, return an error)\n\n### Examples\n\n```python\nsolve(\"((1)23(45))(aB)\"\
+  , 0) = 10 -- the opening brace at index 0 matches the closing brace at index 10\n\
+  solve(\"((1)23(45))(aB)\", 1) = 3 \nsolve(\"((1)23(45))(aB)\", 2) = -1 -- there\
+  \ is no opening bracket at index 2, so return -1\nsolve(\"((1)23(45))(aB)\", 6)\
+  \ = 9\nsolve(\"((1)23(45))(aB)\", 11) = 14\nsolve(\"((>)|?(*'))(yZ)\", 11) = 14\n\
+  ```\n\nInput will consist of letters, numbers and special characters, but no spaces.\
+  \ The only brackets will be `(` and `)`. \n\nMore examples in the test cases. \n\
+  \nGood luck!\n\n~~~if:fortran\n*NOTE: In Fortran, you may assume that the input\
+  \ string will not contain any leading/trailing whitespace.*\n~~~"
+"vc-preamble": "import Imports.AllImports\n\ndef solve (s : String) (idx : Nat) :\
+  \ Int := sorry\n\ndef has_matching_parens (s : String) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_valid_idx (s : String) (idx : Nat) : Bool := sorry\n\ntheorem\
+  \ solve_invalid_index {s : String} {idx : Nat} :\n  ¬(is_valid_idx s idx) → solve\
+  \ s idx = -1 := sorry\n"
+"vc-theorems": "theorem solve_unmatched_parens {s : String} {idx : Nat} :\n  ¬(has_matching_parens\
+  \ s) → solve s idx = -1 := sorry\n\n\ntheorem solve_valid_result {s : String} {idx\
+  \ : Nat} :\n  (solve s idx ≠ -1) →\n  is_valid_idx s idx ∧\n  (∃ result : Nat, solve\
+  \ s idx = result ∧\n    idx < s.length ∧ result < s.length ∧\n    s.data[idx]! =\
+  \ '(' ∧\n    s.data[result]! = ')' ∧\n    has_matching_parens (String.mk (List.take\
+  \ (result + 1 - idx) (List.drop idx s.data)))) := sorry\n\ntheorem solve_all_open_parens\
+  \ {s : String} :\n  (∀ c ∈ s.data, c = '(') →\n  ∀ i : Nat, i < s.length →\n  solve\
+  \ s i = -1 := sorry\n\n\ntheorem solve_all_close_parens {s : String} :\n  (∀ c ∈\
+  \ s.data, c = ')') →\n  ∀ i : Nat, i < s.length →\n  solve s i = -1 := sorry\n\n\
+  /--\ninfo: 10\n-/\n#guard_msgs in\n#eval solve \"((1)23(45))(aB)\" 0\n\n/--\ninfo:\
+  \ 3\n-/\n#guard_msgs in\n#eval solve \"((1)23(45))(aB)\" 1\n\n/--\ninfo: 28\n-/\n\
+  #guard_msgs in\n#eval solve \"(g(At)IO(f)(tM(qk)YF(n)Nr(E)))\" 11\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

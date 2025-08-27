@@ -1,0 +1,45 @@
+"vc-description": "Gargi is thinking of a solution to a problem. Meanwhile, her friend\
+  \ asks her to solve another problem. Since Gargi is busy in her own problem, she\
+  \ seeks your help to solve the new problem.\n\nYou are given a string S containing\
+  \ characters a-z (lower case letters) only. You need to change the string to a new\
+  \ string consisting of only one letter from a-z.\n\nFor a given character S[i] in\
+  \ the string, if you change it to a character having lower ASCII value than the\
+  \ character S[i], you gain points equal to the difference in ASCII value of the\
+  \ old character and the new character. Similarly, for a given character S[j] in\
+  \ the string, if you change it to a character having higher ASCII value than the\
+  \ character S[j], you lose points equal to the difference in ASCII value of the\
+  \ old character and the new character.\n\nHowever, Gargi does not like gaining or\
+  \ losing points. She has asked you to change the string in such a way that the total\
+  \ losing or gaining of points at the end of the string conversion is minimum.\n\n\
+  Give Gargi the absolute value of the points you have at the end of the string conversion.\n\
+  \n-----Input-----\nThe first line of the input contains an integer T denoting the\
+  \ number of test cases. The description of T test cases follows.\n\nThe first line\
+  \ of each of the T test case contains a string S containing only lower case characters\
+  \ (a-z)\n\n-----Output-----\nFor each test case, output a single line containing\
+  \ the answer.\n\n-----Constraints-----\n- 1 ≤ T ≤ 10\n- 1 ≤ |S| ≤ 100000\n\n-----Example-----\n\
+  Input:\n1\nabba\n\nOutput:\n2\n\n-----Explanation-----\nExample case 1. The new\
+  \ string can be aaaa where you have +2 points at the end of string conversion or\
+  \ it can be bbbb where you have -2 points at the end of string conversion. Hence\
+  \ the output is 2."
+"vc-preamble": "import Imports.AllImports\n\ndef minPointsForStringConversion (s :\
+  \ String) : Nat := sorry\n\ntheorem minPoints_nonNegative (s : String) (h : s.length\
+  \ > 0) : \n  minPointsForStringConversion s ≥ 0 := sorry\n\n\ndef allSameChar (s\
+  \ : String) : Bool := sorry \n\ntheorem minPoints_zero_for_same_chars (s : String)\
+  \ (h1 : s.length > 0) (h2 : allSameChar s = true) :\n  minPointsForStringConversion\
+  \ s = 0 := sorry\n\n\ndef minCharOfString (s : String) : Char := sorry\ndef maxCharOfString\
+  \ (s : String) : Char := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def naiveLowerBound (s : String) : Nat :=\n  let minChar := minCharOfString\
+  \ s\n  let maxChar := maxCharOfString s\n  min \n    (s.data.foldl (fun acc c =>\
+  \ acc + (c.toNat - minChar.toNat)) 0)\n    (s.data.foldl (fun acc c => acc + (c.toNat\
+  \ - maxChar.toNat)) 0)\n"
+"vc-theorems": "theorem minPoints_upper_bound (s : String) (h : s.length > 0) :\n\
+  \  minPointsForStringConversion s ≤ s.length * (('z'.toNat) - ('a'.toNat)) := sorry\n\
+  \n\ntheorem minPoints_repeated_string (s : String) (h : s.length > 0) :\n  minPointsForStringConversion\
+  \ (s ++ s) = 2 * minPointsForStringConversion s := sorry\n\n\ntheorem minPoints_naive_bound\
+  \ (s : String) (h : s.length > 0) :\n  minPointsForStringConversion s ≤ naiveLowerBound\
+  \ s := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_points_for_string_conversion\
+  \ \"abba\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval min_points_for_string_conversion\
+  \ \"a\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval min_points_for_string_conversion\
+  \ \"zzz\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

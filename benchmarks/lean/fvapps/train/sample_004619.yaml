@@ -1,0 +1,15 @@
+"vc-description": "Return the `n`th term of the Recamán's sequence.\n\n```\na(0) =\
+  \ 0;\n\n        a(n-1) - n, if this value is positive and not yet in the sequence\n\
+  \      /\na(n) <\n      \\\n        a(n-1) + n, otherwise\n```\n\n___\n\nA video\
+  \ about Recamán's sequence by Numberphile: https://www.youtube.com/watch?v=FGC5TdIiT9U"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def recaman (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem recaman_nonnegative (n : Nat) :\n  recaman n ≥ 0 :=\n  sorry\n\
+  \n\ntheorem recaman_consecutive_diff (n : Nat) :\n  n > 0 → (if recaman n ≥ recaman\
+  \ (n-1) \n           then recaman n - recaman (n-1)\n           else recaman (n-1)\
+  \ - recaman n) = n :=\n  sorry\n\n\ntheorem recaman_zero :\n  recaman 0 = 0 :=\n\
+  \  sorry\n\n\ntheorem recaman_one :\n  recaman 1 = 1 :=\n  sorry\n\n/--\ninfo: 3\n\
+  -/\n#guard_msgs in\n#eval recaman 2\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval recaman\
+  \ 3\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval recaman 4\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

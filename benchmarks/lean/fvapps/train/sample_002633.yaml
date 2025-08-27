@@ -1,0 +1,23 @@
+"vc-description": "The number `198` has the property that `198 = 11 + 99 + 88, i.e.,\
+  \ if each of its digits is concatenated twice and then summed, the result will be\
+  \ the original number`. It turns out that `198` is the only number with this property.\
+  \ However, the property can be generalized so that each digit is concatenated `n`\
+  \ times and then summed. \n\neg:-\n```\noriginal number =2997 , n=3\n2997 = 222+999+999+777\
+  \ and here each digit is concatenated three times.\n\noriginal number=-2997 , n=3\n\
+  \n-2997 = -222-999-999-777 and here each digit is concatenated three times.\n\n\n\
+  ```\nWrite afunction named `check_concatenated_sum` that tests if a number has this\
+  \ generalized property."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def checkConcatenatedSum (n : Int) (r : Int) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem non_positive_repeat_is_false {n r : Int} \n  (h : r ≤ 0) :\
+  \ checkConcatenatedSum n r = false :=\n  sorry\n\n\ntheorem check_symmetry {n r\
+  \ : Int}\n  (h : r > 0) (h2 : r ≤ 10) :\n  checkConcatenatedSum n r = checkConcatenatedSum\
+  \ (-n) r :=\n  sorry\n\n\ntheorem zero_is_true {r : Int}\n  (h : r > 0) (h2 : r\
+  \ ≤ 10) :\n  checkConcatenatedSum 0 r = true :=\n  sorry\n\n\ntheorem large_sum_is_false\
+  \ {n r : Int}\n  (h_pos : n > 0) (h_r : r > 1) (h_r2 : r ≤ 10)\n  (digitSum : Nat)\n\
+  \  (h_sum : digitSum > 1)\n  (h_digits : digitSum = sorry) :\n  checkConcatenatedSum\
+  \ n r = false :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval check_concatenated_sum\
+  \ 2997 3\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval check_concatenated_sum -198\
+  \ 2\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval check_concatenated_sum 198 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,24 @@
+"vc-description": "In this Kata, you will be given a number in form of a string and\
+  \ an integer `k` and your task is to insert `k` commas into the string and determine\
+  \ which of the partitions is the largest. \n\n```\nFor example:\nsolve('1234',1)\
+  \ = 234 because ('1','234') or ('12','34') or ('123','4').\nsolve('1234',2) = 34\
+  \ because ('1','2','34') or ('1','23','4') or ('12','3','4'). \nsolve('1234',3)\
+  \ = 4\nsolve('2020',1) = 202\n```\n\nMore examples in test cases. Good luck!\n\n\
+  Please also try [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (s : String) (k : Nat) : Nat := sorry\n\ntheorem solve_k_zero\
+  \ (num_str : String) (h : num_str.all (fun c => '0' <= c ∧ c <= '9')) :\n  num_str.length\
+  \ > 0 → solve num_str 0 = num_str.toNat! := sorry\n"
+"vc-theorems": "theorem solve_k_bounds (num_str : String) (k : Nat) \n  (h1 : num_str.all\
+  \ (fun c => '0' <= c ∧ c <= '9'))\n  (h2 : num_str.length > 1) :\n  let k' := min\
+  \ k (num_str.length - 1)\n  let result := solve num_str k'\n  toString result |>.length\
+  \ = num_str.length - k' := sorry\n\n\n\n\ntheorem solve_returns_largest (num_str\
+  \ : String) (k : Nat)\n  (h1 : num_str.all (fun c => '0' <= c ∧ c <= '9'))\n  (h2\
+  \ : num_str.length > 1) :\n  let k' := min k (num_str.length - 1)\n  let result\
+  \ := solve num_str k'\n  let partition_size := num_str.length - k'\n  ∀ i, i + partition_size\
+  \ ≤ num_str.length →\n    let substr := (num_str.take (i + partition_size)).drop\
+  \ i\n    result ≥ substr.toNat! := sorry\n\n/--\ninfo: 234\n-/\n#guard_msgs in\n\
+  #eval solve \"1234\" 1\n\n/--\ninfo: 34\n-/\n#guard_msgs in\n#eval solve \"1234\"\
+  \ 2\n\n/--\ninfo: 202\n-/\n#guard_msgs in\n#eval solve \"2020\" 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

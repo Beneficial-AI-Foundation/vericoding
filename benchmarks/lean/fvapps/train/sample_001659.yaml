@@ -1,0 +1,33 @@
+"vc-description": "## Task\n\nYou are at position [0, 0] in maze NxN and you can **only**\
+  \ move in one of the four cardinal directions (i.e. North, East, South, West). \
+  \ Return `true` if you can reach position [N-1, N-1] or `false` otherwise.\n\nEmpty\
+  \ positions are marked `.`. Walls are marked `W`. Start and exit positions are empty\
+  \ in all test cases.\n\n## Path Finder Series:\n-       [#1: can you reach the exit?](https://www.codewars.com/kata/5765870e190b1472ec0022a2)\n\
+  -       [#2: shortest path](https://www.codewars.com/kata/57658bfa28ed87ecfa00058a)\n\
+  -       [#3: the Alpinist](https://www.codewars.com/kata/576986639772456f6f00030c)\n\
+  -       [#4: where are you?](https://www.codewars.com/kata/5a0573c446d8435b8e00009f)\n\
+  -       [#5: there's someone here](https://www.codewars.com/kata/5a05969cba2a14e541000129)"
+"vc-preamble": "import Imports.AllImports\n\ndef path_finder (maze : String) : Bool\
+  \ := sorry\n\ndef stringReplicate (n : Nat) (s : String) : String := sorry\n\n\n\
+  def stringJoin (l : List String) (sep : String) : String := sorry\n\ndef makeList\
+  \ (n : Nat) (c : Char) : List Char := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def listToString (l : List Char) : String := sorry\n\ndef make_maze\
+  \ (cells : List Char) : String := sorry\n"
+"vc-theorems": "theorem empty_maze_always_solvable (n : Nat) (h : n ≥ 2) (h2 : n ≤\
+  \ 10) :\n  let row := stringReplicate n \".\"\n  let rows := List.replicate n row\n\
+  \  path_finder (stringJoin rows \"\\n\") = true := sorry\n\n\ntheorem border_wall_maze_unsolvable\
+  \ (n : Nat) (h : n ≥ 2) (h2 : n ≤ 10) :\n  let row := stringReplicate n \"W\"\n\
+  \  let rows := List.replicate n row\n  path_finder (stringJoin rows \"\\n\") = false\
+  \ := sorry\n\n\ntheorem random_valid_maze_returns_bool (cells : List Char) \n  (h1\
+  \ : cells.length ≥ 4) (h2 : cells.length ≤ 100)\n  (h3 : ∀ c ∈ cells, c = '.' ∨\
+  \ c = 'W')\n  (h4 : ∃ n : Nat, n * n = cells.length)\n  (h5 : cells ≠ [] → cells[0]\
+  \ = '.')\n  (h6 : cells ≠ [] → cells[cells.length - 1] = '.') :\n  (path_finder\
+  \ (make_maze cells)) = true ∨ (path_finder (make_maze cells)) = false := sorry\n\
+  \n\ntheorem single_path_solvable :\n  path_finder \"..W\\nW.W\\n...\" = true :=\
+  \ sorry\n\n\ntheorem path_to_self_exists (n : Nat) (h : n ≥ 2) (h2 : n ≤ 10) :\n\
+  \  let cells := makeList (n*n) '.'\n  path_finder (make_maze cells) = true := sorry\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval path_finder \"\\n\".join([\".W.\",\
+  \ \".W.\", \"...\"])\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval path_finder\
+  \ maze2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

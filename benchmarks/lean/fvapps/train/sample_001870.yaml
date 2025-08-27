@@ -1,0 +1,26 @@
+"vc-description": "Given a linked list, remove the n-th node from the end of list\
+  \ and return its head.\n\nExample:\n\n\nGiven linked list: 1->2->3->4->5, and n\
+  \ = 2.\n\nAfter removing the second node from the end, the linked list becomes 1->2->3->5.\n\
+  \n\nNote:\n\nGiven n will always be valid.\n\nFollow up:\n\nCould you do this in\
+  \ one pass?"
+"vc-preamble": "import Imports.AllImports\n\ndef removeNthFromEnd (head : Node) (n\
+  \ : Nat) : Option Node :=\n  sorry\n\n\ndef create_linked_list (arr : List Int)\
+  \ : Option Node :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def linked_list_to_array (head : Option Node) : List Int :=\n \
+  \ sorry\n"
+"vc-theorems": "theorem remove_nth_maintains_order {arr : List Int} {n : Nat} \n \
+  \ (h1 : 0 < n) (h2 : n ≤ arr.length) :\n  let head := create_linked_list arr\n \
+  \ let result := removeNthFromEnd (Option.get! head) n\n  let result_arr := linked_list_to_array\
+  \ result\n  (result_arr.length = arr.length - 1) ∧ \n  (result_arr = (arr.take (arr.length\
+  \ - n)) ++ (arr.drop (arr.length - n + 1))) :=\nsorry\n\n\ntheorem remove_first_element\
+  \ {arr : List Int}\n  (h : arr.length > 0) :\n  let head := create_linked_list arr\n\
+  \  let result := removeNthFromEnd (Option.get! head) arr.length\n  linked_list_to_array\
+  \ result = arr.tail :=\nsorry\n\n\ntheorem remove_last_element {arr : List Int}\n\
+  \  (h : arr.length > 0) :\n  let head := create_linked_list arr\n  let result :=\
+  \ removeNthFromEnd (Option.get! head) 1\n  linked_list_to_array result = arr.dropLast\
+  \ :=\nsorry\n\n/--\ninfo: [1, 2, 3, 5]\n-/\n#guard_msgs in\n#eval linked_list_to_array\
+  \ removeNthFromEnd(head1, 2)\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval linked_list_to_array\
+  \ removeNthFromEnd(head2, 1)\n\n/--\ninfo: [1]\n-/\n#guard_msgs in\n#eval linked_list_to_array\
+  \ removeNthFromEnd(head3, 1)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

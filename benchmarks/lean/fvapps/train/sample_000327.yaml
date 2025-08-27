@@ -1,0 +1,29 @@
+"vc-description": "Given two equal-size strings s and t. In one step you can choose\
+  \ any character of t and replace it with another character.\nReturn the minimum\
+  \ number of steps to make t an anagram of s.\nAn Anagram of a string is a string\
+  \ that contains the same characters with a different (or the same) ordering.\n \n\
+  Example 1:\nInput: s = \"bab\", t = \"aba\"\nOutput: 1\nExplanation: Replace the\
+  \ first 'a' in t with b, t = \"bba\" which is anagram of s.\n\nExample 2:\nInput:\
+  \ s = \"leetcode\", t = \"practice\"\nOutput: 5\nExplanation: Replace 'p', 'r',\
+  \ 'a', 'i' and 'c' from t with proper characters to make t anagram of s.\n\nExample\
+  \ 3:\nInput: s = \"anagram\", t = \"mangaar\"\nOutput: 0\nExplanation: \"anagram\"\
+  \ and \"mangaar\" are anagrams. \n\nExample 4:\nInput: s = \"xxyyzz\", t = \"xxyyzz\"\
+  \nOutput: 0\n\nExample 5:\nInput: s = \"friend\", t = \"family\"\nOutput: 4\n\n\
+   \nConstraints:\n\n1 <= s.length <= 50000\ns.length == t.length\ns and t contain\
+  \ lower-case English letters only."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_steps_to_anagram (s1 s2 : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem anagram_non_negative (s1 s2 : String) :\n  min_steps_to_anagram\
+  \ s1 s2 ≥ 0 :=\n  sorry\n\n\ntheorem empty_strings_zero_steps :\n  min_steps_to_anagram\
+  \ \"\" \"\" = 0 :=\n  sorry\n\n\ntheorem same_string_zero_steps (s : String) :\n\
+  \  min_steps_to_anagram s s = 0 :=\n  sorry\n\n\ntheorem anagram_symmetry (s : String)\
+  \ :\n  min_steps_to_anagram s s = 0 :=\n  sorry\n\n\ntheorem steps_bounded_by_length\
+  \ (s t : String) :\n  min_steps_to_anagram s t ≤ t.length :=\n  sorry\n\n\ntheorem\
+  \ empty_string_steps :\n  min_steps_to_anagram \"\" \"\" = 0 ∧\n  min_steps_to_anagram\
+  \ \"a\" \"\" = 0 ∧\n  min_steps_to_anagram \"\" \"a\" = 1 :=\n  sorry\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval min_steps_to_anagram \"bab\" \"aba\"\n\n/--\ninfo:\
+  \ 5\n-/\n#guard_msgs in\n#eval min_steps_to_anagram \"leetcode\" \"practice\"\n\n\
+  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval min_steps_to_anagram \"anagram\" \"mangaar\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

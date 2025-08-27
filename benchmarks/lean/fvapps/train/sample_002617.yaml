@@ -1,0 +1,35 @@
+"vc-description": "# Task\n\nYou are given a positive integer `n`. We intend to make\
+  \ some ascending sequences according to the following rules:\n\n 1. Make a sequence\
+  \ of length 1: [ n ]\n\n 2. Or, insert a number to the left side of the sequence.\
+  \ But this number can not exceed half of the first number of the sequence. \n\n\
+  \ 3. Follow rule 2, continue insert number to the left side of the sequence.\n\n\
+  Your task is to count the number of all possible sequences, and return it.\n\nIf\
+  \ you do not understand the task, please read the rewritten version below:\n\nYou\
+  \ are given a positive integer `n`. Your task is to count the number of such sequences:\
+  \ \n\n- It should be an ascending sequence;\n\n- It should end with number `n`.\n\
+  \n- Each number in the sequence should smaller or equals to the half of its right,\
+  \ except for the last number `n`.\n\n- We define that a sequence containing only\
+  \ a number `n` is a valid ascending sequence.\n\n# Examples\n\nFor `n = 6`, the\
+  \ output should be `6`.\n\nAll sequences we made are:\n\n```\n[6]\n\ninsert a number\
+  \ to the left:\n\n[1,6]\n[2,6]\n[3,6]\n\ncontinue insert number:\n\n[1,2,6]\n[1,3,6]\n\
+  ```\nThere are 6 sequences in total.\n\n\nFor `n = 10`, the output should be `14`.\n\
+  \nAll sequences we made are:\n\n```\n[10]\n\ninsert a number to the left:\n\n[1,10]\n\
+  [2,10]\n[3,10]\n[4,10]\n[5,10]\n\ncontinue insert number:\n\n[1,2,10]\n[1,3,10]\n\
+  [1,4,10]\n[2,4,10]\n[1,5,10]\n[2,5,10]\n\ncontinue insert number:\n\n[1,2,4,10]\n\
+  [1,2,5,10]\n\n```\nThere are 14 sequences in total.\n\n# Note\n\n- `1 <= n <= 1000`\n\
+  \n- `3` fixed testcases\n\n- `100` random testcases, testing for correctness of\
+  \ solution\n\n- All inputs are valid.\n\n- If my reference solution gives the wrong\
+  \ result in the random tests, please let me know(post an issue)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def make_sequences (n : Nat) : Nat := sorry \n\nabbrev sum_list\
+  \ : List Nat → Nat \n  | [] => 0\n  | (x::xs) => x + sum_list xs\n"
+"vc-theorems": "theorem count_at_least_one (n : Nat) (h: n > 0) : \n  make_sequences\
+  \ n ≥ 1 := sorry\n\n\ntheorem deterministic (n : Nat) (h: n > 0) :\n  make_sequences\
+  \ n = make_sequences n := sorry\n\n\ntheorem monotonic_up_to_n (n : Nat) (h: n >\
+  \ 1) :\n  make_sequences n ≥ make_sequences (n-1) := sorry\n\n\ntheorem recursive_relation\
+  \ (n : Nat) (h: n > 0) :\n  make_sequences n = 1 + sum_list (List.map make_sequences\
+  \ (List.range (n/2))) := sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval make_sequences\
+  \ 6\n\n/--\ninfo: 14\n-/\n#guard_msgs in\n#eval make_sequences 10\n\n/--\ninfo:\
+  \ 1981471878\n-/\n#guard_msgs in\n#eval make_sequences 1000\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,36 @@
+"vc-description": "During quarantine chef’s friend invented a game. In this game there\
+  \ are two players, player 1 and Player 2. In center of garden there is one finish\
+  \ circle and both players are at different distances respectively $X$ and $Y$ from\
+  \ finish circle.\nBetween finish circle and Player 1 there are $X$ number of circles\
+  \ and between finish circle and Player 2 there are $Y$ number of circles. Both player\
+  \ wants to reach finish circle with minimum number of jumps. Player can jump one\
+  \ circle to another circle.\nBoth players can skip $2^0-1$ or $2^1- 1$ or …. or\
+  \ $2^N-1$ circles per jump. A player cannot skip same number of circles in a match\
+  \ more than once. If both players uses optimal way to reach finish circle what will\
+  \ be the difference of minimum jumps needed to reach finish circle by both players.\
+  \ \nIf both players reach finish circle with same number of jumps answer will be\
+  \ $0$ $0$.\n\n-----Input:-----\n- The first line of the input contains a single\
+  \ integer $T$ denoting the number of test cases. The \ndescription of $T$ test cases\
+  \ follows.\n- The first line of each test case contains 2 space separated integers\
+  \ $X$ and $Y$.\n\n-----Output:-----\nFor each test case, print a single line containing\
+  \ 2 space-separated integers which player win and what is the difference between\
+  \ number of minimum jump required by both players to reach finish circle.\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 10^5$\n- $1 \\leq X,Y \\leq 2*10^7$\n\n-----Sample Input:-----\n\
+  2\n4 5\n3 5\n\n-----Sample Output:-----\n0 0\n1 1\n\n-----Explanation:-----\nTest\
+  \ Case 1:\n\nTest Case 2:"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_jumping_game (x y : Nat) : Nat × Nat := sorry\n\ntheorem\
+  \ result_valid {x y : Nat} :\n  let (result, _) := solve_jumping_game x y\n  result\
+  \ = 0 ∨ result = 1 ∨ result = 2 := sorry\n"
+"vc-theorems": "theorem diff_nonneg {x y : Nat} :\n  let (_, diff) := solve_jumping_game\
+  \ x y\n  diff ≥ 0 := sorry\n\n\ntheorem result_zero_implies_diff_zero {x y : Nat}\
+  \ :\n  let (result, diff) := solve_jumping_game x y\n  result = 0 → diff = 0 :=\
+  \ sorry\n\n\ntheorem symmetric_results {x y : Nat} :\n  let (result1, diff1) :=\
+  \ solve_jumping_game x y\n  let (result2, diff2) := solve_jumping_game y x\n  (result1\
+  \ = 1 → result2 = 2) ∧\n  (result1 = 2 → result2 = 1) ∧\n  (result1 = 0 → result2\
+  \ = 0) ∧\n  diff1 = diff2 := sorry\n\n\ntheorem same_input_tie {x : Nat} :\n  let\
+  \ (result, diff) := solve_jumping_game x x\n  result = 0 ∧ diff = 0 := sorry\n\n\
+  /--\ninfo: (0, 0)\n-/\n#guard_msgs in\n#eval solve_jumping_game 4 5\n\n/--\ninfo:\
+  \ (1, 1)\n-/\n#guard_msgs in\n#eval solve_jumping_game 3 5\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

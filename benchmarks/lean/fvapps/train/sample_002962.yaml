@@ -1,0 +1,30 @@
+"vc-description": "There are several (or no) spiders, butterflies, and dragonflies.\
+  \ \n\nIn this kata, a spider has eight legs. A dragonfly or a butterfly has six\
+  \ legs. A __dragonfly__ has __two__ pairs of wings, while a __butterfly__ has __one__\
+  \ pair of wings. __I am not sure whether they are biologically correct, but the\
+  \ values apply here. __\n\nGiven the number of total heads, legs, and __pairs of__\
+  \ wings, please calculate numbers of each kind of bugs. Of course they are integers.\
+  \ \n_However, I do not guarantee that they are positive in the test cases. \nPlease\
+  \ regard the minus numbers as cases that does not make sense. _\n\nIf answers make\
+  \ sense, return [n\\_spider, n\\_butterfly, n\\_dragonfly]; \nelse, please return\
+  \ [-1, -1, -1]. \n\nExample: \n\ncal\\_n\\_bug(3, 20, 3) = [1, 1, 1]\nOne spider,\
+  \ one butterfly, one dragonfly in total have three heads, twenty legs (8 for the\
+  \ spider, 6 for the butterfly, and 6 for the dragonfly), and _three pairs_ of wings\
+  \ (1 for the butterfly and 2 for the dragonfly)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def cal_n_bug (heads : Int) (legs : Int) (wings : Int) : List Int\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem valid_output_structure_heads_spiders\n  (n : Int) :\n  let\
+  \ result := cal_n_bug n (n*6) n\n  result.length = 3 ∧ \n  (∀ x ∈ result, x ≥ 0\
+  \ ∨ result = [-1, -1, -1]) :=\nsorry\n\n\ntheorem total_creatures_match_heads\n\
+  \  (heads legs wings : Int) :\n  let result := cal_n_bug heads legs wings\n  result\
+  \ ≠ [-1, -1, -1] →\n  result.foldl (init := 0) (·+·) = heads :=\nsorry\n\n\ntheorem\
+  \ legs_and_wings_match\n  (spider butterfly dragonfly : Int) :\n  let total := spider\
+  \ + butterfly + dragonfly\n  let legs := spider*8 + butterfly*6 + dragonfly*6 \n\
+  \  let wings := butterfly + dragonfly*2\n  cal_n_bug total legs wings = [spider,\
+  \ butterfly, dragonfly] := \nsorry\n\n\ntheorem negative_heads_invalid\n  (n : Int)\
+  \ :\n  n < 0 →\n  cal_n_bug n 0 0 = [-1, -1, -1] :=\nsorry\n\n\ntheorem impossible_combinations\n\
+  \  (n : Int) :\n  n > 0 →\n  cal_n_bug n 3 n = [-1, -1, -1] ∧\n  cal_n_bug n (n*8)\
+  \ n = [-1, -1, -1] :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,35 @@
+"vc-description": "You are a biologist working on the amino acid  composition of proteins.\
+  \ Every protein consists of a long chain of 20 different amino acids with different\
+  \ properties. \nCurrently, you are collecting data on the percentage, various amino\
+  \ acids make up a protein you are working on. As manually counting the occurences\
+  \ of amino acids takes too long (especially when counting more than one amino acid),\
+  \ you decide to write a program for this task:\n\nWrite a function that takes two\
+  \ arguments,\n 1. A (snippet of a) protein sequence\n 2. A list of amino acid residue\
+  \ codes \n\nand returns the rounded percentage of the protein that the given amino\
+  \ acids make up. \nIf no amino acid list is given, return the percentage of hydrophobic\
+  \ amino acid residues [\"A\", \"I\", \"L\", \"M\", \"F\", \"W\", \"Y\", \"V\"]."
+"vc-preamble": "import Imports.AllImports\n\ndef aa_percentage (seq : String) (residues\
+  \ : List Char := ['A', 'I', 'L', 'M', 'F', 'W', 'Y', 'V']) : Nat := sorry\n\ntheorem\
+  \ default_residues_in_bounds (seq : String) \n  (h : ∀ c ∈ seq.data, c ∈ ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y'])\
+  \ :\n  0 ≤ aa_percentage seq ∧ aa_percentage seq ≤ 100 := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum_list : List Nat → Nat \n  | [] => 0\n  | x::xs => x + sum_list\
+  \ xs\n"
+"vc-theorems": "theorem custom_residues_in_bounds (seq : String) (residues : List\
+  \ Char)\n  (h1 : ∀ c ∈ seq.data, c ∈ ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y'])\n\
+  \  (h2 : ∀ c ∈ residues, c ∈ ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y'])\n\
+  \  (h3 : residues.Nodup) :\n  0 ≤ aa_percentage seq residues ∧ aa_percentage seq\
+  \ residues ≤ 100 := sorry\n\n\ntheorem empty_residues_gives_zero (seq : String)\
+  \ \n  (h : ∀ c ∈ seq.data, c ∈ ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y'])\
+  \ :\n  aa_percentage seq [] = 0 := sorry\n\n\ntheorem residue_count_matches (seq\
+  \ : String) (residues : List Char)\n  (h1 : ∀ c ∈ seq.data, c ∈ ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y'])\n\
+  \  (h2 : ∀ c ∈ residues, c ∈ ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y'])\n\
+  \  (h3 : residues.Nodup) :\n  aa_percentage seq residues = \n    ((sum_list (residues.map\
+  \ (λ r => seq.data.count r))) * 100 + seq.length / 2) / seq.length := sorry\n\n\n\
+  theorem default_residues_consistent (seq : String)\n  (h : ∀ c ∈ seq.data, c ∈ ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y'])\
+  \ :\n  aa_percentage seq = aa_percentage seq ['A', 'I', 'L', 'M', 'F', 'W', 'Y',\
+  \ 'V'] := sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval aa_percentage \"MSRSLLLRFLLFLLLLPPLP\"\
+  \ [\"M\"]\n\n/--\ninfo: 29\n-/\n#guard_msgs in\n#eval aa_percentage \"RLMADDFFGQTLMAAAAAAQERRR\"\
+  \ [\"A\"]\n\n/--\ninfo: 50\n-/\n#guard_msgs in\n#eval aa_percentage \"PLPPLPLLEELELRPFFMAAGGTPLAMMGG\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,32 @@
+"vc-description": "Given a string consisting of only lowercase English alphabets,\
+  \ your task is to find the smallest palindromic substring.\nIn case there are multiple\
+  \ palindromic substrings of the same length present, print the lexicographically\
+  \ smallest substring. \nFormally, a substring is a contiguous sequence of characters\
+  \ within a string. So in a string \"abcdef\", \"abc\" is a substring whereas \"\
+  adf\" is not a substring.\nA palindrome is a word, phrase, or sequence that reads\
+  \ the same backwards as forwards, e.g. madam or mom.\n\n-----Input:-----\n- First-line\
+  \ will contain $T$, the number of test cases. Then the test cases follow. \n- Each\
+  \ test case contains of two lines of input, two integers.\n- First, we have a single\
+  \ integer $N$ which signifies the length of the substring.\n- Next, we have a string\
+  \ of length $N$ that only has lowercase English alphabets.\n\n-----Output:-----\n\
+  For each testcase, output in a single line the shortest palindromic substring.\n\
+  \n-----Constraints-----\n- $1 \\leq T \\leq 100$\n- $2 \\leq N \\leq 10^5$\n\n-----Sample\
+  \ Input:-----\n2\n2\nzy\n1\ncd\n\n-----Sample Output:-----\ny\nc\n\n-----EXPLANATION:-----\n\
+  There are only two possibilities. \"z\" and \"y\". Since both of them have the same\
+  \ length. We print the lexicographically smaller substring which is y."
+"vc-preamble": "import Imports.AllImports\n\ndef find_smallest_palindrome (len: Nat)\
+  \ (s: String) : String := sorry\n\ntheorem find_smallest_palindrome_result_length\
+  \ \n  (len: Nat) (s: String) (h₁: len > 0) (h₂: s.length > 0) :\n  (find_smallest_palindrome\
+  \ len s).length = 1 := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def lexMin (s: String) : String :=\n  s.data.foldl (fun acc c =>\
+  \ if c < acc.get! 0 then String.mk [c] else acc) (String.mk [s.get! 0])\n"
+"vc-theorems": "theorem find_smallest_palindrome_in_original \n  (len: Nat) (s: String)\
+  \ (h₁: len > 0) (h₂: s.length > 0) :\n  s.contains ((find_smallest_palindrome len\
+  \ s).get! 0) = true := sorry \n\n\ntheorem find_smallest_palindrome_lexmin \n  (len:\
+  \ Nat) (s: String) (h₁: len > 0) (h₂: s.length > 0) :\n  find_smallest_palindrome\
+  \ len s = lexMin s := sorry\n\n/--\ninfo: 'y'\n-/\n#guard_msgs in\n#eval find_smallest_palindrome\
+  \ 2 \"zy\"\n\n/--\ninfo: 'c'\n-/\n#guard_msgs in\n#eval find_smallest_palindrome\
+  \ 1 \"cd\"\n\n/--\ninfo: 'm'\n-/\n#guard_msgs in\n#eval find_smallest_palindrome\
+  \ 3 \"mom\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,23 @@
+"vc-description": "An onion array is an array that satisfies the following condition\
+  \ for all values of `j` and `k`:\n\nIf all of the following are `true`:\n\n* `j\
+  \ >= 0`\n* `k >= 0`\n* `j + k = array.length - 1`\n* `j != k`\n  \nthen:\n\n* `a[j]\
+  \ + a[k] <= 10`\n\n### Examples:\n\n```\n[1, 2, 19, 4, 5]   =>  true  (as 1+5 <=\
+  \ 10 and 2+4 <= 10)\n[1, 2, 19, 4, 10]  =>  false (as 1+10 > 10)\n```\n\nWrite a\
+  \ function named `isOnionArray`/`IsOnionArray`/`is_onion_array()` that returns `true`\
+  \ if its argument is an onion array and returns `false` if it is not.\n\n~~~if:php\n\
+  Your solution should at least be moderately efficient.  Make sure you don't do any\
+  \ unnecessary looping ;)\n~~~"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_onion_array : List Int → Bool :=\n  fun _ => sorry\n"
+"vc-theorems": "theorem onion_array_valid {arr : List Int} \n  (h : ∃ xs, arr = xs\
+  \ ++ List.replicate (xs.length % 2) 0 ++ (xs.map (fun x => 10 - x)).reverse) : \n\
+  \  is_onion_array arr = true := sorry\n\n\ntheorem empty_single_onion {arr : List\
+  \ Int} (h : arr.length ≤ 1) : \n  is_onion_array arr = true := sorry \n\n\ntheorem\
+  \ large_nums_not_onion {arr : List Int} \n  (h1 : arr.length ≥ 2) \n  (h2 : ∀ x\
+  \ ∈ arr, x > 10) : \n  is_onion_array arr = false := sorry\n\n\ntheorem onion_symmetric\
+  \ {arr : List Int} :\n  is_onion_array arr = is_onion_array arr.reverse := sorry\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_onion_array [6, 0, 4]\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval is_onion_array [1, 1, 15, 10, -1]\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval is_onion_array [1, 2, 19, 4, 5]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

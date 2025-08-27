@@ -1,0 +1,21 @@
+"vc-description": "The chef is trying to solve some pattern problems, Chef wants your\
+  \ help to code it. Chef has one number K to form a new pattern. Help the chef to\
+  \ code this pattern problem.\n\n-----Input:-----\n- First-line will contain $T$,\
+  \ the number of test cases. Then the test cases follow. \n- Each test case contains\
+  \ a single line of input, one integer $K$. \n\n-----Output:-----\nFor each test\
+  \ case, output as the pattern.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n\
+  - $1 \\leq K \\leq 100$\n\n-----Sample Input:-----\n5\n1\n2\n3\n4\n5\n\n-----Sample\
+  \ Output:-----\n*\n*\n**\n*\n**\n***\n*\n**\n* *\n****\n*\n**\n* *\n*  *\n*****\n\
+  \n-----EXPLANATION:-----\nNo need, else pattern can be decode easily."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def generate_pattern (k : Nat) : List String := sorry\n\ntheorem\
+  \ pattern_length {k : Nat} (h : k > 0) :\n  List.length (generate_pattern k) = k\
+  \ := sorry\n"
+"vc-theorems": "theorem pattern_last_line {k : Nat} (h : k > 0) :\n  List.get! (generate_pattern\
+  \ k) (k - 1) = \"*\".append (String.join (List.replicate (k-1) \"*\")) := sorry\n\
+  \n\ntheorem pattern_first_line {k : Nat} (h : k > 0) :\n  List.head! (generate_pattern\
+  \ k) = \"*\" := sorry\n\n\ntheorem pattern_middle_lines {k : Nat} (h : k > 2) (i\
+  \ : Nat) (hi : i > 0 ∧ i < k - 1) :\n  let line := List.get! (generate_pattern k)\
+  \ i\n  line.length = i + 1 ∧\n  (∀ c ∈ line.data, c = '*' ∨ c = ' ') := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

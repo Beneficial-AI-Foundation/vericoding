@@ -1,0 +1,33 @@
+"vc-description": "Assume you are creating a webshop and you would like to help the\
+  \ user in the search. You have products with brands, prices and name. You have the\
+  \ history of opened products (the most recently opened being the first item).\n\n\
+  Your task is to create a list of brands ordered by popularity, if two brands have\
+  \ the same popularity level then choose the one which was opened last from the two\
+  \ and second the other one.\n\nProduct popularity is calculated from the history.\
+  \ If a product is more times in the history than it is more popular.\n\nYour function\
+  \ will have one parameter which will be always an array/list of object.\n\nexample\
+  \ product:\n{\n  name: \"Phone\",\n  price: 25,\n  brand: \"Fake brand\"\n}"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sorted_brands (history : List Product) : List String :=\n \
+  \ sorry\n"
+"vc-theorems": "theorem sorted_brands_unique_brands {history : List Product} : \n\
+  \  let result := sorted_brands history\n  List.length result = List.length (List.eraseDups\
+  \ result) := by\n  sorry\n\n\ntheorem sorted_brands_subset {history : List Product}\
+  \ :\n  let result := sorted_brands history\n  match history with\n  | [] => result\
+  \ = []\n  | _ => result = (List.map (fun h => h.brand) history).eraseDups \n  :=\
+  \ by \n  sorry\n\n\ntheorem sorted_brands_frequency_order {history : List Product}\
+  \ :\n  let result := sorted_brands history\n  let brand_counts := fun b => \n  \
+  \  (List.filter (fun h => h.brand = b) history).length\n  ∀ (i j : Fin result.length),\
+  \ i.val < j.val →\n    brand_counts (result[i]) ≥ brand_counts (result[j]) := by\n\
+  \  sorry\n\n\ntheorem sorted_brands_equal_freq_ordering {history : List Product}\
+  \ :\n  let result := sorted_brands history\n  let brand_counts := fun b => \n  \
+  \  (List.filter (fun h => h.brand = b) history).length\n  let first_index := fun\
+  \ b => \n    Option.get! (List.findIdx? (fun h => h.brand = b) history)\n  ∀ (i\
+  \ j : Fin result.length), i.val < j.val →\n    brand_counts (result[i]) = brand_counts\
+  \ (result[j]) →\n    first_index (result[i]) < first_index (result[j]) := by\n \
+  \ sorry\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval sorted_brands []\n\n/--\ninfo:\
+  \ ['Fake brand']\n-/\n#guard_msgs in\n#eval sorted_brands [product1]\n\n/--\ninfo:\
+  \ ['Fake brand', 'Other brand']\n-/\n#guard_msgs in\n#eval sorted_brands [product1,\
+  \ product2, product3, product1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

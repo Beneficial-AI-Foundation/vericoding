@@ -1,0 +1,37 @@
+"vc-description": "On Unix system type files can be identified with the ls -l command\
+  \ which displays the type of the file in the first alphabetic letter of the file\
+  \ system permissions field. You can find more information about file type on Unix\
+  \ system on the [wikipedia page](https://en.wikipedia.org/wiki/Unix_file_types).\n\
+  \n- '-' A regular file ==> `file`.\n- 'd' A directory ==> `directory`.\n- 'l' A\
+  \ symbolic link ==> `symlink`.\n- 'c' A character special file. It refers to a device\
+  \ that handles data as a stream of bytes (e.g: a terminal/modem) ==> `character_file`.\n\
+  - 'b' A block special file. It refers to a device that handles data in blocks (e.g:\
+  \ such as a hard drive or CD-ROM drive) ==> `block_file`.\n- 'p' a named pipe ==>\
+  \ `pipe`.\n- 's' a socket ==> `socket`.\n- 'D' a door ==> `door`.\n\nIn this kata\
+  \ you should complete a function that return the `filetype` as a string regarding\
+  \ the `file_attribute` given by the `ls -l` command. \n\nFor example if the function\
+  \ receive `-rwxr-xr-x` it should return `file`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def linux_type (full_attr: String) : FileType := sorry\n\ntheorem\
+  \ linux_type_first_char_determines_type (file_type: Char) (permissions: String)\
+  \ \n  (h1: file_type = '-' ∨ file_type = 'd' ∨ file_type = 'l' ∨ \n       file_type\
+  \ = 'c' ∨ file_type = 'b' ∨ file_type = 'p' ∨\n       file_type = 's' ∨ file_type\
+  \ = 'D')\n  (h2: permissions.length = 9)\n  (h3: ∀ c ∈ permissions.data, c = 'r'\
+  \ ∨ c = 'w' ∨ c = 'x' ∨ c = '-') :\n  let full_attr := String.mk (file_type :: permissions.data)\n\
+  \  match file_type with\n  | '-' => linux_type full_attr = FileType.file\n  | 'd'\
+  \ => linux_type full_attr = FileType.directory\n  | 'l' => linux_type full_attr\
+  \ = FileType.symlink\n  | 'c' => linux_type full_attr = FileType.character_file\n\
+  \  | 'b' => linux_type full_attr = FileType.block_file\n  | 'p' => linux_type full_attr\
+  \ = FileType.pipe\n  | 's' => linux_type full_attr = FileType.socket\n  | 'D' =>\
+  \ linux_type full_attr = FileType.door\n  | _ => True := sorry\n"
+"vc-theorems": "theorem linux_type_invalid_first_char (c: Char) (permissions: String)\n\
+  \  (h1: c ≠ '-' ∧ c ≠ 'd' ∧ c ≠ 'l' ∧ c ≠ 'c' ∧ c ≠ 'b' ∧ c ≠ 'p' ∧ c ≠ 's' ∧ c\
+  \ ≠ 'D')\n  (h2: permissions.length = 9)\n  (h3: ∀ c ∈ permissions.data, c = 'r'\
+  \ ∨ c = 'w' ∨ c = 'x' ∨ c = '-') :\n  ∀ ft: FileType, linux_type (String.mk (c ::\
+  \ permissions.data)) ≠ ft := sorry\n\n/--\ninfo: 'file'\n-/\n#guard_msgs in\n#eval\
+  \ linux_type \"-rwxrwxrwx\"\n\n/--\ninfo: 'door'\n-/\n#guard_msgs in\n#eval linux_type\
+  \ \"Drwxr-xr-x\"\n\n/--\ninfo: 'symlink'\n-/\n#guard_msgs in\n#eval linux_type \"\
+  lrwxrw-rw-\"\n\n/--\ninfo: 'socket'\n-/\n#guard_msgs in\n#eval linux_type \"srwxrwxrwx\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

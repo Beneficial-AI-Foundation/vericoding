@@ -1,0 +1,15 @@
+"vc-description": "Simple, remove the spaces from the string, then return the resultant\
+  \ string.\n\n~~~if:c\nFor C, you must return a new dynamically allocated string.\n\
+  ~~~"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def noSpace (s : String) : String := sorry\n\ntheorem no_space_no_spaces_in_result\
+  \ (s : String) :\n  ¬(noSpace s).contains ' ' := sorry\n"
+"vc-theorems": "theorem no_space_preserves_non_spaces (s : String) :\n  noSpace s\
+  \ = s.replace (String.mk [' ']) \"\" := sorry\n\n\ntheorem no_space_identity_for_spaceless\
+  \ (s : String) :\n  ¬s.contains ' ' → noSpace s = s := sorry\n\n\ntheorem no_space_empty\
+  \ :\n  noSpace \"\" = \"\" := sorry\n\n/--\ninfo: '8j8mBliB8gimjB8B8jlB'\n-/\n#guard_msgs\
+  \ in\n#eval no_space \"8 j 8   mBliB8g  imjB8B8  jl  B\"\n\n/--\ninfo: '88Bifk8hB8BB8BBBB888chl8BhBfd'\n\
+  -/\n#guard_msgs in\n#eval no_space \"8 8 Bi fk8h B 8 BB8B B B  B888 c hl8 BhB fd\"\
+  \n\n/--\ninfo: '8jaam'\n-/\n#guard_msgs in\n#eval no_space \"8j aam\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

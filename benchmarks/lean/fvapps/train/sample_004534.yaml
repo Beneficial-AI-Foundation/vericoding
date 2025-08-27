@@ -1,0 +1,28 @@
+"vc-description": "# Task\n Let's say that number a feels comfortable with number\
+  \ b if a ≠ b and b lies in the segment` [a - s(a), a + s(a)]`, where `s(x)` is the\
+  \ sum of x's digits.\n\n How many pairs (a, b) are there, such that a < b, both\
+  \ a and b lie on the segment `[L, R]`, and each number feels comfortable with the\
+  \ other?\n\n# Example\n\n For `L = 10 and R = 12`, the output should be `2`\n\n\
+  \ Here are all values of s(x) to consider:\n```\ns(10) = 1, so 10 is comfortable\
+  \ with 9 and 11;\ns(11) = 2, so 11 is comfortable with 9, 10, 12 and 13;\ns(12)\
+  \ = 3, so 12 is comfortable with 9, 10, 11, 13, 14 and 15.\nThus, there are 2 pairs\
+  \ of numbers comfortable \nwith each other within the segment [10; 12]: \n(10, 11)\
+  \ and (11, 12).\n```\n# Input/Output\n\n - `[input]` integer `L`\n\n    Constraints:\
+  \ `1 ≤ L ≤ R ≤ 1000`\n\n - `[input]` integer `R`\n\n    Constraints: `1 ≤ L ≤ R\
+  \ ≤ 1000`\n\n - `[output]` an integer\n\n    The number of pairs satisfying all\
+  \ the above conditions."
+"vc-preamble": "import Imports.AllImports\n\ndef digitSum (n : Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countComfortablePairs (l r : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem window_size (start : Nat) (window : Nat) \n  (h1 : start ≥\
+  \ 1) (h2 : start ≤ 100) (h3 : window ≥ 0) (h4 : window ≤ 10) :\n  let result :=\
+  \ countComfortablePairs start (start + window)\n  result ≥ 0 ∧ result ≤ (window\
+  \ + 1) * window / 2 :=\n  sorry\n\n\ntheorem single_number (n : Nat) (h1 : n ≥ 1)\
+  \ (h2 : n ≤ 1000) :\n  countComfortablePairs n n = 0 :=\n  sorry\n\n\ntheorem pairs_symmetry\
+  \ (n : Nat) (h1 : n ≥ 1) (h2 : n ≤ 100) :\n  let allPairs := countComfortablePairs\
+  \ 1 n\n  allPairs ≥ 0 ∧ allPairs ≤ n * 2 :=\n  sorry\n\n\ntheorem small_ranges :\n\
+  \  countComfortablePairs 1 1 = 0 ∧\n  countComfortablePairs 1 2 ≥ 0 ∧\n  countComfortablePairs\
+  \ 9 10 ≥ 0 :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_comfortable_pairs\
+  \ 10 12\n\n/--\ninfo: 20\n-/\n#guard_msgs in\n#eval count_comfortable_pairs 1 9\n\
+  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval count_comfortable_pairs 13 13\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

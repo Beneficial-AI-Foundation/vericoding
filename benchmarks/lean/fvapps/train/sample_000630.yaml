@@ -1,0 +1,62 @@
+"vc-description": "Mandarin chinese\n, Russian and Vietnamese as well.\nYou are given\
+  \ a grid with $n$ rows and $m$ columns. Each cell of this grid can either be empty\
+  \ or it contains one particle. It can never contain more than one particle. Let's\
+  \ denote the cell in the $i$-th row and $j$-th column by $(i, j)$, with the top\
+  \ left corner being $(0, 0)$. From a cell $(i, j)$, a particle could move in one\
+  \ of the following four directions:\n- to the left, i.e. to the cell $(i, j - 1)$\n\
+  - to the right, i.e. to the cell $(i, j + 1)$\n- up, i.e. to the cell $(i - 1, j)$\n\
+  - down, i.e. to the cell $(i + 1, j)$\nIt is not possible for a particle to move\
+  \ to a cell that already contains a particle or to a cell that does not exist (leave\
+  \ the grid).\nIt is possible to apply a force in each of these directions. When\
+  \ a force is applied in a given direction, all particles will simultaneously start\
+  \ moving in this direction as long as it is still possible for them to move.\nYou\
+  \ are given a sequence of forces. Each subsequent force is applied only after all\
+  \ particles have stopped moving. Determine which cells of the grid contain particles\
+  \ after all forces from this sequence are applied in the given order.\n\n-----Input-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first line of\
+  \ each test case contains two space-separated integers $n$ and $m$.\n- $n$ lines\
+  \ describing the initial grid follow. For each $i$ ($1 \\le i \\le n$), the $i$-th\
+  \ of these lines contains a binary string with length $m$ describing the $i$-th\
+  \ row of the grid. For each $j$ ($1 \\le j \\le m$), if the $j$-th character of\
+  \ this string is '1', then the cell $(i, j)$ contains a particle, and if it is '0',\
+  \ then the cell $(i, j)$ is empty.\n- The last line contains a single string $S$\
+  \ describing the sequence of applied forces. Each character of this string corresponds\
+  \ to applying a force in some direction; forces applied in the directions left,\
+  \ right, up, down correspond to characters 'L', 'R', 'U', 'D' respectively.\n\n\
+  -----Output-----\nFor each test case, print $n$ lines each containing a binary string\
+  \ of length $m$, describing the resulting grid (after all the forces are applied)\
+  \ in the same format as the input grid.\n\n-----Constraints-----\n- $1 \\le T \\\
+  le 200$\n- $1 \\le n, m \\le 100$\n- $1 \\le |S| \\le 2 \\cdot 10^4$\n\n-----Subtasks-----\n\
+  Subtaks #1 (30 points):\n- $1 \\le T \\le 10$\n- $1 \\le n, m \\le 10$\n- $1 \\\
+  le |S| \\le 100$\nSubtask #2 (70 points): Original constraints\n\n-----Example Input-----\n\
+  3\n4 4\n1010\n0010\n1001\n0100\nLRDU\n4 3\n000\n010\n001\n101\nLRL\n3 2\n01\n10\n\
+  00\nD\n\n-----Example Output-----\n0011\n0011\n0001\n0001\n000\n100\n100\n110\n\
+  00\n00\n11\n\n-----Explanation-----\nExample case 1: The initial grid is:\n1010\n\
+  0010\n1001\n0100\n\nAfter applying the first force (in the direction \"L\", i.e.\
+  \ to the left), the grid is:\n1100\n1000\n1100\n1000\n\nAfter applying the second\
+  \ force (in the direction \"R\"), the grid is:\n0011\n0001\n0011\n0001\n\nAfter\
+  \ applying the third force (in the direction \"D\"), the grid is:\n0001\n0001\n\
+  0011\n0011\n\nAfter applying the fourth force (in the direction \"U\"), the final\
+  \ grid is:\n0011\n0011\n0001\n0001"
+"vc-preamble": "import Imports.AllImports\n\ndef isValidGrid (grid : List (List Char))\
+  \ : Bool :=\n  sorry\n\n\ndef countOnes (grid : List (List Char)) : Nat :=\n  sorry\n\
+  \n\ndef isGravityConsistent (grid : List (List Char)) (force : Char) : Bool :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solveParticleGrid (n m : Nat) (grid : List (List Char)) (forces\
+  \ : List Char) : List (List Char) :=\n  sorry\n"
+"vc-theorems": "theorem grid_dimensions {n m : Nat} {grid : List (List Char)} {forces\
+  \ : List Char}\n  (h1 : isValidGrid grid) :\n  let result := solveParticleGrid n\
+  \ m grid forces\n  List.length result = n ∧ \n  ∀ row ∈ result, List.length row\
+  \ = m :=\n  sorry\n\n\ntheorem grid_valid_chars {n m : Nat} {grid : List (List Char)}\
+  \ {forces : List Char}\n  (h1 : isValidGrid grid) :\n  let result := solveParticleGrid\
+  \ n m grid forces\n  ∀ row ∈ result, ∀ c ∈ row, c = '0' ∨ c = '1' :=\n  sorry\n\n\
+  \ntheorem preserved_ones_count {n m : Nat} {grid : List (List Char)} {forces : List\
+  \ Char}\n  (h1 : isValidGrid grid) :\n  let result := solveParticleGrid n m grid\
+  \ forces\n  countOnes grid = countOnes result :=\n  sorry\n\n\ntheorem final_gravity_consistent\
+  \ {n m : Nat} {grid : List (List Char)} {forces : List Char}\n  (h1 : isValidGrid\
+  \ grid) \n  (h2 : forces ≠ []) :\n  let result := solveParticleGrid n m grid forces\n\
+  \  let lastForce := List.getLast forces h2\n  isGravityConsistent result lastForce\
+  \ :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,37 @@
+"vc-description": "My washing machine uses ```water``` amount of water to wash ```clothes```\
+  \ amount of clothes. You are given a ```load``` amount of clothes to wash.  For\
+  \ each single item of load above the standard amount of clothes, the washing machine\
+  \ will use 10% more water (multiplicative) to clean.\nFor example, if the amount\
+  \ of clothes is ```10```, the amount of water it requires is ```5``` and the load\
+  \ is  ```14```, then you need ```5 * 1.1 ^ (14 - 10)``` amount of water.\n\nWrite\
+  \ a function ```howMuchWater``` (JS)/```how_much_water``` (Python) to work out how\
+  \ much water is needed if you have a ```clothes``` amount of clothes.  The function\
+  \ will accept 3 parameters - ```howMuchWater(water, load, clothes)``` / ```how_much_water(water,\
+  \ load, clothes)```\n\nMy washing machine is an old model that can only handle double\
+  \ the amount of ```load```.  If the amount of ```clothes``` is more than 2 times\
+  \ the standard amount of ```load```, return ```'Too much clothes'```.  The washing\
+  \ machine also cannot handle any amount of clothes less than ```load```.  If that\
+  \ is the case, return ```'Not enough clothes'```.\n\nThe answer should be rounded\
+  \ to the nearest 2 decimal places."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def how_much_water (water : Float) (clothes load : Nat) : Float\
+  \ ⊕ String := sorry\n\ndef isGreaterThan (a b : Float ⊕ String) : Prop :=\n  match\
+  \ a, b with\n  | Sum.inl x, Sum.inl y => x > y\n  | _, _ => False\n"
+"vc-theorems": "theorem water_calculation_properties\n  (water : Float) (clothes load\
+  \ : Nat)\n  (h1 : water > 0)\n  (h2 : water ≤ 1000)\n  (h3 : clothes > 0)\n  (h4\
+  \ : clothes ≤ 100)\n  (h5 : load ≤ 200) :\n  let result := how_much_water water\
+  \ clothes load\n  (load > 2 * clothes → result = Sum.inr \"Too much clothes\") ∧\n\
+  \  (load < clothes → result = Sum.inr \"Not enough clothes\") ∧\n  (clothes ≤ load\
+  \ ∧ load ≤ 2 * clothes →\n    match result with\n    | Sum.inl x => x ≥ 0 ∧ isGreaterThan\
+  \ (how_much_water (2 * water) clothes load) result\n    | Sum.inr _ => False) :=\
+  \ sorry\n\n\ntheorem increasing_load_increases_water\n  (water : Float) (clothes\
+  \ load : Nat)\n  (h1 : water ≥ 0.1)\n  (h2 : water ≤ 100)\n  (h3 : clothes > 0)\n\
+  \  (h4 : clothes ≤ 20)\n  (h5 : load = clothes)\n  (h6 : load + 1 ≤ 2 * clothes)\
+  \ :\n  isGreaterThan (how_much_water water clothes (load + 1)) (how_much_water water\
+  \ clothes load) := sorry\n\n\ntheorem known_value_test :\n  how_much_water 50 15\
+  \ 29 = Sum.inl 189.87 := sorry\n\n/--\ninfo: 'Too much clothes'\n-/\n#guard_msgs\
+  \ in\n#eval how_much_water 10 10 21\n\n/--\ninfo: 'Not enough clothes'\n-/\n#guard_msgs\
+  \ in\n#eval how_much_water 10 10 2\n\n/--\ninfo: 189.87\n-/\n#guard_msgs in\n#eval\
+  \ how_much_water 50 15 29\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,22 @@
+"vc-description": "Take a sentence (string) and reverse each word in the sentence.\
+  \ Do not reverse the order of the words, just the letters in each word.\n\nIf there\
+  \ is punctuation, it should be interpreted as a regular character; no special rules.\n\
+  \nIf there is spacing before/after the input string, leave them there.\n\nString\
+  \ will not be empty.\n\n## Examples\n\n```\n\"Hi mom\" => \"iH mom\"\n\" A fun little\
+  \ challenge! \" => \" A nuf elttil !egnellahc \"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverseWords (s : String) : String := sorry\n\ntheorem reverseWords_preserves_length\
+  \ (s : String) :\n  (reverseWords s).length = s.length := \nsorry\n"
+"vc-theorems": "theorem reverseWords_preserves_spaces (s : String) (p : String.Pos)\
+  \ : \n  (s.get p = ' ') ↔ ((reverseWords s).get p = ' ') :=\nsorry \n\n\ntheorem\
+  \ reverseWords_involution (s : String) :\n  reverseWords (reverseWords s) = s :=\n\
+  sorry\n\n\ntheorem reverseWords_reverses_words_individually (s : String) :\n  let\
+  \ orig_words := s.split (· = ' ')\n  let result_words := (reverseWords s).split\
+  \ (· = ' ')\n  orig_words.length = result_words.length ∧ \n  ∀ (i : Fin orig_words.length),\
+  \ \n    orig_words[i]! = String.mk (List.reverse (result_words[i]!).data) :=\nsorry\n\
+  \n/--\ninfo: 'iH mom'\n-/\n#guard_msgs in\n#eval reverse_words \"Hi mom\"\n\n/--\n\
+  info: ' A nuf elttil !egnellahc '\n-/\n#guard_msgs in\n#eval reverse_words \" A\
+  \ fun little challenge! \"\n\n/--\ninfo: 'woH won nworb woc'\n-/\n#guard_msgs in\n\
+  #eval reverse_words \"How now brown cow\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

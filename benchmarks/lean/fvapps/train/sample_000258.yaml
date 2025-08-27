@@ -1,0 +1,26 @@
+"vc-description": "Given an array nums and an integer target.\nReturn the maximum\
+  \ number of non-empty non-overlapping subarrays such that the sum of values in each\
+  \ subarray is equal to target.\n \nExample 1:\nInput: nums = [1,1,1,1,1], target\
+  \ = 2\nOutput: 2\nExplanation: There are 2 non-overlapping subarrays [1,1,1,1,1]\
+  \ with sum equals to target(2).\n\nExample 2:\nInput: nums = [-1,3,5,1,4,2,-9],\
+  \ target = 6\nOutput: 2\nExplanation: There are 3 subarrays with sum equal to 6.\n\
+  ([5,1], [4,2], [3,5,1,4,2,-9]) but only the first 2 are non-overlapping.\nExample\
+  \ 3:\nInput: nums = [-2,6,6,3,5,4,1,2,8], target = 10\nOutput: 3\n\nExample 4:\n\
+  Input: nums = [0,0,0], target = 0\nOutput: 3\n\n \nConstraints:\n\n1 <= nums.length\
+  \ <= 10^5\n-10^4 <= nums[i] <= 10^4\n0 <= target <= 10^6"
+"vc-preamble": "import Imports.AllImports\n\ndef max_non_overlapping (nums: List Int)\
+  \ (target: Int) : Nat :=\n  sorry\n\n\ndef abs (n: Int) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum_list (l: List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem max_non_overlapping_non_negative (nums: List Int) (target:\
+  \ Int) :\n  max_non_overlapping nums target ≥ 0 :=\nsorry\n\n\ntheorem max_non_overlapping_bounded_by_length\
+  \ (nums: List Int) (target: Int) :\n  max_non_overlapping nums target ≤ nums.length\
+  \ :=\nsorry\n\n\ntheorem max_non_overlapping_empty_list (target: Int) :\n  max_non_overlapping\
+  \ [] target = 0 :=\nsorry\n\n\ntheorem max_non_overlapping_all_zeros (n: Nat) :\n\
+  \  max_non_overlapping (List.replicate n 0) 0 = n :=\nsorry\n\n\ntheorem max_non_overlapping_self_consistent\
+  \ (nums: List Int) (target: Int) :\n  max_non_overlapping nums target = max_non_overlapping\
+  \ nums target :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval max_non_overlapping\
+  \ [1, 1, 1, 1, 1] 2\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval max_non_overlapping\
+  \ [-1, 3, 5, 1, 4, 2, -9] 6\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval max_non_overlapping\
+  \ [0, 0, 0] 0\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

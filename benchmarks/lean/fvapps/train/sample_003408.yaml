@@ -1,0 +1,20 @@
+"vc-description": "**An [isogram](https://en.wikipedia.org/wiki/Isogram)** (also known\
+  \ as a \"nonpattern word\") is a logological term for a word or phrase without a\
+  \ repeating letter. It is also used by some to mean a word or phrase in which each\
+  \ letter appears the same number of times, not necessarily just once.\n\nYou task\
+  \ is to write a method `isogram?` that takes a string argument and returns true\
+  \ if the string has the properties of being an isogram and false otherwise. Anything\
+  \ that is not a string is not an isogram (ints, nils, etc.)\n\n\n**Properties:**\n\
+  \ \n - must be a string\n - cannot be nil or empty\n - each letter appears the same\
+  \ number of times (not necessarily just once)\n - letter case is not important (=\
+  \ case insensitive)\n - non-letter characters (e.g. hyphens) should be ignored"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_isogram (s : String) : Bool := sorry\n\ntheorem isogram_output_is_bool\
+  \ :\n  ∀ s : String, is_isogram s = true ∨ is_isogram s = false := sorry\n"
+"vc-theorems": "theorem non_string_input_is_false :\n  is_isogram \"\" = false :=\
+  \ sorry\n\n\ntheorem case_insensitive :\n  ∀ s : String, is_isogram s = is_isogram\
+  \ s.toLower := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_isogram \"\
+  Dermatoglyphics\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_isogram None\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_isogram \"aabbccddeeffgg\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

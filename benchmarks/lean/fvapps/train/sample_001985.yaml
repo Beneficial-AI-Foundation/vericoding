@@ -1,0 +1,32 @@
+"vc-description": "You've got array A, consisting of n integers and a positive integer\
+  \ k. Array A is indexed by integers from 1 to n.\n\nYou need to permute the array\
+  \ elements so that value $\\sum_{i = 1}^{n - k}|A [ i ] - A [ i + k ]|$ became minimal\
+  \ possible. In particular, it is allowed not to change order of elements at all.\n\
+  \n\n-----Input-----\n\nThe first line contains two integers n, k (2 ≤ n ≤ 3·10^5,\
+  \ 1 ≤ k ≤ min(5000, n - 1)). \n\nThe second line contains n integers A[1], A[2],\
+  \ ..., A[n] ( - 10^9 ≤ A[i] ≤ 10^9), separate by spaces — elements of the array\
+  \ A.\n\n\n-----Output-----\n\nPrint the minimum possible value of the sum described\
+  \ in the statement.\n\n\n-----Examples-----\nInput\n3 2\n1 2 4\n\nOutput\n1\n\n\
+  Input\n5 2\n3 -5 3 -5 3\n\nOutput\n0\n\nInput\n6 3\n4 3 4 3 2 5\n\nOutput\n3\n\n\
+  \n\n-----Note-----\n\nIn the first test one of the optimal permutations is 1 4 2.\
+  \ \n\nIn the second test the initial order is optimal. \n\nIn the third test one\
+  \ of the optimal permutations is 2 3 4 4 3 5."
+"vc-preamble": "import Imports.AllImports\n\ndef maximum (l : List Int) : Int :=\n\
+  \  sorry\n\n\ndef minimum (l : List Int) : Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_difference_sum (n k : Nat) (arr : List Int) : Int :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem min_difference_sum_non_negative \n  {n k : Nat} {arr : List\
+  \ Int}\n  (h1 : n = arr.length)\n  (h2 : k ≤ n)\n  (h3 : n > 0) :\n  min_difference_sum\
+  \ n k arr ≥ 0 := \n  sorry\n\n\ntheorem min_difference_sum_upper_bound\n  {n k :\
+  \ Nat} {arr : List Int}\n  (h1 : n = arr.length)\n  (h2 : k ≤ n)\n  (h3 : n > 0)\
+  \ :\n  min_difference_sum n k arr ≤ (maximum arr - minimum arr) * k := \n  sorry\n\
+  \n\ntheorem min_difference_sum_k_equals_n\n  {n k : Nat} {arr : List Int}\n  (h1\
+  \ : n = arr.length)\n  (h2 : k = n)\n  (h3 : n > 0) :\n  min_difference_sum n k\
+  \ arr = 0 :=\n  sorry\n\n\ntheorem min_difference_sum_k_equals_one\n  {n k : Nat}\
+  \ {arr : List Int}\n  (h1 : n = arr.length)\n  (h2 : k = 1)\n  (h3 : n > 1) :\n\
+  \  min_difference_sum n k arr = maximum arr - minimum arr :=\n  sorry\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval min_difference_sum 3 2 [1, 2, 4]\n\n/--\ninfo: 0\n\
+  -/\n#guard_msgs in\n#eval min_difference_sum 5 2 [3, -5, 3, -5, 3]\n\n/--\ninfo:\
+  \ 3\n-/\n#guard_msgs in\n#eval min_difference_sum 6 3 [4, 3, 4, 3, 2, 5]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

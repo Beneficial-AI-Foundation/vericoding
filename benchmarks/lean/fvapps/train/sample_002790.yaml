@@ -1,0 +1,15 @@
+"vc-description": "Consider having a cow that gives a child every year from her fourth\
+  \ year of life on and all her subsequent children do the same.\n\nAfter n years\
+  \ how many cows will you have?\nReturn null if n is not an integer.\n\nNote: Assume\
+  \ all the cows are alive after n years."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_cows (n: Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem count_cows_positive_integers {n: Int} (h: 1 ≤ n ∧ n ≤ 20)\
+  \ : \n  count_cows n > 0 :=\n  sorry\n\n\ntheorem count_cows_non_positive {n: Int}\
+  \ (h: n ≤ 0) :\n  count_cows n = 1 :=\n  sorry\n\n\ntheorem count_cows_sequence\
+  \ {n: Int} (h: n ≥ 3) :\n  count_cows n = count_cows (n-1) + count_cows (n-3) :=\n\
+  \  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_cows 1\n\n/--\ninfo: 2\n\
+  -/\n#guard_msgs in\n#eval count_cows 3\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval\
+  \ count_cows 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

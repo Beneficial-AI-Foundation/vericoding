@@ -1,0 +1,24 @@
+"vc-description": "Chef solved so many hard questions, now he wants to solve some\
+  \ easy problems for refreshment. Chef asks Cheffina for the new question. Cheffina\
+  \ challenges the chef to print the total number of 0's in the binary representation\
+  \ of N(natural number).\n\n-----Input:-----\n- First-line will contain $T$, the\
+  \ number of test cases. Then the test cases follow. \n- Each test case contains\
+  \ a single line of input, $N$. \n\n-----Output:-----\nFor each test case, output\
+  \ in a single line answer.\n\n-----Constraints-----\n- $1 \\leq T \\leq 10^6$\n\
+  - $1 \\leq N \\leq 10^6$\n\n-----Sample Input:-----\n2\n2\n4\n\n-----Sample Output:-----\n\
+  1\n2\n\n-----EXPLANATION:-----\nFor 1) Binary representation of 2 is 10. i.e. only\
+  \ one 0 present in it.\nFor 2) Binary representation of 4 is 100, i.e. two 0's present\
+  \ in it."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countZerosInBinary (n : Nat) : Nat := sorry\ndef solveTestCase\
+  \ (n : Nat) : Nat := sorry\n"
+"vc-theorems": "theorem zeros_count_nonneg (n : Nat) : \n  countZerosInBinary n ≥\
+  \ 0 := sorry\n\n\ntheorem zeros_count_leq_len (n : Nat) : \n  ∃ binaryLen : Nat,\
+  \ countZerosInBinary n ≤ binaryLen := sorry\n\n\ntheorem solve_matches_count (n\
+  \ : Nat) :\n  solveTestCase n = countZerosInBinary n := sorry\n\n\ntheorem power_two_zeros\
+  \ (i : Nat) (h : i > 0) :\n  countZerosInBinary (2^i) = i := sorry\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval solve_test_case 2\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval solve_test_case 4\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_test_case\
+  \ 8\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

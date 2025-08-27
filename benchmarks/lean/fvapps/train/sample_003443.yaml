@@ -1,0 +1,21 @@
+"vc-description": "Given two numbers and an arithmetic operator (the name of it, as\
+  \ a string), return the result of the two numbers having that operator used on them.\
+  \ \n\n```a``` and ```b``` will both be positive integers, and ```a``` will always\
+  \ be the first number in the operation, and ```b``` always the second.\n\nThe four\
+  \ operators are \"add\", \"subtract\", \"divide\", \"multiply\". \n\nA few examples:\
+  \ \n\n``` javascript\nArithmeticFunction.arithmetic(5, 2, \"add\")      => returns\
+  \ 7\nArithmeticFunction.arithmetic(5, 2, \"subtract\") => returns 3\nArithmeticFunction.arithmetic(5,\
+  \ 2, \"multiply\") => returns 10\nArithmeticFunction.arithmetic(5, 2, \"divide\"\
+  )   => returns 2\n```\n\nTry to do it without using if statements!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def arithmetic (a b : Int) (op : Op) : Int :=\n  sorry\n"
+"vc-theorems": "theorem arithmetic_add (a b : Int) : \n  arithmetic a b Op.add = a\
+  \ + b := sorry\n\n\ntheorem arithmetic_subtract (a b : Int) :\n  arithmetic a b\
+  \ Op.subtract = a - b := sorry\n\n\ntheorem arithmetic_multiply (a b : Int) :\n\
+  \  arithmetic a b Op.multiply = a * b := sorry\n\n\ntheorem arithmetic_divide (a\
+  \ b : Int) (h : b ≠ 0) :\n  arithmetic a b Op.divide = a / b := sorry\n\n/--\ninfo:\
+  \ 3\n-/\n#guard_msgs in\n#eval arithmetic 1 2 \"add\"\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval arithmetic 8 2 \"subtract\"\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval\
+  \ arithmetic 5 2 \"multiply\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

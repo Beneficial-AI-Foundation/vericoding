@@ -1,0 +1,23 @@
+"vc-description": "# Task\n Alireza and Ali have a `3×3 table` and playing on that.\
+  \ they have 4 table(2×2) A,B,C and D in this table.\n \n At beginning all of 9 numbers\
+  \ in 3×3 table is zero.\n \n Alireza in each move choose a 2×2 table from A, B,\
+  \ C and D and increase all of 4 numbers in that by one.\n \n He asks Ali, how much\
+  \ he increase table A, B, C and D. (if he cheats you should return `[-1]`)\n \n\
+  \ Your task is to help Ali.\n\n# Example\n\n For \n ```\n table=\n[[1,2,1],\n[2,4,2],\n\
+  [1,2,1]]```\nThe result should be `[1,1,1,1]`\n\n For:\n ```\nTable=\n[[3,7,4],\n\
+  [5,16,11],\n[2,9,7]]```\nThe result should be `[3,4,2,7]`\n\n# Input/Output\n\n\n\
+  \ - `[input]` 2D integer array `table`\n\n `3×3` table.\n\n\n - `[output]` an integer\
+  \ array"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.toList (xs : List α) : List α := xs\n\ndef table_game\
+  \ (table: List (List Int)) : List Int := sorry\n"
+"vc-theorems": "theorem single_value_property (x : Int) :\n  let table := [[x, x +\
+  \ x, x], [x + x, x + x + x + x, x + x], [x, x + x, x]]\n  table_game table = [x,\
+  \ x, x, x] := sorry\n\n\ntheorem valid_table_property (a b c d : Int) :\n  let table\
+  \ := [[a, a + b, b], [a + c, a + b + c + d, b + d], [c, c + d, d]]\n  table_game\
+  \ table = [a, b, c, d] := sorry\n\n/--\ninfo: [1, 1, 1, 1]\n-/\n#guard_msgs in\n\
+  #eval table_game [[1, 2, 1], [2, 4, 2], [1, 2, 1]]\n\n/--\ninfo: [3, 4, 2, 7]\n\
+  -/\n#guard_msgs in\n#eval table_game [[3, 7, 4], [5, 16, 11], [2, 9, 7]]\n\n/--\n\
+  info: [-1]\n-/\n#guard_msgs in\n#eval table_game [[1, 2, 1], [1, 2, 1], [1, 2, 1]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

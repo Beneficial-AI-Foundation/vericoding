@@ -1,0 +1,20 @@
+"vc-description": "The number n is Evil if it has an even number of 1's in its binary\
+  \ representation.\nThe first few Evil numbers: 3, 5, 6, 9, 10, 12, 15, 17, 18, 20\n\
+  The number n is Odious if it has an odd number of 1's in its binary representation.\n\
+  The first few Odious numbers: 1, 2, 4, 7, 8, 11, 13, 14, 16, 19\nYou have to write\
+  \ a function that determine if a number is Evil of Odious, function should return\
+  \ \"It's Evil!\" in case of evil number and \"It's Odious!\" in case of odious number.\n\
+  \ngood luck :)"
+"vc-preamble": "import Imports.AllImports\n\ndef evil (n : Nat) : String := sorry\n\
+  \ntheorem evil_result_valid (n : Nat) : \n  (evil n = \"It's Evil!\") ∨ (evil n\
+  \ = \"It's Odious!\") := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countOnes (n : Nat) : Nat := \n  if n = 0 then 0\n  else if\
+  \ n % 2 = 1 \n  then countOnes (n / 2) + 1\n  else countOnes (n / 2)\n\n\n"
+"vc-theorems": "theorem evil_xor_property (n m : Nat) :\n  let n_evil := evil n =\
+  \ \"It's Evil!\"\n  let m_evil := evil m = \"It's Evil!\"\n  let xor_evil := evil\
+  \ (n ^^^ m) = \"It's Evil!\"\n  (n_evil = m_evil) = xor_evil := sorry\n\n/--\ninfo:\
+  \ \"It's Odious!\"\n-/\n#guard_msgs in\n#eval evil 1\n\n/--\ninfo: \"It's Odious!\"\
+  \n-/\n#guard_msgs in\n#eval evil 2\n\n/--\ninfo: \"It's Evil!\"\n-/\n#guard_msgs\
+  \ in\n#eval evil 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

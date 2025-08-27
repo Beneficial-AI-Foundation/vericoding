@@ -1,0 +1,22 @@
+"vc-description": "Many people choose to obfuscate their email address when displaying\
+  \ it on the Web. One common way of doing this is by substituting the `@` and `.`\
+  \ characters for their literal equivalents in brackets.\n\nExample 1:\n```\nuser_name@example.com\n\
+  => user_name [at] example [dot] com\n```\n\nExample 2:\n```\naf5134@borchmore.edu\n\
+  => af5134 [at] borchmore [dot] edu\n```\nExample 3:\n```\njim.kuback@ennerman-hatano.com\n\
+  => jim [dot] kuback [at] ennerman-hatano [dot] com\n```\n\nUsing the examples above\
+  \ as a guide, write a function that takes an email address string and returns the\
+  \ obfuscated version as a string that replaces the characters `@` and `.` with `[at]`\
+  \ and `[dot]`, respectively.\n\n>Notes\n\n>* Input (`email`) will always be a string\
+  \ object. Your function should return a string.\n\n>* Change only the `@` and `.`\
+  \ characters.\n\n>* Email addresses may contain more than one `.` character.\n\n\
+  >* Note the additional whitespace around the bracketed literals in the examples!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countSubstr (s₁ s₂ : String) : Nat := sorry \n\ndef obfuscate\
+  \ (email : String) : String := \n  sorry\n"
+"vc-theorems": "theorem obfuscate_no_at_or_dot (email : String) :\n  ¬ (obfuscate\
+  \ email).contains '@' ∧ ¬ (obfuscate email).contains '.' := sorry \n\n\n\n\n\n\n\
+  theorem obfuscate_reversible (email : String) :\n  ((obfuscate email).replace \"\
+  \ [at] \" \"@\").replace \" [dot] \" \".\" = email := sorry\n\n\ntheorem obfuscate_empty\
+  \ :\n  obfuscate \"\" = \"\" := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,21 @@
+"vc-description": "Write\n\n```python\nfunction combine()\n```\n\nthat combines arrays\
+  \ by alternatingly taking elements passed to it.\n\nE.g\n\n```python\ncombine(['a',\
+  \ 'b', 'c'], [1, 2, 3]) == ['a', 1, 'b', 2, 'c', 3]\ncombine(['a', 'b', 'c'], [1,\
+  \ 2, 3, 4, 5]) == ['a', 1, 'b', 2, 'c', 3, 4, 5]\ncombine(['a', 'b', 'c'], [1, 2,\
+  \ 3, 4, 5], [6, 7], [8]) == ['a', 1, 6, 8, 'b', 2, 7, 'c', 3, 4, 5]\n```\n\nArrays\
+  \ can have different lengths."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def combine {α : Type u} (lists : List (List α)) : List α := sorry\n\
+  \ntheorem combine_preserves_elements {α : Type u} (lists : List (List α)) (h : lists\
+  \ ≠ []) :\n  ∀ (lst : List α), lst ∈ lists → ∀ (x : α), x ∈ lst → x ∈ combine lists\
+  \ := sorry\n"
+"vc-theorems": "theorem combine_length {α : Type u} (lists : List (List α)) (h : lists\
+  \ ≠ []) :\n  let maxLen := (lists.map List.length).maximum?.getD 0\n  let minLen\
+  \ := (lists.map (fun l => min l.length maxLen)).foldl (· + ·) 0\n  List.length (combine\
+  \ lists) = minLen := sorry\n\n\ntheorem combine_interleaving {α : Type u} (lists\
+  \ : List (List α)) \n  (h1 : lists ≠ []) (h2 : lists.length ≥ 2)\n  (i j : Nat)\
+  \ (hi : i < (lists.map List.length).minimum?.getD 0) (hj : j < lists.length) :\n\
+  \  let minLen := (lists.map List.length).minimum?.getD 0\n  (combine lists).get?\
+  \ (i * lists.length + j) = (lists.get? j).bind (fun l => l.get? i) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,22 @@
+"vc-description": "Create a function that takes a string and returns that\nstring\
+  \ with the first half lowercased and the last half uppercased.\n\neg: foobar ==\
+  \ fooBAR\n\nIf it is an odd number then 'round' it up to find which letters to uppercase.\
+  \ See example below.\n\n    sillycase(\"brian\")  \n    //         --^-- midpoint\
+  \  \n    //         bri    first half (lower-cased)  \n    //            AN second\
+  \ half (upper-cased)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def String.sillycase (s : String) : String := sorry\n\ntheorem\
+  \ sillycase_preserves_length (s : String) :\n  s.length > 0 → String.length (s.sillycase)\
+  \ = String.length s := sorry\n"
+"vc-theorems": "theorem sillycase_preserves_chars (s : String) :\n  s.length > 0 →\
+  \ String.toLower (s.sillycase) = String.toLower s := sorry\n\n\ntheorem sillycase_first_half\
+  \ (s : String) (h : s.length > 0) :\n  let half := (s.length + 1) / 2;\n  String.toLower\
+  \ (String.take (s.sillycase) half) = String.toLower (String.take s half) := sorry\n\
+  \n\ntheorem sillycase_second_half (s : String) (h : s.length > 0) :\n  let half\
+  \ := (s.length + 1) / 2;\n  String.toUpper (String.drop (s.sillycase) half) = String.toUpper\
+  \ (String.drop s half) := sorry\n\n/--\ninfo: 'fooBAR'\n-/\n#guard_msgs in\n#eval\
+  \ sillycase \"foobar\"\n\n/--\ninfo: 'briAN'\n-/\n#guard_msgs in\n#eval sillycase\
+  \ \"brian\"\n\n/--\ninfo: 'javasCRIPT'\n-/\n#guard_msgs in\n#eval sillycase \"jAvASCript\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

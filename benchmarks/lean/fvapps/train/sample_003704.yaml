@@ -1,0 +1,32 @@
+"vc-description": "The purpose of this kata is to work out just how many bottles of\
+  \ duty free whiskey you would have to buy such that the saving over the normal high\
+  \ street price would effectively cover the cost of your holiday. \n\nYou will be\
+  \ given the high street price (normPrice), the duty free discount (discount) and\
+  \ the cost of the holiday. \n\nFor example, if a bottle cost £10 normally and the\
+  \ discount in duty free was 10%, you would save £1 per bottle. If your holiday cost\
+  \ £500, the answer you should return would be 500.\n\nAll inputs will be integers.\
+  \ Please return an integer. Round down."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def duty_free (price : Int) (discount : Int) (holiday_cost : Int)\
+  \ : Int :=\nsorry\n"
+"vc-theorems": "theorem duty_free_result_nonnegative\n  (price : Int) (discount :\
+  \ Int) (holiday_cost : Int)\n  (h1 : price > 0) (h2 : discount > 0) (h3 : holiday_cost\
+  \ > 0)\n  (h4 : discount < 100) :\n  duty_free price discount holiday_cost ≥ 0 :=\n\
+  sorry\n\n\ntheorem duty_free_calculation_matches_formula\n  (price : Int) (discount\
+  \ : Int) (holiday_cost : Int)\n  (h1 : price > 0) (h2 : discount > 0) (h3 : holiday_cost\
+  \ > 0)\n  (h4 : discount < 100) :\n  duty_free price discount holiday_cost = \n\
+  \    Int.toNat (holiday_cost * 100 / (price * discount)) :=\nsorry\n\n\ntheorem\
+  \ duty_free_total_savings_exceeds_holiday_cost\n  (price : Int) (discount : Int)\
+  \ (holiday_cost : Int)\n  (h1 : price > 0) (h2 : discount > 0) (h3 : holiday_cost\
+  \ > 0)\n  (h4 : discount < 100) :\n  (price * discount * (duty_free price discount\
+  \ holiday_cost + 1)) / 100 > holiday_cost :=\nsorry\n\n\ntheorem duty_free_100_percent_discount\n\
+  \  (price : Int) (holiday_cost : Int)\n  (h1 : price > 0) (h2 : holiday_cost > 0)\
+  \ :\n  duty_free price 100 holiday_cost = holiday_cost / price :=\nsorry\n\n\ntheorem\
+  \ duty_free_zero_inputs_error1\n  (discount : Int) (holiday_cost : Int) :\n  duty_free\
+  \ 0 discount holiday_cost = 0 :=\nsorry \n\n\ntheorem duty_free_zero_inputs_error2\n\
+  \  (price : Int) (holiday_cost : Int) :\n  duty_free price 0 holiday_cost = 0 :=\n\
+  sorry\n\n/--\ninfo: 166\n-/\n#guard_msgs in\n#eval duty_free 12 50 1000\n\n/--\n\
+  info: 294\n-/\n#guard_msgs in\n#eval duty_free 17 10 500\n\n/--\ninfo: 357\n-/\n\
+  #guard_msgs in\n#eval duty_free 24 35 3000\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

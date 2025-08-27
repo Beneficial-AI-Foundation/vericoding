@@ -1,0 +1,31 @@
+"vc-description": "Chef has invited Alice for his birthday party. Now, Alice is thinking\
+  \ about what to give Chef as a present. She should obviously choose a sequence ―\
+  \ what could possibly be a better birthday gift than a sequence!\nAfter some thinking,\
+  \ Alice chose a sequence of integers $A_1, A_2, \\ldots, A_N$. However, she does\
+  \ not want to simply give this sequence to Chef. Instead, she decided to give Chef\
+  \ a sequence $B_1, B_2, \\ldots, B_N$, where $B_i = \\bigvee_{j=1}^i A_j$ for each\
+  \ valid $i$ and $\\bigvee$ denotes the bitwise OR operation. Chef can try to generate\
+  \ a sequence $A$ from $B$, but there could be more than one such possible sequence.\n\
+  Now, Alice is wondering how many sequences $A$ correspond to the given sequence\
+  \ $B$. Since this number could be very large, compute it modulo $10^9 + 7$. Note\
+  \ that it is not guaranteed that the given sequence $B$ was generated from some\
+  \ sequence $A$.\n\n-----Input-----\n- The first line of the input contains a single\
+  \ integer $T$ denoting the number of test cases. The description of $T$ test cases\
+  \ follows.\n- The first line of each test case contains a single integer $N$.\n\
+  - The second line contains $N$ space-separated integers $B_1, B_2, \\ldots, B_N$.\n\
+  \n-----Output-----\nFor each test case, print a single line containing one integer\
+  \ ― the number of possible sequences $A$ modulo $10^9 + 7$.\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 25$\n- $1 \\le N \\le 5 \\cdot 10^4$\n- $0 \\le B_i < 2^{30}$ for\
+  \ each valid $i$\n\n-----Example Input-----\n2\n2\n2 3\n4\n2 6 7 7\n\n-----Example\
+  \ Output-----\n2\n64\n\n-----Explanation-----\nExample case 1: There are two possible\
+  \ options for $A$: $(2, 1)$ and $(2, 3)$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_sequences (n : Nat) (b : List Nat) : Nat := sorry\n\n\
+  def MOD := 1000000007\n\n\n\n\n"
+"vc-theorems": "theorem solve_sequences_singleton (b : List Nat) :\n  b.length = 1\
+  \ →\n  solve_sequences b.length b = 1 := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval solve_sequences 2 [2, 3]\n\n/--\ninfo: 64\n-/\n#guard_msgs in\n#eval\
+  \ solve_sequences 4 [2, 6, 7, 7]\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval solve_sequences\
+  \ 3 [1, 3, 7]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

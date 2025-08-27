@@ -1,0 +1,38 @@
+"vc-description": "Chef is playing a game with his childhood friend. He gave his friend\
+  \ a list of N numbers named $a_1, a_2 ....  a_N$ (Note: All numbers are unique).\
+  \ Adjust the numbers in the following order:\n$(i)$ swap every alternate number\
+  \ with it's succeeding number (If N is odd, do not swap the last number i.e. $a_N$\
+  \ ).\n$(ii)$ add %3 of every number to itself.\n$(iii)$ swap the ith number and\
+  \ the (N-i-1) th number.\nAfter this, Chef will give a number to his friend and\
+  \ he has to give the nearest greater and smaller number to it.\nIf there is no greater\
+  \ or lesser number, put -1.\nHelp his friend to find the two numbers.\n\n-----Input:-----\n\
+  - First-line will contain $T$, the number of test cases. Then the test cases follow.\
+  \ \n- Each test case contains a single line of input, an integers $N$. \n- Next\
+  \ line contains $N$ integers separated by a space. \n- Next line contains a number\
+  \ to be found, $M$. \n\n-----Output:-----\nFor each test case, output in a single\
+  \ line answer given the immediate smaller and greater number separated by a space.\n\
+  \n-----Constraints-----\n- $1 \\leq T \\leq 1000$\n- $3 \\leq N \\leq 10^5$\n- $1\
+  \ \\leq N_i \\leq 10^9$\n- $1 \\leq M \\leq 10^9$\n\n-----Sample Input:-----\n1\n\
+  10\n5 15 1 66 55 32 40 22 34 11\n38\n\n-----Sample Output:-----\n35 41\n\n-----Explaination:-----\n\
+  Step 1: 15 5 66 1 32 55 22 40 11 34\nStep 2: 15 7 66 2 34 56 23 41 13 35\nStep 3:\
+  \ 35  13 41 23 56 34 2 66 7 15\n35 is the number lesser than 38 and 41 is the number\
+  \ greater than 38 in the given set of numbers."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_nearest_numbers (n : Nat) (arr : List Int) (target : Int)\
+  \ : Int × Int :=\n  sorry\n"
+"vc-theorems": "theorem find_nearest_numbers_invariants \n  (n : Nat) (arr : List\
+  \ Int) (target : Int)\n  (h : arr.length > 0) :\n  let (smaller, greater) := find_nearest_numbers\
+  \ n arr target;\n  -- Result invariants\n  (smaller ≠ -1 → greater ≠ -1 → smaller\
+  \ < greater) ∧\n  -- No numbers between smaller and target/target and greater\n\
+  \  (∀ x ∈ arr, \n      let transformed := x + (x % 3);\n      (smaller ≠ -1 → ¬(smaller\
+  \ < transformed ∧ transformed < target)) ∧\n      (greater ≠ -1 → ¬(target < transformed\
+  \ ∧ transformed < greater))) :=\nsorry\n\n\ntheorem find_nearest_numbers_basic_properties\n\
+  \  (n : Nat) (arr : List Int) (target : Int) \n  (h : arr.length > 0) :\n  let (smaller,\
+  \ greater) := find_nearest_numbers n arr target;\n  -- Basic properties\n  (smaller\
+  \ ≠ -1 → smaller < target) ∧\n  (greater ≠ -1 → greater > target) :=\nsorry\n\n\
+  /--\ninfo: (35, 41)\n-/\n#guard_msgs in\n#eval find_nearest_numbers 10 arr1.copy()\
+  \ 38\n\n/--\ninfo: (41, 56)\n-/\n#guard_msgs in\n#eval find_nearest_numbers 10 arr2.copy()\
+  \ 50\n\n/--\ninfo: (13, 23)\n-/\n#guard_msgs in\n#eval find_nearest_numbers 10 arr3.copy()\
+  \ 15\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

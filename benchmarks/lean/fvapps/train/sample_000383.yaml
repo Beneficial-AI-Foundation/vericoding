@@ -1,0 +1,29 @@
+"vc-description": "Write a program to find the n-th ugly number.\nUgly numbers are positive\
+  \ integers which are divisible by a or b or c.\n \nExample 1:\nInput: n = 3, a =\
+  \ 2, b = 3, c = 5\nOutput: 4\nExplanation: The ugly numbers are 2, 3, 4, 5, 6, 8,\
+  \ 9, 10... The 3rd is 4.\nExample 2:\nInput: n = 4, a = 2, b = 3, c = 4\nOutput:\
+  \ 6\nExplanation: The ugly numbers are 2, 3, 4, 6, 8, 9, 10, 12... The 4th is 6.\n\
+  \nExample 3:\nInput: n = 5, a = 2, b = 11, c = 13\nOutput: 10\nExplanation: The\
+  \ ugly numbers are 2, 4, 6, 8, 10, 11, 12, 13... The 5th is 10.\n\nExample 4:\n\
+  Input: n = 1000000000, a = 2, b = 217983653, c = 336916467\nOutput: 1999999984\n\
+  \n \nConstraints:\n\n1 <= n, a, b, c <= 10^9\n1 <= a * b * c <= 10^18\nIt's guaranteed\
+  \ that the result will be in range [1, 2 * 10^9]"
+"vc-preamble": "import Imports.AllImports\n\ndef find_nth_ugly_number (n a b c : Nat)\
+  \ : Nat := sorry\n\ndef gcd (a b : Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_divisible (num a b c : Nat) : Nat := sorry\n\ntheorem\
+  \ ugly_number_divisible (n a b c : Nat) (h1 : n > 0) (h2 : a > 0) (h3 : b > 0) (h4\
+  \ : c > 0) :\n  let result := find_nth_ugly_number n a b c\n  result % a = 0 ∨ result\
+  \ % b = 0 ∨ result % c = 0 := sorry\n"
+"vc-theorems": "theorem ugly_number_positive (n a b c : Nat) (h1 : n > 0) (h2 : a\
+  \ > 0) (h3 : b > 0) (h4 : c > 0) :\n  find_nth_ugly_number n a b c > 0 := sorry\n\
+  \n\ntheorem ugly_number_min_bound (n a b c : Nat) (h1 : n > 0) (h2 : a > 0) (h3\
+  \ : b > 0) (h4 : c > 0) :\n  find_nth_ugly_number n a b c ≥ min a (min b c) := sorry\n\
+  \n\ntheorem ugly_number_max_bound (n a b c : Nat) (h1 : n > 0) (h2 : a > 0) (h3\
+  \ : b > 0) (h4 : c > 0) :\n  find_nth_ugly_number n a b c ≤ n * min a (min b c)\
+  \ := sorry\n\n\n\n\ntheorem ugly_number_equal_divisors (a : Nat) (h : a > 0) :\n\
+  \  find_nth_ugly_number 1 a a a = a := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n\
+  #eval find_nth_ugly_number 3 2 3 5\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval find_nth_ugly_number\
+  \ 4 2 3 4\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval find_nth_ugly_number 5 2 11\
+  \ 13\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

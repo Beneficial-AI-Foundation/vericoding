@@ -1,0 +1,24 @@
+"vc-description": "*Based on this Numberphile video: https://www.youtube.com/watch?v=Wim9WJeDTHQ*\n\
+  \n---\n\nMultiply all the digits of a nonnegative integer `n` by each other, repeating\
+  \ with the product until a single digit is obtained. The number of steps required\
+  \ is known as the **multiplicative persistence**.\n\nCreate a function that calculates\
+  \ the individual results of each step, not including the original number, but including\
+  \ the single digit, and outputs the result as a list/array. If the input is a single\
+  \ digit, return an empty list/array.\n\n## Examples\n```\nper(1)  = []\n\nper(10)\
+  \ = [0]\n// 1*0 = 0\n\nper(69) = [54, 20, 0]\n// 6*9 = 54 --> 5*4 = 20 --> 2*0 =\
+  \ 0\n\nper(277777788888899) = [4996238671872, 438939648, 4478976, 338688, 27648,\
+  \ 2688, 768, 336, 54, 20, 0]\n// 2*7*7*7*7*7*7*8*8*8*8*8*8*9*9 = 4996238671872 -->\
+  \ 4*9*9*6*2*3*8*6*7*1*8*7*2 = 4478976 --> ...\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef per (n : Nat) : List Nat := sorry\n\
+  \ndef productOfDigits (n : Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def digitsOfNat (n : Nat) : List Nat := sorry\n\ntheorem per_empty_for_single_digit\
+  \ (n : Nat) : \n  n < 10 → per n = [] := sorry\n\n\n\n\n"
+"vc-theorems": "theorem per_decreasing {n : Nat} {result : List Nat} :\n  result =\
+  \ per n →\n  ∀ i, ∀ h : i < result.length - 1,\n  result.get ⟨i, sorry⟩ ≥ result.get\
+  \ ⟨i+1, sorry⟩ := sorry\n\n\ntheorem per_bounded_length (n : Nat) :\n  (per n).length\
+  \ ≤ 100 := sorry\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval per 1\n\n/--\ninfo:\
+  \ [54, 20, 0]\n-/\n#guard_msgs in\n#eval per 69\n\n/--\ninfo: [4996238671872, 438939648,\
+  \ 4478976, 338688, 27648, 2688, 768, 336, 54, 20, 0]\n-/\n#guard_msgs in\n#eval\
+  \ per 277777788888899\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

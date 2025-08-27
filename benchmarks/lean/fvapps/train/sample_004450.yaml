@@ -1,0 +1,20 @@
+"vc-description": "In this kata you must take an input string, reverse the order of\
+  \ the words, and reverse the order of the letters within the words.\n\nBut, as a\
+  \ bonus, every test input will end with a punctuation mark (! ? .) and the output\
+  \ should be returned with the mark at the end.\n\nA few examples should help clarify:\n\
+  \n```python\nesrever(\"hello world.\") == \"dlrow olleh.\"\n\nesrever(\"Much l33t?\"\
+  ) == \"t33l hcuM?\"\n\nesrever(\"tacocat!\") == \"tacocat!\"\n```\n\nQuick Note:\
+  \ A string will always be passed in (though it may be empty) so no need for error-checking\
+  \ other types."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def esrever (s : String) : String := sorry\n\ntheorem esrever_preserves_length\
+  \ (s : String) (h : s ≠ \"\") :\n  String.length (esrever s) = String.length s :=\
+  \ sorry\n"
+"vc-theorems": "theorem empty_string_reversed_empty : \n  esrever \"\" = \"\" := sorry\
+  \ \n\n\ntheorem double_reverse_equals_original (s : String) (h : s ≠ \"\") : \n\
+  \  esrever (esrever s) = s := sorry\n\n/-- For any character that appears in the\
+  \ string, it appears the same number of times\n    in the reversed string -/\n\n\
+  theorem reverse_maintains_character_counts (s : String) (h : s ≠ \"\") (c : Char)\
+  \ :\n  (s.data.countP (· = c)) = ((esrever s).data.countP (· = c)) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

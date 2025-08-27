@@ -1,0 +1,88 @@
+"vc-description": "![alt text](https://2.bp.blogspot.com/-DNNiOXduuvQ/Vh-FR-qbKXI/AAAAAAAAEOA/HT0IzJ36zW4/s1600/voz.jpg)\n\
+  \nCreate a class called `Warrior` which calculates and keeps track of their level\
+  \ and skills, and ranks them as the warrior they've proven to be.\n\nBusiness Rules:\n\
+  \n- A warrior starts at level 1 and can progress all the way to 100.\n- A warrior\
+  \ starts at rank `\"Pushover\"` and can progress all the way to `\"Greatest\"`.\n\
+  - The only acceptable range of rank values is `\"Pushover\", \"Novice\", \"Fighter\"\
+  , \"Warrior\", \"Veteran\", \"Sage\", \"Elite\", \"Conqueror\", \"Champion\", \"\
+  Master\", \"Greatest\"`.\n- Warriors will compete in battles. Battles will always\
+  \ accept an enemy level to match against your own.\n- With each battle successfully\
+  \ finished, your warrior's experience is updated based on the enemy's level.\n-\
+  \ The experience earned from the battle is relative to what the warrior's current\
+  \ level is compared to the level of the enemy.\n- A warrior's experience starts\
+  \ from 100. Each time the warrior's experience increases by another 100, the warrior's\
+  \ level rises to the next level.\n- A warrior's experience is cumulative, and does\
+  \ not reset with each rise of level. The only exception is when the warrior reaches\
+  \ level 100, with which the experience stops at 10000\n- At every 10 levels, your\
+  \ warrior will reach a new rank tier. (ex. levels 1-9 falls within `\"Pushover\"\
+  ` tier, levels 80-89 fall within `\"Champion\"` tier, etc.)\n- A warrior cannot\
+  \ progress beyond level 100 and rank `\"Greatest\"`.\n\nBattle Progress Rules &\
+  \ Calculations:\n\n- If an enemy level does not fall in the range of 1 to 100, the\
+  \ battle cannot happen and should return `\"Invalid level\"`.\n- Completing a battle\
+  \ against an enemy with the same level as your warrior will be worth 10 experience\
+  \ points.\n- Completing a battle against an enemy who is one level lower than your\
+  \ warrior will be worth 5 experience points.\n- Completing a battle against an enemy\
+  \ who is two levels lower or more than your warrior will give 0 experience points.\n\
+  - Completing a battle against an enemy who is one level higher or more than your\
+  \ warrior will accelarate your experience gaining. The greater the difference between\
+  \ levels, the more experinece your warrior will gain. The formula is `20 * diff\
+  \ * diff` where `diff` equals the difference in levels between the enemy and your\
+  \ warrior.\n- However, if your warrior is at least one rank lower than your enemy,\
+  \ and at least 5 levels lower, your warrior cannot fight against an enemy that strong\
+  \ and must instead return `\"You've been defeated\"`.\n- Every successful battle\
+  \ will also return one of three responses: `\"Easy fight\", \"A good fight\", \"\
+  An intense fight\"`. Return `\"Easy fight\"` if your warrior is 2 or more levels\
+  \ higher than your enemy's level. Return `\"A good fight\"` if your warrior is either\
+  \ 1 level higher or equal to your enemy's level. Return `\"An intense fight\"` if\
+  \ your warrior's level is lower than the enemy's level.\n\nLogic Examples:\n\n-\
+  \ If a warrior level 1 fights an enemy level 1, they will receive 10 experience\
+  \ points.\n- If a warrior level 1 fights an enemy level 3, they will receive 80\
+  \ experience points.\n- If a warrior level 5 fights an enemy level 4, they will\
+  \ receive 5 experience points.\n- If a warrior level 3 fights an enemy level 9,\
+  \ they will receive 720 experience points, resulting in the warrior rising up by\
+  \ at least 7 levels.\n- If a warrior level 8 fights an enemy level 13, they will\
+  \ receive 0 experience points and return `\"You've been defeated\"`. (Remember,\
+  \ difference in rank & enemy level being 5 levels higher or more must be established\
+  \ for this.)\n- If a warrior level 6 fights an enemy level 2, they will receive\
+  \ 0 experience points.\n\n Training Rules & Calculations:\n- In addition to earning\
+  \ experience point from battles, warriors can also gain experience points from training.\n\
+  - Training will accept an array of three elements (except in java where you'll get\
+  \ 3 separated arguments): the description, the experience points your warrior earns,\
+  \ and the minimum level requirement.\n- If the warrior's level meets the minimum\
+  \ level requirement, the warrior will receive the experience points from it and\
+  \ store the description of the training. It should end up returning that description\
+  \ as well.\n- If the warrior's level does not meet the minimum level requirement,\
+  \ the warrior doesn not receive the experience points and description and instead\
+  \ returns `\"Not strong enough\"`, without any archiving of the result.\n\n Code\
+  \ Examples:\n```python\nbruce_lee = Warrior()\nbruce_lee.level         # => 1\n\
+  bruce_lee.experience    # => 100\nbruce_lee.rank          # => \"Pushover\"\nbruce_lee.achievements\
+  \  # => []\nbruce_lee.training([\"Defeated Chuck Norris\", 9000, 1]) # => \"Defeated\
+  \ Chuck Norris\"\nbruce_lee.experience    # => 9100\nbruce_lee.level         # =>\
+  \ 91\nbruce_lee.rank          # => \"Master\"\nbruce_lee.battle(90)    # => \"A\
+  \ good fight\"\nbruce_lee.experience    # => 9105\nbruce_lee.achievements  # =>\
+  \ [\"Defeated Chuck Norris\"]\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef Warrior.level (self : Warrior) :\
+  \ Nat := sorry\ndef Warrior.rank (self : Warrior) : String := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Warrior.training (self : Warrior) (t : String × Nat × Nat)\
+  \ : String := sorry\ndef Warrior.battle (self : Warrior) (level : Nat) : String\
+  \ := sorry\n"
+"vc-theorems": "theorem experience_level_relationship (exp : Nat) (h : exp > 0 ∧ exp\
+  \ ≤ 10000) :\n  let w : Warrior := ⟨exp, []⟩\n  w.level = min 100 (exp / 100) :=\
+  \ sorry\n\n\ntheorem training_sequence (trainings : List (String × Nat × Nat)) :\n\
+  \  let w : Warrior := ⟨0, []⟩\n  ∀ t ∈ trainings,\n    (t.2.2 ≤ w.level → \n   \
+  \   w.training t = t.1 ∧ \n      t.1 ∈ w.achievements) ∧\n    (t.2.2 > w.level →\
+  \ \n      w.training t = \"Not strong enough\") := sorry\n\n\ntheorem battle_level_bounds\
+  \ (level : Nat) :\n  let w : Warrior := ⟨0, []⟩\n  (level = 0 ∨ level > 100) →\n\
+  \    w.battle level = \"Invalid level\" := sorry\n\n\ntheorem experience_cap (exp_gain\
+  \ : Nat) (h : exp_gain > 0 ∧ exp_gain ≤ 100) :\n  let w : Warrior := ⟨10000, []⟩\n\
+  \  w.experience = 10000 := sorry\n\n\ntheorem rank_progression (exp : Nat) (h :\
+  \ exp < 10000) :\n  let w : Warrior := ⟨exp, []⟩\n  let ranks := [\"Pushover\",\
+  \ \"Novice\", \"Fighter\", \"Warrior\", \"Veteran\", \n                \"Sage\"\
+  , \"Elite\", \"Conqueror\", \"Champion\", \"Master\", \"Greatest\"]\n  have h' :\
+  \ min 10 (exp / 1000) < 11 := by\n    exact Nat.lt_succ_of_le (Nat.min_le_left 10\
+  \ (exp / 1000))\n  w.rank = ranks[min 10 (exp / 1000)]'h' := sorry\n\n\ntheorem\
+  \ battle_outcomes (level : Nat) (h : level > 0 ∧ level ≤ 100) :\n  let w : Warrior\
+  \ := ⟨0, []⟩\n  w.battle level ∈ [\"A good fight\", \"An intense fight\", \n   \
+  \                 \"Easy fight\", \"You've been defeated\"] := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

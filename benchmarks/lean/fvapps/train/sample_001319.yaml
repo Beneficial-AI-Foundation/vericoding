@@ -1,0 +1,50 @@
+"vc-description": "Sebi lives in Chefland where the government is extremely corrupt\
+  \ that usually makes fool out of public by announcing eye catching but non-sustainable\
+  \ schemes. Recently there was a move to increase tourism in the country that was\
+  \ highly lauded. Sebi wants to examine whether the move has some potential or is\
+  \ a hogwash as usual.\nThe Chefland is a city with very old road infrastructure.\
+  \ The city has N tourist places. All the places are reachable from each other. The\
+  \ corrupt administrators of the city constructed as few roads as possible just ensuring\
+  \ that all the places are reachable from each other, and those too have now gone\
+  \ old with potholes every here and there. Upon this, there is a toll tax for each\
+  \ road too, which you have to pay once for using that road. Once you pay the tax\
+  \ for a road, you can visit it again as many times as possible.\nThe tourists coming\
+  \ to Chefland usually want to see all the N nice places. They usually have visit\
+  \ in their own vehicle and stay for few days. Also, they are usually not very rich,\
+  \ they want to pay as less toll tax as possible. For promoting tourism, the government\
+  \ offered their citizens a scheme. It was announced that citizens can choose any\
+  \ two places and the government will build a high class road between those two places\
+  \ and that too without any toll tax. Note that citizens may choose to have a high\
+  \ class road between two cities which already have an old road between them.\nSebi\
+  \ is very sceptical of the claims of the announcement. So, he wants to understand\
+  \ the expected toll tax a tourist has to pay to tour the entire city considering\
+  \ that the citizens of Chefland vote for the two cities for constructing high road\
+  \ uniformly randomly. Can you please him in finding this?\n\n-----Input-----\nThere\
+  \ is a single test case per test file.\nThe first line of the input contains an\
+  \ integer N denoting the number of tourist spots in Chefland.\nEach of the he next\
+  \ N - 1 lines contains three space separated integers u, v, c, denoting that there\
+  \ is a road between tourist spot u and v which has a toll tax of c Rs.\n\n-----Output-----\n\
+  Output a single line containing the expected toll tax a tourist has to pay for visiting\
+  \ all the N spots after the construction of new road. Your answer will be considered\
+  \ correct if it has an absolute error less than or equal to 1e-2.\n\n-----Constraints-----\n\
+  - 2 ≤ N ≤ 105\n- 1 ≤ u, v ≤ N\n- 0 ≤ c ≤ 106\n\n-----Example-----\nInput:\n3\n1\
+  \ 2 3\n1 3 2\n\nOutput:\n2.333333\n\n-----Explanation-----\nAssume that the citizens\
+  \ construct the high class road between city 1 and 2. A tourist can visit all the\
+  \ places by just paying a toll tax of 2 Rs.\nIf the high class road is constructed\
+  \ between city 1 and 3. All the places then can be visited by just paying a toll\
+  \ tax of 3 Rs.\nIf the cities 2 and 3 are connected by the high class road. All\
+  \ the places can be visited by paying a toll tax of 2Rs. \nHence expected Rs. that\
+  \ a tourist has to pay in toll tax will be (2 + 3 + 2) / 3 = 7 / 3 = 2.333333"
+"vc-preamble": "import Imports.AllImports\n\ndef solve_tourist_spots (n : Nat) (roads\
+  \ : List String) : Float :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isValidRoad : String → Bool :=\nsorry\n"
+"vc-theorems": "theorem solve_tourist_spots_output_is_float (n : Nat) (roads : List\
+  \ String) \n    (h : n ≥ 2) (h2 : roads.length > 0) :\n  ∃ (f : Float), solve_tourist_spots\
+  \ n roads = f :=\nsorry\n\n\ntheorem solve_tourist_spots_total_weight \n    {n :\
+  \ Nat} {roads : List String} {weights : List Float}\n    (h : n ≥ 2)\n    (h2 :\
+  \ roads.length > 0) \n    (h3 : weights = roads.map (fun r => sorry)) :\n  solve_tourist_spots\
+  \ n roads ≤ weights.foldl (. + .) 0.0 :=\nsorry\n\n\ntheorem solve_tourist_spots_invalid_input\n\
+  \    {n : Nat} {roads : List String}\n    (h : n ≥ 2)\n    (h2 : ∃ r ∈ roads, ¬\
+  \ isValidRoad r) :\n  solve_tourist_spots n roads = 0.0 :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

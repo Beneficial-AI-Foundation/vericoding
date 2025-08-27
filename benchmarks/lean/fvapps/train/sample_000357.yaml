@@ -1,0 +1,21 @@
+"vc-description": "Find the length of the longest substring T of a given string (consists\
+  \ of lowercase letters only) such that every character in T appears no less than\
+  \ k times.\n\n\nExample 1:\n\nInput:\ns = \"aaabb\", k = 3\n\nOutput:\n3\n\nThe\
+  \ longest substring is \"aaa\", as 'a' is repeated 3 times.\n\n\n\nExample 2:\n\n\
+  Input:\ns = \"ababbc\", k = 2\n\nOutput:\n5\n\nThe longest substring is \"ababb\"\
+  , as 'a' is repeated 2 times and 'b' is repeated 3 times."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def longest_substring_with_k_occurrences (s : String) (k : Nat)\
+  \ : Nat :=\n  sorry\n"
+"vc-theorems": "theorem output_bounds (s : String) (k : Nat) \n  (h1 : s.length >\
+  \ 0) (h2 : k > 0) (h3 : k ≤ 10) :\n  let result := longest_substring_with_k_occurrences\
+  \ s k\n  0 ≤ result ∧ result ≤ s.length :=\n  sorry\n\n\ntheorem singleton_strings_k_one\
+  \ (s : String) (k : Nat)\n  (h1 : s.length = 1) (h2 : k = 1) :\n  longest_substring_with_k_occurrences\
+  \ s k = 1 :=\n  sorry\n\n\ntheorem singleton_strings_k_gt_one (s : String) (k :\
+  \ Nat)\n  (h1 : s.length = 1) (h2 : k > 1) :\n  longest_substring_with_k_occurrences\
+  \ s k = 0 :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval longest_substring_with_k_occurrences\
+  \ \"aaabb\" 3\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval longest_substring_with_k_occurrences\
+  \ \"ababbc\" 2\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval longest_substring_with_k_occurrences\
+  \ \"abcdef\" 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

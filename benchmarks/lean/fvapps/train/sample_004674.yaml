@@ -1,0 +1,24 @@
+"vc-description": "Design a data structure that supports the following two operations:\n\
+  \n* `addWord` (or `add_word`) which adds a word,\n* `search` which searches a literal\
+  \ word or a regular expression string containing lowercase letters `\"a-z\"` or\
+  \ `\".\"` where `\".\"` can represent any letter\n\nYou may assume that all given\
+  \ words contain only lowercase letters.\n\n## Examples\n```python\nadd_word(\"bad\"\
+  )\nadd_word(\"dad\")\nadd_word(\"mad\")\n\nsearch(\"pad\") == False\nsearch(\"bad\"\
+  ) == True\nsearch(\".ad\") == True\nsearch(\"b..\") == True\n```\n\n**Note:** the\
+  \ data structure will be initialized multiple times during the tests!"
+"vc-preamble": "import Imports.AllImports\n\ndef WordDictionary.addWord (wd : WordDictionary)\
+  \ (word : String) : WordDictionary :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def WordDictionary.search (wd : WordDictionary) (pattern : String)\
+  \ : Bool :=\n  sorry\n"
+"vc-theorems": "theorem exact_match_property (words : List String) (h : ∀ w ∈ words,\
+  \ w.length > 0) :\n  let wd := words.foldl (fun acc word => WordDictionary.addWord\
+  \ acc word) default\n  ∀ w ∈ words, (WordDictionary.search wd w) = true :=\n  sorry\n\
+  \n\ntheorem wildcard_search_property \n  (words : List String) \n  (pattern : String)\n\
+  \  (h1 : words.length > 0)\n  (h2 : pattern.length > 0)\n  (h3 : ∀ w ∈ words, w.length\
+  \ > 0) :\n  let wd := words.foldl (fun acc word => WordDictionary.addWord acc word)\
+  \ default\n  let matching_words := words.filter (fun w => w.length = pattern.length)\n\
+  \  matching_words.length > 0 →\n  (WordDictionary.search wd pattern) = \n    matching_words.any\
+  \ (fun word =>\n      let pairs := List.zip (pattern.data) (word.data)\n      pairs.all\
+  \ (fun pair => pair.fst = '.' ∨ pair.fst = pair.snd)) :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

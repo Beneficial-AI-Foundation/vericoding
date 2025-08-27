@@ -1,0 +1,24 @@
+"vc-description": "Balanced strings are those who have equal quantity of 'L' and 'R'\
+  \ characters.\nGiven a balanced string s split it in the maximum amount of balanced\
+  \ strings.\nReturn the maximum amount of splitted balanced strings.\n \nExample\
+  \ 1:\nInput: s = \"RLRRLLRLRL\"\nOutput: 4\nExplanation: s can be split into \"\
+  RL\", \"RRLL\", \"RL\", \"RL\", each substring contains same number of 'L' and 'R'.\n\
+  \nExample 2:\nInput: s = \"RLLLLRRRLR\"\nOutput: 3\nExplanation: s can be split\
+  \ into \"RL\", \"LLLRRR\", \"LR\", each substring contains same number of 'L' and\
+  \ 'R'.\n\nExample 3:\nInput: s = \"LLLLRRRR\"\nOutput: 1\nExplanation: s can be\
+  \ split into \"LLLLRRRR\".\n\nExample 4:\nInput: s = \"RLRRRLLRLL\"\nOutput: 2\n\
+  Explanation: s can be split into \"RL\", \"RRRLLRLL\", since each substring contains\
+  \ an equal number of 'L' and 'R'\n\n \nConstraints:\n\n1 <= s.length <= 1000\ns[i]\
+  \ = 'L' or 'R'"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def balanced_string_split (s: String) : Nat :=\n  sorry\n\n\n"
+"vc-theorems": "theorem empty_string_split:\n  balanced_string_split \"\" = 0 :=\n\
+  \  sorry\n\n\ntheorem single_char_split:\n  balanced_string_split \"R\" = 0 ∧ balanced_string_split\
+  \ \"L\" = 0 :=\n  sorry\n\n\ntheorem balanced_blocks_split (n: Nat) (h: n > 0):\n\
+  \  balanced_string_split (String.mk (List.join (List.replicate n ['R', 'R', 'L',\
+  \ 'L']))) = n :=\n  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval balanced_string_split\
+  \ \"RLRRLLRLRL\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval balanced_string_split\
+  \ \"RLLLLRRRLR\"\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval balanced_string_split\
+  \ \"LLLLRRRR\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

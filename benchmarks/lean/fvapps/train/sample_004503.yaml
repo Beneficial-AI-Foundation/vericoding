@@ -1,0 +1,41 @@
+"vc-description": "Let's just place tokens on a connect four board.\n\n\n\n** INPUT\
+  \ **\n\nProvided as input the list of columns where a token is placed, from 0 to\
+  \ 6 included.\nThe first player starting is the yellow one (marked with `Y`), then\
+  \ the red (marked with `R`); the other cells might be empty and marked with `-`.\n\
+  \n** OUTPUT **\n\nThe output is the state of the board after all the tokens in input\
+  \ have been placed.\n\n** ASSUMPTIONS **\n\n- The board is the standard 7x6;\n-\
+  \ Of course you'll need to deal with gravity;\n- You don't need to hassle with wrong\
+  \ input, wrong column numbers, checking for full column or going off the board;\n\
+  - the columns list will always include proper column numbers;\n- Notice: when you\
+  \ read the results in tests, the highest row appears first and the lowest row appears\
+  \ last; debugging using `\\n` after each row might help (check example);\n\n** EXAMPLES\
+  \ **\n\n1.\n```\nMoves = [0,1,2,5,6]\n\nResult:\n['-', '-', '-', '-', '-', '-',\
+  \ '-']\n['-', '-', '-', '-', '-', '-', '-']\n['-', '-', '-', '-', '-', '-', '-']\n\
+  ['-', '-', '-', '-', '-', '-', '-']\n['-', '-', '-', '-', '-', '-', '-']\n['Y',\
+  \ 'R', 'Y', '-', '-', 'R', 'Y']\n```\n2.\n```\nMoves = [0,1,2,5,6,2,0,0]\n\nResult:\n\
+  ['-', '-', '-', '-', '-', '-', '-']\n['-', '-', '-', '-', '-', '-', '-']\n['-',\
+  \ '-', '-', '-', '-', '-', '-']\n['R', '-', '-', '-', '-', '-', '-']\n['Y', '-',\
+  \ 'R', '-', '-', '-', '-']\n['Y', 'R', 'Y', '-', '-', 'R', 'Y']\n```\n\nSee test\
+  \ cases for better details."
+"vc-preamble": "import Imports.AllImports\n\ndef Board := List (List Cell)\n\ndef\
+  \ connect_four_place (moves: List Nat) : Board :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countCells (b: Board) (p: Cell → Bool) : Nat :=\n  b.join.foldl\
+  \ (fun acc c => if p c then acc + 1 else acc) 0\n"
+"vc-theorems": "theorem board_dimensions {moves : List Nat} \n  (h : ∀ m ∈ moves,\
+  \ m ≤ 6) : \n  let board := connect_four_place moves\n  board.length = 6 ∧ List.all\
+  \ board (fun row => row.length = 7) :=\nsorry\n\n\ntheorem alternating_players {moves\
+  \ : List Nat}\n  (h : ∀ m ∈ moves, m ≤ 6) :\n  let board := connect_four_place moves\n\
+  \  let yellow_count := countCells board (fun c => c == Cell.Yellow)\n  let red_count\
+  \ := countCells board (fun c => c == Cell.Red)\n  yellow_count ≤ red_count + 1 ∧\
+  \ red_count ≤ yellow_count + 1 :=\nsorry\n\n\ntheorem gravity_effect {moves : List\
+  \ Nat}\n  (h : ∀ m ∈ moves, m ≤ 6) :\n  let board := connect_four_place moves\n\
+  \  ∀ col, col < 7 → \n  ∀ row₁ row₂, row₁ < row₂ → row₂ < 6 →\n    Option.isSome\
+  \ ((board.get? row₂).bind (·.get? col)) →\n    (board.get? row₂).bind (·.get? col)\
+  \ = some Cell.Empty → \n    (board.get? row₁).bind (·.get? col) = some Cell.Empty\
+  \ :=\nsorry\n\n\ntheorem valid_pieces {moves : List Nat}\n  (h : ∀ m ∈ moves, m\
+  \ ≤ 6) :\n  let board := connect_four_place moves\n  board.join.all (fun cell =>\
+  \ \n    cell == Cell.Empty || cell == Cell.Yellow || cell == Cell.Red) :=\nsorry\n\
+  \n\ntheorem empty_board :\n  connect_four_place [] = \n    List.replicate 6 (List.replicate\
+  \ 7 Cell.Empty) :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,30 @@
+"vc-description": "You get some nested lists. Keeping the original structures, sort\
+  \ only elements (integers) inside of the lists. In other words, sorting the intergers\
+  \ only by swapping their positions. \n\n\n\n```\nExample\nInput   : [[[2, 1], [4,\
+  \ 3]], [[6, 5], [8, 7]]]\nOutput  : [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]\n```\n\n\
+  Note:\nThe structures of the lists are regular (symmetrical) and their depths are\
+  \ 3."
+"vc-preamble": "import Imports.AllImports\n\ndef List.isSameStructure : List α → List\
+  \ α → Bool\n  | [], [] => true \n  | _::xs, _::ys => isSameStructure xs ys\n  |\
+  \ _, _ => false\n\n\ndef getAllNumbers : List (List (List Int)) → List Int\n| []\
+  \ => []\n| (x::xs) => getAllNumbers' x ++ getAllNumbers xs\nwhere getAllNumbers'\
+  \ : List (List Int) → List Int\n  | [] => []\n  | (y::ys) => y ++ getAllNumbers'\
+  \ ys\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sortNestedNumbers (nested: List (List (List Int))) : List (List\
+  \ (List Int)) :=\n  sorry\n"
+"vc-theorems": "theorem sort_nested_preserves_structure (nested: List (List (List\
+  \ Int))) :\n  List.isSameStructure nested (sortNestedNumbers nested) := sorry\n\n\
+  \ntheorem sort_nested_preserves_numbers (nested: List (List (List Int))) :\n  ∀\
+  \ x, (x ∈ getAllNumbers nested ↔ x ∈ getAllNumbers (sortNestedNumbers nested)) :=\
+  \ sorry\n\n\ntheorem sort_nested_inner_sorted (nested: List (List (List Int))) :\n\
+  \  ∀ middle inner, middle ∈ sortNestedNumbers nested → \n    inner ∈ middle → IsSorted\
+  \ inner := sorry\n\n\ntheorem sort_nested_globally_sorted (nested: List (List (List\
+  \ Int))) :\n  IsSorted (getAllNumbers (sortNestedNumbers nested)) := sorry\n\n\n\
+  theorem sort_nested_preserves_length (nested: List (List (List Int))) \n  (h1: List.length\
+  \ nested = n)\n  (h2: ∀ middle ∈ nested, List.length middle = m)\n  (h3: ∀ middle\
+  \ ∈ nested, ∀ inner ∈ middle, List.length inner = k) :\n  (List.length (sortNestedNumbers\
+  \ nested) = n) ∧\n  (∀ middle ∈ sortNestedNumbers nested, List.length middle = m)\
+  \ ∧\n  (∀ middle ∈ sortNestedNumbers nested, ∀ inner ∈ middle, List.length inner\
+  \ = k) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

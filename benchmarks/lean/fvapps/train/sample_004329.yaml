@@ -1,0 +1,29 @@
+"vc-description": "Given a sequence of items and a specific item in that sequence,\
+  \ return the item immediately following the item specified. If the item occurs more\
+  \ than once in a sequence, return the item after the first occurence. This should\
+  \ work for a sequence of any type.\n\nWhen the item isn't present or nothing follows\
+  \ it, the function should return nil in Clojure and Elixir, Nothing in Haskell,\
+  \ undefined in JavaScript, None in Python.\n\n```python\nnext_item([1, 2, 3, 4,\
+  \ 5, 6, 7], 3) # => 4\nnext_item(['Joe', 'Bob', 'Sally'], 'Bob') # => \"Sally\"\n\
+  ```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def next_item {α} [BEq α] (xs : List α) (item : α) : Option α :=\
+  \ sorry\n\ntheorem next_item_integers {xs : List Int} {x : Int} \n  (h1 : x ∈ xs)\
+  \ (h2 : x ≠ xs[xs.length - 1]!) \n  (h3 : List.indexOf x xs + 1 < xs.length) :\n\
+  \  next_item xs x = some (xs[List.indexOf x xs + 1]!) := sorry\n"
+"vc-theorems": "theorem next_item_last {α} [BEq α] [Inhabited α] {xs : List α} {x\
+  \ : α} \n  (h : x = xs[xs.length - 1]!) :\n  next_item xs x = none := sorry\n\n\n\
+  theorem next_item_not_found {α} [BEq α] {xs : List α} {x : α} \n  (h : x ∉ xs) :\n\
+  \  next_item xs x = none := sorry\n\n\ntheorem next_item_chars {s : String} {c :\
+  \ Char} \n  (h1 : c ∈ s.toList) (h2 : c ≠ s.toList[s.toList.length - 1]!)\n  (h3\
+  \ : List.indexOf c s.toList + 1 < s.toList.length) :\n  next_item s.toList c = some\
+  \ (s.toList[List.indexOf c s.toList + 1]!) := sorry\n\n\ntheorem next_item_sequential\
+  \ {xs : List Int} (h : xs.length ≥ 2) :\n  ∀ i, i < xs.length - 1 → \n    (xs[i]!\
+  \ ∉ List.take i xs → next_item xs xs[i]! = some xs[i+1]!) := sorry\n\n\ntheorem\
+  \ next_item_sequential_last {xs : List Int} \n  (h1 : xs.length ≥ 2) \n  (h2 : xs[xs.length\
+  \ - 1]! ∉ List.take (xs.length - 1) xs) :\n  next_item xs xs[xs.length - 1]! = none\
+  \ := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval next_item [1, 2, 3, 4, 5]\
+  \ 3\n\n/--\ninfo: 'l'\n-/\n#guard_msgs in\n#eval next_item \"hello\" \"l\"\n\n/--\n\
+  info: None\n-/\n#guard_msgs in\n#eval next_item [\"a\", \"b\", \"c\"] \"c\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

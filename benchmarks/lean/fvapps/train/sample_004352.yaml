@@ -1,0 +1,32 @@
+"vc-description": "Write a function that outputs the transpose of a matrix - a new\
+  \ matrix\nwhere the columns and rows of the original are swapped.\n\nFor example,\
+  \ the transpose of:\n  \n    | 1 2 3 |\n    | 4 5 6 |\n\nis\n\n    | 1 4 |\n   \
+  \ | 2 5 |\n    | 3 6 |\n\nThe input to your function will be an array of matrix\
+  \ rows. You can\nassume that each row has the same length, and that the height and\n\
+  width of the matrix are both positive."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def transpose {α : Type u} [Inhabited α] : Matrix α → Matrix α\n\
+  \  | Matrix.mk m => sorry\n"
+"vc-theorems": "theorem transpose_dimensions {α : Type u} [Inhabited α] {m : List\
+  \ (List α)} \n    (h1 : m.length > 0) \n    (h2 : m.head!.length > 0)\n    (h3 :\
+  \ ∀ row ∈ m, row.length = m.head!.length) :\n  let t := transpose (Matrix.mk m)\n\
+  \  match t with\n  | Matrix.mk t' =>\n    t'.length = m.head!.length ∧\n    t'.head!.length\
+  \ = m.length := by sorry\n\n\ntheorem transpose_involution {α : Type u} [Inhabited\
+  \ α] {m : List (List α)}\n    (h1 : m.length > 0)\n    (h2 : m.head!.length > 0)\n\
+  \    (h3 : ∀ row ∈ m, row.length = m.head!.length) :\n  transpose (transpose (Matrix.mk\
+  \ m)) = Matrix.mk m := by sorry\n\n\ntheorem transpose_element_relationship {α :\
+  \ Type u} [Inhabited α] {m : List (List α)}\n    (h1 : m.length > 0)\n    (h2 :\
+  \ m.head!.length > 0)\n    (h3 : ∀ row ∈ m, row.length = m.head!.length)\n    (i\
+  \ : Nat) (j : Nat)\n    (hi : i < m.length)\n    (hj : j < m.head!.length) :\n \
+  \ (m.get! i).get! j = ((match transpose (Matrix.mk m) with | Matrix.mk t => t).get!\
+  \ j).get! i := by sorry\n\n\ntheorem single_row_transpose {α : Type u} [Inhabited\
+  \ α] (row : List α)\n    (h : row.length > 0) :\n  let m := Matrix.mk [row]\n  let\
+  \ t := transpose m\n  match t with\n  | Matrix.mk t' =>\n    t'.length = row.length\
+  \ ∧\n    (∀ col ∈ t', col.length = 1) ∧\n    (List.map (λ col => col.head!) t' =\
+  \ row) := by sorry\n\n\ntheorem single_element_transpose {α : Type u} [Inhabited\
+  \ α] (x : α) :\n  transpose (Matrix.mk [[x]]) = Matrix.mk [[x]] := by sorry\n\n\
+  /--\ninfo: expected1\n-/\n#guard_msgs in\n#eval transpose [[1]]\n\n/--\ninfo: expected2\n\
+  -/\n#guard_msgs in\n#eval transpose [[1, 2, 3]]\n\n/--\ninfo: expected3\n-/\n#guard_msgs\
+  \ in\n#eval transpose [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

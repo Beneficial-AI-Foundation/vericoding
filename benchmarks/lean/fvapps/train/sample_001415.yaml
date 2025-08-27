@@ -1,0 +1,37 @@
+"vc-description": "Vietnamese and Bengali as well.\nAn $N$-bonacci sequence is an\
+  \ infinite sequence $F_1, F_2, \\ldots$ such that for each integer $i > N$, $F_i$\
+  \ is calculated as $f(F_{i-1}, F_{i-2}, \\ldots, F_{i-N})$, where $f$ is some function.\
+  \ A XOR $N$-bonacci sequence is an $N$-bonacci sequence for which $f(F_{i-1}, F_{i-2},\
+  \ \\ldots, F_{i-N}) = F_{i-1} \\oplus F_{i−2} \\oplus \\ldots \\oplus F_{i−N}$,\
+  \ where $\\oplus$ denotes the bitwise XOR operation.\nRecently, Chef has found an\
+  \ interesting sequence $S_1, S_2, \\ldots$, which is obtained from prefix XORs of\
+  \ a XOR $N$-bonacci sequence $F_1, F_2, \\ldots$. Formally, for each positive integer\
+  \ $i$, $S_i = F_1 \\oplus F_2 \\oplus \\ldots \\oplus F_i$. You are given the first\
+  \ $N$ elements of the sequence $F$, which uniquely determine the entire sequence\
+  \ $S$.\nYou should answer $Q$ queries. In each query, you are given an index $k$\
+  \ and you should calculate $S_k$. It is guaranteed that in each query, $S_k$ does\
+  \ not exceed $10^{50}$.\n\n-----Input-----\n- The first line of the input contains\
+  \ two space-separated integers $N$ and $Q$.\n- The second line contains $N$ space-separated\
+  \ integers $F_1, F_2, \\ldots, F_N$.\n- The following $Q$ lines describe queries.\
+  \ Each of these lines contains a single integer $k$.\n\n-----Output-----\nFor each\
+  \ query, print a single line containing one integer $S_k$.\n\n-----Constraints-----\n\
+  - $1 \\le N, Q \\le 10^5$\n- $0 \\le F_i \\le 10^9$ for each $i$ such that $1 \\\
+  le i \\le N$\n- $1 \\le k \\le 10^9$\n\n-----Example Input-----\n3 4\n0 1 2\n7\n\
+  2\n5\n1000000000\n\n-----Example Output-----\n3\n1\n0\n0"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_divisible_numbers (start final divisor : Int) : Int ×\
+  \ Int :=\n  sorry\n"
+"vc-theorems": "theorem find_divisible_numbers_properties\n  (start length divisor\
+  \ : Int)\n  (h1 : start ≥ -1000) (h2 : start ≤ 1000)\n  (h3 : length ≥ 0) (h4 :\
+  \ length ≤ 1000) \n  (h5 : divisor > 0) (h6 : divisor ≤ 100) : \n  let final :=\
+  \ start + length;\n  let result := find_divisible_numbers start final divisor;\n\
+  \  let count := result.1;\n  let last := result.2;\n  count ≥ 0 ∧\n  (count > 0\
+  \ → \n    last % divisor = 0 ∧ \n    start ≤ last ∧ \n    last ≤ final) ∧\n  (count\
+  \ = 0 → last = 0) ∧\n  count = ((List.range (Int.toNat (final - start + 1))).map\
+  \ Int.ofNat |>.filter (fun x => (x + start) % divisor = 0)).length ∧\n  (count >\
+  \ 0 → ∀ x, last < x → x ≤ final → x % divisor ≠ 0) :=\n  sorry\n\n\ntheorem empty_range_properties\n\
+  \  (start divisor : Int)\n  (h1 : start ≥ -100) (h2 : start ≤ 100)\n  (h3 : divisor\
+  \ > 0) (h4 : divisor ≤ 10) :\n  find_divisible_numbers start (start - 1) divisor\
+  \ = (0, 0) :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

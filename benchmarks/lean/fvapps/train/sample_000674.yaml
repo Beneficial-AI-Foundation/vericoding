@@ -1,0 +1,14 @@
+"vc-description": "Write a program to find the factorial value of any number entered\
+  \ by the user.\n\n-----Input-----\n\nThe first line contains an integer T, the total\
+  \ number of testcases. Then T lines follow, each line contains an integer N. \n\n\
+  -----Output-----\nFor each test case, display the factorial of the given number\
+  \ N in a new line.\n\n-----Constraints-----\n- 1 ≤ T ≤ 1000\n- 0 ≤ N ≤ 20\n\n-----Example-----\n\
+  Input\n3 \n3 \n4\n5\n\nOutput\n\n6\n24\n120"
+"vc-preamble": "import Imports.AllImports\n\ndef factorial (n : Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_factorials (nums : List Nat) : List Nat :=\n  sorry\n\
+  \n\n\n\n"
+"vc-theorems": "theorem empty_list_factorial :\n  calculate_factorials [] = [] :=\n\
+  sorry\n\n\ntheorem factorial_zero :\n  calculate_factorials [0] = [1] :=\nsorry\n\
+  \n\ntheorem factorial_one :\n  calculate_factorials [1] = [1] :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

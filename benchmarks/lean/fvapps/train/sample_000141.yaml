@@ -1,0 +1,28 @@
+"vc-description": "In a row of trees, the i-th tree produces fruit with type tree[i].\n\
+  You start at any tree of your choice, then repeatedly perform the following steps:\n\
+  \nAdd one piece of fruit from this tree to your baskets.  If you cannot, stop.\n\
+  Move to the next tree to the right of the current tree.  If there is no tree to\
+  \ the right, stop.\n\nNote that you do not have any choice after the initial choice\
+  \ of starting tree: you must perform step 1, then step 2, then back to step 1, then\
+  \ step 2, and so on until you stop.\nYou have two baskets, and each basket can carry\
+  \ any quantity of fruit, but you want each basket to only carry one type of fruit\
+  \ each.\nWhat is the total amount of fruit you can collect with this procedure?\n\
+   \nExample 1:\nInput: [1,2,1]\nOutput: 3\nExplanation: We can collect [1,2,1].\n\
+  \n\nExample 2:\nInput: [0,1,2,2]\nOutput: 3\nExplanation: We can collect [1,2,2].\n\
+  If we started at the first tree, we would only collect [0, 1].\n\n\nExample 3:\n\
+  Input: [1,2,3,2,2]\nOutput: 4\nExplanation: We can collect [2,3,2,2].\nIf we started\
+  \ at the first tree, we would only collect [1, 2].\n\n\nExample 4:\nInput: [3,3,3,1,2,1,1,2,3,3,4]\n\
+  Output: 5\nExplanation: We can collect [1,2,1,1,2].\nIf we started at the first\
+  \ tree or the eighth tree, we would only collect 4 fruits.\n\n \n\n\n\nNote:\n\n\
+  1 <= tree.length <= 40000\n0 <= tree[i] < tree.length"
+"vc-preamble": "import Imports.AllImports\n\ndef total_fruit (tree : List Nat) : Nat\
+  \ := sorry\n\ntheorem total_fruit_bounds {tree : List Nat} (h : tree ≠ []) : \n\
+  \  1 ≤ total_fruit tree ∧ total_fruit tree ≤ tree.length := sorry\n\n\n\n\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def maxSubseqLengthWithTwoTypes (tree : List Nat) : Nat := sorry"
+"vc-theorems": "theorem total_fruit_min_length {tree : List Nat} (h : tree.length\
+  \ ≥ 3) :\n  total_fruit tree ≥ 2 := sorry\n\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
+  #eval total_fruit [1, 2, 1]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval total_fruit\
+  \ [0, 1, 2, 2]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval total_fruit [1, 2, 3,\
+  \ 2, 2]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

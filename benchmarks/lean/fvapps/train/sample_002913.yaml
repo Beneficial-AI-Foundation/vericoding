@@ -1,0 +1,27 @@
+"vc-description": "In this Kata, you will be given a mathematical string and your\
+  \ task will be to remove all braces as follows:\n\n```Haskell\nsolve(\"x-(y+z)\"\
+  ) = \"x-y-z\"\nsolve(\"x-(y-z)\") = \"x-y+z\"\nsolve(\"u-(v-w-(x+y))-z\") = \"u-v+w+x+y-z\"\
+  \nsolve(\"x-(-y-z)\") = \"x+y+z\"\n```\n\nThere are no spaces in the expression.\
+  \ Only two operators are given: `\"+\" or \"-\"`. \n\nMore examples in test cases.\
+  \ \n\nGood luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef solve (expr : String) : String :=\
+  \ sorry\n\ndef isBalanced (expr : String) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def validateResult (result : String) : Bool := sorry\n\ntheorem\
+  \ single_variables_theorem (vars : List Char)\n  (h1 : ∀ c ∈ vars, 'a' ≤ c ∧ c ≤\
+  \ 'z')\n  (h2 : vars.length ≥ 1)\n  (h3 : vars.length ≤ 10) :\n  let expr := String.mk\
+  \ vars\n  let result := solve expr\n  validateResult result ∧ \n  (∀ v ∈ vars, result.data.contains\
+  \ v) := sorry\n"
+"vc-theorems": "theorem nested_parens_theorem (vars : List Char)\n  (h1 : ∀ c ∈ vars,\
+  \ c = 'x' ∨ c = 'y' ∨ c = 'z')\n  (h2 : vars.length ≥ 1)\n  (h3 : vars.length ≤\
+  \ 5) :\n  let expr := vars.foldl (fun acc v => acc ++ \"-(\" ++ String.mk [v] ++\
+  \ \")\") (String.mk [vars.head!])\n  let result := solve expr\n  validateResult\
+  \ result ∧\n  (∀ v ∈ vars, result.data.contains v) := sorry\n\n\ntheorem arbitrary_expressions_theorem\
+  \ (expr : String)\n  (h1 : expr.length ≥ 1)\n  (h2 : expr.length ≤ 20)\n  (h3 :\
+  \ ∀ c ∈ expr.data, c = 'x' ∨ c = 'y' ∨ c = 'z' ∨ c = '(' ∨ c = ')' ∨ c = '+' ∨ c\
+  \ = '-')\n  (h4 : isBalanced expr) :\n  let result := solve expr\n  validateResult\
+  \ result ∧\n  (∀ c ∈ result.data, c.isAlpha → c ∈ expr.data) := sorry\n\n/--\ninfo:\
+  \ 'x-y-z'\n-/\n#guard_msgs in\n#eval solve \"x-(y+z)\"\n\n/--\ninfo: 'x-y+z'\n-/\n\
+  #guard_msgs in\n#eval solve \"x-(y-z)\"\n\n/--\ninfo: 'u-v+w+x+y-z'\n-/\n#guard_msgs\
+  \ in\n#eval solve \"u-(v-w-(x+y))-z\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

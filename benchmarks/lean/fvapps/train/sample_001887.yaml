@@ -1,0 +1,33 @@
+"vc-description": "Given an integer n, find the closest integer (not including itself),\
+  \ which is a palindrome. \n\nThe 'closest' is defined as absolute difference minimized\
+  \ between two integers.\n\nExample 1:\n\nInput: \"123\"\nOutput: \"121\"\n\n\n\n\
+  Note:\n\nThe input n is a positive integer represented by string, whose length will\
+  \ not exceed 18.\nIf there is a tie, return the smaller one as answer."
+"vc-preamble": "import Imports.AllImports\n\ndef find_closest_palindrome (s : String)\
+  \ : String := sorry\n\ndef isPalindrome (s : String) : Bool := sorry\n\n\ndef allCharsNumeric\
+  \ (s : String) : Bool := sorry\n\ndef toNat (s : String) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def toString! (n : Nat) : String := sorry\n\n-- Basic type constraints"
+"vc-theorems": "theorem find_closest_palindrome_outputs_nonempty {n : String} \n \
+  \ (h : isPalindrome n = false) \n  : String.length (find_closest_palindrome n) >\
+  \ 0 := sorry\n\n-- Result should be numeric\n\ntheorem find_closest_palindrome_is_numeric\
+  \ {n : String} \n  (h : isPalindrome n = false)\n  : allCharsNumeric (find_closest_palindrome\
+  \ n) = true := sorry\n\n-- Result differs from input  \n\ntheorem find_closest_palindrome_different\
+  \ {n : String} \n  (h : isPalindrome n = false)\n  : find_closest_palindrome n ≠\
+  \ n := sorry\n\n-- Result length within ±1 of input length\n\ntheorem find_closest_palindrome_length\
+  \ {n : String} \n  (h : isPalindrome n = false)\n  : (String.length (find_closest_palindrome\
+  \ n)).sub (String.length n) ≤ 1 ∧ \n    (String.length n).sub (String.length (find_closest_palindrome\
+  \ n)) ≤ 1 := sorry\n\n-- Result is palindromic\n\ntheorem find_closest_palindrome_is_palindrome\
+  \ {n : String} \n  (h : isPalindrome n = false)\n  : isPalindrome (find_closest_palindrome\
+  \ n) = true := sorry\n\n-- Result doesn't start with '0' \n\ntheorem find_closest_palindrome_no_leading_zero\
+  \ {n : String} \n  (h : isPalindrome n = false)\n  : String.get! (find_closest_palindrome\
+  \ n) 0 ≠ '0' := sorry\n\n-- Result is closest palindrome (minimality)\n\ntheorem\
+  \ find_closest_palindrome_is_minimal {n : String} \n  (h : isPalindrome n = false)\n\
+  \  (h2 : String.length n ≥ 1)\n  : let result := find_closest_palindrome n\n   \
+  \ let diff := (toNat result).sub (toNat n)\n    ∀ k : Nat, \n      k ≠ toNat n →\
+  \ \n      isPalindrome (toString! k) = true →\n      (k.sub (toNat n)).min ((toNat\
+  \ n).sub k) ≥ diff := sorry\n\n/--\ninfo: '121'\n-/\n#guard_msgs in\n#eval find_closest_palindrome\
+  \ \"123\"\n\n/--\ninfo: '999'\n-/\n#guard_msgs in\n#eval find_closest_palindrome\
+  \ \"1000\"\n\n/--\ninfo: '1001'\n-/\n#guard_msgs in\n#eval find_closest_palindrome\
+  \ \"999\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

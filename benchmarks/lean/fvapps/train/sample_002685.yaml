@@ -1,0 +1,21 @@
+"vc-description": "Given an array, find the duplicates in that array, and return a\
+  \ new array of those duplicates. The elements of the returned array should appear\
+  \ in the order when they first appeared as duplicates.\n\n__*Note*__: numbers and\
+  \ their corresponding string representations should not be treated as duplicates\
+  \ (i.e., `\"1\" != 1`).\n\n## Examples\n```\n[1, 2, 4, 4, 3, 3, 1, 5, 3, \"5\"]\
+  \  ==>  [4, 3, 1]\n[0, 1, 2, 3, 4, 5]                ==>  []\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def duplicates {α : Type u} [BEq α] (arr : List α) : List α :=\
+  \ sorry\n\ntheorem duplicates_contains_only_duplicated_elements {α : Type u} [BEq\
+  \ α] (arr : List α) :\n  ∀ x ∈ duplicates arr, (arr.count x) ≥ 2 := sorry\n"
+"vc-theorems": "theorem duplicates_contains_all_duplicated_elements {α : Type u} [BEq\
+  \ α] (arr : List α) :\n  ∀ x, (arr.count x) ≥ 2 → x ∈ duplicates arr := sorry\n\n\
+  \ntheorem duplicates_result_has_no_duplicates {α : Type u} [BEq α] (arr : List α)\
+  \ :\n  ∀ x ∈ duplicates arr, (duplicates arr).count x = 1 := sorry\n\n\ntheorem\
+  \ duplicates_empty_for_unique {α : Type u} [BEq α] (arr : List α) :\n  (∀ x ∈ arr,\
+  \ arr.count x = 1) → duplicates arr = [] := sorry\n\n/--\ninfo: [4, 3, 1]\n-/\n\
+  #guard_msgs in\n#eval duplicates [1, 2, 4, 4, 3, 3, 1, 5, 3, \"5\"]\n\n/--\ninfo:\
+  \ []\n-/\n#guard_msgs in\n#eval duplicates [0, 1, 2, 3, 4, 5]\n\n/--\ninfo: [1,\
+  \ 4]\n-/\n#guard_msgs in\n#eval duplicates [1, 1, 2, 3, 4, 5, 4]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

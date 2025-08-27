@@ -1,0 +1,21 @@
+"vc-description": "Mr. Square is going on a holiday. He wants to bring 2 of his favorite\
+  \ squares with him, so he put them in his rectangle suitcase.\n\nWrite a function\
+  \ that, given the size of the squares and the suitcase, return whether the squares\
+  \ can fit inside the suitcase.\n```Python\nfit_in(a,b,m,n)\na,b are the sizes of\
+  \ the 2 squares\nm,n are the sizes of the suitcase\n```\n\n# Example\n```Python\n\
+  fit_in(1,2,3,2) should return True\nfit_in(1,2,2,1) should return False\nfit_in(3,2,3,2)\
+  \ should return False\nfit_in(1,2,1,2) should return False\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def fit_in (a b m n : Nat) : Bool := sorry\n\ntheorem fit_in_symmetry\
+  \ {a b m n : Nat} : \n  fit_in a b m n = fit_in b a m n ∧ \n  fit_in a b m n = fit_in\
+  \ a b n m := sorry\n"
+"vc-theorems": "theorem fit_in_identical_small_dimensions {a b : Nat} :\n  let m :=\
+  \ min a b - 1\n  ¬fit_in a b m m := sorry\n\n\ntheorem fit_in_large_container {a\
+  \ b : Nat} (h : a ≤ 1000) (h2 : b ≤ 1000) :\n  let large := 2 * max a b + 10\n \
+  \ fit_in a b large large := sorry\n\n\ntheorem fit_in_constraints {a b m n : Nat}\
+  \ :\n  fit_in a b m n → \n  max a b ≤ min m n ∧ \n  a + b ≤ max m n := sorry\n\n\
+  /--\ninfo: True\n-/\n#guard_msgs in\n#eval fit_in 1 2 3 2\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval fit_in 1 2 2 1\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
+  #eval fit_in 3 2 3 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

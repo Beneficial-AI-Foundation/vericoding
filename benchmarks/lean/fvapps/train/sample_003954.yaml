@@ -1,0 +1,22 @@
+"vc-description": "Given an D-dimension array, where each axis is of length N, your\
+  \ goal is to find the sum of every index in the array starting from 0.\n\nFor Example\
+  \ if D=1 and N=10 then the answer would be 45 ([0,1,2,3,4,5,6,7,8,9])\nIf D=2 and\
+  \ N = 3 the answer is 18 which would be the sum of every number in the following:\n\
+  ```python\n[\n[(0,0), (0,1), (0,2)],\n[(1,0), (1,1), (1,2)],\n[(2,0), (2,1), (2,2)]\n\
+  ]\n```\n\nA naive solution could be to loop over every index in every dimension\
+  \ and add to a global sum. This won't work as the number of dimension is expected\
+  \ to be quite large.\n\nHint: A formulaic approach would be best\nHint 2: Gauss\
+  \ could solve the one dimensional case in his earliest of years, This is just a\
+  \ generalization.\n\n~~~if:javascript\nNote for JS version: Because the results\
+  \ will exceed the maximum safe integer easily, for such values you're only required\
+  \ to have a precision of at least `1 in 1e-9` to the actual answer.\n~~~"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def super_sum (d n : Nat) : Nat := sorry\n\ntheorem super_sum_nonnegative\
+  \ (d n : Nat) :\n  super_sum d n ≥ 0 := sorry\n"
+"vc-theorems": "theorem super_sum_arithmetic_sequence (n : Nat) : \n  super_sum 1\
+  \ n = n * (n - 1) / 2 := sorry\n\n\ntheorem super_sum_dimension_scaling (d n : Nat)\
+  \ :\n  d > 1 → super_sum d n = d * super_sum 1 n * n^(d-1) := sorry\n\n/--\ninfo:\
+  \ 4\n-/\n#guard_msgs in\n#eval super_sum 2 2\n\n/--\ninfo: 18\n-/\n#guard_msgs in\n\
+  #eval super_sum 2 3\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval super_sum 3 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

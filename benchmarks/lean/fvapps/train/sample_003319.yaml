@@ -1,0 +1,69 @@
+"vc-description": "## Overview\nResistors are electrical components marked with colorful\
+  \ stripes/bands to indicate both their resistance value in ohms and how tight a\
+  \ tolerance that value has. While you could always get a tattoo like Jimmie Rodgers\
+  \ to help you remember the resistor color codes, in the meantime, you can write\
+  \ a function that will take a string containing a resistor's band colors and return\
+  \ a string identifying the resistor's ohms and tolerance values.\n\n## The resistor\
+  \ color codes\nYou can see this Wikipedia page for a colorful chart, but the basic\
+  \ resistor color codes are:\n\nblack: 0, brown: 1, red: 2, orange: 3, yellow: 4,\
+  \ green: 5, blue: 6, violet: 7, gray: 8, white: 9\n\nEach resistor will have at\
+  \ least three bands, with the first and second bands indicating the first two digits\
+  \ of the ohms value, and the third indicating the power of ten to multiply them\
+  \ by, for example a resistor with the three bands \"yellow violet black\" would\
+  \ be 47 * 10^0 ohms, or 47 ohms.\n\nMost resistors will also have a fourth band\
+  \ that is either gold or silver, with gold indicating plus or minus 5% tolerance,\
+  \ and silver indicating 10% tolerance. Resistors that do not have a fourth band\
+  \ are rated at 20% tolerance. (There are also more specialized resistors which can\
+  \ have more bands and additional meanings for some of the colors, but this kata\
+  \ will not cover them.)\n\n## Your mission\nThe way the ohms value needs to be formatted\
+  \ in the string you return depends on the magnitude of the value:\n\n* For resistors\
+  \ less than 1000 ohms, return a string containing the number of ohms, a space, the\
+  \ word \"ohms\" followed by a comma and a space, the tolerance value (5, 10, or\
+  \ 20), and a percent sign. For example,  for the \"yellow violet black\" resistor\
+  \ mentioned above, you would return `\"47 ohms, 20%\"`. \n\n* For resistors greater\
+  \ than or equal to 1000 ohms, but less than 1000000 ohms, you will use the same\
+  \ format as above, except that the ohms value will be divided by 1000 and have a\
+  \ lower-case \"k\" after it. For example, for a resistor with bands of \"yellow\
+  \ violet red gold\", you would return `\"4.7k ohms, 5%\"`\n\n* For resistors of\
+  \ 1000000 ohms or greater, you will divide the ohms value by 1000000 and have an\
+  \ upper-case \"M\" after it. For example, for a resistor with bands of \"brown black\
+  \ green silver\", you would return `\"1M ohms, 10%\"`\n\nTest case resistor values\
+  \ will all be between 10 ohms and 990M ohms.\n\n## More examples, featuring some\
+  \ common resistor values\n```\n\"brown black black\"                \"10 ohms, 20%\"\
+  \n\"brown black brown gold\"          \"100 ohms, 5%\"\n\"red red brown\"      \
+  \             \"220 ohms, 20%\"\n\"orange orange brown gold\"        \"330 ohms,\
+  \ 5%\"\n\"yellow violet brown silver\"      \"470 ohms, 10%\"\n\"blue gray brown\"\
+  \                 \"680 ohms, 20%\"\n\"brown black red silver\"           \"1k ohms,\
+  \ 10%\"\n\"brown black orange\"              \"10k ohms, 20%\"\n\"red red orange\
+  \ silver\"           \"22k ohms, 10%\"\n\"yellow violet orange gold\"       \"47k\
+  \ ohms, 5%\"\n\"brown black yellow gold\"        \"100k ohms, 5%\"\n\"orange orange\
+  \ yellow gold\"      \"330k ohms, 5%\"\n\"red black green gold\"             \"\
+  2M ohms, 5%\"\n```\nHave fun! And if you enjoy this kata, check out the sequel:\
+  \ Resistor Color Codes, Part 2"
+"vc-preamble": "import Imports.AllImports\n\ndef COLOR_MAP : List (String × Nat) :=\
+  \ [\n  (\"black\", 0), (\"brown\", 1), (\"red\", 2), (\"orange\", 3), (\"yellow\"\
+  , 4),\n  (\"green\", 5), (\"blue\", 6), (\"violet\", 7), (\"gray\", 8), (\"white\"\
+  , 9)\n]\n\n\ndef decode_resistor_colors (bands : String) : String := sorry\n\ndef\
+  \ String.toFloat (s : String) : Float := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def String.containsString (s : String) (substr : String) : Bool\
+  \ := sorry\n\ntheorem resistor_color_format \n  (first_band second_band multiplier\
+  \ : String)\n  (tolerance : Option String)\n  (h1 : first_band ∈ (COLOR_MAP.map\
+  \ (·.1)))\n  (h2 : second_band ∈ (COLOR_MAP.map (·.1)))\n  (h3 : multiplier ∈ (COLOR_MAP.map\
+  \ (·.1)))\n  (h4 : tolerance.getD \"\" ∈ [\"\", \"gold\", \"silver\"]) :\n  let\
+  \ result := decode_resistor_colors (s!\"{first_band} {second_band} {multiplier}\
+  \ {tolerance.getD \"\"}\".trim)\n  (result.containsString \" ohms, \") ∧ \n  (result.endsWith\
+  \ \"%\") ∧\n  (result.containsString \"\" ∨ result.containsString \"k\" ∨ result.containsString\
+  \ \"M\") := \nsorry\n"
+"vc-theorems": "theorem base_value_calculation\n  (first_band second_band multiplier\
+  \ : String)\n  (h1 : first_band ∈ [\"black\", \"brown\"])\n  (h2 : second_band ∈\
+  \ [\"black\", \"brown\"])\n  (h3 : multiplier = \"black\") :\n  let result := decode_resistor_colors\
+  \ (s!\"{first_band} {second_band} {multiplier}\")\n  let value := String.toFloat\
+  \ ((result.splitOn \" \").head!)\n  let expected := \n    match COLOR_MAP.find?\
+  \ (·.1 = first_band), COLOR_MAP.find? (·.1 = second_band) with\n    | some (_, n1),\
+  \ some (_, n2) => Float.ofNat (n1 * 10 + n2)\n    | _, _ => 0.0\n  value = expected\
+  \ :=\nsorry\n\n/--\ninfo: '47 ohms, 20%'\n-/\n#guard_msgs in\n#eval decode_resistor_colors\
+  \ \"yellow violet black\"\n\n/--\ninfo: '4.7k ohms, 5%'\n-/\n#guard_msgs in\n#eval\
+  \ decode_resistor_colors \"yellow violet red gold\"\n\n/--\ninfo: '1M ohms, 10%'\n\
+  -/\n#guard_msgs in\n#eval decode_resistor_colors \"brown black green silver\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

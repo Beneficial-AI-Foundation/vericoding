@@ -1,0 +1,36 @@
+"vc-description": "Little X has n distinct integers: p_1, p_2, ..., p_{n}. He wants\
+  \ to divide all of them into two sets A and B. The following two conditions must\
+  \ be satisfied:  If number x belongs to set A, then number a - x must also belong\
+  \ to set A.  If number x belongs to set B, then number b - x must also belong to\
+  \ set B. \n\nHelp Little X divide the numbers into two sets or determine that it's\
+  \ impossible.\n\n\n-----Input-----\n\nThe first line contains three space-separated\
+  \ integers n, a, b (1 ≤ n ≤ 10^5; 1 ≤ a, b ≤ 10^9). The next line contains n space-separated\
+  \ distinct integers p_1, p_2, ..., p_{n} (1 ≤ p_{i} ≤ 10^9).\n\n\n-----Output-----\n\
+  \nIf there is a way to divide the numbers into two sets, then print \"YES\" in the\
+  \ first line. Then print n integers: b_1, b_2, ..., b_{n} (b_{i} equals either 0,\
+  \ or 1), describing the division. If b_{i} equals to 0, then p_{i} belongs to set\
+  \ A, otherwise it belongs to set B.\n\nIf it's impossible, print \"NO\" (without\
+  \ the quotes).\n\n\n-----Examples-----\nInput\n4 5 9\n2 3 4 5\n\nOutput\nYES\n0\
+  \ 0 1 1\n\nInput\n3 3 4\n1 2 4\n\nOutput\nNO\n\n\n\n-----Note-----\n\nIt's OK if\
+  \ all the numbers are in the same set, and the other one is empty."
+"vc-preamble": "import Imports.AllImports\n\ndef solve_partition (n : Nat) (a b :\
+  \ Int) (xs : List Int) : Option (List Nat) := sorry\n\ndef is_valid_partition (n\
+  \ : Nat) (a b : Int) (xs : List Int) (result : Option (List Nat)) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_sum (xs : List Int) : Int := \n  match xs with\n  | []\
+  \ => 0\n  | x::rest => x + list_sum rest\n"
+"vc-theorems": "theorem solve_partition_correct (n : Nat) (a b : Int) (xs : List Int)\
+  \ :\n  let result := solve_partition n a b xs\n  match result with\n  | none =>\
+  \ True \n  | some partition =>\n    -- Partition has correct length\n    partition.length\
+  \ = n ∧ \n    -- Partition only contains 0s and 1s\n    (∀ x ∈ partition, x = 0\
+  \ ∨ x = 1) ∧\n    -- Partitioned groups sum to either a or b\n    let groups :=\
+  \ List.zipWith (λ (x : Int) (g : Nat) => if g = 0 then some x else none) xs partition\n\
+  \    let sum0 := list_sum (groups.filterMap id)\n    let groups1 := List.zipWith\
+  \ (λ (x : Int) (g : Nat) => if g = 1 then some x else none) xs partition\n    let\
+  \ sum1 := list_sum (groups1.filterMap id)\n    (sum0 = a ∨ sum0 = b) ∧ (sum1 = a\
+  \ ∨ sum1 = b) :=\nsorry\n\n\ntheorem solve_partition_same_sum (n : Nat) (a : Int)\
+  \ (xs : List Int) \n  (h1 : n ≥ 2)\n  (h2 : a ≥ 3)\n  (h3 : xs.length = n)\n  (h4\
+  \ : ∀ x ∈ xs, 1 ≤ x ∧ x ≤ 5)\n  (h5 : ∀ x ∈ xs, ∃ y ∈ xs, x + y = a) :\n  match\
+  \ solve_partition n a a xs with\n  | none => True\n  | some partition => ∀ g ∈ partition,\
+  \ g = 0 :=\nsorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

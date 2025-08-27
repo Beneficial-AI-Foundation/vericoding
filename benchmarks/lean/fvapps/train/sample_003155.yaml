@@ -1,0 +1,22 @@
+"vc-description": "Complete the method/function so that it converts dash/underscore\
+  \ delimited words into camel casing. The first word within the output should be\
+  \ capitalized **only** if the original word was capitalized (known as Upper Camel\
+  \ Case, also often referred to as Pascal case). \n\n## Examples\n\n```python\nto_camel_case(\"\
+  the-stealth-warrior\") # returns \"theStealthWarrior\"\n\nto_camel_case(\"The_Stealth_Warrior\"\
+  ) # returns \"TheStealthWarrior\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def toCamelCase (s : Option String) : String := sorry\n\ntheorem\
+  \ to_camel_case_no_separators (parts : List String) (h : parts ≠ []) :\n  let joined\
+  \ := \" \".intercalate parts\n  let result := toCamelCase (some joined)\n  ¬ result.contains\
+  \ '_' ∧\n  ¬ result.contains '-' ∧\n  ¬ result.contains ' ' := sorry\n"
+"vc-theorems": "theorem to_camel_case_first_word_preserved \n  (first : String) (sep\
+  \ : Char) (rest : List String)\n  (h_sep : sep = '-' ∨ sep = '_') :\n  let text\
+  \ := first ++ sep.toString ++ String.join (List.intersperse sep.toString rest)\n\
+  \  let result := toCamelCase (some text)\n  result.startsWith first := sorry\n\n\
+  \ntheorem to_camel_case_empty_input :\n  toCamelCase (some \"\") = \"\" ∧ toCamelCase\
+  \ none = \"\" := sorry\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval to_camel_case\
+  \ \"\"\n\n/--\ninfo: 'theStealthWarrior'\n-/\n#guard_msgs in\n#eval to_camel_case\
+  \ \"the_stealth_warrior\"\n\n/--\ninfo: 'TheStealthWarrior'\n-/\n#guard_msgs in\n\
+  #eval to_camel_case \"The-Stealth-Warrior\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,20 @@
+"vc-description": "For some fixed N, an array A is beautiful if it is a permutation\
+  \ of the integers 1, 2, ..., N, such that:\nFor every i < j, there is no k with\
+  \ i < k < j such that A[k] * 2 = A[i] + A[j].\nGiven N, return any beautiful array\
+  \ A.  (It is guaranteed that one exists.)\n \nExample 1:\nInput: 4\nOutput: [2,1,4,3]\n\
+  \n\nExample 2:\nInput: 5\nOutput: [3,1,2,5,4]\n \n\nNote:\n\n1 <= N <= 1000"
+"vc-preamble": "import Imports.AllImports\n\ndef beautiful_array (n : Nat) : List\
+  \ Nat :=\n  sorry\n\n\ndef is_permutation (arr : List Nat) (n : Nat) : Bool :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_beautiful_property (arr : List Nat) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem beautiful_array_correct (n : Nat) : \n  let arr := beautiful_array\
+  \ n\n  n > 0 → (\n    -- Length is correct\n    arr.length = n ∧ \n    -- Is permutation\
+  \ of 1..n\n    is_permutation arr n = true ∧\n    -- Beautiful property holds\n\
+  \    check_beautiful_property arr = true\n  ) :=\n  sorry\n\n\ntheorem beautiful_array_small_cases\
+  \ :\n  ∀ n : Nat, n ≤ 5 → n > 0 →\n    let arr := beautiful_array n\n    arr.length\
+  \ = n ∧\n    is_permutation arr n = true ∧ \n    check_beautiful_property arr =\
+  \ true :=\n  sorry\n\n/--\ninfo: [1, 3, 2, 4]\n-/\n#guard_msgs in\n#eval beautiful_array\
+  \ 4\n\n/--\ninfo: [1, 5, 3, 2, 4]\n-/\n#guard_msgs in\n#eval beautiful_array 5\n\
+  \n/--\ninfo: [1]\n-/\n#guard_msgs in\n#eval beautiful_array 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,36 @@
+"vc-description": "You are playing the following Bulls and Cows game with your friend:\
+  \ You write down a number and ask your friend to guess what the number is. Each\
+  \ time your friend makes a guess, you provide a hint that indicates how many digits\
+  \ in said guess match your secret number exactly in both digit and position (called\
+  \ \"bulls\") and how many digits match the secret number but locate in the wrong\
+  \ position (called \"cows\"). Your friend will use successive guesses and hints\
+  \ to eventually derive the secret number.\n\nWrite a function to return a hint according\
+  \ to the secret number and friend's guess, use A to indicate the bulls and B to\
+  \ indicate the cows. \n\nPlease note that both secret number and friend's guess\
+  \ may contain duplicate digits.\n\nExample 1:\n\n\nInput: secret = \"1807\", guess\
+  \ = \"7810\"\n\nOutput: \"1A3B\"\n\nExplanation: 1 bull and 3 cows. The bull is\
+  \ 8, the cows are 0, 1 and 7.\n\nExample 2:\n\n\nInput: secret = \"1123\", guess\
+  \ = \"0111\"\n\nOutput: \"1A1B\"\n\nExplanation: The 1st 1 in friend's guess is\
+  \ a bull, the 2nd or 3rd 1 is a cow.\n\nNote: You may assume that the secret number\
+  \ and your friend's guess only contain digits, and their lengths are always equal."
+"vc-preamble": "import Imports.AllImports\n\ndef get_hint (secret: String) (guess:\
+  \ String) : String :=\n  sorry\n\n\ndef countMatches (s1 s2: String) : Nat :=\n\
+  \  sorry\n\n\ndef natToString (n: Nat) : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def splitHint (hint: String) : HintResult :=\n  sorry\n"
+"vc-theorems": "theorem hint_format {secret guess: String} (h: secret.length = guess.length):\n\
+  \  let hint := get_hint secret guess \n  let bulls_cows := hint.dropRight 1\n  let\
+  \ parts := bulls_cows.split (λc => c = 'A')\n  (hint.takeRight 1 = \"B\" ∧ \n  \
+  \ parts.length = 2 ∧\n   parts[0]!.all Char.isDigit ∧\n   parts[1]!.all Char.isDigit)\n\
+  \  := sorry\n\n\ntheorem hint_counts_valid {secret guess : String} (h: secret.length\
+  \ = guess.length):\n  let hint := get_hint secret guess\n  let result := splitHint\
+  \ hint\n  (result.bulls + result.cows ≤ secret.length ∧\n   result.bulls ≤ countMatches\
+  \ secret guess)\n  := sorry\n\n\ntheorem identical_strings_hint {s : String}:\n\
+  \  get_hint s s = natToString s.length ++ \"A0B\"\n  := sorry\n\n\ntheorem hint_symmetry\
+  \ {secret guess : String} (h: secret.length = guess.length):\n  let hint1 := get_hint\
+  \ secret guess\n  let hint2 := get_hint guess secret\n  (splitHint hint1).bulls\
+  \ = (splitHint hint2).bulls\n  := sorry\n\n/--\ninfo: '1A3B'\n-/\n#guard_msgs in\n\
+  #eval get_hint \"1807\" \"7810\"\n\n/--\ninfo: '1A1B'\n-/\n#guard_msgs in\n#eval\
+  \ get_hint \"1123\" \"0111\"\n\n/--\ninfo: '0A0B'\n-/\n#guard_msgs in\n#eval get_hint\
+  \ \"1234\" \"5678\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

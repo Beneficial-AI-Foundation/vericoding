@@ -1,0 +1,33 @@
+"vc-description": "=====Problem Statement=====\nThere is an array of n integers. There\
+  \ are also 2 disjoint sets, A and B, each containing m integers. You like all the\
+  \ integers in set A and dislike all the integers in set B. Your initial happiness\
+  \ is 0. For each integer i in the array, if i ∈ A, you add 1 to your happiness.\
+  \ If i ∈ B, you add -1 to your happiness. Otherwise, your happiness does not change.\
+  \ Output your final happiness at the end.\n\nNote: Since A and B are sets, they\
+  \ have no repeated elements. However, the array might contain duplicate elements.\n\
+  \n=====Constraints=====\n1≤n≤10^5\n1≤m≤10^5\n1≤Any integer in the input≤10^9\n\n\
+  =====Input Format=====\nThe first line contains integers n and m separated by a\
+  \ space.\nThe second line contains n integers, the elements of the array.\nThe third\
+  \ and fourth lines contain m integers, A and B, respectively.\n\n=====Output Format=====\n\
+  Output a single integer, your total happiness."
+"vc-preamble": "import Imports.AllImports\n\ndef SetInt.contains (s : SetInt) (x :\
+  \ Int) : Bool :=\n  match s with\n  | mk list => list.contains x\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def SetInt.empty : SetInt := SetInt.mk []\n\ndef calculate_happiness\
+  \ (arr : List Int) (setA setB : SetInt) : Int :=\n  sorry\n"
+"vc-theorems": "theorem happiness_count_property (arr : List Int) (setA setB : SetInt)\
+  \ \n    (h : arr.length > 0) :\n  calculate_happiness arr setA setB = \n    ((arr.filter\
+  \ (λ x => setA.contains x)).length - \n     (arr.filter (λ x => setB.contains x)).length)\
+  \ :=\n  sorry\n\n\ntheorem disjoint_set_no_effect (arr : List Int) (setA : SetInt)\
+  \ \n    (h : arr.length > 0) :\n  let disjointSet := SetInt.mk [arr.maximum?.get!.add\
+  \ 1]\n  (calculate_happiness arr setA disjointSet = calculate_happiness arr setA\
+  \ SetInt.empty) ∧ \n  (calculate_happiness arr disjointSet setA = calculate_happiness\
+  \ arr SetInt.empty setA) :=\n  sorry\n\n\ntheorem empty_sets_zero (arr : List Int)\
+  \ (h : arr.length > 0) :\n  calculate_happiness arr SetInt.empty SetInt.empty =\
+  \ 0 :=\n  sorry\n\n\ntheorem same_set_cancels (arr : List Int) (testSet : SetInt)\
+  \ \n    (h : arr.length > 0) :\n  calculate_happiness arr testSet testSet = 0 :=\n\
+  \  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval calculate_happiness [1, 5, 3]\
+  \ {3, 1} {5, 7}\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval calculate_happiness [1,\
+  \ 2, 3] {4, 5} {6, 7}\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval calculate_happiness\
+  \ [1, 1, 2, 2, 3] {1, 3} {2}\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,33 @@
+"vc-description": "The Fibonacci numbers are the numbers in the following integer\
+  \ sequence (Fn):\n>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, ...\n\nsuch\
+  \ as \n>F(n) = F(n-1) + F(n-2) with F(0) = 0 and F(1) = 1.\n\nGiven a number, say\
+  \ prod (for product), we search two Fibonacci numbers F(n) and F(n+1) verifying\
+  \ \n>F(n) * F(n+1) = prod.\n\nYour function productFib takes an integer (prod) and\
+  \ returns\nan array: \n```\n[F(n), F(n+1), true] or {F(n), F(n+1), 1} or (F(n),\
+  \ F(n+1), True)\n```\ndepending on the language if F(n) * F(n+1) = prod.\n\nIf you\
+  \ don't find two consecutive F(m) verifying `F(m) * F(m+1) = prod`you will return\n\
+  ```\n[F(m), F(m+1), false] or {F(n), F(n+1), 0} or (F(n), F(n+1), False)\n```\n\
+  F(m) being the smallest one such as `F(m) * F(m+1) > prod`.\n\n\n### Some Examples\
+  \ of Return:\n(depend on the language)\n\n```\nproductFib(714) # should return (21,\
+  \ 34, true), \n                # since F(8) = 21, F(9) = 34 and 714 = 21 * 34\n\n\
+  productFib(800) # should return (34, 55, false), \n                # since F(8)\
+  \ = 21, F(9) = 34, F(10) = 55 and 21 * 34 < 800 < 34 * 55\n-----\nproductFib(714)\
+  \ # should return [21, 34, true], \nproductFib(800) # should return [34, 55, false],\
+  \ \n-----\nproductFib(714) # should return {21, 34, 1}, \nproductFib(800) # should\
+  \ return {34, 55, 0},        \n-----\nproductFib(714) # should return {21, 34, true},\
+  \ \nproductFib(800) # should return {34, 55, false}, \n```\n\n### Note:\n\n- You\
+  \ can see examples for your language in \"Sample Tests\"."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def productFib (n : Nat) : (Nat × Nat × Bool) := sorry\n\ndef fib\
+  \ : Nat → Nat := sorry\n"
+"vc-theorems": "theorem product_fib_valid_structure \n  (n : Nat) \n  (h : n ≤ 10^8)\
+  \ :\n  let (a, b, bool) := productFib n\n  a ≥ 0 ∧ b ≥ a := sorry\n\n\ntheorem product_fib_consecutive_fibs\n\
+  \  (n : Nat)\n  (h : n ≤ 10^8) :\n  let (a, b, _) := productFib n\n  ∃ k, fib k\
+  \ = a ∧ fib (k + 1) = b := sorry\n\n\ntheorem product_fib_boolean_correctness\n\
+  \  (n : Nat)\n  (h : n ≤ 10^8) :\n  let (a, b, isExact) := productFib n\n  (isExact\
+  \ → a * b = n) ∧ \n  (¬isExact → a * b > n) ∧\n  (¬isExact → ∃ k, fib k = a ∧ fib\
+  \ (k-1) * fib k < n) := sorry\n\n/--\ninfo: [21, 34, True]\n-/\n#guard_msgs in\n\
+  #eval productFib 714\n\n/--\ninfo: [34, 55, False]\n-/\n#guard_msgs in\n#eval productFib\
+  \ 800\n\n/--\ninfo: [0, 1, True]\n-/\n#guard_msgs in\n#eval productFib 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

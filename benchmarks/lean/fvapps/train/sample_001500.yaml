@@ -1,0 +1,23 @@
+"vc-description": "Chef is interested to solve series problems. Chef wants to solve\
+  \ a series problem but he can't \nsolve it till now.Can you help Chef to solve the\
+  \ series problem?\n- In series problem, the series goes as follows 1,9,31,73,141\
+  \ . . . . . . . . \nYour task is to find the Nth term of series. For larger value\
+  \ of $N$ answer becomes very large, So your output should be performed $N$th term\
+  \ modulo 1000000007 ($10^9+7$ ).\n\n-----Input:-----\n- First line will contain\
+  \ $T$, number of testcases. Then the testcases follow. \n- Each testcase contains\
+  \ of a single integer $N$. \n\n-----Output:-----\nFor each testcase,  output in\
+  \ a single line answer i.e. The $N$th term of series modulo 1000000007.\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 10^5$\n- $1 \\leq N \\leq 10^9$\n\n-----Sample Input:-----\n\
+  2\n\n8\n\n10\n\n-----Sample Output:-----\n561\n\n1081"
+"vc-preamble": "import Imports.AllImports\n\ndef solve_series (n : Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD := 1000000007\n\n\n\n\n\ntheorem solve_series_increases\
+  \ (n : Nat) (h : n > 0) (h2 : n ≤ 100) :\n  solve_series (n+1) > solve_series n\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem solve_series_one :\n  solve_series 1 = 1 :=\n  sorry\n\n\n\
+  theorem solve_series_large_bound (n : Nat) (h : n = 1000000) :\n  solve_series n\
+  \ < MOD :=\n  sorry\n\n/--\ninfo: 561\n-/\n#guard_msgs in\n#eval solve_series 8\n\
+  \n/--\ninfo: 1081\n-/\n#guard_msgs in\n#eval solve_series 10\n\n/--\ninfo: 31\n\
+  -/\n#guard_msgs in\n#eval solve_series 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

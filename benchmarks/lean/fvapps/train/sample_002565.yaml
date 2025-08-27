@@ -1,0 +1,29 @@
+"vc-description": "Your task is to create a function called ```sum_arrays()``` in\
+  \ Python or ```addArrays``` in Javascript, which takes two arrays consisting of\
+  \ integers, and returns the sum of those two arrays.\n\nThe twist is that (for example)\
+  \ ```[3,2,9]``` does not equal ``` 3 + 2 + 9```, it would equal ```'3' + '2' + '9'```\
+  \ converted to an integer for this kata, meaning it would equal ```329```. The output\
+  \ should be an array of the the sum  in a similar fashion to the input (for example,\
+  \ if the sum is ```341```, you would return ```[3,4,1]```). Examples are given below\
+  \ of what two arrays should return.\n```python\n[3,2,9],[1,2] --> [3,4,1]\n[4,7,3],[1,2,3]\
+  \ --> [5,9,6]\n[1],[5,7,6] --> [5,7,7]\n```\nIf both arrays are empty, return an\
+  \ empty array.\n\nIn some cases, there will be an array containing a negative number\
+  \ as the first index in the array. In this case treat the whole number as a negative\
+  \ number. See below:\n```python\n[3,2,6,6],[-7,2,2,8] --> [-3,9,6,2] # 3266 + (-7228)\
+  \ = -3962\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sumArrays (arr1 arr2 : List Int) : List Int := sorry\n\n--\
+  \ Empty arrays sum to empty array"
+"vc-theorems": "theorem sum_empty : sumArrays [] [] = [] := sorry\n\n-- Empty array\
+  \ is neutral element\n\ntheorem sum_empty_neutral (arr : List Int) : \n  sumArrays\
+  \ arr [] = arr ∧ sumArrays [] arr = arr := sorry\n\n-- Sum of arrays equals sum\
+  \ of their numerical values\n\ntheorem sum_equals_numerical_sum (arr1 arr2 : List\
+  \ Int) :\n  let toNum (arr : List Int) := if arr = [] then (0 : Int) else\n    let\
+  \ digits := arr.tail.map (fun x => (x.toNat : Int))\n    let num := digits.foldl\
+  \ (fun acc d => acc * 10 + d) (0 : Int)\n    if arr.head! < 0 then -num else num\n\
+  \  toNum (sumArrays arr1 arr2) = toNum arr1 + toNum arr2 := sorry\n\n/--\ninfo:\
+  \ [3, 4, 1]\n-/\n#guard_msgs in\n#eval sum_arrays #[3, 2, 9] #[1, 2]\n\n/--\ninfo:\
+  \ [-3, 9, 6, 2]\n-/\n#guard_msgs in\n#eval sum_arrays #[3, 2, 6, 6] #[-7, 2, 2,\
+  \ 8]\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval sum_arrays #[] #[]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

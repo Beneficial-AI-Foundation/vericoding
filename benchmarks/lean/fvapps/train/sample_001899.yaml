@@ -1,0 +1,28 @@
+"vc-description": "Given a set of N people (numbered 1, 2, ..., N), we would like\
+  \ to split everyone into two groups of any size.\nEach person may dislike some other\
+  \ people, and they should not go into the same group. \nFormally, if dislikes[i]\
+  \ = [a, b], it means it is not allowed to put the people numbered a and b into the\
+  \ same group.\nReturn true if and only if it is possible to split everyone into\
+  \ two groups in this way.\n \n\n\n\n\n\n\n\nExample 1:\nInput: N = 4, dislikes =\
+  \ [[1,2],[1,3],[2,4]]\nOutput: true\nExplanation: group1 [1,4], group2 [2,3]\n\n\
+  \nExample 2:\nInput: N = 3, dislikes = [[1,2],[1,3],[2,3]]\nOutput: false\n\n\n\
+  Example 3:\nInput: N = 5, dislikes = [[1,2],[2,3],[3,4],[4,5],[1,5]]\nOutput: false\n\
+  \n\n\n\n \nConstraints:\n\n1 <= N <= 2000\n0 <= dislikes.length <= 10000\ndislikes[i].length\
+  \ == 2\n1 <= dislikes[i][j] <= N\ndislikes[i][0] < dislikes[i][1]\nThere does not\
+  \ exist i != j for which dislikes[i] == dislikes[j]."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def possible_bipartition (n : Nat) (dislikes : List (List Nat))\
+  \ : Bool :=\n  sorry\n"
+"vc-theorems": "theorem empty_dislikes_always_possible {n : Nat} {dislikes : List\
+  \ (List Nat)} :\n  n ≥ 2 → dislikes = [] → possible_bipartition n dislikes = true\
+  \ := by\n  sorry\n\n\ntheorem single_pair_always_possible {n : Nat} {dislikes :\
+  \ List (List Nat)} :\n  n ≥ 2 → dislikes.length = 1 → possible_bipartition n dislikes\
+  \ = true := by\n  sorry\n\n\ntheorem triangle_impossible :\n  possible_bipartition\
+  \ 3 [[1,2], [2,3], [1,3]] = false := by\n  sorry\n\n\ntheorem simple_chain_possible\
+  \ :\n  possible_bipartition 4 [[1,2], [2,3], [3,4]] = true := by\n  sorry\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval possible_bipartition 4 [[1, 2], [1, 3], [2,\
+  \ 4]]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval possible_bipartition 3 [[1,\
+  \ 2], [1, 3], [2, 3]]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval possible_bipartition\
+  \ 5 [[1, 2], [2, 3], [3, 4], [4, 5], [1, 5]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

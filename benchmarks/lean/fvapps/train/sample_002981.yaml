@@ -1,0 +1,33 @@
+"vc-description": "Two moving objects A and B are moving accross the same orbit (those\
+  \ can be anything: two planets, two satellites, two spaceships,two flying saucers,\
+  \ or spiderman with batman if you prefer).\nIf the two objects start to move from\
+  \ the same point and the orbit is circular, write a function that gives the time\
+  \ the two objects will meet again, given the time the objects A and B need to go\
+  \ through a full orbit, Ta and Tb respectively, and the radius of the orbit r. \n\
+  As there can't be negative time, the sign of Ta and Tb, is an indication of the\
+  \ direction in which the object moving: positive for clockwise and negative for\
+  \ anti-clockwise.\n\nThe function will return a string that gives the time, in two\
+  \ decimal points.\nTa and Tb will have the same unit of measurement so you should\
+  \ not expect it in the solution. \n\nHint: Use angular velocity \"w\" rather than\
+  \ the classical \"u\"."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def validFormat (s : String) : Bool := sorry\n\ndef meetingTime\
+  \ (ta tb r : Float) : String := sorry\n"
+"vc-theorems": "theorem zero_period_format (ta : Float) (h : ta ≠ 0) :\n  validFormat\
+  \ (meetingTime ta 0 5) := sorry\n\n\ntheorem zero_period_value_nonzero (ta : Float)\
+  \ (h : ta ≠ 0) :\n  ∃ x : Float, Float.abs (x - Float.abs ta) < 0.01 ∧ \n  meetingTime\
+  \ ta 0 5 = toString x := sorry\n\n\ntheorem zero_period_value_zero :\n  meetingTime\
+  \ 0 0 5 = \"0.00\" := sorry\n\n\ntheorem meeting_time_format (ta tb : Float) (r\
+  \ : Float) \n  (h1 : ta ≠ tb) (h2 : ta ≠ 0) (h3 : tb ≠ 0) (h4 : r ≥ 0.1) (h5 : r\
+  \ ≤ 1000) :\n  validFormat (meetingTime ta tb r) := sorry\n\n\ntheorem meeting_time_positive\
+  \ (ta tb : Float) (r : Float)\n  (h1 : ta ≠ tb) (h2 : ta ≠ 0) (h3 : tb ≠ 0) (h4\
+  \ : r ≥ 0.1) (h5 : r ≤ 1000) :\n  ∃ x : Float, x ≥ 0 ∧ meetingTime ta tb r = toString\
+  \ x := sorry\n\n\ntheorem meeting_time_scaling (ta tb : Float) (r : Float)\n  (h1\
+  \ : ta ≠ tb) (h2 : ta ≠ 0) (h3 : tb ≠ 0) (h4 : r ≥ 0.1) (h5 : r ≤ 1000) :\n  ∃ x\
+  \ y : Float, \n    meetingTime ta tb r = toString x ∧ \n    meetingTime (2*ta) (2*tb)\
+  \ r = toString y ∧\n    Float.abs (y - 2*x) < 0.1 := sorry\n\n/--\ninfo: '60.00'\n\
+  -/\n#guard_msgs in\n#eval meeting_time 12 15 5\n\n/--\ninfo: '6.67'\n-/\n#guard_msgs\
+  \ in\n#eval meeting_time 12 -15 6\n\n/--\ninfo: '7.78'\n-/\n#guard_msgs in\n#eval\
+  \ meeting_time -14 -5 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,31 @@
+"vc-description": "# Task:\n\nWe define the \"self reversed power sequence\" as one\
+  \ shown below:\n\n\n\nImplement a function that takes 2 arguments (`ord max` and\
+  \ `num dig`), and finds the smallest term of the sequence whose index is less than\
+  \ or equal to `ord max`, and has exactly `num dig` number of digits.\n\nIf there\
+  \ is a number with correct amount of digits, the result should be an array in the\
+  \ form:\n\n```python\n[True, smallest found term]\n[False, -1]\n```\n\n## Input\
+  \ range:\n\n```python\nord_max <= 1000\n```\n\n___\n\n## Examples:\n\n```python\n\
+  min_length_num(5, 10) == [True, 10]   # 10th term has 5 digits\nmin_length_num(7,\
+  \ 11) == [False, -1]  # no terms before the 13th one have 7 digits\nmin_length_num(7,\
+  \ 14) == [True, 13]   # 13th term is the first one which has 7 digits\n```\n\nWhich\
+  \ you can see in the table below:\n\n```\nn-th Term    Term Value\n1           \
+  \   0\n2              1\n3              3\n4              8\n5              22\n\
+  6              65\n7              209\n8              732\n9              2780\n\
+  10             11377\n11             49863\n12             232768\n13          \
+  \   1151914\n14             6018785\n```\n\n___\n\nEnjoy it and happy coding!!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_length_num (digits max_num : Int) : Result := sorry\n\n\
+  theorem min_length_num_valid_input (digits max_num : Int)\n  (h1 : digits ≥ 1) (h2\
+  \ : digits ≤ 100)\n  (h3 : max_num ≥ 1) (h4 : max_num ≤ 1000) :\n  let result :=\
+  \ min_length_num digits max_num\n  result.success → (\n    result.value ≤ max_num\
+  \ ∧\n    result.value > 0\n  ) := sorry\n"
+"vc-theorems": "theorem min_length_num_invalid_digits (digits max_num : Int)\n  (h1\
+  \ : digits ≤ 0) (h2 : max_num ≥ 1) (h3 : max_num ≤ 1000) :\n  min_length_num digits\
+  \ max_num = ⟨false, -1⟩ := sorry\n\n\ntheorem min_length_num_invalid_max_num (digits\
+  \ max_num : Int)\n  (h1 : digits ≥ 1) (h2 : digits ≤ 100) (h3 : max_num ≤ 0) :\n\
+  \  min_length_num digits max_num = ⟨false, -1⟩ := sorry\n\n/--\ninfo: [True, 10]\n\
+  -/\n#guard_msgs in\n#eval min_length_num 5 10\n\n/--\ninfo: [False, -1]\n-/\n#guard_msgs\
+  \ in\n#eval min_length_num 7 11\n\n/--\ninfo: [True, 13]\n-/\n#guard_msgs in\n#eval\
+  \ min_length_num 7 14\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

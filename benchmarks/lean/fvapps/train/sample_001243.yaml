@@ -1,0 +1,27 @@
+"vc-description": "You are given a string $s$. And you have a function $f(x)$ defined\
+  \ as:\nf(x) = 1, if $x$ is a vowel\nf(x) = 0, if $x$ is a constant\n\nYour task\
+  \ is to apply the above function on all the characters in the string s and convert\
+  \ \nthe obtained binary string in decimal number $M$.\nSince the number $M$ can\
+  \ be very large, compute it modulo $10^9+7$. \n\n-----Input:-----\n- The first line\
+  \ of the input contains a single integer $T$ i.e the no. of test cases. \n- Each\
+  \ test line contains one String $s$ composed of lowercase English alphabet letters.\
+  \ \n\n-----Output:-----\nFor each case, print a single line containing one integer\
+  \ $M$ modulo $10^9 + 7$.\n\n-----Constraints-----\n- $1 ≤ T ≤ 50$\n- $|s|≤10^5$\n\
+  \n-----Subtasks-----\n- 20 points : $|s|≤30$\n- 80 points : $ \\text{original constraints}$\n\
+  \n-----Sample Input:-----\n1\nhello\n\n-----Sample Output:-----\n9"
+"vc-preamble": "import Imports.AllImports\n\ndef binaryStringToDecimal (s : String)\
+  \ : Nat := sorry\n\ntheorem result_in_valid_range (s : String) (h : s.length > 0)\
+  \ : \n  binaryStringToDecimal s < 10^9 + 7 ∧ binaryStringToDecimal s ≥ 0 := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isVowel (c : Char) : Bool := sorry\n\ntheorem all_vowels_max_value\
+  \ (s : String) (h : s.length > 0) \n  (h2 : ∀ c ∈ s.data, isVowel c) :\n  binaryStringToDecimal\
+  \ s = (2^s.length - 1) % (10^9 + 7) := sorry\n"
+"vc-theorems": "theorem all_consonants_zero (s : String) (h : s.length > 0)\n  (h2\
+  \ : ∀ c ∈ s.data, ¬isVowel c) :\n  binaryStringToDecimal s = 0 := sorry\n\n\ntheorem\
+  \ same_vowel_positions_equal (s1 s2 : String) \n  (h1 : s1.length > 0)\n  (h2 :\
+  \ s1.length = s2.length)\n  (h3 : ∀ (i : String.Pos), isVowel (s1.get i) = isVowel\
+  \ (s2.get i)) :\n  binaryStringToDecimal s1 = binaryStringToDecimal s2 := sorry\n\
+  \n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval binary_string_to_decimal \"hello\"\n\n\
+  /--\ninfo: 31\n-/\n#guard_msgs in\n#eval binary_string_to_decimal \"aeiou\"\n\n\
+  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval binary_string_to_decimal \"xyz\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

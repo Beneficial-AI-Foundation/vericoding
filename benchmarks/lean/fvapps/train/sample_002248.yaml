@@ -1,0 +1,30 @@
+"vc-description": "Given are integer sequence of length N, A = (A_1, A_2, \\cdots,\
+  \ A_N), and an integer K.\nFor each X such that 1 \\le X \\le K, find the following\
+  \ value:\n\\left(\\displaystyle \\sum_{L=1}^{N-1} \\sum_{R=L+1}^{N} (A_L+A_R)^X\\\
+  right) \\bmod 998244353\n\n-----Constraints-----\n - All values in input are integers.\n\
+  \ -  2 \\le N \\le 2 \\times 10^5\n -  1 \\le K \\le 300 \n -  1 \\le A_i \\le 10^8\
+  \ \n\n-----Input-----\nInput is given from Standard Input in the following format:\n\
+  N K\nA_1 A_2 \\cdots A_N\n\n-----Output-----\nPrint K lines.\nThe X-th line should\
+  \ contain the value \\left(\\displaystyle \\sum_{L=1}^{N-1} \\sum_{R=L+1}^{N} (A_L+A_R)^X\
+  \ \\right) \\bmod 998244353.\n\n-----Sample Input-----\n3 3\n1 2 3\n\n-----Sample\
+  \ Output-----\n12\n50\n216\n\nIn the 1-st line, we should print (1+2)^1 + (1+3)^1\
+  \ + (2+3)^1 = 3 + 4 + 5 = 12.\nIn the 2-nd line, we should print (1+2)^2 + (1+3)^2\
+  \ + (2+3)^2 = 9 + 16 + 25 = 50.\nIn the 3-rd line, we should print (1+2)^3 + (1+3)^3\
+  \ + (2+3)^3 = 27 + 64 + 125 = 216."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD : Nat := 998244353\n\ndef solve (N : Nat) (K : Nat) (A\
+  \ : List Nat) : List Nat :=\n  sorry\n"
+"vc-theorems": "theorem solve_length {N K : Nat} {A : List Nat} \n  (h1 : N ≥ 2) (h2\
+  \ : K ≥ 1) (h3 : A.length = N) :\n  (solve N K A).length = K := sorry\n\n\ntheorem\
+  \ solve_mod {N K : Nat} {A : List Nat} \n  (h1 : N ≥ 2) (h2 : K ≥ 1) (h3 : A.length\
+  \ = N) :\n  ∀ x ∈ solve N K A, 0 ≤ x ∧ x < MOD := sorry\n\n\ntheorem solve_deterministic\
+  \ {N K : Nat} {A : List Nat}\n  (h1 : N ≥ 2) (h2 : K ≥ 1) (h3 : A.length = N) :\n\
+  \  solve N K A = solve N K A := sorry\n\n\ntheorem solve_order_independent {N K\
+  \ : Nat} {A : List Nat}\n  (h1 : N ≥ 2) (h2 : K ≥ 1) (h3 : A.length = N) :\n  solve\
+  \ N K A = solve N K A.reverse := sorry\n\n\ntheorem solve_zeros {N K : Nat}\n  (h1\
+  \ : N ≥ 2) (h2 : K ≥ 1) :\n  ∀ x ∈ solve N K (List.replicate N 0), x = 0 := sorry\n\
+  \n\ntheorem solve_ones_first_power {N K : Nat}\n  (h1 : N ≥ 2) (h2 : K ≥ 1) :\n\
+  \  let num_pairs := (N * (N-1)) / 2;\n  (solve N K (List.replicate N 1)).get! 0\
+  \ = (num_pairs * 2) % MOD := sorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

@@ -1,0 +1,32 @@
+"vc-description": "Our fruit guy has a bag of fruit (represented as an array of strings)\
+  \ where some fruits are rotten. He wants to replace all the rotten pieces of fruit\
+  \ with fresh ones. For example, given `[\"apple\",\"rottenBanana\",\"apple\"]` the\
+  \ replaced array should be `[\"apple\",\"banana\",\"apple\"]`. Your task is to implement\
+  \ a method that accepts an array of strings containing fruits should returns an\
+  \ array of strings where all the rotten fruits are replaced by good ones. \n\n###\
+  \ Notes\n\n- If the array is null/nil/None or empty you should return empty array\
+  \ (`[]`).\n- The rotten fruit name will be in this camelcase (`rottenFruit`).\n\
+  - The returned array should be in lowercase."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def removeRotten (fruits : Option (List String)) : List String\
+  \ := sorry\n\ntheorem remove_rotten_length {fruits : List String} :\n  let result\
+  \ := removeRotten (some fruits)\n  List.length result = List.length fruits := sorry\n"
+"vc-theorems": "theorem remove_rotten_no_rotten {fruits : List String} :\n  let result\
+  \ := removeRotten (some fruits)\n  ∀ fruit ∈ result, ¬(fruit.contains 'r' ∧ fruit.contains\
+  \ 'o' ∧ \n    fruit.contains 't' ∧ fruit.contains 't' ∧ fruit.contains 'e' ∧ fruit.contains\
+  \ 'n') := sorry\n\n\ntheorem remove_rotten_preserves_order {fruits : List String}\
+  \ :\n  let result := removeRotten (some fruits)\n  let original_no_rotten := fruits.map\
+  \ (fun f => (String.replace f \"rotten\" \"\").toLower)\n  result = original_no_rotten\
+  \ := sorry\n\n\ntheorem remove_rotten_empty :\n  removeRotten none = [] ∧ removeRotten\
+  \ (some []) = [] := sorry\n\n\ntheorem remove_rotten_all_rotten {rotten_fruits :\
+  \ List String} \n  (h : ∀ fruit ∈ rotten_fruits, ∃ suffix, fruit = \"rotten\" ++\
+  \ suffix) :\n  let result := removeRotten (some rotten_fruits)\n  (∀ fruit ∈ result,\
+  \ ¬(fruit.contains 'r' ∧ fruit.contains 'o' ∧ \n    fruit.contains 't' ∧ fruit.contains\
+  \ 't' ∧ fruit.contains 'e' ∧ fruit.contains 'n')) ∧ \n  List.length result = List.length\
+  \ rotten_fruits := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval remove_rotten\
+  \ [\"apple\", \"banana\", \"kiwi\", \"melone\", \"orange\"]\n\n/--\ninfo: expected2\n\
+  -/\n#guard_msgs in\n#eval remove_rotten [\"rottenApple\", \"rottenBanana\", \"rottenKiwi\"\
+  ]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval remove_rotten [\"apple\", \"\
+  rottenBanana\", \"rottenApple\", \"pineapple\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

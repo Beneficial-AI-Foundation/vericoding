@@ -1,0 +1,20 @@
+"vc-description": "Consider the number triangle below, in which each number is equal\
+  \ to the number above plus the number to the left. If there is no number above,\
+  \ assume it's a `0`.\n\nThe triangle has `5` rows and the sum of the last row is\
+  \ `sum([1,4,9,14,14]) = 42`.\n\nYou will be given an integer `n` and your task will\
+  \ be to return the sum of the last row of a triangle of `n` rows. \n\nIn the example\
+  \ above:\nMore examples in test cases. Good luck!\n\n```if:javascript\n### Note\n\
+  \nThis kata uses native arbitrary precision integer numbers ( `BigInt`, `1n` ).\
+  \  \nUnfortunately, the testing framework and even native `JSON` do not fully support\
+  \ them yet.  \n`console.log(1n)` and `(1n).toString()` work and can be used for\
+  \ debugging.  \n\nWe apologise for the inconvenience.\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (n : Nat) : Nat := sorry\n\ntheorem solve_positive (n\
+  \ : Nat) (h : n > 0) : solve n > 0 := sorry\n"
+"vc-theorems": "theorem solve_small_values :\n  solve 1 = 1 ∧ solve 2 = 2 ∧ solve\
+  \ 3 = 5 := sorry \n\n\ntheorem solve_monotonic (n : Nat) (h : n > 1) : solve n >\
+  \ solve (n-1) := sorry\n\n/--\ninfo: 14\n-/\n#guard_msgs in\n#eval solve 4\n\n/--\n\
+  info: 42\n-/\n#guard_msgs in\n#eval solve 5\n\n/--\ninfo: 132\n-/\n#guard_msgs in\n\
+  #eval solve 6\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

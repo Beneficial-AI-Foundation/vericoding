@@ -1,0 +1,30 @@
+"vc-description": "In this Kata we focus on finding a sum S(n) which is the total\
+  \ number of divisors taken for all natural numbers less or equal to n. More formally,\
+  \ we investigate the sum of n components denoted by d(1) + d(2) + ... + d(n) in\
+  \ which for any i starting from 1 up to n the value of d(i) tells us how many distinct\
+  \ numbers divide i without a remainder. \n\nYour solution should work for possibly\
+  \ large values of n without a timeout.\nAssume n to be greater than zero and not\
+  \ greater than 999 999 999 999 999.\nBrute force approaches will not be feasible\
+  \ options in such cases. It is fairly simple to conclude that for every n>1 there\
+  \ holds a recurrence S(n) = S(n-1) + d(n) with initial case S(1) = 1.\n\nFor example:\n\
+  S(1) = 1\nS(2) = 3\nS(3) = 5\nS(4) = 8\nS(5) = 10\n\nBut is the fact useful anyway?\
+  \ If you find it is rather not, maybe this will help: \n\nTry to convince yourself\
+  \ that for any natural k, the number S(k) is the same as the number of pairs (m,n)\
+  \ that solve the inequality mn <= k in natural numbers.\nOnce it becomes clear,\
+  \ we can think of a partition of all the solutions into classes just by saying that\
+  \ a pair (m,n) belongs to the class indexed by n.\nThe question now arises if it\
+  \ is possible to count solutions of n-th class. If f(n) stands for the number of\
+  \ solutions that belong to n-th class, it means that S(k) = f(1) + f(2) + f(3) +\
+  \ ...\n\nThe reasoning presented above leads us to some kind of a formula for S(k),\
+  \ however not necessarily the most efficient one. Can you imagine that all the solutions\
+  \ to inequality mn <= k can be split using sqrt(k) as pivotal item?"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countDivisors (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_divisors_monotonic\n  {n : Nat}\n  (h : n > 0)\n  (h'\
+  \ : n ≤ 1000) :\n  countDivisors (n + 1) ≥ countDivisors n :=\nsorry\n\n\ntheorem\
+  \ count_divisors_positive\n  {n : Nat}\n  (h : n > 0)\n  (h' : n ≤ 1000) :\n  countDivisors\
+  \ n > 0 ∧ countDivisors n ≥ n :=\nsorry\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval\
+  \ count_divisors 5\n\n/--\ninfo: 27\n-/\n#guard_msgs in\n#eval count_divisors 10\n\
+  \n/--\ninfo: 66\n-/\n#guard_msgs in\n#eval count_divisors 20\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

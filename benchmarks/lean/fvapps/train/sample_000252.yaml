@@ -1,0 +1,35 @@
+"vc-description": "Koko loves to eat bananas.  There are N piles of bananas, the i-th pile\
+  \ has piles[i] bananas.  The guards have gone and will come back in H hours.\nKoko\
+  \ can decide her bananas-per-hour eating speed of K.  Each hour, she chooses some\
+  \ pile of bananas, and eats K bananas from that pile.  If the pile has less than\
+  \ K bananas, she eats all of them instead, and won't eat any more bananas during\
+  \ this hour.\nKoko likes to eat slowly, but still wants to finish eating all the\
+  \ bananas before the guards come back.\nReturn the minimum integer K such that she\
+  \ can eat all the bananas within H hours.\n \nExample 1:\nInput: piles = [3,6,7,11],\
+  \ H = 8\nOutput: 4\nExample 2:\nInput: piles = [30,11,23,4,20], H = 5\nOutput: 30\n\
+  Example 3:\nInput: piles = [30,11,23,4,20], H = 6\nOutput: 23\n\n \nConstraints:\n\
+  \n1 <= piles.length <= 10^4\npiles.length <= H <= 10^9\n1 <= piles[i] <= 10^9"
+"vc-preamble": "import Imports.AllImports\n\ndef List.maximum (l: List Nat) : Nat\
+  \ :=\nmatch l with\n| [] => 0\n| (x::xs) => xs.foldl Nat.max x\n\n\ndef List.sum\
+  \ (l: List Nat) : Nat :=\nmatch l with\n| [] => 0\n| (x::xs) => x + xs.sum\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_eating_speed (piles : List Nat) (h : Nat) : Nat :=\nsorry\n"
+"vc-theorems": "theorem min_eating_speed_bounds {piles : List Nat} {h : Nat} (hpiles\
+  \ : piles ≠ []) \n  (hpile_bounds : ∀ x ∈ piles, 1 ≤ x ∧ x ≤ 10^4) (hh : 1 ≤ h ∧\
+  \ h ≤ 10^4)\n  (hlen : piles.length ≤ h) :\n  let k := min_eating_speed piles h\n\
+  \  1 ≤ k ∧ k ≤ List.maximum piles :=\nsorry\n\n\ntheorem min_eating_speed_finishes\
+  \ {piles : List Nat} {h : Nat} (hpiles : piles ≠ [])\n  (hlen : piles.length ≤ h)\
+  \ :\n  let k := min_eating_speed piles h\n  let hours_needed := List.sum (piles.map\
+  \ (fun p => (p + k - 1) / k))\n  hours_needed ≤ h :=\nsorry\n\n\ntheorem min_eating_speed_minimal\
+  \ {piles : List Nat} {h : Nat} (hpiles : piles ≠ [])\n  (hlen : piles.length ≤ h)\
+  \ :\n  let k := min_eating_speed piles h\n  k > 1 →\n  let slower := k - 1\n  let\
+  \ hours_slower := List.sum (piles.map (fun p => (p + slower - 1) / slower))\n  hours_slower\
+  \ > h :=\nsorry\n\n\ntheorem min_eating_speed_truly_minimal {piles : List Nat} {h\
+  \ : Nat} \n  (hpiles : piles ≠ []) (hlen : piles.length ≤ h)\n  (hpile_bounds :\
+  \ ∀ x ∈ piles, 1 ≤ x ∧ x ≤ 100) (hh : 1 ≤ h ∧ h ≤ 5) :\n  let k := min_eating_speed\
+  \ piles h\n  ∀ i, 1 ≤ i → i < k →\n  let hours := List.sum (piles.map (fun p =>\
+  \ (p + i - 1) / i))\n  hours > h :=\nsorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n\
+  #eval min_eating_speed [3, 6, 7, 11] 8\n\n/--\ninfo: 30\n-/\n#guard_msgs in\n#eval\
+  \ min_eating_speed [30, 11, 23, 4, 20] 5\n\n/--\ninfo: 23\n-/\n#guard_msgs in\n\
+  #eval min_eating_speed [30, 11, 23, 4, 20] 6\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

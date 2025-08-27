@@ -1,0 +1,36 @@
+"vc-description": "Rahul is a serial killer. Rahul has been betrayed by his lover\
+  \ in the past and now he want to eliminate entire Universe.He has already Eliminated\
+  \ majority of the population and now only a handful number of people are left. Like\
+  \ other Serial killers, he has an interesting pattern of killing people. \nHe either\
+  \ kill one individual at a time or if he find two individuals of different heights,he\
+  \ eliminates both of them simultaneously. Now Rahul wants to eliminate them as quickly\
+  \ as he can.\nSo given $N$ as the number of people left and an array containing\
+  \ height of those $N$ people,tell the minimum number of kills Rahul require to eliminate\
+  \ the entire universe.\n\n-----Input:-----\n- First line will contain $T$, number\
+  \ of testcases. Then the testcases follow. \n- Each test case constitutes of Two\
+  \ lines. \n- First line contains $N$, representing the number of people left in\
+  \ the universe\n- The second line contains an array $a[i]$ of size $N$ containing\
+  \ heights of those $N$ people.\n\n-----Output:-----\nFor each testcase, you have\
+  \ to output a Single line Containing the minimum number of kills required by Rahul\
+  \ to eliminate the Universe.\n\n-----Constraints-----\n- $1 \\leq T \\leq 50000$\n\
+  - $1 \\leq N \\leq 50000$\n- $100 \\leq a[i] \\leq 10^5$\n\n-----Sample Input:-----\n\
+  1\n10\n178 184 178 177 171 173 171 183 171 175\n\n-----Sample Output:-----\n5"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_kills_needed (n : Nat) (heights : List Nat) : Nat := sorry\n\
+  \ntheorem result_bounds {n : Nat} {heights : List Nat} (h1 : heights.length = n)\
+  \ (h2 : n > 0) :\n  let result := min_kills_needed n heights\n  result ≤ n ∧ result\
+  \ ≥ (n + 1) / 2 := sorry\n"
+"vc-theorems": "theorem same_height {n : Nat} {heights : List Nat} {h : Nat}\n  (h1\
+  \ : heights = List.replicate n h) (h2 : n > 0) :\n  min_kills_needed n heights =\
+  \ n := sorry\n\n\ntheorem alternating_heights {n : Nat} {h : Nat} (h1 : n > 0) :\n\
+  \  let heights := List.replicate (n/2) h ++ List.replicate (n/2) (h+1) ++\n    \
+  \             (if n % 2 = 1 then [h] else [])\n  min_kills_needed n heights = (n\
+  \ + 1) / 2 := sorry\n\n\ntheorem mode_dominance {n : Nat} {heights : List Nat} (h1\
+  \ : heights.length = n) (h2 : n > 0)\n  (h3 : ∃ x : Nat, (List.count x heights)\
+  \ * 2 > n) :\n  min_kills_needed n heights = List.count (Classical.choose h3) heights\
+  \ := sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval min_kills_needed 10 [178,\
+  \ 184, 178, 177, 171, 173, 171, 183, 171, 175]\n\n/--\ninfo: 5\n-/\n#guard_msgs\
+  \ in\n#eval min_kills_needed 5 [100, 100, 100, 100, 100]\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval min_kills_needed 4 [101, 102, 103, 104]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

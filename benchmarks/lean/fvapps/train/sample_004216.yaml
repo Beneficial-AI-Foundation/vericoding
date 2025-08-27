@@ -1,0 +1,22 @@
+"vc-description": "I need some help with my math homework. I have a number of problems\
+  \ I need to return the derivative for.\n\nThey will all be of the form:  \nax^b,\
+  \  \nA and B are both integers, but can be positive or negative.\nNote: \n  - if\
+  \ b is 1, then the equation will be ax.  \n  - if b is 0, then the equation will\
+  \ be 0.  \n  \nExamples:\n  3x^3   -> 9x^2  \n  3x^2   -> 6x  \n  3x     -> 3  \n\
+  \  3      -> 0  \n  3x^-1  -> -3x^-2  \n  -3x^-2 -> 6x^-3  \n\nIf you don't remember\
+  \ how derivatives work, here's a link with some basic rules: https://www.mathsisfun.com/calculus/derivatives-rules.html"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_derivative : String → String := sorry\n\ntheorem derivative_polynomial_form\
+  \ (expr : String) \n  (h : ∃ a b : Int, a ≠ 0 ∧ (expr = s!\"{a}x^{b}\" ∨ expr =\
+  \ s!\"{a}x\")) :\n  ∃ result : String, get_derivative expr = result ∧ \n  (result.any\
+  \ (· = 'x') ∨ result = \"0\") := sorry\n"
+"vc-theorems": "theorem simple_power_rule (n : Int) (h : n ≠ 0) :\n  get_derivative\
+  \ s!\"1x^{n}\" = \n    if n - 1 = 1 \n    then s!\"{n}x\"\n    else s!\"{n}x^{n-1}\"\
+  \ := sorry\n\n\ntheorem constant_term (n : Int) (h : n ≠ 0) :\n  get_derivative\
+  \ (toString n) = \"0\" := sorry\n\n\ntheorem linear_term (n : Int) (h : n ≠ 0) :\n\
+  \  get_derivative s!\"{n}x\" = toString n := sorry\n\n/--\ninfo: '9x^2'\n-/\n#guard_msgs\
+  \ in\n#eval get_derivative \"3x^3\"\n\n/--\ninfo: '-3x^-2'\n-/\n#guard_msgs in\n\
+  #eval get_derivative \"3x^-1\"\n\n/--\ninfo: '-30x^9'\n-/\n#guard_msgs in\n#eval\
+  \ get_derivative \"-3x^10\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,46 @@
+"vc-description": "You have a string $s$ consisting of $n$ characters. Each character\
+  \ is either 0 or 1.\n\nYou can perform operations on the string. Each operation\
+  \ consists of two steps:  select an integer $i$ from $1$ to the length of the string\
+  \ $s$, then delete the character $s_i$ (the string length gets reduced by $1$, the\
+  \ indices of characters to the right of the deleted one also get reduced by $1$);\
+  \  if the string $s$ is not empty, delete the maximum length prefix consisting of\
+  \ the same characters (the indices of the remaining characters and the string length\
+  \ get reduced by the length of the deleted prefix). \n\nNote that both steps are\
+  \ mandatory in each operation, and their order cannot be changed.\n\nFor example,\
+  \ if you have a string $s =$ 111010, the first operation can be one of the following:\
+  \  select $i = 1$: we'll get 111010 $\\rightarrow$ 11010 $\\rightarrow$ 010;  select\
+  \ $i = 2$: we'll get 111010 $\\rightarrow$ 11010 $\\rightarrow$ 010;  select $i\
+  \ = 3$: we'll get 111010 $\\rightarrow$ 11010 $\\rightarrow$ 010;  select $i = 4$:\
+  \ we'll get 111010 $\\rightarrow$ 11110 $\\rightarrow$ 0;  select $i = 5$: we'll\
+  \ get 111010 $\\rightarrow$ 11100 $\\rightarrow$ 00;  select $i = 6$: we'll get\
+  \ 111010 $\\rightarrow$ 11101 $\\rightarrow$ 01. \n\nYou finish performing operations\
+  \ when the string $s$ becomes empty. What is the maximum number of operations you\
+  \ can perform?\n\n\n-----Input-----\n\nThe first line contains a single integer\
+  \ $t$ ($1 \\le t \\le 1000$) — the number of test cases.\n\nThe first line of each\
+  \ test case contains a single integer $n$ ($1 \\le n \\le 2 \\cdot 10^5$) — the\
+  \ length of the string $s$.\n\nThe second line contains string $s$ of $n$ characters.\
+  \ Each character is either 0 or 1.\n\nIt's guaranteed that the total sum of $n$\
+  \ over test cases doesn't exceed $2 \\cdot 10^5$.\n\n\n-----Output-----\n\nFor each\
+  \ test case, print a single integer — the maximum number of operations you can perform.\n\
+  \n\n-----Example-----\nInput\n5\n6\n111010\n1\n0\n1\n1\n2\n11\n6\n101010\n\nOutput\n\
+  3\n1\n1\n1\n3\n\n\n\n-----Note-----\n\nIn the first test case, you can, for example,\
+  \ select $i = 2$ and get string 010 after the first operation. After that, you can\
+  \ select $i = 3$ and get string 1. Finally, you can only select $i = 1$ and get\
+  \ empty string."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_string_operations (s : String) : Nat := sorry\n\ntheorem\
+  \ result_positive (s : String) (h : s.length > 0) : \n  solve_string_operations\
+  \ s > 0 := sorry\n"
+"vc-theorems": "theorem result_bounded (s : String) (h : s.length > 0) :\n  solve_string_operations\
+  \ s ≤ s.length := sorry\n\n\ntheorem single_char_result (s : String) (h : s.length\
+  \ = 1) :\n  solve_string_operations s = 1 := sorry\n\n\ntheorem append_zero_bound\
+  \ (s : String) (h : s.length > 0) :\n  (solve_string_operations (s ++ \"0\") - solve_string_operations\
+  \ s) ≤ 1 ∧ \n  (solve_string_operations s - solve_string_operations (s ++ \"0\"\
+  )) ≤ 1 := sorry\n\n\ntheorem append_one_bound (s : String) (h : s.length > 0) :\
+  \  \n  (solve_string_operations (s ++ \"1\") - solve_string_operations s) ≤ 1 ∧\n\
+  \  (solve_string_operations s - solve_string_operations (s ++ \"1\")) ≤ 1 := sorry\n\
+  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_string_operations \"111010\"\n\n\
+  /--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_string_operations \"0\"\n\n/--\ninfo:\
+  \ 3\n-/\n#guard_msgs in\n#eval solve_string_operations \"101010\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

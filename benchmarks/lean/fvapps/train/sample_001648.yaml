@@ -1,0 +1,76 @@
+"vc-description": "### Context and Definitions\n\nYou are in charge of developing\
+  \ a new cool JavaScript library that provides functionality similar to that of [Underscore.js](http://underscorejs.org/).\n\
+  \nYou have started by adding a new  **list data type** to your library. You came\
+  \ up with a design of a data structure that represents an [algebraic data type](http://en.wikipedia.org/wiki/Algebraic_data_type)\
+  \ as a pair of elements:\n\n```python\nclass Cons:\n  def __init__(self, head, tail):\n\
+  \    self.head = head\n    self.tail = tail\n```\n\nYou are pretty smart, because\
+  \ using this new data type, we can easily build a list of elements. For instance,\
+  \ a list of numbers:\n\n```python\nnumbers = Cons(1, Cons(2, Cons(3, Cons(4, Cons(5,\
+  \ None)))))\n```\n\nIn a code review with your boss, you explained him how every\
+  \ *cons cell* contains a \"value\" in its head, and in its tail it contains either\
+  \ another cons cell or null. We know we have reached the end of the data structure\
+  \ when the tail is null.\n\nSo, your boss is pretty excited about this new data\
+  \ structure and wants to know if you will be able to build some more  functionality\
+  \ around it. In a demo you did this week for the rest of your team, in order to\
+  \ illustrate how this works, you showed them a method to transform a list of items\
+  \ of your list data type into a JavaScript array:\n\n```python\n  # added to the\
+  \ class implementation:\n  def to_array(self):\n    tail = self.tail\n    new_tail\
+  \ = (tail.to_array() if tail is not None else [])\n    return [self.head] + new_tail\n\
+  ```\n\nAnd they were amazed when you simply did this:\n\n```python\nprint(numbers.to_array())\
+  \  # yields [1,2,3,4,5]\n```\n\n### The New Requirements\n\nNow, the team is convinced\
+  \ that this is the way to go and they would like to build the library around this\
+  \ cool new data type, but they want you to provide a few more features for them\
+  \ so that they can start using this type in solving some real world problems.\n\n\
+  You have been reading about a technique called  [applicative programming](http://quod.lib.umich.edu/s/spobooks/bbv9810.0001.001/1:15?rgn=div1;view=fulltext)\
+  \ which basically consists in applying a function to every element in a list.  So,\
+  \ you gave it some thought and you have decided to start adding features  like **filter**,\
+  \ **map** and **reduce**. Basically you want to provide equivalent functionality\
+  \ to that of JavaScript arrays and in the future even more.\n\nSo, you will now\
+  \ add:\n\n - [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FArray%2Ffilter):\
+  \ create a new algebraic list containing only the elements that satisfy a predicate\
+  \ function. \n - [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FArray%2Ffilter)\
+  \ : create a new list in which every element is the result of applying a function\
+  \ provided as argument.\n - fromArray:  a convenient complementary method  that\
+  \ creates a list out of a JavaScript array.\n\nFor this Kata, the definition of\
+  \ `Cons` and the prototypal/class method `toArray`/`to_array`/`into_vec` are already\
+  \ loaded in your environment.\n\n### Examples of Usage\n\n```python\nnumbers = Cons.from_array([1,2,3,4,5])\n\
+  numbers.filter(lambda x: x % 2 == 0).to_array()  # yields [2,4]\nnumbers.map(lambda\
+  \ x: x * x).to_array()  # yields [1,4,9,16,25]\n\ndigits = Cons.from_array([\"1\"\
+  ,\"2\",\"3\",\"4\",\"5\"])\nintegers = digits.map(int) \\\n                 .filter(lambda\
+  \ n: n > 3) \\\n                 .to_array()  # yields [4,5]\n```\n\nIn other words:\n\
+  \n - The static method `Cons.fromArray` (or `from_array`, `from_iter`) produces\
+  \ `Cons(1, Cons(2, Cons(3, Cons 4, Cons 5, null)))))`.\n  - Above filter creates\
+  \ a new list: `Cons(2, Cons(4, null))`.\n -  So does above map:  `Cons(1, Cos(4,\
+  \ Cons(9, Cons(16, Cons(25, null)))))`."
+"vc-preamble": "import Imports.AllImports\n\ndef ConsList.fromArray {α : Type} (arr\
+  \ : Array α) : ConsList α :=\n  sorry\n\n\ndef ConsList.toArray {α : Type} (l :\
+  \ ConsList α) : Array α :=\n  sorry\n\n\ndef ConsList.filter {α : Type} (l : ConsList\
+  \ α) (p : α → Bool) : ConsList α :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def ConsList.map {α β : Type} (l : ConsList α) (f : α → β) : ConsList\
+  \ β :=\n  sorry\n"
+"vc-theorems": "theorem fromArray_toArray_roundtrip {α : Type} (arr : Array α) :\n\
+  \  let cons := ConsList.fromArray arr\n  match cons with\n  | ConsList.nil => arr.isEmpty\n\
+  \  | _ => cons.toArray = arr\n  := sorry\n\n\ntheorem filter_preserves_valid {α\
+  \ : Type} [BEq α] (arr : Array α) (p : α → Bool) :\n  let cons := ConsList.fromArray\
+  \ arr\n  match cons with\n  | ConsList.nil => True\n  | cons =>\n    let filtered\
+  \ := cons.filter p\n    match filtered with\n    | ConsList.nil => ∀ x, x ∈ arr\
+  \ → ¬(p x)\n    | filtered =>\n      (∀ x, x ∈ filtered.toArray → p x) ∧\n     \
+  \ (∀ x, x ∈ filtered.toArray → x ∈ arr) ∧\n      (∀ x, x ∈ arr → p x → x ∈ filtered.toArray)\n\
+  \  := sorry\n\n\ntheorem map_applies_function {α β : Type} (arr : Array α) (f :\
+  \ α → β) :\n  let cons := ConsList.fromArray arr\n  (cons.map f |>.toArray) = arr.map\
+  \ f\n  := sorry\n\n\ntheorem map_preserves_length {α β : Type} (arr : Array α) (f\
+  \ : α → β) :\n  let cons := ConsList.fromArray arr\n  (cons.map f |>.toArray).size\
+  \ = arr.size\n  := sorry\n\n\ntheorem operations_independent {α : Type} (arr1 arr2\
+  \ : Array α) (f : α → α) :\n  let cons1 := ConsList.fromArray arr1\n  let cons2\
+  \ := ConsList.fromArray arr2\n  match cons1, cons2 with\n  | ConsList.nil, _ =>\
+  \ True\n  | _, ConsList.nil => True\n  | cons1, cons2 =>\n    let _ := cons1.map\
+  \ f\n    cons2.toArray = arr2\n  := sorry\n\n\ntheorem successive_operations {α\
+  \ : Type} [BEq α] [OfNat α 1] [OfNat α 2] [Mul α] (arr : Array α) :\n  let cons\
+  \ := ConsList.fromArray arr\n  match cons with\n  | ConsList.nil => True\n  | cons\
+  \ =>\n    let doubled := cons.map (· * 2)\n    match doubled with\n    | ConsList.nil\
+  \ => True\n    | doubled =>\n      let filtered := doubled.filter (fun _ => true)\n\
+  \      match filtered with\n      | ConsList.nil => True\n      | filtered =>\n\
+  \        let final := filtered.map (· * 1)\n        ∀ x, x ∈ final.toArray → x ∈\
+  \ arr\n  := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

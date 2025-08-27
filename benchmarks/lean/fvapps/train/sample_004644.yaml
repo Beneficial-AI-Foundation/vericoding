@@ -1,0 +1,43 @@
+"vc-description": "Given a certain array of integers, create a function that may give\
+  \ the minimum number that may be divisible for all the numbers of the array.\n\n\
+  ```python\nmin_special_mult([2, 3 ,4 ,5, 6, 7]) == 420\n```\nThe array may have\
+  \ integers that occurs more than once:\n```python\nmin_special_mult([18, 22, 4,\
+  \ 3, 21, 6, 3]) == 2772\n```\nThe array should have all its elements integer values.\
+  \ If the function finds an invalid entry (or invalid entries) like strings of the\
+  \ alphabet or symbols will not do the calculation and will compute and register\
+  \ them, outputting a message in singular or plural, depending on the number of invalid\
+  \ entries.\n\n```python\nmin_special_mult([16, 15, 23, 'a', '&', '12']) == \"There\
+  \ are 2 invalid entries: ['a', '&']\"\n\nmin_special_mult([16, 15, 23, 'a', '&',\
+  \ '12', 'a']) == \"There are 3 invalid entries: ['a', '&', 'a']\"\n\nmin_special_mult([16,\
+  \ 15, 23, 'a', '12']) == \"There is 1 invalid entry: a\"\n```\nIf the string is\
+  \ a valid number, the function will convert it as an integer.\n```python\nmin_special_mult([16,\
+  \ 15, 23, '12']) == 5520\n\nmin_special_mult([16, 15, 23, '012']) == 5520\n```\n\
+  All the `None`/`nil` elements of the array will be ignored:\n```python\nmin_special_mult([18,\
+  \ 22, 4, , None, 3, 21, 6, 3]) == 2772\n```\nIf the array has a negative number,\
+  \ the function will convert to a positive one.\n```python\nmin_special_mult([18,\
+  \ 22, 4, , None, 3, -21, 6, 3]) == 2772\n\nmin_special_mult([16, 15, 23, '-012'])\
+  \ == 5520\n```\n\nEnjoy it"
+"vc-preamble": "import Imports.AllImports\n\ndef min_special_mult (numbers : List\
+  \ Int) : Int ⊕ String := sorry\n\ntheorem valid_numbers_only (numbers : List Int)\
+  \ \n  (h : ∀ n ∈ numbers, n > 0)\n  : ∃ result, (min_special_mult numbers = Sum.inl\
+  \ result ∧ result > 0) := sorry\n\n/-- Helper function to convert strings to a list\
+  \ containing each character -/\n\ndef stringToList (s : String) : List Char := s.data\n\
+  \ndef stringContains (s₁ s₂ : String) : Prop := ∃ pre post : String, s₁ = pre ++\
+  \ s₂ ++ post\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def parseAsInt (s : String) : Option Int := sorry\n\ntheorem invalid_entries\
+  \ (valid_nums invalid_nums : List String)\n  (h1 : invalid_nums.length > 0)\n  (h2\
+  \ : invalid_nums.length ≤ 5)\n  (h3 : ∀ n ∈ invalid_nums, ∃ c ∈ (stringToList n),\
+  \ c.isAlpha ∨ c ∈ ['&', '$', '#', '@'])\n  (h4 : ∀ n ∈ valid_nums, (parseAsInt n).isSome)\n\
+  \  : let valid_int_nums := valid_nums.filterMap parseAsInt\n    ∃ result : String,\
+  \ \n    (min_special_mult valid_int_nums = Sum.inr result)\n    ∧ (stringContains\
+  \ result (toString invalid_nums.length))\n    ∧ (∀ inv ∈ invalid_nums, stringContains\
+  \ result inv) := sorry\n"
+"vc-theorems": "theorem lcm_properties (numbers : List Int)\n  (h1 : numbers.length\
+  \ ≥ 2)\n  (h2 : numbers.length ≤ 5)\n  (h3 : ∀ n ∈ numbers, n > 0)\n  : ∃ result,\
+  \ min_special_mult numbers = Sum.inl result\n      ∧ ∀ n ∈ numbers, result % n =\
+  \ 0 := sorry\n\n/--\ninfo: 420\n-/\n#guard_msgs in\n#eval min_special_mult [2, 3,\
+  \ 4, 5, 6, 7]\n\n/--\ninfo: \"There are 2 invalid entries: ['a', '&']\"\n-/\n#guard_msgs\
+  \ in\n#eval min_special_mult [16, 15, 23, \"a\", \"&\", \"12\"]\n\n/--\ninfo: 5520\n\
+  -/\n#guard_msgs in\n#eval min_special_mult [16, 15, 23, \"-012\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

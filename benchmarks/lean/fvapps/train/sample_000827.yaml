@@ -1,0 +1,41 @@
+"vc-description": "Coach Moony wants the best team to represent their college in ICPC.\
+  \ He has $N$ students standing in a circle with certain rating $X_i$ on a competitive\
+  \ coding platform. It is an established fact that any coder with more rating on\
+  \ the platform is a better coder.      \nMoony  wants to send his best $3$ coders\
+  \ based upon their rating. But all coders only want to have their friends in their\
+  \ team and every coder is friends with four other coders, adjacent two on left side\
+  \ in the circle, and adjacent two on right. So Moony comes up with a solution that\
+  \ team with maximum cumulative rating of all three members in a team shall be representing\
+  \ their college.\nYou need to give the cumulative score of the team that will be\
+  \ representing the college.\n\n-----Input:-----\n- First line will contain $T$,\
+  \ number of testcases. \n- First line of each test case contains a single integer\
+  \ $N$.\n- Second  line of each test case takes $N$ integers, denoting rating of\
+  \ $ith$ coder.\n\n-----Output:-----\nFor each testcase, output a single integer\
+  \ denoting cumulative rating  of the team.\n\n-----Constraints-----\n- $1 \\leq\
+  \ T \\leq 10$\n- $7 \\leq N \\leq 10^5$ \n- $0 \\leq X_i \\leq 10^9$\n\n-----Sample\
+  \ Input:-----\n1\n\n7\n\n10 40 30 30 20 0 0  \n\n-----Sample Output:-----\n100"
+"vc-preamble": "import Imports.AllImports\n\ndef find_max_team_score (n : Nat) (ratings\
+  \ : List Nat) : Nat := sorry\n\ndef list_sum : List Nat → Nat \n  | [] => 0\n  |\
+  \ x::xs => x + list_sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def take_last (n : Nat) (l : List Nat) : List Nat := \n  let rev\
+  \ := l.reverse\n  (rev.take n).reverse\n"
+"vc-theorems": "theorem find_max_team_score_upper_bound \n  (ratings : List Nat) (h\
+  \ : ratings.length ≥ 3) :\n  find_max_team_score ratings.length ratings ≤ list_sum\
+  \ (take_last 3 ratings) := sorry\n\n\ntheorem find_max_team_score_lower_bound \n\
+  \  (ratings : List Nat) (h : ratings.length ≥ 3) : \n  find_max_team_score ratings.length\
+  \ ratings ≥ list_sum (ratings.take 3) := sorry\n\n\ntheorem find_max_team_score_three_elements\n\
+  \  (ratings : List Nat) (h : ratings.length = 3) :\n  find_max_team_score ratings.length\
+  \ ratings = list_sum ratings := sorry\n\n\ntheorem find_max_team_score_consecutive\n\
+  \  (ratings : List Nat) (h : ratings.length ≥ 3) (i : Nat) (hi : i + 2 < ratings.length)\
+  \ :\n  find_max_team_score ratings.length ratings ≥ \n    ratings[i]! + ratings[i+1]!\
+  \ + ratings[i+2]! := sorry\n\n\ntheorem find_max_team_score_wrapping\n  (ratings\
+  \ : List Nat) (h : ratings.length ≥ 3) (i : Nat) :\n  find_max_team_score ratings.length\
+  \ ratings ≥\n    ratings[i % ratings.length]! + \n    ratings[(i + 1) % ratings.length]!\
+  \ + \n    ratings[(i + 2) % ratings.length]! := sorry\n\n\ntheorem find_max_team_score_all_equal\n\
+  \  (n : Nat) (h : n ≥ 3) :\n  find_max_team_score n (List.replicate n 1) = 3 :=\
+  \ sorry\n\n/--\ninfo: 100\n-/\n#guard_msgs in\n#eval find_max_team_score 7 [10,\
+  \ 40, 30, 30, 20, 0, 0]\n\n/--\ninfo: 100\n-/\n#guard_msgs in\n#eval find_max_team_score\
+  \ 7 [50, 20, 30, 10, 40, 15, 25]\n\n/--\ninfo: 60\n-/\n#guard_msgs in\n#eval find_max_team_score\
+  \ 3 [10, 20, 30]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

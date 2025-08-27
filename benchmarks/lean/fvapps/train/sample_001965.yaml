@@ -1,0 +1,39 @@
+"vc-description": "Gerald plays the following game. He has a checkered field of size\
+  \ n × n cells, where m various cells are banned. Before the game, he has to put\
+  \ a few chips on some border (but not corner) board cells. Then for n - 1 minutes,\
+  \ Gerald every minute moves each chip into an adjacent cell. He moves each chip\
+  \ from its original edge to the opposite edge. Gerald loses in this game in each\
+  \ of the three cases:  At least one of the chips at least once fell to the banned\
+  \ cell.  At least once two chips were on the same cell.  At least once two chips\
+  \ swapped in a minute (for example, if you stand two chips on two opposite border\
+  \ cells of a row with even length, this situation happens in the middle of the row).\
+  \ \n\nIn that case he loses and earns 0 points. When nothing like that happened,\
+  \ he wins and earns the number of points equal to the number of chips he managed\
+  \ to put on the board. Help Gerald earn the most points.\n\n\n-----Input-----\n\n\
+  The first line contains two space-separated integers n and m (2 ≤ n ≤ 1000, 0 ≤\
+  \ m ≤ 10^5) — the size of the field and the number of banned cells. Next m lines\
+  \ each contain two space-separated integers. Specifically, the i-th of these lines\
+  \ contains numbers x_{i} and y_{i} (1 ≤ x_{i}, y_{i} ≤ n) — the coordinates of the\
+  \ i-th banned cell. All given cells are distinct.\n\nConsider the field rows numbered\
+  \ from top to bottom from 1 to n, and the columns — from left to right from 1 to\
+  \ n.\n\n\n-----Output-----\n\nPrint a single integer — the maximum points Gerald\
+  \ can earn in this game.\n\n\n-----Examples-----\nInput\n3 1\n2 2\n\nOutput\n0\n\
+  \nInput\n3 0\n\nOutput\n1\n\nInput\n4 3\n3 1\n3 2\n3 3\n\nOutput\n1\n\n\n\n-----Note-----\n\
+  \nIn the first test the answer equals zero as we can't put chips into the corner\
+  \ cells.\n\nIn the second sample we can place one chip into either cell (1, 2),\
+  \ or cell (3, 2), or cell (2, 1), or cell (2, 3). We cannot place two chips.\n\n\
+  In the third sample we can only place one chip into either cell (2, 1), or cell\
+  \ (2, 4)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_chip_game (n : Nat) (banned : List (Nat × Nat)) : Nat\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem empty_board_nonnegative (n : Nat) :\n  n ≥ 2 → solve_chip_game\
+  \ n [] ≥ 0 :=\n  sorry\n\n\ntheorem odd_board_has_middle (n : Nat) :\n  n ≥ 2 →\
+  \ n % 2 = 1 → solve_chip_game n [] ≥ 1 :=\n  sorry\n\n\ntheorem all_cells_banned\
+  \ (n : Nat) :\n  n ≥ 2 →\n  let banned := List.range n |>.bind (fun x => \n    List.range\
+  \ n |>.map (fun y => (x+1, y+1)))\n  solve_chip_game n banned = 0 :=\n  sorry\n\n\
+  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval solve_chip_game 3 [(2, 2)]\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval solve_chip_game 3 []\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval solve_chip_game 4 [(3, 1), (3, 2), (3, 3)]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded_and_plausible"

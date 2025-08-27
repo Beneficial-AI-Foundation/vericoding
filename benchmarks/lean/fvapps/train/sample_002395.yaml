@@ -1,0 +1,16 @@
+"vc-description": "In a array A of size 2N, there are N+1 unique elements, and exactly\
+  \ one of these elements is repeated N times.\nReturn the element repeated N times.\n\
+   \n\n\n\nExample 1:\nInput: [1,2,3,3]\nOutput: 3\n\n\nExample 2:\nInput: [2,1,2,5,3,2]\n\
+  Output: 2\n\n\nExample 3:\nInput: [5,1,5,2,5,3,5,4]\nOutput: 5\n\n \nNote:\n\n4\
+  \ <= A.length <= 10000\n0 <= A[i] < 10000\nA.length is even"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def repeated_n_times (arr : List Int) : Option Int := sorry\n\n\
+  \n\n\n\ntheorem repeated_n_times_first_repeat {arr : List Int} {n : Int}\n  (h :\
+  \ repeated_n_times arr = some n) :\n  ∀ x : Int, x ∈ arr → x ≠ n → \n  (arr.take\
+  \ (arr.indexOf x)).count x ≤ 1 := sorry"
+"vc-theorems": "/--\ninfo: 3\n-/\n#guard_msgs in\n#eval repeated_n_times [1, 2, 3,\
+  \ 3]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval repeated_n_times [2, 1, 2, 5, 3,\
+  \ 2]\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval repeated_n_times [5, 1, 5, 2, 5,\
+  \ 3, 5, 4]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

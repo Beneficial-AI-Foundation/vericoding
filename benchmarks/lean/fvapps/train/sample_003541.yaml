@@ -1,0 +1,16 @@
+"vc-description": "Given a string, capitalize the letters that occupy even indexes\
+  \ and odd indexes separately, and return as shown below. Index `0` will be considered\
+  \ even.\n\nFor example, `capitalize(\"abcdef\") = ['AbCdEf', 'aBcDeF']`. See test\
+  \ cases for more examples.\n\nThe input will be a lowercase string with no spaces.\n\
+  \nGood luck!\n\nIf you like this Kata, please try: \n\n[Indexed capitalization](https://www.codewars.com/kata/59cfc09a86a6fdf6df0000f1)\n\
+  \n[Even-odd disparity](https://www.codewars.com/kata/59c62f1bdcc40560a2000060)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def capitalize (s : String) : List String := sorry\n\ntheorem capitalize_returns_two_strings\
+  \ (s : String) :\n  let result := capitalize s\n  List.length result = 2 := by sorry\n"
+"vc-theorems": "theorem capitalize_elements_are_strings (s : String) :\n  let result\
+  \ := capitalize s\n  result.all (fun x => true) := by sorry\n\n\ntheorem capitalize_second_equals_first\
+  \ (s : String) :\n  let result := capitalize s\n  result.get! 1 = result.get! 0\
+  \ := by sorry\n\n\ntheorem capitalize_empty_string :\n  capitalize \"\" = [\"\"\
+  , \"\"] := by sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

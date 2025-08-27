@@ -1,0 +1,25 @@
+"vc-description": "Take a string and return a hash with all the ascii values of the\
+  \ characters in the string.\nReturns nil if the string is empty.\nThe key is the\
+  \ character, and the value is the ascii value of the character.\nRepeated characters\
+  \ are to be ignored and non-alphebetic characters as well."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def charToAscii (s : String) : Option Dict := sorry\n\ntheorem\
+  \ charToAscii_empty_string :\n  charToAscii \"\" = none := sorry\n"
+"vc-theorems": "theorem charToAscii_maps_to_ascii (s : String) (c : Char) (d : Dict)\
+  \ :\n  s ≠ \"\" →\n  c.isAlpha = true →\n  c ∈ s.data →\n  charToAscii s = some\
+  \ d →\n  ∃ n, (c, n) ∈ d.chars ∧ n = c.toNat := sorry\n\n\ntheorem charToAscii_keys_are_alpha\
+  \ (s : String) (d : Dict) :\n  s ≠ \"\" →\n  charToAscii s = some d →\n  ∀ c n,\
+  \ (c, n) ∈ d.chars → c.isAlpha = true := sorry\n\n\ntheorem charToAscii_includes_all_alpha\
+  \ (s : String) (d : Dict) : \n  s ≠ \"\" →\n  charToAscii s = some d →\n  ∀ c, c\
+  \ ∈ s.data → c.isAlpha = true → \n  ∃ n, (c, n) ∈ d.chars := sorry\n\n\ntheorem\
+  \ charToAscii_non_alpha_empty (s : String) (d : Dict) :\n  s ≠ \"\" →\n  (∀ c, c\
+  \ ∈ s.data → c.isAlpha = false) →\n  charToAscii s = some d →\n  d.chars = [] :=\
+  \ sorry\n\n\ntheorem charToAscii_alpha_only_size (s : String) (d : Dict) :\n  s\
+  \ ≠ \"\" →\n  (∀ c, c ∈ s.data → c.isAlpha = true) →\n  charToAscii s = some d →\n\
+  \  d.chars.length = s.data.eraseDups.length := sorry\n\n/--\ninfo: None\n-/\n#guard_msgs\
+  \ in\n#eval char_to_ascii \"\"\n\n/--\ninfo: {'a': 97}\n-/\n#guard_msgs in\n#eval\
+  \ char_to_ascii \"a\"\n\n/--\ninfo: {'h': 104, 'e': 101, 'l': 108, 'o': 111, 'w':\
+  \ 119, 'r': 114, 'd': 100}\n-/\n#guard_msgs in\n#eval char_to_ascii \"hello world\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,17 @@
+"vc-description": "Rick wants a faster way to get the product of the largest pair\
+  \ in an array. Your task is to create a performant solution to find the product\
+  \ of the largest two integers in a unique array of positive numbers. All inputs\
+  \ will be valid.\nPassing [2, 6, 3] should return 18, the product of [6, 3].\n\n\
+  ```Disclaimer: Mr. Roll will only accept solutions that are faster than his, which\
+  \ has a running time O(nlogn).``` \n\n```python\nmax_product([2, 1, 5, 0, 4, 3])\
+  \              # => 20\nmax_product([7, 8, 9])                       # => 72\nmax_product([33,\
+  \ 231, 454, 11, 9, 99, 57])   # => 104874\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_product (l: List Int) : Option Int := sorry\n\n\n\n\n\n\
+  theorem max_product_symmetric (nums: List Int) :\n  max_product nums = max_product\
+  \ nums.reverse := sorry"
+"vc-theorems": "/--\ninfo: 20\n-/\n#guard_msgs in\n#eval max_product [2, 1, 5, 0,\
+  \ 4, 3]\n\n/--\ninfo: 72\n-/\n#guard_msgs in\n#eval max_product [7, 8, 9]\n\n/--\n\
+  info: 104874\n-/\n#guard_msgs in\n#eval max_product [33, 231, 454, 11, 9, 99, 57]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

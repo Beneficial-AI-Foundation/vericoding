@@ -1,0 +1,18 @@
+"vc-description": "Given an array of integers `a` and integers `t` and `x`, count\
+  \ how many elements in the array you can make equal to `t` by **increasing** / **decreasing**\
+  \ it by `x` (or doing nothing).\n*EASY!*\n\n```python\n# ex 1\n\na = [11, 5, 3]\n\
+  t = 7\nx = 2\n\ncount(a, t, x) # => 3\n```\n- you can make 11 equal to 7 by subtracting\
+  \ 2 twice\n- you can make 5 equal to 7 by adding 2\n- you can make 3 equal to 7\
+  \ by adding 2 twice\n\n```python\n# ex 2\n\na = [-4,6,8]\nt = -7\nx = -3\n\ncount(a,\
+  \ t, x) # => 2\n```\n\n## Constraints\n**-10^(18) <= a[i],t,x <= 10^(18)**\n\n**3\
+  \ <= |a| <= 10^(4)**"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count (a: List Int) (t: Int) (x: Int) : Int := sorry\n\ntheorem\
+  \ count_bounded (a: List Int) (t: Int) (x: Int) (h: a.length > 0) :\n  let result\
+  \ := count a t x\n  0 ≤ result ∧ result ≤ a.length := sorry\n"
+"vc-theorems": "theorem count_zero_x (a: List Int) (t: Int) (h: a.length > 0) :\n\
+  \  count a t 0 = (a.filter (fun v => v = t)).length := sorry\n\n\ntheorem count_nonzero_x\
+  \ (a: List Int) (t: Int) (x: Int) (h1: a.length > 0) (h2: x ≠ 0) :\n  count a t\
+  \ x = (a.filter (fun v => (t - v) % x = 0)).length := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

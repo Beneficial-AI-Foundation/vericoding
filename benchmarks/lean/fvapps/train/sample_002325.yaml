@@ -1,0 +1,35 @@
+"vc-description": "Given an array of positive integers arr,  find a pattern of length\
+  \ m that is repeated k or more times.\nA pattern is a subarray (consecutive sub-sequence)\
+  \ that consists of one or more values, repeated multiple times consecutively without\
+  \ overlapping. A pattern is defined by its length and the number of repetitions.\n\
+  Return true if there exists a pattern of length m that is repeated k or more times,\
+  \ otherwise return false.\n \nExample 1:\nInput: arr = [1,2,4,4,4,4], m = 1, k =\
+  \ 3\nOutput: true\nExplanation: The pattern (4) of length 1 is repeated 4 consecutive\
+  \ times. Notice that pattern can be repeated k or more times but not less.\n\nExample\
+  \ 2:\nInput: arr = [1,2,1,2,1,1,1,3], m = 2, k = 2\nOutput: true\nExplanation: The\
+  \ pattern (1,2) of length 2 is repeated 2 consecutive times. Another valid pattern\
+  \ (2,1) is also repeated 2 times.\n\nExample 3:\nInput: arr = [1,2,1,2,1,3], m =\
+  \ 2, k = 3\nOutput: false\nExplanation: The pattern (1,2) is of length 2 but is\
+  \ repeated only 2 times. There is no pattern of length 2 that is repeated 3 or more\
+  \ times.\n\nExample 4:\nInput: arr = [1,2,3,1,2], m = 2, k = 2\nOutput: false\n\
+  Explanation: Notice that the pattern (1,2) exists twice but not consecutively, so\
+  \ it doesn't count.\n\nExample 5:\nInput: arr = [2,2,2,2], m = 2, k = 3\nOutput:\
+  \ false\nExplanation: The only pattern of length 2 is (2,2) however it's repeated\
+  \ only twice. Notice that we do not count overlapping repetitions.\n\n \nConstraints:\n\
+  \n2 <= arr.length <= 100\n1 <= arr[i] <= 100\n1 <= m <= 100\n2 <= k <= 100"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def contains_pattern (arr : List Int) (m k : Nat) : Bool := sorry\n\
+  \ntheorem pattern_size_check {arr : List Int} {m k : Nat} :\n  arr.length < m →\
+  \ contains_pattern arr m k = false := sorry\n"
+"vc-theorems": "theorem repeating_single_value {arr : List Int} {m k : Nat} (h1 :\
+  \ arr.length ≥ m * k) \n    (h2 : m > 0) (h3 : k > 0) (h4 : ∀ (i : Fin arr.length)\
+  \ (j : Fin arr.length), arr.get i = arr.get j) :\n  contains_pattern arr m k = true\
+  \ := sorry\n\n\ntheorem min_length_requirement {arr : List Int} {m k : Nat} :\n\
+  \  arr.length < m * k → contains_pattern arr m k = false := sorry\n\n\ntheorem repeated_list_pattern\
+  \ {arr : List Int} (h : arr.length > 0) :\n  contains_pattern (arr ++ arr ++ arr)\
+  \ arr.length 3 = true := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval contains_pattern\
+  \ [1, 2, 4, 4, 4, 4] 1 3\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval contains_pattern\
+  \ [1, 2, 3, 1, 2] 2 2\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval contains_pattern\
+  \ [2, 2, 2, 2] 2 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

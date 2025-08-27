@@ -1,0 +1,19 @@
+"vc-description": "Complete the function/method so that it returns the url with anything\
+  \ after the anchor (`#`) removed. \n\n## Examples\n\n```python\n# returns 'www.codewars.com'\n\
+  remove_url_anchor('www.codewars.com#about')\n\n# returns 'www.codewars.com?page=1'\
+  \ \nremove_url_anchor('www.codewars.com?page=1') \n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def remove_url_anchor (s : String) : String := sorry \n\ntheorem\
+  \ remove_url_anchor_splits_at_hash (base anchor : String) : \n  remove_url_anchor\
+  \ (base ++ \"#\" ++ anchor) = base := sorry\n"
+"vc-theorems": "theorem no_hash_in_result (s : String) : \n  ¬ (remove_url_anchor\
+  \ s).contains '#' := sorry\n\n\ntheorem no_hash_returns_same (s : String) : \n \
+  \ ¬ s.contains '#' → remove_url_anchor s = s := sorry\n\n\ntheorem empty_string\
+  \ :\n  remove_url_anchor \"\" = \"\" := sorry\n\n\ntheorem only_hash :\n  remove_url_anchor\
+  \ \"#\" = \"\" := sorry\n\n/--\ninfo: 'www.codewars.com'\n-/\n#guard_msgs in\n#eval\
+  \ remove_url_anchor \"www.codewars.com#about\"\n\n/--\ninfo: 'www.codewars.com/katas/?page=1'\n\
+  -/\n#guard_msgs in\n#eval remove_url_anchor \"www.codewars.com/katas/?page=1#about\"\
+  \n\n/--\ninfo: 'www.codewars.com/katas/'\n-/\n#guard_msgs in\n#eval remove_url_anchor\
+  \ \"www.codewars.com/katas/\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

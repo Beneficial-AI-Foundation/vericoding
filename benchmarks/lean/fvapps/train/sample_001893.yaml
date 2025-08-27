@@ -1,0 +1,25 @@
+"vc-description": "Implement a magic directory with buildDict, and search methods.\n\
+  \n\n\nFor the method buildDict, you'll be given a list of non-repetitive words to\
+  \ build a dictionary.\n\n\n\nFor the method search, you'll be given a word, and\
+  \ judge whether if you modify exactly one character into another character in this\
+  \ word, the modified word is in the dictionary you just built.\n\n\nExample 1:\n\
+  \nInput: buildDict([\"hello\", \"leetcode\"]), Output: Null\nInput: search(\"hello\"\
+  ), Output: False\nInput: search(\"hhllo\"), Output: True\nInput: search(\"hell\"\
+  ), Output: False\nInput: search(\"leetcoded\"), Output: False\n\n\n\nNote:\n\nYou\
+  \ may assume that all the inputs are consist of lowercase letters a-z.\nFor contest\
+  \ purpose, the test data is rather small by now. You could think about highly efficient\
+  \ algorithm after the contest.\nPlease remember to RESET your class variables declared\
+  \ in class MagicDictionary, as static/class variables are persisted across multiple\
+  \ test cases. Please see here for more details."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def defaultMagicDictionary : MagicDictionary := {\n  l := []\n\
+  \  buildDict := fun words => words\n  search := fun _ => false\n}\n"
+"vc-theorems": "theorem buildDict_preserves_words (md : MagicDictionary) (words :\
+  \ List String) : \n  md.buildDict words = words := sorry\n\n\ntheorem length_mismatch_returns_false\
+  \ (md : MagicDictionary) (word : String) (delta : Nat) :\n  delta ≥ 1 →\n  ¬(md.search\
+  \ (word ++ String.mk (List.replicate delta 'a'))) := sorry\n\n\ntheorem single_char_diff_returns_true\
+  \ (md : MagicDictionary) (word : String) (pos : Nat) :\n  pos < word.length →\n\
+  \  let newChar := if word.get ⟨pos⟩ = 'x' then 'y' else 'x'\n  let modified := word.set\
+  \ ⟨pos⟩ newChar\n  md.search modified := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

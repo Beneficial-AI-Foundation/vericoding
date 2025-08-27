@@ -1,0 +1,22 @@
+"vc-description": "Calculate the number of items in a vector that appear at the same\
+  \ index in each vector, with the same value. \n\n```python\n   vector_affinity([1,\
+  \ 2, 3, 4, 5], [1, 2, 2, 4, 3]) # => 0.6\n   vector_affinity([1, 2, 3], [1, 2, 3])\
+  \ # => 1.0\n```\n\nAffinity value should be realized on a scale of 0.0 to 1.0, with\
+  \ 1.0 being absolutely identical. Two identical sets should always be evaulated\
+  \ as having an affinity or 1.0.\n\nHint: The last example test case holds a significant\
+  \ clue to calculating the affinity correctly."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def abs (x : Float) : Float := if x < 0 then -x else x\n\ndef vector_affinity\
+  \ (xs ys : List Int) : Float := sorry\n"
+"vc-theorems": "theorem self_affinity (xs : List Int) :\n  vector_affinity xs xs =\
+  \ 1.0 := sorry\n\n\ntheorem affinity_bounds (xs ys : List Int) : \n  0 ≤ vector_affinity\
+  \ xs ys ∧ vector_affinity xs ys ≤ 1.0 := sorry\n\n\ntheorem affinity_symmetric (xs\
+  \ ys : List Int) :\n  abs (vector_affinity xs ys - vector_affinity ys xs) < 1e-10\
+  \ := sorry\n\n\ntheorem empty_lists :\n  vector_affinity [] [] = 1.0 := sorry\n\n\
+  \ntheorem empty_with_nonempty (xs : List Int) :\n  (xs = [] → vector_affinity xs\
+  \ xs = 1.0) ∧\n  (xs ≠ [] → vector_affinity xs [] = 0.0 ∧ vector_affinity [] xs\
+  \ = 0.0) := sorry\n\n/--\ninfo: 1.0\n-/\n#guard_msgs in\n#eval vector_affinity [1,\
+  \ 2, 3] [1, 2, 3]\n\n/--\ninfo: 1.0\n-/\n#guard_msgs in\n#eval vector_affinity []\
+  \ []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

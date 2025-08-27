@@ -1,0 +1,22 @@
+"vc-description": "Implement a function which takes a string, and returns its hash\
+  \ value.\n\nAlgorithm steps:\n\n* `a` := sum of the ascii values of the input characters\n\
+  * `b` := sum of every difference between the consecutive characters of the input\
+  \ (second char minus first char, third minus second, ...)\n* `c` := (`a` OR `b`)\
+  \ AND ((NOT `a`) shift left by 2 bits)\n* `d` := `c` XOR (32 * (`total_number_of_spaces`\
+  \ + 1))\n* return `d`\n\n**Note**: OR, AND, NOT, XOR are bitwise operations.\n\n\
+  ___\n\n### Examples\n\n```\ninput = \"a\"\na = 97\nb = 0\nresult = 64\n\ninput =\
+  \ \"ca\"\na = 196\nb = -2\nresult = -820\n```\n\n___\n\nGive an example why this\
+  \ hashing algorithm is bad?"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def string_hash (s : String) : Int :=\n  sorry\n"
+"vc-theorems": "theorem string_hash_returns_integer (s : String) (h : s.length > 0)\
+  \ :\n  ∃ n : Int, string_hash s = n :=\n  sorry\n\n\ntheorem string_hash_deterministic\
+  \ (s : String) (h : s.length > 1) :\n  string_hash s = string_hash s :=\n  sorry\n\
+  \n\ntheorem string_hash_space_sensitive (s : String) (h : s.length > 0) :\n  string_hash\
+  \ s ≠ string_hash (s ++ \" \") ∧\n  string_hash (s ++ \" \") = string_hash (s ++\
+  \ \" \") :=\n  sorry\n\n\ntheorem string_hash_specific_value : \n  string_hash \"\
+  a\" = 64 :=\n  sorry\n\n/--\ninfo: 64\n-/\n#guard_msgs in\n#eval string_hash \"\
+  a\"\n\n/--\ninfo: -820\n-/\n#guard_msgs in\n#eval string_hash \"ca\"\n\n/--\ninfo:\
+  \ 1120\n-/\n#guard_msgs in\n#eval string_hash \"global hash\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

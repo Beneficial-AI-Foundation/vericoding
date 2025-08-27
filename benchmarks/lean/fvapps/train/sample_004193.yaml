@@ -1,0 +1,42 @@
+"vc-description": "# Task\n\n* **_Given_** *three integers* `a` ,`b` ,`c`, **_return_**\
+  \ *the **_largest number_** obtained after inserting the following operators and\
+  \ brackets*: `+`, `*`, `()`\n* In other words , **_try every combination of a,b,c\
+  \ with [*+()] , and return the Maximum Obtained_**\n___\n# Consider an Example :\n\
+  \n**_With the numbers are 1, 2 and 3_** , *here are some ways of placing signs and\
+  \ brackets*:\n\n* `1 * (2 + 3) = 5`\n* `1 * 2 * 3 = 6`\n* `1 + 2 * 3 = 7`\n* `(1\
+  \ + 2) * 3 = 9`\n\nSo **_the maximum value_** that you can obtain is  **_9_**.\n\
+  \n___\n# Notes \n\n* **_The numbers_** *are always* **_positive_**. \n* **_The numbers_**\
+  \ *are in the range* **_(1  ≤  a, b, c  ≤  10)_**.\n* *You can use the same operation*\
+  \ **_more than once_**.\n* **It's not necessary** *to place all the signs and brackets*.\n\
+  * **_Repetition_** *in numbers may occur* .\n* You **_cannot swap the operands_**.\
+  \ For instance, in the given example **_you cannot get expression_** `(1 + 3) *\
+  \ 2 = 8`.\n\n___\n# Input >> Output Examples:\n\n```\nexpressionsMatter(1,2,3) \
+  \ ==>  return 9\n```\n## **_Explanation_**:\n*After placing signs and brackets,\
+  \ the **_Maximum value_** obtained from the expression* `(1+2) * 3 = 9`.\n___\n\n\
+  ```\nexpressionsMatter(1,1,1)  ==>  return 3\n```\n## **_Explanation_**:\n*After\
+  \ placing signs, the **_Maximum value_** obtained from the expression is* `1 + 1\
+  \ + 1 = 3`.\n___\n\n```\nexpressionsMatter(9,1,1)  ==>  return 18\n```\n## **_Explanation_**:\n\
+  *After placing signs and brackets, the **_Maximum value_** obtained from the expression\
+  \ is* `9 * (1+1) = 18`.\n___\n___\n___\n\n# [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
+  \n# [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
+  \n# [Bizarre Sorting-katas](https://www.codewars.com/collections/bizarre-sorting-katas)\n\
+  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
+  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def expression_matter (a b c : Nat) : Nat := sorry\n\ntheorem result_greater_than_inputs\
+  \ (a b c : Nat) \n  (h₁ : 1 ≤ a ∧ a ≤ 10) \n  (h₂ : 1 ≤ b ∧ b ≤ 10)\n  (h₃ : 1 ≤\
+  \ c ∧ c ≤ 10) :\n  expression_matter a b c ≥ max a (max b c) := sorry\n"
+"vc-theorems": "theorem result_greater_than_sum (a b c : Nat)\n  (h₁ : 1 ≤ a ∧ a ≤\
+  \ 10)\n  (h₂ : 1 ≤ b ∧ b ≤ 10) \n  (h₃ : 1 ≤ c ∧ c ≤ 10) :\n  expression_matter\
+  \ a b c ≥ a + b + c := sorry\n\n\ntheorem result_greater_than_min_products (a b\
+  \ c : Nat)\n  (h₁ : 1 ≤ a ∧ a ≤ 10)\n  (h₂ : 1 ≤ b ∧ b ≤ 10)\n  (h₃ : 1 ≤ c ∧ c\
+  \ ≤ 10) :\n  expression_matter a b c ≥ min (a*b*c) (min ((a+b)*c) (a*(b+c))) :=\
+  \ sorry\n\n\ntheorem result_bounded_above (a b c : Nat)\n  (h₁ : 1 ≤ a ∧ a ≤ 10)\n\
+  \  (h₂ : 1 ≤ b ∧ b ≤ 10)\n  (h₃ : 1 ≤ c ∧ c ≤ 10) :\n  expression_matter a b c ≤\
+  \ max (a*b*c) (max (a+b+c) (max ((a+b)*c) (a*(b+c)))) := sorry\n\n\ntheorem result_equal_inputs\
+  \ (x : Nat)\n  (h : 1 ≤ x ∧ x ≤ 10) :\n  expression_matter x x x = max (x*x*x) (max\
+  \ (3*x) (2*x*x)) := sorry\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval expression_matter\
+  \ 1 2 3\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval expression_matter 1 1 1\n\n/--\n\
+  info: 18\n-/\n#guard_msgs in\n#eval expression_matter 9 1 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,33 @@
+"vc-description": "Toad Pimple has an array of integers $a_1, a_2, \\ldots, a_n$.\n\
+  \nWe say that $y$ is reachable from $x$ if $x<y$ and there exists an integer array\
+  \ $p$ such that $x = p_1 < p_2 < \\ldots < p_k=y$, and $a_{p_i}\\, \\&\\, a_{p_{i+1}}\
+  \ > 0$ for all integers $i$ such that $1 \\leq i < k$.\n\nHere $\\&$ denotes the\
+  \ bitwise AND operation.\n\nYou are given $q$ pairs of indices, check reachability\
+  \ for each of them.\n\n\n-----Input-----\n\nThe first line contains two integers\
+  \ $n$ and $q$ ($2 \\leq n \\leq 300\\,000$, $1 \\leq q \\leq 300\\,000$) — the number\
+  \ of integers in the array and the number of queries you need to answer.\n\nThe\
+  \ second line contains $n$ space-separated integers $a_1, a_2, \\ldots, a_n$ ($0\
+  \ \\leq a_i \\leq 300\\,000$) — the given array.\n\nThe next $q$ lines contain two\
+  \ integers each. The $i$-th of them contains two space-separated integers $x_i$\
+  \ and $y_i$ ($1 \\leq x_i < y_i \\leq n$). You need to check if $y_i$ is reachable\
+  \ from $x_i$. \n\n\n-----Output-----\n\nOutput $q$ lines. In the $i$-th of them\
+  \ print \"Shi\" if $y_i$ is reachable from $x_i$, otherwise, print \"Fou\".\n\n\n\
+  -----Example-----\nInput\n5 3\n1 3 0 2 1\n1 3\n2 4\n1 4\n\nOutput\nFou\nShi\nShi\n\
+  \n\n\n-----Note-----\n\nIn the first example, $a_3 = 0$. You can't reach it, because\
+  \ AND with it is always zero. $a_2\\, \\&\\, a_4 > 0$, so $4$ is reachable from\
+  \ $2$, and to go from $1$ to $4$ you can use $p = [1, 2, 4]$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_reachability (n q : Nat) (arr : List Nat) (queries :\
+  \ List (Nat × Nat)) : List String :=\nsorry\n"
+"vc-theorems": "theorem reachability_output_length (n q : Nat) (arr : List Nat) (queries\
+  \ : List (Nat × Nat)) :\n  queries.length = q → (check_reachability n q arr queries).length\
+  \ = q :=\nsorry\n\n\ntheorem reachability_output_valid (n q : Nat) (arr : List Nat)\
+  \ (queries : List (Nat × Nat)) :\n  ∀ x ∈ check_reachability n q arr queries, x\
+  \ = \"Shi\" ∨ x = \"Fou\" :=\nsorry\n\n\ntheorem zero_node_not_self_reachable (n\
+  \ : Nat) (arr : List Nat) (i : Nat) (h : i < n) \n  (hArr : arr.length = n) (hZero\
+  \ : arr[i] = 0) :\n  check_reachability n 1 arr [(i+1, i+1)] = [\"Fou\"] :=\nsorry\n\
+  \n\ntheorem single_element_all_bits_reachable :\n  let arr := [2^20 - 1]\n  check_reachability\
+  \ 1 1 arr [(1,1)] = [\"Shi\"] :=\nsorry\n\n\ntheorem single_element_no_bits_unreachable\
+  \ :\n  let arr := [0]\n  check_reachability 1 1 arr [(1,1)] = [\"Fou\"] :=\nsorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

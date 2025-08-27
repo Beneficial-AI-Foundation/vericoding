@@ -1,0 +1,36 @@
+"vc-description": "You must have tried to solve the Rubik’s cube. You might even have\
+  \ succeeded at it. Rubik’s cube is a 3x3x3 cube which has 6 different color for\
+  \ each face.The Rubik’s cube is made from 26 smaller pieces which are called cubies.\
+  \ There are 6 cubies at the centre of each face and these comprise of a single color.\
+  \ There are 8 cubies at the 8 corners which comprise of exactly 3 colors. The 12\
+  \ reamaining cubies comprise of exactly 2 colors.\n\nApple has come up with a variation\
+  \ of the Rubik’s Cube, it’s the Rubik’s cuboid which has different colors on its\
+  \ 6 faces. The Rubik’s Cuboid comes in various sizes represented by M x N x O (M,N,O\
+  \ are natural numbers). Apple is giving away 100 Rubik’s cuboid for free to people\
+  \ who can answer a simple questions. Apple wants to know, in a Rubik’s cuboid with\
+  \ arbitrary dimensions, how many cubies would be there, which comprise of exactly\
+  \ 2 color.\n\n-----Input-----\nThe input contains several test cases.The first line\
+  \ of the input contains an integer T denoting the number of test cases.\n\nEach\
+  \ test case comprises of 3 natural numbers, M,N & O, which denote the dimensions\
+  \ of the Rubiks Cuboid.\n\n-----Output-----\nFor each test case you are required\
+  \ to output the number of  cubies which comprise of 2 squares, each of which is\
+  \ of a different color.\n\n-----Constraints-----\n- 1 ≤ T ≤ <1000\n- 1 ≤ M ≤ <100000\n\
+  - 1 ≤ N ≤ <100000\n- 1 ≤ O ≤ <100000\n\n-----Example-----\nInput:\n1\n3\n3\n3\n\n\
+  Output:\n\n12"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_rubiks_cuboid (m n o : Nat) : Nat := sorry\n\ntheorem\
+  \ solve_non_negative (m n o : Nat) : \n  solve_rubiks_cuboid m n o ≥ 0 := sorry\n"
+"vc-theorems": "theorem solve_commutative (m n o : Nat) :\n  solve_rubiks_cuboid m\
+  \ n o = solve_rubiks_cuboid m o n ∧\n  solve_rubiks_cuboid m n o = solve_rubiks_cuboid\
+  \ n m o ∧ \n  solve_rubiks_cuboid m n o = solve_rubiks_cuboid n o m ∧\n  solve_rubiks_cuboid\
+  \ m n o = solve_rubiks_cuboid o m n ∧\n  solve_rubiks_cuboid m n o = solve_rubiks_cuboid\
+  \ o n m := sorry\n\n\ntheorem small_cubes_zero (m n o : Nat) :\n  m ≤ 2 → n ≤ 2\
+  \ → o ≤ 2 → solve_rubiks_cuboid m n o = 0 := sorry\n\n\ntheorem increases_with_size\
+  \ (m n o : Nat) :\n  solve_rubiks_cuboid (m + 1) n o ≥ solve_rubiks_cuboid m n o\
+  \ ∧\n  solve_rubiks_cuboid m (n + 1) o ≥ solve_rubiks_cuboid m n o ∧\n  solve_rubiks_cuboid\
+  \ m n (o + 1) ≥ solve_rubiks_cuboid m n o := sorry\n\n/--\ninfo: 12\n-/\n#guard_msgs\
+  \ in\n#eval solve_rubiks_cuboid 3 3 3\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ solve_rubiks_cuboid 1 1 1\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval solve_rubiks_cuboid\
+  \ 4 3 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

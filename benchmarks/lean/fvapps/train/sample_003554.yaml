@@ -1,0 +1,25 @@
+"vc-description": "Integral numbers can be even or odd.\n\nEven numbers satisfy `n\
+  \ = 2m` ( with `m` also integral ) and we will ( completely arbitrarily ) think\
+  \ of odd numbers as `n = 2m + 1`.  \nNow, some odd numbers can be more odd than\
+  \ others: when for some `n`, `m` is more odd than for another's. Recursively. :]\
+  \  \nEven numbers are just not odd.\n\n# Task\n\nGiven a finite list of integral\
+  \ ( not necessarily non-negative ) numbers, determine the number that is _odder\
+  \ than the rest_.  \nIf there is no single such number, no number is odder than\
+  \ the rest; return `Nothing`, `null` or a similar empty value.\n\n# Examples\n\n\
+  ```python\noddest([1,2]) => 1\noddest([1,3]) => 3\noddest([1,5]) => None\n```\n\n\
+  # Hint\n\nDo you _really_ want one? Point or tap here."
+"vc-preamble": "import Imports.AllImports\n\ndef get_oddity (n : Int) : Int :=\n \
+  \ sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def oddest (nums : List Int) : Option Int :=\n  sorry\n"
+"vc-theorems": "theorem oddest_empty (nums : List Int) :\n  nums = [] → oddest nums\
+  \ = none :=\n  sorry\n\n\ntheorem oddest_in_list {nums : List Int} {result : Int}\
+  \ :\n  oddest nums = some result → result ∈ nums :=\n  sorry\n\n\ntheorem oddest_null_tie_or_even\
+  \ {nums : List Int} :\n  nums ≠ [] →\n  oddest nums = none →\n  let oddities :=\
+  \ nums.map get_oddity\n  let max_odd := oddities.maximum?\n  match max_odd with\n\
+  \  | none => True \n  | some m => \n    (oddities.filter (·= m)).length > 1 ∨ m\
+  \ = 0 :=\n  sorry\n\n\ntheorem oddest_output_type (nums : List Int) :\n  oddest\
+  \ nums = none ∨ (∃ x, oddest nums = some x) :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval oddest [1, 2]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval oddest [1,\
+  \ 3]\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval oddest [1, 3, 5, 7]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

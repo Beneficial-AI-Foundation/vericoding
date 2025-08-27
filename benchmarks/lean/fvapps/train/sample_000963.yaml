@@ -1,0 +1,52 @@
+"vc-description": "January and February are usually very cold in ChefLand. The temperature\
+  \ may reach -20 and even -30 degrees Celsius. Because of that, many people seal\
+  \ up windows in their houses.\nSergey also lives in ChefLand. He wants to seal the\
+  \ window in his house. The window has the shape of a   simple convex polygon with\
+  \ N vertices.\nFor the sealing, there are M kinds of sticky stripes, which are sold\
+  \ in the shops. The stripe of the ith type has the length of Li millimeters and\
+  \ the cost of Ci rubles.\nThe sealing process consists in picking the stripe and\
+  \ sticking it on the border of the window. The stripe can't be cut (it is made of\
+  \ very lasting material) and can only be put straight, without foldings. It is not\
+  \ necessary to put the strip strictly on the window border, it can possibly extend\
+  \ outside the border side of window too (by any possible amount). The window is\
+  \ considered sealed up if every point on its' border is covered with at least one\
+  \ stripe.\nNow Sergey is curious about the stripes he needs to buy. He wonders about\
+  \ the cheapest cost, at which he can seal his window. Please help him.\n\n-----Input-----\n\
+  The first line of the input contains an integer T denoting the number of test cases.\
+  \ The description of T test cases follows.\nThe first line of each test case contains\
+  \ a single integer N denoting the number of number of vertices in the polygon denoting\
+  \ Sergey's window.\nEach of the following N lines contains a pair of space-separated\
+  \ integer numbers Xi Yi, denoting the coordinates of the ith points.\nThe following\
+  \ line contains a single integer M denoting the number of types of sticky stripe\
+  \ which is sold in the shop.\nEach of the following M lines contains a pair of space-separated\
+  \ integers Li Ci denoting the length and the cost of the sticky stripe of the ith\
+  \ type respectively.\n\n-----Output-----\nFor each test case, output a single line\
+  \ containing the minimum cost of sealing up the window.\n\n-----Constraints-----\n\
+  - 1 ≤ T ≤ 10\n- The coordinates of the window are given either in clockwise or in\
+  \ a counter-clockwise order.\n- No three or more vertices lie on the same line (i.e.\
+  \ are collinear).\n- 0 ≤ Xi, Yi ≤ 106\n- 1 ≤ Li, Ci ≤ 106\n\n-----Subtasks-----\n\
+  - Subtask #1 (17 points): 3 ≤ N ≤ 10,  M = 1\n- Subtask #2 (24 points): 3 ≤ N ≤\
+  \ 42, M ≤ 2\n- Subtask #3 (59 points): 3 ≤ N ≤ 2000, 1 ≤ M ≤ 10\n\n-----Example-----\n\
+  Input:1\n4\n0 0\n1000 0\n1000 2000\n0 2000\n2\n1000 10\n2000 15\n\nOutput:50\n\n\
+  -----Explanation-----\nExample case 1. In this case, Sergey's window is a rectangle\
+  \ with the side lengths of 1000 and 2000. There are two types of the sticky stripes\
+  \ in the shop - the one of the length 1000 with the cost of 10 rubles and with the\
+  \ length of 2000 and the cost of 15 rubles. The optimal solution would be to buy\
+  \ 2 stripes of the first type 2 stripes of the second type. The cost will be 2 ×\
+  \ 15 + 2 × 10 = 50 rubles."
+"vc-preamble": "import Imports.AllImports\n\ndef isValidPolygon (vertices: List (Int\
+  \ × Int)) : Bool := sorry\n\n/-- Signature for the main function -/"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculateMinCost (vertices: List (Int × Int)) (stripes: List\
+  \ (Float × Int)) : Nat := sorry\n\ntheorem min_cost_positive (vertices: List (Int\
+  \ × Int)) (stripes: List (Float × Int))\n  (h1: isValidPolygon vertices = true)\n\
+  \  (h2: stripes.length > 0) :\n  calculateMinCost vertices stripes > 0 := sorry\n"
+"vc-theorems": "theorem min_cost_integer (vertices: List (Int × Int)) (stripes: List\
+  \ (Float × Int))\n  (h1: isValidPolygon vertices = true)\n  (h2: stripes.length\
+  \ > 0) :\n  ∃ n: Nat, calculateMinCost vertices stripes = n := sorry\n\n\ntheorem\
+  \ empty_stripes_error (vertices: List (Int × Int))\n  (h1: isValidPolygon vertices\
+  \ = true) :\n  ∀ result, calculateMinCost vertices [] ≠ result := sorry\n\n/--\n\
+  info: 50\n-/\n#guard_msgs in\n#eval calculate_min_cost [(0, 0), (1000, 0), (1000,\
+  \ 2000), (0, 2000)] [(1000, 10), (2000, 15)]\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n\
+  #eval calculate_min_cost [(0, 0), (4, 0), (2, 3)] [(5, 2)]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

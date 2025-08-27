@@ -1,0 +1,36 @@
+"vc-description": "Your task in this Kata is to emulate text justify right in monospace\
+  \ font. You will be given a single-lined text and the expected justification width.\
+  \ The longest word will never be greater than this width.\n\nHere are the rules:\n\
+  \n- Use spaces to fill in the gaps on the left side of the words.\n- Each line should\
+  \ contain as many words as possible.\n- Use '\\n' to separate lines.\n- Gap between\
+  \ words can't differ by more than one space.\n- Lines should end with a word not\
+  \ a space.\n- '\\n' is not included in the length of a line.\n- Last line should\
+  \ not contain '\\n'\n\nExample with width=30:\n\n```\n        Bacon ipsum dolor\
+  \ amet\nexcepteur ut kevin burgdoggen,\n   shankle cupim dolor officia\n       ground\
+  \ round id ullamco\n   deserunt nisi. Commodo tail\n    qui salami, brisket boudin\
+  \ \ntri-tip. Labore flank laboris,\n  cow enim proident aliqua sed\n      hamburger\
+  \ consequat. Sed\n     consequat ut non bresaola\n   capicola shoulder excepteur\n\
+  \ veniam, bacon kevin. Pastrami\n   shank laborum est excepteur\n non eiusmod bresaola\
+  \ flank in\nnostrud. Corned beef ex pig do\n   kevin filet mignon in irure\n deserunt\
+  \ ipsum qui duis short\n        loin. Beef ribs dolore\n  meatball officia rump\
+  \ fugiat\n  in enim corned beef non est.\n```\n\nIf you enjoyed this one and want\
+  \ more of a challenge try https://www.codewars.com/kata/text-align-justify/python\n\
+  \nIf you like bacon ipsum https://baconipsum.com"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def align_right (text : String) (width : Nat) : String := sorry\n\
+  \ntheorem width_equal_to_content (text : String) (line : String) : \n  line ≠ \"\
+  \" →\n  line ∈ (text.split (· = '\\n')) →\n  align_right line (line.length) = line\
+  \ := sorry\n"
+"vc-theorems": "theorem basic_properties_nonempty (text : String) (width : Nat) :\n\
+  \  text.trim ≠ \"\" →\n  width ≥ 10 →\n  (align_right text width).trim ≠ \"\" :=\
+  \ sorry\n\n\ntheorem basic_properties_width (text : String) (width : Nat) : \n \
+  \ text.trim ≠ \"\" →\n  width ≥ 10 →\n  ∀ line ∈ (align_right text width).split\
+  \ (· = '\\n'), \n    line.length ≤ width := sorry\n\n\ntheorem basic_properties_alignment\
+  \ (text : String) (width : Nat) :\n  text.trim ≠ \"\" →\n  width ≥ 10 →\n  ∀ line\
+  \ ∈ (align_right text width).split (· = '\\n'),\n    !line.startsWith line.trim\
+  \ ∨ line.trim = line := sorry\n\n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval\
+  \ align_right \"abc def\" 10\n\n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval align_right\
+  \ \"I take up the whole line\" 24\n\n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval\
+  \ align_right \"Two lines, I am\" 10\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

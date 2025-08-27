@@ -1,0 +1,25 @@
+"vc-description": "Given a string text, you want to use the characters of text to\
+  \ form as many instances of the word \"balloon\" as possible.\nYou can use each\
+  \ character in text at most once. Return the maximum number of instances that can\
+  \ be formed.\n \nExample 1:\n\nInput: text = \"nlaebolko\"\nOutput: 1\n\nExample\
+  \ 2:\n\nInput: text = \"loonbalxballpoon\"\nOutput: 2\n\nExample 3:\nInput: text\
+  \ = \"leetcode\"\nOutput: 0\n\n \nConstraints:\n\n1 <= text.length <= 10^4\ntext consists\
+  \ of lower case English letters only."
+"vc-preamble": "import Imports.AllImports\n\ndef max_balloons (s : String) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def makeBalloonsString (n : Nat) : String :=\n  String.join (List.replicate\
+  \ n \"balloon\")\n"
+"vc-theorems": "theorem max_balloons_nonnegative (text : String) : \n  max_balloons\
+  \ text ≥ 0 := sorry\n\n\ntheorem max_balloons_upper_bound (text : String) :\n  max_balloons\
+  \ text ≤ text.length / 7 := sorry\n\n\ntheorem max_balloons_has_needed_chars (text\
+  \ : String) (c : Char) :\n  let result := max_balloons text\n  let needed := match\
+  \ c with\n    | 'b' => result\n    | 'a' => result  \n    | 'l' => 2 * result\n\
+  \    | 'o' => 2 * result\n    | 'n' => result\n    | _ => 0\n  (text.toList.filter\
+  \ (· = c)).length ≥ needed := sorry\n\n\ntheorem max_balloons_exact (n : Nat) :\n\
+  \  max_balloons (makeBalloonsString n) = n := sorry\n\n\ntheorem max_balloons_no_relevant_chars\
+  \ (text : String) \n  (h : ∀ c ∈ text.toList, c ∉ ['b', 'a', 'l', 'o', 'n']) :\n\
+  \  max_balloons text = 0 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval max_balloons\
+  \ \"nlaebolko\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval max_balloons \"loonbalxballpoon\"\
+  \n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval max_balloons \"leetcode\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

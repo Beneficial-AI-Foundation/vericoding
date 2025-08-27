@@ -1,0 +1,23 @@
+"vc-description": "Hofstadter sequences are a family of related integer sequences,\
+  \ among which the first ones were described by an American professor Douglas Hofstadter\
+  \ in his book Gödel, Escher, Bach. \n\n### Task\nToday we will be implementing the\
+  \ rather chaotic recursive sequence of integers called Hofstadter Q.\nThe Hofstadter\
+  \ Q is defined as:\n\nAs the author states in the aforementioned book:It is reminiscent\
+  \ of the Fibonacci definition in that each new value is a sum of two\nprevious values-but\
+  \ not of the immediately previous two values. Instead, the two\nimmediately previous\
+  \ values tell how far to count back to obtain the numbers to be added\nto make the\
+  \ new value.\nThe function produces the starting sequence:  \n`1, 1, 2, 3, 3, 4,\
+  \ 5, 5, 6 . . .`  \nTest info: 100 random tests, n is always positive\nGood luck!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def hofstadter_Q : Nat → Nat \n| 0 => 0\n| n => sorry\n"
+"vc-theorems": "theorem hofstadter_positive (n : Nat) (h : n > 0) : \n  hofstadter_Q\
+  \ n > 0 := sorry\n\n\ntheorem hofstadter_first_terms : \n  hofstadter_Q 1 = 1 ∧\
+  \ hofstadter_Q 2 = 1 := sorry\n\n\ntheorem hofstadter_recurrence (n : Nat) (h :\
+  \ n ≥ 3) :\n  hofstadter_Q n = \n    hofstadter_Q (n - hofstadter_Q (n-1)) + \n\
+  \    hofstadter_Q (n - hofstadter_Q (n-2)) := sorry\n\n\ntheorem hofstadter_deterministic\
+  \ (n : Nat) (h : n > 0) :\n  ∀ x y, hofstadter_Q n = x → hofstadter_Q n = y → x\
+  \ = y := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval hofstadter_Q 1\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval hofstadter_Q 3\n\n/--\ninfo: 5\n-/\n#guard_msgs\
+  \ in\n#eval hofstadter_Q 7\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

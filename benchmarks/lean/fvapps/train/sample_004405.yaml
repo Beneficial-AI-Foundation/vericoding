@@ -1,0 +1,35 @@
+"vc-description": "You will be given an array of positive integers. The array should\
+  \ be sorted by the amount of distinct perfect squares and reversed, that can be\
+  \ generated from each number permuting its digits.\n\nE.g.: ```arr = [715, 112,\
+  \ 136, 169, 144]``` \n``` \nNumber   Perfect Squares w/ its Digits   Amount\n 715\
+  \                -                       0\n 112               121             \
+  \         1\n 136               361                      1\n 169           169,\
+  \ 196, 961                3\n 144             144, 441                   2\n```\
+  \ \nSo the output will have the following order:\n```[169, 144, 112, 136, 715]```\
+  \ \n\nWhen we have two or more numbers with the same amount of perfect squares in\
+  \ their permutations, we sorted by their values.\n\nIn the example given above,\
+  \ we can see that 112 and 136 both generate a perfect square. So 112 comes first.\n\
+  \nExamples for this kata:\n```python\nsort_by_perfsq([715, 112, 136, 169, 144])\
+  \ == [169, 144, 112, 136, 715]\n# number of perfect squares:                   3\
+  \    2    1    1    0\n``` \nWe may have in the array numbers that belongs to the\
+  \ same set of permutations.\n```python\nsort_by_perfsq([234, 61, 16, 441, 144, 728])\
+  \ == [144, 441, 16, 61, 234, 728]\n# number of perfect squares:                \
+  \      2    2    1   0   0    0\n```\n\nFeatures of the random tests:\n~~~if:ruby,python\n\
+  - Number of tests: 80\n- Arrays between 4 and 20 elements\n- Integers having from\
+  \ 1 to 7 digits included\n~~~\n~~~if:js\n- Number of tests: 30\n- Arrays between\
+  \ 4 and 16 elements\n- Integers having from 1 to 7 digits included\n~~~\n\nEnjoy\
+  \ it!!"
+"vc-preamble": "import Imports.AllImports\n\ndef List.toBag {α : Type u} [BEq α] (l\
+  \ : List α) : Bag α where\n  count a := List.length (List.filter (fun x => x ==\
+  \ a) l)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sort_by_perfsq (arr : List Nat) : List Nat := sorry\n\ntheorem\
+  \ sort_by_perfsq_maintains_length {arr : List Nat} :\n  List.length (sort_by_perfsq\
+  \ arr) = List.length arr := sorry\n"
+"vc-theorems": "theorem sort_by_perfsq_maintains_elements {arr : List Nat} :\n  (sort_by_perfsq\
+  \ arr).toBag = arr.toBag := sorry\n\n\ntheorem sort_by_perfsq_idempotent {arr :\
+  \ List Nat} :\n  sort_by_perfsq (sort_by_perfsq arr) = sort_by_perfsq arr := sorry\n\
+  \n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval sort_by_perfsq [715, 112, 136,\
+  \ 169, 144]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval sort_by_perfsq [234,\
+  \ 61, 16, 441, 144, 728]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

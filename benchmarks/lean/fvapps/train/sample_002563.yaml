@@ -1,0 +1,20 @@
+"vc-description": "# Task\n The string is called `prime` if it cannot be constructed\
+  \ by concatenating some (more than one) equal strings together.\n\n For example,\
+  \ \"abac\" is prime, but \"xyxy\" is not(\"xyxy\"=\"xy\"+\"xy\").\n \n Given a string\
+  \ determine if it is prime or not.\n\n# Input/Output\n\n\n - `[input]` string `s`\n\
+  \n  string containing only lowercase English letters\n\n - `[output]` a boolean\
+  \ value\n\n  `true` if the string is prime, `false` otherwise"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def prime_string (s : String) : Bool := sorry\n\ntheorem prime_string_empty_or_single\
+  \ {s : String} (h : s.length ≤ 1) :\n  prime_string s = true := sorry\n"
+"vc-theorems": "theorem prime_string_repeated {s : String} (h : s.length ≥ 1) :\n\
+  \  prime_string (s ++ s ++ s) = false := sorry\n\n\ntheorem prime_string_self_concat\
+  \ {s : String} (h : s.length ≥ 1) :\n  prime_string s = true ↔ \n  ∀ (i : Nat),\
+  \ 0 < i → i < (s ++ s).length → \n    (s ++ s).data[i]! ≠ s.data[0]! := sorry\n\n\
+  \ntheorem prime_string_palindrome {s : String} \n  (h1 : s.length > 1)\n  (h2 :\
+  \ ∀ (i : Nat), i < s.length → \n    s.data[i]! = s.data[s.length - 1 - i]!) :\n\
+  \  prime_string (s ++ s) = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
+  #eval prime_string \"abac\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval prime_string\
+  \ \"abab\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval prime_string \"aaaa\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

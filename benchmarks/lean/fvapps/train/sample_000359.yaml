@@ -1,0 +1,28 @@
+"vc-description": "A chef has collected data on the satisfaction level of his n dishes. Chef\
+  \ can cook any dish in 1 unit of time.\nLike-time coefficient of a dish is defined\
+  \ as the time taken to cook that dish including previous dishes multiplied by its\
+  \ satisfaction level  i.e.  time[i]*satisfaction[i]\nReturn the maximum sum of Like-time\
+  \ coefficient that the chef can obtain after dishes preparation.\nDishes can be\
+  \ prepared in any order and the chef can discard some dishes to get this maximum\
+  \ value.\n \nExample 1:\nInput: satisfaction = [-1,-8,0,5,-9]\nOutput: 14\nExplanation:\
+  \ After Removing the second and last dish, the maximum total Like-time coefficient\
+  \ will be equal to (-1*1 + 0*2 + 5*3 = 14). Each dish is prepared in one unit of\
+  \ time.\nExample 2:\nInput: satisfaction = [4,3,2]\nOutput: 20\nExplanation: Dishes\
+  \ can be prepared in any order, (2*1 + 3*2 + 4*3 = 20)\n\nExample 3:\nInput: satisfaction\
+  \ = [-1,-4,-5]\nOutput: 0\nExplanation: People don't like the dishes. No dish is\
+  \ prepared.\n\nExample 4:\nInput: satisfaction = [-2,5,-1,0,3,-3]\nOutput: 35\n\n\
+   \nConstraints:\n\nn == satisfaction.length\n1 <= n <= 500\n-10^3 <= satisfaction[i]\
+  \ <= 10^3"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_satisfaction (satisfaction : List Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem max_satisfaction_nonnegative\n  (satisfaction : List Int)\
+  \ :\n  max_satisfaction satisfaction ≥ 0 :=\n  sorry\n\n\ntheorem max_satisfaction_empty\
+  \ :\n  max_satisfaction [] = 0 :=\n  sorry\n\n\n\n\ntheorem max_satisfaction_single_zero\
+  \ :\n  max_satisfaction [0] = 0 :=\n  sorry\n\n\ntheorem max_satisfaction_single_positive\
+  \ :\n  max_satisfaction [1] = 1 :=\n  sorry\n\n\ntheorem max_satisfaction_single_negative\
+  \ :\n  max_satisfaction [-1] = 0 :=\n  sorry\n\n/--\ninfo: 14\n-/\n#guard_msgs in\n\
+  #eval max_satisfaction [-1, -8, 0, 5, -9]\n\n/--\ninfo: 20\n-/\n#guard_msgs in\n\
+  #eval max_satisfaction [4, 3, 2]\n\n/--\ninfo: 35\n-/\n#guard_msgs in\n#eval max_satisfaction\
+  \ [-2, 5, -1, 0, 3, -3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

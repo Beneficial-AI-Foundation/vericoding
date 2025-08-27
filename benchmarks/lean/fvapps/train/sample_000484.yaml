@@ -1,0 +1,30 @@
+"vc-description": "We have a collection of rocks, each rock has a positive integer\
+  \ weight.\nEach turn, we choose any two rocks and smash them together.  Suppose\
+  \ the stones have weights x and y with x <= y.  The result of this smash is:\n\n\
+  If x == y, both stones are totally destroyed;\nIf x != y, the stone of weight x\
+  \ is totally destroyed, and the stone of weight y has new weight y-x.\n\nAt the\
+  \ end, there is at most 1 stone left.  Return the smallest possible weight of this\
+  \ stone (the weight is 0 if there are no stones left.)\n \nExample 1:\nInput: [2,7,4,1,8,1]\n\
+  Output: 1\nExplanation: \nWe can combine 2 and 4 to get 2 so the array converts\
+  \ to [2,7,1,8,1] then,\nwe can combine 7 and 8 to get 1 so the array converts to\
+  \ [2,1,1,1] then,\nwe can combine 2 and 1 to get 1 so the array converts to [1,1,1]\
+  \ then,\nwe can combine 1 and 1 to get 0 so the array converts to [1] then that's\
+  \ the optimal value.\n\n \nNote:\n\n1 <= stones.length <= 30\n1 <= stones[i] <=\
+  \ 100"
+"vc-preamble": "import Imports.AllImports\n\ndef lastStoneWeightII (stones : List\
+  \ Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum : List Nat → Nat\n  | [] => 0\n  | x::xs => x + sum xs\n"
+"vc-theorems": "theorem lastStoneWeight_nonNegative (stones : List Nat) :\n  lastStoneWeightII\
+  \ stones ≥ 0 :=\nsorry\n\n\ntheorem lastStoneWeight_upperBound (stones : List Nat)\
+  \ :\n  lastStoneWeightII stones ≤ sum stones :=\nsorry\n\n\ntheorem lastStoneWeight_identical_pairs\
+  \ (stones : List Nat) :\n  stones.length = 2 → stones[0]! = stones[1]! → lastStoneWeightII\
+  \ stones = 0 :=\nsorry\n\n\ntheorem lastStoneWeight_single_stone (stones : List\
+  \ Nat) (x : Nat) :\n  stones = [x] → lastStoneWeightII stones = x :=\nsorry\n\n\n\
+  theorem lastStoneWeight_identical_values (stones : List Nat) (x : Nat) :\n  (∀ i,\
+  \ i < stones.length → stones[i]! = x) → lastStoneWeightII stones ≤ x :=\nsorry\n\
+  \n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval lastStoneWeightII [2, 7, 4, 1,\
+  \ 8, 1]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval lastStoneWeightII [1,\
+  \ 1, 1]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval lastStoneWeightII [2,\
+  \ 2]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,20 @@
+"vc-description": "Given a binary string s (a string consisting only of '0's and '1's), we\
+  \ can split s into 3 non-empty strings s1, s2, s3 (s1+ s2+ s3 = s).\nReturn the\
+  \ number of ways s can be split such that the number of characters '1' is the same\
+  \ in s1, s2, and s3.\nSince the answer may be too large, return it modulo 10^9 +\
+  \ 7.\n \nExample 1:\nInput: s = \"10101\"\nOutput: 4\nExplanation: There are four\
+  \ ways to split s in 3 parts where each part contain the same number of letters\
+  \ '1'.\n\"1|010|1\"\n\"1|01|01\"\n\"10|10|1\"\n\"10|1|01\"\n\nExample 2:\nInput:\
+  \ s = \"1001\"\nOutput: 0\n\nExample 3:\nInput: s = \"0000\"\nOutput: 3\nExplanation:\
+  \ There are three ways to split s in 3 parts.\n\"0|0|00\"\n\"0|00|0\"\n\"00|0|0\"\
+  \n\nExample 4:\nInput: s = \"100100010100110\"\nOutput: 12\n\n \nConstraints:\n\n\
+  3 <= s.length <= 10^5\ns[i] is '0' or '1'."
+"vc-preamble": "import Imports.AllImports\n\ndef MOD := 1000000007\n\ndef count_char\
+  \ (s : String) (c : Char) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def numWays (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem numWays_non_negative (s : String) :\n  numWays s ≥ 0 :=\n\
+  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval numWays \"10101\"\n\n/--\ninfo:\
+  \ 0\n-/\n#guard_msgs in\n#eval numWays \"1001\"\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval numWays \"0000\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

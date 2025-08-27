@@ -1,0 +1,41 @@
+"vc-description": "# Problem Statement\nWrite a function that takes two string parameters,\
+  \ an IP (v4) address and a subnet mask, and returns two strings: the network block,\
+  \ and the host identifier.\n\nThe function does not need to support CIDR notation.\n\
+  \n# Description\nA single IP address with subnet mask actually specifies several\
+  \ addresses: a network block, and a host identifier, and a broadcast address. These\
+  \ addresses can be calculated using a bitwise AND operation on each bit.\n\n(The\
+  \ broadcast address is not used in this kata.)\n\n## Example\nA computer on a simple\
+  \ home network might have the following IP and subnet mask:\n```\nIP: 192.168.2.1\n\
+  Subnet: 255.255.255.0\n(CIDR Notation: 192.168.2.1 /24)\n```\nIn this example, the\
+  \ network block is: **192.168.2.0**. And the host identifier is: **0.0.0.1**. \n\
+  \n## bitwise AND \nTo calculate the network block and host identifier the bits in\
+  \ each octet are ANDed together. When the result of the AND operation is '1', the\
+  \ bit specifies a network address (instead of a host address).\n\nTo compare the\
+  \ first octet in our example above, convert both the numbers to binary and perform\
+  \ an AND operation on each bit:\n```\n11000000 (192 in binary)\n11111111 (255 in\
+  \ binary)\n--------------------------- (AND each bit)\n11000000 (192 in binary)\n\
+  ```\nSo in the first octet, '**192**' is part of the network address. The host identifier\
+  \ is simply '**0**'.\n\nFor more information see the [Subnetwork](http://en.wikipedia.org/wiki/Subnetwork)\
+  \ article on Wikipedia."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def ipv4__parser (ipAddr : String) (mask : String) : String × String\
+  \ := sorry\n\nstructure OctetList where\n  octets : List Nat\n  size_eq : octets.length\
+  \ = 4\n  range : ∀ x ∈ octets, 0 ≤ x ∧ x ≤ 255\n"
+"vc-theorems": "theorem ipv4_parser_format (ipAddr : String) (mask : String) :\n \
+  \ let (network, host) := ipv4__parser ipAddr mask\n  (network.splitOn \".\").length\
+  \ = 4 ∧ \n  (host.splitOn \".\").length = 4 := sorry\n\n\ntheorem ipv4_parser_range\
+  \ (ipAddr : String) (mask : String) :\n  let (network, host) := ipv4__parser ipAddr\
+  \ mask\n  let allOctets := (network.splitOn \".\") ++ (host.splitOn \".\")\n  ∀\
+  \ octet ∈ allOctets, \n    match octet.toNat? with\n    | some n => 0 ≤ n ∧ n ≤\
+  \ 255\n    | none => False := sorry\n\n\ntheorem ipv4_parser_reconstruction \n \
+  \ (ipOctets : OctetList) (maskOctets : OctetList) :\n  let ipAddr := String.join\
+  \ (List.intersperse \".\" (ipOctets.octets.map toString))\n  let mask := String.join\
+  \ (List.intersperse \".\" (maskOctets.octets.map toString))\n  let (network, host)\
+  \ := ipv4__parser ipAddr mask\n  let netOctets := (network.splitOn \".\").filterMap\
+  \ String.toNat?\n  let hostOctets := (host.splitOn \".\").filterMap String.toNat?\n\
+  \  ∀ i, i < 4 →\n    ((netOctets.get! i) ||| (hostOctets.get! i)) = ipOctets.octets.get!\
+  \ i ∧\n    netOctets.get! i = (ipOctets.octets.get! i &&& maskOctets.octets.get!\
+  \ i) ∧\n    hostOctets.get! i = (ipOctets.octets.get! i &&& ((255 : Nat) - (maskOctets.octets.get!\
+  \ i))) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

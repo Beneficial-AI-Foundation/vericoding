@@ -1,0 +1,35 @@
+"vc-description": "The `mystery` function is defined over the non-negative integers.\
+  \ The more common name of this function is concealed in order to not tempt you to\
+  \ search the Web for help in solving this kata, which most definitely would be a\
+  \ very dishonorable thing to do.\n\nAssume `n` has `m` bits. Then `mystery(n)` is\
+  \ the number whose binary representation is the entry in the table `T(m)` at index\
+  \ position `n`, where `T(m)` is defined recursively as follows:\n\n```\nT(1) = [0,\
+  \ 1]\n```\n\n`T(m + 1)` is obtained by taking two copies of `T(m)`, reversing the\
+  \ second copy, prepending each entry of the first copy with `0` and each entry of\
+  \ the reversed copy with `1`, and then concatenating the two. For example:\n\n```\n\
+  T(2) = [ 00, 01, 11, 10 ]\n```\n\nand\n\n```\nT(3) = [ 000, 001, 011, 010, 110,\
+  \ 111, 101, 100 ]\n```\n\n`mystery(6)` is the entry in `T(3)` at index position\
+  \ 6 (with indexing starting at `0`), i.e., `101` interpreted as a binary number.\
+  \ So, `mystery(6)` returns `5`.\n\nYour mission is to implement the function `mystery`,\
+  \ where the argument may have up to 63 bits. Note that `T(63)` is far too large\
+  \ to compute and store, so you'll have to find an alternative way of implementing\
+  \ `mystery`. You are also asked to implement `mystery_inv` ( or `mysteryInv` ),\
+  \ the inverse of `mystery`. Finally, you are asked to implement a function `name_of_mystery`\
+  \ ( or `nameOfMystery` ), which shall return the name that `mystery` is more commonly\
+  \ known as. After passing all tests you are free to learn more about this function\
+  \ on Wikipedia or another place.\n\nHint: If you don't know the name of `mystery`,\
+  \ remember there is information in passing as well as failing a test."
+"vc-preamble": "import Imports.AllImports\n\ndef mystery (n : Nat) : Nat :=\n  sorry\n\
+  \n\ndef mystery_inv (n : Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def name_of_mystery : String :=\n  \"Gray code\"\n"
+"vc-theorems": "theorem mystery_inverse : ∀ n : Nat, n < 2^32 → \n  mystery (mystery_inv\
+  \ n) = n ∧ mystery_inv (mystery n) = n :=\n  sorry\n\n\ntheorem mystery_preserves_non_negative\
+  \ : ∀ n : Nat,\n  mystery n ≥ 0 ∧ mystery_inv n ≥ 0 :=\n  sorry\n\n\ntheorem mystery_bit_length\
+  \ : ∀ n : Nat, n < 2^16 →\n  n.log2 - (mystery n).log2 ≤ 1 ∧ \n  n.log2 - (mystery_inv\
+  \ n).log2 ≤ 1 :=  \n  sorry\n\n\ntheorem mystery_name_is_gray_code :\n  name_of_mystery\
+  \ = \"Gray code\" :=\n  sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval mystery\
+  \ 6\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval mystery_inv 5\n\n/--\ninfo: 10\n\
+  -/\n#guard_msgs in\n#eval mystery mystery_inv(10)\n\n/--\ninfo: 'Gray code'\n-/\n\
+  #guard_msgs in\n#eval name_of_mystery \n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

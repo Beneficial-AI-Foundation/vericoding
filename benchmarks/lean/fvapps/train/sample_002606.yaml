@@ -1,0 +1,20 @@
+"vc-description": "Find the sum of the odd numbers within an array, after cubing the\
+  \ initial integers. The function should return `undefined`/`None`/`nil`/`NULL` if\
+  \ any of the values aren't numbers. \n\n~~~if:java,csharp\nNote: There are ONLY\
+  \ integers in the JAVA and C# versions of this Kata.\n~~~\n\n~~~if:python\nNote:\
+  \ Booleans should not be considered as numbers.\n~~~"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def cube_odd (xs : List Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem cube_odd_integers (xs : List Int) :\n  cube_odd xs = (xs.filter\
+  \ (fun x => x % 2 ≠ 0)\n                |>.map (fun x => x * x * x)\n          \
+  \      |>.foldl (· + ·) 0 : Int)\n  := sorry\n\n\ntheorem cube_odd_bounded (xs :\
+  \ List Int) \n  (h : ∀ x ∈ xs, -1000 ≤ x ∧ x ≤ 1000) :\n  cube_odd xs = (xs.filter\
+  \ (fun x => x % 2 ≠ 0)\n                |>.map (fun x => x * x * x)\n          \
+  \      |>.foldl (· + ·) 0 : Int)\n  := sorry\n\n\ntheorem cube_odd_non_empty (xs\
+  \ : List Int)\n  (h : xs ≠ []) : \n  cube_odd xs = (xs.filter (fun x => x % 2 ≠\
+  \ 0)\n                |>.map (fun x => x * x * x)\n                |>.foldl (· +\
+  \ ·) 0 : Int)\n  := sorry\n\n/--\ninfo: 28\n-/\n#guard_msgs in\n#eval cube_odd [1,\
+  \ 2, 3, 4]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval cube_odd [-3, -2, 2, 3]\n\n\
+  /--\ninfo: None\n-/\n#guard_msgs in\n#eval cube_odd [\"a\", 12, 9, \"z\", 42]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

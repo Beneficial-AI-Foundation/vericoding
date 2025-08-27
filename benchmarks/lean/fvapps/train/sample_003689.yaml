@@ -1,0 +1,22 @@
+"vc-description": "The palindromic number `595` is interesting because it can be written\
+  \ as the sum of consecutive squares: `6^2 + 7^2 + 8^2 + 9^2 + 10^2 + 11^2 + 12^2\
+  \ = 595`.\n\nThere are exactly eleven palindromes below one-thousand that can be\
+  \ written as consecutive square sums. Note that `1 = 0^2 + 1^2` has not been included\
+  \ as this problem is concerned with the squares of positive integers.\n\nGiven an\
+  \ input `n`, find the count of all the numbers less than `n` that are both palindromic\
+  \ and can be written as the sum of consecutive squares.\n\nFor instance: `values(1000)\
+  \ = 11`. See test examples for more cases.  \n\nGood luck!\n\nThis Kata is borrowed\
+  \ from [Project Euler #125](https://projecteuler.net/problem=125)\n\nIf you like\
+  \ this Kata, please try:\n\n[Fixed length palindromes](https://www.codewars.com/kata/59f0ee47a5e12962cb0000bf)\n\
+  \n[Divisor harmony](https://www.codewars.com/kata/59bf97cd4f98a8b1cd00007e)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def values (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem values_nonneg (n : Nat) : values n ≥ 0 :=\n  sorry\n\n\ntheorem\
+  \ values_is_nat (n : Nat) : values n = values n :=\n  sorry\n\n\ntheorem values_edge_cases\
+  \ : \n  values 1 = 0 ∧ \n  values 100 = 3 ∧ \n  values 1000 = 11 ∧\n  values 10000000\
+  \ > 0 :=\n  sorry\n\n\ntheorem values_small_range (n : Nat) :\n  n > 0 → n ≤ 1000\
+  \ → values n ≥ 0 :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval values 100\n\
+  \n/--\ninfo: 11\n-/\n#guard_msgs in\n#eval values 1000\n\n/--\ninfo: 30\n-/\n#guard_msgs\
+  \ in\n#eval values 100000\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,41 @@
+"vc-description": "Once Vasya and Petya assembled a figure of m cubes, each of them\
+  \ is associated with a number between 0 and m - 1 (inclusive, each number appeared\
+  \ exactly once). Let's consider a coordinate system such that the OX is the ground,\
+  \ and the OY is directed upwards. Each cube is associated with the coordinates of\
+  \ its lower left corner, these coordinates are integers for each cube.\n\nThe figure\
+  \ turned out to be stable. This means that for any cube that is not on the ground,\
+  \ there is at least one cube under it such that those two cubes touch by a side\
+  \ or a corner. More formally, this means that for the cube with coordinates (x,\
+  \ y) either y = 0, or there is a cube with coordinates (x - 1, y - 1), (x, y - 1)\
+  \ or (x + 1, y - 1).\n\nNow the boys want to disassemble the figure and put all\
+  \ the cubes in a row. In one step the cube is removed from the figure and being\
+  \ put to the right of the blocks that have already been laid. The guys remove the\
+  \ cubes in such order that the figure remains stable. To make the process more interesting,\
+  \ the guys decided to play the following game. The guys take out the cubes from\
+  \ the figure in turns. It is easy to see that after the figure is disassembled,\
+  \ the integers written on the cubes form a number, written in the m-ary positional\
+  \ numerical system (possibly, with a leading zero). Vasya wants the resulting number\
+  \ to be maximum possible, and Petya, on the contrary, tries to make it as small\
+  \ as possible. Vasya starts the game.\n\nYour task is to determine what number is\
+  \ formed after the figure is disassembled, if the boys play optimally. Determine\
+  \ the remainder of the answer modulo 10^9 + 9.\n\n\n-----Input-----\n\nThe first\
+  \ line contains number m (2 ≤ m ≤ 10^5).\n\nThe following m lines contain the coordinates\
+  \ of the cubes x_{i}, y_{i} ( - 10^9 ≤ x_{i} ≤ 10^9, 0 ≤ y_{i} ≤ 10^9) in ascending\
+  \ order of numbers written on them. It is guaranteed that the original figure is\
+  \ stable.\n\nNo two cubes occupy the same place.\n\n\n-----Output-----\n\nIn the\
+  \ only line print the answer to the problem.\n\n\n-----Examples-----\nInput\n3\n\
+  2 1\n1 0\n0 1\n\nOutput\n19\n\nInput\n5\n0 0\n0 1\n0 2\n0 3\n0 4\n\nOutput\n2930"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_valid_coords (coords : List (Int × Int)) : Bool := sorry\n\
+  \ndef solve_cube_game (m : Int) (coords : List (Int × Int)) : Int := sorry\n"
+"vc-theorems": "theorem zero_for_single_cube (m : Int) (coords : List (Int × Int))\
+  \ :\n  m > 0 → is_valid_coords coords → List.length coords = 1 → \n  (solve_cube_game\
+  \ m coords) = 0 := sorry \n\n\ntheorem result_within_bounds (m : Int) (coords :\
+  \ List (Int × Int)) :\n  m > 0 → is_valid_coords coords →\n  let result := solve_cube_game\
+  \ m coords \n  0 ≤ result ∧ result < 10^9 + 9 := sorry\n\n/--\ninfo: 19\n-/\n#guard_msgs\
+  \ in\n#eval solve_cube_game 3 [(2, 1), (1, 0), (0, 1)]\n\n/--\ninfo: 2930\n-/\n\
+  #guard_msgs in\n#eval solve_cube_game 5 [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4)]\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve_cube_game 2 [(72098079, 0), (72098078,\
+  \ 1)]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

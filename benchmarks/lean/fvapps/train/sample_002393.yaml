@@ -1,0 +1,21 @@
+"vc-description": "Given a non-empty integer array of size n, find the minimum number\
+  \ of moves required to make all array elements equal, where a move is incrementing\
+  \ n - 1 elements by 1.\n\nExample:\n\nInput:\n[1,2,3]\n\nOutput:\n3\n\nExplanation:\n\
+  Only three moves are needed (remember each move increments two elements):\n\n[1,2,3]\
+  \  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]"
+"vc-preamble": "import Imports.AllImports\n\ndef min_moves (nums : List Int) : Int\
+  \ := sorry\n\ndef list_minimum (nums : List Int) : Int := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_maximum (nums : List Int) : Int := sorry\ndef list_sum\
+  \ (nums : List Int) : Int := sorry\n"
+"vc-theorems": "theorem min_moves_non_negative (nums : List Int) (h : nums ≠ []) :\n\
+  \  min_moves nums ≥ 0 := sorry\n\n\ntheorem min_moves_equal_elements (n : Int) (len\
+  \ : Nat) (h : len ≥ 1) :\n  min_moves (List.replicate len n) = 0 := sorry\n\n\n\
+  theorem min_moves_upper_bound (nums : List Int) (h : nums ≠ []) :\n  let min_val\
+  \ := list_minimum nums\n  min_moves nums ≤ list_sum (nums.map (λ x => x - min_val))\
+  \ := sorry\n\n\ntheorem min_moves_monotonic (nums : List Int) (h : nums.length ≥\
+  \ 2) :\n  let new_nums := nums ++ [list_maximum nums]\n  min_moves new_nums ≥ min_moves\
+  \ nums := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval min_moves [1, 2, 3]\n\
+  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval min_moves [1, 1, 1]\n\n/--\ninfo: 6\n\
+  -/\n#guard_msgs in\n#eval min_moves [1, 2, 3, 4]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

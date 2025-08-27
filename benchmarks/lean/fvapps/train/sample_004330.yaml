@@ -1,0 +1,20 @@
+"vc-description": "Assume `\"#\"` is like a backspace in string. This means that string\
+  \ `\"a#bc#d\"` actually is `\"bd\"`\n\nYour task is to process a string with `\"\
+  #\"` symbols.\n\n\n## Examples\n\n```\n\"abc#d##c\"      ==>  \"ac\"\n\"abc##d######\"\
+  \  ==>  \"\"\n\"#######\"       ==>  \"\"\n\"\"              ==>  \"\"\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef clean_string (s : String) : String\
+  \ := sorry\n\ntheorem clean_string_idempotent (s : String) :\n  clean_string (clean_string\
+  \ s) = clean_string s := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_hashtags (s : String) : Nat :=\n  s.foldl (fun acc c\
+  \ => if c = '#' then acc + 1 else acc) 0\n"
+"vc-theorems": "theorem clean_string_no_hashtags (s : String) :\n  ¬(String.contains\
+  \ (clean_string s) '#') := sorry \n\n\ntheorem clean_string_append {s₁ s₂ : String}\
+  \ \n  (h₁ : ¬(String.contains s₁ '#')) \n  (h₂ : ¬(String.contains s₂ '#')) :\n\
+  \  clean_string (s₁ ++ s₂) = clean_string s₁ ++ clean_string s₂ := sorry\n\n\ntheorem\
+  \ clean_string_length (s : String) :\n  String.length (clean_string s) ≤ String.length\
+  \ s - count_hashtags s := sorry\n\n\ntheorem clean_string_empty :\n  clean_string\
+  \ \"\" = \"\" := sorry\n\n/--\ninfo: 'ac'\n-/\n#guard_msgs in\n#eval clean_string\
+  \ \"abc#d##c\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval clean_string \"#######\"\
+  \n\n/--\ninfo: 'jf'\n-/\n#guard_msgs in\n#eval clean_string \"abjd####jfk#\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

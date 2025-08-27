@@ -1,0 +1,36 @@
+"vc-description": "You managed to send your friend to queue for tickets in your stead,\
+  \ but there is a catch: he will get there only if you tell him how much that is\
+  \ going to take. And everybody can only take one ticket at a time, then they go\
+  \ back in the last position of the queue if they need more (or go home if they are\
+  \ fine).\n\nEach ticket takes one minutes to emit, the queue is well disciplined,\
+  \ [Brit-style](https://www.codewars.com/kata/english-beggars), and so it moves smoothly,\
+  \ with no waste of time.\n\nYou will be given an array/list/vector with all the\
+  \ people queuing and the *initial* position of your buddy, so for example, knowing\
+  \ that your friend is in the third position (that we will consider equal to the\
+  \ index, `2`: he is the guy that wants 3 tickets!) and the initial queue is `[2,\
+  \ 5, 3, 4, 6]`.\n\nThe first dude gets his ticket and the queue goes now like this\
+  \ `[5, 3, 4, 6, 1]`, then `[3, 4, 6, 1, 4]` and so on. In the end, our buddy will\
+  \ be queuing for 12 minutes, true story!\n\nBuild a function to compute it, resting\
+  \ assured that only positive integers are going to be there and you will be always\
+  \ given a valid index; but we also want to go to pretty popular events, so be ready\
+  \ for big queues with people getting plenty of tickets.\n\n[[hard core version](https://www.codewars.com/kata/queue-time-counter-hard-core-version/solutions/javascript)\
+  \ now available if you don't want the \"easy\" kata!]"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def queue (queuers : List Nat) (pos : Nat) : Option Nat := sorry\n\
+  \ntheorem queue_basic_properties \n  (queuers : List Nat) (pos : Nat)\n  (h1 : 0\
+  \ < queuers.length) \n  (h2 : pos < queuers.length)\n  (h3 : ∀ x ∈ queuers, 0 <\
+  \ x) :\n  ∀ (result : Nat),\n  queue queuers pos = some result →\n  (result ≥ queuers[pos]'h2)\
+  \ \n  ∧ (result ≥ (List.range pos).foldl (λ sum i => \n      if h : i < queuers.length\
+  \ \n      then sum + min (queuers[i]'h) (queuers[pos]'h2)\n      else sum) 0)\n\
+  \  ∧ (0 < result) := sorry\n"
+"vc-theorems": "theorem queue_first_position_capped\n  (queuers : List Nat)\n  (h1\
+  \ : 0 < queuers.length)\n  (h2 : ∀ x ∈ queuers, 0 < x) :\n  let h3 : 0 < queuers.length\
+  \ := h1\n  let capped := queuers.map (λ x => min x (queuers[0]'h3))\n  queue queuers\
+  \ 0 = queue capped 0 := sorry\n\n\ntheorem queue_out_of_bounds\n  (queuers : List\
+  \ Nat)\n  (pos : Nat)\n  (h1 : 0 < queuers.length)\n  (h2 : queuers.length ≤ pos)\n\
+  \  (h3 : ∀ x ∈ queuers, 0 < x) :\n  queue queuers pos = none := sorry\n\n/--\ninfo:\
+  \ expected\n-/\n#guard_msgs in\n#eval queue [2, 5, 3, 6, 4] 0\n\n/--\ninfo: expected\n\
+  -/\n#guard_msgs in\n#eval queue [2, 5, 3, 6, 4] 2\n\n/--\ninfo: expected\n-/\n#guard_msgs\
+  \ in\n#eval queue [2, 5, 3, 6, 4] 4\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

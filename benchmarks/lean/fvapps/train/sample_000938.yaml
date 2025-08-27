@@ -1,0 +1,27 @@
+"vc-description": "Since due to COVID 19, India has undergone a complete 21 day lockdown.\
+  \ So Amol was attending an online lecture where his professor asked him to solve\
+  \ a question. Amol was unable to solve the question so he asked you to solve the\
+  \ question and give him the correct answer. \n\nThe question was asked a such that\
+  \ his professor gave him a number M and a list of integers of length N (i.e. A1,\
+  \ A2,..... AN) and you have to find out all the subsets that add up to M and the\
+  \ total number of subsets will be the final answer. \n\nInput: \n• The first line\
+  \ of the input contains a single integer T denoting the number of test cases. The\
+  \ description of T test cases follows. \n\n• The first line of each test case contains\
+  \ a single integer N. \n\n• The second line of each test case contains a single\
+  \ integer M. \n\n• The third line contains N space-separated integers A1, A2,.....\
+  \ AN. \n\nOutput: \nFor each test case, print a single line containing one integer\
+  \ ― the no. of subsets that adds upto M.\n\nConstraints: \n• 1≤T≤5\n\n• 1≤N≤100\
+  \ \n\n• 10≤M≤100 \n\n• 1≤Ai≤100\n\nExampleInput:\n\n2\n\n4\n\n16\n\n2 4 6 10 \n\n\
+  4 \n\n20 \n\n2 8 12 10 \n\nOutput:\n\n2\n\n2\n\nExplanation:\nIn the 1st example\
+  \ there are two subsets {2,4,10} and {6,10} that adds upto 16 so the output is 2."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countsubsetsum (target : Nat) (arr : List Nat) : Nat := sorry\n\
+  \ndef List.sum : List Nat → Nat \n  | [] => 0\n  | x::xs => x + List.sum xs\n"
+"vc-theorems": "theorem zero_sum_always_has_one_solution {arr : List Nat} : \n  countsubsetsum\
+  \ 0 arr = 1 := sorry\n\n\ntheorem single_element_sums {arr : List Nat} {x : Nat}\
+  \ :\n  x ∈ arr → countsubsetsum x arr ≥ 1 := sorry\n\n\n\n\ntheorem results_non_negative\
+  \ {target : Nat} {arr : List Nat} :\n  countsubsetsum target arr ≥ 0 := sorry\n\n\
+  /--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve_test_case 4 16 [2, 4, 6, 10]\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval solve_test_case 4 20 [2, 8, 12, 10]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

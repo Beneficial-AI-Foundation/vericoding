@@ -1,0 +1,22 @@
+"vc-description": "## Task:\n\nYour task is to write a function which returns the\
+  \ sum of following series upto nth term(parameter).\n\n    Series: 1 + 1/4 + 1/7\
+  \ + 1/10 + 1/13 + 1/16 +...\n \n## Rules:\n \n* You need to round the answer to\
+  \ 2 decimal places and return it as String.\n\n* If the given value is 0 then it\
+  \ should return 0.00\n\n* You will only be given Natural Numbers as arguments.\n\
+  \n## Examples:\n\n    SeriesSum(1) => 1 = \"1.00\"\n    SeriesSum(2) => 1 + 1/4\
+  \ = \"1.25\"\n    SeriesSum(5) => 1 + 1/4 + 1/7 + 1/10 + 1/13 = \"1.57\"\n    \n\
+  **NOTE**: In PHP the function is called `series_sum()`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def series_sum (n : Int) : String := sorry\n\ntheorem series_sum_has_decimal\
+  \ (n : Int) :\n  ∃ s₁ s₂, series_sum n = s₁ ++ \".\" ++ s₂ := sorry\n"
+"vc-theorems": "theorem series_sum_has_two_decimals (n : Int) :\n  ∃ s₁ s₂, series_sum\
+  \ n = s₁ ++ \".\" ++ s₂ ∧ s₂.length = 2 := sorry\n\n\ntheorem series_sum_geq_one_if_positive\
+  \ (n : Int) :\n  n > 0 → series_sum n = \"1.00\" ∨ series_sum n > \"1.00\" := sorry\n\
+  \n\ntheorem series_sum_monotonic (n m : Int) :\n  n ≥ m → series_sum n ≥ series_sum\
+  \ m := sorry\n\n\ntheorem series_sum_zero : series_sum 0 = \"0.00\" := sorry\n\n\
+  theorem series_sum_negative (n : Int) :\n  n < 0 → series_sum n = \"0.00\" := sorry\n\
+  \n/--\ninfo: '1.00'\n-/\n#guard_msgs in\n#eval series_sum 1\n\n/--\ninfo: '1.25'\n\
+  -/\n#guard_msgs in\n#eval series_sum 2\n\n/--\ninfo: '1.57'\n-/\n#guard_msgs in\n\
+  #eval series_sum 5\n\n/--\ninfo: '0.00'\n-/\n#guard_msgs in\n#eval series_sum 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

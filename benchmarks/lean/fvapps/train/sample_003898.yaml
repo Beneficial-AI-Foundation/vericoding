@@ -1,0 +1,27 @@
+"vc-description": "Learning to code around your full time job is taking over your\
+  \ life. You realise that in order to make significant steps quickly, it would help\
+  \ to go to a coding bootcamp in London.\n\nProblem is, many of them cost a fortune,\
+  \ and those that don't still involve a significant amount of time off work - who\
+  \ will pay your mortgage?!\n\nTo offset this risk, you decide that rather than leaving\
+  \ work totally, you will request a sabbatical so that you can go back to work post\
+  \ bootcamp and be paid while you look for your next role.\n\nYou need to approach\
+  \ your boss. Her decision will be based on three parameters:\n\nval=your value to\
+  \ the organisation\nhappiness=her happiness level at the time of asking and finally\n\
+  The numbers of letters from 'sabbatical' that are present in string `s`.\n\nNote\
+  \ that if `s` contains three instances of the letter 'l', that still scores three\
+  \ points, even though there is only one in the word sabbatical.\n\nIf the sum of\
+  \ the three parameters (as described above) is > 22, return 'Sabbatical! Boom!',\
+  \ else return 'Back to your desk, boy.'.\n\n~~~if:c\nNOTE: For the C translation\
+  \ you should return a string literal.\n~~~"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sabb (s : String) (value happiness : Nat) : String :=\n  sorry\n\
+  \n\n"
+"vc-theorems": "theorem sabb_zero_inputs_fails_when_string_short {s : String}\n  (h\
+  \ : s.length ≤ 22) : sabb s 0 0 = \"Back to your desk, boy.\" := \nsorry\n\n\ntheorem\
+  \ sabb_empty_string_succeeds_when_scores_high {value happiness : Nat}\n  (h : value\
+  \ + happiness > 22) : sabb \"\" value happiness = \"Sabbatical! Boom!\" :=\nsorry\n\
+  \n\ntheorem sabb_empty_string_fails_when_scores_low {value happiness : Nat}\n  (h\
+  \ : value + happiness ≤ 22) : sabb \"\" value happiness = \"Back to your desk, boy.\"\
+  \ :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

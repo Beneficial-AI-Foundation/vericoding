@@ -1,0 +1,31 @@
+"vc-description": "=====Function Descriptions=====\nIf we want to add a single element\
+  \ to an existing set, we can use the .add() operation.\nIt adds the element to the\
+  \ set and returns 'None'.\n\n=====Example=====\n>>> s = set('HackerRank')\n>>> s.add('H')\n\
+  >>> print s\nset(['a', 'c', 'e', 'H', 'k', 'n', 'r', 'R'])\n>>> print s.add('HackerRank')\n\
+  None\n>>> print s\nset(['a', 'c', 'e', 'HackerRank', 'H', 'k', 'n', 'r', 'R'])\n\
+  \n=====Problem Statement=====\nApply your knowledge of the .add() operation to help\
+  \ your friend Rupal.\nRupal has a huge collection of country stamps. She decided\
+  \ to count the total number of distinct country stamps in her collection. She asked\
+  \ for your help. You pick the stamps one by one from a stack of N country stamps.\n\
+  Find the total number of distinct country stamps.\n\n=====Input Format=====\nThe\
+  \ fist line contains an integer N, the total number of country stamps.\nThe next\
+  \ N lines contains the name of the country where the stamp is from.\n\n=====Constraints=====\n\
+  0<N<1000\n\n=====Output Format=====\nOutput the total number of distinct country\
+  \ stamps on a single line."
+"vc-preamble": "import Imports.AllImports\n\ndef count_distinct_stamps (stamps : List\
+  \ String) : Nat := sorry\n\ntheorem count_distinct_stamps_bounded (stamps : List\
+  \ String) : \n  count_distinct_stamps stamps ≤ stamps.length := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_unique (l : List String) : Nat := sorry\n\n\n\ntheorem\
+  \ count_distinct_stamps_deterministic (stamps : List String) : \n  count_distinct_stamps\
+  \ stamps = count_distinct_stamps stamps := sorry\n"
+"vc-theorems": "theorem count_distinct_stamps_nonnegative (stamps : List String) :\n\
+  \  count_distinct_stamps stamps ≥ 0 := sorry \n\n\ntheorem count_distinct_stamps_with_duplicates\
+  \ (stamps : List String) :\n  count_distinct_stamps (stamps ++ stamps) = count_distinct_stamps\
+  \ stamps := sorry\n\n\ntheorem count_distinct_stamps_empty :\n  count_distinct_stamps\
+  \ [] = 0 := sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval count_distinct_stamps\
+  \ [\"UK\", \"China\", \"USA\", \"France\", \"New Zealand\", \"UK\", \"France\"]\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_distinct_stamps [\"India\", \"India\"\
+  , \"India\"]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_distinct_stamps [\"\
+  Japan\", \"Korea\", \"China\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

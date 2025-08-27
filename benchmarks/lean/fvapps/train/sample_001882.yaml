@@ -1,0 +1,32 @@
+"vc-description": "Alice and Bob have an undirected graph of n nodes and 3 types of\
+  \ edges:\n\nType 1: Can be traversed by Alice only.\nType 2: Can be traversed by\
+  \ Bob only.\nType 3: Can by traversed by both Alice and Bob.\n\nGiven an array edges where edges[i]\
+  \ = [typei, ui, vi] represents a bidirectional edge of type typei between nodes ui and vi,\
+  \ find the maximum number of edges you can remove so that after removing the edges,\
+  \ the graph can still be fully traversed by both Alice and Bob. The graph is fully\
+  \ traversed by Alice and Bob if starting from any node, they can reach all other\
+  \ nodes.\nReturn the maximum number of edges you can remove, or return -1 if it's\
+  \ impossible for the graph to be fully traversed by Alice and Bob.\n \nExample 1:\n\
+  \nInput: n = 4, edges = [[3,1,2],[3,2,3],[1,1,3],[1,2,4],[1,1,2],[2,3,4]]\nOutput:\
+  \ 2\nExplanation: If we remove the 2 edges [1,1,2] and [1,1,3]. The graph will still\
+  \ be fully traversable by Alice and Bob. Removing any additional edge will not make\
+  \ it so. So the maximum number of edges we can remove is 2.\n\nExample 2:\n\nInput:\
+  \ n = 4, edges = [[3,1,2],[3,2,3],[1,1,4],[2,1,4]]\nOutput: 0\nExplanation: Notice\
+  \ that removing any edge will not make the graph fully traversable by Alice and\
+  \ Bob.\n\nExample 3:\n\nInput: n = 4, edges = [[3,2,3],[1,1,2],[2,3,4]]\nOutput:\
+  \ -1\nExplanation: In the current graph, Alice cannot reach node 4 from the other\
+  \ nodes. Likewise, Bob cannot reach 1. Therefore it's impossible to make the graph\
+  \ fully traversable.\n \n \nConstraints:\n\n1 <= n <= 10^5\n1 <= edges.length <=\
+  \ min(10^5, 3 * n * (n-1) / 2)\nedges[i].length == 3\n1 <= edges[i][0] <= 3\n1 <=\
+  \ edges[i][1] < edges[i][2] <= n\nAll tuples (typei, ui, vi) are distinct."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Edge := List Int\ndef max_removable_edges (n : Int) (edges\
+  \ : List Edge) : Int :=\n  sorry\n\n\n"
+"vc-theorems": "theorem empty_edges_result {n : Int} (hn : n ≥ 0) :\n  max_removable_edges\
+  \ n [] = if n = 0 then 0 else -1 :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval max_removable_edges 4 [[3, 1, 2], [3, 2, 3], [1, 1, 3], [1, 2, 4], [1, 1,\
+  \ 2], [2, 3, 4]]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval max_removable_edges\
+  \ 4 [[3, 1, 2], [3, 2, 3], [1, 1, 4], [2, 1, 4]]\n\n/--\ninfo: -1\n-/\n#guard_msgs\
+  \ in\n#eval max_removable_edges 4 [[3, 2, 3], [1, 1, 2], [2, 3, 4]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

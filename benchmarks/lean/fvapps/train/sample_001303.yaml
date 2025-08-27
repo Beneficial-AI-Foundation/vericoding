@@ -1,0 +1,46 @@
+"vc-description": "Chef's love for Fibonacci numbers helps him to design following\
+  \ interesting problem.\nHe defines a function F for an array S as follows:\n\nwhere\n\
+  - Si denotes a non-empty subset of multiset S.\n- sum(Si) denotes the sum of all\
+  \ element of multiset Si.\n- Fibonacci(x) denotes the xth Fibonacci number.\nGiven\
+  \ an array A consisting of N elements. Chef asked you to process following two types\
+  \ of queries on this array accurately and efficiently.\n- C X Y: Change the value\
+  \ of Xth element of array to Y i.e AX = Y.\n- Q L R: Compute function F over the\
+  \ subarray defined by the elements of array A in the range L to R, both inclusive.\n\
+  \nPlease see the Note section if you need details regarding Fibonacci function.\n\
+  \n-----Input-----\nFirst line of input contains 2 space separated integer N and\
+  \ M denoting the size of array A and the number of queries to be performed. Next\
+  \ line of input contains N space separated integers denoting the elements of array\
+  \ A. Each of next M lines of input contains a query having one of the mentioned\
+  \ two types.\n\n-----Output-----\nFor each query of type Q, output the value of\
+  \ function F for the given range of array A.\n\n-----Constraints-----\n- 1 ≤ N,\
+  \ M ≤ 105\n- 1 ≤ Ai, Y ≤ 109\n- 1 ≤ L, R, X ≤ N\n-  type = {'C', 'Q'} \n\n-----Subtasks-----\n\
+  - Subtask 1 (20 points) : 1 ≤ N, M ≤ 1000, 1 ≤ Ai, Y ≤ 106, type = { 'Q' } \n- Subtask\
+  \ 2 (20 points) : 1 ≤ N, M ≤ 50000, 1 ≤ Ai, Y ≤ 109, type = { 'C', Q' } \n- Subtask\
+  \ 3 (30 points) : 1 ≤ N, M ≤ 105, 1 ≤ Ai, Y ≤ 109, type = { 'Q' } \n- Subtask 4\
+  \ (30 points) : 1 ≤ N, M ≤ 105, 1 ≤ Ai, Y ≤ 109, type = { 'C', Q' }\n\n-----Example-----\n\
+  Input\n3 5\n1 2 3\nQ 1 2\nQ 2 3\nC 1 2\nQ 1 2\nQ 1 3\n\nOutput\n4\n8\n5\n30\n\n\
+  -----Explanation:-----\n- Q1 : F = Fibonacci(1) + Fibonacci(2) + Fibonacci(1+2)\
+  \ = 4 % 1000000007 = 4\n- Q2 : F = Fibonacci(2) + Fibonacci(3) + Fibonacci(2+3)\
+  \ = 8 % 1000000007 = 8\n- Q3 : A = {2, 2, 3}\n- Q4 : F = Fibonacci(2) + Fibonacci(2)\
+  \ + Fibonacci(2+2) = 5 % 1000000007 = 5\n- Q5 : F = Fibonacci(2) + Fibonacci(2)\
+  \ + Fibonacci(3) + Fibonacci(2+2) + Fibonacci(2+3) + Fibonacci(2+3) + Fibonacci(2+2+3)\
+  \ = 30 % 1000000007 = 30\n\n-----Note-----\nFibonacciK denotes the Kth Fibonacci\
+  \ number. Fibonacci series is defined as follows:\n- For 1 ≤ K ≤ 2, FibonacciK =\
+  \ 1\n- Otherwise, FibonacciK = FibonacciK-1 + FibonacciK-2\nPlease check this link\
+  \ for more details about Fibonacci numbers."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def process_array_queries (N : Nat) (A : List Nat) (queries : List\
+  \ (List (Nat ⊕ String))) : List Nat := sorry\n\ndef MOD := 1000000007\n"
+"vc-theorems": "theorem process_array_queries_basic_properties (N : Nat) (A : List\
+  \ Nat) (queries : List (List (Nat ⊕ String)))\n  (h1 : 1 ≤ N ∧ N ≤ 10)\n  (h2 :\
+  \ ∀ x ∈ A, 1 ≤ x ∧ x ≤ 100)\n  (h3 : A.length ≥ 1 ∧ A.length ≤ 10)\n  (h4 : queries.length\
+  \ ≥ 1 ∧ queries.length ≤ 5)\n  (h5 : queries.length > 0) :\n  let results := process_array_queries\
+  \ N A queries\n  -- Each result is less than MOD\n  (∀ x ∈ results, x < MOD) ∧\n\
+  \  -- Length of results equals number of queries starting with 'Q'\n  results.length\
+  \ = (queries.filter (λq => q.head? = some (Sum.inr \"Q\"))).length := sorry\n\n\n\
+  theorem single_query_bounds (N : Nat) (A : List Nat)\n  (h1 : 2 ≤ N ∧ N ≤ 5)\n \
+  \ (h2 : ∀ x ∈ A, 1 ≤ x ∧ x ≤ 10)\n  (h3 : A.length ≥ 2 ∧ A.length ≤ 5) :\n  let\
+  \ query := [Sum.inr \"Q\", Sum.inl 1, Sum.inl N]\n  let result := process_array_queries\
+  \ N A [query]\n  result.length = 1 ∧ \n  (∀ x ∈ result, x < MOD) := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,25 @@
+"vc-description": "-----\nCHEF N TIMINGS\n-----\n\nOne day chef was working with some\
+  \ random numbers. Then he found something\ninteresting. He observed that no 240,\
+  \ 567, 9999 and 122 and called these numbers\nnice as the digits in numbers are\
+  \ in increasing order. Also he called 434, 452, 900\nare not nice as digits are\
+  \ in decreasing order\n\n\t\n\nNow you are given a no and chef\nwants you to find\
+  \ out largest \"nice\" integer which is smaller than or equal to the\ngiven integer.\n\
+  \n\t\t\n\t\t\n\n-----Constraints-----\n\n1< t < 1000 \n\n1< N < 10^18\n\t\n\n-----Input\
+  \ Format-----\n\nFirst line contains no. of test cases t. Then t test cases follow.\
+  \ Each test case\ncontain a integer n.\n\n-----Output-----\n\nOutput a integer for\
+  \ each test case in a new line which is largest nice\ninteger smaller or equal to\
+  \ the given integer. \n\n\t\t\n\t\t\n\n-----Example Text Case-----\nInput:\n\n1\n\
+  132\n\nOutput:\n\n129\n\t\n\t\t"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_largest_nice_number (n: Nat) : Nat := sorry\n\ntheorem\
+  \ output_is_natural (n: Nat) (h: n > 0) :\n  find_largest_nice_number n ≥ 0 := by\
+  \ sorry \n"
+"vc-theorems": "theorem output_le_input (n: Nat) (h: n > 0) : \n  find_largest_nice_number\
+  \ n ≤ n := by sorry\n\n\ntheorem output_is_valid_number (n: Nat) (h: n > 0) :\n\
+  \  let res := toString (find_largest_nice_number n)\n  res.length > 0 ∧ \n  res.get\
+  \ 0 ≠ '0' ∧\n  res.data.all (fun c => c.isDigit)\n  := by sorry\n\n/--\ninfo: 129\n\
+  -/\n#guard_msgs in\n#eval find_largest_nice_number 132\n\n/--\ninfo: 999\n-/\n#guard_msgs\
+  \ in\n#eval find_largest_nice_number 999\n\n/--\ninfo: 499\n-/\n#guard_msgs in\n\
+  #eval find_largest_nice_number 543\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,42 @@
+"vc-description": "One of Timofey's birthday presents is a colourbook in a shape of\
+  \ an infinite plane. On the plane n rectangles with sides parallel to coordinate\
+  \ axes are situated. All sides of the rectangles have odd length. Rectangles cannot\
+  \ intersect, but they can touch each other.\n\nHelp Timofey to color his rectangles\
+  \ in 4 different colors in such a way that every two rectangles touching each other\
+  \ by side would have different color, or determine that it is impossible.\n\nTwo\
+  \ rectangles intersect if their intersection has positive area. Two rectangles touch\
+  \ by sides if there is a pair of sides such that their intersection has non-zero\
+  \ length [Image] The picture corresponds to the first example \n\n\n-----Input-----\n\
+  \nThe first line contains single integer n (1 ≤ n ≤ 5·10^5) — the number of rectangles.\n\
+  \nn lines follow. The i-th of these lines contains four integers x_1, y_1, x_2 and\
+  \ y_2 ( - 10^9 ≤ x_1 < x_2 ≤ 10^9,  - 10^9 ≤ y_1 < y_2 ≤ 10^9), that means that\
+  \ points (x_1, y_1) and (x_2, y_2) are the coordinates of two opposite corners of\
+  \ the i-th rectangle.\n\nIt is guaranteed, that all sides of the rectangles have\
+  \ odd lengths and rectangles don't intersect each other.\n\n\n-----Output-----\n\
+  \nPrint \"NO\" in the only line if it is impossible to color the rectangles in 4\
+  \ different colors in such a way that every two rectangles touching each other by\
+  \ side would have different color.\n\nOtherwise, print \"YES\" in the first line.\
+  \ Then print n lines, in the i-th of them print single integer c_{i} (1 ≤ c_{i}\
+  \ ≤ 4) — the color of i-th rectangle.\n\n\n-----Example-----\nInput\n8\n0 0 5 3\n\
+  2 -1 5 0\n-3 -4 2 -1\n-1 -1 2 0\n-3 0 0 5\n5 2 10 3\n7 -3 10 2\n4 -2 7 -1\n\nOutput\n\
+  YES\n1\n2\n2\n3\n2\n2\n4\n1"
+"vc-preamble": "import Imports.AllImports\n\ndef colorRectangles (rectangles : List\
+  \ (Int × Int × Int × Int)) : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def parseColors (s : String) : List Int :=\n  sorry\n"
+"vc-theorems": "theorem colorRectangles_valid_format (rectangles : List (Int × Int\
+  \ × Int × Int)) :\n  let result := colorRectangles rectangles\n  result.startsWith\
+  \ \"YES\\n\" := by sorry\n\n\ntheorem colorRectangles_output_length {rectangles\
+  \ : List (Int × Int × Int × Int)} :\n  let colors := parseColors (colorRectangles\
+  \ rectangles)\n  colors.length = rectangles.length := by sorry\n\n\ntheorem colorRectangles_valid_colors\
+  \ {rectangles : List (Int × Int × Int × Int)} :\n  let colors := parseColors (colorRectangles\
+  \ rectangles)\n  ∀ c ∈ colors, 1 ≤ c ∧ c ≤ 4 := by sorry\n\n\ntheorem colorRectangles_parity_color_assignment\
+  \ \n  {rectangles : List (Int × Int × Int × Int)} :\n  let colors := parseColors\
+  \ (colorRectangles rectangles)\n  ∀ (rect : Int × Int × Int × Int) (color : Int),\n\
+  \    rect ∈ rectangles →\n    color ∈ colors →\n    (Int.mod (Prod.fst rect) 2 =\
+  \ 0 ∧ Int.mod (Prod.fst (Prod.snd rect)) 2 = 0 → color = 1) ∧\n    (Int.mod (Prod.fst\
+  \ rect) 2 = 0 ∧ Int.mod (Prod.fst (Prod.snd rect)) 2 ≠ 0 → color = 2) ∧\n    (Int.mod\
+  \ (Prod.fst rect) 2 ≠ 0 ∧ Int.mod (Prod.fst (Prod.snd rect)) 2 = 0 → color = 3)\
+  \ ∧\n    (Int.mod (Prod.fst rect) 2 ≠ 0 ∧ Int.mod (Prod.fst (Prod.snd rect)) 2 ≠\
+  \ 0 → color = 4) := by sorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

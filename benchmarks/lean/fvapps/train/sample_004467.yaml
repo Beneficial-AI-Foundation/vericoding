@@ -1,0 +1,29 @@
+"vc-description": "Write a function ```convert_temp(temp, from_scale, to_scale)```\
+  \ converting temperature from one scale to another. \nReturn converted temp value.\
+  \ \n\nRound converted temp value to an integer(!).\n\nReading: http://en.wikipedia.org/wiki/Conversion_of_units_of_temperature\n\
+  \n```\npossible scale inputs:\n    \"C\"  for Celsius\n    \"F\"  for Fahrenheit\n\
+  \    \"K\"  for Kelvin\n    \"R\"  for Rankine\n    \"De\" for Delisle\n    \"N\"\
+  \  for Newton\n    \"Re\" for Réaumur\n    \"Ro\" for Rømer\n```\n\n```temp``` is\
+  \ a number, ```from_scale``` and ```to_scale``` are strings. \n\n```python\nconvert_temp(\
+  \   100, \"C\",  \"F\") # => 212\nconvert_temp(    40, \"Re\", \"C\") # => 50\n\
+  convert_temp(    60, \"De\", \"F\") # => 140\nconvert_temp(373.15, \"K\",  \"N\"\
+  ) # => 33\nconvert_temp(   666, \"K\",  \"K\") # => 666\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef convert_temp (temp : Float) (from_scale\
+  \ : String) (to_scale : String) : Int :=\n  sorry\n\n\ndef round (x : Float) : Int\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def int_to_float (n : Int) : Float :=\n  sorry\n"
+"vc-theorems": "theorem convert_temp_identity {temp : Float} {scale : String} \n \
+  \ (h1 : -1000 ≤ temp) (h2 : temp ≤ 1000) :\n  convert_temp temp scale scale = round\
+  \ temp := by\n  sorry\n\n\ntheorem convert_temp_returns_int {temp : Float} {from_scale\
+  \ to_scale : String}\n  (h1 : -1000 ≤ temp) (h2 : temp ≤ 1000) :\n  ∃ n : Int, convert_temp\
+  \ temp from_scale to_scale = n := by\n  sorry\n\n\ntheorem convert_temp_kelvin_roundtrip\
+  \ {temp : Float} {scale : String}\n  (h1 : -1000 ≤ temp) (h2 : temp ≤ 1000) (h3\
+  \ : scale ≠ \"K\") :\n  let kelvin := int_to_float (convert_temp temp scale \"K\"\
+  )\n  let back := convert_temp kelvin \"K\" scale\n  (back - round temp) ≤ 2 ∧ (round\
+  \ temp - back) ≤ 2 := by\n  sorry\n\n/--\ninfo: 212\n-/\n#guard_msgs in\n#eval convert_temp\
+  \ 100 \"C\" \"F\"\n\n/--\ninfo: 50\n-/\n#guard_msgs in\n#eval convert_temp 40 \"\
+  Re\" \"C\"\n\n/--\ninfo: 140\n-/\n#guard_msgs in\n#eval convert_temp 60 \"De\" \"\
+  F\"\n\n/--\ninfo: 33\n-/\n#guard_msgs in\n#eval convert_temp 373.15 \"K\" \"N\"\n\
+  \n/--\ninfo: 666\n-/\n#guard_msgs in\n#eval convert_temp 666 \"K\" \"K\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,35 @@
+"vc-description": "The auditorium of Stanford University is made up of L*R matrix\
+  \ (assume each coordinate has a chair). On the occasion of an event Chef was called\
+  \ as a chief guest. The auditorium was filled with males (M) and females (F), occupying\
+  \ one chair each. Our Chef is very curious guy, so he asks the gatekeeper some queries.\
+  \ The queries were as follows: Is there any K*K sub-matrix in the auditorium which\
+  \ contains all Males or Females.\n\n-----Input-----\n- The first line contains three\
+  \ space-separated integers L, R  and Q describing the dimension of the auditorium\
+  \ and the number of questions Chef will ask.\n- Each of next L lines contains R\
+  \ characters (M or F).\n- Next Q lines contains K and a character (M or F).\n\n\
+  -----Output-----\n- For each query output \"yes\" (without quotes) if there exist\
+  \ any K*K sub-matrix in the auditorium which contains all Males (if he asks about\
+  \ Male) or Females (if he asks about Female), otherwise output \"no\" (without quotes).\n\
+  \n-----Constraints and Subtasks-----\n- 1 <= L, R, K <= 1000\n- 1 <= Q <= 1e6\n\
+  Subtask 1: 30 points\n- 1 <= L, R, Q <= 200\nSubtask 2: 70 points\n- Original Contraints\n\
+  \n-----Example-----\nInput:\n4 3 3\nMMF\nMMM\nFFM\nFFM\n2 F\n3 M\n1 M\n\nOutput:\n\
+  yes\nno\nyes"
+"vc-preamble": "import Imports.AllImports\n\ndef Matrix := List String\ndef Query\
+  \ := Nat × Char\n\ndef Result := String\n\ndef check_matrix_exists (L R : Nat) (matrix\
+  \ : Matrix) (queries : List Query) : List Result :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def all_same_matrix (c : Char) (L R : Nat) : Matrix :=\n  sorry\n"
+"vc-theorems": "theorem check_matrix_exists_results_match_queries \n  (matrix : Matrix)\
+  \ (queries : List Query) (L R : Nat) :\n  let results := check_matrix_exists L R\
+  \ matrix queries\n  List.length results = List.length queries := sorry\n\n\ntheorem\
+  \ check_matrix_exists_valid_results \n  (matrix : Matrix) (queries : List Query)\
+  \ (L R : Nat) :\n  let results := check_matrix_exists L R matrix queries\n  ∀ r\
+  \ ∈ results, r = \"yes\" ∨ r = \"no\" := sorry\n\n\ntheorem check_matrix_exists_size_constraint\n\
+  \  (matrix : Matrix) (queries : List Query) (L R : Nat) :\n  let results := check_matrix_exists\
+  \ L R matrix queries\n  ∀ (q : Query) (r : Result),\n    (q, r) ∈ List.zip queries\
+  \ results →\n    q.1 > min L R → r = \"no\" := sorry\n\n\ntheorem check_matrix_exists_all_same_char\n\
+  \  (matrix : Matrix) (queries : List Query) (L R : Nat) (c : Char) :\n  let all_same\
+  \ := all_same_matrix c L R\n  let results := check_matrix_exists L R all_same queries\n\
+  \  ∀ (q : Query) (r : Result),\n    (q, r) ∈ List.zip queries results →\n    (q.2\
+  \ = c → r = \"yes\" ↔ q.1 ≤ min L R) ∧\n    (q.2 ≠ c → r = \"no\") := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

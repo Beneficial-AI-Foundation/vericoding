@@ -1,0 +1,64 @@
+"vc-description": "###Introduction\n\nThe [I Ching](https://en.wikipedia.org/wiki/I_Ching)\
+  \ (Yijing, or Book of Changes) is an ancient Chinese book of sixty-four hexagrams.\
+  \ \nA hexagram is a figure composed of six stacked horizontal lines, where each\
+  \ line is either Yang (an unbroken line) or Yin (a broken line):\n```\n---------\
+  \    ---- ----    ---------    \n---- ----    ---- ----    ---------    \n---- ----\
+  \    ---- ----    ---------    \n---------    ---- ----    ---- ----    \n---------\
+  \    ---------    ---- ----    \n---- ----    ---- ----    ---------    \n```\n\
+  The book is commonly used as an oracle. After asking it a question about one's present\
+  \ scenario,\neach line is determined by random methods to be Yang or Yin. The resulting\
+  \ hexagram is then interpreted by the querent as a symbol of their current situation,\
+  \ and how it might unfold.\n\nThis kata will consult the I Ching using the three\
+  \ coin method.\n\n###Instructions\n\nA coin is flipped three times and lands heads\n\
+  or tails. The three results are used to\ndetermine a line as being either:\n```\n\
+  3 tails          ----x----  Yin (Moving Line*)\n2 tails 1 heads  ---------  Yang\n\
+  1 tails 2 heads  ---- ----  Yin \n3 heads          ----o----  Yang (Moving Line*)\n\
+  \n*See bottom of description if curious.\n```\nThis process is repeated six times\
+  \ to determine\neach line of the hexagram. The results of these\noperations are\
+  \ then stored in a 2D Array like so:\nIn each array the first index will always\
+  \ be the number of the line ('one' is the bottom line, and 'six' the top), and the\
+  \ other three values will be the results of the coin flips that belong to that line\
+  \ as heads ('h') and tails ('t').\n\nWrite a function that will take a 2D Array\
+  \ like the above as argument and return its hexagram as a string. Each line of the\
+  \ hexagram should begin on a new line.\n\nshould return:\n```\n---------\n---------\n\
+  ----x----\n----o----\n---- ----\n---- ----\n```\nYou are welcome to consult your\
+  \ new oracle program with a question before pressing submit. You can compare your\
+  \ result [here](http://www.ichingfortune.com/hexagrams.php). The last test case\
+  \ is random and can be used for your query.\n\n*[1] A Moving Line is a Yang line\
+  \ that will change\nto Yin or vice versa. The hexagram made by the coin\nthrows\
+  \ represents the querent's current situation,\nand the hexagram that results from\
+  \ changing its\nmoving lines represents their upcoming situation.*"
+"vc-preamble": "import Imports.AllImports\n\ndef oracle (input : List (LineName ×\
+  \ CoinFlip × CoinFlip × CoinFlip)) : List LineOutput :=\n  sorry\n\n\ndef getOutput\
+  \ (output : List LineOutput) (line : LineName × CoinFlip × CoinFlip × CoinFlip)\
+  \ : LineOutput :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sortFlips (f1 f2 f3 : CoinFlip) : CoinFlip × CoinFlip × CoinFlip\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem oracle_output_length {input : List (LineName × CoinFlip ×\
+  \ CoinFlip × CoinFlip)} \n  (h1 : input.length = 6)\n  (h2 : ∀ x y, x ∈ input →\
+  \ y ∈ input → x.1 = y.1 → x = y) :\n  (oracle input).length = 6 := \n  sorry\n\n\
+  \ntheorem line_positions_valid {input : List (LineName × CoinFlip × CoinFlip × CoinFlip)}\n\
+  \  (h1 : input.length = 6)\n  (h2 : ∀ x y, x ∈ input → y ∈ input → x.1 = y.1 → x\
+  \ = y) :\n  ∀ line, line ∈ input → ∃ pos, pos < 6 :=\n  sorry\n\n\ntheorem oracle_flip_mapping\
+  \ {input : List (LineName × CoinFlip × CoinFlip × CoinFlip)}\n  (h1 : input.length\
+  \ = 6)\n  (h2 : ∀ x y, x ∈ input → y ∈ input → x.1 = y.1 → x = y)\n  (line : LineName\
+  \ × CoinFlip × CoinFlip × CoinFlip) \n  (h3 : line ∈ input) :\n  let (name, f1,\
+  \ f2, f3) := line\n  let (s1, s2, s3) := sortFlips f1 f2 f3\n  if s1 = CoinFlip.H\
+  \ ∧ s2 = CoinFlip.H ∧ s3 = CoinFlip.H then\n    getOutput (oracle input) line =\
+  \ LineOutput.Circle\n  else if s1 = CoinFlip.T ∧ s2 = CoinFlip.T ∧ s3 = CoinFlip.T\
+  \ then\n    getOutput (oracle input) line = LineOutput.X\n  else if s1 = CoinFlip.H\
+  \ ∧ s2 = CoinFlip.H ∧ s3 = CoinFlip.T then\n    getOutput (oracle input) line =\
+  \ LineOutput.Space\n  else if s1 = CoinFlip.H ∧ s2 = CoinFlip.T ∧ s3 = CoinFlip.T\
+  \ then\n    getOutput (oracle input) line = LineOutput.Empty\n  else\n    True :=\n\
+  \  sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval oracle [[\"two\", \"\
+  h\", \"h\", \"t\"], [\"six\", \"t\", \"h\", \"t\"], [\"four\", \"t\", \"t\", \"\
+  t\"], [\"one\", \"h\", \"t\", \"h\"], [\"three\", \"h\", \"h\", \"h\"], [\"five\"\
+  , \"t\", \"t\", \"h\"]]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval oracle\
+  \ [[\"six\", \"t\", \"t\", \"h\"], [\"one\", \"h\", \"h\", \"t\"], [\"three\", \"\
+  t\", \"h\", \"h\"], [\"two\", \"t\", \"t\", \"t\"], [\"five\", \"h\", \"h\", \"\
+  t\"], [\"four\", \"t\", \"t\", \"h\"]]\n\n/--\ninfo: expected3\n-/\n#guard_msgs\
+  \ in\n#eval oracle [[\"five\", \"h\", \"h\", \"h\"], [\"four\", \"t\", \"t\", \"\
+  h\"], [\"two\", \"h\", \"t\", \"h\"], [\"one\", \"h\", \"h\", \"t\"], [\"six\",\
+  \ \"t\", \"h\", \"t\"], [\"three\", \"h\", \"h\", \"h\"]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

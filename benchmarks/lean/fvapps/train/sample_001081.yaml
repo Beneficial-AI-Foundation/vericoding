@@ -1,0 +1,25 @@
+"vc-description": "Chef is playing a game which contains a binary string. \nHe can\
+  \ perform one operation only:\n- Toggle the i_th bit of the string (0 to 1 or 1\
+  \ to 0)\nBy performing operations on the string (can be zero times), you have to\
+  \ convert the string with no adjacent bit being the same.\nCan you help chef ?\n\
+  \n-----Input:-----\n- First line will contain $T$, number of test cases. Then the\
+  \ test cases follow. \n- First line of each test case, contains the size of the\
+  \  string $N$\n- Seond line contains a single line of input, the binary string.\
+  \ \n\n-----Output:-----\nFor each testcase, output in a single line answer - the\
+  \ minimum operations.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n- $2 \\\
+  leq |S| \\leq 10^3$\n\n-----Sample Input:-----\n1\n4\n1011\n\n-----Sample Output:-----\n\
+  1"
+"vc-preamble": "import Imports.AllImports\n\ndef min_operations_to_alternating (n\
+  \ : Nat) (s : String) : Nat :=\n  sorry\n\n\ndef is_alternating (s : String) : Bool\
+  \ := \n  sorry\n\n\ndef make_alternating_01 (n : Nat) : String :=\n  sorry \n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def make_alternating_10 (n : Nat) : String :=\n  sorry\n"
+"vc-theorems": "theorem uniform_string_flips (n : Nat) (c : Char) :\n  let s := String.mk\
+  \ (List.replicate n c)\n  let ops := min_operations_to_alternating n s  \n  ops\
+  \ = n/2 ∨ ops = (n+1)/2 :=\n  sorry\n\n\ntheorem length_result_bounded (n : Nat)\
+  \ (s : String) :\n  s.length = n → \n  let ops := min_operations_to_alternating\
+  \ n s\n  0 ≤ ops ∧ ops ≤ n :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval\
+  \ min_operations_to_alternating 4 \"1011\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval min_operations_to_alternating 4 \"1111\"\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval min_operations_to_alternating 6 \"101010\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

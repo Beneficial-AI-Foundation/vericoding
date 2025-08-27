@@ -1,0 +1,14 @@
+"vc-description": "In this Kata, you will implement a function `count` that takes\
+  \ an integer and returns the number of digits in `factorial(n)`. \n\nFor example,\
+  \ `count(5) = 3`, because `5! = 120`, and `120` has `3` digits.  \n\nMore examples\
+  \ in the test cases. \n\nBrute force is not possible. A little research will go\
+  \ a long way, as this is a well known series.\n\nGood luck!\n\nPlease also try:"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count (n : Int) : Int := sorry\n\ntheorem count_monotonic {n\
+  \ : Int} (h : n ≥ 5) : \n  count n ≥ count (n-1) := sorry\n"
+"vc-theorems": "theorem count_negative_input {n : Int} (h : n < 0) : \n  count n =\
+  \ sorry := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count 5\n\n/--\ninfo:\
+  \ 65\n-/\n#guard_msgs in\n#eval count 50\n\n/--\ninfo: 1135\n-/\n#guard_msgs in\n\
+  #eval count 500\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

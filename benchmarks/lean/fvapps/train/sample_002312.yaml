@@ -1,0 +1,21 @@
+"vc-description": "Given two non-negative integers num1 and num2 represented as string,\
+  \ return the sum of num1 and num2.\n\nNote:\n\nThe length of both num1 and num2\
+  \ is < 5100.\nBoth num1 and num2 contains only digits 0-9.\nBoth num1 and num2 does\
+  \ not contain any leading zero.\nYou must not use any built-in BigInteger library\
+  \ or convert the inputs to integer directly."
+"vc-preamble": "import Imports.AllImports\n\ndef add_strings (a b : String) : String\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def int_to_str (n : Nat) : String :=\n  sorry\n"
+"vc-theorems": "theorem add_strings_matches_int_addition \n  (a b : Nat) (h1 : a ≤\
+  \ 10^6) (h2 : b ≤ 10^6) :\n  add_strings (int_to_str a) (int_to_str b) = int_to_str\
+  \ (a + b) :=\n  sorry \n\n\ntheorem add_zero_right (n : Nat) (h : n ≤ 10^6) :\n\
+  \  add_strings (int_to_str n) \"0\" = int_to_str n :=\n  sorry\n\n\ntheorem add_zero_left\
+  \ (n : Nat) (h : n ≤ 10^6) :\n  add_strings \"0\" (int_to_str n) = int_to_str n\
+  \ :=\n  sorry\n\n\ntheorem add_strings_commutative (n : Nat) (h : n ≤ 10^6) :\n\
+  \  add_strings (int_to_str n) (int_to_str 42) = \n  add_strings (int_to_str 42)\
+  \ (int_to_str n) :=  \n  sorry\n\n/--\ninfo: '172'\n-/\n#guard_msgs in\n#eval add_strings\
+  \ \"123\" \"49\"\n\n/--\ninfo: '0'\n-/\n#guard_msgs in\n#eval add_strings \"0\"\
+  \ \"0\"\n\n/--\ninfo: '1000'\n-/\n#guard_msgs in\n#eval add_strings \"999\" \"1\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

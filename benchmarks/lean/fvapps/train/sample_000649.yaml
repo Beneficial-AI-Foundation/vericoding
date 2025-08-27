@@ -1,0 +1,33 @@
+"vc-description": "You are given an array A with size N (indexed from 0) and an integer\
+  \ K. Let's define another array B with size N · K as the array that's formed by\
+  \ concatenating K copies of array A.\nFor example, if A = {1, 2} and K = 3, then\
+  \ B = {1, 2, 1, 2, 1, 2}.\nYou have to find the maximum subarray sum of the array\
+  \ B. Fomally, you should compute the maximum value of Bi + Bi+1 + Bi+2 + ... + Bj,\
+  \ where 0 ≤ i ≤ j < N · K.\n\n-----Input-----\n\n- The first line of the input contains\
+  \ a single integer T denoting the number of test cases. The description of T test\
+  \ cases follows.\n- The first line of each test case contains two space-separated\
+  \ integers N and K.\n- The second line contains N space-separated integers A0, A1,\
+  \ ..., AN-1.\n\n-----Output-----\nFor each test case, print a single line containing\
+  \ the maximum subarray sum of B.\n\n-----Constraints-----\n- 1 ≤ T ≤ 10\n- 1 ≤ N\
+  \ ≤ 105\n- 1 ≤ K ≤ 105\n- -106 ≤ Ai ≤ 106 for each valid i\n\n-----Subtasks-----\n\
+  Subtask #1 (18 points): N · K ≤ 105\nSubtask #2 (82 points): original constraints\n\
+  \n-----Example-----\nInput:\n\n2\n2 3\n1 2\n3 2\n1 -2 1\n\nOutput:\n\n9\n2\n\n-----Explanation-----\n\
+  Example case 1: B = {1, 2, 1, 2, 1, 2} and the subarray with maximum sum is the\
+  \ whole {1, 2, 1, 2, 1, 2}. Hence, the answer is 9.\nExample case 2: B = {1, -2,\
+  \ 1, 1, -2, 1} and the subarray with maximum sum is {1, 1}. Hence, the answer is\
+  \ 2."
+"vc-preamble": "import Imports.AllImports\n\ndef maximum (xs : List Int) : Int :=\
+  \ xs.foldl max 0\n\ndef sum (xs : List Int) : Int := xs.foldl (· + ·) 0\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_sum (arr : List Int) : Int := sorry\n\ndef solve (arr :\
+  \ List Int) (k : Nat) : Int := sorry\n\n\n\n\n"
+"vc-theorems": "theorem solve_vs_max_sum (arr : List Int) (k : Nat) (h : arr ≠ [])\
+  \ (hk : k > 0) :\n  solve arr k ≥ max_sum arr := sorry\n\n\ntheorem solve_monotonic_k\
+  \ (arr : List Int) (k : Nat) (h : arr ≠ []) (hk : k > 1) :\n  solve arr k ≥ solve\
+  \ arr 1 := sorry\n\n\n\n\ntheorem solve_k1_equals_maxsum (arr : List Int) (h : arr\
+  \ ≠ []) :\n  solve arr 1 = max_sum arr := sorry\n\n\ntheorem solve_concatenation\
+  \ (arr : List Int) (h : arr ≠ []) :\n  solve arr 2 ≥ max_sum (arr ++ arr) := sorry\n\
+  \n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval solve [1, 2] 3\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval solve [1, -2, 1] 2\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval solve\
+  \ [-1, -2, -3] 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

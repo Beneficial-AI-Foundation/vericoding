@@ -1,0 +1,29 @@
+"vc-description": "Chef and Roma are playing a game. Rules of the game are quite simple.\n\
+  Initially there are N piles of stones on the table.\nIn each turn, a player can\
+  \ choose one pile and remove it from the table.\nEach player want to maximize the\
+  \ total number of stones removed by him.\nChef takes the first turn. \n\nPlease\
+  \ tell Chef the maximum number of stones he can remove assuming that both players\
+  \ play optimally.\n\n-----Input-----\nThe first line of the input contains an integer\
+  \ T denoting the number of test cases. The description of T test cases follows.\n\
+  The first line of each test case contains a single integer N denoting the number\
+  \ of piles.\nThe second line contains N space separated integers A1, A2, ..., AN\
+  \ denoting the number of stones in each pile.\n\n-----Output-----\nFor each test\
+  \ case, output a single line containg the maximum number of stones that Chef can\
+  \ remove.\n\n-----Constraints-----\n- 1 ≤ Ai ≤ 109\n- Subtask 1 (35 points): T =\
+  \ 10, 1 ≤ N ≤ 1000\n- Subtask 2 (65 points): T = 10, 1 ≤ N ≤ 105 \n\n-----Example-----\n\
+  Input:\n2\n3\n1 2 3\n3\n1 2 1\n\nOutput:\n4\n3"
+"vc-preamble": "import Imports.AllImports\n\ndef max_stones_removed (n : Nat) (piles\
+  \ : List Nat) : Nat := sorry\n\ndef list_sum : List Nat → Nat\n  | [] => 0\n  |\
+  \ x::xs => x + list_sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def alternating_elements : List Nat → List Nat\n  | [] => []\n\
+  \  | [x] => [x]\n  | x::_::xs => x :: alternating_elements xs\n\n\n\n\n"
+"vc-theorems": "theorem max_stones_removed_identity (n : Nat) (piles : List Nat) (h\
+  \ : piles.length > 0) :\n  max_stones_removed n piles = max_stones_removed n piles\
+  \ := sorry\n\n\ntheorem max_stones_removed_n_independent (n₁ n₂ : Nat) (piles :\
+  \ List Nat) (h : piles.length > 0) :\n  max_stones_removed n₁ piles = max_stones_removed\
+  \ n₂ piles := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval max_stones_removed\
+  \ 3 [1, 2, 3]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval max_stones_removed 3 [1,\
+  \ 2, 1]\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval max_stones_removed 4 [4, 3, 2,\
+  \ 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

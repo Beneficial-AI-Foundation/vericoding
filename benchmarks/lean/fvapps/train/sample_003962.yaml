@@ -1,0 +1,39 @@
+"vc-description": "# Introduction and Warm-up (Highly recommended)\n\n# [Playing With\
+  \ Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
+  ___\n\n# Task\n\n**_Given_** an **_array of integers_** , **_Find the minimum sum_**\
+  \ which is obtained *from summing each Two integers product* .\n___\n\n# Notes \n\
+  \n* **_Array/list_** *will contain* **_positives only_** . \n* **_Array/list_**\
+  \ *will always has* **_even size_**\n___\n\n# Input >> Output Examples\n\n```\n\
+  minSum({5,4,2,3}) ==> return (22) \n```\n\n## **_Explanation_**:\n\n* **_The minimum\
+  \ sum_** *obtained from summing each two integers product* ,  ` 5*2 + 3*4 = 22`\n\
+  ___\n\n```\nminSum({12,6,10,26,3,24}) ==> return (342)\n```\n\n## **_Explanation_**:\n\
+  \n* **_The minimum sum_** *obtained from summing each two integers product* ,  `\
+  \ 26*3 + 24*6 + 12*10 = 342`\n\n___\n\n```\nminSum({9,2,8,7,5,4,0,6}) ==> return\
+  \ (74)\n```\n\n## **_Explanation_**:\n\n* **_The minimum sum_** *obtained from summing\
+  \ each two integers product* ,  ` 9*0 + 8*2 +7*4 +6*5 = 74`\n\n___\n\n___\n___\n\
+  ___\n\n# [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
+  \n# [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
+  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
+  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
+"vc-preamble": "import Imports.AllImports\n\ndef sum : List Nat → Nat \n| [] => 0\n\
+  | (x::xs) => x + sum xs\n\n\ndef maxList : List Nat → Nat \n| [] => 0\n| [x] =>\
+  \ x\n| (x::xs) => max x (maxList xs)\n\n\ndef zipWith (f : Nat → Nat → Nat) : List\
+  \ Nat → List Nat → List Nat\n| [], _ => []\n| _, [] => []\n| (x::xs), (y::ys) =>\
+  \ f x y :: zipWith f xs ys\n\n\ndef min_sum (nums : List Nat) : Nat := sorry\n\n\
+  theorem min_sum_non_negative (nums : List Nat) \n  (h : nums.length ≥ 2) \n  (h2\
+  \ : nums.length % 2 = 0) :\n  min_sum nums ≥ 0 := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pairwiseProduct (nums : List Nat) : Nat := \n  let n := nums.length\n\
+  \  let firstHalf := nums.take (n/2)\n  let secondHalf := (nums.drop (n/2)).reverse\n\
+  \  sum (zipWith (fun x y => x * y) firstHalf secondHalf)\n"
+"vc-theorems": "theorem min_sum_upper_bound (nums : List Nat)\n  (h : nums.length\
+  \ ≥ 2)\n  (h2 : nums.length % 2 = 0) :\n  min_sum nums ≤ sum nums * maxList nums\
+  \ := sorry\n\n\ntheorem min_sum_reverse_invariant (nums : List Nat)\n  (h : nums.length\
+  \ ≥ 2)\n  (h2 : nums.length % 2 = 0) :\n  min_sum nums = min_sum nums.reverse :=\
+  \ sorry\n\n\ntheorem min_sum_permutation_invariant (nums₁ nums₂ : List Nat)\n  (h1\
+  \ : nums₁.length ≥ 2)\n  (h2 : nums₁.length % 2 = 0)\n  (h3 : nums₁.length = nums₂.length)\n\
+  \  (h4 : ∀ x, nums₁.count x = nums₂.count x) :\n  min_sum nums₁ = min_sum nums₂\
+  \ := sorry\n\n\ntheorem min_sum_minimality (nums : List Nat)\n  (h : nums.length\
+  \ ≥ 2)\n  (h2 : nums.length % 2 = 0) :\n  min_sum nums ≤ pairwiseProduct nums :=\
+  \ sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

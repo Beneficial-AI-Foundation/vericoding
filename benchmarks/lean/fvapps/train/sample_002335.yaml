@@ -1,0 +1,31 @@
+"vc-description": "Given an array of unique integers salary where salary[i] is the\
+  \ salary of the employee i.\nReturn the average salary of employees excluding the\
+  \ minimum and maximum salary.\n \nExample 1:\nInput: salary = [4000,3000,1000,2000]\n\
+  Output: 2500.00000\nExplanation: Minimum salary and maximum salary are 1000 and\
+  \ 4000 respectively.\nAverage salary excluding minimum and maximum salary is (2000+3000)/2=\
+  \ 2500\n\nExample 2:\nInput: salary = [1000,2000,3000]\nOutput: 2000.00000\nExplanation:\
+  \ Minimum salary and maximum salary are 1000 and 3000 respectively.\nAverage salary\
+  \ excluding minimum and maximum salary is (2000)/1= 2000\n\nExample 3:\nInput: salary\
+  \ = [6000,5000,4000,3000,2000,1000]\nOutput: 3500.00000\n\nExample 4:\nInput: salary\
+  \ = [8000,9000,2000,3000,6000,1000]\nOutput: 4750.00000\n\n \nConstraints:\n\n3\
+  \ <= salary.length <= 100\n10^3 <= salary[i] <= 10^6\nsalary[i] is unique.\nAnswers\
+  \ within 10^-5 of the actual value will be accepted as correct."
+"vc-preamble": "import Imports.AllImports\n\ndef calculate_average_salary (salaries\
+  \ : List Nat) : Float := sorry\n\ndef isUnique (l : List Nat) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_to_float (n : Nat) : Float := sorry\n\ndef insertSort\
+  \ (l : List Nat) : List Nat := sorry\n"
+"vc-theorems": "theorem average_salary_between_min_max \n  (salaries : List Nat)\n\
+  \  (h1 : salaries.length ≥ 3)\n  (h2 : isUnique salaries) : \n  match salaries.minimum?,\
+  \ salaries.maximum? with\n  | some min, some max => \n      let result := calculate_average_salary\
+  \ salaries\n      list_to_float min ≤ result ∧ result ≤ list_to_float max\n  | _,\
+  \ _ => True\n  := sorry\n\n\ntheorem average_salary_matches_expected\n  (salaries\
+  \ : List Nat)\n  (h1 : salaries.length ≥ 3)\n  (h2 : isUnique salaries) :\n  let\
+  \ sorted := insertSort salaries\n  let expected := list_to_float (sorted.get? 1).get!\
+  \ + \n                  list_to_float (sorted.get? (sorted.length - 2)).get! / 2\n\
+  \  Float.abs (calculate_average_salary salaries - expected) < 1e-10 :=\nsorry\n\n\
+  \ntheorem average_salary_order_invariant\n  (salaries shuffled : List Nat)\n  (h1\
+  \ : salaries.length ≥ 3)\n  (h2 : isUnique salaries)\n  (h3 : shuffled.length =\
+  \ salaries.length)\n  (h4 : ∀ x, x ∈ salaries ↔ x ∈ shuffled) :\n  Float.abs (calculate_average_salary\
+  \ salaries - calculate_average_salary shuffled) < 1e-10 :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

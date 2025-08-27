@@ -1,0 +1,21 @@
+"vc-description": "*Recreation of [Project Euler problem #6](https://projecteuler.net/problem=6)*\n\
+  \nFind the difference between the sum of the squares of the first `n` natural numbers\
+  \ `(1 <= n <= 100)` and the square of their sum.\n\n## Example\nFor example, when\
+  \ `n = 10`:\n\n* The square of the sum of the numbers is:\n\n  (1 + 2 + 3 + 4 +\
+  \ 5 + 6 + 7 + 8 + 9 + 10)^(2) = 55^(2) = 3025\n\n\n* The sum of the squares of the\
+  \ numbers is:\n\n 1^(2) + 2^(2) + 3^(2) + 4^(2) + 5^(2) + 6^(2) + 7^(2) + 8^(2)\
+  \ + 9^(2) + 10^(2) = 385\n\nHence the difference between square of the sum of the\
+  \ first ten natural numbers and the sum of the squares of those numbes is: 3025\
+  \ - 385 = 2640"
+"vc-preamble": "import Imports.AllImports\n\ndef difference_of_squares (n : Nat) :\
+  \ Nat :=\n  sorry\n\n\ndef sum_up_to (n : Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum_squares_up_to (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem difference_non_negative {n : Nat} : \n  difference_of_squares\
+  \ n ≥ 0 := \n  sorry\n\n\ntheorem zero_and_one_cases :\n  difference_of_squares\
+  \ 0 = 0 ∧ difference_of_squares 1 = 0 :=\n  sorry\n\n\n\n\ntheorem strictly_increasing\
+  \ {n : Nat} (h : n ≥ 2) :\n  difference_of_squares n > difference_of_squares (n-1)\
+  \ :=\n  sorry\n\n/--\ninfo: 170\n-/\n#guard_msgs in\n#eval difference_of_squares\
+  \ 5\n\n/--\ninfo: 2640\n-/\n#guard_msgs in\n#eval difference_of_squares 10\n\n/--\n\
+  info: 25164150\n-/\n#guard_msgs in\n#eval difference_of_squares 100\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

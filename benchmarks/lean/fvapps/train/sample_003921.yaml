@@ -1,0 +1,38 @@
+"vc-description": "You've purchased a ready-meal from the supermarket.\n\nThe packaging\
+  \ says that you should microwave it for 4 minutes and 20 seconds, based on a 600W\
+  \ microwave.\n\nOh no, your microwave is 800W! How long should you cook this for?!\n\
+  \n___\n\n# Input\n\nYou'll be given 4 arguments:\n\n## 1. needed power\nThe power\
+  \ of the needed microwave.  \nExample: `\"600W\"`\n\n## 2. minutes\nThe number of\
+  \ minutes shown on the package.  \nExample: `4`\n\n## 3. seconds\nThe number of\
+  \ seconds shown on the package.  \nExample: `20`\n\n## 4. power\nThe power of your\
+  \ microwave.  \nExample: `\"800W\"`\n\n___\n\n# Output\nThe amount of time you should\
+  \ cook the meal for formatted as a string.  \nExample: `\"3 minutes 15 seconds\"\
+  `\n\nNote: the result should be rounded up.\n```\n59.2 sec  -->  60 sec  -->  return\
+  \ \"1 minute 0 seconds\"\n```\n\n___\n\n\n## All comments/feedback/translations\
+  \ appreciated."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def cooking_time (needed_power : String) (minutes : Nat) (seconds\
+  \ : Nat) (power : String) : String := sorry\n\ntheorem cooking_time_format (needed_power\
+  \ : String) (minutes : Nat) \n  (seconds : Nat) (power : String) (h1 : minutes ≤\
+  \ 60) (h2 : seconds < 60) :\n  ∃ result_mins result_secs : Nat,\n    cooking_time\
+  \ needed_power minutes seconds power = \n      s!\"{result_mins} minutes {result_secs}\
+  \ seconds\" := sorry\n"
+"vc-theorems": "theorem cooking_time_time_bounds (needed_power : String) (minutes\
+  \ : Nat)\n  (seconds : Nat) (power : String) (h1 : minutes ≤ 60) (h2 : seconds <\
+  \ 60) :\n  let result := cooking_time needed_power minutes seconds power\n  ∃ result_mins\
+  \ result_secs : Nat,\n    result = s!\"{result_mins} minutes {result_secs} seconds\"\
+  \ ∧\n    result_secs < 60 ∧ \n    result_mins ≥ 0 := sorry\n\n\ntheorem cooking_time_power_conservation\
+  \ (needed_power : String) (minutes : Nat)\n  (seconds : Nat) (power : String) (h1\
+  \ : minutes ≤ 60) (h2 : seconds < 60) :\n  let result := cooking_time needed_power\
+  \ minutes seconds power\n  ∃ result_mins result_secs input_watts output_watts :\
+  \ Nat,\n    result = s!\"{result_mins} minutes {result_secs} seconds\" ∧\n    input_watts\
+  \ * (minutes * 60 + seconds) ≤ \n    output_watts * (result_mins * 60 + result_secs)\
+  \ + output_watts := sorry\n\n\ntheorem cooking_time_zero :\n  cooking_time \"100W\"\
+  \ 0 0 \"100W\" = \"0 minutes 0 seconds\" := sorry\n\n\ntheorem cooking_time_same_power\
+  \ :\n  cooking_time \"800W\" 5 30 \"800W\" = \"5 minutes 30 seconds\" := sorry\n\
+  \n/--\ninfo: '3 minutes 15 seconds'\n-/\n#guard_msgs in\n#eval cooking_time \"600W\"\
+  \ 4 20 \"800W\"\n\n/--\ninfo: '2 minutes 0 seconds'\n-/\n#guard_msgs in\n#eval cooking_time\
+  \ \"800W\" 3 0 \"1200W\"\n\n/--\ninfo: '17 minutes 30 seconds'\n-/\n#guard_msgs\
+  \ in\n#eval cooking_time \"100W\" 8 45 \"50W\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

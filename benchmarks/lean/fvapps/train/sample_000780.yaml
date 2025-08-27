@@ -1,0 +1,26 @@
+"vc-description": "Chef has provided with a sequence of integers of length $N$ arranged\
+  \ in an unsorted fashion.\nThe elements of the sequence are ordered as ${A1,A2,A3.....A'N}$\n\
+  The task of the chef is to identify the highest and lowest value among the given\
+  \ sequence. It is assured that the sequence given contains the highest and the lowest\
+  \ value always\nPlease help chef in finding the desired value.\n\n-----Input:-----\n\
+  - First line will contain $N$, number of elements in the sequence.  \n- Next line\
+  \ contains  $N$ integers of the sequence  . \n\n-----Output:-----\nPrint the HIGHEST\
+  \ and  LOWEST value of the sequence respectively.\n\n-----Constraints-----\n- $1\
+  \ \\leq N \\leq 100$\n- $2 \\leq  {A1,A2,A3.....A'N}  \\leq 10^4$\n\n-----Sample\
+  \ Input:-----\n5\n3 2 7 9 4\n\n-----Sample Output:-----\n9 2\n\n-----EXPLANATION:-----\n\
+  This list is :\n[3,2,7,9,4]  so the highest value is 9 and lowest is 2 respectively."
+"vc-preamble": "import Imports.AllImports\n\ndef find_max_min (n : Nat) (seq : String)\
+  \ : Int × Int := sorry\n\ndef maximum : List Int → Int := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def minimum : List Int → Int := sorry\n\n\n\ntheorem find_max_min_permutation_invariant\
+  \ {nums1 nums2 : List Int} (n : Nat)\n  (seq1 seq2 : String)\n  (h1 : n = nums1.length)\n\
+  \  (h2 : n = nums2.length) \n  (h3 : seq1 = String.intercalate \" \" (List.map toString\
+  \ nums1))\n  (h4 : seq2 = String.intercalate \" \" (List.map toString nums2))\n\
+  \  (h5 : nums2.isPerm nums1) :\n  find_max_min n seq1 = find_max_min n seq2 := sorry\n"
+"vc-theorems": "theorem find_max_min_single_element (n : Nat) (x : Int) (seq : String)\n\
+  \  (h1 : n = 1)\n  (h2 : seq = toString x) :\n  find_max_min n seq = (x, x) := sorry\n\
+  \n/--\ninfo: (9, 2)\n-/\n#guard_msgs in\n#eval find_max_min 5 \"3 2 7 9 4\"\n\n\
+  /--\ninfo: (10, 5)\n-/\n#guard_msgs in\n#eval find_max_min 3 \"10 5 8\"\n\n/--\n\
+  info: (1000, 250)\n-/\n#guard_msgs in\n#eval find_max_min 4 \"1000 250 750 500\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,25 @@
+"vc-description": "# Task\n Let's consider a table consisting of `n` rows and `n`\
+  \ columns. The cell located at the intersection of the i-th row and the j-th column\
+  \ contains number i × j. The rows and columns are numbered starting from 1.\n\n\
+  \ You are given a positive integer `x`. Your task is to count the number of cells\
+  \ in a table that contain number `x`.\n\n# Example\n\n For `n = 5 and x = 5`, the\
+  \ result should be `2`.\n \n The table looks like:\n ```\n   1  2  3  4  (5)\n \
+  \  2  4  6  8  10\n   3  6  9  12 15\n   4  8  12 16 20\n (5) 10 15 20 25```\n There\
+  \ are two number `5` in it.\n  \n For `n = 10 and x = 5`, the result should be 2.\n\
+  \ \n For `n = 6 and x = 12`, the result should be 4.\n ```\n   1  2   3   4   5\
+  \   6\n   2  4   6   8   10 (12)\n   3  6   9  (12) 15  18\n   4  8  (12) 16  20\
+  \  24\n   5  10  15  20  25  30\n   6 (12) 18  24  30  36\n ```\n \n# Input/Output\n\
+  \n\n - `[input]` integer `n`\n\n  `1 ≤ n ≤ 10^5.`\n\n\n - `[input]` integer `x`\n\
+  \n  `1 ≤ x ≤ 10^9.`\n\n\n - `[output]` an integer\n\n  The number of times `x` occurs\
+  \ in the table."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_number (n : Nat) (x : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_number_non_negative (n : Nat) (x : Nat) (h : n > 0)\
+  \ :\n  count_number n x ≥ 0 :=\nsorry\n\n\ntheorem count_number_upper_bound (n :\
+  \ Nat) (x : Nat) (h : n > 0) : \n  count_number n x ≤ n :=\nsorry\n\n\n\n\ntheorem\
+  \ count_number_above_max (n : Nat) (h : n > 0) :\n  count_number n (n*n + 1) = 0\
+  \ :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_number 5 5\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval count_number 10 5\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval count_number 6 12\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

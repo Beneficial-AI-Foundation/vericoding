@@ -1,0 +1,40 @@
+"vc-description": "In universe Earth C-137, Rick discovered a special form of magnetic\
+  \ force between two balls if they are put in his new invented basket. Rick has n\
+  \ empty baskets, the ith basket is at position[i], Morty has m balls and needs to\
+  \ distribute the balls into the baskets such that the minimum magnetic force between\
+  \ any two balls is maximum.\nRick stated that magnetic force between two different\
+  \ balls at positions x and y is |x - y|.\nGiven the integer array position and the\
+  \ integer m. Return the required force.\n \nExample 1:\n\nInput: position = [1,2,3,4,7],\
+  \ m = 3\nOutput: 3\nExplanation: Distributing the 3 balls into baskets 1, 4 and\
+  \ 7 will make the magnetic force between ball pairs [3, 3, 6]. The minimum magnetic\
+  \ force is 3. We cannot achieve a larger minimum magnetic force than 3.\n\nExample\
+  \ 2:\nInput: position = [5,4,3,2,1,1000000000], m = 2\nOutput: 999999999\nExplanation:\
+  \ We can use baskets 1 and 1000000000.\n\n \nConstraints:\n\nn == position.length\n\
+  2 <= n <= 10^5\n1 <= position[i] <= 10^9\nAll integers in position are distinct.\n\
+  2 <= m <= position.length"
+"vc-preamble": "import Imports.AllImports\n\ndef max_distance (positions : List Nat)\
+  \ (m : Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_place_balls (distance : Nat) (sorted_pos : List Nat) (m\
+  \ : Nat) : Bool :=\nsorry\n"
+"vc-theorems": "theorem max_distance_bounds {positions : List Nat} {m : Nat} \n  (h1\
+  \ : positions.length ≥ 2)\n  (h2 : m ≥ 2)\n  (h3 : m ≤ positions.length)\n  (h4\
+  \ : ∀ x ∈ positions, x ≥ 1 ∧ x ≤ 1000000000) :\n  let result := max_distance positions\
+  \ m\n  result ≥ 0 ∧ \n  result ≤ (positions[positions.length-1]! - positions[0]!)\
+  \ :=\nsorry\n\n\ntheorem max_distance_placement {positions : List Nat} {m : Nat}\n\
+  \  (h1 : positions.length ≥ 2)\n  (h2 : m ≥ 2)\n  (h3 : m ≤ positions.length)\n\
+  \  (h4 : ∀ x ∈ positions, x ≥ 1 ∧ x ≤ 1000000000) :\n  let result := max_distance\
+  \ positions m\n  can_place_balls result positions m = true :=\nsorry\n\n\ntheorem\
+  \ max_distance_maximal {positions : List Nat} {m : Nat}\n  (h1 : positions.length\
+  \ ≥ 2)\n  (h2 : m ≥ 2)\n  (h3 : m ≤ positions.length)\n  (h4 : ∀ x ∈ positions,\
+  \ x ≥ 1 ∧ x ≤ 1000000000) :\n  let result := max_distance positions m\n  result\
+  \ < (positions[positions.length-1]! - positions[0]!) →\n  can_place_balls (result\
+  \ + 1) positions m = false :=\nsorry\n\n\ntheorem max_distance_input_preservation\
+  \ {positions : List Nat} {m : Nat}\n  (h1 : positions.length ≥ 2)\n  (h2 : m ≥ 2)\n\
+  \  (h3 : m ≤ positions.length) :\n  positions = positions :=\nsorry\n\n\ntheorem\
+  \ max_distance_edge_cases :\n  max_distance [1, 1000000000] 2 = 999999999 ∧\n  max_distance\
+  \ [1,2,3] 3 = 1 :=\nsorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval max_distance\
+  \ [1, 2, 3, 4, 7] 3\n\n/--\ninfo: 999999999\n-/\n#guard_msgs in\n#eval max_distance\
+  \ [5, 4, 3, 2, 1, 1000000000] 2\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval max_distance\
+  \ [1, 2, 3, 4, 5, 6] 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

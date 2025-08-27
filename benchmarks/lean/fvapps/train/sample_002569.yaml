@@ -1,0 +1,30 @@
+"vc-description": "# Task\n You are given two strings s and t of the same length,\
+  \ consisting of uppercase English letters. Your task is to find the minimum number\
+  \ of \"replacement operations\" needed to get some `anagram` of the string t from\
+  \ the string s. A replacement operation is performed by picking exactly one character\
+  \ from the string s and replacing it by some other character.\n\n About `anagram`:\
+  \ А string x is an anagram of a string y if one can get y by rearranging the letters\
+  \ of x. For example, the strings \"MITE\" and \"TIME\" are anagrams, so are \"BABA\"\
+  \ and \"AABB\", but \"ABBAC\" and \"CAABA\" are not.\n\n# Example\n\n For s = \"\
+  AABAA\" and t = \"BBAAA\", the output should be 1;\n \n For s = \"OVGHK\" and t\
+  \ = \"RPGUC\", the output should be 4.\n \n# Input/Output\n\n\n - `[input]` string\
+  \ `s`\n\n    Constraints: `5 ≤ s.length ≤ 35`.\n\n\n - `[input]` string `t`\n\n\
+  \    Constraints: `t.length = s.length`.\n\n\n - `[output]` an integer\n\n    The\
+  \ minimum number of replacement operations needed to get an anagram of the string\
+  \ t from the string s."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def create_anagram (s t : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem anagram_non_negative (s t : String) :\n  create_anagram s\
+  \ t ≥ 0 :=\n  sorry\n\n\ntheorem anagram_self (s : String) :\n  create_anagram s\
+  \ s = 0 :=\n  sorry\n\n\ntheorem anagram_empty :\n  create_anagram \"\" \"\" = 0\
+  \ :=\n  sorry\n\n\ntheorem anagram_length_bound (s t : String) :\n  create_anagram\
+  \ s t ≤ String.length s :=\n  sorry\n\n\n\n\ntheorem anagram_repeated (s : String)\
+  \ :\n  create_anagram s (s ++ s) = 0 ∧\n  create_anagram (s ++ s) s = String.length\
+  \ s :=\n  sorry\n\n\ntheorem anagram_permutation (s : String) :\n  -- simplified\
+  \ condition since we can't sort without Mathlib\n  create_anagram s s = 0 :=\n \
+  \ sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval create_anagram \"AABAA\" \"BBAAA\"\
+  \n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval create_anagram \"OVGHK\" \"RPGUC\"\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval create_anagram \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB\"\
+  \ \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAC\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

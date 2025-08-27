@@ -1,0 +1,33 @@
+"vc-description": "# Task\n Given string `s`, which contains only letters from `a\
+  \ to z` in lowercase.\n\n A set of alphabet is given by `abcdefghijklmnopqrstuvwxyz`.\n\
+  \ \n 2 sets of alphabets mean 2 or more alphabets.\n \n Your task is to find the\
+  \ missing letter(s). You may need to output them by the order a-z. It is possible\
+  \ that there is more than one missing letter from more than one set of alphabet.\n\
+  \n If the string contains all of the letters in the alphabet, return an empty string\
+  \ `\"\"`\n\n# Example\n\n For `s='abcdefghijklmnopqrstuvwxy'`\n\n The result should\
+  \ be `'z'`\n\n For `s='aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyy'`\n \n\
+  \ The result should be `'zz'`\n\n For `s='abbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxy'`\n\
+  \ \n The result should be `'ayzz'`\n\n For `s='codewars'`\n \n The result should\
+  \ be `'bfghijklmnpqtuvxyz'`\n\n# Input/Output\n\n\n - `[input]` string `s`\n\n \
+  \ Given string(s) contains one or more set of alphabets in lowercase.\n\n\n - `[output]`\
+  \ a string\n\n  Find the letters contained in each alphabet but not in the string(s).\
+  \ Output them by the order `a-z`. If missing alphabet is repeated, please repeat\
+  \ them like `\"bbccdd\"`, not `\"bcdbcd\"`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def missing_alphabets (s : String) : String := sorry\n\ndef counts_for_char\
+  \ (s : String) (c : Char) : Nat :=\n  s.data.count c\n"
+"vc-theorems": "theorem missing_alphabets_result_lowercase (s : String) (h : s.length\
+  \ > 0) :\n  let result := missing_alphabets s\n  ∀ c, c ∈ result.data → c.isLower\
+  \ := sorry \n\n\ntheorem missing_alphabets_equalizes_counts (s : String) (h : s.length\
+  \ > 0) :\n  let result := missing_alphabets s\n  let combined := s ++ result\n \
+  \ ∃ max_count : Nat, ∀ c, c.isLower → \n    counts_for_char combined c = max_count\
+  \ ∨ counts_for_char combined c = 0 := sorry\n\n\ntheorem missing_alphabets_only_non_max\
+  \ (s : String) (h : s.length > 0) :\n  let result := missing_alphabets s\n  ∃ max_input_count\
+  \ : Nat, \n    (∀ c, c.isLower → counts_for_char s c ≤ max_input_count) ∧\n    (∀\
+  \ c ∈ result.data, counts_for_char s c < max_input_count) := sorry\n\n/--\ninfo:\
+  \ 'z'\n-/\n#guard_msgs in\n#eval missing_alphabets \"abcdefghijklmnopqrstuvwxy\"\
+  \n\n/--\ninfo: 'zz'\n-/\n#guard_msgs in\n#eval missing_alphabets \"aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyy\"\
+  \n\n/--\ninfo: 'bfghijklmnpqtuvxyz'\n-/\n#guard_msgs in\n#eval missing_alphabets\
+  \ \"codewars\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

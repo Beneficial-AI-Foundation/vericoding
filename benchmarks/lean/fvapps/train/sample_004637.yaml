@@ -1,0 +1,34 @@
+"vc-description": "#Adding values of arrays in a shifted way\n\nYou have to write\
+  \ a method, that gets two parameter:\n\n```markdown\n1. An array of arrays with\
+  \ int-numbers\n2. The shifting value\n```\n\n#The method should add the values of\
+  \ the arrays to one new array.\n\nThe arrays in the array will all have the same\
+  \ size and this size will always be greater than 0.\nThe shifting value is always\
+  \ a value from 0 up to the size of the arrays.\nThere are always arrays in the array,\
+  \ so you do not need to check for null or empty.\n\n#1. Example:\n```\n[[1,2,3,4,5,6],\
+  \ [7,7,7,7,7,-7]], 0\n\n1,2,3,4,5,6\n7,7,7,7,7,-7\n\n--> [8,9,10,11,12,-1]\n```\n\
+  \n#2. Example\n```\n[[1,2,3,4,5,6], [7,7,7,7,7,7]], 3\n\n1,2,3,4,5,6\n      7,7,7,7,7,7\n\
+  \n--> [1,2,3,11,12,13,7,7,7]\n```\n\n#3. Example\n```\n[[1,2,3,4,5,6], [7,7,7,-7,7,7],\
+  \ [1,1,1,1,1,1]], 3\n\n\n1,2,3,4,5,6\n      7,7,7,-7,7,7\n            1,1,1,1,1,1\n\
+  \n--> [1,2,3,11,12,13,-6,8,8,1,1,1]\n```\n\nHave fun coding it and please don't\
+  \ forget to vote and rank this kata! :-)\n\nI have created other katas. Have a look\
+  \ if you like coding and challenges."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sumArrays (arrays : List (List Int)) (shift : Nat) : List Int\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem sumArrays_length {arrays : List (List Int)} {shift : Nat}\
+  \ \n  (h1 : arrays.length > 0)\n  (h2 : ∀ (arr₁ arr₂ : List Int), arr₁ ∈ arrays\
+  \ → arr₂ ∈ arrays → arr₁.length = arr₂.length) :\n  (sumArrays arrays shift).length\
+  \ = (arrays[0]!).length + shift * (arrays.length - 1) :=\n  sorry\n\n\ntheorem sumArrays_zero_shift\
+  \ {arrays : List (List Int)} {shift : Nat}\n  (h1 : arrays.length > 0)\n  (h2 :\
+  \ ∀ (arr₁ arr₂ : List Int), arr₁ ∈ arrays → arr₂ ∈ arrays → arr₁.length = arr₂.length)\n\
+  \  (h3 : shift = 0) :\n  sumArrays arrays shift = List.map (λ i => arrays.foldl\
+  \ (λ sum arr => sum + arr[0]!) 0) (List.range (arrays[0]!).length) :=\n  sorry\n\
+  \n\ntheorem sumArrays_single_array {arr : List Int} {shift : Nat} :\n  sumArrays\
+  \ [arr] shift = arr :=\n  sorry\n\n\ntheorem sumArrays_element_bound {arrays : List\
+  \ (List Int)} {shift : Nat}\n  (h1 : arrays.length > 0)\n  (h2 : ∀ (arr₁ arr₂ :\
+  \ List Int), arr₁ ∈ arrays → arr₂ ∈ arrays → arr₁.length = arr₂.length) :\n  ∀ (x\
+  \ : Int), x ∈ sumArrays arrays shift →\n    x ≤ arrays.foldl (λ sum arr => sum +\
+  \ (arr.foldl (λ m x => max m x) 0)) 0 ∧\n    -x ≤ arrays.foldl (λ sum arr => sum\
+  \ + (arr.foldl (λ m x => max m x) 0)) 0 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

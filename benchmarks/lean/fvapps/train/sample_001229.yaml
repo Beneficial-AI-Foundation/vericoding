@@ -1,0 +1,24 @@
+"vc-description": "Given an integer $x$, find two non-negative integers $a$ and $b$\
+  \ such that $(a \\wedge b) + (a \\vee b) = x$, where $\\wedge$ is the bitwise AND\
+  \ operation and $\\vee$ is the bitwise OR operation.\n\n-----Input-----\n- The first\
+  \ line of the input contains a single integer $T$ denoting the number of test cases.\
+  \ The description of $T$ test cases follows.\n- The first and only line of each\
+  \ test case contains a single integer $x$.\n\n-----Output-----\nIf there is no valid\
+  \ pair $(a, b)$, print a single line containing the integer $-1$. Otherwise, print\
+  \ a single line containing two space-separated integers $a$ and $b$.\nIf there are\
+  \ multiple solutions, you may print any one of them.\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 10^5$\n- $1 \\le x \\le 10^{18}$\n\n-----Subtasks-----\nSubtask\
+  \ #1 (30 points):\n- $1 \\le T \\le 200$\n- $1 \\le x \\le 200$\nSubtask #2 (70\
+  \ points): original constraints\n\n-----Example Input-----\n2\n1\n8\n\n-----Example\
+  \ Output-----\n0 1\n5 3"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_ab_pairs (x : Nat) : Nat × Nat :=\n  sorry\n"
+"vc-theorems": "theorem find_ab_pairs_property_1 (x : Nat) (h : x > 0): \n  let (a,\
+  \ b) := find_ab_pairs x \n  (a &&& b) + (a ||| b) = x :=\n  sorry\n\n\ntheorem find_ab_pairs_property_2\
+  \ (x : Nat) (h : x > 0):\n  let (a, b) := find_ab_pairs x\n  a ≥ 0 ∧ b ≥ 0 :=\n\
+  \  sorry\n\n\ntheorem find_ab_pairs_property_4_even (x : Nat) (h1 : x > 0) (h2 :\
+  \ x % 2 = 0):\n  let (a, b) := find_ab_pairs x\n  a = x / 2 - 1 ∧ b = x - a :=\n\
+  \  sorry\n\n\ntheorem find_ab_pairs_property_4_odd (x : Nat) (h1 : x > 0) (h2 :\
+  \ x % 2 = 1):\n  let (a, b) := find_ab_pairs x\n  a = x / 2 ∧ b = x - a :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

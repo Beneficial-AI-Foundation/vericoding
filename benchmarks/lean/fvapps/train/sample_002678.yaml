@@ -1,0 +1,22 @@
+"vc-description": "Your task is to make a program takes in a sentence (without puncuation),\
+  \ adds all words to a list and returns the sentence as a string which is the positions\
+  \ of the word in the list. Casing should not matter too.\n\n\nExample\n-----\n\n\
+  `\"Ask not what your COUNTRY can do for you ASK WHAT YOU CAN DO FOR YOUR country\"\
+  `\n\nbecomes\n\n`\"01234567802856734\"`\n\nAnother example\n-----\n\n`\"the one\
+  \ bumble bee one bumble the bee\"`\n\nbecomes\n\n`\"01231203\"`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def compress (s : String) : String := sorry\n\ntheorem compress_case_insensitive\
+  \ (s : String) : \n  compress s = compress s.toUpper ∧ compress s = compress s.toLower\
+  \ := by sorry\n"
+"vc-theorems": "theorem compress_only_digits (s : String) :\n  s ≠ \"\" → compress\
+  \ s ≠ \"\" → \n  (∀ c : Char, c ∈ (compress s).data → c.isDigit) := by sorry\n\n\
+  \ntheorem compress_maps_repeat_words (s : String) (i : Nat) :\n  s ≠ \"\" →\n  let\
+  \ words := s.toLower.split (· = ' ')\n  i < words.length →\n  let result := compress\
+  \ s\n  String.toNat! ((result.data.get! i).toString) = words.indexOf (words.get!\
+  \ i) := by sorry\n\n/--\ninfo: '012'\n-/\n#guard_msgs in\n#eval compress \"The bumble\
+  \ bee\"\n\n/--\ninfo: '012012'\n-/\n#guard_msgs in\n#eval compress \"SILLY LITTLE\
+  \ BOYS silly little boys\"\n\n/--\ninfo: '01234567802856734'\n-/\n#guard_msgs in\n\
+  #eval compress \"Ask not what your COUNTRY can do for you ASK WHAT YOU CAN DO FOR\
+  \ YOUR country\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

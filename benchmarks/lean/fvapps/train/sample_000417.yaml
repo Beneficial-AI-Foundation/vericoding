@@ -1,0 +1,20 @@
+"vc-description": "Given n orders, each order consist in pickup and delivery services. \n\
+  Count all valid pickup/delivery possible sequences such that delivery(i) is always\
+  \ after of pickup(i). \nSince the answer may be too large, return it modulo 10^9\
+  \ + 7.\n \nExample 1:\nInput: n = 1\nOutput: 1\nExplanation: Unique order (P1, D1),\
+  \ Delivery 1 always is after of Pickup 1.\n\nExample 2:\nInput: n = 2\nOutput: 6\n\
+  Explanation: All possible orders: \n(P1,P2,D1,D2), (P1,P2,D2,D1), (P1,D1,P2,D2),\
+  \ (P2,P1,D1,D2), (P2,P1,D2,D1) and (P2,D2,P1,D1).\nThis is an invalid order (P1,D2,P2,D1)\
+  \ because Pickup 2 is after of Delivery 2.\n\nExample 3:\nInput: n = 3\nOutput:\
+  \ 90\n\n \nConstraints:\n\n1 <= n <= 500"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def M := 10^9 + 7\n\ndef count_valid_delivery_orders (n : Nat)\
+  \ : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_valid_delivery_orders_positive (n : Nat) \n  (h : n\
+  \ > 0) : \n  count_valid_delivery_orders n > 0 :=\n  sorry\n\n\n\n\ntheorem count_valid_delivery_orders_base_case\
+  \ :\n  count_valid_delivery_orders 1 = 1 :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval count_valid_delivery_orders 1\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n\
+  #eval count_valid_delivery_orders 2\n\n/--\ninfo: 90\n-/\n#guard_msgs in\n#eval\
+  \ count_valid_delivery_orders 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

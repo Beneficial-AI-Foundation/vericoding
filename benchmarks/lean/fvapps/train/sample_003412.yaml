@@ -1,0 +1,22 @@
+"vc-description": "Finding your seat on a plane is never fun, particularly for a long\
+  \ haul flight... You arrive, realise again just how little leg room you get, and\
+  \ sort of climb into the seat covered in a pile of your own stuff.\n\nTo help confuse\
+  \ matters (although they claim in an effort to do the opposite) many airlines omit\
+  \ the letters 'I' and 'J' from their seat naming system.\n\nthe naming system consists\
+  \ of a number (in this case between 1-60) that denotes the section of the plane\
+  \ where the seat is (1-20 = front, 21-40 = middle, 40+ = back). This number is followed\
+  \ by a letter, A-K with the exclusions mentioned above.\n\nLetters A-C denote seats\
+  \ on the left cluster, D-F the middle and G-K the right.\n\nGiven a seat number,\
+  \ your task is to return the seat location in the following format:\n\n'2B' would\
+  \ return 'Front-Left'.\n\nIf the number is over 60, or the letter is not valid,\
+  \ return 'No Seat!!'."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def plane_seat (s : String) : String := sorry\n\n\n\n\n\n\n\ntheorem\
+  \ invalid_letters_return_no_seat (n : Nat) (l : Char)\n  (h1 : n ≥ 1 ∧ n ≤ 60)\n\
+  \  (h2 : l ∉ ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'K']) :\n  plane_seat (toString\
+  \ n ++ toString l) = \"No Seat!!\" := sorry\n"
+"vc-theorems": "theorem invalid_numbers_return_no_seat (n : Nat) (l : Char)\n  (h1\
+  \ : n < 1 ∨ n > 60)\n  (h2 : l ∈ ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'K'])\
+  \ :\n  plane_seat (toString n ++ toString l) = \"No Seat!!\" := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

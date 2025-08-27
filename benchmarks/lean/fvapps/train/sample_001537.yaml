@@ -1,0 +1,55 @@
+"vc-description": "After fixing the mercury leak, Kim has arrived in the planning\
+  \ room, where he finds a square map of a field, with $N$ rows and $N$ columns. Each\
+  \ cell in the field is either empty, or has a lookout tower on it. Using his notes,\
+  \ he immediately realises that this field is where the JSA will build their new\
+  \ base!\nKim knows that Soum is a fan of symmetric base design, and will only approve\
+  \ of a base to be built if it is square. Furthermore, Soum also requires that all\
+  \ the rows in the base, and all the columns in the base have exactly one tower square\
+  \ in them. \nThis means that a base plan is valid if and only if:\n- It is square\
+  \ in shape\n- Every row in the base has exactly one lookout tower in it.\n- Every\
+  \ column in the base has exactly one lookout tower in it.\nKim notices that all\
+  \ the rows and all the columns in the field have exactly one tower square in them,\
+  \ but he knows that some of them could have been built to throw him off! Can you\
+  \ help Kim find how many valid base plans are possible in this field? Two base plans\
+  \ are considered different if one contains a cell in the grid that the other does\
+  \ not.\nPlease refer to the samples for more details.\n\n-----Input:-----\n- The\
+  \ first line of input contains $T$, the number of testcases.\n- The first line of\
+  \ each testcase contains a single integer, $N$, representing the side length of\
+  \ the field.\n- The next $N$ lines of each testcase contain a string of length $N$,\
+  \ consisting of only 0 and 1. If position $j$ in string $i$ is 0, it means that\
+  \ this the field has no tower at $[i][j]$, and if it is 1, then this cell does have\
+  \ a tower at $[i][j]$.\nIt is guaranteed that every row in the input will have exactly\
+  \ one tower, and every column in the input will also have exactly one tower.\n\n\
+  -----Output:-----\nFor each testcase, output a single integer $K$, representing\
+  \ the number of different base plans possible.\n\n-----Subtasks-----\n- For all\
+  \ subtasks, $N \\leq 2500$ and $T \\leq 10$. \n- In addition, the sum of $N$ in\
+  \ any testfile is at most $2500$.\nSubtask 1 [28 points] : All the towers will be\
+  \ on the diagonal from the top-left to the bottom-right positions. Formally, all\
+  \ positions where $i = j$ have a tower. And no other position has a tower\nSubtask\
+  \ 2 [39 points] : $N \\leq 600$\nSubtask 3 [33 points] : $N \\leq 2500$\n\n-----Sample\
+  \ Input:-----\n2\n2\n10\n01\n4\n1000\n0010\n0100\n0001\n\n-----Sample Output:-----\n\
+  3\n8\n\n-----Explanation:-----\n\nIn the first testcase, there are three valid base\
+  \ plans: The entire 2x2 square, the 1x1 square which contains only the cell (1,\
+  \ 1) and the 1x1 square which contains only the cell (2, 2).\n\nIn the second testcase,\
+  \ \n\nThere are eight valid base plans:\n- The 4x4 square with top left corner at\
+  \ (1, 1)\n- The 3x3 square with top left corner at (1, 1)\n- The 3x3 square with\
+  \ top left corner at (2, 2)\n- The 3x3 square with top left corner at (1, 1)\n-\
+  \ The 2x2 square with top left corner at (2, 2)\n- The 1x1 square which contains\
+  \ only the cell (1, 1)\n- The 1x1 square which contains only the cell (2, 3)\n-\
+  \ The 1x1 square which contains only the cell (3, 2)\n- The 1x1 square which contains\
+  \ only the cell (4, 4)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_base_plans (n : Nat) (grid : List String) : Nat :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem diagonal_case (n : Nat) :\n  let diagonal := List.range n\
+  \ |>.map (fun i =>\n    String.mk (List.range n |>.map (fun j => if i = j then '1'\
+  \ else '0')))\n  solve_base_plans n diagonal = n * (n + 1) / 2 :=\n  sorry\n\n\n\
+  theorem empty_grid_one :\n  solve_base_plans 1 [\"1\"] = 1 :=\n  sorry\n\n\ntheorem\
+  \ empty_grid_zero :\n  solve_base_plans 1 [\"0\"] = 0 :=\n  sorry\n\n\ntheorem all_zeros\
+  \ (n : Nat) :\n  let zeros := List.replicate n (String.mk (List.replicate n '0'))\n\
+  \  solve_base_plans n zeros = 0 :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
+  #eval solve_base_plans 2 [\"10\", \"01\"]\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n\
+  #eval solve_base_plans 4 [\"1000\", \"0010\", \"0100\", \"0001\"]\n\n/--\ninfo:\
+  \ 6\n-/\n#guard_msgs in\n#eval solve_base_plans 3 [\"100\", \"010\", \"001\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

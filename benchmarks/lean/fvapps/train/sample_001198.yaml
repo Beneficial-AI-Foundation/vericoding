@@ -1,0 +1,44 @@
+"vc-description": "\"Don't Drink and Drive, but when you do, Better Call Saul.\"\n\
+  Once Jesse and Walter were fighting over extra cash, and Saul decided to settle\
+  \ it with a game of stone piles whose winner gets the extra money. The game is described\
+  \ as follows :\nThere are N$N$ piles of stones with A$A$1$1$,$,$ A$A$2$2$,$,$ ...$...$\
+  \ A$A$N$N$ stones in each pile. \nJesse and Walter move alternately, and in one\
+  \ move, they remove one pile entirely. \nAfter a total of X$X$ moves, if the Sum\
+  \ of all the remaining piles is odd, Walter wins the game and gets the extra cash,\
+  \ else Jesse is the winner.\nWalter moves first. \nDetermine the winner of the game\
+  \ if both of them play optimally. \n\n-----Input:-----\n- The first line will contain\
+  \ T$T$, number of testcases. T$T$ testcases follow : \n- The first line of each\
+  \ testcase contains two space-separated integers N,X$N, X$. \n- The second line\
+  \ of each testcase contains N$N$ space-separated integers A$A$1$1$,$,$ A$A$2$2$,$,$\
+  \ ...,$...,$A$A$N$N$.\n\n-----Output:-----\nFor each test case, print a single line\
+  \ containing the string \"Jesse\" (without quotes), if Jesse wins the game or \"\
+  Walter\" (without quotes) if Walter wins.\n\n-----Constraints-----\n- 1≤T≤104$1\
+  \ \\leq T \\leq 10^4$\n- 2≤N≤105$2 \\leq N \\leq 10^5$\n- 1≤X≤N−1$1 \\leq X \\leq\
+  \ N-1$\n- 1≤A$1 \\leq A$i$i$ ≤100$ \\leq 100$\n- The sum of N$N$ over all test cases\
+  \ does not exceed 106$10^6$\n\n-----Sample Input:-----\n2\n5 3\n4 4 4 3 4\n7 4\n\
+  3 3 1 1 1 2 4\n\n-----Sample Output:-----\nJesse\nWalter\n\n-----EXPLANATION:-----\n\
+  - \nFor Test Case 1 : Playing optimally, Walter removes 4. Jesse removes 3 and then\
+  \ Walter removes 4. Jesse wins as 4+4=8$4 + 4 = 8$ is even.\n- \nFor Test Case 2\
+  \ : Playing optimally, Walter removes 4, Jesse removes 3, Walter removes 2 and Jesse\
+  \ removes 1. Walter wins as  3+3+1=7$3 + 3 + 1 = 7$ is odd."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def determine_winner (n x : Nat) (stones : List Nat) : String :=\
+  \ sorry\n\ndef ListPerm {α : Type} (l₁ l₂ : List α) : Prop := sorry\n"
+"vc-theorems": "theorem determine_winner_well_defined_output\n  (n x : Nat) (stones\
+  \ : List Nat) (h₁ : x > 0) (h₂ : x ≤ n) : \n  determine_winner n x stones = \"Jesse\"\
+  \ ∨ determine_winner n x stones = \"Walter\" := sorry\n\n\ntheorem determine_winner_length_preserving\n\
+  \  (n x : Nat) (stones : List Nat) (h₁ : stones.length = n) : \n  stones.length\
+  \ = n := sorry\n\n\ntheorem determine_winner_permutation_invariant\n  (n x : Nat)\
+  \ (stones₁ stones₂ : List Nat) \n  (h₁ : ListPerm stones₁ stones₂) (h₂ : stones₁.length\
+  \ = n) (h₃ : stones₂.length = n) :\n  determine_winner n x stones₁ = determine_winner\
+  \ n x stones₂ := sorry\n\n\ntheorem determine_winner_increment_invariant\n  (n x\
+  \ : Nat) (stones : List Nat) (h : stones.length = n) :\n  determine_winner n x stones\
+  \ = determine_winner n x (stones.map (· + 2)) := sorry\n\n\ntheorem determine_winner_single_stone_parity\n\
+  \  (n : Nat) (stones : List Nat) \n  (h₁ : stones = List.replicate n 1) :\n  determine_winner\
+  \ n 1 stones = (if n % 2 = 1 then \"Jesse\" else \"Walter\") := sorry\n\n/--\ninfo:\
+  \ 'Jesse'\n-/\n#guard_msgs in\n#eval determine_winner 5 3 [4, 4, 4, 3, 4]\n\n/--\n\
+  info: 'Walter'\n-/\n#guard_msgs in\n#eval determine_winner 7 4 [3, 3, 1, 1, 1, 2,\
+  \ 4]\n\n/--\ninfo: 'Jesse'\n-/\n#guard_msgs in\n#eval determine_winner 4 2 [1, 2,\
+  \ 3, 4]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

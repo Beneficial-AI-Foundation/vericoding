@@ -1,0 +1,16 @@
+"vc-description": "Given an array of n positive integers and a positive integer s,\
+  \ find the minimal length of a contiguous subarray of which the sum ≥ s. If there\
+  \ isn't one, return 0 instead.\n\nExample: \n\n\nInput: s = 7, nums = [2,3,1,2,4,3]\n\
+  Output: 2\nExplanation: the subarray [4,3] has the minimal length under the problem\
+  \ constraint.\n\nFollow up:\n\nIf you have figured out the O(n) solution, try coding\
+  \ another solution of which the time complexity is O(n log n)."
+"vc-preamble": "import Imports.AllImports\n\ndef min_subarray_len (target : Nat) (nums\
+  \ : List Nat) : Nat :=\nsorry\n\n\ndef sum_list (l : List Nat) : Nat :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def slice (l : List Nat) (start : Nat) (len : Nat) : List Nat :=\n\
+  sorry\n\n\n\n\n\n\n"
+"vc-theorems": "theorem min_subarray_len_empty {target : Nat} :\n  min_subarray_len\
+  \ target [] = 0 :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_subarray_len\
+  \ 7 [2, 3, 1, 2, 4, 3]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval min_subarray_len\
+  \ 5 []\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval min_subarray_len 10 [1, 1, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,42 @@
+"vc-description": "Today Sonya learned about long integers and invited all her friends\
+  \ to share the fun. Sonya has an initially empty multiset with integers. Friends\
+  \ give her t queries, each of one of the following type:   +  a_{i} — add non-negative\
+  \ integer a_{i} to the multiset. Note, that she has a multiset, thus there may be\
+  \ many occurrences of the same integer.   -  a_{i} — delete a single occurrence\
+  \ of non-negative integer a_{i} from the multiset. It's guaranteed, that there is\
+  \ at least one a_{i} in the multiset.  ? s — count the number of integers in the\
+  \ multiset (with repetitions) that match some pattern s consisting of 0 and 1. In\
+  \ the pattern, 0 stands for the even digits, while 1 stands for the odd. Integer\
+  \ x matches the pattern s, if the parity of the i-th from the right digit in decimal\
+  \ notation matches the i-th from the right digit of the pattern. If the pattern\
+  \ is shorter than this integer, it's supplemented with 0-s from the left. Similarly,\
+  \ if the integer is shorter than the pattern its decimal notation is supplemented\
+  \ with the 0-s from the left. \n\nFor example, if the pattern is s = 010, than integers\
+  \ 92, 2212, 50 and 414 match the pattern, while integers 3, 110, 25 and 1030 do\
+  \ not.\n\n\n-----Input-----\n\nThe first line of the input contains an integer t\
+  \ (1 ≤ t ≤ 100 000) — the number of operation Sonya has to perform.\n\nNext t lines\
+  \ provide the descriptions of the queries in order they appear in the input file.\
+  \ The i-th row starts with a character c_{i} — the type of the corresponding operation.\
+  \ If c_{i} is equal to '+' or '-' then it's followed by a space and an integer a_{i}\
+  \ (0 ≤ a_{i} < 10^18) given without leading zeroes (unless it's 0). If c_{i} equals\
+  \ '?' then it's followed by a space and a sequence of zeroes and onse, giving the\
+  \ pattern of length no more than 18.\n\nIt's guaranteed that there will be at least\
+  \ one query of type '?'.\n\nIt's guaranteed that any time some integer is removed\
+  \ from the multiset, there will be at least one occurrence of this integer in it.\n\
+  \n\n-----Output-----\n\nFor each query of the third type print the number of integers\
+  \ matching the given pattern. Each integer is counted as many times, as it appears\
+  \ in the multiset at this moment of time.\n\n\n-----Examples-----\nInput\n12\n+\
+  \ 1\n+ 241\n? 1\n+ 361\n- 241\n? 0101\n+ 101\n? 101\n- 101\n? 101\n+ 4000\n? 0\n\
+  \nOutput\n2\n1\n2\n1\n1\n\nInput\n4\n+ 200\n+ 200\n- 200\n? 0\n\nOutput\n1\n\n\n\
+  \n-----Note-----\n\nConsider the integers matching the patterns from the queries\
+  \ of the third type. Queries are numbered in the order they appear in the input.\
+  \   1 and 241.  361.  101 and 361.  361.  4000."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_pattern_matching (ops : List String) : List Nat :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem add_remove_cancel (num : Nat) (count : Nat) (h : 0 < count\
+  \ ∧ count ≤ 5) : \n  let ops := List.join (List.replicate count [s!\"+ {num}\",\
+  \ s!\"- {num}\"]) ++ [s!\"? {toString num}\"]\n  solve_pattern_matching ops = [0]\n\
+  \  := sorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

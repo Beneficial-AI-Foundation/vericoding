@@ -1,0 +1,14 @@
+"vc-description": "Make a function that returns the value multiplied by 50 and increased\
+  \ by 6. If the value entered is a string it should return \"Error\".\n\nNote: in\
+  \ `C#`, you'll always get the input as a string, so the above applies if the string\
+  \ isn't representing a double value."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def problem {α : Type} (x : α) : α ⊕ String := sorry\n\ntheorem\
+  \ formula_integers (x : Int) : \n  problem x = Sum.inl (x * 50 + 6) := sorry\n"
+"vc-theorems": "theorem formula_floats (x : Float) : \n  problem x = Sum.inl (x *\
+  \ 50 + 6) := sorry\n\n\ntheorem non_numeric_error (x : String ⊕ ByteArray ⊕ List\
+  \ Int) : \n  problem x = Sum.inr \"Error\" := sorry\n\n/--\ninfo: 'Error'\n-/\n\
+  #guard_msgs in\n#eval problem \"hello\"\n\n/--\ninfo: 56\n-/\n#guard_msgs in\n#eval\
+  \ problem 1\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval problem 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

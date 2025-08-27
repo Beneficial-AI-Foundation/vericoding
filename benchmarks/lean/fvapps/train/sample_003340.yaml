@@ -1,0 +1,41 @@
+"vc-description": "The prime numbers are not regularly spaced. For example from `2`\
+  \ to `3` the step is `1`.\nFrom `3` to `5` the step is `2`. From `7` to `11` it\
+  \ is `4`.\nBetween 2 and 50 we have the following pairs of 2-steps primes:\n\n`3,\
+  \ 5 - 5, 7, - 11, 13, - 17, 19, - 29, 31, - 41, 43`\n\nWe will write a function\
+  \ `step` with parameters:\n\n- `g` (integer >= 2) which indicates the step we are\
+  \ looking for,\n\n- `m` (integer >= 2) which gives the start of the search (m inclusive),\n\
+  \n- `n` (integer >= m) which gives the end of the search (n inclusive)\n\nIn the\
+  \ example above `step(2, 2, 50)` will return `[3, 5]` which is the first pair between\
+  \ 2 and 50 with a 2-steps.\n\nSo this function should return the **first** pair\
+  \ of the two prime numbers spaced with a step of `g`\nbetween the limits `m`, `n`\
+  \ if these g-steps prime numbers exist otherwise `nil` or `null` or `None` or `Nothing`\
+  \ or `[]` or `\"0, 0\"` or `{0, 0}` or `0 0`(depending on the language). \n\n\n\
+  #Examples:\n\n- \n\n\n`step(2, 5, 7) --> [5, 7] or (5, 7) or {5, 7} or \"5 7\"`\n\
+  \n`step(2, 5, 5) --> nil or ... or [] in Ocaml or {0, 0} in C++`\n\n`step(4, 130,\
+  \ 200) --> [163, 167] or (163, 167) or {163, 167}`\n\n- **See more examples for\
+  \ your language in \"RUN\"**\n\n\n- Remarks:\n\n([193, 197] is also such a 4-steps\
+  \ primes between 130 and 200 but it's not the first pair).\n\n`step(6, 100, 110)\
+  \ --> [101, 107]` though there is a prime between 101 and 107 which is 103; the\
+  \ pair 101-103 is a 2-step.\n\n\n#Notes: \nThe idea of \"step\" is close to that\
+  \ of \"gap\" but it is not exactly the same. For those interested they can have\
+  \ a look\nat . \n\nA \"gap\" is more restrictive: there must be no primes in between\
+  \ \n(101-107 is a \"step\" but not a \"gap\". Next kata will be about \"gaps\":-).\n\
+  \nFor Go: nil slice is expected when there are no `step` between m and n.\nExample:\
+  \ step(2,4900,4919) --> nil"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_prime : Nat → Bool := sorry\n\ndef step : Nat → Nat → Nat\
+  \ → Option (Nat × Nat) := sorry\n"
+"vc-theorems": "theorem is_prime_properties (n : Nat) :\n  (n ≤ 1 → is_prime n = false)\
+  \ ∧ \n  (is_prime n = true → n > 1) := sorry\n\n\ntheorem step_basic_properties\
+  \ (g : Nat) (h : g ≥ 2 ∧ g ≤ 1000) :\n  match step g 2 (g + 4) with\n  | none =>\
+  \ True  \n  | some (a, b) => \n      is_prime a = true ∧ \n      is_prime b = true\
+  \ ∧ \n      b - a = g\n  := sorry\n\n\ntheorem step_range_properties (g m n : Nat)\n\
+  \  (h₁ : g ≥ 2 ∧ g ≤ 100)\n  (h₂ : m ≥ 2 ∧ m ≤ 1000)\n  (h₃ : n ≥ 2 ∧ n ≤ 1000)\
+  \ :\n  (m ≥ n → step g m n = none) ∧\n  (m < n → \n    match step g m n with\n \
+  \   | none => True\n    | some (a, b) => \n        m ≤ a ∧ a ≤ b ∧ b ≤ n ∧ \n  \
+  \      b - a = g\n    ) := sorry\n\n\ntheorem step_consecutive_ranges (g : Nat)\
+  \ (h : g ≥ 2 ∧ g ≤ 50) :\n  ∀ i : Nat,\n  i ≥ 10 ∧ i ≤ 90 →\n  match step g i (i\
+  \ + 20), step g i (i + 30) with\n  | some (a₁, _), some (a₂, _) => a₁ ≤ a₂\n  |\
+  \ _, _ => True\n  := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

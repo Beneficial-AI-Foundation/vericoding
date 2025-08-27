@@ -1,0 +1,23 @@
+"vc-description": "Given a binary tree, return the level order traversal of its nodes'\
+  \ values. (ie, from left to right, level by level).\n\n\nFor example:\nGiven binary\
+  \ tree [3,9,20,null,null,15,7],\n\n    3\n   / \\\n  9  20\n    /  \\\n   15   7\n\
+  \n\n\nreturn its level order traversal as:\n\n[\n  [3],\n  [9,20],\n  [15,7]\n]"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def level_order (root : Option TreeNode) : List (List Int) :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem level_order_of_none :\n  level_order none = [] := by sorry\n\
+  \n\ntheorem level_order_single_node (value : Int) :\n  level_order (some (TreeNode.mk\
+  \ value none none)) = [[value]] := by sorry\n\n\ntheorem level_order_two_nodes (root_val\
+  \ left_val : Int) :\n  level_order (some (TreeNode.mk root_val (some (TreeNode.mk\
+  \ left_val none none)) none)) = [[root_val], [left_val]] := by sorry\n\n\ntheorem\
+  \ level_order_level_sizes {root : Option TreeNode} {result : List (List Int)}\n\
+  \  (h : level_order root = result) :\n  ∀ (i : Nat) (level : List Int),\n  level\
+  \ ∈ result →\n  level.length ≤ 2^i := by sorry\n\n\ntheorem level_order_nonempty_levels\
+  \ {root : Option TreeNode} :\n  ∀ level ∈ level_order root,\n  level ≠ [] := by\
+  \ sorry\n\n\ntheorem level_order_output_structure {root : Option TreeNode} :\n \
+  \ ∀ level ∈ level_order root,\n  level.all (fun _ => true) := by sorry\n\n/--\n\
+  info: [[3], [9, 20], [15, 7]]\n-/\n#guard_msgs in\n#eval level_order TreeNode(3)\n\
+  \n/--\ninfo: [[1]]\n-/\n#guard_msgs in\n#eval level_order TreeNode(1)\n\n/--\ninfo:\
+  \ []\n-/\n#guard_msgs in\n#eval level_order None\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

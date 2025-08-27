@@ -1,0 +1,32 @@
+"vc-description": "#### Task:\n\nYour job here is to write a function (`keepOrder`\
+  \ in JS/CoffeeScript, `keep_order` in Ruby/Crystal/Python, `keeporder` in Julia),\
+  \ which takes a sorted array `ary` and a value `val`, and returns the lowest index\
+  \ where you could insert `val` to maintain the sorted-ness of the array. The input\
+  \ array will always be sorted in ascending order. It may contain duplicates.\n\n\
+  _Do not modify the input._\n\n#### Some examples:\n\n```python\nkeep_order([1, 2,\
+  \ 3, 4, 7], 5) #=> 4\n                      ^(index 4)\nkeep_order([1, 2, 3, 4,\
+  \ 7], 0) #=> 0\n          ^(index 0)\nkeep_order([1, 1, 2, 2, 2], 2) #=> 2\n   \
+  \             ^(index 2)\n```\n\nAlso check out my other creations — [Naming Files](https://www.codewars.com/kata/naming-files),\
+  \ [Elections: Weighted Average](https://www.codewars.com/kata/elections-weighted-average),\
+  \ [Identify Case](https://www.codewars.com/kata/identify-case), [Split Without Loss](https://www.codewars.com/kata/split-without-loss),\
+  \ [Adding Fractions](https://www.codewars.com/kata/adding-fractions),\n[Random Integers](https://www.codewars.com/kata/random-integers),\
+  \ [Implement String#transpose](https://www.codewars.com/kata/implement-string-number-transpose),\
+  \ [Implement Array#transpose!](https://www.codewars.com/kata/implement-array-number-transpose),\
+  \ [Arrays and Procs #1](https://www.codewars.com/kata/arrays-and-procs-number-1),\
+  \ and [Arrays and Procs #2](https://www.codewars.com/kata/arrays-and-procs-number-2).\n\
+  \nIf you notice any issues or have any suggestions/comments whatsoever, please don't\
+  \ hesitate to mark an issue or just comment. Thanks!"
+"vc-preamble": "import Imports.AllImports\n\ndef keep_order (arr : List Int) (val\
+  \ : Int) : Nat := sorry\n\ntheorem keep_order_bounds {arr : List Int} {val : Int}\
+  \ :\n  let idx := keep_order arr val\n  0 ≤ idx ∧ idx ≤ arr.length := sorry\n\n\n\
+  def min_of_list (arr : List Int) : Int :=\n  match arr with\n  | [] => 0\n  | x::xs\
+  \ => xs.foldl min x\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_of_list (arr : List Int) : Int :=\n  match arr with\n \
+  \ | [] => 0\n  | x::xs => xs.foldl max x"
+"vc-theorems": "theorem keep_order_before {arr : List Int} {val : Int} :\n  let idx\
+  \ := keep_order arr val\n  ∀ i, i < idx → arr[i]! < val := sorry\n\n\n\n\n\n\n/--\n\
+  info: 4\n-/\n#guard_msgs in\n#eval keep_order [1, 2, 3, 4, 7] 5\n\n/--\ninfo: 0\n\
+  -/\n#guard_msgs in\n#eval keep_order [1, 2, 3, 4, 7] 0\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval keep_order [1, 1, 2, 2, 2] 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

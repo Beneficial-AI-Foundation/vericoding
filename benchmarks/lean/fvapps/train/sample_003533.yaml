@@ -1,0 +1,16 @@
+"vc-description": "Count how often sign changes in array.\n\n### result\nnumber from\
+  \ `0` to ... . Empty array returns `0`\n\n### example"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def catch_sign_change (lst : List Int) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem empty_or_singleton_lists (lst : List Int) :\n  lst.length\
+  \ ≤ 1 → catch_sign_change lst = 0 :=\n  sorry\n\n\n\n\n\n\ntheorem count_is_nonnegative\
+  \ (lst : List Int) :\n  catch_sign_change lst ≥ 0 :=\n  sorry\n\n\ntheorem count_is_bounded\
+  \ (lst : List Int) :\n  lst.length ≥ 2 → catch_sign_change lst ≤ lst.length - 1\
+  \ :=\n  sorry\n\n\ntheorem reversing_list_same_count (lst : List Int) :\n  catch_sign_change\
+  \ lst = catch_sign_change lst.reverse :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval catch_sign_change [-7, -7, 7, 0]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval catch_sign_change [-1, 2, 2, 2, 2, -8, -1]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval catch_sign_change []\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval catch_sign_change\
+  \ [0]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval catch_sign_change [-1, -2, -3]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

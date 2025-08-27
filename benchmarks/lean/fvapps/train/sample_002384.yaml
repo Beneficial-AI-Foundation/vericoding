@@ -1,0 +1,26 @@
+"vc-description": "Given a string s, the power of the string is the maximum length\
+  \ of a non-empty substring that contains only one unique character.\nReturn the\
+  \ power of the string.\n \nExample 1:\nInput: s = \"leetcode\"\nOutput: 2\nExplanation:\
+  \ The substring \"ee\" is of length 2 with the character 'e' only.\n\nExample 2:\n\
+  Input: s = \"abbcccddddeeeeedcba\"\nOutput: 5\nExplanation: The substring \"eeeee\"\
+  \ is of length 5 with the character 'e' only.\n\nExample 3:\nInput: s = \"triplepillooooow\"\
+  \nOutput: 5\n\nExample 4:\nInput: s = \"hooraaaaaaaaaaay\"\nOutput: 11\n\nExample\
+  \ 5:\nInput: s = \"tourist\"\nOutput: 1\n\n \nConstraints:\n\n1 <= s.length <= 500\n\
+  s contains only lowercase English letters."
+"vc-preamble": "import Imports.AllImports\n\ndef max_power (s : List Char) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_run (s : List Char) : Nat :=\n  sorry \n"
+"vc-theorems": "theorem max_power_lower_bound (s : List Char) (h : s.length > 0) :\
+  \ \n  max_power s ≥ 1 :=\nsorry\n\n\ntheorem max_power_upper_bound (s : List Char)\
+  \ :\n  max_power s ≤ s.length :=\nsorry\n\n\ntheorem max_power_equals_longest_run\
+  \ (s : List Char) (h : s.length > 0) :\n  max_power s = max_run s :=\nsorry\n\n\n\
+  theorem max_power_single_char (s : List Char) (h : s.length > 0) \n  (h' : ∀ (i\
+  \ j : Fin s.length), s.get i = s.get j) :\n  max_power s = s.length :=\nsorry\n\n\
+  \ntheorem max_power_alternating (s : List Char) (h : s.length ≥ 2)\n  (h' : ∀ (i\
+  \ : Fin s.length), \n    if i.val % 2 = 0 \n    then s.get i = 'a'\n    else s.get\
+  \ i = 'b') :\n  max_power s = 1 :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval max_power \"leetcode\"\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval max_power\
+  \ \"abbcccddddeeeeedcba\"\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval max_power \"\
+  tourist\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

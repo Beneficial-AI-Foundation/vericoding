@@ -1,0 +1,42 @@
+"vc-description": "Indian National Olympiad in Informatics 2012\nYou are given a table\
+  \ with 2 rows and N columns. Each cell has an integer in it. The score of such a\
+  \ table is defined as follows: for each column, consider the sum of the two numbers\
+  \ in the column; the maximum of the N numbers so obtained is the score. For example,\
+  \ for the table\n7162\n1234\n\nthe score is max(7 + 1, 1 + 2, 6 + 3, 2 + 4) = 9.\n\
+  \nThe first row of the table is fixed, and given as input. N possible ways to fill\
+  \ the second row are considered:\n1,2,...,N\n2,3,...,N,1\n3,4,...,N,1,2\n···\nN,\
+  \ 1, ... , ,N − 1\n\nFor instance, for the example above, we would consider each\
+  \ of the following as possibilities for the second row.\n1234\n2341\n3412\n4123\n\
+  \nYour task is to find the score for each of the above choices of the second row.\
+  \ In the example above, you would evaluate the following four tables,\n7162 7162\
+  \ 7162 7162\n1234 2341 3412 4123\n\nand compute scores 9, 10, 10 and 11, respectively.\n\
+  \n-----Input format -----\nThe first line of the input has a single integer, N.\
+  \ The second line of the input has N integers, representing the first row, from\
+  \ left to right.\n\n-----Output format -----\nThe output should consist of a single\
+  \ line with N integers. For 1 ² k ² N, the kth number in the output should be the\
+  \ score when the second row of the table is taken to be k,k+1,...,N,1,...,k−1.\n\
+  \n-----Test Data -----\nThe testdata is grouped into two subtasks with the following\
+  \ constraints on the inputs.\n• Subtask 1 [30 points] : 1 ≤ N ≤ 3000.\n• Subtask\
+  \ 2 [70 points] : 1 ≤ N ≤ 200000.\nIn both the subtasks, all the integers in the\
+  \ first row of the table are between 1 and 100000, inclusive.\n\n-----Example -----\n\
+  Here is the sample input and output corresponding to the example above.\n\n-----Sample\
+  \ input -----\n4\n7 1 6 2\n\n-----Sample output-----\n9 10 10 11\n\nNote: Your program\
+  \ should not print anything other than what is specified in the output format. Please\
+  \ remove all diagnostic print statements before making your final submission. A\
+  \ program with extraneous output will be treated as incorrect!"
+"vc-preamble": "import Imports.AllImports\n\ndef max_list (l: List Int) : Int :=\n\
+  \  match l with\n  | [] => 0\n  | h::t => (List.foldl max h t)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def compute_table_scores (n: Nat) (first_row: List Int) : List\
+  \ Int := sorry\n\ntheorem compute_table_scores_length {n: Nat} {first_row: List\
+  \ Int} :\n  List.length (compute_table_scores n first_row) = n := sorry\n"
+"vc-theorems": "theorem compute_table_scores_min_bound {n: Nat} {first_row: List Int}\
+  \ (h: n > 0):\n  ∀ x ∈ compute_table_scores n first_row, x ≥ max_list first_row\
+  \ + 1 := sorry\n\n\ntheorem compute_table_scores_max_bound {n: Nat} {first_row:\
+  \ List Int} (h: n > 0):\n  ∀ x ∈ compute_table_scores n first_row, x ≤ max_list\
+  \ first_row + n := sorry\n\n\ntheorem compute_table_scores_min_element {n: Nat}\
+  \ {first_row: List Int} (h: n > 0):\n  List.foldl min (max_list first_row + n) (compute_table_scores\
+  \ n first_row) ≥ max_list first_row + 1 := sorry\n\n\ntheorem compute_table_scores_max_element\
+  \ {n: Nat} {first_row: List Int} (h: n > 0):\n  List.foldl max 0 (compute_table_scores\
+  \ n first_row) ≤ max_list first_row + n := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

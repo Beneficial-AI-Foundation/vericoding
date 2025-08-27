@@ -1,0 +1,28 @@
+"vc-description": "# Story\n\nYou were supposed to implement a node-based calculator.\
+  \ Hopefully for you, a colleague agreed to do the task. When the management saw\
+  \ the code, they were infuriated with its low quality, and as a punishment told\
+  \ you to shorten it as much as possible...\n\n___\n\n# Task\n\nYou will be given\
+  \ a ready solution passing all the fixed and random tests. Unfortunately for you,\
+  \ it is very long and overly repetitive. Current code length is `901` characters.\
+  \ Your task is to shorten it to at most `300` characters.\n\n**Note/hint**: you\
+  \ can modify the implementation any way you want, as long as it is written using\
+  \ only OOP; the sample tests check solution's functionality the same way as the\
+  \ final tests do - if your solution passes the former, it will also pass the latter."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def compute : Expr → Int\n  | Expr.value n => n\n  | Expr.add a\
+  \ b => compute a + compute b\n  | Expr.sub a b => compute a - compute b\n  | Expr.mul\
+  \ a b => compute a * compute b\n  | Expr.truediv a b => compute a / compute b\n\
+  \  | Expr.mod a b => compute a % compute b\n  | Expr.pow a b => compute a ^ (compute\
+  \ b).natAbs\n"
+"vc-theorems": "theorem expr_compute_matches_operator (e : Expr) :\n  match e with\n\
+  \  | Expr.value n => compute e = n\n  | Expr.add a b => compute e = compute a +\
+  \ compute b\n  | Expr.sub a b => compute e = compute a - compute b \n  | Expr.mul\
+  \ a b => compute e = compute a * compute b\n  | Expr.truediv a b => compute e =\
+  \ compute a / compute b\n  | Expr.mod a b => compute e = compute a % compute b \n\
+  \  | Expr.pow a b => compute e = compute a ^ (compute b).natAbs\n  := by sorry\n\
+  \n\ntheorem value_preserves_int (x : Int) :\n  compute (Expr.value x) = x := by\
+  \ sorry \n\n\ntheorem operator_composition (e₁ e₂ : Expr) :\n  compute (Expr.add\
+  \ e₁ e₂) = compute e₁ + compute e₂ ∧\n  compute (Expr.mul e₁ e₂) = compute e₁ *\
+  \ compute e₂ ∧ \n  compute (Expr.sub e₁ e₂) = compute e₁ - compute e₂ := by sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

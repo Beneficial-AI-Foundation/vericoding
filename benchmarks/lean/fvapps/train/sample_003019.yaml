@@ -1,0 +1,38 @@
+"vc-description": "A palindrome is a word, phrase, number, or other sequence of characters\
+  \ which reads the same backward as forward. Examples of numerical palindromes are:\
+  \ `2332, 110011, 54322345`\n\nFor a given number ```num```, write a function which\
+  \ returns an array of all the numerical palindromes contained within each number.\
+  \ The array should be sorted in ascending order and any duplicates should be removed.\n\
+  \nIn this kata, single digit numbers and numbers which start or end with zeros (such\
+  \ as `010` and `00`) are **NOT** considered valid numerical palindromes.  \n\nIf\
+  \ `num` contains no valid palindromes, return `\"No palindromes found\"`. \nOtherwise,\
+  \ return `\"Not valid\"` if the input is not an integer or is less than `0`.\n\n\
+  \n## Examples\n\n```\npalindrome(1221)      =>  [22, 1221]\npalindrome(34322122)\
+  \  =>  [22, 212, 343, 22122]\npalindrome(1001331)   =>  [33, 1001, 1331]\npalindrome(1294)\
+  \      =>  \"No palindromes found\"\npalindrome(\"1221\")    =>  \"Not valid\"\n\
+  ```\n\n---\n\n### Other Kata in this Series:\n\nNumerical Palindrome #1\nNumerical\
+  \ Palindrome #1.5\nNumerical Palindrome #2\nNumerical Palindrome #3\nNumerical Palindrome\
+  \ #3.5\nNumerical Palindrome #4\nNumerical Palindrome #5"
+"vc-preamble": "import Imports.AllImports\n\ndef palindrome (n : Int) : String :=\
+  \ sorry \n\ndef isNumericPalindrome (n : Int) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def contains (haystack : String) (needle : String) : Bool := sorry\n\
+  \ndef stringToInt (s : String) : Option Int := sorry\n"
+"vc-theorems": "theorem invalid_input_negative (n : Int) : \n  n < 0 → palindrome\
+  \ n = \"Not valid\"\n  := sorry\n\n\ntheorem valid_input_contains_palindromes (n\
+  \ : Int) :\n  n ≥ 0 → palindrome n ≠ \"Not valid\" →\n  let result := palindrome\
+  \ n\n  let numStr := toString n\n  ∀ p ∈ result.split (· = ','), \n    (∃ s : String,\
+  \ s = p ∧ contains numStr s ∧ \n      match stringToInt s with\n      | some i =>\
+  \ isNumericPalindrome i\n      | none => false)\n  := sorry\n\n\ntheorem valid_input_sorted_results\
+  \ (n : Int) :\n  n ≥ 0 → palindrome n ≠ \"Not valid\" →\n  let result := palindrome\
+  \ n\n  let nums := result.split (· = ',')\n  ∀ i j, i < j → j < nums.length →\n\
+  \    match stringToInt (nums.get! i), stringToInt (nums.get! j) with\n    | some\
+  \ x, some y => x ≤ y\n    | _, _ => true\n  := sorry\n\n\ntheorem no_palindromes_when_none_exist\
+  \ (n : Int) (numStr : String := toString n) :\n  n ≥ 0 →\n  (∀ s : String, contains\
+  \ numStr s → \n    match stringToInt s with\n    | some i => ¬isNumericPalindrome\
+  \ i\n    | none => true) →\n  palindrome n = \"No palindromes found\"\n  := sorry\n\
+  \n\ntheorem invalid_input_float (f : Float) :\n  palindrome 0 = \"Not valid\"\n\
+  \  := sorry\n\n/--\ninfo: [22, 212, 343, 22122]\n-/\n#guard_msgs in\n#eval palindrome\
+  \ 34322122\n\n/--\ninfo: 'No palindromes found'\n-/\n#guard_msgs in\n#eval palindrome\
+  \ 1294\n\n/--\ninfo: 'Not valid'\n-/\n#guard_msgs in\n#eval palindrome -123\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

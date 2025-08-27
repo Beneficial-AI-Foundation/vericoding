@@ -1,0 +1,14 @@
+"vc-description": "Determine the total number of digits in the integer (`n>=0`) given\
+  \ as input to the function. For example, 9 is a single digit, 66 has 2 digits and\
+  \ 128685 has 6 digits. Be careful to avoid overflows/underflows.\n\nAll inputs will\
+  \ be valid."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def digits (n : Int) : Nat :=\nsorry\n"
+"vc-theorems": "theorem digits_positive (n : Nat) :\n  digits n > 0 :=\nsorry\n\n\n\
+  theorem single_digit_numbers (n : Nat) (h : n > 0 ∧ n < 10) : \n  digits n = 1 :=\n\
+  sorry \n\n\ntheorem digits_equals_string_length (n : Int) :\n  digits (Int.natAbs\
+  \ n) = String.length (toString (Int.natAbs n)) :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval digits 5\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval digits 12345\n\n\
+  /--\ninfo: 10\n-/\n#guard_msgs in\n#eval digits 9876543210\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

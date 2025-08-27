@@ -1,0 +1,23 @@
+"vc-description": "You must create a method that can convert a string from any format\
+  \ into CamelCase. This must support symbols too.\n\n*Don't presume the separators\
+  \ too much or you could be surprised.*\n\n### Tests\n```python\ncamelize(\"example\
+  \ name\")   # => ExampleName\ncamelize(\"your-NaMe-here\") # => YourNameHere\ncamelize(\"\
+  testing ABC\")    # => TestingAbc\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def camelize (s : String) : String := sorry\n\ntheorem camelize_not_empty\
+  \ (s : String) (h : s.any fun c => c.isAlpha) :\n  (camelize s).length > 0 := sorry\n"
+"vc-theorems": "theorem camelize_first_upper (s : String) (h : s.any fun c => c.isAlpha)\
+  \ \n  (h2 : (camelize s).length > 0) :\n  Char.isUpper ((camelize s).data.get! 0)\
+  \ := sorry\n\n\ntheorem camelize_no_spaces (s : String) :\n  ¬(camelize s).any (·\
+  \ = ' ') := sorry\n\n\ntheorem camelize_no_hyphens (s : String) :\n  ¬(camelize\
+  \ s).any (· = '-') := sorry\n\n\ntheorem camelize_no_underscores (s : String) :\n\
+  \  ¬(camelize s).any (· = '_') := sorry\n\n\ntheorem camelize_preserves_word_starts\
+  \ (s : String) (word_start_indices : List Nat)\n  (h : ∀ i ∈ word_start_indices,\
+  \ i < s.length) :\n  ∀ i ∈ word_start_indices,\n    ∃ j < (camelize s).length,\n\
+  \      Char.toLower ((camelize s).data.get! j) = \n      Char.toLower (s.data.get!\
+  \ i) := sorry\n\n/--\ninfo: 'ExampleName'\n-/\n#guard_msgs in\n#eval camelize \"\
+  example name\"\n\n/--\ninfo: 'YourNameHere'\n-/\n#guard_msgs in\n#eval camelize\
+  \ \"your-NaMe-here\"\n\n/--\ninfo: 'TestingAbc'\n-/\n#guard_msgs in\n#eval camelize\
+  \ \"testing ABC\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

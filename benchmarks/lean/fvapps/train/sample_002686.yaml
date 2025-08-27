@@ -1,0 +1,22 @@
+"vc-description": "*This is the second Kata in the Ciphers series. This series is\
+  \ meant to test our coding knowledge.*\n\n## Ciphers #2 - The reversed Cipher\n\
+  This is a lame method I use to write things such that my friends don't understand.\
+  \ It's still fairly readable if you think about it.\n\n## How this cipher works\n\
+  First, you need to reverse the string. Then, the last character in the original\
+  \ string (the first character in the reversed string) needs to be moved to the back.\
+  \ Words will be separated by spaces, and punctuation marks can be counted as part\
+  \ of the word.\n\n## Example\n\nThis is because `\"Hello\"` reversed is `\"olleH\"\
+  ` and `\"o\"` is moved to the back, and so on. The exclamation mark is considered\
+  \ to be part of the word `\"World\"`.\n\nHave fun (en)coding!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def String.words (s : String) : List String := sorry\ndef encode\
+  \ (s : String) : String := sorry\n"
+"vc-theorems": "theorem encode_preserves_spaces {s : String} : \n  (s.words).length\
+  \ = (encode s).words.length := sorry\n\n\ntheorem encode_single_char_unchanged {s\
+  \ : String} :\n  s.length = 1 → encode s = s := sorry\n\n\ntheorem encode_preserves_last_chars\
+  \ {s : String} {w : String} :\n  w ∈ s.words → w.length > 0 →\n  (((encode s).words).find?\
+  \ (· = w)).map String.back = some w.back := sorry \n\n\ntheorem encode_idempotent\
+  \ {s : String} :\n  encode (encode s) = encode s ↔ \n  ∀ w ∈ s.words, w.length ≤\
+  \ 2 := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

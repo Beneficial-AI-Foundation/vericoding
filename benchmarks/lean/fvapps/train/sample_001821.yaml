@@ -1,0 +1,25 @@
+"vc-description": "In a 2D grid of 0s and 1s, we change at most one 0 to a 1.\nAfter,\
+  \ what is the size of the largest island? (An island is a 4-directionally connected\
+  \ group of 1s).\nExample 1:\nInput: [[1, 0], [0, 1]]\nOutput: 3\nExplanation: Change\
+  \ one 0 to 1 and connect two 1s, then we get an island with area = 3.\n\nExample\
+  \ 2:\nInput: [[1, 1], [1, 0]]\nOutput: 4\nExplanation: Change the 0 to 1 and make\
+  \ the island bigger, only one island with area = 4.\nExample 3:\nInput: [[1, 1],\
+  \ [1, 1]]\nOutput: 4\nExplanation: Can't change any 0 to 1, only one island with\
+  \ area = 4.\n \nNotes:\n\n1 <= grid.length = grid[0].length <= 50.\n0 <= grid[i][j]\
+  \ <= 1."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def largest_island (grid : List (List Nat)) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem largest_island_properties (grid : List (List Nat)) :\n  let\
+  \ result := largest_island grid\n  -- Result within bounds\n  (result ≥ 0 ∧ result\
+  \ ≤ grid.length * (grid.head?.getD []).length) ∧\n  -- All 0s means result is 1\n\
+  \  (grid.all (fun row => row.all (fun cell => cell = 0)) → result = 1) ∧\n  -- All\
+  \ 1s means result is grid size\n  (grid.all (fun row => row.all (fun cell => cell\
+  \ = 1)) → result = grid.length * (grid.head?.getD []).length)\n  := by sorry\n\n\
+  \ntheorem largest_island_dimensions (grid : List (List Nat)) :\n  largest_island\
+  \ grid ≤ grid.length * (grid.head?.getD []).length := by sorry\n\n\ntheorem largest_island_singleton\
+  \ :\n  largest_island [[0]] = 1 ∧ largest_island [[1]] = 1 := by sorry\n\n/--\n\
+  info: 3\n-/\n#guard_msgs in\n#eval largest_island [[1, 0], [0, 1]]\n\n/--\ninfo:\
+  \ 4\n-/\n#guard_msgs in\n#eval largest_island [[1, 1], [1, 0]]\n\n/--\ninfo: 4\n\
+  -/\n#guard_msgs in\n#eval largest_island [[1, 1], [1, 1]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

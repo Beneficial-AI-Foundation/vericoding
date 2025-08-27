@@ -1,0 +1,27 @@
+"vc-description": "# Write Number in Expanded Form\n\nYou will be given a number and\
+  \ you will need to return it as a string in [Expanded Form](https://www.mathplacementreview.com/arithmetic/whole-numbers.php#expanded-form).\
+  \ For example:\n\n```python\nexpanded_form(12) # Should return '10 + 2'\nexpanded_form(42)\
+  \ # Should return '40 + 2'\nexpanded_form(70304) # Should return '70000 + 300 +\
+  \ 4'\n```\n\nNOTE: All numbers will be whole numbers greater than 0.\n\nIf you liked\
+  \ this kata, check out [part 2](https://www.codewars.com/kata/write-number-in-expanded-form-part-2)!!"
+"vc-preamble": "import Imports.AllImports\n\ndef expanded_form (n : Nat) : String\
+  \ := sorry\n\ndef list_sum (xs : List Nat) : Nat := \n  match xs with\n  | [] =>\
+  \ 0\n  | x :: rest => x + list_sum rest\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def string_to_nat (s : String) : Nat := sorry\n\ndef list_sorted_desc\
+  \ (xs : List Nat) : Bool := sorry\n"
+"vc-theorems": "theorem expanded_form_sum_equals_input (n : Nat) (h : 0 < n) (h2 :\
+  \ n ≤ 1000000) : \n  let parts := (expanded_form n).split (· = '+')\n  list_sum\
+  \ (parts.map string_to_nat) = n := sorry\n\n\ntheorem expanded_form_divisible_by_powers_of_ten\
+  \ (n : Nat) (h : 0 < n) (h2 : n ≤ 1000000) :\n  let parts := (expanded_form n).split\
+  \ (· = '+')\n  ∀ (i : Nat) (p : String), i < parts.length → p ∈ parts →\n  string_to_nat\
+  \ p % (10^i) = 0 := sorry\n\n\ntheorem expanded_form_no_leading_zeros (n : Nat)\
+  \ (h : 0 < n) :\n  let parts := (expanded_form n).split (· = '+')\n  ∀ p ∈ parts,\
+  \ ¬(p.get? 0 = some '0') := sorry\n\n\ntheorem expanded_form_descending_order (n\
+  \ : Nat) (h : 0 < n) :\n  let parts := (expanded_form n).split (· = '+')\n  let\
+  \ nums := parts.map string_to_nat\n  list_sorted_desc nums = true := sorry\n\n\n\
+  theorem expanded_form_single_digit (n : Nat) (h : 0 < n) (h2 : n < 10) :\n  expanded_form\
+  \ n = toString n := sorry\n\n/--\ninfo: '2'\n-/\n#guard_msgs in\n#eval expanded_form\
+  \ 2\n\n/--\ninfo: '40 + 2'\n-/\n#guard_msgs in\n#eval expanded_form 42\n\n/--\n\
+  info: '70000 + 300 + 4'\n-/\n#guard_msgs in\n#eval expanded_form 70304\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,21 @@
+"vc-description": "Given a string of words and numbers. Extract the expression including:\
+  \ \n1. the operator: either addition or subtraction\n2. the two numbers that we\
+  \ are operating on\n\nReturn the result of the calculation.\n\nExample:\n\n\"Panda\
+  \ has 48 apples and loses 4\" returns 44\n\n\"Jerry has 34 apples and gains 6\"\
+  \ returns 40\n\n\"loses\" and \"gains\" are the only two words describing operators.\n\
+  \nShould be a nice little kata for you :)\n\nNote:\nNo fruit debts nor bitten apples\
+  \ = The numbers are integers and no negatives"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem gains_adds (n1 n2 : Nat) :\n  calculate s!\"Someone has {n1}\
+  \ items and gains {n2}\" = n1 + n2 := by\n  sorry\n\n\ntheorem loses_subtracts (n1\
+  \ n2 : Nat) :\n  calculate s!\"Someone has {n1} items and loses {n2}\" = n1 - n2\
+  \ := by\n  sorry\n\n\ntheorem calculate_properties (n1 n2 : Nat) (op : String) \n\
+  \  (h : op = \"gains\" ∨ op = \"loses\") :\n  calculate s!\"Someone has {n1} items\
+  \ and {op} {n2}\" = \n    if op = \"gains\" \n    then n1 + n2\n    else n1 - n2\
+  \ := by\n  sorry\n\n/--\ninfo: 44\n-/\n#guard_msgs in\n#eval calculate \"Panda has\
+  \ 48 apples and loses 4\"\n\n/--\ninfo: 40\n-/\n#guard_msgs in\n#eval calculate\
+  \ \"Jerry has 34 apples and gains 6\"\n\n/--\ninfo: 35\n-/\n#guard_msgs in\n#eval\
+  \ calculate \"Tom has 20 apples and gains 15\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

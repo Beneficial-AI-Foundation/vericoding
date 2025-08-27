@@ -1,0 +1,24 @@
+"vc-description": "The task is very simple.\n\nYou must to return pyramids. Given\
+  \ a number ```n```  you print a pyramid with ```n``` floors\n\nFor example , given\
+  \ a ```n=4``` you must to print this pyramid:\n\n```\n   /\\\n  /  \\\n /    \\\n\
+  /______\\ \n   \n```\n\nOther example, given a ```n=6``` you must to print this\
+  \ pyramid:\n\n```  \n     /\\\n    /  \\\n   /    \\\n  /      \\\n /        \\\n\
+  /__________\\\n\n```\n\nAnother example, given a ```n=10```, you must to print this\
+  \ pyramid:\n\n```\n         /\\\n        /  \\\n       /    \\\n      /      \\\n\
+  \     /        \\\n    /          \\\n   /            \\\n  /              \\\n\
+  \ /                \\\n/__________________\\\n\n```\n\nNote: an extra line feed\
+  \ character is needed at the end of the string. Case `n=0` should so return `\"\\\
+  n\"`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pyramid (n : Nat) : String := sorry\n\ndef String.stripRight\
+  \ (s : String) : String := sorry\n"
+"vc-theorems": "theorem pyramid_empty_newline : pyramid 0 = \"\\n\" := sorry\n\ntheorem\
+  \ pyramid_single_level : pyramid 1 = \"/\\\\\\n\" := sorry\n\n\ntheorem pyramid_ends_with_newline\
+  \ {n : Nat} : \n  (pyramid n).endsWith \"\\n\" := sorry \n\n\n\n\ntheorem pyramid_line_structure\
+  \ {n : Nat} (h : n > 0) :\n  let lines := (pyramid n).splitOn \"\\n\"\n  ∀ i < n,\n\
+  \  let line := (lines.get! i)\n  let content := line.trim\n  content.front = '/'\
+  \ ∧ \n  content.back = '\\\\' := sorry\n\n\ntheorem pyramid_last_line_underscores\
+  \ {n : Nat} (h : n > 1) :\n  let lines := (pyramid n).splitOn \"\\n\"\n  let lastLine\
+  \ := lines.get! (n-1)\n  lastLine.contains '_' := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

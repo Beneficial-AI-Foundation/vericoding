@@ -1,0 +1,46 @@
+"vc-description": "Little Elephant is playing a game with arrays. He is given an array\
+  \ A0, A1, ..., AN−1 of N integers. And then Q queries are given, each containing\
+  \ an integer K. He has to tell how many subarrays satisfy the condition: the function\
+  \ foo returns K when it is applied to the subarray.\n\nIn this problem, a subarray\
+  \ is defined as a sequence of continuous elements Ai, Ai+1, ..., Aj  where 0 ≤ i\
+  \ ≤ j ≤ N−1. The function foo, when applied to an array, returns the minimum of\
+  \ all the elements in the array.\n\nFor example, foo returns 5 when it is applied\
+  \ to the array [7, 5, 10, 7, 5, 8]. Please note that the subarrays Ai, Ai+1, ...,\
+  \ Aj and Ak, Ak+1, ..., Al are different if and only if i ≠ k or j ≠ l in this problem.\n\
+  \n-----Input-----\nThe first line of input contains N, denoting the size of the\
+  \ array. The next line contains N space separated integers A0, A1, ..., AN−1, denoting\
+  \ the array. Then the next line contains Q, denoting the number of queries. Each\
+  \ query consists of one integer per line, denoting K.\n\n-----Output-----\nFor each\
+  \ query, print the required number of subarrays.\n\n-----Constraints-----\n- 1 ≤\
+  \ N ≤ 50\n- 1 ≤ Ai ≤ 1000000 (106)\n- 1 ≤ Q ≤ 10\n- 1 ≤ K ≤ 1000000 (106)\n\n-----Example-----\n\
+  Input:\n5\n4 1 2 3 4\n4\n3\n4\n6\n1\n\nOutput:\n2\n2\n0\n8\n\n-----Explanation-----\n\
+  Query 1. Only the two subarrays [3, 4] and [3] satisfy.\nQuery 2. Again only the\
+  \ two subarrays [4] and [4] satisfy. Please note that these subarrays (A0 and A4)\
+  \ are considered different.\nQuery 3. No subarray satisfies.\nQuery 4. The eight\
+  \ subarrays [4, 1], [4, 1, 2], [4, 1, 2, 3], [4, 1, 2, 3, 4], [1], [1, 2], [1, 2,\
+  \ 3] and [1, 2, 3, 4] satisfy."
+"vc-preamble": "import Imports.AllImports\n\ndef count_subarrays_with_min (arr : List\
+  \ Int) (k : Int) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_min (arr : List Int) : Int :=\n  sorry\n\n-- Result should\
+  \ never be negative"
+"vc-theorems": "theorem count_subarrays_nonneg {arr : List Int} {k : Int} \n  (h1\
+  \ : arr ≠ []) :\n  count_subarrays_with_min arr k ≥ 0 :=\n  sorry\n\n-- If k is\
+  \ less than min(arr), result should be 0  \n\ntheorem count_subarrays_less_than_min\
+  \ {arr : List Int} {k : Int}\n  (h1 : arr ≠ [])\n  (h2 : k < list_min arr) :\n \
+  \ count_subarrays_with_min arr k = 0 :=\n  sorry\n\n-- If k equals min(arr), result\
+  \ should be at least length of array\n\ntheorem count_subarrays_equals_min {arr\
+  \ : List Int} {k : Int}\n  (h1 : arr ≠ []) \n  (h2 : k = list_min arr) :\n  count_subarrays_with_min\
+  \ arr k ≥ arr.length :=\n  sorry\n\n-- Single element array returns 1 if element\
+  \ equals k, 0 otherwise\n\ntheorem count_subarrays_single_elem {arr : List Int}\
+  \ {k : Int}\n  (h1 : arr.length = 1) :\n  count_subarrays_with_min arr k = if arr.head!\
+  \ = k then 1 else 0 :=\n  sorry\n\n-- For array of identical elements, result is\
+  \ n*(n+1)/2\n\ntheorem count_subarrays_identical_elems {arr : List Int} {k : Int}\n\
+  \  (h1 : arr ≠ [])\n  (h2 : ∀ x ∈ arr, x = k) :\n  count_subarrays_with_min arr\
+  \ k = (arr.length * (arr.length + 1)) / 2 :=\n  sorry\n\n-- For any k, result with\
+  \ k should be >= result with k+1\n\ntheorem count_subarrays_monotonic {arr : List\
+  \ Int} {k : Int}\n  (h1 : arr ≠ [])\n  (h2 : ∀ x ∈ arr, x > 0) :\n  count_subarrays_with_min\
+  \ arr k ≥ count_subarrays_with_min arr (k+1) :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval count_subarrays_with_min [2, 2] 2\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n\
+  #eval count_subarrays_with_min [3] 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,22 @@
+"vc-description": "Write a function that takes a number or a string and gives back\
+  \ the number of **permutations without repetitions** that can generated using all\
+  \ of its element.; more on permutations [here](https://en.wikipedia.org/wiki/Permutation).\n\
+  \nFor example, starting with:\n```\n1\n45\n115\n\"abc\"\n```\n\nYou could respectively\
+  \ generate:\n```\n1\n45,54\n115,151,511\n\"abc\",\"acb\",\"bac\",\"bca\",\"cab\"\
+  ,\"cba\"\n```\n\nSo you should have, in turn:\n```python\nperms(1)==1\nperms(45)==2\n\
+  perms(115)==3\nperms(\"abc\")==6\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef perms (s : String) : Nat := sorry\n\
+  \ndef listPerms (l : List α) : List (List α) := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def listToString (l : List Char) : String := sorry\n\ndef numUnique\
+  \ (xs : List String) : Nat := sorry\n"
+"vc-theorems": "theorem perms_matches_unique_perms_int {n : Nat} : \n  perms (toString\
+  \ n) = numUnique ((listPerms (toString n).data).map listToString) := sorry\n\n\n\
+  theorem perms_matches_unique_perms_str {s : String} :\n  perms s = numUnique ((listPerms\
+  \ s.data).map listToString) := sorry\n\n\ntheorem perms_order_invariant {n : Nat}\
+  \ :\n  perms (toString n) = perms (toString n) := sorry\n\n\ntheorem perms_positive_int\
+  \ {s : String} (h : s.length > 0) :\n  perms s > 0 := sorry\n\n\ntheorem perms_single_char\
+  \ {c : Char} :\n  perms (String.mk [c]) = 1 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval perms 2\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval perms 25\n\n/--\n\
+  info: 6\n-/\n#guard_msgs in\n#eval perms \"abc\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

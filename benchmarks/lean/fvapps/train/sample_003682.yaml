@@ -1,0 +1,29 @@
+"vc-description": "Adapted from here, with less terrible instructions and a couple\
+  \ tweaks.\n\nTwo kangaroos are jumping on a line. They start out at different points\
+  \ on the line, and jump in the same direction at different speeds. Your task is\
+  \ to determine whether or not they'll ever land in the same spot at the same time\
+  \ (you'll just have to suspend disbelief for a moment and accept that two kangaroos,\
+  \ for the purpose of this kata, can occupy the same space at the same time :)\n\n\
+  Your function is given four arguments `(kanga1, rate1, kanga2, rate2)`; the first\
+  \ kangaroo's starting point, the first kangaroo's speed, the second kangaroo's starting\
+  \ point, and the second kangaroo's speed.\n\nReturn `true` if the above conditions\
+  \ are met, else `false`. Starting location and speed may vary wildly. The first\
+  \ kangaroo will _usually_ start behind the second one and travel faster, but not\
+  \ always. Starting locations may be negative, but speeds will always be > 0.\n\n\
+  **Example:**\n![kangaroo](https://i.imgur.com/hXRgSVg.jpg)\n\n**Other examples:**\n\
+  \nBrute force solutions are possible (and not discouraged), but you'll save yourself\
+  \ a lot of waiting time if you don't go that route :)\n\nGood luck!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def kangaroo (k1 r1 k2 r2 : Int) : Bool := sorry\n\ntheorem kangaroo_symmetric\
+  \ (k1 r1 k2 r2 : Int) : \n  kangaroo k1 r1 k2 r2 = kangaroo k2 r2 k1 r1 := sorry\n"
+"vc-theorems": "theorem kangaroo_same_position_same_speed (k r : Int) :\n  kangaroo\
+  \ k r k r = true := sorry\n\n\ntheorem kangaroo_different_position_same_speed (k1\
+  \ k2 r : Int) :\n  kangaroo k1 r k2 r = (k1 = k2) := sorry\n\n\ntheorem kangaroo_faster_behind\
+  \ (k1 k2 r1 r2 : Int) :\n  (r1 > r2 ∧ k1 > k2) → kangaroo k1 r1 k2 r2 = false :=\
+  \ sorry\n\n\ntheorem kangaroo_faster_behind_symmetric (k1 k2 r1 r2 : Int) :\n  (r2\
+  \ > r1 ∧ k2 > k1) → kangaroo k1 r1 k2 r2 = false := sorry\n\n/--\ninfo: True\n-/\n\
+  #guard_msgs in\n#eval kangaroo 0 3 4 2\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
+  #eval kangaroo 0 9 16 4\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval kangaroo -1\
+  \ 3 0 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

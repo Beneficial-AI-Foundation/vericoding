@@ -1,0 +1,40 @@
+"vc-description": "Write a function called `sumIntervals`/`sum_intervals()` that accepts\
+  \ an array of intervals, and returns the sum of all the interval lengths. Overlapping\
+  \ intervals should only be counted once.\n\n### Intervals\n\nIntervals are represented\
+  \ by a pair of integers in the form of an array. The first value of the interval\
+  \ will always be less than the second value. Interval example: `[1, 5]` is an interval\
+  \ from 1 to 5. The length of this interval is 4.\n\n### Overlapping Intervals\n\n\
+  List containing overlapping intervals:\n\n```\n[\n   [1,4],\n   [7, 10],\n   [3,\
+  \ 5]\n]\n```\n\nThe sum of the lengths of these intervals is 7. Since [1, 4] and\
+  \ [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.\n\
+  \n### Examples:\n\n```C#\n// empty intervals\nIntervals.SumIntervals(new (int, int)[]{\
+  \ });  // => 0\nIntervals.SumIntervals(new (int, int)[]{ (2, 2), (5, 5)});  // =>\
+  \ 0\n\n// disjoined intervals\nIntervals.SumIntervals(new (int, int)[]{\n  (1, 2),\
+  \ (3, 5)\n});  // => (2-1) + (5-3) = 3\n\n// overlapping intervals\nIntervals.SumIntervals(new\
+  \ (int, int)[]{\n  (1, 4), (3, 6), (2, 8)\n});  // (1,8) => 7\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef sumOfIntervals (intervals: List (Int\
+  \ × Int)) : Int :=\n  sorry\n\n\ndef normalizeInterval (interval: Int × Int) : Int\
+  \ × Int :=\n  let (a, b) := interval\n  (min a b, max a b)\n\n\ndef normalizeIntervals\
+  \ (intervals: List (Int × Int)) : List (Int × Int) :=\n  intervals.map normalizeInterval\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sumLengths (intervals: List (Int × Int)) : Int :=\n  let lengths\
+  \ := intervals.map (fun i => i.2 - i.1)\n  lengths.foldl (· + ·) 0\n"
+"vc-theorems": "theorem sum_of_intervals_non_negative\n    (intervals: List (Int ×\
+  \ Int)) (h: intervals.length ≥ 1):\n    sumOfIntervals (normalizeIntervals intervals)\
+  \ ≥ 0 := sorry\n\n\ntheorem sum_of_intervals_bounded_by_range\n    (intervals: List\
+  \ (Int × Int)) (h: intervals.length ≥ 1):\n    let normalized := normalizeIntervals\
+  \ intervals\n    let minStart := normalized.map Prod.fst |>.minimum?.get!\n    let\
+  \ maxEnd := normalized.map Prod.snd |>.maximum?.get!\n    sumOfIntervals normalized\
+  \ ≤ maxEnd - minStart := sorry\n\n\ntheorem sum_of_intervals_single_case\n    (intervals:\
+  \ List (Int × Int)) \n    (h: intervals.length = 1):\n    let normalized := normalizeIntervals\
+  \ intervals\n    let (a,b) := normalized.head!\n    sumOfIntervals normalized =\
+  \ b - a := sorry\n\n\ntheorem sum_of_intervals_reordering_invariant\n    (intervals:\
+  \ List (Int × Int))\n    (sorted: List (Int × Int))\n    (h: sorted.isPerm (normalizeIntervals\
+  \ intervals)):\n    sumOfIntervals (normalizeIntervals intervals) = \n    sumOfIntervals\
+  \ sorted := sorry\n\n\ntheorem sum_of_overlapping_intervals_bounded\n    (intervals:\
+  \ List (Int × Int))\n    (h: intervals.length ≥ 2):\n    let normalized := normalizeIntervals\
+  \ intervals\n    sumOfIntervals normalized ≤ sumLengths normalized := sorry\n\n\
+  /--\ninfo: 4\n-/\n#guard_msgs in\n#eval sum_of_intervals [[1, 5]]\n\n/--\ninfo:\
+  \ 3\n-/\n#guard_msgs in\n#eval sum_of_intervals [[1, 2], [3, 5]]\n\n/--\ninfo: 7\n\
+  -/\n#guard_msgs in\n#eval sum_of_intervals [[1, 4], [3, 6], [2, 8]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

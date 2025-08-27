@@ -1,0 +1,61 @@
+"vc-description": "Allen and Bessie are playing a simple number game. They both know\
+  \ a function $f: \\{0, 1\\}^n \\to \\mathbb{R}$, i. e. the function takes $n$ binary\
+  \ arguments and returns a real value. At the start of the game, the variables $x_1,\
+  \ x_2, \\dots, x_n$ are all set to $-1$. Each round, with equal probability, one\
+  \ of Allen or Bessie gets to make a move. A move consists of picking an $i$ such\
+  \ that $x_i = -1$ and either setting $x_i \\to 0$ or $x_i \\to 1$.\n\nAfter $n$\
+  \ rounds all variables are set, and the game value resolves to $f(x_1, x_2, \\dots,\
+  \ x_n)$. Allen wants to maximize the game value, and Bessie wants to minimize it.\n\
+  \nYour goal is to help Allen and Bessie find the expected game value! They will\
+  \ play $r+1$ times though, so between each game, exactly one value of $f$ changes.\
+  \ In other words, between rounds $i$ and $i+1$ for $1 \\le i \\le r$, $f(z_1, \\\
+  dots, z_n) \\to g_i$ for some $(z_1, \\dots, z_n) \\in \\{0, 1\\}^n$. You are to\
+  \ find the expected game value in the beginning and after each change.\n\n\n-----Input-----\n\
+  \nThe first line contains two integers $n$ and $r$ ($1 \\le n \\le 18$, $0 \\le\
+  \ r \\le 2^{18}$).\n\nThe next line contains $2^n$ integers $c_0, c_1, \\dots, c_{2^n-1}$\
+  \ ($0 \\le c_i \\le 10^9$), denoting the initial values of $f$. More specifically,\
+  \ $f(x_0, x_1, \\dots, x_{n-1}) = c_x$, if $x = \\overline{x_{n-1} \\ldots x_0}$\
+  \ in binary.\n\nEach of the next $r$ lines contains two integers $z$ and $g$ ($0\
+  \ \\le z \\le 2^n - 1$, $0 \\le g \\le 10^9$). If $z = \\overline{z_{n-1} \\dots\
+  \ z_0}$ in binary, then this means to set $f(z_0, \\dots, z_{n-1}) \\to g$.\n\n\n\
+  -----Output-----\n\nPrint $r+1$ lines, the $i$-th of which denotes the value of\
+  \ the game $f$ during the $i$-th round. Your answer must have absolute or relative\
+  \ error within $10^{-6}$.\n\nFormally, let your answer be $a$, and the jury's answer\
+  \ be $b$. Your answer is considered correct if $\\frac{|a - b|}{\\max{(1, |b|)}}\
+  \ \\le 10^{-6}$.\n\n\n-----Examples-----\nInput\n2 2\n0 1 2 3\n2 5\n0 4\n\nOutput\n\
+  1.500000\n2.250000\n3.250000\n\nInput\n1 0\n2 3\n\nOutput\n2.500000\n\nInput\n2\
+  \ 0\n1 1 1 1\n\nOutput\n1.000000\n\n\n\n-----Note-----\n\nConsider the second test\
+  \ case. If Allen goes first, he will set $x_1 \\to 1$, so the final value will be\
+  \ $3$. If Bessie goes first, then she will set $x_1 \\to 0$ so the final value will\
+  \ be $2$. Thus the answer is $2.5$.\n\nIn the third test case, the game value will\
+  \ always be $1$ regardless of Allen and Bessie's play."
+"vc-preamble": "import Imports.AllImports\n\ndef solve_game (n : Nat) (r : Nat) (initial\
+  \ : List Int) (changes : List (Nat × Int)) : List Float :=\n  sorry\n\n\ndef list_sum\
+  \ (l : List Int) : Int :=\n  sorry\n\n\ndef list_average (l : List Int) : Float\
+  \ :=\n  sorry\n\n\ndef list_update (l : List Int) (idx : Nat) (val : Int) : List\
+  \ Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def float_close (a b : Float) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem solve_game_result_length {n r : Nat} {initial : List Int}\
+  \ {changes : List (Nat × Int)} :\n  initial.length = 2^n →\n  (∀ change, change\
+  \ ∈ changes → change.1 < 2^n) →\n  (solve_game n r initial changes).length = r +\
+  \ 1 :=\n  sorry\n\n\ntheorem solve_game_averages {n r : Nat} {initial : List Int}\
+  \ {changes : List (Nat × Int)} \n  (h_init : initial.length = 2^n)\n  (h_changes\
+  \ : ∀ change, change ∈ changes → change.1 < 2^n)\n  (i : Fin r)\n  (h_changes_length\
+  \ : changes.length > i.val)\n  (h_result_length : (solve_game n r initial changes).length\
+  \ > i.val) :\n  let updated := list_update initial ((changes.get ⟨i.val, h_changes_length⟩).1)\
+  \ ((changes.get ⟨i.val, h_changes_length⟩).2)\n  float_close ((solve_game n r initial\
+  \ changes).get ⟨i.val, h_result_length⟩) (list_average updated) :=\n  sorry\n\n\n\
+  theorem solve_game_final_average {n r : Nat} {initial : List Int} {changes : List\
+  \ (Nat × Int)} \n  (h_init : initial.length = 2^n)\n  (h_changes : ∀ change, change\
+  \ ∈ changes → change.1 < 2^n)\n  (h_r : r > 0)\n  (h_changes_length : changes.length\
+  \ ≥ r)\n  (h_idx : r - 1 < changes.length)\n  (h_result_length : r < (solve_game\
+  \ n r initial changes).length) :\n  let final_update := list_update initial ((changes.get\
+  \ ⟨r-1, h_idx⟩).1) ((changes.get ⟨r-1, h_idx⟩).2)\n  float_close ((solve_game n\
+  \ r initial changes).get ⟨r, h_result_length⟩) (list_average final_update) :=\n\
+  \  sorry\n\n\ntheorem solve_game_no_changes {n : Nat} {initial : List Int} \n  (h_init\
+  \ : initial.length = 2^n)\n  (h_all_ones : ∀ x, x ∈ initial → x = 1)\n  (h_length\
+  \ : 0 < (solve_game n 0 initial []).length) :\n  (solve_game n 0 initial []).length\
+  \ = 1 ∧ \n  float_close ((solve_game n 0 initial []).get ⟨0, h_length⟩) 1.0 :=\n\
+  \  sorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

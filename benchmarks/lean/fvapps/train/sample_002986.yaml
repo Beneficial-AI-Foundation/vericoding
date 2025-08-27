@@ -1,0 +1,35 @@
+"vc-description": "Math geeks and computer nerds love to anthropomorphize numbers\
+  \ and assign emotions and personalities to them. Thus there is defined the concept\
+  \ of a \"happy\" number. A happy number is defined as an integer in which the following\
+  \ sequence ends with the number 1.\n\n* Start with the number itself.\n* Calculate\
+  \ the sum of the square of each individual digit.\n* If the sum is equal to 1, then\
+  \ the number is happy. If the sum is not equal to 1, then repeat steps 1 and 2.\
+  \ A number is considered unhappy once the same number occurs multiple times in a\
+  \ sequence because this means there is a loop and it will never reach 1.\n\nFor\
+  \ example, the number 7 is a \"happy\" number:\n\n7^(2) = 49 --> 4^(2) + 9^(2) =\
+  \ 97 --> 9^(2) + 7^(2) = 130 --> 1^(2) + 3^(2) + 0^(2) = 10 --> 1^(2) + 0^(2) =\
+  \ 1\n\nOnce the sequence reaches the number 1, it will stay there forever since\
+  \ 1^(2) = 1\n\nOn the other hand, the number 6 is not a happy number as the sequence\
+  \ that is generated is the following: 6, 36, 45, 41, 17, 50, 25, 29, 85, 89, 145,\
+  \ 42, 20, 4, 16, 37, 58, 89\n\nOnce the same number occurs twice in the sequence,\
+  \ the sequence is\nguaranteed to go on infinitely, never hitting the number 1, since\
+  \ it repeat\nthis cycle.\n\nYour task is to write a program which will print a list\
+  \ of all happy numbers between 1 and x (both inclusive), where:\n```python\n2 <=\
+  \ x <= 5000\n```\n\n___\n\nDisclaimer: This Kata is an adaptation of a HW assignment\
+  \ I had for McGill University's COMP 208 (Computers in Engineering) class.\n\n___\n\
+  \nIf you're up for a challenge, you may want to try a [performance version of this\
+  \ kata](https://www.codewars.com/kata/happy-numbers-performance-edition) by FArekkusu."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_happy (n : Nat) : Bool := sorry\n\ndef happy_numbers (n\
+  \ : Nat) : List Nat := sorry\n\n\n\n\n\n\n"
+"vc-theorems": "theorem happy_numbers_consistent {n : Nat} (h : n > 0) :\n  happy_numbers\
+  \ n = happy_numbers n := sorry\n\n\ntheorem happy_numbers_specific_values :\n  1\
+  \ ∈ happy_numbers 1 ∧\n  1 ∈ happy_numbers 100 ∧\n  7 ∈ happy_numbers 100 ∧\n  10\
+  \ ∈ happy_numbers 100 ∧\n  13 ∈ happy_numbers 100 ∧\n  19 ∈ happy_numbers 100 ∧\n\
+  \  4 ∉ happy_numbers 100 := sorry\n\n/--\ninfo: [1, 7, 10]\n-/\n#guard_msgs in\n\
+  #eval happy_numbers 10\n\n/--\ninfo: [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49]\n\
+  -/\n#guard_msgs in\n#eval happy_numbers 50\n\n/--\ninfo: [1, 7, 10, 13, 19, 23,\
+  \ 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97, 100]\n-/\n#guard_msgs in\n\
+  #eval happy_numbers 100\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,29 @@
+"vc-description": "## Fixed xor\n\nWrite a function that takes two hex strings as\
+  \ input and XORs them against each other. If the strings are different lengths the\
+  \ output should be the length of the shortest string.\n\nHint: The strings would\
+  \ first need to be converted to binary to be XOR'd. \n\n## Note:\nIf the two strings\
+  \ are of different lengths, the output string should be the same length as the smallest\
+  \ string. This means that the longer string will be cut down to the same size as\
+  \ the smaller string, then xor'd\n\n### Further help\n\nMore information on the\
+  \ XOR operation can be found here https://www.khanacademy.org/computing/computer-science/cryptography/ciphers/a/xor-bitwise-operation\n\
+  \nMore information of the binary and hex bases can be found here https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/number-systems-introduction\n\
+  \nExamples:\n\n```python\nfixed_xor(\"ab3f\", \"ac\") == \"07\"\nfixed_xor(\"aadf\"\
+  , \"bce2\") == \"163d\"\nfixed_xor(\"1c0111001f010100061a024b53535009181c\", \"\
+  686974207468652062756c6c277320657965\") == \"746865206b696420646f6e277420706c6179\"\
+  \n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def fixed_xor (a b : String) : String := sorry\n\ntheorem fixed_xor_identity\
+  \ {a b : String} (h : a.length = b.length) :\n  let result := fixed_xor a b\n  fixed_xor\
+  \ result b = a := sorry\n"
+"vc-theorems": "theorem fixed_xor_commutative {a b : String} (h : a.length = b.length)\
+  \ :\n  fixed_xor a b = fixed_xor b a := sorry \n\n\ntheorem fixed_xor_with_zeros\
+  \ (hex_str : String) :\n  let zeros := String.mk (List.replicate hex_str.length\
+  \ '0')\n  fixed_xor hex_str zeros = hex_str := sorry\n\n\ntheorem fixed_xor_with_self\
+  \ (hex_str : String) :\n  let result := fixed_xor hex_str hex_str\n  result.data.all\
+  \ (· = '0') := sorry\n\n/--\ninfo: '07'\n-/\n#guard_msgs in\n#eval fixed_xor \"\
+  ab3f\" \"ac\"\n\n/--\ninfo: '163d'\n-/\n#guard_msgs in\n#eval fixed_xor \"aadf\"\
+  \ \"bce2\"\n\n/--\ninfo: '746865206b696420646f6e277420706c6179'\n-/\n#guard_msgs\
+  \ in\n#eval fixed_xor \"1c0111001f010100061a024b53535009181c\" \"686974207468652062756c6c277320657965\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

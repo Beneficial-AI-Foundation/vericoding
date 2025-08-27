@@ -1,0 +1,19 @@
+"vc-description": "```if:csharp\n## Terminal Game - Create Hero Class\n\nIn this first\
+  \ kata in the series, you need to define a Hero class to be used in a terminal game.\
+  \ The hero should have the following attributes:\n\nattribute | type | value\n---|---|---\n\
+  Name | string | user argument or \"Hero\"\nPosition | string | \"00\"\nHealth |\
+  \ float | 100\nDamage | float | 5\nExperience | int | 0\n```\n\n```if-not:csharp\n\
+  ## Terminal Game - Create Hero Prototype\n\nIn this first kata in the series, you\
+  \ need to define a Hero prototype to be used in a terminal game. The hero should\
+  \ have the following attributes:\n\nattribute | value\n---|---\nname | user argument\
+  \ or 'Hero'\nposition | '00'\nhealth | 100\ndamage | 5\nexperience | 0\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Hero.new : Hero := sorry\ndef Hero.newWithName (name : String)\
+  \ : Hero := sorry\n"
+"vc-theorems": "theorem hero_named_properties (name : String) : \n  let hero := Hero.newWithName\
+  \ name\n  hero.name = name ∧ \n  hero.position = \"00\" ∧ \n  hero.health = 100\
+  \ ∧ \n  hero.damage = 5 ∧ \n  hero.experience = 0 := sorry\n\n\ntheorem hero_default_properties\
+  \ : \n  let hero := Hero.new\n  hero.name = \"Hero\" ∧ \n  hero.position = \"00\"\
+  \ ∧ \n  hero.health = 100 ∧ \n  hero.damage = 5 ∧ \n  hero.experience = 0 := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

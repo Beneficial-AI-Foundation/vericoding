@@ -1,0 +1,38 @@
+"vc-description": "-----Problem-----\n\n\t\t\tNikki's latest work is writing a story\
+  \ of letters. However, she finds writing story so boring that, after working for\
+  \ three hours, she realized that all she has written are M long words consisting\
+  \ entirely of letters A and B. Having accepted that she will never finish the story\
+  \ in time, Nikki has decided to at least have some fun with it by counting bubbly\
+  \ words.\n\n\n\t\t\tNow Nikki is connecting pairs of identical letters (A with A,\
+  \ B with B) by drawing lines above the word. A given word is bubbly if each letter\
+  \ can be connected to exactly one other letter in such a way that no two lines intersect.\
+  \ So here is your task. Help Nikki count how many words are bubbly.\n\n-----Input-----\n\
+  - \n\t\t\tThe first line of input contains the positive integer M, the number of\
+  \ words written down by Nikki.\n\t\t\t\t\n- \n\t\t\tEach of the following M lines\
+  \ contains a single word consisting of letters A and B, with length\n\n\t\t\tbetween\
+  \ 2 and 10^5, inclusive. The sum of lengths of all words doesn't exceed 10^6.\n\t\
+  \t\t\t\n\n-----Output-----\n\n\t\t\tThe first and only line of output must contain\
+  \ the number of bubbly words.\n\t\t\n\n-----Constraints-----\n- \n\t\t\t1 ≤ M ≤\
+  \ 100\n\t\t\t\t\n\n-----Sample Input-----\n\n3\n\nABAB\n\nAABB\n\nABBA\n\n-----Sample\
+  \ Output-----\n2\n\n-----Explanation-----\n- \n\t\t\t\t\t ABAB - It is not bubbly\
+  \ as A(indexed 1) will connect to A(indexed 3) by a line and when we try to connect\
+  \ B(indexed 2) with B(indexed 4) by a line then it will intersect with the line\
+  \ b/w A and A.\n\t\t\t\t\n- \n\t\t\t\t\tAABB - It is bubbly as line b/w A and A\
+  \ will not intersect with the line b/w B and B.\n\t\t\t\n- \nABBA -It is also bubbly\
+  \ as lines will not intersect. We can draw line b/w A and A above the line b/w B\
+  \ and B.\n\t\t\t\t p { text-align:justify }"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isBubbly (word : String) : Bool := sorry\n\ndef countBubblyWords\
+  \ (words : List String) : Nat := sorry\n"
+"vc-theorems": "theorem count_matches_definition (words : List String) :\n  countBubblyWords\
+  \ words = (words.filter isBubbly).length := sorry\n\n\ntheorem count_is_non_negative\
+  \ (words : List String) :\n  countBubblyWords words ≥ 0 := sorry\n\n\ntheorem count_cannot_exceed_length\
+  \ (words : List String) :\n  countBubblyWords words ≤ words.length := sorry\n\n\n\
+  theorem single_repeated_char (c : Char) (n : Nat) :\n  let word := String.mk (List.replicate\
+  \ n c)\n  if n % 2 = 0 \n  then countBubblyWords [word] = 1\n  else countBubblyWords\
+  \ [word] = 0 := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_bubbly_words\
+  \ [\"ABAB\", \"AABB\", \"ABBA\"]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_bubbly_words\
+  \ [\"AABB\"]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_bubbly_words [\"ABAB\"\
+  , \"ABBA\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

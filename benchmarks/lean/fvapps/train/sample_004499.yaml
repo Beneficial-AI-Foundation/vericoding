@@ -1,0 +1,34 @@
+"vc-description": "Hi! Welcome to my first kata.\n\nIn this kata the task is to take\
+  \ a list of integers (positive and negative) and split them according to a simple\
+  \ rule; those ints greater than or equal to the key, and those ints less than the\
+  \ key (the itself key will always be positive).\n\nHowever, in this kata the goal\
+  \ is to sort the numbers IN PLACE, so DON'T go messing around with the order in\
+  \ with the numbers appear.\n\nYou are to return a nested list. If the list is empty,\
+  \ simply return an empty list.\n\nConfused? Okay, let me walk you through an example...\n\
+  \n    The input is: [1, 1, 1, 0, 0, 6, 10, 5, 10], the key is: 6\nOkay so the first\
+  \ five numbers are less than the key, 6, so we group them together.\n\n    [1, 1,\
+  \ 1, 0, 0]\nThe next two numbers, 6 & 10, are both >= 6 to they belong in a seperate\
+  \ group, which we will add to the first group. Like so:\n\n    [[1, 1, 1, 0, 0],\
+  \ [6, 10]]\nThe next two numbers are 5 & 10. Since the key is 6 these two numbers\
+  \ form seperate groups, which we will add to the previous result. like so:\n\n \
+  \   [[1, 1, 1, 0, 0], [6, 10], [5], [10]]\nAnd voila! We're done.\n \nHere are a\
+  \ few more basic examples:\n\n    group_ints([1, 0], key= 0)  \n    --> [[1,0]]\n\
+  \  \n    group_ints([1, 0, -1, 5], key= 0) \n    --> [[1, 0], [-1], [5]]\n  \n \
+  \   group_ints([1, 0, -1, 5], key= 5) \n    --> [[1, 0, -1], [5]]\n\nGood luck guys/gals!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def groupInts (lst : List Int) (key : Int) : List (List Int) :=\
+  \ sorry\n\ntheorem empty_list_any_key (k : Int) : \n  groupInts [] k = [] := sorry\n"
+"vc-theorems": "theorem group_ints_result_structure {lst : List Int} {k : Int} :\n\
+  \  let result := groupInts lst k\n  -- Result is a list of non-empty lists\n  ∀\
+  \ sublist ∈ result, sublist ≠ [] := sorry\n\n\ntheorem group_ints_preserves_elements\
+  \ {lst : List Int} {k : Int} :\n  let result := groupInts lst k\n  List.join result\
+  \ = lst := sorry\n\n\ntheorem group_ints_homogeneous_groups {lst : List Int} {k\
+  \ : Int} :\n  let result := groupInts lst k\n  ∀ group ∈ result, \n    let first_less\
+  \ := group.head! < k\n    ∀ x ∈ group, (x < k) = first_less := sorry\n\n\ntheorem\
+  \ group_ints_adjacent_groups_differ {lst : List Int} {k : Int} :\n  let result :=\
+  \ groupInts lst k\n  ∀ i < result.length - 1,\n    let group1_head := (result.get!\
+  \ i).head!\n    let group2_head := (result.get! (i+1)).head!\n    (group1_head <\
+  \ k) ≠ (group2_head < k) := sorry\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval group_ints\
+  \ [] 0\n\n/--\ninfo: [[1]]\n-/\n#guard_msgs in\n#eval group_ints [1] 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

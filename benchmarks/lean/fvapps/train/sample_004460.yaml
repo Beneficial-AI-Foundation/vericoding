@@ -1,0 +1,21 @@
+"vc-description": "## Task\n\nWrite a method `remainder` which takes two integer arguments,\
+  \ `dividend` and `divisor`, and returns the remainder when dividend is divided by\
+  \ divisor. Do NOT use the modulus operator (%) to calculate the remainder!\n\n####\
+  \ Assumption\n\nDividend will always be `greater than or equal to` divisor.\n\n\
+  #### Notes\n\nMake sure that the implemented `remainder` function works exactly\
+  \ the same as the `Modulus operator (%)`.\n\n```if:java\n`SimpleInteger` is a tiny\
+  \ and immutable implementation of an integer number. Its interface is a very small\
+  \ subset of the `java.math.BigInteger` API:\n\n* `#add(SimpleInteger val)`\n* `#subtract(SimpleInteger\
+  \ val)`\n* `#multiply(SimpleInteger val)`\n* `#divide(SimpleInteger val)`\n* `#compareTo(SimpleInteger\
+  \ val)`\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def remainder (dividend divisor : Nat) : Nat := sorry\n\ntheorem\
+  \ remainder_properties {dividend divisor : Nat} (h : divisor > 0) : \n  let r :=\
+  \ remainder dividend divisor\n  (r ≥ 0) ∧ \n  (r < divisor) ∧ \n  (dividend = (dividend\
+  \ / divisor) * divisor + r)\n  := sorry\n"
+"vc-theorems": "theorem remainder_matches_modulo {dividend divisor : Nat} (h : divisor\
+  \ > 0) :\n  remainder dividend divisor = dividend % divisor := sorry\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval remainder 3 2\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n\
+  #eval remainder 19 2\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval remainder 27 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

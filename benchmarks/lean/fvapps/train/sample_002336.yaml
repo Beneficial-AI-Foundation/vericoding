@@ -1,0 +1,26 @@
+"vc-description": "Given an arbitrary ransom note string and another string containing\
+  \ letters from all the magazines, write a function that will return true if the\
+  \ ransom \nnote can be constructed from the magazines ; otherwise, it will return\
+  \ false. \n\n\nEach letter in the magazine string can only be used once in your\
+  \ ransom note.\n\n\nNote:\nYou may assume that both strings contain only lowercase\
+  \ letters.\n\n\n\ncanConstruct(\"a\", \"b\") -> false\ncanConstruct(\"aa\", \"ab\"\
+  ) -> false\ncanConstruct(\"aa\", \"aab\") -> true"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_construct (ransomNote magazine : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem can_construct_empty_note (magazine : String) :\n  can_construct\
+  \ \"\" magazine = true := sorry\n\n\ntheorem can_construct_empty_magazine_only_empty_note\
+  \ :\n  (can_construct \"\" \"\" = true) ∧ (can_construct \"a\" \"\" = false) :=\
+  \ sorry\n\n\ntheorem can_construct_length_property (note magazine : String) :\n\
+  \  note.length > magazine.length → can_construct note magazine = false := sorry\n\
+  \n\ntheorem can_construct_same_string (s : String) :\n  can_construct s s = true\
+  \ := sorry\n\n\ntheorem can_construct_count_preservation (note magazine : String)\
+  \ (c : Char) :\n  can_construct note magazine = true →\n  note.data.foldl (λ acc\
+  \ x => if x = c then acc + 1 else acc) 0 ≤ \n  magazine.data.foldl (λ acc x => if\
+  \ x = c then acc + 1 else acc) 0 := sorry\n\n\ntheorem can_construct_magazine_extension\
+  \ (note magazine extension : String) :\n  can_construct note magazine = true →\n\
+  \  can_construct note (magazine ++ extension) = true := sorry\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval can_construct \"a\" \"b\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval can_construct \"aa\" \"ab\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
+  #eval can_construct \"aa\" \"aab\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

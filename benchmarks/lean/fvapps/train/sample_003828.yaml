@@ -1,0 +1,28 @@
+"vc-description": "Given 2 strings, your job is to find out if there is a substring\
+  \ that appears in both strings. You will return true if you find a substring that\
+  \ appears in both strings, or false if you do not. We only care about substrings\
+  \ that are longer than one letter long.\n\n#Examples:\n\n````\n*Example 1*\nSubstringTest(\"\
+  Something\",\"Fun\"); //Returns false\n\n*Example 2*\nSubstringTest(\"Something\"\
+  ,\"Home\"); //Returns true\n````\nIn the above example, example 2 returns true because\
+  \ both of the inputs contain the substring \"me\". (so**ME**thing and ho**ME**)\
+  \  \nIn example 1, the method will return false because something and fun contain\
+  \ no common substrings. (We do not count the 'n' as a substring in this Kata because\
+  \ it is only 1 character long)\n\n#Rules:\nLowercase and uppercase letters are the\
+  \ same. So 'A' == 'a'.  \nWe only count substrings that are > 1 in length.  \n\n\
+  #Input:\nTwo strings with both lower and upper cases.\n#Output:\nA boolean value\
+  \ determining if there is a common substring between the two inputs."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def substring_test (s1 s2 : String) : Bool := sorry\n\ntheorem\
+  \ substring_test_case_insensitive (s1 s2 : String) :\n  substring_test s1.toUpper\
+  \ s2.toLower = substring_test s1 s2 := sorry\n"
+"vc-theorems": "theorem substring_test_contains_exact (s1 s2 : String) :\n  s1.length\
+  \ ≥ 2 →\n  substring_test s1 (s2 ++ s1.take 2) = true := sorry\n\n\ntheorem substring_test_empty_or_single\
+  \ (s1 s2 : String) :\n  (s1.length ≤ 1 ∨ s2.length ≤ 1) →\n  substring_test s1 s2\
+  \ = false := sorry\n\n\ntheorem substring_test_symmetric (s1 s2 : String) :\n  s1.length\
+  \ > 1 →\n  s2.length > 1 →\n  substring_test s1 s2 = substring_test s2 s1 := sorry\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval substring_test \"Something\" \"Home\"\
+  \n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval substring_test \"Something\" \"\
+  Fun\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval substring_test \"BANANA\" \"\
+  banana\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

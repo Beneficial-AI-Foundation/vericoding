@@ -1,0 +1,23 @@
+"vc-description": "# Task\n If string has more than one neighboring dashes(e.g. --)\
+  \ replace they with one dash(-). \n \n Dashes are considered neighbors even if there\
+  \ is some whitespace **between** them.\n\n# Example\n\n For `str = \"we-are- - -\
+  \ code----warriors.-\"`\n \n The result should be `\"we-are- code-warriors.-\"`\n\
+  \ \n# Input/Output\n\n\n - `[input]` string `str`\n \n \n - `[output]` a string"
+"vc-preamble": "import Imports.AllImports\n\ndef replace_dashes_as_one (s : String)\
+  \ : String := sorry\n\ndef remove_dashes (s : String) : String := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def containsSubstring (s : String) (sub : String) : Bool := sorry\n\
+  \ntheorem no_consecutive_dashes \n  (s : String) : \n  ¬ (containsSubstring (replace_dashes_as_one\
+  \ s) \"--\") ∧ \n  ¬ (containsSubstring (replace_dashes_as_one s) \"- -\") := sorry\n"
+"vc-theorems": "theorem preserves_non_dash_chars\n  (s : String) :\n  remove_dashes\
+  \ s = remove_dashes (replace_dashes_as_one s) := sorry\n\n\ntheorem idempotent\n\
+  \  (s : String) :\n  replace_dashes_as_one (replace_dashes_as_one s) = replace_dashes_as_one\
+  \ s := sorry\n\n\ntheorem dash_only_strings\n  (s : String)\n  (h : ∀ c, String.contains\
+  \ s c → (c = '-' ∨ c = ' ')) :\n  (∀ c, String.contains (replace_dashes_as_one s)\
+  \ c → (c = '-' ∨ c = ' ')) ∧\n  ¬ (containsSubstring (replace_dashes_as_one s) \"\
+  --\") ∧\n  ¬ (containsSubstring (replace_dashes_as_one s) \"- -\") := sorry\n\n\
+  /--\ninfo: 'we-are- code-warriors.-'\n-/\n#guard_msgs in\n#eval replace_dashes_as_one\
+  \ \"we-are- - - code----warriors.-\"\n\n/--\ninfo: 'a-b-c'\n-/\n#guard_msgs in\n\
+  #eval replace_dashes_as_one \"a---b- - -c\"\n\n/--\ninfo: 'a-'\n-/\n#guard_msgs\
+  \ in\n#eval replace_dashes_as_one \"a------\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

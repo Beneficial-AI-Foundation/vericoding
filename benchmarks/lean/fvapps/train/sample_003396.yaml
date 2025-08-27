@@ -1,0 +1,21 @@
+"vc-description": "Imagine that you have an array of 3 integers each representing\
+  \ a different person. Each number can be 0, 1, or 2 which represents the number\
+  \ of hands that person holds up.\n\nNow imagine there is a sequence which follows\
+  \ these rules:\n* None of the people have their arms raised at first\n* Firstly,\
+  \ a person raises 1 hand; then they raise the second hand; after that they put both\
+  \ hands down - these steps form a cycle\n* Person #1 performs these steps all the\
+  \ time, person #2 advances only after person #1 puts their hands down, and person\
+  \ #3 advances only after person #2 puts their hands down\n\nThe first 10 steps of\
+  \ the sequence represented as a table are:\n\n```\nStep   P1   P2   P3\n--------------------\n\
+  \ 0     0    0    0\n 1     1    0    0\n 2     2    0    0\n 3     0    1    0\n\
+  \ 4     1    1    0\n 5     2    1    0\n 6     0    2    0\n 7     1    2    0\n\
+  \ 8     2    2    0\n 9     0    0    1\n```\n\nGiven a number, return an array\
+  \ with the number of hands raised by each person at that step."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_positions (n : Nat) : List Nat :=\n  sorry\n"
+"vc-theorems": "theorem positions_bound (n : Nat) : \n  let pos := get_positions n\n\
+  \  ∀ p ∈ pos, 0 ≤ p ∧ p ≤ 2 := \n  sorry\n\n\n\n\n\n\ntheorem positions_cycle (n\
+  \ rep : Nat) (h : 1 ≤ rep ∧ rep ≤ 3) :\n  get_positions n = get_positions (n + 27\
+  \ * rep) :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

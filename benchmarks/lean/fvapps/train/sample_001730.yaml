@@ -1,0 +1,33 @@
+"vc-description": "On fictional islands of Matunga archipelage several different tribes\
+  \ use fictional currency - tung. One tung is a very small amount, so all payments\
+  \ are made with coins of different values. For example, one tribe use coins of 7\
+  \ and 9 tungs, another - 6, 10 and 11 tungs. Every tribe has at least 2 different\
+  \ coins.\nAlso every tribe has a shop with remarkable feature: if you find an item\
+  \ N tungs worth, you always can find an item priced N+1 tungs in the same shop.\n\
+  Your goal is to write the function min_price(coins) which finds out the minimum\
+  \ price of item which can be in sale in Matunga tribe shop, knowing the values of\
+  \ coins used there.\n\nFunction should return -1 if result is not accessible (i.e.\
+  \ coins of these values can't cover natural row from N to infinity without gaps).\n\
+  \nFor example, some tribe has coins of 3 and 5 tungs. They can't sell items of 4\
+  \ or 7 tungs, because 4 and 7 can't be represented as a sum of 3's and 5's. But\
+  \ starting from 8 tungs you can do it with every sum: 8 is 5+3, 9 is 3+3+3, 10 is\
+  \ 5+5, 11 is 5+3+3 and so on. So the answer for this set of coins is 8."
+"vc-preamble": "import Imports.AllImports\n\ndef min_price (coins : List Int) : Int\
+  \ := sorry\n\ndef min_int (a b : Int) : Int := if a ≤ b then a else b\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_minimum (l : List Int) : Int :=\n  match l with\n  | []\
+  \ => 0\n  | x :: xs => match xs with\n    | [] => x\n    | y :: ys => min_int x\
+  \ (list_minimum xs)\n\n-- First coin must be minimum of input list"
+"vc-theorems": "theorem min_price_first_coin_min {coins : List Int} (h : coins.length\
+  \ ≥ 2) :\n  coins ≠ [] → coins.head! = list_minimum coins := sorry\n\n-- Result\
+  \ must be either -1 or >= first coin\n\ntheorem min_price_result_bounds {coins :\
+  \ List Int} (h : coins.length ≥ 2) :\n  let result := min_price coins\n  result\
+  \ ≠ -1 → result ≥ coins.head! := sorry\n\n-- Input list should not be modified after\
+  \ operation\n\ntheorem min_price_preserves_input {coins : List Int} (h : coins.length\
+  \ ≥ 2) :\n  let original := coins\n  let _ := min_price coins\n  coins = original\
+  \ := sorry\n\n-- Two coprime numbers should always have a solution\n\ntheorem coprime_has_solution\
+  \ {coins : List Int} (h : coins.length ≥ 2) :\n  Nat.gcd (coins.head!.toNat) (coins.get!\
+  \ 1).toNat = 1 →\n  min_price coins ≠ -1 := sorry\n\n/--\ninfo: 8\n-/\n#guard_msgs\
+  \ in\n#eval min_price [3, 5]\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval min_price\
+  \ [4, 6]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_price [2, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

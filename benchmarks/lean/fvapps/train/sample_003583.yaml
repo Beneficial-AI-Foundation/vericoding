@@ -1,0 +1,27 @@
+"vc-description": "Define a function that takes one integer argument and returns logical\
+  \ value `true` or `false` depending on if the integer is a prime.\n\nPer Wikipedia,\
+  \ a prime number (or a prime) is a natural number greater than 1 that has no positive\
+  \ divisors other than 1 and itself.\n\n## Requirements\n\n* You can assume you will\
+  \ be given an integer input.\n* You can not assume that the integer will be only\
+  \ positive. You may be given negative numbers as well (or `0`).\n* **NOTE on performance**:\
+  \ There are no fancy optimizations required, but still *the* most trivial solutions\
+  \ might time out. Numbers go up to 2^31 (or similar, depends on language version).\
+  \ Looping all the way up to `n`, or `n/2`, will be too slow.\n\n## Example\n```nasm\
+  \    \nmov edi, 1\ncall is_prime    ; EAX <- 0 (false)\n\nmov edi, 2\ncall is_prime\
+  \    ; EAX <- 1 (true)\n\nmov edi, -1\ncall is_prime    ; EAX <- 0 (false)\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def even_odd (n : Nat) : Nat × Nat := sorry\ndef is_prime (n :\
+  \ Int) : Bool := sorry\n"
+"vc-theorems": "theorem even_odd_basic :\n  even_odd 1 = (0, 1) ∧ even_odd 2 = (1,\
+  \ 1) := sorry\n\n\ntheorem even_odd_properties (n : Nat) (h : n > 0) :\n  let (s,\
+  \ d) := even_odd n\n  s ≥ 0 ∧ d % 2 = 1 ∧ n = d * (2 ^ s) := sorry\n\n\ntheorem\
+  \ is_prime_properties_one_and_less (n : Int) (h : n ≤ 1) :\n  is_prime n = false\
+  \ := sorry\n\n\ntheorem is_prime_two :\n  is_prime 2 = true := sorry\n\n\ntheorem\
+  \ is_prime_even (n : Int) (h1 : n > 2) (h2 : n % 2 = 0) :\n  is_prime n = false\
+  \ := sorry\n\n\ntheorem is_prime_deterministic (n : Int) :\n  is_prime n = is_prime\
+  \ n := sorry\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_prime 0\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval is_prime 2\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval is_prime 73\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_prime\
+  \ -1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

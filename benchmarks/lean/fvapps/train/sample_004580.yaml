@@ -1,0 +1,43 @@
+"vc-description": "John and Mary want to travel between a few towns A, B, C ... Mary\
+  \ has on a sheet of paper a list of distances between these towns.\n`ls = [50, 55,\
+  \ 57, 58, 60]`.\nJohn is tired of driving and he says to Mary that he doesn't want\
+  \ to drive more than `t = 174 miles` and he\nwill visit only `3` towns.\n\nWhich\
+  \ distances, hence which towns, they will choose so that the sum of the distances\
+  \ is the biggest possible to please Mary and John?\n\nExample: \n\nWith list `ls`\
+  \ and 3 towns to visit they can make a choice between: \n`[50,55,57],[50,55,58],[50,55,60],[50,57,58],[50,57,60],[50,58,60],[55,57,58],[55,57,60],[55,58,60],[57,58,60]`.\n\
+  \nThe sums of distances are then:\n`162, 163, 165, 165, 167, 168, 170, 172, 173,\
+  \ 175`.\n\nThe biggest possible sum taking a limit of `174` into account is then\
+  \ `173` and the distances of the `3` \ncorresponding towns is `[55, 58, 60]`.\n\n\
+  The function `chooseBestSum` (or `choose_best_sum` or ... depending on the language)\
+  \ will take as parameters `t` (maximum sum of distances, integer >= 0), `k` (number\
+  \ of towns to visit, k >= 1) \nand `ls` (list of distances, all distances are positive\
+  \ or null integers and this list has at least one element).\nThe function returns\
+  \ the \"best\" sum ie the biggest possible sum of `k` distances less than or equal\
+  \ to the given limit `t`, if that sum exists,\nor otherwise nil, null, None, Nothing,\
+  \ depending on the language. With C++, C, Rust, Swift, Go, Kotlin return `-1`.\n\
+  \nExamples: \n\n`ts = [50, 55, 56, 57, 58]`\n`choose_best_sum(163, 3, ts) -> 163`\n\
+  \n`xs = [50]`\n`choose_best_sum(163, 3, xs) -> nil (or null or ... or -1 (C++, C,\
+  \ Rust, Swift, Go)`\n\n`ys = [91, 74, 73, 85, 73, 81, 87]`\n`choose_best_sum(230,\
+  \ 3, ys) -> 228`\n\nNote: don't modify the input list `ls`"
+"vc-preamble": "import Imports.AllImports\n\ndef List.combinations (ls : List α) (k\
+  \ : Nat) : List (List α) :=\n  sorry\n\nabbrev List.sum (ls : List Int) : Int :=\n\
+  \  ls.foldl (· + ·) 0\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def choose_best_sum (t : Int) (k : Nat) (ls : List Int) : Option\
+  \ Int :=\n  sorry\n"
+"vc-theorems": "theorem result_not_exceeds_target \n  (t : Int) (k : Nat) (ls : List\
+  \ Int)\n  (h1 : t ≥ 1) (h2 : k ≥ 1) (h3 : !ls.isEmpty)\n  (h4 : ∀ x ∈ ls, x ≥ 1\
+  \ ∧ x ≤ 100) :\n  (choose_best_sum t k ls).all (· ≤ t) :=\nsorry\n\n\ntheorem none_if_k_too_large\n\
+  \  (t : Int) (k : Nat) (ls : List Int)\n  (h1 : t ≥ 1)\n  (h2 : k > ls.length)\n\
+  \  (h3 : ∀ x ∈ ls, x ≥ 1) :\n  choose_best_sum t k ls = none :=\nsorry\n\n\ntheorem\
+  \ result_is_sum_of_k_numbers\n  (t : Int) (k : Nat) (ls : List Int)\n  (h1 : t ≥\
+  \ 1) (h2 : k ≥ 1)\n  (h3 : ls.length ≥ 5)\n  (h4 : ∀ x ∈ ls, x ≥ 1 ∧ x ≤ 100)\n\
+  \  (h5 : (choose_best_sum t k ls).isSome) :\n  ∃ subset : List Int,\n    subset\
+  \ ∈ ls.combinations k ∧ \n    subset.sum = Option.get! (choose_best_sum t k ls)\
+  \ :=\nsorry\n\n\ntheorem edge_cases :\n  choose_best_sum 100 3 [] = none ∧\n  choose_best_sum\
+  \ (-1) 3 [1,2,3] = none ∧ \n  choose_best_sum 100 0 [1,2,3] = none :=\nsorry\n\n\
+  /--\ninfo: 163\n-/\n#guard_msgs in\n#eval choose_best_sum 163 3 [50, 55, 56, 57,\
+  \ 58]\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval choose_best_sum 163 3 [50]\n\
+  \n/--\ninfo: 228\n-/\n#guard_msgs in\n#eval choose_best_sum 230 3 [91, 74, 73, 85,\
+  \ 73, 81, 87]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

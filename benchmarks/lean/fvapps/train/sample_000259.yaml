@@ -1,0 +1,26 @@
+"vc-description": "You are given a string s, a split is called good if you can split s\
+  \ into 2 non-empty strings p and q where its concatenation is equal to s and the\
+  \ number of distinct letters in p and q are the same.\nReturn the number of good\
+  \ splits you can make in s.\n \nExample 1:\nInput: s = \"aacaba\"\nOutput: 2\nExplanation:\
+  \ There are 5 ways to split \"aacaba\" and 2 of them are good. \n(\"a\", \"acaba\"\
+  ) Left string and right string contains 1 and 3 different letters respectively.\n\
+  (\"aa\", \"caba\") Left string and right string contains 1 and 3 different letters\
+  \ respectively.\n(\"aac\", \"aba\") Left string and right string contains 2 and\
+  \ 2 different letters respectively (good split).\n(\"aaca\", \"ba\") Left string\
+  \ and right string contains 2 and 2 different letters respectively (good split).\n\
+  (\"aacab\", \"a\") Left string and right string contains 3 and 1 different letters\
+  \ respectively.\n\nExample 2:\nInput: s = \"abcd\"\nOutput: 1\nExplanation: Split\
+  \ the string as follows (\"ab\", \"cd\").\n\nExample 3:\nInput: s = \"aaaaa\"\n\
+  Output: 4\nExplanation: All possible splits are good.\nExample 4:\nInput: s = \"\
+  acbadbaada\"\nOutput: 2\n\n \nConstraints:\n\ns contains only lowercase English\
+  \ letters.\n1 <= s.length <= 10^5"
+"vc-preamble": "import Imports.AllImports\n\ndef num_good_splits (s : String) : Nat\
+  \ :=\nsorry\n\n\ndef reverse (s : String) : String :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def uniqueChars (s : String) : Bool :=\nsorry"
+"vc-theorems": "theorem num_good_splits_bounds (s : String) (h : s.length > 0) :\n\
+  \  num_good_splits s ≤ s.length - 1 ∧ num_good_splits s ≥ 0 :=\nsorry\n\n\n\n\n\
+  /--\ninfo: 2\n-/\n#guard_msgs in\n#eval num_good_splits \"aacaba\"\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval num_good_splits \"abcd\"\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval num_good_splits \"aaaaa\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

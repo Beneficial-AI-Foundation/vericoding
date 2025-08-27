@@ -1,0 +1,42 @@
+"vc-description": "To give credit where credit is due: This problem was taken from\
+  \ the ACMICPC-Northwest Regional Programming Contest. Thank you problem writers.\n\
+  \nYou are helping an archaeologist decipher some runes. He knows that this ancient\
+  \ society used a Base 10 system, and that they never start a number with a leading\
+  \ zero. He's figured out most of the digits as well as a few operators, but he needs\
+  \ your help to figure out the rest.\n\nThe professor will give you a simple math\
+  \ expression, of the form\n\n```\n[number][op][number]=[number]\n```\n\nHe has converted\
+  \ all of the runes he knows into digits. The only operators he knows are addition\
+  \ (`+`),subtraction(`-`), and multiplication (`*`), so those are the only ones that\
+  \ will appear. Each number will be in the range from -1000000 to 1000000, and will\
+  \ consist of only the digits 0-9, possibly a leading -, and maybe a few ?s. If there\
+  \ are ?s in an expression, they represent a digit rune that the professor doesn't\
+  \ know (never an operator, and never a leading -). All of the ?s in an expression\
+  \ will represent the same digit (0-9), and it won't be one of the other given digits\
+  \ in the expression. No number will begin with a 0 unless the number itself is \
+  \ 0, therefore 00 would not be a valid number. \n\nGiven an expression, figure out\
+  \ the value of the rune represented by the question mark. If more than one digit\
+  \ works, give the lowest one. If no digit works, well, that's bad news for the professor\
+  \ - it means that he's got some of his runes wrong. output -1 in that case.\n\n\
+  Complete the method to solve the expression to find the value of the unknown rune.\
+  \ The method takes a string as a paramater repressenting the expression and will\
+  \ return an int value representing the unknown rune or -1 if no such rune exists.\n\
+  \n~~~if:php\n**Most of the time, the professor will be able to figure out most of\
+  \ the runes himself, but sometimes, there may be exactly 1 rune present in the expression\
+  \ that the professor cannot figure out (resulting in all question marks where the\
+  \ digits are in the expression) so be careful ;)**\n~~~"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_runes (s : String) : Int := sorry\n\ntheorem solve_runes_addition\
+  \ {a b : Nat}\n  (h1 : a ≤ 100) (h2 : b ≤ 100) :\n  let expr := s!\"?+?={a + b}\"\
+  \n  let result := solve_runes expr\n  result ≠ -1 → result = a ∧ result = b := sorry\n"
+"vc-theorems": "theorem solve_runes_subtraction {a b : Nat}\n  (h1 : a ≤ 100) (h2\
+  \ : b ≤ 100) :\n  let expr := s!\"?-?={a - b}\"\n  let result := solve_runes expr\
+  \ \n  result ≠ -1 → result = a ∧ result = b := sorry\n\n\ntheorem solve_runes_no_leading_zeros\
+  \ {d : Nat}\n  (h : d ≤ 9) :\n  solve_runes s!\"0?=0{d}\" = -1 := sorry\n\n\ntheorem\
+  \ basic_addition :\n  solve_runes \"1+1=?\" = 2 := sorry\n\n\ntheorem basic_addition_unknown\
+  \ :\n  solve_runes \"?+?=2\" = 1 := sorry\n\n\ntheorem basic_negative :\n  solve_runes\
+  \ \"-?=-?\" = 0 := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval solve_runes\
+  \ \"123?45*?=?\"\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval solve_runes \"??+??=??\"\
+  \n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval solve_runes \"-?56373--9216=-?47157\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

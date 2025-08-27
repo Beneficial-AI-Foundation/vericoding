@@ -1,0 +1,17 @@
+"vc-description": "Given an integer n, return the number of trailing zeroes in n!.\n\
+  \nExample 1:\n\n\nInput: 3\nOutput: 0\nExplanation: 3! = 6, no trailing zero.\n\n\
+  Example 2:\n\n\nInput: 5\nOutput: 1\nExplanation: 5! = 120, one trailing zero.\n\
+  \nNote: Your solution should be in logarithmic time complexity."
+"vc-preamble": "import Imports.AllImports\n\ndef factorial (n : Nat) : Nat :=\n  sorry\n\
+  \n\ndef countTrailingZeroes (n : Nat) : Nat := \n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countActualZeros (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_matches_actual {n : Nat} (h : n ≤ 1000) :\n  countTrailingZeroes\
+  \ n = countActualZeros (factorial n) := by\n  sorry\n\n\ntheorem count_non_negative\
+  \ (n : Nat) :\n  countTrailingZeroes n ≥ 0 := by\n  sorry\n\n\ntheorem count_less_than_five\
+  \ {n : Nat} (h : n < 5) :\n  countTrailingZeroes n = 0 := by\n  sorry\n\n\ntheorem\
+  \ count_zero :\n  countTrailingZeroes 0 = 0 := by\n  sorry\n\n\ntheorem count_one\
+  \ :\n  countTrailingZeroes 1 = 0 := by\n  sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval count_trailing_zeroes 3\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_trailing_zeroes\
+  \ 5\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_trailing_zeroes 10\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

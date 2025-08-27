@@ -1,0 +1,35 @@
+"vc-description": "Chef has a sequence of positive integers $A_1, A_2, \\ldots, A_N$.\
+  \ He wants to split this sequence into two non-empty (not necessarily contiguous)\
+  \ subsequences $B$ and $C$ such that $\\mathrm{GCD}\\,(B) + \\mathrm{GCD}\\,(C)$\
+  \ is maximum possible. Help him find this maximum value.\nNote: The greatest common\
+  \ divisor (GCD) of a sequence of positive integers is the largest positive integer\
+  \ that divides each element of this sequence. For example, the GCD of the sequence\
+  \ $(8, 12)$ is $4$.\n\n-----Input-----\n- The first line of the input contains a\
+  \ single integer $T$ denoting the number of test cases. The description of $T$ test\
+  \ cases follows.\n- The first line of each test case contains a single integer $N$.\n\
+  - The second line contains $N$ space-separated integers $A_1, A_2, \\ldots, A_N$.\n\
+  \n-----Output-----\nFor each test case, print a single line containing one integer\
+  \ — the maximum value of $\\mathrm{GCD}\\,(B) + \\mathrm{GCD}\\,(C)$.\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 10$\n- $2 \\le N \\le 10^5$\n- $1 \\le A_i \\le 10^9$ for each\
+  \ valid $i$\n\n-----Subtasks-----\nSubtask #1 (20 points): $2 \\le N \\le 20$\n\
+  Subtask #2 (80 points): original constraints\n\n-----Example Input-----\n1     \
+  \         \n4                    \n4 4 7 6                    \n\n-----Example Output-----\n\
+  9\n\n-----Explanation-----\nExample case 1: For example, the sequence $A$ can be\
+  \ divided into subsequences $B = (4, 4, 6)$ and $C = (7)$."
+"vc-preamble": "import Imports.AllImports\n\ndef gcd : Nat → Nat → Nat\n| a, b =>\
+  \ sorry\n\n\ndef max_gcd_sum : List Nat → Nat\n| xs => sorry\n\n\ndef list_max :\
+  \ List Nat → Nat  \n| [] => 0\n| (x::xs) => max x (list_max xs)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_min : List Nat → Nat\n| [] => 0  \n| (x::xs) => min x\
+  \ (list_min xs)\n"
+"vc-theorems": "theorem matches_reference (nums : List Nat) (h : ∀ x ∈ nums, x > 0)\
+  \ : \n  ∃ result, max_gcd_sum nums = result := by\n  sorry\n\n\ntheorem output_larger_than_input\
+  \ (nums : List Nat) (h : ∀ x ∈ nums, x > 0) :\n  max_gcd_sum nums ≥ list_max nums\
+  \ ∧ max_gcd_sum nums ≥ list_min nums := by\n  sorry\n\n\ntheorem duplicate_handling\
+  \ (nums : List Nat) (dupes : List Nat) \n  (h : ∀ x ∈ nums, x > 0) (h2 : ∀ x ∈ dupes,\
+  \ x ∈ nums) :\n  max_gcd_sum nums = max_gcd_sum (nums ++ dupes) := by\n  sorry\n\
+  \n\ntheorem single_element (x : Nat) (h : x > 0) :\n  max_gcd_sum [x] = 2 * x :=\
+  \ by\n  sorry\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval max_gcd_sum [4, 4, 7, 6]\n\
+  \n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval max_gcd_sum [2, 2, 2]\n\n/--\ninfo: 15\n\
+  -/\n#guard_msgs in\n#eval max_gcd_sum [3, 6, 9, 12]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

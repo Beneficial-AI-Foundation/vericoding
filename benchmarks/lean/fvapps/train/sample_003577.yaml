@@ -1,0 +1,42 @@
+"vc-description": "Naming multiple files can be a pain sometimes.\n\n#### Task:\n\n\
+  Your job here is to create a function that will take three parameters, `fmt`, `nbr`\
+  \ and `start`, and create an array of `nbr` elements formatted according to `frm`\
+  \ with the starting index `start`. `fmt` will have `` inserted at various locations;\
+  \ this is where the file index number goes in each file. \n\n#### Description of\
+  \ edge cases:\n\n1. If `nbr` is less than or equal to 0, or not whole, return an\
+  \ empty array.\n2. If `fmt` does not contain `''`, just return an array with `nbr`\
+  \ elements that are all equal to `fmt`. \n3. If `start` is not an integer, return\
+  \ an empty array.\n\n#### What each parameter looks like:\n\n```python\ntype(frm)\
+  \ #=> str\n  : \"text_to_stay_constant_from_file_to_file \"\ntype(nbr) #=> int\n\
+  \  : number_of_files\ntype(start) #=> int\n  : index_no_of_first_file\ntype(name_file(frm,\
+  \ nbr, start)) #=> list\n```\n\n#### Some examples:\n\n```python\nname_file(\"IMG\
+  \ \", 4, 1)\n  #=> [\"IMG 1\", \"IMG 2\", \"IMG 3\", \"IMG 4\"])\nname_file(\"image\
+  \ #.jpg\", 3, 7)\n  #=> [\"image #7.jpg\", \"image #8.jpg\", \"image #9.jpg\"]\n\
+  name_file(\"# #\", 3, -2)\n  #=> [\"#-2 #-2\", \"#-1 #-1\", \"#0 #0\"]\n```\n\n\
+  Also check out my other creations — [Elections: Weighted Average](https://www.codewars.com/kata/elections-weighted-average),\
+  \ [Identify Case](https://www.codewars.com/kata/identify-case), [Split Without Loss](https://www.codewars.com/kata/split-without-loss),\
+  \ [Adding Fractions](https://www.codewars.com/kata/adding-fractions),\n[Random Integers](https://www.codewars.com/kata/random-integers),\
+  \ [Implement String#transpose](https://www.codewars.com/kata/implement-string-number-transpose),\
+  \ [Implement Array#transpose!](https://www.codewars.com/kata/implement-array-number-transpose),\
+  \ [Arrays and Procs #1](https://www.codewars.com/kata/arrays-and-procs-number-1),\
+  \ and [Arrays and Procs #2](https://www.codewars.com/kata/arrays-and-procs-number-2).\n\
+  \nIf you notice any issues or have any suggestions/comments whatsoever, please don't\
+  \ hesitate to mark an issue or just comment. Thanks!"
+"vc-preamble": "import Imports.AllImports\n\ndef name_file (fmt: String) (nbr: Int)\
+  \ (start: Int) : List String :=\n  sorry\n\n\ndef containsIndexNo (s: String) :\
+  \ Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def containsNumber (s: String) (n: Int) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem name_file_length \n  (fmt: String) (nbr: Int) (start: Int)\n\
+  \  (h1: nbr > 0) (h2: nbr ≤ 1000) (h3: start ≥ -1000) (h4: start ≤ 1000) :\n  (name_file\
+  \ fmt nbr start).length = nbr := by sorry\n\n\ntheorem name_file_index_numbers\n\
+  \  (fmt: String) (nbr: Int) (start: Int)\n  (h1: nbr > 0) (h2: nbr ≤ 1000) (h3:\
+  \ start ≥ -1000) (h4: start ≤ 1000)\n  (h5: containsIndexNo fmt = true) :\n  ∀ (i:\
+  \ Nat), i < nbr → \n    containsNumber (List.get! (name_file fmt nbr start) i) (start\
+  \ + i) = true := by sorry\n\n\ntheorem name_file_no_index\n  (fmt: String) (nbr:\
+  \ Int) (start: Int)\n  (h1: nbr > 0) (h2: nbr ≤ 1000) (h3: start ≥ -1000) (h4: start\
+  \ ≤ 1000)\n  (h5: containsIndexNo fmt = false) :\n  ∀ (x: String), x ∈ name_file\
+  \ fmt nbr start → x = fmt := by sorry\n\n\ntheorem name_file_invalid_number\n  (fmt:\
+  \ String) (nbr: Int) (start: Int)\n  (h1: nbr ≤ 0) :\n  name_file fmt nbr start\
+  \ = [] := by sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

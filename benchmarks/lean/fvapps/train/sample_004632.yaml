@@ -1,0 +1,20 @@
+"vc-description": "Write a function ```unpack()``` that unpacks a ```list``` of elements\
+  \ that can contain objects(`int`, `str`, `list`, `tuple`, `dict`, `set`) within\
+  \ each other without any predefined depth, meaning that there can be many levels\
+  \ of elements contained in one another.\n\nExample:\n\n```python\nunpack([None,\
+  \ [1, ({2, 3}, {'foo': 'bar'})]]) == [None, 1, 2, 3, 'foo', 'bar']\n```\n\nNote:\
+  \ you don't have to bother about the order of the elements, especially when unpacking\
+  \ a `dict` or a `set`. Just unpack all the elements."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def unpack : NestedType → List (String ⊕ Int) := sorry\n\ndef isNested\
+  \ : NestedType → Bool := sorry\n"
+"vc-theorems": "theorem unpack_flattens_nested : ∀ (x : NestedType),\n  let result\
+  \ := unpack x\n  -- Result is a list of non-nested values\n  result.length > 0 :=\
+  \ sorry\n\n\ntheorem unpack_preserves_string : ∀ (s : String),\n  unpack (NestedType.str\
+  \ s) = [Sum.inl s] := sorry \n\n\ntheorem unpack_preserves_list_ints : ∀ (lst :\
+  \ List Int),\n  let nested := lst.map NestedType.int\n  let result := unpack (NestedType.lst\
+  \ nested)\n  -- All elements are preserved and length is preserved\n  result.length\
+  \ = lst.length ∧\n  ∀ (x : Int), x ∈ lst → Sum.inr x ∈ result := sorry\n\n/--\n\
+  info: expected2\n-/\n#guard_msgs in\n#eval sorted unpack(test2)\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

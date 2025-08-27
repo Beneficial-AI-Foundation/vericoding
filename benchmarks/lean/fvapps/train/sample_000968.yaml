@@ -1,0 +1,32 @@
+"vc-description": "Dr. S. De teaches computer architecture in NIT Patna. Whenever\
+  \ he comes across any good question(with complexity $k$), he gives that question\
+  \ to students within roll number range $i$ and $j$\nAt the start of semester he\
+  \ assigns score of $10$ to every student in his class if a student submits a question\
+  \ of complexity $k$, his score gets multiplied by $k$\nThis month he gave $M$ questions\
+  \ and he is wondering what will be mean of maximum scores of all the student. He\
+  \ is busy in improving his finger print attendance module, can you help him?\nInput\
+  \ file may be large so try to use fast input output\n\n-----Input:-----\n- First\
+  \ line will contain $T$, number of testcases. Then the testcases follow. \n- Each\
+  \ testcase contains of a First line of input, two integers $N, M$ i.e. Number of\
+  \ students in the class and number of questions given in this month. \n- Next $M$\
+  \ lines contains 3 integers -$i, j, k$ i.e. starting roll number, end roll number\
+  \ and complexity of the question\n\n-----Output:-----\nFor each testcase, output\
+  \ in a single line answer - $floor$ value of Mean of maximum possible score for\
+  \ all students.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n- $1 \\leq N,\
+  \ M \\leq 10^5$\n- $1 \\leq i \\leq j \\leq N$\n- $1 \\leq k \\leq 100$\n\n-----Subtasks-----\n\
+  Subtask1 \n- \n$1 \\leq T \\leq 10$\n- \n$1 \\leq N, M \\leq 10^4$\nSubtask2\n-\
+  \ \nOriginal Constraints \n\n-----Sample Input:-----\n1\n5 3\n1 3 5\n2 5 2\n3 4\
+  \ 7\n\n-----Sample Output:-----\n202\n\n-----EXPLANATION:-----\nInitial score of\
+  \ students will be : $[10, 10, 10, 10, 10]$\nafter solving question 1 scores will\
+  \ be: $[50, 50, 50, 10, 10]$\nafter solving question 2 scores will be: $[50, 100,\
+  \ 100, 20, 20]$\nafter solving question 1 scores will be: $[50, 100, 700, 140, 20]$\n\
+  Hence after all questions mean of maximum scores will $(50+100+700+140+20)/5 = 202$"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_mean_scores (n m : Nat) (questions : List (Nat ×\
+  \ Nat × Nat)) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem empty_questions (n m : Nat)\n  (h1 : 1 ≤ n ∧ n ≤ 100)\n  (h2\
+  \ : m ≤ 10) :\n  calculate_mean_scores n 0 [] = 10 := by\n  sorry\n\n\ntheorem all_students_same_multiplier\
+  \ (n m k : Nat)\n  (h1 : 1 ≤ n ∧ n ≤ 100)\n  (h2 : m ≤ 10) \n  (h3 : 1 ≤ k ∧ k ≤\
+  \ 10) :\n  calculate_mean_scores n 1 [(1, n, k)] = 10 * k := by\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

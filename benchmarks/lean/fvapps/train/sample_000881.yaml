@@ -1,0 +1,28 @@
+"vc-description": "Chef has come to a 2 dimensional garden in which there are N points.\
+  \ Each point has coordinates (x, y), where x can either be 1 or 2 or 3. Chef will\
+  \ now choose every triplet of these N points and make a triangle from it. You need\
+  \ to tell the sum of areas of all the triangles the Chef makes.\nNote that some\
+  \ of the triplets might not form proper triangles, and would end up as a line or\
+  \ a point (ie. degenerate), but that is fine because their area will be zero.\n\n\
+  -----Input-----\n- The first line contains a single integer T, the number of test\
+  \ cases. The description of each testcase follows.\n- The first line of each test\
+  \ case contains an integer N denoting the number of points on the plane.\n- The\
+  \ next N lines contain 2 space separated integers x and y denoting the coordinates\
+  \ of the points. \n\n-----Output-----\nFor each test case, output a single line\
+  \ containing the answer. Your answer will be considered correct if the absolute\
+  \ error is less than or equal to 10-2.\n\n-----Constraints-----\n- 1 ≤ T ≤ 20\n\
+  - 1 ≤ N ≤ 2000\n- 1 ≤ x ≤ 3\n- 1 ≤ y ≤106\n- All (x, y) pairs are distinct\n\n-----Example-----\n\
+  Input:\n2\n3\n1 1\n2 1\n3 3\n4\n1 1\n2 2\n2 1\n3 3\n\nOutput:\n1.0\n2.0\n\n-----Explanation:-----\n\
+  Test Case 1: There is only one triangle which has non-zero area, and it's area is\
+  \ 1, hence the output.\nTest Case 2: Let the points be A(1,1), B(2,2), C(2,1), D(3,3).\
+  \ There are 3 non degenerate triangles possible. \n\n-  area ABC = 0.5\n-  area\
+  \ BCD = 0.5\n-  area ACD = 1\nTotal area = 2"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Point := Prod Float Float\n\ndef calculate_triangle_area_sum\
+  \ : List Point → Float := sorry\n"
+"vc-theorems": "theorem known_case_1 :\n  let points := [(1.0,1.0), (2.0,1.0), (3.0,3.0)]\n\
+  \  Float.abs (calculate_triangle_area_sum points - 1.0) < 0.01 := sorry\n\n\ntheorem\
+  \ known_case_2 :\n  let points := [(1.0,1.0), (2.0,2.0), (2.0,1.0), (3.0,3.0)]\n\
+  \  Float.abs (calculate_triangle_area_sum points - 2.0) < 0.01 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

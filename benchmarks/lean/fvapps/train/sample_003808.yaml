@@ -1,0 +1,24 @@
+"vc-description": "Write a function that takes an arbitrary number of strings and\
+  \ interlaces them (combines them by alternating characters from each string).\n\n\
+  For example `combineStrings('abc', '123')` should return `'a1b2c3'`.\n\nIf the strings\
+  \ are different lengths the function should interlace them until each string runs\
+  \ out, continuing to add characters from the remaining strings.\n\nFor example `combineStrings('abcd',\
+  \ '123')` should return `'a1b2c3d'`.\n\nThe function should take any number of arguments\
+  \ and combine them.\n\nFor example `combineStrings('abc', '123', '£$%')` should\
+  \ return `'a1£b2$c3%'`.\n\n**Note: if only one argument is passed return only that\
+  \ string. If no arguments are passed return an empty string.**"
+"vc-preamble": "import Imports.AllImports\n\ndef combine_strings : List String → String\n\
+  \  | _ => sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countChar (s : String) (c : Char) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem combine_strings_length (strings : List String) :\n  (combine_strings\
+  \ strings).length = List.foldl (· + ·) 0 (strings.map String.length) :=\nsorry\n\
+  \n\ntheorem combine_strings_freq (strings : List String) (s : String) (c : Char)\
+  \ \n  (h : s ∈ strings) :\n  (countChar (combine_strings strings) c) ≥ \n  (countChar\
+  \ s c) :=\nsorry\n\n\ntheorem combine_strings_empty :\n  combine_strings [] = \"\
+  \" :=\nsorry\n\n\ntheorem combine_strings_singleton (s : String) :\n  combine_strings\
+  \ [s] = s :=\nsorry\n\n/--\ninfo: 'abc'\n-/\n#guard_msgs in\n#eval combine_strings\
+  \ \"abc\"\n\n/--\ninfo: 'a1b2c3'\n-/\n#guard_msgs in\n#eval combine_strings \"abc\"\
+  \ \"123\"\n\n/--\ninfo: 'a1$b2%c3^d&'\n-/\n#guard_msgs in\n#eval combine_strings\
+  \ \"abcd\" \"123\" \"$%^&\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

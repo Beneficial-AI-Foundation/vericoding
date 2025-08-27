@@ -1,0 +1,28 @@
+"vc-description": "Raj is suffering from shot term memory loss so  he is unable to\
+  \ remember his laptop password  but he has a list of some string and the only thing\
+  \ that he remember about his password is alphanumeric and also that all the characters\
+  \ are unique.\nGiven a list of strings, your task is to find a valid password.\n\
+  \n-----Input-----\nEach String contains lower case alphabets and 0-9.\n\n-----Output-----\n\
+  print \"Invalid\"(without quotes) if password is not valid else print \"Valid\"\
+  (without quotes) and stop processing input after it.\n\n-----Constraints-----\n\
+  1<=length of string <=100\n\n-----Example-----\nInput:\nabsdbads\nasdjenfef\ntyerbet\n\
+  abc564\n\nOutput:\nInvalid\nInvalid\nInvalid\nValid"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_valid_password (s : String) : PasswordResult :=\n  sorry\n"
+"vc-theorems": "theorem empty_string_invalid :\n  check_valid_password \"\" = PasswordResult.Invalid\
+  \ := by\n  sorry\n\n\ntheorem duplicate_chars_invalid (s : String) (h: s.length\
+  \ ≥ 2) \n  (h2: ∃ c, c ∈ s.data) : \n  let s' := s ++ (String.mk [s.data[0]!]) \n\
+  \  check_valid_password s' = PasswordResult.Invalid := by\n  sorry\n\n\ntheorem\
+  \ unique_alphanumeric_valid (s : String) \n  (h1: s.length > 0)\n  (h2: ∀ c ∈ s.data,\
+  \ c.isAlphanum)\n  (h3: ∀ i j, i < s.length → j < s.length → i ≠ j → s.data[i]!\
+  \ ≠ s.data[j]!) :\n  check_valid_password s = PasswordResult.Valid := by\n  sorry\n\
+  \n\ntheorem non_alphanumeric_invalid (s : String)\n  (h1: s.length > 0) \n  (h2:\
+  \ ∃ c ∈ s.data, !c.isAlphanum) :\n  check_valid_password s = PasswordResult.Invalid\
+  \ := by\n  sorry\n\n\ntheorem result_is_valid_or_invalid (s : String) :\n  (check_valid_password\
+  \ s = PasswordResult.Valid) ∨ \n  (check_valid_password s = PasswordResult.Invalid)\
+  \ := by\n  sorry\n\n/--\ninfo: expected[i]\n-/\n#guard_msgs in\n#eval check_valid_password\
+  \ passwords[i]\n\n/--\ninfo: 'Valid'\n-/\n#guard_msgs in\n#eval check_valid_password\
+  \ \"abc123\"\n\n/--\ninfo: 'Invalid'\n-/\n#guard_msgs in\n#eval check_valid_password\
+  \ \"abcc123\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

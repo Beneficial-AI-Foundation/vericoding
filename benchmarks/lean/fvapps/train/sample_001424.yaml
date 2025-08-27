@@ -1,0 +1,30 @@
+"vc-description": "Chef has decided to retire and settle near a peaceful beach. He\
+  \ had always been interested in literature & linguistics. Now when he has leisure\
+  \ time, he plans to read a lot of novels and understand structure of languages.\
+  \ Today he has decided to learn a difficult language called Smeagolese. Smeagolese\
+  \ is an exotic  language whose alphabet is lowercase and uppercase roman letters.\
+  \ Also every word on this alphabet is a meaningful word in Smeagolese. Chef, we\
+  \ all know is a fierce learner - he has given himself a tough exercise. He has taken\
+  \ a word and wants to determine all possible anagrams of the word which mean something\
+  \ in Smeagolese.  Can you help him ?\n\n-----Input-----\nInput begins with a single\
+  \ integer T, denoting the number of test cases. After that T lines follow each containing\
+  \ a single string S - the word chef has chosen. You can assume that 1 <= T <= 500\
+  \ and 1 <= |S| <= 500. You can also assume that no character repeats more than 10\
+  \ times in the string. \n\n-----Output-----\nOutput one line per test case - the\
+  \ number of different words that are anagrams of the word that chef has chosen.\
+  \ As answer can get huge, print it modulo 10^9 + 7\n\n-----Example-----\nInput:\n\
+  4\nab\naa\naA\nAAbaz\n\nOutput:\n2\n1\n2\n60\nDescription:\nIn first case \"ab\"\
+  \ & \"ba\" are two different words. In third case, note that A & a are different\
+  \ alphabets and hence \"Aa\" & \"aA\" are different words."
+"vc-preamble": "import Imports.AllImports\n\ndef count_anagrams (s : String) : Nat\
+  \ := sorry\n\ndef manual_count_anagrams (s : String) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def factorial (n : Nat) : Nat := sorry\n\ntheorem count_anagrams_positive\
+  \ (s : String) (h : s.length > 0) : \n  count_anagrams s ≥ 0 ∧ count_anagrams s\
+  \ < 10^9 + 7 := sorry\n\n\n"
+"vc-theorems": "theorem count_anagrams_letter_order_invariant (s : String) (h : s.length\
+  \ > 0) :\n  count_anagrams s = count_anagrams s := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval count_anagrams \"ab\"\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_anagrams\
+  \ \"aa\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_anagrams \"aA\"\n\n/--\n\
+  info: 60\n-/\n#guard_msgs in\n#eval count_anagrams \"AAbaz\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,45 @@
+"vc-description": "-----Problem Statement-----\nChef studies combinatorics. He tries\
+  \ to group objects by their rang (a positive integer associated with each object).\
+  \ He also gives the formula for calculating the number of different objects with\
+  \ rang N as following:\n\nthe number of different objects with rang N = F(N) = A0\
+  \ + A1 * N + A2 * N2 + A3 * N3.\n\nNow Chef wants to know how many different multisets\
+  \ of these objects exist such that sum of rangs of the objects in the multiset equals\
+  \ to S. You are given the coefficients in F(N) and the target sum S. Please, find\
+  \ the number of different multisets modulo 1,000,000,007.\n\nYou should consider\
+  \ a multiset as an unordered sequence of integers. Two multisets are different if\
+  \ and only if there at least exists one element which occurs X times in the first\
+  \ multiset but Y times in the second one, where (X ≠ Y).\n\n-----Input-----\nThe\
+  \ first line of the input contains an integer T denoting the number of test cases.\
+  \ The description of T test cases follows. \n\nThe first line of each test case\
+  \ contains four integers A0, A1, A2, A3. The second line contains an integer S.\n\
+  \n-----Output-----\nFor each test case, output a single line containing a single\
+  \ integer - the answer to the test case modulo 1,000,000,007.\n\n-----Constraints-----\n\
+  - 1 ≤ T ≤ 500\n- 1 ≤ S ≤ 100\n- 0 ≤ Ai ≤ 1000\n- Sum of all S for all test cases\
+  \ is not greater than 500. It's guaranteed that at least one Ai is non-zero.\n\n\
+  -----Example-----\nInput:\n4\n1 0 0 0\n1\n1 0 0 0\n3\n0 1 0 0\n2\n2 3 1 4\n10\n\n\
+  Output:\n1\n3\n3\n213986343\n\n-----Explanation-----\nExample case 2. \n\nIn the\
+  \ second example function looks as follows F(N) = 1. So for each rang there is a\
+  \ single object of the rang. To get multiset with sum of rangs equal to 3, you can\
+  \ pick: three objects of rang 1, or one object of rang 1 and one of rang 2, or only\
+  \ one object of rang 3. \nExample case 3. \n\nIn the third example function looks\
+  \ as follows F(N) = N. So, you have one distinct object of rang 1, two distinct\
+  \ objects of rang 2, three distinct objects of rang 3 and so on. To get\nmultiset\
+  \ with sum of rangs equal to 2, you can pick: two objects of rang 1, one of objects\
+  \ of rang 2 (two ways)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD : Nat := 1000000007\n\ndef calculate_multisets (coef :\
+  \ Array Int) (target : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem multisets_properties {coef : Array Int} {target : Nat}\n \
+  \ (h1 : coef.size = 4)\n  (h2 : ∀ i, i < 4 → (-100 : Int) ≤ coef[i]! ∧ coef[i]!\
+  \ ≤ 100)  \n  (h3 : target ≥ 1 ∧ target ≤ 100) :\n  let result := calculate_multisets\
+  \ coef target\n  result ≥ 0 ∧ result < MOD := by\n  sorry\n\n\ntheorem multisets_base_cases\
+  \ {coef : Array Int}\n  (h1 : coef.size = 4)\n  (h2 : ∀ i, i < 4 → (-100 : Int)\
+  \ ≤ coef[i]! ∧ coef[i]! ≤ 100) :\n  let result := calculate_multisets coef 1\n \
+  \ result ≥ 0 ∧ result < MOD := by\n  sorry\n\n\ntheorem multisets_simple_coefficients\
+  \ {target : Nat}\n  (h : target ≥ 1 ∧ target ≤ 100) :\n  let result := calculate_multisets\
+  \ #[1,0,0,0] target \n  result > 0 ∧ result < MOD := by\n  sorry\n\n/--\ninfo: 1\n\
+  -/\n#guard_msgs in\n#eval calculate_multisets #[1, 0, 0, 0] 1\n\n/--\ninfo: 3\n\
+  -/\n#guard_msgs in\n#eval calculate_multisets #[1, 0, 0, 0] 3\n\n/--\ninfo: 3\n\
+  -/\n#guard_msgs in\n#eval calculate_multisets #[0, 1, 0, 0] 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

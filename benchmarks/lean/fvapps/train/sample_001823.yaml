@@ -1,0 +1,29 @@
+"vc-description": "You are given an array points representing integer coordinates\
+  \ of some points on a 2D-plane, where points[i] = [xi, yi].\nThe cost of connecting\
+  \ two points [xi, yi] and [xj, yj] is the manhattan distance between them: |xi -\
+  \ xj| + |yi - yj|, where |val| denotes the absolute value of val.\nReturn the minimum\
+  \ cost to make all points connected. All points are connected if there is exactly\
+  \ one simple path between any two points.\n \nExample 1:\n\nInput: points = [[0,0],[2,2],[3,10],[5,2],[7,0]]\n\
+  Output: 20\nExplanation:\n\nWe can connect the points as shown above to get the\
+  \ minimum cost of 20.\nNotice that there is a unique path between every pair of\
+  \ points.\n\nExample 2:\nInput: points = [[3,12],[-2,5],[-4,1]]\nOutput: 18\n\n\
+  Example 3:\nInput: points = [[0,0],[1,1],[1,0],[-1,1]]\nOutput: 4\n\nExample 4:\n\
+  Input: points = [[-1000000,-1000000],[1000000,1000000]]\nOutput: 4000000\n\nExample\
+  \ 5:\nInput: points = [[0,0]]\nOutput: 0\n\n \nConstraints:\n\n1 <= points.length\
+  \ <= 1000\n-106 <= xi, yi <= 106\nAll pairs (xi, yi) are distinct."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def manhattan_distance (p1 p2 : List Int) : Int := sorry\n\ndef\
+  \ min_cost_connect_points (points : List (List Int)) : Int := sorry\n"
+"vc-theorems": "theorem min_cost_nonnegative (points : List (List Int)) :\n  min_cost_connect_points\
+  \ points ≥ 0 := sorry\n\n\ntheorem single_point_cost (point : List Int) :\n  min_cost_connect_points\
+  \ [point] = 0 := sorry\n\n\ntheorem cost_greater_than_max_distance (points : List\
+  \ (List Int)) :\n  min_cost_connect_points points ≥ \n    (List.foldl (fun acc i\
+  \ =>\n      List.foldl (fun acc' j =>\n        max acc' (manhattan_distance (points.get!\
+  \ i) (points.get! j))) \n      acc\n      (List.range (points.length)))\n    0\n\
+  \    (List.range points.length)) := sorry\n\n\ntheorem cost_upper_bound (points\
+  \ : List (List Int)) (max_dist : Int) :\n  min_cost_connect_points points ≤ max_dist\
+  \ * (points.length - 1) := sorry\n\n\ntheorem translation_invariance (points : List\
+  \ (List Int)) (dx dy : Int) :\n  min_cost_connect_points points = \n    min_cost_connect_points\
+  \ (points.map (fun p => [p.get! 0 + dx, p.get! 1 + dy])) := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

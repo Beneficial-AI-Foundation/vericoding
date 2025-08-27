@@ -1,0 +1,38 @@
+"vc-description": "Given a binary tree, write a function to get the maximum width\
+  \ of the given tree. The width of a tree is the maximum width among all levels.\
+  \ The binary tree has the same structure as a full binary tree, but some nodes are\
+  \ null. \n\nThe width of one level is defined as the length between the end-nodes\
+  \ (the leftmost and right most non-null nodes in the level, where the null nodes\
+  \ between the end-nodes are also counted into the length calculation.\n\nExample\
+  \ 1:\n\nInput: \n\n           1\n         /   \\\n        3     2\n       / \\ \
+  \    \\  \n      5   3     9 \n\nOutput: 4\nExplanation: The maximum width existing\
+  \ in the third level with the length 4 (5,3,null,9).\n\n\n\nExample 2:\n\nInput:\
+  \ \n\n          1\n         /  \n        3    \n       / \\       \n      5   3\
+  \     \n\nOutput: 2\nExplanation: The maximum width existing in the third level\
+  \ with the length 2 (5,3).\n\n\n\nExample 3:\n\nInput: \n\n          1\n       \
+  \  / \\\n        3   2 \n       /        \n      5      \n\nOutput: 2\nExplanation:\
+  \ The maximum width existing in the second level with the length 2 (3,2).\n\n\n\
+  Example 4:\n\nInput: \n\n          1\n         / \\\n        3   2\n       /   \
+  \  \\  \n      5       9 \n     /         \\\n    6           7\nOutput: 8\nExplanation:The\
+  \ maximum width existing in the fourth level with the length 8 (6,null,null,null,null,null,null,7).\n\
+  \n\n\n\nNote:\nAnswer will in the range of 32-bit signed integer."
+"vc-preamble": "import Imports.AllImports\n\ndef widthOfBinaryTree : TreeNode → Nat\n\
+  \  | _ => sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def getHeight : TreeNode → Nat\n  | TreeNode.nil => 0\n  | TreeNode.node\
+  \ _ l r => 1 + Nat.max (getHeight l) (getHeight r)\n"
+"vc-theorems": "theorem width_is_nonnegative (t : TreeNode) :\n  widthOfBinaryTree\
+  \ t ≥ 0 := \n  sorry\n\n\ntheorem width_bounded_by_height (t : TreeNode) :\n  widthOfBinaryTree\
+  \ t ≤ 2 ^ (getHeight t) :=\n  sorry\n\n\ntheorem empty_tree_width :\n  widthOfBinaryTree\
+  \ TreeNode.nil = 0 :=\n  sorry\n\n\ntheorem single_node_width (v : Int) :\n  widthOfBinaryTree\
+  \ (TreeNode.node v TreeNode.nil TreeNode.nil) = 1 :=\n  sorry\n\n\ntheorem linear_tree_width\
+  \ (v : Int) :\n  let leftTree := TreeNode.node v \n    (TreeNode.node v \n     \
+  \ (TreeNode.node v \n        (TreeNode.node v TreeNode.nil TreeNode.nil) \n    \
+  \    TreeNode.nil)\n      TreeNode.nil)\n    TreeNode.nil\n  let rightTree := TreeNode.node\
+  \ v \n    TreeNode.nil\n    (TreeNode.node v \n      TreeNode.nil\n      (TreeNode.node\
+  \ v \n        TreeNode.nil\n        (TreeNode.node v TreeNode.nil TreeNode.nil)))\n\
+  \  widthOfBinaryTree leftTree = 1 ∧ widthOfBinaryTree rightTree = 1 :=\n  sorry\n\
+  \n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval widthOfBinaryTree TreeNode(1)\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval widthOfBinaryTree TreeNode(1)\n\n/--\ninfo: 2\n\
+  -/\n#guard_msgs in\n#eval widthOfBinaryTree TreeNode(1)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

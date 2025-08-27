@@ -1,0 +1,21 @@
+"vc-description": "Given a positive integer num consisting only of digits 6 and 9.\n\
+  Return the maximum number you can get by changing at most one digit (6 becomes 9,\
+  \ and 9 becomes 6).\n \nExample 1:\nInput: num = 9669\nOutput: 9969\nExplanation:\
+  \ \nChanging the first digit results in 6669.\nChanging the second digit results\
+  \ in 9969.\nChanging the third digit results in 9699.\nChanging the fourth digit\
+  \ results in 9666. \nThe maximum number is 9969.\n\nExample 2:\nInput: num = 9996\n\
+  Output: 9999\nExplanation: Changing the last digit 6 to 9 results in the maximum\
+  \ number.\nExample 3:\nInput: num = 9999\nOutput: 9999\nExplanation: It is better\
+  \ not to apply any change.\n \nConstraints:\n\n1 <= num <= 10^4\nnum's digits are\
+  \ 6 or 9."
+"vc-preamble": "import Imports.AllImports\n\ndef countChar (s : String) (c : Char)\
+  \ : Nat :=\n  (s.data.filter (· = c)).length\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def maximum69Number (n : Nat) : Nat := sorry\n\ntheorem maximum69Number_result_geq_input\
+  \ {n : Nat} (h : n > 0) :\n  maximum69Number n ≥ n := sorry\n"
+"vc-theorems": "theorem maximum69Number_digit_length_preserved {n : Nat} (h : n >\
+  \ 0) :\n  String.length (toString (maximum69Number n)) = String.length (toString\
+  \ n) := sorry\n\n/--\ninfo: 9969\n-/\n#guard_msgs in\n#eval maximum69Number 9669\n\
+  \n/--\ninfo: 9999\n-/\n#guard_msgs in\n#eval maximum69Number 9996\n\n/--\ninfo:\
+  \ 9999\n-/\n#guard_msgs in\n#eval maximum69Number 9999\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,32 @@
+"vc-description": "Consider the string `\"adfa\"` and the following rules: \n```Pearl\n\
+  a) each character MUST be changed either to the one before or the one after in alphabet.\
+  \ \nb) \"a\" can only be changed to \"b\" and \"z\" to \"y\". \n```\nFrom our string,\
+  \ we get:\n```Pearl\n\"adfa\" -> [\"begb\",\"beeb\",\"bcgb\",\"bceb\"]\nAnother\
+  \ example: \"bd\" -> [\"ae\",\"ac\",\"ce\",\"cc\"]\n--We see that in each example,\
+  \ one of the possibilities is a palindrome.\n```\nI was working on the code for\
+  \ this but I couldn't quite figure it out. So far I have:\n\n```python\ndef solve(st):\n\
+  \    return [all(ord(x) - ord(y) in [\"FIX\"] for x, y in zip(st, st[::-1]))][0]\n\
+  ```\nI'm not sure what three numbers go into the array labelled `[\"FIX\"]`. This\
+  \ is the only thing missing. \n\nYou will be given a lowercase string and your task\
+  \ is to return `True` if at least one of the possiblities is a palindrome or `False`\
+  \ otherwise. You can use your own code or fix mine. \n\nMore examples in test cases.\
+  \ Good luck!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_options (c : Char) : List Char := sorry\n\ndef solve (s\
+  \ : String) : Bool := sorry\n"
+"vc-theorems": "theorem get_options_a : \n  get_options 'a' = ['b'] := sorry\n\n\n\
+  theorem get_options_z : \n  get_options 'z' = ['y'] := sorry\n\n\ntheorem get_options_middle\
+  \ (c : Char) (prev next : Char) :\n  'a' < c → c < 'z' →\n  get_options c = [prev,\
+  \ next] := sorry \n\n\ntheorem solve_symmetry (s : String) (s_rev : String) :\n\
+  \  s_rev = String.mk s.data.reverse →\n  solve s = solve s_rev := sorry\n\n\ntheorem\
+  \ solve_single_char (c : Char) : \n  'a' ≤ c → c ≤ 'z' →\n  solve c.toString = true\
+  \ := sorry\n\n\ntheorem solve_empty :\n  solve \"\" = true := sorry\n\n\ntheorem\
+  \ solve_edge_chars_az (s : String) :\n  s.length ≥ 2 →\n  s.data.get ⟨0, sorry⟩\
+  \ = 'a' →\n  s.data.get ⟨s.length - 1, sorry⟩ = 'z' →\n  solve s = false := sorry\n\
+  \n\ntheorem solve_edge_chars_za (s : String) :\n  s.length ≥ 2 →\n  s.data.get ⟨0,\
+  \ sorry⟩ = 'z' →\n  s.data.get ⟨s.length - 1, sorry⟩ = 'a' →\n  solve s = false\
+  \ := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval solve \"adfa\"\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval solve \"bd\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval solve \"abzy\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

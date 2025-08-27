@@ -1,0 +1,22 @@
+"vc-description": "In a fictitious city of CODASLAM there were many skyscrapers. The\
+  \ mayor of the city decided to make the city beautiful and for this he decided to\
+  \ arrange the skyscrapers in descending order of their height, and the order must\
+  \ be strictly decreasing but he also didn’t want to waste much money so he decided\
+  \ to get the minimum cuts possible. Your job is to output the minimum value of cut\
+  \ that is possible to arrange the skyscrapers in descending order.\n\n-----Input-----\n\
+  \n*First line of input is the number of sky-scrappers in the city\n*Second line\
+  \ of input is the height of the respective sky-scrappers\n\n\n-----Output-----\n\
+  \n* Your output should be the minimum value of cut required to arrange these sky-scrappers\
+  \ in descending order.\n\n-----Example-----\nInput:\n5\n1 2 3 4 5\n\nOutput:\n8\n\
+  \nBy:\nChintan,Asad,Ashayam,Akanksha"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_cuts_for_skyscrapers (n : Nat) (heights : List Nat) : Nat\
+  \ := sorry\n\ntheorem cuts_non_negative (n : Nat) (heights : List Nat) :\n  min_cuts_for_skyscrapers\
+  \ n heights ≥ 0 := sorry\n"
+"vc-theorems": "theorem single_building_no_cuts (h : Nat) :\n  min_cuts_for_skyscrapers\
+  \ 1 [h] = 0 := sorry\n\n\ntheorem cuts_non_negative_multi (n : Nat) (heights : List\
+  \ Nat) :\n  n ≥ 2 → min_cuts_for_skyscrapers n heights ≥ 0 := sorry\n\n/--\ninfo:\
+  \ 8\n-/\n#guard_msgs in\n#eval min_cuts_for_skyscrapers 5 [1, 2, 3, 4, 5]\n\n/--\n\
+  info: 0\n-/\n#guard_msgs in\n#eval min_cuts_for_skyscrapers 5 [5, 4, 3, 2, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

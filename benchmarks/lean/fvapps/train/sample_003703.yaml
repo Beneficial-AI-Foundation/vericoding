@@ -1,0 +1,27 @@
+"vc-description": "Your Goal is to create a function that takes  two strings, a guess\
+  \ and a phone number. \n\nBased on the guess, the function should display a portion\
+  \ of the phone number:\n\n    guess_my_number('052', '123-451-2345')\n    would\
+  \ return the string: '#2#-#5#-2##5'\n    \n    or\n    \n    guess_my_number('142',\
+  \ '123-451-2345')\n    would return the string: '12#-4#1-2#4#'\n    \nOrder of the\
+  \ guess string should not matter, and should not have duplicates of the ten digitis\
+  \ 0-9. Guess will never be an empty string or contains any other charachters. The\
+  \ phone number will always bea ten digit number in the format ###-###-####.\n\n\
+  The default number of 123-451-2345 should be included, but can be overwriten by\
+  \ a different number if supplied at the time of execution."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def guess_my_number (guess : String) (target : String := \"123-456-7890\"\
+  ) : String := sorry\n\n/-- For any numeric guess, the result should be a properly\
+  \ formatted phone number string -/"
+"vc-theorems": "theorem guess_result_format (guess : String) : \n  let result := guess_my_number\
+  \ guess\n  (String.length result = 12) ∧ \n  (result.data.filter (· = '-')).length\
+  \ = 2 ∧\n  (∀ c, c ∈ result.data → c = '0' ∨ c = '1' ∨ c = '2' ∨ c = '3' ∨ c = '4'\
+  \ ∨ \n                          c = '5' ∨ c = '6' ∨ c = '7' ∨ c = '8' ∨ c = '9'\
+  \ ∨ \n                          c = '#' ∨ c = '-') := sorry\n\n/-- An empty guess\
+  \ should return all digits masked -/\n\ntheorem empty_guess_masks_all (target :\
+  \ String) :\n  guess_my_number \"\" target = \"###-###-####\" := sorry\n\n/-- Result\
+  \ maintains proper phone number format with dashes in correct positions -/\n\ntheorem\
+  \ result_dash_positions (guess : String) (target : String) :\n  let result := guess_my_number\
+  \ guess target\n  let data := result.data\n  String.length result = 12 ∧\n  data[3]!\
+  \ = '-' ∧ \n  data[7]! = '-' := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

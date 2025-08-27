@@ -1,0 +1,20 @@
+"vc-description": "Return the number of distinct non-empty substrings of text that\
+  \ can be written as the concatenation of some string with itself (i.e. it can be\
+  \ written as a + a where a is some string).\n \nExample 1:\nInput: text = \"abcabcabc\"\
+  \nOutput: 3\nExplanation: The 3 substrings are \"abcabc\", \"bcabca\" and \"cabcab\"\
+  .\n\nExample 2:\nInput: text = \"leetcodeleetcode\"\nOutput: 2\nExplanation: The\
+  \ 2 substrings are \"ee\" and \"leetcodeleetcode\".\n\n \nConstraints:\n\n1 <= text.length\
+  \ <= 2000\ntext has only lowercase English letters."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def distinctEchoSubstrings (text: String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem output_type_and_range (text: String)\n  (h: text.length >\
+  \ 0) :\n  distinctEchoSubstrings text ≥ 0 ∧ \n  distinctEchoSubstrings text ≤ text.length\
+  \ / 2 :=\n  sorry\n\n\ntheorem repeating_char (text: String) \n  (h1: text.length\
+  \ > 0)\n  (h2: ∀ (i j : String.Pos), text.get i = text.get j) :\n  distinctEchoSubstrings\
+  \ text = text.length / 2 :=\n  sorry\n\n\ntheorem doubled_string (text: String)\n\
+  \  (h: text.length > 0) :\n  distinctEchoSubstrings (text ++ text) ≥ 1 :=\n  sorry\n\
+  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval distinct_echo_substrings \"abcabcabc\"\
+  \n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval distinct_echo_substrings \"leetcodeleetcode\"\
+  \n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval distinct_echo_substrings \"aaa\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

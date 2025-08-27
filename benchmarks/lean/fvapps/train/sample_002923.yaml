@@ -1,0 +1,29 @@
+"vc-description": "In this Kata, you will be given directions and your task will be\
+  \ to find your way back. \n```Perl\nsolve([\"Begin on Road A\",\"Right on Road B\"\
+  ,\"Right on Road C\",\"Left on Road D\"]) = ['Begin on Road D', 'Right on Road C',\
+  \ 'Left on Road B', 'Left on Road A']\nsolve(['Begin on Lua Pkwy', 'Right on Sixth\
+  \ Alley', 'Right on 1st Cr']) =  ['Begin on 1st Cr', 'Left on Sixth Alley', 'Left\
+  \ on Lua Pkwy']\n```\n\nMore examples in test cases. \n\nGood luck!\n\nPlease also\
+  \ try [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)"
+"vc-preamble": "import Imports.AllImports\n\ndef solve : List String → List String\
+  \ := sorry\n\ndef extractDirections (commands : List String) : List Direction :=\
+  \ sorry\n\n\ndef extractRoads (commands : List String) : List String := sorry\n\n\
+  def isLeftOrRight (d : Direction) : Bool :=\n  match d with\n  | Direction.Left\
+  \ => true\n  | Direction.Right => true\n  | _ => false\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def allLeftOrRight (directions : List Direction) : Bool := \n \
+  \ directions.all isLeftOrRight\n"
+"vc-theorems": "theorem solution_preserves_length (commands : List String) :\n  List.length\
+  \ (solve commands) = List.length commands := sorry\n\n\ntheorem solution_preserves_roads\
+  \ (commands : List String) :\n  extractRoads (solve commands) = extractRoads commands\
+  \ := sorry\n\n\ntheorem first_direction_valid (commands : List String) :\n  commands\
+  \ ≠ [] →\n  let result := solve commands\n  let firstDir := extractDirections result\
+  \ |>.head!\n  firstDir = Direction.Begin ∨ firstDir = Direction.Left ∨ firstDir\
+  \ = Direction.Right := sorry\n\n\ntheorem directions_alternate (commands : List\
+  \ String) :\n  List.length commands > 1 →\n  allLeftOrRight (List.tail! (extractDirections\
+  \ (solve commands))) := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval\
+  \ solve [\"Begin on 3rd Blvd\", \"Right on First Road\", \"Left on 9th Dr\"]\n\n\
+  /--\ninfo: expected2\n-/\n#guard_msgs in\n#eval solve [\"Begin on Road A\", \"Right\
+  \ on Road B\", \"Right on Road C\", \"Left on Road D\"]\n\n/--\ninfo: expected3\n\
+  -/\n#guard_msgs in\n#eval solve [\"Begin on Road A\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

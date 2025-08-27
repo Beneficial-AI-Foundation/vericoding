@@ -1,0 +1,54 @@
+"vc-description": "Naturally, the magical girl is very good at performing magic. She\
+  \ recently met her master wizard Devu, who gifted her R potions of red liquid, \n\
+  B potions of blue liquid, and G potions of green liquid.\n\n- \nThe red liquid potions\
+  \ have liquid amounts given by r[1], ..., r[R] liters. \n\n- \nThe green liquid\
+  \ potions have liquid amounts given by g[1], ..., g[G] liters. \n\n- \nThe blue\
+  \ liquid potions have liquid amounts given by b[1], ..., b[B] liters. \n\nShe want\
+  \ to play with the potions by applying magic tricks on them. In a single magic trick,\
+  \ she will choose a particular color. Then she will pick all the potions of the\
+  \ chosen color and decrease the amount of liquid in them to half (i.e. if initial\
+  \ amount \nof liquid is x, then the amount after decrement will be x / 2  where\
+  \ division is integer division, e.g. 3 / 2 = 1 and 4 / 2 = 2). \n\nBecause she has\
+  \ to go out of station to meet her uncle Churu, a wannabe wizard, only M minutes\
+  \ are left for her. In a single minute, she can perform at most one magic trick.\
+  \ Hence, she can perform at most M magic tricks.\n\nShe would like to minimize the\
+  \ maximum amount of liquid among all of Red, Green and Blue colored potions. Formally\
+  \ Let v be the maximum value of amount of liquid in any potion. We want to minimize\
+  \ the value of v.\nPlease help her.\n\n-----Input-----\n\nFirst line of the input\
+  \ contains an integer T denoting the number of test cases.\nThen for each test case,\
+  \ we have four lines.\n\nThe first line contains four space separated integers R,\
+  \ G, B, M. The next 3 lines will describe the amount of different color liquids\
+  \ (r, g, b), which are separated by space.\n\n-----Output-----\nFor each test case,\
+  \ print a single integer denoting the answer of the problem.\n\n-----Constraints-----\n\
+  -  1 ≤ T ≤ 1000 \n-  1 ≤ R, G, B, M ≤ 100 \n-  1 ≤ r[i], g[i], b[i] ≤ 10^9 \n\n\
+  -----Example-----\nInput:\n3\n1 1 1 1\n1\n2\n3\n1 1 1 1\n2\n4\n6\n3 2 2 2\n1 2 3\n\
+  2 4\n6 8\nOutput:\n2\n4\n4\n\n-----Explanation-----\nExample case 1. Magical girl\
+  \ can pick the blue potion and make its liquid amount half. So the potions will\
+  \ now have amounts 1 2 1. Maximum of these values is 2. Hence answer is 2."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_magic_potions (R G B M : Nat) (r g b : List Nat) : Nat\
+  \ := sorry\n\ndef list_max (l : List Nat) : Nat :=\n  match l with\n  | [] => 0\n\
+  \  | x::xs => List.foldl max x xs\n"
+"vc-theorems": "theorem magic_potions_result_non_negative \n  (R G B M : Nat)\n  (r\
+  \ g b : List Nat)\n  (hR : R > 0)\n  (hG : G > 0) \n  (hB : B > 0)\n  (hr : r.length\
+  \ = R)\n  (hg : g.length = G)\n  (hb : b.length = B)\n  (h_non_empty : ∀ x ∈ r ++\
+  \ g ++ b, x > 0) :\n  solve_magic_potions R G B M r g b ≥ 0 := sorry\n\n\ntheorem\
+  \ magic_potions_result_bounded\n  (R G B M : Nat)\n  (r g b : List Nat)\n  (hR :\
+  \ R > 0)\n  (hG : G > 0)\n  (hB : B > 0)\n  (hr : r.length = R)\n  (hg : g.length\
+  \ = G) \n  (hb : b.length = B)\n  (h_non_empty : ∀ x ∈ r ++ g ++ b, x > 0) :\n \
+  \ solve_magic_potions R G B M r g b ≤ max (max (list_max r) (list_max g)) (list_max\
+  \ b) := sorry\n\n\ntheorem magic_potions_zero_operations\n  (R G B : Nat)\n  (r\
+  \ g b : List Nat) \n  (hR : R > 0)\n  (hG : G > 0)\n  (hB : B > 0)\n  (hr : r.length\
+  \ = R)\n  (hg : g.length = G)\n  (hb : b.length = B)\n  (h_non_empty : ∀ x ∈ r ++\
+  \ g ++ b, x > 0) :\n  solve_magic_potions R G B 0 r g b = max (max (list_max r)\
+  \ (list_max g)) (list_max b) := sorry\n\n\ntheorem magic_potions_single_elements\n\
+  \  (M : Nat)\n  (r g b : List Nat)\n  (hr : r.length = 1)\n  (hg : g.length = 1)\n\
+  \  (hb : b.length = 1)\n  (h_non_empty : ∀ x ∈ r ++ g ++ b, x > 0) :\n  let max_val\
+  \ := max (max (list_max r) (list_max g)) (list_max b)\n  solve_magic_potions 1 1\
+  \ 1 M r g b ≤ max_val ∧ \n  solve_magic_potions 1 1 1 M r g b ≥ max_val / (2^M)\
+  \ := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve_magic_potions 1 1 1\
+  \ 1 [1] [2] [3]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve_magic_potions 1\
+  \ 1 1 1 [2] [4] [6]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve_magic_potions\
+  \ 3 2 2 2 [1, 2, 3] [2, 4] [6, 8]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,25 @@
+"vc-description": "Share price\n===========\n\nYou spent all your saved money to buy\
+  \ some shares.\n\nYou bought it for `invested`, and want to know how much it's worth,\
+  \ but all the info you can quickly get are just the change the shares price made\
+  \ in percentages.\n\nYour task:\n----------\nWrite the function `sharePrice()` that\
+  \ calculates, and returns the current price of your share, given the following two\
+  \ arguments:\n\n- `invested`(number), the amount of money you initially invested\
+  \ in the given share\n\n- `changes`(array of numbers), contains your shares daily\
+  \ movement percentages\n\nThe returned number, should be in string format, and it's\
+  \ precision should be fixed at 2 decimal numbers.\n\nHave fun!\n\n>**Hint:** Try\
+  \ to write the function in a functional manner!"
+"vc-preamble": "import Imports.AllImports\n\ndef share_price (invested : Float) (changes\
+  \ : List Float) : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def parseFloat? (s : String) : Option Float :=\n  sorry\n"
+"vc-theorems": "theorem share_price_valid_format {invested : Float} {changes : List\
+  \ Float}\n  (h1 : invested > 0)\n  (h2 : ∀ c ∈ changes, c ≥ -99.99 ∧ c ≤ 1000) :\n\
+  \  ∃ p d, \n    share_price invested changes = p ++ \".\" ++ d ∧  \n    d.length\
+  \ = 2 ∧\n    (parseFloat? (share_price invested changes)).isSome ∧ \n    ∃ x, parseFloat?\
+  \ (share_price invested changes) = some x ∧ x ≥ 0 := sorry\n\n\ntheorem share_price_empty_changes\
+  \ {invested : Float}\n  (h : invested > 0) :\n  share_price invested [] = toString\
+  \ invested ++ \".\" ++ \"00\" := sorry\n\n/--\ninfo: '100.00'\n-/\n#guard_msgs in\n\
+  #eval share_price 100 []\n\n/--\ninfo: '75.00'\n-/\n#guard_msgs in\n#eval share_price\
+  \ 100 [-50, 50]\n\n/--\ninfo: '1113.64'\n-/\n#guard_msgs in\n#eval share_price 1000\
+  \ [0, 2, 3, 6]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

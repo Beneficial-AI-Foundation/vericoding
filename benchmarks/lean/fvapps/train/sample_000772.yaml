@@ -1,0 +1,26 @@
+"vc-description": "Dustin, is the head of an Intelligence agency. He wants to send\
+  \ a secret message S$S$ to his colleague.The message is a single word consisting\
+  \ of only lowercase english letters but he decides to encrypt the message for security\
+  \ reasons. He makes a string M$M$ of length N$N$, such that after deleting a substring\
+  \ of non-zero length from M$M$, the remaining string is S$S$.\nCalculate the number\
+  \ of all such possible strings he can form.\n\n-----Input:-----\n- First line will\
+  \ contain T$T$, number of testcases. Then the testcases follow.\n- For each testcase\
+  \ the there is a single line which contains an integer, N$N$ and then a string S$S$.\n\
+  \n-----Output:-----\nFor each testcase, output the number of possible strings modulo\
+  \ 109+7$10^9+7$.\n\n-----Constraints-----\n- 1≤T≤50$1 \\leq T \\leq 50$\n- 1≤N≤1018$1\
+  \ \\leq N \\leq 10^{18}$\n- 1≤|S|≤105$1 \\leq |S| \\leq 10^5$\n- S$S$ can contain\
+  \ only lowercase English letters.\n\n-----Sample Input:-----\n2\n\n3 a\n\n3 ab \
+  \    \n\n-----Sample Output:-----\n1326\n\n76"
+"vc-preamble": "import Imports.AllImports\n\ndef count_possible_strings (n : Nat)\
+  \ (s : String) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD := 1000000007\n\n\n\ntheorem count_possible_strings_short_input\
+  \ (n : Nat) (s : String) :\n  n ≤ s.length → count_possible_strings n s = 0 :=\n\
+  sorry\n"
+"vc-theorems": "theorem count_possible_strings_long_input (n : Nat) (s : String) :\n\
+  \  n > s.length → count_possible_strings n s > 0 :=\nsorry\n\n\ntheorem count_possible_strings_monotone_in_string_length\
+  \ (s : String) :\n  let n := s.length + 2\n  count_possible_strings n s > count_possible_strings\
+  \ n (s.append \"a\") :=\nsorry\n\n/--\ninfo: 1326\n-/\n#guard_msgs in\n#eval count_possible_strings\
+  \ 3 \"a\"\n\n/--\ninfo: 76\n-/\n#guard_msgs in\n#eval count_possible_strings 3 \"\
+  ab\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

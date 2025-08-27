@@ -1,0 +1,27 @@
+"vc-description": "Validate if a given string is numeric.\n\nSome examples:\n\"0\"\
+  \ => true\n\" 0.1 \" => true\n\"abc\" => false\n\"1 a\" => false\n\"2e10\" => true\n\
+  \nNote: It is intended for the problem statement to be ambiguous. You should gather\
+  \ all requirements up front before implementing one.\n\nUpdate (2015-02-10):\nThe\
+  \ signature of the C++ function had been updated. If you still see your function\
+  \ signature accepts a const char * argument, please click the reload button to reset\
+  \ your code definition."
+"vc-preamble": "import Imports.AllImports\n\ndef is_numeric (s : String) : Bool :=\
+  \ sorry\n\ndef isInteger (s : String) : Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isDecimal (s : String) : Bool := sorry\ndef isWhitespace (c\
+  \ : Char) : Bool := c = ' ' || c = '\\t' || c = '\\n' || c = '\\r'\n"
+"vc-theorems": "theorem integer_pattern (s : String) \n  (h : isInteger s) :\n  is_numeric\
+  \ s = true := sorry\n\n\ntheorem decimal_pattern (s : String)\n  (h : isDecimal\
+  \ s) :\n  is_numeric s = true := sorry\n\n\ntheorem invalid_chars (s : String)\n\
+  \  (h₁ : s.length > 0)\n  (h₂ : ∀ c ∈ s.data, c ∈ ['a', 'b', 'c', 'd', 'f', 'g',\
+  \ 'h', 'i', 'j', 'k', 'l', \n                           'm', 'n', 'o', 'p', 'q',\
+  \ 'r', 's', 't', 'u', 'v', 'w',\n                           'x', 'y', 'z', 'A',\
+  \ 'B', 'C', 'D', 'F', 'G', 'H', 'I',\n                           'J', 'K', 'L',\
+  \ 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',\n                           'U', 'V',\
+  \ 'W', 'X', 'Y', 'Z', '!', '@', '#', '$', '%',\n                           '^',\
+  \ '&', '*', '(', ')', '_', '{', '}', '[', ']', ';',\n                          \
+  \ ':', '<', '>', '?'])\n  (h₃ : ∀ c ∈ s.data, c ≠ 'e' ∧ c ≠ 'E') :\n  is_numeric\
+  \ s = false := sorry\n\n\ntheorem whitespace_handling (s : String) (ws : String)\n\
+  \  (h₁ : ∀ c ∈ ws.data, isWhitespace c)\n  (h₂ : isInteger s ∨ isDecimal s) \n \
+  \ (h₃ : s.trim ≠ \"\") :\n  is_numeric (ws ++ s ++ ws) = is_numeric s := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

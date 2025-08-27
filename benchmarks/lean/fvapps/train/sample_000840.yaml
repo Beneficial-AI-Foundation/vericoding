@@ -1,0 +1,39 @@
+"vc-description": "As we all know, Dhoni loves drinking milk. Once he and Sir Jadeja\
+  \ were invited in the inauguration of a Dairy company in Ranchi.\n\nThe company\
+  \ had arranged  n   jars of milk from various breeds of cows , jar number  i  containing\
+  \  a[i]  litres of milk. Since Dhoni loves driking milk more than Sir Jadeja, so\
+  \ Kohli suggested a plan for them. His plan was that each time Dhoni will choose\
+  \ a jar containing the maximum amount of milk. If this jar has less than  k   litres\
+  \ of milk or if Dhoni has already drunk more than  m  number of times from this\
+  \ jar, then the milk contained in the jar will be drunk by Sir Jadeja. Sir Jadeja\
+  \ will drink all the milk left in that jar. Otherwise Dhoni will drink exactly k\
+  \  litres of milk from the jar and put it back at its position. Dhoni will do so\
+  \ until he has given all jars to Sir Jadeja.\n\nYou have to calculate how much milk\
+  \ Sir Jadega will get after Dhoni satisfies his hunger modulo 1,000,000,007.\n\n\
+  -----Input-----\n- The first line of the input contains an integer T denoting the\
+  \ number of test cases. The description of T test cases follows.\n-  The first line\
+  \ of each test case contains integer N , M, K denoting the number of milk jars,\
+  \ maximum number of time Dhoni will drink from any jar and maximum amount of milk\
+  \ Dhoni will drink at any time respectively. The second line contains N space-separated\
+  \ integers A1, A2, ..., AN denoting the amount of milk in each jar. \n\n-----Output-----\n\
+  - For each test case, output a single line containing the amount of milk Sir Jadega\
+  \ will get modulo 1,000,000,007.\n\n-----Constraints-----\n- 1 ≤ T ≤  10 \n- 1 ≤\
+  \ N ≤  10^5 \n- 0 ≤ M ≤  10^6 \n- 1 ≤ K ≤  10^6 \n- 0 ≤ Ai ≤  10^9 \n\n-----Example-----\n\
+  Input:\n1\n3 3 3\n15 8 10\n\nOutput:\n9"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_milk_share (N M K : Nat) (A : List Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem milk_share_non_negative (N M K : Nat) (A : List Nat)\n   \
+  \     (h1 : N > 0) (h2 : M > 0) (h3 : K > 0) (h4 : A.length > 0) :\n  calculate_milk_share\
+  \ N M K A ≥ 0 := sorry\n\n\ntheorem milk_share_less_than_modulo (N M K : Nat) (A\
+  \ : List Nat) \n        (h1 : N > 0) (h2 : M > 0) (h3 : K > 0) (h4 : A.length >\
+  \ 0) :\n  calculate_milk_share N M K A < 1000000007 := sorry\n\n\ntheorem milk_share_extension\
+  \ (N M K : Nat) (A : List Nat)\n        (h1 : N > 0) (h2 : M > 0) (h3 : K > 0) (h4\
+  \ : A.length > 0) :\n  calculate_milk_share N M K (A ++ [0]) = calculate_milk_share\
+  \ N M K A := sorry\n\n\n\n\ntheorem milk_share_zero_array (N M K : Nat)\n      \
+  \  (h1 : N > 0) (h2 : M > 0) (h3 : K > 0) :\n  calculate_milk_share N M K (List.replicate\
+  \ N 0) = 0 := sorry\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval calculate_milk_share\
+  \ 3 3 3 [15, 8, 10]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval calculate_milk_share\
+  \ 2 2 2 [5, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

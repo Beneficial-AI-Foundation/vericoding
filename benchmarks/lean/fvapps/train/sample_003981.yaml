@@ -1,0 +1,28 @@
+"vc-description": "You get a \"text\" and have to shift the vowels by \"n\" positions\
+  \ to the right.\n(Negative value for n should shift to the left.)\n\"Position\"\
+  \ means the vowel's position if taken as one item in a list of all vowels within\
+  \ the string.\nA shift by 1 would mean, that every vowel shifts to the place of\
+  \ the next vowel.\nShifting over the edges of the text should continue at the other\
+  \ edge.\n\nExample:\n\ntext = \"This is a test!\"\nn = 1\noutput = \"Thes is i tast!\"\
+  \n\ntext = \"This is a test!\"\nn = 3\noutput = \"This as e tist!\"\n\nIf text is\
+  \ null or empty return exactly this value.\nVowels are \"a,e,i,o,u\".\n\n\n\nHave\
+  \ fun coding it and please don't forget to vote and rank this kata! :-)\n\nI have\
+  \ created other katas. Have a look if you like coding and challenges."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def vowel_shift (s : Option String) (n : Int) : Option String :=\
+  \ sorry\n\ntheorem empty_cases (n : Int) : \n  vowel_shift none n = none ∧ \n  vowel_shift\
+  \ (some \"\") n = some \"\" := sorry\n"
+"vc-theorems": "theorem zero_shift (s : String) :\n  vowel_shift (some s) 0 = some\
+  \ s := sorry\n\n\ntheorem full_rotation {s : String} (h : s ≠ \"\") :\n  let vowel_count\
+  \ := (s.data.filter (fun c => ['a', 'e', 'i', 'o', 'u'].contains c.toLower)).length\n\
+  \  vowel_count > 0 → \n  vowel_shift (some s) vowel_count = some s := sorry\n\n\n\
+  theorem shift_composition {s : String} (h : s ≠ \"\") (n1 n2 : Int) \n  (h1 : n1\
+  \ ≥ -100) (h2 : n1 ≤ 100) (h3 : n2 ≥ -100) (h4 : n2 ≤ 100) :\n  match vowel_shift\
+  \ (some s) n1 with\n  | none => True\n  | some s1 => \n    match vowel_shift (some\
+  \ s1) n2 with\n    | none => True\n    | some s2 => s2 = (vowel_shift (some s) (n1\
+  \ + n2)).get!\n  := sorry\n\n/--\ninfo: 'Thes is i tast!'\n-/\n#guard_msgs in\n\
+  #eval vowel_shift \"This is a test!\" 1\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval\
+  \ vowel_shift \"\" 0\n\n/--\ninfo: 'This as e tist!'\n-/\n#guard_msgs in\n#eval\
+  \ vowel_shift \"This is a test!\" -1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

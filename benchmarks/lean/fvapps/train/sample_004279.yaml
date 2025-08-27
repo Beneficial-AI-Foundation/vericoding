@@ -1,0 +1,25 @@
+"vc-description": "In this Kata you must convert integers numbers from and to a negative-base\
+  \ binary system.\n\nNegative-base systems can accommodate all the same numbers as\
+  \ standard place-value systems, but both positive and negative numbers are represented\
+  \ without the use of a minus sign (or, in computer representation, a sign bit);\
+  \ this advantage is countered by an increased complexity of arithmetic operations.\n\
+  \nTo help understand, the first eight digits (in decimal) of the Base(-2) system\
+  \ is: \n\n`[1, -2, 4, -8, 16, -32, 64, -128]`\n\n\nExample conversions:\n\n`Decimal,\
+  \ negabinary`\n```\n6,   '11010'\n-6,  '1110'\n4,   '100'\n18,  '10110'\n-11, '110101'\n\
+  ```"
+"vc-preamble": "import Imports.AllImports\n\ndef int_to_negabinary (n : Int) : String\
+  \ := sorry\ndef negabinary_to_int (s : String) : Int := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isValidBinaryStr (s : String) : Bool :=\n  s.length > 0 &&\
+  \ s.all (fun c => c = '0' || c = '1')\n"
+"vc-theorems": "theorem round_trip (n : Int) : \n  negabinary_to_int (int_to_negabinary\
+  \ n) = n := sorry\n\n\ntheorem valid_binary_string (n : Int) :\n  isValidBinaryStr\
+  \ (int_to_negabinary n) := sorry \n\n\ntheorem neg_bin_str_converts (s : String)\
+  \ (h : isValidBinaryStr s) :\n  ∃ n : Int, negabinary_to_int s = n := sorry\n\n\n\
+  theorem zero_special_case :\n  int_to_negabinary 0 = \"0\" := sorry\n\n/--\ninfo:\
+  \ '11010'\n-/\n#guard_msgs in\n#eval int_to_negabinary 6\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval negabinary_to_int \"11010\"\n\n/--\ninfo: '1110'\n-/\n#guard_msgs in\n\
+  #eval int_to_negabinary -6\n\n/--\ninfo: -6\n-/\n#guard_msgs in\n#eval negabinary_to_int\
+  \ \"1110\"\n\n/--\ninfo: '100'\n-/\n#guard_msgs in\n#eval int_to_negabinary 4\n\n\
+  /--\ninfo: 4\n-/\n#guard_msgs in\n#eval negabinary_to_int \"100\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

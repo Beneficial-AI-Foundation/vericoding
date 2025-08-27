@@ -1,0 +1,43 @@
+"vc-description": "Rule 30 is a one-dimensional binary cellular automaton. You can\
+  \ have some information here:  \n\n* [https://en.wikipedia.org/wiki/Rule_30](https://en.wikipedia.org/wiki/Rule_30)\n\
+  \nYou have to write a function that takes as input an array of 0 and 1 and a positive\
+  \ integer that represents the number of iterations. This function has to performe\
+  \ the nth iteration of the **Rule 30** with the given input.\n\nThe rule to derive\
+  \ a cell from itself and its neigbour is:\n\nCurrent cell  | 000 | 001 | 010 | 011\
+  \ | 100 | 101 | 110 | 111\n:-------------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:\n\
+  \ **New cell** |  0  |  1  |  1  |  1  |  1  |  0  |  0  |  0 \n \n\nAs you can\
+  \ see the new state of a certain cell depends on his neighborhood. In *Current cells*\
+  \ you have the *nth* cell with his left and right neighbor, for example the first\
+  \ configuration is **000**:\n\n* left neighbor = 0\n* current cell = 0\n* right\
+  \ neighbor = 0\n\nThe result for the current cell is **0**, as reported in **New\
+  \ cell** row.\n\nYou also have to pay attention to the following things:\n\n* the\
+  \ borders of the list are always 0\n* values different from 0 and 1 must be considered\
+  \ as 0\n* a negative number of iteration never changes the initial sequence\n* you\
+  \ have to return an array of 0 and 1\n\nHere a small example step by step, starting\
+  \ from the list **[1]** and iterating for 5 times:\n\n* We have only one element\
+  \ so first of all we have to follow the rules adding the border, so the result will\
+  \ be **[0, 1, 0]**\n* Now we can apply the rule 30 to all the elements and the result\
+  \ will be **[1, 1, 1]** (first iteration)\n* Then, after continuing this way for\
+  \ 4 times, the result will be **[1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1]**\n\nIn Python,\
+  \ you can also use a support function to print the sequence named printRule30. This\
+  \ function takes as parameters the current list of 0 and 1 to print, the max level\
+  \ that you can reach (number of iterations) and the length of initial array.\n\n\
+  ```python\ndef printRule30(list_, maxLvl, startLen):\n  ...\n```\n\nThe last two\
+  \ parameters are optional and are useful if you are printing each line of the iteration\
+  \ to center the result like this:\n\n░░▓░░  -> step 1  \n░▓▓▓░  -> step 2  \n▓▓░░▓\
+  \  -> step 3  \n\nIf you pass only the array of 0 and 1 the previous result for\
+  \ each line will be like this:\n\n▓ -> step 1   \n▓▓▓ -> step 2  \n▓▓░░▓ -> step\
+  \ 3 \n\n**Note:** the function can print only the current list that you pass to\
+  \ it, so you have to use it in the proper way during the interactions of the rule\
+  \ 30."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def rule30 (initial : List Nat) (n : Nat) : List Nat :=\n  sorry\n"
+"vc-theorems": "theorem rule30_binary (initial : List Nat) (n : Nat) :\n  ∀ x ∈ rule30\
+  \ initial n, x = 0 ∨ x = 1 :=\n  sorry\n\n\ntheorem rule30_zero_step (initial :\
+  \ List Nat) :\n  rule30 initial 0 = initial :=\n  sorry\n\n\ntheorem rule30_growth\
+  \ (initial : List Nat) (n : Nat) :\n  n > 0 → List.length (rule30 initial n) = List.length\
+  \ initial + 2*n :=\n  sorry\n\n/--\ninfo: [1, 1, 1]\n-/\n#guard_msgs in\n#eval rule30\
+  \ [1] 1\n\n/--\ninfo: [1, 1, 0, 0, 1]\n-/\n#guard_msgs in\n#eval rule30 [1] 2\n\n\
+  /--\ninfo: [1, 1, 1]\n-/\n#guard_msgs in\n#eval rule30 [1, 1, 1] 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

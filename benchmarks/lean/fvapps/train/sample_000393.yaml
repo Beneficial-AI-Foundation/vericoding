@@ -1,0 +1,25 @@
+"vc-description": "Given an unsorted array return whether an increasing subsequence\
+  \ of length 3 exists or not in the array.\n\n\nFormally the function should:\nReturn\
+  \ true if there exists i, j, k  \nsuch that arr[i] < arr[j] < arr[k] given 0 ≤ i\
+  \ < j < k ≤ n-1 \nelse return false.\n\n\n\nYour algorithm should run in O(n) time\
+  \ complexity and O(1) space complexity.\n\n\nExamples:\nGiven [1, 2, 3, 4, 5],\n\
+  return true.\n\n\nGiven [5, 4, 3, 2, 1],\nreturn false.\n\n\nCredits:Special thanks\
+  \ to @DjangoUnchained for adding this problem and creating all test cases."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def has_increasing_triplet (nums : List Int) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem has_increasing_triplet_matches_bruteforce (nums : List Int)\
+  \ (h : nums.length ≥ 3) :\n  has_increasing_triplet nums = \n    (∃ i j k, i < j\
+  \ ∧ j < k ∧ k < nums.length ∧\n     nums[i]! < nums[j]! ∧ nums[j]! < nums[k]!) :=\n\
+  \  sorry\n\n\ntheorem monotonic_decreasing_has_no_triplet (nums : List Int) (h :\
+  \ nums.length ≥ 3) :\n  (∀ i j, i < j → j < nums.length → nums[j]! ≤ nums[i]!) →\n\
+  \  ¬(has_increasing_triplet nums) :=\n  sorry\n\n\ntheorem monotonic_increasing_has_triplet\
+  \ (nums : List Int) \n  (h1 : nums.length ≥ 3)\n  (h2 : ∀ i j, i < j → j < nums.length\
+  \ → nums[i]! ≤ nums[j]!)\n  (h3 : ∀ x, (nums.countP (fun y => y = x)) ≤ 2) :\n \
+  \ has_increasing_triplet nums :=\n  sorry\n\n\ntheorem short_lists_have_no_triplet\
+  \ (nums : List Int) (h : nums.length < 3) :\n  ¬(has_increasing_triplet nums) :=\n\
+  \  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval has_increasing_triplet [1,\
+  \ 2, 3, 4, 5]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval has_increasing_triplet\
+  \ [5, 4, 3, 2, 1]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval has_increasing_triplet\
+  \ [2, 1, 5, 0, 4, 6]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

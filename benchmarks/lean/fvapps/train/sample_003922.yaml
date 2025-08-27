@@ -1,0 +1,22 @@
+"vc-description": "In this Kata, we are going to determine if the count of each of\
+  \ the characters in a string can be equal if we remove a single character from that\
+  \ string.\n\nFor example:\n```\nsolve('abba') = false -- if we remove any character,\
+  \ the count of each character will not be equal.\nsolve('abbba') = true -- if we\
+  \ remove one b, the count of each character becomes 2.\nsolve('aaaa') = true --\
+  \ if we remove one character, the remaining characters have same count.\nsolve('wwwf')\
+  \ = true -- if we remove f, the remaining letters have same count.\n```\nMore examples\
+  \ in the test cases. Empty string is not tested.\n\nGood luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef solve (s : String) : Bool := sorry\n\
+  \ndef countOccurrences (c : Char) (s : String) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def allCountsEqual (s : String) : Bool := sorry \n\ntheorem solve_exists_char_removal\
+  \ \n  {s : String} \n  (h1 : solve s = true)\n  (h2 : s.length ≥ 2) :\n  ∃ c : Char,\
+  \ c ∈ s.data ∧ \n  allCountsEqual (s.replace (String.mk [c]) \"\") = true := sorry\n"
+"vc-theorems": "theorem solve_equal_counts_after_removal \n  {s : String}\n  (h1 :\
+  \ solve s = true)\n  (h2 : s.length ≥ 2) :\n  ∃ c : Char, c ∈ s.data ∧\n  let s'\
+  \ := s.replace (String.mk [c]) \"\"\n  (∀ c₁ c₂, c₁ ∈ s'.data → c₂ ∈ s'.data → \n\
+  \    countOccurrences c₁ s' = countOccurrences c₂ s') := sorry\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval solve \"aaaa\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
+  #eval solve \"abba\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval solve \"abbba\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

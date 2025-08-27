@@ -1,0 +1,20 @@
+"vc-description": "An array is called `centered-N` if some `consecutive sequence`\
+  \ of elements of the array sum to `N` and this sequence is preceded and followed\
+  \ by the same number of elements. \n\nExample:\n```\n[3,2,10,4,1,6,9] is centered-15\n\
+  because the sequence 10,4,1 sums to 15 and the sequence \nis preceded by two elements\
+  \ [3,2] and followed by two elements [6,9]\n\n```\n\nWrite a method called `isCenteredN`\
+  \ that returns :\n\n- `true` if its array argument is `not empty` and `centered-N`\
+  \ or empty and centered-0\n- otherwise returns `false`."
+"vc-preamble": "import Imports.AllImports\n\ndef sum : List Int → Int\n  | [] => 0\n\
+  \  | (h :: t) => h + sum t\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_centered (arr : List Int) (n : Int) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem empty_list_property (n : Int) :\n  is_centered [] n = (n =\
+  \ 0) := sorry\n\n\ntheorem single_element_property {a : Int} :\n  is_centered [a]\
+  \ (sum [a]) := sorry\n\n\ntheorem symmetric_property (arr : List Int) (n : Int)\
+  \ :\n  is_centered arr n = is_centered arr.reverse n := sorry\n\n\ntheorem full_sum_property\
+  \ (arr : List Int) :\n  arr ≠ [] → is_centered arr (sum arr) := sorry\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval is_centered [3, 2, 10, 4, 1, 6, 9] 15\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval is_centered [1, 1, 8, 3, 1, 1] 11\n\n/--\n\
+  info: False\n-/\n#guard_msgs in\n#eval is_centered [2, 10, 4, 1, 6, 9] 15\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

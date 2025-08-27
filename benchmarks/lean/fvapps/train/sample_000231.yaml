@@ -1,0 +1,30 @@
+"vc-description": "A sequence of number is called arithmetic if it consists of at\
+  \ least three elements and if the difference between any two consecutive elements\
+  \ is the same.\n\nFor example, these are arithmetic sequence:\n1, 3, 5, 7, 9\n7,\
+  \ 7, 7, 7\n3, -1, -5, -9\n\nThe following sequence is not arithmetic. 1, 1, 2, 5,\
+  \ 7 \n\n\nA zero-indexed array A consisting of N numbers is given. A slice of that\
+  \ array is any pair of integers (P, Q) such that 0 \n\nA slice (P, Q) of array A\
+  \ is called arithmetic if the sequence:\n    A[P], A[p + 1], ..., A[Q - 1], A[Q]\
+  \ is arithmetic. In particular, this means that P + 1 < Q.\n\nThe function should\
+  \ return the number of arithmetic slices in the array A. \n\n\nExample:\n\nA = [1,\
+  \ 2, 3, 4]\n\nreturn: 3, for 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4] and\
+  \ [1, 2, 3, 4] itself."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def numberOfArithmeticSlices (nums : List Int) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem number_of_slices_nonnegative (nums : List Int) :\n  numberOfArithmeticSlices\
+  \ nums ≥ 0 := by\n  sorry\n\n\ntheorem arithmetic_sequence_count (nums : List Int)\
+  \ (n : Nat) (h : nums.length = n) (h2 : n ≥ 3) :\n  let d := nums[1]! - nums[0]!\n\
+  \  let isArithmetic := ∀ i, 2 ≤ i → i < n → nums[i]! = nums[i-1]! + d\n  isArithmetic\
+  \ →\n  numberOfArithmeticSlices nums = (n - 2) * (n - 1) / 2 := by\n  sorry\n\n\n\
+  theorem bounded_integers_nonnegative (nums : List Int) \n  (h : ∀ x ∈ nums, -1000\
+  \ ≤ x ∧ x ≤ 1000) :\n  numberOfArithmeticSlices nums ≥ 0 := by\n  sorry\n\n\ntheorem\
+  \ short_list_zero_slices (nums : List Int)\n  (h : nums.length < 3) :\n  numberOfArithmeticSlices\
+  \ nums = 0 := by\n  sorry\n\n\ntheorem constant_sequence_count (nums : List Int)\
+  \ (n : Nat) (val : Int)\n  (h : nums.length = n)\n  (h2 : n ≥ 3)\n  (h3 : ∀ i, i\
+  \ < n → nums[i]! = val) :\n  numberOfArithmeticSlices nums = (n - 2) * (n - 1) /\
+  \ 2 := by\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval number_of_arithmetic_slices\
+  \ [1, 2, 3, 4]\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval number_of_arithmetic_slices\
+  \ [1, 2, 3, 4, 5]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval number_of_arithmetic_slices\
+  \ [1, 1, 2, 5, 7]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

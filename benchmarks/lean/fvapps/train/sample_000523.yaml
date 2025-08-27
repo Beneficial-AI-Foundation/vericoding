@@ -1,0 +1,34 @@
+"vc-description": "Zonal Computing Olympiad 2015, 29 Nov 2014\n\nWe say that two integers\
+  \ x and y have a variation of at least K, if |x − y| ≥ K (the absolute value of\
+  \ their difference is at least K). Given a sequence of N integers a1,a2,...,aN and\
+  \ K, the total variation count is the number of pairs of elements in the sequence\
+  \ with variation at least K, i.e. it is the size of the set of pairs\n\n{(i,j)|1≤i<j≤N\
+  \ and|ai−aj|≥K} \n\nFor example if K = 1 and the sequence is 3,2,4 the answer is\
+  \ 3. If K = 1 and the sequence is 3, 1, 3 then the answer is 2.\n\nYour task is\
+  \ to write a program that takes a sequence and the value K as input and computes\
+  \ the total variation count.\n\n-----Input format-----\nThe first line contains\
+  \ two positive integers N and K, separated by a space.\n\nThis is followed by a\
+  \ line containing N integers separated by space giving the values\nof the sequence.\n\
+  \n-----Output format-----\nA single integer in a single line giving the total variation\
+  \ count.\n\n-----Test data-----\nYou may assume that all integers in the input are\
+  \ in the range 0 to 10^8 inclusive.\n\nSubtask 1 (40 marks) : 1 ≤ N ≤ 4000, 1 ≤\
+  \ K ≤ 10^8 \nSubtask 2 (60 marks) : 1 ≤ N ≤ 65000, 1 ≤ K ≤ 10^8 \n\n-----Sample\
+  \ Input-----\n3 1 \n3 1 3\n\n-----Sample Output-----\n2"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def total_variation_count (n : Nat) (k : Nat) (sequence : List\
+  \ Int) : Nat :=\nsorry\n"
+"vc-theorems": "theorem total_variation_nonNegative {n k : Nat} {sequence : List Int}\
+  \ :\n  total_variation_count n k sequence ≥ 0 :=\nsorry\n\n\ntheorem total_variation_upperBound\
+  \ {n k : Nat} {sequence : List Int} :\n  sequence.length = n →\n  total_variation_count\
+  \ n k sequence ≤ (n * (n-1)) / 2 :=\nsorry\n\n\ntheorem total_variation_zeroK {n\
+  \ : Nat} {sequence : List Int} :\n  sequence.length = n →\n  total_variation_count\
+  \ n 0 sequence = \n    (List.range n).foldl (fun acc i => \n      acc + (List.range\
+  \ (n-i-1)).foldl (fun acc' j =>\n        acc' + if sequence.get! i ≠ sequence.get!\
+  \ (i+j+1) then 1 else 0) 0) 0 :=\nsorry\n\n\ntheorem total_variation_permutation\
+  \ {n k : Nat} {sequence : List Int} :\n  sequence.length = n →\n  ∀ perm : List\
+  \ Int, List.Perm sequence perm →\n  total_variation_count n k sequence = total_variation_count\
+  \ n k perm :=\nsorry\n\n\ntheorem total_variation_symmetry {n k : Nat} {sequence\
+  \ : List Int} :\n  sequence.length = n →\n  total_variation_count n k sequence =\
+  \ total_variation_count n k sequence.reverse :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

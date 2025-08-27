@@ -1,0 +1,20 @@
+"vc-description": "## Task\n\nGiven a positive integer, `n`, return the number of\
+  \ possible ways such that `k` positive integers multiply to `n`. Order matters.\n\
+  \n**Examples**\n```\nn = 24\nk = 2\n(1, 24), (2, 12), (3, 8), (4, 6), (6, 4), (8,\
+  \ 3), (12, 2), (24, 1) -> 8\n\nn = 100\nk = 1\n100 -> 1\n\nn = 20\nk = 3\n(1, 1,\
+  \ 20), (1, 2, 10), (1, 4, 5), (1, 5, 4), (1, 10, 2), (1, 20, 1),\n(2, 1, 10), (2,\
+  \ 2, 5), (2, 5, 2), (2, 10, 1), (4, 1, 5), (4, 5, 1),\n(5, 1, 4), (5, 2, 2), (5,\
+  \ 4, 1), (10, 1, 2), (10, 2, 1), (20, 1, 1) -> 18\n```\n**Constraints**\n`1 <= n\
+  \ <= 500_000_000`\nand `1 <= k <= 1000`"
+"vc-preamble": "import Imports.AllImports\n\ndef multiply (n k: Nat) : Nat := sorry\n\
+  \ntheorem multiply_positive (n k: Nat) \n  (h1: n > 0) (h2: k > 0) : multiply n\
+  \ k > 0 :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isPrime (n: Nat) : Bool := sorry\n\n\n\ntheorem multiply_one\
+  \ (k: Nat)\n  (h: k > 0) : multiply 1 k = 1 :=\nsorry"
+"vc-theorems": "theorem multiply_k1_is_one (n: Nat)\n  (h: n > 0) : multiply n 1 =\
+  \ 1 :=\nsorry\n\n\ntheorem multiply_monotone_k (n k: Nat)\n  (h1: n > 0) (h2: k\
+  \ > 1) : \n  multiply n k ≥ multiply n (k-1) :=\nsorry\n\n\n/--\ninfo: 8\n-/\n#guard_msgs\
+  \ in\n#eval multiply 24 2\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval multiply 100\
+  \ 1\n\n/--\ninfo: 18\n-/\n#guard_msgs in\n#eval multiply 20 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

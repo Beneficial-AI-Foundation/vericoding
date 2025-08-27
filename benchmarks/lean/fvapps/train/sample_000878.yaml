@@ -1,0 +1,22 @@
+"vc-description": "Kabir likes Tara's smile and wants to look at her smile. They are\
+  \ sitting in the class and you are friends with Kabir. You have to place a mirror\
+  \ (point size)  in the front wall of the class so that Kabir can have a glimpse\
+  \ of Tara's smile.\nConsider the front wall as x-axis . You are given the  coordinates\
+  \ of position of Kabir (x1,y1)$(x1,y1)$ and Tara  (x2,y2)$(x2,y2)$. Find the position\
+  \ where the mirror should be placed. \n\n-----Input:-----\n- First line will contain\
+  \ T$T$, number of testcases. Then the testcases follow. \n- First line of each testcase\
+  \ contains two integers x1,y1$x1, y1$.\n- Second line of each testcase contains\
+  \ two integers x2,y2$x2, y2$. \n\n-----Output:-----\nFor each testcase, print the\
+  \ x-coordinate of the mirror. Absolute error of 10−2$10^{−2}$ is allowed.\n\n-----Constraints:-----\n\
+  - 1≤T≤1000$1 \\leq T \\leq 1000$\n- 1≤x1,y1,x2,y2≤105$1 \\leq x1,y1,x2,y2 \\leq\
+  \ 10^5 $\n\n-----Sample Input:-----\n1\n1 1\n\n4 4\n\n-----Sample Output:-----\n\
+  1.60"
+"vc-preamble": "import Imports.AllImports\n\ndef abs (x : Float) : Float := sorry\n\
+  \ndef IsFinite (x : Float) : Prop := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_mirror_position (x1 y1 x2 y2 : Float) : Float :=\n  sorry\n"
+"vc-theorems": "theorem valid_mirror_position_basic_properties \n  (x1 y1 x2 y2 :\
+  \ Float)\n  (h1 : abs (x2 - x1) > 1e-6)  -- Not vertical\n  (h2 : abs (y2 + y1)\
+  \ > 1e-6)  -- Avoid division by zero\n  : IsFinite (find_mirror_position x1 y1 x2\
+  \ y2) := by\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

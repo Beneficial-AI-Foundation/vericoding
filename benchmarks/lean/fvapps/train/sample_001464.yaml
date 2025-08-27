@@ -1,0 +1,35 @@
+"vc-description": "In order to win over and get noticed by his favorite streamer Daenerys,\
+  \ Jon decides to donate a significant amount of money . Every donation made to Daenerys\
+  \ is of $at$ $least$ $1$ $beastcoin$ and is displayed on Daenerys's stream alongside\
+  \ any message written and is visible to every viewer.\nAfter spotting that Daenerys\
+  \ had set out a target for the streaming day at minimum $X$   beastcoins, all her\
+  \ viewers would only donate amounts less than $X$ beastcoins. Jon decided to better\
+  \ all of them by straight out donating more than or equal to $X$ beastcoins. Further,\
+  \ he decides to write a message along with his special donation to leave her in\
+  \ awe. His message would be : \"Crossing my donation with any other donation will\
+  \ only increase the value of my donation\". By Crossing, he means to take the $XOR$\
+  \ . \nBut even for all his intellectual brilliance, money doesn't grow on trees\
+  \ for Jon. After all he is an underpaid employee in his fancy big name MNC. Unlike\
+  \ Daenerys's daily cash cow who makes videos of how she donated carelessly to other\
+  \ people, Jon has a budget and in this case too, he is looking for the minimum donation\
+  \ he needs to make.\nCan you tell Jon the minimum amount he needs to donate to Daenerys\
+  \ so that he is able to credibly put out the above comment alongside the donation\
+  \ in order to HOPEFULLY win her over.\n\n-----Input Format-----\n- First line contain\
+  \ an interger $T$, which denotes number of testcases. Next $T$ lines contain single\
+  \ interger $X$.    \n\n-----Output Format-----\n- For every testcase print one integer,\
+  \ i.e. minimum donation Jon needs to make.\n\n-----Constriants-----\n- $ 1 \\leq\
+  \ T \\leq 100000 $ \n- $ 2 \\leq X \\leq 10^{18} $ \n\n-----Sample Input-----\n\
+  2\n\n3\n\n7 \n\n-----Sample Output-----\n4\n\n8"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_minimum_donation (x : Nat) : Nat :=\nsorry\n"
+"vc-theorems": "theorem result_geq_input (x : Nat) (h : x > 0) :\n  find_minimum_donation\
+  \ x ≥ x :=\nsorry\n\n\ntheorem result_is_power_of_2 (x : Nat) (h : x > 0) :\n  (find_minimum_donation\
+  \ x &&& (find_minimum_donation x - 1)) = 0 :=\nsorry\n\n\ntheorem result_is_minimal\
+  \ (x : Nat) (h : x > 0) :\n  find_minimum_donation x / 2 < x ∨ find_minimum_donation\
+  \ x = x :=\nsorry\n\n\ntheorem power_2_input_unchanged (x : Nat) (h : x > 0) (h2\
+  \ : (x &&& (x - 1)) = 0) :\n  find_minimum_donation x = x :=\nsorry\n\n/--\ninfo:\
+  \ 4\n-/\n#guard_msgs in\n#eval find_minimum_donation 3\n\n/--\ninfo: 8\n-/\n#guard_msgs\
+  \ in\n#eval find_minimum_donation 7\n\n/--\ninfo: 16\n-/\n#guard_msgs in\n#eval\
+  \ find_minimum_donation 15\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

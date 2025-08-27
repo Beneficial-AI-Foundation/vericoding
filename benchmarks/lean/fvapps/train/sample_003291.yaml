@@ -1,0 +1,26 @@
+"vc-description": "Create a function that finds the [integral](https://en.wikipedia.org/wiki/Integral)\
+  \ of the expression passed.\n\nIn order to find the integral all you need to do\
+  \ is add one to the `exponent` (the second argument), and divide the `coefficient`\
+  \ (the first argument) by that new number.\n\nFor example for `3x^2`, the integral\
+  \ would be `1x^3`: we added 1 to the exponent, and divided the coefficient by that\
+  \ new number).\n\nNotes:\n* The output should be a string.\n* The coefficient and\
+  \ exponent is always a positive integer.\n\n\n## Examples\n\n```\n 3, 2  -->  \"\
+  1x^3\"\n12, 5  -->  \"2x^6\"\n20, 1  -->  \"10x^2\"\n40, 3  -->  \"10x^4\"\n90,\
+  \ 2  -->  \"30x^3\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def integrate (coef : Int) (exp : Nat) : String := sorry\n\ntheorem\
+  \ integrate_returns_string (coef : Int) (exp : Nat)\n  (h : coef ≠ 0) :\n  ∃ s :\
+  \ String, integrate coef exp = s := sorry\n"
+"vc-theorems": "theorem integrate_result_ends_with_power \n  (coef : Int) (exp : Nat)\
+  \ (h : coef ≠ 0) :\n  ∃ (s : String), integrate coef exp = s ∧ \n  s.endsWith s!\"\
+  x^{exp + 1}\" := sorry\n\n\ntheorem integrate_coef_correct_when_divisible\n  (coef\
+  \ : Int) (exp : Nat) (h : coef ≠ 0)\n  (h2 : coef % (exp + 1) = 0) :\n  ∃ s : String,\n\
+  \    integrate coef exp = s ∧\n    s.startsWith (toString (coef / (exp + 1))) :=\
+  \ sorry\n\n\ntheorem integrate_coef_correct_when_not_divisible\n  (coef : Int) (exp\
+  \ : Nat) (h : coef ≠ 0)\n  (h2 : coef % (exp + 1) ≠ 0) :\n  ∃ s : String,\n    integrate\
+  \ coef exp = s ∧ \n    s.startsWith (toString ((coef / (exp + 1)).toNat)) := sorry\n\
+  \n/--\ninfo: '1x^3'\n-/\n#guard_msgs in\n#eval integrate 3 2\n\n/--\ninfo: '2x^6'\n\
+  -/\n#guard_msgs in\n#eval integrate 12 5\n\n/--\ninfo: '30x^3'\n-/\n#guard_msgs\
+  \ in\n#eval integrate 90 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

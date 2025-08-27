@@ -1,0 +1,33 @@
+"vc-description": "# Task\n Timed Reading is an educational tool used in many schools\
+  \ to improve and advance reading skills. A young elementary student has just finished\
+  \ his very first timed reading exercise. Unfortunately he's not a very good reader\
+  \ yet, so whenever he encountered a word longer than maxLength, he simply skipped\
+  \ it and read on.\n\n Help the teacher figure out how many words the boy has read\
+  \ by calculating the number of words in the text he has read, no longer than maxLength.\n\
+  \n Formally, a word is a substring consisting of English letters, such that characters\
+  \ to the left of the leftmost letter and to the right of the rightmost letter are\
+  \ not letters.\n\n# Example\n\n For `maxLength = 4` and `text = \"The Fox asked\
+  \ the stork, 'How is the soup?'\"`, the output should be `7`\n\n The boy has read\
+  \ the following words: `\"The\", \"Fox\", \"the\", \"How\", \"is\", \"the\", \"\
+  soup\".`\n\n# Input/Output\n\n\n - `[input]` integer `maxLength`\n\n    A positive\
+  \ integer, the maximum length of the word the boy can read.\n\n    Constraints:\
+  \ `1 ≤ maxLength ≤ 10.`\n\n\n - `[input]` string `text`\n\n    A non-empty string\
+  \ of English letters and punctuation marks.\n\n\n - `[output]` an integer\n\n  \
+  \  The number of words the boy has read."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def timed_reading (maxLength: Int) (text: String) : Int :=\n  sorry\n"
+"vc-theorems": "theorem timed_reading_non_negative (maxLength: Int) (text: String)\
+  \ :\n  timed_reading maxLength text ≥ 0 :=\nsorry\n\n\ntheorem timed_reading_is_bounded_by_word_count\
+  \ (maxLength: Int) (text: String) :\n  timed_reading maxLength text ≤ (text.split\
+  \ (· = ' ')).length :=\nsorry\n\n\ntheorem timed_reading_counts_valid_words (maxLength:\
+  \ Int) (words: List String) :\n  let text := String.intercalate \" \" words\n  timed_reading\
+  \ maxLength text = (words.filter (fun w => w.length ≤ maxLength)).length :=\nsorry\n\
+  \n\ntheorem timed_reading_empty_string :\n  timed_reading 0 \"\" = 0 :=\nsorry\n\
+  \n\ntheorem timed_reading_no_letters (text: String) :\n  (∀ c ∈ text.data, ¬c.isAlpha)\
+  \ →\n  timed_reading 1 text = 0 :=\nsorry\n\n\ntheorem timed_reading_negative_length\
+  \ :\n  timed_reading (-1) \"hello\" = 0 :=\nsorry\n\n/--\ninfo: 7\n-/\n#guard_msgs\
+  \ in\n#eval timed_reading 4 \"The Fox asked the stork, \"How is the soup?\"\"\n\n\
+  /--\ninfo: 3\n-/\n#guard_msgs in\n#eval timed_reading 3 \"This play was good for\
+  \ us.\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval timed_reading 1 \"Oh!\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

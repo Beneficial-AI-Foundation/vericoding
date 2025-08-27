@@ -1,0 +1,25 @@
+"vc-description": "### Task\n King Arthur and his knights are having a New Years party.\
+  \ Last year Lancelot was jealous of Arthur, because Arthur had a date and Lancelot\
+  \ did not, and they started a duel.\n\n To prevent this from happening again, Arthur\
+  \ wants to make sure that there are at least as many women as men at this year's\
+  \ party. He gave you a list of integers of all the party goers. \n \n Arthur needs\
+  \ you to return true if he needs to invite more women or false if he is all set.\n\
+  \n### Input/Output\n\n\n - `[input]` integer array `L` (`$a` in PHP)\n\n  An array\
+  \ (guaranteed non-associative in PHP) representing the genders of the attendees,\
+  \ where `-1` represents `women` and `1` represents `men`.\n  \n  `2 <= L.length\
+  \ <= 50`\n  \n\n- `[output]` a boolean value\n\n  `true` if Arthur need to invite\
+  \ more women, `false` otherwise."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Int → Int \n  | []\
+  \ => 0\n  | x::xs => x + sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def invite_more_women (arr : List Int) : Bool := sorry\n\ntheorem\
+  \ invite_more_women_sum_property (arr : List Int) \n  (h : arr.length > 0)\n  (h₁\
+  \ : ∀ x ∈ arr, x = 1 ∨ x = -1) :\n  invite_more_women arr = (List.sum arr > 0) :=\
+  \ sorry\n"
+"vc-theorems": "theorem party_balance_monotonicity (arr : List Int)\n  (h : arr.length\
+  \ > 0)\n  (h₁ : ∀ x ∈ arr, x = 1 ∨ x = -1) :\n  invite_more_women (arr ++ [-1])\
+  \ ≤ invite_more_women arr ∧ \n  invite_more_women arr ≤ invite_more_women (arr ++\
+  \ [1]) := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval invite_more_women\
+  \ [1, -1, 1]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval invite_more_women [-1,\
+  \ -1, -1]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval invite_more_women [1, -1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,42 @@
+"vc-description": "You have a string $s$ — a sequence of commands for your toy robot.\
+  \ The robot is placed in some cell of a rectangular grid. He can perform four commands:\
+  \  'W' — move one cell up;  'S' — move one cell down;  'A' — move one cell left;\
+  \  'D' — move one cell right. \n\nLet $Grid(s)$ be the grid of minimum possible\
+  \ area such that there is a position in the grid where you can place the robot in\
+  \ such a way that it will not fall from the grid while running the sequence of commands\
+  \ $s$. For example, if $s = \\text{DSAWWAW}$ then $Grid(s)$ is the $4 \\times 3$\
+  \ grid:  you can place the robot in the cell $(3, 2)$;  the robot performs the command\
+  \ 'D' and moves to $(3, 3)$;  the robot performs the command 'S' and moves to $(4,\
+  \ 3)$;  the robot performs the command 'A' and moves to $(4, 2)$;  the robot performs\
+  \ the command 'W' and moves to $(3, 2)$;  the robot performs the command 'W' and\
+  \ moves to $(2, 2)$;  the robot performs the command 'A' and moves to $(2, 1)$;\
+  \  the robot performs the command 'W' and moves to $(1, 1)$.  [Image] \n\nYou have\
+  \ $4$ extra letters: one 'W', one 'A', one 'S', one 'D'. You'd like to insert at\
+  \ most one of these letters in any position of sequence $s$ to minimize the area\
+  \ of $Grid(s)$.\n\nWhat is the minimum area of $Grid(s)$ you can achieve?\n\n\n\
+  -----Input-----\n\nThe first line contains one integer $T$ ($1 \\le T \\le 1000$)\
+  \ — the number of queries.\n\nNext $T$ lines contain queries: one per line. This\
+  \ line contains single string $s$ ($1 \\le |s| \\le 2 \\cdot 10^5$, $s_i \\in \\\
+  {\\text{W}, \\text{A}, \\text{S}, \\text{D}\\}$) — the sequence of commands.\n\n\
+  It's guaranteed that the total length of $s$ over all queries doesn't exceed $2\
+  \ \\cdot 10^5$.\n\n\n-----Output-----\n\nPrint $T$ integers: one per query. For\
+  \ each query print the minimum area of $Grid(s)$ you can achieve.\n\n\n-----Example-----\n\
+  Input\n3\nDSAWWAW\nD\nWA\n\nOutput\n8\n2\n4\n\n\n\n-----Note-----\n\nIn the first\
+  \ query you have to get string $\\text{DSAWW}\\underline{D}\\text{AW}$.\n\nIn second\
+  \ and third queries you can not decrease the area of $Grid(s)$."
+"vc-preamble": "import Imports.AllImports\n\ndef min_grid_area (s : String) : Nat\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_width_height_from_path (s : String) : Nat × Nat :=\n  sorry\
+  \ \n"
+"vc-theorems": "theorem min_grid_area_positive (s : String) :\n  min_grid_area s >\
+  \ 0 := by\n  sorry\n\n\ntheorem min_grid_area_nonempty (s : String) (h : s.length\
+  \ > 0) :\n  min_grid_area s ≥ 2 := by\n  sorry\n\n\ntheorem min_grid_area_empty\
+  \ :\n  min_grid_area \"\" = 1 := by\n  sorry\n\n\ntheorem min_grid_area_single_char\
+  \ (c : Char) (h : c = 'W' ∨ c = 'A' ∨ c = 'S' ∨ c = 'D') :\n  min_grid_area (String.mk\
+  \ [c]) = 2 := by\n  sorry\n\n\ntheorem min_grid_area_bounds (s : String) :\n  let\
+  \ (w, h) := min_width_height_from_path s\n  min_grid_area s ≥ min (w * h) 2 := by\n\
+  \  sorry\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval min_grid_area \"DSAWWAW\"\n\n\
+  /--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_grid_area \"D\"\n\n/--\ninfo: 4\n-/\n\
+  #guard_msgs in\n#eval min_grid_area \"WA\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

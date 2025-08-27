@@ -1,0 +1,29 @@
+"vc-description": "We are interested in collecting the sets of six prime numbers,\
+  \ that having a starting prime p, the following values are also primes forming the\
+  \ sextuplet ```[p, p + 4, p + 6, p + 10, p + 12, p + 16]```\n\nThe first sextuplet\
+  \ that we find is ```[7, 11, 13, 17, 19, 23]```\n\nThe second one is ```[97, 101,\
+  \ 103, 107, 109, 113]```\n\nGiven a number ```sum_limit```, you should give the\
+  \ first sextuplet which sum (of its six primes) surpasses the sum_limit value.\n\
+  \n```python\nfind_primes_sextuplet(70) == [7, 11, 13, 17, 19, 23]\n\nfind_primes_sextuplet(600)\
+  \ == [97, 101, 103, 107, 109, 113]\n```\nFeatures of the tests:\n```\nNumber Of\
+  \ Tests = 18\n10000 < sum_limit < 29700000\n```\nIf you have solved this kata perhaps\
+  \ you will find easy to solve this one:\nhttps://www.codewars.com/kata/primes-with-two-even-and-double-even-jumps/\n\
+  Enjoy it!!"
+"vc-preamble": "import Imports.AllImports\n\ndef findPrimesSextuplet (limit : Nat)\
+  \ : List Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isPrime (n : Nat) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem primes_sextuplet_length (limit : Nat) (h : limit ≥ 1000) :\
+  \ \n  (findPrimesSextuplet limit).length = 6 :=\nsorry\n\n\ntheorem primes_sextuplet_monotone\
+  \ (limit : Nat) (h : limit ≥ 1000) :\n  let result := findPrimesSextuplet limit\n\
+  \  ∀ i j, i < j → i < result.length → j < result.length → \n  result[i]! < result[j]!\
+  \ :=\nsorry\n\n\ntheorem primes_sextuplet_all_prime (limit : Nat) (h : limit ≥ 1000)\
+  \ :\n  ∀ x ∈ findPrimesSextuplet limit, isPrime x = true :=\nsorry\n\n\ntheorem\
+  \ primes_sextuplet_diffs (limit : Nat) (h : limit ≥ 1000) :\n  let result := findPrimesSextuplet\
+  \ limit\n  let diffs := List.map (fun p => p.2 - p.1) (List.zip result result.tail)\n\
+  \  diffs = [4,2,4,2,4] :=\nsorry\n\n/--\ninfo: [7, 11, 13, 17, 19, 23]\n-/\n#guard_msgs\
+  \ in\n#eval find_primes_sextuplet 70\n\n/--\ninfo: [97, 101, 103, 107, 109, 113]\n\
+  -/\n#guard_msgs in\n#eval find_primes_sextuplet 600\n\n/--\ninfo: [1091257, 1091261,\
+  \ 1091263, 1091267, 1091269, 1091273]\n-/\n#guard_msgs in\n#eval find_primes_sextuplet\
+  \ 2000000\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

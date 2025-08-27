@@ -1,0 +1,23 @@
+"vc-description": "A nested list (or *array* in JavaScript) is a list that apears\
+  \ as a value inside another list, \n```python\n[item, item, [item, item], item]\n\
+  ```\nin the above list, [item, item] is a nested list.  \n  \nYour goal is to write\
+  \ a function that determines the depth of the deepest nested list within a given\
+  \ list.  \nreturn 1 if there are no nested lists.\nThe list passed to your function\
+  \ can contain any data types.  \n  \nA few examples:\n\n```python\nlist_depth([True])\n\
+  return 1\n\nlist_depth([])\nreturn 1\n\nlist_depth([2, \"yes\", [True, False]])\n\
+  return 2\n\nlist_depth([1, [2, [3, [4, [5, [6], 5], 4], 3], 2], 1])\nreturn 6\n\n\
+  list_depth([2.0, [2, 0], 3.7, [3, 7], 6.7, [6, 7]])\nreturn 2\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def NestedList.depth {α : Type} : NestedList α → Nat\n  | elem\
+  \ _ => sorry\n  | list _ => sorry\n"
+"vc-theorems": "theorem flat_list_depth {α : Type} (l : List α) : \n  NestedList.depth\
+  \ (NestedList.list (l.map NestedList.elem)) = 1 := sorry\n\n\ntheorem list_depth_lower_bound\
+  \ {α : Type} (nl : NestedList α) :\n  NestedList.depth nl ≥ 1 := sorry\n\n\ntheorem\
+  \ nested_list_depth_greater {α : Type} (outer : NestedList α) (inner : NestedList\
+  \ α)\n  (h : inner ≠ outer) : \n  NestedList.depth outer > NestedList.depth inner\
+  \ := sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval list_depth [1, [2, [3, [4,\
+  \ [5, [6], 5], 4], 3], 2], 1]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval list_depth\
+  \ [2, \"yes\", [True, False]]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval list_depth\
+  \ [2.0, [2, 0], 3.7, [3, 7], 6.7, [6, 7]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

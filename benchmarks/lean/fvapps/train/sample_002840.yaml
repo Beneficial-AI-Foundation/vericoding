@@ -1,0 +1,18 @@
+"vc-description": "Your task is to create function```isDivideBy``` (or ```is_divide_by```)\
+  \ to check if an integer number is divisible by each out of two arguments.\n\nA\
+  \ few cases:\n\n```\n\n(-12, 2, -6)  ->  true\n(-12, 2, -5)  ->  false\n\n(45, 1,\
+  \ 6)    ->  false\n(45, 5, 15)   ->  true\n\n(4, 1, 4)     ->  true\n(15, -5, 3)\
+  \   ->  true\n\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_divide_by (n a b : Int) : Bool := sorry\n\ntheorem is_divide_by_correct\
+  \ (n a b : Int) (ha : a ≠ 0) (hb : b ≠ 0) : \n  is_divide_by n a b = true ↔ n %\
+  \ a = 0 ∧ n % b = 0 := sorry\n"
+"vc-theorems": "theorem divide_by_one (n : Int) :\n  is_divide_by n 1 1 = true :=\
+  \ sorry\n\n\ntheorem divide_by_self (n a : Int) (h : a ≠ 0) :\n  is_divide_by a\
+  \ a a = true := sorry\n\n\ntheorem divide_by_zero_error (n : Int) :\n  is_divide_by\
+  \ n 0 1 = false ∧ is_divide_by n 1 0 = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval is_divide_by -12 2 -6\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval\
+  \ is_divide_by 45 1 6\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_divide_by\
+  \ 15 -5 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

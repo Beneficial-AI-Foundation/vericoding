@@ -1,0 +1,39 @@
+"vc-description": "Gorodetskiy is a university student. He is really good at math\
+  \ and really likes solving engaging math problems. In the last exam, his professor\
+  \ gave him really hard math problems to solve, but Gorodetskiy could not solve them\
+  \ and failed the exam, so the professor told him: \"These problems are a piece of\
+  \ cake, you should know them from school!\" Here is one of the problems from the\
+  \ exam - you can decide if it really was an easy problem or not.\nYou are given\
+  \ a positive integer $M$. Let's call a positive integer $A$ an interesting number\
+  \ if there is at least one integer $B$ ($A \\le B$) such that $A \\cdot B$ is divisible\
+  \ by $M$ and $\\frac{A \\cdot B}{M} = A+B$.\nFind all interesting numbers. Let's\
+  \ denote the number of such integers by $K$; it is guaranteed that $K \\le 3*10^5$.\n\
+  \n-----Input-----\n- The first line of the input contains a single integer $T$ denoting\
+  \ the number of test cases. The description of $T$ test cases follows.\n- The first\
+  \ and only line of each test case contains a single integer $M$.\n\n-----Output-----\n\
+  For each test case:\n- First, print a line containing a single integer $K$.\n- Then,\
+  \ print $K$ lines. For each valid $i$, the $i$-th of these lines should contain\
+  \ a single integer ― the $i$-th interesting number in increasing order.\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 10$\n- $1 \\le M \\le 10^{14}$\n\n-----Subtasks-----\nSubtask #1\
+  \ (20 points): $1 \\le M \\le 100$\nSubtask #2 (20 points): $1 \\le M \\le 10^7$\n\
+  Subtask #3 (60 points): original constraints\n\n-----Example Input-----\n2\n3\n\
+  6\n\n-----Example Output-----\n2\n4\n6\n5\n7\n8\n9\n10\n12\n\n-----Explanation-----\n\
+  Example case 1: There are two interesting numbers, $4$ and $6$. For $A = 4$, we\
+  \ can choose $B = 12$ and for $A = 6$, we can choose $B = 6$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_interesting_numbers (m : Nat) : List Nat := sorry \ndef\
+  \ solve_test_case (m : Nat) : List Nat := sorry\n"
+"vc-theorems": "theorem find_interesting_numbers_range (m : Nat) (h : 0 < m) (h2 :\
+  \ m ≤ 100) : \n  ∀ x ∈ find_interesting_numbers m, \n    m < x ∧ x ≤ 2 * m := sorry\n\
+  \n\ntheorem find_interesting_numbers_sorted (m : Nat) (h : 0 < m) (h2 : m ≤ 100)\
+  \ :\n  List.Pairwise (· ≤ ·) (find_interesting_numbers m) := sorry\n\n\ntheorem\
+  \ solve_test_case_first_is_length (m : Nat) (h : 0 < m) (h2 : m ≤ 100) :\n  List.head!\
+  \ (solve_test_case m) = (List.length (solve_test_case m)) - 1 := sorry\n\n\ntheorem\
+  \ solve_test_case_all_elements (m : Nat) (h : 0 < m) (h2 : m ≤ 100) :\n  ∀ x, x\
+  \ ∈ solve_test_case m → x ≥ 0 := sorry\n\n\ntheorem interesting_numbers_property\
+  \ (m : Nat) (h : 0 < m) (h2 : m ≤ 100) :\n  ∀ a ∈ find_interesting_numbers m,\n\
+  \    (a * m) % (a - m) = 0 := sorry\n\n\ntheorem find_interesting_numbers_complete\
+  \ (m : Nat) (h : 0 < m) (h2 : m ≤ 100) :\n  ∀ a : Nat, m < a → a ≤ 2 * m → \n  \
+  \  (a * m) % (a - m) = 0 → \n    a ∈ find_interesting_numbers m := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

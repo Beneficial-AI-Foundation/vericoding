@@ -1,0 +1,40 @@
+"vc-description": "=====Problem Statement=====\nGiven the names and grades for each\
+  \ student in a class of N students, store them in a nested list and print the name(s)\
+  \ of any student(s) having the second lowest grade.\nNOTE: If there are multiple\
+  \ students with the second lowest grade, order their names alphabetically and print\
+  \ each name on a new line.\n\n=====Example=====\nrecords = [[\"chi\",20.0],[\"beta\"\
+  ,50.0],[\"alpha\",50.0]]\nThe ordered list of scores is [20.0,50.0], so the second\
+  \ lowest score is 50.0. There are two students with that score: [\"beta\",\"alpha\"\
+  ]. Ordered alphabetically, the names are printed as:\nalpha\nbeta\n\n=====Input\
+  \ Format=====\nThe first line contains an integer, N, the number of students.\n\
+  The 2N subsequent lines describe each student over 2 lines.\n- The first line contains\
+  \ a student's name.\n- The second line contains their grade. \n\n=====Constraints=====\n\
+  2≤N≤5\nThere will always be one or more students having the second lowest grade.\n\
+  \n=====Output Format=====\nPrint the name(s) of any student(s) having the second\
+  \ lowest grade in. If there are multiple students, order their names alphabetically\
+  \ and print each one on a new line."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_second_lowest_students (records: List (String × Float))\
+  \ : List String :=\n  sorry\n"
+"vc-theorems": "theorem all_same_grade_failures \n  (records: List (String × Float))\n\
+  \  (h1: records.length > 0)\n  (h2: ∀ x y, x ∈ records → y ∈ records → x.2 = y.2)\
+  \ :\n  ∀ result, result ≠ find_second_lowest_students records :=\nsorry\n\n\ntheorem\
+  \ multiple_second_lowest_properties\n  (n: Nat)\n  (h1: n ≥ 2)\n  (h2: n ≤ 100)\n\
+  \  (records := (\"A\", 10.0) :: \n              (List.range n).map (fun i => (\"\
+  Student\" ++ toString i, 20.0)) ++\n              [(\"Z\", 30.0)]) :\n  let result\
+  \ := find_second_lowest_students records;\n  -- Result has correct length\n  result.length\
+  \ = n\n  -- All elements start with \"Student\"\n  ∧ (∀ x, x ∈ result → x.startsWith\
+  \ \"Student\")\n  -- Adjacent elements are ordered\n  ∧ (∀ i, i < result.length\
+  \ - 1 → result[i]! ≤ result[i+1]!) :=\nsorry\n\n\ntheorem basic_properties\n  (records\
+  \ := [(\"A\", 10.0), (\"B\", 20.0), (\"C\", 20.0), (\"D\", 30.0)]) :\n  let result\
+  \ := find_second_lowest_students records;\n  -- Correct result elements\n  result\
+  \ = [\"B\", \"C\"]\n  -- Correct length \n  ∧ result.length = 2\n  -- Adjacent elements\
+  \ are ordered\n  ∧ (∀ i, i < result.length - 1 → result[i]! ≤ result[i+1]!) :=\n\
+  sorry\n\n/--\ninfo: ['Berry', 'Harry']\n-/\n#guard_msgs in\n#eval find_second_lowest_students\
+  \ [[\"Harry\", 37.21], [\"Berry\", 37.21], [\"Tina\", 37.2], [\"Akriti\", 41], [\"\
+  Harsh\", 39]]\n\n/--\ninfo: ['alpha', 'beta']\n-/\n#guard_msgs in\n#eval find_second_lowest_students\
+  \ [[\"chi\", 20.0], [\"beta\", 50.0], [\"alpha\", 50.0]]\n\n/--\ninfo: ['B', 'C']\n\
+  -/\n#guard_msgs in\n#eval find_second_lowest_students [[\"A\", 10.0], [\"B\", 20.0],\
+  \ [\"C\", 20.0]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,31 @@
+"vc-description": "# Do names have colors?\n\n*Now they do.*\n\nMake a function that\
+  \ takes in a name (Any string two chars or longer really, but the name is the idea)\
+  \ and use the ascii values of it's substrings to produce the hex value of its color!\
+  \ Here is how it's going to work:\n\n* The first two hexadecimal digits are the\
+  \ *SUM* of the value of characters (modulo 256).\n* The second two are the *PRODUCT*\
+  \ of all the characters (again, modulo 256, which is one more than `FF` in hexadecimal).\n\
+  * The last two are the *ABSOLUTE VALUE of the DIFFERENCE* between the first letter,\
+  \ and the sum of every other letter. (I think you get the idea with the modulo thing).\n\
+  \nFor example `\"Jack\"` returns `\"79CAE5\"`, which is... **baby blue!**\n```\n\
+  \"Jack\"  #  \"J\" = 74, \"a\" = 97, \"c\" = 99, \"k\" = 107\n\n74 + 97 + 99 + 107\
+  \ = 377                   -->  mod 256 = 121  -->  hex: 79\n74 * 97 * 99 * 107 =\
+  \ 76036554              -->  mod 256 = 202  -->  hex: CA\n74 - (97 + 99 + 107) =\
+  \ -229  --> abs: 229  -->  mod 256 = 229  -->  hex: E5\n```\n\nNOTE: The function\
+  \ should return `None/nil` when the input is less than two chars."
+"vc-preamble": "import Imports.AllImports\n\ndef string_color (s : String) : Option\
+  \ String := sorry\n\ntheorem string_color_short_strings {s : String} (h : s.length\
+  \ ≤ 1) : \n  string_color s = none := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def hexToNat (s : String) : Nat := sorry\n\ntheorem string_color_valid_ranges\
+  \ {s : String} (h : s.length ≥ 2) :\n  match string_color s with\n  | none => False\n\
+  \  | some result =>\n    let r := hexToNat result\n    let g := hexToNat result\n\
+  \    let b := hexToNat result\n    r ≤ 255 ∧ g ≤ 255 ∧ b ≤ 255 := sorry\n"
+"vc-theorems": "theorem string_color_longer_strings {s : String} (h : s.length ≥ 2)\
+  \ :\n  match string_color s with\n  | none => False\n  | some result => \n    result.length\
+  \ = 6 ∧ \n    (∀ c ∈ result.data, c ∈ ['0', '1', '2', '3', '4', '5', '6', '7', '8',\
+  \ '9', 'A', 'B', 'C', 'D', 'E', 'F']) := sorry\n\n\ntheorem string_color_deterministic\
+  \ {s : String} :\n  string_color s = string_color s := sorry\n\n/--\ninfo: None\n\
+  -/\n#guard_msgs in\n#eval string_color \"A\"\n\n/--\ninfo: None\n-/\n#guard_msgs\
+  \ in\n#eval string_color \"\"\n\n/--\ninfo: '79CAE5'\n-/\n#guard_msgs in\n#eval\
+  \ string_color \"Jack\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

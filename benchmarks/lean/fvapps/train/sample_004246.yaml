@@ -1,0 +1,14 @@
+"vc-description": "Write a simple parser that will parse and run Deadfish.  \n\nDeadfish\
+  \ has 4 commands, each 1 character long:\n* `i` increments the value (initially\
+  \ `0`)\n* `d` decrements the value\n* `s` squares the value\n* `o` outputs the value\
+  \ into the return array\n\nInvalid characters should be ignored.\n\n```python\n\
+  parse(\"iiisdoso\")  ==>  [8, 64]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def parse (s : String) : List Int := sorry\n\ndef countChar (s\
+  \ : String) (c : Char) : Nat := \n  s.toList.filter (· = c) |>.length\n\n\n"
+"vc-theorems": "theorem parse_output_bounded (s : String) :\n  ∀ x ∈ parse s, x ≥\
+  \ -s.length\n  := sorry\n\n/--\ninfo: [0, 0, 0]\n-/\n#guard_msgs in\n#eval parse\
+  \ \"ooo\"\n\n/--\ninfo: [1, 2, 3]\n-/\n#guard_msgs in\n#eval parse \"ioioio\"\n\n\
+  /--\ninfo: [0, 1]\n-/\n#guard_msgs in\n#eval parse \"idoiido\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

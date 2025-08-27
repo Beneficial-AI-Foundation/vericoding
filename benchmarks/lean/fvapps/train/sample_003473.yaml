@@ -1,0 +1,37 @@
+"vc-description": "Happy traveller [Part 1]\n\nThere is a play grid NxN; Always square!\
+  \ \n\n   0  1  2  3\n0 [o, o, o, X]\n1 [o, o, o, o]\n2 [o, o, o, o]\n3 [o, o, o,\
+  \ o]\n\n\nYou start from a random point. I mean, you are given the coordinates of\
+  \ your start position in format (row, col). \n\nAnd your TASK is to define the number\
+  \ of unique paths to reach position X (always in the top right corner).\n\n\nFrom\
+  \ any point you can go only UP or RIGHT.\n\n\nImplement a function count_paths(N,\
+  \ (row, col)) which returns int; \nAssume input params are always valid.\n\n\nExample:\n\
+  \ncount_paths(1, (0, 0))\ngrid 1x1:\n\n[X]\n You are already in the target point,\
+  \ so return 0\n\n\ncount_paths(2, (1, 0))\ngrid 2x2:\n\n[o, X]\n[@, o]\n You are\
+  \ at point @; you can move UP-RIGHT or RIGHT-UP, and there are 2 possible unique\
+  \ paths here\n\ncount_paths(2, (1, 1))\ngrid 2x2:\n\n[o, X]\n[o, @]\n You are at\
+  \ point @; you can move only UP, so there is 1 possible unique path here\n\ncount_paths(3,\
+  \ (1, 0))\ngrid 3x3:\n\n[o, o, X]\n[@, o, o]\n[o, o, o]\n You are at point @; you\
+  \ can move UP-RIGHT-RIGHT or RIGHT-UP-RIGHT, or RIGHT-RIGHT-UP, and there are 3\
+  \ possible unique paths here\n\n\nI think it's pretty clear =)\n\nbtw. you can use\
+  \ preloaded Grid class, which constructs 2d array for you. It's very very basic\
+  \ and simple. You can use numpy instead or any other way to produce the correct\
+  \ answer =)\n grid = Grid(2, 2, 0) \nsamegrid = Grid.square(2) will give you a grid[2][2],\
+  \ which you can print easily to console. \n\nprint(grid)\n\n\n[0, 0]\n[0, 0]\n\n\
+  \nEnjoy!\n\nYou can continue adventures:\nHappy traveller [Part 2]"
+"vc-preamble": "import Imports.AllImports\n\ndef choose (n m : Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_paths (n: Nat) (start_pos: Nat × Nat) : Nat :=\n  sorry\n\
+  \n\n"
+"vc-theorems": "theorem count_paths_one_by_one {n: Nat} (h: n = 1) :\n  count_paths\
+  \ n (0, 0) = 0 :=\n  sorry\n\n\ntheorem count_paths_non_negative {n row col: Nat}\
+  \ (h1: row < n) (h2: col < n) (h3: n > 0) :\n  count_paths n (row, col) ≥ 0 :=\n\
+  \  sorry\n\n\ntheorem count_paths_only_vertical {n row col: Nat} (h1: col = n -\
+  \ 1) (h2: row > 0) (h3: row < n) (h4: n > 0) :\n  count_paths n (row, col) = 1 :=\n\
+  \  sorry\n\n\ntheorem count_paths_only_horizontal {n row col: Nat} (h1: row = 0)\
+  \ (h2: col < n - 1) (h3: n > 0) :\n  count_paths n (row, col) = 1 :=\n  sorry\n\n\
+  \n\n\ntheorem count_paths_start_equals_target {n: Nat} (h: n ≥ 2) :\n  count_paths\
+  \ n (0, n-1) = 1 :=\n  sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval count_paths\
+  \ 1 (0, 0)\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_paths 2 (1, 0)\n\n/--\n\
+  info: 3\n-/\n#guard_msgs in\n#eval count_paths 3 (1, 0)\n\n/--\ninfo: 70\n-/\n#guard_msgs\
+  \ in\n#eval count_paths 5 (4, 0)\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

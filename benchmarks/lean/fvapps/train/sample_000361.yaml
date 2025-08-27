@@ -1,0 +1,22 @@
+"vc-description": "Given a non-empty array of unique positive integers A, consider\
+  \ the following graph:\n\nThere are A.length nodes, labelled A[0] to A[A.length\
+  \ - 1];\nThere is an edge between A[i] and A[j] if and only if A[i] and A[j] share\
+  \ a common factor greater than 1.\n\nReturn the size of the largest connected component\
+  \ in the graph.\n \n\n\n\nExample 1:\nInput: [4,6,15,35]\nOutput: 4\n\n\n\nExample\
+  \ 2:\nInput: [20,50,9,63]\nOutput: 2\n\n\n\nExample 3:\nInput: [2,3,6,7,4,12,21,39]\n\
+  Output: 8\n\n\nNote:\n\n1 <= A.length <= 20000\n1 <= A[i] <= 100000"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def largest_component_size (nums : List Nat) : Nat := sorry\n\n\
+  theorem largest_component_size_bounds {nums : List Nat} (h : nums ≠ []) : \n  let\
+  \ result := largest_component_size nums\n  0 < result ∧ result ≤ nums.length :=\
+  \ sorry\n"
+"vc-theorems": "theorem largest_component_size_idempotent {nums : List Nat} :\n  largest_component_size\
+  \ nums = largest_component_size nums := sorry\n\n\ntheorem all_evens_max_component\
+  \ {nums : List Nat} (h : nums.all (fun n => n % 2 = 0)) :\n  largest_component_size\
+  \ nums = nums.length := sorry\n\n\ntheorem single_prime_component_one (p : Nat)\
+  \ :\n  largest_component_size [p] = 1 := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval largest_component_size [4, 6, 15, 35]\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval largest_component_size [20, 50, 9, 63]\n\n/--\ninfo: 8\n-/\n#guard_msgs\
+  \ in\n#eval largest_component_size [2, 3, 6, 7, 4, 12, 21, 39]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

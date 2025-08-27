@@ -1,0 +1,25 @@
+"vc-description": "Given an array of integers A, a move consists of choosing any A[i],\
+  \ and incrementing it by 1.\nReturn the least number of moves to make every value\
+  \ in A unique.\n \nExample 1:\nInput: [1,2,2]\nOutput: 1\nExplanation:  After 1\
+  \ move, the array could be [1, 2, 3].\n\n\nExample 2:\nInput: [3,2,1,2,1,7]\nOutput:\
+  \ 6\nExplanation:  After 6 moves, the array could be [3, 4, 1, 2, 5, 7].\nIt can\
+  \ be shown with 5 or less moves that it is impossible for the array to have all\
+  \ unique values.\n\n \n\nNote:\n\n0 <= A.length <= 40000\n0 <= A[i] < 40000"
+"vc-preamble": "import Imports.AllImports\n\ndef min_increment_for_unique (nums :\
+  \ List Int) : Nat :=\n  sorry\n\n\ndef sorted (l : List Int) : List Int :=\n  sorry\n\
+  \n\ndef makeUnique (nums : List Int) : List Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sumList (l : List Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem min_increment_nonneg (nums : List Int) :\n  min_increment_for_unique\
+  \ nums ≥ 0 :=\n  sorry\n\n\ntheorem min_increment_empty (nums : List Int) :\n  nums\
+  \ = [] → min_increment_for_unique nums = 0 :=\n  sorry\n\n\ntheorem min_increment_single\
+  \ (nums : List Int) (x : Int) : \n  nums = [x] → min_increment_for_unique nums =\
+  \ 0 :=\n  sorry\n\n\ntheorem min_increment_sort_invariant (nums : List Int) :\n\
+  \  min_increment_for_unique nums = min_increment_for_unique (sorted nums) :=\n \
+  \ sorry\n\n\ntheorem min_increment_makes_unique (nums : List Int) :\n  let result\
+  \ := sorted nums\n  let incremented := makeUnique result\n  min_increment_for_unique\
+  \ nums = (sumList incremented - sumList result) :=\n  sorry\n\n/--\ninfo: 1\n-/\n\
+  #guard_msgs in\n#eval min_increment_for_unique [1, 2, 2]\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval min_increment_for_unique [3, 2, 1, 2, 1, 7]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval min_increment_for_unique []\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

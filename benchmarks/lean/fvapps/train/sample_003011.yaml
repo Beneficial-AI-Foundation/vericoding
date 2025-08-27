@@ -1,0 +1,31 @@
+"vc-description": "Pirates have notorious difficulty with enunciating. They tend to\
+  \ blur all the letters together and scream at people.\n\nAt long last, we need a\
+  \ way to unscramble what these pirates are saying.\n\nWrite a function that will\
+  \ accept a jumble of letters as well as a dictionary, and output a list of words\
+  \ that the pirate might have meant.\n\nFor example:\n```\ngrabscrab( \"ortsp\",\
+  \ [\"sport\", \"parrot\", \"ports\", \"matey\"] )\n```\n\nShould return `[\"sport\"\
+  , \"ports\"]`.\n\nReturn matches in the same order as in the dictionary. Return\
+  \ an empty array if there are no matches.\n\nGood luck!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isAnagram (s1 s2 : String) : Bool := sorry\n\ndef grabscrab\
+  \ (said : String) (possibleWords : List String) : List String := sorry\n"
+"vc-theorems": "theorem grabscrab_words_in_list (said : String) (possibleWords : List\
+  \ String) :\n  ∀ w ∈ grabscrab said possibleWords, w ∈ possibleWords := sorry\n\n\
+  \ntheorem grabscrab_words_are_anagrams (said : String) (possibleWords : List String)\
+  \ :\n  ∀ w ∈ grabscrab said possibleWords, isAnagram w said = true := sorry\n\n\n\
+  theorem grabscrab_contains_all_anagrams (said : String) (possibleWords : List String)\
+  \ :\n  ∀ w ∈ possibleWords, isAnagram w said = true → w ∈ grabscrab said possibleWords\
+  \ := sorry\n\n\ntheorem grabscrab_preserves_order (said : String) (possibleWords\
+  \ : List String) :\n  ∀ (i j : Nat), i < j →\n    let result := grabscrab said possibleWords\n\
+  \    ∀ (wi wj : String), \n      wi ∈ result → wj ∈ result →\n      List.indexOf\
+  \ wi possibleWords < List.indexOf wj possibleWords → \n      List.indexOf wi result\
+  \ < List.indexOf wj result := sorry\n\n\ntheorem grabscrab_empty_list (said : String)\
+  \ :\n  grabscrab said [] = [] := sorry\n\n\ntheorem grabscrab_result_unique (said\
+  \ : String) (possibleWords : List String) :\n  let result := grabscrab said possibleWords\n\
+  \  result.length = (result.eraseDups).length := sorry\n\n/--\ninfo: ['first']\n\
+  -/\n#guard_msgs in\n#eval grabscrab \"trisf\" [\"first\"]\n\n/--\ninfo: ['sport',\
+  \ 'ports']\n-/\n#guard_msgs in\n#eval grabscrab \"ortsp\" [\"sport\", \"parrot\"\
+  , \"ports\", \"matey\"]\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval grabscrab \"\
+  ourf\" [\"one\", \"two\", \"three\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

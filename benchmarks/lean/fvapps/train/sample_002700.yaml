@@ -1,0 +1,18 @@
+"vc-description": "Given a string, you progressively need to concatenate the first\
+  \ letter from the left and the first letter to the right and \"1\", then the second\
+  \ letter from the left and the second letter to the right and \"2\", and so on.\n\
+  \nIf the string's length is odd drop the central element.\n\nFor example:\n```python\n\
+  char_concat(\"abcdef\")    == 'af1be2cd3'\nchar_concat(\"abc!def\")   == 'af1be2cd3'\
+  \ # same result\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def char_concat (s : String) : String := sorry\n\ntheorem spaces_handling\
+  \ (word : String) :\n  char_concat word = char_concat (word.replace \" \" \"\")\
+  \ := sorry \n"
+"vc-theorems": "theorem first_pair {word : String} (h : word.length ≥ 2) :\n  let\
+  \ result := char_concat word\n  (result.data[0]! = word.data[0]!) ∧ \n  (result.data[1]!\
+  \ = word.data[word.length - 1]!) ∧\n  (result.data[2]! = '1') := sorry\n\n/--\n\
+  info: 'af1be2cd3'\n-/\n#guard_msgs in\n#eval char_concat \"abcdef\"\n\n/--\ninfo:\
+  \ 'Cs1or2da3eW4'\n-/\n#guard_msgs in\n#eval char_concat \"CodeWars\"\n\n/--\ninfo:\
+  \ '101292383474565'\n-/\n#guard_msgs in\n#eval char_concat \"1234567890\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

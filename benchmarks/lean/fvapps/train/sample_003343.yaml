@@ -1,0 +1,31 @@
+"vc-description": "## Description\nYour job is to create a simple password validation\
+  \ function, as seen on many websites. \n\nThe rules for a valid password are as\
+  \ follows:\n- There needs to be at least 1 uppercase letter.\n- There needs to be\
+  \ at least 1 lowercase letter.\n- There needs to be at least 1 number.\n- The password\
+  \ needs to be at least 8 characters long.\n\nYou are permitted to use any methods\
+  \ to validate the password.\n\n## Examples:\n\n### Extra info\n- You will only be\
+  \ passed strings.\n- The string can contain any standard keyboard character.\n-\
+  \ Accepted strings can be any length, as long as they are 8 characters or more."
+"vc-preamble": "import Imports.AllImports\n\ndef isLower (c : Char) : Bool :=\n  sorry\n\
+  \n\ndef isUpper (c : Char) : Bool :=\n  sorry\n\n\ndef isDigit (c : Char) : Bool\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_valid_password (s : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem valid_password_conditions (s : String) :\n  (s.length ≥ 8)\
+  \ →\n  (∃ c, c ∈ s.data ∧ isLower c) →\n  (∃ c, c ∈ s.data ∧ isUpper c) →\n  (∃\
+  \ c, c ∈ s.data ∧ isDigit c) →\n  is_valid_password s = true :=\n  sorry\n\n\ntheorem\
+  \ invalid_password_too_short (s : String) :\n  s.length < 8 →\n  is_valid_password\
+  \ s = false :=\n  sorry\n\n\ntheorem invalid_password_no_upper (s : String) :\n\
+  \  s.length ≥ 8 →\n  (¬∃ c, c ∈ s.data ∧ isUpper c) →\n  is_valid_password s = false\
+  \ :=\n  sorry\n\n\ntheorem invalid_password_no_lower (s : String) :\n  s.length\
+  \ ≥ 8 →\n  (¬∃ c, c ∈ s.data ∧ isLower c) →\n  is_valid_password s = false :=\n\
+  \  sorry\n\n\ntheorem invalid_password_no_digit (s : String) :\n  s.length ≥ 8 →\n\
+  \  (¬∃ c, c ∈ s.data ∧ isDigit c) →\n  is_valid_password s = false :=\n  sorry\n\
+  \n\ntheorem empty_password_invalid :\n  is_valid_password \"\" = false :=\n  sorry\n\
+  \n\ntheorem short_password_invalid :\n  is_valid_password \"aA1\" = false :=\n \
+  \ sorry\n\n\ntheorem valid_min_length_password :\n  is_valid_password \"aaaaA111\"\
+  \ = true :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_valid_password\
+  \ \"Abcd1234\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_valid_password\
+  \ \"Abcd123\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_valid_password \"\
+  abcd1234\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

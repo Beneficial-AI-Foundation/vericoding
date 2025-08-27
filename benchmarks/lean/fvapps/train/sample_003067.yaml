@@ -1,0 +1,32 @@
+"vc-description": "Task:\nGiven an array arr of strings complete the function landPerimeter\
+  \ by calculating the total perimeter of all the islands. Each piece of land will\
+  \ be marked with 'X' while the water fields are represented as 'O'. Consider each\
+  \ tile being a perfect 1 x 1piece of land. Some examples for better visualization:\n\
+  \n['XOOXO',\n  'XOOXO',\n  'OOOXO',\n  'XXOXO',\n  'OXOOO'] \n\nor \n\n\nshould\
+  \ return:\n\"Total land perimeter: 24\",\n\nwhile\n\n\n['XOOO',\n  'XOXO',\n  'XOXO',\n\
+  \  'OOXX',\n  'OOOO']\n\n\n\nshould return: \"Total land perimeter: 18\"\nGood luck!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_neighbors (arr : List (List Char)) (i j : Nat) : List Char\
+  \ := sorry\n\ndef land_perimeter (arr : List (List Char)) : String := sorry\n"
+"vc-theorems": "theorem land_perimeter_output_format {arr : List (List Char)}\n  (h1\
+  \ : ∀ row ∈ arr, ∀ c ∈ row, c = 'X' ∨ c = 'O')\n  (h2 : ∀ row ∈ arr, row.length\
+  \ = arr[0]!.length)\n  (h3 : arr.length > 0 ∧ arr.length ≤ 10)\n  (h4 : arr[0]!.length\
+  \ > 0 ∧ arr[0]!.length ≤ 10) :\n  ∃ n : Nat, land_perimeter arr = \"Total land perimeter:\
+  \ \" ++ toString n := sorry\n\n\ntheorem perimeter_multiple_of_four_for_isolated_lands\
+  \ {arr : List (List Char)}\n  (h1 : ∀ row ∈ arr, ∀ c ∈ row, c = 'X' ∨ c = 'O')\n\
+  \  (h2 : ∀ row ∈ arr, row.length = arr[0]!.length)\n  (h3 : arr.length > 0 ∧ arr.length\
+  \ ≤ 10)\n  (h4 : arr[0]!.length > 0 ∧ arr[0]!.length ≤ 10)\n  (h5 : ∀ i j, i < arr.length\
+  \ → j < arr[0]!.length →\n        arr[i]![j]! = 'O' ∨\n        (arr[i]![j]! = 'X'\
+  \ ∧ \n         ∀ n ∈ get_neighbors arr i j, n = 'O')) :\n  ∃ n : Nat, land_perimeter\
+  \ arr = \"Total land perimeter: \" ++ toString n ∧ n % 4 = 0 := sorry\n\n\ntheorem\
+  \ zero_perimeter_for_empty_land {arr : List (List Char)}\n  (h1 : ∀ row ∈ arr, ∀\
+  \ c ∈ row, c = 'O')\n  (h2 : ∀ row ∈ arr, row.length = arr[0]!.length)\n  (h3 :\
+  \ arr.length > 0 ∧ arr.length ≤ 10)\n  (h4 : arr[0]!.length > 0 ∧ arr[0]!.length\
+  \ ≤ 10) :\n  land_perimeter arr = \"Total land perimeter: 0\" := sorry\n\n/--\n\
+  info: 'Total land perimeter: 24'\n-/\n#guard_msgs in\n#eval land_perimeter [\"XOOXO\"\
+  , \"XOOXO\", \"OOOXO\", \"XXOXO\", \"OXOOO\"]\n\n/--\ninfo: 'Total land perimeter:\
+  \ 18'\n-/\n#guard_msgs in\n#eval land_perimeter [\"XOOO\", \"XOXO\", \"XOXO\", \"\
+  OOXX\", \"OOOO\"]\n\n/--\ninfo: 'Total land perimeter: 4'\n-/\n#guard_msgs in\n\
+  #eval land_perimeter [\"X\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

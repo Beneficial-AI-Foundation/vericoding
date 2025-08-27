@@ -1,0 +1,33 @@
+"vc-description": "=====Function Descriptions=====\nshape\n\nThe shape tool gives\
+  \ a tuple of array dimensions and can be used to change the dimensions of an array.\n\
+  \n(a). Using shape to get array dimensions\n\nimport numpy\n\nmy__1D_array = numpy.array([1,\
+  \ 2, 3, 4, 5])\nprint my_1D_array.shape     #(5,) -> 5 rows and 0 columns\n\nmy__2D_array\
+  \ = numpy.array([[1, 2],[3, 4],[6,5]])\nprint my_2D_array.shape     #(3, 2) -> 3\
+  \ rows and 2 columns \n\n(b). Using shape to change array dimensions\n\nimport numpy\n\
+  \nchange_array = numpy.array([1,2,3,4,5,6])\nchange_array.shape = (3, 2)\nprint\
+  \ change_array      \n\n#Output\n[[1 2]\n[3 4]\n[5 6]]\n\nreshape\n\nThe reshape\
+  \ tool gives a new shape to an array without changing its data. It creates a new\
+  \ array and does not modify the original array itself.\n\nimport numpy\n\nmy_array\
+  \ = numpy.array([1,2,3,4,5,6])\nprint numpy.reshape(my_array,(3,2))\n\n#Output\n\
+  [[1 2]\n[3 4]\n[5 6]]\n\n=====Problem Statement=====\nYou are given a space separated\
+  \ list of nine integers. Your task is to convert this list into a 3X3 NumPy array.\n\
+  \n=====Input Format=====\nA single line of input containing 9 space separated integers.\n\
+  \n=====Output Format=====\nPrint the 3X3 NumPy array."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def convert_to_3x3_array (input: String) : Except String (Array\
+  \ (Array Int)) := sorry\n\ntheorem convert_to_3x3_array_correct (numbers: List Int)\
+  \ \n  (h1: numbers.length = 9) : \n  let str := String.intercalate \" \" (numbers.map\
+  \ toString)\n  match convert_to_3x3_array str with\n  | .ok result => \n      result.size\
+  \ = 3 ∧ \n      (result.get! 0).size = 3 ∧\n      (result.get! 1).size = 3 ∧\n \
+  \     (result.get! 2).size = 3\n  | .error _ => False := sorry\n"
+"vc-theorems": "theorem convert_to_3x3_array_invalid_input (input: String)\n  (h1:\
+  \ ¬String.all input (fun c => c.isDigit ∨ c = ' ')) :\n  match convert_to_3x3_array\
+  \ input with\n  | .ok _ => False\n  | .error _ => True := sorry\n\n\ntheorem convert_to_3x3_array_too_few_numbers\
+  \ (numbers: List Int)\n  (h1: numbers.length < 9) :\n  let str := String.intercalate\
+  \ \" \" (numbers.map toString)\n  match convert_to_3x3_array str with\n  | .ok _\
+  \ => False\n  | .error _ => True := sorry\n\n\ntheorem convert_to_3x3_array_too_many_numbers\
+  \ (numbers: List Int)\n  (h1: numbers.length > 9) :\n  let str := String.intercalate\
+  \ \" \" (numbers.map toString)\n  match convert_to_3x3_array str with\n  | .ok _\
+  \ => False\n  | .error _ => True := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

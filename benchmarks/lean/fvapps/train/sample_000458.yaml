@@ -1,0 +1,23 @@
+"vc-description": "Given two integers representing the numerator and denominator of\
+  \ a fraction, return the fraction in string format.\n\nIf the fractional part is\
+  \ repeating, enclose the repeating part in parentheses.\n\nExample 1:\n\n\nInput:\
+  \ numerator = 1, denominator = 2\nOutput: \"0.5\"\n\n\nExample 2:\n\n\nInput: numerator\
+  \ = 2, denominator = 1\nOutput: \"2\"\n\nExample 3:\n\n\nInput: numerator = 2, denominator\
+  \ = 3\nOutput: \"0.(6)\""
+"vc-preamble": "import Imports.AllImports\n\ndef toFloat (s: String) : Float :=\n\
+  \  sorry\n\n\ndef intToFloat (n: Int) : Float :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def fraction_to_decimal (n: Int) (d: Int) : DecimalRepr :=\n  sorry\n"
+"vc-theorems": "theorem positive_fraction_valid_format (n d: Int)\n  (hn: 0 < n) (hd:\
+  \ 0 < d) (hdn: n ≤ 10^6 ∧ d ≤ 10^6) :\n  (fraction_to_decimal n d).isValid = true\
+  \ :=\n  sorry\n\n\ntheorem positive_fraction_matches_value (n d: Int)\n  (hn: 0\
+  \ < n) (hd: 0 < d) (hdn: n ≤ 10^6 ∧ d ≤ 10^6) :\n  (((toFloat (fraction_to_decimal\
+  \ n d).value) - ((intToFloat n) / (intToFloat d))).abs < 1e-10) :=\n  sorry\n\n\n\
+  theorem whole_numbers_no_decimals (n: Int)\n  (hn: -10^6 ≤ n ∧ n ≤ 10^6) (hnz: n\
+  \ ≠ 0) :\n  let res := (fraction_to_decimal n 1).value\n  ¬res.contains '.' ∧ ¬res.contains\
+  \ '(' ∧ res.toInt! = n :=\n  sorry\n\n\ntheorem zero_numerator (d: Int)\n  (hd:\
+  \ 0 < d) (hdb: d ≤ 10^6) :\n  (fraction_to_decimal 0 d).value = \"0\" :=\n  sorry\n\
+  \n/--\ninfo: '0.5'\n-/\n#guard_msgs in\n#eval fraction_to_decimal 1 2\n\n/--\ninfo:\
+  \ '2'\n-/\n#guard_msgs in\n#eval fraction_to_decimal 2 1\n\n/--\ninfo: '0.(6)'\n\
+  -/\n#guard_msgs in\n#eval fraction_to_decimal 2 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

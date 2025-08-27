@@ -1,0 +1,28 @@
+"vc-description": "#Find the missing letter\n\nWrite a method that takes an array\
+  \ of consecutive (increasing) letters as input and that returns the missing letter\
+  \ in the array.\n\nYou will always get an valid array. And it will be always exactly\
+  \ one letter be missing. The length of the array will always be at least 2.\nThe\
+  \ array will always contain letters in only one case.\n\nExample:\n```if-not:swift\n\
+  ['a','b','c','d','f'] -> 'e'\n['O','Q','R','S'] -> 'P'\n```\n\n(Use the English\
+  \ alphabet with 26 letters!)\n\nHave fun coding it and please don't forget to vote\
+  \ and rank this kata! :-) \n\nI have also created other katas. Take a look if you\
+  \ enjoyed this kata!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_missing_letter (chars : List Char) : Option Char := sorry\n\
+  \ntheorem find_missing_letter_with_gap {chars : List Char} \n    (h₁ : chars.length\
+  \ > 1)\n    (h₂ : ∀ i j, i < j → j < chars.length → Char.toNat (chars.get! i) <\
+  \ Char.toNat (chars.get! j))\n    (h₃ : ∀ (i : Nat), i + 1 < chars.length → \n \
+  \         Char.toNat (chars.get! i) + 1 = Char.toNat (chars.get! (i + 1))) :\n \
+  \   let missing := chars.get! 0\n    let test_input := chars.get! 0 :: chars.tail!\n\
+  \    find_missing_letter test_input = some missing := sorry\n"
+"vc-theorems": "theorem find_missing_letter_consecutive {chars : List Char}\n    (h₁\
+  \ : chars.length > 1) \n    (h₂ : ∀ i j, i < j → j < chars.length → Char.toNat (chars.get!\
+  \ i) < Char.toNat (chars.get! j))\n    (h₃ : ∀ (i : Nat), i + 1 < chars.length →\
+  \ \n          Char.toNat (chars.get! i) + 1 = Char.toNat (chars.get! (i + 1))) :\n\
+  \    find_missing_letter chars = none := sorry\n\n/--\ninfo: 'e'\n-/\n#guard_msgs\
+  \ in\n#eval find_missing_letter [\"a\", \"b\", \"c\", \"d\", \"f\"]\n\n/--\ninfo:\
+  \ 'P'\n-/\n#guard_msgs in\n#eval find_missing_letter [\"O\", \"Q\", \"R\", \"S\"\
+  ]\n\n/--\ninfo: 'c'\n-/\n#guard_msgs in\n#eval find_missing_letter [\"b\", \"d\"\
+  ]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

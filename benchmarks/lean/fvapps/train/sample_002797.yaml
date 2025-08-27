@@ -1,0 +1,19 @@
+"vc-description": "Create a function\n\n```python\nhas_two_cube_sums(n)\n```\n\nwhich\
+  \ checks if a given number `n` can be written as the sum of two cubes in two different\
+  \ ways: `n = a³+b³ = c³+d³`.\nAll the numbers `a`, `b`, `c` and `d` should be different\
+  \ and greater than `0`.\n\nE.g. 1729 = 9³+10³ = 1³+12³.\n\n```python\nhas_two_cube_sums(1729);\
+  \ // true\nhas_two_cube_sums(42);   // false\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def has_two_cube_sums (n : Nat) : Bool :=\nsorry\n\n-- Every positive\
+  \ number returns a boolean result"
+"vc-theorems": "theorem has_two_cube_sums_returns_bool (n : Nat) :\n  n > 0 → has_two_cube_sums\
+  \ n = true ∨ has_two_cube_sums n = false :=\nsorry\n\n-- 1729 and 4104 are Ramanujan\
+  \ numbers\n\ntheorem known_ramanujan_numbers_have_two_cube_sums :\n  (has_two_cube_sums\
+  \ 1729 = true) ∧ (has_two_cube_sums 4104 = true) :=\nsorry\n\n-- Small numbers except\
+  \ 1729 are not Ramanujan numbers\n\ntheorem small_numbers_not_ramanujan (n : Nat)\
+  \ :\n  n > 0 → n < 100 → n ≠ 1729 → has_two_cube_sums n = false :=\nsorry\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval has_two_cube_sums 1729\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval has_two_cube_sums 42\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval has_two_cube_sums 4104\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,34 @@
+"vc-description": "Snuke loves constructing integer sequences.\nThere are N piles\
+  \ of stones, numbered 1 through N.\nThe pile numbered i consists of a_i stones.\n\
+  Snuke will construct an integer sequence s of length Σa_i, as follows:\n - Among\
+  \ the piles with the largest number of stones remaining, let x be the index of the\
+  \ pile with the smallest index. Append x to the end of s.\n - Select a pile with\
+  \ one or more stones remaining, and remove a stone from that pile.\n - If there\
+  \ is a pile with one or more stones remaining, go back to step 1. Otherwise, terminate\
+  \ the process.\nWe are interested in the lexicographically smallest sequence that\
+  \ can be constructed. For each of the integers 1,2,3,...,N, how many times does\
+  \ it occur in the lexicographically smallest sequence?\n\n-----Constraints-----\n\
+  \ - 1 ≤ N ≤ 10^{5}\n - 1 ≤ a_i ≤ 10^{9}\n\n-----Input-----\nThe input is given from\
+  \ Standard Input in the following format:\nN\na_1 a_2 ... a_{N}\n\n-----Output-----\n\
+  Print N lines. The i-th line should contain the number of the occurrences of the\
+  \ integer i in the lexicographically smallest sequence that can be constructed.\n\
+  \n-----Sample Input-----\n2\n1 2\n\n-----Sample Output-----\n2\n1\n\nThe lexicographically\
+  \ smallest sequence is constructed as follows:\n - Since the pile with the largest\
+  \ number of stones remaining is pile 2, append 2 to the end of s. Then, remove a\
+  \ stone from pile 2.\n - Since the piles with the largest number of stones remaining\
+  \ are pile 1 and 2, append 1 to the end of s (we take the smallest index). Then,\
+  \ remove a stone from pile 2.\n - Since the pile with the largest number of stones\
+  \ remaining is pile 1, append 1 to the end of s. Then, remove a stone from pile\
+  \ 1.\nThe resulting sequence is (2,1,1). In this sequence, 1 occurs twice, and 2\
+  \ occurs once."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (N : Nat) (stones : List Nat) : List Nat := sorry\n\n\
+  theorem solve_length {N : Nat} {stones : List Nat} :\n  stones.length = N → (solve\
+  \ N stones).length = N := sorry\n"
+"vc-theorems": "theorem solve_nonnegative {N : Nat} {stones : List Nat} :\n  stones.length\
+  \ = N → ∀ x ∈ solve N stones, x ≥ 0 := sorry\n\n\ntheorem solve_repeated_stones\
+  \ {N : Nat} {stones : List Nat} :\n  stones.length = N →\n  ∀ i j : Nat,\n    i\
+  \ < j → \n    j < stones.length →\n    stones[i]! = stones[j]! →\n    (solve N stones)[j]!\
+  \ = 0 := sorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

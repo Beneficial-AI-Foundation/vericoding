@@ -1,0 +1,21 @@
+"vc-description": "Bob is a lazy man. \n\nHe needs you to create a method that can\
+  \ determine how many ```letters``` and ```digits``` are in a given string.\n\n\n\
+  \nExample:\n\n\"hel2!lo\" --> 6\n\n\"wicked .. !\" --> 6\n\n\"!?..A\" --> 1"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def String.isAlphaNum (c : Char) : Bool := sorry\n\ndef countLettersAndDigits\
+  \ (s : String) : Nat := sorry\n"
+"vc-theorems": "theorem count_letters_and_digits_non_negative (s : String) :\n  countLettersAndDigits\
+  \ s ≥ 0 := sorry\n\n\ntheorem count_letters_and_digits_bounded (s : String) :\n\
+  \  countLettersAndDigits s ≤ s.length := sorry\n\n\ntheorem count_letters_and_digits_equals_alphanums\
+  \ (s : String) :\n  countLettersAndDigits s = (s.data.filter String.isAlphaNum).length\
+  \ := sorry\n\n\ntheorem count_letters_and_digits_non_string :\n  countLettersAndDigits\
+  \ \"\" = 0 := sorry\n\n\ntheorem count_letters_and_digits_only_alphanumeric (s :\
+  \ String) \n  (h : ∀ c ∈ s.data, String.isAlphaNum c = true) :\n  countLettersAndDigits\
+  \ s = s.length := sorry\n\n\ntheorem count_letters_and_digits_only_special (s :\
+  \ String)\n  (h : ∀ c ∈ s.data, String.isAlphaNum c = false) :\n  countLettersAndDigits\
+  \ s = 0 := sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval count_letters_and_digits\
+  \ \"n!!ice!!123\"\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval count_letters_and_digits\
+  \ \"de?=?=tttes!!t\"\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval count_letters_and_digits\
+  \ \"u_n_d_e_r__S_C_O_R_E\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

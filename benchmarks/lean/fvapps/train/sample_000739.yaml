@@ -1,0 +1,20 @@
+"vc-description": "Everyone loves short problem statements.\nGiven a function $ f(x)\
+  \ $ find its minimum value over the range $ 0 < x < π/2$\n$\nf(x) = ( x^2 + b*x\
+  \ + c ) / sin( x )\n$\n\n-----Input:-----\n- First-line will contain $T$, the number\
+  \ of test cases. Then the test cases follow. \n- Each test case contains a single\
+  \ line of input, two real numbers $b, c$. \n\n-----Output:-----\nFor each test case,\
+  \ output the minimum value of $ f(x) $ over the given range. Absolute error of $10^{-6}$\
+  \ is allowed.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100000$\n- $1 \\leq b,c\
+  \ \\leq 20$\n\n-----Sample Input:-----\n1\n2 2\n\n-----Sample Output:-----\n5.8831725615"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_min_fx (b c : Float) : Float :=\n  sorry\n"
+"vc-theorems": "theorem find_min_fx_is_finite (b c : Float) :\n  let result := find_min_fx\
+  \ b c\n  Float.isFinite result := by sorry\n\n\ntheorem find_min_fx_is_minimum (b\
+  \ c : Float) :\n  let result := find_min_fx b c\n  let fx := fun (x : Float) =>\
+  \ (x^2 + b*x + c)/Float.sin x\n  ∀ x, 0 < x ∧ x < 3.14159 → result ≤ fx x + 0.000001\
+  \ := by sorry \n\n\ntheorem find_min_fx_positive_inputs (b c : Float) :\n  0.1 ≤\
+  \ b ∧ b ≤ 10 →\n  0.1 ≤ c ∧ c ≤ 10 →\n  0 < find_min_fx b c := by sorry\n\n\ntheorem\
+  \ find_min_fx_known_value :\n  Float.abs (find_min_fx 2 2 - 5.8831725615) < 0.000001\
+  \ := by sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,22 @@
+"vc-description": "Suppose I have two vectors: `(a1, a2, a3, ..., aN)` and `(b1, b2,\
+  \ b3, ..., bN)`. The dot product between these two vectors is defined as:\n\n```\n\
+  a1*b1 + a2*b2 + a3*b3 + ... + aN*bN\n```\n\nThe vectors are classified as orthogonal\
+  \ if the dot product equals zero.\n\n\nComplete the function that accepts two sequences\
+  \ as inputs and returns `true` if the vectors are orthogonal, and `false` if they\
+  \ are not. The sequences will always be correctly formatted and of the same length,\
+  \ so there is no need to check them first.\n\n\n## Examples\n```\n[1, 1, 1], [2,\
+  \ 5, 7]        --> false\n[1, 0, 0, 1], [0, 1, 1, 0]  --> true\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_orthogonal (v1 v2 : List Int) : Bool := sorry\n\ntheorem\
+  \ nonzero_vector_not_self_orthogonal {v : List Int} \n  (h : ∃ x ∈ v, x ≠ 0) : ¬is_orthogonal\
+  \ v v := sorry\n"
+"vc-theorems": "theorem perpendicular_2d (n : Int) : \n  is_orthogonal [n, n] [-n,\
+  \ n] := sorry\n\n\ntheorem zero_vector_orthogonal {v : List Int} :\n  let zeros\
+  \ := List.replicate v.length 0\n  is_orthogonal v zeros ∧ is_orthogonal zeros v\
+  \ := sorry\n\n\ntheorem orthogonality_symmetric {v1 v2 : List Int} \n  (h : v1.length\
+  \ = v2.length) :\n  is_orthogonal v1 v2 = is_orthogonal v2 v1 := sorry\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval is_orthogonal [1, -2] [2, 1]\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval is_orthogonal [1, 2, 3] [0, -3, 2]\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval is_orthogonal [1, 1, 1] [2, 5, 7]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

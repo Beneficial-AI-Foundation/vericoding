@@ -1,0 +1,26 @@
+"vc-description": "Consider the prime number `23`. If we sum the square of its digits\
+  \ we get:\n`2^2 + 3^2 = 13`, then for `13: 1^2 + 3^2 = 10`, and finally for `10:\
+  \ 1^2 + 0^2 = 1`. \n\nSimilarly, if we start with prime number `7`, the sequence\
+  \ is: `7->49->97->130->10->1`.\n\nGiven a range, how many primes within that range\
+  \ will eventually end up being `1`? \n\nThe upperbound for the range is `50,000`.\
+  \ A range of `(2,25)` means that: `2 <= n < 25`. \n\nGood luck!\n\nIf you like this\
+  \ Kata, please try:\n\n[Prime reversion](https://www.codewars.com/kata/59b46276afcda204ed000094)\n\
+  \n[Domainant primes](https://www.codewars.com/kata/59ce11ea9f0cbc8a390000ed)"
+"vc-preamble": "import Imports.AllImports\n\ndef is_prime (n : Nat) : Bool :=\n  sorry\n\
+  \n\ndef end_one (n : Nat) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (a b : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem is_prime_not_small (n : Nat) :\n  n ≤ 1 → is_prime n = false\
+  \ :=\n  sorry\n\n\ntheorem is_prime_no_factors (n : Nat) :\n  is_prime n = true\
+  \ →\n  ∀ i : Nat, 2 ≤ i → i ≤ n^(1/2) → n % i ≠ 0 :=\n  sorry\n\n\ntheorem prime_multiplication\
+  \ (n : Nat) :\n  2 < n → is_prime (2*n) = false :=\n  sorry\n\n\ntheorem end_one_is_bool\
+  \ (n : Nat) :\n  end_one n = true ∨ end_one n = false :=\n  sorry\n\n\ntheorem end_one_for_one\
+  \ :\n  end_one 1 = true :=\n  sorry\n\n\ntheorem end_one_special_cases (n : Nat)\
+  \ :\n  (n = 1 ∨ n = 10) → end_one n = true :=\n  sorry\n\n\ntheorem solve_bounded\
+  \ (a b : Nat) :\n  a ≤ b → \n  0 ≤ solve a b ∧ solve a b ≤ b - a :=\n  sorry\n\n\
+  \ntheorem solve_wrong_order (a b : Nat) :\n  b < a → solve a b = 0 :=\n  sorry\n\
+  \n\ntheorem solve_unit_range (n : Nat) :\n  solve n (n+1) = 0 ∨ solve n (n+1) =\
+  \ 1 :=\n  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve 1 25\n\n/--\ninfo:\
+  \ 28\n-/\n#guard_msgs in\n#eval solve 100 1000\n\n/--\ninfo: 47\n-/\n#guard_msgs\
+  \ in\n#eval solve 100 2000\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,23 @@
+"vc-description": "ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot\
+  \ contain anything but **exactly** 4 digits or exactly 6 digits. \n\nIf the function\
+  \ is passed a valid PIN string, return `true`, else return `false`.\n\n## Examples\
+  \ \n```\n\"1234\"   -->  true\n\"12345\"  -->  false\n\"a234\"   -->  false\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def validatePin (pin : String) : Bool := sorry\n\ntheorem validate_pin_length\
+  \ (pin : String) :\n  let len := pin.length\n  (len ≠ 4 ∧ len ≠ 6) → validatePin\
+  \ pin = false := sorry\n"
+"vc-theorems": "theorem validate_pin_digits (pin : String) :\n  let len := pin.length\n\
+  \  (len = 4 ∨ len = 6) → \n  pin.all Char.isDigit → validatePin pin = true := sorry\n\
+  \n\ntheorem validate_pin_nondigits (pin : String) :\n  let len := pin.length\n \
+  \ (len = 4 ∨ len = 6) →\n  (∃ c ∈ pin.data, ¬c.isDigit) → validatePin pin = false\
+  \ := sorry\n\n\ntheorem validate_pin_abs_number (n : Int) :\n  let pin := toString\
+  \ (Int.natAbs n)\n  let len := pin.length\n  (len = 4 ∨ len = 6) → validatePin pin\
+  \ = true := sorry\n\n\ntheorem validate_pin_non_numeric_chars (pin : String) :\n\
+  \  (∀ c ∈ pin.data, ¬c.isDigit) → validatePin pin = false := sorry\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval validate_pin \"1234\"\n\n/--\ninfo: False\n-/\n\
+  #guard_msgs in\n#eval validate_pin \"12345\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval validate_pin \"a234\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ validate_pin \"123456\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval validate_pin\
+  \ \"-1234\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

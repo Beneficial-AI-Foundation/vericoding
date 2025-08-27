@@ -1,0 +1,43 @@
+"vc-description": "*`This kata is a tribute/fanwork to the TV-show: Supernatural`*\n\
+  \n\nBalls!\n\nThose wayward Winchester boys are in trouble again, hunting something\
+  \ down in New Orleans.\nYou are Bobby Singer, you know how \"idjits\" they can be,\
+  \ so you have to prepare.\nThey will call you any minute with the race of the thing,\
+  \ and you want to answer as soon as possible. By answer, I mean: tell them how to\
+  \ kill, or fight it.\n\nYou have something like a database (more like drunken doodling)\
+  \ to help them:\n\n- werewolf           : Silver knife or bullet to the heart\n\
+  - vampire            : Behead it with a machete\n- wendigo            : Burn it\
+  \ to death\n- shapeshifter       : Silver knife or bullet to the heart\n- angel\
+  \              : Use the angelic blade\n- demon              : Use Ruby's knife,\
+  \ or some Jesus-juice\n- ghost              : Salt and iron, and don't forget to\
+  \ burn the corpse\n- dragon             : You have to find the excalibur for that\n\
+  - djinn              : Stab it with silver knife dipped in a lamb's blood \n- pagan\
+  \ god          : It depends on which one it is\n- leviathan          : Use some\
+  \ Borax, then kill Dick\n- ghoul              : Behead it\n- jefferson starship\
+  \ : Behead it with a silver blade\n- reaper             : If it's nasty, you should\
+  \ gank who controls it\n- rugaru             : Burn it alive\n- skinwalker     \
+  \    : A silver bullet will do it\n- phoenix            : Use the colt\n- witch\
+  \              : They are humans\n- else               : I have friggin no idea\
+  \ yet\n\nYou can access the database as `drunkenDoodling`/`drunken_doodling`/`DrunkenDoodling`\
+  \ depending on your language.\n\n---\n\nSo a call would go down like this:\n\nThe\
+  \ guys call you:\n```bob('rugaru')```\n\n...and you reply (return) with the info,\
+  \ and your signature saying of yours!\n```Burn it alive, idjits!```"
+"vc-preamble": "import Imports.AllImports\n\ndef KnownMonsters := [\n    \"werewolf\"\
+  , \"vampire\", \"wendigo\", \"shapeshifter\", \"angel\", \"demon\",\n    \"ghost\"\
+  , \"dragon\", \"djinn\", \"pagan god\", \"leviathan\", \"ghoul\",\n    \"jefferson\
+  \ starship\", \"reaper\", \"rugaru\", \"skinwalker\", \"phoenix\", \"witch\"\n]\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def bob (s : String) : String := sorry\n\ntheorem always_returns_string_with_idjits\
+  \ (s : String) :\n  let result := bob s\n  result.endsWith \", idjits!\" := by sorry\n"
+"vc-theorems": "theorem known_monsters_get_specific_response (monster : String) :\n\
+  \  monster ∈ KnownMonsters →\n  let result := bob monster\n  result ≠ \"I have friggin\
+  \ no idea yet, idjits!\" ∧\n  result.endsWith \", idjits!\" := by sorry\n\n\ntheorem\
+  \ unknown_monsters_get_default_response (s : String) :\n  s ∉ KnownMonsters →\n\
+  \  bob s = \"I have friggin no idea yet, idjits!\" := by sorry\n\n\ntheorem similar_monsters_same_killing_method_werewolf_shapeshifter\
+  \ :\n  let werewolfResult := bob \"werewolf\"\n  let shapeshifterResult := bob \"\
+  shapeshifter\"\n  werewolfResult.startsWith \"Silver knife\" ∧\n  shapeshifterResult.startsWith\
+  \ \"Silver knife\" := by sorry\n\n/--\ninfo: 'Behead it with a machete, idjits!'\n\
+  -/\n#guard_msgs in\n#eval bob \"vampire\"\n\n/--\ninfo: 'It depends on which one\
+  \ it is, idjits!'\n-/\n#guard_msgs in\n#eval bob \"pagan god\"\n\n/--\ninfo: 'I\
+  \ have friggin no idea yet, idjits!'\n-/\n#guard_msgs in\n#eval bob \"werepuppy\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

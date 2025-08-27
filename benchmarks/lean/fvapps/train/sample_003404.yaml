@@ -1,0 +1,25 @@
+"vc-description": "Make a function that receives a value, ```val``` and outputs the\
+  \ smallest higher number than the given value, and this number belong to a set of\
+  \ positive integers that have the following properties:\n\n- their digits occur\
+  \ only once\n\n- they are odd\n\n- they are multiple of three\n\n```python\nnext_numb(12)\
+  \ == 15\n\nnext_numb(13) == 15\n\nnext_numb(99) == 105\n\nnext_numb(999999) == 1023459\n\
+  \nnext_number(9999999999) == \"There is no possible number that\nfulfills those\
+  \ requirements\"\n```\n\nEnjoy the kata!!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def hasUniqueDigits (n : Nat) : Bool := sorry\n\ndef nextNumb (n\
+  \ : Nat) : Nat ⊕ String := sorry\n"
+"vc-theorems": "theorem nextNumb_greater (n : Nat) \n  (h : ∃ (m : Nat), nextNumb\
+  \ n = Sum.inl m) :\n  (Classical.choose h) > n := sorry\n\n\ntheorem nextNumb_div_three\
+  \ (n : Nat)\n  (h : ∃ (m : Nat), nextNumb n = Sum.inl m) :\n  (Classical.choose\
+  \ h) % 3 = 0 := sorry\n\n\ntheorem nextNumb_odd (n : Nat)\n  (h : ∃ (m : Nat), nextNumb\
+  \ n = Sum.inl m) :\n  (Classical.choose h) % 2 = 1 := sorry\n\n\ntheorem nextNumb_unique_digits\
+  \ (n : Nat)\n  (h : ∃ (m : Nat), nextNumb n = Sum.inl m) :\n  hasUniqueDigits (Classical.choose\
+  \ h) = true := sorry\n\n\ntheorem nextNumb_minimal (n : Nat)\n  (h : ∃ (m : Nat),\
+  \ nextNumb n = Sum.inl m) :\n  ∀ k : Nat, n < k ∧ k < (Classical.choose h) →\n \
+  \ ¬(k % 3 = 0 ∧ k % 2 = 1 ∧ hasUniqueDigits k = true) := sorry\n\n\ntheorem nextNumb_too_large\
+  \ (n : Nat)\n  (h : n ≥ 9876543210) :\n  ∃ msg : String, nextNumb n = Sum.inr msg\
+  \ := sorry\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval next_numb 12\n\n/--\ninfo:\
+  \ 105\n-/\n#guard_msgs in\n#eval next_numb 99\n\n/--\ninfo: 1023459\n-/\n#guard_msgs\
+  \ in\n#eval next_numb 999999\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

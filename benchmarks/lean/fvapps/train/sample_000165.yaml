@@ -1,0 +1,33 @@
+"vc-description": "Given a string s and an integer k. You should construct k non-empty\
+  \ palindrome strings using all the characters in s.\nReturn True if you can use\
+  \ all the characters in s to construct k palindrome strings or False otherwise.\n\
+   \nExample 1:\nInput: s = \"annabelle\", k = 2\nOutput: true\nExplanation: You can\
+  \ construct two palindromes using all characters in s.\nSome possible constructions\
+  \ \"anna\" + \"elble\", \"anbna\" + \"elle\", \"anellena\" + \"b\"\n\nExample 2:\n\
+  Input: s = \"leetcode\", k = 3\nOutput: false\nExplanation: It is impossible to\
+  \ construct 3 palindromes using all the characters of s.\n\nExample 3:\nInput: s\
+  \ = \"true\", k = 4\nOutput: true\nExplanation: The only possible solution is to\
+  \ put each character in a separate string.\n\nExample 4:\nInput: s = \"yzyzyzyzyzyzyzy\"\
+  , k = 2\nOutput: true\nExplanation: Simply you can put all z's in one string and\
+  \ all y's in the other string. Both strings will be palindrome.\n\nExample 5:\n\
+  Input: s = \"cr\", k = 7\nOutput: false\nExplanation: We don't have enough characters\
+  \ in s to construct 7 palindromes.\n\n \nConstraints:\n\n1 <= s.length <= 10^5\n\
+  All characters in s are lower-case English letters.\n1 <= k <= 10^5"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_construct_palindromes (s : String) (k : Int) : Bool :=\
+  \ sorry\n\ntheorem k_greater_than_length_is_false {s : String} {k : Int} :\n  k\
+  \ > s.length → ¬can_construct_palindromes s k := sorry\n"
+"vc-theorems": "theorem palindrome_negative_k {s : String} {k : Int} :\n  k < 0 →\
+  \ ¬can_construct_palindromes s k := sorry\n\n\ntheorem palindrome_k_vs_odd_counts\
+  \ {s : String} {k : Int} : \n  can_construct_palindromes s k → k ≥ (s.data.countP\
+  \ (fun c => (s.data.count c) % 2 = 1)) := sorry\n\n\ntheorem sufficient_k_works\
+  \ {s : String} :\n  s.length > 0 → can_construct_palindromes s s.length := sorry\n\
+  \n\ntheorem single_char_case {s : String} {k : Int} :\n  s.length = 1 → (can_construct_palindromes\
+  \ s k ↔ k ≥ 1) := sorry\n\n\ntheorem all_same_char {s : String} {k : Int} :\n  s.length\
+  \ > 0 → (∀ (i : Nat), i < s.length → s.data[i]? = s.data[0]?) →\n  (can_construct_palindromes\
+  \ s k ↔ k ≥ s.length % 2) := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ can_construct_palindromes \"annabelle\" 2\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval can_construct_palindromes \"leetcode\" 3\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval can_construct_palindromes \"yzyzyzyzyzyzyzy\" 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

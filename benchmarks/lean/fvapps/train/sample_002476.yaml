@@ -1,0 +1,28 @@
+"vc-description": "=====Function Descriptions=====\nsum\n\nThe sum tool returns the\
+  \ sum of array elements over a given axis.\n\nimport numpy\n\nmy_array = numpy.array([\
+  \ [1, 2], [3, 4] ])\n\nprint numpy.sum(my_array, axis = 0)         #Output : [4\
+  \ 6]\nprint numpy.sum(my_array, axis = 1)         #Output : [3 7]\nprint numpy.sum(my_array,\
+  \ axis = None)      #Output : 10\nprint numpy.sum(my_array)                   #Output\
+  \ : 10\n\nBy default, the axis value is None. Therefore, it performs a sum over\
+  \ all the dimensions of the input array.\n\nprod\n\nThe prod tool returns the product\
+  \ of array elements over a given axis.\n\nimport numpy\n\nmy_array = numpy.array([\
+  \ [1, 2], [3, 4] ])\n\nprint numpy.prod(my_array, axis = 0)            #Output :\
+  \ [3 8]\nprint numpy.prod(my_array, axis = 1)            #Output : [ 2 12]\nprint\
+  \ numpy.prod(my_array, axis = None)         #Output : 24\nprint numpy.prod(my_array)\
+  \                      #Output : 24\n\nBy default, the axis value is None. Therefore,\
+  \ it performs the product over all the dimensions of the input array.\n\n=====Problem\
+  \ Statement=====\nou are given a 2-D array with dimensions NXM.\nYour task is to\
+  \ perform the sum tool over axis 0 and then find the product of that result.\n\n\
+  =====Output Format=====\nCompute the sum along axis 0. Then, print the product of\
+  \ that sum."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def array_sum_product : List (List Int) → Int\n  | _ => sorry\n"
+"vc-theorems": "theorem array_sum_product_2x2_matrix {a b c d : Int} :\n  array_sum_product\
+  \ [[a, b], [c, d]] = (a + c) * (b + d) :=\nsorry\n\n\ntheorem array_sum_product_all_ones\
+  \ {rows cols : Nat} (h₁ : rows > 0) (h₂ : cols > 0) :\n  let matrix := List.replicate\
+  \ rows (List.replicate cols 1)\n  array_sum_product matrix = rows ^ cols :=\nsorry\n\
+  \n/--\ninfo: 24\n-/\n#guard_msgs in\n#eval array_sum_product [[1, 2], [3, 4]]\n\n\
+  /--\ninfo: 4\n-/\n#guard_msgs in\n#eval array_sum_product [[1, 1], [1, 1]]\n\n/--\n\
+  info: 15\n-/\n#guard_msgs in\n#eval array_sum_product [[1, 2], [2, 3]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

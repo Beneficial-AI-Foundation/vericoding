@@ -1,0 +1,23 @@
+"vc-description": "Given a 32-bit signed integer, reverse digits of an integer.\n\n\
+  Example 1:\n\n\nInput: 123\nOutput: 321\n\n\nExample 2:\n\n\nInput: -123\nOutput:\
+  \ -321\n\n\nExample 3:\n\n\nInput: 120\nOutput: 21\n\n\nNote:\nAssume we are dealing\
+  \ with an environment which could only store integers within the 32-bit signed integer\
+  \ range: [−231,  231 − 1]. For the purpose of this problem, assume that your function\
+  \ returns 0 when the reversed integer overflows."
+"vc-preamble": "import Imports.AllImports\n\ndef reverse_integer (x : Int) : Int :=\
+  \ sorry\n\n-- 32-bit integer bounds"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def INT32_MAX : Int := 2^31 - 1\ndef INT32_MIN : Int := -(2^31)\n"
+"vc-theorems": "theorem reverse_integer_sign (x : Int) :\n  let result := reverse_integer\
+  \ x\n  (result = 0) ∨ (result > 0 ∧ x > 0) ∨ (result < 0 ∧ x < 0) := sorry\n\n\n\
+  theorem reverse_integer_bounds (x : Int) :\n  let result := reverse_integer x\n\
+  \  INT32_MIN ≤ result ∧ result ≤ INT32_MAX := sorry\n\n\ntheorem single_digit_numbers\
+  \ (x : Int) :\n  0 ≤ x ∧ x ≤ 9 →\n  reverse_integer x = x := sorry\n\n\ntheorem\
+  \ trailing_zeros (x : Int) :\n  x > 0 →\n  x % 10 = 0 →\n  reverse_integer x < x\
+  \ := sorry\n\n\ntheorem int32_bounds (x : Int) :\n  INT32_MIN ≤ x ∧ x ≤ INT32_MAX\
+  \ →\n  let result := reverse_integer x\n  INT32_MIN ≤ result ∧ result ≤ INT32_MAX\
+  \ := sorry\n\n\ntheorem overflow_cases : \n  reverse_integer 1534236469 = 0 ∧\n\
+  \  reverse_integer (-2147483648) = 0 := sorry\n\n/--\ninfo: 321\n-/\n#guard_msgs\
+  \ in\n#eval reverse_integer 123\n\n/--\ninfo: -321\n-/\n#guard_msgs in\n#eval reverse_integer\
+  \ -123\n\n/--\ninfo: 21\n-/\n#guard_msgs in\n#eval reverse_integer 120\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

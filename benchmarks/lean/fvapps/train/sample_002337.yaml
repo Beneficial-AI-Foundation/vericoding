@@ -1,0 +1,25 @@
+"vc-description": "We have a collection of stones, each stone has a positive integer\
+  \ weight.\nEach turn, we choose the two heaviest stones and smash them together. \
+  \ Suppose the stones have weights x and y with x <= y.  The result of this smash\
+  \ is:\n\nIf x == y, both stones are totally destroyed;\nIf x != y, the stone of\
+  \ weight x is totally destroyed, and the stone of weight y has new weight y-x.\n\
+  \nAt the end, there is at most 1 stone left.  Return the weight of this stone (or\
+  \ 0 if there are no stones left.)\n \nExample 1:\nInput: [2,7,4,1,8,1]\nOutput:\
+  \ 1\nExplanation: \nWe combine 7 and 8 to get 1 so the array converts to [2,4,1,1,1]\
+  \ then,\nwe combine 2 and 4 to get 2 so the array converts to [2,1,1,1] then,\n\
+  we combine 2 and 1 to get 1 so the array converts to [1,1,1] then,\nwe combine 1\
+  \ and 1 to get 0 so the array converts to [1] then that's the value of last stone.\n\
+   \nNote:\n\n1 <= stones.length <= 30\n1 <= stones[i] <= 1000"
+"vc-preamble": "import Imports.AllImports\n\ndef list_max (l: List Nat) : Nat :=\n\
+  \  match l with\n  | [] => 0\n  | x::xs => List.foldl Nat.max x xs\n\n/-- Function\
+  \ that returns the weight of the last remaining stone after smashing -/"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def last_stone_weight (stones : List Nat) : Nat :=\n  sorry\n\n\
+  \n\n\n\n\n"
+"vc-theorems": "theorem single_stone_identity (stone : Nat)\n  (h : stone > 0 ∧ stone\
+  \ ≤ 1000) :\n  last_stone_weight [stone] = stone := sorry\n\n\ntheorem identical_pair_zero\
+  \ (stone : Nat)\n  (h : stone > 0 ∧ stone ≤ 1000) :\n  last_stone_weight [stone,\
+  \ stone] = 0 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval last_stone_weight\
+  \ [2, 7, 4, 1, 8, 1]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval last_stone_weight\
+  \ [1]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval last_stone_weight [2, 2]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

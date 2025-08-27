@@ -1,0 +1,27 @@
+"vc-description": "Given a string containing just the characters '(', ')', '{', '}',\
+  \ '[' and ']', determine if the input string is valid.\n\nAn input string is valid\
+  \ if:\n\n\n       Open brackets must be closed by the same type of brackets.\n \
+  \      Open brackets must be closed in the correct order.\n\n\nNote that an empty\
+  \ string is also considered valid.\n\nExample 1:\n\n\nInput: \"()\"\nOutput: true\n\
+  \n\nExample 2:\n\n\nInput: \"()[]{}\"\nOutput: true\n\n\nExample 3:\n\n\nInput:\
+  \ \"(]\"\nOutput: false\n\n\nExample 4:\n\n\nInput: \"([)]\"\nOutput: false\n\n\n\
+  Example 5:\n\n\nInput: \"{[]}\"\nOutput: true"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def OPENING : List Char := ['(', '{', '[']\ndef CLOSING : List\
+  \ Char := [')', '}', ']']\n\ndef is_valid_parentheses (s: String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem valid_implies_even_length (s: String) : \n  is_valid_parentheses\
+  \ s → s.length % 2 = 0 :=\n  sorry\n\n\ntheorem valid_implies_balanced_counts (s:\
+  \ String) :\n  is_valid_parentheses s → \n  (s.data.filter (·∈ OPENING)).length\
+  \ = (s.data.filter (·∈ CLOSING)).length :=\n  sorry\n\n\ntheorem nested_brackets_valid\
+  \ {pattern : List Nat} (h: ∀ n ∈ pattern, n ≤ 2) :\n  let brackets := [\"()\", \"\
+  []\", \"{}\"] \n  is_valid_parentheses (String.join (pattern.map (fun i => brackets.get!\
+  \ (i % 3)))) :=\n  sorry\n\n\ntheorem empty_string_valid :\n  is_valid_parentheses\
+  \ \"\" = true :=\n  sorry\n\n\ntheorem non_bracket_chars_invalid (s: String) :\n\
+  \  (∃ c ∈ s.data, c ∉ (OPENING ++ CLOSING)) →\n  is_valid_parentheses s = false\
+  \ :=\n  sorry\n\n\ntheorem closing_only_invalid (s: String) :\n  (∀ c ∈ s.data,\
+  \ c ∈ CLOSING) →\n  s.length > 0 →\n  is_valid_parentheses s = false :=\n  sorry\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_valid_parentheses \"()\"\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval is_valid_parentheses \"()[]{}\"\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval is_valid_parentheses \"(]\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

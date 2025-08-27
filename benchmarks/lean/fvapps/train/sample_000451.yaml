@@ -1,0 +1,44 @@
+"vc-description": "A company has n employees with a unique ID for each employee from\
+  \ 0 to n - 1. The head of the company has is the one with headID.\nEach employee\
+  \ has one direct manager given in the manager array where manager[i] is the direct\
+  \ manager of the i-th employee, manager[headID] = -1. Also it's guaranteed that\
+  \ the subordination relationships have a tree structure.\nThe head of the company\
+  \ wants to inform all the employees of the company of an urgent piece of news. He\
+  \ will inform his direct subordinates and they will inform their subordinates and\
+  \ so on until all employees know about the urgent news.\nThe i-th employee needs\
+  \ informTime[i] minutes to inform all of his direct subordinates (i.e After informTime[i]\
+  \ minutes, all his direct subordinates can start spreading the news).\nReturn the\
+  \ number of minutes needed to inform all the employees about the urgent news.\n\
+   \nExample 1:\nInput: n = 1, headID = 0, manager = [-1], informTime = [0]\nOutput:\
+  \ 0\nExplanation: The head of the company is the only employee in the company.\n\
+  \nExample 2:\n\nInput: n = 6, headID = 2, manager = [2,2,-1,2,2,2], informTime =\
+  \ [0,0,1,0,0,0]\nOutput: 1\nExplanation: The head of the company with id = 2 is\
+  \ the direct manager of all the employees in the company and needs 1 minute to inform\
+  \ them all.\nThe tree structure of the employees in the company is shown.\n\nExample\
+  \ 3:\n\nInput: n = 7, headID = 6, manager = [1,2,3,4,5,6,-1], informTime = [0,6,5,4,3,2,1]\n\
+  Output: 21\nExplanation: The head has id = 6. He will inform employee with id =\
+  \ 5 in 1 minute.\nThe employee with id = 5 will inform the employee with id = 4\
+  \ in 2 minutes.\nThe employee with id = 4 will inform the employee with id = 3 in\
+  \ 3 minutes.\nThe employee with id = 3 will inform the employee with id = 2 in 4\
+  \ minutes.\nThe employee with id = 2 will inform the employee with id = 1 in 5 minutes.\n\
+  The employee with id = 1 will inform the employee with id = 0 in 6 minutes.\nNeeded\
+  \ time = 1 + 2 + 3 + 4 + 5 + 6 = 21.\n\nExample 4:\nInput: n = 15, headID = 0, manager\
+  \ = [-1,0,0,1,1,2,2,3,3,4,4,5,5,6,6], informTime = [1,1,1,1,1,1,1,0,0,0,0,0,0,0,0]\n\
+  Output: 3\nExplanation: The first minute the head will inform employees 1 and 2.\n\
+  The second minute they will inform employees 3, 4, 5 and 6.\nThe third minute they\
+  \ will inform the rest of employees.\n\nExample 5:\nInput: n = 4, headID = 2, manager\
+  \ = [3,3,-1,2], informTime = [0,0,162,914]\nOutput: 1076\n\n \nConstraints:\n\n\
+  1 <= n <= 10^5\n0 <= headID < n\nmanager.length == n\n0 <= manager[i] < n\nmanager[headID]\
+  \ == -1\ninformTime.length == n\n0 <= informTime[i] <= 1000\ninformTime[i] == 0\
+  \ if employee i has no subordinates.\nIt is guaranteed that all the employees can\
+  \ be informed."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def numOfMinutes (n : Nat) (headID : Nat) (manager : List Int)\
+  \ (informTime : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem single_employee_zero_time {n : Nat} (h : n = 1) :\n  numOfMinutes\
+  \ 1 0 [-1] [0] = 0 :=\nsorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval numOfMinutes\
+  \ 1 0 [-1] [0]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval numOfMinutes 6 2 [2, 2,\
+  \ -1, 2, 2, 2] [0, 0, 1, 0, 0, 0]\n\n/--\ninfo: 21\n-/\n#guard_msgs in\n#eval numOfMinutes\
+  \ 7 6 [1, 2, 3, 4, 5, 6, -1] [0, 6, 5, 4, 3, 2, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

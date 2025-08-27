@@ -1,0 +1,25 @@
+"vc-description": "You are given array of integers, your task will be to count all\
+  \ pairs in that array and return their count.\n\n**Notes:**\n   \n* Array can be\
+  \ empty or contain only one value; in this case return `0` \n* If there are more\
+  \ pairs of a certain number, count each pair only once. E.g.: for `[0, 0, 0, 0]`\
+  \ the return value is `2` (= 2 pairs of `0`s)\n* Random tests: maximum array length\
+  \ is 1000, range of values in array is between 0 and 1000\n\n\n## Examples\n\n```\n\
+  [1, 2, 5, 6, 5, 2]  -->  2\n```\n...because there are 2 pairs: `2` and `5`\n\n\n\
+  ```\n[1, 2, 2, 20, 6, 20, 2, 6, 2]  -->  4\n```\n\n...because there are 4 pairs:\
+  \ `2`, `20`, `6` and `2` (again)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def duplicates (arr : List Int) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem duplicates_non_negative (arr : List Int) :\n  duplicates arr\
+  \ ≥ 0 := by\n  sorry\n\n\ntheorem duplicates_bound (arr : List Int) :  \n  duplicates\
+  \ arr ≤ arr.length / 2 := by\n  sorry\n\n\ntheorem duplicates_empty :\n  duplicates\
+  \ [] = 0 := by\n  sorry\n\n\ntheorem duplicates_singleton (x : Int) :\n  duplicates\
+  \ [x] = 0 := by\n  sorry\n\n\ntheorem duplicates_all_equal (x : Int) (n : Nat) :\n\
+  \  duplicates (List.replicate (4 * n) x) = 2 * n := by\n  sorry\n\n\ntheorem duplicates_concatenation\
+  \ (arr1 arr2 : List Int) :\n  duplicates (arr1 ++ arr2) ≥ duplicates arr1 + duplicates\
+  \ arr2 := by\n  sorry\n\n\ntheorem duplicates_perm (arr1 arr2 : List Int) :\n  List.Perm\
+  \ arr1 arr2 → duplicates arr1 = duplicates arr2 := by\n  sorry\n\n/--\ninfo: 4\n\
+  -/\n#guard_msgs in\n#eval duplicates [1, 2, 2, 20, 6, 20, 2, 6, 2]\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval duplicates [1000, 1000]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval duplicates []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

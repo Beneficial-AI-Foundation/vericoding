@@ -1,0 +1,20 @@
+"vc-description": "Given a positive integer, return its corresponding column title\
+  \ as appear in an Excel sheet.\n\nFor example:\n\n\n    1 -> A\n    2 -> B\n   \
+  \ 3 -> C\n    ...\n    26 -> Z\n    27 -> AA\n    28 -> AB \n    ...\n\n\nExample\
+  \ 1:\n\n\nInput: 1\nOutput: \"A\"\n\n\nExample 2:\n\n\nInput: 28\nOutput: \"AB\"\
+  \n\n\nExample 3:\n\n\nInput: 701\nOutput: \"ZY\""
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def convertToExcelTitle (n : Nat) : String := sorry\n\ndef colNumFromStr\
+  \ (s : String) : Nat := sorry\n"
+"vc-theorems": "theorem convert_to_excel_title_properties (n : Nat) \n  (h1 : n >\
+  \ 0) (h2 : n ≤ 1000000) :\n  let result := convertToExcelTitle n\n  -- Result is\
+  \ nonempty\n  String.length result > 0 ∧ \n  -- Result converts back to original\
+  \ number\n  colNumFromStr result = n :=\nsorry\n\n\ntheorem single_letter_cases\
+  \ (n : Nat)\n  (h1 : n > 0) (h2 : n ≤ 26) :\n  let result := convertToExcelTitle\
+  \ n\n  String.length result = 1 :=\nsorry\n\n\ntheorem edge_cases :\n  convertToExcelTitle\
+  \ 1 = \"A\" ∧\n  convertToExcelTitle 26 = \"Z\" ∧ \n  convertToExcelTitle 27 = \"\
+  AA\" :=\nsorry\n\n/--\ninfo: 'A'\n-/\n#guard_msgs in\n#eval convert_to_excel_title\
+  \ 1\n\n/--\ninfo: 'AB'\n-/\n#guard_msgs in\n#eval convert_to_excel_title 28\n\n\
+  /--\ninfo: 'ZY'\n-/\n#guard_msgs in\n#eval convert_to_excel_title 701\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

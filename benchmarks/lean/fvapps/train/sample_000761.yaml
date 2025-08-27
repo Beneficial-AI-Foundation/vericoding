@@ -1,0 +1,28 @@
+"vc-description": "\"Ring Ring!!\"  \nSherlock's phone suddenly started ringing. And\
+  \ it was none other than Jim Moriarty..\n\"Long time no see ! You miss me right\
+  \ ? Anyway we'll talk about it later . Let me first tell you something. Dr.Watson\
+  \ is with me . And you've got only one chance to save him . Here's your challenge:.\n\
+  Given a number N and another number M, tell if the remainder of N%M is odd or even.\
+  \ If it's odd, then print \"ODD\" else print \"EVEN\" \n\nIf Sherlock can answer\
+  \ the query correctly, then Watson will be set free. He has approached you for help\
+  \ since you being a programmer.Can you help him? \n\n-----Input-----\nThe first\
+  \ line contains, T, the number of test cases..\nEach test case contains an integer,\
+  \ N and M\n\n-----Output-----\nOutput the minimum value for each test case \n\n\
+  -----Constraints-----\n1 = T = 20\n1 <= N <= 10^18 \n1 <= M<= 10^9 \n\n-----Subtasks-----\n\
+  Subtask #1 : (20 points)\n1 = T = 20\n1 <= N <= 100 \n1 <= M<= 100 \n\nSubtask 2\
+  \ : (80 points) \n\n1 = T = 20\n1 <= N <= 10^18 \n1 <= M<= 10^9 \n\n-----Example-----\n\
+  Input:\n2\n4 4\n6 5\n\nOutput:\nEVEN\nODD"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_remainder_parity (N M : Int) : String :=\n  sorry\n"
+"vc-theorems": "theorem check_remainder_parity_returns_valid_string \n  (N : Int)\
+  \ (M : Int) (h : M ≠ 0) :\n  check_remainder_parity N M = \"ODD\" ∨ \n  check_remainder_parity\
+  \ N M = \"EVEN\" :=\nsorry\n\n\ntheorem check_remainder_parity_matches_modulo\n\
+  \  (N : Int) (M : Int) (h : M ≠ 0) :\n  (check_remainder_parity N M = \"EVEN\" ∧\
+  \ N % M % 2 = 0) ∨ \n  (check_remainder_parity N M = \"ODD\" ∧ N % M % 2 = 1) :=\n\
+  sorry\n\n\ntheorem check_remainder_parity_consistent\n  (N : Int) (M : Int) (h :\
+  \ M ≠ 0) :\n  check_remainder_parity N M = check_remainder_parity N M :=\nsorry\n\
+  \n/--\ninfo: 'EVEN'\n-/\n#guard_msgs in\n#eval check_remainder_parity 4 4\n\n/--\n\
+  info: 'ODD'\n-/\n#guard_msgs in\n#eval check_remainder_parity 6 5\n\n/--\ninfo:\
+  \ 'ODD'\n-/\n#guard_msgs in\n#eval check_remainder_parity 10 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

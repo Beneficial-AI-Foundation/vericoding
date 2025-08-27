@@ -1,0 +1,40 @@
+"vc-description": "Mike is the president of country What-The-Fatherland. There are\
+  \ n bears living in this country besides Mike. All of them are standing in a line\
+  \ and they are numbered from 1 to n from left to right. i-th bear is exactly a_{i}\
+  \ feet high. \n\n [Image] \n\nA group of bears is a non-empty contiguous segment\
+  \ of the line. The size of a group is the number of bears in that group. The strength\
+  \ of a group is the minimum height of the bear in that group.\n\nMike is a curious\
+  \ to know for each x such that 1 ≤ x ≤ n the maximum strength among all groups of\
+  \ size x.\n\n\n-----Input-----\n\nThe first line of input contains integer n (1\
+  \ ≤ n ≤ 2 × 10^5), the number of bears.\n\nThe second line contains n integers separated\
+  \ by space, a_1, a_2, ..., a_{n} (1 ≤ a_{i} ≤ 10^9), heights of bears.\n\n\n-----Output-----\n\
+  \nPrint n integers in one line. For each x from 1 to n, print the maximum strength\
+  \ among all groups of size x.\n\n\n-----Examples-----\nInput\n10\n1 2 3 4 5 4 3\
+  \ 2 1 6\n\nOutput\n6 4 4 3 3 2 2 1 1 1"
+"vc-preamble": "import Imports.AllImports\n\ndef maximum (l : List Nat) : Nat :=\n\
+  \  match l with\n  | [] => 0\n  | h::t => List.foldl max h t\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_max_group_strengths (n : Nat) (heights : List Nat) : List\
+  \ Nat :=\n  sorry\n"
+"vc-theorems": "theorem length_matches_input \n  {n : Nat} {heights : List Nat} \n\
+  \  (h1 : heights.length > 0) (h2 : heights.length = n) \n  (h3 : ∀ x ∈ heights,\
+  \ x > 0 ∧ x ≤ 10^9) :\n  (find_max_group_strengths n heights).length = n :=\nsorry\n\
+  \n\ntheorem monotonically_decreasing\n  {n : Nat} {heights : List Nat}\n  (h1 :\
+  \ heights.length > 0) (h2 : heights.length = n)\n  (h3 : ∀ x ∈ heights, x > 0 ∧\
+  \ x ≤ 10^9) :\n  ∀ i, i + 1 < n → \n    (find_max_group_strengths n heights)[i]!\
+  \ ≥ (find_max_group_strengths n heights)[i+1]! :=\nsorry\n\n\ntheorem first_value_is_max\n\
+  \  {n : Nat} {heights : List Nat}\n  (h1 : heights.length > 0) (h2 : heights.length\
+  \ = n)\n  (h3 : ∀ x ∈ heights, x > 0 ∧ x ≤ 10^9) :\n  (find_max_group_strengths\
+  \ n heights)[0]! ≤ maximum heights :=\nsorry\n\n\ntheorem preserves_input\n  {n\
+  \ : Nat} {heights heights_copy : List Nat}\n  (h1 : heights.length > 0) (h2 : heights.length\
+  \ = n)\n  (h3 : heights = heights_copy)\n  (h4 : ∀ x ∈ heights, x > 0) :\n  let\
+  \ _ := find_max_group_strengths n heights_copy\n  heights = heights_copy :=\nsorry\n\
+  \n\ntheorem last_value_positive\n  {n : Nat} {heights : List Nat}\n  (h1 : heights.length\
+  \ > 0) (h2 : heights.length = n)\n  (h3 : ∀ x ∈ heights, x > 0 ∧ x ≤ 10^9) :\n \
+  \ (find_max_group_strengths n heights)[heights.length - 1]! > 0 :=\nsorry\n\n/--\n\
+  info: [6, 4, 4, 3, 3, 2, 2, 1, 1, 1]\n-/\n#guard_msgs in\n#eval find_max_group_strengths\
+  \ 10 heights1.copy()\n\n/--\ninfo: [923264237, 524125987, 374288891]\n-/\n#guard_msgs\
+  \ in\n#eval find_max_group_strengths 3 heights2.copy()\n\n/--\ninfo: [585325539,\
+  \ 365329221, 365329221, 291882089, 291882089]\n-/\n#guard_msgs in\n#eval find_max_group_strengths\
+  \ 5 heights3.copy()\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

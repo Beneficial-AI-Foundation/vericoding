@@ -1,0 +1,39 @@
+"vc-description": "Chef's company wants to make ATM PINs for its users, so that they\
+  \ could use the PINs for withdrawing their hard-earned money. One of these users\
+  \ is Reziba, who lives in an area where a lot of robberies take place when people\
+  \ try to withdraw their money. \nChef plans to include a safety feature in the PINs:\
+  \ if someone inputs the reverse of their own PIN in an ATM machine, the Crime Investigation\
+  \ Department (CID) are immediately informed and stop the robbery. However, even\
+  \ though this was implemented by Chef, some people could still continue to get robbed.\
+  \ The reason is that CID is only informed if the reverse of a PIN is different from\
+  \ that PIN (so that there wouldn't be false reports of robberies).\nYou know that\
+  \ a PIN consists of $N$ decimal digits. Find the probability that Reziba could get\
+  \ robbed. Specifically, it can be proven that this probability can be written as\
+  \ a fraction $P/Q$, where $P \\ge 0$ and $Q > 0$ are coprime integers; you should\
+  \ compute $P$ and $Q$.\n\n-----Input-----\n- The first line of the input contains\
+  \ a single integer $T$ denoting the number of test cases. The description of $T$\
+  \ test cases follows.\n- The first and only line of each test case contains a single\
+  \ integer $N$ denoting the length of each PIN. \n\n-----Output-----\nFor each test\
+  \ case, print a single line containing two space-separated integers — the numerator\
+  \ $P$ and denominator $Q$ of the probability.\n\n-----Constraints-----\n- $1 \\\
+  le T \\le 100$\n- $1 \\le N \\le 10^5$\n\n-----Subtasks-----\nSubtask #1 (10 points):\
+  \ $N \\le 18$\nSubtask #2 (20 points): $N \\le 36$\nSubtask #3 (70 points): original\
+  \ constraints\n\n-----Example Input-----\n1\n1\n\n-----Example Output-----\n1 1\n\
+  \n-----Explanation-----\nExample case 1: A PIN containing only one number would\
+  \ fail to inform the CID, since when it's input in reverse, the ATM detects the\
+  \ same PIN as the correct one. Therefore, Reziba can always get robbed — the probability\
+  \ is $1 = 1/1$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calc_robbery_probability (n : Nat) : Nat × Nat := sorry\n\n\
+  -- Basic properties"
+"vc-theorems": "theorem robbery_prob_numerator (n : Nat) (h : n > 0) : \n  (calc_robbery_probability\
+  \ n).1 = 1 := sorry \n\n\ntheorem robbery_prob_denominator (n : Nat) (h : n > 0)\
+  \ :\n  (calc_robbery_probability n).2 = 10 ^ (n / 2) := sorry\n\n\ntheorem robbery_prob_consistent\
+  \ (n : Nat) (h : n > 0) :\n  calc_robbery_probability n = calc_robbery_probability\
+  \ n := sorry\n\n-- Monotonicity property\n\ntheorem robbery_prob_monotonic (n :\
+  \ Nat) (h : n > 1) :\n  (calc_robbery_probability (n-1)).2 ≤ (calc_robbery_probability\
+  \ n).2 := sorry\n\n/--\ninfo: (1, 1)\n-/\n#guard_msgs in\n#eval calc_robbery_probability\
+  \ 1\n\n/--\ninfo: (1, 10)\n-/\n#guard_msgs in\n#eval calc_robbery_probability 2\n\
+  \n/--\ninfo: (1, 10)\n-/\n#guard_msgs in\n#eval calc_robbery_probability 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

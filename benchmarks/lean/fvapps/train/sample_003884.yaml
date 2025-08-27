@@ -1,0 +1,27 @@
+"vc-description": "Given two strings, the first being a random string and the second\
+  \ being the same as the first, but with three added characters somewhere in the\
+  \ string (three same characters),\n\nWrite a function that returns the added character\n\
+  \n### E.g\n\n```\nstring1 = \"hello\"\nstring2 = \"aaahello\"\n\n// => 'a'\n```\n\
+  \nThe above is just an example; the characters could be anywhere in the string and\
+  \ string2 is actually **shuffled**.\n\n### Another example\n\n```\nstring1 = \"\
+  abcde\"\nstring2 = \"2db2a2ec\"\n\n// => '2'\n```\n\nNote that the added character\
+  \ could also exist in the original string\n\n\n```\nstring1 = \"aabbcc\"\nstring2\
+  \ = \"aacccbbcc\"\n\n// => 'c'\n```\n\nYou can assume that string2 will aways be\
+  \ larger than string1, and there will always be three added characters in string2.\n\
+  \n```if:c\nWrite the function `added_char()` that takes two strings and return the\
+  \ added character as described above.\n```\n\n```if:javascript\nWrite the function\
+  \ `addedChar()` that takes two strings and return the added character as described\
+  \ above.\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef String.count (s : String) (c : Char)\
+  \ : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def added_char (base modified : String) : Char :=\n  sorry\n"
+"vc-theorems": "theorem added_char_correct (base : String) (c : Char) :\n  let modified\
+  \ := base ++ String.mk (List.replicate 3 c)\n  added_char base modified = c :=\n\
+  sorry\n\n\ntheorem length_difference (base : String) (c : Char) :\n  let modified\
+  \ := base ++ String.mk (List.replicate 3 c)\n  modified.length = base.length + 3\
+  \ :=\nsorry\n\n/--\ninfo: 'c'\n-/\n#guard_msgs in\n#eval added_char \"hello\" \"\
+  checlclo\"\n\n/--\ninfo: 'c'\n-/\n#guard_msgs in\n#eval added_char \"aabbcc\" \"\
+  aacccbbcc\"\n\n/--\ninfo: '2'\n-/\n#guard_msgs in\n#eval added_char \"abcde\" \"\
+  2db2a2ec\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

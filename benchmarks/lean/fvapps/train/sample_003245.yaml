@@ -1,0 +1,22 @@
+"vc-description": "# Task\n Given a string `str`, find the shortest possible string\
+  \ which can be achieved by adding characters to the end of initial string to make\
+  \ it a palindrome.\n\n# Example\n\n For `str = \"abcdc\"`, the output should be\
+  \ `\"abcdcba\"`.\n\n# Input/Output\n\n\n - `[input]` string `str`\n\n    A string\
+  \ consisting of lowercase latin letters.\n\n    Constraints: `3 ≤ str.length ≤ 10`.\n\
+  \n\n - `[output]` a string"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def build_palindrome (s : String) : String := sorry\n\ndef is_palindrome\
+  \ (s : String) : Bool := sorry\n\n-- Result should be palindrome and contain input\
+  \ as prefix"
+"vc-theorems": "theorem build_palindrome_valid (s : String) (h : s.length > 0) :\n\
+  \  let result := build_palindrome s\n  is_palindrome result ∧ result.startsWith\
+  \ s := sorry\n\n-- Result length should be at most double input length  \n\ntheorem\
+  \ build_palindrome_minimal (s : String) (h : s.length > 0) :\n  (build_palindrome\
+  \ s).length ≤ 2 * s.length := sorry\n\n-- Already palindrome string should be unchanged\n\
+  \ntheorem build_palindrome_idempotent (s : String) (h₁ : s.length > 0) (h₂ : is_palindrome\
+  \ s) :\n  build_palindrome s = s := sorry\n\n/--\ninfo: 'abcdcba'\n-/\n#guard_msgs\
+  \ in\n#eval build_palindrome \"abcdc\"\n\n/--\ninfo: 'abababa'\n-/\n#guard_msgs\
+  \ in\n#eval build_palindrome \"ababab\"\n\n/--\ninfo: 'abcba'\n-/\n#guard_msgs in\n\
+  #eval build_palindrome \"abc\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

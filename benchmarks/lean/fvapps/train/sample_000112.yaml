@@ -1,0 +1,60 @@
+"vc-description": "You play a computer game. In this game, you lead a party of $m$\
+  \ heroes, and you have to clear a dungeon with $n$ monsters. Each monster is characterized\
+  \ by its power $a_i$. Each hero is characterized by his power $p_i$ and endurance\
+  \ $s_i$.\n\nThe heroes clear the dungeon day by day. In the beginning of each day,\
+  \ you choose a hero (exactly one) who is going to enter the dungeon this day.\n\n\
+  When the hero enters the dungeon, he is challenged by the first monster which was\
+  \ not defeated during the previous days (so, if the heroes have already defeated\
+  \ $k$ monsters, the hero fights with the monster $k + 1$). When the hero fights\
+  \ the monster, there are two possible outcomes:\n\n  if the monster's power is strictly\
+  \ greater than the hero's power, the hero retreats from the dungeon. The current\
+  \ day ends;  otherwise, the monster is defeated. \n\nAfter defeating a monster,\
+  \ the hero either continues fighting with the next monster or leaves the dungeon.\
+  \ He leaves the dungeon either if he has already defeated the number of monsters\
+  \ equal to his endurance during this day (so, the $i$-th hero cannot defeat more\
+  \ than $s_i$ monsters during each day), or if all monsters are defeated — otherwise,\
+  \ he fights with the next monster. When the hero leaves the dungeon, the current\
+  \ day ends.\n\nYour goal is to defeat the last monster. What is the minimum number\
+  \ of days that you need to achieve your goal? Each day you have to use exactly one\
+  \ hero; it is possible that some heroes don't fight the monsters at all. Each hero\
+  \ can be used arbitrary number of times.\n\n\n-----Input-----\n\nThe first line\
+  \ contains one integer $t$ ($1 \\le t \\le 10^5$) — the number of test cases. Then\
+  \ the test cases follow.\n\nThe first line of each test case contains one integer\
+  \ $n$ ($1 \\le n \\le 2 \\cdot 10^5$) — the number of monsters in the dungeon.\n\
+  \nThe second line contains $n$ integers $a_1$, $a_2$, ..., $a_n$ ($1 \\le a_i \\\
+  le 10^9$), where $a_i$ is the power of the $i$-th monster.\n\nThe third line contains\
+  \ one integer $m$ ($1 \\le m \\le 2 \\cdot 10^5$) — the number of heroes in your\
+  \ party.\n\nThen $m$ lines follow, each describing a hero. Each line contains two\
+  \ integers $p_i$ and $s_i$ ($1 \\le p_i \\le 10^9$, $1 \\le s_i \\le n$) — the power\
+  \ and the endurance of the $i$-th hero.\n\nIt is guaranteed that the sum of $n +\
+  \ m$ over all test cases does not exceed $2 \\cdot 10^5$.\n\n\n-----Output-----\n\
+  \nFor each test case print one integer — the minimum number of days you have to\
+  \ spend to defeat all of the monsters (or $-1$ if it is impossible).\n\n\n-----Example-----\n\
+  Input\n2\n6\n2 3 11 14 1 8\n2\n3 2\n100 1\n5\n3 5 100 2 3\n2\n30 5\n90 1\n\nOutput\n\
+  5\n-1"
+"vc-preamble": "import Imports.AllImports\n\ndef maxList (l : List Nat) : Nat :=\n\
+  \  match l with\n  | [] => 0\n  | x::xs => List.foldl (fun acc y => max acc y) x\
+  \ xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_dungeon_game (monsters : List Nat) (heroes : List Hero)\
+  \ : Nat := sorry\n\ntheorem dungeon_game_basic_properties\n  (monsters : List Nat)\
+  \ (heroes : List Hero)\n  (h1 : monsters.length > 0)\n  (h2 : heroes.length > 0)\n\
+  \  (h3 : ∀ m ∈ monsters, m ≥ 1 ∧ m ≤ 1000)\n  (h4 : ∀ h ∈ heroes, h.power ≥ 1 ∧\
+  \ h.power ≤ 1000 ∧ h.endurance ≥ 1 ∧ h.endurance ≤ 1000) :\n  let result := solve_dungeon_game\
+  \ monsters heroes\n  (result = 0 ∨ result ≥ 1) ∧\n  (result ≠ 0 → (\n    (∃ h ∈\
+  \ heroes, h.power ≥ maxList monsters) ∧\n    result ≤ monsters.length\n  )) := sorry\n"
+"vc-theorems": "theorem dungeon_game_weak_monsters\n  (monsters : List Nat)\n  (heroes\
+  \ : List Hero)\n  (h1 : monsters.length > 0)\n  (h2 : heroes.length > 0)\n  (h3\
+  \ : ∀ m ∈ monsters, m = 1)\n  (h4 : ∀ h ∈ heroes, h.power = 2 ∧ h.endurance = 1)\
+  \ :\n  solve_dungeon_game monsters heroes = monsters.length := sorry\n\n\ntheorem\
+  \ dungeon_game_super_hero\n  (monsters : List Nat)\n  (hero_endurance : Nat)\n \
+  \ (h1 : monsters.length > 0)\n  (h2 : ∀ m ∈ monsters, m ≥ 1 ∧ m ≤ 10)\n  (h3 : hero_endurance\
+  \ ≥ 1) :\n  let max_monster := maxList monsters\n  let heroes := [Hero.mk (max_monster\
+  \ + 1) hero_endurance]\n  let result := solve_dungeon_game monsters heroes\n  (if\
+  \ hero_endurance ≥ monsters.length\n   then result = 1\n   else result = (monsters.length\
+  \ + hero_endurance - 1) / hero_endurance) := sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs\
+  \ in\n#eval solve_dungeon_game [2, 3, 11, 14, 1, 8] [(3, 2), (100, 1)]\n\n/--\n\
+  info: -1\n-/\n#guard_msgs in\n#eval solve_dungeon_game [3, 5, 100, 2, 3] [(30, 5),\
+  \ (90, 1)]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_dungeon_game [1, 2,\
+  \ 3] [(5, 3)]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

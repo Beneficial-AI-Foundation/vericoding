@@ -1,0 +1,30 @@
+"vc-description": "We are given a sequence of coplanar points and see all the possible\
+  \ triangles that may be generated which all combinations of three points.\n\nWe\
+  \ have the following list of points with the cartesian coordinates of each one:\n\
+  ```\nPoints [x, y]\n   A   [1, 2]\n   B   [3, 3]\n   C   [4, 1]\n   D   [1, 1]\n\
+  \   E   [4, -1]\n```\nWith these points we may have the following triangles: ```ABC,\
+  \ ABD, ABE, ACD, ACE, ADE, BCD, BCE, BDE, CDE.``` There are three special ones:\
+  \ ```ABC, ACD and CDE```, that have an angle of 90°. All is shown in the picture\
+  \ below:\n\n\n\nWe need to count all the rectangle triangles that may be formed\
+  \ by a given list of points.\n\nThe case decribed above will be:\n```python\ncount_rect_triang([[1,\
+  \ 2],[3, 3],[4, 1],[1, 1],[4, -1]]) == 3\n```\n\nObserve this case:\n```python\n\
+  count_rect_triang([[1, 2],[4, -1],[3, 3],[4, -1],[4, 1],[1, 1],[4, -1], [4, -1],\
+  \ [3, 3], [1, 2]]) == 3\n```\nIf no rectangle triangles may be generated the function\
+  \ will output ```0```.\n\nEnjoy it!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_rect_triang (points : List (Int × Int)) : Nat := sorry\n\
+  \ntheorem result_properties {points : List (Int × Int)}\n    (h : points.length\
+  \ ≥ 3) :\n    let n := points.length\n    0 ≤ count_rect_triang points ∧ \n    count_rect_triang\
+  \ points ≤ n * (n - 1) * (n - 2) / 6 := by sorry\n"
+"vc-theorems": "theorem known_right_triangle :\n    count_rect_triang [(0,0), (0,3),\
+  \ (4,0)] = 1 := by sorry\n\n\ntheorem duplicate_handling {points : List (Int × Int)}\
+  \ :\n    count_rect_triang points = count_rect_triang (List.eraseDups points) :=\
+  \ by sorry\n\n\ntheorem order_invariance {points : List (Int × Int)}\n    (h : points.length\
+  \ ≥ 3) :\n    count_rect_triang points = count_rect_triang points.reverse := by\
+  \ sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_rect_triang [[1, 2], [3,\
+  \ 3], [4, 1], [1, 1], [4, -1]]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_rect_triang\
+  \ [[1, 2], [4, -1], [3, 3], [4, -1], [4, 1], [1, 1], [4, -1], [4, -1], [3, 3], [1,\
+  \ 2]]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval count_rect_triang [[0, 0], [1,\
+  \ 1], [2, 2]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

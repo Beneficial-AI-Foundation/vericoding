@@ -1,0 +1,38 @@
+"vc-description": "The prime numbers are not regularly spaced. For example from `2`\
+  \ to `3` the gap is `1`.\nFrom `3` to `5` the gap is `2`. From `7` to `11` it is\
+  \ `4`.\nBetween 2 and 50 we have the following pairs of 2-gaps primes:\n`3-5, 5-7,\
+  \ 11-13, 17-19, 29-31, 41-43`\n\nA prime gap of length n is a run of n-1 consecutive\
+  \ composite numbers between two **successive** primes (see: http://mathworld.wolfram.com/PrimeGaps.html).\n\
+  \nWe will write a function gap with parameters:\n\n`g` (integer >= 2) which indicates\
+  \ the gap we are looking for\n\n`m` (integer > 2) which gives the start of the search\
+  \ (m inclusive)\n\n`n` (integer >= m) which gives the end of the search (n inclusive)\n\
+  \nIn the example above `gap(2, 3, 50)` will return `[3, 5] or (3, 5) or {3, 5}`\
+  \ which is the first pair between 3 and 50 with a 2-gap.\n\nSo this function should\
+  \ return the **first** pair of two prime numbers spaced with a gap of `g`\nbetween\
+  \ the limits `m`, `n` if these numbers exist otherwise `nil or null or None or Nothing`\
+  \ (depending on the language). \n\nIn C++ return in such a case `{0, 0}`. In F#\
+  \ return `[||]`. In Kotlin return `[]`\n\n#Examples:\n`gap(2, 5, 7) --> [5, 7] or\
+  \ (5, 7) or {5, 7}`\n\n`gap(2, 5, 5) --> nil. In C++ {0, 0}. In F# [||]. In Kotlin\
+  \ return `[]`\n\n`gap(4, 130, 200) --> [163, 167] or (163, 167) or {163, 167}`\n\
+  \n([193, 197] is also such a 4-gap primes between 130 and 200 but it's not the first\
+  \ pair)\n\n`gap(6,100,110) --> nil or {0, 0}` : between 100 and 110 we have `101,\
+  \ 103, 107, 109` but `101-107`is not a\n6-gap because there is `103`in between and\
+  \ `103-109`is not a 6-gap because there is `107`in between.\n\n# Note for Go\nFor\
+  \ Go: nil slice is expected when there are no gap between m and n.\nExample: gap(11,30000,100000)\
+  \ --> nil\n\n#Ref\nhttps://en.wikipedia.org/wiki/Prime_gap"
+"vc-preamble": "import Imports.AllImports\n\ndef sqrt (n : Nat) : Nat := sorry\n\n\
+  def isPrime (n : Nat) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def gap (g m n : Nat) : Option (Nat × Nat) := sorry\n\ntheorem\
+  \ prime_divisibility {n : Nat} (h : n ≥ 2) :\n  isPrime n = true →\n  ∀ i : Nat,\
+  \ 2 ≤ i → i ≤ sqrt n → n % i ≠ 0 :=\nsorry\n"
+"vc-theorems": "theorem composite_divisibility {n : Nat} (h : n ≥ 2) :\n  isPrime\
+  \ n = false →\n  (∃ i : Nat, 2 ≤ i ∧ i ≤ sqrt n ∧ n % i = 0) ∨ n < 2 :=\nsorry\n\
+  \n\ntheorem gap_result_valid {g m n : Nat} (hm : m ≥ 2) (hn : n ≥ 2) :\n  ∀ result\
+  \ : Nat × Nat,\n  gap g m n = some result →\n  let (p₁, p₂) := result\n  (isPrime\
+  \ p₁ = true ∧ isPrime p₂ = true) ∧\n  p₂ - p₁ = g ∧\n  m ≤ p₁ ∧ p₁ ≤ p₂ ∧ p₂ ≤ n\
+  \ ∧\n  ∀ x : Nat, p₁ < x → x < p₂ → isPrime x = false :=\nsorry\n\n/--\ninfo: [3,\
+  \ 5]\n-/\n#guard_msgs in\n#eval gap 2 3 10\n\n/--\ninfo: None\n-/\n#guard_msgs in\n\
+  #eval gap 6 100 110\n\n/--\ninfo: [163, 167]\n-/\n#guard_msgs in\n#eval gap 4 130\
+  \ 200\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

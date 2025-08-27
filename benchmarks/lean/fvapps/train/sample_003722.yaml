@@ -1,0 +1,22 @@
+"vc-description": "# Task\n The `hamming distance` between a pair of numbers is the\
+  \ number of binary bits that differ in their binary notation. \n \n# Example\n\n\
+  \ For `a = 25, b= 87`, the result should be `4`\n```\n25: 00011001\n87: 01010111\n\
+  ```\nThe `hamming distance` between these two would be 4 ( the `2nd, 5th, 6th, 7th`\
+  \ bit ).\n\n\n# Input/Output\n\n\n - `[input]` integer `a`\n\n  First Number. `1\
+  \ <= a <= 2^20`\n\n\n - `[input]` integer `b`\n\n  Second Number. `1 <= b <= 2^20`\n\
+  \n\n - `[output]` an integer\n\n  Hamming Distance"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def hamming_distance : Int → Int → Nat := \n  sorry\n\n/-- Hamming\
+  \ distance is symmetric -/"
+"vc-theorems": "theorem hamming_distance_symmetric (a b : Int) : \n  hamming_distance\
+  \ a b = hamming_distance b a := by\n  sorry\n\n/-- Hamming distance between a number\
+  \ and itself is zero -/\n\ntheorem hamming_distance_self_zero (a : Int) : \n  hamming_distance\
+  \ a a = 0 := by\n  sorry\n\n/-- Hamming distance satisfies the triangle inequality\
+  \ -/\n\ntheorem hamming_distance_triangle_inequality (a b c : Int) :\n  hamming_distance\
+  \ a c ≤ hamming_distance a b + hamming_distance b c := by\n  sorry\n\n/-- Hamming\
+  \ distance is always nonnegative -/\n\ntheorem hamming_distance_nonnegative (a b\
+  \ : Int) :\n  hamming_distance a b ≥ 0 := by\n  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval hamming_distance 25 87\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval hamming_distance\
+  \ 256 302\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval hamming_distance 543 634\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

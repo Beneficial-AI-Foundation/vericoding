@@ -1,0 +1,36 @@
+"vc-description": "Let's call a sequence good if the sum of all its elements is $0$.\n\
+  You have a sequence of integers $A_1, A_2, \\ldots, A_N$. You may perform any number\
+  \ of operations on this sequence (including zero). In one operation, you should\
+  \ choose a valid index $i$ and decrease $A_i$ by $i$. Can you make the sequence\
+  \ good using these operations?\n\n-----Input-----\n- The first line of the input\
+  \ contains a single integer $T$ denoting the number of test cases. The description\
+  \ of $T$ test cases follows.\n- The first line of each test case contains a single\
+  \ integer $N$.\n- The second line contains $N$ space-separated integers $A_1, A_2,\
+  \ \\ldots, A_N$.\n\n-----Output-----\nFor each test case, print a single line containing\
+  \ the string \"YES\" if it is possible to make the given sequence good or \"NO\"\
+  \ if it is impossible.\n\n-----Constraints-----\n- $1 \\le T \\le 1,000$\n- $1 \\\
+  le N \\le 10$\n- $|A_i| \\le 100$ for each valid $i$\n\n-----Subtasks-----\nSubtask\
+  \ #1 (10 points): $N = 1$\nSubtask #2 (30 points): $N \\le 2$\nSubtask #3 (60 points):\
+  \ original constraints\n\n-----Example Input-----\n2\n1\n-1\n2\n1 2\n\n-----Example\
+  \ Output-----\nNO\nYES\n\n-----Explanation-----\nExample case 2: We can perform\
+  \ two operations ― subtract $1$ from $A_1$ and $2$ from $A_2$."
+"vc-preamble": "import Imports.AllImports\n\ndef can_make_sequence_good (n : Nat)\
+  \ (sequence : List Int) : String := sorry\n\ndef sum_nonnegative (l : List Int)\
+  \ : Int := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum_negative (l : List Int) : Int := sorry\n\ntheorem sequence_result_is_yes_or_no\
+  \ (n : Nat) (sequence : List Int) :\n  let result := can_make_sequence_good n sequence\n\
+  \  result = \"YES\" ∨ result = \"NO\" := sorry\n"
+"vc-theorems": "theorem yes_case_sums_property (n : Nat) (sequence : List Int) :\n\
+  \  can_make_sequence_good n sequence = \"YES\" →\n  sum_nonnegative sequence ≥ Int.natAbs\
+  \ (sum_negative sequence) := sorry\n\n\ntheorem no_case_sums_property (n : Nat)\
+  \ (sequence : List Int) :\n  can_make_sequence_good n sequence = \"NO\" →\n  sum_nonnegative\
+  \ sequence < Int.natAbs (sum_negative sequence) := sorry\n\n\ntheorem single_element_sequence\
+  \ (x : Int) :\n  can_make_sequence_good 1 [x] = (if x ≥ 0 then \"YES\" else \"NO\"\
+  ) := sorry\n\n\ntheorem sequence_length_valid (sequence : List Int) :\n  let n :=\
+  \ sequence.length\n  let result := can_make_sequence_good n sequence\n  result =\
+  \ \"YES\" ∨ result = \"NO\" := sorry\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval\
+  \ can_make_sequence_good 1 [-1]\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval can_make_sequence_good\
+  \ 2 [1, 2]\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval can_make_sequence_good\
+  \ 3 [1, -2, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

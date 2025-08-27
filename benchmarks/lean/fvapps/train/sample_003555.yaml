@@ -1,0 +1,48 @@
+"vc-description": "# Introduction\n\nThe Condi (Consecutive Digraphs) cipher was introduced\
+  \ by G4EGG (Wilfred Higginson) in 2011. The cipher preserves word divisions, and\
+  \ is simple to describe and encode, but it's surprisingly difficult to crack. \n\
+  \n# Encoding Algorithm\n\nThe encoding steps are:\n- Start with an `initial key`,\
+  \ e.g. `cryptogram`\n- Form a `key`, remove the key duplicated letters except for\
+  \ the first occurrence\n- Append to it, in alphabetical order all letters which\
+  \ do not occur in the `key`.  \n  The example produces: `cryptogambdefhijklnqsuvwxz`\n\
+  - Number the `key alphabet` starting with 1.\n```python\n1  2  3  4  5  6  7  8\
+  \  9  10 11 12 13\nc  r  y  p  t  o  g  a  m  b  d  e  f \n14 15 16 17 18 19 20\
+  \ 21 22 23 24 25 26\nh  i  j  k  l  n  q  s  u  v  w  x  z\n```\n- One of the inputs\
+  \ to encoding algorithm is an `initial shift`, say `10`\n- Encode the first letter\
+  \ of your `message` by moving 10 places to the right from the letter's position\
+  \ in the key alphabet. If the first letter were say `o` then the letter 10 places\
+  \ to the right in the `key alphabet` is `j`, so `o` would be encoded as `j`. If\
+  \ you move past the end of the key alphabet you wrap back to the beginning. For\
+  \ example if the first letter were `s` then counting 10 places would bring you around\
+  \ to `t`.\n- Use the position of the previous plaintext letter as the number of\
+  \ places to move to encode the next plaintext number. If you have just encoded an\
+  \ `o` (position 6) , and you now want to encode say `n`, then you move 6 places\
+  \ to the right from `n` which brings you to `x`.\n- Keep repeating the previous\
+  \ step until all letters are encoded.\n\nDecoding is the reverse of encoding - you\
+  \ move to the left instead of to the right.\n\n# Task\n\nCreate two functions -\
+  \ `encode`/`Encode` and `decode`/`Decode` which implement Condi cipher encoding\
+  \ and decoding.\n\n# Inputs\n\n- `message` - a string to encode/decode\n- `key`\
+  \ - a key consists of only lower case letters\n- `initShift` - a non-negative integer\
+  \ representing the initial shift\n\n# Notes\n- Don't forget to remove the duplicated\
+  \ letters from the `key` except for the first occurrence \n- Characters which do\
+  \ not exist in the `key alphabet` should be coppied to the output string exactly\
+  \ like they appear in the `message` string\n- Check the test cases for samples"
+"vc-preamble": "import Imports.AllImports\n\ndef encode (message : String) (key :\
+  \ String) (shift : Int) : String :=\n  sorry\n\n\ndef decode (message : String)\
+  \ (key : String) (shift : Int) : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def LOWER : String :=\n  \"abcdefghijklmnopqrstuvwxyz\"\n"
+"vc-theorems": "theorem encode_decode_roundtrip \n  {message key : String} {shift\
+  \ : Int}\n  (h1 : ∀ c ∈ message.data, c.toString ∈ LOWER.data.map toString)\n  (h2\
+  \ : key.length > 0)\n  (h3 : ∀ c ∈ key.data, c.toString ∈ LOWER.data.map toString)\
+  \ :\n  decode (encode message key shift) key shift = message :=\nsorry\n\n\ntheorem\
+  \ non_alphabet_chars_unchanged\n  {message key : String} {shift : Int}\n  (h1 :\
+  \ key.length > 0)\n  (h2 : ∀ c ∈ key.data, c.toString ∈ LOWER.data.map toString)\
+  \ :\n  ∀ (i : Nat) (h3 : i < message.length),\n    (message.data.get ⟨i, h3⟩) ∉\
+  \ LOWER.data →\n    (encode message key shift).data.get ⟨i, sorry⟩ = message.data.get\
+  \ ⟨i, h3⟩ :=\nsorry\n\n/--\ninfo: 'jx'\n-/\n#guard_msgs in\n#eval encode \"on\"\
+  \ \"cryptogram\" 10\n\n/--\ninfo: msg\n-/\n#guard_msgs in\n#eval decode \"jx\" key\
+  \ shift\n\n/--\ninfo: msg\n-/\n#guard_msgs in\n#eval decode encode(msg, key, shift)\
+  \ \"keyword\" 5\n\n/--\ninfo: msg\n-/\n#guard_msgs in\n#eval decode encode(msg,\
+  \ key, shift) \"secret\" 7\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

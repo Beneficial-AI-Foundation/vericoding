@@ -1,0 +1,38 @@
+"vc-description": "For her next karate demonstration, Ada will break some bricks.\n\
+  Ada stacked three bricks on top of each other. Initially, their widths (from top\
+  \ to bottom) are $W_1, W_2, W_3$.\nAda's strength is $S$. Whenever she hits a stack\
+  \ of bricks, consider the largest $k \\ge 0$ such that the sum of widths of the\
+  \ topmost $k$ bricks does not exceed $S$; the topmost $k$ bricks break and are removed\
+  \ from the stack. Before each hit, Ada may also decide to reverse the current stack\
+  \ of bricks, with no cost.\nFind the minimum number of hits Ada needs in order to\
+  \ break all bricks if she performs the reversals optimally. You are not required\
+  \ to minimise the number of reversals.\n\n-----Input-----\n- The first line of the\
+  \ input contains a single integer $T$ denoting the number of test cases. The description\
+  \ of $T$ test cases follows.\n- The first and only line of each test case contains\
+  \ four space-separated integers $S$, $W_1$, $W_2$ and $W_3$.\n\n-----Output-----\n\
+  For each test case, print a single line containing one integer ― the minimum required\
+  \ number of hits.\n\n-----Constraints-----\n- $1 \\le T \\le 64$\n- $1 \\le S \\\
+  le 8$\n- $1 \\le W_i \\le 2$ for each valid $i$\n- it is guaranteed that Ada can\
+  \ break all bricks\n\n-----Subtasks-----\nSubtask #1 (50 points): $W_1 = W_2 = W_3$\n\
+  Subtask #2 (50 points): original constraints\n\n-----Example Input-----\n3\n3 1\
+  \ 2 2\n2 1 1 1\n3 2 2 1\n\n-----Example Output-----\n2\n2\n2\n\n-----Explanation-----\n\
+  Example case 1: Ada can reverse the stack and then hit it two times. Before the\
+  \ first hit, the widths of bricks in the stack (from top to bottom) are $(2,2,1)$.\
+  \ After the first hit, the topmost brick breaks and the stack becomes $(2,1)$. The\
+  \ second hit breaks both remaining bricks.\nIn this particular case, it is also\
+  \ possible to hit the stack two times without reversing. Before the first hit, it\
+  \ is $(1, 2, 2)$. The first hit breaks the two bricks at the top (so the stack becomes\
+  \ $(2)$) and the second hit breaks the last brick."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_hits_needed (s w1 w2 w3 : Nat) : Nat := sorry\n\ntheorem\
+  \ min_hits_needed_bounded (s w1 w2 w3 : Nat) :\n  s > 0 → w1 > 0 → w2 > 0 → w3 >\
+  \ 0 → \n  1 ≤ min_hits_needed s w1 w2 w3 ∧ min_hits_needed s w1 w2 w3 ≤ 3 := sorry\n"
+"vc-theorems": "theorem min_hits_needed_single_hit (s w1 w2 w3 : Nat) :\n  s > 0 →\
+  \ w1 > 0 → w2 > 0 → w3 > 0 →\n  s ≥ w1 + w2 + w3 →\n  min_hits_needed s w1 w2 w3\
+  \ = 1 := sorry\n\n\ntheorem min_hits_needed_two_hits (s w1 w2 w3 : Nat) :\n  s >\
+  \ 0 → w1 > 0 → w2 > 0 → w3 > 0 →\n  (s ≥ w1 + w2 ∨ s ≥ w2 + w3) →\n  min_hits_needed\
+  \ s w1 w2 w3 ≤ 2 := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_hits_needed\
+  \ 3 1 2 2\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_hits_needed 2 1 1 1\n\n\
+  /--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_hits_needed 3 2 2 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

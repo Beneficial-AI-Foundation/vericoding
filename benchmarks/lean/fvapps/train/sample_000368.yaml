@@ -1,0 +1,20 @@
+"vc-description": "A positive integer is magical if it is divisible by either A or\
+  \ B.\nReturn the N-th magical number.  Since the answer may be very large, return\
+  \ it modulo 10^9 + 7.\n \n\n\n\nExample 1:\nInput: N = 1, A = 2, B = 3\nOutput:\
+  \ 2\n\n\nExample 2:\nInput: N = 4, A = 2, B = 3\nOutput: 6\n\n\nExample 3:\nInput:\
+  \ N = 5, A = 2, B = 4\nOutput: 10\n\n\nExample 4:\nInput: N = 3, A = 6, B = 4\n\
+  Output: 8\n\n \nNote:\n\n1 <= N <= 10^9\n2 <= A <= 40000\n2 <= B <= 40000"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD := 1000000007\n\ndef nthMagicalNumber (n a b : Nat) : Nat\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem same_number_property {n : Nat} (h : n > 0) (h2 : n ≤ 10000)\
+  \ :\n  nthMagicalNumber n 2 2 = (2 * n) % MOD := by\n  sorry\n\n\ntheorem monotonic_increasing\
+  \ {a b : Nat} \n  (ha : a > 0) (hb : b > 0) (ha2 : a ≤ 100) (hb2 : b ≤ 100) :\n\
+  \  nthMagicalNumber 1 a b < nthMagicalNumber 2 a b := by\n  sorry\n\n\ntheorem result_bounds\
+  \ {n a b : Nat}\n  (hn : n > 0) (ha : a > 0) (hb : b > 0)\n  (hn2 : n ≤ 100) (ha2\
+  \ : a ≤ 100) (hb2 : b ≤ 100) :\n  0 ≤ nthMagicalNumber n a b ∧ nthMagicalNumber\
+  \ n a b < MOD := by\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval nth_magical_number\
+  \ 1 2 3\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval nth_magical_number 4 2 3\n\n\
+  /--\ninfo: 10\n-/\n#guard_msgs in\n#eval nth_magical_number 5 2 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,30 @@
+"vc-description": "A palindrome is a word, phrase, number, or other sequence of characters\
+  \ which reads the same backward as forward. Examples of numerical palindromes are:\n\
+  \n2332  \n110011  \n54322345  \n\nFor a given number `num`, write a function to\
+  \ test if it's a numerical palindrome or not and return a boolean (true if it is\
+  \ and false if not).\n\n```if-not:haskell\nReturn \"Not valid\" if the input is\
+  \ not an integer or less than `0`.\n```\n```if:haskell\nReturn `Nothing` if the\
+  \ input is less than `0` and `Just True` or `Just False` otherwise.\n```\n\nOther\
+  \ Kata in this Series:\nNumerical Palindrome #1\nNumerical Palindrome #1.5\nNumerical\
+  \ Palindrome #2\nNumerical Palindrome #3\nNumerical Palindrome #3.5\nNumerical Palindrome\
+  \ #4\nNumerical Palindrome #5"
+"vc-preamble": "import Imports.AllImports\n\ndef palindrome (x : Int) : Bool ⊕ String\
+  \ := sorry\n\ndef isDigitPalindrome (s : String) : Bool :=\n  s = s.push '0' --\
+  \ dummy definition to make type checker happy\n  "
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverseInt (n : Int) : Int := 0 -- dummy definition\n\ntheorem\
+  \ palindrome_output_type (x : Int) :\n  x > 0 → Sum.casesOn (palindrome x) (fun\
+  \ _ => True) (fun _ => True) := sorry\n"
+"vc-theorems": "theorem palindrome_correctness (x : Int) :\n  x > 0 → match palindrome\
+  \ x with\n  | .inl true => isDigitPalindrome (toString x) = true\n  | .inl false\
+  \ => isDigitPalindrome (toString x) = false\n  | .inr _ => False\n  := sorry\n\n\
+  \ntheorem palindrome_negative_invalid (x : Int) :\n  x ≤ 0 → palindrome x = .inr\
+  \ \"Not valid\" := sorry\n\n\ntheorem single_digit_palindrome (x : Int) :\n  x >\
+  \ 0 → x < 10 → (palindrome x) = .inl true := sorry\n\n\ntheorem palindrome_concat_property\
+  \ (x : Int) :\n  x > 0 →\n  let xStr := toString x\n  let palindromeNum := x * (10\
+  \ ^ (String.length xStr)) + reverseInt x\n  palindrome palindromeNum = .inl true\
+  \ := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval palindrome 1221\n\n/--\n\
+  info: False\n-/\n#guard_msgs in\n#eval palindrome 123456\n\n/--\ninfo: 'Not valid'\n\
+  -/\n#guard_msgs in\n#eval palindrome \"1221\"\n\n/--\ninfo: 'Not valid'\n-/\n#guard_msgs\
+  \ in\n#eval palindrome -450\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

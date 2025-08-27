@@ -1,0 +1,49 @@
+"vc-description": "Monisha likes to paint. She has painted $N$ paintings (numbered\
+  \ $1$ through $N$) and wants to choose some subset of these paintings for an exhibition.\
+  \ For each valid $i$, the $i$-th painting has beauty $b_i$ and the probability that\
+  \ it will be displayed at the exhibition is $p_i$. Each painting is chosen or excluded\
+  \ from the exhibition independently randomly.\nThe beauty of the resulting exhibition\
+  \ is the bitwise XOR of the beauties of all displayed paintings. If no paintings\
+  \ are displayed, the XOR is $0$.\nMonisha wants to find out how beautiful her exhibition\
+  \ is going to be. Help her compute the expected value of the beauty of the exhibition.\n\
+  \n-----Input-----\n- The first line of the input contains a single integer $T$ denoting\
+  \ the number of test cases. The description of $T$ test cases follows.\n- The first\
+  \ line of each test case contains a single integer $N$.\n- The second line contains\
+  \ $N$ space-separated integers $b_1, b_2, \\ldots, b_N$.\n- The third line contains\
+  \ $N$ space-separated real numbers $p_1, p_2, \\ldots, p_N$. Each of these numbers\
+  \ is given with at most five digits after the decimal point.\n\n-----Output-----\n\
+  For each test case, print a single line containing one real number — the expected\
+  \ beauty of the exhibition. Your answer will be considered correct if its absolute\
+  \ or relative error does not exceed $10^{-6}$.\n\n-----Constraints-----\n- $1 \\\
+  le N \\le 10^5$\n- $0 \\le b_i \\le 10^9$ for each valid $i$\n- $0 \\le p_i \\le\
+  \ 1$ for each valid $i$\n- the sum of $N$ over all test cases does not exceed $4\
+  \ \\cdot 10^5$\n\n-----Example Input-----\n2\n3\n5 6 2\n1.0 0.0 0.5\n4\n2 2 2 2\n\
+  0.5 0.5 0.5 0.5\n\n-----Example Output-----\n6.000000000000000\n1.000000000000000\n\
+  \n-----Explanation-----\nExample case 1: The first painting must be displayed at\
+  \ the exhibition, the second one must be excluded. If the third painting is displayed\
+  \ (with probability $0.5$), the beauty is $5 \\oplus 2 = 7$; if it is excluded (with\
+  \ probability $0.5$), the beauty is $5$. The expected beauty is $0.5 \\cdot 5 +\
+  \ 0.5 \\cdot 7 = 6$.\nExample case 2: If there is an odd number of paintings at\
+  \ the exhibition, the beauty is $2$; this has a probability of $0.5$. If there is\
+  \ an even number of paintings, the beauty is $0$ (with probability $0.5$), so the\
+  \ expected beauty is $0.5 \\cdot 0 + 0.5 \\cdot 2 = 1$."
+"vc-preamble": "import Imports.AllImports\n\ndef calculate_expected_beauty (n : Nat)\
+  \ (beauties : List Nat) (probs : List Float) : Float :=\n  sorry\n\n\ndef maxList\
+  \ (l : List Nat) : Float :=\n  Float.ofNat (l.foldl max 0)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def listXor (l : List Nat) : Float :=\n  Float.ofNat (l.foldl Nat.xor\
+  \ 0)\n"
+"vc-theorems": "theorem expected_beauty_bounds {n : Nat} {beauties : List Nat} {probs\
+  \ : List Float}\n    (h1 : beauties.length = n)\n    (h2 : probs.length = n)\n \
+  \   (h3 : ∀ p ∈ probs, 0 ≤ p ∧ p ≤ 1)\n    (h4 : beauties.length > 0)\n    : 0 ≤\
+  \ calculate_expected_beauty n beauties probs ∧ \n      calculate_expected_beauty\
+  \ n beauties probs ≤ maxList beauties :=\n  sorry\n\n\ntheorem probabilities_zero_one\
+  \ {n : Nat} {beauties : List Nat}\n    (h1 : beauties.length = n)\n    : calculate_expected_beauty\
+  \ n beauties (List.replicate n 0) = 0 ∧\n      calculate_expected_beauty n beauties\
+  \ (List.replicate n 1) = \n        listXor beauties :=\n  sorry\n\n\ntheorem symmetry\
+  \ {n : Nat} {beauties : List Nat} {probs : List Float}\n    (h1 : beauties.length\
+  \ = n)\n    (h2 : probs.length = n)\n    (σ : List.Perm beauties (beauties.take\
+  \ n))\n    (τ : List.Perm probs (probs.take n))\n    : calculate_expected_beauty\
+  \ n beauties probs = \n      calculate_expected_beauty n (beauties.take n) (probs.take\
+  \ n) :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

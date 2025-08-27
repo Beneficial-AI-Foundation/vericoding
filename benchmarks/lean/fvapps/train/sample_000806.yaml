@@ -1,0 +1,31 @@
+"vc-description": "Let's consider a rectangular table R consisting of N rows and M\
+  \ columns. Rows are enumerated from 1  to N from top to bottom. Columns are enumerated\
+  \ from 1 to M from left to right. Each element of R is a non-negative integer. R\
+  \ is called steady if the sum of elements in the ith row is not less then the sum\
+  \ of elements in the (i-1)th row for each i where 2 ≤ i ≤ N and the sum of elements\
+  \ in the Nth row is less than or equal to M. Your task is to find the number of\
+  \ different steady tables of size N x M modulo 1 000 000 000. \n\n-----Input-----\n\
+  The first line of input contains a single integer T denoting number of test cases.\
+  \ First and the only line of each test case contains two space separated integers\
+  \ N and M denoting the number of rows and columns respectively.\n\n-----Output-----\n\
+  For each test case, print a single integer corresponding to the answer.\n\n-----Constraints-----\n\
+  - 1 ≤ T ≤ 10\n- 1 ≤ N, M ≤ 2000\n\n-----Subtasks-----\n- Subtask 1 : 1 ≤ T ≤ 10\
+  \ , 1 ≤ N,M ≤ 50 : ( 23 pts )\n- Subtask 2 : 1 ≤ T ≤ 10 , 1 ≤ N,M ≤ 500 : ( 29 pts\
+  \ )\n- Subtask 3 : 1 ≤ T ≤ 10 , 1 ≤ N,M ≤ 2000 : ( 48 pts )\n\n-----Example-----\n\
+  Input:\n3\n1 1\n2 2\n2 3\nOutput:\n2\n25\n273\n\n-----Explanation-----\nTest case\
+  \ 1 : There are only 2 such grids possible 0 and 1."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD : Nat := 1000000000\n\ndef compute_steady_tables (n m :\
+  \ Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem steady_tables_in_range (n m : Nat) (h1 : n > 0) (h2 : m >\
+  \ 0) :\n  compute_steady_tables n m < MOD :=\n  sorry\n\n\ntheorem steady_tables_base_case\
+  \ :\n  compute_steady_tables 1 1 = 2 :=\n  sorry\n\n\ntheorem steady_tables_ge_rows\
+  \ (n m : Nat) (h1 : n > 0) (h2 : m > 0) :\n  compute_steady_tables n m ≥ n :=\n\
+  \  sorry\n\n\ntheorem steady_tables_ge_cols (n m : Nat) (h1 : n > 0) (h2 : m > 0)\
+  \ :\n  compute_steady_tables n m ≥ m :=\n  sorry\n\n\ntheorem steady_tables_square\
+  \ (n : Nat) (h : n > 0) :\n  compute_steady_tables n n ≥ n * n :=\n  sorry\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval compute_steady_tables 1 1\n\n/--\ninfo: 25\n\
+  -/\n#guard_msgs in\n#eval compute_steady_tables 2 2\n\n/--\ninfo: 273\n-/\n#guard_msgs\
+  \ in\n#eval compute_steady_tables 2 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

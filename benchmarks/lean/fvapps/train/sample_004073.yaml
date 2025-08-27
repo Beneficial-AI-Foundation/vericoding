@@ -1,0 +1,22 @@
+"vc-description": "Write a program that outputs the `n` largest elements from a list.\n\
+  \nExample:\n```python\nlargest(2, [7,6,5,4,3,2,1])\n# => [6,7]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def largest (n : Nat) (xs : List Int) : List Int :=\n  sorry\n"
+"vc-theorems": "theorem largest_size {n : Nat} {xs : List Int} \n  (h_nonempty : xs\
+  \ ≠ []) \n  (h_n_valid : n ≤ xs.length) :\n  (largest n xs).length = n :=\n  sorry\n\
+  \n\ntheorem largest_elements {n : Nat} {xs : List Int}\n  (h_nonempty : xs ≠ [])\n\
+  \  (h_n_valid : n ≤ xs.length) :\n  ∀ x ∈ largest n xs, x ∈ xs :=\n  sorry\n\n\n\
+  theorem largest_order {n : Nat} {xs : List Int}\n  (h_nonempty : xs ≠ [])\n  (h_n_valid\
+  \ : n ≤ xs.length)\n  (i j : Nat) (h_i : i < n) (h_j : j < n) (h : i < j) :\n  let\
+  \ result := largest n xs\n  let i' : Fin result.length := ⟨i, by simp [largest_size\
+  \ h_nonempty h_n_valid, h_i]⟩\n  let j' : Fin result.length := ⟨j, by simp [largest_size\
+  \ h_nonempty h_n_valid, h_j]⟩\n  result.get i' ≥ result.get j' :=\n  sorry\n\n\n\
+  theorem largest_max_property {n : Nat} {xs : List Int}\n  (h_nonempty : xs ≠ [])\n\
+  \  (h_n_valid : n ≤ xs.length) :\n  ∀ x ∈ xs, x ∉ largest n xs → x ≤ (largest n\
+  \ xs).head! :=\n  sorry\n\n\ntheorem largest_full_list {xs : List Int}\n  (h_nonempty\
+  \ : xs ≠ []) :\n  largest xs.length xs = xs :=\n  sorry\n\n/--\ninfo: [6, 7]\n-/\n\
+  #guard_msgs in\n#eval largest 2 [7, 6, 5, 4, 3, 2, 1]\n\n/--\ninfo: [9, 10]\n-/\n\
+  #guard_msgs in\n#eval largest 2 [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\n\n/--\ninfo: [3,\
+  \ 4, 5]\n-/\n#guard_msgs in\n#eval largest 3 [1, 2, 3, 4, 5]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

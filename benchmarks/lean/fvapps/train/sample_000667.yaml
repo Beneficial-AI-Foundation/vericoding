@@ -1,0 +1,30 @@
+"vc-description": "Chef has been working in a restaurant which has  N  floors. He\
+  \ wants to minimize the time it takes him to go from the N-th floor to ground floor.\
+  \ He can either take the elevator or the stairs. \nThe stairs are at an angle of\
+  \ 45 degrees and Chef's velocity is V1 m/s when taking the stairs down. The elevator\
+  \ on the other hand moves with a velocity V2 m/s. Whenever an elevator is called,\
+  \ it always starts from ground floor and goes to N-th floor where it collects Chef\
+  \ (collecting takes no time), it then makes its way down to the ground floor with\
+  \ Chef in it.  \n\nThe elevator cross a total distance equal to N meters when going\
+  \ from N-th floor to ground floor or vice versa, while the length of the stairs\
+  \ is sqrt(2) * N because the stairs is at angle 45 degrees.\n\nChef has enlisted\
+  \ your help to decide whether he should use stairs or the elevator to minimize his\
+  \ travel time. Can you help him out?\n\n-----Input-----\nThe first line contains\
+  \ a single integer T, the number of test cases. Each test case is described by a\
+  \ single line containing three space-separated integers N, V1, V2. \n\n-----Output-----\n\
+  For each test case, output a single line with string Elevator or Stairs, denoting\
+  \ the answer to the problem.\n\n-----Constraints-----\n- 1 ≤ T ≤  1000 \n- 1 ≤ N,\
+  \ V1, V2 ≤  100 \n\n-----Example-----\nInput:\n3\n5 10 15\n2 10 14\n7 14 10\n\n\
+  Output:\nElevator\nStairs\nStairs"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_chef_transport (n v1 v2 : Nat) : String :=\n  sorry\n"
+"vc-theorems": "theorem solve_chef_transport_output_type (n v1 v2 : Nat) :\n  n >\
+  \ 0 → v1 > 0 → v2 > 0 →\n  solve_chef_transport n v1 v2 = \"Stairs\" ∨ \n  solve_chef_transport\
+  \ n v1 v2 = \"Elevator\" :=\nsorry\n\n\ntheorem solve_chef_transport_deterministic\
+  \ (n v1 v2 : Nat) :\n  n > 0 → v1 > 0 → v2 > 0 →\n  solve_chef_transport n v1 v2\
+  \ = solve_chef_transport n v1 v2 :=\nsorry\n\n/--\ninfo: 'Elevator'\n-/\n#guard_msgs\
+  \ in\n#eval solve_chef_transport 5 10 15\n\n/--\ninfo: 'Stairs'\n-/\n#guard_msgs\
+  \ in\n#eval solve_chef_transport 2 10 14\n\n/--\ninfo: 'Stairs'\n-/\n#guard_msgs\
+  \ in\n#eval solve_chef_transport 7 14 10\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

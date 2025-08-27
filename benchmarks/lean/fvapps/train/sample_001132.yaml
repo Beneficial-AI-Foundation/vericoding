@@ -1,0 +1,46 @@
+"vc-description": "Roger recently built a circular race track with length K$K$. After\
+  \ hosting a few races, he realised that people do not come there to see the race\
+  \ itself, they come to see racers crash into each other (what's wrong with our generation…).\
+  \ After this realisation, Roger decided to hold a different kind of \"races\": he\
+  \ hired N$N$ racers (numbered 1$1$ through N$N$) whose task is to crash into each\
+  \ other.\nAt the beginning, for each valid i$i$, the i$i$-th racer is Xi$X_i$ metres\
+  \ away from the starting point of the track (measured in the clockwise direction)\
+  \ and driving in the direction Di$D_i$ (clockwise or counterclockwise). All racers\
+  \ move with the constant speed 1$1$ metre per second. The lengths of cars are negligible,\
+  \ but the track is only wide enough for one car, so whenever two cars have the same\
+  \ position along the track, they crash into each other and the direction of movement\
+  \ of each of these cars changes (from clockwise to counterclockwise and vice versa).\
+  \ The cars do not change the directions of their movement otherwise.\nSince crashes\
+  \ reduce the lifetime of the racing cars, Roger sometimes wonders how many crashes\
+  \ happen. You should answer Q$Q$ queries. In each query, you are given an integer\
+  \ T$T$ and you should find the number of crashes that happen until T$T$ seconds\
+  \ have passed (inclusive).\n\n-----Input-----\n- The first line of the input contains\
+  \ three space-separated integers N$N$, Q$Q$ and K$K$.\n- N$N$ lines follow. For\
+  \ each i$i$ (1≤i≤N$1 \\le i \\le N$), the i$i$-th of these lines contains two space-separated\
+  \ integers Di$D_i$ and Xi$X_i$, where Di=1$D_i = 1$ and Di=2$D_i = 2$ denote the\
+  \ clockwise and counterclockwise directions respectively.\n- Each of the next Q$Q$\
+  \ lines contain a single integer T$T$ describing a query.\n\n-----Output-----\n\
+  For each query, print a single line containing one integer — the number of crashes.\n\
+  \n-----Constraints-----\n- 1≤N≤105$1 \\le N \\le 10^5$\n- 1≤Q≤1,000$1 \\le Q \\\
+  le 1,000$\n- 1≤K≤1012$1 \\le K \\le 10^{12}$\n- 1≤Di≤2$1 \\le D_i \\le 2$ for each\
+  \ valid i$i$\n- 0≤Xi≤K−1$0 \\le X_i \\le K - 1$ for each valid i$i$\n- X1,X2,…,XN$X_1,\
+  \ X_2, \\ldots, X_N$ are pairwise distinct\n- 0≤T≤1012$0 \\le T \\le 10^{12}$\n\n\
+  -----Example Input-----\n5 3 11\n1 3\n1 10\n2 4\n2 7\n2 0\n3\n8\n100\n\n-----Example\
+  \ Output-----\n4\n10\n110"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_crashes (N : Nat) (K : Nat) (directions : List Nat) \n\
+  \  (positions : List Nat) (queries : List Nat) : List Nat := sorry\n"
+"vc-theorems": "theorem multiple_queries_result_length {N K : Nat} {directions positions\
+  \ : List Nat} {queries : List Nat}\n  (h1 : N ≥ 2) (h2 : K ≥ 5)\n  (h3 : directions\
+  \ = [1, 2])\n  (h4 : positions = [0, K/2])\n  (h5 : queries.length ≥ 1)\n  : List.length\
+  \ (count_crashes N K directions positions queries) = List.length queries := sorry\n\
+  \n\ntheorem multiple_queries_result_natural {N K : Nat} {directions positions :\
+  \ List Nat} {queries : List Nat}\n  (h1 : N ≥ 2) (h2 : K ≥ 5)\n  (h3 : directions\
+  \ = [1, 2])\n  (h4 : positions = [0, K/2]) :\n  ∀ x ∈ count_crashes N K directions\
+  \ positions queries, x ≥ 0 := sorry\n\n\ntheorem crashes_monotonic_with_time {N\
+  \ K t : Nat} {directions positions : List Nat}\n  (h1 : N ≥ 2) (h2 : K ≥ 5) (h3\
+  \ : t > 0)\n  (h4 : directions = [1, 2])\n  (h5 : positions = [0, K/2]) :\n  (count_crashes\
+  \ N K directions positions [t]).head! ≥ \n  (count_crashes N K directions positions\
+  \ [t-1]).head! := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

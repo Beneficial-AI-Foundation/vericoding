@@ -1,0 +1,41 @@
+"vc-description": "We have a board with an H \\times W grid.\nEach square in the grid\
+  \ is painted in black or white. The square at the i-th row from the top and j-th\
+  \ column from the left is black if the j-th character in S_i is #, and white if\
+  \ that character is ..\nSnuke can perform the following operation on the grid any\
+  \ number of times:\n - Select a row or column in the grid, and invert the color\
+  \ of all the squares in that row or column (that is, black squares become white\
+  \ and vice versa).\nThen, Snuke draws a rectangle along grid lines. Here, all the\
+  \ squares contained in the rectangle must be painted in black.\nFind the maximum\
+  \ possible area of Snuke's rectangle when the operation is performed optimally.\n\
+  \n-----Constraints-----\n - 2 \\leq H \\leq 2000\n - 2 \\leq W \\leq 2000\n - |S_i|\
+  \ = W\n - S_i consists of # and ..\n\n-----Input-----\nInput is given from Standard\
+  \ Input in the following format:\nH W\nS_1\nS_2\n:\nS_H\n\n-----Output-----\nPrint\
+  \ the maximum possible area of Snuke's rectangle.\n\n-----Sample Input-----\n3 3\n\
+  ..#\n##.\n.#.\n\n-----Sample Output-----\n6\n\nIf the first row from the top and\
+  \ the third column from the left are inverted, a 2 \\times 3 rectangle can be drawn,\
+  \ as shown below:"
+"vc-preamble": "import Imports.AllImports\n\ndef toString (c : Char) : String := String.mk\
+  \ [c]\n\ndef mkString (n : Nat) (c : Char) : String := \n  String.mk (List.replicate\
+  \ n c)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_max_rectangle (h w : Nat) (grid : List String) : Nat\
+  \ := sorry\n\ntheorem solve_max_rectangle_dimensions {h w : Nat} (hge2 : h ≥ 2)\
+  \ (wge2 : w ≥ 2) \n    (grid : List String) (grid_all_dots : ∀ i < h, grid.get?\
+  \ i = some (mkString w '.')) :\n  let result := solve_max_rectangle h w grid\n \
+  \ result ≥ max h w ∧ result ≤ h * w := sorry\n"
+"vc-theorems": "theorem solve_max_rectangle_positive {h w : Nat} (hge2 : h ≥ 2) (wge2\
+  \ : w ≥ 2)\n    (grid : List String) (grid_valid : grid.length ≥ h ∧ ∀ row ∈ grid,\
+  \ row.length ≥ w) :\n  let grid' := (grid.take h).map (λ row => row.take w)\n  let\
+  \ result := solve_max_rectangle h w grid'\n  result > 0 ∧ (∃ n : Nat, result = n)\
+  \ := sorry\n\n\ntheorem solve_max_rectangle_identical_rows {n : Nat} (nge2 : n ≥\
+  \ 2) :\n  let grid := List.replicate n (mkString n '.')\n  solve_max_rectangle n\
+  \ n grid = n * n := sorry\n\n\ntheorem solve_max_rectangle_alternating_pattern {n\
+  \ : Nat} (nge2 : n ≥ 2) :\n  let grid := List.range n |>.map (λ i =>\n    List.range\
+  \ n |>.map (λ j => if (i + j) % 2 = 0 then '#' else '.') |>.asString)\n  solve_max_rectangle\
+  \ n n grid ≥ n := sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval solve_max_rectangle\
+  \ 3 3 [\"..#\", \"##.\", \".#.\"]\n\n/--\ninfo: 16\n-/\n#guard_msgs in\n#eval solve_max_rectangle\
+  \ 4 4 [\"....\", \"....\", \"....\", \"....\"]\n\n/--\ninfo: 27\n-/\n#guard_msgs\
+  \ in\n#eval solve_max_rectangle 10 8 [\"##...#.#\", \"##...#.#\", \"..###.#.\",\
+  \ \"#.##.#.#\", \".#..#.#.\", \"..##.#.#\", \"##.#.#..\", \"...#.#..\", \"###.#.##\"\
+  , \"###..###\"]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

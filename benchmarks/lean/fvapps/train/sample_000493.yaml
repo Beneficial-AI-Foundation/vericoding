@@ -1,0 +1,27 @@
+"vc-description": "You are given a string s that consists of lower case English letters\
+  \ and brackets. \nReverse the strings in each pair of matching parentheses, starting from\
+  \ the innermost one.\nYour result should not contain any brackets.\n \nExample 1:\n\
+  Input: s = \"(abcd)\"\nOutput: \"dcba\"\n\nExample 2:\nInput: s = \"(u(love)i)\"\
+  \nOutput: \"iloveu\"\nExplanation: The substring \"love\" is reversed first, then\
+  \ the whole string is reversed.\n\nExample 3:\nInput: s = \"(ed(et(oc))el)\"\nOutput:\
+  \ \"leetcode\"\nExplanation: First, we reverse the substring \"oc\", then \"etco\"\
+  , and finally, the whole string.\n\nExample 4:\nInput: s = \"a(bcdefghijkl(mno)p)q\"\
+  \nOutput: \"apmnolkjihgfedcbq\"\n\n \nConstraints:\n\n0 <= s.length <= 2000\ns only\
+  \ contains lower case English characters and parentheses.\nIt's guaranteed that\
+  \ all parentheses are balanced."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverse_parentheses (s : String) : String := sorry\n\ntheorem\
+  \ reverse_parentheses_length \n  (s : String) : \n  s.length = (reverse_parentheses\
+  \ s).length + s.data.count '(' + s.data.count ')' := \n  sorry\n"
+"vc-theorems": "theorem reverse_parentheses_no_parens\n  (s : String) :\n  ¬ ((reverse_parentheses\
+  \ s).contains '(') ∧ ¬ ((reverse_parentheses s).contains ')') :=\n  sorry\n\n\n\
+  theorem reverse_parentheses_empty_parens :\n  reverse_parentheses \"()\" = \"\"\
+  \ :=\n  sorry\n\n\ntheorem reverse_parentheses_identity_no_parens\n  (s : String)\
+  \ \n  (h : ¬ s.contains '(' ∧ ¬ s.contains ')') :\n  reverse_parentheses s = s :=\n\
+  \  sorry\n\n\ntheorem reverse_parentheses_empty_string :\n  reverse_parentheses\
+  \ \"\" = \"\" :=\n  sorry\n\n/--\ninfo: 'dcba'\n-/\n#guard_msgs in\n#eval reverse_parentheses\
+  \ \"(abcd)\"\n\n/--\ninfo: 'iloveu'\n-/\n#guard_msgs in\n#eval reverse_parentheses\
+  \ \"(u(love)i)\"\n\n/--\ninfo: 'apmnolkjihgfedcbq'\n-/\n#guard_msgs in\n#eval reverse_parentheses\
+  \ \"a(bcdefghijkl(mno)p)q\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

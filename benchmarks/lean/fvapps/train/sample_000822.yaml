@@ -1,0 +1,35 @@
+"vc-description": "You are given N integer sequences A1, A2, ..., AN. Each of these\
+  \ sequences contains N elements. You should pick N elements, one from each sequence;\
+  \ let's denote the element picked from sequence Ai by Ei. For each i (2 ≤ i ≤ N),\
+  \ Ei should be strictly greater than Ei-1.\nCompute the maximum possible value of\
+  \ E1 + E2 + ... + EN. If it's impossible to pick the elements E1, E2, ..., EN, print\
+  \ -1 instead.\n\n-----Input-----\n\n- The first line of the input contains a single\
+  \ integer T denoting the number of test cases. The description of T test cases follows.\n\
+  - The first line of each test case contains a single integer N.\n- N lines follow.\
+  \ For each valid i, the i-th of these lines contains N space-separated integers\
+  \ Ai1, Ai2, ..., AiN denoting the elements of the sequence Ai.\n\n-----Output-----\n\
+  For each test case, print a single line containing one integer — the maximum sum\
+  \ of picked elements.\n\n-----Constraints-----\n- 1 ≤ T ≤ 10\n- 1 ≤ N ≤ 700\n- 1\
+  \ ≤ sum of N in all test-cases ≤ 3700\n- 1 ≤ Aij ≤ 109 for each valid i, j\n\n-----Subtasks-----\n\
+  Subtask #1 (18 points): 1 ≤ Aij ≤ N for each valid i, j\nSubtask #2 (82 points):\
+  \ original constraints\n\n-----Example-----\nInput:\n\n1\n3\n1 2 3\n4 5 6\n7 8 9\n\
+  \nOutput:\n\n18\n\n-----Explanation-----\nExample case 1: To maximise the score,\
+  \ pick 3 from the first row, 6 from the second row and 9 from the third row. The\
+  \ resulting sum is E1+E2+E3 = 3+6+9 = 18."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_max_sequence_sum (n : Nat) (grid : List (List Int)) :\
+  \ Int :=\nsorry\n"
+"vc-theorems": "theorem output_validity {n : Nat} {grid : List (List Int)} \n  (h1\
+  \ : n > 0) (h2 : grid.length = n) \n  (h3 : ∀ row ∈ grid, row.length = n)\n  (h4\
+  \ : ∀ row ∈ grid, ∀ x ∈ row, -1000 ≤ x ∧ x ≤ 1000) :\n  let result := solve_max_sequence_sum\
+  \ n grid\n  if result ≠ -1 then\n    (∃ elements : List Int,\n      -- Result is\
+  \ sum of found elements\n      (∀ i, i < n → elements.length = n) ∧\n      -- Elements\
+  \ are strictly decreasing\n      (∀ i j, i < j → j < n → elements.get! i > elements.get!\
+  \ j) ∧\n      -- Each element comes from corresponding row\n      (∀ i, i < n →\
+  \ elements.get! i ∈ grid.get! i) ∧\n      -- Result doesn't exceed maximum possible\
+  \ sum\n      result = elements.foldl (. + .) 0)\n  else True :=\nsorry\n\n\ntheorem\
+  \ grid_immutability {n : Nat} {grid : List (List Int)}\n  (h1 : n > 0) (h2 : grid.length\
+  \ = n) \n  (h3 : ∀ row ∈ grid, row.length = n) :\n  let original := grid\n  let\
+  \ _ := solve_max_sequence_sum n grid\n  grid = original :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

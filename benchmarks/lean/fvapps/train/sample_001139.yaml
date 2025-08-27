@@ -1,0 +1,38 @@
+"vc-description": "Tonight, Chef would like to hold a party for his $N$ friends.\n\
+  All friends are invited and they arrive at the party one by one in an arbitrary\
+  \ order. However, they have certain conditions — for each valid $i$, when the $i$-th\
+  \ friend arrives at the party and sees that at that point, strictly less than $A_i$\
+  \ other people (excluding Chef) have joined the party, this friend leaves the party;\
+  \ otherwise, this friend joins the party.\nHelp Chef estimate how successful the\
+  \ party can be — find the maximum number of his friends who could join the party\
+  \ (for an optimal choice of the order of arrivals).\n\n-----Input-----\n- The first\
+  \ line of the input contains a single integer $T$ denoting the number of test cases.\
+  \ The description of $T$ test cases follows.\n- The first line of each test case\
+  \ contains a single integer $N$.\n- The second line contains $N$ space-separated\
+  \ integers $A_1, A_2, \\ldots, A_N$.\n\n-----Output-----\nFor each test case, print\
+  \ a single line containing one integer — the maximum number of Chef's friends who\
+  \ could join the party.\n\n-----Constraints-----\n- $1 \\le T \\le 1,000$\n- $1\
+  \ \\le N \\le 10^5$\n- the sum of $N$ over all test cases does not exceed $10^6$\n\
+  \n-----Example Input-----\n3\n2\n0 0\n6\n3 1 0 0 5 5\n3\n1 2 3\n\n-----Example Output-----\n\
+  2\n4\n0\n\n-----Explanation-----\nExample case 1: Chef has two friends. Both of\
+  \ them do not require anyone else to be at the party before they join, so they will\
+  \ both definitely join the party.\nExample case 2: At the beginning, friends $3$\
+  \ and $4$ can arrive and join the party, since they do not require anyone else to\
+  \ be at the party before they join. After that, friend $2$ can arrive; this friend\
+  \ would see that there are two people at the party and therefore also join. Then,\
+  \ friend $1$ will also join, so in the end, there would be $4$ people attending\
+  \ the party.\nExample case 3: No one will attend the party because each of Chef's\
+  \ friends will find zero people at the party and leave, regardless of the order\
+  \ in which they arrive."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_party_guests (n : Nat) (friends : List Nat) : Nat :=\
+  \ sorry\n\ntheorem solve_party_guests_non_negative (n : Nat) (friends : List Nat)\
+  \ :\n  n > 0 → solve_party_guests n friends ≥ 0 := sorry\n\n\n\n\n"
+"vc-theorems": "theorem solve_party_guests_monotonic (n : Nat) (friends : List Nat)\
+  \ (a : Nat) :\n  n > 0 → solve_party_guests (n + 1) (friends ++ [a]) ≥ solve_party_guests\
+  \ n friends := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve_party_guests\
+  \ 2 [0, 0]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve_party_guests 6 [3, 1,\
+  \ 0, 0, 5, 5]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval solve_party_guests 3 [1,\
+  \ 2, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,15 @@
+"vc-description": "Create a program that will return whether an input value is a str,\
+  \ int, float, or bool. Return the name of the value.\n\n### Examples\n- Input =\
+  \ 23 --> Output = int\n- Input = 2.3 --> Output = float\n- Input = \"Hello\" -->\
+  \ Output = str\n- Input = True --> Output = bool"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def types (x : α) : String := sorry\n\n/-- For any given value,\
+  \ the types function returns a string that should be consistent -/"
+"vc-theorems": "theorem types_matches_type_name {α : Type} (x : α) :\n  types x =\
+  \ types x := sorry\n\n/-- The types function is reflexive -/\n\ntheorem types_preserves_equality\
+  \ {α : Type} (x : α) :\n  types x = types x := sorry\n\n/--\ninfo: 'int'\n-/\n#guard_msgs\
+  \ in\n#eval types 23\n\n/--\ninfo: 'float'\n-/\n#guard_msgs in\n#eval types 2.3\n\
+  \n/--\ninfo: 'str'\n-/\n#guard_msgs in\n#eval types \"Hello\"\n\n/--\ninfo: 'bool'\n\
+  -/\n#guard_msgs in\n#eval types True\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

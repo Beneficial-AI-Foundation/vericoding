@@ -1,0 +1,38 @@
+"vc-description": "IIST is thinking of acquiring some land nearby to build its new\
+  \ state of the art labs. The land it has chosen incidentaly has some abandoned college\
+  \ buildings which IIST wants to use. The administration decide the value of the\
+  \ building based on the amount of work that has to be done to get it in shape (lower\
+  \ amount of work, higher value). The security experts want to tear down some of\
+  \ the buildings and use the bricks to build a boundary wall. \n\nThe director has\
+  \ chosen you to write a program which determines the buildings which needs to be\
+  \ demolished to maximise the value while fulfilling the above criterion. \n\nInput\
+  \ Format: \n\nThe first line contains the number of test cases, T.\n\nThe next T\
+  \ cases contains information about hypothetical plots.\n\nEach test case starts\
+  \ with a single integer n, 2 ≤ n ≤ 15, the number of abandoned buildings in the\
+  \ plot. The buildings are identified by consecutive integers 1 to n. Each of the\
+  \ subsequent lines contains 4 integers x_i , y_i , v_i , l_i that describe a single\
+  \ building. (x_i, y_i) is the position of the building in the plane, v_i is its\
+  \ value, and l_i is the length of boundary wall that can be built using the bricks\
+  \ from the building. v_i and l_i are between 0 and 10,000.\n\nOutput Format:\n\n\
+  For each test case, compute a subset of the buildings such that, using the bricks\
+  \ from the buildings from that subset, the remaining buildings can be enclosed in\
+  \ a single boundary. Find the subset with a minimum value. If more than one such\
+  \ minimum-value subset exists, choose one with the smallest number of buildings.\
+  \ \n\nDisplay, as shown below, the identity of each building to be demolished, and\
+  \ the length of the excess boundary (accurate to two fractional digits).\n\nSample\
+  \ Input:  \n\n2\n\n6\n\n0 0 8 3\n\n1 4 3 2\n\n2 1 7 1\n\n4 1 2 3\n\n3 5 4 6\n\n\
+  2 3 9 8\n\n3\n\n3 0 10 2\n\n5 5 20 25\n\n7 -3 30 32\n\nSample Output: \n\n2 4 5\n\
+  \n3.16\n\n2\n\n15.00"
+"vc-preamble": "import Imports.AllImports\n\ndef Building := Int × Int × Int × Int\n\
+  \ndef av (buildings : List Building) : Int :=\n  sorry\n\n\ndef val (buildings :\
+  \ List Building) : Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def diff (l1 l2 : List Building) : List Building :=\n  sorry\n"
+"vc-theorems": "theorem av_nonnegative (buildings : List Building) :\n  av buildings\
+  \ ≥ 0 := sorry\n\n\ntheorem val_nonnegative (buildings : List Building) :\n  val\
+  \ buildings ≥ 0 := sorry\n\n\ntheorem av_sum_fourth (buildings : List Building)\
+  \ :\n  av buildings = buildings.foldl (λ acc b => acc + b.2.2.2) 0 := sorry\n\n\n\
+  theorem val_sum_third (buildings : List Building) :\n  val buildings = buildings.foldl\
+  \ (λ acc b => acc + b.2.2.1) 0 := sorry\n\n\ntheorem diff_properties (l1 l2 : List\
+  \ Building) :\n  ∀ x ∈ diff l1 l2, x ∈ l1 ∧ x ∉ l2 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

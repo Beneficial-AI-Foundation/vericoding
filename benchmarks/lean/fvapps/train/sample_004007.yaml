@@ -1,0 +1,24 @@
+"vc-description": "# The museum of incredible dull things\n\nThe museum of incredible\
+  \ dull things wants to get rid of some exhibitions. Miriam, the interior architect,\
+  \ comes up with a plan to remove the most boring exhibitions. She gives them a rating,\
+  \ and then removes the one with the lowest rating.\n\nHowever, just as she finished\
+  \ rating all exhibitions, she's off to an important fair, so she asks you to write\
+  \ a program that tells her the ratings of the items after one removed the lowest\
+  \ one. Fair enough.\n\n# Task\n\nGiven an array of integers, remove the smallest\
+  \ value. **Do not mutate the original array/list**. If there are multiple elements\
+  \ with the same value, remove the one with a lower index. If you get an empty array/list,\
+  \ return an empty array/list.\n\nDon't change the order of the elements that are\
+  \ left.\n\n### Examples\n\n```python\nremove_smallest([1,2,3,4,5]) = [2,3,4,5]\n\
+  remove_smallest([5,3,2,1,4]) = [5,3,2,4]\nremove_smallest([2,2,1,2,1]) = [2,2,2,1]\n\
+  ```"
+"vc-preamble": "import Imports.AllImports\n\ndef remove_smallest (list : List Int)\
+  \ : List Int :=\n  sorry\n\n\ndef minimum (list : List Int) : Option Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_eq (l1 l2 : List Int) : Bool :=\n  sorry"
+"vc-theorems": "theorem remove_smallest_length (list : List Int) :\n  list = [] →\
+  \ remove_smallest list = [] ∧\n  list ≠ [] → List.length (remove_smallest list)\
+  \ = List.length list - 1 :=\nsorry\n\n\n\n\n/--\ninfo: [2, 3, 4, 5]\n-/\n#guard_msgs\
+  \ in\n#eval remove_smallest [1, 2, 3, 4, 5]\n\n/--\ninfo: [2, 2, 2, 1]\n-/\n#guard_msgs\
+  \ in\n#eval remove_smallest [2, 2, 1, 2, 1]\n\n/--\ninfo: []\n-/\n#guard_msgs in\n\
+  #eval remove_smallest []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

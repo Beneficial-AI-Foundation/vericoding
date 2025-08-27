@@ -1,0 +1,37 @@
+"vc-description": "Polycarpus works as a DJ in the best Berland nightclub, and he\
+  \ often uses dubstep music in his performance. Recently, he has decided to take\
+  \ a couple of old songs and make dubstep remixes from them.\n\nLet's assume that\
+  \ a song consists of some number of words (that don't contain WUB). To make the\
+  \ dubstep remix of this song, Polycarpus inserts a certain number of words \"WUB\"\
+  \ before the first word of the song (the number may be zero), after the last word\
+  \ (the number may be zero), and between words (at least one between any pair of\
+  \ neighbouring words), and then the boy glues together all the words, including\
+  \ \"WUB\", in one string and plays the song at the club.\n\nFor example, a song\
+  \ with words \"I AM X\" can transform into a dubstep remix as \"WUBWUBIWUBAMWUBWUBX\"\
+  \ and cannot transform into \"WUBWUBIAMWUBX\".\n\nRecently, Jonny has heard Polycarpus's\
+  \ new dubstep track, but since he isn't into modern music, he decided to find out\
+  \ what was the initial song that Polycarpus remixed. Help Jonny restore the original\
+  \ song.\n\n## Input\nThe input consists of a single non-empty string, consisting\
+  \ only of uppercase English letters, the string's length doesn't exceed 200 characters\n\
+  \n## Output\nReturn the words of the initial song that Polycarpus used to make a\
+  \ dubsteb remix. Separate the words with a space.\n\n## Examples\n\n```python\n\
+  song_decoder(\"WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB\")\n  # =>  WE\
+  \ ARE THE CHAMPIONS MY FRIEND\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef songDecoder (s : String) : String\
+  \ :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSubstring (sub str : String) : Bool :=\nsorry\n"
+"vc-theorems": "theorem no_wub_in_output (s : String) :\n  ¬isSubstring \"WUB\" (songDecoder\
+  \ s) :=\nsorry\n\n\ntheorem no_leading_trailing_spaces (s : String) :\n  ¬(songDecoder\
+  \ s).startsWith \" \" ∧ ¬(songDecoder s).endsWith \" \" :=\nsorry\n\n\ntheorem no_multiple_spaces\
+  \ (s : String) :\n  ¬isSubstring \"  \" (songDecoder s) :=\nsorry\n\n\ntheorem idempotent\
+  \ (s : String) :\n  songDecoder (songDecoder s) = songDecoder s :=\nsorry\n\n\n\
+  theorem output_properties (s : String) :\n  let result := songDecoder s\n  String.length\
+  \ result ≥ 0 ∧ \n  ¬isSubstring \"  \" result ∧\n  ¬result.startsWith \" \" ∧ \n\
+  \  ¬result.endsWith \" \" :=\nsorry\n\n/--\ninfo: 'WE ARE THE CHAMPIONS MY FRIEND'\n\
+  -/\n#guard_msgs in\n#eval song_decoder \"WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB\"\
+  \n\n/--\ninfo: 'A B C'\n-/\n#guard_msgs in\n#eval song_decoder \"AWUBBWUBC\"\n\n\
+  /--\ninfo: 'O IPVCQAFWY Q XHDKCPYKCTWWY V FZ'\n-/\n#guard_msgs in\n#eval song_decoder\
+  \ \"WUBWUBOWUBWUBWUBIPVCQAFWYWUBWUBWUBQWUBWUBWUBXHDKCPYKCTWWYWUBWUBWUBVWUBWUBWUBFZWUBWUB\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

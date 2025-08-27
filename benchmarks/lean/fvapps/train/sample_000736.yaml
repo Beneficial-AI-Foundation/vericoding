@@ -1,0 +1,29 @@
+"vc-description": "Akshay is interested in mathematics, one day he came across a problem\
+  \ of modulus operator.He has  a list of M integers say arr[M] and has to find all\
+  \ integers K such that :\n- K > 1\n- arr[1]%K = arr[2]%K = arr[3]%K = … = arr[M]%K\
+  \ where '%' is a modulus operator.\nHelp Akshay to find all such K's.\n\n-----Input:-----\n\
+  - First line of input contains an integer M. Then M lines follow each containing\
+  \ one integer of the list. Input data is such that at least one integer K will always\
+  \ exist.\n\n-----Output:-----\n- Output all possible integers K separated by space\
+  \ in increasing order.\n\n-----Constraints-----\n- 2<= M <=100\n- 1< value of each\
+  \ integer <109\n- All integers will be distinct\n\n-----Sample Input:-----\n3\n\
+  38\n6\n34\n\n-----Sample Output:-----\n2 4"
+"vc-preamble": "import Imports.AllImports\n\ndef List.minimum (l : List Nat) : Nat\
+  \ := \n  sorry\n\n\ndef List.sort (l: List Nat) : List Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_common_divisors (nums: List Nat) : List Nat :=\n  sorry\n"
+"vc-theorems": "theorem find_common_divisors_contains_prime_factors {nums: List Nat}\
+  \ \n  (h1: nums.length ≥ 2)\n  (h2: ∀ n ∈ nums, n ≥ 1 ∧ n ≤ 100) :\n  ∀ i: Nat,\
+  \ 2 ≤ i ∧ i ≤ List.minimum nums → \n  (∀ n ∈ nums, n % i = 0) →\n  (∀ j, 2 ≤ j ∧\
+  \ j < i → i % j ≠ 0) →\n  i ∈ find_common_divisors nums :=\nsorry\n\n\ntheorem find_common_divisors_sorted\
+  \ {nums: List Nat}\n  (h1: nums.length ≥ 2)\n  (h2: ∀ n ∈ nums, n ≥ 2 ∧ n ≤ 1000)\
+  \ :\n  find_common_divisors nums = List.sort (find_common_divisors nums) :=\nsorry\n\
+  \n\ntheorem find_common_divisors_greater_than_one {nums: List Nat}\n  (h1: nums.length\
+  \ ≥ 2)\n  (h2: ∀ n ∈ nums, n ≥ 2 ∧ n ≤ 1000) :\n  ∀ x ∈ find_common_divisors nums,\
+  \ x > 1 :=\nsorry\n\n\ntheorem find_common_divisors_bounded_by_min {nums: List Nat}\n\
+  \  (h1: nums.length ≥ 2)\n  (h2: ∀ n ∈ nums, n ≥ 2 ∧ n ≤ 1000) :\n  ∀ x ∈ find_common_divisors\
+  \ nums, x ≤ List.minimum nums :=\nsorry\n\n/--\ninfo: [2, 4]\n-/\n#guard_msgs in\n\
+  #eval find_common_divisors [38, 6, 34]\n\n/--\ninfo: [2, 3, 6]\n-/\n#guard_msgs\
+  \ in\n#eval find_common_divisors [12, 18, 24]\n\n/--\ninfo: [5]\n-/\n#guard_msgs\
+  \ in\n#eval find_common_divisors [10, 15, 20]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

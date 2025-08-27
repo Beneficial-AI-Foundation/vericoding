@@ -1,0 +1,33 @@
+"vc-description": "Chef has just started Programming, he is in first year of Engineering.\
+  \ Chef is reading about Relational Operators. \n\nRelational Operators are operators\
+  \ which check relatioship between two values. Given two numerical values A and B\
+  \ you need to help chef in finding the relationship between them that is, \n\n-\
+  \ First one is greater than second or,\n- First one is less than second or,\n- First\
+  \ and second one are equal.\n\n-----Input-----\nFirst line contains an integer T,\
+  \ which denotes the number of testcases. Each of the T lines contain two integers\
+  \ A and B. \n\n-----Output-----\nFor each line of input produce one line of output.\
+  \ This line contains any one of the relational operators\n\n'<' , '>' , '='.\n\n\
+  -----Constraints-----\n\n- 1 ≤ T ≤ 10000\n- 1 ≤ A, B ≤ 1000000001\n\n-----Example-----\n\
+  Input:\n3\n10 20\n20 10\n10 10\n\nOutput:\n<\n>\n=\n\n-----Explanation-----\nExample\
+  \ case 1. In this example 1 as 10 is lesser than 20."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_relation (a b : Int) : RelationType := sorry\n\ndef solve_multiple_testcases\
+  \ (cases : List (Int × Int)) : List RelationType := sorry\n"
+"vc-theorems": "theorem check_relation_valid (a b : Int) :\n  let r := check_relation\
+  \ a b\n  match r with\n  | RelationType.less => a < b\n  | RelationType.greater\
+  \ => a > b\n  | RelationType.equal => a = b\n  := sorry\n\n\ntheorem check_relation_total\
+  \ (a b : Int) :\n  let r := check_relation a b\n  (r = RelationType.less ∨ r = RelationType.greater\
+  \ ∨ r = RelationType.equal)\n  := sorry\n\n\ntheorem solve_multiple_testcases_valid\
+  \ (cases : List (Int × Int)) :\n  let results := solve_multiple_testcases cases\n\
+  \  (results.length = cases.length) ∧\n  (∀ i : Nat, i < results.length → \n    results[i]!\
+  \ = check_relation cases[i]!.1 cases[i]!.2)\n  := sorry\n\n\ntheorem check_relation_transitive\
+  \ (a b c : Int) :\n  (check_relation a b = RelationType.less ∧ check_relation b\
+  \ c = RelationType.less \n    → check_relation a c = RelationType.less) ∧\n  (check_relation\
+  \ a b = RelationType.greater ∧ check_relation b c = RelationType.greater\n    →\
+  \ check_relation a c = RelationType.greater)\n  := sorry\n\n/--\ninfo: ['<', '>',\
+  \ '=']\n-/\n#guard_msgs in\n#eval solve_multiple_testcases [(10, 20), (20, 10),\
+  \ (10, 10)]\n\n/--\ninfo: ['<']\n-/\n#guard_msgs in\n#eval solve_multiple_testcases\
+  \ [(5, 7)]\n\n/--\ninfo: ['=']\n-/\n#guard_msgs in\n#eval solve_multiple_testcases\
+  \ [(1000000000, 1000000000)]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

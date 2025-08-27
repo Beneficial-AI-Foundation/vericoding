@@ -1,0 +1,28 @@
+"vc-description": "Given a rooted binary tree, return the lowest common ancestor of\
+  \ its deepest leaves.\nRecall that:\n\nThe node of a binary tree is a leaf if and\
+  \ only if it has no children\nThe depth of the root of the tree is 0, and if the\
+  \ depth of a node is d, the depth of each of its children is d+1.\nThe lowest common\
+  \ ancestor of a set S of nodes is the node A with the largest depth such that every\
+  \ node in S is in the subtree with root A.\n\n \nExample 1:\nInput: root = [1,2,3]\n\
+  Output: [1,2,3]\nExplanation: \nThe deepest leaves are the nodes with values 2 and\
+  \ 3.\nThe lowest common ancestor of these leaves is the node with value 1.\nThe\
+  \ answer returned is a TreeNode object (not an array) with serialization \"[1,2,3]\"\
+  .\n\nExample 2:\nInput: root = [1,2,3,4]\nOutput: [4]\n\nExample 3:\nInput: root\
+  \ = [1,2,3,4,5]\nOutput: [2,4,5]\n\n \nConstraints:\n\nThe given tree will have\
+  \ between 1 and 1000 nodes.\nEach node of the tree will have a distinct value between\
+  \ 1 and 1000."
+"vc-preamble": "import Imports.AllImports\n\ndef build_tree (values : List Int) :\
+  \ Option TreeNode := sorry\ndef lcaDeepestLeaves (root : TreeNode) : TreeNode :=\
+  \ sorry\n\ndef get_depth (node : TreeNode) : Int := sorry\ndef get_leaves_at_depth\
+  \ (node : TreeNode) (target_depth : Int) (current_depth : Int := 0) : List TreeNode\
+  \ := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_node (node target : TreeNode) : Bool := sorry\n\ntheorem\
+  \ lca_deepest_leaves_in_tree (values : List Int) (tree : TreeNode) \n  (h1 : build_tree\
+  \ values = some tree) :\n  find_node tree (lcaDeepestLeaves tree) = true := sorry\n"
+"vc-theorems": "theorem lca_deepest_leaves_contains_all_deepest_leaves (values : List\
+  \ Int) (tree : TreeNode)\n  (h1 : build_tree values = some tree)\n  (max_depth :\
+  \ Int)\n  (h2 : max_depth = get_depth tree)\n  (deepest_leaves : List TreeNode)\
+  \ \n  (h3 : deepest_leaves = get_leaves_at_depth tree max_depth) :\n  ∀ leaf, leaf\
+  \ ∈ deepest_leaves → find_node (lcaDeepestLeaves tree) leaf = true := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

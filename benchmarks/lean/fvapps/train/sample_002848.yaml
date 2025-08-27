@@ -1,0 +1,34 @@
+"vc-description": "Everybody know that you passed to much time awake during night\
+  \ time...\n\nYour task here is to define how much coffee you need to stay awake\
+  \ after your night. \nYou will have to complete a function that take an array of\
+  \ events in arguments, according to this list you will return the number of coffee\
+  \ you need to stay awake during day time. **Note**: If the count exceed 3 please\
+  \ return 'You need extra sleep'.\n\nThe list of events can contain the following:\n\
+  \n- You come here, to solve some kata ('cw').\n\n- You have a dog or a cat that\
+  \ just decide to wake up too early ('dog' | 'cat').\n\n- You just watch a movie\
+  \ ('movie').\n\n- Other events can be present and it will be represent by arbitrary\
+  \ string, just ignore this one.\n\nEach event can be downcase/lowercase, or uppercase.\
+  \ If it is downcase/lowercase you need 1 coffee by events and if it is uppercase\
+  \ you need 2 coffees."
+"vc-preamble": "import Imports.AllImports\n\ndef ValidEvent : Type := String\n\ndef\
+  \ VALID_EVENTS : List ValidEvent := \n  [\"cw\", \"CW\", \"cat\", \"CAT\", \"dog\"\
+  , \"DOG\", \"movie\", \"MOVIE\"]\n  \n\ndef isValidEvent (event : String) : Bool\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def howMuchCoffee (events : List String) : Nat ⊕ String :=\n  sorry\n"
+"vc-theorems": "theorem invalid_events_ignored (events : List String) : \n  (∀ e ∈\
+  \ events, e ∉ VALID_EVENTS) → \n  howMuchCoffee events = .inl 0 :=\nsorry\n\n\n\
+  theorem valid_events (events : List String) :\n  (∀ e ∈ events, e ∈ VALID_EVENTS)\
+  \ →\n  let total := events.foldl (fun acc e => acc + if e.all Char.isUpper then\
+  \ 2 else 1) 0\n  if total > 3 \n  then howMuchCoffee events = .inr \"You need extra\
+  \ sleep\"\n  else howMuchCoffee events = .inl total :=\nsorry\n\n\ntheorem single_event_empty\
+  \ :\n  howMuchCoffee [] = .inl 0 :=\nsorry\n\n\ntheorem single_valid_event (event\
+  \ : String) :\n  event ∈ VALID_EVENTS →\n  howMuchCoffee [event] = .inl (if event.all\
+  \ Char.isUpper then 2 else 1) :=\nsorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ how_much_coffee []\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval how_much_coffee\
+  \ [\"cw\"]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval how_much_coffee [\"CW\"]\n\
+  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval how_much_coffee [\"cw\", \"CAT\"]\n\n\
+  /--\ninfo: 'You need extra sleep'\n-/\n#guard_msgs in\n#eval how_much_coffee [\"\
+  cw\", \"CAT\", \"DOG\"]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval how_much_coffee\
+  \ [\"cw\", \"CAT\", \"cw=others\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

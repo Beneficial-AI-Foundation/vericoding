@@ -1,0 +1,15 @@
+"vc-description": "Modify the spacify function so that it returns the given string\
+  \ with spaces inserted between each character.\n\n```python\nspacify(\"hello world\"\
+  ) # returns \"h e l l o   w o r l d\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def spacify (s : String) : String := sorry\n\ntheorem spacify_length\
+  \ (s : String) :\n  let result := spacify s\n  if s = \"\" then\n    result = \"\
+  \"\n  else\n    result.length = s.length * 2 - 1\n  := sorry\n"
+"vc-theorems": "theorem spacify_chars_preserved (s : String) :\n  String.join ((spacify\
+  \ s).splitOn \" \") = s := sorry\n\n\ntheorem spacify_spaces_between (s : String)\
+  \ (h : s.length > 1) :\n  ∀ i, i < (spacify s).length → \n  i % 2 = 1 → ((spacify\
+  \ s).data.get ⟨i, by sorry⟩) = ' ' := sorry\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n\
+  #eval spacify \"\"\n\n/--\ninfo: 'a'\n-/\n#guard_msgs in\n#eval spacify \"a\"\n\n\
+  /--\ninfo: 'P i p p i'\n-/\n#guard_msgs in\n#eval spacify \"Pippi\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

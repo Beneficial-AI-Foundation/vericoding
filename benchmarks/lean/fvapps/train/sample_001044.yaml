@@ -1,0 +1,53 @@
+"vc-description": "Chef recently printed directions from his home to a hot new restaurant\
+  \ across the town, but forgot to print the directions to get back home. Help Chef\
+  \ to transform the directions to get home from the restaurant.\nA set of directions\
+  \ consists of several instructions. The first instruction is of the form \"Begin\
+  \ on XXX\", indicating the street that the route begins on. Each subsequent instruction\
+  \ is of the form \"Left on XXX\" or \"Right on XXX\", indicating a turn onto the\
+  \ specified road.\nWhen reversing directions, all left turns become right turns\
+  \ and vice versa, and the order of roads and turns is reversed. See the sample input\
+  \ for examples.\n\n-----Input-----\nInput will begin with an integer T, the number\
+  \ of test cases that follow. Each test case begins with an integer N, the number\
+  \ of instructions in the route. N lines follow, each with exactly one instruction\
+  \ in the format described above.\n\n-----Output-----\nFor each test case, print\
+  \ the directions of the reversed route, one instruction per line. Print a blank\
+  \ line after each test case.\n\n-----Constraints-----\n- 1 ≤ T ≤ 15\n- 2 ≤ N ≤ 40\n\
+  - Each line in the input will contain at most 50 characters, will contain only alphanumeric\
+  \ characters and spaces and will not contain consecutive spaces nor trailing spaces.\
+  \ By alphanumeric characters we mean digits and letters of the English alphabet\
+  \ (lowercase and uppercase).\n\n-----Sample Input-----\n2\n4\nBegin on Road A\n\
+  Right on Road B\nRight on Road C\nLeft on Road D\n6\nBegin on Old Madras Road\n\
+  Left on Domlur Flyover\nLeft on 100 Feet Road\nRight on Sarjapur Road\nRight on\
+  \ Hosur Road\nRight on Ganapathi Temple Road\n\n-----Sample Output-----\nBegin on\
+  \ Road D\nRight on Road C\nLeft on Road B\nLeft on Road A\n\nBegin on Ganapathi\
+  \ Temple Road\nLeft on Hosur Road\nLeft on Sarjapur Road\nLeft on 100 Feet Road\n\
+  Right on Domlur Flyover\nRight on Old Madras Road\n\n-----Explanation-----\nIn the\
+  \ first test case, the destination lies on Road D, hence the reversed route begins\
+  \ on Road D. The final turn in the original route is turning left from Road C onto\
+  \ Road D. The reverse of this, turning right from Road D onto Road C, is the first\
+  \ turn in the reversed route."
+"vc-preamble": "import Imports.AllImports\n\ndef Road : Type := String\ndef Direction\
+  \ : Type := String\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverse_directions (directions : List Direction) : List Direction\
+  \ := sorry\n\ntheorem reverse_directions_length {directions : List Direction} :\n\
+  \  directions ≠ [] →\n  (reverse_directions directions).length = directions.length\n\
+  \  := sorry\n"
+"vc-theorems": "theorem reverse_directions_begin {directions : List Direction} :\n\
+  \  directions ≠ [] →\n  (reverse_directions directions).head?.map (String.startsWith\
+  \ · \"Begin\") = some true\n  := sorry\n\n\ntheorem reverse_directions_contains_substring\
+  \ {directions : List Direction} :\n  directions ≠ [] →\n  ∀ d ∈ reverse_directions\
+  \ directions, ∃ p, d.get ⟨p⟩ = 'o' ∧ d.get ⟨p+1⟩ = 'n'\n  := sorry\n\n\ntheorem\
+  \ reverse_directions_involution {directions : List Direction} :\n  directions ≠\
+  \ [] →\n  reverse_directions (reverse_directions directions) = directions\n  :=\
+  \ sorry\n\n\ntheorem reverse_directions_flips_turns {directions : List Direction}\
+  \ {d : Direction} :\n  directions ≠ [] →\n  d ∈ directions.tail →\n  String.startsWith\
+  \ d \"Left\" →\n  ∃ d' ∈ (reverse_directions directions).tail,\n    String.startsWith\
+  \ d' \"Right\"\n  := sorry\n\n\ntheorem reverse_directions_single :\n  reverse_directions\
+  \ [\"Begin on Road A\"] = [\"Begin on Road A\"]\n  := sorry\n\n/--\ninfo: expected1\n\
+  -/\n#guard_msgs in\n#eval reverse_directions [\"Begin on Road A\", \"Right on Road\
+  \ B\", \"Right on Road C\", \"Left on Road D\"]\n\n/--\ninfo: expected2\n-/\n#guard_msgs\
+  \ in\n#eval reverse_directions [\"Begin on Old Madras Road\", \"Left on Domlur Flyover\"\
+  , \"Left on 100 Feet Road\", \"Right on Sarjapur Road\", \"Right on Hosur Road\"\
+  , \"Right on Ganapathi Temple Road\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

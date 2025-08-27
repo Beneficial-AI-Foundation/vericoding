@@ -1,0 +1,36 @@
+"vc-description": "A simple string contains a large repetition of letters within it.\
+  \ This problem is related to string handling and manipulation.  An original message\
+  \ is sent from planet Earth to planet Cybertron in form of a string. However, the\
+  \ letter position and string size is not important. The number of time each letter\
+  \ has occurred in the string is important. So the original string which is sent\
+  \ to Cybertron is encrypted in the new string which comprises the letters followed\
+  \ by each time it has occurred in the original string. Eg- original message is-\
+  \ abcdabf. Then the encrypted string is- a2b2c1d1f1\n\n-----Input-----\nThe input\
+  \ consists of a single line string without any space or numeric or special characters.\n\
+  \n-----Output-----\nIt will consist of in the encrypted string which comprises the\
+  \ letters followed by each time it has occurred in the original string in order.\n\
+  \n-----Example-----\nInput:\ninformation\n\nOutput:\ni2n2f1o2r1m1a1t1"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def encrypt_message (s : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem encrypt_message_alternating_pattern (s : String) (h : ∀ c\
+  \ ∈ s.data, 97 ≤ c.val ∧ c.val ≤ 122) :\n  let result := encrypt_message s\n  ∀\
+  \ i < result.length - 1, i % 2 = 0 →\n    Option.isSome (result.data[i]?) ∧ \n \
+  \   (result.data[i]?.get!).isAlpha = true ∧\n    Option.isSome (result.data[i+1]?)\
+  \ ∧\n    (result.data[i+1]?.get!).isDigit = true\n  := sorry\n\n\ntheorem encrypt_message_accurate_counts\
+  \ (s : String) (h : ∀ c ∈ s.data, 97 ≤ c.val ∧ c.val ≤ 122) :\n  let result := encrypt_message\
+  \ s\n  ∀ c ∈ s.data,\n    let count := (s.data.filter (· = c)).length\n    ∃ i <\
+  \ result.length,\n      Option.isSome (result.data[i]?) ∧\n      result.data[i]?.get!\
+  \ = c ∧\n      Option.isSome (result.data[i+1]?) ∧\n      String.toNat? (toString\
+  \ (result.data[i+1]?.get!)) = some count\n  := sorry\n\n\ntheorem encrypt_message_preserves_order\
+  \ (s : String) (h : ∀ c ∈ s.data, 97 ≤ c.val ∧ c.val ≤ 122) :\n  let result := encrypt_message\
+  \ s\n  let input_first_occurrences := s.data.foldl (λ acc c => if c ∈ acc then acc\
+  \ else acc ++ [c]) []\n  let result_chars := List.filter (λ c => c.isAlpha) result.data\n\
+  \  input_first_occurrences = result_chars\n  := sorry\n\n\ntheorem encrypt_message_length\
+  \ (s : String) (h : s.length > 0) (h₂ : ∀ c ∈ s.data, 97 ≤ c.val ∧ c.val ≤ 122)\
+  \ :\n  (encrypt_message s).length = 2 * (s.data.eraseDups).length\n  := sorry\n\n\
+  \ntheorem encrypt_message_empty :\n  encrypt_message \"\" = \"\"\n  := sorry\n\n\
+  /--\ninfo: 'i2n2f1o2r1m1a1t1'\n-/\n#guard_msgs in\n#eval encrypt_message \"information\"\
+  \n\n/--\ninfo: 'a2b2c1d1f1'\n-/\n#guard_msgs in\n#eval encrypt_message \"abcdabf\"\
+  \n\n/--\ninfo: 'a3'\n-/\n#guard_msgs in\n#eval encrypt_message \"aaa\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,20 @@
+"vc-description": "A common problem in number theory is to find x given a such that:\n\
+  \na * x = 1 mod [n] \n\nThen x is called the inverse of a modulo n. \n\nYour goal\
+  \ is to code a function inverseMod wich take a and n as parameters and return x.\n\
+  \nYou may be interested by these pages:\n\nhttp://en.wikipedia.org/wiki/Modular_multiplicative_inverse\n\
+  \nhttp://en.wikipedia.org/wiki/Extended_Euclidean_algorithm\n\n\na and n should\
+  \ be co-prime to have a solution, if it is not the case, you should return None\
+  \ (Python), nil (Ruby) or null (Javascript). \n\na and n will be positive integers.\
+  \ The problem can easily be generalised to negative integer with some sign changes\
+  \ so we won't deal with them."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def egcd (a b : Int) : Int × Int × Int := sorry\n\ndef inverseMod\
+  \ (a m : Int) : Option Int := sorry\n"
+"vc-theorems": "theorem egcd_basic_properties {a b : Int} (h : ¬(a = 0 ∧ b = 0)) :\n\
+  \  let (g, x, y) := egcd (Int.natAbs a) (Int.natAbs b)\n  (Int.natAbs a) * x + (Int.natAbs\
+  \ b) * y = g ∧ \n  g > 0 ∧\n  (a ≠ 0 → Int.natAbs a % g = 0) ∧\n  (b ≠ 0 → Int.natAbs\
+  \ b % g = 0) := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval inverseMod 2 5\n\
+  \n/--\ninfo: 40\n-/\n#guard_msgs in\n#eval inverseMod 48 101\n\n/--\ninfo: 419\n\
+  -/\n#guard_msgs in\n#eval inverseMod 7 733\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

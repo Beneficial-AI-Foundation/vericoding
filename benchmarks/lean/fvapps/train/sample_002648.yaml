@@ -1,0 +1,32 @@
+"vc-description": "##Background - the Collatz Conjecture:\n\nImagine you are given\
+  \ a positive integer, `n`, then:\n\n* if `n` is even, calculate: `n / 2`\n* if `n`\
+  \ is odd, calculate: `3 * n + 1`\n\nRepeat until your answer is `1`. The Collatz\
+  \ conjecture states that performing this operation repeatedly, you will always eventually\
+  \ reach `1`.\n\nYou can try creating Collatz sequences with [this](http://www.codewars.com/kata/5286b2e162056fd0cb000c20)\
+  \ kata. For further information, see the [wiki page](https://en.wikipedia.org/wiki/Collatz_conjecture).\n\
+  \n##Now! Your task:\n\n**Given an array of positive integers, return the integer\
+  \ whose Collatz sequence is the longest.**\n\nExample:\n\n```python\nlongest_collatz([2,\
+  \ 4, 3])==3\n```\n\nExplanation: The Collatz sequence for `2` has a length of `1`,\
+  \ the sequence for `4` has a length of `2`, and the sequence for `3` has a length\
+  \ of `7`. So from our array, the integer `3` is the one with the longest Collatz\
+  \ sequence.\n\nHence, your function should return `3`.\n\n##Note:\n\nThere may be\
+  \ more than one answer, i.e. two or more integers produce the longest Collatz sequence,\
+  \ because they happen to have sequences of the same length. **In this case, your\
+  \ function should return the integer that appears first in the array.**\n\nExample:\n\
+  Given an array: `[2, 5, 32]`, both `5` and `32` have Collatz sequences of length\
+  \ 5. These are also the longest sequences from our array.\n\nIn this case, our function\
+  \ returns `5`, because `5` comes before `32` in our array."
+"vc-preamble": "import Imports.AllImports\n\ndef collatzLength (n : Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def longestCollatz (nums : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem longest_collatz_is_member {nums : List Nat} (h : nums ≠ [])\
+  \ :\n  ∀ n, n = longestCollatz nums → n ∈ nums :=\n  sorry\n\n\ntheorem longest_collatz_is_longest\
+  \ {nums : List Nat} (h : nums.length ≥ 2) :\n  ∀ n ∈ nums, n ≠ longestCollatz nums\
+  \ → \n    collatzLength (longestCollatz nums) ≥ collatzLength n :=\n  sorry\n\n\n\
+  theorem identical_numbers_gives_first (n : Nat) (l : List Nat) \n  (h : ∀ x ∈ l,\
+  \ x = n) :\n  longestCollatz l = n :=\n  sorry\n\n/--\ninfo: 27\n-/\n#guard_msgs\
+  \ in\n#eval longest_collatz [1, 5, 27, 4]\n\n/--\ninfo: 27\n-/\n#guard_msgs in\n\
+  #eval longest_collatz [64, 64, 27, 64]\n\n/--\ninfo: 75\n-/\n#guard_msgs in\n#eval\
+  \ longest_collatz [75, 226, 113, 340]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

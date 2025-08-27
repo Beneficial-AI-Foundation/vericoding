@@ -1,0 +1,54 @@
+"vc-description": "Given a wordlist, we want to implement a spellchecker that converts\
+  \ a query word into a correct word.\nFor a given query word, the spell checker handles\
+  \ two categories of spelling mistakes:\n\nCapitalization: If the query matches a\
+  \ word in the wordlist (case-insensitive), then the query word is returned with\
+  \ the same case as the case in the wordlist.\n\n        \nExample: wordlist = [\"\
+  yellow\"], query = \"YellOw\": correct = \"yellow\"\nExample: wordlist = [\"Yellow\"\
+  ], query = \"yellow\": correct = \"Yellow\"\nExample: wordlist = [\"yellow\"], query\
+  \ = \"yellow\": correct = \"yellow\"\n\n\nVowel Errors: If after replacing the vowels\
+  \ ('a', 'e', 'i', 'o', 'u') of the query word with any vowel individually, it matches\
+  \ a word in the wordlist (case-insensitive), then the query word is returned with\
+  \ the same case as the match in the wordlist.\n        \nExample: wordlist = [\"\
+  YellOw\"], query = \"yollow\": correct = \"YellOw\"\nExample: wordlist = [\"YellOw\"\
+  ], query = \"yeellow\": correct = \"\" (no match)\nExample: wordlist = [\"YellOw\"\
+  ], query = \"yllw\": correct = \"\" (no match)\n\n\n\nIn addition, the spell checker\
+  \ operates under the following precedence rules:\n\nWhen the query exactly matches\
+  \ a word in the wordlist (case-sensitive), you should return the same word back.\n\
+  When the query matches a word up to capitlization, you should return the first such\
+  \ match in the wordlist.\nWhen the query matches a word up to vowel errors, you\
+  \ should return the first such match in the wordlist.\nIf the query has no matches\
+  \ in the wordlist, you should return the empty string.\n\nGiven some queries, return\
+  \ a list of words answer, where answer[i] is the correct word for query = queries[i].\n\
+   \nExample 1:\nInput: wordlist = [\"KiTe\",\"kite\",\"hare\",\"Hare\"], queries\
+  \ = [\"kite\",\"Kite\",\"KiTe\",\"Hare\",\"HARE\",\"Hear\",\"hear\",\"keti\",\"\
+  keet\",\"keto\"]\nOutput: [\"kite\",\"KiTe\",\"KiTe\",\"Hare\",\"hare\",\"\",\"\"\
+  ,\"KiTe\",\"\",\"KiTe\"]\n \nNote:\n\n1 <= wordlist.length <= 5000\n1 <= queries.length\
+  \ <= 5000\n1 <= wordlist[i].length <= 7\n1 <= queries[i].length <= 7\nAll strings\
+  \ in wordlist and queries consist only of english letters."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def spellchecker (wordlist : List String) (queries : List String)\
+  \ : List String :=\n  sorry\n"
+"vc-theorems": "theorem spellchecker_output_length \n  (wordlist : List String) (queries\
+  \ : List String) :\n  List.length (spellchecker wordlist queries) = List.length\
+  \ queries :=\nsorry\n\n\ntheorem spellchecker_result_in_wordlist\n  (wordlist :\
+  \ List String) (queries : List String) :\n  ∀ r ∈ spellchecker wordlist queries,\
+  \ r = \"\" ∨ r ∈ wordlist :=\nsorry\n\n\ntheorem spellchecker_exact_match\n  (wordlist\
+  \ : List String) (queries : List String) :\n  ∀ (q : String), q ∈ queries → q ∈\
+  \ wordlist → \n  List.get! (spellchecker wordlist queries) (List.indexOf q queries)\
+  \ = q :=\nsorry\n\n\ntheorem spellchecker_case_insensitive\n  (wordlist : List String)\
+  \ (queries : List String) :\n  ∀ (q : String) (r : String),\n  q ∈ queries →\n \
+  \ r = List.get! (spellchecker wordlist queries) (List.indexOf q queries) →\n  r\
+  \ ≠ \"\" →\n  String.toLower r = String.toLower q →\n  r ∈ wordlist :=\nsorry\n\n\
+  \ntheorem spellchecker_self_query\n  (wordlist : List String) :\n  spellchecker\
+  \ wordlist wordlist = wordlist :=\nsorry\n\n\ntheorem spellchecker_vowel_patterns\n\
+  \  (wordlist : List String) (queries : List String) :\n  ∀ (q : String) (r : String),\n\
+  \  q ∈ queries →\n  r = List.get! (spellchecker wordlist queries) (List.indexOf\
+  \ q queries) →\n  r ≠ \"\" →\n  let q_pattern := (String.toLower q).replace \"a\"\
+  \ \"_\"\n                    |>.replace \"e\" \"_\"\n                    |>.replace\
+  \ \"i\" \"_\"\n                    |>.replace \"o\" \"_\"\n                    |>.replace\
+  \ \"u\" \"_\"\n  let r_pattern := (String.toLower r).replace \"a\" \"_\"\n     \
+  \               |>.replace \"e\" \"_\"\n                    |>.replace \"i\" \"\
+  _\"\n                    |>.replace \"o\" \"_\"\n                    |>.replace\
+  \ \"u\" \"_\"\n  q_pattern = r_pattern →\n  r ∈ wordlist :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

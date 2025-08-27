@@ -1,0 +1,19 @@
+"vc-description": "Given n number of people in a room, calculate the probability that\
+  \ any two people in that room have the same birthday (assume 365 days every year\
+  \ = ignore leap year). Answers should be two decimals unless whole (0 or 1) eg 0.05"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_probability (n : Int) : Float := sorry\n\ntheorem\
+  \ probability_bounds (n : Int) : \n  0 ≤ calculate_probability n ∧ calculate_probability\
+  \ n ≤ 1 := sorry\n"
+"vc-theorems": "theorem monotonic_increase {n1 n2 : Int} (h : n1 > n2) (h1 : n1 ≤\
+  \ 365) (h1b : 1 ≤ n1) (h2 : n2 ≤ 365) (h2b : 0 ≤ n2) :\n  calculate_probability\
+  \ n1 ≥ calculate_probability n2 := sorry\n\n\ntheorem zero_or_one_person (n : Int)\
+  \ (h : n ≤ 1) :\n  calculate_probability n = 0 := sorry\n\n\ntheorem over_365_people\
+  \ (n : Int) (h : n ≥ 366) :\n  calculate_probability n = 1 := sorry\n\n\ntheorem\
+  \ decimal_places_bound (n : Int) (h1 : 2 ≤ n) (h2 : n ≤ 365) :\n  ∃ k : Float, k\
+  \ = calculate_probability n ∧ k * 100 = Float.round (k * 100) := sorry\n\n/--\n\
+  info: 0.03\n-/\n#guard_msgs in\n#eval calculate_probability 5\n\n/--\ninfo: 0.25\n\
+  -/\n#guard_msgs in\n#eval calculate_probability 15\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval calculate_probability 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

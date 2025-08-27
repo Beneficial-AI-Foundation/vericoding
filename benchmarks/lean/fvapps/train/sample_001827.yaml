@@ -1,0 +1,20 @@
+"vc-description": "Given a complete binary tree, count the number of nodes.\n\nNote:\
+  \ \n\nDefinition of a complete binary tree from Wikipedia:\nIn a complete binary\
+  \ tree every level, except possibly the last, is completely filled, and all nodes\
+  \ in the last level are as far left as possible. It can have between 1 and 2h nodes\
+  \ inclusive at the last level h.\n\nExample:\n\n\nInput: \n    1\n   / \\\n  2 \
+  \  3\n / \\  /\n4  5 6\n\nOutput: 6"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def buildCompleteTree {α : Type} (values : List α) : BTree α :=\
+  \ sorry\n\ndef countCompleteTreeNodes {α : Type} (t : BTree α) : Nat := sorry\n"
+"vc-theorems": "theorem count_matches_input_size {α : Type} (values : List α) :\n\
+  \  countCompleteTreeNodes (buildCompleteTree values) = values.length := sorry\n\n\
+  \ntheorem perfect_tree_size (h : Nat) : \n  let t : BTree Nat := if h = 0 then BTree.leaf\
+  \ else buildCompleteTree (List.range (2^h - 1))\n  countCompleteTreeNodes t = if\
+  \ h = 0 then 0 else 2^h - 1 := sorry\n\n\ntheorem empty_tree_count {α : Type} :\n\
+  \  countCompleteTreeNodes (BTree.leaf : BTree α) = 0 := sorry\n\n/--\ninfo: 3\n\
+  -/\n#guard_msgs in\n#eval count_complete_tree_nodes TreeNode(1)\n\n/--\ninfo: 6\n\
+  -/\n#guard_msgs in\n#eval count_complete_tree_nodes TreeNode(1)\n\n/--\ninfo: 1\n\
+  -/\n#guard_msgs in\n#eval count_complete_tree_nodes TreeNode(1)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

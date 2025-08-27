@@ -1,0 +1,29 @@
+"vc-description": "Create a function that will return true if all numbers in the sequence\
+  \ follow the same counting pattern. If the sequence of numbers does not follow the\
+  \ same pattern, the function should return false.\n\nSequences will be presented\
+  \ in an array of varied length. Each array will have a minimum of 3 numbers in it.\n\
+  \nThe sequences are all simple and will not step up in varying increments such as\
+  \ a Fibonacci sequence.\n\nJavaScript examples:"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def validate_sequence (seq: List Int) : Bool := sorry\n\ntheorem\
+  \ too_short_sequences_invalid (seq: List Int) :\n  seq.length ≤ 2 → validate_sequence\
+  \ seq = false := sorry\n"
+"vc-theorems": "theorem arithmetic_sequences_valid\n    (start diff: Int) (length:\
+  \ Nat) (h: 0 < length) (h': length ≤ 100) :\n  let seq := (List.range (length +\
+  \ 3)).map (fun i => start + (Int.ofNat i) * diff)\n  validate_sequence seq = true\
+  \ := sorry\n\n\ntheorem breaking_arithmetic_pattern_invalidates\n    (seq: List\
+  \ Int) (position: Nat) (h: 3 ≤ seq.length) (h': 0 < position) :\n  validate_sequence\
+  \ seq = true →\n  let position' := position % (seq.length - 1)\n  let position''\
+  \ := if position' = 0 then 1 else position'\n  let modified_seq := seq.set position''\
+  \ (seq.get! position'' + 1)\n  validate_sequence modified_seq = false := sorry\n\
+  \n\ntheorem common_difference_property (start diff: Int) (length: Nat)\n    (h:\
+  \ 3 ≤ length) (h': length ≤ 100) :\n  let seq := (List.range length).map (fun i\
+  \ => start + (Int.ofNat i) * diff)\n  validate_sequence seq = true →\n  let diffs\
+  \ := (List.range (length - 1)).map (fun i => seq.get! (i+1) - seq.get! i)\n  ∀ i,\
+  \ i < diffs.length → diffs.get! i = diffs.get! 0 := sorry\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval validate_sequence [1, 2, 3, 4, 5, 8, 7, 8, 9]\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval validate_sequence [1, 2, 3, 4, 5, 6, 7, 8,\
+  \ 9]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval validate_sequence [1, 3, 5, 7,\
+  \ 9, 11, 13, 15]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

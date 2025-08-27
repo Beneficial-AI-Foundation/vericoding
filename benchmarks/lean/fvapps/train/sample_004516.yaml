@@ -1,0 +1,37 @@
+"vc-description": "Given a list of prime factors, ```primesL```, and an integer, ```limit```,\
+  \ try to generate in order, all the numbers less than the value of ```limit```,\
+  \ that have **all and only** the prime factors of ```primesL```\n\n## Example\n\
+  ```python\nprimesL = [2, 5, 7]\nlimit = 500\nList of Numbers Under 500         \
+  \ Prime Factorization\n___________________________________________________________\n\
+  \           70                         [2, 5, 7]\n          140                \
+  \         [2, 2, 5, 7]\n          280                         [2, 2, 2, 5, 7]\n\
+  \          350                         [2, 5, 5, 7]\n          490             \
+  \            [2, 5, 7, 7]\n```\n\nThere are ```5``` of these numbers under ```500```\
+  \ and the largest one is ```490```.\n\n## Task\n\nFor this kata you have to create\
+  \ the function ```count_find_num()```, that accepts two arguments: ```primesL```\
+  \ and ```limit```, and returns the amount of numbers that fulfill the requirements,\
+  \ and the largest number under `limit`.\n\nThe example given above will be:\n```python\n\
+  primesL = [2, 5, 7]\nlimit = 500\ncount_find_num(primesL, val) == [5, 490]\n```\n\
+  \nIf no numbers can be generated under `limit` then return an empty list:\n```python\n\
+  primesL = [2, 3, 47]\nlimit = 200\nfind_nums(primesL, limit) == []\n```\n\nThe result\
+  \ should consider the limit as inclusive:\n```python\nprimesL = [2, 3, 47]\nlimit\
+  \ = 282\nfind_nums(primesL, limit) == [1, 282]\n```\n\nFeatures of the random tests:\n\
+  ```\nnumber of tests = 200\n2 <= length_primesL <= 6 // length of the given prime\
+  \ factors array\n5000 <= limit <= 1e17\n2 <= prime <= 499  // for every prime in\
+  \ primesL\n```\n\nEnjoy!"
+"vc-preamble": "import Imports.AllImports\n\ndef List.prod : List Nat → Nat \n  |\
+  \ [] => 1\n  | x :: xs => x * List.prod xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_find_num (primes: List Nat) (limit: Nat) : Option (Nat\
+  \ × Nat) := sorry\n\ntheorem count_find_num_basic_props {primes: List Nat} {limit:\
+  \ Nat} :\n  match count_find_num primes limit with\n  | none => ∀ p ∈ primes, p\
+  \ ≥ 2 → (List.prod primes > limit) \n  | some (count, max_val) => \n      (∀ p ∈\
+  \ primes, p ≥ 2) →\n      List.prod primes ≤ limit ∧ \n      max_val ≤ limit ∧\n\
+  \      count ≥ 1 ∧\n      max_val ≥ List.prod primes\n  := sorry\n"
+"vc-theorems": "theorem count_find_num_divisible {primes: List Nat} {limit: Nat} :\n\
+  \  match count_find_num primes limit with\n  | none => True\n  | some (count, max_val)\
+  \ =>\n      ∀ p ∈ primes, max_val % p = 0\n  := sorry\n\n\ntheorem count_find_num_edge_cases_1\
+  \ :\n  count_find_num [2] 1 = none := sorry\n\n\ntheorem count_find_num_edge_cases_2\
+  \ :\n  count_find_num [2] 2 = some (1, 2) := sorry\n\n\ntheorem count_find_num_edge_cases_3\
+  \ :\n  count_find_num [2, 3] 5 = none := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

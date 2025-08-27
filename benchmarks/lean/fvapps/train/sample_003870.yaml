@@ -1,0 +1,25 @@
+"vc-description": "Baby is getting his frst tooth. This means more sleepless nights,\
+  \ but with the fun of feeling round his gums and trying to guess which will be first\
+  \ out! \n\nProbably best have a sweepstake with your friends - because you have\
+  \ the best chance of knowing. You can feel the gums and see where the raised bits\
+  \ are - most raised, most likely tooth to come through first!\n\nGiven an array\
+  \ of numbers (t) to represent baby's gums, you need to return the index of the lump\
+  \ that is most pronounced. \n\nThe most pronounced lump is the one that has the\
+  \ biggest differential to its surrounding values. e.g.:\n\n```\n[1, 2, 4] = 2\n\n\
+  index 0 has a differential of -1 to its right (it is lower so the figure is negative)\n\
+  \nindex 1 has a differential of +1 to its left, and -2 to its right. Total is -1.\n\
+  \nindex 2 has a differential of +2 to its left, and nothing to its right, \n```\n\
+  \nIf there is no distinct highest value (more than one occurence of the largest\
+  \ differential), return -1."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def first_tooth (lst : List Int) : Int := sorry\n\ntheorem first_tooth_output_range\
+  \ {lst : List Int} (h : lst.length ≥ 2) :\n  let result := first_tooth lst\n  result\
+  \ = -1 ∨ (0 ≤ result ∧ result < lst.length) := sorry\n"
+"vc-theorems": "theorem constant_list_gives_negative_one {lst : List Int} (h : lst.length\
+  \ ≥ 2) :\n  let val := lst.get ⟨0, sorry⟩\n  let constant_list := List.replicate\
+  \ lst.length val\n  first_tooth constant_list = -1 := sorry\n\n/--\ninfo: 3\n-/\n\
+  #guard_msgs in\n#eval first_tooth [1, 2, 3, 4]\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval first_tooth [1, 2, 6, 4]\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval\
+  \ first_tooth [1, 1, 1, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,31 @@
+"vc-description": "Given the root of a binary tree, each node has a value from 0 to\
+  \ 25 representing the letters 'a' to 'z': a value of 0 represents 'a', a value of\
+  \ 1 represents 'b', and so on.\nFind the lexicographically smallest string that\
+  \ starts at a leaf of this tree and ends at the root.\n(As a reminder, any shorter\
+  \ prefix of a string is lexicographically smaller: for example, \"ab\" is lexicographically\
+  \ smaller than \"aba\".  A leaf of a node is a node that has no children.)\n\n\n\
+   \n\n\n\n\n\nExample 1:\n\nInput: [0,1,2,3,4,3,4]\nOutput: \"dba\"\n\n\nExample\
+  \ 2:\n\nInput: [25,1,3,1,3,0,2]\nOutput: \"adz\"\n\n\nExample 3:\n\nInput: [2,2,1,null,1,0,null,0]\n\
+  Output: \"abc\"\n\n \nNote:\n\nThe number of nodes in the given tree will be between\
+  \ 1 and 8500.\nEach node in the tree will have a value between 0 and 25."
+"vc-preamble": "import Imports.AllImports\n\ndef smallestFromLeaf : TreeNode → String\
+  \ := sorry\n\ntheorem smallestFromLeaf_returns_nonempty (root : TreeNode) :\n  let\
+  \ result := smallestFromLeaf root\n  result.length > 0 := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isTreeOfSize : TreeNode → Nat → Prop \n  | TreeNode.mk _ none\
+  \ none, n => n = 1\n  | TreeNode.mk _ (some l) none, n => ∃ m, isTreeOfSize l m\
+  \ ∧ n = m + 1\n  | TreeNode.mk _ none (some r), n => ∃ m, isTreeOfSize r m ∧ n =\
+  \ m + 1\n  | TreeNode.mk _ (some l) (some r), n => \n    ∃ m₁ m₂, isTreeOfSize l\
+  \ m₁ ∧ isTreeOfSize r m₂ ∧ n = m₁ + m₂ + 1\n"
+"vc-theorems": "theorem smallestFromLeaf_returns_lowercase_chars (root : TreeNode)\
+  \ :\n  let result := smallestFromLeaf root\n  ∀ c ∈ result.data, 'a' ≤ c ∧ c ≤ 'z'\
+  \ := sorry\n\n\ntheorem smallestFromLeaf_length_bounded_by_tree_size (root : TreeNode)\
+  \ (size : Nat) :\n  let result := smallestFromLeaf root\n  isTreeOfSize root size\
+  \ → result.length ≤ size := sorry\n\n\ntheorem single_node_returns_a :\n  let root\
+  \ := TreeNode.mk 0 none none\n  smallestFromLeaf root = \"a\" := sorry\n\n\ntheorem\
+  \ equal_children_equal_result :\n  let root := TreeNode.mk 0 (some (TreeNode.mk\
+  \ 1 none none)) (some (TreeNode.mk 1 none none))\n  smallestFromLeaf root = \"ba\"\
+  \ := sorry\n\n/--\ninfo: 'dba'\n-/\n#guard_msgs in\n#eval smallestFromLeaf TreeNode(0)\n\
+  \n/--\ninfo: 'adz'\n-/\n#guard_msgs in\n#eval smallestFromLeaf TreeNode(25)\n\n\
+  /--\ninfo: 'abc'\n-/\n#guard_msgs in\n#eval smallestFromLeaf TreeNode(2)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

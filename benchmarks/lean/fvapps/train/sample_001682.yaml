@@ -1,0 +1,102 @@
+"vc-description": "“\"Forward!\", he cried from the rear\nAnd the front rank died\n\
+  The general sat and the lines on the map\nMoved from side to side”Us and Them --\
+  \ Pink Floyd\nA few army battalions from warring nations have met on an even battlefield.\
+  \ Each nation has one battalion present and all battalions have an equal number\
+  \ of soldiers. Every soldier is armed with one rifle and unlimited ammunition. Every\
+  \ soldier also has perfect shooting accuracy. And all armies follow the rules of\
+  \ engagement below.\nRules of Engagement\n1. Each army battalion forms its own straight\
+  \ line queue\n2. Each line is formed such that the head of each queue faces the\
+  \ head of the opposing army queue to its left (or when there are only two remaining\
+  \ armies, both queues face toward each other)\n3. All queue heads maintain equal\
+  \ distance from their respective targets\n4. There is a 1 second delay for each\
+  \ queue head to fire his weapon (time taken to lift weapon, aim, then fire)\n5.\
+  \ If a queue head gets hit by any bullets during that 1 second delay (including\
+  \ at the exact moment the head is expected to shoot), he falls before he can fire\
+  \ his rifle. Otherwise, he shoots his rifle and immediately walks back to the end\
+  \ of his queue.\nNote that the head will receive all bullets that reach his position\
+  \ during that round.\n6. The next soldier in queue then takes his place as head\
+  \ at the start of the next round. If there is only one soldier remaining in a queue,\
+  \ he will stand in place and shoot his rifle every round until he falls or emerges\
+  \ victorious\n7. An army is eliminated when all its soldiers have fallen. When an\
+  \ elimination occurs, the eliminator changes their target to the next army queue\
+  \ in sequence at the start of the next round.\n\n8.A. If an elimination occurs during\
+  \ the round, then all remaining armies reposition themselves at the start of the\
+  \ next round and repeat the cycle from step 2. All bullets still in flight at the\
+  \ end of the round will miss all their targets when the repositioning occurs.\n\n\
+  8.B If no elimination occurs in the round, start again from step 4.\n\nThe Rules\
+  \ of Engagement are followed until there are 0 or 1 surviving armies.\nEach round\
+  \ (i.e. queue shift) has a one second duration and the heads of each queue shoot\
+  \ at the same time\nWeapons\n\nAll nations purchase their munitions from the same\
+  \ supplier, Discount Rifles and Bullets, Inc. (aka DRABI)\nAll DRABI rifles have\
+  \ perfect firing accuracy. However, because many different machines are used to\
+  \ manufacture the rifles, rifles may or may not have different bullet speeds.\n\n\
+  You have a master list of bullet speeds for each rifle and you also know the initial\
+  \ arrangement of all queues in battle. With those resources, you seek to find out\
+  \ which, if any, army survives.\n\nInput\n\nYour function will receive anywhere\
+  \ from `3` to `9` arguments:\n- The first argument will always be positive integer\
+  \ representing the `distance` between each queue head and his target\n- Any additional\
+  \ arguments will each be given as an array/tuple of positive integers; these arrays\
+  \ each represent an army battalion. Each `i`th value in a given array represents\
+  \ the bullet speed for the `i`th soldier's rifle in that battalion's queue. The\
+  \ bullet speed is measured as `distance / second`.\n\nOutput\nReturn the number\
+  \ of the surviving army, given as its argument position.\nAlso return an array/tuple\
+  \ of that army's surviving soldiers, by index position from its original list. This\
+  \ list should be sorted in queue order, starting with the queue head at time of\
+  \ victory.\nIf all battalions are wiped out and there are no survivors, return -1\
+  \ and an empty array/tuple.\nTest Example\n\n\nThe image above references the example\
+  \ given below.\nIn our example, we are given `3` armies that form their respective\
+  \ queues. Each head (green pointed indicators) faces and fires at the opponent head\
+  \ to the left.\nIn the tests, each queue head shoots at the head of the next queue\
+  \ that follows, and completes the loop with the last queue shooting at the first.\n\
+  \nThe image below represents the queues after army `C` is eliminated. Note they\
+  \ change formation and face each other while always maintaining the same distance.\n\
+  \n\n\n```python\n# in Python the first argument is given as a positive int\n# subsequent\
+  \ arguments are given as tuples of positive ints\nA = (98,112,121,95,63)\nB = (120,94,90,88,30)\n\
+  C = (116,144,45,200,32)\n\n# the function should return a tuple of two elements:\
+  \ an integer and a tuple of integers\n# In our example, the first army emerges as\
+  \ the sole survivor, and the remaining queue for that army consists of only the\
+  \ 3rd soldier\nqueue_battle(300,A,B,C) # returns the tuple (0,(2,))\n```\n\n\nClick\
+  \ here for a step-by-step of the first four rounds of our example test\n\nWe'll\
+  \ refer to units of distance as DU (distance units)\nRound 1\nAfter initial 1 second\
+  \ delay, each queue head fires, then goes to the back of their respective queue.\n\
+  \nRound 2\nThe next soldier for each queue fires their weapon after a 1 second delay.\
+  \ At the moment each soldier fires, there are already 3 bullets in flight:\n- Bullet\
+  \ 0: traveling at 98 DU per second, it has already traveled for 1 second and is\
+  \ now 202 DU away from its target (the head of queue B)\n- Bullet 1: traveling at\
+  \ 120 DU per second, it is 180 DU away from its target.\n- Bullet 2: traveling at\
+  \ 116 DU per second, it is 184 DU away from its target.\n\nRound 3\nAt the moment\
+  \ when the next queue heads fire, there are 6 bullets in flight (not including the\
+  \ bullets fired this round).\nThe 1st round of bullets have now traveled 196, 240,\
+  \ and 232 DU, respectively.\nThe 2nd round of bullets have traveled 112, 94, and\
+  \ 144 DU, respectively.\nRound 4\nFirst blood is drawn during this round.\nBefore\
+  \ the head of queue C can fire, he is hit by the first bullet shot by queue B. The\
+  \ head of queue A is also shot before he can fire.\nThe only head that fires his\
+  \ rifle is from queue B.\nAt this point, there are 7 bullets in flight, excluding\
+  \ the bullet shot this round.\nThe first bullet shot by queue A has now traveled\
+  \ 294 DU, and is therefore 6 DU away from its target. It will reach its target in\
+  \ round 5, before the queue head can fire.\n\n\n\nIn our example, we saw the new\
+  \ positioning when going from 3 to 2 queues. Other tests will have a random number\
+  \ of queues (up to a max of 8).\nThe following diagrams serve as a visual guide\
+  \ to show other battle positions formed depending on the number of active queues.\n\
+  \n\nTechnical Details\n\n- All tests will be valid\n- Test constraints:\n      \
+  \  - `2 <= number of queues <= 8`\n        - `8 <= bullet speed < 2e6`\n       \
+  \ - `80 <= distance < 1e6`\n        - `bullet speed >= distance/10`\n        - `5\
+  \ <= queue length < 2000`\n- Use Python 3.6+ for the Python translation\n- In JavaScript,\
+  \ `module` and `require` are disabled\n- Full Test Suite: `10` fixed tests and `150`\
+  \ random tests\n\nIf you enjoyed this kata, be sure to check out my other katas"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def queueBattle (distance : Nat) (armies : List (List Nat)) : (Int\
+  \ × List Nat) :=\n  sorry\n"
+"vc-theorems": "theorem queue_battle_result_format\n    {d : Nat}\n    {armies : List\
+  \ (List Nat)}\n    (h1 : d > 0)\n    (h2 : armies.length ≥ 2)\n    (h3 : ∀ army\
+  \ ∈ armies, army.length > 0)\n    (h4 : ∀ army ∈ armies, ∀ speed ∈ army, speed >\
+  \ 0) :\n    let result := queueBattle d armies\n    let winner_id := result.fst\n\
+  \    let survivors := result.snd\n    (winner_id = -1 ∨ (0 ≤ winner_id ∧ winner_id\
+  \ < armies.length)) ∧\n    (winner_id = -1 → survivors = []) ∧\n    (winner_id ≠\
+  \ -1 → survivors.length > 0 ∧ \n      ∀ s ∈ survivors, s < (armies.get! winner_id.toNat).length)\
+  \ :=\n  sorry\n\n\ntheorem identical_armies_properties\n    {d : Nat}\n    {army\
+  \ : List Nat}\n    (h1 : d > 0)\n    (h2 : army.length > 0)\n    (h3 : ∀ speed ∈\
+  \ army, speed > 0) :  \n    let result := queueBattle d [army, army]\n    let winner_id\
+  \ := result.fst\n    winner_id = -1 ∨ winner_id = 0 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

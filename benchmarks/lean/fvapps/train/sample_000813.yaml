@@ -1,0 +1,41 @@
+"vc-description": "Galileo's latest project involves determining the density of stars\
+  \ in certain regions of the sky. For this purpose he started looking for datasets\
+  \ online, and discovered a dataset on Newton's blog. Newton had decomposed the night\
+  \ sky into a Voronoi tessellation with the generators arranged in a grid. He has\
+  \ stored the number of stars in a Voronoi cell at a position in a matrix that corresponds\
+  \ to the position of the generator in the grid.\nThis dataset does not directly\
+  \ help Galileo, because he needs to be able to query the number of stars in a rectangular\
+  \ portion of the sky. Galileo tried to write a program that does this on his own,\
+  \ but it turned out to be too slow. Can you help him?\n\n-----Input Format-----\n\
+  The first line contains two integers n and m that denote the height and width of\
+  \ the matrix respectively. This is followed by  n lines each containing m integers\
+  \ each.\nThe line following this would contain a single integer t, the number of\
+  \ queries to be run. Each query line consists of 4 integers px, py, qx, qy. The\
+  \ first two integers denote the row and column numbers of the upper left corner\
+  \ of the rectangular region, and the second pair of numbers correspond to the lower\
+  \ right corner.\n\n-----Output Format-----\nFor each query output a single line\
+  \ containing the number of stars in that rectangular region.\n\n-----Example-----\n\
+  Input:\n\n3 3\n10 10 10\n10 10 10\n10 10 10\n4\n1 1 1 1\n1 1 3 3\n2 1 3 3\n3 1 3\
+  \ 3\n\nOutput:\n\n10\n90\n60\n30"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_stars_in_region (grid : List (List Nat)) (x1 y1 x2 y2\
+  \ : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem grid_generation_full_sum (n m : Nat) (h1 : 1 ≤ n ∧ n ≤ 10)\
+  \ (h2 : 1 ≤ m ∧ m ≤ 10) :\n  let grid := List.replicate n (List.replicate m 0)\n\
+  \  count_stars_in_region grid 1 1 n m = 0 :=\n  sorry\n\n\ntheorem grid_generation_single_points\
+  \ (n m : Nat) (h1 : 1 ≤ n ∧ n ≤ 10) (h2 : 1 ≤ m ∧ m ≤ 10) :\n  let grid := List.replicate\
+  \ n (List.replicate m 0)\n  ∀ i j, 1 ≤ i ∧ i ≤ n → 1 ≤ j ∧ j ≤ m → \n    count_stars_in_region\
+  \ grid i j i j = 0 :=\n  sorry\n\n\ntheorem count_stars_single_point (grid : List\
+  \ (List Nat)) (x y : Nat)\n  (h1 : grid.length = 3) \n  (h2 : ∀ row ∈ grid, row.length\
+  \ = 3)\n  (h3 : 1 ≤ x ∧ x ≤ 3)\n  (h4 : 1 ≤ y ∧ y ≤ 3) :\n  count_stars_in_region\
+  \ grid x y x y = grid.getLast!.getLast! :=\n  sorry\n\n\ntheorem count_stars_full_region\
+  \ (grid : List (List Nat))\n  (h1 : grid.length = 3)\n  (h2 : ∀ row ∈ grid, row.length\
+  \ = 3) :\n  count_stars_in_region grid 1 1 3 3 = grid.foldl (λ acc row => acc +\
+  \ row.foldl (λ x y => x + y) 0) 0 :=\n  sorry\n\n/--\ninfo: 10\n-/\n#guard_msgs\
+  \ in\n#eval count_stars_in_region [[10, 10, 10], [10, 10, 10], [10, 10, 10]] 1 1\
+  \ 1 1\n\n/--\ninfo: 90\n-/\n#guard_msgs in\n#eval count_stars_in_region grid 1 1\
+  \ 3 3\n\n/--\ninfo: 60\n-/\n#guard_msgs in\n#eval count_stars_in_region grid 2 1\
+  \ 3 3\n\n/--\ninfo: 30\n-/\n#guard_msgs in\n#eval count_stars_in_region grid 3 1\
+  \ 3 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

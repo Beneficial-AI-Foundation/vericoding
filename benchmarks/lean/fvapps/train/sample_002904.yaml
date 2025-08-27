@@ -1,0 +1,42 @@
+"vc-description": "A palindrome is a word, phrase, number, or other sequence of characters\
+  \ which reads the same backward as forward. Examples of numerical palindromes are:\n\
+  \n2332 \n110011 \n54322345\n\nYou'll be given 2 numbers as arguments: ```(num,s)```.\
+  \  Write a function which returns an array of ```s``` number of numerical palindromes\
+  \ that come after ```num```. If ```num``` is a palindrome itself, it should be included\
+  \ in the count. \n\nReturn \"Not valid\" instead if any one of the inputs is not\
+  \ an integer or is less than 0.\n\nFor this kata, single digit numbers will NOT\
+  \ be considered numerical palindromes. \n\n```\npalindrome(6,4) => [11,22,33,44]\n\
+  palindrome(59,3) => [66,77,88]\npalindrome(101,2) => [101,111]\npalindrome(\"15651\"\
+  ,5) => \"Not valid\" \npalindrome(1221,\"8\") => \"Not valid\" \n```\n\n```Haskell\n\
+  \nIn Haskell, the return type is a Maybe which returns Nothing if either of the\
+  \ inputs is negative.\"\n```\n\n\nOther Kata in this Series:\nNumerical Palindrome\
+  \ #1\nNumerical Palindrome #1.5 \nNumerical Palindrome #2\nNumerical Palindrome\
+  \ #3\nNumerical Palindrome #3.5\nNumerical Palindrome #4\nNumerical Palindrome #5"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def palindrome (start_num : Int) (size : Int) : List Int := sorry\n\
+  \ndef isPalindrome (n : Int) : Bool := sorry\n"
+"vc-theorems": "theorem palindrome_empty_size :\n  ∀ start_num : Int, palindrome start_num\
+  \ 0 = [] := sorry\n\n\ntheorem palindrome_valid_size :\n  ∀ start_num size : Int,\n\
+  \  start_num ≥ 0 →\n  size > 0 →\n  List.length (palindrome start_num size) = size\
+  \ := sorry\n\n\ntheorem palindrome_elements_are_ints :\n  ∀ start_num size : Int,\n\
+  \  start_num ≥ 0 →\n  size > 0 →\n  ∀ x, x ∈ palindrome start_num size → x ∈ palindrome\
+  \ start_num size := sorry\n\n\ntheorem palindrome_elements_are_palindromes :\n \
+  \ ∀ start_num size : Int,\n  start_num ≥ 0 →\n  size > 0 →\n  ∀ x, x ∈ palindrome\
+  \ start_num size → isPalindrome x = true := sorry\n\n\ntheorem palindrome_elements_ordered\
+  \ :\n  ∀ start_num size : Int,\n  start_num ≥ 0 →\n  size > 0 →\n  ∀ i j, i < j\
+  \ → \n  i < List.length (palindrome start_num size) → \n  j < List.length (palindrome\
+  \ start_num size) →\n  (palindrome start_num size).get ⟨i, sorry⟩ ≤ (palindrome\
+  \ start_num size).get ⟨j, sorry⟩ := sorry\n\n\ntheorem palindrome_elements_minimum\
+  \ :\n  ∀ start_num size : Int,\n  start_num ≥ 0 →\n  size > 0 →\n  ∀ x, x ∈ palindrome\
+  \ start_num size → x ≥ max start_num 11 := sorry\n\n\ntheorem palindrome_invalid_negative_num\
+  \ :\n  ∀ start_num size : Int,\n  start_num < 0 →\n  size ≥ 0 →\n  palindrome start_num\
+  \ size = [] := sorry\n\n\ntheorem palindrome_invalid_negative_size :\n  ∀ start_num\
+  \ size : Int,\n  start_num ≥ 0 →\n  size < 0 →\n  palindrome start_num size = []\
+  \ := sorry\n\n/--\ninfo: [11, 22, 33, 44]\n-/\n#guard_msgs in\n#eval palindrome\
+  \ 6 4\n\n/--\ninfo: [77]\n-/\n#guard_msgs in\n#eval palindrome 75 1\n\n/--\ninfo:\
+  \ [101, 111]\n-/\n#guard_msgs in\n#eval palindrome 101 2\n\n/--\ninfo: 'Not valid'\n\
+  -/\n#guard_msgs in\n#eval palindrome \"ACCDDCCA\" 3\n\n/--\ninfo: 'Not valid'\n\
+  -/\n#guard_msgs in\n#eval palindrome 773 \"1551\"\n\n/--\ninfo: 'Not valid'\n-/\n\
+  #guard_msgs in\n#eval palindrome -4505 15\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

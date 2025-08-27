@@ -1,0 +1,49 @@
+"vc-description": "This kata is part one of precise fractions series (see pt. 2: http://www.codewars.com/kata/precise-fractions-pt-2-conversion).\n\
+  \nWhen dealing with fractional values, there's always a problem with the precision\
+  \ of arithmetical operations. So lets fix it!\n\nYour task is to implement class\
+  \ ```Fraction``` that takes care of simple fraction arithmetics. Requirements:\n\
+  \n* class must have two-parameter constructor `Fraction(numerator, denominator)`;\
+  \ passed values will be non-zero integers, and may be positive or negative.\n* two\
+  \ conversion methods must be supported:\n * `toDecimal()` returns decimal representation\
+  \ of fraction\n * `toString()` returns string with fractional representation of\
+  \ stored value in format:\n\n    [ SIGN ] [ WHOLES ] [ NUMERATOR / DENOMINATOR ]\n\
+  \   * **Note**: each part is returned only if it is available and non-zero, with\
+  \ the only possible space character going between WHOLES and fraction. Examples:\
+  \ '-1/2', '3', '-5 3/4'\n    \n* The fractional part must always be normalized (ie.\
+  \ the numerator and denominators must not have any common divisors).\n* Four operations\
+  \ need to be implemented: `add`, `subtract`, `multiply` and `divide`. Each of them\
+  \ may take integers as well as another `Fraction` instance as an argument, and must\
+  \ return a new `Fraction` instance.\n* Instances must be immutable, hence none of\
+  \ the operations may modify either of the objects it is called upon, nor the passed\
+  \ argument.\n \n #### Python Notes\n* If one integer is passed into the initialiser,\
+  \ then the fraction should be assumed to represent an integer not a fraction.\n\
+  * You must implement the standard operator overrides `__add__`, `__sub__`, `__mul__`,\
+  \ `__div__`, in each case you should support `other` being an `int` or another instance\
+  \ of `Fraction`.\n* Implement `__str__` and `to_decimal` in place of `toString`\
+  \ and `toDecimal` as described above."
+"vc-preamble": "import Imports.AllImports\n\ndef toString (n : Int) (d : Int) : String\
+  \ := sorry\ndef toDecimal (n : Int) (d : Int) : Float := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def intToFloat (i : Int) : Float := sorry\ndef stringToFloat (s\
+  \ : String) : Float := sorry\n"
+"vc-theorems": "theorem sign_property (n d : Int) (h : d ≠ 0) :\n  let s := toString\
+  \ n d\n  (n * d < 0 → s.startsWith \"-\") ∧ \n  (n * d > 0 → ¬s.startsWith \"-\"\
+  ) := sorry\n\n\ntheorem format_property (n d : Int) (h : d ≠ 0) :\n  let s := toString\
+  \ n d\n  let parts := (s.dropWhile (·=='-')).splitOn \" \"\n  match parts with\n\
+  \  | [p] => \n    if p.any (·=='/') then\n      let nums := p.splitOn \"/\"\n  \
+  \    nums.length = 2 ∧\n      nums[0]!.all Char.isDigit ∧\n      nums[1]!.all Char.isDigit\n\
+  \    else\n      p.all Char.isDigit\n  | [whole, frac] =>\n    whole.all Char.isDigit\
+  \ ∧\n    let fracParts := frac.splitOn \"/\"\n    fracParts.length = 2 ∧\n    fracParts[0]!.all\
+  \ Char.isDigit ∧\n    fracParts[1]!.all Char.isDigit ∧\n    fracParts[0]!.toNat!\
+  \ < fracParts[1]!.toNat!\n  | _ => False := sorry\n\n\ntheorem decimal_conversion\
+  \ (n d : Int) (h : d ≠ 0) :\n  toDecimal n d = (intToFloat n / intToFloat d) :=\
+  \ sorry\n\n\ntheorem string_matches_value (n d : Int) (h : d ≠ 0) :\n  let s :=\
+  \ toString n d\n  let val := \n    if s.any (·==' ') then\n      let parts := (s.dropWhile\
+  \ (·=='-')).splitOn \" \"\n      let whole := intToFloat parts[0]!.toInt!\n    \
+  \  let fracParts := (parts[1]!.splitOn \"/\")\n      let num := intToFloat fracParts[0]!.toInt!\n\
+  \      let den := intToFloat fracParts[1]!.toInt!\n      whole + (num / den)\n \
+  \   else if s.any (·=='/') then\n      let parts := (s.dropWhile (·=='-')).splitOn\
+  \ \"/\"\n      (intToFloat parts[0]!.toInt!) / (intToFloat parts[1]!.toInt!)\n \
+  \   else\n      stringToFloat s\n  toDecimal n d = (if s.startsWith \"-\" then -val\
+  \ else val) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,63 @@
+"vc-description": "You are given a string expression representing a Lisp-like expression\
+  \ to return the integer value of.\n\nThe syntax for these expressions is given as\
+  \ follows.\n\nAn expression is either an integer, a let-expression, an add-expression,\
+  \ a mult-expression, or an assigned variable.  Expressions always evaluate to a\
+  \ single integer.\n\n(An integer could be positive or negative.)\n\nA let-expression\
+  \ takes the form (let v1 e1 v2 e2 ... vn en expr), where let is always the string\
+  \ \"let\", then there are 1 or more pairs of alternating variables and expressions,\
+  \ meaning that the first variable v1 is assigned the value of the expression e1,\
+  \ the second variable v2 is assigned the value of the expression e2, and so on sequentially;\
+  \ and then the value of this let-expression is the value of the expression expr.\n\
+  \nAn add-expression takes the form (add e1 e2) where add is always the string \"\
+  add\", there are always two expressions e1, e2, and this expression evaluates to\
+  \ the addition of the evaluation of e1 and the evaluation of e2.\n\nA mult-expression\
+  \ takes the form (mult e1 e2) where mult is always the string \"mult\", there are\
+  \ always two expressions e1, e2, and this expression evaluates to the multiplication\
+  \ of the evaluation of e1 and the evaluation of e2.\n\nFor the purposes of this\
+  \ question, we will use a smaller subset of variable names.  A variable starts with\
+  \ a lowercase letter, then zero or more lowercase letters or digits.  Additionally\
+  \ for your convenience, the names \"add\", \"let\", or \"mult\" are protected and\
+  \ will never be used as variable names.\n\nFinally, there is the concept of scope.\
+  \  When an expression of a variable name is evaluated, within the context of that\
+  \ evaluation, the innermost scope (in terms of parentheses) is checked first for\
+  \ the value of that variable, and then outer scopes are checked sequentially.  It\
+  \ is guaranteed that every expression is legal.  Please see the examples for more\
+  \ details on scope.\n\n\nEvaluation Examples:\n\nInput: (add 1 2)\nOutput: 3\n\n\
+  Input: (mult 3 (add 2 3))\nOutput: 15\n\nInput: (let x 2 (mult x 5))\nOutput: 10\n\
+  \nInput: (let x 2 (mult x (let x 3 y 4 (add x y))))\nOutput: 14\nExplanation: In\
+  \ the expression (add x y), when checking for the value of the variable x,\nwe check\
+  \ from the innermost scope to the outermost in the context of the variable we are\
+  \ trying to evaluate.\nSince x = 3 is found first, the value of x is 3.\n\nInput:\
+  \ (let x 3 x 2 x)\nOutput: 2\nExplanation: Assignment in let statements is processed\
+  \ sequentially.\n\nInput: (let x 1 y 2 x (add x y) (add x y))\nOutput: 5\nExplanation:\
+  \ The first (add x y) evaluates as 3, and is assigned to x.\nThe second (add x y)\
+  \ evaluates as 3+2 = 5.\n\nInput: (let x 2 (add (let x 3 (let x 4 x)) x))\nOutput:\
+  \ 6\nExplanation: Even though (let x 4 x) has a deeper scope, it is outside the\
+  \ context\nof the final x in the add-expression.  That final x will equal 2.\n\n\
+  Input: (let a1 3 b2 (add a1 1) b2) \nOutput 4\nExplanation: Variable names can contain\
+  \ digits after the first character.\n\n\n\nNote:\nThe given string expression is\
+  \ well formatted: There are no leading or trailing spaces, there is only a single\
+  \ space separating different components of the string, and no space between adjacent\
+  \ parentheses.  The expression is guaranteed to be legal and evaluate to an integer.\n\
+  The length of expression is at most 2000.  (It is also non-empty, as that would\
+  \ not be a legal expression.)\nThe answer and all intermediate calculations of that\
+  \ answer are guaranteed to fit in a 32-bit integer."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def evaluate_lisp (s : String) : Int :=\n  sorry\n"
+"vc-theorems": "theorem arithmetic_evaluation (op : String) (x y : Int) \n  (h : op\
+  \ = \"add\" ∨ op = \"mult\") :\n  evaluate_lisp s!\"({op} {x} {y})\" = \n    if\
+  \ op = \"add\" then x + y else x * y := by\n  sorry\n\n\ntheorem let_evaluation\
+  \ (var : String) (val expr : Int) \n  (h : ∀ c ∈ var.data, c.isAlpha ∧ c.isLower)\
+  \ :\n  evaluate_lisp s!\"(let {var} {val} {expr})\" = expr := by\n  sorry\n\n\n\
+  theorem add_commutative (x y : Int) :\n  evaluate_lisp s!\"(add {x} {y})\" = evaluate_lisp\
+  \ s!\"(add {y} {x})\" := by\n  sorry\n\n\ntheorem mult_commutative (x y : Int) :\n\
+  \  evaluate_lisp s!\"(mult {x} {y})\" = evaluate_lisp s!\"(mult {y} {x})\" := by\n\
+  \  sorry\n\n\ntheorem mult_identity (x : Int) :\n  evaluate_lisp s!\"(mult {x} 1)\"\
+  \ = x ∧ \n  evaluate_lisp s!\"(mult 1 {x})\" = x := by\n  sorry\n\n\ntheorem add_identity\
+  \ (x : Int) :\n  evaluate_lisp s!\"(add {x} 0)\" = x ∧\n  evaluate_lisp s!\"(add\
+  \ 0 {x})\" = x := by\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval evaluate_lisp\
+  \ \"(add 1 2)\"\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval evaluate_lisp \"(mult\
+  \ 3 (add 2 3))\"\n\n/--\ninfo: 14\n-/\n#guard_msgs in\n#eval evaluate_lisp \"(let\
+  \ x 2 (mult x (let x 3 y 4 (add x y))))\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

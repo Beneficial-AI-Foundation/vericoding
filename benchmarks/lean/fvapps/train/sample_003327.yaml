@@ -1,0 +1,24 @@
+"vc-description": "We want to know the index of the vowels in a given word, for example,\
+  \ there are two vowels in the word super (the second and fourth letters). \n\nSo\
+  \ given a string \"super\", we should return a list of [2, 4].\n\n        Some examples:\n\
+  \        Mmmm  => []\n        Super => [2,4]\n        Apple => [1,5]\n        YoMama\
+  \ -> [1,2,4,6]\n\n**NOTES:**\n\n* Vowels in this context refers to: a e i o u y\
+  \ (including upper case)\n* This is indexed from `[1..n]` (not zero indexed!)"
+"vc-preamble": "import Imports.AllImports\n\ndef isVowel (c : Char) : Bool := \n \
+  \ let lc := c.toLower\n  lc == 'a' ∨ lc == 'e' ∨ lc == 'i' ∨ lc == 'o' ∨ lc == 'u'\
+  \ ∨ lc == 'y'\n  "
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def vowel_indices (s : String) : List Nat :=\nsorry\n"
+"vc-theorems": "theorem vowel_indices_in_bounds (s : String) :\n  ∀ i ∈ vowel_indices\
+  \ s, 0 < i ∧ i ≤ s.length :=\nsorry\n\n\ntheorem vowel_indices_ascending (s : String)\
+  \ (i j : Nat) :\n  i < j → \n  i ∈ vowel_indices s →\n  j ∈ vowel_indices s →\n\
+  \  i < j :=\nsorry\n\n\ntheorem vowel_indices_points_to_vowels (s : String) (i :\
+  \ Nat) :\n  i ∈ vowel_indices s → \n  i > 0 →\n  i ≤ s.length →\n  isVowel (s.data.get!\
+  \ (i-1)) :=\nsorry\n\n\ntheorem vowel_indices_finds_all_vowels (s : String) :\n\
+  \  (vowel_indices s).length = (s.data.filter isVowel).length :=\nsorry\n\n\ntheorem\
+  \ vowel_indices_unique (s : String) (i j : Nat) :\n  i ∈ vowel_indices s →\n  j\
+  \ ∈ vowel_indices s →\n  i = j ∨ i ≠ j :=\nsorry\n\n/--\ninfo: []\n-/\n#guard_msgs\
+  \ in\n#eval vowel_indices \"mmm\"\n\n/--\ninfo: [2, 4]\n-/\n#guard_msgs in\n#eval\
+  \ vowel_indices \"super\"\n\n/--\ninfo: [1, 2, 4, 6]\n-/\n#guard_msgs in\n#eval\
+  \ vowel_indices \"YoMama\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

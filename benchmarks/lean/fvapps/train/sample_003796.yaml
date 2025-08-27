@@ -1,0 +1,41 @@
+"vc-description": "Roma is programmer and he likes memes about IT,  \nMaxim is chemist\
+  \ and he likes memes about chemistry,  \nDanik is designer and he likes memes about\
+  \ design,  \nand Vlad likes all other memes.\n\n___\n\nYou will be given a meme\
+  \ (string), and your task is to identify its category, and send it to the right\
+  \ receiver: `IT - 'Roma'`, `chemistry - 'Maxim'`, `design - 'Danik'`, or `other\
+  \ - 'Vlad'`.\n\nIT meme has letters `b, u, g`.  \nChemistry meme has letters `b,\
+  \ o, o, m`.  \nDesign meme has letters `e, d, i, t, s`.  \nIf there is more than\
+  \ 1 possible answer, the earliest match should be chosen.\n\n**Note:** letters are\
+  \ case-insensetive and should come in the order specified above.\n\n___\n\n## Examples:\n\
+  \n(Matching letters are surrounded by curly braces for readability.)\n\n```\nthis\
+  \ is programmer meme {b}ecause it has b{ug}\nthis is also program{bu}r meme {g}ecause\
+  \ it has needed key word\nthis is {ed}s{i}gner meme cause i{t} ha{s} key word\n\n\
+  this could {b}e chemistry meme b{u}t our{g}Gey word 'boom' is too late\n    instead\
+  \ of\nthis could {b}e chemistry meme but {o}ur gey w{o}rd 'boo{m}' is too late\n\
+  ```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def meme_sorting (s : String) : String := sorry\n\ntheorem meme_sorting_returns_valid_name\
+  \ (s : String) : \n  meme_sorting s = \"Roma\" ∨ meme_sorting s = \"Maxim\" ∨ meme_sorting\
+  \ s = \"Danik\" ∨ meme_sorting s = \"Vlad\" := sorry\n"
+"vc-theorems": "theorem bug_pattern_returns_roma {s : String} (h : ∃ i j k : String.Pos,\
+  \ \n  s.get i = 'b' ∧ \n  s.get j = 'u' ∧ \n  s.get k = 'g' ∧\n  i < j ∧ j < k)\
+  \ :\n  meme_sorting s = \"Roma\" := sorry\n\n\ntheorem boom_pattern_returns_maxim\
+  \ {s : String} (h : ∃ i j k l : String.Pos,\n  s.get i = 'b' ∧\n  s.get j = 'o'\
+  \ ∧ \n  s.get k = 'o' ∧\n  s.get l = 'm' ∧\n  i < j ∧ j < k ∧ k < l) :\n  meme_sorting\
+  \ s = \"Maxim\" := sorry\n\n\ntheorem edits_pattern_returns_danik {s : String} (h\
+  \ : ∃ i j k l m : String.Pos,\n  s.get i = 'e' ∧\n  s.get j = 'd' ∧\n  s.get k =\
+  \ 'i' ∧\n  s.get l = 't' ∧\n  s.get m = 's' ∧\n  i < j ∧ j < k ∧ k < l ∧ l < m)\
+  \ :\n  meme_sorting s = \"Danik\" := sorry\n\n\ntheorem no_pattern_returns_vlad\
+  \ {s : String} \n  (h1 : ¬∃ i j k : String.Pos, s.get i = 'b' ∧ s.get j = 'u' ∧\
+  \ s.get k = 'g' ∧ i < j ∧ j < k)\n  (h2 : ¬∃ i j k l : String.Pos, s.get i = 'b'\
+  \ ∧ s.get j = 'o' ∧ s.get k = 'o' ∧ s.get l = 'm' ∧ i < j ∧ j < k ∧ k < l)\n  (h3\
+  \ : ¬∃ i j k l m : String.Pos, s.get i = 'e' ∧ s.get j = 'd' ∧ s.get k = 'i' ∧ s.get\
+  \ l = 't' ∧ s.get m = 's' ∧ i < j ∧ j < k ∧ k < l ∧ l < m) :\n  meme_sorting s =\
+  \ \"Vlad\" := sorry\n\n\ntheorem case_insensitive (s1 s2 : String) (h : s1.toLower\
+  \ = s2.toLower) :\n  meme_sorting s1 = meme_sorting s2 := sorry\n\n/--\ninfo: 'Roma'\n\
+  -/\n#guard_msgs in\n#eval meme_sorting \"This is programmer meme ecause it has bug\"\
+  \n\n/--\ninfo: 'Danik'\n-/\n#guard_msgs in\n#eval meme_sorting \"This is edsigner\
+  \ meme cause it has key word\"\n\n/--\ninfo: 'Vlad'\n-/\n#guard_msgs in\n#eval meme_sorting\
+  \ \"This is meme\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,25 @@
+"vc-description": "Create a function which accepts one arbitrary string as an argument,\
+  \ and return a string of length 26.\n\nThe objective is to set each of the 26 characters\
+  \ of the output string to either `'1'` or `'0'` based on the fact whether the Nth\
+  \ letter of the alphabet is present in the input (independent of its case).\n\n\
+  So if an `'a'` or an `'A'` appears anywhere in the input string (any number of times),\
+  \ set the first character of the output string to `'1'`, otherwise to `'0'`. if\
+  \ `'b'` or `'B'` appears in the string, set the second character to `'1'`, and so\
+  \ on for the rest of the alphabet.\n\nFor instance:\n\n```\n\"a   **&  cZ\"  =>\
+  \  \"10100000000000000000000001\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def change (s : String) : String := sorry \n\ntheorem change_output_format\
+  \ (s : String) : \n  let result := change s\n  (result.length = 26) ∧ \n  (∀ c ∈\
+  \ result.data, c = '0' ∨ c = '1')  := sorry\n"
+"vc-theorems": "theorem change_letter_detection (s : String) (i : Nat) (h : i < 26)\
+  \ :\n  let result := change s\n  let letter := Char.ofNat (i + 'a'.toNat)\n  (result.data.get!\
+  \ i) = if letter ∈ s.toLower.data then '1' else '0' := sorry\n\n\ntheorem change_empty_string\
+  \ :\n  change \"\" = String.mk (List.replicate 26 '0') := sorry\n\n\ntheorem change_all_lowercase\
+  \ (s : String) (h : ∀ c ∈ s.data, 'a' ≤ c ∧ c ≤ 'z') :\n  let result := change s\n\
+  \  ∀ i, i < 26 →\n    let c := Char.ofNat (i + 'a'.toNat)\n    if c ∈ s.data \n\
+  \    then (result.data.get! i) = '1'\n    else True := sorry\n\n/--\ninfo: '11000000000000000000000001'\n\
+  -/\n#guard_msgs in\n#eval change \"a **&  bZ\"\n\n/--\ninfo: '11101000000000000000000001'\n\
+  -/\n#guard_msgs in\n#eval change \"Abc e  $$  z\"\n\n/--\ninfo: '00000000000000000000000000'\n\
+  -/\n#guard_msgs in\n#eval change \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

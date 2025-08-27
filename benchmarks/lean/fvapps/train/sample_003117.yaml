@@ -1,0 +1,28 @@
+"vc-description": "Given a string that includes alphanumeric characters ('3a4B2d')\
+  \ return the expansion of that string: The numeric values represent the occurrence\
+  \ of each letter preceding that numeric value. There should be no numeric characters\
+  \ in the final string. Empty strings should return an empty string. \n \nThe first\
+  \ occurrence of a numeric value should be the number of times each character behind\
+  \ it is repeated, until the next numeric value appears.\n```python\nstring_expansion('3D2a5d2f')\
+  \ == 'DDDaadddddff'\n```\n```python\nstring_expansion('3abc') == 'aaabbbccc'   \
+  \    # correct\nstring_expansion('3abc') != 'aaabc'           # wrong\nstring_expansion('3abc')\
+  \ != 'abcabcabc'       # wrong\n```\nIf there are two consecutive numeric characters\
+  \ the first one is ignored.\n\n```python\nstring_expansion('3d332f2a') == 'dddffaa'\n\
+  ```\nIf there are two consecutive alphabetic characters then the first character\
+  \ has no effect on the one after it.\n\n```python\nstring_expansion('abcde') ==\
+  \ 'abcde'\n```\nYour code should be able to work for both lower and capital case\
+  \ letters.\n\n```python\nstring_expansion('') == ''\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def string_expansion (s : String) : String := sorry\n\n-- We can\
+  \ remove the first theorem since String type guarantees it's a string\n"
+"vc-theorems": "theorem string_expansion_empty_string (s : String) :\n  s = \"\" →\
+  \ string_expansion s = \"\" := sorry\n\n\ntheorem string_expansion_only_numbers\
+  \ (s : String) :\n  s.all Char.isDigit → string_expansion s = \"\" := sorry\n\n\n\
+  theorem string_expansion_fixed_cases :\n  (string_expansion \"3abc\" = \"aaabbbccc\"\
+  ) ∧ \n  (string_expansion \"3D2a5d2f\" = \"DDDaadddddff\") ∧\n  (string_expansion\
+  \ \"0d0a\" = \"\") ∧\n  (string_expansion \"\" = \"\") := sorry\n\n/--\ninfo: 'DDDaadddddff'\n\
+  -/\n#guard_msgs in\n#eval string_expansion \"3D2a5d2f\"\n\n/--\ninfo: 'aaabbbccc'\n\
+  -/\n#guard_msgs in\n#eval string_expansion \"3abc\"\n\n/--\ninfo: ''\n-/\n#guard_msgs\
+  \ in\n#eval string_expansion \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

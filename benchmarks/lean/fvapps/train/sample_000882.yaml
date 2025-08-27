@@ -1,0 +1,49 @@
+"vc-description": "The annual snake festival is upon us, and all the snakes of the\
+  \ kingdom have gathered to participate in the procession. Chef has been tasked with\
+  \ reporting on the procession, and for this he decides to first keep track of all\
+  \ the snakes. When he sees a snake first, it'll be its Head, and hence he will mark\
+  \ a 'H'. The snakes are long, and when he sees the snake finally slither away, he'll\
+  \ mark a 'T' to denote its tail. In the time in between, when the snake is moving\
+  \ past him, or the time between one snake and the next snake, he marks with '.'s.\n\
+  Because the snakes come in a procession, and one by one, a valid report would be\
+  \ something like \"..H..T...HTH....T.\", or \"...\", or \"HT\", whereas \"T...H..H.T\"\
+  , \"H..T..H\", \"H..H..T..T\" would be invalid reports (See explanations at the\
+  \ bottom).\nFormally, a snake is represented by a 'H' followed by some (possibly\
+  \ zero) '.'s, and then a 'T'. A valid report is one such that it begins with a (possibly\
+  \ zero length) string of '.'s, and then some (possibly zero) snakes between which\
+  \ there can be some '.'s, and then finally ends with some (possibly zero) '.'s.\n\
+  \nChef had binged on the festival food and had been very drowsy. So his report might\
+  \ be invalid. You need to help him find out if his report is valid or not.\n\n-----Input-----\n\
+  - The first line contains a single integer, R, which denotes the number of reports\
+  \ to be checked. The description of each report follows after this.\n- The first\
+  \ line of each report contains a single integer, L, the length of that report.\n\
+  - The second line of each report contains a string of length L. The string contains\
+  \ only the characters '.', 'H', and 'T'.\n\n-----Output-----\n- For each report,\
+  \ output the string \"Valid\" or \"Invalid\" in a new line, depending on whether\
+  \ it was a valid report or not.\n\n-----Constraints-----\n- 1 ≤ R ≤ 500\n- 1 ≤ length\
+  \ of each report ≤ 500\n\n-----Example-----\nInput:\n6\n18\n..H..T...HTH....T.\n\
+  3\n...\n10\nH..H..T..T\n2\nHT\n11\n.T...H..H.T\n7\nH..T..H\n\nOutput:\nValid\nValid\n\
+  Invalid\nValid\nInvalid\nInvalid\n\n-----Explanation-----\n\"H..H..T..T\" is invalid\
+  \ because the second snake starts before the first snake ends, which is not allowed.\n\
+  \".T...H..H.T\" is invalid because it has a 'T' before a 'H'. A tail can come only\
+  \ after its head.\n\"H..T..H\" is invalid because the last 'H' does not have a corresponding\
+  \ 'T'."
+"vc-preamble": "import Imports.AllImports\n\ndef check_valid_snake_procession (report\
+  \ : String) : String :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_valid_segment (s₁ s₂ : Char) : Bool :=\nsorry \n"
+"vc-theorems": "theorem valid_snake_formations (report : String) :\n  (∀ i j : String.Pos,\
+  \ j.1 = i.1 + 1 →\n    (report.get i = '.' ∨ (report.get i = 'H' ∧ report.get j\
+  \ = 'T'))) →\n  check_valid_snake_procession report = \"Valid\" :=\nsorry\n\n\n\
+  theorem balanced_counts_if_valid (report : String) :\n  check_valid_snake_procession\
+  \ report = \"Valid\" →\n  let h_count := report.toList.filter (· = 'H') |>.length\n\
+  \  let t_count := report.toList.filter (· = 'T') |>.length\n  h_count = t_count\
+  \ :=\nsorry\n\n\ntheorem running_count_bounds_if_valid (report : String) (n : Nat)\
+  \ :\n  check_valid_snake_procession report = \"Valid\" →\n  n ≤ report.length →\n\
+  \  let h_count := (report.take n).toList.filter (· = 'H') |>.length\n  let t_count\
+  \ := (report.take n).toList.filter (· = 'T') |>.length\n  let count := h_count -\
+  \ t_count\n  count ≥ 0 ∧ count ≤ 1 :=\nsorry\n\n/--\ninfo: 'Valid'\n-/\n#guard_msgs\
+  \ in\n#eval check_valid_snake_procession \"..H..T...HTH....T.\"\n\n/--\ninfo: 'Invalid'\n\
+  -/\n#guard_msgs in\n#eval check_valid_snake_procession \"H..H..T..T\"\n\n/--\ninfo:\
+  \ 'Valid'\n-/\n#guard_msgs in\n#eval check_valid_snake_procession \"HT\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

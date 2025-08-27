@@ -1,0 +1,21 @@
+"vc-description": "Well, those numbers were right and we're going to feed their ego.\n\
+  \nWrite a function, isNarcissistic, that takes in any amount of numbers and returns\
+  \ true if all the numbers are narcissistic. Return false for invalid arguments (numbers\
+  \ passed in as strings are ok).\n\nFor more information about narcissistic numbers\
+  \ (and believe me, they love it when you read about them) follow this link: https://en.wikipedia.org/wiki/Narcissistic_number"
+"vc-preamble": "import Imports.AllImports\n\ndef get_digits (n : Nat) : List Nat :=\
+  \ sorry\n\ndef is_narc (n : Nat) : Bool := sorry \n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_narcissistic : List String → Bool := sorry\n\ntheorem get_digits_correct\
+  \ (n : Nat) : \n  get_digits n = (toString n).toList.map (fun c => c.toString.toNat!)\
+  \ := sorry\n"
+"vc-theorems": "theorem is_narc_sum_pow_digits (n : Nat) :\n  is_narc n = (n = ((get_digits\
+  \ n).map (fun d => d ^ (get_digits n).length)).foldl (· + ·) 0) := sorry\n\n\ntheorem\
+  \ is_narcissistic_all (values : List String) :\n  is_narcissistic values = values.all\
+  \ (fun x => \n    if let some n := x.toNat? then\n      is_narc n\n    else  \n\
+  \      false) := sorry\n\n\ntheorem non_numeric_returns_false (s : String) : \n\
+  \  ¬s.all Char.isDigit → ¬is_narcissistic [s] := sorry\n\n/--\ninfo: False\n-/\n\
+  #guard_msgs in\n#eval is_narcissistic 11\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
+  #eval is_narcissistic \"4\" 7 \"9\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ is_narcissistic 407 8208\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

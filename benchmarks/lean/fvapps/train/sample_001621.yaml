@@ -1,0 +1,28 @@
+"vc-description": "Laxman, a great Mathematician and Thinker, gives Sugreev an integer,\
+  \ $N$, and asks him to make an array $A$ of length $N$, such that  $\\sum A$i$^3\
+  \ = X^2$, to prove the purity of the bond of his friendship with Ram. Sugreev is\
+  \ facing difficulty in forming the array. So, help Sugreev to form this array.\n\
+  \n-----Note:-----\n- $A$i must be an integer between $1$ to $10^3$ (both inclusive),\
+  \ where $A$i denotes the $i$$th$ element of the array, $A$.\n- $X$ must be an integer\
+  \ (Any Integer).\n- If there are multiple solutions, satisfying the condition, you\
+  \ can print any \"one\" solution.\n\n-----Input:-----\n- First line will contain\
+  \ $T$, number of testcases. Then, the testcases follow. \n- Each testcase contains\
+  \ a single line of input, integer $N$. \n\n-----Output:-----\nFor each testcase,\
+  \ output in a single line, array $A$ of $N$ integers, where each element is between\
+  \ $1$ to $1000$ (both inclusive), satisfying the equation $\\sum A$i$^3 = X^2$,\
+  \ where $X$ is \"any\" integer.\n\n-----Constraints:-----\n- $1 \\leq T \\leq 10^3$\n\
+  - $1 \\leq N \\leq 10^3$\n\n-----Sample Input:-----\n2\n1\n6\n\n-----Sample Output:-----\n\
+  4\n5 10 5 10 5 5"
+"vc-preamble": "import Imports.AllImports\n\ndef calculate_cube_sum (n : Nat) : Nat\
+  \ :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_perfect_square (n : Nat) : Bool :=\nsorry \n\n-- Cube sum\
+  \ matches formula"
+"vc-theorems": "theorem cube_sum_matches_formula (n : Nat) : \n  calculate_cube_sum\
+  \ n = ((n * (n + 1)) / 2) ^ 2 :=\nsorry\n\n-- Perfect squares are identified correctly\n\
+  \ntheorem perfect_square_properties (n : Nat) (h : n > 1) :\n  (is_perfect_square\
+  \ (n * n) = true) ∧ \n  (is_perfect_square (n * n + 1) = false) ∧\n  (is_perfect_square\
+  \ (n * n - 1) = false) :=\nsorry\n\n-- Product of perfect squares is perfect square\n\
+  \ntheorem perfect_square_product (n : Nat) :\n  is_perfect_square n = true → is_perfect_square\
+  \ (n * n) = true :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

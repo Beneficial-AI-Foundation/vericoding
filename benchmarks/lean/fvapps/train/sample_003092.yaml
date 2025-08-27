@@ -1,0 +1,27 @@
+"vc-description": "As you may know, once some people pass their teens, they jokingly\
+  \ only celebrate their 20th or 21st birthday, forever. With some maths skills, that's\
+  \ totally possible - you only need to select the correct number base!\n\nFor example,\
+  \ if they turn 32, that's exactly 20 - in base 16... Already 39? That's just 21,\
+  \ in base 19!\n\nYour task is to translate the given age to the much desired 20\
+  \ (or 21) years, and indicate the number base, in the format specified below.\n\n\
+  **Note:** input will be always > 21\n\n\n### Examples:\n\n```\n32  -->  \"32? That's\
+  \ just 20, in base 16!\"\n39  -->  \"39? That's just 21, in base 19!\"\n```\n\n\
+  *Hint: if you don't know (enough) about [numeral systems](https://en.wikipedia.org/wiki/Numeral_system)\
+  \ and [radix](https://en.wikipedia.org/wiki/Radix), just observe the pattern!*\n\
+  \n---\n\n## My other katas\n\nIf you enjoyed this kata then please try [my other\
+  \ katas](https://www.codewars.com/collections/katas-created-by-anter69)! :-)\n\n\
+  ---\n\n### *Translations are welcome!*"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def womens_age (n : Nat) : String := sorry\n\ntheorem womens_age_starts_with\
+  \ (n : Nat) (h : n ≥ 2) : \n  (womens_age n).startsWith s!\"{n}? That's just\" =\
+  \ true := sorry\n"
+"vc-theorems": "theorem womens_age_ends_with (n : Nat) (h : n ≥ 2) :\n  (womens_age\
+  \ n).endsWith \"!\" = true := sorry\n\n\ntheorem womens_age_value_20_or_21 (n :\
+  \ Nat) (h : n ≥ 2) :\n  let val := String.toNat! ((womens_age n).split (· == ' ')\
+  \ |>.get! 3)\n  val = 20 ∨ val = 21 := sorry\n\n\ntheorem womens_age_base_is_div2\
+  \ (n : Nat) (h : n ≥ 2) :\n  let base := String.toNat! ((womens_age n).split (·\
+  \ == ' ') |>.get! 5)\n  base = n / 2 := sorry\n\n\ntheorem womens_age_even_20_odd_21\
+  \ (n : Nat) (h : n ≥ 2) :\n  let val := String.toNat! ((womens_age n).split (· ==\
+  \ ' ') |>.get! 3)\n  (n % 2 = 0 → val = 20) ∧ (n % 2 = 1 → val = 21) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,16 @@
+"vc-description": "Wilson primes satisfy the following condition.\nLet ```P``` represent\
+  \ a prime number. \n\nThen ```((P-1)! + 1) / (P * P)``` should give a whole number.\n\
+  \nYour task is to create a function that returns ```true``` if the given number\
+  \ is a Wilson prime."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def am_i_wilson (n : Int) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem am_i_wilson_output_is_bool (n : Int) :\n  am_i_wilson n =\
+  \ true ∨ am_i_wilson n = false := by sorry\n\n\ntheorem am_i_wilson_known_wilson_primes\
+  \ :\n  am_i_wilson 5 = true ∧ \n  am_i_wilson 13 = true ∧ \n  am_i_wilson 563 =\
+  \ true := by sorry\n\n\ntheorem am_i_wilson_non_wilson_primes (n : Int) :\n  n ≠\
+  \ 5 → n ≠ 13 → n ≠ 563 → am_i_wilson n = false := by sorry\n\n\ntheorem am_i_wilson_negative\
+  \ (n : Int) :\n  n < 0 → am_i_wilson n = false := by sorry\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval am_i_wilson 0\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
+  #eval am_i_wilson 5\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval am_i_wilson 13\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

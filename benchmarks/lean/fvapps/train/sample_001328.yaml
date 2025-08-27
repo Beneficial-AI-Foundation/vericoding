@@ -1,0 +1,39 @@
+"vc-description": "-----General Statement:-----\nGiven the actual high and low temperatures\
+  \ for the day and the normal high and low temperatures for that day, calculate the\
+  \ average difference from normal.\n\n-----Input:-----\nThe first line of the data\
+  \ set for this problem is an integer that represents the number of data sets that\
+  \ follow. Each data set is on a separate line and consists of today’s high, today’s\
+  \ low, normal high, and normal low – in that order.\n\n-----Output:-----\nIf the\
+  \ average difference is negative, do not output the negative sign (-).\nOutput the\
+  \ amount of deviation from normal, followed by the words\nDEGREE(S) ABOVE NORMAL,\
+  \ or by the words\nDEGREE(S) BELOW NORMAL.\nRound to 1 decimal place. A trailing\
+  \ zero is required if the average is an integer.\nThe output is to be formatted\
+  \ exactly like that for the sample output given below.\n\n-----Assumptions:-----\n\
+  Temperatures are in the range –15..100 degrees.\nThe average temperature difference\
+  \ will not be zero.\n\n-----Discussion:-----\nDetermine the average of the difference\
+  \ of the high temperatures and the difference of the low temperatures.\n\n-----Sample\
+  \ Input:-----\n3\n75 45 78 40\n50 32 45 30\n56 48 62 45\n\n-----Sample Output:-----\n\
+  1.0 DEGREE(S) ABOVE NORMAL\n3.5 DEGREE(S) ABOVE NORMAL\n1.5 DEGREE(S) BELOW NORMAL"
+"vc-preamble": "import Imports.AllImports\n\ndef calculate_temp_difference (today_high\
+  \ today_low normal_high normal_low : Int) : String := sorry\n\ndef String.contains?\
+  \ (s : String) (substr : String) : Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def String.toFloat (s : String) : Float := sorry\ndef Int.toFloat\
+  \ (i : Int) : Float := sorry\n"
+"vc-theorems": "theorem temp_diff_result_format (today_high today_low normal_high\
+  \ normal_low : Int) \n  (h1 : today_high ≥ today_low) (h2 : normal_high ≥ normal_low)\
+  \ :\n  let result := calculate_temp_difference today_high today_low normal_high\
+  \ normal_low\n  ∃ (diff : String) (dir : String),\n    result = diff ++ \" DEGREE(S)\
+  \ \" ++ dir ++ \" NORMAL\" ∧\n    (dir = \"ABOVE\" ∨ dir = \"BELOW\") := sorry\n\
+  \n\ntheorem temp_diff_nonnegative (today_high today_low normal_high normal_low :\
+  \ Int)\n  (h1 : today_high ≥ today_low) (h2 : normal_high ≥ normal_low) :\n  let\
+  \ result := calculate_temp_difference today_high today_low normal_high normal_low\n\
+  \  let parts := result.splitOn \" DEGREE(S) \"\n  let diff := parts[0]!\n  String.toFloat\
+  \ diff ≥ 0 := sorry\n\n\ntheorem temp_diff_direction (today_high today_low normal_high\
+  \ normal_low : Int)\n  (h1 : today_high ≥ today_low) (h2 : normal_high ≥ normal_low)\
+  \ :\n  let result := calculate_temp_difference today_high today_low normal_high\
+  \ normal_low\n  let avg_today : Float := (today_high.toFloat + today_low.toFloat)\
+  \ / 2\n  let avg_normal : Float := (normal_high.toFloat + normal_low.toFloat) /\
+  \ 2\n  (avg_today > avg_normal → result.contains? \"ABOVE\") ∧\n  (avg_today ≤ avg_normal\
+  \ → result.contains? \"BELOW\") := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,22 @@
+"vc-description": "Given an array of integers, return the smallest common factors\
+  \ of all integers in the array.\n\nWhen i say **Smallest Common Factor** i mean\
+  \ the smallest number above 1 that can divide all numbers in the array without a\
+  \ remainder.\n\nIf there are no common factors above 1, return 1 (technically 1\
+  \ is always a common factor)."
+"vc-preamble": "import Imports.AllImports\n\ndef scf (nums : List Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def listMin (xs : List Nat) : Nat :=\n  match xs with\n  | [] =>\
+  \ 0\n  | h::t => t.foldl min h\n\npartial def minFactor (n : Nat) : Nat :=\n  if\
+  \ n ≤ 1 then 1 else\n  let rec find (k : Nat) : Nat :=\n    if k * k > n then n\n\
+  \    else if n % k = 0 then k\n    else find (k + 1)\n  find 2\n"
+"vc-theorems": "theorem scf_basic_properties (nums : List Nat) :\n  let result :=\
+  \ scf nums\n  (nums ≠ [] → 1 ≤ result ∧ result ≤ listMin nums) ∧\n  (nums = [] →\
+  \ result = 1) ∧\n  (∀ n ∈ nums, n % result = 0) ∧\n  (result > 1 → ¬ ∃ k, 2 ≤ k\
+  \ ∧ k < result ∧ ∀ n ∈ nums, n % k = 0) :=\n  sorry\n\n\ntheorem scf_identical_numbers\
+  \ (n : Nat) (h : n ≥ 2) :\n  let nums := List.replicate 5 n\n  scf nums = minFactor\
+  \ n :=\n  sorry\n\n\ntheorem scf_nonpositive_inputs (nums : List Nat) (h : ∀ n ∈\
+  \ nums, n = 0) :\n  scf nums = 1 :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval scf [200, 30, 18, 8, 64, 34]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval scf\
+  \ [21, 45, 51, 27, 33]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval scf []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,27 @@
+"vc-description": "# Task\n You have set an alarm for some of the week days.\n \n\
+  \ Days of the week are encoded in binary representation like this:\n```\n0000001\
+  \ - Sunday\n0000010 - Monday\n0000100 - Tuesday\n0001000 - Wednesday\n0010000 -\
+  \ Thursday\n0100000 - Friday \n1000000 - Saturday```\nFor example, if your alarm\
+  \ is set only for Sunday and Friday, the representation will be `0100001`. \n\n\
+  \ Given the current day of the week, your task is to find the day of the week when\
+  \ alarm will ring next time.\n\n# Example\n\n For `currentDay = 4, availableWeekDays\
+  \ = 42`, the result should be `6`.\n \n ```\ncurrentDay = 4 means the current Day\
+  \ is Wednesday\navailableWeekDays = 42 convert to binary is \"0101010\"\nSo the\
+  \ next day is 6 (Friday)\n```\n\n# Input/Output\n\n\n - `[input]` integer `currentDay`\n\
+  \ \n The weekdays range from 1 to 7, 1 is Sunday and 7 is Saturday\n\n\n - `[input]`\
+  \ integer `availableWeekDays`\n \n An integer. Days of the week are encoded in its\
+  \ binary representation.\n\n\n - `[output]` an integer\n\n The next day available."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def next_day_of_week (current_day : Nat) (available_days : Nat)\
+  \ : Nat := sorry\n\ndef get_available_days (bit_pattern : Nat) : List Nat := sorry\n"
+"vc-theorems": "theorem next_day_valid (current_day : Nat) (available_days : Nat)\n\
+  \  (h1 : 1 ≤ current_day) (h2 : current_day ≤ 7) (h3 : available_days ≤ 127) :\n\
+  \  let result := next_day_of_week current_day available_days\n  1 ≤ result ∧ result\
+  \ ≤ 7 := sorry\n\n\n\n\n\n\ntheorem next_day_empty (current_day : Nat) (available_days\
+  \ : Nat)\n  (h1 : 1 ≤ current_day) (h2 : current_day ≤ 7) (h3 : available_days =\
+  \ 0) :\n  next_day_of_week current_day available_days = current_day := sorry\n\n\
+  /--\ninfo: 6\n-/\n#guard_msgs in\n#eval next_day_of_week 4 42\n\n/--\ninfo: 2\n\
+  -/\n#guard_msgs in\n#eval next_day_of_week 6 42\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval next_day_of_week 7 42\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

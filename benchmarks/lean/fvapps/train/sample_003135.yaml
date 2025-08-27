@@ -1,0 +1,32 @@
+"vc-description": "# ASC Week 1 Challenge 5 (Medium #2)\n\nCreate a function that\
+  \ takes a 2D array as an input, and outputs another array that contains the average\
+  \ values for the numbers in the nested arrays at the corresponding indexes. \n\n\
+  Note: the function should also work with negative numbers and floats.\n\n## Examples\n\
+  ```\n[ [1, 2, 3, 4], [5, 6, 7, 8] ]  ==>  [3, 4, 5, 6]\n\n1st array: [1, 2, 3, 4]\n\
+  2nd array: [5, 6, 7, 8]\n            |  |  |  |\n            v  v  v  v\naverage:\
+  \   [3, 4, 5, 6]\n\n```\n\nAnd another one:\n```\n[ [2, 3, 9, 10, 7], [12, 6, 89,\
+  \ 45, 3], [9, 12, 56, 10, 34], [67, 23, 1, 88, 34] ]  ==>  [22.5, 11, 38.75, 38.25,\
+  \ 19.5]\n\n1st array: [  2,   3,    9,   10,    7]\n2nd array: [ 12,   6,   89,\
+  \   45,    3]\n3rd array: [  9,  12,   56,   10,   34]\n4th array: [ 67,  23,  \
+  \  1,   88,   34]\n              |    |     |     |     |\n              v    v\
+  \     v     v     v\naverage:   [22.5, 11, 38.75, 38.25, 19.5]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def avgArray (arrays : List (List Int)) : List Float := sorry\n\
+  \ntheorem avg_array_length_preserving (arrays : List (List Int)) \n  (h1 : arrays.length\
+  \ > 0) (h2 : ∀ arr ∈ arrays, arr.length = arrays[0]!.length) :\n  (avgArray arrays).length\
+  \ = arrays[0]!.length := sorry\n"
+"vc-theorems": "theorem avg_array_result_within_bounds (arrays : List (List Int))\
+  \ (i : Nat)\n  (h1 : arrays.length > 0) \n  (h2 : ∀ arr ∈ arrays, arr.length = arrays[0]!.length)\n\
+  \  (h3 : i < arrays[0]!.length) :\n  let col := arrays.map (λ arr => arr[i]!)\n\
+  \  let result := avgArray arrays\n  let colMin := Float.ofInt (col.foldl min col[0]!)\n\
+  \  let colMax := Float.ofInt (col.foldl max col[0]!)\n  result[i]! ≥ colMin ∧ result[i]!\
+  \ ≤ colMax := sorry\n\n\ntheorem avg_array_singleton (arr : List Int) :\n  avgArray\
+  \ [arr] = arr.map Float.ofInt := sorry\n\n\ntheorem avg_array_non_negative (arrays\
+  \ : List (List Int))\n  (h1 : arrays.length > 0)\n  (h2 : ∀ arr ∈ arrays, arr.length\
+  \ = arrays[0]!.length)\n  (h3 : ∀ arr ∈ arrays, ∀ x ∈ arr, x ≥ 0) :\n  ∀ x ∈ avgArray\
+  \ arrays, x ≥ 0 := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval avg_array\
+  \ #[[1, 2, 3, 4], [5, 6, 7, 8]]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval\
+  \ avg_array #[[2, 5, 4, 3, 19], [2, 5, 6, 7, 10]]\n\n/--\ninfo: expected3\n-/\n\
+  #guard_msgs in\n#eval avg_array #[[2, 5, -4, 3, -19], [-2, -5, 6, 7, 10]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

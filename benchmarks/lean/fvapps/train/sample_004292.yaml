@@ -1,0 +1,41 @@
+"vc-description": "Steve and Josh are bored and want to play something. They don't\
+  \ want to think too much, so they come up with a really simple game. Write a function\
+  \ called winner and figure out who is going to win.\n\nThey are dealt the same number\
+  \ of cards. They both flip the card on the top of their deck. Whoever has a card\
+  \ with higher value wins the round and gets one point (if the cards are of the same\
+  \ value, neither of them gets a point). After this, the two cards are discarded\
+  \ and they flip another card from the top of their deck. They do this until they\
+  \ have no cards left.\n\n`deckSteve` and `deckJosh` are arrays representing their\
+  \ decks. They are filled with *cards*, represented by a single character. The card\
+  \ rank is as follows (from lowest to highest):\n```\n'2','3','4','5','6','7','8','9','T','J','Q','K','A'\n\
+  ```\n\nEvery card may appear in the deck more than once. Figure out who is going\
+  \ to win and return who wins and with what score:\n* `\"Steve wins x to y\"` if\
+  \ Steve wins; where `x` is Steve's score, `y` is Josh's score;\n* `\"Josh wins x\
+  \ to y\"` if Josh wins; where `x` is Josh's score, `y` is Steve's score;\n* `\"\
+  Tie\"` if the score is tied at the end of the game.\n\n\n## Example\n\n* Steve is\
+  \ dealt: `['A','7','8']`\n* Josh is dealt: `['K','5','9']`\n\n1. In the first round,\
+  \ ace beats king and Steve gets one point.\n2. In the second round, 7 beats 5 and\
+  \ Steve gets his second point.\n3. In the third round, 9 beats 8 and Josh gets one\
+  \ point.\n\nSo you should return: `\"Steve wins 2 to 1\"`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def VALID_CARDS := [\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"\
+  9\",\"T\",\"J\",\"Q\",\"K\",\"A\"]\n\ndef winner (deck1 deck2 : List String) : String\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem winner_valid_output (deck1 deck2 : List String) \n  (h1 :\
+  \ ∀ x ∈ deck1, x ∈ VALID_CARDS)\n  (h2 : ∀ x ∈ deck2, x ∈ VALID_CARDS)\n  (h3 :\
+  \ deck1 ≠ []) \n  (h4 : deck2 ≠ [])\n  (h5 : deck1.length = deck2.length) :\n  (winner\
+  \ deck1 deck2 = \"Steve wins\") ∨ \n  (winner deck1 deck2 = \"Josh wins\") ∨\n \
+  \ (winner deck1 deck2 = \"Tie\") :=\nsorry\n\n\ntheorem winner_symmetry (deck1 deck2\
+  \ : List String)\n  (h1 : ∀ x ∈ deck1, x ∈ VALID_CARDS)\n  (h2 : ∀ x ∈ deck2, x\
+  \ ∈ VALID_CARDS)\n  (h3 : deck1 ≠ [])\n  (h4 : deck2 ≠ [])\n  (h5 : deck1.length\
+  \ = deck2.length) :\n  (winner deck1 deck2 = \"Steve wins\" → winner deck2 deck1\
+  \ = \"Josh wins\") ∧\n  (winner deck1 deck2 = \"Josh wins\" → winner deck2 deck1\
+  \ = \"Steve wins\") ∧\n  (winner deck1 deck2 = \"Tie\" → winner deck2 deck1 = \"\
+  Tie\") :=\nsorry\n\n\ntheorem winner_identical_decks (deck : List String)\n  (h1\
+  \ : ∀ x ∈ deck, x ∈ VALID_CARDS)\n  (h2 : deck ≠ []) :\n  winner deck deck = \"\
+  Tie\" :=\nsorry\n\n/--\ninfo: 'Steve wins 2 to 1'\n-/\n#guard_msgs in\n#eval winner\
+  \ [\"A\", \"7\", \"8\"] [\"K\", \"5\", \"9\"]\n\n/--\ninfo: 'Tie'\n-/\n#guard_msgs\
+  \ in\n#eval winner [\"T\"] [\"T\"]\n\n/--\ninfo: 'Steve wins 1 to 0'\n-/\n#guard_msgs\
+  \ in\n#eval winner [\"T\", \"9\"] [\"T\", \"8\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

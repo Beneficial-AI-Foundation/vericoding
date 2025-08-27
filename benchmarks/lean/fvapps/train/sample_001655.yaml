@@ -1,0 +1,40 @@
+"vc-description": "Your task in this kata is to implement the function `create_number_class`\
+  \ which will take a string parameter `alphabet` and return a class representing\
+  \ a number composed of this alphabet.\n\nThe class number will implement the four\
+  \ classical arithmetic operations (`+`, `-`, `*`, `//`), a method to convert itself\
+  \ to string, and a `convert_to` method which will take another class number as parameter\
+  \ and will return the value of the actual class number converted to the equivalent\
+  \ value with tha alphabet of the parameter class (return a new instance of this\
+  \ one).\n\nExample:\n\n```python\nBinClass = create_number_class('01')\nHexClass\
+  \ = create_number_class('0123456789ABCDEF')\n\nx = BinClass('1010')\ny = BinClass('10')\n\
+  \nprint(x+y)                   => '1100'\nisinstance(x+y, BinClass)    => True\n\
+  print(x.convert_to(HexClass) => 'A'\n```\n\n___Notes:___\n\n* Only positives integers\
+  \ will be used (either as parameters or results of calculations).\n* You'll never\
+  \ encounter invalid calculations (divisions by zero or things like that).\n* Alphabets\
+  \ will contain at least 2 characters."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def BinClass : NumberClass := sorry\ndef HexClass : NumberClass\
+  \ := sorry\n"
+"vc-theorems": "theorem bin_str_roundtrip (s : String) : \n  s.any (fun c => c = '0'\
+  \ ∨ c = '1') → \n  BinClass.value (BinClass.toString (BinClass.value s)) = BinClass.value\
+  \ s := sorry\n\n\ntheorem bin_int_str_roundtrip (n : Nat) :\n  BinClass.value (BinClass.toString\
+  \ n) = n := sorry \n\n\ntheorem bin_arithmetic_add (s1 s2 : String) :\n  BinClass.value\
+  \ s1 + BinClass.value s2 = BinClass.value (BinClass.toString (BinClass.value s1\
+  \ + BinClass.value s2)) := sorry\n\n\ntheorem bin_arithmetic_mul (s1 s2 : String)\
+  \ :\n  BinClass.value s1 * BinClass.value s2 = BinClass.value (BinClass.toString\
+  \ (BinClass.value s1 * BinClass.value s2)) := sorry\n\n\ntheorem bin_arithmetic_div\
+  \ (s1 s2 : String) :\n  BinClass.value s2 ≠ 0 →\n  BinClass.value s1 / BinClass.value\
+  \ s2 = BinClass.value (BinClass.toString (BinClass.value s1 / BinClass.value s2))\
+  \ := sorry\n\n\ntheorem bin_arithmetic_sub (s1 s2 : String) :\n  BinClass.value\
+  \ s1 ≥ BinClass.value s2 →\n  BinClass.value s1 - BinClass.value s2 = BinClass.value\
+  \ (BinClass.toString (BinClass.value s1 - BinClass.value s2)) := sorry\n\n\ntheorem\
+  \ base_conversion (n : Nat) :\n  BinClass.value (BinClass.toString n) = HexClass.value\
+  \ (HexClass.toString n) := sorry\n\n\ntheorem arbitrary_base_conversion {α : Type}\
+  \ (s : List α) (n : Nat) [DecidableEq α] :\n  s.length > 1 →\n  ∃ (NumClass : NumberClass),\n\
+  \  NumClass.value (NumClass.toString n) = n := sorry\n\n/--\ninfo: '1100'\n-/\n\
+  #guard_msgs in\n#eval str x + y\n\n/--\ninfo: '1000'\n-/\n#guard_msgs in\n#eval\
+  \ str x - y\n\n/--\ninfo: '10100'\n-/\n#guard_msgs in\n#eval str x * y\n\n/--\n\
+  info: '101'\n-/\n#guard_msgs in\n#eval str x // y\n\n/--\ninfo: 'A'\n-/\n#guard_msgs\
+  \ in\n#eval str x.convert_to(HexClass)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

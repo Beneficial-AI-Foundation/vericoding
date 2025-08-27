@@ -1,0 +1,29 @@
+"vc-description": "Given a binary tree, find the leftmost value in the last row of\
+  \ the tree. \n\n\nExample 1:\n\nInput:\n\n    2\n   / \\\n  1   3\n\nOutput:\n1\n\
+  \n\n\n  Example 2: \n\nInput:\n\n        1\n       / \\\n      2   3\n     /   /\
+  \ \\\n    4   5   6\n       /\n      7\n\nOutput:\n7\n\n\n\nNote:\nYou may assume\
+  \ the tree (i.e., the given root node) is not NULL."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_bottom_left_value {α : Type} (t : BinaryTree α) : Option\
+  \ α :=\n  sorry\n"
+"vc-theorems": "theorem single_path_tree {α : Type} (v₁ v₂ v₃ v₄ v₅ : α) :\n  let\
+  \ t := BinaryTree.node v₁\n             (BinaryTree.node v₂\n               (BinaryTree.node\
+  \ v₃\n                 (BinaryTree.node v₄\n                   (BinaryTree.node\
+  \ v₅ BinaryTree.leaf BinaryTree.leaf)\n                   BinaryTree.leaf)\n   \
+  \              BinaryTree.leaf)\n               BinaryTree.leaf)\n             BinaryTree.leaf\n\
+  \  find_bottom_left_value t = some v₅ :=\nsorry\n\n\ntheorem complete_binary_tree\
+  \ :\n  let t := BinaryTree.node 1\n             (BinaryTree.node 2\n           \
+  \    (BinaryTree.node 4 BinaryTree.leaf BinaryTree.leaf)\n               (BinaryTree.node\
+  \ 5 BinaryTree.leaf BinaryTree.leaf))\n             (BinaryTree.node 3\n       \
+  \        (BinaryTree.node 6 BinaryTree.leaf BinaryTree.leaf)\n               (BinaryTree.node\
+  \ 7 BinaryTree.leaf BinaryTree.leaf))\n  find_bottom_left_value t = some 4 :=\n\
+  sorry\n\n\ntheorem single_node_tree {α : Type} (v : α) :\n  find_bottom_left_value\
+  \ (BinaryTree.node v BinaryTree.leaf BinaryTree.leaf) = some v :=\nsorry\n\n\ntheorem\
+  \ asymmetric_tree :\n  let t := BinaryTree.node 1\n             (BinaryTree.node\
+  \ 2 BinaryTree.leaf BinaryTree.leaf)\n             (BinaryTree.node 3\n        \
+  \       (BinaryTree.node 4 BinaryTree.leaf BinaryTree.leaf)\n               BinaryTree.leaf)\n\
+  \  find_bottom_left_value t = some 4 :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval find_bottom_left_value TreeNode(2)\n\n/--\ninfo: 7\n-/\n#guard_msgs\
+  \ in\n#eval find_bottom_left_value TreeNode(1)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

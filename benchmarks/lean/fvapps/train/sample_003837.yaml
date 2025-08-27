@@ -1,0 +1,26 @@
+"vc-description": "Let's say take 2 strings, A and B, and define the similarity of\
+  \ the strings to be the length of the longest prefix common to both strings. For\
+  \ example, the similarity of strings `abc` and `abd` is 2, while the similarity\
+  \ of strings `aaa` and `aaab` is 3.\n\nwrite a function that calculates the sum\
+  \ of similarities of a string S with each of it's **suffixes**.\n\n```python\nstring_suffix('ababaa')\
+  \ => returns 11\nstring_suffix('abc') => returns 3\n```\n\nExplanation:\n\nIn the\
+  \ first case, the suffixes of the string are `ababaa`, `babaa`, `abaa`, `baa`, `aa`\
+  \ and `a`. The similarities of each of these strings with the string `ababaa` are\
+  \ 6,0,3,0,1,1 respectively. Thus the answer is 6 + 0 + 3 + 0 + 1 + 1 = 11.\n\nFor\
+  \ the second case, the answer is simply 3 + 0 + 0 = 3.\n\nNote : Each string will\
+  \ have at least one character - no need to check for empty strings :)"
+"vc-preamble": "import Imports.AllImports\n\ndef strLen (s : String) : Nat :=\n  sorry\n\
+  \n\ndef stringSuffix (s : String) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isRepeatedChar (s : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem string_suffix_positive (s : String) :\n  stringSuffix s ≥\
+  \ 0 :=\nsorry\n\n\ntheorem string_suffix_ge_len (s : String) :\n  stringSuffix s\
+  \ ≥ strLen s :=\nsorry\n\n\ntheorem string_suffix_le_square (s : String) :\n  stringSuffix\
+  \ s ≤ strLen s * strLen s :=\nsorry\n\n\ntheorem string_suffix_repeated_char (s\
+  \ : String) :\n  isRepeatedChar s → stringSuffix s = (strLen s * (strLen s + 1))\
+  \ / 2 :=\nsorry\n\n\ntheorem string_suffix_empty :\n  stringSuffix \"\" = 0 :=\n\
+  sorry\n\n\ntheorem string_suffix_slice (s : String) (i : Nat) :\n  i < strLen s\
+  \ → stringSuffix (s.drop i) ≤ stringSuffix s :=\nsorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval string_suffix \"abc\"\n\n/--\ninfo: 11\n-/\n#guard_msgs in\n#eval string_suffix\
+  \ \"ababaa\"\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval string_suffix \"aaaa\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

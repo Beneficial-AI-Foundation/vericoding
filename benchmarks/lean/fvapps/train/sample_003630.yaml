@@ -1,0 +1,30 @@
+"vc-description": "Given a certain integer  ```n, n > 0```and a number of partitions,\
+  \  ```k, k > 0```; we want to know the partition which has the maximum or minimum\
+  \ product of its terms.\n\nThe function ```find_spec_partition() ```, will receive\
+  \ three arguments,  ```n```,  ```k```, and a command:  ```'max' or 'min'```\n\n\
+  The function should output the partition that has maximum or minimum value product\
+  \ (it depends on the given command) as an array with its terms in decreasing order.\n\
+  \nLet's see some cases (Python and Ruby)\n```\nfind_spec_partition(10, 4, 'max')\
+  \ == [3, 3, 2, 2]\nfind_spec_partition(10, 4, 'min') == [7, 1, 1, 1]\n```\nand Javascript:\n\
+  ```\nfindSpecPartition(10, 4, 'max') == [3, 3, 2, 2]\nfindSpecPartition(10, 4, 'min')\
+  \ == [7, 1, 1, 1]\n```\nThe partitions of 10 with 4 terms with their products are:\n\
+  ```\n(4, 3, 2, 1): 24\n(4, 2, 2, 2): 32\n(6, 2, 1, 1): 12\n(3, 3, 3, 1): 27\n(4,\
+  \ 4, 1, 1): 16\n(5, 2, 2, 1): 20 \n(7, 1, 1, 1): 7   <------- min. productvalue\n\
+  (3, 3, 2, 2): 36  <------- max.product value\n(5, 3, 1, 1): 15\n```\nEnjoy it!"
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat \n  | []\
+  \ => 0\n  | x::xs => x + xs.sum\n\n\ndef List.prod : List Nat → Nat \n  | [] =>\
+  \ 1\n  | x::xs => x * xs.prod\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_spec_partition (n k : Nat) (command : String) : List Nat\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem find_spec_partition_length (n k : Nat) (h : k ≤ n) :\n  ∀\
+  \ command, command = \"max\" ∨ command = \"min\" →\n    (find_spec_partition n k\
+  \ command).length = k := sorry\n\n\n\n\ntheorem find_spec_partition_positive (n\
+  \ k : Nat) (h : k ≤ n) :\n  ∀ command, command = \"max\" ∨ command = \"min\" →\n\
+  \    ∀ x, x ∈ find_spec_partition n k command → x > 0 := sorry\n\n\ntheorem find_spec_partition_max_diff\
+  \ (n k : Nat) (h : k ≤ n) :\n  let result := find_spec_partition n k \"max\"\n \
+  \ ∀ x y, x ∈ result → y ∈ result → x - y ≤ 1 := sorry\n\n/--\ninfo: [3, 3, 2, 2]\n\
+  -/\n#guard_msgs in\n#eval find_spec_partition 10 4 \"max\"\n\n/--\ninfo: [7, 1,\
+  \ 1, 1]\n-/\n#guard_msgs in\n#eval find_spec_partition 10 4 \"min\"\n\n/--\ninfo:\
+  \ [3, 3, 2]\n-/\n#guard_msgs in\n#eval find_spec_partition 8 3 \"max\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

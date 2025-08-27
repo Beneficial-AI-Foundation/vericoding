@@ -1,0 +1,24 @@
+"vc-description": "Create a function that returns the sum of the two lowest positive\
+  \ numbers given an array of minimum 4 positive integers. No floats or non-positive\
+  \ integers will be passed.\n\nFor example, when an array is passed like `[19, 5,\
+  \ 42, 2, 77]`, the output should be `7`.\n\n`[10, 343445353, 3453445, 3453545353453]`\
+  \ should return `3453455`."
+"vc-preamble": "import Imports.AllImports\n\ndef sum_two_smallest_numbers (numbers\
+  \ : List Nat) : Nat :=\n  sorry\n\n\ndef List.sum : List Nat → Nat\n  | [] => 0\n\
+  \  | x :: xs => x + List.sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.minimum (l : List Nat) : Option Nat :=\n  match l with\n\
+  \  | [] => none\n  | x :: xs => some (List.foldl min x xs)\n"
+"vc-theorems": "theorem sum_two_smallest_numbers_properties {numbers : List Nat} (h\
+  \ : numbers.length ≥ 2) :\n  let result := sum_two_smallest_numbers numbers\n  let\
+  \ sorted := numbers.toArray.qsort (·≤·)\n  (result ≥ 0) ∧\n  (match numbers.minimum\
+  \ with\n   | none => true\n   | some m => result ≥ 2 * m) ∧\n  (result ≤ List.sum\
+  \ numbers) :=\n  sorry\n\n\ntheorem sum_two_smallest_numbers_minimal {numbers :\
+  \ List Nat} (h : numbers.length ≥ 2) :\n  let result := sum_two_smallest_numbers\
+  \ numbers\n  ∀ i j, i < numbers.length → j < numbers.length → i ≠ j →\n    result\
+  \ ≤ numbers[i]! + numbers[j]! :=\n  sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n\
+  #eval sum_two_smallest_numbers #[19, 5, 42, 2, 77]\n\n/--\ninfo: 3453455\n-/\n#guard_msgs\
+  \ in\n#eval sum_two_smallest_numbers #[10, 343445353, 3453445, 3453545353453]\n\n\
+  /--\ninfo: 13\n-/\n#guard_msgs in\n#eval sum_two_smallest_numbers #[5, 8, 12, 18,\
+  \ 22]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

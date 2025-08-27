@@ -1,0 +1,43 @@
+"vc-description": "# Background\n\nMy pet bridge-maker ants are marching across a\
+  \ terrain from left to right.\n\nIf they encounter a gap, the first one stops and\
+  \ then next one climbs over him, then the next, and the next, until a bridge is\
+  \ formed across the gap. \n\nWhat clever little things they are!\n\nNow all the\
+  \ other ants can walk over the ant-bridge.\n\nWhen the last ant is across, the ant-bridge\
+  \ dismantles itself similar to how it was constructed.\n\nThis process repeats as\
+  \ many times as necessary (there may be more than one gap to cross) until all the\
+  \ ants reach the right hand side.\n\n# Kata Task\n\nMy little ants are marching\
+  \ across the terrain from left-to-right in the order ```A``` then ```B``` then ```C```...\n\
+  \nWhat order do they exit on the right hand side?\n\n# Notes\n\n* ```-``` = solid\
+  \ ground\n* ```.``` = a gap\n* The number of ants may differ but there are always\
+  \ enough ants to bridge the gaps\n* The terrain never starts or ends with a gap\n\
+  * Ants cannot pass other ants except by going over ant-bridges\n* If there is ever\
+  \ ambiguity which ant should move, then the ant at the **back** moves first\n\n\
+  # Example\n\n## Input\n* ants = ````GFEDCBA````\n* terrain = ```------------...-----------```\n\
+  \n## Output\n* result = ```EDCBAGF```\n\n## Details\n\n\nAnts moving left to right.\n\
+  GFEDCBA\n------------...-----------\n\nThe first one arrives at a gap.\nGFEDCB \
+  \    A\n------------...-----------\n\nThey start to bridge over the gap...\nGFED\
+  \       ABC\n------------...-----------\n\n...until the ant-bridge is completed!\n\
+  GF         ABCDE\n------------...-----------\n\nAnd then the remaining ants can\
+  \ walk across the bridge.\n               F\nG          ABCDE\n------------...-----------\n\
+  \nAnd when no more ants need to cross...\n           ABCDE        GF\n------------...-----------\n\
+  \n... the bridge dismantles itself one ant at a time....                \n     \
+  \        CDE      BAGF\n------------...-----------\n\n...until all ants get to the\
+  \ other side                \n                   EDCBAGF\n------------...-----------"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def ant_bridge (ants : String) (terrain : String) : String :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem ant_bridge_length_preservation\n    (ants : String) (terrain\
+  \ : String) :\n    (ant_bridge ants terrain).length = ants.length :=\n  sorry\n\n\
+  \ntheorem ant_bridge_character_preservation\n    (ants : String) (terrain : String)\
+  \ :\n    (ant_bridge ants terrain).data.toArray.qsort (· < ·) = ants.data.toArray.qsort\
+  \ (· < ·) :=\n  sorry\n\n\ntheorem ant_bridge_is_rotation\n    (ants : String) (terrain\
+  \ : String) :\n    ∃ i : Nat, i < ants.length ∧\n    ant_bridge ants terrain = \n\
+  \      (String.mk (ants.data.drop i) ++ String.mk (ants.data.take i)) :=\n  sorry\n\
+  \n\ntheorem ant_bridge_no_gaps\n    (ants : String) (n : Nat) :\n    ant_bridge\
+  \ ants (String.mk (List.replicate n '-')) = ants :=\n  sorry\n\n/--\ninfo: 'GFEDCBA'\n\
+  -/\n#guard_msgs in\n#eval ant_bridge \"GFEDCBA\" \"-----------------------\"\n\n\
+  /--\ninfo: 'EDCBAGF'\n-/\n#guard_msgs in\n#eval ant_bridge \"GFEDCBA\" \"------------...-----------\"\
+  \n\n/--\ninfo: 'CBA'\n-/\n#guard_msgs in\n#eval ant_bridge \"CBA\" \"--.--.---\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

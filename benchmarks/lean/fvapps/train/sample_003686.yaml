@@ -1,0 +1,22 @@
+"vc-description": "# Sort an array by value and index\n\nYour task is to sort an array\
+  \ of integer numbers by the product of the value and the index of the positions.\n\
+  \nFor sorting the index starts at 1, NOT at 0!\nThe sorting has to be ascending.\n\
+  The array will never be null and will always contain numbers.\n\nExample:\n```\n\
+  Input: 23, 2, 3, 4, 5\nProduct of value and index:\n23 => 23 * 1 = 23  -> Output-Pos\
+  \ 4\n 2 =>  2 * 2 = 4   -> Output-Pos 1\n 3 =>  3 * 3 = 9   -> Output-Pos 2\n 4\
+  \ =>  4 * 4 = 16  -> Output-Pos 3\n 5 =>  5 * 5 = 25  -> Output-Pos 5\n\nOutput:\
+  \ 2, 3, 4, 23, 5\n```\n\nHave fun coding it and please don't forget to vote and\
+  \ rank this kata! :-) \n\nI have also created other katas. Take a look if you enjoyed\
+  \ this kata!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sort_by_value_and_index (arr : List Int) : List Int :=\n  sorry\n"
+"vc-theorems": "theorem sort_by_value_and_index_preserves_elements {arr : List Int}\
+  \ (h : arr ≠ []) :\n  List.Perm (sort_by_value_and_index arr) arr :=\nsorry\n\n\n\
+  \n\ntheorem sort_by_value_and_index_length {arr : List Int} (h : arr ≠ []) :\n \
+  \ (sort_by_value_and_index arr).length = arr.length :=\nsorry\n\n/--\ninfo: [1,\
+  \ 2, 3, 4, 5]\n-/\n#guard_msgs in\n#eval sort_by_value_and_index [1, 2, 3, 4, 5]\n\
+  \n/--\ninfo: [2, 3, 4, 23, 5]\n-/\n#guard_msgs in\n#eval sort_by_value_and_index\
+  \ [23, 2, 3, 4, 5]\n\n/--\ninfo: [1, 9, 5, 3, 4]\n-/\n#guard_msgs in\n#eval sort_by_value_and_index\
+  \ [9, 5, 1, 4, 3]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

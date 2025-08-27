@@ -1,0 +1,41 @@
+"vc-description": "Yesterday, Chef found $K$ empty boxes in the cooler and decided\
+  \ to fill them with apples. He ordered $N$ apples, where $N$ is a multiple of $K$.\
+  \ Now, he just needs to hire someone who will distribute the apples into the boxes\
+  \ with professional passion. \nOnly two candidates passed all the interviews for\
+  \ the box filling job. In one minute, each candidate can put $K$ apples into boxes,\
+  \ but they do it in different ways: the first candidate puts exactly one apple in\
+  \ each box, while the second one chooses a random box with the smallest number of\
+  \ apples and puts $K$ apples in it.\nChef is wondering if the final distribution\
+  \ of apples can even depend on which candidate he hires. Can you answer that question?\n\
+  Note: The boxes are distinguishable (labeled), while the apples are not. Therefore,\
+  \ two distributions of apples are different if there is a box such that the number\
+  \ of apples in it when the first candidate finishes working can be different from\
+  \ the number of apples in it when the second candidate finishes working.\n\n-----Input-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first and only\
+  \ line of each test case contains two space-separated integers $N$ and $K$. \n\n\
+  -----Output-----\nFor each test case, print a single line containing the string\
+  \ \"YES\" if the final distributions of apples can be different or \"NO\" if they\
+  \ will be the same (without quotes).\n\n-----Constraints-----\n- $1 \\le T \\le\
+  \ 250$\n- $1 \\le N, K \\le 10^{18}$\n- $N$ is divisible by $K$\n\n-----Subtasks-----\n\
+  Subtask #1 (30 points): $1 \\le N, K \\le 10^5$\nSubtask #2 (70 points): original\
+  \ constraints\n\n-----Example Input-----\n3\n5 1\n4 2\n10 10\n\n-----Example Output-----\n\
+  NO\nNO\nYES\n\n-----Explanation-----\nExample case 1: No matter who is hired, all\
+  \ apples will be in the only box at the end.\nExample case 2: At the end, there\
+  \ will be two apples in each box.\nExample case 3: If we hire the first candidate,\
+  \ there will be one apple in each box, but if we hire the second one, there will\
+  \ be $10$ apples in one box and none in all other boxes."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_apple_distribution (n k : Nat) : String := sorry\n\n\
+  theorem apple_distribution_property {n k : Nat} (hn : n > 0) (hk : k > 0) :\n  solve_apple_distribution\
+  \ n k = \"YES\" ∨ solve_apple_distribution n k = \"NO\" := sorry\n"
+"vc-theorems": "theorem apple_distribution_div_condition {n k : Nat} (hn : n > 0)\
+  \ (hk : k > 0)\n  (h1 : n % k = 0) (h2 : (n / k) % k = 0) :\n  solve_apple_distribution\
+  \ n k = \"NO\" := sorry\n\n\ntheorem single_box_distribution {n : Nat} (h : n >\
+  \ 0) :\n  solve_apple_distribution n 1 = \"NO\" := sorry\n\n\ntheorem edge_case_minimum\
+  \ :\n  solve_apple_distribution 1 1 = \"NO\" := sorry\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs\
+  \ in\n#eval solve_apple_distribution 5 1\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n\
+  #eval solve_apple_distribution 4 2\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval\
+  \ solve_apple_distribution 10 10\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,27 @@
+"vc-description": "You know how sometimes you write the the same word twice in a sentence,\
+  \ but then don't notice that it happened? For example, you've been distracted for\
+  \ a second. Did you notice that *\"the\"* is doubled in the first sentence of this\
+  \ description?\n\nAs as aS you can see, it's not easy to spot those errors, especially\
+  \ if words differ in case, like *\"as\"* at the beginning of the sentence.\n\nWrite\
+  \ a function that counts the number of sections repeating the same word (case insensitive).\
+  \ The occurence of two or more equal words next after each other count as one.\n\
+  \n**Example:**\n```\n\"dog cat\"                 --> 0\n\"dog DOG cat\"        \
+  \     --> 1\n\"apple dog cat\"           --> 0\n\"pineapple apple dog cat\" -->\
+  \ 0\n\"apple     apple dog cat\" --> 1\n\"apple dog apple dog cat\" --> 0\n\"dog\
+  \ dog DOG dog dog dog\" --> 1\n\"dog dog dog dog cat cat\" --> 2\n\"cat cat dog\
+  \ dog cat cat\" --> 3\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_adjacent_pairs (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_adjacent_pairs_nonnegative (s : String) :\n  count_adjacent_pairs\
+  \ s ≥ 0 :=\n  sorry\n\n\ntheorem count_adjacent_pairs_max_bound (words : List String)\
+  \ :\n  count_adjacent_pairs (String.join (List.intersperse \" \" words)) ≤ words.length\
+  \ / 2 :=\n  sorry\n\n\ntheorem count_adjacent_pairs_empty_or_single (words : List\
+  \ String) :\n  words.length ≤ 1 → count_adjacent_pairs (String.join (List.intersperse\
+  \ \" \" words)) = 0 :=\n  sorry\n\n\ntheorem count_adjacent_pairs_case_insensitive\
+  \ (s : String) :\n  count_adjacent_pairs s = count_adjacent_pairs (s.toUpper) ∧\n\
+  \  count_adjacent_pairs s = count_adjacent_pairs (s.toLower) :=\n  sorry\n\n/--\n\
+  info: 0\n-/\n#guard_msgs in\n#eval count_adjacent_pairs \"\"\n\n/--\ninfo: 1\n-/\n\
+  #guard_msgs in\n#eval count_adjacent_pairs \"dog DOG cat\"\n\n/--\ninfo: 3\n-/\n\
+  #guard_msgs in\n#eval count_adjacent_pairs \"cat cat dog dog cat cat\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

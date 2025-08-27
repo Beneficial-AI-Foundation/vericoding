@@ -1,0 +1,35 @@
+"vc-description": "An expression is formed by taking the digits 1 to 9 in numerical\
+  \ order and then inserting into each gap between the numbers either a plus sign\
+  \ or a minus sign or neither.\n\nYour task is to write a method which takes one\
+  \ parameter and returns the **smallest possible number** of plus and minus signs\
+  \ necessary to form such an expression which equals the input.\n\n**Note:** All\
+  \ digits from 1-9 must be used exactly once.\n\nIf there is no possible expression\
+  \ that evaluates to the input, then return `null/nil/None`.\n\n~~~if:haskell\n`eval\
+  \ :: String -> Int` is available in `Preloaded` for your convenience.\n~~~\n\nThere\
+  \ are 50 random tests with upper bound of the input = 1000.\n\n\n## Examples\n\n\
+  When the input is 100, you need to return `3`, since that is the minimum number\
+  \ of signs required, because: 123 - 45 - 67 + 89 = 100 (3 operators in total).\n\
+  \nMore examples:\n```\n 11  -->  5  #  1 + 2 + 34 + 56 + 7 - 89 = 11\n100  --> \
+  \ 3  #  123 - 45 - 67 + 89 = 100\n766  -->  4  #  1 - 2 + 34 - 56 + 789 = 766\n\
+  160  -->  -  #  no solution possible\n```\n\nInspired by a [puzzle on BBC Radio\
+  \ 4](https://www.bbc.co.uk/programmes/p057wxwl) (which is unfortunately not available\
+  \ anymore)"
+"vc-preamble": "import Imports.AllImports\n\ndef operator_insertor (n : Int) : Option\
+  \ Int := sorry\n\ntheorem operator_insertor_output_range (n : Int) : \n  match operator_insertor\
+  \ n with\n  | none => True \n  | some result => 0 ≤ result ∧ result ≤ 8\n  := sorry\n\
+  \n\ndef expr_evaluates_to : Int → String → Prop := sorry\n\n/-- Helper function\
+  \ to check if expression uses given operators -/"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def expr_uses_ops : List String → String → Prop := sorry\n\ntheorem\
+  \ operator_insertor_result_exists (n : Int) (result : Int) :\n  operator_insertor\
+  \ n = some result →\n  ∃ ops : List String, \n    (ops.length = result) ∧\n    (∀\
+  \ op ∈ ops, op = \"+\" ∨ op = \"-\" ∨ op = \"\") ∧\n    (∃ expr : String, expr_evaluates_to\
+  \ n expr ∧ expr_uses_ops ops expr)\n  := sorry"
+"vc-theorems": "theorem operator_insertor_impossible_large (n : Int) :\n  n ≥ 10^10\
+  \ → operator_insertor n = none := sorry\n\n\ntheorem operator_insertor_impossible_small\
+  \ (n : Int) :\n  n ≤ -(10^10) → operator_insertor n = none := sorry\n\n/-- Helper\
+  \ function to check if a string expression evaluates to a number -/\n\n/--\ninfo:\
+  \ 5\n-/\n#guard_msgs in\n#eval operator_insertor 11\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval operator_insertor 100\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval\
+  \ operator_insertor 160\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

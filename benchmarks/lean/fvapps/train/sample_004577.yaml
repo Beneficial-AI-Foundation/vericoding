@@ -1,0 +1,78 @@
+"vc-description": "This Kata is the first in the [Rubiks Cube collection](https://www.codewars.com/collections/rubiks-party).\n\
+  \n[This](https://ruwix.com/the-rubiks-cube/notation/) or [this](https://ruwix.com/the-rubiks-cube/notation/advanced/)\
+  \ websites will be very usefull for this kata, if there will be some lack of understanding\
+  \ after the description. There are plenty of examples and a 3D model that can perform\
+  \ all needed rotations.\n\nIn this Kata you will give the cube the ability to rotate.\n\
+  \nThe Rubik's Cube is made of six faces. F(ront), L(eft), R(ight), B(ack), U(p),\
+  \ D(own)\n\nBelow a two dimensional representation of the cube.\n```\n      +-----+\n\
+  \      |     |\n      |  U  |\n      |     |\n+-----+-----+-----+-----+\n|     |\
+  \     |     |     |\n|  L  |  F  |  R  |  B  |\n|     |     |     |     |\n+-----+-----+-----+-----+\n\
+  \      |     |\n      |  D  |\n      |     |\n      +-----+\n```\n\nOn every face\
+  \ you can see nine stickers. Every sticker can be one of the six colors: Yellow,\
+  \ Blue, Red, Green, Orange, White. In this Kata they are represented with according\
+  \ small letters (y, b, r, g, o, w,).\n\nA solved cube has on every face only one\
+  \ color:\n```\n      +-----+\n      |y y y|\n      |y y y|\n      |y y y|\n+-----+-----+-----+-----+\n\
+  |b b b|r r r|g g g|o o o|\n|b b b|r r r|g g g|o o o|\n|b b b|r r r|g g g|o o o|\n\
+  +-----+-----+-----+-----+\n      |w w w|\n      |w w w|\n      |w w w|\n      +-----+\n\
+  ```\nEvery sticker on a face in this Kata has a positional number\n```\n+-----+\n\
+  |1 2 3|\n|4 5 6|\n|7 8 9|\n+-----+\n```\nSo the state of the face could be represented\
+  \ in a 9 character string consisting of the possible colors.\n```\n+-----+\n|y r\
+  \ b|\n|o o w|   state == \"yrboowygb\"\n|y g b|\n+-----+\n```\nSo a state of the\
+  \ cube is a 54 character long string consisting of the state of every face in this\
+  \ order: U L F R B D\n```\n      +-----+\n      |y y y|\n      |y y y|      state\
+  \ == \"yyyyyyyyybbbbbbbbbrrrrrrrrrgggggggggooooooooowwwwwwwww\"\n      |y y y|\n\
+  +-----+-----+-----+-----+\n|b b b|r r r|g g g|o o o|\n|b b b|r r r|g g g|o o o|\n\
+  |b b b|r r r|g g g|o o o|\n+-----+-----+-----+-----+\n      |w w w|\n      |w w\
+  \ w|\n      |w w w|\n      +-----+\n```\n\n# Rotations\nTo make things easier I\
+  \ have preloded the `state_representation(state)` function that can visialise a\
+  \ state.\n\n## basic rotations\nEvery face can rotate.\n\n- The direction of a rotation\
+  \ is always defined on your \"axis of sight\" when your looking at a face of the\
+  \ cube.\n- A rotation of a face is written with an uppercase letter: `F`, `B`, ...\n\
+  - Clockwise and counterclockwise rotations are distinguished by an apostroph, added\
+  \ to the letter for the counterclockwise rotations.\n\nExamples:\n- `F` rotates\
+  \ the front face clockwise.\n- `F'` rotates the front face conterclockwise.\n\n\
+  You can rotate a face twice with a `2` after the letter. E.g. `F2` rotates the front\
+  \ face clockwise twice.\n\n\n## slice rotations\nThere is a possibility to rotate\
+  \ only a middle layer of the cube. These are called slice turns. There are three:\
+  \ `M, E, S`. There is no obvious clockwise or counterclockwise directions, so the\
+  \ are some special standarts:\n\n`M`(idle) the layer between `L` and `R`, turn direction\
+  \ as `L`\n\n`E`(quator) the layer between `D` and `U`, turn direction as `D`\n\n\
+  `S`(tanding) the layer between `F` and `B`, turn direction as `F`\n\n```\nAfter\
+  \ a \"M\" turn\n      +-----+\n      |y o y|\n      |y o y|      state == \"yoyyoyyoybbbbbbbbbryrryrryrgggggggggowoowoowowrwwrwwrw\"\
+  \n      |y o y|\n+-----+-----+-----+-----+\n|b b b|r y r|g g g|o w o|\n|b b b|r\
+  \ y r|g g g|o w o|\n|b b b|r y r|g g g|o w o|\n+-----+-----+-----+-----+\n     \
+  \ |w r w|\n      |w r w|\n      |w r w|\n      +-----+\n```\n\n## whole cube rotations\n\
+  \nThere are three more letters you should consider: `X, Y, Z`. This are basically\
+  \ rotating the whole cube along one of the 3D axis.\n\n## double layer rotations\n\
+  \nThis are some kind of combined rotations. There are 6: `f, r, u, l, d, b`. Yes,\
+  \ like the 'basic rotations' but lowercase. A `f` means that you rotate the `F`\
+  \ face and the next slice layer with it IN THE SAME DIRECTION (in the F case its\
+  \ `S`). \n\nThis is the whole list of possible rotations that the cube should perform:\n\
+  ```\nF R U L D B F' R' U' L' D' B' F2 R2 U2 L2 D2 B2\nM E S M' E' S' M2 E2 S2\n\
+  f r u l d b f' r' u' l' d' b' f2 r2 u2 l2 d2 b2\nX Y Z X' Y' Z' X2 Y2 Z2\n```\n\
+  I have preloded a dictionary `single_rotations` that includes every single state\
+  \ to mentioned rotations.\n`single_rotations[\"F2\"] == \"yyyyyywwwbbgbbgbbgrrrrrrrrrbggbggbggoooooooooyyywwwwww\"\
+  `\n\n# Task\nimplement the `perform(sequence)` function that takes a string with\
+  \ space separeted values witha sequence of rotations. \nE.g. `F R2 f X M2 L' U2\
+  \ d' Z M' B`\nThe cube always starts in a solved state (\"yyyyyyyyybbbbbbbbbrrrrrrrrrgggggggggooooooooowwwwwwwww\"\
+  )\n\nThe function should return the changed state of the cube after the sequence.\n\
+  ```\nperform(\"F U\") == \"byybyybyyrrrbbwbbwyggrrrrrroooyggyggbbwoooooogggwwwwww\"\
+  \n```\n\n\n\nEnjoy ^_^"
+"vc-preamble": "import Imports.AllImports\n\ndef f : List (List Int) → List (List\
+  \ Int) := sorry\ndef g : List (List Int) → List (List Int) := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def perform : String → String := sorry \n\ntheorem f_g_inverse\
+  \ {matrix : List (List Int)} (h1 : matrix.length > 0) \n  (h2 : ∀ row ∈ matrix,\
+  \ row.length > 0)\n  (h3 : ∀ row ∈ matrix, row.length = matrix.head!.length) :\n\
+  \  f (g matrix) = matrix := sorry\n"
+"vc-theorems": "theorem perform_maintains_valid_colors (sequence : String) :\n  ∀\
+  \ c, c.toString ∈ (perform sequence).data.map toString → \n  c = 'y' ∨ c = 'g' ∨\
+  \ c = 'b' ∨ c = 'o' ∨ c = 'r' ∨ c = 'w' := sorry\n\n\ntheorem perform_F_move :\n\
+  \  perform \"F\" = \"yyyyybbbbbbrbbrbbrrrrrrrrrrgggggggggooooooooowwwwwwwww\" :=\
+  \ sorry\n\n\ntheorem perform_F2_move :\n  perform \"F2\" = \"yyyyyywwwbbgbbgbbgrrrrrrrrrbggbggbggoooooooooyyywwwwww\"\
+  \ := sorry\n\n\ntheorem perform_F_prime_move :\n  perform \"F'\" = \"yyyyyooobbwbbwbbwrrrrrrrrrwggwggwggooooooooobbbrwwwww\"\
+  \ := sorry\n\n/--\ninfo: 'yyyyybbbbbbrbbrbbrrrrrrrrrrgggggggggooooooooowwwwwwwww'\n\
+  -/\n#guard_msgs in\n#eval perform \"F\"\n\n/--\ninfo: 'yyyyyywwwbbgbbgbbgrrrrrrrrrbggbggbggoooooooooyyywwwwww'\n\
+  -/\n#guard_msgs in\n#eval perform \"F2\"\n\n/--\ninfo: 'yyyyyooobbwbbwbbwrrrrrrrrrwggwggwggooooooooobbbrwwwww'\n\
+  -/\n#guard_msgs in\n#eval perform \"F\"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

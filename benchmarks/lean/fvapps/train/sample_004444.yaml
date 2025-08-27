@@ -1,0 +1,17 @@
+"vc-description": "Write a function with the signature shown below:\n```python\ndef\
+  \ is_int_array(arr):\n    return True\n```\n* returns `true  / True`  if every element\
+  \ in an array is an integer or a float with no decimals.\n* returns `true  / True`\
+  \  if array is empty.\n* returns `false / False` for every other input."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_int_array (xs : List Int) : Bool := sorry\n\ntheorem int_array_property\
+  \ (arr : List Int) : \n  is_int_array arr = true := sorry \n"
+"vc-theorems": "theorem int_array_from_int_list_property (arr : List Int) : \n  is_int_array\
+  \ arr = true := sorry\n\n\ntheorem not_list_property [Inhabited α] (x : α) :\n \
+  \ is_int_array ([] : List Int) = false := sorry\n\n\ntheorem empty_array_property\
+  \ :\n  is_int_array ([] : List Int) = true := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval is_int_array []\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_int_array\
+  \ [1, 2, 3, 4]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_int_array [1.0,\
+  \ 2.0, 3.0001]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_int_array None\n\
+  \n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_int_array \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,32 @@
+"vc-description": "Skier rides on a snowy field. Its movements can be described by\
+  \ a string of characters 'S', 'N', 'W', 'E' (which correspond to $1$ meter movement\
+  \ in the south, north, west or east direction respectively).\n\nIt is known that\
+  \ if he moves along a previously unvisited segment of a path (i.e. this segment\
+  \ of the path is visited the first time), then the time of such movement is $5$\
+  \ seconds. If he rolls along previously visited segment of a path (i.e., this segment\
+  \ of the path has been covered by his path before), then it takes $1$ second.\n\n\
+  Find the skier's time to roll all the path.\n\n\n-----Input-----\n\nThe first line\
+  \ contains an integer $t$ ($1 \\le t \\le 10^4$) — the number of test cases in the\
+  \ input. Then $t$ test cases follow.\n\nEach set is given by one nonempty string\
+  \ of the characters 'S', 'N', 'W', 'E'. The length of the string does not exceed\
+  \ $10^5$ characters.\n\nThe sum of the lengths of $t$ given lines over all test\
+  \ cases in the input does not exceed $10^5$.\n\n\n-----Output-----\n\nFor each test\
+  \ case, print the desired path time in seconds.\n\n\n-----Example-----\nInput\n\
+  5\nNNN\nNS\nWWEN\nWWEE\nNWNWS\n\nOutput\n15\n6\n16\n12\n25"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_ski_time (path: String) : Nat :=\n  sorry\n\nvariable\
+  \ (path path1 path2 : String)\n\n-- Time should always be positive"
+"vc-theorems": "theorem ski_time_positive : \n  calculate_ski_time path > 0 := \n\
+  \  sorry\n\n-- Time is at least path length\n\ntheorem ski_time_lower_bound :\n\
+  \  calculate_ski_time path ≥ path.length := \n  sorry\n\n-- Time is at most path\
+  \ length * 5\n\ntheorem ski_time_upper_bound :\n  calculate_ski_time path ≤ path.length\
+  \ * 5 := \n  sorry\n\n-- Concatenated paths are bounded by sum of individual path\
+  \ times\n\ntheorem ski_time_composition_bound :\n  calculate_ski_time (path1 ++\
+  \ path2) ≤ calculate_ski_time path1 + calculate_ski_time path2 :=\n  sorry\n\n--\
+  \ Edge cases\n\ntheorem north_direction_time :\n  calculate_ski_time \"N\" = 5 :=\n\
+  \  sorry\n\n\ntheorem north_south_time : \n  calculate_ski_time \"NS\" = 6 :=\n\
+  \  sorry\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval calculate_ski_time \"NNN\"\n\
+  \n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval calculate_ski_time \"NS\"\n\n/--\ninfo:\
+  \ 25\n-/\n#guard_msgs in\n#eval calculate_ski_time \"NWNWS\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,94 @@
+"vc-description": "< PREVIOUS KATA\nNEXT KATA >\n\n## Task:\n\nYou have to write a\
+  \ function `pattern` which returns the following Pattern(See Examples) upto desired\
+  \ number of rows. \n\n* Note:`Returning` the pattern is not the same as `Printing`\
+  \ the pattern.\n\n## Parameters:\n    \n    pattern(        n        ,        y\
+  \        );\n                    ^                 ^         \n                \
+  \    |                 |         \n             Term upto which   Number of times\
+  \  \n              Basic Pattern     Basic Pattern   \n                should be\
+  \         should be     \n                 created          repeated      \n   \
+  \                              vertically    \n    \n* Note: `Basic Pattern` means\
+  \ what we created in Complete The Pattern #12 i.e. a `simple X`.\n\n## Rules/Note:\n\
+  \n* The pattern should be created using only unit digits.\n* If `n < 1` then it\
+  \ should return \"\" i.e. empty string.\n* If `y <= 1` then the basic pattern should\
+  \ not be repeated vertically.\n* `The length of each line is same`, and is equal\
+  \ to the length of longest line in the pattern.\n* Range of Parameters (for the\
+  \ sake of CW Compiler) :\n  + `n ∈ (-∞,50]`\n  + `y ∈ (-∞,25]`\n* If only one argument\
+  \ is passed then the function `pattern` should run as if `y <= 1`.\n* The function\
+  \ `pattern` should work when extra arguments are passed, by ignoring the extra arguments.\n\
+  \   \n   \n## Examples:\n\n#### Having Two Arguments:\n\n##### pattern(4,3):\n\n\
+  \        1     1\n         2   2 \n          3 3  \n           4   \n          3\
+  \ 3  \n         2   2 \n        1     1\n         2   2 \n          3 3  \n    \
+  \       4   \n          3 3  \n         2   2 \n        1     1\n         2   2\
+  \ \n          3 3  \n           4   \n          3 3  \n         2   2 \n       \
+  \ 1     1\n       \n##### pattern(10,2):\n\n        1                 1\n      \
+  \   2               2 \n          3             3  \n           4           4  \
+  \ \n            5         5    \n             6       6     \n              7  \
+  \   7      \n               8   8       \n                9 9        \n        \
+  \         0         \n                9 9        \n               8   8       \n\
+  \              7     7      \n             6       6     \n            5       \
+  \  5    \n           4           4   \n          3             3  \n         2 \
+  \              2 \n        1                 1\n         2               2 \n  \
+  \        3             3  \n           4           4   \n            5         5\
+  \    \n             6       6     \n              7     7      \n              \
+  \ 8   8       \n                9 9        \n                 0         \n     \
+  \           9 9        \n               8   8       \n              7     7    \
+  \  \n             6       6     \n            5         5    \n           4    \
+  \       4   \n          3             3  \n         2               2 \n       \
+  \ 1                 1\n\n\n\n#### Having Only One Argument:\n\n##### pattern(25):\n\
+  \n        1                                               1\n         2        \
+  \                                     2 \n          3                          \
+  \                 3  \n           4                                         4  \
+  \ \n            5                                       5    \n             6  \
+  \                                   6     \n              7                    \
+  \               7      \n               8                                 8    \
+  \   \n                9                               9        \n              \
+  \   0                             0         \n                  1              \
+  \             1          \n                   2                         2      \
+  \     \n                    3                       3            \n            \
+  \         4                     4             \n                      5        \
+  \           5              \n                       6                 6        \
+  \       \n                        7               7                \n          \
+  \               8             8                 \n                          9  \
+  \         9                  \n                           0         0          \
+  \         \n                            1       1                    \n        \
+  \                     2     2                     \n                           \
+  \   3   3                      \n                               4 4            \
+  \           \n                                5                        \n      \
+  \                         4 4                       \n                         \
+  \     3   3                      \n                             2     2        \
+  \             \n                            1       1                    \n    \
+  \                       0         0                   \n                       \
+  \   9           9                  \n                         8             8  \
+  \               \n                        7               7                \n  \
+  \                     6                 6               \n                     \
+  \ 5                   5              \n                     4                  \
+  \   4             \n                    3                       3            \n\
+  \                   2                         2           \n                  1\
+  \                           1          \n                 0                    \
+  \         0         \n                9                               9        \n\
+  \               8                                 8       \n              7    \
+  \                               7      \n             6                        \
+  \             6     \n            5                                       5    \n\
+  \           4                                         4   \n          3        \
+  \                                   3  \n         2                            \
+  \                 2 \n        1                                               1\n\
+  \        \n        \n>>>LIST OF ALL MY KATAS<<<"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pattern (n : Nat) (y : Nat := 1) : String := sorry\n\ndef stringToNat\
+  \ (s : String) : Nat := sorry\n"
+"vc-theorems": "theorem pattern_empty (n : Nat) :\n  (n = 0 ∨ n < 0) → pattern n =\
+  \ \"\" := sorry\n\n\ntheorem pattern_basic_properties (n : Nat) (h : 0 < n ∧ n ≤\
+  \ 9) :\n  let result := pattern n\n  let lines := result.splitOn \"\\n\"\n  (∀ d\
+  \ ∈ (String.join lines).data.filter Char.isDigit, \n    0 ≤ (stringToNat d.toString)\
+  \ ∧ (stringToNat d.toString) ≤ 9) ∧\n  lines.get! 0 = lines.get! (lines.length -\
+  \ 1) ∧\n  (lines.get! 0).contains '1' ∧\n  (lines.get! (n-1)).contains ((toString\
+  \ n).data.get! 0) := sorry\n\n\ntheorem pattern_repetition (n y : Nat) (h1 : 0 <\
+  \ n ∧ n ≤ 5) (h2 : 0 < y ∧ y ≤ 3) :\n  let result := pattern n y\n  let lines :=\
+  \ result.splitOn \"\\n\"\n  let matchingLines := (List.range lines.length).filter\
+  \ (λ i => lines.get! i = lines.get! 0)\n  lines.get! 0 = lines.get! (lines.length\
+  \ - 1) ∧\n  (lines.get! 0).contains '1' ∧\n  matchingLines.length ≥ y := sorry\n\
+  \n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval pattern 0\n\n/--\ninfo: expected\n-/\n\
+  #guard_msgs in\n#eval pattern 3\n\n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval\
+  \ pattern 2 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

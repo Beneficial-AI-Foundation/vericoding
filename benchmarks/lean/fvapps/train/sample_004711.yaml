@@ -1,0 +1,32 @@
+"vc-description": "Another rewarding day in the fast-paced world of WebDev. Man, you\
+  \ love your job! But as with any job, somtimes things can get a little tedious.\
+  \ Part of the website you're working on has a very repetitive structure, and writing\
+  \ all the HTML by hand is a bore. Time to automate! You want to write some functions\
+  \ that will generate the HTML for you. \n\nTo organize your code, make of all your\
+  \ functions methods of a class called HTMLGen. Tag functions should be named after\
+  \ the tag of the element they create. Each function will take one argument, a string,\
+  \ which is the inner HTML of the element to be created. The functions will return\
+  \ the string for the appropriate HTML element.\n\nFor example, \n\nIn JavaScript:\n\
+  \nIn Python:\n```python\ng = HTMLGen();\nparagraph = g.p('Hello, World!')\nblock\
+  \ = g.div(paragraph)\n\n# The following are now true\nparagraph == 'Hello, World!'\n\
+  block == 'Hello, World!'\n```\n\nYour HTMLGen class should have methods to create\
+  \ the following elements:\n\n  * a\n  * b\n  * p\n  * body\n  * div\n  * span\n\
+  \  * title\n  * comment\n\nNote: The comment method should wrap its argument with\
+  \ an HTML comment. It is the only method whose name does not match an HTML tag.\
+  \ So, ```g.comment('i am a comment')``` must produce ``````."
+"vc-preamble": "import Imports.AllImports\n\ndef HtmlGen.tag (t : HtmlTag) (content\
+  \ : String) : String := sorry\n\ntheorem tag_structure {t : HtmlTag} {content :\
+  \ String} :\n  let result := HtmlGen.tag t content\n  result.startsWith s!\"<{repr\
+  \ t}>\" ∧ \n  result.endsWith s!\"</{repr t}>\" ∧\n  result = s!\"<{repr t}>{content}</{repr\
+  \ t}>\" := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def HtmlGen.comment (content : String) : String := sorry\n\ntheorem\
+  \ comment_structure {content : String} :\n  let result := HtmlGen.comment content\n\
+  \  result.startsWith \"<!--\" ∧\n  result.endsWith \"-->\" ∧ \n  result = s!\"<!--{content}-->\"\
+  \ := sorry\n"
+"vc-theorems": "theorem nested_tags {outer inner : HtmlTag} {content : String} :\n\
+  \  let innerResult := HtmlGen.tag inner content\n  let result := HtmlGen.tag outer\
+  \ innerResult\n  result = s!\"<{repr outer}><{repr inner}>{content}</{repr inner}></{repr\
+  \ outer}>\" := sorry\n\n\ntheorem custom_tag_direct {content : String} :\n  HtmlGen.tag\
+  \ HtmlTag.custom content = s!\"<custom>{content}</custom>\" := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

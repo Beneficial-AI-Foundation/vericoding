@@ -1,0 +1,29 @@
+"vc-description": "In a forest, each rabbit has some color. Some subset of rabbits\
+  \ (possibly all of them) tell you how many other rabbits have the same color as\
+  \ them. Those answers are placed in an array.\n\nReturn the minimum number of rabbits\
+  \ that could be in the forest.\n\n\nExamples:\nInput: answers = [1, 1, 2]\nOutput:\
+  \ 5\nExplanation:\nThe two rabbits that answered \"1\" could both be the same color,\
+  \ say red.\nThe rabbit than answered \"2\" can't be red or the answers would be\
+  \ inconsistent.\nSay the rabbit that answered \"2\" was blue.\nThen there should\
+  \ be 2 other blue rabbits in the forest that didn't answer into the array.\nThe\
+  \ smallest possible number of rabbits in the forest is therefore 5: 3 that answered\
+  \ plus 2 that didn't.\n\nInput: answers = [10, 10, 10]\nOutput: 11\n\nInput: answers\
+  \ = []\nOutput: 0\n\n\nNote:\n\n\n       answers will have length at most 1000.\n\
+  \       Each answers[i] will be an integer in the range [0, 999]."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": ""
+"vc-theorems": "theorem numRabbits_nonnegative (answers : List Nat) :\n  numRabbits\
+  \ answers ≥ 0 := sorry\n\n\ntheorem numRabbits_at_least_length (answers : List Nat)\
+  \ :\n  numRabbits answers ≥ answers.length := sorry \n\n\ntheorem numRabbits_accommodates_groups\
+  \ (answers : List Nat) (ans : Nat) :\n  ans ∈ answers → numRabbits answers ≥ ans\
+  \ + 1 := sorry\n\n-- Results are the same regardless of permutations\n\ntheorem\
+  \ numRabbits_consistent_order (answers₁ answers₂ : List Nat) :\n  answers₁.Perm\
+  \ answers₂ → numRabbits answers₁ = numRabbits answers₂ := sorry\n\n-- Empty list\
+  \ gives 0\n\ntheorem numRabbits_empty : \n  numRabbits [] = 0 := sorry\n\n-- Minimum\
+  \ bound based on max answer\n\ntheorem numRabbits_min_bound {answers : List Nat}\
+  \ (h : answers ≠ []) :\n  numRabbits answers ≥ (List.maximum? answers).getD 0 +\
+  \ 1 := sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval numRabbits [1, 1, 2]\n\n\
+  /--\ninfo: 11\n-/\n#guard_msgs in\n#eval numRabbits [10, 10, 10]\n\n/--\ninfo: 0\n\
+  -/\n#guard_msgs in\n#eval numRabbits []\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

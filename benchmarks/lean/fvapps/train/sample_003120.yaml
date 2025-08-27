@@ -1,0 +1,22 @@
+"vc-description": "Lot of museum allow you to be a member, for a certain amount `amount_by_year`\
+  \ you can have unlimitted acces to the museum. \n\nIn this kata you should complete\
+  \ a function in order to know after how many visit it will be better to take an\
+  \ annual pass. The function take 2 arguments `annual_price` and `individual_price`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def how_many_times (annual_price individual_price : Nat) : Nat\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem how_many_times_positive\n  (annual_price individual_price\
+  \ : Nat)\n  (h1 : annual_price > 0)\n  (h2 : individual_price > 0) :\n  how_many_times\
+  \ annual_price individual_price > 0 :=\n  sorry\n\n\ntheorem how_many_times_covers_annual\n\
+  \  (annual_price individual_price : Nat) \n  (h1 : annual_price > 0)\n  (h2 : individual_price\
+  \ > 0) :\n  (how_many_times annual_price individual_price) * individual_price ≥\
+  \ annual_price :=\n  sorry\n\n\ntheorem how_many_times_minimal\n  (annual_price\
+  \ individual_price : Nat)\n  (h1 : annual_price > 0) \n  (h2 : individual_price\
+  \ > 0) :\n  ((how_many_times annual_price individual_price) - 1) * individual_price\
+  \ < annual_price :=\n  sorry\n\n\ntheorem how_many_times_equal_prices\n  (price\
+  \ : Nat)\n  (h : price > 0) :\n  how_many_times price price = 1 :=\n  sorry\n\n\
+  /--\ninfo: 3\n-/\n#guard_msgs in\n#eval how_many_times 40 15\n\n/--\ninfo: 3\n-/\n\
+  #guard_msgs in\n#eval how_many_times 30 10\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n\
+  #eval how_many_times 80 15\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

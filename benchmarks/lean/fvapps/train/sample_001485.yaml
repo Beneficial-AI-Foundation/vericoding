@@ -1,0 +1,33 @@
+"vc-description": "There are total N friends went to Chef's Pizza shop. There they\
+  \ bought a pizza. Chef divided the pizza into K equal slices. Now you have to check\
+  \ whether these K pizza slices can be distributed equally among the friends. Also\
+  \ given that every person should get at least one slice. If the above conditions\
+  \ are possible then print \"YES\" otherwise print \"NO\".\n\n-----Input:-----\n\
+  The first line of the input contains a single integer T denoting the number of test\
+  \ cases. The description of T test cases follows.\nThe first line of each test case\
+  \ contains a integers N.\nThe second line of each test case contains K.\n\n-----Output:-----\n\
+  For each test case, print a single line containing \"YES\" if the given conditions\
+  \ are true else \"NO\" if the given conditions are false.\n\n-----Constraints-----\n\
+  1<=T<=10\n1<=N<=10^6\n1<=K<=10^6\n\n-----Sample Input:-----\n2\n10\n20\n12\n5\n\n\
+  -----Sample Output:-----\nYES\nNO\n\n-----EXPLANATION:-----\nExplanation case 1:\
+  \ since there are 10 friends and 20 pizza slice, so each can get 2 slices, so \"\
+  YES\".\nExplanation case 2: Since there are 12 friends and only 5 pizza slice, so\
+  \ there is no way pizza slices can be distributed equally and each friend gets at\
+  \ least one pizza slice, so \"NO\"."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def canDistributePizza (n k : Nat) : String := sorry\n\ntheorem\
+  \ can_distribute_basic_props {n k : Nat} (h1 : n > 0) (h2 : k > 0) :\n  canDistributePizza\
+  \ n k = \"YES\" ∨ canDistributePizza n k = \"NO\" := sorry\n"
+"vc-theorems": "theorem insufficient_slices {n k : Nat} (h1 : n > 0) (h2 : k > 0)\
+  \ (h3 : k < n) :\n  canDistributePizza n k = \"NO\" := sorry\n\n\ntheorem yes_case_props\
+  \ {n k : Nat} (h1 : n > 0) (h2 : k > 0)\n  (h3 : canDistributePizza n k = \"YES\"\
+  ) :\n  k % n = 0 ∧ k ≥ n := sorry\n\n\ntheorem no_case_props {n k : Nat} (h1 : n\
+  \ > 0) (h2 : k > 0)\n  (h3 : canDistributePizza n k = \"NO\") :\n  k < n ∨ k % n\
+  \ ≠ 0 := sorry\n\n\ntheorem exact_multiple_works {n m : Nat} (h1 : n > 0) (h2 :\
+  \ m > 1) :\n  canDistributePizza n (n * m) = \"YES\" := sorry\n\n\ntheorem non_divisible_fails\
+  \ {n k offset : Nat} \n  (h1 : n > 1) (h2 : offset > 0) (h3 : offset < n) :\n  canDistributePizza\
+  \ n (n * k + offset) = \"NO\" := sorry\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n\
+  #eval can_distribute_pizza 10 20\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval can_distribute_pizza\
+  \ 12 5\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval can_distribute_pizza 4 8\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

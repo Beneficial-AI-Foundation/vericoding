@@ -1,0 +1,67 @@
+"vc-description": "The professional Russian, Dmitri, from the popular youtube channel\
+  \ FPSRussia has hired you to help him move his arms cache between locations without\
+  \ detection by the authorities.  Your job is to write a Shortest Path First (SPF)\
+  \ algorithm that will provide a route with the shortest possible travel time between\
+  \ waypoints, which will minimize the chances of detection.  One exception is that\
+  \ you can't travel through the same waypoint twice.  Once you've been seen there\
+  \ is a higher chance of detection if you travel through that waypoint a second time.\n\
+  \nYour function shortestPath will take three inputs, a topology/map of the environment,\
+  \ along with a starting point, and an ending point.  The topology will be a dictionary\
+  \ with the keys being the different waypoints.  The values of each entry will be\
+  \ another dictionary with the keys being the adjacent waypoints, and the values\
+  \ being the time it takes to travel to that waypoint.\n\nTake the following topology\
+  \ as an example:\n\n     topology = {'a' : {'b': 10, 'c': 20},\n               \
+  \  'b' : {'a': 10, 'c': 20},\n                 'c' : {'a': 10, 'b': 20} }\n\nIn\
+  \ this example, waypoint 'a' has two adjacent waypoints, 'b' and 'c'.  And the time\
+  \ it takes to travel from 'a' to 'b' is 10 minutes, and from 'a' to 'c' is 20 minutes.\
+  \  It's important to note that the time between these waypoints is one way travel\
+  \ time and can be different in opposite directions.  This is highlighted in the\
+  \ example above where a->c takes 20 minutes, but c->a takes 10 minutes.\n\nThe starting\
+  \ and ending points will passed to your function as single character strings such\
+  \ as 'a' or 'b', which will match a key in your topology.\n\nThe return value should\
+  \ be in the form of a list of lists of waypoints that make up the shortest travel\
+  \ time.  If there multiple paths that have equal travel time, then you should choose\
+  \ the path with the least number of waypoints.  If there are still multiple paths\
+  \ with equal travel time and number of waypoints, then you should return a list\
+  \ of lists with the multiple options. For multiple solutions, the list of paths\
+  \ should be sorted in lexicographic (alphabetical) order. If there is only one shortest\
+  \ path, you should still return a list of that list.\n\nHere are a few examples:\n\
+  \    #Topology\n    #      b--d--g   \n    #     /   |   \\  \n    #    /    | \
+  \   \\ \n    #   a-----e     h\n    #    \\     \\   / \n    #     \\     \\ / \
+  \ \n    #      c-----f  \n    topology = {'a' : {'b': 10, 'c': 20, 'e':20},\n  \
+  \              'b' : {'a': 10, 'd': 20},\n                'c' : {'a': 10, 'f': 20},\n\
+  \                'd' : {'b': 10, 'e': 20, 'g': 20},\n                'e' : {'a':\
+  \ 10, 'd': 20, 'f': 20},                      \n                'f' : {'c': 10,\
+  \ 'e': 20, 'h': 20},\n                'g' : {'d': 10, 'h': 20},\n              \
+  \  'h' : {'g': 10, 'f': 20},\n    }\n    \n    Two solutions with a time of 40:\n\
+  \    shortestPath(topology, 'a', 'f') == [['a', 'c', 'f'], ['a', 'e', 'f']] \n \
+  \    \n    One solution with a time of 20:\n    shortestPath(topology, 'a', 'e')\
+  \ == [['a', 'e']]"
+"vc-preamble": "import Imports.AllImports\n\ndef List.noDuplicates (path : List Char)\
+  \ : Prop := \n  ∀ (x : Char), (List.count x path) ≤ 1\n\n\ndef List.isSorted (xs\
+  \ : List (List Char)) : Prop :=\n  ∀ i j, i < j → j < xs.length → (xs.get ⟨i, by\
+  \ sorry⟩) ≤ (xs.get ⟨j, by sorry⟩)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Topology := Char → Char → Option Nat\n\ndef shortestPath (G\
+  \ : Topology) (s e : Char) : List (List Char) :=\nsorry\n"
+"vc-theorems": "theorem shortestPath_valid_paths {G : Topology} {s e : Char}\n  (path\
+  \ : List Char) (h : path ∈ shortestPath G s e) :\n    path.head? = some s ∧ \n \
+  \   path.getLast? = some e ∧\n    path.noDuplicates :=\nsorry\n\n\ntheorem shortestPath_equal_length\
+  \ {G : Topology} {s e : Char}\n  (p1 p2 : List Char) (h1 : p1 ∈ shortestPath G s\
+  \ e) (h2 : p2 ∈ shortestPath G s e) :\n    p1.length = p2.length :=\nsorry\n\n\n\
+  theorem shortestPath_sorted {G : Topology} {s e : Char} :\n  (shortestPath G s e).isSorted\
+  \ :=\nsorry\n\n\ntheorem shortestPath_connected {G : Topology} {s e : Char}\n  (path\
+  \ : List Char) (h : path ∈ shortestPath G s e) :\n  ∀ i, i < path.length - 1 →\n\
+  \    ∃ h : i < path.length, ∃ h' : i + 1 < path.length,\n      (G (path.get ⟨i,\
+  \ h⟩) (path.get ⟨i+1, h'⟩)).isSome :=\nsorry\n\n\ntheorem shortestPath_disconnected\
+  \ {G : Topology} {s e : Char}\n  (h_disconnected : ∀ c, (G s c).isNone) :\n  shortestPath\
+  \ G s e = [] :=\nsorry\n\n/--\ninfo: [['a', 'c', 'f'], ['a', 'e', 'f']]\n-/\n#guard_msgs\
+  \ in\n#eval shortestPath {\"a\": {\"b\": 10, \"c\": 20, \"e\": 20}, \"b\": {\"a\"\
+  : 10, \"d\": 20}, \"c\": {\"a\": 10, \"f\": 20}, \"d\": {\"b\": 10, \"e\": 20, \"\
+  g\": 20}, \"e\": {\"a\": 10, \"d\": 20, \"f\": 20}, \"f\": {\"c\": 10, \"e\": 20,\
+  \ \"h\": 20}, \"g\": {\"d\": 10, \"h\": 20}, \"h\": {\"g\": 10, \"f\": 20}} \"a\"\
+  \ \"f\"\n\n/--\ninfo: [['a', 'e']]\n-/\n#guard_msgs in\n#eval shortestPath topology1\
+  \ \"a\" \"e\"\n\n/--\ninfo: [['a', 'c']]\n-/\n#guard_msgs in\n#eval shortestPath\
+  \ {\"a\": {\"b\": 10, \"c\": 20}, \"b\": {\"a\": 10, \"c\": 20}, \"c\": {\"a\":\
+  \ 10, \"b\": 20}} \"a\" \"c\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,18 @@
+"vc-description": "A triangle is called an equable triangle if its area equals its\
+  \ perimeter. Return `true`, if it is an equable triangle, else return `false`. You\
+  \ will be provided with the length of sides of the triangle. Happy Coding!"
+"vc-preamble": "import Imports.AllImports\n\ndef isValidTriangle (a b c : Float) :\
+  \ Prop :=\n  (a + b > c) ∧ (b + c > a) ∧ (a + c > b)\n\n\ndef calculateArea (a b\
+  \ c : Float) : Float :=\n  let s := (a + b + c) / 2\n  Float.sqrt (s * (s - a) *\
+  \ (s - b) * (s - c))\n\n\ndef equableTriangle (a b c : Float) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isClose (x y : Float) (tol : Float) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem equable_triangle_isosceles {x : Float} (h : x > 0)\n  (hvalid\
+  \ : isValidTriangle x x x) :\n  equableTriangle x x x = isClose (calculateArea x\
+  \ x x) (3 * x) 0.0001 := by\n  sorry\n\n\ntheorem equable_triangle_general {a b\
+  \ c : Float} (ha : a > 0) (hb : b > 0) (hc : c > 0)\n  (hvalid : isValidTriangle\
+  \ a b c) :\n  equableTriangle a b c = isClose (calculateArea a b c) (a + b + c)\
+  \ 0.0001 := by\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval equable_triangle\
+  \ 5 12 13\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval equable_triangle 2 3 4\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval equable_triangle 6 25 29\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

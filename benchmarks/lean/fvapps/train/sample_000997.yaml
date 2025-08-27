@@ -1,0 +1,35 @@
+"vc-description": "Chef has some numbers. His girlfriend Chefina feels good when chef\
+  \ gives her a particular pattern number also called as Armstrong number.\nArmstrong\
+  \ number is a number whose sum of its all individual digit raise to the power of\
+  \ the number of digit in that number is equal to that number itself\neg.. 153 =\
+  \ 1^3 + 5^3 + 3^3 (153 is an Armstrong number)\n1634 = 1^4 + 6^4 + 3^4 + 4^4 (1634\
+  \ is an Armstrong number)\nAs a love guru of chef you have to help chef to find\
+  \ Armstrong numbers Among the numbers which chef has initially so that Chefina feels\
+  \ good\n\n-----Input:-----\nFirst line will contain a positive Integer $T$ which\
+  \ is the number of testcases\nNext $T$ lines follows an Integer $N$.\n\n-----Output:-----\n\
+  For Every n You have to print \"FEELS GOOD\" without qoutes if it is an armstrong\
+  \ number otherwise Print \"FEELS BAD\" without quotes\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 10$\n- $2 \\leq N \\leq 10^6$\n\n-----Sample Input:-----\n3\n\
+  153\n11\n1634\n\n-----Sample Output:-----\nFEELS GOOD\nFEELS BAD\nFEELS GOOD\n\n\
+  -----EXPLANATION:-----\nFor test case 1 --> 153 = 1^3 + 5^3 + 3^3 (153 is an armstrong\
+  \ number)"
+"vc-preamble": "import Imports.AllImports\n\ndef power (x y : Nat) : Nat :=\n  sorry\n\
+  \n\ndef order (x : Nat) : Nat :=\n  sorry\n\n\ndef is_armstrong (x : Nat) : String\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_numbers (numbers : List Nat) : List String :=\n  sorry\n"
+"vc-theorems": "theorem power_properties (x : Nat) (y : Nat) :\n  (y = 0 → power x\
+  \ y = 1) ∧\n  (y = 1 → power x y = x) ∧\n  (y = 2 → power x y = x * x) :=\n  sorry\n\
+  \n\ntheorem order_properties (x : Nat) :\n  (x = 0 → order x = 0) ∧\n  (0 < x ∧\
+  \ x < 10 → order x = 1) ∧\n  (10 ≤ x ∧ x < 100 → order x = 2) :=\n  sorry\n\n\n\
+  theorem is_armstrong_properties (x : Nat) :\n  (x < 10 → is_armstrong x = \"FEELS\
+  \ GOOD\") ∧\n  (is_armstrong x = \"FEELS GOOD\" ∨ is_armstrong x = \"FEELS BAD\"\
+  ) :=\n  sorry\n\n\ntheorem check_numbers_properties (numbers : List Nat) :\n  (numbers\
+  \ = [] → check_numbers numbers = []) ∧\n  (List.length (check_numbers numbers) =\
+  \ List.length numbers) ∧\n  (∀ x ∈ check_numbers numbers, x = \"FEELS GOOD\" ∨ x\
+  \ = \"FEELS BAD\") :=\n  sorry\n\n/--\ninfo: ['FEELS GOOD', 'FEELS BAD', 'FEELS\
+  \ GOOD']\n-/\n#guard_msgs in\n#eval check_numbers [153, 11, 1634]\n\n/--\ninfo:\
+  \ ['FEELS GOOD', 'FEELS GOOD', 'FEELS GOOD']\n-/\n#guard_msgs in\n#eval check_numbers\
+  \ [370, 371, 407]\n\n/--\ninfo: ['FEELS BAD', 'FEELS BAD', 'FEELS BAD']\n-/\n#guard_msgs\
+  \ in\n#eval check_numbers [123, 555, 999]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

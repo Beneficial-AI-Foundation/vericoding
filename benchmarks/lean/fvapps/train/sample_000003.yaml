@@ -1,0 +1,54 @@
+"vc-description": "You have $n$ barrels lined up in a row, numbered from left to right\
+  \ from one. Initially, the $i$-th barrel contains $a_i$ liters of water.\n\nYou\
+  \ can pour water from one barrel to another. In one act of pouring, you can choose\
+  \ two different barrels $x$ and $y$ (the $x$-th barrel shouldn't be empty) and pour\
+  \ any possible amount of water from barrel $x$ to barrel $y$ (possibly, all water).\
+  \ You may assume that barrels have infinite capacity, so you can pour any amount\
+  \ of water in each of them. \n\nCalculate the maximum possible difference between\
+  \ the maximum and the minimum amount of water in the barrels, if you can pour water\
+  \ at most $k$ times.\n\nSome examples:   if you have four barrels, each containing\
+  \ $5$ liters of water, and $k = 1$, you may pour $5$ liters from the second barrel\
+  \ into the fourth, so the amounts of water in the barrels are $[5, 0, 5, 10]$, and\
+  \ the difference between the maximum and the minimum is $10$;  if all barrels are\
+  \ empty, you can't make any operation, so the difference between the maximum and\
+  \ the minimum amount is still $0$. \n\n\n-----Input-----\n\nThe first line contains\
+  \ one integer $t$ ($1 \\le t \\le 1000$) — the number of test cases.\n\nThe first\
+  \ line of each test case contains two integers $n$ and $k$ ($1 \\le k < n \\le 2\
+  \ \\cdot 10^5$) — the number of barrels and the number of pourings you can make.\n\
+  \nThe second line contains $n$ integers $a_1, a_2, \\dots, a_n$ ($0 \\le a_i \\\
+  le 10^{9}$), where $a_i$ is the initial amount of water the $i$-th barrel has.\n\
+  \nIt's guaranteed that the total sum of $n$ over test cases doesn't exceed $2 \\\
+  cdot 10^5$.\n\n\n-----Output-----\n\nFor each test case, print the maximum possible\
+  \ difference between the maximum and the minimum amount of water in the barrels,\
+  \ if you can pour water at most $k$ times.\n\n\n-----Example-----\nInput\n2\n4 1\n\
+  5 5 5 5\n3 2\n0 0 0\n\nOutput\n10\n0"
+"vc-preamble": "import Imports.AllImports\n\ndef max_water_difference (n : Nat) (k\
+  \ : Nat) (barrels : List Nat) : Nat :=\n  sorry\n\n/-- Helper function to sum a\
+  \ list -/\n\ndef listSum : List Nat → Nat\n  | [] => 0\n  | x :: xs => x + listSum\
+  \ xs\n\n/-- Helper function to sort list descending -/\n\ndef sortDescending (l\
+  \ : List Nat) : List Nat :=\n  sorry\n\n/-- Helper function to get maximum of non-empty\
+  \ list -/\n\ndef listMaximum : List Nat → Nat\n  | [] => 0\n  | [x] => x\n  | x\
+  \ :: xs => if x > listMaximum xs then x else listMaximum xs\n\n/-- Helper function\
+  \ to take first n elements -/"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def takeFront : Nat → List Nat → List Nat\n  | 0, _ => []\n  |\
+  \ _, [] => []\n  | n+1, x :: xs => x :: takeFront n xs\n\n/-- max_water_difference\
+  \ returns sum of k+1 largest values -/"
+"vc-theorems": "theorem max_water_diff_equals_k_plus_one_largest\n  {n k : Nat} {barrels\
+  \ : List Nat}\n  (h₁ : barrels.length = n)\n  (h₂ : k < n) :\n  max_water_difference\
+  \ n k barrels = \n    listSum (takeFront (k+1) (sortDescending barrels)) :=\n  sorry\n\
+  \n/-- max_water_difference result is greater than or equal to max barrel -/\n\n\
+  theorem max_water_diff_ge_max_barrel\n  {n k : Nat} {barrels : List Nat}\n  (h₁\
+  \ : barrels.length = n)\n  (h₂ : k < n)\n  (h₃ : barrels ≠ []) :\n  max_water_difference\
+  \ n k barrels ≥ listMaximum barrels :=\n  sorry\n\n/-- max_water_difference result\
+  \ is less than or equal to sum of all barrels -/\n\ntheorem max_water_diff_le_total_sum\n\
+  \  {n k : Nat} {barrels : List Nat}\n  (h₁ : barrels.length = n)\n  (h₂ : k < n)\
+  \ :\n  max_water_difference n k barrels ≤ listSum barrels :=\n  sorry\n\n/-- max_water_difference\
+  \ does not modify input list -/\n\ntheorem max_water_diff_preserves_input\n  {n\
+  \ k : Nat} {barrels : List Nat}\n  (h₁ : barrels.length = n)\n  (h₂ : k < n) :\n\
+  \  let original := barrels\n  let _ := max_water_difference n k barrels\n  barrels\
+  \ = original :=\n  sorry\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval max_water_difference\
+  \ 4 1 [5, 5, 5, 5]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval max_water_difference\
+  \ 3 2 [0, 0, 0]\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval max_water_difference\
+  \ 5 2 [1, 2, 3, 4, 5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

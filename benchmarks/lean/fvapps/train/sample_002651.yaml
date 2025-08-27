@@ -1,0 +1,13 @@
+"vc-description": "Here we have a function that help us spam our hearty laughter.\
+  \ But is not working! I need you to find out why...\n\nExpected results:\n\n```python\n\
+  spam(1)  ==> \"hue\"\nspam(6)  ==> \"huehuehuehuehuehue\"\nspam(14) ==> \"huehuehuehuehuehuehuehuehuehuehuehuehuehue\"\
+  \n```"
+"vc-preamble": "import Imports.AllImports\n\ndef String.replicate (n : Nat) (s : String)\
+  \ : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def spam (n : Nat) : String :=\n  sorry\n"
+"vc-theorems": "theorem spam_multiplication (n : Nat) : n ≤ 1000 → spam n = String.replicate\
+  \ n \"hue\" :=\n  sorry\n\n/--\ninfo: 'hue'\n-/\n#guard_msgs in\n#eval spam 1\n\n\
+  /--\ninfo: 'huehuehuehuehuehue'\n-/\n#guard_msgs in\n#eval spam 6\n\n/--\ninfo:\
+  \ 'huehuehuehuehuehuehuehuehuehuehuehuehuehue'\n-/\n#guard_msgs in\n#eval spam 14\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

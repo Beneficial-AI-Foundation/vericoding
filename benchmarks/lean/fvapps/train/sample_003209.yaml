@@ -1,0 +1,37 @@
+"vc-description": "Given time in 24-hour format, convert it to words. \n\n```\nFor\
+  \ example:\n13:00 = one o'clock \n13:09 = nine minutes past one \n13:15 = quarter\
+  \ past one \n13:29 = twenty nine minutes past one\n13:30 = half past one \n13:31\
+  \ = twenty nine minutes to two\n13:45 = quarter to two \n00:48 = twelve minutes\
+  \ to one\n00:08 = eight minutes past midnight\n12:00 = twelve o'clock\n00:00 = midnight\n\
+  \nNote: If minutes == 0, use 'o'clock'. If minutes <= 30, use 'past', and for minutes\
+  \ > 30, use 'to'. \n\n```\n\nMore examples in test cases. Good luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef timeToWords (time: String) : String\
+  \ := sorry\n\ndef hasSubstring (s1 s2 : String) : Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def endsWithStr (s1 s2 : String) : Bool := sorry\n\ntheorem time_to_words_basic_format\
+  \ (hours : Nat) (minutes : Nat) \n  (h_hours : hours ≤ 23) (h_minutes : minutes\
+  \ ≤ 59) :\n  let result := timeToWords s!\"#{hours}:#{minutes}\"\n  (hasSubstring\
+  \ result \"o'clock\" ∨ hasSubstring result \"past\" ∨ \n   hasSubstring result \"\
+  to\" ∨ result = \"midnight\") := sorry\n"
+"vc-theorems": "theorem time_to_words_oclock (hours : Nat) (h_hours : hours ≤ 23)\
+  \ :\n  let result := timeToWords s!\"#{hours}:00\"\n  (hours = 0 → result = \"midnight\"\
+  ) ∧ \n  (hours ≠ 0 → endsWithStr result \"o'clock\") := sorry\n\n\ntheorem time_to_words_quarter_past\
+  \ (hours : Nat) (h_hours : hours ≤ 23) :\n  let result := timeToWords s!\"#{hours}:15\"\
+  \n  (hours = 0 → hasSubstring result \"quarter past midnight\") ∧\n  (hours ≠ 0\
+  \ → hasSubstring result \"quarter past\") := sorry\n\n\ntheorem time_to_words_half_past\
+  \ (hours : Nat) (h_hours : hours ≤ 23) :\n  let result := timeToWords s!\"#{hours}:30\"\
+  \n  (hours = 0 → hasSubstring result \"half past midnight\") ∧\n  (hours ≠ 0 → hasSubstring\
+  \ result \"half past\") := sorry\n\n\ntheorem time_to_words_past_minutes (hours\
+  \ minutes : Nat) \n  (h_hours : hours ≤ 23) (h_minutes : minutes ≤ 29) (h_minutes_pos\
+  \ : minutes ≥ 1)\n  (h_not_quarter : minutes ≠ 15) :\n  let result := timeToWords\
+  \ s!\"#{hours}:#{minutes}\"\n  hasSubstring result \"past\" ∧ hasSubstring result\
+  \ \"minute\" ∧\n  (hasSubstring result \"minutes\" ↔ minutes ≠ 1) := sorry\n\n\n\
+  theorem time_to_words_to_minutes (hours minutes : Nat)\n  (h_hours : hours ≤ 23)\
+  \ (h_minutes : minutes ≤ 59) (h_minutes_low : minutes ≥ 31)\n  (h_not_quarter :\
+  \ minutes ≠ 45) :\n  let result := timeToWords s!\"#{hours}:#{minutes}\"\n  hasSubstring\
+  \ result \"to\" ∧ hasSubstring result \"minute\" := sorry\n\n/--\ninfo: \"one o'clock\"\
+  \n-/\n#guard_msgs in\n#eval time_to_words \"13:00\"\n\n/--\ninfo: 'quarter past\
+  \ one'\n-/\n#guard_msgs in\n#eval time_to_words \"13:15\"\n\n/--\ninfo: 'midnight'\n\
+  -/\n#guard_msgs in\n#eval time_to_words \"00:00\"\n\n/--\ninfo: 'quarter to midnight'\n\
+  -/\n#guard_msgs in\n#eval time_to_words \"23:45\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

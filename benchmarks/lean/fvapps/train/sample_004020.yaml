@@ -1,0 +1,33 @@
+"vc-description": "# Task\n You're standing at the top left corner of an `n × m` grid\
+  \ and facing towards the `right`. \n \n Then you start walking one square at a time\
+  \ in the direction you are facing. \n \n If you reach the border of the grid or\
+  \ if the next square you are about to visit has already been visited, you turn right.\
+  \ \n \n You stop when all the squares in the grid are visited. What direction will\
+  \ you be facing when you stop?\n\n You can see the example of your long walk in\
+  \ the image below. The numbers denote the order in which you visit the cells.\n\n\
+  \ ![](https://i.gyazo.com/2fc5884d2c227a0ddeca503e6a0261be.png)\n\n Given two integers\
+  \ n and m, denoting the number of rows and columns respectively, find out the direction\
+  \ you will be facing at the end. \n \n Output `\"L\"` for left, `\"R\"` for right,\
+  \ `\"U\"` for up, and `\"D\"` for down.\n\n# Example:\n\n For `n = 3, m = 3`, the\
+  \ output should be `\"R\"`.\n\n This example refers to the picture given in the\
+  \ description. At the end of your walk you will be standing in the middle of the\
+  \ grid facing right.\n\n# Input/Output\n\n\n - `[input]` integer `n`\n \n number\
+  \ of rows.\n\n `1 <= n <= 1000`\n\n\n - `[input]` integer `m`\n \n number of columns.\n\
+  \n `1 <= m <= 1000`\n \n \n - `[output]` a string\n\n The final direction."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Direction := String\n\ndef direction_in_grid (n m : Nat) :\
+  \ Direction :=\n  sorry\n"
+"vc-theorems": "theorem direction_in_grid_output_format {n m : Nat} (h1 : n > 0) (h2\
+  \ : m > 0) (h3 : n ≤ 1000) (h4 : m ≤ 1000) :\n  direction_in_grid n m = \"U\" ∨\
+  \ \n  direction_in_grid n m = \"D\" ∨\n  direction_in_grid n m = \"L\" ∨ \n  direction_in_grid\
+  \ n m = \"R\" :=\n  sorry\n\n\ntheorem equal_dimensions_pattern {n : Nat} (h1 :\
+  \ n > 0) (h2 : n ≤ 1000) :\n  direction_in_grid n n = (if n % 2 = 0 then \"L\" else\
+  \ \"R\") :=\n  sorry\n\n\ntheorem dimension_comparison_consistency {n m : Nat} (h1\
+  \ : n > 0) (h2 : m > 0) (h3 : n ≤ 1000) (h4 : m ≤ 1000) :\n  (m ≥ n → direction_in_grid\
+  \ n m = \"L\" ∨ direction_in_grid n m = \"R\") ∧\n  (m < n → direction_in_grid n\
+  \ m = \"U\" ∨ direction_in_grid n m = \"D\") :=\n  sorry\n\n/--\ninfo: 'R'\n-/\n\
+  #guard_msgs in\n#eval direction_in_grid 3 3\n\n/--\ninfo: 'L'\n-/\n#guard_msgs in\n\
+  #eval direction_in_grid 2 4\n\n/--\ninfo: 'U'\n-/\n#guard_msgs in\n#eval direction_in_grid\
+  \ 4 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,27 @@
+"vc-description": "In this Kata, you will be given an array and your task will be\
+  \ to determine if an array is in ascending or descending order and if it is rotated\
+  \ or not. \n\nConsider the array `[1,2,3,4,5,7,12]`. This array is sorted in `Ascending`\
+  \ order. If we rotate this array once to the left, we get `[12,1,2,3,4,5,7]` and\
+  \ twice-rotated we get `[7,12,1,2,3,4,5]`. These two rotated arrays are in `Rotated\
+  \ Ascending` order.\n\nSimilarly, the array `[9,6,5,3,1]` is in `Descending` order,\
+  \ but we can rotate it to get an array in `Rotated Descending` order: `[1,9,6,5,3]`\
+  \ or `[3,1,9,6,5]` etc.\n\nArrays will never be unsorted, except for those that\
+  \ are rotated as shown above. Arrays will always have an answer, as shown in the\
+  \ examples below.\n\nMore examples:\n```Haskell\nsolve([1,2,3,4,5,7]) = \"A\" --\
+  \ Ascending\nsolve([7,1,2,3,4,5]) = \"RA\" -- Rotated ascending\nsolve([4,5,6,1,2,3])\
+  \ = \"RA\" -- Rotated ascending\nsolve([9,8,7,6]) = \"D\" -- Descending\nsolve([5,9,8,7,6])\
+  \ = \"RD\" -- Rotated Descending\n```\nMore examples in the test cases. \n\nGood\
+  \ luck!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (lst : List Int) : String := sorry\n\ntheorem output_format\
+  \ (lst : List Int) (h : lst.length ≥ 3) :\n  let result := solve lst\n  result =\
+  \ \"A\" ∨ result = \"D\" ∨ result = \"RA\" ∨ result = \"RD\" := sorry\n"
+"vc-theorems": "theorem rotation_property (lst : List Int) (h : lst.length ≥ 3) :\n\
+  \  let original_result := solve lst\n  let rotated := lst.tail ++ [lst.head!]\n\
+  \  let rotated_result := solve rotated\n  (original_result = \"A\" ∨ original_result\
+  \ = \"D\") →\n  (rotated_result = \"RA\" ∨ rotated_result = \"RD\") := sorry\n\n\
+  /--\ninfo: 'A'\n-/\n#guard_msgs in\n#eval solve [1, 2, 3, 4, 5, 7]\n\n/--\ninfo:\
+  \ 'RA'\n-/\n#guard_msgs in\n#eval solve [7, 1, 2, 3, 4, 5]\n\n/--\ninfo: 'RD'\n\
+  -/\n#guard_msgs in\n#eval solve [5, 9, 8, 7, 6]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

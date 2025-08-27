@@ -1,0 +1,38 @@
+"vc-description": "per nextum in unam tum XI conscribementis fac sic\n\n    vestibulo\
+  \ perlegementum da varo.\n\n    morde varo.\n\n    seqis cumula varum.\n\ncis\n\n\
+  \n\nper nextum in unam tum XI conscribementis fac sic\n\n    seqis decumulamenta\
+  \ da varo.\n\n    varum privamentum fodementum da aresulto.\n\n    varum tum III\
+  \ elevamentum tum V multiplicamentum da bresulto.\n\n    aresultum tum bresultum\
+  \ addementum da resulto.\n\n\n\n    si CD tum resultum non praestantiam fac sic\n\
+  \n        dictum sic f(%d) = %.2f cis tum varum tum resultum egresso describe.\n\
+  \n        novumversum egresso scribe.\n\n    cis\n\n    si CD tum resultum praestantiam\
+  \ fac sic\n\n        dictum sic f(%d) = MAGNA NIMIS! cis tum varum egresso describe.\n\
+  \n        novumversum egresso scribe.        \n\n    cis\n\ncis\n\n\n\n\n-----Input-----\n\
+  \nThe input consists of several integers, one per line. Each integer is between\
+  \ -50 and 50, inclusive.\n\n\n-----Output-----\n\nAs described in the problem statement.\n\
+  \n\n-----Example-----\nInput\n0\n1\n-2\n-3\n-4\n-5\n-6\n-7\n-8\n-9\n10\n\nOutput\n\
+  f(10) = MAGNA NIMIS!\nf(-9) = -3642.00\nf(-8) = -2557.17\nf(-7) = -1712.35\nf(-6)\
+  \ = -1077.55\nf(-5) = -622.76\nf(-4) = -318.00\nf(-3) = -133.27\nf(-2) = -38.59\n\
+  f(1) = 6.00\nf(0) = 0.00"
+"vc-preamble": "import Imports.AllImports\n\ndef calculateSequences : List Int → List\
+  \ String := sorry\n\nstructure FormatResult where\n  isStartF : Bool\n  containsAssign\
+  \ : Bool\n\n\ndef checkFormat (s : String) : FormatResult :=\n  { isStartF := s.data.head?\
+  \ = some 'f',\n    containsAssign := s.data.contains '=' }\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def extractValue (s : String) : String := sorry\ndef extractNumber\
+  \ (s : String) : Int := sorry\n"
+"vc-theorems": "theorem list_format_properties {inputs : List Int} :\n  let result\
+  \ := calculateSequences inputs\n  ∀ x ∈ result,\n    let fmt := checkFormat x\n\
+  \    fmt.isStartF ∧ fmt.containsAssign := sorry\n\n\ntheorem value_format_properties\
+  \ {inputs : List Int} :\n  let result := calculateSequences inputs\n  ∀ x ∈ result,\n\
+  \    let n := extractNumber x\n    let val := extractValue x\n    (n ≥ 5 ∨ n ≤ -51\
+  \ → val = \"MAGNA NIMIS!\") ∧\n    (n ≤ 3 → val.data.contains '.') := sorry\n\n\n\
+  theorem order_matches_reversed {inputs : List Int} : \n  let result := calculateSequences\
+  \ inputs\n  let nums := result.map extractNumber\n  nums = inputs.reverse := sorry\n\
+  \n\ntheorem known_values {inputs : List Int} (h : inputs.length > 0) :\n  let result\
+  \ := calculateSequences inputs\n  ∀ x ∈ result,\n    let n := extractNumber x\n\
+  \    let val := extractValue x\n    (n = 0 → val = \"0.00\") ∧\n    (n = 1 → val\
+  \ = \"6.00\") ∧ \n    (n = -1 → val = \"-4.00\") := sorry\n\n/--\ninfo: expected1\n\
+  -/\n#guard_msgs in\n#eval calculate_sequences [0, 1, -2, -3, -4, -5, -6, -7, -8,\
+  \ -9, 10]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

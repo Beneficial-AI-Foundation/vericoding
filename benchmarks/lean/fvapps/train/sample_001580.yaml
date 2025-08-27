@@ -1,0 +1,40 @@
+"vc-description": "# Longest Palindromic Substring (Linear)\n\nA palindrome is a word,\
+  \ phrase, or sequence that reads the same backward as forward, e.g.,\n'madam' or\
+  \ 'racecar'. Even the letter 'x' is considered a palindrome. \n\nFor this Kata,\
+  \ you are given a string ```s```. Write a function that returns the longest _contiguous_\
+  \ palindromic substring in ```s``` (it could be the entire string). In the event\
+  \ that there are multiple longest palindromic substrings, return the first to occur.\n\
+  \nI'm not trying to trick you here:\n- You can assume that all inputs are valid\
+  \ strings.\n- Only the letters a-z will be used, all lowercase (your solution should,\
+  \ in theory, extend to more than just the letters a-z though). \n\n**NOTE:** Quadratic\
+  \ asymptotic complexity _(O(N^2))_ or above will __NOT__ work here.\n\n-----\n\n\
+  ## Examples\n\n### Basic Tests\n\n```\nInput: \"babad\"\nOutput: \"bab\"\n(Note:\
+  \ \"bab\" occurs before \"aba\")\n```\n```\nInput: \"abababa\"\nOutput: \"abababa\"\
+  \n```\n```\nInput: \"cbbd\"\nOutput: \"bb\"\n```\n\n### Edge Cases\n\n```\nInput:\
+  \ \"ab\"\nOutput: \"a\"\n```\n```\nInput: \"\"\nOutput: \"\"\n```\n-----\n\n## Testing\n\
+  \nAlong with the example tests given:\n\n - There are **500** tests using strings\
+  \ of length in range [1 - 1,000]\n - There are **50** tests using strings of length\
+  \ in range [1,000 - 10,000]\n - There are **5** tests using strings of length in\
+  \ range [10,000 - 100,000]\n \nAll test cases can be passed within 10 seconds, but\
+  \ non-linear solutions will time out every time. _Linear performance is essential_.\
+  \ \n\n## Good Luck!\n\n-----\n\nThis problem was inspired by [this](https://leetcode.com/problems/longest-palindromic-substring/)\
+  \ challenge on LeetCode. Except this is the performance version :^)"
+"vc-preamble": "import Imports.AllImports\n\ndef isPalindrome (s : String) : Bool\
+  \ :=\n  sorry\n\n\ndef isSubstring (sub str : String) : Bool :=\n  sorry\n\n\ndef\
+  \ longest_palindrome (s : String) : String :=\n  sorry\n\n\ndef reverseString (s\
+  \ : String) : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def substring (s : String) (i j : Nat) : String :=\n  sorry\n"
+"vc-theorems": "theorem output_is_palindrome {s : String} :\n  let result := longest_palindrome\
+  \ s\n  result = \"\" ∨ (result = reverseString result ∧ isSubstring result s)\n\
+  \  := by sorry\n\n\ntheorem output_is_maximum_length {s : String} :\n  let result\
+  \ := longest_palindrome s\n  ∀ (i j : Nat), i ≤ s.length → j ≤ s.length →\n    let\
+  \ substr := substring s i j\n    substr = reverseString substr →\n    substr.length\
+  \ ≤ result.length\n  := by sorry\n\n\ntheorem empty_and_single_char_inputs {s :\
+  \ String} :\n  (s = \"\" → longest_palindrome s = \"\") ∧\n  (s.length = 1 → longest_palindrome\
+  \ s = s)\n  := by sorry\n\n\ntheorem palindrome_input_returns_itself {s : String}\
+  \ :\n  s ≠ \"\" →\n  s = reverseString s →\n  longest_palindrome s = s\n  := by\
+  \ sorry\n\n/--\ninfo: 'bab'\n-/\n#guard_msgs in\n#eval longest_palindrome \"babad\"\
+  \n\n/--\ninfo: 'abababa'\n-/\n#guard_msgs in\n#eval longest_palindrome \"abababa\"\
+  \n\n/--\ninfo: 'bb'\n-/\n#guard_msgs in\n#eval longest_palindrome \"cbbd\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

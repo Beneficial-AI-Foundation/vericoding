@@ -1,0 +1,32 @@
+"vc-description": "Indraneel has to sort the books in his library. His library has\
+  \ one long shelf. His books are numbered $1$ through $N$ and he wants to rearrange\
+  \ the books so that they appear in the sequence $1,2, ..., N$.\nHe intends to do\
+  \ this by a sequence of moves. In each move he can pick up any book from the shelf\
+  \ and insert it at a different place in the shelf. Suppose Indraneel has $5$ books\
+  \ and they are initially arranged in the order\n21453214532 \\quad 1 \\quad 4 \\\
+  quad 5 \\quad 3\nIndraneel will rearrange this in ascending order by first moving\
+  \ book $1$ to the beginning of the shelf to get\n12453124531 \\quad 2 \\quad 4 \\\
+  quad 5 \\quad 3\nThen, moving book $3$ to position $3$, he gets\n12345123451 \\\
+  quad 2 \\quad 3 \\quad 4 \\quad 5\nYour task is to write a program to help Indraneel\
+  \ determine the minimum number of moves that are necessary to sort his book shelf.\n\
+  \n-----Input:-----\nThe first line of the input will contain a single integer $N$\
+  \ indicating the number of books in Indraneel's library. This is followed by a line\
+  \ containing a permutation of $1, 2, ..., N$ indicating the intial state of Indraneel's\
+  \ book-shelf.\n\n-----Output:-----\nA single integer indicating the minimum number\
+  \ of moves necessary to sort Indraneel's book-shelf.\n\n-----Constraints:-----\n\
+  - $1 \\leq N \\leq 200000$.\n- You may also assume that in $50 \\%$ of the inputs,\
+  \ $1 \\leq N \\leq 5000$.\n\n-----Sample Input-----\n5\n2 1 4 5 3 \n\n-----Sample\
+  \ Output-----\n2"
+"vc-preamble": "import Imports.AllImports\n\ndef IsSorted (l : List Int) : Prop :=\n\
+  \  ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!\n\n\ndef IsReverseSorted (l : List\
+  \ Int) : Prop :=\n  ∀ i j, i < j → j < l.length → l[i]! ≥ l[j]!\n\n\ndef Nodup (l\
+  \ : List Int) : Prop :=\n  ∀ i j, i < j → j < l.length → l[i]! ≠ l[j]!\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_moves_to_sort (n : Nat) (arr : List Int) : Nat :=\n  sorry\n\
+  \n\n"
+"vc-theorems": "theorem moves_less_than_length {n : Nat} {arr : List Int} (h : n =\
+  \ arr.length) :\n  min_moves_to_sort n arr ≤ n :=\n  sorry\n\n/--\ninfo: 2\n-/\n\
+  #guard_msgs in\n#eval min_moves_to_sort 5 [2, 1, 4, 5, 3]\n\n/--\ninfo: 0\n-/\n\
+  #guard_msgs in\n#eval min_moves_to_sort 3 [1, 2, 3]\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval min_moves_to_sort 4 [4, 3, 2, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

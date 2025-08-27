@@ -1,0 +1,19 @@
+"vc-description": "Calculate the power of an army of numbers from 1 to $N$, both included.\n\
+  \n-----Input:-----\n- First line will contain a single integer $N$.\n\n-----Output:-----\n\
+  For each testcase, output in a single line containing the answer.\n\n-----Constraints-----\n\
+  - $1 \\leq N \\leq 5000$\n\n-----Sample Input:-----\n24\n\n-----Sample Output:-----\n\
+  5"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calc_army_power (n : Nat) : Nat := sorry\n\n/-- The army power\
+  \ is always at least 1 for positive inputs -/"
+"vc-theorems": "theorem army_power_always_positive (n : Nat) (h : n ≥ 1) : \n  calc_army_power\
+  \ n ≥ 1 := sorry\n\n/-- The army power is monotonic increasing -/\n\ntheorem army_power_monotonic\
+  \ (n : Nat) (h : n > 1) :\n  calc_army_power n ≥ calc_army_power (n-1) := sorry\
+  \ \n\n/-- Known base cases for the army power function -/\n\ntheorem army_power_base_cases\
+  \ :\n  (calc_army_power 1 = 1) ∧ (calc_army_power 4 = 2) := sorry\n\n/-- The army\
+  \ power is bounded above by n -/\n\ntheorem army_power_bounded (n : Nat) (h : n\
+  \ ≥ 1) :\n  calc_army_power n ≤ n := sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n\
+  #eval calc_army_power 24\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval calc_army_power\
+  \ 1\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval calc_army_power 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

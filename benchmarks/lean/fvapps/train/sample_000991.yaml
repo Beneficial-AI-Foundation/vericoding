@@ -1,0 +1,43 @@
+"vc-description": "There are $N$ cities on a circle, numbered $1$ through $N$. For\
+  \ each $i$ ($1 \\le i \\le N-1$), cities $i$ and $i+1$ are directly connected by\
+  \ a bidirectional road with length $A_i$, and cities $N$ and $1$ are also directly\
+  \ connected by a bidirectional road with length $A_N$. However, we do not know the\
+  \ lengths of some roads.\nFor each city $i$, we do know that it has an opposite\
+  \ city — formally, there is a city $j \\neq i$ such that the clockwise distance\
+  \ between cities $i$ and $j$ is equal to the counterclockwise distance between these\
+  \ cities.\nPlease find the lengths of all roads in such a way that the above condition\
+  \ is satisfied and the sum of lengths of all roads is minimised.\n\n-----Input-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first line of\
+  \ the input contains a single integer $N$.\n- The second line contains $N$ space-separated\
+  \ integers $A_1, A_2, \\dots, A_N$. For each valid $i$, $A_i = -1$ denotes that\
+  \ the length of road $i$ is unknown.\n\n-----Output-----\nFor each test case, print\
+  \ a line containing the string \"NO\" if there is no solution or \"YES\" otherwise.\
+  \ If a solution exists, print a second line containing $N$ space-separated positive\
+  \ integers — the lengths of all roads in your solution. Each of these integers should\
+  \ be $\\le 10^9$. If there are multiple solutions, you may print any one.\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 100$\n- $3 \\le N \\le 10^5$\n- $1 \\le A_i \\le 10^9$ or $A_i\
+  \ = -1$ for each valid $i$\n- the sum of $N$ for all test cases does not exceed\
+  \ $3\\cdot 10^5$\n\n-----Subtasks-----\nSubtask #1 (10 points): $N \\le 4$\nSubtask\
+  \ #2 (20 points): $A_i = \\pm 1$ for each valid $i$\nSubtask #3 (70 points): original\
+  \ constraints\n\n-----Example Input-----\n4\n4\n1 1 1 1\n4\n1 1 1 2\n4\n1 -1 -1\
+  \ 4\n4\n1 -1 2 -1\n\n-----Example Output-----\nYES\n1 1 1 1\nNO\nYES\n1 4 1 4\n\
+  NO"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_circular_roads (n : Nat) (road_lengths : List Int) :\
+  \ (String × Option (List Nat)) :=\nsorry\n"
+"vc-theorems": "theorem valid_solution_odd_n (n : Nat) (road_lengths : List Int) (h\
+  \ : n % 2 = 1) :\n  solve_circular_roads n road_lengths = (\"NO\", none) :=\nsorry\n\
+  \n\ntheorem valid_solution_props {n : Nat} {road_lengths : List Int} \n  (h : n\
+  \ % 2 = 0) (result : String × Option (List Nat)) \n  (h2 : result = solve_circular_roads\
+  \ n road_lengths) :\n  (result.1 = \"NO\" ∨ \n   (result.1 = \"YES\" ∧ \n    (∀\
+  \ roads : List Nat, result.2 = some roads → \n      roads.length = n ∧\n      (∀\
+  \ (i : Nat) (h3 : i < road_lengths.length) (h4 : i < roads.length),\n         road_lengths.get\
+  \ ⟨i, h3⟩ ≠ -1 → roads.get ⟨i, h4⟩ = road_lengths.get ⟨i, h3⟩) ∧\n      (∀ (i :\
+  \ Nat) (h3 : i < roads.length) (h4 : i + n/2 < roads.length),\n         roads.get\
+  \ ⟨i, h3⟩ = roads.get ⟨i + n/2, h4⟩)))) :=\nsorry\n\n\ntheorem all_negative_one_has_solution\
+  \ (n : Nat) (h : n % 2 = 0) :\n  let road_lengths := List.replicate n (-1 : Int)\n\
+  \  let result := solve_circular_roads n road_lengths\n  result.1 = \"YES\" ∧ \n\
+  \  (∀ roads : List Nat, result.2 = some roads →\n    ∀ x ∈ roads, x = 1) :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

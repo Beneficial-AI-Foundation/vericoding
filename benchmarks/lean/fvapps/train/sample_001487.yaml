@@ -1,0 +1,59 @@
+"vc-description": "Every character in the string “IITMANDI” is given a certain number\
+  \ of points. You are given a scrabble board with only one row. The input contains\
+  \ the positions of score modifiers such as: Double Letter, Triple Letter, Double\
+  \ Word and Triple Word. You need to find the best position to place the string “IITMANDI”\
+  \ such that your score is maximized. \nDouble Letter - Doubles the number of points\
+  \ you get for the letter placed on the double letter.\nTriple Letter - Triples the\
+  \ number of points you get for the letter placed on the triple letter.\nDouble Word\
+  \ - Doubles the number of points you get for the word. Applied after applying above\
+  \ modifiers.\nTriple Word - Triples the number of points you get for the word. Applied\
+  \ after applying the above modifiers.\nThe word has to be read from left to right.\
+  \ You can’t place it in the reverse direction.\n\nThe letters have to be placed\
+  \ continuously on the board.\n\nIf there is no modifier or a double word or triple\
+  \ word modifier before a tile, it's score is added to the total score. The double\
+  \ word and triple modifiers are applied at the end.\n\n-----Input Format-----\n\
+  - First line containes a single integer $T$ - the number of test cases.\n- First\
+  \ line of each test case contains a single integer $N$ - the size of the board.\
+  \    \n- Second line of each test case contains a string of size $N$ representing\
+  \ the board according to the following convention:\n\n'.' - No modifier\n\n'd' -\
+  \ Double letter\n\n't' - Triple letter\n\n'D' - Double word\n\n'T' - Triple word\
+  \     \n- Third line of each test case contains 8 integers corresponding to the\
+  \ points associated with each letter of the string \"IITMANDI\". Note that the 3\
+  \ 'I's in IITMANDI cannot be interchanged freely. The score of the first 'I' will\
+  \ be equal to the first integer, score of the second 'I' will be equal to the second\
+  \ integer and the score of the last 'I' will be equal to the last integer.\n\n-----Output\
+  \ Format-----\nFor each test case, output a single integer in a new line, the maximum\
+  \ possible score. \n\n-----Constraints-----\n$ 1 \\leq T \\leq 1000 $\n$ 8 \\leq\
+  \ N \\leq 100 $\n$ 0 \\leq $ Points for each character $ \\leq 10^5 $ \n\n-----Sample\
+  \ Input-----\n2\n\n10\n\n..d.t.D..d\n\n10 11 12 9 8 10 11 15\n\n22\n\ndtDtTD..ddT.TtTdDT..TD\n\
+  \n12297 5077 28888 17998 12125 27400 31219 21536\n\n-----Sample Output-----\n270\n\
+  \n35629632"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_max_points (boardSize : Nat) (board : String) (letterPoints\
+  \ : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem board_size_properties\n  (boardSize : Nat)\n  (letterPoints\
+  \ : List Nat)\n  (h1 : boardSize ≥ 8)\n  (h2 : boardSize ≤ 100)\n  (h3 : letterPoints.length\
+  \ = 8)\n  (h4 : ∀ x ∈ letterPoints, x ≥ 0 ∧ x ≤ 100000) :\n  let board := String.mk\
+  \ (List.replicate boardSize '.')\n  let result := calculate_max_points boardSize\
+  \ board letterPoints\n  result ≥ 0 := sorry\n\n\ntheorem scoring_properties\n  (boardSize\
+  \ : Nat)\n  (board : String)\n  (letterPoints : List Nat)\n  (h1 : boardSize ≥ 8)\n\
+  \  (h2 : boardSize ≤ 100)\n  (h3 : board.length ≥ boardSize)\n  (h4 : ∀ c ∈ board.data,\
+  \ c = '.' ∨ c = 'd' ∨ c = 't' ∨ c = 'D' ∨ c = 'T')\n  (h5 : letterPoints.length\
+  \ = 8)\n  (h6 : ∀ x ∈ letterPoints, x ≥ 0 ∧ x ≤ 100000) :\n  let dots_board := String.mk\
+  \ (List.replicate boardSize '.')\n  let base_score := calculate_max_points boardSize\
+  \ dots_board letterPoints\n  let result := calculate_max_points boardSize (board.take\
+  \ boardSize) letterPoints\n  result ≥ base_score := sorry\n\n\ntheorem multiplier_properties\n\
+  \  (board : String)\n  (letterPoints : List Nat)\n  (h1 : board.length = 8)\n  (h2\
+  \ : ∀ c ∈ board.data, c = '.' ∨ c = 'd' ∨ c = 't' ∨ c = 'D' ∨ c = 'T')\n  (h3 :\
+  \ letterPoints.length = 8)\n  (h4 : ∀ x ∈ letterPoints, x ≥ 0) :\n  let result :=\
+  \ calculate_max_points 8 board letterPoints\n  let base_score := calculate_max_points\
+  \ 8 (String.mk (List.replicate 8 '.')) letterPoints\n  let all_doubles := calculate_max_points\
+  \ 8 (String.mk (List.replicate 8 'D')) letterPoints \n  let all_triples := calculate_max_points\
+  \ 8 (String.mk (List.replicate 8 'T')) letterPoints\n  let points_sum := letterPoints.foldr\
+  \ (· + ·) 0\n  result ≥ base_score ∧\n  all_doubles = (2 ^ 8) * points_sum ∧\n \
+  \ all_triples = (3 ^ 8) * points_sum := sorry\n\n/--\ninfo: 270\n-/\n#guard_msgs\
+  \ in\n#eval calculate_max_points 10 \"..d.t.D..d\" [10, 11, 12, 9, 8, 10, 11, 15]\n\
+  \n/--\ninfo: 35629632\n-/\n#guard_msgs in\n#eval calculate_max_points 22 \"dtDtTD..ddT.TtTdDT..TD\"\
+  \ [12297, 5077, 28888, 17998, 12125, 27400, 31219, 21536]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

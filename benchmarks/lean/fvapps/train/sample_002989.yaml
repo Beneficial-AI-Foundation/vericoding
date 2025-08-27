@@ -1,0 +1,25 @@
+"vc-description": "# Hey You !\n\nSort these integers for me ...\n\nBy name ...\n\n\
+  Do it now !\n\n\n---\n\n## Input\n\n* Range is ```0```-```999```\n\n* There may\
+  \ be duplicates\n\n* The array may be empty\n\n## Example\n\n* Input: 1, 2, 3, 4\n\
+  * Equivalent names: \"one\", \"two\", \"three\", \"four\"\n* Sorted by name: \"\
+  four\", \"one\", \"three\", \"two\"\n* Output: 4, 1, 3, 2\n\n## Notes\n* Don't pack\
+  \ words together:\n * e.g. 99 may be \"ninety nine\" or \"ninety-nine\"; but not\
+  \ \"ninetynine\"\n * e.g 101 may be \"one hundred one\" or \"one hundred and one\"\
+  ; but not \"onehundredone\"\n* Don't fret about formatting rules, because if rules\
+  \ are consistently applied it has no effect anyway:\n * e.g. \"one hundred one\"\
+  , \"one hundred two\"; is same order as \"one hundred **and** one\", \"one hundred\
+  \ **and** two\"\n * e.g. \"ninety eight\", \"ninety nine\"; is same order as \"\
+  ninety-eight\", \"ninety-nine\"\n \n```if:c\n* For `C` code the input array may\
+  \ be NULL. The return value is freed if non-NULL.\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def int_to_word (n : Nat) : String := sorry\n\ndef sort_by_name\
+  \ (arr : List Nat) : List Nat := sorry \n"
+"vc-theorems": "theorem sort_by_name_length (arr : List Nat) :\n  (sort_by_name arr).length\
+  \ = arr.length := sorry\n\n\ntheorem sort_by_name_permutation (arr : List Nat) :\n\
+  \  ∀ x, x ∈ arr ↔ x ∈ sort_by_name arr := sorry\n\n\n\n\ntheorem sort_by_name_idempotent\
+  \ (arr : List Nat) :\n  sort_by_name (sort_by_name arr) = sort_by_name arr := sorry\n\
+  \n/--\ninfo: [4, 1, 3, 2]\n-/\n#guard_msgs in\n#eval sort_by_name [1, 2, 3, 4]\n\
+  \n/--\ninfo: []\n-/\n#guard_msgs in\n#eval sort_by_name []\n\n/--\ninfo: [8, 8,\
+  \ 9, 9, 10, 10]\n-/\n#guard_msgs in\n#eval sort_by_name [8, 8, 9, 9, 10, 10]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

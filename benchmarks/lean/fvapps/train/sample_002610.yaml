@@ -1,0 +1,29 @@
+"vc-description": "Program a function `sumAverage(arr)` where `arr` is an array containing\
+  \ arrays full of numbers, for example:\n\n```python\nsum_average([[1, 2, 2, 1],\
+  \ [2, 2, 2, 1]])\n```\n\nFirst, determine the average of each array. Then, return\
+  \ the sum of all the averages.\n\n- All numbers will be less than 100 and greater\
+  \ than -100.\n- `arr` will contain a maximum of 50 arrays.\n- After calculating\
+  \ all the averages, add them **all** together, **then** round down, as shown in\
+  \ the example below:\n\nThe example given: `sumAverage([[3, 4, 1, 3, 5, 1, 4], [21,\
+  \ 54, 33, 21, 77]])`, the answer being 44.\n1. Calculate the average of each individual\
+  \ array:\n```\n[3, 4, 1, 3, 5, 1, 4] = (3 + 4 + 1 + 3 + 5 + 1 + 4) / 7 = 3\n[21,\
+  \ 54, 33, 21, 77] = (21 + 54 + 33 + 21 + 77) / 5 = 41.2\n```\n2. Add the average\
+  \ of each array together:\n```\n3 + 41.2 = 44.2\n```\n3. Round the final average\
+  \ down:\n\n~~~if:julia\nIn Julia, the `Statistics` package is preloaded.\n~~~\n\
+  ```python\nimport math\nmath.floor(44.2) = 44\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sumAverage (lists : List (List Int)) : Int :=\n  sorry\n"
+"vc-theorems": "theorem sumAverage_is_floor_of_means (lists : List (List Int)) \n\
+  \  (h : ∀ l ∈ lists, l.length > 0) :\n  ∃ mean, sumAverage lists = mean := -- simplified\
+  \ since we can't easily represent floor of means\n  sorry\n\n\ntheorem sumAverage_le_sum_maxes\
+  \ (lists : List (List Int))\n  (h : ∀ l ∈ lists, l.length > 0) :\n  ∀ l ∈ lists,\
+  \ ∀ x ∈ l, sumAverage lists ≤ x :=\n  sorry\n\n\ntheorem sumAverage_ge_mins (lists\
+  \ : List (List Int))\n  (h : ∀ l ∈ lists, l.length > 0) :\n  ∀ l ∈ lists, ∀ x ∈\
+  \ l, x ≤ sumAverage lists :=\n  sorry\n\n\ntheorem sumAverage_type (lists : List\
+  \ (List Int))\n  (h : ∀ l ∈ lists, l.length > 0) :\n  sumAverage lists = sumAverage\
+  \ lists :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval sum_average [[1,\
+  \ 2, 2, 1], [2, 2, 2, 1]]\n\n/--\ninfo: 44\n-/\n#guard_msgs in\n#eval sum_average\
+  \ [[3, 4, 1, 3, 5, 1, 4], [21, 54, 33, 21, 76]]\n\n/--\ninfo: -6\n-/\n#guard_msgs\
+  \ in\n#eval sum_average [[-4, 3, -8, -2], [2, 9, 1, -5], [-7, -2, -6, -4]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

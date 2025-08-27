@@ -1,0 +1,30 @@
+"vc-description": "Given the string s, return the size of the longest substring containing\
+  \ each vowel an even number of times. That is, 'a', 'e', 'i', 'o', and 'u' must\
+  \ appear an even number of times.\n \nExample 1:\nInput: s = \"eleetminicoworoep\"\
+  \nOutput: 13\nExplanation: The longest substring is \"leetminicowor\" which contains\
+  \ two each of the vowels: e, i and o and zero of the vowels: a and u.\n\nExample\
+  \ 2:\nInput: s = \"leetcodeisgreat\"\nOutput: 5\nExplanation: The longest substring\
+  \ is \"leetc\" which contains two e's.\n\nExample 3:\nInput: s = \"bcbcbc\"\nOutput:\
+  \ 6\nExplanation: In this case, the given string \"bcbcbc\" is the longest because\
+  \ all vowels: a, e, i, o and u appear zero times.\n\n \nConstraints:\n\n1 <= s.length\
+  \ <= 5 x 10^5\ns contains only lowercase English letters."
+"vc-preamble": "import Imports.AllImports\n\ndef countVowels (s : String) : List Char\
+  \ → Bool :=\n  sorry\n\n\ndef verifySubstringVowels (s : String) (start length :\
+  \ Nat) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def findLongestEvenVowelSubstring (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem result_is_valid_length (s : String) :\n  let result := findLongestEvenVowelSubstring\
+  \ s\n  0 ≤ result ∧ result ≤ s.length :=\n  sorry\n\n\ntheorem result_has_even_vowels\
+  \ (s : String) :\n  let result := findLongestEvenVowelSubstring s\n  result > 0\
+  \ →\n  ∃ i : Nat, i + result ≤ s.length ∧ verifySubstringVowels s i result :=\n\
+  \  sorry\n\n\ntheorem no_longer_valid_substring_exists (s : String) :\n  let result\
+  \ := findLongestEvenVowelSubstring s\n  ∀ length : Nat, result < length → length\
+  \ ≤ s.length →\n  ∀ i : Nat, i + length ≤ s.length → \n  ¬(verifySubstringVowels\
+  \ s i length) :=\n  sorry\n\n\ntheorem edge_cases_empty :\n  findLongestEvenVowelSubstring\
+  \ \"\" = 0 :=\n  sorry\n\n\ntheorem edge_cases_single_nonvowel (c : Char) (h : c\
+  \ ∉ ['a', 'e', 'i', 'o', 'u']) :\n  findLongestEvenVowelSubstring (String.mk [c])\
+  \ = 1 :=\n  sorry\n\n/--\ninfo: 13\n-/\n#guard_msgs in\n#eval find_longest_even_vowel_substring\
+  \ \"eleetminicoworoep\"\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval find_longest_even_vowel_substring\
+  \ \"leetcodeisgreat\"\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval find_longest_even_vowel_substring\
+  \ \"bcbcbc\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

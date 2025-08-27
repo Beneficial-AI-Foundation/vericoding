@@ -1,0 +1,40 @@
+"vc-description": "Given an array of positive integers nums, remove the smallest subarray\
+  \ (possibly empty) such that the sum of the remaining elements is divisible by p.\
+  \ It is not allowed to remove the whole array.\nReturn the length of the smallest\
+  \ subarray that you need to remove, or -1 if it's impossible.\nA subarray is defined\
+  \ as a contiguous block of elements in the array.\n \nExample 1:\nInput: nums =\
+  \ [3,1,4,2], p = 6\nOutput: 1\nExplanation: The sum of the elements in nums is 10,\
+  \ which is not divisible by 6. We can remove the subarray [4], and the sum of the\
+  \ remaining elements is 6, which is divisible by 6.\n\nExample 2:\nInput: nums =\
+  \ [6,3,5,2], p = 9\nOutput: 2\nExplanation: We cannot remove a single element to\
+  \ get a sum divisible by 9. The best way is to remove the subarray [5,2], leaving\
+  \ us with [6,3] with sum 9.\n\nExample 3:\nInput: nums = [1,2,3], p = 3\nOutput:\
+  \ 0\nExplanation: Here the sum is 6. which is already divisible by 3. Thus we do\
+  \ not need to remove anything.\n\nExample 4:\nInput: nums = [1,2,3], p = 7\nOutput:\
+  \ -1\nExplanation: There is no way to remove a subarray in order to get a sum divisible\
+  \ by 7.\n\nExample 5:\nInput: nums = [1000000000,1000000000,1000000000], p = 3\n\
+  Output: 0\n\n \nConstraints:\n\n1 <= nums.length <= 105\n1 <= nums[i] <= 109\n1\
+  \ <= p <= 109"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.sum [Add α] (l : List α) : α := sorry \n\ndef minSubarray\
+  \ (nums : List Nat) (p : Nat) : Int := sorry\n"
+"vc-theorems": "theorem minSubarray_bounds\n  (nums : List Nat)\n  (p : Nat)\n  (h1\
+  \ : ∀ n ∈ nums, 1 ≤ n ∧ n ≤ 1000)\n  (h2 : 1 ≤ p ∧ p ≤ 1000)\n  : -1 ≤ minSubarray\
+  \ nums p ∧ minSubarray nums p ≤ nums.length := sorry \n\n\ntheorem minSubarray_neg_one_valid\n\
+  \  (nums : List Nat)\n  (p : Nat)\n  (h : minSubarray nums p = -1)\n  : ∀ (i j :\
+  \ Nat), i ≤ nums.length → j ≤ nums.length - i →\n    (List.take i nums ++ List.drop\
+  \ (i + j) nums).sum % p ≠ 0 := sorry\n\n\ntheorem minSubarray_zero_valid\n  (nums\
+  \ : List Nat) \n  (p : Nat)\n  (h : minSubarray nums p = 0)\n  : nums.sum % p =\
+  \ 0 := sorry\n\n\ntheorem minSubarray_positive_valid\n  (nums : List Nat)\n  (p\
+  \ : Nat)\n  (h1 : 0 < minSubarray nums p)\n  (h2 : minSubarray nums p < nums.length)\n\
+  \  : ∃ (i : Nat), i + (minSubarray nums p).toNat ≤ nums.length ∧ \n    (List.take\
+  \ i nums ++ List.drop (i + (minSubarray nums p).toNat) nums).sum % p = 0 := sorry\n\
+  \n\ntheorem minSubarray_small_values\n  (nums : List Nat)\n  (p : Nat)\n  (h1 :\
+  \ ∀ n ∈ nums, 0 ≤ n ∧ n ≤ 10)\n  (h2 : 1 ≤ p ∧ p ≤ 10)\n  (h3 : minSubarray nums\
+  \ p ≥ 0)\n  : ∃ (i : Nat), i + (minSubarray nums p).toNat ≤ nums.length ∧\n    (List.take\
+  \ i nums ++ List.drop (i + (minSubarray nums p).toNat) nums).sum % p = 0 := sorry\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval min_subarray [3, 1, 4, 2] 6\n\n/--\ninfo:\
+  \ 2\n-/\n#guard_msgs in\n#eval min_subarray [6, 3, 5, 2] 9\n\n/--\ninfo: -1\n-/\n\
+  #guard_msgs in\n#eval min_subarray [1, 2, 3] 7\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

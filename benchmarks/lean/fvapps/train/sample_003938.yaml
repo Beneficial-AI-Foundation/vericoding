@@ -1,0 +1,23 @@
+"vc-description": "## Task\n\nFind the sum of the first `n` elements in the Recamán\
+  \ Sequence.\n\nInput range:\n\n```python\n1000 tests\n0 <= n <= 2,500,000\n```\n\
+  \n___\n\n## Sequence\n\nThe sequence is formed using the next formula:\n* We start\
+  \ with `0`\n* At each step `i`, we subtract `i` from the previous number\n* If the\
+  \ result is not negative, and not yet present in the sequence, it becomes the `i`th\
+  \ element of the sequence\n* Otherwise the `i`th element of the sequence will be\
+  \ previous number plus `i`\n\nThe beginning of the sequence is `[0, 1, 3, 6, 2,\
+  \ ...]` because:  \n0) `0` <- we start with `0`  \n1) `1` <- `0 - 1` is negative,\
+  \ hence we choose `0 + 1`  \n2) `3` <- `1 - 2` is negative, hence we choose `1 +\
+  \ 2`  \n3) `6` <-`3 - 3` is not negative, but we already have a `0` in the sequence,\
+  \ hence we choose `3 + 3`  \n4) `2` <- `6 - 4` is positive, and is not present in\
+  \ the sequence yet, so we go for it\n\n___\n\n## Examples\n\n```\nrec(0) == 0\n\
+  rec(1) == 0\nrec(2) == 1\nrec(3) == 4\nrec(4) == 10\nrec(5) == 12\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def rec (n : Int) : Int := sorry\n\ntheorem rec_non_negative (n\
+  \ : Int) : n ≥ 0 → rec n ≥ 0 := sorry\n"
+"vc-theorems": "theorem rec_zero_or_negative (n : Int) : n ≤ 0 → rec n = 0 := sorry\n\
+  \ntheorem rec_strictly_increasing (n : Int) : n > 1 → rec n > rec (n-1) := sorry\n\
+  \n\ntheorem rec_grows_linearly (n : Int) : n > 1 → rec n ≥ n-1 := sorry\n\n/--\n\
+  info: 0\n-/\n#guard_msgs in\n#eval rec 0\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n\
+  #eval rec 5\n\n/--\ninfo: 837722\n-/\n#guard_msgs in\n#eval rec 1000\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

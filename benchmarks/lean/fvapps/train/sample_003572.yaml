@@ -1,0 +1,22 @@
+"vc-description": "### Task:\n\nYou have to write a function `pattern` which creates\
+  \ the following pattern (See Examples) upto desired number of rows.\n\nIf the Argument\
+  \ is `0` or a Negative Integer then it should return `\"\"` i.e. empty string.\n\
+  \n### Examples:\n\n`pattern(9)`:\n\n    123456789\n    234567891\n    345678912\n\
+  \    456789123\n    567891234\n    678912345\n    789123456\n    891234567\n   \
+  \ 912345678\n\n`pattern(5)`:\n\n    12345\n    23451\n    34512\n    45123\n   \
+  \ 51234\n\nNote: There are no spaces in the pattern\n\nHint: Use `\\n` in string\
+  \ to jump to next line"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pattern (n : Int) : String := sorry\n\ndef natToString (n :\
+  \ Nat) : String := sorry\n"
+"vc-theorems": "theorem non_positive_returns_empty {n : Int} (h : n ≤ 0) : \n  pattern\
+  \ n = \"\" := sorry\n\n\ntheorem cycling_property {n : Int} (h : n > 0) (h2 : n\
+  \ ≤ 50) :\n  ∀ i : Nat, i < n.toNat →\n    (let row := String.splitOn (pattern n)\
+  \ \"\\n\";\n     let digits := (row.get ⟨i, sorry⟩).replace \"10\" \"A\";\n    \
+  \ digits = String.join (List.map\n       (fun j => (natToString ((i + j) % n.toNat\
+  \ + 1)).replace \"10\" \"A\")\n       (List.range n.toNat))) := sorry\n\n\ntheorem\
+  \ pattern_dimensions {n : Int} (h : n > 0) (h2 : n ≤ 50) :\n  let rows := String.splitOn\
+  \ (pattern n) \"\\n\"\n  -- n rows\n  (rows.length = n.toNat) ∧ \n  -- Each row\
+  \ at least n chars\n  (∀ row ∈ rows, row.length ≥ n.toNat) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

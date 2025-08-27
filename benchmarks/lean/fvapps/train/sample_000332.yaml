@@ -1,0 +1,19 @@
+"vc-description": "Write a program to find the n-th ugly number.\n\nUgly numbers are\
+  \ positive numbers whose prime factors only include 2, 3, 5. \n\nExample:\n\n\n\
+  Input: n = 10\nOutput: 12\nExplanation: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 is the sequence\
+  \ of the first 10 ugly numbers.\n\nNote:  \n\n\n       1 is typically treated as\
+  \ an ugly number.\n       n does not exceed 1690."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def nth_ugly_number (n : Int) : Option Int := sorry\n\ntheorem\
+  \ nth_ugly_invalid_inputs {n : Int} (h : n ≤ 0) : \n  nth_ugly_number n = none :=\
+  \ sorry\n"
+"vc-theorems": "theorem nth_ugly_positive {n : Int} (h : n > 0) : \n  ∀ x, nth_ugly_number\
+  \ n = some x → x > 0 := sorry\n\n\ntheorem nth_ugly_prime_factors {n : Int} (h :\
+  \ n > 0) :\n  ∀ x, nth_ugly_number n = some x → \n    ∃ a b c, x = 2^a * 3^b * 5^c\
+  \ := sorry\n\n\ntheorem nth_ugly_monotonic {n : Int} (h₁ : n > 1) :\n  ∀ x y, nth_ugly_number\
+  \ n = some x → nth_ugly_number (n-1) = some y → \n    x > y := sorry\n    \n\ntheorem\
+  \ nth_ugly_one : nth_ugly_number 1 = some 1 := sorry\n\n/--\ninfo: 12\n-/\n#guard_msgs\
+  \ in\n#eval nth_ugly_number 10\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval nth_ugly_number\
+  \ 1\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval nth_ugly_number 7\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

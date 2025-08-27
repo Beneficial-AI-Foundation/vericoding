@@ -1,0 +1,29 @@
+"vc-description": "Given an n x n binary grid, in one step you can choose two adjacent\
+  \ rows of the grid and swap them.\nA grid is said to be valid if all the cells above\
+  \ the main diagonal are zeros.\nReturn the minimum number of steps needed to make\
+  \ the grid valid, or -1 if the grid cannot be valid.\nThe main diagonal of a grid\
+  \ is the diagonal that starts at cell (1, 1) and ends at cell (n, n).\n \nExample\
+  \ 1:\n\nInput: grid = [[0,0,1],[1,1,0],[1,0,0]]\nOutput: 3\n\nExample 2:\n\nInput:\
+  \ grid = [[0,1,1,0],[0,1,1,0],[0,1,1,0],[0,1,1,0]]\nOutput: -1\nExplanation: All\
+  \ rows are similar, swaps have no effect on the grid.\n\nExample 3:\n\nInput: grid\
+  \ = [[1,0,0],[1,1,0],[1,1,1]]\nOutput: 0\n\n \nConstraints:\n\nn == grid.length\n\
+  n == grid[i].length\n1 <= n <= 200\ngrid[i][j] is 0 or 1"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def minSwaps (grid : List (List Nat)) : Int := sorry\n\ndef isValidFinalGrid\
+  \ (grid : List (List Nat)) : Bool := sorry\n"
+"vc-theorems": "theorem identity_matrix_no_swaps {n : Nat} (grid : List (List Nat))\n\
+  \  (h : grid = List.map (fun i => List.map (fun j => if i = j then 1 else 0) (List.range\
+  \ n)) (List.range n)) :\n  minSwaps grid = 0 := sorry\n\n\ntheorem impossible_grid_negative_one\
+  \ {n : Nat} (grid : List (List Nat)) \n  (h : grid = List.replicate n (List.replicate\
+  \ n 1)) :\n  minSwaps grid = -1 := sorry\n\n\ntheorem valid_result_grid_property\
+  \ (grid : List (List Nat))\n  (h1 : grid ≠ [])\n  (h2 : ∀ row ∈ grid, row ≠ [])\n\
+  \  (h3 : ∀ row ∈ grid, row.length = grid.length)\n  (h4 : minSwaps grid ≥ 0) :\n\
+  \  isValidFinalGrid grid := sorry\n\n\ntheorem result_is_minimal (grid : List (List\
+  \ Nat))\n  (h1 : grid ≠ [])\n  (h2 : ∀ row ∈ grid, row ≠ [])\n  (h3 : ∀ row ∈ grid,\
+  \ row.length = grid.length)\n  (h4 : minSwaps grid ≥ 0) :\n  minSwaps grid ≤ (grid.length\
+  \ * (grid.length - 1)) / 2 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval minSwaps\
+  \ [[0, 0, 1], [1, 1, 0], [1, 0, 0]]\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval\
+  \ minSwaps [[0, 1, 1, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 1, 1, 0]]\n\n/--\ninfo:\
+  \ 0\n-/\n#guard_msgs in\n#eval minSwaps [[1, 0, 0], [1, 1, 0], [1, 1, 1]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

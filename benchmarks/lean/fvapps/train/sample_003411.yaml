@@ -1,0 +1,29 @@
+"vc-description": "Create a method `sayHello`/`say_hello`/`SayHello` that takes as\
+  \ input a name, city, and state to welcome a person. Note that `name` will be an\
+  \ array consisting of one or more values that should be joined together with one\
+  \ space between each, and the length of the `name` array in test cases will vary.\n\
+  \nExample:\n\n```python\nsay_hello(['John', 'Smith'], 'Phoenix', 'Arizona')\n```\n\
+  \nThis example will return the string `Hello, John Smith! Welcome to Phoenix, Arizona!`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def say_hello (names: List String) (city state: String) : String\
+  \ := sorry \n\ndef String.substringExists (s1 s2: String) : Bool := sorry\n"
+"vc-theorems": "theorem say_hello_contains_all_names (names: List String) (city state:\
+  \ String)\n  (h1: names ≠ [])\n  (h2: ∀ n ∈ names, n ≠ \"\") \n  (h3: city ≠ \"\"\
+  )\n  (h4: state ≠ \"\") :\n  ∀ n ∈ names, String.substringExists (say_hello names\
+  \ city state) n := \n  sorry\n\n\ntheorem say_hello_contains_location (names: List\
+  \ String) (city state: String)  \n  (h1: names ≠ [])\n  (h2: ∀ n ∈ names, n ≠ \"\
+  \") \n  (h3: city ≠ \"\")\n  (h4: state ≠ \"\") :\n  String.substringExists (say_hello\
+  \ names city state) city ∧ \n  String.substringExists (say_hello names city state)\
+  \ state :=\n  sorry\n\n\ntheorem say_hello_structure (names: List String) (city\
+  \ state: String)\n  (h1: names ≠ [])\n  (h2: ∀ n ∈ names, n ≠ \"\") \n  (h3: city\
+  \ ≠ \"\")\n  (h4: state ≠ \"\") :\n  let result := say_hello names city state\n\
+  \  (result.startsWith \"Hello, \" ∧ \n   String.substringExists result \"! Welcome\
+  \ to \" ∧\n   result.endsWith (\", \" ++ state ++ \"!\")) :=\n  sorry\n\n/--\ninfo:\
+  \ 'Hello, John Smith! Welcome to Phoenix, Arizona!'\n-/\n#guard_msgs in\n#eval say_hello\
+  \ [\"John\", \"Smith\"] \"Phoenix\" \"Arizona\"\n\n/--\ninfo: 'Hello, Franklin Delano\
+  \ Roosevelt! Welcome to Chicago, Illinois!'\n-/\n#guard_msgs in\n#eval say_hello\
+  \ [\"Franklin\", \"Delano\", \"Roosevelt\"] \"Chicago\" \"Illinois\"\n\n/--\ninfo:\
+  \ 'Hello, Marlo Stanfield! Welcome to Baltimore, Maryland!'\n-/\n#guard_msgs in\n\
+  #eval say_hello [\"Marlo\", \"Stanfield\"] \"Baltimore\" \"Maryland\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,19 @@
+"vc-description": "Write a function \n\n`titleToNumber(title) or title_to_number(title)\
+  \ or titleToNb title ...`\n\n(depending on the language)\n\nthat given a column\
+  \ title as it appears in an Excel sheet, returns its corresponding column number.\
+  \ All column titles will be uppercase.\n\nExamples:\n```\ntitleTonumber('A') ===\
+  \ 1\ntitleTonumber('Z') === 26\ntitleTonumber('AA') === 27\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def titleToNumber (s : String) : Nat := sorry\n\ntheorem title_to_number_positive\
+  \ (s : String) (h : s.all (fun c => 'A' ≤ c ∧ c ≤ 'Z')) : \n  titleToNumber s >\
+  \ 0 := sorry\n"
+"vc-theorems": "theorem title_to_number_single_char_range (c : Char) (h : 'A' ≤ c\
+  \ ∧ c ≤ 'Z') :\n  1 ≤ titleToNumber (String.mk [c]) ∧ titleToNumber (String.mk [c])\
+  \ ≤ 26 := sorry\n\n\ntheorem title_to_number_recursive (s : String) (c : Char) \n\
+  \  (h1 : s.all (fun c => 'A' ≤ c ∧ c ≤ 'Z')) \n  (h2 : 'A' ≤ c ∧ c ≤ 'Z') :\n  titleToNumber\
+  \ (s.push c) = titleToNumber s * 26 + (c.toNat - 'A'.toNat + 1) := sorry\n\n/--\n\
+  info: 1\n-/\n#guard_msgs in\n#eval title_to_number \"A\"\n\n/--\ninfo: 26\n-/\n\
+  #guard_msgs in\n#eval title_to_number \"Z\"\n\n/--\ninfo: 27\n-/\n#guard_msgs in\n\
+  #eval title_to_number \"AA\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

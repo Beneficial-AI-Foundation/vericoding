@@ -1,0 +1,35 @@
+"vc-description": "[The Vigenère cipher](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher)\
+  \ is a classic cipher that was thought to be \"unbreakable\" for three centuries.\
+  \ We now know that this is not so and it can actually be broken pretty easily.\n\
+  \n**How the Vigenère cipher works**:\n\nThe basic concept is that you have a `message`\
+  \ and a `key`, and each character in the `message` is encrypted using a character\
+  \ in the `key`, by applying a Caesar shift. The key is recycled as many times as\
+  \ needed.\n\nYou might want to try [this kata](https://www.codewars.com/kata/vigenere-cipher-helper)\
+  \ first, which focuses on the encryption and decryption processes.\n\n\n## Well\
+  \ how do we break it?\n\nThe first thing we have to do is determine the **length\
+  \ of the key** that was used to encrypt the message.\n\nWrite a function that takes\
+  \ some cipher text and a maximum possible key length and returns the length of the\
+  \ key that was used in the encryption process.\n\n**Note:** We don't care about\
+  \ what characters are in the key -- only how many of them there are.\n\n---\n\n\
+  Any feedback (and suggestions) would be much appreciated\n\n*This kata is based\
+  \ on one of the programming assignments in [Prof. Jonathan Katz's course on cryptography](https://www.coursera.org/course/cryptography)\
+  \ given on Coursera*"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_key_length (text : String) (max_length : Int) : Nat :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem single_char_key_min_one {text : String} (h : text.length ≥\
+  \ 1) :\n  get_key_length (text ++ text ++ text) 5 ≥ 1 :=\nsorry\n\n\ntheorem repeating_pattern_bounds\
+  \ {text : String} {n max_len : Nat} \n  (h1 : text.length ≥ 2) (h2 : n ≥ 1) (h3\
+  \ : n ≤ 20)\n  (h4 : max_len = text.length + 5) :\n  let result := get_key_length\
+  \ (String.join (List.replicate n text)) max_len\n  1 ≤ result ∧ result ≤ text.length\
+  \ :=\nsorry \n\n\ntheorem periodic_sequence {n : Nat} (h : n ≥ 1) (h2 : n ≤ 100)\
+  \ :\n  let text := String.join (List.replicate n \"AB\")\n  let result := get_key_length\
+  \ text n\n  result = 1 ∨ result = 2 :=\nsorry\n\n\n\n\ntheorem key_length_bounds\
+  \ {text : String} {key_length : Nat}\n  (h1 : text.length ≥ 1) (h2 : key_length\
+  \ ≥ 1) (h3 : key_length ≤ 10) :\n  let result := get_key_length text key_length\n\
+  \  1 ≤ result ∧ result ≤ min key_length text.length :=\nsorry\n\n/--\ninfo: 3\n\
+  -/\n#guard_msgs in\n#eval get_key_length \"ABCABCABCABC\" 5\n\n/--\ninfo: 1\n-/\n\
+  #guard_msgs in\n#eval get_key_length \"AAAAA\" 3\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval get_key_length \"XYXYXYXY\" 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

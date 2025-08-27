@@ -1,0 +1,20 @@
+"vc-description": "Given a non-empty array of integers, every element appears three\
+  \ times except for one, which appears exactly once. Find that single one.\n\nNote:\n\
+  \nYour algorithm should have a linear runtime complexity. Could you implement it\
+  \ without using extra memory?\n\nExample 1:\n\n\nInput: [2,2,3,2]\nOutput: 3\n\n\
+  \nExample 2:\n\n\nInput: [0,1,0,1,0,1,99]\nOutput: 99"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def single_number (nums : List Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem single_number_minimal (val : Int) :\n  val ≥ -1000 → val ≤\
+  \ 1000 →\n  single_number ([val, val, val, val + 1]) = val + 1 :=\nsorry\n\n\ntheorem\
+  \ single_number_reorder_invariant (single_val : Int) (others : List Int) :\n  single_number\
+  \ (single_val :: (others.map (λ x => [x,x,x])).join) = \n  single_number ((others.map\
+  \ (λ x => [x,x,x])).join ++ [single_val]) :=\nsorry\n\n\ntheorem single_number_triple_plus_one\
+  \ (val : Int) :\n  val ≥ -1000 → val ≤ 1000 →\n  let nums := (List.replicate 3 val)\
+  \ ++ [val + 1]\n  (single_number nums = val + 1) ∧ \n  (nums.count (single_number\
+  \ nums) = 1) ∧\n  (∀ x, x ∈ nums → x ≠ single_number nums → nums.count x = 3) :=\n\
+  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval single_number [2, 2, 3, 2]\n\n\
+  /--\ninfo: 99\n-/\n#guard_msgs in\n#eval single_number [0, 1, 0, 1, 0, 1, 99]\n\n\
+  /--\ninfo: 5\n-/\n#guard_msgs in\n#eval single_number [1, 1, 1, 5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

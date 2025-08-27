@@ -1,0 +1,20 @@
+"vc-description": "# Palindrome strings\n\nA palindrome is a word, phrase, number,\
+  \ or other sequence of characters which reads the same backward or forward. This\
+  \ includes capital letters, punctuation, and word dividers.\n\nImplement a function\
+  \ that checks if something is a palindrome.\n\n## Examples\n```\nisPalindrome(\"\
+  anna\")   ==> true\nisPalindrome(\"walter\") ==> false\nisPalindrome(12321)    ==>\
+  \ true\nisPalindrome(123456)   ==> false\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef is_palindrome (α : Type) [ToString\
+  \ α] (x : α) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverse (s : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem string_palindrome_property (s : String) :\n  is_palindrome\
+  \ String s = (s = reverse s) :=\n  sorry\n\n\ntheorem integer_palindrome_property\
+  \ (n : Int) :\n  is_palindrome Int n = (toString n = reverse (toString n)) :=\n\
+  \  sorry\n\n\ntheorem palindrome_type_invariant (s : String) :\n  is_palindrome\
+  \ String s = is_palindrome String (toString s) :=\n  sorry\n\n\ntheorem empty_string_is_palindrome\
+  \ :\n  is_palindrome String \"\" = true :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval is_palindrome \"anna\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval\
+  \ is_palindrome \"walter\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_palindrome\
+  \ 12321\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

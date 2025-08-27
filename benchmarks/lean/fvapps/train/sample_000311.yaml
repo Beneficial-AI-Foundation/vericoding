@@ -1,0 +1,38 @@
+"vc-description": "Alice and Bob continue their games with piles of stones. There\
+  \ are several stones arranged in a row, and each stone has an associated value which\
+  \ is an integer given in the array stoneValue.\nAlice and Bob take turns, with Alice\
+  \ starting first. On each player's turn, that player can take 1, 2 or 3 stones from the\
+  \ first remaining stones in the row.\nThe score of each player is the sum of values\
+  \ of the stones taken. The score of each player is 0 initially.\nThe objective of\
+  \ the game is to end with the highest score, and the winner is the player with the\
+  \ highest score and there could be a tie. The game continues until all the stones\
+  \ have been taken.\nAssume Alice and Bob play optimally.\nReturn \"Alice\" if Alice\
+  \ will win, \"Bob\" if Bob will win or \"Tie\" if they end the game with the same\
+  \ score.\n \nExample 1:\nInput: values = [1,2,3,7]\nOutput: \"Bob\"\nExplanation:\
+  \ Alice will always lose. Her best move will be to take three piles and the score\
+  \ become 6. Now the score of Bob is 7 and Bob wins.\n\nExample 2:\nInput: values\
+  \ = [1,2,3,-9]\nOutput: \"Alice\"\nExplanation: Alice must choose all the three\
+  \ piles at the first move to win and leave Bob with negative score.\nIf Alice chooses\
+  \ one pile her score will be 1 and the next move Bob's score becomes 5. The next\
+  \ move Alice will take the pile with value = -9 and lose.\nIf Alice chooses two\
+  \ piles her score will be 3 and the next move Bob's score becomes 3. The next move\
+  \ Alice will take the pile with value = -9 and also lose.\nRemember that both play\
+  \ optimally so here Alice will choose the scenario that makes her win.\n\nExample\
+  \ 3:\nInput: values = [1,2,3,6]\nOutput: \"Tie\"\nExplanation: Alice cannot win\
+  \ this game. She can end the game in a draw if she decided to choose all the first\
+  \ three piles, otherwise she will lose.\n\nExample 4:\nInput: values = [1,2,3,-1,-2,-3,7]\n\
+  Output: \"Alice\"\n\nExample 5:\nInput: values = [-1,-2,-3]\nOutput: \"Tie\"\n\n\
+   \nConstraints:\n\n1 <= values.length <= 50000\n-1000 <= values[i] <= 1000"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def stoneGameIII (stones: List Int) : String := sorry\n\ntheorem\
+  \ stone_game_result_valid (stones : List Int) (h: stones.length ≥ 1) : \n  let result\
+  \ := stoneGameIII stones\n  result = \"Alice\" ∨ result = \"Bob\" ∨ result = \"\
+  Tie\"\n  := sorry\n"
+"vc-theorems": "theorem stone_game_scale_invariant (stones : List Int) (scale : Int)\
+  \ \n  (h1: stones.length ≥ 1) (h2: scale > 0) :\n  stoneGameIII stones = stoneGameIII\
+  \ (stones.map (· * scale))\n  := sorry\n\n/--\ninfo: 'Bob'\n-/\n#guard_msgs in\n\
+  #eval stoneGameIII [1, 2, 3, 7]\n\n/--\ninfo: 'Alice'\n-/\n#guard_msgs in\n#eval\
+  \ stoneGameIII [1, 2, 3, -9]\n\n/--\ninfo: 'Tie'\n-/\n#guard_msgs in\n#eval stoneGameIII\
+  \ [1, 2, 3, 6]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

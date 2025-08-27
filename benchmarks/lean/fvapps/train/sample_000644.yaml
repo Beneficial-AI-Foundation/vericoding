@@ -1,0 +1,36 @@
+"vc-description": "You are given a string $S$ and an integer $L$. A operation is described\
+  \ as :- \"You are allowed to pick any substring from first $L$ charcaters of $S$,\
+  \ and place it at the end of the string $S$. \nA string $A$ is a substring of an\
+  \ string $B$ if $A$ can be obtained from $B$ by deletion of several (possibly, zero\
+  \ or all) characters from the beginning and several (possibly, zero or all) elements\
+  \ from the end.\nFind the lexographically smallest string after performing this\
+  \ opertaion any number of times (possibly zero).\nFor example $S$ = \"codechef\"\
+  \ and $L=4$. Then, we can take substring \"ode\" from S[0-3] and place it at end\
+  \ of the string $S$ = \"cchefode\".\n\n-----Input:-----\n- First line will contain\
+  \ $T$, number of testcases. \n- Then each of the N lines contain an integer $L$\
+  \ and a string $S$. \n\n-----Output:-----\nFor each testcase, output in a single\
+  \ line answer lexographically smallest string.\n\n-----Constraints-----\n- $1 \\\
+  leq T \\leq 10^4$\n- $2 \\leq |S| \\leq 10^3$\n- $1 \\leq L \\leq N $\n\n-----Sample\
+  \ Input:-----\n2\n1 rga\n2 cab\n\n-----Sample Output:-----\narg\nabc\n\n-----EXPLANATION:-----\n\
+  In the first testcase:\nsubstring 'r' is picked and placed at the end of the string.\
+  \ rga -> gar\nThen performing same operation gives :- gar -> arg"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (l : Nat) (s : String) : String := sorry\n\ntheorem solve_l1_maintains_length\
+  \ (s : String) (h : s.length > 0) : \n  (solve 1 s).length = s.length := sorry\n"
+"vc-theorems": "theorem solve_l1_is_rotation (s : String) (h : s.length > 0) :\n \
+  \ ∃ i, i < s.length ∧ solve 1 s = s.drop i ++ s.take i := sorry\n\n\ntheorem solve_l1_is_lexmin\
+  \ (s : String) (h : s.length > 0) :\n  ∀ i, i < s.length → solve 1 s ≤ (s.drop i\
+  \ ++ s.take i) := sorry\n\n\ntheorem solve_l1_same_chars (s : String) (h : s.length\
+  \ > 0) :\n  ∀ c, (s.data.count c = (solve 1 s).data.count c) := sorry\n\n\ntheorem\
+  \ solve_general_maintains_length (l : Nat) (s : String) (hl : l ≥ 2) (hs : s.length\
+  \ > 0) :\n  (solve l s).length = s.length := sorry\n\n\ntheorem solve_general_same_chars\
+  \ (l : Nat) (s : String) (hl : l ≥ 2) (hs : s.length > 0) :\n  ∀ c, (s.data.count\
+  \ c = (solve l s).data.count c) := sorry\n\n\ntheorem solve_general_lexmin (l :\
+  \ Nat) (s : String) (hl : l ≥ 2) (hs : s.length > 0) :\n  solve l s ≤ s := sorry\n\
+  \n\ntheorem solve_single_char (c : Char) (h : 'a' ≤ c ∧ c ≤ 'z') :\n  solve 1 (String.mk\
+  \ [c]) = String.mk [c] ∧ \n  solve 2 (String.mk [c]) = String.mk [c] := sorry\n\n\
+  /--\ninfo: 'arg'\n-/\n#guard_msgs in\n#eval solve 1 \"rga\"\n\n/--\ninfo: 'abc'\n\
+  -/\n#guard_msgs in\n#eval solve 2 \"cab\"\n\n/--\ninfo: 'cchefode'\n-/\n#guard_msgs\
+  \ in\n#eval solve 4 \"codechef\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,29 @@
+"vc-description": "Your task is to implement a function that takes one or more dictionaries\
+  \ and combines them in one result dictionary.\n\nThe keys in the given dictionaries\
+  \ can overlap. In that case you should combine all source values in an array. Duplicate\
+  \ values should be preserved.\n\nHere is an example:\n```cs\nvar source1 = new Dictionary{{\"\
+  A\", 1}, {\"B\", 2}}; \nvar source2 = new Dictionary{{\"A\", 3}};\n\nDictionary\
+  \ result = DictionaryMerger.Merge(source1, source2);\n// result should have this\
+  \ content: {{\"A\", [1, 3]}, {\"B\", [2]}}\n\n```\n```python\nsource1 = {\"A\":\
+  \ 1, \"B\": 2} \nsource2 = {\"A\": 3}\n\nresult = merge(source1, source2);\n// result\
+  \ should have this content: {\"A\": [1, 3]}, \"B\": [2]}\n\n```\n\nYou can assume\
+  \ that only valid dictionaries are passed to your function.\nThe number of given\
+  \ dictionaries might be large. So take care about performance."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Map (α : Type) (β : Type) := α → Option β\n\ndef merge {α β\
+  \ : Type} (dicts : List (Map α β)) : Map α (List β) := sorry\n"
+"vc-theorems": "theorem merge_keys_preserved\n  {α β : Type} [BEq α] [BEq β]\n  (dicts\
+  \ : List (Map α β))\n  (k : α) :\n  (∃ d ∈ dicts, (d k).isSome) ↔ (merge dicts k).isSome\
+  \ :=\nsorry\n\n\ntheorem merge_list_lengths\n  {α β : Type} [BEq α] [BEq β]\n  (dicts\
+  \ : List (Map α β))\n  (k : α)\n  (h : (merge dicts k).isSome) :\n  ((merge dicts\
+  \ k).getD []).length = \n    (dicts.filter (fun d => (d k).isSome)).length :=\n\
+  sorry\n\n\ntheorem merge_single_dict\n  {α β : Type} [BEq α] [BEq β] [Inhabited\
+  \ β]\n  (d : Map α β)\n  (k : α)\n  (h : (d k).isSome) :\n  ∃ v : β, ((merge [d]\
+  \ k).getD []) = [v] ∧ (d k) = some v :=\nsorry\n\n\ntheorem merge_empty\n  {α β\
+  \ : Type} [BEq α] [BEq β]\n  (k : α) :\n  merge ([] : List (Map α β)) k = none :=\n\
+  sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval merge {\"A\": 1, \"B\"\
+  : 2} {\"A\": 3}\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval merge {\"A\"\
+  : 1, \"B\": 2} {\"A\": 1, \"B\": 3}\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n\
+  #eval merge {\"A\": 1} {}\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

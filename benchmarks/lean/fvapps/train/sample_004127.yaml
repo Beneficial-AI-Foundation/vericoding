@@ -1,0 +1,21 @@
+"vc-description": "The most basic encryption method is to map a char to another char\
+  \ by a certain math rule.\nBecause every char has an ASCII value, we can manipulate\
+  \ this value with a simple math expression. \nFor example 'a' + 1 would give us\
+  \ 'b', because 'a' value is 97 and 'b' value is 98.\n\nYou will need to write a\
+  \ method which does exactly that - \n\nget a string as text and an int as the rule\
+  \ of manipulation, and should return encrypted text.\nfor example:\n\nencrypt(\"\
+  a\",1) = \"b\"\n\n *Full ascii table is used on our question (256 chars) - so 0-255\
+  \ are the valid values.*\n \nGood luck."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def encrypt (text : String) (rule : Int) : String :=\n  sorry\n"
+"vc-theorems": "theorem encrypt_preserves_length (text : String) (rule : Int) :\n\
+  \  (encrypt text rule).length = text.length :=\nsorry\n\n\ntheorem encrypt_periodic_rule\
+  \ (text : String) (rule : Int) :\n  encrypt text rule = encrypt text (rule % 256)\
+  \ :=\nsorry\n\n\ntheorem encrypt_identity_rule (text : String) :\n  encrypt text\
+  \ 0 = text :=\nsorry\n\n\ntheorem encrypt_inverse_rules (text : String) (rule :\
+  \ Int) :\n  encrypt (encrypt text rule) (-rule) = text :=\nsorry\n\n/--\ninfo: ''\n\
+  -/\n#guard_msgs in\n#eval encrypt \"\" 1\n\n/--\ninfo: 'b'\n-/\n#guard_msgs in\n\
+  #eval encrypt \"a\" 1\n\n/--\ninfo: 'rngcug\"gpet{rv\"og'\n-/\n#guard_msgs in\n\
+  #eval encrypt \"please encrypt me\" 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,20 @@
+"vc-description": "Roman has no idea, why this problem is called Stone. He also has\
+  \ no idea on how to solve the followong problem: given array of N integers A and\
+  \ a number K. During a turn the maximal value over all Ai is chosen, let's call\
+  \ it MAX. Then Ai = \nMAX - Ai is done for every 1 <= i <= N. Help Roman to find\
+  \ out how will the array look like after K turns.\n\n-----Input-----\nThe numbers\
+  \ N and K are given in the first line of an input. Then N integers are given in\
+  \ the second line which denote the array A. \n\n-----Output-----\nOutput N numbers\
+  \ on a single line. It should be the array A after K turns.\n\n-----Constraints-----\n\
+  \n- 1 <= N <= 105\n- 0 <= K <= 109\n- Ai does not exceed 2 * 109 by it's absolute\
+  \ value.\n\n-----Example-----\nInput:\n4 1\n5 -1 7 0\n\nOutput:\n2 8 0 7"
+"vc-preamble": "import Imports.AllImports\n\ndef solve_stone_array (n k : Nat) (A\
+  \ : List Int) : List Int :=\n  sorry\n\n\ndef list_maximum (l : List Int) : Int\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_minimum (l : List Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem stone_array_output_length {n k : Nat} {A : List Int} :\n \
+  \ List.length (solve_stone_array n k A) = List.length A :=\n  sorry\n\n\ntheorem\
+  \ stone_array_zero_k {n : Nat} {A : List Int} :\n  solve_stone_array n 0 A = A :=\n\
+  \  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

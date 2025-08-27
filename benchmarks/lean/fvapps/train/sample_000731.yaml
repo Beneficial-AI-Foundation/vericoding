@@ -1,0 +1,37 @@
+"vc-description": "Some programming contest problems are really tricky: not only do\
+  \ they\nrequire a different output format from what you might have expected, but\n\
+  also the sample output does not show the difference. For an example,\nlet us look\
+  \ at permutations.\n\nA permutation of the integers 1 to n is an\nordering of\n\
+  these integers. So the natural way to represent a permutation is\nto list the integers\
+  \ in this order. With n = 5, a\npermutation might look like 2, 3, 4, 5, 1. \n\n\
+  However, there is another possibility of representing a permutation:\nYou create\
+  \ a list of numbers where the i-th number is the\nposition of the integer i in the\
+  \ permutation. \nLet us call this second\npossibility an inverse permutation. The\
+  \ inverse permutation\nfor the sequence above is 5, 1, 2, 3, 4.\n\nAn ambiguous\
+  \ permutation is a permutation which cannot be\ndistinguished from its inverse permutation.\
+  \ The permutation 1, 4, 3, 2\nfor example is ambiguous, because its inverse permutation\
+  \ is the same.\nTo get rid of such annoying sample test cases, you have to write\
+  \ a\nprogram which detects if a given permutation is ambiguous or not.\n\n-----Input\
+  \ Specification-----\nThe input contains several test cases.\n\nThe first line of\
+  \ each test case contains an integer n\n(1 ≤ n ≤ 100000).\nThen a permutation of\
+  \ the integers 1 to n follows\nin the next line. There is exactly one space character\n\
+  between consecutive integers.\nYou can assume that every integer between 1 and n\n\
+  appears exactly once in the permutation.\n\nThe last test case is followed by a\
+  \ zero.\n\n-----Output Specification-----\nFor each test case output whether the\
+  \ permutation is ambiguous or not.\nAdhere to the format shown in the sample output.\n\
+  \n-----Sample Input-----\n4\n1 4 3 2\n5\n2 3 4 5 1\n1\n1\n0\n\n-----Sample Output-----\n\
+  ambiguous\nnot ambiguous\nambiguous"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.permutationInverse (xs: List Nat) : List Nat := sorry\n\
+  \ndef is_ambiguous_permutation (xs : List Nat) : Bool := sorry\n"
+"vc-theorems": "theorem permutation_property {xs : List Nat} :\n  let result := is_ambiguous_permutation\
+  \ xs\n  let inv := xs.permutationInverse\n  let inv2 := inv.permutationInverse\n\
+  \  result → xs = inv2 := sorry\n\n\ntheorem permutation_symmetry {xs : List Nat}\
+  \ :\n  let inv := xs.permutationInverse\n  is_ambiguous_permutation xs = is_ambiguous_permutation\
+  \ inv := sorry\n\n\ntheorem identity_permutation {n : Nat} :\n  let xs := List.range\
+  \ n\n  is_ambiguous_permutation xs = true := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval is_ambiguous_permutation [1, 4, 3, 2]\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval is_ambiguous_permutation [2, 3, 4, 5, 1]\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval is_ambiguous_permutation [1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

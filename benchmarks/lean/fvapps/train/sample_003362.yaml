@@ -1,0 +1,27 @@
+"vc-description": "For every good kata idea there seem to be quite a few bad ones!\n\
+  \nIn this kata you need to check the provided 2 dimensional array (x) for good ideas\
+  \ 'good' and bad ideas 'bad'. If there are one or two good ideas, return 'Publish!',\
+  \ if there are more than 2 return 'I smell a series!'. If there are no good ideas,\
+  \ as is often the case, return 'Fail!'.\n\nThe sub arrays may not be the same length.\n\
+  \nThe solution should be case insensitive (ie good, GOOD and gOOd all count as a\
+  \ good idea). All inputs may not be strings."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def well (arr: List (List String)) : String := sorry\n\ntheorem\
+  \ well_output_is_valid (arr: List (List String)) : \n  well arr = \"Fail!\" ∨ well\
+  \ arr = \"Publish!\" ∨ well arr = \"I smell a series!\" := sorry\n"
+"vc-theorems": "theorem well_count_good_matches (arr: List (List String)) :\n  let\
+  \ goodCount := (arr.join.filter (fun x => x.toLower = \"good\")).length\n  well\
+  \ arr = (if goodCount > 2 then \"I smell a series!\"\n             else if goodCount\
+  \ > 0 then \"Publish!\"\n             else \"Fail!\") := sorry\n\n\ntheorem well_all_bad\
+  \ (arr: List (List String))\n  (h: ∀ l ∈ arr, ∀ s ∈ l, s = \"bad\") : \n  well arr\
+  \ = \"Fail!\" := sorry\n\n\ntheorem well_all_good (arr: List (List String))\n  (h:\
+  \ ∀ l ∈ arr, ∀ s ∈ l, s = \"good\") :\n  let totalGood := arr.join.length\n  well\
+  \ arr = (if totalGood > 2 then \"I smell a series!\" else \"Publish!\") := sorry\n\
+  \n/--\ninfo: 'Fail!'\n-/\n#guard_msgs in\n#eval well [[\"bad\", \"bAd\", \"bad\"\
+  ], [\"bad\", \"bAd\", \"bad\"], [\"bad\", \"bAd\", \"bad\"]]\n\n/--\ninfo: 'Publish!'\n\
+  -/\n#guard_msgs in\n#eval well [[\"gOOd\", \"bad\", \"BAD\", \"bad\", \"bad\"],\
+  \ [\"bad\", \"bAd\", \"bad\"], [\"GOOD\", \"bad\", \"bad\", \"bAd\"]]\n\n/--\ninfo:\
+  \ 'I smell a series!'\n-/\n#guard_msgs in\n#eval well [[\"gOOd\", \"bAd\", \"BAD\"\
+  , \"bad\", \"bad\", \"GOOD\"], [\"bad\"], [\"gOOd\", \"BAD\"]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

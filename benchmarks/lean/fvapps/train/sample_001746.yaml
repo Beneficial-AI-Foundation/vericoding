@@ -1,0 +1,15 @@
+"vc-description": "Given an array of integers with possible duplicates, randomly output\
+  \ the index of a given target number. You can assume that the given target number\
+  \ must exist in the array.\n\nNote:\nThe array size can be very large. Solution\
+  \ that uses too much extra space will not pass the judge.\n\nExample:\n\n\nint[]\
+  \ nums = new int[] {1,2,3,3,3};\nSolution solution = new Solution(nums);\n\n// pick(3)\
+  \ should return either index 2, 3, or 4 randomly. Each index should have equal probability\
+  \ of returning.\nsolution.pick(3);\n\n// pick(1) should return 0. Since in the array\
+  \ only nums[0] is equal to 1.\nsolution.pick(1);"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pick (nums : List Int) (target : Int) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem pick_returns_valid_index\n  (nums : List Int) (target : Int)\
+  \ (h : nums ≠ []) (h2 : target ∈ nums) :\n  let idx := pick nums target\n  idx <\
+  \ nums.length ∧ nums[idx]! = target := by\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

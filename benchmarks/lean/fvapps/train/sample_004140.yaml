@@ -1,0 +1,20 @@
+"vc-description": "You are given the `length` and `width` of a 4-sided polygon. The\
+  \ polygon can either be a rectangle or a square. \nIf it is a square, return its\
+  \ area. If it is a rectangle, return its perimeter.\n\n```\narea_or_perimeter(6,\
+  \ 10) --> 32\narea_or_perimeter(4, 4) --> 16\n```\n\n> Note: for the purposes of\
+  \ this kata you will assume that it is a square if its `length` and `width` are\
+  \ equal, otherwise it is a rectangle."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def area_or_perimeter (l w : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem square_is_area {l : Nat} (h : l > 0) (h2 : l ≤ 1000) :\n \
+  \ area_or_perimeter l l = l * l :=\nsorry\n\n\ntheorem rectangle_is_perimeter {l\
+  \ w : Nat} (h1 : l > 0) (h2 : w > 0) \n    (h3 : l ≤ 1000) (h4 : w ≤ 1000) (h5 :\
+  \ l ≠ w) :\n  area_or_perimeter l w = 2 * (l + w) :=\nsorry\n\n\ntheorem output_is_positive\
+  \ {l w : Nat} (h1 : l > 0) (h2 : w > 0)\n    (h3 : l ≤ 1000) (h4 : w ≤ 1000) :\n\
+  \  area_or_perimeter l w > 0 :=\nsorry\n\n\ntheorem commutative {l w : Nat} (h1\
+  \ : l > 0) (h2 : w > 0)\n    (h3 : l ≤ 1000) (h4 : w ≤ 1000) :\n  area_or_perimeter\
+  \ l w = area_or_perimeter w l :=\nsorry\n\n/--\ninfo: 16\n-/\n#guard_msgs in\n#eval\
+  \ area_or_perimeter 4 4\n\n/--\ninfo: 32\n-/\n#guard_msgs in\n#eval area_or_perimeter\
+  \ 6 10\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval area_or_perimeter 3 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

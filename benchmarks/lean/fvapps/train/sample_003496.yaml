@@ -1,0 +1,25 @@
+"vc-description": "In this kata, you've to count lowercase letters in a given string\
+  \ and return the letter count in a hash with 'letter' as key and count as 'value'.\
+  \ The key must be 'symbol' instead of string in Ruby and 'char' instead of string\
+  \ in Crystal.\n\nExample: \n\n```python\nletter_count('arithmetics') #=> {\"a\"\
+  : 1, \"c\": 1, \"e\": 1, \"h\": 1, \"i\": 2, \"m\": 1, \"r\": 1, \"s\": 1, \"t\"\
+  : 2}\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Char.isValidUnicode (c : Char) : Bool := sorry\n\ndef letterCount\
+  \ (s : String) : Char → Nat := sorry\n"
+"vc-theorems": "theorem letterCount_all_counts_positive {s : String} {c : Char} :\n\
+  \  letterCount s c > 0 → c ∈ s.data := by sorry\n\n\ntheorem letterCount_keys_in_string\
+  \ {s : String} {c : Char} :\n  letterCount s c > 0 → c ∈ s.data := by sorry\n\n\n\
+  theorem letterCount_sum_equals_length {s : String} :\n  (s.data.foldl (fun acc c\
+  \ => acc + letterCount s c) 0) = s.length := by sorry\n\n\ntheorem letterCount_count_correct\
+  \ {s : String} {c : Char} :\n  letterCount s c = (s.data.filter (· = c)).length\
+  \ := by sorry \n\n\ntheorem letterCount_nonempty_result {s : String} :\n  s ≠ \"\
+  \" → ∃ c, letterCount s c > 0 := by sorry\n\n\ntheorem letterCount_valid_chars {s\
+  \ : String} {c : Char} :\n  letterCount s c > 0 → Char.isValidUnicode c := by sorry\n\
+  \n/--\ninfo: {'a': 1, 'c': 1, 'd': 1, 'e': 1, 'o': 1, 'r': 1, 's': 1, 'w': 1}\n\
+  -/\n#guard_msgs in\n#eval letter_count \"codewars\"\n\n/--\ninfo: {'a': 1, 'c':\
+  \ 1, 'i': 2, 't': 2, 'v': 1, 'y': 1}\n-/\n#guard_msgs in\n#eval letter_count \"\
+  activity\"\n\n/--\ninfo: {'a': 1, 'c': 1, 'e': 1, 'h': 1, 'i': 2, 'm': 1, 'r': 1,\
+  \ 's': 1, 't': 2}\n-/\n#guard_msgs in\n#eval letter_count \"arithmetics\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,41 @@
+"vc-description": "=====Function Descriptions=====\n*This section assumes that you\
+  \ understand the basics discussed in HTML Parser - Part 1\n\n.handle_comment(data)\n\
+  This method is called when a comment is encountered (e.g. <!--comment-->).\nThe\
+  \ data argument is the content inside the comment tag:\n\nfrom HTMLParser import\
+  \ HTMLParser\n\nclass MyHTMLParser(HTMLParser):\n    def handle_comment(self, data):\n\
+  \          print \"Comment  :\", data\n\n\n.handle_data(data)\nThis method is called\
+  \ to process arbitrary data (e.g. text nodes and the content of <script>...</script>\
+  \ and <style>...</style>).\nThe data argument is the text content of HTML.\n\nfrom\
+  \ HTMLParser import HTMLParser\n\nclass MyHTMLParser(HTMLParser):\n    def handle_data(self,\
+  \ data):\n        print \"Data     :\", data\n\n=====Problem Statement=====\nYou\
+  \ are given an HTML code snippet of N lines.\nYour task is to print the single-line\
+  \ comments, multi-line comments and the data.\n\nPrint the result in the following\
+  \ format:\n\n>>> Single-line Comment  \nComment\n>>> Data                 \nMy Data\n\
+  >>> Multi-line Comment  \nComment_multiline[0]\nComment_multiline[1]\n>>> Data\n\
+  My Data\n>>> Single-line Comment:  \n\nNote: Do not print data if data == '\\n'.\
+  \ \n\n=====Input Format=====\nThe first line contains integer N, the number of lines\
+  \ in the HTML code snippet.\nThe next N lines contains HTML code.\n\n=====Constraints=====\n\
+  0<N<100\n\n=====Output Format=====\nPrint the single-line comments, multi-line comments\
+  \ and the data in order of their occurrence from top to bottom in the snippet.\n\
+  \nFormat the answers as explained in the problem statement."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def String.isInfixOf (sub : String) (str : String) : Bool := \n\
+  \  sorry\n\nvariable (parse_html_code : String → String)\n\n/-- Single line comments\
+  \ are correctly identified and preserved --/"
+"vc-theorems": "theorem single_line_comment_handling \n  (text : String)\n  (h₁ :\
+  \ ¬ String.contains text '\\n') :\n  let comment := s!\"<!--{text}-->\"\n  String.isInfixOf\
+  \ \">>> Single-line Comment\" (parse_html_code comment) ∧ \n  (text.length > 0 →\
+  \ String.isInfixOf text (parse_html_code comment)) := sorry\n\n/-- Multi line comments\
+  \ are correctly identified and preserved --/\n\ntheorem multi_line_comment_handling\
+  \ \n  (text : String)\n  (h₁ : String.contains text '\\n') :\n  let comment := s!\"\
+  <!--{text}-->\"\n  String.isInfixOf \">>> Multi-line Comment\" (parse_html_code\
+  \ comment) ∧\n  (text.length > 0 → String.isInfixOf text (parse_html_code comment))\
+  \ := sorry\n\n/-- Whitespace-only input results in empty output --/\n\ntheorem whitespace_handling\
+  \ \n  (s : String)\n  (h₁ : ∀ c ∈ s.data, c = ' ' ∨ c = '\\n' ∨ c = '\\t') :\n \
+  \ parse_html_code s = \"\" := sorry\n\n/-- Empty input results in empty output --/\n\
+  \ntheorem empty_input_handling :\n  parse_html_code \"\" = \"\" := sorry\n\n/--\
+  \ Regular text is marked as data and preserved --/\n\ntheorem basic_data_handling\
+  \ :\n  let input := \"Hello World\"\n  String.isInfixOf \">>> Data\" (parse_html_code\
+  \ input) ∧\n  String.isInfixOf \"Hello World\" (parse_html_code input) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

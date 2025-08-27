@@ -1,0 +1,26 @@
+"vc-description": "Error Handling is very important in coding and seems to be overlooked\
+  \ or not implemented properly.\n\n#Task\n\nYour task is to implement a function\
+  \ which takes a string as input and return an object containing the properties\n\
+  vowels and consonants. The vowels property must contain the total count of vowels\
+  \ {a,e,i,o,u}, and the total count of consonants {a,..,z} - {a,e,i,o,u}. Handle\
+  \ invalid input and don't forget to return valid ones.\n\n#Input\n\nThe input is\
+  \ any random string. You must then discern what are vowels and what are consonants\
+  \ and sum for each category their total occurrences in an object. However you could\
+  \ also receive inputs that are not strings. If this happens then you must return\
+  \ an object with a vowels and consonants total of 0 because the input was NOT a\
+  \ string. Refer to the Example section for a more visual representation of which\
+  \ inputs you could receive and the outputs expected. :)\n\nExample:\n\n```python\n\
+  Input: get_count('test')\nOutput: {vowels:1,consonants:3}\n\nInput: get_count('tEst')\n\
+  Output: {vowels:1,consonants:3}\n\nInput get_count('    ')\nOutput: {vowels:0,consonants:0}\n\
+  \nInput get_count()\nOutput: {vowels:0,consonants:0}\n```\n\nC#\n\nA Counter class\
+  \ has been put in the preloaded section taking two parameters Vowels and Consonants\
+  \ this must be the Object you return!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_count (s : String := \"\") : Count :=\n  sorry\n"
+"vc-theorems": "theorem get_count_nonnegative (s : String) :\n  let result := get_count\
+  \ s\n  result.vowels ≥ 0 ∧ result.consonants ≥ 0 :=\n  sorry\n\n\ntheorem get_count_sum_equals_letters\
+  \ (s : String) :\n  let result := get_count s\n  let letter_count := (s.data.filter\
+  \ Char.isAlpha).length\n  result.vowels + result.consonants = letter_count :=\n\
+  \  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

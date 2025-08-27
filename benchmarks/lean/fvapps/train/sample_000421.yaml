@@ -1,0 +1,22 @@
+"vc-description": "Given an array of integers A, find the sum of min(B), where B ranges\
+  \ over every (contiguous) subarray of A.\nSince the answer may be large, return\
+  \ the answer modulo 10^9 + 7.\n \nExample 1:\nInput: [3,1,2,4]\nOutput: 17\nExplanation:\
+  \ Subarrays are [3], [1], [2], [4], [3,1], [1,2], [2,4], [3,1,2], [1,2,4], [3,1,2,4].\
+  \ \nMinimums are 3, 1, 2, 4, 1, 1, 2, 1, 1, 1.  Sum is 17.\n \nNote:\n\n1 <= A.length\
+  \ <= 30000\n1 <= A[i] <= 30000"
+"vc-preamble": "import Imports.AllImports\n\ndef sum_subarray_mins (nums : List Nat)\
+  \ : Nat :=\n  sorry\n\n\ndef list_min (l : List Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_max (l : List Nat) : Nat := \n  sorry\n"
+"vc-theorems": "theorem sum_subarray_mins_non_negative (nums : List Nat) :\n  sum_subarray_mins\
+  \ nums ≥ 0 := sorry\n\n\ntheorem sum_subarray_mins_modulo_bound (nums : List Nat)\
+  \ :\n  sum_subarray_mins nums < 10^9 + 7 := sorry\n\n\ntheorem sum_subarray_mins_singleton\
+  \ (n : Nat) :\n  sum_subarray_mins [n] = n := sorry\n\n\ntheorem sum_subarray_mins_min_bound\
+  \ {nums : List Nat} (h : nums.length ≥ 2) :\n  sum_subarray_mins nums ≥ list_min\
+  \ nums := sorry\n\n\ntheorem sum_subarray_mins_append_larger {nums : List Nat} (h\
+  \ : nums.length ≥ 2) :\n  let max := list_max nums\n  sum_subarray_mins (nums ++\
+  \ [max + 1]) % (10^9 + 7) ≥ sum_subarray_mins nums % (10^9 + 7) := sorry\n\n/--\n\
+  info: 17\n-/\n#guard_msgs in\n#eval sum_subarray_mins [3, 1, 2, 4]\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval sum_subarray_mins [1]\n\n/--\ninfo: 444\n-/\n#guard_msgs\
+  \ in\n#eval sum_subarray_mins [11, 81, 94, 43, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

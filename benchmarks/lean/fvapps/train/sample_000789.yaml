@@ -1,0 +1,41 @@
+"vc-description": "Zaikia has $N$ sticks of distinct positive lengths $A_1,A_2,\\\
+  dots,A_N$. For no good reason at all, he wants to know if there is a triplet of\
+  \ sticks which when connected end-to-end will form a non-trivial triangle. Here\
+  \ non-trivial refers to a triangle with positive area.\nHelp Zaikia know if such\
+  \ a triplet exists or not. If such a triplet exists, help him find the lexicographically\
+  \ largest applicable triplet.Input\n- The first line contains an integer $N$.\n\
+  - The second line contains $N$ space-seperated integers $A_1,A_2,\\dots,A_N$. Output\n\
+  - In the first line print YES if a triplet exists or NO if it doesn't.\n- If such\
+  \ a triplet exists, then in the second line print the lexicographically largest\
+  \ applicable triplet.Constraints\n- $3 \\leq N \\leq {2}\\times{10}^{5}$\n- $1 \\\
+  leq A_i \\leq {10}^{9}$ for each valid $i$Sample Input 1\n5\n4 2 10 3 5\nSample\
+  \ Output 1\nYES\n5 4 3\nExplanation 1\nThere are three unordered triplets of sticks\
+  \ which can be used to create a triangle:\n- $4,2,3$\n- $4,2,5$\n- $4,3,5$\nArranging\
+  \ them in lexicographically largest fashion\n- $4,3,2$\n- $5,4,2$\n- $5,4,3$\nHere\
+  \ $5,4,3$ is the lexicographically largest so it is the triplet which dristiron\
+  \ wantsSample Input 2\n5\n1 2 4 8 16\nSample Output 2\nNO\nExplanation 2\nThere\
+  \ are no triplets of sticks here that can be used to create a triangle."
+"vc-preamble": "import Imports.AllImports\n\ndef find_largest_triangle (n : Nat) (nums\
+  \ : List Nat) : String × List Nat := sorry\n\ndef is_valid_triangle (sides : List\
+  \ Nat) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_sum (l : List Nat) : Nat := \n  l.foldl (·+·) 0\n"
+"vc-theorems": "theorem find_largest_triangle_empty_input \n  (nums : List Nat) (h\
+  \ : nums.length < 3) : \n  find_largest_triangle nums.length nums = (\"NO\", [])\
+  \ := sorry\n\n\ntheorem find_largest_triangle_returns_valid\n  (nums : List Nat)\
+  \ (h : nums.length ≥ 3)\n  (h2 : (find_largest_triangle nums.length nums).1 = \"\
+  YES\") :\n  let result := (find_largest_triangle nums.length nums).2\n  is_valid_triangle\
+  \ result ∧ \n  result.length = 3 ∧\n  ∀ x ∈ result, x ∈ nums := sorry\n\n\ntheorem\
+  \ find_largest_triangle_is_max\n  (nums : List Nat) (h : nums.length ≥ 3)\n  (h2\
+  \ : (find_largest_triangle nums.length nums).1 = \"YES\") :\n  let result := (find_largest_triangle\
+  \ nums.length nums).2\n  ∀ i j k, i < nums.length → j < nums.length → k < nums.length\
+  \ →\n  i ≠ j → j ≠ k → i ≠ k →\n  is_valid_triangle [nums.get! i, nums.get! j, nums.get!\
+  \ k] →\n  list_sum [nums.get! i, nums.get! j, nums.get! k] ≤ list_sum result :=\
+  \ sorry\n\n\ntheorem find_largest_triangle_no_implies_no_valid\n  (nums : List Nat)\
+  \ (h : nums.length ≥ 3)\n  (h2 : (find_largest_triangle nums.length nums).1 = \"\
+  NO\") :\n  ∀ i j k, i < nums.length → j < nums.length → k < nums.length →\n  i ≠\
+  \ j → j ≠ k → i ≠ k →\n  ¬is_valid_triangle [nums.get! i, nums.get! j, nums.get!\
+  \ k] := sorry\n\n\ntheorem find_largest_triangle_preserves_valid_triangle\n  (sides\
+  \ : List Nat) (h : sides.length = 3) \n  (h2 : is_valid_triangle sides) :\n  find_largest_triangle\
+  \ sides.length sides = (\"YES\", sides) := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

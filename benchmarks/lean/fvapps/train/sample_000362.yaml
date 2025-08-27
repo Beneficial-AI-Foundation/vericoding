@@ -1,0 +1,28 @@
+"vc-description": "We have a list of bus routes. Each routes[i] is a bus route that\
+  \ the i-th bus repeats forever. For example if routes[0] = [1, 5, 7], this means\
+  \ that the first bus (0-th indexed) travels in the sequence 1->5->7->1->5->7->1->...\
+  \ forever.\nWe start at bus stop S (initially not on a bus), and we want to go to\
+  \ bus stop T. Travelling by buses only, what is the least number of buses we must\
+  \ take to reach our destination? Return -1 if it is not possible.\nExample:\nInput:\
+  \ \nroutes = [[1, 2, 7], [3, 6, 7]]\nS = 1\nT = 6\nOutput: 2\nExplanation: \nThe\
+  \ best strategy is take the first bus to the bus stop 7, then take the second bus\
+  \ to the bus stop 6.\n\n \nConstraints:\n\n1 <= routes.length <= 500.\n1 <= routes[i].length\
+  \ <= 10^5.\n0 <= routes[i][j] < 10 ^ 6."
+"vc-preamble": "import Imports.AllImports\n\ndef numBusesToDestination (routes: List\
+  \ (List Nat)) (source: Nat) (target: Nat) : Int :=\n  sorry\n\n\ndef findMaxInList\
+  \ (l: List Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def findMaxInRoutes (routes: List (List Nat)) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem impossible_path_property\n  (routes: List (List Nat))\n  (h:\
+  \ routes ≠ [])\n  (h2: ∀ r ∈ routes, r ≠ []) : \n  let maxStop := findMaxInRoutes\
+  \ routes\n  numBusesToDestination routes 0 (maxStop + 1) = -1 :=\nsorry\n\n\ntheorem\
+  \ result_range_property\n  (routes: List (List Nat))\n  (h: routes ≠ [])\n  (h2:\
+  \ ∀ r ∈ routes, r ≠ [])\n  (start: Nat)\n  (route: List Nat)\n  (routeEnd: Nat)\n\
+  \  (h3: route ∈ routes)\n  (h4: routeEnd ∈ route) :\n  numBusesToDestination routes\
+  \ start routeEnd ≥ -1 := \nsorry\n\n\ntheorem empty_routes_property\n  (routes:\
+  \ List (List Nat))\n  (h: routes = [] ∨ routes = [[]]) :\n  numBusesToDestination\
+  \ routes 1 2 = -1 := \nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval numBusesToDestination\
+  \ [[1, 2, 7], [3, 6, 7]] 1 6\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval numBusesToDestination\
+  \ [[1, 2, 3], [3, 4, 5]] 1 5\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval numBusesToDestination\
+  \ [[1, 2], [2, 3], [3, 4]] 1 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

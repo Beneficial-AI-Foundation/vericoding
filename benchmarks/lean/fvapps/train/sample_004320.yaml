@@ -1,0 +1,47 @@
+"vc-description": "# Task\nYou are a lifelong fan of your local football club, and\
+  \ proud to say you rarely miss a game. Even though you're a superfan, you still\
+  \ hate boring games. Luckily, boring games often end in a draw, at which point the\
+  \ winner is determined by a penalty shoot-out, which brings some excitement to the\
+  \ viewing experience. Once, in the middle of a penalty shoot-out, you decided to\
+  \ count the lowest total number of shots required to determine the winner. So, given\
+  \ the number of shots each team has already made and the current score, `how soon`\
+  \ can the game end?\n\nIf you are not familiar with penalty shoot-out rules, here\
+  \ they are:\n\n`Teams take turns to kick from the penalty mark until each has taken\
+  \ five kicks. However, if one side has scored more successful kicks than the other\
+  \ could possibly reach with all of its remaining kicks, the shoot-out immediately\
+  \ ends regardless of the number of kicks remaining.`\n\n`If at the end of these\
+  \ five rounds of kicks the teams have scored an equal number of successful kicks,\
+  \ additional rounds of one kick each will be used until the tie is broken.`\n\n\n\
+  \n# Input/Output\n\n\n`[input]` integer `shots`\n\nAn integer, the number of shots\
+  \ each team has made thus far.\n\n`0 ≤ shots ≤ 100.`\n\n`[input]` integer array\
+  \ `score`\n\nAn array of two integers, where score[0] is the current score of the\
+  \ first team and score[1] - of the second team.\n\n`score.length = 2,`\n\n`0 ≤ score[i]\
+  \ ≤ shots.`\n\n`[output]` an integer\n\nThe minimal possible total number of shots\
+  \ required to determine the winner.\n\n\n# Example\n\nFor `shots = 2 and score =\
+  \ [1, 2]`, the output should be `3`.\n\nThe possible 3 shots can be: \n```\nshot1:\
+  \ the first team misses the penalty\nshot2: the second team scores\nshot3: the first\
+  \ one misses again```\n\nthen, score will be [1, 3]. As the first team can't get\
+  \ 2 more points in the last remaining shot until the end of the initial five rounds,\
+  \ the winner is determined.\n\nFor `shots = 10 and score = [10, 10]`, the output\
+  \ should be `2`.\n\nIf one of the teams misses the penalty and the other one scores,\
+  \ the game ends."
+"vc-preamble": "import Imports.AllImports\n\ndef penaltyShots (shots: Nat) (scores:\
+  \ List Nat) : Nat :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def abs (n: Int) : Nat :=\nsorry\n"
+"vc-theorems": "theorem penalty_shots_score_range {shots score1 score2: Nat} \n  (h1:\
+  \ score1 ≤ shots) (h2: score2 ≤ shots)\n  (h3: shots ≤ 20) (h4: score1 ≤ 20) (h5:\
+  \ score2 ≤ 20)\n  (h6: abs (Int.subNatNat score1 score2) ≤ (if shots > 4 then 2\
+  \ else 5 - shots + 1)) :\n  let result := penaltyShots shots [score1, score2]\n\
+  \  0 ≤ result ∧ result ≤ (if shots > 4 then 2 else 5 - shots + 1) :=\nsorry\n\n\n\
+  theorem penalty_shots_sudden_death {shots score1 score2: Nat}\n  (h1: shots > 4)\
+  \ (h2: score1 ≤ shots) (h3: score2 ≤ shots)\n  (h4: abs (Int.subNatNat score1 score2)\
+  \ ≤ 2) :\n  let result := penaltyShots shots [score1, score2]\n  0 ≤ result ∧ result\
+  \ ≤ 2 :=\nsorry\n\n\ntheorem penalty_shots_regular_rounds {shots score1 score2:\
+  \ Nat}\n  (h1: shots ≤ 4) (h2: score1 ≤ shots) (h3: score2 ≤ shots)\n  (h4: abs\
+  \ (Int.subNatNat score1 score2) ≤ (5 - shots + 1)) :\n  let result := penaltyShots\
+  \ shots [score1, score2]\n  0 ≤ result ∧ result ≤ (5 - shots + 1) :=\nsorry\n\n\
+  /--\ninfo: 3\n-/\n#guard_msgs in\n#eval penaltyShots 2 [1, 2]\n\n/--\ninfo: 2\n\
+  -/\n#guard_msgs in\n#eval penaltyShots 10 [10, 10]\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval penaltyShots 5 [5, 5]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,28 @@
+"vc-description": "Create a function `close_compare` that accepts 3 parameters: `a`,\
+  \ `b`, and an optional `margin`. The function should return whether `a` is lower\
+  \ than, close to, or higher than `b`. `a` is \"close to\" `b` if `margin` is higher\
+  \ than or equal to the difference between `a` and `b`.\n\nWhen `a` is lower than\
+  \ `b`, return `-1`.\n\nWhen `a` is higher than `b`, return `1`.\n\nWhen `a` is close\
+  \ to `b`, return `0`.\n\nIf `margin` is not given, treat it as zero.\n\nExample:\
+  \ if `a = 3`, `b = 5` and the `margin = 3`, since `a` and `b` are no more than 3\
+  \ apart, `close_compare` should return `0`. Otherwise, if instead `margin = 0`,\
+  \ `a` is lower than `b` and `close_compare` should return `-1`.\n\nAssume: `margin\
+  \ >= 0`\n\nTip: Some languages have a way to make arguments optional."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def abs (x : Float) : Float := if x < 0 then -x else x\n\ndef close_compare\
+  \ (a b : Float) (margin : Float := 0) : Int := sorry\n"
+"vc-theorems": "theorem close_compare_valid_output (a b margin : Float) :\n  let result\
+  \ := close_compare a b margin\n  result = -1 ∨ result = 0 ∨ result = 1 := sorry\n\
+  \n\ntheorem close_compare_margin (a b margin : Float) :\n  (abs (a - b) ≤ margin\
+  \ → close_compare a b margin = 0) ∧\n  (b > a → close_compare a b margin = -1) ∧\n\
+  \  (b < a → close_compare a b margin = 1) := sorry\n\n\ntheorem close_compare_identical\
+  \ (x : Float) :\n  close_compare x x = 0 ∧\n  close_compare x x 1 = 0 := sorry\n\
+  \n\ntheorem close_compare_symmetry (a b : Float) :\n  close_compare a b = -(close_compare\
+  \ b a) := sorry\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval close_compare 4 5\n\n\
+  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval close_compare 5 5\n\n/--\ninfo: 1\n-/\n\
+  #guard_msgs in\n#eval close_compare 6 5\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ close_compare 2 5 3\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval close_compare 8\
+  \ 5 3\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval close_compare 8.1 5 3\n\n/--\n\
+  info: -1\n-/\n#guard_msgs in\n#eval close_compare 1.99 5 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,27 @@
+"vc-description": "You may be familiar with the concept of combinations: for example,\
+  \ if you take 5 cards from a 52 cards deck as you would playing poker, you can have\
+  \ a certain number (2,598,960, would you say?) of different combinations.\n\nIn\
+  \ mathematics the number of *k* combinations you can have taking from a set of *n*\
+  \ elements is called the [binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient)\
+  \ of n and k, more popularly called **n choose k**.\n\nThe formula to compute it\
+  \ is relatively simple: `n choose k`==`n!/(k!*(n-k)!)`, where `!` of course denotes\
+  \ the factorial operator.\n\nYou are now to create a choose function that computes\
+  \ the binomial coefficient, like this:\n\n```\nchoose(1,1)==1\nchoose(5,4)==5\n\
+  choose(10,5)==252\nchoose(10,20)==0\nchoose(52,5)==2598960\n```\n\nBe warned: a\
+  \ certain degree of optimization is expected, both to deal with larger numbers precision\
+  \ (and their rounding errors in languages like JS) and computing time."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def choose (n k : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem choose_self (n : Nat) : choose n n = 1 :=\n  sorry\n\n\ntheorem\
+  \ choose_zero (n : Nat) : choose n 0 = 1 :=\n  sorry\n\n\ntheorem choose_symmetry\
+  \ {n k : Nat} (h : k ≤ n) : \n  choose n k = choose n (n - k) :=\n  sorry\n\n\n\
+  theorem choose_gt_n {n k : Nat} (h : n < k) : \n  choose n k = 0 :=\n  sorry \n\n\
+  \ntheorem choose_pos {n k : Nat} (h : k ≤ n) : \n  choose n k > 0 :=\n  sorry\n\n\
+  \ntheorem pascal_triangle (n k : Nat) (h : 0 < k) (h2 : k ≤ n) :\n  choose n k =\
+  \ choose (n-1) (k-1) + choose (n-1) k :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval choose 1 1\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval choose 5 4\n\n\
+  /--\ninfo: 252\n-/\n#guard_msgs in\n#eval choose 10 5\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval choose 10 20\n\n/--\ninfo: 2598960\n-/\n#guard_msgs in\n#eval choose\
+  \ 52 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

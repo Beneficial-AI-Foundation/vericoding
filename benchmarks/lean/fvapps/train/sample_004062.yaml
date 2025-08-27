@@ -1,0 +1,23 @@
+"vc-description": "Given an array of 4 integers  \n```[a,b,c,d]``` representing two\
+  \ points ```(a, b)``` and ```(c, d)```, return a string representation of the slope\
+  \ of the line joining these two points. \n\nFor an undefined slope (division by\
+  \ 0), return  ```undefined```  . Note that the \"undefined\" is case-sensitive.\n\
+  ```\n   a:x1\n   b:y1\n   c:x2\n   d:y2\n```\n   \nAssume that ```[a,b,c,d]``` and\
+  \ the answer are all integers \n(no floating numbers!).\nSlope:"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_slope (points : List Int) : String :=\n  sorry\n"
+"vc-theorems": "theorem slope_undefined_when_x_equal {x1 y1 x2 y2 : Int} \n  (h :\
+  \ x1 = x2) :\n  find_slope [x1, y1, x2, y2] = \"undefined\" :=\nsorry\n\n\ntheorem\
+  \ slope_calculation_when_x_different {x1 y1 x2 y2 : Int}\n  (h : x1 ≠ x2) \n  (bound1\
+  \ : -1000 ≤ x1 ∧ x1 ≤ 1000)\n  (bound2 : -1000 ≤ x2 ∧ x2 ≤ 1000)\n  (bound3 : -1000\
+  \ ≤ y1 ∧ y1 ≤ 1000)\n  (bound4 : -1000 ≤ y2 ∧ y2 ≤ 1000) :\n  find_slope [x1, y1,\
+  \ x2, y2] = toString ((y2 - y1) / (x2 - x1)) :=\nsorry\n\n\ntheorem vertical_line_slope\
+  \ {x y1 : Int}\n  (bound1 : -1000 ≤ x ∧ x ≤ 1000)\n  (bound2 : -1000 ≤ y1 ∧ y1 ≤\
+  \ 1000) :\n  find_slope [x, y1, x, y1 + 10] = \"undefined\" :=\nsorry\n\n\ntheorem\
+  \ horizontal_line_slope {x1 y : Int}\n  (bound1 : -1000 ≤ x1 ∧ x1 ≤ 1000)\n  (bound2\
+  \ : -1000 ≤ y ∧ y ≤ 1000) :\n  find_slope [x1, y, x1 + 10, y] = \"0\" :=\nsorry\n\
+  \n/--\ninfo: '4'\n-/\n#guard_msgs in\n#eval find_slope [3, 6, 4, 10]\n\n/--\ninfo:\
+  \ '0'\n-/\n#guard_msgs in\n#eval find_slope [12, -18, -15, -18]\n\n/--\ninfo: 'undefined'\n\
+  -/\n#guard_msgs in\n#eval find_slope [17, -3, 17, 8]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

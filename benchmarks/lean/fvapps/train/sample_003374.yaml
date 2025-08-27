@@ -1,0 +1,21 @@
+"vc-description": "Your coworker was supposed to write a simple helper function to\
+  \ capitalize a string (that contains a single word) before they went on vacation.\n\
+  \nUnfortunately, they have now left and the code they gave you doesn't work. Fix\
+  \ the helper function they wrote so that it works as intended (i.e. make the first\
+  \ character in the string \"word\" upper case).\n\nDon't worry about numbers, special\
+  \ characters, or non-string types being passed to the function. The string lengths\
+  \ will be from 1 character up to 10 characters, but will never be empty."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def capitalize_word (s : String) : String := sorry\n\ntheorem capitalize_word_length\
+  \ (word : String) (h : word.length > 0) :\n  (capitalize_word word).length = word.length\
+  \ := sorry\n"
+"vc-theorems": "theorem capitalize_word_case (word : String) (h : word.length > 0)\
+  \ :\n  ∃ first rest, word = String.mk (first :: rest) → \n  capitalize_word word\
+  \ = String.mk (first.toUpper :: rest.map Char.toLower) := sorry\n\n\ntheorem capitalize_word_idempotent\
+  \ (word : String) (h : word.length > 0) :\n  capitalize_word (capitalize_word word)\
+  \ = capitalize_word word := sorry\n\n\ntheorem capitalize_word_empty :\n  capitalize_word\
+  \ \"\" = \"\" := sorry\n\n/--\ninfo: 'Word'\n-/\n#guard_msgs in\n#eval capitalize_word\
+  \ \"word\"\n\n/--\ninfo: 'I'\n-/\n#guard_msgs in\n#eval capitalize_word \"i\"\n\n\
+  /--\ninfo: 'Glasswear'\n-/\n#guard_msgs in\n#eval capitalize_word \"glasswear\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

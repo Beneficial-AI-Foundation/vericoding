@@ -1,0 +1,16 @@
+"vc-description": "The Earth has been invaded by aliens. They demand our beer and\
+  \ threaten to destroy the Earth if we do not supply the exact number of beers demanded.\n\
+  \nUnfortunately, the aliens only speak Morse code. Write a program to convert morse\
+  \ code into numbers using the following convention:\n\n1 .----\n2 ..---\n3 ...--\n\
+  4 ....-\n5 .....\n6 -....\n7 --...\n8 ---..\n9 ----.\n0 -----"
+"vc-preamble": "import Imports.AllImports\n\ndef morse_converter (s : String) : Nat\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def convertToMorse (n : Nat) : String :=\n  sorry\n"
+"vc-theorems": "theorem morse_converter_output_valid (s : String) :\n  let result\
+  \ := morse_converter s\n  result ≥ 0\n  := sorry\n\n/--\ninfo: 11111\n-/\n#guard_msgs\
+  \ in\n#eval morse_converter \".----.----.----.----.----\"\n\n/--\ninfo: 207600\n\
+  -/\n#guard_msgs in\n#eval morse_converter \"..----------...-....----------\"\n\n\
+  /--\ninfo: 1234567890\n-/\n#guard_msgs in\n#eval morse_converter \".----..---...--....-.....-....--...---..----.-----\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

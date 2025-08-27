@@ -1,0 +1,41 @@
+"vc-description": "The T9 typing predictor helps with suggestions for possible word\
+  \ combinations on an old-style numeric keypad phone. Each digit in the keypad (2-9)\
+  \ represents a group of 3-4 letters. To type a letter, press once the key which\
+  \ corresponds to the letter group that contains the required letter. Typing words\
+  \ is done by typing letters of the word in sequence.\n\nThe letter groups and corresponding\
+  \ digits are as follows:\n```\n -----------------\n|  1  |  2  |  3  |\n|     |\
+  \ ABC | DEF |\n|-----|-----|-----|\n|  4  |  5  |  6  |\n| GHI | JKL | MNO |\n|-----|-----|-----|\n\
+  |  7  |  8  |  9  |\n| PQRS| TUV | WXYZ|\n -----------------\n```\n\nThe prediction\
+  \ algorithm tries to match the input sequence against a predefined dictionary of\
+  \ words. The combinations which appear in the dictionary are considered valid words\
+  \ and are shown as suggestions.\n\nGiven a list of words as a reference dictionary,\
+  \ and a non-empty string (of digits 2-9) as input, complete the function which returns\
+  \ suggestions based on the string of digits, which are found in the reference dictionary.\n\
+  \nFor example:\n```python\nT9(['hello', 'world'], '43556') returns ['hello']\nT9(['good',\
+  \ 'home', 'new'], '4663') returns ['good', 'home']\n```\n\nNote that the dictionary\
+  \ must be case-insensitive (`'hello'` and `'Hello'` are same entries). The list\
+  \ returned must contain the word as it appears in the dictionary (along with the\
+  \ case).\n\nExample:\n```python\nT9(['Hello', 'world'], '43556') returns ['Hello']\n\
+  ```\n\nIf there is no prediction available from the given dictionary, then return\
+  \ the string containing first letters of the letter groups, which correspond to\
+  \ the input digits.\n\nFor example:\n```python\nT9([], '43556') returns ['gdjjm']\n\
+  T9(['gold', 'word'], '4663') returns ['gmmd']\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef translateTableNum (s : String) :\
+  \ String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def t9_predict (words : List String) (seq : String) : List String\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem t9_predict_never_empty (words : List String) (seq : String)\
+  \ :\n  seq ≠ \"\" → ∃ result, t9_predict words seq = result ∧ result.length > 0\
+  \ :=\n  sorry\n\n\ntheorem t9_predict_fallback_on_no_matches (words : List String)\
+  \ (seq : String) :\n  seq ≠ \"\" → \n  (∀ w ∈ words, translateTableNum w.toLower\
+  \ ≠ seq) →\n  ∃ result, t9_predict words seq = [result] ∧ result.length = seq.length\
+  \ :=\n  sorry\n\n\ntheorem t9_predict_all_matches_sequence (words : List String)\
+  \ (seq : String) :\n  seq ≠ \"\" →\n  ∀ w ∈ t9_predict words seq, translateTableNum\
+  \ w.toLower = seq :=\n  sorry\n\n\ntheorem t9_predict_empty_dict (seq : String)\
+  \ :\n  seq ≠ \"\" →\n  ∃ result, t9_predict [] seq = [result] ∧ result.length =\
+  \ seq.length :=\n  sorry\n\n/--\ninfo: ['hello']\n-/\n#guard_msgs in\n#eval t9_predict\
+  \ [\"hello\", \"world\"] \"43556\"\n\n/--\ninfo: ['good', 'home']\n-/\n#guard_msgs\
+  \ in\n#eval t9_predict [\"good\", \"home\", \"new\"] \"4663\"\n\n/--\ninfo: ['gdjjm']\n\
+  -/\n#guard_msgs in\n#eval t9_predict [] \"43556\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

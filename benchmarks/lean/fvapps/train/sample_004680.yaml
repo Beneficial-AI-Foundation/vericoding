@@ -1,0 +1,35 @@
+"vc-description": "[Harshad numbers](http://en.wikipedia.org/wiki/Harshad_number)\
+  \ (also called Niven numbers) are positive numbers that can be divided (without\
+  \ remainder) by the sum of their digits.\n\nFor example, the following numbers are\
+  \ Harshad numbers:\n\n* 10, because 1 + 0 = 1 and 10 is divisible by 1\n* 27, because\
+  \ 2 + 7 = 9 and 27 is divisible by 9\n* 588, because 5 + 8 + 8 = 21 and 588 is divisible\
+  \ by 21\n\nWhile these numbers are not:\n\n* 19, because 1 + 9 = 10 and 19 is not\
+  \ divisible by 10\n* 589, because 5 + 8 + 9 = 22 and 589 is not divisible by 22\n\
+  * 1001, because 1 + 1 = 2 and 1001 is not divisible by 2\n\nHarshad numbers can\
+  \ be found in any number base, but we are going to focus on base 10 exclusively.\n\
+  \n## Your task\n\nYour task is to complete the skeleton Harshad object (\"static\
+  \ class\") which has 3 functions:\n\n* ```isValid()``` that checks if `n` is a Harshad\
+  \ number or not\n* ```getNext()``` that returns the next Harshad number > `n`\n\
+  * ```getSerie()``` that returns a series of `n` Harshad numbers, optional `start`\
+  \ value not included\n\nYou do not need to care about the passed parameters in the\
+  \ test cases, they will always be valid integers (except for the start argument\
+  \ in `getSerie()` which is optional and should default to `0`).\n\n**Note:** only\
+  \ the first 2000 Harshad numbers will be checked in the tests.\n\n## Examples\n\n\
+  ```python\nHarshad.is_valid(1)          ==>  True\nHarshad.get_next(0)         \
+  \ ==>  1\nHarshad.get_series(3)        ==>  [ 1, 2, 3 ]\nHarshad.get_series(3, 1000)\
+  \  ==>  [ 1002, 1008, 1010 ]\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef digitsSum (n : Nat) : Nat := sorry\n\
+  def is_valid (n : Nat) : Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_next (n : Nat) : Nat := sorry\ndef get_series (count start\
+  \ : Nat) : List Nat := sorry\n"
+"vc-theorems": "theorem harshad_property {n : Nat} (h : n > 0) (valid : is_valid n\
+  \ = true) :\n  n % digitsSum n = 0 := sorry\n\n\ntheorem get_next_properties {n\
+  \ : Nat} :\n  let next := get_next n\n  next > n ∧ \n  is_valid next = true ∧\n\
+  \  ∀ x, n < x → x < next → is_valid x = false := sorry\n\n\ntheorem get_series_properties\
+  \ {count start : Nat} (h : count > 0) :\n  let series := get_series count start\n\
+  \  List.length series = count ∧\n  (∀ i, i + 1 < List.length series → \n    series[i]'(by\
+  \ sorry) < series[i+1]'(by sorry)) ∧\n  (∀ x ∈ series, x > start) ∧\n  (∀ x ∈ series,\
+  \ is_valid x = true) := sorry\n\n\ntheorem next_harshad_valid {n : Nat} :\n  is_valid\
+  \ (get_next n) = true := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

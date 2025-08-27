@@ -1,0 +1,36 @@
+"vc-description": "A sequence of numbers is called a wiggle sequence if the differences\
+  \ between successive numbers strictly alternate between positive and negative. The\
+  \ first difference (if one exists) may be either positive or negative. A sequence\
+  \ with fewer than two elements is trivially a wiggle sequence. \n\nFor example,\
+  \ [1,7,4,9,2,5] is a wiggle sequence because the differences (6,-3,5,-7,3) are alternately\
+  \ positive and negative. In contrast, [1,4,7,2,5] and [1,7,4,5,5] are not wiggle\
+  \ sequences, the first because its first two differences are positive and the second\
+  \ because its last difference is zero.\n\nGiven a sequence of integers, return the\
+  \ length of the longest subsequence that is a wiggle sequence. A subsequence is\
+  \ obtained by deleting some number of elements (eventually, also zero) from the\
+  \ original sequence, leaving the remaining elements in their original order.\n\n\
+  Examples:\n\nInput: [1,7,4,9,2,5]\nOutput: 6\nThe entire sequence is a wiggle sequence.\n\
+  \nInput: [1,17,5,10,13,15,10,5,16,8]\nOutput: 7\nThere are several subsequences\
+  \ that achieve this length. One is [1,17,10,13,10,16,8].\n\nInput: [1,2,3,4,5,6,7,8,9]\n\
+  Output: 2\n\n\n\nFollow up:\nCan you do it in O(n) time?\n\n\nCredits:Special thanks\
+  \ to @agave and @StefanPochmann for adding this problem and creating all test cases."
+"vc-preamble": "import Imports.AllImports\n\ndef wiggleMaxLength (arr : List Int)\
+  \ : Nat := sorry\n\ntheorem wiggle_length_bounds (arr : List Int) :\n  0 ≤ wiggleMaxLength\
+  \ arr ∧ wiggleMaxLength arr ≤ arr.length := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSorted (l : List Int) : Bool := sorry\n\ntheorem monotonic_increasing_bound\
+  \ (arr : List Int) :\n  arr.length > 1 → isSorted arr = true → wiggleMaxLength arr\
+  \ ≤ 2 := sorry\n"
+"vc-theorems": "theorem small_array_property (arr : List Int) :\n  arr.length < 2\
+  \ → wiggleMaxLength arr = arr.length := sorry\n\n\ntheorem monotonic_decreasing_bound\
+  \ (arr : List Int) :\n  arr.length > 1 → isSorted (List.reverse arr) = true → wiggleMaxLength\
+  \ arr ≤ 2 := sorry\n\n\ntheorem shift_invariance (arr : List Int) (k : Int) :\n\
+  \  wiggleMaxLength arr = wiggleMaxLength (arr.map (· + k)) := sorry\n\n\ntheorem\
+  \ scale_invariance (arr : List Int) (k : Int) (h : k ≠ 0) :\n  wiggleMaxLength arr\
+  \ = wiggleMaxLength (arr.map (· * k)) := sorry\n\n\ntheorem reverse_invariance (arr\
+  \ : List Int) :\n  wiggleMaxLength arr = wiggleMaxLength (List.reverse arr) := sorry\n\
+  \n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval wiggle_max_length [1, 7, 4, 9, 2, 5]\n\
+  \n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval wiggle_max_length [1, 17, 5, 10, 13, 15,\
+  \ 10, 5, 16, 8]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval wiggle_max_length [1,\
+  \ 2, 3, 4, 5, 6, 7, 8, 9]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

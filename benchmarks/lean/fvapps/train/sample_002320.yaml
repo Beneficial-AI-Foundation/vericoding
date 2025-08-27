@@ -1,0 +1,37 @@
+"vc-description": "You're now a baseball game point recorder.\n\n\n\nGiven a list\
+  \ of strings, each string can be one of the 4 following types:\n\nInteger (one round's\
+  \ score): Directly represents the number of points you get in this round.\n\"+\"\
+  \ (one round's score): Represents that the points you get in this round are the\
+  \ sum of the last two valid round's points.\n\"D\" (one round's score): Represents\
+  \ that the points you get in this round are the doubled data of the last valid round's\
+  \ points.\n\"C\" (an operation, which isn't a round's score): Represents the last\
+  \ valid round's points you get were invalid and should be removed.\n\n\n\n\nEach\
+  \ round's operation is permanent and could have an impact on the round before and\
+  \ the round after.\n\n\n\nYou need to return the sum of the points you could get\
+  \ in all the rounds.\n\n\nExample 1:\n\nInput: [\"5\",\"2\",\"C\",\"D\",\"+\"]\n\
+  Output: 30\nExplanation: \nRound 1: You could get 5 points. The sum is: 5.\nRound\
+  \ 2: You could get 2 points. The sum is: 7.\nOperation 1: The round 2's data was\
+  \ invalid. The sum is: 5.  \nRound 3: You could get 10 points (the round 2's data\
+  \ has been removed). The sum is: 15.\nRound 4: You could get 5 + 10 = 15 points.\
+  \ The sum is: 30.\n\n\n\nExample 2:\n\nInput: [\"5\",\"-2\",\"4\",\"C\",\"D\",\"\
+  9\",\"+\",\"+\"]\nOutput: 27\nExplanation: \nRound 1: You could get 5 points. The\
+  \ sum is: 5.\nRound 2: You could get -2 points. The sum is: 3.\nRound 3: You could\
+  \ get 4 points. The sum is: 7.\nOperation 1: The round 3's data is invalid. The\
+  \ sum is: 3.  \nRound 4: You could get -4 points (the round 3's data has been removed).\
+  \ The sum is: -1.\nRound 5: You could get 9 points. The sum is: 8.\nRound 6: You\
+  \ could get -4 + 9 = 5 points. The sum is 13.\nRound 7: You could get 9 + 5 = 14\
+  \ points. The sum is 27.\n\n\n\nNote:\nThe size of the input list will be between\
+  \ 1 and 1000.\nEvery integer represented in the list will be between -30000 and\
+  \ 30000."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Int → Int \n  | []\
+  \ => 0\n  | x::xs => x + List.sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def cal_points (ops : List String) : Int := sorry\n\n\n\n\n\ntheorem\
+  \ cal_points_basic_two_numbers :\n  cal_points [\"5\", \"2\"] = 7 := sorry\n"
+"vc-theorems": "theorem cal_points_basic_double :\n  cal_points [\"1\", \"D\"] = 3\
+  \ := sorry\n\n\ntheorem cal_points_basic_plus :\n  cal_points [\"1\", \"2\", \"\
+  +\"] = 6 := sorry\n\n/--\ninfo: 30\n-/\n#guard_msgs in\n#eval cal_points [\"5\"\
+  , \"2\", \"C\", \"D\", \"+\"]\n\n/--\ninfo: 27\n-/\n#guard_msgs in\n#eval cal_points\
+  \ [\"5\", \"-2\", \"4\", \"C\", \"D\", \"9\", \"+\", \"+\"]\n\n/--\ninfo: 12\n-/\n\
+  #guard_msgs in\n#eval cal_points [\"1\", \"2\", \"+\", \"D\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

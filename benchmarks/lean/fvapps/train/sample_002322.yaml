@@ -1,0 +1,26 @@
+"vc-description": "We have two special characters. The first character can be represented\
+  \ by one bit 0. The second character can be represented by two bits (10 or 11).\
+  \  \n\nNow given a string represented by several bits. Return whether the last character\
+  \ must be a one-bit character or not. The given string will always end with a zero.\n\
+  \nExample 1:\n\nInput: \nbits = [1, 0, 0]\nOutput: True\nExplanation: \nThe only\
+  \ way to decode it is two-bit character and one-bit character. So the last character\
+  \ is one-bit character.\n\n\n\nExample 2:\n\nInput: \nbits = [1, 1, 1, 0]\nOutput:\
+  \ False\nExplanation: \nThe only way to decode it is two-bit character and two-bit\
+  \ character. So the last character is NOT one-bit character.\n\n\n\nNote:\n1 .\n\
+  bits[i] is always 0 or 1."
+"vc-preamble": "import Imports.AllImports\n\ndef countTrailingOnes : List Nat → Nat\n\
+  \  | [] => 0\n  | xs => sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_one_bit_character (bits : List Nat) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem ends_with_zero {bits : List Nat} (h : bits ≠ []) : \n  bits.getLast\
+  \ (by exact h) = 0 → \n  is_one_bit_character bits = true ∨ is_one_bit_character\
+  \ bits = false :=\nsorry\n\n\ntheorem all_zeros_is_true {bits : List Nat} (h : bits\
+  \ ≠ []) :\n  (bits.all (fun x => x = 0)) →\n  is_one_bit_character bits = true :=\n\
+  sorry\n\n\ntheorem trailing_ones_parity {bits : List Nat} (h : bits.length ≥ 2)\
+  \ :\n  is_one_bit_character bits = (countTrailingOnes (bits.dropLast) % 2 = 0) :=\n\
+  sorry\n\n\ntheorem edge_cases_hold :\n  (is_one_bit_character [0] = true) ∧ \n \
+  \ (is_one_bit_character [0, 0] = true) :=\nsorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval is_one_bit_character [1, 0, 0]\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval is_one_bit_character [1, 1, 1, 0]\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval is_one_bit_character [0, 0]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,41 @@
+"vc-description": "You will be given an array of strings. The words in the array should\
+  \ mesh together where one or more letters at the end of one word will have the same\
+  \ letters (in the same order) as the next word in the array. But, there are times\
+  \ when all the words won't mesh. \n\nExamples of meshed words:\n\n  \"apply\" and\
+  \ \"plywood\"\n  \n  \"apple\" and \"each\"\n  \n  \"behemoth\" and \"mother\"\n\
+  \  \nExamples of words that don't mesh:\n\n  \"apply\" and \"playground\"\n  \n\
+  \  \"apple\" and \"peggy\"\n  \n  \"behemoth\" and \"mathematics\"\n  \n\nIf all\
+  \ the words in the given array mesh together, then your code should return the meshed\
+  \ letters in a string.\nYou won't know how many letters the meshed words have in\
+  \ common, but it will be at least one.\n\nIf all the words don't mesh together,\
+  \ then your code should return `\"failed to mesh\"`.\n\nInput: An array of strings.\
+  \ There will always be at least two words in the input array.\n\nOutput: Either\
+  \ a string of letters that mesh the words together or the string `\"failed to mesh\"\
+  `.\n\n\n## Examples\n\n#1:\n\n```\n[\"allow\", \"lowering\", \"ringmaster\", \"\
+  terror\"] --> \"lowringter\"\n```\nbecause:\n\n* the letters `\"low\"` in the first\
+  \ two words mesh together\n* the letters `\"ring\"` in the second and third word\
+  \ mesh together\n* the letters `\"ter\"` in the third and fourth words mesh together.\n\
+  \n\n#2:\n\n```\n[\"kingdom\", \"dominator\", \"notorious\", \"usual\", \"allegory\"\
+  ] --> \"failed to mesh\"\n```\n\nAlthough the words `\"dominator\"` and `\"notorious\"\
+  ` share letters in the same order, the last letters of the first word don't mesh\
+  \ with the first letters of the second word."
+"vc-preamble": "import Imports.AllImports\n\ndef word_mesh (words : List String) :\
+  \ String := sorry\n\ndef isResult (s : String) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def hasOverlap (s1 s2 : String) : Bool := sorry\n\ndef isLowerAlpha\
+  \ (s : String) : Bool := sorry\n"
+"vc-theorems": "theorem word_mesh_output_format \n  (words : List String)\n  (h1 :\
+  \ words.length ≥ 2)\n  (h2 : words.length ≤ 10)\n  (h3 : ∀ w ∈ words, w.length >\
+  \ 0) :\n  let result := word_mesh words\n  (result = \"failed to mesh\" ∨ isLowerAlpha\
+  \ result) := sorry\n\n\ntheorem word_mesh_successful_overlap\n  (words : List String)\n\
+  \  (h1 : words.length ≥ 2) \n  (h2 : words.length ≤ 5)\n  (h3 : ∀ w ∈ words, w.length\
+  \ > 0)\n  (h4 : ∀ i, i < words.length - 1 → \n    hasOverlap (words.get ⟨i, by sorry⟩)\
+  \ (words.get ⟨i+1, by sorry⟩)) :\n  let result := word_mesh words\n  result ≠ \"\
+  failed to mesh\" →\n  ∀ i, i < words.length - 1 → \n    hasOverlap (words.get ⟨i,\
+  \ by sorry⟩) (words.get ⟨i+1, by sorry⟩) := sorry\n\n/--\ninfo: 'lowringter'\n-/\n\
+  #guard_msgs in\n#eval word_mesh [\"allow\", \"lowering\", \"ringmaster\", \"terror\"\
+  ]\n\n/--\ninfo: 'failed to mesh'\n-/\n#guard_msgs in\n#eval word_mesh [\"kingdom\"\
+  , \"dominator\", \"notorious\", \"usual\", \"allegory\"]\n\n/--\ninfo: 'conumcal'\n\
+  -/\n#guard_msgs in\n#eval word_mesh [\"beacon\", \"condominium\", \"umbilical\"\
+  , \"california\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

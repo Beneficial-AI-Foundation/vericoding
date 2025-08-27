@@ -1,0 +1,26 @@
+"vc-description": "# Task\n Imagine a white rectangular grid of `n` rows and `m` columns\
+  \ divided into two parts by a diagonal line running from the upper left to the lower\
+  \ right corner. Now let's paint the grid in two colors according to the following\
+  \ rules:\n```\n A cell is painted black if it has at least one point in common with\
+  \ the diagonal;\nOtherwise, a cell is painted white.\n```\n Count the number of\
+  \ cells painted black.\n\n# Example\n\n For n = 3 and m = 4, the output should be\
+  \ `6`\n\n There are 6 cells that have at least one common point with the diagonal\
+  \ and therefore are painted black.\n\n For n = 3 and m = 3, the output should be\
+  \ `7`\n\n 7 cells have at least one common point with the diagonal and are painted\
+  \ black.\n\n# Input/Output\n\n - `[input]` integer `n`\n\n   The number of rows.\n\
+  \n   Constraints: 1 ≤ n ≤ 10000.\n\n - `[input]` integer `m`\n\n   The number of\
+  \ columns.\n\n   Constraints: 1 ≤ m ≤ 10000.\n\n - `[output]` an integer\n\n   The\
+  \ number of black cells."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_black_cells (n m : Nat) : Nat := sorry\n\ntheorem count_black_cells_positive\
+  \ (n m : Nat) (hn : n > 0) (hm : m > 0) : \n  count_black_cells n m > 0 := sorry\n"
+"vc-theorems": "theorem count_black_cells_lower_bound (n m : Nat) (hn : n > 0) (hm\
+  \ : m > 0) :\n  count_black_cells n m ≥ n + m - 1 := sorry\n\n\ntheorem count_black_cells_upper_bound\
+  \ (n m : Nat) (hn : n > 0) (hm : m > 0) :\n  count_black_cells n m ≤ n * m := sorry\n\
+  \n\ntheorem count_black_cells_1x1 :\n  count_black_cells 1 1 = 1 := sorry\n\n\n\
+  theorem count_black_cells_symmetry (n m : Nat) (hn : n > 0) (hm : m > 0) :\n  count_black_cells\
+  \ n m = count_black_cells m n := sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval\
+  \ count_black_cells 3 4\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval count_black_cells\
+  \ 3 3\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_black_cells 1 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

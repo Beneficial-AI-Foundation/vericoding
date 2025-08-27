@@ -1,0 +1,25 @@
+"vc-description": "Linked lists are data structures composed of nested or chained\
+  \ objects, each containing a single value and a reference to the next object. \n\
+  \nHere's an example of a list:\n\n```python\nclass LinkedList:\n    def __init__(self,\
+  \ value=0, next=None):\n        self.value = value\n        self.next = next\n \
+  \       \nLinkedList(1, LinkedList(2, LinkedList(3)))\n\n```\n\nWrite a function\
+  \ listToArray (or list\\_to\\_array in Python) that converts a list to an array,\
+  \ like this:\n\n```\n[1, 2, 3]\n```\n\nAssume all inputs are valid lists with at\
+  \ least one value. For the purpose of simplicity, all values will be either numbers,\
+  \ strings, or Booleans."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_to_array {α : Type} : LinkedList α → List α\n  | _ =>\
+  \ sorry\n"
+"vc-theorems": "theorem list_to_array_preserves_values {α : Type} (l : LinkedList\
+  \ α) :\n  list_to_array l = LinkedList.rec [] (fun head tail arr => head :: arr)\
+  \ l :=\nsorry\n\n\ntheorem list_to_array_maintains_order {α : Type} [Inhabited α]\
+  \ (l : LinkedList α) :\n  ∀ i < (list_to_array l).length,\n    (list_to_array l).get\
+  \ ⟨i, by sorry⟩ = LinkedList.rec default (fun head tail res => head) l :=\nsorry\n\
+  \n\ntheorem list_to_array_empty {α : Type} :\n  list_to_array (@LinkedList.nil α)\
+  \ = @List.nil α :=\nsorry\n\n/--\ninfo: [1, 2, 3]\n-/\n#guard_msgs in\n#eval list_to_array\
+  \ LinkedList(1, LinkedList(2, LinkedList(3)))\n\n/--\ninfo: ['hello', True, 42]\n\
+  -/\n#guard_msgs in\n#eval list_to_array LinkedList(\"hello\", LinkedList(True, LinkedList(42)))\n\
+  \n/--\ninfo: ['solo']\n-/\n#guard_msgs in\n#eval list_to_array LinkedList(\"solo\"\
+  )\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

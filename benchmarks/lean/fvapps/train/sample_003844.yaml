@@ -1,0 +1,31 @@
+"vc-description": "You wrote all your unit test names in camelCase.\nBut some of your\
+  \ colleagues have troubles reading these long test names.\nSo you make a compromise\
+  \ to switch to underscore separation.\n\nTo make these changes fast you wrote a\
+  \ class to translate a camelCase name\ninto an underscore separated name.\n\nImplement\
+  \ the ToUnderscore() method.\n\nExample:\n\n`\"ThisIsAUnitTest\" => \"This_Is_A_Unit_Test\"\
+  `\n\n\n**But of course there are always special cases...**\n\nYou also have some\
+  \ calculation tests. Make sure the results don't get split by underscores.\nSo only\
+  \ add an underscore in front of the first number.\n\nAlso Some people already used\
+  \ underscore names in their tests. You don't want to change them.\nBut if they are\
+  \ not split correct you should adjust them.\n\nSome of your colleagues mark their\
+  \ tests with a leading and trailing underscore.\nDon't remove this.\n\nAnd of course\
+  \ you should handle empty strings to avoid unnecessary errors. Just return an empty\
+  \ string then.\n\nExample:\n\n`\"Calculate15Plus5Equals20\" => \"Calculate_15_Plus_5_Equals_20\"\
+  `\n\n`\"This_Is_Already_Split_Correct\" => \"This_Is_Already_Split_Correct\"`\n\n\
+  `\"ThisIs_Not_SplitCorrect\" => \"This_Is_Not_Split_Correct\"`\n\n`\"_UnderscoreMarked_Test_Name_\"\
+  \ => _Underscore_Marked_Test_Name_\"`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def toUnderScore (s : String) : String := sorry\n\n-- Property\
+  \ 1: All characters in result (except underscores) match original string"
+"vc-theorems": "theorem chars_preserved (s : String) : \n  (toUnderScore s).replace\
+  \ \"_\" \"\" = s.replace \"_\" \"\" := sorry\n\n-- Property 2: Strings with only\
+  \ underscores are unchanged\n\ntheorem underscore_only_strings (s : String) : \n\
+  \  (∀ c ∈ s.data, c = '_') → toUnderScore s = s := sorry\n\n-- Property 3: Function\
+  \ is idempotent\n\ntheorem underscore_idempotent (s : String) :\n  toUnderScore\
+  \ (toUnderScore s) = toUnderScore s := sorry\n\n/--\ninfo: 'This_Is_A_Unit_Test'\n\
+  -/\n#guard_msgs in\n#eval toUnderScore \"ThisIsAUnitTest\"\n\n/--\ninfo: 'Calculate_15_Plus_5_Equals_20'\n\
+  -/\n#guard_msgs in\n#eval toUnderScore \"Calculate15Plus5Equals20\"\n\n/--\ninfo:\
+  \ '_Underscore_Marked_Test_Name_'\n-/\n#guard_msgs in\n#eval toUnderScore \"_UnderscoreMarked_Test_Name_\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

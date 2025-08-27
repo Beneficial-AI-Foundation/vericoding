@@ -1,0 +1,37 @@
+"vc-description": "Given the root of a binary tree, each node in the tree has a distinct\
+  \ value.\nAfter deleting all nodes with a value in to_delete, we are left with a\
+  \ forest (a disjoint union of trees).\nReturn the roots of the trees in the remaining\
+  \ forest.  You may return the result in any order.\n \nExample 1:\n\nInput: root\
+  \ = [1,2,3,4,5,6,7], to_delete = [3,5]\nOutput: [[1,2,null,4],[6],[7]]\n\n \nConstraints:\n\
+  \nThe number of nodes in the given tree is at most 1000.\nEach node has a distinct\
+  \ value between 1 and 1000.\nto_delete.length <= 1000\nto_delete contains distinct\
+  \ values between 1 and 1000."
+"vc-preamble": "import Imports.AllImports\n\ndef arrayToTree (arr : List Int) : Option\
+  \ TreeNode := sorry\ndef treeToArray (t : TreeNode) : List Int := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def delNodes (root : Option TreeNode) (to_delete : List Int) :\
+  \ List TreeNode := sorry\n\ntheorem delNodes_no_deleted_values (tree : List Int)\
+  \ (to_delete : List Int) \n  (h : ∀ x ∈ tree, x > 0 ∧ x ≤ 100) : \n  let root :=\
+  \ arrayToTree tree\n  let result := delNodes root to_delete\n  let result_arrays\
+  \ := result.map treeToArray\n  let all_vals := result_arrays.join\n  ∀ val ∈ all_vals,\
+  \ ¬(val ∈ to_delete) := sorry\n"
+"vc-theorems": "theorem delNodes_preserves_nondeleted (tree : List Int) (to_delete\
+  \ : List Int) \n  (h : ∀ x ∈ tree, x > 0 ∧ x ≤ 100) :\n  let root := arrayToTree\
+  \ tree\n  let result := delNodes root to_delete\n  let result_arrays := result.map\
+  \ treeToArray\n  let all_vals := result_arrays.join\n  let original_vals := tree.filter\
+  \ (fun x => ¬(x ∈ to_delete))\n  all_vals.length = original_vals.length ∧\n  ∀ x,\
+  \ (x ∈ all_vals ↔ x ∈ original_vals) := sorry\n\n\ntheorem delNodes_valid_roots\
+  \ (tree : List Int) (to_delete : List Int)\n  (h : ∀ x ∈ tree, x > 0 ∧ x ≤ 100)\
+  \ :\n  let root := arrayToTree tree\n  let result := delNodes root to_delete\n \
+  \ ∀ t ∈ result, match t with\n    | TreeNode.node val _ _ => ¬(val ∈ to_delete)\
+  \ := sorry\n\n\ntheorem delNodes_empty_deletion (tree : List Int)\n  (h : ∀ x ∈\
+  \ tree, x > 0 ∧ x ≤ 100) :\n  let root := arrayToTree tree\n  let result := delNodes\
+  \ root []\n  result.length = 1 ∧ \n  match result with\n  | [t] => treeToArray t\
+  \ = tree\n  | _ => false := sorry\n\n\ntheorem delNodes_empty_tree :\n  delNodes\
+  \ none [1] = [] := sorry\n\n\ntheorem delNodes_single_node :\n  let root := some\
+  \ (TreeNode.node 1 none none)\n  delNodes root [] = [TreeNode.node 1 none none]\
+  \ ∧\n  delNodes root [1] = [] := sorry\n\n/--\ninfo: sorted(map(str, [[1, 2, None,\
+  \ 4], [6], [7]]))\n-/\n#guard_msgs in\n#eval sorted map(str, result1_arrays)\n\n\
+  /--\ninfo: sorted(map(str, [[1, None, 3]]))\n-/\n#guard_msgs in\n#eval sorted map(str,\
+  \ result2_arrays)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

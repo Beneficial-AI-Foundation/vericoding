@@ -1,0 +1,25 @@
+"vc-description": "=====Problem Statement=====\nThe provided code stub reads two integers\
+  \ from STDIN, a and b. Add code to print three lines where:\nThe first line contains\
+  \ the sum of the two numbers.\nThe second line contains the difference of the two\
+  \ numbers (first - second).\nThe third line contains the product of the two numbers.\n\
+  \n=====Example=====\na = 3\nb = 5\n\nPrint the following:\n8\n-2\n15\n\n=====Input\
+  \ Format=====\nThe first line contains the first integer, a.\nThe second line contains\
+  \ the second integer, b.\n\n=====Constraints=====\n1≤a≤10^10\n1≤b≤10^10\n\n=====Output\
+  \ Format=====\nPrint the three lines as explained above."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def arithmetic_operations (a b : Int) : String := sorry\n\ntheorem\
+  \ arithmetic_operations_format \n  (a b : Int) : \n  let result := arithmetic_operations\
+  \ a b\n  let lines := result.splitOn \"\\n\"\n  lines.length = 3 ∧ \n  lines.all\
+  \ (fun line => (line.drop (if line.front = '-' then 1 else 0)).all Char.isDigit)\n\
+  \  := sorry\n"
+"vc-theorems": "theorem arithmetic_operations_values\n  (a b : Int) :\n  let result\
+  \ := arithmetic_operations a b\n  let lines := result.splitOn \"\\n\"\n  let sum_val\
+  \ := lines[0]!.toInt!\n  let diff_val := lines[1]!.toInt!\n  let prod_val := lines[2]!.toInt!\n\
+  \  sum_val = a + b ∧\n  diff_val = a - b ∧ \n  prod_val = a * b\n  := sorry\n\n\n\
+  theorem arithmetic_operations_positive\n  (a b : Int)\n  (ha : 0 ≤ a) (hb : 0 ≤\
+  \ b)\n  (ha_bound : a ≤ 1000) (hb_bound : b ≤ 1000) :\n  let result := arithmetic_operations\
+  \ a b\n  let lines := result.splitOn \"\\n\"\n  let sum_val := lines[0]!.toInt!\n\
+  \  let prod_val := lines[2]!.toInt!\n  sum_val ≥ a ∧\n  prod_val ≥ min a b\n  :=\
+  \ sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

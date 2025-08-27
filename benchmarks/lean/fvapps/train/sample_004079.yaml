@@ -1,0 +1,22 @@
+"vc-description": "## Description\n\nThe task is described in the title: find the\
+  \ sum of all numbers with the same digits(permutations) **including** duplicates.\
+  \ However, due to the fact that this is a performance edition kata, `num` can go\
+  \ up to `10**10000`. That's a number with 10001 digits(at most). Be sure to use\
+  \ efficient algorithms and good luck! All numbers tested for will be positive.\n\
+  \n**Examples**\n```\nsum_arrangements(98) returns 89+98 = 187\nsum_arrangements(123)\
+  \ returns 1332 #123 + 132 + 213 + 231 + 312 + 321 = 1332\nsum_arrangements(1185)\
+  \ returns 99990 #1185 + 1158 + 1815 + 1851 + 1518 + 1581 + 1185 + 1158 + 1815 +\
+  \ 1851 + 1518 + 1581 + 8115 + 8151 + 8115 + 8151 + 8511 + 8511 + 5118 + 5181 + 5118\
+  \ + 5181 + 5811 + 5811 = 99990\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef sum_arrangements (n : Nat) : Nat\
+  \ := sorry\n\ntheorem deterministic (n : Nat) : \n  sum_arrangements n = sum_arrangements\
+  \ n := by sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def digit_sum (n : Nat) : Nat := sorry\n\ntheorem multiple_of_digit_sum\
+  \ (n : Nat) (h : n > 0) :\n  sum_arrangements n % digit_sum n = 0 := by sorry"
+"vc-theorems": "theorem single_digit (n : Nat) (h : n > 0) (h₂ : n < 10) : \n  sum_arrangements\
+  \ n = n := by sorry\n\n\ntheorem positive_output (n : Nat) (h : n > 0) :\n  sum_arrangements\
+  \ n > 0 := by sorry\n\n\n/--\ninfo: 187\n-/\n#guard_msgs in\n#eval sum_arrangements\
+  \ 98\n\n/--\ninfo: 1332\n-/\n#guard_msgs in\n#eval sum_arrangements 123\n\n/--\n\
+  info: 99990\n-/\n#guard_msgs in\n#eval sum_arrangements 1185\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

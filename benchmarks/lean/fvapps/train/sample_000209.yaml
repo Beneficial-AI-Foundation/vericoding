@@ -1,0 +1,18 @@
+"vc-description": "Implement pow(x, n), which calculates x raised to the power n (xn).\n\
+  \nExample 1:\n\n\nInput: 2.00000, 10\nOutput: 1024.00000\n\n\nExample 2:\n\n\nInput:\
+  \ 2.10000, 3\nOutput: 9.26100\n\n\nExample 3:\n\n\nInput: 2.00000, -2\nOutput: 0.25000\n\
+  Explanation: 2-2 = 1/22 = 1/4 = 0.25\n\n\nNote:\n\n\n       -100.0 < x < 100.0\n\
+  \       n is a 32-bit signed integer, within the range [−231, 231 − 1]"
+"vc-preamble": "import Imports.AllImports\n\ndef myPow (x : Float) (n : Int) : Float\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isClose (a b : Float) (relTol absTol : Float := 0.0) : Bool\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem myPow_matches_mathPow {x : Float} {n : Int} \n  (x_range :\
+  \ 0.1 ≤ x ∧ x ≤ 10)\n  (n_range : -5 ≤ n ∧ n ≤ 5) :\n  isClose (myPow x n) (Float.pow\
+  \ x (Float.ofInt n)) (relTol := 1e-5) (absTol := 1e-5) := \n  sorry\n\n\ntheorem\
+  \ myPow_zero_exponent {x : Float}  \n  (x_range : 0.1 ≤ x ∧ x ≤ 10) :\n  myPow x\
+  \ 0 = 1.0 :=\n  sorry\n\n\ntheorem myPow_inverse_property {x : Float} {n : Int}\n\
+  \  (x_range : 0.1 ≤ x ∧ x ≤ 10)\n  (n_range : 1 ≤ n ∧ n ≤ 2) :\n  isClose ((myPow\
+  \ x n) * (myPow x (-n))) 1.0 (relTol := 1e-5) (absTol := 1e-5) :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

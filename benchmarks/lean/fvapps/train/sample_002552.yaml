@@ -1,0 +1,28 @@
+"vc-description": "Third day at your new cryptoanalyst job and you come across your\
+  \ toughest assignment yet. Your job is to implement a simple keyword cipher. A keyword\
+  \ cipher is a type of monoalphabetic substitution where two parameters are provided\
+  \ as such (string, keyword). The string is encrypted by taking the keyword, dropping\
+  \ any letters that appear more than once. The rest of the letters of the alphabet\
+  \ that aren't used are then appended to the end of the keyword.\n\nFor example,\
+  \ if your string was \"hello\" and your keyword was \"wednesday\", your encryption\
+  \ key would be 'wednsaybcfghijklmopqrtuvxz'.\n\nTo encrypt 'hello' you'd substitute\
+  \ as follows,\n```\n              abcdefghijklmnopqrstuvwxyz\n  hello ==>   ||||||||||||||||||||||||||\
+  \ ==> bshhk\n              wednsaybcfghijklmopqrtuvxz\n\n```             \n\nhello\
+  \ encrypts into bshhk with the keyword wednesday. This cipher also uses lower case\
+  \ letters only.\n\nGood Luck."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def keyword_cipher (text : String) (keyword : String) : String\
+  \ := sorry\n\ntheorem keyword_cipher_identity (text : String) :\n  keyword_cipher\
+  \ text \"abcdefghijklmnopqrstuvwxyz\" = text.toLower := sorry\n"
+"vc-theorems": "theorem keyword_cipher_length (text : String) (keyword : String) :\n\
+  \  (keyword_cipher text keyword).length = text.length := sorry\n\n\ntheorem keyword_cipher_lowercase\
+  \ (text : String) (keyword : String) :\n  (keyword_cipher text keyword).toLower\
+  \ = keyword_cipher text keyword := sorry\n\n\ntheorem keyword_cipher_preserves_spaces\
+  \ (text : String) (keyword : String) (i : String.Pos) :\n  text.get i = ' ' →\n\
+  \  (keyword_cipher text keyword).get i = ' ' := sorry\n\n/--\ninfo: 'bshhk'\n-/\n\
+  #guard_msgs in\n#eval keyword_cipher \"hello\" \"wednesday\"\n\n/--\ninfo: 'wticljt\
+  \ dljt'\n-/\n#guard_msgs in\n#eval keyword_cipher \"Welcome home\" \"secret\"\n\n\
+  /--\ninfo: 'bshhk'\n-/\n#guard_msgs in\n#eval keyword_cipher \"HELLO\" \"wednesday\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

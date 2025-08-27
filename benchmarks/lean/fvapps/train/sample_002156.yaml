@@ -1,0 +1,46 @@
+"vc-description": "This morning Tolik has understood that while he was sleeping he\
+  \ had invented an incredible problem which will be a perfect fit for Codeforces!\
+  \ But, as a \"Discuss tasks\" project hasn't been born yet (in English, well), he\
+  \ decides to test a problem and asks his uncle.\n\nAfter a long time thinking, Tolik's\
+  \ uncle hasn't any ideas on how to solve it. But, he doesn't want to tell Tolik\
+  \ about his inability to solve it, so he hasn't found anything better than asking\
+  \ you how to solve this task.\n\nIn this task you are given a cell field $n \\cdot\
+  \ m$, consisting of $n$ rows and $m$ columns, where point's coordinates $(x, y)$\
+  \ mean it is situated in the $x$-th row and $y$-th column, considering numeration\
+  \ from one ($1 \\leq x \\leq n, 1 \\leq y \\leq m$). Initially, you stand in the\
+  \ cell $(1, 1)$. Every move you can jump from cell $(x, y)$, which you stand in,\
+  \ by any non-zero vector $(dx, dy)$, thus you will stand in the $(x+dx, y+dy)$ cell.\
+  \ Obviously, you can't leave the field, but also there is one more important condition —\
+  \ you're not allowed to use one vector twice. Your task is to visit each cell of\
+  \ the field exactly once (the initial cell is considered as already visited).\n\n\
+  Tolik's uncle is a very respectful person. Help him to solve this task!\n\n\n-----Input-----\n\
+  \nThe first and only line contains two positive integers $n, m$ ($1 \\leq n \\cdot\
+  \ m \\leq 10^{6}$) — the number of rows and columns of the field respectively.\n\
+  \n\n-----Output-----\n\nPrint \"-1\" (without quotes) if it is impossible to visit\
+  \ every cell exactly once.\n\nElse print $n \\cdot m$ pairs of integers, $i$-th\
+  \ from them should contain two integers $x_i, y_i$ ($1 \\leq x_i \\leq n, 1 \\leq\
+  \ y_i \\leq m$) — cells of the field in order of visiting, so that all of them are\
+  \ distinct and vectors of jumps between them are distinct too.\n\nNotice that the\
+  \ first cell should have $(1, 1)$ coordinates, according to the statement.\n\n\n\
+  -----Examples-----\nInput\n2 3\n\nOutput\n1 1\n1 3\n1 2\n2 2\n2 3\n2 1\nInput\n\
+  1 1\n\nOutput\n1 1\n\n\n\n-----Note-----\n\nThe vectors from the first example in\
+  \ the order of making jumps are $(0, 2), (0, -1), (1, 0), (0, 1), (0, -2)$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def visit_cells (n m : Nat) : List (Nat × Nat) := sorry\n\ndef\
+  \ is_within_bounds (coord : Nat × Nat) (n m : Nat) : Bool :=\n  let (x, y) := coord\n\
+  \  1 ≤ x ∧ x ≤ n ∧ 1 ≤ y ∧ y ≤ m\n"
+"vc-theorems": "theorem visit_cells_coordinates_valid (n m : Nat) :  \n  ∀ coord ∈\
+  \ visit_cells n m, is_within_bounds coord n m := sorry\n\n\ntheorem visit_cells_unique\
+  \ (n m : Nat) :\n  ∀ i j, i ≠ j → \n  (visit_cells n m).get! i ≠ (visit_cells n\
+  \ m).get! j := sorry \n\n\ntheorem visit_cells_complete (n m : Nat) :\n  ∀ x y,\
+  \ 1 ≤ x ∧ x ≤ n ∧ 1 ≤ y ∧ y ≤ m →\n  (x, y) ∈ visit_cells n m := sorry\n\n\ntheorem\
+  \ visit_cells_length (n m : Nat) :\n  (visit_cells n m).length = n * m := sorry\n\
+  \n\ntheorem visit_cells_square (n : Nat) :\n  (visit_cells n n).length = n * n :=\
+  \ sorry\n\n\ntheorem visit_cells_1x1 :\n  visit_cells 1 1 = [(1, 1)] := sorry\n\n\
+  \ntheorem visit_cells_2x1 :\n  visit_cells 2 1 = [(1, 1), (2, 1)] ∨ \n  visit_cells\
+  \ 2 1 = [(2, 1), (1, 1)] := sorry\n\n/--\ninfo: [(1, 1), (2, 3), (1, 2), (2, 2),\
+  \ (1, 3), (2, 1)]\n-/\n#guard_msgs in\n#eval visit_cells 2 3\n\n/--\ninfo: [(1,\
+  \ 1)]\n-/\n#guard_msgs in\n#eval visit_cells 1 1\n\n/--\ninfo: expected\n-/\n#guard_msgs\
+  \ in\n#eval visit_cells 3 3\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

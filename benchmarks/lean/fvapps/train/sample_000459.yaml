@@ -1,0 +1,36 @@
+"vc-description": "You have n binary tree nodes numbered from 0 to n - 1 where node i has\
+  \ two children leftChild[i] and rightChild[i], return true if and only if all the\
+  \ given nodes form exactly one valid binary tree.\nIf node i has no left child then leftChild[i] will\
+  \ equal -1, similarly for the right child.\nNote that the nodes have no values and\
+  \ that we only use the node numbers in this problem.\n \nExample 1:\n\nInput: n\
+  \ = 4, leftChild = [1,-1,3,-1], rightChild = [2,-1,-1,-1]\nOutput: true\n\nExample\
+  \ 2:\n\nInput: n = 4, leftChild = [1,-1,3,-1], rightChild = [2,3,-1,-1]\nOutput:\
+  \ false\n\nExample 3:\n\nInput: n = 2, leftChild = [1,0], rightChild = [-1,-1]\n\
+  Output: false\n\nExample 4:\n\nInput: n = 6, leftChild = [1,-1,-1,4,-1,-1], rightChild\
+  \ = [2,-1,-1,5,-1,-1]\nOutput: false\n\n \nConstraints:\n\n1 <= n <= 10^4\nleftChild.length\
+  \ == rightChild.length == n\n-1 <= leftChild[i], rightChild[i] <= n - 1"
+"vc-preamble": "import Imports.AllImports\n\ndef validate_binary_tree_nodes (n : Nat)\
+  \ (leftChild : List Int) (rightChild : List Int) : Bool :=\n  sorry\n\n-- Predicate\
+  \ for valid list input"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_valid_list (n : Nat) (lst : List Int) : Bool :=\n  sorry\n\
+  \n-- Property: Result must be of type Bool"
+"vc-theorems": "theorem validate_returns_bool (n : Nat) (leftChild rightChild : List\
+  \ Int) :\n  ∃ (b : Bool), validate_binary_tree_nodes n leftChild rightChild = b\
+  \ :=\n  sorry\n\n-- Property: If result is True, each node has exactly one parent\
+  \ except root\n\ntheorem valid_tree_parent_counts {n : Nat} {leftChild rightChild\
+  \ : List Int} \n  (h : validate_binary_tree_nodes n leftChild rightChild = true)\
+  \ :\n  ∃ (parent_count : List Nat),\n    parent_count.length = n ∧ \n    (parent_count.filter\
+  \ (· = 1)).length = n - 1 ∧\n    (parent_count.filter (· = 0)).length = 1 :=\n \
+  \ sorry\n\n-- Property: Empty trees are only valid for n = 1\n\ntheorem empty_tree_validity\
+  \ {n : Nat} \n  (h_left : leftChild = List.replicate n (-1))\n  (h_right : rightChild\
+  \ = List.replicate n (-1)) :\n  validate_binary_tree_nodes n leftChild rightChild\
+  \ = (n = 1) :=\n  sorry\n\n-- Property: Invalid node references result in false\n\
+  \ntheorem invalid_references {n : Nat} {leftChild rightChild : List Int}\n  (h :\
+  \ ¬(is_valid_list n leftChild ∧ is_valid_list n rightChild)) :\n  validate_binary_tree_nodes\
+  \ n leftChild rightChild = false :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval validate_binary_tree_nodes 4 [1, -1, 3, -1] [2, -1, -1, -1]\n\n/--\n\
+  info: False\n-/\n#guard_msgs in\n#eval validate_binary_tree_nodes 4 [1, -1, 3, -1]\
+  \ [2, 3, -1, -1]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval validate_binary_tree_nodes\
+  \ 2 [1, 0] [-1, -1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

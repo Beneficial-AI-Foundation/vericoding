@@ -1,0 +1,28 @@
+"vc-description": "# Task\n John is new to spreadsheets. He is well aware of rows\
+  \ and columns, but he is not comfortable with spreadsheets numbering system.\n```\n\
+  Spreadsheet             Row Column\nA1                      R1C1\nD5           \
+  \            R5C4\nAA48                    R48C27\nBK12                   R12C63```\n\
+  Since John has a lot of work to do both in row-column and spreadsheet systems, he\
+  \ needs a program that converts cell numbers from one system to another.\n\n\n#\
+  \ Example\n\n For `s = \"A1\"`, the result should be `\"R1C1\"`.\n\n For `s = \"\
+  R48C27\"`, the result should be `\"AA48\"`.\n \n- Input/Output\n\n\n - `[input]`\
+  \ string `s`\n\n  The position (in spreadsheet or row-column numbering system).\n\
+  \n  `Spreadsheet : A1 to CRXO65535`\n  \n  `Row-Column: R1C1 to R65535C65535`\n\
+  \  \n  \n - `[output]` a string\n\n  The position (in the opposite format; if input\
+  \ was in spreadsheet system, the output should be int row-column system, and vise\
+  \ versa)."
+"vc-preamble": "import Imports.AllImports\n\ndef spreadsheet (s : String) : String\
+  \ := sorry\n\ndef is_valid_a1 (s : String) : Bool := sorry \n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_valid_r1c1 (s : String) : Bool := sorry\n\ntheorem a1_conversion\
+  \ {s : String} (h : is_valid_a1 s = true) : \n  is_valid_r1c1 (spreadsheet s) =\
+  \ true ∧ \n  spreadsheet (spreadsheet s) = s := sorry\n"
+"vc-theorems": "theorem r1c1_conversion {s : String} (h : is_valid_r1c1 s = true)\
+  \ :\n  is_valid_a1 (spreadsheet s) = true ∧\n  spreadsheet (spreadsheet s) = s :=\
+  \ sorry\n\n\ntheorem conversion_idempotent_a1 {s : String} (h : is_valid_a1 s =\
+  \ true) :\n  spreadsheet (spreadsheet s) = s := sorry\n\n\ntheorem conversion_idempotent_r1c1\
+  \ {s : String} (h : is_valid_r1c1 s = true) :\n  spreadsheet (spreadsheet s) = s\
+  \ := sorry\n\n/--\ninfo: 'R1C1'\n-/\n#guard_msgs in\n#eval spreadsheet \"A1\"\n\n\
+  /--\ninfo: 'AA48'\n-/\n#guard_msgs in\n#eval spreadsheet \"R48C27\"\n\n/--\ninfo:\
+  \ 'R12C63'\n-/\n#guard_msgs in\n#eval spreadsheet \"BK12\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

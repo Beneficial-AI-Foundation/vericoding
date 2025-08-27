@@ -1,0 +1,31 @@
+"vc-description": "# Task\n Yesterday you found some shoes in your room. Each shoe\
+  \ is described by two values:\n```\ntype indicates if it's a left or a right shoe;\n\
+  size is the size of the shoe.\n```\n Your task is to check whether it is possible\
+  \ to pair the shoes you found in such a way that each pair consists of a right and\
+  \ a left shoe of an equal size.\n\n# Example\n\n For:\n```\nshoes = [[0, 21], \n\
+  \         [1, 23], \n         [1, 21], \n         [0, 23]]\n         ```\nthe output\
+  \ should be `true;`\n\n For:\n```\nshoes = [[0, 21], \n         [1, 23], \n    \
+  \     [1, 21], \n         [1, 23]]\n         ```\nthe output should be `false.`\n\
+  \n# Input/Output\n\n - `[input]` 2D integer array `shoes`\n\n Array of shoes. Each\
+  \ shoe is given in the format [type, size], where type is either 0 or 1 for left\
+  \ and right respectively, and size is a positive integer.\n\n Constraints: `2 ≤\
+  \ shoes.length ≤ 50,  1 ≤ shoes[i][1] ≤ 100.`\n\n - `[output]` a boolean value\n\
+  \n   `true` if it is possible to pair the shoes, `false` otherwise."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def LRShoe := Nat × Nat  -- (left/right, size)\n\ndef pair_of_shoes\
+  \ (shoes : List LRShoe) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem pair_of_shoes_valid (shoes : List LRShoe) :\n  (∀ s ∈ shoes,\
+  \ s.1 ≤ 1) →\n  ∀ result, result = pair_of_shoes shoes → result = true ∨ result\
+  \ = false\n  := by sorry\n\n\ntheorem pair_of_shoes_count_matches (shoes : List\
+  \ LRShoe) :\n  let left_count := fun size => (shoes.filter (fun s => s.1 = 0 ∧ s.2\
+  \ = size)).length\n  let right_count := fun size => (shoes.filter (fun s => s.1\
+  \ = 1 ∧ s.2 = size)).length\n  pair_of_shoes shoes = true ↔ ∀ size, left_count size\
+  \ = right_count size\n  := by sorry\n\n\ntheorem pair_of_shoes_symmetry (shoes :\
+  \ List LRShoe) :\n  let swapped := shoes.map (fun s => (1 - s.1, s.2))\n  pair_of_shoes\
+  \ shoes = pair_of_shoes swapped\n  := by sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval pair_of_shoes [[0, 21], [1, 23], [1, 21], [0, 23]]\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval pair_of_shoes [[0, 21], [1, 23], [1, 21], [1, 23]]\n\n\
+  /--\ninfo: True\n-/\n#guard_msgs in\n#eval pair_of_shoes [[0, 23], [1, 21], [1,\
+  \ 23], [0, 21], [1, 22], [0, 22]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,39 @@
+"vc-description": "Give me Chocolate\n\nAnushka wants to buy chocolates.there are\
+  \ many chocolates in front of her, tagged with their prices.\n\nAnushka has only\
+  \ a certain amount to spend, and she wants to maximize the number of chocolates\
+  \ she buys with this money.\n\nGiven a list of prices and an amount to spend, what\
+  \ is the maximum number of chocolates Anushka can buy? \n\nFor example, \n\nif prices\
+  \ =[1,2,3,4]\nand Anushka has k=7 to spend, she can buy items [1,2,3] for 6 , or\
+  \ [3,4] for 7 units of currency. she would choose the first group of 3 items.\n\n\
+  Input Format\n\nThe first line contains two integers, n and k , the number of priced\
+  \ chocolates and the amount Anushka has to spend.\n\nThe next line contains n space-separated\
+  \ integers prices[i]\n\nConstraints\n\n1<= n <= 105\n\n1<= k <= 109\n\n1<= prices[i]\
+  \ <= 109\n\n\n\nA chocolate can't be bought multiple times.\n\nOutput Format\n\n\
+  An integer that denotes the maximum number of chocolates Anushka can buy for her.\n\
+  \nSample Input\n\n7 50\n\n1 12 5 111 200 1000 10\n\nSample Output\n\n4\n\nExplanation\n\
+  \nshe can buy only 4 chocolatess at most. These chocolates have the following prices:\
+  \ 1, 12, 5, 10."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_chocolates (n : Nat) (budget : Nat) (prices : List Nat)\
+  \ : Nat :=\n  sorry\n"
+"vc-theorems": "theorem max_chocolates_within_bounds (n : Nat) (budget : Nat) (prices\
+  \ : List Nat)\n  (h1 : prices.length = n)\n  (h2 : ∀ x ∈ prices, 1 ≤ x ∧ x ≤ 1000)\n\
+  \  (h3 : 1 ≤ budget ∧ budget ≤ 10000)\n  (h4 : 1 ≤ n ∧ n ≤ 100) :\n  0 ≤ max_chocolates\
+  \ n budget prices ∧ max_chocolates n budget prices ≤ n :=\n  sorry\n\n\ntheorem\
+  \ max_chocolates_equals_count (n : Nat) (budget : Nat) (prices : List Nat)\n  (h\
+  \ : prices.length = n) :\n  ∃ (sorted_prices : List Nat), \n    sorted_prices.length\
+  \ = prices.length ∧\n    (∀ i j : Nat, i < j → i < sorted_prices.length → j < sorted_prices.length\
+  \ →\n      sorted_prices.get! i ≤ sorted_prices.get! j) ∧\n    max_chocolates n\
+  \ budget prices = \n      let count := sorted_prices.foldl\n        (fun (acc :\
+  \ Nat × Nat) (price : Nat) => \n          if price ≤ budget - acc.2\n          then\
+  \ (acc.1 + 1, acc.2 + price)\n          else acc)\n        (0, 0)\n      count.1\
+  \ :=\n  sorry\n\n\ntheorem max_chocolates_monotone_budget (n : Nat) (budget : Nat)\
+  \ (prices : List Nat)\n  (h : prices.length = n)\n  (h2 : ∀ x ∈ prices, 0 < x) :\n\
+  \  max_chocolates n budget prices ≤ max_chocolates n (budget + 1) prices :=\n  sorry\n\
+  \n\ntheorem max_chocolates_zero_budget (n : Nat) (prices : List Nat)\n  (h : prices.length\
+  \ = n)\n  (h2 : ∀ x ∈ prices, 0 < x) :\n  max_chocolates n 0 prices = 0 :=\n  sorry\n\
+  \n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval max_chocolates 7 50 [1, 12, 5, 111, 200,\
+  \ 1000, 10]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval max_chocolates 4 7 [1, 2,\
+  \ 3, 4]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval max_chocolates 3 10 [5, 5, 5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

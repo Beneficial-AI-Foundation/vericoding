@@ -1,0 +1,30 @@
+"vc-description": "To introduce the problem think to my neighbor who drives a tanker\
+  \ truck. \nThe level indicator is down and he is worried\nbecause he does not know\
+  \ if he will be able to make deliveries. \nWe put the truck on a horizontal ground\
+  \ and measured the height of the liquid in the tank.\n\nFortunately the tank is\
+  \ a perfect cylinder and the vertical walls on each end are flat.\nThe height of\
+  \ the remaining liquid is `h`, the diameter of the cylinder is `d`,\nthe total volume\
+  \ is `vt` (h, d, vt are positive or null integers). \nYou can assume that `h` <=\
+  \ `d`.\n\nCould you calculate the remaining volume of the liquid?\nYour function\
+  \ `tankvol(h, d, vt)` returns an integer which is the truncated result (e.g floor)\n\
+  of your float calculation.\n\nExamples:\n\n```\ntankvol(40,120,3500) should return\
+  \ 1021 (calculation gives about: 1021.26992027)\n\ntankvol(60,120,3500) should return\
+  \ 1750\n\ntankvol(80,120,3500) should return 2478 (calculation gives about: 2478.73007973)\n\
+  ```\n\nTank vertical section:\n\n![alternative text](http://i.imgur.com/wmt0U43.png)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def tankvol (h : Float) (d : Float) (vt : Int) : Int := \n  sorry\n"
+"vc-theorems": "theorem tankvol_output_is_bounded \n  (h d : Float) (vt : Int) \n\
+  \  (h_pos : h ≥ 0.1)\n  (d_pos : d ≥ 0.1) \n  (d_bound : d ≤ 1000)\n  (h_bound :\
+  \ h ≤ d)\n  (vt_pos : vt ≥ 1)\n  (vt_bound : vt ≤ 1000000) :\n  0 ≤ tankvol h d\
+  \ vt ∧ tankvol h d vt ≤ vt := sorry\n\n\ntheorem tankvol_full_height\n  (d : Float)\
+  \ (vt : Int)\n  (d_pos : d ≥ 0.1)\n  (d_bound : d ≤ 1000)\n  (vt_pos : vt ≥ 1) \
+  \ \n  (vt_bound : vt ≤ 1000000) :\n  tankvol d d vt = vt := sorry\n\n\ntheorem tankvol_half_height\n\
+  \  (d : Float) (vt : Int)\n  (d_pos : d ≥ 0.1)\n  (d_bound : d ≤ 1000)\n  (vt_pos\
+  \ : vt ≥ 1)\n  (vt_bound : vt ≤ 1000000) :\n  tankvol (d/2) d vt = vt/2 := sorry\n\
+  \n\ntheorem tankvol_empty\n  (d : Float) (vt : Int)\n  (d_pos : d ≥ 0.1)\n  (d_bound\
+  \ : d ≤ 1000)\n  (vt_pos : vt ≥ 1)\n  (vt_bound : vt ≤ 1000000) :\n  tankvol 0 d\
+  \ vt = 0 := sorry\n\n/--\ninfo: 1021\n-/\n#guard_msgs in\n#eval tankvol 40 120 3500\n\
+  \n/--\ninfo: 1750\n-/\n#guard_msgs in\n#eval tankvol 60 120 3500\n\n/--\ninfo: 2478\n\
+  -/\n#guard_msgs in\n#eval tankvol 80 120 3500\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

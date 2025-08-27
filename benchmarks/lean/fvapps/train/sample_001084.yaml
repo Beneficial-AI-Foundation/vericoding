@@ -1,0 +1,37 @@
+"vc-description": "Chef is stuck on the minute hand of a giant clock. To escape from\
+  \ this clock he needs to get onto the hour hand which has an exit door. \nSince\
+  \ the minute hand and and hour hand are not connected at any point, chef will surely\
+  \ need to make a jump. Since he wants minimum risks, he chooses to jump on the hour\
+  \ hand so that the angle he has to cover is minimum possible.\nYou will be given\
+  \ a clock time in $UTC$ format denoting time of chef's jump and you have to compute\
+  \ the minimum angle that chef needs to cover while completing the jump.\nFor some\
+  \ reason chef times his jump only when the number of minutes is a multiple of 5.\n\
+  \n-----Input:-----\nThe first line of the input contains a single integer $T$ denoting\
+  \ the number of test cases. The description of  $T$ test cases follows.\nThe first\
+  \ line of each test case contains a string denoting time in UTC format (e.g. 10:20\
+  \ i.e. 10 hours and 20 minutes)\n\n-----Output-----\nFor each test case, print a\
+  \ single line denoting the smallest angle of jump.\n\n-----Constraints-----\n- $1\
+  \ \\leq T \\leq 10^3$\n- $0 \\leq hours \\leq 23$\n- $0 \\leq minutes \\leq 59$\n\
+  \n-----Example Input-----\n3\n14:20\n02:10\n09:30\n\n-----Example Output-----\n\
+  50 degree \n5 degree  \n105 degree\n\n-----Explanation-----\n- In the second case,\
+  \ once the hour hand reaches 2 it starts moving towards 3 with the passing of every\
+  \ minute, hence when the minute hand points 10 minutes, the hour hand has already\
+  \ covered some angle towards 3. \nIn this scenario the two angles made by hour and\
+  \ minute hand are 355 and 5 degrees. Since chef will jump on the side with minimum\
+  \ angle, he chooses the one with 5-degree angle."
+"vc-preamble": "import Imports.AllImports\n\ndef find_min_angle (t : Time) : String\
+  \ := sorry\n\ndef string_to_float (s : String) : Float := sorry \n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def round_float (f : Float) : Float := sorry\n\ntheorem find_min_angle_format\
+  \ (t : Time) : \n  ∃ n : Float, find_min_angle t = toString n ++ \" degree\" :=\
+  \ sorry\n"
+"vc-theorems": "theorem find_min_angle_range (t : Time) :\n  let angle := string_to_float\
+  \ (find_min_angle t)\n  0 ≤ angle ∧ angle ≤ 180 := sorry \n\n\ntheorem find_min_angle_precision\
+  \ (t : Time) :\n  let angle := string_to_float (find_min_angle t)\n  ∃ n : Float,\
+  \ angle = n ∧ n * 2 = round_float (n * 2) := sorry\n\n\ntheorem find_min_angle_12hr_symmetry\
+  \ (t : Time) :\n  find_min_angle t = find_min_angle ⟨t.hours % 12, t.mins, sorry,\
+  \ t.m_valid⟩ := sorry\n\n/--\ninfo: '50 degree'\n-/\n#guard_msgs in\n#eval find_min_angle\
+  \ \"14:20\"\n\n/--\ninfo: '5 degree'\n-/\n#guard_msgs in\n#eval find_min_angle \"\
+  02:10\"\n\n/--\ninfo: '105 degree'\n-/\n#guard_msgs in\n#eval find_min_angle \"\
+  09:30\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

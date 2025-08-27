@@ -1,0 +1,35 @@
+"vc-description": "You have a list of words and a pattern, and you want to know which\
+  \ words in words matches the pattern.\nA word matches the pattern if there exists\
+  \ a permutation of letters p so that after replacing every letter x in the pattern\
+  \ with p(x), we get the desired word.\n(Recall that a permutation of letters is\
+  \ a bijection from letters to letters: every letter maps to another letter, and\
+  \ no two letters map to the same letter.)\nReturn a list of the words in words that\
+  \ match the given pattern. \nYou may return the answer in any order.\n \n\nExample\
+  \ 1:\nInput: words = [\"abc\",\"deq\",\"mee\",\"aqq\",\"dkd\",\"ccc\"], pattern\
+  \ = \"abb\"\nOutput: [\"mee\",\"aqq\"]\nExplanation: \"mee\" matches the pattern\
+  \ because there is a permutation {a -> m, b -> e, ...}. \n\"ccc\" does not match\
+  \ the pattern because {a -> c, b -> c, ...} is not a permutation,\nsince a and b\
+  \ map to the same letter.\n \nNote:\n\n1 <= words.length <= 50\n1 <= pattern.length\
+  \ = words[i].length <= 20"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_and_replace_pattern (words : List String) (pattern : String)\
+  \ : List String :=\n  sorry\n"
+"vc-theorems": "theorem word_length_matches_pattern (words : List String) (pattern\
+  \ : String) :\n  ∀ w ∈ find_and_replace_pattern words pattern, String.length w =\
+  \ String.length pattern := by\n  sorry\n\n\ntheorem result_subset_of_input (words\
+  \ : List String) (pattern : String) :\n  ∀ w ∈ find_and_replace_pattern words pattern,\
+  \ w ∈ words := by\n  sorry\n\n\ntheorem empty_input_returns_empty (pattern : String)\
+  \ :\n  find_and_replace_pattern [] pattern = [] := by\n  sorry\n\n\ntheorem identical_word_pattern_pair\
+  \ (pattern word : String) : \n  String.length word = String.length pattern →\n \
+  \ String.length (String.join (String.splitOn word \"\")) = \n  String.length (String.join\
+  \ (String.splitOn pattern \"\")) →\n  word ∈ find_and_replace_pattern [word] word\
+  \ := by\n  sorry\n\n\ntheorem pattern_mapping_consistency (pattern word : String)\
+  \ : \n  word ∈ find_and_replace_pattern [word] pattern →\n  ∃ mapping : Char → Char,\n\
+  \  ∀ (i j : String.Pos), \n    (word.get i = word.get j ↔ pattern.get i = pattern.get\
+  \ j) := by\n  sorry\n\n/--\ninfo: ['mee', 'aqq']\n-/\n#guard_msgs in\n#eval find_and_replace_pattern\
+  \ [\"abc\", \"deq\", \"mee\", \"aqq\", \"dkd\", \"ccc\"] \"abb\"\n\n/--\ninfo: ['aa',\
+  \ 'bb']\n-/\n#guard_msgs in\n#eval find_and_replace_pattern [\"aa\", \"bb\"] \"\
+  cc\"\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval find_and_replace_pattern [\"ccc\"\
+  ] \"abb\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,30 @@
+"vc-description": "Student A and student B are giving each other test answers during\
+  \ a test.  \nThey don't want to be caught so they are sending each other coded messages.\n\
+  \nStudent A is sending student B the message: `Answer to Number 5 Part b`.  \nHe\
+  \ starts of with a square grid (in this example the grid = 5x5).  \nHe writes the\
+  \ message down (with spaces):\n\n```\nAnswe\nr to \nNumbe\nr 5 P\nart b\n```\n\n\
+  He then starts writing the message down one column at a time (from the top to the\
+  \ bottom).  \nThe new message is now: `ArNran u rstm5twob  e ePb`\n\nYou are the\
+  \ teacher of this class.  \nYour job is to decipher this message and bust the students.\n\
+  \n# Task\n\nWrite a function `decipher_message`.  \nThis function will take one\
+  \ parameter (`message`).  \nThis function will return the original message.  \n\
+  *** Note: The length of the string is always going to be a prefect square ***\n\n\
+  Hint: You should probably decipher the example message first before you start coding\n\
+  \nHave fun !!!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def decipher_message (s : String) : String := sorry\n\ntheorem\
+  \ decipher_preserves_length (s : String) (h : s.length > 0) :\n  (decipher_message\
+  \ s).length = s.length := sorry\n"
+"vc-theorems": "theorem decipher_preserves_chars (s : String) (h : s.length > 0) :\n\
+  \  ∀ c, (c ∈ (decipher_message s).data ↔ c ∈ s.data) := sorry\n\n\ntheorem decipher_idempotent\
+  \ (s : String) (h : s.length > 0) \n  (h2 : ∃ n : Nat, n * n = s.length) :\n  decipher_message\
+  \ (decipher_message s) = s := sorry\n\n\ntheorem decipher_small_strings (s : String)\
+  \ (h : s.length ≤ 1) :\n  decipher_message s = s := sorry\n\n\ntheorem decipher_perfect_squares\
+  \ (n : Nat) (h : n > 0) (h2 : n ≤ 10) :\n  let s := String.mk (List.replicate (n*n)\
+  \ 'x')\n  (decipher_message s).length = n*n ∧\n  (decipher_message s).data.all (·\
+  \ = 'x') := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval decipher_message\
+  \ \"ArNran u rstm5twob  e ePb\"\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval\
+  \ decipher_message \"92287a76 585a2y0\"\n\n/--\ninfo: expected3\n-/\n#guard_msgs\
+  \ in\n#eval decipher_message \"796820 2 \"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

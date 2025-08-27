@@ -1,0 +1,34 @@
+"vc-description": "Bit Vectors/Bitmaps\nA bitmap is one way of efficiently representing\
+  \ sets of unique integers using single bits.\nTo see how this works, we can represent\
+  \ a set of unique integers between `0` and `< 20` using a vector/array of 20 bits:\n\
+  ```\nvar set = [3, 14, 2, 11, 16, 4, 6];```\n```\nvar bitmap = [0, 0, 1, 1, 1, 0,\
+  \ 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0];\n```\nAs you can see, with a bitmap,\
+  \ the length of the vector represents the range of unique values in the set (in\
+  \ this case `0-20`), and the `0/1` represents whether or not the current index is\
+  \ equal to a value in the set.\n\nTask:\nYour task is to write a function `toBits`\
+  \ that will take in a set of uniqe integers and output a bit vector/bitmap (an array\
+  \ in javascript) using `1`s and `0`s to represent present and non-present values.\n\
+  Input:\nThe function will be passed a set of unique integers in string form, in\
+  \ a random order, separated by line breaks.\nEach integer can be expected to have\
+  \ a unique value `>= 0` and `< 5000`.\nThe input will look like this:\n`let exampleInput\
+  \ = '3\\n14\\n5\\n19\\n18\\n1\\n8\\n11\\n2...'`\nOutput:\nThe function will be expected\
+  \ to output a 5000 bit vector (array) of bits, either `0` or `1`, for example:\n\
+  `let exampleOutput = [0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1,\
+  \ 0,...]`\nMore in-depth bitmap kata coming very soon, happy coding!\nTo learn more\
+  \ about bitmapping and to see the inspiration for making these kata, checkout the\
+  \ book Programming Pearls by Jon Bently.  It's a powerful resource for any programmer!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def to_bits (s : String) : List Nat := sorry\n\ntheorem to_bits_length\
+  \ (s : String) (h : ∃ nums : List Nat, \n    (∀ n ∈ nums, n < 5000) ∧ \n    (s =\
+  \ String.intercalate \"\\n\" (nums.map toString))) : \n  (to_bits s).length = 5000\
+  \ := sorry\n"
+"vc-theorems": "theorem to_bits_binary (s : String) (h : ∃ nums : List Nat, \n   \
+  \ (∀ n ∈ nums, n < 5000) ∧ \n    (s = String.intercalate \"\\n\" (nums.map toString)))\
+  \ :\n  ∀ x ∈ to_bits s, x = 0 ∨ x = 1 := sorry\n\n\ntheorem to_bits_indices {nums\
+  \ : List Nat} (s : String) (h : \n    (∀ n ∈ nums, n < 5000) ∧ \n    (s = String.intercalate\
+  \ \"\\n\" (nums.map toString))) :\n  ((List.enum (to_bits s)).filter (fun p => p.2\
+  \ = 1)).map Prod.fst = nums := sorry\n\n\ntheorem to_bits_invalid_chars (s : String)\
+  \ :\n  (∃ c ∈ s.data, ¬(c = '\\n' ∨ ('0' ≤ c ∧ c ≤ '9'))) →\n  to_bits s = [] :=\
+  \ sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

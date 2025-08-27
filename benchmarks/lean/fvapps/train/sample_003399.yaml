@@ -1,0 +1,18 @@
+"vc-description": "Given an array of ones and zeroes, convert the equivalent binary\
+  \ value to an integer.\n\nEg: `[0, 0, 0, 1]` is treated as `0001` which is the binary\
+  \ representation of `1`.\n\nExamples:\n```\nTesting: [0, 0, 0, 1] ==> 1\nTesting:\
+  \ [0, 0, 1, 0] ==> 2\nTesting: [0, 1, 0, 1] ==> 5\nTesting: [1, 0, 0, 1] ==> 9\n\
+  Testing: [0, 0, 1, 0] ==> 2\nTesting: [0, 1, 1, 0] ==> 6\nTesting: [1, 1, 1, 1]\
+  \ ==> 15\nTesting: [1, 0, 1, 1] ==> 11\n```\n\nHowever, the arrays can have varying\
+  \ lengths, not just limited to `4`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def binary_array_to_number (arr : List Nat) : Nat :=\n  sorry\n\
+  \n\n\n\n\n\n\n\n"
+"vc-theorems": "theorem binary_array_to_number_zero :\n  binary_array_to_number [0]\
+  \ = 0 :=\nsorry\n\n\ntheorem binary_array_to_number_one :\n  binary_array_to_number\
+  \ [1] = 1 :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval binary_array_to_number\
+  \ [0, 0, 0, 1]\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval binary_array_to_number\
+  \ [0, 1, 1, 0]\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval binary_array_to_number\
+  \ [1, 1, 1, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

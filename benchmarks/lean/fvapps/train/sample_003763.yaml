@@ -1,0 +1,20 @@
+"vc-description": "Write a method that returns true if a given parameter is a power\
+  \ of 4, and false if it's not. If parameter is not an Integer (eg String, Array)\
+  \ method should return false as well.\n\n(In C# Integer means all integer Types\
+  \ like Int16,Int32,.....)\n\n### Examples\n\n```python\nisPowerOf4 1024 #should\
+  \ return True\nisPowerOf4  102 #should return False\nisPowerOf4   64 #should return\
+  \ True\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def powerof4 {α : Type} (x : α) : Bool := sorry\n\ntheorem powerof4_positive_integers\
+  \ (n : Nat) :\n  n ≥ 1 ∧ n ≤ 1000000 →\n  powerof4 n = true ↔ (n = 1 ∨ (∃ k : Nat,\
+  \ n = 4 * 4^k)) := sorry\n"
+"vc-theorems": "theorem powerof4_float_property (n : Float) :\n  n > 0 ∧ n ≤ 1000000\
+  \ →\n  powerof4 n = true → \n  ∃ k : Nat, n = Float.ofNat (4 * 4^k) := sorry\n\n\
+  \ntheorem powerof4_string_false (s : String) :\n  powerof4 s = false := sorry\n\n\
+  \ntheorem powerof4_nonpositive_false (n : Int) :\n  n ≤ 0 → powerof4 n = false :=\
+  \ sorry\n\n\ntheorem powerof4_other_types_false (x : Unit ⊕ List Nat ⊕ Array Nat)\
+  \ :\n  powerof4 x = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ powerof4 4\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval powerof4 40\n\n/--\n\
+  info: False\n-/\n#guard_msgs in\n#eval powerof4 \"pippi\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

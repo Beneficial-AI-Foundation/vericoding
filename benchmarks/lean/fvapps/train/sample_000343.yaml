@@ -1,0 +1,30 @@
+"vc-description": "Given a list of words, each word consists of English lowercase\
+  \ letters.\nLet's say word1 is a predecessor of word2 if and only if we can add\
+  \ exactly one letter anywhere in word1 to make it equal to word2.  For example, \"\
+  abc\" is a predecessor of \"abac\".\nA word chain is a sequence of words [word_1,\
+  \ word_2, ..., word_k] with k >= 1, where word_1 is a predecessor of word_2, word_2\
+  \ is a predecessor of word_3, and so on.\nReturn the longest possible length of\
+  \ a word chain with words chosen from the given list of words.\n \nExample 1:\n\
+  Input: [\"a\",\"b\",\"ba\",\"bca\",\"bda\",\"bdca\"]\nOutput: 4\nExplanation: one\
+  \ of the longest word chain is \"a\",\"ba\",\"bda\",\"bdca\".\n\n \nNote:\n\n1 <=\
+  \ words.length <= 1000\n1 <= words[i].length <= 16\nwords[i] only consists of English\
+  \ lowercase letters."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def longest_str_chain (words : List String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem longest_str_chain_non_negative \n  (words : List String) :\n\
+  \  longest_str_chain words ≥ 0 :=\nsorry\n\n\ntheorem longest_str_chain_empty_list\
+  \ :\n  longest_str_chain [] = 0 :=\nsorry\n\n\ntheorem longest_str_chain_bounded_by_length\n\
+  \  (words : List String) :\n  longest_str_chain words ≤ words.length :=\nsorry\n\
+  \n\ntheorem longest_str_chain_singleton\n  (word : String) :\n  longest_str_chain\
+  \ [word] = 1 :=\nsorry\n\n\ntheorem longest_str_chain_same_length_words\n  (words\
+  \ : List String)\n  (h : ∀ w ∈ words, w.length = 1) : \n  longest_str_chain words\
+  \ = 1 :=\nsorry\n\n\ntheorem longest_str_chain_decreasing\n  (word : String)\n \
+  \ (chain := List.range word.length |>.map (fun i => word.take (word.length - i)))\
+  \ :\n  longest_str_chain chain = word.length ∨ longest_str_chain chain = 1 :=\n\
+  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval longest_str_chain [\"a\", \"b\"\
+  , \"ba\", \"bca\", \"bda\", \"bdca\"]\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval\
+  \ longest_str_chain [\"xbc\", \"pcxbcf\", \"xb\", \"cxbc\", \"pcxbc\"]\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval longest_str_chain [\"a\", \"b\", \"ab\", \"bac\"\
+  ]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

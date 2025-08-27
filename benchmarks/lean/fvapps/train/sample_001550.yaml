@@ -1,0 +1,32 @@
+"vc-description": "Write a function that accepts a square matrix (`N x N` 2D array)\
+  \ and returns the determinant of the matrix.\n\nHow to take the determinant of a\
+  \ matrix -- it is simplest to start with the smallest cases:\n\nA 1x1 matrix `|a|`\
+  \ has determinant `a`.\n\nA 2x2 matrix `[ [a, b], [c, d] ]` or\n```\n|a  b|\n|c\
+  \  d|\n```\nhas determinant: `a*d - b*c`.\n\nThe determinant of an `n x n` sized\
+  \ matrix is calculated by reducing the problem to the calculation of the determinants\
+  \ of `n` matrices of`n-1 x n-1` size.\n\nFor the 3x3 case, `[ [a, b, c], [d, e,\
+  \ f], [g, h, i] ]` or\n```\n|a b c|  \n|d e f|  \n|g h i|  \n```\nthe determinant\
+  \ is: `a * det(a_minor) - b * det(b_minor) + c * det(c_minor)` where `det(a_minor)`\
+  \ refers to taking the determinant of the 2x2 matrix created by crossing out the\
+  \ row and column in which the element a occurs:\n```\n|- - -|\n|- e f|\n|- h i|\
+  \  \n```\nNote the alternation of signs. \n\nThe determinant of larger matrices\
+  \ are calculated analogously, e.g. if M is a 4x4 matrix with first row `[a, b, c,\
+  \ d]`, then:\n\n`det(M) = a * det(a_minor) - b * det(b_minor) + c * det(c_minor)\
+  \ - d * det(d_minor)`"
+"vc-preamble": "import Imports.AllImports\n\ndef Matrix (α : Type u) (n : Nat) :=\
+  \ Array (Array α)\n\ndef standardDeterminant {n : Nat} (M : Matrix Int n) : Int\
+  \ := sorry\n\ndef identityMatrix (n : Nat) : Matrix Int n := sorry\ndef zeroMatrix\
+  \ (n : Nat) : Matrix Int n := sorry "
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def scaleMatrix {n : Nat} (c : Int) (M : Matrix Int n) : Matrix\
+  \ Int n := sorry\ndef determinant {n : Nat} (M : Matrix Int n) : Int := sorry\n"
+"vc-theorems": "theorem determinant_matches_standard_implementation {n : Nat} (M :\
+  \ Matrix Int n) :\n  determinant M = standardDeterminant M := \n  sorry\n\n\ntheorem\
+  \ determinant_identity {n : Nat} :\n  determinant (identityMatrix n) = 1 :=\n  sorry\
+  \ \n\n\ntheorem determinant_zero {n : Nat} :\n  determinant (zeroMatrix n) = 0 :=\n\
+  \  sorry\n\n\ntheorem determinant_scaling {n : Nat} (M : Matrix Int n) (c : Int)\
+  \ :\n  determinant (scaleMatrix c M) = c^n * determinant M :=\n  sorry\n\n/--\n\
+  info: 5\n-/\n#guard_msgs in\n#eval determinant #[[5]]\n\n/--\ninfo: -2\n-/\n#guard_msgs\
+  \ in\n#eval determinant #[[1, 2], [3, 4]]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
+  #eval determinant #[[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,36 @@
+"vc-description": "Probably everyone has experienced an awkward situation due to shared\
+  \ armrests between seats in cinemas. A highly accomplished cinema manager named\
+  \ \"Chef\" decided to solve this problem.\n\nWhen a customer wants to buy a ticket,\
+  \ the clerk at the ticket window asks the visitor if they need the armrests, and\
+  \ if so, which of them: left, right, or both. We know that out of the audience expected\
+  \ to show up, L of them only need the left armrest, R of them need just the right\
+  \ one, Z need none and B need both. Your task is to calculate the maximum number\
+  \ of people that can attend the show. In the cinema hall there are N rows with M\
+  \ seats each. There is only one armrest between two adjacent seats. Seats at the\
+  \ beginning and at the end of the row have two armrests\n\n-----Input-----\n\nInput\
+  \ begins with an integer T: the number of test cases.\n\nEach test case consists\
+  \ of a single line with 6 space-separated integers: N, M, Z, L, R, B.\n\n-----Output-----\n\
+  \nFor each test case, output a line containing the answer for the task.\n\n-----Constraints\
+  \ and Subtasks-----\n- 1 ≤ T ≤ 105 \nSubtask 1 : 10 points \n- 1 ≤ N, M ≤ 3 \n-\
+  \ 0 ≤ Z, L, R, B ≤ 3 \nSubtask 2 : 20 points \n- 1 ≤ N, M ≤ 30 \n- 0 ≤ Z, L, R ≤\
+  \ 30 \n- 0 ≤ B ≤ 109 \nSubtask 3 : 30 points\n- 1 ≤ N, M ≤ 106 \n- 0 ≤ Z, L, R ≤\
+  \ 106 \n- 0 ≤ B ≤ 1016 \nSubtask 4 : 40 points\n- 1 ≤ N, M ≤ 108 \n- 0 ≤ Z, L, R,\
+  \ B ≤ 1016 \n\n-----Example-----\nInput:2\n2 2 3 2 1 1\n3 3 1 2 0 9\n\nOutput:4\n\
+  8\n\n-----Explanation-----\n'L' - needs left\n\n'R - needs right\n\n'Z' - doesn't\
+  \ need any\n\n'B' - needs both\n\n'-' - empty place\n\nExample case 1.\nZZ\n\nZB\n\
+  Example case 2.\nLLB\n\nBZB\n\nB-B"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_cinema_seating (n m z l r b : Nat) : Nat :=\n  sorry\n\
+  \n-- Main properties theorem"
+"vc-theorems": "theorem cinema_seating_basic_properties \n  (n m z l r b : Nat) :\n\
+  \  let result := solve_cinema_seating n m z l r b;\n  let total_seats := n * m;\n\
+  \  let min_seats := min (n * m) (l + r);\n  result ≤ total_seats \n  ∧ result ≥\
+  \ min_seats\n  ∧ result ≥ 0 :=\n  sorry\n\n-- Symmetry property\n\ntheorem cinema_seating_symmetry\n\
+  \  (n m z l r b : Nat) :\n  solve_cinema_seating n m z l r b = solve_cinema_seating\
+  \ n m z r l b :=\n  sorry\n\n-- Zero case property  \n\ntheorem cinema_seating_zero_case\n\
+  \  (n m : Nat) :\n  n > 0 → m > 0 → solve_cinema_seating n m 0 0 0 0 = 0 :=\n  sorry\n\
+  \n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve_cinema_seating 2 2 3 2 1 1\n\n/--\n\
+  info: 8\n-/\n#guard_msgs in\n#eval solve_cinema_seating 3 3 1 2 0 9\n\n/--\ninfo:\
+  \ 2\n-/\n#guard_msgs in\n#eval solve_cinema_seating 1 2 1 1 1 0\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,49 @@
+"vc-description": "Chef received a new sequence $A_1, A_2, \\ldots, A_N$. He does\
+  \ not like arbitrarily ordered sequences, so he wants to permute the elements of\
+  \ $A$ in such a way that it would satisfy the following condition: there is an integer\
+  \ $p$ ($1 \\le p \\le N$) such that the first $p$ elements of the new (permuted)\
+  \ sequence are strictly increasing and the last $N-p+1$ elements are strictly decreasing.\n\
+  Help Chef and find a permutation of the given sequence which satisfies this condition\
+  \ or determine that no such permutation exists. If there are multiple solutions,\
+  \ you may find any one.\n\n-----Input-----\n- The first line of the input contains\
+  \ a single integer $T$ denoting the number of test cases. The description of $T$\
+  \ test cases follows.\n- The first line of each test case contains a single integer\
+  \ $N$.\n- The second line contains $N$ space-separated integers $A_1, A_2, \\ldots,\
+  \ A_N$.\n\n-----Output-----\nFor each test case:\n- If there is no permutation of\
+  \ $A$ that satisfies the given condition, print a single line containing the string\
+  \ \"NO\" (without quotes).\n- Otherwise, print two lines.\n- The first of these\
+  \ lines should contain the string \"YES\" (without quotes).\n- The second line should\
+  \ contain $N$ space-separated integers ― the elements of your permuted sequence.\n\
+  \n-----Constraints-----\n- $1 \\le T \\le 100$\n- $1 \\le N \\le 10^5$\n- $1 \\\
+  le A_i \\le 2 \\cdot 10^5$ for each valid $i$\n- the sum of $N$ over all test cases\
+  \ does not exceed $10^6$\n\n-----Subtasks-----\nSubtask #1 (50 points):\n- $N \\\
+  le 10^3$\n- $A_i \\le 2 \\cdot 10^3$ for each valid $i$\n- the sum of $N$ over all\
+  \ test cases does not exceed $10^4$\nSubtask #2 (50 points): original constraints\n\
+  \n-----Example Input-----\n5\n4\n1 3 2 4\n4\n1 3 2 4\n6\n1 10 10 10 20 15\n5\n1\
+  \ 1 2 2 3\n4\n1 2 3 3\n\n-----Example Output-----\nYES\n1 2 3 4\nYES\n4 3 2 1\n\
+  NO\nYES\n1 2 3 2 1\nNO"
+"vc-preamble": "import Imports.AllImports\n\ndef List.countElem (x : α) (xs : List\
+  \ α) [BEq α] : Nat :=\nxs.filter (· == x) |>.length\n\n\ndef List.uniqueElems (xs\
+  \ : List α) [BEq α] : List α :=\nxs.eraseDups\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def process_sequence (n : Nat) (arr : List Nat) : String × List\
+  \ Nat :=\nsorry\n"
+"vc-theorems": "theorem process_sequence_valid_result (n : Nat) (arr : List Nat) :\n\
+  \  let (result, output) := process_sequence n arr\n  (result = \"YES\" ∨ result\
+  \ = \"NO\") ∧ output.length ≥ 0 :=\nsorry\n\n\ntheorem process_sequence_yes_properties\
+  \ (n : Nat) (arr : List Nat) \n  (h : arr.length > 0) (h2 : ∀ x ∈ arr, x > 0 ∧ x\
+  \ ≤ 1000) :\n  let (result, output) := process_sequence n arr\n  result = \"YES\"\
+  \ →\n  -- Length properties\n  output.length ≥ arr.uniqueElems.length ∧\n  -- Maximum\
+  \ occurs once\n  (let max := output.maximum?.getD 0\n   output.countElem max = 1)\
+  \ ∧\n  -- Each element occurs at most twice\n  (∀ x ∈ output, output.countElem x\
+  \ ≤ 2) ∧\n  -- First half unique\n  (let firstHalf := output.take (arr.uniqueElems.length)\n\
+  \   firstHalf.uniqueElems.length = firstHalf.length) ∧\n  -- Second half descending\n\
+  \  (let secondHalf := output.drop (arr.uniqueElems.length)\n   ∀ i < secondHalf.length\
+  \ - 1,\n     secondHalf[i]?.getD 0 ≥ secondHalf[i+1]?.getD 0) ∧\n  -- Input elements\
+  \ preserved\n  arr.uniqueElems.length = output.uniqueElems.length :=\nsorry\n\n\n\
+  theorem process_sequence_no_properties (n : Nat) (arr : List Nat)\n  (h : arr.length\
+  \ > 0) (h2 : ∀ x ∈ arr, x > 0 ∧ x ≤ 1000) :\n  let (result, output) := process_sequence\
+  \ n arr\n  result = \"NO\" →\n  output = [] ∧\n  -- Any element occurs more than\
+  \ twice or max occurs more than once\n  (∃ x ∈ arr, arr.countElem x > 2) ∨\n  (let\
+  \ max := arr.maximum?.getD 0\n   arr.countElem max > 1) :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

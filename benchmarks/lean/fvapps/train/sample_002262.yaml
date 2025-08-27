@@ -1,0 +1,59 @@
+"vc-description": "You are given an array $a$ consisting of $n$ integers. You have\
+  \ to find the length of the smallest (shortest) prefix of elements you need to erase\
+  \ from $a$ to make it a good array. Recall that the prefix of the array $a=[a_1,\
+  \ a_2, \\dots, a_n]$ is a subarray consisting several first elements: the prefix\
+  \ of the array $a$ of length $k$ is the array $[a_1, a_2, \\dots, a_k]$ ($0 \\le\
+  \ k \\le n$).\n\nThe array $b$ of length $m$ is called good, if you can obtain a\
+  \ non-decreasing array $c$ ($c_1 \\le c_2 \\le \\dots \\le c_{m}$) from it, repeating\
+  \ the following operation $m$ times (initially, $c$ is empty):  select either the\
+  \ first or the last element of $b$, remove it from $b$, and append it to the end\
+  \ of the array $c$. \n\nFor example, if we do $4$ operations: take $b_1$, then $b_{m}$,\
+  \ then $b_{m-1}$ and at last $b_2$, then $b$ becomes $[b_3, b_4, \\dots, b_{m-3}]$\
+  \ and $c =[b_1, b_{m}, b_{m-1}, b_2]$.\n\nConsider the following example: $b = [1,\
+  \ 2, 3, 4, 4, 2, 1]$. This array is good because we can obtain non-decreasing array\
+  \ $c$ from it by the following sequence of operations:  take the first element of\
+  \ $b$, so $b = [2, 3, 4, 4, 2, 1]$, $c = [1]$;  take the last element of $b$, so\
+  \ $b = [2, 3, 4, 4, 2]$, $c = [1, 1]$;  take the last element of $b$, so $b = [2,\
+  \ 3, 4, 4]$, $c = [1, 1, 2]$;  take the first element of $b$, so $b = [3, 4, 4]$,\
+  \ $c = [1, 1, 2, 2]$;  take the first element of $b$, so $b = [4, 4]$, $c = [1,\
+  \ 1, 2, 2, 3]$;  take the last element of $b$, so $b = [4]$, $c = [1, 1, 2, 2, 3,\
+  \ 4]$;  take the only element of $b$, so $b = []$, $c = [1, 1, 2, 2, 3, 4, 4]$ —\
+  \ $c$ is non-decreasing. \n\nNote that the array consisting of one element is good.\n\
+  \nPrint the length of the shortest prefix of $a$ to delete (erase), to make $a$\
+  \ to be a good array. Note that the required length can be $0$.\n\nYou have to answer\
+  \ $t$ independent test cases.\n\n\n-----Input-----\n\nThe first line of the input\
+  \ contains one integer $t$ ($1 \\le t \\le 2 \\cdot 10^4$) — the number of test\
+  \ cases. Then $t$ test cases follow.\n\nThe first line of the test case contains\
+  \ one integer $n$ ($1 \\le n \\le 2 \\cdot 10^5$) — the length of $a$. The second\
+  \ line of the test case contains $n$ integers $a_1, a_2, \\dots, a_n$ ($1 \\le a_i\
+  \ \\le 2 \\cdot 10^5$), where $a_i$ is the $i$-th element of $a$.\n\nIt is guaranteed\
+  \ that the sum of $n$ does not exceed $2 \\cdot 10^5$ ($\\sum n \\le 2 \\cdot 10^5$).\n\
+  \n\n-----Output-----\n\nFor each test case, print the answer: the length of the\
+  \ shortest prefix of elements you need to erase from $a$ to make it a good array.\n\
+  \n\n-----Example-----\nInput\n5\n4\n1 2 3 4\n7\n4 3 3 8 4 5 2\n3\n1 1 1\n7\n1 3\
+  \ 1 4 5 3 2\n5\n5 4 3 2 3\n\nOutput\n0\n4\n0\n2\n3\n\n\n\n-----Note-----\n\nIn the\
+  \ first test case of the example, the array $a$ is already good, so we don't need\
+  \ to erase any prefix.\n\nIn the second test case of the example, the initial array\
+  \ $a$ is not good. Let's erase first $4$ elements of $a$, the result is $[4, 5,\
+  \ 2]$. The resulting array is good. You can prove that if you erase fewer number\
+  \ of first elements, the result will not be good."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def findShortestPrefix (n : Nat) (arr : List Int) : Nat :=\n  sorry\n\
+  \n/-- Theorem stating that result is always a valid index or 0 -/"
+"vc-theorems": "theorem find_shortest_prefix_bounds {n : Nat} {arr : List Int} \n\
+  \  (h : arr.length = n) (h1 : n > 0) : \n  let result := findShortestPrefix n arr\n\
+  \  0 ≤ result ∧ result < n :=\n  sorry\n\n/-- Theorem stating that sorted ascending\
+  \ arrays return 0 -/\n\ntheorem find_shortest_prefix_sorted_asc {n : Nat} {arr :\
+  \ List Int}\n  (h : arr.length = n) (h1 : n > 0)\n  (h2 : ∀ i j, i < j → j < arr.length\
+  \ → arr[i]! ≤ arr[j]!) :\n  findShortestPrefix n arr = 0 :=\n  sorry\n\n/-- Theorem\
+  \ stating that single element arrays return 0 -/\n\ntheorem find_shortest_prefix_single\
+  \ {arr : List Int}\n  (h : arr.length = 1) :\n  findShortestPrefix 1 arr = 0 :=\n\
+  \  sorry\n\n/-- Theorem stating that constant arrays return 0 -/\n\ntheorem find_shortest_prefix_constant\
+  \ {n : Nat} {arr : List Int} \n  (h : arr.length = n) (h1 : n > 0)\n  (h2 : ∀ i\
+  \ j, i < arr.length → j < arr.length → arr[i]! = arr[j]!) :\n  findShortestPrefix\
+  \ n arr = 0 :=\n  sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_shortest_prefix\
+  \ 4 [1, 2, 3, 4]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval find_shortest_prefix\
+  \ 7 [4, 3, 3, 8, 4, 5, 2]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_shortest_prefix\
+  \ 3 [1, 1, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

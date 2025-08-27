@@ -1,0 +1,17 @@
+"vc-description": "An element in an array is dominant if it is greater than all elements\
+  \ to its right. You will be given an array and your task will be to return a list\
+  \ of all dominant elements. For example:\n```Haskell\nsolve([1,21,4,7,5]) = [21,7,5]\
+  \ because 21, 7 and 5 are greater than elments to their right. \nsolve([5,4,3,2,1])\
+  \ = [5,4,3,2,1]\n\nNotice that the last element is always included.\n```\n\nMore\
+  \ examples in the test cases.\n\nGood luck!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (arr : List Int) : List Int :=\n  sorry\n"
+"vc-theorems": "theorem last_element_always_included {arr : List Int} (h : arr ≠ [])\
+  \ :\n  (solve arr).getLast? = arr.getLast? :=\n  sorry\n\n\n\n\ntheorem result_subset_of_input\
+  \ {arr : List Int} (h : arr ≠ []) :\n  ∀ x : Int, x ∈ solve arr → x ∈ arr :=\n \
+  \ sorry\n\n/--\ninfo: [21, 7, 5]\n-/\n#guard_msgs in\n#eval solve [1, 21, 4, 7,\
+  \ 5]\n\n/--\ninfo: [5, 4, 3, 2, 1]\n-/\n#guard_msgs in\n#eval solve [5, 4, 3, 2,\
+  \ 1]\n\n/--\ninfo: [17, 14, 5, 2]\n-/\n#guard_msgs in\n#eval solve [16, 17, 14,\
+  \ 3, 14, 5, 2]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

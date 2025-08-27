@@ -1,0 +1,14 @@
+"vc-description": "You have n dices each one having s sides numbered from 1 to s.\n\
+  How many outcomes add up to a specified number k?\n\nFor example if we roll four\
+  \ normal six-sided dices we\nhave four outcomes that add up to 5. \n\n(1, 1, 1,\
+  \ 2)\n(1, 1, 2, 1)\n(1, 2, 1, 1)\n(2, 1, 1, 1)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def dice_sum_outcomes (n s k : Nat) : Nat := sorry\n\n\n\n\n\n\
+  theorem dice_sum_outcomes_invalid_inputs₁ (s k : Nat) :\n  dice_sum_outcomes 0 s\
+  \ k = 0 := sorry\n"
+"vc-theorems": "theorem dice_sum_outcomes_invalid_inputs₂ (n k : Nat) :\n  dice_sum_outcomes\
+  \ n 0 k = 0 := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval dice_sum_outcomes\
+  \ 4 6 5\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval dice_sum_outcomes 3 6 6\n\n\
+  /--\ninfo: 27\n-/\n#guard_msgs in\n#eval dice_sum_outcomes 3 6 10\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

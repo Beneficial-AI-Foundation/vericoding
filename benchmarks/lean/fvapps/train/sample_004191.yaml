@@ -1,0 +1,29 @@
+"vc-description": "Welcome\n\nThis kata is inspired by This Kata\n\n\nWe have a string\
+  \ s\n\nWe have a number n\n\nHere is a function that takes your string, concatenates\
+  \ the even-indexed chars to the front, odd-indexed chars to the back.\n\nExamples\n\
+  \n    s = \"Wow Example!\"\n    result = \"WwEapeo xml!\"\n    s = \"I'm JomoPipi\"\
+  \n    result = \"ImJm ii' ooPp\"\n    \nThe Task:\n\nreturn the result of the string\
+  \ after applying the function to it n times.\n\nexample where s = \"qwertyuio\"\
+  \ and n = 2:\n\n    after 1 iteration  s = \"qetuowryi\"\n    after 2 iterations\
+  \ s = \"qtorieuwy\"\n    return \"qtorieuwy\"\n\n Note \n\nthere's a lot of tests,\
+  \ big strings,\nand n is greater than a billion\n\nso be ready to optimize.\n\n\
+  after doing this: do it's best friend!\n\n# Check out my other kata!\n\n       \
+  \ \nMatrix Diagonal Sort OMG\nString -> N iterations -> String\nString -> X iterations\
+  \ -> String\nANTISTRING\nArray - squareUp b!\nMatrix - squareUp b!\nInfinitely Nested\
+  \ Radical Expressions\npipi Numbers!"
+"vc-preamble": "import Imports.AllImports\n\ndef jumbledString (s : String) (n : Int)\
+  \ : String := sorry\n\ntheorem jumbledString_length_preserved (s : String) (n :\
+  \ Int) (h : s.length > 0) :\n  (jumbledString s n).length = s.length := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSameChars (s₁ s₂ : String) : Prop :=\n  ∀ c : Char, (s₁.data.countP\
+  \ (· = c)) = (s₂.data.countP (· = c))\n"
+"vc-theorems": "theorem jumbledString_same_chars (s : String) (n : Int) (h : s.length\
+  \ > 0) :\n  isSameChars s (jumbledString s n) := sorry\n\n\ntheorem jumbledString_periodic\
+  \ (s : String) (n : Int) (h : s.length > 0) :\n  ∃ k : Nat, k > 0 ∧ \n  jumbledString\
+  \ s n = jumbledString s (n % k) := sorry\n\n\ntheorem jumbledString_empty_or_singleton\
+  \ (s : String) (n : Int) :\n  s.length ≤ 1 → jumbledString s n = s := sorry\n\n\
+  /--\ninfo: 'Sc o!uhWw'\n-/\n#guard_msgs in\n#eval jumbled_string \"Such Wow!\" 1\n\
+  \n/--\ninfo: 'bexltept merae'\n-/\n#guard_msgs in\n#eval jumbled_string \"better\
+  \ example\" 2\n\n/--\ninfo: 'qtorieuwy'\n-/\n#guard_msgs in\n#eval jumbled_string\
+  \ \"qwertyuio\" 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

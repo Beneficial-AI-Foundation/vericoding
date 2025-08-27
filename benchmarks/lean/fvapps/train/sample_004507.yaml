@@ -1,0 +1,70 @@
+"vc-description": "The business has been suffering for years under the watch of Homie\
+  \ the Clown. Every time there is a push to production it requires 500 hands-on deck,\
+  \ a massive manual process, and the fire department is on stand-by along with Fire\
+  \ Marshall Bill the king of manual configuration management. He is called a Fire\
+  \ Marshall because production pushes often burst into flames and rollbacks are a\
+  \ hazard.\n\nThe business demands change and as such has hired a new leader who\
+  \ wants to convert it all to DevOps…..there is a new Sheriff in town.\n\nThe Sheriff's\
+  \ first order of business is to build a DevOps team. He likes Microservices, Cloud,\
+  \ Open-Source, and wants to push to production 9500 times per day without even pressing\
+  \ a button, beautiful seamless immutable infrastructure properly baked in the Continuous\
+  \ Delivery oven is the goal.\n\nThe only problem is Homie the Clown along with Legacy\
+  \ Pete are grandfathered in and union, they started out in the era of green screens\
+  \ and punch cards and are set in their ways. They are not paid by an outcome but\
+  \ instead are measured by the amount of infrastructure under management and total\
+  \ staff headcount.\n\nThe Sheriff has hired a new team of DevOps Engineers. They\
+  \ advocate Open Source, Cloud, and never doing a manual task more than one time.\
+  \ They believe Operations to be a first class citizen with Development and are preparing\
+  \ to shake things up within the company. \n\nSince Legacy is not going away, yet,\
+  \ the Sheriff's job is to get everyone to cooperate so DevOps and the Cloud will\
+  \ be standard. The New Kids on the Block have just started work and are looking\
+  \ to build common services with Legacy Pete and Homie the Clown. \n```\nEvery Time\
+  \ the NKOTB propose a DevOps pattern…… \n\nHomie stands up and says \"Homie don't\
+  \ Play that!\"\n\nIE: \n\nNKOTB Say -> \"We need Cloud now!\"\n\nHomie Say -> \"\
+  Cloud! Homie dont play that!\"\n\nNKOTB Say -> \"We need Automation now!\"\n\nHomie\
+  \ Say -> \"Automation! Homie dont play that!\"\n\nNKOTB Say -> \"We need Microservices\
+  \ now!\"\n\nHomie Say -> \"Microservices! Homie dont play that!\"\n\n```\n\nTask\
+  \ \n\nYou will receive a two-dimensional array with strings made of the NKOTB’s\
+  \ requirements. Each Array contains a domain of DevOps patterns that each of the\
+  \ 5 NKOTB are asking for.\n\nThe requirements array will ALWAYS have five sub-arrays\
+  \ structured like this:\n```\nrequirements[0] = monitoring\nrequirements[1] = automation\n\
+  requirements[2] = deployment\nrequirements[3] = cloud\nrequirements[4] = microservices\n\
+  \nEach sub-array will always contain strings in the same format\n\nThe strings will\
+  \ always be in the following format(case insensitive):\n\n\"We need Microservices\
+  \ now!\"\n\nYour job is to create the response from Homie the Clown following the\
+  \ pattern above. \n\nThen return the responses in an array.\n\n\"Microservices!\
+  \ Homie dont play that!\"\n```\nThe first word of the response is always Capitalized\
+  \ and all other letters are lowercase regardless of how you recieve them, the rest\
+  \ of the sentence is always in the format ``` Homie dont play that!```. Strings\
+  \ should be returned in the same order.\n```\nIn addition to the responses create\
+  \ a count of each domain and return it as the last element of the return array in\
+  \ the following format.\n\n'6 monitoring objections, 4 automation, 6 deployment\
+  \ pipeline, 6 cloud, and 3 microservices.'\n\n```\nFor more information on Homie\
+  \ the Clown.\n\nhttps://www.youtube.com/watch?v=_QhuBIkPXn0\n\nFire Marshall Bill\
+  \ on Vacation!\n\nhttps://www.youtube.com/watch?v=IIIsCB4Y8sw#t=202.002651"
+"vc-preamble": "import Imports.AllImports\n\ndef List.sumLength (l: List (List α))\
+  \ : Nat :=\n  match l with\n  | [] => 0\n  | x::xs => x.length + xs.sumLength\n\n\
+  \ndef String.hasPattern (s pattern: String) : Prop := sorry\ndef String.hasSuffix\
+  \ (s suffix: String) : Prop := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def nkotb_vs_homie (reqs: List (List String)) : List String :=\
+  \ sorry\n\ntheorem response_count (reqs: List (List String)) \n  (h1: reqs.length\
+  \ = 5)\n  (h2: ∀ cat ∈ reqs, cat.length > 0 ∧ cat.length ≤ 5)\n  : (nkotb_vs_homie\
+  \ reqs).length = (reqs.sumLength + 1) := sorry\n"
+"vc-theorems": "theorem responses_end_with_homie (reqs: List (List String))\n  (h1:\
+  \ reqs.length = 5) \n  (h2: ∀ cat ∈ reqs, cat.length > 0 ∧ cat.length ≤ 5)\n  (result\
+  \ := nkotb_vs_homie reqs)\n  (i: Fin result.length)\n  (h3: i.val < reqs.sumLength)\n\
+  \  : (result.get ⟨i.val, i.isLt⟩).hasSuffix \"! Homie dont play that!\" := sorry\n\
+  \n\ntheorem summary_contains_sections (reqs: List (List String))\n  (h1: reqs.length\
+  \ = 5)\n  (h2: ∀ cat ∈ reqs, cat.length > 0 ∧ cat.length ≤ 5) \n  (result := nkotb_vs_homie\
+  \ reqs)\n  (h3: reqs.sumLength < result.length)\n  : let summary := result.get ⟨reqs.sumLength,\
+  \ h3⟩\n    summary.hasPattern \"monitoring objections\" ∧\n    summary.hasPattern\
+  \ \"automation\" ∧ \n    summary.hasPattern \"deployment pipeline\" ∧\n    summary.hasPattern\
+  \ \"cloud\" ∧\n    summary.hasPattern \"microservices\" := sorry\n\n\ntheorem empty_categories_response\n\
+  \  (empty_reqs: List (List String))\n  (h1: empty_reqs = [[], [], [], [], []])\n\
+  \  : nkotb_vs_homie empty_reqs = [\"0 monitoring objections, 0 automation, 0 deployment\
+  \ pipeline, 0 cloud, and 0 microservices.\"] := sorry\n\n/--\ninfo: expected1\n\
+  -/\n#guard_msgs in\n#eval nkotb_vs_homie [[\"We need Monitoring now!\"], [\"We need\
+  \ Automation now!\"], [\"We need Deployment now!\"], [\"We need Cloud now!\"], [\"\
+  We need Microservices now!\"]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

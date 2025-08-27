@@ -1,0 +1,34 @@
+"vc-description": "# Task\n Initially a number `1` is written on a board. It is possible\
+  \ to do the following operations with it:\n```\nmultiply the number by 3;\nincrease\
+  \ the number by 5.```\nYour task is to determine that using this two operations\
+  \ step by step, is it possible to obtain number `n`?\n\n# Example\n\n For `n = 1`,\
+  \ the result should be `true`.\n \n `1 = 1`\n \n For `n = 2`, the result should\
+  \ be `false`.\n \n For `n = 3`, the result should be `true`.\n \n `1 x 3 = 3`\n\
+  \ \n For `n = 4`, the result should be `false`.\n \n For `n = 5`, the result should\
+  \ be `false`.\n \n For `n = 6`, the result should be `true`.\n \n `1 + 5 = 6`\n\
+  \ \n For `n = 18`, the result should be `true`.\n \n `1 + 5 = 6  --> 6 x 3 = 18`\n\
+  \ \n For `n = 32`, the result should be `true`.\n \n `1 x 3 x 3 x 3 = 27  --> 27\
+  \ + 5 = 32`\n \n For `n = 100`, the result should be `false`.\n \n For `n = 101`,\
+  \ the result should be `true`.\n \n `1 + 5 + 5 + 5 ... +5 = 101`\n \n# Input / Output\n\
+  \n\n - `[input]` integer n\n\n  positive integer, n ≤ 100000\n\n\n - `[output]`\
+  \ a boolean value\n\n  `true` if N can be obtained using given operations, `false`\
+  \ otherwise."
+"vc-preamble": "import Imports.AllImports\n\ndef number_increasing (n : Nat) : Bool\
+  \ := sorry\n\ntheorem impossible_values_2 : number_increasing 2 = false := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def bitLength (n : Nat) : Nat :=\n  if n = 0 then 0 else Nat.log2\
+  \ n + 1\n"
+"vc-theorems": "theorem impossible_values_4 : number_increasing 4 = false := sorry\n\
+  theorem impossible_values_7 : number_increasing 7 = false := sorry\n\ntheorem impossible_values_12\
+  \ : number_increasing 12 = false := sorry\ntheorem impossible_values_17 : number_increasing\
+  \ 17 = false := sorry\n\ntheorem impossible_values_22 : number_increasing 22 = false\
+  \ := sorry\n\ntheorem multiples_of_five (n : Nat) (h₁ : n > 1) (h₂ : n % 5 = 0)\
+  \ : \n  number_increasing n = false := sorry\n\n\ntheorem start_point : \n  number_increasing\
+  \ 1 = true := sorry\n\n\ntheorem multiples_of_three_reachable (n : Nat) (h₁ : n\
+  \ > 1) \n  (h₂ : n = 3^(bitLength (bitLength (n - 1)))) :\n  number_increasing n\
+  \ = true := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval number_increasing\
+  \ 1\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval number_increasing 2\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval number_increasing 6\n\n/--\ninfo: True\n-/\n\
+  #guard_msgs in\n#eval number_increasing 18\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
+  #eval number_increasing 32\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

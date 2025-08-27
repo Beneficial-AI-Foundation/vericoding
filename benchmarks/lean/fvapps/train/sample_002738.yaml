@@ -1,0 +1,15 @@
+"vc-description": "*** No Loops Allowed ***\n\nYou will be given an array (a) and\
+  \ a value (x). All you need to do is check whether the provided array contains the\
+  \ value, without using a loop.\n\nArray can contain numbers or strings. X can be\
+  \ either. Return true if the array contains the value, false if not. With strings\
+  \ you will need to account for case.\n\nLooking for more, loop-restrained fun? Check\
+  \ out the other kata in the series:\n\n https://www.codewars.com/kata/no-loops-1-small-enough\n\
+  \ https://www.codewars.com/kata/no-loops-3-copy-within"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check {α : Type} [BEq α] (lst : List α) (x : α) : Bool := sorry\n\
+  \n\n\n\n\n\n\ntheorem check_integers (lst : List Int) (x : Int) :\n  check lst x\
+  \ = lst.contains x := sorry\n"
+"vc-theorems": "theorem check_strings (lst : List String) (x : String) :\n  check\
+  \ lst x = lst.contains x := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

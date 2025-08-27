@@ -1,0 +1,24 @@
+"vc-description": "Given a binary array, find the maximum number of consecutive 1s\
+  \ in this array.\n\nExample 1:\n\nInput: [1,1,0,1,1,1]\nOutput: 3\nExplanation:\
+  \ The first two digits or the last three digits are consecutive 1s.\n    The maximum\
+  \ number of consecutive 1s is 3.\n\n\n\nNote:\n\nThe input array will only contain\
+  \ 0 and 1.\nThe length of input array is a positive integer and will not exceed\
+  \ 10,000"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_max_consecutive_ones (nums: List Nat) : Nat := sorry\n\
+  \n-- Main property"
+"vc-theorems": "theorem find_max_consecutive_ones_valid (nums: List Nat) : \n  let\
+  \ result := find_max_consecutive_ones nums\n  result ≥ 0 ∧ result ≤ nums.length\
+  \ ∧\n  (let max_ones := nums.foldl\n    (fun acc x => \n      if x = 1 \n      then\
+  \ max acc (acc + 1)\n      else 0) \n    0\n  result = max_ones) := sorry\n\n--\
+  \ Empty and single element cases\n\ntheorem find_max_consecutive_ones_edge_cases\
+  \ (nums: List Nat) :\n  (nums = [] → find_max_consecutive_ones nums = 0) ∧\n  (nums.length\
+  \ = 1 → \n    find_max_consecutive_ones nums = 0 ∨ \n    find_max_consecutive_ones\
+  \ nums = 1) := sorry\n\n-- All zeros case\n\ntheorem find_max_consecutive_ones_all_zeros\
+  \ (nums: List Nat) :\n  (∀ x ∈ nums, x = 0) → find_max_consecutive_ones nums = 0\
+  \ := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_max_consecutive_ones\
+  \ [1, 1, 0, 1, 1, 1]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_max_consecutive_ones\
+  \ [1, 0, 1, 1, 0, 1]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_max_consecutive_ones\
+  \ []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

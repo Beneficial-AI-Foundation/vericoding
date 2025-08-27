@@ -1,0 +1,34 @@
+"vc-description": "There are N students in a class. Some of them are friends, while\
+  \ some are not. Their friendship is transitive in nature. For example, if A is a\
+  \ direct friend of B, and B is a direct friend of C, then A is an indirect friend\
+  \ of C. And we defined a friend circle is a group of students who are direct or\
+  \ indirect friends.\n\n\n\nGiven a N*N matrix M representing the friend relationship\
+  \ between students in the class. If M[i][j] = 1, then the ith and jth students are\
+  \ direct friends with each other, otherwise not. And you have to output the total\
+  \ number of friend circles among all the students.\n\n\nExample 1:\n\nInput: \n\
+  [[1,1,0],\n [1,1,0],\n [0,0,1]]\nOutput: 2\nExplanation:The 0th and 1st students\
+  \ are direct friends, so they are in a friend circle. The 2nd student himself is\
+  \ in a friend circle. So return 2.\n\n\n\nExample 2:\n\nInput: \n[[1,1,0],\n [1,1,1],\n\
+  \ [0,1,1]]\nOutput: 1\nExplanation:The 0th and 1st students are direct friends,\
+  \ the 1st and 2nd students are direct friends, so the 0th and 2nd students are indirect\
+  \ friends. All of them are in the same friend circle, so return 1.\n\n\n\n\nNote:\n\
+  \nN is in range [1,200].\nM[i][i] = 1 for all students.\nIf M[i][j] = 1, then M[j][i]\
+  \ = 1."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_circle_num (M : Matrix) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem isolated_students {n : Nat} (h : n > 0) :\n  let M : Matrix\
+  \ := { \n    data := List.replicate n (List.replicate n 0)\n    all_rows_same_length\
+  \ := sorry\n    entries_zero_or_one := sorry\n    symmetric := sorry\n    diagonal_ones\
+  \ := sorry\n  }\n  find_circle_num M = n :=\n  sorry\n\n\ntheorem fully_connected\
+  \ {n : Nat} (h : n > 0) :\n  let M : Matrix := { \n    data := List.replicate n\
+  \ (List.replicate n 1)\n    all_rows_same_length := sorry\n    entries_zero_or_one\
+  \ := sorry\n    symmetric := sorry\n    diagonal_ones := sorry\n  }\n  find_circle_num\
+  \ M = 1 :=\n  sorry\n\n\ntheorem circles_bound (M : Matrix) (h : M.data.length =\
+  \ 3) :\n  1 ≤ find_circle_num M ∧ find_circle_num M ≤ M.data.length :=\n  sorry\n\
+  \n\ntheorem two_by_two_circles (M : Matrix) (h : M.data.length = 2) :\n  find_circle_num\
+  \ M = 1 ∨ find_circle_num M = 2 :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval find_circle_num [[1, 1, 0], [1, 1, 0], [0, 0, 1]]\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval find_circle_num [[1, 1, 0], [1, 1, 1], [0, 1, 1]]\n\n/--\ninfo: 3\n\
+  -/\n#guard_msgs in\n#eval find_circle_num [[1, 0, 0], [0, 1, 0], [0, 0, 1]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

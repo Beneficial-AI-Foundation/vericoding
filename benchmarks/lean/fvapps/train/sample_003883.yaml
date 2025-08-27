@@ -1,0 +1,18 @@
+"vc-description": "Given an array of integers.\n\nReturn an array, where the first\
+  \ element is the count of positives numbers and the second element is sum of negative\
+  \ numbers.\n\nIf the input array is empty or null, return an empty array.\n\n# Example\n\
+  \nFor input `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]`, you should\
+  \ return `[10, -65]`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_positives_sum_negatives (arr : List Int) : List Int :=\
+  \ sorry\n\n\n\ntheorem count_positives (arr : List Int) :\n  arr ≠ [] → \n  (count_positives_sum_negatives\
+  \ arr).get! 0 = \n    (arr.filter (fun x => x > 0)).length := sorry \n"
+"vc-theorems": "theorem sum_negatives (arr : List Int) :\n  arr ≠ [] →\n  (count_positives_sum_negatives\
+  \ arr).get! 1 = \n    (arr.filter (fun x => x < 0)).foldl (· + ·) 0 := sorry\n\n\
+  /--\ninfo: [10, -65]\n-/\n#guard_msgs in\n#eval count_positives_sum_negatives [1,\
+  \ 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]\n\n/--\ninfo: [8, -50]\n\
+  -/\n#guard_msgs in\n#eval count_positives_sum_negatives [0, 2, 3, 0, 5, 6, 7, 8,\
+  \ 9, 10, -11, -12, -13, -14]\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval count_positives_sum_negatives\
+  \ []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

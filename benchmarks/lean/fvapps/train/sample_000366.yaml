@@ -1,0 +1,26 @@
+"vc-description": "Given an unsorted array, find the maximum difference between the\
+  \ successive elements in its sorted form.\n\nReturn 0 if the array contains less\
+  \ than 2 elements.\n\nExample 1:\n\n\nInput: [3,6,9,1]\nOutput: 3\nExplanation:\
+  \ The sorted form of the array is [1,3,6,9], either\n             (3,6) or (6,9)\
+  \ has the maximum difference 3.\n\nExample 2:\n\n\nInput: [10]\nOutput: 0\nExplanation:\
+  \ The array contains less than 2 elements, therefore return 0.\n\nNote:\n\n\n  \
+  \     You may assume all elements in the array are non-negative integers and fit\
+  \ in the 32-bit signed integer range.\n       Try to solve it in linear time/space."
+"vc-preamble": "import Imports.AllImports\n\ndef maximum_gap (nums : List Nat) : Nat\
+  \ :=\n  sorry\n\n\ndef Permutation (l1 l2 : List α) : Prop :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sort (l : List α) (lt : α → α → Bool) : List α :=\n  sorry\n"
+"vc-theorems": "theorem maximum_gap_empty_or_singleton {nums : List Nat} : \n  nums.length\
+  \ ≤ 1 → maximum_gap nums = 0 :=\n  sorry\n\n\ntheorem maximum_gap_nonnegative {nums\
+  \ : List Nat} :\n  maximum_gap nums ≥ 0 :=\n  sorry\n\n\ntheorem maximum_gap_bounded\
+  \ {nums : List Nat} :\n  nums.length > 0 →\n  maximum_gap nums ≤ List.foldl Nat.max\
+  \ 0 nums - List.foldl Nat.min 0 nums :=\n  sorry\n\n\ntheorem maximum_gap_is_max_consecutive_diff\
+  \ {nums : List Nat} (h : nums.length > 1) :\n  let sorted := sort nums (fun x y\
+  \ => x < y)\n  let gaps := List.zipWith (fun x y => y - x) sorted (List.drop 1 sorted)\n\
+  \  maximum_gap nums = List.foldl Nat.max 0 gaps :=\n  sorry\n\n\ntheorem maximum_gap_permutation_invariant\
+  \ {nums₁ nums₂ : List Nat} :\n  nums₁.length > 1 →\n  Permutation nums₁ nums₂ →\n\
+  \  maximum_gap nums₁ = maximum_gap nums₂ :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval maximum_gap [3, 6, 9, 1]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ maximum_gap [10]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval maximum_gap [1, 2,\
+  \ 2, 5, 7, 10]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

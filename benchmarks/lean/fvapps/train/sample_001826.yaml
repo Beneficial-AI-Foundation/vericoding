@@ -1,0 +1,42 @@
+"vc-description": "Given two binary trees original and cloned and given a reference\
+  \ to a node target in the original tree.\nThe cloned tree is a copy of the original\
+  \ tree.\nReturn a reference to the same node in the cloned tree.\nNote that you\
+  \ are not allowed to change any of the two trees or the target node and the answer\
+  \ must be a reference to a node in the cloned tree.\nFollow up: Solve the problem\
+  \ if repeated values on the tree are allowed.\n \nExample 1:\n\nInput: tree = [7,4,3,null,null,6,19],\
+  \ target = 3\nOutput: 3\nExplanation: In all examples the original and cloned trees\
+  \ are shown. The target node is a green node from the original tree. The answer\
+  \ is the yellow node from the cloned tree.\n\nExample 2:\n\nInput: tree = [7], target\
+  \ =  7\nOutput: 7\n\nExample 3:\n\nInput: tree = [8,null,6,null,5,null,4,null,3,null,2,null,1],\
+  \ target = 4\nOutput: 4\n\nExample 4:\n\nInput: tree = [1,2,3,4,5,6,7,8,9,10], target\
+  \ = 5\nOutput: 5\n\nExample 5:\n\nInput: tree = [1,2,null,3], target = 2\nOutput:\
+  \ 2\n\n \nConstraints:\n\nThe number of nodes in the tree is in the range [1, 10^4].\n\
+  The values of the nodes of the tree are unique.\ntarget node is a node from the\
+  \ original tree and is not null."
+"vc-preamble": "import Imports.AllImports\n\ndef TreeNode.val : TreeNode → Int\n \
+  \ | mk v _ _ => v\n\n\ndef TreeNode.left : TreeNode → Option TreeNode\n  | mk _\
+  \ l _ => l\n\n\ndef TreeNode.right : TreeNode → Option TreeNode\n  | mk _ _ r =>\
+  \ r\n\n\ndef build_tree_from_list (values : List Int) : Option TreeNode :=\n  sorry\n\
+  \n\ndef clone_tree (root : Option TreeNode) : Option TreeNode :=\n  sorry\n\n\n\
+  def get_leftmost_node (root : Option TreeNode) : Option TreeNode :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def getTargetCopy (original cloned target: Option TreeNode) : Option\
+  \ TreeNode :=\n  sorry\n"
+"vc-theorems": "theorem target_copy_leftmost_preserves_values\n  (values : List Int)\
+  \ (h : values.length > 0)\n  (original : Option TreeNode) (h₁ : original = build_tree_from_list\
+  \ values)\n  (cloned : Option TreeNode) (h₂ : cloned = clone_tree original)\n  (target\
+  \ : Option TreeNode) (h₃ : target = get_leftmost_node original) :\n  match getTargetCopy\
+  \ original cloned target with\n  | none => False\n  | some result => \n    match\
+  \ target with\n    | none => False\n    | some t =>\n      (TreeNode.val result\
+  \ = TreeNode.val t) ∧\n      (Option.isSome (TreeNode.left t) → \n        Option.isSome\
+  \ (TreeNode.left result) ∧\n        (∀ rl tl, TreeNode.left result = some rl → TreeNode.left\
+  \ t = some tl → \n          TreeNode.val rl = TreeNode.val tl)) ∧\n      (Option.isSome\
+  \ (TreeNode.right t) →\n        Option.isSome (TreeNode.right result) ∧\n      \
+  \  (∀ rr tr, TreeNode.right result = some rr → TreeNode.right t = some tr → \n \
+  \         TreeNode.val rr = TreeNode.val tr))\n  :=\n  sorry\n\n\ntheorem target_copy_root_preserves_values\n\
+  \  (values : List Int) (h : values.length > 0)\n  (original : Option TreeNode) (h₁\
+  \ : original = build_tree_from_list values)\n  (cloned : Option TreeNode) (h₂ :\
+  \ cloned = clone_tree original) :\n  match getTargetCopy original cloned original,\
+  \ original with\n  | some result, some orig => TreeNode.val result = TreeNode.val\
+  \ orig\n  | _, _ => False :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

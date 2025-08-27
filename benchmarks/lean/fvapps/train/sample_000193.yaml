@@ -1,0 +1,28 @@
+"vc-description": "Given a string s, determine if it is valid.\nA string s is valid\
+  \ if, starting with an empty string t = \"\", you can transform t into s after performing\
+  \ the following operation any number of times:\n\nInsert string \"abc\" into any\
+  \ position in t. More formally, t becomes tleft + \"abc\" + tright, where t == tleft\
+  \ + tright. Note that tleft and tright may be empty.\n\nReturn true if s is a valid\
+  \ string, otherwise, return false.\n \nExample 1:\nInput: s = \"aabcbc\"\nOutput:\
+  \ true\nExplanation:\n\"\" -> \"abc\" -> \"aabcbc\"\nThus, \"aabcbc\" is valid.\n\
+  Example 2:\nInput: s = \"abcabcababcc\"\nOutput: true\nExplanation:\n\"\" -> \"\
+  abc\" -> \"abcabc\" -> \"abcabcabc\" -> \"abcabcababcc\"\nThus, \"abcabcababcc\"\
+  \ is valid.\n\nExample 3:\nInput: s = \"abccba\"\nOutput: false\nExplanation: It\
+  \ is impossible to get \"abccba\" using the operation.\n\nExample 4:\nInput: s =\
+  \ \"cababc\"\nOutput: false\nExplanation: It is impossible to get \"cababc\" using\
+  \ the operation.\n\n \nConstraints:\n\n1 <= s.length <= 2 * 104\ns consists of letters\
+  \ 'a', 'b', and 'c'"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_valid (s : String) : Bool := sorry\n\ntheorem valid_empty_string\
+  \ :\n  is_valid \"\" = true := sorry\n"
+"vc-theorems": "theorem valid_after_abc_removal (s : String) :\n  is_valid s = is_valid\
+  \ (s.replace \"abc\" \"\") := sorry\n\n\ntheorem valid_implies_empty_after_abc_removal\
+  \ {s : String} :\n  is_valid s = true → \n  (let final := s.replace \"abc\" \"\"\
+  ;\n   final = \"\") := sorry\n\ntheorem invalid_with_other_chars {s : String} :\n\
+  \  s.contains 'd' → \n  is_valid s = false := sorry\n\n\ntheorem valid_when_only_abc_remains\
+  \ {s : String} :\n  s.replace \"abc\" \"\" = \"\" →\n  is_valid s = true := sorry\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_valid \"aabcbc\"\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval is_valid \"abcabcababcc\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval is_valid \"abccba\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

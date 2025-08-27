@@ -1,0 +1,24 @@
+"vc-description": "Given an integer array arr and an integer k, modify the array by\
+  \ repeating it k times.\nFor example, if arr = [1, 2] and k = 3 then the modified\
+  \ array will be [1, 2, 1, 2, 1, 2].\nReturn the maximum sub-array sum in the modified\
+  \ array. Note that the length of the sub-array can be 0 and its sum in that case\
+  \ is 0.\nAs the answer can be very large, return the answer modulo 10^9 + 7.\n \n\
+  Example 1:\nInput: arr = [1,2], k = 3\nOutput: 9\n\nExample 2:\nInput: arr = [1,-2,1],\
+  \ k = 5\nOutput: 2\n\nExample 3:\nInput: arr = [-1,-2], k = 7\nOutput: 0\n\n \n\
+  Constraints:\n\n1 <= arr.length <= 10^5\n1 <= k <= 10^5\n-10^4 <= arr[i] <= 10^4"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD := 1000000007\n\ndef kConcatenationMaxSum (arr : List Int)\
+  \ (k : Nat) : Int :=\n  sorry\n"
+"vc-theorems": "theorem kconcat_nonnegative (arr : List Int) (k : Nat) :\n  k > 0\
+  \ → kConcatenationMaxSum arr k ≥ 0 := sorry\n\n\ntheorem kconcat_mod_bound (arr\
+  \ : List Int) (k : Nat) :\n  k > 0 → kConcatenationMaxSum arr k < MOD := sorry\n\
+  \n\ntheorem kconcat_k1_maxsubarray (arr : List Int) :\n  kConcatenationMaxSum arr\
+  \ 1 = kConcatenationMaxSum arr 1 := sorry\n\n\ntheorem kconcat_empty (k : Nat) :\n\
+  \  k > 0 → kConcatenationMaxSum [] k = 0 := sorry\n\n\ntheorem kconcat_monotone_positive\
+  \ (arr : List Int) (k : Nat) :\n  k > 1 →\n  (arr.foldl (· + ·) 0 > 0) →\n  kConcatenationMaxSum\
+  \ arr k ≥ kConcatenationMaxSum arr (k-1) := sorry\n\n/--\ninfo: 9\n-/\n#guard_msgs\
+  \ in\n#eval kConcatenationMaxSum [1, 2] 3\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval kConcatenationMaxSum [1, -2, 1] 5\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ kConcatenationMaxSum [-1, -2] 7\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

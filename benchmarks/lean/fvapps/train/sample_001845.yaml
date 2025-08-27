@@ -1,0 +1,20 @@
+"vc-description": "Given an integer num, find the closest two integers in absolute\
+  \ difference whose product equals num + 1 or num + 2.\nReturn the two integers in\
+  \ any order.\n \nExample 1:\nInput: num = 8\nOutput: [3,3]\nExplanation: For num\
+  \ + 1 = 9, the closest divisors are 3 & 3, for num + 2 = 10, the closest divisors\
+  \ are 2 & 5, hence 3 & 3 is chosen.\n\nExample 2:\nInput: num = 123\nOutput: [5,25]\n\
+  \nExample 3:\nInput: num = 999\nOutput: [40,25]\n\n \nConstraints:\n\n1 <= num <=\
+  \ 10^9"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def closestDivisors (n : Nat) : Nat × Nat := sorry\n\ndef find_divisors\
+  \ (n : Nat) : List (Nat × Nat) := sorry\n"
+"vc-theorems": "theorem closestDivisors_returns_valid_factors (n : Nat) (h : n > 0)\
+  \ :\n  let result := closestDivisors n\n  result.1 ≤ result.2 ∧ \n  (result.1 *\
+  \ result.2 = n + 1 ∨ result.1 * result.2 = n + 2) := sorry\n\n\ntheorem closestDivisors_finds_minimum_difference\
+  \ (n : Nat) (h : n > 0) :\n  let result := closestDivisors n\n  let diff := result.2\
+  \ - result.1\n  ∀ pair : Nat × Nat,\n    pair ∈ find_divisors (n + 1) ∨ pair ∈ find_divisors\
+  \ (n + 2) →\n    diff ≤ pair.2 - pair.1 := sorry\n\n/--\ninfo: [3, 3]\n-/\n#guard_msgs\
+  \ in\n#eval closestDivisors 8\n\n/--\ninfo: [5, 25]\n-/\n#guard_msgs in\n#eval closestDivisors\
+  \ 123\n\n/--\ninfo: sorted([25, 40])\n-/\n#guard_msgs in\n#eval sorted closestDivisors(999)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,50 @@
+"vc-description": "Harsh, like usual, started studying 6 months before for his end\
+  \ semester examinations. He was going to complete his 8th revision of the whole\
+  \ syllabus, when suddenly Pranav showed up in his room with the last year's question\
+  \ paper for their algorithms course. This paper contains a problem which both of\
+  \ them couldn't solve. Frustrated he asked you for help. But you declined him and\
+  \ instead try to do this problem instead:\nYou are given an array $A_1,A_2,\\dots,A_N$,\
+  \ a positive integer $K$, and a function $F(x)=\\displaystyle\\sum_{i=1}^{N}{\\\
+  left|{\\left({x-A_i}\\right)^K}\\right|}$. Find the smallest integer $x$ such that\
+  \ $F(x)$ is minimum.Input\n- The first line contains two space-seperated integers\
+  \ , $N$ and $K$\n- The second line contains $N$ space-seperated integers $A_1,A_2,\\\
+  dots,A_N$. Output\nIn the first and only line print the smallest integer $x$ such\
+  \ that $F(x)$ is minimumConstraints\n- $1 \\leq N \\leq {10}^{5}$\n- $1 \\leq K\
+  \ \\leq {3}$\n- $1 \\leq A_i \\leq {5}\\times{10}^{4}$ for each valid $i$Sample\
+  \ Input 1\n3 1\n6 1 7\nSample Output 1\n6\nExplanation 1\n$F(6) = \\displaystyle\\\
+  sum_{i=1}^{N}{\\left|{\\left({6-A_i}\\right)^K}\\right|} \\\\ F(6) = \\left|{\\\
+  left({6-6}\\right)^1}\\right| + \\left|{\\left({6-1}\\right)^1}\\right| + \\left|{\\\
+  left({6-7}\\right)^1}\\right| \\\\ F(6)  = 0 + 5+ 1 \\\\ F(6)  = 6 $\nHere $6$ is\
+  \ the minumum value for $F(x)$ for any integer value of $x$.Sample Input 2\n3 2\n\
+  6 1 7\nSample Output 2\n5\nExplanation 2\n$F(5) = \\displaystyle\\sum_{i=1}^{N}{\\\
+  left|{\\left({5-A_i}\\right)^K}\\right|} \\\\F(5) = \\left|{\\left({5-6}\\right)^2}\\\
+  right| + \\left|{\\left({5-1}\\right)^2}\\right| + \\left|{\\left({5-7}\\right)^2}\\\
+  right| \\\\F(5) = 1 + 16 + 4 \\\\F(5) = 21$ \nHere $21$ is the minumum value for\
+  \ $F(x)$ for any integer value of $x$.Sample Input 3\n3 3\n6 1 7\nSample Output\
+  \ 3\n4\nExplanation 3\n$F(4) = \\displaystyle\\sum_{i=1}^{N}{\\left|{\\left({4-A_i}\\\
+  right)^K}\\right|} \\\\F(4) = \\left|{\\left({4-6}\\right)^3}\\right| + \\left|{\\\
+  left({4-1}\\right)^3}\\right| + \\left|{\\left({4-7}\\right)^3}\\right| \\\\F(4)\
+  \ = 8 + 27 + 27 \\\\F(4) = 62 $\nHere $62$ is the minumum value for $F(x)$ for any\
+  \ integer value of $x$."
+"vc-preamble": "import Imports.AllImports\n\ndef find_min_x (n k : Nat) (arr : List\
+  \ Int) : Int := sorry\n\ndef compute_cost (x : Int) (k : Nat) (arr : List Int) :\
+  \ Int := sorry\n\n\ndef list_min (l : List Int) : Int :=\n  match l with\n  | []\
+  \ => 0\n  | (x::xs) => List.foldl min x xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_max (l : List Int) : Int :=\n  match l with\n  | [] =>\
+  \ 0\n  | (x::xs) => List.foldl max x xs\n"
+"vc-theorems": "theorem find_min_x_is_int {n k : Nat} {arr : List Int} (h : arr.length\
+  \ > 0)\n  (h1 : k > 0) (h2 : k ≤ 5) :\n  ∃ (y : Int), find_min_x n k arr = y :=\
+  \ sorry\n\n\ntheorem find_min_x_in_range {n k : Nat} {arr : List Int} (h : arr.length\
+  \ > 0) \n  (h1 : k > 0) (h2 : k ≤ 5) :\n  find_min_x n k arr ≥ (list_min arr - n)\
+  \ ∧ \n  find_min_x n k arr ≤ (list_max arr + n) := sorry\n\n\ntheorem find_min_x_order_invariant\
+  \ {n k : Nat} {arr : List Int} (h : arr.length > 0)\n  (h1 : k > 0) (h2 : k ≤ 5)\
+  \ :\n  find_min_x n k arr = find_min_x n k arr.reverse := sorry\n\n\ntheorem find_min_x_local_optimum\
+  \ {n k : Nat} {arr : List Int} \n  (h : arr.length ≥ 3) (h1 : k > 0) (h2 : k ≤ 3)\
+  \ :\n  let x := find_min_x n k arr\n  let cost := compute_cost x k arr\n  let nearby_costs\
+  \ := [compute_cost (x-2) k arr, compute_cost (x-1) k arr,\n                    \
+  \  compute_cost (x+1) k arr, compute_cost (x+2) k arr]\n  ∀ c ∈ nearby_costs, c\
+  \ ≥ cost * (9/10) := sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval find_min_x\
+  \ 3 1 [6, 1, 7]\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval find_min_x 3 2 [6, 1,\
+  \ 7]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval find_min_x 3 3 [6, 1, 7]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

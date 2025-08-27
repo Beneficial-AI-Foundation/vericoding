@@ -1,0 +1,24 @@
+"vc-description": "Your task is to build a model^(1) which can predict y-coordinate.\n\
+  You can pass tests if predicted y-coordinates are inside error margin.\n\nYou will\
+  \ receive train set which should be used to build a model. \nAfter you build a model\
+  \ tests will call function ```predict``` and pass x to it. \n\nError is going to\
+  \ be calculated with RMSE.\n\n\nSide note: Points in test cases are from different\
+  \ polynomials (up to 5th degree).\n\n\n\nEasier version: Data mining #1\n\n\nBlocked\
+  \ libraries: sklearn, pandas, tensorflow, numpy, scipy\n\nExplanation\n[1] A mining\
+  \ model is created by applying an algorithm to data, but it is more than an algorithm\
+  \ or a metadata container: it is a set of data, statistics, and patterns that can\
+  \ be applied to new data to generate predictions and make inferences about relationships."
+"vc-preamble": "import Imports.AllImports\n\ndef Point := Float × Float \n\nstructure\
+  \ Datamining where\n  points : List Point\n  "
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def predict (m : Datamining) (x : Float) : Float := sorry\n\ndef\
+  \ abs (x : Float) : Float := sorry\n"
+"vc-theorems": "theorem predict_exact_points \n  {points : List Point}\n  {x0 y0 :\
+  \ Float}\n  (h_len : points.length = 5) \n  (h_unique : ∀ i j, i < j → i < points.length\
+  \ → j < points.length → \n    (points.get ⟨i, by sorry⟩).1 ≠ (points.get ⟨j, by\
+  \ sorry⟩).1) \n  (h_bounds : ∀ p ∈ points, -5 ≤ p.1 ∧ p.1 ≤ 5 ∧ -5 ≤ p.2 ∧ p.2 ≤\
+  \ 5)\n  (h_spacing : ∀ i, i < points.length - 1 → \n    (points.get ⟨i+1, by sorry⟩).1\
+  \ - (points.get ⟨i, by sorry⟩).1 > 0.1)\n  (h_point : (x0, y0) = points.get ⟨2,\
+  \ by sorry⟩) :\n  let m : Datamining := {points := points}\n  abs (predict m x0\
+  \ - y0) < 0.000001 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

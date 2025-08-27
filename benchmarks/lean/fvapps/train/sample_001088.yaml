@@ -1,0 +1,23 @@
+"vc-description": "You are the principal of the Cake school in chefland and today\
+  \ is your birthday. You want to treat each of the children with a small cupcake\
+  \ which is made by you. But there is a problem, You don't know how many students\
+  \ are present today.\nThe students have gathered of the morning assembly in $R$\
+  \ rows and $C$ columns. Now you have to calculate how many cakes you have to make\
+  \ such that each child gets a cupcake. \n\n-----Input:-----\n- First-line will contain\
+  \ $T$, the number of test cases. Then the test cases follow. \n- Each test case\
+  \ contains a single line of input, two integers $R$ and $C$. \n\n-----Output:-----\n\
+  For each test case, output number of cupcakes you have to make.\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 1000$\n- $2 \\leq R,C \\leq 10^6$\n\n-----Sample Input:-----\n\
+  1\n5 10\n\n-----Sample Output:-----\n50"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_cupcakes (rows cols : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem cupcakes_non_negative (rows cols : Nat) : \n  calculate_cupcakes\
+  \ rows cols ≥ 0 ∧ calculate_cupcakes rows cols = rows * cols :=\n  sorry\n\n\ntheorem\
+  \ cupcakes_positive (rows cols : Nat) (h1 : rows > 0) (h2 : cols > 0) :\n  calculate_cupcakes\
+  \ rows cols > 0 ∧ \n  calculate_cupcakes rows cols = rows * cols ∧\n  calculate_cupcakes\
+  \ rows cols ≥ max rows cols :=\n  sorry\n\n\ntheorem cupcakes_commutative (rows\
+  \ cols : Nat) :\n  calculate_cupcakes rows cols = calculate_cupcakes cols rows :=\n\
+  \  sorry\n\n\ntheorem cupcakes_zero_cases (n : Nat) :\n  calculate_cupcakes 0 n\
+  \ = 0 ∧ \n  calculate_cupcakes n 0 = 0 ∧\n  calculate_cupcakes 0 0 = 0 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

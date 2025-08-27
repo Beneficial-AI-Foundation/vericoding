@@ -1,0 +1,36 @@
+"vc-description": "Most football fans love it for the goals and excitement. Well,\
+  \ this Kata doesn't.\nYou are to handle the referee's little notebook and count\
+  \ the players who were sent off for fouls and misbehavior.\n\nThe rules:\nTwo teams,\
+  \ named \"A\" and \"B\" have 11 players each; players on each team are numbered\
+  \ from 1 to 11.\nAny player may be sent off the field by being given a red card.\n\
+  A player can also receive a yellow warning card, which is fine, but if he receives\
+  \ another yellow card, he is sent off immediately (no need for a red card in that\
+  \ case). \nIf one of the teams has less than 7 players remaining, the game is stopped\
+  \ immediately by the referee, and the team with less than 7 players loses. \n\n\
+  A `card` is a string with the team's letter ('A' or 'B'), player's number, and card's\
+  \ color ('Y' or 'R') - all concatenated and capitalized.\ne.g the card `'B7Y'` means\
+  \ player #7 from team B received a yellow card.\n\nThe task: Given a list of cards\
+  \ (could be empty), return the number of remaining players on each team at the end\
+  \ of the game (as a tuple of 2 integers, team \"A\" first).\nIf the game was terminated\
+  \ by the referee for insufficient number of players, you are to stop the game immediately,\
+  \ and ignore any further possible cards.\n\nNote for the random tests: If a player\
+  \ that has already been sent off receives another card - ignore it."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def men_still_standing (cards: List String) : (Nat × Nat) :=\n\
+  \  sorry\n\n-- Empty input returns initial state"
+"vc-theorems": "theorem initial_state :\n  men_still_standing [] = (11, 11) :=\nsorry\n\
+  \n-- Results can only decrease monotonically\n\ntheorem monotonic_decrease {cards\
+  \ : List String} {i : Nat} :\n  i < cards.length →\n  let (a₁, b₁) := men_still_standing\
+  \ (cards.take i)\n  let (a₂, b₂) := men_still_standing (cards.take (i+1))\n  a₂\
+  \ ≤ a₁ ∧ b₂ ≤ b₁ :=\nsorry\n\n-- When either team goes below 7, adding more cards\
+  \ doesn't change result  \n\ntheorem early_termination {cards extra : List String}\
+  \ :\n  cards ≠ [] →\n  let (a, b) := men_still_standing cards\n  (a < 7 ∨ b < 7)\
+  \ →\n  men_still_standing (cards ++ extra) = (a, b) :=\nsorry\n\n-- Results are\
+  \ always between 0 and 11\n\ntheorem valid_range {cards : List String} :\n  let\
+  \ (a, b) := men_still_standing cards\n  0 ≤ a ∧ a ≤ 11 ∧ 0 ≤ b ∧ b ≤ 11 :=\nsorry\n\
+  \n/--\ninfo: (11, 11)\n-/\n#guard_msgs in\n#eval men_still_standing []\n\n/--\n\
+  info: (10, 11)\n-/\n#guard_msgs in\n#eval men_still_standing [\"A4Y\", \"A4Y\"]\n\
+  \n/--\ninfo: (6, 11)\n-/\n#guard_msgs in\n#eval men_still_standing [\"A4R\", \"\
+  A2R\", \"A3R\", \"A6R\", \"A8R\", \"A10R\", \"A11R\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

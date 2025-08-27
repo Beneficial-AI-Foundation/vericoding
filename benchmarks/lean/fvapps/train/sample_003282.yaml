@@ -1,0 +1,25 @@
+"vc-description": "Create a function that accepts dimensions, of Rows x Columns, as\
+  \ parameters in order to create a multiplication table sized according to the given\
+  \ dimensions.  **The return value of the function must be an array, and the numbers\
+  \ must be Fixnums, NOT strings.\n\nExample:\n\nmultiplication_table(3,3)\n\n1  \
+  \     2       3       \n2       4       6       \n3       6       9\n\n-->[[1,2,3],[2,4,6],[3,6,9]]\n\
+  \nEach value on the table should be equal to the value of multiplying the number\
+  \ in its first row times the number in its first column."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def multiplication_table (rows cols : Nat) : List (List Nat) :=\
+  \ sorry\n\ntheorem multiplication_table_dimensions \n  (rows cols : Nat) (h1 : rows\
+  \ > 0) (h2 : cols > 0) :\n  let table := multiplication_table rows cols\n  (table.length\
+  \ = rows) ∧ \n  (∀ row ∈ table, row.length = cols) := sorry\n"
+"vc-theorems": "theorem multiplication_table_values\n  (rows cols : Nat) (h1 : rows\
+  \ > 0) (h2 : cols > 0) :\n  let table := multiplication_table rows cols\n  ∀ i j,\
+  \ i < rows → j < cols →\n    table[i]!.get! j = (i + 1) * (j + 1) := sorry\n\n\n\
+  theorem multiplication_table_square_properties\n  (size : Nat) (h : size > 0) :\n\
+  \  let table := multiplication_table size size\n  (∀ i, i < size → table[i]!.get!\
+  \ i = (i + 1) * (i + 1)) ∧\n  (∀ i j, i < size → j < size → \n    table[i]!.get!\
+  \ j = table[j]!.get! i) := sorry\n\n/--\ninfo: [[1, 2], [2, 4]]\n-/\n#guard_msgs\
+  \ in\n#eval multiplication_table 2 2\n\n/--\ninfo: [[1, 2, 3], [2, 4, 6], [3, 6,\
+  \ 9]]\n-/\n#guard_msgs in\n#eval multiplication_table 3 3\n\n/--\ninfo: [[1, 2,\
+  \ 3, 4, 5], [2, 4, 6, 8, 10]]\n-/\n#guard_msgs in\n#eval multiplication_table 2\
+  \ 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

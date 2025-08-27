@@ -1,0 +1,23 @@
+"vc-description": "Complete the method which returns the number which is most frequent\
+  \ in the given input array. If there is a tie for most frequent number, return the\
+  \ largest number among them.\n\nNote: no empty arrays will be given.\n\n\n## Examples\n\
+  \n```\n[12, 10, 8, 12, 7, 6, 4, 10, 12]              -->  12\n[12, 10, 8, 12, 7,\
+  \ 6, 4, 10, 12, 10]          -->  12\n[12, 10, 8, 8, 3, 3, 3, 3, 2, 4, 10, 12, 10]\
+  \  -->   3\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def highest_rank (arr : List Int) : Int :=\nsorry\n"
+"vc-theorems": "theorem highest_rank_in_input {arr : List Int} (h : arr ≠ []) :\n\
+  \  highest_rank arr ∈ arr :=\nsorry\n\n\ntheorem highest_rank_max_frequency {arr\
+  \ : List Int} (h : arr ≠ []) :\n  ∀ x ∈ arr, (List.count x arr) ≤ (List.count (highest_rank\
+  \ arr) arr) :=\nsorry\n\n\ntheorem highest_rank_max_value {arr : List Int} (h :\
+  \ arr ≠ []) :\n  ∀ x ∈ arr, (List.count x arr = List.count (highest_rank arr) arr)\
+  \ → \n  x ≤ highest_rank arr :=\nsorry\n\n\ntheorem highest_rank_deterministic {arr\
+  \ : List Int} (h : arr ≠ []) :\n  highest_rank arr = highest_rank arr :=\nsorry\n\
+  \n\ntheorem highest_rank_order_independent {arr : List Int} (h : arr ≠ []) :\n \
+  \ highest_rank arr = highest_rank (List.reverse arr) :=\nsorry\n\n/--\ninfo: 12\n\
+  -/\n#guard_msgs in\n#eval highest_rank [12, 10, 8, 12, 7, 6, 4, 10, 12]\n\n/--\n\
+  info: 12\n-/\n#guard_msgs in\n#eval highest_rank [12, 10, 8, 12, 7, 6, 4, 10, 12,\
+  \ 10]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval highest_rank [12, 10, 8, 8, 3,\
+  \ 3, 3, 3, 2, 4, 10, 12, 10]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

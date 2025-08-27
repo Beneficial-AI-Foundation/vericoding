@@ -1,0 +1,32 @@
+"vc-description": "An array of integers $p_{1},p_{2}, \\ldots,p_{n}$ is called a permutation\
+  \ if it contains each number from $1$ to $n$ exactly once. For example, the following\
+  \ arrays are permutations: $[3,1,2], [1], [1,2,3,4,5]$ and $[4,3,1,2]$. The following\
+  \ arrays are not permutations: $[2], [1,1], [2,3,4]$.\n\nThere is a hidden permutation\
+  \ of length $n$.\n\nFor each index $i$, you are given $s_{i}$, which equals to the\
+  \ sum of all $p_{j}$ such that $j < i$ and $p_{j} < p_{i}$. In other words, $s_i$\
+  \ is the sum of elements before the $i$-th element that are smaller than the $i$-th\
+  \ element.\n\nYour task is to restore the permutation.\n\n\n-----Input-----\n\n\
+  The first line contains a single integer $n$ ($1 \\le n \\le 2 \\cdot 10^{5}$) —\
+  \ the size of the permutation.\n\nThe second line contains $n$ integers $s_{1},\
+  \ s_{2}, \\ldots, s_{n}$ ($0 \\le s_{i} \\le \\frac{n(n-1)}{2}$).\n\nIt is guaranteed\
+  \ that the array $s$ corresponds to a valid permutation of length $n$.\n\n\n-----Output-----\n\
+  \nPrint $n$ integers $p_{1}, p_{2}, \\ldots, p_{n}$ — the elements of the restored\
+  \ permutation. We can show that the answer is always unique.\n\n\n-----Examples-----\n\
+  Input\n3\n0 0 0\n\nOutput\n3 2 1\n\nInput\n2\n0 1\n\nOutput\n1 2\n\nInput\n5\n0\
+  \ 1 1 1 10\n\nOutput\n1 4 3 2 5\n\n\n\n-----Note-----\n\nIn the first example for\
+  \ each $i$ there is no index $j$ satisfying both conditions, hence $s_i$ are always\
+  \ $0$.\n\nIn the second example for $i = 2$ it happens that $j = 1$ satisfies the\
+  \ conditions, so $s_2 = p_1$.\n\nIn the third example for $i = 2, 3, 4$ only $j\
+  \ = 1$ satisfies the conditions, so $s_2 = s_3 = s_4 = 1$. For $i = 5$ all $j =\
+  \ 1, 2, 3, 4$ are possible, so $s_5 = p_1 + p_2 + p_3 + p_4 = 10$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def restore_permutation (n : Nat) (a : List Nat) : List Nat :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem restore_perm_singleton : \n  restore_permutation 1 [0] = [1]\
+  \ :=\nsorry\n\n\ntheorem restore_perm_pair :\n  restore_permutation 2 [0, 1] = [1,\
+  \ 2] :=\nsorry\n\n/--\ninfo: [3, 2, 1]\n-/\n#guard_msgs in\n#eval restore_permutation\
+  \ 3 [0, 0, 0]\n\n/--\ninfo: [1, 2]\n-/\n#guard_msgs in\n#eval restore_permutation\
+  \ 2 [0, 1]\n\n/--\ninfo: [1, 4, 3, 2, 5]\n-/\n#guard_msgs in\n#eval restore_permutation\
+  \ 5 [0, 1, 1, 1, 10]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

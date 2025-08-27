@@ -1,0 +1,25 @@
+"vc-description": "Seven is a hungry number and its favourite food is number 9. Whenever\
+  \ it spots 9\nthrough the hoops of 8, it eats it! Well, not anymore, because you\
+  \ are \ngoing to help the 9 by locating that particular sequence (7,8,9) in an array\
+  \ of digits\nand tell 7 to come after 9 instead. Seven \"ate\" nine, no more!\n\
+  (If 9 is not in danger, just return the same array)"
+"vc-preamble": "import Imports.AllImports\n\ndef hungry_seven (arr : List Nat) : List\
+  \ Nat := sorry\n\ndef is_valid_result (input : List Nat) (result : List Nat) : Bool\
+  \ := sorry\n\n\ndef has_89_pattern (arr : List Nat) : Bool := sorry\n\ndef has_seven\
+  \ (arr : List Nat) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_val (n : Nat) (xs : List Nat) : Nat :=\n  List.length\
+  \ (List.filter (· = n) xs)\n"
+"vc-theorems": "theorem hungry_seven_properties (arr : List Nat) \n  (h1 : ∀ x ∈ arr,\
+  \ x = 7 ∨ x = 8 ∨ x = 9)\n  : let result := hungry_seven arr\n    -- Result maintains\
+  \ same length\n    (result.length = arr.length) ∧\n    -- Result only contains 7,8,9\n\
+  \    (∀ x ∈ result, x = 7 ∨ x = 8 ∨ x = 9) ∧ \n    -- Counts are preserved \n  \
+  \  (count_val 7 arr = count_val 7 result) ∧\n    (count_val 8 arr = count_val 8\
+  \ result) ∧\n    (count_val 9 arr = count_val 9 result) ∧\n    -- Result is stable\n\
+  \    (hungry_seven result = result) ∧\n    -- If no 7s or no 89 pattern, result\
+  \ unchanged\n    ((!has_seven arr ∨ !has_89_pattern arr) → result = arr) := sorry\n\
+  \n\ntheorem no_seven_before_89_pattern (arr : List Nat)\n  (h1 : arr.length ≥ 2)\n\
+  \  (h2 : ∀ x ∈ arr, x ≥ 7 ∧ x ≤ 9) :\n  let result := hungry_seven arr\n  ∀ i <\
+  \ result.length - 1,\n    result[i]? = some 7 →\n    ¬(result[i+1]? = some 8 ∧ result[i+2]?\
+  \ = some 9) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

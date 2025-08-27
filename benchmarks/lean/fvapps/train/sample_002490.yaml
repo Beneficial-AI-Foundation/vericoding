@@ -1,0 +1,18 @@
+"vc-description": "=====Problem Statement=====\nYou are given a string N.\nYour task\
+  \ is to verify that N is a floating point number.\n\nIn this task, a valid float\
+  \ number must satisfy all of the following requirements:\n\n> Number can start with\
+  \ +, - or . symbol.\nFor example:\n✔+4.50\n✔-1.0\n✔.5\n✔-.7\n✔+.4\n✖ -+4.5\n\n>\
+  \ Number must contain at least 1 decimal value.\nFor example:\n✖ 12.\n✔12.0  \n\n\
+  Number must have exactly one . symbol.\nNumber must not give any exceptions when\
+  \ converted using float(N).\n\n=====Input Format=====\nThe first line contains an\
+  \ integer T, the number of test cases.\nThe next T line(s) contains a string N.\n\
+  \n=====Constraints=====\n0<T<10\n\n=====Output Format=====\nOutput True or False\
+  \ for each test case."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_float (s : String) : Bool := sorry\n\n\n\n\n\ntheorem\
+  \ integers_invalid (n : Int) :\n  check_float (toString n) = false := sorry\n"
+"vc-theorems": "theorem special_cases_invalid (s : String) :\n  s = \"\" ∨ s = \"\
+  .\" ∨ s = \"1.\" ∨ s = \"+.\" ∨ s = \"-.\" ∨ \n  s = \"inf\" ∨ s = \"-inf\" ∨ s\
+  \ = \"nan\" ∨ s = \"1e5\" ∨ s = \"1.2.3\" →\n  check_float s = false := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

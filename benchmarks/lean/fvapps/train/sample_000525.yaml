@@ -1,0 +1,36 @@
+"vc-description": "Bob has got some injury in his leg and due to this he can take\
+  \ exactly M steps in one move. \nBob enters a square field of size NxN. The field\
+  \ is only having one gate(for both entrance and exit) at its one of the corners.\
+  \ Bob started walking along the perimeter of square field.(remember Bob can only\
+  \ take exactly M steps in one move and cannot reverse his direction of motion).\n\
+  Bob wants to know how many minimum number of moves he needs to come out(i.e. he\
+  \ reaches the same gate from where he entered into the field) from the square field.\
+  \ Tell the answer to Bob ASAP.\nLuckily, you came to know M=N+1.\n\n-----Input-----\n\
+  - The first line of the input contains an integer T denoting the number of test\
+  \ cases.\n-  Each test case contains a single integer N denoting the sides of the\
+  \ square.\n\n-----Output-----\n- For each test case, output a single line containing\
+  \ minimum number of moves Bob required to come out from the field.\n\n-----Constraints-----\n\
+  - 1 ≤ T ≤ 10000\n- 1 ≤ N ≤ 1000000000\n\n-----Example-----\nInput:\n2\n1\n2\n\n\
+  Output:\n2\n8\n\n-----Explanation-----\nExample case 1.Let four corners of square\
+  \ be (0,0), (0,1), (1,1), (1,0). Let gate be at (0,0). Bob takes 2 steps in one\
+  \ move. Let movement of Bob be as follows (0,0) -> (1,1) -> (0,0). Thus minimum\
+  \ moves needed were 2. \nExample case 2.Let four corners of square be (0,0), (0,2),\
+  \ (2,2), (2,0). Let gate be at (0,0). Bob takes 3 steps in one move. Let movement\
+  \ of Bob be as follows (0,0) -> (2,1) -> (0,2) -> (1,0) -> (2,2) -> (0,1) -> (2,0)\
+  \ -> (1,2) -> (0,0). Thus minimum number of moves needed are 8."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_moves_to_exit (n: Nat) : Nat := sorry\n\ntheorem min_moves_always_positive\
+  \ (n: Nat) (h: n > 0): \n  min_moves_to_exit n > 0 := sorry\n"
+"vc-theorems": "theorem min_moves_even_case (n: Nat) (h1: n > 0) (h2: n % 2 = 0):\n\
+  \  min_moves_to_exit n = n * 4 := sorry\n  \n\ntheorem min_moves_mod4_three_case\
+  \ (n: Nat) (h1: n > 0) (h2: n % 4 = 3):\n  min_moves_to_exit n = n := sorry\n  \n\
+  \ntheorem min_moves_other_case (n: Nat) (h1: n > 0) (h2: n % 2 ≠ 0) (h3: n % 4 ≠\
+  \ 3):\n  min_moves_to_exit n = n * 2 := sorry\n\n\ntheorem min_moves_bounded_by_perimeter\
+  \ (n: Nat) (h: n > 0):\n  min_moves_to_exit n ≤ 4 * n := sorry\n\n\ntheorem min_moves_specific_cases\
+  \ :\n  min_moves_to_exit 1 = 2 ∧\n  min_moves_to_exit 2 = 8 ∧\n  min_moves_to_exit\
+  \ 3 = 3 ∧\n  min_moves_to_exit 4 = 16 ∧\n  min_moves_to_exit 7 = 7 := sorry\n\n\
+  /--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_moves_to_exit 1\n\n/--\ninfo: 8\n-/\n\
+  #guard_msgs in\n#eval min_moves_to_exit 2\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
+  #eval min_moves_to_exit 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

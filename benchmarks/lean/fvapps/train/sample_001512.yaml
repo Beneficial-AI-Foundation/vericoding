@@ -1,0 +1,22 @@
+"vc-description": "Dhote and Shweta went on a tour by plane for the first time.Dhote\
+  \ was surprised by the conveyor belt  at the airport.As Shweta was getting bored\
+  \ Dhote had an idea of playing a game with her.He asked Shweta to count the number\
+  \ of bags whose individual weight is greater than or equal to the half of the total\
+  \ number of bags on the conveyor belt.Shweta got stuck in the puzzle! Help Shweta.\
+  \ \n\n-----Input:-----\n- First line will contain T$T$, number of testcases. Then\
+  \ the testcases follow. \n- Each testcase contains of a single line of input, one\
+  \  integers N$N$.\n- next line conatins N$N$ integers that represents weight of\
+  \ bag \n\n-----Output:-----\nFor each testcase, print required answer in new line\
+  \ .\n\n-----Constraints-----\n- 1≤T≤1000$1 \\leq T \\leq 1000$\n- 1≤N≤105$1 \\leq\
+  \ N \\leq 10^5$\n- 1≤weightofbag≤105$ 1\\leq  weight of bag   \\leq 10^5$ \n\n-----Sample\
+  \ Input:-----\n1\n4 \n1 2 3 4\n\n-----Sample Output:-----\n3"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_heavy_bags (size : Nat) (weights : List Nat) : Nat :=\
+  \ sorry\n\ntheorem count_heavy_bags_bounds (size : Nat) (weights : List Nat) :\n\
+  \  let result := count_heavy_bags size weights\n  0 ≤ result ∧ result ≤ weights.length\
+  \ := sorry"
+"vc-theorems": "/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_heavy_bags 4 [1, 2,\
+  \ 3, 4]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval count_heavy_bags 3 [1, 1, 1]\n\
+  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_heavy_bags 5 [5, 4, 3, 2, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

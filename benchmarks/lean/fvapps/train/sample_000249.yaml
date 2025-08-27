@@ -1,0 +1,32 @@
+"vc-description": "You have n super washing machines on a line. Initially, each washing\
+  \ machine has some dresses or is empty. \n\n\nFor each move, you could choose any\
+  \ m (1 ≤ m ≤ n) washing machines, and pass one dress of each washing machine to\
+  \ one of its adjacent washing machines  at the same time .  \n\nGiven an integer\
+  \ array representing the number of dresses in each washing machine from left to\
+  \ right on the line, you should find the minimum number of moves to make all the\
+  \ washing machines have the same number of dresses. If it is not possible to do\
+  \ it, return -1.\n\nExample1\n\nInput: [1,0,5]\n\nOutput: 3\n\nExplanation: \n1st\
+  \ move:    1     0     1     1     4\n2nd move:    1     2     1     3    \n3rd\
+  \ move:    2     1     2     2     2   \n\n\nExample2\n\nInput: [0,3,0]\n\nOutput:\
+  \ 2\n\nExplanation: \n1st move:    0     1     2     0    \n2nd move:    1     2\
+  \ --> 0    =>    1     1     1     \n\n\nExample3\n\nInput: [0,2,0]\n\nOutput: -1\n\
+  \nExplanation: \nIt's impossible to make all the three washing machines have the\
+  \ same number of dresses. \n\n\n\n\nNote:\n\nThe range of n is [1, 10000].\nThe\
+  \ range of dresses number in a super washing machine is [0, 1e5]."
+"vc-preamble": "import Imports.AllImports\n\ndef sum (l : List Nat) : Nat := sorry\n\
+  def listMax (l : List Nat) : Nat := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def findMinMoves (machines : List Nat) : Int := sorry \n\ntheorem\
+  \ find_min_moves_non_negative \n  {machines : List Nat}\n  (h : findMinMoves machines\
+  \ ≠ -1) :\n  findMinMoves machines ≥ 0 := sorry\n"
+"vc-theorems": "theorem find_min_moves_preserves_sum\n  {machines : List Nat}\n  (h\
+  \ : findMinMoves machines ≠ -1) :\n  sum machines = machines.length * (sum machines\
+  \ / machines.length) := sorry\n\n\ntheorem find_min_moves_lower_bound\n  {machines\
+  \ : List Nat}\n  (h : findMinMoves machines ≠ -1) :\n  findMinMoves machines ≥ \n\
+  \    max (listMax machines - sum machines / machines.length) 0 := sorry\n\n\ntheorem\
+  \ find_min_moves_negative_one\n  {machines : List Nat}\n  (h : findMinMoves machines\
+  \ = -1) :\n  sum machines % machines.length ≠ 0 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval find_min_moves [1, 0, 5]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval\
+  \ find_min_moves [0, 3, 0]\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval find_min_moves\
+  \ [0, 2, 0]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

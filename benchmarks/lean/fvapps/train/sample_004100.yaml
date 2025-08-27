@@ -1,0 +1,34 @@
+"vc-description": "Do you have in mind the good old TicTacToe?\n\nAssuming that you\
+  \ get all the data in one array, you put a space around each value, `|` as a columns\
+  \ separator and multiple `-` as rows separator, with something like `[\"O\", \"\
+  X\", \" \", \" \", \"X\", \" \", \"X\", \"O\", \" \"]` you should be returning this\
+  \ structure (inclusive of new lines):\n\n```\n O | X |   \n-----------\n   | X |\
+  \   \n-----------\n X | O |   \n```\n\nNow, to spice up things a bit, we are going\
+  \ to expand our board well beyond a trivial `3` x `3` square and we will accept\
+  \ rectangles of big sizes, still all as a long linear array.\n\nFor example, for\
+  \ `\"O\", \"X\", \" \", \" \", \"X\", \" \", \"X\", \"O\", \" \", \"O\"]` (same\
+  \ as above, just one extra `\"O\"`) and knowing that the length of each row is `5`,\
+  \ you will be returning\n\n```\n O | X |   |   | X \n-------------------\n   | X\
+  \ | O |   | O \n```\n\nAnd worry not about missing elements, as the array/list/vector\
+  \ length is always going to be a multiple of the width."
+"vc-preamble": "import Imports.AllImports\n\ndef display_board (board : List String)\
+  \ (width : Nat) : String := sorry\n\ndef getEvenElements (xs : List α) : List α\
+  \ :=\n  xs.enum.filter (fun (i, _) => i % 2 = 0) |>.map Prod.snd\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def getOddElements (xs : List α) : List α :=\n  xs.enum.filter\
+  \ (fun (i, _) => i % 2 = 1) |>.map Prod.snd\n"
+"vc-theorems": "theorem display_board_properties {board : List String} {width : Nat}\
+  \ \n  (h1 : ∀ x, x ∈ board → (x = \"X\" ∨ x = \"O\" ∨ x = \" \"))\n  (h2 : 0 < width)\n\
+  \  (h3 : width ≤ 10) \n  (h4 : board.length % width = 0) :\n  let result := display_board\
+  \ board width\n  let lines := result.splitOn \"\\n\"\n  let content_lines := getEvenElements\
+  \ lines\n  ∃ line_length : Nat,\n    -- All content lines have same width\n    (∀\
+  \ l ∈ content_lines, l.length = line_length) ∧\n    -- Correct number of separators\
+  \ between cells \n    (∀ l ∈ content_lines, (l.toList.filter (· = '|')).length =\
+  \ width - 1) ∧\n    -- Each cell is at most 3 chars wide\n    (∀ l ∈ content_lines,\
+  \ ∀ cell ∈ (l.splitOn \"|\").map String.trim, cell.length ≤ 3) ∧\n    -- Separator\
+  \ lines are correct length\n    (lines.length > 1 → \n      ∀ l ∈ getOddElements\
+  \ lines, l = String.mk (List.replicate (4*width - 1) '-')) := sorry\n\n\ntheorem\
+  \ width_one_no_pipes {board : List String}\n  (h1 : ∀ x, x ∈ board → (x = \"X\"\
+  \ ∨ x = \"O\" ∨ x = \" \"))\n  (h2 : 0 < board.length) :\n  ¬(display_board board\
+  \ 1).contains '|' := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,45 @@
+"vc-description": "Alan's child can be annoying at times.\n\nWhen Alan comes home\
+  \ and tells his kid what he has accomplished today, his kid never believes him.\
+  \ \n\nBe that kid.\n\nYour function 'AlanAnnoyingKid' takes as input a sentence\
+  \ spoken by Alan (a string). The sentence contains the following structure:\n\n\
+  \    \"Today I \" + [action_verb] + [object] + \".\"\n\n    (e.g.: \"Today I played\
+  \ football.\")\n\n\nYour function will return Alan's kid response, which is another\
+  \ sentence with the following structure:\n\n    \"I don't think you \" + [action_performed_by_alan]\
+  \ + \" today, I think you \" + [\"did\" OR \"didn't\"] + [verb_of _action_in_present_tense]\
+  \ + [\" it!\" OR \" at all!\"]\n\n    (e.g.:\"I don't think you played football\
+  \ today, I think you didn't play at all!\")\n\n\nNote the different structure depending\
+  \ on the presence of a negation in Alan's first sentence (e.g., whether Alan says\
+  \ \"I dind't play football\", or \"I played football\").\n\n! Also note: Alan's\
+  \ kid is young and only uses simple, regular verbs that use a simple \"ed\" to make\
+  \ past tense. \nThere are random test cases.\n\nSome more examples:\n\n    input\
+  \  = \"Today I played football.\"\n    output = \"I don't think you played football\
+  \ today, I think you didn't play at all!\"\n    \n    input  = \"Today I didn't\
+  \ attempt to hardcode this Kata.\"\n    output = \"I don't think you didn't attempt\
+  \ to hardcode this Kata today, I think you did attempt it!\"\n          \n    input\
+  \  = \"Today I didn't play football.\"\n    output = \"I don't think you didn't\
+  \ play football today, I think you did play it!\"\n          \n    input  = \"Today\
+  \ I cleaned the kitchen.\"\n    output = \"I don't think you cleaned the kitchen\
+  \ today, I think you didn't clean at all!\""
+"vc-preamble": "import Imports.AllImports\n\ndef String.substringExists (s : String)\
+  \ (sub : String) : Bool := sorry\n\ndef alan_annoying_kid (phrase : String) : String\
+  \ := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def String.getWords (s : String) : List String := sorry\n\ntheorem\
+  \ alan_preserves_verb (phrase : String) (verb : String)\n  (h₁ : phrase.startsWith\
+  \ \"Today I\")\n  (h₂ : verb ∈ phrase.getWords) :\n  verb ∈ (alan_annoying_kid phrase).getWords\
+  \ := sorry"
+"vc-theorems": "theorem alan_response_structure (phrase : String) (h₁ : phrase.startsWith\
+  \ \"Today I\") : \n  let response := alan_annoying_kid phrase\n  response.startsWith\
+  \ \"I don't think you\" ∧ \n  response.endsWith \"!\" ∧\n  response.substringExists\
+  \ \"today\" := sorry\n\n\ntheorem alan_response_negation_negative (phrase : String)\
+  \ (h₁ : phrase.startsWith \"Today I didn't\") :\n  let response := alan_annoying_kid\
+  \ phrase\n  response.substringExists \"I think you did\" ∧ \n  response.substringExists\
+  \ \"it!\" := sorry\n\n\ntheorem alan_response_negation_positive (phrase : String)\
+  \ \n  (h₁ : phrase.startsWith \"Today I\")\n  (h₂ : ¬phrase.substringExists \"didn't\"\
+  ) :\n  let response := alan_annoying_kid phrase\n  response.substringExists \"I\
+  \ think you didn't\" ∧\n  response.substringExists \"at all!\" := sorry\n\n\n/--\n\
+  info: expected1\n-/\n#guard_msgs in\n#eval alan_annoying_kid \"Today I played football.\"\
+  \n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval alan_annoying_kid \"Today I\
+  \ didn\"t play football.\"\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval alan_annoying_kid\
+  \ \"Today I cleaned the kitchen.\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

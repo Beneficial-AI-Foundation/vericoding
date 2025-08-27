@@ -1,0 +1,30 @@
+"vc-description": "# Task\n\n**_Given_** an *array/list [] of n integers* , *find\
+  \ maximum triplet sum in the array* **_Without duplications_**   .\n___\n\n# Notes\
+  \ :\n\n* **_Array/list_** size is *at least 3* .\n\n* **_Array/list_** numbers could\
+  \ be a *mixture of positives , negatives and zeros* .\n\n* **_Repetition_** of numbers\
+  \ in *the array/list could occur* , So **_(duplications are not included when summing)_**.\n\
+  ___\n# Input >> Output Examples \n\n## **_Explanation_**:\n\n* As the **_triplet_**\
+  \ that *maximize the sum* **_{6,8,3}_** in order , **_their sum is (17)_** \n\n\
+  * *Note* : **_duplications_** *are not included when summing* , **(i.e) the numbers\
+  \ added only once** .\n___\n## **_Explanation_**:\n\n* As the **_triplet_** that\
+  \ *maximize the sum* **_{8, 6, 4}_** in order , **_their sum is (18)_** , \n* *Note*\
+  \ : **_duplications_** *are not included when summing* , **(i.e) the numbers added\
+  \ only once** .\n___\n## **_Explanation_**:\n\n* As the **_triplet_** that *maximize\
+  \ the sum* **_{12 , 29 , 0}_** in order , **_their sum is (41)_** , \n* *Note* :\
+  \ **_duplications_** *are not included when summing* , **(i.e) the numbers added\
+  \ only once** .\n___\n# [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
+  \n# [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
+  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
+  ___\n___\n___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
+"vc-preamble": "import Imports.AllImports\n\ndef max_tri_sum (nums : List Int) : Int\
+  \ := \nsorry\n\n\ndef List.sort (lt : α → α → Bool) : List α → List α :=\nsorry\n\
+  \n\ndef List.sum : List Int → Int :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.dedup : List α → List α :=\nsorry\n\n\n"
+"vc-theorems": "theorem max_tri_sum_perm_invariant {nums₁ nums₂ : List Int} \n  (h₁\
+  \ : nums₁.length ≥ 3)\n  (h₂ : nums₂.length ≥ 3)\n  (h_perm : List.Perm nums₁ nums₂)\
+  \ : \n  max_tri_sum nums₁ = max_tri_sum nums₂ := sorry\n\n/--\ninfo: 17\n-/\n#guard_msgs\
+  \ in\n#eval max_tri_sum [3, 2, 6, 8, 2, 3]\n\n/--\ninfo: -9\n-/\n#guard_msgs in\n\
+  #eval max_tri_sum [-3, -27, -4, -2, -27, -2]\n\n/--\ninfo: 41\n-/\n#guard_msgs in\n\
+  #eval max_tri_sum [-7, 12, -7, 29, -5, 0, -7, 0, 0, 29]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

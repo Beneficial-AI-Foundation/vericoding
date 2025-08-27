@@ -1,0 +1,62 @@
+"vc-description": "# Context\n\nAccording to Wikipedia : \"The seventh son of a seventh\
+  \ son is a concept from folklore regarding special powers given to, or held by,\
+  \ such a son. **The seventh son must come from an unbroken line with no female siblings\
+  \ born between, and be, in turn, born to such a seventh son.**\"\n\n# Your task\n\
+  \nYou will be given a string of JSON, consisting of a family tree containing people's\
+  \ names, genders and children. Your task will be to find the seventh sons of seventh\
+  \ sons in the family tree, and return a __set__ of their names. If there are none,\
+  \ return an __empty set__.\n\n\n## Tips\n\n* Have a good look at the sample test\
+  \ cases.\n\n* For a seventh son to be a seventh son, there must not be any daughters\
+  \ in the line leading to him. There may be daughters after him, though.\n\n* **You\
+  \ may want to use the json module for this one.**"
+"vc-preamble": "import Imports.AllImports\n\ndef Set (α : Type) := α → Prop\n\ndef\
+  \ find_seventh_sons_of_seventh_sons (json : String) : Set String :=\n  sorry\n\n\
+  \ndef fromJson? (s : String) : Option Person :=\n  sorry \n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def collectNames (p : Person) : Set String :=\n  sorry\n\n/- Theorems\
+  \ about find_seventh_sons_of_seventh_sons -/\n"
+"vc-theorems": "theorem empty_tree (p : Person) (h : match p with | Person.mk _ _\
+  \ children => children = []) :\n  find_seventh_sons_of_seventh_sons (toString p)\
+  \ = λ _ => False :=\nsorry\n\n\ntheorem result_is_subset (json : String) (tree :\
+  \ Person) (h : fromJson? json = some tree) :\n  let result := find_seventh_sons_of_seventh_sons\
+  \ json\n  let names := collectNames tree\n  ∀ x, result x → names x :=\nsorry\n\n\
+  \ntheorem leaf_nodes (name : String) (p : Person) \n  (h₁ : match p with | Person.mk\
+  \ n _ _ => n = name)\n  (h₂ : match p with | Person.mk _ g _ => g = \"male\") \n\
+  \  (h₃ : match p with | Person.mk _ _ c => c = []) :\n  find_seventh_sons_of_seventh_sons\
+  \ (toString p) = λ _ => False :=\nsorry\n\n\ntheorem seventh_son_pattern (root father\
+  \ seventhSon seventhGrandson : Person)\n  (h₁ : match father with | Person.mk _\
+  \ g _ => g = \"male\")\n  (h₂ : match father with | Person.mk _ _ c => List.length\
+  \ c = 7) \n  (h₃ : ∃ children, match father with | Person.mk _ _ c => c = children\
+  \ ∧ children.get? 6 = some seventhSon)\n  (h₄ : match seventhSon with | Person.mk\
+  \ _ g _ => g = \"male\")\n  (h₅ : match seventhSon with | Person.mk _ _ c => List.length\
+  \ c = 7)\n  (h₆ : ∃ children, match seventhSon with | Person.mk _ _ c => c = children\
+  \ ∧ children.get? 6 = some seventhGrandson)\n  (h₇ : match seventhGrandson with\
+  \ | Person.mk n _ _ => n = \"grandson7\") :\n  (find_seventh_sons_of_seventh_sons\
+  \ (toString root)) \"grandson7\" :=\nsorry\n\n/--\ninfo: set()\n-/\n#guard_msgs\
+  \ in\n#eval find_seventh_sons_of_seventh_sons \"\\n    {\\n        \"name\": \"\
+  John\",\\n        \"gender\": \"male\",\\n        \"children\": [\\n           \
+  \ {\"name\": \"Bob\", \"gender\": \"male\", \"children\": []},\\n            {\"\
+  name\": \"Amy\", \"gender\": \"female\", \"children\": []}\\n        ]\\n    }\\\
+  n    \"\n\n/--\ninfo: {'Target'}\n-/\n#guard_msgs in\n#eval find_seventh_sons_of_seventh_sons\
+  \ \"\\n    {\\n        \"name\": \"Root\",\\n        \"gender\": \"male\",\\n  \
+  \      \"children\": [\\n            {\\n                \"name\": \"Dad\",\\n \
+  \               \"gender\": \"male\",\\n                \"children\": [\\n     \
+  \               {\"name\": \"Son1\", \"gender\": \"male\", \"children\": []},\\\
+  n                    {\"name\": \"Son2\", \"gender\": \"male\", \"children\": []},\\\
+  n                    {\"name\": \"Son3\", \"gender\": \"male\", \"children\": []},\\\
+  n                    {\"name\": \"Son4\", \"gender\": \"male\", \"children\": []},\\\
+  n                    {\"name\": \"Son5\", \"gender\": \"male\", \"children\": []},\\\
+  n                    {\"name\": \"Son6\", \"gender\": \"male\", \"children\": []},\\\
+  n                    {\\n                        \"name\": \"Son7\",\\n        \
+  \                \"gender\": \"male\",\\n                        \"children\": [\\\
+  n                            {\"name\": \"GSon1\", \"gender\": \"male\", \"children\"\
+  : []},\\n                            {\"name\": \"GSon2\", \"gender\": \"male\"\
+  , \"children\": []},\\n                            {\"name\": \"GSon3\", \"gender\"\
+  : \"male\", \"children\": []},\\n                            {\"name\": \"GSon4\"\
+  , \"gender\": \"male\", \"children\": []},\\n                            {\"name\"\
+  : \"GSon5\", \"gender\": \"male\", \"children\": []},\\n                       \
+  \     {\"name\": \"GSon6\", \"gender\": \"male\", \"children\": []},\\n        \
+  \                    {\"name\": \"Target\", \"gender\": \"male\", \"children\":\
+  \ []}\\n                        ]\\n                    }\\n                ]\\\
+  n            }\\n        ]\\n    }\\n    \"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

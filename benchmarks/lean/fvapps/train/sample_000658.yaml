@@ -1,0 +1,23 @@
+"vc-description": "Computation of the date either previous or forthcoming dates is\
+  \ quiet easy. But it is quiet difficult to calculate the day from a particular given\
+  \ date. \nYou are required to find a day from a particular date given to you.\n\n\
+  -----Input-----\nIt consists of a single line entry consisting of date in format\
+  \ dd mm yyyy.\ni.e. the input line consists of the three numbers written in order\
+  \ followed by spaces.\nEg. Input for 18-12-1990 is be written as 18 12 1990\n\n\
+  -----Output-----\nIt consists of single line output showing the day for that particular\
+  \ date.\n\n-----Example-----\nInput:\n14 3 2012\n\nOutput:\nWednesday"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isValidDate (d : Date) : Bool := sorry\n\ndef get_day_for_date\
+  \ (day month year : Nat) : Option Weekday := sorry\n"
+"vc-theorems": "theorem get_day_for_date_valid_output \n  {day month year : Nat}\n\
+  \  (h1: 1 ≤ day ∧ day ≤ 31)\n  (h2: 1 ≤ month ∧ month ≤ 12) \n  (h3: 1 ≤ year ∧\
+  \ year ≤ 9999)\n  (h4: isValidDate ⟨day, month, year⟩ = true) :\n  ∃ w : Weekday,\
+  \ get_day_for_date day month year = some w :=\nsorry\n\n\ntheorem get_day_for_date_invalid_dates\
+  \ :\n  get_day_for_date 31 2 2023 = none :=\nsorry\n\n\ntheorem get_day_for_date_invalid_zero\n\
+  \  {day month year : Nat}\n  (h1: day = 0 ∨ month = 0) :\n  get_day_for_date day\
+  \ month year = none :=\nsorry\n\n/--\ninfo: 'Wednesday'\n-/\n#guard_msgs in\n#eval\
+  \ get_day_for_date 14 3 2012\n\n/--\ninfo: 'Saturday'\n-/\n#guard_msgs in\n#eval\
+  \ get_day_for_date 1 1 2000\n\n/--\ninfo: 'Monday'\n-/\n#guard_msgs in\n#eval get_day_for_date\
+  \ 25 12 2023\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

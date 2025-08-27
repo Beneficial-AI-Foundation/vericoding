@@ -1,0 +1,24 @@
+"vc-description": "# Task\nGiven an array `arr`, find the maximal value of `k` such\
+  \ `a[i] mod k` = `a[j] mod k` for all valid values of i and j.\n\nIf it's impossible\
+  \ to find such number (there's an infinite number of `k`s), return `-1` instead.\n\
+  \n\n# Input/Output\n\n`[input]` integer array `arr`\n\nA non-empty array of positive\
+  \ integer.\n\n`2 <= arr.length <= 10`\n\n`1 <= arr[i] <= 100`\n\n`[output]` an integer\n\
+  \nThe maximum value of `k` or `-1` if there is none.\n\n\n# Example\n\nFor `arr\
+  \ = [1, 2, 3]`, the output should be `1`.\n\n`1` is the only k which satisfies the\
+  \ given conditions.\n\nFor `arr = [1, 1, 1]`, the output should be `-1`.\n\n`1 %\
+  \ k = 1` for `any k > 1`, so it's impossible to find the maximum.\n\nFor `arr =\
+  \ [5, 2, 8]`, the output should be `3`.\n\n`5 % 3 == 2 % 3 == 8 % 3 == 2`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def finding_k (arr : List Nat) : Int := sorry\n\ndef list_max :\
+  \ List Nat → Nat \n  | [] => 0\n  | (x::xs) => max x (list_max xs)\n"
+"vc-theorems": "theorem finding_k_valid_k_or_minus_one (arr : List Nat) (h : arr ≠\
+  \ []) : \n  let k := finding_k arr\n  if k ≠ -1 then \n    (k > 0) ∧ \n    (k <\
+  \ list_max arr) ∧\n    (∀ x, x ∈ arr → ∃ r, x % k = r)\n  else\n    ∀ k', k' ∈ List.range\
+  \ (list_max arr) → \n    ∃ x y, x ∈ arr ∧ y ∈ arr ∧ x % k' ≠ y % k'\n  := sorry\n\
+  \n\ntheorem all_same_numbers_return_minus_one (arr : List Nat) (h : arr ≠ []) :\n\
+  \  (∀ x y, x ∈ arr → y ∈ arr → x = y) → finding_k arr = -1 := sorry\n\n/--\ninfo:\
+  \ 3\n-/\n#guard_msgs in\n#eval finding_k [5, 2, 8]\n\n/--\ninfo: -1\n-/\n#guard_msgs\
+  \ in\n#eval finding_k [1, 1, 1]\n\n/--\ninfo: 90\n-/\n#guard_msgs in\n#eval finding_k\
+  \ [10, 100]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

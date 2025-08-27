@@ -1,0 +1,23 @@
+"vc-description": "In this Kata, you will be given a string that may have mixed uppercase\
+  \ and lowercase letters and your task is to convert that string to either lowercase\
+  \ only or uppercase only based on: \n\n* make as few changes as possible. \n* if\
+  \ the string contains equal number of uppercase and lowercase letters, convert the\
+  \ string to lowercase. \n\nFor example:\n```Haskell\nsolve(\"coDe\") = \"code\"\
+  . Lowercase characters > uppercase. Change only the \"D\" to lowercase.\nsolve(\"\
+  CODe\") = \"CODE\". Uppercase characters > lowecase. Change only the \"e\" to uppercase.\n\
+  solve(\"coDE\") = \"code\". Upper == lowercase. Change all to lowercase.\n```\n\n\
+  More examples in test cases. Good luck!\n\nPlease also try:\n \n[Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)\n\
+  \n[Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)"
+"vc-preamble": "import Imports.AllImports\n\ndef solve (s : String) : String := sorry\n\
+  \ndef isUpper (s : String) : Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isLower (s : String) : Bool := sorry\n\ntheorem solve_returns_either_upper_or_lower\
+  \ (s : String) : \n  (solve s = s.toUpper) ∨ (solve s = s.toLower) := sorry\n"
+"vc-theorems": "theorem solve_preserves_uppercase (s : String) : \n  isUpper s = true\
+  \ → solve s = s.toUpper := sorry \n\n\ntheorem solve_preserves_lowercase (s : String)\
+  \ :\n  isLower s = true → solve s = s.toLower := sorry\n\n\ntheorem solve_preserves_length\
+  \ (s : String) :\n  (solve s).length = s.length := sorry\n\n/--\ninfo: 'code'\n\
+  -/\n#guard_msgs in\n#eval solve \"coDe\"\n\n/--\ninfo: 'CODE'\n-/\n#guard_msgs in\n\
+  #eval solve \"CODe\"\n\n/--\ninfo: 'code'\n-/\n#guard_msgs in\n#eval solve \"coDE\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

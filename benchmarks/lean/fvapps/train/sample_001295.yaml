@@ -1,0 +1,27 @@
+"vc-description": "You are given a sequence $A_1, A_2, \\ldots, A_N$. Calculate the\
+  \ number of ways to remove a non-empty contiguous subsequence from it such that\
+  \ the resulting sequence is non-empty and strictly increasing.\n\n-----Input-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first line of\
+  \ each test case contains a single integer $N$.\n- The second line contains $N$\
+  \ space-separated integers $A_1, A_2, \\ldots, A_N$.\n\n-----Output-----\nFor each\
+  \ test case, print a single line containing one integer ― the number of ways.\n\n\
+  -----Constraints-----\n- $1 \\le T \\le 10$\n- $1 \\le N \\le 10^5$\n- $|A_i| \\\
+  le 10^9$ for each valid $i$\n\n-----Subtasks-----\nSubtask #1 (40 points): $N \\\
+  le 1,000$\nSubtask #2 (60 points): original constraints\n\n-----Example Input-----\n\
+  2\n3\n1 1 2\n4\n2 4 3 5\n\n-----Example Output-----\n4\n7"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_subsequence_removal (n : Nat) (arr : List Nat) : Nat\
+  \ := sorry\n\ndef is_increasing (lst : List Nat) : Bool := sorry\n"
+"vc-theorems": "theorem sequence_bounds (n : Nat) (arr : List Nat) : \n  arr.length\
+  \ = n →\n  let result := solve_subsequence_removal n arr\n  result ≥ 0 ∧ result\
+  \ ≤ n * (n+1) / 2 := sorry\n\n\ntheorem strictly_increasing_sequence (n : Nat) :\n\
+  \  n > 0 →\n  let arr := List.range n \n  solve_subsequence_removal n arr = n *\
+  \ (n+1) / 2 - 1 := sorry\n\n\ntheorem duplicate_elements (n : Nat) (arr : List Nat)\
+  \ :\n  n > 0 →\n  let all_ones := List.replicate n 1\n  let result := solve_subsequence_removal\
+  \ n all_ones\n  result ≥ 0 ∧ result ≤ n * (n+1) / 2 := sorry\n\n/--\ninfo: 4\n-/\n\
+  #guard_msgs in\n#eval solve_subsequence_removal 3 [1, 1, 2]\n\n/--\ninfo: 7\n-/\n\
+  #guard_msgs in\n#eval solve_subsequence_removal 4 [2, 4, 3, 5]\n\n/--\ninfo: 14\n\
+  -/\n#guard_msgs in\n#eval solve_subsequence_removal 5 [1, 2, 3, 4, 5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

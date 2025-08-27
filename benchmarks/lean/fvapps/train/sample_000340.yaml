@@ -1,0 +1,32 @@
+"vc-description": "Given an array nums of integers, you can perform operations on\
+  \ the array.\n\nIn each operation, you pick any nums[i] and delete it to earn nums[i]\
+  \ points.  After, you must delete every element equal to nums[i] - 1 or nums[i]\
+  \ + 1.\n\nYou start with 0 points.  Return the maximum number of points you can\
+  \ earn by applying such operations.\n\n\nExample 1:\n\nInput: nums = [3, 4, 2]\n\
+  Output: 6\nExplanation: \nDelete 4 to earn 4 points, consequently 3 is also deleted.\n\
+  Then, delete 2 to earn 2 points. 6 total points are earned.\n\n\n\nExample 2:\n\n\
+  Input: nums = [2, 2, 3, 3, 3, 4]\nOutput: 9\nExplanation: \nDelete 3 to earn 3 points,\
+  \ deleting both 2's and the 4.\nThen, delete 3 again to earn 3 points, and 3 again\
+  \ to earn 3 points.\n9 total points are earned.\n\n\n\nNote:\nThe length of nums\
+  \ is at most 20000.\nEach element nums[i] is an integer in the range [1, 10000]."
+"vc-preamble": "import Imports.AllImports\n\ndef delete_and_earn (nums : List Nat)\
+  \ : Nat := sorry\n\ndef List.sum : List Nat → Nat \n  | [] => 0\n  | (x::xs) =>\
+  \ x + List.sum xs\n\n\ndef List.maximum' : List Nat → Nat \n  | [] => 0\n  | [x]\
+  \ => x\n  | (x::xs) => max x (List.maximum' xs)\n\n\ndef isConsecutive (nums : List\
+  \ Nat) : Bool := sorry\n\ndef sumByParity (nums : List Nat) (isOdd : Bool) : Nat\
+  \ := \n  List.sum (List.filter (fun n => n % 2 = if isOdd then 1 else 0) nums)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSpaced (nums : List Nat) : Bool := sorry\n\ntheorem spaced_numbers\
+  \ (nums : List Nat) (h : nums.length ≥ 2) :\n  isSpaced nums = true →\n  delete_and_earn\
+  \ nums = List.sum nums := sorry"
+"vc-theorems": "theorem delete_and_earn_properties (nums : List Nat) :\n  let result\
+  \ := delete_and_earn nums;\n  (nums = [] → result = 0) ∧\n  (nums ≠ [] →\n    let\
+  \ max_num := List.maximum' nums;\n    let max_count := (List.filter (fun x => x\
+  \ = max_num) nums).length;\n    result ≥ max_num * max_count) ∧\n  result ≤ List.sum\
+  \ nums := sorry\n\n\ntheorem consecutive_numbers (nums : List Nat) (h : nums ≠ [])\
+  \ :\n  isConsecutive nums = true →\n  delete_and_earn nums = max (sumByParity nums\
+  \ true) (sumByParity nums false) := sorry\n\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n\
+  #eval delete_and_earn [3, 4, 2]\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval delete_and_earn\
+  \ [2, 2, 3, 3, 3, 4]\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval delete_and_earn\
+  \ [2, 3, 4]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

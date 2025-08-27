@@ -1,0 +1,38 @@
+"vc-description": "You are given two integer arrays nums1 and nums2 sorted in ascending\
+  \ order and an integer k. \n\n\nDefine a pair (u,v) which consists of one element\
+  \ from the first array and one element from the second array.\n\nFind the k pairs\
+  \ (u1,v1),(u2,v2) ...(uk,vk) with the smallest sums.\n\n\nExample 1:\n\nGiven nums1\
+  \ = [1,7,11], nums2 = [2,4,6],  k = 3\n\nReturn: [1,2],[1,4],[1,6]\n\nThe first\
+  \ 3 pairs are returned from the sequence:\n[1,2],[1,4],[1,6],[7,2],[7,4],[11,2],[7,6],[11,4],[11,6]\n\
+  \n\n\nExample 2:\n\nGiven nums1 = [1,1,2], nums2 = [1,2,3],  k = 2\n\nReturn: [1,1],[1,1]\n\
+  \nThe first 2 pairs are returned from the sequence:\n[1,1],[1,1],[1,2],[2,1],[1,2],[2,2],[1,3],[1,3],[2,3]\n\
+  \n\n\nExample 3:\n\nGiven nums1 = [1,2], nums2 = [3],  k = 3 \n\nReturn: [1,3],[2,3]\n\
+  \nAll possible pairs are returned from the sequence:\n[1,3],[2,3]\n\n\n\nCredits:Special\
+  \ thanks to @elmirap and @StefanPochmann for adding this problem and creating all\
+  \ test cases."
+"vc-preamble": "import Imports.AllImports\n\ndef isSorted (l : List Int) : Bool :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def k_smallest_pairs (nums1 nums2 : List Int) (k : Nat) : List\
+  \ (Int × Int) :=\n  sorry\n"
+"vc-theorems": "theorem k_smallest_pairs_size (nums1 nums2 : List Int) (k : Nat)\n\
+  \  (h1 : isSorted nums1 = true) (h2 : isSorted nums2 = true) (h3 : nums1 ≠ []) (h4\
+  \ : nums2 ≠ []) :\n  let result := k_smallest_pairs nums1 nums2 k\n  List.length\
+  \ result ≤ k ∧ List.length result ≤ List.length nums1 * List.length nums2 :=\nsorry\n\
+  \n\ntheorem k_smallest_pairs_elements (nums1 nums2 : List Int) (k : Nat)\n  (h1\
+  \ : isSorted nums1 = true) (h2 : isSorted nums2 = true) (h3 : nums1 ≠ []) (h4 :\
+  \ nums2 ≠ []) :\n  let result := k_smallest_pairs nums1 nums2 k\n  ∀ pair ∈ result,\
+  \ (List.elem pair.1 nums1 ∧ List.elem pair.2 nums2) :=\nsorry\n\n\ntheorem k_smallest_pairs_ordered\
+  \ (nums1 nums2 : List Int) (k : Nat)\n  (h1 : isSorted nums1 = true) (h2 : isSorted\
+  \ nums2 = true) (h3 : nums1 ≠ []) (h4 : nums2 ≠ []) :\n  let result := k_smallest_pairs\
+  \ nums1 nums2 k\n  ∀ i, i + 1 < result.length →\n    (result.get! i).1 + (result.get!\
+  \ i).2 ≤ (result.get! (i+1)).1 + (result.get! (i+1)).2 :=\nsorry\n\n\ntheorem k_smallest_pairs_min_sum\
+  \ (nums1 nums2 : List Int) (k : Nat)\n  (h1 : isSorted nums1 = true) (h2 : isSorted\
+  \ nums2 = true) (h3 : nums1 ≠ []) (h4 : nums2 ≠ []) :\n  let result := k_smallest_pairs\
+  \ nums1 nums2 k\n  result ≠ [] →\n    (result.get! 0).1 + (result.get! 0).2 = nums1.get!\
+  \ 0 + nums2.get! 0 :=\nsorry\n\n\ntheorem k_smallest_pairs_all_combinations (nums1\
+  \ nums2 : List Int)\n  (h1 : isSorted nums1 = true) (h2 : isSorted nums2 = true)\
+  \ (h3 : nums1 ≠ []) (h4 : nums2 ≠ []) :\n  let k := List.length nums1 * List.length\
+  \ nums2\n  let result := k_smallest_pairs nums1 nums2 k\n  List.length result =\
+  \ k ∧\n  ∀ x ∈ nums1, ∀ y ∈ nums2, ∃ pair ∈ result, pair = (x, y) :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

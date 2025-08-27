@@ -1,0 +1,21 @@
+"vc-description": "Your task is to create a function that does four basic mathematical\
+  \ operations.\n\nThe function should take three arguments - operation(string/char),\
+  \ value1(number), value2(number).  \nThe function should return result of numbers\
+  \ after applying the chosen operation.\n\n### Examples\n\n```python\nbasic_op('+',\
+  \ 4, 7)         # Output: 11\nbasic_op('-', 15, 18)       # Output: -3\nbasic_op('*',\
+  \ 5, 5)         # Output: 25\nbasic_op('/', 49, 7)        # Output: 7\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def basic_op (op : String) (x y : Float) : Float :=\n  sorry\n"
+"vc-theorems": "theorem add_property (x y : Float) : ¬ x.isNaN → ¬ y.isNaN → ¬ x.isInf\
+  \ → ¬ y.isInf →\n  basic_op \"+\" x y = x + y :=\n  sorry\n\n\ntheorem sub_property\
+  \ (x y : Float) : ¬ x.isNaN → ¬ y.isNaN → ¬ x.isInf → ¬ y.isInf →\n  basic_op \"\
+  -\" x y = x - y :=\n  sorry\n\n\ntheorem mult_property (x y : Float) : ¬ x.isNaN\
+  \ → ¬ y.isNaN → ¬ x.isInf → ¬ y.isInf →\n  basic_op \"*\" x y = x * y :=\n  sorry\n\
+  \n\ntheorem div_property (x y : Float) : ¬ x.isNaN → ¬ y.isNaN → ¬ x.isInf → ¬ y.isInf\
+  \ → y ≠ 0 →\n  basic_op \"/\" x y = x / y :=\n  sorry\n\n\ntheorem invalid_operator\
+  \ (op : String) (x y : Float) : \n  op ≠ \"+\" → op ≠ \"-\" → op ≠ \"*\" → op ≠\
+  \ \"/\" →\n  (basic_op op x y).isNaN :=\n  sorry\n\n/--\ninfo: 11\n-/\n#guard_msgs\
+  \ in\n#eval basic_op \"+\" 4 7\n\n/--\ninfo: -3\n-/\n#guard_msgs in\n#eval basic_op\
+  \ \"-\" 15 18\n\n/--\ninfo: 25\n-/\n#guard_msgs in\n#eval basic_op \"*\" 5 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

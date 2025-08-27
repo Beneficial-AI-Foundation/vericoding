@@ -1,0 +1,25 @@
+"vc-description": "The first input array is the key to the correct answers to an exam,\
+  \ like [\"a\", \"a\", \"b\", \"d\"]. The second one contains a student's submitted\
+  \ answers. \n\nThe two arrays are not empty and are the same length. Return the\
+  \ score for this array of answers, giving +4 for each correct answer, -1 for each\
+  \ incorrect answer, and +0 for each blank answer, represented as an empty string\
+  \ (in C the space character is used).\n\nIf the score < 0, return 0.\n\nFor example:\n\
+  ```\ncheckExam([\"a\", \"a\", \"b\", \"b\"], [\"a\", \"c\", \"b\", \"d\"]) → 6\n\
+  checkExam([\"a\", \"a\", \"c\", \"b\"], [\"a\", \"a\", \"b\",  \"\"]) → 7\ncheckExam([\"\
+  a\", \"a\", \"b\", \"c\"], [\"a\", \"a\", \"b\", \"c\"]) → 16\ncheckExam([\"b\"\
+  , \"c\", \"b\", \"a\"], [\"\",  \"a\", \"a\", \"c\"]) → 0\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_exam (arr1 arr2 : List Char) : Int :=\n  sorry\n"
+"vc-theorems": "theorem check_exam_non_negative (arr1 arr2 : List Char) : \n  check_exam\
+  \ arr1 arr2 ≥ 0 :=\n  sorry\n\n\ntheorem check_exam_perfect_score {arr1 arr2 : List\
+  \ Char} (h : arr1 = arr2) :  \n  check_exam arr1 arr2 = 4 * arr1.length :=\n  sorry\
+  \ \n\n\ntheorem check_exam_empty_answers {arr1 arr2 : List Char} \n  (h : ∀ x, x\
+  \ ∈ arr2 → x = ' ') :\n  check_exam arr1 arr2 = 0 :=\n  sorry\n\n\ntheorem check_exam_imperfect_score\
+  \ {arr1 arr2 : List Char} \n  (h : arr1.length = arr2.length) (h2 : arr1 ≠ arr2)\
+  \ :\n  check_exam arr1 arr2 < 4 * arr1.length :=\n  sorry\n\n/--\ninfo: 6\n-/\n\
+  #guard_msgs in\n#eval check_exam [\"a\", \"a\", \"b\", \"b\"] [\"a\", \"c\", \"\
+  b\", \"d\"]\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval check_exam [\"a\", \"a\"\
+  , \"c\", \"b\"] [\"a\", \"a\", \"b\", \"\"]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
+  #eval check_exam [\"b\", \"c\", \"b\", \"a\"] [\"\", \"a\", \"a\", \"c\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

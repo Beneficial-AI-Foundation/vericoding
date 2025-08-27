@@ -1,0 +1,30 @@
+"vc-description": "Given a matrix consisting of 0s and 1s, we may choose any number\
+  \ of columns in the matrix and flip every cell in that column.  Flipping a cell\
+  \ changes the value of that cell from 0 to 1 or from 1 to 0.\nReturn the maximum\
+  \ number of rows that have all values equal after some number of flips.\n \n\n\n\
+  \nExample 1:\nInput: [[0,1],[1,1]]\nOutput: 1\nExplanation: After flipping no values,\
+  \ 1 row has all values equal.\n\n\nExample 2:\nInput: [[0,1],[1,0]]\nOutput: 2\n\
+  Explanation: After flipping values in the first column, both rows have equal values.\n\
+  \n\nExample 3:\nInput: [[0,0,0],[0,0,1],[1,1,0]]\nOutput: 2\nExplanation: After\
+  \ flipping values in the first two columns, the last two rows have equal values.\n\
+  \n \nNote:\n\n1 <= matrix.length <= 300\n1 <= matrix[i].length <= 300\nAll matrix[i].length's\
+  \ are equal\nmatrix[i][j] is 0 or 1"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_equal_rows_after_flips (matrix: List (List Nat)) : Nat\
+  \ :=\nsorry\n"
+"vc-theorems": "theorem return_value_bounds\n  (matrix: List (List Nat))\n  (h_binary:\
+  \ ∀ row ∈ matrix, ∀ x ∈ row, x = 0 ∨ x = 1) :\n  1 ≤ max_equal_rows_after_flips\
+  \ matrix ∧ max_equal_rows_after_flips matrix ≤ matrix.length :=\nsorry\n\n\ntheorem\
+  \ flipping_preserves_result \n  (matrix: List (List Nat))\n  (h_binary: ∀ row ∈\
+  \ matrix, ∀ x ∈ row, x = 0 ∨ x = 1)\n  (flipped := matrix.map (fun row => row.map\
+  \ (fun x => 1 - x))) :\n  max_equal_rows_after_flips matrix = max_equal_rows_after_flips\
+  \ flipped :=\nsorry\n\n\ntheorem identical_rows_give_count\n  (matrix: List (List\
+  \ Nat))\n  (h_nonempty: matrix.length > 0)\n  (h_binary: ∀ row ∈ matrix, ∀ x ∈ row,\
+  \ x = 0 ∨ x = 1)\n  (identical := List.replicate matrix.length (matrix[0]'(by sorry)))\
+  \ :\n  max_equal_rows_after_flips identical = matrix.length :=\nsorry\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval max_equal_rows_after_flips [[0, 1], [1, 1]]\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval max_equal_rows_after_flips [[0, 1], [1, 0]]\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval max_equal_rows_after_flips [[0, 0, 0],\
+  \ [0, 0, 1], [1, 1, 0]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
