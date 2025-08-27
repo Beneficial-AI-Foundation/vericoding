@@ -50,7 +50,7 @@ vc-spec: |-
               a[r] < x,
           forall|r: int| 
               0 <= r && k as int <= r < (i + n) as int ==> 
-              a[r] >= x,
+              a[r] >= x
   // </vc-spec>
 
 vc-code: |-

@@ -43,11 +43,11 @@ vc-helpers: |-
 
 vc-spec: |-
   // <vc-spec>
-  fn seg_max_sum(v: &[i32], i: usize) -> (i32, usize)
+  fn seg_max_sum(v: &[i32], i: usize) -> (result: (i32, usize))
       requires v.len() > 0 && i < v.len()
-      ensures |result: (i32, usize)|
-          result.1 <= i && 
-          result.0 == sum(v@.map_values(|x: i32| x as int), result.1 as int, (i+1) as int) &&
+      ensures 
+          result.1 <= i,
+          result.0 == sum(v@.map_values(|x: i32| x as int), result.1 as int, (i+1) as int),
           sum_max_to_right(v@.map_values(|x: i32| x as int), i as int, result.0 as int)
   // </vc-spec>
 

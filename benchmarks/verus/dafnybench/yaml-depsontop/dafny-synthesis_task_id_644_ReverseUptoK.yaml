@@ -19,7 +19,7 @@ vc-spec: |-
       ensures 
           s.len() == old(s).len(),
           forall|i: int| 0 <= i < k ==> array_index(s@, i) == array_index(old(s)@, k - 1 - i),
-          forall|i: int| k <= i < s.len() ==> array_index(s@, i) == array_index(old(s)@, i),
+          forall|i: int| k <= i < s.len() ==> array_index(s@, i) == array_index(old(s)@, i)
   // </vc-spec>
 
 vc-code: |-

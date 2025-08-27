@@ -51,7 +51,7 @@ vc-spec: |-
       requires exists|i: int| 0 <= i < lst.len() && is_even(lst[i]),
       requires exists|i: int| 0 <= i < lst.len() && is_odd(lst[i]),
       ensures exists|i: int, j: int| 0 <= i < lst.len() && is_even(lst[i]) && is_first_even(i, lst) && 
-                                     0 <= j < lst.len() && is_odd(lst[j])  && is_first_odd(j, lst) && product as int == lst[i] * lst[j],
+                                     0 <= j < lst.len() && is_odd(lst[j])  && is_first_odd(j, lst) && product as int == lst[i] * lst[j]
   // </vc-spec>
 
 vc-code: |-

@@ -167,14 +167,15 @@ vc-spec: |-
   fn expand_from_center(s: Seq<char>, i0: usize, j0: usize) -> (result: (usize, usize))
       requires 0 <= i0 <= j0 <= s.len()
       requires palindromic(s, i0 as int, j0 as int)
-      ensures ({
-          let (lo, hi) = result;
-          &&& 0 <= lo <= hi <= s.len()
-          &&& palindromic(s, lo as int, hi as int)
-          &&& forall|i: int, j: int| 0 <= i <= j <= s.len() && palindromic(s, i, j)  // Among all palindromes
-            && i + j == i0 + j0                                             // sharing the same center,
-            ==> j - i <= hi - lo                                             // `s[lo..hi]` is longest.
-      })
+      ensures 
+          {
+              let (lo, hi) = result;
+              &&& 0 <= lo <= hi <= s.len()
+              &&& palindromic(s, lo as int, hi as int)
+              &&& forall|i: int, j: int| 0 <= i <= j <= s.len() && palindromic(s, i, j)  // Among all palindromes
+                && i + j == i0 + j0                                             // sharing the same center,
+                ==> j - i <= hi - lo                                             // `s[lo..hi]` is longest.
+          }
   // </vc-spec>
 
 vc-code: |-

@@ -31,7 +31,7 @@ vc-code: |-
   // <vc-code>
   {
       assume(false);
-      unreached()
+      (0, 0)
   }
   // </vc-code>
 

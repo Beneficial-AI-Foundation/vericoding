@@ -16,7 +16,7 @@ vc-preamble: |-
       }
   }
   
-  spec fn exp(x: real, n: nat) -> real
+  spec fn exp(x: f64, n: nat) -> f64
   decreases n
   {
       if n == 0 {

@@ -73,9 +73,10 @@ vc-helpers: |-
 vc-spec: |-
   // <vc-spec>
   fn search(a: &[i32]) -> (ret: (i32, i32))
-      requires 4 <= a.len(),
-      requires exists|p: int, q: int| #![auto] p != q && is_duplicate(a@.map(|i, x| x as int), p) && is_duplicate(a@.map(|i, x| x as int), q),  // two distinct duplicates exist
-      requires forall|i: usize| #![auto] 0 <= i < a.len() ==> 0 <= a[i as int] < (a.len() - 2) as int,  // the elements of "a" in the range [0.. a.len()-2]
+      requires 
+          4 <= a.len(),
+          exists|p: int, q: int| #![auto] p != q && is_duplicate(a@.map(|i, x| x as int), p) && is_duplicate(a@.map(|i, x| x as int), q),
+          forall|i: usize| #![auto] 0 <= i < a.len() ==> 0 <= a[i as int] < (a.len() - 2) as int,
       ensures ret.0 != ret.1 && is_duplicate(a@.map(|i, x| x as int), ret.0 as int) && is_duplicate(a@.map(|i, x| x as int), ret.1 as int)
   // </vc-spec>
 
