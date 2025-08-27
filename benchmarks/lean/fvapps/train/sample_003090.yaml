@@ -1,25 +1,63 @@
-"vc-description": "Given a positive number n > 1 find the prime factor decomposition\
-  \ of n.\nThe result will be a string with the following form :\n```\n \"(p1**n1)(p2**n2)...(pk**nk)\"\
-  \n```\nwhere ```a ** b``` means ```a``` to the power of ```b```\n\nwith the p(i)\
-  \ in increasing order and n(i) empty if\nn(i) is 1.\n```\nExample: n = 86240 should\
-  \ return \"(2**5)(5)(7**2)(11)\"\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef is_prime (n : Nat) : Bool := sorry\n\
-  \ndef get_factors (n : Nat) : List Nat := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def prime_factors (n : Nat) : String := sorry\n\ntheorem prime_factors_valid_format\
-  \ (n : Nat) (h : n ≥ 2) :\n  let result := prime_factors n\n  ∀ part : String,\n\
-  \  part ∈ (String.split (prime_factors n) (· == ')')).filter (λ x => x ≠ \"\") →\n\
-  \  (∃ base power : Nat,\n   ((String.contains part '*') → \n    part = s!\"{base}**{power}\"\
-  \ ∧ \n    is_prime base ∧ \n    power > 1) ∧\n   (¬String.contains part '*' →\n\
-  \    part.toNat?.isSome ∧\n    is_prime part.toNat!)) := sorry\n"
-"vc-theorems": "theorem prime_factors_preserves_value (n : Nat) (h : n ≥ 2) :\n  let\
-  \ result := prime_factors n\n  let parts := (String.split result (· == ')')).filter\
-  \ (λ x => x ≠ \"\")\n  let reconstructed := parts.foldl \n    (λ acc part => \n\
-  \      if String.contains part '*'\n      then \n        let nums := String.split\
-  \ part (· == '*')\n        let base := (nums.get! 0).trim.toNat!\n        let power\
-  \ := (nums.get! 2).trim.toNat!\n        acc * (base ^ power)\n      else acc * part.trim.toNat!)\n\
-  \    1\n  reconstructed = n := sorry\n\n\ntheorem prime_number_input (p : Nat) (h₁\
-  \ : p ≥ 2) (h₂ : is_prime p) :\n  prime_factors p = s!\"({p})\" := sorry\n\n\ntheorem\
-  \ powers_of_two (n : Nat) (h : n ≥ 1) :\n  prime_factors (2^n) = s!\"(2**{n})\"\
-  \ := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Given a positive number n > 1 find the prime factor decomposition of n.
+  The result will be a string with the following form :
+  ```
+   "(p1**n1)(p2**n2)...(pk**nk)"
+  ```
+  where ```a ** b``` means ```a``` to the power of ```b```
+
+  with the p(i) in increasing order and n(i) empty if
+  n(i) is 1.
+  ```
+  Example: n = 86240 should return "(2**5)(5)(7**2)(11)"
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def is_prime (n : Nat) : Bool := sorry
+
+  def get_factors (n : Nat) : List Nat := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def prime_factors (n : Nat) : String := sorry
+
+  theorem prime_factors_valid_format (n : Nat) (h : n ≥ 2) :
+    let result := prime_factors n
+    ∀ part : String,
+    part ∈ (String.split (prime_factors n) (· == ')')).filter (λ x => x ≠ "") →
+    (∃ base power : Nat,
+     ((String.contains part '*') → 
+      part = s!"{base}**{power}" ∧ 
+      is_prime base ∧ 
+      power > 1) ∧
+     (¬String.contains part '*' →
+      part.toNat?.isSome ∧
+      is_prime part.toNat!)) := sorry
+vc-theorems: |-
+  theorem prime_factors_preserves_value (n : Nat) (h : n ≥ 2) :
+    let result := prime_factors n
+    let parts := (String.split result (· == ')')).filter (λ x => x ≠ "")
+    let reconstructed := parts.foldl 
+      (λ acc part => 
+        if String.contains part '*'
+        then 
+          let nums := String.split part (· == '*')
+          let base := (nums.get! 0).trim.toNat!
+          let power := (nums.get! 2).trim.toNat!
+          acc * (base ^ power)
+        else acc * part.trim.toNat!)
+      1
+    reconstructed = n := sorry
+
+
+  theorem prime_number_input (p : Nat) (h₁ : p ≥ 2) (h₂ : is_prime p) :
+    prime_factors p = s!"({p})" := sorry
+
+
+  theorem powers_of_two (n : Nat) (h : n ≥ 1) :
+    prime_factors (2^n) = s!"(2**{n})" := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

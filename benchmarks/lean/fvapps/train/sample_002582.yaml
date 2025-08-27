@@ -1,29 +1,52 @@
-"vc-description": "# Introduction\n\nYou are the developer working on a website which\
-  \ features a large counter on its homepage, proudly displaying the number of happy\
-  \ customers who have downloaded your companies software.\n\nYou have been tasked\
-  \ with adding an effect to this counter to make it more interesting.  \n\nInstead\
-  \ of just displaying the count value immediatley when the page loads, we want to\
-  \ create the effect of each digit cycling through its preceding numbers before stopping\
-  \ on the actual value.\n\n\n\n# Task\n\nAs a step towards achieving this; you have\
-  \ decided to create a function that will produce a multi-dimensional array out of\
-  \ the hit count value.  Each inner dimension of the array represents an individual\
-  \ digit in the hit count, and will include all numbers that come before it, going\
-  \ back to 0.\n\n## Rules\n* The function will take one argument which will be a\
-  \ four character `string` representing hit count\n* The function must return a multi-dimensional\
-  \ array containing four inner arrays\n* The final value in each inner array must\
-  \ be the actual value to be displayed\n* Values returned in the array must be of\
-  \ the type `number`\n\n**Examples**"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def counter_effect (digits : String) : List (List Nat) := sorry\n\
-  \ntheorem counter_effect_length {digits : String} \n  (h : digits.length = 4) :\n\
-  \  (counter_effect digits).length = 4 := sorry \n"
-"vc-theorems": "theorem counter_effect_sublist_properties {digits : String} (h : digits.length\
-  \ = 4)\n  (i : Nat) (h2 : i < 4) : \n  let sublist := (counter_effect digits)[i]'(by\
-  \ sorry)\n  (sublist[0]? = some 0 ∧\n   (∀ j, j + 1 < sublist.length → \n      sublist[j+1]?\
-  \ = some ((sublist[j]'(by sorry)) + 1)) ∧\n   sublist.length = (digits.data[i]'(by\
-  \ sorry)).toUInt8.toNat - 48 + 1) := sorry\n\n\ntheorem counter_effect_bounded {digits\
-  \ : String} \n  (h : digits.length = 4) :\n  let result := counter_effect digits\n\
-  \  (∀ sublist ∈ result, ∀ x ∈ sublist, x ≥ 0) ∧\n  (∀ sublist ∈ result, \n     \
-  \ sublist.maximum? = some (sublist.length - 1)) := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  # Introduction
+
+  You are the developer working on a website which features a large counter on its homepage, proudly displaying the number of happy customers who have downloaded your companies software.
+
+  You have been tasked with adding an effect to this counter to make it more interesting.  
+
+  Instead of just displaying the count value immediatley when the page loads, we want to create the effect of each digit cycling through its preceding numbers before stopping on the actual value.
+
+
+
+  # Task
+
+  As a step towards achieving this; you have decided to create a function that will produce a multi-dimensional array out of the hit count value.  Each inner dimension of the array represents an individual digit in the hit count, and will include all numbers that come before it, going back to 0.
+
+  ## Rules
+  * The function will take one argument which will be a four character `string` representing hit count
+  * The function must return a multi-dimensional array containing four inner arrays
+  * The final value in each inner array must be the actual value to be displayed
+  * Values returned in the array must be of the type `number`
+
+  **Examples**
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def counter_effect (digits : String) : List (List Nat) := sorry
+
+  theorem counter_effect_length {digits : String} 
+    (h : digits.length = 4) :
+    (counter_effect digits).length = 4 := sorry 
+vc-theorems: |-
+  theorem counter_effect_sublist_properties {digits : String} (h : digits.length = 4)
+    (i : Nat) (h2 : i < 4) : 
+    let sublist := (counter_effect digits)[i]'(by sorry)
+    (sublist[0]? = some 0 ∧
+     (∀ j, j + 1 < sublist.length → 
+        sublist[j+1]? = some ((sublist[j]'(by sorry)) + 1)) ∧
+     sublist.length = (digits.data[i]'(by sorry)).toUInt8.toNat - 48 + 1) := sorry
+
+
+  theorem counter_effect_bounded {digits : String} 
+    (h : digits.length = 4) :
+    let result := counter_effect digits
+    (∀ sublist ∈ result, ∀ x ∈ sublist, x ≥ 0) ∧
+    (∀ sublist ∈ result, 
+        sublist.maximum? = some (sublist.length - 1)) := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

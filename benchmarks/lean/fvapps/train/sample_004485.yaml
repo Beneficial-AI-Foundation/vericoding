@@ -1,33 +1,89 @@
-"vc-description": "We have the numbers with different colours with the sequence: ['red',\
-  \ 'yellow', 'blue'].\n\nThat sequence colours the numbers in the following way:\n\
-  \n 1   2   3    4    5   6  7   8   9   10   11  12   13 .....\n\nWe have got the\
-  \ following recursive function:\n\n  ```\nf(1) = 1\nf(n) = f(n - 1) + n\n```\n\n\
-  Some terms of this sequence with their corresponding colour are:\n\n```\nterm  \
-  \ value   colour\n1        1     \"red\"\n2        3     \"blue\"\n3        6  \
-  \   \"blue\"\n4       10     \"red\"\n5       15     \"blue\"\n6       21     \"\
-  blue\"\n7       28     \"red\"\n```\n\nThe three terms of the same colour \"blue\"\
-  , higher than 3, are: `[6, 15, 21]`\n\nWe need a function `same_col_seq(), that\
-  \ may receive three arguments:\n\n- `val`, an integer number\n- `k`, an integer\
-  \ number\n- `colour`, the name of one of the three colours(red, yellow or blue),\
-  \ as a string.\n\nThe function will output a sorted array with the smallest `k`\
-  \ terms, having the same marked colour, but higher than `val`.\n\nLet's see some\
-  \ examples:\n\n```python\nsame_col_seq(3, 3, 'blue') == [6, 15, 21]\nsame_col_seq(100,\
-  \ 4, 'red') == [136, 190, 253, 325]\n```\n\nThe function may output an empty list\
-  \ if it does not find terms of the sequence with the wanted colour in the range\
-  \ [val, 2* k * val]\n\n```python\nsame_col_seq(250, 6, 'yellow') == []\n```\n\n\
-  That means that the function did not find any \"yellow\" term in the range `[250,\
-  \ 3000]`\n \nTests will be with the following features:\n\n* Nmber of tests: `100`\n\
-  * `100 < val < 1000000`\n* `3 < k < 20`"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def same_col_seq (val k : Nat) (c : Color) : List Nat := sorry\n\
-  \ntheorem same_col_seq_valid_length (val k : Nat) (c : Color) :\n  let result :=\
-  \ same_col_seq val k c\n  List.length result ≤ k := sorry\n"
-"vc-theorems": "theorem same_col_seq_greater_than_val (val k : Nat) (c : Color) :\n\
-  \  let result := same_col_seq val k c\n  ∀ x ∈ result, x > val := sorry\n\n\ntheorem\
-  \ same_col_seq_ascending (val k : Nat) (c : Color) :\n  let result := same_col_seq\
-  \ val k c\n  ∀ i j, i < j → j < result.length → result[i]! < result[j]! := sorry\n\
-  \n\ntheorem same_col_seq_color_match (val k : Nat) (c : Color) :\n  let result :=\
-  \ same_col_seq val k c\n  ∀ x ∈ result, x % 3 = c.idx := sorry\n\n\ntheorem same_col_seq_zero_k\
-  \ (val : Nat) (c : Color) :\n  same_col_seq val 0 c = [] := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  We have the numbers with different colours with the sequence: ['red', 'yellow', 'blue'].
+
+  That sequence colours the numbers in the following way:
+
+   1   2   3    4    5   6  7   8   9   10   11  12   13 .....
+
+  We have got the following recursive function:
+
+    ```
+  f(1) = 1
+  f(n) = f(n - 1) + n
+  ```
+
+  Some terms of this sequence with their corresponding colour are:
+
+  ```
+  term   value   colour
+  1        1     "red"
+  2        3     "blue"
+  3        6     "blue"
+  4       10     "red"
+  5       15     "blue"
+  6       21     "blue"
+  7       28     "red"
+  ```
+
+  The three terms of the same colour "blue", higher than 3, are: `[6, 15, 21]`
+
+  We need a function `same_col_seq(), that may receive three arguments:
+
+  - `val`, an integer number
+  - `k`, an integer number
+  - `colour`, the name of one of the three colours(red, yellow or blue), as a string.
+
+  The function will output a sorted array with the smallest `k` terms, having the same marked colour, but higher than `val`.
+
+  Let's see some examples:
+
+  ```python
+  same_col_seq(3, 3, 'blue') == [6, 15, 21]
+  same_col_seq(100, 4, 'red') == [136, 190, 253, 325]
+  ```
+
+  The function may output an empty list if it does not find terms of the sequence with the wanted colour in the range [val, 2* k * val]
+
+  ```python
+  same_col_seq(250, 6, 'yellow') == []
+  ```
+
+  That means that the function did not find any "yellow" term in the range `[250, 3000]`
+   
+  Tests will be with the following features:
+
+  * Nmber of tests: `100`
+  * `100 < val < 1000000`
+  * `3 < k < 20`
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def same_col_seq (val k : Nat) (c : Color) : List Nat := sorry
+
+  theorem same_col_seq_valid_length (val k : Nat) (c : Color) :
+    let result := same_col_seq val k c
+    List.length result ≤ k := sorry
+vc-theorems: |-
+  theorem same_col_seq_greater_than_val (val k : Nat) (c : Color) :
+    let result := same_col_seq val k c
+    ∀ x ∈ result, x > val := sorry
+
+
+  theorem same_col_seq_ascending (val k : Nat) (c : Color) :
+    let result := same_col_seq val k c
+    ∀ i j, i < j → j < result.length → result[i]! < result[j]! := sorry
+
+
+  theorem same_col_seq_color_match (val k : Nat) (c : Color) :
+    let result := same_col_seq val k c
+    ∀ x ∈ result, x % 3 = c.idx := sorry
+
+
+  theorem same_col_seq_zero_k (val : Nat) (c : Color) :
+    same_col_seq val 0 c = [] := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

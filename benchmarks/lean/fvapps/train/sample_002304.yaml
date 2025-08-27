@@ -1,15 +1,61 @@
-"vc-description": "Given a positive integer num, write a function which returns True\
-  \ if num is a perfect square else False.\n\n\nNote: Do not use any built-in library\
-  \ function such as sqrt.\n\n\nExample 1:\n\nInput: 16\nReturns: True\n\n\n\nExample\
-  \ 2:\n\nInput: 14\nReturns: False\n\n\n\nCredits:Special thanks to @elmirap for\
-  \ adding this problem and creating all test cases."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_perfect_square (n : Nat) : Bool := sorry\n\ntheorem perfect_squares\
-  \ {n : Nat} : \n  is_perfect_square (n * n) = true := sorry\n"
-"vc-theorems": "theorem non_perfect_squares {n : Nat} : \n  n > 0 → is_perfect_square\
-  \ (n * n + 1) = false := sorry\n\n\ntheorem sqrt_integers {n : Nat} :\n  is_perfect_square\
-  \ n = \n  (∃ m : Nat, m * m = n) := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
-  #eval is_perfect_square 16\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_perfect_square\
-  \ 14\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_perfect_square 25\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a positive integer num, write a function which returns True if num is a perfect square else False.
+
+
+  Note: Do not use any built-in library function such as sqrt.
+
+
+  Example 1:
+
+  Input: 16
+  Returns: True
+
+
+
+  Example 2:
+
+  Input: 14
+  Returns: False
+
+
+
+  Credits:Special thanks to @elmirap for adding this problem and creating all test cases.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_perfect_square (n : Nat) : Bool := sorry
+
+  theorem perfect_squares {n : Nat} : 
+    is_perfect_square (n * n) = true := sorry
+vc-theorems: |
+  theorem non_perfect_squares {n : Nat} : 
+    n > 0 → is_perfect_square (n * n + 1) = false := sorry
+
+
+  theorem sqrt_integers {n : Nat} :
+    is_perfect_square n = 
+    (∃ m : Nat, m * m = n) := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_perfect_square 16
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_perfect_square 14
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_perfect_square 25
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

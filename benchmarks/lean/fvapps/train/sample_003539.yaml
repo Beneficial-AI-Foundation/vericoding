@@ -1,13 +1,44 @@
-"vc-description": "Write function describeList which returns \"empty\" if the list\
-  \ is empty or \"singleton\" if it contains only one element or \"longer\"\" if more."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def describeList (lst : List Int) : String :=\n  sorry\n"
-"vc-theorems": "theorem list_description_properties (lst : List Int) :\n  describeList\
-  \ lst = match lst with\n  | [] => \"empty\"\n  | [_] => \"singleton\"\n  | _ =>\
-  \ \"longer\"\n  :=\n  sorry\n\n\ntheorem output_is_valid_string (lst : List Int)\
-  \ :\n  describeList lst ∈ [\"empty\", \"singleton\", \"longer\"] :=\n  sorry\n\n\
-  /--\ninfo: 'empty'\n-/\n#guard_msgs in\n#eval describeList []\n\n/--\ninfo: 'singleton'\n\
-  -/\n#guard_msgs in\n#eval describeList [1]\n\n/--\ninfo: 'longer'\n-/\n#guard_msgs\
-  \ in\n#eval describeList [1, 2, 3]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write function describeList which returns "empty" if the list is empty or "singleton" if it contains only one element or "longer"" if more.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def describeList (lst : List Int) : String :=
+    sorry
+vc-theorems: |
+  theorem list_description_properties (lst : List Int) :
+    describeList lst = match lst with
+    | [] => "empty"
+    | [_] => "singleton"
+    | _ => "longer"
+    :=
+    sorry
+
+
+  theorem output_is_valid_string (lst : List Int) :
+    describeList lst ∈ ["empty", "singleton", "longer"] :=
+    sorry
+
+  /--
+  info: 'empty'
+  -/
+  #guard_msgs in
+  #eval describeList []
+
+  /--
+  info: 'singleton'
+  -/
+  #guard_msgs in
+  #eval describeList [1]
+
+  /--
+  info: 'longer'
+  -/
+  #guard_msgs in
+  #eval describeList [1, 2, 3]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,27 +1,74 @@
-"vc-description": "Create a function that accepts 3 inputs, a string, a starting location,\
-  \ and a length.  The function needs to simulate the string endlessly repeating in\
-  \ both directions and return a substring beginning at the starting location and\
-  \ continues for length.\n\nExample:\n```python\nendless_string('xyz', -23, 6) ==\
-  \ 'yzxyzx'\n```\nTo visualize:\n\n           Negative                          \
-  \     Positive\n    3         2         1         *         1         2        \
-  \ 3      \n    0987654321098765432109876543210123456789012345678901234567890\n \
-  \   xyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzx\n           ******\n\
-  \         -23 for a length of 6 == 'yzxyzx'\n       \nSome more examples:\n```python\n\
-  endless_string('xyz', 0, 4) == 'xyzx'\nendless_string('xyz', 19, 2) == 'yz'\nendless_string('xyz',\
-  \ -4, -4) == 'zxyz'\n```\n\nA negative length needs to include the starting postion\
-  \ and return the characters to the left of the starting position."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def endlessString (s : String) (start length : Int) : String :=\
-  \ sorry\n\ntheorem endless_string_length\n  (s : String)\n  (start : Int)\n  (length\
-  \ : Int)\n  (h : length ≠ 0) :\n  (endlessString s start length).length = Int.natAbs\
-  \ length := sorry\n"
-"vc-theorems": "theorem endless_string_chars_subset\n  (s : String)\n  (start : Int)\n\
-  \  (length : Int)\n  (h : length ≠ 0) :\n  ∀ c, c ∈ (endlessString s start length).data\
-  \ → c ∈ s.data := sorry\n\n\ntheorem endless_string_start_period\n  (s : String)\n\
-  \  (start : Int)\n  (length : Int)\n  (h : length > 0) :\n  endlessString s start\
-  \ length = endlessString s (start + s.length) length := sorry\n\n/--\ninfo: 'yzxyzx'\n\
-  -/\n#guard_msgs in\n#eval endless_string \"xyz\" -23 6\n\n/--\ninfo: 'xyzx'\n-/\n\
-  #guard_msgs in\n#eval endless_string \"xyz\" 0 4\n\n/--\ninfo: 'zxyz'\n-/\n#guard_msgs\
-  \ in\n#eval endless_string \"xyz\" -4 -4\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Create a function that accepts 3 inputs, a string, a starting location, and a length.  The function needs to simulate the string endlessly repeating in both directions and return a substring beginning at the starting location and continues for length.
+
+  Example:
+  ```python
+  endless_string('xyz', -23, 6) == 'yzxyzx'
+  ```
+  To visualize:
+
+             Negative                               Positive
+      3         2         1         *         1         2         3      
+      0987654321098765432109876543210123456789012345678901234567890
+      xyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzx
+             ******
+           -23 for a length of 6 == 'yzxyzx'
+         
+  Some more examples:
+  ```python
+  endless_string('xyz', 0, 4) == 'xyzx'
+  endless_string('xyz', 19, 2) == 'yz'
+  endless_string('xyz', -4, -4) == 'zxyz'
+  ```
+
+  A negative length needs to include the starting postion and return the characters to the left of the starting position.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def endlessString (s : String) (start length : Int) : String := sorry
+
+  theorem endless_string_length
+    (s : String)
+    (start : Int)
+    (length : Int)
+    (h : length ≠ 0) :
+    (endlessString s start length).length = Int.natAbs length := sorry
+vc-theorems: |
+  theorem endless_string_chars_subset
+    (s : String)
+    (start : Int)
+    (length : Int)
+    (h : length ≠ 0) :
+    ∀ c, c ∈ (endlessString s start length).data → c ∈ s.data := sorry
+
+
+  theorem endless_string_start_period
+    (s : String)
+    (start : Int)
+    (length : Int)
+    (h : length > 0) :
+    endlessString s start length = endlessString s (start + s.length) length := sorry
+
+  /--
+  info: 'yzxyzx'
+  -/
+  #guard_msgs in
+  #eval endless_string "xyz" -23 6
+
+  /--
+  info: 'xyzx'
+  -/
+  #guard_msgs in
+  #eval endless_string "xyz" 0 4
+
+  /--
+  info: 'zxyz'
+  -/
+  #guard_msgs in
+  #eval endless_string "xyz" -4 -4
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

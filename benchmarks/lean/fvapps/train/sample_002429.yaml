@@ -1,19 +1,81 @@
-"vc-description": "Write a program to check whether a given number is an ugly number.\n\
-  \nUgly numbers are positive numbers whose prime factors only include 2, 3, 5.\n\n\
-  Example 1:\n\n\nInput: 6\nOutput: true\nExplanation: 6 = 2 × 3\n\nExample 2:\n\n\
-  \nInput: 8\nOutput: true\nExplanation: 8 = 2 × 2 × 2\n\n\nExample 3:\n\n\nInput:\
-  \ 14\nOutput: false \nExplanation: 14 is not ugly since it includes another prime\
-  \ factor 7.\n\n\nNote:\n\n\n       1 is typically treated as an ugly number.\n \
-  \      Input is within the 32-bit signed integer range: [−231,  231 − 1]."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_ugly (n : Int) : Bool :=\n  sorry\n"
-"vc-theorems": "theorem negative_and_zero_not_ugly {x : Int} (h : x ≤ 0) : \n  is_ugly\
-  \ x = false := \n  sorry\n\n\ntheorem products_of_2_3_5_are_ugly {x : Int} (h :\
-  \ x > 0) :\n  is_ugly x = true ↔ ∃ a b c : Nat, x = 2^a * 3^b * 5^c :=\n  sorry\n\
-  \n\ntheorem primes_except_2_3_5_not_ugly {p : Int} \n  (h1 : p > 0) \n  (h2 : p\
-  \ ≠ 2) \n  (h3 : p ≠ 3) \n  (h4 : p ≠ 5)\n  (h5 : ∀ m : Int, 2 ≤ m → m < p → p %\
-  \ m ≠ 0) :\n  is_ugly p = false :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval is_ugly 6\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_ugly 8\n\n\
-  /--\ninfo: False\n-/\n#guard_msgs in\n#eval is_ugly 14\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a program to check whether a given number is an ugly number.
+
+  Ugly numbers are positive numbers whose prime factors only include 2, 3, 5.
+
+  Example 1:
+
+
+  Input: 6
+  Output: true
+  Explanation: 6 = 2 × 3
+
+  Example 2:
+
+
+  Input: 8
+  Output: true
+  Explanation: 8 = 2 × 2 × 2
+
+
+  Example 3:
+
+
+  Input: 14
+  Output: false 
+  Explanation: 14 is not ugly since it includes another prime factor 7.
+
+
+  Note:
+
+
+         1 is typically treated as an ugly number.
+         Input is within the 32-bit signed integer range: [−231,  231 − 1].
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_ugly (n : Int) : Bool :=
+    sorry
+vc-theorems: |
+  theorem negative_and_zero_not_ugly {x : Int} (h : x ≤ 0) : 
+    is_ugly x = false := 
+    sorry
+
+
+  theorem products_of_2_3_5_are_ugly {x : Int} (h : x > 0) :
+    is_ugly x = true ↔ ∃ a b c : Nat, x = 2^a * 3^b * 5^c :=
+    sorry
+
+
+  theorem primes_except_2_3_5_not_ugly {p : Int} 
+    (h1 : p > 0) 
+    (h2 : p ≠ 2) 
+    (h3 : p ≠ 3) 
+    (h4 : p ≠ 5)
+    (h5 : ∀ m : Int, 2 ≤ m → m < p → p % m ≠ 0) :
+    is_ugly p = false :=
+    sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_ugly 6
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_ugly 8
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_ugly 14
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

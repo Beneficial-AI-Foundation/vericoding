@@ -1,58 +1,108 @@
-"vc-description": "Cascading Style Sheets (CSS) is a style sheet language used for\
-  \ describing the look and formatting of a document written in a markup language.\
-  \ A style sheet consists of a list of rules. Each rule or rule-set consists of one\
-  \ or more selectors, and a declaration block. Selector describes which element it\
-  \ matches.\n\nSometimes element is matched to multiple selectors. In this case,\
-  \ element inherits multiple styles, from each rule it matches. Rules can override\
-  \ each other. To solve this problem, each selector has it's own 'specificity' -\
-  \ e.g. weight. The selector with greater specificity overrides the other selector.\n\
-  \nYour task is to calculate the weights of two selectors and determine which of\
-  \ them will beat the other one.\n\n```python\ncompare(\"body p\", \"div\") # returns\
-  \ \"body p\"\ncompare(\".class\", \"#id\") # returns \"#id\"\ncompare(\"div.big\"\
-  , \".small\") # returns \"div.big\"\ncompare(\".big\", \".small\") # returns \"\
-  .small\" (because it appears later)\n```\n\nFor simplicity, all selectors in test\
-  \ cases are CSS1-compatible, test cases don't include pseudoclasses, pseudoelements,\
-  \ attribute selectors, etc. Below is an explanation on how to weight two selectors.\
-  \ You can read more about specificity here.\n\nThe simplest selector type is ``tagname``\
-  \ selector. It writes as a simple  alphanumeric identifier: eg ``body``, ``div``,\
-  \ ``h1``, etc. It has the least weight. If selectors have multiple elements - the\
-  \ selector with more elements win. For example, ``body p`` beats ``div``, because\
-  \ it refers to 2 (nested) elements rather than 1.\n\nAnother simple selector is\
-  \ ``.class`` selector. It begins with dot and refer to element with specific ``class``\
-  \ attribute. Class selectors can also be applied to tagname selectors, so ``div.red``\
-  \ refer to ```` element. They can be grouped, for example, ``.red.striped``. Class\
-  \ selector beats tagname selector.\n\nThe most weighted selector type in stylesheet\
-  \ is ``#id`` selector. It begins with hash sign and refer to element with specific\
-  \ ``id`` attribute. It can also be standalone, or applied to an element. Id selector\
-  \ beats both selector types.\n\nAnd the least weighted selector is ``*``, which\
-  \ has no specificity and can be beat by any other selector.\n\nSelectors can be\
-  \ combined, for example, ``body #menu ul li.active`` refers to ``li`` element with\
-  \ ``class=\"active\"``, placed inside ``ul`` element, placed inside element width\
-  \ ``id=\"menu\"``, placed inside ``body``.\n\nSpecificity calculation is simple.\
-  \ \n\nSelector with more #id selectors wins\nIf both are same, the winner is selector\
-  \ with more .class selectors\nIf both are same, selector with more elements wins\n\
-  If all of above values are same, the winner is selector that appear last\n\n\nFor\
-  \ example, let's represent the number of ``#id`` , ``.class``, ``tagname`` selectors\
-  \ as array (in order from worst to best):\n\nSelectorSpecificity (#id,.class,tagname)\n\
-  *0, 0, 0\nspan0, 0, 1\nbody p0, 0, 2\n.green0, 1, 0\napple.yellow0, 1, 1\ndiv.menu\
-  \ li0, 1, 2\n.red .orange0, 2, 0\ndiv.big .first0, 2, 1\n#john1, 0, 0\ndiv#john1,\
-  \ 0, 1\nbody #john span1, 0, 2\nmenu .item #checkout.active1, 2, 1\n#foo div#bar.red\
-  \ .none2, 2, 1"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def myCompare (a b : String) : String := sorry \ndef specificity\
-  \ (s : String) : Nat × Nat × Nat := sorry\n\ninstance : LT (Nat × Nat × Nat) where\n\
-  \  lt x y := x.1 < y.1 ∨ (x.1 = y.1 ∧ (x.2.1 < y.2.1 ∨ (x.2.1 = y.2.1 ∧ x.2.2 <\
-  \ y.2.2)))\n"
-"vc-theorems": "theorem compare_returns_input (a b : String) :\n  let res := myCompare\
-  \ a b;\n  (res = a ∨ res = b) := sorry\n\n\ntheorem compare_reflexive (s : String)\
-  \ :\n  myCompare s s = s := sorry\n\n\ntheorem specificity_ordering (a b : String)\
-  \ :\n  myCompare a b = a → \n  ¬(specificity a < specificity b) := sorry\n\n\ntheorem\
-  \ id_beats_class : \n  (specificity \"#x\").1 > (specificity \".x\").1 := sorry\n\
-  \n\ntheorem class_beats_tag :\n  (specificity \".x\").2.1 > (specificity \"x\").2.1\
-  \ := sorry\n\n\ntheorem specificity_output_format (s : String) :\n  let spec :=\
-  \ specificity s;\n  spec.1 ≥ 0 ∧ spec.2.1 ≥ 0 ∧ spec.2.2 ≥ 0 := sorry\n\n/--\ninfo:\
-  \ 'body p'\n-/\n#guard_msgs in\n#eval compare \"body p\" \"div\"\n\n/--\ninfo: '.red'\n\
-  -/\n#guard_msgs in\n#eval compare \".red\" \"div\"\n\n/--\ninfo: '#header'\n-/\n\
-  #guard_msgs in\n#eval compare \"#header\" \".main\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Cascading Style Sheets (CSS) is a style sheet language used for describing the look and formatting of a document written in a markup language. A style sheet consists of a list of rules. Each rule or rule-set consists of one or more selectors, and a declaration block. Selector describes which element it matches.
+
+  Sometimes element is matched to multiple selectors. In this case, element inherits multiple styles, from each rule it matches. Rules can override each other. To solve this problem, each selector has it's own 'specificity' - e.g. weight. The selector with greater specificity overrides the other selector.
+
+  Your task is to calculate the weights of two selectors and determine which of them will beat the other one.
+
+  ```python
+  compare("body p", "div") # returns "body p"
+  compare(".class", "#id") # returns "#id"
+  compare("div.big", ".small") # returns "div.big"
+  compare(".big", ".small") # returns ".small" (because it appears later)
+  ```
+
+  For simplicity, all selectors in test cases are CSS1-compatible, test cases don't include pseudoclasses, pseudoelements, attribute selectors, etc. Below is an explanation on how to weight two selectors. You can read more about specificity here.
+
+  The simplest selector type is ``tagname`` selector. It writes as a simple  alphanumeric identifier: eg ``body``, ``div``, ``h1``, etc. It has the least weight. If selectors have multiple elements - the selector with more elements win. For example, ``body p`` beats ``div``, because it refers to 2 (nested) elements rather than 1.
+
+  Another simple selector is ``.class`` selector. It begins with dot and refer to element with specific ``class`` attribute. Class selectors can also be applied to tagname selectors, so ``div.red`` refer to ```` element. They can be grouped, for example, ``.red.striped``. Class selector beats tagname selector.
+
+  The most weighted selector type in stylesheet is ``#id`` selector. It begins with hash sign and refer to element with specific ``id`` attribute. It can also be standalone, or applied to an element. Id selector beats both selector types.
+
+  And the least weighted selector is ``*``, which has no specificity and can be beat by any other selector.
+
+  Selectors can be combined, for example, ``body #menu ul li.active`` refers to ``li`` element with ``class="active"``, placed inside ``ul`` element, placed inside element width ``id="menu"``, placed inside ``body``.
+
+  Specificity calculation is simple. 
+
+  Selector with more #id selectors wins
+  If both are same, the winner is selector with more .class selectors
+  If both are same, selector with more elements wins
+  If all of above values are same, the winner is selector that appear last
+
+
+  For example, let's represent the number of ``#id`` , ``.class``, ``tagname`` selectors as array (in order from worst to best):
+
+  SelectorSpecificity (#id,.class,tagname)
+  *0, 0, 0
+  span0, 0, 1
+  body p0, 0, 2
+  .green0, 1, 0
+  apple.yellow0, 1, 1
+  div.menu li0, 1, 2
+  .red .orange0, 2, 0
+  div.big .first0, 2, 1
+  #john1, 0, 0
+  div#john1, 0, 1
+  body #john span1, 0, 2
+  menu .item #checkout.active1, 2, 1
+  #foo div#bar.red .none2, 2, 1
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def myCompare (a b : String) : String := sorry 
+  def specificity (s : String) : Nat × Nat × Nat := sorry
+
+  instance : LT (Nat × Nat × Nat) where
+    lt x y := x.1 < y.1 ∨ (x.1 = y.1 ∧ (x.2.1 < y.2.1 ∨ (x.2.1 = y.2.1 ∧ x.2.2 < y.2.2)))
+vc-theorems: |
+  theorem compare_returns_input (a b : String) :
+    let res := myCompare a b;
+    (res = a ∨ res = b) := sorry
+
+
+  theorem compare_reflexive (s : String) :
+    myCompare s s = s := sorry
+
+
+  theorem specificity_ordering (a b : String) :
+    myCompare a b = a → 
+    ¬(specificity a < specificity b) := sorry
+
+
+  theorem id_beats_class : 
+    (specificity "#x").1 > (specificity ".x").1 := sorry
+
+
+  theorem class_beats_tag :
+    (specificity ".x").2.1 > (specificity "x").2.1 := sorry
+
+
+  theorem specificity_output_format (s : String) :
+    let spec := specificity s;
+    spec.1 ≥ 0 ∧ spec.2.1 ≥ 0 ∧ spec.2.2 ≥ 0 := sorry
+
+  /--
+  info: 'body p'
+  -/
+  #guard_msgs in
+  #eval compare "body p" "div"
+
+  /--
+  info: '.red'
+  -/
+  #guard_msgs in
+  #eval compare ".red" "div"
+
+  /--
+  info: '#header'
+  -/
+  #guard_msgs in
+  #eval compare "#header" ".main"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

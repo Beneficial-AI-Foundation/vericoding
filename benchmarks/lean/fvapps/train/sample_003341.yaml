@@ -1,22 +1,71 @@
-"vc-description": "Given some points (cartesian coordinates), return true if all of\
-  \ them lie on a line.  Treat both an empty set and a single point as a line.\n\n\
-  ```python\non_line(((1,2), (7,4), (22,9)) == True\non_line(((1,2), (-3,-14), (22,9)))\
-  \ == False\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def on_line (pts : List (Int × Int)) : Bool :=\n  sorry\n"
-"vc-theorems": "theorem empty_single_point_collinear (pts : List (Int × Int)) :\n\
-  \  pts.length ≤ 1 → on_line pts = true :=\n  sorry\n\n\ntheorem duplicate_points_preserves_collinearity\
-  \ (pts : List (Int × Int)) :\n  pts.length > 0 → on_line (pts ++ pts) = on_line\
-  \ pts :=\n  sorry\n\n\ntheorem vertical_line_collinear (x y1 y2 : Int) :\n  let\
-  \ pts := [(x,y1), (x,y2)]\n  let pts' := if y1 = y2 then pts else (x, (y1+y2)/2)::pts\n\
-  \  on_line pts' = true :=\n  sorry\n\n\ntheorem horizontal_line_collinear (y x1\
-  \ x2 : Int) :\n  let pts := [(x1,y), (x2,y)]\n  let pts' := if x1 = x2 then pts\
-  \ else ((x1+x2)/2,y)::pts\n  on_line pts' = true :=\n  sorry\n\n\ntheorem diagonal_line_collinear\
-  \ (start step1 step2 : Int) :\n  let pts := [(start,start), (start+step1,start+step1),\
-  \ (start+step2,start+step2)]\n  on_line pts = true :=\n  sorry\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval on_line []\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
-  \ on_line [(1, 1)]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval on_line [(1, 2),\
-  \ (7, 4), (22, 9)]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval on_line [(1, 2),\
-  \ (-3, -14), (22, 9)]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given some points (cartesian coordinates), return true if all of them lie on a line.  Treat both an empty set and a single point as a line.
+
+  ```python
+  on_line(((1,2), (7,4), (22,9)) == True
+  on_line(((1,2), (-3,-14), (22,9))) == False
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def on_line (pts : List (Int × Int)) : Bool :=
+    sorry
+vc-theorems: |
+  theorem empty_single_point_collinear (pts : List (Int × Int)) :
+    pts.length ≤ 1 → on_line pts = true :=
+    sorry
+
+
+  theorem duplicate_points_preserves_collinearity (pts : List (Int × Int)) :
+    pts.length > 0 → on_line (pts ++ pts) = on_line pts :=
+    sorry
+
+
+  theorem vertical_line_collinear (x y1 y2 : Int) :
+    let pts := [(x,y1), (x,y2)]
+    let pts' := if y1 = y2 then pts else (x, (y1+y2)/2)::pts
+    on_line pts' = true :=
+    sorry
+
+
+  theorem horizontal_line_collinear (y x1 x2 : Int) :
+    let pts := [(x1,y), (x2,y)]
+    let pts' := if x1 = x2 then pts else ((x1+x2)/2,y)::pts
+    on_line pts' = true :=
+    sorry
+
+
+  theorem diagonal_line_collinear (start step1 step2 : Int) :
+    let pts := [(start,start), (start+step1,start+step1), (start+step2,start+step2)]
+    on_line pts = true :=
+    sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval on_line []
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval on_line [(1, 1)]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval on_line [(1, 2), (7, 4), (22, 9)]
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval on_line [(1, 2), (-3, -14), (22, 9)]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

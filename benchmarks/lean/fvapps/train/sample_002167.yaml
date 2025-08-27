@@ -1,38 +1,100 @@
-"vc-description": "There is a tree with N vertices numbered 1 through N.\nThe i-th\
-  \ edge connects Vertex x_i and y_i.\nEach vertex is painted white or black.\nThe\
-  \ initial color of Vertex i is represented by a letter c_i.\nc_i = W represents\
-  \ the vertex is white; c_i = B represents the vertex is black.\nA cat will walk\
-  \ along this tree.\nMore specifically, she performs one of the following in one\
-  \ second repeatedly:\n - Choose a vertex that is adjacent to the vertex where she\
-  \ is currently, and move to that vertex. Then, invert the color of the destination\
-  \ vertex.\n - Invert the color of the vertex where she is currently.\nThe cat's\
-  \ objective is to paint all the vertices black. She may start and end performing\
-  \ actions at any vertex.\nAt least how many seconds does it takes for the cat to\
-  \ achieve her objective?\n\n-----Constraints-----\n - 1 ≤ N ≤ 10^5\n - 1 ≤ x_i,y_i\
-  \ ≤ N (1 ≤ i ≤ N-1)\n - The given graph is a tree.\n - c_i = W or c_i = B.\n\n-----Input-----\n\
-  Input is given from Standard Input in the following format:\nN\nx_1 y_1\nx_2 y_2\n\
-  :\nx_{N-1} y_{N-1}\nc_1c_2..c_N\n\n-----Output-----\nPrint the minimum number of\
-  \ seconds required to achieve the objective.\n\n-----Sample Input-----\n5\n1 2\n\
-  2 3\n2 4\n4 5\nWBBWW\n\n-----Sample Output-----\n5\n\nThe objective can be achieved\
-  \ in five seconds, for example, as follows:\n - Start at Vertex 1. Change the color\
-  \ of Vertex 1 to black.\n - Move to Vertex 2, then change the color of Vertex 2\
-  \ to white.\n - Change the color of Vertex 2 to black.\n - Move to Vertex 4, then\
-  \ change the color of Vertex 4 to black.\n - Move to Vertex 5, then change the color\
-  \ of Vertex 5 to black."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_cat_coloring (n : Nat) (edges : List (Nat × Nat)) (colors\
-  \ : String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem single_white_node :\n  solve_cat_coloring 1 [] \"W\" = 1 :=\
-  \ by sorry\n\n\ntheorem single_black_node :\n  solve_cat_coloring 1 [] \"B\" = 0\
-  \ := by sorry\n\n\ntheorem five_nodes_mixed :\n  solve_cat_coloring 5 [(1,2), (2,3),\
-  \ (2,4), (4,5)] \"WBBWW\" = 5 := by sorry\n\n\ntheorem six_nodes_mixed :\n  solve_cat_coloring\
-  \ 6 [(3,1), (4,5), (2,6), (6,1), (3,4)] \"WWBWBB\" = 7 := by sorry\n\n\ntheorem\
-  \ three_nodes_mixed_nonneg :\n  solve_cat_coloring 3 [(1,2), (2,3)] \"WBW\" ≥ 0\
-  \ := by sorry\n\n\ntheorem four_nodes_alternating_nonneg :\n  solve_cat_coloring\
-  \ 4 [(1,2), (2,3), (3,4)] \"WBWB\" ≥ 0 := by sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs\
-  \ in\n#eval solve_cat_coloring 5 [(1, 2), (2, 3), (2, 4), (4, 5)] \"WBBWW\"\n\n\
-  /--\ninfo: 7\n-/\n#guard_msgs in\n#eval solve_cat_coloring 6 [(3, 1), (4, 5), (2,\
-  \ 6), (6, 1), (3, 4)] \"WWBWBB\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval solve_cat_coloring\
-  \ 1 [] \"B\"\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"
+vc-description: |-
+  There is a tree with N vertices numbered 1 through N.
+  The i-th edge connects Vertex x_i and y_i.
+  Each vertex is painted white or black.
+  The initial color of Vertex i is represented by a letter c_i.
+  c_i = W represents the vertex is white; c_i = B represents the vertex is black.
+  A cat will walk along this tree.
+  More specifically, she performs one of the following in one second repeatedly:
+   - Choose a vertex that is adjacent to the vertex where she is currently, and move to that vertex. Then, invert the color of the destination vertex.
+   - Invert the color of the vertex where she is currently.
+  The cat's objective is to paint all the vertices black. She may start and end performing actions at any vertex.
+  At least how many seconds does it takes for the cat to achieve her objective?
+
+  -----Constraints-----
+   - 1 ≤ N ≤ 10^5
+   - 1 ≤ x_i,y_i ≤ N (1 ≤ i ≤ N-1)
+   - The given graph is a tree.
+   - c_i = W or c_i = B.
+
+  -----Input-----
+  Input is given from Standard Input in the following format:
+  N
+  x_1 y_1
+  x_2 y_2
+  :
+  x_{N-1} y_{N-1}
+  c_1c_2..c_N
+
+  -----Output-----
+  Print the minimum number of seconds required to achieve the objective.
+
+  -----Sample Input-----
+  5
+  1 2
+  2 3
+  2 4
+  4 5
+  WBBWW
+
+  -----Sample Output-----
+  5
+
+  The objective can be achieved in five seconds, for example, as follows:
+   - Start at Vertex 1. Change the color of Vertex 1 to black.
+   - Move to Vertex 2, then change the color of Vertex 2 to white.
+   - Change the color of Vertex 2 to black.
+   - Move to Vertex 4, then change the color of Vertex 4 to black.
+   - Move to Vertex 5, then change the color of Vertex 5 to black.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_cat_coloring (n : Nat) (edges : List (Nat × Nat)) (colors : String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem single_white_node :
+    solve_cat_coloring 1 [] "W" = 1 := by sorry
+
+
+  theorem single_black_node :
+    solve_cat_coloring 1 [] "B" = 0 := by sorry
+
+
+  theorem five_nodes_mixed :
+    solve_cat_coloring 5 [(1,2), (2,3), (2,4), (4,5)] "WBBWW" = 5 := by sorry
+
+
+  theorem six_nodes_mixed :
+    solve_cat_coloring 6 [(3,1), (4,5), (2,6), (6,1), (3,4)] "WWBWBB" = 7 := by sorry
+
+
+  theorem three_nodes_mixed_nonneg :
+    solve_cat_coloring 3 [(1,2), (2,3)] "WBW" ≥ 0 := by sorry
+
+
+  theorem four_nodes_alternating_nonneg :
+    solve_cat_coloring 4 [(1,2), (2,3), (3,4)] "WBWB" ≥ 0 := by sorry
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval solve_cat_coloring 5 [(1, 2), (2, 3), (2, 4), (4, 5)] "WBBWW"
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval solve_cat_coloring 6 [(3, 1), (4, 5), (2, 6), (6, 1), (3, 4)] "WWBWBB"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve_cat_coloring 1 [] "B"
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded

@@ -1,39 +1,77 @@
-"vc-description": "Given the array favoriteCompanies where favoriteCompanies[i] is\
-  \ the list of favorites companies for the ith person (indexed from 0).\nReturn the\
-  \ indices of people whose list of favorite companies is not a subset of any other\
-  \ list of favorites companies. You must return the indices in increasing order.\n\
-   \nExample 1:\nInput: favoriteCompanies = [[\"leetcode\",\"google\",\"facebook\"\
-  ],[\"google\",\"microsoft\"],[\"google\",\"facebook\"],[\"google\"],[\"amazon\"\
-  ]]\nOutput: [0,1,4] \nExplanation: \nPerson with index=2 has favoriteCompanies[2]=[\"\
-  google\",\"facebook\"] which is a subset of favoriteCompanies[0]=[\"leetcode\",\"\
-  google\",\"facebook\"] corresponding to the person with index 0. \nPerson with index=3\
-  \ has favoriteCompanies[3]=[\"google\"] which is a subset of favoriteCompanies[0]=[\"\
-  leetcode\",\"google\",\"facebook\"] and favoriteCompanies[1]=[\"google\",\"microsoft\"\
-  ]. \nOther lists of favorite companies are not a subset of another list, therefore,\
-  \ the answer is [0,1,4].\n\nExample 2:\nInput: favoriteCompanies = [[\"leetcode\"\
-  ,\"google\",\"facebook\"],[\"leetcode\",\"amazon\"],[\"facebook\",\"google\"]]\n\
-  Output: [0,1] \nExplanation: In this case favoriteCompanies[2]=[\"facebook\",\"\
-  google\"] is a subset of favoriteCompanies[0]=[\"leetcode\",\"google\",\"facebook\"\
-  ], therefore, the answer is [0,1].\n\nExample 3:\nInput: favoriteCompanies = [[\"\
-  leetcode\"],[\"google\"],[\"facebook\"],[\"amazon\"]]\nOutput: [0,1,2,3]\n\n \n\
-  Constraints:\n\n1 <= favoriteCompanies.length <= 100\n1 <= favoriteCompanies[i].length\
-  \ <= 500\n1 <= favoriteCompanies[i][j].length <= 20\nAll strings in favoriteCompanies[i]\
-  \ are distinct.\nAll lists of favorite companies are distinct, that is, If we sort\
-  \ alphabetically each list then favoriteCompanies[i] != favoriteCompanies[j].\n\
-  All strings consist of lowercase English letters only."
-"vc-preamble": "import Imports.AllImports\n\ndef List.isSubsetOf (l1 l2 : List α)\
-  \ [BEq α] : Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def people_indexes (favorite_companies : List (List String)) :\
-  \ List Nat :=\n  sorry\n"
-"vc-theorems": "theorem people_indexes_valid_indices\n  (favorite_companies : List\
-  \ (List String)) :\n  let result := people_indexes favorite_companies\n  ∀ i ∈ result,\
-  \ i < favorite_companies.length :=\nsorry\n\n\n\n\n\n\ntheorem people_indexes_empty\
-  \ :\n  people_indexes [] = [] :=\nsorry\n\n/--\ninfo: [0, 1, 4]\n-/\n#guard_msgs\
-  \ in\n#eval people_indexes [[\"leetcode\", \"google\", \"facebook\"], [\"google\"\
-  , \"microsoft\"], [\"google\", \"facebook\"], [\"google\"], [\"amazon\"]]\n\n/--\n\
-  info: [0, 1]\n-/\n#guard_msgs in\n#eval people_indexes [[\"leetcode\", \"google\"\
-  , \"facebook\"], [\"leetcode\", \"amazon\"], [\"facebook\", \"google\"]]\n\n/--\n\
-  info: [0, 1, 2, 3]\n-/\n#guard_msgs in\n#eval people_indexes [[\"leetcode\"], [\"\
-  google\"], [\"facebook\"], [\"amazon\"]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given the array favoriteCompanies where favoriteCompanies[i] is the list of favorites companies for the ith person (indexed from 0).
+  Return the indices of people whose list of favorite companies is not a subset of any other list of favorites companies. You must return the indices in increasing order.
+   
+  Example 1:
+  Input: favoriteCompanies = [["leetcode","google","facebook"],["google","microsoft"],["google","facebook"],["google"],["amazon"]]
+  Output: [0,1,4] 
+  Explanation: 
+  Person with index=2 has favoriteCompanies[2]=["google","facebook"] which is a subset of favoriteCompanies[0]=["leetcode","google","facebook"] corresponding to the person with index 0. 
+  Person with index=3 has favoriteCompanies[3]=["google"] which is a subset of favoriteCompanies[0]=["leetcode","google","facebook"] and favoriteCompanies[1]=["google","microsoft"]. 
+  Other lists of favorite companies are not a subset of another list, therefore, the answer is [0,1,4].
+
+  Example 2:
+  Input: favoriteCompanies = [["leetcode","google","facebook"],["leetcode","amazon"],["facebook","google"]]
+  Output: [0,1] 
+  Explanation: In this case favoriteCompanies[2]=["facebook","google"] is a subset of favoriteCompanies[0]=["leetcode","google","facebook"], therefore, the answer is [0,1].
+
+  Example 3:
+  Input: favoriteCompanies = [["leetcode"],["google"],["facebook"],["amazon"]]
+  Output: [0,1,2,3]
+
+   
+  Constraints:
+
+  1 <= favoriteCompanies.length <= 100
+  1 <= favoriteCompanies[i].length <= 500
+  1 <= favoriteCompanies[i][j].length <= 20
+  All strings in favoriteCompanies[i] are distinct.
+  All lists of favorite companies are distinct, that is, If we sort alphabetically each list then favoriteCompanies[i] != favoriteCompanies[j].
+  All strings consist of lowercase English letters only.
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.isSubsetOf (l1 l2 : List α) [BEq α] : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def people_indexes (favorite_companies : List (List String)) : List Nat :=
+    sorry
+vc-theorems: |
+  theorem people_indexes_valid_indices
+    (favorite_companies : List (List String)) :
+    let result := people_indexes favorite_companies
+    ∀ i ∈ result, i < favorite_companies.length :=
+  sorry
+
+
+
+
+
+
+  theorem people_indexes_empty :
+    people_indexes [] = [] :=
+  sorry
+
+  /--
+  info: [0, 1, 4]
+  -/
+  #guard_msgs in
+  #eval people_indexes [["leetcode", "google", "facebook"], ["google", "microsoft"], ["google", "facebook"], ["google"], ["amazon"]]
+
+  /--
+  info: [0, 1]
+  -/
+  #guard_msgs in
+  #eval people_indexes [["leetcode", "google", "facebook"], ["leetcode", "amazon"], ["facebook", "google"]]
+
+  /--
+  info: [0, 1, 2, 3]
+  -/
+  #guard_msgs in
+  #eval people_indexes [["leetcode"], ["google"], ["facebook"], ["amazon"]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

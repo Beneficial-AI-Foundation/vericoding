@@ -1,13 +1,43 @@
-"vc-description": "Complete the function which converts hex number (given as a string)\
-  \ to a decimal number."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def hex_to_dec (s : String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem dec_to_hex_to_dec_roundtrip (n : Nat) :\n  hex_to_dec (String.mk\
-  \ (Nat.toDigits 16 n)) = n :=\nsorry\n\n\n\n\ntheorem invalid_hex_raises (s : String)\n\
-  \  (h : ∃ c ∈ s.data, c ∉ ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a',\
-  \ 'b', 'c', 'd', 'e', 'f', 'A', 'B', 'C', 'D', 'E', 'F']) :\n  hex_to_dec s = 0\
-  \ :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval hex_to_dec \"1\"\n\n/--\n\
-  info: 10\n-/\n#guard_msgs in\n#eval hex_to_dec \"a\"\n\n/--\ninfo: 16\n-/\n#guard_msgs\
-  \ in\n#eval hex_to_dec \"10\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Complete the function which converts hex number (given as a string) to a decimal number.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def hex_to_dec (s : String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem dec_to_hex_to_dec_roundtrip (n : Nat) :
+    hex_to_dec (String.mk (Nat.toDigits 16 n)) = n :=
+  sorry
+
+
+
+
+  theorem invalid_hex_raises (s : String)
+    (h : ∃ c ∈ s.data, c ∉ ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'A', 'B', 'C', 'D', 'E', 'F']) :
+    hex_to_dec s = 0 :=
+  sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval hex_to_dec "1"
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval hex_to_dec "a"
+
+  /--
+  info: 16
+  -/
+  #guard_msgs in
+  #eval hex_to_dec "10"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

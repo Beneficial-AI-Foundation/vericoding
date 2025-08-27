@@ -1,23 +1,82 @@
-"vc-description": "The chef is trying to solve some pattern problems, Chef wants your\
-  \ help to code it. Chef has one number K to form a new pattern. Help the chef to\
-  \ code this pattern problem.\n\n-----Input:-----\n- First-line will contain $T$,\
-  \ the number of test cases. Then the test cases follow. \n- Each test case contains\
-  \ a single line of input, one integer $K$. \n\n-----Output:-----\nFor each test\
-  \ case, output as the pattern.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n\
-  - $1 \\leq K \\leq 100$\n\n-----Sample Input:-----\n4\n1\n2\n3\n4\n\n-----Sample\
-  \ Output:-----\n1\n12\n34\n123\n456\n789\n1234\n5678\n9101112\n13141516\n\n-----EXPLANATION:-----\n\
-  No need, else pattern can be decode easily."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_pattern (k : Nat) : List String := sorry\n\ntheorem test_base_case\
-  \ :\n  solve_pattern 1 = [\"1\"] := sorry\n"
-"vc-theorems": "theorem test_pattern_props {k : Nat} (h : k > 0) (h2 : k ≤ 10) :\n\
-  \  let result := solve_pattern k\n  -- Number of rows equals k\n  List.length result\
-  \ = k ∧  \n  -- First row is 1..k concatenated\n  List.head! result = toString k\
-  \ ∧ \n  -- Each element is a string containing only digits\n  ∀ x ∈ result, ∃ n\
-  \ : Nat, toString n = x\n  := sorry\n\n/--\ninfo: ['1']\n-/\n#guard_msgs in\n#eval\
-  \ solve_pattern 1\n\n/--\ninfo: ['12', '34']\n-/\n#guard_msgs in\n#eval solve_pattern\
-  \ 2\n\n/--\ninfo: ['123', '456', '789']\n-/\n#guard_msgs in\n#eval solve_pattern\
-  \ 3\n\n/--\ninfo: ['1234', '5678', '9101112', '13141516']\n-/\n#guard_msgs in\n\
-  #eval solve_pattern 4\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  The chef is trying to solve some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+
+  -----Output:-----
+  For each test case, output as the pattern.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq K \leq 100$
+
+  -----Sample Input:-----
+  4
+  1
+  2
+  3
+  4
+
+  -----Sample Output:-----
+  1
+  12
+  34
+  123
+  456
+  789
+  1234
+  5678
+  9101112
+  13141516
+
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_pattern (k : Nat) : List String := sorry
+
+  theorem test_base_case :
+    solve_pattern 1 = ["1"] := sorry
+vc-theorems: |
+  theorem test_pattern_props {k : Nat} (h : k > 0) (h2 : k ≤ 10) :
+    let result := solve_pattern k
+    -- Number of rows equals k
+    List.length result = k ∧  
+    -- First row is 1..k concatenated
+    List.head! result = toString k ∧ 
+    -- Each element is a string containing only digits
+    ∀ x ∈ result, ∃ n : Nat, toString n = x
+    := sorry
+
+  /--
+  info: ['1']
+  -/
+  #guard_msgs in
+  #eval solve_pattern 1
+
+  /--
+  info: ['12', '34']
+  -/
+  #guard_msgs in
+  #eval solve_pattern 2
+
+  /--
+  info: ['123', '456', '789']
+  -/
+  #guard_msgs in
+  #eval solve_pattern 3
+
+  /--
+  info: ['1234', '5678', '9101112', '13141516']
+  -/
+  #guard_msgs in
+  #eval solve_pattern 4
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

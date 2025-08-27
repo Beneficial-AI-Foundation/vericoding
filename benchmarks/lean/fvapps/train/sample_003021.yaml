@@ -1,26 +1,92 @@
-"vc-description": "# Task\n You are given three integers `l, d and x`. Your task is:\n\
-  ```\n• determine the minimal integer n \n    such that l ≤ n ≤ d, and the sum of\
-  \ its digits equals x.\n• determine the maximal integer m \n    such that l ≤ m\
-  \ ≤ d, and the sum of its digits equals x.\n```\nIt is guaranteed that such numbers\
-  \ always exist.\n\n# Input/Output\n\n\n - `[input]` integer `l`\n\n - `[input]`\
-  \ integer `d`\n\n  `1 ≤ l ≤ d ≤ 10000.`\n\n\n - `[input]` integer `x`\n\n  `1 ≤\
-  \ x ≤ 36`\n\n\n - `[output]` an integer array\n\n  Array of two elements, where\
-  \ the first element is `n`, and the second one is `m`.\n\n\n# Example\n\n For `l\
-  \ = 500, d = 505, x = 10`, the output should be `[505, 505]`.\n \n For `l = 100,\
-  \ d = 200, x = 10`, the output should be `[109, 190]`."
-"vc-preamble": "import Imports.AllImports\n\ndef min_and_max (l d x : Nat) : List\
-  \ Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sum_of_digits (n : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem min_and_max_properties {l d x : Nat}\n  (h1: l ≤ d) \n  (h2:\
-  \ l > 0)\n  (h3: d ≤ 1000)\n  (h4: x ≤ 27)\n  (h5: ∃ n, l ≤ n ∧ n ≤ d ∧ sum_of_digits\
-  \ n = x) :\n  let result := min_and_max l d x\n  List.length result = 2 ∧\n  result[0]!\
-  \ ≤ result[1]! ∧\n  l ≤ result[0]! ∧ result[0]! ≤ d ∧\n  l ≤ result[1]! ∧ result[1]!\
-  \ ≤ d ∧\n  sum_of_digits result[0]! = x ∧\n  sum_of_digits result[1]! = x :=\n \
-  \ sorry\n\n\ntheorem min_and_max_identical_bounds {n : Nat}\n  (h1: n > 0)\n  (h2:\
-  \ n ≤ 1000) :\n  let x := sum_of_digits n\n  let result := min_and_max n n x\n \
-  \ result[0]! = n ∧ result[1]! = n :=\n  sorry\n\n/--\ninfo: [109, 190]\n-/\n#guard_msgs\
-  \ in\n#eval min_and_max 100 200 10\n\n/--\ninfo: [505, 505]\n-/\n#guard_msgs in\n\
-  #eval min_and_max 500 505 10\n\n/--\ninfo: [104, 500]\n-/\n#guard_msgs in\n#eval\
-  \ min_and_max 99 501 5\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  # Task
+   You are given three integers `l, d and x`. Your task is:
+  ```
+  • determine the minimal integer n 
+      such that l ≤ n ≤ d, and the sum of its digits equals x.
+  • determine the maximal integer m 
+      such that l ≤ m ≤ d, and the sum of its digits equals x.
+  ```
+  It is guaranteed that such numbers always exist.
+
+  # Input/Output
+
+
+   - `[input]` integer `l`
+
+   - `[input]` integer `d`
+
+    `1 ≤ l ≤ d ≤ 10000.`
+
+
+   - `[input]` integer `x`
+
+    `1 ≤ x ≤ 36`
+
+
+   - `[output]` an integer array
+
+    Array of two elements, where the first element is `n`, and the second one is `m`.
+
+
+  # Example
+
+   For `l = 500, d = 505, x = 10`, the output should be `[505, 505]`.
+   
+   For `l = 100, d = 200, x = 10`, the output should be `[109, 190]`.
+vc-preamble: |
+  import Imports.AllImports
+
+  def min_and_max (l d x : Nat) : List Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sum_of_digits (n : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem min_and_max_properties {l d x : Nat}
+    (h1: l ≤ d) 
+    (h2: l > 0)
+    (h3: d ≤ 1000)
+    (h4: x ≤ 27)
+    (h5: ∃ n, l ≤ n ∧ n ≤ d ∧ sum_of_digits n = x) :
+    let result := min_and_max l d x
+    List.length result = 2 ∧
+    result[0]! ≤ result[1]! ∧
+    l ≤ result[0]! ∧ result[0]! ≤ d ∧
+    l ≤ result[1]! ∧ result[1]! ≤ d ∧
+    sum_of_digits result[0]! = x ∧
+    sum_of_digits result[1]! = x :=
+    sorry
+
+
+  theorem min_and_max_identical_bounds {n : Nat}
+    (h1: n > 0)
+    (h2: n ≤ 1000) :
+    let x := sum_of_digits n
+    let result := min_and_max n n x
+    result[0]! = n ∧ result[1]! = n :=
+    sorry
+
+  /--
+  info: [109, 190]
+  -/
+  #guard_msgs in
+  #eval min_and_max 100 200 10
+
+  /--
+  info: [505, 505]
+  -/
+  #guard_msgs in
+  #eval min_and_max 500 505 10
+
+  /--
+  info: [104, 500]
+  -/
+  #guard_msgs in
+  #eval min_and_max 99 501 5
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

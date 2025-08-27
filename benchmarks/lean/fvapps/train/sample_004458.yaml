@@ -1,19 +1,67 @@
-"vc-description": "Lucas numbers are numbers in a sequence defined like this:\n```\n\
-  L(0) = 2\nL(1) = 1\nL(n) = L(n-1) + L(n-2)\n```\n\nYour mission is to complete the\
-  \ function that returns the `n`th term of this sequence.\n\n**Note:** It should\
-  \ work for negative numbers as well; how you do this is you flip the equation around,\
-  \ so for negative numbers: `L(n) = L(n+2) - L(n+1)`\n\n\n## Examples\n```\nL(-10)\
-  \ = 123\nL(-5)  = -11\nL(-1)  =  -1\nL(0)   =   2\nL(1)   =   1\nL(5)   =  11\n\
-  L(10)  = 123\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def lucasnum (n : Int) : Int := sorry\n\n-- Base cases"
-"vc-theorems": "theorem lucas_zero : lucasnum 0 = 2 := sorry\n\ntheorem lucas_one\
-  \ : lucasnum 1 = 1 := sorry\n\n-- Alternating signs for negative indices\n\ntheorem\
-  \ lucas_negative (n : Int) : \n  n < 0 → lucasnum n = (if n % 2 = 0 then 1 else\
-  \ -1) * lucasnum (-n) := sorry\n\n-- Signs symmetry property\n\ntheorem lucas_symmetry\
-  \ (n : Int) :\n  n < 0 → lucasnum n = (if n % 2 = 0 then 1 else -1) * lucasnum (-n)\
-  \ := sorry\n\n/--\ninfo: 123\n-/\n#guard_msgs in\n#eval lucasnum -10\n\n/--\ninfo:\
-  \ 2\n-/\n#guard_msgs in\n#eval lucasnum 0\n\n/--\ninfo: 11\n-/\n#guard_msgs in\n\
-  #eval lucasnum 5\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Lucas numbers are numbers in a sequence defined like this:
+  ```
+  L(0) = 2
+  L(1) = 1
+  L(n) = L(n-1) + L(n-2)
+  ```
+
+  Your mission is to complete the function that returns the `n`th term of this sequence.
+
+  **Note:** It should work for negative numbers as well; how you do this is you flip the equation around, so for negative numbers: `L(n) = L(n+2) - L(n+1)`
+
+
+  ## Examples
+  ```
+  L(-10) = 123
+  L(-5)  = -11
+  L(-1)  =  -1
+  L(0)   =   2
+  L(1)   =   1
+  L(5)   =  11
+  L(10)  = 123
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def lucasnum (n : Int) : Int := sorry
+
+  -- Base cases
+vc-theorems: |
+  theorem lucas_zero : lucasnum 0 = 2 := sorry
+
+  theorem lucas_one : lucasnum 1 = 1 := sorry
+
+  -- Alternating signs for negative indices
+
+  theorem lucas_negative (n : Int) : 
+    n < 0 → lucasnum n = (if n % 2 = 0 then 1 else -1) * lucasnum (-n) := sorry
+
+  -- Signs symmetry property
+
+  theorem lucas_symmetry (n : Int) :
+    n < 0 → lucasnum n = (if n % 2 = 0 then 1 else -1) * lucasnum (-n) := sorry
+
+  /--
+  info: 123
+  -/
+  #guard_msgs in
+  #eval lucasnum -10
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval lucasnum 0
+
+  /--
+  info: 11
+  -/
+  #guard_msgs in
+  #eval lucasnum 5
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,33 +1,88 @@
-"vc-description": "Given two arrays of strings, return the number of times each string\
-  \ of the second array appears in the first array.\n\n#### Example\n\n```python\n\
-  array1 = ['abc', 'abc', 'xyz', 'cde', 'uvw']\narray2 = ['abc', 'cde', 'uap']\n```\n\
-  \nHow many times do the elements in `array2` appear in `array1`? \n\n* `'abc'` appears\
-  \ twice in the first array (2)\n* `'cde'` appears only once (1)\n* `'uap'` does\
-  \ not appear in the first array (0)\n\nTherefore, `solve(array1, array2) = [2, 1,\
-  \ 0]`\n\nGood luck!\n\nIf you like this Kata, please try:\n\n[Word values](https://www.codewars.com/kata/598d91785d4ce3ec4f000018)\n\
-  \n[Non-even substrings](https://www.codewars.com/kata/59da47fa27ee00a8b90000b4)"
-"vc-preamble": "import Imports.AllImports\n\ndef count {α} [BEq α] (a : α) (xs : List\
-  \ α) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve {α} [BEq α] (array1 array2 : List α) : List Nat :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem solve_properties {α} [BEq α] (array1 array2 : List α) \n \
-  \ (h1 : array1 ≠ []) (h2 : array2 ≠ []) :\n  let result := solve array1 array2;\n\
-  \  -- Length matches\n  result.length = array2.length\n  -- All counts are non-negative\
-  \ (satisfied by Nat type)\n  -- Each count matches actual occurrences\n  ∧ (∀ i\
-  \ elem, i < array2.length → array2.get ⟨i, by sorry⟩ = elem → \n      result.get\
-  \ ⟨i, by sorry⟩ = count elem array1)\n  -- Count cannot exceed length of array1\n\
-  \  ∧ ∀ x ∈ result, x ≤ array1.length :=\n  sorry\n\n\ntheorem solve_identical_arrays\
-  \ {α} [BEq α] (array : List α)\n  (h : array ≠ []) :\n  let result := solve array\
-  \ array;\n  ∀ i c x, i < array.length → \n    result.get ⟨i, by sorry⟩ = c → \n\
-  \    array.get ⟨i, by sorry⟩ = x →\n    c = count x array :=\n  sorry\n\n\ntheorem\
-  \ solve_unique_array2 {α} [BEq α] (array1 array2 : List α)\n  (h1 : array1 ≠ [])\
-  \ (h2 : array2 ≠ [])\n  (unique : ∀ i j, i < array2.length → j < array2.length →\
-  \ i ≠ j → \n    array2.get ⟨i, by sorry⟩ ≠ array2.get ⟨j, by sorry⟩) :\n  solve\
-  \ array1 array2 = array2.map (λ x => count x array1) :=\n  sorry\n\n/--\ninfo: [2,\
-  \ 1, 0]\n-/\n#guard_msgs in\n#eval solve [\"abc\", \"abc\", \"xyz\", \"abcd\", \"\
-  cde\"] [\"abc\", \"cde\", \"uap\"]\n\n/--\ninfo: [2, 1, 2]\n-/\n#guard_msgs in\n\
-  #eval solve [\"abc\", \"xyz\", \"abc\", \"xyz\", \"cde\"] [\"abc\", \"cde\", \"\
-  xyz\"]\n\n/--\ninfo: [2, 0, 1]\n-/\n#guard_msgs in\n#eval solve [\"quick\", \"brown\"\
-  , \"fox\", \"is\", \"quick\"] [\"quick\", \"abc\", \"fox\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Given two arrays of strings, return the number of times each string of the second array appears in the first array.
+
+  #### Example
+
+  ```python
+  array1 = ['abc', 'abc', 'xyz', 'cde', 'uvw']
+  array2 = ['abc', 'cde', 'uap']
+  ```
+
+  How many times do the elements in `array2` appear in `array1`? 
+
+  * `'abc'` appears twice in the first array (2)
+  * `'cde'` appears only once (1)
+  * `'uap'` does not appear in the first array (0)
+
+  Therefore, `solve(array1, array2) = [2, 1, 0]`
+
+  Good luck!
+
+  If you like this Kata, please try:
+
+  [Word values](https://www.codewars.com/kata/598d91785d4ce3ec4f000018)
+
+  [Non-even substrings](https://www.codewars.com/kata/59da47fa27ee00a8b90000b4)
+vc-preamble: |
+  import Imports.AllImports
+
+  def count {α} [BEq α] (a : α) (xs : List α) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve {α} [BEq α] (array1 array2 : List α) : List Nat :=
+    sorry
+vc-theorems: |
+  theorem solve_properties {α} [BEq α] (array1 array2 : List α) 
+    (h1 : array1 ≠ []) (h2 : array2 ≠ []) :
+    let result := solve array1 array2;
+    -- Length matches
+    result.length = array2.length
+    -- All counts are non-negative (satisfied by Nat type)
+    -- Each count matches actual occurrences
+    ∧ (∀ i elem, i < array2.length → array2.get ⟨i, by sorry⟩ = elem → 
+        result.get ⟨i, by sorry⟩ = count elem array1)
+    -- Count cannot exceed length of array1
+    ∧ ∀ x ∈ result, x ≤ array1.length :=
+    sorry
+
+
+  theorem solve_identical_arrays {α} [BEq α] (array : List α)
+    (h : array ≠ []) :
+    let result := solve array array;
+    ∀ i c x, i < array.length → 
+      result.get ⟨i, by sorry⟩ = c → 
+      array.get ⟨i, by sorry⟩ = x →
+      c = count x array :=
+    sorry
+
+
+  theorem solve_unique_array2 {α} [BEq α] (array1 array2 : List α)
+    (h1 : array1 ≠ []) (h2 : array2 ≠ [])
+    (unique : ∀ i j, i < array2.length → j < array2.length → i ≠ j → 
+      array2.get ⟨i, by sorry⟩ ≠ array2.get ⟨j, by sorry⟩) :
+    solve array1 array2 = array2.map (λ x => count x array1) :=
+    sorry
+
+  /--
+  info: [2, 1, 0]
+  -/
+  #guard_msgs in
+  #eval solve ["abc", "abc", "xyz", "abcd", "cde"] ["abc", "cde", "uap"]
+
+  /--
+  info: [2, 1, 2]
+  -/
+  #guard_msgs in
+  #eval solve ["abc", "xyz", "abc", "xyz", "cde"] ["abc", "cde", "xyz"]
+
+  /--
+  info: [2, 0, 1]
+  -/
+  #guard_msgs in
+  #eval solve ["quick", "brown", "fox", "is", "quick"] ["quick", "abc", "fox"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

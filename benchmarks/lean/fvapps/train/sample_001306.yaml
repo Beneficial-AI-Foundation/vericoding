@@ -1,50 +1,105 @@
-"vc-description": "You are in the future. It's the time of autonomous cars. Switching\
-  \ lanes is a pretty difficult task for autonomous cars, and you have the logs from\
-  \ an experiment you had run with two cars. You want to verify whether the logs are\
-  \ corrupted, or could be valid.\nIn that experiment, you had a highway consisting\
-  \ of two lanes. These were represented by 2 rows of an infinite grid. The cell (1,\
-  \ 1) is the top left cell which is the starting point of the first lane. Cell (2,\
-  \ 1) is the bottom left cell of the grid which is the starting point of the second\
-  \ lane.\nThere are two cars, 1 and 2 that start from the cell (1, 1) and (2, 1).\
-  \ \nAt each instant, a car has the following choices.\n- Stay at the current position.\n\
-  - Move one cell to the right.\n- Switch Lanes. When a car switches its lane, it\
-  \ stays in the same column. That is, from (1, i) it could go to (2, i), or from\
-  \ (2, i) it could go to (1, i). But both both cars shouldn't end up at the same\
-  \ cell at any point. Note that there could have been a car which had moved at the\
-  \ very instant that you move into it.\nConsider one such scenario of driving cars.\n\
-  Time $t = 0$\n1.....\n2.....\n\nTime $t = 1$. Car 2 advances one cell right. Car\
-  \ 1 stays at the same place.\n1.....\n.2....\n\nTime $t = 2$. Car 2 stays at its\
-  \ place. Car 1 switches the lane.\n......\n12....\n\nTime $t = 3$. Car 2 moves one\
-  \ cell to the right.  Car 1 also moves one cell to the right.\n......\n.12...\n\n\
-  Time $t = 4$. Both the cars stay in the same place.\n......\n.12...\n\nYou are given\
-  \ positions of the car at $n$ instants. Your task is to check whether this situation\
-  \ is feasible or not.\n\n-----Input-----\n- The first line of the input contains\
-  \ an integer $T$ denoting the number of test cases. The description of the test\
-  \ cases follows.\n- The first line of each test case contains an integer $n$ denoting\
-  \ the number of instants where the positions of the cars were recorded.\n- Each\
-  \ of next $n$ lines contains 5 space separated integers denoting $t_i, x_i, y_i,\
-  \ X_i, Y_i$ denoting time, $x$ and $y$ coordinate of the first car, and that of\
-  \ second car.\n\n-----Output-----\nFor each test case, output either yes or no according\
-  \ to the answer to the problem.\n\n-----Constraints-----\n- $1 \\le T \\le 10^5$\n\
-  - $1 \\le n \\leq 10^5$\n- $1 \\le t_i, y_i, X_i, Y_i \\leq 10^9$\n- $1 \\leq x_i\
-  \ \\leq 2$\n- $t_i < t_{i+1}$\n- Sum of $n$ over all the test cases doesn't exceed\
-  \ $10^6$\n\n-----Example Input-----\n2\n3\n1 1 1 2 2\n2 2 1 2 2\n4 2 2 2 3\n1\n\
-  1 1 3 2 2\n\n-----Example Output-----\nyes\nno"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def check_car_logs (logs: List (List Nat)) : String := sorry\n\n\
-  theorem check_car_logs_returns_valid_result (logs: List (List Nat)) :\n  check_car_logs\
-  \ logs = \"yes\" ∨ check_car_logs logs = \"no\" := sorry\n"
-"vc-theorems": "theorem collision_implies_no_result (logs: List (List Nat)) :\n  (∃\
-  \ pos ∈ logs, pos.get! 1 = pos.get! 3 ∧ pos.get! 2 = pos.get! 4) → \n  check_car_logs\
-  \ logs = \"no\" := sorry\n\n\ntheorem single_position_different_lanes_is_valid (t:\
-  \ Nat) :\n  check_car_logs [[t, 1, 1, 2, 2]] = \"yes\" := sorry\n\n\ntheorem cars_increase_distance_over_time\
-  \ (logs: List (List Nat)) :\n  (∀ i j, i < j → i < logs.length → j < logs.length\
-  \ →\n    (logs.get! i).get! 2 ≤ (logs.get! j).get! 2 ∧ \n    (logs.get! i).get!\
-  \ 4 ≤ (logs.get! j).get! 4) → \n  True := sorry\n\n\ntheorem timestamps_increase_monotonically\
-  \ (logs: List (List Nat)) :\n  (∀ i j, i < j → i < logs.length → j < logs.length\
-  \ →\n    (logs.get! i).get! 0 < (logs.get! j).get! 0) →\n  True := sorry\n\n/--\n\
-  info: 'yes'\n-/\n#guard_msgs in\n#eval check_car_logs [[1, 1, 1, 2, 2], [2, 2, 1,\
-  \ 2, 2], [4, 2, 2, 2, 3]]\n\n/--\ninfo: 'no'\n-/\n#guard_msgs in\n#eval check_car_logs\
-  \ [[1, 1, 3, 2, 2]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  You are in the future. It's the time of autonomous cars. Switching lanes is a pretty difficult task for autonomous cars, and you have the logs from an experiment you had run with two cars. You want to verify whether the logs are corrupted, or could be valid.
+  In that experiment, you had a highway consisting of two lanes. These were represented by 2 rows of an infinite grid. The cell (1, 1) is the top left cell which is the starting point of the first lane. Cell (2, 1) is the bottom left cell of the grid which is the starting point of the second lane.
+  There are two cars, 1 and 2 that start from the cell (1, 1) and (2, 1). 
+  At each instant, a car has the following choices.
+  - Stay at the current position.
+  - Move one cell to the right.
+  - Switch Lanes. When a car switches its lane, it stays in the same column. That is, from (1, i) it could go to (2, i), or from (2, i) it could go to (1, i). But both both cars shouldn't end up at the same cell at any point. Note that there could have been a car which had moved at the very instant that you move into it.
+  Consider one such scenario of driving cars.
+  Time $t = 0$
+  1.....
+  2.....
+
+  Time $t = 1$. Car 2 advances one cell right. Car 1 stays at the same place.
+  1.....
+  .2....
+
+  Time $t = 2$. Car 2 stays at its place. Car 1 switches the lane.
+  ......
+  12....
+
+  Time $t = 3$. Car 2 moves one cell to the right.  Car 1 also moves one cell to the right.
+  ......
+  .12...
+
+  Time $t = 4$. Both the cars stay in the same place.
+  ......
+  .12...
+
+  You are given positions of the car at $n$ instants. Your task is to check whether this situation is feasible or not.
+
+  -----Input-----
+  - The first line of the input contains an integer $T$ denoting the number of test cases. The description of the test cases follows.
+  - The first line of each test case contains an integer $n$ denoting the number of instants where the positions of the cars were recorded.
+  - Each of next $n$ lines contains 5 space separated integers denoting $t_i, x_i, y_i, X_i, Y_i$ denoting time, $x$ and $y$ coordinate of the first car, and that of second car.
+
+  -----Output-----
+  For each test case, output either yes or no according to the answer to the problem.
+
+  -----Constraints-----
+  - $1 \le T \le 10^5$
+  - $1 \le n \leq 10^5$
+  - $1 \le t_i, y_i, X_i, Y_i \leq 10^9$
+  - $1 \leq x_i \leq 2$
+  - $t_i < t_{i+1}$
+  - Sum of $n$ over all the test cases doesn't exceed $10^6$
+
+  -----Example Input-----
+  2
+  3
+  1 1 1 2 2
+  2 2 1 2 2
+  4 2 2 2 3
+  1
+  1 1 3 2 2
+
+  -----Example Output-----
+  yes
+  no
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def check_car_logs (logs: List (List Nat)) : String := sorry
+
+  theorem check_car_logs_returns_valid_result (logs: List (List Nat)) :
+    check_car_logs logs = "yes" ∨ check_car_logs logs = "no" := sorry
+vc-theorems: |
+  theorem collision_implies_no_result (logs: List (List Nat)) :
+    (∃ pos ∈ logs, pos.get! 1 = pos.get! 3 ∧ pos.get! 2 = pos.get! 4) → 
+    check_car_logs logs = "no" := sorry
+
+
+  theorem single_position_different_lanes_is_valid (t: Nat) :
+    check_car_logs [[t, 1, 1, 2, 2]] = "yes" := sorry
+
+
+  theorem cars_increase_distance_over_time (logs: List (List Nat)) :
+    (∀ i j, i < j → i < logs.length → j < logs.length →
+      (logs.get! i).get! 2 ≤ (logs.get! j).get! 2 ∧ 
+      (logs.get! i).get! 4 ≤ (logs.get! j).get! 4) → 
+    True := sorry
+
+
+  theorem timestamps_increase_monotonically (logs: List (List Nat)) :
+    (∀ i j, i < j → i < logs.length → j < logs.length →
+      (logs.get! i).get! 0 < (logs.get! j).get! 0) →
+    True := sorry
+
+  /--
+  info: 'yes'
+  -/
+  #guard_msgs in
+  #eval check_car_logs [[1, 1, 1, 2, 2], [2, 2, 1, 2, 2], [4, 2, 2, 2, 3]]
+
+  /--
+  info: 'no'
+  -/
+  #guard_msgs in
+  #eval check_car_logs [[1, 1, 3, 2, 2]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

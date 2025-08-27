@@ -1,17 +1,59 @@
-"vc-description": "Write a function `count_vowels` to count the number of vowels in\
-  \ a given string.\n\n### Notes:\n\n- Return `nil` or `None` for non-string inputs.\n\
-  - Return `0` if the parameter is omitted.\n\n### Examples:\n\n```python\ncount_vowels(\"\
-  abcdefg\") => 2\ncount_vowels(\"aAbcdeEfg\") => 4\n\ncount_vowels(12) => None\n\
-  ```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_vowels (s : String) : Option Nat :=\n  sorry\n"
-"vc-theorems": "theorem count_vowels_eq_vowels_count (s : String) :\n  count_vowels\
-  \ s = some (s.data.filter (fun c => ['a', 'e', 'i', 'o', 'u'].contains c.toLower)).length\
-  \ := by\n  sorry\n\n\ntheorem count_vowels_case_insensitive (s : String) :\n  count_vowels\
-  \ s.toLower = count_vowels s.toUpper := by\n  sorry\n\n\ntheorem count_vowels_empty\
-  \ :\n  count_vowels \"\" = some 0 := by\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs\
-  \ in\n#eval count_vowels \"abcdefg\"\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval\
-  \ count_vowels \"aAbcdeEfg\"\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval count_vowels\
-  \ 12\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function `count_vowels` to count the number of vowels in a given string.
+
+  ### Notes:
+
+  - Return `nil` or `None` for non-string inputs.
+  - Return `0` if the parameter is omitted.
+
+  ### Examples:
+
+  ```python
+  count_vowels("abcdefg") => 2
+  count_vowels("aAbcdeEfg") => 4
+
+  count_vowels(12) => None
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_vowels (s : String) : Option Nat :=
+    sorry
+vc-theorems: |
+  theorem count_vowels_eq_vowels_count (s : String) :
+    count_vowels s = some (s.data.filter (fun c => ['a', 'e', 'i', 'o', 'u'].contains c.toLower)).length := by
+    sorry
+
+
+  theorem count_vowels_case_insensitive (s : String) :
+    count_vowels s.toLower = count_vowels s.toUpper := by
+    sorry
+
+
+  theorem count_vowels_empty :
+    count_vowels "" = some 0 := by
+    sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval count_vowels "abcdefg"
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval count_vowels "aAbcdeEfg"
+
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval count_vowels 12
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

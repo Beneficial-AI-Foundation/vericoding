@@ -1,51 +1,108 @@
-"vc-description": "You are given an array A consisting of N integers. A group of disjoint\
-  \ subarrays in it will be a collection of subarrays of the array. Formally a group\
-  \ of subarrays consisting of K subarrays can be denoted by 2 * K indices, [i1, j1],\
-  \ [i2, j2] , ..., [iK, jK], such that i1 ≤ j1 < i2 ≤ j2 < ... < iK ≤ jK.\n\nFor\
-  \ example, in array A = {5, 6, 7}. A group of subarrays could be the subarrays denoted\
-  \ by indices [1, 1], [2, 3]. The subarray corresponding to indices [1, 1] will be\
-  \ {5}. The subarray corresponding to indices [2, 3] will be {6, 7}. So, we have\
-  \ i1 = 1, j1 = 1, i2 = 2, j2 = 3 and K = 2. You can check that the indices satisfy\
-  \ the property i1 ≤ j1 < i2 ≤ j2.\n\nNote that the group of subarrays [1, 2] and\
-  \ [2, 3] won't be disjoint, as it does not satisfy the property j1 < i2. In other\
-  \ words, the index 2 is common in two subarrays, which should not happen.\n\nLet\
-  \ M denote the maximum value of K in a group of K disjoint subarrays of array A,\
-  \ such that there are not two elements (not indices) common in those subarrays.\
-  \ This means, that if the group contained subarrays [A[i1], A[j1], [A[i2], A[j2]]\
-  \ , ..., A[[iK, jK]], then there should not be an element which is present in more\
-  \ than one subarrays.\n\nYou have to find maximum number of group of disjoint subarrays\
-  \ that number of subarrays in those groups are equal to M. As the answer could be\
-  \ large, output it modulo 109 + 7.\n\n-----Input-----\nThe first line of the input\
-  \ contains an integer T denoting the number of test cases. The description of T\
-  \ test cases follows.\nFirst line of the each test case contains a single integer\
-  \ N denoting number of elements in array A.\nSecond line of each test case contains\
-  \ N space separated integers denoting the elements of the array A\n\n-----Output-----\n\
-  For each test case, output a single line corresponding to maximum number of group\
-  \ of disjoint subarrays of array A.\n\n-----Constraints-----\n- 1 ≤ T, N ≤ 105\n\
-  - 1 ≤ Ai ≤ n\n- Sum of N over all the test cases in a single file won't exceed 105\n\
-  \n-----Subtasks-----\nSubtask #1 (30 points)\n\n- 1 ≤ T, N ≤ 103\n- 1 ≤ Ai ≤ n\n\
-  - Sum of N over all the test cases in a single file won't exceed 103\n\nSubtask\
-  \ #2 (70 points)\n- original constraints\n\n-----Example-----\nInput\n3\n2\n3 4\n\
-  3\n1 2 2\n5\n1 1 2 2 2\n\nOutput:\n1\n3\n18\n\n-----Explanation-----\nExample case\
-  \ 1. M will be equal to 2. The subarrays will be {[1, 1], [2, 2]}.\nExample case\
-  \ 2. M will be equal to 3. The subarrays will be {[1, 1], [2, 2]}, {[1, 1], [3,\
-  \ 3]} and {[1, 1], [2, 3]}. Note that {[2, 2], [3, 3]} won't be a non-intersecting\
-  \ subarray as A[2] = 2 and A[3] = 2. So, 2 is common in both these subarrays."
-"vc-preamble": "import Imports.AllImports\n\ndef solve_disjoint_subarrays (n : Nat)\
-  \ (arr : List Nat) : Nat :=\nsorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def triangular_num (n : Nat) : Nat :=\nn * (n + 1) / 2\n"
-"vc-theorems": "theorem solve_disjoint_subarrays_output_bounds {n : Nat} {arr : List\
-  \ Nat}\n  (hn : n > 0)\n  (harr_size : arr.length = n) \n  (harr_bounds : ∀ x ∈\
-  \ arr, 1 ≤ x ∧ x ≤ 1000) :\n  let result := solve_disjoint_subarrays n arr\n  0\
-  \ ≤ result ∧ result < 1000000007 :=\nsorry\n\n\ntheorem solve_disjoint_subarrays_singleton\
-  \ {arr : List Nat}\n  (hsingle : arr.length = 1) \n  (hbound : ∀ x ∈ arr, 1 ≤ x\
-  \ ∧ x ≤ 10) :\n  solve_disjoint_subarrays 1 arr = 1 :=\nsorry\n\n\ntheorem solve_disjoint_subarrays_all_equal\
-  \ {n : Nat} {arr : List Nat}\n  (hn : n > 1)\n  (harr_size : arr.length = n)\n \
-  \ (harr_bounds : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 10)\n  (hall_equal : ∀ x ∈ arr, x = arr.head!)\
-  \ :\n  solve_disjoint_subarrays n arr = (triangular_num n) * (triangular_num n)\
-  \ :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_disjoint_subarrays\
-  \ 2 [3, 4]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_disjoint_subarrays 3\
-  \ [1, 2, 2]\n\n/--\ninfo: 18\n-/\n#guard_msgs in\n#eval solve_disjoint_subarrays\
-  \ 5 [1, 1, 2, 2, 2]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  You are given an array A consisting of N integers. A group of disjoint subarrays in it will be a collection of subarrays of the array. Formally a group of subarrays consisting of K subarrays can be denoted by 2 * K indices, [i1, j1], [i2, j2] , ..., [iK, jK], such that i1 ≤ j1 < i2 ≤ j2 < ... < iK ≤ jK.
+
+  For example, in array A = {5, 6, 7}. A group of subarrays could be the subarrays denoted by indices [1, 1], [2, 3]. The subarray corresponding to indices [1, 1] will be {5}. The subarray corresponding to indices [2, 3] will be {6, 7}. So, we have i1 = 1, j1 = 1, i2 = 2, j2 = 3 and K = 2. You can check that the indices satisfy the property i1 ≤ j1 < i2 ≤ j2.
+
+  Note that the group of subarrays [1, 2] and [2, 3] won't be disjoint, as it does not satisfy the property j1 < i2. In other words, the index 2 is common in two subarrays, which should not happen.
+
+  Let M denote the maximum value of K in a group of K disjoint subarrays of array A, such that there are not two elements (not indices) common in those subarrays. This means, that if the group contained subarrays [A[i1], A[j1], [A[i2], A[j2]] , ..., A[[iK, jK]], then there should not be an element which is present in more than one subarrays.
+
+  You have to find maximum number of group of disjoint subarrays that number of subarrays in those groups are equal to M. As the answer could be large, output it modulo 109 + 7.
+
+  -----Input-----
+  The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+  First line of the each test case contains a single integer N denoting number of elements in array A.
+  Second line of each test case contains N space separated integers denoting the elements of the array A
+
+  -----Output-----
+  For each test case, output a single line corresponding to maximum number of group of disjoint subarrays of array A.
+
+  -----Constraints-----
+  - 1 ≤ T, N ≤ 105
+  - 1 ≤ Ai ≤ n
+  - Sum of N over all the test cases in a single file won't exceed 105
+
+  -----Subtasks-----
+  Subtask #1 (30 points)
+
+  - 1 ≤ T, N ≤ 103
+  - 1 ≤ Ai ≤ n
+  - Sum of N over all the test cases in a single file won't exceed 103
+
+  Subtask #2 (70 points)
+  - original constraints
+
+  -----Example-----
+  Input
+  3
+  2
+  3 4
+  3
+  1 2 2
+  5
+  1 1 2 2 2
+
+  Output:
+  1
+  3
+  18
+
+  -----Explanation-----
+  Example case 1. M will be equal to 2. The subarrays will be {[1, 1], [2, 2]}.
+  Example case 2. M will be equal to 3. The subarrays will be {[1, 1], [2, 2]}, {[1, 1], [3, 3]} and {[1, 1], [2, 3]}. Note that {[2, 2], [3, 3]} won't be a non-intersecting subarray as A[2] = 2 and A[3] = 2. So, 2 is common in both these subarrays.
+vc-preamble: |
+  import Imports.AllImports
+
+  def solve_disjoint_subarrays (n : Nat) (arr : List Nat) : Nat :=
+  sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def triangular_num (n : Nat) : Nat :=
+  n * (n + 1) / 2
+vc-theorems: |
+  theorem solve_disjoint_subarrays_output_bounds {n : Nat} {arr : List Nat}
+    (hn : n > 0)
+    (harr_size : arr.length = n) 
+    (harr_bounds : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 1000) :
+    let result := solve_disjoint_subarrays n arr
+    0 ≤ result ∧ result < 1000000007 :=
+  sorry
+
+
+  theorem solve_disjoint_subarrays_singleton {arr : List Nat}
+    (hsingle : arr.length = 1) 
+    (hbound : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 10) :
+    solve_disjoint_subarrays 1 arr = 1 :=
+  sorry
+
+
+  theorem solve_disjoint_subarrays_all_equal {n : Nat} {arr : List Nat}
+    (hn : n > 1)
+    (harr_size : arr.length = n)
+    (harr_bounds : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 10)
+    (hall_equal : ∀ x ∈ arr, x = arr.head!) :
+    solve_disjoint_subarrays n arr = (triangular_num n) * (triangular_num n) :=
+  sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_disjoint_subarrays 2 [3, 4]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve_disjoint_subarrays 3 [1, 2, 2]
+
+  /--
+  info: 18
+  -/
+  #guard_msgs in
+  #eval solve_disjoint_subarrays 5 [1, 1, 2, 2, 2]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

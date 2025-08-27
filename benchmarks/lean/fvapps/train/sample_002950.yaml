@@ -1,25 +1,68 @@
-"vc-description": "Santa puts all the presents into the huge sack. In order to let\
-  \ his reindeers rest a bit, he only takes as many reindeers with him as he is required\
-  \ to do. The others may take a nap.\n\nTwo reindeers are always required for the\
-  \ sleigh and Santa himself. Additionally he needs 1 reindeer per 30 presents. As\
-  \ you know, Santa has 8 reindeers in total, so he can deliver up to 180 presents\
-  \ at once (2 reindeers for Santa and the sleigh + 6 reindeers with 30 presents each).\n\
-  \nComplete the function `reindeers()`, which takes a number of presents and returns\
-  \ the minimum numbers of required reindeers. If the number of presents is too high,\
-  \ throw an error.\n\nExamles:\n\n```python\nreindeer(0) # must return 2\nreindeer(1)\
-  \ # must return 3\nreindeer(30) # must return 3\nreindeer(200) # must throw an error\n\
-  ```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def reindeer (presents : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem reindeer_min_two (presents : Nat) (h : presents ≤ 180) : \n\
-  \  reindeer presents ≥ 2 := \n  sorry\n\n\ntheorem reindeer_formula (presents :\
-  \ Nat) (h : presents ≤ 180) :\n  reindeer presents = (presents + 29) / 30 + 2 :=\n\
-  \  sorry\n\n\ntheorem reindeer_invalid_input (presents : Nat) (h : presents > 180)\
-  \ :\n  reindeer presents = 0 :=\n  sorry\n\n\ntheorem reindeer_is_nat (presents\
-  \ : Nat) (h : presents ≤ 180) :\n  ∃ n : Nat, reindeer presents = n :=\n  sorry\n\
-  \n\ntheorem reindeer_max_eight (presents : Nat) (h : presents ≤ 180) :\n  reindeer\
-  \ presents ≤ 8 :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval reindeer 0\n\
-  \n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval reindeer 31\n\n/--\ninfo: 8\n-/\n#guard_msgs\
-  \ in\n#eval reindeer 180\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Santa puts all the presents into the huge sack. In order to let his reindeers rest a bit, he only takes as many reindeers with him as he is required to do. The others may take a nap.
+
+  Two reindeers are always required for the sleigh and Santa himself. Additionally he needs 1 reindeer per 30 presents. As you know, Santa has 8 reindeers in total, so he can deliver up to 180 presents at once (2 reindeers for Santa and the sleigh + 6 reindeers with 30 presents each).
+
+  Complete the function `reindeers()`, which takes a number of presents and returns the minimum numbers of required reindeers. If the number of presents is too high, throw an error.
+
+  Examles:
+
+  ```python
+  reindeer(0) # must return 2
+  reindeer(1) # must return 3
+  reindeer(30) # must return 3
+  reindeer(200) # must throw an error
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def reindeer (presents : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem reindeer_min_two (presents : Nat) (h : presents ≤ 180) : 
+    reindeer presents ≥ 2 := 
+    sorry
+
+
+  theorem reindeer_formula (presents : Nat) (h : presents ≤ 180) :
+    reindeer presents = (presents + 29) / 30 + 2 :=
+    sorry
+
+
+  theorem reindeer_invalid_input (presents : Nat) (h : presents > 180) :
+    reindeer presents = 0 :=
+    sorry
+
+
+  theorem reindeer_is_nat (presents : Nat) (h : presents ≤ 180) :
+    ∃ n : Nat, reindeer presents = n :=
+    sorry
+
+
+  theorem reindeer_max_eight (presents : Nat) (h : presents ≤ 180) :
+    reindeer presents ≤ 8 :=
+    sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval reindeer 0
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval reindeer 31
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval reindeer 180
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,35 +1,110 @@
-"vc-description": "# Task\n You have two sorted arrays `a` and `b`, merge them to\
-  \ form new array of unique items.\n\n If an item is present in both arrays, it should\
-  \ be part of the resulting array if and only if it appears in both arrays the same\
-  \ number of times.\n\n# Example\n\n  For `a = [1, 3, 40, 40, 50, 60, 60, 60]` and\
-  \ `b = [2, 40, 40, 50, 50, 65]`, the result should be `[1, 2, 3, 40, 60, 65]`.\n\
-  ```\nNumber 40 appears 2 times in both arrays, \nthus it is in the resulting array.\n\
-  Number 50 appears once in array a and twice in array b, \ntherefore it is not part\
-  \ of the resulting array.```\n\n# Input/Output\n\n\n - `[input]` integer array `a`\n\
-  \n A sorted array.\n \n 1 ≤ a.length ≤ 500000\n \n \n - `[input]` integer array\
-  \ `b`\n\n A sorted array.\n \n `1 ≤ b.length ≤ 500000`\n \n\n- `[output]` an integer\
-  \ array\n\n  The resulting sorted array."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def merge_arrays (a b : List Int) : List Int := sorry\n\ntheorem\
-  \ merge_arrays_sorted_property\n  (a b : List Int) :\n  let result := merge_arrays\
-  \ a b\n  ∀ i j, i < j → j < result.length → result[i]! ≤ result[j]! := sorry\n"
-"vc-theorems": "theorem merge_arrays_elements_from_inputs\n  (a b : List Int) (x :\
-  \ Int) :\n  x ∈ merge_arrays a b →\n  x ∈ a ∨ x ∈ b := sorry\n\n\ntheorem merge_arrays_no_duplicates\n\
-  \  (a b : List Int) :\n  let result := merge_arrays a b\n  ∀ x ∈ result, ∀ y ∈ result,\
-  \ x = y → result.indexOf x = result.indexOf y := sorry\n\n\ntheorem merge_arrays_different_counts_excluded\n\
-  \  (a b : List Int) (x : Int) :\n  x ∈ a ∧ x ∈ b →\n  (List.countP (· = x) a ≠ List.countP\
-  \ (· = x) b) →\n  x ∉ merge_arrays a b := sorry\n\n\ntheorem merge_arrays_unique_elements_included\n\
-  \  (a b : List Int) (x : Int) :\n  (x ∈ a ∧ x ∉ b) ∨ (x ∉ a ∧ x ∈ b) →\n  x ∈ merge_arrays\
-  \ a b := sorry\n\n\ntheorem merge_arrays_same_count_included\n  (a b : List Int)\
-  \ (x : Int) :\n  x ∈ a ∧ x ∈ b →\n  List.countP (· = x) a = List.countP (· = x)\
-  \ b →\n  x ∈ merge_arrays a b := sorry\n\n\ntheorem merge_arrays_idempotent\n  (a\
-  \ : List Int) :\n  let result := merge_arrays a a\n  ∀ x, x ∈ result ↔ x ∈ a :=\
-  \ sorry\n\n\ntheorem merge_arrays_symmetric\n  (a b : List Int) :\n  merge_arrays\
-  \ a b = merge_arrays b a := sorry\n\n/--\ninfo: [15, 20, 25, 27, 30, 7000, 7200]\n\
-  -/\n#guard_msgs in\n#eval merge_arrays [10, 10, 10, 15, 20, 20, 25, 25, 30, 7000]\
-  \ [10, 15, 20, 20, 27, 7200]\n\n/--\ninfo: [2, 3, 500, 550, 1000, 1400, 1500, 3500]\n\
-  -/\n#guard_msgs in\n#eval merge_arrays [500, 550, 1000, 1000, 1400, 3500] [2, 2,\
-  \ 2, 2, 3, 1500]\n\n/--\ninfo: [7]\n-/\n#guard_msgs in\n#eval merge_arrays [5] [5,\
-  \ 5, 7]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Task
+   You have two sorted arrays `a` and `b`, merge them to form new array of unique items.
+
+   If an item is present in both arrays, it should be part of the resulting array if and only if it appears in both arrays the same number of times.
+
+  # Example
+
+    For `a = [1, 3, 40, 40, 50, 60, 60, 60]` and `b = [2, 40, 40, 50, 50, 65]`, the result should be `[1, 2, 3, 40, 60, 65]`.
+  ```
+  Number 40 appears 2 times in both arrays, 
+  thus it is in the resulting array.
+  Number 50 appears once in array a and twice in array b, 
+  therefore it is not part of the resulting array.```
+
+  # Input/Output
+
+
+   - `[input]` integer array `a`
+
+   A sorted array.
+   
+   1 ≤ a.length ≤ 500000
+   
+   
+   - `[input]` integer array `b`
+
+   A sorted array.
+   
+   `1 ≤ b.length ≤ 500000`
+   
+
+  - `[output]` an integer array
+
+    The resulting sorted array.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def merge_arrays (a b : List Int) : List Int := sorry
+
+  theorem merge_arrays_sorted_property
+    (a b : List Int) :
+    let result := merge_arrays a b
+    ∀ i j, i < j → j < result.length → result[i]! ≤ result[j]! := sorry
+vc-theorems: |
+  theorem merge_arrays_elements_from_inputs
+    (a b : List Int) (x : Int) :
+    x ∈ merge_arrays a b →
+    x ∈ a ∨ x ∈ b := sorry
+
+
+  theorem merge_arrays_no_duplicates
+    (a b : List Int) :
+    let result := merge_arrays a b
+    ∀ x ∈ result, ∀ y ∈ result, x = y → result.indexOf x = result.indexOf y := sorry
+
+
+  theorem merge_arrays_different_counts_excluded
+    (a b : List Int) (x : Int) :
+    x ∈ a ∧ x ∈ b →
+    (List.countP (· = x) a ≠ List.countP (· = x) b) →
+    x ∉ merge_arrays a b := sorry
+
+
+  theorem merge_arrays_unique_elements_included
+    (a b : List Int) (x : Int) :
+    (x ∈ a ∧ x ∉ b) ∨ (x ∉ a ∧ x ∈ b) →
+    x ∈ merge_arrays a b := sorry
+
+
+  theorem merge_arrays_same_count_included
+    (a b : List Int) (x : Int) :
+    x ∈ a ∧ x ∈ b →
+    List.countP (· = x) a = List.countP (· = x) b →
+    x ∈ merge_arrays a b := sorry
+
+
+  theorem merge_arrays_idempotent
+    (a : List Int) :
+    let result := merge_arrays a a
+    ∀ x, x ∈ result ↔ x ∈ a := sorry
+
+
+  theorem merge_arrays_symmetric
+    (a b : List Int) :
+    merge_arrays a b = merge_arrays b a := sorry
+
+  /--
+  info: [15, 20, 25, 27, 30, 7000, 7200]
+  -/
+  #guard_msgs in
+  #eval merge_arrays [10, 10, 10, 15, 20, 20, 25, 25, 30, 7000] [10, 15, 20, 20, 27, 7200]
+
+  /--
+  info: [2, 3, 500, 550, 1000, 1400, 1500, 3500]
+  -/
+  #guard_msgs in
+  #eval merge_arrays [500, 550, 1000, 1000, 1400, 3500] [2, 2, 2, 2, 3, 1500]
+
+  /--
+  info: [7]
+  -/
+  #guard_msgs in
+  #eval merge_arrays [5] [5, 5, 7]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

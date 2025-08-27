@@ -1,34 +1,92 @@
-"vc-description": "Chef loves to play with arrays by himself. Today, he has an array\
-  \ A consisting of N distinct integers. He wants to perform the following operation\
-  \ on his array A.\n\n- Select a pair of adjacent integers and remove the larger\
-  \ one of these two. This decreases the array size by 1. Cost of this operation will\
-  \ be equal to the smaller of them.\n\nFind out minimum sum of costs of operations\
-  \ needed to convert the array into a single element.\n\n-----Input-----\nFirst line\
-  \ of input contains a single integer T denoting the number of test cases. First\
-  \ line of each test case starts with an integer N denoting the size of the array\
-  \ A. Next line of input contains N space separated integers, where the ith integer\
-  \ denotes the value Ai.\n\n-----Output-----\nFor each test case, print the minimum\
-  \ cost required for the transformation.\n\n-----Constraints-----\n- 1 ≤ T ≤ 10 \n\
-  - 2 ≤ N ≤ 50000 \n- 1 ≤ Ai ≤ 105 \n\n-----Subtasks-----\n- Subtask 1 : 2 ≤ N ≤ 15\
-  \ : 35 pts \n- Subtask 2 : 2 ≤ N ≤ 100 : 25 pts \n- Subtask 3 : 2 ≤ N ≤ 50000 :\
-  \ 40 pts \n\n-----Example-----\nInput\n2\n2\n3 4\n3\n4 2 5\n\nOutput\n3\n4\n\n-----Explanation-----Test\
-  \ 1 :  Chef will make only 1 move: pick up both the elements (that is, 3 and 4),\
-  \ remove the larger one (4), incurring a cost equal to the smaller one (3)."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def min_operations_cost (n : Nat) (numbers : List Nat) : Nat :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem min_operations_cost_lower_bound {n : Nat} {numbers : List\
-  \ Nat} \n  (h1: n ≥ 2) (h2: numbers.length = n) : \n  ∃ min_num : Nat, min_num ∈\
-  \ numbers ∧ min_operations_cost n numbers ≥ min_num * (numbers.length - 1) :=\n\
-  \  sorry\n\n\ntheorem min_operations_cost_non_negative {n : Nat} {numbers : List\
-  \ Nat}\n  (h1: n ≥ 2) :\n  min_operations_cost n numbers ≥ 0 := \n  sorry\n\n\n\
-  theorem min_operations_cost_preserves_input {n : Nat} {numbers : List Nat}\n  (h1:\
-  \ n ≥ 2) :\n  min_operations_cost n numbers = min_operations_cost n numbers ∧ numbers\
-  \ = numbers :=\n  sorry\n\n\ntheorem min_operations_cost_two_ones :\n  min_operations_cost\
-  \ 2 [1, 1] = 1 :=\n  sorry\n\n\ntheorem min_operations_cost_same_numbers :\n  min_operations_cost\
-  \ 3 [5, 5, 5] = 10 :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval min_operations_cost\
-  \ 2 [3, 4]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval min_operations_cost 3 [4,\
-  \ 2, 5]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval min_operations_cost 4 [1, 5,\
-  \ 2, 4]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Chef loves to play with arrays by himself. Today, he has an array A consisting of N distinct integers. He wants to perform the following operation on his array A.
+
+  - Select a pair of adjacent integers and remove the larger one of these two. This decreases the array size by 1. Cost of this operation will be equal to the smaller of them.
+
+  Find out minimum sum of costs of operations needed to convert the array into a single element.
+
+  -----Input-----
+  First line of input contains a single integer T denoting the number of test cases. First line of each test case starts with an integer N denoting the size of the array A. Next line of input contains N space separated integers, where the ith integer denotes the value Ai.
+
+  -----Output-----
+  For each test case, print the minimum cost required for the transformation.
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 10 
+  - 2 ≤ N ≤ 50000 
+  - 1 ≤ Ai ≤ 105 
+
+  -----Subtasks-----
+  - Subtask 1 : 2 ≤ N ≤ 15 : 35 pts 
+  - Subtask 2 : 2 ≤ N ≤ 100 : 25 pts 
+  - Subtask 3 : 2 ≤ N ≤ 50000 : 40 pts 
+
+  -----Example-----
+  Input
+  2
+  2
+  3 4
+  3
+  4 2 5
+
+  Output
+  3
+  4
+
+  -----Explanation-----Test 1 :  Chef will make only 1 move: pick up both the elements (that is, 3 and 4), remove the larger one (4), incurring a cost equal to the smaller one (3).
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def min_operations_cost (n : Nat) (numbers : List Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem min_operations_cost_lower_bound {n : Nat} {numbers : List Nat} 
+    (h1: n ≥ 2) (h2: numbers.length = n) : 
+    ∃ min_num : Nat, min_num ∈ numbers ∧ min_operations_cost n numbers ≥ min_num * (numbers.length - 1) :=
+    sorry
+
+
+  theorem min_operations_cost_non_negative {n : Nat} {numbers : List Nat}
+    (h1: n ≥ 2) :
+    min_operations_cost n numbers ≥ 0 := 
+    sorry
+
+
+  theorem min_operations_cost_preserves_input {n : Nat} {numbers : List Nat}
+    (h1: n ≥ 2) :
+    min_operations_cost n numbers = min_operations_cost n numbers ∧ numbers = numbers :=
+    sorry
+
+
+  theorem min_operations_cost_two_ones :
+    min_operations_cost 2 [1, 1] = 1 :=
+    sorry
+
+
+  theorem min_operations_cost_same_numbers :
+    min_operations_cost 3 [5, 5, 5] = 10 :=
+    sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_operations_cost 2 [3, 4]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval min_operations_cost 3 [4, 2, 5]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_operations_cost 4 [1, 5, 2, 4]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

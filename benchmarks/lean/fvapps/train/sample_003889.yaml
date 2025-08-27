@@ -1,22 +1,62 @@
-"vc-description": "Write a function that solves an algebraic expression given as a\
-  \ string. \n\n* The expression can include only sums and products. \n\n* The numbers\
-  \ in the expression are in standard notation (NOT scientific).\n\n* In contrast,\
-  \ the function should return a string with the calculated value given in scientific\
-  \ notation with 5 decimal digits. \n\n# Example:\n```python\nstrexpression = \"\
-  5 * 4 + 6\"\nsum_prod(strexpression) = \"2.60000e+01\"\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef isScientificNotation (s : String)\
-  \ : Bool := sorry\n\ndef sumProd (s : String) : String := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def stringToFloat (s : String) : Float := sorry \n\ntheorem sumProd_format\
-  \ {nums : List Float} \n  (h1 : ∀ n ∈ nums, 0.1 ≤ n ∧ n ≤ 100) \n  (h2 : 2 ≤ nums.length\
-  \ ∧ nums.length ≤ 4) : \n  isScientificNotation (sumProd (\"+\".intercalate (nums.map\
-  \ toString))) := sorry\n"
-"vc-theorems": "theorem sumProd_multiply (x y : Nat)\n  (h1 : 1 ≤ x ∧ x ≤ 100)\n \
-  \ (h2 : 1 ≤ y ∧ y ≤ 100) :\n  (stringToFloat (sumProd (s!\"{x}*{y}\"))) = Float.ofNat\
-  \ (x * y) := sorry\n\n\ntheorem sumProd_add (x y : Nat)\n  (h1 : 1 ≤ x ∧ x ≤ 100)\n\
-  \  (h2 : 1 ≤ y ∧ y ≤ 100) :\n  (stringToFloat (sumProd (s!\"{x}+{y}\"))) = Float.ofNat\
-  \ (x + y) := sorry\n\n/--\ninfo: '2.60000e+01'\n-/\n#guard_msgs in\n#eval sum_prod\
-  \ \"5*4+6\"\n\n/--\ninfo: '2.90000e+01'\n-/\n#guard_msgs in\n#eval sum_prod \"5+4*6\"\
-  \n\n/--\ninfo: '3.58000e+01'\n-/\n#guard_msgs in\n#eval sum_prod \"5.4*4.0+6.2+8.0\"\
-  \n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function that solves an algebraic expression given as a string. 
+
+  * The expression can include only sums and products. 
+
+  * The numbers in the expression are in standard notation (NOT scientific).
+
+  * In contrast, the function should return a string with the calculated value given in scientific notation with 5 decimal digits. 
+
+  # Example:
+  ```python
+  strexpression = "5 * 4 + 6"
+  sum_prod(strexpression) = "2.60000e+01"
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def isScientificNotation (s : String) : Bool := sorry
+
+  def sumProd (s : String) : String := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def stringToFloat (s : String) : Float := sorry 
+
+  theorem sumProd_format {nums : List Float} 
+    (h1 : ∀ n ∈ nums, 0.1 ≤ n ∧ n ≤ 100) 
+    (h2 : 2 ≤ nums.length ∧ nums.length ≤ 4) : 
+    isScientificNotation (sumProd ("+".intercalate (nums.map toString))) := sorry
+vc-theorems: |
+  theorem sumProd_multiply (x y : Nat)
+    (h1 : 1 ≤ x ∧ x ≤ 100)
+    (h2 : 1 ≤ y ∧ y ≤ 100) :
+    (stringToFloat (sumProd (s!"{x}*{y}"))) = Float.ofNat (x * y) := sorry
+
+
+  theorem sumProd_add (x y : Nat)
+    (h1 : 1 ≤ x ∧ x ≤ 100)
+    (h2 : 1 ≤ y ∧ y ≤ 100) :
+    (stringToFloat (sumProd (s!"{x}+{y}"))) = Float.ofNat (x + y) := sorry
+
+  /--
+  info: '2.60000e+01'
+  -/
+  #guard_msgs in
+  #eval sum_prod "5*4+6"
+
+  /--
+  info: '2.90000e+01'
+  -/
+  #guard_msgs in
+  #eval sum_prod "5+4*6"
+
+  /--
+  info: '3.58000e+01'
+  -/
+  #guard_msgs in
+  #eval sum_prod "5.4*4.0+6.2+8.0"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

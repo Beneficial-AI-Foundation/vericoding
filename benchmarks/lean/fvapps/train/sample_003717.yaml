@@ -1,31 +1,89 @@
-"vc-description": "In elementary arithmetic a \"carry\" is a digit that is transferred\
-  \ from one column of digits to another column of more significant digits during\
-  \ a calculation algorithm.\n\nThis Kata is about determining the number of carries\
-  \ performed during the addition of multi-digit numbers.\n\nYou will receive an input\
-  \ string containing a set of pairs of numbers formatted as follows:\n\n```\n123\
-  \ 456\n555 555\n123 594\n```\n\nAnd your output should be a string formatted as\
-  \ follows:\n\n```\nNo carry operation\n1 carry operations\n3 carry operations\n\
-  ```\n\n###Some Assumptions\n\n- Assume that numbers can be of any length.\n- But\
-  \ both numbers in the pair will be of the same length.\n- Although not all the numbers\
-  \ in the set need to be of the same length.\n- If a number is shorter, it will be\
-  \ zero-padded.\n- The input may contain any arbitrary number of pairs."
-"vc-preamble": "import Imports.AllImports\n\ndef countCarries (input : String) : String\
-  \ := sorry\n\ndef carry_count (a b : Nat) : Nat := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def split (s : String) : List String := String.splitOn s \"\\n\"\
-  \n\ntheorem single_line_carries_correct \n  (a b : Nat) \n  (h1 : a ≤ 999999) \n\
-  \  (h2 : b ≤ 999999) : \n  let result := countCarries s!\"{a} {b}\"\n  let expected\
-  \ := \n    let carry := carry_count a b\n    if carry = 0 then \"No carry operation\"\
-  \n    else s!\"{carry} carry operations\"\n  result = expected := sorry\n"
-"vc-theorems": "theorem multiple_lines_carries_length\n  {n : Nat}\n  (pairs : List\
-  \ (Nat × Nat))\n  (h1 : ∀ p : Nat × Nat, p ∈ pairs → (Prod.fst p) ≤ 9999 ∧ (Prod.snd\
-  \ p) ≤ 9999)\n  (h2 : pairs.length > 0)\n  (h3 : pairs.length ≤ 10) :\n  let input\
-  \ := String.intercalate \"\\n\" (pairs.map (λ p => s!\"{Prod.fst p} {Prod.snd p}\"\
-  ))\n  (split (countCarries input)).length = pairs.length := sorry\n\n\ntheorem single_digit_carries_correct\n\
-  \  (a b : Nat)\n  (h1 : a ≤ 9)\n  (h2 : b ≤ 9) :\n  countCarries s!\"{a} {b}\" =\
-  \ \n    if a + b > 9 then \"1 carry operations\"\n    else \"No carry operation\"\
-  \ := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval count_carries \"123\
-  \ 456\\n555 555\\n123 594\"\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval count_carries\
-  \ \"99 99\"\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval count_carries \"\
-  1 9\\n123456789 111111101\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In elementary arithmetic a "carry" is a digit that is transferred from one column of digits to another column of more significant digits during a calculation algorithm.
+
+  This Kata is about determining the number of carries performed during the addition of multi-digit numbers.
+
+  You will receive an input string containing a set of pairs of numbers formatted as follows:
+
+  ```
+  123 456
+  555 555
+  123 594
+  ```
+
+  And your output should be a string formatted as follows:
+
+  ```
+  No carry operation
+  1 carry operations
+  3 carry operations
+  ```
+
+  ###Some Assumptions
+
+  - Assume that numbers can be of any length.
+  - But both numbers in the pair will be of the same length.
+  - Although not all the numbers in the set need to be of the same length.
+  - If a number is shorter, it will be zero-padded.
+  - The input may contain any arbitrary number of pairs.
+vc-preamble: |
+  import Imports.AllImports
+
+  def countCarries (input : String) : String := sorry
+
+  def carry_count (a b : Nat) : Nat := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def split (s : String) : List String := String.splitOn s "\n"
+
+  theorem single_line_carries_correct 
+    (a b : Nat) 
+    (h1 : a ≤ 999999) 
+    (h2 : b ≤ 999999) : 
+    let result := countCarries s!"{a} {b}"
+    let expected := 
+      let carry := carry_count a b
+      if carry = 0 then "No carry operation"
+      else s!"{carry} carry operations"
+    result = expected := sorry
+vc-theorems: |
+  theorem multiple_lines_carries_length
+    {n : Nat}
+    (pairs : List (Nat × Nat))
+    (h1 : ∀ p : Nat × Nat, p ∈ pairs → (Prod.fst p) ≤ 9999 ∧ (Prod.snd p) ≤ 9999)
+    (h2 : pairs.length > 0)
+    (h3 : pairs.length ≤ 10) :
+    let input := String.intercalate "\n" (pairs.map (λ p => s!"{Prod.fst p} {Prod.snd p}"))
+    (split (countCarries input)).length = pairs.length := sorry
+
+
+  theorem single_digit_carries_correct
+    (a b : Nat)
+    (h1 : a ≤ 9)
+    (h2 : b ≤ 9) :
+    countCarries s!"{a} {b}" = 
+      if a + b > 9 then "1 carry operations"
+      else "No carry operation" := sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval count_carries "123 456\n555 555\n123 594"
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval count_carries "99 99"
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval count_carries "1 9\n123456789 111111101"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

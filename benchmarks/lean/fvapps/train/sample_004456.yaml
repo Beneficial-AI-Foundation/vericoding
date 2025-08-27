@@ -1,28 +1,65 @@
-"vc-description": "In some countries of former Soviet Union there was a belief about\
-  \ lucky tickets. A transport ticket of any sort was believed to posess luck if sum\
-  \ of digits on the left half of its number was equal to the sum of digits on the\
-  \ right half. Here are examples of such numbers:\n```\n003111    #             3\
-  \ = 1 + 1 + 1\n813372    #     8 + 1 + 3 = 3 + 7 + 2\n17935     #         1 + 7\
-  \ = 3 + 5  // if the length is odd, you should ignore the middle number when adding\
-  \ the halves.\n56328116  # 5 + 6 + 3 + 2 = 8 + 1 + 1 + 6\n```\nSuch tickets were\
-  \ either eaten after being used or collected for bragging rights.\n\nYour task is\
-  \ to write a funtion ```luck_check(str)```, which returns ```true/True``` if argument\
-  \ is string decimal representation of a lucky ticket number, or ```false/False```\
-  \ for all other numbers. It should throw errors for empty strings or strings which\
-  \ don't represent a decimal number."
-"vc-preamble": "import Imports.AllImports\n\ndef List.sum (xs : List Nat) : Nat :=\n\
-  \  xs.foldl (· + ·) 0\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def luck_check (s : String) : Option Bool := sorry\n\ntheorem lucky_number_symmetry\
-  \ {n : Nat} : \n  n > 0 → let s := toString n;\n  match luck_check s with\n  | some\
-  \ true => \n      let leftHalf := s.take (s.length / 2);\n      let rightHalf :=\
-  \ s.drop ((s.length + 1) / 2);\n      (leftHalf.toList.map Char.toNat).sum = (rightHalf.toList.map\
-  \ Char.toNat).sum\n  | _ => True := sorry\n"
-"vc-theorems": "theorem lucky_number_numeric {s : String} :\n  (∀ c ∈ s.data, c.isDigit)\
-  \ →\n  s.length > 0 →\n  (luck_check s).isSome := sorry\n\n\ntheorem non_numeric_input_none\
-  \ {s : String} :\n  (∃ c ∈ s.data, !c.isDigit) →\n  luck_check s = none := sorry\n\
-  \n\ntheorem empty_string_none :\n  luck_check \"\" = none := sorry\n\n/--\ninfo:\
-  \ True\n-/\n#guard_msgs in\n#eval luck_check \"003111\"\n\n/--\ninfo: True\n-/\n\
-  #guard_msgs in\n#eval luck_check \"17935\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval luck_check \"543970707\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In some countries of former Soviet Union there was a belief about lucky tickets. A transport ticket of any sort was believed to posess luck if sum of digits on the left half of its number was equal to the sum of digits on the right half. Here are examples of such numbers:
+  ```
+  003111    #             3 = 1 + 1 + 1
+  813372    #     8 + 1 + 3 = 3 + 7 + 2
+  17935     #         1 + 7 = 3 + 5  // if the length is odd, you should ignore the middle number when adding the halves.
+  56328116  # 5 + 6 + 3 + 2 = 8 + 1 + 1 + 6
+  ```
+  Such tickets were either eaten after being used or collected for bragging rights.
+
+  Your task is to write a funtion ```luck_check(str)```, which returns ```true/True``` if argument is string decimal representation of a lucky ticket number, or ```false/False``` for all other numbers. It should throw errors for empty strings or strings which don't represent a decimal number.
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.sum (xs : List Nat) : Nat :=
+    xs.foldl (· + ·) 0
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def luck_check (s : String) : Option Bool := sorry
+
+  theorem lucky_number_symmetry {n : Nat} : 
+    n > 0 → let s := toString n;
+    match luck_check s with
+    | some true => 
+        let leftHalf := s.take (s.length / 2);
+        let rightHalf := s.drop ((s.length + 1) / 2);
+        (leftHalf.toList.map Char.toNat).sum = (rightHalf.toList.map Char.toNat).sum
+    | _ => True := sorry
+vc-theorems: |
+  theorem lucky_number_numeric {s : String} :
+    (∀ c ∈ s.data, c.isDigit) →
+    s.length > 0 →
+    (luck_check s).isSome := sorry
+
+
+  theorem non_numeric_input_none {s : String} :
+    (∃ c ∈ s.data, !c.isDigit) →
+    luck_check s = none := sorry
+
+
+  theorem empty_string_none :
+    luck_check "" = none := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval luck_check "003111"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval luck_check "17935"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval luck_check "543970707"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,30 +1,67 @@
-"vc-description": "For a permutation P = (p1, p2, ..., pN) of numbers [1, 2, ...,\
-  \ N], we define the function f(P) = max(p1, p2) + max(p2, p3) + ... + max(pN-1,\
-  \ pN).\nYou are given N and an integer K. Find and report a permutation P of [1,\
-  \ 2, ..., N] such that f(P) = K, if such a permutation exists.\nNote f([1]) = 0.\n\
-  \n-----Input-----\n- The first line of the input contains an integer T denoting\
-  \ the number of test cases. The description of T test cases follows.\n- The only\
-  \ line of each test case consists of two space-separated integers N, K respectively.\n\
-  \n-----Output-----\nFor each test case, if a permutation satisfying the condition\
-  \ exists, output a single line containing N space-separated integers which denotes\
-  \ any such permutation. If no such permutation exists, output a single integer -1\
-  \ instead.\nUse fast I/O methods since the size of the output is large.\n\n-----Constraints-----\n\
-  - 1 ≤ T ≤ 40\n- 1 ≤ N ≤ 105\n- Sum of N over all test cases in each file ≤ 106\n\
-  - 0 ≤ K ≤ 2 * 1010\n\n-----Example-----\nInput:\n3\n4 12\n2 2\n5 14\n\nOutput:\n\
-  -1\n1 2\n5 4 3 2 1\n\n-----Explanation-----\nExample 1. There doesn't exist any\
-  \ permutation of numbers [1, 2, 3, 4] that can have its f value equal to 4. Hence\
-  \ answer is -1.\nExample 2. The permutations [1, 2] and [2, 1] both have their f\
-  \ values equal to 2. You can print any of these two permutations. \nExample 3. The\
-  \ permutation [5, 4, 3, 2, 1]\nhas f value = max(5, 4) + max(4, 3) + max(3, 2) +\
-  \ max(2, 1) = 5 + 4 + 3 + 2 = 14."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def reverse_list {α : Type} (xs : List α) : List α :=\n  sorry\n"
-"vc-theorems": "theorem reverse_list_involution {α : Type} (xs : List α) :\n  reverse_list\
-  \ (reverse_list xs) = xs :=\n  sorry\n\n\ntheorem reverse_list_length {α : Type}\
-  \ (xs : List α) :\n  (reverse_list xs).length = xs.length :=\n  sorry\n\n\ntheorem\
-  \ reverse_list_empty {α : Type} :\n  @reverse_list α [] = [] :=\n  sorry\n\n\ntheorem\
-  \ reverse_list_index {α : Type} (xs : List α) (i : Nat) (h : i < xs.length) :\n\
-  \  (reverse_list xs).get ⟨i, by rw [reverse_list_length]; exact h⟩ = \n  xs.get\
-  \ ⟨xs.length - 1 - i, sorry⟩ :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  For a permutation P = (p1, p2, ..., pN) of numbers [1, 2, ..., N], we define the function f(P) = max(p1, p2) + max(p2, p3) + ... + max(pN-1, pN).
+  You are given N and an integer K. Find and report a permutation P of [1, 2, ..., N] such that f(P) = K, if such a permutation exists.
+  Note f([1]) = 0.
+
+  -----Input-----
+  - The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+  - The only line of each test case consists of two space-separated integers N, K respectively.
+
+  -----Output-----
+  For each test case, if a permutation satisfying the condition exists, output a single line containing N space-separated integers which denotes any such permutation. If no such permutation exists, output a single integer -1 instead.
+  Use fast I/O methods since the size of the output is large.
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 40
+  - 1 ≤ N ≤ 105
+  - Sum of N over all test cases in each file ≤ 106
+  - 0 ≤ K ≤ 2 * 1010
+
+  -----Example-----
+  Input:
+  3
+  4 12
+  2 2
+  5 14
+
+  Output:
+  -1
+  1 2
+  5 4 3 2 1
+
+  -----Explanation-----
+  Example 1. There doesn't exist any permutation of numbers [1, 2, 3, 4] that can have its f value equal to 4. Hence answer is -1.
+  Example 2. The permutations [1, 2] and [2, 1] both have their f values equal to 2. You can print any of these two permutations. 
+  Example 3. The permutation [5, 4, 3, 2, 1]
+  has f value = max(5, 4) + max(4, 3) + max(3, 2) + max(2, 1) = 5 + 4 + 3 + 2 = 14.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def reverse_list {α : Type} (xs : List α) : List α :=
+    sorry
+vc-theorems: |-
+  theorem reverse_list_involution {α : Type} (xs : List α) :
+    reverse_list (reverse_list xs) = xs :=
+    sorry
+
+
+  theorem reverse_list_length {α : Type} (xs : List α) :
+    (reverse_list xs).length = xs.length :=
+    sorry
+
+
+  theorem reverse_list_empty {α : Type} :
+    @reverse_list α [] = [] :=
+    sorry
+
+
+  theorem reverse_list_index {α : Type} (xs : List α) (i : Nat) (h : i < xs.length) :
+    (reverse_list xs).get ⟨i, by rw [reverse_list_length]; exact h⟩ = 
+    xs.get ⟨xs.length - 1 - i, sorry⟩ :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

@@ -1,28 +1,98 @@
-"vc-description": "Some people will make friend requests. The list of their ages is\
-  \ given and ages[i] is the age of the ith person. \nPerson A will NOT friend request\
-  \ person B (B != A) if any of the following conditions are true:\n\nage[B] <= 0.5\
-  \ * age[A] + 7\nage[B] > age[A]\nage[B] > 100 && age[A] < 100\n\nOtherwise, A will\
-  \ friend request B.\nNote that if A requests B, B does not necessarily request A. \
-  \ Also, people will not friend request themselves.\nHow many total friend requests\
-  \ are made?\nExample 1:\nInput: [16,16]\nOutput: 2\nExplanation: 2 people friend\
-  \ request each other.\n\nExample 2:\nInput: [16,17,18]\nOutput: 2\nExplanation:\
-  \ Friend requests are made 17 -> 16, 18 -> 17.\nExample 3:\nInput: [20,30,100,110,120]\n\
-  Output: 3\nExplanation: Friend requests are made 110 -> 100, 120 -> 110, 120 ->\
-  \ 100.\n\n \nNotes:\n\n1 <= ages.length <= 20000.\n1 <= ages[i] <= 120."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def numFriendRequests (ages: List Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem result_nonnegative \n  (ages: List Nat)\n  (h: ∀ x ∈ ages,\
-  \ 1 ≤ x ∧ x ≤ 120) :\n  0 ≤ numFriendRequests ages :=\nsorry\n\n\ntheorem single_age_no_requests\n\
-  \  (age: Nat)\n  (h: 1 ≤ age ∧ age ≤ 120) :\n  numFriendRequests [age] = 0 :=\n\
-  sorry\n\n\ntheorem young_no_requests\n  (ages: List Nat)\n  (h1: ∀ x ∈ ages, 1 ≤\
-  \ x ∧ x ≤ 120)\n  (h2: ∀ x ∈ ages, x ≤ 14) :\n  numFriendRequests ages = 0 :=\n\
-  sorry\n\n\ntheorem identical_ages_requests\n  (age: Nat)\n  (h: 1 ≤ age ∧ age ≤\
-  \ 120) :\n  let n := 5\n  if age ≥ 15 then\n    numFriendRequests (List.replicate\
-  \ n age) = n * (n-1)\n  else\n    numFriendRequests (List.replicate n age) = 0 :=\n\
-  sorry\n\n\ntheorem requests_symmetric\n  (ages: List Nat)\n  (h: ∀ x ∈ ages, 1 ≤\
-  \ x ∧ x ≤ 120) :\n  numFriendRequests ages = numFriendRequests ages.reverse :=\n\
-  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval numFriendRequests [16, 16]\n\n\
-  /--\ninfo: 2\n-/\n#guard_msgs in\n#eval numFriendRequests [16, 17, 18]\n\n/--\n\
-  info: 3\n-/\n#guard_msgs in\n#eval numFriendRequests [20, 30, 100, 110, 120]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Some people will make friend requests. The list of their ages is given and ages[i] is the age of the ith person. 
+  Person A will NOT friend request person B (B != A) if any of the following conditions are true:
+
+  age[B] <= 0.5 * age[A] + 7
+  age[B] > age[A]
+  age[B] > 100 && age[A] < 100
+
+  Otherwise, A will friend request B.
+  Note that if A requests B, B does not necessarily request A.  Also, people will not friend request themselves.
+  How many total friend requests are made?
+  Example 1:
+  Input: [16,16]
+  Output: 2
+  Explanation: 2 people friend request each other.
+
+  Example 2:
+  Input: [16,17,18]
+  Output: 2
+  Explanation: Friend requests are made 17 -> 16, 18 -> 17.
+  Example 3:
+  Input: [20,30,100,110,120]
+  Output: 3
+  Explanation: Friend requests are made 110 -> 100, 120 -> 110, 120 -> 100.
+
+   
+  Notes:
+
+  1 <= ages.length <= 20000.
+  1 <= ages[i] <= 120.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def numFriendRequests (ages: List Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem result_nonnegative 
+    (ages: List Nat)
+    (h: ∀ x ∈ ages, 1 ≤ x ∧ x ≤ 120) :
+    0 ≤ numFriendRequests ages :=
+  sorry
+
+
+  theorem single_age_no_requests
+    (age: Nat)
+    (h: 1 ≤ age ∧ age ≤ 120) :
+    numFriendRequests [age] = 0 :=
+  sorry
+
+
+  theorem young_no_requests
+    (ages: List Nat)
+    (h1: ∀ x ∈ ages, 1 ≤ x ∧ x ≤ 120)
+    (h2: ∀ x ∈ ages, x ≤ 14) :
+    numFriendRequests ages = 0 :=
+  sorry
+
+
+  theorem identical_ages_requests
+    (age: Nat)
+    (h: 1 ≤ age ∧ age ≤ 120) :
+    let n := 5
+    if age ≥ 15 then
+      numFriendRequests (List.replicate n age) = n * (n-1)
+    else
+      numFriendRequests (List.replicate n age) = 0 :=
+  sorry
+
+
+  theorem requests_symmetric
+    (ages: List Nat)
+    (h: ∀ x ∈ ages, 1 ≤ x ∧ x ≤ 120) :
+    numFriendRequests ages = numFriendRequests ages.reverse :=
+  sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval numFriendRequests [16, 16]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval numFriendRequests [16, 17, 18]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval numFriendRequests [20, 30, 100, 110, 120]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

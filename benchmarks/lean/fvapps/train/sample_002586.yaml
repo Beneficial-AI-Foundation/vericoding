@@ -1,16 +1,45 @@
-"vc-description": "This kata is all about adding numbers.\n\nYou will create a function\
-  \ named add. This function will return the sum of all the arguments. Sounds easy,\
-  \ doesn't it??\n\nWell here's the twist. The inputs will gradually increase with\
-  \ their index as parameter to the function.\n\n```python\n  add(3,4,5) #returns\
-  \ (3*1)+(4*2)+(5*3)=26\n```\nRemember the function will return 0 if no arguments\
-  \ are passed.\n\n## Example\n\n```python\n  add() #=> 0\n  add(1,2,3) #=> 14\n \
-  \ add(1,4,-5,5) #=> 14\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef add (xs : List Int) : Int := sorry\n\
-  \nstructure WeightedSum where\n  index : Nat \n  value : Int\n  deriving Repr\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def makeWeightedSum (xs : List Int) : Int := match xs with\n  |\
-  \ [] => 0\n  | x::xs => x + makeWeightedSum xs\n"
-"vc-theorems": "theorem add_weighted_sum (xs : List Int) (h : xs ≠ []) : \n  ∃ n,\
-  \ add xs = n := sorry\n\n\ntheorem add_single_number (x : Int) : \n  add [x] = x\
-  \ := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  This kata is all about adding numbers.
+
+  You will create a function named add. This function will return the sum of all the arguments. Sounds easy, doesn't it??
+
+  Well here's the twist. The inputs will gradually increase with their index as parameter to the function.
+
+  ```python
+    add(3,4,5) #returns (3*1)+(4*2)+(5*3)=26
+  ```
+  Remember the function will return 0 if no arguments are passed.
+
+  ## Example
+
+  ```python
+    add() #=> 0
+    add(1,2,3) #=> 14
+    add(1,4,-5,5) #=> 14
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def add (xs : List Int) : Int := sorry
+
+  structure WeightedSum where
+    index : Nat 
+    value : Int
+    deriving Repr
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def makeWeightedSum (xs : List Int) : Int := match xs with
+    | [] => 0
+    | x::xs => x + makeWeightedSum xs
+vc-theorems: |-
+  theorem add_weighted_sum (xs : List Int) (h : xs ≠ []) : 
+    ∃ n, add xs = n := sorry
+
+
+  theorem add_single_number (x : Int) : 
+    add [x] = x := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

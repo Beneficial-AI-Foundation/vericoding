@@ -1,19 +1,48 @@
-"vc-description": "Will you make it?\n\nYou were camping with your friends far away\
-  \ from home, but when it's time to go back, you realize that your fuel is running\
-  \ out and the nearest pump is ```50``` miles away! You know that on average, your\
-  \ car runs on about ```25``` miles per gallon. There are ```2``` gallons left. Considering\
-  \ these factors, write a function that tells you if it is possible to get to the\
-  \ pump or not. Function should return ``true`` (`1` in Prolog) if it is possible\
-  \ and ``false`` (`0` in Prolog) if not.\nThe input values are always positive."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def zeroFuel (distance mpg fuel : Nat) : Bool :=\n  sorry\n"
-"vc-theorems": "theorem zero_fuel_main_property {distance mpg fuel : Nat} (h : mpg\
-  \ > 0) :\n  zeroFuel distance mpg fuel = (fuel * mpg ≥ distance) :=\n  sorry\n\n\
-  \ntheorem zero_fuel_no_gas {distance mpg : Nat} (h : mpg > 0) :\n  distance > 0\
-  \ → ¬(zeroFuel distance mpg 0) :=\n  sorry\n\n\ntheorem zero_distance_any_fuel {mpg\
-  \ fuel : Nat} (h : mpg > 0) :\n  zeroFuel 0 mpg fuel :=\n  sorry\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval zero_fuel 50 25 2\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval zero_fuel 60 30 3\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval zero_fuel\
-  \ 70 25 1\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Will you make it?
+
+  You were camping with your friends far away from home, but when it's time to go back, you realize that your fuel is running out and the nearest pump is ```50``` miles away! You know that on average, your car runs on about ```25``` miles per gallon. There are ```2``` gallons left. Considering these factors, write a function that tells you if it is possible to get to the pump or not. Function should return ``true`` (`1` in Prolog) if it is possible and ``false`` (`0` in Prolog) if not.
+  The input values are always positive.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def zeroFuel (distance mpg fuel : Nat) : Bool :=
+    sorry
+vc-theorems: |
+  theorem zero_fuel_main_property {distance mpg fuel : Nat} (h : mpg > 0) :
+    zeroFuel distance mpg fuel = (fuel * mpg ≥ distance) :=
+    sorry
+
+
+  theorem zero_fuel_no_gas {distance mpg : Nat} (h : mpg > 0) :
+    distance > 0 → ¬(zeroFuel distance mpg 0) :=
+    sorry
+
+
+  theorem zero_distance_any_fuel {mpg fuel : Nat} (h : mpg > 0) :
+    zeroFuel 0 mpg fuel :=
+    sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval zero_fuel 50 25 2
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval zero_fuel 60 30 3
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval zero_fuel 70 25 1
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

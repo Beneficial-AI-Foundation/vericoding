@@ -1,18 +1,56 @@
-"vc-description": "Implement a function that returns the minimal and the maximal value\
-  \ of a list (in this order)."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def get_min_max (lst: List Int) : Option Int × Option Int := sorry\n\
-  \ntheorem get_min_max_properties (lst: List Int) :\n  let result := get_min_max\
-  \ lst\n  (lst = [] → result = (none, none)) ∧\n  (lst ≠ [] →\n    ∃ min_val max_val:\
-  \ Int,\n      result.1 = some min_val ∧\n      result.2 = some max_val ∧\n     \
-  \ (∀ x ∈ lst, min_val ≤ x) ∧\n      (∀ x ∈ lst, x ≤ max_val) ∧\n      min_val ∈\
-  \ lst ∧\n      max_val ∈ lst) :=\nsorry\n"
-"vc-theorems": "theorem get_min_max_non_empty (lst: List Int) (h: lst ≠ []) :\n  let\
-  \ result := get_min_max lst\n  ∃ min_val max_val: Int,\n    result.1 = some min_val\
-  \ ∧\n    result.2 = some max_val ∧\n    min_val ≤ max_val :=\nsorry\n\n\ntheorem\
-  \ get_min_max_empty :\n  get_min_max [] = (none, none) :=\nsorry\n\n/--\ninfo: (1,\
-  \ 3)\n-/\n#guard_msgs in\n#eval get_min_max [1, 2, 3]\n\n/--\ninfo: (10, 10)\n-/\n\
-  #guard_msgs in\n#eval get_min_max [10]\n\n/--\ninfo: (None, None)\n-/\n#guard_msgs\
-  \ in\n#eval get_min_max []\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Implement a function that returns the minimal and the maximal value of a list (in this order).
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def get_min_max (lst: List Int) : Option Int × Option Int := sorry
+
+  theorem get_min_max_properties (lst: List Int) :
+    let result := get_min_max lst
+    (lst = [] → result = (none, none)) ∧
+    (lst ≠ [] →
+      ∃ min_val max_val: Int,
+        result.1 = some min_val ∧
+        result.2 = some max_val ∧
+        (∀ x ∈ lst, min_val ≤ x) ∧
+        (∀ x ∈ lst, x ≤ max_val) ∧
+        min_val ∈ lst ∧
+        max_val ∈ lst) :=
+  sorry
+vc-theorems: |
+  theorem get_min_max_non_empty (lst: List Int) (h: lst ≠ []) :
+    let result := get_min_max lst
+    ∃ min_val max_val: Int,
+      result.1 = some min_val ∧
+      result.2 = some max_val ∧
+      min_val ≤ max_val :=
+  sorry
+
+
+  theorem get_min_max_empty :
+    get_min_max [] = (none, none) :=
+  sorry
+
+  /--
+  info: (1, 3)
+  -/
+  #guard_msgs in
+  #eval get_min_max [1, 2, 3]
+
+  /--
+  info: (10, 10)
+  -/
+  #guard_msgs in
+  #eval get_min_max [10]
+
+  /--
+  info: (None, None)
+  -/
+  #guard_msgs in
+  #eval get_min_max []
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,24 +1,76 @@
-"vc-description": "On a broken calculator that has a number showing on its display,\
-  \ we can perform two operations:\n\nDouble: Multiply the number on the display by\
-  \ 2, or;\nDecrement: Subtract 1 from the number on the display.\n\nInitially, the\
-  \ calculator is displaying the number X.\nReturn the minimum number of operations\
-  \ needed to display the number Y.\n \nExample 1:\nInput: X = 2, Y = 3\nOutput: 2\n\
-  Explanation: Use double operation and then decrement operation {2 -> 4 -> 3}.\n\n\
-  Example 2:\nInput: X = 5, Y = 8\nOutput: 2\nExplanation: Use decrement and then\
-  \ double {5 -> 4 -> 8}.\n\nExample 3:\nInput: X = 3, Y = 10\nOutput: 3\nExplanation:\
-  \  Use double, decrement and double {3 -> 6 -> 5 -> 10}.\n\nExample 4:\nInput: X\
-  \ = 1024, Y = 1\nOutput: 1023\nExplanation: Use decrement operations 1023 times.\n\
-  \n \nNote:\n\n1 <= X <= 10^9\n1 <= Y <= 10^9"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def broken_calc (start target : Nat) : Nat := sorry\n\ntheorem\
-  \ broken_calc_non_negative (start target : Nat) :\n  broken_calc start target ≥\
-  \ 0 := sorry\n"
-"vc-theorems": "theorem broken_calc_equal_case (x : Nat) :\n  broken_calc x x = 0\
-  \ := sorry\n\n\ntheorem broken_calc_greater_case {start target : Nat} (h : start\
-  \ > target) :\n  broken_calc start target = start - target := sorry\n\n\ntheorem\
-  \ broken_calc_bounds :\n  broken_calc 1 (10^9) ≥ 0 ∧ broken_calc (10^9) 1 = 10^9\
-  \ - 1 := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval broken_calc 2 3\n\n/--\n\
-  info: 2\n-/\n#guard_msgs in\n#eval broken_calc 5 8\n\n/--\ninfo: 3\n-/\n#guard_msgs\
-  \ in\n#eval broken_calc 3 10\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  On a broken calculator that has a number showing on its display, we can perform two operations:
+
+  Double: Multiply the number on the display by 2, or;
+  Decrement: Subtract 1 from the number on the display.
+
+  Initially, the calculator is displaying the number X.
+  Return the minimum number of operations needed to display the number Y.
+   
+  Example 1:
+  Input: X = 2, Y = 3
+  Output: 2
+  Explanation: Use double operation and then decrement operation {2 -> 4 -> 3}.
+
+  Example 2:
+  Input: X = 5, Y = 8
+  Output: 2
+  Explanation: Use decrement and then double {5 -> 4 -> 8}.
+
+  Example 3:
+  Input: X = 3, Y = 10
+  Output: 3
+  Explanation:  Use double, decrement and double {3 -> 6 -> 5 -> 10}.
+
+  Example 4:
+  Input: X = 1024, Y = 1
+  Output: 1023
+  Explanation: Use decrement operations 1023 times.
+
+   
+  Note:
+
+  1 <= X <= 10^9
+  1 <= Y <= 10^9
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def broken_calc (start target : Nat) : Nat := sorry
+
+  theorem broken_calc_non_negative (start target : Nat) :
+    broken_calc start target ≥ 0 := sorry
+vc-theorems: |
+  theorem broken_calc_equal_case (x : Nat) :
+    broken_calc x x = 0 := sorry
+
+
+  theorem broken_calc_greater_case {start target : Nat} (h : start > target) :
+    broken_calc start target = start - target := sorry
+
+
+  theorem broken_calc_bounds :
+    broken_calc 1 (10^9) ≥ 0 ∧ broken_calc (10^9) 1 = 10^9 - 1 := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval broken_calc 2 3
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval broken_calc 5 8
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval broken_calc 3 10
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

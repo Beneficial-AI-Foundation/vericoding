@@ -1,18 +1,55 @@
-"vc-description": "Move every letter in the provided string forward 10 letters through\
-  \ the alphabet.\n\nIf it goes past 'z', start again at 'a'.\n\nInput will be a string\
-  \ with length > 0."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def move_ten (s : String) : String := sorry\n\ndef isLower (c :\
-  \ Char) : Bool := sorry\n"
-"vc-theorems": "theorem move_ten_preserves_length (s : String) : \n  (move_ten s).length\
-  \ = s.length := sorry\n\n\ntheorem move_ten_keeps_lowercase (s : String) :\n  ∀\
-  \ c, c ∈ (move_ten s).data → isLower c := sorry \n\n\ntheorem move_ten_reversible\
-  \ (s : String) :\n  ∃ f : String → String, f (move_ten s) = s := sorry\n\n\ntheorem\
-  \ move_ten_idempotent (s : String) :\n  move_ten (move_ten s) = move_ten s := sorry\n\
-  \n\ntheorem move_ten_homomorphic (s₁ s₂ : String) :\n  move_ten (s₁ ++ s₂) = move_ten\
-  \ s₁ ++ move_ten s₂ := sorry\n\n/--\ninfo: 'docdmkco'\n-/\n#guard_msgs in\n#eval\
-  \ move_ten \"testcase\"\n\n/--\ninfo: 'mynogkbc'\n-/\n#guard_msgs in\n#eval move_ten\
-  \ \"codewars\"\n\n/--\ninfo: 'goxoonkxyppsmonyq'\n-/\n#guard_msgs in\n#eval move_ten\
-  \ \"weneedanofficedog\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Move every letter in the provided string forward 10 letters through the alphabet.
+
+  If it goes past 'z', start again at 'a'.
+
+  Input will be a string with length > 0.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def move_ten (s : String) : String := sorry
+
+  def isLower (c : Char) : Bool := sorry
+vc-theorems: |
+  theorem move_ten_preserves_length (s : String) : 
+    (move_ten s).length = s.length := sorry
+
+
+  theorem move_ten_keeps_lowercase (s : String) :
+    ∀ c, c ∈ (move_ten s).data → isLower c := sorry 
+
+
+  theorem move_ten_reversible (s : String) :
+    ∃ f : String → String, f (move_ten s) = s := sorry
+
+
+  theorem move_ten_idempotent (s : String) :
+    move_ten (move_ten s) = move_ten s := sorry
+
+
+  theorem move_ten_homomorphic (s₁ s₂ : String) :
+    move_ten (s₁ ++ s₂) = move_ten s₁ ++ move_ten s₂ := sorry
+
+  /--
+  info: 'docdmkco'
+  -/
+  #guard_msgs in
+  #eval move_ten "testcase"
+
+  /--
+  info: 'mynogkbc'
+  -/
+  #guard_msgs in
+  #eval move_ten "codewars"
+
+  /--
+  info: 'goxoonkxyppsmonyq'
+  -/
+  #guard_msgs in
+  #eval move_ten "weneedanofficedog"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

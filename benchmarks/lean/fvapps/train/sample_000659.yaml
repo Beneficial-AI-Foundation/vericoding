@@ -1,45 +1,88 @@
-"vc-description": "Snackdown 2019 is coming! People have started to spread the word\
-  \ and tell other people about the contest.\nThere are $N$ people numbered $1$ through\
-  \ $N$. Initially, only person $1$ knows about Snackdown. On each day, everyone who\
-  \ already knows about Snackdown tells other people about it. For each valid $i$,\
-  \ person $i$ can tell up to $A_i$ people per day. People spread the information\
-  \ among the people who don't know about Snackdown in the ascending order of their\
-  \ indices; you may assume that no two people try to tell someone about Snackdown\
-  \ at the same moment. Each person is only allowed to start telling other people\
-  \ about Snackdown since the day after he/she gets to know about it (person $1$ can\
-  \ start telling other people already on day $1$). How many days does it take for\
-  \ all people to know about Snackdown?\n\n-----Input-----\n- The first line of the\
-  \ input contains a single integer $T$ denoting the number of test cases. The description\
-  \ of $T$ test cases follows.\n- The first line of each test case contains a single\
-  \ integer $N$.\n- The second line contains $N$ space-separated integers $A_1, A_2,\
-  \ \\dots, A_N$.\n\n-----Output-----\nFor each test case, print a single line containing\
-  \ one integer — the number of days.\n\n-----Constraints-----\n- $1 \\le T \\le 1,000$\n\
-  - $2 \\le N \\le 10^5$\n- the sum of $N$ for all test cases does not exceed $10^6$\n\
-  - $0 \\le A_i \\le N$ for each valid $i$\n- $1 \\le A_1$\n\n-----Example Input-----\n\
-  2\n7\n2 1 1 5 5 5 5\n5\n5 1 3 2 1\n\n-----Example Output-----\n2\n1\n\n-----Explanation-----\n\
-  Example case 1: On day $1$, person $1$ tells people $2$ and $3$ about Snackdown.\
-  \ On day $2$, the first three people know about Snackdown, so they can tell $2+1+1\
-  \ = 4$ people about it in a single day. That means the last four people get to know\
-  \ about Snackdown on day $2$, so the total number of days is $2$.\nExample case\
-  \ 2: On each day, person $1$ can tell up to $5$ people about Snackdown, so on the\
-  \ first day, he simply tells all people about it and the total number of days is\
-  \ $1$."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_snackdown_spread (n : Nat) (arr : List Nat) : Nat :=\
-  \ sorry\n\ntheorem spread_properties_nonnegative (n : Nat) (arr : List Nat) \n \
-  \ (h1 : arr.length = n) \n  (h2 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 5)\n  : solve_snackdown_spread\
-  \ n arr ≥ 0 := sorry\n"
-"vc-theorems": "theorem spread_properties_upper_bound (n : Nat) (arr : List Nat)\n\
-  \  (h1 : arr.length = n)\n  (h2 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 5) \n  : solve_snackdown_spread\
-  \ n arr ≤ n := sorry\n\n\ntheorem spread_properties_first_valid (n : Nat) (arr :\
-  \ List Nat)\n  (h1 : arr.length = n)\n  (h2 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 5)\n  (h3 :\
-  \ arr ≠ [])\n  : ∃ x, arr.head? = some x ∧ x ≥ 1 := sorry\n\n\ntheorem spread_deterministic\
-  \ (n : Nat) (arr : List Nat)\n  (h1 : arr.length = n)\n  (h2 : ∀ x ∈ arr, 1 ≤ x\
-  \ ∧ x ≤ 5)\n  : solve_snackdown_spread n arr = solve_snackdown_spread n arr := sorry\n\
-  \n\ntheorem minimal_valid_array (n : Nat) \n  : solve_snackdown_spread n (List.replicate\
-  \ n 1) ≤ n := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve_snackdown_spread\
-  \ 7 [2, 1, 1, 5, 5, 5, 5]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_snackdown_spread\
-  \ 5 [5, 1, 3, 2, 1]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_snackdown_spread\
-  \ 3 [2, 1, 1]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Snackdown 2019 is coming! People have started to spread the word and tell other people about the contest.
+  There are $N$ people numbered $1$ through $N$. Initially, only person $1$ knows about Snackdown. On each day, everyone who already knows about Snackdown tells other people about it. For each valid $i$, person $i$ can tell up to $A_i$ people per day. People spread the information among the people who don't know about Snackdown in the ascending order of their indices; you may assume that no two people try to tell someone about Snackdown at the same moment. Each person is only allowed to start telling other people about Snackdown since the day after he/she gets to know about it (person $1$ can start telling other people already on day $1$). How many days does it take for all people to know about Snackdown?
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains a single integer $N$.
+  - The second line contains $N$ space-separated integers $A_1, A_2, \dots, A_N$.
+
+  -----Output-----
+  For each test case, print a single line containing one integer — the number of days.
+
+  -----Constraints-----
+  - $1 \le T \le 1,000$
+  - $2 \le N \le 10^5$
+  - the sum of $N$ for all test cases does not exceed $10^6$
+  - $0 \le A_i \le N$ for each valid $i$
+  - $1 \le A_1$
+
+  -----Example Input-----
+  2
+  7
+  2 1 1 5 5 5 5
+  5
+  5 1 3 2 1
+
+  -----Example Output-----
+  2
+  1
+
+  -----Explanation-----
+  Example case 1: On day $1$, person $1$ tells people $2$ and $3$ about Snackdown. On day $2$, the first three people know about Snackdown, so they can tell $2+1+1 = 4$ people about it in a single day. That means the last four people get to know about Snackdown on day $2$, so the total number of days is $2$.
+  Example case 2: On each day, person $1$ can tell up to $5$ people about Snackdown, so on the first day, he simply tells all people about it and the total number of days is $1$.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_snackdown_spread (n : Nat) (arr : List Nat) : Nat := sorry
+
+  theorem spread_properties_nonnegative (n : Nat) (arr : List Nat) 
+    (h1 : arr.length = n) 
+    (h2 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 5)
+    : solve_snackdown_spread n arr ≥ 0 := sorry
+vc-theorems: |
+  theorem spread_properties_upper_bound (n : Nat) (arr : List Nat)
+    (h1 : arr.length = n)
+    (h2 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 5) 
+    : solve_snackdown_spread n arr ≤ n := sorry
+
+
+  theorem spread_properties_first_valid (n : Nat) (arr : List Nat)
+    (h1 : arr.length = n)
+    (h2 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 5)
+    (h3 : arr ≠ [])
+    : ∃ x, arr.head? = some x ∧ x ≥ 1 := sorry
+
+
+  theorem spread_deterministic (n : Nat) (arr : List Nat)
+    (h1 : arr.length = n)
+    (h2 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 5)
+    : solve_snackdown_spread n arr = solve_snackdown_spread n arr := sorry
+
+
+  theorem minimal_valid_array (n : Nat) 
+    : solve_snackdown_spread n (List.replicate n 1) ≤ n := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve_snackdown_spread 7 [2, 1, 1, 5, 5, 5, 5]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_snackdown_spread 5 [5, 1, 3, 2, 1]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_snackdown_spread 3 [2, 1, 1]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

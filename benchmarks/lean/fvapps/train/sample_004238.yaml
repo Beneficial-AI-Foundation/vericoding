@@ -1,32 +1,102 @@
-"vc-description": "A population of bears consists of black bears, brown bears, and\
-  \ white bears.\n\nThe input is an array of two elements. \n\nDetermine whether the\
-  \ offspring of the two bears will return `'black'`, `'brown'`, `'white'`, `'dark\
-  \ brown'`, `'grey'`, `'light brown'`, or `'unknown'`.\n\nElements in the the array\
-  \ will always be a string.\n\n\n\n## Examples:\n\n    bear_fur(['black', 'black'])\
-  \  returns 'black'\n\n    bear_fur(['brown', 'brown'])  returns 'brown'\n\n    bear_fur(['white',\
-  \ 'white'])  returns 'white'\n\n    bear_fur(['black', 'brown'])  returns 'dark\
-  \ brown'\n\n    bear_fur(['black', 'white'])  returns 'grey'\n\n    bear_fur(['brown',\
-  \ 'white'])  returns 'light brown'\n\n    bear_fur(['yellow', 'magenta'])  returns\
-  \ 'unknown'"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def bear_fur : List Color → Color\n  | _ => sorry\n"
-"vc-theorems": "theorem bear_fur_valid_output (bears : List Color)\n  (h : bears.length\
-  \ = 2) :\n  bear_fur bears ∈ [Color.black, Color.white, Color.brown] ∨\n  bear_fur\
-  \ bears = Color.brown ∨  -- representing \"dark brown\"\n  bear_fur bears = Color.brown\
-  \ ∨  -- representing \"light brown\" \n  bear_fur bears = Color.black    -- representing\
-  \ \"grey\"\n  := by sorry\n\n\ntheorem bear_fur_same_color (c : Color) :\n  bear_fur\
-  \ [c, c] = c := by sorry\n\n\ntheorem bear_fur_order_invariant (c1 c2 : Color) :\n\
-  \  bear_fur [c1, c2] = bear_fur [c2, c1] := by sorry\n\n\ntheorem bear_fur_specific_pairs\
-  \ :\n  (bear_fur [Color.black, Color.brown] = Color.brown) ∧   -- dark brown\n \
-  \ (bear_fur [Color.brown, Color.white] = Color.brown) ∧   -- light brown\n  (bear_fur\
-  \ [Color.black, Color.white] = Color.black)     -- grey\n  := by sorry\n\n/--\n\
-  info: 'black'\n-/\n#guard_msgs in\n#eval bear_fur [\"black\", \"black\"]\n\n/--\n\
-  info: 'white'\n-/\n#guard_msgs in\n#eval bear_fur [\"white\", \"white\"]\n\n/--\n\
-  info: 'brown'\n-/\n#guard_msgs in\n#eval bear_fur [\"brown\", \"brown\"]\n\n/--\n\
-  info: 'dark brown'\n-/\n#guard_msgs in\n#eval bear_fur [\"black\", \"brown\"]\n\n\
-  /--\ninfo: 'grey'\n-/\n#guard_msgs in\n#eval bear_fur [\"black\", \"white\"]\n\n\
-  /--\ninfo: 'light brown'\n-/\n#guard_msgs in\n#eval bear_fur [\"brown\", \"white\"\
-  ]\n\n/--\ninfo: 'unknown'\n-/\n#guard_msgs in\n#eval bear_fur [\"pink\", \"black\"\
-  ]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  A population of bears consists of black bears, brown bears, and white bears.
+
+  The input is an array of two elements. 
+
+  Determine whether the offspring of the two bears will return `'black'`, `'brown'`, `'white'`, `'dark brown'`, `'grey'`, `'light brown'`, or `'unknown'`.
+
+  Elements in the the array will always be a string.
+
+
+
+  ## Examples:
+
+      bear_fur(['black', 'black'])  returns 'black'
+
+      bear_fur(['brown', 'brown'])  returns 'brown'
+
+      bear_fur(['white', 'white'])  returns 'white'
+
+      bear_fur(['black', 'brown'])  returns 'dark brown'
+
+      bear_fur(['black', 'white'])  returns 'grey'
+
+      bear_fur(['brown', 'white'])  returns 'light brown'
+
+      bear_fur(['yellow', 'magenta'])  returns 'unknown'
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def bear_fur : List Color → Color
+    | _ => sorry
+vc-theorems: |
+  theorem bear_fur_valid_output (bears : List Color)
+    (h : bears.length = 2) :
+    bear_fur bears ∈ [Color.black, Color.white, Color.brown] ∨
+    bear_fur bears = Color.brown ∨  -- representing "dark brown"
+    bear_fur bears = Color.brown ∨  -- representing "light brown" 
+    bear_fur bears = Color.black    -- representing "grey"
+    := by sorry
+
+
+  theorem bear_fur_same_color (c : Color) :
+    bear_fur [c, c] = c := by sorry
+
+
+  theorem bear_fur_order_invariant (c1 c2 : Color) :
+    bear_fur [c1, c2] = bear_fur [c2, c1] := by sorry
+
+
+  theorem bear_fur_specific_pairs :
+    (bear_fur [Color.black, Color.brown] = Color.brown) ∧   -- dark brown
+    (bear_fur [Color.brown, Color.white] = Color.brown) ∧   -- light brown
+    (bear_fur [Color.black, Color.white] = Color.black)     -- grey
+    := by sorry
+
+  /--
+  info: 'black'
+  -/
+  #guard_msgs in
+  #eval bear_fur ["black", "black"]
+
+  /--
+  info: 'white'
+  -/
+  #guard_msgs in
+  #eval bear_fur ["white", "white"]
+
+  /--
+  info: 'brown'
+  -/
+  #guard_msgs in
+  #eval bear_fur ["brown", "brown"]
+
+  /--
+  info: 'dark brown'
+  -/
+  #guard_msgs in
+  #eval bear_fur ["black", "brown"]
+
+  /--
+  info: 'grey'
+  -/
+  #guard_msgs in
+  #eval bear_fur ["black", "white"]
+
+  /--
+  info: 'light brown'
+  -/
+  #guard_msgs in
+  #eval bear_fur ["brown", "white"]
+
+  /--
+  info: 'unknown'
+  -/
+  #guard_msgs in
+  #eval bear_fur ["pink", "black"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

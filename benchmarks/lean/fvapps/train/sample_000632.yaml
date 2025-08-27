@@ -1,52 +1,108 @@
-"vc-description": "In these quarantine days, Chef and Chefina are getting bored. So,\
-  \ Chef came up with a game for her. He gets a pack of cards with numbers written\
-  \ on them. Chef then asks her to remove cards from the pack in the following manner:\
-  \ Chefina can choose any 3 cards at a time, having unique values, and remove the\
-  \ smallest and largest of them, and put back the middle one. For example, say Chefina\
-  \ chooses 3 cards that have numbers $x$, $y$, $z$ on them, such that $x <= y <=\
-  \ z$. Then she can throw away cards with number $x$ and $z$, but has to put the\
-  \ card with number $y$ on it back into the pack. Chefina can repeat this process\
-  \ any number of times. As soon as the pack contains cards with unique numbers, the\
-  \ game ends. If Chefina can determine the count of cards that will remain in the\
-  \ end, and tell it to Chef beforehand, she wins the game. Chefina asks for your\
-  \ help to win this game. Given the number written on the cards, help her find the\
-  \ count of cards in the pack when she wins.\n$Note:$ You need to maximize the array\
-  \ length or the number of unique elements\n\n-----Input:-----\n- The first line\
-  \ of the input consists of a single integer $T$, denoting the number of test cases.\
-  \ Description of $T$ test cases follow.\n- The first line of each test case consists\
-  \ of a single integer $N$, denoting the number of cards in the pack\n- The next\
-  \ line consists of $N$ space separated numbers $A1$, $A2$ … $An$. For each valid\
-  \ $i (1 <= i <= N)$, the $i$-th card has the number $Ai$ written on it.\n\n-----Output:-----\n\
-  - For each test case, print the count of the cards that remain in the end.\n\n-----Constraints-----\n\
-  - $1 \\leq T \\leq 500$\n- $1 \\leq N \\leq 10^6$\n- $1 \\leq Ai \\leq N$\n\n-----Subtasks-----\n\
-  - 30 points : $1 \\leq T \\leq 20$; $ 1 \\leq N \\leq 5*10^5$\n- 70 points : Original\
-  \ constraints\n\n-----Sample Input:-----\n2\n5\n1 2 2 3 5\n9\n1 2 2 3 3 5 8 8 9\n\
-  \n-----Sample Output:-----\n3\n5\n\n-----EXPLANATION:-----\nTest case 1:\nChefina\
-  \ chooses the cards with number: 2, 3, 5, throws away 2 & 5, and puts back 3. So,\
-  \ the pack now contains cards with numbers: 1, 2, 3. Since the pack contains cards\
-  \ with unique numbers only, these are the 3 final cards. \nTest case 2:\nChefina\
-  \ chooses the cards with number: 2, 3, 8, throws away 2 & 8,  and puts back 3. Now\
-  \ the pack contains cards with numbers: 1, 2, 3, 3, 5, 8, 9. Next, she chooses cards\
-  \ with number: 3, 5, 8 throws away 3 & 8, and puts back 5. Now the pack contains\
-  \ cards with number: 1, 2, 3, 5, 9. Since the pack contains cards with unique numbers\
-  \ only, these are the 5 final cards.\nNote: There might be multiple options to choose\
-  \ the 3 cards from the pack in any turn"
-"vc-preamble": "import Imports.AllImports\n\ndef List.sum (l : List Nat) : Nat :=\n\
-  \  match l with \n  | [] => 0\n  | h :: t => h + sum t\n\n\ndef List.sort (l : List\
-  \ Nat) : List Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_card_game (input : String) : Int :=\n  sorry\n"
-"vc-theorems": "theorem solve_card_game_upper_bound {n k : Nat} {cards : List Nat}\
-  \ \n  (h1 : k ≤ n) (h2 : cards.length = n) :\n  solve_card_game s!\"${n} ${k} ${cards}\"\
-  \ ≤ cards.sum :=\n  sorry\n\n\ntheorem solve_card_game_lower_bound {n k : Nat} {cards\
-  \ : List Nat}\n  (h1 : k ≤ n) (h2 : cards.length = n) :\n  solve_card_game s!\"\
-  ${n} ${k} ${cards}\" ≥ (cards.sort.reverse.take k).sum :=\n  sorry\n\n\ntheorem\
-  \ solve_card_game_nonneg {n k : Nat} {cards : List Nat}\n  (h1 : k ≤ n) (h2 : cards.length\
-  \ = n) :\n  solve_card_game s!\"${n} ${k} ${cards}\" ≥ 0 :=\n  sorry\n\n\ntheorem\
-  \ solve_card_game_single_card {n : Nat} :\n  solve_card_game s!\"1 1 ${n}\" = n\
-  \ :=\n  sorry\n\n\ntheorem solve_card_game_invalid_empty :\n  solve_card_game \"\
-  \" = 0 :=\n  sorry\n\n\ntheorem solve_card_game_invalid_format :\n  solve_card_game\
-  \ \"a b c\" = 0 :=\n  sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval solve_card_game\
-  \ \"4 2 1 2 3 4\"\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval solve_card_game test2\n\
-  \n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval solve_card_game test3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  In these quarantine days, Chef and Chefina are getting bored. So, Chef came up with a game for her. He gets a pack of cards with numbers written on them. Chef then asks her to remove cards from the pack in the following manner: Chefina can choose any 3 cards at a time, having unique values, and remove the smallest and largest of them, and put back the middle one. For example, say Chefina chooses 3 cards that have numbers $x$, $y$, $z$ on them, such that $x <= y <= z$. Then she can throw away cards with number $x$ and $z$, but has to put the card with number $y$ on it back into the pack. Chefina can repeat this process any number of times. As soon as the pack contains cards with unique numbers, the game ends. If Chefina can determine the count of cards that will remain in the end, and tell it to Chef beforehand, she wins the game. Chefina asks for your help to win this game. Given the number written on the cards, help her find the count of cards in the pack when she wins.
+  $Note:$ You need to maximize the array length or the number of unique elements
+
+  -----Input:-----
+  - The first line of the input consists of a single integer $T$, denoting the number of test cases. Description of $T$ test cases follow.
+  - The first line of each test case consists of a single integer $N$, denoting the number of cards in the pack
+  - The next line consists of $N$ space separated numbers $A1$, $A2$ … $An$. For each valid $i (1 <= i <= N)$, the $i$-th card has the number $Ai$ written on it.
+
+  -----Output:-----
+  - For each test case, print the count of the cards that remain in the end.
+
+  -----Constraints-----
+  - $1 \leq T \leq 500$
+  - $1 \leq N \leq 10^6$
+  - $1 \leq Ai \leq N$
+
+  -----Subtasks-----
+  - 30 points : $1 \leq T \leq 20$; $ 1 \leq N \leq 5*10^5$
+  - 70 points : Original constraints
+
+  -----Sample Input:-----
+  2
+  5
+  1 2 2 3 5
+  9
+  1 2 2 3 3 5 8 8 9
+
+  -----Sample Output:-----
+  3
+  5
+
+  -----EXPLANATION:-----
+  Test case 1:
+  Chefina chooses the cards with number: 2, 3, 5, throws away 2 & 5, and puts back 3. So, the pack now contains cards with numbers: 1, 2, 3. Since the pack contains cards with unique numbers only, these are the 3 final cards. 
+  Test case 2:
+  Chefina chooses the cards with number: 2, 3, 8, throws away 2 & 8,  and puts back 3. Now the pack contains cards with numbers: 1, 2, 3, 3, 5, 8, 9. Next, she chooses cards with number: 3, 5, 8 throws away 3 & 8, and puts back 5. Now the pack contains cards with number: 1, 2, 3, 5, 9. Since the pack contains cards with unique numbers only, these are the 5 final cards.
+  Note: There might be multiple options to choose the 3 cards from the pack in any turn
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.sum (l : List Nat) : Nat :=
+    match l with 
+    | [] => 0
+    | h :: t => h + sum t
+
+
+  def List.sort (l : List Nat) : List Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_card_game (input : String) : Int :=
+    sorry
+vc-theorems: |
+  theorem solve_card_game_upper_bound {n k : Nat} {cards : List Nat} 
+    (h1 : k ≤ n) (h2 : cards.length = n) :
+    solve_card_game s!"${n} ${k} ${cards}" ≤ cards.sum :=
+    sorry
+
+
+  theorem solve_card_game_lower_bound {n k : Nat} {cards : List Nat}
+    (h1 : k ≤ n) (h2 : cards.length = n) :
+    solve_card_game s!"${n} ${k} ${cards}" ≥ (cards.sort.reverse.take k).sum :=
+    sorry
+
+
+  theorem solve_card_game_nonneg {n k : Nat} {cards : List Nat}
+    (h1 : k ≤ n) (h2 : cards.length = n) :
+    solve_card_game s!"${n} ${k} ${cards}" ≥ 0 :=
+    sorry
+
+
+  theorem solve_card_game_single_card {n : Nat} :
+    solve_card_game s!"1 1 ${n}" = n :=
+    sorry
+
+
+  theorem solve_card_game_invalid_empty :
+    solve_card_game "" = 0 :=
+    sorry
+
+
+  theorem solve_card_game_invalid_format :
+    solve_card_game "a b c" = 0 :=
+    sorry
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval solve_card_game "4 2 1 2 3 4"
+
+  /--
+  info: 12
+  -/
+  #guard_msgs in
+  #eval solve_card_game test2
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval solve_card_game test3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

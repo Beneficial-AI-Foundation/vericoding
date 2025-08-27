@@ -1,21 +1,55 @@
-"vc-description": "In Russia regular bus tickets usually consist of 6 digits. The\
-  \ ticket is called lucky when the sum of the first three digits equals to the sum\
-  \ of the last three digits. Write a function to find out whether the ticket is lucky\
-  \ or not. Return true if so, otherwise return false. Consider that input is always\
-  \ a string. Watch examples below."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isLucky (s : String) : Bool := sorry\n\ndef sumDigits (s :\
-  \ String) : Nat := sorry\n"
-"vc-theorems": "theorem valid_ticket_behavior (ticket : String) \n  (h1 : ticket.length\
-  \ = 6) \n  (h2 : ∀ c ∈ ticket.data, c.isDigit) :\n  isLucky ticket = (sumDigits\
-  \ (ticket.take 3) = sumDigits (ticket.drop 3)) := sorry\n\n\ntheorem invalid_ticket_length\
-  \ (ticket : String)\n  (h : ticket.length ≠ 6) :\n  isLucky ticket = false := sorry\n\
-  \n\ntheorem invalid_ticket_chars (ticket : String)\n  (h : ∃ c ∈ ticket.data, ¬c.isDigit)\
-  \ :\n  isLucky ticket = false := sorry\n\n\ntheorem edge_cases :\n  isLucky \"000000\"\
-  \ = true ∧\n  isLucky \"\" = false ∧ \n  isLucky \"12345\" = false ∧\n  isLucky\
-  \ \"1234567\" = false ∧\n  isLucky \"abcdef\" = false := sorry\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval is_lucky \"123321\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval is_lucky \"12341234\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
-  \ is_lucky \"000000\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In Russia regular bus tickets usually consist of 6 digits. The ticket is called lucky when the sum of the first three digits equals to the sum of the last three digits. Write a function to find out whether the ticket is lucky or not. Return true if so, otherwise return false. Consider that input is always a string. Watch examples below.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isLucky (s : String) : Bool := sorry
+
+  def sumDigits (s : String) : Nat := sorry
+vc-theorems: |
+  theorem valid_ticket_behavior (ticket : String) 
+    (h1 : ticket.length = 6) 
+    (h2 : ∀ c ∈ ticket.data, c.isDigit) :
+    isLucky ticket = (sumDigits (ticket.take 3) = sumDigits (ticket.drop 3)) := sorry
+
+
+  theorem invalid_ticket_length (ticket : String)
+    (h : ticket.length ≠ 6) :
+    isLucky ticket = false := sorry
+
+
+  theorem invalid_ticket_chars (ticket : String)
+    (h : ∃ c ∈ ticket.data, ¬c.isDigit) :
+    isLucky ticket = false := sorry
+
+
+  theorem edge_cases :
+    isLucky "000000" = true ∧
+    isLucky "" = false ∧ 
+    isLucky "12345" = false ∧
+    isLucky "1234567" = false ∧
+    isLucky "abcdef" = false := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_lucky "123321"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_lucky "12341234"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_lucky "000000"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

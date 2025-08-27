@@ -1,23 +1,69 @@
-"vc-description": "# Task\n You are given an array of integers `arr` that representing\
-  \ coordinates of obstacles situated on a straight line.\n\n Assume that you are\
-  \ jumping from the point with coordinate 0 to the right. You are allowed only to\
-  \ make jumps of the same length represented by some integer.\n\n Find the minimal\
-  \ length of the jump enough to avoid all the obstacles.\n\n# Example\n\n For `arr\
-  \ = [5, 3, 6, 7, 9]`, the output should be `4`.\n\n Check out the image below for\
-  \ better understanding:\n\n \n\n\n# Input/Output\n\n\n - `[input]` integer array\
-  \ `arr`\n\n    Non-empty array of positive integers.\n\n    Constraints: `1 ≤ inputArray[i]\
-  \ ≤ 100.`\n\n\n - `[output]` an integer\n\n    The desired length."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def avoid_obstacles (obstacles : List Nat) : Nat := sorry\n\ntheorem\
-  \ avoid_obstacles_jumps_over_all (obstacles : List Nat)\n  (h1 : ∀ x ∈ obstacles,\
-  \ 1 ≤ x ∧ x ≤ 1000)\n  (h2 : obstacles.length ≥ 1 ∧ obstacles.length ≤ 100) :\n\
-  \  let jump := avoid_obstacles obstacles\n  2 ≤ jump ∧ ∀ pos ∈ obstacles, pos %\
-  \ jump ≠ 0 := sorry\n"
-"vc-theorems": "theorem avoid_obstacles_monotonic_with_subset (obstacles : List Nat)\n\
-  \  (h1 : ∀ x ∈ obstacles, 1 ≤ x ∧ x ≤ 50)\n  (h2 : obstacles.length ≥ 2 ∧ obstacles.length\
-  \ ≤ 10) :\n  avoid_obstacles obstacles ≥ avoid_obstacles (obstacles.take (obstacles.length\
-  \ / 2)) := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval avoid_obstacles [5,\
-  \ 3, 6, 7, 9]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval avoid_obstacles [2, 3]\n\
-  \n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval avoid_obstacles [1, 4, 10, 6, 2]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  # Task
+   You are given an array of integers `arr` that representing coordinates of obstacles situated on a straight line.
+
+   Assume that you are jumping from the point with coordinate 0 to the right. You are allowed only to make jumps of the same length represented by some integer.
+
+   Find the minimal length of the jump enough to avoid all the obstacles.
+
+  # Example
+
+   For `arr = [5, 3, 6, 7, 9]`, the output should be `4`.
+
+   Check out the image below for better understanding:
+
+   
+
+
+  # Input/Output
+
+
+   - `[input]` integer array `arr`
+
+      Non-empty array of positive integers.
+
+      Constraints: `1 ≤ inputArray[i] ≤ 100.`
+
+
+   - `[output]` an integer
+
+      The desired length.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def avoid_obstacles (obstacles : List Nat) : Nat := sorry
+
+  theorem avoid_obstacles_jumps_over_all (obstacles : List Nat)
+    (h1 : ∀ x ∈ obstacles, 1 ≤ x ∧ x ≤ 1000)
+    (h2 : obstacles.length ≥ 1 ∧ obstacles.length ≤ 100) :
+    let jump := avoid_obstacles obstacles
+    2 ≤ jump ∧ ∀ pos ∈ obstacles, pos % jump ≠ 0 := sorry
+vc-theorems: |
+  theorem avoid_obstacles_monotonic_with_subset (obstacles : List Nat)
+    (h1 : ∀ x ∈ obstacles, 1 ≤ x ∧ x ≤ 50)
+    (h2 : obstacles.length ≥ 2 ∧ obstacles.length ≤ 10) :
+    avoid_obstacles obstacles ≥ avoid_obstacles (obstacles.take (obstacles.length / 2)) := sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval avoid_obstacles [5, 3, 6, 7, 9]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval avoid_obstacles [2, 3]
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval avoid_obstacles [1, 4, 10, 6, 2]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

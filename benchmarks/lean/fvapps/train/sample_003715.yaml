@@ -1,42 +1,97 @@
-"vc-description": "Given the current exchange rate between the USD and the EUR is\
-  \ 1.1363636 write a function that will accept the Curency type to be returned and\
-  \ a list of the amounts that need to be converted.\n\nDon't forget this is a currency\
-  \ so the result will need to be rounded to the second decimal. \n\n'USD' Return\
-  \ format should be `'$100,000.00'`\n\n'EUR' Return format for this kata should be\
-  \ `'100,000.00€'`\n\n`to_currency` is a string with values `'USD','EUR'` , `values_list`\
-  \ is a list of floats\n\n`solution(to_currency,values)`\n\n\n#EXAMPLES: \n\n```\n\
-  solution('USD',[1394.0, 250.85, 721.3, 911.25, 1170.67]) \n= ['$1,584.09', '$285.06',\
-  \ '$819.66', '$1,035.51', '$1,330.31']\n\nsolution('EUR',[109.45, 640.31, 1310.99,\
-  \ 669.51, 415.54]) \n= ['96.32€', '563.47€', '1,153.67€', '589.17€', '365.68€']\n\
-  \n\n\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solution (toCurrency : String) (values : List Float) : List\
-  \ String := sorry\n\ndef stringToFloat (s : String) : Float := sorry\n"
-"vc-theorems": "theorem solution_maintains_length (toCurrency : String) (values :\
-  \ List Float) :\n  (values.length > 0) → \n  (solution toCurrency values).length\
-  \ = values.length := sorry\n\n\ntheorem solution_uses_correct_usd_symbols (toCurrency\
-  \ : String) (values : List Float) :\n  (values.length > 0) →\n  (toCurrency = \"\
-  USD\") →\n  ∀ x ∈ solution toCurrency values, x.startsWith \"$\" ∧ ¬(x.contains\
-  \ '€') := sorry\n\n\ntheorem solution_uses_correct_eur_symbols (toCurrency : String)\
-  \ (values : List Float) :\n  (values.length > 0) →\n  (toCurrency = \"EUR\") →\n\
-  \  ∀ x ∈ solution toCurrency values, x.endsWith \"€\" ∧ ¬(x.contains '$') := sorry\n\
-  \n\ntheorem solution_has_two_decimals (toCurrency : String) (values : List Float)\
-  \ :\n  (values.length > 0) →\n  ∀ x ∈ solution toCurrency values,\n    (x.contains\
-  \ '.') ∧\n    ((x.split (· = '.')).getLast!.replace \"€\" \"\").length = 2 := sorry\n\
-  \n\ntheorem solution_handles_zero (toCurrency : String) (values : List Float) :\n\
-  \  (values.length > 0) →\n  (∀ x ∈ values, x = 0) →\n  ∀ y ∈ solution toCurrency\
-  \ values,\n    y = (if toCurrency = \"USD\" then \"$0.00\" else \"0.00€\") := sorry\n\
-  \n\ntheorem solution_conversion_inverse (toCurrency : String) (value : Float) :\n\
-  \  let otherCurrency := if toCurrency = \"USD\" then \"EUR\" else \"USD\"\n  let\
-  \ firstConversion := solution otherCurrency [value]\n  let withoutSymbols := (firstConversion[0]!.replace\
-  \ \"$\" \"\").replace \"€\" \"\"\n  let secondConversion := solution toCurrency\
-  \ [stringToFloat withoutSymbols]\n  let originalAmount := if toCurrency = \"USD\"\
-  \ then s!\"${value}\" else s!\"${value}€\"\n  let finalValue := stringToFloat ((secondConversion[0]!.replace\
-  \ \"$\" \"\").replace \"€\" \"\")\n  let originalValue := stringToFloat ((originalAmount.replace\
-  \ \"$\" \"\").replace \"€\" \"\")\n  (finalValue - originalValue) < 0.01 := sorry\n\
-  \n/--\ninfo: ['$1.15', '$94.65']\n-/\n#guard_msgs in\n#eval solution \"USD\" [1.01,\
-  \ 83.29]\n\n/--\ninfo: ['96.32€', '563.47€']\n-/\n#guard_msgs in\n#eval solution\
-  \ \"EUR\" [109.45, 640.31]\n\n/--\ninfo: ['$0.00', '$0.00', '$0.00']\n-/\n#guard_msgs\
-  \ in\n#eval solution \"USD\" [0, 0, 0]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given the current exchange rate between the USD and the EUR is 1.1363636 write a function that will accept the Curency type to be returned and a list of the amounts that need to be converted.
+
+  Don't forget this is a currency so the result will need to be rounded to the second decimal. 
+
+  'USD' Return format should be `'$100,000.00'`
+
+  'EUR' Return format for this kata should be `'100,000.00€'`
+
+  `to_currency` is a string with values `'USD','EUR'` , `values_list` is a list of floats
+
+  `solution(to_currency,values)`
+
+
+  #EXAMPLES: 
+
+  ```
+  solution('USD',[1394.0, 250.85, 721.3, 911.25, 1170.67]) 
+  = ['$1,584.09', '$285.06', '$819.66', '$1,035.51', '$1,330.31']
+
+  solution('EUR',[109.45, 640.31, 1310.99, 669.51, 415.54]) 
+  = ['96.32€', '563.47€', '1,153.67€', '589.17€', '365.68€']
+
+
+
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solution (toCurrency : String) (values : List Float) : List String := sorry
+
+  def stringToFloat (s : String) : Float := sorry
+vc-theorems: |
+  theorem solution_maintains_length (toCurrency : String) (values : List Float) :
+    (values.length > 0) → 
+    (solution toCurrency values).length = values.length := sorry
+
+
+  theorem solution_uses_correct_usd_symbols (toCurrency : String) (values : List Float) :
+    (values.length > 0) →
+    (toCurrency = "USD") →
+    ∀ x ∈ solution toCurrency values, x.startsWith "$" ∧ ¬(x.contains '€') := sorry
+
+
+  theorem solution_uses_correct_eur_symbols (toCurrency : String) (values : List Float) :
+    (values.length > 0) →
+    (toCurrency = "EUR") →
+    ∀ x ∈ solution toCurrency values, x.endsWith "€" ∧ ¬(x.contains '$') := sorry
+
+
+  theorem solution_has_two_decimals (toCurrency : String) (values : List Float) :
+    (values.length > 0) →
+    ∀ x ∈ solution toCurrency values,
+      (x.contains '.') ∧
+      ((x.split (· = '.')).getLast!.replace "€" "").length = 2 := sorry
+
+
+  theorem solution_handles_zero (toCurrency : String) (values : List Float) :
+    (values.length > 0) →
+    (∀ x ∈ values, x = 0) →
+    ∀ y ∈ solution toCurrency values,
+      y = (if toCurrency = "USD" then "$0.00" else "0.00€") := sorry
+
+
+  theorem solution_conversion_inverse (toCurrency : String) (value : Float) :
+    let otherCurrency := if toCurrency = "USD" then "EUR" else "USD"
+    let firstConversion := solution otherCurrency [value]
+    let withoutSymbols := (firstConversion[0]!.replace "$" "").replace "€" ""
+    let secondConversion := solution toCurrency [stringToFloat withoutSymbols]
+    let originalAmount := if toCurrency = "USD" then s!"${value}" else s!"${value}€"
+    let finalValue := stringToFloat ((secondConversion[0]!.replace "$" "").replace "€" "")
+    let originalValue := stringToFloat ((originalAmount.replace "$" "").replace "€" "")
+    (finalValue - originalValue) < 0.01 := sorry
+
+  /--
+  info: ['$1.15', '$94.65']
+  -/
+  #guard_msgs in
+  #eval solution "USD" [1.01, 83.29]
+
+  /--
+  info: ['96.32€', '563.47€']
+  -/
+  #guard_msgs in
+  #eval solution "EUR" [109.45, 640.31]
+
+  /--
+  info: ['$0.00', '$0.00', '$0.00']
+  -/
+  #guard_msgs in
+  #eval solution "USD" [0, 0, 0]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

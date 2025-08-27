@@ -1,29 +1,82 @@
-"vc-description": "Given a string s. An awesome substring is a non-empty substring\
-  \ of s such that we can make any number of swaps in order to make it palindrome.\n\
-  Return the length of the maximum length awesome substring of s.\n \nExample 1:\n\
-  Input: s = \"3242415\"\nOutput: 5\nExplanation: \"24241\" is the longest awesome\
-  \ substring, we can form the palindrome \"24142\" with some swaps.\n\nExample 2:\n\
-  Input: s = \"12345678\"\nOutput: 1\n\nExample 3:\nInput: s = \"213123\"\nOutput:\
-  \ 6\nExplanation: \"213123\" is the longest awesome substring, we can form the palindrome\
-  \ \"231132\" with some swaps.\n\nExample 4:\nInput: s = \"00\"\nOutput: 2\n\n \n\
-  Constraints:\n\n1 <= s.length <= 10^5\ns consists only of digits."
-"vc-preamble": "import Imports.AllImports\n\ndef longest_awesome_substring (s : String)\
-  \ : Nat := sorry\n\ndef is_digit (c : Char) : Bool := \n  '0' ≤ c ∧ c ≤ '9'\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def string_reversal (s : String) : String := sorry\n\ntheorem valid_length\
-  \ (s : String) (h : s.length > 0) (h2 : ∀ c ∈ s.data, is_digit c) :\n  let result\
-  \ := longest_awesome_substring s\n  1 ≤ result ∧ result ≤ s.length := sorry\n"
-"vc-theorems": "theorem repeated_digit_awesome (d : Char) (n : Nat) (h : is_digit\
-  \ d) (h2 : n > 0) :\n  let s := String.mk (List.replicate n d)\n  longest_awesome_substring\
-  \ s = s.length := sorry\n\n\ntheorem palindrome_awesome (s : String) (h : s.length\
-  \ > 0) (h2 : ∀ c ∈ s.data, is_digit c) :\n  let palindrome := s ++ string_reversal\
-  \ s\n  longest_awesome_substring palindrome = palindrome.length := sorry\n\n\ntheorem\
-  \ single_odd_count_awesome (d1 d2 : Char) (h1 : is_digit d1) (h2 : is_digit d2)\
-  \ (h3 : d1 ≠ d2) :\n  let s := String.mk (List.replicate 10 d1 ++ [d2]) \n  longest_awesome_substring\
-  \ s ≥ 11 := sorry\n\n\ntheorem reversal_invariant (s : String) (h : s.length > 0)\
-  \ (h2 : ∀ c ∈ s.data, is_digit c) :\n  longest_awesome_substring s = longest_awesome_substring\
-  \ (string_reversal s) := sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval longest_awesome_substring\
-  \ \"3242415\"\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval longest_awesome_substring\
-  \ \"12345678\"\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval longest_awesome_substring\
-  \ \"213123\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a string s. An awesome substring is a non-empty substring of s such that we can make any number of swaps in order to make it palindrome.
+  Return the length of the maximum length awesome substring of s.
+   
+  Example 1:
+  Input: s = "3242415"
+  Output: 5
+  Explanation: "24241" is the longest awesome substring, we can form the palindrome "24142" with some swaps.
+
+  Example 2:
+  Input: s = "12345678"
+  Output: 1
+
+  Example 3:
+  Input: s = "213123"
+  Output: 6
+  Explanation: "213123" is the longest awesome substring, we can form the palindrome "231132" with some swaps.
+
+  Example 4:
+  Input: s = "00"
+  Output: 2
+
+   
+  Constraints:
+
+  1 <= s.length <= 10^5
+  s consists only of digits.
+vc-preamble: |
+  import Imports.AllImports
+
+  def longest_awesome_substring (s : String) : Nat := sorry
+
+  def is_digit (c : Char) : Bool := 
+    '0' ≤ c ∧ c ≤ '9'
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def string_reversal (s : String) : String := sorry
+
+  theorem valid_length (s : String) (h : s.length > 0) (h2 : ∀ c ∈ s.data, is_digit c) :
+    let result := longest_awesome_substring s
+    1 ≤ result ∧ result ≤ s.length := sorry
+vc-theorems: |
+  theorem repeated_digit_awesome (d : Char) (n : Nat) (h : is_digit d) (h2 : n > 0) :
+    let s := String.mk (List.replicate n d)
+    longest_awesome_substring s = s.length := sorry
+
+
+  theorem palindrome_awesome (s : String) (h : s.length > 0) (h2 : ∀ c ∈ s.data, is_digit c) :
+    let palindrome := s ++ string_reversal s
+    longest_awesome_substring palindrome = palindrome.length := sorry
+
+
+  theorem single_odd_count_awesome (d1 d2 : Char) (h1 : is_digit d1) (h2 : is_digit d2) (h3 : d1 ≠ d2) :
+    let s := String.mk (List.replicate 10 d1 ++ [d2]) 
+    longest_awesome_substring s ≥ 11 := sorry
+
+
+  theorem reversal_invariant (s : String) (h : s.length > 0) (h2 : ∀ c ∈ s.data, is_digit c) :
+    longest_awesome_substring s = longest_awesome_substring (string_reversal s) := sorry
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval longest_awesome_substring "3242415"
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval longest_awesome_substring "12345678"
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval longest_awesome_substring "213123"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

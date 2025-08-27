@@ -1,29 +1,72 @@
-"vc-description": "A happy number is a number defined by the following process: starting\
-  \ with any positive integer, replace the number by the sum of the squares of its\
-  \ digits, and repeat the process until the number equals 1 (where it will stay),\
-  \ or it loops endlessly in a cycle which does not include 1.\n\nThose numbers for\
-  \ which this process ends in 1 are **happy numbers**, while those that do not end\
-  \ in 1 are unhappy numbers (or sad numbers) (Wikipedia).\n\nWrite a function that\
-  \ takes `n` as parameter and return `true` if and only if `n` is an happy number,\
-  \ `false` otherwise.\n\n\n## Examples\n\nFor example number `7` is happy because\
-  \ after a number of steps the computed sequence ends up with a 1: `7, 49, 97, 130,\
-  \ 10, 1 `\n\nWhile `3` is not, and would give us an infinite sequence: `3, 9, 81,\
-  \ 65, 61, 37, 58, 89, 145, 42, 20, 4, 16, 37, 58, 89, 145, 42, 20, 4, 16, 37, ...`\n\
-  \n\nHappy coding!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_happy (n : Nat) : Bool := sorry\n\ndef sum_of_squares_digits\
-  \ (n : Nat) : Nat := sorry\n"
-"vc-theorems": "theorem happy_number_is_bool (n : Nat) : \n  n > 0 → is_happy n =\
-  \ true ∨ is_happy n = false := sorry \n\n\ntheorem happy_number_squares_property\
-  \ (n : Nat) : \n  n > 0 → is_happy n = true → is_happy (sum_of_squares_digits n)\
-  \ = true := sorry\n\n\ntheorem happy_number_squares_property_false (n : Nat) :\n\
-  \  n > 0 → is_happy n = false → is_happy (sum_of_squares_digits n) = false := sorry\n\
-  \n\ntheorem known_happy_numbers :\n  is_happy 1 = true ∧ \n  is_happy 7 = true ∧\n\
-  \  is_happy 10 = true ∧\n  is_happy 13 = true ∧ \n  is_happy 19 = true ∧\n  is_happy\
-  \ 23 = true ∧\n  is_happy 28 = true ∧\n  is_happy 31 = true := sorry\n\n\ntheorem\
-  \ happy_number_terminates (n : Nat) :\n  n > 0 → ∃ result, is_happy n = result :=\
-  \ sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_happy 1\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval is_happy 7\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval\
-  \ is_happy 16\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  A happy number is a number defined by the following process: starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.
+
+  Those numbers for which this process ends in 1 are **happy numbers**, while those that do not end in 1 are unhappy numbers (or sad numbers) (Wikipedia).
+
+  Write a function that takes `n` as parameter and return `true` if and only if `n` is an happy number, `false` otherwise.
+
+
+  ## Examples
+
+  For example number `7` is happy because after a number of steps the computed sequence ends up with a 1: `7, 49, 97, 130, 10, 1 `
+
+  While `3` is not, and would give us an infinite sequence: `3, 9, 81, 65, 61, 37, 58, 89, 145, 42, 20, 4, 16, 37, 58, 89, 145, 42, 20, 4, 16, 37, ...`
+
+
+  Happy coding!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_happy (n : Nat) : Bool := sorry
+
+  def sum_of_squares_digits (n : Nat) : Nat := sorry
+vc-theorems: |
+  theorem happy_number_is_bool (n : Nat) : 
+    n > 0 → is_happy n = true ∨ is_happy n = false := sorry 
+
+
+  theorem happy_number_squares_property (n : Nat) : 
+    n > 0 → is_happy n = true → is_happy (sum_of_squares_digits n) = true := sorry
+
+
+  theorem happy_number_squares_property_false (n : Nat) :
+    n > 0 → is_happy n = false → is_happy (sum_of_squares_digits n) = false := sorry
+
+
+  theorem known_happy_numbers :
+    is_happy 1 = true ∧ 
+    is_happy 7 = true ∧
+    is_happy 10 = true ∧
+    is_happy 13 = true ∧ 
+    is_happy 19 = true ∧
+    is_happy 23 = true ∧
+    is_happy 28 = true ∧
+    is_happy 31 = true := sorry
+
+
+  theorem happy_number_terminates (n : Nat) :
+    n > 0 → ∃ result, is_happy n = result := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_happy 1
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_happy 7
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_happy 16
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,59 +1,71 @@
-"vc-description": "Chaneka has a hobby of playing with animal toys. Every toy has\
-  \ a different fun value, a real number. Chaneka has four boxes to store the toys\
-  \ with specification:   The first box stores toys with fun values in range of $(-\\\
-  infty,-1]$.  The second box stores toys with fun values in range of $(-1, 0)$. \
-  \ The third box stores toys with fun values in range of $(0, 1)$.  The fourth box\
-  \ stores toys with fun value in range of $[1, \\infty)$. \n\nChaneka has $A$, $B$,\
-  \ $C$, $D$ toys in the first, second, third, and fourth box, respectively. One day\
-  \ she decides that she only wants one toy, a super toy. So she begins to create\
-  \ this super toy by sewing all the toys she has.\n\nWhile the number of toys Chaneka\
-  \ has is more than 1, she takes two different toys randomly and then sews them together,\
-  \ creating a new toy. The fun value of this new toy is equal to the multiplication\
-  \ of fun values of the sewn toys. She then puts this new toy in the appropriate\
-  \ box. She repeats this process until she only has one toy. This last toy is the\
-  \ super toy, and the box that stores this toy is the special box.\n\nAs an observer,\
-  \ you only know the number of toys in each box initially but do not know their fun\
-  \ values. You also don't see the sequence of Chaneka's sewing. Determine which boxes\
-  \ can be the special box after Chaneka found her super toy.\n\n\n-----Input-----\n\
-  \nThe first line has an integer $T$ $(1 \\le T \\le 5 \\cdot 10^4)$, the number\
-  \ of test cases.\n\nEvery case contains a line with four space-separated integers\
-  \ $A$ $B$ $C$ $D$ $(0 \\le A, B, C, D \\le 10^6, A + B + C + D > 0)$, which denotes\
-  \ the number of toys in the first, second, third, and fourth box, respectively.\n\
-  \n\n-----Output-----\n\nFor each case, print four space-separated strings. Each\
-  \ string represents the possibility that the first, second, third, and fourth box\
-  \ can be the special box from left to right.\n\nFor each box, print \"Ya\" (Without\
-  \ quotes, Indonesian for yes) if that box can be the special box. Print \"Tidak\"\
-  \ (Without quotes, Indonesian for No) otherwise.\n\n\n-----Example-----\nInput\n\
-  2\n1 2 0 1\n0 1 0 0\n\nOutput\nYa Ya Tidak Tidak\nTidak Ya Tidak Tidak\n\n\n\n-----Note-----\n\
-  \nFor the first case, here is a scenario where the first box is the special box:\
-  \   The first box had toys with fun values $\\{-3\\}$.  The second box had toys\
-  \ with fun values $\\{ -0.5, -0.5 \\}$  The fourth box had toys with fun values\
-  \ $\\{ 3 \\}$ \n\nThe sewing sequence:   Chaneka sews the toy with fun $-0.5$ and\
-  \ $-0.5$ to a toy with fun $0.25$ and then put it in the third box.  Chaneka sews\
-  \ the toy with fun $-3$ and $0.25$ to a toy with fun $-0.75$ and then put it in\
-  \ the second box.  Chaneka sews the toy with fun $-0.75$ and $3$ to a toy with fun\
-  \ $-1.25$ and then put it in the first box, which then became the special box. \n\
-  \nHere is a scenario where the second box ends up being the special box:   The first\
-  \ box had toys with fun values $\\{-3\\}$  The second box had toys with fun values\
-  \ $\\{ -0.33, -0.25 \\}$.  The fourth box had toys with fun values $\\{ 3 \\}$.\
-  \ \n\nThe sewing sequence:   Chaneka sews the toy with fun $-3$ and $-0.33$ to a\
-  \ toy with fun $0.99$ and then put it in the third box.  Chaneka sews the toy with\
-  \ fun $0.99$ and $3$ to a toy with fun $2.97$ and then put in it the fourth box.\
-  \  Chaneka sews the toy with fun $2.97$ and $-0.25$ to a toy with fun $-0.7425$\
-  \ and then put it in the second box, which then became the special box.  There is\
-  \ only one toy for the second case, so Chaneka does not have to sew anything because\
-  \ that toy, by definition, is the super toy."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_toy_boxes (a b c d : Nat) : Array YaNot := sorry\n\n\
-  theorem always_contains_four_parts (a b c d : Nat) :\n  (solve_toy_boxes a b c d).size\
-  \ = 4 ∧\n  ∀ x ∈ solve_toy_boxes a b c d, x = YaNot.ya ∨ x = YaNot.tidak := sorry\n"
-"vc-theorems": "theorem parity_constraints (a b c d : Nat) :\n  ((a + b) % 2 = 0 →\
-  \ (solve_toy_boxes a b c d)[0]! = YaNot.tidak ∧ (solve_toy_boxes a b c d)[1]! =\
-  \ YaNot.tidak) ∧\n  ((a + b) % 2 ≠ 0 → (solve_toy_boxes a b c d)[2]! = YaNot.tidak\
-  \ ∧ (solve_toy_boxes a b c d)[3]! = YaNot.tidak) := sorry\n\n\ntheorem zero_small_box_constraints\
-  \ (b c : Nat) :\n  (solve_toy_boxes 0 b c 0)[0]! = YaNot.tidak ∧ (solve_toy_boxes\
-  \ 0 b c 0)[3]! = YaNot.tidak := sorry\n\n\ntheorem zero_large_box_constraints (a\
-  \ d : Nat) :\n  (solve_toy_boxes a 0 0 d)[1]! = YaNot.tidak ∧ (solve_toy_boxes a\
-  \ 0 0 d)[2]! = YaNot.tidak := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Chaneka has a hobby of playing with animal toys. Every toy has a different fun value, a real number. Chaneka has four boxes to store the toys with specification:   The first box stores toys with fun values in range of $(-\infty,-1]$.  The second box stores toys with fun values in range of $(-1, 0)$.  The third box stores toys with fun values in range of $(0, 1)$.  The fourth box stores toys with fun value in range of $[1, \infty)$. 
+
+  Chaneka has $A$, $B$, $C$, $D$ toys in the first, second, third, and fourth box, respectively. One day she decides that she only wants one toy, a super toy. So she begins to create this super toy by sewing all the toys she has.
+
+  While the number of toys Chaneka has is more than 1, she takes two different toys randomly and then sews them together, creating a new toy. The fun value of this new toy is equal to the multiplication of fun values of the sewn toys. She then puts this new toy in the appropriate box. She repeats this process until she only has one toy. This last toy is the super toy, and the box that stores this toy is the special box.
+
+  As an observer, you only know the number of toys in each box initially but do not know their fun values. You also don't see the sequence of Chaneka's sewing. Determine which boxes can be the special box after Chaneka found her super toy.
+
+
+  -----Input-----
+
+  The first line has an integer $T$ $(1 \le T \le 5 \cdot 10^4)$, the number of test cases.
+
+  Every case contains a line with four space-separated integers $A$ $B$ $C$ $D$ $(0 \le A, B, C, D \le 10^6, A + B + C + D > 0)$, which denotes the number of toys in the first, second, third, and fourth box, respectively.
+
+
+  -----Output-----
+
+  For each case, print four space-separated strings. Each string represents the possibility that the first, second, third, and fourth box can be the special box from left to right.
+
+  For each box, print "Ya" (Without quotes, Indonesian for yes) if that box can be the special box. Print "Tidak" (Without quotes, Indonesian for No) otherwise.
+
+
+  -----Example-----
+  Input
+  2
+  1 2 0 1
+  0 1 0 0
+
+  Output
+  Ya Ya Tidak Tidak
+  Tidak Ya Tidak Tidak
+
+
+
+  -----Note-----
+
+  For the first case, here is a scenario where the first box is the special box:   The first box had toys with fun values $\{-3\}$.  The second box had toys with fun values $\{ -0.5, -0.5 \}$  The fourth box had toys with fun values $\{ 3 \}$ 
+
+  The sewing sequence:   Chaneka sews the toy with fun $-0.5$ and $-0.5$ to a toy with fun $0.25$ and then put it in the third box.  Chaneka sews the toy with fun $-3$ and $0.25$ to a toy with fun $-0.75$ and then put it in the second box.  Chaneka sews the toy with fun $-0.75$ and $3$ to a toy with fun $-1.25$ and then put it in the first box, which then became the special box. 
+
+  Here is a scenario where the second box ends up being the special box:   The first box had toys with fun values $\{-3\}$  The second box had toys with fun values $\{ -0.33, -0.25 \}$.  The fourth box had toys with fun values $\{ 3 \}$. 
+
+  The sewing sequence:   Chaneka sews the toy with fun $-3$ and $-0.33$ to a toy with fun $0.99$ and then put it in the third box.  Chaneka sews the toy with fun $0.99$ and $3$ to a toy with fun $2.97$ and then put in it the fourth box.  Chaneka sews the toy with fun $2.97$ and $-0.25$ to a toy with fun $-0.7425$ and then put it in the second box, which then became the special box.  There is only one toy for the second case, so Chaneka does not have to sew anything because that toy, by definition, is the super toy.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_toy_boxes (a b c d : Nat) : Array YaNot := sorry
+
+  theorem always_contains_four_parts (a b c d : Nat) :
+    (solve_toy_boxes a b c d).size = 4 ∧
+    ∀ x ∈ solve_toy_boxes a b c d, x = YaNot.ya ∨ x = YaNot.tidak := sorry
+vc-theorems: |-
+  theorem parity_constraints (a b c d : Nat) :
+    ((a + b) % 2 = 0 → (solve_toy_boxes a b c d)[0]! = YaNot.tidak ∧ (solve_toy_boxes a b c d)[1]! = YaNot.tidak) ∧
+    ((a + b) % 2 ≠ 0 → (solve_toy_boxes a b c d)[2]! = YaNot.tidak ∧ (solve_toy_boxes a b c d)[3]! = YaNot.tidak) := sorry
+
+
+  theorem zero_small_box_constraints (b c : Nat) :
+    (solve_toy_boxes 0 b c 0)[0]! = YaNot.tidak ∧ (solve_toy_boxes 0 b c 0)[3]! = YaNot.tidak := sorry
+
+
+  theorem zero_large_box_constraints (a d : Nat) :
+    (solve_toy_boxes a 0 0 d)[1]! = YaNot.tidak ∧ (solve_toy_boxes a 0 0 d)[2]! = YaNot.tidak := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

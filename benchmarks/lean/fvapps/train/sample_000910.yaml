@@ -1,43 +1,94 @@
-"vc-description": "Chef Ada has a matrix with $N$ rows (numbered $1$ through $N$ from\
-  \ top to bottom) and $N$ columns (numbered $1$ through $N$ from left to right) containing\
-  \ all integers between $1$ and $N^2$ inclusive. For each valid $i$ and $j$, let's\
-  \ denote the cell in the $i$-th row and $j$-th column by $(i,j)$.\nAda wants to\
-  \ sort the matrix in row-major order ― for each valid $i$ and $j$, she wants the\
-  \ cell $(i, j)$ to contain the value $(i-1) \\cdot N + j$.\nIn one operation, Ada\
-  \ should choose an integer $L$ and transpose the submatrix between rows $1$ and\
-  \ $L$ and columns $1$ and $L$ (inclusive). Formally, for each $i$ and $j$ ($1 \\\
-  le i, j \\le L$), the value in the cell $(i, j)$ after this operation is equal to\
-  \ the value in $(j, i)$ before it.\nThe initial state of the matrix is chosen in\
-  \ such a way that it is possible to sort it using a finite number of operations\
-  \ (possibly zero). Find the smallest number of operations required to sort the matrix.\n\
-  \n-----Input-----\n- The first line of the input contains a single integer $T$ denoting\
-  \ the number of test cases. The description of $T$ test cases follows.\n- The first\
-  \ line of each test case contains a single integer $N$.\n- The next $N$ lines describe\
-  \ the matrix. For each valid $i$, the $i$-th of these lines contains $N$ space-separated\
-  \ integers ― the initial values in cells $(i, 1), (i, 2), \\ldots, (i, N)$.\n\n\
-  -----Output-----\nFor each test case, print a single line containing one integer\
-  \ ― the smallest number of operations required to sort the matrix.\n\n-----Constraints-----\n\
-  - $4 \\le N \\le 64$\n- the sum of $N^2$ over all test files does not exceed $3\
-  \ \\cdot 10^5$\n\n-----Subtasks-----\nSubtask #1 (10 points):\n- $T \\le 50$\n-\
-  \ $N = 4$\nSubtask #2 (90 points): original constraints\n\n-----Example Input-----\n\
-  1\n4\n1 2 9 13\n5 6 10 14\n3 7 11 15\n4 8 12 16\n\n-----Example Output-----\n2\n\
-  \n-----Explanation-----\nExample case 1: After the first operation, with $L = 2$,\
-  \ the resulting matrix is\n1 5 9 13\n2 6 10 14\n3 7 11 15\n4 8 12 16\n\nAfter the\
-  \ second operation, with $L = 4$, the matrix becomes sorted\n1 2 3 4\n5 6 7 8\n\
-  9 10 11 12\n13 14 15 16"
-"vc-preamble": "import Imports.AllImports\n\ndef Array2D (α : Type) := Array (Array\
-  \ α)\n\ndef Grid := Array2D Int\n\n\ndef isValidGrid (g : Grid) : Bool :=\n  let\
-  \ n := g.size\n  n > 0 ∧\n  (g.all (fun row => row.size = n)) ∧\n  true -- skipping\
-  \ int check since Lean types handle this\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def minTransposeOps (g : Grid) : Nat := sorry\n\ntheorem already_sorted_needs_zero_ops\
-  \ (n : Nat) (h : n > 0):\n  let grid := sorry -- construction of sorted grid\n \
-  \ minTransposeOps grid = 0 := sorry\n"
-"vc-theorems": "theorem transposed_sorted_needs_at_most_n_ops (n : Nat) (h : n > 1):\
-  \  \n  let grid := sorry -- construction of transposed sorted grid\n  minTransposeOps\
-  \ grid ≤ n := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_transpose_ops\
-  \ #[[1, 2, 9, 13], [5, 6, 10, 14], [3, 7, 11, 15], [4, 8, 12, 16]]\n\n/--\ninfo:\
-  \ 0\n-/\n#guard_msgs in\n#eval min_transpose_ops #[[1, 2, 3, 4], [5, 6, 7, 8], [9,\
-  \ 10, 11, 12], [13, 14, 15, 16]]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval min_transpose_ops\
-  \ #[[1, 5, 9, 13], [2, 6, 10, 14], [3, 7, 11, 15], [4, 8, 12, 16]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Chef Ada has a matrix with $N$ rows (numbered $1$ through $N$ from top to bottom) and $N$ columns (numbered $1$ through $N$ from left to right) containing all integers between $1$ and $N^2$ inclusive. For each valid $i$ and $j$, let's denote the cell in the $i$-th row and $j$-th column by $(i,j)$.
+  Ada wants to sort the matrix in row-major order ― for each valid $i$ and $j$, she wants the cell $(i, j)$ to contain the value $(i-1) \cdot N + j$.
+  In one operation, Ada should choose an integer $L$ and transpose the submatrix between rows $1$ and $L$ and columns $1$ and $L$ (inclusive). Formally, for each $i$ and $j$ ($1 \le i, j \le L$), the value in the cell $(i, j)$ after this operation is equal to the value in $(j, i)$ before it.
+  The initial state of the matrix is chosen in such a way that it is possible to sort it using a finite number of operations (possibly zero). Find the smallest number of operations required to sort the matrix.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains a single integer $N$.
+  - The next $N$ lines describe the matrix. For each valid $i$, the $i$-th of these lines contains $N$ space-separated integers ― the initial values in cells $(i, 1), (i, 2), \ldots, (i, N)$.
+
+  -----Output-----
+  For each test case, print a single line containing one integer ― the smallest number of operations required to sort the matrix.
+
+  -----Constraints-----
+  - $4 \le N \le 64$
+  - the sum of $N^2$ over all test files does not exceed $3 \cdot 10^5$
+
+  -----Subtasks-----
+  Subtask #1 (10 points):
+  - $T \le 50$
+  - $N = 4$
+  Subtask #2 (90 points): original constraints
+
+  -----Example Input-----
+  1
+  4
+  1 2 9 13
+  5 6 10 14
+  3 7 11 15
+  4 8 12 16
+
+  -----Example Output-----
+  2
+
+  -----Explanation-----
+  Example case 1: After the first operation, with $L = 2$, the resulting matrix is
+  1 5 9 13
+  2 6 10 14
+  3 7 11 15
+  4 8 12 16
+
+  After the second operation, with $L = 4$, the matrix becomes sorted
+  1 2 3 4
+  5 6 7 8
+  9 10 11 12
+  13 14 15 16
+vc-preamble: |
+  import Imports.AllImports
+
+  def Array2D (α : Type) := Array (Array α)
+
+  def Grid := Array2D Int
+
+
+  def isValidGrid (g : Grid) : Bool :=
+    let n := g.size
+    n > 0 ∧
+    (g.all (fun row => row.size = n)) ∧
+    true -- skipping int check since Lean types handle this
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def minTransposeOps (g : Grid) : Nat := sorry
+
+  theorem already_sorted_needs_zero_ops (n : Nat) (h : n > 0):
+    let grid := sorry -- construction of sorted grid
+    minTransposeOps grid = 0 := sorry
+vc-theorems: |
+  theorem transposed_sorted_needs_at_most_n_ops (n : Nat) (h : n > 1):  
+    let grid := sorry -- construction of transposed sorted grid
+    minTransposeOps grid ≤ n := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_transpose_ops #[[1, 2, 9, 13], [5, 6, 10, 14], [3, 7, 11, 15], [4, 8, 12, 16]]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_transpose_ops #[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_transpose_ops #[[1, 5, 9, 13], [2, 6, 10, 14], [3, 7, 11, 15], [4, 8, 12, 16]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

@@ -1,31 +1,87 @@
-"vc-description": "You are given three integers in the range [0-99]. You must determine\
-  \ if any ordering of the numbers forms a date from the 20th century.\n\n- If no\
-  \ ordering forms a date, return the string `\"invalid\"`.\n\n- If multiple distinct\
-  \ orderings form dates, return the string `\"ambiguous\"`.\n\n- If only one ordering\
-  \ forms a date, return that date as a string with format `\"YY/MM/DD\"`.\n\n## Examples\n\
-  \n```python\nunique_date(13, 12, 77) == '77/12/13' # only the ordering (77, 12,\
-  \ 13) forms a date\nunique_date(13, 77, 12) == '77/12/13' # argument order is irrelevant\n\
-  \nunique_date(1, 2, 3) == 'ambiguous' # 01/02/03, 02/01/03, ...\nunique_date(3,\
-  \ 2, 1) == 'ambiguous'\n\nunique_date(50, 40, 60) == 'invalid' # no ordering could\
-  \ form a date\nunique_date(40, 50, 60) == 'invalid'\n```\n\n## Note\nThis kata was\
-  \ inspired by my encounter with [google.com/foobar](http://www.google.com/foobar)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def unique_date (a b c : Int) : String := sorry\n\ndef is_valid_date\
-  \ (y m d : Int) : Bool := sorry\n"
-"vc-theorems": "theorem unique_date_output_format (a b c : Int) \n  (h1 : 0 ≤ a ∧\
-  \ a ≤ 99)\n  (h2 : 0 ≤ b ∧ b ≤ 99) \n  (h3 : 0 ≤ c ∧ c ≤ 99) :\n  let result :=\
-  \ unique_date a b c\n  (result = \"ambiguous\" ∨ result = \"invalid\") ∨\n  (result.length\
-  \ = 8 ∧ \n   result.get ⟨2⟩ = '/' ∧\n   result.get ⟨5⟩ = '/' ∧\n   let split :=\
-  \ result.splitOn \"/\"\n   let y := String.toInt! split[0]!\n   let m := String.toInt!\
-  \ split[1]!\n   let d := String.toInt! split[2]!\n   is_valid_date y m d) := sorry\n\
-  \n\ntheorem unique_date_guaranteed_valid \n  (month day year : Int)\n  (h1 : 1 ≤\
-  \ month ∧ month ≤ 12)\n  (h2 : 1 ≤ day ∧ day ≤ 28)\n  (h3 : 0 ≤ year ∧ year ≤ 99)\
-  \ :\n  let result := unique_date month day year\n  result = \"ambiguous\" ∨\n  String.toInt!\
-  \ (result.splitOn \"/\")[0]! = year := sorry\n\n\ntheorem unique_date_all_invalid\n\
-  \  (a b c : Int)\n  (h1 : 32 ≤ a ∧ a ≤ 99)\n  (h2 : 32 ≤ b ∧ b ≤ 99)\n  (h3 : 32\
-  \ ≤ c ∧ c ≤ 99) :\n  unique_date a b c = \"invalid\" := sorry\n\n/--\ninfo: '77/12/13'\n\
-  -/\n#guard_msgs in\n#eval unique_date 13 12 77\n\n/--\ninfo: 'ambiguous'\n-/\n#guard_msgs\
-  \ in\n#eval unique_date 1 2 3\n\n/--\ninfo: 'invalid'\n-/\n#guard_msgs in\n#eval\
-  \ unique_date 50 40 60\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  You are given three integers in the range [0-99]. You must determine if any ordering of the numbers forms a date from the 20th century.
+
+  - If no ordering forms a date, return the string `"invalid"`.
+
+  - If multiple distinct orderings form dates, return the string `"ambiguous"`.
+
+  - If only one ordering forms a date, return that date as a string with format `"YY/MM/DD"`.
+
+  ## Examples
+
+  ```python
+  unique_date(13, 12, 77) == '77/12/13' # only the ordering (77, 12, 13) forms a date
+  unique_date(13, 77, 12) == '77/12/13' # argument order is irrelevant
+
+  unique_date(1, 2, 3) == 'ambiguous' # 01/02/03, 02/01/03, ...
+  unique_date(3, 2, 1) == 'ambiguous'
+
+  unique_date(50, 40, 60) == 'invalid' # no ordering could form a date
+  unique_date(40, 50, 60) == 'invalid'
+  ```
+
+  ## Note
+  This kata was inspired by my encounter with [google.com/foobar](http://www.google.com/foobar)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def unique_date (a b c : Int) : String := sorry
+
+  def is_valid_date (y m d : Int) : Bool := sorry
+vc-theorems: |
+  theorem unique_date_output_format (a b c : Int) 
+    (h1 : 0 ≤ a ∧ a ≤ 99)
+    (h2 : 0 ≤ b ∧ b ≤ 99) 
+    (h3 : 0 ≤ c ∧ c ≤ 99) :
+    let result := unique_date a b c
+    (result = "ambiguous" ∨ result = "invalid") ∨
+    (result.length = 8 ∧ 
+     result.get ⟨2⟩ = '/' ∧
+     result.get ⟨5⟩ = '/' ∧
+     let split := result.splitOn "/"
+     let y := String.toInt! split[0]!
+     let m := String.toInt! split[1]!
+     let d := String.toInt! split[2]!
+     is_valid_date y m d) := sorry
+
+
+  theorem unique_date_guaranteed_valid 
+    (month day year : Int)
+    (h1 : 1 ≤ month ∧ month ≤ 12)
+    (h2 : 1 ≤ day ∧ day ≤ 28)
+    (h3 : 0 ≤ year ∧ year ≤ 99) :
+    let result := unique_date month day year
+    result = "ambiguous" ∨
+    String.toInt! (result.splitOn "/")[0]! = year := sorry
+
+
+  theorem unique_date_all_invalid
+    (a b c : Int)
+    (h1 : 32 ≤ a ∧ a ≤ 99)
+    (h2 : 32 ≤ b ∧ b ≤ 99)
+    (h3 : 32 ≤ c ∧ c ≤ 99) :
+    unique_date a b c = "invalid" := sorry
+
+  /--
+  info: '77/12/13'
+  -/
+  #guard_msgs in
+  #eval unique_date 13 12 77
+
+  /--
+  info: 'ambiguous'
+  -/
+  #guard_msgs in
+  #eval unique_date 1 2 3
+
+  /--
+  info: 'invalid'
+  -/
+  #guard_msgs in
+  #eval unique_date 50 40 60
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

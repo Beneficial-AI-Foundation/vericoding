@@ -1,39 +1,95 @@
-"vc-description": "Chef has recently learned about number bases and is becoming fascinated.\n\
-  Chef learned that for bases greater than ten, new digit symbols need to be introduced,\
-  \ and that the convention is to use the first few letters of the English alphabet.\
-  \ For example, in base 16, the digits are 0123456789ABCDEF. Chef thought that this\
-  \ is unsustainable; the English alphabet only has 26 letters, so this scheme can\
-  \ only work up to base 36. But this is no problem for Chef, because Chef is very\
-  \ creative and can just invent new digit symbols when she needs them. (Chef is very\
-  \ creative.)\nChef also noticed that in base two, all positive integers start with\
-  \ the digit 1! However, this is the only base where this is true. So naturally,\
-  \ Chef wonders: Given some integer N, how many bases b are there such that the base-b\
-  \ representation of N starts with a 1?\n\n-----Input-----\nThe first line of the\
-  \ input contains an integer T denoting the number of test cases. The description\
-  \ of T test cases follows.\nEach test case consists of one line containing a single\
-  \ integer N (in base ten).\n\n-----Output-----\nFor each test case, output a single\
-  \ line containing the number of bases b, or INFINITY if there are an infinite number\
-  \ of them.\n\n-----Constraints-----\n\n-----Subtasks-----Subtask #1 (16 points):\n\
-  - 1 ≤ T ≤ 103\n- 0 ≤ N < 103\nSubtask #2 (24 points):\n- 1 ≤ T ≤ 103\n- 0 ≤ N <\
-  \ 106\nSubtask #3 (28 points):\n- 1 ≤ T ≤ 103\n- 0 ≤ N < 1012\nSubtask #4 (32 points):\n\
-  - 1 ≤ T ≤ 105\n- 0 ≤ N < 1012\n\n-----Example-----\nInput:4\n6\n9\n11\n24\n\nOutput:4\n\
-  7\n8\n14\n\n-----Explanation-----\nIn the first test case, 6 has a leading digit\
-  \ 1 in bases 2, 4, 5 and 6: 610 = 1102 = 124 = 115 = 106."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_count_bases_starting_with_1 (n: Int) : String := sorry\n\
-  \ntheorem non_negative_count (n: Int) (h: n ≥ 2) (h': n ≤ 1000) : \n  match find_count_bases_starting_with_1\
-  \ n with\n  | \"INFINITY\" => True \n  | count => count.all (·.isDigit) ∧ count.toNat!\
-  \ ≥ 0\n  := sorry\n"
-"vc-theorems": "theorem special_cases_zero :\n  find_count_bases_starting_with_1 0\
-  \ = \"0\" := sorry\n\n\ntheorem special_cases_one :\n  find_count_bases_starting_with_1\
-  \ 1 = \"INFINITY\" := sorry\n\n\ntheorem count_less_than_input (n: Int) (h: n ≥\
-  \ 2) (h': n ≤ 1000) :\n  find_count_bases_starting_with_1 n ≠ \"INFINITY\" ∧ \n\
-  \  (find_count_bases_starting_with_1 n).toNat! ≤ n := sorry\n\n\ntheorem result_is_valid_string\
-  \ (n: Int) (h: n ≥ 2) (h': n ≤ 1000) :\n  (find_count_bases_starting_with_1 n).all\
-  \ (·.isDigit) := sorry\n\n\ntheorem base_2_property (n: Int) (h: n ≥ 2) (h': n ≤\
-  \ 100) :\n  (find_count_bases_starting_with_1 n).toNat! ≥ 1 := sorry\n\n/--\ninfo:\
-  \ '4'\n-/\n#guard_msgs in\n#eval find_count_bases_starting_with_1 6\n\n/--\ninfo:\
-  \ '0'\n-/\n#guard_msgs in\n#eval find_count_bases_starting_with_1 0\n\n/--\ninfo:\
-  \ 'INFINITY'\n-/\n#guard_msgs in\n#eval find_count_bases_starting_with_1 1\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Chef has recently learned about number bases and is becoming fascinated.
+  Chef learned that for bases greater than ten, new digit symbols need to be introduced, and that the convention is to use the first few letters of the English alphabet. For example, in base 16, the digits are 0123456789ABCDEF. Chef thought that this is unsustainable; the English alphabet only has 26 letters, so this scheme can only work up to base 36. But this is no problem for Chef, because Chef is very creative and can just invent new digit symbols when she needs them. (Chef is very creative.)
+  Chef also noticed that in base two, all positive integers start with the digit 1! However, this is the only base where this is true. So naturally, Chef wonders: Given some integer N, how many bases b are there such that the base-b representation of N starts with a 1?
+
+  -----Input-----
+  The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+  Each test case consists of one line containing a single integer N (in base ten).
+
+  -----Output-----
+  For each test case, output a single line containing the number of bases b, or INFINITY if there are an infinite number of them.
+
+  -----Constraints-----
+
+  -----Subtasks-----Subtask #1 (16 points):
+  - 1 ≤ T ≤ 103
+  - 0 ≤ N < 103
+  Subtask #2 (24 points):
+  - 1 ≤ T ≤ 103
+  - 0 ≤ N < 106
+  Subtask #3 (28 points):
+  - 1 ≤ T ≤ 103
+  - 0 ≤ N < 1012
+  Subtask #4 (32 points):
+  - 1 ≤ T ≤ 105
+  - 0 ≤ N < 1012
+
+  -----Example-----
+  Input:4
+  6
+  9
+  11
+  24
+
+  Output:4
+  7
+  8
+  14
+
+  -----Explanation-----
+  In the first test case, 6 has a leading digit 1 in bases 2, 4, 5 and 6: 610 = 1102 = 124 = 115 = 106.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_count_bases_starting_with_1 (n: Int) : String := sorry
+
+  theorem non_negative_count (n: Int) (h: n ≥ 2) (h': n ≤ 1000) : 
+    match find_count_bases_starting_with_1 n with
+    | "INFINITY" => True 
+    | count => count.all (·.isDigit) ∧ count.toNat! ≥ 0
+    := sorry
+vc-theorems: |
+  theorem special_cases_zero :
+    find_count_bases_starting_with_1 0 = "0" := sorry
+
+
+  theorem special_cases_one :
+    find_count_bases_starting_with_1 1 = "INFINITY" := sorry
+
+
+  theorem count_less_than_input (n: Int) (h: n ≥ 2) (h': n ≤ 1000) :
+    find_count_bases_starting_with_1 n ≠ "INFINITY" ∧ 
+    (find_count_bases_starting_with_1 n).toNat! ≤ n := sorry
+
+
+  theorem result_is_valid_string (n: Int) (h: n ≥ 2) (h': n ≤ 1000) :
+    (find_count_bases_starting_with_1 n).all (·.isDigit) := sorry
+
+
+  theorem base_2_property (n: Int) (h: n ≥ 2) (h': n ≤ 100) :
+    (find_count_bases_starting_with_1 n).toNat! ≥ 1 := sorry
+
+  /--
+  info: '4'
+  -/
+  #guard_msgs in
+  #eval find_count_bases_starting_with_1 6
+
+  /--
+  info: '0'
+  -/
+  #guard_msgs in
+  #eval find_count_bases_starting_with_1 0
+
+  /--
+  info: 'INFINITY'
+  -/
+  #guard_msgs in
+  #eval find_count_bases_starting_with_1 1
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

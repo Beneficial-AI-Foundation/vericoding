@@ -1,22 +1,62 @@
-"vc-description": "Given a string, return a new string that has transformed based\
-  \ on the input:\n\n* Change case of every character, ie. lower case to upper case,\
-  \ upper case to lower case.\n* Reverse the order of words from the input.\n\n**Note:**\
-  \ You will have to handle multiple spaces, and leading/trailing spaces.\n\nFor example:\n\
-  \n```\n\"Example Input\" ==> \"iNPUT eXAMPLE\"\n```\n\nYou may assume the input\
-  \ only contain English alphabet and spaces."
-"vc-preamble": "import Imports.AllImports\n\ndef string_transformer (s : String) :\
-  \ String := sorry\n\ndef countSpaces (s : String) : Nat :=\n  s.toList.foldl (fun\
-  \ count c => if c = ' ' then count + 1 else count) 0\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def swapcase (s : String) : String := sorry\n\ntheorem whitespace_preservation\
-  \ (s : String) :\n  countSpaces s = countSpaces (string_transformer s) := \nsorry\n"
-"vc-theorems": "theorem word_order_reversal (words : List String) (h : words ≠ [])\
-  \ :\n  let s := String.intercalate \" \" words\n  let result := string_transformer\
-  \ s\n  let original_words := s.split (· = ' ')\n  let result_words := result.split\
-  \ (· = ' ')\n  original_words.length = result_words.length ∧\n  ∀ (i : Nat), i <\
-  \ original_words.length → \n    swapcase (original_words[i]!) = result_words[result_words.length\
-  \ - 1 - i]! :=\nsorry\n\n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval string_transformer\
-  \ \"Example string\"\n\n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval string_transformer\
-  \ \"To be OR not to be That is the Question\"\n\n/--\ninfo: expected\n-/\n#guard_msgs\
-  \ in\n#eval string_transformer \" A b C d E f G \"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a string, return a new string that has transformed based on the input:
+
+  * Change case of every character, ie. lower case to upper case, upper case to lower case.
+  * Reverse the order of words from the input.
+
+  **Note:** You will have to handle multiple spaces, and leading/trailing spaces.
+
+  For example:
+
+  ```
+  "Example Input" ==> "iNPUT eXAMPLE"
+  ```
+
+  You may assume the input only contain English alphabet and spaces.
+vc-preamble: |
+  import Imports.AllImports
+
+  def string_transformer (s : String) : String := sorry
+
+  def countSpaces (s : String) : Nat :=
+    s.toList.foldl (fun count c => if c = ' ' then count + 1 else count) 0
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def swapcase (s : String) : String := sorry
+
+  theorem whitespace_preservation (s : String) :
+    countSpaces s = countSpaces (string_transformer s) := 
+  sorry
+vc-theorems: |
+  theorem word_order_reversal (words : List String) (h : words ≠ []) :
+    let s := String.intercalate " " words
+    let result := string_transformer s
+    let original_words := s.split (· = ' ')
+    let result_words := result.split (· = ' ')
+    original_words.length = result_words.length ∧
+    ∀ (i : Nat), i < original_words.length → 
+      swapcase (original_words[i]!) = result_words[result_words.length - 1 - i]! :=
+  sorry
+
+  /--
+  info: expected
+  -/
+  #guard_msgs in
+  #eval string_transformer "Example string"
+
+  /--
+  info: expected
+  -/
+  #guard_msgs in
+  #eval string_transformer "To be OR not to be That is the Question"
+
+  /--
+  info: expected
+  -/
+  #guard_msgs in
+  #eval string_transformer " A b C d E f G "
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -21,6 +21,7 @@ dependencies = [
     "dataclasses-json>=0.6.7", # JSON serialization for dataclasses
     "tqdm>=4.67.1",
     "datasets>=4.0.0",
+    "ruamel-yaml>=0.18.15",
 ]
 
 [project.optional-dependencies]

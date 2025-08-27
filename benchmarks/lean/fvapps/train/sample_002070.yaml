@@ -1,35 +1,102 @@
-"vc-description": "Koa the Koala has a binary string $s$ of length $n$. Koa can perform\
-  \ no more than $n-1$ (possibly zero) operations of the following form:\n\nIn one\
-  \ operation Koa selects positions $i$ and $i+1$ for some $i$ with $1 \\le i < |s|$\
-  \ and sets $s_i$ to $max(s_i, s_{i+1})$. Then Koa deletes position $i+1$ from $s$\
-  \ (after the removal, the remaining parts are concatenated).\n\nNote that after\
-  \ every operation the length of $s$ decreases by $1$.\n\nHow many different binary\
-  \ strings can Koa obtain by doing no more than $n-1$ (possibly zero) operations\
-  \ modulo $10^9+7$ ($1000000007$)?\n\n\n-----Input-----\n\nThe only line of input\
-  \ contains binary string $s$ ($1 \\le |s| \\le 10^6$). For all $i$ ($1 \\le i \\\
-  le |s|$) $s_i = 0$ or $s_i = 1$.\n\n\n-----Output-----\n\nOn a single line print\
-  \ the answer to the problem modulo $10^9+7$ ($1000000007$).\n\n\n-----Examples-----\n\
-  Input\n000\n\nOutput\n3\n\nInput\n0101\n\nOutput\n6\n\nInput\n0001111\n\nOutput\n\
-  16\n\nInput\n00101100011100\n\nOutput\n477\n\n\n\n-----Note-----\n\nIn the first\
-  \ sample Koa can obtain binary strings: $0$, $00$ and $000$.\n\nIn the second sample\
-  \ Koa can obtain binary strings: $1$, $01$, $11$, $011$, $101$ and $0101$. For example:\
-  \  to obtain $01$ from $0101$ Koa can operate as follows: $0101 \\rightarrow 0(10)1\
-  \ \\rightarrow 011 \\rightarrow 0(11) \\rightarrow 01$.  to obtain $11$ from $0101$\
-  \ Koa can operate as follows: $0101 \\rightarrow (01)01 \\rightarrow 101 \\rightarrow\
-  \ 1(01) \\rightarrow 11$. \n\nParentheses denote the two positions Koa selected\
-  \ in each operation."
-"vc-preamble": "import Imports.AllImports\n\ndef solve_binary_string (s : String)\
-  \ : Nat := sorry\n\ndef is_binary_string (s : String) : Bool := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def MOD : Nat := 1000000007\n\ntheorem solve_binary_string_properties\
-  \ {s : String} (h : is_binary_string s = true) :\n  let result := solve_binary_string\
-  \ s\n  0 ≤ result ∧ result ≤ MOD := sorry\n"
-"vc-theorems": "theorem all_zeros {s : String} (h : ∀ c ∈ s.data, c = '0') :\n  solve_binary_string\
-  \ s = s.length := sorry\n\n\ntheorem mod_property {s : String} (h : is_binary_string\
-  \ s = true) :\n  solve_binary_string s < MOD := sorry\n\n\ntheorem split_ones {s\
-  \ : String} (h : is_binary_string s = true) \n  (h2 : s.data.filter (· = '1') =\
-  \ []) :\n  solve_binary_string s = String.length s := sorry\n\n/--\ninfo: 3\n-/\n\
-  #guard_msgs in\n#eval solve_binary_string \"000\"\n\n/--\ninfo: 6\n-/\n#guard_msgs\
-  \ in\n#eval solve_binary_string \"0101\"\n\n/--\ninfo: 16\n-/\n#guard_msgs in\n\
-  #eval solve_binary_string \"0001111\"\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"
+vc-description: |-
+  Koa the Koala has a binary string $s$ of length $n$. Koa can perform no more than $n-1$ (possibly zero) operations of the following form:
+
+  In one operation Koa selects positions $i$ and $i+1$ for some $i$ with $1 \le i < |s|$ and sets $s_i$ to $max(s_i, s_{i+1})$. Then Koa deletes position $i+1$ from $s$ (after the removal, the remaining parts are concatenated).
+
+  Note that after every operation the length of $s$ decreases by $1$.
+
+  How many different binary strings can Koa obtain by doing no more than $n-1$ (possibly zero) operations modulo $10^9+7$ ($1000000007$)?
+
+
+  -----Input-----
+
+  The only line of input contains binary string $s$ ($1 \le |s| \le 10^6$). For all $i$ ($1 \le i \le |s|$) $s_i = 0$ or $s_i = 1$.
+
+
+  -----Output-----
+
+  On a single line print the answer to the problem modulo $10^9+7$ ($1000000007$).
+
+
+  -----Examples-----
+  Input
+  000
+
+  Output
+  3
+
+  Input
+  0101
+
+  Output
+  6
+
+  Input
+  0001111
+
+  Output
+  16
+
+  Input
+  00101100011100
+
+  Output
+  477
+
+
+
+  -----Note-----
+
+  In the first sample Koa can obtain binary strings: $0$, $00$ and $000$.
+
+  In the second sample Koa can obtain binary strings: $1$, $01$, $11$, $011$, $101$ and $0101$. For example:  to obtain $01$ from $0101$ Koa can operate as follows: $0101 \rightarrow 0(10)1 \rightarrow 011 \rightarrow 0(11) \rightarrow 01$.  to obtain $11$ from $0101$ Koa can operate as follows: $0101 \rightarrow (01)01 \rightarrow 101 \rightarrow 1(01) \rightarrow 11$. 
+
+  Parentheses denote the two positions Koa selected in each operation.
+vc-preamble: |
+  import Imports.AllImports
+
+  def solve_binary_string (s : String) : Nat := sorry
+
+  def is_binary_string (s : String) : Bool := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def MOD : Nat := 1000000007
+
+  theorem solve_binary_string_properties {s : String} (h : is_binary_string s = true) :
+    let result := solve_binary_string s
+    0 ≤ result ∧ result ≤ MOD := sorry
+vc-theorems: |
+  theorem all_zeros {s : String} (h : ∀ c ∈ s.data, c = '0') :
+    solve_binary_string s = s.length := sorry
+
+
+  theorem mod_property {s : String} (h : is_binary_string s = true) :
+    solve_binary_string s < MOD := sorry
+
+
+  theorem split_ones {s : String} (h : is_binary_string s = true) 
+    (h2 : s.data.filter (· = '1') = []) :
+    solve_binary_string s = String.length s := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve_binary_string "000"
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval solve_binary_string "0101"
+
+  /--
+  info: 16
+  -/
+  #guard_msgs in
+  #eval solve_binary_string "0001111"
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded

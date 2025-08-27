@@ -1,23 +1,60 @@
-"vc-description": "Sort the given strings in alphabetical order, case **insensitive**.\
-  \ For example:\n```\n[\"Hello\", \"there\", \"I'm\", \"fine\"]  -->  [\"fine\",\
-  \ \"Hello\", \"I'm\", \"there\"]\n[\"C\", \"d\", \"a\", \"B\"])              -->\
-  \  [\"a\", \"B\", \"C\", \"d\"]\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sortme (words : List String) : List String := sorry\n\ndef\
-  \ multiset_eq (l1 l2 : List String) : Prop :=\n  ∀ x, (List.countP (· = x) l1) =\
-  \ (List.countP (· = x) l2)\n"
-"vc-theorems": "theorem sortme_maintains_length (words : List String) : \n  List.length\
-  \ (sortme words) = List.length words ∧ \n  multiset_eq (sortme words) words := sorry\n\
-  \n\ntheorem sortme_ordered_case_insensitive (words : List String) :\n  ∀ i, i <\
-  \ (sortme words).length - 1 →\n  String.toLower ((sortme words)[i]!) ≤ String.toLower\
-  \ ((sortme words)[i+1]!) := sorry\n\n\ntheorem sortme_stable_for_equal_items (words\
-  \ : List String) :\n  ∀ i, i < (sortme words).length - 1 → \n  String.toLower ((sortme\
-  \ words)[i]!) = String.toLower ((sortme words)[i+1]!) →\n  ((sortme words)[i]!)\
-  \ ≤ ((sortme words)[i+1]!) := sorry\n\n\ntheorem sortme_empty_list :\n  sortme []\
-  \ = [] := sorry\n\n\ntheorem sortme_idempotent (words : List String) :\n  sortme\
-  \ (sortme words) = sortme words := sorry\n\n/--\ninfo: ['fine', 'Hello', \"I'm\"\
-  , 'there']\n-/\n#guard_msgs in\n#eval sortme [\"Hello\", \"there\", \"I\"m\", \"\
-  fine\"]\n\n/--\ninfo: ['a', 'B', 'C', 'd']\n-/\n#guard_msgs in\n#eval sortme [\"\
-  C\", \"d\", \"a\", \"B\"]\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval sortme []\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Sort the given strings in alphabetical order, case **insensitive**. For example:
+  ```
+  ["Hello", "there", "I'm", "fine"]  -->  ["fine", "Hello", "I'm", "there"]
+  ["C", "d", "a", "B"])              -->  ["a", "B", "C", "d"]
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sortme (words : List String) : List String := sorry
+
+  def multiset_eq (l1 l2 : List String) : Prop :=
+    ∀ x, (List.countP (· = x) l1) = (List.countP (· = x) l2)
+vc-theorems: |
+  theorem sortme_maintains_length (words : List String) : 
+    List.length (sortme words) = List.length words ∧ 
+    multiset_eq (sortme words) words := sorry
+
+
+  theorem sortme_ordered_case_insensitive (words : List String) :
+    ∀ i, i < (sortme words).length - 1 →
+    String.toLower ((sortme words)[i]!) ≤ String.toLower ((sortme words)[i+1]!) := sorry
+
+
+  theorem sortme_stable_for_equal_items (words : List String) :
+    ∀ i, i < (sortme words).length - 1 → 
+    String.toLower ((sortme words)[i]!) = String.toLower ((sortme words)[i+1]!) →
+    ((sortme words)[i]!) ≤ ((sortme words)[i+1]!) := sorry
+
+
+  theorem sortme_empty_list :
+    sortme [] = [] := sorry
+
+
+  theorem sortme_idempotent (words : List String) :
+    sortme (sortme words) = sortme words := sorry
+
+  /--
+  info: ['fine', 'Hello', "I'm", 'there']
+  -/
+  #guard_msgs in
+  #eval sortme ["Hello", "there", "I"m", "fine"]
+
+  /--
+  info: ['a', 'B', 'C', 'd']
+  -/
+  #guard_msgs in
+  #eval sortme ["C", "d", "a", "B"]
+
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval sortme []
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

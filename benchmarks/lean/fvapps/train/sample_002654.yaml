@@ -1,21 +1,66 @@
-"vc-description": "Write function bmi that calculates body mass index (bmi = weight\
-  \ / height ^ 2).\n\n\nif bmi <= 18.5 return \"Underweight\"\n\nif bmi <= 25.0 return\
-  \ \"Normal\"\n\nif bmi <= 30.0 return \"Overweight\"\n\nif bmi > 30 return \"Obese\""
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def bmi (weight height : Float) : Category :=\n  sorry\n"
-"vc-theorems": "theorem bmi_returns_valid_category {weight height : Float} \n  (h1\
-  \ : weight ≥ 1) (h2 : weight ≤ 500) \n  (h3 : height ≥ 0.5) (h4 : height ≤ 3.0)\
-  \ :\n  let result := bmi weight height\n  result = Category.Underweight ∨ \n  result\
-  \ = Category.Normal ∨\n  result = Category.Overweight ∨ \n  result = Category.Obese\
-  \ :=\n  sorry\n\n\ntheorem bmi_categories_are_monotonic {weight height : Float}\n\
-  \  (h1 : weight ≥ 1) (h2 : weight ≤ 500)\n  (h3 : height ≥ 0.5) (h4 : height ≤ 3.0)\
-  \ :\n  let bmiValue := weight / (height * height)\n  (bmiValue ≤ 18.5 → bmi weight\
-  \ height = Category.Underweight) ∧\n  (18.5 < bmiValue ∧ bmiValue ≤ 25 → bmi weight\
-  \ height = Category.Normal) ∧\n  (25 < bmiValue ∧ bmiValue ≤ 30 → bmi weight height\
-  \ = Category.Overweight) ∧\n  (30 < bmiValue → bmi weight height = Category.Obese)\
-  \ :=\n  sorry\n\n\ntheorem bmi_zero_height_undefined {weight : Float} :\n  ¬∃(result\
-  \ : Category), bmi weight 0 = result :=\n  sorry\n\n/--\ninfo: 'Underweight'\n-/\n\
-  #guard_msgs in\n#eval bmi 50 1.8\n\n/--\ninfo: 'Normal'\n-/\n#guard_msgs in\n#eval\
-  \ bmi 80 1.8\n\n/--\ninfo: 'Obese'\n-/\n#guard_msgs in\n#eval bmi 110 1.8\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write function bmi that calculates body mass index (bmi = weight / height ^ 2).
+
+
+  if bmi <= 18.5 return "Underweight"
+
+  if bmi <= 25.0 return "Normal"
+
+  if bmi <= 30.0 return "Overweight"
+
+  if bmi > 30 return "Obese"
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def bmi (weight height : Float) : Category :=
+    sorry
+vc-theorems: |
+  theorem bmi_returns_valid_category {weight height : Float} 
+    (h1 : weight ≥ 1) (h2 : weight ≤ 500) 
+    (h3 : height ≥ 0.5) (h4 : height ≤ 3.0) :
+    let result := bmi weight height
+    result = Category.Underweight ∨ 
+    result = Category.Normal ∨
+    result = Category.Overweight ∨ 
+    result = Category.Obese :=
+    sorry
+
+
+  theorem bmi_categories_are_monotonic {weight height : Float}
+    (h1 : weight ≥ 1) (h2 : weight ≤ 500)
+    (h3 : height ≥ 0.5) (h4 : height ≤ 3.0) :
+    let bmiValue := weight / (height * height)
+    (bmiValue ≤ 18.5 → bmi weight height = Category.Underweight) ∧
+    (18.5 < bmiValue ∧ bmiValue ≤ 25 → bmi weight height = Category.Normal) ∧
+    (25 < bmiValue ∧ bmiValue ≤ 30 → bmi weight height = Category.Overweight) ∧
+    (30 < bmiValue → bmi weight height = Category.Obese) :=
+    sorry
+
+
+  theorem bmi_zero_height_undefined {weight : Float} :
+    ¬∃(result : Category), bmi weight 0 = result :=
+    sorry
+
+  /--
+  info: 'Underweight'
+  -/
+  #guard_msgs in
+  #eval bmi 50 1.8
+
+  /--
+  info: 'Normal'
+  -/
+  #guard_msgs in
+  #eval bmi 80 1.8
+
+  /--
+  info: 'Obese'
+  -/
+  #guard_msgs in
+  #eval bmi 110 1.8
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

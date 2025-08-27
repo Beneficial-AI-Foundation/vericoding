@@ -1,56 +1,122 @@
-"vc-description": "A chess position can be expressed as a string using the  Forsyth–Edwards\
-  \ Notation (FEN). Your task is to write a parser that reads in a FEN-encoded string\
-  \ and returns a depiction of the board using the Unicode chess symbols (♔,♕,♘,etc.).\
-  \ The board should be drawn from the perspective of the active color (i.e. the side\
-  \ making the next move). \n\nUsing the CodeWars dark theme is strongly recommended\
-  \ for this kata. Otherwise, the colors will appear to be inverted.\n\nThe complete\
-  \ FEN format contains 6 fields separated by spaces, but we will only consider the\
-  \ first two fields: Piece placement and active color (side-to-move). The rules for\
-  \ these fields are as follows:\n\nThe first field of the FEN describes piece placement.\n\
-  Each row ('rank') of the board is described one-by-one, starting with rank 8 (the\
-  \ far side of the board from White's perspective) and ending with rank 1 (White's\
-  \ home rank). Rows are separated by a forward slash ('/').\nWithin each row, the\
-  \ contents of the squares are listed starting with the \"a-file\" (White's left)\
-  \ and ending with the \"h-file\" (White's right).\nEach piece is identified by a\
-  \ single letter: pawn = P, knight = N, bishop = B, rook = R, queen = Q and king\
-  \ = K. White pieces are upper-case (PNBRQK), while black pieces are lowercase (pnbrqk).\n\
-  Empty squares are represented using the digits 1 through 8 to denote the number\
-  \ of consecutive empty squares.\nThe piece placement field is followed by a single\
-  \ space, then a single character representing the color who has the next move ('w'\
-  \ for White and 'b' for Black).\nFour additional fields follow the active color,\
-  \ separated by spaces. These fields can be ignored.\n\n\nUsing this encoding, the\
-  \ starting position is:\n\n```rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq\
-  \ - 0 1```\n\nUsing the characters \"＿\" and \"▇\" to represent dark and light unoccupied\
-  \ spaces, respectively, the starting position using the Unicode pieces would be:\n\
-  \n\n♖♘♗♕♔♗♘♖\n♙♙♙♙♙♙♙♙\n▇＿▇＿▇＿▇＿\n＿▇＿▇＿▇＿▇\n▇＿▇＿▇＿▇＿\n＿▇＿▇＿▇＿▇\n♟♟♟♟♟♟♟♟\n♜♞♝♛♚♝♞♜\n\
-  \n\nAfter the move 1. Nf3, the FEN would be...\n\n```rnbqkbnr/pppppppp/8/8/8/5N2/PPPPPPPP/RNBQKB1R\
-  \ b KQkq - 1 1```\n\n...and because we draw the board from the perspective of the\
-  \ active color, the Unicode board would be:\n\n♜＿♝♛♚♝♞♜\n♟♟♟♟♟♟♟♟\n▇＿♞＿▇＿▇＿\n＿▇＿▇＿▇＿▇\n\
-  ▇＿▇＿▇＿▇＿\n＿▇＿▇＿▇＿▇\n♙♙♙♙♙♙♙♙\n♖♘♗♕♔♗♘♖\n\nSymbols\n\n*Again, note that these colors\
-  \ are inverted from the Unicode character names because most people seem to use\
-  \ the dark theme for CodeWars.\n\n\nEmpty white square: ▇ (2587)\nEmpty black square:\
-  \ ＿ (FF3F)\nWhite king (K): ♚ (265A)\nWhite queen (Q): ♛ (265B)\nWhite rook (R):\
-  \ ♜ (265C)\nWhite bishop (B): ♝ (265D)\nWhite knight (N): ♞ (265E)\nWhite pawn (P):\
-  \ ♟ (265F)\nBlack king (k): ♔ (2654)\nBlack queen (q): ♕ (2655)\nBlack rook (r):\
-  \ ♖ (2656)\nBlack bishop (b): ♗ (2657)\nBlack knight (n): ♘ (2658)\nBlack pawn (p):\
-  \ ♙ (2659)\n\nNB: Empty squares must have the proper colors. The bottom-right and\
-  \ top-left squares on a chess board are white."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def parse_fen (fen: String) : String := sorry \n\ntheorem empty_board_dimensions\
-  \ {turn : Char} (h: turn = 'w' ∨ turn = 'b'):\n  let result := parse_fen s!\"8/8/8/8/8/8/8/8\
-  \ {turn} - -\"\n  let lines := result.splitOn \"\\n\"\n  lines.length = 9 ∧ \n \
-  \ (∀ l ∈ lines.take 8, l.length = 8) := sorry\n"
-"vc-theorems": "theorem board_pattern_alternates:\n  let result := parse_fen \"8/8/8/8/8/8/8/8\
-  \ w - -\"\n  let lines := (result.splitOn \"\\n\").take 8\n  ∀ i j, i < 8 ∧ j <\
-  \ 8 → \n    (((i + j).mod 2 = 0) → lines[i]!.data[j]! = '▇') ∧\n    (((i + j).mod\
-  \ 2 ≠ 0) → lines[i]!.data[j]! = '＿') := sorry\n\n\ntheorem different_turn_perspectives_differ:\n\
-  \  parse_fen \"k7/8/8/8/8/8/8/K7 w - -\" ≠ \n  parse_fen \"k7/8/8/8/8/8/K7 b - -\"\
-  \ := sorry\n\n\ntheorem piece_representation_correct:\n  let result := parse_fen\
-  \ \"k7/8/8/8/8/8/8/K7 w - -\"\n  let lines := (result.splitOn \"\\n\").take 8\n\
-  \  ('♔' ∈ lines[0]!.data) ∧ \n  ('♚' ∈ lines[7]!.data) := sorry\n\n/--\ninfo: expected1\n\
-  -/\n#guard_msgs in\n#eval parse_fen \"8/8/8/8/8/8/8/8 w - -\"\n\n/--\ninfo: expected2\n\
-  -/\n#guard_msgs in\n#eval parse_fen \"k7/8/8/8/8/8/8/7K w - -\"\n\n/--\ninfo: expected3\n\
-  -/\n#guard_msgs in\n#eval parse_fen \"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR\
-  \ w KQkq - 0 1\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  A chess position can be expressed as a string using the  Forsyth–Edwards Notation (FEN). Your task is to write a parser that reads in a FEN-encoded string and returns a depiction of the board using the Unicode chess symbols (♔,♕,♘,etc.). The board should be drawn from the perspective of the active color (i.e. the side making the next move). 
+
+  Using the CodeWars dark theme is strongly recommended for this kata. Otherwise, the colors will appear to be inverted.
+
+  The complete FEN format contains 6 fields separated by spaces, but we will only consider the first two fields: Piece placement and active color (side-to-move). The rules for these fields are as follows:
+
+  The first field of the FEN describes piece placement.
+  Each row ('rank') of the board is described one-by-one, starting with rank 8 (the far side of the board from White's perspective) and ending with rank 1 (White's home rank). Rows are separated by a forward slash ('/').
+  Within each row, the contents of the squares are listed starting with the "a-file" (White's left) and ending with the "h-file" (White's right).
+  Each piece is identified by a single letter: pawn = P, knight = N, bishop = B, rook = R, queen = Q and king = K. White pieces are upper-case (PNBRQK), while black pieces are lowercase (pnbrqk).
+  Empty squares are represented using the digits 1 through 8 to denote the number of consecutive empty squares.
+  The piece placement field is followed by a single space, then a single character representing the color who has the next move ('w' for White and 'b' for Black).
+  Four additional fields follow the active color, separated by spaces. These fields can be ignored.
+
+
+  Using this encoding, the starting position is:
+
+  ```rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1```
+
+  Using the characters "＿" and "▇" to represent dark and light unoccupied spaces, respectively, the starting position using the Unicode pieces would be:
+
+
+  ♖♘♗♕♔♗♘♖
+  ♙♙♙♙♙♙♙♙
+  ▇＿▇＿▇＿▇＿
+  ＿▇＿▇＿▇＿▇
+  ▇＿▇＿▇＿▇＿
+  ＿▇＿▇＿▇＿▇
+  ♟♟♟♟♟♟♟♟
+  ♜♞♝♛♚♝♞♜
+
+
+  After the move 1. Nf3, the FEN would be...
+
+  ```rnbqkbnr/pppppppp/8/8/8/5N2/PPPPPPPP/RNBQKB1R b KQkq - 1 1```
+
+  ...and because we draw the board from the perspective of the active color, the Unicode board would be:
+
+  ♜＿♝♛♚♝♞♜
+  ♟♟♟♟♟♟♟♟
+  ▇＿♞＿▇＿▇＿
+  ＿▇＿▇＿▇＿▇
+  ▇＿▇＿▇＿▇＿
+  ＿▇＿▇＿▇＿▇
+  ♙♙♙♙♙♙♙♙
+  ♖♘♗♕♔♗♘♖
+
+  Symbols
+
+  *Again, note that these colors are inverted from the Unicode character names because most people seem to use the dark theme for CodeWars.
+
+
+  Empty white square: ▇ (2587)
+  Empty black square: ＿ (FF3F)
+  White king (K): ♚ (265A)
+  White queen (Q): ♛ (265B)
+  White rook (R): ♜ (265C)
+  White bishop (B): ♝ (265D)
+  White knight (N): ♞ (265E)
+  White pawn (P): ♟ (265F)
+  Black king (k): ♔ (2654)
+  Black queen (q): ♕ (2655)
+  Black rook (r): ♖ (2656)
+  Black bishop (b): ♗ (2657)
+  Black knight (n): ♘ (2658)
+  Black pawn (p): ♙ (2659)
+
+  NB: Empty squares must have the proper colors. The bottom-right and top-left squares on a chess board are white.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def parse_fen (fen: String) : String := sorry 
+
+  theorem empty_board_dimensions {turn : Char} (h: turn = 'w' ∨ turn = 'b'):
+    let result := parse_fen s!"8/8/8/8/8/8/8/8 {turn} - -"
+    let lines := result.splitOn "\n"
+    lines.length = 9 ∧ 
+    (∀ l ∈ lines.take 8, l.length = 8) := sorry
+vc-theorems: |
+  theorem board_pattern_alternates:
+    let result := parse_fen "8/8/8/8/8/8/8/8 w - -"
+    let lines := (result.splitOn "\n").take 8
+    ∀ i j, i < 8 ∧ j < 8 → 
+      (((i + j).mod 2 = 0) → lines[i]!.data[j]! = '▇') ∧
+      (((i + j).mod 2 ≠ 0) → lines[i]!.data[j]! = '＿') := sorry
+
+
+  theorem different_turn_perspectives_differ:
+    parse_fen "k7/8/8/8/8/8/8/K7 w - -" ≠ 
+    parse_fen "k7/8/8/8/8/8/K7 b - -" := sorry
+
+
+  theorem piece_representation_correct:
+    let result := parse_fen "k7/8/8/8/8/8/8/K7 w - -"
+    let lines := (result.splitOn "\n").take 8
+    ('♔' ∈ lines[0]!.data) ∧ 
+    ('♚' ∈ lines[7]!.data) := sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval parse_fen "8/8/8/8/8/8/8/8 w - -"
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval parse_fen "k7/8/8/8/8/8/8/7K w - -"
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval parse_fen "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

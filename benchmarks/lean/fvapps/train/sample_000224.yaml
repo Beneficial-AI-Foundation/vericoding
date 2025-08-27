@@ -1,21 +1,79 @@
-"vc-description": "Given a string s and an integer k.\nReturn the maximum number of\
-  \ vowel letters in any substring of s with length k.\nVowel letters in English are (a,\
-  \ e, i, o, u).\n \nExample 1:\nInput: s = \"abciiidef\", k = 3\nOutput: 3\nExplanation:\
-  \ The substring \"iii\" contains 3 vowel letters.\n\nExample 2:\nInput: s = \"aeiou\"\
-  , k = 2\nOutput: 2\nExplanation: Any substring of length 2 contains 2 vowels.\n\n\
-  Example 3:\nInput: s = \"leetcode\", k = 3\nOutput: 2\nExplanation: \"lee\", \"\
-  eet\" and \"ode\" contain 2 vowels.\n\nExample 4:\nInput: s = \"rhythms\", k = 4\n\
-  Output: 0\nExplanation: We can see that s doesn't have any vowel letters.\n\nExample\
-  \ 5:\nInput: s = \"tryhard\", k = 4\nOutput: 1\n\n \nConstraints:\n\n1 <= s.length\
-  \ <= 10^5\ns consists of lowercase English letters.\n1 <= k <= s.length"
-"vc-preamble": "import Imports.AllImports\n\ndef max_vowels (s : String) (k : Nat)\
-  \ : Nat := sorry\n\ndef count_vowels (s : String) : Nat := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_vowel (c : Char) : Bool := sorry\n\n\n\n\n\ntheorem max_vowels_monotonic\
-  \ {s : String} {k : Nat}\n  (h1 : k < String.length s) :\n  max_vowels s k ≤ max_vowels\
-  \ s (k + 1) := sorry\n"
-"vc-theorems": "theorem max_vowels_empty {k : Nat}\n  (h1 : k > 0) :\n  max_vowels\
-  \ \"\" k = 0 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval max_vowels \"abciiidef\"\
-  \ 3\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval max_vowels \"leetcode\" 3\n\n/--\n\
-  info: 0\n-/\n#guard_msgs in\n#eval max_vowels \"rhythms\" 4\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given a string s and an integer k.
+  Return the maximum number of vowel letters in any substring of s with length k.
+  Vowel letters in English are (a, e, i, o, u).
+   
+  Example 1:
+  Input: s = "abciiidef", k = 3
+  Output: 3
+  Explanation: The substring "iii" contains 3 vowel letters.
+
+  Example 2:
+  Input: s = "aeiou", k = 2
+  Output: 2
+  Explanation: Any substring of length 2 contains 2 vowels.
+
+  Example 3:
+  Input: s = "leetcode", k = 3
+  Output: 2
+  Explanation: "lee", "eet" and "ode" contain 2 vowels.
+
+  Example 4:
+  Input: s = "rhythms", k = 4
+  Output: 0
+  Explanation: We can see that s doesn't have any vowel letters.
+
+  Example 5:
+  Input: s = "tryhard", k = 4
+  Output: 1
+
+   
+  Constraints:
+
+  1 <= s.length <= 10^5
+  s consists of lowercase English letters.
+  1 <= k <= s.length
+vc-preamble: |
+  import Imports.AllImports
+
+  def max_vowels (s : String) (k : Nat) : Nat := sorry
+
+  def count_vowels (s : String) : Nat := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_vowel (c : Char) : Bool := sorry
+
+
+
+
+
+  theorem max_vowels_monotonic {s : String} {k : Nat}
+    (h1 : k < String.length s) :
+    max_vowels s k ≤ max_vowels s (k + 1) := sorry
+vc-theorems: |
+  theorem max_vowels_empty {k : Nat}
+    (h1 : k > 0) :
+    max_vowels "" k = 0 := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval max_vowels "abciiidef" 3
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval max_vowels "leetcode" 3
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval max_vowels "rhythms" 4
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

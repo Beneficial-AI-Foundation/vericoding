@@ -1,21 +1,59 @@
-"vc-description": "Your task is very simple. Given an input string s, case\\_sensitive(s),\
-  \ check whether all letters are lowercase or not. Return True/False and a list of\
-  \ all the entries that are not lowercase in order of their appearance in s.\n\n\
-  For example, case\\_sensitive('codewars') returns [True, []], but case\\_sensitive('codeWaRs')\
-  \ returns [False, ['W', 'R']].\n\n\nGoodluck :)\n\nHave a look at my other katas!\n\
-  \nAlphabetically ordered \nFind Nearest square number \nNot prime numbers"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def case_sensitive (s : String) : Bool × List String := sorry\n\
-  \ntheorem case_sensitive_returns_valid_output (s : String) : \n  let res := case_sensitive\
-  \ s\n  (res.1 = true ∨ res.1 = false) ∧\n  (∀ x ∈ res.2, String.length x = 1) :=\
-  \ sorry\n"
-"vc-theorems": "theorem case_sensitive_lowercase_only (s : String) :\n  (∀ c ∈ s.data,\
-  \ 'a' ≤ c ∧ c ≤ 'z') →\n  case_sensitive s = (true, []) := sorry\n\n\ntheorem case_sensitive_uppercase_only\
-  \ (s : String) :\n  s ≠ \"\" →\n  (∀ c ∈ s.data, 'A' ≤ c ∧ c ≤ 'Z') →\n  let res\
-  \ := case_sensitive s\n  res.1 = false ∧ \n  (∀ c ∈ s.data, (c.toString) ∈ res.2)\
-  \ ∧\n  (∀ x ∈ res.2, ∃ c ∈ s.data, x = c.toString) := sorry\n\n/--\ninfo: [True,\
-  \ []]\n-/\n#guard_msgs in\n#eval case_sensitive \"codewars\"\n\n/--\ninfo: [False,\
-  \ ['W', 'R']]\n-/\n#guard_msgs in\n#eval case_sensitive \"codeWaRs\"\n\n/--\ninfo:\
-  \ [True, []]\n-/\n#guard_msgs in\n#eval case_sensitive \"\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Your task is very simple. Given an input string s, case\_sensitive(s), check whether all letters are lowercase or not. Return True/False and a list of all the entries that are not lowercase in order of their appearance in s.
+
+  For example, case\_sensitive('codewars') returns [True, []], but case\_sensitive('codeWaRs') returns [False, ['W', 'R']].
+
+
+  Goodluck :)
+
+  Have a look at my other katas!
+
+  Alphabetically ordered 
+  Find Nearest square number 
+  Not prime numbers
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def case_sensitive (s : String) : Bool × List String := sorry
+
+  theorem case_sensitive_returns_valid_output (s : String) : 
+    let res := case_sensitive s
+    (res.1 = true ∨ res.1 = false) ∧
+    (∀ x ∈ res.2, String.length x = 1) := sorry
+vc-theorems: |
+  theorem case_sensitive_lowercase_only (s : String) :
+    (∀ c ∈ s.data, 'a' ≤ c ∧ c ≤ 'z') →
+    case_sensitive s = (true, []) := sorry
+
+
+  theorem case_sensitive_uppercase_only (s : String) :
+    s ≠ "" →
+    (∀ c ∈ s.data, 'A' ≤ c ∧ c ≤ 'Z') →
+    let res := case_sensitive s
+    res.1 = false ∧ 
+    (∀ c ∈ s.data, (c.toString) ∈ res.2) ∧
+    (∀ x ∈ res.2, ∃ c ∈ s.data, x = c.toString) := sorry
+
+  /--
+  info: [True, []]
+  -/
+  #guard_msgs in
+  #eval case_sensitive "codewars"
+
+  /--
+  info: [False, ['W', 'R']]
+  -/
+  #guard_msgs in
+  #eval case_sensitive "codeWaRs"
+
+  /--
+  info: [True, []]
+  -/
+  #guard_msgs in
+  #eval case_sensitive ""
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

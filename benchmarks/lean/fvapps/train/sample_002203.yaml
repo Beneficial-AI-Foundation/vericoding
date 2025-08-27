@@ -1,38 +1,92 @@
-"vc-description": "Takahashi has an ability to generate a tree using a permutation\
-  \ (p_1,p_2,...,p_n) of (1,2,...,n), in the following process:\nFirst, prepare Vertex\
-  \ 1, Vertex 2, ..., Vertex N.\nFor each i=1,2,...,n, perform the following operation:\n\
-  \ - If p_i = 1, do nothing.\n - If p_i \\neq 1, let j' be the largest j such that\
-  \ p_j < p_i. Span an edge between Vertex i and Vertex j'.\nTakahashi is trying to\
-  \ make his favorite tree with this ability.\nHis favorite tree has n vertices from\
-  \ Vertex 1 through Vertex n, and its i-th edge connects Vertex v_i and w_i.\nDetermine\
-  \ if he can make a tree isomorphic to his favorite tree by using a proper permutation.\n\
-  If he can do so, find the lexicographically smallest such permutation.\n\n-----Notes-----\n\
-  For the definition of isomorphism of trees, see wikipedia. Intuitively, two trees\
-  \ are isomorphic when they are the \"same\" if we disregard the indices of their\
-  \ vertices.\n\n-----Constraints-----\n - 2 \\leq n \\leq 10^5\n - 1 \\leq v_i, w_i\
-  \ \\leq n\n - The given graph is a tree.\n\n-----Input-----\nInput is given from\
-  \ Standard Input in the following format:\nn\nv_1 w_1\nv_2 w_2\n:\nv_{n-1} w_{n-1}\n\
-  \n-----Output-----\nIf there is no permutation that can generate a tree isomorphic\
-  \ to Takahashi's favorite tree, print -1.\nIf it exists, print the lexicographically\
-  \ smallest such permutation, with spaces in between.\n\n-----Sample Input-----\n\
-  6\n1 2\n1 3\n1 4\n1 5\n5 6\n\n-----Sample Output-----\n1 2 4 5 3 6\n\nIf the permutation\
-  \ (1, 2, 4, 5, 3, 6) is used to generate a tree, it looks as follows:\n\nThis is\
-  \ isomorphic to the given graph."
-"vc-preamble": "import Imports.AllImports\n\ndef solve_tree_problem (n : Nat) (edges\
-  \ : List Edge) : List Nat :=\n  sorry\n\n\ndef is_tree (n : Nat) (edges : List Edge)\
-  \ : Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def degree (edges : List Edge) (node : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem valid_solution_exists (n : Nat) (edges : List Edge) \n  (h1\
-  \ : n > 0)\n  (h2 : ∀ e ∈ edges, e.u ≤ n ∧ e.v ≤ n)\n  (h3 : ∀ e ∈ edges, e.u ≠\
-  \ e.v)\n  (h4 : is_tree n edges = true) :\n  ∃ result : List Nat,\n    (result.length\
-  \ = n) ∧ \n    (∀ x ∈ result, 1 ≤ x ∧ x ≤ n) ∧\n    (∀ i h_idx (h_lt : i < n - 1),\
-  \ degree edges (result.get ⟨i, h_idx⟩) ≤ 3) ∧\n    (∀ h_idx, degree edges (result.get\
-  \ ⟨n-1, h_idx⟩) ≤ 2) :=\n  sorry\n\n\ntheorem line_graph_has_solution (n : Nat)\
-  \ (edges : List Edge)\n  (h1 : n ≥ 2)\n  (h2 : edges = List.map (fun i => ⟨i, i+1⟩)\
-  \ (List.range (n-1))) :\n  ∃ result : List Nat,\n    (result.length = n) ∧\n   \
-  \ (∀ x ∈ result, 1 ≤ x ∧ x ≤ n) :=\n  sorry\n\n\ntheorem star_graph_has_solution\
-  \ (n : Nat) (edges : List Edge)\n  (h1 : n ≥ 4)\n  (h2 : edges = List.map (fun i\
-  \ => ⟨1, i+2⟩) (List.range (n-1))) :\n  ∃ result : List Nat,\n    (result.length\
-  \ = n) :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"
+vc-description: |-
+  Takahashi has an ability to generate a tree using a permutation (p_1,p_2,...,p_n) of (1,2,...,n), in the following process:
+  First, prepare Vertex 1, Vertex 2, ..., Vertex N.
+  For each i=1,2,...,n, perform the following operation:
+   - If p_i = 1, do nothing.
+   - If p_i \neq 1, let j' be the largest j such that p_j < p_i. Span an edge between Vertex i and Vertex j'.
+  Takahashi is trying to make his favorite tree with this ability.
+  His favorite tree has n vertices from Vertex 1 through Vertex n, and its i-th edge connects Vertex v_i and w_i.
+  Determine if he can make a tree isomorphic to his favorite tree by using a proper permutation.
+  If he can do so, find the lexicographically smallest such permutation.
+
+  -----Notes-----
+  For the definition of isomorphism of trees, see wikipedia. Intuitively, two trees are isomorphic when they are the "same" if we disregard the indices of their vertices.
+
+  -----Constraints-----
+   - 2 \leq n \leq 10^5
+   - 1 \leq v_i, w_i \leq n
+   - The given graph is a tree.
+
+  -----Input-----
+  Input is given from Standard Input in the following format:
+  n
+  v_1 w_1
+  v_2 w_2
+  :
+  v_{n-1} w_{n-1}
+
+  -----Output-----
+  If there is no permutation that can generate a tree isomorphic to Takahashi's favorite tree, print -1.
+  If it exists, print the lexicographically smallest such permutation, with spaces in between.
+
+  -----Sample Input-----
+  6
+  1 2
+  1 3
+  1 4
+  1 5
+  5 6
+
+  -----Sample Output-----
+  1 2 4 5 3 6
+
+  If the permutation (1, 2, 4, 5, 3, 6) is used to generate a tree, it looks as follows:
+
+  This is isomorphic to the given graph.
+vc-preamble: |
+  import Imports.AllImports
+
+  def solve_tree_problem (n : Nat) (edges : List Edge) : List Nat :=
+    sorry
+
+
+  def is_tree (n : Nat) (edges : List Edge) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def degree (edges : List Edge) (node : Nat) : Nat :=
+    sorry
+vc-theorems: |-
+  theorem valid_solution_exists (n : Nat) (edges : List Edge) 
+    (h1 : n > 0)
+    (h2 : ∀ e ∈ edges, e.u ≤ n ∧ e.v ≤ n)
+    (h3 : ∀ e ∈ edges, e.u ≠ e.v)
+    (h4 : is_tree n edges = true) :
+    ∃ result : List Nat,
+      (result.length = n) ∧ 
+      (∀ x ∈ result, 1 ≤ x ∧ x ≤ n) ∧
+      (∀ i h_idx (h_lt : i < n - 1), degree edges (result.get ⟨i, h_idx⟩) ≤ 3) ∧
+      (∀ h_idx, degree edges (result.get ⟨n-1, h_idx⟩) ≤ 2) :=
+    sorry
+
+
+  theorem line_graph_has_solution (n : Nat) (edges : List Edge)
+    (h1 : n ≥ 2)
+    (h2 : edges = List.map (fun i => ⟨i, i+1⟩) (List.range (n-1))) :
+    ∃ result : List Nat,
+      (result.length = n) ∧
+      (∀ x ∈ result, 1 ≤ x ∧ x ≤ n) :=
+    sorry
+
+
+  theorem star_graph_has_solution (n : Nat) (edges : List Edge)
+    (h1 : n ≥ 4)
+    (h2 : edges = List.map (fun i => ⟨1, i+2⟩) (List.range (n-1))) :
+    ∃ result : List Nat,
+      (result.length = n) :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded

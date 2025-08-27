@@ -1,23 +1,83 @@
-"vc-description": "This is a very simply formulated task. Let's call an integer number\
-  \ `N` 'green' if `N²` ends with all of the digits of `N`. Some examples:\n\n`5`\
-  \ is green, because `5² = 25` and `25` ends with `5`.\n\n`11` is not green, because\
-  \ `11² = 121` and `121` does not end with `11`.\n\n`376` is green, because `376²\
-  \ = 141376` and `141376` ends with `376`.\n\nYour task is to write a function `green`\
-  \ that returns `n`th green number, starting with `1` - `green (1) == 1`\n\n---\n\
-  \n## Data range\n\n```if:haskell\n`n <= 4000` for Haskell\n```\n```if:java\n`n <=\
-  \ 5000` for Java\n```\n```if:python\n`n <= 5000` for Python\n```\n```if:javascript\n\
-  `n <= 3000` for JavaScript\n\nReturn values should be `String`s, and should be exact.\
-  \ A BigNum library is recommended.\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef green (n : Nat) : Nat :=\n  sorry\n\
-  \n\ndef first_5_green_numbers (n : Nat) (h : n > 0 ∧ n ≤ 5) : \n  green n = match\
-  \ n with\n    | 1 => 1\n    | 2 => 5  \n    | 3 => 6\n    | 4 => 25\n    | 5 =>\
-  \ 76\n    | _ => 0 :=\n  sorry\n\n\ndef green_number_positive (n : Nat) (h : n >\
-  \ 0) :\n  green n > 0 :=\n  sorry\n\n\ndef green_numbers_ordered (n : Nat) (h :\
-  \ n > 1) :\n  green n > green (n-1) :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def green_numbers_unique (n m : Nat) (h1 : n > 0) (h2 : m > 0)\
-  \ (h3 : n ≠ m) :\n  green n ≠ green m :=\n  sorry"
-"vc-theorems": "/--\ninfo: 1\n-/\n#guard_msgs in\n#eval green 1\n\n/--\ninfo: 5\n\
-  -/\n#guard_msgs in\n#eval green 2\n\n/--\ninfo: 76\n-/\n#guard_msgs in\n#eval green\
-  \ 5\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  This is a very simply formulated task. Let's call an integer number `N` 'green' if `N²` ends with all of the digits of `N`. Some examples:
+
+  `5` is green, because `5² = 25` and `25` ends with `5`.
+
+  `11` is not green, because `11² = 121` and `121` does not end with `11`.
+
+  `376` is green, because `376² = 141376` and `141376` ends with `376`.
+
+  Your task is to write a function `green` that returns `n`th green number, starting with `1` - `green (1) == 1`
+
+  ---
+
+  ## Data range
+
+  ```if:haskell
+  `n <= 4000` for Haskell
+  ```
+  ```if:java
+  `n <= 5000` for Java
+  ```
+  ```if:python
+  `n <= 5000` for Python
+  ```
+  ```if:javascript
+  `n <= 3000` for JavaScript
+
+  Return values should be `String`s, and should be exact. A BigNum library is recommended.
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def green (n : Nat) : Nat :=
+    sorry
+
+
+  def first_5_green_numbers (n : Nat) (h : n > 0 ∧ n ≤ 5) : 
+    green n = match n with
+      | 1 => 1
+      | 2 => 5  
+      | 3 => 6
+      | 4 => 25
+      | 5 => 76
+      | _ => 0 :=
+    sorry
+
+
+  def green_number_positive (n : Nat) (h : n > 0) :
+    green n > 0 :=
+    sorry
+
+
+  def green_numbers_ordered (n : Nat) (h : n > 1) :
+    green n > green (n-1) :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def green_numbers_unique (n m : Nat) (h1 : n > 0) (h2 : m > 0) (h3 : n ≠ m) :
+    green n ≠ green m :=
+    sorry
+vc-theorems: |
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval green 1
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval green 2
+
+  /--
+  info: 76
+  -/
+  #guard_msgs in
+  #eval green 5
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

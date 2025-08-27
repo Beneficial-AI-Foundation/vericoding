@@ -1,15 +1,48 @@
-"vc-description": "In this Kata, you will be given a number and your task will be\
-  \ to rearrange the number so that it is divisible by `25`, but without leading zeros.\
-  \ Return the minimum number of digit moves that are needed to make this possible.\
-  \ If impossible, return `-1` ( `Nothing` in Haskell ).\n\nFor example:\n\nMore examples\
-  \ in test cases.\n\nGood luck!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve (n : Nat) : Int := sorry\n\ntheorem solve_non_negative_or_minus_one\
-  \ (n : Nat) : \n  solve n ≥ -1 := sorry\n\n\n"
-"vc-theorems": "theorem solve_impossible_single_digit (n : Nat) :\n  n < 10 ∧ n %\
-  \ 5 ≠ 0 → solve n = -1 := sorry\n\n\ntheorem solve_leading_zeros (n m : Nat) :\n\
-  \  n = m → solve n = solve m := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
-  \ solve 50\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve 521\n\n/--\ninfo: -1\n\
-  -/\n#guard_msgs in\n#eval solve 7\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  In this Kata, you will be given a number and your task will be to rearrange the number so that it is divisible by `25`, but without leading zeros. Return the minimum number of digit moves that are needed to make this possible. If impossible, return `-1` ( `Nothing` in Haskell ).
+
+  For example:
+
+  More examples in test cases.
+
+  Good luck!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def solve (n : Nat) : Int := sorry
+
+  theorem solve_non_negative_or_minus_one (n : Nat) : 
+    solve n ≥ -1 := sorry
+
+
+vc-theorems: |
+  theorem solve_impossible_single_digit (n : Nat) :
+    n < 10 ∧ n % 5 ≠ 0 → solve n = -1 := sorry
+
+
+  theorem solve_leading_zeros (n m : Nat) :
+    n = m → solve n = solve m := sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve 50
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve 521
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval solve 7
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

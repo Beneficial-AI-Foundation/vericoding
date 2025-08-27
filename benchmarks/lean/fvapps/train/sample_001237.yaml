@@ -1,42 +1,110 @@
-"vc-description": "Chef likes all arrays equally. But he likes some arrays more equally\
-  \ than others. In particular, he loves Rainbow Arrays. \nAn array is Rainbow if\
-  \ it has the following structure:\n- First a1 elements equal 1. \n- Next a2 elements\
-  \ equal 2. \n- Next a3 elements equal 3. \n- Next a4 elements equal 4. \n- Next\
-  \ a5 elements equal 5. \n- Next a6 elements equal 6. \n- Next a7 elements equal\
-  \ 7. \n- Next a6 elements equal 6. \n- Next a5 elements equal 5. \n- Next a4 elements\
-  \ equal 4. \n- Next a3 elements equal 3. \n- Next a2 elements equal 2. \n- Next\
-  \ a1 elements equal 1. \n- ai can be any non-zero positive integer.\n- There are\
-  \ no other elements in array. \n\nHelp Chef in finding out if the given array is\
-  \ a Rainbow Array or not. \n\n-----Input-----\n- The first line of the input contains\
-  \ an integer T denoting the number of test cases.\n- The first line of each test\
-  \ case contains an integer N, denoting the number of elements in the given array.\
-  \ \n- The second line contains N space-separated integers A1, A2, ..., AN denoting\
-  \ the elements of array. \n\n-----Output-----\n- For each test case, output a line\
-  \ containing \"yes\" or \"no\" (without quotes) corresponding to the case if the\
-  \ array is rainbow array or not. \n\n-----Constraints-----\n- 1 ≤ T ≤ 100\n- 7 ≤\
-  \ N ≤ 100\n- 1 ≤ Ai ≤ 10\n\n-----Subtasks-----\n- Subtask 1 (100 points) : Original\
-  \ constraints\n\n-----Example-----\nInput\n3\n19\n1 2 3 4 4 5 6 6 6 7 6 6 6 5 4\
-  \ 4 3 2 1\n14\n1 2 3 4 5 6 7 6 5 4 3 2 1 1\n13\n1 2 3 4 5 6 8 6 5 4 3 2 1\n\nOutput\n\
-  yes\nno\nno\n\n-----Explanation-----\nThe first example satisfies all the conditions.\
-  \ \nThe second example has 1 element of value 1 at the beginning and 2 elements\
-  \ of value 1 at the end. \nThe third one has no elements with value 7 after elements\
-  \ with value 6."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_rainbow_array (arr : List Int) : String := sorry\n\ndef\
-  \ is_palindrome (arr : List α) : Bool := sorry \n"
-"vc-theorems": "theorem rainbow_array_palindrome_property (arr : List Int) :\n  is_rainbow_array\
-  \ arr = \"yes\" →\n  is_palindrome arr = true ∧ \n  (∀ x ∈ arr, 1 ≤ x ∧ x ≤ 7) ∧\n\
-  \  (∀ n, 1 ≤ n ∧ n ≤ 7 → n ∈ arr) := sorry\n\n\ntheorem rainbow_array_invalid_inputs\
-  \ (arr : List Int) : \n  is_rainbow_array arr = \"yes\" →\n  (∀ x ∈ arr, 1 ≤ x ∧\
-  \ x ≤ 7) ∧\n  is_palindrome arr = true ∧\n  (∀ n, 1 ≤ n ∧ n ≤ 7 → n ∈ arr) := sorry\n\
-  \n\ntheorem incomplete_numbers (arr : List Int)\n  (h : ∃ n, 1 ≤ n ∧ n ≤ 7 ∧ n ∉\
-  \ arr) :\n  is_rainbow_array arr = \"no\" := sorry\n\n\ntheorem non_palindrome (arr\
-  \ : List Int) (h : arr ≠ []) :\n  let first := arr.head!\n  let new_val := if first\
-  \ < 7 then first + 1 else first - 1\n  is_rainbow_array (arr ++ [new_val]) = \"\
-  no\" := sorry\n\n/--\ninfo: 'yes'\n-/\n#guard_msgs in\n#eval is_rainbow_array [1,\
-  \ 2, 3, 4, 4, 5, 6, 6, 6, 7, 6, 6, 6, 5, 4, 4, 3, 2, 1]\n\n/--\ninfo: 'no'\n-/\n\
-  #guard_msgs in\n#eval is_rainbow_array [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1, 1]\n\
-  \n/--\ninfo: 'no'\n-/\n#guard_msgs in\n#eval is_rainbow_array [1, 2, 3, 4, 5, 6,\
-  \ 8, 6, 5, 4, 3, 2, 1]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Chef likes all arrays equally. But he likes some arrays more equally than others. In particular, he loves Rainbow Arrays. 
+  An array is Rainbow if it has the following structure:
+  - First a1 elements equal 1. 
+  - Next a2 elements equal 2. 
+  - Next a3 elements equal 3. 
+  - Next a4 elements equal 4. 
+  - Next a5 elements equal 5. 
+  - Next a6 elements equal 6. 
+  - Next a7 elements equal 7. 
+  - Next a6 elements equal 6. 
+  - Next a5 elements equal 5. 
+  - Next a4 elements equal 4. 
+  - Next a3 elements equal 3. 
+  - Next a2 elements equal 2. 
+  - Next a1 elements equal 1. 
+  - ai can be any non-zero positive integer.
+  - There are no other elements in array. 
+
+  Help Chef in finding out if the given array is a Rainbow Array or not. 
+
+  -----Input-----
+  - The first line of the input contains an integer T denoting the number of test cases.
+  - The first line of each test case contains an integer N, denoting the number of elements in the given array. 
+  - The second line contains N space-separated integers A1, A2, ..., AN denoting the elements of array. 
+
+  -----Output-----
+  - For each test case, output a line containing "yes" or "no" (without quotes) corresponding to the case if the array is rainbow array or not. 
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 100
+  - 7 ≤ N ≤ 100
+  - 1 ≤ Ai ≤ 10
+
+  -----Subtasks-----
+  - Subtask 1 (100 points) : Original constraints
+
+  -----Example-----
+  Input
+  3
+  19
+  1 2 3 4 4 5 6 6 6 7 6 6 6 5 4 4 3 2 1
+  14
+  1 2 3 4 5 6 7 6 5 4 3 2 1 1
+  13
+  1 2 3 4 5 6 8 6 5 4 3 2 1
+
+  Output
+  yes
+  no
+  no
+
+  -----Explanation-----
+  The first example satisfies all the conditions. 
+  The second example has 1 element of value 1 at the beginning and 2 elements of value 1 at the end. 
+  The third one has no elements with value 7 after elements with value 6.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_rainbow_array (arr : List Int) : String := sorry
+
+  def is_palindrome (arr : List α) : Bool := sorry 
+vc-theorems: |
+  theorem rainbow_array_palindrome_property (arr : List Int) :
+    is_rainbow_array arr = "yes" →
+    is_palindrome arr = true ∧ 
+    (∀ x ∈ arr, 1 ≤ x ∧ x ≤ 7) ∧
+    (∀ n, 1 ≤ n ∧ n ≤ 7 → n ∈ arr) := sorry
+
+
+  theorem rainbow_array_invalid_inputs (arr : List Int) : 
+    is_rainbow_array arr = "yes" →
+    (∀ x ∈ arr, 1 ≤ x ∧ x ≤ 7) ∧
+    is_palindrome arr = true ∧
+    (∀ n, 1 ≤ n ∧ n ≤ 7 → n ∈ arr) := sorry
+
+
+  theorem incomplete_numbers (arr : List Int)
+    (h : ∃ n, 1 ≤ n ∧ n ≤ 7 ∧ n ∉ arr) :
+    is_rainbow_array arr = "no" := sorry
+
+
+  theorem non_palindrome (arr : List Int) (h : arr ≠ []) :
+    let first := arr.head!
+    let new_val := if first < 7 then first + 1 else first - 1
+    is_rainbow_array (arr ++ [new_val]) = "no" := sorry
+
+  /--
+  info: 'yes'
+  -/
+  #guard_msgs in
+  #eval is_rainbow_array [1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 6, 6, 6, 5, 4, 4, 3, 2, 1]
+
+  /--
+  info: 'no'
+  -/
+  #guard_msgs in
+  #eval is_rainbow_array [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1, 1]
+
+  /--
+  info: 'no'
+  -/
+  #guard_msgs in
+  #eval is_rainbow_array [1, 2, 3, 4, 5, 6, 8, 6, 5, 4, 3, 2, 1]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

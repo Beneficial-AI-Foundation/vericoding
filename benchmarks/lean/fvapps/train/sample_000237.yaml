@@ -1,33 +1,92 @@
-"vc-description": "On an infinite plane, a robot initially stands at (0, 0) and faces\
-  \ north.  The robot can receive one of three instructions:\n\n\"G\": go straight\
-  \ 1 unit;\n\"L\": turn 90 degrees to the left;\n\"R\": turn 90 degress to the right.\n\
-  \nThe robot performs the instructions given in order, and repeats them forever.\n\
-  Return true if and only if there exists a circle in the plane such that the robot\
-  \ never leaves the circle.\n \nExample 1:\nInput: \"GGLLGG\"\nOutput: true\nExplanation:\
-  \ \nThe robot moves from (0,0) to (0,2), turns 180 degrees, and then returns to\
-  \ (0,0).\nWhen repeating these instructions, the robot remains in the circle of\
-  \ radius 2 centered at the origin.\n\nExample 2:\nInput: \"GG\"\nOutput: false\n\
-  Explanation: \nThe robot moves north indefinitely.\n\nExample 3:\nInput: \"GL\"\n\
-  Output: true\nExplanation: \nThe robot moves from (0, 0) -> (0, 1) -> (-1, 1) ->\
-  \ (-1, 0) -> (0, 0) -> ...\n\n \nNote:\n\n1 <= instructions.length <= 100\ninstructions[i]\
-  \ is in {'G', 'L', 'R'}"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_robot_bounded (instructions : String) : Bool := sorry\n\n\
-  theorem robot_boolean_output (instructions : String) :\n  is_robot_bounded instructions\
-  \ = true ∨ is_robot_bounded instructions = false := sorry\n"
-"vc-theorems": "theorem empty_string_bounded :\n  is_robot_bounded \"\" = true :=\
-  \ sorry\n\n\ntheorem left_rotation_four_times (instructions : String) :\n  is_robot_bounded\
-  \ (\"LLLL\" ++ instructions) = is_robot_bounded instructions := sorry\n\n\ntheorem\
-  \ right_rotation_four_times (instructions : String) :\n  is_robot_bounded (\"RRRR\"\
-  \ ++ instructions) = is_robot_bounded instructions := sorry\n\n\ntheorem left_right_cancel\
-  \ (instructions : String) :\n  is_robot_bounded (\"LR\" ++ instructions) = is_robot_bounded\
-  \ instructions := sorry\n\n\ntheorem north_unbounded :\n  ∀ n : Nat, n > 0 → is_robot_bounded\
-  \ (String.mk (List.replicate n 'G')) = false := sorry\n\n\ntheorem turns_only_bounded\
-  \ (n : Nat) :\n  is_robot_bounded (String.mk (List.join (List.replicate n ['L',\
-  \ 'R']))) = true := sorry\n\n\ntheorem full_rotation_bounded :\n  is_robot_bounded\
-  \ \"LLLL\" = true ∧ is_robot_bounded \"RRRR\" = true := sorry\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval is_robot_bounded \"GGLLGG\"\n\n/--\ninfo: False\n-/\n\
-  #guard_msgs in\n#eval is_robot_bounded \"GG\"\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval is_robot_bounded \"GL\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  On an infinite plane, a robot initially stands at (0, 0) and faces north.  The robot can receive one of three instructions:
+
+  "G": go straight 1 unit;
+  "L": turn 90 degrees to the left;
+  "R": turn 90 degress to the right.
+
+  The robot performs the instructions given in order, and repeats them forever.
+  Return true if and only if there exists a circle in the plane such that the robot never leaves the circle.
+   
+  Example 1:
+  Input: "GGLLGG"
+  Output: true
+  Explanation: 
+  The robot moves from (0,0) to (0,2), turns 180 degrees, and then returns to (0,0).
+  When repeating these instructions, the robot remains in the circle of radius 2 centered at the origin.
+
+  Example 2:
+  Input: "GG"
+  Output: false
+  Explanation: 
+  The robot moves north indefinitely.
+
+  Example 3:
+  Input: "GL"
+  Output: true
+  Explanation: 
+  The robot moves from (0, 0) -> (0, 1) -> (-1, 1) -> (-1, 0) -> (0, 0) -> ...
+
+   
+  Note:
+
+  1 <= instructions.length <= 100
+  instructions[i] is in {'G', 'L', 'R'}
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_robot_bounded (instructions : String) : Bool := sorry
+
+  theorem robot_boolean_output (instructions : String) :
+    is_robot_bounded instructions = true ∨ is_robot_bounded instructions = false := sorry
+vc-theorems: |
+  theorem empty_string_bounded :
+    is_robot_bounded "" = true := sorry
+
+
+  theorem left_rotation_four_times (instructions : String) :
+    is_robot_bounded ("LLLL" ++ instructions) = is_robot_bounded instructions := sorry
+
+
+  theorem right_rotation_four_times (instructions : String) :
+    is_robot_bounded ("RRRR" ++ instructions) = is_robot_bounded instructions := sorry
+
+
+  theorem left_right_cancel (instructions : String) :
+    is_robot_bounded ("LR" ++ instructions) = is_robot_bounded instructions := sorry
+
+
+  theorem north_unbounded :
+    ∀ n : Nat, n > 0 → is_robot_bounded (String.mk (List.replicate n 'G')) = false := sorry
+
+
+  theorem turns_only_bounded (n : Nat) :
+    is_robot_bounded (String.mk (List.join (List.replicate n ['L', 'R']))) = true := sorry
+
+
+  theorem full_rotation_bounded :
+    is_robot_bounded "LLLL" = true ∧ is_robot_bounded "RRRR" = true := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_robot_bounded "GGLLGG"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_robot_bounded "GG"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_robot_bounded "GL"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

@@ -1,15 +1,53 @@
-"vc-description": "# Grains\n\nWrite a program that calculates the number of grains\
-  \ of wheat on a chessboard given that the number on each square is double the previous\
-  \ one.\n\nThere are 64 squares on a chessboard.\n\n#Example:\nsquare(1) = 1\nsquare(2)\
-  \ = 2\nsquare(3) = 4\nsquare(4) = 8\netc...\n\nWrite a program that shows how many\
-  \ grains were on each square"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def square (n : Int) : Int :=\n  sorry\n"
-"vc-theorems": "theorem square_positive_integers (n : Int) (h : n ≥ 1) (h2 : n ≤ 20)\
-  \ : \n  square n = (2 : Int) * square (n-1) ∧ square n > 0 :=\n  sorry\n\n\ntheorem\
-  \ square_invalid_inputs (n : Int) (h : n ≤ 0) :\n  ¬∃ (result : Int), square n =\
-  \ result :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval square 1\n\n/--\n\
-  info: 4\n-/\n#guard_msgs in\n#eval square 3\n\n/--\ninfo: 32768\n-/\n#guard_msgs\
-  \ in\n#eval square 16\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  # Grains
+
+  Write a program that calculates the number of grains of wheat on a chessboard given that the number on each square is double the previous one.
+
+  There are 64 squares on a chessboard.
+
+  #Example:
+  square(1) = 1
+  square(2) = 2
+  square(3) = 4
+  square(4) = 8
+  etc...
+
+  Write a program that shows how many grains were on each square
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def square (n : Int) : Int :=
+    sorry
+vc-theorems: |
+  theorem square_positive_integers (n : Int) (h : n ≥ 1) (h2 : n ≤ 20) : 
+    square n = (2 : Int) * square (n-1) ∧ square n > 0 :=
+    sorry
+
+
+  theorem square_invalid_inputs (n : Int) (h : n ≤ 0) :
+    ¬∃ (result : Int), square n = result :=
+    sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval square 1
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval square 3
+
+  /--
+  info: 32768
+  -/
+  #guard_msgs in
+  #eval square 16
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

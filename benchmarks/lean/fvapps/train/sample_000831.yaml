@@ -1,24 +1,67 @@
-"vc-description": "The chef is trying to decode some pattern problems, Chef wants\
-  \ your help to code it. Chef has one number K to form a new pattern. Help the chef\
-  \ to code this pattern problem.\n\n-----Input:-----\n- First-line will contain $T$,\
-  \ the number of test cases. Then the test cases follow. \n- Each test case contains\
-  \ a single line of input, one integer $K$. \n\n-----Output:-----\nFor each test\
-  \ case, output as the pattern.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n\
-  - $1 \\leq K \\leq 100$\n\n-----Sample Input:-----\n4\n1\n2\n3\n4\n\n-----Sample\
-  \ Output:-----\n0\n01\n10\n010\n101\n010\n0101\n1010\n0101\n1010\n\n-----EXPLANATION:-----\n\
-  No need, else pattern can be decode easily."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def generate_pattern (k : Nat) : Array (Array Char) := sorry\n\n\
-  theorem pattern_size_correct (k : Nat) (h : k > 0) :\n  let pattern := generate_pattern\
-  \ k\n  (pattern.size = k) ∧ \n  (∀ i : Fin k, pattern[i.val]!.size = k) := sorry\n"
-"vc-theorems": "theorem pattern_chars_valid (k : Nat) (h : k > 0) :\n  let pattern\
-  \ := generate_pattern k\n  ∀ i : Fin k, ∀ j : Fin k,\n  pattern[i.val]![j.val]!\
-  \ = '0' ∨ pattern[i.val]![j.val]! = '1' := sorry\n\n\ntheorem pattern_alternates_correctly\
-  \ (k : Nat) (h : k > 0) :\n  let pattern := generate_pattern k\n  ∀ i : Fin k, ∀\
-  \ j : Fin k,\n  pattern[i.val]![j.val]! = (if (i.val + j.val) % 2 = 0 then '0' else\
-  \ '1') := sorry\n\n\ntheorem adjacent_elements_differ (k : Nat) (h : k > 0) :\n\
-  \  let pattern := generate_pattern k\n  (∀ i : Fin k, ∀ j : Fin (k-1), pattern[i.val]![j.val]!\
-  \ ≠ pattern[i.val]![(j.val+1)]!) ∧\n  (∀ i : Fin (k-1), ∀ j : Fin k, pattern[i.val]![j.val]!\
-  \ ≠ pattern[i.val+1]![j.val]!) := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  The chef is trying to decode some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+
+  -----Output:-----
+  For each test case, output as the pattern.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq K \leq 100$
+
+  -----Sample Input:-----
+  4
+  1
+  2
+  3
+  4
+
+  -----Sample Output:-----
+  0
+  01
+  10
+  010
+  101
+  010
+  0101
+  1010
+  0101
+  1010
+
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def generate_pattern (k : Nat) : Array (Array Char) := sorry
+
+  theorem pattern_size_correct (k : Nat) (h : k > 0) :
+    let pattern := generate_pattern k
+    (pattern.size = k) ∧ 
+    (∀ i : Fin k, pattern[i.val]!.size = k) := sorry
+vc-theorems: |-
+  theorem pattern_chars_valid (k : Nat) (h : k > 0) :
+    let pattern := generate_pattern k
+    ∀ i : Fin k, ∀ j : Fin k,
+    pattern[i.val]![j.val]! = '0' ∨ pattern[i.val]![j.val]! = '1' := sorry
+
+
+  theorem pattern_alternates_correctly (k : Nat) (h : k > 0) :
+    let pattern := generate_pattern k
+    ∀ i : Fin k, ∀ j : Fin k,
+    pattern[i.val]![j.val]! = (if (i.val + j.val) % 2 = 0 then '0' else '1') := sorry
+
+
+  theorem adjacent_elements_differ (k : Nat) (h : k > 0) :
+    let pattern := generate_pattern k
+    (∀ i : Fin k, ∀ j : Fin (k-1), pattern[i.val]![j.val]! ≠ pattern[i.val]![(j.val+1)]!) ∧
+    (∀ i : Fin (k-1), ∀ j : Fin k, pattern[i.val]![j.val]! ≠ pattern[i.val+1]![j.val]!) := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

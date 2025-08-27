@@ -1,25 +1,80 @@
-"vc-description": "Implement a basic calculator to evaluate a simple expression string.\n\
-  \nThe expression string may contain open ( and closing parentheses ), the plus +\
-  \ or minus sign -, non-negative integers and empty spaces  .\n\nExample 1:\n\n\n\
-  Input: \"1 + 1\"\nOutput: 2\n\n\nExample 2:\n\n\nInput: \" 2-1 + 2 \"\nOutput: 3\n\
-  \nExample 3:\n\n\nInput: \"(1+(4+5+2)-3)+(6+8)\"\nOutput: 23\nNote:\n\n\n      \
-  \ You may assume that the given expression is always valid.\n       Do not use the\
-  \ eval built-in library function."
-"vc-preamble": "import Imports.AllImports\n\ndef calculate (s : String) : Int := sorry\
-  \ \n\ntheorem single_number {n : Int} (h : -1000 ≤ n ∧ n ≤ 1000) : \n  calculate\
-  \ s!\"{n}\" = n := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def makeParens (n : Nat) : String := \n  match n with\n  | 0 =>\
-  \ \"\"\n  | n+1 => \"(\" ++ makeParens n\n"
-"vc-theorems": "theorem addition {a b : Int} (h : -100 ≤ a ∧ a ≤ 100 ∧ -100 ≤ b ∧\
-  \ b ≤ 100) :\n  calculate s!\"{a}+{b}\" = a + b := sorry\n\n\ntheorem nested_parentheses\
-  \ {n : Int} (h : -50 ≤ n ∧ n ≤ 50) :\n  calculate s!\"{makeParens n.toNat}1{makeParens\
-  \ n.toNat}\" = 1 := sorry\n\n\ntheorem parentheses_operations {a b : Int} (h : -50\
-  \ ≤ a ∧ a ≤ 50 ∧ -50 ≤ b ∧ b ≤ 50) :\n  calculate s!\"({a})+({b})\" = a + b ∧ \n\
-  \  calculate s!\"({a})-({b})\" = a - b := sorry\n\n\ntheorem whitespace_invariance\
-  \ (spaces : String) (h : ∀ c ∈ spaces.data, c = ' ') :\n  calculate \"1+2\" = calculate\
-  \ s!\"{spaces}1{spaces}+{spaces}2{spaces}\" := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs\
-  \ in\n#eval calculate \"\"1 + 1\"\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval calculate\
-  \ \"\" 2-1 + 2 \"\"\n\n/--\ninfo: 23\n-/\n#guard_msgs in\n#eval calculate \"\"(1+(4+5+2)-3)+(6+8)\"\
-  \"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Implement a basic calculator to evaluate a simple expression string.
+
+  The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces  .
+
+  Example 1:
+
+
+  Input: "1 + 1"
+  Output: 2
+
+
+  Example 2:
+
+
+  Input: " 2-1 + 2 "
+  Output: 3
+
+  Example 3:
+
+
+  Input: "(1+(4+5+2)-3)+(6+8)"
+  Output: 23
+  Note:
+
+
+         You may assume that the given expression is always valid.
+         Do not use the eval built-in library function.
+vc-preamble: |
+  import Imports.AllImports
+
+  def calculate (s : String) : Int := sorry 
+
+  theorem single_number {n : Int} (h : -1000 ≤ n ∧ n ≤ 1000) : 
+    calculate s!"{n}" = n := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def makeParens (n : Nat) : String := 
+    match n with
+    | 0 => ""
+    | n+1 => "(" ++ makeParens n
+vc-theorems: |
+  theorem addition {a b : Int} (h : -100 ≤ a ∧ a ≤ 100 ∧ -100 ≤ b ∧ b ≤ 100) :
+    calculate s!"{a}+{b}" = a + b := sorry
+
+
+  theorem nested_parentheses {n : Int} (h : -50 ≤ n ∧ n ≤ 50) :
+    calculate s!"{makeParens n.toNat}1{makeParens n.toNat}" = 1 := sorry
+
+
+  theorem parentheses_operations {a b : Int} (h : -50 ≤ a ∧ a ≤ 50 ∧ -50 ≤ b ∧ b ≤ 50) :
+    calculate s!"({a})+({b})" = a + b ∧ 
+    calculate s!"({a})-({b})" = a - b := sorry
+
+
+  theorem whitespace_invariance (spaces : String) (h : ∀ c ∈ spaces.data, c = ' ') :
+    calculate "1+2" = calculate s!"{spaces}1{spaces}+{spaces}2{spaces}" := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval calculate ""1 + 1""
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval calculate "" 2-1 + 2 ""
+
+  /--
+  info: 23
+  -/
+  #guard_msgs in
+  #eval calculate ""(1+(4+5+2)-3)+(6+8)""
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

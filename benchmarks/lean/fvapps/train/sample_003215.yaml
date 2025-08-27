@@ -1,14 +1,49 @@
-"vc-description": "Is the number even?\n\nIf the numbers is even return `true`. If\
-  \ it's odd, return `false`. \n\n\nOh yeah... the following symbols/commands have\
-  \ been disabled!\n\n use of ```%```\n use of ```.even?``` in Ruby\n use of ```mod```\
-  \ in Python"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_even (n : Int) : Bool := sorry\n\ntheorem is_even_divisible_by_2\
-  \ (n : Int) :\n  is_even n = (n % 2 = 0) := sorry\n"
-"vc-theorems": "theorem is_even_plus_2 (n : Int) :\n  is_even n = is_even (n + 2)\
-  \ := sorry\n\n\ntheorem is_even_neighbor (n : Int) :\n  is_even n ≠ is_even (n +\
-  \ 1) := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_even 2\n\n/--\ninfo:\
-  \ False\n-/\n#guard_msgs in\n#eval is_even 3\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval is_even 14\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Is the number even?
+
+  If the numbers is even return `true`. If it's odd, return `false`. 
+
+
+  Oh yeah... the following symbols/commands have been disabled!
+
+   use of ```%```
+   use of ```.even?``` in Ruby
+   use of ```mod``` in Python
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_even (n : Int) : Bool := sorry
+
+  theorem is_even_divisible_by_2 (n : Int) :
+    is_even n = (n % 2 = 0) := sorry
+vc-theorems: |
+  theorem is_even_plus_2 (n : Int) :
+    is_even n = is_even (n + 2) := sorry
+
+
+  theorem is_even_neighbor (n : Int) :
+    is_even n ≠ is_even (n + 1) := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_even 2
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_even 3
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_even 14
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

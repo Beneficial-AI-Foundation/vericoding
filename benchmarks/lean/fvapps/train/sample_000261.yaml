@@ -1,21 +1,79 @@
-"vc-description": "Given a number N, return a string consisting of \"0\"s and \"1\"\
-  s that represents its value in base -2 (negative two).\nThe returned string must\
-  \ have no leading zeroes, unless the string is \"0\".\n \n\nExample 1:\nInput: 2\n\
-  Output: \"110\"\nExplantion: (-2) ^ 2 + (-2) ^ 1 = 2\n\n\nExample 2:\nInput: 3\n\
-  Output: \"111\"\nExplantion: (-2) ^ 2 + (-2) ^ 1 + (-2) ^ 0 = 3\n\n\nExample 3:\n\
-  Input: 4\nOutput: \"100\"\nExplantion: (-2) ^ 2 = 4\n\n \nNote:\n\n0 <= N <= 10^9"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def base_neg2 (n : Int) : String := sorry\n\ndef binaryStringToNegBase2\
-  \ (s : String) : Int := sorry\n"
-"vc-theorems": "theorem base_neg2_valid_binary (n : Int) :\n  let s := base_neg2 n\n\
-  \  ∀ c ∈ s.data, c = '0' ∨ c = '1' := sorry\n\n\ntheorem base_neg2_roundtrip (n\
-  \ : Int) : \n  binaryStringToNegBase2 (base_neg2 n) = n := sorry\n\n\ntheorem base_neg2_positive\
-  \ (n : Int) :\n  n ≥ 0 →\n  (base_neg2 n).length > 0 ∧ \n  (base_neg2 n).data.head?\
-  \ ≠ some '-' := sorry\n\n\ntheorem base_neg2_zero :\n  base_neg2 0 = \"0\" := sorry\n\
-  \n\ntheorem base_neg2_length (n : Int) (h : n > 0) :\n  let binary_length := String.length\
-  \ (base_neg2 n)\n  binary_length ≤ String.length (toString n) + 2 := sorry\n\n/--\n\
-  info: '110'\n-/\n#guard_msgs in\n#eval base_neg2 2\n\n/--\ninfo: '111'\n-/\n#guard_msgs\
-  \ in\n#eval base_neg2 3\n\n/--\ninfo: '100'\n-/\n#guard_msgs in\n#eval base_neg2\
-  \ 4\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a number N, return a string consisting of "0"s and "1"s that represents its value in base -2 (negative two).
+  The returned string must have no leading zeroes, unless the string is "0".
+   
+
+  Example 1:
+  Input: 2
+  Output: "110"
+  Explantion: (-2) ^ 2 + (-2) ^ 1 = 2
+
+
+  Example 2:
+  Input: 3
+  Output: "111"
+  Explantion: (-2) ^ 2 + (-2) ^ 1 + (-2) ^ 0 = 3
+
+
+  Example 3:
+  Input: 4
+  Output: "100"
+  Explantion: (-2) ^ 2 = 4
+
+   
+  Note:
+
+  0 <= N <= 10^9
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def base_neg2 (n : Int) : String := sorry
+
+  def binaryStringToNegBase2 (s : String) : Int := sorry
+vc-theorems: |
+  theorem base_neg2_valid_binary (n : Int) :
+    let s := base_neg2 n
+    ∀ c ∈ s.data, c = '0' ∨ c = '1' := sorry
+
+
+  theorem base_neg2_roundtrip (n : Int) : 
+    binaryStringToNegBase2 (base_neg2 n) = n := sorry
+
+
+  theorem base_neg2_positive (n : Int) :
+    n ≥ 0 →
+    (base_neg2 n).length > 0 ∧ 
+    (base_neg2 n).data.head? ≠ some '-' := sorry
+
+
+  theorem base_neg2_zero :
+    base_neg2 0 = "0" := sorry
+
+
+  theorem base_neg2_length (n : Int) (h : n > 0) :
+    let binary_length := String.length (base_neg2 n)
+    binary_length ≤ String.length (toString n) + 2 := sorry
+
+  /--
+  info: '110'
+  -/
+  #guard_msgs in
+  #eval base_neg2 2
+
+  /--
+  info: '111'
+  -/
+  #guard_msgs in
+  #eval base_neg2 3
+
+  /--
+  info: '100'
+  -/
+  #guard_msgs in
+  #eval base_neg2 4
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

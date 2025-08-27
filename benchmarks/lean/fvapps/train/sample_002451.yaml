@@ -1,26 +1,59 @@
-"vc-description": "=====Function Descriptions=====\nSo far, we have only heard of\
-  \ Python's powers. Now, we will witness them!\n\nPowers or exponents in Python can\
-  \ be calculated using the built-in power function. Call the power function a^b as\
-  \ shown below:\n>>> pow(a,b) \n\nor\n\n>>> a**b\n\nIt's also possible to calculate\
-  \ a^b mod m.\n>>> pow(a,b,m)  \n\nThis is very helpful in computations where you\
-  \ have to print the resultant % mod.\n\nNote: Here, a and b can be floats or negatives,\
-  \ but, if a third argument is present, b cannot be negative.\n\nNote: Python has\
-  \ a math module that has its own pow(). It takes two arguments and returns a float.\
-  \ Frankly speaking, we will never use math.pow().\n\n=====Problem Statement=====\n\
-  You are given three integers: a, b, and m, respectively. Print two lines.\nThe first\
-  \ line should print the result of pow(a,b). The second line should print the result\
-  \ of pow(a,b,m).\n\n=====Input Format=====\nThe first line contains a, the second\
-  \ line contains b, and the third line contains m.\n\n=====Constraints=====\n1≤a≤10\n\
-  1≤b≤10\n2≤m≤1000"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calculate_powers (a b m : Nat) : Nat × Nat := sorry\n\ntheorem\
-  \ calculate_powers_mod_less (a b m : Nat) (h : m > 0) : \n  let (_, mod_result)\
-  \ := calculate_powers a b m\n  0 ≤ mod_result ∧ mod_result < m := sorry\n"
-"vc-theorems": "theorem calculate_powers_result_mod_eq (a b m : Nat) (h : m > 0) :\
-  \ \n  let (_, mod_result) := calculate_powers a b m\n  mod_result = (a^b) % m :=\
-  \ sorry\n\n\ntheorem calculate_powers_first_result (a b : Nat) (m : Nat) :\n  let\
-  \ (result, _) := calculate_powers a b m  \n  result = a^b := sorry\n\n\ntheorem\
-  \ calculate_powers_types (a b m : Nat) :\n  let result := calculate_powers a b m\n\
-  \  result.1 ≥ 0 ∧ result.2 ≥ 0 := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  =====Function Descriptions=====
+  So far, we have only heard of Python's powers. Now, we will witness them!
+
+  Powers or exponents in Python can be calculated using the built-in power function. Call the power function a^b as shown below:
+  >>> pow(a,b) 
+
+  or
+
+  >>> a**b
+
+  It's also possible to calculate a^b mod m.
+  >>> pow(a,b,m)  
+
+  This is very helpful in computations where you have to print the resultant % mod.
+
+  Note: Here, a and b can be floats or negatives, but, if a third argument is present, b cannot be negative.
+
+  Note: Python has a math module that has its own pow(). It takes two arguments and returns a float. Frankly speaking, we will never use math.pow().
+
+  =====Problem Statement=====
+  You are given three integers: a, b, and m, respectively. Print two lines.
+  The first line should print the result of pow(a,b). The second line should print the result of pow(a,b,m).
+
+  =====Input Format=====
+  The first line contains a, the second line contains b, and the third line contains m.
+
+  =====Constraints=====
+  1≤a≤10
+  1≤b≤10
+  2≤m≤1000
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def calculate_powers (a b m : Nat) : Nat × Nat := sorry
+
+  theorem calculate_powers_mod_less (a b m : Nat) (h : m > 0) : 
+    let (_, mod_result) := calculate_powers a b m
+    0 ≤ mod_result ∧ mod_result < m := sorry
+vc-theorems: |-
+  theorem calculate_powers_result_mod_eq (a b m : Nat) (h : m > 0) : 
+    let (_, mod_result) := calculate_powers a b m
+    mod_result = (a^b) % m := sorry
+
+
+  theorem calculate_powers_first_result (a b : Nat) (m : Nat) :
+    let (result, _) := calculate_powers a b m  
+    result = a^b := sorry
+
+
+  theorem calculate_powers_types (a b m : Nat) :
+    let result := calculate_powers a b m
+    result.1 ≥ 0 ∧ result.2 ≥ 0 := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

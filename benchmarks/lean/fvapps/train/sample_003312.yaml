@@ -1,34 +1,75 @@
-"vc-description": "Given an array of positive integers, replace every element with\
-  \ the least greater element to its right.\n If there is no greater element to its\
-  \ right, replace it with -1. For instance, given the array \n \n `[8, 58, 71, 18,\
-  \ 31, 32, 63, 92, 43, 3, 91, 93, 25, 80, 28]`,\n \n the desired output is \n \n\
-  \ `[18, 63, 80, 25, 32, 43, 80, 93, 80, 25, 93, -1, 28, -1, -1]`.\n\nYour task is\
-  \ to create a function \"arrayManip()\" that takes in an array as its argument,\
-  \ manipulates the array as described above, then return the resulting array.\n\n\
-  Note: Return a new array, rather than modifying the passed array."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def array_manip (arr : List Int) : List Int := sorry\n\ntheorem\
-  \ array_manip_length (arr : List Int) : \n  (array_manip arr).length = arr.length\
-  \ := sorry\n"
-"vc-theorems": "theorem array_manip_basic_properties (arr : List Int) (h : arr ≠ [])\
-  \ :\n  let result := array_manip arr\n  -- Result same length as input\n  (result.length\
-  \ = arr.length) ∧\n  -- Last element is -1\n  (result.get? (result.length - 1) =\
-  \ some (-1)) ∧\n  -- Each element is -1 or greater than input\n  (∀ i : Fin arr.length,\
-  \ \n    have h1 : i.val < result.length := by rw [array_manip_length]; exact i.isLt\n\
-  \    (result.get ⟨i.val, h1⟩ = -1 ∨ result.get ⟨i.val, h1⟩ > arr.get i)) := sorry\n\
-  \n\ntheorem array_manip_elements_from_remaining (arr : List Int) (h : arr ≠ [])\
-  \ :\n  let result := array_manip arr\n  ∀ i : Fin (arr.length - 1),\n    have h1\
-  \ : i.val < result.length := by rw [array_manip_length]; sorry\n    (result.get\
-  \ ⟨i.val, h1⟩ = -1 ∨ result.get ⟨i.val, h1⟩ ∈ arr.drop (i.val + 1)) := sorry\n\n\
-  \ntheorem array_manip_increasing_sequence (a b c : Int) (h1 : a < b) (h2 : b < c)\
-  \ :\n  let arr := [a, b, c]\n  array_manip arr = [b, c, -1] := sorry\n\n\ntheorem\
-  \ array_manip_no_greater_elements (arr : List Int) (h : arr ≠ []) :\n  let result\
-  \ := array_manip arr\n  ∀ i : Fin arr.length,\n    have h1 : i.val < result.length\
-  \ := by rw [array_manip_length]; exact i.isLt\n    (∀ j, i.val < j ∧ j < arr.length\
-  \ → arr.get ⟨j, by sorry⟩ ≤ arr.get i) →\n    result.get ⟨i.val, h1⟩ = -1 := sorry\n\
-  \n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval array_manip [8, 58, 71, 18, 31,\
-  \ 32, 63, 92, 43, 3, 91, 93, 25, 80, 28]\n\n/--\ninfo: expected2\n-/\n#guard_msgs\
-  \ in\n#eval array_manip [2, 4, 18, 16, 7, 3, 9, 13, 18, 10]\n\n/--\ninfo: expected3\n\
-  -/\n#guard_msgs in\n#eval array_manip [1, 2, 3]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an array of positive integers, replace every element with the least greater element to its right.
+   If there is no greater element to its right, replace it with -1. For instance, given the array 
+   
+   `[8, 58, 71, 18, 31, 32, 63, 92, 43, 3, 91, 93, 25, 80, 28]`,
+   
+   the desired output is 
+   
+   `[18, 63, 80, 25, 32, 43, 80, 93, 80, 25, 93, -1, 28, -1, -1]`.
+
+  Your task is to create a function "arrayManip()" that takes in an array as its argument, manipulates the array as described above, then return the resulting array.
+
+  Note: Return a new array, rather than modifying the passed array.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def array_manip (arr : List Int) : List Int := sorry
+
+  theorem array_manip_length (arr : List Int) : 
+    (array_manip arr).length = arr.length := sorry
+vc-theorems: |
+  theorem array_manip_basic_properties (arr : List Int) (h : arr ≠ []) :
+    let result := array_manip arr
+    -- Result same length as input
+    (result.length = arr.length) ∧
+    -- Last element is -1
+    (result.get? (result.length - 1) = some (-1)) ∧
+    -- Each element is -1 or greater than input
+    (∀ i : Fin arr.length, 
+      have h1 : i.val < result.length := by rw [array_manip_length]; exact i.isLt
+      (result.get ⟨i.val, h1⟩ = -1 ∨ result.get ⟨i.val, h1⟩ > arr.get i)) := sorry
+
+
+  theorem array_manip_elements_from_remaining (arr : List Int) (h : arr ≠ []) :
+    let result := array_manip arr
+    ∀ i : Fin (arr.length - 1),
+      have h1 : i.val < result.length := by rw [array_manip_length]; sorry
+      (result.get ⟨i.val, h1⟩ = -1 ∨ result.get ⟨i.val, h1⟩ ∈ arr.drop (i.val + 1)) := sorry
+
+
+  theorem array_manip_increasing_sequence (a b c : Int) (h1 : a < b) (h2 : b < c) :
+    let arr := [a, b, c]
+    array_manip arr = [b, c, -1] := sorry
+
+
+  theorem array_manip_no_greater_elements (arr : List Int) (h : arr ≠ []) :
+    let result := array_manip arr
+    ∀ i : Fin arr.length,
+      have h1 : i.val < result.length := by rw [array_manip_length]; exact i.isLt
+      (∀ j, i.val < j ∧ j < arr.length → arr.get ⟨j, by sorry⟩ ≤ arr.get i) →
+      result.get ⟨i.val, h1⟩ = -1 := sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval array_manip [8, 58, 71, 18, 31, 32, 63, 92, 43, 3, 91, 93, 25, 80, 28]
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval array_manip [2, 4, 18, 16, 7, 3, 9, 13, 18, 10]
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval array_manip [1, 2, 3]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

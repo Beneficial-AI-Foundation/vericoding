@@ -1,46 +1,95 @@
-"vc-description": "Simple interest on a loan is calculated by simply taking the initial\
-  \ amount (the principal, p) and multiplying it by a rate of interest (r) and the\
-  \ number of time periods (n). \n\nCompound interest is calculated by adding the\
-  \ interest after each time period to the amount owed, then calculating the next\
-  \ interest payment based on the principal PLUS the interest from all previous periods.\n\
-  \nGiven a principal *p*, interest rate *r*, and a number of periods *n*, return\
-  \ an array [total owed under simple interest, total owed under compound interest].\
-  \ \n\n```\nEXAMPLES:\n\ninterest(100,0.1,1) = [110,110]\ninterest(100,0.1,2) = [120,121]\n\
-  interest(100,0.1,10) = [200,259]\n```\n \nRound all answers to the nearest integer.\
-  \ Principal will always be an integer between 0 and 9999; interest rate will be\
-  \ a decimal between 0 and 1; number of time periods will be an integer between 0\
-  \ and 49. \n \n---\n\nMore on [Simple interest, compound interest and continuous\
-  \ interest](https://betterexplained.com/articles/a-visual-guide-to-simple-compound-and-continuous-interest-rates/)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def interest (principal : Int) (rate : Float) (periods : Int) :\
-  \ List Int := sorry\n\ntheorem interest_basic_structure \n  (principal : Int) (rate\
-  \ : Float) (periods : Int)\n  (h1 : principal > 0) (h2 : principal ≤ 1000000)\n\
-  \  (h3 : rate > 0) (h4 : rate ≤ 1)\n  (h5 : periods ≥ 0) (h6 : periods ≤ 100) :\n\
-  \  let result := interest principal rate periods\n  (result.length = 2) ∧ \n  (∀\
-  \ x ∈ result, x ≥ 0) :=\nsorry\n"
-"vc-theorems": "theorem simple_less_than_compound\n  (principal : Int) (rate : Float)\
-  \ (periods : Int)\n  (h1 : principal > 0) (h2 : principal ≤ 1000000)\n  (h3 : rate\
-  \ > 0) (h4 : rate ≤ 1)\n  (h5 : periods ≥ 0) (h6 : periods ≤ 100) :\n  let result\
-  \ := interest principal rate periods\n  have h7 : result.length = 2 := sorry\n \
-  \ result.get ⟨0, by simp [h7]⟩ ≤ result.get ⟨1, by simp [h7]⟩ :=\nsorry\n\n\ntheorem\
-  \ zero_periods_returns_principal\n  (principal : Int) (rate : Float)\n  (h1 : principal\
-  \ > 0) (h2 : principal ≤ 1000000)\n  (h3 : rate > 0) (h4 : rate ≤ 1) :\n  let result\
-  \ := interest principal rate 0\n  have h5 : result.length = 2 := sorry\n  (result.get\
-  \ ⟨0, by simp [h5]⟩ = principal) ∧ \n  (result.get ⟨1, by simp [h5]⟩ = principal)\
-  \ :=\nsorry\n\n\ntheorem compound_grows_faster\n  (principal : Int) (rate : Float)\
-  \ (periods : Int)\n  (h1 : principal > 0) (h2 : principal ≤ 1000000)\n  (h3 : rate\
-  \ > 0) (h4 : rate ≤ 1)\n  (h5 : periods > 1) (h6 : periods ≤ 100) :\n  let result\
-  \ := interest principal rate periods\n  have h7 : result.length = 2 := sorry\n \
-  \ let simple_growth := result.get ⟨0, by simp [h7]⟩ - principal\n  let compound_growth\
-  \ := result.get ⟨1, by simp [h7]⟩ - principal\n  compound_growth ≥ simple_growth\
-  \ :=\nsorry\n\n\ntheorem one_period_equality\n  (principal : Int) (rate : Float)\n\
-  \  (h1 : principal > 0) (h2 : principal ≤ 1000000)\n  (h3 : rate > 0) (h4 : rate\
-  \ ≤ 1) :\n  let result := interest principal rate 1\n  have h5 : result.length =\
-  \ 2 := sorry\n  result.get ⟨0, by simp [h5]⟩ = result.get ⟨1, by simp [h5]⟩ :=\n\
-  sorry\n\n\ntheorem zero_rate_returns_principal\n  (principal : Int) (periods : Int)\n\
-  \  (h1 : principal > 0) (h2 : principal ≤ 1000000)\n  (h3 : periods ≥ 0) (h4 : periods\
-  \ ≤ 100) :\n  let result := interest principal 0 periods\n  have h5 : result.length\
-  \ = 2 := sorry\n  (result.get ⟨0, by simp [h5]⟩ = principal) ∧ \n  (result.get ⟨1,\
-  \ by simp [h5]⟩ = principal) :=\nsorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Simple interest on a loan is calculated by simply taking the initial amount (the principal, p) and multiplying it by a rate of interest (r) and the number of time periods (n). 
+
+  Compound interest is calculated by adding the interest after each time period to the amount owed, then calculating the next interest payment based on the principal PLUS the interest from all previous periods.
+
+  Given a principal *p*, interest rate *r*, and a number of periods *n*, return an array [total owed under simple interest, total owed under compound interest]. 
+
+  ```
+  EXAMPLES:
+
+  interest(100,0.1,1) = [110,110]
+  interest(100,0.1,2) = [120,121]
+  interest(100,0.1,10) = [200,259]
+  ```
+   
+  Round all answers to the nearest integer. Principal will always be an integer between 0 and 9999; interest rate will be a decimal between 0 and 1; number of time periods will be an integer between 0 and 49. 
+   
+  ---
+
+  More on [Simple interest, compound interest and continuous interest](https://betterexplained.com/articles/a-visual-guide-to-simple-compound-and-continuous-interest-rates/)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def interest (principal : Int) (rate : Float) (periods : Int) : List Int := sorry
+
+  theorem interest_basic_structure 
+    (principal : Int) (rate : Float) (periods : Int)
+    (h1 : principal > 0) (h2 : principal ≤ 1000000)
+    (h3 : rate > 0) (h4 : rate ≤ 1)
+    (h5 : periods ≥ 0) (h6 : periods ≤ 100) :
+    let result := interest principal rate periods
+    (result.length = 2) ∧ 
+    (∀ x ∈ result, x ≥ 0) :=
+  sorry
+vc-theorems: |-
+  theorem simple_less_than_compound
+    (principal : Int) (rate : Float) (periods : Int)
+    (h1 : principal > 0) (h2 : principal ≤ 1000000)
+    (h3 : rate > 0) (h4 : rate ≤ 1)
+    (h5 : periods ≥ 0) (h6 : periods ≤ 100) :
+    let result := interest principal rate periods
+    have h7 : result.length = 2 := sorry
+    result.get ⟨0, by simp [h7]⟩ ≤ result.get ⟨1, by simp [h7]⟩ :=
+  sorry
+
+
+  theorem zero_periods_returns_principal
+    (principal : Int) (rate : Float)
+    (h1 : principal > 0) (h2 : principal ≤ 1000000)
+    (h3 : rate > 0) (h4 : rate ≤ 1) :
+    let result := interest principal rate 0
+    have h5 : result.length = 2 := sorry
+    (result.get ⟨0, by simp [h5]⟩ = principal) ∧ 
+    (result.get ⟨1, by simp [h5]⟩ = principal) :=
+  sorry
+
+
+  theorem compound_grows_faster
+    (principal : Int) (rate : Float) (periods : Int)
+    (h1 : principal > 0) (h2 : principal ≤ 1000000)
+    (h3 : rate > 0) (h4 : rate ≤ 1)
+    (h5 : periods > 1) (h6 : periods ≤ 100) :
+    let result := interest principal rate periods
+    have h7 : result.length = 2 := sorry
+    let simple_growth := result.get ⟨0, by simp [h7]⟩ - principal
+    let compound_growth := result.get ⟨1, by simp [h7]⟩ - principal
+    compound_growth ≥ simple_growth :=
+  sorry
+
+
+  theorem one_period_equality
+    (principal : Int) (rate : Float)
+    (h1 : principal > 0) (h2 : principal ≤ 1000000)
+    (h3 : rate > 0) (h4 : rate ≤ 1) :
+    let result := interest principal rate 1
+    have h5 : result.length = 2 := sorry
+    result.get ⟨0, by simp [h5]⟩ = result.get ⟨1, by simp [h5]⟩ :=
+  sorry
+
+
+  theorem zero_rate_returns_principal
+    (principal : Int) (periods : Int)
+    (h1 : principal > 0) (h2 : principal ≤ 1000000)
+    (h3 : periods ≥ 0) (h4 : periods ≤ 100) :
+    let result := interest principal 0 periods
+    have h5 : result.length = 2 := sorry
+    (result.get ⟨0, by simp [h5]⟩ = principal) ∧ 
+    (result.get ⟨1, by simp [h5]⟩ = principal) :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

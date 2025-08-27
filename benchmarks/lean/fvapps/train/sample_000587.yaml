@@ -1,46 +1,93 @@
-"vc-description": "You are given a grid with $R$ rows (numbered $1$ through $R$) and\
-  \ $C$ columns (numbered $1$ through $C$). A cell in row $r$ and column $c$ is denoted\
-  \ by $(r, c)$. Two cells in the grid are adjacent if they have a common side. For\
-  \ each valid $i$ and $j$, there is a value $a_{i, j}$ written in cell $a_{i, j}$.\n\
-  A cell in the grid is stable if the number of cells in the grid which are adjacent\
-  \ to this cell is strictly greater than the value written in this cell. The whole\
-  \ grid is stable if all cells in the grid are stable.\nCan you determine whether\
-  \ the grid is stable?\n\n-----Input-----\n- The first line of the input contains\
-  \ a single integer $T$ denoting the number of test cases. The description of $T$\
-  \ test cases follows.\n- The first line of each test case contains two space-separated\
-  \ integers $R$ and $C$.\n- $R$ lines follow. For each $i$ ($1 \\le i \\le R$), the\
-  \ $i$-th of these lines contains $C$ space-separated integers $a_{i, 1}, a_{i, 2},\
-  \ \\ldots, a_{i, C}$.\n\n-----Output-----\nFor each test case, print a single line\
-  \ containing the string \"Stable\" if the grid is stable or \"Unstable\" if it is\
-  \ unstable (without quotes).\n\n-----Constraints-----\n- $1 \\le T \\le 3,000$\n\
-  - $3 \\le R, C \\le 10$\n- $0 \\le a_{i, j} \\le 4$ for each valid $i, j$\n\n-----Example\
-  \ Input-----\n2\n3 3\n1 2 1\n2 3 2\n1 2 1\n3 4\n0 0 0 0\n0 0 0 0\n0 0 4 0\n\n-----Example\
-  \ Output-----\nStable\nUnstable\n\n-----Explanation-----\nExample case 1: Each cell\
-  \ of the grid is stable, so the grid is stable.\nExample case 2: The cell in row\
-  \ $3$ and column $3$ is unstable since the number of cells adjacent to this cell\
-  \ is $3$."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def modifyList {α} (xs : List α) (i : Nat) (v : α) : List α :=\
-  \ sorry\n\ndef check_grid_stability (grid : List (List Nat)) (rows cols : Nat) :\
-  \ String := sorry\n"
-"vc-theorems": "theorem corner_cells_stability {n : Nat} (h : n ≥ 2) :\n  let grid₁\
-  \ := List.replicate n (List.replicate n 0)\n  let grid₂ := modifyList grid₁ 0 (modifyList\
-  \ (List.get! grid₁ 0) 0 2)\n  let grid₃ := modifyList grid₁ 0 (modifyList (List.get!\
-  \ grid₁ 0) 0 1)\n  check_grid_stability grid₂ n n = \"Unstable\" ∧\n  check_grid_stability\
-  \ grid₃ n n = \"Stable\" := sorry\n\n\ntheorem center_cells_stability {n : Nat}\
-  \ (h : n ≥ 3) :\n  let grid₁ := List.replicate n (List.replicate n 0)\n  let center\
-  \ := n / 2\n  let grid₂ := modifyList grid₁ center (modifyList (List.get! grid₁\
-  \ center) center 4)\n  let grid₃ := modifyList grid₁ center (modifyList (List.get!\
-  \ grid₁ center) center 3)\n  check_grid_stability grid₂ n n = \"Unstable\" ∧\n \
-  \ check_grid_stability grid₃ n n = \"Stable\" := sorry\n\n\ntheorem arbitrary_grid_stability\
-  \ (grid : List (List Nat)) :\n  grid ≠ [] →\n  (List.get! grid 0) ≠ [] →\n  (∀ row\
-  \ ∈ grid, row.length = (List.get! grid 0).length) →\n  (∀ row ∈ grid, ∀ x ∈ row,\
-  \ x ≤ 4) →\n  let rows := grid.length\n  let cols := (List.get! grid 0).length\n\
-  \  check_grid_stability grid rows cols = \"Stable\" ∨\n  check_grid_stability grid\
-  \ rows cols = \"Unstable\" := sorry\n\n/--\ninfo: 'Stable'\n-/\n#guard_msgs in\n\
-  #eval check_grid_stability [[1, 2, 1], [2, 3, 2], [1, 2, 1]] 3 3\n\n/--\ninfo: 'Unstable'\n\
-  -/\n#guard_msgs in\n#eval check_grid_stability [[0, 0, 0, 0], [0, 0, 0, 0], [0,\
-  \ 0, 4, 0]] 3 4\n\n/--\ninfo: 'Unstable'\n-/\n#guard_msgs in\n#eval check_grid_stability\
-  \ [[1, 1, 1], [1, 4, 1], [1, 1, 1]] 3 3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  You are given a grid with $R$ rows (numbered $1$ through $R$) and $C$ columns (numbered $1$ through $C$). A cell in row $r$ and column $c$ is denoted by $(r, c)$. Two cells in the grid are adjacent if they have a common side. For each valid $i$ and $j$, there is a value $a_{i, j}$ written in cell $a_{i, j}$.
+  A cell in the grid is stable if the number of cells in the grid which are adjacent to this cell is strictly greater than the value written in this cell. The whole grid is stable if all cells in the grid are stable.
+  Can you determine whether the grid is stable?
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains two space-separated integers $R$ and $C$.
+  - $R$ lines follow. For each $i$ ($1 \le i \le R$), the $i$-th of these lines contains $C$ space-separated integers $a_{i, 1}, a_{i, 2}, \ldots, a_{i, C}$.
+
+  -----Output-----
+  For each test case, print a single line containing the string "Stable" if the grid is stable or "Unstable" if it is unstable (without quotes).
+
+  -----Constraints-----
+  - $1 \le T \le 3,000$
+  - $3 \le R, C \le 10$
+  - $0 \le a_{i, j} \le 4$ for each valid $i, j$
+
+  -----Example Input-----
+  2
+  3 3
+  1 2 1
+  2 3 2
+  1 2 1
+  3 4
+  0 0 0 0
+  0 0 0 0
+  0 0 4 0
+
+  -----Example Output-----
+  Stable
+  Unstable
+
+  -----Explanation-----
+  Example case 1: Each cell of the grid is stable, so the grid is stable.
+  Example case 2: The cell in row $3$ and column $3$ is unstable since the number of cells adjacent to this cell is $3$.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def modifyList {α} (xs : List α) (i : Nat) (v : α) : List α := sorry
+
+  def check_grid_stability (grid : List (List Nat)) (rows cols : Nat) : String := sorry
+vc-theorems: |
+  theorem corner_cells_stability {n : Nat} (h : n ≥ 2) :
+    let grid₁ := List.replicate n (List.replicate n 0)
+    let grid₂ := modifyList grid₁ 0 (modifyList (List.get! grid₁ 0) 0 2)
+    let grid₃ := modifyList grid₁ 0 (modifyList (List.get! grid₁ 0) 0 1)
+    check_grid_stability grid₂ n n = "Unstable" ∧
+    check_grid_stability grid₃ n n = "Stable" := sorry
+
+
+  theorem center_cells_stability {n : Nat} (h : n ≥ 3) :
+    let grid₁ := List.replicate n (List.replicate n 0)
+    let center := n / 2
+    let grid₂ := modifyList grid₁ center (modifyList (List.get! grid₁ center) center 4)
+    let grid₃ := modifyList grid₁ center (modifyList (List.get! grid₁ center) center 3)
+    check_grid_stability grid₂ n n = "Unstable" ∧
+    check_grid_stability grid₃ n n = "Stable" := sorry
+
+
+  theorem arbitrary_grid_stability (grid : List (List Nat)) :
+    grid ≠ [] →
+    (List.get! grid 0) ≠ [] →
+    (∀ row ∈ grid, row.length = (List.get! grid 0).length) →
+    (∀ row ∈ grid, ∀ x ∈ row, x ≤ 4) →
+    let rows := grid.length
+    let cols := (List.get! grid 0).length
+    check_grid_stability grid rows cols = "Stable" ∨
+    check_grid_stability grid rows cols = "Unstable" := sorry
+
+  /--
+  info: 'Stable'
+  -/
+  #guard_msgs in
+  #eval check_grid_stability [[1, 2, 1], [2, 3, 2], [1, 2, 1]] 3 3
+
+  /--
+  info: 'Unstable'
+  -/
+  #guard_msgs in
+  #eval check_grid_stability [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 4, 0]] 3 4
+
+  /--
+  info: 'Unstable'
+  -/
+  #guard_msgs in
+  #eval check_grid_stability [[1, 1, 1], [1, 4, 1], [1, 1, 1]] 3 3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

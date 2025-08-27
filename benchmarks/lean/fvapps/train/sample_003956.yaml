@@ -1,21 +1,82 @@
-"vc-description": "Given a string, return the minimal number of parenthesis reversals\
-  \ needed to make balanced parenthesis. \n\nFor example:\n```Javascript\nsolve(\"\
-  )(\") = 2 Because we need to reverse \")\" to \"(\" and \"(\" to \")\". These are\
-  \ 2 reversals. \nsolve(\"(((())\") = 1 We need to reverse just one \"(\" parenthesis\
-  \ to make it balanced.\nsolve(\"(((\") = -1 Not possible to form balanced parenthesis.\
-  \ Return -1.\n```\n\nParenthesis will be either `\"(\"` or `\")\"`. \n\nMore examples\
-  \ in the test cases. \n\nGood luck."
-"vc-preamble": "import Imports.AllImports\n\ndef solve (s : String) : Int :=\n  sorry\n\
-  \n\ndef isBalanced (s : String) : Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def repeated_parens (n : Nat) : String :=\n  sorry\n\n\n"
-"vc-theorems": "theorem solve_odd_length_returns_minus_one {s : String} :\n  (s.length\
-  \ % 2 = 1) → solve s = -1 :=\n  sorry\n\n\ntheorem solve_valid_solution_bound {s\
-  \ : String} :\n  solve s ≥ 0 → solve s ≤ s.length :=\n  sorry\n\n\ntheorem solve_empty_string\
-  \ :\n  solve \"\" = 0 :=\n  sorry\n\n\ntheorem solve_single_paren_left :\n  solve\
-  \ \"(\" = -1 :=\n  sorry\n\n\ntheorem solve_single_paren_right :\n  solve \")\"\
-  \ = -1 :=\n  sorry\n\n\ntheorem solve_reversed_pair :\n  solve \")(\" = 2 :=\n \
-  \ sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve \")(\"\n\n/--\ninfo: 1\n\
-  -/\n#guard_msgs in\n#eval solve \"(((())\"\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n\
-  #eval solve \"(((\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given a string, return the minimal number of parenthesis reversals needed to make balanced parenthesis. 
+
+  For example:
+  ```Javascript
+  solve(")(") = 2 Because we need to reverse ")" to "(" and "(" to ")". These are 2 reversals. 
+  solve("(((())") = 1 We need to reverse just one "(" parenthesis to make it balanced.
+  solve("(((") = -1 Not possible to form balanced parenthesis. Return -1.
+  ```
+
+  Parenthesis will be either `"("` or `")"`. 
+
+  More examples in the test cases. 
+
+  Good luck.
+vc-preamble: |
+  import Imports.AllImports
+
+  def solve (s : String) : Int :=
+    sorry
+
+
+  def isBalanced (s : String) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def repeated_parens (n : Nat) : String :=
+    sorry
+
+
+vc-theorems: |
+  theorem solve_odd_length_returns_minus_one {s : String} :
+    (s.length % 2 = 1) → solve s = -1 :=
+    sorry
+
+
+  theorem solve_valid_solution_bound {s : String} :
+    solve s ≥ 0 → solve s ≤ s.length :=
+    sorry
+
+
+  theorem solve_empty_string :
+    solve "" = 0 :=
+    sorry
+
+
+  theorem solve_single_paren_left :
+    solve "(" = -1 :=
+    sorry
+
+
+  theorem solve_single_paren_right :
+    solve ")" = -1 :=
+    sorry
+
+
+  theorem solve_reversed_pair :
+    solve ")(" = 2 :=
+    sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve ")("
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve "(((())"
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval solve "((("
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

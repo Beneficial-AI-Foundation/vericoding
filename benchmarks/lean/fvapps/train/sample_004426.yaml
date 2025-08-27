@@ -1,28 +1,77 @@
-"vc-description": "# Task\nAfter a long night (work, play, study) you find yourself\
-  \ sleeping on a bench in a park. As you wake up and try to figure out what happened\
-  \ you start counting trees.\n\nYou notice there are different tree sizes but there's\
-  \ always one size which is unbalanced. For example there are 2 size 2, 2 size 1\
-  \ and 1 size 3. (then the size 3 is unbalanced)\n\nGiven an array representing different\
-  \ tree sizes. Which one is the unbalanced size.\n\nNotes:\n```\nThere can be any\
-  \ number of sizes but one is always unbalanced\nThe unbalanced size is always one\
-  \ less than the other sizes\nThe array is not ordered (nor the trees)```\n\n# Examples\n\
-  \nFor `trees = [1,1,2,2,3]`, the result should be `3`.\n\nFor `trees = [2,2,2,56,56,56,8,8]`,\
-  \ the result should be `8`.\n\nFor `trees = [34,76,12,99,64,99,76,12,34]`, the result\
-  \ should be `64`.\n\n# Input/Output\n\n\n- `[input]` integer array `trees`\n\nArray\
-  \ representing different tree sizes\n\n\n- `[output]` an integer\n\nThe size of\
-  \ the missing tree."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_the_missing_tree (numbers : List Int) : Int :=\n  sorry\n"
-"vc-theorems": "theorem result_is_in_input (numbers : List Int) (h : numbers.length\
-  \ > 0):\n  let doubled_numbers := numbers ++ numbers\n  let input_list := doubled_numbers.dropLast\n\
-  \  let result := find_the_missing_tree input_list\n  result ∈ input_list :=\nsorry\n\
-  \n\ntheorem result_appears_least (numbers : List Int) (h : numbers.length ≥ 3):\n\
-  \  let tripled := numbers ++ numbers ++ numbers  \n  let input_list := (tripled.take\
-  \ (tripled.length / 2)) ++ (tripled.drop (tripled.length / 2 + 1))\n  let result\
-  \ := find_the_missing_tree input_list\n  ∀ n ∈ input_list, (input_list.count result)\
-  \ ≤ (input_list.count n) :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_the_missing_tree\
-  \ [1, 2, 2, 3, 3]\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval find_the_missing_tree\
-  \ [2, 2, 2, 56, 56, 56, 8, 8]\n\n/--\ninfo: 64\n-/\n#guard_msgs in\n#eval find_the_missing_tree\
-  \ [34, 76, 12, 99, 64, 99, 76, 12, 34]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  # Task
+  After a long night (work, play, study) you find yourself sleeping on a bench in a park. As you wake up and try to figure out what happened you start counting trees.
+
+  You notice there are different tree sizes but there's always one size which is unbalanced. For example there are 2 size 2, 2 size 1 and 1 size 3. (then the size 3 is unbalanced)
+
+  Given an array representing different tree sizes. Which one is the unbalanced size.
+
+  Notes:
+  ```
+  There can be any number of sizes but one is always unbalanced
+  The unbalanced size is always one less than the other sizes
+  The array is not ordered (nor the trees)```
+
+  # Examples
+
+  For `trees = [1,1,2,2,3]`, the result should be `3`.
+
+  For `trees = [2,2,2,56,56,56,8,8]`, the result should be `8`.
+
+  For `trees = [34,76,12,99,64,99,76,12,34]`, the result should be `64`.
+
+  # Input/Output
+
+
+  - `[input]` integer array `trees`
+
+  Array representing different tree sizes
+
+
+  - `[output]` an integer
+
+  The size of the missing tree.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_the_missing_tree (numbers : List Int) : Int :=
+    sorry
+vc-theorems: |
+  theorem result_is_in_input (numbers : List Int) (h : numbers.length > 0):
+    let doubled_numbers := numbers ++ numbers
+    let input_list := doubled_numbers.dropLast
+    let result := find_the_missing_tree input_list
+    result ∈ input_list :=
+  sorry
+
+
+  theorem result_appears_least (numbers : List Int) (h : numbers.length ≥ 3):
+    let tripled := numbers ++ numbers ++ numbers  
+    let input_list := (tripled.take (tripled.length / 2)) ++ (tripled.drop (tripled.length / 2 + 1))
+    let result := find_the_missing_tree input_list
+    ∀ n ∈ input_list, (input_list.count result) ≤ (input_list.count n) :=
+  sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_the_missing_tree [1, 2, 2, 3, 3]
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval find_the_missing_tree [2, 2, 2, 56, 56, 56, 8, 8]
+
+  /--
+  info: 64
+  -/
+  #guard_msgs in
+  #eval find_the_missing_tree [34, 76, 12, 99, 64, 99, 76, 12, 34]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

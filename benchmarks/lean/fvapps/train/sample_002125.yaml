@@ -1,69 +1,136 @@
-"vc-description": "You've got a list of program warning logs. Each record of a log\
-  \ stream is a string in this format:  \"2012-MM-DD HH:MM:SS:MESSAGE\" (without the\
-  \ quotes). \n\nString \"MESSAGE\" consists of spaces, uppercase and lowercase English\
-  \ letters and characters \"!\", \".\", \",\", \"?\". String \"2012-MM-DD\" determines\
-  \ a correct date in the year of 2012. String \"HH:MM:SS\" determines a correct time\
-  \ in the 24 hour format.\n\nThe described record of a log stream means that at a\
-  \ certain time the record has got some program warning (string \"MESSAGE\" contains\
-  \ the warning's description).\n\nYour task is to print the first moment of time,\
-  \ when the number of warnings for the last n seconds was not less than m.\n\n\n\
-  -----Input-----\n\nThe first line of the input contains two space-separated integers\
-  \ n and m (1 ≤ n, m ≤ 10000).\n\nThe second and the remaining lines of the input\
-  \ represent the log stream. The second line of the input contains the first record\
-  \ of the log stream, the third line contains the second record and so on. Each record\
-  \ of the log stream has the above described format. All records are given in the\
-  \ chronological order, that is, the warning records are given in the order, in which\
-  \ the warnings appeared in the program. \n\nIt is guaranteed that the log has at\
-  \ least one record. It is guaranteed that the total length of all lines of the log\
-  \ stream doesn't exceed 5·10^6 (in particular, this means that the length of some\
-  \ line does not exceed 5·10^6 characters). It is guaranteed that all given dates\
-  \ and times are correct, and the string 'MESSAGE\" in all records is non-empty.\n\
-  \n\n-----Output-----\n\nIf there is no sought moment of time, print -1. Otherwise\
-  \ print a string in the format \"2012-MM-DD HH:MM:SS\" (without the quotes) — the\
-  \ first moment of time when the number of warnings for the last n seconds got no\
-  \ less than m.\n\n\n-----Examples-----\nInput\n60 3\n2012-03-16 16:15:25: Disk size\
-  \ is\n2012-03-16 16:15:25: Network failute\n2012-03-16 16:16:29: Cant write varlog\n\
-  2012-03-16 16:16:42: Unable to start process\n2012-03-16 16:16:43: Disk size is\
-  \ too small\n2012-03-16 16:16:53: Timeout detected\n\nOutput\n2012-03-16 16:16:43\n\
-  \nInput\n1 2\n2012-03-16 23:59:59:Disk size\n2012-03-17 00:00:00: Network\n2012-03-17\
-  \ 00:00:01:Cant write varlog\n\nOutput\n-1\n\nInput\n2 2\n2012-03-16 23:59:59:Disk\
-  \ size is too sm\n2012-03-17 00:00:00:Network failute dete\n2012-03-17 00:00:01:Cant\
-  \ write varlogmysq\n\nOutput\n2012-03-17 00:00:00"
-"vc-preamble": "import Imports.AllImports\n\ndef parseDateTime (s : String) : Option\
-  \ DateTime := sorry\n\n/-- Convert timestamp to datetime string -/\n\ndef formatDateTime\
-  \ (dt : DateTime) : String := sorry\n\n/-- Find first warning threshold function\
-  \ signature -/"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def findFirstWarningThreshold (n m : Nat) (logs : List String)\
-  \ : String := sorry\n\ntheorem find_first_warning_result_format\n  (n m : Nat) (logs\
-  \ : List String)\n  (h1 : n > 0) (h2 : n ≤ 3600)\n  (h3 : m > 0) (h4 : m ≤ 10)\n\
-  \  (h5 : logs.length > 0) (h6 : logs.length ≤ 20) :\n  let result := findFirstWarningThreshold\
-  \ n m logs\n  result = \"-1\" ∨ (∃ dt : DateTime, formatDateTime dt = result) :=\
-  \ sorry\n"
-"vc-theorems": "theorem find_first_warning_result_in_logs\n  (n m : Nat) (logs : List\
-  \ String)\n  (h1 : n > 0) (h2 : n ≤ 3600)\n  (h3 : m > 0) (h4 : m ≤ 10)\n  (h5 :\
-  \ logs.length > 0) (h6 : logs.length ≤ 20) :\n  let result := findFirstWarningThreshold\
-  \ n m logs\n  result = \"-1\" ∨ ∃ log ∈ logs, result.isPrefixOf log := sorry\n\n\
-  \ntheorem find_first_warning_window_count\n  (n m : Nat) (logs : List String)\n\
-  \  (h1 : n > 0) (h2 : n ≤ 3600)\n  (h3 : m > 0) (h4 : m ≤ 10)\n  (h5 : logs.length\
-  \ > 0) (h6 : logs.length ≤ 20) :\n  let result := findFirstWarningThreshold n m\
-  \ logs\n  let resultDt := parseDateTime result\n  match resultDt with\n  | none\
-  \ => result = \"-1\"\n  | some dt =>\n    ∃ windowEvents : List String,\n    windowEvents.length\
-  \ ≥ m ∧\n    ∀ log ∈ windowEvents,\n    match parseDateTime (log.take 19) with\n\
-  \    | some logDt => logDt.toNat - dt.toNat ≤ n\n    | none => False := sorry\n\n\
-  \ntheorem find_first_warning_empty_cases\n  (logs : List String)\n  (h1 : logs.length\
-  \ > 0) (h2 : logs.length ≤ 20) :\n  findFirstWarningThreshold 0 1 logs = \"-1\"\
-  \ := sorry\n\n\ntheorem find_first_warning_impossible_cases\n  (n : Nat) (logs :\
-  \ List String)\n  (h1 : logs.length > 0) (h2 : logs.length ≤ 20) :\n  findFirstWarningThreshold\
-  \ n (logs.length + 1) logs = \"-1\" := sorry\n\n/--\ninfo: '2012-03-16 16:16:43'\n\
-  -/\n#guard_msgs in\n#eval find_first_warning_threshold 60 3 [\"2012-03-16 16:15:25:\
-  \ Disk size is\", \"2012-03-16 16:15:25: Network failute\", \"2012-03-16 16:16:29:\
-  \ Cant write varlog\", \"2012-03-16 16:16:42: Unable to start process\", \"2012-03-16\
-  \ 16:16:43: Disk size is too small\", \"2012-03-16 16:16:53: Timeout detected\"\
-  ]\n\n/--\ninfo: '-1'\n-/\n#guard_msgs in\n#eval find_first_warning_threshold 1 2\
-  \ [\"2012-03-16 23:59:59:Disk size\", \"2012-03-17 00:00:00: Network\", \"2012-03-17\
-  \ 00:00:01:Cant write varlog\"]\n\n/--\ninfo: '2012-03-17 00:00:00'\n-/\n#guard_msgs\
-  \ in\n#eval find_first_warning_threshold 2 2 [\"2012-03-16 23:59:59:Disk size is\
-  \ too sm\", \"2012-03-17 00:00:00:Network failute dete\", \"2012-03-17 00:00:01:Cant\
-  \ write varlogmysq\"]\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"
+vc-description: |-
+  You've got a list of program warning logs. Each record of a log stream is a string in this format:  "2012-MM-DD HH:MM:SS:MESSAGE" (without the quotes). 
+
+  String "MESSAGE" consists of spaces, uppercase and lowercase English letters and characters "!", ".", ",", "?". String "2012-MM-DD" determines a correct date in the year of 2012. String "HH:MM:SS" determines a correct time in the 24 hour format.
+
+  The described record of a log stream means that at a certain time the record has got some program warning (string "MESSAGE" contains the warning's description).
+
+  Your task is to print the first moment of time, when the number of warnings for the last n seconds was not less than m.
+
+
+  -----Input-----
+
+  The first line of the input contains two space-separated integers n and m (1 ≤ n, m ≤ 10000).
+
+  The second and the remaining lines of the input represent the log stream. The second line of the input contains the first record of the log stream, the third line contains the second record and so on. Each record of the log stream has the above described format. All records are given in the chronological order, that is, the warning records are given in the order, in which the warnings appeared in the program. 
+
+  It is guaranteed that the log has at least one record. It is guaranteed that the total length of all lines of the log stream doesn't exceed 5·10^6 (in particular, this means that the length of some line does not exceed 5·10^6 characters). It is guaranteed that all given dates and times are correct, and the string 'MESSAGE" in all records is non-empty.
+
+
+  -----Output-----
+
+  If there is no sought moment of time, print -1. Otherwise print a string in the format "2012-MM-DD HH:MM:SS" (without the quotes) — the first moment of time when the number of warnings for the last n seconds got no less than m.
+
+
+  -----Examples-----
+  Input
+  60 3
+  2012-03-16 16:15:25: Disk size is
+  2012-03-16 16:15:25: Network failute
+  2012-03-16 16:16:29: Cant write varlog
+  2012-03-16 16:16:42: Unable to start process
+  2012-03-16 16:16:43: Disk size is too small
+  2012-03-16 16:16:53: Timeout detected
+
+  Output
+  2012-03-16 16:16:43
+
+  Input
+  1 2
+  2012-03-16 23:59:59:Disk size
+  2012-03-17 00:00:00: Network
+  2012-03-17 00:00:01:Cant write varlog
+
+  Output
+  -1
+
+  Input
+  2 2
+  2012-03-16 23:59:59:Disk size is too sm
+  2012-03-17 00:00:00:Network failute dete
+  2012-03-17 00:00:01:Cant write varlogmysq
+
+  Output
+  2012-03-17 00:00:00
+vc-preamble: |-
+  import Imports.AllImports
+
+  def parseDateTime (s : String) : Option DateTime := sorry
+
+  /-- Convert timestamp to datetime string -/
+
+  def formatDateTime (dt : DateTime) : String := sorry
+
+  /-- Find first warning threshold function signature -/
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def findFirstWarningThreshold (n m : Nat) (logs : List String) : String := sorry
+
+  theorem find_first_warning_result_format
+    (n m : Nat) (logs : List String)
+    (h1 : n > 0) (h2 : n ≤ 3600)
+    (h3 : m > 0) (h4 : m ≤ 10)
+    (h5 : logs.length > 0) (h6 : logs.length ≤ 20) :
+    let result := findFirstWarningThreshold n m logs
+    result = "-1" ∨ (∃ dt : DateTime, formatDateTime dt = result) := sorry
+vc-theorems: |
+  theorem find_first_warning_result_in_logs
+    (n m : Nat) (logs : List String)
+    (h1 : n > 0) (h2 : n ≤ 3600)
+    (h3 : m > 0) (h4 : m ≤ 10)
+    (h5 : logs.length > 0) (h6 : logs.length ≤ 20) :
+    let result := findFirstWarningThreshold n m logs
+    result = "-1" ∨ ∃ log ∈ logs, result.isPrefixOf log := sorry
+
+
+  theorem find_first_warning_window_count
+    (n m : Nat) (logs : List String)
+    (h1 : n > 0) (h2 : n ≤ 3600)
+    (h3 : m > 0) (h4 : m ≤ 10)
+    (h5 : logs.length > 0) (h6 : logs.length ≤ 20) :
+    let result := findFirstWarningThreshold n m logs
+    let resultDt := parseDateTime result
+    match resultDt with
+    | none => result = "-1"
+    | some dt =>
+      ∃ windowEvents : List String,
+      windowEvents.length ≥ m ∧
+      ∀ log ∈ windowEvents,
+      match parseDateTime (log.take 19) with
+      | some logDt => logDt.toNat - dt.toNat ≤ n
+      | none => False := sorry
+
+
+  theorem find_first_warning_empty_cases
+    (logs : List String)
+    (h1 : logs.length > 0) (h2 : logs.length ≤ 20) :
+    findFirstWarningThreshold 0 1 logs = "-1" := sorry
+
+
+  theorem find_first_warning_impossible_cases
+    (n : Nat) (logs : List String)
+    (h1 : logs.length > 0) (h2 : logs.length ≤ 20) :
+    findFirstWarningThreshold n (logs.length + 1) logs = "-1" := sorry
+
+  /--
+  info: '2012-03-16 16:16:43'
+  -/
+  #guard_msgs in
+  #eval find_first_warning_threshold 60 3 ["2012-03-16 16:15:25: Disk size is", "2012-03-16 16:15:25: Network failute", "2012-03-16 16:16:29: Cant write varlog", "2012-03-16 16:16:42: Unable to start process", "2012-03-16 16:16:43: Disk size is too small", "2012-03-16 16:16:53: Timeout detected"]
+
+  /--
+  info: '-1'
+  -/
+  #guard_msgs in
+  #eval find_first_warning_threshold 1 2 ["2012-03-16 23:59:59:Disk size", "2012-03-17 00:00:00: Network", "2012-03-17 00:00:01:Cant write varlog"]
+
+  /--
+  info: '2012-03-17 00:00:00'
+  -/
+  #guard_msgs in
+  #eval find_first_warning_threshold 2 2 ["2012-03-16 23:59:59:Disk size is too sm", "2012-03-17 00:00:00:Network failute dete", "2012-03-17 00:00:01:Cant write varlogmysq"]
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded

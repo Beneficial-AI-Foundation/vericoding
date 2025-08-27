@@ -1,28 +1,91 @@
-"vc-description": "The set [1,2,3,...,n] contains a total of n! unique permutations.\n\
-  \nBy listing and labeling all of the permutations in order, we get the following\
-  \ sequence for n = 3:\n\n\n       \"123\"\n       \"132\"\n       \"213\"\n    \
-  \   \"231\"\n       \"312\"\n       \"321\"\n\n\nGiven n and k, return the kth permutation\
-  \ sequence.\n\nNote:\n\n\n       Given n will be between 1 and 9 inclusive.\n  \
-  \     Given k will be between 1 and n! inclusive.\n\n\nExample 1:\n\n\nInput: n\
-  \ = 3, k = 3\nOutput: \"213\"\n\n\nExample 2:\n\n\nInput: n = 4, k = 9\nOutput:\
-  \ \"2314\""
-"vc-preamble": "import Imports.AllImports\n\ndef factorial (n : Nat) : Nat :=\n  match\
-  \ n with\n  | 0 => 1\n  | n + 1 => (n + 1) * factorial n\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def get_permutation (n : Nat) (k : Nat) : String := sorry\n\ntheorem\
-  \ permutation_length (n : Nat) (k : Nat) (h1 : n ≥ 1) (h2 : n ≤ 9) \n    (h3 : k\
-  \ ≥ 1) (h4 : k ≤ factorial n) :\n  (get_permutation n k).length = n := sorry\n"
-"vc-theorems": "theorem permutation_digits_valid (n : Nat) (k : Nat) (h1 : n ≥ 1)\
-  \ (h2 : n ≤ 9)\n    (h3 : k ≥ 1) (h4 : k ≤ factorial n) :\n  ∀ (c : Char), c ∈ (get_permutation\
-  \ n k).data → \n    ∃ d : Nat, d < 10 ∧ d > 0 ∧ c = Char.ofNat (d + 48) := sorry\n\
-  \n\ntheorem permutation_unique_chars (n : Nat) (k : Nat) (h1 : n ≥ 1) (h2 : n ≤\
-  \ 9)\n    (h3 : k ≥ 1) (h4 : k ≤ factorial n) :\n  ∀ c, (get_permutation n k).data.count\
-  \ c ≤ 1 := sorry\n\n\ntheorem first_permutation (n : Nat) (h1 : n ≥ 1) (h2 : n ≤\
-  \ 9) :\n  get_permutation n 1 = String.mk (List.range n |>.map (fun i => Char.ofNat\
-  \ (i + 49))) := sorry\n\n\ntheorem last_permutation (n : Nat) (h1 : n ≥ 1) (h2 :\
-  \ n ≤ 9) :\n  get_permutation n (factorial n) = \n    String.mk (List.range n |>.map\
-  \ (fun i => Char.ofNat (n - i + 48))) := sorry\n\n/--\ninfo: '213'\n-/\n#guard_msgs\
-  \ in\n#eval get_permutation 3 3\n\n/--\ninfo: '2314'\n-/\n#guard_msgs in\n#eval\
-  \ get_permutation 4 9\n\n/--\ninfo: '21'\n-/\n#guard_msgs in\n#eval get_permutation\
-  \ 2 2\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  The set [1,2,3,...,n] contains a total of n! unique permutations.
+
+  By listing and labeling all of the permutations in order, we get the following sequence for n = 3:
+
+
+         "123"
+         "132"
+         "213"
+         "231"
+         "312"
+         "321"
+
+
+  Given n and k, return the kth permutation sequence.
+
+  Note:
+
+
+         Given n will be between 1 and 9 inclusive.
+         Given k will be between 1 and n! inclusive.
+
+
+  Example 1:
+
+
+  Input: n = 3, k = 3
+  Output: "213"
+
+
+  Example 2:
+
+
+  Input: n = 4, k = 9
+  Output: "2314"
+vc-preamble: |
+  import Imports.AllImports
+
+  def factorial (n : Nat) : Nat :=
+    match n with
+    | 0 => 1
+    | n + 1 => (n + 1) * factorial n
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def get_permutation (n : Nat) (k : Nat) : String := sorry
+
+  theorem permutation_length (n : Nat) (k : Nat) (h1 : n ≥ 1) (h2 : n ≤ 9) 
+      (h3 : k ≥ 1) (h4 : k ≤ factorial n) :
+    (get_permutation n k).length = n := sorry
+vc-theorems: |
+  theorem permutation_digits_valid (n : Nat) (k : Nat) (h1 : n ≥ 1) (h2 : n ≤ 9)
+      (h3 : k ≥ 1) (h4 : k ≤ factorial n) :
+    ∀ (c : Char), c ∈ (get_permutation n k).data → 
+      ∃ d : Nat, d < 10 ∧ d > 0 ∧ c = Char.ofNat (d + 48) := sorry
+
+
+  theorem permutation_unique_chars (n : Nat) (k : Nat) (h1 : n ≥ 1) (h2 : n ≤ 9)
+      (h3 : k ≥ 1) (h4 : k ≤ factorial n) :
+    ∀ c, (get_permutation n k).data.count c ≤ 1 := sorry
+
+
+  theorem first_permutation (n : Nat) (h1 : n ≥ 1) (h2 : n ≤ 9) :
+    get_permutation n 1 = String.mk (List.range n |>.map (fun i => Char.ofNat (i + 49))) := sorry
+
+
+  theorem last_permutation (n : Nat) (h1 : n ≥ 1) (h2 : n ≤ 9) :
+    get_permutation n (factorial n) = 
+      String.mk (List.range n |>.map (fun i => Char.ofNat (n - i + 48))) := sorry
+
+  /--
+  info: '213'
+  -/
+  #guard_msgs in
+  #eval get_permutation 3 3
+
+  /--
+  info: '2314'
+  -/
+  #guard_msgs in
+  #eval get_permutation 4 9
+
+  /--
+  info: '21'
+  -/
+  #guard_msgs in
+  #eval get_permutation 2 2
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

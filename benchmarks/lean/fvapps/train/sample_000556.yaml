@@ -1,34 +1,92 @@
-"vc-description": "The chef has a recipe he wishes to use for his guests,\nbut the\
-  \ recipe will make far more food than he can serve to the guests.\nThe chef therefore\
-  \ would like to make a reduced version of the recipe which has the same ratios of\
-  \ ingredients, but makes less food.\nThe chef, however, does not like fractions.\n\
-  The original recipe contains only whole numbers of ingredients,\nand the chef wants\
-  \ the reduced recipe to only contain whole numbers of ingredients as well.\nHelp\
-  \ the chef determine how much of each ingredient to use in order to make as little\
-  \ food as possible.\n\n-----Input-----\nInput will begin with an integer T, the\
-  \ number of test cases.\nEach test case consists of a single line.\nThe line begins\
-  \ with a positive integer N, the number of ingredients.\nN integers follow, each\
-  \ indicating the quantity of a particular ingredient that is used.\n\n-----Output-----\n\
-  For each test case, output exactly N space-separated integers on a line,\ngiving\
-  \ the quantity of each ingredient that the chef should use in order to make as little\
-  \ food as possible.\n\n-----Sample Input-----\n3\n2 4 4\n3 2 3 4\n4 3 15 9 6\n\n\
-  -----Sample Output-----\n1 1\n2 3 4\n1 5 3 2\n\n-----Constraints-----\nT≤100\n\n\
-  2≤N≤50\n\nAll ingredient quantities are between 1 and 1000, inclusive."
-"vc-preamble": "import Imports.AllImports\n\ndef reduce_recipe (ingredients : List\
-  \ Nat) : List Nat := sorry\n\ndef gcd (a b : Nat) : Nat := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def gcdl (l : List Nat) : Nat := sorry\n\ntheorem reduce_recipe_proportions\
-  \ (ingredients : List Nat)\n  (h : ∀ x ∈ ingredients, x > 0) :\n  let result :=\
-  \ reduce_recipe ingredients\n  ∀ i j, i < ingredients.length → j < ingredients.length\
-  \ →\n    ingredients[i]! * result[j]! = ingredients[j]! * result[i]! := sorry\n"
-"vc-theorems": "theorem reduce_recipe_gcd (ingredients : List Nat)\n  (h : ∀ x ∈ ingredients,\
-  \ x > 0) :\n  gcdl (reduce_recipe ingredients) = 1 := sorry\n\n\ntheorem gcd_divides\
-  \ (a b : Nat) (h₁ : a > 0) (h₂ : b > 0) :\n  let g := gcd a b\n  g ∣ a ∧ g ∣ b :=\
-  \ sorry\n\n\ntheorem gcd_commutative (a b : Nat) (h₁ : a > 0) (h₂ : b > 0) :\n \
-  \ gcd a b = gcd b a := sorry\n\n\ntheorem reduce_recipe_nat (ingredients : List\
-  \ Nat)\n  (h : ∀ x ∈ ingredients, x > 0) :\n  ∀ x, x ∈ reduce_recipe ingredients\
-  \ → x > 0 := sorry\n\n/--\ninfo: [1, 1]\n-/\n#guard_msgs in\n#eval reduce_recipe\
-  \ [4, 4]\n\n/--\ninfo: [2, 3, 4]\n-/\n#guard_msgs in\n#eval reduce_recipe [2, 3,\
-  \ 4]\n\n/--\ninfo: [1, 5, 3, 2]\n-/\n#guard_msgs in\n#eval reduce_recipe [3, 15,\
-  \ 9, 6]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  The chef has a recipe he wishes to use for his guests,
+  but the recipe will make far more food than he can serve to the guests.
+  The chef therefore would like to make a reduced version of the recipe which has the same ratios of ingredients, but makes less food.
+  The chef, however, does not like fractions.
+  The original recipe contains only whole numbers of ingredients,
+  and the chef wants the reduced recipe to only contain whole numbers of ingredients as well.
+  Help the chef determine how much of each ingredient to use in order to make as little food as possible.
+
+  -----Input-----
+  Input will begin with an integer T, the number of test cases.
+  Each test case consists of a single line.
+  The line begins with a positive integer N, the number of ingredients.
+  N integers follow, each indicating the quantity of a particular ingredient that is used.
+
+  -----Output-----
+  For each test case, output exactly N space-separated integers on a line,
+  giving the quantity of each ingredient that the chef should use in order to make as little food as possible.
+
+  -----Sample Input-----
+  3
+  2 4 4
+  3 2 3 4
+  4 3 15 9 6
+
+  -----Sample Output-----
+  1 1
+  2 3 4
+  1 5 3 2
+
+  -----Constraints-----
+  T≤100
+
+  2≤N≤50
+
+  All ingredient quantities are between 1 and 1000, inclusive.
+vc-preamble: |
+  import Imports.AllImports
+
+  def reduce_recipe (ingredients : List Nat) : List Nat := sorry
+
+  def gcd (a b : Nat) : Nat := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def gcdl (l : List Nat) : Nat := sorry
+
+  theorem reduce_recipe_proportions (ingredients : List Nat)
+    (h : ∀ x ∈ ingredients, x > 0) :
+    let result := reduce_recipe ingredients
+    ∀ i j, i < ingredients.length → j < ingredients.length →
+      ingredients[i]! * result[j]! = ingredients[j]! * result[i]! := sorry
+vc-theorems: |
+  theorem reduce_recipe_gcd (ingredients : List Nat)
+    (h : ∀ x ∈ ingredients, x > 0) :
+    gcdl (reduce_recipe ingredients) = 1 := sorry
+
+
+  theorem gcd_divides (a b : Nat) (h₁ : a > 0) (h₂ : b > 0) :
+    let g := gcd a b
+    g ∣ a ∧ g ∣ b := sorry
+
+
+  theorem gcd_commutative (a b : Nat) (h₁ : a > 0) (h₂ : b > 0) :
+    gcd a b = gcd b a := sorry
+
+
+  theorem reduce_recipe_nat (ingredients : List Nat)
+    (h : ∀ x ∈ ingredients, x > 0) :
+    ∀ x, x ∈ reduce_recipe ingredients → x > 0 := sorry
+
+  /--
+  info: [1, 1]
+  -/
+  #guard_msgs in
+  #eval reduce_recipe [4, 4]
+
+  /--
+  info: [2, 3, 4]
+  -/
+  #guard_msgs in
+  #eval reduce_recipe [2, 3, 4]
+
+  /--
+  info: [1, 5, 3, 2]
+  -/
+  #guard_msgs in
+  #eval reduce_recipe [3, 15, 9, 6]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

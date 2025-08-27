@@ -1,49 +1,97 @@
-"vc-description": "A sophomore Computer Science student is frustrated with boring\
-  \ college lectures. Professor X agreed to give him some questions; if the student\
-  \ answers all questions correctly, then minimum attendance criteria will not apply\
-  \ to him.\nProfessor X chooses a sequence $A_1, A_2, \\ldots, A_N$ and asks $Q$\
-  \ queries. In each query, the student is given an integer $P$; he has to construct\
-  \ a sequence $B_1, B_2, \\ldots, B_N$, where $P \\oplus A_i = B_i$ for each valid\
-  \ $i$ ($\\oplus$ denotes bitwise XOR), and then he has to find the number of elements\
-  \ of this sequence which have an even number of $1$-s in the binary representation\
-  \ and the number of elements with an odd number of $1$-s in the binary representation.\
-  \ Help him answer the queries.\n\n-----Input-----\n- The first line of the input\
-  \ contains a single integer $T$ denoting the number of test cases. The description\
-  \ of $T$ test cases follows.\n- The first line of each test case contains two space-separated\
-  \ integers $N$ and $Q$.\n- The second line contains $N$ space-separated integers\
-  \ $A_1, A_2, \\ldots, A_N$.\n- $Q$ lines follow. Each of these lines contains a\
-  \ single integer $P$ describing a query.\n\n-----Output-----\nFor each query, print\
-  \ a single line containing two space-separated integers ― the number of elements\
-  \ with an even number of $1$-s and the number of elements with an odd number of\
-  \ $1$-s in the binary representation.\n\n-----Constraints-----\n- $1 \\le T \\le\
-  \ 100$\n- $1 \\le N, Q \\le 10^5$\n- $ T \\cdot (N+Q) \\leq 4 \\cdot 10^6 $\n- $1\
-  \ \\le A_i \\le 10^8$ for each valid $i$\n- $1 \\le P \\le 10^5$\nThe input/output\
-  \ is quite large, please use fast reading and writing methods.\n\n-----Subtasks-----\n\
-  Subtask #1 (30 points): $N, Q \\le 1,000$\nSubtask #2 (70 points): original constraints\n\
-  \n-----Example Input-----\n1\n6 1\n4 2 15 9 8 8\n3\n\n-----Example Output-----\n\
-  2 4\n\n-----Explanation-----\nExample case 1: The elements of the sequence $B$ are\
-  \ $P \\oplus 4 = 7$, $P \\oplus 2 = 1$, $P \\oplus 15 = 12$, $P \\oplus 9 = 10$,\
-  \ $P \\oplus 8 = 11$ and $P \\oplus 8 = 11$. The elements which have an even number\
-  \ of $1$-s in the binary representation are $12$ and $10$, while the elements with\
-  \ an odd number of $1$-s are $7$, $1$, $11$ and $11$."
-"vc-preamble": "import Imports.AllImports\n\ndef solve_xor_parity (n m : Nat) (arr\
-  \ queries : List Nat) : List String :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def popCount (n : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem solve_xor_parity_output_format {n m : Nat} {arr queries :\
-  \ List Nat}\n    (h1 : arr.length > 0) (h2 : queries.length > 0)\n    (h3 : arr.length\
-  \ = n) (h4 : queries.length = m) :\n    let result := solve_xor_parity n m arr queries\n\
-  \    result.length = queries.length ∧ \n    ∀ r ∈ result,\n      ∃ evens odds :\
-  \ Nat,\n        r = toString evens ++ \" \" ++ toString odds ∧\n        evens +\
-  \ odds = arr.length :=\n  sorry\n\n\ntheorem solve_xor_parity_idempotent {n : Nat}\
-  \ {arr : List Nat} {query : Nat}\n    (h : arr.length > 0) (h2 : arr.length = n)\
-  \ :\n    solve_xor_parity n 1 arr [query] = solve_xor_parity n 1 arr [query] :=\n\
-  \  sorry\n\n\ntheorem solve_xor_parity_singleton {x query : Nat} :\n    let result\
-  \ := solve_xor_parity 1 1 [x] [query]\n    let r := result[0]!\n    let evens :=\
-  \ (r.splitOn \" \")[0]!.toNat!\n    let odds := (r.splitOn \" \")[1]!.toNat!\n \
-  \   evens + odds = 1 ∧\n    (if (popCount (x.xor query)) % 2 = 0\n     then evens\
-  \ = 1 ∧ odds = 0\n     else evens = 0 ∧ odds = 1) :=\n  sorry\n\n/--\ninfo: ['2\
-  \ 4']\n-/\n#guard_msgs in\n#eval solve_xor_parity 6 1 [4, 2, 15, 9, 8, 8] [3]\n\n\
-  /--\ninfo: ['0 2']\n-/\n#guard_msgs in\n#eval solve_xor_parity 2 1 [1, 2] [3]\n\n\
-  /--\ninfo: ['0 1']\n-/\n#guard_msgs in\n#eval solve_xor_parity 1 1 [5] [7]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  A sophomore Computer Science student is frustrated with boring college lectures. Professor X agreed to give him some questions; if the student answers all questions correctly, then minimum attendance criteria will not apply to him.
+  Professor X chooses a sequence $A_1, A_2, \ldots, A_N$ and asks $Q$ queries. In each query, the student is given an integer $P$; he has to construct a sequence $B_1, B_2, \ldots, B_N$, where $P \oplus A_i = B_i$ for each valid $i$ ($\oplus$ denotes bitwise XOR), and then he has to find the number of elements of this sequence which have an even number of $1$-s in the binary representation and the number of elements with an odd number of $1$-s in the binary representation. Help him answer the queries.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains two space-separated integers $N$ and $Q$.
+  - The second line contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
+  - $Q$ lines follow. Each of these lines contains a single integer $P$ describing a query.
+
+  -----Output-----
+  For each query, print a single line containing two space-separated integers ― the number of elements with an even number of $1$-s and the number of elements with an odd number of $1$-s in the binary representation.
+
+  -----Constraints-----
+  - $1 \le T \le 100$
+  - $1 \le N, Q \le 10^5$
+  - $ T \cdot (N+Q) \leq 4 \cdot 10^6 $
+  - $1 \le A_i \le 10^8$ for each valid $i$
+  - $1 \le P \le 10^5$
+  The input/output is quite large, please use fast reading and writing methods.
+
+  -----Subtasks-----
+  Subtask #1 (30 points): $N, Q \le 1,000$
+  Subtask #2 (70 points): original constraints
+
+  -----Example Input-----
+  1
+  6 1
+  4 2 15 9 8 8
+  3
+
+  -----Example Output-----
+  2 4
+
+  -----Explanation-----
+  Example case 1: The elements of the sequence $B$ are $P \oplus 4 = 7$, $P \oplus 2 = 1$, $P \oplus 15 = 12$, $P \oplus 9 = 10$, $P \oplus 8 = 11$ and $P \oplus 8 = 11$. The elements which have an even number of $1$-s in the binary representation are $12$ and $10$, while the elements with an odd number of $1$-s are $7$, $1$, $11$ and $11$.
+vc-preamble: |
+  import Imports.AllImports
+
+  def solve_xor_parity (n m : Nat) (arr queries : List Nat) : List String :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def popCount (n : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem solve_xor_parity_output_format {n m : Nat} {arr queries : List Nat}
+      (h1 : arr.length > 0) (h2 : queries.length > 0)
+      (h3 : arr.length = n) (h4 : queries.length = m) :
+      let result := solve_xor_parity n m arr queries
+      result.length = queries.length ∧ 
+      ∀ r ∈ result,
+        ∃ evens odds : Nat,
+          r = toString evens ++ " " ++ toString odds ∧
+          evens + odds = arr.length :=
+    sorry
+
+
+  theorem solve_xor_parity_idempotent {n : Nat} {arr : List Nat} {query : Nat}
+      (h : arr.length > 0) (h2 : arr.length = n) :
+      solve_xor_parity n 1 arr [query] = solve_xor_parity n 1 arr [query] :=
+    sorry
+
+
+  theorem solve_xor_parity_singleton {x query : Nat} :
+      let result := solve_xor_parity 1 1 [x] [query]
+      let r := result[0]!
+      let evens := (r.splitOn " ")[0]!.toNat!
+      let odds := (r.splitOn " ")[1]!.toNat!
+      evens + odds = 1 ∧
+      (if (popCount (x.xor query)) % 2 = 0
+       then evens = 1 ∧ odds = 0
+       else evens = 0 ∧ odds = 1) :=
+    sorry
+
+  /--
+  info: ['2 4']
+  -/
+  #guard_msgs in
+  #eval solve_xor_parity 6 1 [4, 2, 15, 9, 8, 8] [3]
+
+  /--
+  info: ['0 2']
+  -/
+  #guard_msgs in
+  #eval solve_xor_parity 2 1 [1, 2] [3]
+
+  /--
+  info: ['0 1']
+  -/
+  #guard_msgs in
+  #eval solve_xor_parity 1 1 [5] [7]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

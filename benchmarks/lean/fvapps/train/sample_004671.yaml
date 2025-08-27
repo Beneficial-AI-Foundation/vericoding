@@ -1,24 +1,71 @@
-"vc-description": "### Task\n\nYour main goal is to find two numbers(` >= 0 `), greatest\
-  \ common divisor of wich will be `divisor` and number of iterations, taken by Euclids\
-  \ algorithm will be `iterations`.\n\n### Euclid's GCD\n\n```CSharp\nBigInteger FindGCD(BigInteger\
-  \ a, BigInteger b) {\n  // Swaping `a` and `b`\n  if (a < b) {\n    a += b;\n  \
-  \  b = a - b;\n    a = a - b;\n  }\n  \n  while (b > 0) {\n    // Iteration of calculation\n\
-  \    BigInteger c = a % b;\n    a = b;\n    b = c;\n  }\n  \n  // `a` - is greates\
-  \ common divisor now\n  return a;\n}\n```\n\n### Restrictions\n\nYour program should\
-  \ work with numbers\n\n`0 < divisor < 1000`\n\n`0 <= iterations <= 50'000`"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def gcd_iterations (a b : Int) : Int × Int := sorry\n\ndef find_initial_numbers\
-  \ (divisor iterations : Int) : Int × Int := sorry\n"
-"vc-theorems": "theorem find_initial_numbers_positive (divisor iterations : Int)\n\
-  \  (h1 : divisor > 0) (h2 : iterations ≥ 0) :\n  let (a, b) := find_initial_numbers\
-  \ divisor iterations\n  a ≥ 0 ∧ b ≥ 0 := sorry\n\n\ntheorem find_initial_numbers_correct\
-  \ (divisor iterations : Int) \n  (h1 : divisor > 0) (h2 : iterations ≥ 0) :\n  let\
-  \ (a, b) := find_initial_numbers divisor iterations\n  let (gcd, iters) := gcd_iterations\
-  \ a b\n  gcd = divisor ∧ iters = iterations := sorry\n\n\ntheorem find_initial_numbers_zero_case\
-  \ (divisor : Int)\n  (h : divisor > 0) :\n  let (a, b) := find_initial_numbers divisor\
-  \ 0\n  b = 0 ∧ a = divisor := sorry\n\n\ntheorem find_initial_numbers_positive_case\
-  \ (divisor iterations : Int)\n  (h1 : divisor > 0) (h2 : iterations > 0) :\n  let\
-  \ (a, b) := find_initial_numbers divisor iterations\n  a ≥ divisor ∧ b ≥ divisor\
-  \ := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  ### Task
+
+  Your main goal is to find two numbers(` >= 0 `), greatest common divisor of wich will be `divisor` and number of iterations, taken by Euclids algorithm will be `iterations`.
+
+  ### Euclid's GCD
+
+  ```CSharp
+  BigInteger FindGCD(BigInteger a, BigInteger b) {
+    // Swaping `a` and `b`
+    if (a < b) {
+      a += b;
+      b = a - b;
+      a = a - b;
+    }
+    
+    while (b > 0) {
+      // Iteration of calculation
+      BigInteger c = a % b;
+      a = b;
+      b = c;
+    }
+    
+    // `a` - is greates common divisor now
+    return a;
+  }
+  ```
+
+  ### Restrictions
+
+  Your program should work with numbers
+
+  `0 < divisor < 1000`
+
+  `0 <= iterations <= 50'000`
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def gcd_iterations (a b : Int) : Int × Int := sorry
+
+  def find_initial_numbers (divisor iterations : Int) : Int × Int := sorry
+vc-theorems: |-
+  theorem find_initial_numbers_positive (divisor iterations : Int)
+    (h1 : divisor > 0) (h2 : iterations ≥ 0) :
+    let (a, b) := find_initial_numbers divisor iterations
+    a ≥ 0 ∧ b ≥ 0 := sorry
+
+
+  theorem find_initial_numbers_correct (divisor iterations : Int) 
+    (h1 : divisor > 0) (h2 : iterations ≥ 0) :
+    let (a, b) := find_initial_numbers divisor iterations
+    let (gcd, iters) := gcd_iterations a b
+    gcd = divisor ∧ iters = iterations := sorry
+
+
+  theorem find_initial_numbers_zero_case (divisor : Int)
+    (h : divisor > 0) :
+    let (a, b) := find_initial_numbers divisor 0
+    b = 0 ∧ a = divisor := sorry
+
+
+  theorem find_initial_numbers_positive_case (divisor iterations : Int)
+    (h1 : divisor > 0) (h2 : iterations > 0) :
+    let (a, b) := find_initial_numbers divisor iterations
+    a ≥ divisor ∧ b ≥ divisor := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

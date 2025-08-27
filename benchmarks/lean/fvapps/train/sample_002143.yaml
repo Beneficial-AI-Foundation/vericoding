@@ -1,38 +1,89 @@
-"vc-description": "There are N robots and M exits on a number line.\nThe N + M coordinates\
-  \ of these are all integers and all distinct.\nFor each i (1 \\leq i \\leq N), the\
-  \ coordinate of the i-th robot from the left is x_i.\nAlso, for each j (1 \\leq\
-  \ j \\leq M), the coordinate of the j-th exit from the left is y_j.\nSnuke can repeatedly\
-  \ perform the following two kinds of operations in any order to move all the robots\
-  \ simultaneously:\n - Increment the coordinates of all the robots on the number\
-  \ line by 1.\n - Decrement the coordinates of all the robots on the number line\
-  \ by 1.\nEach robot will disappear from the number line when its position coincides\
-  \ with that of an exit, going through that exit.\nSnuke will continue performing\
-  \ operations until all the robots disappear.\nWhen all the robots disappear, how\
-  \ many combinations of exits can be used by the robots?\nFind the count modulo 10^9\
-  \ + 7.\nHere, two combinations of exits are considered different when there is a\
-  \ robot that used different exits in those two combinations.\n\n-----Constraints-----\n\
-  \ - 1 \\leq N, M \\leq 10^5\n - 1 \\leq x_1 < x_2 < ... < x_N \\leq 10^9\n - 1 \\\
-  leq y_1 < y_2 < ... < y_M \\leq 10^9\n - All given coordinates are integers.\n -\
-  \ All given coordinates are distinct.\n\n-----Input-----\nInput is given from Standard\
-  \ Input in the following format:\nN M\nx_1 x_2 ... x_N\ny_1 y_2 ... y_M\n\n-----Output-----\n\
-  Print the number of the combinations of exits that can be used by the robots when\
-  \ all the robots disappear, modulo 10^9 + 7.\n\n-----Sample Input-----\n2 2\n2 3\n\
-  1 4\n\n-----Sample Output-----\n3\n\nThe i-th robot from the left will be called\
-  \ Robot i, and the j-th exit from the left will be called Exit j.\nThere are three\
-  \ possible combinations of exits (the exit used by Robot 1, the exit used by Robot\
-  \ 2) as follows:\n - (Exit 1, Exit 1)\n - (Exit 1, Exit 2)\n - (Exit 2, Exit 2)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_robot_exits (N M : Nat) (robots exits : List Nat) : Nat\
-  \ := sorry\n\ntheorem basic_case_2x2 :\n  solve_robot_exits 2 2 [2, 3] [1, 4] =\
-  \ 3 := sorry \n"
-"vc-theorems": "theorem basic_case_3x4 :\n  solve_robot_exits 3 4 [2, 5, 10] [1, 3,\
-  \ 7, 13] = 8 := sorry\n\n\ntheorem simple_case_1x2 :\n  solve_robot_exits 1 2 [2]\
-  \ [1, 3] = 2 := sorry\n\n\ntheorem solve_robot_exits_spec {N M : Nat} {robots exits\
-  \ : List Nat}\n  (h1 : N > 0)\n  (h2 : M > 0) \n  (h3 : ∀ r ∈ robots, r ≤ N * M)\n\
-  \  (h4 : ∀ e ∈ exits, e ≤ N * M) :\n  solve_robot_exits N M robots exits ≥ 0 :=\
-  \ sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_robot_exits 2 2 [2, 3]\
-  \ [1, 4]\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval solve_robot_exits 3 4 [2, 5,\
-  \ 10] [1, 3, 7, 13]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_robot_exits\
-  \ 4 1 [1, 2, 4, 5] [3]\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"
+vc-description: |-
+  There are N robots and M exits on a number line.
+  The N + M coordinates of these are all integers and all distinct.
+  For each i (1 \leq i \leq N), the coordinate of the i-th robot from the left is x_i.
+  Also, for each j (1 \leq j \leq M), the coordinate of the j-th exit from the left is y_j.
+  Snuke can repeatedly perform the following two kinds of operations in any order to move all the robots simultaneously:
+   - Increment the coordinates of all the robots on the number line by 1.
+   - Decrement the coordinates of all the robots on the number line by 1.
+  Each robot will disappear from the number line when its position coincides with that of an exit, going through that exit.
+  Snuke will continue performing operations until all the robots disappear.
+  When all the robots disappear, how many combinations of exits can be used by the robots?
+  Find the count modulo 10^9 + 7.
+  Here, two combinations of exits are considered different when there is a robot that used different exits in those two combinations.
+
+  -----Constraints-----
+   - 1 \leq N, M \leq 10^5
+   - 1 \leq x_1 < x_2 < ... < x_N \leq 10^9
+   - 1 \leq y_1 < y_2 < ... < y_M \leq 10^9
+   - All given coordinates are integers.
+   - All given coordinates are distinct.
+
+  -----Input-----
+  Input is given from Standard Input in the following format:
+  N M
+  x_1 x_2 ... x_N
+  y_1 y_2 ... y_M
+
+  -----Output-----
+  Print the number of the combinations of exits that can be used by the robots when all the robots disappear, modulo 10^9 + 7.
+
+  -----Sample Input-----
+  2 2
+  2 3
+  1 4
+
+  -----Sample Output-----
+  3
+
+  The i-th robot from the left will be called Robot i, and the j-th exit from the left will be called Exit j.
+  There are three possible combinations of exits (the exit used by Robot 1, the exit used by Robot 2) as follows:
+   - (Exit 1, Exit 1)
+   - (Exit 1, Exit 2)
+   - (Exit 2, Exit 2)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_robot_exits (N M : Nat) (robots exits : List Nat) : Nat := sorry
+
+  theorem basic_case_2x2 :
+    solve_robot_exits 2 2 [2, 3] [1, 4] = 3 := sorry 
+vc-theorems: |
+  theorem basic_case_3x4 :
+    solve_robot_exits 3 4 [2, 5, 10] [1, 3, 7, 13] = 8 := sorry
+
+
+  theorem simple_case_1x2 :
+    solve_robot_exits 1 2 [2] [1, 3] = 2 := sorry
+
+
+  theorem solve_robot_exits_spec {N M : Nat} {robots exits : List Nat}
+    (h1 : N > 0)
+    (h2 : M > 0) 
+    (h3 : ∀ r ∈ robots, r ≤ N * M)
+    (h4 : ∀ e ∈ exits, e ≤ N * M) :
+    solve_robot_exits N M robots exits ≥ 0 := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve_robot_exits 2 2 [2, 3] [1, 4]
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval solve_robot_exits 3 4 [2, 5, 10] [1, 3, 7, 13]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_robot_exits 4 1 [1, 2, 4, 5] [3]
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded

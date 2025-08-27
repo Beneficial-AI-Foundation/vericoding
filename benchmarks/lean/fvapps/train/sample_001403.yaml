@@ -1,34 +1,96 @@
-"vc-description": "It's Christmas time and Santa is in town. There are N children\
-  \ each having a bag with a mission to fill in as many toffees as possible. They\
-  \ are accompanied by a teacher whose ulterior motive is to test their counting skills.\
-  \ The toffees are of different brands (denoted by lowercase letters a-z). Santa\
-  \ picks up a child numbered m and gives n toffees of brand p to the child.\n\nThe\
-  \ teacher wishes to ask the children to calculate the number of toffees there are\
-  \ of a particular brand amongst a given range of children. Formally, there are 2\
-  \ queries:\n\nInput:\n\nFirst line consists of Q queries.\n\nEach line follows and\
-  \ consists of four space separated values:\n\nType 1: It is of the form 1 m x p\n\
-  \n1 is the type no,\"m\" is the child to which \"x\" toffees of a brand \"p\" are\
-  \ given\n\nType 2: It is of the form 2 m n p\nwhere m - n is the range of children\
-  \ (inclusive) being queried for brand p\n\nOutput:\n\nReport the sum of toffees\
-  \ of brand p within the given range m - n for each query of type 2\n\nConstraints:\n\
-  \n1 <= Q <= 10^5\n\n1 <= N <= 10^6\n\n1 <= m <= n <= 10^6\n\n1 <= x <= 10^6\n\n\
-  all brand of toffees are lowercase letters\n\nSubtask 1: (30 points)\n\n1 <= Q <=\
-  \ 10^3\n\n1 <= m <= n <= 10^3\n\n1 <= x <= 10^3\n\nSubtask 2: (70 points)\n\nOriginal\
-  \ Constraints\n\nSample Input:\n\n5\n\n1 3 4 a\n\n1 5 8 a\n\n1 1 7 x\n\n2 1 6 a\n\
-  \n2 3 6 y\n\nSample Output:\n\n12\n\n0\n\nIn first case, there are two children\
-  \ between 3 and 5 between 0 - 6  having sum (4 + 8)\n\nThere's no toffee for y in\
-  \ given range"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def process_toffee_queries (queries : List String) : List Nat :=\
-  \ sorry\n\ntheorem process_toffee_queries_valid_output (queries : List String) :\n\
-  \  let results := process_toffee_queries queries\n  -- Results length equals number\
-  \ of type 2 queries\n  results.length = (queries.filter (fun q => q.take 1 = \"\
-  2\")).length ∧ \n  -- All results are non-negative\n  results.all (fun r => r ≥\
-  \ 0) := by\n  sorry\n"
-"vc-theorems": "theorem process_toffee_queries_accumulative \n  (type1_queries : List\
-  \ String)\n  (h1 : type1_queries.all (fun q => q.take 1 = \"1\")) :\n  let all_queries\
-  \ := type1_queries ++ [\"2 1 5 a\"]\n  let results := process_toffee_queries all_queries\n\
-  \  -- Last result equals count of type 1 queries\n  results.getLast! = type1_queries.length\
-  \ := by\n  sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  It's Christmas time and Santa is in town. There are N children each having a bag with a mission to fill in as many toffees as possible. They are accompanied by a teacher whose ulterior motive is to test their counting skills. The toffees are of different brands (denoted by lowercase letters a-z). Santa picks up a child numbered m and gives n toffees of brand p to the child.
+
+  The teacher wishes to ask the children to calculate the number of toffees there are of a particular brand amongst a given range of children. Formally, there are 2 queries:
+
+  Input:
+
+  First line consists of Q queries.
+
+  Each line follows and consists of four space separated values:
+
+  Type 1: It is of the form 1 m x p
+
+  1 is the type no,"m" is the child to which "x" toffees of a brand "p" are given
+
+  Type 2: It is of the form 2 m n p
+  where m - n is the range of children (inclusive) being queried for brand p
+
+  Output:
+
+  Report the sum of toffees of brand p within the given range m - n for each query of type 2
+
+  Constraints:
+
+  1 <= Q <= 10^5
+
+  1 <= N <= 10^6
+
+  1 <= m <= n <= 10^6
+
+  1 <= x <= 10^6
+
+  all brand of toffees are lowercase letters
+
+  Subtask 1: (30 points)
+
+  1 <= Q <= 10^3
+
+  1 <= m <= n <= 10^3
+
+  1 <= x <= 10^3
+
+  Subtask 2: (70 points)
+
+  Original Constraints
+
+  Sample Input:
+
+  5
+
+  1 3 4 a
+
+  1 5 8 a
+
+  1 1 7 x
+
+  2 1 6 a
+
+  2 3 6 y
+
+  Sample Output:
+
+  12
+
+  0
+
+  In first case, there are two children between 3 and 5 between 0 - 6  having sum (4 + 8)
+
+  There's no toffee for y in given range
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def process_toffee_queries (queries : List String) : List Nat := sorry
+
+  theorem process_toffee_queries_valid_output (queries : List String) :
+    let results := process_toffee_queries queries
+    -- Results length equals number of type 2 queries
+    results.length = (queries.filter (fun q => q.take 1 = "2")).length ∧ 
+    -- All results are non-negative
+    results.all (fun r => r ≥ 0) := by
+    sorry
+vc-theorems: |-
+  theorem process_toffee_queries_accumulative 
+    (type1_queries : List String)
+    (h1 : type1_queries.all (fun q => q.take 1 = "1")) :
+    let all_queries := type1_queries ++ ["2 1 5 a"]
+    let results := process_toffee_queries all_queries
+    -- Last result equals count of type 1 queries
+    results.getLast! = type1_queries.length := by
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

@@ -1,20 +1,62 @@
-"vc-description": "Write a function that calculates the *least common multiple* of\
-  \ its arguments; each argument is assumed to be a non-negative integer. In the case\
-  \ that there are no arguments (or the provided array in compiled languages is empty),\
-  \ return `1`.\n\n~~~if:objc\nNOTE: The first (and only named) argument of the function\
-  \ `n` specifies the number of arguments in the variable-argument list. Do **not**\
-  \ take `n` into account when computing the LCM of the numbers.\n~~~"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def lcm : List Nat → Nat\n| [] => 1 \n| _  => sorry\n"
-"vc-theorems": "theorem lcm_self_identity (n : Nat) : n > 0 → lcm [n, n] = n := by\n\
-  \  sorry\n\n\ntheorem lcm_commutative (a b : Nat) : a > 0 → b > 0 → lcm [a, b] =\
-  \ lcm [b, a] := by\n  sorry \n\n\ntheorem lcm_divides (a b : Nat) : a > 0 → b >\
-  \ 0 → \n  (lcm [a, b] % a = 0 ∧ lcm [a, b] % b = 0) := by\n  sorry\n\n\ntheorem\
-  \ lcm_empty : lcm [] = 1 := by\n  sorry\n\n\ntheorem lcm_associative (a b c : Nat)\
-  \ : a > 0 → b > 0 → c > 0 →\n  lcm [a, lcm [b, c]] = lcm [lcm [a, b], c] := by\n\
-  \  sorry\n\n\ntheorem lcm_minimum_bound {n : Nat} (nums : List Nat) :\n  (∀ x ∈\
-  \ nums, x > 0) → n ∈ nums → lcm nums ≥ n := by\n  sorry\n\n/--\ninfo: 10\n-/\n#guard_msgs\
-  \ in\n#eval lcm 2 5\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval lcm 2 3 4\n\n/--\n\
-  info: 1\n-/\n#guard_msgs in\n#eval lcm \n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function that calculates the *least common multiple* of its arguments; each argument is assumed to be a non-negative integer. In the case that there are no arguments (or the provided array in compiled languages is empty), return `1`.
+
+  ~~~if:objc
+  NOTE: The first (and only named) argument of the function `n` specifies the number of arguments in the variable-argument list. Do **not** take `n` into account when computing the LCM of the numbers.
+  ~~~
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def lcm : List Nat → Nat
+  | [] => 1 
+  | _  => sorry
+vc-theorems: |
+  theorem lcm_self_identity (n : Nat) : n > 0 → lcm [n, n] = n := by
+    sorry
+
+
+  theorem lcm_commutative (a b : Nat) : a > 0 → b > 0 → lcm [a, b] = lcm [b, a] := by
+    sorry 
+
+
+  theorem lcm_divides (a b : Nat) : a > 0 → b > 0 → 
+    (lcm [a, b] % a = 0 ∧ lcm [a, b] % b = 0) := by
+    sorry
+
+
+  theorem lcm_empty : lcm [] = 1 := by
+    sorry
+
+
+  theorem lcm_associative (a b c : Nat) : a > 0 → b > 0 → c > 0 →
+    lcm [a, lcm [b, c]] = lcm [lcm [a, b], c] := by
+    sorry
+
+
+  theorem lcm_minimum_bound {n : Nat} (nums : List Nat) :
+    (∀ x ∈ nums, x > 0) → n ∈ nums → lcm nums ≥ n := by
+    sorry
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval lcm 2 5
+
+  /--
+  info: 12
+  -/
+  #guard_msgs in
+  #eval lcm 2 3 4
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval lcm 
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,23 +1,54 @@
-"vc-description": "Create a __moreZeros__ function which will __receive a string__\
-  \ for input, and __return an array__ (or null terminated string in C) containing\
-  \ only the characters from that string whose __binary representation of its ASCII\
-  \ value__ consists of _more zeros than ones_. \n\nYou should __remove any duplicate\
-  \ characters__, keeping the __first occurence__ of any such duplicates, so they\
-  \ are in the __same order__ in the final array as they first appeared in the input\
-  \ string.\n\nExamples\n\n            \nAll input will be valid strings of length\
-  \ > 0. Leading zeros in binary should not be counted."
-"vc-preamble": "import Imports.AllImports\n\ndef binary_zeros_count (c : Char) : Nat\
-  \ :=\n  sorry\n\n\ndef binary_ones_count (c : Char) : Nat := \n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def more_zeros (s : String) : List Char :=\n  sorry\n"
-"vc-theorems": "theorem more_zeros_results_unique (s : String) : \n  let result :=\
-  \ more_zeros s\n  (List.length result = List.length (List.eraseDups result)) ∧ \n\
-  \  (∀ c ∈ result, s.data.contains c) := by\n  sorry\n\n\ntheorem more_zeros_binary_property\
-  \ (s : String) :\n  let result := more_zeros s \n  ∀ c ∈ result, binary_zeros_count\
-  \ c > binary_ones_count c := by \n  sorry\n\n\ntheorem more_zeros_inclusion_complete\
-  \ (s : String) :\n  let result := more_zeros s\n  ∀ c ∈ s.data, \n    binary_zeros_count\
-  \ c > binary_ones_count c → \n    c ∉ result → \n    (s.data.filter (· = c)).length\
-  \ > 1 := by\n  sorry\n\n\ntheorem more_zeros_ascii_printable (s : String) :\n  let\
-  \ result := more_zeros s\n  ∀ c ∈ result, 32 ≤ c.toNat ∧ c.toNat ≤ 127 := by\n \
-  \ sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Create a __moreZeros__ function which will __receive a string__ for input, and __return an array__ (or null terminated string in C) containing only the characters from that string whose __binary representation of its ASCII value__ consists of _more zeros than ones_. 
+
+  You should __remove any duplicate characters__, keeping the __first occurence__ of any such duplicates, so they are in the __same order__ in the final array as they first appeared in the input string.
+
+  Examples
+
+              
+  All input will be valid strings of length > 0. Leading zeros in binary should not be counted.
+vc-preamble: |
+  import Imports.AllImports
+
+  def binary_zeros_count (c : Char) : Nat :=
+    sorry
+
+
+  def binary_ones_count (c : Char) : Nat := 
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def more_zeros (s : String) : List Char :=
+    sorry
+vc-theorems: |-
+  theorem more_zeros_results_unique (s : String) : 
+    let result := more_zeros s
+    (List.length result = List.length (List.eraseDups result)) ∧ 
+    (∀ c ∈ result, s.data.contains c) := by
+    sorry
+
+
+  theorem more_zeros_binary_property (s : String) :
+    let result := more_zeros s 
+    ∀ c ∈ result, binary_zeros_count c > binary_ones_count c := by 
+    sorry
+
+
+  theorem more_zeros_inclusion_complete (s : String) :
+    let result := more_zeros s
+    ∀ c ∈ s.data, 
+      binary_zeros_count c > binary_ones_count c → 
+      c ∉ result → 
+      (s.data.filter (· = c)).length > 1 := by
+    sorry
+
+
+  theorem more_zeros_ascii_printable (s : String) :
+    let result := more_zeros s
+    ∀ c ∈ result, 32 ≤ c.toNat ∧ c.toNat ≤ 127 := by
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

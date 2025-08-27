@@ -1,37 +1,108 @@
-"vc-description": "Kabir Singh is playing a game on the non-negative side of  x-axis.\
-  \ It takes him $1 second$ to reach from Pth position to (P−1)th position or (P+1)th\
-  \ position. \nKabir never goes to the negative side and also doesn't stop at any\
-  \ moment of time.\nThe movement can be defined as  : \n- At the beginning he is\
-  \ at $x=0$ , at time $0$\n- During the first round, he moves towards $x=1$ and comes\
-  \ back to the $x=0$ position.\n- In the second round, he moves towards the $x=2$\
-  \ and comes back again to $x=0$.\n- So , at $Kth$ round , he moves to $x=K$ and\
-  \ comes back to $x=0$\nSo in this way game goes ahead.\nFor Example, the path of\
-  \ Kabir for $3rd$ round is given below.\n$0−1−2−3−2−1−0$\nThe overall path followed\
-  \ by Kabir would look somewhat like this:\n$0−1−0−1−2−1−0−1−2−3−2−1−0−1−2−3−4−3−…$\n\
-  Now the task is , You are given Two Non-Negative integers $N$ , $K$ .\nYou have\
-  \ to tell the time at which Kabir arrives at $x=N$ for the $Kth$ time.\nNote - Kabir\
-  \ visits all the points , he can not skip or jump over one point.\n\n-----Input:-----\n\
-  - First line will contain $T$, number of testcases. Then the testcases follow. \n\
-  - Each testcase contains of a single line of input, two integers $N, K$. \n\n-----Output:-----\n\
-  For each testcase, output in a single line answer i.e Time Taken by Kabir Singh\
-  \ modulo 1000000007.\n\n-----Constraints-----\n- $1 \\leq T \\leq 10^5$\n- $0 \\\
-  leq N \\leq 10^9$\n- $1 \\leq K \\leq 10^9$\n\n-----Sample Input:-----\n4\n\n0 1\n\
-  1 1\n1 3\n4 6\n\n-----Sample Output:-----\n0\n1\n5\n46\n\n-----EXPLANATION:-----\n\
-  Test Case 1:\nKabir starts the journey from the $N=0$ at time $t=0$ and it's the\
-  \ first time$ (K=1)$, he is here. So, the answer is $0$.\nTest Case 3:\nThe path\
-  \ followed by Kabir to reach 1 for the third time is given below.\n$0−1−0−1−2−1$\n\
-  He reaches $1$ for the third time at $ t=5$."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_kabir_game (n k : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem bound_lower : ∀ k, 0 ≤ solve_kabir_game 0 (k+1) :=\n  sorry\n\
-  \n\ntheorem bound_upper : solve_kabir_game (10^9) (10^9) < 1000000007 :=\n  sorry\
-  \ \n\n\ntheorem result_in_mod_range : ∀ n k, k > 0 → \n  0 ≤ solve_kabir_game n\
-  \ k ∧ solve_kabir_game n k < 1000000007 :=\n  sorry\n\n\ntheorem k_affects_result\
-  \ : ∀ n k, k > 1 → \n  solve_kabir_game n k ≠ solve_kabir_game n (k-1) :=\n  sorry\n\
-  \n\ntheorem small_inputs_bound : ∀ n k,\n  n ≤ 1000 → k ≤ 1000 → k > 0 →\n  solve_kabir_game\
-  \ n k ≤ (n + k)^2 + k :=\n  sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval solve_kabir_game\
-  \ 0 1\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_kabir_game 1 1\n\n/--\ninfo:\
-  \ 5\n-/\n#guard_msgs in\n#eval solve_kabir_game 1 3\n\n/--\ninfo: 46\n-/\n#guard_msgs\
-  \ in\n#eval solve_kabir_game 4 6\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Kabir Singh is playing a game on the non-negative side of  x-axis. It takes him $1 second$ to reach from Pth position to (P−1)th position or (P+1)th position. 
+  Kabir never goes to the negative side and also doesn't stop at any moment of time.
+  The movement can be defined as  : 
+  - At the beginning he is at $x=0$ , at time $0$
+  - During the first round, he moves towards $x=1$ and comes back to the $x=0$ position.
+  - In the second round, he moves towards the $x=2$ and comes back again to $x=0$.
+  - So , at $Kth$ round , he moves to $x=K$ and comes back to $x=0$
+  So in this way game goes ahead.
+  For Example, the path of Kabir for $3rd$ round is given below.
+  $0−1−2−3−2−1−0$
+  The overall path followed by Kabir would look somewhat like this:
+  $0−1−0−1−2−1−0−1−2−3−2−1−0−1−2−3−4−3−…$
+  Now the task is , You are given Two Non-Negative integers $N$ , $K$ .
+  You have to tell the time at which Kabir arrives at $x=N$ for the $Kth$ time.
+  Note - Kabir visits all the points , he can not skip or jump over one point.
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - Each testcase contains of a single line of input, two integers $N, K$. 
+
+  -----Output:-----
+  For each testcase, output in a single line answer i.e Time Taken by Kabir Singh modulo 1000000007.
+
+  -----Constraints-----
+  - $1 \leq T \leq 10^5$
+  - $0 \leq N \leq 10^9$
+  - $1 \leq K \leq 10^9$
+
+  -----Sample Input:-----
+  4
+
+  0 1
+  1 1
+  1 3
+  4 6
+
+  -----Sample Output:-----
+  0
+  1
+  5
+  46
+
+  -----EXPLANATION:-----
+  Test Case 1:
+  Kabir starts the journey from the $N=0$ at time $t=0$ and it's the first time$ (K=1)$, he is here. So, the answer is $0$.
+  Test Case 3:
+  The path followed by Kabir to reach 1 for the third time is given below.
+  $0−1−0−1−2−1$
+  He reaches $1$ for the third time at $ t=5$.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_kabir_game (n k : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem bound_lower : ∀ k, 0 ≤ solve_kabir_game 0 (k+1) :=
+    sorry
+
+
+  theorem bound_upper : solve_kabir_game (10^9) (10^9) < 1000000007 :=
+    sorry 
+
+
+  theorem result_in_mod_range : ∀ n k, k > 0 → 
+    0 ≤ solve_kabir_game n k ∧ solve_kabir_game n k < 1000000007 :=
+    sorry
+
+
+  theorem k_affects_result : ∀ n k, k > 1 → 
+    solve_kabir_game n k ≠ solve_kabir_game n (k-1) :=
+    sorry
+
+
+  theorem small_inputs_bound : ∀ n k,
+    n ≤ 1000 → k ≤ 1000 → k > 0 →
+    solve_kabir_game n k ≤ (n + k)^2 + k :=
+    sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve_kabir_game 0 1
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_kabir_game 1 1
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval solve_kabir_game 1 3
+
+  /--
+  info: 46
+  -/
+  #guard_msgs in
+  #eval solve_kabir_game 4 6
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

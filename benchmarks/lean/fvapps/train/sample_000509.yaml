@@ -1,24 +1,76 @@
-"vc-description": "Write a program that takes in a letterclass ID of a ship and display\
-  \ the equivalent string class description of the given ID. Use the table below.\n\
-  \nClass ID Ship ClassB or bBattleShipC or cCruiserD or dDestroyerF or fFrigate\n\
-  \n-----Input-----\n\nThe first line contains an integer T, the total number of testcases.\
-  \ Then T lines follow, each line contains a character. \n\n-----Output-----\nFor\
-  \ each test case, display the Ship Class depending on ID, in a new line.\n\n-----Constraints-----\n\
-  - 1 ≤ T ≤ 1000\n\n-----Example-----\nInput\n\n3 \nB\nc\nD\n\nOutput\nBattleShip\n\
-  Cruiser\nDestroyer"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def get_ship_class (c : Char) : ShipClass := sorry\n\ntheorem get_ship_class_returns_valid_type\
-  \ (c : Char) :\n  get_ship_class c = ShipClass.BattleShip ∨ \n  get_ship_class c\
-  \ = ShipClass.Cruiser ∨\n  get_ship_class c = ShipClass.Destroyer ∨ \n  get_ship_class\
-  \ c = ShipClass.Frigate :=\nsorry\n"
-"vc-theorems": "theorem get_ship_class_case_insensitive_B (c : Char) :\n  (c = 'B'\
-  \ ∨ c = 'b') → get_ship_class c = ShipClass.BattleShip :=\nsorry\n\n\ntheorem get_ship_class_case_insensitive_C\
-  \ (c : Char) :\n  (c = 'C' ∨ c = 'c') → get_ship_class c = ShipClass.Cruiser :=\n\
-  sorry\n\n\ntheorem get_ship_class_case_insensitive_D (c : Char) :\n  (c = 'D' ∨\
-  \ c = 'd') → get_ship_class c = ShipClass.Destroyer :=\nsorry\n\n\ntheorem get_ship_class_default\
-  \ (c : Char) :\n  (c.toUpper ≠ 'B' ∧ c.toUpper ≠ 'C' ∧ c.toUpper ≠ 'D') → \n  get_ship_class\
-  \ c = ShipClass.Frigate :=\nsorry\n\n/--\ninfo: 'BattleShip'\n-/\n#guard_msgs in\n\
-  #eval get_ship_class \"b\"\n\n/--\ninfo: 'Frigate'\n-/\n#guard_msgs in\n#eval get_ship_class\
-  \ \"F\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a program that takes in a letterclass ID of a ship and display the equivalent string class description of the given ID. Use the table below.
+
+  Class ID Ship ClassB or bBattleShipC or cCruiserD or dDestroyerF or fFrigate
+
+  -----Input-----
+
+  The first line contains an integer T, the total number of testcases. Then T lines follow, each line contains a character. 
+
+  -----Output-----
+  For each test case, display the Ship Class depending on ID, in a new line.
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 1000
+
+  -----Example-----
+  Input
+
+  3 
+  B
+  c
+  D
+
+  Output
+  BattleShip
+  Cruiser
+  Destroyer
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def get_ship_class (c : Char) : ShipClass := sorry
+
+  theorem get_ship_class_returns_valid_type (c : Char) :
+    get_ship_class c = ShipClass.BattleShip ∨ 
+    get_ship_class c = ShipClass.Cruiser ∨
+    get_ship_class c = ShipClass.Destroyer ∨ 
+    get_ship_class c = ShipClass.Frigate :=
+  sorry
+vc-theorems: |
+  theorem get_ship_class_case_insensitive_B (c : Char) :
+    (c = 'B' ∨ c = 'b') → get_ship_class c = ShipClass.BattleShip :=
+  sorry
+
+
+  theorem get_ship_class_case_insensitive_C (c : Char) :
+    (c = 'C' ∨ c = 'c') → get_ship_class c = ShipClass.Cruiser :=
+  sorry
+
+
+  theorem get_ship_class_case_insensitive_D (c : Char) :
+    (c = 'D' ∨ c = 'd') → get_ship_class c = ShipClass.Destroyer :=
+  sorry
+
+
+  theorem get_ship_class_default (c : Char) :
+    (c.toUpper ≠ 'B' ∧ c.toUpper ≠ 'C' ∧ c.toUpper ≠ 'D') → 
+    get_ship_class c = ShipClass.Frigate :=
+  sorry
+
+  /--
+  info: 'BattleShip'
+  -/
+  #guard_msgs in
+  #eval get_ship_class "b"
+
+  /--
+  info: 'Frigate'
+  -/
+  #guard_msgs in
+  #eval get_ship_class "F"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

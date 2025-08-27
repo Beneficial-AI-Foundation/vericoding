@@ -1,21 +1,77 @@
-"vc-description": "Given s1, s2, s3, find whether s3 is formed by the interleaving\
-  \ of s1 and s2.\n\nExample 1:\n\n\nInput: s1 = \"aabcc\", s2 = \"dbbca\", s3 = \"\
-  aadbbcbcac\"\nOutput: true\n\n\nExample 2:\n\n\nInput: s1 = \"aabcc\", s2 = \"dbbca\"\
-  , s3 = \"aadbbbaccc\"\nOutput: false"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_interleave (s1 s2 s3 : String) : Bool :=\n  sorry\n"
-"vc-theorems": "theorem concat_is_interleave (s1 s2 : String) :\n  is_interleave s1\
-  \ s2 (s1 ++ s2) = true :=\nsorry\n\n\ntheorem length_property (s1 s2 s3 : String)\
-  \ :\n  s3.length ≠ s1.length + s2.length →\n  is_interleave s1 s2 s3 = false :=\n\
-  sorry\n\n\ntheorem empty_string_interleave (s : String) :\n  is_interleave s \"\"\
-  \ s = true ∧ is_interleave \"\" s s = true :=\nsorry\n\n\ntheorem concat_order_preservation\
-  \ (s1 s2 : String) :\n  is_interleave s1 s2 (s1 ++ s2) = true :=\nsorry\n\n\ntheorem\
-  \ interleave_commutative (s1 s2 s3 : String) :\n  is_interleave s1 s2 s3 = is_interleave\
-  \ s2 s1 s3 :=\nsorry\n\n\ntheorem invalid_chars (s1 s2 s3 : String) (c : Char) :\n\
-  \  c ∈ s3.data →\n  c ∉ s1.data →\n  c ∉ s2.data →\n  is_interleave s1 s2 s3 = false\
-  \ :=\nsorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_interleave \"aabcc\"\
-  \ \"dbbca\" \"aadbbcbcac\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_interleave\
-  \ \"aabcc\" \"dbbca\" \"aadbbbaccc\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
-  \ is_interleave \"abc\" \"def\" \"abcdef\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
+
+  Example 1:
+
+
+  Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbcbcac"
+  Output: true
+
+
+  Example 2:
+
+
+  Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbaccc"
+  Output: false
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_interleave (s1 s2 s3 : String) : Bool :=
+    sorry
+vc-theorems: |
+  theorem concat_is_interleave (s1 s2 : String) :
+    is_interleave s1 s2 (s1 ++ s2) = true :=
+  sorry
+
+
+  theorem length_property (s1 s2 s3 : String) :
+    s3.length ≠ s1.length + s2.length →
+    is_interleave s1 s2 s3 = false :=
+  sorry
+
+
+  theorem empty_string_interleave (s : String) :
+    is_interleave s "" s = true ∧ is_interleave "" s s = true :=
+  sorry
+
+
+  theorem concat_order_preservation (s1 s2 : String) :
+    is_interleave s1 s2 (s1 ++ s2) = true :=
+  sorry
+
+
+  theorem interleave_commutative (s1 s2 s3 : String) :
+    is_interleave s1 s2 s3 = is_interleave s2 s1 s3 :=
+  sorry
+
+
+  theorem invalid_chars (s1 s2 s3 : String) (c : Char) :
+    c ∈ s3.data →
+    c ∉ s1.data →
+    c ∉ s2.data →
+    is_interleave s1 s2 s3 = false :=
+  sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_interleave "aabcc" "dbbca" "aadbbcbcac"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_interleave "aabcc" "dbbca" "aadbbbaccc"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_interleave "abc" "def" "abcdef"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

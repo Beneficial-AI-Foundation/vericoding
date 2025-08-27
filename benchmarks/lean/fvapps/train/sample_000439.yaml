@@ -1,19 +1,77 @@
-"vc-description": "Suppose an array sorted in ascending order is rotated at some pivot\
-  \ unknown to you beforehand.\n\n(i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).\n\
-  \nFind the minimum element.\n\nYou may assume no duplicate exists in the array.\n\
-  \nExample 1:\n\n\nInput: [3,4,5,1,2] \nOutput: 1\n\n\nExample 2:\n\n\nInput: [4,5,6,7,0,1,2]\n\
-  Output: 0"
-"vc-preamble": "import Imports.AllImports\n\ndef findMin (arr : List Int) : Int :=\n\
-  \  sorry\n\n\ndef rotateList (xs : List Int) (n : Nat) : List Int :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def listMin (xs : List Int) : Int :=\n  sorry\n"
-"vc-theorems": "theorem findMin_singleton (n : Int) :\n  findMin [n] = n :=\n  sorry\n\
-  \n\ntheorem findMin_pair (a b : Int) :\n  findMin [a, b] = min a b :=\n  sorry\n\
-  \n\ntheorem findMin_triple (a b c : Int) :\n  findMin [a, b, c] = min (min a b)\
-  \ c :=\n  sorry\n\n\ntheorem findMin_rotated_sorted_unique {nums : List Int} (h1\
-  \ : nums.length ≥ 4)\n    (h2 : List.Pairwise (· ≠ ·) nums) (h3 : ∀ x ∈ nums, -100\
-  \ ≤ x ∧ x ≤ 100) :\n  findMin (rotateList nums (nums.length / 2)) = listMin nums\
-  \ :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval findMin [3, 4, 5, 1, 2]\n\
-  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval findMin [4, 5, 6, 7, 0, 1, 2]\n\n/--\n\
-  info: 1\n-/\n#guard_msgs in\n#eval findMin [1, 2, 3, 4, 5]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+
+  (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+
+  Find the minimum element.
+
+  You may assume no duplicate exists in the array.
+
+  Example 1:
+
+
+  Input: [3,4,5,1,2] 
+  Output: 1
+
+
+  Example 2:
+
+
+  Input: [4,5,6,7,0,1,2]
+  Output: 0
+vc-preamble: |
+  import Imports.AllImports
+
+  def findMin (arr : List Int) : Int :=
+    sorry
+
+
+  def rotateList (xs : List Int) (n : Nat) : List Int :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def listMin (xs : List Int) : Int :=
+    sorry
+vc-theorems: |
+  theorem findMin_singleton (n : Int) :
+    findMin [n] = n :=
+    sorry
+
+
+  theorem findMin_pair (a b : Int) :
+    findMin [a, b] = min a b :=
+    sorry
+
+
+  theorem findMin_triple (a b c : Int) :
+    findMin [a, b, c] = min (min a b) c :=
+    sorry
+
+
+  theorem findMin_rotated_sorted_unique {nums : List Int} (h1 : nums.length ≥ 4)
+      (h2 : List.Pairwise (· ≠ ·) nums) (h3 : ∀ x ∈ nums, -100 ≤ x ∧ x ≤ 100) :
+    findMin (rotateList nums (nums.length / 2)) = listMin nums :=
+    sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval findMin [3, 4, 5, 1, 2]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval findMin [4, 5, 6, 7, 0, 1, 2]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval findMin [1, 2, 3, 4, 5]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

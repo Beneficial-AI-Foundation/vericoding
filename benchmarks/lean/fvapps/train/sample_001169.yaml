@@ -1,41 +1,74 @@
-"vc-description": "-----Problem Statement-----\nOne of the things JEC is known for\
-  \ is its GR (Group Recreation) where juniors and seniors do friendly interaction\
-  \ ;P\nAs for the new session of 2020 seniors decided to have their first GR and\
-  \ give them some treat. Juniors were excited about it they came to college canteen\
-  \ aligned in a line and counted themselves one by one from left to right so that\
-  \ every junior gets his/her treat. But seniors played a game and they will treat\
-  \ only the ones who passes in this game. Game is simple all they need to do is to\
-  \ alternate their language (between Hindi and English) while telling their positions\
-  \ that is if the junior just before you told 2 in English you need to say 3 in Hindi\
-  \ . You do not want to be the one left without a treat. \nYou are the junior standing\
-  \ at position $X$ from left and the counting could start from left or right you\
-  \ have to predict which number you have to speak and in which language when your\
-  \ turn comes.\n\n-----Input:-----\n- \nFirst line will contain $T$, number of testcases.\
-  \ Then the testcases follow. \n- \nEach testcase contains 2 lines first consist\
-  \ 2 space separated integers, $N$ (total count) , $X$ (your position from left),\
-  \ next line consist of 2 space separated characters  L or R (Direction from which\
-  \ counting starts L-left, R-Right) and H or E (the language to start counting).\n\
-  \n-----Output:-----\nFor each testcase, output a single line consisting space seperated\
-  \ Integer P and Character L\nwhere P is the number you will speak and L is the language\
-  \ (H or E).\n\n-----Constraints-----\n- $1 \\leq T \\leq 1000$\n- $1 \\leq N \\\
-  leq 120$\n- $1 \\leq X \\leq N$\n\n-----Sample Input:-----\n2\n15 5\nL H\n20 14\n\
-  R E\n\n*try to trim extra white spaces like new line during input in case of wrong\
-  \ answer\n\n-----Sample Output:-----\n5 H\n7 E\n\n-----EXPLANATION:-----\n- When\
-  \ counting starts from left with H it alternates like H E H E H….. on the fifth\
-  \ position H comes\n- When Count starts from right with E it alternates like E H\
-  \ E H E H E….. with E on the position of 14th student from right."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_gr_game (n x : Nat) (d : Direction) (l : Language) :\
-  \ Nat × Language :=\n  sorry\n"
-"vc-theorems": "theorem position_in_bounds {n x : Nat} {d : Direction} {l : Language}\
-  \ \n    (h1 : 0 < n) (h2 : 0 < x) :\n  let (pos, _) := solve_gr_game n x d l\n \
-  \ 0 < pos ∧ pos ≤ n :=\n  sorry\n\n\ntheorem position_matches_direction {n x : Nat}\
-  \ {d : Direction} {l : Language} \n    (h1 : 0 < n) (h2 : 0 < x) (h3 : x ≤ n) :\n\
-  \  let (pos, _) := solve_gr_game n x d l\n  (d = Direction.L → pos = x) ∧ \n  (d\
-  \ = Direction.R → pos = n - x + 1) :=\n  sorry\n\n\ntheorem language_alternates\
-  \ {n x : Nat} {d : Direction} {l : Language}\n    (h1 : 0 < n) (h2 : 0 < x) :\n\
-  \  let (pos, lang) := solve_gr_game n x d l\n  ((pos % 2 = 1) → lang = l) ∧\n  ((pos\
-  \ % 2 = 0) → lang = match l with\n                           | Language.E => Language.H\n\
-  \                           | Language.H => Language.E) :=\n  sorry\n\nend Game"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  -----Problem Statement-----
+  One of the things JEC is known for is its GR (Group Recreation) where juniors and seniors do friendly interaction ;P
+  As for the new session of 2020 seniors decided to have their first GR and give them some treat. Juniors were excited about it they came to college canteen aligned in a line and counted themselves one by one from left to right so that every junior gets his/her treat. But seniors played a game and they will treat only the ones who passes in this game. Game is simple all they need to do is to alternate their language (between Hindi and English) while telling their positions that is if the junior just before you told 2 in English you need to say 3 in Hindi . You do not want to be the one left without a treat. 
+  You are the junior standing at position $X$ from left and the counting could start from left or right you have to predict which number you have to speak and in which language when your turn comes.
+
+  -----Input:-----
+  - 
+  First line will contain $T$, number of testcases. Then the testcases follow. 
+  - 
+  Each testcase contains 2 lines first consist 2 space separated integers, $N$ (total count) , $X$ (your position from left), next line consist of 2 space separated characters  L or R (Direction from which counting starts L-left, R-Right) and H or E (the language to start counting).
+
+  -----Output:-----
+  For each testcase, output a single line consisting space seperated Integer P and Character L
+  where P is the number you will speak and L is the language (H or E).
+
+  -----Constraints-----
+  - $1 \leq T \leq 1000$
+  - $1 \leq N \leq 120$
+  - $1 \leq X \leq N$
+
+  -----Sample Input:-----
+  2
+  15 5
+  L H
+  20 14
+  R E
+
+  *try to trim extra white spaces like new line during input in case of wrong answer
+
+  -----Sample Output:-----
+  5 H
+  7 E
+
+  -----EXPLANATION:-----
+  - When counting starts from left with H it alternates like H E H E H….. on the fifth position H comes
+  - When Count starts from right with E it alternates like E H E H E H E….. with E on the position of 14th student from right.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_gr_game (n x : Nat) (d : Direction) (l : Language) : Nat × Language :=
+    sorry
+vc-theorems: |-
+  theorem position_in_bounds {n x : Nat} {d : Direction} {l : Language} 
+      (h1 : 0 < n) (h2 : 0 < x) :
+    let (pos, _) := solve_gr_game n x d l
+    0 < pos ∧ pos ≤ n :=
+    sorry
+
+
+  theorem position_matches_direction {n x : Nat} {d : Direction} {l : Language} 
+      (h1 : 0 < n) (h2 : 0 < x) (h3 : x ≤ n) :
+    let (pos, _) := solve_gr_game n x d l
+    (d = Direction.L → pos = x) ∧ 
+    (d = Direction.R → pos = n - x + 1) :=
+    sorry
+
+
+  theorem language_alternates {n x : Nat} {d : Direction} {l : Language}
+      (h1 : 0 < n) (h2 : 0 < x) :
+    let (pos, lang) := solve_gr_game n x d l
+    ((pos % 2 = 1) → lang = l) ∧
+    ((pos % 2 = 0) → lang = match l with
+                             | Language.E => Language.H
+                             | Language.H => Language.E) :=
+    sorry
+
+  end Game
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

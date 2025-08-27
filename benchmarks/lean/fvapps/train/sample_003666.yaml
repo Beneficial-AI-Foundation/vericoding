@@ -1,42 +1,109 @@
-"vc-description": "# The President's phone is broken\n\nHe is not very happy.\n\n\
-  The only letters still working are uppercase ```E```, ```F```, ```I```, ```R```,\
-  \ ```U```, ```Y```.\n\nAn angry tweet is sent to the department responsible for\
-  \ presidential phone maintenance.\n\n\n# Kata Task\n\nDecipher the tweet by looking\
-  \ for words with known meanings.\n\n\n* ```FIRE``` = *\"You are fired!\"*\n* ```FURY```\
-  \ = *\"I am furious.\"*\n\nIf no known words are found, or unexpected letters are\
-  \ encountered, then it must be a *\"Fake tweet.\"*\n\n# Notes\n\n* The tweet reads\
-  \ left-to-right.\n* Any letters not spelling words ```FIRE``` or ```FURY``` are\
-  \ just ignored\n* If multiple of the same words are found in a row then plural rules\
-  \ apply -\n * ```FIRE``` x 1 = *\"You are fired!\"*\n * ```FIRE``` x 2 = *\"You\
-  \ and you are fired!\"*\n * ```FIRE``` x 3 = *\"You and you and you are fired!\"\
-  *\n * etc...\n * ```FURY``` x 1 = *\"I am furious.\"*\n * ```FURY``` x 2 = *\"I\
-  \ am really furious.\"*\n * ```FURY``` x 3 = *\"I am really really furious.\"*\n\
-  \ * etc...\n\n# Examples\n\n* ex1. FURYYYFIREYYFIRE = *\"I am furious. You and you\
-  \ are fired!\"*\n* ex2. FIREYYFURYYFURYYFURRYFIRE = *\"You are fired! I am really\
-  \ furious. You are fired!\"*\n* ex3. FYRYFIRUFIRUFURE = *\"Fake tweet.\"*\n\n\n\
-  ----\nDM :-)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def fire_and_fury (tweet : String) : String := sorry\n\ndef containsSubstring\
-  \ (s : String) (sub : String) : Bool := sorry\n"
-"vc-theorems": "theorem empty_string_fake_tweet :\n  fire_and_fury \"\" = \"Fake tweet.\"\
-  \ := sorry\n\n\ntheorem numeric_input_fake_tweet (n : Nat) :\n  fire_and_fury (toString\
-  \ n) = \"Fake tweet.\" := sorry\n\n\ntheorem invalid_chars_fake_tweet {s : String}\
-  \ :\n  (∀ c ∈ s.data, c ∉ ['F', 'I', 'R', 'U', 'Y']) →\n  fire_and_fury s = \"Fake\
-  \ tweet.\" := sorry\n\n\ntheorem valid_tweet_result {s : String} :\n  fire_and_fury\
-  \ s = \"Fake tweet.\" ∨ \n  (fire_and_fury s).endsWith \"furious.\" ∨\n  (fire_and_fury\
-  \ s).endsWith \"fired!\" := sorry\n\n\ntheorem fury_only_result {s : String} :\n\
-  \  (∀ c ∈ s.data, c ∈ ['F', 'U', 'R', 'Y']) →\n  (containsSubstring s \"FURY\" →\
-  \ containsSubstring (fire_and_fury s) \"furious\" ∧ \n    ¬containsSubstring (fire_and_fury\
-  \ s) \"fired\") ∧\n  (¬containsSubstring s \"FURY\" → fire_and_fury s = \"Fake tweet.\"\
-  ) := sorry\n\n\ntheorem no_fire_fury_fake_tweet {s : String} :\n  (¬containsSubstring\
-  \ s \"FIRE\" ∧ ¬containsSubstring s \"FURY\") →\n  fire_and_fury s = \"Fake tweet.\"\
-  \ := sorry\n\n\ntheorem fire_fury_valid_result {s : String} :\n  (containsSubstring\
-  \ s \"FIRE\" ∨ containsSubstring s \"FURY\") →\n  ¬(fire_and_fury s = \"Fake tweet.\"\
-  ) ∧\n  ((fire_and_fury s).endsWith \"furious.\" ∨ (fire_and_fury s).endsWith \"\
-  fired!\") := sorry\n\n/--\ninfo: 'I am furious. You and you are fired!'\n-/\n#guard_msgs\
-  \ in\n#eval fire_and_fury \"FURYYYFIREYYFIRE\"\n\n/--\ninfo: 'You are fired! I am\
-  \ really furious. You are fired!'\n-/\n#guard_msgs in\n#eval fire_and_fury \"FIREYYFURYYFURYYFURRYFIRE\"\
-  \n\n/--\ninfo: 'Fake tweet.'\n-/\n#guard_msgs in\n#eval fire_and_fury \"FYRYFIRUFIRUFURE\"\
-  \n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # The President's phone is broken
+
+  He is not very happy.
+
+  The only letters still working are uppercase ```E```, ```F```, ```I```, ```R```, ```U```, ```Y```.
+
+  An angry tweet is sent to the department responsible for presidential phone maintenance.
+
+
+  # Kata Task
+
+  Decipher the tweet by looking for words with known meanings.
+
+
+  * ```FIRE``` = *"You are fired!"*
+  * ```FURY``` = *"I am furious."*
+
+  If no known words are found, or unexpected letters are encountered, then it must be a *"Fake tweet."*
+
+  # Notes
+
+  * The tweet reads left-to-right.
+  * Any letters not spelling words ```FIRE``` or ```FURY``` are just ignored
+  * If multiple of the same words are found in a row then plural rules apply -
+   * ```FIRE``` x 1 = *"You are fired!"*
+   * ```FIRE``` x 2 = *"You and you are fired!"*
+   * ```FIRE``` x 3 = *"You and you and you are fired!"*
+   * etc...
+   * ```FURY``` x 1 = *"I am furious."*
+   * ```FURY``` x 2 = *"I am really furious."*
+   * ```FURY``` x 3 = *"I am really really furious."*
+   * etc...
+
+  # Examples
+
+  * ex1. FURYYYFIREYYFIRE = *"I am furious. You and you are fired!"*
+  * ex2. FIREYYFURYYFURYYFURRYFIRE = *"You are fired! I am really furious. You are fired!"*
+  * ex3. FYRYFIRUFIRUFURE = *"Fake tweet."*
+
+
+  ----
+  DM :-)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def fire_and_fury (tweet : String) : String := sorry
+
+  def containsSubstring (s : String) (sub : String) : Bool := sorry
+vc-theorems: |
+  theorem empty_string_fake_tweet :
+    fire_and_fury "" = "Fake tweet." := sorry
+
+
+  theorem numeric_input_fake_tweet (n : Nat) :
+    fire_and_fury (toString n) = "Fake tweet." := sorry
+
+
+  theorem invalid_chars_fake_tweet {s : String} :
+    (∀ c ∈ s.data, c ∉ ['F', 'I', 'R', 'U', 'Y']) →
+    fire_and_fury s = "Fake tweet." := sorry
+
+
+  theorem valid_tweet_result {s : String} :
+    fire_and_fury s = "Fake tweet." ∨ 
+    (fire_and_fury s).endsWith "furious." ∨
+    (fire_and_fury s).endsWith "fired!" := sorry
+
+
+  theorem fury_only_result {s : String} :
+    (∀ c ∈ s.data, c ∈ ['F', 'U', 'R', 'Y']) →
+    (containsSubstring s "FURY" → containsSubstring (fire_and_fury s) "furious" ∧ 
+      ¬containsSubstring (fire_and_fury s) "fired") ∧
+    (¬containsSubstring s "FURY" → fire_and_fury s = "Fake tweet.") := sorry
+
+
+  theorem no_fire_fury_fake_tweet {s : String} :
+    (¬containsSubstring s "FIRE" ∧ ¬containsSubstring s "FURY") →
+    fire_and_fury s = "Fake tweet." := sorry
+
+
+  theorem fire_fury_valid_result {s : String} :
+    (containsSubstring s "FIRE" ∨ containsSubstring s "FURY") →
+    ¬(fire_and_fury s = "Fake tweet.") ∧
+    ((fire_and_fury s).endsWith "furious." ∨ (fire_and_fury s).endsWith "fired!") := sorry
+
+  /--
+  info: 'I am furious. You and you are fired!'
+  -/
+  #guard_msgs in
+  #eval fire_and_fury "FURYYYFIREYYFIRE"
+
+  /--
+  info: 'You are fired! I am really furious. You are fired!'
+  -/
+  #guard_msgs in
+  #eval fire_and_fury "FIREYYFURYYFURYYFURRYFIRE"
+
+  /--
+  info: 'Fake tweet.'
+  -/
+  #guard_msgs in
+  #eval fire_and_fury "FYRYFIRUFIRUFURE"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

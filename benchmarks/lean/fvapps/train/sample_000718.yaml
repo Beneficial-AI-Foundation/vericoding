@@ -1,30 +1,83 @@
-"vc-description": "Rodriguez is a happy and content farmer. He has got a square field\
-  \ of side length $x$. Miguel, his son has himself grown into a man and his father\
-  \ wants to gift him something out of which he can make a living. So he gift's his\
-  \ son a square piece of land cut out from a corner of his field of side length $\
-  \ y (y < x) $ leaving him with a L-shaped land.\nBut in Spanish tradition, it is\
-  \ considered inauspicious to own something which is prime in number. This worries\
-  \ Rodriguez as he doesn't want his left out area to be a prime number leading to\
-  \ bad luck. Find whether the spilt will be in terms with the tradition leaving Rodriguez\
-  \ happy.\n\n-----Input:-----\n- First line will contain $T$, number of testcases.\
-  \ Then the testcases follow. \n- Each testcase contains two integers $x, y$. \n\n\
-  -----Output:-----\nPrint YES if Rodriguez will be happy. Otherwise print NO.\n\n\
-  -----Constraints-----\n- $1 \\leq T \\leq 5$\n- $1 \\leq y < x \\leq 100000000000$\n\
-  \n-----Sample Input:-----\n2\n7 5\n6 5\n\n-----Sample Output:-----\nYES\nNO\n\n\
-  -----EXPLANATION:-----\nIn case 1 :\nLeft out area is 24, which is not prime.\n\
-  In case 2:\nLeft out area is 11, which is prime."
-"vc-preamble": "import Imports.AllImports\n\ndef is_prime (n : Nat) : Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def check_land_split (x y : Nat) : String :=\n  sorry\n"
-"vc-theorems": "theorem is_prime_properties (n : Nat) (h : n ≤ 1000) :\n  (n < 2 →\
-  \ is_prime n = false) ∧\n  (is_prime n = true → n ≥ 2) ∧\n  (is_prime n = true →\
-  \ ∀ i : Nat, 2 ≤ i → i ≤ 100 → ¬(n % i = 0)) :=\n  sorry\n\n\ntheorem check_land_split_properties\
-  \ (x y : Nat) (h₁ : x ≤ 100) (h₂ : y ≤ 100) (h₃ : y ≤ x) :\n  (check_land_split\
-  \ x y = \"YES\" ∨ check_land_split x y = \"NO\") ∧\n  (check_land_split x y = \"\
-  NO\" ↔ is_prime (x*x - y*y)) :=\n  sorry\n\n\ntheorem check_land_split_equal_sides\
-  \ (x : Nat) (h : x ≤ 100) :\n  check_land_split x x = \"YES\" :=\n  sorry\n\n\n\
-  theorem check_land_split_zero_inner (x : Nat) (h : x ≤ 100) :\n  check_land_split\
-  \ x 0 = \"NO\" ↔ is_prime (x*x) :=\n  sorry\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs\
-  \ in\n#eval check_land_split 7 5\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval check_land_split\
-  \ 6 5\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval check_land_split 10 8\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Rodriguez is a happy and content farmer. He has got a square field of side length $x$. Miguel, his son has himself grown into a man and his father wants to gift him something out of which he can make a living. So he gift's his son a square piece of land cut out from a corner of his field of side length $ y (y < x) $ leaving him with a L-shaped land.
+  But in Spanish tradition, it is considered inauspicious to own something which is prime in number. This worries Rodriguez as he doesn't want his left out area to be a prime number leading to bad luck. Find whether the spilt will be in terms with the tradition leaving Rodriguez happy.
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - Each testcase contains two integers $x, y$. 
+
+  -----Output:-----
+  Print YES if Rodriguez will be happy. Otherwise print NO.
+
+  -----Constraints-----
+  - $1 \leq T \leq 5$
+  - $1 \leq y < x \leq 100000000000$
+
+  -----Sample Input:-----
+  2
+  7 5
+  6 5
+
+  -----Sample Output:-----
+  YES
+  NO
+
+  -----EXPLANATION:-----
+  In case 1 :
+  Left out area is 24, which is not prime.
+  In case 2:
+  Left out area is 11, which is prime.
+vc-preamble: |
+  import Imports.AllImports
+
+  def is_prime (n : Nat) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def check_land_split (x y : Nat) : String :=
+    sorry
+vc-theorems: |
+  theorem is_prime_properties (n : Nat) (h : n ≤ 1000) :
+    (n < 2 → is_prime n = false) ∧
+    (is_prime n = true → n ≥ 2) ∧
+    (is_prime n = true → ∀ i : Nat, 2 ≤ i → i ≤ 100 → ¬(n % i = 0)) :=
+    sorry
+
+
+  theorem check_land_split_properties (x y : Nat) (h₁ : x ≤ 100) (h₂ : y ≤ 100) (h₃ : y ≤ x) :
+    (check_land_split x y = "YES" ∨ check_land_split x y = "NO") ∧
+    (check_land_split x y = "NO" ↔ is_prime (x*x - y*y)) :=
+    sorry
+
+
+  theorem check_land_split_equal_sides (x : Nat) (h : x ≤ 100) :
+    check_land_split x x = "YES" :=
+    sorry
+
+
+  theorem check_land_split_zero_inner (x : Nat) (h : x ≤ 100) :
+    check_land_split x 0 = "NO" ↔ is_prime (x*x) :=
+    sorry
+
+  /--
+  info: 'YES'
+  -/
+  #guard_msgs in
+  #eval check_land_split 7 5
+
+  /--
+  info: 'NO'
+  -/
+  #guard_msgs in
+  #eval check_land_split 6 5
+
+  /--
+  info: 'YES'
+  -/
+  #guard_msgs in
+  #eval check_land_split 10 8
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

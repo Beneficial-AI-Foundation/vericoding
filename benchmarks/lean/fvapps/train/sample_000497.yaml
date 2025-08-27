@@ -1,38 +1,93 @@
-"vc-description": "There is an infinitely long street that runs west to east, which\
-  \ we consider as a number line.\nThere are N roadworks scheduled on this street.\n\
-  The i-th roadwork blocks the point at coordinate X_i from time S_i - 0.5 to time\
-  \ T_i - 0.5.\nQ people are standing at coordinate 0. The i-th person will start\
-  \ the coordinate 0 at time D_i, continue to walk with speed 1 in the positive direction\
-  \ and stop walking when reaching a blocked point.\nFind the distance each of the\
-  \ Q people will walk.\n\n-----Constraints-----\n - All values in input are integers.\n\
-  \ - 1 \\leq N, Q \\leq 2 \\times 10^5\n - 0 \\leq S_i < T_i \\leq 10^9\n - 1 \\\
-  leq X_i \\leq 10^9\n - 0 \\leq D_1 < D_2 < ... < D_Q \\leq 10^9\n - If i \\neq j\
-  \ and X_i = X_j, the intervals [S_i, T_i) and [S_j, T_j) do not overlap.\n\n-----Input-----\n\
-  Input is given from Standard Input in the following format:\nN Q\nS_1 T_1 X_1\n\
-  :\nS_N T_N X_N\nD_1\n:\nD_Q\n\n-----Output-----\nPrint Q lines. The i-th line should\
-  \ contain the distance the i-th person will walk or -1 if that person walks forever.\n\
-  \n-----Sample Input-----\n4 6\n1 3 2\n7 13 10\n18 20 13\n3 4 2\n0\n1\n2\n3\n5\n\
-  8\n\n-----Sample Output-----\n2\n2\n10\n-1\n13\n-1\n\nThe first person starts coordinate\
-  \ 0 at time 0 and stops walking at coordinate 2 when reaching a point blocked by\
-  \ the first roadwork at time 2.\nThe second person starts coordinate 0 at time 1\
-  \ and reaches coordinate 2 at time 3. The first roadwork has ended, but the fourth\
-  \ roadwork has begun, so this person also stops walking at coordinate 2.\nThe fourth\
-  \ and sixth persons encounter no roadworks while walking, so they walk forever.\
-  \ The output for these cases is -1."
-"vc-preamble": "import Imports.AllImports\n\ndef get_intersection (arr1 arr2 : List\
-  \ Int) : List Int := sorry\n\ndef isSortedList (l : List Int) : Prop :=\n  ∀ i j,\
-  \ i < j → j < l.length → l[i]! ≤ l[j]!\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sortList (l : List Int) : List Int := sorry\n\ntheorem self_intersection\
-  \ {arr : List Int} :\n  get_intersection arr arr = sortList arr := sorry\n"
-"vc-theorems": "theorem intersection_sorted {arr1 arr2 : List Int} :\n  isSortedList\
-  \ (get_intersection arr1 arr2) := sorry\n\n\ntheorem intersection_elements_in_both\
-  \ {arr1 arr2 : List Int} (x : Int) :\n  x ∈ get_intersection arr1 arr2 → x ∈ arr1\
-  \ ∧ x ∈ arr2 := sorry\n\n\ntheorem intersection_count_bound {arr1 arr2 : List Int}\
-  \ (x : Int) :\n  (get_intersection arr1 arr2).count x ≤ min (arr1.count x) (arr2.count\
-  \ x) := sorry\n\n\ntheorem empty_intersection_left {arr : List Int} :\n  get_intersection\
-  \ [] arr = [] := sorry\n\n\ntheorem empty_intersection_right {arr : List Int} :\n\
-  \  get_intersection arr [] = [] := sorry\n\n\ntheorem intersection_commutative {arr1\
-  \ arr2 : List Int} :\n  get_intersection arr1 arr2 = get_intersection arr2 arr1\
-  \ := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  There is an infinitely long street that runs west to east, which we consider as a number line.
+  There are N roadworks scheduled on this street.
+  The i-th roadwork blocks the point at coordinate X_i from time S_i - 0.5 to time T_i - 0.5.
+  Q people are standing at coordinate 0. The i-th person will start the coordinate 0 at time D_i, continue to walk with speed 1 in the positive direction and stop walking when reaching a blocked point.
+  Find the distance each of the Q people will walk.
+
+  -----Constraints-----
+   - All values in input are integers.
+   - 1 \leq N, Q \leq 2 \times 10^5
+   - 0 \leq S_i < T_i \leq 10^9
+   - 1 \leq X_i \leq 10^9
+   - 0 \leq D_1 < D_2 < ... < D_Q \leq 10^9
+   - If i \neq j and X_i = X_j, the intervals [S_i, T_i) and [S_j, T_j) do not overlap.
+
+  -----Input-----
+  Input is given from Standard Input in the following format:
+  N Q
+  S_1 T_1 X_1
+  :
+  S_N T_N X_N
+  D_1
+  :
+  D_Q
+
+  -----Output-----
+  Print Q lines. The i-th line should contain the distance the i-th person will walk or -1 if that person walks forever.
+
+  -----Sample Input-----
+  4 6
+  1 3 2
+  7 13 10
+  18 20 13
+  3 4 2
+  0
+  1
+  2
+  3
+  5
+  8
+
+  -----Sample Output-----
+  2
+  2
+  10
+  -1
+  13
+  -1
+
+  The first person starts coordinate 0 at time 0 and stops walking at coordinate 2 when reaching a point blocked by the first roadwork at time 2.
+  The second person starts coordinate 0 at time 1 and reaches coordinate 2 at time 3. The first roadwork has ended, but the fourth roadwork has begun, so this person also stops walking at coordinate 2.
+  The fourth and sixth persons encounter no roadworks while walking, so they walk forever. The output for these cases is -1.
+vc-preamble: |
+  import Imports.AllImports
+
+  def get_intersection (arr1 arr2 : List Int) : List Int := sorry
+
+  def isSortedList (l : List Int) : Prop :=
+    ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sortList (l : List Int) : List Int := sorry
+
+  theorem self_intersection {arr : List Int} :
+    get_intersection arr arr = sortList arr := sorry
+vc-theorems: |-
+  theorem intersection_sorted {arr1 arr2 : List Int} :
+    isSortedList (get_intersection arr1 arr2) := sorry
+
+
+  theorem intersection_elements_in_both {arr1 arr2 : List Int} (x : Int) :
+    x ∈ get_intersection arr1 arr2 → x ∈ arr1 ∧ x ∈ arr2 := sorry
+
+
+  theorem intersection_count_bound {arr1 arr2 : List Int} (x : Int) :
+    (get_intersection arr1 arr2).count x ≤ min (arr1.count x) (arr2.count x) := sorry
+
+
+  theorem empty_intersection_left {arr : List Int} :
+    get_intersection [] arr = [] := sorry
+
+
+  theorem empty_intersection_right {arr : List Int} :
+    get_intersection arr [] = [] := sorry
+
+
+  theorem intersection_commutative {arr1 arr2 : List Int} :
+    get_intersection arr1 arr2 = get_intersection arr2 arr1 := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

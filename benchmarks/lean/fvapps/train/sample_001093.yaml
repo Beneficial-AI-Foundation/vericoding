@@ -1,37 +1,80 @@
-"vc-description": "Finally, a COVID vaccine is out on the market and the Chefland\
-  \ government has asked you to form a plan to distribute it to the public as soon\
-  \ as possible. There are a total of $N$ people with ages $a_1, a_2, \\ldots, a_N$.\n\
-  There is only one hospital where vaccination is done and it is only possible to\
-  \ vaccinate up to $D$ people per day. Anyone whose age is $\\ge 80$ or $\\le 9$\
-  \ is considered to be at risk. On each day, you may not vaccinate both a person\
-  \ who is at risk and a person who is not at risk. Find the smallest number of days\
-  \ needed to vaccinate everyone.\n\n-----Input-----\n- The first line of the input\
-  \ contains a single integer $T$ denoting the number of test cases. The description\
-  \ of $T$ test cases follows.\n- The first line of each test case contains two space-separated\
-  \ integers $N$ and $D$.\n- The second line contains $N$ space-separated integers\
-  \ $a_1, a_2, \\ldots, a_N$.\n\n-----Output-----\nFor each test case, print a single\
-  \ line containing one integer ― the smallest required number of days.\n\n-----Constraints-----\n\
-  - $1 \\le T \\le 10$\n- $1 \\le N \\le 10^4$\n- $1 \\le D \\le 10^5$\n- $1 \\le\
-  \ a_i \\le 100$ for each valid $i$\n\n-----Subtasks-----\nSubtask #1 (100 points):\
-  \ original constraints\n\n-----Example Input-----\n2\n10 1\n10 20 30 40 50 60 90\
-  \ 80 100 1\n5 2\n9 80 27 72 79\n\n-----Example Output-----\n10\n3\n\n-----Explanation-----\n\
-  Example case 1: We do not need to worry about how the people are grouped, since\
-  \ only one person can be vaccinated in a single day. We require as many days as\
-  \ there are people.\nExample case 2: There are two people at risk and three people\
-  \ who are not at risk. One optimal strategy is to vaccinate the two people at risk\
-  \ on day $1$ and the remaining three on the next $2$ days."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_vaccine_distribution (N D : Nat) (ages : List Nat) :\
-  \ Nat :=\n  sorry\n"
-"vc-theorems": "theorem vaccine_distribution_positive (N D : Nat) (ages : List Nat)\
-  \ \n    (h1 : N > 0) (h2 : D > 0) (h3 : ages.length > 0) :\n  solve_vaccine_distribution\
-  \ N D ages > 0 := sorry\n\n\n\n\ntheorem vaccine_distribution_D_one (N D : Nat)\
-  \ (ages : List Nat)\n    (h : D = 1) (h1 : N > 0) :\n  solve_vaccine_distribution\
-  \ N D ages = N := sorry\n\n\ntheorem vaccine_distribution_min_days (N D : Nat) (ages\
-  \ : List Nat)\n    (h1 : N > 0) (h2 : D > 0) :\n  solve_vaccine_distribution N D\
-  \ ages ≥ (N + D - 1) / D := sorry\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval solve_vaccine_distribution\
-  \ 10 1 [10, 20, 30, 40, 50, 60, 90, 80, 100, 1]\n\n/--\ninfo: 3\n-/\n#guard_msgs\
-  \ in\n#eval solve_vaccine_distribution 5 2 [9, 80, 27, 72, 79]\n\n/--\ninfo: 2\n\
-  -/\n#guard_msgs in\n#eval solve_vaccine_distribution 3 2 [80, 90, 100]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Finally, a COVID vaccine is out on the market and the Chefland government has asked you to form a plan to distribute it to the public as soon as possible. There are a total of $N$ people with ages $a_1, a_2, \ldots, a_N$.
+  There is only one hospital where vaccination is done and it is only possible to vaccinate up to $D$ people per day. Anyone whose age is $\ge 80$ or $\le 9$ is considered to be at risk. On each day, you may not vaccinate both a person who is at risk and a person who is not at risk. Find the smallest number of days needed to vaccinate everyone.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains two space-separated integers $N$ and $D$.
+  - The second line contains $N$ space-separated integers $a_1, a_2, \ldots, a_N$.
+
+  -----Output-----
+  For each test case, print a single line containing one integer ― the smallest required number of days.
+
+  -----Constraints-----
+  - $1 \le T \le 10$
+  - $1 \le N \le 10^4$
+  - $1 \le D \le 10^5$
+  - $1 \le a_i \le 100$ for each valid $i$
+
+  -----Subtasks-----
+  Subtask #1 (100 points): original constraints
+
+  -----Example Input-----
+  2
+  10 1
+  10 20 30 40 50 60 90 80 100 1
+  5 2
+  9 80 27 72 79
+
+  -----Example Output-----
+  10
+  3
+
+  -----Explanation-----
+  Example case 1: We do not need to worry about how the people are grouped, since only one person can be vaccinated in a single day. We require as many days as there are people.
+  Example case 2: There are two people at risk and three people who are not at risk. One optimal strategy is to vaccinate the two people at risk on day $1$ and the remaining three on the next $2$ days.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_vaccine_distribution (N D : Nat) (ages : List Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem vaccine_distribution_positive (N D : Nat) (ages : List Nat) 
+      (h1 : N > 0) (h2 : D > 0) (h3 : ages.length > 0) :
+    solve_vaccine_distribution N D ages > 0 := sorry
+
+
+
+
+  theorem vaccine_distribution_D_one (N D : Nat) (ages : List Nat)
+      (h : D = 1) (h1 : N > 0) :
+    solve_vaccine_distribution N D ages = N := sorry
+
+
+  theorem vaccine_distribution_min_days (N D : Nat) (ages : List Nat)
+      (h1 : N > 0) (h2 : D > 0) :
+    solve_vaccine_distribution N D ages ≥ (N + D - 1) / D := sorry
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval solve_vaccine_distribution 10 1 [10, 20, 30, 40, 50, 60, 90, 80, 100, 1]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve_vaccine_distribution 5 2 [9, 80, 27, 72, 79]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve_vaccine_distribution 3 2 [80, 90, 100]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

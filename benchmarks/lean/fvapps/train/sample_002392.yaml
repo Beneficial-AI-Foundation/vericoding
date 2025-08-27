@@ -1,24 +1,73 @@
-"vc-description": "Students are asked to stand in non-decreasing order of heights\
-  \ for an annual photo.\nReturn the minimum number of students that must move in\
-  \ order for all students to be standing in non-decreasing order of height.\nNotice\
-  \ that when a group of students is selected they can reorder in any possible way\
-  \ between themselves and the non selected students remain on their seats.\n \nExample\
-  \ 1:\nInput: heights = [1,1,4,2,1,3]\nOutput: 3\nExplanation: \nCurrent array :\
-  \ [1,1,4,2,1,3]\nTarget array  : [1,1,1,2,3,4]\nOn index 2 (0-based) we have 4 vs\
-  \ 1 so we have to move this student.\nOn index 4 (0-based) we have 1 vs 3 so we\
-  \ have to move this student.\nOn index 5 (0-based) we have 3 vs 4 so we have to\
-  \ move this student.\n\nExample 2:\nInput: heights = [5,1,2,3,4]\nOutput: 5\n\n\
-  Example 3:\nInput: heights = [1,2,3,4,5]\nOutput: 0\n\n \nConstraints:\n\n1 <= heights.length\
-  \ <= 100\n1 <= heights[i] <= 100"
-"vc-preamble": "import Imports.AllImports\n\ndef sort (as : List Nat) : List Nat :=\
-  \ sorry\n\ndef countMismatches (xs ys : List Nat) : Nat := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def height_checker (heights : List Nat) : Nat := sorry\n\n\n\n\n\
-  \n\n\ntheorem height_checker_singleton (x : Nat) :\n  height_checker [x] = 0 :=\
-  \ sorry\n"
-"vc-theorems": "theorem height_checker_uniform (x n : Nat) :\n  n > 0 →\n  height_checker\
-  \ (List.replicate n x) = 0 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval height_checker\
-  \ [1, 1, 4, 2, 1, 3]\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval height_checker [5,\
-  \ 1, 2, 3, 4]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval height_checker [1, 2, 3,\
-  \ 4, 5]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Students are asked to stand in non-decreasing order of heights for an annual photo.
+  Return the minimum number of students that must move in order for all students to be standing in non-decreasing order of height.
+  Notice that when a group of students is selected they can reorder in any possible way between themselves and the non selected students remain on their seats.
+   
+  Example 1:
+  Input: heights = [1,1,4,2,1,3]
+  Output: 3
+  Explanation: 
+  Current array : [1,1,4,2,1,3]
+  Target array  : [1,1,1,2,3,4]
+  On index 2 (0-based) we have 4 vs 1 so we have to move this student.
+  On index 4 (0-based) we have 1 vs 3 so we have to move this student.
+  On index 5 (0-based) we have 3 vs 4 so we have to move this student.
+
+  Example 2:
+  Input: heights = [5,1,2,3,4]
+  Output: 5
+
+  Example 3:
+  Input: heights = [1,2,3,4,5]
+  Output: 0
+
+   
+  Constraints:
+
+  1 <= heights.length <= 100
+  1 <= heights[i] <= 100
+vc-preamble: |
+  import Imports.AllImports
+
+  def sort (as : List Nat) : List Nat := sorry
+
+  def countMismatches (xs ys : List Nat) : Nat := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def height_checker (heights : List Nat) : Nat := sorry
+
+
+
+
+
+
+
+  theorem height_checker_singleton (x : Nat) :
+    height_checker [x] = 0 := sorry
+vc-theorems: |
+  theorem height_checker_uniform (x n : Nat) :
+    n > 0 →
+    height_checker (List.replicate n x) = 0 := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval height_checker [1, 1, 4, 2, 1, 3]
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval height_checker [5, 1, 2, 3, 4]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval height_checker [1, 2, 3, 4, 5]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

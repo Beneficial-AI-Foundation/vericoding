@@ -1,63 +1,108 @@
-"vc-description": "As [breadcrumb menùs](https://en.wikipedia.org/wiki/Breadcrumb_%28navigation%29)\
-  \ are quite popular today, I won't digress much on explaining them, leaving the\
-  \ wiki link to do all the dirty work in my place.\n\nWhat might not be so trivial\
-  \ is instead to get a decent breadcrumb from your current url. For this kata, your\
-  \ purpose is to create a function that takes a url, strips the first part (labelling\
-  \ it always `HOME`) and then builds it making each element but the last a `` element\
-  \ linking to the relevant path; last has to be a `` element getting the `active`\
-  \ `class`.\n\nAll elements need to be turned to uppercase and separated by a separator,\
-  \ given as the second parameter of the function; the last element can terminate\
-  \ in some common extension like `.html`, `.htm`, `.php` or `.asp`; if the name of\
-  \ the last element is `index`.something, you treat it as if it wasn't there, sending\
-  \ users automatically to the upper level folder.\n\nA few examples can be more helpful\
-  \ than thousands of words of explanation, so here you have them:\n```python\ngenerate_bc(\"\
-  mysite.com/pictures/holidays.html\", \" : \") == 'HOME : PICTURES : HOLIDAYS'\n\
-  generate_bc(\"www.codewars.com/users/GiacomoSorbi\", \" / \") == 'HOME / USERS /\
-  \ GIACOMOSORBI'\ngenerate_bc(\"www.microsoft.com/docs/index.htm\", \" * \") == 'HOME\
-  \ * DOCS'\n```\nSeems easy enough?\n\nWell, probably not so much, but we have one\
-  \ last extra rule: if one element (other than the root/home) is longer than 30 characters,\
-  \ you have to shorten it, acronymizing it (i.e.: taking just the initials of every\
-  \ word); url will be always given in the format `this-is-an-element-of-the-url`\
-  \ and you should ignore words in this array while acronymizing: `[\"the\",\"of\"\
-  ,\"in\",\"from\",\"by\",\"with\",\"and\", \"or\", \"for\", \"to\", \"at\", \"a\"\
-  ]`; a url composed of more words separated by `-` and equal or less than 30 characters\
-  \ long needs to be just uppercased with hyphens replaced by spaces.\n\nIgnore anchors\
-  \ (`www.url.com#lameAnchorExample`) and parameters (`www.url.com?codewars=rocks&pippi=rocksToo`)\
-  \ when present.\n\nExamples:\n```python\ngenerate_bc(\"mysite.com/very-long-url-to-make-a-silly-yet-meaningful-example/example.htm\"\
-  , \" > \") == 'HOME > VLUMSYME > EXAMPLE'\ngenerate_bc(\"www.very-long-site_name-to-make-a-silly-yet-meaningful-example.com/users/giacomo-sorbi\"\
-  , \" + \") == 'HOME + USERS + GIACOMO SORBI'\n```\n\nYou will always be provided\
-  \ **valid url** to webpages **in common formats**, so you probably shouldn't bother\
-  \ validating them.\n\nIf you like to test yourself with actual work/interview related\
-  \ kata, please also consider this one about building [a string filter for Angular.js](http://www.codewars.com/kata/number-shortening-filter).\n\
-  \n_Special thanks to [the colleague](http://www.codewars.com/users/jury89) that,\
-  \ seeing my code and commenting that I worked on that as if it was I was on CodeWars,\
-  \ made me realize that it could be indeed a good idea for a kata_ :)"
-"vc-preamble": "import Imports.AllImports\n\ndef generate_bc (url : String) (separator\
-  \ : String) : String :=\n  sorry\n\n\ndef containsStr (s : String) (sub : String)\
-  \ : Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def findStr (s : String) (sub : String) : Option Nat :=\n  sorry\n"
-"vc-theorems": "theorem generate_bc_structure (paths : List String) (separator : String)\
-  \ \n  (h1 : paths.length ≥ 1) (h2 : paths.length ≤ 5) :\n  let url := \"mysite.com/\"\
-  \ ++ String.intercalate \"/\" paths\n  let result := generate_bc url separator;\n\
-  \  (result.startsWith \"<a href=\\\"/\\\">HOME</a>\" ∨ \n   result.startsWith \"\
-  <span class=\\\"active\\\">HOME</span>\") ∧\n  result.endsWith \"</span>\" ∧\n \
-  \ (containsStr result \"<span class=\\\"active\\\">\") ∧\n  ((result.split (· ==\
-  \ separator.get! 0)).length ≥ 1) :=\nsorry\n\n\ntheorem generate_bc_protocol_stripping\
-  \ (url : String)\n  (h : containsStr url \"http://\" ∨ containsStr url \"https://\"\
-  ) :\n  let result := generate_bc url \"/\";\n  ¬containsStr result \"http://\" ∧\
-  \ \n  ¬containsStr result \"https://\" :=\nsorry\n\n\ntheorem generate_bc_long_segments\
-  \ (path : String)\n  (h : path.length > 30) :\n  let url := \"mysite.com/\" ++ path\n\
-  \  let result := generate_bc url \" > \"\n  let spans := result.split (· == '>')\n\
-  \  let lastSpan := spans[spans.length - 1]'(by sorry)\n  let content := (lastSpan.split\
-  \ (· == '>')).getLast!;\n  content.length < path.length :=\nsorry\n\n\ntheorem generate_bc_href_validity\
-  \ (paths : List String) \n  (h1 : paths.length ≥ 2) (h2 : paths.length ≤ 5) :\n\
-  \  let url := \"mysite.com/\" ++ String.intercalate \"/\" paths\n  let result :=\
-  \ generate_bc url \" : \"\n  let segments := (result.split (· == ':')).dropLast;\n\
-  \  ∀ s ∈ segments,\n    s.startsWith \"<a href=\\\"/\\\"\" ∧\n    s.endsWith \"\
-  </a>\" ∧\n    (findStr s \"\\\">\").isSome :=\nsorry\n\n/--\ninfo: expected1\n-/\n\
-  #guard_msgs in\n#eval generate_bc \"mysite.com/pictures/holidays.html\" \" : \"\n\
-  \n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval generate_bc \"www.microsoft.com/docs/index.htm\"\
-  \ \" * \"\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval generate_bc \"mysite.com/very-long-url-to-make-a-silly-yet-meaningful-example/example.htm\"\
-  \ \" > \"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  As [breadcrumb menùs](https://en.wikipedia.org/wiki/Breadcrumb_%28navigation%29) are quite popular today, I won't digress much on explaining them, leaving the wiki link to do all the dirty work in my place.
+
+  What might not be so trivial is instead to get a decent breadcrumb from your current url. For this kata, your purpose is to create a function that takes a url, strips the first part (labelling it always `HOME`) and then builds it making each element but the last a `` element linking to the relevant path; last has to be a `` element getting the `active` `class`.
+
+  All elements need to be turned to uppercase and separated by a separator, given as the second parameter of the function; the last element can terminate in some common extension like `.html`, `.htm`, `.php` or `.asp`; if the name of the last element is `index`.something, you treat it as if it wasn't there, sending users automatically to the upper level folder.
+
+  A few examples can be more helpful than thousands of words of explanation, so here you have them:
+  ```python
+  generate_bc("mysite.com/pictures/holidays.html", " : ") == 'HOME : PICTURES : HOLIDAYS'
+  generate_bc("www.codewars.com/users/GiacomoSorbi", " / ") == 'HOME / USERS / GIACOMOSORBI'
+  generate_bc("www.microsoft.com/docs/index.htm", " * ") == 'HOME * DOCS'
+  ```
+  Seems easy enough?
+
+  Well, probably not so much, but we have one last extra rule: if one element (other than the root/home) is longer than 30 characters, you have to shorten it, acronymizing it (i.e.: taking just the initials of every word); url will be always given in the format `this-is-an-element-of-the-url` and you should ignore words in this array while acronymizing: `["the","of","in","from","by","with","and", "or", "for", "to", "at", "a"]`; a url composed of more words separated by `-` and equal or less than 30 characters long needs to be just uppercased with hyphens replaced by spaces.
+
+  Ignore anchors (`www.url.com#lameAnchorExample`) and parameters (`www.url.com?codewars=rocks&pippi=rocksToo`) when present.
+
+  Examples:
+  ```python
+  generate_bc("mysite.com/very-long-url-to-make-a-silly-yet-meaningful-example/example.htm", " > ") == 'HOME > VLUMSYME > EXAMPLE'
+  generate_bc("www.very-long-site_name-to-make-a-silly-yet-meaningful-example.com/users/giacomo-sorbi", " + ") == 'HOME + USERS + GIACOMO SORBI'
+  ```
+
+  You will always be provided **valid url** to webpages **in common formats**, so you probably shouldn't bother validating them.
+
+  If you like to test yourself with actual work/interview related kata, please also consider this one about building [a string filter for Angular.js](http://www.codewars.com/kata/number-shortening-filter).
+
+  _Special thanks to [the colleague](http://www.codewars.com/users/jury89) that, seeing my code and commenting that I worked on that as if it was I was on CodeWars, made me realize that it could be indeed a good idea for a kata_ :)
+vc-preamble: |
+  import Imports.AllImports
+
+  def generate_bc (url : String) (separator : String) : String :=
+    sorry
+
+
+  def containsStr (s : String) (sub : String) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def findStr (s : String) (sub : String) : Option Nat :=
+    sorry
+vc-theorems: |
+  theorem generate_bc_structure (paths : List String) (separator : String) 
+    (h1 : paths.length ≥ 1) (h2 : paths.length ≤ 5) :
+    let url := "mysite.com/" ++ String.intercalate "/" paths
+    let result := generate_bc url separator;
+    (result.startsWith "<a href=\"/\">HOME</a>" ∨ 
+     result.startsWith "<span class=\"active\">HOME</span>") ∧
+    result.endsWith "</span>" ∧
+    (containsStr result "<span class=\"active\">") ∧
+    ((result.split (· == separator.get! 0)).length ≥ 1) :=
+  sorry
+
+
+  theorem generate_bc_protocol_stripping (url : String)
+    (h : containsStr url "http://" ∨ containsStr url "https://") :
+    let result := generate_bc url "/";
+    ¬containsStr result "http://" ∧ 
+    ¬containsStr result "https://" :=
+  sorry
+
+
+  theorem generate_bc_long_segments (path : String)
+    (h : path.length > 30) :
+    let url := "mysite.com/" ++ path
+    let result := generate_bc url " > "
+    let spans := result.split (· == '>')
+    let lastSpan := spans[spans.length - 1]'(by sorry)
+    let content := (lastSpan.split (· == '>')).getLast!;
+    content.length < path.length :=
+  sorry
+
+
+  theorem generate_bc_href_validity (paths : List String) 
+    (h1 : paths.length ≥ 2) (h2 : paths.length ≤ 5) :
+    let url := "mysite.com/" ++ String.intercalate "/" paths
+    let result := generate_bc url " : "
+    let segments := (result.split (· == ':')).dropLast;
+    ∀ s ∈ segments,
+      s.startsWith "<a href=\"/\"" ∧
+      s.endsWith "</a>" ∧
+      (findStr s "\">").isSome :=
+  sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval generate_bc "mysite.com/pictures/holidays.html" " : "
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval generate_bc "www.microsoft.com/docs/index.htm" " * "
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval generate_bc "mysite.com/very-long-url-to-make-a-silly-yet-meaningful-example/example.htm" " > "
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

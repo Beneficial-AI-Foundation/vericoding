@@ -1,48 +1,105 @@
-"vc-description": "# Scenario \n\nWith **_Cereal crops_** like wheat or rice, before\
-  \ we can eat the grain kernel, we need to remove that inedible hull, or *to separate\
-  \ the wheat from the chaff*.\n___\n\n# Task\n\n**_Given_** a *sequence of n integers*\
-  \ , **_separate_** *the negative numbers (chaff) from positive ones (wheat).* \n\
-  ___\n\n# Notes\n\n* **_Sequence size_** is _at least_ **_3_**\n* **_Return_** *a\
-  \ new sequence*, such that  **_negative numbers (chaff) come first, then positive\
-  \ ones (wheat)_**.\n* In Java , *you're not allowed to modify the input Array/list/Vector*\n\
-  * **_Have no fear_** , *it is guaranteed that there will be no zeroes* . \n* **_Repetition_**\
-  \ of numbers in *the input sequence could occur* , so **_duplications are included\
-  \ when separating_**.\n* If a misplaced *positive* number is found in the front\
-  \ part of the sequence, replace it with the last misplaced negative number (the\
-  \ one found near the end of the input). The second misplaced positive number should\
-  \ be swapped with the second last misplaced negative number. *Negative numbers found\
-  \ at the head (begining) of the sequence* , **_should be kept in place_** .\n\n\
-  ____\n\n# Input >> Output Examples:\n\n```\nwheatFromChaff ({7, -8, 1 ,-2}) ==>\
-  \ return ({-2, -8, 1, 7}) \n```\n\n## **_Explanation_**:\n\n* **_Since_** `7 ` is\
-  \ a  **_positive number_** , it should not be located at the beginnig so it needs\
-  \ to be swapped with the **last negative number** `-2`.\n____\n\n```\nwheatFromChaff\
-  \ ({-31, -5, 11 , -42, -22, -46, -4, -28 }) ==> return ({-31, -5,- 28, -42, -22,\
-  \ -46 , -4, 11})\n```\n\n## **_Explanation_**:\n\n* **_Since_**, `{-31, -5} ` are\
-  \  **_negative numbers_** *found at the head (begining) of the sequence* , *so we\
-  \ keep them in place* .\n* Since `11` is a positive number, it's replaced by  the\
-  \ last negative which is `-28` , and so on till sepration is complete. \n\n____\n\
-  \n```\nwheatFromChaff ({-25, -48, -29, -25, 1, 49, -32, -19, -46, 1}) ==> return\
-  \ ({-25, -48, -29, -25, -46, -19, -32, 49, 1, 1})\n```\n\n## **_Explanation_**:\n\
-  \n* **_Since_** `{-25, -48, -29, -25} ` are  **_negative numbers_** *found at the\
-  \ head (begining) of the input* , *so we keep them in place* .\n\n* Since `1` is\
-  \ a positive number, it's replaced by  the last negative which is `-46` , and so\
-  \ on till sepration is complete. \n\n* Remeber, *duplications are included when\
-  \ separating* , that's why the number `1` appeared twice at the end of the output.\
-  \ \n____\n\n# Tune Your Code , There are 250 Assertions , 100.000 element For Each\
-  \ .\n\n# Only O(N) Complexity Solutions Will pass . \n____"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def wheat_from_chaff (xs : List Int) : List Int := sorry\n\ntheorem\
-  \ wheat_from_chaff_length \n    (xs : List Int) :\n    (wheat_from_chaff xs).length\
-  \ = xs.length := sorry\n"
-"vc-theorems": "theorem wheat_from_chaff_perm \n    (xs : List Int) : \n    List.Perm\
-  \ (wheat_from_chaff xs) xs := sorry\n\n\ntheorem wheat_from_chaff_partition\n  \
-  \  (xs : List Int)\n    (i j : Nat)\n    (hi : i < (wheat_from_chaff xs).length)\n\
-  \    (hj : j < (wheat_from_chaff xs).length)\n    (h : i < j) :\n    ((wheat_from_chaff\
-  \ xs).get ⟨i,hi⟩ ≥ 0) →\n    ((wheat_from_chaff xs).get ⟨j,hj⟩ ≥ 0) := sorry\n\n\
-  \ntheorem wheat_from_chaff_all_pos\n    (xs : List Int)\n    (h : ∀ x ∈ xs, x >\
-  \ 0) :\n    wheat_from_chaff xs = xs := sorry\n\n\ntheorem wheat_from_chaff_all_neg\n\
-  \    (xs : List Int)\n    (h : ∀ x ∈ xs, x < 0) :\n    wheat_from_chaff xs = xs\
-  \ := sorry\n\n\ntheorem wheat_from_chaff_empty :\n    wheat_from_chaff [] = [] :=\
-  \ sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  # Scenario 
+
+  With **_Cereal crops_** like wheat or rice, before we can eat the grain kernel, we need to remove that inedible hull, or *to separate the wheat from the chaff*.
+  ___
+
+  # Task
+
+  **_Given_** a *sequence of n integers* , **_separate_** *the negative numbers (chaff) from positive ones (wheat).* 
+  ___
+
+  # Notes
+
+  * **_Sequence size_** is _at least_ **_3_**
+  * **_Return_** *a new sequence*, such that  **_negative numbers (chaff) come first, then positive ones (wheat)_**.
+  * In Java , *you're not allowed to modify the input Array/list/Vector*
+  * **_Have no fear_** , *it is guaranteed that there will be no zeroes* . 
+  * **_Repetition_** of numbers in *the input sequence could occur* , so **_duplications are included when separating_**.
+  * If a misplaced *positive* number is found in the front part of the sequence, replace it with the last misplaced negative number (the one found near the end of the input). The second misplaced positive number should be swapped with the second last misplaced negative number. *Negative numbers found at the head (begining) of the sequence* , **_should be kept in place_** .
+
+  ____
+
+  # Input >> Output Examples:
+
+  ```
+  wheatFromChaff ({7, -8, 1 ,-2}) ==> return ({-2, -8, 1, 7}) 
+  ```
+
+  ## **_Explanation_**:
+
+  * **_Since_** `7 ` is a  **_positive number_** , it should not be located at the beginnig so it needs to be swapped with the **last negative number** `-2`.
+  ____
+
+  ```
+  wheatFromChaff ({-31, -5, 11 , -42, -22, -46, -4, -28 }) ==> return ({-31, -5,- 28, -42, -22, -46 , -4, 11})
+  ```
+
+  ## **_Explanation_**:
+
+  * **_Since_**, `{-31, -5} ` are  **_negative numbers_** *found at the head (begining) of the sequence* , *so we keep them in place* .
+  * Since `11` is a positive number, it's replaced by  the last negative which is `-28` , and so on till sepration is complete. 
+
+  ____
+
+  ```
+  wheatFromChaff ({-25, -48, -29, -25, 1, 49, -32, -19, -46, 1}) ==> return ({-25, -48, -29, -25, -46, -19, -32, 49, 1, 1})
+  ```
+
+  ## **_Explanation_**:
+
+  * **_Since_** `{-25, -48, -29, -25} ` are  **_negative numbers_** *found at the head (begining) of the input* , *so we keep them in place* .
+
+  * Since `1` is a positive number, it's replaced by  the last negative which is `-46` , and so on till sepration is complete. 
+
+  * Remeber, *duplications are included when separating* , that's why the number `1` appeared twice at the end of the output. 
+  ____
+
+  # Tune Your Code , There are 250 Assertions , 100.000 element For Each .
+
+  # Only O(N) Complexity Solutions Will pass . 
+  ____
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def wheat_from_chaff (xs : List Int) : List Int := sorry
+
+  theorem wheat_from_chaff_length 
+      (xs : List Int) :
+      (wheat_from_chaff xs).length = xs.length := sorry
+vc-theorems: |-
+  theorem wheat_from_chaff_perm 
+      (xs : List Int) : 
+      List.Perm (wheat_from_chaff xs) xs := sorry
+
+
+  theorem wheat_from_chaff_partition
+      (xs : List Int)
+      (i j : Nat)
+      (hi : i < (wheat_from_chaff xs).length)
+      (hj : j < (wheat_from_chaff xs).length)
+      (h : i < j) :
+      ((wheat_from_chaff xs).get ⟨i,hi⟩ ≥ 0) →
+      ((wheat_from_chaff xs).get ⟨j,hj⟩ ≥ 0) := sorry
+
+
+  theorem wheat_from_chaff_all_pos
+      (xs : List Int)
+      (h : ∀ x ∈ xs, x > 0) :
+      wheat_from_chaff xs = xs := sorry
+
+
+  theorem wheat_from_chaff_all_neg
+      (xs : List Int)
+      (h : ∀ x ∈ xs, x < 0) :
+      wheat_from_chaff xs = xs := sorry
+
+
+  theorem wheat_from_chaff_empty :
+      wheat_from_chaff [] = [] := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

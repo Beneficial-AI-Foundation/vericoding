@@ -1,37 +1,94 @@
-"vc-description": "A beautiful sequence is defined as a sequence that do not have\
-  \ any repeating elements in it.\nYou will be given any random sequence of integers,\
-  \ and you have to tell whether it is a beautiful sequence or not. \n\n-----Input:-----\n\
-  - The first line of the input contains a single integer $T$. $T$ denoting the number\
-  \ of test cases. The description of $T$ test cases is as follows.\n- The next line\
-  \ of the input contains a single integer $N$. $N$ denotes the total number of elements\
-  \ in the sequence.\n- The next line of the input contains $N$ space-separated integers\
-  \ $A1, A2, A3...An$ denoting the sequence.\n\n-----Output:-----\n- Print \"prekrasnyy\"\
-  (without quotes) if the given sequence is a beautiful sequence, else print \"ne\
-  \ krasivo\"(without quotes)\nNote: each test case output must be printed on new\
-  \ line\n\n-----Constraints:-----\n- $1 \\leq T \\leq 10^2$\n- $1 \\leq N \\leq 10^3$\n\
-  - $1 \\leq A1, A2, A3...An \\leq 10^5$\n\n-----Sample Input:-----\n2\n4\n1 2 3 4\n\
-  6\n1 2 3 5 1 4\n\n-----Sample Output:-----\nprekrasnyy\nne krasivo\n\n-----Explanation:-----\n\
-  - \nAs 1st sequence do not have any elements repeating, hence it is a beautiful\
-  \ sequence\n- \nAs in 2nd sequence the element 1 is repeated twice, hence it is\
-  \ not a beautiful sequence"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def check_sequence (n : Nat) (arr : List Int) : String := sorry\n\
-  \ntheorem check_sequence_returns_valid_output (n : Nat) (arr : List Int) :\n  n\
-  \ > 0 → arr.length > 0 →\n  (check_sequence n arr = \"prekrasnyy\" ∨ check_sequence\
-  \ n arr = \"ne krasivo\") :=\nsorry\n"
-"vc-theorems": "theorem check_sequence_prekrasnyy_implies_unique (n : Nat) (arr :\
-  \ List Int) :\n  n > 0 → arr.length > 0 →\n  check_sequence n arr = \"prekrasnyy\"\
-  \ →\n  ∀ (i : Fin arr.length) (j : Fin arr.length), \n    i.val ≠ j.val → (arr.get\
-  \ i) ≠ (arr.get j) :=\nsorry\n\n\ntheorem check_sequence_ne_krasivo_implies_duplicate\
-  \ (n : Nat) (arr : List Int) :\n  n > 0 → arr.length > 0 →\n  check_sequence n arr\
-  \ = \"ne krasivo\" →\n  ∃ (i : Fin arr.length) (j : Fin arr.length), \n    i.val\
-  \ ≠ j.val ∧ (arr.get i) = (arr.get j) :=\nsorry\n\n\ntheorem check_sequence_n_independent\
-  \ (n₁ n₂ : Nat) (arr : List Int) :\n  n₁ > 0 → n₂ > 0 → arr.length > 0 →\n  check_sequence\
-  \ n₁ arr = check_sequence n₂ arr :=\nsorry\n\n\ntheorem check_sequence_single_element\
-  \ (n : Nat) (arr : List Int) :\n  n > 0 → arr.length = 1 →\n  check_sequence n arr\
-  \ = \"prekrasnyy\" :=\nsorry\n\n/--\ninfo: 'prekrasnyy'\n-/\n#guard_msgs in\n#eval\
-  \ check_sequence 4 [1, 2, 3, 4]\n\n/--\ninfo: 'ne krasivo'\n-/\n#guard_msgs in\n\
-  #eval check_sequence 6 [1, 2, 3, 5, 1, 4]\n\n/--\ninfo: 'prekrasnyy'\n-/\n#guard_msgs\
-  \ in\n#eval check_sequence 1 [1]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  A beautiful sequence is defined as a sequence that do not have any repeating elements in it.
+  You will be given any random sequence of integers, and you have to tell whether it is a beautiful sequence or not. 
+
+  -----Input:-----
+  - The first line of the input contains a single integer $T$. $T$ denoting the number of test cases. The description of $T$ test cases is as follows.
+  - The next line of the input contains a single integer $N$. $N$ denotes the total number of elements in the sequence.
+  - The next line of the input contains $N$ space-separated integers $A1, A2, A3...An$ denoting the sequence.
+
+  -----Output:-----
+  - Print "prekrasnyy"(without quotes) if the given sequence is a beautiful sequence, else print "ne krasivo"(without quotes)
+  Note: each test case output must be printed on new line
+
+  -----Constraints:-----
+  - $1 \leq T \leq 10^2$
+  - $1 \leq N \leq 10^3$
+  - $1 \leq A1, A2, A3...An \leq 10^5$
+
+  -----Sample Input:-----
+  2
+  4
+  1 2 3 4
+  6
+  1 2 3 5 1 4
+
+  -----Sample Output:-----
+  prekrasnyy
+  ne krasivo
+
+  -----Explanation:-----
+  - 
+  As 1st sequence do not have any elements repeating, hence it is a beautiful sequence
+  - 
+  As in 2nd sequence the element 1 is repeated twice, hence it is not a beautiful sequence
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def check_sequence (n : Nat) (arr : List Int) : String := sorry
+
+  theorem check_sequence_returns_valid_output (n : Nat) (arr : List Int) :
+    n > 0 → arr.length > 0 →
+    (check_sequence n arr = "prekrasnyy" ∨ check_sequence n arr = "ne krasivo") :=
+  sorry
+vc-theorems: |
+  theorem check_sequence_prekrasnyy_implies_unique (n : Nat) (arr : List Int) :
+    n > 0 → arr.length > 0 →
+    check_sequence n arr = "prekrasnyy" →
+    ∀ (i : Fin arr.length) (j : Fin arr.length), 
+      i.val ≠ j.val → (arr.get i) ≠ (arr.get j) :=
+  sorry
+
+
+  theorem check_sequence_ne_krasivo_implies_duplicate (n : Nat) (arr : List Int) :
+    n > 0 → arr.length > 0 →
+    check_sequence n arr = "ne krasivo" →
+    ∃ (i : Fin arr.length) (j : Fin arr.length), 
+      i.val ≠ j.val ∧ (arr.get i) = (arr.get j) :=
+  sorry
+
+
+  theorem check_sequence_n_independent (n₁ n₂ : Nat) (arr : List Int) :
+    n₁ > 0 → n₂ > 0 → arr.length > 0 →
+    check_sequence n₁ arr = check_sequence n₂ arr :=
+  sorry
+
+
+  theorem check_sequence_single_element (n : Nat) (arr : List Int) :
+    n > 0 → arr.length = 1 →
+    check_sequence n arr = "prekrasnyy" :=
+  sorry
+
+  /--
+  info: 'prekrasnyy'
+  -/
+  #guard_msgs in
+  #eval check_sequence 4 [1, 2, 3, 4]
+
+  /--
+  info: 'ne krasivo'
+  -/
+  #guard_msgs in
+  #eval check_sequence 6 [1, 2, 3, 5, 1, 4]
+
+  /--
+  info: 'prekrasnyy'
+  -/
+  #guard_msgs in
+  #eval check_sequence 1 [1]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

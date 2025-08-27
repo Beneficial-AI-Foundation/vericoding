@@ -1,29 +1,70 @@
-"vc-description": "Chef gives an integer $K$ in the input.  If the given number is\
-  \ beautiful binary number, print it, Else find its previous beautiful binary number.\
-  \ A beautiful binary number is a number whose binary representation does not contain\
-  \ any consecutive 1s.\nNote: 1 is also a beautiful binary number.\n\n-----Input:-----\n\
-  - First-line will contain $T$, the number of test cases. Then the test cases follow.\
-  \ \n- Each test case contains a single line of input, one integer $K$. \n\n-----Output:-----\n\
-  For each test case, print a beautiful number.\n\n-----Constraints-----\n- $1 \\\
-  leq T \\leq 10^5$\n- $1 \\leq K \\leq 10^5$\n\n-----Sample Input:-----\n3\n3\n6\n\
-  8\n\n-----Sample Output:-----\n2\n5\n8\n\n-----EXPLANATION:-----\nFor 1) 3 is not\
-  \ a beautiful binary number because the binary representation of 3 is \"11\" which\
-  \ has consecutive 1s.  hence 2 which is less than 3 is printed.\nFor 3) 8 is already\
-  \ a beautiful binary number with no consecutive 1s in its binary representation.\
-  \ so, print 8 as it is."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def consecutiveSum (arr : List Int) : List String := sorry\n\n\
-  theorem length_property (arr : List Int) \n    (h : arr.length ≥ 3) :\n    (consecutiveSum\
-  \ arr).length = arr.length - 2 := sorry\n"
-"vc-theorems": "theorem all_strings (arr : List Int) \n    (h : arr.length ≥ 3) :\n\
-  \    ∀ x ∈ consecutiveSum arr, x.length ≥ 1 := sorry\n\n\ntheorem sum_property (arr\
-  \ : List Int)\n    (h : arr.length ≥ 3)\n    (i : Nat)\n    (hi : i < arr.length\
-  \ - 2) :\n    ∀ x ∈ consecutiveSum arr, String.toInt! x = \n      arr[i]! + arr[i+1]!\
-  \ + arr[i+2]! := sorry\n\n\ntheorem monotonic_positive (arr : List Int)\n    (h\
-  \ : arr.length ≥ 3)\n    (h2 : ∀ x ∈ arr, x ≥ 0)\n    (i : Nat)\n    (hi : i < arr.length\
-  \ - 2) :\n    String.toInt! (consecutiveSum arr)[i]! ≥ \n      min arr[i]! (min\
-  \ arr[i+1]! arr[i+2]!) := sorry\n\n\ntheorem all_zeros (arr : List Int)\n    (h\
-  \ : arr.length ≥ 3)\n    (h2 : ∀ x ∈ arr, x = 0) :\n    ∀ x ∈ consecutiveSum arr,\
-  \ x = \"0\" := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Chef gives an integer $K$ in the input.  If the given number is beautiful binary number, print it, Else find its previous beautiful binary number. A beautiful binary number is a number whose binary representation does not contain any consecutive 1s.
+  Note: 1 is also a beautiful binary number.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+
+  -----Output:-----
+  For each test case, print a beautiful number.
+
+  -----Constraints-----
+  - $1 \leq T \leq 10^5$
+  - $1 \leq K \leq 10^5$
+
+  -----Sample Input:-----
+  3
+  3
+  6
+  8
+
+  -----Sample Output:-----
+  2
+  5
+  8
+
+  -----EXPLANATION:-----
+  For 1) 3 is not a beautiful binary number because the binary representation of 3 is "11" which has consecutive 1s.  hence 2 which is less than 3 is printed.
+  For 3) 8 is already a beautiful binary number with no consecutive 1s in its binary representation. so, print 8 as it is.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def consecutiveSum (arr : List Int) : List String := sorry
+
+  theorem length_property (arr : List Int) 
+      (h : arr.length ≥ 3) :
+      (consecutiveSum arr).length = arr.length - 2 := sorry
+vc-theorems: |-
+  theorem all_strings (arr : List Int) 
+      (h : arr.length ≥ 3) :
+      ∀ x ∈ consecutiveSum arr, x.length ≥ 1 := sorry
+
+
+  theorem sum_property (arr : List Int)
+      (h : arr.length ≥ 3)
+      (i : Nat)
+      (hi : i < arr.length - 2) :
+      ∀ x ∈ consecutiveSum arr, String.toInt! x = 
+        arr[i]! + arr[i+1]! + arr[i+2]! := sorry
+
+
+  theorem monotonic_positive (arr : List Int)
+      (h : arr.length ≥ 3)
+      (h2 : ∀ x ∈ arr, x ≥ 0)
+      (i : Nat)
+      (hi : i < arr.length - 2) :
+      String.toInt! (consecutiveSum arr)[i]! ≥ 
+        min arr[i]! (min arr[i+1]! arr[i+2]!) := sorry
+
+
+  theorem all_zeros (arr : List Int)
+      (h : arr.length ≥ 3)
+      (h2 : ∀ x ∈ arr, x = 0) :
+      ∀ x ∈ consecutiveSum arr, x = "0" := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

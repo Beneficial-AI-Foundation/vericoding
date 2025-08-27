@@ -1,25 +1,79 @@
-"vc-description": "The magic sum of 3s is calculated on an array by summing up odd\
-  \ numbers which include the digit `3`. Write a function `magic_sum` which accepts\
-  \ an array of integers and returns the sum.\n\n*Example:* `[3, 12, 5, 8, 30, 13]`\
-  \ results in `16` (`3` + `13`)\n\nIf the sum cannot be calculated, `0` should be\
-  \ returned."
-"vc-preamble": "import Imports.AllImports\n\ndef containsThree (n : Int) : Bool :=\
-  \ \n  sorry\n\n\ndef magicSum (nums : List Int) : Int := \n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sumList (nums : List Int) : Int :=\n  sorry \n"
-"vc-theorems": "theorem magic_sum_filtering_contributing (nums : List Int) :\n  let\
-  \ contributing := nums.filter (fun x => x % 2 = 1 ∧ containsThree x)\n  contributing\
-  \ ≠ [] → magicSum nums = magicSum contributing := by\n  sorry\n\n\ntheorem magic_sum_filtering_non_contributing\
-  \ (nums : List Int) :\n  let non_contributing := nums.filter (fun x => x % 2 = 0\
-  \ ∨ ¬containsThree x) \n  magicSum non_contributing = 0 := by\n  sorry\n\n\ntheorem\
-  \ magic_sum_order_invariant (nums : List Int) :\n  magicSum nums = magicSum nums.reverse\
-  \ := by\n  sorry\n\n\ntheorem magic_sum_duplicates (nums : List Int) :\n  magicSum\
-  \ (nums ++ nums) = 2 * magicSum nums := by\n  sorry\n\n\ntheorem magic_sum_empty\
-  \ :\n  magicSum [] = 0 := by\n  sorry\n\n\ntheorem magic_sum_valid_sum (nums : List\
-  \ Int) :\n  let valid := nums.filter (fun x => x % 2 = 1 ∧ containsThree x)\n  valid\
-  \ ≠ [] → magicSum nums = sumList valid := by\n  sorry\n\n\ntheorem magic_sum_all_invalid\
-  \ (nums : List Int) :\n  (∀ x ∈ nums, x % 2 = 0 ∨ ¬containsThree x) → magicSum nums\
-  \ = 0 := by\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval magic_sum [3]\n\n\
-  /--\ninfo: 16\n-/\n#guard_msgs in\n#eval magic_sum [3, 13]\n\n/--\ninfo: 16\n-/\n\
-  #guard_msgs in\n#eval magic_sum [3, 12, 5, 8, 30, 13]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  The magic sum of 3s is calculated on an array by summing up odd numbers which include the digit `3`. Write a function `magic_sum` which accepts an array of integers and returns the sum.
+
+  *Example:* `[3, 12, 5, 8, 30, 13]` results in `16` (`3` + `13`)
+
+  If the sum cannot be calculated, `0` should be returned.
+vc-preamble: |
+  import Imports.AllImports
+
+  def containsThree (n : Int) : Bool := 
+    sorry
+
+
+  def magicSum (nums : List Int) : Int := 
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sumList (nums : List Int) : Int :=
+    sorry 
+vc-theorems: |
+  theorem magic_sum_filtering_contributing (nums : List Int) :
+    let contributing := nums.filter (fun x => x % 2 = 1 ∧ containsThree x)
+    contributing ≠ [] → magicSum nums = magicSum contributing := by
+    sorry
+
+
+  theorem magic_sum_filtering_non_contributing (nums : List Int) :
+    let non_contributing := nums.filter (fun x => x % 2 = 0 ∨ ¬containsThree x) 
+    magicSum non_contributing = 0 := by
+    sorry
+
+
+  theorem magic_sum_order_invariant (nums : List Int) :
+    magicSum nums = magicSum nums.reverse := by
+    sorry
+
+
+  theorem magic_sum_duplicates (nums : List Int) :
+    magicSum (nums ++ nums) = 2 * magicSum nums := by
+    sorry
+
+
+  theorem magic_sum_empty :
+    magicSum [] = 0 := by
+    sorry
+
+
+  theorem magic_sum_valid_sum (nums : List Int) :
+    let valid := nums.filter (fun x => x % 2 = 1 ∧ containsThree x)
+    valid ≠ [] → magicSum nums = sumList valid := by
+    sorry
+
+
+  theorem magic_sum_all_invalid (nums : List Int) :
+    (∀ x ∈ nums, x % 2 = 0 ∨ ¬containsThree x) → magicSum nums = 0 := by
+    sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval magic_sum [3]
+
+  /--
+  info: 16
+  -/
+  #guard_msgs in
+  #eval magic_sum [3, 13]
+
+  /--
+  info: 16
+  -/
+  #guard_msgs in
+  #eval magic_sum [3, 12, 5, 8, 30, 13]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

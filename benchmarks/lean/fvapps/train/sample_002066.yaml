@@ -1,68 +1,131 @@
-"vc-description": "Polycarp is making a quest for his friends. He has already made\
-  \ n tasks, for each task the boy evaluated how interesting it is as an integer q_{i},\
-  \ and the time t_{i} in minutes needed to complete the task. \n\nAn interesting\
-  \ feature of his quest is: each participant should get the task that is best suited\
-  \ for him, depending on his preferences. The task is chosen based on an interactive\
-  \ quiz that consists of some questions. The player should answer these questions\
-  \ with \"yes\" or \"no\". Depending on the answer to the question, the participant\
-  \ either moves to another question or goes to one of the tasks that are in the quest.\
-  \ In other words, the quest is a binary tree, its nodes contain questions and its\
-  \ leaves contain tasks. \n\nWe know that answering any of the questions that are\
-  \ asked before getting a task takes exactly one minute from the quest player. Polycarp\
-  \ knows that his friends are busy people and they can't participate in the quest\
-  \ for more than T minutes. Polycarp wants to choose some of the n tasks he made,\
-  \ invent the corresponding set of questions for them and use them to form an interactive\
-  \ quiz as a binary tree so that no matter how the player answers quiz questions,\
-  \ he spends at most T minutes on completing the whole quest (that is, answering\
-  \ all the questions and completing the task). Specifically, the quest can contain\
-  \ zero questions and go straight to the task. Each task can only be used once (i.e.,\
-  \ the people who give different answers to questions should get different tasks).\n\
-  \nPolycarp wants the total \"interest\" value of the tasks involved in the quest\
-  \ to be as large as possible. Help him determine the maximum possible total interest\
-  \ value of the task considering that the quest should be completed in T minutes\
-  \ at any variant of answering questions.\n\n\n-----Input-----\n\nThe first line\
-  \ contains two integers n and T (1 ≤ n ≤ 1000, 1 ≤ T ≤ 100) — the number of tasks\
-  \ made by Polycarp and the maximum time a quest player should fit into.\n\nNext\
-  \ n lines contain two integers t_{i}, q_{i} (1 ≤ t_{i} ≤ T, 1 ≤ q_{i} ≤ 1000) each\
-  \ — the time in minutes needed to complete the i-th task and its interest value.\n\
-  \n\n-----Output-----\n\nPrint a single integer — the maximum possible total interest\
-  \ value of all the tasks in the quest.\n\n\n-----Examples-----\nInput\n5 5\n1 1\n\
-  1 1\n2 2\n3 3\n4 4\n\nOutput\n11\n\nInput\n5 5\n4 1\n4 2\n4 3\n4 4\n4 5\n\nOutput\n\
-  9\n\nInput\n2 2\n1 1\n2 10\n\nOutput\n10\n\n\n\n-----Note-----\n\nIn the first sample\
-  \ test all the five tasks can be complemented with four questions and joined into\
-  \ one quest.\n\nIn the second sample test it is impossible to use all the five tasks,\
-  \ but you can take two of them, the most interesting ones.\n\nIn the third sample\
-  \ test the optimal strategy is to include only the second task into the quest.\n\
-  \nHere is the picture that illustrates the answers to the sample tests. The blue\
-  \ circles represent the questions, the two arrows that go from every circle represent\
-  \ where a person goes depending on his answer to that question. The tasks are the\
-  \ red ovals. [Image]"
-"vc-preamble": "import Imports.AllImports\n\ndef List.sum (l : List Nat) : Nat :=\n\
-  \  match l with\n  | [] => 0\n  | x :: xs => x + sum xs\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def List.sort (lt : α → α → Bool) (l : List α) : List α := sorry\n\
-  \ndef max_quest_interest (n : Nat) (T : Nat) (tasks : List (Nat × Nat)) : Nat :=\
-  \ sorry\n"
-"vc-theorems": "theorem max_quest_interest_non_negative (n T : Nat) (tasks : List\
-  \ (Nat × Nat)) :\n  max_quest_interest n T tasks ≥ 0 := sorry\n\n\ntheorem max_quest_interest_bounded_by_sum\
-  \ (n T : Nat) (tasks : List (Nat × Nat)) :\n  let interest_values := tasks.map (fun\
-  \ p => p.2)\n  max_quest_interest n T tasks ≤ interest_values.sum := sorry\n\n\n\
-  theorem max_quest_interest_time_constraint (n T : Nat) (tasks : List (Nat × Nat))\
-  \ :\n  let max_possible := min n (2^T)\n  let interest_values := tasks.map (fun\
-  \ p => p.2)\n  let sorted_interests := interest_values.sort (fun a b => b ≤ a)\n\
-  \  let max_interests := sorted_interests.take max_possible\n  max_quest_interest\
-  \ n T tasks ≤ max_interests.sum := sorry\n\n\ntheorem same_time_tasks_property (n\
-  \ T : Nat) (tasks : List (Nat × Nat)) \n    (h : ∀ t ∈ tasks.map Prod.fst, t = 1)\
-  \ :\n  let interest_values := tasks.map (fun p => p.2)\n  let sorted_interests :=\
-  \ interest_values.sort (fun a b => b ≤ a)\n  let feasible_interests := sorted_interests.take\
-  \ (2^(T-1))\n  max_quest_interest n T tasks ≤ feasible_interests.sum := sorry\n\n\
-  \ntheorem small_time_constraint_property (n T : Nat) (tasks : List (Nat × Nat))\
-  \ (h : T ≤ 4) :\n  let max_quests := 2^(T-1)\n  let interest_values := tasks.map\
-  \ (fun p => p.2)\n  let sorted_interests := interest_values.sort (fun a b => b ≤\
-  \ a)\n  let max_interests := sorted_interests.take max_quests\n  max_quest_interest\
-  \ n T tasks ≤ max_interests.sum := sorry\n\n/--\ninfo: 11\n-/\n#guard_msgs in\n\
-  #eval max_quest_interest 5 5 [(1, 1), (1, 1), (2, 2), (3, 3), (4, 4)]\n\n/--\ninfo:\
-  \ 9\n-/\n#guard_msgs in\n#eval max_quest_interest 5 5 [(4, 1), (4, 2), (4, 3), (4,\
-  \ 4), (4, 5)]\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval max_quest_interest 2 2\
-  \ [(1, 1), (2, 10)]\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"
+vc-description: |-
+  Polycarp is making a quest for his friends. He has already made n tasks, for each task the boy evaluated how interesting it is as an integer q_{i}, and the time t_{i} in minutes needed to complete the task. 
+
+  An interesting feature of his quest is: each participant should get the task that is best suited for him, depending on his preferences. The task is chosen based on an interactive quiz that consists of some questions. The player should answer these questions with "yes" or "no". Depending on the answer to the question, the participant either moves to another question or goes to one of the tasks that are in the quest. In other words, the quest is a binary tree, its nodes contain questions and its leaves contain tasks. 
+
+  We know that answering any of the questions that are asked before getting a task takes exactly one minute from the quest player. Polycarp knows that his friends are busy people and they can't participate in the quest for more than T minutes. Polycarp wants to choose some of the n tasks he made, invent the corresponding set of questions for them and use them to form an interactive quiz as a binary tree so that no matter how the player answers quiz questions, he spends at most T minutes on completing the whole quest (that is, answering all the questions and completing the task). Specifically, the quest can contain zero questions and go straight to the task. Each task can only be used once (i.e., the people who give different answers to questions should get different tasks).
+
+  Polycarp wants the total "interest" value of the tasks involved in the quest to be as large as possible. Help him determine the maximum possible total interest value of the task considering that the quest should be completed in T minutes at any variant of answering questions.
+
+
+  -----Input-----
+
+  The first line contains two integers n and T (1 ≤ n ≤ 1000, 1 ≤ T ≤ 100) — the number of tasks made by Polycarp and the maximum time a quest player should fit into.
+
+  Next n lines contain two integers t_{i}, q_{i} (1 ≤ t_{i} ≤ T, 1 ≤ q_{i} ≤ 1000) each — the time in minutes needed to complete the i-th task and its interest value.
+
+
+  -----Output-----
+
+  Print a single integer — the maximum possible total interest value of all the tasks in the quest.
+
+
+  -----Examples-----
+  Input
+  5 5
+  1 1
+  1 1
+  2 2
+  3 3
+  4 4
+
+  Output
+  11
+
+  Input
+  5 5
+  4 1
+  4 2
+  4 3
+  4 4
+  4 5
+
+  Output
+  9
+
+  Input
+  2 2
+  1 1
+  2 10
+
+  Output
+  10
+
+
+
+  -----Note-----
+
+  In the first sample test all the five tasks can be complemented with four questions and joined into one quest.
+
+  In the second sample test it is impossible to use all the five tasks, but you can take two of them, the most interesting ones.
+
+  In the third sample test the optimal strategy is to include only the second task into the quest.
+
+  Here is the picture that illustrates the answers to the sample tests. The blue circles represent the questions, the two arrows that go from every circle represent where a person goes depending on his answer to that question. The tasks are the red ovals. [Image]
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.sum (l : List Nat) : Nat :=
+    match l with
+    | [] => 0
+    | x :: xs => x + sum xs
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def List.sort (lt : α → α → Bool) (l : List α) : List α := sorry
+
+  def max_quest_interest (n : Nat) (T : Nat) (tasks : List (Nat × Nat)) : Nat := sorry
+vc-theorems: |
+  theorem max_quest_interest_non_negative (n T : Nat) (tasks : List (Nat × Nat)) :
+    max_quest_interest n T tasks ≥ 0 := sorry
+
+
+  theorem max_quest_interest_bounded_by_sum (n T : Nat) (tasks : List (Nat × Nat)) :
+    let interest_values := tasks.map (fun p => p.2)
+    max_quest_interest n T tasks ≤ interest_values.sum := sorry
+
+
+  theorem max_quest_interest_time_constraint (n T : Nat) (tasks : List (Nat × Nat)) :
+    let max_possible := min n (2^T)
+    let interest_values := tasks.map (fun p => p.2)
+    let sorted_interests := interest_values.sort (fun a b => b ≤ a)
+    let max_interests := sorted_interests.take max_possible
+    max_quest_interest n T tasks ≤ max_interests.sum := sorry
+
+
+  theorem same_time_tasks_property (n T : Nat) (tasks : List (Nat × Nat)) 
+      (h : ∀ t ∈ tasks.map Prod.fst, t = 1) :
+    let interest_values := tasks.map (fun p => p.2)
+    let sorted_interests := interest_values.sort (fun a b => b ≤ a)
+    let feasible_interests := sorted_interests.take (2^(T-1))
+    max_quest_interest n T tasks ≤ feasible_interests.sum := sorry
+
+
+  theorem small_time_constraint_property (n T : Nat) (tasks : List (Nat × Nat)) (h : T ≤ 4) :
+    let max_quests := 2^(T-1)
+    let interest_values := tasks.map (fun p => p.2)
+    let sorted_interests := interest_values.sort (fun a b => b ≤ a)
+    let max_interests := sorted_interests.take max_quests
+    max_quest_interest n T tasks ≤ max_interests.sum := sorry
+
+  /--
+  info: 11
+  -/
+  #guard_msgs in
+  #eval max_quest_interest 5 5 [(1, 1), (1, 1), (2, 2), (3, 3), (4, 4)]
+
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval max_quest_interest 5 5 [(4, 1), (4, 2), (4, 3), (4, 4), (4, 5)]
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval max_quest_interest 2 2 [(1, 1), (2, 10)]
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded

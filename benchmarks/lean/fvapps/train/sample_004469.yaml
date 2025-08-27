@@ -1,16 +1,47 @@
-"vc-description": "Write a method that takes one argument as name and then greets\
-  \ that name, capitalized and ends with an exclamation point.\n\nExample:\n\n```\n\
-  \"riley\" --> \"Hello Riley!\"\n\"JACK\"  --> \"Hello Jack!\"\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def greet (name : String) : String := sorry\n\ntheorem greet_starts_with_hello\
-  \ (name : String) (h : name.length > 0) :\n  (greet name).startsWith \"Hello \"\
-  \ = true := sorry\n"
-"vc-theorems": "theorem greet_ends_with_exclamation (name : String) (h : name.length\
-  \ > 0) :\n  (greet name).endsWith \"!\" = true := sorry\n\n\ntheorem greet_contains_capitalized_name\
-  \ (name : String) (h : name.length > 0) :\n  ((greet name).drop \"Hello \".length).dropRight\
-  \ 1 = name.capitalize := sorry\n\n/--\ninfo: 'Hello Riley!'\n-/\n#guard_msgs in\n\
-  #eval greet \"riley\"\n\n/--\ninfo: 'Hello Molly!'\n-/\n#guard_msgs in\n#eval greet\
-  \ \"molly\"\n\n/--\ninfo: 'Hello Billy!'\n-/\n#guard_msgs in\n#eval greet \"BILLY\"\
-  \n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a method that takes one argument as name and then greets that name, capitalized and ends with an exclamation point.
+
+  Example:
+
+  ```
+  "riley" --> "Hello Riley!"
+  "JACK"  --> "Hello Jack!"
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def greet (name : String) : String := sorry
+
+  theorem greet_starts_with_hello (name : String) (h : name.length > 0) :
+    (greet name).startsWith "Hello " = true := sorry
+vc-theorems: |
+  theorem greet_ends_with_exclamation (name : String) (h : name.length > 0) :
+    (greet name).endsWith "!" = true := sorry
+
+
+  theorem greet_contains_capitalized_name (name : String) (h : name.length > 0) :
+    ((greet name).drop "Hello ".length).dropRight 1 = name.capitalize := sorry
+
+  /--
+  info: 'Hello Riley!'
+  -/
+  #guard_msgs in
+  #eval greet "riley"
+
+  /--
+  info: 'Hello Molly!'
+  -/
+  #guard_msgs in
+  #eval greet "molly"
+
+  /--
+  info: 'Hello Billy!'
+  -/
+  #guard_msgs in
+  #eval greet "BILLY"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

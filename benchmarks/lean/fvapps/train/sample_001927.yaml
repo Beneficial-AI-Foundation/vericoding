@@ -1,28 +1,98 @@
-"vc-description": "A permutation p of size n is the sequence p_1, p_2, ..., p_{n},\
-  \ consisting of n distinct integers, each of them is from 1 to n (1 ≤ p_{i} ≤ n).\n\
-  \nA lucky permutation is such permutation p, that any integer i (1 ≤ i ≤ n) meets\
-  \ this condition p_{p}_{i} = n - i + 1.\n\nYou have integer n. Find some lucky permutation\
-  \ p of size n.\n\n\n-----Input-----\n\nThe first line contains integer n (1 ≤ n\
-  \ ≤ 10^5) — the required permutation size.\n\n\n-----Output-----\n\nPrint \"-1\"\
-  \ (without the quotes) if the lucky permutation p of size n doesn't exist.\n\nOtherwise,\
-  \ print n distinct integers p_1, p_2, ..., p_{n} (1 ≤ p_{i} ≤ n) after a space —\
-  \ the required permutation.\n\nIf there are multiple answers, you can print any\
-  \ of them.\n\n\n-----Examples-----\nInput\n1\n\nOutput\n1 \n\nInput\n2\n\nOutput\n\
-  -1\n\nInput\n4\n\nOutput\n2 4 1 3 \n\nInput\n5\n\nOutput\n2 5 3 1 4"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_lucky_permutation (n : Nat) : Option (List Nat) := sorry\n\
-  \ntheorem length_property {n : Nat} {result : List Nat} \n  (h : find_lucky_permutation\
-  \ n = some result) : \n    result.length = n ∧ \n    (∃ m, result.minimum? = some\
-  \ m ∧ m = 1) ∧\n    (∃ m, result.maximum? = some m ∧ m = n) ∧\n    (∀ x ∈ result,\
-  \ ∀ y ∈ result, x = y → result.find? (·= x) = result.find? (·= y)) := sorry\n"
-"vc-theorems": "theorem negative_cases :\n  find_lucky_permutation 2 = none ∧ \n \
-  \ find_lucky_permutation 3 = none ∧\n  find_lucky_permutation 6 = none ∧\n  find_lucky_permutation\
-  \ 7 = none := sorry\n\n\ntheorem small_valid_cases :\n  find_lucky_permutation 1\
-  \ = some [1] ∧\n  (∃ result, find_lucky_permutation 4 = some result ∧ \n    result.length\
-  \ = 4 ∧\n    (∃ l, l = [1,2,3,4] ∧ ∀ x ∈ result, x ∈ l)) := sorry\n\ntheorem divisibility_rule\
-  \ {n : Nat} \n  (h : n % 4 > 1) :\n  find_lucky_permutation n = none := sorry\n\n\
-  /--\ninfo: [1]\n-/\n#guard_msgs in\n#eval find_lucky_permutation 1\n\n/--\ninfo:\
-  \ -1\n-/\n#guard_msgs in\n#eval find_lucky_permutation 2\n\n/--\ninfo: [2, 4, 1,\
-  \ 3]\n-/\n#guard_msgs in\n#eval find_lucky_permutation 4\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"
+vc-description: |-
+  A permutation p of size n is the sequence p_1, p_2, ..., p_{n}, consisting of n distinct integers, each of them is from 1 to n (1 ≤ p_{i} ≤ n).
+
+  A lucky permutation is such permutation p, that any integer i (1 ≤ i ≤ n) meets this condition p_{p}_{i} = n - i + 1.
+
+  You have integer n. Find some lucky permutation p of size n.
+
+
+  -----Input-----
+
+  The first line contains integer n (1 ≤ n ≤ 10^5) — the required permutation size.
+
+
+  -----Output-----
+
+  Print "-1" (without the quotes) if the lucky permutation p of size n doesn't exist.
+
+  Otherwise, print n distinct integers p_1, p_2, ..., p_{n} (1 ≤ p_{i} ≤ n) after a space — the required permutation.
+
+  If there are multiple answers, you can print any of them.
+
+
+  -----Examples-----
+  Input
+  1
+
+  Output
+  1 
+
+  Input
+  2
+
+  Output
+  -1
+
+  Input
+  4
+
+  Output
+  2 4 1 3 
+
+  Input
+  5
+
+  Output
+  2 5 3 1 4
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_lucky_permutation (n : Nat) : Option (List Nat) := sorry
+
+  theorem length_property {n : Nat} {result : List Nat} 
+    (h : find_lucky_permutation n = some result) : 
+      result.length = n ∧ 
+      (∃ m, result.minimum? = some m ∧ m = 1) ∧
+      (∃ m, result.maximum? = some m ∧ m = n) ∧
+      (∀ x ∈ result, ∀ y ∈ result, x = y → result.find? (·= x) = result.find? (·= y)) := sorry
+vc-theorems: |
+  theorem negative_cases :
+    find_lucky_permutation 2 = none ∧ 
+    find_lucky_permutation 3 = none ∧
+    find_lucky_permutation 6 = none ∧
+    find_lucky_permutation 7 = none := sorry
+
+
+  theorem small_valid_cases :
+    find_lucky_permutation 1 = some [1] ∧
+    (∃ result, find_lucky_permutation 4 = some result ∧ 
+      result.length = 4 ∧
+      (∃ l, l = [1,2,3,4] ∧ ∀ x ∈ result, x ∈ l)) := sorry
+
+  theorem divisibility_rule {n : Nat} 
+    (h : n % 4 > 1) :
+    find_lucky_permutation n = none := sorry
+
+  /--
+  info: [1]
+  -/
+  #guard_msgs in
+  #eval find_lucky_permutation 1
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval find_lucky_permutation 2
+
+  /--
+  info: [2, 4, 1, 3]
+  -/
+  #guard_msgs in
+  #eval find_lucky_permutation 4
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded

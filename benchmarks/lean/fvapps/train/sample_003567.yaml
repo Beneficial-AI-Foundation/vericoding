@@ -1,22 +1,65 @@
-"vc-description": "Given an array of numbers, return an array, with each member of\
-  \ input array rounded to a nearest number, divisible by 5.\n\nFor example:\n```\n\
-  roundToFive([34.5, 56.2, 11, 13]);\n```\nshould return\n```\n[35, 55, 10, 15]\n\
-  ```\n\n```if:python\nRoundings have to be done like \"in real life\": `22.5 -> 25`\n\
-  ```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def round_to_five (numbers : List Float) : List Float := sorry\n\
-  \ntheorem round_to_five_multiple_of_five (numbers : List Float) :\n  let result\
-  \ := round_to_five numbers\n  ∀ x ∈ result, ∃ n : Float, x = n * 5 := sorry \n"
-"vc-theorems": "theorem round_to_five_close_to_original (numbers : List Float) :\n\
-  \  let result := round_to_five numbers\n  ∀ (orig rounded : Float), \n    orig ∈\
-  \ numbers → rounded ∈ result →\n    Float.abs (orig - rounded) ≤ 2.5 := sorry\n\n\
-  \ntheorem round_to_five_preserves_length (numbers : List Float) :\n  List.length\
-  \ (round_to_five numbers) = List.length numbers := sorry\n\n\ntheorem round_to_five_empty\
-  \ :\n  round_to_five [] = [] := sorry\n\n\ntheorem round_to_five_exact_multiples\
-  \ (n : Float) :\n  round_to_five [n * 5] = [n * 5] := sorry\n\n/--\ninfo: [0, 5,\
-  \ 85, 45, 10, 10]\n-/\n#guard_msgs in\n#eval round_to_five [1, 5, 87, 45, 8, 8]\n\
-  \n/--\ninfo: [5, 55, 10, 15]\n-/\n#guard_msgs in\n#eval round_to_five [3, 56.2,\
-  \ 11, 13]\n\n/--\ninfo: [25, 545, 80]\n-/\n#guard_msgs in\n#eval round_to_five [22.5,\
-  \ 544.9, 77.5]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an array of numbers, return an array, with each member of input array rounded to a nearest number, divisible by 5.
+
+  For example:
+  ```
+  roundToFive([34.5, 56.2, 11, 13]);
+  ```
+  should return
+  ```
+  [35, 55, 10, 15]
+  ```
+
+  ```if:python
+  Roundings have to be done like "in real life": `22.5 -> 25`
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def round_to_five (numbers : List Float) : List Float := sorry
+
+  theorem round_to_five_multiple_of_five (numbers : List Float) :
+    let result := round_to_five numbers
+    ∀ x ∈ result, ∃ n : Float, x = n * 5 := sorry 
+vc-theorems: |
+  theorem round_to_five_close_to_original (numbers : List Float) :
+    let result := round_to_five numbers
+    ∀ (orig rounded : Float), 
+      orig ∈ numbers → rounded ∈ result →
+      Float.abs (orig - rounded) ≤ 2.5 := sorry
+
+
+  theorem round_to_five_preserves_length (numbers : List Float) :
+    List.length (round_to_five numbers) = List.length numbers := sorry
+
+
+  theorem round_to_five_empty :
+    round_to_five [] = [] := sorry
+
+
+  theorem round_to_five_exact_multiples (n : Float) :
+    round_to_five [n * 5] = [n * 5] := sorry
+
+  /--
+  info: [0, 5, 85, 45, 10, 10]
+  -/
+  #guard_msgs in
+  #eval round_to_five [1, 5, 87, 45, 8, 8]
+
+  /--
+  info: [5, 55, 10, 15]
+  -/
+  #guard_msgs in
+  #eval round_to_five [3, 56.2, 11, 13]
+
+  /--
+  info: [25, 545, 80]
+  -/
+  #guard_msgs in
+  #eval round_to_five [22.5, 544.9, 77.5]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

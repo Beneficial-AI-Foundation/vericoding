@@ -1,23 +1,63 @@
-"vc-description": "A trick I learned in elementary school to determine whether or\
-  \ not a number was divisible by three is to add all of the integers in the number\
-  \ together and to divide the resulting sum by three. If there is no remainder from\
-  \ dividing the sum by three, then the original number is divisible by three as well.\n\
-  \nGiven a series of numbers as a string, determine if the number represented by\
-  \ the string is divisible by three.\n\nYou can expect all test case arguments to\
-  \ be strings representing values greater than 0. \n\nExample:\n\n```\n\"123\"  \
-  \    -> true\n\"8409\"     -> true\n\"100853\"   -> false\n\"33333333\" -> true\n\
-  \"7\"        -> false\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef divisible_by_three (s : String) :\
-  \ Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def digit_sum (s : String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem divisible_by_three_matches_mod (n : Nat) :\n  divisible_by_three\
-  \ (toString n) = (n % 3 = 0) :=\n  sorry\n\n\ntheorem divisible_by_three_digit_sum\
-  \ (n : Nat) :\n  divisible_by_three (toString n) = (digit_sum (toString n) % 3 =\
-  \ 0) :=\n  sorry\n\n\ntheorem append_zeros_preserves_divisibility (n : Nat) (k :\
-  \ Nat) (h : 0 < k ∧ k ≤ 10) :\n  divisible_by_three (toString n ++ String.mk (List.replicate\
-  \ k '0')) = \n  divisible_by_three (toString n) :=\n  sorry\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval divisible_by_three \"123\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval divisible_by_three \"88\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
-  \ divisible_by_three \"963210456\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  A trick I learned in elementary school to determine whether or not a number was divisible by three is to add all of the integers in the number together and to divide the resulting sum by three. If there is no remainder from dividing the sum by three, then the original number is divisible by three as well.
+
+  Given a series of numbers as a string, determine if the number represented by the string is divisible by three.
+
+  You can expect all test case arguments to be strings representing values greater than 0. 
+
+  Example:
+
+  ```
+  "123"      -> true
+  "8409"     -> true
+  "100853"   -> false
+  "33333333" -> true
+  "7"        -> false
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def divisible_by_three (s : String) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def digit_sum (s : String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem divisible_by_three_matches_mod (n : Nat) :
+    divisible_by_three (toString n) = (n % 3 = 0) :=
+    sorry
+
+
+  theorem divisible_by_three_digit_sum (n : Nat) :
+    divisible_by_three (toString n) = (digit_sum (toString n) % 3 = 0) :=
+    sorry
+
+
+  theorem append_zeros_preserves_divisibility (n : Nat) (k : Nat) (h : 0 < k ∧ k ≤ 10) :
+    divisible_by_three (toString n ++ String.mk (List.replicate k '0')) = 
+    divisible_by_three (toString n) :=
+    sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval divisible_by_three "123"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval divisible_by_three "88"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval divisible_by_three "963210456"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

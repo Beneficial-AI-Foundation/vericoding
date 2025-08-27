@@ -1,30 +1,84 @@
-"vc-description": "# Scenario\n\n**_Several people_** are standing in *a row divided\
-  \ into two teams*.  \nThe **_first person_** goes into **_team 1_**, **_the second_**\
-  \ goes into **_team 2_**, **_the third_** goes into **_team 1_**, and so on.\n___\n\
-  # Task\n\n**_Given_** *an array of positive integers (the weights of the people)*,\
-  \ **_return_** *a new array/tuple of two integers*, **_where_** **_the first_**\
-  \ one is the **_total weight of team 1_**, and **_the second_** one is the **_total\
-  \ weight of team 2_**.\n___\n# Notes \n\n* **_Array size_** is *at least 1*.\n*\
-  \ **_All numbers_** will be **positive**.\n___\n# Input >> Output Examples \n\n\
-  ```\nrowWeights([13, 27, 49])  ==>  return (62, 27)\n```\n\n## **_Explanation_**:\n\
-  \n**_The first element_** `62` is *the total weight of team 1*, and **_the second\
-  \ element_** `27` is *the total weight of team 2*.\n___\n```\nrowWeights([50, 60,\
-  \ 70, 80])  ==>  return (120, 140)\n```\n## **_Explanation_**:\n\n**_The first element_**\
-  \ `120` is *the total weight of team 1*, and **_the second element_** `140` is *the\
-  \ total weight of team 2*.\n___\n```\nrowWeights([80])  ==>  return (80, 0)\n```\n\
-  ## **_Explanation_**:\n\n**_The first element_** `80` is *the total weight of team\
-  \ 1*, and **_the second element_** `0` is *the total weight of team 2*.\n___\n___\n\
-  ___\n\n# [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
-  \n# [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
-  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
-  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
-"vc-preamble": "import Imports.AllImports\n\ndef sum_list : List Nat → Nat\n  | []\
-  \ => 0\n  | (x::xs) => x + sum_list xs\n\n\ndef select_indices : List Nat → (Nat\
-  \ → Bool) → List Nat\n  | [], _ => []\n  | (x::xs), f => if f 0 then x::(select_indices\
-  \ xs (fun n => f (n+1)))\n                  else select_indices xs (fun n => f (n+1))\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def row_weights (numbers : List Nat) : Nat × Nat := sorry\n\n\n\
-  \n\n\n\n\ntheorem row_weights_single_element (n : Nat) :\n  let (team1, team2) :=\
-  \ row_weights [n]\n  team2 = 0 ∧ team1 = n := sorry"
-"vc-theorems": ""
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  # Scenario
+
+  **_Several people_** are standing in *a row divided into two teams*.  
+  The **_first person_** goes into **_team 1_**, **_the second_** goes into **_team 2_**, **_the third_** goes into **_team 1_**, and so on.
+  ___
+  # Task
+
+  **_Given_** *an array of positive integers (the weights of the people)*, **_return_** *a new array/tuple of two integers*, **_where_** **_the first_** one is the **_total weight of team 1_**, and **_the second_** one is the **_total weight of team 2_**.
+  ___
+  # Notes 
+
+  * **_Array size_** is *at least 1*.
+  * **_All numbers_** will be **positive**.
+  ___
+  # Input >> Output Examples 
+
+  ```
+  rowWeights([13, 27, 49])  ==>  return (62, 27)
+  ```
+
+  ## **_Explanation_**:
+
+  **_The first element_** `62` is *the total weight of team 1*, and **_the second element_** `27` is *the total weight of team 2*.
+  ___
+  ```
+  rowWeights([50, 60, 70, 80])  ==>  return (120, 140)
+  ```
+  ## **_Explanation_**:
+
+  **_The first element_** `120` is *the total weight of team 1*, and **_the second element_** `140` is *the total weight of team 2*.
+  ___
+  ```
+  rowWeights([80])  ==>  return (80, 0)
+  ```
+  ## **_Explanation_**:
+
+  **_The first element_** `80` is *the total weight of team 1*, and **_the second element_** `0` is *the total weight of team 2*.
+  ___
+  ___
+  ___
+
+  # [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)
+
+  # [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)
+
+  # [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)
+  ___
+
+  ## ALL translations are welcomed
+
+  ## Enjoy Learning !!
+  # Zizou
+vc-preamble: |
+  import Imports.AllImports
+
+  def sum_list : List Nat → Nat
+    | [] => 0
+    | (x::xs) => x + sum_list xs
+
+
+  def select_indices : List Nat → (Nat → Bool) → List Nat
+    | [], _ => []
+    | (x::xs), f => if f 0 then x::(select_indices xs (fun n => f (n+1)))
+                    else select_indices xs (fun n => f (n+1))
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def row_weights (numbers : List Nat) : Nat × Nat := sorry
+
+
+
+
+
+
+
+  theorem row_weights_single_element (n : Nat) :
+    let (team1, team2) := row_weights [n]
+    team2 = 0 ∧ team1 = n := sorry
+vc-theorems: |
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

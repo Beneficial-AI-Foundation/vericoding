@@ -1,22 +1,80 @@
-"vc-description": "Starting with a positive integer N, we reorder the digits in any\
-  \ order (including the original order) such that the leading digit is not zero.\n\
-  Return true if and only if we can do this in a way such that the resulting number\
-  \ is a power of 2.\n \n\n\n\nExample 1:\nInput: 1\nOutput: true\n\n\nExample 2:\n\
-  Input: 10\nOutput: false\n\n\nExample 3:\nInput: 16\nOutput: true\n\n\nExample 4:\n\
-  Input: 24\nOutput: false\n\n\nExample 5:\nInput: 46\nOutput: true\n\n \nNote:\n\n\
-  1 <= N <= 10^9"
-"vc-preamble": "import Imports.AllImports\n\ndef reordered_power_of_2 (n : Nat) :\
-  \ Bool := sorry\n\ndef get_powers_of_2 (max_digits : Nat) : List Nat := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def digits (n : Nat) : List Nat := sorry \n\ndef sorted_digits\
-  \ (n : Nat) : List Nat := sorry\n"
-"vc-theorems": "theorem power_2_permutations_property {n : Nat} (h : reordered_power_of_2\
-  \ n = true) :\n  ∃ p, (p = 2^(Nat.log2 p)) ∧ sorted_digits n = sorted_digits p :=\
-  \ sorry\n\n\ntheorem single_digit_property {n : Nat} (h : List.length (digits n)\
-  \ = 1) :\n  reordered_power_of_2 n = (n = 1 ∨ n = 2 ∨ n = 4 ∨ n = 8) := sorry\n\n\
-  \ntheorem leading_zeros_property {n : Nat} (h : n < 10) :\n  reordered_power_of_2\
-  \ n = reordered_power_of_2 (10 * n) := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval reordered_power_of_2 1\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval\
-  \ reordered_power_of_2 10\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval reordered_power_of_2\
-  \ 16\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Starting with a positive integer N, we reorder the digits in any order (including the original order) such that the leading digit is not zero.
+  Return true if and only if we can do this in a way such that the resulting number is a power of 2.
+   
+
+
+
+  Example 1:
+  Input: 1
+  Output: true
+
+
+  Example 2:
+  Input: 10
+  Output: false
+
+
+  Example 3:
+  Input: 16
+  Output: true
+
+
+  Example 4:
+  Input: 24
+  Output: false
+
+
+  Example 5:
+  Input: 46
+  Output: true
+
+   
+  Note:
+
+  1 <= N <= 10^9
+vc-preamble: |
+  import Imports.AllImports
+
+  def reordered_power_of_2 (n : Nat) : Bool := sorry
+
+  def get_powers_of_2 (max_digits : Nat) : List Nat := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def digits (n : Nat) : List Nat := sorry 
+
+  def sorted_digits (n : Nat) : List Nat := sorry
+vc-theorems: |
+  theorem power_2_permutations_property {n : Nat} (h : reordered_power_of_2 n = true) :
+    ∃ p, (p = 2^(Nat.log2 p)) ∧ sorted_digits n = sorted_digits p := sorry
+
+
+  theorem single_digit_property {n : Nat} (h : List.length (digits n) = 1) :
+    reordered_power_of_2 n = (n = 1 ∨ n = 2 ∨ n = 4 ∨ n = 8) := sorry
+
+
+  theorem leading_zeros_property {n : Nat} (h : n < 10) :
+    reordered_power_of_2 n = reordered_power_of_2 (10 * n) := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval reordered_power_of_2 1
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval reordered_power_of_2 10
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval reordered_power_of_2 16
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

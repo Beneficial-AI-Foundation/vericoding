@@ -1,39 +1,57 @@
-"vc-description": "Petya is preparing a problem for a local contest in his school.\
-  \ The problem is to find a longest increasing subsequence in a given permutation.\
-  \ A permutation of size n$n$ is a sequence of n$n$ numbers a1,…,an$a_1, \\ldots,\
-  \ a_n$ such that every number from 1$1$ to n$n$ occurs in the sequence exactly once.\
-  \ An increasing subsequence of length k$k$ of the sequence a1,…,an$a_1, \\ldots,\
-  \ a_n$ is a sequence of indices i1,…,ik$i_1, \\ldots, i_k$ such that 1≤i1<…<ik≤n$1\
-  \ \\leq i_1 < \\ldots < i_k \\leq n$ and ai1<…<aik$a_{i_1} < \\ldots < a_{i_k}$.\
-  \ A longest increasing subsequence is an increasing subsequences with the largest\
-  \ length. Note that in general there may be several longest increasing subsequences.\n\
-  Petya had some tests prepared, but then lost the input part for some of them. He\
-  \ now has a test for a certain value of n$n$, and a sequence i1,…,ik$i_1, \\ldots,\
-  \ i_k$ that is supposed to be a longest increasing subsequence. Petya now has to\
-  \ reconstruct a permutation of size n$n$ with this sequence being an answer. Petya\
-  \ doesn't want to take any risks, so he additionally wants this sequence to be the\
-  \ only longest increasing subsequence, that is, all other increasing subsequences\
-  \ have to have strictly smaller length. Help Petya determine if this is possible,\
-  \ and if so, construct any such permutation.\n\n-----Input:-----\nThe first line\
-  \ contains an integer T$T$, denoting number of test cases.\nThe first line of every\
-  \ test case contains two integers n$n$ and k−$k-$  the size of the permutation and\
-  \ the length of the longest increasing subsequence (1≤k≤n≤105$1 \\leq k \\leq n\
-  \ \\leq 10^5$).\nThe second line contains k$k$ integers i1,…,ik−$i_1, \\ldots, i_k-$\
-  \ the longest increasing subsequence (1≤i1<…<ik≤n$1 \\leq i_1 < \\ldots < i_k \\\
-  leq n$).\n\n-----Output:-----\nIf there is no permutation with the sequence i1,…,ik$i_1,\
-  \ \\ldots, i_k$ being the only longest increasing subsequence, print NO . Otherwise,\
-  \ print YES on the first line, followed by n$n$ numbers describing any suitable\
-  \ permutation on the second line.\n\n-----Constraints-----\n- 1≤T≤10$1 \\leq T \\\
-  leq 10$\n- 1≤k≤n≤105$1 \\leq k \\leq n \\leq 10^5$ \n- 1≤i1<…<ik≤n$1 \\leq i_1 <\
-  \ \\ldots < i_k \\leq n$ \n\n-----Sample Input:-----\n2\n3 2\n1 2\n2 1\n1\n\n-----Sample\
-  \ Output:-----\nYES\n2 3 1\nNO"
-"vc-preamble": "import Imports.AllImports\n\ndef solve_permutation (n : Nat) (k :\
-  \ Nat) (indices : List Nat) : (String × List Nat) :=\n  sorry\n\n\ndef is_valid_permutation\
-  \ (perm : List Nat) : Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def check_indices_descending (perm indices : List Nat) : Bool :=\n\
-  \  sorry\n\n\n"
-"vc-theorems": "theorem basic_case_1 :\n  solve_permutation 1 1 [1] = (\"YES\", [1])\
-  \ :=\n  sorry\n\n\ntheorem basic_case_2 : \n  solve_permutation 2 1 [1] = (\"NO\"\
-  , []) :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Petya is preparing a problem for a local contest in his school. The problem is to find a longest increasing subsequence in a given permutation. A permutation of size n$n$ is a sequence of n$n$ numbers a1,…,an$a_1, \ldots, a_n$ such that every number from 1$1$ to n$n$ occurs in the sequence exactly once. An increasing subsequence of length k$k$ of the sequence a1,…,an$a_1, \ldots, a_n$ is a sequence of indices i1,…,ik$i_1, \ldots, i_k$ such that 1≤i1<…<ik≤n$1 \leq i_1 < \ldots < i_k \leq n$ and ai1<…<aik$a_{i_1} < \ldots < a_{i_k}$. A longest increasing subsequence is an increasing subsequences with the largest length. Note that in general there may be several longest increasing subsequences.
+  Petya had some tests prepared, but then lost the input part for some of them. He now has a test for a certain value of n$n$, and a sequence i1,…,ik$i_1, \ldots, i_k$ that is supposed to be a longest increasing subsequence. Petya now has to reconstruct a permutation of size n$n$ with this sequence being an answer. Petya doesn't want to take any risks, so he additionally wants this sequence to be the only longest increasing subsequence, that is, all other increasing subsequences have to have strictly smaller length. Help Petya determine if this is possible, and if so, construct any such permutation.
+
+  -----Input:-----
+  The first line contains an integer T$T$, denoting number of test cases.
+  The first line of every test case contains two integers n$n$ and k−$k-$  the size of the permutation and the length of the longest increasing subsequence (1≤k≤n≤105$1 \leq k \leq n \leq 10^5$).
+  The second line contains k$k$ integers i1,…,ik−$i_1, \ldots, i_k-$ the longest increasing subsequence (1≤i1<…<ik≤n$1 \leq i_1 < \ldots < i_k \leq n$).
+
+  -----Output:-----
+  If there is no permutation with the sequence i1,…,ik$i_1, \ldots, i_k$ being the only longest increasing subsequence, print NO . Otherwise, print YES on the first line, followed by n$n$ numbers describing any suitable permutation on the second line.
+
+  -----Constraints-----
+  - 1≤T≤10$1 \leq T \leq 10$
+  - 1≤k≤n≤105$1 \leq k \leq n \leq 10^5$ 
+  - 1≤i1<…<ik≤n$1 \leq i_1 < \ldots < i_k \leq n$ 
+
+  -----Sample Input:-----
+  2
+  3 2
+  1 2
+  2 1
+  1
+
+  -----Sample Output:-----
+  YES
+  2 3 1
+  NO
+vc-preamble: |
+  import Imports.AllImports
+
+  def solve_permutation (n : Nat) (k : Nat) (indices : List Nat) : (String × List Nat) :=
+    sorry
+
+
+  def is_valid_permutation (perm : List Nat) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def check_indices_descending (perm indices : List Nat) : Bool :=
+    sorry
+
+
+vc-theorems: |-
+  theorem basic_case_1 :
+    solve_permutation 1 1 [1] = ("YES", [1]) :=
+    sorry
+
+
+  theorem basic_case_2 : 
+    solve_permutation 2 1 [1] = ("NO", []) :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

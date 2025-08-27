@@ -1,15 +1,44 @@
-"vc-description": "You get an array of numbers, return the sum of all of the positives\
-  \ ones.\n\nExample `[1,-4,7,12]` => `1 + 7 + 12 = 20`\n\nNote: if there is nothing\
-  \ to sum, the sum is default to `0`."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def positive_sum (xs : List Int) : Int := sorry\n\ntheorem positive_sum_non_negative\
-  \ (xs : List Int) :\n  positive_sum xs ≥ 0 := sorry\n"
-"vc-theorems": "theorem positive_sum_equals_positive_filter_sum (xs : List Int) :\n\
-  \  positive_sum xs = (xs.filter (fun x => x > 0)).foldr (· + ·) 0 := sorry\n\n\n\
-  theorem positive_sum_unchanged_remove_negative (xs : List Int) :\n  positive_sum\
-  \ xs = positive_sum (xs.filter (fun x => x ≥ 0)) := sorry\n\n/--\ninfo: 15\n-/\n\
-  #guard_msgs in\n#eval positive_sum [1, 2, 3, 4, 5]\n\n/--\ninfo: 13\n-/\n#guard_msgs\
-  \ in\n#eval positive_sum [1, -2, 3, 4, 5]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
-  #eval positive_sum []\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  You get an array of numbers, return the sum of all of the positives ones.
+
+  Example `[1,-4,7,12]` => `1 + 7 + 12 = 20`
+
+  Note: if there is nothing to sum, the sum is default to `0`.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def positive_sum (xs : List Int) : Int := sorry
+
+  theorem positive_sum_non_negative (xs : List Int) :
+    positive_sum xs ≥ 0 := sorry
+vc-theorems: |
+  theorem positive_sum_equals_positive_filter_sum (xs : List Int) :
+    positive_sum xs = (xs.filter (fun x => x > 0)).foldr (· + ·) 0 := sorry
+
+
+  theorem positive_sum_unchanged_remove_negative (xs : List Int) :
+    positive_sum xs = positive_sum (xs.filter (fun x => x ≥ 0)) := sorry
+
+  /--
+  info: 15
+  -/
+  #guard_msgs in
+  #eval positive_sum [1, 2, 3, 4, 5]
+
+  /--
+  info: 13
+  -/
+  #guard_msgs in
+  #eval positive_sum [1, -2, 3, 4, 5]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval positive_sum []
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

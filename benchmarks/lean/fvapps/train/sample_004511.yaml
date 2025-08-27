@@ -1,24 +1,59 @@
-"vc-description": "This the second part part of the kata:\n\nhttps://www.codewars.com/kata/the-sum-and-the-rest-of-certain-pairs-of-numbers-have-to-be-perfect-squares\n\
-  \nIn this part we will have to create a faster algorithm because the tests will\
-  \ be more challenging.\n\nThe function ```n_closestPairs_tonum()```, (Javascript:\
-  \ ```nClosestPairsToNum()```), will accept two arguments, ```upper_limit``` and\
-  \ ```k```.\n\nThe function should return the ```k``` largest pair of numbers [m,\
-  \ n] and the closest to ```upper_limit```. Expressing it in code:\n\n```python\n\
-  n_closestPairs_tonum(upper_limit, k) #-> [[m1, n1], [m2, n2], ...., [mk, nk]]\n\
-  ```\nSuch that:\n```\nupper_limit >= m1 >= m2 >= ....>= mk > 0\n```\nExamples:\n\
-  ```python\nupper_limit = 1000; k = 4\nn_closestPairs_tonum(upper_limit, k) == [[997,\
-  \ 372], [986, 950], [986, 310], [985, 864]]\n\nupper_limit = 10000; k = 8\nn_closestPairs_tonum(upper_limit,\
-  \ k) == [[9997, 8772], [9997, 2772], [9992, 6392], [9986, 5890], [9985, 7176], [9985,\
-  \ 4656], [9981, 9900], [9973, 9348]]\n```\nFeatures of the tests:\n```\n1000 ≤ upper_limit\
-  \ ≤ 200000\n2 ≤ k ≤ 20\n```\n\nEnjoy it!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def n_closestPairs_tonum (upperLim : Nat) (k : Nat) : List (Nat\
-  \ × Nat) :=\nsorry\n"
-"vc-theorems": "theorem n_closest_pairs_length (upperLim : Nat) (k : Nat) \n  (h1\
-  \ : upperLim ≥ 3) (h2 : k ≥ 1) :\n  let result := n_closestPairs_tonum upperLim\
-  \ k \n  List.length result ≤ k :=\nsorry\n\n\ntheorem n_closest_pairs_bounds (upperLim\
-  \ : Nat) (k : Nat)\n  (h1 : upperLim ≥ 3) (h2 : k ≥ 1) :\n  let result := n_closestPairs_tonum\
-  \ upperLim k\n  ∀ pair ∈ result, \n    (let (m, n) := pair\n     m ≤ upperLim ∧\
-  \ n > 0 ∧ m > n) :=\nsorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  This the second part part of the kata:
+
+  https://www.codewars.com/kata/the-sum-and-the-rest-of-certain-pairs-of-numbers-have-to-be-perfect-squares
+
+  In this part we will have to create a faster algorithm because the tests will be more challenging.
+
+  The function ```n_closestPairs_tonum()```, (Javascript: ```nClosestPairsToNum()```), will accept two arguments, ```upper_limit``` and ```k```.
+
+  The function should return the ```k``` largest pair of numbers [m, n] and the closest to ```upper_limit```. Expressing it in code:
+
+  ```python
+  n_closestPairs_tonum(upper_limit, k) #-> [[m1, n1], [m2, n2], ...., [mk, nk]]
+  ```
+  Such that:
+  ```
+  upper_limit >= m1 >= m2 >= ....>= mk > 0
+  ```
+  Examples:
+  ```python
+  upper_limit = 1000; k = 4
+  n_closestPairs_tonum(upper_limit, k) == [[997, 372], [986, 950], [986, 310], [985, 864]]
+
+  upper_limit = 10000; k = 8
+  n_closestPairs_tonum(upper_limit, k) == [[9997, 8772], [9997, 2772], [9992, 6392], [9986, 5890], [9985, 7176], [9985, 4656], [9981, 9900], [9973, 9348]]
+  ```
+  Features of the tests:
+  ```
+  1000 ≤ upper_limit ≤ 200000
+  2 ≤ k ≤ 20
+  ```
+
+  Enjoy it!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def n_closestPairs_tonum (upperLim : Nat) (k : Nat) : List (Nat × Nat) :=
+  sorry
+vc-theorems: |-
+  theorem n_closest_pairs_length (upperLim : Nat) (k : Nat) 
+    (h1 : upperLim ≥ 3) (h2 : k ≥ 1) :
+    let result := n_closestPairs_tonum upperLim k 
+    List.length result ≤ k :=
+  sorry
+
+
+  theorem n_closest_pairs_bounds (upperLim : Nat) (k : Nat)
+    (h1 : upperLim ≥ 3) (h2 : k ≥ 1) :
+    let result := n_closestPairs_tonum upperLim k
+    ∀ pair ∈ result, 
+      (let (m, n) := pair
+       m ≤ upperLim ∧ n > 0 ∧ m > n) :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

@@ -1,69 +1,122 @@
-"vc-description": "On February 14 Denis decided to give Valentine to Nastya and did\
-  \ not come up with anything better than to draw a huge red heart on the door of\
-  \ the length $k$ ($k \\ge 3$). Nastya was very confused by this present, so she\
-  \ decided to break the door, throwing it on the mountains.\n\nMountains are described\
-  \ by a sequence of heights $a_1, a_2, \\dots, a_n$ in order from left to right ($k\
-  \ \\le n$). It is guaranteed that neighboring heights are not equal to each other\
-  \ (that is, $a_i \\ne a_{i+1}$ for all $i$ from $1$ to $n-1$).\n\nPeaks of mountains\
-  \ on the segment $[l,r]$ (from $l$ to $r$) are called indexes $i$ such that $l <\
-  \ i < r$, $a_{i - 1} < a_i$ and $a_i > a_{i + 1}$. It is worth noting that the boundary\
-  \ indexes $l$ and $r$ for the segment are not peaks. For example, if $n=8$ and $a=[3,1,4,1,5,9,2,6]$,\
-  \ then the segment $[1,8]$ has only two peaks (with indexes $3$ and $6$), and there\
-  \ are no peaks on the segment $[3, 6]$.\n\nTo break the door, Nastya throws it to\
-  \ a segment $[l,l+k-1]$ of consecutive mountains of length $k$ ($1 \\le l \\le n-k+1$).\
-  \ When the door touches the peaks of the mountains, it breaks into two parts, after\
-  \ that these parts will continue to fall in different halves and also break into\
-  \ pieces when touching the peaks of the mountains, and so on. Formally, the number\
-  \ of parts that the door will break into will be equal to $p+1$, where $p$ is the\
-  \ number of peaks on the segment $[l,l+k-1]$.\n\nNastya wants to break it into as\
-  \ many pieces as possible. Help her choose such a segment of mountains $[l, l+k-1]$\
-  \ that the number of peaks on it is maximum. If there are several optimal segments,\
-  \ Nastya wants to find one for which the value $l$ is minimal.\n\nFormally, you\
-  \ need to choose a segment of mountains $[l, l+k-1]$ that has the maximum number\
-  \ of peaks. Among all such segments, you need to find the segment that has the minimum\
-  \ possible value $l$.\n\n\n-----Input-----\n\nThe first line contains an integer\
-  \ $t$ ($1 \\leq t \\leq 10^4$)  — the number of test cases. Then the descriptions\
-  \ of the test cases follow.\n\nThe first line of each test case contains two integers\
-  \ $n$ and $k$ ($3 \\leq k \\leq n \\leq 2 \\cdot 10^5$)  — the number of mountains\
-  \ and the length of the door.\n\nThe second line of the input data set contains\
-  \ $n$ integers $a_1, a_2, \\dots, a_n$ ($0 \\leq a_i \\leq 10 ^ 9$, $a_i \\neq a_{i\
-  \ + 1}$)  — the heights of mountains.\n\nIt is guaranteed that the sum of $n$ over\
-  \ all the test cases will not exceed $2 \\cdot 10^5$.\n\n\n-----Output-----\n\n\
-  For each test case, output two integers $t$ and $l$  — the maximum number of parts\
-  \ that the door can split into, and the left border of the segment of length $k$\
-  \ that the door should be reset to.\n\n\n-----Example-----\nInput\n5\n8 6\n1 2 4\
-  \ 1 2 4 1 2\n5 3\n3 2 3 2 1\n10 4\n4 3 4 3 2 3 2 1 0 1\n15 7\n3 7 4 8 2 3 4 5 21\
-  \ 2 3 4 2 1 3\n7 5\n1 2 3 4 5 6 1\n\nOutput\n3 2\n2 2\n2 1\n3 1\n2 3\n\n\n\n-----Note-----\n\
-  \nIn the first example, you need to select a segment of mountains from $2$ to $7$.\
-  \ In this segment, the indexes $3$ and $6$ are peaks, so the answer is $3$ (only\
-  \ $2$ peaks, so the door will break into $3$ parts). It is not difficult to notice\
-  \ that the mountain segments $[1, 6]$ and $[3, 8]$ are not suitable since they only\
-  \ have a $1$ peak (for the first segment, the $6$ index is not a peak, and for the\
-  \ second segment, the $3$ index is not a peak).\n\nIn the second example, you need\
-  \ to select a segment of mountains from $2$ to $4$. In this segment, the index $3$\
-  \ is a peak, so the answer is $2$ (only $1$ peak, so the door will break into $2$\
-  \ parts).\n\nIn the third example, you need to select a segment of mountains from\
-  \ $1$ to $4$. In this segment, the index $3$ is a peak, so the answer is $2$ (only\
-  \ $1$ peak, so the door will break into $2$ parts). You can see that on the segments\
-  \ $[2, 5]$, $[4, 7]$ and $[5, 8]$ the number of peaks is also $1$, but these segments\
-  \ have a left border greater than the segment $[1, 4]$, so they are not the correct\
-  \ answer."
-"vc-preamble": "import Imports.AllImports\n\ndef count_peaks (window : List Nat) :\
-  \ Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_door_peaks (n k : Nat) (arr : List Nat) : Nat × Nat :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem peaks_atleast_one {n k : Nat} {arr : List Nat}\n  (h1 : n\
-  \ ≥ 3)\n  (h2 : k ≥ 3)\n  (h3 : k ≤ n)\n  (h4 : arr.length = n) :\n  let (peaks,\
-  \ _) := solve_door_peaks n k arr\n  peaks ≥ 1 :=\nsorry\n\n\ntheorem position_in_range\
-  \ {n k : Nat} {arr : List Nat}\n  (h1 : n ≥ 3)\n  (h2 : k ≥ 3) \n  (h3 : k ≤ n)\n\
-  \  (h4 : arr.length = n) :\n  let (_, pos) := solve_door_peaks n k arr\n  1 ≤ pos\
-  \ ∧ pos ≤ n - k + 1 :=\nsorry\n\n\ntheorem peaks_match_window {n k : Nat} {arr :\
-  \ List Nat}\n  (h1 : n ≥ 3)\n  (h2 : k ≥ 3)\n  (h3 : k ≤ n)\n  (h4 : arr.length\
-  \ = n) :\n  let (peaks, pos) := solve_door_peaks n k arr\n  let window := arr.take\
-  \ k\n  count_peaks window = peaks - 1 :=\nsorry\n\n/--\ninfo: (3, 2)\n-/\n#guard_msgs\
-  \ in\n#eval solve_door_peaks 8 6 [1, 2, 4, 1, 2, 4, 1, 2]\n\n/--\ninfo: (2, 2)\n\
-  -/\n#guard_msgs in\n#eval solve_door_peaks 5 3 [3, 2, 3, 2, 1]\n\n/--\ninfo: (2,\
-  \ 1)\n-/\n#guard_msgs in\n#eval solve_door_peaks 10 4 [4, 3, 4, 3, 2, 3, 2, 1, 0,\
-  \ 1]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  On February 14 Denis decided to give Valentine to Nastya and did not come up with anything better than to draw a huge red heart on the door of the length $k$ ($k \ge 3$). Nastya was very confused by this present, so she decided to break the door, throwing it on the mountains.
+
+  Mountains are described by a sequence of heights $a_1, a_2, \dots, a_n$ in order from left to right ($k \le n$). It is guaranteed that neighboring heights are not equal to each other (that is, $a_i \ne a_{i+1}$ for all $i$ from $1$ to $n-1$).
+
+  Peaks of mountains on the segment $[l,r]$ (from $l$ to $r$) are called indexes $i$ such that $l < i < r$, $a_{i - 1} < a_i$ and $a_i > a_{i + 1}$. It is worth noting that the boundary indexes $l$ and $r$ for the segment are not peaks. For example, if $n=8$ and $a=[3,1,4,1,5,9,2,6]$, then the segment $[1,8]$ has only two peaks (with indexes $3$ and $6$), and there are no peaks on the segment $[3, 6]$.
+
+  To break the door, Nastya throws it to a segment $[l,l+k-1]$ of consecutive mountains of length $k$ ($1 \le l \le n-k+1$). When the door touches the peaks of the mountains, it breaks into two parts, after that these parts will continue to fall in different halves and also break into pieces when touching the peaks of the mountains, and so on. Formally, the number of parts that the door will break into will be equal to $p+1$, where $p$ is the number of peaks on the segment $[l,l+k-1]$.
+
+  Nastya wants to break it into as many pieces as possible. Help her choose such a segment of mountains $[l, l+k-1]$ that the number of peaks on it is maximum. If there are several optimal segments, Nastya wants to find one for which the value $l$ is minimal.
+
+  Formally, you need to choose a segment of mountains $[l, l+k-1]$ that has the maximum number of peaks. Among all such segments, you need to find the segment that has the minimum possible value $l$.
+
+
+  -----Input-----
+
+  The first line contains an integer $t$ ($1 \leq t \leq 10^4$)  — the number of test cases. Then the descriptions of the test cases follow.
+
+  The first line of each test case contains two integers $n$ and $k$ ($3 \leq k \leq n \leq 2 \cdot 10^5$)  — the number of mountains and the length of the door.
+
+  The second line of the input data set contains $n$ integers $a_1, a_2, \dots, a_n$ ($0 \leq a_i \leq 10 ^ 9$, $a_i \neq a_{i + 1}$)  — the heights of mountains.
+
+  It is guaranteed that the sum of $n$ over all the test cases will not exceed $2 \cdot 10^5$.
+
+
+  -----Output-----
+
+  For each test case, output two integers $t$ and $l$  — the maximum number of parts that the door can split into, and the left border of the segment of length $k$ that the door should be reset to.
+
+
+  -----Example-----
+  Input
+  5
+  8 6
+  1 2 4 1 2 4 1 2
+  5 3
+  3 2 3 2 1
+  10 4
+  4 3 4 3 2 3 2 1 0 1
+  15 7
+  3 7 4 8 2 3 4 5 21 2 3 4 2 1 3
+  7 5
+  1 2 3 4 5 6 1
+
+  Output
+  3 2
+  2 2
+  2 1
+  3 1
+  2 3
+
+
+
+  -----Note-----
+
+  In the first example, you need to select a segment of mountains from $2$ to $7$. In this segment, the indexes $3$ and $6$ are peaks, so the answer is $3$ (only $2$ peaks, so the door will break into $3$ parts). It is not difficult to notice that the mountain segments $[1, 6]$ and $[3, 8]$ are not suitable since they only have a $1$ peak (for the first segment, the $6$ index is not a peak, and for the second segment, the $3$ index is not a peak).
+
+  In the second example, you need to select a segment of mountains from $2$ to $4$. In this segment, the index $3$ is a peak, so the answer is $2$ (only $1$ peak, so the door will break into $2$ parts).
+
+  In the third example, you need to select a segment of mountains from $1$ to $4$. In this segment, the index $3$ is a peak, so the answer is $2$ (only $1$ peak, so the door will break into $2$ parts). You can see that on the segments $[2, 5]$, $[4, 7]$ and $[5, 8]$ the number of peaks is also $1$, but these segments have a left border greater than the segment $[1, 4]$, so they are not the correct answer.
+vc-preamble: |
+  import Imports.AllImports
+
+  def count_peaks (window : List Nat) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_door_peaks (n k : Nat) (arr : List Nat) : Nat × Nat :=
+    sorry
+vc-theorems: |
+  theorem peaks_atleast_one {n k : Nat} {arr : List Nat}
+    (h1 : n ≥ 3)
+    (h2 : k ≥ 3)
+    (h3 : k ≤ n)
+    (h4 : arr.length = n) :
+    let (peaks, _) := solve_door_peaks n k arr
+    peaks ≥ 1 :=
+  sorry
+
+
+  theorem position_in_range {n k : Nat} {arr : List Nat}
+    (h1 : n ≥ 3)
+    (h2 : k ≥ 3) 
+    (h3 : k ≤ n)
+    (h4 : arr.length = n) :
+    let (_, pos) := solve_door_peaks n k arr
+    1 ≤ pos ∧ pos ≤ n - k + 1 :=
+  sorry
+
+
+  theorem peaks_match_window {n k : Nat} {arr : List Nat}
+    (h1 : n ≥ 3)
+    (h2 : k ≥ 3)
+    (h3 : k ≤ n)
+    (h4 : arr.length = n) :
+    let (peaks, pos) := solve_door_peaks n k arr
+    let window := arr.take k
+    count_peaks window = peaks - 1 :=
+  sorry
+
+  /--
+  info: (3, 2)
+  -/
+  #guard_msgs in
+  #eval solve_door_peaks 8 6 [1, 2, 4, 1, 2, 4, 1, 2]
+
+  /--
+  info: (2, 2)
+  -/
+  #guard_msgs in
+  #eval solve_door_peaks 5 3 [3, 2, 3, 2, 1]
+
+  /--
+  info: (2, 1)
+  -/
+  #guard_msgs in
+  #eval solve_door_peaks 10 4 [4, 3, 4, 3, 2, 3, 2, 1, 0, 1]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

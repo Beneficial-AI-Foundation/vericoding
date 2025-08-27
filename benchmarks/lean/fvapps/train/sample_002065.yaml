@@ -1,33 +1,104 @@
-"vc-description": "Consider a sequence [a_1, a_2, ... , a_{n}]. Define its prefix\
-  \ product sequence $[ a_{1} \\operatorname{mod} n,(a_{1} a_{2}) \\operatorname{mod}\
-  \ n, \\cdots,(a_{1} a_{2} \\cdots a_{n}) \\operatorname{mod} n ]$.\n\nNow given\
-  \ n, find a permutation of [1, 2, ..., n], such that its prefix product sequence\
-  \ is a permutation of [0, 1, ..., n - 1].\n\n\n-----Input-----\n\nThe only input\
-  \ line contains an integer n (1 ≤ n ≤ 10^5).\n\n\n-----Output-----\n\nIn the first\
-  \ output line, print \"YES\" if such sequence exists, or print \"NO\" if no such\
-  \ sequence exists.\n\nIf any solution exists, you should output n more lines. i-th\
-  \ line contains only an integer a_{i}. The elements of the sequence should be different\
-  \ positive integers no larger than n.\n\nIf there are multiple solutions, you are\
-  \ allowed to print any of them.\n\n\n-----Examples-----\nInput\n7\n\nOutput\nYES\n\
-  1\n4\n3\n6\n5\n2\n7\n\nInput\n6\n\nOutput\nNO\n\n\n\n-----Note-----\n\nFor the second\
-  \ sample, there are no valid sequences."
-"vc-preamble": "import Imports.AllImports\n\ndef find_permutation_with_prefix_products\
-  \ (n : Nat) : List Nat := sorry\n\ndef is_prime (n : Nat) : Bool := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def check_prefix_products (result : List Nat) (n : Nat) : Bool\
-  \ := sorry\n\ndef is_valid_permutation (result : List Nat) (n : Nat) : Bool := sorry\n"
-"vc-theorems": "theorem output_properties (n : Nat) (h : n ≥ 2) :\n  let result :=\
-  \ find_permutation_with_prefix_products n\n  result.length > 0 →\n    result.length\
-  \ = n ∧ \n    result.head? = some 1 ∧\n    result.getLast? = some n ∧\n    is_valid_permutation\
-  \ result n ∧\n    check_prefix_products result n ∧\n    (is_prime n ∨ n = 4) :=\
-  \ sorry\n\n\ntheorem output_properties_empty (n : Nat) (h : n ≥ 2) :\n  let result\
-  \ := find_permutation_with_prefix_products n\n  result.length = 0 →\n    ¬is_prime\
-  \ n ∧ n ≠ 4 := sorry\n\n\ntheorem prime_numbers_have_solution (n : Nat) (h : is_prime\
-  \ n) :\n  let result := find_permutation_with_prefix_products n\n  result.length\
-  \ = n ∧\n  check_prefix_products result n := sorry\n\n\ntheorem composite_numbers_have_no_solution\
-  \ (n : Nat) (h1 : n ≥ 6) (h2 : ¬is_prime n) (h3 : n ≠ 4) :\n  (find_permutation_with_prefix_products\
-  \ n).length = 0 := sorry\n\n\ntheorem special_case_four :\n  find_permutation_with_prefix_products\
-  \ 4 = [1, 3, 2, 4] ∧\n  check_prefix_products [1, 3, 2, 4] 4 := sorry\n\n/--\ninfo:\
-  \ list(range(7))\n-/\n#guard_msgs in\n#eval sorted [1]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
-  \ in\n#eval len find_permutation_with_prefix_products(6)\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"
+vc-description: |-
+  Consider a sequence [a_1, a_2, ... , a_{n}]. Define its prefix product sequence $[ a_{1} \operatorname{mod} n,(a_{1} a_{2}) \operatorname{mod} n, \cdots,(a_{1} a_{2} \cdots a_{n}) \operatorname{mod} n ]$.
+
+  Now given n, find a permutation of [1, 2, ..., n], such that its prefix product sequence is a permutation of [0, 1, ..., n - 1].
+
+
+  -----Input-----
+
+  The only input line contains an integer n (1 ≤ n ≤ 10^5).
+
+
+  -----Output-----
+
+  In the first output line, print "YES" if such sequence exists, or print "NO" if no such sequence exists.
+
+  If any solution exists, you should output n more lines. i-th line contains only an integer a_{i}. The elements of the sequence should be different positive integers no larger than n.
+
+  If there are multiple solutions, you are allowed to print any of them.
+
+
+  -----Examples-----
+  Input
+  7
+
+  Output
+  YES
+  1
+  4
+  3
+  6
+  5
+  2
+  7
+
+  Input
+  6
+
+  Output
+  NO
+
+
+
+  -----Note-----
+
+  For the second sample, there are no valid sequences.
+vc-preamble: |
+  import Imports.AllImports
+
+  def find_permutation_with_prefix_products (n : Nat) : List Nat := sorry
+
+  def is_prime (n : Nat) : Bool := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def check_prefix_products (result : List Nat) (n : Nat) : Bool := sorry
+
+  def is_valid_permutation (result : List Nat) (n : Nat) : Bool := sorry
+vc-theorems: |
+  theorem output_properties (n : Nat) (h : n ≥ 2) :
+    let result := find_permutation_with_prefix_products n
+    result.length > 0 →
+      result.length = n ∧ 
+      result.head? = some 1 ∧
+      result.getLast? = some n ∧
+      is_valid_permutation result n ∧
+      check_prefix_products result n ∧
+      (is_prime n ∨ n = 4) := sorry
+
+
+  theorem output_properties_empty (n : Nat) (h : n ≥ 2) :
+    let result := find_permutation_with_prefix_products n
+    result.length = 0 →
+      ¬is_prime n ∧ n ≠ 4 := sorry
+
+
+  theorem prime_numbers_have_solution (n : Nat) (h : is_prime n) :
+    let result := find_permutation_with_prefix_products n
+    result.length = n ∧
+    check_prefix_products result n := sorry
+
+
+  theorem composite_numbers_have_no_solution (n : Nat) (h1 : n ≥ 6) (h2 : ¬is_prime n) (h3 : n ≠ 4) :
+    (find_permutation_with_prefix_products n).length = 0 := sorry
+
+
+  theorem special_case_four :
+    find_permutation_with_prefix_products 4 = [1, 3, 2, 4] ∧
+    check_prefix_products [1, 3, 2, 4] 4 := sorry
+
+  /--
+  info: list(range(7))
+  -/
+  #guard_msgs in
+  #eval sorted [1]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval len find_permutation_with_prefix_products(6)
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded

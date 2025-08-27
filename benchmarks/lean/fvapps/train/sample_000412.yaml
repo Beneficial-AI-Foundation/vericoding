@@ -1,23 +1,68 @@
-"vc-description": "Given a string s, find the longest palindromic substring in s.\
-  \ You may assume that the maximum length of s is 1000.\n\nExample 1:\n\n\nInput:\
-  \ \"babad\"\nOutput: \"bab\"\nNote: \"aba\" is also a valid answer.\n\n\nExample\
-  \ 2:\n\n\nInput: \"cbbd\"\nOutput: \"bb\""
-"vc-preamble": "import Imports.AllImports\n\ndef String.isPalindrome (s : String)\
-  \ : Bool := sorry\n\ndef find_longest_palindrome (s : String) : String := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def String.isSubstringOf (sub str : String) : Bool := sorry\n\n\
-  def String.substring (str : String) (start len : Nat) : String := sorry\n"
-"vc-theorems": "theorem find_longest_palindrome_is_substring (s : String) :\n  (find_longest_palindrome\
-  \ s).isSubstringOf s = true := sorry\n\n\ntheorem find_longest_palindrome_is_palindrome\
-  \ (s : String) :\n  (find_longest_palindrome s).isPalindrome = true := sorry\n\n\
-  \ntheorem find_longest_palindrome_length (s : String) :\n  (find_longest_palindrome\
-  \ s).length ≥ min 1 s.length := sorry\n\n\ntheorem find_longest_palindrome_maximal\
-  \ (s : String) (start len : Nat) :\n  let substr := String.substring s start len\n\
-  \  substr.isPalindrome = true → (find_longest_palindrome s).length ≥ substr.length\
-  \ := sorry\n\n\ntheorem nonempty_input_nonempty_output (s : String) (h : s.length\
-  \ > 0) :\n  (find_longest_palindrome s).length > 0 := sorry\n\n\ntheorem palindrome_input_returns_itself\
-  \ (s : String) (h : s.isPalindrome = true) :\n  find_longest_palindrome s = s :=\
-  \ sorry\n\n/--\ninfo: 'bb'\n-/\n#guard_msgs in\n#eval find_longest_palindrome \"\
-  cbbd\"\n\n/--\ninfo: 'a'\n-/\n#guard_msgs in\n#eval find_longest_palindrome \"a\"\
-  \n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+
+  Example 1:
+
+
+  Input: "babad"
+  Output: "bab"
+  Note: "aba" is also a valid answer.
+
+
+  Example 2:
+
+
+  Input: "cbbd"
+  Output: "bb"
+vc-preamble: |
+  import Imports.AllImports
+
+  def String.isPalindrome (s : String) : Bool := sorry
+
+  def find_longest_palindrome (s : String) : String := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def String.isSubstringOf (sub str : String) : Bool := sorry
+
+  def String.substring (str : String) (start len : Nat) : String := sorry
+vc-theorems: |
+  theorem find_longest_palindrome_is_substring (s : String) :
+    (find_longest_palindrome s).isSubstringOf s = true := sorry
+
+
+  theorem find_longest_palindrome_is_palindrome (s : String) :
+    (find_longest_palindrome s).isPalindrome = true := sorry
+
+
+  theorem find_longest_palindrome_length (s : String) :
+    (find_longest_palindrome s).length ≥ min 1 s.length := sorry
+
+
+  theorem find_longest_palindrome_maximal (s : String) (start len : Nat) :
+    let substr := String.substring s start len
+    substr.isPalindrome = true → (find_longest_palindrome s).length ≥ substr.length := sorry
+
+
+  theorem nonempty_input_nonempty_output (s : String) (h : s.length > 0) :
+    (find_longest_palindrome s).length > 0 := sorry
+
+
+  theorem palindrome_input_returns_itself (s : String) (h : s.isPalindrome = true) :
+    find_longest_palindrome s = s := sorry
+
+  /--
+  info: 'bb'
+  -/
+  #guard_msgs in
+  #eval find_longest_palindrome "cbbd"
+
+  /--
+  info: 'a'
+  -/
+  #guard_msgs in
+  #eval find_longest_palindrome "a"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

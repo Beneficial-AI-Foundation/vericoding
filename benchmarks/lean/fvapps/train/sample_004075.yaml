@@ -1,14 +1,41 @@
-"vc-description": "A number `n` is called `prime happy` if there is at least one prime\
-  \ less than `n` and the `sum of all primes less than n` is evenly divisible by `n`.\
-  \ Write `isPrimeHappy(n)` which returns `true` if `n` is `prime happy` else `false`."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_prime_happy : Int → Bool := sorry\n\ntheorem is_prime_happy_returns_bool\
-  \ (n : Int) :\n  is_prime_happy n = true ∨ is_prime_happy n = false := sorry\n"
-"vc-theorems": "theorem known_true_values (n : Int) (h : n > 0) :\n  n = 5 ∨ n = 25\
-  \ ∨ n = 32 ∨ n = 71 ∨ n = 2745 ∨ n = 10623 ∨ n = 63201 ∨ n = 85868 →\n  is_prime_happy\
-  \ n = true := sorry\n\n\ntheorem output_is_deterministic (n : Int) :\n  is_prime_happy\
-  \ n = is_prime_happy n := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_prime_happy\
-  \ 5\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_prime_happy 8\n\n/--\ninfo:\
-  \ True\n-/\n#guard_msgs in\n#eval is_prime_happy 25\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  A number `n` is called `prime happy` if there is at least one prime less than `n` and the `sum of all primes less than n` is evenly divisible by `n`. Write `isPrimeHappy(n)` which returns `true` if `n` is `prime happy` else `false`.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_prime_happy : Int → Bool := sorry
+
+  theorem is_prime_happy_returns_bool (n : Int) :
+    is_prime_happy n = true ∨ is_prime_happy n = false := sorry
+vc-theorems: |
+  theorem known_true_values (n : Int) (h : n > 0) :
+    n = 5 ∨ n = 25 ∨ n = 32 ∨ n = 71 ∨ n = 2745 ∨ n = 10623 ∨ n = 63201 ∨ n = 85868 →
+    is_prime_happy n = true := sorry
+
+
+  theorem output_is_deterministic (n : Int) :
+    is_prime_happy n = is_prime_happy n := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_prime_happy 5
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_prime_happy 8
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_prime_happy 25
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

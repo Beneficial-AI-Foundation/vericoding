@@ -1,28 +1,72 @@
-"vc-description": "Given a matrix represented as a list of string, such as\n```\n\
-  ###.....\n..###...\n....###.\n.....###\n.....###\n....###.\n..###...\n###.....\n\
-  ```\nwrite a function\n```if:javascript\n`rotateClockwise(matrix)`\n```\n```if:ruby,python\n\
-  `rotate_clockwise(matrix)`\n```\nthat return its 90° clockwise rotation, for our\
-  \ example:\n\n```\n#......#\n#......#\n##....##\n.#....#.\n.##..##.\n..####..\n\
-  ..####..\n...##...\n```\n>  /!\\  You must return a **rotated copy** of `matrix`!\
-  \ (`matrix` must be the same before and after calling your function)  \n> Note that\
-  \ the matrix isn't necessarily a square, though it's always a rectangle!  \n> Please\
-  \ also note that the equality `m == rotateClockwise(rotateClockwise(rotateClockwise(rotateClockwise(m))));`\
-  \ (360° clockwise rotation), is not always true because `rotateClockwise([''])`\
-  \ => `[]` and `rotateClockwise(['','',''])` => `[]` (empty lines information is\
-  \ lost)"
-"vc-preamble": "import Imports.AllImports\n\ndef rotate_clockwise (m : Matrix) : Matrix\
-  \ :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def manual_rotate (m : Matrix) : Matrix :=\n  sorry\n"
-"vc-theorems": "theorem empty_matrix_rotation :\n  ∀ (m : Matrix), m.content = []\
-  \ → (rotate_clockwise m).content = [] :=\n  sorry\n\n\ntheorem rotation_dimensions\
-  \ {m : Matrix} (h1 : m.content ≠ []) \n    (h2 : ∃ s, m.content.head? = some s)\
-  \ (h3 : ∀ s, m.content.head? = some s → s ≠ \"\") :\n    let rotated := rotate_clockwise\
-  \ m\n    let first := Classical.choose h2\n    (rotated.content.length = first.length)\
-  \ ∧\n    (∀ (row : String), row ∈ rotated.content → row.length = m.content.length)\
-  \ :=\n  sorry\n\n\ntheorem four_rotations_identity {m : Matrix} (h1 : m.content\
-  \ ≠ [])\n    (h2 : ∃ s, m.content.head? = some s) (h3 : ∀ s, m.content.head? = some\
-  \ s → s ≠ \"\") :\n    rotate_clockwise (rotate_clockwise (rotate_clockwise (rotate_clockwise\
-  \ m))) = m :=\n  sorry\n\n\ntheorem rotation_equals_manual :\n  ∀ (m : Matrix),\
-  \ rotate_clockwise m = manual_rotate m :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Given a matrix represented as a list of string, such as
+  ```
+  ###.....
+  ..###...
+  ....###.
+  .....###
+  .....###
+  ....###.
+  ..###...
+  ###.....
+  ```
+  write a function
+  ```if:javascript
+  `rotateClockwise(matrix)`
+  ```
+  ```if:ruby,python
+  `rotate_clockwise(matrix)`
+  ```
+  that return its 90° clockwise rotation, for our example:
+
+  ```
+  #......#
+  #......#
+  ##....##
+  .#....#.
+  .##..##.
+  ..####..
+  ..####..
+  ...##...
+  ```
+  >  /!\  You must return a **rotated copy** of `matrix`! (`matrix` must be the same before and after calling your function)  
+  > Note that the matrix isn't necessarily a square, though it's always a rectangle!  
+  > Please also note that the equality `m == rotateClockwise(rotateClockwise(rotateClockwise(rotateClockwise(m))));` (360° clockwise rotation), is not always true because `rotateClockwise([''])` => `[]` and `rotateClockwise(['','',''])` => `[]` (empty lines information is lost)
+vc-preamble: |
+  import Imports.AllImports
+
+  def rotate_clockwise (m : Matrix) : Matrix :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def manual_rotate (m : Matrix) : Matrix :=
+    sorry
+vc-theorems: |-
+  theorem empty_matrix_rotation :
+    ∀ (m : Matrix), m.content = [] → (rotate_clockwise m).content = [] :=
+    sorry
+
+
+  theorem rotation_dimensions {m : Matrix} (h1 : m.content ≠ []) 
+      (h2 : ∃ s, m.content.head? = some s) (h3 : ∀ s, m.content.head? = some s → s ≠ "") :
+      let rotated := rotate_clockwise m
+      let first := Classical.choose h2
+      (rotated.content.length = first.length) ∧
+      (∀ (row : String), row ∈ rotated.content → row.length = m.content.length) :=
+    sorry
+
+
+  theorem four_rotations_identity {m : Matrix} (h1 : m.content ≠ [])
+      (h2 : ∃ s, m.content.head? = some s) (h3 : ∀ s, m.content.head? = some s → s ≠ "") :
+      rotate_clockwise (rotate_clockwise (rotate_clockwise (rotate_clockwise m))) = m :=
+    sorry
+
+
+  theorem rotation_equals_manual :
+    ∀ (m : Matrix), rotate_clockwise m = manual_rotate m :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

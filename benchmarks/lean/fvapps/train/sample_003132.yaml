@@ -1,18 +1,47 @@
-"vc-description": "Sometimes, I want to quickly be able to convert miles per imperial\
-  \ gallon into kilometers per liter.\n\nCreate an application that will display the\
-  \ number of kilometers per liter (output) based on the number of miles per imperial\
-  \ gallon (input).\n\nMake sure to round off the result to two decimal points. If\
-  \ the answer ends with a 0, it should be rounded off without the 0. So instead of\
-  \ 5.50, we should get 5.5.\n\nSome useful associations relevant to this kata:\n\
-  1 Imperial Gallon = 4.54609188 litres\n1 Mile = 1.609344 kilometres"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def converter (mpg : Float) : Float := sorry \n\nnamespace converter\
-  \ \n"
-"vc-theorems": "theorem converter_positive {mpg : Float} (h : mpg ≥ 1) : converter\
-  \ mpg > 0 := sorry \n\ntheorem converter_proportional {mpg : Float} (h1 : mpg ≥\
-  \ 1) (h2 : mpg ≤ 500) : \n  0.30 * mpg ≤ converter mpg ∧ converter mpg ≤ 0.40 *\
-  \ mpg := sorry\n\nend converter\n\n/--\ninfo: 3.54\n-/\n#guard_msgs in\n#eval converter\
-  \ 10\n\n/--\ninfo: 8.5\n-/\n#guard_msgs in\n#eval converter 24\n\n/--\ninfo: 12.74\n\
-  -/\n#guard_msgs in\n#eval converter 36\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Sometimes, I want to quickly be able to convert miles per imperial gallon into kilometers per liter.
+
+  Create an application that will display the number of kilometers per liter (output) based on the number of miles per imperial gallon (input).
+
+  Make sure to round off the result to two decimal points. If the answer ends with a 0, it should be rounded off without the 0. So instead of 5.50, we should get 5.5.
+
+  Some useful associations relevant to this kata:
+  1 Imperial Gallon = 4.54609188 litres
+  1 Mile = 1.609344 kilometres
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def converter (mpg : Float) : Float := sorry 
+
+  namespace converter 
+vc-theorems: |
+  theorem converter_positive {mpg : Float} (h : mpg ≥ 1) : converter mpg > 0 := sorry 
+
+  theorem converter_proportional {mpg : Float} (h1 : mpg ≥ 1) (h2 : mpg ≤ 500) : 
+    0.30 * mpg ≤ converter mpg ∧ converter mpg ≤ 0.40 * mpg := sorry
+
+  end converter
+
+  /--
+  info: 3.54
+  -/
+  #guard_msgs in
+  #eval converter 10
+
+  /--
+  info: 8.5
+  -/
+  #guard_msgs in
+  #eval converter 24
+
+  /--
+  info: 12.74
+  -/
+  #guard_msgs in
+  #eval converter 36
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

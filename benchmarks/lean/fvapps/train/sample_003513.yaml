@@ -1,20 +1,74 @@
-"vc-description": "A family of kookaburras are in my backyard.\n\nI can't see them\
-  \ all, but I can hear them!\n\n# How many kookaburras are there?\n\n\n\n\n## Hint\
-  \ \n\nThe trick to counting kookaburras is to listen carefully\n\n* The males go\
-  \ ```HaHaHa```...\n\n* The females go ```hahaha```...\n\n* And they always alternate\
-  \ male/female\n\n\n\n^ Kata Note : No validation is necessary; only valid input\
-  \ will be passed :-)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def kooka_counter (s: String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem kooka_counter_nonnegative (s: String) : \n  kooka_counter\
-  \ s ≥ 0 := \nsorry\n\n\ntheorem kooka_counter_empty : \n  kooka_counter \"\" = 0\
-  \ := \nsorry\n\n\ntheorem kooka_counter_consecutive_laughs (n: Nat) (h: n > 0) :\n\
-  \  kooka_counter (String.join (List.replicate n \"ha\")) = 1 ∧ \n  kooka_counter\
-  \ (String.join (List.replicate n \"Ha\")) = 1 :=\nsorry\n\n\ntheorem kooka_counter_alternating_laughs\
-  \ (n: Nat) (h: n > 0) :\n  let lowerLaugh := String.join (List.replicate n \"ha\"\
-  )\n  let upperLaugh := String.join (List.replicate n \"Ha\")\n  kooka_counter (lowerLaugh\
-  \ ++ upperLaugh) = 2 :=\nsorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval kooka_counter\
-  \ \"\"\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval kooka_counter \"hahahahaha\"\n\
-  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval kooka_counter \"hahahahahaHaHaHa\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  A family of kookaburras are in my backyard.
+
+  I can't see them all, but I can hear them!
+
+  # How many kookaburras are there?
+
+
+
+
+  ## Hint 
+
+  The trick to counting kookaburras is to listen carefully
+
+  * The males go ```HaHaHa```...
+
+  * The females go ```hahaha```...
+
+  * And they always alternate male/female
+
+
+
+  ^ Kata Note : No validation is necessary; only valid input will be passed :-)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def kooka_counter (s: String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem kooka_counter_nonnegative (s: String) : 
+    kooka_counter s ≥ 0 := 
+  sorry
+
+
+  theorem kooka_counter_empty : 
+    kooka_counter "" = 0 := 
+  sorry
+
+
+  theorem kooka_counter_consecutive_laughs (n: Nat) (h: n > 0) :
+    kooka_counter (String.join (List.replicate n "ha")) = 1 ∧ 
+    kooka_counter (String.join (List.replicate n "Ha")) = 1 :=
+  sorry
+
+
+  theorem kooka_counter_alternating_laughs (n: Nat) (h: n > 0) :
+    let lowerLaugh := String.join (List.replicate n "ha")
+    let upperLaugh := String.join (List.replicate n "Ha")
+    kooka_counter (lowerLaugh ++ upperLaugh) = 2 :=
+  sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval kooka_counter ""
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval kooka_counter "hahahahaha"
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval kooka_counter "hahahahahaHaHaHa"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

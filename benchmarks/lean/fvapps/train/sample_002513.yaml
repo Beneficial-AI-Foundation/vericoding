@@ -1,22 +1,65 @@
-"vc-description": "=====Problem Statement=====\nYou are given a string and your task\
-  \ is to swap cases. In other words, convert all lowercase letters to uppercase letters\
-  \ and vice versa.\n\n=====Example=====\n\nWww.HackerRank.com → wWW.hACKERrANK.COM\n\
-  Pythonist 2 → pYTHONIST 2\n\n=====Input Format=====\nA single line containing a\
-  \ string S.\n\n=====Output Format=====\nPrint the modified string S."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def swapCase (s : String) : String := sorry\n\ntheorem swapCase_preserves_non_letters\
-  \ (s : String)\n  (h : ∀ c ∈ s.data, ¬(c.isUpper ∨ c.isLower)) :\n  swapCase s =\
-  \ s := sorry\n"
-"vc-theorems": "theorem swapCase_ascii_letters_upper (s : String) (c : Char)\n  (h1\
-  \ : c ∈ s.data) (h2 : c.isUpper) :\n  ∀ i, (swapCase s).data.get! i ≠ c := sorry\n\
-  \n\ntheorem swapCase_ascii_letters_lower (s : String) (c : Char)\n  (h1 : c ∈ s.data)\
-  \ (h2 : c.isLower) :\n  ∀ i, (swapCase s).data.get! i ≠ c := sorry\n\n\ntheorem\
-  \ swapCase_preserves_empty (s : String)\n  (h : s = \"\") :\n  swapCase s = s :=\
-  \ sorry\n\n\ntheorem swapCase_preserves_whitespace (s : String)\n  (h : ∀ c ∈ s.data,\
-  \ c.isWhitespace) :\n  swapCase s = s := sorry\n\n/--\ninfo: 'wWW.hACKERrANK.COM'\n\
-  -/\n#guard_msgs in\n#eval swap_case \"Www.HackerRank.com\"\n\n/--\ninfo: 'pYTHONIST\
-  \ 2'\n-/\n#guard_msgs in\n#eval swap_case \"Pythonist 2\"\n\n/--\ninfo: 'hACKERrANK.COM\
-  \ PRESENTS \"pYTHONIST 2\".'\n-/\n#guard_msgs in\n#eval swap_case \"HackerRank.com\
-  \ presents \"Pythonist 2\".\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  =====Problem Statement=====
+  You are given a string and your task is to swap cases. In other words, convert all lowercase letters to uppercase letters and vice versa.
+
+  =====Example=====
+
+  Www.HackerRank.com → wWW.hACKERrANK.COM
+  Pythonist 2 → pYTHONIST 2
+
+  =====Input Format=====
+  A single line containing a string S.
+
+  =====Output Format=====
+  Print the modified string S.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def swapCase (s : String) : String := sorry
+
+  theorem swapCase_preserves_non_letters (s : String)
+    (h : ∀ c ∈ s.data, ¬(c.isUpper ∨ c.isLower)) :
+    swapCase s = s := sorry
+vc-theorems: |
+  theorem swapCase_ascii_letters_upper (s : String) (c : Char)
+    (h1 : c ∈ s.data) (h2 : c.isUpper) :
+    ∀ i, (swapCase s).data.get! i ≠ c := sorry
+
+
+  theorem swapCase_ascii_letters_lower (s : String) (c : Char)
+    (h1 : c ∈ s.data) (h2 : c.isLower) :
+    ∀ i, (swapCase s).data.get! i ≠ c := sorry
+
+
+  theorem swapCase_preserves_empty (s : String)
+    (h : s = "") :
+    swapCase s = s := sorry
+
+
+  theorem swapCase_preserves_whitespace (s : String)
+    (h : ∀ c ∈ s.data, c.isWhitespace) :
+    swapCase s = s := sorry
+
+  /--
+  info: 'wWW.hACKERrANK.COM'
+  -/
+  #guard_msgs in
+  #eval swap_case "Www.HackerRank.com"
+
+  /--
+  info: 'pYTHONIST 2'
+  -/
+  #guard_msgs in
+  #eval swap_case "Pythonist 2"
+
+  /--
+  info: 'hACKERrANK.COM PRESENTS "pYTHONIST 2".'
+  -/
+  #guard_msgs in
+  #eval swap_case "HackerRank.com presents "Pythonist 2"."
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

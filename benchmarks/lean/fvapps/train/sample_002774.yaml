@@ -1,20 +1,63 @@
-"vc-description": "Your goal in this kata is to implement a difference function, which\
-  \ subtracts one list from another and returns the result.\n\nIt should remove all\
-  \ values from list `a`, which are present in list `b`.\n\n```python\narray_diff([1,2],[1])\
-  \ == [2]\n```\n\nIf a value is present in `b`, all of its occurrences must be removed\
-  \ from the other:\n\n```python\narray_diff([1,2,2,2,3],[2]) == [1,3]\n```\n~~~ if:c\n\
-  NOTE: In C, assign return array length to pointer *z\n~~~"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def array_diff (a b : List Int) : List Int := sorry\n\ntheorem\
-  \ array_diff_elements_from_a (a b : List Int) :\n  ∀ x ∈ array_diff a b, x ∈ a :=\
-  \ sorry\n"
-"vc-theorems": "theorem array_diff_no_elements_from_b (a b : List Int) :\n  ∀ x ∈\
-  \ array_diff a b, x ∉ b := sorry\n\n\ntheorem array_diff_preserves_order (a b :\
-  \ List Int) :\n  array_diff a b = a.filter (fun x => x ∈ array_diff a b) := sorry\n\
-  \n\ntheorem array_diff_empty_b (a : List Int) :\n  array_diff a [] = a := sorry\n\
-  \n\ntheorem array_diff_identical_lists (a : List Int) :\n  array_diff a a = [] :=\
-  \ sorry\n\n/--\ninfo: [2]\n-/\n#guard_msgs in\n#eval array_diff [1, 2] [1]\n\n/--\n\
-  info: [2, 2]\n-/\n#guard_msgs in\n#eval array_diff [1, 2, 2] [1]\n\n/--\ninfo: [1]\n\
-  -/\n#guard_msgs in\n#eval array_diff [1, 2, 2] [2]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+
+  It should remove all values from list `a`, which are present in list `b`.
+
+  ```python
+  array_diff([1,2],[1]) == [2]
+  ```
+
+  If a value is present in `b`, all of its occurrences must be removed from the other:
+
+  ```python
+  array_diff([1,2,2,2,3],[2]) == [1,3]
+  ```
+  ~~~ if:c
+  NOTE: In C, assign return array length to pointer *z
+  ~~~
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def array_diff (a b : List Int) : List Int := sorry
+
+  theorem array_diff_elements_from_a (a b : List Int) :
+    ∀ x ∈ array_diff a b, x ∈ a := sorry
+vc-theorems: |
+  theorem array_diff_no_elements_from_b (a b : List Int) :
+    ∀ x ∈ array_diff a b, x ∉ b := sorry
+
+
+  theorem array_diff_preserves_order (a b : List Int) :
+    array_diff a b = a.filter (fun x => x ∈ array_diff a b) := sorry
+
+
+  theorem array_diff_empty_b (a : List Int) :
+    array_diff a [] = a := sorry
+
+
+  theorem array_diff_identical_lists (a : List Int) :
+    array_diff a a = [] := sorry
+
+  /--
+  info: [2]
+  -/
+  #guard_msgs in
+  #eval array_diff [1, 2] [1]
+
+  /--
+  info: [2, 2]
+  -/
+  #guard_msgs in
+  #eval array_diff [1, 2, 2] [1]
+
+  /--
+  info: [1]
+  -/
+  #guard_msgs in
+  #eval array_diff [1, 2, 2] [2]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

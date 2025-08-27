@@ -1,19 +1,76 @@
-"vc-description": "Given a string, your task is to count how many palindromic substrings\
-  \ in this string.\n\n\n\nThe substrings with different start indexes or end indexes\
-  \ are counted as different substrings even they consist of same characters. \n\n\
-  \nExample 1:\n\nInput: \"abc\"\nOutput: 3\nExplanation: Three palindromic strings:\
-  \ \"a\", \"b\", \"c\".\n\n\n\nExample 2:\n\nInput: \"aaa\"\nOutput: 6\nExplanation:\
-  \ Six palindromic strings: \"a\", \"a\", \"a\", \"aa\", \"aa\", \"aaa\".\n\n\n\n\
-  Note:\n\nThe input string length won't exceed 1000."
-"vc-preamble": "import Imports.AllImports\n\ndef count_palindromic_substrings (s:\
-  \ String) : Nat :=\n  sorry\n\n\ndef is_palindrome (s : String) : Bool :=\n  sorry\n\
-  \n\ndef string_reverse (s : String) : String :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def string_repeat (c : Char) (n : Nat) : String :=\n  sorry\n"
-"vc-theorems": "theorem minimum_palindromes (s : String) (h : s.length > 0) : \n \
-  \ count_palindromic_substrings s ≥ s.length :=\nsorry \n\n\ntheorem empty_string\
-  \ :\n  count_palindromic_substrings \"\" = 0 :=\nsorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
-  \ in\n#eval count_palindromic_substrings \"abc\"\n\n/--\ninfo: 6\n-/\n#guard_msgs\
-  \ in\n#eval count_palindromic_substrings \"aaa\"\n\n/--\ninfo: 10\n-/\n#guard_msgs\
-  \ in\n#eval count_palindromic_substrings \"racecar\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given a string, your task is to count how many palindromic substrings in this string.
+
+
+
+  The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters. 
+
+
+  Example 1:
+
+  Input: "abc"
+  Output: 3
+  Explanation: Three palindromic strings: "a", "b", "c".
+
+
+
+  Example 2:
+
+  Input: "aaa"
+  Output: 6
+  Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+
+
+
+  Note:
+
+  The input string length won't exceed 1000.
+vc-preamble: |
+  import Imports.AllImports
+
+  def count_palindromic_substrings (s: String) : Nat :=
+    sorry
+
+
+  def is_palindrome (s : String) : Bool :=
+    sorry
+
+
+  def string_reverse (s : String) : String :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def string_repeat (c : Char) (n : Nat) : String :=
+    sorry
+vc-theorems: |
+  theorem minimum_palindromes (s : String) (h : s.length > 0) : 
+    count_palindromic_substrings s ≥ s.length :=
+  sorry 
+
+
+  theorem empty_string :
+    count_palindromic_substrings "" = 0 :=
+  sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_palindromic_substrings "abc"
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval count_palindromic_substrings "aaa"
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval count_palindromic_substrings "racecar"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

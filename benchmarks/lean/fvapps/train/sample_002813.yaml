@@ -1,32 +1,103 @@
-"vc-description": "Write a function `getDrinkByProfession`/`get_drink_by_profession()`\
-  \ that receives as input parameter a string, and produces outputs according to the\
-  \ following table:\n\n\n\n\nInput\nOutput\n\n\n\"Jabroni\"\n\"Patron Tequila\"\n\
-  \n\n\"School Counselor\"\n\"Anything with Alcohol\"\n\n\n \"Programmer\"\n \"Hipster\
-  \ Craft Beer\"\n\n\n \"Bike Gang Member\"\n\"Moonshine\" \n\n\n \"Politician\"\n\
-  \"Your tax dollars\" \n\n\n \"Rapper\"\n\"Cristal\" \n\n\n *anything else* \n\"\
-  Beer\" \n\n\n\n\n\nNote: *anything else* is the default case: if the input to the\
-  \ function is not any of the values in the table, then the return value should be\
-  \ \"Beer.\"\n\nMake sure you cover the cases where certain words do not show up\
-  \ with correct capitalization. For example, getDrinkByProfession(\"pOLitiCIaN\"\
-  ) should still return \"Your tax dollars\"."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def get_drink_by_profession (profession : String) : String := sorry\n\
-  \ndef known_professions : List (String × String) := [\n  (\"jabroni\", \"Patron\
-  \ Tequila\"),\n  (\"school counselor\", \"Anything with Alcohol\"), \n  (\"programmer\"\
-  , \"Hipster Craft Beer\"),\n  (\"bike gang member\", \"Moonshine\"),\n  (\"politician\"\
-  , \"Your tax dollars\"),\n  (\"rapper\", \"Cristal\")\n]\n"
-"vc-theorems": "theorem known_profession_case_insensitive \n  (profession : String)\n\
-  \  (h : profession.toLower ∈ (known_professions.map Prod.fst).map String.toLower)\
-  \ :\n  ∃ drink, (get_drink_by_profession profession = drink ∧ \n           (profession.toLower,\
-  \ drink) ∈ (known_professions.map (fun p => (p.1.toLower, p.2)))) := \nsorry\n\n\
-  \ntheorem unknown_profession_returns_beer\n  (profession : String) \n  (h : profession.toLower\
-  \ ∉ (known_professions.map Prod.fst).map String.toLower) :\n  get_drink_by_profession\
-  \ profession = \"Beer\" :=\nsorry\n\n\ntheorem exact_match_returns_correct_drink\n\
-  \  (profession : String)\n  (h : profession ∈ known_professions.map Prod.fst) :\n\
-  \  ∃ drink, (get_drink_by_profession profession = drink ∧\n           (profession,\
-  \ drink) ∈ known_professions) :=\nsorry\n\n/--\ninfo: 'Patron Tequila'\n-/\n#guard_msgs\
-  \ in\n#eval get_drink_by_profession \"jabrOni\"\n\n/--\ninfo: 'Your tax dollars'\n\
-  -/\n#guard_msgs in\n#eval get_drink_by_profession \"pOLiTiCIaN\"\n\n/--\ninfo: 'Beer'\n\
-  -/\n#guard_msgs in\n#eval get_drink_by_profession \"pundit\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function `getDrinkByProfession`/`get_drink_by_profession()` that receives as input parameter a string, and produces outputs according to the following table:
+
+
+
+
+  Input
+  Output
+
+
+  "Jabroni"
+  "Patron Tequila"
+
+
+  "School Counselor"
+  "Anything with Alcohol"
+
+
+   "Programmer"
+   "Hipster Craft Beer"
+
+
+   "Bike Gang Member"
+  "Moonshine" 
+
+
+   "Politician"
+  "Your tax dollars" 
+
+
+   "Rapper"
+  "Cristal" 
+
+
+   *anything else* 
+  "Beer" 
+
+
+
+
+
+  Note: *anything else* is the default case: if the input to the function is not any of the values in the table, then the return value should be "Beer."
+
+  Make sure you cover the cases where certain words do not show up with correct capitalization. For example, getDrinkByProfession("pOLitiCIaN") should still return "Your tax dollars".
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def get_drink_by_profession (profession : String) : String := sorry
+
+  def known_professions : List (String × String) := [
+    ("jabroni", "Patron Tequila"),
+    ("school counselor", "Anything with Alcohol"), 
+    ("programmer", "Hipster Craft Beer"),
+    ("bike gang member", "Moonshine"),
+    ("politician", "Your tax dollars"),
+    ("rapper", "Cristal")
+  ]
+vc-theorems: |
+  theorem known_profession_case_insensitive 
+    (profession : String)
+    (h : profession.toLower ∈ (known_professions.map Prod.fst).map String.toLower) :
+    ∃ drink, (get_drink_by_profession profession = drink ∧ 
+             (profession.toLower, drink) ∈ (known_professions.map (fun p => (p.1.toLower, p.2)))) := 
+  sorry
+
+
+  theorem unknown_profession_returns_beer
+    (profession : String) 
+    (h : profession.toLower ∉ (known_professions.map Prod.fst).map String.toLower) :
+    get_drink_by_profession profession = "Beer" :=
+  sorry
+
+
+  theorem exact_match_returns_correct_drink
+    (profession : String)
+    (h : profession ∈ known_professions.map Prod.fst) :
+    ∃ drink, (get_drink_by_profession profession = drink ∧
+             (profession, drink) ∈ known_professions) :=
+  sorry
+
+  /--
+  info: 'Patron Tequila'
+  -/
+  #guard_msgs in
+  #eval get_drink_by_profession "jabrOni"
+
+  /--
+  info: 'Your tax dollars'
+  -/
+  #guard_msgs in
+  #eval get_drink_by_profession "pOLiTiCIaN"
+
+  /--
+  info: 'Beer'
+  -/
+  #guard_msgs in
+  #eval get_drink_by_profession "pundit"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

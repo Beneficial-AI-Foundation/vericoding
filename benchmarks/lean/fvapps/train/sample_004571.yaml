@@ -1,34 +1,96 @@
-"vc-description": "Your task is to find all the elements of an array that are non\
-  \ consecutive.\n\nA number is non consecutive if it is not exactly one larger than\
-  \ the previous element in the array. The first element gets a pass and is never\
-  \ considered non consecutive.\n\n~~~if:javascript,haskell,swift\nCreate a function\
-  \ named `allNonConsecutive`\n~~~\n~~~if:python,rust\nCreate a function name `all_non_consecutive`\n\
-  ~~~\n\nE.g., if we have an array `[1,2,3,4,6,7,8,15,16]` then `6` and `15` are non-consecutive.\n\
-  \n~~~if:javascript,python\nYou should return the results as an array of objects\
-  \ with two values `i: ` and `n: `.\n~~~\n~~~if:haskell,swift,rust\nYou should return\
-  \ the results as an array of tuples with two values: the index of the non-consecutive\
-  \ number and the non-consecutive number.\n~~~\n\nE.g., for the above array the result\
-  \ should be:\n```python\n[\n  {'i': 4, 'n': 6},\n  {'i': 7, 'n': 15}\n]\n```\n\n\
-  If the whole array is consecutive or has one element then return an empty array.\n\
-  \nThe array elements will all be numbers. The numbers will also all be unique and\
-  \ in ascending order. The numbers could be positive and/or negetive and the gap\
-  \ could be larger than one.\n\nIf you like this kata, maybe try this one next: https://www.codewars.com/kata/represent-array-of-numbers-as-ranges"
-"vc-preamble": "import Imports.AllImports\n\ndef List.Sorted {α : Type} (r : α → α\
-  \ → Prop) (l : List α) : Prop :=\n  ∀ i j, i < j → j < l.length → r (l.get ⟨i, sorry⟩)\
-  \ (l.get ⟨j, sorry⟩)\n\nstructure Result where\n  i : Nat\n  n : Int\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def all_non_consecutive (arr : List Int) : List Result :=\n  sorry\n"
-"vc-theorems": "theorem consecutive_not_in_result (arr : List Int) (h : arr.length\
-  \ ≥ 2) :\n  ∀ i, i < arr.length - 1 →\n  arr.get ⟨i+1, sorry⟩ = arr.get ⟨i, sorry⟩\
-  \ + 1 →\n  ¬∃ r ∈ all_non_consecutive arr, r.i = i + 1 :=\nsorry\n\n\ntheorem non_consecutive_in_result\
-  \ (arr : List Int) (h : arr.length ≥ 2) :\n  ∀ i, i < arr.length - 1 →\n  arr.get\
-  \ ⟨i+1, sorry⟩ ≠ arr.get ⟨i, sorry⟩ + 1 →\n  ∃ r ∈ all_non_consecutive arr, r.i\
-  \ = i + 1 ∧ r.n = arr.get ⟨i+1, sorry⟩ :=\nsorry\n\n\ntheorem indices_ascending\
-  \ (arr : List Int) (h : arr.length ≥ 2) :\n  let result := all_non_consecutive arr\n\
-  \  result.length > 1 →\n  List.Sorted (·≤·) (result.map Result.i) :=\nsorry\n\n\n\
-  theorem valid_indices (arr : List Int) (h : arr.length ≥ 2) :\n  ∀ r ∈ all_non_consecutive\
-  \ arr,\n  1 ≤ r.i ∧ r.i < arr.length :=\nsorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs\
-  \ in\n#eval all_non_consecutive [1, 2, 3, 4, 6, 7, 8, 15, 16]\n\n/--\ninfo: expected2\n\
-  -/\n#guard_msgs in\n#eval all_non_consecutive [1, 2, 3, 4, 5]\n\n/--\ninfo: expected3\n\
-  -/\n#guard_msgs in\n#eval all_non_consecutive [-3, -2, -1, 1, 2, 4, 5]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Your task is to find all the elements of an array that are non consecutive.
+
+  A number is non consecutive if it is not exactly one larger than the previous element in the array. The first element gets a pass and is never considered non consecutive.
+
+  ~~~if:javascript,haskell,swift
+  Create a function named `allNonConsecutive`
+  ~~~
+  ~~~if:python,rust
+  Create a function name `all_non_consecutive`
+  ~~~
+
+  E.g., if we have an array `[1,2,3,4,6,7,8,15,16]` then `6` and `15` are non-consecutive.
+
+  ~~~if:javascript,python
+  You should return the results as an array of objects with two values `i: ` and `n: `.
+  ~~~
+  ~~~if:haskell,swift,rust
+  You should return the results as an array of tuples with two values: the index of the non-consecutive number and the non-consecutive number.
+  ~~~
+
+  E.g., for the above array the result should be:
+  ```python
+  [
+    {'i': 4, 'n': 6},
+    {'i': 7, 'n': 15}
+  ]
+  ```
+
+  If the whole array is consecutive or has one element then return an empty array.
+
+  The array elements will all be numbers. The numbers will also all be unique and in ascending order. The numbers could be positive and/or negetive and the gap could be larger than one.
+
+  If you like this kata, maybe try this one next: https://www.codewars.com/kata/represent-array-of-numbers-as-ranges
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.Sorted {α : Type} (r : α → α → Prop) (l : List α) : Prop :=
+    ∀ i j, i < j → j < l.length → r (l.get ⟨i, sorry⟩) (l.get ⟨j, sorry⟩)
+
+  structure Result where
+    i : Nat
+    n : Int
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def all_non_consecutive (arr : List Int) : List Result :=
+    sorry
+vc-theorems: |
+  theorem consecutive_not_in_result (arr : List Int) (h : arr.length ≥ 2) :
+    ∀ i, i < arr.length - 1 →
+    arr.get ⟨i+1, sorry⟩ = arr.get ⟨i, sorry⟩ + 1 →
+    ¬∃ r ∈ all_non_consecutive arr, r.i = i + 1 :=
+  sorry
+
+
+  theorem non_consecutive_in_result (arr : List Int) (h : arr.length ≥ 2) :
+    ∀ i, i < arr.length - 1 →
+    arr.get ⟨i+1, sorry⟩ ≠ arr.get ⟨i, sorry⟩ + 1 →
+    ∃ r ∈ all_non_consecutive arr, r.i = i + 1 ∧ r.n = arr.get ⟨i+1, sorry⟩ :=
+  sorry
+
+
+  theorem indices_ascending (arr : List Int) (h : arr.length ≥ 2) :
+    let result := all_non_consecutive arr
+    result.length > 1 →
+    List.Sorted (·≤·) (result.map Result.i) :=
+  sorry
+
+
+  theorem valid_indices (arr : List Int) (h : arr.length ≥ 2) :
+    ∀ r ∈ all_non_consecutive arr,
+    1 ≤ r.i ∧ r.i < arr.length :=
+  sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval all_non_consecutive [1, 2, 3, 4, 6, 7, 8, 15, 16]
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval all_non_consecutive [1, 2, 3, 4, 5]
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval all_non_consecutive [-3, -2, -1, 1, 2, 4, 5]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

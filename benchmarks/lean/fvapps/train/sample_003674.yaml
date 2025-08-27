@@ -1,23 +1,69 @@
-"vc-description": "# Task\n Below we will define what and n-interesting polygon is\
-  \ and your task is to find its area for a given n.\n\n A 1-interesting polygon is\
-  \ just a square with a side of length 1. An n-interesting polygon is obtained by\
-  \ taking the n - 1-interesting polygon and appending 1-interesting polygons to its\
-  \ rim side by side. You can see the 1-, 2- and 3-interesting polygons in the picture\
-  \ below.\n\n ![](https://files.gitter.im/myjinxin2015/Gwsw/blob)\n\n# Example\n\n\
-  \ For `n = 1`, the output should be `1`;\n \n For `n = 2`, the output should be\
-  \ `5`;\n \n For `n = 3`, the output should be `13`.\n\n# Input/Output\n\n\n - `[input]`\
-  \ integer `n`\n\n    Constraints: `1 ≤ n < 10000.`\n    \n\n - `[output]` an integer\n\
-  \n   The area of the n-interesting polygon."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def shape_area (n : Int) : Int := sorry\n\ntheorem shape_area_positive\
-  \ {n : Int} (h : n > 0) : shape_area n > 0 := sorry\n"
-"vc-theorems": "theorem shape_area_formula {n : Int} : shape_area n = n^2 + (n-1)^2\
-  \ := sorry\n\ntheorem shape_area_strictly_increasing {n : Int} (h : n > 1) : \n\
-  \  shape_area n > shape_area (n-1) := sorry\n\n\ntheorem shape_area_diff_increasing\
-  \ {n : Int} (h : n > 2) :\n  shape_area n - shape_area (n-1) > shape_area (n-1)\
-  \ - shape_area (n-2) := sorry\n\n\ntheorem shape_area_returns_int {n : Int} : ∃\
-  \ (m : Int), shape_area n = m := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval\
-  \ shape_area 1\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval shape_area 2\n\n/--\n\
-  info: 13\n-/\n#guard_msgs in\n#eval shape_area 3\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  # Task
+   Below we will define what and n-interesting polygon is and your task is to find its area for a given n.
+
+   A 1-interesting polygon is just a square with a side of length 1. An n-interesting polygon is obtained by taking the n - 1-interesting polygon and appending 1-interesting polygons to its rim side by side. You can see the 1-, 2- and 3-interesting polygons in the picture below.
+
+   ![](https://files.gitter.im/myjinxin2015/Gwsw/blob)
+
+  # Example
+
+   For `n = 1`, the output should be `1`;
+   
+   For `n = 2`, the output should be `5`;
+   
+   For `n = 3`, the output should be `13`.
+
+  # Input/Output
+
+
+   - `[input]` integer `n`
+
+      Constraints: `1 ≤ n < 10000.`
+      
+
+   - `[output]` an integer
+
+     The area of the n-interesting polygon.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def shape_area (n : Int) : Int := sorry
+
+  theorem shape_area_positive {n : Int} (h : n > 0) : shape_area n > 0 := sorry
+vc-theorems: |
+  theorem shape_area_formula {n : Int} : shape_area n = n^2 + (n-1)^2 := sorry
+
+  theorem shape_area_strictly_increasing {n : Int} (h : n > 1) : 
+    shape_area n > shape_area (n-1) := sorry
+
+
+  theorem shape_area_diff_increasing {n : Int} (h : n > 2) :
+    shape_area n - shape_area (n-1) > shape_area (n-1) - shape_area (n-2) := sorry
+
+
+  theorem shape_area_returns_int {n : Int} : ∃ (m : Int), shape_area n = m := sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval shape_area 1
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval shape_area 2
+
+  /--
+  info: 13
+  -/
+  #guard_msgs in
+  #eval shape_area 3
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

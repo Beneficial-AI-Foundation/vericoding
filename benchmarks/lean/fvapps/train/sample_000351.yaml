@@ -1,32 +1,91 @@
-"vc-description": "A conveyor belt has packages that must be shipped from one port\
-  \ to another within D days.\nThe i-th package on the conveyor belt has a weight\
-  \ of weights[i].  Each day, we load the ship with packages on the conveyor belt\
-  \ (in the order given by weights). We may not load more weight than the maximum\
-  \ weight capacity of the ship.\nReturn the least weight capacity of the ship that\
-  \ will result in all the packages on the conveyor belt being shipped within D days.\n\
-   \nExample 1:\nInput: weights = [1,2,3,4,5,6,7,8,9,10], D = 5\nOutput: 15\nExplanation:\
-  \ \nA ship capacity of 15 is the minimum to ship all the packages in 5 days like\
-  \ this:\n1st day: 1, 2, 3, 4, 5\n2nd day: 6, 7\n3rd day: 8\n4th day: 9\n5th day:\
-  \ 10\n\nNote that the cargo must be shipped in the order given, so using a ship\
-  \ of capacity 14 and splitting the packages into parts like (2, 3, 4, 5), (1, 6,\
-  \ 7), (8), (9), (10) is not allowed. \n\nExample 2:\nInput: weights = [3,2,2,4,1,4],\
-  \ D = 3\nOutput: 6\nExplanation: \nA ship capacity of 6 is the minimum to ship all\
-  \ the packages in 3 days like this:\n1st day: 3, 2\n2nd day: 2, 4\n3rd day: 1, 4\n\
-  \nExample 3:\nInput: weights = [1,2,3,1,1], D = 4\nOutput: 3\nExplanation: \n1st\
-  \ day: 1\n2nd day: 2\n3rd day: 3\n4th day: 1, 1\n\n \nConstraints:\n\n1 <= D <=\
-  \ weights.length <= 50000\n1 <= weights[i] <= 500"
-"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat\n  | []\
-  \ => 0\n  | x::xs => x + sum xs\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def ship_within_days (weights : List Nat) (days : Nat) : Nat :=\
-  \ sorry\n\ntheorem ship_within_days_one_day (weights : List Nat) \n  (h : weights\
-  \ ≠ []) :\n  ship_within_days weights 1 = List.sum weights :=\n  sorry\n"
-"vc-theorems": "theorem ship_within_days_max_days (weights : List Nat)\n  (h : weights\
-  \ ≠ []) :\n  ship_within_days weights (List.length weights) ≥ (List.maximum? weights).getD\
-  \ 0 :=\n  sorry\n\n\ntheorem ship_within_days_monotonic (weights : List Nat) \n\
-  \  (d1 d2 : Nat)\n  (h1 : List.length weights ≥ 2)\n  (h2 : d1 ≤ d2) :\n  ship_within_days\
-  \ weights d1 ≥ ship_within_days weights d2 :=\n  sorry\n\n/--\ninfo: 15\n-/\n#guard_msgs\
-  \ in\n#eval ship_within_days [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 5\n\n/--\ninfo: 6\n\
-  -/\n#guard_msgs in\n#eval ship_within_days [3, 2, 2, 4, 1, 4] 3\n\n/--\ninfo: 3\n\
-  -/\n#guard_msgs in\n#eval ship_within_days [1, 2, 3, 1, 1] 4\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  A conveyor belt has packages that must be shipped from one port to another within D days.
+  The i-th package on the conveyor belt has a weight of weights[i].  Each day, we load the ship with packages on the conveyor belt (in the order given by weights). We may not load more weight than the maximum weight capacity of the ship.
+  Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within D days.
+   
+  Example 1:
+  Input: weights = [1,2,3,4,5,6,7,8,9,10], D = 5
+  Output: 15
+  Explanation: 
+  A ship capacity of 15 is the minimum to ship all the packages in 5 days like this:
+  1st day: 1, 2, 3, 4, 5
+  2nd day: 6, 7
+  3rd day: 8
+  4th day: 9
+  5th day: 10
+
+  Note that the cargo must be shipped in the order given, so using a ship of capacity 14 and splitting the packages into parts like (2, 3, 4, 5), (1, 6, 7), (8), (9), (10) is not allowed. 
+
+  Example 2:
+  Input: weights = [3,2,2,4,1,4], D = 3
+  Output: 6
+  Explanation: 
+  A ship capacity of 6 is the minimum to ship all the packages in 3 days like this:
+  1st day: 3, 2
+  2nd day: 2, 4
+  3rd day: 1, 4
+
+  Example 3:
+  Input: weights = [1,2,3,1,1], D = 4
+  Output: 3
+  Explanation: 
+  1st day: 1
+  2nd day: 2
+  3rd day: 3
+  4th day: 1, 1
+
+   
+  Constraints:
+
+  1 <= D <= weights.length <= 50000
+  1 <= weights[i] <= 500
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.sum : List Nat → Nat
+    | [] => 0
+    | x::xs => x + sum xs
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def ship_within_days (weights : List Nat) (days : Nat) : Nat := sorry
+
+  theorem ship_within_days_one_day (weights : List Nat) 
+    (h : weights ≠ []) :
+    ship_within_days weights 1 = List.sum weights :=
+    sorry
+vc-theorems: |
+  theorem ship_within_days_max_days (weights : List Nat)
+    (h : weights ≠ []) :
+    ship_within_days weights (List.length weights) ≥ (List.maximum? weights).getD 0 :=
+    sorry
+
+
+  theorem ship_within_days_monotonic (weights : List Nat) 
+    (d1 d2 : Nat)
+    (h1 : List.length weights ≥ 2)
+    (h2 : d1 ≤ d2) :
+    ship_within_days weights d1 ≥ ship_within_days weights d2 :=
+    sorry
+
+  /--
+  info: 15
+  -/
+  #guard_msgs in
+  #eval ship_within_days [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 5
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval ship_within_days [3, 2, 2, 4, 1, 4] 3
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval ship_within_days [1, 2, 3, 1, 1] 4
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

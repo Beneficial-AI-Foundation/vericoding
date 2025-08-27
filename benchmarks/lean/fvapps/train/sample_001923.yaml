@@ -1,58 +1,109 @@
-"vc-description": "A schoolboy named Vasya loves reading books on programming and\
-  \ mathematics. He has recently read an encyclopedia article that described the method\
-  \ of median smoothing (or median filter) and its many applications in science and\
-  \ engineering. Vasya liked the idea of the method very much, and he decided to try\
-  \ it in practice.\n\nApplying the simplest variant of median smoothing to the sequence\
-  \ of numbers a_1, a_2, ..., a_{n} will result a new sequence b_1, b_2, ..., b_{n}\
-  \ obtained by the following algorithm:  b_1 = a_1, b_{n} = a_{n}, that is, the first\
-  \ and the last number of the new sequence match the corresponding numbers of the\
-  \ original sequence.  For i = 2, ..., n - 1 value b_{i} is equal to the median of\
-  \ three values a_{i} - 1, a_{i} and a_{i} + 1. \n\nThe median of a set of three\
-  \ numbers is the number that goes on the second place, when these three numbers\
-  \ are written in the non-decreasing order. For example, the median of the set 5,\
-  \ 1, 2 is number 2, and the median of set 1, 0, 1 is equal to 1.\n\nIn order to\
-  \ make the task easier, Vasya decided to apply the method to sequences consisting\
-  \ of zeros and ones only.\n\nHaving made the procedure once, Vasya looked at the\
-  \ resulting sequence and thought: what if I apply the algorithm to it once again,\
-  \ and then apply it to the next result, and so on? Vasya tried a couple of examples\
-  \ and found out that after some number of median smoothing algorithm applications\
-  \ the sequence can stop changing. We say that the sequence is stable, if it does\
-  \ not change when the median smoothing is applied to it.\n\nNow Vasya wonders, whether\
-  \ the sequence always eventually becomes stable. He asks you to write a program\
-  \ that, given a sequence of zeros and ones, will determine whether it ever becomes\
-  \ stable. Moreover, if it ever becomes stable, then you should determine what will\
-  \ it look like and how many times one needs to apply the median smoothing algorithm\
-  \ to initial sequence in order to obtain a stable one.\n\n\n-----Input-----\n\n\
-  The first input line of the input contains a single integer n (3 ≤ n ≤ 500 000) —\
-  \ the length of the initial sequence.\n\nThe next line contains n integers a_1,\
-  \ a_2, ..., a_{n} (a_{i} = 0 or a_{i} = 1), giving the initial sequence itself.\n\
-  \n\n-----Output-----\n\nIf the sequence will never become stable, print a single\
-  \ number  - 1.\n\nOtherwise, first print a single integer — the minimum number of\
-  \ times one needs to apply the median smoothing algorithm to the initial sequence\
-  \ before it becomes is stable. In the second line print n numbers separated by a\
-  \ space  — the resulting sequence itself.\n\n\n-----Examples-----\nInput\n4\n0 0\
-  \ 1 1\n\nOutput\n0\n0 0 1 1\n\nInput\n5\n0 1 0 1 0\n\nOutput\n2\n0 0 0 0 0\n\n\n\
-  \n-----Note-----\n\nIn the second sample the stabilization occurs in two steps:\
-  \ $01010 \\rightarrow 00100 \\rightarrow 00000$, and the sequence 00000 is obviously\
-  \ stable."
-"vc-preamble": "import Imports.AllImports\n\ndef solve_median_smoothing (n : Nat)\
-  \ (seq : List Nat) : Nat × Option (List Nat) :=\n  sorry\n\n\ndef is_sorted_window\
-  \ (arr : List Nat) (i : Nat) : Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def abs (n : Nat) (m : Nat) : Nat :=\n  if n ≥ m then n - m else\
-  \ m - n\n"
-"vc-theorems": "theorem median_smoothing_properties\n  (n : Nat) (seq : List Nat)\n\
-  \  (h1 : n ≥ 2)\n  (h2 : ∀ x ∈ seq, x ≤ 1)\n  (steps : Nat) (result : Option (List\
-  \ Nat)) :\n  let (steps', result') := solve_median_smoothing n seq\n  match result'\
-  \ with\n  | none => steps' < 0 \n  | some res =>\n    steps' ≥ 0 ∧\n    res.length\
-  \ = n ∧\n    (∀ i, 0 < i → i < res.length - 1 → is_sorted_window res i) ∧\n    (seq.length\
-  \ > 0 → res.length > 0 → List.head! res = List.head! seq) ∧\n    (seq.length > 0\
-  \ → res.length > 0 → List.getLast res (by sorry) = List.getLast seq (by sorry))\n\
-  \  :=\n  sorry\n\n\ntheorem constant_sequence_property\n  (n : Nat) (seq : List\
-  \ Nat)\n  (h1 : n ≥ 2)\n  (h2 : ∀ x ∈ seq, x = 0) :\n  let (steps, result) := solve_median_smoothing\
-  \ n seq \n  steps = 0 ∧ result = some seq :=\n  sorry\n\n\ntheorem alternating_sequence_property\n\
-  \  (n : Nat)\n  (h : n ≥ 3) :\n  let seq := List.map (fun i => i % 2) (List.range\
-  \ n)\n  let (steps, result) := solve_median_smoothing n seq\n  steps ≥ 0 ∧\n  match\
-  \ result with\n  | none => False\n  | some res =>\n    ∀ i, i + 1 < res.length →\n\
-  \    abs (List.get! res i) (List.get! res (i+1)) ≤ 1\n  :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"
+vc-description: |-
+  A schoolboy named Vasya loves reading books on programming and mathematics. He has recently read an encyclopedia article that described the method of median smoothing (or median filter) and its many applications in science and engineering. Vasya liked the idea of the method very much, and he decided to try it in practice.
+
+  Applying the simplest variant of median smoothing to the sequence of numbers a_1, a_2, ..., a_{n} will result a new sequence b_1, b_2, ..., b_{n} obtained by the following algorithm:  b_1 = a_1, b_{n} = a_{n}, that is, the first and the last number of the new sequence match the corresponding numbers of the original sequence.  For i = 2, ..., n - 1 value b_{i} is equal to the median of three values a_{i} - 1, a_{i} and a_{i} + 1. 
+
+  The median of a set of three numbers is the number that goes on the second place, when these three numbers are written in the non-decreasing order. For example, the median of the set 5, 1, 2 is number 2, and the median of set 1, 0, 1 is equal to 1.
+
+  In order to make the task easier, Vasya decided to apply the method to sequences consisting of zeros and ones only.
+
+  Having made the procedure once, Vasya looked at the resulting sequence and thought: what if I apply the algorithm to it once again, and then apply it to the next result, and so on? Vasya tried a couple of examples and found out that after some number of median smoothing algorithm applications the sequence can stop changing. We say that the sequence is stable, if it does not change when the median smoothing is applied to it.
+
+  Now Vasya wonders, whether the sequence always eventually becomes stable. He asks you to write a program that, given a sequence of zeros and ones, will determine whether it ever becomes stable. Moreover, if it ever becomes stable, then you should determine what will it look like and how many times one needs to apply the median smoothing algorithm to initial sequence in order to obtain a stable one.
+
+
+  -----Input-----
+
+  The first input line of the input contains a single integer n (3 ≤ n ≤ 500 000) — the length of the initial sequence.
+
+  The next line contains n integers a_1, a_2, ..., a_{n} (a_{i} = 0 or a_{i} = 1), giving the initial sequence itself.
+
+
+  -----Output-----
+
+  If the sequence will never become stable, print a single number  - 1.
+
+  Otherwise, first print a single integer — the minimum number of times one needs to apply the median smoothing algorithm to the initial sequence before it becomes is stable. In the second line print n numbers separated by a space  — the resulting sequence itself.
+
+
+  -----Examples-----
+  Input
+  4
+  0 0 1 1
+
+  Output
+  0
+  0 0 1 1
+
+  Input
+  5
+  0 1 0 1 0
+
+  Output
+  2
+  0 0 0 0 0
+
+
+
+  -----Note-----
+
+  In the second sample the stabilization occurs in two steps: $01010 \rightarrow 00100 \rightarrow 00000$, and the sequence 00000 is obviously stable.
+vc-preamble: |
+  import Imports.AllImports
+
+  def solve_median_smoothing (n : Nat) (seq : List Nat) : Nat × Option (List Nat) :=
+    sorry
+
+
+  def is_sorted_window (arr : List Nat) (i : Nat) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def abs (n : Nat) (m : Nat) : Nat :=
+    if n ≥ m then n - m else m - n
+vc-theorems: |-
+  theorem median_smoothing_properties
+    (n : Nat) (seq : List Nat)
+    (h1 : n ≥ 2)
+    (h2 : ∀ x ∈ seq, x ≤ 1)
+    (steps : Nat) (result : Option (List Nat)) :
+    let (steps', result') := solve_median_smoothing n seq
+    match result' with
+    | none => steps' < 0 
+    | some res =>
+      steps' ≥ 0 ∧
+      res.length = n ∧
+      (∀ i, 0 < i → i < res.length - 1 → is_sorted_window res i) ∧
+      (seq.length > 0 → res.length > 0 → List.head! res = List.head! seq) ∧
+      (seq.length > 0 → res.length > 0 → List.getLast res (by sorry) = List.getLast seq (by sorry))
+    :=
+    sorry
+
+
+  theorem constant_sequence_property
+    (n : Nat) (seq : List Nat)
+    (h1 : n ≥ 2)
+    (h2 : ∀ x ∈ seq, x = 0) :
+    let (steps, result) := solve_median_smoothing n seq 
+    steps = 0 ∧ result = some seq :=
+    sorry
+
+
+  theorem alternating_sequence_property
+    (n : Nat)
+    (h : n ≥ 3) :
+    let seq := List.map (fun i => i % 2) (List.range n)
+    let (steps, result) := solve_median_smoothing n seq
+    steps ≥ 0 ∧
+    match result with
+    | none => False
+    | some res =>
+      ∀ i, i + 1 < res.length →
+      abs (List.get! res i) (List.get! res (i+1)) ≤ 1
+    :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded

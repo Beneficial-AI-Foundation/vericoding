@@ -1,26 +1,72 @@
-"vc-description": "You are given an N × N grid initially filled by zeros. Let the\
-  \ rows and columns of the grid be numbered from 1 to N, inclusive. There are two\
-  \ types of operations can be applied to the grid:\n\n- RowAdd R X: all numbers in\
-  \ the row R should be increased by X.\n- ColAdd C X: all numbers in the column C\
-  \ should be increased by X.\n\nNow after performing the sequence of such operations\
-  \ you need to find the maximum element in the grid.\n\n-----Input-----\nThe first\
-  \ line of the input contains two space separated integers N and Q denoting the size\
-  \ of the grid and the number of performed operations respectively. Each of the following\
-  \ Q lines describe an operation in the format described above.\n\n-----Output-----\n\
-  Output a single line containing the maximum number at the grid after performing\
-  \ all the operations.\n\n-----Constraints-----\n- 1 ≤ N ≤ 314159\n- 1 ≤ Q ≤ 314159\n\
-  - 1 ≤ X ≤ 3141\n- 1 ≤ R, C ≤ N\n\n-----Example-----\nInput:\n2 4\nRowAdd 1 3\nColAdd\
-  \ 2 1\nColAdd 1 4\nRowAdd 2 1\n\nOutput:\n7\n\n-----Explanation-----\nThe grid changes\
-  \ as follows:\n00  33  34  74  74\n00  00  01  41  52\n\nThe maximum number in the\
-  \ final grid is 7."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_max_after_operations (n: Nat) (ops: List Operation) :\
-  \ Nat :=\n  sorry\n\n\n"
-"vc-theorems": "theorem empty_ops_is_zero (n: Nat) : \n  find_max_after_operations\
-  \ n [] = 0 :=\n  sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval find_max_after_operations\
-  \ 2 [\"RowAdd 1 3\", \"ColAdd 2 1\", \"ColAdd 1 4\", \"RowAdd 2 1\"]\n\n/--\ninfo:\
-  \ 7\n-/\n#guard_msgs in\n#eval find_max_after_operations 3 [\"RowAdd 1 5\", \"ColAdd\
-  \ 3 2\", \"RowAdd 2 4\"]\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval find_max_after_operations\
-  \ 1 [\"RowAdd 1 3\", \"ColAdd 1 2\"]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  You are given an N × N grid initially filled by zeros. Let the rows and columns of the grid be numbered from 1 to N, inclusive. There are two types of operations can be applied to the grid:
+
+  - RowAdd R X: all numbers in the row R should be increased by X.
+  - ColAdd C X: all numbers in the column C should be increased by X.
+
+  Now after performing the sequence of such operations you need to find the maximum element in the grid.
+
+  -----Input-----
+  The first line of the input contains two space separated integers N and Q denoting the size of the grid and the number of performed operations respectively. Each of the following Q lines describe an operation in the format described above.
+
+  -----Output-----
+  Output a single line containing the maximum number at the grid after performing all the operations.
+
+  -----Constraints-----
+  - 1 ≤ N ≤ 314159
+  - 1 ≤ Q ≤ 314159
+  - 1 ≤ X ≤ 3141
+  - 1 ≤ R, C ≤ N
+
+  -----Example-----
+  Input:
+  2 4
+  RowAdd 1 3
+  ColAdd 2 1
+  ColAdd 1 4
+  RowAdd 2 1
+
+  Output:
+  7
+
+  -----Explanation-----
+  The grid changes as follows:
+  00  33  34  74  74
+  00  00  01  41  52
+
+  The maximum number in the final grid is 7.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def find_max_after_operations (n: Nat) (ops: List Operation) : Nat :=
+    sorry
+
+
+vc-theorems: |
+  theorem empty_ops_is_zero (n: Nat) : 
+    find_max_after_operations n [] = 0 :=
+    sorry
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval find_max_after_operations 2 ["RowAdd 1 3", "ColAdd 2 1", "ColAdd 1 4", "RowAdd 2 1"]
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval find_max_after_operations 3 ["RowAdd 1 5", "ColAdd 3 2", "RowAdd 2 4"]
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval find_max_after_operations 1 ["RowAdd 1 3", "ColAdd 1 2"]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

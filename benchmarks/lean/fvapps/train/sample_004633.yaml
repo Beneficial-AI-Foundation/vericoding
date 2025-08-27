@@ -1,9 +1,23 @@
-"vc-description": "You're given a mystery `puzzlebox` object. Examine it to make the\
-  \ tests pass and solve this kata."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def answer (d : List (String × String)) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem answer_always_returns_42 (d : List (String × String)) : \n\
-  \  answer d = 42 :=\n  sorry\n\n/--\ninfo: 42\n-/\n#guard_msgs in\n#eval answer\
-  \ {}\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  You're given a mystery `puzzlebox` object. Examine it to make the tests pass and solve this kata.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def answer (d : List (String × String)) : Nat :=
+    sorry
+vc-theorems: |
+  theorem answer_always_returns_42 (d : List (String × String)) : 
+    answer d = 42 :=
+    sorry
+
+  /--
+  info: 42
+  -/
+  #guard_msgs in
+  #eval answer {}
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

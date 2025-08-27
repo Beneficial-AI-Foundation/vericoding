@@ -1,21 +1,54 @@
-"vc-description": "An anagram is a word, a phrase, or a sentence formed from another\
-  \ by rearranging its letters. An example of this is \"angel\", which is an anagram\
-  \ of \"glean\".\n\nWrite a function that receives an array of words, and returns\
-  \ the total number of distinct pairs of anagramic words inside it.\n\nSome examples:\n\
-  \n- There are 2 anagrams in the array `[\"dell\", \"ledl\", \"abc\", \"cba\"]`\n\
-  - There are 7 anagrams in the array `[\"dell\", \"ledl\", \"abc\", \"cba\", \"bca\"\
-  , \"bac\"]`"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def anagram_counter (words : List String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem anagram_counter_properties (words : List String) :\n  let\
-  \ result := anagram_counter words\n  let n := words.length\n  let max_pairs := n\
-  \ * (n-1) / 2\n  result ≥ 0 ∧ result ≤ max_pairs := by sorry\n\n\ntheorem identical_words_property\
-  \ (word : String) (n : Nat) :\n  let words := List.replicate n word\n  let expected\
-  \ := n * (n-1) / 2\n  anagram_counter words = expected := by sorry\n\n\ntheorem\
-  \ empty_list_property :\n  anagram_counter [] = 0 := by sorry\n\n/--\ninfo: 0\n\
-  -/\n#guard_msgs in\n#eval anagram_counter []\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
-  #eval anagram_counter [\"dell\", \"ledl\", \"abc\", \"cba\"]\n\n/--\ninfo: 7\n-/\n\
-  #guard_msgs in\n#eval anagram_counter [\"dell\", \"ledl\", \"abc\", \"cba\", \"\
-  bca\", \"bac\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  An anagram is a word, a phrase, or a sentence formed from another by rearranging its letters. An example of this is "angel", which is an anagram of "glean".
+
+  Write a function that receives an array of words, and returns the total number of distinct pairs of anagramic words inside it.
+
+  Some examples:
+
+  - There are 2 anagrams in the array `["dell", "ledl", "abc", "cba"]`
+  - There are 7 anagrams in the array `["dell", "ledl", "abc", "cba", "bca", "bac"]`
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def anagram_counter (words : List String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem anagram_counter_properties (words : List String) :
+    let result := anagram_counter words
+    let n := words.length
+    let max_pairs := n * (n-1) / 2
+    result ≥ 0 ∧ result ≤ max_pairs := by sorry
+
+
+  theorem identical_words_property (word : String) (n : Nat) :
+    let words := List.replicate n word
+    let expected := n * (n-1) / 2
+    anagram_counter words = expected := by sorry
+
+
+  theorem empty_list_property :
+    anagram_counter [] = 0 := by sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval anagram_counter []
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval anagram_counter ["dell", "ledl", "abc", "cba"]
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval anagram_counter ["dell", "ledl", "abc", "cba", "bca", "bac"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

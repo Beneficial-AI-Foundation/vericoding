@@ -1,31 +1,92 @@
-"vc-description": "Your job is to change the given string `s` using a non-negative\
-  \ integer `n`.\n\nEach bit in `n` will specify whether or not to swap the case for\
-  \ each alphabetic character in `s`: if the bit is `1`, swap the case; if its `0`,\
-  \ leave it as is. When you finished with the last bit of `n`, start again with the\
-  \ first bit.\n\nYou should skip the checking of bits when a non-alphabetic character\
-  \ is encountered, but they should be preserved in their original positions.\n\n\
-  ## Examples\n\n```\nswap('Hello world!', 11)  -->  'heLLO wORLd!'\n```\n...because\
-  \ `11` is `1011` in binary, so the 1st, 3rd, 4th, 5th, 7th, 8th and 9th alphabetical\
-  \ characters have to be swapped:\n```\nH e l l o  w o r l d !\n1 0 1 1 1  0 1 1\
-  \ 1 0\n^   ^ ^ ^    ^ ^ ^\n```\n\nMore examples:\n```\nswap(\"gOOd MOrniNg\", 7864)\
-  \  -->  \"GooD MorNIng\"\nswap('', 11345)  -->  ''\nswap('the lord of the rings',\
-  \ 0)  -->  'the lord of the rings'\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef isAlpha (c : Char) : Bool :=\n  sorry\n\
-  \n\ndef swap (s : String) (n : Nat) : String :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def swapcase (c : Char) : Char :=\n  sorry \n"
-"vc-theorems": "theorem swap_length_preserved (s : String) (n : Nat) :\n  (swap s\
-  \ n).length = s.length :=\nsorry\n\n\ntheorem swap_nonalpha_preserved (s : String)\
-  \ (n : Nat) (pos : String.Pos) :\n  ¬isAlpha (s.get pos) → (swap s n).get pos =\
-  \ s.get pos :=\nsorry\n\n\ntheorem swap_alpha_case (s : String) (n : Nat) (pos :\
-  \ String.Pos) :\n  isAlpha (s.get pos) → \n  (s.get pos).toLower = ((swap s n).get\
-  \ pos).toLower :=\nsorry\n\n\ntheorem swap_zero_identity (s : String) :\n  swap\
-  \ s 0 = s :=\nsorry\n\n\ntheorem swap_pattern_matches_binary (s : String) (n : Nat)\
-  \ (pos : String.Pos) \n    (binPattern : String) (idx : String.Pos) :\n  isAlpha\
-  \ (s.get pos) →\n  binPattern = (toString n).dropWhile (· = '0') →\n  (binPattern.get\
-  \ idx = '1' → \n    (swap s n).get pos = swapcase (s.get pos)) ∧\n  (binPattern.get\
-  \ idx = '0' → \n    (swap s n).get pos = s.get pos) :=\nsorry\n\n/--\ninfo: 'heLLO\
-  \ wORLd!'\n-/\n#guard_msgs in\n#eval swap \"Hello world!\" 11\n\n/--\ninfo: 'GooD\
-  \ MorNIng'\n-/\n#guard_msgs in\n#eval swap \"gOOd MOrniNg\" 7864\n\n/--\ninfo: 'the\
-  \ lord of the rings'\n-/\n#guard_msgs in\n#eval swap \"the lord of the rings\" 0\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Your job is to change the given string `s` using a non-negative integer `n`.
+
+  Each bit in `n` will specify whether or not to swap the case for each alphabetic character in `s`: if the bit is `1`, swap the case; if its `0`, leave it as is. When you finished with the last bit of `n`, start again with the first bit.
+
+  You should skip the checking of bits when a non-alphabetic character is encountered, but they should be preserved in their original positions.
+
+  ## Examples
+
+  ```
+  swap('Hello world!', 11)  -->  'heLLO wORLd!'
+  ```
+  ...because `11` is `1011` in binary, so the 1st, 3rd, 4th, 5th, 7th, 8th and 9th alphabetical characters have to be swapped:
+  ```
+  H e l l o  w o r l d !
+  1 0 1 1 1  0 1 1 1 0
+  ^   ^ ^ ^    ^ ^ ^
+  ```
+
+  More examples:
+  ```
+  swap("gOOd MOrniNg", 7864)  -->  "GooD MorNIng"
+  swap('', 11345)  -->  ''
+  swap('the lord of the rings', 0)  -->  'the lord of the rings'
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def isAlpha (c : Char) : Bool :=
+    sorry
+
+
+  def swap (s : String) (n : Nat) : String :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def swapcase (c : Char) : Char :=
+    sorry 
+vc-theorems: |
+  theorem swap_length_preserved (s : String) (n : Nat) :
+    (swap s n).length = s.length :=
+  sorry
+
+
+  theorem swap_nonalpha_preserved (s : String) (n : Nat) (pos : String.Pos) :
+    ¬isAlpha (s.get pos) → (swap s n).get pos = s.get pos :=
+  sorry
+
+
+  theorem swap_alpha_case (s : String) (n : Nat) (pos : String.Pos) :
+    isAlpha (s.get pos) → 
+    (s.get pos).toLower = ((swap s n).get pos).toLower :=
+  sorry
+
+
+  theorem swap_zero_identity (s : String) :
+    swap s 0 = s :=
+  sorry
+
+
+  theorem swap_pattern_matches_binary (s : String) (n : Nat) (pos : String.Pos) 
+      (binPattern : String) (idx : String.Pos) :
+    isAlpha (s.get pos) →
+    binPattern = (toString n).dropWhile (· = '0') →
+    (binPattern.get idx = '1' → 
+      (swap s n).get pos = swapcase (s.get pos)) ∧
+    (binPattern.get idx = '0' → 
+      (swap s n).get pos = s.get pos) :=
+  sorry
+
+  /--
+  info: 'heLLO wORLd!'
+  -/
+  #guard_msgs in
+  #eval swap "Hello world!" 11
+
+  /--
+  info: 'GooD MorNIng'
+  -/
+  #guard_msgs in
+  #eval swap "gOOd MOrniNg" 7864
+
+  /--
+  info: 'the lord of the rings'
+  -/
+  #guard_msgs in
+  #eval swap "the lord of the rings" 0
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,23 +1,68 @@
-"vc-description": "Given the sum and gcd of two numbers, return those two numbers\
-  \ in ascending order. If the numbers do not exist, return `-1`, (or `NULL` in C,\
-  \ `tuple (-1,-1)` in C#, `pair (-1,-1)` in C++,`None` in Rust, `array {-1,-1} `\
-  \ in Java and Golang).\n\n```\nFor example: \nGiven sum = 12 and gcd = 4...\n\n\
-  solve(12,4) = [4,8]. The two numbers 4 and 8 sum to 12 and have a gcd of 4.\n\n\
-  solve(12,5) = -1. No two numbers exist that sum to 12 and have gcd of 5.\n\nsolve(10,2)\
-  \ = [2,8]. Note that [4,6] is also a possibility but we pick the one with the lower\
-  \ first element: 2 < 4, so we take [2,8].\n```\n\nMore examples in test cases. \n\
-  \nGood luck!"
-"vc-preamble": "import Imports.AllImports\n\ndef solve (sum gcd : Nat) : Option (Nat\
-  \ × Nat) :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def gcd (a b : Nat) : Nat :=\n  sorry\n\n-- For any x,y > 0:\n\
-  -- If solve returns None, then sum not divisible by gcd\n-- If solve returns Some\
-  \ (a,b), then:\n--   a + b = sum, gcd(a,b) = gcd, a ≤ b"
-"vc-theorems": "theorem solve_properties (x y : Nat) (h1: x > 0) (h2: y > 0) :\n \
-  \ let s := x + y\n  let g := gcd x y\n  match solve s g with\n  | none => s % g\
-  \ ≠ 0 \n  | some (a, b) => a + b = s ∧ gcd a b = g ∧ a ≤ b\n  := sorry\n\n-- For\
-  \ any x > 0:\n-- solve(2x, x) = (x,x)\n\ntheorem solve_same_number (x : Nat) (h:\
-  \ x > 0) :\n  solve (2*x) x = some (x, x) := sorry\n\n/--\ninfo: [3, 3]\n-/\n#guard_msgs\
-  \ in\n#eval solve 6 3\n\n/--\ninfo: [2, 6]\n-/\n#guard_msgs in\n#eval solve 8 2\n\
-  \n/--\ninfo: [4, 8]\n-/\n#guard_msgs in\n#eval solve 12 4\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given the sum and gcd of two numbers, return those two numbers in ascending order. If the numbers do not exist, return `-1`, (or `NULL` in C, `tuple (-1,-1)` in C#, `pair (-1,-1)` in C++,`None` in Rust, `array {-1,-1} ` in Java and Golang).
+
+  ```
+  For example: 
+  Given sum = 12 and gcd = 4...
+
+  solve(12,4) = [4,8]. The two numbers 4 and 8 sum to 12 and have a gcd of 4.
+
+  solve(12,5) = -1. No two numbers exist that sum to 12 and have gcd of 5.
+
+  solve(10,2) = [2,8]. Note that [4,6] is also a possibility but we pick the one with the lower first element: 2 < 4, so we take [2,8].
+  ```
+
+  More examples in test cases. 
+
+  Good luck!
+vc-preamble: |
+  import Imports.AllImports
+
+  def solve (sum gcd : Nat) : Option (Nat × Nat) :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def gcd (a b : Nat) : Nat :=
+    sorry
+
+  -- For any x,y > 0:
+  -- If solve returns None, then sum not divisible by gcd
+  -- If solve returns Some (a,b), then:
+  --   a + b = sum, gcd(a,b) = gcd, a ≤ b
+vc-theorems: |
+  theorem solve_properties (x y : Nat) (h1: x > 0) (h2: y > 0) :
+    let s := x + y
+    let g := gcd x y
+    match solve s g with
+    | none => s % g ≠ 0 
+    | some (a, b) => a + b = s ∧ gcd a b = g ∧ a ≤ b
+    := sorry
+
+  -- For any x > 0:
+  -- solve(2x, x) = (x,x)
+
+  theorem solve_same_number (x : Nat) (h: x > 0) :
+    solve (2*x) x = some (x, x) := sorry
+
+  /--
+  info: [3, 3]
+  -/
+  #guard_msgs in
+  #eval solve 6 3
+
+  /--
+  info: [2, 6]
+  -/
+  #guard_msgs in
+  #eval solve 8 2
+
+  /--
+  info: [4, 8]
+  -/
+  #guard_msgs in
+  #eval solve 12 4
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

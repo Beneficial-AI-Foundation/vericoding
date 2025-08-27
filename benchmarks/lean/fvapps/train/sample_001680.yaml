@@ -1,23 +1,66 @@
-"vc-description": "A factorial (of a large number) will usually contain some trailing\
-  \ zeros.\nYour job is to make a function that calculates the number of trailing\
-  \ zeros, in any given base.\n\nFactorial is defined like this:\n```n! = 1 * 2 *\
-  \ 3 * 4 * ... * n-2 * n-1 * n```\n\nHere's two examples to get you started:\n\n\
-  ```python\ntrailing_zeros(15, 10) == 3\n#15! = 1307674368000, which has 3 zeros\
-  \ at the end\n\ntrailing_zeros(7, 2) == 4\n#7! = 5030 = 0b1001110110000, which has\
-  \ 4 zeros at the end\n```\n\nYour code should be able to handle some very large\
-  \ numbers, so write some smart code.\n\nNote: ```num``` will be a non-negative integer,\
-  \ ```base``` will be an integer larger or equal to two.\n\nHINT: Should you not\
-  \ make any headway after trying a long time, you should try [this kata](https://www.codewars.com/kata/number-of-trailing-zeros-of-n)\
-  \ first."
-"vc-preamble": "import Imports.AllImports\n\ndef isqrt (n : Nat) : Nat := sorry \n\
-  \ndef isPrime (p : Nat) : Bool := sorry\n\nstructure PrimeFactor where\n  prime\
-  \ : Nat\n  power : Nat\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def factorize (n : Nat) : List PrimeFactor := sorry\n\ntheorem\
-  \ isqrt_upper_bound (n : Nat) (h : n > 0) : \n  let r := isqrt n\n  r * r ≤ n :=\
-  \ sorry\n"
-"vc-theorems": "theorem isqrt_next_exceeds (n : Nat) (h : n > 0) :\n  let r := isqrt\
-  \ n \n  (r + 1) * (r + 1) > n := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval\
-  \ trailing_zeros 15 10\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval trailing_zeros\
-  \ 7 2\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval trailing_zeros 30 10\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  A factorial (of a large number) will usually contain some trailing zeros.
+  Your job is to make a function that calculates the number of trailing zeros, in any given base.
+
+  Factorial is defined like this:
+  ```n! = 1 * 2 * 3 * 4 * ... * n-2 * n-1 * n```
+
+  Here's two examples to get you started:
+
+  ```python
+  trailing_zeros(15, 10) == 3
+  #15! = 1307674368000, which has 3 zeros at the end
+
+  trailing_zeros(7, 2) == 4
+  #7! = 5030 = 0b1001110110000, which has 4 zeros at the end
+  ```
+
+  Your code should be able to handle some very large numbers, so write some smart code.
+
+  Note: ```num``` will be a non-negative integer, ```base``` will be an integer larger or equal to two.
+
+  HINT: Should you not make any headway after trying a long time, you should try [this kata](https://www.codewars.com/kata/number-of-trailing-zeros-of-n) first.
+vc-preamble: |
+  import Imports.AllImports
+
+  def isqrt (n : Nat) : Nat := sorry 
+
+  def isPrime (p : Nat) : Bool := sorry
+
+  structure PrimeFactor where
+    prime : Nat
+    power : Nat
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def factorize (n : Nat) : List PrimeFactor := sorry
+
+  theorem isqrt_upper_bound (n : Nat) (h : n > 0) : 
+    let r := isqrt n
+    r * r ≤ n := sorry
+vc-theorems: |
+  theorem isqrt_next_exceeds (n : Nat) (h : n > 0) :
+    let r := isqrt n 
+    (r + 1) * (r + 1) > n := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval trailing_zeros 15 10
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval trailing_zeros 7 2
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval trailing_zeros 30 10
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

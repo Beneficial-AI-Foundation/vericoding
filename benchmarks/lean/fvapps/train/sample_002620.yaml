@@ -1,28 +1,77 @@
-"vc-description": "KISS stands for Keep It Simple Stupid.\nIt is a design principle\
-  \ for keeping things simple rather than complex.\n\nYou are the boss of Joe.\n\n\
-  Joe is submitting words to you to publish to a blog. He likes to complicate things.\n\
-  \nDefine a function that determines if Joe's work is simple or complex.\n\nInput\
-  \ will be non emtpy strings with no punctuation.\n\nIt is simple if:\n``` the length\
-  \ of each word does not exceed the amount of words in the string ```\n(See example\
-  \ test cases)\n\nOtherwise it is complex.\n\nIf complex:\n```python\nreturn \"Keep\
-  \ It Simple Stupid\"\n```\nor if it was kept simple:\n```python\nreturn \"Good work\
-  \ Joe!\"\n```\n\nNote: Random test are random and nonsensical. Here is a silly example\
-  \ of a random test:\n```python\n\"jump always mostly is touchy dancing choice is\
-  \ pineapples mostly\"\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_kiss (text : String) : String := sorry\n\ntheorem is_kiss_short_words\
-  \ (text : String) \n  (h₁ : text.split (· = ' ') |>.all (fun word => word.length\
-  \ ≤ 3)) \n  (h₂ : (text.split (· = ' ') |>.length) > 3)\n  (h₃ : (text.split (·\
-  \ = ' ') |>.length) ≤ 10) :\n  is_kiss text = \"Good work Joe!\" := sorry\n"
-"vc-theorems": "theorem is_kiss_long_words (text : String)\n  (h₁ : text.split (·\
-  \ = ' ') |>.any (fun word => word.length ≥ 10))\n  (h₂ : (text.split (· = ' ') |>.length)\
-  \ > 0)\n  (h₃ : (text.split (· = ' ') |>.length) ≤ 5) :\n  is_kiss text = \"Keep\
-  \ It Simple Stupid\" := sorry\n\n\ntheorem is_kiss_valid_output (text : String)\n\
-  \  (h : text.length > 0) :\n  is_kiss text = \"Keep It Simple Stupid\" ∨ \n  is_kiss\
-  \ text = \"Good work Joe!\" := sorry\n\n/--\ninfo: 'Good work Joe!'\n-/\n#guard_msgs\
-  \ in\n#eval is_kiss \"Joe had a bad day\"\n\n/--\ninfo: 'Keep It Simple Stupid'\n\
-  -/\n#guard_msgs in\n#eval is_kiss \"Joe is having no fun\"\n\n/--\ninfo: 'Good work\
-  \ Joe!'\n-/\n#guard_msgs in\n#eval is_kiss \"Joe listened to the noise and it was\
-  \ an onamonapia\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  KISS stands for Keep It Simple Stupid.
+  It is a design principle for keeping things simple rather than complex.
+
+  You are the boss of Joe.
+
+  Joe is submitting words to you to publish to a blog. He likes to complicate things.
+
+  Define a function that determines if Joe's work is simple or complex.
+
+  Input will be non emtpy strings with no punctuation.
+
+  It is simple if:
+  ``` the length of each word does not exceed the amount of words in the string ```
+  (See example test cases)
+
+  Otherwise it is complex.
+
+  If complex:
+  ```python
+  return "Keep It Simple Stupid"
+  ```
+  or if it was kept simple:
+  ```python
+  return "Good work Joe!"
+  ```
+
+  Note: Random test are random and nonsensical. Here is a silly example of a random test:
+  ```python
+  "jump always mostly is touchy dancing choice is pineapples mostly"
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_kiss (text : String) : String := sorry
+
+  theorem is_kiss_short_words (text : String) 
+    (h₁ : text.split (· = ' ') |>.all (fun word => word.length ≤ 3)) 
+    (h₂ : (text.split (· = ' ') |>.length) > 3)
+    (h₃ : (text.split (· = ' ') |>.length) ≤ 10) :
+    is_kiss text = "Good work Joe!" := sorry
+vc-theorems: |
+  theorem is_kiss_long_words (text : String)
+    (h₁ : text.split (· = ' ') |>.any (fun word => word.length ≥ 10))
+    (h₂ : (text.split (· = ' ') |>.length) > 0)
+    (h₃ : (text.split (· = ' ') |>.length) ≤ 5) :
+    is_kiss text = "Keep It Simple Stupid" := sorry
+
+
+  theorem is_kiss_valid_output (text : String)
+    (h : text.length > 0) :
+    is_kiss text = "Keep It Simple Stupid" ∨ 
+    is_kiss text = "Good work Joe!" := sorry
+
+  /--
+  info: 'Good work Joe!'
+  -/
+  #guard_msgs in
+  #eval is_kiss "Joe had a bad day"
+
+  /--
+  info: 'Keep It Simple Stupid'
+  -/
+  #guard_msgs in
+  #eval is_kiss "Joe is having no fun"
+
+  /--
+  info: 'Good work Joe!'
+  -/
+  #guard_msgs in
+  #eval is_kiss "Joe listened to the noise and it was an onamonapia"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

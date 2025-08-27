@@ -1,31 +1,89 @@
-"vc-description": "Given a 2d grid map of '1's (land) and '0's (water), count the\
-  \ number of islands. An island is surrounded by water and is formed by connecting\
-  \ adjacent lands horizontally or vertically. You may assume all four edges of the\
-  \ grid are all surrounded by water.\n\nExample 1:\n\n\nInput:\n11110\n11010\n11000\n\
-  00000\n\nOutput: 1\n\n\nExample 2:\n\n\nInput:\n11000\n11000\n00100\n00011\n\nOutput:\
-  \ 3"
-"vc-preamble": "import Imports.AllImports\n\ndef isValidGrid (grid: Grid) : Bool :=\n\
-  \  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def countIslands (grid: Grid) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem count_islands_basic_properties (grid: Grid) \n  (h: isValidGrid\
-  \ grid) : \n  let result := countIslands grid\n  result ≥ 0 ∧ result ≤ grid.length\
-  \ * (grid.head!.length) := by\n  sorry\n\n\ntheorem count_islands_preserves_grid\
-  \ (grid origGrid: Grid)\n  (h: isValidGrid grid) (h2: grid = origGrid) :\n  grid.length\
-  \ = origGrid.length ∧ \n  ∀ i < grid.length, grid[i]!.length = origGrid[i]!.length\
-  \ := by\n  sorry\n\n\ntheorem zero_grid_has_no_islands (grid: Grid)\n  (h: isValidGrid\
-  \ grid)\n  (h2: ∀ i j, i < grid.length → j < (grid.head!.length) → \n        grid[i]![j]!\
-  \ = '0') :\n  countIslands grid = 0 := by\n  sorry\n\n\ntheorem no_adjacent_ones_after_counting\
-  \ (grid: Grid) (i j: Nat)\n  (h: isValidGrid grid)\n  (h2: i < grid.length) (h3:\
-  \ j < (grid.head!.length))\n  (h4: grid[i]![j]! = '1') :\n  let adjacent := [Pos.mk\
-  \ (i+1) j, Pos.mk (i-1) j, Pos.mk i (j+1), Pos.mk i (j-1)]\n  ∀ p ∈ adjacent,\n\
-  \    p.row < grid.length → p.col < (grid.head!.length) →\n    grid[p.row]![p.col]!\
-  \ ≠ '1' := by\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_islands\
-  \ [[\"1\", \"1\", \"1\", \"1\", \"0\"], [\"1\", \"1\", \"0\", \"1\", \"0\"], [\"\
-  1\", \"1\", \"0\", \"0\", \"0\"], [\"0\", \"0\", \"0\", \"0\", \"0\"]]\n\n/--\n\
-  info: 3\n-/\n#guard_msgs in\n#eval count_islands [[\"1\", \"1\", \"0\", \"0\", \"\
-  0\"], [\"1\", \"1\", \"0\", \"0\", \"0\"], [\"0\", \"0\", \"1\", \"0\", \"0\"],\
-  \ [\"0\", \"0\", \"0\", \"1\", \"1\"]]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
-  \ count_islands [[\"0\", \"0\", \"0\"], [\"0\", \"0\", \"0\"], [\"0\", \"0\", \"\
-  0\"]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+
+  Example 1:
+
+
+  Input:
+  11110
+  11010
+  11000
+  00000
+
+  Output: 1
+
+
+  Example 2:
+
+
+  Input:
+  11000
+  11000
+  00100
+  00011
+
+  Output: 3
+vc-preamble: |
+  import Imports.AllImports
+
+  def isValidGrid (grid: Grid) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def countIslands (grid: Grid) : Nat :=
+    sorry
+vc-theorems: |
+  theorem count_islands_basic_properties (grid: Grid) 
+    (h: isValidGrid grid) : 
+    let result := countIslands grid
+    result ≥ 0 ∧ result ≤ grid.length * (grid.head!.length) := by
+    sorry
+
+
+  theorem count_islands_preserves_grid (grid origGrid: Grid)
+    (h: isValidGrid grid) (h2: grid = origGrid) :
+    grid.length = origGrid.length ∧ 
+    ∀ i < grid.length, grid[i]!.length = origGrid[i]!.length := by
+    sorry
+
+
+  theorem zero_grid_has_no_islands (grid: Grid)
+    (h: isValidGrid grid)
+    (h2: ∀ i j, i < grid.length → j < (grid.head!.length) → 
+          grid[i]![j]! = '0') :
+    countIslands grid = 0 := by
+    sorry
+
+
+  theorem no_adjacent_ones_after_counting (grid: Grid) (i j: Nat)
+    (h: isValidGrid grid)
+    (h2: i < grid.length) (h3: j < (grid.head!.length))
+    (h4: grid[i]![j]! = '1') :
+    let adjacent := [Pos.mk (i+1) j, Pos.mk (i-1) j, Pos.mk i (j+1), Pos.mk i (j-1)]
+    ∀ p ∈ adjacent,
+      p.row < grid.length → p.col < (grid.head!.length) →
+      grid[p.row]![p.col]! ≠ '1' := by
+    sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_islands [["1", "1", "1", "1", "0"], ["1", "1", "0", "1", "0"], ["1", "1", "0", "0", "0"], ["0", "0", "0", "0", "0"]]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_islands [["1", "1", "0", "0", "0"], ["1", "1", "0", "0", "0"], ["0", "0", "1", "0", "0"], ["0", "0", "0", "1", "1"]]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_islands [["0", "0", "0"], ["0", "0", "0"], ["0", "0", "0"]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

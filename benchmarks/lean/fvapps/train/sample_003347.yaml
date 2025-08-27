@@ -1,28 +1,63 @@
-"vc-description": "This function should take two string parameters: a person's name\
-  \ (`name`) and a quote of theirs (`quote`), and return a string attributing the\
-  \ quote to the person in the following format:\n\n```python\n'[name] said: \"[quote]\"\
-  '\n```\n\nFor example, if `name` is `'Grae'` and `'quote'` is `'Practice makes perfect'`\
-  \ then your function should return the string\n```python\n'Grae said: \"Practice\
-  \ makes perfect\"'\n```\nUnfortunately, something is wrong with the instructions\
-  \ in the function body. Your job is to fix it so the function returns correctly\
-  \ formatted quotes.\n\nClick the \"Train\" button to get started, and be careful\
-  \ with your quotation marks."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def quotable (name : String) (quote : String) : String := sorry\n\
-  \n/- Property: Output contains both inputs and format is consistent -/"
-"vc-theorems": "theorem quotable_format (name quote : String)\n  (h1 : ¬ String.contains\
-  \ name '\"')\n  (h2 : ¬ String.contains quote '\"') :\n  (quotable name quote).startsWith\
-  \ name ∧ \n  (quotable name quote).endsWith ('\"'.toString ++ quote ++ '\"'.toString)\
-  \ ∧\n  String.contains (quotable name quote) ' ' := sorry\n\n/- Property: Quotes\
-  \ appear in correct places only -/\n\ntheorem quotable_quotes_placement (name quote\
-  \ : String)\n  (h1 : ¬ String.contains name '\"')\n  (h2 : ¬ String.contains quote\
-  \ '\"') :\n  ((quotable name quote).data.filter (· = '\"')).length = 2 := sorry\n\
-  \n/- Property: Function is deterministic -/\n\ntheorem quotable_deterministic (name\
-  \ quote : String) :\n  quotable name quote = quotable name quote := sorry\n\n/--\n\
-  info: 'Grae said: \"Practice makes perfect\"'\n-/\n#guard_msgs in\n#eval quotable\
-  \ \"Grae\" \"Practice makes perfect\"\n\n/--\ninfo: 'Alex said: \"Python is great\
-  \ fun\"'\n-/\n#guard_msgs in\n#eval quotable \"Alex\" \"Python is great fun\"\n\n\
-  /--\ninfo: 'Bethany said: \"Yes, way more fun than R\"'\n-/\n#guard_msgs in\n#eval\
-  \ quotable \"Bethany\" \"Yes, way more fun than R\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  This function should take two string parameters: a person's name (`name`) and a quote of theirs (`quote`), and return a string attributing the quote to the person in the following format:
+
+  ```python
+  '[name] said: "[quote]"'
+  ```
+
+  For example, if `name` is `'Grae'` and `'quote'` is `'Practice makes perfect'` then your function should return the string
+  ```python
+  'Grae said: "Practice makes perfect"'
+  ```
+  Unfortunately, something is wrong with the instructions in the function body. Your job is to fix it so the function returns correctly formatted quotes.
+
+  Click the "Train" button to get started, and be careful with your quotation marks.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def quotable (name : String) (quote : String) : String := sorry
+
+  /- Property: Output contains both inputs and format is consistent -/
+vc-theorems: |
+  theorem quotable_format (name quote : String)
+    (h1 : ¬ String.contains name '"')
+    (h2 : ¬ String.contains quote '"') :
+    (quotable name quote).startsWith name ∧ 
+    (quotable name quote).endsWith ('"'.toString ++ quote ++ '"'.toString) ∧
+    String.contains (quotable name quote) ' ' := sorry
+
+  /- Property: Quotes appear in correct places only -/
+
+  theorem quotable_quotes_placement (name quote : String)
+    (h1 : ¬ String.contains name '"')
+    (h2 : ¬ String.contains quote '"') :
+    ((quotable name quote).data.filter (· = '"')).length = 2 := sorry
+
+  /- Property: Function is deterministic -/
+
+  theorem quotable_deterministic (name quote : String) :
+    quotable name quote = quotable name quote := sorry
+
+  /--
+  info: 'Grae said: "Practice makes perfect"'
+  -/
+  #guard_msgs in
+  #eval quotable "Grae" "Practice makes perfect"
+
+  /--
+  info: 'Alex said: "Python is great fun"'
+  -/
+  #guard_msgs in
+  #eval quotable "Alex" "Python is great fun"
+
+  /--
+  info: 'Bethany said: "Yes, way more fun than R"'
+  -/
+  #guard_msgs in
+  #eval quotable "Bethany" "Yes, way more fun than R"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

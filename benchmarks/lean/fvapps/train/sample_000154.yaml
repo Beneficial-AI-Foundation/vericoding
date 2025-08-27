@@ -1,27 +1,72 @@
-"vc-description": "Given two strings str1 and str2, return the shortest string that\
-  \ has both str1 and str2 as subsequences.  If multiple answers exist, you may return\
-  \ any of them.\n(A string S is a subsequence of string T if deleting some number\
-  \ of characters from T (possibly 0, and the characters are chosen anywhere from\
-  \ T) results in the string S.)\n \nExample 1:\nInput: str1 = \"abac\", str2 = \"\
-  cab\"\nOutput: \"cabac\"\nExplanation: \nstr1 = \"abac\" is a subsequence of \"\
-  cabac\" because we can delete the first \"c\".\nstr2 = \"cab\" is a subsequence\
-  \ of \"cabac\" because we can delete the last \"ac\".\nThe answer provided is the\
-  \ shortest such string that satisfies these properties.\n\n \nNote:\n\n1 <= str1.length,\
-  \ str2.length <= 1000\nstr1 and str2 consist of lowercase English letters."
-"vc-preamble": "import Imports.AllImports\n\ndef isSubsequence (s₁ s₂ : String) :\
-  \ Bool :=\nsorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def shortestCommonSupersequence (s₁ s₂ : String) : String :=\n\
-  sorry\n"
-"vc-theorems": "theorem scs_contains_both_strings (s₁ s₂ : String) :\n  let result\
-  \ := shortestCommonSupersequence s₁ s₂\n  isSubsequence s₁ result = true ∧ isSubsequence\
-  \ s₂ result = true :=\nsorry\n\n\ntheorem scs_same_string (s : String) :\n  shortestCommonSupersequence\
-  \ s s = s :=\nsorry\n\n\ntheorem scs_length_bounds (s₁ s₂ : String) :\n  let result\
-  \ := shortestCommonSupersequence s₁ s₂ \n  result.length ≥ max s₁.length s₂.length\
-  \ ∧\n  result.length ≤ s₁.length + s₂.length :=\nsorry\n\n\ntheorem scs_empty_string\
-  \ (s : String) :\n  shortestCommonSupersequence \"\" s = s ∧\n  shortestCommonSupersequence\
-  \ s \"\" = s :=\nsorry\n\n/--\ninfo: 'cabac'\n-/\n#guard_msgs in\n#eval shortest_common_supersequence\
-  \ \"abac\" \"cab\"\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval len shortest_common_supersequence(\"\
-  abc\", \"def\")\n\n/--\ninfo: 'aaaaa'\n-/\n#guard_msgs in\n#eval shortest_common_supersequence\
-  \ \"aaaaa\" \"aa\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given two strings str1 and str2, return the shortest string that has both str1 and str2 as subsequences.  If multiple answers exist, you may return any of them.
+  (A string S is a subsequence of string T if deleting some number of characters from T (possibly 0, and the characters are chosen anywhere from T) results in the string S.)
+   
+  Example 1:
+  Input: str1 = "abac", str2 = "cab"
+  Output: "cabac"
+  Explanation: 
+  str1 = "abac" is a subsequence of "cabac" because we can delete the first "c".
+  str2 = "cab" is a subsequence of "cabac" because we can delete the last "ac".
+  The answer provided is the shortest such string that satisfies these properties.
+
+   
+  Note:
+
+  1 <= str1.length, str2.length <= 1000
+  str1 and str2 consist of lowercase English letters.
+vc-preamble: |
+  import Imports.AllImports
+
+  def isSubsequence (s₁ s₂ : String) : Bool :=
+  sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def shortestCommonSupersequence (s₁ s₂ : String) : String :=
+  sorry
+vc-theorems: |
+  theorem scs_contains_both_strings (s₁ s₂ : String) :
+    let result := shortestCommonSupersequence s₁ s₂
+    isSubsequence s₁ result = true ∧ isSubsequence s₂ result = true :=
+  sorry
+
+
+  theorem scs_same_string (s : String) :
+    shortestCommonSupersequence s s = s :=
+  sorry
+
+
+  theorem scs_length_bounds (s₁ s₂ : String) :
+    let result := shortestCommonSupersequence s₁ s₂ 
+    result.length ≥ max s₁.length s₂.length ∧
+    result.length ≤ s₁.length + s₂.length :=
+  sorry
+
+
+  theorem scs_empty_string (s : String) :
+    shortestCommonSupersequence "" s = s ∧
+    shortestCommonSupersequence s "" = s :=
+  sorry
+
+  /--
+  info: 'cabac'
+  -/
+  #guard_msgs in
+  #eval shortest_common_supersequence "abac" "cab"
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval len shortest_common_supersequence("abc", "def")
+
+  /--
+  info: 'aaaaa'
+  -/
+  #guard_msgs in
+  #eval shortest_common_supersequence "aaaaa" "aa"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

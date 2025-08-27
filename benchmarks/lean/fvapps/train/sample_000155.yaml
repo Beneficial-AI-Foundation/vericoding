@@ -1,36 +1,129 @@
-"vc-description": "Given an input string (s) and a pattern (p), implement wildcard\
-  \ pattern matching with support for '?' and '*'.\n\n\n'?' Matches any single character.\n\
-  '*' Matches any sequence of characters (including the empty sequence).\n\n\nThe\
-  \ matching should cover the entire input string (not partial).\n\nNote:\n\n\n  \
-  \     s could be empty and contains only lowercase letters a-z.\n       p could\
-  \ be empty and contains only lowercase letters a-z, and characters like ? or *.\n\
-  \n\nExample 1:\n\n\nInput:\ns = \"aa\"\np = \"a\"\nOutput: false\nExplanation: \"\
-  a\" does not match the entire string \"aa\".\n\n\nExample 2:\n\n\nInput:\ns = \"\
-  aa\"\np = \"*\"\nOutput: true\nExplanation: '*' matches any sequence.\n\n\nExample\
-  \ 3:\n\n\nInput:\ns = \"cb\"\np = \"?a\"\nOutput: false\nExplanation: '?' matches\
-  \ 'c', but the second letter is 'a', which does not match 'b'.\n\n\nExample 4:\n\
-  \n\nInput:\ns = \"adceb\"\np = \"*a*b\"\nOutput: true\nExplanation: The first '*'\
-  \ matches the empty sequence, while the second '*' matches the substring \"dce\"\
-  .\n\n\nExample 5:\n\n\nInput:\ns = \"acdcb\"\np = \"a*c?b\"\nOutput: false"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isMatch (s : String) (p : String) : Bool := sorry\n\ntheorem\
-  \ empty_pattern_empty_string (s : String) :\n  isMatch s \"\" = (s = \"\") := sorry\n"
-"vc-theorems": "theorem all_stars_match_everything (s p : String) (h : p ≠ \"\") (h2\
-  \ : ∀ c ∈ p.data, c = '*') :\n  isMatch s p = true := sorry\n\n\ntheorem single_char_pattern\
-  \ (s p : String) (h : p.length = 1) (h2 : p ≠ \"*\") (h3 : p ≠ \"?\") :\n  isMatch\
-  \ s p = (s = p) := sorry\n\n\ntheorem star_repetition (s p : String) (h : '*' ∈\
-  \ p.data) :\n  isMatch s p = isMatch s (p.replace \"*\" \"**\") := sorry\n\n\ntheorem\
-  \ question_mark_same_length (s : String) :\n  isMatch s (String.mk (List.replicate\
-  \ s.length '?')) = true := sorry\n\n\ntheorem question_mark_different_length (s\
-  \ : String) (h : s ≠ \"\") :\n  isMatch s (String.mk (List.replicate (s.length -\
-  \ 1) '?')) = false ∧\n  isMatch s (String.mk (List.replicate (s.length + 1) '?'))\
-  \ = false := sorry\n\n\ntheorem string_matches_itself (s : String) :\n  isMatch\
-  \ s s = true := sorry\n\n\ntheorem string_matches_with_stars_between (s : String)\
-  \ (h : s ≠ \"\") :\n  isMatch s (String.intercalate \"*\" (s.data.map toString))\
-  \ = true := sorry\n\n\ntheorem edge_cases (s : String) :\n  isMatch s \"*\" = true\
-  \ ∧\n  isMatch s \"**\" = true ∧\n  isMatch s \"\" = (s = \"\") := sorry\n\n/--\n\
-  info: False\n-/\n#guard_msgs in\n#eval is_match \"aa\" \"a\"\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval is_match \"aa\" \"*\"\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval is_match \"adceb\" \"*a*b\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*'.
+
+
+  '?' Matches any single character.
+  '*' Matches any sequence of characters (including the empty sequence).
+
+
+  The matching should cover the entire input string (not partial).
+
+  Note:
+
+
+         s could be empty and contains only lowercase letters a-z.
+         p could be empty and contains only lowercase letters a-z, and characters like ? or *.
+
+
+  Example 1:
+
+
+  Input:
+  s = "aa"
+  p = "a"
+  Output: false
+  Explanation: "a" does not match the entire string "aa".
+
+
+  Example 2:
+
+
+  Input:
+  s = "aa"
+  p = "*"
+  Output: true
+  Explanation: '*' matches any sequence.
+
+
+  Example 3:
+
+
+  Input:
+  s = "cb"
+  p = "?a"
+  Output: false
+  Explanation: '?' matches 'c', but the second letter is 'a', which does not match 'b'.
+
+
+  Example 4:
+
+
+  Input:
+  s = "adceb"
+  p = "*a*b"
+  Output: true
+  Explanation: The first '*' matches the empty sequence, while the second '*' matches the substring "dce".
+
+
+  Example 5:
+
+
+  Input:
+  s = "acdcb"
+  p = "a*c?b"
+  Output: false
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isMatch (s : String) (p : String) : Bool := sorry
+
+  theorem empty_pattern_empty_string (s : String) :
+    isMatch s "" = (s = "") := sorry
+vc-theorems: |
+  theorem all_stars_match_everything (s p : String) (h : p ≠ "") (h2 : ∀ c ∈ p.data, c = '*') :
+    isMatch s p = true := sorry
+
+
+  theorem single_char_pattern (s p : String) (h : p.length = 1) (h2 : p ≠ "*") (h3 : p ≠ "?") :
+    isMatch s p = (s = p) := sorry
+
+
+  theorem star_repetition (s p : String) (h : '*' ∈ p.data) :
+    isMatch s p = isMatch s (p.replace "*" "**") := sorry
+
+
+  theorem question_mark_same_length (s : String) :
+    isMatch s (String.mk (List.replicate s.length '?')) = true := sorry
+
+
+  theorem question_mark_different_length (s : String) (h : s ≠ "") :
+    isMatch s (String.mk (List.replicate (s.length - 1) '?')) = false ∧
+    isMatch s (String.mk (List.replicate (s.length + 1) '?')) = false := sorry
+
+
+  theorem string_matches_itself (s : String) :
+    isMatch s s = true := sorry
+
+
+  theorem string_matches_with_stars_between (s : String) (h : s ≠ "") :
+    isMatch s (String.intercalate "*" (s.data.map toString)) = true := sorry
+
+
+  theorem edge_cases (s : String) :
+    isMatch s "*" = true ∧
+    isMatch s "**" = true ∧
+    isMatch s "" = (s = "") := sorry
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_match "aa" "a"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_match "aa" "*"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_match "adceb" "*a*b"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

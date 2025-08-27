@@ -1,34 +1,102 @@
-"vc-description": "Create a function finalGrade, which calculates the final grade\
-  \ of a student depending on two parameters: a grade for the exam and a number of\
-  \ completed projects.\n\nThis function should take two arguments:\nexam - grade\
-  \ for exam (from 0 to 100);\nprojects - number of completed projects (from 0 and\
-  \ above);\n\nThis function should return a number (final grade).\nThere are four\
-  \ types of final grades:\n- 100, if a grade for the exam is more than 90 or if a\
-  \ number of completed projects more than 10.\n- 90, if a grade for the exam is more\
-  \ than 75 and if a number of completed projects is minimum 5.\n- 75, if a grade\
-  \ for the exam is more than 50 and if a number of completed projects is minimum\
-  \ 2.\n- 0, in other cases\n\nExamples:\n\n~~~if-not:nasm\n```python\nfinal_grade(100,\
-  \ 12)  # 100\nfinal_grade(99, 0)    # 100\nfinal_grade(10, 15)   # 100\nfinal_grade(85,\
-  \ 5)    # 90\nfinal_grade(55, 3)    # 75\nfinal_grade(55, 0)    # 0\nfinal_grade(20,\
-  \ 2)    # 0\n```\n~~~\n\n*Use Comparison and Logical Operators."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def final_grade (exam : Int) (projects : Int) : Int :=\n  sorry\n"
-"vc-theorems": "theorem final_grade_output_range (exam : Int) (projects : Int) :\n\
-  \  final_grade exam projects = 0 ∨ \n  final_grade exam projects = 75 ∨\n  final_grade\
-  \ exam projects = 90 ∨ \n  final_grade exam projects = 100 :=\nsorry\n\n\ntheorem\
-  \ final_grade_high_scores (exam projects : Int) :\n  (exam > 90 ∨ projects > 10)\
-  \ → final_grade exam projects = 100 :=\nsorry\n\n\ntheorem final_grade_medium_high_scores\
-  \ (exam projects : Int) :\n  (exam > 75 ∧ exam ≤ 90 ∧ projects ≥ 5 ∧ projects ≤\
-  \ 10) → \n  final_grade exam projects = 90 :=\nsorry\n\n\ntheorem final_grade_medium_scores\
-  \ (exam projects : Int) :\n  (exam > 50 ∧ exam ≤ 75 ∧ projects ≥ 2 ∧ projects ≤\
-  \ 4) → \n  final_grade exam projects = 75 :=\nsorry\n\n\ntheorem final_grade_low_scores\
-  \ (exam projects : Int) :\n  (exam ≤ 50 ∧ projects ≤ 1) → final_grade exam projects\
-  \ = 0 :=\nsorry\n\n\ntheorem final_grade_high_exam (exam projects : Int) :\n  exam\
-  \ > 90 → final_grade exam projects = 100 :=\nsorry\n\n\ntheorem final_grade_many_projects\
-  \ (exam projects : Int) :\n  projects > 10 → final_grade exam projects = 100 :=\n\
-  sorry\n\n\ntheorem final_grade_low_both (exam projects : Int) :\n  exam ≤ 50 ∧ projects\
-  \ ≤ 1 → final_grade exam projects = 0 :=\nsorry\n\n/--\ninfo: 100\n-/\n#guard_msgs\
-  \ in\n#eval final_grade 100 12\n\n/--\ninfo: 90\n-/\n#guard_msgs in\n#eval final_grade\
-  \ 85 5\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval final_grade 55 0\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Create a function finalGrade, which calculates the final grade of a student depending on two parameters: a grade for the exam and a number of completed projects.
+
+  This function should take two arguments:
+  exam - grade for exam (from 0 to 100);
+  projects - number of completed projects (from 0 and above);
+
+  This function should return a number (final grade).
+  There are four types of final grades:
+  - 100, if a grade for the exam is more than 90 or if a number of completed projects more than 10.
+  - 90, if a grade for the exam is more than 75 and if a number of completed projects is minimum 5.
+  - 75, if a grade for the exam is more than 50 and if a number of completed projects is minimum 2.
+  - 0, in other cases
+
+  Examples:
+
+  ~~~if-not:nasm
+  ```python
+  final_grade(100, 12)  # 100
+  final_grade(99, 0)    # 100
+  final_grade(10, 15)   # 100
+  final_grade(85, 5)    # 90
+  final_grade(55, 3)    # 75
+  final_grade(55, 0)    # 0
+  final_grade(20, 2)    # 0
+  ```
+  ~~~
+
+  *Use Comparison and Logical Operators.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def final_grade (exam : Int) (projects : Int) : Int :=
+    sorry
+vc-theorems: |
+  theorem final_grade_output_range (exam : Int) (projects : Int) :
+    final_grade exam projects = 0 ∨ 
+    final_grade exam projects = 75 ∨
+    final_grade exam projects = 90 ∨ 
+    final_grade exam projects = 100 :=
+  sorry
+
+
+  theorem final_grade_high_scores (exam projects : Int) :
+    (exam > 90 ∨ projects > 10) → final_grade exam projects = 100 :=
+  sorry
+
+
+  theorem final_grade_medium_high_scores (exam projects : Int) :
+    (exam > 75 ∧ exam ≤ 90 ∧ projects ≥ 5 ∧ projects ≤ 10) → 
+    final_grade exam projects = 90 :=
+  sorry
+
+
+  theorem final_grade_medium_scores (exam projects : Int) :
+    (exam > 50 ∧ exam ≤ 75 ∧ projects ≥ 2 ∧ projects ≤ 4) → 
+    final_grade exam projects = 75 :=
+  sorry
+
+
+  theorem final_grade_low_scores (exam projects : Int) :
+    (exam ≤ 50 ∧ projects ≤ 1) → final_grade exam projects = 0 :=
+  sorry
+
+
+  theorem final_grade_high_exam (exam projects : Int) :
+    exam > 90 → final_grade exam projects = 100 :=
+  sorry
+
+
+  theorem final_grade_many_projects (exam projects : Int) :
+    projects > 10 → final_grade exam projects = 100 :=
+  sorry
+
+
+  theorem final_grade_low_both (exam projects : Int) :
+    exam ≤ 50 ∧ projects ≤ 1 → final_grade exam projects = 0 :=
+  sorry
+
+  /--
+  info: 100
+  -/
+  #guard_msgs in
+  #eval final_grade 100 12
+
+  /--
+  info: 90
+  -/
+  #guard_msgs in
+  #eval final_grade 85 5
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval final_grade 55 0
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

@@ -1,42 +1,87 @@
-"vc-description": "=====Function Descriptions=====\nA set is an unordered collection\
-  \ of elements without duplicate entries.\nWhen printed, iterated or converted into\
-  \ a sequence, its elements will appear in an arbitrary order.\n\n=====Example=====\n\
-  >>> print set()\nset([])\n\n>>> print set('HackerRank')\nset(['a', 'c', 'e', 'H',\
-  \ 'k', 'n', 'r', 'R'])\n\n>>> print set([1,2,1,2,3,4,5,6,0,9,12,22,3])\nset([0,\
-  \ 1, 2, 3, 4, 5, 6, 9, 12, 22])\n\n>>> print set((1,2,3,4,5,5))\nset([1, 2, 3, 4,\
-  \ 5])\n\n>>> print set(set(['H','a','c','k','e','r','r','a','n','k']))\nset(['a',\
-  \ 'c', 'r', 'e', 'H', 'k', 'n'])\n\n>>> print set({'Hacker' : 'DOSHI', 'Rank' :\
-  \ 616 })\nset(['Hacker', 'Rank'])\n\n>>> print set(enumerate(['H','a','c','k','e','r','r','a','n','k']))\n\
-  set([(6, 'r'), (7, 'a'), (3, 'k'), (4, 'e'), (5, 'r'), (9, 'k'), (2, 'c'), (0, 'H'),\
-  \ (1, 'a'), (8, 'n')])\n\nBasically, sets are used for membership testing and eliminating\
-  \ duplicate entries.\n\n=====Problem Statement=====\nNow, let's use our knowledge\
-  \ of sets and help Mickey.\n\nMs. Gabriel Williams is a botany professor at District\
-  \ College. One day, she asked her student Mickey to compute the average of all the\
-  \ plants with distinct heights in her greenhouse.\n\nFormula used: \nAverage = Sum\
-  \ of Distinct Heights / Total Number of Distinct Heights\n\n=====Input Format=====\n\
-  The first line contains the integer, N, the total number of plants.\nThe second\
-  \ line contains the N space separated heights of the plants.\n\n=====Constraints=====\n\
-  0<N≤100\n\n=====Output Format=====\nOutput the average height value on a single\
-  \ line."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calculateDistinctPlantHeightsAvg (n : Nat) (heights : String)\
-  \ : Float := sorry\n\ntheorem avg_between_min_max \n  (n : Nat) (heights : List\
-  \ Nat) (h₁ : ∀ x ∈ heights, 1 ≤ x ∧ x ≤ 1000) (h₂ : heights ≠ []) :\n  let result\
-  \ := calculateDistinctPlantHeightsAvg n (heights.toString)\n  let min_height :=\
-  \ heights.minimum?.get!\n  let max_height := heights.maximum?.get!\n  Float.ofNat\
-  \ min_height ≤ result ∧ result ≤ Float.ofNat max_height := sorry\n"
-"vc-theorems": "theorem duplicate_heights_same_avg \n  (n : Nat) (heights : List Nat)\
-  \ (h₁ : ∀ x ∈ heights, 1 ≤ x ∧ x ≤ 1000) (h₂ : heights ≠ []) :\n  let result₁ :=\
-  \ calculateDistinctPlantHeightsAvg n (heights.toString)\n  let result₂ := calculateDistinctPlantHeightsAvg\
-  \ (2*n) (heights.toString ++ heights.toString)\n  (result₁ - result₂).abs < 0.0001\
-  \ := sorry\n\n\ntheorem sorted_heights_avg \n  (n : Nat) (heights : List Nat) (h₁\
-  \ : ∀ x ∈ heights, 1 ≤ x ∧ x ≤ 1000) \n  (h₂ : heights ≠ []) (h₃ : ∀ i j, i < j\
-  \ → j < heights.length → heights[i]! ≤ heights[j]!) :\n  let result := calculateDistinctPlantHeightsAvg\
-  \ n (heights.toString)\n  let distinct := heights.eraseDups\n  let total : Nat :=\
-  \ distinct.foldl (init := 0) (·+·)\n  let expected := (Float.ofNat total) / (Float.ofNat\
-  \ distinct.length)\n  (result - expected).abs < 0.0001 := sorry\n\n\ntheorem single_height\
-  \ (h : 1 ≤ 5 ∧ 5 ≤ 1000) :\n  calculateDistinctPlantHeightsAvg 1 \"5\" = 5.0 :=\
-  \ sorry\n\n\ntheorem same_heights (h : 1 ≤ 7 ∧ 7 ≤ 1000) :\n  calculateDistinctPlantHeightsAvg\
-  \ 3 \"7 7 7\" = 7.0 := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  =====Function Descriptions=====
+  A set is an unordered collection of elements without duplicate entries.
+  When printed, iterated or converted into a sequence, its elements will appear in an arbitrary order.
+
+  =====Example=====
+  >>> print set()
+  set([])
+
+  >>> print set('HackerRank')
+  set(['a', 'c', 'e', 'H', 'k', 'n', 'r', 'R'])
+
+  >>> print set([1,2,1,2,3,4,5,6,0,9,12,22,3])
+  set([0, 1, 2, 3, 4, 5, 6, 9, 12, 22])
+
+  >>> print set((1,2,3,4,5,5))
+  set([1, 2, 3, 4, 5])
+
+  >>> print set(set(['H','a','c','k','e','r','r','a','n','k']))
+  set(['a', 'c', 'r', 'e', 'H', 'k', 'n'])
+
+  >>> print set({'Hacker' : 'DOSHI', 'Rank' : 616 })
+  set(['Hacker', 'Rank'])
+
+  >>> print set(enumerate(['H','a','c','k','e','r','r','a','n','k']))
+  set([(6, 'r'), (7, 'a'), (3, 'k'), (4, 'e'), (5, 'r'), (9, 'k'), (2, 'c'), (0, 'H'), (1, 'a'), (8, 'n')])
+
+  Basically, sets are used for membership testing and eliminating duplicate entries.
+
+  =====Problem Statement=====
+  Now, let's use our knowledge of sets and help Mickey.
+
+  Ms. Gabriel Williams is a botany professor at District College. One day, she asked her student Mickey to compute the average of all the plants with distinct heights in her greenhouse.
+
+  Formula used: 
+  Average = Sum of Distinct Heights / Total Number of Distinct Heights
+
+  =====Input Format=====
+  The first line contains the integer, N, the total number of plants.
+  The second line contains the N space separated heights of the plants.
+
+  =====Constraints=====
+  0<N≤100
+
+  =====Output Format=====
+  Output the average height value on a single line.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def calculateDistinctPlantHeightsAvg (n : Nat) (heights : String) : Float := sorry
+
+  theorem avg_between_min_max 
+    (n : Nat) (heights : List Nat) (h₁ : ∀ x ∈ heights, 1 ≤ x ∧ x ≤ 1000) (h₂ : heights ≠ []) :
+    let result := calculateDistinctPlantHeightsAvg n (heights.toString)
+    let min_height := heights.minimum?.get!
+    let max_height := heights.maximum?.get!
+    Float.ofNat min_height ≤ result ∧ result ≤ Float.ofNat max_height := sorry
+vc-theorems: |-
+  theorem duplicate_heights_same_avg 
+    (n : Nat) (heights : List Nat) (h₁ : ∀ x ∈ heights, 1 ≤ x ∧ x ≤ 1000) (h₂ : heights ≠ []) :
+    let result₁ := calculateDistinctPlantHeightsAvg n (heights.toString)
+    let result₂ := calculateDistinctPlantHeightsAvg (2*n) (heights.toString ++ heights.toString)
+    (result₁ - result₂).abs < 0.0001 := sorry
+
+
+  theorem sorted_heights_avg 
+    (n : Nat) (heights : List Nat) (h₁ : ∀ x ∈ heights, 1 ≤ x ∧ x ≤ 1000) 
+    (h₂ : heights ≠ []) (h₃ : ∀ i j, i < j → j < heights.length → heights[i]! ≤ heights[j]!) :
+    let result := calculateDistinctPlantHeightsAvg n (heights.toString)
+    let distinct := heights.eraseDups
+    let total : Nat := distinct.foldl (init := 0) (·+·)
+    let expected := (Float.ofNat total) / (Float.ofNat distinct.length)
+    (result - expected).abs < 0.0001 := sorry
+
+
+  theorem single_height (h : 1 ≤ 5 ∧ 5 ≤ 1000) :
+    calculateDistinctPlantHeightsAvg 1 "5" = 5.0 := sorry
+
+
+  theorem same_heights (h : 1 ≤ 7 ∧ 7 ≤ 1000) :
+    calculateDistinctPlantHeightsAvg 3 "7 7 7" = 7.0 := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

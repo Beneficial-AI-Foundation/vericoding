@@ -1,32 +1,91 @@
-"vc-description": "Given a 2D binary matrix filled with 0's and 1's, find the largest\
-  \ square containing only 1's and return its area.\n\nExample:\n\n\nInput: \n\n1\
-  \ 0 1 0 0\n1 0 1 1 1\n1 1 1 1 1\n1 0 0 1 0\n\nOutput: 4"
-"vc-preamble": "import Imports.AllImports\n\ndef maximalSquare (matrix : List (List\
-  \ String)) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isValid (matrix : List (List String)) : Prop :=\n  match matrix\
-  \ with\n  | [] => True\n  | h::t => ∀ row ∈ t, row.length = h.length\n"
-"vc-theorems": "theorem maximal_square_is_perfect_square (matrix : List (List String))\
-  \ : \n  ∃ n : Nat, maximalSquare matrix = n * n :=\n  sorry\n\n\ntheorem maximal_square_bounded\
-  \ (matrix : List (List String)) :\n  match matrix with\n  | [] => maximalSquare\
-  \ matrix = 0\n  | h::t => \n    let result := maximalSquare matrix\n    let maxDim\
-  \ := min matrix.length h.length\n    0 ≤ result ∧ result ≤ maxDim * maxDim :=\n\
-  \  sorry\n\n\ntheorem maximal_square_all_zeros (matrix : List (List String)) \n\
-  \  (h₁ : matrix.length > 0)\n  (h₂ : ∀ (i : Nat) (j : Nat), i < matrix.length →\
-  \ \n        j < matrix.head!.length → \n        (matrix.get! i).get! j = \"0\")\
-  \ :\n  maximalSquare matrix = 0 :=\n  sorry\n\n\ntheorem maximal_square_all_ones\
-  \ (matrix : List (List String))\n  (h₁ : matrix.length > 0) \n  (h₂ : ∀ (i : Nat)\
-  \ (j : Nat), i < matrix.length → \n        j < matrix.head!.length → \n        (matrix.get!\
-  \ i).get! j = \"1\") :\n  maximalSquare matrix = (min matrix.length matrix.head!.length)\
-  \ * \n                        (min matrix.length matrix.head!.length) :=\n  sorry\n\
-  \n\ntheorem maximal_square_padding (matrix : List (List String))\n  (h : matrix.length\
-  \ > 0) :\n  let padRow := fun (row : List String) => \"0\" :: (row ++ [\"0\"])\n\
-  \  let paddedMatrix := (List.replicate (matrix.head!.length + 2) \"0\") :: \n  \
-  \                    (matrix.map padRow) ++ \n                      [List.replicate\
-  \ (matrix.head!.length + 2) \"0\"]\n  maximalSquare matrix = maximalSquare paddedMatrix\
-  \ :=\n  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval maximal_square [[\"1\"\
-  , \"0\", \"1\", \"0\", \"0\"], [\"1\", \"0\", \"1\", \"1\", \"1\"], [\"1\", \"1\"\
-  , \"1\", \"1\", \"1\"], [\"1\", \"0\", \"0\", \"1\", \"0\"]]\n\n/--\ninfo: 4\n-/\n\
-  #guard_msgs in\n#eval maximal_square [[\"1\", \"1\"], [\"1\", \"1\"]]\n\n/--\ninfo:\
-  \ 0\n-/\n#guard_msgs in\n#eval maximal_square [[\"0\"]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a 2D binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
+
+  Example:
+
+
+  Input: 
+
+  1 0 1 0 0
+  1 0 1 1 1
+  1 1 1 1 1
+  1 0 0 1 0
+
+  Output: 4
+vc-preamble: |
+  import Imports.AllImports
+
+  def maximalSquare (matrix : List (List String)) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isValid (matrix : List (List String)) : Prop :=
+    match matrix with
+    | [] => True
+    | h::t => ∀ row ∈ t, row.length = h.length
+vc-theorems: |
+  theorem maximal_square_is_perfect_square (matrix : List (List String)) : 
+    ∃ n : Nat, maximalSquare matrix = n * n :=
+    sorry
+
+
+  theorem maximal_square_bounded (matrix : List (List String)) :
+    match matrix with
+    | [] => maximalSquare matrix = 0
+    | h::t => 
+      let result := maximalSquare matrix
+      let maxDim := min matrix.length h.length
+      0 ≤ result ∧ result ≤ maxDim * maxDim :=
+    sorry
+
+
+  theorem maximal_square_all_zeros (matrix : List (List String)) 
+    (h₁ : matrix.length > 0)
+    (h₂ : ∀ (i : Nat) (j : Nat), i < matrix.length → 
+          j < matrix.head!.length → 
+          (matrix.get! i).get! j = "0") :
+    maximalSquare matrix = 0 :=
+    sorry
+
+
+  theorem maximal_square_all_ones (matrix : List (List String))
+    (h₁ : matrix.length > 0) 
+    (h₂ : ∀ (i : Nat) (j : Nat), i < matrix.length → 
+          j < matrix.head!.length → 
+          (matrix.get! i).get! j = "1") :
+    maximalSquare matrix = (min matrix.length matrix.head!.length) * 
+                          (min matrix.length matrix.head!.length) :=
+    sorry
+
+
+  theorem maximal_square_padding (matrix : List (List String))
+    (h : matrix.length > 0) :
+    let padRow := fun (row : List String) => "0" :: (row ++ ["0"])
+    let paddedMatrix := (List.replicate (matrix.head!.length + 2) "0") :: 
+                        (matrix.map padRow) ++ 
+                        [List.replicate (matrix.head!.length + 2) "0"]
+    maximalSquare matrix = maximalSquare paddedMatrix :=
+    sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval maximal_square [["1", "0", "1", "0", "0"], ["1", "0", "1", "1", "1"], ["1", "1", "1", "1", "1"], ["1", "0", "0", "1", "0"]]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval maximal_square [["1", "1"], ["1", "1"]]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval maximal_square [["0"]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

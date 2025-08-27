@@ -1,21 +1,63 @@
-"vc-description": "Given an array A of integers, return the number of (contiguous,\
-  \ non-empty) subarrays that have a sum divisible by K.\n \n\nExample 1:\nInput:\
-  \ A = [4,5,0,-2,-3,1], K = 5\nOutput: 7\nExplanation: There are 7 subarrays with\
-  \ a sum divisible by K = 5:\n[4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3],\
-  \ [0], [0, -2, -3], [-2, -3]\n\n \nNote:\n\n1 <= A.length <= 30000\n-10000 <= A[i]\
-  \ <= 10000\n2 <= K <= 10000"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def subarraysDivByK (nums : List Int) (k : Int) : Int := sorry\n\
-  \ndef countSubarraysDivisibleByK (nums : List Int) (k : Int) (i : Nat) (sum : Int)\
-  \ (count : Int) : Int :=\n  if h : i < nums.length then\n    let newSum := sum +\
-  \ nums[i]'h\n    if newSum % k = 0 then\n      countSubarraysDivisibleByK nums k\
-  \ (i + 1) newSum (count + 1)\n    else  \n      countSubarraysDivisibleByK nums\
-  \ k (i + 1) newSum count\n  else\n    count\ntermination_by nums.length - i\n\n\n\
-  \n\n"
-"vc-theorems": "theorem single_element_divisible (k : Int)\n  (h : k > 0) :\n  subarraysDivByK\
-  \ [k] k = 1 := sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval subarraysDivByK\
-  \ [4, 5, 0, -2, -3, 1] 5\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval subarraysDivByK\
-  \ [5] 5\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval subarraysDivByK [4, 5, 0, -2,\
-  \ -3, 1, 5] 5\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given an array A of integers, return the number of (contiguous, non-empty) subarrays that have a sum divisible by K.
+   
+
+  Example 1:
+  Input: A = [4,5,0,-2,-3,1], K = 5
+  Output: 7
+  Explanation: There are 7 subarrays with a sum divisible by K = 5:
+  [4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0], [0, -2, -3], [-2, -3]
+
+   
+  Note:
+
+  1 <= A.length <= 30000
+  -10000 <= A[i] <= 10000
+  2 <= K <= 10000
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def subarraysDivByK (nums : List Int) (k : Int) : Int := sorry
+
+  def countSubarraysDivisibleByK (nums : List Int) (k : Int) (i : Nat) (sum : Int) (count : Int) : Int :=
+    if h : i < nums.length then
+      let newSum := sum + nums[i]'h
+      if newSum % k = 0 then
+        countSubarraysDivisibleByK nums k (i + 1) newSum (count + 1)
+      else  
+        countSubarraysDivisibleByK nums k (i + 1) newSum count
+    else
+      count
+  termination_by nums.length - i
+
+
+
+
+vc-theorems: |
+  theorem single_element_divisible (k : Int)
+    (h : k > 0) :
+    subarraysDivByK [k] k = 1 := sorry
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval subarraysDivByK [4, 5, 0, -2, -3, 1] 5
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval subarraysDivByK [5] 5
+
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval subarraysDivByK [4, 5, 0, -2, -3, 1, 5] 5
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

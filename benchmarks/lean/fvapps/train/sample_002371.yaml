@@ -1,27 +1,84 @@
-"vc-description": "Given a non-empty string check if it can be constructed by taking\
-  \ a substring of it and appending multiple copies of the substring together.  You\
-  \ may assume the given string consists of lowercase English letters only and its\
-  \ length  will not exceed 10000. \n\nExample 1:\n\nInput: \"abab\"\n\nOutput: True\n\
-  \nExplanation: It's the substring \"ab\" twice.\n\n\n\nExample 2:\n\nInput: \"aba\"\
-  \n\nOutput: False\n\n\n\nExample 3:\n\nInput: \"abcabcabcabc\"\n\nOutput: True\n\
-  \nExplanation: It's the substring \"abc\" four times. (And the substring \"abcabc\"\
-  \ twice.)"
-"vc-preamble": "import Imports.AllImports\n\ndef repeatedSubstringPattern (s: String)\
-  \ : Bool := sorry\n\ntheorem repeatedSubstringPattern_single_char {s: String} :\n\
-  \  s.length = 1 → ¬repeatedSubstringPattern s := sorry\n\n\ndef rotateString (s:\
-  \ String) : String := sorry\n\ntheorem repeatedSubstringPattern_rotation {s: String}\
-  \ (h: s.length ≥ 2) :\n  repeatedSubstringPattern s → \n  repeatedSubstringPattern\
-  \ (rotateString s) := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isPrime (n: Nat) : Bool := sorry\n\ndef allCharsSame (s: String)\
-  \ : Bool := sorry\n"
-"vc-theorems": "theorem repeatedSubstringPattern_doubled {s: String} (h: s.length\
-  \ > 0) :\n  repeatedSubstringPattern (s ++ s) := sorry  \n\n\ntheorem repeatedSubstringPattern_n_times\
-  \ {s: String} (n: Nat) \n    (h1: s.length > 0) (h2: n ≥ 3) (h3: n ≤ 10) :\n  repeatedSubstringPattern\
-  \ (String.append s (String.append s s)) := sorry\n\n\ntheorem repeatedSubstringPattern_prime_length\
-  \ {s: String} (h1: s.length > 1) :\n  isPrime s.length →\n  ¬allCharsSame s →\n\
-  \  ¬repeatedSubstringPattern s := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
-  #eval repeatedSubstringPattern \"abab\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
-  #eval repeatedSubstringPattern \"aba\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
-  #eval repeatedSubstringPattern \"abcabcabcabc\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together.  You may assume the given string consists of lowercase English letters only and its length  will not exceed 10000. 
+
+  Example 1:
+
+  Input: "abab"
+
+  Output: True
+
+  Explanation: It's the substring "ab" twice.
+
+
+
+  Example 2:
+
+  Input: "aba"
+
+  Output: False
+
+
+
+  Example 3:
+
+  Input: "abcabcabcabc"
+
+  Output: True
+
+  Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
+vc-preamble: |
+  import Imports.AllImports
+
+  def repeatedSubstringPattern (s: String) : Bool := sorry
+
+  theorem repeatedSubstringPattern_single_char {s: String} :
+    s.length = 1 → ¬repeatedSubstringPattern s := sorry
+
+
+  def rotateString (s: String) : String := sorry
+
+  theorem repeatedSubstringPattern_rotation {s: String} (h: s.length ≥ 2) :
+    repeatedSubstringPattern s → 
+    repeatedSubstringPattern (rotateString s) := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isPrime (n: Nat) : Bool := sorry
+
+  def allCharsSame (s: String) : Bool := sorry
+vc-theorems: |
+  theorem repeatedSubstringPattern_doubled {s: String} (h: s.length > 0) :
+    repeatedSubstringPattern (s ++ s) := sorry  
+
+
+  theorem repeatedSubstringPattern_n_times {s: String} (n: Nat) 
+      (h1: s.length > 0) (h2: n ≥ 3) (h3: n ≤ 10) :
+    repeatedSubstringPattern (String.append s (String.append s s)) := sorry
+
+
+  theorem repeatedSubstringPattern_prime_length {s: String} (h1: s.length > 1) :
+    isPrime s.length →
+    ¬allCharsSame s →
+    ¬repeatedSubstringPattern s := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval repeatedSubstringPattern "abab"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval repeatedSubstringPattern "aba"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval repeatedSubstringPattern "abcabcabcabc"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

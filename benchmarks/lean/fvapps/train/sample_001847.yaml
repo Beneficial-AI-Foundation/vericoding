@@ -1,27 +1,80 @@
-"vc-description": "Given a nested list of integers represented as a string, implement\
-  \ a parser to deserialize it.\n\nEach element is either an integer, or a list --\
-  \ whose elements may also be integers or other lists.\n\nNote:\nYou may assume that\
-  \ the string is well-formed:\n\nString is non-empty.\nString does not contain white\
-  \ spaces.\nString contains only digits 0-9, [, - ,, ].\n\n\n\nExample 1:\n\nGiven\
-  \ s = \"324\",\n\nYou should return a NestedInteger object which contains a single\
-  \ integer 324.\n\n\n\nExample 2:\n\nGiven s = \"[123,[456,[789]]]\",\n\nReturn a\
-  \ NestedInteger object containing a nested list with 2 elements:\n\n1. An integer\
-  \ containing value 123.\n2. A nested list containing two elements:\n    i.  An integer\
-  \ containing value 456.\n    ii. A nested list with one element:\n         a. An\
-  \ integer containing value 789."
-"vc-preamble": "import Imports.AllImports\n\ndef deserialize (s : String) : NestedInteger\
-  \ :=\n  sorry\n\n\ndef nestedIntToPython (ni : NestedInteger) : NestedInteger :=\n\
-  \  sorry\n\n\ndef pythonToStr (val : NestedInteger) : String :=\n  sorry\n\n\ndef\
-  \ isInteger (ni : NestedInteger) : Bool :=\n  match ni with\n  | NestedInteger.Integer\
-  \ _ => true\n  | _ => false\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def getInteger (ni : NestedInteger) : Int :=\n  match ni with\n\
-  \  | NestedInteger.Integer n => n\n  | _ => 0 -- undefined behavior in this case\n"
-"vc-theorems": "theorem nested_integer_roundtrip (val : NestedInteger) :\n  nestedIntToPython\
-  \ (deserialize (pythonToStr val)) = val :=\n  sorry\n\n\ntheorem simple_integers_preserve_value\
-  \ (n : Int) (h : -1000 ≤ n ∧ n ≤ 1000) :\n  isInteger (deserialize (toString n))\
-  \ = true ∧\n  getInteger (deserialize (toString n)) = n :=\n  sorry\n\n\ntheorem\
-  \ flat_lists_preserve_structure (lst : List Int) \n  (h : ∀ x ∈ lst, -1000 ≤ x ∧\
-  \ x ≤ 1000) :\n  nestedIntToPython (deserialize (toString lst)) = \n  NestedInteger.List\
-  \ (lst.map NestedInteger.Integer) :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a nested list of integers represented as a string, implement a parser to deserialize it.
+
+  Each element is either an integer, or a list -- whose elements may also be integers or other lists.
+
+  Note:
+  You may assume that the string is well-formed:
+
+  String is non-empty.
+  String does not contain white spaces.
+  String contains only digits 0-9, [, - ,, ].
+
+
+
+  Example 1:
+
+  Given s = "324",
+
+  You should return a NestedInteger object which contains a single integer 324.
+
+
+
+  Example 2:
+
+  Given s = "[123,[456,[789]]]",
+
+  Return a NestedInteger object containing a nested list with 2 elements:
+
+  1. An integer containing value 123.
+  2. A nested list containing two elements:
+      i.  An integer containing value 456.
+      ii. A nested list with one element:
+           a. An integer containing value 789.
+vc-preamble: |
+  import Imports.AllImports
+
+  def deserialize (s : String) : NestedInteger :=
+    sorry
+
+
+  def nestedIntToPython (ni : NestedInteger) : NestedInteger :=
+    sorry
+
+
+  def pythonToStr (val : NestedInteger) : String :=
+    sorry
+
+
+  def isInteger (ni : NestedInteger) : Bool :=
+    match ni with
+    | NestedInteger.Integer _ => true
+    | _ => false
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def getInteger (ni : NestedInteger) : Int :=
+    match ni with
+    | NestedInteger.Integer n => n
+    | _ => 0 -- undefined behavior in this case
+vc-theorems: |-
+  theorem nested_integer_roundtrip (val : NestedInteger) :
+    nestedIntToPython (deserialize (pythonToStr val)) = val :=
+    sorry
+
+
+  theorem simple_integers_preserve_value (n : Int) (h : -1000 ≤ n ∧ n ≤ 1000) :
+    isInteger (deserialize (toString n)) = true ∧
+    getInteger (deserialize (toString n)) = n :=
+    sorry
+
+
+  theorem flat_lists_preserve_structure (lst : List Int) 
+    (h : ∀ x ∈ lst, -1000 ≤ x ∧ x ≤ 1000) :
+    nestedIntToPython (deserialize (toString lst)) = 
+    NestedInteger.List (lst.map NestedInteger.Integer) :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

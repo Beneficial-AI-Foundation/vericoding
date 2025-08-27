@@ -1,27 +1,81 @@
-"vc-description": "You are given two positive integers N and K. How many multisets\
-  \ of rational numbers satisfy all of the following conditions?\n - The multiset\
-  \ has exactly N elements and the sum of them is equal to K.\n - Each element of\
-  \ the multiset is one of 1, \\frac{1}{2}, \\frac{1}{4}, \\frac{1}{8}, \\dots. In\
-  \ other words, each element can be represented as \\frac{1}{2^i}\\ (i = 0,1,\\dots).\n\
-  The answer may be large, so print it modulo 998244353.\n\n-----Constraints-----\n\
-  \ - 1 \\leq K \\leq N \\leq 3000\n - All values in input are integers.\n\n-----Input-----\n\
-  Input is given from Standard Input in the following format:\nN K\n\n-----Output-----\n\
-  Print the number of multisets of rational numbers that satisfy all of the given\
-  \ conditions modulo 998244353.\n\n-----Sample Input-----\n4 2\n\n-----Sample Output-----\n\
-  2\n\nThe following two multisets satisfy all of the given conditions:\n - {1, \\\
-  frac{1}{2}, \\frac{1}{4}, \\frac{1}{4}}\n - {\\frac{1}{2}, \\frac{1}{2}, \\frac{1}{2},\
-  \ \\frac{1}{2}}"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_multisets (n k : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem count_multisets_result_bounds (n k : Nat) \n  (h1 : n > 0)\
-  \ (h2 : k ≤ n) : \n  count_multisets n k < 998244353 ∧ count_multisets n k ≥ 0 :=\n\
-  \  sorry\n\n\ntheorem count_multisets_k_equal_n (n k : Nat)\n  (h1 : n > 0) (h2\
-  \ : k = n) :\n  count_multisets n k > 0 :=\n  sorry\n\n\ntheorem count_multisets_known_values_1\
-  \ :\n  count_multisets 4 2 = 2 :=\n  sorry\n\n\ntheorem count_multisets_known_values_2\
-  \ :\n  count_multisets 2525 425 = 687232272 :=\n  sorry\n\n\ntheorem count_multisets_known_values_3\
-  \ :\n  count_multisets 3000 1 = 815951975 :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs\
-  \ in\n#eval count_multisets 4 2\n\n/--\ninfo: 687232272\n-/\n#guard_msgs in\n#eval\
-  \ count_multisets 2525 425\n\n/--\ninfo: 815951975\n-/\n#guard_msgs in\n#eval count_multisets\
-  \ 3000 1\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  You are given two positive integers N and K. How many multisets of rational numbers satisfy all of the following conditions?
+   - The multiset has exactly N elements and the sum of them is equal to K.
+   - Each element of the multiset is one of 1, \frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \dots. In other words, each element can be represented as \frac{1}{2^i}\ (i = 0,1,\dots).
+  The answer may be large, so print it modulo 998244353.
+
+  -----Constraints-----
+   - 1 \leq K \leq N \leq 3000
+   - All values in input are integers.
+
+  -----Input-----
+  Input is given from Standard Input in the following format:
+  N K
+
+  -----Output-----
+  Print the number of multisets of rational numbers that satisfy all of the given conditions modulo 998244353.
+
+  -----Sample Input-----
+  4 2
+
+  -----Sample Output-----
+  2
+
+  The following two multisets satisfy all of the given conditions:
+   - {1, \frac{1}{2}, \frac{1}{4}, \frac{1}{4}}
+   - {\frac{1}{2}, \frac{1}{2}, \frac{1}{2}, \frac{1}{2}}
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_multisets (n k : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem count_multisets_result_bounds (n k : Nat) 
+    (h1 : n > 0) (h2 : k ≤ n) : 
+    count_multisets n k < 998244353 ∧ count_multisets n k ≥ 0 :=
+    sorry
+
+
+  theorem count_multisets_k_equal_n (n k : Nat)
+    (h1 : n > 0) (h2 : k = n) :
+    count_multisets n k > 0 :=
+    sorry
+
+
+  theorem count_multisets_known_values_1 :
+    count_multisets 4 2 = 2 :=
+    sorry
+
+
+  theorem count_multisets_known_values_2 :
+    count_multisets 2525 425 = 687232272 :=
+    sorry
+
+
+  theorem count_multisets_known_values_3 :
+    count_multisets 3000 1 = 815951975 :=
+    sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval count_multisets 4 2
+
+  /--
+  info: 687232272
+  -/
+  #guard_msgs in
+  #eval count_multisets 2525 425
+
+  /--
+  info: 815951975
+  -/
+  #guard_msgs in
+  #eval count_multisets 3000 1
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded_and_plausible

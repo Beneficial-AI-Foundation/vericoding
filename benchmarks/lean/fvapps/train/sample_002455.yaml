@@ -1,18 +1,46 @@
-"vc-description": "=====Problem Statement=====\nYou are given a string S and width\
-  \ w.\nYour task is to wrap the string into a paragraph of width w.\n\n=====Input\
-  \ Format=====\nThe first line contains a string, S.\nThe second line contains the\
-  \ width, w.\n\n=====Constraints=====\n0 < len(S) < 1000\n0 < w < len(S)\n\n=====Output\
-  \ Format=====\nPrint the text wrapped paragraph."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def wrap_text (text : String) (width : Nat) : String := sorry\n\
-  \n-- Invalid width theorem"
-"vc-theorems": "theorem wrap_text_invalid_width (text : String) (width : Int) :\n\
-  \  width ≤ 0 → wrap_text text width.toNat = \"\" := sorry \n\n-- Width one theorem\n\
-  \ntheorem wrap_text_width_one (text : String) :\n  text ≠ \"\" →\n  let lines :=\
-  \ (wrap_text text 1).split (· = '\\n')\n  ∀ i : Fin lines.length, \n    i.val <\
-  \ lines.length - 1 → \n    (lines[i]).length = 1 := sorry\n\n-- Basic width constraint\
-  \ theorem  \n\ntheorem wrap_text_basic (text : String) (width : Nat) :\n  width\
-  \ > 0 →\n  let lines := (wrap_text text width).split (· = '\\n')\n  ∀ line ∈ lines,\
-  \ line.length ≤ width := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  =====Problem Statement=====
+  You are given a string S and width w.
+  Your task is to wrap the string into a paragraph of width w.
+
+  =====Input Format=====
+  The first line contains a string, S.
+  The second line contains the width, w.
+
+  =====Constraints=====
+  0 < len(S) < 1000
+  0 < w < len(S)
+
+  =====Output Format=====
+  Print the text wrapped paragraph.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def wrap_text (text : String) (width : Nat) : String := sorry
+
+  -- Invalid width theorem
+vc-theorems: |-
+  theorem wrap_text_invalid_width (text : String) (width : Int) :
+    width ≤ 0 → wrap_text text width.toNat = "" := sorry 
+
+  -- Width one theorem
+
+  theorem wrap_text_width_one (text : String) :
+    text ≠ "" →
+    let lines := (wrap_text text 1).split (· = '\n')
+    ∀ i : Fin lines.length, 
+      i.val < lines.length - 1 → 
+      (lines[i]).length = 1 := sorry
+
+  -- Basic width constraint theorem  
+
+  theorem wrap_text_basic (text : String) (width : Nat) :
+    width > 0 →
+    let lines := (wrap_text text width).split (· = '\n')
+    ∀ line ∈ lines, line.length ≤ width := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

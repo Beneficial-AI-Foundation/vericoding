@@ -1,22 +1,74 @@
-"vc-description": "In this Kata, you will check if it is possible to convert a string\
-  \ to a palindrome by changing one character. \n\nFor instance:\n```Haskell\nsolve\
-  \ (\"abbx\") = True, because we can convert 'x' to 'a' and get a palindrome. \n\
-  solve (\"abba\") = False, because we cannot get a palindrome by changing any character.\
-  \ \nsolve (\"abcba\") = True. We can change the middle character. \nsolve (\"aa\"\
-  ) = False \nsolve (\"ab\") = True\n```\n\nGood luck!\n\nPlease also try [Single\
-  \ Character Palindromes](https://www.codewars.com/kata/5a2c22271f7f709eaa0005d3)"
-"vc-preamble": "import Imports.AllImports\n\ndef solve (s : String) : Bool := sorry\n\
-  \ndef stringReverse (s : String) : String := sorry \n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def getMismatches (s : String) : Nat := sorry\n\ntheorem solve_distance_property\
-  \ (s : String) \n    (h : s.length > 0) \n    (h2 : ∀ c ∈ s.data, c = 'a' ∨ c =\
-  \ 'b' ∨ c = 'c') :\n  let mismatches := getMismatches s\n  solve s = (mismatches\
-  \ = 1 ∨ (mismatches = 0 ∧ s.length % 2 = 1)) := sorry\n"
-"vc-theorems": "theorem solve_symmetry_property (s : String) (h : s.length > 0) :\n\
-  \  solve s = solve (stringReverse s) := sorry\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval solve \"abba\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval solve \"\
-  abbaa\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval solve \"abbx\"\n\n/--\ninfo:\
-  \ False\n-/\n#guard_msgs in\n#eval solve \"aa\"\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval solve \"ab\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval solve \"\
-  abcba\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In this Kata, you will check if it is possible to convert a string to a palindrome by changing one character. 
+
+  For instance:
+  ```Haskell
+  solve ("abbx") = True, because we can convert 'x' to 'a' and get a palindrome. 
+  solve ("abba") = False, because we cannot get a palindrome by changing any character. 
+  solve ("abcba") = True. We can change the middle character. 
+  solve ("aa") = False 
+  solve ("ab") = True
+  ```
+
+  Good luck!
+
+  Please also try [Single Character Palindromes](https://www.codewars.com/kata/5a2c22271f7f709eaa0005d3)
+vc-preamble: |
+  import Imports.AllImports
+
+  def solve (s : String) : Bool := sorry
+
+  def stringReverse (s : String) : String := sorry 
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def getMismatches (s : String) : Nat := sorry
+
+  theorem solve_distance_property (s : String) 
+      (h : s.length > 0) 
+      (h2 : ∀ c ∈ s.data, c = 'a' ∨ c = 'b' ∨ c = 'c') :
+    let mismatches := getMismatches s
+    solve s = (mismatches = 1 ∨ (mismatches = 0 ∧ s.length % 2 = 1)) := sorry
+vc-theorems: |
+  theorem solve_symmetry_property (s : String) (h : s.length > 0) :
+    solve s = solve (stringReverse s) := sorry
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval solve "abba"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval solve "abbaa"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval solve "abbx"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval solve "aa"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval solve "ab"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval solve "abcba"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

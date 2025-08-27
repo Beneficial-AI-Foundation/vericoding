@@ -1,18 +1,70 @@
-"vc-description": "Given a string, remove any characters that are unique from the\
-  \ string.\n\nExample: \n\ninput: \"abccdefee\"\n\noutput: \"cceee\""
-"vc-preamble": "import Imports.AllImports\n\ndef countChar (s : String) (c : Char)\
-  \ : Nat :=\n  s.toList.filter (· = c) |>.length\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def only_duplicates (s : String) : String := sorry\n\ntheorem only_duplicates_contains_multiple_occurrences\
-  \ \n  (s : String) (c : Char) : \n  c ∈ (only_duplicates s).data → \n  countChar\
-  \ s c > 1 := \nsorry\n"
-"vc-theorems": "theorem only_duplicates_is_substring\n  (s : String) (c : Char) :\n\
-  \  c ∈ (only_duplicates s).data →\n  c ∈ s.data := \nsorry\n\n\ntheorem only_duplicates_length\n\
-  \  (s : String) :\n  (only_duplicates s).length ≤ s.length :=\nsorry\n\n\ntheorem\
-  \ only_duplicates_empty\n  (s : String) :\n  s = \"\" → only_duplicates s = \"\"\
-  \ :=\nsorry\n\n\ntheorem only_duplicates_unique_chars\n  (s : String) :\n  (∀ c,\
-  \ countChar s c ≤ 1) →\n  only_duplicates s = \"\" :=\nsorry\n\n/--\ninfo: 'cceee'\n\
-  -/\n#guard_msgs in\n#eval only_duplicates \"abccdefee\"\n\n/--\ninfo: 'll'\n-/\n\
-  #guard_msgs in\n#eval only_duplicates \"hello\"\n\n/--\ninfo: 'ondersndoders'\n\
-  -/\n#guard_msgs in\n#eval only_duplicates \"foundersandcoders\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a string, remove any characters that are unique from the string.
+
+  Example: 
+
+  input: "abccdefee"
+
+  output: "cceee"
+vc-preamble: |
+  import Imports.AllImports
+
+  def countChar (s : String) (c : Char) : Nat :=
+    s.toList.filter (· = c) |>.length
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def only_duplicates (s : String) : String := sorry
+
+  theorem only_duplicates_contains_multiple_occurrences 
+    (s : String) (c : Char) : 
+    c ∈ (only_duplicates s).data → 
+    countChar s c > 1 := 
+  sorry
+vc-theorems: |
+  theorem only_duplicates_is_substring
+    (s : String) (c : Char) :
+    c ∈ (only_duplicates s).data →
+    c ∈ s.data := 
+  sorry
+
+
+  theorem only_duplicates_length
+    (s : String) :
+    (only_duplicates s).length ≤ s.length :=
+  sorry
+
+
+  theorem only_duplicates_empty
+    (s : String) :
+    s = "" → only_duplicates s = "" :=
+  sorry
+
+
+  theorem only_duplicates_unique_chars
+    (s : String) :
+    (∀ c, countChar s c ≤ 1) →
+    only_duplicates s = "" :=
+  sorry
+
+  /--
+  info: 'cceee'
+  -/
+  #guard_msgs in
+  #eval only_duplicates "abccdefee"
+
+  /--
+  info: 'll'
+  -/
+  #guard_msgs in
+  #eval only_duplicates "hello"
+
+  /--
+  info: 'ondersndoders'
+  -/
+  #guard_msgs in
+  #eval only_duplicates "foundersandcoders"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

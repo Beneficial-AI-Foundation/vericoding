@@ -1,32 +1,111 @@
-"vc-description": "# Task\n\nJohn won the championship of a TV show. He can get some\
-  \ bonuses.\n\nHe needs to play a game to determine the amount of his bonus.\n\n\
-  Here are `n` rows and `m` columns of cards were placed on the ground. A non-negative\
-  \ number is written on each card.\n\nThe rules of the game are:\n\n- Player starts\
-  \ from the top-left coner, walk to the bottom-right coner. \n\n- Players can only\
-  \ walk downward or right. \n\n- The sum of the numbers collected by the players\
-  \ will be used as the bonus.\n\nJohn has two chances to play this game on a game\
-  \ map. Specifically, when John finishes the game, the card on his path will be removed,\
-  \ and then he can walk again.\n\nYour task is to help John calculate the maximum\
-  \ amount of bonuses he can get.\n\n# Input\n\n- `gameMap/gamemap`: A `n` x `m` integer\
-  \ array. Each element represents the number on the card.\n  - `4 <= n,m <= 40(Pyhon)/100(JS)`\n\
-  \n\n- All inputs are valid.\n\n# Output\n\nAn integer. the maximum amount of bonuses\
-  \ John can get.\n\n# Eaxmple\n\nFor \n```\ngameMap=\n[\n[1, 3, 9],\n[2, 8, 5],\n\
-  [5, 7, 4]\n]\n```\nThe output should be `39`.\n\nOne of the possible solution is:\n\
-  ```\n1st game:\n[\n[>, >, v],\n[2, 8, v],\n[5, 7, v]\n]\n1+3+9+5+4=22\n\n2nd game:\n\
-  [\n[v, 0, 0],\n[>, v, 0],\n[5, >, >]\n]\n0+2+8+7+0=17\n\nFinal bonus = 22 + 17 =\
-  \ 39\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef calcGame (gamemap : Matrix) : Nat\
-  \ := sorry\n\ndef rotateMatrix (m : Matrix) : Matrix := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def getMinValue (gamemap : Matrix) : Nat :=\n  gamemap.map (List.foldl\
-  \ min 0) |> List.foldl min 0\n"
-"vc-theorems": "theorem gamemap_value_minimum {gamemap : Matrix} : \n  getMinValue\
-  \ gamemap ≤ calcGame gamemap := sorry\n\n\ntheorem gamemap_rotation_symmetry {gamemap\
-  \ : Matrix} :\n  calcGame gamemap = calcGame (rotateMatrix gamemap) := sorry\n\n\
-  \ntheorem gamemap_monotonicity {gamemap : Matrix} {increased : Matrix} :\n  (∀ i\
-  \ j, (gamemap.get! i).get! j + 1 = (increased.get! i).get! j) →\n  calcGame gamemap\
-  \ ≤ calcGame increased := sorry\n\n/--\ninfo: 39\n-/\n#guard_msgs in\n#eval calc\
-  \ [[1, 3, 9], [2, 8, 5], [5, 7, 4]]\n\n/--\ninfo: 560\n-/\n#guard_msgs in\n#eval\
-  \ calc [[11, 72, 38], [80, 69, 65], [68, 96, 99]]\n\n/--\ninfo: 40\n-/\n#guard_msgs\
-  \ in\n#eval calc [[1, 5, 1, 1], [1, 5, 5, 1], [5, 5, 5, 1], [1, 1, 5, 1]]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Task
+
+  John won the championship of a TV show. He can get some bonuses.
+
+  He needs to play a game to determine the amount of his bonus.
+
+  Here are `n` rows and `m` columns of cards were placed on the ground. A non-negative number is written on each card.
+
+  The rules of the game are:
+
+  - Player starts from the top-left coner, walk to the bottom-right coner. 
+
+  - Players can only walk downward or right. 
+
+  - The sum of the numbers collected by the players will be used as the bonus.
+
+  John has two chances to play this game on a game map. Specifically, when John finishes the game, the card on his path will be removed, and then he can walk again.
+
+  Your task is to help John calculate the maximum amount of bonuses he can get.
+
+  # Input
+
+  - `gameMap/gamemap`: A `n` x `m` integer array. Each element represents the number on the card.
+    - `4 <= n,m <= 40(Pyhon)/100(JS)`
+
+
+  - All inputs are valid.
+
+  # Output
+
+  An integer. the maximum amount of bonuses John can get.
+
+  # Eaxmple
+
+  For 
+  ```
+  gameMap=
+  [
+  [1, 3, 9],
+  [2, 8, 5],
+  [5, 7, 4]
+  ]
+  ```
+  The output should be `39`.
+
+  One of the possible solution is:
+  ```
+  1st game:
+  [
+  [>, >, v],
+  [2, 8, v],
+  [5, 7, v]
+  ]
+  1+3+9+5+4=22
+
+  2nd game:
+  [
+  [v, 0, 0],
+  [>, v, 0],
+  [5, >, >]
+  ]
+  0+2+8+7+0=17
+
+  Final bonus = 22 + 17 = 39
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def calcGame (gamemap : Matrix) : Nat := sorry
+
+  def rotateMatrix (m : Matrix) : Matrix := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def getMinValue (gamemap : Matrix) : Nat :=
+    gamemap.map (List.foldl min 0) |> List.foldl min 0
+vc-theorems: |
+  theorem gamemap_value_minimum {gamemap : Matrix} : 
+    getMinValue gamemap ≤ calcGame gamemap := sorry
+
+
+  theorem gamemap_rotation_symmetry {gamemap : Matrix} :
+    calcGame gamemap = calcGame (rotateMatrix gamemap) := sorry
+
+
+  theorem gamemap_monotonicity {gamemap : Matrix} {increased : Matrix} :
+    (∀ i j, (gamemap.get! i).get! j + 1 = (increased.get! i).get! j) →
+    calcGame gamemap ≤ calcGame increased := sorry
+
+  /--
+  info: 39
+  -/
+  #guard_msgs in
+  #eval calc [[1, 3, 9], [2, 8, 5], [5, 7, 4]]
+
+  /--
+  info: 560
+  -/
+  #guard_msgs in
+  #eval calc [[11, 72, 38], [80, 69, 65], [68, 96, 99]]
+
+  /--
+  info: 40
+  -/
+  #guard_msgs in
+  #eval calc [[1, 5, 1, 1], [1, 5, 5, 1], [5, 5, 5, 1], [1, 1, 5, 1]]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

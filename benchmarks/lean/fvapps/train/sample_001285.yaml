@@ -1,28 +1,67 @@
-"vc-description": "Chef loves to play games. Now he plays very interesting game called\
-  \ \"Segment\". At the beginning Chef has segment [0, X] and no points on it. On\
-  \ each step Chef chooses the subsegment of maximal length possible such as it contains\
-  \ no points on it. If there are more than one such subsegment Chef chooses the one\
-  \ with the minimal left coordinate. Once Chef chosed the subsegment he put the point\
-  \ in it's middle and the step is over.\nHelp Chef to define the coordinate of the\
-  \ point he will put on the K-th step. \n\n-----Input-----\n- The first line contains\
-  \ integer T - number of test cases. \n- Each of next T lines contains two integers\
-  \ X and K. \n\n-----Output-----\n- For each test case in a single line print single\
-  \ double number - the coordinate of the K-th point Chef will put. Answer will be\
-  \ considered as correct if absolute difference between the answer and correct answer\
-  \ is less or equal 10^(-6). \n\n-----Constraints-----\n- 1 ≤ T ≤ 10^5\n- 1 ≤ X ≤\
-  \ 10^9\n- 1 ≤ K ≤ 10^12\n\n-----Subtasks-----\n- Subtask 1: T ≤ 10; X, K ≤ 20. Points:\
-  \ 15 \n- Subtask 2: T ≤ 10; X ≤ 10^6, K ≤ 2*10^5. Points: 25\n- Subtask 3: T ≤ 10^5;\
-  \ X ≤ 10^9, K ≤ 10^12. Points: 60\n\n-----Example-----\nInput:\n4\n10 1\n10 2\n\
-  10 3\n1000000000 1234567\nOutput:\n5.0000\n2.5000\n7.5000\n177375316.6198730500000000\n\
-  \n-----Explanation-----\nYou can see the points coordinates for the third sample\
-  \ from first two samples."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_kth_point (n : Nat) (k : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem result_bounded (n : Nat) (k : Nat) (h : k > 0) :\n  let res\
-  \ := find_kth_point n k\n  res ≤ n ∧ res ≥ 0 := by\n  sorry\n\n\ntheorem first_point_divides_evenly\
-  \ (n : Nat) (h : n > 0) :\n  find_kth_point n 1 = n / 2 := by \n  sorry\n\n\ntheorem\
-  \ second_point_divides_evenly (n : Nat) (h : n > 0) :\n  find_kth_point n 2 = n\
-  \ / 4 := by\n  sorry\n\n\ntheorem k_must_be_positive (n : Nat) :\n  ∀ k : Nat, k\
-  \ = 0 → find_kth_point n k = find_kth_point n k → False := by\n  sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Chef loves to play games. Now he plays very interesting game called "Segment". At the beginning Chef has segment [0, X] and no points on it. On each step Chef chooses the subsegment of maximal length possible such as it contains no points on it. If there are more than one such subsegment Chef chooses the one with the minimal left coordinate. Once Chef chosed the subsegment he put the point in it's middle and the step is over.
+  Help Chef to define the coordinate of the point he will put on the K-th step. 
+
+  -----Input-----
+  - The first line contains integer T - number of test cases. 
+  - Each of next T lines contains two integers X and K. 
+
+  -----Output-----
+  - For each test case in a single line print single double number - the coordinate of the K-th point Chef will put. Answer will be considered as correct if absolute difference between the answer and correct answer is less or equal 10^(-6). 
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 10^5
+  - 1 ≤ X ≤ 10^9
+  - 1 ≤ K ≤ 10^12
+
+  -----Subtasks-----
+  - Subtask 1: T ≤ 10; X, K ≤ 20. Points: 15 
+  - Subtask 2: T ≤ 10; X ≤ 10^6, K ≤ 2*10^5. Points: 25
+  - Subtask 3: T ≤ 10^5; X ≤ 10^9, K ≤ 10^12. Points: 60
+
+  -----Example-----
+  Input:
+  4
+  10 1
+  10 2
+  10 3
+  1000000000 1234567
+  Output:
+  5.0000
+  2.5000
+  7.5000
+  177375316.6198730500000000
+
+  -----Explanation-----
+  You can see the points coordinates for the third sample from first two samples.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_kth_point (n : Nat) (k : Nat) : Nat :=
+    sorry
+vc-theorems: |-
+  theorem result_bounded (n : Nat) (k : Nat) (h : k > 0) :
+    let res := find_kth_point n k
+    res ≤ n ∧ res ≥ 0 := by
+    sorry
+
+
+  theorem first_point_divides_evenly (n : Nat) (h : n > 0) :
+    find_kth_point n 1 = n / 2 := by 
+    sorry
+
+
+  theorem second_point_divides_evenly (n : Nat) (h : n > 0) :
+    find_kth_point n 2 = n / 4 := by
+    sorry
+
+
+  theorem k_must_be_positive (n : Nat) :
+    ∀ k : Nat, k = 0 → find_kth_point n k = find_kth_point n k → False := by
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

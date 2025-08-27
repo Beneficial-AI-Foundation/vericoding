@@ -1,36 +1,107 @@
-"vc-description": "Given a Sudoku data structure with size `NxN, N > 0 and √N == integer`,\
-  \ write a method to validate if it has been filled out correctly.\n\n\nThe data\
-  \ structure is a multi-dimensional Array, i.e:\n```\n[\n  [7,8,4,  1,5,9,  3,2,6],\n\
-  \  [5,3,9,  6,7,2,  8,4,1],\n  [6,1,2,  4,3,8,  7,5,9],\n  \n  [9,2,8,  7,1,5, \
-  \ 4,6,3],\n  [3,5,7,  8,4,6,  1,9,2],\n  [4,6,1,  9,2,3,  5,8,7],\n  \n  [8,7,6,\
-  \  3,9,4,  2,1,5],\n  [2,4,3,  5,6,1,  9,7,8],\n  [1,9,5,  2,8,7,  6,3,4]\n]\n```\n\
-  \n**Rules for validation**\n\n- Data structure dimension: `NxN` where `N > 0` and\
-  \ `√N == integer`\n- Rows may only contain integers: `1..N (N included)`\n- Columns\
-  \ may only contain integers: `1..N (N included)`\n- *'Little squares'* (`3x3` in\
-  \ example above) may also only contain integers: `1..N (N included)`"
-"vc-preamble": "import Imports.AllImports\n\ndef isPerfectSquare (n : Nat) : Bool\
-  \ :=\n  sorry\n\n\ndef generateValidBoard (size : Nat) : List (List Nat) :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def validateSudoku (board : List (List Nat)) : Bool :=\n  sorry\n"
-"vc-theorems": "theorem invalid_size_board {n : Nat} :\n  n > 0 → ¬(isPerfectSquare\
-  \ n) → \n  validateSudoku (List.replicate n (List.replicate n 1)) = false :=\n \
-  \ sorry\n\n\ntheorem valid_size_board {n : Nat} :\n  n > 0 → n ≤ 3 →\n  validateSudoku\
-  \ (generateValidBoard (n * n)) = true :=\n  sorry\n\n\ntheorem duplicate_in_row\
-  \ {n : Nat} (board : List (List Nat)) :\n  n > 0 → n ≤ 3 →\n  let size := n * n\n\
-  \  let modifiedBoard := \n    if size > 0 ∧ board.length > 0 ∧ (board.head!).length\
-  \ > 1\n    then board.set 0 ((board.get! 0).set 1 ((board.get! 0).get! 0))\n   \
-  \ else board\n  validateSudoku modifiedBoard = false :=\n  sorry\n\n\ntheorem duplicate_in_column\
-  \ {n : Nat} (board : List (List Nat)) :\n  n > 0 → n ≤ 3 →\n  let size := n * n\n\
-  \  let modifiedBoard := \n    if size > 0 ∧ board.length > 1\n    then board.set\
-  \ 1 ((board.get! 1).set 0 ((board.get! 0).get! 0))\n    else board\n  validateSudoku\
-  \ modifiedBoard = false :=\n  sorry\n\n\ntheorem duplicate_in_square {n : Nat} (board\
-  \ : List (List Nat)) :\n  n > 0 → n ≤ 3 →\n  let size := n * n\n  let modifiedBoard\
-  \ := \n    if size > 0 ∧ board.length > 1\n    then board.set 1 ((board.get! 1).set\
-  \ 1 ((board.get! 0).get! 0))\n    else board\n  validateSudoku modifiedBoard = false\
-  \ :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval validate_sudoku [[7,\
-  \ 8, 4, 1, 5, 9, 3, 2, 6], [5, 3, 9, 6, 7, 2, 8, 4, 1], [6, 1, 2, 4, 3, 8, 7, 5,\
-  \ 9], [9, 2, 8, 7, 1, 5, 4, 6, 3], [3, 5, 7, 8, 4, 6, 1, 9, 2], [4, 6, 1, 9, 2,\
-  \ 3, 5, 8, 7], [8, 7, 6, 3, 9, 4, 2, 1, 5], [2, 4, 3, 5, 6, 1, 9, 7, 8], [1, 9,\
-  \ 5, 2, 8, 7, 6, 3, 4]]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval validate_sudoku\
-  \ invalid_board\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval validate_sudoku valid_small\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a Sudoku data structure with size `NxN, N > 0 and √N == integer`, write a method to validate if it has been filled out correctly.
+
+
+  The data structure is a multi-dimensional Array, i.e:
+  ```
+  [
+    [7,8,4,  1,5,9,  3,2,6],
+    [5,3,9,  6,7,2,  8,4,1],
+    [6,1,2,  4,3,8,  7,5,9],
+    
+    [9,2,8,  7,1,5,  4,6,3],
+    [3,5,7,  8,4,6,  1,9,2],
+    [4,6,1,  9,2,3,  5,8,7],
+    
+    [8,7,6,  3,9,4,  2,1,5],
+    [2,4,3,  5,6,1,  9,7,8],
+    [1,9,5,  2,8,7,  6,3,4]
+  ]
+  ```
+
+  **Rules for validation**
+
+  - Data structure dimension: `NxN` where `N > 0` and `√N == integer`
+  - Rows may only contain integers: `1..N (N included)`
+  - Columns may only contain integers: `1..N (N included)`
+  - *'Little squares'* (`3x3` in example above) may also only contain integers: `1..N (N included)`
+vc-preamble: |
+  import Imports.AllImports
+
+  def isPerfectSquare (n : Nat) : Bool :=
+    sorry
+
+
+  def generateValidBoard (size : Nat) : List (List Nat) :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def validateSudoku (board : List (List Nat)) : Bool :=
+    sorry
+vc-theorems: |
+  theorem invalid_size_board {n : Nat} :
+    n > 0 → ¬(isPerfectSquare n) → 
+    validateSudoku (List.replicate n (List.replicate n 1)) = false :=
+    sorry
+
+
+  theorem valid_size_board {n : Nat} :
+    n > 0 → n ≤ 3 →
+    validateSudoku (generateValidBoard (n * n)) = true :=
+    sorry
+
+
+  theorem duplicate_in_row {n : Nat} (board : List (List Nat)) :
+    n > 0 → n ≤ 3 →
+    let size := n * n
+    let modifiedBoard := 
+      if size > 0 ∧ board.length > 0 ∧ (board.head!).length > 1
+      then board.set 0 ((board.get! 0).set 1 ((board.get! 0).get! 0))
+      else board
+    validateSudoku modifiedBoard = false :=
+    sorry
+
+
+  theorem duplicate_in_column {n : Nat} (board : List (List Nat)) :
+    n > 0 → n ≤ 3 →
+    let size := n * n
+    let modifiedBoard := 
+      if size > 0 ∧ board.length > 1
+      then board.set 1 ((board.get! 1).set 0 ((board.get! 0).get! 0))
+      else board
+    validateSudoku modifiedBoard = false :=
+    sorry
+
+
+  theorem duplicate_in_square {n : Nat} (board : List (List Nat)) :
+    n > 0 → n ≤ 3 →
+    let size := n * n
+    let modifiedBoard := 
+      if size > 0 ∧ board.length > 1
+      then board.set 1 ((board.get! 1).set 1 ((board.get! 0).get! 0))
+      else board
+    validateSudoku modifiedBoard = false :=
+    sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval validate_sudoku [[7, 8, 4, 1, 5, 9, 3, 2, 6], [5, 3, 9, 6, 7, 2, 8, 4, 1], [6, 1, 2, 4, 3, 8, 7, 5, 9], [9, 2, 8, 7, 1, 5, 4, 6, 3], [3, 5, 7, 8, 4, 6, 1, 9, 2], [4, 6, 1, 9, 2, 3, 5, 8, 7], [8, 7, 6, 3, 9, 4, 2, 1, 5], [2, 4, 3, 5, 6, 1, 9, 7, 8], [1, 9, 5, 2, 8, 7, 6, 3, 4]]
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval validate_sudoku invalid_board
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval validate_sudoku valid_small
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

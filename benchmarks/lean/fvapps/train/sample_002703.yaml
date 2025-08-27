@@ -1,40 +1,78 @@
-"vc-description": "Taking into consideration the [3.5 edition rules](http://www.dandwiki.com/wiki/SRD:Ability_Scores#Table:_Ability_Modifiers_and_Bonus_Spells),\
-  \ your goal is to build a function that takes an ability score (worry not about\
-  \ validation: it is always going to be a non negative integer), will return:\n\n\
-  * attribute modifier, as indicated on the table of the above link;\n* maximum spell\
-  \ level for the spells you can cast (-1 for no spells at all) with that score;\n\
-  * the eventual extra spells you might get (as an array/list, with elements representing\
-  \ extra spells for 1st, 2nd,... spell level in order; empty array for no extra spells).\n\
-  \nThe result needs to be an object (associative array in PHP), as shown in the examples:\n\
-  \n```python\nchar_attribute(0) == {\"modifier\": 0, \"maximum_spell_level\": -1,\
-  \ \"extra_spells\": []}\nchar_attribute(1) == {\"modifier\": -5, \"maximum_spell_level\"\
-  : -1, \"extra_spells\": []}\nchar_attribute(5) == {\"modifier\": -3, \"maximum_spell_level\"\
-  : -1, \"extra_spells\": []}\nchar_attribute(10) == {\"modifier\": 0, \"maximum_spell_level\"\
-  : 0, \"extra_spells\": []}\nchar_attribute(20) == {\"modifier\": +5, \"maximum_spell_level\"\
-  : 9, \"extra_spells\": [2,1,1,1,1]}\n```\n\n*Note: I didn't explain things in detail\
-  \ and just pointed out to the table on purpose, as my goal is also to train the\
-  \ pattern recognition skills of whoever is going to take this challenges, so do\
-  \ not complain about a summary description. Thanks :)*\n\nIn the same series:\n\n\
-  * [D&D Character generator #1: attribute modifiers and spells](https://www.codewars.com/kata/d-and-d-character-generator-number-1-attribute-modifiers-and-spells/)\n\
-  * [D&D Character generator #2: psion power points](https://www.codewars.com/kata/d-and-d-character-generator-number-2-psion-power-points/)\n\
-  * [D&D Character generator #3: carrying capacity](https://www.codewars.com/kata/d-and-d-character-generator-number-3-carrying-capacity/)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def char_attribute : Int → CharAttribute := sorry\n\ntheorem char_attribute_types\
-  \ (score : Int) :\n  let result := char_attribute score\n  0 ≤ score → score ≤ 100\
-  \ →\n  True := sorry\n"
-"vc-theorems": "theorem max_spell_level_constraints (score : Int) :\n  let result\
-  \ := char_attribute score\n  0 ≤ score → score ≤ 100 →\n  (score = 0 → result.maximum_spell_level\
-  \ = -1) ∧\n  (score ≠ 0 → \n    let modifier := score / 2 - 5\n    result.maximum_spell_level\
-  \ ≤ 9 ∧\n    (modifier < 0 → result.maximum_spell_level = -1) ∧\n    (score ≥ 10\
-  \ → result.maximum_spell_level ≤ score - 10)) := sorry\n\n\ntheorem extra_spells_properties\
-  \ (score : Int) :\n  let result := char_attribute score \n  0 ≤ score → score ≤\
-  \ 100 →\n  result.extra_spells.length ≤ 9 ∧\n  (∀ x ∈ result.extra_spells, x > 0)\
-  \ ∧\n  (∀ i j, i < j → j < result.extra_spells.length → \n    match result.extra_spells.get?\
-  \ i, result.extra_spells.get? j with\n    | some x, some y => x ≥ y\n    | _, _\
-  \ => true) := sorry\n\n/--\ninfo: {'modifier': 0, 'maximum_spell_level': -1, 'extra_spells':\
-  \ []}\n-/\n#guard_msgs in\n#eval char_attribute 0\n\n/--\ninfo: {'modifier': 0,\
-  \ 'maximum_spell_level': 0, 'extra_spells': []}\n-/\n#guard_msgs in\n#eval char_attribute\
-  \ 10\n\n/--\ninfo: {'modifier': 5, 'maximum_spell_level': 9, 'extra_spells': [2,\
-  \ 1, 1, 1, 1]}\n-/\n#guard_msgs in\n#eval char_attribute 20\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Taking into consideration the [3.5 edition rules](http://www.dandwiki.com/wiki/SRD:Ability_Scores#Table:_Ability_Modifiers_and_Bonus_Spells), your goal is to build a function that takes an ability score (worry not about validation: it is always going to be a non negative integer), will return:
+
+  * attribute modifier, as indicated on the table of the above link;
+  * maximum spell level for the spells you can cast (-1 for no spells at all) with that score;
+  * the eventual extra spells you might get (as an array/list, with elements representing extra spells for 1st, 2nd,... spell level in order; empty array for no extra spells).
+
+  The result needs to be an object (associative array in PHP), as shown in the examples:
+
+  ```python
+  char_attribute(0) == {"modifier": 0, "maximum_spell_level": -1, "extra_spells": []}
+  char_attribute(1) == {"modifier": -5, "maximum_spell_level": -1, "extra_spells": []}
+  char_attribute(5) == {"modifier": -3, "maximum_spell_level": -1, "extra_spells": []}
+  char_attribute(10) == {"modifier": 0, "maximum_spell_level": 0, "extra_spells": []}
+  char_attribute(20) == {"modifier": +5, "maximum_spell_level": 9, "extra_spells": [2,1,1,1,1]}
+  ```
+
+  *Note: I didn't explain things in detail and just pointed out to the table on purpose, as my goal is also to train the pattern recognition skills of whoever is going to take this challenges, so do not complain about a summary description. Thanks :)*
+
+  In the same series:
+
+  * [D&D Character generator #1: attribute modifiers and spells](https://www.codewars.com/kata/d-and-d-character-generator-number-1-attribute-modifiers-and-spells/)
+  * [D&D Character generator #2: psion power points](https://www.codewars.com/kata/d-and-d-character-generator-number-2-psion-power-points/)
+  * [D&D Character generator #3: carrying capacity](https://www.codewars.com/kata/d-and-d-character-generator-number-3-carrying-capacity/)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def char_attribute : Int → CharAttribute := sorry
+
+  theorem char_attribute_types (score : Int) :
+    let result := char_attribute score
+    0 ≤ score → score ≤ 100 →
+    True := sorry
+vc-theorems: |
+  theorem max_spell_level_constraints (score : Int) :
+    let result := char_attribute score
+    0 ≤ score → score ≤ 100 →
+    (score = 0 → result.maximum_spell_level = -1) ∧
+    (score ≠ 0 → 
+      let modifier := score / 2 - 5
+      result.maximum_spell_level ≤ 9 ∧
+      (modifier < 0 → result.maximum_spell_level = -1) ∧
+      (score ≥ 10 → result.maximum_spell_level ≤ score - 10)) := sorry
+
+
+  theorem extra_spells_properties (score : Int) :
+    let result := char_attribute score 
+    0 ≤ score → score ≤ 100 →
+    result.extra_spells.length ≤ 9 ∧
+    (∀ x ∈ result.extra_spells, x > 0) ∧
+    (∀ i j, i < j → j < result.extra_spells.length → 
+      match result.extra_spells.get? i, result.extra_spells.get? j with
+      | some x, some y => x ≥ y
+      | _, _ => true) := sorry
+
+  /--
+  info: {'modifier': 0, 'maximum_spell_level': -1, 'extra_spells': []}
+  -/
+  #guard_msgs in
+  #eval char_attribute 0
+
+  /--
+  info: {'modifier': 0, 'maximum_spell_level': 0, 'extra_spells': []}
+  -/
+  #guard_msgs in
+  #eval char_attribute 10
+
+  /--
+  info: {'modifier': 5, 'maximum_spell_level': 9, 'extra_spells': [2, 1, 1, 1, 1]}
+  -/
+  #guard_msgs in
+  #eval char_attribute 20
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

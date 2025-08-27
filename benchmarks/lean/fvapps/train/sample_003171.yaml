@@ -1,12 +1,39 @@
-"vc-description": "*Debug*   function `getSumOfDigits` that takes positive integer\
-  \ to calculate sum of it's digits. Assume that argument is an integer.\n\n### Example\n\
-  ```\n123  => 6\n223  => 7\n1337 => 15\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def getSumOfDigits (n : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem sum_digits_basic_property (n : Nat) :\n  getSumOfDigits n\
-  \ ≤ n :=\n  sorry\n\n\ntheorem sum_digits_upper_bound (n : Nat) :\n  getSumOfDigits\
-  \ n ≤ 9 * (toString n).length :=\n  sorry\n\n\ntheorem sum_digits_non_negative (n\
-  \ : Nat) :\n  getSumOfDigits n ≥ 0 :=\n  sorry\n\n\ntheorem single_digit_identity\
-  \ (n : Nat) :\n  n < 10 → getSumOfDigits n = n :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  *Debug*   function `getSumOfDigits` that takes positive integer to calculate sum of it's digits. Assume that argument is an integer.
+
+  ### Example
+  ```
+  123  => 6
+  223  => 7
+  1337 => 15
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def getSumOfDigits (n : Nat) : Nat :=
+    sorry
+vc-theorems: |-
+  theorem sum_digits_basic_property (n : Nat) :
+    getSumOfDigits n ≤ n :=
+    sorry
+
+
+  theorem sum_digits_upper_bound (n : Nat) :
+    getSumOfDigits n ≤ 9 * (toString n).length :=
+    sorry
+
+
+  theorem sum_digits_non_negative (n : Nat) :
+    getSumOfDigits n ≥ 0 :=
+    sorry
+
+
+  theorem single_digit_identity (n : Nat) :
+    n < 10 → getSumOfDigits n = n :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

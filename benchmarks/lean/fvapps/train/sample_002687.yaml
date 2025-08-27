@@ -1,30 +1,65 @@
-"vc-description": "A Magic Square contains the integers 1 to n^(2), arranged in an\
-  \ n by n array such that the columns, rows and both main diagonals add up to the\
-  \ same number.For doubly even positive integers (multiples of 4) the following method\
-  \ can be used to create a magic square.\nFill an array with the numbers 1 to n^(2)\
-  \ in succession. Then, for each 4 by 4 subarray, replace the entries on the blue\
-  \ and red diagonals by n^(2)+1-aij.\nSo, in the following example, a11 (row 1, column\
-  \ 1) was initially 1 and is replaced by 8^(2)+1-1 = 64\n\n\n    tab1 { padding-left:\
-  \ 2em; }\n    fc1  { font color=\"blue\"}\n\n\nn=8\n642 3 61606 7 57 \n9 55541213515016\n\
-  1747462021434224\n4026273736303133\n3234352928383925\n4123224445191848\n4915145253111056\n\
-  8 58595 4 62631 \n\nThe function even_magic() should return a 2D array as follows:-\n\
-  Example:\nn=4: Output: [[16,2,3,13],[5,11,10,8],[9,7,6,12],[4,14,15,1]]\n\n162 3\
-  \ 13\n5 11108 \n9 7 6 12\n4 14151 \n\n\nOnly doubly even numbers will be passed\
-  \ to the function in the tests.\n\nSee mathworld.wolfram.com for further details."
-"vc-preamble": "import Imports.AllImports\n\ndef even_magic (n : Nat) : Array (Array\
-  \ Nat) := sorry\n\ntheorem even_magic_dimensions {n : Nat} (h : n ≥ 4) (h2 : n %\
-  \ 2 = 0) :\n  let result := even_magic n\n  result.size = n ∧ \n  ∀ i, i < n → (result.get\
-  \ ⟨i, by sorry⟩).size = n := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def check_position_pattern (matrix : Array (Array Nat)) (x y :\
-  \ Nat) (hx : x < matrix.size) (hy : y < matrix.size) : Prop := \n  let val := (matrix.get\
-  \ ⟨y, hy⟩).get ⟨x, by sorry⟩\n  if x % 4 = y % 4 ∨ (x % 4 + y % 4) % 4 = 3\n  then\
-  \ val = matrix.size * matrix.size - (y * matrix.size + x)\n  else val = y * matrix.size\
-  \ + x + 1\n"
-"vc-theorems": "theorem even_magic_contains_all_numbers {n : Nat} (h : n ≥ 4) (h2\
-  \ : n % 2 = 0) :\n  let result := even_magic n\n  let flattened := result.flatten\n\
-  \  ∀ k, 1 ≤ k → k ≤ n*n → k ∈ flattened.toList := sorry\n\n\ntheorem even_magic_pattern\
-  \ {n : Nat} (h : n ≥ 4) (h2 : n % 2 = 0) :\n  let result := even_magic n\n  ∀ x\
-  \ y (hx : x < n) (hy : y < n), \n    check_position_pattern result x y (by sorry)\
-  \ (by sorry) := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  A Magic Square contains the integers 1 to n^(2), arranged in an n by n array such that the columns, rows and both main diagonals add up to the same number.For doubly even positive integers (multiples of 4) the following method can be used to create a magic square.
+  Fill an array with the numbers 1 to n^(2) in succession. Then, for each 4 by 4 subarray, replace the entries on the blue and red diagonals by n^(2)+1-aij.
+  So, in the following example, a11 (row 1, column 1) was initially 1 and is replaced by 8^(2)+1-1 = 64
+
+
+      tab1 { padding-left: 2em; }
+      fc1  { font color="blue"}
+
+
+  n=8
+  642 3 61606 7 57 
+  9 55541213515016
+  1747462021434224
+  4026273736303133
+  3234352928383925
+  4123224445191848
+  4915145253111056
+  8 58595 4 62631 
+
+  The function even_magic() should return a 2D array as follows:-
+  Example:
+  n=4: Output: [[16,2,3,13],[5,11,10,8],[9,7,6,12],[4,14,15,1]]
+
+  162 3 13
+  5 11108 
+  9 7 6 12
+  4 14151 
+
+
+  Only doubly even numbers will be passed to the function in the tests.
+
+  See mathworld.wolfram.com for further details.
+vc-preamble: |
+  import Imports.AllImports
+
+  def even_magic (n : Nat) : Array (Array Nat) := sorry
+
+  theorem even_magic_dimensions {n : Nat} (h : n ≥ 4) (h2 : n % 2 = 0) :
+    let result := even_magic n
+    result.size = n ∧ 
+    ∀ i, i < n → (result.get ⟨i, by sorry⟩).size = n := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def check_position_pattern (matrix : Array (Array Nat)) (x y : Nat) (hx : x < matrix.size) (hy : y < matrix.size) : Prop := 
+    let val := (matrix.get ⟨y, hy⟩).get ⟨x, by sorry⟩
+    if x % 4 = y % 4 ∨ (x % 4 + y % 4) % 4 = 3
+    then val = matrix.size * matrix.size - (y * matrix.size + x)
+    else val = y * matrix.size + x + 1
+vc-theorems: |-
+  theorem even_magic_contains_all_numbers {n : Nat} (h : n ≥ 4) (h2 : n % 2 = 0) :
+    let result := even_magic n
+    let flattened := result.flatten
+    ∀ k, 1 ≤ k → k ≤ n*n → k ∈ flattened.toList := sorry
+
+
+  theorem even_magic_pattern {n : Nat} (h : n ≥ 4) (h2 : n % 2 = 0) :
+    let result := even_magic n
+    ∀ x y (hx : x < n) (hy : y < n), 
+      check_position_pattern result x y (by sorry) (by sorry) := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

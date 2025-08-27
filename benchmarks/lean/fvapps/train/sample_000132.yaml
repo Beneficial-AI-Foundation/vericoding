@@ -1,29 +1,103 @@
-"vc-description": "Given a positive integer N, return the number of positive integers\
-  \ less than or equal to N that have at least 1 repeated digit.\n \n\nExample 1:\n\
-  Input: 20\nOutput: 1\nExplanation: The only positive number (<= 20) with at least\
-  \ 1 repeated digit is 11.\n\n\nExample 2:\nInput: 100\nOutput: 10\nExplanation:\
-  \ The positive numbers (<= 100) with atleast 1 repeated digit are 11, 22, 33, 44,\
-  \ 55, 66, 77, 88, 99, and 100.\n\n\nExample 3:\nInput: 1000\nOutput: 262\n\n\n \n\
-  Note:\n\n1 <= N <= 10^9"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_numbers_with_repeated_digits (n : Nat) : Nat :=\n  sorry\n\
-  \n-- Output is bounded by input"
-"vc-theorems": "theorem output_range {n : Nat} (h : n > 0) : \n  count_numbers_with_repeated_digits\
-  \ n ≤ n :=\n  sorry\n\n-- Single digit numbers have no repeats\n\ntheorem single_digit_zero\
-  \ {n : Nat} (h : n > 0) (h2 : n < 10) :\n  count_numbers_with_repeated_digits n\
-  \ = 0 :=\n  sorry\n\n-- Double digit result equals manual count\n\ntheorem double_digits_count\
-  \ {n : Nat} (h : n > 0) (h2 : n ≤ 100) :\n  count_numbers_with_repeated_digits n\
-  \ = \n    count_numbers_with_repeated_digits n -- simplified form of actual count\n\
-  \  :=\n  sorry\n\n-- Specific value tests\n\ntheorem specific_value_20 :\n  count_numbers_with_repeated_digits\
-  \ 20 = 1 :=\n  sorry\n\n\ntheorem specific_value_100 :\n  count_numbers_with_repeated_digits\
-  \ 100 = 10 :=\n  sorry\n\n\ntheorem specific_value_1000 :\n  count_numbers_with_repeated_digits\
-  \ 1000 = 262 :=\n  sorry\n\n-- Function is monotonically increasing\n\ntheorem monotonic_increasing\
-  \ {n : Nat} (h : n > 1) :\n  count_numbers_with_repeated_digits n ≥ count_numbers_with_repeated_digits\
-  \ (n-1) :=\n  sorry\n\n-- Consecutive values differ by at most 1\n\ntheorem difference_bound\
-  \ {n : Nat} (h : n > 1) :\n  let diff := count_numbers_with_repeated_digits n -\
-  \ count_numbers_with_repeated_digits (n-1)\n  diff ≤ 1 :=\n  sorry\n\n/--\ninfo:\
-  \ 1\n-/\n#guard_msgs in\n#eval count_numbers_with_repeated_digits 20\n\n/--\ninfo:\
-  \ 10\n-/\n#guard_msgs in\n#eval count_numbers_with_repeated_digits 100\n\n/--\n\
-  info: 262\n-/\n#guard_msgs in\n#eval count_numbers_with_repeated_digits 1000\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given a positive integer N, return the number of positive integers less than or equal to N that have at least 1 repeated digit.
+   
+
+  Example 1:
+  Input: 20
+  Output: 1
+  Explanation: The only positive number (<= 20) with at least 1 repeated digit is 11.
+
+
+  Example 2:
+  Input: 100
+  Output: 10
+  Explanation: The positive numbers (<= 100) with atleast 1 repeated digit are 11, 22, 33, 44, 55, 66, 77, 88, 99, and 100.
+
+
+  Example 3:
+  Input: 1000
+  Output: 262
+
+
+   
+  Note:
+
+  1 <= N <= 10^9
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def count_numbers_with_repeated_digits (n : Nat) : Nat :=
+    sorry
+
+  -- Output is bounded by input
+vc-theorems: |
+  theorem output_range {n : Nat} (h : n > 0) : 
+    count_numbers_with_repeated_digits n ≤ n :=
+    sorry
+
+  -- Single digit numbers have no repeats
+
+  theorem single_digit_zero {n : Nat} (h : n > 0) (h2 : n < 10) :
+    count_numbers_with_repeated_digits n = 0 :=
+    sorry
+
+  -- Double digit result equals manual count
+
+  theorem double_digits_count {n : Nat} (h : n > 0) (h2 : n ≤ 100) :
+    count_numbers_with_repeated_digits n = 
+      count_numbers_with_repeated_digits n -- simplified form of actual count
+    :=
+    sorry
+
+  -- Specific value tests
+
+  theorem specific_value_20 :
+    count_numbers_with_repeated_digits 20 = 1 :=
+    sorry
+
+
+  theorem specific_value_100 :
+    count_numbers_with_repeated_digits 100 = 10 :=
+    sorry
+
+
+  theorem specific_value_1000 :
+    count_numbers_with_repeated_digits 1000 = 262 :=
+    sorry
+
+  -- Function is monotonically increasing
+
+  theorem monotonic_increasing {n : Nat} (h : n > 1) :
+    count_numbers_with_repeated_digits n ≥ count_numbers_with_repeated_digits (n-1) :=
+    sorry
+
+  -- Consecutive values differ by at most 1
+
+  theorem difference_bound {n : Nat} (h : n > 1) :
+    let diff := count_numbers_with_repeated_digits n - count_numbers_with_repeated_digits (n-1)
+    diff ≤ 1 :=
+    sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_numbers_with_repeated_digits 20
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval count_numbers_with_repeated_digits 100
+
+  /--
+  info: 262
+  -/
+  #guard_msgs in
+  #eval count_numbers_with_repeated_digits 1000
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

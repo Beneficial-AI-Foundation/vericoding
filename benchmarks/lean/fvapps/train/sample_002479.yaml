@@ -1,41 +1,104 @@
-"vc-description": "=====Function Descriptions=====\nmean\n\nThe mean tool computes\
-  \ the arithmetic mean along the specified axis.\n\nimport numpy\n\nmy_array = numpy.array([\
-  \ [1, 2], [3, 4] ])\n\nprint numpy.mean(my_array, axis = 0)        #Output : [ 2.\
-  \  3.]\nprint numpy.mean(my_array, axis = 1)        #Output : [ 1.5  3.5]\nprint\
-  \ numpy.mean(my_array, axis = None)     #Output : 2.5\nprint numpy.mean(my_array)\
-  \                  #Output : 2.5\n\nBy default, the axis is None. Therefore, it\
-  \ computes the mean of the flattened array.\n\nvar\n\nThe var tool computes the\
-  \ arithmetic variance along the specified axis.\n\nimport numpy\n\nmy_array = numpy.array([\
-  \ [1, 2], [3, 4] ])\n\nprint numpy.var(my_array, axis = 0)         #Output : [ 1.\
-  \  1.]\nprint numpy.var(my_array, axis = 1)         #Output : [ 0.25  0.25]\nprint\
-  \ numpy.var(my_array, axis = None)      #Output : 1.25\nprint numpy.var(my_array)\
-  \                   #Output : 1.25\n\nBy default, the axis is None. Therefore, it\
-  \ computes the variance of the flattened array.\n\nstd\n\nThe std tool computes\
-  \ the arithmetic standard deviation along the specified axis.\n\nimport numpy\n\n\
-  my_array = numpy.array([ [1, 2], [3, 4] ])\n\nprint numpy.std(my_array, axis = 0)\
-  \         #Output : [ 1.  1.]\nprint numpy.std(my_array, axis = 1)         #Output\
-  \ : [ 0.5  0.5]\nprint numpy.std(my_array, axis = None)      #Output : 1.118033988749895\n\
-  print numpy.std(my_array)                   #Output : 1.118033988749895\n\nBy default,\
-  \ the axis is None. Therefore, it computes the standard deviation of the flattened\
-  \ array.\n\n=====Problem Statement=====\nYou are given a 2-D array of size NXM.\n\
-  Your task is to find:\nThe mean along axis 1\nThe var along axis 0\nThe std along\
-  \ axis None\n\n=====Input Format=====\nThe first line contains the space separated\
-  \ values of N and M.\nThe next N lines contains M space separated integers.\n\n\
-  =====Output Format=====\nFirst, print the mean.\nSecond, print the var.\nThird,\
-  \ print the std."
-"vc-preamble": "import Imports.AllImports\n\ndef Matrix := Array (Array Float)\n\n\
-  def getRow (A : Matrix) (i : Nat) : Array Float := sorry\n\ndef getCol (A : Matrix)\
-  \ (j : Nat) : Array Float := sorry\ndef mean (A : Matrix) : Array Float := sorry\n\
-  \ndef var (A : Matrix) : Array Float := sorry\ndef std (A : Matrix) : Float := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def compute_stats (A : Matrix) : Array Float × Array Float × Float\
-  \ := sorry\n\ntheorem compute_stats_mean_property (A : Matrix) :\n  let (means,\
-  \ _, _) := compute_stats A\n  means = mean A := sorry\n"
-"vc-theorems": "theorem compute_stats_var_property (A : Matrix) :\n  let (_, vars,\
-  \ _) := compute_stats A \n  vars = var A := sorry\n\n\ntheorem compute_stats_std_property\
-  \ (A : Matrix) :\n  let (_, _, stdev) := compute_stats A\n  stdev = std A := sorry\n\
-  \n\ntheorem compute_stats_output_shape (A : Matrix) (h1 : A.size > 0) :\n  let (means,\
-  \ vars, _) := compute_stats A\n  means.size = A.size ∧ vars.size = (getRow A 0).size\
-  \ := sorry\n\n\ntheorem compute_stats_empty (A : Matrix) (h : A.size = 0) :\n  compute_stats\
-  \ A = default := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  =====Function Descriptions=====
+  mean
+
+  The mean tool computes the arithmetic mean along the specified axis.
+
+  import numpy
+
+  my_array = numpy.array([ [1, 2], [3, 4] ])
+
+  print numpy.mean(my_array, axis = 0)        #Output : [ 2.  3.]
+  print numpy.mean(my_array, axis = 1)        #Output : [ 1.5  3.5]
+  print numpy.mean(my_array, axis = None)     #Output : 2.5
+  print numpy.mean(my_array)                  #Output : 2.5
+
+  By default, the axis is None. Therefore, it computes the mean of the flattened array.
+
+  var
+
+  The var tool computes the arithmetic variance along the specified axis.
+
+  import numpy
+
+  my_array = numpy.array([ [1, 2], [3, 4] ])
+
+  print numpy.var(my_array, axis = 0)         #Output : [ 1.  1.]
+  print numpy.var(my_array, axis = 1)         #Output : [ 0.25  0.25]
+  print numpy.var(my_array, axis = None)      #Output : 1.25
+  print numpy.var(my_array)                   #Output : 1.25
+
+  By default, the axis is None. Therefore, it computes the variance of the flattened array.
+
+  std
+
+  The std tool computes the arithmetic standard deviation along the specified axis.
+
+  import numpy
+
+  my_array = numpy.array([ [1, 2], [3, 4] ])
+
+  print numpy.std(my_array, axis = 0)         #Output : [ 1.  1.]
+  print numpy.std(my_array, axis = 1)         #Output : [ 0.5  0.5]
+  print numpy.std(my_array, axis = None)      #Output : 1.118033988749895
+  print numpy.std(my_array)                   #Output : 1.118033988749895
+
+  By default, the axis is None. Therefore, it computes the standard deviation of the flattened array.
+
+  =====Problem Statement=====
+  You are given a 2-D array of size NXM.
+  Your task is to find:
+  The mean along axis 1
+  The var along axis 0
+  The std along axis None
+
+  =====Input Format=====
+  The first line contains the space separated values of N and M.
+  The next N lines contains M space separated integers.
+
+  =====Output Format=====
+  First, print the mean.
+  Second, print the var.
+  Third, print the std.
+vc-preamble: |-
+  import Imports.AllImports
+
+  def Matrix := Array (Array Float)
+
+  def getRow (A : Matrix) (i : Nat) : Array Float := sorry
+
+  def getCol (A : Matrix) (j : Nat) : Array Float := sorry
+  def mean (A : Matrix) : Array Float := sorry
+
+  def var (A : Matrix) : Array Float := sorry
+  def std (A : Matrix) : Float := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def compute_stats (A : Matrix) : Array Float × Array Float × Float := sorry
+
+  theorem compute_stats_mean_property (A : Matrix) :
+    let (means, _, _) := compute_stats A
+    means = mean A := sorry
+vc-theorems: |-
+  theorem compute_stats_var_property (A : Matrix) :
+    let (_, vars, _) := compute_stats A 
+    vars = var A := sorry
+
+
+  theorem compute_stats_std_property (A : Matrix) :
+    let (_, _, stdev) := compute_stats A
+    stdev = std A := sorry
+
+
+  theorem compute_stats_output_shape (A : Matrix) (h1 : A.size > 0) :
+    let (means, vars, _) := compute_stats A
+    means.size = A.size ∧ vars.size = (getRow A 0).size := sorry
+
+
+  theorem compute_stats_empty (A : Matrix) (h : A.size = 0) :
+    compute_stats A = default := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

@@ -1,34 +1,93 @@
-"vc-description": "Given a string s of zeros and ones, return the maximum score after\
-  \ splitting the string into two non-empty substrings (i.e. left substring and right\
-  \ substring).\nThe score after splitting a string is the number of zeros in the\
-  \ left substring plus the number of ones in the right substring.\n \nExample 1:\n\
-  Input: s = \"011101\"\nOutput: 5 \nExplanation: \nAll possible ways of splitting\
-  \ s into two non-empty substrings are:\nleft = \"0\" and right = \"11101\", score\
-  \ = 1 + 4 = 5 \nleft = \"01\" and right = \"1101\", score = 1 + 3 = 4 \nleft = \"\
-  011\" and right = \"101\", score = 1 + 2 = 3 \nleft = \"0111\" and right = \"01\"\
-  , score = 1 + 1 = 2 \nleft = \"01110\" and right = \"1\", score = 2 + 1 = 3\n\n\
-  Example 2:\nInput: s = \"00111\"\nOutput: 5\nExplanation: When left = \"00\" and\
-  \ right = \"111\", we get the maximum score = 2 + 3 = 5\n\nExample 3:\nInput: s\
-  \ = \"1111\"\nOutput: 3\n\n \nConstraints:\n\n2 <= s.length <= 500\nThe string s\
-  \ consists of characters '0' and '1' only."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def maxScore (s: String) : Nat := sorry\n\ntheorem maxScore_non_negative\
-  \ (s: String) (h: s.length >= 2) : \n  maxScore s >= 0 := sorry\n"
-"vc-theorems": "theorem maxScore_upper_bound (s: String) (h: s.length >= 2) : \n \
-  \ maxScore s ≤ s.length := sorry\n\n\ntheorem maxScore_bounded_by_chars (s: String)\
-  \ (h: s.length >= 2) :\n  maxScore s ≤ (s.replace \"1\" \"\").length + (s.replace\
-  \ \"0\" \"\").length := sorry\n\n\ntheorem maxScore_all_ones (s: String) (h₁: s.length\
-  \ >= 2) \n  (h₂: ∀ c ∈ s.data, c = '1') :\n  maxScore s = s.length - 1 := sorry\n\
-  \n\ntheorem maxScore_all_zeros (s: String) (h₁: s.length >= 2)\n  (h₂: ∀ c ∈ s.data,\
-  \ c = '0') :\n  maxScore s = s.length - 1 := sorry\n\n\ntheorem maxScore_first_char_lower_bound\
-  \ (s: String) (h: s.length >= 2) :\n  let zeroes := if s.data[0]! = '0' then 1 else\
-  \ 0\n  let ones := (s.data.drop 1).filter (· = '1') |>.length\n  maxScore s ≥ zeroes\
-  \ + ones := sorry\n\n\ntheorem maxScore_alternating_pattern (n: Nat) (h: n ≥ 1)\
-  \ :\n  let s := String.join (List.replicate n \"01\")\n  maxScore s ≥ n := sorry\n\
-  \n\ntheorem maxScore_min_length_strings (s: String) (h₁: s.length = 2)\n  (h₂: ∀\
-  \ c ∈ s.data, c = '0' ∨ c = '1') :\n  0 ≤ maxScore s ∧ maxScore s ≤ 2 := sorry\n\
-  \n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval max_score \"011101\"\n\n/--\ninfo: 5\n\
-  -/\n#guard_msgs in\n#eval max_score \"00111\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
-  #eval max_score \"1111\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Given a string s of zeros and ones, return the maximum score after splitting the string into two non-empty substrings (i.e. left substring and right substring).
+  The score after splitting a string is the number of zeros in the left substring plus the number of ones in the right substring.
+   
+  Example 1:
+  Input: s = "011101"
+  Output: 5 
+  Explanation: 
+  All possible ways of splitting s into two non-empty substrings are:
+  left = "0" and right = "11101", score = 1 + 4 = 5 
+  left = "01" and right = "1101", score = 1 + 3 = 4 
+  left = "011" and right = "101", score = 1 + 2 = 3 
+  left = "0111" and right = "01", score = 1 + 1 = 2 
+  left = "01110" and right = "1", score = 2 + 1 = 3
+
+  Example 2:
+  Input: s = "00111"
+  Output: 5
+  Explanation: When left = "00" and right = "111", we get the maximum score = 2 + 3 = 5
+
+  Example 3:
+  Input: s = "1111"
+  Output: 3
+
+   
+  Constraints:
+
+  2 <= s.length <= 500
+  The string s consists of characters '0' and '1' only.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def maxScore (s: String) : Nat := sorry
+
+  theorem maxScore_non_negative (s: String) (h: s.length >= 2) : 
+    maxScore s >= 0 := sorry
+vc-theorems: |
+  theorem maxScore_upper_bound (s: String) (h: s.length >= 2) : 
+    maxScore s ≤ s.length := sorry
+
+
+  theorem maxScore_bounded_by_chars (s: String) (h: s.length >= 2) :
+    maxScore s ≤ (s.replace "1" "").length + (s.replace "0" "").length := sorry
+
+
+  theorem maxScore_all_ones (s: String) (h₁: s.length >= 2) 
+    (h₂: ∀ c ∈ s.data, c = '1') :
+    maxScore s = s.length - 1 := sorry
+
+
+  theorem maxScore_all_zeros (s: String) (h₁: s.length >= 2)
+    (h₂: ∀ c ∈ s.data, c = '0') :
+    maxScore s = s.length - 1 := sorry
+
+
+  theorem maxScore_first_char_lower_bound (s: String) (h: s.length >= 2) :
+    let zeroes := if s.data[0]! = '0' then 1 else 0
+    let ones := (s.data.drop 1).filter (· = '1') |>.length
+    maxScore s ≥ zeroes + ones := sorry
+
+
+  theorem maxScore_alternating_pattern (n: Nat) (h: n ≥ 1) :
+    let s := String.join (List.replicate n "01")
+    maxScore s ≥ n := sorry
+
+
+  theorem maxScore_min_length_strings (s: String) (h₁: s.length = 2)
+    (h₂: ∀ c ∈ s.data, c = '0' ∨ c = '1') :
+    0 ≤ maxScore s ∧ maxScore s ≤ 2 := sorry
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval max_score "011101"
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval max_score "00111"
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval max_score "1111"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

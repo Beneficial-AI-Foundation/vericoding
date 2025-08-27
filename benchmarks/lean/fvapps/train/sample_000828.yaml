@@ -1,24 +1,80 @@
-"vc-description": "We all know how great ABD aka AB-DE-VILLIERS is. However his team\
-  \ mates were jealous of him and posed a problem for him to solve.The problem description\
-  \ is as follows :\n\nGiven an array of integers,find the length of the largest subarray(contiguous)\
-  \ of the given array with the maximum possible GCD (Greatest Common Divisor).\n\n\
-  For info on GCD ,see this link: https://en.wikipedia.org/wiki/Greatest_common_divisor\n\
-  \nGCD of the subarray is defined as the GCD of all the elements of the subarray.\n\
-  As ABD is not aware of competitive programming he asks your help. Help him!\n\n\
-  -----Input-----\nFirst line will contain integer N denoting the size of array.\n\
-  \nSecond line will contain N integers denoting array elements.\n\n-----Output-----\n\
-  The answer as specified in the problem statement .\n\n-----Constraints-----\n1 <=\
-  \ N <= 1000000\n\n1 <= array[i] <=100000000000\n\n-----Example-----\nInput:\n4\n\
-  2 4 8 3\n\nOutput:\n1\n\nExplanation\nGCD of all possible subarrays of the given\
-  \ array are : 2 , 2 , 2 , 1 , 4 , 4, 1 , 8 , 1 , 3\n\nLargest GCD possible : 8\n\
-  \nLength of the largest subarray with GCD as 8 is 1\n\nHence answer is 1 ."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_largest_gcd_subarray (n : Nat) (arr : List Nat) : Nat\
-  \ :=\n  sorry\n\n\n\n\n\n\n\n\n"
-"vc-theorems": "theorem singleton_array {x : Nat} (h : x > 0) : \n  find_largest_gcd_subarray\
-  \ 1 [x] = 1 :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_largest_gcd_subarray\
-  \ 4 [2, 4, 8, 3]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_largest_gcd_subarray\
-  \ 5 [10, 10, 10, 5, 5]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_largest_gcd_subarray\
-  \ 3 [6, 12, 6]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  We all know how great ABD aka AB-DE-VILLIERS is. However his team mates were jealous of him and posed a problem for him to solve.The problem description is as follows :
+
+  Given an array of integers,find the length of the largest subarray(contiguous) of the given array with the maximum possible GCD (Greatest Common Divisor).
+
+  For info on GCD ,see this link: https://en.wikipedia.org/wiki/Greatest_common_divisor
+
+  GCD of the subarray is defined as the GCD of all the elements of the subarray.
+  As ABD is not aware of competitive programming he asks your help. Help him!
+
+  -----Input-----
+  First line will contain integer N denoting the size of array.
+
+  Second line will contain N integers denoting array elements.
+
+  -----Output-----
+  The answer as specified in the problem statement .
+
+  -----Constraints-----
+  1 <= N <= 1000000
+
+  1 <= array[i] <=100000000000
+
+  -----Example-----
+  Input:
+  4
+  2 4 8 3
+
+  Output:
+  1
+
+  Explanation
+  GCD of all possible subarrays of the given array are : 2 , 2 , 2 , 1 , 4 , 4, 1 , 8 , 1 , 3
+
+  Largest GCD possible : 8
+
+  Length of the largest subarray with GCD as 8 is 1
+
+  Hence answer is 1 .
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def find_largest_gcd_subarray (n : Nat) (arr : List Nat) : Nat :=
+    sorry
+
+
+
+
+
+
+
+
+vc-theorems: |
+  theorem singleton_array {x : Nat} (h : x > 0) : 
+    find_largest_gcd_subarray 1 [x] = 1 :=
+  sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_largest_gcd_subarray 4 [2, 4, 8, 3]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_largest_gcd_subarray 5 [10, 10, 10, 5, 5]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_largest_gcd_subarray 3 [6, 12, 6]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

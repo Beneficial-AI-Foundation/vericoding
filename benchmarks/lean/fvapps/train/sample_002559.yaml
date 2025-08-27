@@ -1,31 +1,76 @@
-"vc-description": "#Bubbleing around\n\nSince everybody hates chaos and loves sorted\
-  \ lists we should implement some more sorting algorithms. Your task is to implement\
-  \ a Bubble sort (for some help look at https://en.wikipedia.org/wiki/Bubble_sort)\
-  \ and return a list of snapshots after **each change** of the initial list.\n\n\
-  e.g. \n\nIf the initial list would be l=[1,2,4,3] my algorithm rotates l[2] and\
-  \ l[3] and after that it adds [1,2,3,4] to the result, which is a list of snapshots.\n\
-  ```\n[1,2,4,3] should return [ [1,2,3,4] ]\n[2,1,4,3] should return [ [1,2,4,3],\
-  \ [1,2,3,4] ]\n[1,2,3,4] should return []\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef bubble (lst : List Int) : List (List\
-  \ Int) := sorry\n\ndef isSorted (lst : List Int) : Bool := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def countInversions (lst : List Int) : Nat := sorry\n\n-- Property\
-  \ 1: Each step should be a valid permutation of original list"
-"vc-theorems": "theorem bubble_steps_are_permutations {lst : List Int} {step : List\
-  \ Int} :\n  step ∈ bubble lst → step.length = lst.length := sorry\n\n-- Property\
-  \ 2: Each step should have one or more swaps from previous\n\ntheorem bubble_steps_have_swaps\
-  \ {lst : List Int} {i : Nat} (h1 : i < (bubble lst).length) (h2 : i + 1 < (bubble\
-  \ lst).length) :\n  ∃ pos : Nat, pos < lst.length ∧ \n    ((bubble lst).get ⟨i,\
-  \ h1⟩).get! pos ≠ ((bubble lst).get ⟨i+1, h2⟩).get! pos := sorry\n\n-- Property\
-  \ 3: Final state should be sorted \n\ntheorem bubble_final_step_sorted {lst : List\
-  \ Int} (h : bubble lst ≠ []) :\n  isSorted ((bubble lst).getLast h) := sorry\n\n\
-  -- Property 4: Number of steps should not exceed inversions\n\ntheorem bubble_steps_bounded_by_inversions\
-  \ {lst : List Int} :\n  (bubble lst).length ≤ countInversions lst := sorry\n\n--\
-  \ Already sorted lists produce empty steps\n\ntheorem bubble_sorted_empty {lst :\
-  \ List Int} :\n  isSorted lst → bubble lst = [] := sorry\n\n-- Empty list produces\
-  \ empty steps\n\ntheorem bubble_empty :\n  bubble [] = [] := sorry\n\n/--\ninfo:\
-  \ []\n-/\n#guard_msgs in\n#eval bubble []\n\n/--\ninfo: []\n-/\n#guard_msgs in\n\
-  #eval bubble [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n/--\ninfo: [[1, 3, 3, 4, 7, 2], [1,\
-  \ 3, 3, 4, 2, 7], [1, 3, 3, 2, 4, 7], [1, 3, 2, 3, 4, 7], [1, 2, 3, 3, 4, 7]]\n\
-  -/\n#guard_msgs in\n#eval bubble [1, 3, 3, 7, 4, 2]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  #Bubbleing around
+
+  Since everybody hates chaos and loves sorted lists we should implement some more sorting algorithms. Your task is to implement a Bubble sort (for some help look at https://en.wikipedia.org/wiki/Bubble_sort) and return a list of snapshots after **each change** of the initial list.
+
+  e.g. 
+
+  If the initial list would be l=[1,2,4,3] my algorithm rotates l[2] and l[3] and after that it adds [1,2,3,4] to the result, which is a list of snapshots.
+  ```
+  [1,2,4,3] should return [ [1,2,3,4] ]
+  [2,1,4,3] should return [ [1,2,4,3], [1,2,3,4] ]
+  [1,2,3,4] should return []
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def bubble (lst : List Int) : List (List Int) := sorry
+
+  def isSorted (lst : List Int) : Bool := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def countInversions (lst : List Int) : Nat := sorry
+
+  -- Property 1: Each step should be a valid permutation of original list
+vc-theorems: |
+  theorem bubble_steps_are_permutations {lst : List Int} {step : List Int} :
+    step ∈ bubble lst → step.length = lst.length := sorry
+
+  -- Property 2: Each step should have one or more swaps from previous
+
+  theorem bubble_steps_have_swaps {lst : List Int} {i : Nat} (h1 : i < (bubble lst).length) (h2 : i + 1 < (bubble lst).length) :
+    ∃ pos : Nat, pos < lst.length ∧ 
+      ((bubble lst).get ⟨i, h1⟩).get! pos ≠ ((bubble lst).get ⟨i+1, h2⟩).get! pos := sorry
+
+  -- Property 3: Final state should be sorted 
+
+  theorem bubble_final_step_sorted {lst : List Int} (h : bubble lst ≠ []) :
+    isSorted ((bubble lst).getLast h) := sorry
+
+  -- Property 4: Number of steps should not exceed inversions
+
+  theorem bubble_steps_bounded_by_inversions {lst : List Int} :
+    (bubble lst).length ≤ countInversions lst := sorry
+
+  -- Already sorted lists produce empty steps
+
+  theorem bubble_sorted_empty {lst : List Int} :
+    isSorted lst → bubble lst = [] := sorry
+
+  -- Empty list produces empty steps
+
+  theorem bubble_empty :
+    bubble [] = [] := sorry
+
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval bubble []
+
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval bubble [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+  /--
+  info: [[1, 3, 3, 4, 7, 2], [1, 3, 3, 4, 2, 7], [1, 3, 3, 2, 4, 7], [1, 3, 2, 3, 4, 7], [1, 2, 3, 3, 4, 7]]
+  -/
+  #guard_msgs in
+  #eval bubble [1, 3, 3, 7, 4, 2]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

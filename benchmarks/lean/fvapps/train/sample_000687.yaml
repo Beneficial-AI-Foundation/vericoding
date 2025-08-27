@@ -1,43 +1,99 @@
-"vc-description": "Chef has $N$ small boxes arranged on a line from $1$ to $N$. For\
-  \ each valid $i$, the weight of the $i$-th box is $W_i$. Chef wants to bring them\
-  \ to his home, which is at the position $0$. He can hold any number of boxes at\
-  \ the same time; however, the total weight of the boxes he's holding must not exceed\
-  \ K at any time, and he can only pick the ith box if all the boxes between Chef's\
-  \ home and the ith box have been either moved or picked up in this trip.\nTherefore,\
-  \ Chef will pick up boxes and carry them home in one or more round trips. Find the\
-  \ smallest number of round trips he needs or determine that he cannot bring all\
-  \ boxes home.\n\n-----Input-----\n- The first line of the input contains a single\
-  \ integer $T$ denoting the number of test cases. The description of $T$ test cases\
-  \ follows.\n- The first line of each test case contains two space-separated integers\
-  \ $N$ and $K$.\n- The second line contains $N$ space-separated integers $W_1, W_2,\
-  \ \\ldots, W_N$.\n\n-----Output-----\nFor each test case, print a single line containing\
-  \ one integer ― the smallest number of round trips or $-1$ if it is impossible for\
-  \ Chef to bring all boxes home.\n\n-----Constraints-----\n- $1 \\le T \\le 100$\n\
-  - $1 \\le N, K \\le 10^3$\n- $1 \\le W_i \\le 10^3$ for each valid $i$\n\n-----Example\
-  \ Input-----\n4\n1 1 \n2\n2 4\n1 1\n3 6\n3 4 2\n3 6\n3 4 3\n\n-----Example Output-----\n\
-  -1\n1\n2\n3\n\n-----Explanation-----\nExample case 1: Since the weight of the box\
-  \ higher than $K$, Chef can not carry that box home in any number of the round trip.\n\
-  Example case 2: Since the sum of weights of both boxes is less than $K$, Chef can\
-  \ carry them home in one round trip.\nExample case 3: In the first round trip, Chef\
-  \ can only pick up the box at position $1$. In the second round trip, he can pick\
-  \ up both remaining boxes at positions $2$ and $3$.\nExample case 4: Chef can only\
-  \ carry one box at a time, so three round trips are required."
-"vc-preamble": "import Imports.AllImports\n\ndef min_trips (n : Nat) (k : Nat) (weights\
-  \ : List Nat) : Int := sorry\n\ndef list_sum : List Nat → Nat \n  | [] => 0\n  |\
-  \ x::xs => x + list_sum xs\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def list_maximum : List Nat → Nat \n  | [] => 0\n  | [x] => x\n\
-  \  | (x::xs) => max x (list_maximum xs)\n"
-"vc-theorems": "theorem min_trips_basic_properties \n  (weights : List Nat) (k : Nat)\
-  \ (n : Nat) (h1 : n = weights.length) :\n  let result := min_trips n k weights\n\
-  \  ((∃ w ∈ weights, w > k) → result = -1) ∧ \n  ((∀ w ∈ weights, w ≤ k) → \n   \
-  \ result > 0 ∧ \n    result ≤ n ∧\n    result * k ≥ list_sum weights) := sorry\n\
-  \n\ntheorem min_trips_monotonic\n  (weights : List Nat) (n : Nat) (h1 : n = weights.length)\
-  \ :\n  let k₁ := list_maximum weights\n  let k₂ := k₁ + 1\n  min_trips n k₁ weights\
-  \ ≥ min_trips n k₂ weights := sorry\n\n\ntheorem min_trips_zero_weights\n  (k :\
-  \ Nat) (weights : List Nat) (n : Nat) (h1 : n = weights.length)\n  (h2 : ∀ w ∈ weights,\
-  \ w = 0) :\n  let result := min_trips n k weights\n  result = 0 ∨ result = 1 :=\
-  \ sorry\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval min_trips 1 1 [2]\n\n/--\ninfo:\
-  \ 1\n-/\n#guard_msgs in\n#eval min_trips 2 4 [1, 1]\n\n/--\ninfo: 2\n-/\n#guard_msgs\
-  \ in\n#eval min_trips 3 6 [3, 4, 2]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Chef has $N$ small boxes arranged on a line from $1$ to $N$. For each valid $i$, the weight of the $i$-th box is $W_i$. Chef wants to bring them to his home, which is at the position $0$. He can hold any number of boxes at the same time; however, the total weight of the boxes he's holding must not exceed K at any time, and he can only pick the ith box if all the boxes between Chef's home and the ith box have been either moved or picked up in this trip.
+  Therefore, Chef will pick up boxes and carry them home in one or more round trips. Find the smallest number of round trips he needs or determine that he cannot bring all boxes home.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains two space-separated integers $N$ and $K$.
+  - The second line contains $N$ space-separated integers $W_1, W_2, \ldots, W_N$.
+
+  -----Output-----
+  For each test case, print a single line containing one integer ― the smallest number of round trips or $-1$ if it is impossible for Chef to bring all boxes home.
+
+  -----Constraints-----
+  - $1 \le T \le 100$
+  - $1 \le N, K \le 10^3$
+  - $1 \le W_i \le 10^3$ for each valid $i$
+
+  -----Example Input-----
+  4
+  1 1 
+  2
+  2 4
+  1 1
+  3 6
+  3 4 2
+  3 6
+  3 4 3
+
+  -----Example Output-----
+  -1
+  1
+  2
+  3
+
+  -----Explanation-----
+  Example case 1: Since the weight of the box higher than $K$, Chef can not carry that box home in any number of the round trip.
+  Example case 2: Since the sum of weights of both boxes is less than $K$, Chef can carry them home in one round trip.
+  Example case 3: In the first round trip, Chef can only pick up the box at position $1$. In the second round trip, he can pick up both remaining boxes at positions $2$ and $3$.
+  Example case 4: Chef can only carry one box at a time, so three round trips are required.
+vc-preamble: |
+  import Imports.AllImports
+
+  def min_trips (n : Nat) (k : Nat) (weights : List Nat) : Int := sorry
+
+  def list_sum : List Nat → Nat 
+    | [] => 0
+    | x::xs => x + list_sum xs
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def list_maximum : List Nat → Nat 
+    | [] => 0
+    | [x] => x
+    | (x::xs) => max x (list_maximum xs)
+vc-theorems: |
+  theorem min_trips_basic_properties 
+    (weights : List Nat) (k : Nat) (n : Nat) (h1 : n = weights.length) :
+    let result := min_trips n k weights
+    ((∃ w ∈ weights, w > k) → result = -1) ∧ 
+    ((∀ w ∈ weights, w ≤ k) → 
+      result > 0 ∧ 
+      result ≤ n ∧
+      result * k ≥ list_sum weights) := sorry
+
+
+  theorem min_trips_monotonic
+    (weights : List Nat) (n : Nat) (h1 : n = weights.length) :
+    let k₁ := list_maximum weights
+    let k₂ := k₁ + 1
+    min_trips n k₁ weights ≥ min_trips n k₂ weights := sorry
+
+
+  theorem min_trips_zero_weights
+    (k : Nat) (weights : List Nat) (n : Nat) (h1 : n = weights.length)
+    (h2 : ∀ w ∈ weights, w = 0) :
+    let result := min_trips n k weights
+    result = 0 ∨ result = 1 := sorry
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval min_trips 1 1 [2]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_trips 2 4 [1, 1]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_trips 3 6 [3, 4, 2]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

@@ -1,32 +1,119 @@
-"vc-description": "Write a program that, given a word, computes the scrabble score\
-  \ for that word.\n\n## Letter Values\n\nYou'll need these:\n\n```\nLetter      \
-  \                     Value\nA, E, I, O, U, L, N, R, S, T       1\nD, G        \
-  \                       2\nB, C, M, P                         3\nF, H, V, W, Y \
-  \                     4\nK                                  5\nJ, X            \
-  \                   8\nQ, Z                               10\n```\n\n```if:ruby,javascript,cfml\n\
-  There will be a preloaded hashtable `$dict` with all these values: `$dict[\"E\"\
-  ] == 1`. \n```\n```if:haskell\nThere will be a preloaded list of `(Char, Int)` tuples\
-  \ called `dict` with all these values.\n```\n```if:python\nThere will be a preloaded\
-  \ dictionary `dict_scores` with all these values: `dict_scores[\"E\"] == 1`\n```\n\
-  \n## Examples\n```\n\"cabbage\" --> 14\n```\n\n\"cabbage\" should be scored as worth\
-  \ 14 points:\n\n- 3 points for C\n- 1 point for A, twice\n- 3 points for B, twice\n\
-  - 2 points for G\n- 1 point for E\n\nAnd to total:\n\n`3 + 2*1 + 2*3 + 2 + 1` =\
-  \ `3 + 2 + 6 + 3` = `14`\n\n\nEmpty string should return `0`. The string can contain\
-  \ spaces and letters (upper and lower case), you should calculate the scrabble score\
-  \ only of the letters in that string.\n\n```\n\"\"           --> 0\n\"STREET\" \
-  \   --> 6\n\"st re et\"    --> 6\n\"ca bba g  e\" --> 14\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def scrabble_score : String → Nat \n  | _ => sorry\n"
-"vc-theorems": "theorem scrabble_score_nonnegative (word : String) : \n  scrabble_score\
-  \ word ≥ 0 := sorry\n\n\n\n\ntheorem scrabble_score_case_insensitive (word : String)\
-  \ :\n  scrabble_score (word.toLower) = scrabble_score (word.toUpper) := sorry\n\n\
-  \n\n\n\n\ntheorem scrabble_score_sum_individual (word : String) :\n  word ≠ \"\"\
-  \ →\n  scrabble_score word = word.data.foldl (fun acc c => acc + scrabble_score\
-  \ s!\"{c}\") 0 := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval scrabble_score\
-  \ \"\"\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval scrabble_score \"street\"\n\n\
-  /--\ninfo: 14\n-/\n#guard_msgs in\n#eval scrabble_score \"cabbage\"\n\n/--\ninfo:\
-  \ 6\n-/\n#guard_msgs in\n#eval scrabble_score \"STREET\"\n\n/--\ninfo: 6\n-/\n#guard_msgs\
-  \ in\n#eval scrabble_score \"st re et\"\n\n/--\ninfo: 22\n-/\n#guard_msgs in\n#eval\
-  \ scrabble_score \"quirky\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Write a program that, given a word, computes the scrabble score for that word.
+
+  ## Letter Values
+
+  You'll need these:
+
+  ```
+  Letter                           Value
+  A, E, I, O, U, L, N, R, S, T       1
+  D, G                               2
+  B, C, M, P                         3
+  F, H, V, W, Y                      4
+  K                                  5
+  J, X                               8
+  Q, Z                               10
+  ```
+
+  ```if:ruby,javascript,cfml
+  There will be a preloaded hashtable `$dict` with all these values: `$dict["E"] == 1`. 
+  ```
+  ```if:haskell
+  There will be a preloaded list of `(Char, Int)` tuples called `dict` with all these values.
+  ```
+  ```if:python
+  There will be a preloaded dictionary `dict_scores` with all these values: `dict_scores["E"] == 1`
+  ```
+
+  ## Examples
+  ```
+  "cabbage" --> 14
+  ```
+
+  "cabbage" should be scored as worth 14 points:
+
+  - 3 points for C
+  - 1 point for A, twice
+  - 3 points for B, twice
+  - 2 points for G
+  - 1 point for E
+
+  And to total:
+
+  `3 + 2*1 + 2*3 + 2 + 1` = `3 + 2 + 6 + 3` = `14`
+
+
+  Empty string should return `0`. The string can contain spaces and letters (upper and lower case), you should calculate the scrabble score only of the letters in that string.
+
+  ```
+  ""           --> 0
+  "STREET"    --> 6
+  "st re et"    --> 6
+  "ca bba g  e" --> 14
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def scrabble_score : String → Nat 
+    | _ => sorry
+vc-theorems: |
+  theorem scrabble_score_nonnegative (word : String) : 
+    scrabble_score word ≥ 0 := sorry
+
+
+
+
+  theorem scrabble_score_case_insensitive (word : String) :
+    scrabble_score (word.toLower) = scrabble_score (word.toUpper) := sorry
+
+
+
+
+
+
+  theorem scrabble_score_sum_individual (word : String) :
+    word ≠ "" →
+    scrabble_score word = word.data.foldl (fun acc c => acc + scrabble_score s!"{c}") 0 := sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval scrabble_score ""
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval scrabble_score "street"
+
+  /--
+  info: 14
+  -/
+  #guard_msgs in
+  #eval scrabble_score "cabbage"
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval scrabble_score "STREET"
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval scrabble_score "st re et"
+
+  /--
+  info: 22
+  -/
+  #guard_msgs in
+  #eval scrabble_score "quirky"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

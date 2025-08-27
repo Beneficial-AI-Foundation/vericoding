@@ -1,17 +1,60 @@
-"vc-description": "Implement int sqrt(int x).\n\nCompute and return the square root\
-  \ of x, where x is guaranteed to be a non-negative integer.\n\nSince the return\
-  \ type is an integer, the decimal digits are truncated and only the integer part\
-  \ of the result is returned.\n\nExample 1:\n\n\nInput: 4\nOutput: 2\n\n\nExample\
-  \ 2:\n\n\nInput: 8\nOutput: 2\nExplanation: The square root of 8 is 2.82842...,\
-  \ and since \n             the decimal part is truncated, 2 is returned."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def sqrt (n: Nat) : Nat := sorry\n\ntheorem sqrt_nonnegative (x\
-  \ : Nat) : sqrt x ≥ 0 := sorry\n"
-"vc-theorems": "theorem sqrt_squared_under (x : Nat) : sqrt x * sqrt x ≤ x := sorry\n\
-  \ntheorem sqrt_plus_one_squared_over (x : Nat) :\n  sqrt x < 2^31 → (sqrt x + 1)\
-  \ * (sqrt x + 1) > x := sorry\n\n\ntheorem sqrt_round_trip (x : Nat) : \n  x ≤ 1000\
-  \ → sqrt (x * x) = x := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval sqrt 4\n\
-  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval sqrt 8\n\n/--\ninfo: 0\n-/\n#guard_msgs\
-  \ in\n#eval sqrt 0\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Implement int sqrt(int x).
+
+  Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
+
+  Since the return type is an integer, the decimal digits are truncated and only the integer part of the result is returned.
+
+  Example 1:
+
+
+  Input: 4
+  Output: 2
+
+
+  Example 2:
+
+
+  Input: 8
+  Output: 2
+  Explanation: The square root of 8 is 2.82842..., and since 
+               the decimal part is truncated, 2 is returned.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def sqrt (n: Nat) : Nat := sorry
+
+  theorem sqrt_nonnegative (x : Nat) : sqrt x ≥ 0 := sorry
+vc-theorems: |
+  theorem sqrt_squared_under (x : Nat) : sqrt x * sqrt x ≤ x := sorry
+
+  theorem sqrt_plus_one_squared_over (x : Nat) :
+    sqrt x < 2^31 → (sqrt x + 1) * (sqrt x + 1) > x := sorry
+
+
+  theorem sqrt_round_trip (x : Nat) : 
+    x ≤ 1000 → sqrt (x * x) = x := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval sqrt 4
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval sqrt 8
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval sqrt 0
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

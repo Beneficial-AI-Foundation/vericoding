@@ -1,20 +1,63 @@
-"vc-description": "Your task is to ___find the next higher number (int) with same\
-  \ '1'- Bits___.\n\nI.e. as much `1` bits as before and output next higher than input.\
-  \ Input is always an int in between 1 and 1<<30 (inclusive). No bad cases or special\
-  \ tricks... \n\n### Some easy examples:\n\n```\nInput: 129  => Output: 130 (10000001\
-  \ => 10000010)\nInput: 127 => Output: 191 (01111111 => 10111111)\nInput: 1 => Output:\
-  \ 2 (01 => 10)\nInput: 323423 => Output: 323439 (1001110111101011111 => 1001110111101101111)\n\
-  ```\n\nFirst some static tests, later on many random tests too;-)!\n\n### Hope you\
-  \ have fun! :-)"
-"vc-preamble": "import Imports.AllImports\n\ndef next_higher (n : Nat) : Nat :=\n\
-  \  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def countOnes (n : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem next_higher_preserves_bit_count (n : Nat) (h : n > 0) (h2\
-  \ : n < 2^16) :\n  countOnes n = countOnes (next_higher n) :=\n  sorry\n\n\ntheorem\
-  \ next_higher_is_higher (n : Nat) (h : n > 0) (h2 : n < 2^16) :\n  next_higher n\
-  \ > n :=\n  sorry\n\n\ntheorem next_higher_power_two (i : Nat) (h : i < 8) :\n \
-  \ next_higher (2^i) = 2^(i+1) :=\n  sorry\n\n/--\ninfo: 256\n-/\n#guard_msgs in\n\
-  #eval next_higher 128\n\n/--\ninfo: 191\n-/\n#guard_msgs in\n#eval next_higher 127\n\
-  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval next_higher 1\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Your task is to ___find the next higher number (int) with same '1'- Bits___.
+
+  I.e. as much `1` bits as before and output next higher than input. Input is always an int in between 1 and 1<<30 (inclusive). No bad cases or special tricks... 
+
+  ### Some easy examples:
+
+  ```
+  Input: 129  => Output: 130 (10000001 => 10000010)
+  Input: 127 => Output: 191 (01111111 => 10111111)
+  Input: 1 => Output: 2 (01 => 10)
+  Input: 323423 => Output: 323439 (1001110111101011111 => 1001110111101101111)
+  ```
+
+  First some static tests, later on many random tests too;-)!
+
+  ### Hope you have fun! :-)
+vc-preamble: |
+  import Imports.AllImports
+
+  def next_higher (n : Nat) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def countOnes (n : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem next_higher_preserves_bit_count (n : Nat) (h : n > 0) (h2 : n < 2^16) :
+    countOnes n = countOnes (next_higher n) :=
+    sorry
+
+
+  theorem next_higher_is_higher (n : Nat) (h : n > 0) (h2 : n < 2^16) :
+    next_higher n > n :=
+    sorry
+
+
+  theorem next_higher_power_two (i : Nat) (h : i < 8) :
+    next_higher (2^i) = 2^(i+1) :=
+    sorry
+
+  /--
+  info: 256
+  -/
+  #guard_msgs in
+  #eval next_higher 128
+
+  /--
+  info: 191
+  -/
+  #guard_msgs in
+  #eval next_higher 127
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval next_higher 1
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

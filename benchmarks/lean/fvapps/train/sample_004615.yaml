@@ -1,18 +1,70 @@
-"vc-description": "Given an integer as input, can you round it to the next (meaning,\
-  \ \"higher\") multiple of 5?\n\nExamples:\n\n    input:    output:\n    0    ->\
-  \   0\n    2    ->   5\n    3    ->   5\n    12   ->   15\n    21   ->   25\n  \
-  \  30   ->   30\n    -2   ->   0\n    -5   ->   -5\n    etc.\n\n\nInput may be any\
-  \ positive or negative integer (including 0).\n\nYou can assume that all inputs\
-  \ are valid integers."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def roundToNext5 (n: Int) : Int := sorry\n\ntheorem roundToNext5_multiple_of_5\
-  \ (n: Int) :\n  (roundToNext5 n) % 5 = 0 := sorry \n"
-"vc-theorems": "theorem roundToNext5_not_less_than_input (n: Int) :\n  roundToNext5\
-  \ n ≥ n := sorry\n\n\ntheorem roundToNext5_is_minimum (n: Int) :\n  ∀ x, x < roundToNext5\
-  \ n → (x % 5 ≠ 0 ∨ x < n) := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval round_to_next5\
-  \ 0\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval round_to_next5 2\n\n/--\ninfo: 15\n\
-  -/\n#guard_msgs in\n#eval round_to_next5 12\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
-  #eval round_to_next5 -2\n\n/--\ninfo: -5\n-/\n#guard_msgs in\n#eval round_to_next5\
-  \ -5\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an integer as input, can you round it to the next (meaning, "higher") multiple of 5?
+
+  Examples:
+
+      input:    output:
+      0    ->   0
+      2    ->   5
+      3    ->   5
+      12   ->   15
+      21   ->   25
+      30   ->   30
+      -2   ->   0
+      -5   ->   -5
+      etc.
+
+
+  Input may be any positive or negative integer (including 0).
+
+  You can assume that all inputs are valid integers.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def roundToNext5 (n: Int) : Int := sorry
+
+  theorem roundToNext5_multiple_of_5 (n: Int) :
+    (roundToNext5 n) % 5 = 0 := sorry 
+vc-theorems: |
+  theorem roundToNext5_not_less_than_input (n: Int) :
+    roundToNext5 n ≥ n := sorry
+
+
+  theorem roundToNext5_is_minimum (n: Int) :
+    ∀ x, x < roundToNext5 n → (x % 5 ≠ 0 ∨ x < n) := sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval round_to_next5 0
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval round_to_next5 2
+
+  /--
+  info: 15
+  -/
+  #guard_msgs in
+  #eval round_to_next5 12
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval round_to_next5 -2
+
+  /--
+  info: -5
+  -/
+  #guard_msgs in
+  #eval round_to_next5 -5
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

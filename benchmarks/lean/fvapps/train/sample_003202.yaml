@@ -1,17 +1,33 @@
-"vc-description": "In this kata the function returns an array/list of numbers without\
-  \ its last element. The function is already written for you and the basic tests\
-  \ pass, but random tests fail. Your task is to figure out why and fix it.\n\nGood\
-  \ luck!\n\nHint: watch out for side effects.\n\n~~~if:javascript\nSome good reading:\
-  \ [MDN Docs about arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)\n\
-  ~~~\n~~~if:python\nSome good reading: [Python Lists](http://www.compciv.org/guides/python/fundamentals/lists-mutability/)\n\
-  ~~~"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def without_last {α : Type} (xs : List α) : List α := sorry\n\n\
-  theorem without_last_length {α : Type} (xs : List α) (h : xs ≠ []) : \n  (without_last\
-  \ xs).length = xs.length - 1 := sorry\n"
-"vc-theorems": "theorem without_last_preserves_order {α : Type} (xs : List α) (h :\
-  \ xs ≠ []) :\n  without_last xs = xs.take (xs.length - 1) := sorry\n\n\ntheorem\
-  \ without_last_not_eq_self {α : Type} (xs : List α) (h : xs ≠ []) :\n  without_last\
-  \ xs ≠ xs := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  In this kata the function returns an array/list of numbers without its last element. The function is already written for you and the basic tests pass, but random tests fail. Your task is to figure out why and fix it.
+
+  Good luck!
+
+  Hint: watch out for side effects.
+
+  ~~~if:javascript
+  Some good reading: [MDN Docs about arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+  ~~~
+  ~~~if:python
+  Some good reading: [Python Lists](http://www.compciv.org/guides/python/fundamentals/lists-mutability/)
+  ~~~
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def without_last {α : Type} (xs : List α) : List α := sorry
+
+  theorem without_last_length {α : Type} (xs : List α) (h : xs ≠ []) : 
+    (without_last xs).length = xs.length - 1 := sorry
+vc-theorems: |-
+  theorem without_last_preserves_order {α : Type} (xs : List α) (h : xs ≠ []) :
+    without_last xs = xs.take (xs.length - 1) := sorry
+
+
+  theorem without_last_not_eq_self {α : Type} (xs : List α) (h : xs ≠ []) :
+    without_last xs ≠ xs := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

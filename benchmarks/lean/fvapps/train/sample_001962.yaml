@@ -1,44 +1,106 @@
-"vc-description": "We all know the impressive story of Robin Hood. Robin Hood uses\
-  \ his archery skills and his wits to steal the money from rich, and return it to\
-  \ the poor.\n\nThere are n citizens in Kekoland, each person has c_{i} coins. Each\
-  \ day, Robin Hood will take exactly 1 coin from the richest person in the city and\
-  \ he will give it to the poorest person (poorest person right after taking richest's\
-  \ 1 coin). In case the choice is not unique, he will select one among them at random.\
-  \ Sadly, Robin Hood is old and want to retire in k days. He decided to spend these\
-  \ last days with helping poor people. \n\nAfter taking his money are taken by Robin\
-  \ Hood richest person may become poorest person as well, and it might even happen\
-  \ that Robin Hood will give his money back. For example if all people have same\
-  \ number of coins, then next day they will have same number of coins too. \n\nYour\
-  \ task is to find the difference between richest and poorest persons wealth after\
-  \ k days. Note that the choosing at random among richest and poorest doesn't affect\
-  \ the answer.\n\n\n-----Input-----\n\nThe first line of the input contains two integers\
-  \ n and k (1 ≤ n ≤ 500 000, 0 ≤ k ≤ 10^9) — the number of citizens in Kekoland and\
-  \ the number of days left till Robin Hood's retirement.\n\nThe second line contains\
-  \ n integers, the i-th of them is c_{i} (1 ≤ c_{i} ≤ 10^9) — initial wealth of the\
-  \ i-th person.\n\n\n-----Output-----\n\nPrint a single line containing the difference\
-  \ between richest and poorest peoples wealth.\n\n\n-----Examples-----\nInput\n4\
-  \ 1\n1 1 4 2\n\nOutput\n2\n\nInput\n3 1\n2 2 2\n\nOutput\n0\n\n\n\n-----Note-----\n\
-  \nLets look at how wealth changes through day in the first sample.  [1, 1, 4, 2]\
-  \  [2, 1, 3, 2] or [1, 2, 3, 2] \n\nSo the answer is 3 - 1 = 2\n\nIn second sample\
-  \ wealth will remain the same for each person."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_robin_hood (n : Nat) (k : Nat) (coins : List Nat) : Nat\
-  \ :=\nsorry\n"
-"vc-theorems": "theorem solve_robin_hood_properties \n  {n : Nat} {k : Nat} {coins\
-  \ : List Nat} \n  (h1 : n ≥ 1) (h2 : n = coins.length) (h3 : ∀ x, x ∈ coins → x\
-  \ ≥ 1) :\n  let result := solve_robin_hood n k coins\n  (result ≥ 0) ∧ \n  (result\
-  \ ≤ coins.maximum?.getD 0 - coins.minimum?.getD 0) :=\nsorry\n\n\ntheorem equal_coins_gives_zero\n\
-  \  {n : Nat} {k : Nat} {coins : List Nat}\n  (h1 : n ≥ 1) (h2 : n = coins.length)\
-  \ (h3 : ∀ x, x ∈ coins → x ≥ 1)\n  (h4 : ∀ x y, x ∈ coins → y ∈ coins → x = y) :\n\
-  \  solve_robin_hood n k coins = 0 :=\nsorry\n\n\ntheorem zero_k_maintains_difference\n\
-  \  {n : Nat} {coins : List Nat}\n  (h1 : n ≥ 2) (h2 : n = coins.length) (h3 : ∀\
-  \ x, x ∈ coins → x ≥ 1) :\n  solve_robin_hood n 0 coins = coins.maximum?.getD 0\
-  \ - coins.minimum?.getD 0 :=\nsorry\n\n\ntheorem larger_k_gives_smaller_difference\n\
-  \  {n : Nat} {coins : List Nat}\n  (h1 : n ≥ 1) (h2 : n = coins.length) (h3 : ∀\
-  \ x, x ∈ coins → x ≥ 1)\n  {k1 k2 : Nat} (h4 : k2 > k1) :\n  solve_robin_hood n\
-  \ k2 coins ≤ solve_robin_hood n k1 coins :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs\
-  \ in\n#eval solve_robin_hood 4 1 [1, 1, 4, 2]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
-  #eval solve_robin_hood 3 1 [2, 2, 2]\n\n/--\ninfo: 999999943\n-/\n#guard_msgs in\n\
-  #eval solve_robin_hood 4 42 [1, 1, 1, 1000000000]\n"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"
+vc-description: |-
+  We all know the impressive story of Robin Hood. Robin Hood uses his archery skills and his wits to steal the money from rich, and return it to the poor.
+
+  There are n citizens in Kekoland, each person has c_{i} coins. Each day, Robin Hood will take exactly 1 coin from the richest person in the city and he will give it to the poorest person (poorest person right after taking richest's 1 coin). In case the choice is not unique, he will select one among them at random. Sadly, Robin Hood is old and want to retire in k days. He decided to spend these last days with helping poor people. 
+
+  After taking his money are taken by Robin Hood richest person may become poorest person as well, and it might even happen that Robin Hood will give his money back. For example if all people have same number of coins, then next day they will have same number of coins too. 
+
+  Your task is to find the difference between richest and poorest persons wealth after k days. Note that the choosing at random among richest and poorest doesn't affect the answer.
+
+
+  -----Input-----
+
+  The first line of the input contains two integers n and k (1 ≤ n ≤ 500 000, 0 ≤ k ≤ 10^9) — the number of citizens in Kekoland and the number of days left till Robin Hood's retirement.
+
+  The second line contains n integers, the i-th of them is c_{i} (1 ≤ c_{i} ≤ 10^9) — initial wealth of the i-th person.
+
+
+  -----Output-----
+
+  Print a single line containing the difference between richest and poorest peoples wealth.
+
+
+  -----Examples-----
+  Input
+  4 1
+  1 1 4 2
+
+  Output
+  2
+
+  Input
+  3 1
+  2 2 2
+
+  Output
+  0
+
+
+
+  -----Note-----
+
+  Lets look at how wealth changes through day in the first sample.  [1, 1, 4, 2]  [2, 1, 3, 2] or [1, 2, 3, 2] 
+
+  So the answer is 3 - 1 = 2
+
+  In second sample wealth will remain the same for each person.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_robin_hood (n : Nat) (k : Nat) (coins : List Nat) : Nat :=
+  sorry
+vc-theorems: |
+  theorem solve_robin_hood_properties 
+    {n : Nat} {k : Nat} {coins : List Nat} 
+    (h1 : n ≥ 1) (h2 : n = coins.length) (h3 : ∀ x, x ∈ coins → x ≥ 1) :
+    let result := solve_robin_hood n k coins
+    (result ≥ 0) ∧ 
+    (result ≤ coins.maximum?.getD 0 - coins.minimum?.getD 0) :=
+  sorry
+
+
+  theorem equal_coins_gives_zero
+    {n : Nat} {k : Nat} {coins : List Nat}
+    (h1 : n ≥ 1) (h2 : n = coins.length) (h3 : ∀ x, x ∈ coins → x ≥ 1)
+    (h4 : ∀ x y, x ∈ coins → y ∈ coins → x = y) :
+    solve_robin_hood n k coins = 0 :=
+  sorry
+
+
+  theorem zero_k_maintains_difference
+    {n : Nat} {coins : List Nat}
+    (h1 : n ≥ 2) (h2 : n = coins.length) (h3 : ∀ x, x ∈ coins → x ≥ 1) :
+    solve_robin_hood n 0 coins = coins.maximum?.getD 0 - coins.minimum?.getD 0 :=
+  sorry
+
+
+  theorem larger_k_gives_smaller_difference
+    {n : Nat} {coins : List Nat}
+    (h1 : n ≥ 1) (h2 : n = coins.length) (h3 : ∀ x, x ∈ coins → x ≥ 1)
+    {k1 k2 : Nat} (h4 : k2 > k1) :
+    solve_robin_hood n k2 coins ≤ solve_robin_hood n k1 coins :=
+  sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve_robin_hood 4 1 [1, 1, 4, 2]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve_robin_hood 3 1 [2, 2, 2]
+
+  /--
+  info: 999999943
+  -/
+  #guard_msgs in
+  #eval solve_robin_hood 4 42 [1, 1, 1, 1000000000]
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded

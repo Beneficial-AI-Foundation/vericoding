@@ -1,29 +1,86 @@
-"vc-description": "Given a string and a string dictionary, find the longest string\
-  \ in the dictionary that can be formed by deleting some characters of the given\
-  \ string. If there are more than one possible results, return the longest word with\
-  \ the smallest lexicographical order. If there is no possible result, return the\
-  \ empty string.\n\nExample 1:\n\nInput:\ns = \"abpcplea\", d = [\"ale\",\"apple\"\
-  ,\"monkey\",\"plea\"]\n\nOutput: \n\"apple\"\n\n\n\n\nExample 2:\n\nInput:\ns =\
-  \ \"abpcplea\", d = [\"a\",\"b\",\"c\"]\n\nOutput: \n\"a\"\n\n\n\nNote:\n\nAll the\
-  \ strings in the input will only contain lower-case letters.\nThe size of the dictionary\
-  \ won't exceed 1,000.\nThe length of all the strings in the input won't exceed 1,000."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isSubsequence (sub word : String) : Bool := sorry\n\ndef find_longest_word\
-  \ (s : String) (dict : List String) : String := sorry\n"
-"vc-theorems": "theorem empty_string_result {dict : List String} : \n  find_longest_word\
-  \ \"\" dict = \"\" := sorry\n\n\ntheorem empty_dict_result {s : String} :\n  find_longest_word\
-  \ s [] = \"\" := sorry\n\n\ntheorem result_in_dict {s : String} {dict : List String}\
-  \ :\n  let result := find_longest_word s dict\n  result ≠ \"\" → result ∈ dict :=\
-  \ sorry\n\n\ntheorem result_is_subsequence {s : String} {dict : List String} :\n\
-  \  let result := find_longest_word s dict\n  result ≠ \"\" → isSubsequence result\
-  \ s = true := sorry\n\n\ntheorem no_longer_valid_word {s : String} {dict : List\
-  \ String} :\n  let result := find_longest_word s dict\n  ∀ w ∈ dict, w.length >\
-  \ result.length → isSubsequence w s = false := sorry\n\n\ntheorem no_lexically_smaller_valid_word\
-  \ {s : String} {dict : List String} :\n  let result := find_longest_word s dict\n\
-  \  ∀ w ∈ dict, w.length = result.length ∧ w < result → isSubsequence w s = false\
-  \ := sorry\n\n/--\ninfo: 'apple'\n-/\n#guard_msgs in\n#eval find_longest_word \"\
-  abpcplea\" [\"ale\", \"apple\", \"monkey\", \"plea\"]\n\n/--\ninfo: 'a'\n-/\n#guard_msgs\
-  \ in\n#eval find_longest_word \"abpcplea\" [\"a\", \"b\", \"c\"]\n\n/--\ninfo: 'aaa'\n\
-  -/\n#guard_msgs in\n#eval find_longest_word \"aaa\" [\"aaa\", \"aa\", \"a\"]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a string and a string dictionary, find the longest string in the dictionary that can be formed by deleting some characters of the given string. If there are more than one possible results, return the longest word with the smallest lexicographical order. If there is no possible result, return the empty string.
+
+  Example 1:
+
+  Input:
+  s = "abpcplea", d = ["ale","apple","monkey","plea"]
+
+  Output: 
+  "apple"
+
+
+
+
+  Example 2:
+
+  Input:
+  s = "abpcplea", d = ["a","b","c"]
+
+  Output: 
+  "a"
+
+
+
+  Note:
+
+  All the strings in the input will only contain lower-case letters.
+  The size of the dictionary won't exceed 1,000.
+  The length of all the strings in the input won't exceed 1,000.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isSubsequence (sub word : String) : Bool := sorry
+
+  def find_longest_word (s : String) (dict : List String) : String := sorry
+vc-theorems: |
+  theorem empty_string_result {dict : List String} : 
+    find_longest_word "" dict = "" := sorry
+
+
+  theorem empty_dict_result {s : String} :
+    find_longest_word s [] = "" := sorry
+
+
+  theorem result_in_dict {s : String} {dict : List String} :
+    let result := find_longest_word s dict
+    result ≠ "" → result ∈ dict := sorry
+
+
+  theorem result_is_subsequence {s : String} {dict : List String} :
+    let result := find_longest_word s dict
+    result ≠ "" → isSubsequence result s = true := sorry
+
+
+  theorem no_longer_valid_word {s : String} {dict : List String} :
+    let result := find_longest_word s dict
+    ∀ w ∈ dict, w.length > result.length → isSubsequence w s = false := sorry
+
+
+  theorem no_lexically_smaller_valid_word {s : String} {dict : List String} :
+    let result := find_longest_word s dict
+    ∀ w ∈ dict, w.length = result.length ∧ w < result → isSubsequence w s = false := sorry
+
+  /--
+  info: 'apple'
+  -/
+  #guard_msgs in
+  #eval find_longest_word "abpcplea" ["ale", "apple", "monkey", "plea"]
+
+  /--
+  info: 'a'
+  -/
+  #guard_msgs in
+  #eval find_longest_word "abpcplea" ["a", "b", "c"]
+
+  /--
+  info: 'aaa'
+  -/
+  #guard_msgs in
+  #eval find_longest_word "aaa" ["aaa", "aa", "a"]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

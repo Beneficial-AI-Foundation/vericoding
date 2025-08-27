@@ -1,32 +1,88 @@
-"vc-description": "Given an array of non-negative integers arr, you are initially\
-  \ positioned at start index of the array. When you are at index i, you can jump to\
-  \ i + arr[i] or i - arr[i], check if you can reach to any index with value 0.\n\
-  Notice that you can not jump outside of the array at any time.\n \nExample 1:\n\
-  Input: arr = [4,2,3,0,3,1,2], start = 5\nOutput: true\nExplanation: \nAll possible\
-  \ ways to reach at index 3 with value 0 are: \nindex 5 -> index 4 -> index 1 ->\
-  \ index 3 \nindex 5 -> index 6 -> index 4 -> index 1 -> index 3 \n\nExample 2:\n\
-  Input: arr = [4,2,3,0,3,1,2], start = 0\nOutput: true \nExplanation: \nOne possible\
-  \ way to reach at index 3 with value 0 is: \nindex 0 -> index 4 -> index 1 -> index\
-  \ 3\n\nExample 3:\nInput: arr = [3,0,2,1,2], start = 2\nOutput: false\nExplanation:\
-  \ There is no way to reach at index 1 with value 0.\n\n \nConstraints:\n\n1 <= arr.length\
-  \ <= 5 * 10^4\n0 <= arr[i] < arr.length\n0 <= start < arr.length"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def can_reach (arr : Array Nat) (start : Nat) : Bool := sorry\n\
-  \ntheorem start_within_bounds {arr : Array Nat} {start : Nat} :\n  start ≥ arr.size\
-  \ → can_reach arr start = false := sorry\n"
-"vc-theorems": "theorem array_contains_zero {arr : Array Nat} {start : Nat} :\n  start\
-  \ < arr.size → \n  (∀ x ∈ arr.toList, x ≠ 0) →\n  can_reach arr start = false :=\
-  \ sorry\n\n\ntheorem reachable_properties {arr : Array Nat} {start : Nat} : \n \
-  \ start < arr.size →\n  (∃ x ∈ arr.toList, x = 0) →\n  can_reach arr start = true\
-  \ →\n  ∃ path : List Nat, \n    path.head? = some start ∧\n    (∃ pos, pos < arr.size\
-  \ ∧ pos ∈ path ∧ arr[pos]! = 0) ∧\n    ∀ i j, i + 1 < path.length → j = i + 1 →\n\
-  \      let pos₁ := path[i]!\n      let pos₂ := path[j]!\n      let jump := arr[pos₁]!\n\
-  \      (pos₂ = pos₁ + jump ∨ pos₂ = pos₁ - jump) ∧\n      pos₁ < arr.size ∧ pos₂\
-  \ < arr.size := sorry \n\n\ntheorem symmetric_jumps {arr : Array Nat} {start : Nat}\
-  \ :\n  start < arr.size →\n  can_reach arr start = true →\n  let zero_pos := (arr.findIdx?\
-  \ (· = 0)).get!\n  can_reach arr zero_pos = true := sorry\n\n/--\ninfo: True\n-/\n\
-  #guard_msgs in\n#eval can_reach #[4, 2, 3, 0, 3, 1, 2] 5\n\n/--\ninfo: True\n-/\n\
-  #guard_msgs in\n#eval can_reach #[4, 2, 3, 0, 3, 1, 2] 0\n\n/--\ninfo: False\n-/\n\
-  #guard_msgs in\n#eval can_reach #[3, 0, 2, 1, 2] 2\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an array of non-negative integers arr, you are initially positioned at start index of the array. When you are at index i, you can jump to i + arr[i] or i - arr[i], check if you can reach to any index with value 0.
+  Notice that you can not jump outside of the array at any time.
+   
+  Example 1:
+  Input: arr = [4,2,3,0,3,1,2], start = 5
+  Output: true
+  Explanation: 
+  All possible ways to reach at index 3 with value 0 are: 
+  index 5 -> index 4 -> index 1 -> index 3 
+  index 5 -> index 6 -> index 4 -> index 1 -> index 3 
+
+  Example 2:
+  Input: arr = [4,2,3,0,3,1,2], start = 0
+  Output: true 
+  Explanation: 
+  One possible way to reach at index 3 with value 0 is: 
+  index 0 -> index 4 -> index 1 -> index 3
+
+  Example 3:
+  Input: arr = [3,0,2,1,2], start = 2
+  Output: false
+  Explanation: There is no way to reach at index 1 with value 0.
+
+   
+  Constraints:
+
+  1 <= arr.length <= 5 * 10^4
+  0 <= arr[i] < arr.length
+  0 <= start < arr.length
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def can_reach (arr : Array Nat) (start : Nat) : Bool := sorry
+
+  theorem start_within_bounds {arr : Array Nat} {start : Nat} :
+    start ≥ arr.size → can_reach arr start = false := sorry
+vc-theorems: |
+  theorem array_contains_zero {arr : Array Nat} {start : Nat} :
+    start < arr.size → 
+    (∀ x ∈ arr.toList, x ≠ 0) →
+    can_reach arr start = false := sorry
+
+
+  theorem reachable_properties {arr : Array Nat} {start : Nat} : 
+    start < arr.size →
+    (∃ x ∈ arr.toList, x = 0) →
+    can_reach arr start = true →
+    ∃ path : List Nat, 
+      path.head? = some start ∧
+      (∃ pos, pos < arr.size ∧ pos ∈ path ∧ arr[pos]! = 0) ∧
+      ∀ i j, i + 1 < path.length → j = i + 1 →
+        let pos₁ := path[i]!
+        let pos₂ := path[j]!
+        let jump := arr[pos₁]!
+        (pos₂ = pos₁ + jump ∨ pos₂ = pos₁ - jump) ∧
+        pos₁ < arr.size ∧ pos₂ < arr.size := sorry 
+
+
+  theorem symmetric_jumps {arr : Array Nat} {start : Nat} :
+    start < arr.size →
+    can_reach arr start = true →
+    let zero_pos := (arr.findIdx? (· = 0)).get!
+    can_reach arr zero_pos = true := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval can_reach #[4, 2, 3, 0, 3, 1, 2] 5
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval can_reach #[4, 2, 3, 0, 3, 1, 2] 0
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval can_reach #[3, 0, 2, 1, 2] 2
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

@@ -1,68 +1,154 @@
-"vc-description": "The description is rather long but you are given all needed formulas\
-  \ (almost:-)\n\nJohn has bought a bike but before going moutain biking he wants\
-  \ us to do a few simulations.\n\nHe gathered information:\n\n- His trip will consist\
-  \ of an ascent of `dTot` kilometers with an average slope of `slope` *percent* \n\
-  - We suppose that: there is no wind, John's mass is constant `MASS = 80 (kg)`, his\
-  \ power (generated at time `t` by pedaling and measured in watts)\nat the start\
-  \ of the trip is `WATTS0 = 225 (watts)`\n- We don't take account of the rolling\
-  \ resistance\n- When he starts climbing at t = 0 his initial speed (pushed start)\
-  \ is `v0 (km/h)`\n- His initial acceleration `gamma` is 0.\n`gamma` is in `km/h/min`\
-  \ at time `t`. It is the number of kilometers per hour he gains or loses in the\
-  \ next *minute*. \n- Our time step is `DELTA_T = 1.0 / 60.0` (in minutes)\n\nFurthermore\
-  \ (constants in uppercase are given below):\n\n - Because of tiredness, he *loses*\
-  \ D_WATTS * DELTA_T of power at each DELTA_T. \n - calcul of acceleration:\n  \n\
-  \  Acceleration has three components:\n    - 1) on an ascent where the slope is\
-  \ `slope` the effect of earth gravity is given by:\n    \n    `- GRAVITY_ACC * function(slope)`\n\
-  \    \n    (Beware: here the `slope`is a percentage, it is not an angle. You have\
-  \ to determine `function(slope)`).\n    \n    Some help for `function(slope)`:\n\
-  \    \n    a) slope: \n    \n    \n    \n    b) earth gravity:\n  \n    https://en.wikipedia.org/wiki/Gravity_of_Earth\n\
-  \    \n    - 2) air drag is \n    \n    `- DRAG * abs(v) * abs(v) / MASS` where\
-  \ `v` is his current speed\n    \n    - 3) if his power and his speed are both strictly\
-  \ positive we add the thrust (by pedaling) which is: \n    \n    `+ G_THRUST * watts\
-  \ / (v * MASS)` where `watts` is his current power\n    \n    - 4) if his total\
-  \ `acceleration is <= 1e-5` we set acceleration to 0\n - If `v - 3.0 <= 1e-2` John\
-  \ gives up\n\n\n```\nConstants:\nGRAVITY_ACC = 9.81 * 3.6 * 60.0               \
-  \         // gravity acceleration\nDRAG        = 60.0 * 0.3 / 3.6              \
-  \           // force applied by air on the cyclist\nDELTA_T     = 1.0 / 60.0   \
-  \                            // in minutes\nG_THRUST    = 60 * 3.6 * 3.6       \
-  \                    // pedaling thrust\nMASS        = 80.0                    \
-  \                 // biker's mass\nWATTS0      = 225.0                         \
-  \           // initial biker's power\nD_WATTS     = 0.5                        \
-  \              // loss of power\n(Note: watts at time t + DELTA_T is watts at time\
-  \ t minus D_WATTS * DELTA_T)\n\nParameters:\ndouble dTot                       \
-  \                     // distance to travel in km\ndouble v0                   \
-  \                           // initial speed km/h\ndouble slope                \
-  \                           // ascent in percentage (don't forget to divide by 100\
-  \ when needed)\n\nVariables that can be used:\nt                               \
-  \                       // time\ngamma                                         \
-  \         // total acceleration with its 3 components\nv                       \
-  \                               // speed\nd                                    \
-  \                  // distance travelled\nwatts                                \
-  \                  // biker's power \n\n```\n#### Task:\nWrite function\n`temps(v0,\
-  \ slope, dTot)` which returns as a *rounded* integer the time `t` in minutes needed\
-  \ to travel `dTot`. \nIf John gives up return `-1`.\n\nAs a reminder:\n\n1) speed\
-  \ at (t + DELTA_T) = (speed at t) + gamma * DELTA_T\n\n2) distance at (t + DELTA_T)\
-  \ can be taken as (distance at t) + speed * DELTA_T / 60.0 where speed is calculated\
-  \ with 1).\n\n```\nExamples:\ntemps(30, 5, 30) -> 114\ntemps(30, 20, 30) -> -1\n\
-  temps(30, 8, 20) -> 110\n```\nReference:"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def temps (v0 d_tot : Float) (slope : Float) : Int :=\n  sorry\n"
-"vc-theorems": "theorem temps_returns_valid_output (v0 d_tot : Float) (slope : Float)\n\
-  \  (h1 : 3.1 ≤ v0 ∧ v0 ≤ 100)\n  (h2 : -30 ≤ slope ∧ slope ≤ 30)\n  (h3 : 0.1 ≤\
-  \ d_tot ∧ d_tot ≤ 1000) :\n  let result := temps v0 slope d_tot\n  result ≥ -1 :=\
-  \ by sorry\n\n\ntheorem steeper_slope_takes_longer (v0 d_tot : Float) (slope : Float)\n\
-  \  (h1 : 3.1 ≤ v0 ∧ v0 ≤ 100)\n  (h2 : -30 ≤ slope ∧ slope ≤ 30)\n  (h3 : 0.1 ≤\
-  \ d_tot ∧ d_tot ≤ 1000)\n  (h4 : slope ≥ 0)\n  (h5 : temps v0 slope d_tot ≠ -1)\n\
-  \  (h6 : temps v0 (slope + 5) d_tot ≠ -1) :\n  temps v0 (slope + 5) d_tot ≥ temps\
-  \ v0 slope d_tot := by sorry\n\n\ntheorem longer_distance_takes_longer (v0 : Float)\
-  \ (slope : Float)\n  (h1 : 3.1 ≤ v0 ∧ v0 ≤ 100)\n  (h2 : -30 ≤ slope ∧ slope ≤ 30)\n\
-  \  (h3 : temps v0 slope 10 ≠ -1)\n  (h4 : temps v0 slope 20 ≠ -1) :\n  temps v0\
-  \ slope 20 > temps v0 slope 10 := by sorry\n\n\ntheorem faster_initial_speed_faster\
-  \ (d_tot slope : Float)\n  (h1 : -30 ≤ slope ∧ slope ≤ 30) \n  (h2 : 0.1 ≤ d_tot\
-  \ ∧ d_tot ≤ 1000)\n  (h3 : temps 20 slope d_tot ≠ -1)\n  (h4 : temps 30 slope d_tot\
-  \ ≠ -1) :\n  temps 30 slope d_tot ≤ temps 20 slope d_tot := by sorry\n\n/--\ninfo:\
-  \ 114\n-/\n#guard_msgs in\n#eval temps 30 5 30\n\n/--\ninfo: -1\n-/\n#guard_msgs\
-  \ in\n#eval temps 30 20 30\n\n/--\ninfo: 110\n-/\n#guard_msgs in\n#eval temps 30\
-  \ 8 20\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  The description is rather long but you are given all needed formulas (almost:-)
+
+  John has bought a bike but before going moutain biking he wants us to do a few simulations.
+
+  He gathered information:
+
+  - His trip will consist of an ascent of `dTot` kilometers with an average slope of `slope` *percent* 
+  - We suppose that: there is no wind, John's mass is constant `MASS = 80 (kg)`, his power (generated at time `t` by pedaling and measured in watts)
+  at the start of the trip is `WATTS0 = 225 (watts)`
+  - We don't take account of the rolling resistance
+  - When he starts climbing at t = 0 his initial speed (pushed start) is `v0 (km/h)`
+  - His initial acceleration `gamma` is 0.
+  `gamma` is in `km/h/min` at time `t`. It is the number of kilometers per hour he gains or loses in the next *minute*. 
+  - Our time step is `DELTA_T = 1.0 / 60.0` (in minutes)
+
+  Furthermore (constants in uppercase are given below):
+
+   - Because of tiredness, he *loses* D_WATTS * DELTA_T of power at each DELTA_T. 
+   - calcul of acceleration:
+    
+    Acceleration has three components:
+      - 1) on an ascent where the slope is `slope` the effect of earth gravity is given by:
+      
+      `- GRAVITY_ACC * function(slope)`
+      
+      (Beware: here the `slope`is a percentage, it is not an angle. You have to determine `function(slope)`).
+      
+      Some help for `function(slope)`:
+      
+      a) slope: 
+      
+      
+      
+      b) earth gravity:
+    
+      https://en.wikipedia.org/wiki/Gravity_of_Earth
+      
+      - 2) air drag is 
+      
+      `- DRAG * abs(v) * abs(v) / MASS` where `v` is his current speed
+      
+      - 3) if his power and his speed are both strictly positive we add the thrust (by pedaling) which is: 
+      
+      `+ G_THRUST * watts / (v * MASS)` where `watts` is his current power
+      
+      - 4) if his total `acceleration is <= 1e-5` we set acceleration to 0
+   - If `v - 3.0 <= 1e-2` John gives up
+
+
+  ```
+  Constants:
+  GRAVITY_ACC = 9.81 * 3.6 * 60.0                        // gravity acceleration
+  DRAG        = 60.0 * 0.3 / 3.6                         // force applied by air on the cyclist
+  DELTA_T     = 1.0 / 60.0                               // in minutes
+  G_THRUST    = 60 * 3.6 * 3.6                           // pedaling thrust
+  MASS        = 80.0                                     // biker's mass
+  WATTS0      = 225.0                                    // initial biker's power
+  D_WATTS     = 0.5                                      // loss of power
+  (Note: watts at time t + DELTA_T is watts at time t minus D_WATTS * DELTA_T)
+
+  Parameters:
+  double dTot                                            // distance to travel in km
+  double v0                                              // initial speed km/h
+  double slope                                           // ascent in percentage (don't forget to divide by 100 when needed)
+
+  Variables that can be used:
+  t                                                      // time
+  gamma                                                  // total acceleration with its 3 components
+  v                                                      // speed
+  d                                                      // distance travelled
+  watts                                                  // biker's power 
+
+  ```
+  #### Task:
+  Write function
+  `temps(v0, slope, dTot)` which returns as a *rounded* integer the time `t` in minutes needed to travel `dTot`. 
+  If John gives up return `-1`.
+
+  As a reminder:
+
+  1) speed at (t + DELTA_T) = (speed at t) + gamma * DELTA_T
+
+  2) distance at (t + DELTA_T) can be taken as (distance at t) + speed * DELTA_T / 60.0 where speed is calculated with 1).
+
+  ```
+  Examples:
+  temps(30, 5, 30) -> 114
+  temps(30, 20, 30) -> -1
+  temps(30, 8, 20) -> 110
+  ```
+  Reference:
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def temps (v0 d_tot : Float) (slope : Float) : Int :=
+    sorry
+vc-theorems: |
+  theorem temps_returns_valid_output (v0 d_tot : Float) (slope : Float)
+    (h1 : 3.1 ≤ v0 ∧ v0 ≤ 100)
+    (h2 : -30 ≤ slope ∧ slope ≤ 30)
+    (h3 : 0.1 ≤ d_tot ∧ d_tot ≤ 1000) :
+    let result := temps v0 slope d_tot
+    result ≥ -1 := by sorry
+
+
+  theorem steeper_slope_takes_longer (v0 d_tot : Float) (slope : Float)
+    (h1 : 3.1 ≤ v0 ∧ v0 ≤ 100)
+    (h2 : -30 ≤ slope ∧ slope ≤ 30)
+    (h3 : 0.1 ≤ d_tot ∧ d_tot ≤ 1000)
+    (h4 : slope ≥ 0)
+    (h5 : temps v0 slope d_tot ≠ -1)
+    (h6 : temps v0 (slope + 5) d_tot ≠ -1) :
+    temps v0 (slope + 5) d_tot ≥ temps v0 slope d_tot := by sorry
+
+
+  theorem longer_distance_takes_longer (v0 : Float) (slope : Float)
+    (h1 : 3.1 ≤ v0 ∧ v0 ≤ 100)
+    (h2 : -30 ≤ slope ∧ slope ≤ 30)
+    (h3 : temps v0 slope 10 ≠ -1)
+    (h4 : temps v0 slope 20 ≠ -1) :
+    temps v0 slope 20 > temps v0 slope 10 := by sorry
+
+
+  theorem faster_initial_speed_faster (d_tot slope : Float)
+    (h1 : -30 ≤ slope ∧ slope ≤ 30) 
+    (h2 : 0.1 ≤ d_tot ∧ d_tot ≤ 1000)
+    (h3 : temps 20 slope d_tot ≠ -1)
+    (h4 : temps 30 slope d_tot ≠ -1) :
+    temps 30 slope d_tot ≤ temps 20 slope d_tot := by sorry
+
+  /--
+  info: 114
+  -/
+  #guard_msgs in
+  #eval temps 30 5 30
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval temps 30 20 30
+
+  /--
+  info: 110
+  -/
+  #guard_msgs in
+  #eval temps 30 8 20
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

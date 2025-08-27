@@ -1,21 +1,82 @@
-"vc-description": "Given an array A of integers, for each integer A[i] we need to\
-  \ choose either x = -K or x = K, and add x to A[i] (only once).\nAfter this process,\
-  \ we have some array B.\nReturn the smallest possible difference between the maximum\
-  \ value of B and the minimum value of B.\n \n\n\n\nExample 1:\nInput: A = [1], K\
-  \ = 0\nOutput: 0\nExplanation: B = [1]\n\n\nExample 2:\nInput: A = [0,10], K = 2\n\
-  Output: 6\nExplanation: B = [2,8]\n\n\nExample 3:\nInput: A = [1,3,6], K = 3\nOutput:\
-  \ 3\nExplanation: B = [4,6,3]\n\n \nNote:\n\n1 <= A.length <= 10000\n0 <= A[i] <=\
-  \ 10000\n0 <= K <= 10000"
-"vc-preamble": "import Imports.AllImports\n\ndef maximum (xs: List Int) : Int := match\
-  \ xs with\n  | [] => 0\n  | h::t => t.foldl max h\n\n\ndef minimum (xs: List Int)\
-  \ : Int := match xs with\n  | [] => 0\n  | h::t => t.foldl min h\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def smallestRangeII (nums: List Int) (k: Int) : Int := sorry\n\n\
-  theorem result_nonnegative (nums: List Int) (k: Int) (h: k ≥ 0) :\n  smallestRangeII\
-  \ nums k ≥ 0 := sorry\n\n\n"
-"vc-theorems": "theorem single_element_gives_zero (x: Int) (k: Int) :\n  smallestRangeII\
-  \ [x] k = 0 := sorry\n\n\n\n\ntheorem empty_list_gives_zero (k: Int) :\n  smallestRangeII\
-  \ [] k = 0 := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval smallestRangeII [1]\
-  \ 0\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval smallestRangeII [0, 10] 2\n\n/--\n\
-  info: 3\n-/\n#guard_msgs in\n#eval smallestRangeII [1, 3, 6] 3\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given an array A of integers, for each integer A[i] we need to choose either x = -K or x = K, and add x to A[i] (only once).
+  After this process, we have some array B.
+  Return the smallest possible difference between the maximum value of B and the minimum value of B.
+   
+
+
+
+  Example 1:
+  Input: A = [1], K = 0
+  Output: 0
+  Explanation: B = [1]
+
+
+  Example 2:
+  Input: A = [0,10], K = 2
+  Output: 6
+  Explanation: B = [2,8]
+
+
+  Example 3:
+  Input: A = [1,3,6], K = 3
+  Output: 3
+  Explanation: B = [4,6,3]
+
+   
+  Note:
+
+  1 <= A.length <= 10000
+  0 <= A[i] <= 10000
+  0 <= K <= 10000
+vc-preamble: |
+  import Imports.AllImports
+
+  def maximum (xs: List Int) : Int := match xs with
+    | [] => 0
+    | h::t => t.foldl max h
+
+
+  def minimum (xs: List Int) : Int := match xs with
+    | [] => 0
+    | h::t => t.foldl min h
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def smallestRangeII (nums: List Int) (k: Int) : Int := sorry
+
+  theorem result_nonnegative (nums: List Int) (k: Int) (h: k ≥ 0) :
+    smallestRangeII nums k ≥ 0 := sorry
+
+
+vc-theorems: |
+  theorem single_element_gives_zero (x: Int) (k: Int) :
+    smallestRangeII [x] k = 0 := sorry
+
+
+
+
+  theorem empty_list_gives_zero (k: Int) :
+    smallestRangeII [] k = 0 := sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval smallestRangeII [1] 0
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval smallestRangeII [0, 10] 2
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval smallestRangeII [1, 3, 6] 3
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

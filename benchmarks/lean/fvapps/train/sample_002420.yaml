@@ -1,21 +1,70 @@
-"vc-description": "Given an integer n. Each number from 1 to n is grouped according\
-  \ to the sum of its digits. \nReturn how many groups have the largest size.\n \n\
-  Example 1:\nInput: n = 13\nOutput: 4\nExplanation: There are 9 groups in total,\
-  \ they are grouped according sum of its digits of numbers from 1 to 13:\n[1,10],\
-  \ [2,11], [3,12], [4,13], [5], [6], [7], [8], [9]. There are 4 groups with largest\
-  \ size.\n\nExample 2:\nInput: n = 2\nOutput: 2\nExplanation: There are 2 groups\
-  \ [1], [2] of size 1.\n\nExample 3:\nInput: n = 15\nOutput: 6\n\nExample 4:\nInput:\
-  \ n = 24\nOutput: 5\n\n \nConstraints:\n\n1 <= n <= 10^4"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_largest_group (n : Nat) : Nat := sorry\n\ntheorem count_largest_group_positive\
-  \ (n : Nat) (h : n > 0) :\n  count_largest_group n > 0 := sorry\n"
-"vc-theorems": "theorem count_largest_group_bounded (n : Nat) (h : n > 0) :\n  count_largest_group\
-  \ n ≤ n := sorry\n\n\ntheorem count_largest_group_consecutive (n : Nat) (h : n >\
-  \ 0) :\n  (count_largest_group n - count_largest_group (n + 1) ≤ n) ∧ \n  (count_largest_group\
-  \ (n + 1) - count_largest_group n ≤ n) := sorry\n\n\ntheorem count_largest_group_edge_cases\
-  \ :\n  (count_largest_group 1 = 1) ∧ (count_largest_group 9 = 9) := sorry\n\n/--\n\
-  info: 4\n-/\n#guard_msgs in\n#eval count_largest_group 13\n\n/--\ninfo: 2\n-/\n\
-  #guard_msgs in\n#eval count_largest_group 2\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n\
-  #eval count_largest_group 15\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given an integer n. Each number from 1 to n is grouped according to the sum of its digits. 
+  Return how many groups have the largest size.
+   
+  Example 1:
+  Input: n = 13
+  Output: 4
+  Explanation: There are 9 groups in total, they are grouped according sum of its digits of numbers from 1 to 13:
+  [1,10], [2,11], [3,12], [4,13], [5], [6], [7], [8], [9]. There are 4 groups with largest size.
+
+  Example 2:
+  Input: n = 2
+  Output: 2
+  Explanation: There are 2 groups [1], [2] of size 1.
+
+  Example 3:
+  Input: n = 15
+  Output: 6
+
+  Example 4:
+  Input: n = 24
+  Output: 5
+
+   
+  Constraints:
+
+  1 <= n <= 10^4
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_largest_group (n : Nat) : Nat := sorry
+
+  theorem count_largest_group_positive (n : Nat) (h : n > 0) :
+    count_largest_group n > 0 := sorry
+vc-theorems: |
+  theorem count_largest_group_bounded (n : Nat) (h : n > 0) :
+    count_largest_group n ≤ n := sorry
+
+
+  theorem count_largest_group_consecutive (n : Nat) (h : n > 0) :
+    (count_largest_group n - count_largest_group (n + 1) ≤ n) ∧ 
+    (count_largest_group (n + 1) - count_largest_group n ≤ n) := sorry
+
+
+  theorem count_largest_group_edge_cases :
+    (count_largest_group 1 = 1) ∧ (count_largest_group 9 = 9) := sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval count_largest_group 13
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval count_largest_group 2
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval count_largest_group 15
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

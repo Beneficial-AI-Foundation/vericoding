@@ -1,17 +1,47 @@
-"vc-description": "Write a function that when given a URL as a string, parses out\
-  \ just the domain name and returns it as a string. For example:\n```python\ndomain_name(\"\
-  http://github.com/carbonfive/raygun\") == \"github\" \ndomain_name(\"http://www.zombie-bites.com\"\
-  ) == \"zombie-bites\"\ndomain_name(\"https://www.cnet.com\") == \"cnet\"\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def domain_name (url : String) : String := sorry\n\ntheorem basic_domain_extraction\
-  \ :\n  domain_name \"http://google.com\" = \"google\" ∧\n  domain_name \"http://www.zombie-bites.com\"\
-  \ = \"zombie-bites\" ∧\n  domain_name \"icann.org\" = \"icann\" := sorry\n"
-"vc-theorems": "theorem domain_name_no_protocols (domain tld : String) :\n  let url\
-  \ := s!\"http://www.{domain}.{tld}\"\n  domain_name url ≠ \"www\" ∧\n  domain_name\
-  \ url ≠ \"http\" ∧\n  domain_name url ≠ \"https\" ∧\n  ¬(domain_name url).contains\
-  \ '.' := sorry\n\n/--\ninfo: 'google'\n-/\n#guard_msgs in\n#eval domain_name \"\
-  http://google.com\"\n\n/--\ninfo: 'zombie-bites'\n-/\n#guard_msgs in\n#eval domain_name\
-  \ \"http://www.zombie-bites.com\"\n\n/--\ninfo: 'icann'\n-/\n#guard_msgs in\n#eval\
-  \ domain_name \"icann.org\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+  ```python
+  domain_name("http://github.com/carbonfive/raygun") == "github" 
+  domain_name("http://www.zombie-bites.com") == "zombie-bites"
+  domain_name("https://www.cnet.com") == "cnet"
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def domain_name (url : String) : String := sorry
+
+  theorem basic_domain_extraction :
+    domain_name "http://google.com" = "google" ∧
+    domain_name "http://www.zombie-bites.com" = "zombie-bites" ∧
+    domain_name "icann.org" = "icann" := sorry
+vc-theorems: |
+  theorem domain_name_no_protocols (domain tld : String) :
+    let url := s!"http://www.{domain}.{tld}"
+    domain_name url ≠ "www" ∧
+    domain_name url ≠ "http" ∧
+    domain_name url ≠ "https" ∧
+    ¬(domain_name url).contains '.' := sorry
+
+  /--
+  info: 'google'
+  -/
+  #guard_msgs in
+  #eval domain_name "http://google.com"
+
+  /--
+  info: 'zombie-bites'
+  -/
+  #guard_msgs in
+  #eval domain_name "http://www.zombie-bites.com"
+
+  /--
+  info: 'icann'
+  -/
+  #guard_msgs in
+  #eval domain_name "icann.org"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,46 +1,128 @@
-"vc-description": "The sequence of $m$ integers is called the permutation if it contains\
-  \ all integers from $1$ to $m$ exactly once. The number $m$ is called the length\
-  \ of the permutation.\n\nDreamoon has two permutations $p_1$ and $p_2$ of non-zero\
-  \ lengths $l_1$ and $l_2$.\n\nNow Dreamoon concatenates these two permutations into\
-  \ another sequence $a$ of length $l_1 + l_2$. First $l_1$ elements of $a$ is the\
-  \ permutation $p_1$ and next $l_2$ elements of $a$ is the permutation $p_2$. \n\n\
-  You are given the sequence $a$, and you need to find two permutations $p_1$ and\
-  \ $p_2$. If there are several possible ways to restore them, you should find all\
-  \ of them. (Note that it is also possible that there will be no ways.)\n\n\n-----Input-----\n\
-  \nThe first line contains an integer $t$ ($1 \\le t \\le 10\\,000$) denoting the\
-  \ number of test cases in the input.\n\nEach test case contains two lines. The first\
-  \ line contains one integer $n$ ($2 \\leq n \\leq 200\\,000$): the length of $a$.\
-  \ The second line contains $n$ integers $a_1, a_2, \\ldots, a_n$ ($1 \\leq a_i \\\
-  leq n-1$).\n\nThe total sum of $n$ is less than $200\\,000$.\n\n\n-----Output-----\n\
-  \nFor each test case, the first line of output should contain one integer $k$: the\
-  \ number of ways to divide $a$ into permutations $p_1$ and $p_2$.\n\nEach of the\
-  \ next $k$ lines should contain two integers $l_1$ and $l_2$ ($1 \\leq l_1, l_2\
-  \ \\leq n, l_1 + l_2 = n$), denoting, that it is possible to divide $a$ into two\
-  \ permutations of length $l_1$ and $l_2$ ($p_1$ is the first $l_1$ elements of $a$,\
-  \ and $p_2$ is the last $l_2$ elements of $a$). You can print solutions in any order.\n\
-  \n\n-----Example-----\nInput\n6\n5\n1 4 3 2 1\n6\n2 4 1 3 2 1\n4\n2 1 1 3\n4\n1\
-  \ 3 3 1\n12\n2 1 3 4 5 6 7 8 9 1 10 2\n3\n1 1 1\n\nOutput\n2\n1 4\n4 1\n1\n4 2\n\
-  0\n0\n1\n2 10\n0\n\n\n\n-----Note-----\n\nIn the first example, two possible ways\
-  \ to divide $a$ into permutations are $\\{1\\} + \\{4, 3, 2, 1\\}$ and $\\{1,4,3,2\\\
-  } + \\{1\\}$.\n\nIn the second example, the only way to divide $a$ into permutations\
-  \ is $\\{2,4,1,3\\} + \\{2,1\\}$.\n\nIn the third example, there are no possible\
-  \ ways."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_permutations (arr : List Int) : List (Nat × Nat) :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem permutations_results_valid (arr : List Int) \n  (h : ∀ x ∈\
-  \ arr, x > 0) : \n  let result := find_permutations arr\n  ∀ pair ∈ result,\n  \
-  \  (∃ a b : Nat, pair = (a,b)) ∧ \n    (pair.1 > 0 ∧ pair.2 > 0) ∧\n    pair.1 +\
-  \ pair.2 = arr.length :=\n  sorry\n\n\ntheorem permutations_unique (arr : List Int)\n\
-  \  (h : ∀ x ∈ arr, x > 0) :\n  let result := find_permutations arr \n  List.Nodup\
-  \ result :=\n  sorry\n\n\ntheorem preserves_input (arr : List Int) :\n  let orig\
-  \ := arr\n  let _ := find_permutations arr\n  arr = orig :=\n  sorry\n\n\ntheorem\
-  \ valid_splits {arr : List Int}\n  (h1 : ∀ x ∈ arr, 0 < x ∧ x ≤ 5) :\n  let result\
-  \ := find_permutations arr\n  ∀ pair ∈ result,\n    let left := (arr.take pair.1)\n\
-  \    let right := (arr.drop pair.1)\n    (∀ x ∈ left, 1 ≤ x ∧ x ≤ pair.1) ∧\n  \
-  \  (List.Nodup left) ∧\n    (List.Nodup right) ∧\n    (∀ x ∈ right, 1 ≤ x ∧ x ≤\
-  \ pair.2) :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval len find_permutations(test1)\n\
-  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval len find_permutations(test2)\n\n/--\n\
-  info: 0\n-/\n#guard_msgs in\n#eval len find_permutations(test3)\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  The sequence of $m$ integers is called the permutation if it contains all integers from $1$ to $m$ exactly once. The number $m$ is called the length of the permutation.
+
+  Dreamoon has two permutations $p_1$ and $p_2$ of non-zero lengths $l_1$ and $l_2$.
+
+  Now Dreamoon concatenates these two permutations into another sequence $a$ of length $l_1 + l_2$. First $l_1$ elements of $a$ is the permutation $p_1$ and next $l_2$ elements of $a$ is the permutation $p_2$. 
+
+  You are given the sequence $a$, and you need to find two permutations $p_1$ and $p_2$. If there are several possible ways to restore them, you should find all of them. (Note that it is also possible that there will be no ways.)
+
+
+  -----Input-----
+
+  The first line contains an integer $t$ ($1 \le t \le 10\,000$) denoting the number of test cases in the input.
+
+  Each test case contains two lines. The first line contains one integer $n$ ($2 \leq n \leq 200\,000$): the length of $a$. The second line contains $n$ integers $a_1, a_2, \ldots, a_n$ ($1 \leq a_i \leq n-1$).
+
+  The total sum of $n$ is less than $200\,000$.
+
+
+  -----Output-----
+
+  For each test case, the first line of output should contain one integer $k$: the number of ways to divide $a$ into permutations $p_1$ and $p_2$.
+
+  Each of the next $k$ lines should contain two integers $l_1$ and $l_2$ ($1 \leq l_1, l_2 \leq n, l_1 + l_2 = n$), denoting, that it is possible to divide $a$ into two permutations of length $l_1$ and $l_2$ ($p_1$ is the first $l_1$ elements of $a$, and $p_2$ is the last $l_2$ elements of $a$). You can print solutions in any order.
+
+
+  -----Example-----
+  Input
+  6
+  5
+  1 4 3 2 1
+  6
+  2 4 1 3 2 1
+  4
+  2 1 1 3
+  4
+  1 3 3 1
+  12
+  2 1 3 4 5 6 7 8 9 1 10 2
+  3
+  1 1 1
+
+  Output
+  2
+  1 4
+  4 1
+  1
+  4 2
+  0
+  0
+  1
+  2 10
+  0
+
+
+
+  -----Note-----
+
+  In the first example, two possible ways to divide $a$ into permutations are $\{1\} + \{4, 3, 2, 1\}$ and $\{1,4,3,2\} + \{1\}$.
+
+  In the second example, the only way to divide $a$ into permutations is $\{2,4,1,3\} + \{2,1\}$.
+
+  In the third example, there are no possible ways.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_permutations (arr : List Int) : List (Nat × Nat) :=
+    sorry
+vc-theorems: |
+  theorem permutations_results_valid (arr : List Int) 
+    (h : ∀ x ∈ arr, x > 0) : 
+    let result := find_permutations arr
+    ∀ pair ∈ result,
+      (∃ a b : Nat, pair = (a,b)) ∧ 
+      (pair.1 > 0 ∧ pair.2 > 0) ∧
+      pair.1 + pair.2 = arr.length :=
+    sorry
+
+
+  theorem permutations_unique (arr : List Int)
+    (h : ∀ x ∈ arr, x > 0) :
+    let result := find_permutations arr 
+    List.Nodup result :=
+    sorry
+
+
+  theorem preserves_input (arr : List Int) :
+    let orig := arr
+    let _ := find_permutations arr
+    arr = orig :=
+    sorry
+
+
+  theorem valid_splits {arr : List Int}
+    (h1 : ∀ x ∈ arr, 0 < x ∧ x ≤ 5) :
+    let result := find_permutations arr
+    ∀ pair ∈ result,
+      let left := (arr.take pair.1)
+      let right := (arr.drop pair.1)
+      (∀ x ∈ left, 1 ≤ x ∧ x ≤ pair.1) ∧
+      (List.Nodup left) ∧
+      (List.Nodup right) ∧
+      (∀ x ∈ right, 1 ≤ x ∧ x ≤ pair.2) :=
+    sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval len find_permutations(test1)
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval len find_permutations(test2)
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval len find_permutations(test3)
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

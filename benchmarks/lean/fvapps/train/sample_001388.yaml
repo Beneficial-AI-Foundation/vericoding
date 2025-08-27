@@ -1,35 +1,65 @@
-"vc-description": "Chef has arrived in Dagobah to meet with Yoda to study cooking.\
-  \ Yoda is a very busy cook and he doesn't want to spend time with losers. So he\
-  \ challenges the Chef to a series of games, and agrees to teach the Chef if Chef\
-  \ can win at least P of the games. The total number of games is K. The games will\
-  \ be played on a chessboard of size N*M. That is, it has N rows, each of which has\
-  \ M squares. At the beginning of the game, a coin is on square (1, 1), which corresponds\
-  \ to the top-left corner, and every other square is empty. At every step, Yoda and\
-  \ Chef have to move the coin on the chessboard. The player who cannot make a move\
-  \ loses. Chef makes the first move. They can't move the coin to a square where it\
-  \ had been placed sometime before in the game, and they can't move outside chessboard.\n\
-  \nIn this game, there are two different sets of rules according to which the game\
-  \ can be played:\n\n-from (x, y) player can move coin to (x+1, y), (x-1, y), (x,\
-  \ y+1), (x, y-1) in his turn, if they are valid squares.\n\n-from (x, y) player\
-  \ can move coin to (x+1, y+1), (x-1, y-1), (x-1, y+1), (x+1, y-1) in his turn, if\
-  \ they are valid squares.\n\nBefore every game, the Power of the kitchen chooses\
-  \ one among the two sets of rules with equal probability of 0.5, and the game will\
-  \ be played according to those rules. Chef and Yoda are very wise, therefore they\
-  \ play optimally. You have to calculate the probability that Yoda will teach Chef.\n\
-  \n-----Input-----\n\nInput begins with an integer T, the number of test cases\n\n\
-  Each test case begins with 4 integers N, M, P, K.\n\n-----Output-----\n\nFor each\
-  \ test case, output a line containing the answer for task. The output must have\
-  \ an absolute error at most 0.000001 (10-6).  \n\n-----Constraints and Subtasks-----\n\
-  -  1 ≤ T ≤ 50 \n-  1 ≤ K \n\nSubtask 1 : 10 points \n\n-  2 ≤ N, M ≤ 5 \n-  0 ≤\
-  \ P ≤ K ≤ 5 \n\nSubtusk 2 : 10 points \n-  2 ≤ N, M ≤ 10 \n-  0 ≤ P ≤ K ≤ 10^3 \n\
-  \nSubtusk 3 : 20 points \n-  2 ≤ N, M ≤ 100 \n-  0 ≤ P ≤ K ≤ 10^3 \n\nSubtusk 4\
-  \ : 60 points\n-  2 ≤ N, M ≤ 100 \n-  0 ≤ P ≤ K ≤ 10^6 \n\n-----Example-----\nInput:\n\
-  2\n2 3 2 3\n2 2 5 5\nOutput:\n0.500000\n1.000000"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calc_yoda_teach_probability (n m p k : Nat) : Float := sorry\n\
-  \ntheorem probability_bounds {n m p k : Nat} (h1: n ≥ 1) (h2: m ≥ 1) (h3: k ≥ 1)\
-  \ (h4: p ≤ k) :\n  let prob := calc_yoda_teach_probability n m p k\n  0 ≤ prob ∧\
-  \ prob ≤ 1 := sorry"
-"vc-theorems": ""
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Chef has arrived in Dagobah to meet with Yoda to study cooking. Yoda is a very busy cook and he doesn't want to spend time with losers. So he challenges the Chef to a series of games, and agrees to teach the Chef if Chef can win at least P of the games. The total number of games is K. The games will be played on a chessboard of size N*M. That is, it has N rows, each of which has M squares. At the beginning of the game, a coin is on square (1, 1), which corresponds to the top-left corner, and every other square is empty. At every step, Yoda and Chef have to move the coin on the chessboard. The player who cannot make a move loses. Chef makes the first move. They can't move the coin to a square where it had been placed sometime before in the game, and they can't move outside chessboard.
+
+  In this game, there are two different sets of rules according to which the game can be played:
+
+  -from (x, y) player can move coin to (x+1, y), (x-1, y), (x, y+1), (x, y-1) in his turn, if they are valid squares.
+
+  -from (x, y) player can move coin to (x+1, y+1), (x-1, y-1), (x-1, y+1), (x+1, y-1) in his turn, if they are valid squares.
+
+  Before every game, the Power of the kitchen chooses one among the two sets of rules with equal probability of 0.5, and the game will be played according to those rules. Chef and Yoda are very wise, therefore they play optimally. You have to calculate the probability that Yoda will teach Chef.
+
+  -----Input-----
+
+  Input begins with an integer T, the number of test cases
+
+  Each test case begins with 4 integers N, M, P, K.
+
+  -----Output-----
+
+  For each test case, output a line containing the answer for task. The output must have an absolute error at most 0.000001 (10-6).  
+
+  -----Constraints and Subtasks-----
+  -  1 ≤ T ≤ 50 
+  -  1 ≤ K 
+
+  Subtask 1 : 10 points 
+
+  -  2 ≤ N, M ≤ 5 
+  -  0 ≤ P ≤ K ≤ 5 
+
+  Subtusk 2 : 10 points 
+  -  2 ≤ N, M ≤ 10 
+  -  0 ≤ P ≤ K ≤ 10^3 
+
+  Subtusk 3 : 20 points 
+  -  2 ≤ N, M ≤ 100 
+  -  0 ≤ P ≤ K ≤ 10^3 
+
+  Subtusk 4 : 60 points
+  -  2 ≤ N, M ≤ 100 
+  -  0 ≤ P ≤ K ≤ 10^6 
+
+  -----Example-----
+  Input:
+  2
+  2 3 2 3
+  2 2 5 5
+  Output:
+  0.500000
+  1.000000
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def calc_yoda_teach_probability (n m p k : Nat) : Float := sorry
+
+  theorem probability_bounds {n m p k : Nat} (h1: n ≥ 1) (h2: m ≥ 1) (h3: k ≥ 1) (h4: p ≤ k) :
+    let prob := calc_yoda_teach_probability n m p k
+    0 ≤ prob ∧ prob ≤ 1 := sorry
+vc-theorems: |
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

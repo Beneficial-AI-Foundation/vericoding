@@ -1,36 +1,122 @@
-"vc-description": "Given: an array containing hashes of names\n\nReturn: a string\
-  \ formatted as a list of names separated by commas except for the last two names,\
-  \ which should be separated by an ampersand.\n\nExample:\n\n``` ruby\nlist([ {name:\
-  \ 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'} ])\n# returns 'Bart, Lisa & Maggie'\n\
-  \nlist([ {name: 'Bart'}, {name: 'Lisa'} ])\n# returns 'Bart & Lisa'\n\nlist([ {name:\
-  \ 'Bart'} ])\n# returns 'Bart'\n\nlist([])\n# returns ''\n```\n``` elixir\nlist([\
-  \ %{name: \"Bart\"}, %{name: \"Lisa\"}, %{name: \"Maggie\"} ])\n# returns 'Bart,\
-  \ Lisa & Maggie'\n\nlist([ %{name: \"Bart\"}, %{name: \"Lisa\"} ])\n# returns 'Bart\
-  \ & Lisa'\n\nlist([ %{name: \"Bart\"} ])\n# returns 'Bart'\n\nlist([])\n# returns\
-  \ ''\n```\n``` javascript\nlist([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'}\
-  \ ])\n// returns 'Bart, Lisa & Maggie'\n\nlist([ {name: 'Bart'}, {name: 'Lisa'}\
-  \ ])\n// returns 'Bart & Lisa'\n\nlist([ {name: 'Bart'} ])\n// returns 'Bart'\n\n\
-  list([])\n// returns ''\n```\n```python\nnamelist([ {'name': 'Bart'}, {'name': 'Lisa'},\
-  \ {'name': 'Maggie'} ])\n# returns 'Bart, Lisa & Maggie'\n\nnamelist([ {'name':\
-  \ 'Bart'}, {'name': 'Lisa'} ])\n# returns 'Bart & Lisa'\n\nnamelist([ {'name': 'Bart'}\
-  \ ])\n# returns 'Bart'\n\nnamelist([])\n# returns ''\n```\n\nNote: all the hashes\
-  \ are pre-validated and will only contain A-Z, a-z, '-' and '.'."
-"vc-preamble": "import Imports.AllImports\n\ndef namelist (names : List (String ×\
-  \ String)) : String :=\n  sorry\n\n\ndef containsSubstr (s₁ s₂ : String) : Bool\
-  \ :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def String.count (s : String) (c : Char) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem namelist_empty_list :\n  namelist [] = \"\" :=\nsorry\n\n\n\
-  theorem namelist_single_name (name : String) :\n  namelist [(name, \"name\")] =\
-  \ name :=\nsorry\n\n\ntheorem namelist_multiple_names {n : ℕ} (names : List (String\
-  \ × String))\n  (h1 : names.length > 1)\n  (h2 : ∀ p ∈ names, p.2 = \"name\") :\n\
-  \  let result := namelist names;\n  let all_names := names.map Prod.fst;\n  -- Result\
-  \ contains all original names\n  (∀ name ∈ all_names, containsSubstr result name)\n\
-  \  -- Has & separator\n  ∧ containsSubstr result \" & \"\n  -- Has correct number\
-  \ of commas\n  ∧ (String.count result ',' = names.length - 2)\n  -- Last name appears\
-  \ after &\n  ∧ (result.splitOn \" & \").get! 1 = names.getLast?.get!.1 :=\nsorry\n\
-  \n/--\ninfo: 'Bart, Lisa & Maggie'\n-/\n#guard_msgs in\n#eval namelist [{\"name\"\
-  : \"Bart\"}, {\"name\": \"Lisa\"}, {\"name\": \"Maggie\"}]\n\n/--\ninfo: 'Bart &\
-  \ Lisa'\n-/\n#guard_msgs in\n#eval namelist [{\"name\": \"Bart\"}, {\"name\": \"\
-  Lisa\"}]\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval namelist []\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given: an array containing hashes of names
+
+  Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand.
+
+  Example:
+
+  ``` ruby
+  list([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'} ])
+  # returns 'Bart, Lisa & Maggie'
+
+  list([ {name: 'Bart'}, {name: 'Lisa'} ])
+  # returns 'Bart & Lisa'
+
+  list([ {name: 'Bart'} ])
+  # returns 'Bart'
+
+  list([])
+  # returns ''
+  ```
+  ``` elixir
+  list([ %{name: "Bart"}, %{name: "Lisa"}, %{name: "Maggie"} ])
+  # returns 'Bart, Lisa & Maggie'
+
+  list([ %{name: "Bart"}, %{name: "Lisa"} ])
+  # returns 'Bart & Lisa'
+
+  list([ %{name: "Bart"} ])
+  # returns 'Bart'
+
+  list([])
+  # returns ''
+  ```
+  ``` javascript
+  list([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'} ])
+  // returns 'Bart, Lisa & Maggie'
+
+  list([ {name: 'Bart'}, {name: 'Lisa'} ])
+  // returns 'Bart & Lisa'
+
+  list([ {name: 'Bart'} ])
+  // returns 'Bart'
+
+  list([])
+  // returns ''
+  ```
+  ```python
+  namelist([ {'name': 'Bart'}, {'name': 'Lisa'}, {'name': 'Maggie'} ])
+  # returns 'Bart, Lisa & Maggie'
+
+  namelist([ {'name': 'Bart'}, {'name': 'Lisa'} ])
+  # returns 'Bart & Lisa'
+
+  namelist([ {'name': 'Bart'} ])
+  # returns 'Bart'
+
+  namelist([])
+  # returns ''
+  ```
+
+  Note: all the hashes are pre-validated and will only contain A-Z, a-z, '-' and '.'.
+vc-preamble: |
+  import Imports.AllImports
+
+  def namelist (names : List (String × String)) : String :=
+    sorry
+
+
+  def containsSubstr (s₁ s₂ : String) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def String.count (s : String) (c : Char) : Nat :=
+    sorry
+vc-theorems: |
+  theorem namelist_empty_list :
+    namelist [] = "" :=
+  sorry
+
+
+  theorem namelist_single_name (name : String) :
+    namelist [(name, "name")] = name :=
+  sorry
+
+
+  theorem namelist_multiple_names {n : ℕ} (names : List (String × String))
+    (h1 : names.length > 1)
+    (h2 : ∀ p ∈ names, p.2 = "name") :
+    let result := namelist names;
+    let all_names := names.map Prod.fst;
+    -- Result contains all original names
+    (∀ name ∈ all_names, containsSubstr result name)
+    -- Has & separator
+    ∧ containsSubstr result " & "
+    -- Has correct number of commas
+    ∧ (String.count result ',' = names.length - 2)
+    -- Last name appears after &
+    ∧ (result.splitOn " & ").get! 1 = names.getLast?.get!.1 :=
+  sorry
+
+  /--
+  info: 'Bart, Lisa & Maggie'
+  -/
+  #guard_msgs in
+  #eval namelist [{"name": "Bart"}, {"name": "Lisa"}, {"name": "Maggie"}]
+
+  /--
+  info: 'Bart & Lisa'
+  -/
+  #guard_msgs in
+  #eval namelist [{"name": "Bart"}, {"name": "Lisa"}]
+
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval namelist []
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

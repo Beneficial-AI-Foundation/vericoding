@@ -1,42 +1,100 @@
-"vc-description": "So you've found a meeting room - phew! You arrive there ready to\
-  \ present, and find that someone has taken one or more of the chairs!! You need\
-  \ to find some quick.... check all the other meeting rooms to see if all of the\
-  \ chairs are in use.\n\nYour meeting room can take up to 8 chairs. `need` will tell\
-  \ you how many have been taken. You need to find that many.\n\n```if-not:java\n\
-  Find the spare chairs from the array of meeting rooms. Each meeting room array will\
-  \ have the number of occupants as a string. Each occupant is represented by 'X'.\
-  \ The room array will also have an integer telling you how many chairs there are\
-  \ in the room.\n```\n```if:java\nFind the spare chairs from the array of meeting\
-  \ rooms.\n~~~java\npublic class Room {\n  public final String occupants;  // number\
-  \ of occupants, each occupant is represented by 'X'\n  public final int chairs;\
-  \        // number of chairs in the room\n}\n~~~\n```\n\nYou should return an array\
-  \ of integers that shows how many chairs you take from each room in order, up until\
-  \ you have the required amount.\n\n```if-not:java\nexample:\n[['XXX', 3], ['XXXXX',\
-  \ 6], ['XXXXXX', 9], ['XXX',2]] when you need 4 chairs:\n```\n```if:java\nexample:\n\
-  `[Room(\"XXX\", 3), Room(\"XXXXX\", 6), Room(\"XXXXXX\", 9), Room(\"XXX\",2)]` when\
-  \ you need 4 chairs:\n```\n\nresult -- > `[0, 1, 3]` (no chairs free in room 0,\
-  \ take 1 from room 1, take 3 from room 2. No need to consider room 4 as you have\
-  \ your 4 chairs already.\n\nIf you need no chairs, return `'Game On'`. If there\
-  \ aren't enough spare chairs available, return `'Not enough!'`\n\nMore in this series:\n\
-  \nThe Office I - Outed\nThe Office II - Boredeom Score\nThe Office III - Broken\
-  \ Photocopier\nThe Office IV - Find a Meeting Room"
-"vc-preamble": "import Imports.AllImports\n\ndef Room := (String × Nat)\n\ndef meeting\
-  \ (rooms : List Room) (need : Nat) : String ⊕ List Nat := sorry\n\n\ndef listSum\
-  \ : List Nat → Nat \n  | [] => 0\n  | x::xs => x + listSum xs\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def listAll : List Nat → (Nat → Bool) → Bool  \n  | [], _ => true\n\
-  \  | x::xs, p => p x && listAll xs p\n"
-"vc-theorems": "theorem meeting_zero_need {rooms : List Room} :\n  meeting rooms 0\
-  \ = Sum.inl \"Game On\" := sorry\n\n\ntheorem meeting_huge_need {rooms : List Room}\
-  \ {need : Nat} :\n  (need > listSum (rooms.map (fun r => max (r.2 - r.1.length)\
-  \ 0))) →\n  meeting rooms need = Sum.inl \"Not enough!\" := sorry\n\n\ntheorem meeting_valid_solution\
-  \ {rooms : List Room} {need : Nat} {result : List Nat} :\n  meeting rooms need =\
-  \ Sum.inr result →\n  (\n    (result.length ≤ rooms.length) ∧\n    (listAll result\
-  \ (fun x => x ≥ 0)) ∧\n    (listSum result = need) ∧\n    (rooms.zip result).all\
-  \ (fun p =>\n      let room := p.1\n      let taken := p.2\n      taken ≤ max (room.2\
-  \ - room.1.length) 0\n    )\n  ) := sorry\n\n/--\ninfo: [0, 1, 3]\n-/\n#guard_msgs\
-  \ in\n#eval meeting [[\"XXX\", 3], [\"XXXXX\", 6], [\"XXXXXX\", 9]] 4\n\n/--\ninfo:\
-  \ 'Game On'\n-/\n#guard_msgs in\n#eval meeting [[\"XX\", 2], [\"XXXX\", 6], [\"\
-  XXXXX\", 4]] 0\n\n/--\ninfo: [0, 2]\n-/\n#guard_msgs in\n#eval meeting [[\"XX\"\
-  , 2], [\"XXXX\", 6], [\"XXXXX\", 4]] 2\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  So you've found a meeting room - phew! You arrive there ready to present, and find that someone has taken one or more of the chairs!! You need to find some quick.... check all the other meeting rooms to see if all of the chairs are in use.
+
+  Your meeting room can take up to 8 chairs. `need` will tell you how many have been taken. You need to find that many.
+
+  ```if-not:java
+  Find the spare chairs from the array of meeting rooms. Each meeting room array will have the number of occupants as a string. Each occupant is represented by 'X'. The room array will also have an integer telling you how many chairs there are in the room.
+  ```
+  ```if:java
+  Find the spare chairs from the array of meeting rooms.
+  ~~~java
+  public class Room {
+    public final String occupants;  // number of occupants, each occupant is represented by 'X'
+    public final int chairs;        // number of chairs in the room
+  }
+  ~~~
+  ```
+
+  You should return an array of integers that shows how many chairs you take from each room in order, up until you have the required amount.
+
+  ```if-not:java
+  example:
+  [['XXX', 3], ['XXXXX', 6], ['XXXXXX', 9], ['XXX',2]] when you need 4 chairs:
+  ```
+  ```if:java
+  example:
+  `[Room("XXX", 3), Room("XXXXX", 6), Room("XXXXXX", 9), Room("XXX",2)]` when you need 4 chairs:
+  ```
+
+  result -- > `[0, 1, 3]` (no chairs free in room 0, take 1 from room 1, take 3 from room 2. No need to consider room 4 as you have your 4 chairs already.
+
+  If you need no chairs, return `'Game On'`. If there aren't enough spare chairs available, return `'Not enough!'`
+
+  More in this series:
+
+  The Office I - Outed
+  The Office II - Boredeom Score
+  The Office III - Broken Photocopier
+  The Office IV - Find a Meeting Room
+vc-preamble: |
+  import Imports.AllImports
+
+  def Room := (String × Nat)
+
+  def meeting (rooms : List Room) (need : Nat) : String ⊕ List Nat := sorry
+
+
+  def listSum : List Nat → Nat 
+    | [] => 0
+    | x::xs => x + listSum xs
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def listAll : List Nat → (Nat → Bool) → Bool  
+    | [], _ => true
+    | x::xs, p => p x && listAll xs p
+vc-theorems: |
+  theorem meeting_zero_need {rooms : List Room} :
+    meeting rooms 0 = Sum.inl "Game On" := sorry
+
+
+  theorem meeting_huge_need {rooms : List Room} {need : Nat} :
+    (need > listSum (rooms.map (fun r => max (r.2 - r.1.length) 0))) →
+    meeting rooms need = Sum.inl "Not enough!" := sorry
+
+
+  theorem meeting_valid_solution {rooms : List Room} {need : Nat} {result : List Nat} :
+    meeting rooms need = Sum.inr result →
+    (
+      (result.length ≤ rooms.length) ∧
+      (listAll result (fun x => x ≥ 0)) ∧
+      (listSum result = need) ∧
+      (rooms.zip result).all (fun p =>
+        let room := p.1
+        let taken := p.2
+        taken ≤ max (room.2 - room.1.length) 0
+      )
+    ) := sorry
+
+  /--
+  info: [0, 1, 3]
+  -/
+  #guard_msgs in
+  #eval meeting [["XXX", 3], ["XXXXX", 6], ["XXXXXX", 9]] 4
+
+  /--
+  info: 'Game On'
+  -/
+  #guard_msgs in
+  #eval meeting [["XX", 2], ["XXXX", 6], ["XXXXX", 4]] 0
+
+  /--
+  info: [0, 2]
+  -/
+  #guard_msgs in
+  #eval meeting [["XX", 2], ["XXXX", 6], ["XXXXX", 4]] 2
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

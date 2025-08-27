@@ -1,46 +1,79 @@
-"vc-description": "Zonal Computing Olympiad 2012, 26 Nov 2011\n\nA sequence of opening\
-  \ and closing brackets is well-bracketed if we can pair up each opening bracket\
-  \ with a matching closing bracket in the usual sense.  For instance, the sequences\
-  \ (), (()) and ()(()) are well-bracketed, while (, ()), (()(), and )(  are not well-bracketed.\n\
-  \nThe nesting depth of a well-bracketed sequence tells us the maximum number of\
-  \ levels of inner matched brackets enclosed within outer matched brackets.  For\
-  \ instance, the nesting depth of () and ()()() is 1, the nesting depth of (()) and\
-  \ ()(()) is 2, the nesting depth of ((())) is 3, and so on.  \n\nGiven a well-bracketed\
-  \ sequence, we are interested in computing the following: \n-  The nesting depth,\
-  \ and the first position where it occurs–this will be the position of the first\
-  \ opening bracket at this nesting depth, where the positions are numbered starting\
-  \ with 1.\n-  The maximum number of symbols between any pair of matched  brackets,\
-  \ including both the outer brackets, and the first position where this occurs–that\
-  \ is, the position of the first opening bracket of this segment\n\nFor instance,\
-  \ the nesting depth of ()(())()(()())(()()) is 2 and the first position where this\
-  \ occurs is 4.  The opening bracket at position 10 is also at nesting depth 2 but\
-  \ we have to report the first position where this occurs, which is 4.\n\nIn this\
-  \ sequence, the maximum number of symbols between a pair of matched bracket is 6,\
-  \ starting at position 9. There is another such sequence of length 6 starting at\
-  \ position 15, but this is not the first such position.\n\n-----Input format-----\n\
-  The input consists of two lines. The first line is a single integer N, the length\
-  \ of the bracket sequence. Positions in the sequence are numbered 1,2,…,N. The second\
-  \ line is a sequence of N space-separated integers that encode the bracket expression\
-  \ as follows: 1 denotes an opening bracket ( and 2 denotes a closing bracket ).\
-  \  Nothing other than 1 or 2 appears in the second line of input and the corresponding\
-  \ expression is guaranteed to be well-bracketed.\n\n-----Output format-----\nYour\
-  \ program should print 4 space-separated integers in a line, denoting the four quantities\
-  \ asked for in the following order: nesting depth, first position that achieves\
-  \ the nesting depth, length of the maximum sequence between matching brackets and\
-  \ the first position where such a maximum length sequence occurs.  \n\n-----Testdata-----\n\
-  \nYou may assume that 2 ≤ N ≤ 105.  In 30% of the test cases, 2 ≤ N ≤ 103.\n\n-\
-  \ Subtask 1 (30 marks)\n- Subtask 2 (70 marks)\n\n-----Sample Input-----\n20\n1\
-  \ 2 1 1 2 2 1 2 1 1 2 1 2 2 1 1 2 1 2 2\n\n-----Sample Output-----\n2 4 6 9"
-"vc-preamble": "import Imports.AllImports\n\ndef make_valid_bracket_sequence (n :\
-  \ Nat) : List Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def analyze_brackets (n : Nat) (brackets : List Nat) : Nat × Nat\
-  \ × Nat × Nat :=\n  sorry\n\n\n\n\n"
-"vc-theorems": "theorem minimal_valid_case :\n  analyze_brackets 2 [1,2] = (1,1,2,1)\
-  \ :=\nsorry\n\n\ntheorem nested_depth_increases :\n  (analyze_brackets 4 [1,1,2,2]).1\
-  \ = 2 :=\nsorry\n\n/--\ninfo: (2, 4, 6, 9)\n-/\n#guard_msgs in\n#eval analyze_brackets\
-  \ 20 [1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 1, 2, 1, 2, 2]\n\n/--\ninfo:\
-  \ (1, 1, 2, 1)\n-/\n#guard_msgs in\n#eval analyze_brackets 2 [1, 2]\n\n/--\ninfo:\
-  \ (2, 2, 6, 1)\n-/\n#guard_msgs in\n#eval analyze_brackets 8 [1, 1, 2, 1, 2, 2,\
-  \ 1, 2]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Zonal Computing Olympiad 2012, 26 Nov 2011
+
+  A sequence of opening and closing brackets is well-bracketed if we can pair up each opening bracket with a matching closing bracket in the usual sense.  For instance, the sequences (), (()) and ()(()) are well-bracketed, while (, ()), (()(), and )(  are not well-bracketed.
+
+  The nesting depth of a well-bracketed sequence tells us the maximum number of levels of inner matched brackets enclosed within outer matched brackets.  For instance, the nesting depth of () and ()()() is 1, the nesting depth of (()) and ()(()) is 2, the nesting depth of ((())) is 3, and so on.  
+
+  Given a well-bracketed sequence, we are interested in computing the following: 
+  -  The nesting depth, and the first position where it occurs–this will be the position of the first opening bracket at this nesting depth, where the positions are numbered starting with 1.
+  -  The maximum number of symbols between any pair of matched  brackets, including both the outer brackets, and the first position where this occurs–that is, the position of the first opening bracket of this segment
+
+  For instance, the nesting depth of ()(())()(()())(()()) is 2 and the first position where this occurs is 4.  The opening bracket at position 10 is also at nesting depth 2 but we have to report the first position where this occurs, which is 4.
+
+  In this sequence, the maximum number of symbols between a pair of matched bracket is 6, starting at position 9. There is another such sequence of length 6 starting at position 15, but this is not the first such position.
+
+  -----Input format-----
+  The input consists of two lines. The first line is a single integer N, the length of the bracket sequence. Positions in the sequence are numbered 1,2,…,N. The second line is a sequence of N space-separated integers that encode the bracket expression as follows: 1 denotes an opening bracket ( and 2 denotes a closing bracket ).  Nothing other than 1 or 2 appears in the second line of input and the corresponding expression is guaranteed to be well-bracketed.
+
+  -----Output format-----
+  Your program should print 4 space-separated integers in a line, denoting the four quantities asked for in the following order: nesting depth, first position that achieves the nesting depth, length of the maximum sequence between matching brackets and the first position where such a maximum length sequence occurs.  
+
+  -----Testdata-----
+
+  You may assume that 2 ≤ N ≤ 105.  In 30% of the test cases, 2 ≤ N ≤ 103.
+
+  - Subtask 1 (30 marks)
+  - Subtask 2 (70 marks)
+
+  -----Sample Input-----
+  20
+  1 2 1 1 2 2 1 2 1 1 2 1 2 2 1 1 2 1 2 2
+
+  -----Sample Output-----
+  2 4 6 9
+vc-preamble: |
+  import Imports.AllImports
+
+  def make_valid_bracket_sequence (n : Nat) : List Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def analyze_brackets (n : Nat) (brackets : List Nat) : Nat × Nat × Nat × Nat :=
+    sorry
+
+
+
+
+vc-theorems: |
+  theorem minimal_valid_case :
+    analyze_brackets 2 [1,2] = (1,1,2,1) :=
+  sorry
+
+
+  theorem nested_depth_increases :
+    (analyze_brackets 4 [1,1,2,2]).1 = 2 :=
+  sorry
+
+  /--
+  info: (2, 4, 6, 9)
+  -/
+  #guard_msgs in
+  #eval analyze_brackets 20 [1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 1, 2, 1, 2, 2]
+
+  /--
+  info: (1, 1, 2, 1)
+  -/
+  #guard_msgs in
+  #eval analyze_brackets 2 [1, 2]
+
+  /--
+  info: (2, 2, 6, 1)
+  -/
+  #guard_msgs in
+  #eval analyze_brackets 8 [1, 1, 2, 1, 2, 2, 1, 2]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

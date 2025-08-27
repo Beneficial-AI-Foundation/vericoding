@@ -1,17 +1,55 @@
-"vc-description": "Given an integer (signed 32 bits), write a function to check whether\
-  \ it is a power of 4.\n\nExample:\nGiven num = 16, return true.\nGiven num = 5,\
-  \ return false.\n\n\nFollow up: Could you solve it without loops/recursion?\n\n\
-  Credits:Special thanks to @yukuairoy  for adding this problem and creating all test\
-  \ cases."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_power_of_four (n: Int) : Bool \n  := sorry\n"
-"vc-theorems": "theorem is_power_of_four_if_true {n : Int} (h : is_power_of_four n\
-  \ = true) : \n  n > 0 := sorry\n\n\ntheorem is_power_of_four_negative {n : Int}\
-  \ (h : n ≤ 0) : \n  is_power_of_four n = false := sorry\n\n\ntheorem is_power_of_four_exp\
-  \ {n : Nat} :\n  is_power_of_four (4^n) = true := sorry\n\n\ntheorem is_power_of_four_power_two\
-  \ {n : Nat} (h : n ≥ 2) :\n  is_power_of_four (2^n) = (n % 2 = 0) := sorry\n\n/--\n\
-  info: True\n-/\n#guard_msgs in\n#eval is_power_of_four 16\n\n/--\ninfo: False\n\
-  -/\n#guard_msgs in\n#eval is_power_of_four 5\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval is_power_of_four 64\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an integer (signed 32 bits), write a function to check whether it is a power of 4.
+
+  Example:
+  Given num = 16, return true.
+  Given num = 5, return false.
+
+
+  Follow up: Could you solve it without loops/recursion?
+
+  Credits:Special thanks to @yukuairoy  for adding this problem and creating all test cases.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_power_of_four (n: Int) : Bool 
+    := sorry
+vc-theorems: |
+  theorem is_power_of_four_if_true {n : Int} (h : is_power_of_four n = true) : 
+    n > 0 := sorry
+
+
+  theorem is_power_of_four_negative {n : Int} (h : n ≤ 0) : 
+    is_power_of_four n = false := sorry
+
+
+  theorem is_power_of_four_exp {n : Nat} :
+    is_power_of_four (4^n) = true := sorry
+
+
+  theorem is_power_of_four_power_two {n : Nat} (h : n ≥ 2) :
+    is_power_of_four (2^n) = (n % 2 = 0) := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_power_of_four 16
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_power_of_four 5
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_power_of_four 64
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

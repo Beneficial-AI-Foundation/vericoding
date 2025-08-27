@@ -1,48 +1,125 @@
-"vc-description": "There is a rectangular grid of cells consisting of n rows and m\
-  \ columns.\nYou will place a robot on one of the grid cells and provide it with\
-  \ a command string s, consisting of characters ‘L’, ‘R’, ‘U’, ‘D’.\nAfter being\
-  \ placed, the robot will follow the instructions of the command string, where 'L'\
-  \ corresponds moving to the left, 'R' towards the right, 'U' for moving up, and\
-  \ 'D' means down.\n\nYou have already selected the command string s, and are wondering\
-  \ if it is possible to place the robot in one of the grid cells initially and have\
-  \ it always stay entirely within the grid upon execution of the command string s.\n\
-  Output “safe” if there is a starting cell for which the robot doesn’t fall off the\
-  \ grid on following command s, otherwise, output \"unsafe\".\n\n-----Input-----\n\
-  \nThe first line of input will contain an integer T, the number of test cases.\n\
-  \nEach test case will be on two lines. \n\nThe first line will have two space separated\
-  \ integers n,m. \n\nThe second line will have the command string s.\n\n-----Output-----\n\
-  \nFor each test case, output \"safe\" (without quotes) or \"unsafe\" (without quotes)\
-  \ in a new line.\n\n-----Constraints-----\n-  1 ≤ T ≤ 1,000\n-  1 ≤ n,m ≤ 10\n-\
-  \  1 ≤ |s| ≤ 10\n\n-----Example-----\nInput:\n5\n1 1\nR\n2 3\nLLRU\n3 2\nLLRU\n\
-  4 3\nULURUDRDLD\n3 6\nRURUR\n\nOutput:\nunsafe\nsafe\nunsafe\nsafe\nsafe\n\n-----Explanation-----\n\
-  \nFor the first case, there is only one grid square, so we must place our robot\
-  \ there. When the robot follows the command, it'll fall off, so it is unsafe.\n\n\
-  For the second case, we can place the robot on the bottom right grid square. Here\
-  \ is an image denoting the moves that the robot will make."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def countChar (s : String) (c : Char) : Nat := sorry\n\ndef solve_robot_safety\
-  \ (n m : Nat) (commands : String) : String := sorry\n"
-"vc-theorems": "theorem solve_robot_safety_returns_valid_output \n  (n m : Nat) (commands\
-  \ : String)\n  (h1 : 0 < n) (h2 : 0 < m)\n  (h3 : commands.length > 0)\n  (h4 :\
-  \ ∀ c ∈ commands.data, c = 'U' ∨ c = 'D' ∨ c = 'L' ∨ c = 'R') :\n  solve_robot_safety\
-  \ n m commands = \"safe\" ∨ \n  solve_robot_safety n m commands = \"unsafe\" :=\
-  \ sorry\n\n\ntheorem single_direction_unsafe_up_down\n  (n m : Nat) (commands :\
-  \ String)\n  (h1 : 0 < n) (h2 : 0 < m)\n  (h3 : commands.length > n)\n  (h4 : ∀\
-  \ c ∈ commands.data, c = 'U' ∨ c = 'D') :\n  solve_robot_safety n m commands = \"\
-  unsafe\" := sorry\n\n\ntheorem single_direction_unsafe_left_right\n  (n m : Nat)\
-  \ (commands : String)\n  (h1 : 0 < n) (h2 : 0 < m)\n  (h3 : commands.length > m)\n\
-  \  (h4 : ∀ c ∈ commands.data, c = 'L' ∨ c = 'R') :\n  solve_robot_safety n m commands\
-  \ = \"unsafe\" := sorry\n\n\ntheorem returns_to_origin_safe\n  (n m : Nat) (commands\
-  \ : String)\n  (h1 : 0 < n) (h2 : 0 < m) \n  (h3 : n > commands.length)\n  (h4 :\
-  \ m > commands.length)\n  (h5 : (countChar commands 'U') = (countChar commands 'D'))\n\
-  \  (h6 : (countChar commands 'L') = (countChar commands 'R')) :\n  solve_robot_safety\
-  \ n m commands = \"safe\" := sorry\n\n\ntheorem opposite_moves_require_space\n \
-  \ (n m : Nat) (commands : String)\n  (h1 : 0 < n) (h2 : 0 < m)\n  (h3 : ((countChar\
-  \ commands 'R') - (countChar commands 'L')) ≥ m ∨ \n        ((countChar commands\
-  \ 'U') - (countChar commands 'D')) ≥ n) :\n  solve_robot_safety n m commands = \"\
-  unsafe\" := sorry\n\n/--\ninfo: 'unsafe'\n-/\n#guard_msgs in\n#eval solve_robot_safety\
-  \ 1 1 \"R\"\n\n/--\ninfo: 'safe'\n-/\n#guard_msgs in\n#eval solve_robot_safety 2\
-  \ 3 \"LLRU\"\n\n/--\ninfo: 'unsafe'\n-/\n#guard_msgs in\n#eval solve_robot_safety\
-  \ 3 2 \"LLRU\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  There is a rectangular grid of cells consisting of n rows and m columns.
+  You will place a robot on one of the grid cells and provide it with a command string s, consisting of characters ‘L’, ‘R’, ‘U’, ‘D’.
+  After being placed, the robot will follow the instructions of the command string, where 'L' corresponds moving to the left, 'R' towards the right, 'U' for moving up, and 'D' means down.
+
+  You have already selected the command string s, and are wondering if it is possible to place the robot in one of the grid cells initially and have it always stay entirely within the grid upon execution of the command string s.
+  Output “safe” if there is a starting cell for which the robot doesn’t fall off the grid on following command s, otherwise, output "unsafe".
+
+  -----Input-----
+
+  The first line of input will contain an integer T, the number of test cases.
+
+  Each test case will be on two lines. 
+
+  The first line will have two space separated integers n,m. 
+
+  The second line will have the command string s.
+
+  -----Output-----
+
+  For each test case, output "safe" (without quotes) or "unsafe" (without quotes) in a new line.
+
+  -----Constraints-----
+  -  1 ≤ T ≤ 1,000
+  -  1 ≤ n,m ≤ 10
+  -  1 ≤ |s| ≤ 10
+
+  -----Example-----
+  Input:
+  5
+  1 1
+  R
+  2 3
+  LLRU
+  3 2
+  LLRU
+  4 3
+  ULURUDRDLD
+  3 6
+  RURUR
+
+  Output:
+  unsafe
+  safe
+  unsafe
+  safe
+  safe
+
+  -----Explanation-----
+
+  For the first case, there is only one grid square, so we must place our robot there. When the robot follows the command, it'll fall off, so it is unsafe.
+
+  For the second case, we can place the robot on the bottom right grid square. Here is an image denoting the moves that the robot will make.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def countChar (s : String) (c : Char) : Nat := sorry
+
+  def solve_robot_safety (n m : Nat) (commands : String) : String := sorry
+vc-theorems: |
+  theorem solve_robot_safety_returns_valid_output 
+    (n m : Nat) (commands : String)
+    (h1 : 0 < n) (h2 : 0 < m)
+    (h3 : commands.length > 0)
+    (h4 : ∀ c ∈ commands.data, c = 'U' ∨ c = 'D' ∨ c = 'L' ∨ c = 'R') :
+    solve_robot_safety n m commands = "safe" ∨ 
+    solve_robot_safety n m commands = "unsafe" := sorry
+
+
+  theorem single_direction_unsafe_up_down
+    (n m : Nat) (commands : String)
+    (h1 : 0 < n) (h2 : 0 < m)
+    (h3 : commands.length > n)
+    (h4 : ∀ c ∈ commands.data, c = 'U' ∨ c = 'D') :
+    solve_robot_safety n m commands = "unsafe" := sorry
+
+
+  theorem single_direction_unsafe_left_right
+    (n m : Nat) (commands : String)
+    (h1 : 0 < n) (h2 : 0 < m)
+    (h3 : commands.length > m)
+    (h4 : ∀ c ∈ commands.data, c = 'L' ∨ c = 'R') :
+    solve_robot_safety n m commands = "unsafe" := sorry
+
+
+  theorem returns_to_origin_safe
+    (n m : Nat) (commands : String)
+    (h1 : 0 < n) (h2 : 0 < m) 
+    (h3 : n > commands.length)
+    (h4 : m > commands.length)
+    (h5 : (countChar commands 'U') = (countChar commands 'D'))
+    (h6 : (countChar commands 'L') = (countChar commands 'R')) :
+    solve_robot_safety n m commands = "safe" := sorry
+
+
+  theorem opposite_moves_require_space
+    (n m : Nat) (commands : String)
+    (h1 : 0 < n) (h2 : 0 < m)
+    (h3 : ((countChar commands 'R') - (countChar commands 'L')) ≥ m ∨ 
+          ((countChar commands 'U') - (countChar commands 'D')) ≥ n) :
+    solve_robot_safety n m commands = "unsafe" := sorry
+
+  /--
+  info: 'unsafe'
+  -/
+  #guard_msgs in
+  #eval solve_robot_safety 1 1 "R"
+
+  /--
+  info: 'safe'
+  -/
+  #guard_msgs in
+  #eval solve_robot_safety 2 3 "LLRU"
+
+  /--
+  info: 'unsafe'
+  -/
+  #guard_msgs in
+  #eval solve_robot_safety 3 2 "LLRU"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

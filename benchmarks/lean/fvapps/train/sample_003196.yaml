@@ -1,20 +1,58 @@
-"vc-description": "My grandfather always predicted how old people would get, and right\
-  \ before he passed away he revealed his secret!\n\nIn honor of my grandfather's\
-  \ memory we will write a function using his formula!\n\n* Take a list of ages when\
-  \ each of your great-grandparent died.  \n* Multiply each number by itself.  \n\
-  * Add them all together.  \n* Take the square root of the result.  \n* Divide by\
-  \ two.\n\n## Example\n\n```R\npredict_age(65, 60, 75, 55, 60, 63, 64, 45) == 86\n\
-  ```\n```python\npredict_age(65, 60, 75, 55, 60, 63, 64, 45) == 86\n```\n\nNote:\
-  \ the result should be rounded down to the nearest integer.\n\nSome random tests\
-  \ might fail due to a bug in the JavaScript implementation. Simply resubmit if that\
-  \ happens to you."
-"vc-preamble": "import Imports.AllImports\n\ndef sqrt (n : Nat) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def predict_age (ages : List Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem predict_age_non_negative (ages : List Nat) : \n  0 ≤ predict_age\
-  \ ages := sorry\n\n\ntheorem predict_age_is_nat (ages : List Nat) :\n  predict_age\
-  \ ages = predict_age ages := sorry \n\n\n\n\ntheorem predict_age_order_independent\
-  \ (ages : List Nat) :\n  predict_age ages = predict_age ages.reverse := sorry\n\n\
-  \ntheorem predict_age_zero :\n  predict_age [0] = 0 := sorry\n\n\ntheorem predict_age_single\
-  \ (age : Nat) :\n  predict_age [age] = age / 2 := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  My grandfather always predicted how old people would get, and right before he passed away he revealed his secret!
+
+  In honor of my grandfather's memory we will write a function using his formula!
+
+  * Take a list of ages when each of your great-grandparent died.  
+  * Multiply each number by itself.  
+  * Add them all together.  
+  * Take the square root of the result.  
+  * Divide by two.
+
+  ## Example
+
+  ```R
+  predict_age(65, 60, 75, 55, 60, 63, 64, 45) == 86
+  ```
+  ```python
+  predict_age(65, 60, 75, 55, 60, 63, 64, 45) == 86
+  ```
+
+  Note: the result should be rounded down to the nearest integer.
+
+  Some random tests might fail due to a bug in the JavaScript implementation. Simply resubmit if that happens to you.
+vc-preamble: |
+  import Imports.AllImports
+
+  def sqrt (n : Nat) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def predict_age (ages : List Nat) : Nat :=
+    sorry
+vc-theorems: |-
+  theorem predict_age_non_negative (ages : List Nat) : 
+    0 ≤ predict_age ages := sorry
+
+
+  theorem predict_age_is_nat (ages : List Nat) :
+    predict_age ages = predict_age ages := sorry 
+
+
+
+
+  theorem predict_age_order_independent (ages : List Nat) :
+    predict_age ages = predict_age ages.reverse := sorry
+
+
+  theorem predict_age_zero :
+    predict_age [0] = 0 := sorry
+
+
+  theorem predict_age_single (age : Nat) :
+    predict_age [age] = age / 2 := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

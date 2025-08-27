@@ -1,26 +1,77 @@
-"vc-description": "Chef loves triangles. But the chef is poor at maths. Given three\
-  \ random lengths Chef wants to find if the three sides form a right-angled triangle\
-  \ or not. Can you help Chef in this endeavour?\n\n-----Input:-----\n- First-line\
-  \ will contain $T$, the number of test cases. Then the test cases follow. \n- Each\
-  \ test case contains a single line of input, three Integers $A,B and C$\n\n-----Output:-----\n\
-  For each test case, output in a single line \"YES\" if it is possible to form a\
-  \ triangle using the given numbers or \"NO\" if it is not possible to form a triangle.\n\
-  \n-----Constraints-----\n- $1 \\leq T \\leq 1000000$\n- $0 \\leq A,B,C \\leq 100$\n\
-  \n-----Sample Input:-----\n2\n3 4 5\n1 3 4\n\n-----Sample Output:-----\nYES\nNO\n\
-  \n-----EXPLANATION:-----\n3,4,5 forms a right-angled triangle. 1, 3 and 4 does not\
-  \ form a right-angled triangle."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def check_right_triangle (a b c : Int) : String :=\n  sorry\n"
-"vc-theorems": "theorem zero_inputs (a b c : Int) :\n  a = 0 ∨ b = 0 ∨ c = 0 → check_right_triangle\
-  \ a b c = \"NO\" :=\n  sorry\n\n\ntheorem pythagorean_triples (a b c : Int) :\n\
-  \  a > 0 ∧ b > 0 ∧ c > 0 →\n  (a * a = b * b + c * c ∨ b * b = a * a + c * c ∨ c\
-  \ * c = a * a + b * b) →\n  check_right_triangle a b c = \"YES\" :=\n  sorry\n\n\
-  \ntheorem not_pythagorean_triples (a b c : Int) :\n  a > 0 ∧ b > 0 ∧ c > 0 →\n \
-  \ ¬(a * a = b * b + c * c ∨ b * b = a * a + c * c ∨ c * c = a * a + b * b) →\n \
-  \ check_right_triangle a b c = \"NO\" :=\n  sorry\n\n\ntheorem negative_inputs (a\
-  \ b c : Int) :\n  a < 0 ∨ b < 0 ∨ c < 0 → check_right_triangle a b c = \"NO\" :=\n\
-  \  sorry\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval check_right_triangle 3 4\
-  \ 5\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval check_right_triangle 1 3 4\n\n\
-  /--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval check_right_triangle 0 4 5\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Chef loves triangles. But the chef is poor at maths. Given three random lengths Chef wants to find if the three sides form a right-angled triangle or not. Can you help Chef in this endeavour?
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, three Integers $A,B and C$
+
+  -----Output:-----
+  For each test case, output in a single line "YES" if it is possible to form a triangle using the given numbers or "NO" if it is not possible to form a triangle.
+
+  -----Constraints-----
+  - $1 \leq T \leq 1000000$
+  - $0 \leq A,B,C \leq 100$
+
+  -----Sample Input:-----
+  2
+  3 4 5
+  1 3 4
+
+  -----Sample Output:-----
+  YES
+  NO
+
+  -----EXPLANATION:-----
+  3,4,5 forms a right-angled triangle. 1, 3 and 4 does not form a right-angled triangle.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def check_right_triangle (a b c : Int) : String :=
+    sorry
+vc-theorems: |
+  theorem zero_inputs (a b c : Int) :
+    a = 0 ∨ b = 0 ∨ c = 0 → check_right_triangle a b c = "NO" :=
+    sorry
+
+
+  theorem pythagorean_triples (a b c : Int) :
+    a > 0 ∧ b > 0 ∧ c > 0 →
+    (a * a = b * b + c * c ∨ b * b = a * a + c * c ∨ c * c = a * a + b * b) →
+    check_right_triangle a b c = "YES" :=
+    sorry
+
+
+  theorem not_pythagorean_triples (a b c : Int) :
+    a > 0 ∧ b > 0 ∧ c > 0 →
+    ¬(a * a = b * b + c * c ∨ b * b = a * a + c * c ∨ c * c = a * a + b * b) →
+    check_right_triangle a b c = "NO" :=
+    sorry
+
+
+  theorem negative_inputs (a b c : Int) :
+    a < 0 ∨ b < 0 ∨ c < 0 → check_right_triangle a b c = "NO" :=
+    sorry
+
+  /--
+  info: 'YES'
+  -/
+  #guard_msgs in
+  #eval check_right_triangle 3 4 5
+
+  /--
+  info: 'NO'
+  -/
+  #guard_msgs in
+  #eval check_right_triangle 1 3 4
+
+  /--
+  info: 'NO'
+  -/
+  #guard_msgs in
+  #eval check_right_triangle 0 4 5
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

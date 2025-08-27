@@ -1,33 +1,59 @@
-"vc-description": "It's Diwali time and you are on a tour of Codepur, a city consisting\
-  \ of buildings of equal length and breadth because they were designed by a computer\
-  \ architect with a bit of OCD.\nThe ruling party of Codepur wants to have a blockbuster\
-  \ Diwali celebration but lack enough funds and decided to open a donation channel\
-  \ called Codepur Cares Fund (CCF). So they decided to run a survey.\nEach building\
-  \ eihter has permanent donors, whose impact value is represented as a positive integer,\
-  \ or potential donors, whose impact value is represented by negative integers.\n\
-  Overwhelmed by the response, and sticking to their resource optimized philosophy,\
-  \ they decided to hire you to determine the contiguous buildings which are allowed\
-  \ to donate to CCF with the following rule:\nThe contiguous buildings / areas with\
-  \ the maximum sum impact shall be allowed for donating to Codepur Cares Fund (CCF).\n\
-  Help them out to get a stunning Diwali bonus and rest of your trip sponsered!\n\n\
-  -----Input:-----\nThe first line consists of two tab spaced integers m and n, indicating\
-  \ number of rows and columns respectively in the Codepur's city plan (which is a\
-  \ 2-D Matrix).\nThe next $m$ lines consist of $n$ tab spaced integers $ti$ indicating\
-  \ rows in the matrix.\n\n-----Output:-----\nPrint the bulidings (represented by\
-  \ their donors numbers) which are eligible to donate to CCF (i.e, have the largest\
-  \ sum contiguously) as a 2-D matrix with the elements being tab-spaced.\n\n-----Constraints-----\n\
-  - $0 \\leq m,n \\leq 10^{15}$\n- $-10^{15} \\leq ti \\leq 10^5$\n\n-----Sample Input:-----\n\
-  6    5\n0    -2    -7    0    -1\n9    2    -6    2    0\n-4    1    -4    1   \
-  \ 0\n-1    8    0    -2    1\n-10    1    1    -5    6\n-15    -1    1    5    -4\n\
-  \n-----Sample Output:-----\n9    2\n-4    1\n-1    8"
-"vc-preamble": "import Imports.AllImports\n\ndef find_max_sum_submatrix (matrix :\
-  \ Array (Array Int)) : Array (Array Int) := sorry\n\ndef abs (n : Int) : Int :=\
-  \ sorry\n\n\ndef array_max (arr : Array Int) : Int := \n  arr.foldl (fun acc x =>\
-  \ max acc x) (-999999)\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def matrix_max (matrix : Array (Array Int)) : Int :=\n  matrix.foldl\
-  \ (fun acc row => max acc (array_max row)) (-999999)\n\n\n"
-"vc-theorems": "theorem singleton_matrix_is_own_max_sum\n  (val : Int)\n  (matrix\
-  \ : Array (Array Int))\n  (h : matrix = #[#[val]]) :\n  find_max_sum_submatrix matrix\
-  \ = #[#[val]] := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  It's Diwali time and you are on a tour of Codepur, a city consisting of buildings of equal length and breadth because they were designed by a computer architect with a bit of OCD.
+  The ruling party of Codepur wants to have a blockbuster Diwali celebration but lack enough funds and decided to open a donation channel called Codepur Cares Fund (CCF). So they decided to run a survey.
+  Each building eihter has permanent donors, whose impact value is represented as a positive integer, or potential donors, whose impact value is represented by negative integers.
+  Overwhelmed by the response, and sticking to their resource optimized philosophy, they decided to hire you to determine the contiguous buildings which are allowed to donate to CCF with the following rule:
+  The contiguous buildings / areas with the maximum sum impact shall be allowed for donating to Codepur Cares Fund (CCF).
+  Help them out to get a stunning Diwali bonus and rest of your trip sponsered!
+
+  -----Input:-----
+  The first line consists of two tab spaced integers m and n, indicating number of rows and columns respectively in the Codepur's city plan (which is a 2-D Matrix).
+  The next $m$ lines consist of $n$ tab spaced integers $ti$ indicating rows in the matrix.
+
+  -----Output:-----
+  Print the bulidings (represented by their donors numbers) which are eligible to donate to CCF (i.e, have the largest sum contiguously) as a 2-D matrix with the elements being tab-spaced.
+
+  -----Constraints-----
+  - $0 \leq m,n \leq 10^{15}$
+  - $-10^{15} \leq ti \leq 10^5$
+
+  -----Sample Input:-----
+  6    5
+  0    -2    -7    0    -1
+  9    2    -6    2    0
+  -4    1    -4    1    0
+  -1    8    0    -2    1
+  -10    1    1    -5    6
+  -15    -1    1    5    -4
+
+  -----Sample Output:-----
+  9    2
+  -4    1
+  -1    8
+vc-preamble: |
+  import Imports.AllImports
+
+  def find_max_sum_submatrix (matrix : Array (Array Int)) : Array (Array Int) := sorry
+
+  def abs (n : Int) : Int := sorry
+
+
+  def array_max (arr : Array Int) : Int := 
+    arr.foldl (fun acc x => max acc x) (-999999)
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def matrix_max (matrix : Array (Array Int)) : Int :=
+    matrix.foldl (fun acc row => max acc (array_max row)) (-999999)
+
+
+vc-theorems: |-
+  theorem singleton_matrix_is_own_max_sum
+    (val : Int)
+    (matrix : Array (Array Int))
+    (h : matrix = #[#[val]]) :
+    find_max_sum_submatrix matrix = #[#[val]] := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

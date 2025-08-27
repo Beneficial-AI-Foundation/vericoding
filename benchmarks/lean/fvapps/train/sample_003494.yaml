@@ -1,24 +1,77 @@
-"vc-description": "Poor Cade has got his number conversions mixed up again!\n\nFix\
-  \ his ```convert_num()``` function so it correctly converts a base-10 ```int```eger,\
-  \ \nto the selected of ```bin```ary or ```hex```adecimal.\n\n```#The output should\
-  \ be a string at all times```\n\n```python\nconvert_num(number, base):\n    if 'base'\
-  \ = hex:\n        return int(number, 16)\n    if 'base' = bin:\n        return int(number,\
-  \ 2)\n    return (Incorrect base input)\n```\nPlease note, invalid ```number```\
-  \ or ```base``` inputs will be tested.\nIn the event of an invalid ```number/base```\
-  \ you should return:\n```python\n\"Invalid number input\"\nor\n\"Invalid base input\"\
-  \n```\nFor each respectively.\n\nGood luck coding! :D"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def Base := String \ndef convert_num (n : Int) (b : Base) : String\
-  \ := sorry\n"
-"vc-theorems": "theorem valid_conversion_hex (n : Int) :\n  convert_num n \"hex\"\
-  \ = s!\"0x{n}\" := sorry\n\n\ntheorem valid_conversion_bin (n : Int) :\n  convert_num\
-  \ n \"bin\" = s!\"0b{n}\" := sorry\n\n\ntheorem invalid_base (n : Int) (b : Base)\
-  \ :\n  b ≠ \"hex\" → b ≠ \"bin\" → \n  convert_num n b = \"Invalid base input\"\
-  \ := sorry\n\n\ntheorem invalid_number_type (s : String) (b : Base) :\n  convert_num\
-  \ 0 b = \"Invalid number input\" := sorry\n\n/--\ninfo: '0b1111010'\n-/\n#guard_msgs\
-  \ in\n#eval convert_num 122 \"bin\"\n\n/--\ninfo: 'Invalid number input'\n-/\n#guard_msgs\
-  \ in\n#eval convert_num \"dog\" \"bin\"\n\n/--\ninfo: '0x0'\n-/\n#guard_msgs in\n\
-  #eval convert_num 0 \"hex\"\n\n/--\ninfo: 'Invalid base input'\n-/\n#guard_msgs\
-  \ in\n#eval convert_num 123 \"lol\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Poor Cade has got his number conversions mixed up again!
+
+  Fix his ```convert_num()``` function so it correctly converts a base-10 ```int```eger, 
+  to the selected of ```bin```ary or ```hex```adecimal.
+
+  ```#The output should be a string at all times```
+
+  ```python
+  convert_num(number, base):
+      if 'base' = hex:
+          return int(number, 16)
+      if 'base' = bin:
+          return int(number, 2)
+      return (Incorrect base input)
+  ```
+  Please note, invalid ```number``` or ```base``` inputs will be tested.
+  In the event of an invalid ```number/base``` you should return:
+  ```python
+  "Invalid number input"
+  or
+  "Invalid base input"
+  ```
+  For each respectively.
+
+  Good luck coding! :D
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def Base := String 
+  def convert_num (n : Int) (b : Base) : String := sorry
+vc-theorems: |
+  theorem valid_conversion_hex (n : Int) :
+    convert_num n "hex" = s!"0x{n}" := sorry
+
+
+  theorem valid_conversion_bin (n : Int) :
+    convert_num n "bin" = s!"0b{n}" := sorry
+
+
+  theorem invalid_base (n : Int) (b : Base) :
+    b ≠ "hex" → b ≠ "bin" → 
+    convert_num n b = "Invalid base input" := sorry
+
+
+  theorem invalid_number_type (s : String) (b : Base) :
+    convert_num 0 b = "Invalid number input" := sorry
+
+  /--
+  info: '0b1111010'
+  -/
+  #guard_msgs in
+  #eval convert_num 122 "bin"
+
+  /--
+  info: 'Invalid number input'
+  -/
+  #guard_msgs in
+  #eval convert_num "dog" "bin"
+
+  /--
+  info: '0x0'
+  -/
+  #guard_msgs in
+  #eval convert_num 0 "hex"
+
+  /--
+  info: 'Invalid base input'
+  -/
+  #guard_msgs in
+  #eval convert_num 123 "lol"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

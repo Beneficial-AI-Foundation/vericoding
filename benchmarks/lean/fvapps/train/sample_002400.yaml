@@ -1,25 +1,77 @@
-"vc-description": "Given an array of integers and an integer k, find out whether there\
-  \ are two distinct indices i and j in the array such that nums[i] = nums[j] and\
-  \ the absolute difference between i and j is at most k.\n\n\nExample 1:\n\n\nInput:\
-  \ nums = [1,2,3,1], k = 3\nOutput: true\n\n\n\nExample 2:\n\n\nInput: nums = [1,0,1,1],\
-  \ k = 1\nOutput: true\n\n\n\nExample 3:\n\n\nInput: nums = [1,2,3,1,2,3], k = 2\n\
-  Output: false"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def containsNearbyDuplicate (nums : List Int) (k : Nat) : Bool\
-  \ := sorry\n\ntheorem single_element_list_no_duplicates {nums : List Int} {k : Nat}\
-  \ (h : nums.length = 1) :\n  containsNearbyDuplicate nums k = false := sorry\n"
-"vc-theorems": "theorem adjacent_identical_elements {nums : List Int} {k : Nat} \n\
-  \  (h1 : nums.length ≥ 2)\n  (h2 : nums[1]! = nums[0]!)\n  (h3 : k ≥ 1) :\n  containsNearbyDuplicate\
-  \ (nums.take 2) k = true := sorry\n\n\ntheorem unique_elements_no_duplicates {nums\
-  \ : List Int} {k : Nat}\n  (h : ∀ i j, i < nums.length → j < nums.length → i ≠ j\
-  \ → nums[i]! ≠ nums[j]!) :\n  containsNearbyDuplicate nums k = false := sorry\n\n\
-  \ntheorem k_zero_always_false {nums : List Int} :\n  containsNearbyDuplicate nums\
-  \ 0 = false := sorry\n\n\ntheorem k_larger_than_list {nums : List Int} {k : Nat}\n\
-  \  (h : k ≥ nums.length) :\n  containsNearbyDuplicate nums k = \n    (∃ i j, i <\
-  \ nums.length ∧ j < nums.length ∧ i ≠ j ∧ nums[i]! = nums[j]!) := sorry\n\n/--\n\
-  info: True\n-/\n#guard_msgs in\n#eval contains_nearby_duplicate [1, 2, 3, 1] 3\n\
-  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval contains_nearby_duplicate [1, 0, 1,\
-  \ 1] 1\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval contains_nearby_duplicate\
-  \ [1, 2, 3, 1, 2, 3] 2\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.
+
+
+  Example 1:
+
+
+  Input: nums = [1,2,3,1], k = 3
+  Output: true
+
+
+
+  Example 2:
+
+
+  Input: nums = [1,0,1,1], k = 1
+  Output: true
+
+
+
+  Example 3:
+
+
+  Input: nums = [1,2,3,1,2,3], k = 2
+  Output: false
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def containsNearbyDuplicate (nums : List Int) (k : Nat) : Bool := sorry
+
+  theorem single_element_list_no_duplicates {nums : List Int} {k : Nat} (h : nums.length = 1) :
+    containsNearbyDuplicate nums k = false := sorry
+vc-theorems: |
+  theorem adjacent_identical_elements {nums : List Int} {k : Nat} 
+    (h1 : nums.length ≥ 2)
+    (h2 : nums[1]! = nums[0]!)
+    (h3 : k ≥ 1) :
+    containsNearbyDuplicate (nums.take 2) k = true := sorry
+
+
+  theorem unique_elements_no_duplicates {nums : List Int} {k : Nat}
+    (h : ∀ i j, i < nums.length → j < nums.length → i ≠ j → nums[i]! ≠ nums[j]!) :
+    containsNearbyDuplicate nums k = false := sorry
+
+
+  theorem k_zero_always_false {nums : List Int} :
+    containsNearbyDuplicate nums 0 = false := sorry
+
+
+  theorem k_larger_than_list {nums : List Int} {k : Nat}
+    (h : k ≥ nums.length) :
+    containsNearbyDuplicate nums k = 
+      (∃ i j, i < nums.length ∧ j < nums.length ∧ i ≠ j ∧ nums[i]! = nums[j]!) := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval contains_nearby_duplicate [1, 2, 3, 1] 3
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval contains_nearby_duplicate [1, 0, 1, 1] 1
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval contains_nearby_duplicate [1, 2, 3, 1, 2, 3] 2
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,23 +1,56 @@
-"vc-description": "In your class, you have started lessons about geometric progression.\n\
-  Since you are also a programmer, you have decided to write a function that will\
-  \ print first `n` elements of the sequence with the given constant `r` and first\
-  \ element `a`.\n\nResult should be separated by comma and space.\n\n### Example\n\
-  \n```python\ngeometric_sequence_elements(2, 3, 5) == '2, 6, 18, 54, 162'\n```\n\n\
-  More info: https://en.wikipedia.org/wiki/Geometric_progression"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def geometric_sequence_elements (a r n : Int) : String := sorry\n\
-  \ntheorem geometric_sequence_correct {a r n : Int} (h : n > 0) (hr : r ≠ 0) :\n\
-  \  let terms := (geometric_sequence_elements a r n).splitOn \", \";\n  -- sequence\
-  \ has correct length\n  terms.length = n\n  -- first term is a\n  ∧ terms.head?\
-  \ = some (toString a)\n  -- each term follows geometric sequence rule\n  ∧ ∀ i :\
-  \ Nat, 0 < i → i < n → \n      match terms.get? i, terms.get? (i-1) with\n     \
-  \ | some curr, some prev => curr.toInt! = prev.toInt! * r\n      | _, _ => False\
-  \ := sorry\n"
-"vc-theorems": "theorem single_term_sequence {a r : Int} (hr : r ≠ 0) :\n  geometric_sequence_elements\
-  \ a r 1 = toString a := sorry\n\n/--\ninfo: '2, 6, 18, 54, 162'\n-/\n#guard_msgs\
-  \ in\n#eval geometric_sequence_elements 2 3 5\n\n/--\ninfo: '2, 4, 8, 16, 32, 64,\
-  \ 128, 256, 512, 1024'\n-/\n#guard_msgs in\n#eval geometric_sequence_elements 2\
-  \ 2 10\n\n/--\ninfo: '1, -2, 4, -8, 16, -32, 64, -128, 256, -512'\n-/\n#guard_msgs\
-  \ in\n#eval geometric_sequence_elements 1 -2 10\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In your class, you have started lessons about geometric progression.
+  Since you are also a programmer, you have decided to write a function that will print first `n` elements of the sequence with the given constant `r` and first element `a`.
+
+  Result should be separated by comma and space.
+
+  ### Example
+
+  ```python
+  geometric_sequence_elements(2, 3, 5) == '2, 6, 18, 54, 162'
+  ```
+
+  More info: https://en.wikipedia.org/wiki/Geometric_progression
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def geometric_sequence_elements (a r n : Int) : String := sorry
+
+  theorem geometric_sequence_correct {a r n : Int} (h : n > 0) (hr : r ≠ 0) :
+    let terms := (geometric_sequence_elements a r n).splitOn ", ";
+    -- sequence has correct length
+    terms.length = n
+    -- first term is a
+    ∧ terms.head? = some (toString a)
+    -- each term follows geometric sequence rule
+    ∧ ∀ i : Nat, 0 < i → i < n → 
+        match terms.get? i, terms.get? (i-1) with
+        | some curr, some prev => curr.toInt! = prev.toInt! * r
+        | _, _ => False := sorry
+vc-theorems: |
+  theorem single_term_sequence {a r : Int} (hr : r ≠ 0) :
+    geometric_sequence_elements a r 1 = toString a := sorry
+
+  /--
+  info: '2, 6, 18, 54, 162'
+  -/
+  #guard_msgs in
+  #eval geometric_sequence_elements 2 3 5
+
+  /--
+  info: '2, 4, 8, 16, 32, 64, 128, 256, 512, 1024'
+  -/
+  #guard_msgs in
+  #eval geometric_sequence_elements 2 2 10
+
+  /--
+  info: '1, -2, 4, -8, 16, -32, 64, -128, 256, -512'
+  -/
+  #guard_msgs in
+  #eval geometric_sequence_elements 1 -2 10
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

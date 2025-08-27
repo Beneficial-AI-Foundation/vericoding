@@ -1,22 +1,50 @@
-"vc-description": "Write a function called calculate that takes 3 values. The first\
-  \ and third values are numbers. The second value is a character. If the character\
-  \ is \"+\" , \"-\", \"*\", or \"/\", the function will return the result of the\
-  \ corresponding mathematical function on the two numbers. If the string is not one\
-  \ of the specified characters, the function should return null (throw an `ArgumentException`\
-  \ in C#).\n\nKeep in mind, you cannot divide by zero. If an attempt to divide by\
-  \ zero is made, return null (throw an `ArgumentException` in C#)/(None in Python)."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calculate (x: Float) (op: Operation) (y: Float) : Option Float\
-  \ :=\n  sorry\n"
-"vc-theorems": "theorem calculator_valid_ops {x y : Float} {op : Operation} :\n  let\
-  \ result := calculate x op y\n  match op with\n  | Operation.add => result = some\
-  \ (x + y)\n  | Operation.sub => result = some (x - y) \n  | Operation.mul => result\
-  \ = some (x * y)\n  | Operation.div => result = some (x / y) ∨ result = none\n \
-  \ := sorry\n\n\ntheorem calculator_div_by_zero {x : Float} :\n  calculate x Operation.div\
-  \ 0 = none := sorry\n\n\ntheorem calculator_outputs_valid {x y : Float} {op : Operation}\
-  \ :\n  ∃ (r: Float), calculate x op y = some r ∨ calculate x op y = none := sorry\n\
-  \n/--\ninfo: 11.2\n-/\n#guard_msgs in\n#eval calculate 3.2 \"+\" 8\n\n/--\ninfo:\
-  \ None\n-/\n#guard_msgs in\n#eval calculate -3 \"/\" 0\n\n/--\ninfo: None\n-/\n\
-  #guard_msgs in\n#eval calculate -3 \"w\" 1\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function called calculate that takes 3 values. The first and third values are numbers. The second value is a character. If the character is "+" , "-", "*", or "/", the function will return the result of the corresponding mathematical function on the two numbers. If the string is not one of the specified characters, the function should return null (throw an `ArgumentException` in C#).
+
+  Keep in mind, you cannot divide by zero. If an attempt to divide by zero is made, return null (throw an `ArgumentException` in C#)/(None in Python).
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def calculate (x: Float) (op: Operation) (y: Float) : Option Float :=
+    sorry
+vc-theorems: |
+  theorem calculator_valid_ops {x y : Float} {op : Operation} :
+    let result := calculate x op y
+    match op with
+    | Operation.add => result = some (x + y)
+    | Operation.sub => result = some (x - y) 
+    | Operation.mul => result = some (x * y)
+    | Operation.div => result = some (x / y) ∨ result = none
+    := sorry
+
+
+  theorem calculator_div_by_zero {x : Float} :
+    calculate x Operation.div 0 = none := sorry
+
+
+  theorem calculator_outputs_valid {x y : Float} {op : Operation} :
+    ∃ (r: Float), calculate x op y = some r ∨ calculate x op y = none := sorry
+
+  /--
+  info: 11.2
+  -/
+  #guard_msgs in
+  #eval calculate 3.2 "+" 8
+
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval calculate -3 "/" 0
+
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval calculate -3 "w" 1
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

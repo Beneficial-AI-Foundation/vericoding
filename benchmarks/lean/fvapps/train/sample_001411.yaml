@@ -1,36 +1,88 @@
-"vc-description": "The name of our college is \"Government College of Engineering\
-  \ and Textile Technology Berhampore\". There is another college named \"Government\
-  \ College of Engineering and Textile Technology Serampore\". As the names are quite\
-  \ similar, those who are unaware of existence of both the colleges, often get confused.\
-  \ And mistake one with other.\n\nGiven a string, if it contains the word berhampore\
-  \ (case insensitive), print GCETTB or if it contains serampore(case-insensitive),\
-  \ print GCETTS . If the string contains neither print Others. If it contains both\
-  \ Berhampore and Serampore print Both \nInput \n- First line contains single integer\
-  \ T, No. of test case  \n- Next line for every test contain case a string S \nOutput\n\
-  \nPrint GCETTB or GCETTS or Others or Both on a new line\nConstraints \n- 1 <= T\
-  \ <= 10 \n- 0 <= len(S) <= 100  \n- S contain a-z and A-Z and space only\nSample\
-  \ Input\n3\nGovernment clg Berhampore\nSeRaMporE textile college \nGirls college\
-  \ Kolkata\n\nSample Output\n\nGCETTB\n\nGCETTS\n\nOthers       \nExplanation\n\n\
-  Self-Explanatory"
-"vc-preamble": "import Imports.AllImports\n\ndef College := String\nderiving Repr\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def determine_college (s: String) : College := sorry\ndef process_test_cases\
-  \ (cases: List String) : List College := sorry\n"
-"vc-theorems": "theorem determine_college_case_insensitive (s: String) :\n  determine_college\
-  \ s = determine_college (s.toUpper) ∧\n  determine_college s = determine_college\
-  \ (s.toLower) := sorry\n\n\ntheorem process_test_cases_preserves_length (cases:\
-  \ List String) :\n  (process_test_cases cases).length = cases.length := sorry\n\n\
-  \ntheorem determine_college_valid_output (s: String) :\n  determine_college s =\
-  \ \"Both\" ∨ \n  determine_college s = \"GCETTB\" ∨\n  determine_college s = \"\
-  GCETTS\" ∨ \n  determine_college s = \"Others\" := sorry\n\n\ntheorem determine_college_substring_behavior\
-  \ (s1 s2: String) : \n  determine_college (s1 ++ \"berhampore\" ++ s2 ++ \"serampore\"\
-  ) = \"Both\" ∧\n  determine_college (s1 ++ \"berhampore\" ++ s2) = \"GCETTB\" ∧\n\
-  \  determine_college (s1 ++ \"serampore\" ++ s2) = \"GCETTS\" := sorry\n\n\ntheorem\
-  \ process_test_cases_valid_output (cases: List String) :\n  ∀ r ∈ process_test_cases\
-  \ cases,\n    r = \"Both\" ∨ r = \"GCETTB\" ∨ r = \"GCETTS\" ∨ r = \"Others\" :=\
-  \ sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval process_test_cases [\"\
-  Government clg Berhampore\", \"SeRaMporE textile college\", \"Girls college Kolkata\"\
-  ]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval process_test_cases [\"Berhampore\
-  \ Serampore\"]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval process_test_cases\
-  \ [\"random college\"]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  The name of our college is "Government College of Engineering and Textile Technology Berhampore". There is another college named "Government College of Engineering and Textile Technology Serampore". As the names are quite similar, those who are unaware of existence of both the colleges, often get confused. And mistake one with other.
+
+  Given a string, if it contains the word berhampore (case insensitive), print GCETTB or if it contains serampore(case-insensitive), print GCETTS . If the string contains neither print Others. If it contains both Berhampore and Serampore print Both 
+  Input 
+  - First line contains single integer T, No. of test case  
+  - Next line for every test contain case a string S 
+  Output
+
+  Print GCETTB or GCETTS or Others or Both on a new line
+  Constraints 
+  - 1 <= T <= 10 
+  - 0 <= len(S) <= 100  
+  - S contain a-z and A-Z and space only
+  Sample Input
+  3
+  Government clg Berhampore
+  SeRaMporE textile college 
+  Girls college Kolkata
+
+  Sample Output
+
+  GCETTB
+
+  GCETTS
+
+  Others       
+  Explanation
+
+  Self-Explanatory
+vc-preamble: |
+  import Imports.AllImports
+
+  def College := String
+  deriving Repr
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def determine_college (s: String) : College := sorry
+  def process_test_cases (cases: List String) : List College := sorry
+vc-theorems: |
+  theorem determine_college_case_insensitive (s: String) :
+    determine_college s = determine_college (s.toUpper) ∧
+    determine_college s = determine_college (s.toLower) := sorry
+
+
+  theorem process_test_cases_preserves_length (cases: List String) :
+    (process_test_cases cases).length = cases.length := sorry
+
+
+  theorem determine_college_valid_output (s: String) :
+    determine_college s = "Both" ∨ 
+    determine_college s = "GCETTB" ∨
+    determine_college s = "GCETTS" ∨ 
+    determine_college s = "Others" := sorry
+
+
+  theorem determine_college_substring_behavior (s1 s2: String) : 
+    determine_college (s1 ++ "berhampore" ++ s2 ++ "serampore") = "Both" ∧
+    determine_college (s1 ++ "berhampore" ++ s2) = "GCETTB" ∧
+    determine_college (s1 ++ "serampore" ++ s2) = "GCETTS" := sorry
+
+
+  theorem process_test_cases_valid_output (cases: List String) :
+    ∀ r ∈ process_test_cases cases,
+      r = "Both" ∨ r = "GCETTB" ∨ r = "GCETTS" ∨ r = "Others" := sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval process_test_cases ["Government clg Berhampore", "SeRaMporE textile college", "Girls college Kolkata"]
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval process_test_cases ["Berhampore Serampore"]
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval process_test_cases ["random college"]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

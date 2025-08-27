@@ -1,19 +1,59 @@
-"vc-description": "There exist two zeroes: +0 (or just 0) and -0.\n\nWrite a function\
-  \ that returns `true` if the input number is -0 and `false` otherwise (`True` and\
-  \ `False` for Python).\n\nIn JavaScript / TypeScript / Coffeescript the input will\
-  \ be a number.\n\nIn Python / Java / C / NASM / Haskell / the input will be a float."
-"vc-preamble": "import Imports.AllImports\n\ndef is_negative_zero (x : Float) : Bool\
-  \ := sorry\n\n/-- Helper function to emulate sign behavior -/\n\ndef getSign (x\
-  \ : Float) : Float := sorry\n\ntheorem is_negative_zero_main (x : Float) :\n  is_negative_zero\
-  \ x = true ↔ (getSign x < 0 ∧ x = 0) := sorry\n\n\ndef posInf : Float := sorry\n\
-  def negInf : Float := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def nanFloat : Float := sorry\n\ntheorem is_negative_zero_special_cases\
-  \ :\n  is_negative_zero posInf = false ∧\n  is_negative_zero negInf = false ∧\n\
-  \  is_negative_zero nanFloat = false := sorry"
-"vc-theorems": "theorem is_negative_zero_integers (n : Int) :\n  is_negative_zero\
-  \ (Float.ofInt n) = false := sorry\n\n/-- Constants for special float values -/\n\
-  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_negative_zero -0.0\n\n/--\ninfo:\
-  \ False\n-/\n#guard_msgs in\n#eval is_negative_zero 0.0\n\n/--\ninfo: False\n-/\n\
-  #guard_msgs in\n#eval is_negative_zero -5.0\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  There exist two zeroes: +0 (or just 0) and -0.
+
+  Write a function that returns `true` if the input number is -0 and `false` otherwise (`True` and `False` for Python).
+
+  In JavaScript / TypeScript / Coffeescript the input will be a number.
+
+  In Python / Java / C / NASM / Haskell / the input will be a float.
+vc-preamble: |-
+  import Imports.AllImports
+
+  def is_negative_zero (x : Float) : Bool := sorry
+
+  /-- Helper function to emulate sign behavior -/
+
+  def getSign (x : Float) : Float := sorry
+
+  theorem is_negative_zero_main (x : Float) :
+    is_negative_zero x = true ↔ (getSign x < 0 ∧ x = 0) := sorry
+
+
+  def posInf : Float := sorry
+  def negInf : Float := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def nanFloat : Float := sorry
+
+  theorem is_negative_zero_special_cases :
+    is_negative_zero posInf = false ∧
+    is_negative_zero negInf = false ∧
+    is_negative_zero nanFloat = false := sorry
+vc-theorems: |
+  theorem is_negative_zero_integers (n : Int) :
+    is_negative_zero (Float.ofInt n) = false := sorry
+
+  /-- Constants for special float values -/
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_negative_zero -0.0
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_negative_zero 0.0
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_negative_zero -5.0
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

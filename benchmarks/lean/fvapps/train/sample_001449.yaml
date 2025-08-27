@@ -1,33 +1,72 @@
-"vc-description": "Santosh has a farm at Byteland. He has a very big family to look\
-  \ after.  His life takes a sudden turn and he runs into a financial crisis. After\
-  \ giving all the money he has in his hand, he decides to sell his plots. The speciality\
-  \ of his land is that it is rectangular in nature. Santosh comes to know that he\
-  \ will get more money if he sells square shaped plots. So keeping this in mind,\
-  \ he decides to divide his land into minimum possible number of square plots, such\
-  \ that each plot has the same area, and  the plots divide the land perfectly. He\
-  \ does this in order to get the maximum profit out of this.   \nSo your task is\
-  \ to find the minimum number of square plots with the same area, that can be formed\
-  \ out of the rectangular land, such that they divide it perfectly.\n\n-----Input-----\n\
-  - The first line of the input contains $T$, the number of test cases. Then $T$ lines\
-  \ follow.\n- The first and only line of each test case contains two space-separated\
-  \ integers, $N$ and $M$, the length and the breadth of the land, respectively.\n\
-  \n-----Output-----\nFor each test case, print the minimum number of square plots\
-  \ with equal area, such that they divide the farm land perfectly, in a new line.\n\
-  \n-----Constraints-----\n$1 \\le T \\le 20$\n$1 \\le M \\le 10000$\n$1 \\le N \\\
-  le 10000$ \n\n-----Sample Input:-----\n2\n10 15\n4 6\n\n-----SampleOutput:-----\n\
-  6\n6"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def min_square_plots (length width : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem min_square_plots_positive (length width : Nat) (h1 : length\
-  \ > 0) (h2 : width > 0) :\n  min_square_plots length width > 0 :=\n  sorry\n\n\n\
-  theorem min_square_plots_symmetric (length width : Nat) (h1 : length > 0) (h2 :\
-  \ width > 0) : \n  min_square_plots length width = min_square_plots width length\
-  \ :=\n  sorry\n\n\ntheorem min_square_plots_double_dims (length width : Nat) (h1\
-  \ : length > 0) (h2 : width > 0) :\n  min_square_plots (2 * length) (2 * width)\
-  \ = min_square_plots length width :=\n  sorry\n\n\ntheorem min_square_plots_equal_dims\
-  \ (n : Nat) (h : n > 0) :\n  min_square_plots n n = 1 :=\n  sorry\n\n/--\ninfo:\
-  \ 6\n-/\n#guard_msgs in\n#eval min_square_plots 10 15\n\n/--\ninfo: 6\n-/\n#guard_msgs\
-  \ in\n#eval min_square_plots 4 6\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval min_square_plots\
-  \ 100 150\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Santosh has a farm at Byteland. He has a very big family to look after.  His life takes a sudden turn and he runs into a financial crisis. After giving all the money he has in his hand, he decides to sell his plots. The speciality of his land is that it is rectangular in nature. Santosh comes to know that he will get more money if he sells square shaped plots. So keeping this in mind, he decides to divide his land into minimum possible number of square plots, such that each plot has the same area, and  the plots divide the land perfectly. He does this in order to get the maximum profit out of this.   
+  So your task is to find the minimum number of square plots with the same area, that can be formed out of the rectangular land, such that they divide it perfectly.
+
+  -----Input-----
+  - The first line of the input contains $T$, the number of test cases. Then $T$ lines follow.
+  - The first and only line of each test case contains two space-separated integers, $N$ and $M$, the length and the breadth of the land, respectively.
+
+  -----Output-----
+  For each test case, print the minimum number of square plots with equal area, such that they divide the farm land perfectly, in a new line.
+
+  -----Constraints-----
+  $1 \le T \le 20$
+  $1 \le M \le 10000$
+  $1 \le N \le 10000$ 
+
+  -----Sample Input:-----
+  2
+  10 15
+  4 6
+
+  -----SampleOutput:-----
+  6
+  6
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def min_square_plots (length width : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem min_square_plots_positive (length width : Nat) (h1 : length > 0) (h2 : width > 0) :
+    min_square_plots length width > 0 :=
+    sorry
+
+
+  theorem min_square_plots_symmetric (length width : Nat) (h1 : length > 0) (h2 : width > 0) : 
+    min_square_plots length width = min_square_plots width length :=
+    sorry
+
+
+  theorem min_square_plots_double_dims (length width : Nat) (h1 : length > 0) (h2 : width > 0) :
+    min_square_plots (2 * length) (2 * width) = min_square_plots length width :=
+    sorry
+
+
+  theorem min_square_plots_equal_dims (n : Nat) (h : n > 0) :
+    min_square_plots n n = 1 :=
+    sorry
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval min_square_plots 10 15
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval min_square_plots 4 6
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval min_square_plots 100 150
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

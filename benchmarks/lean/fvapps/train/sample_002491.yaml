@@ -1,23 +1,70 @@
-"vc-description": "=====Function Descriptions=====\ninput()\nIn Python 2, the expression\
-  \ input() is equivalent to eval(raw _input(prompt)).\n\nCode\n>>> input()  \n1+2\n\
-  3\n>>> company = 'HackerRank'\n>>> website = 'www.hackerrank.com'\n>>> input()\n\
-  'The company name: '+company+' and website: '+website\n'The company name: HackerRank\
-  \ and website: www.hackerrank.com'\n\n=====Problem Statement=====\nYou are given\
-  \ a polynomial P of a single indeterminate (or variable), x. You are also given\
-  \ the values of x and k. Your task is to verify if P(x) = k.\n\n=====Output Format=====\n\
-  Print True if P(x) = k. Otherwise, print False."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_polynomial_equal (x : Int) (expected : Int) (poly_str :\
-  \ String) : Bool := sorry\n\ntheorem constant_polynomial_true (x : Int) : \n  is_polynomial_equal\
-  \ x 5 \"5\" = true := sorry\n"
-"vc-theorems": "theorem constant_polynomial_false (x : Int) :\n  is_polynomial_equal\
-  \ x 6 \"5\" = false := sorry\n\n\ntheorem zero_polynomial :\n  is_polynomial_equal\
-  \ 0 0 \"0\" = true := sorry\n\n\ntheorem linear_polynomial :\n  is_polynomial_equal\
-  \ 1 1 \"x\" = true := sorry\n\n\ntheorem quadratic_polynomial :\n  is_polynomial_equal\
-  \ 2 4 \"x**2\" = true := sorry\n\n\ntheorem negative_quadratic :\n  is_polynomial_equal\
-  \ (-1) 1 \"x**2\" = true := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
-  \ is_polynomial_equal 1 4 \"x**3 + x**2 + x + 1\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval is_polynomial_equal 2 20 \"x**3 + x**2 + x + 1\"\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval is_polynomial_equal 0 1 \"x**3 + x**2 + x + 1\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  =====Function Descriptions=====
+  input()
+  In Python 2, the expression input() is equivalent to eval(raw _input(prompt)).
+
+  Code
+  >>> input()  
+  1+2
+  3
+  >>> company = 'HackerRank'
+  >>> website = 'www.hackerrank.com'
+  >>> input()
+  'The company name: '+company+' and website: '+website
+  'The company name: HackerRank and website: www.hackerrank.com'
+
+  =====Problem Statement=====
+  You are given a polynomial P of a single indeterminate (or variable), x. You are also given the values of x and k. Your task is to verify if P(x) = k.
+
+  =====Output Format=====
+  Print True if P(x) = k. Otherwise, print False.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_polynomial_equal (x : Int) (expected : Int) (poly_str : String) : Bool := sorry
+
+  theorem constant_polynomial_true (x : Int) : 
+    is_polynomial_equal x 5 "5" = true := sorry
+vc-theorems: |
+  theorem constant_polynomial_false (x : Int) :
+    is_polynomial_equal x 6 "5" = false := sorry
+
+
+  theorem zero_polynomial :
+    is_polynomial_equal 0 0 "0" = true := sorry
+
+
+  theorem linear_polynomial :
+    is_polynomial_equal 1 1 "x" = true := sorry
+
+
+  theorem quadratic_polynomial :
+    is_polynomial_equal 2 4 "x**2" = true := sorry
+
+
+  theorem negative_quadratic :
+    is_polynomial_equal (-1) 1 "x**2" = true := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_polynomial_equal 1 4 "x**3 + x**2 + x + 1"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_polynomial_equal 2 20 "x**3 + x**2 + x + 1"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_polynomial_equal 0 1 "x**3 + x**2 + x + 1"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,39 +1,106 @@
-"vc-description": "Due to the COVID pandemic, maintaining social distancing is of\
-  \ utmost importance. In this problem, you'd calculate how many days would it take\
-  \ to reach an apocalypse from an initial case if nobody maintains social distancing.\n\
-  The Earth is flat (for this question) and it's dimensions are $R$ x $C$\nThe whole\
-  \ Earth is already divided into blocks and the virus can spread in all directions\
-  \ except diagonally. The virus from each newly infected person will spread in all\
-  \ directions in the next day, thus growing exponentially.\n\n-----Input:-----\n\
-  - First line will contain $T$, number of testcases. Then the testcases follow. \n\
-  - Next line contains $R$ and $C$ respectively separated by a space.\n- Next line\
-  \ contains $x$ and $y$ respectively separated by a space, denoting the indices of\
-  \ the initial case in the world.\n\n-----Output:-----\nFor each testcase, output\
-  \ in a single line an integer denoting the number of days after which everyone will\
-  \ be infected.\n\n-----Constraints-----\n- $1 \\leq T \\leq 10^4$\n- $2 \\leq R,C\
-  \ \\leq 10^7$\n- $0 \\leq x,y \\leq 10^7$\n\n-----Subtasks-----\n- 10 points : $1\
-  \ \\leq T \\leq 5$ and $2 \\leq R,C \\leq 10$\n- 20 points : $2 \\leq R,C \\leq\
-  \ 10^5$\n- 70 points : Original constraints\n\n-----Sample Input:-----\n2\n4 5\n\
-  2 1\n3 4\n1 1\n\n-----Sample Output:-----\n5\n3\n\n-----EXPLANATION:-----\n2nd test\
-  \ case:\nAssuming, it's a small world of $3$ x $4$\n0 is not infected. 1 is infected.\n\
-  World indexing is like a 2D array:\n(0,0) (0,1) (0,2) (0,3)\n(1,0) (1,1) (1,2) (1,3)\n\
-  (2,0) (2,1) (2,2) (2,3)\nIf this is the case on Day 0:\n0 0 0 0\n0 1 0 0\n0 0 0\
-  \ 0\nThis will be the case on Day 1:\n0 1 0 0\n1 1 1 0\n0 1 0 0\nThis will be the\
-  \ case on Day 2:\n1 1 1 0\n1 1 1 1\n1 1 1 0\nThe End on Day 3:\n1 1 1 1\n1 1 1 1\n\
-  1 1 1 1\nThus, answer will be 3"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calc_virus_spread_days (row col x y : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem virus_spread_bounds \n    (row col : Nat) (x y : Nat)\n  \
-  \  (h_row : row > 0) (h_col : col > 0)\n    (h_x : x < row) (h_y : y < col) :\n\
-  \  let result := calc_virus_spread_days row col x y\n  result ≥ max x (row - x -\
-  \ 1) + max y (col - y - 1) ∧ result ≥ 0 :=\n  sorry\n\n\ntheorem virus_spread_square_symmetric\n\
-  \    (size : Nat) (h_size : size > 0) :\n  let mid := size / 2\n  calc_virus_spread_days\
-  \ size size mid mid = calc_virus_spread_days size size mid mid :=\n  sorry\n\n\n\
-  theorem virus_spread_corner_symmetry\n    (row col : Nat) (h_row : row > 0) (h_col\
-  \ : col > 0) \n    (h_eq : row = col) :\n  let corners := [(0, 0), (0, col-1), (row-1,\
-  \ 0), (row-1, col-1)]\n  let results := corners.map (fun p => calc_virus_spread_days\
-  \ row col p.1 p.2)\n  ∀ (x y : Nat), x ∈ results → y ∈ results → x = y :=\n  sorry\n\
-  \n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval calc_virus_spread_days 4 5 2 1\n\n/--\n\
-  info: 3\n-/\n#guard_msgs in\n#eval calc_virus_spread_days 3 4 1 1\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Due to the COVID pandemic, maintaining social distancing is of utmost importance. In this problem, you'd calculate how many days would it take to reach an apocalypse from an initial case if nobody maintains social distancing.
+  The Earth is flat (for this question) and it's dimensions are $R$ x $C$
+  The whole Earth is already divided into blocks and the virus can spread in all directions except diagonally. The virus from each newly infected person will spread in all directions in the next day, thus growing exponentially.
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - Next line contains $R$ and $C$ respectively separated by a space.
+  - Next line contains $x$ and $y$ respectively separated by a space, denoting the indices of the initial case in the world.
+
+  -----Output:-----
+  For each testcase, output in a single line an integer denoting the number of days after which everyone will be infected.
+
+  -----Constraints-----
+  - $1 \leq T \leq 10^4$
+  - $2 \leq R,C \leq 10^7$
+  - $0 \leq x,y \leq 10^7$
+
+  -----Subtasks-----
+  - 10 points : $1 \leq T \leq 5$ and $2 \leq R,C \leq 10$
+  - 20 points : $2 \leq R,C \leq 10^5$
+  - 70 points : Original constraints
+
+  -----Sample Input:-----
+  2
+  4 5
+  2 1
+  3 4
+  1 1
+
+  -----Sample Output:-----
+  5
+  3
+
+  -----EXPLANATION:-----
+  2nd test case:
+  Assuming, it's a small world of $3$ x $4$
+  0 is not infected. 1 is infected.
+  World indexing is like a 2D array:
+  (0,0) (0,1) (0,2) (0,3)
+  (1,0) (1,1) (1,2) (1,3)
+  (2,0) (2,1) (2,2) (2,3)
+  If this is the case on Day 0:
+  0 0 0 0
+  0 1 0 0
+  0 0 0 0
+  This will be the case on Day 1:
+  0 1 0 0
+  1 1 1 0
+  0 1 0 0
+  This will be the case on Day 2:
+  1 1 1 0
+  1 1 1 1
+  1 1 1 0
+  The End on Day 3:
+  1 1 1 1
+  1 1 1 1
+  1 1 1 1
+  Thus, answer will be 3
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def calc_virus_spread_days (row col x y : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem virus_spread_bounds 
+      (row col : Nat) (x y : Nat)
+      (h_row : row > 0) (h_col : col > 0)
+      (h_x : x < row) (h_y : y < col) :
+    let result := calc_virus_spread_days row col x y
+    result ≥ max x (row - x - 1) + max y (col - y - 1) ∧ result ≥ 0 :=
+    sorry
+
+
+  theorem virus_spread_square_symmetric
+      (size : Nat) (h_size : size > 0) :
+    let mid := size / 2
+    calc_virus_spread_days size size mid mid = calc_virus_spread_days size size mid mid :=
+    sorry
+
+
+  theorem virus_spread_corner_symmetry
+      (row col : Nat) (h_row : row > 0) (h_col : col > 0) 
+      (h_eq : row = col) :
+    let corners := [(0, 0), (0, col-1), (row-1, 0), (row-1, col-1)]
+    let results := corners.map (fun p => calc_virus_spread_days row col p.1 p.2)
+    ∀ (x y : Nat), x ∈ results → y ∈ results → x = y :=
+    sorry
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval calc_virus_spread_days 4 5 2 1
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval calc_virus_spread_days 3 4 1 1
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

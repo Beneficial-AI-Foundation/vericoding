@@ -1,29 +1,83 @@
-"vc-description": "## Preface\n\nA collatz sequence, starting with a positive integern,\
-  \ is found by repeatedly applying the following function to n until n == 1 :\n\n\
-  `$f(n) =\n\\begin{cases}\nn/2,   \\text{  if $n$ is even} \\\\\n3n+1,  \\text{ \
-  \ if $n$ is odd}\n\\end{cases}$`\n----\n\nA more detailed description of the collatz\
-  \ conjecture may be found [on Wikipedia](http://en.wikipedia.org/wiki/Collatz_conjecture).\n\
-  \n## The Problem\n\nCreate a function `collatz` that returns a collatz sequence\
-  \ string starting with the positive integer argument passed into the function, in\
-  \ the following form:\n\n\"X0->X1->...->XN\"\n\nWhere Xi is each iteration of the\
-  \ sequence and N is the length of the sequence.\n\n## Sample Input\n\n```python\n\
-  collatz(4) # should return \"4->2->1\"\ncollatz(3) # should return \"3->10->5->16->8->4->2->1\"\
-  \n```\n\nDon't worry about invalid input. Arguments passed into the function are\
-  \ guaranteed to be valid integers >= 1."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def collatz (n : Nat) : String := sorry\n\ntheorem collatz_returns_string\
-  \ (n : Nat) : \n  n > 0 → collatz n ≠ \"\" := sorry\n"
-"vc-theorems": "theorem collatz_steps_are_digits (n : Nat) (s : String) :\n  n > 0\
-  \ → s ∈ (collatz n).splitOn \"->\" → \n  ∀ c ∈ s.data, c.isDigit := sorry\n\n\n\
-  theorem collatz_starts_with_input (n : Nat) :\n  n > 0 → ((collatz n).splitOn \"\
-  ->\").get! 0 = toString n := sorry\n\n\ntheorem collatz_ends_with_one (n : Nat)\
-  \ :\n  n > 0 → ((collatz n).splitOn \"->\").getLast! = \"1\" := sorry\n\n\ntheorem\
-  \ collatz_follows_rules (n : Nat) (i : Nat) :\n  n > 0 → i < ((collatz n).splitOn\
-  \ \"->\").length - 1 →\n  let nums := (collatz n).splitOn \"->\"\n  let cur := String.toNat!\
-  \ (nums.get! i)\n  let next := String.toNat! (nums.get! (i+1))\n  if cur % 2 = 0\
-  \ \n  then next = cur / 2\n  else next = 3 * cur + 1 := sorry\n\n/--\ninfo: '4->2->1'\n\
-  -/\n#guard_msgs in\n#eval collatz 4\n\n/--\ninfo: '3->10->5->16->8->4->2->1'\n-/\n\
-  #guard_msgs in\n#eval collatz 3\n\n/--\ninfo: '6->3->10->5->16->8->4->2->1'\n-/\n\
-  #guard_msgs in\n#eval collatz 6\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ## Preface
+
+  A collatz sequence, starting with a positive integern, is found by repeatedly applying the following function to n until n == 1 :
+
+  `$f(n) =
+  \begin{cases}
+  n/2,   \text{  if $n$ is even} \\
+  3n+1,  \text{  if $n$ is odd}
+  \end{cases}$`
+  ----
+
+  A more detailed description of the collatz conjecture may be found [on Wikipedia](http://en.wikipedia.org/wiki/Collatz_conjecture).
+
+  ## The Problem
+
+  Create a function `collatz` that returns a collatz sequence string starting with the positive integer argument passed into the function, in the following form:
+
+  "X0->X1->...->XN"
+
+  Where Xi is each iteration of the sequence and N is the length of the sequence.
+
+  ## Sample Input
+
+  ```python
+  collatz(4) # should return "4->2->1"
+  collatz(3) # should return "3->10->5->16->8->4->2->1"
+  ```
+
+  Don't worry about invalid input. Arguments passed into the function are guaranteed to be valid integers >= 1.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def collatz (n : Nat) : String := sorry
+
+  theorem collatz_returns_string (n : Nat) : 
+    n > 0 → collatz n ≠ "" := sorry
+vc-theorems: |
+  theorem collatz_steps_are_digits (n : Nat) (s : String) :
+    n > 0 → s ∈ (collatz n).splitOn "->" → 
+    ∀ c ∈ s.data, c.isDigit := sorry
+
+
+  theorem collatz_starts_with_input (n : Nat) :
+    n > 0 → ((collatz n).splitOn "->").get! 0 = toString n := sorry
+
+
+  theorem collatz_ends_with_one (n : Nat) :
+    n > 0 → ((collatz n).splitOn "->").getLast! = "1" := sorry
+
+
+  theorem collatz_follows_rules (n : Nat) (i : Nat) :
+    n > 0 → i < ((collatz n).splitOn "->").length - 1 →
+    let nums := (collatz n).splitOn "->"
+    let cur := String.toNat! (nums.get! i)
+    let next := String.toNat! (nums.get! (i+1))
+    if cur % 2 = 0 
+    then next = cur / 2
+    else next = 3 * cur + 1 := sorry
+
+  /--
+  info: '4->2->1'
+  -/
+  #guard_msgs in
+  #eval collatz 4
+
+  /--
+  info: '3->10->5->16->8->4->2->1'
+  -/
+  #guard_msgs in
+  #eval collatz 3
+
+  /--
+  info: '6->3->10->5->16->8->4->2->1'
+  -/
+  #guard_msgs in
+  #eval collatz 6
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

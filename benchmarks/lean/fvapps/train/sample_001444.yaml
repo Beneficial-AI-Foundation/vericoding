@@ -1,36 +1,100 @@
-"vc-description": "Divya's watch of worth Rs10 cr is abducted by N thieves(1,2....i...N).\
-  \ The fight over the watch leads to a final decision that it should belong to the\
-  \ thief who wins a simple game. The rules of the game state that every thief  registers\
-  \ a time in the format HH:MM:SS . Accordingly the average A of three clockwise angles\
-  \  between the hours , minutes and seconds hands is calculated . Thus the ith thief\
-  \  with the maximum A wins the game and gets to keep the watch.\n\nThe thieves are\
-  \ poor in mathematics and will need your help . Given the number of thieves and\
-  \ their registered time resolves the conflict and help them in choosing the winner\
-  \ \n\n-----Input-----\nFirst line of input contains T which denotes the number of\
-  \ test cases.\n\nThe first line of each test case consists of an integer which denotes\
-  \ the number of thieves thereby N line follow which give the time choosen by each\
-  \ thieve in the format HH:MM:SS.\n\n-----Output:-----\nOutput single integer i which\
-  \ denotes the ith thief.\n\n-----Constraints:-----\n\n1<=T<=100\n\n1<=N<=50\n\n\
-  01<=HH<=12\n\n00<=MM<=60\n\n00<=SS<=60\n\n-----Example:-----\nInput:\n2\n3\n12:28:26\n\
-  07:26:04\n11:23:17\n2\n07:43:25\n06:23:34\n\nOutput:\n3\n1"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def valid_time_str (h : Nat) (m : Nat) (s : Nat) : String := sorry\n\
-  \ndef find_thief_with_watch (times : List String) : Nat := sorry\n"
-"vc-theorems": "theorem find_thief_returns_valid_index \n  (times : List String) \n\
-  \  (h_nonempty : times ≠ []) :\n  let result := find_thief_with_watch times\n  1\
-  \ ≤ result ∧ result ≤ times.length := sorry\n\n\ntheorem find_thief_handles_modulo\n\
-  \  (times : List String)\n  (h_nonempty : times ≠ []) :\n  let times_with_large\
-  \ := times ++ [\"25:30:45\"]\n  let result1 := find_thief_with_watch times\n  let\
-  \ result2 := find_thief_with_watch times_with_large\n  result2 ≤ times.length →\
-  \ result1 = result2 := sorry\n\n\ntheorem find_thief_single_time\n  (h : Nat)\n\
-  \  (h_valid : h ≤ 23) :\n  let time := [valid_time_str h 0 0] \n  find_thief_with_watch\
-  \ time = 1 := sorry\n\n\ntheorem find_thief_same_minute_second\n  (hours : List\
-  \ Nat)\n  (h_nonempty : hours ≠ [])\n  (h_valid : ∀ h ∈ hours, h ≤ 23) :\n  let\
-  \ times := hours.map (fun h => valid_time_str h 30 30)\n  let result := find_thief_with_watch\
-  \ times\n  1 ≤ result ∧ result ≤ times.length := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
-  \ in\n#eval find_thief_with_watch [\"12:28:26\", \"07:26:04\", \"11:23:17\"]\n\n\
-  /--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_thief_with_watch [\"07:43:25\", \"\
-  06:23:34\"]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_thief_with_watch [\"\
-  12:00:00\"]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Divya's watch of worth Rs10 cr is abducted by N thieves(1,2....i...N). The fight over the watch leads to a final decision that it should belong to the thief who wins a simple game. The rules of the game state that every thief  registers a time in the format HH:MM:SS . Accordingly the average A of three clockwise angles  between the hours , minutes and seconds hands is calculated . Thus the ith thief  with the maximum A wins the game and gets to keep the watch.
+
+  The thieves are poor in mathematics and will need your help . Given the number of thieves and their registered time resolves the conflict and help them in choosing the winner 
+
+  -----Input-----
+  First line of input contains T which denotes the number of test cases.
+
+  The first line of each test case consists of an integer which denotes the number of thieves thereby N line follow which give the time choosen by each thieve in the format HH:MM:SS.
+
+  -----Output:-----
+  Output single integer i which denotes the ith thief.
+
+  -----Constraints:-----
+
+  1<=T<=100
+
+  1<=N<=50
+
+  01<=HH<=12
+
+  00<=MM<=60
+
+  00<=SS<=60
+
+  -----Example:-----
+  Input:
+  2
+  3
+  12:28:26
+  07:26:04
+  11:23:17
+  2
+  07:43:25
+  06:23:34
+
+  Output:
+  3
+  1
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def valid_time_str (h : Nat) (m : Nat) (s : Nat) : String := sorry
+
+  def find_thief_with_watch (times : List String) : Nat := sorry
+vc-theorems: |
+  theorem find_thief_returns_valid_index 
+    (times : List String) 
+    (h_nonempty : times ≠ []) :
+    let result := find_thief_with_watch times
+    1 ≤ result ∧ result ≤ times.length := sorry
+
+
+  theorem find_thief_handles_modulo
+    (times : List String)
+    (h_nonempty : times ≠ []) :
+    let times_with_large := times ++ ["25:30:45"]
+    let result1 := find_thief_with_watch times
+    let result2 := find_thief_with_watch times_with_large
+    result2 ≤ times.length → result1 = result2 := sorry
+
+
+  theorem find_thief_single_time
+    (h : Nat)
+    (h_valid : h ≤ 23) :
+    let time := [valid_time_str h 0 0] 
+    find_thief_with_watch time = 1 := sorry
+
+
+  theorem find_thief_same_minute_second
+    (hours : List Nat)
+    (h_nonempty : hours ≠ [])
+    (h_valid : ∀ h ∈ hours, h ≤ 23) :
+    let times := hours.map (fun h => valid_time_str h 30 30)
+    let result := find_thief_with_watch times
+    1 ≤ result ∧ result ≤ times.length := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_thief_with_watch ["12:28:26", "07:26:04", "11:23:17"]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_thief_with_watch ["07:43:25", "06:23:34"]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_thief_with_watch ["12:00:00"]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

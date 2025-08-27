@@ -1,27 +1,61 @@
-"vc-description": "Your back at your newly acquired decrypting job for the secret\
-  \ organization when a new assignment comes in.   Apparently the enemy has been communicating\
-  \ using a device they call \"The Mirror\".  \nIt is a rudimentary device with encrypts\
-  \ the message by switching its letter with its mirror opposite (A => Z), (B => Y),\
-  \ (C => X) etc.  \n\nYour job is to build a method called \"mirror\" which will\
-  \ decrypt the messages. Resulting messages will be in lowercase.\n\nTo add more\
-  \ secrecy, you are to accept a second optional parameter, telling you which letters\
-  \ or characters are to be reversed; if it is not given, consider the whole alphabet\
-  \ as a default.\n\nTo make it a bit more clear: e.g. in case of \"abcdefgh\" as\
-  \ the second optional parameter, you replace \"a\" with \"h\", \"b\" with \"g\"\
-  \ etc. .\n\nFor example:\n```python\nmirror(\"Welcome home\"), \"dvoxlnv slnv\"\
-  \ #whole alphabet mirrored here\nmirror(\"hello\", \"abcdefgh\"), \"adllo\" #notice\
-  \ only \"h\" and \"e\" get reversed\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def mirror (s : String) (alphabet : String := \"abcdefghijklmnopqrstuvwxyz\"\
-  ) : String := sorry\n\ntheorem double_mirror_returns_original (s : String) :\n \
-  \ mirror (mirror s) = s.toLower := sorry\n"
-"vc-theorems": "theorem mirror_identity_with_empty_chars (s : String) :\n  mirror\
-  \ s \"\" = s.toLower := sorry\n\n\ntheorem empty_string_mirror :\n  mirror \"\"\
-  \ = \"\" ∧ mirror \"\" \"\" = \"\" := sorry\n\n\ntheorem mirror_preserves_non_mapped_chars\
-  \ :\n  mirror \"123!@#\" \"abc\" = \"123!@#\" := sorry\n\n\ntheorem basic_mirror\
-  \ :\n  mirror \"abcxyz\" = \"zyxcba\" := sorry\n\n/--\ninfo: 'dvoxlnv slnv'\n-/\n\
-  #guard_msgs in\n#eval mirror \"Welcome home\"\n\n/--\ninfo: 'adllo'\n-/\n#guard_msgs\
-  \ in\n#eval mirror \"hello\" \"abcdefgh\"\n\n/--\ninfo: 'this is a secret'\n-/\n\
-  #guard_msgs in\n#eval mirror \"gsrh rh z hvxivg\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Your back at your newly acquired decrypting job for the secret organization when a new assignment comes in.   Apparently the enemy has been communicating using a device they call "The Mirror".  
+  It is a rudimentary device with encrypts the message by switching its letter with its mirror opposite (A => Z), (B => Y), (C => X) etc.  
+
+  Your job is to build a method called "mirror" which will decrypt the messages. Resulting messages will be in lowercase.
+
+  To add more secrecy, you are to accept a second optional parameter, telling you which letters or characters are to be reversed; if it is not given, consider the whole alphabet as a default.
+
+  To make it a bit more clear: e.g. in case of "abcdefgh" as the second optional parameter, you replace "a" with "h", "b" with "g" etc. .
+
+  For example:
+  ```python
+  mirror("Welcome home"), "dvoxlnv slnv" #whole alphabet mirrored here
+  mirror("hello", "abcdefgh"), "adllo" #notice only "h" and "e" get reversed
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def mirror (s : String) (alphabet : String := "abcdefghijklmnopqrstuvwxyz") : String := sorry
+
+  theorem double_mirror_returns_original (s : String) :
+    mirror (mirror s) = s.toLower := sorry
+vc-theorems: |
+  theorem mirror_identity_with_empty_chars (s : String) :
+    mirror s "" = s.toLower := sorry
+
+
+  theorem empty_string_mirror :
+    mirror "" = "" ∧ mirror "" "" = "" := sorry
+
+
+  theorem mirror_preserves_non_mapped_chars :
+    mirror "123!@#" "abc" = "123!@#" := sorry
+
+
+  theorem basic_mirror :
+    mirror "abcxyz" = "zyxcba" := sorry
+
+  /--
+  info: 'dvoxlnv slnv'
+  -/
+  #guard_msgs in
+  #eval mirror "Welcome home"
+
+  /--
+  info: 'adllo'
+  -/
+  #guard_msgs in
+  #eval mirror "hello" "abcdefgh"
+
+  /--
+  info: 'this is a secret'
+  -/
+  #guard_msgs in
+  #eval mirror "gsrh rh z hvxivg"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,32 +1,87 @@
-"vc-description": "You drop a ball from a given height. After each bounce, the ball\
-  \ returns to some fixed proportion of its previous height. If the ball bounces to\
-  \ height 1 or less, we consider it to have stopped bouncing. Return the number of\
-  \ bounces it takes for the ball to stop moving.\n\n```\nbouncingBall(initialHeight,\
-  \ bouncingProportion)\n\nboucingBall(4, 0.5)\nAfter first bounce, ball bounces to\
-  \ height 2\nAfter second bounce, ball bounces to height 1\nTherefore answer is 2\
-  \ bounces\n\nboucingBall(30, 0.3)\nAfter first bounce, ball bounces to height 9\n\
-  After second bounce, ball bounces to height 2.7\nAfter third bounce, ball bounces\
-  \ to height 0.81\nTherefore answer is 3 bounces\n\n\n```\n\nInitial height is an\
-  \ integer in range [2,1000]\n\nBouncing Proportion is a decimal in range [0, 1)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def bouncing_ball (initial : Int) (proportion : Float) : Int :=\n\
-  \  sorry \n"
-"vc-theorems": "theorem bouncing_ball_positive \n  (initial : Int) (proportion : Float)\n\
-  \  (h1 : initial ≥ 2) (h2 : initial ≤ 1000)\n  (h3 : proportion > 0.001) (h4 : proportion\
-  \ < 0.999) :\n  bouncing_ball initial proportion > 0 :=\n  sorry\n\n\ntheorem bouncing_ball_is_int\n\
-  \  (initial : Int) (proportion : Float)\n  (h1 : initial ≥ 2) (h2 : initial ≤ 1000)\
-  \ \n  (h3 : proportion > 0.001) (h4 : proportion < 0.999) :\n  ∃ n : Int, bouncing_ball\
-  \ initial proportion = n :=\n  sorry\n\n\ntheorem bouncing_ball_final_height\n \
-  \ (initial : Int) (proportion : Float)\n  (h1 : initial ≥ 2) (h2 : initial ≤ 1000)\n\
-  \  (h3 : proportion > 0.001) (h4 : proportion < 0.999) :\n  let result := bouncing_ball\
-  \ initial proportion\n  let final_height := Float.ofInt initial * Float.pow proportion\
-  \ (Float.ofInt result)\n  final_height ≤ 1 :=\n  sorry\n\n\ntheorem bouncing_ball_previous_height\n\
-  \  (initial : Int) (proportion : Float)\n  (h1 : initial ≥ 2) (h2 : initial ≤ 1000)\n\
-  \  (h3 : proportion > 0.001) (h4 : proportion < 0.999) :\n  let result := bouncing_ball\
-  \ initial proportion\n  let previous_height := Float.ofInt initial * Float.pow proportion\
-  \ (Float.ofInt result - 1)\n  previous_height > 1 :=\n  sorry\n\n/--\ninfo: 2\n\
-  -/\n#guard_msgs in\n#eval bouncing_ball 4 0.5\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
-  #eval bouncing_ball 30 0.3\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval bouncing_ball\
-  \ 10 0.1\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  You drop a ball from a given height. After each bounce, the ball returns to some fixed proportion of its previous height. If the ball bounces to height 1 or less, we consider it to have stopped bouncing. Return the number of bounces it takes for the ball to stop moving.
+
+  ```
+  bouncingBall(initialHeight, bouncingProportion)
+
+  boucingBall(4, 0.5)
+  After first bounce, ball bounces to height 2
+  After second bounce, ball bounces to height 1
+  Therefore answer is 2 bounces
+
+  boucingBall(30, 0.3)
+  After first bounce, ball bounces to height 9
+  After second bounce, ball bounces to height 2.7
+  After third bounce, ball bounces to height 0.81
+  Therefore answer is 3 bounces
+
+
+  ```
+
+  Initial height is an integer in range [2,1000]
+
+  Bouncing Proportion is a decimal in range [0, 1)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def bouncing_ball (initial : Int) (proportion : Float) : Int :=
+    sorry 
+vc-theorems: |
+  theorem bouncing_ball_positive 
+    (initial : Int) (proportion : Float)
+    (h1 : initial ≥ 2) (h2 : initial ≤ 1000)
+    (h3 : proportion > 0.001) (h4 : proportion < 0.999) :
+    bouncing_ball initial proportion > 0 :=
+    sorry
+
+
+  theorem bouncing_ball_is_int
+    (initial : Int) (proportion : Float)
+    (h1 : initial ≥ 2) (h2 : initial ≤ 1000) 
+    (h3 : proportion > 0.001) (h4 : proportion < 0.999) :
+    ∃ n : Int, bouncing_ball initial proportion = n :=
+    sorry
+
+
+  theorem bouncing_ball_final_height
+    (initial : Int) (proportion : Float)
+    (h1 : initial ≥ 2) (h2 : initial ≤ 1000)
+    (h3 : proportion > 0.001) (h4 : proportion < 0.999) :
+    let result := bouncing_ball initial proportion
+    let final_height := Float.ofInt initial * Float.pow proportion (Float.ofInt result)
+    final_height ≤ 1 :=
+    sorry
+
+
+  theorem bouncing_ball_previous_height
+    (initial : Int) (proportion : Float)
+    (h1 : initial ≥ 2) (h2 : initial ≤ 1000)
+    (h3 : proportion > 0.001) (h4 : proportion < 0.999) :
+    let result := bouncing_ball initial proportion
+    let previous_height := Float.ofInt initial * Float.pow proportion (Float.ofInt result - 1)
+    previous_height > 1 :=
+    sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval bouncing_ball 4 0.5
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval bouncing_ball 30 0.3
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval bouncing_ball 10 0.1
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

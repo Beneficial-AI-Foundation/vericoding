@@ -1,25 +1,63 @@
-"vc-description": "In this kata you have to correctly return who is the \"survivor\"\
-  , ie: the last element of a Josephus permutation.\n\nBasically you have to assume\
-  \ that n people are put into a circle and that they are eliminated in steps of k\
-  \ elements, like this:\n\n```\njosephus_survivor(7,3) => means 7 people in a circle;\n\
-  one every 3 is eliminated until one remains\n[1,2,3,4,5,6,7] - initial sequence\n\
-  [1,2,4,5,6,7] => 3 is counted out\n[1,2,4,5,7] => 6 is counted out\n[1,4,5,7] =>\
-  \ 2 is counted out\n[1,4,5] => 7 is counted out\n[1,4] => 5 is counted out\n[4]\
-  \ => 1 counted out, 4 is the last element - the survivor!\n```\n\nThe above link\
-  \ about the \"base\" kata description will give you a more thorough insight about\
-  \ the origin of this kind of permutation, but basically that's all that there is\
-  \ to know to solve this kata.\n\n**Notes and tips:** using the solution to the other\
-  \ kata to check your function may be helpful, but as much larger numbers will be\
-  \ used, using an array/list to compute the number of the survivor may be too slow;\
-  \ you may assume that both n and k will always be >=1."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def josephus_survivor (n k : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem josephus_bounds {n k : Nat} (h1 : n > 0) (h2 : k > 0) : \n\
-  \  1 ≤ josephus_survivor n k ∧ josephus_survivor n k ≤ n := by\n  sorry\n\n\ntheorem\
-  \ josephus_k_one {n : Nat} (h : n > 0) :\n  josephus_survivor n 1 = n := by\n  sorry\n\
-  \n\ntheorem josephus_n_one {k : Nat} (h : k > 0) :\n  josephus_survivor 1 k = 1\
-  \ := by\n  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval josephus_survivor 7\
-  \ 3\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval josephus_survivor 11 19\n\n/--\n\
-  info: 28\n-/\n#guard_msgs in\n#eval josephus_survivor 40 3\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  In this kata you have to correctly return who is the "survivor", ie: the last element of a Josephus permutation.
+
+  Basically you have to assume that n people are put into a circle and that they are eliminated in steps of k elements, like this:
+
+  ```
+  josephus_survivor(7,3) => means 7 people in a circle;
+  one every 3 is eliminated until one remains
+  [1,2,3,4,5,6,7] - initial sequence
+  [1,2,4,5,6,7] => 3 is counted out
+  [1,2,4,5,7] => 6 is counted out
+  [1,4,5,7] => 2 is counted out
+  [1,4,5] => 7 is counted out
+  [1,4] => 5 is counted out
+  [4] => 1 counted out, 4 is the last element - the survivor!
+  ```
+
+  The above link about the "base" kata description will give you a more thorough insight about the origin of this kind of permutation, but basically that's all that there is to know to solve this kata.
+
+  **Notes and tips:** using the solution to the other kata to check your function may be helpful, but as much larger numbers will be used, using an array/list to compute the number of the survivor may be too slow; you may assume that both n and k will always be >=1.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def josephus_survivor (n k : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem josephus_bounds {n k : Nat} (h1 : n > 0) (h2 : k > 0) : 
+    1 ≤ josephus_survivor n k ∧ josephus_survivor n k ≤ n := by
+    sorry
+
+
+  theorem josephus_k_one {n : Nat} (h : n > 0) :
+    josephus_survivor n 1 = n := by
+    sorry
+
+
+  theorem josephus_n_one {k : Nat} (h : k > 0) :
+    josephus_survivor 1 k = 1 := by
+    sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval josephus_survivor 7 3
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval josephus_survivor 11 19
+
+  /--
+  info: 28
+  -/
+  #guard_msgs in
+  #eval josephus_survivor 40 3
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

@@ -1,37 +1,85 @@
-"vc-description": "You are given a weighted graph with $N$ nodes and $M$ edges. Some\
-  \ of the nodes are marked as special nodes. Your task is to find the shortest pairwise\
-  \ distance between any two different special nodes.\n\n-----Input-----\n- The first\
-  \ line of the input contains three space-separated integers $N$, $M$ and $K$ denoting\
-  \ the number of nodes, the number of edges, and the number of special nodes. \n\
-  - The next line contains $K$ space-separated distinct integers $A_{1}$, $A_{2}$,\
-  \ $\\ldots$, $A_{K}$, denoting the special nodes.\n- The next $M$ lines each contain\
-  \ three space-separated integers - $X$, $Y$, $Z$, denoting an edge connecting the\
-  \ nodes $X$ and $Y$, with weight $Z$.\n\n-----Output-----\nOutput the shortest pairwise\
-  \ distance between any two different special nodes.\n\n-----Constraints-----\n-\
-  \ The given graph is connected.\n- The given graph doesn't contain self loops and\
-  \ multiple edges.\n- $1 \\leq A_{i} \\leq N$\n- $1 \\leq Z_{j} \\leq 10^{4}$\n-\
-  \ $1 \\leq X_{j}, Y_{j} \\leq N$\n\n-----Subtasks-----\nSubtask #1 (20 points):\
-  \ \n- $2 \\leq N \\leq 300$\n- $N-1 \\leq M \\leq \\frac{N \\cdot (N-1)}{2}$\n-\
-  \ $2 \\leq K \\leq N$\nSubtask #2 (25 points):\n- $2 \\leq N \\leq 10^5$\n- $N-1\
-  \ \\leq M \\leq 10^5$\n- $2 \\leq K \\leq 10$\nSubtask #3 (55 points):\n- $2 \\\
-  leq N \\leq 10^5$\n- $N-1 \\leq M \\leq 3 \\cdot 10^5$\n- $2 \\leq K \\leq 10^4$\n\
-  \n-----Example Input-----\n5 5 3\n1 3 5\n1 2 3\n2 3 4\n3 4 1\n4 5 8\n1 5 19\n\n\
-  -----Example Output-----\n7\n\n-----Explanation-----\nNodes $1$, $3$, and $5$ are\
-  \ special nodes. Shortest distance between nodes $1$ and $3$ is $7$, and that between\
-  \ nodes $3$ and $5$ is $9$. Shortest distance between nodes $1$ and $5$ is $16$.\
-  \ Minimum of these distances is $7$. Hence answer is $7$."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_shortest_distance (n : Nat) (m : Nat) (k : Nat) (special_nodes\
-  \ : List Nat) (edges : List (Nat × Nat × Nat)) : Nat :=\nsorry\n"
-"vc-theorems": "theorem identical_nodes {n : Nat} (h: n ≥ 2) :\n  let edges := List.map\
-  \ (fun i => (i, i+1, 1)) (List.range (n-1))\n  let special_nodes := List.range n\
-  \ \n  find_shortest_distance n (n-1) n special_nodes edges = 1 :=\nsorry\n\n\ntheorem\
-  \ simple_path {n weight : Nat} (hn : n ≥ 2) (hw : weight > 0) :\n  let edges :=\
-  \ List.map (fun i => (i, i+1, weight)) (List.range (n-1))\n  let special_nodes :=\
-  \ [1, n]\n  find_shortest_distance n (n-1) 2 special_nodes edges = weight * (n-1)\
-  \ :=\nsorry\n\n\ntheorem min_input :\n  find_shortest_distance 2 1 2 [1,2] [(1,2,5)]\
-  \ = 5 :=\nsorry\n\n\ntheorem single_path :\n  find_shortest_distance 3 2 2 [1,3]\
-  \ [(1,2,1), (2,3,1)] = 2 :=\nsorry\n\n\ntheorem triangle_path :\n  find_shortest_distance\
-  \ 3 3 2 [1,3] [(1,2,1), (2,3,1), (1,3,3)] = 2 :=\nsorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  You are given a weighted graph with $N$ nodes and $M$ edges. Some of the nodes are marked as special nodes. Your task is to find the shortest pairwise distance between any two different special nodes.
+
+  -----Input-----
+  - The first line of the input contains three space-separated integers $N$, $M$ and $K$ denoting the number of nodes, the number of edges, and the number of special nodes. 
+  - The next line contains $K$ space-separated distinct integers $A_{1}$, $A_{2}$, $\ldots$, $A_{K}$, denoting the special nodes.
+  - The next $M$ lines each contain three space-separated integers - $X$, $Y$, $Z$, denoting an edge connecting the nodes $X$ and $Y$, with weight $Z$.
+
+  -----Output-----
+  Output the shortest pairwise distance between any two different special nodes.
+
+  -----Constraints-----
+  - The given graph is connected.
+  - The given graph doesn't contain self loops and multiple edges.
+  - $1 \leq A_{i} \leq N$
+  - $1 \leq Z_{j} \leq 10^{4}$
+  - $1 \leq X_{j}, Y_{j} \leq N$
+
+  -----Subtasks-----
+  Subtask #1 (20 points): 
+  - $2 \leq N \leq 300$
+  - $N-1 \leq M \leq \frac{N \cdot (N-1)}{2}$
+  - $2 \leq K \leq N$
+  Subtask #2 (25 points):
+  - $2 \leq N \leq 10^5$
+  - $N-1 \leq M \leq 10^5$
+  - $2 \leq K \leq 10$
+  Subtask #3 (55 points):
+  - $2 \leq N \leq 10^5$
+  - $N-1 \leq M \leq 3 \cdot 10^5$
+  - $2 \leq K \leq 10^4$
+
+  -----Example Input-----
+  5 5 3
+  1 3 5
+  1 2 3
+  2 3 4
+  3 4 1
+  4 5 8
+  1 5 19
+
+  -----Example Output-----
+  7
+
+  -----Explanation-----
+  Nodes $1$, $3$, and $5$ are special nodes. Shortest distance between nodes $1$ and $3$ is $7$, and that between nodes $3$ and $5$ is $9$. Shortest distance between nodes $1$ and $5$ is $16$. Minimum of these distances is $7$. Hence answer is $7$.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_shortest_distance (n : Nat) (m : Nat) (k : Nat) (special_nodes : List Nat) (edges : List (Nat × Nat × Nat)) : Nat :=
+  sorry
+vc-theorems: |-
+  theorem identical_nodes {n : Nat} (h: n ≥ 2) :
+    let edges := List.map (fun i => (i, i+1, 1)) (List.range (n-1))
+    let special_nodes := List.range n 
+    find_shortest_distance n (n-1) n special_nodes edges = 1 :=
+  sorry
+
+
+  theorem simple_path {n weight : Nat} (hn : n ≥ 2) (hw : weight > 0) :
+    let edges := List.map (fun i => (i, i+1, weight)) (List.range (n-1))
+    let special_nodes := [1, n]
+    find_shortest_distance n (n-1) 2 special_nodes edges = weight * (n-1) :=
+  sorry
+
+
+  theorem min_input :
+    find_shortest_distance 2 1 2 [1,2] [(1,2,5)] = 5 :=
+  sorry
+
+
+  theorem single_path :
+    find_shortest_distance 3 2 2 [1,3] [(1,2,1), (2,3,1)] = 2 :=
+  sorry
+
+
+  theorem triangle_path :
+    find_shortest_distance 3 3 2 [1,3] [(1,2,1), (2,3,1), (1,3,3)] = 2 :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

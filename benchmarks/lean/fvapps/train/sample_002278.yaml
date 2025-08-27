@@ -1,46 +1,117 @@
-"vc-description": "The only difference between easy and hard versions is the size\
-  \ of the input.\n\nYou are given a string $s$ consisting of $n$ characters, each\
-  \ character is 'R', 'G' or 'B'.\n\nYou are also given an integer $k$. Your task\
-  \ is to change the minimum number of characters in the initial string $s$ so that\
-  \ after the changes there will be a string of length $k$ that is a substring of\
-  \ $s$, and is also a substring of the infinite string \"RGBRGBRGB ...\".\n\nA string\
-  \ $a$ is a substring of string $b$ if there exists a positive integer $i$ such that\
-  \ $a_1 = b_i$, $a_2 = b_{i + 1}$, $a_3 = b_{i + 2}$, ..., $a_{|a|} = b_{i + |a|\
-  \ - 1}$. For example, strings \"GBRG\", \"B\", \"BR\" are substrings of the infinite\
-  \ string \"RGBRGBRGB ...\" while \"GR\", \"RGR\" and \"GGG\" are not.\n\nYou have\
-  \ to answer $q$ independent queries.\n\n\n-----Input-----\n\nThe first line of the\
-  \ input contains one integer $q$ ($1 \\le q \\le 2 \\cdot 10^5$) — the number of\
-  \ queries. Then $q$ queries follow.\n\nThe first line of the query contains two\
-  \ integers $n$ and $k$ ($1 \\le k \\le n \\le 2 \\cdot 10^5$) — the length of the\
-  \ string $s$ and the length of the substring.\n\nThe second line of the query contains\
-  \ a string $s$ consisting of $n$ characters 'R', 'G' and 'B'.\n\nIt is guaranteed\
-  \ that the sum of $n$ over all queries does not exceed $2 \\cdot 10^5$ ($\\sum n\
-  \ \\le 2 \\cdot 10^5$).\n\n\n-----Output-----\n\nFor each query print one integer —\
-  \ the minimum number of characters you need to change in the initial string $s$\
-  \ so that after changing there will be a substring of length $k$ in $s$ that is\
-  \ also a substring of the infinite string \"RGBRGBRGB ...\".\n\n\n-----Example-----\n\
-  Input\n3\n5 2\nBGGGG\n5 3\nRBRGR\n5 5\nBBBRR\n\nOutput\n1\n0\n3\n\n\n\n-----Note-----\n\
-  \nIn the first example, you can change the first character to 'R' and obtain the\
-  \ substring \"RG\", or change the second character to 'R' and obtain \"BR\", or\
-  \ change the third, fourth or fifth character to 'B' and obtain \"GB\".\n\nIn the\
-  \ second example, the substring is \"BRG\"."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def min_changes_for_rgb_substring (n k : Nat) (s : String) : Nat\
-  \ :=\n  sorry\n\n-- General properties"
-"vc-theorems": "theorem min_changes_non_negative (n k : Nat) (s : String) :\n  (1\
-  \ ≤ k) → (k ≤ n) → (s.length = n) → \n  min_changes_for_rgb_substring n k s ≥ 0\
-  \ :=\n  sorry\n\n\ntheorem min_changes_upper_bound (n k : Nat) (s : String) :\n\
-  \  (1 ≤ k) → (k ≤ n) → (s.length = n) →\n  min_changes_for_rgb_substring n k s ≤\
-  \ k :=\n  sorry\n\n-- When k equals string length\n\ntheorem k_equals_length (s\
-  \ : String) :\n  s.length > 0 →\n  let n := s.length\n  0 ≤ min_changes_for_rgb_substring\
-  \ n n s ∧ \n  min_changes_for_rgb_substring n n s ≤ n :=\n  sorry\n\n-- When k equals\
-  \ 1\n\ntheorem k_equals_one (n : Nat) (s : String) :\n  (s.length = n) →\n  min_changes_for_rgb_substring\
-  \ n 1 s ≤ 1 :=\n  sorry\n\n-- For string of all same characters\n\ntheorem all_same_char\
-  \ (n : Nat) (s : String) :\n  n ≥ 3 →\n  (s.length = n) →\n  (∀ c, c ∈ s.data →\
-  \ c = 'R') →\n  min_changes_for_rgb_substring n 3 s > 0 :=\n  sorry\n\n/--\ninfo:\
-  \ 1\n-/\n#guard_msgs in\n#eval min_changes_for_rgb_substring 5 2 \"BGGGG\"\n\n/--\n\
-  info: 0\n-/\n#guard_msgs in\n#eval min_changes_for_rgb_substring 5 3 \"RBRGR\"\n\
-  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval min_changes_for_rgb_substring 5 5 \"BBBRR\"\
-  \n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  The only difference between easy and hard versions is the size of the input.
+
+  You are given a string $s$ consisting of $n$ characters, each character is 'R', 'G' or 'B'.
+
+  You are also given an integer $k$. Your task is to change the minimum number of characters in the initial string $s$ so that after the changes there will be a string of length $k$ that is a substring of $s$, and is also a substring of the infinite string "RGBRGBRGB ...".
+
+  A string $a$ is a substring of string $b$ if there exists a positive integer $i$ such that $a_1 = b_i$, $a_2 = b_{i + 1}$, $a_3 = b_{i + 2}$, ..., $a_{|a|} = b_{i + |a| - 1}$. For example, strings "GBRG", "B", "BR" are substrings of the infinite string "RGBRGBRGB ..." while "GR", "RGR" and "GGG" are not.
+
+  You have to answer $q$ independent queries.
+
+
+  -----Input-----
+
+  The first line of the input contains one integer $q$ ($1 \le q \le 2 \cdot 10^5$) — the number of queries. Then $q$ queries follow.
+
+  The first line of the query contains two integers $n$ and $k$ ($1 \le k \le n \le 2 \cdot 10^5$) — the length of the string $s$ and the length of the substring.
+
+  The second line of the query contains a string $s$ consisting of $n$ characters 'R', 'G' and 'B'.
+
+  It is guaranteed that the sum of $n$ over all queries does not exceed $2 \cdot 10^5$ ($\sum n \le 2 \cdot 10^5$).
+
+
+  -----Output-----
+
+  For each query print one integer — the minimum number of characters you need to change in the initial string $s$ so that after changing there will be a substring of length $k$ in $s$ that is also a substring of the infinite string "RGBRGBRGB ...".
+
+
+  -----Example-----
+  Input
+  3
+  5 2
+  BGGGG
+  5 3
+  RBRGR
+  5 5
+  BBBRR
+
+  Output
+  1
+  0
+  3
+
+
+
+  -----Note-----
+
+  In the first example, you can change the first character to 'R' and obtain the substring "RG", or change the second character to 'R' and obtain "BR", or change the third, fourth or fifth character to 'B' and obtain "GB".
+
+  In the second example, the substring is "BRG".
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def min_changes_for_rgb_substring (n k : Nat) (s : String) : Nat :=
+    sorry
+
+  -- General properties
+vc-theorems: |
+  theorem min_changes_non_negative (n k : Nat) (s : String) :
+    (1 ≤ k) → (k ≤ n) → (s.length = n) → 
+    min_changes_for_rgb_substring n k s ≥ 0 :=
+    sorry
+
+
+  theorem min_changes_upper_bound (n k : Nat) (s : String) :
+    (1 ≤ k) → (k ≤ n) → (s.length = n) →
+    min_changes_for_rgb_substring n k s ≤ k :=
+    sorry
+
+  -- When k equals string length
+
+  theorem k_equals_length (s : String) :
+    s.length > 0 →
+    let n := s.length
+    0 ≤ min_changes_for_rgb_substring n n s ∧ 
+    min_changes_for_rgb_substring n n s ≤ n :=
+    sorry
+
+  -- When k equals 1
+
+  theorem k_equals_one (n : Nat) (s : String) :
+    (s.length = n) →
+    min_changes_for_rgb_substring n 1 s ≤ 1 :=
+    sorry
+
+  -- For string of all same characters
+
+  theorem all_same_char (n : Nat) (s : String) :
+    n ≥ 3 →
+    (s.length = n) →
+    (∀ c, c ∈ s.data → c = 'R') →
+    min_changes_for_rgb_substring n 3 s > 0 :=
+    sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_changes_for_rgb_substring 5 2 "BGGGG"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_changes_for_rgb_substring 5 3 "RBRGR"
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_changes_for_rgb_substring 5 5 "BBBRR"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

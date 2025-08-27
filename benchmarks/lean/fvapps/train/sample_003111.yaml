@@ -1,29 +1,97 @@
-"vc-description": "## Find Mean\n\nFind the mean (average) of a list of numbers in\
-  \ an array.\n\n## Information\n\nTo find the mean (average) of a set of numbers\
-  \ add all of the numbers together and divide by the number of values in the list.\n\
-  \nFor an example list of `1, 3, 5, 7`\n\n1. Add all of the numbers\n\n```\n1+3+5+7\
-  \ = 16\n```\n\n2. Divide by the number of values in the list. In this example there\
-  \ are 4 numbers in the list.\n\n```\n16/4 = 4\n```\n\n3. The mean (or average) of\
-  \ this list is 4"
-"vc-preamble": "import Imports.AllImports\n\ndef find_average [Add α] [Div α] [OfNat\
-  \ α 0] : List α → α \n  | [] => 0\n  | xs => sorry\n\n\ndef list_min : List Float\
-  \ → Float \n  | [] => 0\n  | (x::xs) => sorry\n\n\ndef list_max : List Float → Float\n\
-  \  | [] => 0\n  | (x::xs) => sorry\n\n\ndef list_sum : List Float → Float\n  | []\
-  \ => 0\n  | (x::xs) => sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def abs (x : Float) : Float := sorry\n\ndef toFloat (n : Nat) :\
-  \ Float := sorry\n"
-"vc-theorems": "theorem find_average_empty {α} [Add α] [Div α] [OfNat α 0] (nums :\
-  \ List α) : \n  nums = [] → find_average nums = 0 := by sorry\n\n\ntheorem find_average_bounds\
-  \ (nums : List Float) (h : nums ≠ []) : \n  list_min nums ≤ find_average nums ∧\
-  \ \n  find_average nums ≤ list_max nums := by sorry\n\n\ntheorem find_average_sum\
-  \ (nums : List Float) :\n  abs (find_average nums * toFloat nums.length - list_sum\
-  \ nums) < 1e-10 := by sorry\n\n\ntheorem find_average_float_empty (nums : List Float)\
-  \ :\n  nums = [] → find_average nums = 0 := by sorry\n\n\ntheorem find_average_float_type\
-  \ (nums : List Float) (h : nums ≠ []) : \n  find_average nums + 0 = find_average\
-  \ nums := by sorry\n\n\ntheorem find_average_float_sum (nums : List Float) :\n \
-  \ abs (find_average nums * toFloat nums.length - list_sum nums) < 1e-6 := by sorry\n\
-  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_average [1]\n\n/--\ninfo: 4\n-/\n\
-  #guard_msgs in\n#eval find_average [1, 3, 5, 7]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
-  \ in\n#eval find_average []\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ## Find Mean
+
+  Find the mean (average) of a list of numbers in an array.
+
+  ## Information
+
+  To find the mean (average) of a set of numbers add all of the numbers together and divide by the number of values in the list.
+
+  For an example list of `1, 3, 5, 7`
+
+  1. Add all of the numbers
+
+  ```
+  1+3+5+7 = 16
+  ```
+
+  2. Divide by the number of values in the list. In this example there are 4 numbers in the list.
+
+  ```
+  16/4 = 4
+  ```
+
+  3. The mean (or average) of this list is 4
+vc-preamble: |
+  import Imports.AllImports
+
+  def find_average [Add α] [Div α] [OfNat α 0] : List α → α 
+    | [] => 0
+    | xs => sorry
+
+
+  def list_min : List Float → Float 
+    | [] => 0
+    | (x::xs) => sorry
+
+
+  def list_max : List Float → Float
+    | [] => 0
+    | (x::xs) => sorry
+
+
+  def list_sum : List Float → Float
+    | [] => 0
+    | (x::xs) => sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def abs (x : Float) : Float := sorry
+
+  def toFloat (n : Nat) : Float := sorry
+vc-theorems: |
+  theorem find_average_empty {α} [Add α] [Div α] [OfNat α 0] (nums : List α) : 
+    nums = [] → find_average nums = 0 := by sorry
+
+
+  theorem find_average_bounds (nums : List Float) (h : nums ≠ []) : 
+    list_min nums ≤ find_average nums ∧ 
+    find_average nums ≤ list_max nums := by sorry
+
+
+  theorem find_average_sum (nums : List Float) :
+    abs (find_average nums * toFloat nums.length - list_sum nums) < 1e-10 := by sorry
+
+
+  theorem find_average_float_empty (nums : List Float) :
+    nums = [] → find_average nums = 0 := by sorry
+
+
+  theorem find_average_float_type (nums : List Float) (h : nums ≠ []) : 
+    find_average nums + 0 = find_average nums := by sorry
+
+
+  theorem find_average_float_sum (nums : List Float) :
+    abs (find_average nums * toFloat nums.length - list_sum nums) < 1e-6 := by sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_average [1]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval find_average [1, 3, 5, 7]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_average []
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

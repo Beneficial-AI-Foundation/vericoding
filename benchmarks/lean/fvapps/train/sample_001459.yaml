@@ -1,52 +1,99 @@
-"vc-description": "Raj is a math pro and number theory expert. One day, he met his\
-  \ age-old friend Chef. Chef claimed to be better at number theory than Raj, so Raj\
-  \ gave him some fuzzy problems to solve. In one of those problems, he gave Chef\
-  \ a 3$3$-tuple of non-negative integers (a0,b0,c0)$(a_0, b_0, c_0)$ and told Chef\
-  \ to convert it to another tuple (x,y,z)$(x, y, z)$.\nChef may perform the following\
-  \ operations any number of times (including zero) on his current tuple (a,b,c)$(a,\
-  \ b, c)$, in any order:\n- Choose one element of this tuple, i.e. a$a$, b$b$ or\
-  \ c$c$. Either add 1$1$ to that element or subtract 1$1$ from it. The cost of this\
-  \ operation is 1$1$.\n- Merge: Change the tuple to (a−1,b−1,c+1)$(a-1, b-1, c+1)$,\
-  \ (a−1,b+1,c−1)$(a-1, b+1, c-1)$ or (a+1,b−1,c−1)$(a+1, b-1, c-1)$, i.e. add 1$1$\
-  \ to one element and subtract 1$1$ from the other two. The cost of this operation\
-  \ is 0$0$.\n- Split: Change the tuple to (a−1,b+1,c+1)$(a-1, b+1, c+1)$, (a+1,b−1,c+1)$(a+1,\
-  \ b-1, c+1)$ or (a+1,b+1,c−1)$(a+1, b+1, c-1)$, i.e. subtract 1$1$ from one element\
-  \ and add 1$1$ to the other two. The cost of this operation is also 0$0$.\nAfter\
-  \ each operation, all elements of Chef's tuple must be non-negative. It is not allowed\
-  \ to perform an operation that would make one or more elements of this tuple negative.\n\
-  Can you help Chef find the minimum cost of converting the tuple (a0,b0,c0)$(a_0,\
-  \ b_0, c_0)$ to the tuple (x,y,z)$(x, y, z)$? It can be easily proved that it is\
-  \ always possible to convert any tuple of non-negative integers to any other.\n\n\
-  -----Input-----\n- The first line of the input contains a single integer T$T$ denoting\
-  \ the number of test cases. The description of T$T$ test cases follows.\n- The first\
-  \ and only line of each test case contains six space-separated integers a0$a_0$,\
-  \ b0$b_0$, c0$c_0$, x$x$, y$y$ and z$z$.\n\n-----Output-----\nFor each test case,\
-  \ print a single line containing one integer ― the minimum cost.\n\n-----Constraints-----\n\
-  - 1≤T≤105$1 \\le T \\le 10^5$\n- 0≤a0,b0,c0,x,y,z≤1018$0 \\le a_0, b_0, c_0, x,\
-  \ y, z \\le 10^{18}$\n\n-----Subtasks-----\nSubtask #1 (20 points): 0≤a0,b0,c0,x,y,z≤100$0\
-  \ \\le a_0, b_0, c_0, x, y, z \\le 100$\nSubtask #2 (80 points): original constraints\n\
-  \n-----Example Input-----\n2\n1 1 1 2 2 2\n1 2 3 2 4 2\n\n-----Example Output-----\n\
-  0\n1\n\n-----Explanation-----\nExample case 1: The tuple (1,1,1)$(1, 1, 1)$ can\
-  \ be converted to (2,2,2)$(2, 2, 2)$ using only three Split operations, with cost\
-  \ 0$0$: (1,1,1)→(2,0,2)→(1,1,3)→(2,2,2)$(1, 1, 1) \\rightarrow (2, 0, 2) \\rightarrow\
-  \ (1, 1, 3) \\rightarrow (2, 2, 2)$.\nExample case 2: We can use one addition operation\
-  \ and one Split operation: (1,2,3)→(1,3,3)→(2,4,2)$(1, 2, 3) \\rightarrow (1, 3,\
-  \ 3) \\rightarrow (2, 4, 2)$."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_minimum_cost (a₀ b₀ c₀ x y z : Nat) : Nat :=\nsorry\n"
-"vc-theorems": "theorem solve_minimum_cost_output_range \n  (a₀ b₀ c₀ x y z : Nat)\
-  \ \n  (h1 : a₀ ≤ 1000) (h2 : b₀ ≤ 1000) (h3 : c₀ ≤ 1000)\n  (h4 : x ≤ 1000) (h5\
-  \ : y ≤ 1000) (h6 : z ≤ 1000) :\n  solve_minimum_cost a₀ b₀ c₀ x y z ≤ 2 :=\nsorry\n\
-  \n\ntheorem solve_minimum_cost_equal_case\n  (a₀ b₀ c₀ x y z : Nat)\n  (h1 : a₀\
-  \ = x) (h2 : b₀ = y) (h3 : c₀ = z) :\n  solve_minimum_cost a₀ b₀ c₀ x y z = 0 :=\n\
-  sorry\n\n\ntheorem solve_minimum_cost_all_zeros\n  (a₀ b₀ c₀ x y z : Nat)\n  (h1\
-  \ : a₀ = 0) (h2 : b₀ = 0) (h3 : c₀ = 0)\n  (h4 : x = 0) (h5 : y = 0) (h6 : z = 0)\
-  \ :\n  solve_minimum_cost a₀ b₀ c₀ x y z = 0 :=\nsorry\n\n\ntheorem solve_minimum_cost_zero_to_even\n\
-  \  (h1 : solve_minimum_cost 0 0 0 2 2 2 = 2) :\n  solve_minimum_cost 0 0 0 2 2 2\
-  \ = 2 :=\nsorry\n\n\ntheorem solve_minimum_cost_odd_to_zero\n  (h1 : solve_minimum_cost\
-  \ 1 1 1 0 0 0 = 2) :\n  solve_minimum_cost 1 1 1 0 0 0 = 2 :=\nsorry\n\n/--\ninfo:\
-  \ 0\n-/\n#guard_msgs in\n#eval solve_minimum_cost 1 1 1 2 2 2\n\n/--\ninfo: 1\n\
-  -/\n#guard_msgs in\n#eval solve_minimum_cost 1 2 3 2 4 2\n\n/--\ninfo: 2\n-/\n#guard_msgs\
-  \ in\n#eval solve_minimum_cost 0 0 0 2 2 0\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Raj is a math pro and number theory expert. One day, he met his age-old friend Chef. Chef claimed to be better at number theory than Raj, so Raj gave him some fuzzy problems to solve. In one of those problems, he gave Chef a 3$3$-tuple of non-negative integers (a0,b0,c0)$(a_0, b_0, c_0)$ and told Chef to convert it to another tuple (x,y,z)$(x, y, z)$.
+  Chef may perform the following operations any number of times (including zero) on his current tuple (a,b,c)$(a, b, c)$, in any order:
+  - Choose one element of this tuple, i.e. a$a$, b$b$ or c$c$. Either add 1$1$ to that element or subtract 1$1$ from it. The cost of this operation is 1$1$.
+  - Merge: Change the tuple to (a−1,b−1,c+1)$(a-1, b-1, c+1)$, (a−1,b+1,c−1)$(a-1, b+1, c-1)$ or (a+1,b−1,c−1)$(a+1, b-1, c-1)$, i.e. add 1$1$ to one element and subtract 1$1$ from the other two. The cost of this operation is 0$0$.
+  - Split: Change the tuple to (a−1,b+1,c+1)$(a-1, b+1, c+1)$, (a+1,b−1,c+1)$(a+1, b-1, c+1)$ or (a+1,b+1,c−1)$(a+1, b+1, c-1)$, i.e. subtract 1$1$ from one element and add 1$1$ to the other two. The cost of this operation is also 0$0$.
+  After each operation, all elements of Chef's tuple must be non-negative. It is not allowed to perform an operation that would make one or more elements of this tuple negative.
+  Can you help Chef find the minimum cost of converting the tuple (a0,b0,c0)$(a_0, b_0, c_0)$ to the tuple (x,y,z)$(x, y, z)$? It can be easily proved that it is always possible to convert any tuple of non-negative integers to any other.
+
+  -----Input-----
+  - The first line of the input contains a single integer T$T$ denoting the number of test cases. The description of T$T$ test cases follows.
+  - The first and only line of each test case contains six space-separated integers a0$a_0$, b0$b_0$, c0$c_0$, x$x$, y$y$ and z$z$.
+
+  -----Output-----
+  For each test case, print a single line containing one integer ― the minimum cost.
+
+  -----Constraints-----
+  - 1≤T≤105$1 \le T \le 10^5$
+  - 0≤a0,b0,c0,x,y,z≤1018$0 \le a_0, b_0, c_0, x, y, z \le 10^{18}$
+
+  -----Subtasks-----
+  Subtask #1 (20 points): 0≤a0,b0,c0,x,y,z≤100$0 \le a_0, b_0, c_0, x, y, z \le 100$
+  Subtask #2 (80 points): original constraints
+
+  -----Example Input-----
+  2
+  1 1 1 2 2 2
+  1 2 3 2 4 2
+
+  -----Example Output-----
+  0
+  1
+
+  -----Explanation-----
+  Example case 1: The tuple (1,1,1)$(1, 1, 1)$ can be converted to (2,2,2)$(2, 2, 2)$ using only three Split operations, with cost 0$0$: (1,1,1)→(2,0,2)→(1,1,3)→(2,2,2)$(1, 1, 1) \rightarrow (2, 0, 2) \rightarrow (1, 1, 3) \rightarrow (2, 2, 2)$.
+  Example case 2: We can use one addition operation and one Split operation: (1,2,3)→(1,3,3)→(2,4,2)$(1, 2, 3) \rightarrow (1, 3, 3) \rightarrow (2, 4, 2)$.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_minimum_cost (a₀ b₀ c₀ x y z : Nat) : Nat :=
+  sorry
+vc-theorems: |
+  theorem solve_minimum_cost_output_range 
+    (a₀ b₀ c₀ x y z : Nat) 
+    (h1 : a₀ ≤ 1000) (h2 : b₀ ≤ 1000) (h3 : c₀ ≤ 1000)
+    (h4 : x ≤ 1000) (h5 : y ≤ 1000) (h6 : z ≤ 1000) :
+    solve_minimum_cost a₀ b₀ c₀ x y z ≤ 2 :=
+  sorry
+
+
+  theorem solve_minimum_cost_equal_case
+    (a₀ b₀ c₀ x y z : Nat)
+    (h1 : a₀ = x) (h2 : b₀ = y) (h3 : c₀ = z) :
+    solve_minimum_cost a₀ b₀ c₀ x y z = 0 :=
+  sorry
+
+
+  theorem solve_minimum_cost_all_zeros
+    (a₀ b₀ c₀ x y z : Nat)
+    (h1 : a₀ = 0) (h2 : b₀ = 0) (h3 : c₀ = 0)
+    (h4 : x = 0) (h5 : y = 0) (h6 : z = 0) :
+    solve_minimum_cost a₀ b₀ c₀ x y z = 0 :=
+  sorry
+
+
+  theorem solve_minimum_cost_zero_to_even
+    (h1 : solve_minimum_cost 0 0 0 2 2 2 = 2) :
+    solve_minimum_cost 0 0 0 2 2 2 = 2 :=
+  sorry
+
+
+  theorem solve_minimum_cost_odd_to_zero
+    (h1 : solve_minimum_cost 1 1 1 0 0 0 = 2) :
+    solve_minimum_cost 1 1 1 0 0 0 = 2 :=
+  sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve_minimum_cost 1 1 1 2 2 2
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_minimum_cost 1 2 3 2 4 2
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve_minimum_cost 0 0 0 2 2 0
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

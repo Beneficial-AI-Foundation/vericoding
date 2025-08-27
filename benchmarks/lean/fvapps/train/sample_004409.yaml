@@ -1,46 +1,125 @@
-"vc-description": "###Task:\n\nYou have to write a function **pattern** which returns\
-  \ the following Pattern(See Examples) upto n rows, where n is parameter.\n\n####Rules/Note:\n\
-  * If the Argument is 0 or a Negative Integer then it should return \"\" i.e. empty\
-  \ string.\n* The length of each line = (2n-1).\n* Range of n is (-∞,100]\n\n###Examples:\n\
-  \npattern(5):\n\n        12345\n       12345 \n      12345  \n     12345   \n  \
-  \  12345    \n\npattern(10):\n\n             1234567890\n            1234567890\
-  \ \n           1234567890  \n          1234567890   \n         1234567890    \n\
-  \        1234567890     \n       1234567890      \n      1234567890       \n   \
-  \  1234567890        \n    1234567890         \n\npattern(15):\n\n             \
-  \     123456789012345\n                 123456789012345 \n                123456789012345\
-  \  \n               123456789012345   \n              123456789012345    \n    \
-  \         123456789012345     \n            123456789012345      \n           123456789012345\
-  \       \n          123456789012345        \n         123456789012345         \n\
-  \        123456789012345          \n       123456789012345           \n      123456789012345\
-  \            \n     123456789012345             \n    123456789012345          \
-  \    \n\npattern(20):\n\n                       12345678901234567890\n         \
-  \             12345678901234567890 \n                     12345678901234567890 \
-  \ \n                    12345678901234567890   \n                   12345678901234567890\
-  \    \n                  12345678901234567890     \n                 12345678901234567890\
-  \      \n                12345678901234567890       \n               12345678901234567890\
-  \        \n              12345678901234567890         \n             12345678901234567890\
-  \          \n            12345678901234567890           \n           12345678901234567890\
-  \            \n          12345678901234567890             \n         12345678901234567890\
-  \              \n        12345678901234567890               \n       12345678901234567890\
-  \                \n      12345678901234567890                 \n     12345678901234567890\
-  \                  \n    12345678901234567890"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def pattern (n : Int) : String :=\n  sorry\n"
-"vc-theorems": "theorem pattern_empty_for_nonpositive (n : Int) (h : n ≤ 0) :\n  pattern\
-  \ n = \"\" :=\n  sorry\n\n\ntheorem pattern_properties (n : Int) (h : n > 0) :\n\
-  \  let result := pattern n\n  let lines := result.splitOn \"\\n\"\n  -- Number of\
-  \ lines matches input\n  lines.length = n.toNat ∧\n  -- Each line has correct total\
-  \ length\n  (∀ line ∈ lines, line.length = (2*n - 1).toNat) ∧\n  -- Each line has\
-  \ correct number of digits when stripped\n  (∀ line ∈ lines, (line.trim).length\
-  \ = n.toNat) ∧\n  -- All characters are valid digits when stripped\n  (∀ line ∈\
-  \ lines, ∀ c ∈ (line.trim).data, c ∈ ['0', '1', '2', '3', '4', '5', '6', '7', '8',\
-  \ '9']) ∧\n  -- Correct spacing pattern\n  (∀ (i : Fin lines.length), (lines[i]).startsWith\
-  \ (String.mk (List.replicate (n.toNat - i - 1) ' '))) ∧\n  (∀ (i : Fin lines.length),\
-  \ (lines[i]).endsWith (String.mk (List.replicate i.val ' '))) ∧\n  -- Same digit\
-  \ pattern on each line when stripped\n  (∀ line ∈ lines, ∀ (i : Fin lines.length),\
-  \ line.trim = lines[i].trim) :=\n  sorry\n\n/--\ninfo: '  123\\n 123 \\n123  '\n\
-  -/\n#guard_msgs in\n#eval pattern 3\n\n/--\ninfo: '    12345\\n   12345 \\n  12345\
-  \  \\n 12345   \\n12345    '\n-/\n#guard_msgs in\n#eval pattern 5\n\n/--\ninfo:\
-  \ ''\n-/\n#guard_msgs in\n#eval pattern -3\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ###Task:
+
+  You have to write a function **pattern** which returns the following Pattern(See Examples) upto n rows, where n is parameter.
+
+  ####Rules/Note:
+  * If the Argument is 0 or a Negative Integer then it should return "" i.e. empty string.
+  * The length of each line = (2n-1).
+  * Range of n is (-∞,100]
+
+  ###Examples:
+
+  pattern(5):
+
+          12345
+         12345 
+        12345  
+       12345   
+      12345    
+
+  pattern(10):
+
+               1234567890
+              1234567890 
+             1234567890  
+            1234567890   
+           1234567890    
+          1234567890     
+         1234567890      
+        1234567890       
+       1234567890        
+      1234567890         
+
+  pattern(15):
+
+                    123456789012345
+                   123456789012345 
+                  123456789012345  
+                 123456789012345   
+                123456789012345    
+               123456789012345     
+              123456789012345      
+             123456789012345       
+            123456789012345        
+           123456789012345         
+          123456789012345          
+         123456789012345           
+        123456789012345            
+       123456789012345             
+      123456789012345              
+
+  pattern(20):
+
+                         12345678901234567890
+                        12345678901234567890 
+                       12345678901234567890  
+                      12345678901234567890   
+                     12345678901234567890    
+                    12345678901234567890     
+                   12345678901234567890      
+                  12345678901234567890       
+                 12345678901234567890        
+                12345678901234567890         
+               12345678901234567890          
+              12345678901234567890           
+             12345678901234567890            
+            12345678901234567890             
+           12345678901234567890              
+          12345678901234567890               
+         12345678901234567890                
+        12345678901234567890                 
+       12345678901234567890                  
+      12345678901234567890
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def pattern (n : Int) : String :=
+    sorry
+vc-theorems: |
+  theorem pattern_empty_for_nonpositive (n : Int) (h : n ≤ 0) :
+    pattern n = "" :=
+    sorry
+
+
+  theorem pattern_properties (n : Int) (h : n > 0) :
+    let result := pattern n
+    let lines := result.splitOn "\n"
+    -- Number of lines matches input
+    lines.length = n.toNat ∧
+    -- Each line has correct total length
+    (∀ line ∈ lines, line.length = (2*n - 1).toNat) ∧
+    -- Each line has correct number of digits when stripped
+    (∀ line ∈ lines, (line.trim).length = n.toNat) ∧
+    -- All characters are valid digits when stripped
+    (∀ line ∈ lines, ∀ c ∈ (line.trim).data, c ∈ ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']) ∧
+    -- Correct spacing pattern
+    (∀ (i : Fin lines.length), (lines[i]).startsWith (String.mk (List.replicate (n.toNat - i - 1) ' '))) ∧
+    (∀ (i : Fin lines.length), (lines[i]).endsWith (String.mk (List.replicate i.val ' '))) ∧
+    -- Same digit pattern on each line when stripped
+    (∀ line ∈ lines, ∀ (i : Fin lines.length), line.trim = lines[i].trim) :=
+    sorry
+
+  /--
+  info: '  123\n 123 \n123  '
+  -/
+  #guard_msgs in
+  #eval pattern 3
+
+  /--
+  info: '    12345\n   12345 \n  12345  \n 12345   \n12345    '
+  -/
+  #guard_msgs in
+  #eval pattern 5
+
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval pattern -3
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,35 +1,89 @@
-"vc-description": "In genetics, a sequence’s motif is a nucleotides (or amino-acid)\
-  \ sequence pattern. Sequence motifs have a biological significance. For more information\
-  \ you can take a look [here](https://en.wikipedia.org/wiki/Sequence_motif).\n\n\n\
-  For this kata you need to complete the function `motif_locator`. This function receives\
-  \ 2 arguments - a sequence and a motif. Both arguments are strings.\n\nYou should\
-  \ return an array that contains all the start positions of the motif (in order).\
-  \ A sequence may contain 0 or more repetitions of the given motif. Note that the\
-  \ number of the first position is 1, not 0.\n\n**Some examples:**\n\n- For the `sequence`\
-  \ \"ACGTGGGGACTAGGGG\" and the `motif` \"GGGG\" the result should be [5, 13]. \n\
-  - For the `sequence` \"ACCGTACCAAGGGACC\" and the `motif` \"AAT\"  the result should\
-  \ be []\n- For the `sequence` \"GGG\" and the motif \"GG\" the result should be\
-  \ [1, 2]\n\n**Note**: You can take a look to my others bio-info kata [here](http://www.codewars.com/users/nbeck/authored)"
-"vc-preamble": "import Imports.AllImports\n\ndef DnaBases : List Char := ['A', 'C',\
-  \ 'G', 'T']\n\ndef isValidDnaChar (c : Char) : Bool :=\n  match DnaBases.find? (·\
-  \ == c) with\n  | some _ => true \n  | none => false\n\n\ndef isValidDnaString (s\
-  \ : String) : Bool :=\n  match s.data.find? (fun c => !isValidDnaChar c) with\n\
-  \  | some _ => false\n  | none => true \n\n\ndef motif_locator (sequence motif :\
-  \ String) : List Nat :=\nsorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def substring (s : String) (start len : Nat) : String :=\nsorry\n"
-"vc-theorems": "theorem motif_positions_valid (sequence motif : String)\n  (h1 : isValidDnaString\
-  \ sequence) \n  (h2 : isValidDnaString motif) :\n  let positions := motif_locator\
-  \ sequence motif\n  (∀ p ∈ positions, 0 < p ∧ p ≤ sequence.length) ∧ \n  (∀ p ∈\
-  \ positions, substring sequence (p-1) motif.length = motif) :=\nsorry\n\n\ntheorem\
-  \ positions_ordered_nonoverlap (sequence motif : String)\n  (h1 : isValidDnaString\
-  \ sequence)\n  (h2 : isValidDnaString motif) :\n  let positions := motif_locator\
-  \ sequence motif\n  (∀ i j, i < j → j < positions.length → positions[i]! ≤ positions[j]!)\
-  \ ∧\n  (∀ i, i < positions.length - 1 → positions[i+1]! - positions[i]! ≥ motif.length)\
-  \ :=\nsorry\n\n\ntheorem empty_sequence (motif : String)\n  (h : isValidDnaString\
-  \ motif) :\n  motif_locator \"\" motif = [] :=\nsorry\n\n\ntheorem motif_longer_than_seq\
-  \ :\n  motif_locator \"ACG\" \"ACGT\" = [] :=\nsorry\n\n/--\ninfo: [3, 9]\n-/\n\
-  #guard_msgs in\n#eval motif_locator \"TTCCGGAACC\" \"CC\"\n\n/--\ninfo: [1, 9]\n\
-  -/\n#guard_msgs in\n#eval motif_locator \"ACGTTACAACGTTAG\" \"ACGT\"\n\n/--\ninfo:\
-  \ []\n-/\n#guard_msgs in\n#eval motif_locator \"ACGTACGTACGT\" \"AAA\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In genetics, a sequence’s motif is a nucleotides (or amino-acid) sequence pattern. Sequence motifs have a biological significance. For more information you can take a look [here](https://en.wikipedia.org/wiki/Sequence_motif).
+
+
+  For this kata you need to complete the function `motif_locator`. This function receives 2 arguments - a sequence and a motif. Both arguments are strings.
+
+  You should return an array that contains all the start positions of the motif (in order). A sequence may contain 0 or more repetitions of the given motif. Note that the number of the first position is 1, not 0.
+
+  **Some examples:**
+
+  - For the `sequence` "ACGTGGGGACTAGGGG" and the `motif` "GGGG" the result should be [5, 13]. 
+  - For the `sequence` "ACCGTACCAAGGGACC" and the `motif` "AAT"  the result should be []
+  - For the `sequence` "GGG" and the motif "GG" the result should be [1, 2]
+
+  **Note**: You can take a look to my others bio-info kata [here](http://www.codewars.com/users/nbeck/authored)
+vc-preamble: |
+  import Imports.AllImports
+
+  def DnaBases : List Char := ['A', 'C', 'G', 'T']
+
+  def isValidDnaChar (c : Char) : Bool :=
+    match DnaBases.find? (· == c) with
+    | some _ => true 
+    | none => false
+
+
+  def isValidDnaString (s : String) : Bool :=
+    match s.data.find? (fun c => !isValidDnaChar c) with
+    | some _ => false
+    | none => true 
+
+
+  def motif_locator (sequence motif : String) : List Nat :=
+  sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def substring (s : String) (start len : Nat) : String :=
+  sorry
+vc-theorems: |
+  theorem motif_positions_valid (sequence motif : String)
+    (h1 : isValidDnaString sequence) 
+    (h2 : isValidDnaString motif) :
+    let positions := motif_locator sequence motif
+    (∀ p ∈ positions, 0 < p ∧ p ≤ sequence.length) ∧ 
+    (∀ p ∈ positions, substring sequence (p-1) motif.length = motif) :=
+  sorry
+
+
+  theorem positions_ordered_nonoverlap (sequence motif : String)
+    (h1 : isValidDnaString sequence)
+    (h2 : isValidDnaString motif) :
+    let positions := motif_locator sequence motif
+    (∀ i j, i < j → j < positions.length → positions[i]! ≤ positions[j]!) ∧
+    (∀ i, i < positions.length - 1 → positions[i+1]! - positions[i]! ≥ motif.length) :=
+  sorry
+
+
+  theorem empty_sequence (motif : String)
+    (h : isValidDnaString motif) :
+    motif_locator "" motif = [] :=
+  sorry
+
+
+  theorem motif_longer_than_seq :
+    motif_locator "ACG" "ACGT" = [] :=
+  sorry
+
+  /--
+  info: [3, 9]
+  -/
+  #guard_msgs in
+  #eval motif_locator "TTCCGGAACC" "CC"
+
+  /--
+  info: [1, 9]
+  -/
+  #guard_msgs in
+  #eval motif_locator "ACGTTACAACGTTAG" "ACGT"
+
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval motif_locator "ACGTACGTACGT" "AAA"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

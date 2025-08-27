@@ -1,20 +1,73 @@
-"vc-description": "Given a set of numbers, return the additive inverse of each. Each\
-  \ positive becomes negatives, and the negatives become positives.\n\n~~~if-not:racket\n\
-  ```\ninvert([1,2,3,4,5]) == [-1,-2,-3,-4,-5]\ninvert([1,-2,3,-4,5]) == [-1,2,-3,4,-5]\n\
-  invert([]) == []\n```\n~~~\n\n```if:javascript,python,ruby,php,elixir,dart\nYou\
-  \ can assume that all values are integers. Do not mutate the input array/list.\n\
-  ```\n\n```if:c\n### Notes:\n- All values are greater than `INT_MIN`\n- The input\
-  \ should be modified, not returned.\n```\n~~~if:racket\n```racket\n(invert '(1 2\
-  \ 3 4 5))   ; '(-1 -2 -3 -4 -5)\n(invert '(1 -2 3 -4 5)) ; '(-1 2 -3 4 -5)\n(invert\
-  \ '())            ; '()\n```\n~~~"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def invert (xs : List Int) : List Int := sorry\n\ndef abs (n :\
-  \ Int) : Int :=\n  if n ≥ 0 then n else -n\n"
-"vc-theorems": "theorem invert_length (xs : List Int) :\n  (invert xs).length = xs.length\
-  \ := sorry\n\n\n\n\ntheorem invert_involution (xs : List Int) :\n  invert (invert\
-  \ xs) = xs := sorry\n\n\n\n\ntheorem invert_empty : \n  invert [] = [] := sorry\n\
-  \n/--\ninfo: [-1, -2, -3, -4, -5]\n-/\n#guard_msgs in\n#eval invert [1, 2, 3, 4,\
-  \ 5]\n\n/--\ninfo: [-1, 2, -3, 4, -5]\n-/\n#guard_msgs in\n#eval invert [1, -2,\
-  \ 3, -4, 5]\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval invert []\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
+
+  ~~~if-not:racket
+  ```
+  invert([1,2,3,4,5]) == [-1,-2,-3,-4,-5]
+  invert([1,-2,3,-4,5]) == [-1,2,-3,4,-5]
+  invert([]) == []
+  ```
+  ~~~
+
+  ```if:javascript,python,ruby,php,elixir,dart
+  You can assume that all values are integers. Do not mutate the input array/list.
+  ```
+
+  ```if:c
+  ### Notes:
+  - All values are greater than `INT_MIN`
+  - The input should be modified, not returned.
+  ```
+  ~~~if:racket
+  ```racket
+  (invert '(1 2 3 4 5))   ; '(-1 -2 -3 -4 -5)
+  (invert '(1 -2 3 -4 5)) ; '(-1 2 -3 4 -5)
+  (invert '())            ; '()
+  ```
+  ~~~
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def invert (xs : List Int) : List Int := sorry
+
+  def abs (n : Int) : Int :=
+    if n ≥ 0 then n else -n
+vc-theorems: |
+  theorem invert_length (xs : List Int) :
+    (invert xs).length = xs.length := sorry
+
+
+
+
+  theorem invert_involution (xs : List Int) :
+    invert (invert xs) = xs := sorry
+
+
+
+
+  theorem invert_empty : 
+    invert [] = [] := sorry
+
+  /--
+  info: [-1, -2, -3, -4, -5]
+  -/
+  #guard_msgs in
+  #eval invert [1, 2, 3, 4, 5]
+
+  /--
+  info: [-1, 2, -3, 4, -5]
+  -/
+  #guard_msgs in
+  #eval invert [1, -2, 3, -4, 5]
+
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval invert []
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

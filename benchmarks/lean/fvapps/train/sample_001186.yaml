@@ -1,34 +1,80 @@
-"vc-description": "Chef has $N$ axis-parallel rectangles in a 2D Cartesian coordinate\
-  \ system. These rectangles may intersect, but it is guaranteed that all their $4N$\
-  \ vertices are pairwise distinct.\nUnfortunately, Chef lost one vertex, and up until\
-  \ now, none of his fixes have worked (although putting an image of a point on a\
-  \ milk carton might not have been the greatest idea after all…). Therefore, he gave\
-  \ you the task of finding it! You are given the remaining $4N-1$ points and you\
-  \ should find the missing one.\n\n-----Input-----\n- The first line of the input\
-  \ contains a single integer $T$ denoting the number of test cases. The description\
-  \ of $T$ test cases follows.\n- The first line of each test case contains a single\
-  \ integer $N$.\n- Then, $4N-1$ lines follow. Each of these lines contains two space-separated\
-  \ integers $x$ and $y$ denoting a vertex $(x, y)$ of some rectangle.\n\n-----Output-----\n\
-  For each test case, print a single line containing two space-separated integers\
-  \ $X$ and $Y$ ― the coordinates of the missing point. It can be proved that the\
-  \ missing point can be determined uniquely.\n\n-----Constraints-----\n- $T \\le\
-  \ 100$\n- $1 \\le N \\le 2 \\cdot 10^5$\n- $|x|, |y| \\le 10^9$\n- the sum of $N$\
-  \ over all test cases does not exceed $2 \\cdot 10^5$\n\n-----Subtasks-----\nSubtask\
-  \ #1 (20 points):\n- $T = 5$\n- $N \\le 20$\nSubtask #2 (30 points): $|x|, |y| \\\
-  le 10^5$\nSubtask #3 (50 points): original constraints\n\n-----Example Input-----\n\
-  1\n2\n1 1\n1 2\n4 6\n2 1\n9 6\n9 3\n4 3\n\n-----Example Output-----\n2 2\n\n-----Explanation-----\n\
-  The original set of points are:\n\nUpon adding the missing point $(2, 2)$, $N =\
-  \ 2$ rectangles can be formed:"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def Coord := Int × Int\n\ndef find_missing_vertex (n : Int) (points\
-  \ : List Coord) : Coord :=\n  sorry\n"
-"vc-theorems": "theorem find_missing_vertex_returns_coordinate_pair (n : Int) (points\
-  \ : List Coord)\n  (h1 : 1 ≤ n) (h2 : n ≤ 100) \n  (h3 : 3 ≤ points.length) (h4\
-  \ : points.length ≤ 10) :\n  let result := find_missing_vertex n points\n  ∃ x y\
-  \ : Int, result = (x, y) := by sorry\n\n/--\ninfo: (2, 2)\n-/\n#guard_msgs in\n\
-  #eval find_missing_vertex 2 [(1, 1), (1, 2), (4, 6), (2, 1), (9, 6), (9, 3), (4,\
-  \ 3)]\n\n/--\ninfo: (1, 0)\n-/\n#guard_msgs in\n#eval find_missing_vertex 1 [(0,\
-  \ 0), (0, 1), (1, 1)]\n\n/--\ninfo: (10, 5)\n-/\n#guard_msgs in\n#eval find_missing_vertex\
-  \ 1 [(5, 5), (5, 10), (10, 10)]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Chef has $N$ axis-parallel rectangles in a 2D Cartesian coordinate system. These rectangles may intersect, but it is guaranteed that all their $4N$ vertices are pairwise distinct.
+  Unfortunately, Chef lost one vertex, and up until now, none of his fixes have worked (although putting an image of a point on a milk carton might not have been the greatest idea after all…). Therefore, he gave you the task of finding it! You are given the remaining $4N-1$ points and you should find the missing one.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains a single integer $N$.
+  - Then, $4N-1$ lines follow. Each of these lines contains two space-separated integers $x$ and $y$ denoting a vertex $(x, y)$ of some rectangle.
+
+  -----Output-----
+  For each test case, print a single line containing two space-separated integers $X$ and $Y$ ― the coordinates of the missing point. It can be proved that the missing point can be determined uniquely.
+
+  -----Constraints-----
+  - $T \le 100$
+  - $1 \le N \le 2 \cdot 10^5$
+  - $|x|, |y| \le 10^9$
+  - the sum of $N$ over all test cases does not exceed $2 \cdot 10^5$
+
+  -----Subtasks-----
+  Subtask #1 (20 points):
+  - $T = 5$
+  - $N \le 20$
+  Subtask #2 (30 points): $|x|, |y| \le 10^5$
+  Subtask #3 (50 points): original constraints
+
+  -----Example Input-----
+  1
+  2
+  1 1
+  1 2
+  4 6
+  2 1
+  9 6
+  9 3
+  4 3
+
+  -----Example Output-----
+  2 2
+
+  -----Explanation-----
+  The original set of points are:
+
+  Upon adding the missing point $(2, 2)$, $N = 2$ rectangles can be formed:
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def Coord := Int × Int
+
+  def find_missing_vertex (n : Int) (points : List Coord) : Coord :=
+    sorry
+vc-theorems: |
+  theorem find_missing_vertex_returns_coordinate_pair (n : Int) (points : List Coord)
+    (h1 : 1 ≤ n) (h2 : n ≤ 100) 
+    (h3 : 3 ≤ points.length) (h4 : points.length ≤ 10) :
+    let result := find_missing_vertex n points
+    ∃ x y : Int, result = (x, y) := by sorry
+
+  /--
+  info: (2, 2)
+  -/
+  #guard_msgs in
+  #eval find_missing_vertex 2 [(1, 1), (1, 2), (4, 6), (2, 1), (9, 6), (9, 3), (4, 3)]
+
+  /--
+  info: (1, 0)
+  -/
+  #guard_msgs in
+  #eval find_missing_vertex 1 [(0, 0), (0, 1), (1, 1)]
+
+  /--
+  info: (10, 5)
+  -/
+  #guard_msgs in
+  #eval find_missing_vertex 1 [(5, 5), (5, 10), (10, 10)]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

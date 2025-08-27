@@ -1,25 +1,70 @@
-"vc-description": "The integer ```64``` is the first integer that has all of its digits\
-  \ even and furthermore, is a perfect square.\n\nThe second one is ```400``` and\
-  \ the third one ```484```.\n\nGive the numbers of this sequence that are in the\
-  \ range ```[a,b] ```(both values inclusive)\n\nExamples:\n``` python\neven_digit_squares(100,\
-  \ 1000) == [400, 484] # the output should be sorted.\neven_digit_squares(1000, 4000)\
-  \ == []\n``` \n\nFeatures of the random tests for ```even_digit_squares(a, b)```\n\
-  ```\nnumber of Tests = 167\nmaximum value for a = 1e10\nmaximum value for b = 1e12\n\
-  ```\nYou do not have to check the entries, ```a``` and ```b``` always positive integers\
-  \ and ```a < b``` \n\nHappy coding!!"
-"vc-preamble": "import Imports.AllImports\n\ndef Nat.toString (n : Nat) : String :=\n\
-  \  sorry\n\n\ndef is_even (n : Nat) : Bool := \n  sorry\n\n\ndef List.sort {α :\
-  \ Type} [Ord α] (as : List α) : List α :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def even_digit_squares (start : Nat) (stop : Nat) : List Nat :=\n\
-  \  sorry \n"
-"vc-theorems": "theorem is_even_matches_digit_check (x : Nat) : \n  is_even x = (Nat.toString\
-  \ x |>.data |>.all (fun d => (Char.toNat d - 48) % 2 = 0)) :=\n  sorry \n\n\ntheorem\
-  \ even_digit_squares_properties {a b : Nat}\n  (h : a ≤ 1000000 ∧ b ≤ 1000000) :\n\
-  \  let start := min a b\n  let stop := max a b\n  let result := even_digit_squares\
-  \ start stop\n  (∀ x ∈ result, x ≥ start ∧ x ≤ stop) ∧ \n  (∀ x ∈ result, is_even\
-  \ x = true) ∧ \n  (∀ x ∈ result, ∃ y:Nat, y * y = x) ∧ \n  (result = List.sort result)\
-  \ :=\n  sorry\n\n\ntheorem single_point_range {x : Nat} (h : x ≤ 1000000) :\n  let\
-  \ result := even_digit_squares x x\n  result ≠ [] →\n  (result.length = 1 ∧ \n \
-  \  result.head! = x ∧\n   is_even x = true ∧\n   ∃ y:Nat, y * y = x) :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  The integer ```64``` is the first integer that has all of its digits even and furthermore, is a perfect square.
+
+  The second one is ```400``` and the third one ```484```.
+
+  Give the numbers of this sequence that are in the range ```[a,b] ```(both values inclusive)
+
+  Examples:
+  ``` python
+  even_digit_squares(100, 1000) == [400, 484] # the output should be sorted.
+  even_digit_squares(1000, 4000) == []
+  ``` 
+
+  Features of the random tests for ```even_digit_squares(a, b)```
+  ```
+  number of Tests = 167
+  maximum value for a = 1e10
+  maximum value for b = 1e12
+  ```
+  You do not have to check the entries, ```a``` and ```b``` always positive integers and ```a < b``` 
+
+  Happy coding!!
+vc-preamble: |
+  import Imports.AllImports
+
+  def Nat.toString (n : Nat) : String :=
+    sorry
+
+
+  def is_even (n : Nat) : Bool := 
+    sorry
+
+
+  def List.sort {α : Type} [Ord α] (as : List α) : List α :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def even_digit_squares (start : Nat) (stop : Nat) : List Nat :=
+    sorry 
+vc-theorems: |-
+  theorem is_even_matches_digit_check (x : Nat) : 
+    is_even x = (Nat.toString x |>.data |>.all (fun d => (Char.toNat d - 48) % 2 = 0)) :=
+    sorry 
+
+
+  theorem even_digit_squares_properties {a b : Nat}
+    (h : a ≤ 1000000 ∧ b ≤ 1000000) :
+    let start := min a b
+    let stop := max a b
+    let result := even_digit_squares start stop
+    (∀ x ∈ result, x ≥ start ∧ x ≤ stop) ∧ 
+    (∀ x ∈ result, is_even x = true) ∧ 
+    (∀ x ∈ result, ∃ y:Nat, y * y = x) ∧ 
+    (result = List.sort result) :=
+    sorry
+
+
+  theorem single_point_range {x : Nat} (h : x ≤ 1000000) :
+    let result := even_digit_squares x x
+    result ≠ [] →
+    (result.length = 1 ∧ 
+     result.head! = x ∧
+     is_even x = true ∧
+     ∃ y:Nat, y * y = x) :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

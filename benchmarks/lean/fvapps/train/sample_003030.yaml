@@ -1,30 +1,80 @@
-"vc-description": "# Base reduction\n\n## Input\n\nA positive integer:\n```\n0 < n\
-  \ < 1000000000\n```\n\n## Output\n\nThe end result of the base reduction.\n\nIf\
-  \ it cannot be fully reduced (reduced down to a single-digit number), return -1.\n\
-  \nAssume that if 150 conversions from base 11 take place in a row, the number cannot\
-  \ be fully reduced.\n\n## Description\n\nBase reduction is a process where a number\
-  \ is inputted, repeatedly converted into another base, and then outputted if it\
-  \ cannot be reduced anymore. If it cannot be fully reduced, return -1.\n\nDuring\
-  \ the base conversions, the number is converted from the lowest base it can be converted\
-  \ from into base 10. For example, 123 would be converted from base 4 to base 10,\
-  \ since base 4 is the lowest base that 123 can be in (123 base 3 is impossible;\
-  \ in base 3, there is no digit 3).\n\nIf the lowest possible base the number can\
-  \ be converted into is 10, convert the number from base 11 to base 10. For example,\
-  \ 53109 would be converted from base 11 to base 10, since base 10 is the lowest\
-  \ base it can be in.\n\nIn the end, you should get a number that cannot be reduced\
-  \ by this process (a single digit number).\n\n## Example\n\nStarting with 5312:\n\
-  ```\n5312 base 6 = 1196 base 10\n1196 base 11 = 1557 base 10\n1557 base 8 = 879\
-  \ base 10\n879 base 11 = 1054 base 10\n1054 base 6 = 250 base 10\n250 base 6 = 102\
-  \ base 10\n102 base 3 = 11 base 10\n11 base 2 = 3 base 10\n```\nThe output would\
-  \ be 3."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def basereduct (n : Nat) : Int := sorry\n\ntheorem basereduct_properties\
-  \ {n : Nat} (h : n > 0) :\n  let result : Int := basereduct n\n  (result ≥ -1 ∧\
-  \ result ≤ 9) ∧\n  (n < 10 → result = n) ∧\n  (result ≠ -1 → result ≥ 0 ∧ result\
-  \ ≤ 9)\n  := by sorry\n"
-"vc-theorems": "theorem basereduct_two_digits {n : Nat} (h1 : n ≥ 10) (h2 : n ≤ 100)\
-  \ :\n  basereduct n > -1 := by sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval\
-  \ basereduct 10\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval basereduct 15\n\n/--\n\
-  info: 3\n-/\n#guard_msgs in\n#eval basereduct 5312\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  # Base reduction
+
+  ## Input
+
+  A positive integer:
+  ```
+  0 < n < 1000000000
+  ```
+
+  ## Output
+
+  The end result of the base reduction.
+
+  If it cannot be fully reduced (reduced down to a single-digit number), return -1.
+
+  Assume that if 150 conversions from base 11 take place in a row, the number cannot be fully reduced.
+
+  ## Description
+
+  Base reduction is a process where a number is inputted, repeatedly converted into another base, and then outputted if it cannot be reduced anymore. If it cannot be fully reduced, return -1.
+
+  During the base conversions, the number is converted from the lowest base it can be converted from into base 10. For example, 123 would be converted from base 4 to base 10, since base 4 is the lowest base that 123 can be in (123 base 3 is impossible; in base 3, there is no digit 3).
+
+  If the lowest possible base the number can be converted into is 10, convert the number from base 11 to base 10. For example, 53109 would be converted from base 11 to base 10, since base 10 is the lowest base it can be in.
+
+  In the end, you should get a number that cannot be reduced by this process (a single digit number).
+
+  ## Example
+
+  Starting with 5312:
+  ```
+  5312 base 6 = 1196 base 10
+  1196 base 11 = 1557 base 10
+  1557 base 8 = 879 base 10
+  879 base 11 = 1054 base 10
+  1054 base 6 = 250 base 10
+  250 base 6 = 102 base 10
+  102 base 3 = 11 base 10
+  11 base 2 = 3 base 10
+  ```
+  The output would be 3.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def basereduct (n : Nat) : Int := sorry
+
+  theorem basereduct_properties {n : Nat} (h : n > 0) :
+    let result : Int := basereduct n
+    (result ≥ -1 ∧ result ≤ 9) ∧
+    (n < 10 → result = n) ∧
+    (result ≠ -1 → result ≥ 0 ∧ result ≤ 9)
+    := by sorry
+vc-theorems: |
+  theorem basereduct_two_digits {n : Nat} (h1 : n ≥ 10) (h2 : n ≤ 100) :
+    basereduct n > -1 := by sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval basereduct 10
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval basereduct 15
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval basereduct 5312
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

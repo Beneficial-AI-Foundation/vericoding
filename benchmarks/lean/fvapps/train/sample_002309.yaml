@@ -1,15 +1,54 @@
-"vc-description": "Given an array of size n, find the majority element. The majority\
-  \ element is the element that appears more than ⌊ n/2 ⌋ times.\n\nYou may assume\
-  \ that the array is non-empty and the majority element always exist in the array.\n\
-  \nExample 1:\n\n\nInput: [3,2,3]\nOutput: 3\n\nExample 2:\n\n\nInput: [2,2,1,1,1,2,2]\n\
-  Output: 2"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def majorityElement (xs : List Int) : Int :=\n  sorry\n"
-"vc-theorems": "theorem single_element_majority {x : Int} :\n  majorityElement [x]\
-  \ = x :=\n  sorry\n\n\ntheorem repeated_element_majority (lst : List Int) (x : Int)\
-  \ :\n  majorityElement (List.replicate (lst.length + 1) x) = x :=\n  sorry\n\n/--\n\
-  info: 3\n-/\n#guard_msgs in\n#eval majority_element [3, 2, 3]\n\n/--\ninfo: 2\n\
-  -/\n#guard_msgs in\n#eval majority_element [2, 2, 1, 1, 1, 2, 2]\n\n/--\ninfo: 1\n\
-  -/\n#guard_msgs in\n#eval majority_element [1]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+
+  You may assume that the array is non-empty and the majority element always exist in the array.
+
+  Example 1:
+
+
+  Input: [3,2,3]
+  Output: 3
+
+  Example 2:
+
+
+  Input: [2,2,1,1,1,2,2]
+  Output: 2
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def majorityElement (xs : List Int) : Int :=
+    sorry
+vc-theorems: |
+  theorem single_element_majority {x : Int} :
+    majorityElement [x] = x :=
+    sorry
+
+
+  theorem repeated_element_majority (lst : List Int) (x : Int) :
+    majorityElement (List.replicate (lst.length + 1) x) = x :=
+    sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval majority_element [3, 2, 3]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval majority_element [2, 2, 1, 1, 1, 2, 2]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval majority_element [1]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

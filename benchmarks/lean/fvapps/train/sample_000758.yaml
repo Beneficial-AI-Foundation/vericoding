@@ -1,30 +1,52 @@
-"vc-description": "Pankaj likes to eat Ice cream when he is working late into the\
-  \ night. Today has been yet another long day for Pankaj. So, he wants to eat ice\
-  \ cream now. He opens the fridge and sees that he has 2 types of containers holding\
-  \ the ice cream.\nThe first container is a cone with radius r1 and height h1. There\
-  \ is also a hemisphere on the top of the cone which has the same radius. The other\
-  \ container is a cylindrical with radius r2 and height h2. Pankaj wants to know\
-  \ the amount (volume) of ice cream in both the containers. Since Pankaj is tired\
-  \ after coding all day, you have to help him with this task.\n\n-----Input-----\n\
-  - The first line of the input contains an integer T denoting the number of test\
-  \ cases. The description of T test cases follows.\n- Each test case consists of\
-  \ a single line having the r1, h1, r2 and h2. Each value is given upto 2 decimal\
-  \ places. See example for more information.\n\n-----Output-----\n- For each test\
-  \ case, output a single line containing the volumes of the two containers separated\
-  \ by space. The answer is considered correct if it is correct upto 6 decimal places.\n\
-  \n-----Constraints-----\n- 1 ≤ T ≤ 100\n- 0 <  r1, h1, r2, h2 ≤ 100\n\n-----Example-----\n\
-  Input:\n2\n1.00 1.00 1.00 1.00\n3.02 7.23 5.20 6.00\n\nOutput:\n3.141592654 3.141592654\n\
-  126.739919445 509.691992118"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def pi : Float := 3.14159265359\n\ndef calculate_ice_cream_volumes\
-  \ (r1 h1 r2 h2 : Float) : Float × Float := sorry\n"
-"vc-theorems": "theorem volumes_are_positive (r1 h1 r2 h2 : Float) :\n  let (vol1,\
-  \ vol2) := calculate_ice_cream_volumes r1 h1 r2 h2\n  vol1 > 0 ∧ vol2 > 0 := sorry\n\
-  \n\ntheorem cylinder_volume_formula (r1 h1 r2 h2 : Float) :\n  let (_, vol2) :=\
-  \ calculate_ice_cream_volumes r1 h1 r2 h2 \n  Float.abs (vol2 - pi * r2 * r2 * h2)\
-  \ < 0.000001 := sorry\n\n\ntheorem cone_hemisphere_volume_formula (r1 h1 r2 h2 :\
-  \ Float) :\n  let (vol1, _) := calculate_ice_cream_volumes r1 h1 r2 h2\n  let cone_vol\
-  \ := pi * r1 * r1 * h1 / 3 \n  let hemisphere_vol := 2 * pi * r1 * r1 * r1 / 3\n\
-  \  Float.abs (vol1 - (cone_vol + hemisphere_vol)) < 0.000001 := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Pankaj likes to eat Ice cream when he is working late into the night. Today has been yet another long day for Pankaj. So, he wants to eat ice cream now. He opens the fridge and sees that he has 2 types of containers holding the ice cream.
+  The first container is a cone with radius r1 and height h1. There is also a hemisphere on the top of the cone which has the same radius. The other container is a cylindrical with radius r2 and height h2. Pankaj wants to know the amount (volume) of ice cream in both the containers. Since Pankaj is tired after coding all day, you have to help him with this task.
+
+  -----Input-----
+  - The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+  - Each test case consists of a single line having the r1, h1, r2 and h2. Each value is given upto 2 decimal places. See example for more information.
+
+  -----Output-----
+  - For each test case, output a single line containing the volumes of the two containers separated by space. The answer is considered correct if it is correct upto 6 decimal places.
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 100
+  - 0 <  r1, h1, r2, h2 ≤ 100
+
+  -----Example-----
+  Input:
+  2
+  1.00 1.00 1.00 1.00
+  3.02 7.23 5.20 6.00
+
+  Output:
+  3.141592654 3.141592654
+  126.739919445 509.691992118
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def pi : Float := 3.14159265359
+
+  def calculate_ice_cream_volumes (r1 h1 r2 h2 : Float) : Float × Float := sorry
+vc-theorems: |-
+  theorem volumes_are_positive (r1 h1 r2 h2 : Float) :
+    let (vol1, vol2) := calculate_ice_cream_volumes r1 h1 r2 h2
+    vol1 > 0 ∧ vol2 > 0 := sorry
+
+
+  theorem cylinder_volume_formula (r1 h1 r2 h2 : Float) :
+    let (_, vol2) := calculate_ice_cream_volumes r1 h1 r2 h2 
+    Float.abs (vol2 - pi * r2 * r2 * h2) < 0.000001 := sorry
+
+
+  theorem cone_hemisphere_volume_formula (r1 h1 r2 h2 : Float) :
+    let (vol1, _) := calculate_ice_cream_volumes r1 h1 r2 h2
+    let cone_vol := pi * r1 * r1 * h1 / 3 
+    let hemisphere_vol := 2 * pi * r1 * r1 * r1 / 3
+    Float.abs (vol1 - (cone_vol + hemisphere_vol)) < 0.000001 := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

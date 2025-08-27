@@ -1,24 +1,62 @@
-"vc-description": "Kevin is noticing his space run out! Write a function that removes\
-  \ the spaces from the values and returns an array showing the space decreasing.\n\
-  For example, running this function on the array ['i', 'have','no','space'] would\
-  \ produce ['i','ihave','ihaveno','ihavenospace']."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def spacey (words : List String) : List String := sorry\n\ntheorem\
-  \ length_matches_input (words : List String) \n  (h : words ≠ []) :\n  (spacey words).length\
-  \ = words.length := sorry\n"
-"vc-theorems": "theorem contains_all_previous_words (words : List String) \n  (h :\
-  \ words ≠ []) \n  (i : Nat)\n  (hlt : i < (spacey words).length) :\n  ((spacey words)[i]'hlt)\
-  \ = String.join (words.take (i+1)) := sorry\n\n\ntheorem lengths_monotonic (words\
-  \ : List String)\n  (h : words ≠ [])\n  (i : Nat)\n  (hlt : i+1 < (spacey words).length)\
-  \ \n  (hlt2 : i < (spacey words).length) :\n  ((spacey words)[i]'hlt2).length ≤\
-  \ ((spacey words)[i+1]'hlt).length := sorry\n\n\ntheorem first_elem_matches (words\
-  \ : List String)\n  (h : words ≠ []) \n  (h1 : 0 < (spacey words).length)\n  (h2\
-  \ : 0 < words.length) :\n  ((spacey words)[0]'h1) = (words[0]'h2) := sorry\n\n\n\
-  theorem last_elem_contains_all (words : List String)\n  (h : words ≠ []) \n  (h1\
-  \ : spacey words ≠ []) :\n  (spacey words).getLast h1 = String.join words := sorry\n\
-  \n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval spacey [\"kevin\", \"has\", \"\
-  no\", \"space\"]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval spacey [\"this\"\
-  , \"cheese\", \"has\", \"no\", \"holes\"]\n\n/--\ninfo: expected3\n-/\n#guard_msgs\
-  \ in\n#eval spacey [\"i\", \"have\", \"no\", \"space\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Kevin is noticing his space run out! Write a function that removes the spaces from the values and returns an array showing the space decreasing.
+  For example, running this function on the array ['i', 'have','no','space'] would produce ['i','ihave','ihaveno','ihavenospace'].
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def spacey (words : List String) : List String := sorry
+
+  theorem length_matches_input (words : List String) 
+    (h : words ≠ []) :
+    (spacey words).length = words.length := sorry
+vc-theorems: |
+  theorem contains_all_previous_words (words : List String) 
+    (h : words ≠ []) 
+    (i : Nat)
+    (hlt : i < (spacey words).length) :
+    ((spacey words)[i]'hlt) = String.join (words.take (i+1)) := sorry
+
+
+  theorem lengths_monotonic (words : List String)
+    (h : words ≠ [])
+    (i : Nat)
+    (hlt : i+1 < (spacey words).length) 
+    (hlt2 : i < (spacey words).length) :
+    ((spacey words)[i]'hlt2).length ≤ ((spacey words)[i+1]'hlt).length := sorry
+
+
+  theorem first_elem_matches (words : List String)
+    (h : words ≠ []) 
+    (h1 : 0 < (spacey words).length)
+    (h2 : 0 < words.length) :
+    ((spacey words)[0]'h1) = (words[0]'h2) := sorry
+
+
+  theorem last_elem_contains_all (words : List String)
+    (h : words ≠ []) 
+    (h1 : spacey words ≠ []) :
+    (spacey words).getLast h1 = String.join words := sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval spacey ["kevin", "has", "no", "space"]
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval spacey ["this", "cheese", "has", "no", "holes"]
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval spacey ["i", "have", "no", "space"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

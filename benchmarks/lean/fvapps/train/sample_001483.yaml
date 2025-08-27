@@ -1,24 +1,80 @@
-"vc-description": "Two integers A and B are the inputs. Write a program to find GCD\
-  \ and LCM of A and B.\n\n-----Input-----\n\nThe first line contains an integer T,\
-  \ total number of testcases. Then follow T lines, each line contains an integer\
-  \ A and B. \n\n-----Output-----\nDisplay the GCD and LCM of A and B separated by\
-  \ space respectively. The answer for each test case must be displayed in a new line.\n\
-  \n-----Constraints-----\n- 1 ≤ T ≤ 1000\n- 1 ≤ A,B ≤ 1000000\n\n-----Example-----\n\
-  Input\n3 \n120 140\n10213 312\n10 30\n\nOutput\n\n20 840\n1 3186456\n10 30"
-"vc-preamble": "import Imports.AllImports\n\ndef gcd (a b : Nat) : Nat :=\n  sorry\n\
-  \n\ndef lcm (a b : Nat) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_gcd_lcm_pairs (pairs : List (Nat × Nat)) : List (Nat ×\
-  \ Nat) :=\n  sorry\n"
-"vc-theorems": "theorem gcd_divides {x y : Nat} (h1 : x > 0) (h2 : y > 0) :\n  let\
-  \ g := gcd x y\n  x % g = 0 ∧ y % g = 0 :=\n  sorry\n\n\ntheorem lcm_dividedby {x\
-  \ y : Nat} (h1 : x > 0) (h2 : y > 0) :\n  let l := lcm x y\n  l % x = 0 ∧ l % y\
-  \ = 0 :=\n  sorry\n\n\ntheorem gcd_lcm_product {x y : Nat} (h1 : x > 0) (h2 : y\
-  \ > 0) :\n  gcd x y * lcm x y = x * y :=\n  sorry\n\n\ntheorem gcd_upper_bound {x\
-  \ y : Nat} (h1 : x > 0) (h2 : y > 0) :\n  gcd x y ≤ min x y :=\n  sorry\n\n\ntheorem\
-  \ lcm_lower_bound {x y : Nat} (h1 : x > 0) (h2 : y > 0) :\n  lcm x y ≥ max x y :=\n\
-  \  sorry\n\n\ntheorem same_number_gcd_lcm {n : Nat} (h : n > 0) :\n  gcd n n = n\
-  \ ∧ lcm n n = n :=\n  sorry\n\n\ntheorem find_gcd_lcm_pairs_preserves_length {pairs\
-  \ : List (Nat × Nat)} :\n  pairs.length = (find_gcd_lcm_pairs pairs).length :=\n\
-  \  sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Two integers A and B are the inputs. Write a program to find GCD and LCM of A and B.
+
+  -----Input-----
+
+  The first line contains an integer T, total number of testcases. Then follow T lines, each line contains an integer A and B. 
+
+  -----Output-----
+  Display the GCD and LCM of A and B separated by space respectively. The answer for each test case must be displayed in a new line.
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 1000
+  - 1 ≤ A,B ≤ 1000000
+
+  -----Example-----
+  Input
+  3 
+  120 140
+  10213 312
+  10 30
+
+  Output
+
+  20 840
+  1 3186456
+  10 30
+vc-preamble: |
+  import Imports.AllImports
+
+  def gcd (a b : Nat) : Nat :=
+    sorry
+
+
+  def lcm (a b : Nat) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_gcd_lcm_pairs (pairs : List (Nat × Nat)) : List (Nat × Nat) :=
+    sorry
+vc-theorems: |-
+  theorem gcd_divides {x y : Nat} (h1 : x > 0) (h2 : y > 0) :
+    let g := gcd x y
+    x % g = 0 ∧ y % g = 0 :=
+    sorry
+
+
+  theorem lcm_dividedby {x y : Nat} (h1 : x > 0) (h2 : y > 0) :
+    let l := lcm x y
+    l % x = 0 ∧ l % y = 0 :=
+    sorry
+
+
+  theorem gcd_lcm_product {x y : Nat} (h1 : x > 0) (h2 : y > 0) :
+    gcd x y * lcm x y = x * y :=
+    sorry
+
+
+  theorem gcd_upper_bound {x y : Nat} (h1 : x > 0) (h2 : y > 0) :
+    gcd x y ≤ min x y :=
+    sorry
+
+
+  theorem lcm_lower_bound {x y : Nat} (h1 : x > 0) (h2 : y > 0) :
+    lcm x y ≥ max x y :=
+    sorry
+
+
+  theorem same_number_gcd_lcm {n : Nat} (h : n > 0) :
+    gcd n n = n ∧ lcm n n = n :=
+    sorry
+
+
+  theorem find_gcd_lcm_pairs_preserves_length {pairs : List (Nat × Nat)} :
+    pairs.length = (find_gcd_lcm_pairs pairs).length :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

@@ -1,24 +1,68 @@
-"vc-description": "A zero-indexed array A of length N contains all integers from 0\
-  \ to N-1. Find and return the longest length of set S, where S[i] = {A[i], A[A[i]],\
-  \ A[A[A[i]]], ... } subjected to the rule below.\n\nSuppose the first element in\
-  \ S starts with the selection of element A[i] of index = i, the next element in\
-  \ S should be A[A[i]], and then A[A[A[i]]]… By that analogy, we stop adding right\
-  \ before a duplicate element occurs in S.\n\nExample 1:\n\nInput: A = [5,4,0,3,1,6,2]\n\
-  Output: 4\nExplanation: \nA[0] = 5, A[1] = 4, A[2] = 0, A[3] = 3, A[4] = 1, A[5]\
-  \ = 6, A[6] = 2.\n\nOne of the longest S[K]:\nS[0] = {A[0], A[5], A[6], A[2]} =\
-  \ {5, 6, 2, 0}\n\n\nNote:\n\nN is an integer within the range [1, 20,000].\nThe\
-  \ elements of A are all distinct.\nEach element of A is an integer within the range\
-  \ [0, N-1]."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def arrayNesting (nums : List Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem array_nesting_bounds {nums : List Nat} (h : nums.length >\
-  \ 0) :\n  let normalized := nums.map (fun x => x % nums.length)\n  1 ≤ arrayNesting\
-  \ normalized ∧ arrayNesting normalized ≤ nums.length :=\n  sorry\n\n\ntheorem array_nesting_positive\
-  \ {nums : List Nat} (h : nums.length > 0) :\n  let normalized := nums.map (fun x\
-  \ => x % nums.length)\n  arrayNesting normalized > 0 :=\n  sorry\n\n\ntheorem array_nesting_simple_cases\
-  \ :\n  arrayNesting [0] = 1 ∧ \n  arrayNesting [1, 0] ≤ 2 ∧\n  arrayNesting [0,\
-  \ 1] ≤ 2 :=\n  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval arrayNesting [5,\
-  \ 4, 0, 3, 1, 6, 2]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval arrayNesting [0,\
-  \ 1, 2]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval arrayNesting [1, 2, 0]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  A zero-indexed array A of length N contains all integers from 0 to N-1. Find and return the longest length of set S, where S[i] = {A[i], A[A[i]], A[A[A[i]]], ... } subjected to the rule below.
+
+  Suppose the first element in S starts with the selection of element A[i] of index = i, the next element in S should be A[A[i]], and then A[A[A[i]]]… By that analogy, we stop adding right before a duplicate element occurs in S.
+
+  Example 1:
+
+  Input: A = [5,4,0,3,1,6,2]
+  Output: 4
+  Explanation: 
+  A[0] = 5, A[1] = 4, A[2] = 0, A[3] = 3, A[4] = 1, A[5] = 6, A[6] = 2.
+
+  One of the longest S[K]:
+  S[0] = {A[0], A[5], A[6], A[2]} = {5, 6, 2, 0}
+
+
+  Note:
+
+  N is an integer within the range [1, 20,000].
+  The elements of A are all distinct.
+  Each element of A is an integer within the range [0, N-1].
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def arrayNesting (nums : List Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem array_nesting_bounds {nums : List Nat} (h : nums.length > 0) :
+    let normalized := nums.map (fun x => x % nums.length)
+    1 ≤ arrayNesting normalized ∧ arrayNesting normalized ≤ nums.length :=
+    sorry
+
+
+  theorem array_nesting_positive {nums : List Nat} (h : nums.length > 0) :
+    let normalized := nums.map (fun x => x % nums.length)
+    arrayNesting normalized > 0 :=
+    sorry
+
+
+  theorem array_nesting_simple_cases :
+    arrayNesting [0] = 1 ∧ 
+    arrayNesting [1, 0] ≤ 2 ∧
+    arrayNesting [0, 1] ≤ 2 :=
+    sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval arrayNesting [5, 4, 0, 3, 1, 6, 2]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval arrayNesting [0, 1, 2]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval arrayNesting [1, 2, 0]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

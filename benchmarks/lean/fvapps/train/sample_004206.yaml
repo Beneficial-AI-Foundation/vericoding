@@ -1,22 +1,54 @@
-"vc-description": "For this problem you must create a program that says who ate the\
-  \ last cookie. If the input is a string then \"Zach\" ate the cookie. If the input\
-  \ is a float or an int then \"Monica\" ate the cookie. If the input is anything\
-  \ else \"the dog\" ate the cookie. The way to return the statement is:\n\"Who ate\
-  \ the last cookie? It was (name)!\"\n\nEx: Input = \"hi\" --> Output = \"Who ate\
-  \ the last cookie? It was Zach!\n(The reason you return Zach is because the input\
-  \ is a string)\n\nNote: Make sure you return the correct message with correct spaces\
-  \ and punctuation.\n\nPlease leave feedback for this kata.\nCheers!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def cookie {α : Type u} (x : α) : String := sorry\n\ntheorem cookie_on_string\
-  \ (s : String) :\n  cookie s = \"Who ate the last cookie? It was Zach!\" := sorry\n"
-"vc-theorems": "theorem cookie_on_float (f : Float) :\n  cookie f = \"Who ate the\
-  \ last cookie? It was Monica!\" := sorry\n\n\ntheorem cookie_on_int (i : Int) :\n\
-  \  cookie i = \"Who ate the last cookie? It was Monica!\" := sorry\n\n\ntheorem\
-  \ cookie_on_other {α : Type} (x : α) \n  (h1 : α ≠ String) (h2 : α ≠ Float) (h3\
-  \ : α ≠ Int) :\n  cookie x = \"Who ate the last cookie? It was the dog!\" := sorry\n\
-  \n/--\ninfo: 'Who ate the last cookie? It was Zach!'\n-/\n#guard_msgs in\n#eval\
-  \ cookie \"Ryan\"\n\n/--\ninfo: 'Who ate the last cookie? It was Monica!'\n-/\n\
-  #guard_msgs in\n#eval cookie 2.3\n\n/--\ninfo: 'Who ate the last cookie? It was\
-  \ Monica!'\n-/\n#guard_msgs in\n#eval cookie 26\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  For this problem you must create a program that says who ate the last cookie. If the input is a string then "Zach" ate the cookie. If the input is a float or an int then "Monica" ate the cookie. If the input is anything else "the dog" ate the cookie. The way to return the statement is:
+  "Who ate the last cookie? It was (name)!"
+
+  Ex: Input = "hi" --> Output = "Who ate the last cookie? It was Zach!
+  (The reason you return Zach is because the input is a string)
+
+  Note: Make sure you return the correct message with correct spaces and punctuation.
+
+  Please leave feedback for this kata.
+  Cheers!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def cookie {α : Type u} (x : α) : String := sorry
+
+  theorem cookie_on_string (s : String) :
+    cookie s = "Who ate the last cookie? It was Zach!" := sorry
+vc-theorems: |
+  theorem cookie_on_float (f : Float) :
+    cookie f = "Who ate the last cookie? It was Monica!" := sorry
+
+
+  theorem cookie_on_int (i : Int) :
+    cookie i = "Who ate the last cookie? It was Monica!" := sorry
+
+
+  theorem cookie_on_other {α : Type} (x : α) 
+    (h1 : α ≠ String) (h2 : α ≠ Float) (h3 : α ≠ Int) :
+    cookie x = "Who ate the last cookie? It was the dog!" := sorry
+
+  /--
+  info: 'Who ate the last cookie? It was Zach!'
+  -/
+  #guard_msgs in
+  #eval cookie "Ryan"
+
+  /--
+  info: 'Who ate the last cookie? It was Monica!'
+  -/
+  #guard_msgs in
+  #eval cookie 2.3
+
+  /--
+  info: 'Who ate the last cookie? It was Monica!'
+  -/
+  #guard_msgs in
+  #eval cookie 26
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

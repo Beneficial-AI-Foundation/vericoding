@@ -1,22 +1,86 @@
-"vc-description": "Your task is to calculate ab mod 1337 where a is a positive integer\
-  \ and b is an extremely large positive integer given in the form of an array.\n\n\
-  \nExample1:\n\na = 2\nb = [3]\n\nResult: 8\n\n\n\nExample2:\n\na = 2\nb = [1,0]\n\
-  \nResult: 1024\n\n\n\nCredits:Special thanks to @Stomach_ache for adding this problem\
-  \ and creating all test cases."
-"vc-preamble": "import Imports.AllImports\n\ndef super_pow (base : Int) (exponent_digits\
-  \ : List Int) : Int :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def pow_mod (base exp m : Int) : Int :=\n  sorry\n"
-"vc-theorems": "theorem super_pow_range (base : Int) (exp_digits : List Int)\n  (h1\
-  \ : base > 0)\n  (h2 : exp_digits.length > 0)\n  (h3 : exp_digits.length ≤ 10)\n\
-  \  (h4 : ∀ d ∈ exp_digits, 0 ≤ d ∧ d ≤ 9) :\n  let result := super_pow base exp_digits\n\
-  \  0 ≤ result ∧ result < 1337 :=\nsorry\n\n\ntheorem super_pow_small_exp (base :\
-  \ Int) (exp_digit : Int) \n  (h1 : base > 0)\n  (h2 : 0 ≤ exp_digit)\n  (h3 : exp_digit\
-  \ < 5) :\n  super_pow base [exp_digit] = pow_mod base exp_digit 1337 :=\nsorry\n\
-  \n\ntheorem super_pow_zero (base : Int)\n  (h : base > 0) :\n  super_pow base [0]\
-  \ = 1 :=\nsorry\n\n\ntheorem super_pow_one (base : Int) (exp_digits : List Int)\n\
-  \  (h1 : exp_digits.length > 0)\n  (h2 : exp_digits.length ≤ 5)\n  (h3 : ∀ d ∈ exp_digits,\
-  \ 0 ≤ d ∧ d ≤ 9) :\n  super_pow 1 exp_digits = 1 :=\nsorry\n\n/--\ninfo: 8\n-/\n\
-  #guard_msgs in\n#eval super_pow 2 [3]\n\n/--\ninfo: 1024\n-/\n#guard_msgs in\n#eval\
-  \ super_pow 2 [1, 0]\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval super_pow 3 [2]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Your task is to calculate ab mod 1337 where a is a positive integer and b is an extremely large positive integer given in the form of an array.
+
+
+  Example1:
+
+  a = 2
+  b = [3]
+
+  Result: 8
+
+
+
+  Example2:
+
+  a = 2
+  b = [1,0]
+
+  Result: 1024
+
+
+
+  Credits:Special thanks to @Stomach_ache for adding this problem and creating all test cases.
+vc-preamble: |
+  import Imports.AllImports
+
+  def super_pow (base : Int) (exponent_digits : List Int) : Int :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def pow_mod (base exp m : Int) : Int :=
+    sorry
+vc-theorems: |
+  theorem super_pow_range (base : Int) (exp_digits : List Int)
+    (h1 : base > 0)
+    (h2 : exp_digits.length > 0)
+    (h3 : exp_digits.length ≤ 10)
+    (h4 : ∀ d ∈ exp_digits, 0 ≤ d ∧ d ≤ 9) :
+    let result := super_pow base exp_digits
+    0 ≤ result ∧ result < 1337 :=
+  sorry
+
+
+  theorem super_pow_small_exp (base : Int) (exp_digit : Int) 
+    (h1 : base > 0)
+    (h2 : 0 ≤ exp_digit)
+    (h3 : exp_digit < 5) :
+    super_pow base [exp_digit] = pow_mod base exp_digit 1337 :=
+  sorry
+
+
+  theorem super_pow_zero (base : Int)
+    (h : base > 0) :
+    super_pow base [0] = 1 :=
+  sorry
+
+
+  theorem super_pow_one (base : Int) (exp_digits : List Int)
+    (h1 : exp_digits.length > 0)
+    (h2 : exp_digits.length ≤ 5)
+    (h3 : ∀ d ∈ exp_digits, 0 ≤ d ∧ d ≤ 9) :
+    super_pow 1 exp_digits = 1 :=
+  sorry
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval super_pow 2 [3]
+
+  /--
+  info: 1024
+  -/
+  #guard_msgs in
+  #eval super_pow 2 [1, 0]
+
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval super_pow 3 [2]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

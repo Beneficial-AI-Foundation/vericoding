@@ -1,21 +1,68 @@
-"vc-description": "Create a function `isAlt()` that accepts a string as an argument\
-  \ and validates whether the vowels (a, e, i, o, u) and consonants are in alternate\
-  \ order.\n\n```python\nis_alt(\"amazon\")\n// true\nis_alt(\"apple\")\n// false\n\
-  is_alt(\"banana\")\n// true\n```\n\nArguments consist of only lowercase letters."
-"vc-preamble": "import Imports.AllImports\n\ndef VOWELS : List Char := ['a', 'e',\
-  \ 'i', 'o', 'u']\n\ndef isVowel (c : Char) : Bool := c ∈ VOWELS \n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_alt (s : String) : Bool := sorry\n\ntheorem matches_reference_implementation\
-  \ (s : String) : \n  is_alt s = (if s.isEmpty then true\n             else let pairs\
-  \ := s.toList.zip (s.toList.tail!)\n                  pairs.all (fun p => isVowel\
-  \ p.fst ≠ isVowel p.snd)) := \n  sorry\n"
-"vc-theorems": "theorem consecutive_vowels_false {s : String} (h : s.length ≥ 2) \n\
-  \  (h2 : ∀ c ∈ s.toList, isVowel c) : \n  ¬(is_alt s) :=\n  sorry\n\n\ntheorem consecutive_consonants_false\
-  \ {s : String} (h : s.length ≥ 2)\n  (h2 : ∀ c ∈ s.toList, ¬(isVowel c)) :\n  ¬(is_alt\
-  \ s) := \n  sorry\n\n\ntheorem alternating_pattern_true {s : String} (h : ∀ c ∈\
-  \ s.toList, ¬(isVowel c)) :\n  let result := s.toList.enum.map (fun (i, c) => if\
-  \ i % 2 = 0 then c else 'a')\n  is_alt (String.mk result) :=\n  sorry\n\n/--\ninfo:\
-  \ True\n-/\n#guard_msgs in\n#eval is_alt \"amazon\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval is_alt \"apple\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_alt\
-  \ \"banana\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Create a function `isAlt()` that accepts a string as an argument and validates whether the vowels (a, e, i, o, u) and consonants are in alternate order.
+
+  ```python
+  is_alt("amazon")
+  // true
+  is_alt("apple")
+  // false
+  is_alt("banana")
+  // true
+  ```
+
+  Arguments consist of only lowercase letters.
+vc-preamble: |
+  import Imports.AllImports
+
+  def VOWELS : List Char := ['a', 'e', 'i', 'o', 'u']
+
+  def isVowel (c : Char) : Bool := c ∈ VOWELS 
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_alt (s : String) : Bool := sorry
+
+  theorem matches_reference_implementation (s : String) : 
+    is_alt s = (if s.isEmpty then true
+               else let pairs := s.toList.zip (s.toList.tail!)
+                    pairs.all (fun p => isVowel p.fst ≠ isVowel p.snd)) := 
+    sorry
+vc-theorems: |
+  theorem consecutive_vowels_false {s : String} (h : s.length ≥ 2) 
+    (h2 : ∀ c ∈ s.toList, isVowel c) : 
+    ¬(is_alt s) :=
+    sorry
+
+
+  theorem consecutive_consonants_false {s : String} (h : s.length ≥ 2)
+    (h2 : ∀ c ∈ s.toList, ¬(isVowel c)) :
+    ¬(is_alt s) := 
+    sorry
+
+
+  theorem alternating_pattern_true {s : String} (h : ∀ c ∈ s.toList, ¬(isVowel c)) :
+    let result := s.toList.enum.map (fun (i, c) => if i % 2 = 0 then c else 'a')
+    is_alt (String.mk result) :=
+    sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_alt "amazon"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_alt "apple"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_alt "banana"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

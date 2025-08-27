@@ -1,28 +1,78 @@
-"vc-description": "~~~if:csharp,javascript,cfml,php\nGiven a 2D array of size `m *\
-  \ n`. Your task is to find the sum of minimum value in each row.\n~~~\n~~~if:cpp\n\
-  Given a 2D vector of size `m * n`. Your task is to find the sum of minimum value\
-  \ in each row.\n~~~\n~~~if:python,ruby\nGiven a 2D list of size `m * n`. Your task\
-  \ is to find the sum of minimum value in each row.\n~~~\n\nFor Example:\n```python\n\
-  [\n  [1, 2, 3, 4, 5],       # minimum value of row is 1\n  [5, 6, 7, 8, 9],    \
-  \   # minimum value of row is 5\n  [20, 21, 34, 56, 100]  # minimum value of row\
-  \ is 20\n]\n```\nSo, the function should return `26` because sum of minimums is\
-  \ as `1 + 5 + 20 = 26`\n\n~~~if:javascript,php\nNote: You will be always given non-empty\
-  \ array containing Positive values.\n~~~\n~~~if:python\nNote: You will be always\
-  \ given non-empty list containing Positive values.\n~~~\n~~~if:cpp\nNote: You will\
-  \ be always given non-empty vector containing Positive values.\n~~~\n~~~if:c#\n\
-  Note: You will be always given non-empty vector containing Positive values.\n~~~\n\
-  ~~~if:cfml\nNote: You will be always given non-empty array containing Positive values.\n\
-  ~~~\n\nENJOY CODING :)"
-"vc-preamble": "import Imports.AllImports\n\ndef List.minimums (l : List (List Int))\
-  \ : Int := sorry \n\ndef List.sum (l : List Int) : Int := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def List.minimum (l : List Int) : Int := sorry\n\ntheorem minimums_eq_sum_of_mins\
-  \ (numbers : List (List Int))\n  (h : ∀ l ∈ numbers, l.length > 0) :\n  numbers.minimums\
-  \ = (numbers.map List.minimum).sum := sorry\n"
-"vc-theorems": "theorem single_element_minimums (numbers : List (List Int))\n  (h1\
-  \ : ∀ l ∈ numbers, l.length = 1) :\n  numbers.minimums = numbers.join.sum := sorry\n\
-  \n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval sum_of_minimums [[7, 9, 8, 6, 2], [6,\
-  \ 3, 5, 4, 3], [5, 8, 7, 4, 5]]\n\n/--\ninfo: 76\n-/\n#guard_msgs in\n#eval sum_of_minimums\
-  \ [[11, 12, 14, 54], [67, 89, 90, 56], [7, 9, 4, 3], [9, 8, 6, 7]]\n\n/--\ninfo:\
-  \ 12\n-/\n#guard_msgs in\n#eval sum_of_minimums [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  ~~~if:csharp,javascript,cfml,php
+  Given a 2D array of size `m * n`. Your task is to find the sum of minimum value in each row.
+  ~~~
+  ~~~if:cpp
+  Given a 2D vector of size `m * n`. Your task is to find the sum of minimum value in each row.
+  ~~~
+  ~~~if:python,ruby
+  Given a 2D list of size `m * n`. Your task is to find the sum of minimum value in each row.
+  ~~~
+
+  For Example:
+  ```python
+  [
+    [1, 2, 3, 4, 5],       # minimum value of row is 1
+    [5, 6, 7, 8, 9],       # minimum value of row is 5
+    [20, 21, 34, 56, 100]  # minimum value of row is 20
+  ]
+  ```
+  So, the function should return `26` because sum of minimums is as `1 + 5 + 20 = 26`
+
+  ~~~if:javascript,php
+  Note: You will be always given non-empty array containing Positive values.
+  ~~~
+  ~~~if:python
+  Note: You will be always given non-empty list containing Positive values.
+  ~~~
+  ~~~if:cpp
+  Note: You will be always given non-empty vector containing Positive values.
+  ~~~
+  ~~~if:c#
+  Note: You will be always given non-empty vector containing Positive values.
+  ~~~
+  ~~~if:cfml
+  Note: You will be always given non-empty array containing Positive values.
+  ~~~
+
+  ENJOY CODING :)
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.minimums (l : List (List Int)) : Int := sorry 
+
+  def List.sum (l : List Int) : Int := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def List.minimum (l : List Int) : Int := sorry
+
+  theorem minimums_eq_sum_of_mins (numbers : List (List Int))
+    (h : ∀ l ∈ numbers, l.length > 0) :
+    numbers.minimums = (numbers.map List.minimum).sum := sorry
+vc-theorems: |
+  theorem single_element_minimums (numbers : List (List Int))
+    (h1 : ∀ l ∈ numbers, l.length = 1) :
+    numbers.minimums = numbers.join.sum := sorry
+
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval sum_of_minimums [[7, 9, 8, 6, 2], [6, 3, 5, 4, 3], [5, 8, 7, 4, 5]]
+
+  /--
+  info: 76
+  -/
+  #guard_msgs in
+  #eval sum_of_minimums [[11, 12, 14, 54], [67, 89, 90, 56], [7, 9, 4, 3], [9, 8, 6, 7]]
+
+  /--
+  info: 12
+  -/
+  #guard_msgs in
+  #eval sum_of_minimums [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

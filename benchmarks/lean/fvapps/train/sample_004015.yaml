@@ -1,28 +1,78 @@
-"vc-description": "Implement a function, so it will produce a sentence out of the\
-  \ given parts.\n\nArray of parts could contain:\n- words;\n- commas in the middle;\n\
-  - multiple periods at the end.\n\nSentence making rules:\n- there must always be\
-  \ a space between words;\n- there must not be a space between a comma and word on\
-  \ the left;\n- there must always be one and only one period at the end of a sentence.\n\
-  \n**Example:**"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def make_sentences (parts : List String) : String := sorry\n\n\
-  def stringContains (s : String) (sub : String) : Bool :=\n  s.data.asString.contains\
-  \ sub.data[0]! -- simplified for example\n"
-"vc-theorems": "theorem make_sentences_ends_with_period\n  (parts : List String) \n\
-  \  (h : parts.length > 0) :\n  (make_sentences parts).endsWith \".\" := sorry\n\n\
-  \ntheorem make_sentences_single_period\n  (parts : List String)\n  (h : parts.length\
-  \ > 0) :\n  ((make_sentences parts).data.filter (· = '.') |>.length) = 1 := sorry\n\
-  \  \n\ntheorem make_sentences_no_trailing_space\n  (parts : List String)\n  (h :\
-  \ parts.length > 0) :\n  ¬((make_sentences parts).dropRight 1).endsWith \" \" :=\
-  \ sorry\n  \n\ntheorem make_sentences_comma_space\n  (parts : List String)\n  (h\
-  \ : parts.length > 0) :\n  ((make_sentences parts).data.contains ',') → \n    ((make_sentences\
-  \ parts).data.take ((make_sentences parts).length - 1)).contains ' ' := sorry\n\
-  \  \n\ntheorem make_sentences_preserves_content\n  (parts : List String)\n  (h :\
-  \ parts.length > 0)\n  (part : String)\n  (h2 : part ∈ parts)\n  (h3 : part ≠ \"\
-  ,\" ∧ part ≠ \".\") :\n  (stringContains (make_sentences parts) part) = true :=\
-  \ sorry\n\n/--\ninfo: 'hello world.'\n-/\n#guard_msgs in\n#eval make_sentences [\"\
-  hello\", \"world\"]\n\n/--\ninfo: 'hello, my dear.'\n-/\n#guard_msgs in\n#eval make_sentences\
-  \ [\"hello\", \",\", \"my\", \"dear\"]\n\n/--\ninfo: 'hello world.'\n-/\n#guard_msgs\
-  \ in\n#eval make_sentences [\"hello\", \"world\", \".\", \".\", \".\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Implement a function, so it will produce a sentence out of the given parts.
+
+  Array of parts could contain:
+  - words;
+  - commas in the middle;
+  - multiple periods at the end.
+
+  Sentence making rules:
+  - there must always be a space between words;
+  - there must not be a space between a comma and word on the left;
+  - there must always be one and only one period at the end of a sentence.
+
+  **Example:**
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def make_sentences (parts : List String) : String := sorry
+
+  def stringContains (s : String) (sub : String) : Bool :=
+    s.data.asString.contains sub.data[0]! -- simplified for example
+vc-theorems: |
+  theorem make_sentences_ends_with_period
+    (parts : List String) 
+    (h : parts.length > 0) :
+    (make_sentences parts).endsWith "." := sorry
+
+
+  theorem make_sentences_single_period
+    (parts : List String)
+    (h : parts.length > 0) :
+    ((make_sentences parts).data.filter (· = '.') |>.length) = 1 := sorry
+    
+
+  theorem make_sentences_no_trailing_space
+    (parts : List String)
+    (h : parts.length > 0) :
+    ¬((make_sentences parts).dropRight 1).endsWith " " := sorry
+    
+
+  theorem make_sentences_comma_space
+    (parts : List String)
+    (h : parts.length > 0) :
+    ((make_sentences parts).data.contains ',') → 
+      ((make_sentences parts).data.take ((make_sentences parts).length - 1)).contains ' ' := sorry
+    
+
+  theorem make_sentences_preserves_content
+    (parts : List String)
+    (h : parts.length > 0)
+    (part : String)
+    (h2 : part ∈ parts)
+    (h3 : part ≠ "," ∧ part ≠ ".") :
+    (stringContains (make_sentences parts) part) = true := sorry
+
+  /--
+  info: 'hello world.'
+  -/
+  #guard_msgs in
+  #eval make_sentences ["hello", "world"]
+
+  /--
+  info: 'hello, my dear.'
+  -/
+  #guard_msgs in
+  #eval make_sentences ["hello", ",", "my", "dear"]
+
+  /--
+  info: 'hello world.'
+  -/
+  #guard_msgs in
+  #eval make_sentences ["hello", "world", ".", ".", "."]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

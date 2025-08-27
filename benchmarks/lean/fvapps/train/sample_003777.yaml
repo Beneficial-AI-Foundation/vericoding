@@ -1,24 +1,68 @@
-"vc-description": "In your class, you have started lessons about \"arithmetic progression\"\
-  . Because you are also a programmer, you have decided to write a function.\n\nThis\
-  \ function, arithmetic_sequence_sum(a, r, n), should return the sum of the first\
-  \ (n) elements of a sequence in which each element is the sum of the given integer\
-  \ (a), and a number of occurences of the given integer (r), based on the element's\
-  \ position within the sequence.\n\nFor example:\n\narithmetic_sequence_sum(2, 3,\
-  \ 5) should return 40:\n\n```\n1     2        3          4            5\na + (a+r)\
-  \ + (a+r+r) + (a+r+r+r) + (a+r+r+r+r) \n2 + (2+3) + (2+3+3) + (2+3+3+3) + (2+3+3+3+3)\
-  \ = 40\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef sum_ints (xs : List Int) : Int :=\n\
-  \  sorry\n\n\ndef range (n : Int) : List Int :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def arithmetic_sequence_sum (a r n : Int) : Int :=\n  sorry\n"
-"vc-theorems": "theorem arithmetic_sequence_properties\n  (a r n : Int)\n  (h : n\
-  \ > 0) :\n  let sum := arithmetic_sequence_sum a r n\n  let manual_sum := sum_ints\
-  \ (range n |>.map (fun i => a + r * i))\n  (sum = manual_sum) ∧ \n  (arithmetic_sequence_sum\
-  \ a r 1 = a) ∧\n  (n > 1 → sum = arithmetic_sequence_sum a r (n-1) + (a + (n-1)*r))\
-  \ :=\n  sorry\n\n\ntheorem sequence_symmetry\n  (a r n : Int)\n  (h : n > 0) :\n\
-  \  let last := a + (n-1)*r\n  arithmetic_sequence_sum a r n = arithmetic_sequence_sum\
-  \ last (-r) n :=\n  sorry\n\n/--\ninfo: 440\n-/\n#guard_msgs in\n#eval arithmetic_sequence_sum\
-  \ 3 2 20\n\n/--\ninfo: 110\n-/\n#guard_msgs in\n#eval arithmetic_sequence_sum 2\
-  \ 2 10\n\n/--\ninfo: -80\n-/\n#guard_msgs in\n#eval arithmetic_sequence_sum 1 -2\
-  \ 10\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In your class, you have started lessons about "arithmetic progression". Because you are also a programmer, you have decided to write a function.
+
+  This function, arithmetic_sequence_sum(a, r, n), should return the sum of the first (n) elements of a sequence in which each element is the sum of the given integer (a), and a number of occurences of the given integer (r), based on the element's position within the sequence.
+
+  For example:
+
+  arithmetic_sequence_sum(2, 3, 5) should return 40:
+
+  ```
+  1     2        3          4            5
+  a + (a+r) + (a+r+r) + (a+r+r+r) + (a+r+r+r+r) 
+  2 + (2+3) + (2+3+3) + (2+3+3+3) + (2+3+3+3+3) = 40
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def sum_ints (xs : List Int) : Int :=
+    sorry
+
+
+  def range (n : Int) : List Int :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def arithmetic_sequence_sum (a r n : Int) : Int :=
+    sorry
+vc-theorems: |
+  theorem arithmetic_sequence_properties
+    (a r n : Int)
+    (h : n > 0) :
+    let sum := arithmetic_sequence_sum a r n
+    let manual_sum := sum_ints (range n |>.map (fun i => a + r * i))
+    (sum = manual_sum) ∧ 
+    (arithmetic_sequence_sum a r 1 = a) ∧
+    (n > 1 → sum = arithmetic_sequence_sum a r (n-1) + (a + (n-1)*r)) :=
+    sorry
+
+
+  theorem sequence_symmetry
+    (a r n : Int)
+    (h : n > 0) :
+    let last := a + (n-1)*r
+    arithmetic_sequence_sum a r n = arithmetic_sequence_sum last (-r) n :=
+    sorry
+
+  /--
+  info: 440
+  -/
+  #guard_msgs in
+  #eval arithmetic_sequence_sum 3 2 20
+
+  /--
+  info: 110
+  -/
+  #guard_msgs in
+  #eval arithmetic_sequence_sum 2 2 10
+
+  /--
+  info: -80
+  -/
+  #guard_msgs in
+  #eval arithmetic_sequence_sum 1 -2 10
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

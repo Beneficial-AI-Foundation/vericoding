@@ -1,29 +1,88 @@
-"vc-description": "Given a singly linked list L: L0→L1→…→Ln-1→Ln,\nreorder it to:\
-  \ L0→Ln→L1→Ln-1→L2→Ln-2→…\n\nYou may not modify the values in the list's nodes,\
-  \ only nodes itself may be changed.\n\nExample 1:\n\n\nGiven 1->2->3->4, reorder\
-  \ it to 1->4->2->3.\n\nExample 2:\n\n\nGiven 1->2->3->4->5, reorder it to 1->5->2->4->3."
-"vc-preamble": "import Imports.AllImports\n\ndef reorder_list : ListNode → ListNode\
-  \ :=\n  sorry\n\n\ndef array_to_list : List Int → ListNode :=\n  sorry\n  "
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def list_to_array : ListNode → List Int := \n  sorry\n\n-- Main\
-  \ properties"
-"vc-theorems": "theorem reorder_list_preserves_length {l : List Int} :\n  let list\
-  \ := array_to_list l\n  List.length (list_to_array (reorder_list list)) = List.length\
-  \ l :=\n  sorry\n\n\ntheorem reorder_list_preserves_first {l : List Int} (h : l\
-  \ ≠ []) :\n  let list := array_to_list l\n  let reordered_array := list_to_array\
-  \ (reorder_list list)\n  List.head! reordered_array = List.head! l :=\n  sorry\n\
-  \n\ntheorem reorder_list_alternates {l : List Int} (h : List.length l > 1) :\n \
-  \ let list := array_to_list l\n  let reordered_array := list_to_array (reorder_list\
-  \ list)\n  let n := List.length l\n  let first_half := List.take ((n + 1)/2) l\n\
-  \  let second_half := List.reverse (List.drop ((n + 1)/2) l)\n  ∀ i, i < List.length\
-  \ second_half →\n    List.get! reordered_array (2*i) = List.get! first_half i ∧\n\
-  \    List.get! reordered_array (2*i + 1) = List.get! second_half i :=\n  sorry\n\
-  \n\ntheorem reorder_list_empty :\n  reorder_list ListNode.nil = ListNode.nil :=\n\
-  \  sorry\n\n\ntheorem reorder_list_odd_length_ends_first_half {l : List Int} \n\
-  \  (h : List.length l % 2 = 1) :\n  let list := array_to_list l\n  let reordered_array\
-  \ := list_to_array (reorder_list list)\n  let n := List.length l\n  let first_half\
-  \ := List.take ((n + 1)/2) l\n  List.get! reordered_array (List.length l - 1) =\
-  \ \n    List.get! first_half (List.length first_half - 1) :=\n  sorry\n\n/--\ninfo:\
-  \ [1, 4, 2, 3]\n-/\n#guard_msgs in\n#eval list_to_array reorder_list(head1)\n\n\
-  /--\ninfo: [1, 5, 2, 4, 3]\n-/\n#guard_msgs in\n#eval list_to_array reorder_list(head2)\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a singly linked list L: L0→L1→…→Ln-1→Ln,
+  reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
+
+  You may not modify the values in the list's nodes, only nodes itself may be changed.
+
+  Example 1:
+
+
+  Given 1->2->3->4, reorder it to 1->4->2->3.
+
+  Example 2:
+
+
+  Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
+vc-preamble: |-
+  import Imports.AllImports
+
+  def reorder_list : ListNode → ListNode :=
+    sorry
+
+
+  def array_to_list : List Int → ListNode :=
+    sorry
+    
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def list_to_array : ListNode → List Int := 
+    sorry
+
+  -- Main properties
+vc-theorems: |
+  theorem reorder_list_preserves_length {l : List Int} :
+    let list := array_to_list l
+    List.length (list_to_array (reorder_list list)) = List.length l :=
+    sorry
+
+
+  theorem reorder_list_preserves_first {l : List Int} (h : l ≠ []) :
+    let list := array_to_list l
+    let reordered_array := list_to_array (reorder_list list)
+    List.head! reordered_array = List.head! l :=
+    sorry
+
+
+  theorem reorder_list_alternates {l : List Int} (h : List.length l > 1) :
+    let list := array_to_list l
+    let reordered_array := list_to_array (reorder_list list)
+    let n := List.length l
+    let first_half := List.take ((n + 1)/2) l
+    let second_half := List.reverse (List.drop ((n + 1)/2) l)
+    ∀ i, i < List.length second_half →
+      List.get! reordered_array (2*i) = List.get! first_half i ∧
+      List.get! reordered_array (2*i + 1) = List.get! second_half i :=
+    sorry
+
+
+  theorem reorder_list_empty :
+    reorder_list ListNode.nil = ListNode.nil :=
+    sorry
+
+
+  theorem reorder_list_odd_length_ends_first_half {l : List Int} 
+    (h : List.length l % 2 = 1) :
+    let list := array_to_list l
+    let reordered_array := list_to_array (reorder_list list)
+    let n := List.length l
+    let first_half := List.take ((n + 1)/2) l
+    List.get! reordered_array (List.length l - 1) = 
+      List.get! first_half (List.length first_half - 1) :=
+    sorry
+
+  /--
+  info: [1, 4, 2, 3]
+  -/
+  #guard_msgs in
+  #eval list_to_array reorder_list(head1)
+
+  /--
+  info: [1, 5, 2, 4, 3]
+  -/
+  #guard_msgs in
+  #eval list_to_array reorder_list(head2)
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

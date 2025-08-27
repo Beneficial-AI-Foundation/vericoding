@@ -1,38 +1,114 @@
-"vc-description": "Your start-up's BA has told marketing that your website has a large\
-  \ audience in Scandinavia and surrounding countries. Marketing thinks it would be\
-  \ great to welcome visitors to the site in their own language. Luckily you already\
-  \ use an API that detects the user's location, so this is an easy win. \n\n### The\
-  \ Task\n- Think of a way to store the languages as a database (eg an object). The\
-  \ languages are listed below so you can copy and paste!\n- Write a 'welcome' function\
-  \ that takes a parameter 'language' (always a string), and returns a greeting -\
-  \ if you have it in your database. It should default to English if the language\
-  \ is not in the database, or in the event of an invalid input.\n\n### The Database\n\
-  \n```python\n'english': 'Welcome',\n'czech': 'Vitejte',\n'danish': 'Velkomst',\n\
-  'dutch': 'Welkom',\n'estonian': 'Tere tulemast',\n'finnish': 'Tervetuloa',\n'flemish':\
-  \ 'Welgekomen',\n'french': 'Bienvenue',\n'german': 'Willkommen',\n'irish': 'Failte',\n\
-  'italian': 'Benvenuto',\n'latvian': 'Gaidits',\n'lithuanian': 'Laukiamas',\n'polish':\
-  \ 'Witamy',\n'spanish': 'Bienvenido',\n'swedish': 'Valkommen',\n'welsh': 'Croeso'\n\
-  ```\n``` java\nenglish: \"Welcome\",\nczech: \"Vitejte\",\ndanish: \"Velkomst\"\
-  ,\ndutch: \"Welkom\",\nestonian: \"Tere tulemast\",\nfinnish: \"Tervetuloa\",\n\
-  flemish: \"Welgekomen\",\nfrench: \"Bienvenue\",\ngerman: \"Willkommen\",\nirish:\
-  \ \"Failte\",\nitalian: \"Benvenuto\",\nlatvian: \"Gaidits\",\nlithuanian: \"Laukiamas\"\
-  ,\npolish: \"Witamy\",\nspanish: \"Bienvenido\",\nswedish: \"Valkommen\",\nwelsh:\
-  \ \"Croeso\"\n```\n\nPossible invalid inputs include:\n~~~~\nIP_ADDRESS_INVALID\
-  \ - not a valid ipv4 or ipv6 ip address\nIP_ADDRESS_NOT_FOUND - ip address not in\
-  \ the database\nIP_ADDRESS_REQUIRED - no ip address was supplied\n~~~~"
-"vc-preamble": "import Imports.AllImports\n\ndef VALID_LANGUAGES := [\n    \"czech\"\
-  , \"danish\", \"dutch\", \"english\", \"estonian\", \"finnish\", \"flemish\",\n\
-  \    \"french\", \"german\", \"irish\", \"italian\", \"latvian\", \"lithuanian\"\
-  ,\n    \"polish\", \"spanish\", \"swedish\", \"welsh\"\n]\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def greet (language : String) : String :=\n  sorry\n"
-"vc-theorems": "theorem valid_language_returns_correct_greeting (language : String)\n\
-  \  (h : language ∈ VALID_LANGUAGES) :\n  let result := greet language\n  (result\
-  \ ≠ \"\") ∧ \n  (result ≠ \"Welcome\" ∨ language = \"english\") :=\nsorry\n\n\n\
-  theorem invalid_input_returns_welcome (language : String) \n  (h : language ∉ VALID_LANGUAGES)\
-  \ :\n  greet language = \"Welcome\" :=\nsorry\n\n/--\ninfo: 'Welcome'\n-/\n#guard_msgs\
-  \ in\n#eval greet \"english\"\n\n/--\ninfo: 'Welkom'\n-/\n#guard_msgs in\n#eval\
-  \ greet \"dutch\"\n\n/--\ninfo: 'Welcome'\n-/\n#guard_msgs in\n#eval greet \"IP_ADDRESS_INVALID\"\
-  \n\n/--\ninfo: 'Welcome'\n-/\n#guard_msgs in\n#eval greet \"\"\n\n/--\ninfo: 'Welcome'\n\
-  -/\n#guard_msgs in\n#eval greet 2\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Your start-up's BA has told marketing that your website has a large audience in Scandinavia and surrounding countries. Marketing thinks it would be great to welcome visitors to the site in their own language. Luckily you already use an API that detects the user's location, so this is an easy win. 
+
+  ### The Task
+  - Think of a way to store the languages as a database (eg an object). The languages are listed below so you can copy and paste!
+  - Write a 'welcome' function that takes a parameter 'language' (always a string), and returns a greeting - if you have it in your database. It should default to English if the language is not in the database, or in the event of an invalid input.
+
+  ### The Database
+
+  ```python
+  'english': 'Welcome',
+  'czech': 'Vitejte',
+  'danish': 'Velkomst',
+  'dutch': 'Welkom',
+  'estonian': 'Tere tulemast',
+  'finnish': 'Tervetuloa',
+  'flemish': 'Welgekomen',
+  'french': 'Bienvenue',
+  'german': 'Willkommen',
+  'irish': 'Failte',
+  'italian': 'Benvenuto',
+  'latvian': 'Gaidits',
+  'lithuanian': 'Laukiamas',
+  'polish': 'Witamy',
+  'spanish': 'Bienvenido',
+  'swedish': 'Valkommen',
+  'welsh': 'Croeso'
+  ```
+  ``` java
+  english: "Welcome",
+  czech: "Vitejte",
+  danish: "Velkomst",
+  dutch: "Welkom",
+  estonian: "Tere tulemast",
+  finnish: "Tervetuloa",
+  flemish: "Welgekomen",
+  french: "Bienvenue",
+  german: "Willkommen",
+  irish: "Failte",
+  italian: "Benvenuto",
+  latvian: "Gaidits",
+  lithuanian: "Laukiamas",
+  polish: "Witamy",
+  spanish: "Bienvenido",
+  swedish: "Valkommen",
+  welsh: "Croeso"
+  ```
+
+  Possible invalid inputs include:
+  ~~~~
+  IP_ADDRESS_INVALID - not a valid ipv4 or ipv6 ip address
+  IP_ADDRESS_NOT_FOUND - ip address not in the database
+  IP_ADDRESS_REQUIRED - no ip address was supplied
+  ~~~~
+vc-preamble: |
+  import Imports.AllImports
+
+  def VALID_LANGUAGES := [
+      "czech", "danish", "dutch", "english", "estonian", "finnish", "flemish",
+      "french", "german", "irish", "italian", "latvian", "lithuanian",
+      "polish", "spanish", "swedish", "welsh"
+  ]
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def greet (language : String) : String :=
+    sorry
+vc-theorems: |
+  theorem valid_language_returns_correct_greeting (language : String)
+    (h : language ∈ VALID_LANGUAGES) :
+    let result := greet language
+    (result ≠ "") ∧ 
+    (result ≠ "Welcome" ∨ language = "english") :=
+  sorry
+
+
+  theorem invalid_input_returns_welcome (language : String) 
+    (h : language ∉ VALID_LANGUAGES) :
+    greet language = "Welcome" :=
+  sorry
+
+  /--
+  info: 'Welcome'
+  -/
+  #guard_msgs in
+  #eval greet "english"
+
+  /--
+  info: 'Welkom'
+  -/
+  #guard_msgs in
+  #eval greet "dutch"
+
+  /--
+  info: 'Welcome'
+  -/
+  #guard_msgs in
+  #eval greet "IP_ADDRESS_INVALID"
+
+  /--
+  info: 'Welcome'
+  -/
+  #guard_msgs in
+  #eval greet ""
+
+  /--
+  info: 'Welcome'
+  -/
+  #guard_msgs in
+  #eval greet 2
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

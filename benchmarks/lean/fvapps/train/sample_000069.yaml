@@ -1,37 +1,119 @@
-"vc-description": "Word $s$ of length $n$ is called $k$-complete if   $s$ is a palindrome,\
-  \ i.e. $s_i=s_{n+1-i}$ for all $1 \\le i \\le n$;  $s$ has a period of $k$, i.e.\
-  \ $s_i=s_{k+i}$ for all $1 \\le i \\le n-k$. \n\nFor example, \"abaaba\" is a $3$-complete\
-  \ word, while \"abccba\" is not.\n\nBob is given a word $s$ of length $n$ consisting\
-  \ of only lowercase Latin letters and an integer $k$, such that $n$ is divisible\
-  \ by $k$. He wants to convert $s$ to any $k$-complete word.\n\nTo do this Bob can\
-  \ choose some $i$ ($1 \\le i \\le n$) and replace the letter at position $i$ with\
-  \ some other lowercase Latin letter.\n\nSo now Bob wants to know the minimum number\
-  \ of letters he has to replace to convert $s$ to any $k$-complete word.\n\nNote\
-  \ that Bob can do zero changes if the word $s$ is already $k$-complete.\n\nYou are\
-  \ required to answer $t$ test cases independently.\n\n\n-----Input-----\n\nThe first\
-  \ line contains a single integer $t$ ($1 \\le t\\le 10^5$) — the number of test\
-  \ cases.\n\nThe first line of each test case contains two integers $n$ and $k$ ($1\
-  \ \\le k < n \\le 2 \\cdot 10^5$, $n$ is divisible by $k$).\n\nThe second line of\
-  \ each test case contains a word $s$ of length $n$.\n\nIt is guaranteed that word\
-  \ $s$ only contains lowercase Latin letters. And it is guaranteed that the sum of\
-  \ $n$ over all test cases will not exceed $2 \\cdot 10^5$.\n\n\n-----Output-----\n\
-  \nFor each test case, output one integer, representing the minimum number of characters\
-  \ he has to replace to convert $s$ to any $k$-complete word.\n\n\n-----Example-----\n\
-  Input\n4\n6 2\nabaaba\n6 3\nabaaba\n36 9\nhippopotomonstrosesquippedaliophobia\n\
-  21 7\nwudixiaoxingxingheclp\n\nOutput\n2\n0\n23\n16\n\n\n\n-----Note-----\n\nIn\
-  \ the first test case, one optimal solution is aaaaaa.\n\nIn the second test case,\
-  \ the given word itself is $k$-complete."
-"vc-preamble": "import Imports.AllImports\n\ndef min_replacements (n k : Nat) (s :\
-  \ String) : Nat :=\n  sorry\n\n\ndef is_palindrome (s : String) : Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def max_char_count (s : String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem min_replacements_nonneg (n k : Nat) (s : String) :\n  min_replacements\
-  \ n k s ≥ 0 :=\n  sorry\n\n\ntheorem min_replacements_bounded (n k : Nat) (s : String)\
-  \ :\n  min_replacements n k s ≤ n :=\n  sorry\n\n\n\n\n\n\n\n\ntheorem uniform_string_zero\
-  \ (n k : Nat) (s : String) :\n  s = String.mk (List.replicate n 'a') →\n  min_replacements\
-  \ n (min k n) s = 0 :=\n  sorry\n\n\ntheorem min_replacements_type (n k : Nat) (s\
-  \ : String) :\n  min_replacements n k s ≥ 0 :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs\
-  \ in\n#eval min_replacements 6 2 \"abaaba\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
-  #eval min_replacements 6 3 \"abaaba\"\n\n/--\ninfo: 23\n-/\n#guard_msgs in\n#eval\
-  \ min_replacements 36 9 \"hippopotomonstrosesquippedaliophobia\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Word $s$ of length $n$ is called $k$-complete if   $s$ is a palindrome, i.e. $s_i=s_{n+1-i}$ for all $1 \le i \le n$;  $s$ has a period of $k$, i.e. $s_i=s_{k+i}$ for all $1 \le i \le n-k$. 
+
+  For example, "abaaba" is a $3$-complete word, while "abccba" is not.
+
+  Bob is given a word $s$ of length $n$ consisting of only lowercase Latin letters and an integer $k$, such that $n$ is divisible by $k$. He wants to convert $s$ to any $k$-complete word.
+
+  To do this Bob can choose some $i$ ($1 \le i \le n$) and replace the letter at position $i$ with some other lowercase Latin letter.
+
+  So now Bob wants to know the minimum number of letters he has to replace to convert $s$ to any $k$-complete word.
+
+  Note that Bob can do zero changes if the word $s$ is already $k$-complete.
+
+  You are required to answer $t$ test cases independently.
+
+
+  -----Input-----
+
+  The first line contains a single integer $t$ ($1 \le t\le 10^5$) — the number of test cases.
+
+  The first line of each test case contains two integers $n$ and $k$ ($1 \le k < n \le 2 \cdot 10^5$, $n$ is divisible by $k$).
+
+  The second line of each test case contains a word $s$ of length $n$.
+
+  It is guaranteed that word $s$ only contains lowercase Latin letters. And it is guaranteed that the sum of $n$ over all test cases will not exceed $2 \cdot 10^5$.
+
+
+  -----Output-----
+
+  For each test case, output one integer, representing the minimum number of characters he has to replace to convert $s$ to any $k$-complete word.
+
+
+  -----Example-----
+  Input
+  4
+  6 2
+  abaaba
+  6 3
+  abaaba
+  36 9
+  hippopotomonstrosesquippedaliophobia
+  21 7
+  wudixiaoxingxingheclp
+
+  Output
+  2
+  0
+  23
+  16
+
+
+
+  -----Note-----
+
+  In the first test case, one optimal solution is aaaaaa.
+
+  In the second test case, the given word itself is $k$-complete.
+vc-preamble: |
+  import Imports.AllImports
+
+  def min_replacements (n k : Nat) (s : String) : Nat :=
+    sorry
+
+
+  def is_palindrome (s : String) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def max_char_count (s : String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem min_replacements_nonneg (n k : Nat) (s : String) :
+    min_replacements n k s ≥ 0 :=
+    sorry
+
+
+  theorem min_replacements_bounded (n k : Nat) (s : String) :
+    min_replacements n k s ≤ n :=
+    sorry
+
+
+
+
+
+
+
+
+  theorem uniform_string_zero (n k : Nat) (s : String) :
+    s = String.mk (List.replicate n 'a') →
+    min_replacements n (min k n) s = 0 :=
+    sorry
+
+
+  theorem min_replacements_type (n k : Nat) (s : String) :
+    min_replacements n k s ≥ 0 :=
+    sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_replacements 6 2 "abaaba"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_replacements 6 3 "abaaba"
+
+  /--
+  info: 23
+  -/
+  #guard_msgs in
+  #eval min_replacements 36 9 "hippopotomonstrosesquippedaliophobia"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

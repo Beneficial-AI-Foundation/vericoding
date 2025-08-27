@@ -1,37 +1,73 @@
-"vc-description": "=====Problem Statement=====\nThe defaultdict tool is a container\
-  \ in the collections class of Python. It's similar to the usual dictionary (dict)\
-  \ container, but the only difference is that a defaultdict will have a default value\
-  \ if that key has not been set yet. If you didn't use a defaultdict you'd have to\
-  \ check to see if that key exists, and if it doesn't, set it to what you want.\n\
-  For example:\n\nfrom collections import defaultdict\nd = defaultdict(list)\nd['python'].append(\"\
-  awesome\")\nd['something-else'].append(\"not relevant\")\nd['python'].append(\"\
-  language\")\nfor i in d.items():\n    print i\n\nThis prints:\n\n('python', ['awesome',\
-  \ 'language'])\n('something-else', ['not relevant'])\n\nIn this challenge, you will\
-  \ be given 2 integers, n and m. There are n words, which might repeat, in word group\
-  \ A. There are m words belonging to word group B. For each m words, check whether\
-  \ the word has appeared in group A or not. Print the indices of each occurrence\
-  \ of m in group A. If it does not appear, print -1.\n\n=====Constraints=====\n1≤n≤10000\n\
-  1≤m≤100\n1≤length of each word in the input≤100\n\n=====Input Format=====\nThe first\
-  \ line contains integers, n and m separated by a space.\nThe next n lines contains\
-  \ the words belonging to group A.\nThe next m lines contains the words belonging\
-  \ to group B.\n\n=====Output Format=====\nOutput m lines.\nThe ith line should contain\
-  \ the 1-indexed positions of the occurrences of the ith word separated by spaces."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_word_indices (n m : Nat) (group_a group_b : List String)\
-  \ : List String := sorry\n\ndef isSortedList (l : List String) : Prop :=\n  ∀ i\
-  \ j, i < j → j < l.length → l[i]! ≤ l[j]!\n"
-"vc-theorems": "theorem find_word_indices_output_properties {n m : Nat} {group_a group_b\
-  \ : List String}\n  (hn : 1 ≤ n ∧ n ≤ 100) (hm : 1 ≤ m ∧ m ≤ 100)\n  (ha : group_a.length\
-  \ = n) (hb : group_b.length = m)\n  (hg : ∀ s ∈ group_a ++ group_b, s.length ≥ 1)\
-  \ :\n  let result := find_word_indices n m group_a group_b;\n  (result.length =\
-  \ m) ∧ \n  (∀ output ∈ result, \n    output = \"-1\" ∨\n    (let nums := output.split\
-  \ (· = ' ');\n     (∀ num ∈ nums, ∃ d : Nat, num.toNat? = some d ∧ 1 ≤ d ∧ d ≤ n)\
-  \ ∧\n     isSortedList nums)) := sorry\n\n\ntheorem find_word_indices_correctness\
-  \ {n m : Nat} {group_a group_b : List String}\n  (ha : group_a.length = n) (hb :\
-  \ group_b.length = m)\n  (hg : ∀ s ∈ group_a ++ group_b, s.length ≥ 1) :\n  let\
-  \ result := find_word_indices n m group_a group_b;\n  ∀ i < m,\n    if group_b[i]!\
-  \ ∈ group_a \n    then \n      result[i]! ≠ \"-1\" ∧\n      ∀ idx ∈ (result[i]!).split\
-  \ (· = ' '),\n        (∃ pos : Nat, idx.toNat? = some pos ∧ \n         group_a[pos\
-  \ - 1]! = group_b[i]!)\n    else\n      result[i]! = \"-1\" := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  =====Problem Statement=====
+  The defaultdict tool is a container in the collections class of Python. It's similar to the usual dictionary (dict) container, but the only difference is that a defaultdict will have a default value if that key has not been set yet. If you didn't use a defaultdict you'd have to check to see if that key exists, and if it doesn't, set it to what you want.
+  For example:
+
+  from collections import defaultdict
+  d = defaultdict(list)
+  d['python'].append("awesome")
+  d['something-else'].append("not relevant")
+  d['python'].append("language")
+  for i in d.items():
+      print i
+
+  This prints:
+
+  ('python', ['awesome', 'language'])
+  ('something-else', ['not relevant'])
+
+  In this challenge, you will be given 2 integers, n and m. There are n words, which might repeat, in word group A. There are m words belonging to word group B. For each m words, check whether the word has appeared in group A or not. Print the indices of each occurrence of m in group A. If it does not appear, print -1.
+
+  =====Constraints=====
+  1≤n≤10000
+  1≤m≤100
+  1≤length of each word in the input≤100
+
+  =====Input Format=====
+  The first line contains integers, n and m separated by a space.
+  The next n lines contains the words belonging to group A.
+  The next m lines contains the words belonging to group B.
+
+  =====Output Format=====
+  Output m lines.
+  The ith line should contain the 1-indexed positions of the occurrences of the ith word separated by spaces.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_word_indices (n m : Nat) (group_a group_b : List String) : List String := sorry
+
+  def isSortedList (l : List String) : Prop :=
+    ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+vc-theorems: |-
+  theorem find_word_indices_output_properties {n m : Nat} {group_a group_b : List String}
+    (hn : 1 ≤ n ∧ n ≤ 100) (hm : 1 ≤ m ∧ m ≤ 100)
+    (ha : group_a.length = n) (hb : group_b.length = m)
+    (hg : ∀ s ∈ group_a ++ group_b, s.length ≥ 1) :
+    let result := find_word_indices n m group_a group_b;
+    (result.length = m) ∧ 
+    (∀ output ∈ result, 
+      output = "-1" ∨
+      (let nums := output.split (· = ' ');
+       (∀ num ∈ nums, ∃ d : Nat, num.toNat? = some d ∧ 1 ≤ d ∧ d ≤ n) ∧
+       isSortedList nums)) := sorry
+
+
+  theorem find_word_indices_correctness {n m : Nat} {group_a group_b : List String}
+    (ha : group_a.length = n) (hb : group_b.length = m)
+    (hg : ∀ s ∈ group_a ++ group_b, s.length ≥ 1) :
+    let result := find_word_indices n m group_a group_b;
+    ∀ i < m,
+      if group_b[i]! ∈ group_a 
+      then 
+        result[i]! ≠ "-1" ∧
+        ∀ idx ∈ (result[i]!).split (· = ' '),
+          (∃ pos : Nat, idx.toNat? = some pos ∧ 
+           group_a[pos - 1]! = group_b[i]!)
+      else
+        result[i]! = "-1" := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

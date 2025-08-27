@@ -1,25 +1,86 @@
-"vc-description": "How many bees are in the beehive?\n\n* bees can be facing UP, DOWN,\
-  \ LEFT, or RIGHT \n* bees can share parts of other bees\n\nExamples\n\nEx1\n```\n\
-  bee.bee     \n.e..e..\n.b..eeb\n```\n*Answer: 5*\n\n\nEx2\n```\nbee.bee     \ne.e.e.e\n\
-  eeb.eeb\n```\n*Answer: 8*\n\n# Notes\n\n* The hive may be empty or null/None/nil/...\n\
-  * Python: the hive is passed as a list of lists (not a list of strings)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def how_many_bees : List (List Char) → Nat :=\n  sorry\n\n-- Empty\
-  \ hive contains no bees"
-"vc-theorems": "theorem empty_hive_zero :\n  how_many_bees [] = 0 ∧ \n  how_many_bees\
-  \ [[]] = 0 :=\nsorry\n\n-- Bee count is non-negative\n\ntheorem bee_count_nonneg\
-  \ (hive : List (List Char)) :\n  how_many_bees hive ≥ 0 :=\nsorry\n\n-- Each row\
-  \ contributes to total bee count\n\ntheorem row_bee_count (chars : List Char) :\n\
-  \  let single_row : List (List Char) := [['.', 'b', 'e', 'e']]\n  how_many_bees\
-  \ [chars] ≤ how_many_bees single_row :=\nsorry\n\n-- Total bee count is composed\
-  \ of patterns\n\ntheorem bee_count_composition (hive : List (List Char)) \n  (pattern_count\
-  \ : List Char → Nat) :\n  (∀ xs, pattern_count xs = how_many_bees [xs]) →\n  how_many_bees\
-  \ hive ≥ 0 :=\nsorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval how_many_bees [[\"\
-  b\", \"e\", \"e\", \".\", \"b\", \"e\", \"e\"], [\".\", \"e\", \".\", \".\", \"\
-  e\", \".\", \".\", \" \"], [\".\", \"b\", \".\", \".\", \"e\", \"e\", \"b\"]]\n\n\
-  /--\ninfo: 8\n-/\n#guard_msgs in\n#eval how_many_bees [[\"b\", \"e\", \"e\", \"\
-  .\", \"b\", \"e\", \"e\"], [\"e\", \".\", \"e\", \".\", \"e\", \".\", \"e\"], [\"\
-  e\", \"e\", \"b\", \".\", \"e\", \"e\", \"b\"]]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
-  \ in\n#eval how_many_bees None\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  How many bees are in the beehive?
+
+  * bees can be facing UP, DOWN, LEFT, or RIGHT 
+  * bees can share parts of other bees
+
+  Examples
+
+  Ex1
+  ```
+  bee.bee     
+  .e..e..
+  .b..eeb
+  ```
+  *Answer: 5*
+
+
+  Ex2
+  ```
+  bee.bee     
+  e.e.e.e
+  eeb.eeb
+  ```
+  *Answer: 8*
+
+  # Notes
+
+  * The hive may be empty or null/None/nil/...
+  * Python: the hive is passed as a list of lists (not a list of strings)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def how_many_bees : List (List Char) → Nat :=
+    sorry
+
+  -- Empty hive contains no bees
+vc-theorems: |
+  theorem empty_hive_zero :
+    how_many_bees [] = 0 ∧ 
+    how_many_bees [[]] = 0 :=
+  sorry
+
+  -- Bee count is non-negative
+
+  theorem bee_count_nonneg (hive : List (List Char)) :
+    how_many_bees hive ≥ 0 :=
+  sorry
+
+  -- Each row contributes to total bee count
+
+  theorem row_bee_count (chars : List Char) :
+    let single_row : List (List Char) := [['.', 'b', 'e', 'e']]
+    how_many_bees [chars] ≤ how_many_bees single_row :=
+  sorry
+
+  -- Total bee count is composed of patterns
+
+  theorem bee_count_composition (hive : List (List Char)) 
+    (pattern_count : List Char → Nat) :
+    (∀ xs, pattern_count xs = how_many_bees [xs]) →
+    how_many_bees hive ≥ 0 :=
+  sorry
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval how_many_bees [["b", "e", "e", ".", "b", "e", "e"], [".", "e", ".", ".", "e", ".", ".", " "], [".", "b", ".", ".", "e", "e", "b"]]
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval how_many_bees [["b", "e", "e", ".", "b", "e", "e"], ["e", ".", "e", ".", "e", ".", "e"], ["e", "e", "b", ".", "e", "e", "b"]]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval how_many_bees None
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

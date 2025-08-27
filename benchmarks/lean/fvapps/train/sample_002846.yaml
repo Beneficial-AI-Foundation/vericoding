@@ -1,26 +1,87 @@
-"vc-description": "Complete the function that takes two numbers as input, ```num```\
-  \ and ```nth``` and return the `nth` digit of `num` (counting from right to left).\n\
-  \n## Note\n- If ```num``` is negative, ignore its sign and treat it as a positive\
-  \ value\n- If ```nth``` is not positive, return `-1`\n- Keep in mind that `42 =\
-  \ 00042`. This means that ```findDigit(42, 5)``` would return `0`\n\n## Examples\n\
-  \n```\nfindDigit(5673, 4)     returns 5\nfindDigit(129, 2)      returns 2\nfindDigit(-2825,\
-  \ 3)    returns 8\nfindDigit(-456, 4)     returns 0\nfindDigit(0, 20)       returns\
-  \ 0\nfindDigit(65, 0)       returns -1\nfindDigit(24, -8)      returns -1\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def abs (n : Int) : Int := if n ≥ 0 then n else -n\n\ndef find_digit\
-  \ (num : Int) (nth : Int) : Int := sorry\n"
-"vc-theorems": "theorem negative_nth_returns_negative_one\n  (num nth : Int) (h :\
-  \ nth ≤ 0) :\n  find_digit num nth = -1 := sorry \n\n\ntheorem returns_valid_digit\
-  \ \n  (num nth : Int) (h : nth ≥ 1) :\n  -1 ≤ find_digit num nth ∧ find_digit num\
-  \ nth ≤ 9 := sorry\n\n\ntheorem result_matches_string_length\n  (num nth : Int)\
-  \ (h : nth ≥ 1) :\n  find_digit num nth = 0 ∨ \n  (0 ≤ find_digit num nth ∧ find_digit\
-  \ num nth ≤ 9) := sorry\n\n\ntheorem single_digit_numbers\n  (num nth : Int) (h1\
-  \ : 0 ≤ num) (h2 : num ≤ 9) (h3 : nth ≥ 1) :\n  if nth = 1\n  then find_digit num\
-  \ nth = num \n  else find_digit num nth = 0 := sorry\n\n\ntheorem zero_number :\n\
-  \  find_digit 0 1 = 0 ∧ find_digit 0 5 = 0 := sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs\
-  \ in\n#eval find_digit 5673 4\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval find_digit\
-  \ -2825 3\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_digit 0 20\n\n/--\ninfo:\
-  \ -1\n-/\n#guard_msgs in\n#eval find_digit 65 0\n\n/--\ninfo: 0\n-/\n#guard_msgs\
-  \ in\n#eval find_digit -456 5\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Complete the function that takes two numbers as input, ```num``` and ```nth``` and return the `nth` digit of `num` (counting from right to left).
+
+  ## Note
+  - If ```num``` is negative, ignore its sign and treat it as a positive value
+  - If ```nth``` is not positive, return `-1`
+  - Keep in mind that `42 = 00042`. This means that ```findDigit(42, 5)``` would return `0`
+
+  ## Examples
+
+  ```
+  findDigit(5673, 4)     returns 5
+  findDigit(129, 2)      returns 2
+  findDigit(-2825, 3)    returns 8
+  findDigit(-456, 4)     returns 0
+  findDigit(0, 20)       returns 0
+  findDigit(65, 0)       returns -1
+  findDigit(24, -8)      returns -1
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def abs (n : Int) : Int := if n ≥ 0 then n else -n
+
+  def find_digit (num : Int) (nth : Int) : Int := sorry
+vc-theorems: |
+  theorem negative_nth_returns_negative_one
+    (num nth : Int) (h : nth ≤ 0) :
+    find_digit num nth = -1 := sorry 
+
+
+  theorem returns_valid_digit 
+    (num nth : Int) (h : nth ≥ 1) :
+    -1 ≤ find_digit num nth ∧ find_digit num nth ≤ 9 := sorry
+
+
+  theorem result_matches_string_length
+    (num nth : Int) (h : nth ≥ 1) :
+    find_digit num nth = 0 ∨ 
+    (0 ≤ find_digit num nth ∧ find_digit num nth ≤ 9) := sorry
+
+
+  theorem single_digit_numbers
+    (num nth : Int) (h1 : 0 ≤ num) (h2 : num ≤ 9) (h3 : nth ≥ 1) :
+    if nth = 1
+    then find_digit num nth = num 
+    else find_digit num nth = 0 := sorry
+
+
+  theorem zero_number :
+    find_digit 0 1 = 0 ∧ find_digit 0 5 = 0 := sorry
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval find_digit 5673 4
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval find_digit -2825 3
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_digit 0 20
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval find_digit 65 0
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_digit -456 5
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

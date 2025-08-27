@@ -1,28 +1,65 @@
-"vc-description": "Today was a sad day. Having bought a new beard trimmer, I set it\
-  \ to the max setting and shaved away at my joyous beard. Stupidly, I hadnt checked\
-  \ just how long the max setting was, and now I look like Ive just started growing\
-  \ it!\n\nYour task, given a beard represented as an arrayof arrays, is to trim the\
-  \ beard as follows:\n\n['|', 'J', '|', '|'],\n['|', '|', '|', 'J'],\n['...', '...',\
-  \ '...', '...'];\n\nTo trim the beard use the following rules:\n\ntrim any curled\
-  \ hair --> replace 'J' with '|'\ntrim any hair from the chin (last array) --> replace\
-  \ '|' or 'J' with '...'\n\nAll sub arrays will be same length. Return the corrected\
-  \ array of arrays"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def trim (beard : List (List String)) : List (List String) := sorry\n\
-  \ntheorem trim_dimensions {beard : List (List String)} (h1 : beard.length ≥ 2) \n\
-  \  (h2 : ∀ row ∈ beard, row.length ≥ 1) :\n  let result := trim beard\n  (result.length\
-  \ = beard.length) ∧ \n  (∀ row ∈ result, row.length = (beard.head!).length) := sorry\n"
-"vc-theorems": "theorem trim_interior_rows {beard : List (List String)} (h1 : beard.length\
-  \ ≥ 2) \n  (h2 : ∀ row ∈ beard, row.length ≥ 1) :\n  let result := trim beard\n\
-  \  ∀ i < result.length - 1, ∀ c ∈ result[i]!, c = \"|\" := sorry\n\n\ntheorem trim_last_row\
-  \ {beard : List (List String)} (h1 : beard.length ≥ 2)\n  (h2 : ∀ row ∈ beard, row.length\
-  \ ≥ 1) :\n  let result := trim beard\n  ∀ c ∈ result.getLast!, c = \"...\" := sorry\n\
-  \n\ntheorem trim_idempotent {beard : List (List String)} (h1 : beard.length ≥ 2)\n\
-  \  (h2 : ∀ row ∈ beard, ∀ c ∈ row, c = \"|\") :\n  trim (trim beard) = trim beard\
-  \ := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval trim [[\"J\", \"|\"\
-  ], [\"J\", \"|\"], [\"...\", \"|\"]]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n\
-  #eval trim [[\"J\", \"|\", \"J\"], [\"J\", \"|\", \"|\"], [\"...\", \"|\", \"J\"\
-  ]]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval trim [[\"J\", \"|\", \"J\"\
-  , \"J\"], [\"J\", \"|\", \"|\", \"J\"], [\"...\", \"|\", \"J\", \"|\"]]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Today was a sad day. Having bought a new beard trimmer, I set it to the max setting and shaved away at my joyous beard. Stupidly, I hadnt checked just how long the max setting was, and now I look like Ive just started growing it!
+
+  Your task, given a beard represented as an arrayof arrays, is to trim the beard as follows:
+
+  ['|', 'J', '|', '|'],
+  ['|', '|', '|', 'J'],
+  ['...', '...', '...', '...'];
+
+  To trim the beard use the following rules:
+
+  trim any curled hair --> replace 'J' with '|'
+  trim any hair from the chin (last array) --> replace '|' or 'J' with '...'
+
+  All sub arrays will be same length. Return the corrected array of arrays
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def trim (beard : List (List String)) : List (List String) := sorry
+
+  theorem trim_dimensions {beard : List (List String)} (h1 : beard.length ≥ 2) 
+    (h2 : ∀ row ∈ beard, row.length ≥ 1) :
+    let result := trim beard
+    (result.length = beard.length) ∧ 
+    (∀ row ∈ result, row.length = (beard.head!).length) := sorry
+vc-theorems: |
+  theorem trim_interior_rows {beard : List (List String)} (h1 : beard.length ≥ 2) 
+    (h2 : ∀ row ∈ beard, row.length ≥ 1) :
+    let result := trim beard
+    ∀ i < result.length - 1, ∀ c ∈ result[i]!, c = "|" := sorry
+
+
+  theorem trim_last_row {beard : List (List String)} (h1 : beard.length ≥ 2)
+    (h2 : ∀ row ∈ beard, row.length ≥ 1) :
+    let result := trim beard
+    ∀ c ∈ result.getLast!, c = "..." := sorry
+
+
+  theorem trim_idempotent {beard : List (List String)} (h1 : beard.length ≥ 2)
+    (h2 : ∀ row ∈ beard, ∀ c ∈ row, c = "|") :
+    trim (trim beard) = trim beard := sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval trim [["J", "|"], ["J", "|"], ["...", "|"]]
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval trim [["J", "|", "J"], ["J", "|", "|"], ["...", "|", "J"]]
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval trim [["J", "|", "J", "J"], ["J", "|", "|", "J"], ["...", "|", "J", "|"]]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,27 +1,72 @@
-"vc-description": "# Task\n `N` candles are placed in a row, some of them are initially\
-  \ lit. For each candle from the 1st to the Nth the following algorithm is applied:\
-  \ if the observed candle is lit then states of this candle and all candles before\
-  \ it are changed to the opposite. Which candles will remain lit after applying the\
-  \ algorithm to all candles in the order they are placed in the line?\n\n# Example\n\
-  \n For `a = [1, 1, 1, 1, 1]`, the output should be `[0, 1, 0, 1, 0].`\n\n Check\
-  \ out the image below for better understanding:\n \n \n\n ![](https://codefightsuserpics.s3.amazonaws.com/tasks/switchLights/img/example.png?_tm=1484040239470)\n\
-  \ \n \n \n For `a = [0, 0]`, the output should be `[0, 0].`\n\n The candles are\
-  \ not initially lit, so their states are not altered by the algorithm.\n\n# Input/Output\n\
-  \n - `[input]` integer array `a`\n\n     Initial situation - array of zeros and\
-  \ ones of length N, 1 means that the corresponding candle is lit.\n\n    Constraints:\
-  \ `2 ≤ a.length ≤ 5000.`\n\n - `[output]` an integer array\n\n    Situation after\
-  \ applying the algorithm - array in the same format as input with the same length."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def switch_lights (input : List Nat) : List Nat := sorry\n\ntheorem\
-  \ switch_lights_binary_only {states : List Nat} \n  (h : ∀ x ∈ states, x = 0 ∨ x\
-  \ = 1) : \n  let result := switch_lights states\n  (∀ x ∈ result, x = 0 ∨ x = 1)\
-  \ ∧ result.length = states.length := sorry\n"
-"vc-theorems": "theorem switch_lights_preserves_input {states : List Nat}\n  (h :\
-  \ ∀ x ∈ states, x = 0 ∨ x = 1) :\n  switch_lights states ≠ states := sorry\n\n\n\
-  theorem switch_lights_empty :\n  switch_lights [] = [] := sorry\n\n/--\ninfo: [0,\
-  \ 1, 0, 1, 0]\n-/\n#guard_msgs in\n#eval switch_lights [1, 1, 1, 1, 1]\n\n/--\n\
-  info: [0, 0]\n-/\n#guard_msgs in\n#eval switch_lights [0, 0]\n\n/--\ninfo: [1, 1,\
-  \ 1, 0, 0, 1, 1, 0]\n-/\n#guard_msgs in\n#eval switch_lights [1, 0, 0, 1, 0, 1,\
-  \ 0, 1]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Task
+   `N` candles are placed in a row, some of them are initially lit. For each candle from the 1st to the Nth the following algorithm is applied: if the observed candle is lit then states of this candle and all candles before it are changed to the opposite. Which candles will remain lit after applying the algorithm to all candles in the order they are placed in the line?
+
+  # Example
+
+   For `a = [1, 1, 1, 1, 1]`, the output should be `[0, 1, 0, 1, 0].`
+
+   Check out the image below for better understanding:
+   
+   
+
+   ![](https://codefightsuserpics.s3.amazonaws.com/tasks/switchLights/img/example.png?_tm=1484040239470)
+   
+   
+   
+   For `a = [0, 0]`, the output should be `[0, 0].`
+
+   The candles are not initially lit, so their states are not altered by the algorithm.
+
+  # Input/Output
+
+   - `[input]` integer array `a`
+
+       Initial situation - array of zeros and ones of length N, 1 means that the corresponding candle is lit.
+
+      Constraints: `2 ≤ a.length ≤ 5000.`
+
+   - `[output]` an integer array
+
+      Situation after applying the algorithm - array in the same format as input with the same length.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def switch_lights (input : List Nat) : List Nat := sorry
+
+  theorem switch_lights_binary_only {states : List Nat} 
+    (h : ∀ x ∈ states, x = 0 ∨ x = 1) : 
+    let result := switch_lights states
+    (∀ x ∈ result, x = 0 ∨ x = 1) ∧ result.length = states.length := sorry
+vc-theorems: |
+  theorem switch_lights_preserves_input {states : List Nat}
+    (h : ∀ x ∈ states, x = 0 ∨ x = 1) :
+    switch_lights states ≠ states := sorry
+
+
+  theorem switch_lights_empty :
+    switch_lights [] = [] := sorry
+
+  /--
+  info: [0, 1, 0, 1, 0]
+  -/
+  #guard_msgs in
+  #eval switch_lights [1, 1, 1, 1, 1]
+
+  /--
+  info: [0, 0]
+  -/
+  #guard_msgs in
+  #eval switch_lights [0, 0]
+
+  /--
+  info: [1, 1, 1, 0, 0, 1, 1, 0]
+  -/
+  #guard_msgs in
+  #eval switch_lights [1, 0, 0, 1, 0, 1, 0, 1]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

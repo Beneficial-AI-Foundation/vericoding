@@ -1,37 +1,87 @@
-"vc-description": "You are given a string S constisting of uppercase Latin letters.\
-  \ Is it possible to reorder the characters in this string to get a string with prefix\
-  \ \"LTIME\" and suffix \"EMITL\"?\nWe remind you that a prefix of a string is any\
-  \ substring which contains its first character, while a suffix of a string is substring\
-  \ containing its last character.\n\n-----Input-----\nThe first line contains a single\
-  \ integer T, denoting the number of testcases. The descriptions of T test cases\
-  \ follow.\nThe first and only line of the test case description has one non-empty\
-  \ string S consisting of uppercase Latin letters only.\n\n-----Output-----\nFor\
-  \ each testcase output a single line containing the string \"YES\" (without quotes)\
-  \ if it's possible to reorder the characters to get the required prefix and suffix,\
-  \ or \"NO\" (without quotes) otherwise.\n\n-----Constraints-----\n- Subtask 1 (23\
-  \ points) : 1 ≤ T ≤ 100, 1 ≤ |S| ≤ 9\n- Subtask 2 (77 points) : 1 ≤ T ≤ 1000, 1\
-  \ ≤ |S| ≤ 100\n\n-----Example-----\nInput:3\nLTIMEAZAZAITLME\nLLLTTTIIIMMMEEEAHA\n\
-  LTIMEM\n\nOutput:YES\nYES\nNO\n\n-----Explanation-----\nTest case 1: we can permute\
-  \ the last 5 letters and get LTIMEAZAZAEMITL\nTest case 2: we have 3 copies of each\
-  \ of the letters 'L', 'T', 'I', 'M', 'E' so we can leave 5 of them in the beginning\
-  \ and move 5 of them to the end.\nTest case 3: we have only one letter 'L' so we\
-  \ can't make necessary prefix and suffix at the same time."
-"vc-preamble": "import Imports.AllImports\n\ndef isString : (s : String) → Bool :=\
-  \ sorry\ndef canReorderString : (s : String) → String := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def countChar (c : Char) (s : String) : Nat := sorry\n\ndef isValidLifetime\
-  \ (s : String) : Bool := sorry\n"
-"vc-theorems": "theorem canReorderString_valid_output (s : String) :\n  (canReorderString\
-  \ s = \"YES\") ∨ (canReorderString s = \"NO\") := sorry\n\n\ntheorem canReorderString_matches_validity\
-  \ (s : String) :\n  canReorderString s = (if isValidLifetime s then \"YES\" else\
-  \ \"NO\") := sorry\n\n\ntheorem exactly_nine_chars (s : String) (h : s.length =\
-  \ 9) :\n  countChar 'L' s ≥ 2 →\n  countChar 'T' s ≥ 2 →\n  countChar 'I' s ≥ 2\
-  \ →\n  countChar 'M' s ≥ 2 →\n  countChar 'E' s ≥ 1 →\n  canReorderString s = \"\
-  YES\" := sorry\n\n\ntheorem more_than_nine_chars (s : String) (h : s.length > 9)\
-  \ :\n  countChar 'L' s ≥ 2 →\n  countChar 'T' s ≥ 2 →\n  countChar 'I' s ≥ 2 →\n\
-  \  countChar 'M' s ≥ 2 →\n  countChar 'E' s ≥ 2 →\n  canReorderString s = \"YES\"\
-  \ := sorry\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval can_reorder_string \"\
-  LTIMEAZAZAITLME\"\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval can_reorder_string\
-  \ \"LLLTTTIIIMMMEEEAHA\"\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval can_reorder_string\
-  \ \"LTIMEM\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  You are given a string S constisting of uppercase Latin letters. Is it possible to reorder the characters in this string to get a string with prefix "LTIME" and suffix "EMITL"?
+  We remind you that a prefix of a string is any substring which contains its first character, while a suffix of a string is substring containing its last character.
+
+  -----Input-----
+  The first line contains a single integer T, denoting the number of testcases. The descriptions of T test cases follow.
+  The first and only line of the test case description has one non-empty string S consisting of uppercase Latin letters only.
+
+  -----Output-----
+  For each testcase output a single line containing the string "YES" (without quotes) if it's possible to reorder the characters to get the required prefix and suffix, or "NO" (without quotes) otherwise.
+
+  -----Constraints-----
+  - Subtask 1 (23 points) : 1 ≤ T ≤ 100, 1 ≤ |S| ≤ 9
+  - Subtask 2 (77 points) : 1 ≤ T ≤ 1000, 1 ≤ |S| ≤ 100
+
+  -----Example-----
+  Input:3
+  LTIMEAZAZAITLME
+  LLLTTTIIIMMMEEEAHA
+  LTIMEM
+
+  Output:YES
+  YES
+  NO
+
+  -----Explanation-----
+  Test case 1: we can permute the last 5 letters and get LTIMEAZAZAEMITL
+  Test case 2: we have 3 copies of each of the letters 'L', 'T', 'I', 'M', 'E' so we can leave 5 of them in the beginning and move 5 of them to the end.
+  Test case 3: we have only one letter 'L' so we can't make necessary prefix and suffix at the same time.
+vc-preamble: |
+  import Imports.AllImports
+
+  def isString : (s : String) → Bool := sorry
+  def canReorderString : (s : String) → String := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def countChar (c : Char) (s : String) : Nat := sorry
+
+  def isValidLifetime (s : String) : Bool := sorry
+vc-theorems: |
+  theorem canReorderString_valid_output (s : String) :
+    (canReorderString s = "YES") ∨ (canReorderString s = "NO") := sorry
+
+
+  theorem canReorderString_matches_validity (s : String) :
+    canReorderString s = (if isValidLifetime s then "YES" else "NO") := sorry
+
+
+  theorem exactly_nine_chars (s : String) (h : s.length = 9) :
+    countChar 'L' s ≥ 2 →
+    countChar 'T' s ≥ 2 →
+    countChar 'I' s ≥ 2 →
+    countChar 'M' s ≥ 2 →
+    countChar 'E' s ≥ 1 →
+    canReorderString s = "YES" := sorry
+
+
+  theorem more_than_nine_chars (s : String) (h : s.length > 9) :
+    countChar 'L' s ≥ 2 →
+    countChar 'T' s ≥ 2 →
+    countChar 'I' s ≥ 2 →
+    countChar 'M' s ≥ 2 →
+    countChar 'E' s ≥ 2 →
+    canReorderString s = "YES" := sorry
+
+  /--
+  info: 'YES'
+  -/
+  #guard_msgs in
+  #eval can_reorder_string "LTIMEAZAZAITLME"
+
+  /--
+  info: 'YES'
+  -/
+  #guard_msgs in
+  #eval can_reorder_string "LLLTTTIIIMMMEEEAHA"
+
+  /--
+  info: 'NO'
+  -/
+  #guard_msgs in
+  #eval can_reorder_string "LTIMEM"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

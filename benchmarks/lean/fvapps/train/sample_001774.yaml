@@ -1,29 +1,77 @@
-"vc-description": "An undirected, connected tree with N nodes labelled 0...N-1 and\
-  \ N-1 edges are given.\nThe ith edge connects nodes edges[i][0] and edges[i][1] together.\n\
-  Return a list ans, where ans[i] is the sum of the distances between node i and all\
-  \ other nodes.\nExample 1:\nInput: N = 6, edges = [[0,1],[0,2],[2,3],[2,4],[2,5]]\n\
-  Output: [8,12,6,10,10,10]\nExplanation: \nHere is a diagram of the given tree:\n\
-  \  0\n / \\\n1   2\n   /|\\\n  3 4 5\nWe can see that dist(0,1) + dist(0,2) + dist(0,3)\
-  \ + dist(0,4) + dist(0,5)\nequals 1 + 1 + 2 + 2 + 2 = 8.  Hence, answer[0] = 8,\
-  \ and so on.\n\nNote: 1 <= N <= 10000"
-"vc-preamble": "import Imports.AllImports\n\ndef Tree (n : Nat) (edges : List (Nat\
-  \ × Nat)) : Prop := sorry \n\ndef sumOfDistancesInTree (n : Nat) (edges : List (Nat\
-  \ × Nat)) : List Nat := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def degree (node : Nat) (edges : List (Nat × Nat)) : Nat := sorry\n\
-  \ndef isLeafNode (node : Nat) (edges : List (Nat × Nat)) : Prop :=\n  degree node\
-  \ edges = 1\n"
-"vc-theorems": "theorem sumOfDistances_output_length \n  (n : Nat) (edges : List (Nat\
-  \ × Nat)) : \n  Tree n edges →\n  List.length (sumOfDistancesInTree n edges) = n\
-  \ := \nsorry\n\n\ntheorem sumOfDistances_nonnegative\n  (n : Nat) (edges : List\
-  \ (Nat × Nat)) \n  (i : Nat) (h : i < List.length (sumOfDistancesInTree n edges))\
-  \ :\n  Tree n edges →\n  List.get! (sumOfDistancesInTree n edges) i ≥ 0 :=\nsorry\n\
-  \n\ntheorem sumOfDistances_leaf_nodes_max  \n  (n : Nat) (edges : List (Nat × Nat))\
-  \ \n  (node : Nat) (h : node < n) :\n  Tree n edges →\n  isLeafNode node edges →\n\
-  \  List.get! (sumOfDistancesInTree n edges) node ≤ \n    List.foldr max 0 (sumOfDistancesInTree\
-  \ n edges) :=\nsorry\n\n/--\ninfo: [8, 12, 6, 10, 10, 10]\n-/\n#guard_msgs in\n\
-  #eval sum_of_distances_in_tree 6 [[0, 1], [0, 2], [2, 3], [2, 4], [2, 5]]\n\n/--\n\
-  info: [2, 3, 3]\n-/\n#guard_msgs in\n#eval sum_of_distances_in_tree 3 [[0, 1], [0,\
-  \ 2]]\n\n/--\ninfo: [6, 4, 4, 6]\n-/\n#guard_msgs in\n#eval sum_of_distances_in_tree\
-  \ 4 [[0, 1], [1, 2], [2, 3]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  An undirected, connected tree with N nodes labelled 0...N-1 and N-1 edges are given.
+  The ith edge connects nodes edges[i][0] and edges[i][1] together.
+  Return a list ans, where ans[i] is the sum of the distances between node i and all other nodes.
+  Example 1:
+  Input: N = 6, edges = [[0,1],[0,2],[2,3],[2,4],[2,5]]
+  Output: [8,12,6,10,10,10]
+  Explanation: 
+  Here is a diagram of the given tree:
+    0
+   / \
+  1   2
+     /|\
+    3 4 5
+  We can see that dist(0,1) + dist(0,2) + dist(0,3) + dist(0,4) + dist(0,5)
+  equals 1 + 1 + 2 + 2 + 2 = 8.  Hence, answer[0] = 8, and so on.
+
+  Note: 1 <= N <= 10000
+vc-preamble: |
+  import Imports.AllImports
+
+  def Tree (n : Nat) (edges : List (Nat × Nat)) : Prop := sorry 
+
+  def sumOfDistancesInTree (n : Nat) (edges : List (Nat × Nat)) : List Nat := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def degree (node : Nat) (edges : List (Nat × Nat)) : Nat := sorry
+
+  def isLeafNode (node : Nat) (edges : List (Nat × Nat)) : Prop :=
+    degree node edges = 1
+vc-theorems: |
+  theorem sumOfDistances_output_length 
+    (n : Nat) (edges : List (Nat × Nat)) : 
+    Tree n edges →
+    List.length (sumOfDistancesInTree n edges) = n := 
+  sorry
+
+
+  theorem sumOfDistances_nonnegative
+    (n : Nat) (edges : List (Nat × Nat)) 
+    (i : Nat) (h : i < List.length (sumOfDistancesInTree n edges)) :
+    Tree n edges →
+    List.get! (sumOfDistancesInTree n edges) i ≥ 0 :=
+  sorry
+
+
+  theorem sumOfDistances_leaf_nodes_max  
+    (n : Nat) (edges : List (Nat × Nat)) 
+    (node : Nat) (h : node < n) :
+    Tree n edges →
+    isLeafNode node edges →
+    List.get! (sumOfDistancesInTree n edges) node ≤ 
+      List.foldr max 0 (sumOfDistancesInTree n edges) :=
+  sorry
+
+  /--
+  info: [8, 12, 6, 10, 10, 10]
+  -/
+  #guard_msgs in
+  #eval sum_of_distances_in_tree 6 [[0, 1], [0, 2], [2, 3], [2, 4], [2, 5]]
+
+  /--
+  info: [2, 3, 3]
+  -/
+  #guard_msgs in
+  #eval sum_of_distances_in_tree 3 [[0, 1], [0, 2]]
+
+  /--
+  info: [6, 4, 4, 6]
+  -/
+  #guard_msgs in
+  #eval sum_of_distances_in_tree 4 [[0, 1], [1, 2], [2, 3]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

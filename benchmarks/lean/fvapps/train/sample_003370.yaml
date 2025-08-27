@@ -1,29 +1,65 @@
-"vc-description": "There's a new security company in Paris, and they decided to give\
-  \ their employees an algorithm to make first name recognition faster. In the blink\
-  \ of an eye, they can now detect if a string is a first name, no matter if it is\
-  \ a one-word name or an hyphenated name. They're given this documentation with the\
-  \ algorithm: \n\n*In France, you'll often find people with hyphenated first names.\
-  \ They're called \"prénoms composés\".\nThere could be two, or even more words linked\
-  \ to form a new name, quite like jQuery function chaining ;). \nThey're linked using\
-  \ the - symbol, like Marie-Joelle, Jean-Michel, Jean-Mouloud. \nThanks to this algorithm,\
-  \ you can now recognize hyphenated names quicker than Flash !* \n(yeah, their employees\
-  \ know how to use jQuery. Don't ask me why)\n\n\nYour mission if you accept it,\
-  \ recreate the algorithm.\nUsing the function **showMe**, which takes a **yourID**\
-  \ argument, you will check if the given argument is a name or not, by returning\
-  \ true or false. \n\n*Note that*\n\n- String will either be a one-word first name,\
-  \ or an hyphenated first name , its words being linked by \"-\". \n- Words can only\
-  \ start with an uppercase letter, and then lowercase letters (from a to z)\n\n\n\
-  Now is your time to help the guards !"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def show_me (s : String) : Bool := sorry\n\ntheorem show_me_empty\
-  \ :\n  show_me \"\" = false := sorry\n"
-"vc-theorems": "theorem show_me_single_letter (c : Char) :\n  show_me (String.singleton\
-  \ c) = false := sorry\n\n\ntheorem show_me_invalid_casing {s : String} (h1 : s.length\
-  \ ≥ 2) :\n  (¬s.front.isUpper ∨ ¬(s.drop 1).all Char.isLower) →\n  show_me s = false\
-  \ := sorry\n\n\ntheorem show_me_invalid_chars {s : String} :\n  s.length > 0 →\n\
-  \  (∃ c ∈ s.data, ¬(c.isUpper ∨ c.isLower)) →\n  show_me s = false := sorry\n\n\
-  /--\ninfo: True\n-/\n#guard_msgs in\n#eval show_me \"Francis\"\n\n/--\ninfo: True\n\
-  -/\n#guard_msgs in\n#eval show_me \"Jean-Eluard\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval show_me \"Le Mec\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  There's a new security company in Paris, and they decided to give their employees an algorithm to make first name recognition faster. In the blink of an eye, they can now detect if a string is a first name, no matter if it is a one-word name or an hyphenated name. They're given this documentation with the algorithm: 
+
+  *In France, you'll often find people with hyphenated first names. They're called "prénoms composés".
+  There could be two, or even more words linked to form a new name, quite like jQuery function chaining ;). 
+  They're linked using the - symbol, like Marie-Joelle, Jean-Michel, Jean-Mouloud. 
+  Thanks to this algorithm, you can now recognize hyphenated names quicker than Flash !* 
+  (yeah, their employees know how to use jQuery. Don't ask me why)
+
+
+  Your mission if you accept it, recreate the algorithm.
+  Using the function **showMe**, which takes a **yourID** argument, you will check if the given argument is a name or not, by returning true or false. 
+
+  *Note that*
+
+  - String will either be a one-word first name, or an hyphenated first name , its words being linked by "-". 
+  - Words can only start with an uppercase letter, and then lowercase letters (from a to z)
+
+
+  Now is your time to help the guards !
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def show_me (s : String) : Bool := sorry
+
+  theorem show_me_empty :
+    show_me "" = false := sorry
+vc-theorems: |
+  theorem show_me_single_letter (c : Char) :
+    show_me (String.singleton c) = false := sorry
+
+
+  theorem show_me_invalid_casing {s : String} (h1 : s.length ≥ 2) :
+    (¬s.front.isUpper ∨ ¬(s.drop 1).all Char.isLower) →
+    show_me s = false := sorry
+
+
+  theorem show_me_invalid_chars {s : String} :
+    s.length > 0 →
+    (∃ c ∈ s.data, ¬(c.isUpper ∨ c.isLower)) →
+    show_me s = false := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval show_me "Francis"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval show_me "Jean-Eluard"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval show_me "Le Mec"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,25 +1,76 @@
-"vc-description": "Given a binary tree, we install cameras on the nodes of the tree. \n\
-  Each camera at a node can monitor its parent, itself, and its immediate children.\n\
-  Calculate the minimum number of cameras needed to monitor all nodes of the tree.\n\
-   \nExample 1:\n\n\nInput: [0,0,null,0,0]\nOutput: 1\nExplanation: One camera is\
-  \ enough to monitor all nodes if placed as shown.\n\n\nExample 2:\n\nInput: [0,0,null,0,null,0,null,null,0]\n\
-  Output: 2\nExplanation: At least two cameras are needed to monitor all nodes of\
-  \ the tree. The above image shows one of the valid configurations of camera placement.\n\
-  \n\nNote:\n\nThe number of nodes in the given tree will be in the range [1, 1000].\n\
-  Every node has value 0."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def minCameraCover : Option TreeNode → Nat :=\n  sorry\n"
-"vc-theorems": "theorem minCameraCover_nonnegative (t : TreeNode) :\n  minCameraCover\
-  \ (some t) ≥ 0 := sorry\n\n\ntheorem minCameraCover_leaf (t : TreeNode) (v : Int)\
-  \ :\n  t = TreeNode.mk v none none → \n  minCameraCover (some t) = 1 := sorry\n\n\
-  \ntheorem minCameraCover_empty :\n  minCameraCover none = 0 := sorry\n\n\ntheorem\
-  \ minCameraCover_monotone (t t' : TreeNode) (v : Int) (r : Option TreeNode) :\n\
-  \  t' = TreeNode.mk v (some t) r →\n  minCameraCover (some t') ≥ 1 := sorry\n\n\n\
-  theorem minCameraCover_add_child (t root : TreeNode) (n : Nat) (v : Int) (l : Option\
-  \ TreeNode) :\n  minCameraCover (some root) = n →\n  root = TreeNode.mk v l (some\
-  \ t) →\n  minCameraCover (some root) ≥ n := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
-  \ in\n#eval minCameraCover TreeNode(0)\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval\
-  \ minCameraCover TreeNode(0)\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval minCameraCover\
-  \ TreeNode(0)\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a binary tree, we install cameras on the nodes of the tree. 
+  Each camera at a node can monitor its parent, itself, and its immediate children.
+  Calculate the minimum number of cameras needed to monitor all nodes of the tree.
+   
+  Example 1:
+
+
+  Input: [0,0,null,0,0]
+  Output: 1
+  Explanation: One camera is enough to monitor all nodes if placed as shown.
+
+
+  Example 2:
+
+  Input: [0,0,null,0,null,0,null,null,0]
+  Output: 2
+  Explanation: At least two cameras are needed to monitor all nodes of the tree. The above image shows one of the valid configurations of camera placement.
+
+
+  Note:
+
+  The number of nodes in the given tree will be in the range [1, 1000].
+  Every node has value 0.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def minCameraCover : Option TreeNode → Nat :=
+    sorry
+vc-theorems: |
+  theorem minCameraCover_nonnegative (t : TreeNode) :
+    minCameraCover (some t) ≥ 0 := sorry
+
+
+  theorem minCameraCover_leaf (t : TreeNode) (v : Int) :
+    t = TreeNode.mk v none none → 
+    minCameraCover (some t) = 1 := sorry
+
+
+  theorem minCameraCover_empty :
+    minCameraCover none = 0 := sorry
+
+
+  theorem minCameraCover_monotone (t t' : TreeNode) (v : Int) (r : Option TreeNode) :
+    t' = TreeNode.mk v (some t) r →
+    minCameraCover (some t') ≥ 1 := sorry
+
+
+  theorem minCameraCover_add_child (t root : TreeNode) (n : Nat) (v : Int) (l : Option TreeNode) :
+    minCameraCover (some root) = n →
+    root = TreeNode.mk v l (some t) →
+    minCameraCover (some root) ≥ n := sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval minCameraCover TreeNode(0)
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval minCameraCover TreeNode(0)
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval minCameraCover TreeNode(0)
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

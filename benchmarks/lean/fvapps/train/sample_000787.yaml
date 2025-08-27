@@ -1,41 +1,113 @@
-"vc-description": "You are given an array A of size N. Let us list down all the subarrays\
-  \ of the given array. There will be a total of N * (N + 1) / 2 subarrays of the\
-  \ given array. Let us sort each of the subarrays in descending order of the numbers\
-  \ in it. \n\nNow you want to sort these subarrays in descending order. You can compare\
-  \ two subarrays B, C, as follows.\n\ncompare(B, C):\nAppend N - |B| zeros at the\
-  \ end of the array B.\nAppend N - |C| zeros at the end of the array C.\nfor i =\
-  \ 1 to N:\nif B[i] < C[i]:\nreturn B is less than C\nif B[i] > C[i]:\nreturn B is\
-  \ greater than C\nreturn B and C are equal.\n\nYou are given M queries asking for\
-  \ the maximum element in the pth subarray (1-based indexing).\n\n-----Input-----\n\
-  The first line of input contains T, the number of test cases.\nThe first line of\
-  \ each test case contains two space separated integers N and M, denoting the array\
-  \ size and the number of queries respectively.\nThe next line contains N space-separated\
-  \ integers denoting the array elements.\n\nEach of the next M lines contains a single\
-  \ integer - p.\n\n-----Output-----\nOutput a single integer corresponding to the\
-  \ maximum element in the pth subarray.\n\n-----Constraints-----\n- 1 ≤ Ai ≤ 109\n\
-  - 1 ≤ p ≤ N+1C2\n\n-----Subtasks-----Subtask #1 (20 points):\n- 1 ≤ T ≤ 20\n- 1\
-  \ ≤ N ≤ 200\n- 1 ≤ M ≤ 104\nSubtask #2 (30 points):\n- 1 ≤ T ≤ 20\n- 1 ≤ N ≤ 3000\n\
-  - 1 ≤ M ≤ 104\nSubtask #3 (50 points):\n- 1 ≤ T ≤ 5\n- 1 ≤ N ≤ 105\n- 1 ≤ M ≤ 105\n\
-  \n-----Example-----\nInput:1\n4 2\n3 1 2 4\n1\n5\n\nOutput:4\n3"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_max_subarray_query (n : Nat) (arr : List Int) (queries\
-  \ : List Nat) : List Int := sorry\n\ndef list_maximum (l : List Int) : Int := \n\
-  \  match l with\n  | [] => 0\n  | x::xs => (List.foldl max x xs)\n"
-"vc-theorems": "theorem length_and_types {n : Nat} {arr : List Int} {queries : List\
-  \ Nat} \n  (h1 : arr.length > 0) \n  (h2 : arr.length ≤ 5)  \n  (h3 : queries.length\
-  \ > 0)\n  (h4 : queries.length ≤ 3)\n  (h5 : ∀ x ∈ arr, -100 ≤ x ∧ x ≤ 100)\n  (h6\
-  \ : ∀ q ∈ queries, 1 ≤ q ∧ q ≤ 15) :\n  let result := solve_max_subarray_query n\
-  \ arr queries\n  result.length = queries.length := \nsorry\n\n\ntheorem max_values\
-  \ {n : Nat} {arr : List Int} {queries : List Nat}\n  (h1 : arr.length > 0)\n  (h2\
-  \ : arr.length ≤ 4)\n  (h3 : queries.length > 0) \n  (h4 : queries.length ≤ 3)\n\
-  \  (h5 : ∀ x ∈ arr, -100 ≤ x ∧ x ≤ 100)\n  (h6 : ∀ q ∈ queries, 1 ≤ q ∧ q ≤ 10)\
-  \ :\n  let result := solve_max_subarray_query n arr queries\n  ∀ x, x ∈ result →\
-  \ x ≤ list_maximum arr :=\nsorry\n\n\ntheorem identical_queries {n : Nat} {arr :\
-  \ List Int}\n  (h1 : arr.length > 0)\n  (h2 : arr.length ≤ 3) \n  (h3 : ∀ x ∈ arr,\
-  \ 1 ≤ x ∧ x ≤ 10) :\n  let queries := List.replicate 3 1\n  let result := solve_max_subarray_query\
-  \ n arr queries\n  ∀ x y, x ∈ result → y ∈ result → x = y :=\nsorry\n\n/--\ninfo:\
-  \ [4, 3]\n-/\n#guard_msgs in\n#eval solve_max_subarray_query 4 [3, 1, 2, 4] [1,\
-  \ 5]\n\n/--\ninfo: [3, 3, 3]\n-/\n#guard_msgs in\n#eval solve_max_subarray_query\
-  \ 3 [1, 2, 3] [1, 2, 3]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  You are given an array A of size N. Let us list down all the subarrays of the given array. There will be a total of N * (N + 1) / 2 subarrays of the given array. Let us sort each of the subarrays in descending order of the numbers in it. 
+
+  Now you want to sort these subarrays in descending order. You can compare two subarrays B, C, as follows.
+
+  compare(B, C):
+  Append N - |B| zeros at the end of the array B.
+  Append N - |C| zeros at the end of the array C.
+  for i = 1 to N:
+  if B[i] < C[i]:
+  return B is less than C
+  if B[i] > C[i]:
+  return B is greater than C
+  return B and C are equal.
+
+  You are given M queries asking for the maximum element in the pth subarray (1-based indexing).
+
+  -----Input-----
+  The first line of input contains T, the number of test cases.
+  The first line of each test case contains two space separated integers N and M, denoting the array size and the number of queries respectively.
+  The next line contains N space-separated integers denoting the array elements.
+
+  Each of the next M lines contains a single integer - p.
+
+  -----Output-----
+  Output a single integer corresponding to the maximum element in the pth subarray.
+
+  -----Constraints-----
+  - 1 ≤ Ai ≤ 109
+  - 1 ≤ p ≤ N+1C2
+
+  -----Subtasks-----Subtask #1 (20 points):
+  - 1 ≤ T ≤ 20
+  - 1 ≤ N ≤ 200
+  - 1 ≤ M ≤ 104
+  Subtask #2 (30 points):
+  - 1 ≤ T ≤ 20
+  - 1 ≤ N ≤ 3000
+  - 1 ≤ M ≤ 104
+  Subtask #3 (50 points):
+  - 1 ≤ T ≤ 5
+  - 1 ≤ N ≤ 105
+  - 1 ≤ M ≤ 105
+
+  -----Example-----
+  Input:1
+  4 2
+  3 1 2 4
+  1
+  5
+
+  Output:4
+  3
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_max_subarray_query (n : Nat) (arr : List Int) (queries : List Nat) : List Int := sorry
+
+  def list_maximum (l : List Int) : Int := 
+    match l with
+    | [] => 0
+    | x::xs => (List.foldl max x xs)
+vc-theorems: |
+  theorem length_and_types {n : Nat} {arr : List Int} {queries : List Nat} 
+    (h1 : arr.length > 0) 
+    (h2 : arr.length ≤ 5)  
+    (h3 : queries.length > 0)
+    (h4 : queries.length ≤ 3)
+    (h5 : ∀ x ∈ arr, -100 ≤ x ∧ x ≤ 100)
+    (h6 : ∀ q ∈ queries, 1 ≤ q ∧ q ≤ 15) :
+    let result := solve_max_subarray_query n arr queries
+    result.length = queries.length := 
+  sorry
+
+
+  theorem max_values {n : Nat} {arr : List Int} {queries : List Nat}
+    (h1 : arr.length > 0)
+    (h2 : arr.length ≤ 4)
+    (h3 : queries.length > 0) 
+    (h4 : queries.length ≤ 3)
+    (h5 : ∀ x ∈ arr, -100 ≤ x ∧ x ≤ 100)
+    (h6 : ∀ q ∈ queries, 1 ≤ q ∧ q ≤ 10) :
+    let result := solve_max_subarray_query n arr queries
+    ∀ x, x ∈ result → x ≤ list_maximum arr :=
+  sorry
+
+
+  theorem identical_queries {n : Nat} {arr : List Int}
+    (h1 : arr.length > 0)
+    (h2 : arr.length ≤ 3) 
+    (h3 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 10) :
+    let queries := List.replicate 3 1
+    let result := solve_max_subarray_query n arr queries
+    ∀ x y, x ∈ result → y ∈ result → x = y :=
+  sorry
+
+  /--
+  info: [4, 3]
+  -/
+  #guard_msgs in
+  #eval solve_max_subarray_query 4 [3, 1, 2, 4] [1, 5]
+
+  /--
+  info: [3, 3, 3]
+  -/
+  #guard_msgs in
+  #eval solve_max_subarray_query 3 [1, 2, 3] [1, 2, 3]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

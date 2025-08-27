@@ -1,30 +1,104 @@
-"vc-description": "# Introduction and Warm-up (Highly recommended)\n\n# [Playing With\
-  \ Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
-  ___\n\n# Task\n\n**_Given_** an *array/list [] of integers* , **_Find_**  *the Nth\
-  \ smallest element in this array of integers*\n___\n\n# Notes \n\n* **_Array/list_**\
-  \ size is *at least 3* .\n\n* **_Array/list's numbers_** *could be a **_mixture_**\
-  \ of positives , negatives and zeros* .\n\n* **_Repetition_** *in array/list's numbers\
-  \ could occur* , so **_don't Remove Duplications_** .\n___\n\n# Input >> Output\
-  \ Examples\n\n```\nnthSmallest({3,1,2} ,2) ==> return (2) \n```\n\n## **_Explanation_**:\n\
-  \nSince the passed number is **_2_** , Then * **_the second smallest_** element\
-  \ in this array/list is **_2_***  \n___\n\n```\nnthSmallest({15,20,7,10,4,3} ,3)\
-  \ ==> return (7) \n```\n\n## **_Explanation_**:\n\nSince the passed number is **_3_**\
-  \ , Then * **_the third smallest_** element in this array/list is **_7_*** \n___\n\
-  ```\nnthSmallest({2,169,13,-5,0,-1} ,4) ==> return (2) \n```\n\n## **_Explanation_**:\n\
-  \nSince the passed number is **_4_** , Then * **_the fourth smallest_** element\
-  \ in this array/list is **_2_*** \n___\n\n```\nnthSmallest({177,225,243,-169,-12,-5,2,92}\
-  \ ,5) ==> return (92) \n```\n## **_Explanation_**:\n\nSince the passed number is\
-  \ **_5_** , Then * **_the fifth smallest_** element in this array/list is **_92_***\
-  \ \n___\n___\n___\n\n# [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
-  \n# [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
-  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
-  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def nth_smallest (arr : List Int) (pos : Nat) : Int := sorry\n\n\
-  \n\n\n\ntheorem last_smallest_is_max (arr : List Int) (h : arr.length > 0) :\n \
-  \ ∀ x ∈ arr, x ≤ nth_smallest arr arr.length := sorry"
-"vc-theorems": "/--\ninfo: 2\n-/\n#guard_msgs in\n#eval nth_smallest [3, 1, 2] 2\n\
-  \n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval nth_smallest [15, 20, 7, 10, 4, 3] 3\n\
-  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval nth_smallest [2, 169, 13, -5, 0, -1] 4\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  # Introduction and Warm-up (Highly recommended)
+
+  # [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)
+  ___
+
+  # Task
+
+  **_Given_** an *array/list [] of integers* , **_Find_**  *the Nth smallest element in this array of integers*
+  ___
+
+  # Notes 
+
+  * **_Array/list_** size is *at least 3* .
+
+  * **_Array/list's numbers_** *could be a **_mixture_** of positives , negatives and zeros* .
+
+  * **_Repetition_** *in array/list's numbers could occur* , so **_don't Remove Duplications_** .
+  ___
+
+  # Input >> Output Examples
+
+  ```
+  nthSmallest({3,1,2} ,2) ==> return (2) 
+  ```
+
+  ## **_Explanation_**:
+
+  Since the passed number is **_2_** , Then * **_the second smallest_** element in this array/list is **_2_***  
+  ___
+
+  ```
+  nthSmallest({15,20,7,10,4,3} ,3) ==> return (7) 
+  ```
+
+  ## **_Explanation_**:
+
+  Since the passed number is **_3_** , Then * **_the third smallest_** element in this array/list is **_7_*** 
+  ___
+  ```
+  nthSmallest({2,169,13,-5,0,-1} ,4) ==> return (2) 
+  ```
+
+  ## **_Explanation_**:
+
+  Since the passed number is **_4_** , Then * **_the fourth smallest_** element in this array/list is **_2_*** 
+  ___
+
+  ```
+  nthSmallest({177,225,243,-169,-12,-5,2,92} ,5) ==> return (92) 
+  ```
+  ## **_Explanation_**:
+
+  Since the passed number is **_5_** , Then * **_the fifth smallest_** element in this array/list is **_92_*** 
+  ___
+  ___
+  ___
+
+  # [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)
+
+  # [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)
+
+  # [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)
+  ___
+
+  ## ALL translations are welcomed
+
+  ## Enjoy Learning !!
+  # Zizou
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def nth_smallest (arr : List Int) (pos : Nat) : Int := sorry
+
+
+
+
+
+  theorem last_smallest_is_max (arr : List Int) (h : arr.length > 0) :
+    ∀ x ∈ arr, x ≤ nth_smallest arr arr.length := sorry
+vc-theorems: |
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval nth_smallest [3, 1, 2] 2
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval nth_smallest [15, 20, 7, 10, 4, 3] 3
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval nth_smallest [2, 169, 13, -5, 0, -1] 4
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

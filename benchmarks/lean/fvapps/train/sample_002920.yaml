@@ -1,16 +1,27 @@
-"vc-description": "An `non decreasing` number is one containing no two consecutive\
-  \ digits (left to right), whose the first is higer than the second. For example,\
-  \ 1235 is an non decreasing number, 1229 is too, but 123429 isn't.\n\nWrite a function\
-  \ that finds the number of non decreasing numbers up to `10**N` (exclusive) where\
-  \ N is the input of your function. For example, if `N=3`, you have to count all\
-  \ non decreasing numbers from 0 to 999.\n\n You'll definitely need something smarter\
-  \ than brute force for large values of N!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def increasing_numbers (n : Nat) : Nat := sorry\n\ntheorem increasing_numbers_positive\
-  \ (n : Nat) : increasing_numbers n > 0 := sorry\n"
-"vc-theorems": "theorem increasing_numbers_monotonic (n : Nat) : \n  n > 0 → increasing_numbers\
-  \ n > increasing_numbers (n-1) := sorry\n\n\ntheorem increasing_numbers_base_cases\
-  \ : \n  increasing_numbers 0 = 1 ∧ \n  increasing_numbers 1 = 10 ∧ \n  increasing_numbers\
-  \ 2 = 55 := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  An `non decreasing` number is one containing no two consecutive digits (left to right), whose the first is higer than the second. For example, 1235 is an non decreasing number, 1229 is too, but 123429 isn't.
+
+  Write a function that finds the number of non decreasing numbers up to `10**N` (exclusive) where N is the input of your function. For example, if `N=3`, you have to count all non decreasing numbers from 0 to 999.
+
+   You'll definitely need something smarter than brute force for large values of N!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def increasing_numbers (n : Nat) : Nat := sorry
+
+  theorem increasing_numbers_positive (n : Nat) : increasing_numbers n > 0 := sorry
+vc-theorems: |-
+  theorem increasing_numbers_monotonic (n : Nat) : 
+    n > 0 → increasing_numbers n > increasing_numbers (n-1) := sorry
+
+
+  theorem increasing_numbers_base_cases : 
+    increasing_numbers 0 = 1 ∧ 
+    increasing_numbers 1 = 10 ∧ 
+    increasing_numbers 2 = 55 := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

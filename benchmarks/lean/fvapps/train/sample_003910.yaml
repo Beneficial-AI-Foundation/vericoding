@@ -1,17 +1,31 @@
-"vc-description": "A pair of numbers has a unique LCM but a single number can be the\
-  \ LCM of more than one possible\npairs. For example `12` is the LCM of `(1, 12),\
-  \ (2, 12), (3,4)` etc. For a given positive integer N, the number of different integer\
-  \ pairs with LCM is equal to N can be called the LCM cardinality of that number\
-  \ N. In this kata your job is to find out the LCM cardinality of a number."
-"vc-preamble": "import Imports.AllImports\n\ndef lcm_cardinality (n : Nat) : Nat :=\
-  \ sorry\ndef lcm (a b : Nat) : Nat := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def divisors (n : Nat) : List Nat := sorry\n\ntheorem lcm_cardinality_positive\
-  \ (n : Nat) (h : n ≥ 1) : \n  lcm_cardinality n ≥ 1 := sorry\n"
-"vc-theorems": "theorem lcm_cardinality_upper_bound (n : Nat) (h : n ≥ 1) :\n  let\
-  \ divs := List.length (divisors n)\n  lcm_cardinality n ≤ 1 + (divs * (divs - 1))\
-  \ / 2 := sorry\n\n\ntheorem lcm_cardinality_monotonic_powers_two (i : Nat) (h :\
-  \ i > 0) :\n  lcm_cardinality (2^i) ≥ lcm_cardinality (2^(i-1)) := sorry\n\n\ntheorem\
-  \ lcm_factors_bound (n : Nat) (h : n ≥ 1) :\n  ∀ (a b : Nat), a ∈ divisors n → b\
-  \ ∈ divisors n → lcm a b ≤ n := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  A pair of numbers has a unique LCM but a single number can be the LCM of more than one possible
+  pairs. For example `12` is the LCM of `(1, 12), (2, 12), (3,4)` etc. For a given positive integer N, the number of different integer pairs with LCM is equal to N can be called the LCM cardinality of that number N. In this kata your job is to find out the LCM cardinality of a number.
+vc-preamble: |-
+  import Imports.AllImports
+
+  def lcm_cardinality (n : Nat) : Nat := sorry
+  def lcm (a b : Nat) : Nat := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def divisors (n : Nat) : List Nat := sorry
+
+  theorem lcm_cardinality_positive (n : Nat) (h : n ≥ 1) : 
+    lcm_cardinality n ≥ 1 := sorry
+vc-theorems: |-
+  theorem lcm_cardinality_upper_bound (n : Nat) (h : n ≥ 1) :
+    let divs := List.length (divisors n)
+    lcm_cardinality n ≤ 1 + (divs * (divs - 1)) / 2 := sorry
+
+
+  theorem lcm_cardinality_monotonic_powers_two (i : Nat) (h : i > 0) :
+    lcm_cardinality (2^i) ≥ lcm_cardinality (2^(i-1)) := sorry
+
+
+  theorem lcm_factors_bound (n : Nat) (h : n ≥ 1) :
+    ∀ (a b : Nat), a ∈ divisors n → b ∈ divisors n → lcm a b ≤ n := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

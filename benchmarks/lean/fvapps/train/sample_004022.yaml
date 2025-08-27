@@ -1,26 +1,71 @@
-"vc-description": "A palindrome is a word, phrase, number, or other sequence of characters\
-  \ which reads the same backward as forward. Examples of numerical palindromes are:\
-  \ \n\n* 232\n* 110011\n* 54322345\n\nComplete the function to test if the given\
-  \ number (`num`) **can be rearranged** to form a numerical palindrome or not. Return\
-  \ a boolean (`true` if it can be rearranged to a palindrome, and `false` if it cannot).\
-  \ Return `\"Not valid\"` if the input is not an integer or is less than 0.\n\nFor\
-  \ this kata, single digit numbers are **NOT** considered numerical palindromes.\
-  \  \n\n\n## Examples\n\n```\n5        =>  false\n2121     =>  true\n1331     =>\
-  \  true \n3357665  =>  true \n1294     =>  false \n\"109982\" =>  \"Not valid\"\n\
-  -42      =>  \"Not valid\"\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef palindrome : (n : Int) → String ⊕\
-  \ Bool := sorry\n\ntheorem negative_numbers {n : Int} (h : n < 0) : palindrome n\
-  \ = Sum.inl \"Not valid\" := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def countOddDigits (n : Int) : Nat := sorry\n\ntheorem different_digits_odd_count\
-  \ {n : Int} (h1 : n ≥ 100) (h2 : n ≤ 9999)\n  (h3 : countOddDigits n > 1) : palindrome\
-  \ n = Sum.inr false := sorry"
-"vc-theorems": "theorem non_integers_text (s : String) : palindrome 0 = Sum.inl \"\
-  Not valid\" := sorry\n\ntheorem non_integers_dec (d : Float) : palindrome 0 = Sum.inl\
-  \ \"Not valid\" := sorry\n\n\ntheorem single_digits {n : Int} (h1 : n ≥ 0) (h2 :\
-  \ n ≤ 9) : \n  palindrome n = Sum.inr false := sorry\n\n\ntheorem repeated_digits\
-  \ {n : Int} (h1 : n ≥ 1) (h2 : n ≤ 9) :\n  palindrome (n * 11) = Sum.inr true :=\
-  \ sorry\n\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval palindrome 5\n\n/--\ninfo:\
-  \ True\n-/\n#guard_msgs in\n#eval palindrome 1331\n\n/--\ninfo: 'Not valid'\n-/\n\
-  #guard_msgs in\n#eval palindrome \"ololo\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward as forward. Examples of numerical palindromes are: 
+
+  * 232
+  * 110011
+  * 54322345
+
+  Complete the function to test if the given number (`num`) **can be rearranged** to form a numerical palindrome or not. Return a boolean (`true` if it can be rearranged to a palindrome, and `false` if it cannot). Return `"Not valid"` if the input is not an integer or is less than 0.
+
+  For this kata, single digit numbers are **NOT** considered numerical palindromes.  
+
+
+  ## Examples
+
+  ```
+  5        =>  false
+  2121     =>  true
+  1331     =>  true 
+  3357665  =>  true 
+  1294     =>  false 
+  "109982" =>  "Not valid"
+  -42      =>  "Not valid"
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def palindrome : (n : Int) → String ⊕ Bool := sorry
+
+  theorem negative_numbers {n : Int} (h : n < 0) : palindrome n = Sum.inl "Not valid" := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def countOddDigits (n : Int) : Nat := sorry
+
+  theorem different_digits_odd_count {n : Int} (h1 : n ≥ 100) (h2 : n ≤ 9999)
+    (h3 : countOddDigits n > 1) : palindrome n = Sum.inr false := sorry
+vc-theorems: |
+  theorem non_integers_text (s : String) : palindrome 0 = Sum.inl "Not valid" := sorry
+
+  theorem non_integers_dec (d : Float) : palindrome 0 = Sum.inl "Not valid" := sorry
+
+
+  theorem single_digits {n : Int} (h1 : n ≥ 0) (h2 : n ≤ 9) : 
+    palindrome n = Sum.inr false := sorry
+
+
+  theorem repeated_digits {n : Int} (h1 : n ≥ 1) (h2 : n ≤ 9) :
+    palindrome (n * 11) = Sum.inr true := sorry
+
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval palindrome 5
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval palindrome 1331
+
+  /--
+  info: 'Not valid'
+  -/
+  #guard_msgs in
+  #eval palindrome "ololo"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

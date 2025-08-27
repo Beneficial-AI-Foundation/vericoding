@@ -1,46 +1,120 @@
-"vc-description": "Given a random bingo card and an array of called numbers, determine\
-  \ if you have a bingo!\n\n*Parameters*: `card` and `numbers` arrays.\n\n*Example\
-  \ input*:\n```\ncard = [\n  ['B', 'I', 'N', 'G', 'O'],\n  [1, 16, 31, 46, 61],\n\
-  \  [3, 18, 33, 48, 63],\n  [5, 20, 'FREE SPACE', 50, 65],\n  [7, 22, 37, 52, 67],\n\
-  \  [9, 24, 39, 54, 69]\n]\n\nnumbers = ['B1', 'I16', 'N31', 'G46', 'O61']\n```\n\
-  \n*Output*: ```true``` if you have a bingo, ```false``` if you do not.\n\nYou have\
-  \ a bingo if you have a complete row, column, or diagonal - each consisting of 5\
-  \ numbers, or 4 numbers and the FREE SPACE.\n\n### Constraints:\nEach column includes\
-  \ 5 random numbers within a range (inclusive):  \n`'B':  1 - 15`  \n`'I': 16 - 30`\
-  \  \n`'N': 31 - 45`  \n`'G': 46 - 60`  \n`'O': 61 - 75`  \n\n### Notes:\n* All numbers\
-  \ will be within the above ranges.\n* `FREE SPACE` will not be included in the numbers\
-  \ array but always counts towards a bingo.\n* The first array of the card is the\
-  \ column headers.\n* `numbers` array will include only tiles present in the card,\
-  \ without duplicates.\n\n___\n\n## Examples:\n```\ncard:\n------------------------------\n\
-  | B  | I  |   N    | G  | O  |\n==============================\n| 2  | 17 |   32\
-  \   | 47 | 74 |\n------------------------------\n| 14 | 25 |   44   | 48 | 62 |\n\
-  ------------------------------\n| 5  | 22 | 'FREE' | 49 | 67 |\n------------------------------\n\
-  | 10 | 23 |   45   | 59 | 73 |\n------------------------------\n| 1  | 30 |   33\
-  \   | 58 | 70 |\n------------------------------\n\nnumbers: ['N32', 'N45', 'B7',\
-  \ 'O75', 'N33', 'N41, 'I18', 'N44']\n\n// return true - you have bingo at ['N32',\
-  \ 'N44', 'FREE', 'N45', 'N33']\n```\n\nThe inspiration for this kata originates\
-  \ from completing the [Bingo Card](http://www.codewars.com/kata/566d5e2e57d8fae53c00000c)\
-  \ by FrankK."
-"vc-preamble": "import Imports.AllImports\n\ndef Card := List (List (Option Nat))\n\
-  def CalledNumber := String\n\n\ndef bingo (card : Card) (numbers : List CalledNumber)\
-  \ : Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def cardNumberToString (n : Option Nat) : CalledNumber :=\n  sorry\n"
-"vc-theorems": "theorem bingo_returns_boolean (card : Card) (numbers : List CalledNumber)\
-  \ :\n  ∃ b : Bool, bingo card numbers = b :=\n  sorry\n\n\ntheorem free_space_is_center\
-  \ (card : Card) : \n  card.get? 2 >>= (·.get? 2) = some none :=\n  sorry\n\n\ntheorem\
-  \ empty_calls_no_bingo (card : Card) :\n  ¬(bingo card []) :=\n  sorry\n\n\ntheorem\
-  \ all_numbers_called_is_bingo (card : Card) (numbers : List CalledNumber) \n  (h\
-  \ : ∀ (i j : Nat), i < card.length → j < (card.get! i).length → \n       (card.get!\
-  \ i).get! j ≠ none → \n       cardNumberToString ((card.get! i).get! j) ∈ numbers)\
-  \ :\n  bingo card numbers :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
-  \ bingo [[\"B\", \"I\", \"N\", \"G\", \"O\"], [1, 16, 31, 46, 61], [3, 18, 33, 48,\
-  \ 63], [5, 20, \"FREE SPACE\", 50, 65], [7, 22, 37, 52, 67], [9, 24, 39, 54, 69]]\
-  \ [\"B1\", \"I16\", \"N31\", \"G46\", \"O61\"]\n\n/--\ninfo: False\n-/\n#guard_msgs\
-  \ in\n#eval bingo [[\"B\", \"I\", \"N\", \"G\", \"O\"], [1, 16, 31, 46, 61], [3,\
-  \ 18, 33, 48, 63], [5, 20, \"FREE SPACE\", 50, 65], [7, 22, 37, 52, 67], [9, 24,\
-  \ 39, 54, 69]] [\"B1\", \"I16\", \"N31\", \"G46\"]\n\n/--\ninfo: True\n-/\n#guard_msgs\
-  \ in\n#eval bingo [[\"B\", \"I\", \"N\", \"G\", \"O\"], [1, 16, 31, 46, 61], [3,\
-  \ 18, 33, 48, 63], [5, 20, \"FREE SPACE\", 50, 65], [7, 22, 37, 52, 67], [9, 24,\
-  \ 39, 54, 69]] [\"N31\", \"N33\", \"N37\", \"N39\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a random bingo card and an array of called numbers, determine if you have a bingo!
+
+  *Parameters*: `card` and `numbers` arrays.
+
+  *Example input*:
+  ```
+  card = [
+    ['B', 'I', 'N', 'G', 'O'],
+    [1, 16, 31, 46, 61],
+    [3, 18, 33, 48, 63],
+    [5, 20, 'FREE SPACE', 50, 65],
+    [7, 22, 37, 52, 67],
+    [9, 24, 39, 54, 69]
+  ]
+
+  numbers = ['B1', 'I16', 'N31', 'G46', 'O61']
+  ```
+
+  *Output*: ```true``` if you have a bingo, ```false``` if you do not.
+
+  You have a bingo if you have a complete row, column, or diagonal - each consisting of 5 numbers, or 4 numbers and the FREE SPACE.
+
+  ### Constraints:
+  Each column includes 5 random numbers within a range (inclusive):  
+  `'B':  1 - 15`  
+  `'I': 16 - 30`  
+  `'N': 31 - 45`  
+  `'G': 46 - 60`  
+  `'O': 61 - 75`  
+
+  ### Notes:
+  * All numbers will be within the above ranges.
+  * `FREE SPACE` will not be included in the numbers array but always counts towards a bingo.
+  * The first array of the card is the column headers.
+  * `numbers` array will include only tiles present in the card, without duplicates.
+
+  ___
+
+  ## Examples:
+  ```
+  card:
+  ------------------------------
+  | B  | I  |   N    | G  | O  |
+  ==============================
+  | 2  | 17 |   32   | 47 | 74 |
+  ------------------------------
+  | 14 | 25 |   44   | 48 | 62 |
+  ------------------------------
+  | 5  | 22 | 'FREE' | 49 | 67 |
+  ------------------------------
+  | 10 | 23 |   45   | 59 | 73 |
+  ------------------------------
+  | 1  | 30 |   33   | 58 | 70 |
+  ------------------------------
+
+  numbers: ['N32', 'N45', 'B7', 'O75', 'N33', 'N41, 'I18', 'N44']
+
+  // return true - you have bingo at ['N32', 'N44', 'FREE', 'N45', 'N33']
+  ```
+
+  The inspiration for this kata originates from completing the [Bingo Card](http://www.codewars.com/kata/566d5e2e57d8fae53c00000c) by FrankK.
+vc-preamble: |
+  import Imports.AllImports
+
+  def Card := List (List (Option Nat))
+  def CalledNumber := String
+
+
+  def bingo (card : Card) (numbers : List CalledNumber) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def cardNumberToString (n : Option Nat) : CalledNumber :=
+    sorry
+vc-theorems: |
+  theorem bingo_returns_boolean (card : Card) (numbers : List CalledNumber) :
+    ∃ b : Bool, bingo card numbers = b :=
+    sorry
+
+
+  theorem free_space_is_center (card : Card) : 
+    card.get? 2 >>= (·.get? 2) = some none :=
+    sorry
+
+
+  theorem empty_calls_no_bingo (card : Card) :
+    ¬(bingo card []) :=
+    sorry
+
+
+  theorem all_numbers_called_is_bingo (card : Card) (numbers : List CalledNumber) 
+    (h : ∀ (i j : Nat), i < card.length → j < (card.get! i).length → 
+         (card.get! i).get! j ≠ none → 
+         cardNumberToString ((card.get! i).get! j) ∈ numbers) :
+    bingo card numbers :=
+    sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval bingo [["B", "I", "N", "G", "O"], [1, 16, 31, 46, 61], [3, 18, 33, 48, 63], [5, 20, "FREE SPACE", 50, 65], [7, 22, 37, 52, 67], [9, 24, 39, 54, 69]] ["B1", "I16", "N31", "G46", "O61"]
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval bingo [["B", "I", "N", "G", "O"], [1, 16, 31, 46, 61], [3, 18, 33, 48, 63], [5, 20, "FREE SPACE", 50, 65], [7, 22, 37, 52, 67], [9, 24, 39, 54, 69]] ["B1", "I16", "N31", "G46"]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval bingo [["B", "I", "N", "G", "O"], [1, 16, 31, 46, 61], [3, 18, 33, 48, 63], [5, 20, "FREE SPACE", 50, 65], [7, 22, 37, 52, 67], [9, 24, 39, 54, 69]] ["N31", "N33", "N37", "N39"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

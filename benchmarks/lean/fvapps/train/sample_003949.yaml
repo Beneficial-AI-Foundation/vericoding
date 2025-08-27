@@ -1,28 +1,61 @@
-"vc-description": "Write a function named `first_non_repeating_letter` that takes\
-  \ a string input, and returns the first character that is not repeated anywhere\
-  \ in the string.\n\nFor example, if given the input `'stress'`, the function should\
-  \ return `'t'`, since the letter *t* only occurs once in the string, and occurs\
-  \ first in the string.\n\nAs an added challenge, upper- and lowercase letters are\
-  \ considered the **same character**, but the function should return the correct\
-  \ case for the initial letter.  For example, the input `'sTreSS'` should return\
-  \ `'T'`.\n\nIf a string contains *all repeating characters*, it should return an\
-  \ empty string (`\"\"`) or `None` -- see sample tests."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def firstNonRepeatingLetter (s : String) : String := sorry \n\n\
-  theorem empty_string_returns_empty : \n  firstNonRepeatingLetter \"\" = \"\" :=\
-  \ sorry\n"
-"vc-theorems": "theorem result_in_original_string {s result : String} :\n  firstNonRepeatingLetter\
-  \ s = result → \n  result ≠ \"\" →\n  ∃ i, String.get s i = String.get result 0\
-  \ := sorry\n\n\ntheorem case_sensitivity_preserved {s result : String} :\n  firstNonRepeatingLetter\
-  \ s = result →\n  result ≠ \"\" →\n  let lowerChar := String.get (String.toLower\
-  \ result) 0\n  ∃ i, String.get (String.toLower s) i = lowerChar ∧\n       String.get\
-  \ s i = String.get result 0 := sorry\n\n\ntheorem returns_first_nonrepeating {s\
-  \ result : String} :\n  firstNonRepeatingLetter s = result →\n  result ≠ \"\" →\n\
-  \  let lowerChar := String.get (String.toLower result) 0\n  ∃ idx, String.get s\
-  \ idx = String.get result 0 ∧\n         (∀ i < idx, ∃ j ≠ i, \n           String.get\
-  \ (String.toLower s) i = String.get (String.toLower s) j) := sorry\n\n/--\ninfo:\
-  \ 't'\n-/\n#guard_msgs in\n#eval first_non_repeating_letter \"stress\"\n\n/--\n\
-  info: 'T'\n-/\n#guard_msgs in\n#eval first_non_repeating_letter \"sTreSS\"\n\n/--\n\
-  info: ''\n-/\n#guard_msgs in\n#eval first_non_repeating_letter \"abba\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function named `first_non_repeating_letter` that takes a string input, and returns the first character that is not repeated anywhere in the string.
+
+  For example, if given the input `'stress'`, the function should return `'t'`, since the letter *t* only occurs once in the string, and occurs first in the string.
+
+  As an added challenge, upper- and lowercase letters are considered the **same character**, but the function should return the correct case for the initial letter.  For example, the input `'sTreSS'` should return `'T'`.
+
+  If a string contains *all repeating characters*, it should return an empty string (`""`) or `None` -- see sample tests.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def firstNonRepeatingLetter (s : String) : String := sorry 
+
+  theorem empty_string_returns_empty : 
+    firstNonRepeatingLetter "" = "" := sorry
+vc-theorems: |
+  theorem result_in_original_string {s result : String} :
+    firstNonRepeatingLetter s = result → 
+    result ≠ "" →
+    ∃ i, String.get s i = String.get result 0 := sorry
+
+
+  theorem case_sensitivity_preserved {s result : String} :
+    firstNonRepeatingLetter s = result →
+    result ≠ "" →
+    let lowerChar := String.get (String.toLower result) 0
+    ∃ i, String.get (String.toLower s) i = lowerChar ∧
+         String.get s i = String.get result 0 := sorry
+
+
+  theorem returns_first_nonrepeating {s result : String} :
+    firstNonRepeatingLetter s = result →
+    result ≠ "" →
+    let lowerChar := String.get (String.toLower result) 0
+    ∃ idx, String.get s idx = String.get result 0 ∧
+           (∀ i < idx, ∃ j ≠ i, 
+             String.get (String.toLower s) i = String.get (String.toLower s) j) := sorry
+
+  /--
+  info: 't'
+  -/
+  #guard_msgs in
+  #eval first_non_repeating_letter "stress"
+
+  /--
+  info: 'T'
+  -/
+  #guard_msgs in
+  #eval first_non_repeating_letter "sTreSS"
+
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval first_non_repeating_letter "abba"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

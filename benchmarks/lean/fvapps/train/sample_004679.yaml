@@ -1,30 +1,86 @@
-"vc-description": "There are a **n** balls numbered from 0 to **n-1** (0,1,2,3,etc).\
-  \ Most of them have the same weight, but one is heavier. Your task is to find it.\n\
-  \nYour function will receive two arguments - a `scales` object, and a ball count.\
-  \ The `scales` object has only one method:\n\n```python\n    get_weight(left, right)\n\
-  ```\n\nwhere `left` and `right` are arrays of numbers of balls to put on left and\
-  \ right pan respectively.\n\nIf the method returns `-1` - left pan is heavier\n\n\
-  If the method returns `1` - right pan is heavier\n\nIf the method returns `0` -\
-  \ both pans weigh the same\n\nSo what makes this the \"ubermaster\" version of this\
-  \ kata? First, it's not restricted to 8 balls as in the previous versions - your\
-  \ solution has to work for 8-500 balls. \n\nSecond, you can't use the scale any\
-  \ more than mathematically necessary. Here's a chart:\n\n    ball count | uses\n\
-  \    -----------------\n           0-9 |    2\n         10-27 |    3\n         28-81\
-  \ |    4\n        82-243 |    5\n       244-500 |    6\n\nToo hard? Try lower levels\
-  \ by [tiriana](http://www.codewars.com/users/tiriana):\n\n* [novice](http://www.codewars.com/kata/544047f0cf362503e000036e)\n\
-  * [conqueror](http://www.codewars.com/kata/54404a06cf36258b08000364)\n* [master](http://www.codewars.com/kata/find-heavy-ball-level-master)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def weighBalls (scales : MockScales) (left right : List Nat) :\
-  \ Weigh := sorry\n\ndef find_ball (scales : MockScales) (n : Nat) : Nat := sorry\
-  \ \n"
-"vc-theorems": "theorem find_ball_correct \n  (n : Nat)\n  (heavy_idx : Nat)\n  (h₁\
-  \ : 0 < n)\n  (h₂ : heavy_idx < n) :\n  find_ball (MockScales.mk heavy_idx) n =\
-  \ heavy_idx := sorry\n\n\ntheorem find_ball_complexity\n  (n : Nat)\n  (heavy_idx\
-  \ : Nat)\n  (h₁ : 0 < n) \n  (h₂ : heavy_idx < n) :\n  ∃ uses : Nat, uses ≤ max\
-  \ 1 (Nat.log2 n) := sorry\n\n\ntheorem find_ball_edge_cases\n  (n : Nat)\n  (h :\
-  \ 0 < n) :\n  find_ball (MockScales.mk 0) n = 0 ∧ \n  find_ball (MockScales.mk (n-1))\
-  \ n = n-1 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_ball MockScales(3)\
-  \ 8\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval find_ball MockScales(15) 27\n\n\
-  /--\ninfo: 80\n-/\n#guard_msgs in\n#eval find_ball MockScales(80) 81\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  There are a **n** balls numbered from 0 to **n-1** (0,1,2,3,etc). Most of them have the same weight, but one is heavier. Your task is to find it.
+
+  Your function will receive two arguments - a `scales` object, and a ball count. The `scales` object has only one method:
+
+  ```python
+      get_weight(left, right)
+  ```
+
+  where `left` and `right` are arrays of numbers of balls to put on left and right pan respectively.
+
+  If the method returns `-1` - left pan is heavier
+
+  If the method returns `1` - right pan is heavier
+
+  If the method returns `0` - both pans weigh the same
+
+  So what makes this the "ubermaster" version of this kata? First, it's not restricted to 8 balls as in the previous versions - your solution has to work for 8-500 balls. 
+
+  Second, you can't use the scale any more than mathematically necessary. Here's a chart:
+
+      ball count | uses
+      -----------------
+             0-9 |    2
+           10-27 |    3
+           28-81 |    4
+          82-243 |    5
+         244-500 |    6
+
+  Too hard? Try lower levels by [tiriana](http://www.codewars.com/users/tiriana):
+
+  * [novice](http://www.codewars.com/kata/544047f0cf362503e000036e)
+  * [conqueror](http://www.codewars.com/kata/54404a06cf36258b08000364)
+  * [master](http://www.codewars.com/kata/find-heavy-ball-level-master)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def weighBalls (scales : MockScales) (left right : List Nat) : Weigh := sorry
+
+  def find_ball (scales : MockScales) (n : Nat) : Nat := sorry 
+vc-theorems: |
+  theorem find_ball_correct 
+    (n : Nat)
+    (heavy_idx : Nat)
+    (h₁ : 0 < n)
+    (h₂ : heavy_idx < n) :
+    find_ball (MockScales.mk heavy_idx) n = heavy_idx := sorry
+
+
+  theorem find_ball_complexity
+    (n : Nat)
+    (heavy_idx : Nat)
+    (h₁ : 0 < n) 
+    (h₂ : heavy_idx < n) :
+    ∃ uses : Nat, uses ≤ max 1 (Nat.log2 n) := sorry
+
+
+  theorem find_ball_edge_cases
+    (n : Nat)
+    (h : 0 < n) :
+    find_ball (MockScales.mk 0) n = 0 ∧ 
+    find_ball (MockScales.mk (n-1)) n = n-1 := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_ball MockScales(3) 8
+
+  /--
+  info: 15
+  -/
+  #guard_msgs in
+  #eval find_ball MockScales(15) 27
+
+  /--
+  info: 80
+  -/
+  #guard_msgs in
+  #eval find_ball MockScales(80) 81
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

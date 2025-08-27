@@ -1,31 +1,84 @@
-"vc-description": "## Grade book\n\nComplete the function so that it finds the mean\
-  \ of the three scores passed to it and returns the letter value associated with\
-  \ that grade.\n\nNumerical Score    | Letter Grade\n---                | ---\n90\
-  \ <= score <= 100 | 'A'\n80 <= score < 90   | 'B'\n70 <= score < 80   | 'C'\n60\
-  \ <= score < 70   | 'D'\n 0 <= score < 60   | 'F'\n\nTested values are all between\
-  \ 0 and 100. Theres is no need to check for negative values or values greater than\
-  \ 100."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def get_grade (s1 s2 s3 : Int) : Char :=\n  sorry\n"
-"vc-theorems": "theorem get_grade_valid_output (s1 s2 s3 : Int) (h1 : 0 ≤ s1 ∧ s1\
-  \ ≤ 100) \n    (h2 : 0 ≤ s2 ∧ s2 ≤ 100) (h3 : 0 ≤ s3 ∧ s3 ≤ 100) :\n  let grade\
-  \ := get_grade s1 s2 s3\n  grade = 'A' ∨ grade = 'B' ∨ grade = 'C' ∨ grade = 'D'\
-  \ ∨ grade = 'F' :=\n  sorry\n\n\ntheorem get_grade_A (s1 s2 s3 : Int) (h1 : 0 ≤\
-  \ s1 ∧ s1 ≤ 100)\n    (h2 : 0 ≤ s2 ∧ s2 ≤ 100) (h3 : 0 ≤ s3 ∧ s3 ≤ 100)\n    (avg\
-  \ : (s1 + s2 + s3) / 3 ≥ 90) :\n  get_grade s1 s2 s3 = 'A' :=\n  sorry\n\n\ntheorem\
-  \ get_grade_B (s1 s2 s3 : Int) (h1 : 0 ≤ s1 ∧ s1 ≤ 100)\n    (h2 : 0 ≤ s2 ∧ s2 ≤\
-  \ 100) (h3 : 0 ≤ s3 ∧ s3 ≤ 100)\n    (avg : (s1 + s2 + s3) / 3 ≥ 80 ∧ (s1 + s2 +\
-  \ s3) / 3 < 90) :\n  get_grade s1 s2 s3 = 'B' :=\n  sorry\n\n\ntheorem get_grade_C\
-  \ (s1 s2 s3 : Int) (h1 : 0 ≤ s1 ∧ s1 ≤ 100)\n    (h2 : 0 ≤ s2 ∧ s2 ≤ 100) (h3 :\
-  \ 0 ≤ s3 ∧ s3 ≤ 100)\n    (avg : (s1 + s2 + s3) / 3 ≥ 70 ∧ (s1 + s2 + s3) / 3 <\
-  \ 80) :\n  get_grade s1 s2 s3 = 'C' :=\n  sorry\n\n\ntheorem get_grade_D (s1 s2\
-  \ s3 : Int) (h1 : 0 ≤ s1 ∧ s1 ≤ 100)\n    (h2 : 0 ≤ s2 ∧ s2 ≤ 100) (h3 : 0 ≤ s3\
-  \ ∧ s3 ≤ 100)\n    (avg : (s1 + s2 + s3) / 3 ≥ 60 ∧ (s1 + s2 + s3) / 3 < 70) :\n\
-  \  get_grade s1 s2 s3 = 'D' :=\n  sorry\n\n\ntheorem get_grade_F (s1 s2 s3 : Int)\
-  \ (h1 : 0 ≤ s1 ∧ s1 ≤ 100)\n    (h2 : 0 ≤ s2 ∧ s2 ≤ 100) (h3 : 0 ≤ s3 ∧ s3 ≤ 100)\n\
-  \    (avg : (s1 + s2 + s3) / 3 < 60) :\n  get_grade s1 s2 s3 = 'F' :=\n  sorry\n\
-  \n/--\ninfo: 'A'\n-/\n#guard_msgs in\n#eval get_grade 95 90 93\n\n/--\ninfo: 'C'\n\
-  -/\n#guard_msgs in\n#eval get_grade 70 70 70\n\n/--\ninfo: 'F'\n-/\n#guard_msgs\
-  \ in\n#eval get_grade 44 55 52\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ## Grade book
+
+  Complete the function so that it finds the mean of the three scores passed to it and returns the letter value associated with that grade.
+
+  Numerical Score    | Letter Grade
+  ---                | ---
+  90 <= score <= 100 | 'A'
+  80 <= score < 90   | 'B'
+  70 <= score < 80   | 'C'
+  60 <= score < 70   | 'D'
+   0 <= score < 60   | 'F'
+
+  Tested values are all between 0 and 100. Theres is no need to check for negative values or values greater than 100.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def get_grade (s1 s2 s3 : Int) : Char :=
+    sorry
+vc-theorems: |
+  theorem get_grade_valid_output (s1 s2 s3 : Int) (h1 : 0 ≤ s1 ∧ s1 ≤ 100) 
+      (h2 : 0 ≤ s2 ∧ s2 ≤ 100) (h3 : 0 ≤ s3 ∧ s3 ≤ 100) :
+    let grade := get_grade s1 s2 s3
+    grade = 'A' ∨ grade = 'B' ∨ grade = 'C' ∨ grade = 'D' ∨ grade = 'F' :=
+    sorry
+
+
+  theorem get_grade_A (s1 s2 s3 : Int) (h1 : 0 ≤ s1 ∧ s1 ≤ 100)
+      (h2 : 0 ≤ s2 ∧ s2 ≤ 100) (h3 : 0 ≤ s3 ∧ s3 ≤ 100)
+      (avg : (s1 + s2 + s3) / 3 ≥ 90) :
+    get_grade s1 s2 s3 = 'A' :=
+    sorry
+
+
+  theorem get_grade_B (s1 s2 s3 : Int) (h1 : 0 ≤ s1 ∧ s1 ≤ 100)
+      (h2 : 0 ≤ s2 ∧ s2 ≤ 100) (h3 : 0 ≤ s3 ∧ s3 ≤ 100)
+      (avg : (s1 + s2 + s3) / 3 ≥ 80 ∧ (s1 + s2 + s3) / 3 < 90) :
+    get_grade s1 s2 s3 = 'B' :=
+    sorry
+
+
+  theorem get_grade_C (s1 s2 s3 : Int) (h1 : 0 ≤ s1 ∧ s1 ≤ 100)
+      (h2 : 0 ≤ s2 ∧ s2 ≤ 100) (h3 : 0 ≤ s3 ∧ s3 ≤ 100)
+      (avg : (s1 + s2 + s3) / 3 ≥ 70 ∧ (s1 + s2 + s3) / 3 < 80) :
+    get_grade s1 s2 s3 = 'C' :=
+    sorry
+
+
+  theorem get_grade_D (s1 s2 s3 : Int) (h1 : 0 ≤ s1 ∧ s1 ≤ 100)
+      (h2 : 0 ≤ s2 ∧ s2 ≤ 100) (h3 : 0 ≤ s3 ∧ s3 ≤ 100)
+      (avg : (s1 + s2 + s3) / 3 ≥ 60 ∧ (s1 + s2 + s3) / 3 < 70) :
+    get_grade s1 s2 s3 = 'D' :=
+    sorry
+
+
+  theorem get_grade_F (s1 s2 s3 : Int) (h1 : 0 ≤ s1 ∧ s1 ≤ 100)
+      (h2 : 0 ≤ s2 ∧ s2 ≤ 100) (h3 : 0 ≤ s3 ∧ s3 ≤ 100)
+      (avg : (s1 + s2 + s3) / 3 < 60) :
+    get_grade s1 s2 s3 = 'F' :=
+    sorry
+
+  /--
+  info: 'A'
+  -/
+  #guard_msgs in
+  #eval get_grade 95 90 93
+
+  /--
+  info: 'C'
+  -/
+  #guard_msgs in
+  #eval get_grade 70 70 70
+
+  /--
+  info: 'F'
+  -/
+  #guard_msgs in
+  #eval get_grade 44 55 52
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

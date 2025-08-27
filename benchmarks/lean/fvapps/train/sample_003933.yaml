@@ -1,21 +1,59 @@
-"vc-description": "Complete the method which accepts an array of integers, and returns\
-  \ one of the following:\n\n* `\"yes, ascending\"` - if the numbers in the array\
-  \ are sorted in an ascending order\n* `\"yes, descending\"` - if the numbers in\
-  \ the array are sorted in a descending order\n* `\"no\"` - otherwise\n\n\nYou can\
-  \ assume the array will always be valid, and there will always be one correct answer."
-"vc-preamble": "import Imports.AllImports\n\ndef is_sorted_and_how (arr : List Int)\
-  \ : String := sorry\n\ndef isSorted (arr : List Int) : Bool := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isSortedDesc (arr : List Int) : Bool := sorry\n\ntheorem sorted_properties\
-  \ (arr : List Int) (h : arr.length > 0) : \n  match is_sorted_and_how arr with\n\
-  \  | \"yes, ascending\" => isSorted arr = true\n  | \"yes, descending\" => isSortedDesc\
-  \ arr = true  \n  | _ => ¬(isSorted arr) ∧ ¬(isSortedDesc arr)\n  := sorry\n"
-"vc-theorems": "theorem result_is_valid (arr : List Int) (h : arr.length > 0) :\n\
-  \  is_sorted_and_how arr = \"yes, ascending\" ∨ \n  is_sorted_and_how arr = \"yes,\
-  \ descending\" ∨\n  is_sorted_and_how arr = \"no\"\n  := sorry\n\n\ntheorem ascending_lists\
-  \ (arr : List Int) (h : arr.length > 0) (h2 : isSorted arr) :\n  is_sorted_and_how\
-  \ arr = \"yes, ascending\"\n  := sorry\n\n/--\ninfo: 'yes, ascending'\n-/\n#guard_msgs\
-  \ in\n#eval is_sorted_and_how [1, 2]\n\n/--\ninfo: 'yes, descending'\n-/\n#guard_msgs\
-  \ in\n#eval is_sorted_and_how [15, 7, 3, -8]\n\n/--\ninfo: 'no'\n-/\n#guard_msgs\
-  \ in\n#eval is_sorted_and_how [4, 2, 30]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Complete the method which accepts an array of integers, and returns one of the following:
+
+  * `"yes, ascending"` - if the numbers in the array are sorted in an ascending order
+  * `"yes, descending"` - if the numbers in the array are sorted in a descending order
+  * `"no"` - otherwise
+
+
+  You can assume the array will always be valid, and there will always be one correct answer.
+vc-preamble: |
+  import Imports.AllImports
+
+  def is_sorted_and_how (arr : List Int) : String := sorry
+
+  def isSorted (arr : List Int) : Bool := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isSortedDesc (arr : List Int) : Bool := sorry
+
+  theorem sorted_properties (arr : List Int) (h : arr.length > 0) : 
+    match is_sorted_and_how arr with
+    | "yes, ascending" => isSorted arr = true
+    | "yes, descending" => isSortedDesc arr = true  
+    | _ => ¬(isSorted arr) ∧ ¬(isSortedDesc arr)
+    := sorry
+vc-theorems: |
+  theorem result_is_valid (arr : List Int) (h : arr.length > 0) :
+    is_sorted_and_how arr = "yes, ascending" ∨ 
+    is_sorted_and_how arr = "yes, descending" ∨
+    is_sorted_and_how arr = "no"
+    := sorry
+
+
+  theorem ascending_lists (arr : List Int) (h : arr.length > 0) (h2 : isSorted arr) :
+    is_sorted_and_how arr = "yes, ascending"
+    := sorry
+
+  /--
+  info: 'yes, ascending'
+  -/
+  #guard_msgs in
+  #eval is_sorted_and_how [1, 2]
+
+  /--
+  info: 'yes, descending'
+  -/
+  #guard_msgs in
+  #eval is_sorted_and_how [15, 7, 3, -8]
+
+  /--
+  info: 'no'
+  -/
+  #guard_msgs in
+  #eval is_sorted_and_how [4, 2, 30]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

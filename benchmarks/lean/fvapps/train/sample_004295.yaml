@@ -1,16 +1,53 @@
-"vc-description": "Write a function `consonantCount`, `consonant_count` or `ConsonantCount`\
-  \ that takes a string of English-language text and returns the number of consonants\
-  \ in the string.\n\nConsonants are all letters used to write English excluding the\
-  \ vowels `a, e, i, o, u`."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def consonant_count (s : String) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem consonant_count_nonnegative (s : String) :\n  consonant_count\
-  \ s ≥ 0 :=\nsorry\n\n\ntheorem consonant_count_bounded (s : String) :\n  consonant_count\
-  \ s ≤ s.length :=\nsorry\n\n\ntheorem consonant_count_empty :\n  consonant_count\
-  \ \"\" = 0 :=\nsorry \n\n\ntheorem consonant_count_case_insensitive (s : String)\
-  \ :\n  consonant_count s = consonant_count s.toUpper ∧ \n  consonant_count s = consonant_count\
-  \ s.toLower :=\nsorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval consonant_count\
-  \ \"\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval consonant_count \"aaaaa\"\n\n\
-  /--\ninfo: 7\n-/\n#guard_msgs in\n#eval consonant_count \"helLo world\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Write a function `consonantCount`, `consonant_count` or `ConsonantCount` that takes a string of English-language text and returns the number of consonants in the string.
+
+  Consonants are all letters used to write English excluding the vowels `a, e, i, o, u`.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def consonant_count (s : String) : Nat :=
+    sorry
+vc-theorems: |
+  theorem consonant_count_nonnegative (s : String) :
+    consonant_count s ≥ 0 :=
+  sorry
+
+
+  theorem consonant_count_bounded (s : String) :
+    consonant_count s ≤ s.length :=
+  sorry
+
+
+  theorem consonant_count_empty :
+    consonant_count "" = 0 :=
+  sorry 
+
+
+  theorem consonant_count_case_insensitive (s : String) :
+    consonant_count s = consonant_count s.toUpper ∧ 
+    consonant_count s = consonant_count s.toLower :=
+  sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval consonant_count ""
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval consonant_count "aaaaa"
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval consonant_count "helLo world"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

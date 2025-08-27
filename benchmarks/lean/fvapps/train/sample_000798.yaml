@@ -1,37 +1,93 @@
-"vc-description": "We all know Gru loves Agnes very much. One day Agnes asked Gru\
-  \ to answer some of her queries. She lined up $N$ minions in a straight line from\
-  \ $1$ to $N$. \nYou are given an array $A$ which contains the height of minions.\
-  \ Agnes will ask him several queries. In each query, Gru has to tell whether the\
-  \ bitwise AND of  $A[L \\ldots R]$ is EVEN or ODD. Since Gru is busy planning the\
-  \ biggest heist on Earth, he asks for your help.\n\n-----Input:-----\n- First line\
-  \ of the input contains an integer $T$ denoting the number of test cases.\nFor each\
-  \ test case:-\n- First line contains an integer $N$ denoting the number of elements.\n\
-  - Second line contains $N$ spaced integer representing array elements.\n- Third\
-  \ line contains $Q$ representing number of query.\n- Next $Q$ lines contains two\
-  \ integer $L$ and $R$ as defined above.\n\n-----Output:-----\nFor each query, output\
-  \ \"EVEN\" or \"ODD\" without quotes.\n\n-----Constraints-----\n- $1 \\leq T \\\
-  leq 10$\n- $1 \\leq N \\leq 10^5$\n- $1 \\leq A_i \\leq 10^5$\n- $1 \\leq Q \\leq\
-  \ 10^5$\n\n-----Sample Input:-----\n1\n5\n1 3 2 4 5\n3\n1 2 \n1 5\n3 4\n\n-----Sample\
-  \ Output:-----\nODD\nEVEN\nEVEN\n\n-----Explanation-----\n- For the first query,\
-  \ the bitwise AND of 1 and 3 is 1, which is Odd. Hence the first output is ODD.\n\
-  - For the third query, the bitwise AND of 2 and 4 is 0, which is Even. Hence the\
-  \ third output is EVEN."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_minion_queries (n : Nat) (arr : List Nat) (queries :\
-  \ List (Nat × Nat)) : List String := sorry\n\ntheorem solve_minion_queries_full_range\
-  \ (arr : List Nat) : \n  let n := arr.length\n  let result := (solve_minion_queries\
-  \ n arr [(1, n)]).get! 0\n  if arr.any (fun x => x % 2 = 0) then\n    result = \"\
-  EVEN\"\n  else\n    result = \"ODD\" := sorry\n"
-"vc-theorems": "theorem solve_minion_queries_single_element_odd : \n  solve_minion_queries\
-  \ 1 [1] [(1,1)] = [\"ODD\"] := sorry\n\n\ntheorem solve_minion_queries_single_element_even\
-  \ :\n  solve_minion_queries 1 [2] [(1,1)] = [\"EVEN\"] := sorry\n\n\ntheorem solve_minion_queries_all_odds\
-  \ :\n  solve_minion_queries 3 [1,3,5] [(1,3)] = [\"ODD\"] := sorry\n\n\ntheorem\
-  \ solve_minion_queries_all_evens :\n  solve_minion_queries 3 [2,4,6] [(1,3)] = [\"\
-  EVEN\"] := sorry\n\n\ntheorem solve_minion_queries_adjacent_pairs :\n  solve_minion_queries\
-  \ 4 [1,2,3,4] [(1,2), (2,3), (3,4)] = [\"EVEN\", \"EVEN\", \"EVEN\"] := sorry\n\n\
-  /--\ninfo: ['ODD', 'EVEN', 'EVEN']\n-/\n#guard_msgs in\n#eval solve_minion_queries\
-  \ 5 [1, 3, 2, 4, 5] [(1, 2), (1, 5), (3, 4)]\n\n/--\ninfo: ['ODD']\n-/\n#guard_msgs\
-  \ in\n#eval solve_minion_queries 3 [1, 3, 5] [(1, 3)]\n\n/--\ninfo: ['EVEN', 'EVEN']\n\
-  -/\n#guard_msgs in\n#eval solve_minion_queries 4 [2, 4, 6, 8] [(1, 2), (2, 4)]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  We all know Gru loves Agnes very much. One day Agnes asked Gru to answer some of her queries. She lined up $N$ minions in a straight line from $1$ to $N$. 
+  You are given an array $A$ which contains the height of minions. Agnes will ask him several queries. In each query, Gru has to tell whether the bitwise AND of  $A[L \ldots R]$ is EVEN or ODD. Since Gru is busy planning the biggest heist on Earth, he asks for your help.
+
+  -----Input:-----
+  - First line of the input contains an integer $T$ denoting the number of test cases.
+  For each test case:-
+  - First line contains an integer $N$ denoting the number of elements.
+  - Second line contains $N$ spaced integer representing array elements.
+  - Third line contains $Q$ representing number of query.
+  - Next $Q$ lines contains two integer $L$ and $R$ as defined above.
+
+  -----Output:-----
+  For each query, output "EVEN" or "ODD" without quotes.
+
+  -----Constraints-----
+  - $1 \leq T \leq 10$
+  - $1 \leq N \leq 10^5$
+  - $1 \leq A_i \leq 10^5$
+  - $1 \leq Q \leq 10^5$
+
+  -----Sample Input:-----
+  1
+  5
+  1 3 2 4 5
+  3
+  1 2 
+  1 5
+  3 4
+
+  -----Sample Output:-----
+  ODD
+  EVEN
+  EVEN
+
+  -----Explanation-----
+  - For the first query, the bitwise AND of 1 and 3 is 1, which is Odd. Hence the first output is ODD.
+  - For the third query, the bitwise AND of 2 and 4 is 0, which is Even. Hence the third output is EVEN.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_minion_queries (n : Nat) (arr : List Nat) (queries : List (Nat × Nat)) : List String := sorry
+
+  theorem solve_minion_queries_full_range (arr : List Nat) : 
+    let n := arr.length
+    let result := (solve_minion_queries n arr [(1, n)]).get! 0
+    if arr.any (fun x => x % 2 = 0) then
+      result = "EVEN"
+    else
+      result = "ODD" := sorry
+vc-theorems: |
+  theorem solve_minion_queries_single_element_odd : 
+    solve_minion_queries 1 [1] [(1,1)] = ["ODD"] := sorry
+
+
+  theorem solve_minion_queries_single_element_even :
+    solve_minion_queries 1 [2] [(1,1)] = ["EVEN"] := sorry
+
+
+  theorem solve_minion_queries_all_odds :
+    solve_minion_queries 3 [1,3,5] [(1,3)] = ["ODD"] := sorry
+
+
+  theorem solve_minion_queries_all_evens :
+    solve_minion_queries 3 [2,4,6] [(1,3)] = ["EVEN"] := sorry
+
+
+  theorem solve_minion_queries_adjacent_pairs :
+    solve_minion_queries 4 [1,2,3,4] [(1,2), (2,3), (3,4)] = ["EVEN", "EVEN", "EVEN"] := sorry
+
+  /--
+  info: ['ODD', 'EVEN', 'EVEN']
+  -/
+  #guard_msgs in
+  #eval solve_minion_queries 5 [1, 3, 2, 4, 5] [(1, 2), (1, 5), (3, 4)]
+
+  /--
+  info: ['ODD']
+  -/
+  #guard_msgs in
+  #eval solve_minion_queries 3 [1, 3, 5] [(1, 3)]
+
+  /--
+  info: ['EVEN', 'EVEN']
+  -/
+  #guard_msgs in
+  #eval solve_minion_queries 4 [2, 4, 6, 8] [(1, 2), (2, 4)]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

@@ -1,16 +1,64 @@
-"vc-description": "Let's say we have a number, `num`. Find the number of values of\
-  \ `n` such that: there exists `n` consecutive **positive** values that sum up to\
-  \ `num`. A positive number is `> 0`. `n` can also be 1.\n\n```python\n#Examples\n\
-  num = 1\n#1\nreturn 1\n\nnum = 15\n#15, (7, 8), (4, 5, 6), (1, 2, 3, 4, 5)\nreturn\
-  \ 4\n\nnum = 48\n#48, (15, 16, 17)\nreturn 2\n\nnum = 97\n#97, (48, 49)\nreturn\
-  \ 2\n```\nThe upper limit is `$10^8$`"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def consecutive_sum (n : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem result_is_positive (n : Nat) (h : n > 0) : consecutive_sum\
-  \ n ≥ 0 :=\n  sorry\n\n\ntheorem min_representation (n : Nat) (h : n > 0) : consecutive_sum\
-  \ n ≥ 1 :=\n  sorry\n\n\n\n\ntheorem result_less_than_input (n : Nat) (h : n > 0)\
-  \ : consecutive_sum n ≤ n :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval\
-  \ consecutive_sum 1\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval consecutive_sum 15\n\
-  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval consecutive_sum 97\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Let's say we have a number, `num`. Find the number of values of `n` such that: there exists `n` consecutive **positive** values that sum up to `num`. A positive number is `> 0`. `n` can also be 1.
+
+  ```python
+  #Examples
+  num = 1
+  #1
+  return 1
+
+  num = 15
+  #15, (7, 8), (4, 5, 6), (1, 2, 3, 4, 5)
+  return 4
+
+  num = 48
+  #48, (15, 16, 17)
+  return 2
+
+  num = 97
+  #97, (48, 49)
+  return 2
+  ```
+  The upper limit is `$10^8$`
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def consecutive_sum (n : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem result_is_positive (n : Nat) (h : n > 0) : consecutive_sum n ≥ 0 :=
+    sorry
+
+
+  theorem min_representation (n : Nat) (h : n > 0) : consecutive_sum n ≥ 1 :=
+    sorry
+
+
+
+
+  theorem result_less_than_input (n : Nat) (h : n > 0) : consecutive_sum n ≤ n :=
+    sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval consecutive_sum 1
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval consecutive_sum 15
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval consecutive_sum 97
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

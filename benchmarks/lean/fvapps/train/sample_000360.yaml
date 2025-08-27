@@ -1,30 +1,98 @@
-"vc-description": "Given a m x n binary matrix mat. In one step, you can choose one\
-  \ cell and flip it and all the four neighbours of it if they exist (Flip is changing\
-  \ 1 to 0 and 0 to 1). A pair of cells are called neighboors if they share one edge.\n\
-  Return the minimum number of steps required to convert mat to a zero matrix or -1\
-  \ if you cannot.\nBinary matrix is a matrix with all cells equal to 0 or 1 only.\n\
-  Zero matrix is a matrix with all cells equal to 0.\n \nExample 1:\n\nInput: mat\
-  \ = [[0,0],[0,1]]\nOutput: 3\nExplanation: One possible solution is to flip (1,\
-  \ 0) then (0, 1) and finally (1, 1) as shown.\n\nExample 2:\nInput: mat = [[0]]\n\
-  Output: 0\nExplanation: Given matrix is a zero matrix. We don't need to change it.\n\
-  \nExample 3:\nInput: mat = [[1,1,1],[1,0,1],[0,0,0]]\nOutput: 6\n\nExample 4:\n\
-  Input: mat = [[1,0,0],[1,0,0]]\nOutput: -1\nExplanation: Given matrix can't be a\
-  \ zero matrix\n\n \nConstraints:\n\nm == mat.length\nn == mat[0].length\n1 <= m <=\
-  \ 3\n1 <= n <= 3\nmat[i][j] is 0 or 1."
-"vc-preamble": "import Imports.AllImports\n\ndef minFlips (mat: Matrix) : Int :=\n\
-  \  sorry\n\n\ndef isZeroMatrix (m: Matrix) : Bool :=\n  match m with\n  | Matrix.mk\
-  \ rows => rows.all (fun row => row.all (fun x => x = 0))\n\n\ndef flipCells (mat:\
-  \ Matrix) (state: Nat) : Matrix :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isOnesMatrix (m: Matrix) : Bool := \n  match m with\n  | Matrix.mk\
-  \ rows => rows.all (fun row => row.all (fun x => x = 1))\n"
-"vc-theorems": "theorem minflips_result_valid (mat: Matrix) : \n  minFlips mat ≥ -1\
-  \ :=\n  sorry\n\n\ntheorem minflips_zero_matrix (mat: Matrix)\n  (h: isZeroMatrix\
-  \ mat = true) :\n  minFlips mat = 0 :=\n  sorry\n\n\ntheorem minflips_minus_one_means_impossible\
-  \ (mat: Matrix)\n  (h: minFlips mat = -1) :\n  ∀ state, ¬ isZeroMatrix (flipCells\
-  \ mat state) :=\n  sorry\n\n\ntheorem minflips_ones_matrix_valid (mat: Matrix)\n\
-  \  (h: isOnesMatrix mat = true) :\n  minFlips mat ≥ -1 :=\n  sorry\n\n/--\ninfo:\
-  \ 3\n-/\n#guard_msgs in\n#eval minFlips [[0, 0], [0, 1]]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
-  \ in\n#eval minFlips [[0]]\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval minFlips [[1,\
-  \ 1, 1], [1, 0, 1], [0, 0, 0]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a m x n binary matrix mat. In one step, you can choose one cell and flip it and all the four neighbours of it if they exist (Flip is changing 1 to 0 and 0 to 1). A pair of cells are called neighboors if they share one edge.
+  Return the minimum number of steps required to convert mat to a zero matrix or -1 if you cannot.
+  Binary matrix is a matrix with all cells equal to 0 or 1 only.
+  Zero matrix is a matrix with all cells equal to 0.
+   
+  Example 1:
+
+  Input: mat = [[0,0],[0,1]]
+  Output: 3
+  Explanation: One possible solution is to flip (1, 0) then (0, 1) and finally (1, 1) as shown.
+
+  Example 2:
+  Input: mat = [[0]]
+  Output: 0
+  Explanation: Given matrix is a zero matrix. We don't need to change it.
+
+  Example 3:
+  Input: mat = [[1,1,1],[1,0,1],[0,0,0]]
+  Output: 6
+
+  Example 4:
+  Input: mat = [[1,0,0],[1,0,0]]
+  Output: -1
+  Explanation: Given matrix can't be a zero matrix
+
+   
+  Constraints:
+
+  m == mat.length
+  n == mat[0].length
+  1 <= m <= 3
+  1 <= n <= 3
+  mat[i][j] is 0 or 1.
+vc-preamble: |
+  import Imports.AllImports
+
+  def minFlips (mat: Matrix) : Int :=
+    sorry
+
+
+  def isZeroMatrix (m: Matrix) : Bool :=
+    match m with
+    | Matrix.mk rows => rows.all (fun row => row.all (fun x => x = 0))
+
+
+  def flipCells (mat: Matrix) (state: Nat) : Matrix :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def isOnesMatrix (m: Matrix) : Bool := 
+    match m with
+    | Matrix.mk rows => rows.all (fun row => row.all (fun x => x = 1))
+vc-theorems: |
+  theorem minflips_result_valid (mat: Matrix) : 
+    minFlips mat ≥ -1 :=
+    sorry
+
+
+  theorem minflips_zero_matrix (mat: Matrix)
+    (h: isZeroMatrix mat = true) :
+    minFlips mat = 0 :=
+    sorry
+
+
+  theorem minflips_minus_one_means_impossible (mat: Matrix)
+    (h: minFlips mat = -1) :
+    ∀ state, ¬ isZeroMatrix (flipCells mat state) :=
+    sorry
+
+
+  theorem minflips_ones_matrix_valid (mat: Matrix)
+    (h: isOnesMatrix mat = true) :
+    minFlips mat ≥ -1 :=
+    sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval minFlips [[0, 0], [0, 1]]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval minFlips [[0]]
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval minFlips [[1, 1, 1], [1, 0, 1], [0, 0, 0]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

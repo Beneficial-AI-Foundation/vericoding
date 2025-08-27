@@ -1,30 +1,71 @@
-"vc-description": "# Two samurai generals are discussing dinner plans after a battle,\
-  \ but they can't seem to agree.\n\nThe discussion gets heated and you are cannot\
-  \ risk favoring either of them as this might damage your political standing with\
-  \ either of the two clans the samurai generals belong to. Thus, the only thing left\
-  \ to do is find what the common ground of what they are saying is.\n\nCompare the\
-  \ proposals with the following function: \n```python\ndef common_ground(s1,s2)\n\
-  ```\n\nThe parameters ```s1``` and ```s2``` are the strings representing what each\
-  \ of the generals said. You should output a string containing the words in ```s1```\
-  \ that also occur in ```s2```.\n\nEach word in the resulting string shall occur\
-  \ once, and the order of the words need to follow the order of the first occurence\
-  \ of each word in ```s2```.\n\nIf they are saying nothing in common, kill both samurai\
-  \ and blame a ninja. (output \"death\")"
-"vc-preamble": "import Imports.AllImports\n\ndef common_ground (s1 s2 : String) :\
-  \ String :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def split (s : String) : List String :=\n  sorry\n"
-"vc-theorems": "theorem common_ground_subset (s1 s2 : String) :\n  let result := common_ground\
-  \ s1 s2\n  result ≠ \"death\" →\n  (∀ w, w ∈ split result → \n    w ∈ split s1 ∧\
-  \ w ∈ split s2) :=\nsorry\n\n\ntheorem common_ground_order (s1 s2 : String) :\n\
-  \  let result := common_ground s1 s2\n  result ≠ \"death\" →\n  ∀ i j, i < j → i\
-  \ < (split result).length → j < (split result).length →\n    let s2_words := split\
-  \ s2\n    let result_words := split result\n    s2_words.findIdx (· = result_words[i]!)\
-  \ < \n    s2_words.findIdx (· = result_words[j]!) :=\nsorry\n\n\ntheorem common_ground_no_overlap\
-  \ (s1 s2 : String) :\n  (∀ w1 w2, w1 ∈ split s1 → w2 ∈ split s2 → w1 ≠ w2) →\n \
-  \ common_ground s1 s2 = \"death\" :=\nsorry\n\n/--\ninfo: 'eat chicken'\n-/\n#guard_msgs\
-  \ in\n#eval common_ground \"eat chicken\" \"eat chicken and rice\"\n\n/--\ninfo:\
-  \ 'drink a coke'\n-/\n#guard_msgs in\n#eval common_ground \"eat a burger and drink\
-  \ a coke\" \"drink a coke\"\n\n/--\ninfo: 'death'\n-/\n#guard_msgs in\n#eval common_ground\
-  \ \"i like turtles\" \"what are you talking about\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Two samurai generals are discussing dinner plans after a battle, but they can't seem to agree.
+
+  The discussion gets heated and you are cannot risk favoring either of them as this might damage your political standing with either of the two clans the samurai generals belong to. Thus, the only thing left to do is find what the common ground of what they are saying is.
+
+  Compare the proposals with the following function: 
+  ```python
+  def common_ground(s1,s2)
+  ```
+
+  The parameters ```s1``` and ```s2``` are the strings representing what each of the generals said. You should output a string containing the words in ```s1``` that also occur in ```s2```.
+
+  Each word in the resulting string shall occur once, and the order of the words need to follow the order of the first occurence of each word in ```s2```.
+
+  If they are saying nothing in common, kill both samurai and blame a ninja. (output "death")
+vc-preamble: |
+  import Imports.AllImports
+
+  def common_ground (s1 s2 : String) : String :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def split (s : String) : List String :=
+    sorry
+vc-theorems: |
+  theorem common_ground_subset (s1 s2 : String) :
+    let result := common_ground s1 s2
+    result ≠ "death" →
+    (∀ w, w ∈ split result → 
+      w ∈ split s1 ∧ w ∈ split s2) :=
+  sorry
+
+
+  theorem common_ground_order (s1 s2 : String) :
+    let result := common_ground s1 s2
+    result ≠ "death" →
+    ∀ i j, i < j → i < (split result).length → j < (split result).length →
+      let s2_words := split s2
+      let result_words := split result
+      s2_words.findIdx (· = result_words[i]!) < 
+      s2_words.findIdx (· = result_words[j]!) :=
+  sorry
+
+
+  theorem common_ground_no_overlap (s1 s2 : String) :
+    (∀ w1 w2, w1 ∈ split s1 → w2 ∈ split s2 → w1 ≠ w2) →
+    common_ground s1 s2 = "death" :=
+  sorry
+
+  /--
+  info: 'eat chicken'
+  -/
+  #guard_msgs in
+  #eval common_ground "eat chicken" "eat chicken and rice"
+
+  /--
+  info: 'drink a coke'
+  -/
+  #guard_msgs in
+  #eval common_ground "eat a burger and drink a coke" "drink a coke"
+
+  /--
+  info: 'death'
+  -/
+  #guard_msgs in
+  #eval common_ground "i like turtles" "what are you talking about"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

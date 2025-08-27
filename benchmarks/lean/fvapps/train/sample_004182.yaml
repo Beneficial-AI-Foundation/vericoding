@@ -1,13 +1,39 @@
-"vc-description": "## Task\n\nComplete function `splitOddAndEven`, accept a number\
-  \ `n`(n>0), return an array that contains the continuous parts of odd or even digits.\n\
-  \nPlease don't worry about digit `0`, it won't appear ;-)\n\n## Examples"
-"vc-preamble": "import Imports.AllImports\n\ndef isOdd (n : Nat) : Bool :=\n  sorry\n\
-  \n\ndef split_odd_and_even (n : Nat) : List Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def charToNat (c : Char) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem split_returns_list (n : Nat) (h : n > 0) :\n  ∃ (l : List\
-  \ Nat), split_odd_and_even n = l\n  := by sorry\n\n\ntheorem digits_have_same_parity\
-  \ (n : Nat) (h : n > 0) :\n  ∀ x, x ∈ split_odd_and_even n →\n    let digits :=\
-  \ (toString x).data\n    ∀ d, d ∈ digits →\n      ∀ h : 0 < digits.length,\n   \
-  \     isOdd (charToNat d) = isOdd (charToNat (digits[0]'h))\n  := by sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  ## Task
+
+  Complete function `splitOddAndEven`, accept a number `n`(n>0), return an array that contains the continuous parts of odd or even digits.
+
+  Please don't worry about digit `0`, it won't appear ;-)
+
+  ## Examples
+vc-preamble: |
+  import Imports.AllImports
+
+  def isOdd (n : Nat) : Bool :=
+    sorry
+
+
+  def split_odd_and_even (n : Nat) : List Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def charToNat (c : Char) : Nat :=
+    sorry
+vc-theorems: |-
+  theorem split_returns_list (n : Nat) (h : n > 0) :
+    ∃ (l : List Nat), split_odd_and_even n = l
+    := by sorry
+
+
+  theorem digits_have_same_parity (n : Nat) (h : n > 0) :
+    ∀ x, x ∈ split_odd_and_even n →
+      let digits := (toString x).data
+      ∀ d, d ∈ digits →
+        ∀ h : 0 < digits.length,
+          isOdd (charToNat d) = isOdd (charToNat (digits[0]'h))
+    := by sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

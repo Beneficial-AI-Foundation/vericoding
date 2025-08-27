@@ -1,19 +1,55 @@
-"vc-description": "Find the longest substring in alphabetical order.\n\nExample: the\
-  \ longest alphabetical substring in `\"asdfaaaabbbbcttavvfffffdf\"` is `\"aaaabbbbctt\"\
-  `.\n\nThere are tests with strings up to `10 000` characters long so your code will\
-  \ need to be efficient.\n\nThe input will only consist of lowercase characters and\
-  \ will be at least one letter long.\n\nIf there are multiple solutions, return the\
-  \ one that appears first.\n\nGood luck :)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def longest (s : String) : String := sorry\n\ntheorem longest_is_substring\
-  \ (s : String) :\n  ∃ i j, s.extract i j = longest s := sorry\n"
-"vc-theorems": "theorem longest_is_ordered (s : String) :\n  let result := longest\
-  \ s\n  ∀ (i j : String.Pos), i < j → result.get i ≤ result.get j := sorry\n\n\n\
-  theorem longest_length_bounded (s : String) :\n  (longest s).length ≤ s.length :=\
-  \ sorry\n\n\ntheorem nonempty_input_nonempty_output (s : String) (h : s.length >\
-  \ 0) :\n  (longest s).length > 0 := sorry\n\n/--\ninfo: 'as'\n-/\n#guard_msgs in\n\
-  #eval longest \"asd\"\n\n/--\ninfo: 'abcde'\n-/\n#guard_msgs in\n#eval longest \"\
-  abcdeapbcdef\"\n\n/--\ninfo: 'aaaabbbbctt'\n-/\n#guard_msgs in\n#eval longest \"\
-  asdfaaaabbbbcttavvfffffdf\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Find the longest substring in alphabetical order.
+
+  Example: the longest alphabetical substring in `"asdfaaaabbbbcttavvfffffdf"` is `"aaaabbbbctt"`.
+
+  There are tests with strings up to `10 000` characters long so your code will need to be efficient.
+
+  The input will only consist of lowercase characters and will be at least one letter long.
+
+  If there are multiple solutions, return the one that appears first.
+
+  Good luck :)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def longest (s : String) : String := sorry
+
+  theorem longest_is_substring (s : String) :
+    ∃ i j, s.extract i j = longest s := sorry
+vc-theorems: |
+  theorem longest_is_ordered (s : String) :
+    let result := longest s
+    ∀ (i j : String.Pos), i < j → result.get i ≤ result.get j := sorry
+
+
+  theorem longest_length_bounded (s : String) :
+    (longest s).length ≤ s.length := sorry
+
+
+  theorem nonempty_input_nonempty_output (s : String) (h : s.length > 0) :
+    (longest s).length > 0 := sorry
+
+  /--
+  info: 'as'
+  -/
+  #guard_msgs in
+  #eval longest "asd"
+
+  /--
+  info: 'abcde'
+  -/
+  #guard_msgs in
+  #eval longest "abcdeapbcdef"
+
+  /--
+  info: 'aaaabbbbctt'
+  -/
+  #guard_msgs in
+  #eval longest "asdfaaaabbbbcttavvfffffdf"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

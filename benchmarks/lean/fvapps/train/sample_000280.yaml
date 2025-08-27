@@ -1,24 +1,72 @@
-"vc-description": "Suppose you have N integers from 1 to N. We define a beautiful\
-  \ arrangement as an array that is constructed by these N numbers successfully if\
-  \ one of the following is true for the ith position (1 \nThe number at the ith position\
-  \ is divisible by i.\ni is divisible by the number at the ith position.\n\n\n\n\n\
-  Now given N, how many beautiful arrangements can you construct?\n\n\nExample 1:\n\
-  \nInput: 2\nOutput: 2\nExplanation: \nThe first beautiful arrangement is [1, 2]:\n\
-  Number at the 1st position (i=1) is 1, and 1 is divisible by i (i=1).\nNumber at\
-  \ the 2nd position (i=2) is 2, and 2 is divisible by i (i=2).\nThe second beautiful\
-  \ arrangement is [2, 1]:\nNumber at the 1st position (i=1) is 2, and 2 is divisible\
-  \ by i (i=1).\nNumber at the 2nd position (i=2) is 1, and i (i=2) is divisible by\
-  \ 1.\n\n\n\nNote:\n\nN is a positive integer and will not exceed 15."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_beautiful_arrangements (n : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem count_beautiful_arrangements_positive (n : Nat)\n    (h :\
-  \ n > 0 ∧ n ≤ 15) :\n    count_beautiful_arrangements n > 0 := sorry\n\n\ntheorem\
-  \ count_beautiful_arrangements_increasing\n    {n₁ n₂ : Nat} (h₁ : n₁ > 0 ∧ n₁ ≤\
-  \ 15) (h₂ : n₂ > 0 ∧ n₂ ≤ 15)\n    (h₃ : n₁ < n₂) :\n    count_beautiful_arrangements\
-  \ n₁ < count_beautiful_arrangements n₂ := sorry \n\n\ntheorem count_beautiful_arrangements_undefined\
-  \ (n : Nat)\n    (h : n = 0 ∨ n > 15) :\n    count_beautiful_arrangements n = 0\
-  \ := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_beautiful_arrangements\
-  \ 2\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_beautiful_arrangements 3\n\n\
-  /--\ninfo: 8\n-/\n#guard_msgs in\n#eval count_beautiful_arrangements 4\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Suppose you have N integers from 1 to N. We define a beautiful arrangement as an array that is constructed by these N numbers successfully if one of the following is true for the ith position (1 
+  The number at the ith position is divisible by i.
+  i is divisible by the number at the ith position.
+
+
+
+
+  Now given N, how many beautiful arrangements can you construct?
+
+
+  Example 1:
+
+  Input: 2
+  Output: 2
+  Explanation: 
+  The first beautiful arrangement is [1, 2]:
+  Number at the 1st position (i=1) is 1, and 1 is divisible by i (i=1).
+  Number at the 2nd position (i=2) is 2, and 2 is divisible by i (i=2).
+  The second beautiful arrangement is [2, 1]:
+  Number at the 1st position (i=1) is 2, and 2 is divisible by i (i=1).
+  Number at the 2nd position (i=2) is 1, and i (i=2) is divisible by 1.
+
+
+
+  Note:
+
+  N is a positive integer and will not exceed 15.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_beautiful_arrangements (n : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem count_beautiful_arrangements_positive (n : Nat)
+      (h : n > 0 ∧ n ≤ 15) :
+      count_beautiful_arrangements n > 0 := sorry
+
+
+  theorem count_beautiful_arrangements_increasing
+      {n₁ n₂ : Nat} (h₁ : n₁ > 0 ∧ n₁ ≤ 15) (h₂ : n₂ > 0 ∧ n₂ ≤ 15)
+      (h₃ : n₁ < n₂) :
+      count_beautiful_arrangements n₁ < count_beautiful_arrangements n₂ := sorry 
+
+
+  theorem count_beautiful_arrangements_undefined (n : Nat)
+      (h : n = 0 ∨ n > 15) :
+      count_beautiful_arrangements n = 0 := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval count_beautiful_arrangements 2
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_beautiful_arrangements 3
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval count_beautiful_arrangements 4
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

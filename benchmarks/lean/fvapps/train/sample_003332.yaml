@@ -1,18 +1,53 @@
-"vc-description": "Hector the hacker has stolen some information, but it is encrypted.\
-  \ In order to decrypt it, he needs to write a function that will generate a decryption\
-  \ key from the encryption key which he stole (it is in hexadecimal). To do this,\
-  \ he has to determine the two prime factors `P` and `Q` of the encyption key, and\
-  \ return the product `(P-1) * (Q-1)`.\n\n**Note:** the primes used are < 10^(5)\n\
-  \n## Examples\n\nFor example if the encryption key is `\"47b\"`, it is 1147 in decimal.\
-  \ This factors to 31\\*37, so the key Hector needs is 1080 (= 30\\*36).\n\n\nMore\
-  \ examples:\n* input: `\"2533\"`, result: 9328 (primes: 89, 107)\n* input: `\"1ba9\"\
-  `, result: 6912 (primes: 73, 97)"
-"vc-preamble": "import Imports.AllImports\n\ndef find_key (s : String) : Nat :=\n\
-  \  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isPrime (n : Nat) : Bool :=\n  sorry\n\n\n\n\n"
-"vc-theorems": "theorem find_key_edge_cases :\n  find_key \"0\" = 0 ∧ find_key \"\
-  1\" = 0 :=\n  sorry\n\n/--\ninfo: 1080\n-/\n#guard_msgs in\n#eval find_key \"47b\"\
-  \n\n/--\ninfo: 9328\n-/\n#guard_msgs in\n#eval find_key \"2533\"\n\n/--\ninfo: 6912\n\
-  -/\n#guard_msgs in\n#eval find_key \"1ba9\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Hector the hacker has stolen some information, but it is encrypted. In order to decrypt it, he needs to write a function that will generate a decryption key from the encryption key which he stole (it is in hexadecimal). To do this, he has to determine the two prime factors `P` and `Q` of the encyption key, and return the product `(P-1) * (Q-1)`.
+
+  **Note:** the primes used are < 10^(5)
+
+  ## Examples
+
+  For example if the encryption key is `"47b"`, it is 1147 in decimal. This factors to 31\*37, so the key Hector needs is 1080 (= 30\*36).
+
+
+  More examples:
+  * input: `"2533"`, result: 9328 (primes: 89, 107)
+  * input: `"1ba9"`, result: 6912 (primes: 73, 97)
+vc-preamble: |
+  import Imports.AllImports
+
+  def find_key (s : String) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def isPrime (n : Nat) : Bool :=
+    sorry
+
+
+
+
+vc-theorems: |
+  theorem find_key_edge_cases :
+    find_key "0" = 0 ∧ find_key "1" = 0 :=
+    sorry
+
+  /--
+  info: 1080
+  -/
+  #guard_msgs in
+  #eval find_key "47b"
+
+  /--
+  info: 9328
+  -/
+  #guard_msgs in
+  #eval find_key "2533"
+
+  /--
+  info: 6912
+  -/
+  #guard_msgs in
+  #eval find_key "1ba9"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

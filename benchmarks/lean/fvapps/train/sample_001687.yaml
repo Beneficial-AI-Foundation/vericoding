@@ -1,48 +1,88 @@
-"vc-description": "We all know how to handle exceptions in Python. Just use:\n\n \
-  \   try:\n        num = float(input())\n    except ValueError:\n        print(\"\
-  That's not a number!\")\n    else:\n        print(num)\n\nCode such as this\n\n\
-  \    def factorial(x, n = 1):\n        if x == 0:\n          raise ValueError(n)\n\
-  \        factorial(x - 1, n * x)\n\nrelies on ridiculous exception misuse, but you\
-  \ can't change it because that would require a complete refactor. Code such as this\n\
-  \n    try:\n        return int(input(\"Input a number: \")\n    except ValueError:\n\
-  \        return 4 # random number\n\nrelies on reasonable exception use - almost\
-  \ all of the Python documentation examples are written in this way.\n\nWhat if you\
-  \ are using a faulty implementation of Embedded Python that doesn't implement the\
-  \ `try` statement? Where `sys.excepthook` is a hard-coded, unoverrideable value?\
-  \ Where even `__file__` is not defined? How do you use basic functions like `list.index`?\n\
-  \nYour task is to write a function that can handle exceptions raised in a program\
-  \ or function _without_ using `try` or `except`. Somehow.\n\nThe first argument\
-  \ of your function `handle` will be a `lambda` requiring no parameters. You will\
-  \ call this function and handle any exceptions raised. The second argument will\
-  \ be a callable `success`:\n\n    def success(func, val):\n        pass\n\nThe third\
-  \ argument will be a callable `failure`:\n\n    def failure(func, exc):\n      \
-  \  pass\n\nSubsequent arguments will be exceptions. If instances of these exceptions\
-  \ are raised, you must call the handler and no error message must be printed to\
-  \ `stderr`. If the exception raised is not provided as an argument, it should appear\
-  \ as though the exception was never caught.\n\nPass the return value of `func` to\
-  \ `success` unless it raises an exception. If it raises an exception that `isinstance`\
-  \ of an exception class passed to `handle`, call `failure` with an instance of the\
-  \ raised exception.\n\nDon't worry about the little things like dealing with the\
-  \ extra arguments to exceptions or maintaining the call stack. Whoever writes code\
-  \ like _that_ deserves the extra work.\n\n## What does \"catching an exception\"\
-  \ mean?\nIt means:\n\n  * The exception will not be printed to `stderr`.\n  * Code\
-  \ can continue to be executed.\n  * The `failure` callable knows what the exception\
-  \ was."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def handle (f : Unit → α) (onSuccess : (Unit → α) → α → β) \n \
-  \   (onFailure : (Unit → α) → Exception → β) (excType : Type) : β := sorry\n"
-"vc-theorems": "theorem handle_no_exception {α β : Type} [Inhabited α] [Inhabited\
-  \ β] {x : α} \n    (f : Unit → α) (s : (Unit → α) → α → β) (fail : (Unit → α) →\
-  \ Exception → β) \n    (exc : Type) (h : f = fun _ => x) :\n  handle f s fail exc\
-  \ = s f x := sorry\n\n\ntheorem handle_with_failure {α β : Type} [Inhabited α] [Inhabited\
-  \ β] {msg : String} \n    (f : Unit → α) (s : (Unit → α) → α → β) (fail : (Unit\
-  \ → α) → Exception → β) :\n  handle f s fail ValueError = fail f (ValueError.mk\
-  \ msg) := sorry\n\n\ntheorem handle_wrong_exception {α β : Type} [Inhabited α] [Inhabited\
-  \ β]\n    (f : Unit → α) (s : (Unit → α) → α → β) (fail : (Unit → α) → Exception\
-  \ → β)\n    (h : f = fun _ => default) :\n  handle f s fail Exception = default\
-  \ := sorry\n\n\ntheorem handle_custom_callbacks {x : Nat}\n    (f : Unit → Nat)\n\
-  \    (s : (Unit → Nat) → Nat → Nat) \n    (fail : (Unit → Nat) → Exception → Nat)\n\
-  \    (h : f = fun _ => x)\n    (h₂ : s = fun _ v => 2 * v) :\n  handle f s fail\
-  \ Exception = 2 * x := sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  We all know how to handle exceptions in Python. Just use:
+
+      try:
+          num = float(input())
+      except ValueError:
+          print("That's not a number!")
+      else:
+          print(num)
+
+  Code such as this
+
+      def factorial(x, n = 1):
+          if x == 0:
+            raise ValueError(n)
+          factorial(x - 1, n * x)
+
+  relies on ridiculous exception misuse, but you can't change it because that would require a complete refactor. Code such as this
+
+      try:
+          return int(input("Input a number: ")
+      except ValueError:
+          return 4 # random number
+
+  relies on reasonable exception use - almost all of the Python documentation examples are written in this way.
+
+  What if you are using a faulty implementation of Embedded Python that doesn't implement the `try` statement? Where `sys.excepthook` is a hard-coded, unoverrideable value? Where even `__file__` is not defined? How do you use basic functions like `list.index`?
+
+  Your task is to write a function that can handle exceptions raised in a program or function _without_ using `try` or `except`. Somehow.
+
+  The first argument of your function `handle` will be a `lambda` requiring no parameters. You will call this function and handle any exceptions raised. The second argument will be a callable `success`:
+
+      def success(func, val):
+          pass
+
+  The third argument will be a callable `failure`:
+
+      def failure(func, exc):
+          pass
+
+  Subsequent arguments will be exceptions. If instances of these exceptions are raised, you must call the handler and no error message must be printed to `stderr`. If the exception raised is not provided as an argument, it should appear as though the exception was never caught.
+
+  Pass the return value of `func` to `success` unless it raises an exception. If it raises an exception that `isinstance` of an exception class passed to `handle`, call `failure` with an instance of the raised exception.
+
+  Don't worry about the little things like dealing with the extra arguments to exceptions or maintaining the call stack. Whoever writes code like _that_ deserves the extra work.
+
+  ## What does "catching an exception" mean?
+  It means:
+
+    * The exception will not be printed to `stderr`.
+    * Code can continue to be executed.
+    * The `failure` callable knows what the exception was.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def handle (f : Unit → α) (onSuccess : (Unit → α) → α → β) 
+      (onFailure : (Unit → α) → Exception → β) (excType : Type) : β := sorry
+vc-theorems: |-
+  theorem handle_no_exception {α β : Type} [Inhabited α] [Inhabited β] {x : α} 
+      (f : Unit → α) (s : (Unit → α) → α → β) (fail : (Unit → α) → Exception → β) 
+      (exc : Type) (h : f = fun _ => x) :
+    handle f s fail exc = s f x := sorry
+
+
+  theorem handle_with_failure {α β : Type} [Inhabited α] [Inhabited β] {msg : String} 
+      (f : Unit → α) (s : (Unit → α) → α → β) (fail : (Unit → α) → Exception → β) :
+    handle f s fail ValueError = fail f (ValueError.mk msg) := sorry
+
+
+  theorem handle_wrong_exception {α β : Type} [Inhabited α] [Inhabited β]
+      (f : Unit → α) (s : (Unit → α) → α → β) (fail : (Unit → α) → Exception → β)
+      (h : f = fun _ => default) :
+    handle f s fail Exception = default := sorry
+
+
+  theorem handle_custom_callbacks {x : Nat}
+      (f : Unit → Nat)
+      (s : (Unit → Nat) → Nat → Nat) 
+      (fail : (Unit → Nat) → Exception → Nat)
+      (h : f = fun _ => x)
+      (h₂ : s = fun _ v => 2 * v) :
+    handle f s fail Exception = 2 * x := sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

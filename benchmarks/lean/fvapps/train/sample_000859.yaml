@@ -1,28 +1,70 @@
-"vc-description": "Write a program that reads two numbers $X$ and $K$. The program\
-  \ first finds the factors of $X$ and then gives the sum of $K$th power of every\
-  \ factor. The program also finds the factor of $k$ and outputs the sum of $X$ times\
-  \ of every factor. \n\n-----Input:-----\n- First line will contain $T$, number of\
-  \ testcases. Then the testcases follow. \n- Each testcase contains of a single line\
-  \ of input, two integers $X, R$. \n\n-----Output:-----\nFor each testcase, output\
-  \ in a single line the factors of $X$ and the $K$th power of every factor, seperated\
-  \ by a space.\n\n-----Constraints-----\n- $1 \\leq T \\leq 1000$\n- $2 \\leq X,\
-  \ K \\leq 10^9$\n\n-----Sample Input:-----\n1\n8 6\n\n-----Sample Output:-----\n\
-  266304 88\n\n-----EXPLANATION:-----\nFactors of x = 8 are 2, 4, and 8. Also, factors\
-  \ of k = 6 are 2, 3, and 6.\n2^6 + 4^6 + 8^6 = 266304 and 2 × 8 + 3 × 8 + 6 × 8\
-  \ = 88.\n(Where a ^b denotes a raised to the power of b)."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_factors_and_powers (x k : Nat) : Nat × Nat :=\n  sorry\n"
-"vc-theorems": "theorem solve_positive (x k : Nat) \n    (h1 : x ≥ 2) (h2 : k ≥ 2)\
-  \ : \n    let (power_sum, factor_sum) := solve_factors_and_powers x k\n    power_sum\
-  \ > 0 ∧ factor_sum > 0 := \n  sorry\n\n\ntheorem factor_sum_multiple (x k : Nat)\n\
-  \    (h1 : x ≥ 2) (h2 : k ≥ 2) :\n    let (_, factor_sum) := solve_factors_and_powers\
-  \ x k\n    factor_sum % x = 0 :=\n  sorry\n\n\ntheorem power_sum_lower_bound (x\
-  \ k : Nat)\n    (h1 : x ≥ 2) (h2 : k ≥ 2) :\n    let (power_sum, _) := solve_factors_and_powers\
-  \ x k\n    power_sum ≥ x ^ k :=\n  sorry\n\n\ntheorem prime_sums (p k : Nat)\n \
-  \   (h1 : p = 17) (h2 : k = 17) :\n    let (power_sum, factor_sum) := solve_factors_and_powers\
-  \ p k\n    power_sum = p ^ p ∧ factor_sum = p * p :=\n  sorry\n\n\ntheorem composite_sums\
-  \ (n k : Nat)\n    (h1 : n = 16) (h2 : k = 4) :\n    let (power_sum, factor_sum)\
-  \ := solve_factors_and_powers n k\n    power_sum > n ^ k ∧ factor_sum > n * k :=\n\
-  \  sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Write a program that reads two numbers $X$ and $K$. The program first finds the factors of $X$ and then gives the sum of $K$th power of every factor. The program also finds the factor of $k$ and outputs the sum of $X$ times of every factor. 
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - Each testcase contains of a single line of input, two integers $X, R$. 
+
+  -----Output:-----
+  For each testcase, output in a single line the factors of $X$ and the $K$th power of every factor, seperated by a space.
+
+  -----Constraints-----
+  - $1 \leq T \leq 1000$
+  - $2 \leq X, K \leq 10^9$
+
+  -----Sample Input:-----
+  1
+  8 6
+
+  -----Sample Output:-----
+  266304 88
+
+  -----EXPLANATION:-----
+  Factors of x = 8 are 2, 4, and 8. Also, factors of k = 6 are 2, 3, and 6.
+  2^6 + 4^6 + 8^6 = 266304 and 2 × 8 + 3 × 8 + 6 × 8 = 88.
+  (Where a ^b denotes a raised to the power of b).
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_factors_and_powers (x k : Nat) : Nat × Nat :=
+    sorry
+vc-theorems: |-
+  theorem solve_positive (x k : Nat) 
+      (h1 : x ≥ 2) (h2 : k ≥ 2) : 
+      let (power_sum, factor_sum) := solve_factors_and_powers x k
+      power_sum > 0 ∧ factor_sum > 0 := 
+    sorry
+
+
+  theorem factor_sum_multiple (x k : Nat)
+      (h1 : x ≥ 2) (h2 : k ≥ 2) :
+      let (_, factor_sum) := solve_factors_and_powers x k
+      factor_sum % x = 0 :=
+    sorry
+
+
+  theorem power_sum_lower_bound (x k : Nat)
+      (h1 : x ≥ 2) (h2 : k ≥ 2) :
+      let (power_sum, _) := solve_factors_and_powers x k
+      power_sum ≥ x ^ k :=
+    sorry
+
+
+  theorem prime_sums (p k : Nat)
+      (h1 : p = 17) (h2 : k = 17) :
+      let (power_sum, factor_sum) := solve_factors_and_powers p k
+      power_sum = p ^ p ∧ factor_sum = p * p :=
+    sorry
+
+
+  theorem composite_sums (n k : Nat)
+      (h1 : n = 16) (h2 : k = 4) :
+      let (power_sum, factor_sum) := solve_factors_and_powers n k
+      power_sum > n ^ k ∧ factor_sum > n * k :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

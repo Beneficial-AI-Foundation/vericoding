@@ -1,46 +1,105 @@
-"vc-description": "Sherlock Holmes has decided to start a new academy to some of the\
-  \ young lads. He has conducted several tests and finally selected N equally brilliant\n\
-  \nstudents.Now he don't know whether to train all the N students or not. Now since\
-  \ Holmes was in a confusion, Watson came up with an idea. He wanted to\n\ntest the\
-  \ obedience of the students. So during the camp, the students were given some Swiss\
-  \ Chocolates as gifts each time when they passed a level.Now some of them have\n\
-  \nfinished eating all the chocolates, some of them had some remaining. Now to test\
-  \ their team chemistry and IQ skills, Watson told the lads to arrange themselves\
-  \ in such \na way that,  number of chocolates of the ith kid should be equal to\
-  \ the sum of   (i-1)th kid and (i-2)th kid. Now they have arranged themselves in\
-  \ an order.\nNow Sherlock announced that he will select the students who have formed\
-  \ the line according to this order. But since there can be many such small groups\
-  \ among the\n\nentire N kids, he will select a sequence of kids such that the length\
-  \ of the sequence is maximized, meanwhile satisfying the above condition \n\n-----Input-----\n\
-  First line is an integer T which denotes the total number of test cases. Each of\
-  \ the next T lines contains an integer N which denotes, N students. The next \n\
-  line contains N spaced integers.where it denotes the order in which the kids arranged\
-  \ themselves. \n\n-----Output-----\nEach line contains an integer which denotes\
-  \ the maximum number of students among the N students who have arranged themselves\
-  \ according the rule said by Watson.It is guaranteed that Holmes will select atleast\
-  \ 1 or 2 students\n\n-----Constraints-----\n- 1 ≤ T ≤ 10\n- 1 ≤ N ≤ 10^5\n- 1 ≤\
-  \ Each of next N integers ≤ 10^9\n\n-----Subtasks-----\nSubtask #1 : (20 points)\n\
-  - 1 ≤ T ≤ 10\n- 1 ≤ N≤ 100\n- 1 ≤ Each element≤ 10^3\n\nSubtask 2 : (80 points)\
-  \ \n\n- 1 ≤ T ≤ 10\n- 1 ≤ N≤ 100000\n- 1 ≤ Each element≤ 10^9\n\n-----Example-----\n\
-  Input:\n2\n5\n2 3 5 1 2\n3\n1 2 3\n\nOutput:\n3\n3\n\n-----Explanation-----\nExample\
-  \ case 1. Here the first kid has 2 chocolates, second has 3 chocolates, third kid\
-  \ has 5 chocolates, which is the sum of first kid's total chocolates \nand second\
-  \ kid's chocolate. Forth student has only 1 chocolate where he did not follow the\
-  \ rule. So the maximum number of kids who arranged themselves in the order was \n\
-  3. That is students at index 1 to index 3."
-"vc-preamble": "import Imports.AllImports\n\ndef find_max_sequence_length (n : Nat)\
-  \ (arr : List Int) : Nat :=\n  sorry\n\n\n\n\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_fibonacci_sequence (arr : List Int) : Nat :=\n  let rec\
-  \ helper (i : Nat) (curr_max curr_fib : Nat) : Nat :=\n    if i ≥ arr.length then\
-  \ curr_max \n    else match arr.get? i, arr.get? (i-1), arr.get? (i-2) with\n  \
-  \  | some x, some y, some z => \n      if x = y + z then\n        helper (i+1) (max\
-  \ curr_max (curr_fib + 1)) (curr_fib + 1)\n      else\n        helper (i+1) curr_max\
-  \ 2\n    | _, _, _ => curr_max\n  termination_by arr.length - i\n  helper 2 2 2\n\
-  \n\n"
-"vc-theorems": "theorem find_max_sequence_length_empty :\n  find_max_sequence_length\
-  \ 0 [] = 0 :=\nsorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_max_sequence_length\
-  \ 5 [2, 3, 5, 1, 2]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_max_sequence_length\
-  \ 3 [1, 2, 3]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_max_sequence_length\
-  \ 2 [1, 2]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Sherlock Holmes has decided to start a new academy to some of the young lads. He has conducted several tests and finally selected N equally brilliant
+
+  students.Now he don't know whether to train all the N students or not. Now since Holmes was in a confusion, Watson came up with an idea. He wanted to
+
+  test the obedience of the students. So during the camp, the students were given some Swiss Chocolates as gifts each time when they passed a level.Now some of them have
+
+  finished eating all the chocolates, some of them had some remaining. Now to test their team chemistry and IQ skills, Watson told the lads to arrange themselves in such 
+  a way that,  number of chocolates of the ith kid should be equal to the sum of   (i-1)th kid and (i-2)th kid. Now they have arranged themselves in an order.
+  Now Sherlock announced that he will select the students who have formed the line according to this order. But since there can be many such small groups among the
+
+  entire N kids, he will select a sequence of kids such that the length of the sequence is maximized, meanwhile satisfying the above condition 
+
+  -----Input-----
+  First line is an integer T which denotes the total number of test cases. Each of the next T lines contains an integer N which denotes, N students. The next 
+  line contains N spaced integers.where it denotes the order in which the kids arranged themselves. 
+
+  -----Output-----
+  Each line contains an integer which denotes the maximum number of students among the N students who have arranged themselves according the rule said by Watson.It is guaranteed that Holmes will select atleast 1 or 2 students
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 10
+  - 1 ≤ N ≤ 10^5
+  - 1 ≤ Each of next N integers ≤ 10^9
+
+  -----Subtasks-----
+  Subtask #1 : (20 points)
+  - 1 ≤ T ≤ 10
+  - 1 ≤ N≤ 100
+  - 1 ≤ Each element≤ 10^3
+
+  Subtask 2 : (80 points) 
+
+  - 1 ≤ T ≤ 10
+  - 1 ≤ N≤ 100000
+  - 1 ≤ Each element≤ 10^9
+
+  -----Example-----
+  Input:
+  2
+  5
+  2 3 5 1 2
+  3
+  1 2 3
+
+  Output:
+  3
+  3
+
+  -----Explanation-----
+  Example case 1. Here the first kid has 2 chocolates, second has 3 chocolates, third kid has 5 chocolates, which is the sum of first kid's total chocolates 
+  and second kid's chocolate. Forth student has only 1 chocolate where he did not follow the rule. So the maximum number of kids who arranged themselves in the order was 
+  3. That is students at index 1 to index 3.
+vc-preamble: |+
+  import Imports.AllImports
+
+  def find_max_sequence_length (n : Nat) (arr : List Int) : Nat :=
+    sorry
+
+
+
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def count_fibonacci_sequence (arr : List Int) : Nat :=
+    let rec helper (i : Nat) (curr_max curr_fib : Nat) : Nat :=
+      if i ≥ arr.length then curr_max 
+      else match arr.get? i, arr.get? (i-1), arr.get? (i-2) with
+      | some x, some y, some z => 
+        if x = y + z then
+          helper (i+1) (max curr_max (curr_fib + 1)) (curr_fib + 1)
+        else
+          helper (i+1) curr_max 2
+      | _, _, _ => curr_max
+    termination_by arr.length - i
+    helper 2 2 2
+
+
+vc-theorems: |
+  theorem find_max_sequence_length_empty :
+    find_max_sequence_length 0 [] = 0 :=
+  sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_max_sequence_length 5 [2, 3, 5, 1, 2]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_max_sequence_length 3 [1, 2, 3]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_max_sequence_length 2 [1, 2]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

@@ -1,22 +1,74 @@
-"vc-description": "Given a string, turn each letter into its ASCII character code\
-  \ and join them together to create a number - let's call this number `total1`:\n\
-  \n```\n'ABC' --> 'A' = 65, 'B' = 66, 'C' = 67 --> 656667\n```\n\nThen replace any\
-  \ incidence of the number `7` with the number `1`, and call this number 'total2':\n\
-  ```\ntotal1 = 656667\n              ^\ntotal2 = 656661\n              ^\n```\n\n\
-  Then return the difference between the sum of the digits in `total1` and `total2`:\n\
-  \n```\n  (6 + 5 + 6 + 6 + 6 + 7)\n- (6 + 5 + 6 + 6 + 6 + 1)\n-------------------------\n\
-  \                       6\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def calc' (s : String) : Nat :=\nmatch s with\n| _ => sorry\n"
-"vc-theorems": "theorem calc_non_negative (s : String) : \n  calc' s ≥ 0 := by\n \
-  \ sorry\n\n\ntheorem calc_empty_string :\n  calc' \"\" = 0 := by\n  sorry \n\n\n\
-  theorem calc_is_sum_of_seven_differences (s : String) :\n  calc' s = ((String.join\
-  \ (List.map toString (List.map Char.toNat (String.toList s)))).toList.filter (·\
-  \ = '7')).length * 6 := by\n  sorry\n\n\ntheorem calc_bounded_by_string_length (s\
-  \ : String) (h : s ≠ \"\") :\n  calc' s ≤ (String.join (List.map toString (List.map\
-  \ Char.toNat (String.toList s)))).length * 6 := by\n  sorry\n\nend Example\n\n/--\n\
-  info: 6\n-/\n#guard_msgs in\n#eval calc \"ABC\"\n\n/--\ninfo: 12\n-/\n#guard_msgs\
-  \ in\n#eval calc \"jaam\"\n\n/--\ninfo: 30\n-/\n#guard_msgs in\n#eval calc \"aaaaaddddr\"\
-  \n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a string, turn each letter into its ASCII character code and join them together to create a number - let's call this number `total1`:
+
+  ```
+  'ABC' --> 'A' = 65, 'B' = 66, 'C' = 67 --> 656667
+  ```
+
+  Then replace any incidence of the number `7` with the number `1`, and call this number 'total2':
+  ```
+  total1 = 656667
+                ^
+  total2 = 656661
+                ^
+  ```
+
+  Then return the difference between the sum of the digits in `total1` and `total2`:
+
+  ```
+    (6 + 5 + 6 + 6 + 6 + 7)
+  - (6 + 5 + 6 + 6 + 6 + 1)
+  -------------------------
+                         6
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def calc' (s : String) : Nat :=
+  match s with
+  | _ => sorry
+vc-theorems: |
+  theorem calc_non_negative (s : String) : 
+    calc' s ≥ 0 := by
+    sorry
+
+
+  theorem calc_empty_string :
+    calc' "" = 0 := by
+    sorry 
+
+
+  theorem calc_is_sum_of_seven_differences (s : String) :
+    calc' s = ((String.join (List.map toString (List.map Char.toNat (String.toList s)))).toList.filter (· = '7')).length * 6 := by
+    sorry
+
+
+  theorem calc_bounded_by_string_length (s : String) (h : s ≠ "") :
+    calc' s ≤ (String.join (List.map toString (List.map Char.toNat (String.toList s)))).length * 6 := by
+    sorry
+
+  end Example
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval calc "ABC"
+
+  /--
+  info: 12
+  -/
+  #guard_msgs in
+  #eval calc "jaam"
+
+  /--
+  info: 30
+  -/
+  #guard_msgs in
+  #eval calc "aaaaaddddr"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,13 +1,47 @@
-"vc-description": "Count the number of prime numbers less than a non-negative number,\
-  \ n.\n\nExample:\n\n\nInput: 10\nOutput: 4\nExplanation: There are 4 prime numbers\
-  \ less than 10, they are 2, 3, 5, 7."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def countPrimes (n : Int) : Int := sorry\n\ntheorem countPrimes_nonnegative\
-  \ (x : Int) :\n  countPrimes x ≥ 0 := sorry\n"
-"vc-theorems": "theorem countPrimes_monotonic (x : Int) :\n  x > 0 → countPrimes x\
-  \ ≥ countPrimes (x - 1) := sorry\n\n\ntheorem countPrimes_less_than_input (x : Int)\
-  \ :\n  x ≥ 2 → countPrimes x < x := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n\
-  #eval countPrimes 10\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval countPrimes 20\n\
-  \n/--\ninfo: 25\n-/\n#guard_msgs in\n#eval countPrimes 100\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Count the number of prime numbers less than a non-negative number, n.
+
+  Example:
+
+
+  Input: 10
+  Output: 4
+  Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def countPrimes (n : Int) : Int := sorry
+
+  theorem countPrimes_nonnegative (x : Int) :
+    countPrimes x ≥ 0 := sorry
+vc-theorems: |
+  theorem countPrimes_monotonic (x : Int) :
+    x > 0 → countPrimes x ≥ countPrimes (x - 1) := sorry
+
+
+  theorem countPrimes_less_than_input (x : Int) :
+    x ≥ 2 → countPrimes x < x := sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval countPrimes 10
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval countPrimes 20
+
+  /--
+  info: 25
+  -/
+  #guard_msgs in
+  #eval countPrimes 100
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

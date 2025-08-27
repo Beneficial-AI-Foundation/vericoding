@@ -1,36 +1,97 @@
-"vc-description": "Implement a function that normalizes out of range sequence indexes\
-  \ (converts them to 'in range' indexes) by making them repeatedly 'loop' around\
-  \ the array. The function should then return the value at that index. Indexes that\
-  \ are not out of range should be handled normally and indexes to empty sequences\
-  \ should return undefined/None depending on the language.\n\nFor positive numbers\
-  \ that are out of range, they loop around starting at the beginning, so \n\n```python\n\
-  norm_index_test(seq, len(seq))     # Returns first element\nnorm_index_test(seq,\
-  \ len(seq) + 1) # Returns second element\nnorm_index_test(seq, len(seq) + 2) # Returns\
-  \ third element\n# And so on...\nnorm_index_test(seq, len(seq) * 2) # Returns first\
-  \ element\n```\n\nFor negative numbers, they loop starting from the end, so\n\n\
-  ```python norm_index_test(seq, len(seq))\nnorm_index_test(seq, -1)        # Returns\
-  \ last element\nnorm_index_test(seq, -2)        # Returns second to last element\n\
-  norm_index_test(seq, -3)        # Returns third to last element\n# And so on...\n\
-  norm_index_test(seq, -len(seq)) # Returns first element\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def norm_index_test {α : Type} [Inhabited α] (s : List α) (i :\
-  \ Int) : Option α := sorry \n\ntheorem norm_index_empty_sequence {α : Type} [Inhabited\
-  \ α] (i : Int) :\n  @norm_index_test α _ [] i = none := sorry\n"
-"vc-theorems": "theorem norm_index_nonempty_sequence {α : Type} [Inhabited α] (s :\
-  \ List α) (i : Int) :\n  s ≠ [] → @norm_index_test α _ s i = some (s.get! (Int.toNat\
-  \ (Int.mod i s.length))) := sorry\n\n\ntheorem norm_index_wrapping {α : Type} [Inhabited\
-  \ α] (s : List α) (i : Int) :\n  s ≠ [] → \n  @norm_index_test α _ s i = @norm_index_test\
-  \ α _ s (i + s.length) ∧ \n  @norm_index_test α _ s i = @norm_index_test α _ s (i\
-  \ - s.length) := sorry\n\n\ntheorem norm_index_identity {α : Type} [Inhabited α]\
-  \ (s : List α) :\n  s ≠ [] →\n  ∀ i : Nat, i < s.length → @norm_index_test α _ s\
-  \ i = some (s.get! i) := sorry\n\n\ntheorem norm_index_negative {α : Type} [Inhabited\
-  \ α] (s : List α) :\n  s ≠ [] →\n  ∀ i : Nat, i < s.length → \n  @norm_index_test\
-  \ α _ s (-i-1) = some (s.get! (s.length - i - 1)) := sorry\n\n/--\ninfo: None\n\
-  -/\n#guard_msgs in\n#eval norm_index_test [] 10\n\n/--\ninfo: 1\n-/\n#guard_msgs\
-  \ in\n#eval norm_index_test [1, 2, 3] 3\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval\
-  \ norm_index_test test_seq 4\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval norm_index_test\
-  \ test_seq 6\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval norm_index_test test_seq\
-  \ -1\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval norm_index_test test_seq -4\n\n\
-  /--\ninfo: 1\n-/\n#guard_msgs in\n#eval norm_index_test test_seq -6\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Implement a function that normalizes out of range sequence indexes (converts them to 'in range' indexes) by making them repeatedly 'loop' around the array. The function should then return the value at that index. Indexes that are not out of range should be handled normally and indexes to empty sequences should return undefined/None depending on the language.
+
+  For positive numbers that are out of range, they loop around starting at the beginning, so 
+
+  ```python
+  norm_index_test(seq, len(seq))     # Returns first element
+  norm_index_test(seq, len(seq) + 1) # Returns second element
+  norm_index_test(seq, len(seq) + 2) # Returns third element
+  # And so on...
+  norm_index_test(seq, len(seq) * 2) # Returns first element
+  ```
+
+  For negative numbers, they loop starting from the end, so
+
+  ```python norm_index_test(seq, len(seq))
+  norm_index_test(seq, -1)        # Returns last element
+  norm_index_test(seq, -2)        # Returns second to last element
+  norm_index_test(seq, -3)        # Returns third to last element
+  # And so on...
+  norm_index_test(seq, -len(seq)) # Returns first element
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def norm_index_test {α : Type} [Inhabited α] (s : List α) (i : Int) : Option α := sorry 
+
+  theorem norm_index_empty_sequence {α : Type} [Inhabited α] (i : Int) :
+    @norm_index_test α _ [] i = none := sorry
+vc-theorems: |
+  theorem norm_index_nonempty_sequence {α : Type} [Inhabited α] (s : List α) (i : Int) :
+    s ≠ [] → @norm_index_test α _ s i = some (s.get! (Int.toNat (Int.mod i s.length))) := sorry
+
+
+  theorem norm_index_wrapping {α : Type} [Inhabited α] (s : List α) (i : Int) :
+    s ≠ [] → 
+    @norm_index_test α _ s i = @norm_index_test α _ s (i + s.length) ∧ 
+    @norm_index_test α _ s i = @norm_index_test α _ s (i - s.length) := sorry
+
+
+  theorem norm_index_identity {α : Type} [Inhabited α] (s : List α) :
+    s ≠ [] →
+    ∀ i : Nat, i < s.length → @norm_index_test α _ s i = some (s.get! i) := sorry
+
+
+  theorem norm_index_negative {α : Type} [Inhabited α] (s : List α) :
+    s ≠ [] →
+    ∀ i : Nat, i < s.length → 
+    @norm_index_test α _ s (-i-1) = some (s.get! (s.length - i - 1)) := sorry
+
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval norm_index_test [] 10
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval norm_index_test [1, 2, 3] 3
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval norm_index_test test_seq 4
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval norm_index_test test_seq 6
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval norm_index_test test_seq -1
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval norm_index_test test_seq -4
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval norm_index_test test_seq -6
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

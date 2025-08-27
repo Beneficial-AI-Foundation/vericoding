@@ -1,19 +1,71 @@
-"vc-description": "Given a binary tree and a sum, find all root-to-leaf paths where\
-  \ each path's sum equals the given sum.\n\nNote: A leaf is a node with no children.\n\
-  \nExample:\n\nGiven the below binary tree and sum = 22,\n\n\n      5\n     / \\\n\
-  \    4   8\n   /   / \\\n  11  13  4\n /  \\    / \\\n7    2  5   1\n\n\nReturn:\n\
-  \n\n[\n   [5,4,11,2],\n   [5,8,4,5]\n]"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_path_sum : TreeNode → Int → List (List Int)\n  | _, _\
-  \ => sorry\n"
-"vc-theorems": "theorem find_path_sum_valid_sums (t: TreeNode) (target: Int) :\n \
-  \ ∀ path ∈ find_path_sum t target,\n  (path.foldl (· + ·) 0) = target :=\n  sorry\n\
-  \n\ntheorem empty_tree_no_paths (target: Int) :\n  find_path_sum TreeNode.nil target\
-  \ = [] :=\n  sorry\n\n\ntheorem single_node_match (val target: Int) :\n  find_path_sum\
-  \ (TreeNode.node val TreeNode.nil TreeNode.nil) target =\n    if val = target then\
-  \ [[val]] else [] :=\n  sorry\n\n/--\ninfo: [[5, 4, 11, 2], [5, 8, 4, 5]]\n-/\n\
-  #guard_msgs in\n#eval find_path_sum TreeNode(5) 22\n\n/--\ninfo: [[1, 2]]\n-/\n\
-  #guard_msgs in\n#eval find_path_sum TreeNode(1) 3\n\n/--\ninfo: []\n-/\n#guard_msgs\
-  \ in\n#eval find_path_sum None 0\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.
+
+  Note: A leaf is a node with no children.
+
+  Example:
+
+  Given the below binary tree and sum = 22,
+
+
+        5
+       / \
+      4   8
+     /   / \
+    11  13  4
+   /  \    / \
+  7    2  5   1
+
+
+  Return:
+
+
+  [
+     [5,4,11,2],
+     [5,8,4,5]
+  ]
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def find_path_sum : TreeNode → Int → List (List Int)
+    | _, _ => sorry
+vc-theorems: |
+  theorem find_path_sum_valid_sums (t: TreeNode) (target: Int) :
+    ∀ path ∈ find_path_sum t target,
+    (path.foldl (· + ·) 0) = target :=
+    sorry
+
+
+  theorem empty_tree_no_paths (target: Int) :
+    find_path_sum TreeNode.nil target = [] :=
+    sorry
+
+
+  theorem single_node_match (val target: Int) :
+    find_path_sum (TreeNode.node val TreeNode.nil TreeNode.nil) target =
+      if val = target then [[val]] else [] :=
+    sorry
+
+  /--
+  info: [[5, 4, 11, 2], [5, 8, 4, 5]]
+  -/
+  #guard_msgs in
+  #eval find_path_sum TreeNode(5) 22
+
+  /--
+  info: [[1, 2]]
+  -/
+  #guard_msgs in
+  #eval find_path_sum TreeNode(1) 3
+
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval find_path_sum None 0
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

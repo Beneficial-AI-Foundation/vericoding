@@ -1,15 +1,48 @@
-"vc-description": "Given some positive integers, I wish to print the integers such\
-  \ that all take up the same width by adding a minimum number of leading zeroes.\
-  \ No leading zeroes shall be added to the largest integer.\n\nFor example, given\
-  \ `1, 23, 2, 17, 102`, I wish to print out these numbers as follows:\n\n```python\n\
-  001\n023\n002\n017\n102\n```\n\nWrite a function `print_nums(n1, n2, n3, ...)` that\
-  \ takes a variable number of arguments and returns the string to be printed out."
-"vc-preamble": "import Imports.AllImports\n\ndef List.max (l: List Nat) : Nat :=\n\
-  \  sorry\n\n\ndef intToStr (n: Nat) : String :=\n  sorry\n  \n\ndef strLen (s: String)\
-  \ : Nat :=\n  sorry\n\n\ndef splitLines (s: String) : List String :=\n  sorry\n\n\
-  \ndef stringToNat (s: String) : Nat :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def print_nums (nums: List Nat) : String :=\n  sorry\n"
-"vc-theorems": "theorem print_nums_empty (nums: List Nat) :\n  nums = [] → print_nums\
-  \ nums = \"\" :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given some positive integers, I wish to print the integers such that all take up the same width by adding a minimum number of leading zeroes. No leading zeroes shall be added to the largest integer.
+
+  For example, given `1, 23, 2, 17, 102`, I wish to print out these numbers as follows:
+
+  ```python
+  001
+  023
+  002
+  017
+  102
+  ```
+
+  Write a function `print_nums(n1, n2, n3, ...)` that takes a variable number of arguments and returns the string to be printed out.
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.max (l: List Nat) : Nat :=
+    sorry
+
+
+  def intToStr (n: Nat) : String :=
+    sorry
+    
+
+  def strLen (s: String) : Nat :=
+    sorry
+
+
+  def splitLines (s: String) : List String :=
+    sorry
+
+
+  def stringToNat (s: String) : Nat :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def print_nums (nums: List Nat) : String :=
+    sorry
+vc-theorems: |-
+  theorem print_nums_empty (nums: List Nat) :
+    nums = [] → print_nums nums = "" :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

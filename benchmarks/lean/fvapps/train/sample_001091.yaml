@@ -1,39 +1,100 @@
-"vc-description": "The Chef is given an array of numbers and asked to find the first\
-  \ balance point of an array. A balance point is an index in the array N where the\
-  \ sum of the integers to the left of N is equal to the sum of the integers to the\
-  \ right of N. If there is no such balance point, print -1\n\n-----Input-----\nThe\
-  \ first line of the input contains an integer T denoting the number of test cases.\
-  \ The description of T test cases follows.\nThe first line of each test case contains\
-  \ a single integer N denoting the number of weights on the array. The second line\
-  \ contains N space-separated integers A1, A2, ..., AN denoting the weights\n\n-----Output-----\n\
-  For each test case, output a single line containing the index of the first balance\
-  \ point. If no such index exists, output -1\n\n-----Constraints-----\nFor Subtask\
-  \ 1:\n- 1 ≤ T ≤ 10\n- 1 ≤ N ≤ 10\n- -1000 ≤ A1, A2, ..., AN ≤ 1000\nFor Subtask\
-  \ 1:\n- 1 ≤ T ≤ 10\n- 1 ≤ N ≤ 1000\n- -10000 ≤ A1, A2, ..., AN ≤ 10000\n\n-----Example-----\n\
-  Input:\n2\n7\n7 8 9 1 9 8 7\n6\n1 100 50 -51 1 1\n\nOutput:\n3\n1\n\n-----Explanation-----\n\
-  Example case 1. In the first case, at the midpoint of the array 1, the sum of the\
-  \ left side {7,8,9} is equal to the sum of the right side {9,8,7}\nExample case\
-  \ 1. In the second case, at index 1, the sum of left side =1 is equal to the sum\
-  \ of the right side {50,-51,1,1}"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_balance_point (arr : List Int) : Int := sorry \n\ndef\
-  \ sum_list (arr : List Int) : Int := sorry\n\n-- Valid index property"
-"vc-theorems": "theorem balance_point_valid_index (arr : List Int) :\n  let bp :=\
-  \ find_balance_point arr\n  bp ≠ -1 → 0 ≤ bp ∧ bp < arr.length := sorry\n\n-- Equal\
-  \ sums property \n\ntheorem balance_point_equal_sums (arr : List Int) :\n  let bp\
-  \ := find_balance_point arr\n  bp ≠ -1 → \n    (bp = 0 → sum_list (arr.drop 1) =\
-  \ 0) ∧\n    (bp = arr.length - 1 → sum_list (arr.take (arr.length - 1)) = 0) ∧\n\
-  \    (0 < bp ∧ bp < arr.length - 1 → \n      sum_list (arr.take (Int.toNat bp))\
-  \ = sum_list (arr.drop (Int.toNat (bp + 1)))) := sorry\n\n-- Symmetry property\n\
-  \ntheorem balance_point_symmetry (arr : List Int) :\n  let bp1 := find_balance_point\
-  \ arr\n  let bp2 := find_balance_point arr.reverse\n  bp1 = -1 ↔ bp2 = -1 ∧\n  bp1\
-  \ ≠ -1 → bp1 + bp2 = arr.length - 1 := sorry\n\n-- Single element property  \n\n\
-  theorem balance_point_single_elem (x : Int) :\n  find_balance_point [x] = 0 := sorry\n\
-  \n-- No balance preservation property\n\ntheorem no_balance_preserves (arr : List\
-  \ Int) :\n  find_balance_point arr = -1 →\n  find_balance_point (arr.map (· * 2))\
-  \ = -1 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_balance_point [7,\
-  \ 8, 9, 1, 9, 8, 7]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_balance_point\
-  \ [1, 100, 50, -51, 1, 1]\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval find_balance_point\
-  \ [1, 2, 3]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  The Chef is given an array of numbers and asked to find the first balance point of an array. A balance point is an index in the array N where the sum of the integers to the left of N is equal to the sum of the integers to the right of N. If there is no such balance point, print -1
+
+  -----Input-----
+  The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+  The first line of each test case contains a single integer N denoting the number of weights on the array. The second line contains N space-separated integers A1, A2, ..., AN denoting the weights
+
+  -----Output-----
+  For each test case, output a single line containing the index of the first balance point. If no such index exists, output -1
+
+  -----Constraints-----
+  For Subtask 1:
+  - 1 ≤ T ≤ 10
+  - 1 ≤ N ≤ 10
+  - -1000 ≤ A1, A2, ..., AN ≤ 1000
+  For Subtask 1:
+  - 1 ≤ T ≤ 10
+  - 1 ≤ N ≤ 1000
+  - -10000 ≤ A1, A2, ..., AN ≤ 10000
+
+  -----Example-----
+  Input:
+  2
+  7
+  7 8 9 1 9 8 7
+  6
+  1 100 50 -51 1 1
+
+  Output:
+  3
+  1
+
+  -----Explanation-----
+  Example case 1. In the first case, at the midpoint of the array 1, the sum of the left side {7,8,9} is equal to the sum of the right side {9,8,7}
+  Example case 1. In the second case, at index 1, the sum of left side =1 is equal to the sum of the right side {50,-51,1,1}
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def find_balance_point (arr : List Int) : Int := sorry 
+
+  def sum_list (arr : List Int) : Int := sorry
+
+  -- Valid index property
+vc-theorems: |
+  theorem balance_point_valid_index (arr : List Int) :
+    let bp := find_balance_point arr
+    bp ≠ -1 → 0 ≤ bp ∧ bp < arr.length := sorry
+
+  -- Equal sums property 
+
+  theorem balance_point_equal_sums (arr : List Int) :
+    let bp := find_balance_point arr
+    bp ≠ -1 → 
+      (bp = 0 → sum_list (arr.drop 1) = 0) ∧
+      (bp = arr.length - 1 → sum_list (arr.take (arr.length - 1)) = 0) ∧
+      (0 < bp ∧ bp < arr.length - 1 → 
+        sum_list (arr.take (Int.toNat bp)) = sum_list (arr.drop (Int.toNat (bp + 1)))) := sorry
+
+  -- Symmetry property
+
+  theorem balance_point_symmetry (arr : List Int) :
+    let bp1 := find_balance_point arr
+    let bp2 := find_balance_point arr.reverse
+    bp1 = -1 ↔ bp2 = -1 ∧
+    bp1 ≠ -1 → bp1 + bp2 = arr.length - 1 := sorry
+
+  -- Single element property  
+
+  theorem balance_point_single_elem (x : Int) :
+    find_balance_point [x] = 0 := sorry
+
+  -- No balance preservation property
+
+  theorem no_balance_preserves (arr : List Int) :
+    find_balance_point arr = -1 →
+    find_balance_point (arr.map (· * 2)) = -1 := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_balance_point [7, 8, 9, 1, 9, 8, 7]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_balance_point [1, 100, 50, -51, 1, 1]
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval find_balance_point [1, 2, 3]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

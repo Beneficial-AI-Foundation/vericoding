@@ -1,27 +1,80 @@
-"vc-description": "In this Kata, you will be given two strings `a` and `b` and your\
-  \ task will be to return the characters that are not common in the two strings.\
-  \ \n\nFor example:\n```Haskell\nsolve(\"xyab\",\"xzca\") = \"ybzc\" \n--The first\
-  \ string has 'yb' which is not in the second string. \n--The second string has 'zc'\
-  \ which is not in the first string. \n```\nNotice also that you return the characters\
-  \ from the first string concatenated with those from the second string.\n\nMore\
-  \ examples in the tests cases. \n\nGood luck!\n\nPlease also try [Simple remove\
-  \ duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve (a b : String) : String := sorry\n\ntheorem solve_contains_non_common_chars\
-  \ (a b : String) (c : Char) :\n  c ∈ a.data ∨ c ∈ b.data →\n  (¬ (c ∈ a.data ∧ c\
-  \ ∈ b.data)) →\n  c ∈ (solve a b).data\n  := sorry\n"
-"vc-theorems": "theorem solve_excludes_common_chars (a b : String) :\n  ∀ c, c ∈ (solve\
-  \ a b).data →\n  ¬ (c ∈ a.data ∧ c ∈ b.data)\n  := sorry\n\n\ntheorem solve_maintains_relative_order\
-  \ (a b : String) :\n  let a_filtered := a.data.filter (fun c => ¬(c ∈ a.data ∧ c\
-  \ ∈ b.data))\n  let b_filtered := b.data.filter (fun c => ¬(c ∈ a.data ∧ c ∈ b.data))\n\
-  \  solve a b = String.mk (a_filtered ++ b_filtered)\n  := sorry\n\n\ntheorem solve_length_property\
-  \ (a b : String) :\n  let a_filtered := a.data.filter (fun c => ¬(c ∈ a.data ∧ c\
-  \ ∈ b.data))\n  let b_filtered := b.data.filter (fun c => ¬(c ∈ a.data ∧ c ∈ b.data))\n\
-  \  (solve a b).length = a_filtered.length + b_filtered.length\n  := sorry\n\n\n\
-  theorem solve_identical_strings (s : String) :\n  solve s s = \"\"\n  := sorry\n\
-  \n\ntheorem solve_with_empty (s : String) :\n  solve s \"\" = s ∧\n  solve \"\"\
-  \ s = s\n  := sorry\n\n/--\ninfo: 'ybzc'\n-/\n#guard_msgs in\n#eval solve \"xyab\"\
-  \ \"xzca\"\n\n/--\ninfo: 'ybbzc'\n-/\n#guard_msgs in\n#eval solve \"xyabb\" \"xzca\"\
-  \n\n/--\ninfo: 'abcdxyz'\n-/\n#guard_msgs in\n#eval solve \"abcd\" \"xyz\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  In this Kata, you will be given two strings `a` and `b` and your task will be to return the characters that are not common in the two strings. 
+
+  For example:
+  ```Haskell
+  solve("xyab","xzca") = "ybzc" 
+  --The first string has 'yb' which is not in the second string. 
+  --The second string has 'zc' which is not in the first string. 
+  ```
+  Notice also that you return the characters from the first string concatenated with those from the second string.
+
+  More examples in the tests cases. 
+
+  Good luck!
+
+  Please also try [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve (a b : String) : String := sorry
+
+  theorem solve_contains_non_common_chars (a b : String) (c : Char) :
+    c ∈ a.data ∨ c ∈ b.data →
+    (¬ (c ∈ a.data ∧ c ∈ b.data)) →
+    c ∈ (solve a b).data
+    := sorry
+vc-theorems: |
+  theorem solve_excludes_common_chars (a b : String) :
+    ∀ c, c ∈ (solve a b).data →
+    ¬ (c ∈ a.data ∧ c ∈ b.data)
+    := sorry
+
+
+  theorem solve_maintains_relative_order (a b : String) :
+    let a_filtered := a.data.filter (fun c => ¬(c ∈ a.data ∧ c ∈ b.data))
+    let b_filtered := b.data.filter (fun c => ¬(c ∈ a.data ∧ c ∈ b.data))
+    solve a b = String.mk (a_filtered ++ b_filtered)
+    := sorry
+
+
+  theorem solve_length_property (a b : String) :
+    let a_filtered := a.data.filter (fun c => ¬(c ∈ a.data ∧ c ∈ b.data))
+    let b_filtered := b.data.filter (fun c => ¬(c ∈ a.data ∧ c ∈ b.data))
+    (solve a b).length = a_filtered.length + b_filtered.length
+    := sorry
+
+
+  theorem solve_identical_strings (s : String) :
+    solve s s = ""
+    := sorry
+
+
+  theorem solve_with_empty (s : String) :
+    solve s "" = s ∧
+    solve "" s = s
+    := sorry
+
+  /--
+  info: 'ybzc'
+  -/
+  #guard_msgs in
+  #eval solve "xyab" "xzca"
+
+  /--
+  info: 'ybbzc'
+  -/
+  #guard_msgs in
+  #eval solve "xyabb" "xzca"
+
+  /--
+  info: 'abcdxyz'
+  -/
+  #guard_msgs in
+  #eval solve "abcd" "xyz"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

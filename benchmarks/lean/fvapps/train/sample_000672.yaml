@@ -1,26 +1,71 @@
-"vc-description": "You are given a sequence $A_1, A_2, \\ldots, A_N$. For each valid\
-  \ $i$, the star value of the element $A_i$ is the number of valid indices $j < i$\
-  \ such that $A_j$ is divisible by $A_i$.\nChef is a curious person, so he wants\
-  \ to know the maximum star value in the given sequence. Help him find it.\n\n-----Input-----\n\
-  - The first line of the input contains a single integer $T$ which denotes the number\
-  \ of test cases.\n- The first line of each test case contains a single integer $N$\
-  \ .\n- The second line of each test case contains $N$ space-separated integers $A_1,\
-  \ A_2, \\ldots, A_N$.\n\n-----Output-----\nFor each test case, print a single line\
-  \ containing one integer ― the maximum star value.\n\n-----Constraints-----\n- $1\
-  \ \\le T \\le 10$\n- $1 \\le N \\le 10^5$\n- $1 \\le A_i \\le 10^6$ for each valid\
-  \ $i$ \n- Sum of $N$ over all test cases does not exceed $100,000$.\n\n-----Subtasks-----\n\
-  Subtask #1 (20 points): sum  of $N$ over all test cases does not exceed $5,000$\n\
-  Subtask #2 (80 points): original constraints\n\n-----Example Input-----\n1\n7\n\
-  8 1 28 4 2 6 7\n\n-----Example Output-----\n3\n\n-----Explanation-----\n$A_5 = 2$\
-  \ divides $4$, $28$ and $8$, so its star value is $3$. There is no element with\
-  \ a higher star value."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_max_star_value (arr : Array Nat) : Nat := sorry\n\ndef\
-  \ countDivisible (arr : Array Nat) (i : Nat) : Nat := sorry \n\n\n\n\n\n\n"
-"vc-theorems": "theorem single_element_star_value (x : Nat) (h : x > 0) : \n  find_max_star_value\
-  \ #[x] = 0 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_max_star_value\
-  \ #[8, 1, 28, 4, 2, 6, 7]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_max_star_value\
-  \ #[1, 2, 3]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_max_star_value #[3,\
-  \ 6, 9]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  You are given a sequence $A_1, A_2, \ldots, A_N$. For each valid $i$, the star value of the element $A_i$ is the number of valid indices $j < i$ such that $A_j$ is divisible by $A_i$.
+  Chef is a curious person, so he wants to know the maximum star value in the given sequence. Help him find it.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ which denotes the number of test cases.
+  - The first line of each test case contains a single integer $N$ .
+  - The second line of each test case contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
+
+  -----Output-----
+  For each test case, print a single line containing one integer ― the maximum star value.
+
+  -----Constraints-----
+  - $1 \le T \le 10$
+  - $1 \le N \le 10^5$
+  - $1 \le A_i \le 10^6$ for each valid $i$ 
+  - Sum of $N$ over all test cases does not exceed $100,000$.
+
+  -----Subtasks-----
+  Subtask #1 (20 points): sum  of $N$ over all test cases does not exceed $5,000$
+  Subtask #2 (80 points): original constraints
+
+  -----Example Input-----
+  1
+  7
+  8 1 28 4 2 6 7
+
+  -----Example Output-----
+  3
+
+  -----Explanation-----
+  $A_5 = 2$ divides $4$, $28$ and $8$, so its star value is $3$. There is no element with a higher star value.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def find_max_star_value (arr : Array Nat) : Nat := sorry
+
+  def countDivisible (arr : Array Nat) (i : Nat) : Nat := sorry 
+
+
+
+
+
+
+vc-theorems: |
+  theorem single_element_star_value (x : Nat) (h : x > 0) : 
+    find_max_star_value #[x] = 0 := sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_max_star_value #[8, 1, 28, 4, 2, 6, 7]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_max_star_value #[1, 2, 3]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_max_star_value #[3, 6, 9]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

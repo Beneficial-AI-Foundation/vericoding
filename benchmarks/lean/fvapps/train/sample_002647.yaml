@@ -1,30 +1,72 @@
-"vc-description": "Chingel is practicing for a rowing competition to be held on this\
-  \ saturday. He is trying his best to win this tournament for which he needs to figure\
-  \ out how much time it takes to cover a certain distance. \n\n**Input**\n\nYou will\
-  \ be provided with the total distance of the journey, speed of the boat and whether\
-  \ he is going downstream or upstream. The speed of the stream and direction of rowing\
-  \ will be given as a string. Check example test cases!\n\n**Output**\n\nThe output\
-  \ returned should be the time taken to cover the distance. If the result has decimal\
-  \ places, round them to 2 fixed positions.\n\n`Show some love ;) Rank and Upvote!`"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def time (distance : Nat) (boat_speed : Nat) (stream : String)\
-  \ : Float := sorry\n\ndef stream_speed : String → Nat \n  | s => match s.splitOn\
-  \ \" \" with\n    | [_, speed] => (String.toNat! speed)\n    | _ => 0\n"
-"vc-theorems": "theorem time_is_positive (distance : Nat) (boat_speed : Nat) (stream\
-  \ : String)  \n  (h1 : distance > 0)\n  (h2 : boat_speed > 0) \n  (h3 : boat_speed\
-  \ > stream_speed stream) :\n  time distance boat_speed stream > 0 := sorry\n\n\n\
-  theorem time_matches_calculation (distance : Nat) (boat_speed : Nat) (stream : String)\n\
-  \  (h1 : distance > 0)\n  (h2 : boat_speed > 0)\n  (h3 : boat_speed > stream_speed\
-  \ stream) :\n  let expected := \n    if stream.startsWith \"Downstream\" then \n\
-  \      Float.ofNat distance / Float.ofNat (boat_speed + stream_speed stream)\n \
-  \   else\n      Float.ofNat distance / Float.ofNat (boat_speed - stream_speed stream)\n\
-  \  Float.abs (time distance boat_speed stream - expected) < 0.01 := sorry\n\n\n\
-  theorem downstream_faster_than_upstream \n  (distance : Nat) (boat_speed : Nat)\
-  \ (speed : Nat)\n  (h1 : distance > 0)\n  (h2 : boat_speed > speed)\n  (h3 : speed\
-  \ > 0) :\n  time distance boat_speed (\"Downstream \" ++ toString speed) < \n  time\
-  \ distance boat_speed (\"Upstream \" ++ toString speed) := sorry\n\n/--\ninfo: 2.0\n\
-  -/\n#guard_msgs in\n#eval time 24 10 \"Downstream 2\"\n\n/--\ninfo: 2.0\n-/\n#guard_msgs\
-  \ in\n#eval time 24 14 \"Upstream 2\"\n\n/--\ninfo: 1.74\n-/\n#guard_msgs in\n#eval\
-  \ time 54 28 \"Downstream 3\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Chingel is practicing for a rowing competition to be held on this saturday. He is trying his best to win this tournament for which he needs to figure out how much time it takes to cover a certain distance. 
+
+  **Input**
+
+  You will be provided with the total distance of the journey, speed of the boat and whether he is going downstream or upstream. The speed of the stream and direction of rowing will be given as a string. Check example test cases!
+
+  **Output**
+
+  The output returned should be the time taken to cover the distance. If the result has decimal places, round them to 2 fixed positions.
+
+  `Show some love ;) Rank and Upvote!`
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def time (distance : Nat) (boat_speed : Nat) (stream : String) : Float := sorry
+
+  def stream_speed : String → Nat 
+    | s => match s.splitOn " " with
+      | [_, speed] => (String.toNat! speed)
+      | _ => 0
+vc-theorems: |
+  theorem time_is_positive (distance : Nat) (boat_speed : Nat) (stream : String)  
+    (h1 : distance > 0)
+    (h2 : boat_speed > 0) 
+    (h3 : boat_speed > stream_speed stream) :
+    time distance boat_speed stream > 0 := sorry
+
+
+  theorem time_matches_calculation (distance : Nat) (boat_speed : Nat) (stream : String)
+    (h1 : distance > 0)
+    (h2 : boat_speed > 0)
+    (h3 : boat_speed > stream_speed stream) :
+    let expected := 
+      if stream.startsWith "Downstream" then 
+        Float.ofNat distance / Float.ofNat (boat_speed + stream_speed stream)
+      else
+        Float.ofNat distance / Float.ofNat (boat_speed - stream_speed stream)
+    Float.abs (time distance boat_speed stream - expected) < 0.01 := sorry
+
+
+  theorem downstream_faster_than_upstream 
+    (distance : Nat) (boat_speed : Nat) (speed : Nat)
+    (h1 : distance > 0)
+    (h2 : boat_speed > speed)
+    (h3 : speed > 0) :
+    time distance boat_speed ("Downstream " ++ toString speed) < 
+    time distance boat_speed ("Upstream " ++ toString speed) := sorry
+
+  /--
+  info: 2.0
+  -/
+  #guard_msgs in
+  #eval time 24 10 "Downstream 2"
+
+  /--
+  info: 2.0
+  -/
+  #guard_msgs in
+  #eval time 24 14 "Upstream 2"
+
+  /--
+  info: 1.74
+  -/
+  #guard_msgs in
+  #eval time 54 28 "Downstream 3"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

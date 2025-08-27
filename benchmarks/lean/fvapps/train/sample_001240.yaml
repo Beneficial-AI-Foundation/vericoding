@@ -1,59 +1,107 @@
-"vc-description": "Coach Khaled is a swag teacher in HIT (Hag Institute of Technology).\
-  \ However, he has some obsession problems.\nRecently, coach Khaled was teaching\
-  \ a course in building 8G networks using TV antennas and programming them with assembly.\
-  \ There are $N$ students (numbered $1$ through $N$) in his class; for some reason,\
-  \ this number is always a multiple of $4$. The final exam has finished and Khaled\
-  \ has all the scores of his $N$ students. For each valid $i$, the score of the $i$-th\
-  \ student is $A_i$; each score is an integer between $0$ and $100$. Currently, the\
-  \ score-grade distribution is as follows:\n- grade D for score smaller than $60$\n\
-  - grade C for score greater or equal to $60$, but smaller than $75$\n- grade B for\
-  \ score greater or equal to $75$, but smaller than $90$\n- grade A for score greater\
-  \ or equal to $90$\nHowever, coach Khaled is not satisfied with this. He wants exactly\
-  \ $N/4$ students to receive each grade (A, B, C and D), so that the grades are perfectly\
-  \ balanced. The scores cannot be changed, but the boundaries between grades can.\
-  \ Therefore, he wants to choose three integers $x$, $y$ and $z$ and change the grade\
-  \ distribution to the following (note that initially, $x = 60$, $y = 75$ and $z\
-  \ = 90$):\n- grade D for score smaller than $x$\n- grade C for score greater or\
-  \ equal to $x$, but smaller than $y$\n- grade B for score greater or equal to $y$,\
-  \ but smaller than $z$\n- grade A for score greater or equal to $z$\nYour task is\
-  \ to find thresholds $x$, $y$ and $z$ that result in a perfect balance of grades.\
-  \ If there are multiple solutions, choose the one with the maximum value of $x+y+z$\
-  \ (because coach Khaled wants seem smarter than his students); it can be proved\
-  \ that there is at most one such solution. Sometimes, there is no way to choose\
-  \ the thresholds and coach Khaled would resign because his exam questions were low-quality.\n\
-  \n-----Input-----\n- The first line of the input contains a single integer $T$ denoting\
-  \ the number of test cases. The description of $T$ test cases follows.\n- The first\
-  \ line of each test case contains a single integer $N$.\n- The second line contains\
-  \ $N$ space-separated integers $A_1, A_2, \\ldots, A_N$.\n\n-----Output-----\nFor\
-  \ each test case, if there is no solution, print a single line containing the integer\
-  \ $-1$; otherwise, print a single line containing three space-separated integers\
-  \ $x$, $y$ and $z$.\n\n-----Constraints-----\n- $1 \\le T \\le 1,000$\n- $4 \\le\
-  \ N \\le 100$\n- $N$ is divisible by $4$\n- $0 \\le A_i \\le 100$ for each valid\
-  \ $i$\n- the sum of $N$ over all test cases does not exceed $5,000$\n\n-----Subtasks-----\n\
-  Subtask #1 (100 points): original constraints\n\n-----Example Input-----\n6\n4\n\
-  90 25 60 75\n8\n27 29 92 92 67 67 85 92\n4\n0 1 2 3\n4\n100 100 100 100\n4\n30 30\
-  \ 40 50\n4\n30 40 40 50\n\n-----Example Output-----\n60 75 90\n-1\n1 2 3\n-1\n-1\n\
-  -1\n\n-----Explanation-----\nExample case 1: The default distribution is the correct\
-  \ one.\nExample case 4: All students have the same score and grade, so there is\
-  \ no way to choose the thresholds and coach Khaled must resign."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_grading_thresholds (n : Nat) (scores : List Nat) : String\
-  \ := sorry\n\ntheorem valid_score_thresholds (n : Nat) (scores : List Nat)\n  (h_n\
-  \ : n ∈ [4, 8, 12, 16, 20])\n  (h_scores : ∀ x ∈ scores, x ≤ 100)\n  (h_length :\
-  \ scores.length = n)\n  (h_unique : ∀ i j, i < scores.length → j < scores.length\
-  \ → i ≠ j → scores.get! i ≠ scores.get! j) :\n  let result := solve_grading_thresholds\
-  \ n scores \n  if result ≠ \"-1\" then ∃ a b c : Nat,\n    a < b ∧ b < c ∧\n   \
-  \ a = (scores.toArray.qsort (· ≤ ·)).toList.get! (n/4) ∧\n    b = (scores.toArray.qsort\
-  \ (· ≤ ·)).toList.get! (2*n/4) ∧  \n    c = (scores.toArray.qsort (· ≤ ·)).toList.get!\
-  \ (3*n/4)\n  else True := sorry\n"
-"vc-theorems": "theorem duplicate_scores_invalid (n : Nat) (base_score : Nat)\n  (h_n\
-  \ : n ∈ [4, 8, 12, 16])\n  (h_base : base_score ≤ 100) :\n  let scores := List.range\
-  \ n |>.map (λ i => base_score + i)\n  let dup_val := scores.get! ((n/4)-1)\n  let\
-  \ scores_with_dup := scores.take (n/4) ++ [dup_val] ++ scores.drop (n/4 + 1)\n \
-  \ solve_grading_thresholds n scores_with_dup = \"-1\" := sorry\n\n/--\ninfo: '60\
-  \ 75 90'\n-/\n#guard_msgs in\n#eval solve_grading_thresholds 4 #[90, 25, 60, 75]\n\
-  \n/--\ninfo: '1 2 3'\n-/\n#guard_msgs in\n#eval solve_grading_thresholds 4 #[0,\
-  \ 1, 2, 3]\n\n/--\ninfo: '-1'\n-/\n#guard_msgs in\n#eval solve_grading_thresholds\
-  \ 4 #[30, 30, 40, 50]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Coach Khaled is a swag teacher in HIT (Hag Institute of Technology). However, he has some obsession problems.
+  Recently, coach Khaled was teaching a course in building 8G networks using TV antennas and programming them with assembly. There are $N$ students (numbered $1$ through $N$) in his class; for some reason, this number is always a multiple of $4$. The final exam has finished and Khaled has all the scores of his $N$ students. For each valid $i$, the score of the $i$-th student is $A_i$; each score is an integer between $0$ and $100$. Currently, the score-grade distribution is as follows:
+  - grade D for score smaller than $60$
+  - grade C for score greater or equal to $60$, but smaller than $75$
+  - grade B for score greater or equal to $75$, but smaller than $90$
+  - grade A for score greater or equal to $90$
+  However, coach Khaled is not satisfied with this. He wants exactly $N/4$ students to receive each grade (A, B, C and D), so that the grades are perfectly balanced. The scores cannot be changed, but the boundaries between grades can. Therefore, he wants to choose three integers $x$, $y$ and $z$ and change the grade distribution to the following (note that initially, $x = 60$, $y = 75$ and $z = 90$):
+  - grade D for score smaller than $x$
+  - grade C for score greater or equal to $x$, but smaller than $y$
+  - grade B for score greater or equal to $y$, but smaller than $z$
+  - grade A for score greater or equal to $z$
+  Your task is to find thresholds $x$, $y$ and $z$ that result in a perfect balance of grades. If there are multiple solutions, choose the one with the maximum value of $x+y+z$ (because coach Khaled wants seem smarter than his students); it can be proved that there is at most one such solution. Sometimes, there is no way to choose the thresholds and coach Khaled would resign because his exam questions were low-quality.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains a single integer $N$.
+  - The second line contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
+
+  -----Output-----
+  For each test case, if there is no solution, print a single line containing the integer $-1$; otherwise, print a single line containing three space-separated integers $x$, $y$ and $z$.
+
+  -----Constraints-----
+  - $1 \le T \le 1,000$
+  - $4 \le N \le 100$
+  - $N$ is divisible by $4$
+  - $0 \le A_i \le 100$ for each valid $i$
+  - the sum of $N$ over all test cases does not exceed $5,000$
+
+  -----Subtasks-----
+  Subtask #1 (100 points): original constraints
+
+  -----Example Input-----
+  6
+  4
+  90 25 60 75
+  8
+  27 29 92 92 67 67 85 92
+  4
+  0 1 2 3
+  4
+  100 100 100 100
+  4
+  30 30 40 50
+  4
+  30 40 40 50
+
+  -----Example Output-----
+  60 75 90
+  -1
+  1 2 3
+  -1
+  -1
+  -1
+
+  -----Explanation-----
+  Example case 1: The default distribution is the correct one.
+  Example case 4: All students have the same score and grade, so there is no way to choose the thresholds and coach Khaled must resign.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_grading_thresholds (n : Nat) (scores : List Nat) : String := sorry
+
+  theorem valid_score_thresholds (n : Nat) (scores : List Nat)
+    (h_n : n ∈ [4, 8, 12, 16, 20])
+    (h_scores : ∀ x ∈ scores, x ≤ 100)
+    (h_length : scores.length = n)
+    (h_unique : ∀ i j, i < scores.length → j < scores.length → i ≠ j → scores.get! i ≠ scores.get! j) :
+    let result := solve_grading_thresholds n scores 
+    if result ≠ "-1" then ∃ a b c : Nat,
+      a < b ∧ b < c ∧
+      a = (scores.toArray.qsort (· ≤ ·)).toList.get! (n/4) ∧
+      b = (scores.toArray.qsort (· ≤ ·)).toList.get! (2*n/4) ∧  
+      c = (scores.toArray.qsort (· ≤ ·)).toList.get! (3*n/4)
+    else True := sorry
+vc-theorems: |
+  theorem duplicate_scores_invalid (n : Nat) (base_score : Nat)
+    (h_n : n ∈ [4, 8, 12, 16])
+    (h_base : base_score ≤ 100) :
+    let scores := List.range n |>.map (λ i => base_score + i)
+    let dup_val := scores.get! ((n/4)-1)
+    let scores_with_dup := scores.take (n/4) ++ [dup_val] ++ scores.drop (n/4 + 1)
+    solve_grading_thresholds n scores_with_dup = "-1" := sorry
+
+  /--
+  info: '60 75 90'
+  -/
+  #guard_msgs in
+  #eval solve_grading_thresholds 4 #[90, 25, 60, 75]
+
+  /--
+  info: '1 2 3'
+  -/
+  #guard_msgs in
+  #eval solve_grading_thresholds 4 #[0, 1, 2, 3]
+
+  /--
+  info: '-1'
+  -/
+  #guard_msgs in
+  #eval solve_grading_thresholds 4 #[30, 30, 40, 50]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

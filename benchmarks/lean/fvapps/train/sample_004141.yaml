@@ -1,22 +1,72 @@
-"vc-description": "Fast & Furious Driving School's (F&F) charges for lessons are as\
-  \ below: \n\n\n\nTime\nCost\n\n\nUp to 1st hour\n$30\n\n\nEvery subsequent half\
-  \ hour**\n$10\n\n\n** Subsequent charges are calculated by rounding up to nearest\
-  \ half hour.\n\n\nFor example, if student X has a lesson for 1hr 20 minutes, he\
-  \ will be charged $40 (30+10) for 1 hr 30 mins and if he has a lesson for 5 minutes,\
-  \ he will be charged $30 for the full hour. \n\nOut of the kindness of its heart,\
-  \ F&F also provides a 5 minutes grace period. So, if student X were to have a lesson\
-  \ for 65 minutes or 1 hr 35 mins, he will only have to pay for an hour or 1hr 30\
-  \ minutes respectively. \n\nFor a given lesson time in minutes (min) , write a function\
-  \ price to calculate how much the lesson costs."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def ceil (x : Int) : Int := sorry\n\ndef cost (mins: Int) : Int\
-  \ := sorry\n"
-"vc-theorems": "theorem cost_minimum_30 (mins: Nat) : \n  cost mins ≥ 30 := sorry\n\
-  \n\ntheorem cost_base_rate (mins: Nat) (h: mins ≤ 65) : \n  cost mins = 30 := sorry\n\
-  \n\ntheorem cost_negative_zero (mins: Int) :\n  mins < 0 → cost mins = cost 0 :=\
-  \ sorry\n\n\n\n\ntheorem cost_stepwise_increase (mins: Nat) (h: 66 ≤ mins) :\n \
-  \ cost (mins - 1) ≤ cost mins ∧ cost mins - cost (mins - 1) ≤ 10 := sorry\n\n/--\n\
-  info: 30\n-/\n#guard_msgs in\n#eval cost 45\n\n/--\ninfo: 30\n-/\n#guard_msgs in\n\
-  #eval cost 63\n\n/--\ninfo: 40\n-/\n#guard_msgs in\n#eval cost 84\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Fast & Furious Driving School's (F&F) charges for lessons are as below: 
+
+
+
+  Time
+  Cost
+
+
+  Up to 1st hour
+  $30
+
+
+  Every subsequent half hour**
+  $10
+
+
+  ** Subsequent charges are calculated by rounding up to nearest half hour.
+
+
+  For example, if student X has a lesson for 1hr 20 minutes, he will be charged $40 (30+10) for 1 hr 30 mins and if he has a lesson for 5 minutes, he will be charged $30 for the full hour. 
+
+  Out of the kindness of its heart, F&F also provides a 5 minutes grace period. So, if student X were to have a lesson for 65 minutes or 1 hr 35 mins, he will only have to pay for an hour or 1hr 30 minutes respectively. 
+
+  For a given lesson time in minutes (min) , write a function price to calculate how much the lesson costs.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def ceil (x : Int) : Int := sorry
+
+  def cost (mins: Int) : Int := sorry
+vc-theorems: |
+  theorem cost_minimum_30 (mins: Nat) : 
+    cost mins ≥ 30 := sorry
+
+
+  theorem cost_base_rate (mins: Nat) (h: mins ≤ 65) : 
+    cost mins = 30 := sorry
+
+
+  theorem cost_negative_zero (mins: Int) :
+    mins < 0 → cost mins = cost 0 := sorry
+
+
+
+
+  theorem cost_stepwise_increase (mins: Nat) (h: 66 ≤ mins) :
+    cost (mins - 1) ≤ cost mins ∧ cost mins - cost (mins - 1) ≤ 10 := sorry
+
+  /--
+  info: 30
+  -/
+  #guard_msgs in
+  #eval cost 45
+
+  /--
+  info: 30
+  -/
+  #guard_msgs in
+  #eval cost 63
+
+  /--
+  info: 40
+  -/
+  #guard_msgs in
+  #eval cost 84
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

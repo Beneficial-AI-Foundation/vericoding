@@ -1,18 +1,55 @@
-"vc-description": "Given a string of characters, I want the function `findMiddle()`/`find_middle()`\
-  \ to return the middle number in the product of each digit in the string.\n\nExample:\
-  \ 's7d8jd9' -> 7, 8, 9 -> 7\\*8\\*9=504, thus 0 should be returned as an integer.\n\
-  \nNot all strings will contain digits. In this case and the case for any non-strings,\
-  \ return -1.\n\nIf the product has an even number of digits, return the middle two\
-  \ digits\n\nExample: 1563 -> 56\n\nNOTE: Remove leading zeros if product is even\
-  \ and the first digit of the two is a zero.\nExample 2016 -> 1"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_middle (s : String) : Int := sorry\n\n\n\n\n\n\n\ndef\
-  \ isSubstring (needle haystack : String) : Prop := \n  ∃ pre suf, haystack = pre\
-  \ ++ needle ++ suf\n\n\n"
-"vc-theorems": "theorem find_middle_two_digits (d1 d2 : Nat) (h1 : d1 > 0) (h2 : d1\
-  \ < 10) (h3 : d2 > 0) (h4 : d2 < 10) :\n  find_middle s!\"a{d1}b{d2}c\" = d1 * d2\
-  \ := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_middle \"s7d8jd9\"\n\n\
-  /--\ninfo: 56\n-/\n#guard_msgs in\n#eval find_middle \"s7d8j\"\n\n/--\ninfo: -1\n\
-  -/\n#guard_msgs in\n#eval find_middle \"abc\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Given a string of characters, I want the function `findMiddle()`/`find_middle()` to return the middle number in the product of each digit in the string.
+
+  Example: 's7d8jd9' -> 7, 8, 9 -> 7\*8\*9=504, thus 0 should be returned as an integer.
+
+  Not all strings will contain digits. In this case and the case for any non-strings, return -1.
+
+  If the product has an even number of digits, return the middle two digits
+
+  Example: 1563 -> 56
+
+  NOTE: Remove leading zeros if product is even and the first digit of the two is a zero.
+  Example 2016 -> 1
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |+
+  def find_middle (s : String) : Int := sorry
+
+
+
+
+
+
+
+  def isSubstring (needle haystack : String) : Prop := 
+    ∃ pre suf, haystack = pre ++ needle ++ suf
+
+
+vc-theorems: |
+  theorem find_middle_two_digits (d1 d2 : Nat) (h1 : d1 > 0) (h2 : d1 < 10) (h3 : d2 > 0) (h4 : d2 < 10) :
+    find_middle s!"a{d1}b{d2}c" = d1 * d2 := sorry
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_middle "s7d8jd9"
+
+  /--
+  info: 56
+  -/
+  #guard_msgs in
+  #eval find_middle "s7d8j"
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval find_middle "abc"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

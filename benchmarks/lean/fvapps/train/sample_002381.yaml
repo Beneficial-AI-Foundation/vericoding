@@ -1,26 +1,83 @@
-"vc-description": "Given an integer array arr, return true if there are three consecutive\
-  \ odd numbers in the array. Otherwise, return false.\n \nExample 1:\nInput: arr\
-  \ = [2,6,4,1]\nOutput: false\nExplanation: There are no three consecutive odds.\n\
-  \nExample 2:\nInput: arr = [1,2,34,3,4,5,7,23,12]\nOutput: true\nExplanation: [5,7,23]\
-  \ are three consecutive odds.\n\n \nConstraints:\n\n1 <= arr.length <= 1000\n1 <=\
-  \ arr[i] <= 1000"
-"vc-preamble": "import Imports.AllImports\n\ndef isOdd (n : Int) : Bool :=\n  n %\
-  \ 2 = 1\n\n/-- Helper function to test if a number is even -/\n\ndef isEven (n :\
-  \ Int) : Bool :=\n  n % 2 = 0\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def threeConsecutiveOdds (arr : List Int) : Bool := sorry\n\ntheorem\
-  \ threeConsecutiveOdds_returns_bool (arr : List Int) :\n  threeConsecutiveOdds arr\
-  \ = true ∨ threeConsecutiveOdds arr = false :=\nsorry\n"
-"vc-theorems": "theorem threeConsecutiveOdds_true_implies_consecutive (arr : List\
-  \ Int) :\n  threeConsecutiveOdds arr = true →\n  ∃ i, i + 2 < arr.length ∧\n   \
-  \    isOdd arr[i]! ∧ isOdd arr[i+1]! ∧ isOdd arr[i+2]! :=\nsorry\n\n\ntheorem threeConsecutiveOdds_false_implies_no_consecutive\
-  \ (arr : List Int) :\n  threeConsecutiveOdds arr = false →\n  ∀ i, i + 2 < arr.length\
-  \ →\n      ¬(isOdd arr[i]! ∧ isOdd arr[i+1]! ∧ isOdd arr[i+2]!) :=\nsorry\n\n\n\
-  theorem all_odds_returns_true {arr : List Int} (h : arr.length ≥ 3)\n  (h₂ : ∀ x\
-  \ ∈ arr, isOdd x) :\n  threeConsecutiveOdds arr = true :=\nsorry\n\n\ntheorem all_evens_returns_false\
-  \ {arr : List Int}\n  (h : ∀ x ∈ arr, isEven x) :\n  threeConsecutiveOdds arr =\
-  \ false :=\nsorry\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval three_consecutive_odds\
-  \ [2, 6, 4, 1]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval three_consecutive_odds\
-  \ [1, 2, 34, 3, 4, 5, 7, 23, 12]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval three_consecutive_odds\
-  \ [1, 3, 5, 2]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an integer array arr, return true if there are three consecutive odd numbers in the array. Otherwise, return false.
+   
+  Example 1:
+  Input: arr = [2,6,4,1]
+  Output: false
+  Explanation: There are no three consecutive odds.
+
+  Example 2:
+  Input: arr = [1,2,34,3,4,5,7,23,12]
+  Output: true
+  Explanation: [5,7,23] are three consecutive odds.
+
+   
+  Constraints:
+
+  1 <= arr.length <= 1000
+  1 <= arr[i] <= 1000
+vc-preamble: |
+  import Imports.AllImports
+
+  def isOdd (n : Int) : Bool :=
+    n % 2 = 1
+
+  /-- Helper function to test if a number is even -/
+
+  def isEven (n : Int) : Bool :=
+    n % 2 = 0
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def threeConsecutiveOdds (arr : List Int) : Bool := sorry
+
+  theorem threeConsecutiveOdds_returns_bool (arr : List Int) :
+    threeConsecutiveOdds arr = true ∨ threeConsecutiveOdds arr = false :=
+  sorry
+vc-theorems: |
+  theorem threeConsecutiveOdds_true_implies_consecutive (arr : List Int) :
+    threeConsecutiveOdds arr = true →
+    ∃ i, i + 2 < arr.length ∧
+         isOdd arr[i]! ∧ isOdd arr[i+1]! ∧ isOdd arr[i+2]! :=
+  sorry
+
+
+  theorem threeConsecutiveOdds_false_implies_no_consecutive (arr : List Int) :
+    threeConsecutiveOdds arr = false →
+    ∀ i, i + 2 < arr.length →
+        ¬(isOdd arr[i]! ∧ isOdd arr[i+1]! ∧ isOdd arr[i+2]!) :=
+  sorry
+
+
+  theorem all_odds_returns_true {arr : List Int} (h : arr.length ≥ 3)
+    (h₂ : ∀ x ∈ arr, isOdd x) :
+    threeConsecutiveOdds arr = true :=
+  sorry
+
+
+  theorem all_evens_returns_false {arr : List Int}
+    (h : ∀ x ∈ arr, isEven x) :
+    threeConsecutiveOdds arr = false :=
+  sorry
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval three_consecutive_odds [2, 6, 4, 1]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval three_consecutive_odds [1, 2, 34, 3, 4, 5, 7, 23, 12]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval three_consecutive_odds [1, 3, 5, 2]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

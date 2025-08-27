@@ -1,35 +1,74 @@
-"vc-description": "In this Kata, you will be given a string and two indexes (`a` and\
-  \ `b`). Your task is to reverse the portion of that string between those two indices\
-  \ inclusive. \n\n~~~if-not:fortran\n```\nsolve(\"codewars\",1,5) = \"cawedors\"\
-  \ -- elements at index 1 to 5 inclusive are \"odewa\". So we reverse them.\nsolve(\"\
-  cODEWArs\", 1,5) = \"cAWEDOrs\" -- to help visualize.\n```\n~~~\n~~~if:fortran\n\
-  ```\nsolve(\"codewars\",2,6) = \"cawedors\" -- elements at indices 2 to 6 inclusive\
-  \ are \"odewa\". So we reverse them.\nsolve(\"cODEWArs\", 2,6) = \"cAWEDOrs\" --\
-  \ to help visualize.\n```\n~~~\n\nInput will be lowercase and uppercase letters\
-  \ only. \n\nThe first index `a` will always be lower that than the string length;\
-  \ the second index `b` can be greater than the string length. More examples in the\
-  \ test cases. Good luck!\n\nPlease also try:\n\n[Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)\n\
-  \n[Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)\n\
-  \n~~~if:fortran\n*NOTE: You may assume that all input strings will* **not** *contain\
-  \ any (redundant) trailing whitespace.  In return, your returned string is* **not**\
-  \ *permitted to contain any (redundant) trailing whitespace.*\n~~~"
-"vc-preamble": "import Imports.AllImports\n\ndef solve (s : String) (a b : Nat) :\
-  \ String := sorry\n\ndef length (s : String) : Nat := sorry"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def substring (s : String) (start : Nat) (len : Nat) : String :=\
-  \ sorry\ndef reverse (s : String) : String := sorry\n"
-"vc-theorems": "theorem solve_length_preserved (s : String) (a b : Nat) (h : length\
-  \ s > 0) :\n  length (solve s a b) = length s := sorry\n\n\ntheorem solve_preserves_outside_bounds\
-  \ (s : String) (a b : Nat) (h : length s > 0) \n  (start := min a (length s))\n\
-  \  (finish := min (b + 1) (length s)) :\n  substring (solve s a b) 0 start = substring\
-  \ s 0 start ∧ \n  substring (solve s a b) finish (length s - finish) = substring\
-  \ s finish (length s - finish) := sorry\n\n\ntheorem solve_reverses_middle (s :\
-  \ String) (a b : Nat) (h : length s > 0)\n  (start := min a (length s))\n  (finish\
-  \ := min (b + 1) (length s)) :\n  substring (solve s a b) start (finish - start)\
-  \ = reverse (substring s start (finish - start)) := sorry\n\n\ntheorem solve_identity_empty_range\
-  \ (s : String) (h : length s > 0) :\n  solve s 0 0 = s ∧\n  solve s (length s) (length\
-  \ s + 10) = s := sorry\n\n\ntheorem solve_full_reversal (s : String) (h : length\
-  \ s > 0) :\n  solve s 0 (length s - 1) = reverse s := sorry\n\n\ntheorem solve_single_char_identity\
-  \ (s : String) (idx : Nat) (h : length s > 0)\n  (limited_idx := min idx (length\
-  \ s - 1)) :\n  solve s limited_idx limited_idx = s := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  In this Kata, you will be given a string and two indexes (`a` and `b`). Your task is to reverse the portion of that string between those two indices inclusive. 
+
+  ~~~if-not:fortran
+  ```
+  solve("codewars",1,5) = "cawedors" -- elements at index 1 to 5 inclusive are "odewa". So we reverse them.
+  solve("cODEWArs", 1,5) = "cAWEDOrs" -- to help visualize.
+  ```
+  ~~~
+  ~~~if:fortran
+  ```
+  solve("codewars",2,6) = "cawedors" -- elements at indices 2 to 6 inclusive are "odewa". So we reverse them.
+  solve("cODEWArs", 2,6) = "cAWEDOrs" -- to help visualize.
+  ```
+  ~~~
+
+  Input will be lowercase and uppercase letters only. 
+
+  The first index `a` will always be lower that than the string length; the second index `b` can be greater than the string length. More examples in the test cases. Good luck!
+
+  Please also try:
+
+  [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
+
+  [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
+
+  ~~~if:fortran
+  *NOTE: You may assume that all input strings will* **not** *contain any (redundant) trailing whitespace.  In return, your returned string is* **not** *permitted to contain any (redundant) trailing whitespace.*
+  ~~~
+vc-preamble: |-
+  import Imports.AllImports
+
+  def solve (s : String) (a b : Nat) : String := sorry
+
+  def length (s : String) : Nat := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def substring (s : String) (start : Nat) (len : Nat) : String := sorry
+  def reverse (s : String) : String := sorry
+vc-theorems: |-
+  theorem solve_length_preserved (s : String) (a b : Nat) (h : length s > 0) :
+    length (solve s a b) = length s := sorry
+
+
+  theorem solve_preserves_outside_bounds (s : String) (a b : Nat) (h : length s > 0) 
+    (start := min a (length s))
+    (finish := min (b + 1) (length s)) :
+    substring (solve s a b) 0 start = substring s 0 start ∧ 
+    substring (solve s a b) finish (length s - finish) = substring s finish (length s - finish) := sorry
+
+
+  theorem solve_reverses_middle (s : String) (a b : Nat) (h : length s > 0)
+    (start := min a (length s))
+    (finish := min (b + 1) (length s)) :
+    substring (solve s a b) start (finish - start) = reverse (substring s start (finish - start)) := sorry
+
+
+  theorem solve_identity_empty_range (s : String) (h : length s > 0) :
+    solve s 0 0 = s ∧
+    solve s (length s) (length s + 10) = s := sorry
+
+
+  theorem solve_full_reversal (s : String) (h : length s > 0) :
+    solve s 0 (length s - 1) = reverse s := sorry
+
+
+  theorem solve_single_char_identity (s : String) (idx : Nat) (h : length s > 0)
+    (limited_idx := min idx (length s - 1)) :
+    solve s limited_idx limited_idx = s := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

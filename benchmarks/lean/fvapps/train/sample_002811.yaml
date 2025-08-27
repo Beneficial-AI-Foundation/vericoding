@@ -1,23 +1,71 @@
-"vc-description": "You are given an input string.\n\nFor each symbol in the string\
-  \ if it's the first character occurrence, replace it with a '1', else replace it\
-  \ with the amount of times you've already seen it...\n      \nBut will your code\
-  \ be **performant enough**?\n\n___\n\n## Examples:\n\n```\ninput   =  \"Hello, World!\"\
-  \nresult  =  \"1112111121311\"\n\ninput   =  \"aaaaaaaaaaaa\"\nresult  =  \"123456789101112\"\
-  \n```\n\nThere might be some non-ascii characters in the string.\n\n~~~if:java\n\
-  Note: there will be no int domain overflow (character occurrences will be less than\
-  \ 2 billion).\n~~~\n~~~if:c\n(this does not apply to the C language translation)\n\
-  ~~~"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def numericals (s : String) : String := sorry\n\ntheorem numericals_length_matches_input\
-  \ (s : String) :\n  String.length (numericals s) = String.length s := sorry\n"
-"vc-theorems": "theorem numericals_only_contains_digits (s : String) :\n  ∀ p : String.Pos,\
-  \ ((numericals s).get p).isDigit := sorry\n\n\ntheorem numericals_monotonic_repeated_chars\
-  \ (s : String) (c : Char) :\n  ∀ i j : String.Pos, i < j → \n  (s.get i = c ∧ s.get\
-  \ j = c) → \n  ((numericals s).get i).toNat ≤ ((numericals s).get j).toNat := sorry\n\
-  \n\ntheorem numericals_starts_with_one {s : String} (h : s ≠ \"\") :\n  ∃ p : String.Pos,\
-  \ (numericals s).get p = '1' := sorry\n\n/--\ninfo: '1112111121311'\n-/\n#guard_msgs\
-  \ in\n#eval numericals \"Hello, World!\"\n\n/--\ninfo: '123456789101112'\n-/\n#guard_msgs\
-  \ in\n#eval numericals \"aaaaaaaaaaaa\"\n\n/--\ninfo: '11121122342'\n-/\n#guard_msgs\
-  \ in\n#eval numericals \"hello hello\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  You are given an input string.
+
+  For each symbol in the string if it's the first character occurrence, replace it with a '1', else replace it with the amount of times you've already seen it...
+        
+  But will your code be **performant enough**?
+
+  ___
+
+  ## Examples:
+
+  ```
+  input   =  "Hello, World!"
+  result  =  "1112111121311"
+
+  input   =  "aaaaaaaaaaaa"
+  result  =  "123456789101112"
+  ```
+
+  There might be some non-ascii characters in the string.
+
+  ~~~if:java
+  Note: there will be no int domain overflow (character occurrences will be less than 2 billion).
+  ~~~
+  ~~~if:c
+  (this does not apply to the C language translation)
+  ~~~
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def numericals (s : String) : String := sorry
+
+  theorem numericals_length_matches_input (s : String) :
+    String.length (numericals s) = String.length s := sorry
+vc-theorems: |
+  theorem numericals_only_contains_digits (s : String) :
+    ∀ p : String.Pos, ((numericals s).get p).isDigit := sorry
+
+
+  theorem numericals_monotonic_repeated_chars (s : String) (c : Char) :
+    ∀ i j : String.Pos, i < j → 
+    (s.get i = c ∧ s.get j = c) → 
+    ((numericals s).get i).toNat ≤ ((numericals s).get j).toNat := sorry
+
+
+  theorem numericals_starts_with_one {s : String} (h : s ≠ "") :
+    ∃ p : String.Pos, (numericals s).get p = '1' := sorry
+
+  /--
+  info: '1112111121311'
+  -/
+  #guard_msgs in
+  #eval numericals "Hello, World!"
+
+  /--
+  info: '123456789101112'
+  -/
+  #guard_msgs in
+  #eval numericals "aaaaaaaaaaaa"
+
+  /--
+  info: '11121122342'
+  -/
+  #guard_msgs in
+  #eval numericals "hello hello"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

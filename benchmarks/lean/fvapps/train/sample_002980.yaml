@@ -1,23 +1,68 @@
-"vc-description": "Given a string, determine if it's a valid identifier.\n\n## Here\
-  \ is the syntax for valid identifiers:\n* Each identifier must have at least one\
-  \ character.\n* The first character must be picked from: alpha, underscore, or dollar\
-  \ sign. The first character cannot be a digit.\n* The rest of the characters (besides\
-  \ the first) can be from: alpha, digit, underscore, or dollar sign. In other words,\
-  \ it can be any valid identifier character.\n\n### Examples of valid identifiers:\n\
-  * i\n* wo_rd\n* b2h\n\n### Examples of invalid identifiers:\n* 1i\n* wo rd \n* !b2h"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def isValid (s : String) : Bool := sorry\n\n-- All strings consisting\
-  \ of letters/underscores/$ followed by letters/numbers/underscores/$ are valid"
-"vc-theorems": "theorem valid_identifier (s : String)\n  (h : s.data = x::xs ∧ (x\
-  \ = '_' ∨ x = '$' ∨ ('A' ≤ x ∧ x ≤ 'Z') ∨ ('a' ≤ x ∧ x ≤ 'z')) ∧ \n   ∀ c ∈ xs,\
-  \ (('0' ≤ c ∧ c ≤ '9') ∨ ('A' ≤ c ∧ c ≤ 'Z') ∨ ('a' ≤ c ∧ c ≤ 'z') ∨ c = '_' ∨ c\
-  \ = '$')) :\n  isValid s = true := sorry\n\n-- Edge cases\n\ntheorem empty_invalid\
-  \ : isValid \"\" = false := sorry\n\ntheorem underscore_valid : isValid \"_\" =\
-  \ true := sorry\n\n\ntheorem dollar_valid : isValid \"$\" = true := sorry\n\ntheorem\
-  \ space_invalid : isValid \" \" = false := sorry\n\n\ntheorem leading_number_invalid\
-  \ : isValid \"1abc\" = false := sorry\n\ntheorem whitespace_invalid : isValid \"\
-  abc def\" = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_valid\
-  \ \"okay_ok1\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_valid \"\"\n\n\
-  /--\ninfo: False\n-/\n#guard_msgs in\n#eval is_valid \"no no\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a string, determine if it's a valid identifier.
+
+  ## Here is the syntax for valid identifiers:
+  * Each identifier must have at least one character.
+  * The first character must be picked from: alpha, underscore, or dollar sign. The first character cannot be a digit.
+  * The rest of the characters (besides the first) can be from: alpha, digit, underscore, or dollar sign. In other words, it can be any valid identifier character.
+
+  ### Examples of valid identifiers:
+  * i
+  * wo_rd
+  * b2h
+
+  ### Examples of invalid identifiers:
+  * 1i
+  * wo rd 
+  * !b2h
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def isValid (s : String) : Bool := sorry
+
+  -- All strings consisting of letters/underscores/$ followed by letters/numbers/underscores/$ are valid
+vc-theorems: |
+  theorem valid_identifier (s : String)
+    (h : s.data = x::xs ∧ (x = '_' ∨ x = '$' ∨ ('A' ≤ x ∧ x ≤ 'Z') ∨ ('a' ≤ x ∧ x ≤ 'z')) ∧ 
+     ∀ c ∈ xs, (('0' ≤ c ∧ c ≤ '9') ∨ ('A' ≤ c ∧ c ≤ 'Z') ∨ ('a' ≤ c ∧ c ≤ 'z') ∨ c = '_' ∨ c = '$')) :
+    isValid s = true := sorry
+
+  -- Edge cases
+
+  theorem empty_invalid : isValid "" = false := sorry
+
+  theorem underscore_valid : isValid "_" = true := sorry
+
+
+  theorem dollar_valid : isValid "$" = true := sorry
+
+  theorem space_invalid : isValid " " = false := sorry
+
+
+  theorem leading_number_invalid : isValid "1abc" = false := sorry
+
+  theorem whitespace_invalid : isValid "abc def" = false := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_valid "okay_ok1"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_valid ""
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_valid "no no"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

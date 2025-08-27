@@ -1,28 +1,86 @@
-"vc-description": "Write a program that will take a string of digits and give you\
-  \ all the possible consecutive slices of length `n` in that string.\n\nRaise an\
-  \ error if `n` is larger than the length of the string.\n\n\n## Examples\n\nFor\
-  \ example, the string `\"01234\"` has the following 2-digit slices:\n```\n[0, 1],\
-  \ [1, 2], [2, 3], [3, 4]\n```\n\n\nThe same string has the following 4-digit slices:\n\
-  ```\n[0, 1, 2, 3], [1, 2, 3, 4]\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef Digit := Nat\ndef NumStr := List\
-  \ Digit\n\ninstance : OfNat Digit n where\n  ofNat := n\n\ninstance : LE Digit where\n\
-  \  le := Nat.le\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def series_slices (digits : NumStr) (n : Nat) : List (List Digit)\
-  \ :=\n  sorry\n"
-"vc-theorems": "theorem slice_length_bounds \n  (digits : NumStr) (n : Nat) (h : n\
-  \ > 0) :\n  (n > digits.length → (series_slices digits n).isEmpty) ∧ \n  (n ≤ digits.length\
-  \ → \n    ((series_slices digits n).length = digits.length - n + 1) ∧\n    (∀ slice\
-  \ ∈ series_slices digits n, slice.length = n)) :=\n  sorry\n\n\ntheorem slice_contents\n\
-  \  (digits : NumStr) (n : Nat) (h₁ : n > 0) (h₂ : n ≤ digits.length) :\n  ∀ i, i\
-  \ < (series_slices digits n).length →\n    (series_slices digits n)[i]! = digits.take\
-  \ (n) :=\n  sorry\n\n\ntheorem full_slice\n  (digits : NumStr) (h : digits.length\
-  \ > 0) :\n  let n := digits.length\n  (series_slices digits n).length = 1 ∧\n  (series_slices\
-  \ digits n)[0]! = digits :=\n  sorry\n\n\ntheorem all_integers\n  (digits : NumStr)\
-  \ (n : Nat) (h₁ : n > 0) (h₂ : n ≤ digits.length) :\n  ∀ slice ∈ series_slices digits\
-  \ n,\n    ∀ d ∈ slice, d ≤ 9 :=\n  sorry\n\n/--\ninfo: [[0, 1], [1, 2], [2, 3],\
-  \ [3, 4]]\n-/\n#guard_msgs in\n#eval series_slices \"01234\" 2\n\n/--\ninfo: [[0,\
-  \ 1, 2, 3], [1, 2, 3, 4]]\n-/\n#guard_msgs in\n#eval series_slices \"01234\" 4\n\
-  \n/--\ninfo: [[0, 1, 2, 3, 4]]\n-/\n#guard_msgs in\n#eval series_slices \"01234\"\
-  \ 5\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Write a program that will take a string of digits and give you all the possible consecutive slices of length `n` in that string.
+
+  Raise an error if `n` is larger than the length of the string.
+
+
+  ## Examples
+
+  For example, the string `"01234"` has the following 2-digit slices:
+  ```
+  [0, 1], [1, 2], [2, 3], [3, 4]
+  ```
+
+
+  The same string has the following 4-digit slices:
+  ```
+  [0, 1, 2, 3], [1, 2, 3, 4]
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def Digit := Nat
+  def NumStr := List Digit
+
+  instance : OfNat Digit n where
+    ofNat := n
+
+  instance : LE Digit where
+    le := Nat.le
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def series_slices (digits : NumStr) (n : Nat) : List (List Digit) :=
+    sorry
+vc-theorems: |
+  theorem slice_length_bounds 
+    (digits : NumStr) (n : Nat) (h : n > 0) :
+    (n > digits.length → (series_slices digits n).isEmpty) ∧ 
+    (n ≤ digits.length → 
+      ((series_slices digits n).length = digits.length - n + 1) ∧
+      (∀ slice ∈ series_slices digits n, slice.length = n)) :=
+    sorry
+
+
+  theorem slice_contents
+    (digits : NumStr) (n : Nat) (h₁ : n > 0) (h₂ : n ≤ digits.length) :
+    ∀ i, i < (series_slices digits n).length →
+      (series_slices digits n)[i]! = digits.take (n) :=
+    sorry
+
+
+  theorem full_slice
+    (digits : NumStr) (h : digits.length > 0) :
+    let n := digits.length
+    (series_slices digits n).length = 1 ∧
+    (series_slices digits n)[0]! = digits :=
+    sorry
+
+
+  theorem all_integers
+    (digits : NumStr) (n : Nat) (h₁ : n > 0) (h₂ : n ≤ digits.length) :
+    ∀ slice ∈ series_slices digits n,
+      ∀ d ∈ slice, d ≤ 9 :=
+    sorry
+
+  /--
+  info: [[0, 1], [1, 2], [2, 3], [3, 4]]
+  -/
+  #guard_msgs in
+  #eval series_slices "01234" 2
+
+  /--
+  info: [[0, 1, 2, 3], [1, 2, 3, 4]]
+  -/
+  #guard_msgs in
+  #eval series_slices "01234" 4
+
+  /--
+  info: [[0, 1, 2, 3, 4]]
+  -/
+  #guard_msgs in
+  #eval series_slices "01234" 5
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

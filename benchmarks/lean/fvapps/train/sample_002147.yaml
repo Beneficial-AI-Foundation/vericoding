@@ -1,36 +1,80 @@
-"vc-description": "Momiji has got a rooted tree, consisting of n nodes. The tree nodes\
-  \ are numbered by integers from 1 to n. The root has number 1. Momiji decided to\
-  \ play a game on this tree.\n\nThe game consists of several steps. On each step,\
-  \ Momiji chooses one of the remaining tree nodes (let's denote it by v) and removes\
-  \ all the subtree nodes with the root in node v from the tree. Node v gets deleted\
-  \ as well. The game finishes when the tree has no nodes left. In other words, the\
-  \ game finishes after the step that chooses the node number 1.\n\nEach time Momiji\
-  \ chooses a new node uniformly among all the remaining nodes. Your task is to find\
-  \ the expectation of the number of steps in the described game.\n\n\n-----Input-----\n\
-  \nThe first line contains integer n (1 ≤ n ≤ 10^5) — the number of nodes in the\
-  \ tree. The next n - 1 lines contain the tree edges. The i-th line contains integers\
-  \ a_{i}, b_{i} (1 ≤ a_{i}, b_{i} ≤ n; a_{i} ≠ b_{i}) — the numbers of the nodes\
-  \ that are connected by the i-th edge.\n\nIt is guaranteed that the given graph\
-  \ is a tree.\n\n\n-----Output-----\n\nPrint a single real number — the expectation\
-  \ of the number of steps in the described game.\n\nThe answer will be considered\
-  \ correct if the absolute or relative error doesn't exceed 10^{ - 6}.\n\n\n-----Examples-----\n\
-  Input\n2\n1 2\n\nOutput\n1.50000000000000000000\n\nInput\n3\n1 2\n1 3\n\nOutput\n\
-  2.00000000000000000000\n\n\n\n-----Note-----\n\nIn the first sample, there are two\
-  \ cases. One is directly remove the root and another is remove the root after one\
-  \ step. Thus the expected steps are: 1 × (1 / 2) + 2 × (1 / 2) = 1.5\n\nIn the second\
-  \ sample, things get more complex. There are two cases that reduce to the first\
-  \ sample, and one case cleaned at once. Thus the expected steps are: 1 × (1 / 3)\
-  \ + (1 + 1.5) × (2 / 3) = (1 / 3) + (5 / 3) = 2"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def Tree := List (Nat × Nat)\n\ndef solve_tree_game (n : Nat) (edges\
-  \ : Tree) : Float :=\n  sorry\n"
-"vc-theorems": "theorem tree_game_positive (n : Nat) (edges : Tree) :\n  n ≥ 2 → solve_tree_game\
-  \ n edges > 0 :=\n  sorry\n\n\ntheorem tree_game_min (n : Nat) (edges : Tree) :\n\
-  \  n ≥ 2 → solve_tree_game n edges ≥ 1 :=\n  sorry\n\n\ntheorem tree_game_max (n\
-  \ : Nat) (edges : Tree) :\n  n ≥ 2 → solve_tree_game n edges ≤ Float.ofNat n :=\n\
-  \  sorry\n\n\ntheorem line_graph_expected (n : Nat) :\n  n ≥ 2 →\n  let edges :=\
-  \ List.range (n-1) |> List.map (fun i => (i+1, i+2));\n  let expected := List.range\
-  \ n |> List.map (fun i => 1.0/(Float.ofNat (i+1))) |> List.foldl Float.add 0;\n\
-  \  Float.abs (solve_tree_game n edges - expected) < 0.000001 :=\n  sorry"
-"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"
+vc-description: |-
+  Momiji has got a rooted tree, consisting of n nodes. The tree nodes are numbered by integers from 1 to n. The root has number 1. Momiji decided to play a game on this tree.
+
+  The game consists of several steps. On each step, Momiji chooses one of the remaining tree nodes (let's denote it by v) and removes all the subtree nodes with the root in node v from the tree. Node v gets deleted as well. The game finishes when the tree has no nodes left. In other words, the game finishes after the step that chooses the node number 1.
+
+  Each time Momiji chooses a new node uniformly among all the remaining nodes. Your task is to find the expectation of the number of steps in the described game.
+
+
+  -----Input-----
+
+  The first line contains integer n (1 ≤ n ≤ 10^5) — the number of nodes in the tree. The next n - 1 lines contain the tree edges. The i-th line contains integers a_{i}, b_{i} (1 ≤ a_{i}, b_{i} ≤ n; a_{i} ≠ b_{i}) — the numbers of the nodes that are connected by the i-th edge.
+
+  It is guaranteed that the given graph is a tree.
+
+
+  -----Output-----
+
+  Print a single real number — the expectation of the number of steps in the described game.
+
+  The answer will be considered correct if the absolute or relative error doesn't exceed 10^{ - 6}.
+
+
+  -----Examples-----
+  Input
+  2
+  1 2
+
+  Output
+  1.50000000000000000000
+
+  Input
+  3
+  1 2
+  1 3
+
+  Output
+  2.00000000000000000000
+
+
+
+  -----Note-----
+
+  In the first sample, there are two cases. One is directly remove the root and another is remove the root after one step. Thus the expected steps are: 1 × (1 / 2) + 2 × (1 / 2) = 1.5
+
+  In the second sample, things get more complex. There are two cases that reduce to the first sample, and one case cleaned at once. Thus the expected steps are: 1 × (1 / 3) + (1 + 1.5) × (2 / 3) = (1 / 3) + (5 / 3) = 2
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def Tree := List (Nat × Nat)
+
+  def solve_tree_game (n : Nat) (edges : Tree) : Float :=
+    sorry
+vc-theorems: |-
+  theorem tree_game_positive (n : Nat) (edges : Tree) :
+    n ≥ 2 → solve_tree_game n edges > 0 :=
+    sorry
+
+
+  theorem tree_game_min (n : Nat) (edges : Tree) :
+    n ≥ 2 → solve_tree_game n edges ≥ 1 :=
+    sorry
+
+
+  theorem tree_game_max (n : Nat) (edges : Tree) :
+    n ≥ 2 → solve_tree_game n edges ≤ Float.ofNat n :=
+    sorry
+
+
+  theorem line_graph_expected (n : Nat) :
+    n ≥ 2 →
+    let edges := List.range (n-1) |> List.map (fun i => (i+1, i+2));
+    let expected := List.range n |> List.map (fun i => 1.0/(Float.ofNat (i+1))) |> List.foldl Float.add 0;
+    Float.abs (solve_tree_game n edges - expected) < 0.000001 :=
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded

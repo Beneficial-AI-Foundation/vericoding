@@ -1,13 +1,45 @@
-"vc-description": "Here we have a function that help us spam our hearty laughter.\
-  \ But is not working! I need you to find out why...\n\nExpected results:\n\n```python\n\
-  spam(1)  ==> \"hue\"\nspam(6)  ==> \"huehuehuehuehuehue\"\nspam(14) ==> \"huehuehuehuehuehuehuehuehuehuehuehuehuehue\"\
-  \n```"
-"vc-preamble": "import Imports.AllImports\n\ndef String.replicate (n : Nat) (s : String)\
-  \ : String :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def spam (n : Nat) : String :=\n  sorry\n"
-"vc-theorems": "theorem spam_multiplication (n : Nat) : n ≤ 1000 → spam n = String.replicate\
-  \ n \"hue\" :=\n  sorry\n\n/--\ninfo: 'hue'\n-/\n#guard_msgs in\n#eval spam 1\n\n\
-  /--\ninfo: 'huehuehuehuehuehue'\n-/\n#guard_msgs in\n#eval spam 6\n\n/--\ninfo:\
-  \ 'huehuehuehuehuehuehuehuehuehuehuehuehuehue'\n-/\n#guard_msgs in\n#eval spam 14\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Here we have a function that help us spam our hearty laughter. But is not working! I need you to find out why...
+
+  Expected results:
+
+  ```python
+  spam(1)  ==> "hue"
+  spam(6)  ==> "huehuehuehuehuehue"
+  spam(14) ==> "huehuehuehuehuehuehuehuehuehuehuehuehuehue"
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def String.replicate (n : Nat) (s : String) : String :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def spam (n : Nat) : String :=
+    sorry
+vc-theorems: |
+  theorem spam_multiplication (n : Nat) : n ≤ 1000 → spam n = String.replicate n "hue" :=
+    sorry
+
+  /--
+  info: 'hue'
+  -/
+  #guard_msgs in
+  #eval spam 1
+
+  /--
+  info: 'huehuehuehuehuehue'
+  -/
+  #guard_msgs in
+  #eval spam 6
+
+  /--
+  info: 'huehuehuehuehuehuehuehuehuehuehuehuehuehue'
+  -/
+  #guard_msgs in
+  #eval spam 14
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

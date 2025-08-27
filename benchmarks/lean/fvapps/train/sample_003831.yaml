@@ -1,24 +1,72 @@
-"vc-description": "# Task\n Given a position of a knight on the standard chessboard,\
-  \ find the number of different moves the knight can perform.\n\n The knight can\
-  \ move to a square that is two squares horizontally and one square vertically, or\
-  \ two squares vertically and one square horizontally away from it. The complete\
-  \ move therefore looks like the letter L. Check out the image below to see all valid\
-  \ moves for a knight piece that is placed on one of the central squares.\n\n ![](https://codefightsuserpics.s3.amazonaws.com/tasks/chessKnight/img/knight.jpg?_tm=1473533979951)\n\
-  \n# Example\n\n For `cell = \"a1\"`, the output should be `2`.\n\n ![](https://codefightsuserpics.s3.amazonaws.com/tasks/chessKnight/img/ex_1.jpg?_tm=1473533980197)\n\
-  \n For `cell = \"c2\"`, the output should be `6`.\n\n ![](https://codefightsuserpics.s3.amazonaws.com/tasks/chessKnight/img/ex_2.jpg?_tm=1473533980368)\n\
-  \n# Input/Output\n\n\n - `[input]` string `cell`\n\n    String consisting of letter+number\
-  \ - coordinates of the knight on an 8 × 8 chessboard in chess notation.\n\n\n -\
-  \ `[output]` an integer"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def chess_knight (pos : String) : Nat := sorry\n\n\n\ntheorem corner_positions\
-  \ (pos : String) :\n  (pos = \"a1\" ∨ pos = \"a8\" ∨ pos = \"h1\" ∨ pos = \"h8\"\
-  ) → chess_knight pos = 2 := sorry\n"
-"vc-theorems": "theorem edge_positions (pos : String) :\n  ((pos.front = 'a' ∨ pos.front\
-  \ = 'h' ∨ \n    pos.back = '1' ∨ pos.back = '8') ∧\n   ¬(pos = \"a1\" ∨ pos = \"\
-  a8\" ∨ pos = \"h1\" ∨ pos = \"h8\")) →\n  chess_knight pos ≤ 4 := sorry\n\n\n\n\n\
-  theorem center_max_moves :\n  chess_knight \"d4\" = 8 ∧ chess_knight \"e4\" = 8\
-  \ := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval chess_knight \"a1\"\n\n/--\n\
-  info: 6\n-/\n#guard_msgs in\n#eval chess_knight \"c2\"\n\n/--\ninfo: 8\n-/\n#guard_msgs\
-  \ in\n#eval chess_knight \"d4\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  # Task
+   Given a position of a knight on the standard chessboard, find the number of different moves the knight can perform.
+
+   The knight can move to a square that is two squares horizontally and one square vertically, or two squares vertically and one square horizontally away from it. The complete move therefore looks like the letter L. Check out the image below to see all valid moves for a knight piece that is placed on one of the central squares.
+
+   ![](https://codefightsuserpics.s3.amazonaws.com/tasks/chessKnight/img/knight.jpg?_tm=1473533979951)
+
+  # Example
+
+   For `cell = "a1"`, the output should be `2`.
+
+   ![](https://codefightsuserpics.s3.amazonaws.com/tasks/chessKnight/img/ex_1.jpg?_tm=1473533980197)
+
+   For `cell = "c2"`, the output should be `6`.
+
+   ![](https://codefightsuserpics.s3.amazonaws.com/tasks/chessKnight/img/ex_2.jpg?_tm=1473533980368)
+
+  # Input/Output
+
+
+   - `[input]` string `cell`
+
+      String consisting of letter+number - coordinates of the knight on an 8 × 8 chessboard in chess notation.
+
+
+   - `[output]` an integer
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def chess_knight (pos : String) : Nat := sorry
+
+
+
+  theorem corner_positions (pos : String) :
+    (pos = "a1" ∨ pos = "a8" ∨ pos = "h1" ∨ pos = "h8") → chess_knight pos = 2 := sorry
+vc-theorems: |
+  theorem edge_positions (pos : String) :
+    ((pos.front = 'a' ∨ pos.front = 'h' ∨ 
+      pos.back = '1' ∨ pos.back = '8') ∧
+     ¬(pos = "a1" ∨ pos = "a8" ∨ pos = "h1" ∨ pos = "h8")) →
+    chess_knight pos ≤ 4 := sorry
+
+
+
+
+  theorem center_max_moves :
+    chess_knight "d4" = 8 ∧ chess_knight "e4" = 8 := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval chess_knight "a1"
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval chess_knight "c2"
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval chess_knight "d4"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

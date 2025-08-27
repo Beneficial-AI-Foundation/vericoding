@@ -1,33 +1,102 @@
-"vc-description": "We are given the head node root of a binary tree, where additionally\
-  \ every node's value is either a 0 or a 1.\nReturn the same tree where every subtree\
-  \ (of the given tree) not containing a 1 has been removed.\n(Recall that the subtree\
-  \ of a node X is X, plus every node that is a descendant of X.)\nExample 1:\nInput:\
-  \ [1,null,0,0,1]\nOutput: [1,null,0,null,1]\n \nExplanation: \nOnly the red nodes\
-  \ satisfy the property \"every subtree not containing a 1\".\nThe diagram on the\
-  \ right represents the answer.\n\n\n\nExample 2:\nInput: [1,0,1,0,0,0,1]\nOutput:\
-  \ [1,null,1,null,1]\n\n\n\n\nExample 3:\nInput: [1,1,0,1,1,0,1,0]\nOutput: [1,1,0,1,1,null,1]\n\
-  \n\n\n\nNote: \n\nThe binary tree will have at most 200 nodes.\nThe value of each\
-  \ node will only be 0 or 1."
-"vc-preamble": "import Imports.AllImports\n\ndef pruneTree : BTree → Option BTree\
-  \ \n  | BTree.nil => none\n  | BTree.node v l r => sorry\n\n\ndef containsValue\
-  \ : BTree → Nat → Bool\n  | BTree.nil, _ => false\n  | BTree.node v l r, n => v\
-  \ = n || containsValue l n || containsValue r n\n\n\ndef isLeaf : BTree → Bool\n\
-  \  | BTree.nil => false\n  | BTree.node _ BTree.nil BTree.nil => true\n  | _ =>\
-  \ false\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def getValue : BTree → Nat\n  | BTree.nil => 0\n  | BTree.node\
-  \ v _ _ => v\n"
-"vc-theorems": "theorem pruned_tree_only_zeros_and_ones {t : BTree} {pt : BTree} :\n\
-  \  pruneTree t = some pt → \n  ∀ n : Nat, containsValue pt n = true → (n = 0 ∨ n\
-  \ = 1) := sorry\n\n\ntheorem pruned_leaf_nodes_are_one {t : BTree} {pt : BTree}\
-  \ :\n  pruneTree t = some pt →\n  isLeaf pt = true → getValue pt = 1 := sorry\n\n\
-  \ntheorem prune_tree_idempotent {t : BTree} :\n  pruneTree t = pruneTree (Option.getD\
-  \ (pruneTree t) BTree.nil) := sorry\n\n\ntheorem prune_tree_nil : \n  pruneTree\
-  \ BTree.nil = none := sorry\n\n\ntheorem prune_tree_zero :\n  pruneTree (BTree.node\
-  \ 0 BTree.nil BTree.nil) = none := sorry\n\n\ntheorem prune_tree_one :\n  pruneTree\
-  \ (BTree.node 1 BTree.nil BTree.nil) = some (BTree.node 1 BTree.nil BTree.nil) :=\
-  \ sorry\n\n/--\ninfo: [1, None, 0, None, 1]\n-/\n#guard_msgs in\n#eval tree_to_list\
-  \ prune_tree(test1)\n\n/--\ninfo: [1, None, 1, None, 1]\n-/\n#guard_msgs in\n#eval\
-  \ tree_to_list prune_tree(test2)\n\n/--\ninfo: [1, 1, 0, 1, 1, None, 1]\n-/\n#guard_msgs\
-  \ in\n#eval tree_to_list prune_tree(test3)\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  We are given the head node root of a binary tree, where additionally every node's value is either a 0 or a 1.
+  Return the same tree where every subtree (of the given tree) not containing a 1 has been removed.
+  (Recall that the subtree of a node X is X, plus every node that is a descendant of X.)
+  Example 1:
+  Input: [1,null,0,0,1]
+  Output: [1,null,0,null,1]
+   
+  Explanation: 
+  Only the red nodes satisfy the property "every subtree not containing a 1".
+  The diagram on the right represents the answer.
+
+
+
+  Example 2:
+  Input: [1,0,1,0,0,0,1]
+  Output: [1,null,1,null,1]
+
+
+
+
+  Example 3:
+  Input: [1,1,0,1,1,0,1,0]
+  Output: [1,1,0,1,1,null,1]
+
+
+
+
+  Note: 
+
+  The binary tree will have at most 200 nodes.
+  The value of each node will only be 0 or 1.
+vc-preamble: |
+  import Imports.AllImports
+
+  def pruneTree : BTree → Option BTree 
+    | BTree.nil => none
+    | BTree.node v l r => sorry
+
+
+  def containsValue : BTree → Nat → Bool
+    | BTree.nil, _ => false
+    | BTree.node v l r, n => v = n || containsValue l n || containsValue r n
+
+
+  def isLeaf : BTree → Bool
+    | BTree.nil => false
+    | BTree.node _ BTree.nil BTree.nil => true
+    | _ => false
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def getValue : BTree → Nat
+    | BTree.nil => 0
+    | BTree.node v _ _ => v
+vc-theorems: |
+  theorem pruned_tree_only_zeros_and_ones {t : BTree} {pt : BTree} :
+    pruneTree t = some pt → 
+    ∀ n : Nat, containsValue pt n = true → (n = 0 ∨ n = 1) := sorry
+
+
+  theorem pruned_leaf_nodes_are_one {t : BTree} {pt : BTree} :
+    pruneTree t = some pt →
+    isLeaf pt = true → getValue pt = 1 := sorry
+
+
+  theorem prune_tree_idempotent {t : BTree} :
+    pruneTree t = pruneTree (Option.getD (pruneTree t) BTree.nil) := sorry
+
+
+  theorem prune_tree_nil : 
+    pruneTree BTree.nil = none := sorry
+
+
+  theorem prune_tree_zero :
+    pruneTree (BTree.node 0 BTree.nil BTree.nil) = none := sorry
+
+
+  theorem prune_tree_one :
+    pruneTree (BTree.node 1 BTree.nil BTree.nil) = some (BTree.node 1 BTree.nil BTree.nil) := sorry
+
+  /--
+  info: [1, None, 0, None, 1]
+  -/
+  #guard_msgs in
+  #eval tree_to_list prune_tree(test1)
+
+  /--
+  info: [1, None, 1, None, 1]
+  -/
+  #guard_msgs in
+  #eval tree_to_list prune_tree(test2)
+
+  /--
+  info: [1, 1, 0, 1, 1, None, 1]
+  -/
+  #guard_msgs in
+  #eval tree_to_list prune_tree(test3)
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

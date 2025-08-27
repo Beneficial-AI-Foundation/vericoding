@@ -1,35 +1,105 @@
-"vc-description": "Given a string s of '(' , ')' and lowercase English characters. \n\
-  Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions\
-  \ ) so that the resulting parentheses string is valid and return any valid string.\n\
-  Formally, a parentheses string is valid if and only if:\n\nIt is the empty string,\
-  \ contains only lowercase characters, or\nIt can be written as AB (A concatenated\
-  \ with B), where A and B are valid strings, or\nIt can be written as (A), where A is\
-  \ a valid string.\n\n \nExample 1:\nInput: s = \"lee(t(c)o)de)\"\nOutput: \"lee(t(c)o)de\"\
-  \nExplanation: \"lee(t(co)de)\" , \"lee(t(c)ode)\" would also be accepted.\n\nExample\
-  \ 2:\nInput: s = \"a)b(c)d\"\nOutput: \"ab(c)d\"\n\nExample 3:\nInput: s = \"))((\"\
-  \nOutput: \"\"\nExplanation: An empty string is also valid.\n\nExample 4:\nInput:\
-  \ s = \"(a(b(c)d)\"\nOutput: \"a(b(c)d)\"\n\n \nConstraints:\n\n1 <= s.length <=\
-  \ 10^5\ns[i] is one of  '(' , ')' and lowercase English letters."
-"vc-preamble": "import Imports.AllImports\n\ndef validParens (s : String) : Bool :=\
-  \ sorry\n\ndef isSubsequence (s1 s2 : String) : Bool := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def minRemoveToMakeValid (s : String) : String := sorry\n\ninductive\
-  \ CharIn (s : String) where\n  | mk (c : Char) (h : s.data.contains c) : CharIn\
-  \ s\n\n-- All chars in result are valid"
-"vc-theorems": "theorem result_contains_valid_chars (s : String) :\n  ∀ c, (minRemoveToMakeValid\
-  \ s).data.contains c →\n    c = '(' ∨ c = ')' ∨ c = 'a' ∨ c = 'b' ∨ c = 'c' := sorry\n\
-  \n-- Result has balanced parentheses\n\ntheorem result_has_balanced_parens (s :\
-  \ String) :\n  validParens (minRemoveToMakeValid s) := sorry\n\n-- Result is a subsequence\
-  \ of input\n\ntheorem result_is_subsequence (s : String) :\n  isSubsequence (minRemoveToMakeValid\
-  \ s) s := sorry\n\n-- Strings without parens are unchanged \n\ntheorem no_parens_unchanged\
-  \ (s : String) :\n  (∀ c, s.data.contains c → c ≠ '(' ∧ c ≠ ')') →\n  minRemoveToMakeValid\
-  \ s = s := sorry\n\n-- Empty string case\n\ntheorem empty_string :\n  minRemoveToMakeValid\
-  \ \"\" = \"\" := sorry\n\n-- Only open brackets become empty\n\ntheorem only_open_brackets\
-  \ (n : Nat) :\n  minRemoveToMakeValid (String.mk (List.replicate n '(')) = \"\"\
-  \ := sorry \n\n-- Only close brackets become empty  \n\ntheorem only_close_brackets\
-  \ (n : Nat) :\n  minRemoveToMakeValid (String.mk (List.replicate n ')')) = \"\"\
-  \ := sorry\n\n/--\ninfo: 'lee(t(c)o)de'\n-/\n#guard_msgs in\n#eval minRemoveToMakeValid\
-  \ \"lee(t(c)o)de)\"\n\n/--\ninfo: 'ab(c)d'\n-/\n#guard_msgs in\n#eval minRemoveToMakeValid\
-  \ \"a)b(c)d\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval minRemoveToMakeValid \"\
-  ))((\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a string s of '(' , ')' and lowercase English characters. 
+  Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions ) so that the resulting parentheses string is valid and return any valid string.
+  Formally, a parentheses string is valid if and only if:
+
+  It is the empty string, contains only lowercase characters, or
+  It can be written as AB (A concatenated with B), where A and B are valid strings, or
+  It can be written as (A), where A is a valid string.
+
+   
+  Example 1:
+  Input: s = "lee(t(c)o)de)"
+  Output: "lee(t(c)o)de"
+  Explanation: "lee(t(co)de)" , "lee(t(c)ode)" would also be accepted.
+
+  Example 2:
+  Input: s = "a)b(c)d"
+  Output: "ab(c)d"
+
+  Example 3:
+  Input: s = "))(("
+  Output: ""
+  Explanation: An empty string is also valid.
+
+  Example 4:
+  Input: s = "(a(b(c)d)"
+  Output: "a(b(c)d)"
+
+   
+  Constraints:
+
+  1 <= s.length <= 10^5
+  s[i] is one of  '(' , ')' and lowercase English letters.
+vc-preamble: |
+  import Imports.AllImports
+
+  def validParens (s : String) : Bool := sorry
+
+  def isSubsequence (s1 s2 : String) : Bool := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def minRemoveToMakeValid (s : String) : String := sorry
+
+  inductive CharIn (s : String) where
+    | mk (c : Char) (h : s.data.contains c) : CharIn s
+
+  -- All chars in result are valid
+vc-theorems: |
+  theorem result_contains_valid_chars (s : String) :
+    ∀ c, (minRemoveToMakeValid s).data.contains c →
+      c = '(' ∨ c = ')' ∨ c = 'a' ∨ c = 'b' ∨ c = 'c' := sorry
+
+  -- Result has balanced parentheses
+
+  theorem result_has_balanced_parens (s : String) :
+    validParens (minRemoveToMakeValid s) := sorry
+
+  -- Result is a subsequence of input
+
+  theorem result_is_subsequence (s : String) :
+    isSubsequence (minRemoveToMakeValid s) s := sorry
+
+  -- Strings without parens are unchanged 
+
+  theorem no_parens_unchanged (s : String) :
+    (∀ c, s.data.contains c → c ≠ '(' ∧ c ≠ ')') →
+    minRemoveToMakeValid s = s := sorry
+
+  -- Empty string case
+
+  theorem empty_string :
+    minRemoveToMakeValid "" = "" := sorry
+
+  -- Only open brackets become empty
+
+  theorem only_open_brackets (n : Nat) :
+    minRemoveToMakeValid (String.mk (List.replicate n '(')) = "" := sorry 
+
+  -- Only close brackets become empty  
+
+  theorem only_close_brackets (n : Nat) :
+    minRemoveToMakeValid (String.mk (List.replicate n ')')) = "" := sorry
+
+  /--
+  info: 'lee(t(c)o)de'
+  -/
+  #guard_msgs in
+  #eval minRemoveToMakeValid "lee(t(c)o)de)"
+
+  /--
+  info: 'ab(c)d'
+  -/
+  #guard_msgs in
+  #eval minRemoveToMakeValid "a)b(c)d"
+
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval minRemoveToMakeValid "))(("
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

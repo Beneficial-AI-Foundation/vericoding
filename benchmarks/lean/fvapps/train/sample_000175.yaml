@@ -1,28 +1,69 @@
-"vc-description": "Given an unsorted array of integers, find the length of longest\
-  \ increasing subsequence.\n\nExample:\n\n\nInput: [10,9,2,5,3,7,101,18]\nOutput:\
-  \ 4 \nExplanation: The longest increasing subsequence is [2,3,7,101], therefore\
-  \ the length is 4. \n\nNote: \n\n\n       There may be more than one LIS combination,\
-  \ it is only necessary for you to return the length.\n       Your algorithm should\
-  \ run in O(n2) complexity.\n\n\nFollow up: Could you improve it to O(n log n) time\
-  \ complexity?"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": ""
-"vc-theorems": "theorem output_size_bounds {nums : List Int} :\n  longest_increasing_subsequence\
-  \ nums ≤ nums.length ∧ \n  longest_increasing_subsequence nums ≥ 0 := sorry\n\n\
-  /-- For a strictly increasing sequence of unique elements, result equals length\
-  \ -/  \n\ntheorem strictly_increasing_equals_length {nums : List Int} (h: nums.Nodup)\
-  \ : \n  (∀ i j, i < j → j < nums.length → nums.get! i < nums.get! j) →\n  longest_increasing_subsequence\
-  \ nums = nums.length := sorry\n\n/-- For a strictly decreasing sequence of unique\
-  \ elements, result is 1 -/\n\ntheorem strictly_decreasing_equals_one {nums : List\
-  \ Int} (h: nums.Nodup) : \n  (∀ i j, i < j → j < nums.length → nums.get! i > nums.get!\
-  \ j) →\n  longest_increasing_subsequence nums = 1 := sorry\n\n/-- Max result of\
-  \ sequence and its reverse are equal -/\n\ntheorem reverse_order_max {nums : List\
-  \ Int} :\n  max (longest_increasing_subsequence nums) (longest_increasing_subsequence\
-  \ nums.reverse) =\n  longest_increasing_subsequence nums ∨\n  max (longest_increasing_subsequence\
-  \ nums) (longest_increasing_subsequence nums.reverse) =\n  longest_increasing_subsequence\
-  \ nums.reverse := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval longest_increasing_subsequence\
-  \ [10, 9, 2, 5, 3, 7, 101, 18]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval longest_increasing_subsequence\
-  \ []\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval longest_increasing_subsequence [1,\
-  \ 2, 3, 4, 5]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given an unsorted array of integers, find the length of longest increasing subsequence.
+
+  Example:
+
+
+  Input: [10,9,2,5,3,7,101,18]
+  Output: 4 
+  Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4. 
+
+  Note: 
+
+
+         There may be more than one LIS combination, it is only necessary for you to return the length.
+         Your algorithm should run in O(n2) complexity.
+
+
+  Follow up: Could you improve it to O(n log n) time complexity?
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+vc-theorems: |
+  theorem output_size_bounds {nums : List Int} :
+    longest_increasing_subsequence nums ≤ nums.length ∧ 
+    longest_increasing_subsequence nums ≥ 0 := sorry
+
+  /-- For a strictly increasing sequence of unique elements, result equals length -/  
+
+  theorem strictly_increasing_equals_length {nums : List Int} (h: nums.Nodup) : 
+    (∀ i j, i < j → j < nums.length → nums.get! i < nums.get! j) →
+    longest_increasing_subsequence nums = nums.length := sorry
+
+  /-- For a strictly decreasing sequence of unique elements, result is 1 -/
+
+  theorem strictly_decreasing_equals_one {nums : List Int} (h: nums.Nodup) : 
+    (∀ i j, i < j → j < nums.length → nums.get! i > nums.get! j) →
+    longest_increasing_subsequence nums = 1 := sorry
+
+  /-- Max result of sequence and its reverse are equal -/
+
+  theorem reverse_order_max {nums : List Int} :
+    max (longest_increasing_subsequence nums) (longest_increasing_subsequence nums.reverse) =
+    longest_increasing_subsequence nums ∨
+    max (longest_increasing_subsequence nums) (longest_increasing_subsequence nums.reverse) =
+    longest_increasing_subsequence nums.reverse := sorry
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval longest_increasing_subsequence [10, 9, 2, 5, 3, 7, 101, 18]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval longest_increasing_subsequence []
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval longest_increasing_subsequence [1, 2, 3, 4, 5]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

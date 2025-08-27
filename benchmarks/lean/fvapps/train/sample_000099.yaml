@@ -1,38 +1,99 @@
-"vc-description": "You have three piles of candies: red, green and blue candies: \
-  \ the first pile contains only red candies and there are $r$ candies in it,  the\
-  \ second pile contains only green candies and there are $g$ candies in it,  the\
-  \ third pile contains only blue candies and there are $b$ candies in it. \n\nEach\
-  \ day Tanya eats exactly two candies of different colors. She is free to choose\
-  \ the colors of eaten candies: the only restriction that she can't eat two candies\
-  \ of the same color in a day.\n\nFind the maximal number of days Tanya can eat candies?\
-  \ Each day she needs to eat exactly two candies.\n\n\n-----Input-----\n\nThe first\
-  \ line contains integer $t$ ($1 \\le t \\le 1000$) — the number of test cases in\
-  \ the input. Then $t$ test cases follow.\n\nEach test case is given as a separate\
-  \ line of the input. It contains three integers $r$, $g$ and $b$ ($1 \\le r, g,\
-  \ b \\le 10^8$) — the number of red, green and blue candies, respectively.\n\n\n\
-  -----Output-----\n\nPrint $t$ integers: the $i$-th printed integer is the answer\
-  \ on the $i$-th test case in the input.\n\n\n-----Example-----\nInput\n6\n1 1 1\n\
-  1 2 1\n4 1 1\n7 4 10\n8 1 4\n8 2 8\n\nOutput\n1\n2\n2\n10\n5\n9\n\n\n\n-----Note-----\n\
-  \nIn the first example, Tanya can eat candies for one day only. She can eat any\
-  \ pair of candies this day because all of them have different colors.\n\nIn the\
-  \ second example, Tanya can eat candies for two days. For example, she can eat red\
-  \ and green candies on the first day, and green and blue candies on the second day.\n\
-  \nIn the third example, Tanya can eat candies for two days. For example, she can\
-  \ eat red and green candies on the first day, and red and blue candies on the second\
-  \ day. Note, that two red candies will remain uneaten."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_candies (r g b : Nat) : Nat := sorry\n\ntheorem solve_candies_non_negative\
-  \ (r g b : Nat) : \n  solve_candies r g b ≥ 0 := sorry\n"
-"vc-theorems": "theorem solve_candies_bounded_by_pairs (r g b : Nat) :\n  solve_candies\
-  \ r g b ≤ r + g ∧ \n  solve_candies r g b ≤ r + b ∧\n  solve_candies r g b ≤ g +\
-  \ b := sorry\n\n\ntheorem solve_candies_bounded_by_half_total (r g b : Nat) :\n\
-  \  solve_candies r g b ≤ (r + g + b) / 2 := sorry \n\n\ntheorem solve_candies_returns_nat\
-  \ (r g b : Nat) :\n  solve_candies r g b = (solve_candies r g b : Nat) := sorry\n\
-  \n\ntheorem solve_equal_piles (n : Nat) :\n  solve_candies n n n = min (n + n) ((3\
-  \ * n) / 2) := sorry\n\n\ntheorem solve_two_equal_piles (n m : Nat) :\n  solve_candies\
-  \ n n m = min (n + n) (min (n + m) ((2 * n + m) / 2)) := sorry\n\n/--\ninfo: 1\n\
-  -/\n#guard_msgs in\n#eval solve_candies 1 1 1\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
-  #eval solve_candies 1 2 1\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval solve_candies\
-  \ 7 4 10\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  You have three piles of candies: red, green and blue candies:  the first pile contains only red candies and there are $r$ candies in it,  the second pile contains only green candies and there are $g$ candies in it,  the third pile contains only blue candies and there are $b$ candies in it. 
+
+  Each day Tanya eats exactly two candies of different colors. She is free to choose the colors of eaten candies: the only restriction that she can't eat two candies of the same color in a day.
+
+  Find the maximal number of days Tanya can eat candies? Each day she needs to eat exactly two candies.
+
+
+  -----Input-----
+
+  The first line contains integer $t$ ($1 \le t \le 1000$) — the number of test cases in the input. Then $t$ test cases follow.
+
+  Each test case is given as a separate line of the input. It contains three integers $r$, $g$ and $b$ ($1 \le r, g, b \le 10^8$) — the number of red, green and blue candies, respectively.
+
+
+  -----Output-----
+
+  Print $t$ integers: the $i$-th printed integer is the answer on the $i$-th test case in the input.
+
+
+  -----Example-----
+  Input
+  6
+  1 1 1
+  1 2 1
+  4 1 1
+  7 4 10
+  8 1 4
+  8 2 8
+
+  Output
+  1
+  2
+  2
+  10
+  5
+  9
+
+
+
+  -----Note-----
+
+  In the first example, Tanya can eat candies for one day only. She can eat any pair of candies this day because all of them have different colors.
+
+  In the second example, Tanya can eat candies for two days. For example, she can eat red and green candies on the first day, and green and blue candies on the second day.
+
+  In the third example, Tanya can eat candies for two days. For example, she can eat red and green candies on the first day, and red and blue candies on the second day. Note, that two red candies will remain uneaten.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_candies (r g b : Nat) : Nat := sorry
+
+  theorem solve_candies_non_negative (r g b : Nat) : 
+    solve_candies r g b ≥ 0 := sorry
+vc-theorems: |
+  theorem solve_candies_bounded_by_pairs (r g b : Nat) :
+    solve_candies r g b ≤ r + g ∧ 
+    solve_candies r g b ≤ r + b ∧
+    solve_candies r g b ≤ g + b := sorry
+
+
+  theorem solve_candies_bounded_by_half_total (r g b : Nat) :
+    solve_candies r g b ≤ (r + g + b) / 2 := sorry 
+
+
+  theorem solve_candies_returns_nat (r g b : Nat) :
+    solve_candies r g b = (solve_candies r g b : Nat) := sorry
+
+
+  theorem solve_equal_piles (n : Nat) :
+    solve_candies n n n = min (n + n) ((3 * n) / 2) := sorry
+
+
+  theorem solve_two_equal_piles (n m : Nat) :
+    solve_candies n n m = min (n + n) (min (n + m) ((2 * n + m) / 2)) := sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_candies 1 1 1
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve_candies 1 2 1
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval solve_candies 7 4 10
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible

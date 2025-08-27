@@ -1,17 +1,61 @@
-"vc-description": "Implement a function to calculate the sum of the numerical values\
-  \ in a nested list. For example :\n\n```python\nsum_nested([1, [2, [3, [4]]]]) ->\
-  \ 10\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef sumNested : List (List Int) → Int\n\
-  \  | _ => sorry\n\n\ndef flatten : List (List Int) → List Int\n  | _ => sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def listSum : List Int → Int\n  | [] => 0\n  | h :: t => h + listSum\
-  \ t\n\n/-- Sum of nested lists equals the sum of flattened list -/"
-"vc-theorems": "theorem sum_nested_equals_flatten_sum (l : List (List Int)) :\n  sumNested\
-  \ l = listSum (flatten l) := by\n  sorry\n\n/-- Sum of empty nested lists is zero\
-  \ -/\n\ntheorem sum_nested_empty_lists (l : List (List Int)) (h : ∀ x ∈ l, x = [])\
-  \ :\n  sumNested l = 0 := by\n  sorry\n\n/-- Sum of singleton list equals its element\
-  \ -/\n\ntheorem sum_nested_singleton (n : Int) :\n  sumNested [[n]] = n := by\n\
-  \  sorry\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval sum_nested [1, [2, [3, [4]]]]\n\
-  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval sum_nested [[[], []]]\n\n/--\ninfo: 8\n\
-  -/\n#guard_msgs in\n#eval sum_nested [1, [1], [1, [1]], [1, [1], [1, [1]]]]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Implement a function to calculate the sum of the numerical values in a nested list. For example :
+
+  ```python
+  sum_nested([1, [2, [3, [4]]]]) -> 10
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def sumNested : List (List Int) → Int
+    | _ => sorry
+
+
+  def flatten : List (List Int) → List Int
+    | _ => sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def listSum : List Int → Int
+    | [] => 0
+    | h :: t => h + listSum t
+
+  /-- Sum of nested lists equals the sum of flattened list -/
+vc-theorems: |
+  theorem sum_nested_equals_flatten_sum (l : List (List Int)) :
+    sumNested l = listSum (flatten l) := by
+    sorry
+
+  /-- Sum of empty nested lists is zero -/
+
+  theorem sum_nested_empty_lists (l : List (List Int)) (h : ∀ x ∈ l, x = []) :
+    sumNested l = 0 := by
+    sorry
+
+  /-- Sum of singleton list equals its element -/
+
+  theorem sum_nested_singleton (n : Int) :
+    sumNested [[n]] = n := by
+    sorry
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval sum_nested [1, [2, [3, [4]]]]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval sum_nested [[[], []]]
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval sum_nested [1, [1], [1, [1]], [1, [1], [1, [1]]]]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

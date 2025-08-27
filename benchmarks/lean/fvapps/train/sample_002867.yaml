@@ -1,54 +1,153 @@
-"vc-description": "Given a credit card number we can determine who the issuer/vendor\
-  \ is with a few basic knowns.\n\n```if:python\nComplete the function `get_issuer()`\
-  \ that will use the values shown below to determine the card issuer for a given\
-  \ card number. If the number cannot be matched then the function should return the\
-  \ string `Unknown`.\n```\n```if-not:python\nComplete the function `getIssuer()`\
-  \ that will use the values shown below to determine the card issuer for a given\
-  \ card number. If the number cannot be matched then the function should return the\
-  \ string `Unknown`.\n```\n```if:typescript\nWhere `Issuer` is defined with the following\
-  \ enum type.\n~~~typescript\nenum Issuer {\n  VISA = 'VISA',\n  AMEX = 'AMEX',\n\
-  \  Mastercard = 'Mastercard',\n  Discover = 'Discover',\n  Unknown = 'Unknown',\n\
-  }\n~~~\n```\n\n```markdown\n| Card Type  | Begins With          | Number Length\
-  \ |\n|------------|----------------------|---------------|\n| AMEX       | 34 or\
-  \ 37             | 15            |\n| Discover   | 6011                 | 16   \
-  \         |\n| Mastercard | 51, 52, 53, 54 or 55 | 16            |\n| VISA     \
-  \  | 4                    | 13 or 16      |\n```\n\n```if:c,cpp\n**C/C++ note:**\
-  \ The return value in C is not freed.\n```\n\n## Examples\n\n```if-not:python\n\
-  ~~~js\ngetIssuer(4111111111111111) == \"VISA\"\ngetIssuer(4111111111111) == \"VISA\"\
-  \ngetIssuer(4012888888881881) == \"VISA\"\ngetIssuer(378282246310005) == \"AMEX\"\
-  \ngetIssuer(6011111111111117) == \"Discover\"\ngetIssuer(5105105105105100) == \"\
-  Mastercard\"\ngetIssuer(5105105105105106) == \"Mastercard\"\ngetIssuer(9111111111111111)\
-  \ == \"Unknown\"\n~~~\n```\n```if:python\n~~~py\nget_issuer(4111111111111111) ==\
-  \ \"VISA\"\nget_issuer(4111111111111) == \"VISA\"\nget_issuer(4012888888881881)\
-  \ == \"VISA\"\nget_issuer(378282246310005) == \"AMEX\"\nget_issuer(6011111111111117)\
-  \ == \"Discover\"\nget_issuer(5105105105105100) == \"Mastercard\"\nget_issuer(5105105105105106)\
-  \ == \"Mastercard\"\nget_issuer(9111111111111111) == \"Unknown\"\n~~~\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef get_issuer (number : Nat) : String\
-  \ := sorry\n\ninductive CardIssuer where\n  | AMEX : CardIssuer\n  | Discover :\
-  \ CardIssuer\n  | Mastercard : CardIssuer\n  | VISA : CardIssuer\n  | Unknown :\
-  \ CardIssuer\nderiving BEq\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def CardIssuer.toString : CardIssuer → String\n  | AMEX => \"AMEX\"\
-  \n  | Discover => \"Discover\"\n  | Mastercard => \"Mastercard\"\n  | VISA => \"\
-  VISA\"\n  | Unknown => \"Unknown\"\n"
-"vc-theorems": "theorem issuer_is_valid (n : Nat) :\n  let result := get_issuer n\n\
-  \  result = \"AMEX\" ∨ result = \"Discover\" ∨ result = \"Mastercard\" ∨ result\
-  \ = \"VISA\" ∨ result = \"Unknown\" := sorry\n\n\ntheorem amex_rules (n : Nat) :\n\
-  \  let digits := n.repr\n  (digits.take 2 = \"34\" ∨ digits.take 2 = \"37\") → get_issuer\
-  \ n = \"AMEX\" ∧\n  (digits.take 2 = \"35\" ∨ digits.take 2 = \"36\") → get_issuer\
-  \ n = \"Unknown\" := sorry\n\n\ntheorem visa_length_rules (n : Nat) :\n  let digits\
-  \ := n.repr\n  (digits.get! 0 = '4' ∧ (digits.length = 13 ∨ digits.length = 16))\
-  \ → \n    get_issuer n = \"VISA\" ∧\n  (digits.get! 0 = '4' ∧ ¬(digits.length =\
-  \ 13 ∨ digits.length = 16)) →\n    get_issuer n = \"Unknown\" := sorry\n\n\ntheorem\
-  \ mastercard_rules (n : Nat) :\n  let digits := n.repr\n  (digits.take 2 = \"51\"\
-  \ ∨ digits.take 2 = \"52\" ∨ digits.take 2 = \"53\" ∨ digits.take 2 = \"54\" ∨ digits.take\
-  \ 2 = \"55\") →\n  digits.length = 16 →\n  get_issuer n = \"Mastercard\" := sorry\n\
-  \n\ntheorem discover_rules (n : Nat) :\n  let digits := n.repr\n  digits.startsWith\
-  \ \"6011\" ∧ digits.length = 16 → \n    get_issuer n = \"Discover\" := sorry\n\n\
-  /--\ninfo: 'VISA'\n-/\n#guard_msgs in\n#eval get_issuer 4111111111111111\n\n/--\n\
-  info: 'VISA'\n-/\n#guard_msgs in\n#eval get_issuer 4111111111111\n\n/--\ninfo: 'AMEX'\n\
-  -/\n#guard_msgs in\n#eval get_issuer 378282246310005\n\n/--\ninfo: 'Mastercard'\n\
-  -/\n#guard_msgs in\n#eval get_issuer 5105105105105100\n\n/--\ninfo: 'Discover'\n\
-  -/\n#guard_msgs in\n#eval get_issuer 6011111111111117\n\n/--\ninfo: 'Unknown'\n\
-  -/\n#guard_msgs in\n#eval get_issuer 9111111111111111\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given a credit card number we can determine who the issuer/vendor is with a few basic knowns.
+
+  ```if:python
+  Complete the function `get_issuer()` that will use the values shown below to determine the card issuer for a given card number. If the number cannot be matched then the function should return the string `Unknown`.
+  ```
+  ```if-not:python
+  Complete the function `getIssuer()` that will use the values shown below to determine the card issuer for a given card number. If the number cannot be matched then the function should return the string `Unknown`.
+  ```
+  ```if:typescript
+  Where `Issuer` is defined with the following enum type.
+  ~~~typescript
+  enum Issuer {
+    VISA = 'VISA',
+    AMEX = 'AMEX',
+    Mastercard = 'Mastercard',
+    Discover = 'Discover',
+    Unknown = 'Unknown',
+  }
+  ~~~
+  ```
+
+  ```markdown
+  | Card Type  | Begins With          | Number Length |
+  |------------|----------------------|---------------|
+  | AMEX       | 34 or 37             | 15            |
+  | Discover   | 6011                 | 16            |
+  | Mastercard | 51, 52, 53, 54 or 55 | 16            |
+  | VISA       | 4                    | 13 or 16      |
+  ```
+
+  ```if:c,cpp
+  **C/C++ note:** The return value in C is not freed.
+  ```
+
+  ## Examples
+
+  ```if-not:python
+  ~~~js
+  getIssuer(4111111111111111) == "VISA"
+  getIssuer(4111111111111) == "VISA"
+  getIssuer(4012888888881881) == "VISA"
+  getIssuer(378282246310005) == "AMEX"
+  getIssuer(6011111111111117) == "Discover"
+  getIssuer(5105105105105100) == "Mastercard"
+  getIssuer(5105105105105106) == "Mastercard"
+  getIssuer(9111111111111111) == "Unknown"
+  ~~~
+  ```
+  ```if:python
+  ~~~py
+  get_issuer(4111111111111111) == "VISA"
+  get_issuer(4111111111111) == "VISA"
+  get_issuer(4012888888881881) == "VISA"
+  get_issuer(378282246310005) == "AMEX"
+  get_issuer(6011111111111117) == "Discover"
+  get_issuer(5105105105105100) == "Mastercard"
+  get_issuer(5105105105105106) == "Mastercard"
+  get_issuer(9111111111111111) == "Unknown"
+  ~~~
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def get_issuer (number : Nat) : String := sorry
+
+  inductive CardIssuer where
+    | AMEX : CardIssuer
+    | Discover : CardIssuer
+    | Mastercard : CardIssuer
+    | VISA : CardIssuer
+    | Unknown : CardIssuer
+  deriving BEq
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def CardIssuer.toString : CardIssuer → String
+    | AMEX => "AMEX"
+    | Discover => "Discover"
+    | Mastercard => "Mastercard"
+    | VISA => "VISA"
+    | Unknown => "Unknown"
+vc-theorems: |
+  theorem issuer_is_valid (n : Nat) :
+    let result := get_issuer n
+    result = "AMEX" ∨ result = "Discover" ∨ result = "Mastercard" ∨ result = "VISA" ∨ result = "Unknown" := sorry
+
+
+  theorem amex_rules (n : Nat) :
+    let digits := n.repr
+    (digits.take 2 = "34" ∨ digits.take 2 = "37") → get_issuer n = "AMEX" ∧
+    (digits.take 2 = "35" ∨ digits.take 2 = "36") → get_issuer n = "Unknown" := sorry
+
+
+  theorem visa_length_rules (n : Nat) :
+    let digits := n.repr
+    (digits.get! 0 = '4' ∧ (digits.length = 13 ∨ digits.length = 16)) → 
+      get_issuer n = "VISA" ∧
+    (digits.get! 0 = '4' ∧ ¬(digits.length = 13 ∨ digits.length = 16)) →
+      get_issuer n = "Unknown" := sorry
+
+
+  theorem mastercard_rules (n : Nat) :
+    let digits := n.repr
+    (digits.take 2 = "51" ∨ digits.take 2 = "52" ∨ digits.take 2 = "53" ∨ digits.take 2 = "54" ∨ digits.take 2 = "55") →
+    digits.length = 16 →
+    get_issuer n = "Mastercard" := sorry
+
+
+  theorem discover_rules (n : Nat) :
+    let digits := n.repr
+    digits.startsWith "6011" ∧ digits.length = 16 → 
+      get_issuer n = "Discover" := sorry
+
+  /--
+  info: 'VISA'
+  -/
+  #guard_msgs in
+  #eval get_issuer 4111111111111111
+
+  /--
+  info: 'VISA'
+  -/
+  #guard_msgs in
+  #eval get_issuer 4111111111111
+
+  /--
+  info: 'AMEX'
+  -/
+  #guard_msgs in
+  #eval get_issuer 378282246310005
+
+  /--
+  info: 'Mastercard'
+  -/
+  #guard_msgs in
+  #eval get_issuer 5105105105105100
+
+  /--
+  info: 'Discover'
+  -/
+  #guard_msgs in
+  #eval get_issuer 6011111111111117
+
+  /--
+  info: 'Unknown'
+  -/
+  #guard_msgs in
+  #eval get_issuer 9111111111111111
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

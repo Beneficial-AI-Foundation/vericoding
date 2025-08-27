@@ -1,28 +1,85 @@
-"vc-description": "# Task\n You are the manager of the famous rescue team: The Knights.\
-  \ Your task is to assign your knights to a rescue missions on an infinite 2D-plane.\n\
-  \n Your knights can move only by `n-knight` jumps. \n \n For example, if a knight\
-  \ has n = 2, they can only move exactly as a knight on a chess board. \n \n If n\
-  \ = 3, they can move from (0, 0) to one of the following 8 points:\n\n `(3, 1) (3,\
-  \ -1), ( -3, 1), (-3, -1), (1, 3), (1, -3), (-1, 3) or (-1, -3).`\n\n You are given\
-  \ an array containing the `n`s of all of your knights `n-knight` jumps, and the\
-  \ coordinates (`x`, `y`) of a civilian who need your squad's help.\n\n Your head\
-  \ quarter is located at (0, 0). Your must determine if `at least one` of your knight\
-  \ can reach that point `(x, y)`.\n\n# Input/Output\n\n\n - `[input]` integer array\
-  \ `N`\n\n  The ways your knights move. \n  \n  `1 <= N.length <=20`\n\n\n - `[input]`\
-  \ integer `x`\n\n  The x-coordinate of the civilian\n\n\n - `[input]` integer `y`\n\
-  \n  The y-coordinate of the civilian\n\n\n - `[output]` a boolean value\n\n `true`\
-  \ if one of your knights can reach point (x, y), `false` otherwise."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def knight_rescue (N : List Nat) (x y : Nat) : Bool := sorry\n\n\
-  theorem knight_rescue_same_parity (N : List Nat) (x y : Nat) (h : (x - y) % 2 =\
-  \ 0) :\n  knight_rescue N x y = true := sorry\n"
-"vc-theorems": "theorem knight_rescue_has_even (N : List Nat) (x y : Nat) \n  (h :\
-  \ ∃ n ∈ N, n % 2 = 0) :\n  knight_rescue N x y = true := sorry\n\n\ntheorem knight_rescue_odd_diff_parity\
-  \ (N : List Nat) (x y : Nat)\n  (h1 : (x - y) % 2 = 1)\n  (h2 : ∀ n ∈ N, n % 2 =\
-  \ 1) :\n  knight_rescue N x y = false := sorry\n\n\ntheorem knight_rescue_same_position\
-  \ (N : List Nat) (x : Nat) \n  (h : N.length > 0) :\n  knight_rescue N x x = true\
-  \ := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval knight_rescue [2] 2 1\n\
-  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval knight_rescue [1] 10 10\n\n/--\ninfo:\
-  \ False\n-/\n#guard_msgs in\n#eval knight_rescue [1] 1 0\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  # Task
+   You are the manager of the famous rescue team: The Knights. Your task is to assign your knights to a rescue missions on an infinite 2D-plane.
+
+   Your knights can move only by `n-knight` jumps. 
+   
+   For example, if a knight has n = 2, they can only move exactly as a knight on a chess board. 
+   
+   If n = 3, they can move from (0, 0) to one of the following 8 points:
+
+   `(3, 1) (3, -1), ( -3, 1), (-3, -1), (1, 3), (1, -3), (-1, 3) or (-1, -3).`
+
+   You are given an array containing the `n`s of all of your knights `n-knight` jumps, and the coordinates (`x`, `y`) of a civilian who need your squad's help.
+
+   Your head quarter is located at (0, 0). Your must determine if `at least one` of your knight can reach that point `(x, y)`.
+
+  # Input/Output
+
+
+   - `[input]` integer array `N`
+
+    The ways your knights move. 
+    
+    `1 <= N.length <=20`
+
+
+   - `[input]` integer `x`
+
+    The x-coordinate of the civilian
+
+
+   - `[input]` integer `y`
+
+    The y-coordinate of the civilian
+
+
+   - `[output]` a boolean value
+
+   `true` if one of your knights can reach point (x, y), `false` otherwise.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def knight_rescue (N : List Nat) (x y : Nat) : Bool := sorry
+
+  theorem knight_rescue_same_parity (N : List Nat) (x y : Nat) (h : (x - y) % 2 = 0) :
+    knight_rescue N x y = true := sorry
+vc-theorems: |
+  theorem knight_rescue_has_even (N : List Nat) (x y : Nat) 
+    (h : ∃ n ∈ N, n % 2 = 0) :
+    knight_rescue N x y = true := sorry
+
+
+  theorem knight_rescue_odd_diff_parity (N : List Nat) (x y : Nat)
+    (h1 : (x - y) % 2 = 1)
+    (h2 : ∀ n ∈ N, n % 2 = 1) :
+    knight_rescue N x y = false := sorry
+
+
+  theorem knight_rescue_same_position (N : List Nat) (x : Nat) 
+    (h : N.length > 0) :
+    knight_rescue N x x = true := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval knight_rescue [2] 2 1
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval knight_rescue [1] 10 10
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval knight_rescue [1] 1 0
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,38 +1,86 @@
-"vc-description": "The accounts of the \"Fat to Fit Club (FFC)\" association are supervised\
-  \ by John as a volunteered accountant.\nThe association is funded through financial\
-  \ donations from generous benefactors. John has a list of\nthe first `n` donations:\
-  \ `[14, 30, 5, 7, 9, 11, 15]`\nHe wants to know how much the next benefactor should\
-  \ give to the association so that the \naverage of the first `n + 1` donations should\
-  \ reach an average of `30`.\nAfter doing the math he found `149`. He thinks that\
-  \ he made a mistake.\nCould you help him?\n\nif `dons = [14, 30, 5, 7, 9, 11, 15]`\
-  \ then `new_avg(dons, 30) --> 149`\n\nThe function `new_avg(arr, navg)` should return\
-  \ the expected donation\n(rounded up to the next integer) that will permit to reach\
-  \ the average `navg`. \n\nShould the last donation be a non positive number `(<=\
-  \ 0)` John wants us to throw (or raise) an error or\n\n- return Nothing in Haskell\n\
-  - return None in F#, Ocaml, Scala\n- return `-1` in C, Fortran,  Nim, PowerShell,\
-  \ Go, Prolog\n- echo `ERROR` in Shell\n- raise-argument-error in Racket\n\nso that\
-  \ he clearly sees that his expectations are not great enough.\n\nNotes: \n\n- all\
-  \ donations and `navg` are numbers (integers or floats), `arr` can be empty.\n-\
-  \ See examples below and \"Test Samples\" to see which return is to be done.\n\n\
-  ```\nnew_avg([14, 30, 5, 7, 9, 11, 15], 92) should return 645\nnew_avg([14, 30,\
-  \ 5, 7, 9, 11, 15], 2) \nshould raise an error (ValueError or invalid_argument or\
-  \ argument-error or DomainError) \nor return `-1` or ERROR or Nothing or None depending\
-  \ on the language.\n```"
-"vc-preamble": "import Imports.AllImports\n\ndef new_avg (donations : List Int) (targetAvg\
-  \ : Int) : Option Int :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def list_sum (l : List Int) : Int :=\n  sorry\n"
-"vc-theorems": "theorem new_avg_type_and_positive (donations : List Int) (targetAvg\
-  \ : Int) :\n  donations ≠ [] →\n  ∀ r : Int, new_avg donations targetAvg = some\
-  \ r →\n  r > 0 := sorry\n\n\ntheorem new_avg_achieves_target (donations : List Int)\
-  \ (targetAvg : Int) :\n  donations ≠ [] →\n  ∀ r : Int, new_avg donations targetAvg\
-  \ = some r →\n  ((list_sum donations + r) / (donations.length + 1) - targetAvg).natAbs\
-  \ < 1 := sorry \n\n\ntheorem new_avg_none_when_negative (donations : List Int) (targetAvg\
-  \ : Int) :\n  donations ≠ [] →\n  (donations.length + 1) * targetAvg - list_sum\
-  \ donations ≤ 0 →\n  new_avg donations targetAvg = none := sorry\n\n\ntheorem new_avg_positive_large_target\
-  \ (donations : List Int) (maxDonation : Int) :\n  donations ≠ [] →\n  (∀ d ∈ donations,\
-  \ d ≥ 0 ∧ d ≤ maxDonation) →\n  let targetAvg := maxDonation + 100\n  ∀ r : Int,\
-  \ new_avg donations targetAvg = some r →\n  r > 0 := sorry\n\n/--\ninfo: 149\n-/\n\
-  #guard_msgs in\n#eval new_avg [14, 30, 5, 7, 9, 11, 15] 30\n\n/--\ninfo: 645\n-/\n\
-  #guard_msgs in\n#eval new_avg [14, 30, 5, 7, 9, 11, 15] 92\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  The accounts of the "Fat to Fit Club (FFC)" association are supervised by John as a volunteered accountant.
+  The association is funded through financial donations from generous benefactors. John has a list of
+  the first `n` donations: `[14, 30, 5, 7, 9, 11, 15]`
+  He wants to know how much the next benefactor should give to the association so that the 
+  average of the first `n + 1` donations should reach an average of `30`.
+  After doing the math he found `149`. He thinks that he made a mistake.
+  Could you help him?
+
+  if `dons = [14, 30, 5, 7, 9, 11, 15]` then `new_avg(dons, 30) --> 149`
+
+  The function `new_avg(arr, navg)` should return the expected donation
+  (rounded up to the next integer) that will permit to reach the average `navg`. 
+
+  Should the last donation be a non positive number `(<= 0)` John wants us to throw (or raise) an error or
+
+  - return Nothing in Haskell
+  - return None in F#, Ocaml, Scala
+  - return `-1` in C, Fortran,  Nim, PowerShell, Go, Prolog
+  - echo `ERROR` in Shell
+  - raise-argument-error in Racket
+
+  so that he clearly sees that his expectations are not great enough.
+
+  Notes: 
+
+  - all donations and `navg` are numbers (integers or floats), `arr` can be empty.
+  - See examples below and "Test Samples" to see which return is to be done.
+
+  ```
+  new_avg([14, 30, 5, 7, 9, 11, 15], 92) should return 645
+  new_avg([14, 30, 5, 7, 9, 11, 15], 2) 
+  should raise an error (ValueError or invalid_argument or argument-error or DomainError) 
+  or return `-1` or ERROR or Nothing or None depending on the language.
+  ```
+vc-preamble: |
+  import Imports.AllImports
+
+  def new_avg (donations : List Int) (targetAvg : Int) : Option Int :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def list_sum (l : List Int) : Int :=
+    sorry
+vc-theorems: |
+  theorem new_avg_type_and_positive (donations : List Int) (targetAvg : Int) :
+    donations ≠ [] →
+    ∀ r : Int, new_avg donations targetAvg = some r →
+    r > 0 := sorry
+
+
+  theorem new_avg_achieves_target (donations : List Int) (targetAvg : Int) :
+    donations ≠ [] →
+    ∀ r : Int, new_avg donations targetAvg = some r →
+    ((list_sum donations + r) / (donations.length + 1) - targetAvg).natAbs < 1 := sorry 
+
+
+  theorem new_avg_none_when_negative (donations : List Int) (targetAvg : Int) :
+    donations ≠ [] →
+    (donations.length + 1) * targetAvg - list_sum donations ≤ 0 →
+    new_avg donations targetAvg = none := sorry
+
+
+  theorem new_avg_positive_large_target (donations : List Int) (maxDonation : Int) :
+    donations ≠ [] →
+    (∀ d ∈ donations, d ≥ 0 ∧ d ≤ maxDonation) →
+    let targetAvg := maxDonation + 100
+    ∀ r : Int, new_avg donations targetAvg = some r →
+    r > 0 := sorry
+
+  /--
+  info: 149
+  -/
+  #guard_msgs in
+  #eval new_avg [14, 30, 5, 7, 9, 11, 15] 30
+
+  /--
+  info: 645
+  -/
+  #guard_msgs in
+  #eval new_avg [14, 30, 5, 7, 9, 11, 15] 92
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

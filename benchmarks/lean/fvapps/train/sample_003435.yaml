@@ -1,19 +1,62 @@
-"vc-description": "Write a simple regex to validate a username. Allowed characters\
-  \ are:\n\n- lowercase letters,\n- numbers,\n- underscore\n\nLength should be between\
-  \ 4 and 16 characters (both included)."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def validate_usr (username : String) : Bool := sorry\n\ntheorem\
-  \ valid_username_accepted \n  (username : String)\n  (h1 : username.length ≥ 4)\n\
-  \  (h2 : username.length ≤ 16) \n  (h3 : ∀ c ∈ username.data, c.isLower ∨ c.isDigit\
-  \ ∨ c = '_') :\n  validate_usr username = true := sorry\n"
-"vc-theorems": "theorem invalid_chars_rejected\n  (username : String)\n  (h1 : username.length\
-  \ ≥ 4)\n  (h2 : username.length ≤ 16)\n  (h3 : ∃ c ∈ username.data, ¬(c.isLower\
-  \ ∨ c.isDigit ∨ c = '_')) :\n  validate_usr username = false := sorry\n\n\ntheorem\
-  \ invalid_length_rejected\n  (username : String)\n  (h : username.length < 4 ∨ username.length\
-  \ > 16) :\n  validate_usr username = false := sorry\n\n\ntheorem edge_cases :\n\
-  \  validate_usr \"\" = false ∧\n  validate_usr \"abc\" = false ∧\n  validate_usr\
-  \ \"aaaaaaaaaaaaaaaaa\" = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
-  #eval validate_usr \"asddsa\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval validate_usr\
-  \ \"____\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval validate_usr \"Hass\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a simple regex to validate a username. Allowed characters are:
+
+  - lowercase letters,
+  - numbers,
+  - underscore
+
+  Length should be between 4 and 16 characters (both included).
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def validate_usr (username : String) : Bool := sorry
+
+  theorem valid_username_accepted 
+    (username : String)
+    (h1 : username.length ≥ 4)
+    (h2 : username.length ≤ 16) 
+    (h3 : ∀ c ∈ username.data, c.isLower ∨ c.isDigit ∨ c = '_') :
+    validate_usr username = true := sorry
+vc-theorems: |
+  theorem invalid_chars_rejected
+    (username : String)
+    (h1 : username.length ≥ 4)
+    (h2 : username.length ≤ 16)
+    (h3 : ∃ c ∈ username.data, ¬(c.isLower ∨ c.isDigit ∨ c = '_')) :
+    validate_usr username = false := sorry
+
+
+  theorem invalid_length_rejected
+    (username : String)
+    (h : username.length < 4 ∨ username.length > 16) :
+    validate_usr username = false := sorry
+
+
+  theorem edge_cases :
+    validate_usr "" = false ∧
+    validate_usr "abc" = false ∧
+    validate_usr "aaaaaaaaaaaaaaaaa" = false := sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval validate_usr "asddsa"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval validate_usr "____"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval validate_usr "Hass"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,29 +1,84 @@
-"vc-description": "You are given an array nums of non-negative integers. nums is considered\
-  \ special if there exists a number x such that there are exactly x numbers in nums\
-  \ that are greater than or equal to x.\nNotice that x does not have to be an element\
-  \ in nums.\nReturn x if the array is special, otherwise, return -1. It can be proven\
-  \ that if nums is special, the value for x is unique.\n \nExample 1:\nInput: nums\
-  \ = [3,5]\nOutput: 2\nExplanation: There are 2 values (3 and 5) that are greater\
-  \ than or equal to 2.\n\nExample 2:\nInput: nums = [0,0]\nOutput: -1\nExplanation:\
-  \ No numbers fit the criteria for x.\nIf x = 0, there should be 0 numbers >= x,\
-  \ but there are 2.\nIf x = 1, there should be 1 number >= x, but there are 0.\n\
-  If x = 2, there should be 2 numbers >= x, but there are 0.\nx cannot be greater\
-  \ since there are only 2 numbers in nums.\n\nExample 3:\nInput: nums = [0,4,3,0,4]\n\
-  Output: 3\nExplanation: There are 3 values that are greater than or equal to 3.\n\
-  \nExample 4:\nInput: nums = [3,6,7,7,0]\nOutput: -1\n\n \nConstraints:\n\n1 <= nums.length\
-  \ <= 100\n0 <= nums[i] <= 1000"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def special_array (nums: List Nat) : Int := sorry\n\ntheorem special_array_basic_properties\
-  \ {nums : List Nat} :\n  let result := special_array nums\n  result ≥ -1 ∧ \n  (result\
-  \ ≠ -1 → result ≤ nums.length) := sorry\n"
-"vc-theorems": "theorem special_array_count_property {nums : List Nat} :\n  let result\
-  \ := special_array nums\n  let resultNat := Int.toNat result\n  result ≠ -1 →\n\
-  \  (nums.filter (fun x => x ≥ resultNat)).length = resultNat := sorry\n\n\ntheorem\
-  \ special_array_all_zeros {nums : List Nat} :\n  (∀ x ∈ nums, x = 0) →\n  nums.length\
-  \ > 0 →\n  special_array nums = -1 := sorry\n\n\ntheorem special_array_all_large\
-  \ {nums : List Nat} :\n  (∀ x ∈ nums, x > nums.length) →\n  nums.length > 0 →\n\
-  \  special_array nums = nums.length := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
-  #eval special_array [3, 5]\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval special_array\
-  \ [0, 0]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval special_array [0, 4, 3, 0, 4]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  You are given an array nums of non-negative integers. nums is considered special if there exists a number x such that there are exactly x numbers in nums that are greater than or equal to x.
+  Notice that x does not have to be an element in nums.
+  Return x if the array is special, otherwise, return -1. It can be proven that if nums is special, the value for x is unique.
+   
+  Example 1:
+  Input: nums = [3,5]
+  Output: 2
+  Explanation: There are 2 values (3 and 5) that are greater than or equal to 2.
+
+  Example 2:
+  Input: nums = [0,0]
+  Output: -1
+  Explanation: No numbers fit the criteria for x.
+  If x = 0, there should be 0 numbers >= x, but there are 2.
+  If x = 1, there should be 1 number >= x, but there are 0.
+  If x = 2, there should be 2 numbers >= x, but there are 0.
+  x cannot be greater since there are only 2 numbers in nums.
+
+  Example 3:
+  Input: nums = [0,4,3,0,4]
+  Output: 3
+  Explanation: There are 3 values that are greater than or equal to 3.
+
+  Example 4:
+  Input: nums = [3,6,7,7,0]
+  Output: -1
+
+   
+  Constraints:
+
+  1 <= nums.length <= 100
+  0 <= nums[i] <= 1000
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def special_array (nums: List Nat) : Int := sorry
+
+  theorem special_array_basic_properties {nums : List Nat} :
+    let result := special_array nums
+    result ≥ -1 ∧ 
+    (result ≠ -1 → result ≤ nums.length) := sorry
+vc-theorems: |
+  theorem special_array_count_property {nums : List Nat} :
+    let result := special_array nums
+    let resultNat := Int.toNat result
+    result ≠ -1 →
+    (nums.filter (fun x => x ≥ resultNat)).length = resultNat := sorry
+
+
+  theorem special_array_all_zeros {nums : List Nat} :
+    (∀ x ∈ nums, x = 0) →
+    nums.length > 0 →
+    special_array nums = -1 := sorry
+
+
+  theorem special_array_all_large {nums : List Nat} :
+    (∀ x ∈ nums, x > nums.length) →
+    nums.length > 0 →
+    special_array nums = nums.length := sorry
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval special_array [3, 5]
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval special_array [0, 0]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval special_array [0, 4, 3, 0, 4]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

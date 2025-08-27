@@ -1,51 +1,119 @@
-"vc-description": "_yet another easy kata!_\n\n_Bored of usual python katas? me too;_\n\
-  \n\n\n## Overview\n\n     As you have guessed from the title of the kata you are\
-  \ going to implement a class that supports ***function overloading***. You might\
-  \ be thinking python doesn't support that thing... Of course python doesn't support\
-  \ that! So you have to implement that missing functionality.\n\n     To achieve\
-  \ that You have to implement the `Meta` class which will be the metaclass of `Overload`\
-  \ class (see sample tests) and class that use `Meta` should work as usual at other\
-  \ things.\n\n\n\n## The Goal\n\n```python\n    \nclass Overload(metaclass=Meta):\n\
-  \    \n    CLS_VAR = 42\n    \n    def __init__(self):\n        self.a = 1\n   \
-  \     self.no = 'This is \"No parameter\" function.'\n        self.single = 'This\
-  \ is \"Single parameter\" function'\n        self.two = 'This is \"Two parameter\"\
-  \ function'\n        self.three = 'This is \"Three parameter\" function'\n\n   \
-  \ def foo(self):\n        return self.no\n\n    def foo(self, x):\n        return\
-  \ self.single + ':' + str(x)\n\n    def foo(self, x, y):\n        return self.two\
-  \ + ':' + str(x) + ',' + str(y)\n\n    def foo(self, x, y, z):\n        return self.three\
-  \ + ':' + str(x) + ',' + str(y) + ',' + str(z)\n    \n    def extra(self):\n   \
-  \     return 'This is extra method.'\n            \n  \n\n  obj = Overload()\n\n\
-  \  Overload.foo=lambda self,a,b,c,d: 'from outside!'\n\n  obj.foo()            #\
-  \ 'This is \"No parameter\" function.'\n  obj.foo(1, 2)        # 'This is \"Two\
-  \ parameter\" function:1,2'\n  obj.foo(1, 2, 3)     # 'This is \"Three parameter\"\
-  \ function:1,2,3'\n  obj.foo(1, 2, 3, 4)  # 'from outside!'\n```\n\n\n\n## Specifications\n\
-  \   \n   * The Overload base class will always be the same as above. It will be\
-  \ regenerated different times in the tests, for testing purpose.\n   * All the other\
-  \ methods will be added and tested **after instanciation** the class like shown\
-  \ in the example above (***Focus on this point; you will need this***).\n   * Only\
-  \ instance methods will be tested, no static or class level methods.\n   * There\
-  \ is no testing for either `*varargs` or `**kwargs`.\n   * Aside from overloading,\
-  \ the class should behave just like usual. Talking here about variable assginment\
-  \ or reassignment, at class or instance level, reassigning a method to a var or\
-  \ the opposite, ...\n   * If there is neither a method (overloaded or not) which\
-  \ satisfies the expected number of arguments nor a property or class level property\
-  \ that cn be found when calling for an attribute, raise an exception of type `AttributeError`\
-  \ (\"just like usual\", as said above...)\n   * Last but not least, different classes\
-  \ must not share overloaded method. Hence:\n   \n```python\nCls1 = generate_Overload()\n\
-  obj = Cls1()\nCls1.foo=lambda self,a,b,c,d: 'from Cls1'\n\nCls2 = generate_Overload()\n\
-  obj2 = Cls2()\nCls2.foo=lambda self,a,b,c,d: 'from Cls2'\n\nobj.foo(1,2,3,4)   \
-  \ # -> 'from Cls1'\nobj2.foo(1,2,3,4)   # -> 'from Cls2'\n\nCls2.foo=lambda self:\
-  \ 'updated'\n\nobj.foo()           # -> 'This is \"No parameter\" function.'\nobj2.foo()\
-  \          # -> 'updated'\n```\n   \n## Notes\n\n   * If there are any flaw in testing\
-  \ then report me.\n   * If you need some hints then ping me in discourse.\n\n_Enjoy!_\n\
-  \n_Thanks to B4B for his contribution._\n\n_I can assure you that this can be done\
-  \ without using any library/modules._"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": ""
-"vc-theorems": "theorem method_isolation_diff \n  (a : α) (b : β) (h : (Meta.foo a)\
-  \ ≠ (Meta.foo b)) :\n  ∃ (f : α → String), \n    Meta.foo a = f a ∧ \n    Meta.foo\
-  \ b = Meta.foo b := by\n  sorry\n\n\ntheorem method_isolation_update\n  (a : α)\
-  \ (b : β) (f : α → String) :\n  ∃ (g : α → String), g a = f a ∧ Meta.foo b = Meta.foo\
-  \ b := by\n  sorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  _yet another easy kata!_
+
+  _Bored of usual python katas? me too;_
+
+
+
+  ## Overview
+
+       As you have guessed from the title of the kata you are going to implement a class that supports ***function overloading***. You might be thinking python doesn't support that thing... Of course python doesn't support that! So you have to implement that missing functionality.
+
+       To achieve that You have to implement the `Meta` class which will be the metaclass of `Overload` class (see sample tests) and class that use `Meta` should work as usual at other things.
+
+
+
+  ## The Goal
+
+  ```python
+      
+  class Overload(metaclass=Meta):
+      
+      CLS_VAR = 42
+      
+      def __init__(self):
+          self.a = 1
+          self.no = 'This is "No parameter" function.'
+          self.single = 'This is "Single parameter" function'
+          self.two = 'This is "Two parameter" function'
+          self.three = 'This is "Three parameter" function'
+
+      def foo(self):
+          return self.no
+
+      def foo(self, x):
+          return self.single + ':' + str(x)
+
+      def foo(self, x, y):
+          return self.two + ':' + str(x) + ',' + str(y)
+
+      def foo(self, x, y, z):
+          return self.three + ':' + str(x) + ',' + str(y) + ',' + str(z)
+      
+      def extra(self):
+          return 'This is extra method.'
+              
+    
+
+    obj = Overload()
+
+    Overload.foo=lambda self,a,b,c,d: 'from outside!'
+
+    obj.foo()            # 'This is "No parameter" function.'
+    obj.foo(1, 2)        # 'This is "Two parameter" function:1,2'
+    obj.foo(1, 2, 3)     # 'This is "Three parameter" function:1,2,3'
+    obj.foo(1, 2, 3, 4)  # 'from outside!'
+  ```
+
+
+
+  ## Specifications
+     
+     * The Overload base class will always be the same as above. It will be regenerated different times in the tests, for testing purpose.
+     * All the other methods will be added and tested **after instanciation** the class like shown in the example above (***Focus on this point; you will need this***).
+     * Only instance methods will be tested, no static or class level methods.
+     * There is no testing for either `*varargs` or `**kwargs`.
+     * Aside from overloading, the class should behave just like usual. Talking here about variable assginment or reassignment, at class or instance level, reassigning a method to a var or the opposite, ...
+     * If there is neither a method (overloaded or not) which satisfies the expected number of arguments nor a property or class level property that cn be found when calling for an attribute, raise an exception of type `AttributeError` ("just like usual", as said above...)
+     * Last but not least, different classes must not share overloaded method. Hence:
+     
+  ```python
+  Cls1 = generate_Overload()
+  obj = Cls1()
+  Cls1.foo=lambda self,a,b,c,d: 'from Cls1'
+
+  Cls2 = generate_Overload()
+  obj2 = Cls2()
+  Cls2.foo=lambda self,a,b,c,d: 'from Cls2'
+
+  obj.foo(1,2,3,4)    # -> 'from Cls1'
+  obj2.foo(1,2,3,4)   # -> 'from Cls2'
+
+  Cls2.foo=lambda self: 'updated'
+
+  obj.foo()           # -> 'This is "No parameter" function.'
+  obj2.foo()          # -> 'updated'
+  ```
+     
+  ## Notes
+
+     * If there are any flaw in testing then report me.
+     * If you need some hints then ping me in discourse.
+
+  _Enjoy!_
+
+  _Thanks to B4B for his contribution._
+
+  _I can assure you that this can be done without using any library/modules._
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+vc-theorems: |-
+  theorem method_isolation_diff 
+    (a : α) (b : β) (h : (Meta.foo a) ≠ (Meta.foo b)) :
+    ∃ (f : α → String), 
+      Meta.foo a = f a ∧ 
+      Meta.foo b = Meta.foo b := by
+    sorry
+
+
+  theorem method_isolation_update
+    (a : α) (b : β) (f : α → String) :
+    ∃ (g : α → String), g a = f a ∧ Meta.foo b = Meta.foo b := by
+    sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

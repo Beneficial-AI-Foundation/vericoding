@@ -1,23 +1,58 @@
-"vc-description": "Two numbers are **relatively prime** if their greatest common factor\
-  \ is 1; in other words: if they cannot be divided by any other common numbers than\
-  \ 1.\n\n`13, 16, 9, 5, and 119` are all relatively prime because they share no common\
-  \ factors, except for 1. To see this, I will show their factorizations:\n```python\n\
-  \ 13: 13\n 16: 2 * 2 * 2 * 2\n  9: 3 * 3\n  5: 5\n119: 17 * 7\n```\n\n  \nComplete\
-  \ the function that takes 2 arguments: a number (`n`), and a list of numbers (`arr`).\
-  \ The function should return a list of all the numbers in `arr` that are relatively\
-  \ prime to `n`. All numbers in will be positive integers.\n\n## Examples\n\n```python\n\
-  relatively_prime(8, [1, 2, 3, 4, 5, 6, 7])\n>> [1, 3, 5, 7]\n\nrelatively_prime(15,\
-  \ [72, 27, 32, 61, 77, 11, 40])\n>> [32, 61, 77, 11]\n\nrelatively_prime(210, [15,\
-  \ 100, 2222222, 6, 4, 12369, 99])\n>> []\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def relativePrime (n : Nat) (arr : List Int) : List Int := sorry\n\
-  \ndef isGCD (a b : Int) : Int := sorry\n"
-"vc-theorems": "theorem relatively_prime_subset (n : Nat) (arr : List Int) (x : Int)\
-  \ :\n  x ∈ relativePrime n arr → x ∈ arr := sorry\n\n\ntheorem relatively_prime_coprime\
-  \ (n : Nat) (arr : List Int) (x : Int) :\n  x ∈ relativePrime n arr → isGCD n x\
-  \ = 1 := sorry\n\n\ntheorem relatively_prime_complete (n : Nat) (arr : List Int)\
-  \ (x : Int) :\n  x ∈ arr → isGCD n x = 1 → x ∈ relativePrime n arr := sorry\n\n\n\
-  theorem relatively_prime_empty (n : Nat) :\n  relativePrime n [] = [] := sorry\n\
-  \n\ntheorem relatively_prime_one (n : Nat) :\n  relativePrime n [1] = [1] := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  Two numbers are **relatively prime** if their greatest common factor is 1; in other words: if they cannot be divided by any other common numbers than 1.
+
+  `13, 16, 9, 5, and 119` are all relatively prime because they share no common factors, except for 1. To see this, I will show their factorizations:
+  ```python
+   13: 13
+   16: 2 * 2 * 2 * 2
+    9: 3 * 3
+    5: 5
+  119: 17 * 7
+  ```
+
+    
+  Complete the function that takes 2 arguments: a number (`n`), and a list of numbers (`arr`). The function should return a list of all the numbers in `arr` that are relatively prime to `n`. All numbers in will be positive integers.
+
+  ## Examples
+
+  ```python
+  relatively_prime(8, [1, 2, 3, 4, 5, 6, 7])
+  >> [1, 3, 5, 7]
+
+  relatively_prime(15, [72, 27, 32, 61, 77, 11, 40])
+  >> [32, 61, 77, 11]
+
+  relatively_prime(210, [15, 100, 2222222, 6, 4, 12369, 99])
+  >> []
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def relativePrime (n : Nat) (arr : List Int) : List Int := sorry
+
+  def isGCD (a b : Int) : Int := sorry
+vc-theorems: |-
+  theorem relatively_prime_subset (n : Nat) (arr : List Int) (x : Int) :
+    x ∈ relativePrime n arr → x ∈ arr := sorry
+
+
+  theorem relatively_prime_coprime (n : Nat) (arr : List Int) (x : Int) :
+    x ∈ relativePrime n arr → isGCD n x = 1 := sorry
+
+
+  theorem relatively_prime_complete (n : Nat) (arr : List Int) (x : Int) :
+    x ∈ arr → isGCD n x = 1 → x ∈ relativePrime n arr := sorry
+
+
+  theorem relatively_prime_empty (n : Nat) :
+    relativePrime n [] = [] := sorry
+
+
+  theorem relatively_prime_one (n : Nat) :
+    relativePrime n [1] = [1] := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

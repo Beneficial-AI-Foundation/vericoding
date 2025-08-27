@@ -1,32 +1,81 @@
-"vc-description": "Given two strings: s1 and s2 with the same size, check if some permutation\
-  \ of string s1 can break some permutation of string s2 or vice-versa (in other words\
-  \ s2 can break s1).\nA string x can break string y (both of size n) if x[i] >= y[i] (in\
-  \ alphabetical order) for all i between 0 and n-1.\n \nExample 1:\nInput: s1 = \"\
-  abc\", s2 = \"xya\"\nOutput: true\nExplanation: \"ayx\" is a permutation of s2=\"\
-  xya\" which can break to string \"abc\" which is a permutation of s1=\"abc\".\n\n\
-  Example 2:\nInput: s1 = \"abe\", s2 = \"acd\"\nOutput: false \nExplanation: All\
-  \ permutations for s1=\"abe\" are: \"abe\", \"aeb\", \"bae\", \"bea\", \"eab\" and\
-  \ \"eba\" and all permutation for s2=\"acd\" are: \"acd\", \"adc\", \"cad\", \"\
-  cda\", \"dac\" and \"dca\". However, there is not any permutation from s1 which\
-  \ can break some permutation from s2 and vice-versa.\n\nExample 3:\nInput: s1 =\
-  \ \"leetcodee\", s2 = \"interview\"\nOutput: true\n\n \nConstraints:\n\ns1.length\
-  \ == n\ns2.length == n\n1 <= n <= 10^5\nAll strings consist of lowercase English\
-  \ letters."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def checkIfCanBreak (s1 s2 : String) : Bool :=\n  sorry\n\n/--\
-  \ If two strings are compared with checkIfCanBreak, they must have same length -/"
-"vc-theorems": "theorem check_if_can_break_same_length (s1 s2 : String) :\n  checkIfCanBreak\
-  \ s1 s2 → String.length s1 = String.length s2 :=\n  sorry\n\n/-- A string can always\
-  \ break itself -/\n\ntheorem check_if_can_break_reflexive (s : String) :\n  checkIfCanBreak\
-  \ s s = true :=\n  sorry\n\n/-- The break relationship is symmetric -/\n\ntheorem\
-  \ check_if_can_break_symmetric (s1 s2 : String) :\n  checkIfCanBreak s1 s2 = checkIfCanBreak\
-  \ s2 s1 :=\n  sorry\n\n/-- A sorted string can always break its unsorted version\
-  \ -/ \n\ntheorem sorted_string_breaks_unsorted (s sorted : String) \n  (h : ∀ i\
-  \ j : String.Pos, i < j → sorted.get i ≤ sorted.get j)\n  (h2 : sorted.length =\
-  \ s.length)\n  (h3 : ∀ c, c ∈ sorted.data ↔ c ∈ s.data) :\n  checkIfCanBreak sorted\
-  \ s = true :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval check_if_can_break\
-  \ \"abc\" \"xya\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval check_if_can_break\
-  \ \"abe\" \"acd\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval check_if_can_break\
-  \ \"leetcodee\" \"interview\"\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  Given two strings: s1 and s2 with the same size, check if some permutation of string s1 can break some permutation of string s2 or vice-versa (in other words s2 can break s1).
+  A string x can break string y (both of size n) if x[i] >= y[i] (in alphabetical order) for all i between 0 and n-1.
+   
+  Example 1:
+  Input: s1 = "abc", s2 = "xya"
+  Output: true
+  Explanation: "ayx" is a permutation of s2="xya" which can break to string "abc" which is a permutation of s1="abc".
+
+  Example 2:
+  Input: s1 = "abe", s2 = "acd"
+  Output: false 
+  Explanation: All permutations for s1="abe" are: "abe", "aeb", "bae", "bea", "eab" and "eba" and all permutation for s2="acd" are: "acd", "adc", "cad", "cda", "dac" and "dca". However, there is not any permutation from s1 which can break some permutation from s2 and vice-versa.
+
+  Example 3:
+  Input: s1 = "leetcodee", s2 = "interview"
+  Output: true
+
+   
+  Constraints:
+
+  s1.length == n
+  s2.length == n
+  1 <= n <= 10^5
+  All strings consist of lowercase English letters.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def checkIfCanBreak (s1 s2 : String) : Bool :=
+    sorry
+
+  /-- If two strings are compared with checkIfCanBreak, they must have same length -/
+vc-theorems: |
+  theorem check_if_can_break_same_length (s1 s2 : String) :
+    checkIfCanBreak s1 s2 → String.length s1 = String.length s2 :=
+    sorry
+
+  /-- A string can always break itself -/
+
+  theorem check_if_can_break_reflexive (s : String) :
+    checkIfCanBreak s s = true :=
+    sorry
+
+  /-- The break relationship is symmetric -/
+
+  theorem check_if_can_break_symmetric (s1 s2 : String) :
+    checkIfCanBreak s1 s2 = checkIfCanBreak s2 s1 :=
+    sorry
+
+  /-- A sorted string can always break its unsorted version -/ 
+
+  theorem sorted_string_breaks_unsorted (s sorted : String) 
+    (h : ∀ i j : String.Pos, i < j → sorted.get i ≤ sorted.get j)
+    (h2 : sorted.length = s.length)
+    (h3 : ∀ c, c ∈ sorted.data ↔ c ∈ s.data) :
+    checkIfCanBreak sorted s = true :=
+    sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval check_if_can_break "abc" "xya"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval check_if_can_break "abe" "acd"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval check_if_can_break "leetcodee" "interview"
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

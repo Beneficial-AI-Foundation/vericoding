@@ -1,25 +1,82 @@
-"vc-description": "Given two strings A and B, find the minimum number of times A has\
-  \ to be repeated such that B is a substring of it. If no such solution, return -1.\n\
-  \n\nFor example, with A = \"abcd\" and B = \"cdabcdab\". \n\n\nReturn 3, because\
-  \ by repeating A three times (“abcdabcdabcd”), B is a substring of it; and B is\
-  \ not a substring of A repeated two times (\"abcdabcd\").\n\n\nNote:\nThe length\
-  \ of A and B will be between 1 and 10000."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def repeatedStringMatch (a b : String) : Int :=\n  sorry\n"
-"vc-theorems": "theorem empty_b_returns_valid_result (a : String)\n  (h : a.length\
-  \ > 0) :\n  repeatedStringMatch a \"\" = 1 :=\n  sorry\n\n\ntheorem result_is_valid_range\
-  \ (a b : String) :\n  let r := repeatedStringMatch a b\n  r = -1 ∨ r > 0 :=\n  sorry\n\
-  \n\ntheorem identical_strings (s : String)\n  (h : s.length > 0) :\n  repeatedStringMatch\
-  \ s s = 1 :=\n  sorry\n\n\ntheorem character_set_property (a b : String)\n  (ha\
-  \ : a.length > 0)\n  (hb : b.length > 0)\n  (h : ¬∀c, c ∈ b.data → c ∈ a.data) :\n\
-  \  repeatedStringMatch a b = -1 :=\n  sorry\n\n\ntheorem concatenated_copies (s\
-  \ : String)\n  (h : s.length > 0) :\n  let n := 3\n  let b := String.join (List.replicate\
-  \ n s)\n  repeatedStringMatch s b ≤ n + 1 :=\n  sorry\n\n\ntheorem periodic_property\
-  \ (s : String) (n : Nat)\n  (h : s.length > 0)\n  (hn : 1 ≤ n ∧ n ≤ 10) :\n  let\
-  \ b := String.join (List.replicate n s)\n  repeatedStringMatch s b ≤ n :=\n  sorry\n\
-  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval repeatedStringMatch \"abcd\" \"cdabcdab\"\
-  \n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval repeatedStringMatch \"abc\" \"xyz\"\
-  \n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval repeatedStringMatch \"abc\" \"abcabc\"\
-  \n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Given two strings A and B, find the minimum number of times A has to be repeated such that B is a substring of it. If no such solution, return -1.
+
+
+  For example, with A = "abcd" and B = "cdabcdab". 
+
+
+  Return 3, because by repeating A three times (“abcdabcdabcd”), B is a substring of it; and B is not a substring of A repeated two times ("abcdabcd").
+
+
+  Note:
+  The length of A and B will be between 1 and 10000.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def repeatedStringMatch (a b : String) : Int :=
+    sorry
+vc-theorems: |
+  theorem empty_b_returns_valid_result (a : String)
+    (h : a.length > 0) :
+    repeatedStringMatch a "" = 1 :=
+    sorry
+
+
+  theorem result_is_valid_range (a b : String) :
+    let r := repeatedStringMatch a b
+    r = -1 ∨ r > 0 :=
+    sorry
+
+
+  theorem identical_strings (s : String)
+    (h : s.length > 0) :
+    repeatedStringMatch s s = 1 :=
+    sorry
+
+
+  theorem character_set_property (a b : String)
+    (ha : a.length > 0)
+    (hb : b.length > 0)
+    (h : ¬∀c, c ∈ b.data → c ∈ a.data) :
+    repeatedStringMatch a b = -1 :=
+    sorry
+
+
+  theorem concatenated_copies (s : String)
+    (h : s.length > 0) :
+    let n := 3
+    let b := String.join (List.replicate n s)
+    repeatedStringMatch s b ≤ n + 1 :=
+    sorry
+
+
+  theorem periodic_property (s : String) (n : Nat)
+    (h : s.length > 0)
+    (hn : 1 ≤ n ∧ n ≤ 10) :
+    let b := String.join (List.replicate n s)
+    repeatedStringMatch s b ≤ n :=
+    sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval repeatedStringMatch "abcd" "cdabcdab"
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval repeatedStringMatch "abc" "xyz"
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval repeatedStringMatch "abc" "abcabc"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

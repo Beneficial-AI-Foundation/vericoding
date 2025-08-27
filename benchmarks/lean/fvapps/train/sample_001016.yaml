@@ -1,48 +1,94 @@
-"vc-description": "Chef bought a huge (effectively infinite) planar island and built\
-  \ $N$ restaurants (numbered $1$ through $N$) on it. For each valid $i$, the Cartesian\
-  \ coordinates of restaurant $i$ are $(X_i, Y_i)$.\nNow, Chef wants to build $N-1$\
-  \ straight narrow roads (line segments) on the island. The roads may have arbitrary\
-  \ lengths; restaurants do not have to lie on the roads. The slope of each road must\
-  \ be $1$ or $-1$, i.e. for any two points $(x_1, y_1)$ and $(x_2, y_2)$ on the same\
-  \ road, $|x_1-x_2| = |y_1-y_2|$ must hold.\nLet's denote the minimum distance Chef\
-  \ has to walk from restaurant $i$ to reach a road by $D_i$. Then, let's denote $a\
-  \ = \\mathrm{max}\\,(D_1, D_2, \\ldots, D_N)$; Chef wants this distance to be minimum\
-  \ possible.\nChef is a busy person, so he decided to give you the job of building\
-  \ the roads. You should find a way to build them that minimises $a$ and compute\
-  \ $a \\cdot \\sqrt{2}$.\n\n-----Input-----\n- The first line of the input contains\
-  \ a single integer $T$ denoting the number of test cases. The description of $T$\
-  \ test cases follows.\n- The first line of each test case contains a single integer\
-  \ $N$.\n- $N$ lines follow. For each valid $i$, the $i$-th of these lines contains\
-  \ two space-separated integers $X_i$ and $Y_i$.\n\n-----Output-----\nFor each test\
-  \ case, print a single line containing one real number — the minimum distance $a$\
-  \ multiplied by $\\sqrt{2}$. Your answer will be considered correct if its absolute\
-  \ or relative error does not exceed $10^{-6}$.\n\n-----Constraints-----\n- $1 \\\
-  le T \\le 100$\n- $2 \\le N \\le 10^4$\n- $|X_i|, |Y_i| \\le 10^9$ for each valid\
-  \ $i$\n\n-----Subtasks-----\nSubtask #1 (10 points):\n- $1 \\le T \\le 10$\n- $2\
-  \ \\le N \\le 5$\n- $|X_i|, |Y_i| \\le 10$ for each valid $i$\n- $a \\cdot \\sqrt{2}$\
-  \ is an integer\nSubtask #2 (90 points): original constraints\n\n-----Example Input-----\n\
-  2\n3\n0 0\n0 1\n0 -1\n3\n0 1\n1 0\n-1 0\n\n-----Example Output-----\n0.5\n0\n\n\
-  -----Explanation-----\nExample case 1: We should build roads described by equations\
-  \ $y-x+0.5 = 0$ and $y-x-0.5 = 0$.\nExample case 2: We should build roads described\
-  \ by equations $y-x-1 = 0$ and $y+x-1 = 0$."
-"vc-preamble": "import Imports.AllImports\n\ndef manhattan_distance (p1 p2 : Point)\
-  \ : Nat :=\n  let dx := (p1.x - p2.x).toNat\n  let dy := (p1.y - p2.y).toNat\n \
-  \ dx + dy\n\n\ndef euclidean_distance (p1 p2 : Point) : Float :=\n  let dx := (p1.x\
-  \ - p2.x).toNat.toFloat\n  let dy := (p1.y - p2.y).toNat.toFloat\n  Float.sqrt (dx\
-  \ * dx + dy * dy)\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def solve_min_distance (n : Nat) (points : List Point) : Float\
-  \ :=\n  sorry\n"
-"vc-theorems": "theorem min_distance_nonnegativity {n : Nat} {points : List Point}\n\
-  \  (h1 : n ≥ 2)\n  (h2 : points.length = n)\n  (h3 : points.Nodup) :\n  solve_min_distance\
-  \ n points ≥ 0 :=\nsorry\n\n\ntheorem min_distance_euclidean_bound {n : Nat} {points\
-  \ : List Point} \n  (h1 : n ≥ 2)\n  (h2 : points.length = n)\n  (h3 : points.Nodup)\
-  \ :\n  ∀ (i j : Fin points.length), i ≠ j →\n  solve_min_distance n points ≤ euclidean_distance\
-  \ (points.get i) (points.get j) / Float.sqrt 2 + 0.000001 :=\nsorry\n\n\ntheorem\
-  \ two_points_special_case {points : List Point}\n  (h1 : points.length = 2)\n  (h2\
-  \ : points.Nodup)\n  (h3 : points.get ⟨0, h1.symm ▸ Nat.zero_lt_succ 1⟩ = ⟨x₁, y₁⟩)\n\
-  \  (h4 : points.get ⟨1, h1.symm ▸ Nat.succ_lt_succ (Nat.zero_lt_succ 0)⟩ = ⟨x₂,\
-  \ y₂⟩)\n  (h5 : x₁ = x₂ ∨ y₁ = y₂) :\n  (solve_min_distance 2 points - (manhattan_distance\
-  \ ⟨x₁, y₁⟩ ⟨x₂, y₂⟩).toFloat / 2) ≤ 0.000001 ∧\n  ((manhattan_distance ⟨x₁, y₁⟩\
-  \ ⟨x₂, y₂⟩).toFloat / 2 - solve_min_distance 2 points) ≤ 0.000001 :=\nsorry"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  Chef bought a huge (effectively infinite) planar island and built $N$ restaurants (numbered $1$ through $N$) on it. For each valid $i$, the Cartesian coordinates of restaurant $i$ are $(X_i, Y_i)$.
+  Now, Chef wants to build $N-1$ straight narrow roads (line segments) on the island. The roads may have arbitrary lengths; restaurants do not have to lie on the roads. The slope of each road must be $1$ or $-1$, i.e. for any two points $(x_1, y_1)$ and $(x_2, y_2)$ on the same road, $|x_1-x_2| = |y_1-y_2|$ must hold.
+  Let's denote the minimum distance Chef has to walk from restaurant $i$ to reach a road by $D_i$. Then, let's denote $a = \mathrm{max}\,(D_1, D_2, \ldots, D_N)$; Chef wants this distance to be minimum possible.
+  Chef is a busy person, so he decided to give you the job of building the roads. You should find a way to build them that minimises $a$ and compute $a \cdot \sqrt{2}$.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains a single integer $N$.
+  - $N$ lines follow. For each valid $i$, the $i$-th of these lines contains two space-separated integers $X_i$ and $Y_i$.
+
+  -----Output-----
+  For each test case, print a single line containing one real number — the minimum distance $a$ multiplied by $\sqrt{2}$. Your answer will be considered correct if its absolute or relative error does not exceed $10^{-6}$.
+
+  -----Constraints-----
+  - $1 \le T \le 100$
+  - $2 \le N \le 10^4$
+  - $|X_i|, |Y_i| \le 10^9$ for each valid $i$
+
+  -----Subtasks-----
+  Subtask #1 (10 points):
+  - $1 \le T \le 10$
+  - $2 \le N \le 5$
+  - $|X_i|, |Y_i| \le 10$ for each valid $i$
+  - $a \cdot \sqrt{2}$ is an integer
+  Subtask #2 (90 points): original constraints
+
+  -----Example Input-----
+  2
+  3
+  0 0
+  0 1
+  0 -1
+  3
+  0 1
+  1 0
+  -1 0
+
+  -----Example Output-----
+  0.5
+  0
+
+  -----Explanation-----
+  Example case 1: We should build roads described by equations $y-x+0.5 = 0$ and $y-x-0.5 = 0$.
+  Example case 2: We should build roads described by equations $y-x-1 = 0$ and $y+x-1 = 0$.
+vc-preamble: |
+  import Imports.AllImports
+
+  def manhattan_distance (p1 p2 : Point) : Nat :=
+    let dx := (p1.x - p2.x).toNat
+    let dy := (p1.y - p2.y).toNat
+    dx + dy
+
+
+  def euclidean_distance (p1 p2 : Point) : Float :=
+    let dx := (p1.x - p2.x).toNat.toFloat
+    let dy := (p1.y - p2.y).toNat.toFloat
+    Float.sqrt (dx * dx + dy * dy)
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def solve_min_distance (n : Nat) (points : List Point) : Float :=
+    sorry
+vc-theorems: |-
+  theorem min_distance_nonnegativity {n : Nat} {points : List Point}
+    (h1 : n ≥ 2)
+    (h2 : points.length = n)
+    (h3 : points.Nodup) :
+    solve_min_distance n points ≥ 0 :=
+  sorry
+
+
+  theorem min_distance_euclidean_bound {n : Nat} {points : List Point} 
+    (h1 : n ≥ 2)
+    (h2 : points.length = n)
+    (h3 : points.Nodup) :
+    ∀ (i j : Fin points.length), i ≠ j →
+    solve_min_distance n points ≤ euclidean_distance (points.get i) (points.get j) / Float.sqrt 2 + 0.000001 :=
+  sorry
+
+
+  theorem two_points_special_case {points : List Point}
+    (h1 : points.length = 2)
+    (h2 : points.Nodup)
+    (h3 : points.get ⟨0, h1.symm ▸ Nat.zero_lt_succ 1⟩ = ⟨x₁, y₁⟩)
+    (h4 : points.get ⟨1, h1.symm ▸ Nat.succ_lt_succ (Nat.zero_lt_succ 0)⟩ = ⟨x₂, y₂⟩)
+    (h5 : x₁ = x₂ ∨ y₁ = y₂) :
+    (solve_min_distance 2 points - (manhattan_distance ⟨x₁, y₁⟩ ⟨x₂, y₂⟩).toFloat / 2) ≤ 0.000001 ∧
+    ((manhattan_distance ⟨x₁, y₁⟩ ⟨x₂, y₂⟩).toFloat / 2 - solve_min_distance 2 points) ≤ 0.000001 :=
+  sorry
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded

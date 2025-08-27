@@ -1,22 +1,74 @@
-"vc-description": "Write a function \n```javascript \ntripledouble(num1,num2)\n```\n\
-  ```python\ntriple_double(num1, num2)\n```\nwhich takes numbers `num1` and `num2`\
-  \ and returns `1` if there is a straight triple of a number at any place in `num1`\
-  \ and also a straight double of the **same** number in `num2`.\n\nIf this isn't\
-  \ the case, return `0`\n\n## Examples\n\n```python\ntriple_double(451999277, 41177722899)\
-  \ == 1\n# num1 has straight triple 999s and num2 has straight double 99s\n\ntriple_double(1222345,\
-  \ 12345) == 0\n# num1 has straight triple 2s but num2 has only a single 2\n\ntriple_double(12345,\
-  \ 12345) == 0\n\ntriple_double(666789, 12345667) == 1\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def triple_double (n1 n2 : Nat) : Nat :=\n  sorry\n"
-"vc-theorems": "theorem triple_double_returns_zero_or_one (n1 n2 : Nat) :\n  triple_double\
-  \ n1 n2 = 0 ∨ triple_double n1 n2 = 1 :=\n  sorry\n\n\ntheorem triple_double_basic_pattern\
-  \ (d : Nat) (h : d > 0 ∧ d ≤ 9) :\n  triple_double (d * 111) (d * 11) = 1 :=\n \
-  \ sorry\n\n\ntheorem triple_double_with_surrounding (d : Nat) (h : d > 0 ∧ d ≤ 9)\
-  \ :\n  triple_double (42000 + d * 111 + 57) (98000 + d * 11 + 32) = 1 :=\n  sorry\n\
-  \n\ntheorem triple_double_no_triple (n1 n2 : Nat) :\n  (∀ d : Nat, 0 ≤ d → d ≤ 9\
-  \ → ¬ ∃ p : Nat, n1 = d * p) →\n  triple_double n1 n2 = 0 :=\n  sorry\n\n/--\ninfo:\
-  \ 1\n-/\n#guard_msgs in\n#eval triple_double 451999277 41177722899\n\n/--\ninfo:\
-  \ 0\n-/\n#guard_msgs in\n#eval triple_double 1222345 12345\n\n/--\ninfo: 1\n-/\n\
-  #guard_msgs in\n#eval triple_double 666789 12345667\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function 
+  ```javascript 
+  tripledouble(num1,num2)
+  ```
+  ```python
+  triple_double(num1, num2)
+  ```
+  which takes numbers `num1` and `num2` and returns `1` if there is a straight triple of a number at any place in `num1` and also a straight double of the **same** number in `num2`.
+
+  If this isn't the case, return `0`
+
+  ## Examples
+
+  ```python
+  triple_double(451999277, 41177722899) == 1
+  # num1 has straight triple 999s and num2 has straight double 99s
+
+  triple_double(1222345, 12345) == 0
+  # num1 has straight triple 2s but num2 has only a single 2
+
+  triple_double(12345, 12345) == 0
+
+  triple_double(666789, 12345667) == 1
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def triple_double (n1 n2 : Nat) : Nat :=
+    sorry
+vc-theorems: |
+  theorem triple_double_returns_zero_or_one (n1 n2 : Nat) :
+    triple_double n1 n2 = 0 ∨ triple_double n1 n2 = 1 :=
+    sorry
+
+
+  theorem triple_double_basic_pattern (d : Nat) (h : d > 0 ∧ d ≤ 9) :
+    triple_double (d * 111) (d * 11) = 1 :=
+    sorry
+
+
+  theorem triple_double_with_surrounding (d : Nat) (h : d > 0 ∧ d ≤ 9) :
+    triple_double (42000 + d * 111 + 57) (98000 + d * 11 + 32) = 1 :=
+    sorry
+
+
+  theorem triple_double_no_triple (n1 n2 : Nat) :
+    (∀ d : Nat, 0 ≤ d → d ≤ 9 → ¬ ∃ p : Nat, n1 = d * p) →
+    triple_double n1 n2 = 0 :=
+    sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval triple_double 451999277 41177722899
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval triple_double 1222345 12345
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval triple_double 666789 12345667
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

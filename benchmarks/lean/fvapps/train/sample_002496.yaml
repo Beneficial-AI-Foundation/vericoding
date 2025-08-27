@@ -1,30 +1,59 @@
-"vc-description": "=====Problem Statement=====\nMr. Anant Asankhya is the manager\
-  \ at the INFINITE hotel. The hotel has an infinite amount of rooms.\n\nOne fine\
-  \ day, a finite number of tourists come to stay at the hotel.\nThe tourists consist\
-  \ of:\n→ A Captain.\n→ An unknown group of families consisting of K members per\
-  \ group where K ≠ 1.\n\nThe Captain was given a separate room, and the rest were\
-  \ given one room per group.\n\nMr. Anant has an unordered list of randomly arranged\
-  \ room entries. The list consists of the room numbers for all of the tourists. The\
-  \ room numbers will appear K times per group except for the Captain's room.\n\n\
-  Mr. Anant needs you to help him find the Captain's room number.\nThe total number\
-  \ of tourists or the total number of groups of families is not known to you.\nYou\
-  \ only know the value of K and the room number list.\n\n=====Input Format=====\n\
-  The first consists of an integer, K, the size of each group.\nThe second line contains\
-  \ the unordered elements of the room number list.\n\n=====Constraints=====\n1<K<1000\n\
-  \n=====Output Format=====\nOutput the Captain's room number."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def find_captains_room (k : Nat) (rooms : List Nat) : Nat := sorry\n\
-  \n-- Main property theorems"
-"vc-theorems": "theorem find_captains_room_properties \n  (k : Nat) (regular_rooms\
-  \ : List Nat) (captain_room : Nat)\n  (h1 : k ≥ 2) (h2 : k ≤ 20)\n  (h3 : ∀ r ∈\
-  \ regular_rooms, r ≥ 1 ∧ r ≤ 50)\n  (h4 : captain_room ≥ 51) (h5 : captain_room\
-  \ ≤ 100)\n  (h6 : captain_room ∉ regular_rooms) :\n  let room_numbers := (regular_rooms.map\
-  \ (λ r => List.replicate k r)).join ++ [captain_room] \n  have result := find_captains_room\
-  \ k room_numbers\n  -- Main assertions\n  find_captains_room k room_numbers = captain_room\
-  \ ∧ \n  (room_numbers.filter (λ x => x = find_captains_room k room_numbers)).length\
-  \ = 1 ∧\n  -- k copies of regular rooms\n  ∀ room ∈ regular_rooms, \n    (room_numbers.filter\
-  \ (λ x => x = room)).length = k := sorry\n\n-- Minimal case theorem\n\ntheorem find_captains_room_minimal_case\n\
-  \  (k : Nat) (h1 : k ≥ 2) (h2 : k ≤ 20) :\n  find_captains_room k (List.replicate\
-  \ k 1 ++ [2]) = 2 := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  =====Problem Statement=====
+  Mr. Anant Asankhya is the manager at the INFINITE hotel. The hotel has an infinite amount of rooms.
+
+  One fine day, a finite number of tourists come to stay at the hotel.
+  The tourists consist of:
+  → A Captain.
+  → An unknown group of families consisting of K members per group where K ≠ 1.
+
+  The Captain was given a separate room, and the rest were given one room per group.
+
+  Mr. Anant has an unordered list of randomly arranged room entries. The list consists of the room numbers for all of the tourists. The room numbers will appear K times per group except for the Captain's room.
+
+  Mr. Anant needs you to help him find the Captain's room number.
+  The total number of tourists or the total number of groups of families is not known to you.
+  You only know the value of K and the room number list.
+
+  =====Input Format=====
+  The first consists of an integer, K, the size of each group.
+  The second line contains the unordered elements of the room number list.
+
+  =====Constraints=====
+  1<K<1000
+
+  =====Output Format=====
+  Output the Captain's room number.
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def find_captains_room (k : Nat) (rooms : List Nat) : Nat := sorry
+
+  -- Main property theorems
+vc-theorems: |-
+  theorem find_captains_room_properties 
+    (k : Nat) (regular_rooms : List Nat) (captain_room : Nat)
+    (h1 : k ≥ 2) (h2 : k ≤ 20)
+    (h3 : ∀ r ∈ regular_rooms, r ≥ 1 ∧ r ≤ 50)
+    (h4 : captain_room ≥ 51) (h5 : captain_room ≤ 100)
+    (h6 : captain_room ∉ regular_rooms) :
+    let room_numbers := (regular_rooms.map (λ r => List.replicate k r)).join ++ [captain_room] 
+    have result := find_captains_room k room_numbers
+    -- Main assertions
+    find_captains_room k room_numbers = captain_room ∧ 
+    (room_numbers.filter (λ x => x = find_captains_room k room_numbers)).length = 1 ∧
+    -- k copies of regular rooms
+    ∀ room ∈ regular_rooms, 
+      (room_numbers.filter (λ x => x = room)).length = k := sorry
+
+  -- Minimal case theorem
+
+  theorem find_captains_room_minimal_case
+    (k : Nat) (h1 : k ≥ 2) (h2 : k ≤ 20) :
+    find_captains_room k (List.replicate k 1 ++ [2]) = 2 := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

@@ -1,26 +1,80 @@
-"vc-description": "# Task\n\nGiven an array of integers, sum consecutive even numbers\
-  \ and consecutive odd numbers. Repeat the process while it can be done and return\
-  \ the length of the final array.\n\n# Example\n\nFor `arr = [2, 1, 2, 2, 6, 5, 0,\
-  \ 2, 0, 5, 5, 7, 7, 4, 3, 3, 9]`\n \nThe result should be `6`.\n\n```\n[2, 1, 2,\
-  \ 2, 6, 5, 0, 2, 0, 5, 5, 7, 7, 4, 3, 3, 9]  -->\n         2+2+6       0+2+0   \
-  \  5+5+7+7       3+3+9\n[2, 1,   10,    5,    2,        24,     4,   15   ] -->\n\
-  \                               2+24+4\n[2, 1,   10,    5,             30,     \
-  \      15   ]\nThe length of final array is 6\n```\n\n# Input/Output\n\n- `[input]`\
-  \ integer array `arr`\n\n  A non-empty array, \n\n  `1 ≤ arr.length ≤ 1000`\n\n\
-  \  `0 ≤ arr[i] ≤ 1000`\n\n\n- `[output]` an integer\n\n  The length of the final\
-  \ array"
-"vc-preamble": "import Imports.AllImports\n\ndef sumGroups (arr : List Int) : Int\
-  \ := sorry\n\ndef getNextArr (arr : List Int) : List Int := sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def countAlternatingParity (arr : List Int) : Nat := sorry\n\n\
-  theorem sum_groups_returns_positive : \n  ∀ (arr : List Int), arr ≠ [] → 0 < sumGroups\
-  \ arr := sorry\n"
-"vc-theorems": "theorem sum_groups_alternating_parity_bound :\n  ∀ (arr : List Int),\
-  \ arr ≠ [] → \n  sumGroups arr ≤ countAlternatingParity arr := sorry\n\n\ntheorem\
-  \ sum_groups_monotonic_reduction :\n  ∀ (arr : List Int), arr ≠ [] →\n  ∀ (next\
-  \ : List Int), next = getNextArr arr →\n  next ≠ arr →\n  List.length next ≤ List.length\
-  \ arr := sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval sum_groups [2, 1, 2, 2,\
-  \ 6, 5, 0, 2, 0, 5, 5, 7, 7, 4, 3, 3, 9]\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval\
-  \ sum_groups [2, 1, 2, 2, 6, 5, 0, 2, 0, 3, 3, 3, 9, 2]\n\n/--\ninfo: 1\n-/\n#guard_msgs\
-  \ in\n#eval sum_groups [1, 1, 2, 2]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  # Task
+
+  Given an array of integers, sum consecutive even numbers and consecutive odd numbers. Repeat the process while it can be done and return the length of the final array.
+
+  # Example
+
+  For `arr = [2, 1, 2, 2, 6, 5, 0, 2, 0, 5, 5, 7, 7, 4, 3, 3, 9]`
+   
+  The result should be `6`.
+
+  ```
+  [2, 1, 2, 2, 6, 5, 0, 2, 0, 5, 5, 7, 7, 4, 3, 3, 9]  -->
+           2+2+6       0+2+0     5+5+7+7       3+3+9
+  [2, 1,   10,    5,    2,        24,     4,   15   ] -->
+                                 2+24+4
+  [2, 1,   10,    5,             30,           15   ]
+  The length of final array is 6
+  ```
+
+  # Input/Output
+
+  - `[input]` integer array `arr`
+
+    A non-empty array, 
+
+    `1 ≤ arr.length ≤ 1000`
+
+    `0 ≤ arr[i] ≤ 1000`
+
+
+  - `[output]` an integer
+
+    The length of the final array
+vc-preamble: |
+  import Imports.AllImports
+
+  def sumGroups (arr : List Int) : Int := sorry
+
+  def getNextArr (arr : List Int) : List Int := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def countAlternatingParity (arr : List Int) : Nat := sorry
+
+  theorem sum_groups_returns_positive : 
+    ∀ (arr : List Int), arr ≠ [] → 0 < sumGroups arr := sorry
+vc-theorems: |
+  theorem sum_groups_alternating_parity_bound :
+    ∀ (arr : List Int), arr ≠ [] → 
+    sumGroups arr ≤ countAlternatingParity arr := sorry
+
+
+  theorem sum_groups_monotonic_reduction :
+    ∀ (arr : List Int), arr ≠ [] →
+    ∀ (next : List Int), next = getNextArr arr →
+    next ≠ arr →
+    List.length next ≤ List.length arr := sorry
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval sum_groups [2, 1, 2, 2, 6, 5, 0, 2, 0, 5, 5, 7, 7, 4, 3, 3, 9]
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval sum_groups [2, 1, 2, 2, 6, 5, 0, 2, 0, 3, 3, 3, 9, 2]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval sum_groups [1, 1, 2, 2]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

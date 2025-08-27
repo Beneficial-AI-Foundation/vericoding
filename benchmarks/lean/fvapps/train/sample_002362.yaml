@@ -1,39 +1,99 @@
-"vc-description": "You are given an array A of strings.\nA move onto S consists of\
-  \ swapping any two even indexed characters of S, or any two odd indexed characters\
-  \ of S.\nTwo strings S and T are special-equivalent if after any number of moves\
-  \ onto S, S == T.\nFor example, S = \"zzxy\" and T = \"xyzz\" are special-equivalent\
-  \ because we may make the moves \"zzxy\" -> \"xzzy\" -> \"xyzz\" that swap S[0]\
-  \ and S[2], then S[1] and S[3].\nNow, a group of special-equivalent strings from\
-  \ A is a non-empty subset of A such that:\n\nEvery pair of strings in the group\
-  \ are special equivalent, and;\nThe group is the largest size possible (ie., there\
-  \ isn't a string S not in the group such that S is special equivalent to every string\
-  \ in the group)\n\nReturn the number of groups of special-equivalent strings from\
-  \ A.\n \n\nExample 1:\nInput: [\"abcd\",\"cdab\",\"cbad\",\"xyzz\",\"zzxy\",\"zzyx\"\
-  ]\nOutput: 3\nExplanation: \nOne group is [\"abcd\", \"cdab\", \"cbad\"], since\
-  \ they are all pairwise special equivalent, and none of the other strings are all\
-  \ pairwise special equivalent to these.\n\nThe other two groups are [\"xyzz\", \"\
-  zzxy\"] and [\"zzyx\"].  Note that in particular, \"zzxy\" is not special equivalent\
-  \ to \"zzyx\".\n\n\nExample 2:\nInput: [\"abc\",\"acb\",\"bac\",\"bca\",\"cab\"\
-  ,\"cba\"]\nOutput: 3\n \n\n\n\n\n\n\nNote:\n\n1 <= A.length <= 1000\n1 <= A[i].length\
-  \ <= 20\nAll A[i] have the same length.\nAll A[i] consist of only lowercase letters."
-"vc-preamble": "import Imports.AllImports\n\ndef numSpecialEquivGroups (strings :\
-  \ List String) : Nat :=\n  sorry\n\n\ndef isSpecialEquivalent (s1 s2 : String) :\
-  \ Bool :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def belongsToGroup (s : String) (g : Nat) : Bool :=\n  sorry\n\n\
-  -- Theorem: Number of groups is bounded by list size"
-"vc-theorems": "theorem num_groups_bounded (strings : List String) : \n  1 ≤ numSpecialEquivGroups\
-  \ strings ∧ numSpecialEquivGroups strings ≤ strings.length :=\n  sorry\n\n-- Theorem:\
-  \ Special equivalent strings belong to same group\n\ntheorem special_equiv_same_group\
-  \ (s1 s2 : String) :\n  isSpecialEquivalent s1 s2 = true →\n  ∃ g, belongsToGroup\
-  \ s1 g = true ∧ belongsToGroup s2 g = true :=\n  sorry \n\n-- Theorem: Upper bound\
-  \ for unique strings\n\ntheorem unique_strings_bound (strings : List String) (h\
-  \ : strings.Nodup) :\n  numSpecialEquivGroups strings ≤ strings.length :=\n  sorry\n\
-  \n-- Theorem: Function is permutation invariant\n\ntheorem permutation_invariant\
-  \ (strings : List String) :\n  numSpecialEquivGroups strings = numSpecialEquivGroups\
-  \ strings.reverse :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval numSpecialEquivGroups\
-  \ [\"abcd\", \"cdab\", \"cbad\", \"xyzz\", \"zzxy\", \"zzyx\"]\n\n/--\ninfo: 3\n\
-  -/\n#guard_msgs in\n#eval numSpecialEquivGroups [\"abc\", \"acb\", \"bac\", \"bca\"\
-  , \"cab\", \"cba\"]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval numSpecialEquivGroups\
-  \ [\"aa\", \"bb\", \"ab\", \"ba\"]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  You are given an array A of strings.
+  A move onto S consists of swapping any two even indexed characters of S, or any two odd indexed characters of S.
+  Two strings S and T are special-equivalent if after any number of moves onto S, S == T.
+  For example, S = "zzxy" and T = "xyzz" are special-equivalent because we may make the moves "zzxy" -> "xzzy" -> "xyzz" that swap S[0] and S[2], then S[1] and S[3].
+  Now, a group of special-equivalent strings from A is a non-empty subset of A such that:
+
+  Every pair of strings in the group are special equivalent, and;
+  The group is the largest size possible (ie., there isn't a string S not in the group such that S is special equivalent to every string in the group)
+
+  Return the number of groups of special-equivalent strings from A.
+   
+
+  Example 1:
+  Input: ["abcd","cdab","cbad","xyzz","zzxy","zzyx"]
+  Output: 3
+  Explanation: 
+  One group is ["abcd", "cdab", "cbad"], since they are all pairwise special equivalent, and none of the other strings are all pairwise special equivalent to these.
+
+  The other two groups are ["xyzz", "zzxy"] and ["zzyx"].  Note that in particular, "zzxy" is not special equivalent to "zzyx".
+
+
+  Example 2:
+  Input: ["abc","acb","bac","bca","cab","cba"]
+  Output: 3
+   
+
+
+
+
+
+
+  Note:
+
+  1 <= A.length <= 1000
+  1 <= A[i].length <= 20
+  All A[i] have the same length.
+  All A[i] consist of only lowercase letters.
+vc-preamble: |
+  import Imports.AllImports
+
+  def numSpecialEquivGroups (strings : List String) : Nat :=
+    sorry
+
+
+  def isSpecialEquivalent (s1 s2 : String) : Bool :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def belongsToGroup (s : String) (g : Nat) : Bool :=
+    sorry
+
+  -- Theorem: Number of groups is bounded by list size
+vc-theorems: |
+  theorem num_groups_bounded (strings : List String) : 
+    1 ≤ numSpecialEquivGroups strings ∧ numSpecialEquivGroups strings ≤ strings.length :=
+    sorry
+
+  -- Theorem: Special equivalent strings belong to same group
+
+  theorem special_equiv_same_group (s1 s2 : String) :
+    isSpecialEquivalent s1 s2 = true →
+    ∃ g, belongsToGroup s1 g = true ∧ belongsToGroup s2 g = true :=
+    sorry 
+
+  -- Theorem: Upper bound for unique strings
+
+  theorem unique_strings_bound (strings : List String) (h : strings.Nodup) :
+    numSpecialEquivGroups strings ≤ strings.length :=
+    sorry
+
+  -- Theorem: Function is permutation invariant
+
+  theorem permutation_invariant (strings : List String) :
+    numSpecialEquivGroups strings = numSpecialEquivGroups strings.reverse :=
+    sorry
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval numSpecialEquivGroups ["abcd", "cdab", "cbad", "xyzz", "zzxy", "zzyx"]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval numSpecialEquivGroups ["abc", "acb", "bac", "bca", "cab", "cba"]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval numSpecialEquivGroups ["aa", "bb", "ab", "ba"]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

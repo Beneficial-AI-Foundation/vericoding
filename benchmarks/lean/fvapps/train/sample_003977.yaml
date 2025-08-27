@@ -1,29 +1,77 @@
-"vc-description": "Remember the game 2048?\n\nThe main part of this game is merging\
-  \ identical tiles in a row. \n\n* Implement a function that models the process of\
-  \ merging all of the tile values in a single row.  \n* This function takes the array\
-  \ line as a parameter and returns a new array with the tile values from line slid\
-  \ towards the front of the array (index 0) and merged.\n* A given tile can only\
-  \ merge once.\n* Empty grid squares are represented as zeros.\n* Your function should\
-  \ work on arrays containing arbitrary number of elements.\n\n\n## Examples\n\n```\n\
-  merge([2,0,2,2])  -->  [4,2,0,0]\n```\n\nAnother example with repeated merges: \n\
-  \n```\nmerge([4,4,8,16])  -->  [8,8,16,0]\nmerge([8,8,16,0])  -->  [16,16,0,0]\n\
-  merge([16,16,0,0]) -->  [32,0,0,0]\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def merge (line : List Nat) : List Nat := sorry\n\ntheorem merge_preserves_length\
-  \ (line : List Nat) (h : line ≠ []) :\n  List.length (merge line) = List.length\
-  \ line := sorry\n"
-"vc-theorems": "theorem zeros_preserved (n : Nat) (h : n > 0) :\n  merge (List.replicate\
-  \ n 0) = List.replicate n 0 := sorry\n\n\ntheorem trailing_zeros_preserved (line\
-  \ : List Nat) (h : line ≠ []) :\n  let result := merge line\n  let nonZeroCount\
-  \ := (result.filter (· ≠ 0)).length\n  result.drop nonZeroCount = List.replicate\
-  \ (line.length - nonZeroCount) 0 := sorry\n\n\ntheorem merged_values_are_doubles\
-  \ (line : List Nat) (h₁ : line ≠ []) \n    (h₂ : ∀ x ∈ line, x ≤ 1000) :\n  let\
-  \ result := merge line\n  ∀ x ∈ result, x = 0 ∨ x ∈ line ∨ (x/2) ∈ line := sorry\n\
-  \n\ntheorem sum_relationship (line : List Nat) (h : line ≠ []) :\n  let input_sum\
-  \ := line.foldl (·+·) 0\n  let output_sum := (merge line).foldl (·+·) 0\n  output_sum\
-  \ ≥ input_sum ∧ (output_sum - input_sum) % 2 = 0 := sorry\n\n/--\ninfo: expected1\n\
-  -/\n#guard_msgs in\n#eval merge [2, 0, 2, 2]\n\n/--\ninfo: expected2\n-/\n#guard_msgs\
-  \ in\n#eval merge [2, 2, 2, 2, 2]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n\
-  #eval merge [8, 16, 16, 8]\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Remember the game 2048?
+
+  The main part of this game is merging identical tiles in a row. 
+
+  * Implement a function that models the process of merging all of the tile values in a single row.  
+  * This function takes the array line as a parameter and returns a new array with the tile values from line slid towards the front of the array (index 0) and merged.
+  * A given tile can only merge once.
+  * Empty grid squares are represented as zeros.
+  * Your function should work on arrays containing arbitrary number of elements.
+
+
+  ## Examples
+
+  ```
+  merge([2,0,2,2])  -->  [4,2,0,0]
+  ```
+
+  Another example with repeated merges: 
+
+  ```
+  merge([4,4,8,16])  -->  [8,8,16,0]
+  merge([8,8,16,0])  -->  [16,16,0,0]
+  merge([16,16,0,0]) -->  [32,0,0,0]
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def merge (line : List Nat) : List Nat := sorry
+
+  theorem merge_preserves_length (line : List Nat) (h : line ≠ []) :
+    List.length (merge line) = List.length line := sorry
+vc-theorems: |
+  theorem zeros_preserved (n : Nat) (h : n > 0) :
+    merge (List.replicate n 0) = List.replicate n 0 := sorry
+
+
+  theorem trailing_zeros_preserved (line : List Nat) (h : line ≠ []) :
+    let result := merge line
+    let nonZeroCount := (result.filter (· ≠ 0)).length
+    result.drop nonZeroCount = List.replicate (line.length - nonZeroCount) 0 := sorry
+
+
+  theorem merged_values_are_doubles (line : List Nat) (h₁ : line ≠ []) 
+      (h₂ : ∀ x ∈ line, x ≤ 1000) :
+    let result := merge line
+    ∀ x ∈ result, x = 0 ∨ x ∈ line ∨ (x/2) ∈ line := sorry
+
+
+  theorem sum_relationship (line : List Nat) (h : line ≠ []) :
+    let input_sum := line.foldl (·+·) 0
+    let output_sum := (merge line).foldl (·+·) 0
+    output_sum ≥ input_sum ∧ (output_sum - input_sum) % 2 = 0 := sorry
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval merge [2, 0, 2, 2]
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval merge [2, 2, 2, 2, 2]
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval merge [8, 16, 16, 8]
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,23 +1,70 @@
-"vc-description": "Write a function that takes a string as input and reverse only\
-  \ the vowels of a string.\n\n\nExample 1:\nGiven s = \"hello\", return \"holle\"\
-  .\n\n\n\nExample 2:\nGiven s = \"leetcode\", return \"leotcede\".\n\n\n\nNote:\n\
-  The vowels does not include the letter \"y\"."
-"vc-preamble": "import Imports.AllImports\n\ndef reverse_vowels (s : String) : String\
-  \ := sorry\n\ndef isVowel (c : Char) : Bool :=\n  c == 'a' || c == 'e' || c == 'i'\
-  \ || c == 'o' || c == 'u' ||\n  c == 'A' || c == 'E' || c == 'I' || c == 'O' ||\
-  \ c == 'U'\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def count_char (s : String) (c : Char) : Nat := \n  s.toList.filter\
-  \ (· == c) |>.length\n"
-"vc-theorems": "theorem reverse_vowels_length_unchanged (s : String) :\n  (reverse_vowels\
-  \ s).length = s.length := sorry\n\n\ntheorem reverse_vowels_consonants_unchanged\
-  \ (s : String) (i : String.Pos) :\n  ¬isVowel (s.get i) → (reverse_vowels s).get\
-  \ i = s.get i := sorry \n\n\ntheorem reverse_vowels_idempotent (s : String) :\n\
-  \  reverse_vowels (reverse_vowels s) = s := sorry\n\n\ntheorem reverse_vowels_preserves_count\
-  \ (s : String) (c : Char) :\n  isVowel c → count_char (reverse_vowels s) c = count_char\
-  \ s c := sorry\n\n\ntheorem reverse_vowels_no_vowels (s : String) :\n  (∀ i : String.Pos,\
-  \ ¬isVowel (s.get i)) → reverse_vowels s = s := sorry\n\n/--\ninfo: 'holle'\n-/\n\
-  #guard_msgs in\n#eval reverse_vowels \"hello\"\n\n/--\ninfo: 'leotcede'\n-/\n#guard_msgs\
-  \ in\n#eval reverse_vowels \"leetcode\"\n\n/--\ninfo: 'Aa'\n-/\n#guard_msgs in\n\
-  #eval reverse_vowels \"aA\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function that takes a string as input and reverse only the vowels of a string.
+
+
+  Example 1:
+  Given s = "hello", return "holle".
+
+
+
+  Example 2:
+  Given s = "leetcode", return "leotcede".
+
+
+
+  Note:
+  The vowels does not include the letter "y".
+vc-preamble: |
+  import Imports.AllImports
+
+  def reverse_vowels (s : String) : String := sorry
+
+  def isVowel (c : Char) : Bool :=
+    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+    c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def count_char (s : String) (c : Char) : Nat := 
+    s.toList.filter (· == c) |>.length
+vc-theorems: |
+  theorem reverse_vowels_length_unchanged (s : String) :
+    (reverse_vowels s).length = s.length := sorry
+
+
+  theorem reverse_vowels_consonants_unchanged (s : String) (i : String.Pos) :
+    ¬isVowel (s.get i) → (reverse_vowels s).get i = s.get i := sorry 
+
+
+  theorem reverse_vowels_idempotent (s : String) :
+    reverse_vowels (reverse_vowels s) = s := sorry
+
+
+  theorem reverse_vowels_preserves_count (s : String) (c : Char) :
+    isVowel c → count_char (reverse_vowels s) c = count_char s c := sorry
+
+
+  theorem reverse_vowels_no_vowels (s : String) :
+    (∀ i : String.Pos, ¬isVowel (s.get i)) → reverse_vowels s = s := sorry
+
+  /--
+  info: 'holle'
+  -/
+  #guard_msgs in
+  #eval reverse_vowels "hello"
+
+  /--
+  info: 'leotcede'
+  -/
+  #guard_msgs in
+  #eval reverse_vowels "leetcode"
+
+  /--
+  info: 'Aa'
+  -/
+  #guard_msgs in
+  #eval reverse_vowels "aA"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

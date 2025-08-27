@@ -1,32 +1,85 @@
-"vc-description": "### Lyrics...\n\nPyramids are amazing! Both in architectural and\
-  \ mathematical sense. If you have a computer, you can mess with pyramids even if\
-  \ you are not in Egypt at the time. For example, let's consider the following problem.\
-  \ Imagine that you have a pyramid built of numbers, like this one here:\n\n```\n\
-  \   /3/\n  \\7\\ 4 \n 2 \\4\\ 6 \n8 5 \\9\\ 3\n```\n\n### Here comes the task...\n\
-  \nLet's say that the *'slide down'* is the maximum sum of consecutive numbers from\
-  \ the top to the bottom of the pyramid. As you can see, the longest *'slide down'*\
-  \ is `3 + 7 + 4 + 9 = 23`\n\nYour task is to write a function `longestSlideDown`\
-  \ (in ruby: `longest_slide_down`) that takes a pyramid representation as argument\
-  \ and returns its' __largest__ *'slide down'*. For example,\n\n```python\nlongestSlideDown([[3],\
-  \ [7, 4], [2, 4, 6], [8, 5, 9, 3]]) => 23\n```\n\n### By the way...\n\nMy tests\
-  \ include some extraordinarily high pyramids so as you can guess, brute-force method\
-  \ is a bad idea unless you have a few centuries to waste. You must come up with\
-  \ something more clever than that.\n\n(c) This task is a lyrical version of the\
-  \ __Problem 18__ and/or __Problem 67__ on [ProjectEuler](https://projecteuler.net)."
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def longest_slide_down (pyramid : List (List Int)) : Int :=\n \
-  \ sorry\n"
-"vc-theorems": "theorem single_element (x : Int) :\n  longest_slide_down [[x]] = x\n\
-  \  := sorry\n\n\ntheorem single_value_property (x : Int) :\n  longest_slide_down\
-  \ [[x]] = x\n  := sorry \n\n\ntheorem two_row_property (x y : Int) :\n  longest_slide_down\
-  \ [[x], [y, y]] = x + y\n  := sorry\n\n\ntheorem three_row_property (a b c : Int)\
-  \ :\n  longest_slide_down [[a], [b, b], [c, c, c]] = a + b + c\n  := sorry\n\n\n\
-  theorem three_row_lower_bound (a b c : Int) :\n  longest_slide_down [[a], [b, b],\
-  \ [c, c, c]] ≥ a + b + c\n  := sorry\n\n\ntheorem three_row_upper_bound (a b c :\
-  \ Int) :\n  longest_slide_down [[a], [b, b], [c, c, c]] ≤ a + b + c\n  := sorry\n\
-  \n/--\ninfo: 23\n-/\n#guard_msgs in\n#eval longest_slide_down [[3], [7, 4], [2,\
-  \ 4, 6], [8, 5, 9, 3]]\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval longest_slide_down\
-  \ [[1], [2, 3], [4, 5, 6]]\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval longest_slide_down\
-  \ [[5]]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"
+vc-description: |-
+  ### Lyrics...
+
+  Pyramids are amazing! Both in architectural and mathematical sense. If you have a computer, you can mess with pyramids even if you are not in Egypt at the time. For example, let's consider the following problem. Imagine that you have a pyramid built of numbers, like this one here:
+
+  ```
+     /3/
+    \7\ 4 
+   2 \4\ 6 
+  8 5 \9\ 3
+  ```
+
+  ### Here comes the task...
+
+  Let's say that the *'slide down'* is the maximum sum of consecutive numbers from the top to the bottom of the pyramid. As you can see, the longest *'slide down'* is `3 + 7 + 4 + 9 = 23`
+
+  Your task is to write a function `longestSlideDown` (in ruby: `longest_slide_down`) that takes a pyramid representation as argument and returns its' __largest__ *'slide down'*. For example,
+
+  ```python
+  longestSlideDown([[3], [7, 4], [2, 4, 6], [8, 5, 9, 3]]) => 23
+  ```
+
+  ### By the way...
+
+  My tests include some extraordinarily high pyramids so as you can guess, brute-force method is a bad idea unless you have a few centuries to waste. You must come up with something more clever than that.
+
+  (c) This task is a lyrical version of the __Problem 18__ and/or __Problem 67__ on [ProjectEuler](https://projecteuler.net).
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def longest_slide_down (pyramid : List (List Int)) : Int :=
+    sorry
+vc-theorems: |
+  theorem single_element (x : Int) :
+    longest_slide_down [[x]] = x
+    := sorry
+
+
+  theorem single_value_property (x : Int) :
+    longest_slide_down [[x]] = x
+    := sorry 
+
+
+  theorem two_row_property (x y : Int) :
+    longest_slide_down [[x], [y, y]] = x + y
+    := sorry
+
+
+  theorem three_row_property (a b c : Int) :
+    longest_slide_down [[a], [b, b], [c, c, c]] = a + b + c
+    := sorry
+
+
+  theorem three_row_lower_bound (a b c : Int) :
+    longest_slide_down [[a], [b, b], [c, c, c]] ≥ a + b + c
+    := sorry
+
+
+  theorem three_row_upper_bound (a b c : Int) :
+    longest_slide_down [[a], [b, b], [c, c, c]] ≤ a + b + c
+    := sorry
+
+  /--
+  info: 23
+  -/
+  #guard_msgs in
+  #eval longest_slide_down [[3], [7, 4], [2, 4, 6], [8, 5, 9, 3]]
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval longest_slide_down [[1], [2, 3], [4, 5, 6]]
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval longest_slide_down [[5]]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded

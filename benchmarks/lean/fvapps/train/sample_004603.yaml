@@ -1,34 +1,77 @@
-"vc-description": "The year is 2088 and the Radical Marxist Socialist People's Party\
-  \ (RMSPP) has just seized power in Brazil.\n\nTheir first act in power is absolute\
-  \ wealth equality through coercive redistribution.\n\nCreate a function that redistributes\
-  \ all wealth equally among all citizens.\n\nWealth is represented as an array/list\
-  \ where every index is the wealth of a single citizen. The function should mutate\
-  \ the input such that every index has the same amount of wealth. **MUTATE the input\
-  \ array/list, don't return anything.**\n\nSee example:\n\n```python\nwealth = [5,\
-  \ 10, 6]  # This represents:\n                     # citizen 1 has wealth 5\n  \
-  \                   # citizen 2 has wealth 10\n                     # citizen 3\
-  \ has wealth 6\n                     \nredistribute_wealth(wealth) # mutates wealth\
-  \ list\nwealth => [7, 7, 7] # wealth has now been equally redistributed\n\n```\n\
-  \nInfo:\n\n- **MUTATE the input array/list, don't return anything**\n\n- Input is\
-  \ garantueed to hold at least 1 or more citizens\n\n- Wealth of citizen will an\
-  \ integer with minimum 0 (negative wealth not possible)\n\n- Handling of floating\
-  \ point error will not be tested"
-"vc-preamble": "import Imports.AllImports\n\ndef List.sum [Add α] : List α → α \n\
-  \  | [] => sorry\n  | (x::xs) => x + List.sum xs\n\n\ndef redistributeWealth (l\
-  \ : List Int) : List Int :=\n  sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def redistributeWealthFloat (l : List Float) : List Float :=\n\
-  \  sorry\n"
-"vc-theorems": "theorem redistributeWealth_preserves_length (l : List Int) :\n  (redistributeWealth\
-  \ l).length = l.length := by sorry\n\n\ntheorem redistributeWealth_all_equal (l\
-  \ : List Int) (h : l.length > 0) :\n  ∀ x ∈ redistributeWealth l, x = (redistributeWealth\
-  \ l).head! := by sorry\n\n\ntheorem redistributeWealth_preserves_sum (l : List Int)\
-  \ :\n  (redistributeWealth l).sum = l.sum := by sorry\n\n\ntheorem redistributeWealth_gives_mean\
-  \ (l : List Int) (h : l.length > 0) :\n  ∀ x ∈ redistributeWealth l, x = l.sum /\
-  \ l.length := by sorry\n\n\ntheorem redistributeWealthFloat_preserves_length (l\
-  \ : List Float) :\n  (redistributeWealthFloat l).length = l.length := by sorry\n\
-  \n\ntheorem redistributeWealthFloat_all_equal (l : List Float) (h : l.length > 0)\
-  \ :\n  ∀ x ∈ redistributeWealthFloat l, x = (redistributeWealthFloat l).head! :=\
-  \ by sorry\n\n\ntheorem redistributeWealthFloat_preserves_sum (l : List Float) :\n\
-  \  (redistributeWealthFloat l).sum = l.sum := by sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  The year is 2088 and the Radical Marxist Socialist People's Party (RMSPP) has just seized power in Brazil.
+
+  Their first act in power is absolute wealth equality through coercive redistribution.
+
+  Create a function that redistributes all wealth equally among all citizens.
+
+  Wealth is represented as an array/list where every index is the wealth of a single citizen. The function should mutate the input such that every index has the same amount of wealth. **MUTATE the input array/list, don't return anything.**
+
+  See example:
+
+  ```python
+  wealth = [5, 10, 6]  # This represents:
+                       # citizen 1 has wealth 5
+                       # citizen 2 has wealth 10
+                       # citizen 3 has wealth 6
+                       
+  redistribute_wealth(wealth) # mutates wealth list
+  wealth => [7, 7, 7] # wealth has now been equally redistributed
+
+  ```
+
+  Info:
+
+  - **MUTATE the input array/list, don't return anything**
+
+  - Input is garantueed to hold at least 1 or more citizens
+
+  - Wealth of citizen will an integer with minimum 0 (negative wealth not possible)
+
+  - Handling of floating point error will not be tested
+vc-preamble: |
+  import Imports.AllImports
+
+  def List.sum [Add α] : List α → α 
+    | [] => sorry
+    | (x::xs) => x + List.sum xs
+
+
+  def redistributeWealth (l : List Int) : List Int :=
+    sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def redistributeWealthFloat (l : List Float) : List Float :=
+    sorry
+vc-theorems: |-
+  theorem redistributeWealth_preserves_length (l : List Int) :
+    (redistributeWealth l).length = l.length := by sorry
+
+
+  theorem redistributeWealth_all_equal (l : List Int) (h : l.length > 0) :
+    ∀ x ∈ redistributeWealth l, x = (redistributeWealth l).head! := by sorry
+
+
+  theorem redistributeWealth_preserves_sum (l : List Int) :
+    (redistributeWealth l).sum = l.sum := by sorry
+
+
+  theorem redistributeWealth_gives_mean (l : List Int) (h : l.length > 0) :
+    ∀ x ∈ redistributeWealth l, x = l.sum / l.length := by sorry
+
+
+  theorem redistributeWealthFloat_preserves_length (l : List Float) :
+    (redistributeWealthFloat l).length = l.length := by sorry
+
+
+  theorem redistributeWealthFloat_all_equal (l : List Float) (h : l.length > 0) :
+    ∀ x ∈ redistributeWealthFloat l, x = (redistributeWealthFloat l).head! := by sorry
+
+
+  theorem redistributeWealthFloat_preserves_sum (l : List Float) :
+    (redistributeWealthFloat l).sum = l.sum := by sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

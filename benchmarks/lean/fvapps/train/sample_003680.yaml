@@ -1,12 +1,47 @@
-"vc-description": "Your task is to write function ```findSum```.\n\nUpto and including\
-  \ ```n```, this function will return the sum of all multiples of 3 and 5.\n\nFor\
-  \ example:\n\n```findSum(5)``` should return 8 (3 + 5)\n\n```findSum(10)``` should\
-  \ return 33 (3 + 5 + 6 + 9 + 10)"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def findSum (n : Int) : Int := sorry\n\n\n\n\n\n\n\ntheorem findSum_six\
-  \ :\n  findSum 6 = 14 := sorry"
-"vc-theorems": "/--\ninfo: 8\n-/\n#guard_msgs in\n#eval findSum 5\n\n/--\ninfo: 33\n\
-  -/\n#guard_msgs in\n#eval findSum 10\n\n/--\ninfo: 2418\n-/\n#guard_msgs in\n#eval\
-  \ findSum 100\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"
+vc-description: |-
+  Your task is to write function ```findSum```.
+
+  Upto and including ```n```, this function will return the sum of all multiples of 3 and 5.
+
+  For example:
+
+  ```findSum(5)``` should return 8 (3 + 5)
+
+  ```findSum(10)``` should return 33 (3 + 5 + 6 + 9 + 10)
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |-
+  def findSum (n : Int) : Int := sorry
+
+
+
+
+
+
+
+  theorem findSum_six :
+    findSum 6 = 14 := sorry
+vc-theorems: |
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval findSum 5
+
+  /--
+  info: 33
+  -/
+  #guard_msgs in
+  #eval findSum 10
+
+  /--
+  info: 2418
+  -/
+  #guard_msgs in
+  #eval findSum 100
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible

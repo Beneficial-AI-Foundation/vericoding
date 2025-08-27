@@ -1,17 +1,56 @@
-"vc-description": "An **anagram** is the result of rearranging the letters of a word\
-  \ to produce a new word.\n\n**Note:** anagrams are case insensitive\n\nComplete\
-  \ the function to return `true` if the two arguments given are anagrams of each\
-  \ other; return `false` otherwise.\n\n\n## Examples\n\n* `\"foefet\"` is an anagram\
-  \ of `\"toffee\"`\n\n* `\"Buckethead\"` is an anagram of `\"DeathCubeK\"`"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def is_anagram (s1 s2: String) : Bool :=\n  sorry\n"
-"vc-theorems": "theorem is_anagram_symmetry (s1 s2 : String) :\n  is_anagram s1 s2\
-  \ = is_anagram s2 s1 := by\n  sorry\n\n\ntheorem is_anagram_reflexive (s : String)\
-  \ :\n  is_anagram s s = true := by\n  sorry\n\n\ntheorem different_length_not_anagrams\
-  \ (s1 s2 : String) :\n  s1.length ≠ s2.length → is_anagram s1 s2 = false := by\n\
-  \  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_anagram \"foefet\" \"\
-  toffee\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_anagram \"Buckethead\"\
-  \ \"DeathCubeK\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_anagram \"dumble\"\
-  \ \"bumble\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  An **anagram** is the result of rearranging the letters of a word to produce a new word.
+
+  **Note:** anagrams are case insensitive
+
+  Complete the function to return `true` if the two arguments given are anagrams of each other; return `false` otherwise.
+
+
+  ## Examples
+
+  * `"foefet"` is an anagram of `"toffee"`
+
+  * `"Buckethead"` is an anagram of `"DeathCubeK"`
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def is_anagram (s1 s2: String) : Bool :=
+    sorry
+vc-theorems: |
+  theorem is_anagram_symmetry (s1 s2 : String) :
+    is_anagram s1 s2 = is_anagram s2 s1 := by
+    sorry
+
+
+  theorem is_anagram_reflexive (s : String) :
+    is_anagram s s = true := by
+    sorry
+
+
+  theorem different_length_not_anagrams (s1 s2 : String) :
+    s1.length ≠ s2.length → is_anagram s1 s2 = false := by
+    sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_anagram "foefet" "toffee"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_anagram "Buckethead" "DeathCubeK"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_anagram "dumble" "bumble"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

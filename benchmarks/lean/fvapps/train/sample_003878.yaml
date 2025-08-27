@@ -1,28 +1,65 @@
-"vc-description": "The number 45 is the first integer in having this interesting property:\n\
-  the sum of the number with its reversed is divisible by the difference between them(absolute\
-  \ Value).\n```\n45 + 54 = 99 \nabs(45 - 54) = 9\n99 is divisible by 9.\n```\nThe\
-  \ first terms of this special sequence are :\n```\nn               a(n)\n1     \
-  \          45\n2               54\n3               495\n4               594\n```\n\
-  Make the function ```sum_dif_rev()```(`sumDivRef` in JavaScript and CoffeeScript),\
-  \ that receives ```n```, the ordinal number of the term and may give us, the value\
-  \ of the term of the sequence.\n```python\nsum_dif_rev(n) -----> a(n)\n```\nLet's\
-  \ see some cases:\n```python\nsum_dif_rev(1) -----> 45\nsum_dif_rev(3) -----> 495\n\
-  ```\n\"Important: Do not include numbers which, when reversed, have a leading zero,\
-  \ e.g.: 1890 reversed is 0981, so 1890 should not be included.\"\n\nYour code will\
-  \ be tested up to the first 65 terms, so you should think to optimize it as much\
-  \ as you can.\n\n(Hint: I memoize, you memoize, he memoizes, ......they (of course)\
-  \ memoize)\n\nHappy coding!!"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def reverseNum (n : Nat) : Nat := sorry\n\ndef sum_dif_rev (n :\
-  \ Nat) : Nat := sorry\n"
-"vc-theorems": "theorem sum_dif_rev_positive (n : Nat) (h : n > 0) (h2 : n ≤ 20) :\
-  \ \n  sum_dif_rev n > 0 := sorry\n\n\ntheorem sum_dif_rev_not_palindrome (n : Nat)\
-  \ (h : n > 0) (h2 : n ≤ 20) :\n  sum_dif_rev n ≠ reverseNum (sum_dif_rev n) := sorry\n\
-  \n\ntheorem sum_dif_rev_satisfies_equation (n : Nat) (h : n > 0) (h2 : n ≤ 20) :\n\
-  \  let result := sum_dif_rev n\n  let rev := reverseNum result\n  (result + rev)\
-  \ % (if rev ≥ result then rev - result else result - rev) = 0 := sorry\n\n\ntheorem\
-  \ sum_dif_rev_strictly_increasing (n : Nat) (h : n > 0) (h2 : n ≤ 19) :\n  sum_dif_rev\
-  \ n < sum_dif_rev (n + 1) := sorry\n\n\ntheorem sum_dif_rev_no_trailing_zero (n\
-  \ : Nat) (h : n > 0) (h2 : n ≤ 20) :\n  sum_dif_rev n % 10 ≠ 0 := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  The number 45 is the first integer in having this interesting property:
+  the sum of the number with its reversed is divisible by the difference between them(absolute Value).
+  ```
+  45 + 54 = 99 
+  abs(45 - 54) = 9
+  99 is divisible by 9.
+  ```
+  The first terms of this special sequence are :
+  ```
+  n               a(n)
+  1               45
+  2               54
+  3               495
+  4               594
+  ```
+  Make the function ```sum_dif_rev()```(`sumDivRef` in JavaScript and CoffeeScript), that receives ```n```, the ordinal number of the term and may give us, the value of the term of the sequence.
+  ```python
+  sum_dif_rev(n) -----> a(n)
+  ```
+  Let's see some cases:
+  ```python
+  sum_dif_rev(1) -----> 45
+  sum_dif_rev(3) -----> 495
+  ```
+  "Important: Do not include numbers which, when reversed, have a leading zero, e.g.: 1890 reversed is 0981, so 1890 should not be included."
+
+  Your code will be tested up to the first 65 terms, so you should think to optimize it as much as you can.
+
+  (Hint: I memoize, you memoize, he memoizes, ......they (of course) memoize)
+
+  Happy coding!!
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def reverseNum (n : Nat) : Nat := sorry
+
+  def sum_dif_rev (n : Nat) : Nat := sorry
+vc-theorems: |-
+  theorem sum_dif_rev_positive (n : Nat) (h : n > 0) (h2 : n ≤ 20) : 
+    sum_dif_rev n > 0 := sorry
+
+
+  theorem sum_dif_rev_not_palindrome (n : Nat) (h : n > 0) (h2 : n ≤ 20) :
+    sum_dif_rev n ≠ reverseNum (sum_dif_rev n) := sorry
+
+
+  theorem sum_dif_rev_satisfies_equation (n : Nat) (h : n > 0) (h2 : n ≤ 20) :
+    let result := sum_dif_rev n
+    let rev := reverseNum result
+    (result + rev) % (if rev ≥ result then rev - result else result - rev) = 0 := sorry
+
+
+  theorem sum_dif_rev_strictly_increasing (n : Nat) (h : n > 0) (h2 : n ≤ 19) :
+    sum_dif_rev n < sum_dif_rev (n + 1) := sorry
+
+
+  theorem sum_dif_rev_no_trailing_zero (n : Nat) (h : n > 0) (h2 : n ≤ 20) :
+    sum_dif_rev n % 10 ≠ 0 := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

@@ -1,43 +1,113 @@
-"vc-description": "=====Function Descriptions=====\n.remove(x)\n\nThis operation removes\
-  \ element x from the set.\nIf element x does not exist, it raises a KeyError.\n\
-  The .remove(x) operation returns None.\n\nExample\n\n>>> s = set([1, 2, 3, 4, 5,\
-  \ 6, 7, 8, 9])\n>>> s.remove(5)\n>>> print s\nset([1, 2, 3, 4, 6, 7, 8, 9])\n>>>\
-  \ print s.remove(4)\nNone\n>>> print s\nset([1, 2, 3, 6, 7, 8, 9])\n>>> s.remove(0)\n\
-  KeyError: 0\n\n.discard(x)\n\nThis operation also removes element x from the set.\n\
-  If element x does not exist, it does not raise a KeyError.\nThe .discard(x) operation\
-  \ returns None.\n\nExample\n\n>>> s = set([1, 2, 3, 4, 5, 6, 7, 8, 9])\n>>> s.discard(5)\n\
-  >>> print s\nset([1, 2, 3, 4, 6, 7, 8, 9])\n>>> print s.discard(4)\nNone\n>>> print\
-  \ s\nset([1, 2, 3, 6, 7, 8, 9])\n>>> s.discard(0)\n>>> print s\nset([1, 2, 3, 6,\
-  \ 7, 8, 9])\n\n.pop()\n\nThis operation removes and return an arbitrary element\
-  \ from the set.\nIf there are no elements to remove, it raises a KeyError.\n\nExample\n\
-  \n>>> s = set([1])\n>>> print s.pop()\n1\n>>> print s\nset([])\n>>> print s.pop()\n\
-  KeyError: pop from an empty set\n\n=====Problem Statement=====\nYou have a non-empty\
-  \ set s, and you have to execute N commands given in N lines.\nThe commands will\
-  \ be pop, remove and discard. \n\n=====Input Format=====\nThe first line contains\
-  \ integer n, the number of elements in the set s.\nThe second line contains n space\
-  \ separated elements of set s. All of the elements are non-negative integers, less\
-  \ than or equal to 9.\nThe third line contains integer N, the number of commands.\n\
-  The next N lines contains either pop, remove and/or discard commands followed by\
-  \ their associated value.\n\n=====Constraints=====\n0 < n < 20\n0 < N < 20\n\n=====Output\
-  \ Format====\nPrint the sum of the elements of set s on a single line."
-"vc-preamble": "import Imports.AllImports\n\ndef sumSet (s : SetInt) : Int := sorry\n\
-  def process_set_commands (elements : List Int) (commands : List String) : Int :=\
-  \ sorry\n"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def pop_element_from_set (s : SetInt) : SetInt := sorry\ndef contains\
-  \ (s : SetInt) (x : Int) : Bool := sorry\n"
-"vc-theorems": "theorem pop_reduces_size (elements : List Int) (h : elements ≠ [])\
-  \ : \n  let s := SetInt.mk elements\n  let after_pop := pop_element_from_set s\n\
-  \  List.length after_pop.elements = List.length s.elements - 1 ∧ \n  process_set_commands\
-  \ elements [\"pop\"] = sumSet after_pop := sorry\n\n\ntheorem remove_vs_discard\
-  \ (elements : List Int) (value : Int) :\n  let s := SetInt.mk elements\n  let remove_result\
-  \ := process_set_commands elements [s!\"remove {value}\"]\n  let discard_result\
-  \ := process_set_commands elements [s!\"discard {value}\"]\n  if contains s value\
-  \ then\n    remove_result = discard_result\n  else\n    discard_result = sumSet\
-  \ s := sorry\n\n\ntheorem limited_pops (elements : List Int) (num_pops : Nat) \n\
-  \  (h1 : elements ≠ []) \n  (h2 : List.length elements > num_pops)\n  (h3 : num_pops\
-  \ ≤ 3) :\n  let commands := List.replicate num_pops \"pop\"\n  let s := SetInt.mk\
-  \ elements\n  let result := process_set_commands elements commands\n  let final_set\
-  \ := (List.foldl (fun acc _ => pop_element_from_set acc) s commands)\n  result =\
-  \ sumSet final_set := sorry"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"
+vc-description: |-
+  =====Function Descriptions=====
+  .remove(x)
+
+  This operation removes element x from the set.
+  If element x does not exist, it raises a KeyError.
+  The .remove(x) operation returns None.
+
+  Example
+
+  >>> s = set([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  >>> s.remove(5)
+  >>> print s
+  set([1, 2, 3, 4, 6, 7, 8, 9])
+  >>> print s.remove(4)
+  None
+  >>> print s
+  set([1, 2, 3, 6, 7, 8, 9])
+  >>> s.remove(0)
+  KeyError: 0
+
+  .discard(x)
+
+  This operation also removes element x from the set.
+  If element x does not exist, it does not raise a KeyError.
+  The .discard(x) operation returns None.
+
+  Example
+
+  >>> s = set([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  >>> s.discard(5)
+  >>> print s
+  set([1, 2, 3, 4, 6, 7, 8, 9])
+  >>> print s.discard(4)
+  None
+  >>> print s
+  set([1, 2, 3, 6, 7, 8, 9])
+  >>> s.discard(0)
+  >>> print s
+  set([1, 2, 3, 6, 7, 8, 9])
+
+  .pop()
+
+  This operation removes and return an arbitrary element from the set.
+  If there are no elements to remove, it raises a KeyError.
+
+  Example
+
+  >>> s = set([1])
+  >>> print s.pop()
+  1
+  >>> print s
+  set([])
+  >>> print s.pop()
+  KeyError: pop from an empty set
+
+  =====Problem Statement=====
+  You have a non-empty set s, and you have to execute N commands given in N lines.
+  The commands will be pop, remove and discard. 
+
+  =====Input Format=====
+  The first line contains integer n, the number of elements in the set s.
+  The second line contains n space separated elements of set s. All of the elements are non-negative integers, less than or equal to 9.
+  The third line contains integer N, the number of commands.
+  The next N lines contains either pop, remove and/or discard commands followed by their associated value.
+
+  =====Constraints=====
+  0 < n < 20
+  0 < N < 20
+
+  =====Output Format====
+  Print the sum of the elements of set s on a single line.
+vc-preamble: |
+  import Imports.AllImports
+
+  def sumSet (s : SetInt) : Int := sorry
+  def process_set_commands (elements : List Int) (commands : List String) : Int := sorry
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def pop_element_from_set (s : SetInt) : SetInt := sorry
+  def contains (s : SetInt) (x : Int) : Bool := sorry
+vc-theorems: |-
+  theorem pop_reduces_size (elements : List Int) (h : elements ≠ []) : 
+    let s := SetInt.mk elements
+    let after_pop := pop_element_from_set s
+    List.length after_pop.elements = List.length s.elements - 1 ∧ 
+    process_set_commands elements ["pop"] = sumSet after_pop := sorry
+
+
+  theorem remove_vs_discard (elements : List Int) (value : Int) :
+    let s := SetInt.mk elements
+    let remove_result := process_set_commands elements [s!"remove {value}"]
+    let discard_result := process_set_commands elements [s!"discard {value}"]
+    if contains s value then
+      remove_result = discard_result
+    else
+      discard_result = sumSet s := sorry
+
+
+  theorem limited_pops (elements : List Int) (num_pops : Nat) 
+    (h1 : elements ≠ []) 
+    (h2 : List.length elements > num_pops)
+    (h3 : num_pops ≤ 3) :
+    let commands := List.replicate num_pops "pop"
+    let s := SetInt.mk elements
+    let result := process_set_commands elements commands
+    let final_set := (List.foldl (fun acc _ => pop_element_from_set acc) s commands)
+    result = sumSet final_set := sorry
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded

@@ -1,26 +1,72 @@
-"vc-description": "### Combine strings function\n```if:coffeescript,haskell,javascript\n\
-  Create a function named `combineNames` that accepts two parameters (first and last\
-  \ name). The function should return the full name.\n```\n```if:python,ruby\nCreate\
-  \ a function named (`combine_names`) that accepts two parameters (first and last\
-  \ name). The function should return the full name.\n```\n```if:csharp\nCreate a\
-  \ function named (`Combine_names`) that accepts two parameters (first and last name).\
-  \ The function should return the full name.\n```\n\nExample: \n```python\ncombine_names('James',\
-  \ 'Stevens')\n```\nreturns:\n```python\n'James Stevens'\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def combine_names (first last : String) : String := sorry\n\ntheorem\
-  \ combine_names_type (first last : String) :\n  first.length > 0 → last.length >\
-  \ 0 →\n  combine_names first last = combine_names first last :=\nsorry\n"
-"vc-theorems": "theorem combine_names_starts_ends (first last : String) :\n  first.length\
-  \ > 0 → last.length > 0 →\n  String.startsWith (combine_names first last) first\
-  \ ∧\n  String.endsWith (combine_names first last) last :=\nsorry\n\n\ntheorem combine_names_space_count\
-  \ (first last : String) :\n  first.length > 0 → last.length > 0 →\n  String.length\
-  \ (String.replace (combine_names first last) \" \" \"\") + 1 = \n  String.length\
-  \ (combine_names first last) :=\nsorry\n\n\ntheorem combine_names_length (first\
-  \ last : String) :\n  first.length > 0 → last.length > 0 →\n  String.length (combine_names\
-  \ first last) = String.length first + String.length last + 1 :=\nsorry\n\n/--\n\
-  info: 'James Stevens'\n-/\n#guard_msgs in\n#eval combine_names \"James\" \"Stevens\"\
-  \n\n/--\ninfo: 'Davy Back'\n-/\n#guard_msgs in\n#eval combine_names \"Davy\" \"\
-  Back\"\n\n/--\ninfo: 'Arthur Dent'\n-/\n#guard_msgs in\n#eval combine_names \"Arthur\"\
-  \ \"Dent\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  ### Combine strings function
+  ```if:coffeescript,haskell,javascript
+  Create a function named `combineNames` that accepts two parameters (first and last name). The function should return the full name.
+  ```
+  ```if:python,ruby
+  Create a function named (`combine_names`) that accepts two parameters (first and last name). The function should return the full name.
+  ```
+  ```if:csharp
+  Create a function named (`Combine_names`) that accepts two parameters (first and last name). The function should return the full name.
+  ```
+
+  Example: 
+  ```python
+  combine_names('James', 'Stevens')
+  ```
+  returns:
+  ```python
+  'James Stevens'
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def combine_names (first last : String) : String := sorry
+
+  theorem combine_names_type (first last : String) :
+    first.length > 0 → last.length > 0 →
+    combine_names first last = combine_names first last :=
+  sorry
+vc-theorems: |
+  theorem combine_names_starts_ends (first last : String) :
+    first.length > 0 → last.length > 0 →
+    String.startsWith (combine_names first last) first ∧
+    String.endsWith (combine_names first last) last :=
+  sorry
+
+
+  theorem combine_names_space_count (first last : String) :
+    first.length > 0 → last.length > 0 →
+    String.length (String.replace (combine_names first last) " " "") + 1 = 
+    String.length (combine_names first last) :=
+  sorry
+
+
+  theorem combine_names_length (first last : String) :
+    first.length > 0 → last.length > 0 →
+    String.length (combine_names first last) = String.length first + String.length last + 1 :=
+  sorry
+
+  /--
+  info: 'James Stevens'
+  -/
+  #guard_msgs in
+  #eval combine_names "James" "Stevens"
+
+  /--
+  info: 'Davy Back'
+  -/
+  #guard_msgs in
+  #eval combine_names "Davy" "Back"
+
+  /--
+  info: 'Arthur Dent'
+  -/
+  #guard_msgs in
+  #eval combine_names "Arthur" "Dent"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

@@ -1,24 +1,58 @@
-"vc-description": "Write a function that gets a sequence and value and returns `true/false`\
-  \ depending on whether the variable exists in a multidimentional sequence.\n\nExample:\n\
-  ```\nlocate(['a','b',['c','d',['e']]],'e'); // should return true\nlocate(['a','b',['c','d',['e']]],'a');\
-  \ // should return true\nlocate(['a','b',['c','d',['e']]],'f'); // should return\
-  \ false\n```"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def locate {α : Type u} [BEq α] : NestedList α → α → Bool := \n\
-  \  sorry\n"
-"vc-theorems": "theorem locate_returns_bool {α : Type u} [BEq α] (seq : NestedList\
-  \ α) (value : α) :\n  locate seq value = true ∨ locate seq value = false :=\nsorry\n\
-  \n\ntheorem locate_finds_root_value {α : Type u} [BEq α] (seq : List (NestedList\
-  \ α)) (value : α) :\n  locate (NestedList.list (seq ++ [NestedList.elem value]))\
-  \ value = true :=\nsorry\n\n\ntheorem locate_handles_missing_value {α : Type u}\
-  \ [BEq α] (seq : List (NestedList α)) (value : α)\n  (h : ∀ x ∈ seq, ¬∃ inner, x\
-  \ = NestedList.list inner) : \n  (∀ x ∈ seq, x ≠ NestedList.elem value) → locate\
-  \ (NestedList.list seq) value = false :=\nsorry\n\n\ntheorem locate_finds_nested_value\
-  \ {α : Type u} [BEq α] (seq : NestedList α) (value : α) :\n  locate (NestedList.list\
-  \ [seq, NestedList.list [NestedList.elem value]]) value = true := \nsorry\n\n/--\n\
-  info: True\n-/\n#guard_msgs in\n#eval locate [\"a\", \"b\", [\"c\", \"d\", [\"e\"\
-  ]]] \"a\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval locate [\"a\", \"b\", [\"\
-  c\", \"d\", [\"e\"]]] \"e\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval locate\
-  \ [\"a\", \"b\", [\"c\", \"d\", [\"e\"]]] \"f\"\n"
-"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"
+vc-description: |-
+  Write a function that gets a sequence and value and returns `true/false` depending on whether the variable exists in a multidimentional sequence.
+
+  Example:
+  ```
+  locate(['a','b',['c','d',['e']]],'e'); // should return true
+  locate(['a','b',['c','d',['e']]],'a'); // should return true
+  locate(['a','b',['c','d',['e']]],'f'); // should return false
+  ```
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def locate {α : Type u} [BEq α] : NestedList α → α → Bool := 
+    sorry
+vc-theorems: |
+  theorem locate_returns_bool {α : Type u} [BEq α] (seq : NestedList α) (value : α) :
+    locate seq value = true ∨ locate seq value = false :=
+  sorry
+
+
+  theorem locate_finds_root_value {α : Type u} [BEq α] (seq : List (NestedList α)) (value : α) :
+    locate (NestedList.list (seq ++ [NestedList.elem value])) value = true :=
+  sorry
+
+
+  theorem locate_handles_missing_value {α : Type u} [BEq α] (seq : List (NestedList α)) (value : α)
+    (h : ∀ x ∈ seq, ¬∃ inner, x = NestedList.list inner) : 
+    (∀ x ∈ seq, x ≠ NestedList.elem value) → locate (NestedList.list seq) value = false :=
+  sorry
+
+
+  theorem locate_finds_nested_value {α : Type u} [BEq α] (seq : NestedList α) (value : α) :
+    locate (NestedList.list [seq, NestedList.list [NestedList.elem value]]) value = true := 
+  sorry
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval locate ["a", "b", ["c", "d", ["e"]]] "a"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval locate ["a", "b", ["c", "d", ["e"]]] "e"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval locate ["a", "b", ["c", "d", ["e"]]] "f"
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded

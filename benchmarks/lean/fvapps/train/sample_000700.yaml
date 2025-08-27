@@ -1,39 +1,100 @@
-"vc-description": "-----Problem-----\n\nSuppose there is a circle. There are N Juice\
-  \ shops on that circle. Juice shops are numbered 0 to N-1 (both inclusive). You\
-  \ have two pieces of information corresponding to each of the juice shop:\n(1) the\
-  \ amount of Juice that a particular Juice shop can provide and \n(2) the distance\
-  \ from that juice shop to the next juice shop.\n\nInitially, there is a man with\
-  \ a bottle of infinite capacity carrying no juice. He can start the tour at any\
-  \ of the juice shops. Calculate the first point from where the man will be able\
-  \ to complete the circle. Consider that the man will stop at every Juice Shop. The\
-  \ man will move one kilometer for each litre of the juice.\n\n-----Input-----\n\
-  - \nThe first line will contain the value of N.\n\t\t\t\t\n- \nThe next N lines\
-  \ will contain a pair of integers each, i.e. the amount of juice that a juice shop\
-  \ can provide(in litres) and the distance between that juice shop and the next juice\
-  \ shop.\n\t\t\t\t\n\n-----Output-----\n\nAn integer which will be the smallest index\
-  \ of the juice shop from which he can start the tour.\n\t\t\n\n-----Constraints-----\n\
-  - \n\t\t\t\t\t1 ≤ N ≤ 105\n- \n\t\t\t\t\t1 ≤ amt of juice, distance  ≤ 109\n\n-----Sample\
-  \ Input-----\n3\n\n1 5\n\n10 3\n\n3 4\n\n-----Sample Output-----\n1\n\n-----Explanation-----\n\
-  \n\t\t\tHe can start the tour from the SECOND Juice shop.\n\t\t p { text-align:justify\
-  \ }"
-"vc-preamble": "import Imports.AllImports"
-"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
-"vc-definitions": "def findStartingJuiceShop (juices : List Nat) (distances : List\
-  \ Nat) : Int := sorry\n\ntheorem empty_input_result : \n  (juices : List Nat) →\
-  \ (distances : List Nat) →\n  juices.length = 0 ∨ distances.length = 0 →\n  findStartingJuiceShop\
-  \ juices distances = -1 := sorry\n"
-"vc-theorems": "theorem valid_index_result :\n  (juices : List Nat) → (distances :\
-  \ List Nat) →\n  juices.length = distances.length →\n  let result := findStartingJuiceShop\
-  \ juices distances\n  result = -1 ∨ (0 ≤ result ∧ result < juices.length) := sorry\n\
-  \n\ntheorem solution_properties :\n  (juices : List Nat) → (distances : List Nat)\
-  \ →\n  juices.length = distances.length →\n  juices.length > 0 →\n  let result :=\
-  \ findStartingJuiceShop juices distances\n  result ≠ -1 →\n  ∀ i : Nat, i < juices.length\
-  \ →\n    let startPos := result.toNat\n    let currentPos := (startPos + i) % juices.length\n\
-  \    let remainingJuice := (List.range i).foldl\n      (fun acc j => \n        let\
-  \ pos := (startPos + j) % juices.length\n        acc + juices[pos]! - distances[pos]!)\n\
-  \      0\n    i < juices.length - 1 → remainingJuice ≥ 0 := sorry\n\n/--\ninfo:\
-  \ 1\n-/\n#guard_msgs in\n#eval find_starting_juice_shop [1, 10, 3] [5, 3, 4]\n\n\
-  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_starting_juice_shop [5, 2, 3] [4, 3,\
-  \ 2]\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval find_starting_juice_shop [1, 2,\
-  \ 3] [4, 5, 6]\n"
-"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"
+vc-description: |-
+  -----Problem-----
+
+  Suppose there is a circle. There are N Juice shops on that circle. Juice shops are numbered 0 to N-1 (both inclusive). You have two pieces of information corresponding to each of the juice shop:
+  (1) the amount of Juice that a particular Juice shop can provide and 
+  (2) the distance from that juice shop to the next juice shop.
+
+  Initially, there is a man with a bottle of infinite capacity carrying no juice. He can start the tour at any of the juice shops. Calculate the first point from where the man will be able to complete the circle. Consider that the man will stop at every Juice Shop. The man will move one kilometer for each litre of the juice.
+
+  -----Input-----
+  - 
+  The first line will contain the value of N.
+  				
+  - 
+  The next N lines will contain a pair of integers each, i.e. the amount of juice that a juice shop can provide(in litres) and the distance between that juice shop and the next juice shop.
+  				
+
+  -----Output-----
+
+  An integer which will be the smallest index of the juice shop from which he can start the tour.
+  		
+
+  -----Constraints-----
+  - 
+  					1 ≤ N ≤ 105
+  - 
+  					1 ≤ amt of juice, distance  ≤ 109
+
+  -----Sample Input-----
+  3
+
+  1 5
+
+  10 3
+
+  3 4
+
+  -----Sample Output-----
+  1
+
+  -----Explanation-----
+
+  			He can start the tour from the SECOND Juice shop.
+  		 p { text-align:justify }
+vc-preamble: |-
+  import Imports.AllImports
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+vc-definitions: |
+  def findStartingJuiceShop (juices : List Nat) (distances : List Nat) : Int := sorry
+
+  theorem empty_input_result : 
+    (juices : List Nat) → (distances : List Nat) →
+    juices.length = 0 ∨ distances.length = 0 →
+    findStartingJuiceShop juices distances = -1 := sorry
+vc-theorems: |
+  theorem valid_index_result :
+    (juices : List Nat) → (distances : List Nat) →
+    juices.length = distances.length →
+    let result := findStartingJuiceShop juices distances
+    result = -1 ∨ (0 ≤ result ∧ result < juices.length) := sorry
+
+
+  theorem solution_properties :
+    (juices : List Nat) → (distances : List Nat) →
+    juices.length = distances.length →
+    juices.length > 0 →
+    let result := findStartingJuiceShop juices distances
+    result ≠ -1 →
+    ∀ i : Nat, i < juices.length →
+      let startPos := result.toNat
+      let currentPos := (startPos + i) % juices.length
+      let remainingJuice := (List.range i).foldl
+        (fun acc j => 
+          let pos := (startPos + j) % juices.length
+          acc + juices[pos]! - distances[pos]!)
+        0
+      i < juices.length - 1 → remainingJuice ≥ 0 := sorry
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_starting_juice_shop [1, 10, 3] [5, 3, 4]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_starting_juice_shop [5, 2, 3] [4, 3, 2]
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval find_starting_juice_shop [1, 2, 3] [4, 5, 6]
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
