@@ -1,0 +1,31 @@
+"vc-description": "When multiple master devices are connected to a single bus (https://en.wikipedia.org/wiki/System_bus),\
+  \ there needs to be an arbitration in order to choose which of them can have access\
+  \ to the bus (and 'talk' with a slave).\n\nWe implement here a very simple model\
+  \ of bus mastering. Given `n`, a number representing the number of **masters** connected\
+  \ to the bus, and a fixed priority order (the first master has more access priority\
+  \ than the second and so on...), the task is to choose the selected master.\nIn\
+  \ practice, you are given a string `inp` of length `n` representing the `n` masters'\
+  \ requests to get access to the bus, and you should return a string representing\
+  \ the masters, showing which (only one) of them was granted access:\n\n```\nThe\
+  \ string 1101 means that master 0, master 1 and master 3 have requested\naccess\
+  \ to the bus. \nKnowing that master 0 has the greatest priority, the output of the\
+  \ function should be: 1000\n```\n\n## Examples\n\n## Notes\n\n* The resulting string\
+  \ (`char* `) should be allocated in the `arbitrate` function, and will be free'ed\
+  \ in the tests.\n\n* `n` is always greater or equal to 1."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def arbitrate (s : String) (n : Nat) : String := sorry\n\ntheorem\
+  \ arbitrate_all_zeros (n : Nat) (h : 0 < n) :\n  arbitrate (String.mk (List.replicate\
+  \ n '0')) n = String.mk (List.replicate n '0') := sorry\n"
+"vc-theorems": "theorem arbitrate_single_one (n i : Nat) (h1 : 0 < n) (h2 : i < n)\
+  \ :\n  arbitrate (String.mk (List.replicate i '0' ++ '1' :: List.replicate (n -\
+  \ i - 1) '0')) n = \n  String.mk (List.replicate i '0' ++ '1' :: List.replicate\
+  \ (n - i - 1) '0') := sorry\n\n\ntheorem arbitrate_single_one_count (n i : Nat)\
+  \ (h1 : 0 < n) (h2 : i < n) :\n  ((arbitrate (String.mk (List.replicate i '0' ++\
+  \ '1' :: List.replicate (n - i - 1) '0')) n).data.filter (· = '1')).length = 1 :=\
+  \ sorry\n\n\ntheorem arbitrate_all_ones (n : Nat) (h : 0 < n) :\n  arbitrate (String.mk\
+  \ (List.replicate n '1')) n = \n  String.mk ('1' :: List.replicate (n - 1) '0')\
+  \ := sorry\n\n/--\ninfo: '001000000'\n-/\n#guard_msgs in\n#eval arbitrate \"001000101\"\
+  \ 9\n\n/--\ninfo: '000000100'\n-/\n#guard_msgs in\n#eval arbitrate \"000000101\"\
+  \ 9\n\n/--\ninfo: '0000'\n-/\n#guard_msgs in\n#eval arbitrate \"0000\" 4\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

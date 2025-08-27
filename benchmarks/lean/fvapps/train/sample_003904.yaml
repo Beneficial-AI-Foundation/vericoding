@@ -1,0 +1,20 @@
+"vc-description": "Given a random string consisting of numbers, letters, symbols,\
+  \ you need to sum up the numbers in the string. \n\nNote:\n\n- Consecutive integers\
+  \ should be treated as a single number. eg, `2015` should be treated as a single\
+  \ number `2015`, NOT four numbers\n- All the numbers should be treaded as positive\
+  \ integer. eg, `11-14` should be treated as two numbers `11` and `14`. Same as `3.14`,\
+  \ should be treated as two numbers `3` and `14`\n- If no number was given in the\
+  \ string, it should return `0`\n\n\nExample:\n\n```\nstr = \"In 2015, I want to\
+  \ know how much does iPhone 6+ cost?\"\n```\n\n The numbers are `2015`, `6`\n\n\
+  Sum is `2021`."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat \n  | []\
+  \ => 0\n  | (x::xs) => x + sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum_from_string (s : String) : Nat :=\n  sorry\n\n\n\n\n"
+"vc-theorems": "theorem sum_single_number (n : Nat) :\n  sum_from_string (toString\
+  \ n) = n :=\n  sorry\n\n\ntheorem sum_empty_string :\n  sum_from_string \"\" = 0\
+  \ :=\n  sorry\n\n/--\ninfo: 2021\n-/\n#guard_msgs in\n#eval sum_from_string \"In\
+  \ 2015, I want to know how much does iPhone 6+ cost?\"\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval sum_from_string \"1+1=2\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ sum_from_string \"Hello World\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,22 @@
+"vc-description": "The \"Russian Peasant Method\" is an old algorithm used by Russian\
+  \ peasants (and before them ancient Egyptians) to perform multiplication.  Consider\
+  \ that X and Y are two numbers.  X can be any number but Y must be a positive integer.\
+  \ To multiply X and Y:\n\n1. Let the product = 0\n2. If Y is odd, then the product\
+  \ = product + X\n3. X = X + X\n4. Y = integer part of Y / 2 \n5. if Y is nonzero,\
+  \ repeat from step 2; otherwise the algorithm terminates and returns the product.\n\
+  \nFor example:\n\nLet X = 10\n\nLet Y = 5\n\nX: 10 20 40 80\n\nY: 5  2  1  0\n\n\
+  product = 10 + 40 = 50\n\nNote: usage of multiplication is of course forbidden..."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def russian_peasant_multiplication (a : Int) (b : Nat) : Int :=\
+  \ sorry\n\ntheorem russian_peasant_matches_multiplication {a : Int} {b : Nat} \n\
+  \  (h1 : -10 ≤ a ∧ a ≤ 10) (h2 : b ≤ 10) :\n  russian_peasant_multiplication a b\
+  \ = a * b := sorry\n"
+"vc-theorems": "theorem russian_peasant_multiply_zero_left :\n  ∀ n : Nat, russian_peasant_multiplication\
+  \ 0 n = 0 := sorry\n\n\ntheorem russian_peasant_multiply_zero_right {n : Nat} :\n\
+  \  russian_peasant_multiplication n (Nat.zero) = 0 := sorry\n\n\ntheorem russian_peasant_small_nums_1\
+  \ :\n  russian_peasant_multiplication 2 3 = 6 := sorry\n\n\ntheorem russian_peasant_small_nums_2\
+  \ :\n  russian_peasant_multiplication 5 4 = 20 := sorry\n\n/--\ninfo: 50\n-/\n#guard_msgs\
+  \ in\n#eval russian_peasant_multiplication 10 5\n\n/--\ninfo: 3150\n-/\n#guard_msgs\
+  \ in\n#eval russian_peasant_multiplication 175 18\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

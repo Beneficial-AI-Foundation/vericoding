@@ -1,0 +1,17 @@
+"vc-description": "If Give an integer N . Write a program to obtain the sum of the\
+  \ first and last digits of this number.\n\n-----Input-----\n\nThe first line contains\
+  \ an integer T, the total number of test cases. Then follow T lines, each line contains\
+  \ an integer N. \n\n-----Output-----\nFor each test case, display the sum of first\
+  \ and last digits of N in a new line.\n\n-----Constraints-----\n- 1 ≤ T ≤ 1000\n\
+  - 1 ≤ N ≤ 1000000\n\n-----Example-----\nInput\n3 \n1234\n124894\n242323\n\nOutput\n\
+  5\n5\n5"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sumFirstLastDigit (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem sum_first_last_digit_in_range (n : Nat) (h : n > 0) :\n  let\
+  \ result := sumFirstLastDigit n\n  result ≥ 0 ∧ result ≤ 18\n  := sorry\n\n\ntheorem\
+  \ single_digit_sum_is_double (n : Nat) (h1 : n > 0) (h2 : n ≤ 9) :\n  sumFirstLastDigit\
+  \ n = n + n\n  := sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval sum_first_last_digit\
+  \ 1234\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval sum_first_last_digit 124894\n\n\
+  /--\ninfo: 5\n-/\n#guard_msgs in\n#eval sum_first_last_digit 242323\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

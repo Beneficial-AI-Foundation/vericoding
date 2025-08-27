@@ -1,0 +1,19 @@
+"vc-description": "The Hamming distance between two integers is the number of positions\
+  \ at which the corresponding bits are different.\n\nGiven two integers x and y,\
+  \ calculate the Hamming distance.\n\nNote:\n0 ≤ x, y < 231.\n\n\nExample:\n\nInput:\
+  \ x = 1, y = 4\n\nOutput: 2\n\nExplanation:\n1   (0 0 0 1)\n4   (0 1 0 0)\n    \
+  \   ↑   ↑\n\nThe above arrows point to positions where the corresponding bits are\
+  \ different."
+"vc-preamble": "import Imports.AllImports\n\ndef hammingDistance (x y : Nat) : Nat\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def bitLength (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem hamming_distance_symmetry (x y : Nat) :\n  hammingDistance\
+  \ x y = hammingDistance y x :=\nsorry\n\n\ntheorem hamming_distance_self (x : Nat)\
+  \ :\n  hammingDistance x x = 0 :=\nsorry\n\n\ntheorem hamming_distance_nonnegative\
+  \ (x y : Nat) :\n  hammingDistance x y ≥ 0 :=\nsorry\n\n\ntheorem hamming_distance_upper_bound\
+  \ (x y : Nat) :\n  hammingDistance x y ≤ max (bitLength x) (bitLength y) :=\nsorry\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval hamming_distance 1 4\n\n/--\ninfo: 1\n\
+  -/\n#guard_msgs in\n#eval hamming_distance 3 1\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval hamming_distance 0 7\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

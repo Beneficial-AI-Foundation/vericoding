@@ -1,0 +1,27 @@
+"vc-description": "### Description\nAs hex values can include letters `A` through\
+  \ to `F`, certain English words can be spelled out, such as `CAFE`, `BEEF`, or `FACADE`.\n\
+  This vocabulary can be extended by using numbers to represent other letters, such\
+  \ as `5EAF00D`, or `DEC0DE5`.\n\nGiven a string, your task is to return the decimal\
+  \ sum of all words in the string that can be interpreted as such hex values.\n\n\
+  \n### Example\n\nWorking with the string `BAG OF BEES`:  \n* `BAG` ==> `0` as it\
+  \ is not a valid hex value  \n* `OF` ==> `0F` ==> `15`  \n* `BEES` ==> `BEE5` ==>\
+  \ `48869`\n\nSo `hex_word_sum('BAG OF BEES')` returns the sum of these, `48884`.\n\
+  \n\n### Notes\n* Inputs are all uppercase and contain no punctuation\n* `0` can\
+  \ be substituted for `O`\n* `5` can be substituted for `S`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def hexWordSum (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem hex_word_sum_output_type (s : String) :\n  let result := hexWordSum\
+  \ s\n  result ≥ 0 := by sorry\n\n\ntheorem hex_word_sum_mixed_strings_valid (s :\
+  \ String) :\n  let result := hexWordSum s\n  result ≥ 0 := by sorry\n\n\ntheorem\
+  \ hex_word_substitutions (word : String) :\n  let converted := word.replace \"O\"\
+  \ \"0\" |>.replace \"S\" \"5\"\n  (∀ c ∈ converted.toList, c ∈ ['0', '1', '2', '3',\
+  \ '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']) →\n  hexWordSum word\
+  \ = String.toNat! converted := by sorry\n\n\ntheorem hex_word_sum_empty :\n  hexWordSum\
+  \ \"\" = 0 ∧ hexWordSum \"   \" = 0 := by sorry\n\n\ntheorem hex_word_sum_invalid_chars\
+  \ (s : String) :\n  (∀ c ∈ s.toList, c ∉ ['0', '1', '2', '3', '4', '5', '6', '7',\
+  \ '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'O', 'S']) →\n  hexWordSum s = 0 := by\
+  \ sorry\n\n/--\ninfo: 14613198\n-/\n#guard_msgs in\n#eval hex_word_sum \"DEFACE\"\
+  \n\n/--\ninfo: 23294\n-/\n#guard_msgs in\n#eval hex_word_sum \"SAFE\"\n\n/--\ninfo:\
+  \ 49374\n-/\n#guard_msgs in\n#eval hex_word_sum \"CODE\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

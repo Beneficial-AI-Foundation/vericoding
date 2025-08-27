@@ -1,0 +1,28 @@
+"vc-description": "A [Narcissistic Number](https://en.wikipedia.org/wiki/Narcissistic_number)\
+  \ is a positive number which is the sum of its own digits, each raised to the power\
+  \ of the number of digits in a given base. In this Kata, we will restrict ourselves\
+  \ to decimal (base 10).\n\nFor example, take 153 (3 digits):\n```\n    1^3 + 5^3\
+  \ + 3^3 = 1 + 125 + 27 = 153\n```\nand 1634 (4 digits):\n```\n    1^4 + 6^4 + 3^4\
+  \ + 4^4 = 1 + 1296 + 81 + 256 = 1634\n```\n\nThe Challenge:\n\nYour code must return\
+  \ **true or false** depending upon whether the given number is a Narcissistic number\
+  \ in base 10.\n\nError checking for text strings or other invalid inputs is not\
+  \ required, only valid positive non-zero integers will be passed into the function."
+"vc-preamble": "import Imports.AllImports\n\ndef narcissistic (n : Nat) : Bool :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def digit_power_sum (n : Nat) : Nat :=\n  sorry\n\n-- For any natural\
+  \ number, narcissistic returns a boolean"
+"vc-theorems": "theorem narcissistic_returns_bool (n : Nat) :\n  ∃ (b : Bool), narcissistic\
+  \ n = b :=\n  sorry \n\n-- The narcissistic function returns true when the sum of\
+  \ each digit raised to \n-- the power of number of digits equals the original number\n\
+  \ntheorem narcissistic_digit_power_sum (n : Nat) :\n  narcissistic n = (n = digit_power_sum\
+  \ n) :=\n  sorry\n\n-- Known narcissistic numbers\n\ntheorem known_narcissistic_numbers\
+  \ :\n  narcissistic 0 = true ∧ \n  narcissistic 1 = true ∧\n  narcissistic 2 = true\
+  \ ∧\n  narcissistic 3 = true ∧\n  narcissistic 4 = true ∧\n  narcissistic 5 = true\
+  \ ∧\n  narcissistic 6 = true ∧\n  narcissistic 7 = true ∧\n  narcissistic 8 = true\
+  \ ∧\n  narcissistic 9 = true ∧\n  narcissistic 153 = true ∧\n  narcissistic 370\
+  \ = true ∧\n  narcissistic 371 = true ∧\n  narcissistic 407 = true :=\n  sorry\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval narcissistic 153\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval narcissistic 1634\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval narcissistic 123\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

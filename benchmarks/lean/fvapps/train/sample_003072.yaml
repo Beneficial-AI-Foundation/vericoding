@@ -1,0 +1,28 @@
+"vc-description": "As part of this Kata, you need to find the length of the sequence\
+  \ in an array, between the first and the second occurrence of a specified number.\n\
+  \nFor example, for a given array `arr`\n\n    [0, -3, 7, 4, 0, 3, 7, 9]\n    \n\
+  Finding length between two `7`s like\n    \n    lengthOfSequence([0, -3, 7, 4, 0,\
+  \ 3, 7, 9], 7)\n    \nwould return `5`.\n\nFor sake of simplicity, there will only\
+  \ be numbers (positive or negative) in the supplied array.\n\nIf there are less\
+  \ or more than two occurrences of the number to search for, return `0`, or in Haskell,\
+  \ `Nothing`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def length_of_sequence (arr : List Int) (n : Int) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem length_of_sequence_non_negative (arr : List Int) (n : Int)\
+  \ :\n  length_of_sequence arr n ≥ 0 :=\n  sorry \n\n\ntheorem length_of_sequence_exactly_two_occurrences\
+  \ (arr : List Int) (n : Int) :\n  (arr.count n = 2) →\n  length_of_sequence arr\
+  \ n > 0 ∧\n  ∃ first second : Nat,\n    first < arr.length ∧\n    second < arr.length\
+  \ ∧\n    second > first ∧ \n    arr[first]! = n ∧\n    arr[second]! = n ∧\n    length_of_sequence\
+  \ arr n = second - first + 1 :=\n  sorry\n\n\ntheorem length_of_sequence_not_two_occurrences\
+  \ (arr : List Int) (n : Int) :\n  (arr.count n ≠ 2) →\n  length_of_sequence arr\
+  \ n = 0 :=\n  sorry\n\n\ntheorem length_of_sequence_adjacent_elements {arr : List\
+  \ Int} {n : Int} \n  (h : arr.length ≥ 1) : \n  let arr' := n :: arr\n  (arr'.count\
+  \ n = 2) →\n  length_of_sequence arr' n = 2 :=\n  sorry\n\n\ntheorem length_of_sequence_missing_element\
+  \ {arr : List Int} (n : Int)\n  (h : ∀ x ∈ arr, x < n) :\n  length_of_sequence arr\
+  \ n = 0 :=\n  sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval length_of_sequence\
+  \ [1] 0\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval length_of_sequence [1] 1\n\n\
+  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval length_of_sequence [-7, 3, -7, -7, 2, 1]\
+  \ -7\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval length_of_sequence [0, -3, 7, 4,\
+  \ 0, 3, 7, 9] 7\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

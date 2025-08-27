@@ -1,0 +1,15 @@
+"vc-description": "Write a function that when given a number >= 0, returns an Array\
+  \ of ascending length subarrays.\n\n```\npyramid(0) => [ ]\npyramid(1) => [ [1]\
+  \ ]\npyramid(2) => [ [1], [1, 1] ]\npyramid(3) => [ [1], [1, 1], [1, 1, 1] ]\n```\n\
+  \n**Note:** the subarrays should be filled with `1`s"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pyramid (n : Int) : List (List Nat) := sorry\n\ntheorem pyramid_length\
+  \ {n : Nat} : \n  List.length (pyramid n) = n := sorry\n"
+"vc-theorems": "theorem pyramid_row_length {n : Nat} {i : Nat} :\n  i < n → List.length\
+  \ (List.get! (pyramid n) i) = i + 1 := sorry\n\n\ntheorem pyramid_all_ones {n :\
+  \ Nat} : \n  ∀ row ∈ pyramid n, ∀ x ∈ row, x = 1 := sorry\n\n/--\ninfo: []\n-/\n\
+  #guard_msgs in\n#eval pyramid 0\n\n/--\ninfo: [[1]]\n-/\n#guard_msgs in\n#eval pyramid\
+  \ 1\n\n/--\ninfo: [[1], [1, 1]]\n-/\n#guard_msgs in\n#eval pyramid 2\n\n/--\ninfo:\
+  \ [[1], [1, 1], [1, 1, 1]]\n-/\n#guard_msgs in\n#eval pyramid 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

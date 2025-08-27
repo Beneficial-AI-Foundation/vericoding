@@ -1,0 +1,41 @@
+"vc-description": "Note : Issues Fixed with python 2.7.6 , Use any one you like :D\
+  \ , ( Thanks to \n\nTime , time , time . Your task is to write a function that will\
+  \ return the degrees on a analog clock from a digital time that is passed in as\
+  \ parameter . The digital time is type string and will be in the format 00:00 .\
+  \ You also need to return the degrees on the analog clock in type string and format\
+  \ 360:360 . Remember to round of the degrees . Remeber the basic time rules and\
+  \ format like 24:00 = 00:00 and 12:60 = 13:00 . Create your own validation that\
+  \ should return \"Check your time !\" in any case the time is incorrect or the format\
+  \ is wrong , remember this includes passing in negatives times like \"-01:-10\"\
+  .\n``` \nA few examples :\nclock_degree(\"00:00\") will return : \"360:360\"\nclock_degree(\"\
+  01:01\") will return : \"30:6\"\nclock_degree(\"00:01\") will return : \"360:6\"\
+  \nclock_degree(\"01:00\") will return : \"30:360\"\nclock_degree(\"01:30\") will\
+  \ return : \"30:180\"\nclock_degree(\"24:00\") will return : \"Check your time !\"\
+  \nclock_degree(\"13:60\") will return : \"Check your time !\"\nclock_degree(\"20:34\"\
+  ) will return : \"240:204\"\n```\nRemember that discrete hour hand movement is required\
+  \ - snapping to each hour position and also coterminal angles are not allowed. Goodluck\
+  \ and Enjoy !"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def clock_degree (time: String): String := sorry\n\ntheorem valid_time_degree_bounds\
+  \ \n  (h: Nat) (m: Nat) \n  (h_valid: h ≤ 23)\n  (m_valid: m ≤ 59)\n  (result: String)\n\
+  \  (h_result: result = clock_degree s!\"{h}:{m}\")\n  (h_not_check: result ≠ \"\
+  Check your time !\")\n  (hours minutes: String)\n  (h_split: result.splitOn \":\"\
+  \ = [hours, minutes]): \n  0 ≤ hours.toNat! ∧ hours.toNat! ≤ 360 ∧ \n  0 ≤ minutes.toNat!\
+  \ ∧ minutes.toNat! ≤ 360 := sorry\n"
+"vc-theorems": "theorem invalid_format_check\n  (s: String)\n  (h_invalid: ¬s.contains\
+  \ ':' ∨ ¬(s.splitOn \":\").all (·.all Char.isDigit)):\n  clock_degree s = \"Check\
+  \ your time !\" := sorry\n\n\ntheorem zero_time:\n  clock_degree \"00:00\" = \"\
+  360:360\" := sorry\n\n\ntheorem hour_conversion_12hr\n  (h: Nat) (m: Nat)\n  (h_valid:\
+  \ h ≤ 11)\n  (m_valid: m ≤ 59)\n  (result: String)\n  (h_result: result = clock_degree\
+  \ s!\"{h}:{m}\")\n  (hours minutes: Nat)\n  (h_split: (result.splitOn \":\").map\
+  \ String.toNat! = [hours, minutes]):\n  (hours = 360 ∨ hours = h * 30) ∧\n  (minutes\
+  \ = 360 ∨ minutes = m * 6) := sorry\n\n\ntheorem hour_conversion_24hr\n  (h: Nat)\
+  \ (m: Nat)\n  (h_valid: 12 ≤ h ∧ h ≤ 23)\n  (m_valid: m ≤ 59)\n  (result: String)\n\
+  \  (h_result: result = clock_degree s!\"{h}:{m}\")\n  (hours minutes: Nat)\n  (h_split:\
+  \ (result.splitOn \":\").map String.toNat! = [hours, minutes]):\n  (hours = 360\
+  \ ∨ hours = (h % 12) * 30) ∧\n  (minutes = 360 ∨ minutes = m * 6) := sorry\n\n/--\n\
+  info: '30:6'\n-/\n#guard_msgs in\n#eval clock_degree \"01:01\"\n\n/--\ninfo: '360:360'\n\
+  -/\n#guard_msgs in\n#eval clock_degree \"00:00\"\n\n/--\ninfo: 'Check your time\
+  \ !'\n-/\n#guard_msgs in\n#eval clock_degree \"24:00\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

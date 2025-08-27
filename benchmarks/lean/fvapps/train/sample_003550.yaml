@@ -1,0 +1,32 @@
+"vc-description": "###Instructions\n\nA time period starting from ```'hh:mm'``` lasting\
+  \ until ```'hh:mm'``` is stored in an array:\n```\n['08:14', '11:34']\n```\nA set\
+  \ of different time periods is then stored in a 2D Array like so, each in its own\
+  \ sub-array:\n```\n[['08:14','11:34'], ['08:16','08:18'], ['22:18','01:14'], ['09:30','10:32'],\
+  \ ['04:23','05:11'], ['11:48','13:48'], ['01:12','01:14'], ['01:13','08:15']]\n\
+  ```\nWrite a function that will take a 2D Array like the above as argument and return\
+  \ a 2D Array of the argument's sub-arrays sorted in ascending order.\n\nTake note\
+  \ of the following:\n\n* The first time period starts at the earliest time  possible\
+  \ ```('00:00'+)```.\n* The next time period is the one that starts the soonest **after**\
+  \ the prior time period finishes. If several time periods begin at the same hour,\
+  \ pick the first one showing up in the original array.\n* The next time period can\
+  \ start the same time the last one finishes.\n\nThis:\n```\n[['08:14','11:34'],\
+  \ ['08:16','08:18'], ['13:48','01:14'], ['09:30','10:32'], ['04:23','05:11'], ['11:48','13:48'],\
+  \ ['01:12','01:14'], ['01:13','08:15']]\n```\nShould return:\n```\n[['01:12','01:14'],\
+  \ ['04:23','05:11'], ['08:14','11:34'], ['11:48','13:48'], ['13:48','01:14'], ['08:16','08:18'],\
+  \ ['09:30','10:32'], ['01:13','08:15']]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sort_time (pairs : List TimePair) : List TimePair :=\n  sorry\n"
+"vc-theorems": "theorem sort_time_length_preserving\n  (pairs : List TimePair) :\n\
+  \  List.length (sort_time pairs) = List.length pairs :=\n  sorry\n\n\ntheorem sort_time_elements_same\n\
+  \  (pairs : List TimePair) :\n  ∀ x, x ∈ sort_time pairs ↔ x ∈ pairs :=\n  sorry\n\
+  \n\ntheorem sort_time_valid_ordering\n  (pairs : List TimePair) \n  (i : Nat)\n\
+  \  (h₁ : i < List.length (sort_time pairs) - 1)\n  (h₂ : i < List.length (sort_time\
+  \ pairs))\n  (h₃ : i + 1 < List.length (sort_time pairs)) :\n  let result := sort_time\
+  \ pairs\n  let curr := result[i]'h₂\n  let next := result[i+1]'h₃\n  next.start\
+  \ < curr.end_ → curr.end_ > next.start :=\n  sorry\n\n\ntheorem sort_time_idempotent\n\
+  \  (pairs : List TimePair) :\n  sort_time (sort_time pairs) = sort_time pairs :=\n\
+  \  sorry\n\n\ntheorem sort_time_concatenation\n  (lists : List (List TimePair))\n\
+  \  (h : lists ≠ []) :\n  let flattened := List.join lists\n  sort_time flattened\
+  \ = sort_time (sort_time flattened) :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

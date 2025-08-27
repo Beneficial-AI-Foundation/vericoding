@@ -1,0 +1,14 @@
+"vc-description": "# Solve For X\n\nYou will be given an equation as a string and\
+  \ you will need to [solve for X](https://www.mathplacementreview.com/algebra/basic-algebra.php#solve-for-a-variable)\
+  \ and return x's value. For example: \n\n```python\nsolve_for_x('x - 5 = 20') #\
+  \ should return 25\nsolve_for_x('20 = 5 * x - 5') # should return 5\nsolve_for_x('5\
+  \ * x = x + 8') # should return 2\nsolve_for_x('(5 - 3) * x = x + 2') # should return\
+  \ 2\n```\n\nNOTES:\n * All numbers will be whole numbers\n * Don't forget about\
+  \ the [order of operations](https://www.mathplacementreview.com/algebra/basic-algebra.php#order-of-operations).\n\
+  \ * If the random tests don't pass the first time, just run them again."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_for_x (equation : String) : Int := sorry\n\ntheorem simple_equation\
+  \ (c : Int) (h : -50 ≤ c ∧ c ≤ 50) :\n  solve_for_x s!\"x={c}\" = c := sorry"
+"vc-theorems": ""
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

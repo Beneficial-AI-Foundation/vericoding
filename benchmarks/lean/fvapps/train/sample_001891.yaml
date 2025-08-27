@@ -1,0 +1,23 @@
+"vc-description": "Given a binary tree, return the postorder traversal of its nodes'\
+  \ values.\n\nExample:\n\n\nInput: [1,null,2,3]\n   1\n    \\\n     2\n    /\n  \
+  \ 3\n\nOutput: [3,2,1]\n\n\nFollow up: Recursive solution is trivial, could you\
+  \ do it iteratively?"
+"vc-preamble": "import Imports.AllImports\n\ndef postorder_traversal {α : Type} (t\
+  \ : Tree α) : List α := sorry\n\ndef build_tree {α : Type} (vals : List α) : Tree\
+  \ α := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_postorder {α : Type} (t : Tree α) : List α := sorry\n\n\
+  theorem empty_tree_postorder {α : Type} :\n  postorder_traversal (Tree.leaf : Tree\
+  \ α) = [] := sorry\n"
+"vc-theorems": "theorem postorder_matches_expected {α : Type} (vals : List α) :\n\
+  \  vals ≠ [] →\n  let tree := build_tree vals\n  postorder_traversal tree = get_postorder\
+  \ tree := sorry\n\n\ntheorem single_node_postorder {α : Type} (v : α) :\n  postorder_traversal\
+  \ (Tree.node v Tree.leaf Tree.leaf) = [v] := sorry\n\n\ntheorem two_nodes_left_postorder\
+  \ {α : Type} (v1 v2 : α) :\n  postorder_traversal (Tree.node v1 (Tree.node v2 Tree.leaf\
+  \ Tree.leaf) Tree.leaf) = [v2, v1] := sorry\n\n\ntheorem two_nodes_right_postorder\
+  \ {α : Type} (v1 v2 : α) :\n  postorder_traversal (Tree.node v1 Tree.leaf (Tree.node\
+  \ v2 Tree.leaf Tree.leaf)) = [v2, v1] := sorry\n\n/--\ninfo: [3, 2, 1]\n-/\n#guard_msgs\
+  \ in\n#eval postorder_traversal TreeNode(1)\n\n/--\ninfo: [2, 3, 1]\n-/\n#guard_msgs\
+  \ in\n#eval postorder_traversal TreeNode(1)\n\n/--\ninfo: []\n-/\n#guard_msgs in\n\
+  #eval postorder_traversal None\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

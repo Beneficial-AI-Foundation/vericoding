@@ -1,0 +1,37 @@
+"vc-description": "Late last night in the Tanner household, ALF was repairing his\
+  \ spaceship so he might get back to Melmac. Unfortunately for him, he forgot to\
+  \ put on the parking brake, and the spaceship took off during repair. Now it's hovering\
+  \ in space.\n\nALF has the technology to bring the spaceship home if he can lock\
+  \ on to its location.\n\nGiven a map:\n\n````\n..........\n..........\n..........\n\
+  .......X..\n..........\n..........\n````\n\nThe map will be given in the form of\
+  \ a string with \\n separating new lines. The bottom left of the map is [0, 0].\
+  \ X is ALF's spaceship.\n\nIn this example:\n\nIf you cannot find the spaceship,\
+  \ the result should be\n\n```\n\"Spaceship lost forever.\"\n```\n\nCan you help\
+  \ ALF?\n\n\nCheck out my other 80's Kids Katas:\n\n\n80's Kids #1: How Many Licks\
+  \ Does It Take\n80's Kids #2: Help Alf Find His Spaceship\n80's Kids #3: Punky Brewster's\
+  \ Socks\n80's Kids #4: Legends of the Hidden Temple\n80's Kids #5: You Can't Do\
+  \ That on Television\n80's Kids #6: Rock 'Em, Sock 'Em Robots\n80's Kids #7: She's\
+  \ a Small Wonder\n80's Kids #8: The Secret World of Alex Mack\n80's Kids #9: Down\
+  \ in Fraggle Rock \n80's Kids #10: Captain Planet"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_spaceship (astromap : String) : String ⊕ (Nat × Nat) :=\
+  \ sorry\n\ntheorem find_spaceship_returns_valid_coordinates_or_lost \n  (astromap\
+  \ : String) : \n  match find_spaceship astromap with\n  | Sum.inl msg => msg = \"\
+  Spaceship lost forever.\" ∧ ¬(astromap.contains 'X')\n  | Sum.inr (x, y) => \n \
+  \   -- coordinates are within bounds\n    let lines := astromap.splitOn \"\\n\"\n\
+  \    x < lines.head!.length ∧\n    y < lines.length \n  := sorry\n"
+"vc-theorems": "theorem find_spaceship_with_single_x_dimensions\n  (width height :\
+  \ Nat)\n  (h1 : width > 0)\n  (h2 : height > 0) :\n  find_spaceship (String.intercalate\
+  \ \"\\n\" ((List.replicate (height-1) (String.mk (List.replicate width '.'))) ++\
+  \ \n                [String.mk (List.replicate (width/2) '.') ++ \"X\" ++ \n   \
+  \              String.mk (List.replicate (width - width/2 - 1) '.')])) \n  = Sum.inr\
+  \ (width/2, 0) := sorry\n\n\ntheorem find_spaceship_empty_map :\n  find_spaceship\
+  \ \"\" = Sum.inl \"Spaceship lost forever.\" := sorry\n\n\ntheorem find_spaceship_single_dot\
+  \ :\n  find_spaceship \".\" = Sum.inl \"Spaceship lost forever.\" := sorry\n\n\n\
+  theorem find_spaceship_single_x :\n  find_spaceship \"X\" = Sum.inr (0, 0) := sorry\n\
+  \n/--\ninfo: [7, 2]\n-/\n#guard_msgs in\n#eval find_spaceship \"..........\\n..........\\\
+  n.......X..\\n..........\\n..........\"\n\n/--\ninfo: [0, 0]\n-/\n#guard_msgs in\n\
+  #eval find_spaceship \".......\\nX.......\"\n\n/--\ninfo: 'Spaceship lost forever.'\n\
+  -/\n#guard_msgs in\n#eval find_spaceship \"........................\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

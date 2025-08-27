@@ -1,0 +1,24 @@
+"vc-description": "Given two arrays of integers `m` and `n`, test if they contain\
+  \ *at least* one identical element. Return `true` if they do; `false` if not.\n\n\
+  Your code must handle any value within the range of a 32-bit integer, and must be\
+  \ capable of handling either array being empty (which is a `false` result, as there\
+  \ are no duplicated elements)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def duplicate_elements (xs ys : List Int) : Bool := sorry\n\n--\
+  \ Symmetry property"
+"vc-theorems": "theorem duplicate_elements_symmetric (xs ys : List Int) :\n  duplicate_elements\
+  \ xs ys = duplicate_elements ys xs := sorry\n\n-- Self duplicates property  \n\n\
+  theorem duplicate_elements_self (xs : List Int) :\n  xs ≠ [] → duplicate_elements\
+  \ xs xs := sorry\n\n-- Transitivity property\n\ntheorem duplicate_elements_transitive\
+  \ (xs ys zs : List Int) :\n  duplicate_elements xs ys → \n  duplicate_elements ys\
+  \ zs →\n  (∃ n : Int, n ∈ xs ∧ n ∈ ys ∧ n ∈ zs) →\n  duplicate_elements xs zs :=\
+  \ sorry\n\n-- Superset property\n\ntheorem duplicate_elements_superset_left (xs\
+  \ ys : List Int) :\n  duplicate_elements xs ys →\n  duplicate_elements (xs ++ xs)\
+  \ ys := sorry\n\n\ntheorem duplicate_elements_superset_right (xs ys : List Int)\
+  \ :\n  duplicate_elements xs ys →\n  duplicate_elements xs (ys ++ ys) := sorry\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval duplicate_elements [1, 2, 3] [3, 4,\
+  \ 5]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval duplicate_elements [1, 2, 3]\
+  \ [4, 5, 6]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval duplicate_elements []\
+  \ []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,22 @@
+"vc-description": "The number ```12``` is the first number in having six divisors,\
+  \ they are: ```1, 2, 3, 4, 6 and 12.```\nYour challenge for this kata is to find\
+  \ the minimum number that has a certain number of divisors.\nFor this purpose we\
+  \ have to create the function \n\n```find_min_num() or findMinNum() or similar in\
+  \ the other languages```\n\nthat receives the wanted number of divisors ```num_div```,\
+  \ and outputs the smallest number having an amount of divisors equals to ```num_div```.\n\
+  \nLet's see some cases:\n```\nfind_min_num(10) = 48 # divisors are: 1, 2, 3, 4,\
+  \ 6, 8, 12, 16, 24 and  48\nfind_min_num(12) = 60\n```\nIn this kata all the tests\
+  \ will be with ```numDiv < 80```\n\n(There will be a next kata with numDiv < 10000,\
+  \ Find the First Number Having a Certain Number of Divisors II, should have the\
+  \ help of number theory)\n\nEnjoy it and happy coding!\n(Memoization is advisable)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def div_num (n : Nat) : Nat := sorry\n\ntheorem div_num_positive\
+  \ (n : Nat) (h : n > 0) : div_num n ≥ 1 := sorry\n"
+"vc-theorems": "theorem div_num_perfect_squares \n  (n : Nat) \n  (h : n > 0) : \n\
+  \  div_num (n * n) % 2 = 1 := sorry\n\n\ntheorem div_num_small_cases_1 : div_num\
+  \ 1 = 1 := sorry\n\ntheorem div_num_small_cases_2 : div_num 2 = 2 := sorry \n\n\n\
+  theorem div_num_small_cases_4 : div_num 4 = 3 := sorry\n\n/--\ninfo: 12\n-/\n#guard_msgs\
+  \ in\n#eval find_min_num 6\n\n/--\ninfo: 48\n-/\n#guard_msgs in\n#eval find_min_num\
+  \ 10\n\n/--\ninfo: 60\n-/\n#guard_msgs in\n#eval find_min_num 12\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

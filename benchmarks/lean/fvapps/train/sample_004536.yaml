@@ -1,0 +1,29 @@
+"vc-description": "Linked Lists - Get Nth\n\nImplement a GetNth() function that takes\
+  \ a linked list and an integer index and returns the node stored at the Nth index\
+  \ position. GetNth() uses the C numbering convention that the first node is index\
+  \ 0, the second is index 1, ... and so on. So for the list 42 -> 13 -> 666, GetNth()\
+  \ with index 1 should return Node(13);\n\nThe index should be in the range [0..length-1].\
+  \ If it is not, GetNth() should throw/raise an exception (`ArgumentException` in\
+  \ C#, `InvalidArgumentException` in PHP). You should also raise an exception (`ArgumentException`\
+  \ in C#, `InvalidArgumentException` in PHP) if the list is empty/null/None.\n\n\
+  Prerequisite Kata (may be in beta):\n\n- Linked Lists - Push & BuildOneTwoThree\n\
+  - Linked Lists - Length & Count\n\n> The push() and buildOneTwoThree() (`BuildOneTwoThree`\
+  \ in C#, `build_one_two_three()` in PHP) functions do not need to be redefined."
+"vc-preamble": "import Imports.AllImports\n\ndef Node.data : Node → Int\n  | mk d\
+  \ _ => d\n\n\ndef get_nth (head : Option Node) (n : Nat) : Option Node :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def build_list : List Int → Option Node :=\n  sorry\n"
+"vc-theorems": "theorem get_nth_valid_index_returns_correct_value (head : Option Node)\
+  \ (values : List Int) (index : Nat) :\n  head = build_list values →\n  index < values.length\
+  \ →\n  ∃ (h : index < values.length), \n    (get_nth head index).map Node.data =\
+  \ some (values.get ⟨index, h⟩) :=\n  sorry\n\n\ntheorem get_nth_invalid_index_returns_none\
+  \ (head : Option Node) (values : List Int) (index : Nat) : \n  head = build_list\
+  \ values →\n  index ≥ values.length →\n  get_nth head index = none :=\n  sorry\n\
+  \n\ntheorem get_nth_empty_list_returns_none (index : Nat) :\n  get_nth none index\
+  \ = none :=\n  sorry\n\n\ntheorem get_nth_zero_returns_first (head : Option Node)\
+  \ (values : List Int) :\n  head = build_list values →\n  values ≠ [] →\n  (get_nth\
+  \ head 0).map Node.data = some (values.head!) :=\n  sorry\n\n\ntheorem get_nth_last_returns_last\
+  \ (head : Option Node) (values : List Int) :\n  head = build_list values →\n  values\
+  \ ≠ [] →\n  ∃ (h : values.length - 1 < values.length),\n    (get_nth head (values.length\
+  \ - 1)).map Node.data = some (values.get ⟨values.length - 1, h⟩) :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

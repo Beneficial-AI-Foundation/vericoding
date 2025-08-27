@@ -1,0 +1,25 @@
+"vc-description": "Given a positive integer K > 2, with prime\nfactorization:\n\n\
+  K = p1^a1 * p2^a2 ... * pn^an\n\nCompute the following:\n\nS = a1*p1 + a2*p2 ...\
+  \ + an*pn.\n\n-----Input-----\nA list of <100 integers, one on each line,\nall less\
+  \ than $2*10^{18}$.\n\n-----Output-----\nFor each integer compute the super factor\n\
+  sum and output it on a single line.\n\n-----Example-----\nInput:\n6\n7\nOutput:\n\
+  5\n7"
+"vc-preamble": "import Imports.AllImports\n\ndef compute_super_factor_sum (n : Nat)\
+  \ : Nat := sorry\n\ndef is_prime (n : Nat) : Bool := sorry\n\n\ndef list_product\
+  \ : List Nat → Nat \n  | [] => 1\n  | x :: xs => x * list_product xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_sum : List Nat → Nat\n  | [] => 0\n  | x :: xs => x +\
+  \ list_sum xs\n"
+"vc-theorems": "theorem compute_super_factor_sum_positive (n : Nat) (h : n ≥ 2) :\n\
+  \  compute_super_factor_sum n > 0 := sorry\n\n\ntheorem compute_super_factor_sum_primes\
+  \ (n : Nat) (h1 : n ≥ 2) (h2 : is_prime n = true) : \n  compute_super_factor_sum\
+  \ n = n := sorry\n\n\ntheorem compute_super_factor_sum_multiplicative (a b : Nat)\
+  \ (h1 : a ≥ 1) (h2 : b ≥ 1) :\n  compute_super_factor_sum (a * b) ≥ min (compute_super_factor_sum\
+  \ a) (compute_super_factor_sum b) := sorry\n\n\ntheorem compute_super_factor_sum_product_relation\
+  \ (factors : List Nat) \n  (h1 : ∀ x ∈ factors, x ≥ 2) (h2 : factors.length > 0)\
+  \ :\n  compute_super_factor_sum (list_product factors) ≥ \n  list_sum (List.map\
+  \ compute_super_factor_sum (List.filter (fun x => x > 1) factors)) := sorry\n\n\
+  /--\ninfo: 5\n-/\n#guard_msgs in\n#eval compute_super_factor_sum 6\n\n/--\ninfo:\
+  \ 7\n-/\n#guard_msgs in\n#eval compute_super_factor_sum 7\n\n/--\ninfo: 7\n-/\n\
+  #guard_msgs in\n#eval compute_super_factor_sum 12\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

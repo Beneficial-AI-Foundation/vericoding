@@ -1,0 +1,19 @@
+"vc-description": "A hero is on his way to the castle to complete his mission. However,\
+  \ he's been told that the castle is surrounded with a couple of powerful dragons!\
+  \ each dragon takes 2 bullets to be defeated, our hero has no idea how many bullets\
+  \ he should carry.. Assuming he's gonna grab a specific given number of bullets\
+  \ and move forward to fight another specific given number of dragons, will he survive?\n\
+  \nReturn True if yes, False otherwise :)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def hero (bullets : Int) (dragons : Int) : Bool := sorry\n\ntheorem\
+  \ hero_property {bullets dragons : Int} (hb : bullets ≥ 0) (hd : dragons ≥ 0) :\
+  \ \n  hero bullets dragons = (bullets ≥ dragons * 2) := sorry\n"
+"vc-theorems": "theorem minimum_bullets_success {dragons : Int} (hd : dragons ≥ 0)\
+  \ :\n  hero (dragons * 2) dragons = true := sorry\n\n\ntheorem minimum_bullets_failure\
+  \ {dragons : Int} (hd : dragons > 0) :\n  hero (dragons * 2 - 1) dragons = false\
+  \ := sorry\n\n\ntheorem negative_bullets {bullets dragons : Int} (hb : bullets <\
+  \ 0) (hd : dragons ≥ 0) :\n  hero bullets dragons = false := sorry\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval hero 10 5\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval hero 7 4\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval hero 4 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,39 @@
+"vc-description": "Two friends David and Rojer were preparing for their weekly class-test.\n\
+  The are preparing for the math test, but because of continuously adding big integers\
+  \ and solving equations they got exhausted. They decided to take break and play\
+  \ a game. They play a game which will help them in both(for having fun and will\
+  \ also help to prepare for math test).\nThere are N words and they have to find\
+  \ RESULT with the help of these words (just like they have N integers and they have\
+  \ to find integer RESULT=sum of N integers) . Since they are playing this game for\
+  \ the first time! They are not too good in this. Help them in finding weather their\
+  \ RESULT is correct or not.   \nNOTE:- Total number of unique characters in N words\
+  \ are not greater than 10. All input words and RESULT are in UPPER-CASE only!\n\
+  Refer Here for how to add numbers : https://en.wikipedia.org/wiki/Verbal_arithmetic\n\
+  \n-----Input:-----\n- First line consist of an integer N (total number of words).\n\
+  - Next N line contains words with which they have to find RESULT.\n- Last line consist\
+  \ of the RESULT they found.\n\n-----Output:-----\nIf RESULT is correct print true\
+  \ else print false.\n\n-----Sample Input:-----\n3\n\nTHIS\n\nIS\n\nTOO\n\nFUNNY\
+  \  \n\n-----Sample Output:-----\ntrue\n\n-----Constraints-----\n- $2 \\leq N \\\
+  leq 10$\n- $1 \\leq Length of The word \\leq 10$\n- $1 \\leq Length of The Result\
+  \ \\leq 11$"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSolvable (words : List String) (result : String) : Bool :=\
+  \ sorry\n\ntheorem result_length_property \n  (words : List String) (result : String)\
+  \ :\n  (∃ w ∈ (result :: words), String.length result < String.length w) →\n  ¬(isSolvable\
+  \ words result) :=\nsorry\n"
+"vc-theorems": "theorem single_letter_words_solvable\n  (words : List String) (result\
+  \ : String)\n  (h1 : ∀ w ∈ words, String.length w = 1)\n  (h2 : String.length result\
+  \ = 1)\n  (h3 : result ∉ words) :\n  (let chars := List.foldl (λ acc s => acc ++\
+  \ s.data) [] (words ++ [result]);\n   let uniqueChars := chars.eraseDups;\n   uniqueChars.length\
+  \ ≤ 10) →\n  isSolvable words result :=\nsorry\n\n\ntheorem leading_zero_property\n\
+  \  (words : List String) (result : String) :\n  let allWords := result :: words\n\
+  \  let firstChars := (allWords.map (λ w => w.data.get! 0)).eraseDups\n  let allChars\
+  \ := List.foldl (λ acc s => acc ++ s.data) [] allWords\n  let uniqueChars := allChars.eraseDups\n\
+  \  (uniqueChars.length ≤ 9 ∧ firstChars.length ≤ 9) →\n  isSolvable words result\
+  \ →\n  ∀ mapping : Char → Nat,\n    (∀ c ∈ firstChars, mapping c ≠ 0) :=\nsorry\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval isSolvable [\"THIS\", \"IS\", \"TOO\"\
+  ] \"FUNNY\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval isSolvable [\"SEND\",\
+  \ \"MORE\"] \"MONEY\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval isSolvable [\"\
+  AB\", \"CD\"] \"EF\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

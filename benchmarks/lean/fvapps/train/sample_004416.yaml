@@ -1,0 +1,29 @@
+"vc-description": "# Task\nA masked number is a string that consists of digits and\
+  \ one asterisk (`*`) that should be replaced by exactly one digit. Given a masked\
+  \ number `s`, find all the possible options to replace the asterisk with a digit\
+  \ to produce an integer divisible by 6.\n\n\n# Input/Output\n\n`[input]` string\
+  \ `s`\n\nA masked number.\n\n`1 ≤ inputString.length ≤ 10000.`\n\n`[output]` a string\
+  \ array\n\nSorted array of strings representing all non-negative integers that correspond\
+  \ to the given mask and are divisible by 6.\n\n# Example\n\nFor `s = \"1*0\"`, the\
+  \ output should be `[\"120\", \"150\", \"180\"].`\n\nFor `s = \"*1\"`, the output\
+  \ should be `[].`\n\nFor `s = \"1234567890123456789012345678*0\"`, \n\nthe output\
+  \ should be \n```\n[\n\"123456789012345678901234567800\",\n\"123456789012345678901234567830\"\
+  ,\n\"123456789012345678901234567860\",\n\"123456789012345678901234567890\"]```\n\
+  As you can see, the masked number may be very large ;-)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_divisible_by_6 (s: String) : List String := sorry\n\ntheorem\
+  \ is_divisible_by_6_length_constraints {s : String} :\n  s.length = 0 ∨ s.length\
+  \ > 10000 → is_divisible_by_6 s = [] := sorry\n"
+"vc-theorems": "theorem is_divisible_by_6_all_divisible {s : String} (h : s.length\
+  \ > 0) (h' : s.length ≤ 10000) :\n  ∀ x ∈ is_divisible_by_6 s, (String.toNat! x)\
+  \ % 6 = 0 := sorry \n\n\ntheorem is_divisible_by_6_sorted {s : String} (h : s.length\
+  \ > 0) (h' : s.length ≤ 10000) :\n  ∀ i j, i < j → i < (is_divisible_by_6 s).length\
+  \ → j < (is_divisible_by_6 s).length → \n    (is_divisible_by_6 s)[i]! < (is_divisible_by_6\
+  \ s)[j]! := sorry\n\n\ntheorem is_divisible_by_6_no_leading_zeros {s : String} (h\
+  \ : s.length > 0) (h' : s.length ≤ 10000) :\n  ∀ x ∈ is_divisible_by_6 s, ¬String.startsWith\
+  \ x \"0\" := sorry\n\n/--\ninfo: ['120', '150', '180']\n-/\n#guard_msgs in\n#eval\
+  \ is_divisible_by_6 \"1*0\"\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval is_divisible_by_6\
+  \ \"*1\"\n\n/--\ninfo: ['36', '66', '96']\n-/\n#guard_msgs in\n#eval is_divisible_by_6\
+  \ \"*6\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

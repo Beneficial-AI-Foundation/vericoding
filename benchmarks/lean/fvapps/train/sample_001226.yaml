@@ -1,0 +1,44 @@
+"vc-description": "Once again, we have a lot of requests from coders for a challenging\
+  \ problem on geometry. Geometry expert Nitin is thinking about a problem with parabolas,\
+  \ icosahedrons, crescents and trapezoids, but for now, to encourage beginners, he\
+  \ chooses to work with circles and rectangles.\nYou are given two sequences $A_1,\
+  \ A_2, \\ldots, A_N$ and $B_1, B_2, \\ldots, B_N$. You should choose a permutation\
+  \ $P_1, P_2, \\ldots, P_N$ of the integers $1$ through $N$ and construct $N$ rectangles\
+  \ with dimensions $A_1 \\times B_{P_1}, A_2 \\times B_{P_2}, \\ldots, A_N \\times\
+  \ B_{P_N}$. Then, for each of these rectangles, you should construct an inscribed\
+  \ circle, i.e. a circle with the maximum possible area that is completely contained\
+  \ in that rectangle.\nLet $S$ be the sum of diameters of these $N$ circles. Your\
+  \ task is to find the maximum value of $S$.\n\n-----Input-----\n- The first line\
+  \ of the input contains a single integer $T$ denoting the number of test cases.\
+  \ The description of $T$ test cases follows.\n- The first line of each test case\
+  \ contains a single integer $N$.\n- The second line contains $N$ space-separated\
+  \ integers $A_1, A_2, \\ldots, A_N$. \n- The third line contains $N$ space-separated\
+  \ integers $B_1, B_2, \\ldots, B_N$. \n\n-----Output-----\nFor each test case, print\
+  \ a single line containing one integer ― the maximum value of $S$. It is guaranteed\
+  \ that this value is always an integer.\n\n-----Constraints-----\n- $1 \\le T \\\
+  le 50$\n- $1 \\le N \\le 10^4$\n- $1 \\le A_i, B_i \\le 10^9$ for each valid $i$\n\
+  \n-----Subtasks-----\nSubtask #1 (20 points):\n- $A_1 = A_2 = \\ldots = A_N$\n-\
+  \ $B_1 = B_2 = \\ldots = B_N$\nSubtask #2 (80 points): original constraints\n\n\
+  -----Example Input-----\n2\n4\n8 8 10 12\n15 20 3 5\n3\n20 20 20\n10 10 10\n\n-----Example\
+  \ Output-----\n30\n30\n\n-----Explanation-----\nExample case 1: Four rectangles\
+  \ with dimensions $8 \\times 3$, $8 \\times 5$, $10 \\times 20$ and $12 \\times\
+  \ 15$ lead to an optimal answer."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat \n  | []\
+  \ => 0\n  | x::xs => x + sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.sort : List Nat → List Nat := sorry\n\ndef solve_circle_rectangles\
+  \ (n : Nat) (A B : List Nat) : Nat := sorry\n"
+"vc-theorems": "theorem result_less_than_inputs {n : Nat} {A B : List Nat} \n  (h1\
+  \ : A.length = n) (h2 : B.length = n) :\n  solve_circle_rectangles n A B ≤ List.sum\
+  \ A ∧ \n  solve_circle_rectangles n A B ≤ List.sum B := sorry\n\n\ntheorem result_non_negative\
+  \ {n : Nat} {A B : List Nat}\n  (h1 : A.length = n) (h2 : B.length = n) :\n  solve_circle_rectangles\
+  \ n A B ≥ 0 := sorry\n\n\ntheorem result_order_independent {n : Nat} {A B : List\
+  \ Nat}\n  (h1 : A.length = n) (h2 : B.length = n) :\n  solve_circle_rectangles n\
+  \ A B = \n  solve_circle_rectangles n A.reverse B.reverse := sorry\n\n\ntheorem\
+  \ result_is_sum_of_mins {n : Nat} {A B : List Nat}\n  (h1 : A.length = n) (h2 :\
+  \ B.length = n) :\n  solve_circle_rectangles n A B = \n  List.sum (List.map (fun\
+  \ (p : Nat × Nat) => min p.fst p.snd) \n    (List.zip (List.sort A) (List.sort B)))\
+  \ := sorry\n\n/--\ninfo: 30\n-/\n#guard_msgs in\n#eval solve_circle_rectangles 4\
+  \ [8, 8, 10, 12] [15, 20, 3, 5]\n\n/--\ninfo: 30\n-/\n#guard_msgs in\n#eval solve_circle_rectangles\
+  \ 3 [20, 20, 20] [10, 10, 10]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

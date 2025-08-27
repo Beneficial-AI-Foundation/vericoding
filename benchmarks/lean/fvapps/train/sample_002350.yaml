@@ -1,0 +1,21 @@
+"vc-description": "Alice and Bob take turns playing a game, with Alice starting first.\n\
+  Initially, there is a number N on the chalkboard.  On each player's turn, that player\
+  \ makes a move consisting of:\n\nChoosing any x with 0 < x < N and N % x == 0.\n\
+  Replacing the number N on the chalkboard with N - x.\n\nAlso, if a player cannot\
+  \ make a move, they lose the game.\nReturn True if and only if Alice wins the game,\
+  \ assuming both players play optimally.\n \n\n\n\nExample 1:\nInput: 2\nOutput:\
+  \ true\nExplanation: Alice chooses 1, and Bob has no more moves.\n\n\nExample 2:\n\
+  Input: 3\nOutput: false\nExplanation: Alice chooses 1, Bob chooses 1, and Alice\
+  \ has no more moves.\n\n \nNote:\n\n1 <= N <= 1000"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def divisorGame (n : Nat) : Bool := sorry\n\ntheorem divisorGame_type\
+  \ (n : Nat) :\n  divisorGame n = true ∨ divisorGame n = false := sorry\n"
+"vc-theorems": "theorem divisorGame_parity (n : Nat) :\n  divisorGame n = (n % 2 =\
+  \ 0) := sorry\n\n\ntheorem divisorGame_base_cases : \n  divisorGame 1 = false ∧\
+  \ divisorGame 2 = true := sorry\n\n\ntheorem divisorGame_bounds (n : Nat) : \n \
+  \ n = 1 ∨ n = 1000 → (divisorGame n = true ∨ divisorGame n = false) := sorry\n\n\
+  /--\ninfo: True\n-/\n#guard_msgs in\n#eval divisorGame 2\n\n/--\ninfo: False\n-/\n\
+  #guard_msgs in\n#eval divisorGame 3\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ divisorGame 4\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

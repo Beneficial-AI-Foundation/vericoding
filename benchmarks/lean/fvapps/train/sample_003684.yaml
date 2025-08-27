@@ -1,0 +1,32 @@
+"vc-description": "The concept of \"[smooth number](https://en.wikipedia.org/wiki/Smooth_number)\"\
+  \ is applied to all those numbers whose prime factors are lesser than or equal to\
+  \ `7`: `60` is a smooth number (`2 * 2 * 3 * 5`), `111` is not (`3 * 37`).\n\nMore\
+  \ specifically, smooth numbers are classified by their highest prime factor and\
+  \ your are tasked with writing a `isSmooth`/`is_smooth` function that returns a\
+  \ string with this classification as it follows:\n\n* 2-smooth numbers should be\
+  \ all defined as a `\"power of 2\"`, as they are merely that;\n* 3-smooth numbers\
+  \ are to return a result of `\"3-smooth\"`;\n* 5-smooth numbers will be labelled\
+  \ as `\"Hamming number\"`s (incidentally, you might appreciate [this nice kata on\
+  \ them](https://www.codewars.com/kata/hamming-numbers));\n* 7-smooth numbers are\
+  \ classified as `\"humble numbers\"`s;\n* for all the other numbers, just return\
+  \ `non-smooth`.\n\nExamples:\n```python\nis_smooth(16) == \"power of 2\"\nis_smooth(36)\
+  \ == \"3-smooth\"\nis_smooth(60) == \"Hamming number\"\nis_smooth(98) == \"humble\
+  \ number\"\nis_smooth(111) == \"non-smooth\"\n```\nThe provided input `n` is always\
+  \ going to be a positive number `> 1`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_smooth (n: Nat) : SmoothType := sorry\n\ntheorem is_smooth_valid_output\
+  \ (n: Nat) (h: n ≥ 2) : \n  is_smooth n = SmoothType.PowerOfTwo ∨ \n  is_smooth\
+  \ n = SmoothType.ThreeSmooth ∨\n  is_smooth n = SmoothType.HammingNumber ∨ \n  is_smooth\
+  \ n = SmoothType.HumbleNumber ∨\n  is_smooth n = SmoothType.NonSmooth := sorry\n"
+"vc-theorems": "theorem power_of_two (exp: Nat) (h: exp > 0) :\n  is_smooth (2^exp)\
+  \ = SmoothType.PowerOfTwo := sorry\n\n\ntheorem product_of_two_and_three (exp2 exp3:\
+  \ Nat) (h1: exp2 > 0) (h2: exp3 > 0) :\n  is_smooth ((2^exp2) * (3^exp3)) = SmoothType.ThreeSmooth\
+  \ := sorry\n\n\ntheorem hamming_numbers (exp2 exp3 exp5: Nat) \n  (h1: exp2 > 0)\
+  \ (h2: exp3 > 0) (h3: exp5 > 0) :\n  is_smooth ((2^exp2) * (3^exp3) * (5^exp5))\
+  \ = SmoothType.HammingNumber := sorry\n\n\ntheorem large_prime_factors (n: Nat)\
+  \ \n  (h1: n ≥ 13)\n  (h2: ∃ p ∈ [11, 13, 17, 19, 23], n % p = 0) :\n  is_smooth\
+  \ n = SmoothType.NonSmooth := sorry\n\n/--\ninfo: 'power of 2'\n-/\n#guard_msgs\
+  \ in\n#eval is_smooth 16\n\n/--\ninfo: '3-smooth'\n-/\n#guard_msgs in\n#eval is_smooth\
+  \ 36\n\n/--\ninfo: 'Hamming number'\n-/\n#guard_msgs in\n#eval is_smooth 60\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

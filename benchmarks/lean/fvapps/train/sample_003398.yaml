@@ -1,0 +1,15 @@
+"vc-description": "Implement `String#digit?` (in Java `StringUtils.isDigit(String)`),\
+  \ which should return `true` if given object is a digit (0-9), `false` otherwise."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_digit (s : String) : Bool := sorry\n\ntheorem is_digit_general_string_property\
+  \ (s : String) :\n  is_digit s = (s.length = 1 ∧ s.any Char.isDigit) := sorry\n"
+"vc-theorems": "theorem is_digit_string_conversion {n : Nat} :\n  is_digit (toString\
+  \ n) = (n ≥ 0 ∧ n ≤ 9) := sorry \n\n\ntheorem is_digit_non_digits_false (s : String)\
+  \ : \n  (∀ c ∈ s.toList, ¬c.isDigit) → ¬is_digit s := sorry\n\n\ntheorem is_digit_multiple_digits_false\
+  \ (s : String) :\n  s.length > 1 → (∀ c ∈ s.toList, c.isDigit) → ¬is_digit s :=\
+  \ sorry\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_digit \"\"\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval is_digit \"7\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval is_digit \"a\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_digit\
+  \ \"14\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

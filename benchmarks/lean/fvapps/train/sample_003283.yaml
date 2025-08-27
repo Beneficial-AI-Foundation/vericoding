@@ -1,0 +1,25 @@
+"vc-description": "In this Kata, you will be given two integers `n` and `k` and your\
+  \ task is to remove `k-digits` from `n` and return the lowest number possible, without\
+  \ changing the order of the digits in `n`. Return the result as a string.\n\nLet's\
+  \ take an example of `solve(123056,4)`. We need to remove `4` digits from `123056`\
+  \ and return the lowest possible number. The best digits to remove are `(1,2,3,6)`\
+  \ so that the remaining digits are `'05'`. Therefore, `solve(123056,4) = '05'`.\
+  \ \n\nNote also that the order of the numbers in `n` does not change: `solve(1284569,2)\
+  \ = '12456',` because we have removed `8` and `9`. \n\nMore examples in the test\
+  \ cases.\n\nGood luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef isSubsequence (smaller larger : String)\
+  \ : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (n : Nat) (k : Nat) : String :=\n  sorry\n"
+"vc-theorems": "theorem solve_properties {n k : Nat} (h : k < (ToString.toString n).length)\
+  \ :\n  let result := solve n k\n  (result.length = (ToString.toString n).length\
+  \ - k) ∧ \n  (isSubsequence result (ToString.toString n) = true) ∧\n  (result.toNat!\
+  \ ≤ n) :=\nsorry\n\n\ntheorem remove_zero_digits (n : Nat) :\n  solve n 0 = ToString.toString\
+  \ n :=\nsorry\n\n\ntheorem result_is_minimal {n k : Nat} (h1 : n ≥ 10) (h2 : k ≥\
+  \ 1) (h3 : k < (ToString.toString n).length) :\n  let result := solve n k\n  ∀ (s\
+  \ : String), \n    isSubsequence s (ToString.toString n) = true → \n    s.length\
+  \ = (ToString.toString n).length - k →\n    result.toNat! ≤ s.toNat! :=\nsorry\n\
+  \n/--\ninfo: '05'\n-/\n#guard_msgs in\n#eval solve 123056 4\n\n/--\ninfo: '12456'\n\
+  -/\n#guard_msgs in\n#eval solve 1284569 2\n\n/--\ninfo: '12056'\n-/\n#guard_msgs\
+  \ in\n#eval solve 123056 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,54 @@
+"vc-description": "Polygon is not only the best platform for developing problems but\
+  \ also a square matrix with side $n$, initially filled with the character 0.\n\n\
+  On the polygon, military training was held. The soldiers placed a cannon above each\
+  \ cell in the first row and a cannon to the left of each cell in the first column.\
+  \ Thus, exactly $2n$ cannons were placed. [Image] Initial polygon for $n=4$. \n\n\
+  Cannons shoot character 1. At any moment of time, no more than one cannon is shooting.\
+  \ When a 1 flies out of a cannon, it flies forward (in the direction of the shot)\
+  \ until it collides with a polygon border or another 1. After that, it takes the\
+  \ cell in which it was before the collision and remains there. Take a look at the\
+  \ examples for better understanding.\n\nMore formally:   if a cannon stands in the\
+  \ row $i$, to the left of the first column, and shoots with a 1, then the 1 starts\
+  \ its flight from the cell ($i, 1$) and ends in some cell ($i, j$);  if a cannon\
+  \ stands in the column $j$, above the first row, and shoots with a 1, then the 1\
+  \ starts its flight from the cell ($1, j$) and ends in some cell ($i, j$). \n\n\
+  For example, consider the following sequence of shots: [Image] \n\n 1. Shoot the\
+  \ cannon in the row $2$.                         2. Shoot the cannon in the row\
+  \ $2$.                         3. Shoot the cannon in column $3$. \n\nYou have a\
+  \ report from the military training on your desk. This report is a square matrix\
+  \ with side length $n$ consisting of 0 and 1. You wonder if the training actually\
+  \ happened. In other words, is there a sequence of shots such that, after the training,\
+  \ you get the given matrix?\n\nEach cannon can make an arbitrary number of shots.\
+  \ Before the training, each cell of the polygon contains 0.\n\n\n-----Input-----\n\
+  \nThe first line contains an integer $t$ ($1 \\le t \\le 1000$) — the number of\
+  \ test cases. Then $t$ test cases follow.\n\nEach test case starts with a line containing\
+  \ an integer $n$ ($1 \\le n \\le 50$) — the size of the polygon.\n\nThis is followed\
+  \ by $n$ lines of length $n$, consisting of 0 and 1 — the polygon matrix after the\
+  \ training.\n\nThe total area of the matrices in all test cases in one test does\
+  \ not exceed $10^5$.\n\n\n-----Output-----\n\nFor each test case print:  YES if\
+  \ there is a sequence of shots leading to a given matrix;  NO if such a sequence\
+  \ does not exist. \n\nThe letters in the words YES and NO can be printed in any\
+  \ case.\n\n\n-----Example-----\nInput\n5\n4\n0010\n0011\n0000\n0000\n2\n10\n01\n\
+  2\n00\n00\n4\n0101\n1111\n0101\n0111\n4\n0100\n1110\n0101\n0111\n\nOutput\nYES\n\
+  NO\nYES\nYES\nNO\n\n\n\n-----Note-----\n\nThe first test case was explained in the\
+  \ statement.\n\nThe answer to the second test case is NO, since a 1 in a cell ($1,\
+  \ 1$) flying out of any cannon would continue its flight further."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_create_pattern (n : Nat) (mat : Matrix) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem empty_matrix_is_valid (n : Nat) (h : n > 0) :\n  let mat :=\
+  \ List.replicate n (List.replicate n '0')\n  can_create_pattern n mat = true :=\
+  \ by\n  sorry\n\n\ntheorem single_edge_ones_are_valid (n : Nat) (h : n > 0) :\n\
+  \  let emptyMat := List.replicate n (List.replicate n '0')\n  let lastRow := List.replicate\
+  \ n '1'\n  let mat := List.take (n-1) emptyMat ++ [lastRow]\n  can_create_pattern\
+  \ n mat = true := by\n  sorry\n\n\ntheorem no_isolated_ones (n : Nat) (mat : Matrix)\
+  \ (h1 : n > 0)\n  (h2 : mat.length = n)\n  (h3 : ∀ row ∈ mat, row.length = n)\n\
+  \  (h4 : ∀ row ∈ mat, ∀ c ∈ row, c = '0' ∨ c = '1') :\n  ∀ i j, i < n → j < n →\n\
+  \    (mat.get! i).get! j = '1' →\n    (i = n-1 ∨ j = n-1 ∨ \n     (j < n-1 ∧ (mat.get!\
+  \ i).get! (j+1) = '1') ∨\n     (i < n-1 ∧ (mat.get! (i+1)).get! j = '1')) ∨\n  \
+  \  can_create_pattern n mat = false := by\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval can_create_pattern 4 [\"0010\", \"0011\", \"0000\", \"0000\"]\n\n/--\n\
+  info: False\n-/\n#guard_msgs in\n#eval can_create_pattern 2 [\"10\", \"01\"]\n\n\
+  /--\ninfo: True\n-/\n#guard_msgs in\n#eval can_create_pattern 2 [\"00\", \"00\"\
+  ]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

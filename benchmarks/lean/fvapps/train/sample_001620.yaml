@@ -1,0 +1,44 @@
+"vc-description": "Uttu got to know about an interesting two-player mobile game recently\
+  \ and invites his friend Gangwar to try it out with him. Gangwar, however, has been\
+  \ playing this game since it was out 5 years ago and is a Legendary Grandmaster\
+  \ at it. Uttu immediately thought of somehow cheating in this game to beat Gangwar.\n\
+  But the most he could do was choose if he wanted to go \"First\" or if he wanted\
+  \ to go \"Second\" in this alternative turn based game. Help Uttu choose so that\
+  \ he will always win regardless of Gangwar's moves.Description of the game\nYou\
+  \ are playing on a continent name Tamriel. This continent have $N$ towns numbered\
+  \ from $1$ to $N$ where town $1$ is the capital. These towns are connected to each\
+  \ other by $N-1$ roads. Any two towns are connected by some series of roads, i.e.,\
+  \ You can go from any town to any other town using these roads.\nEach town $i$ some\
+  \ initial amout of soldiers $S_i$ in it. At every move, a player can choose a town\
+  \ other than the capital $i$ and move some non-zero amount of its current soldiers\
+  \ to a town which is one step closer towards the capital. After the first move,\
+  \ the moves are alternated between the players. The player who cannot make a move\
+  \ loses.Input\n- The first line contains a single integer $N$\n- The second line\
+  \ contains a $N$ space seperated integers denoting $S_1,S_2,\\dots,S_n$\n- The $N-1$\
+  \ subsequent lines contain two space seperated integers $u$ and $v$, denoting that\
+  \ the town $u$ and town $v$ are connected by a road.Output\n- Print \"First\" or\
+  \ \"Second\" based on what Uttu should choose to win.Constraints\n- $ 2 \\leq N\
+  \ \\leq {2}\\times{10}^{5}$\n- $ 1 \\leq S_i \\leq {10}^{9}$ for each valid $i$\n\
+  - $ 1 \\leq u,v \\leq N$Sample Input 1\n2\n10 10\n1 2\nSample Output 1\nFirst\n\
+  Explanation 1\nUttu will move the $10$ soldiers at town $2$ to the capital (town\
+  \ $1$). After this Gangwar cannot make a move, so he loses.Sample Input 2\n3\n1\
+  \ 1 1\n1 2\n1 3\nSample Output 2\nSecond\nExplanation 2\nGangwar has options: either\
+  \ move the soldier at town $2$, or move the soldier at town $3$.\nWhatever he choses,\
+  \ Uttu will chose the other town's soldier to move. And then Gangwar loses."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_game (input : GameInput) : String := sorry\n\ntheorem\
+  \ game_result_valid (input : GameInput) : \n  solve_game input = \"First\" ∨ solve_game\
+  \ input = \"Second\" := sorry\n"
+"vc-theorems": "theorem symmetric_soldiers_same_result (input : GameInput) \n    (h_all_same\
+  \ : ∀ x : Nat, x < input.soldiers.length → input.soldiers[x]! = input.soldiers[0]!)\n\
+  \    (soldiers' : List Nat) \n    (h_len : soldiers'.length = input.n)\n    (h_all_same'\
+  \ : ∀ i, i < soldiers'.length → soldiers'[i]! = input.soldiers[0]!) :\n    solve_game\
+  \ ⟨input.n, soldiers', input.connections, input.h_n, h_len, input.h_valid_conn⟩\
+  \ = \n    solve_game input := sorry\n\n\ntheorem zero_soldiers_second (n : Nat)\
+  \ (h : n ≥ 2) :\n  let soldiers := List.replicate n 0\n  let connections := List.map\
+  \ (fun i => (1, i + 2)) (List.range (n-1))\n  solve_game ⟨n, soldiers, connections,\
+  \ h, List.length_replicate n 0, sorry⟩ = \"Second\" := sorry\n\n/--\ninfo: 'First'\n\
+  -/\n#guard_msgs in\n#eval solve_game 2 [10, 10] [[1, 2]]\n\n/--\ninfo: 'Second'\n\
+  -/\n#guard_msgs in\n#eval solve_game 3 [1, 1, 1] [[1, 2], [1, 3]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

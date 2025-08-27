@@ -1,0 +1,33 @@
+"vc-description": "You want to form a target string of lowercase letters.\nAt the\
+  \ beginning, your sequence is target.length '?' marks.  You also have a stamp of\
+  \ lowercase letters.\nOn each turn, you may place the stamp over the sequence, and\
+  \ replace every letter in the sequence with the corresponding letter from the stamp. \
+  \ You can make up to 10 * target.length turns.\nFor example, if the initial sequence\
+  \ is \"?????\", and your stamp is \"abc\",  then you may make \"abc??\", \"?abc?\"\
+  , \"??abc\" in the first turn.  (Note that the stamp must be fully contained in\
+  \ the boundaries of the sequence in order to stamp.)\nIf the sequence is possible\
+  \ to stamp, then return an array of the index of the left-most letter being stamped\
+  \ at each turn.  If the sequence is not possible to stamp, return an empty array.\n\
+  For example, if the sequence is \"ababc\", and the stamp is \"abc\", then we could\
+  \ return the answer [0, 2], corresponding to the moves \"?????\" -> \"abc??\" ->\
+  \ \"ababc\".\nAlso, if the sequence is possible to stamp, it is guaranteed it is\
+  \ possible to stamp within 10 * target.length moves.  Any answers specifying more\
+  \ than this number of moves will not be accepted.\n \nExample 1:\nInput: stamp =\
+  \ \"abc\", target = \"ababc\"\nOutput: [0,2]\n([1,0,2] would also be accepted as\
+  \ an answer, as well as some other answers.)\n\n\nExample 2:\nInput: stamp = \"\
+  abca\", target = \"aabcaca\"\nOutput: [3,0,1]\n\n\n \nNote:\n\n\n\n1 <= stamp.length\
+  \ <= target.length <= 1000\nstamp and target only contain lowercase letters."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def moves_to_stamp (stamp : String) (target : String) : List Nat\
+  \ := sorry\n\ntheorem moves_to_stamp_single_stamp\n  (stamp : String)\n  (h₁ : stamp.length\
+  \ > 0)\n  (h₂ : ∀ c ∈ stamp.data, c = 'a' ∨ c = 'b' ∨ c = 'c') :\n  moves_to_stamp\
+  \ stamp stamp = [0] := sorry\n"
+"vc-theorems": "theorem moves_to_stamp_basic_cases_1 :\n  moves_to_stamp \"abc\" \"\
+  ababc\" = [0, 2] ∨ moves_to_stamp \"abc\" \"ababc\" = [1, 0, 2] := sorry\n\n\ntheorem\
+  \ moves_to_stamp_basic_cases_2 :\n  moves_to_stamp \"abca\" \"aabcaca\" = [3, 0,\
+  \ 1] := sorry\n\n\ntheorem moves_to_stamp_impossible_cases_1 :\n  moves_to_stamp\
+  \ \"abc\" \"xyz\" = [] := sorry\n\n\ntheorem moves_to_stamp_impossible_cases_2 :\n\
+  \  moves_to_stamp \"abc\" \"ab\" = [] := sorry\n\n\ntheorem moves_to_stamp_impossible_cases_3\
+  \ :\n  moves_to_stamp \"abc\" \"abcd\" = [] := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

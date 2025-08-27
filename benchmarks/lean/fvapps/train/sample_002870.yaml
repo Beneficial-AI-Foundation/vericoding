@@ -1,0 +1,45 @@
+"vc-description": "Kate likes to count words in text blocks. By words she means continuous\
+  \ sequences of English alphabetic characters (from a to z ). Here are examples:\n\
+  \n`Hello there, little user5453 374 ())$. I’d been using my sphere as a stool. Slow-moving\
+  \ target 839342 was hit by OMGd-63 or K4mp.` contains \"words\" `['Hello', 'there',\
+  \ 'little', 'user', 'I', 'd', 'been', 'using', 'my','sphere', 'as', 'a', 'stool',\
+  \ 'Slow', 'moving', 'target', 'was', 'hit', 'by', 'OMGd', 'or', 'K', 'mp']`\n\n\
+  Kate doesn't like some of words and doesn't count them. Words to be excluded are\
+  \ \"a\", \"the\", \"on\", \"at\", \"of\", \"upon\", \"in\" and \"as\", case-insensitive.\n\
+  \nToday Kate's too lazy and have decided to teach her computer to count \"words\"\
+  \ for her.\n\n\nExample Input 1\n-------------\nHello there, little user5453 374\
+  \ ())$.\n\nExample Output 1\n-------------\n4\n\nExample Input 2\n-------------\n\
+  \n  I’d been using my sphere as a stool. I traced counterclockwise circles on it\
+  \ with my fingertips and it shrank until I could palm it. My bolt had shifted while\
+  \ I’d been sitting. I pulled it up and yanked the pleats straight as I careered\
+  \ around tables, chairs, globes, and slow-moving fraas. I passed under a stone arch\
+  \ into the Scriptorium. The place smelled richly of ink. Maybe it was because an\
+  \ ancient fraa and his two fids were copying out books there. But I wondered how\
+  \ long it would take to stop smelling that way if no one ever used it at all; a\
+  \ lot of ink had been spent there, and the wet smell of it must be deep into everything.\n\
+  \nExample Output 2\n--------------\n\n112"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def word_count (text : String) : Nat := sorry\n\ndef OMIT : List\
+  \ String := [\"a\", \"the\", \"on\", \"at\", \"of\", \"upon\", \"in\", \"as\"]\n"
+"vc-theorems": "theorem word_count_with_valid_words (text : String) (words : List\
+  \ String) \n  (h1 : ∀ w ∈ words, ∀ c ∈ w.data, 'a' ≤ c ∧ c ≤ 'z')\n  (h2 : text\
+  \ = String.join (List.intersperse \" \" words))\n  (h3 : words ≠ []) :\n  word_count\
+  \ text = (words.filter (fun w => !OMIT.contains w)).length := sorry\n\n\ntheorem\
+  \ omitted_words_count_zero (text : String) (words : List String)\n  (h1 : ∀ w ∈\
+  \ words, OMIT.contains w)  \n  (h2 : words ≠ [])\n  (h3 : text = String.join (List.intersperse\
+  \ \" \" words)) :\n  word_count text = 0 := sorry\n\n\ntheorem word_count_empty\
+  \ : word_count \"\" = 0 := sorry\n\ntheorem word_count_spaces : word_count \"  \
+  \ \" = 0 := sorry \n\n\ntheorem word_count_special_chars : word_count \"!@#$%^&*()\"\
+  \ = 0 := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval word_count \"hello there\"\
+  \n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval word_count \"Hello there, little user5453\
+  \ 374 ())$.\"\n\n/--\ninfo: 112\n-/\n#guard_msgs in\n#eval word_count \"I\"d been\
+  \ using my sphere as a stool. I traced counterclockwise circles on it with my fingertips\
+  \ and it shrank until I could palm it. My bolt had shifted while I\"d been sitting.\
+  \ I pulled it up and yanked the pleats straight as I careered around tables, chairs,\
+  \ globes, and slow-moving fraas. I passed under a stone arch into the Scriptorium.\
+  \ The place smelled richly of ink. Maybe it was because an ancient fraa and his\
+  \ two fids were copying out books there. But I wondered how long it would take to\
+  \ stop smelling that way if no one ever used it at all; a lot of ink had been spent\
+  \ there, and the wet smell of it must be deep into everything.\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

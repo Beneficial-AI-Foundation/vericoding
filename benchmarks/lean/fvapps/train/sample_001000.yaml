@@ -1,0 +1,39 @@
+"vc-description": "Chef taught his brother Chefu about right angled triangle and its\
+  \ properties. Chefu says that he has understood everything about right angled triangles.\
+  \ Chef wants to check learning of his brother by asking the following question \"\
+  Can you find a right angled triangle whose length of hypotenuse  is H and its area\
+  \ is S?\"\nChefu is confused how to solve it. I hope you are not. Please solve this\
+  \ by finding a right angled triangle with hypotenuse H and area S. If it not possible\
+  \ to do so, then output -1.\n\n-----Input-----\nThe first line of the input contains\
+  \ a single integer T denoting the number of test-cases. T test cases follow.\nFor\
+  \ each test case, there will be a single line containing two space separated integers\
+  \ H and S.\n\n-----Output-----\nOutput the answer for each test-case in a single\
+  \ line. If it is not possible to find such a triangle, output -1. Otherwise print\
+  \ 3 real numbers corresponding to the lengths of the sides of the triangle sorted\
+  \ in non-decreasing order. Please note that the length of the triangle sides should\
+  \ not differ by more than 0.01 in absolute value from the correct lengths.\n\n-----Constraints-----\n\
+  - 1 ≤ T ≤ 105\n- 1 ≤ H ≤ 106\n- 1 ≤ S ≤ 1012\n\n-----Example-----\nInput:4\n5 6\n\
+  6 10\n258303 89837245228\n616153 77878145466\nOutput:3.00000 4.00000 5.00000\n-1\n\
+  -1\n285168.817674 546189.769984 616153.000000"
+"vc-preamble": "import Imports.AllImports\n\ndef find_triangle (h : Int) (s : Int)\
+  \ : Int × Int × Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def format_output (triangle : Int × Int × Int) : String :=\n  sorry\n"
+"vc-theorems": "theorem find_triangle_valid_output {h s : Int} \n  (h_pos : h > 0)\
+  \ (s_pos : s > 0) (h_bound : h ≤ 1000000) (s_bound : s ≤ 1000000) :\n  let (a, b,\
+  \ c) := find_triangle h s\n  if a ≠ -1 then\n    a > 0 ∧ b > 0 ∧ c > 0 ∧  -- Positive\
+  \ sides\n    c = h ∧                   -- Height matches\n    a * b / 2 = s ∧  \
+  \        -- Area matches\n    a ≤ b                    -- Ordered sides\n  else\
+  \ True := sorry\n\n\ntheorem format_output_valid {h s : Int}\n  (h_pos : h > 0)\
+  \ (s_pos : s > 0) (h_bound : h ≤ 1000000) (s_bound : s ≤ 1000000) :\n  let result\
+  \ := format_output (find_triangle h s)\n  if result ≠ \"-1\" then\n    -- Simplified\
+  \ String validation since we lack string manipulation operations\n    result.length\
+  \ > 0\n  else True := sorry\n\n\ntheorem triangle_inequality {h s : Int}\n  (h_pos\
+  \ : h > 0) (s_pos : s > 0) (h_bound : h ≤ 1000) (s_bound : s ≤ 1000) :\n  let (a,\
+  \ b, c) := find_triangle h s\n  if a ≠ -1 then\n    a + b > c ∧ b + c > a ∧ a +\
+  \ c > b  -- Triangle inequality\n  else True := sorry\n\n/--\ninfo: '3.000000 4.000000\
+  \ 5.000000'\n-/\n#guard_msgs in\n#eval format_output find_triangle(5, 6)\n\n/--\n\
+  info: '-1'\n-/\n#guard_msgs in\n#eval format_output find_triangle(6, 10)\n\n/--\n\
+  info: '285168.817674 546189.769984 616153.000000'\n-/\n#guard_msgs in\n#eval format_output\
+  \ find_triangle(616153, 77878145466)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

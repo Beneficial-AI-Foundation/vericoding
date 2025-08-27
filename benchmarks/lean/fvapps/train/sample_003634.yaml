@@ -1,0 +1,21 @@
+"vc-description": "## Task\nTo charge your mobile phone battery, do you know how much\
+  \ time it takes from 0% to 100%? It depends on your cell phone battery capacity\
+  \ and the power of the charger. A rough calculation method is:\n\n```\n0% --> 85%\
+  \  (fast charge)\n(battery capacity(mAh) * 85%) / power of the charger(mA)\n\n85%\
+  \ --> 95% (decreasing charge)\n(battery capacity(mAh) * 10%) / (power of the charger(mA)\
+  \ * 50%)\n\n95% --> 100% (trickle charge)\n(battery capacity(mAh) * 5%) / (power\
+  \ of the charger(mA) * 20%)\n```\nFor example: Your battery capacity is 1000 mAh\
+  \ and you use a charger 500 mA,  to charge your mobile phone battery from 0% to\
+  \ 100% needs time:\n\n```\n0% --> 85%  (fast charge) 1.7 (hour)\n\n85% --> 95% (decreasing\
+  \ charge) 0.4 (hour)\n\n95% --> 100% (trickle charge) 0.5 (hour)\n\ntotal times\
+  \ = 1.7 + 0.4 + 0.5 = 2.6 (hour)\n```\n\n Complete function `calculateTime` that\
+  \ accepts two arguments `battery` and `charger`, return how many hours can charge\
+  \ the battery from 0% to 100%. The result should be a number, round to 2 decimal\
+  \ places (In Haskell, no need to round it)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_time (battery : Float) (charger : Float) : Float\
+  \ :=\n  sorry\n\n\n\n\n"
+"vc-theorems": "theorem calculate_time_known_value :\n    (calculate_time 1000 500\
+  \ - 2.6).abs < 0.01 :=\n    sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

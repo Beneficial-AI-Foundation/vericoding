@@ -1,0 +1,29 @@
+"vc-description": "There is a popular apps named “Exbook” like “Facebook”. To sign\
+  \ up in this app , You have to make a strong password with more than 3 digits and\
+  \ less than 10 digits . But I am a pro hacker and so I make a Exbook hacking site\
+  \ . You need to login in this site to hack exbook account and then you will get\
+  \ a portal. You can give any user exbook login link using this site and when anyone\
+  \ login into exbook using your link ,you can see his/her password .\nBut I made\
+  \ a mistake and so you cannot find original password in your portal . The portal\
+  \ showing you by adding two in every digit . So , now you have to find out the original\
+  \ password of an user if I give you the password which is showing in your portal\
+  \ .\n\n-----Input:-----\nThe first line contains a single integer t (1 ≤ t ≤ 1000)\
+  \ — the number of test cases.\nThe first line of each test case contains a single\
+  \ integer n which is showing in your portal . Mind it , every digit of n is greater\
+  \ than one .\n\n-----Output:-----\nPrint , original password of user .\n\n-----Sample\
+  \ Input:-----\n2\n3527\n47269\n\n-----Sample Output:-----\n1305\n25047"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_original_password (portalPass : Nat) : String := sorry\n\
+  \ntheorem portal_pass_transformation_valid (portalPass : Nat)\n  (h1 : portalPass\
+  \ ≥ 3000)\n  (h2 : portalPass ≤ 99999)\n  (h3 : ∀ d : Char, d ∈ portalPass.repr.data\
+  \ → (d.toNat - 48) ≥ 2) :\n  find_original_password portalPass =\n    String.join\
+  \ (portalPass.repr.data.map (fun d => (Nat.repr ((d.toNat - 48 - 2))))) := sorry\n"
+"vc-theorems": "theorem portal_pass_specific_cases :\n  find_original_password 3527\
+  \ = \"1305\" ∧\n  find_original_password 47269 = \"25047\" ∧ \n  find_original_password\
+  \ 444 = \"222\" := sorry\n\n\ntheorem portal_pass_returns_string (portalPass : Nat)\
+  \ :\n  (find_original_password portalPass).data.all (fun c => c.isDigit) := sorry\n\
+  \n/--\ninfo: '1305'\n-/\n#guard_msgs in\n#eval find_original_password 3527\n\n/--\n\
+  info: '25047'\n-/\n#guard_msgs in\n#eval find_original_password 47269\n\n/--\ninfo:\
+  \ '222'\n-/\n#guard_msgs in\n#eval find_original_password 444\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

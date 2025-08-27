@@ -1,0 +1,31 @@
+"vc-description": "Help Saurabh with his Chemistry Assignment.\n\nSaurabh has been\
+  \ given a chemistry assignment by Ruby Mam. Though the assignment is simple but\n\
+  \nSaurabh has to watch India vs Pakistan Match and he has no time to do the assignment\
+  \ by himself.\n\nSo Saurabh wants you to do his assignment so that he doesn’t get\
+  \ scolded by Ruby Mam . The assignment\n\nis as follows , Suppose there are X particles\
+  \ initially at time t=0 in a box. At a time t the number of particles in\n\nbox\
+  \ becomes t times the number of particles at time t-1 . You will be given N and\
+  \ X where N is time at which the\n\nnumber of particles in box is to be calculated\
+  \ and X is the number of particles at time t=0.\n\n-----Input-----\nThe first line\
+  \ will contain the integer T, the number of test cases. Each test case consists\
+  \ of two space\n\nseparated integers N and X .\n\n-----Output-----\nFor each test\
+  \ case, output the answer to the query. Since the output can be very large, output\
+  \ the answer modulo\n\n10^6+3\n\n-----Constraints-----\n- 1 ≤ T ≤ 100000\n- 1 ≤\
+  \ N,X ≤ 10^18\n\n-----Example-----\nInput:\n2\n1 2\n2 1\n\nOutput:\n2\n2\n\n-----Explanation-----\n\
+  Example case 2.At t=0 particles are 1 ,so at t=1 ,particles are 1*1 = 1 particles.\
+  \ At t=2, particles are 2*1 = 2 particles."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD := 1000003\n\ndef calculate_particles (n: Nat) (x: Nat)\
+  \ : Nat :=\n  sorry\n"
+"vc-theorems": "theorem result_bounds (n x : Nat) : \n  calculate_particles n x <\
+  \ MOD := by\n  sorry\n\n\ntheorem large_n_is_zero (n x : Nat) : \n  n ≥ MOD → calculate_particles\
+  \ n x = 0 := by\n  sorry\n\n\ntheorem zero_case (x : Nat) :\n  calculate_particles\
+  \ 0 x = x % MOD := by\n  sorry\n\n\ntheorem one_case (x : Nat) :\n  calculate_particles\
+  \ 1 x = x % MOD := by\n  sorry\n\n\ntheorem factorial_case (n : Nat) :\n  calculate_particles\
+  \ n 1 = (List.range n).foldl (fun acc i => (acc * (i + 1)) % MOD) 1 := by\n  sorry\n\
+  \n\ntheorem multiplication_property (n x : Nat) :\n  calculate_particles n x = (calculate_particles\
+  \ n 1 * x) % MOD := by\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval calculate_particles\
+  \ 1 2\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval calculate_particles 2 1\n\n/--\n\
+  info: 6\n-/\n#guard_msgs in\n#eval calculate_particles 3 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

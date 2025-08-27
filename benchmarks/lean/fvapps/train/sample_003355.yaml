@@ -1,0 +1,31 @@
+"vc-description": "# Kata Task\n\nYou are given a list of cogs in a gear train\n\n\
+  Each element represents the number of teeth of that cog\n\ne.g. `[100, 50, 25]`\
+  \ means \n* 1st cog has 100 teeth \n* 2nd cog has 50 teeth\n* 3rd cog has 25 teeth\n\
+  \nIf the ``nth`` cog rotates clockwise at 1 RPM what is the RPM of the cogs at each\
+  \ end of the gear train? \n\n**Notes**\n* no two cogs share the same shaft\n* return\
+  \ an array whose two elements are RPM of the first and last cogs respectively\n\
+  * use negative numbers for anti-clockwise rotation\n* for convenience `n` is zero-based\n\
+  * For C and NASM coders, the returned array will be `free`'d.\n\n---\n\nSeries:\n\
+  * Cogs\n* Cogs 2"
+"vc-preamble": "import Imports.AllImports\n\ndef cog_RPM (cogs: List Nat) (n: Nat)\
+  \ : List Int := sorry\n\n/-- For accessing array elements safely -/"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get? {α : Type} (xs : List α) (i : Nat) : Option α :=\n  if\
+  \ h : i < xs.length then some (xs.get ⟨i, h⟩) else none\n"
+"vc-theorems": "theorem single_cog_property {cogs : List Nat} {n : Nat} (h : cogs.length\
+  \ = 1) :\n  cog_RPM cogs 0 = [1, 1] := sorry\n\n\ntheorem cog_direction_property\
+  \ {cogs : List Nat} {n : Nat} \n  (h1 : cogs.length > 1) (h2 : n < cogs.length)\
+  \ :\n  ∃ x y : Int, cog_RPM cogs n = [x, y] ∧\n  ((x > 0) ↔ (n % 2 = 0)) ∧ \n  ((y\
+  \ > 0) ↔ ((cogs.length - n) % 2 = 1)) := sorry\n\n\ntheorem cog_ratio_property {cogs\
+  \ : List Nat} {n : Nat}\n  (h1 : cogs.length > 1) (h2 : n < cogs.length) \n  (h3\
+  \ : ∀ i, get? cogs i ≠ none) :\n  match get? cogs n, get? cogs 0, get? cogs (cogs.length\
+  \ - 1) with\n  | some cn, some c0, some cl =>\n    ∃ x y : Int, cog_RPM cogs n =\
+  \ [x, y] ∧\n    x.natAbs = cn / c0 ∧\n    y.natAbs = cn / cl\n  | _, _, _ => True\
+  \ := sorry\n\n\ntheorem identical_cogs_property {cogs : List Nat} {n : Nat}\n  (h1\
+  \ : cogs.length > 1) (h2 : n < cogs.length)\n  (h3 : ∀ i j, i < cogs.length → j\
+  \ < cogs.length → get? cogs i = get? cogs j) :\n  ∃ x y : Int, cog_RPM cogs n =\
+  \ [x, y] ∧\n  x.natAbs = 1 ∧ y.natAbs = 1 := sorry\n\n/--\ninfo: [1, 1]\n-/\n#guard_msgs\
+  \ in\n#eval cog_RPM [100] 0\n\n/--\ninfo: [1, -1]\n-/\n#guard_msgs in\n#eval cog_RPM\
+  \ [100, 100, 100, 100] 0\n\n/--\ninfo: [-1, 1]\n-/\n#guard_msgs in\n#eval cog_RPM\
+  \ [100, 100, 100, 100] 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

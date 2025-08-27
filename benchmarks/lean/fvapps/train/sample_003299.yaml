@@ -1,0 +1,27 @@
+"vc-description": "Implement a function/class, which should return an integer if the\
+  \ input string is in one of the formats specified below, or `null/nil/None` otherwise.\n\
+  \nFormat:\n* Optional `-` or `+`\n* Base prefix `0b` (binary), `0x` (hexadecimal),\
+  \ `0o` (octal), or in case of no prefix decimal.\n* Digits depending on base\n\n\
+  Any extra character (including whitespace) makes the input invalid, in which case\
+  \ you should return `null/nil/None`.\n\nDigits are case insensitive, but base prefix\
+  \ must be lower case.\n\nSee the test cases for examples."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def to_integer (s: String) : Option Int := sorry \n\ntheorem decimal_string_property\
+  \ (n : Int) :\n  to_integer (toString n) = some n := sorry\n"
+"vc-theorems": "theorem binary_string_property (n : Int) (h : n ≥ 0):\n  let binary\
+  \ := \"0b\" ++ toString n\n  to_integer binary = some n := sorry\n\n\ntheorem hex_string_property\
+  \ (n : Int) (h : n ≥ 0):\n  let hex := \"0x\" ++ toString n\n  to_integer hex =\
+  \ some n := sorry\n\n\ntheorem octal_string_property (n : Int) (h : n ≥ 0):\n  let\
+  \ octal := \"0o\" ++ toString n \n  to_integer octal = some n := sorry\n\n\ntheorem\
+  \ invalid_string_property (s : String) :\n  ¬s.startsWith \"0b\" →\n  ¬s.startsWith\
+  \ \"0o\" →\n  ¬s.startsWith \"0x\" →\n  (∀ c : Char, c ∈ s.data → ¬c.isDigit) →\n\
+  \  to_integer s = none := sorry\n\n\ntheorem edge_cases :\n  to_integer \"\" = none\
+  \ ∧ \n  to_integer \"+-123\" = none ∧\n  to_integer \"0b\" = none ∧\n  to_integer\
+  \ \"0x\" = none ∧ \n  to_integer \"0o\" = none := sorry\n\n/--\ninfo: 123\n-/\n\
+  #guard_msgs in\n#eval to_integer \"123\"\n\n/--\ninfo: -123\n-/\n#guard_msgs in\n\
+  #eval to_integer \"-123\"\n\n/--\ninfo: 123\n-/\n#guard_msgs in\n#eval to_integer\
+  \ \"+123\"\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval to_integer \"0b1010\"\n\n\
+  /--\ninfo: 291\n-/\n#guard_msgs in\n#eval to_integer \"0x123\"\n\n/--\ninfo: 83\n\
+  -/\n#guard_msgs in\n#eval to_integer \"0o123\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

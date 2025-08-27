@@ -1,0 +1,23 @@
+"vc-description": "write me a function `stringy` that takes a `size` and returns a\
+  \ `string` of alternating `'1s'` and `'0s'`.\n\nthe string should start with a `1`.\n\
+  \na string with `size` 6 should return :`'101010'`.\n\nwith `size` 4 should return\
+  \ : `'1010'`.\n\nwith `size` 12 should return : `'101010101010'`.\n\nThe size will\
+  \ always be positive and will only use whole numbers."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def stringy (n : Int) : String := sorry \n\ntheorem stringy_length\
+  \ {n : Int} (h : n > 0) (h2 : n ≤ 500) : \n  (stringy n).length = n := sorry\n"
+"vc-theorems": "theorem stringy_alternating {n : Int} (h : n > 0) (h2 : n ≤ 500) (i\
+  \ : Nat) (h3 : i < n - 1) :\n  have h4 : i < (stringy n).length := sorry\n  have\
+  \ h5 : i + 1 < (stringy n).length := sorry\n  (stringy n).data[i]'h4 ≠ (stringy\
+  \ n).data[i+1]'h5 := sorry\n\n\ntheorem stringy_starts_with_one {n : Int} (h : n\
+  \ > 0) (h2 : n ≤ 500) :\n  have h3 : 0 < (stringy n).length := sorry\n  (stringy\
+  \ n).data[0]'h3 = '1' := sorry\n\n\ntheorem stringy_only_ones_and_zeros {n : Int}\
+  \ (h : n > 0) (h2 : n ≤ 500) (i : Nat) (h3 : i < n) :\n  have h4 : i < (stringy\
+  \ n).length := sorry\n  (stringy n).data[i]'h4 = '0' ∨ (stringy n).data[i]'h4 =\
+  \ '1' := sorry\n\n\ntheorem stringy_empty : stringy 0 = \"\" := sorry\n\ntheorem\
+  \ stringy_negative {n : Int} (h : n < 0) : stringy n = \"\" := sorry\n\n/--\ninfo:\
+  \ '101'\n-/\n#guard_msgs in\n#eval stringy 3\n\n/--\ninfo: '10101'\n-/\n#guard_msgs\
+  \ in\n#eval stringy 5\n\n/--\ninfo: '101010101010'\n-/\n#guard_msgs in\n#eval stringy\
+  \ 12\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,79 @@
+"vc-description": "## The Story\nGreen Lantern's long hours of study and practice\
+  \ with his ring have really paid off -- his skills, focus, and control have improved\
+  \ so much that now he can even use his ring to update and redesign his web site.\
+  \ Earlier today he was focusing his will and a beam from his ring upon the Justice\
+  \ League web server, while intensely brainstorming and visualizing in minute detail\
+  \ different looks and ideas for his web site, and when he finished and reloaded\
+  \ his home page, he was absolutely thrilled to see that among other things it now\
+  \ displayed\n\n~~~~\nIn brightest day, in blackest night,\nThere's nothing cooler\
+  \ than my site!\n~~~~\n\nin his favorite font in very large blinking green letters.\n\
+  \nThe problem is, Green Lantern's ring has no power over anything yellow, so if\
+  \ he's experimenting with his web site and accidentally changes some text or background\
+  \ color to yellow, he will no longer be able to make any changes to those parts\
+  \ of the content or presentation (because he doesn't actually know any HTML, CSS,\
+  \ programming languages, frameworks, etc.) until he gets a more knowledgable friend\
+  \ to edit the code for him.\n\n## Your Mission\nYou can help Green Lantern by writing\
+  \ a function that will replace any color property values that are too yellow with\
+  \ shades of green or blue-green. Presumably at a later time the two of you will\
+  \ be doing some testing to find out at exactly which RGB values yellow stops being\
+  \ yellow and starts being off-white, orange, brown, etc. as far as his ring is concerned,\
+  \ but here's the plan to get version 1.0 up and running as soon as possible:\n\n\
+  Your function will receive either an HTML color name or a six-digit hex color code.\
+  \ (You're not going to bother with other types of color codes just now because you\
+  \ don't think they will come up.) If the color is too yellow, your function needs\
+  \ to return a green or blue-green shade instead, but if it is not too yellow, it\
+  \ needs to return the original color name or hex color code unchanged.\n\n### HTML\
+  \ Color Names\n(If don't know what HTML color names are, take a look at this HTML\
+  \ colors names reference.)\n\nFor HMTL color names, you are going to start out trying\
+  \ a pretty strict definition of yellow, replacing any of the following colors as\
+  \ specified:\n\n~~~~\nGold => ForestGreen\nKhaki => LimeGreen\nLemonChiffon => PaleGreen\n\
+  LightGoldenRodYellow => SpringGreen\nLightYellow => MintCream\nPaleGoldenRod =>\
+  \ LightGreen\nYellow => Lime\n~~~~\n\nHTML color names are case-insensitive, so\
+  \ your function will need to be able to identify the above yellow shades regardless\
+  \ of the cases used, but should output the green shades as capitalized above.\n\n\
+  Some examples:\n```\n\"lemonchiffon\"    \"PaleGreen\"\n\"GOLD\"            \"ForestGreen\"\
+  \n\"pAlEgOlDeNrOd\"   \"LightGreen\"\n\"BlueViolet\"      \"BlueViolet\"\n```\n\n\
+  ### Hex Color Codes\n(If you don't know what six-digit hex color codes are, take\
+  \ a look at this Wikipedia description. Basically the six digits are made up of\
+  \ three two-digit numbers in base 16, known as hexidecimal or hex, from 00 to FF\
+  \ (equivalent to 255 in base 10, also known as decimal), with the first two-digit\
+  \ number specifying the color's red value, the second the green value, and the third\
+  \ blue.)\n\nWith six-digit color hex codes, you are going to start out going really\
+  \ overboard, interpreting as \"yellow\" any hex code where the red (R) value and\
+  \ the green (G) value are each greater than the blue (B) value. When you find one\
+  \ of these \"yellow\" hex codes, your function will take the three hex values and\
+  \ rearrange them that the largest goes to G, the middle goes to B, and the smallest\
+  \ to R. \n\nFor example, with the six-digit hex color code `#FFD700`, which has\
+  \ an R value of hex FF (decimal 255), a G value of hex D7 (decimal 215), and a B\
+  \ value of hex 00 (decimal 0), as the R and G values are each larger than the B\
+  \ value, you would return it as `#00FFD7` -- the FF reassigned to G, the D7 to B,\
+  \ and the 00 to R. \n\nHex color codes are also case-insensitive, but your function\
+  \ should output them in the same case they were received in, just for consistency\
+  \ with whatever style is being used.\n\nSome examples:\n```\n\"#000000\"   \"#000000\"\
+  \n\"#b8860b\"   \"#0bb886\"\n\"#8FBC8F\"   \"#8FBC8F\"\n\"#C71585\"   \"#C71585\"\
+  \n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def yellow_be_gone (color : String) : String := sorry\n\ndef yellow_colors\
+  \ : List String := [\"gold\", \"khaki\", \"lemonchiffon\", \"lightgoldenrodyellow\"\
+  , \n                     \"lightyellow\", \"palegoldenrod\", \"yellow\"]\n\ndef\
+  \ yellow_mapping : List (String × String) := [(\"gold\", \"ForestGreen\"), (\"khaki\"\
+  , \"LimeGreen\"),\n                      (\"lemonchiffon\", \"PaleGreen\"), (\"\
+  lightgoldenrodyellow\", \"SpringGreen\"),\n                      (\"lightyellow\"\
+  , \"MintCream\"), (\"palegoldenrod\", \"LightGreen\"),\n                      (\"\
+  yellow\", \"Lime\")]\n"
+"vc-theorems": "theorem yellow_mapping_consistent {color : String} (h : color ∈ yellow_colors)\
+  \ :\n  ∃ mapped : String, (color, mapped) ∈ yellow_mapping ∧ yellow_be_gone color\
+  \ = mapped := sorry\n\n\ntheorem non_yellow_colors_unchanged {color : String} \n\
+  \  (h1 : color.length > 0)\n  (h2 : ¬color.startsWith \"#\") \n  (h3 : ¬(color.toLower\
+  \ ∈ yellow_colors)) :\n  yellow_be_gone color = color := sorry\n\n\ntheorem hex_color_format\
+  \ {hex : String}\n  (h1 : hex.startsWith \"#\")\n  (h2 : hex.length = 7)\n  (h3\
+  \ : ∀ (c : Char), c ∈ hex.data.tail → \n       c.isDigit ∨ ('a' ≤ c ∧ c ≤ 'f') ∨\
+  \ ('A' ≤ c ∧ c ≤ 'F')) :\n  let result := yellow_be_gone hex\n  result.startsWith\
+  \ \"#\" ∧ result.length = 7 := sorry\n\n/--\ninfo: 'PaleGreen'\n-/\n#guard_msgs\
+  \ in\n#eval yellow_be_gone \"lemonchiffon\"\n\n/--\ninfo: 'ForestGreen'\n-/\n#guard_msgs\
+  \ in\n#eval yellow_be_gone \"GOLD\"\n\n/--\ninfo: 'LightGreen'\n-/\n#guard_msgs\
+  \ in\n#eval yellow_be_gone \"pAlEgOlDeNrOd\"\n\n/--\ninfo: '#0bb886'\n-/\n#guard_msgs\
+  \ in\n#eval yellow_be_gone \"#b8860b\"\n\n/--\ninfo: '#C71585'\n-/\n#guard_msgs\
+  \ in\n#eval yellow_be_gone \"#C71585\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

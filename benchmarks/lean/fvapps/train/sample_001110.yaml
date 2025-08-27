@@ -1,0 +1,38 @@
+"vc-description": "In ACM-ICPC contests, there are usually three people in a team.\
+  \ For each person in the team, you know their scores in three skills - hard work,\
+  \ intelligence and persistence.\nYou want to check whether it is possible to order\
+  \ these people (assign them numbers from 1 to 3) in such a way that for each 1 ≤\
+  \ i ≤ 2, i+1-th person is stricly better than the i-th person.\nA person x is said\
+  \ to be better than another person y if x doesn't score less than y in any of the\
+  \ skills and scores more than y in at least one skill.\nDetermine whether such an\
+  \ ordering exists.\n\n-----Input-----\nThe first line fo the input contains an integer\
+  \ T denoting the number of test cases.\nEach test consists of three lines. Each\
+  \ of these lines contains three space separated integers s1, s2 and s3 denoting\
+  \ the scores of one member of the team in each of the three skills, in the given\
+  \ order.\n\n-----Output-----\nFor each test case, output a single line containing\
+  \ \"yes\" if such an ordering exists or \"no\" if doesn't exist (without quotes).\n\
+  \n-----Constraints-----\n- 1 ≤ T ≤ 1000\n- 1 ≤ s1, s2, s3 ≤ 100\n\n-----Example-----\n\
+  Input\n3\n1 2 3\n2 3 4\n2 3 5\n1 2 3\n2 3 4\n2 3 4\n5 6 5\n1 2 3\n2 3 4\n\nOutput\n\
+  yes\nno\nyes\n\n-----Explanation-----\nTest Case 1: We can order them as (3, 2,\
+  \ 1). Person 3 is better than Person 2 because his scores in the first two skills\
+  \ are not lesser than Person 2's. And in skill 3, Person 3 scores higher. Similarly,\
+  \ Person 2 is better than Person 1. He scores more than Person 1 in every skill,\
+  \ in fact."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_order_team (team1 : List Nat) (team2 : List Nat) (team3\
+  \ : List Nat) : String := sorry\n\ntheorem can_order_team_returns_valid_result (t1\
+  \ t2 t3 : List Nat) :\n  t1.length = 3 → t2.length = 3 → t3.length = 3 →\n  (can_order_team\
+  \ t1 t2 t3 = \"yes\" ∨ can_order_team t1 t2 t3 = \"no\") := sorry\n"
+"vc-theorems": "theorem identical_teams_never_ordered (t : List Nat) :\n  t.length\
+  \ = 3 →\n  can_order_team t t t = \"no\" := sorry\n\n\ntheorem result_invariant_under_rotation\
+  \ (t1 t2 t3 : List Nat) :\n  t1.length = 3 → t2.length = 3 → t3.length = 3 →\n \
+  \ can_order_team t1 t2 t3 = can_order_team t2 t3 t1 ∧\n  can_order_team t1 t2 t3\
+  \ = can_order_team t3 t1 t2 := sorry\n\n\ntheorem strictly_increasing_teams_can_be_ordered\
+  \ (t : List Nat) :\n  t.length = 3 →\n  let t2 := t.map (· + 1)\n  let t3 := t2.map\
+  \ (· + 1)\n  can_order_team t t2 t3 = \"yes\" := sorry\n\n/--\ninfo: 'yes'\n-/\n\
+  #guard_msgs in\n#eval can_order_team [1, 2, 3] [2, 3, 4] [2, 3, 5]\n\n/--\ninfo:\
+  \ 'no'\n-/\n#guard_msgs in\n#eval can_order_team [1, 2, 3] [2, 3, 4] [2, 3, 4]\n\
+  \n/--\ninfo: 'yes'\n-/\n#guard_msgs in\n#eval can_order_team [5, 6, 5] [1, 2, 3]\
+  \ [2, 3, 4]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

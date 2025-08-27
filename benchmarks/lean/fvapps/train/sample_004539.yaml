@@ -1,0 +1,30 @@
+"vc-description": "Let us define a function `f`such as:\n\n- (1) for k positive odd\
+  \ integer > 2 : \n\n\n\n- (2) for k positive even integer >= 2 : \n\n\n\n- (3) for\
+  \ k positive integer > 1 : \n\n\n\n\nwhere `|x|` is `abs(x)` and Bk the kth Bernoulli\
+  \ number.\n\n`f` is not defined for `0, 1, -1`. These values will not be tested.\n\
+  \n# Guidelines for Bernoulli numbers:\n\nhttps://en.wikipedia.org/wiki/Bernoulli_number\n\
+  \nhttp://mathworld.wolfram.com/BernoulliNumber.html\n\nhttps://www.codewars.com/kata/bernoulli-numbers-1\n\
+  \nThere is more than one way to calculate them. You can make Pascal triangle and\
+  \ then with the basic formula below generate all Bernoulli numbers.\n\n1 + 2B1 =\
+  \ 0 ... gives ...\n  B1 = - 1/2\n\n1 + 3B1 + 3B2 = 0 ... gives ...    B2       \
+  \ = 1/6\n\n1 + 4B1 + 6B2 + 4B3 = 0 ... gives ... B3 = 0\n\n1 + 5B1 + 10B2 + 10B3\
+  \ + 5B4 = 0 ... gives ... B4 = - 1/30\n\n... and so on\n\n\n# Task \n\nFunction\
+  \ `series(k, nb)` returns (1), (2) or (3) where `k` is the `k` parameter of `f`\
+  \ and `nb` the upper bound in the summation of (1). `nb` is of no use for (2) and\
+  \ (3) but for the sake of simplicity it will always appear in the tests even for\
+  \ cases (2) and (3) with a value of `0`.\n\n```\nExamples\nS(2, 0) = 1.644934066848224....\n\
+  S(3, 100000) = 1.20205690310973....\nS(4, 0) = 1.08232323371113.....\nS(-5, 0) =\
+  \ -0.003968253968....\nS(-11, 0) = 0.02109279609279....\n```\n\n# Notes\n\n- For\
+  \ Java, C#, C++: `k` should be such as `-27 <= k <= 20`; otherwise `-30 <= k <=\
+  \ 30` and be careful of 32-bit integer overflow.\n- Translators are welcome."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def π : Float := 3.14159265359\ndef series (k : Int) (nb : Nat)\
+  \ : Float := sorry\n"
+"vc-theorems": "theorem even_k_independent_of_nb (k : Int) (h1 : k ≠ 0) (h2 : k %\
+  \ 2 = 0) :\n  ∀ nb : Nat, (series k nb - series k 0).abs < 1e-10 := sorry\n\n\n\
+  theorem even_k_is_finite (k : Int) (h1 : k ≠ 0) (h2 : k % 2 = 0) :\n  ∃ x : Float,\
+  \ series k 0 = x := sorry\n\n\ntheorem odd_k_is_finite (k : Int) (h1 : k > 0) (h2\
+  \ : k % 2 = 1) (nb : Nat) :\n  ∃ x : Float, series k nb = x := sorry\n\n\ntheorem\
+  \ series_2_is_pi_squared_div_6 : \n  (series 2 0 - π^2/6).abs < 1e-10 := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

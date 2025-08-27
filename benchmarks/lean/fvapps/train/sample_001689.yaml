@@ -1,0 +1,27 @@
+"vc-description": "In this kata you have to create all permutations of an input string\
+  \ and remove duplicates, if present. This means, you have to shuffle all letters\
+  \ from the input in all possible orders.\n\nExamples:\n\n```python\npermutations('a');\
+  \ # ['a']\npermutations('ab'); # ['ab', 'ba']\npermutations('aabb'); # ['aabb',\
+  \ 'abab', 'abba', 'baab', 'baba', 'bbaa']\n```\n\nThe order of the permutations\
+  \ doesn't matter."
+"vc-preamble": "import Imports.AllImports\n\ndef permutations (s : String) : List\
+  \ String := sorry\n\ndef factorial (n : Nat) : Nat := sorry\n\n\ndef noDups {α}\
+  \ [BEq α] (as : List α) : List α :=\n  as.foldl (fun acc a => if acc.contains a\
+  \ then acc else a::acc) []\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countUnique (s : String) : Nat := \n  (noDups s.data).length\n"
+"vc-theorems": "theorem permutation_length_factorial_bound \n  (s : String) (hs :\
+  \ s.length > 0) :\n  let perms := permutations s\n  let n_unique := countUnique\
+  \ s\n  (n_unique = s.length → perms.length = factorial s.length) ∧ \n  (n_unique\
+  \ < s.length → perms.length ≤ factorial s.length) := \nsorry\n\n\ntheorem permutations_same_length\
+  \ \n  (s : String) (hs : s.length > 0) :\n  let perms := permutations s\n  ∀ p ∈\
+  \ perms, p.length = s.length :=\nsorry\n\n\ntheorem permutations_use_original_chars\n\
+  \  (s : String) (hs : s.length > 0) :\n  let perms := permutations s\n  ∀ p ∈ perms,\
+  \ p.data.toArray.qsort (· ≤ ·) = s.data.toArray.qsort (· ≤ ·) :=\nsorry\n\n\ntheorem\
+  \ permutations_are_unique\n  (s : String) (hs : s.length > 0) :\n  let perms :=\
+  \ permutations s\n  perms.length = (noDups perms).length :=\nsorry\n\n/--\ninfo:\
+  \ sorted(['a'])\n-/\n#guard_msgs in\n#eval sorted permutations(\"a\")\n\n/--\ninfo:\
+  \ sorted(['ab', 'ba'])\n-/\n#guard_msgs in\n#eval sorted permutations(\"ab\")\n\n\
+  /--\ninfo: sorted(['aabb', 'abab', 'abba', 'baab', 'baba', 'bbaa'])\n-/\n#guard_msgs\
+  \ in\n#eval sorted permutations(\"aabb\")\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

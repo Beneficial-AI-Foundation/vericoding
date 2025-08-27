@@ -1,0 +1,23 @@
+"vc-description": "You are given a string of words (x), for each word within the string\
+  \ you need to turn the word 'inside out'. By this I mean the internal letters will\
+  \ move out, and the external letters move toward the centre. \n\nIf the word is\
+  \ even length, all letters will move. If the length is odd, you are expected to\
+  \ leave the 'middle' letter of the word where it is. \n\nAn example should clarify:\n\
+  \n'taxi' would become 'atix'\n'taxis' would become 'atxsi'"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def inside_out_word (s : String) : String := sorry\ndef inside_out\
+  \ (s : String) : String := sorry\n"
+"vc-theorems": "theorem inside_out_word_preserves_length (s : String) (h : s.length\
+  \ > 0) :\n  (inside_out_word s).length = s.length := \nsorry\n\n\ntheorem inside_out_preserves_length\
+  \ (s : String) (h : s.length > 0) :\n  (inside_out s).length = s.length :=\nsorry\n\
+  \n\ntheorem space_positions_preserved (s : String) (h : s.length > 0) :\n  ∀ pos\
+  \ : String.Pos, (s.get pos = ' ' ↔ (inside_out s).get pos = ' ') :=\nsorry\n\n\n\
+  theorem single_char_unchanged (s : String) (h : s.length = 1) :\n  inside_out_word\
+  \ s = s ∧ inside_out s = s :=\nsorry\n\n\ntheorem chars_preserved (s : String) (h\
+  \ : s.length > 0) :\n  ∃ (perm : String.Pos → String.Pos),\n    ∀ pos : String.Pos,\
+  \ (inside_out_word s).get pos = s.get (perm pos) :=\nsorry\n\n/--\ninfo: expected1\n\
+  -/\n#guard_msgs in\n#eval inside_out \"man i need a taxi up to ubud\"\n\n/--\ninfo:\
+  \ expected2\n-/\n#guard_msgs in\n#eval inside_out \"take me to semynak\"\n\n/--\n\
+  info: expected3\n-/\n#guard_msgs in\n#eval inside_out \"massage yes massage\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

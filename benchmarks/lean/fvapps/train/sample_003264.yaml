@@ -1,0 +1,48 @@
+"vc-description": "If we multiply the integer      `717 (n)` by `7 (k)`, the result\
+  \ will be equal to `5019`.\n\nConsider all the possible ways that this last number\
+  \ may be split as a string and calculate their corresponding sum obtained by adding\
+  \ the substrings as integers. When we add all of them up,... surprise, we got the\
+  \ original number `717`:\n\n```\nPartitions as string                Total Sums\n\
+  ['5', '019']                        5 + 19 = 24\n['50', '19']                  \
+  \     50 + 19 = 69\n['501', '9']                      501 + 9 = 510\n['5', '0',\
+  \ '19']                5 + 0 + 19 = 24\n['5', '01', '9']                 5 + 1 +\
+  \ 9 = 15\n['50', '1', '9']                50 + 1 + 9 = 60\n['5', '0', '1', '9']\
+  \         5 + 0 + 1 + 9 = 15\n                            ____________________\n\
+  \                              Big Total:    717\n                            ____________________\n\
+  ```\nIn fact, `717` is one of the few integers that has such property with a factor\
+  \ `k = 7`.\n\nChanging the factor `k`, for example to `k = 3`, we may see that the\
+  \ integer `40104` fulfills this property.\n\nGiven an integer `start_value` and\
+  \ an integer `k`, output the smallest integer `n`, but higher than `start_value`,\
+  \ that fulfills the above explained properties.\n\nIf by chance, `start_value`,\
+  \ fulfills the property, do not return `start_value` as a result, only the next\
+  \ integer. Perhaps you may find this assertion redundant if you understood well\
+  \ the requirement of the kata: \"output the smallest integer `n`, but higher than\
+  \ `start_value`\"\n\nThe values for `k` in the input may be one of these: `3, 4,\
+  \ 5, 7`\n\n### Features of the random tests\n\nIf you want to understand the style\
+  \ and features of the random tests, see the *Notes* at the end of these instructions.\n\
+  \nThe random tests are classified in three parts.\n\n- Random tests each with one\
+  \ of the possible values of `k` and a random `start_value` in the interval `[100,\
+  \ 1300]`\n- Random tests each with a `start_value` in a larger interval for each\
+  \ value of `k`, as follows:\n - for `k = 3`, a random `start value` in the range\
+  \ `[30000, 40000]`\n - for `k = 4`, a random `start value` in the range `[2000,\
+  \ 10000]`\n - for `k = 5`, a random `start value` in the range `[10000, 20000]`\n\
+  \ - for `k = 7`, a random `start value` in the range `[100000, 130000]`\n- More\
+  \ challenging tests, each with a random `start_value` in the interval `[100000,\
+  \ 110000]`.\n\n\n\nSee the examples tests.\n\nEnjoy it.\n\n# Notes:\n\n- As these\
+  \ sequences are finite, in other words, they have a maximum term for each value\
+  \ of k, the tests are prepared in such way that the `start_value`  will always be\
+  \ less than this maximum term. So you may be confident that your code will always\
+  \ find an integer.\n\n- The values of `k` that generate sequences of integers, for\
+  \ the constrains of this kata are: 2, 3, 4, 5, and 7. The case `k = 2` was not included\
+  \ because it generates only two integers.\n\n- The sequences have like \"mountains\"\
+  \ of abundance of integers but also have very wide ranges like \"valleys\" of scarceness.\
+  \ Potential solutions, even the fastest ones, may time out searching the next integer\
+  \ due to an input in one of these valleys. So it was intended to avoid these ranges.\n\
+  \nJavascript and Ruby versions will be released soon."
+"vc-preamble": "import Imports.AllImports\n\ndef next_higher (start_value k : Nat)\
+  \ : Nat := sorry \n\ndef sum_part (n : Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def qualified : Nat → List Nat := sorry\n\n\n\ntheorem sum_part_properties\
+  \ {n : Nat} (hn : n > 0 ∧ n ≤ 1000) :\n  sum_part n ≥ n := sorry"
+"vc-theorems": ""
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

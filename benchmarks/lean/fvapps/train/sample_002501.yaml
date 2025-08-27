@@ -1,0 +1,34 @@
+"vc-description": "=====Problem Statement=====\nThe itertools module standardizes\
+  \ a core set of fast, memory efficient tools that are useful by themselves or in\
+  \ combination. Together, they form an iterator algebra making it possible to construct\
+  \ specialized tools succinctly and efficiently in pure Python.\n\nYou are given\
+  \ a list of N lowercase English letters. For a given integer K, you can select any\
+  \ K indices (assume 1-based indexing) with a uniform probability from the list.\n\
+  Find the probability that at least one of the K indices selected will contain the\
+  \ letter: ''.\n\n=====Input Format=====\nThe input consists of three lines. The\
+  \ first line contains the integer N, denoting the length of the list. The next line\
+  \ consists of N space-separated lowercase English letters, denoting the elements\
+  \ of the list.\nThe third and the last line of input contains the integer K, denoting\
+  \ the number of indices to be selected.\n\n=====Output Format=====\nOutput a single\
+  \ line consisting of the probability that at least one of the K indices selected\
+  \ contains the letter: 'a'.\nNote: The answer must be correct up to 3 decimal places.\
+  \ \n\n=====Constraints=====\n1≤N≤10\n1≤K≤N"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calc_probability_of_a (letters: List Letter) (k: Nat) : Float\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem prob_between_zero_and_one (letters: List Letter) (k: Nat)\
+  \ (h: k ≤ letters.length) :\n  let prob := calc_probability_of_a letters k\n  0\
+  \ ≤ prob ∧ prob ≤ 1 := by\n  sorry\n\n\ntheorem no_a_prob_zero (letters: List Letter)\
+  \ (k: Nat) (h1: k ≤ letters.length)\n  (h2: ¬ (letters.contains Letter.a)) :\n \
+  \ calc_probability_of_a letters k = 0 := by\n  sorry\n\n\ntheorem all_letters_k_prob_one\
+  \ (letters: List Letter) (k: Nat)\n  (h1: k = letters.length) (h2: letters.contains\
+  \ Letter.a) : \n  calc_probability_of_a letters k = 1 := by\n  sorry\n\n\ntheorem\
+  \ all_a_prob_one (letters: List Letter) (k: Nat) \n  (h1: k ≤ letters.length) (h2:\
+  \ ∀ l ∈ letters, l = Letter.a) :\n  calc_probability_of_a letters k = 1 := by\n\
+  \  sorry\n\n\ntheorem only_a_letters_prob_one (letters: List Letter) (k: Nat)\n\
+  \  (h1: k ≤ letters.length) (h2: ∀ l ∈ letters, l = Letter.a) :\n  calc_probability_of_a\
+  \ letters k = 1 := by\n  sorry\n\n\ntheorem no_a_letters_prob_zero (letters: List\
+  \ Letter) (k: Nat)\n  (h1: k ≤ letters.length) (h2: ∀ l ∈ letters, l ≠ Letter.a)\
+  \ :\n  calc_probability_of_a letters k = 0 := by\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,19 @@
+"vc-description": "Complete the function ```circleArea``` so that it will return the\
+  \ area of a circle with the given ```radius```. Round the returned number to two\
+  \ decimal places (except for Haskell). If the radius is not positive or not a number,\
+  \ return ```false```.\n\nExample:\n\n```python\ncircleArea(-1485.86)     #returns\
+  \ false\ncircleArea(0)            #returns false\ncircleArea(43.2673)      #returns\
+  \ 5881.25\ncircleArea(68)           #returns 14526.72\ncircleArea(\"number\")  \
+  \   #returns false\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef circle_area (radius : Float) : Option\
+  \ Float :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pi : Float := 3.14159\n\ntheorem circle_area_invalid_inputs\
+  \ {x : Float} (h : x ≤ 0) :\n  circle_area x = none :=\n  sorry\n"
+"vc-theorems": "theorem circle_area_positive_inputs {x : Float} (h : x > 0) :\n  match\
+  \ circle_area x with\n  | some result => \n    result > 0\n  | none => False :=\n\
+  \  sorry\n\n\ntheorem circle_area_zero :\n  circle_area 0 = none :=\n  sorry\n\n\
+  /--\ninfo: False\n-/\n#guard_msgs in\n#eval circle_area 0\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval circle_area \"An integer\"\n\n/--\ninfo: 12.57\n-/\n#guard_msgs\
+  \ in\n#eval circle_area 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

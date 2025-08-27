@@ -1,0 +1,35 @@
+"vc-description": "This kata is based on a [variation](https://www.codewars.com/kata/happy-numbers-5)\
+  \ of *Happy Numbers* by TySlothrop. It is advisable to complete it first to grasp\
+  \ the idea and then move on to this one.\n\n___\n\nHello, my dear friend, and welcome\
+  \ to another *Happy Numbers* kata! What? You're not interested in them anymore?\
+  \ They are all the same? But what if I say that this one is a *performance version*...\
+  \  \n\n___\n\n# Your task:\n\nWrite a function `performant_numbers` which takes\
+  \ a number `n` as an argument and returns a list of all *happy numbers* from `1`\
+  \ to `n` inclusive. For example:\n\n```\nperformant_numbers(10)   =>  [1, 7, 10]\n\
+  performant_numbers(50)   =>  [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49]\nperformant_numbers(100)\
+  \  =>  [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97,\
+  \ 100]\n```\n\n# Test suite:\n\n* `5000` tests with number `n` being up to `300000`\n\
+  * The reference solution takes around `4.9` seconds to calculate the result\n* you\
+  \ are not allowed to hardcode the sequence: you'll have to compute it (max length\
+  \ of the code: 1700 characters)\n\n___\n\nWill you take up the challenge?"
+"vc-preamble": "import Imports.AllImports\n\ndef sum_dig (n: Nat) : Nat := sorry\n\
+  def is_happy (n: Nat) : Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def performant_numbers (n: Nat) : List Nat := sorry\n\ntheorem\
+  \ sum_dig_nonnegative (n: Nat) : \n  sum_dig n ≥ 0 := sorry\n"
+"vc-theorems": "theorem sum_dig_upper_bound (n: Nat) (k: Nat) :\n  sum_dig n ≤ k *\
+  \ 81 := sorry\n\n\ntheorem is_happy_bool_result (n: Nat) :\n  is_happy n = true\
+  \ ∨ is_happy n = false := sorry\n\n\ntheorem known_happy_numbers (n: Nat) :\n  n\
+  \ = 1 ∨ n = 7 ∨ n = 10 ∨ n = 13 ∨ n = 19 ∨ n = 23 ∨ n = 28 ∨ n = 31 →\n  is_happy\
+  \ n = true := sorry\n\n\ntheorem known_unhappy_numbers (n: Nat) :\n  n = 2 ∨ n =\
+  \ 3 ∨ n = 4 ∨ n = 5 ∨ n = 6 ∨ n = 8 ∨ n = 9 →\n  is_happy n = false := sorry\n\n\
+  \ntheorem performant_numbers_sorted (n: Nat) :\n  let result := performant_numbers\
+  \ n\n  ∀ i < result.length - 1, \n    result[i]! ≤ result[i+1]! := sorry\n\n\ntheorem\
+  \ performant_numbers_bounded (n: Nat) :\n  ∀ x ∈ performant_numbers n, x ≤ n :=\
+  \ sorry\n\n\ntheorem performant_numbers_contains_happy (n: Nat) :\n  ∀ x ∈ [1, 7,\
+  \ 10, 13, 19, 23, 28, 31],\n    x ≤ n → x ∈ performant_numbers n := sorry\n\n/--\n\
+  info: [1, 7, 10]\n-/\n#guard_msgs in\n#eval performant_numbers 10\n\n/--\ninfo:\
+  \ [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49]\n-/\n#guard_msgs in\n#eval performant_numbers\
+  \ 50\n\n/--\ninfo: [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86,\
+  \ 91, 94, 97, 100]\n-/\n#guard_msgs in\n#eval performant_numbers 100\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

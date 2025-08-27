@@ -1,0 +1,49 @@
+"vc-description": "In a special ranking system, each voter gives a rank from highest\
+  \ to lowest to all teams participated in the competition.\nThe ordering of teams\
+  \ is decided by who received the most position-one votes. If two or more teams tie\
+  \ in the first position, we consider the second position to resolve the conflict,\
+  \ if they tie again, we continue this process until the ties are resolved. If two\
+  \ or more teams are still tied after considering all positions, we rank them alphabetically\
+  \ based on their team letter.\nGiven an array of strings votes which is the votes\
+  \ of all voters in the ranking systems. Sort all teams according to the ranking\
+  \ system described above.\nReturn a string of all teams sorted by the ranking system.\n\
+   \nExample 1:\nInput: votes = [\"ABC\",\"ACB\",\"ABC\",\"ACB\",\"ACB\"]\nOutput:\
+  \ \"ACB\"\nExplanation: Team A was ranked first place by 5 voters. No other team\
+  \ was voted as first place so team A is the first team.\nTeam B was ranked second\
+  \ by 2 voters and was ranked third by 3 voters.\nTeam C was ranked second by 3 voters\
+  \ and was ranked third by 2 voters.\nAs most of the voters ranked C second, team\
+  \ C is the second team and team B is the third.\n\nExample 2:\nInput: votes = [\"\
+  WXYZ\",\"XYZW\"]\nOutput: \"XWYZ\"\nExplanation: X is the winner due to tie-breaking\
+  \ rule. X has same votes as W for the first position but X has one vote as second\
+  \ position while W doesn't have any votes as second position. \n\nExample 3:\nInput:\
+  \ votes = [\"ZMNAGUEDSJYLBOPHRQICWFXTVK\"]\nOutput: \"ZMNAGUEDSJYLBOPHRQICWFXTVK\"\
+  \nExplanation: Only one voter so his votes are used for the ranking.\n\nExample\
+  \ 4:\nInput: votes = [\"BCA\",\"CAB\",\"CBA\",\"ABC\",\"ACB\",\"BAC\"]\nOutput:\
+  \ \"ABC\"\nExplanation: \nTeam A was ranked first by 2 voters, second by 2 voters\
+  \ and third by 2 voters.\nTeam B was ranked first by 2 voters, second by 2 voters\
+  \ and third by 2 voters.\nTeam C was ranked first by 2 voters, second by 2 voters\
+  \ and third by 2 voters.\nThere is a tie and we rank teams ascending by their IDs.\n\
+  \nExample 5:\nInput: votes = [\"M\",\"M\",\"M\",\"M\"]\nOutput: \"M\"\nExplanation:\
+  \ Only team M in the competition so it has the first rank.\n\n \nConstraints:\n\n\
+  1 <= votes.length <= 1000\n1 <= votes[i].length <= 26\nvotes[i].length == votes[j].length\
+  \ for 0 <= i, j < votes.length.\nvotes[i][j] is an English upper-case letter.\n\
+  All characters of votes[i] are unique.\nAll the characters that occur in votes[0]\
+  \ also occur in votes[j] where 1 <= j < votes.length."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def rank_teams (votes : List String) : String := sorry\n\ntheorem\
+  \ rank_teams_output_length {votes : List String} \n  (h1 : ∀ v ∈ votes, v.length\
+  \ = votes[0]!.length)\n  (h2 : ∀ v ∈ votes, v.toList.Nodup) :\n  (rank_teams votes).length\
+  \ = votes[0]!.length :=\nsorry\n"
+"vc-theorems": "theorem rank_teams_content {votes : List String}\n  (h1 : ∀ v ∈ votes,\
+  \ v.length = votes[0]!.length) \n  (h2 : ∀ v ∈ votes, v.toList.Nodup) :\n  ∀ c ∈\
+  \ (rank_teams votes).data, c.isUpper :=\nsorry\n\n\ntheorem rank_teams_same_chars\
+  \ {votes : List String}\n  (h1 : ∀ v ∈ votes, v.length = votes[0]!.length)\n  (h2\
+  \ : ∀ v ∈ votes, v.toList.Nodup) :\n  (rank_teams votes).data = votes[0]!.data :=\n\
+  sorry\n\n\ntheorem rank_teams_single_team {votes : List String}\n  (h : ∀ v ∈ votes,\
+  \ v = \"A\") :\n  rank_teams votes = \"A\" :=\nsorry\n\n/--\ninfo: 'ACB'\n-/\n#guard_msgs\
+  \ in\n#eval rank_teams [\"ABC\", \"ACB\", \"ABC\", \"ACB\", \"ACB\"]\n\n/--\ninfo:\
+  \ 'XWYZ'\n-/\n#guard_msgs in\n#eval rank_teams [\"WXYZ\", \"XYZW\"]\n\n/--\ninfo:\
+  \ 'ZMNAGUEDSJYLBOPHRQICWFXTVK'\n-/\n#guard_msgs in\n#eval rank_teams [\"ZMNAGUEDSJYLBOPHRQICWFXTVK\"\
+  ]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

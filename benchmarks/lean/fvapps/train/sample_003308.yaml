@@ -1,0 +1,36 @@
+"vc-description": "Don't Drink the Water\n\nGiven a two-dimensional array representation\
+  \ of a glass of mixed liquids, sort the array such that the liquids appear in the\
+  \ glass based on their density. (Lower density floats to the top) The width of the\
+  \ glass will not change from top to bottom.\n\n```\n======================\n|  \
+  \ Density Chart    |\n======================\n| Honey   | H | 1.36 |\n| Water  \
+  \ | W | 1.00 |\n| Alcohol | A | 0.87 |\n| Oil     | O | 0.80 |\n----------------------\n\
+  \n[                            [\n ['H', 'H', 'W', 'O'],        ['O','O','O','O']\n\
+  \ ['W', 'W', 'O', 'W'],  =>    ['W','W','W','W']\n ['H', 'H', 'O', 'O']        \
+  \ ['H','H','H','H']\n ]                           ]\n \n ```\n \n The glass representation\
+  \ may be larger or smaller. If a liquid doesn't fill a row, it floats to the top\
+  \ and to the left."
+"vc-preamble": "import Imports.AllImports\n\ndef liquidDensity (l: Liquid) : Float\
+  \ :=\n  match l with\n  | Liquid.H => 1.36\n  | Liquid.W => 1.0\n  | Liquid.A =>\
+  \ 0.87\n  | Liquid.O => 0.8\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def separate_liquids (glass: List (List Liquid)) : List (List Liquid)\
+  \ := sorry\n\ntheorem count_preserving (glass: List (List Liquid)) : \n  let input_counts\
+  \ := ((glass.join.filter (fun x => x == Liquid.H)).length,\n                   \
+  \   (glass.join.filter (fun x => x == Liquid.W)).length,\n                     \
+  \ (glass.join.filter (fun x => x == Liquid.A)).length,\n                      (glass.join.filter\
+  \ (fun x => x == Liquid.O)).length);\n  let output := separate_liquids glass;\n\
+  \  let output_counts := ((output.join.filter (fun x => x == Liquid.H)).length,\n\
+  \                       (output.join.filter (fun x => x == Liquid.W)).length,\n\
+  \                       (output.join.filter (fun x => x == Liquid.A)).length, \n\
+  \                       (output.join.filter (fun x => x == Liquid.O)).length);\n\
+  \  input_counts = output_counts := sorry\n"
+"vc-theorems": "theorem density_layering (glass: List (List Liquid)) :\n  let result\
+  \ := separate_liquids glass\n  ∀ i j, i < j → j < result.length →\n  ∀ k, k < (result.get!\
+  \ i).length →\n  liquidDensity ((result.get! i).get! k) ≤ liquidDensity ((result.get!\
+  \ j).get! k) := sorry\n\n\ntheorem empty_glass :\n  separate_liquids [] = [] :=\
+  \ sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval separate_liquids [[\"\
+  H\", \"H\", \"W\", \"O\"], [\"W\", \"W\", \"O\", \"W\"], [\"H\", \"H\", \"O\", \"\
+  O\"]]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval separate_liquids [[\"A\"\
+  , \"H\", \"W\", \"O\"]]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval separate_liquids\
+  \ []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

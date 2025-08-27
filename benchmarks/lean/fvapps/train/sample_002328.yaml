@@ -1,0 +1,20 @@
+"vc-description": "You are climbing a stair case. It takes n steps to reach to the\
+  \ top.\n\nEach time you can either climb 1 or 2 steps. In how many distinct ways\
+  \ can you climb to the top?\n\nNote: Given n will be a positive integer.\n\nExample\
+  \ 1:\n\n\nInput: 2\nOutput: 2\nExplanation: There are two ways to climb to the top.\n\
+  1. 1 step + 1 step\n2. 2 steps\n\n\nExample 2:\n\n\nInput: 3\nOutput: 3\nExplanation:\
+  \ There are three ways to climb to the top.\n1. 1 step + 1 step + 1 step\n2. 1 step\
+  \ + 2 steps\n3. 2 steps + 1 step"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def climbStairs (n : Int) : Int := sorry\n\ntheorem climbStairs_positive\
+  \ (n : Int) (h : n ≥ 0) :\n  climbStairs n > 0 := sorry\n"
+"vc-theorems": "theorem climbStairs_fibonacci (n : Int) (h : n ≥ 2) :\n  climbStairs\
+  \ n = climbStairs (n-1) + climbStairs (n-2) := sorry\n\n\ntheorem climbStairs_base_cases\
+  \ :\n  climbStairs 0 = 1 ∧ climbStairs 1 = 1 := sorry\n\n\ntheorem climbStairs_negative_undefined\
+  \ (n : Int) (h : n < 0) :\n  False := sorry\n\n\ntheorem climbStairs_strictly_increasing\
+  \ (n : Int) (h : n ≥ 2) :\n  climbStairs n > climbStairs (n-1) := sorry\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval climb_stairs 2\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval climb_stairs 3\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval climb_stairs\
+  \ 4\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

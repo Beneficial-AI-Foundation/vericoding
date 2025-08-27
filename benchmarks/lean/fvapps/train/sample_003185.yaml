@@ -1,0 +1,16 @@
+"vc-description": "Find the number with the most digits.\n\nIf two numbers in the\
+  \ argument array have the same number of digits, return the first one in the array."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_longest (numbers : List Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem find_longest_in_list (numbers : List Int) \n  (h : numbers\
+  \ ≠ []) : \n  find_longest numbers ∈ numbers :=\n  sorry\n\n\ntheorem find_longest_has_max_len\
+  \ (numbers : List Int) \n  (h : numbers ≠ []) :\n  ∀ x ∈ numbers, \n    (toString\
+  \ (find_longest numbers)).length ≥ (toString x).length :=\n  sorry\n\n\n\n\ntheorem\
+  \ ties_return_first (numbers : List Int)\n  (h : numbers.length ≥ 2) :\n  let result\
+  \ := find_longest numbers\n  let maxLen := (toString result).length \n  numbers.find?\
+  \ (fun x => (toString x).length = maxLen) = some result :=\n  sorry\n\n/--\ninfo:\
+  \ 100\n-/\n#guard_msgs in\n#eval find_longest [1, 10, 100]\n\n/--\ninfo: 9000\n\
+  -/\n#guard_msgs in\n#eval find_longest [9000, 8, 800]\n\n/--\ninfo: 900\n-/\n#guard_msgs\
+  \ in\n#eval find_longest [8, 900, 500]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

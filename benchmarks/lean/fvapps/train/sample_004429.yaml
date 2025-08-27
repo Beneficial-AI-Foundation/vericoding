@@ -1,0 +1,33 @@
+"vc-description": "The aim of the kata is to try to show how difficult it can be to\
+  \ calculate decimals of an irrational number with a certain precision. We have chosen\
+  \ to get a few decimals of the number \"pi\" using\nthe following infinite series\
+  \ (Leibniz 1646–1716): \n\nPI / 4 = 1 - 1/3 + 1/5 - 1/7 + ... which gives an approximation\
+  \ of PI / 4.\n\nhttp://en.wikipedia.org/wiki/Leibniz_formula_for_%CF%80\n\nTo have\
+  \ a measure of the difficulty we will count how many iterations are needed to calculate\
+  \ PI with a given precision. \n\nThere are several ways to determine the precision\
+  \ of the calculus but to keep things easy we will calculate to within epsilon of\
+  \ your language Math::PI constant. In other words we will stop  the iterative process\
+  \ when the absolute value of the difference between our calculation and the Math::PI\
+  \ constant of the given language is less than epsilon.\n\nYour function returns\
+  \ an array or an arrayList or a string or a tuple depending on the language (See\
+  \ sample tests) where your approximation of PI has 10 decimals \n\nIn Haskell you\
+  \ can use the function \"trunc10Dble\" (see \"Your solution\"); in Clojure you can\
+  \ use the function \"round\" (see \"Your solution\");in OCaml or Rust the function\
+  \ \"rnd10\" (see \"Your solution\") in order to avoid discussions about the result.\n\
+  \nExample :\n```\nyour function calculates 1000 iterations and 3.140592653839794\
+  \ but returns:\niter_pi(0.001) --> [1000, 3.1405926538]\n```\n\nUnfortunately, this\
+  \ series converges too slowly to be useful, \nas it takes over 300 terms to obtain\
+  \ a 2 decimal place precision. \nTo obtain 100 decimal places of PI, it was calculated\
+  \ that\none would need to use at least 10^50 terms of this expansion!\n\nAbout PI\
+  \ : http://www.geom.uiuc.edu/~huberty/math5337/groupe/expresspi.html"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pi : Float := 3.14159265359\ndef iter_pi (epsilon : Float)\
+  \ : List Float := sorry\n"
+"vc-theorems": "theorem iter_pi_result_format {ε : Float} (h : ε > 0) (h2 : ε ≤ 0.1)\
+  \ :\n  let result := iter_pi ε\n  result.length = 2 ∧ \n  result.head! > 0 ∧\n \
+  \ (result.get! 1 - pi).abs ≤ ε := sorry\n\n\ntheorem iter_pi_converges {ε : Float}\
+  \ (h : ε > 0) (h2 : ε ≤ 0.1) :\n  let result := iter_pi ε\n  (result.get! 1 - pi).abs\
+  \ ≤ ε := sorry\n\n\ntheorem iter_pi_decimal_places {ε : Float} (h : ε > 0) (h2 :\
+  \ ε ≤ 0.1) :\n  let result := iter_pi ε\n  result.get! 1 = result.get! 1 := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,20 @@
+"vc-description": "Given an array of numbers (in string format), you must return a\
+  \ string. The numbers correspond to the letters of the alphabet in reverse order:\
+  \ a=26, z=1 etc. You should also account for `'!'`, `'?'` and `' '` that are represented\
+  \ by '27', '28' and '29' respectively.\n\nAll inputs will be valid."
+"vc-preamble": "import Imports.AllImports\n\ndef switcher (arr : List Nat) : String\
+  \ := sorry\n\ndef is_valid_input (arr : List Nat) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_valid_output (s : String) : Bool := sorry\n\ndef expected_map\
+  \ (n : Nat) : String := sorry\n"
+"vc-theorems": "theorem switcher_properties (arr : List Nat) : \n  is_valid_input\
+  \ arr → \n  let result := switcher arr\n  (is_valid_output result) ∧ \n  (result.length\
+  \ = (arr.filter (· ≠ 0)).length) ∧\n  (result = String.join (arr.map expected_map))\
+  \ := sorry\n\n\ntheorem switcher_all_zeros (arr : List Nat) :\n  arr.all (· = 0)\
+  \ →\n  switcher arr = \"\" := sorry\n\n/--\ninfo: 'codewars'\n-/\n#guard_msgs in\n\
+  #eval switcher [\"24\", \"12\", \"23\", \"22\", \"4\", \"26\", \"9\", \"8\"]\n\n\
+  /--\ninfo: 'btswmdsbd kkw'\n-/\n#guard_msgs in\n#eval switcher [\"25\", \"7\", \"\
+  8\", \"4\", \"14\", \"23\", \"8\", \"25\", \"23\", \"29\", \"16\", \"16\", \"4\"\
+  ]\n\n/--\ninfo: 'o?bfbtpel'\n-/\n#guard_msgs in\n#eval switcher [\"12\", \"28\"\
+  , \"25\", \"21\", \"25\", \"7\", \"11\", \"22\", \"15\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,27 @@
+"vc-description": "Write a regex to validate a 24 hours time string.\nSee examples\
+  \ to figure out what you should check for:\n\nAccepted:\n01:00 - 1:00  \n\nNot accepted:\n\
+  \n24:00\n\nYou should check for correct length and no spaces."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def validate_time (s : String) : Bool := sorry\n\ntheorem valid_time_combinations\
+  \ \n  (hour : Nat) (minute : Nat)\n  (h_hour : hour ≤ 23)\n  (h_minute : minute\
+  \ ≤ 59) :\n  validate_time (toString hour ++ \":\" ++ toString minute) = true :=\
+  \ sorry\n"
+"vc-theorems": "theorem single_digit_hour_valid\n  (hour : Nat) (minute : Nat) \n\
+  \  (h_hour : hour < 10)\n  (h_minute : minute ≤ 59) :\n  validate_time (toString\
+  \ hour ++ \":\" ++ toString minute) = true := sorry\n\n\ntheorem invalid_hours\n\
+  \  (hour : Nat) (minute : Nat)\n  (h_hour : hour ≥ 24)\n  (h_minute : minute ≤ 59)\
+  \ :\n  validate_time (toString hour ++ \":\" ++ toString minute) = false := sorry\n\
+  \n\ntheorem invalid_minutes\n  (hour : Nat) (minute : Nat)\n  (h_hour : hour ≤ 23)\n\
+  \  (h_minute : minute ≥ 60) :\n  validate_time (toString hour ++ \":\" ++ toString\
+  \ minute) = false := sorry\n\n\ntheorem invalid_format\n  (s : String)\n  (h : ¬(∃\
+  \ (h m : Nat), h ≤ 23 ∧ m ≤ 59 ∧ s = toString h ++ \":\" ++ toString m)) :\n  validate_time\
+  \ s = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval validate_time\
+  \ \"1:00\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval validate_time \"00:00\"\
+  \n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval validate_time \"09:00\"\n\n/--\n\
+  info: False\n-/\n#guard_msgs in\n#eval validate_time \"24:00\"\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval validate_time \"12:60\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval validate_time \"foo12:00bar\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
+  #eval validate_time \"12: 60\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval validate_time\
+  \ \"24o:00\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval validate_time \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

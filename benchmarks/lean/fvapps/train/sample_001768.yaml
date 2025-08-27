@@ -1,0 +1,17 @@
+"vc-description": "Given a list of 24-hour clock time points in \"Hour:Minutes\" format,\
+  \ find the minimum minutes difference between any two time points in the list. \n\
+  \nExample 1:\n\nInput: [\"23:59\",\"00:00\"]\nOutput: 1\n\n\n\nNote:\n\nThe number\
+  \ of time points in the given list is at least 2 and won't exceed 20000.\nThe input\
+  \ time is legal and ranges from 00:00 to 23:59."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_min_time_difference (times: List String) : Nat :=\n  sorry\n\
+  \n\n\n\n"
+"vc-theorems": "theorem exceeding_size_gives_zero (times: List String)\n  (h: times.length\
+  \ > 1440) :\n  find_min_time_difference times = 0 :=\n  sorry\n\n\ntheorem wrap_around_case\
+  \ :\n  find_min_time_difference [\"23:59\", \"00:00\"] = 1 :=\n  sorry\n\n/--\n\
+  info: 1\n-/\n#guard_msgs in\n#eval find_min_time_difference [\"23:59\", \"00:00\"\
+  ]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_min_time_difference [\"00:00\"\
+  , \"23:59\", \"00:00\"]\n\n/--\ninfo: 61\n-/\n#guard_msgs in\n#eval find_min_time_difference\
+  \ [\"01:01\", \"02:02\", \"03:03\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

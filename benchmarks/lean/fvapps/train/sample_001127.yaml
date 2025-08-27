@@ -1,0 +1,30 @@
+"vc-description": "Chef will not be able to attend the birthday of his best friend\
+  \ Rock. He promised Rock that this will not be the case on his half birthday. To\
+  \ keep his promise Chef must know Rock’s next half birthday accurately. Being busy,\
+  \ he is assigning this work to you.\nHalf birthday is the day that occurs exactly\
+  \ between two subsequent birthdays. \nYou will be provided with Rock’s birthdate\
+  \ and birth month, you will have to figure out his half birthday.\n$Note$: Consider\
+  \ every year to be a leap year and all months are displayed in lowercase English\
+  \ characters.\n\n-----Input:-----\n- The first line of the input contains a single\
+  \ integer $T$ denoting the number of test cases. \n- The description of each of\
+  \ the $T$ test cases contains an integer $d$ followed by a string, denoting month\
+  \ $m$.\n- Here $d$ denotes day of a month and $m$ denotes the month of a year respectively.\n\
+  \n-----Output:-----\nFor each test case print an integer $d1$ followed by a string,\
+  \ denoting month $m1$, which overall denotes date and month of Rock’s half birthday.\n\
+  \n-----Constraints:-----\n- $1 \\leq T \\leq 10^5$\n- $1 \\leq d , d1 \\leq 31$\n\
+  - $january \\leq m , m1 \\leq december$\n\n-----Sample Input:-----\n3\n15 january\n\
+  31 august\n10 october\n\n-----Sample Output:-----\n16 july\n1 march\n10 april"
+"vc-preamble": "import Imports.AllImports\n\ndef daysInMonth (m : Month) : Nat :=\n\
+  \  match m with\n  | Month.february => 29\n  | Month.april | Month.june | Month.september\
+  \ | Month.november => 30\n  | _ => 31\n\n\ndef find_half_birthday (day : Nat) (month\
+  \ : Month) : Nat × Month :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def month_difference (m1 m2 : Month) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem half_birthday_returns_valid_date (day : Nat) (month : Month)\n\
+  \  (h1 : 0 < day) (h2 : day ≤ daysInMonth month) :\n  let (resultDay, resultMonth)\
+  \ := find_half_birthday day month\n  0 < resultDay ∧ resultDay ≤ daysInMonth resultMonth\
+  \ :=\n  sorry\n\n\ntheorem half_birthday_approximately_six_months (day : Nat) (month\
+  \ : Month) \n  (h1 : 0 < day) (h2 : day ≤ daysInMonth month) :\n  let (_, resultMonth)\
+  \ := find_half_birthday day month\n  let diff := month_difference month resultMonth\
+  \  \n  5 ≤ diff ∧ diff ≤ 7 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

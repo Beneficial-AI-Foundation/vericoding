@@ -1,0 +1,34 @@
+"vc-description": "## The Riddle\n\nThe King of a small country invites 1000 senators\
+  \ to his annual party. As a tradition, each senator brings the King a bottle of\
+  \ wine. Soon after, the Queen discovers that one of the senators is trying to assassinate\
+  \ the King by giving him a bottle of poisoned wine. Unfortunately, they do not know\
+  \ which senator, nor which bottle of wine is poisoned, and the poison is completely\
+  \ indiscernible.\n\nHowever, the King has 10 lab rats. He decides to use them as\
+  \ taste testers to determine which bottle of wine contains the poison. The poison\
+  \ when taken has no effect on the rats, until exactly 24 hours later when the infected\
+  \ rats suddenly die. The King needs to determine which bottle of wine is poisoned\
+  \ by tomorrow, so that the festivities can continue as planned.\n\nHence he only\
+  \ has time for one round of testing, he decides that each rat tastes multiple bottles,\
+  \ according to a certain scheme.\n\n\n## Your Task\n\nYou receive an array of integers\
+  \ (`0 to 9`), each of them is the number of a rat which died after tasting the wine\
+  \ bottles. Return the number of the bottle (`1..1000`) which is poisoned.\n\n\n\
+  **Good Luck!**\n\n\n*Hint: think of rats as a certain representation of the number\
+  \ of the bottle...*"
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat \n  | []\
+  \ => 0\n  | (x::xs) => x + xs.sum\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find (rats : List Nat) : Nat := sorry\n\ntheorem find_total_is_sum_of_powers\
+  \ (rats : List Nat) \n  (h : ∀ x, x ∈ rats → x ≤ 9) \n  (h2 : ∀ x y, x ∈ rats →\
+  \ y ∈ rats → x = y → x = y)\n  (h3 : rats.length > 0)\n  (h4 : (rats.map (fun r\
+  \ => 2^r)).sum ≤ 1000) :\n  find rats = (rats.map (fun r => 2^r)).sum := sorry\n"
+"vc-theorems": "theorem find_binary_representation (rats : List Nat)\n  (h : ∀ x,\
+  \ x ∈ rats → x ≤ 9)\n  (h2 : ∀ x y, x ∈ rats → y ∈ rats → x = y → x = y)\n  (h3\
+  \ : rats.length > 0) :\n  ∀ i, i ≤ 9 → \n    (if i ∈ rats \n     then (find rats).mod\
+  \ (2^(i+1)) ≥ 2^i\n     else (find rats).mod (2^(i+1)) < 2^i) := sorry\n\n\ntheorem\
+  \ find_commutative (rats : List Nat)\n  (h : ∀ x, x ∈ rats → x ≤ 9)\n  (h2 : ∀ x\
+  \ y, x ∈ rats → y ∈ rats → x = y → x = y)\n  (h3 : rats.length > 0) :\n  find rats\
+  \ = find rats.reverse := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find [0]\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find [1]\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval find [2]\n\n/--\ninfo: 1000\n-/\n#guard_msgs in\n#eval find [3, 5, 6,\
+  \ 7, 8, 9]\n\n/--\ninfo: 27\n-/\n#guard_msgs in\n#eval find [0, 1, 3, 4]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

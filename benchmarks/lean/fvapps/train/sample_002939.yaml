@@ -1,0 +1,27 @@
+"vc-description": "You have to rebuild a string from an enumerated list.\nFor this\
+  \ task, you have to check if input is correct beforehand.\n\n* Input must be a list\
+  \ of tuples\n* Each tuple has two elements.\n* Second element is an alphanumeric\
+  \ character.\n* First element is the index of this character into the reconstructed\
+  \ string.\n* Indexes start at 0 and have to match with output indexing: no gap is\
+  \ allowed.\n* Finally tuples aren't necessarily ordered by index.\n\nIf any condition\
+  \ is invalid, the function should return `False`.\n\nInput example: \n```python\
+  \ \n[(4,'y'),(1,'o'),(3,'t'),(0,'m'),(2,'n')]\n```\nReturns\n\n```python\n'monty'\n\
+  ```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def denumerate (l : List (Int × Char)) : Option String := sorry\n\
+  \ntheorem denumerate_preserves_mapping (l : List (Int × Char)) :\n  match denumerate\
+  \ l with\n  | none => True  \n  | some result =>\n    ∀ (i : Nat), i < result.length\
+  \ →\n      ∃ (pair : Int × Char), pair ∈ l ∧ \n        pair.1 = i ∧ result.data[i]!\
+  \ = pair.2\n  := sorry\n"
+"vc-theorems": "theorem invalid_types_return_none (l : List (Int × Char)) (h : ∀ x\
+  \ ∈ l, ¬(x.2.isAlpha)) :\n  denumerate l = none := sorry\n\n\ntheorem gaps_in_sequence_property\
+  \ (l : List (Int × Char)) :\n  match denumerate l with \n  | none => True\n  | some\
+  \ result =>\n    ∀ i j : Nat, i < j → j < result.length →\n      ∃ (pair₁ pair₂\
+  \ : Int × Char), \n        pair₁ ∈ l ∧ pair₂ ∈ l ∧\n        pair₁.1 = i ∧ pair₂.1\
+  \ = j\n  := sorry\n\n\ntheorem non_list_inputs_return_none :\n  denumerate [] =\
+  \ none := sorry\n\n/--\ninfo: 'monty'\n-/\n#guard_msgs in\n#eval denumerate [(4,\
+  \ \"y\"), (1, \"o\"), (3, \"t\"), (0, \"m\"), (2, \"n\")]\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval denumerate [1]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
+  #eval denumerate [(0, \"a\"), (2, \"b\")]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

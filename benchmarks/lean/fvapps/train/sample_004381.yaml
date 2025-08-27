@@ -1,0 +1,29 @@
+"vc-description": "In this task you have to code process planner.\n\nYou will be given\
+  \ initial thing, target thing and a set of processes to turn one thing into another\
+  \ (in the form of _[process\\_name, start\\_thing, end\\_thing]_). You must return\
+  \  names of shortest sequence of processes to turn initial thing into target thing,\
+  \ or empty sequence if it's impossible.\n\nIf start already equals end, return [],\
+  \ since no path is required.\n\nExample: \n\n```python\ntest_processes = [\n   \
+  \     ['gather', 'field', 'wheat'],\n        ['bake', 'flour', 'bread'],\n     \
+  \   ['mill', 'wheat', 'flour']\n];\n\nprocesses('field', 'bread', test_processes)\
+  \ # should return ['gather', 'mill', 'bake']\nprocesses('field', 'ferrari', test_processes)\
+  \ # should return []\nprocesses('field', 'field', test_processes) # should return\
+  \ [], since no processes are needed\n```\n\nGood luck!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def processes (start : String) (destination : String) (procs :\
+  \ List Process) : List String :=\n  sorry\n"
+"vc-theorems": "theorem processes_returns_list (start dest : String) (procs : List\
+  \ Process) :\n  ∀ x ∈ processes start dest procs, String.isPrefixOf \"\" x :=\n\
+  \  sorry\n\n\ntheorem processes_valid_path (start dest : String) (procs : List Process)\
+  \ \n  (h : (processes start dest procs).length > 0) :\n  (List.foldl\n    (fun curr\
+  \ step =>\n      match procs.find? (fun p => p.name = step) with\n      | some proc\
+  \ => proc.endNode\n      | none => curr)\n    start\n    (processes start dest procs))\
+  \ = dest :=\n  sorry\n\n\ntheorem processes_same_start (s : String) (procs : List\
+  \ Process) :\n  processes s s procs = [] :=\n  sorry\n  \n\ntheorem processes_empty_procs\
+  \ (start dest : String) :\n  processes start dest [] = [] :=\n  sorry\n\n\ntheorem\
+  \ processes_cycle_detection :\n  let cycleProcs := [\n    {name := \"1\", startNode\
+  \ := \"a\", endNode := \"b\"},\n    {name := \"2\", startNode := \"b\", endNode\
+  \ := \"c\"},\n    {name := \"3\", startNode := \"c\", endNode := \"b\"}]\n  ; processes\
+  \ \"a\" \"d\" cycleProcs = [] :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

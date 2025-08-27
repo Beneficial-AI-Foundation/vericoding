@@ -1,0 +1,38 @@
+"vc-description": "Ahmed Gafer failed to pass the test, but he got the job because\
+  \ of his friendship with Said and Shahhoud. After working in the kitchen for a while,\
+  \ he blew it. The customers didn't like the food anymore and one day he even burned\
+  \ the kitchen. Now the master Chef is very upset.\nAhmed isn't useful anymore at\
+  \ being a co-Chef, so S&S decided to give him a last chance. They decided to give\
+  \ Ahmed a new job, and make him work as the cashier of the restaurant. Nevertheless,\
+  \ in order not to repeat their previous mistake, they decided to give him a little\
+  \ test to check if his counting skills are good enough for the job. The problem\
+  \ is as follows: \nGiven a string A of lowercase English letters, Ahmad was asked\
+  \ to find the number of good substrings.\nA substring A[L, R] is good if:\n\n- \
+  \ The length of the substring is exactly 2 and AL = AR, OR\n- The length of the\
+  \ substring is greater than 2,AL = AR and the substring A[L + 1, R - 1] has only\
+  \ one distinct letter.\n\nAnyways, Ahmed struggled trying to find a solution for\
+  \ the problem. Since his mathematical skills are very poor as it turned out, he\
+  \ decided to cheat and contacted you asking for your help. Can you help him in this\
+  \ challenge?\n\n-----Input-----\nThe first line of the input contains the integer\
+  \ T, indicating the number of test cases.\nEach of the following T lines, contains\
+  \ a string A.\n\n-----Output-----\nFor each test case, output a single line containing\
+  \ a single number, indicating the number of good substrings.\n\n-----Constraints-----\n\
+  \n- 1 ≤ T ≤ 100 \n- 1 ≤  |A|  ≤ 105 \n-  It's guaranteed that the sum of  |A|  over\
+  \ all test cases doesn't exceed 5x105. \n\n-----Example-----\nInput:\n2\na\nabba\n\
+  \nOutput:\n0\n2\n\n\n-----Explanation-----\nExample case 2. The good substrings\
+  \ of abba are: { bb } and { abba }."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_good_substrings (s : String) : Nat :=\n  sorry\n\n@[simp]"
+"vc-theorems": "theorem count_good_substrings_nonnegative (s : String) :\n  count_good_substrings\
+  \ s ≥ 0 := sorry\n\n\ntheorem single_char_has_no_good_substrings (c : Char) :\n\
+  \  count_good_substrings (String.mk [c]) = 0 := sorry\n\n\ntheorem identical_chars_count\
+  \ (n : Nat) (c : Char) :\n  let s := String.mk (List.replicate n c)\n  count_good_substrings\
+  \ s = if n > 1 then n * (n-1) / 2 else 0 := sorry\n\n\ntheorem alternating_chars_pattern_count\
+  \ {s : String} :\n  count_good_substrings s ≥ \n    (List.range s.length).foldl\
+  \ (fun acc i =>\n      if i + 2 < s.length && s.data[i]! = s.data[i+2]! && \n  \
+  \       s.data[i+1]! ≠ s.data[i]!\n      then acc + 1\n      else acc) 0 := sorry\n\
+  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval solve_test_case \"a\"\n\n/--\ninfo: 2\n\
+  -/\n#guard_msgs in\n#eval solve_test_case \"abba\"\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval solve_test_case \"aaa\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

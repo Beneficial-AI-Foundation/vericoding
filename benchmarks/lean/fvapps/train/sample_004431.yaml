@@ -1,0 +1,26 @@
+"vc-description": "A number is self-descriptive when the n'th digit describes the\
+  \ amount n appears in the number.\n\nE.g. 21200:\n\nThere are two 0's in the number,\
+  \ so the first digit is 2.\n\nThere is one 1 in the number, so the second digit\
+  \ is 1.\n\nThere are two 2's in the number, so the third digit is 2.\n\nThere are\
+  \ no 3's in the number, so the fourth digit is 0.\n\nThere are no 4's in the number,\
+  \ so the fifth digit is 0\n\n\nNumbers can be of any length up to 9 digits and are\
+  \ only full integers. For a given number derive a function ```selfDescriptive(num)```\
+  \ that returns; ```true``` if the number is self-descriptive or ```false``` if the\
+  \ number is not."
+"vc-preamble": "import Imports.AllImports\n\ndef natToDigits (n : Nat) : List Nat\
+  \ :=\n  if n < 10 then\n    [n]\n  else\n    natToDigits (n / 10) ++ [n % 10]\n\n\
+  \ndef listMax (xs : List Nat) : Nat :=\n  xs.foldl Nat.max 0\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def self_descriptive (n : Nat) : Bool := sorry\n\ntheorem self_descriptive_correct_counts\n\
+  \    {n : Nat}\n    (h : self_descriptive n = true) :\n    ∀ i : Nat,\n    i < (natToDigits\
+  \ n).length →\n    (natToDigits n).count i = (natToDigits n).get! i := sorry\n"
+"vc-theorems": "theorem self_descriptive_valid_indices\n    {n : Nat}\n    (h : self_descriptive\
+  \ n = true) :\n    ∀ i : Nat,\n    i < (natToDigits n).length →\n    i ≤ listMax\
+  \ (natToDigits n) := sorry\n\n\ntheorem self_descriptive_single_digit\n    {n :\
+  \ Nat}\n    (h : n < 10) :\n    self_descriptive n = false := sorry\n\n\ntheorem\
+  \ self_descriptive_first_digit\n    {n : Nat}\n    (h1 : (natToDigits n).get! 0\
+  \ ≠ 0)\n    (h2 : (natToDigits n).get! 0 > (natToDigits n).length - 1) :\n    self_descriptive\
+  \ n = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval self_descriptive\
+  \ 21200\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval self_descriptive 3211000\n\
+  \n/--\ninfo: False\n-/\n#guard_msgs in\n#eval self_descriptive 21230\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

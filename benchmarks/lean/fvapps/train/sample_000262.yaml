@@ -1,0 +1,24 @@
+"vc-description": "Given an array nums of 0s and 1s and an integer k, return True\
+  \ if all 1's are at least k places away from each other, otherwise return False.\n\
+   \nExample 1:\n\nInput: nums = [1,0,0,0,1,0,0,1], k = 2\nOutput: true\nExplanation:\
+  \ Each of the 1s are at least 2 places away from each other.\n\nExample 2:\n\nInput:\
+  \ nums = [1,0,0,1,0,1], k = 2\nOutput: false\nExplanation: The second 1 and third\
+  \ 1 are only one apart from each other.\nExample 3:\nInput: nums = [1,1,1,1,1],\
+  \ k = 0\nOutput: true\n\nExample 4:\nInput: nums = [0,1,0,1], k = 1\nOutput: true\n\
+  \n \nConstraints:\n\n1 <= nums.length <= 10^5\n0 <= k <= nums.length\nnums[i] is 0 or 1"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def k_length_apart (nums : List Nat) (k : Nat) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem k_distance_property {nums : List Nat} {k : Nat} \n  (h1 :\
+  \ ∀ x ∈ nums, x ≤ 1)\n  (h2 : k > 0)\n  (h3 : k_length_apart nums k = true) :\n\
+  \  ∀ i j, i < nums.length → j < nums.length → \n    (nums.get ⟨i, sorry⟩ = 1 ∧ nums.get\
+  \ ⟨j, sorry⟩ = 1 ∧ i < j) → \n    j - i > k :=\nsorry\n\n\ntheorem no_ones_property\
+  \ {nums : List Nat} {k : Nat}\n  (h1 : ∀ x ∈ nums, x ≤ 1)\n  (h2 : 1 ∉ nums) :\n\
+  \  k_length_apart nums k = true :=\nsorry\n\n\ntheorem consecutive_ones_property\
+  \ {nums : List Nat} {k : Nat} {i : Nat}\n  (h1 : ∀ x ∈ nums, x ≤ 1)\n  (h2 : k >\
+  \ 0)\n  (h3 : i < nums.length - 1)\n  (h4 : nums.get ⟨i, sorry⟩ = 1)\n  (h5 : nums.get\
+  \ ⟨i+1, sorry⟩ = 1) :\n  k_length_apart nums k = false :=\nsorry\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval k_length_apart [1, 0, 0, 0, 1, 0, 0, 1] 2\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval k_length_apart [1, 0, 0, 1, 0, 1] 2\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval k_length_apart [0, 1, 0, 1] 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

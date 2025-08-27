@@ -1,0 +1,25 @@
+"vc-description": "# Task\n Given an integer `product`, find the smallest positive\
+  \ integer the product of whose digits is equal to product. If there is no such integer,\
+  \ return -1 instead.\n\n# Example\n\n For `product = 1`, the output should be `11`;\n\
+  \ \n `1 x 1 = 1` (1 is not a valid result, because it has only 1 digit)\n \n For\
+  \ `product = 12`, the output should be `26`;\n \n `2 x 6 = 12`\n \n For `product\
+  \ = 19`, the output should be `-1`.\n \n No valid result found.\n \n For `product\
+  \ = 450`, the output should be `2559`.\n \n `2 x 5 x 5 x 9 = 450`\n \n For `product\
+  \ = 581`, the output should be `-1`.\n \n No valid result found. \n \n Someone says\
+  \ the output should be `783`, because `7 x 83 = 581`.\n \n Please note: `83` is\
+  \ not a **DIGIT**.\n \n# Input/Output\n\n\n - `[input]` integer `product`\n\n  \
+  \  Constraints: `0 ≤ product ≤ 600`.\n\n\n - `[output]` a positive integer"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def digits_product (n : Nat) : Int := sorry\n\ndef stringToDigitProduct\
+  \ (s : String) : Nat :=\n  s.toList.map (fun c => c.toNat - 48)\n    |>.foldl (·\
+  \ * ·) 1\n"
+"vc-theorems": "theorem digits_product_result_range (n : Nat) :\n  let result := digits_product\
+  \ n\n  result = -1 ∨ result > 0 := by sorry\n\n\ntheorem digits_product_single_digit\
+  \ (n : Nat) (h : n ≤ 9) :\n  digits_product n = (if n = 0 then 10 else 10 + n) :=\
+  \ by sorry\n\n\ntheorem digits_product_product_matches (n : Nat) :\n  let result\
+  \ := digits_product n\n  result ≠ -1 →\n  stringToDigitProduct (toString result.toNat)\
+  \ = n := by sorry\n\n/--\ninfo: 26\n-/\n#guard_msgs in\n#eval digits_product 12\n\
+  \n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval digits_product 19\n\n/--\ninfo: 2559\n\
+  -/\n#guard_msgs in\n#eval digits_product 450\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

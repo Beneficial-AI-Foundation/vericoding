@@ -1,0 +1,29 @@
+"vc-description": "### The Story:\nBob is working as a bus driver. However, he has\
+  \ become extremely popular amongst the city's residents. With so many passengers\
+  \ wanting to get aboard his bus, he sometimes has to face the problem of not enough\
+  \ space left on the bus! He wants you to write a simple program telling him if he\
+  \ will be able to fit all the passengers.\n\n### Task Overview:\n\nYou have to write\
+  \ a function that accepts three parameters: \n* `cap` is the amount of people the\
+  \ bus can hold excluding the driver.\n* `on` is the number of people on the bus.\n\
+  * `wait` is the number of people waiting to get on to the bus. \n\nIf there is enough\
+  \ space, return 0, and if there isn't, return the number of passengers he can't\
+  \ take.\n\n### Usage Examples:\n\n```python\nenough(10, 5, 5)\n0 # He can fit all\
+  \ 5 passengers\nenough(100, 60, 50)\n10 # He can't fit 10 out of 50 waiting\n```\n\
+  \n```if:csharp\nDocumentation:\nKata.Enough Method (Int32, Int32, Int32)\n\nReturns\
+  \ the number of passengers the bus cannot fit, or 0 if the bus can fit every passenger.\n\
+  \nSyntax\n\n\npublic\nstatic\nint Enough(\nint cap,\n    int on,\nint wait\n    )\n\
+  \  \n\n\n\nParameters\n\ncap\n\nType: System.Int32\nThe amount of people that can\
+  \ fit on the bus excluding the driver.\n\non\n\nType: System.Int32\nThe amount of\
+  \ people on the bus excluding the driver.\n\nwait\n\nType: System.Int32\nThe amount\
+  \ of people waiting to enter the bus.\n\nReturn Value\n\nType: System.Int32\n  An\
+  \ integer representing how many passengers cannot fit on the bus, or 0 if every\
+  \ passenger can fit on the bus.\n\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def enough (cap on wait : Nat) : Nat := sorry\n\ntheorem enough_nonneg\
+  \ (cap on wait : Nat) :\n  cap > 0 → enough cap on wait ≥ 0 := sorry\n"
+"vc-theorems": "theorem enough_fits (cap on wait : Nat) :\n  cap > 0 → on + wait ≤\
+  \ cap → enough cap on wait = 0 := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ enough 10 5 5\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval enough 100 60 50\n\n\
+  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval enough 20 5 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

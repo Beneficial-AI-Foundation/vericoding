@@ -1,0 +1,58 @@
+"vc-description": "Walter White and Jesse Pinkman (a drug addict) both love to play\
+  \ with chemicals. One day they were playing with some chemicals to make an energy\
+  \ drink. Unknowingly they made a highly powerful drink. To test the drink on others\
+  \ also they called some of their friends and gave a drop of it to everyone. Now\
+  \ they all were feeling highly energetic and thought of an unique game to play with\
+  \ each other.\nAfter pondering for a while, Jesse came up with an extraordinary\
+  \ idea of competing in a race around a circular globe with N checkpoints each of\
+  \ one unit. Walter and all their other friends agreed with it.They divided themselves\
+  \ in $2$ teams with $N$ teammates in each team.This race has two commencing points\
+  \ $A$ and $B$ strictly facing each other. Walter and his team commences from $A$\
+  \ point and other team starts from $B$. Both the teams start running at the same\
+  \ time clockwise around the globe. Speed of every player is constant throughout\
+  \ the race. If a player has a speed $X$ then it means that he covers a distance\
+  \ of $X$ units in one second.The race ends when some member of one team overtakes\
+  \ all members of opposite team at any point of time. Now you have to tell if any\
+  \ team will win the race or not.They all are stubborn and can run forever just to\
+  \ win the race. Help them to know if it is possible in anyway that the race will\
+  \ come to an end. \nFor Clarity, you can visualize the path as a circular paths\
+  \ where $A$ and $B$ are opposite ends of diameter. It can be proven that the actual\
+  \ circumference of circle do not affect the answer.\nIt is also possible that someone\
+  \ don't run at all.Keep in mind that the fastest one wins the race so does the code.\n\
+  \n-----Input:------\n- The first line of the input contains a single integer $T$\
+  \ denoting the number of test cases. The description of $T$ test cases follows.\
+  \ \n- The first line of each test case contains a single integer $N$ number of teammates\
+  \ in both team.\n- The second line contains $N$ space-separated integers $A_1, A_2\
+  \ \\ldots A_N$ denoting speed of A's Team\n- The third line contains $N$ space-separated\
+  \ integers  $B_1, B_2 \\ldots B_N$ denoting speed of B's Team\n\n-----Output:------\n\
+  For each test case, print a single line denoting YES if the race ends at any point\
+  \ of time else NO\n\n-----Constraints-----\n- $1 \\leq T \\leq 10$\n- $1 \\leq N\
+  \ \\leq 10^5$\n- $0 \\leq A_i \\leq 2^{15}$\n- $0 \\leq B_i \\leq 2^{15}$\n\n-----Subtasks-----\n\
+  Subtask #1 (30 points): \n- $1 \\le N \\le 20$\n- $0 \\le  A_i  \\le 11$\n- $0 \\\
+  le  B_i  \\le 11$\nSubtask #2 (70 points): \n- Original constraints\n\n-----Sample\
+  \ input:-----\n1\n5\n1 2 3 4 5\n2 7 8 9 9\n\n-----Sample output-----\nYES\n\n-----Sample\
+  \ Explanation:------\nTeam B can overtake all members of Team A."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_race_end (n : Nat) (team_a : List Int) (team_b : List Int)\
+  \ : String :=\n  sorry\n"
+"vc-theorems": "theorem can_race_end_returns_valid_answer\n  {n : Nat} {team_a team_b\
+  \ : List Int}\n  (h1 : team_a.length = n)\n  (h2 : team_b.length = n)\n  (h3 : n\
+  \ > 0) :\n  can_race_end n team_a team_b = \"YES\" ∨ can_race_end n team_a team_b\
+  \ = \"NO\" :=\n  sorry\n\n\ntheorem can_race_end_equal_max_implies_no\n  {n : Nat}\
+  \ {team_a team_b : List Int}\n  (h1 : team_a.length = n)\n  (h2 : team_b.length\
+  \ = n)\n  (h3 : n > 0)\n  (h4 : List.maximum? team_a = List.maximum? team_b) :\n\
+  \  can_race_end n team_a team_b = \"NO\" :=\n  sorry\n\n\ntheorem can_race_end_unequal_max_implies_yes\n\
+  \  {n : Nat} {team_a team_b : List Int}\n  (h1 : team_a.length = n)\n  (h2 : team_b.length\
+  \ = n)\n  (h3 : n > 0)\n  (h4 : List.maximum? team_a ≠ List.maximum? team_b) :\n\
+  \  can_race_end n team_a team_b = \"YES\" :=\n  sorry\n\n\ntheorem can_race_end_single_element_equal\n\
+  \  (speed : Int) :\n  can_race_end 1 [speed] [speed] = \"NO\" :=\n  sorry\n\n\n\
+  theorem can_race_end_single_element_greater\n  (speed : Int) :\n  can_race_end 1\
+  \ [speed + 1] [speed] = \"YES\" :=\n  sorry\n\n\ntheorem can_race_end_equal_max_extension\n\
+  \  {team : List Int} {max_speed : Int}\n  (h1 : team.length > 0) :\n  can_race_end\
+  \ (team.length + 1) (team ++ [max_speed]) (team ++ [max_speed]) = \"NO\" :=\n  sorry\n\
+  \n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval can_race_end 5 [1, 2, 3, 4, 5] [2,\
+  \ 7, 8, 9, 9]\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval can_race_end 3 [1, 2,\
+  \ 5] [3, 4, 5]\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval can_race_end 1 [3]\
+  \ [5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

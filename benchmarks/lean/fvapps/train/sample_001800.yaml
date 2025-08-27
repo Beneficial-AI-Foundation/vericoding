@@ -1,0 +1,33 @@
+"vc-description": "Given the root of a binary tree, consider all root to leaf paths:\
+  \ paths from the root to any leaf.  (A leaf is a node with no children.)\nA node\
+  \ is insufficient if every such root to leaf path intersecting this node has sum\
+  \ strictly less than limit.\nDelete all insufficient nodes simultaneously, and return\
+  \ the root of the resulting binary tree.\n \nExample 1:\n\nInput: root = [1,2,3,4,-99,-99,7,8,9,-99,-99,12,13,-99,14],\
+  \ limit = 1\n\nOutput: [1,2,3,4,null,null,7,8,9,null,14]\n\n\nExample 2:\n\nInput:\
+  \ root = [5,4,8,11,null,17,4,7,1,null,null,5,3], limit = 22\n\nOutput: [5,4,8,11,null,17,4,7,null,null,null,5]\n\
+   \nExample 3:\n\nInput: root = [1,2,-3,-5,null,4,null], limit = -1\n\nOutput: [1,null,-3,4]\n\
+  \n \nNote:\n\nThe given tree will have between 1 and 5000 nodes.\n-10^5 <= node.val\
+  \ <= 10^5\n-10^9 <= limit <= 10^9"
+"vc-preamble": "import Imports.AllImports\n\ndef arrayToTree : List (Option Int) →\
+  \ Option TreeNode := sorry\ndef treeToArray : Option TreeNode → List (Option Int)\
+  \ := sorry\n\ndef sufficientSubset : Option TreeNode → Int → Option TreeNode :=\
+  \ sorry\ndef is_leaf : TreeNode → Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def path_sum : TreeNode → Int := sorry\n\ntheorem sufficient_subset_is_subset\
+  \ (tree : List (Option Int)) (limit : Int)\n  (h : ∃ n, n ∈ tree ∧ n ≠ none) : \n\
+  \  let root := arrayToTree tree\n  let result := sufficientSubset root limit\n \
+  \ let result_arr := treeToArray result\n  ∀ x ∈ result_arr, x ≠ none → x ∈ tree\
+  \ := sorry\n"
+"vc-theorems": "theorem sufficient_subset_preserves_root (tree : List (Option Int))\
+  \ (limit : Int)\n  (h₁ : tree.length > 0)\n  (h₂ : ∃ x, tree.head? = some (some\
+  \ x)) :\n  let root := arrayToTree tree\n  let result := sufficientSubset root limit\n\
+  \  let result_arr := treeToArray result\n  result_arr.length > 0 → result_arr.head?\
+  \ = tree.head? := sorry\n\n\ntheorem sufficient_subset_leaf_property (tree : List\
+  \ (Option Int)) (limit : Int)\n  (h : ∃ n, n ∈ tree ∧ n ≠ none) :\n  let root :=\
+  \ arrayToTree tree\n  let result := sufficientSubset root limit\n  match result\
+  \ with\n  | none => True\n  | some node => is_leaf node → path_sum node ≥ limit\
+  \ := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval treeToArray sufficientSubset(root1,\
+  \ 1)\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval treeToArray sufficientSubset(root2,\
+  \ 22)\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval treeToArray sufficientSubset(root3,\
+  \ -1)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

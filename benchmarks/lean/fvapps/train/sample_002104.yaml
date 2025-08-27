@@ -1,0 +1,39 @@
+"vc-description": "Catherine received an array of integers as a gift for March 8.\
+  \ Eventually she grew bored with it, and she started calculated various useless\
+  \ characteristics for it. She succeeded to do it for each one she came up with.\
+  \ But when she came up with another one — xor of all pairwise sums of elements in\
+  \ the array, she realized that she couldn't compute it for a very large array, thus\
+  \ she asked for your help. Can you do it? Formally, you need to compute\n\n$$ (a_1\
+  \ + a_2) \\oplus (a_1 + a_3) \\oplus \\ldots \\oplus (a_1 + a_n) \\\\ \\oplus (a_2\
+  \ + a_3) \\oplus \\ldots \\oplus (a_2 + a_n) \\\\ \\ldots \\\\ \\oplus (a_{n-1}\
+  \ + a_n) \\\\ $$\n\nHere $x \\oplus y$ is a bitwise XOR operation (i.e. $x$ ^ $y$\
+  \ in many modern programming languages). You can read about it in Wikipedia: https://en.wikipedia.org/wiki/Exclusive_or#Bitwise_operation.\n\
+  \n\n-----Input-----\n\nThe first line contains a single integer $n$ ($2 \\leq n\
+  \ \\leq 400\\,000$) — the number of integers in the array.\n\nThe second line contains\
+  \ integers $a_1, a_2, \\ldots, a_n$ ($1 \\leq a_i \\leq 10^7$).\n\n\n-----Output-----\n\
+  \nPrint a single integer — xor of all pairwise sums of integers in the given array.\n\
+  \n\n-----Examples-----\nInput\n2\n1 2\n\nOutput\n3\nInput\n3\n1 2 3\n\nOutput\n\
+  2\n\n\n-----Note-----\n\nIn the first sample case there is only one sum $1 + 2 =\
+  \ 3$.\n\nIn the second sample case there are three sums: $1 + 2 = 3$, $1 + 3 = 4$,\
+  \ $2 + 3 = 5$. In binary they are represented as $011_2 \\oplus 100_2 \\oplus 101_2\
+  \ = 010_2$, thus the answer is 2.\n\n$\\oplus$ is the bitwise xor operation. To\
+  \ define $x \\oplus y$, consider binary representations of integers $x$ and $y$.\
+  \ We put the $i$-th bit of the result to be 1 when exactly one of the $i$-th bits\
+  \ of $x$ and $y$ is 1. Otherwise, the $i$-th bit of the result is put to be 0. For\
+  \ example, $0101_2 \\, \\oplus \\, 0011_2 = 0110_2$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def xor_of_pairwise_sums (n : Nat) (arr : List Nat) : Nat := sorry\n\
+  \ntheorem xor_pairwise_sums_nonnegative (n : Nat) (arr : List Nat) :\n  n ≤ arr.length\
+  \ → xor_of_pairwise_sums n arr ≥ 0 := sorry\n"
+"vc-theorems": "theorem empty_or_singleton_equals_zero (n : Nat) (arr : List Nat)\
+  \ :\n  n ≤ 1 → xor_of_pairwise_sums n arr = 0 := sorry\n\n\ntheorem identical_elements_result_even\
+  \ (n : Nat) (arr : List Nat) (x : Nat) :\n  n ≤ arr.length →\n  (∀ i, arr.get? i\
+  \ = some x) →\n  xor_of_pairwise_sums n arr % 2 = 0 := sorry\n\n\ntheorem two_distinct_elements\
+  \ (arr : List Nat) (h : arr.length = 2) :\n  List.get? arr 0 ≠ List.get? arr 1 →\n\
+  \  xor_of_pairwise_sums 2 arr = Option.getD (List.get? arr 0) 0 + Option.getD (List.get?\
+  \ arr 1) 0 := sorry\n\n\ntheorem identical_pair_sum (x : Nat) :\n  xor_of_pairwise_sums\
+  \ 2 [x, x] = 2 * x := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval xor_of_pairwise_sums\
+  \ 2 [1, 2]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval xor_of_pairwise_sums 3 [1,\
+  \ 2, 3]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval xor_of_pairwise_sums 2 [1, 1]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

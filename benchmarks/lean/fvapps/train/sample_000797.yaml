@@ -1,0 +1,31 @@
+"vc-description": "Amit is going on a date and he wants to gift his date an array\
+  \ of positive numbers. But he is running short on money. He already has an array\
+  \ of numbers in design. Cost of an array of numbers is the sum of elements in it.\
+  \ But he wants to minimize the cost of making it. \nSo he does the following number\
+  \ of operations one by one for any number of times:\nHe chooses two adjacent elements\
+  \ ,replace them by one element with value = XOR of the two numbers. This operation\
+  \ reduces length of array (and elements are re-numerated accordingly)\nFind the\
+  \ minimum amount of money that Amit needs to spend to gift his date.\n\n-----Input:-----\n\
+  - First line will contain $T$, number of testcases. Then the testcases follow. \n\
+  - Each testcase contains of $2$ lines of input, first line contains a single integer\
+  \ $N$ and the second line contains $N$ elements - $A1,A2,A3,.....,AN$ \n\n-----Output:-----\n\
+  For each testcase, output in a single line answer denoting the minimum cost\n\n\
+  -----Constraints-----\n- $1 \\leq T \\leq 10$\n- $1 \\leq N \\leq 10^5$\n- $0 \\\
+  leq Ai \\leq 10^9$ for $1\\leq i \\leq N$\n\n-----Sample Input:-----\n3\n5\n8 4\
+  \ 1 5 0\n5\n1 2 4 0 8\n2\n10 10\n\n-----Sample Output:-----\n8\n15\n0\n\n-----EXPLANATION:-----\n\
+  For first case,\nThis array is :\n$[8,4,1,5,0] -> [8,4,4,0] -> [8,0,0]$. Sum=$8$\
+  \ So the answer is 8."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_array_xor (n : Nat) (arr : List Nat) : Nat := sorry\n\
+  \ntheorem xor_self_cancel (x : Nat) : \n  solve_array_xor 2 [x, x] = 0 := sorry\n"
+"vc-theorems": "theorem xor_commutative (n : Nat) (arr : List Nat) : \n  solve_array_xor\
+  \ n arr = solve_array_xor n arr.reverse := sorry\n\n\ntheorem xor_zero_identity\
+  \ (x : Nat) : \n  solve_array_xor 2 [x, 0] = x := sorry\n\n\ntheorem single_element\
+  \ (x : Nat) :\n  solve_array_xor 1 [x] = x := sorry\n\n\ntheorem even_duplicates_zero\
+  \ (x : Nat) :\n  solve_array_xor 4 [x, x, x, x] = 0 := sorry\n\n\ntheorem odd_duplicates_self\
+  \ (x : Nat) :\n  solve_array_xor 3 [x, x, x] = x := sorry\n\n/--\ninfo: 8\n-/\n\
+  #guard_msgs in\n#eval solve_array_xor 5 [8, 4, 1, 5, 0]\n\n/--\ninfo: 15\n-/\n#guard_msgs\
+  \ in\n#eval solve_array_xor 5 [1, 2, 4, 0, 8]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
+  #eval solve_array_xor 2 [10, 10]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

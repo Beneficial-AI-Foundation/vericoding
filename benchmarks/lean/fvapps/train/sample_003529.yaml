@@ -1,0 +1,25 @@
+"vc-description": "Given a list of white pawns on a chessboard (any number of them,\
+  \ meaning from 0 to 64 and with the possibility to be positioned everywhere), determine\
+  \ how many of them have their backs covered by another. \nPawns attacking upwards\
+  \ since we have only white ones.\n\nPlease remember that a pawn attack(and defend\
+  \ as well) only the 2 square on the sides in front of him. https://en.wikipedia.org/wiki/Pawn_(chess)#/media/File:Pawn_(chess)_movements.gif\n\
+  \nThis is how the chess board coordinates are defined:\nABCDEFGH8♜♞♝♛♚♝♞♜7♟♟♟♟♟♟♟♟65432♙♙♙♙♙♙♙♙1♖♘♗♕♔♗♘♖"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def coveredPawns (pawns : List String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem covered_pawns_bounds {pawns : List String} :\n  0 ≤ coveredPawns\
+  \ pawns ∧ coveredPawns pawns ≤ pawns.length :=\nsorry\n\n\ntheorem covered_pawns_empty\
+  \ :\n  coveredPawns [] = 0 :=\nsorry\n\n\ntheorem covered_pawns_single (pawn : String)\
+  \ :\n  coveredPawns [pawn] = 0 :=\nsorry\n\n\ntheorem covered_pawns_adjacent {file\
+  \ rank : Char} (h1 : rank ≠ '1') \n  (h2 : file < 'h') :\n  let pawn1 := String.mk\
+  \ [file, rank]\n  let nextFile := Char.ofNat ((Char.toNat file) + 1)\n  let prevRank\
+  \ := Char.ofNat ((Char.toNat rank) - 1)\n  let pawn2 := String.mk [nextFile, prevRank]\n\
+  \  coveredPawns [pawn1, pawn2] = 1 :=\nsorry\n\n\ntheorem covered_pawns_first_rank\
+  \ {file : Char} :\n  coveredPawns [String.mk [file, '1']] = 0 :=\nsorry \n\n\ntheorem\
+  \ covered_pawns_edge_files {rank : Char} :\n  (coveredPawns [String.mk ['a', rank]]\
+  \ = 0) ∧\n  (coveredPawns [String.mk ['h', rank]] = 0) :=\nsorry\n\n/--\ninfo: 0\n\
+  -/\n#guard_msgs in\n#eval covered_pawns [\"f7\", \"b1\", \"h1\", \"c7\", \"h7\"\
+  ]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval covered_pawns [\"e5\", \"b2\", \"b4\"\
+  , \"g4\", \"a1\", \"a5\"]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval covered_pawns\
+  \ [\"a2\", \"b1\", \"c2\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

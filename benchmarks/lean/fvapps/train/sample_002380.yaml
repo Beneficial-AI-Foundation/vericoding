@@ -1,0 +1,26 @@
+"vc-description": "Given a date, return the corresponding day of the week for that\
+  \ date.\nThe input is given as three integers representing the day, month and year\
+  \ respectively.\nReturn the answer as one of the following values {\"Sunday\", \"\
+  Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"}.\n\
+   \nExample 1:\nInput: day = 31, month = 8, year = 2019\nOutput: \"Saturday\"\n\n\
+  Example 2:\nInput: day = 18, month = 7, year = 1999\nOutput: \"Sunday\"\n\nExample\
+  \ 3:\nInput: day = 15, month = 8, year = 1993\nOutput: \"Sunday\"\n\n \nConstraints:\n\
+  \nThe given dates are valid dates between the years 1971 and 2100."
+"vc-preamble": "import Imports.AllImports\n\ndef day_of_the_week (day month year :\
+  \ Nat) : Day :=\n  sorry\n\n\ndef isValidDate (day month year : Nat) : Prop :=\n\
+  \  day ≥ 1 ∧ day ≤ 31 ∧ month ≥ 1 ∧ month ≤ 12\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isLeapYear (year : Nat) : Prop :=\n  year % 4 = 0 ∧ (year %\
+  \ 100 ≠ 0 ∨ year = 2000)\n"
+"vc-theorems": "theorem valid_dates {day month year : Nat} \n  (hday : day ≥ 1 ∧ day\
+  \ ≤ 31)\n  (hmonth : month ≥ 1 ∧ month ≤ 12)\n  (hyear : year ≥ 1971 ∧ year ≤ 2100)\n\
+  \  (hvalid : isValidDate day month year) :\n  ∃ d : Day, day_of_the_week day month\
+  \ year = d :=\nsorry\n\n\ntheorem leap_year {year month : Nat}\n  (hyear : year\
+  \ ≥ 1971 ∧ year ≤ 2100)\n  (hmonth : month = 2)\n  (hleap : isLeapYear year) :\n\
+  \  ∃ d : Day, day_of_the_week 29 2 year = d :=\nsorry\n\n\ntheorem year_boundaries\
+  \ {year : Nat}\n  (hyear : year ≥ 1971 ∧ year ≤ 2100) :\n  ∃ d1 d2 : Day, \n   \
+  \ day_of_the_week 1 1 year = d1 ∧\n    day_of_the_week 31 12 year = d2 :=\nsorry\n\
+  \n/--\ninfo: 'Saturday'\n-/\n#guard_msgs in\n#eval day_of_the_week 31 8 2019\n\n\
+  /--\ninfo: 'Sunday'\n-/\n#guard_msgs in\n#eval day_of_the_week 18 7 1999\n\n/--\n\
+  info: 'Sunday'\n-/\n#guard_msgs in\n#eval day_of_the_week 15 8 1993\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

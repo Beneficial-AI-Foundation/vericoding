@@ -1,0 +1,30 @@
+"vc-description": "=====Function Descriptions=====\nTranspose\n\nWe can generate the\
+  \ transposition of an array using the tool numpy.transpose.\nIt will not affect\
+  \ the original array, but it will create a new array.\n\nimport numpy\n\nmy_array\
+  \ = numpy.array([[1,2,3],\n                        [4,5,6]])\nprint numpy.transpose(my_array)\n\
+  \n#Output\n[[1 4]\n [2 5]\n [3 6]]\n\nFlatten\n\nThe tool flatten creates a copy\
+  \ of the input array flattened to one dimension.\n\nimport numpy\n\nmy_array = numpy.array([[1,2,3],\n\
+  \                        [4,5,6]])\nprint my_array.flatten()\n\n#Output\n[1 2 3\
+  \ 4 5 6]\n\n=====Problem Statement=====\nYou are given a NXM integer array matrix\
+  \ with space separated elements (N = rows and M = columns).\nYour task is to print\
+  \ the transpose and flatten results.\n\n=====Input Format=====\nThe first line contains\
+  \ the space separated values of N and M.\nThe next N lines contains the space separated\
+  \ elements of M columns.\n\n=====Output Format=====\nFirst, print the transpose\
+  \ array and then print the flatten."
+"vc-preamble": "import Imports.AllImports\n\ndef process_matrix (n m : Nat) (matrix\
+  \ : List (List Nat)) : \n  (List (List Nat)) × (List Nat) := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def transpose (matrix : List (List Nat)) : List (List Nat) := sorry\n\
+  \ntheorem process_matrix_dimensions {n m : Nat} {matrix : List (List Nat)}\n  (hn\
+  \ : n > 0) (hm : m > 0) (hmatrix : matrix.length = n ∧ \n  ∀ row ∈ matrix, row.length\
+  \ = m) :\n  let (transposed, flattened) := process_matrix n m matrix\n  transposed.length\
+  \ = m ∧ \n  (∀ row ∈ transposed, row.length = n) ∧\n  flattened.length = n * m :=\
+  \ sorry\n"
+"vc-theorems": "theorem process_matrix_transpose {n m : Nat} {matrix : List (List\
+  \ Nat)}\n  (hn : n > 0) (hm : m > 0) (hmatrix : matrix.length = n ∧ \n  ∀ row ∈\
+  \ matrix, row.length = m) :\n  let (transposed, _) := process_matrix n m matrix\n\
+  \  matrix = transpose transposed := sorry\n\n\ntheorem process_matrix_flatten {n\
+  \ m : Nat} {matrix : List (List Nat)}\n  (hn : n > 0) (hm : m > 0) (hmatrix : matrix.length\
+  \ = n ∧ \n  ∀ row ∈ matrix, row.length = m) :\n  let (_, flattened) := process_matrix\
+  \ n m matrix\n  flattened = matrix.join := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,37 @@
+"vc-description": "There is a house with 4 levels.\nIn that house there is an elevator.\n\
+  You can program this elevator to go up or down,\ndepending on what button the user\
+  \ touches inside the elevator.\n\nValid levels must be only these numbers: `0,1,2,3`\n\
+  \nValid buttons must be only these strings: `'0','1','2','3'` \n\nPossible return\
+  \ values are these numbers: `-3,-2,-1,0,1,2,3`\n\nIf the elevator is on the ground\
+  \ floor(0th level) \nand the user touches button '2'\nthe elevator must go 2 levels\
+  \ up,\nso our function must return 2.\n\nIf the elevator is on the 3rd level\nand\
+  \ the user touches button '0'\nthe elevator must go 3 levels down, so our function\
+  \ must return -3.\n\nIf the elevator is on the 2nd level,\nand the user touches\
+  \ button '2'\nthe elevator must remain on the same level,\nso we return 0.\n\nWe\
+  \ cannot endanger the lives of our passengers, \nso if we get erronous inputs, \n\
+  our elevator must remain on the same level.\nSo for example:\n\n- `goto(2,'4')`\
+  \ must return 0, because there is no button '4' in the elevator.\n- `goto(4,'0')`\
+  \ must return 0, because there is no level 4.\n- `goto(3,undefined)` must return\
+  \ 0.\n- `goto(undefined,'2')` must return 0.\n- `goto([],'2')` must return 0 because\
+  \ the type of the input level is array instead of a number.\n- `goto(3,{})` must\
+  \ return 0 because the type of the input button is object instead of a string."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def goto (level : Int) (button : String) : Int := sorry\n\ntheorem\
+  \ goto_valid_inputs (level : Int) (button : String) \n  (h1 : 0 ≤ level ∧ level\
+  \ ≤ 3) \n  (h2 : button = \"0\" ∨ button = \"1\" ∨ button = \"2\" ∨ button = \"\
+  3\") : \n  ∃ result : Int, goto level button = result ∧ result = button.toInt! -\
+  \ level := sorry\n"
+"vc-theorems": "theorem goto_invalid_level (level : Int) (button : String)\n  (h1\
+  \ : level < 0 ∨ level > 3)\n  (h2 : button = \"0\" ∨ button = \"1\" ∨ button = \"\
+  2\" ∨ button = \"3\") :\n  goto level button = 0 := sorry\n\n\ntheorem goto_invalid_button\
+  \ (level : Int) (button : String)\n  (h1 : 0 ≤ level ∧ level ≤ 3)\n  (h2 : button\
+  \ ≠ \"0\" ∧ button ≠ \"1\" ∧ button ≠ \"2\" ∧ button ≠ \"3\") :\n  goto level button\
+  \ = 0 := sorry\n\n\ntheorem goto_invalid_level_type (level : String) (button : String)\n\
+  \  (h : button = \"0\" ∨ button = \"1\" ∨ button = \"2\" ∨ button = \"3\") : \n\
+  \  goto 0 button = 0 := sorry\n\n\ntheorem goto_invalid_button_type (level : Int)\
+  \ (button : Int)\n  (h : 0 ≤ level ∧ level ≤ 3) :\n  goto level \"\" = 0 := sorry\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval goto 0 \"2\"\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval goto 2 \"4\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval goto 4 \"2\"\
+  \n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval goto [] \"2\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

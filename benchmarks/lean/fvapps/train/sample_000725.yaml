@@ -1,0 +1,28 @@
+"vc-description": "The chef is trying to solve some pattern problems, Chef wants your\
+  \ help to code it. Chef has one number K (odd) to form a new pattern. Help the chef\
+  \ to code this pattern problem.\n\n-----Input:-----\n- First-line will contain $T$,\
+  \ the number of test cases. Then the test cases follow. \n- Each test case contains\
+  \ a single line of input, one integer $K$. \n\n-----Output:-----\nFor each test\
+  \ case, output as the pattern.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n\
+  - $1 \\leq K \\leq 100$\n\n-----Sample Input:-----\n4\n1\n3\n5\n7\n\n-----Sample\
+  \ Output:-----\n*\n*\n**\n*\n*\n**\n* *\n**\n*\n*\n**\n* *\n*  *\n* *\n**\n*\n\n\
+  -----EXPLANATION:-----\nNo need, else pattern can be decode easily."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def generate_pattern (k : Nat) : List String := sorry\n\ntheorem\
+  \ pattern_length_is_k {k : Nat} (h : k % 2 = 1) :\n  let pattern := generate_pattern\
+  \ k\n  List.length pattern = k := sorry\n"
+"vc-theorems": "theorem pattern_is_symmetric {k : Nat} (h : k % 2 = 1) :\n  let pattern\
+  \ := generate_pattern k\n  pattern = List.reverse pattern := sorry\n\n\ntheorem\
+  \ pattern_content_valid {k : Nat} (h : k % 2 = 1) :\n  let pattern := generate_pattern\
+  \ k\n  (∀ line ∈ pattern, ∀ c ∈ line.data, c = '*' ∨ c = ' ') ∧ \n  pattern.head?\
+  \ = some \"*\" ∧\n  pattern.getLast? = some \"*\" ∧\n  (k > 1 → pattern.get? 1 =\
+  \ some \"**\") := sorry\n  \n\ntheorem middle_lines_format {k : Nat} (h : k % 2\
+  \ = 1) :\n  let pattern := generate_pattern k\n  let mid := k / 2\n  ∀ i, 2 ≤ i\
+  \ → i < mid →\n    let line := pattern.get! i\n    line.data.head? = some '*' ∧\
+  \ \n    line.data.getLast? = some '*' ∧\n    (∀ c ∈ (line.data.drop 1).dropLast,\
+  \ c = ' ') := sorry\n\n/--\ninfo: ['*']\n-/\n#guard_msgs in\n#eval generate_pattern\
+  \ 1\n\n/--\ninfo: ['*', '**', '*']\n-/\n#guard_msgs in\n#eval generate_pattern 3\n\
+  \n/--\ninfo: ['*', '**', '* *', '**', '*']\n-/\n#guard_msgs in\n#eval generate_pattern\
+  \ 5\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

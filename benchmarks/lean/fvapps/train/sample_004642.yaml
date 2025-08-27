@@ -1,0 +1,24 @@
+"vc-description": "Write a function generator that will generate the first `n` primes\
+  \ grouped in tuples of size `m`. If there are not enough primes for the last tuple\
+  \ it will have the remaining values as `None`.\n\n## Examples\n\n```python\nFor\
+  \ n = 11 and m = 2:\n(2, 3), (5, 7), (11, 13), (17, 19), (23, 29), (31, None)\n\n\
+  For n = 11 and m = 3:\n(2, 3, 5), (7, 11, 13), (17, 19, 23), (29, 31, None)\n\n\
+  For n = 11 and m = 5:\n(2, 3, 5, 7, 11), (13, 17, 19, 23, 29), (31, None, None,\
+  \ None, None)]\n\nFor n = 3 and m = 1:\n(2,), (3,), (5,)\n```\n\nNote: large numbers\
+  \ of `n` will be tested, up to 50000"
+"vc-preamble": "import Imports.AllImports\n\ndef get_primes (n : Nat) (m : Nat :=\
+  \ 2) : List (List Nat) :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def PRIMES : List Nat := sorry\n\ntheorem get_primes_length_properties\
+  \ (n m : Nat)\n  (h1 : n ≥ 1 ∧ n ≤ 100) (h2 : m ≥ 1 ∧ m ≤ 10) :\n  let result :=\
+  \ get_primes n m\n  -- Total elements ≤ n \n  (result.join.length ≤ n) ∧\n  -- Each\
+  \ inner list has length m\n  (∀ inner ∈ result, inner.length = m) :=\nsorry\n"
+"vc-theorems": "theorem get_primes_values (n m : Nat)\n  (h1 : n ≥ 1 ∧ n ≤ 100) (h2\
+  \ : m ≥ 1 ∧ m ≤ 10) :  \n  let result := get_primes n m\n  ∀ x ∈ result.join,\n\
+  \    -- All values are prime \n    x ∈ PRIMES ∧\n    -- Values are in ascending\
+  \ order\n    (∀ y ∈ result.join, result.join.indexOf y < result.join.indexOf x →\
+  \ y < x) :=\nsorry\n\n\ntheorem get_primes_default_m (n : Nat) (h : n ≥ 1 ∧ n ≤\
+  \ 100) :\n  let result := get_primes n\n  ∀ inner ∈ result, inner.length = 2 :=\n\
+  sorry\n\n\ntheorem get_primes_edge_cases :\n  get_primes 0 = [] ∧\n  get_primes\
+  \ 1 1 = [[2]] ∧ \n  get_primes 1 2 = [[2, 0]] :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

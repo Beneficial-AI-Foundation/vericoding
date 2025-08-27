@@ -1,0 +1,34 @@
+"vc-description": "The number ```1331``` is the first positive perfect cube,  higher\
+  \ than ```1```, having all its digits odd (its cubic root is ```11```).\n\nThe next\
+  \ one is ```3375```.\n\nIn the interval [-5000, 5000] there are six pure odd digit\
+  \ perfect cubic numbers and are: ```[-3375,-1331, -1, 1, 1331, 3375]```\n\nGive\
+  \ the numbers of this sequence that are in the range ```[a,b] ```(both values inclusive)\n\
+  \nExamples:\n``` python\nodd_dig_cubic(-5000, 5000) == [-3375,-1331, -1, 1, 1331,\
+  \ 3375] # the output should be sorted.\nodd_dig_cubic(0, 5000) == [1, 1331, 3375]\n\
+  odd_dig_cubic(-1, 5000) == [-1, 1, 1331, 3375]\nodd_dig_cubic(-5000, -2) == [-3375,-1331]\n\
+  \n```\nFeatures of the random tests for python:\n```\nnumber of Tests = 94\nminimum\
+  \ value for a = -1e17\nmaximum value for b = 1e17\n```\nYou do not have to check\
+  \ the entries, ```a``` and ```b``` always integers and ```a < b``` \n\nWorking well\
+  \ in Python 2 and Python 3.\nTranslation into Ruby is coming soon."
+"vc-preamble": "import Imports.AllImports\n\ndef odd_dig_cubic (a b : Int) : List\
+  \ Int :=\n  sorry\n\n-- Helper function to check if a number's digits are all odd\n\
+  \ndef hasAllOddDigits (n : Int) : Bool :=\n  sorry\n\n-- Helper function to check\
+  \ if a number is a perfect cube"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isPerfectCube (n : Int) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem odd_dig_cubic_sorted (a b : Int) :\n  let result := odd_dig_cubic\
+  \ a b\n  ∀ i, i + 1 < result.length → result[i]! ≤ result[i+1]! :=\nsorry\n\n\n\
+  theorem odd_dig_cubic_all_cubes (a b : Int) :\n  let result := odd_dig_cubic a b\
+  \  \n  ∀ n ∈ result, isPerfectCube n :=\nsorry\n\n\ntheorem odd_dig_cubic_all_odd_digits\
+  \ (a b : Int) :\n  let result := odd_dig_cubic a b\n  ∀ n ∈ result, hasAllOddDigits\
+  \ n :=\nsorry\n\n\ntheorem odd_dig_cubic_in_range (a b : Int) :\n  let result :=\
+  \ odd_dig_cubic a b\n  ∀ n ∈ result, min a b ≤ n ∧ n ≤ max a b :=\nsorry\n\n\ntheorem\
+  \ odd_dig_cubic_zero : odd_dig_cubic 0 0 = [] :=\nsorry\n\n\ntheorem odd_dig_cubic_one\
+  \ : odd_dig_cubic 1 1 = [1] :=\nsorry\n\n\ntheorem odd_dig_cubic_neg_one : odd_dig_cubic\
+  \ (-1) (-1) = [-1] :=\nsorry\n\n\ntheorem odd_dig_cubic_single_point (n : Int) :\n\
+  \  let result := odd_dig_cubic n n\n  result ≠ [] → result.length = 1 ∧ result[0]!\
+  \ = n :=\nsorry\n\n/--\ninfo: [-3375, -1331, -1, 1, 1331, 3375]\n-/\n#guard_msgs\
+  \ in\n#eval odd_dig_cubic -5000 5000\n\n/--\ninfo: [1, 1331, 3375]\n-/\n#guard_msgs\
+  \ in\n#eval odd_dig_cubic 0 5000\n\n/--\ninfo: [-3375, -1331]\n-/\n#guard_msgs in\n\
+  #eval odd_dig_cubic -5000 -2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,76 @@
+"vc-description": "In case you might be unlucky enough not to know the best dark fantasy\
+  \ franchise ever, Berserk tells the story of a man that, hating gratuitous violence,\
+  \ decided to become a mercenary (thus one who sells violence, no gratuity anymore!)\
+  \ and starts an epic struggle against apparently unsormountable odds, unsure if\
+  \ he really wants to pursue a path of vengeance or to try to focus on his remaining\
+  \ and new loved ones.\n\n*The main character, Gatsu,ready to start yet another Tuesday*\n\
+  \nOk, the first part was a joke, but you can read more about the tale of the main\
+  \ character, a \"Byronic hero\" for wikipedia, in other pages like [here](https://en.wikipedia.org/wiki/Berserk_(manga%29).\n\
+  \nAfter an insanely long waiting, finally fans got the [follow up](https://en.wikipedia.org/wiki/Berserk_(2016_TV_series%29)\
+  \ of [the acclaimed 90s show](https://en.wikipedia.org/wiki/Berserk_(1997_TV_series%29).\n\
+  \nRegrettably, while the first adaption was considerably shortened, the latter was\
+  \ quite butchered, missing entire parts, like the \"lost children\" arc, but that\
+  \ would have actual children butchered and thus you might get why it was decided\
+  \ to skip it. And fan could somehow cope with it, if it was not for the very meager\
+  \ use of CG (Computer Graphic).\n\nLuckily, I am a simple man and every time Gatsu\
+  \ swings his humongous sword, that is enough to make me forget about everything\
+  \ else.\n\nYour goal is to build a Berserk Rater function that takes an array/list\
+  \ of events of each episode (as strings) and calculate a rating based on that: you\
+  \ start with a score of 0 (hey, it's a work from Miura-sensei, I have great expectations\
+  \ to satisfy!) and you have to:\n\n* subtract 2 each time \"CG\" is mentioned (case\
+  \ insensitive);\n* add 5 every time \"Clang\" is mentioned (case insensitive);\n\
+  * if a sentence has both \"Clang\" and \"CG\", \"Clang\" wins (add 5);\n* remove\
+  \ 1 every time neither is mentioned (I get bored easily, you know, particularly\
+  \ if you remove important parts and keep side character whining for half an episode).\n\
+  \nYou should then return a string, structured like this:\n\n* if the finale score\
+  \ is less than 0: \"worstest episode ever\";\n* if the score is between 0 and 10:\
+  \ the score itself, as a string;\n* if the finale score is more than 10: \"bestest\
+  \ episode ever\".\n\nExamples:\n```python\nberserk_rater([\"is this the CG from\
+  \ a P2 game?\",\"Hell, no! Even the CG in the Dreamcast game was more fluid than\
+  \ this!\",\"Well, at least Gatsu does his clang even against a mere rabbit\", \"\
+  Hey, Cosette was not in this part of the story!\", \"Ops, everybody dead again!\
+  \ Well, how boring...\"])==\"worstest episode ever\"\nberserk_rater([\"missing the\
+  \ Count arc\",\"lame CG\",\"Gatsu doing its clang against a few henchmen\", \"even\
+  \ more lame CG\"])==\"0\"\nberserk_rater([\"Farnese unable to shut the fuck up\"\
+  ,\"awful CG dogs assaulting everybody\", \"Gatsu clanging the pig apostle!\"])==\"\
+  2\"\nberserk_rater([\"spirits of the dead attacking Gatsu and getting clanged for\
+  \ good\", \"but the wheel spirits where really made with bad CG\", \"Isidoro trying\
+  \ to steal the dragon Slayer and getting a sort of clang on his face\", \"Gatsu\
+  \ vs. the possessed horse: clang!\", \"Farnese whining again...\",\"a shame the\
+  \ episode ends with that scrappy CG\"])==\"10\"\nberserk_rater([\"Holy chain knights\
+  \ being dicks\", \"Serpico almost getting clanged by Gatsu, but without losing his\
+  \ composure\",\"lame CG\",\"Luka getting kicked\",\"Gatsu going clang against the\
+  \ angels\", \"Gatsu clanging vs Mozgus, big time!\"])==\"bestest episode ever\"\n\
+  ```\n\nExtra cookies if you manage to solve it all using a `reduce/inject` approach.\n\
+  \nOh, and in case you might want a taste of clang to fully understand it, [click](https://www.youtube.com/watch?v=IZgxH8MJFno)\
+  \ (one of the least gory samples I managed to find)."
+"vc-preamble": "import Imports.AllImports\n\ndef berserk_rater (synopsis : List String)\
+  \ : String :=\n  sorry\n\n\ndef score (s : String) : Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def String.hasSubstring (s₁ s₂ : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem berserk_rater_output_format (synopsis : List String) :\n \
+  \ let result := berserk_rater synopsis\n  (result = \"worstest episode ever\" ∨\
+  \ result = \"bestest episode ever\" ∨ String.all result Char.isDigit) := sorry\n\
+  \n\ntheorem berserk_rater_score_boundaries (synopsis : List String) :\n  let result\
+  \ := berserk_rater synopsis\n  let score_sum := List.foldl (· + ·) 0 (List.map (fun\
+  \ s => score s.toUpper) synopsis)\n  (result = \"worstest episode ever\" → score_sum\
+  \ < 0) ∧\n  (result = \"bestest episode ever\" → score_sum > 10) ∧\n  (result ≠\
+  \ \"worstest episode ever\" ∧ result ≠ \"bestest episode ever\" → \n    0 ≤ result.toNat!\
+  \ ∧ result.toNat! ≤ 10) := sorry\n\n\ntheorem score_function_output (s : String)\
+  \ :\n  let result := score s.toUpper\n  (result = 5 ∨ result = -2 ∨ result = -1)\
+  \ ∧\n  (s.toUpper.hasSubstring \"CLANG\" → result = 5) ∧\n  (s.toUpper.hasSubstring\
+  \ \"CG\" → (¬s.toUpper.hasSubstring \"CLANG\" → result = -2)) ∧\n  (¬s.toUpper.hasSubstring\
+  \ \"CLANG\" ∧ ¬s.toUpper.hasSubstring \"CG\" → result = -1) := sorry\n\n\ntheorem\
+  \ score_precedence_clang_over_cg :\n  score \"CLANGCG\" = 5 ∧ score \"CGCLANG\"\
+  \ = 5 := sorry\n\n/--\ninfo: 'worstest episode ever'\n-/\n#guard_msgs in\n#eval\
+  \ berserk_rater [\"is this the CG from a P2 game?\", \"Hell, no! Even the CG in\
+  \ the Dreamcast game was more fluid than this!\", \"Well, at least Gatsu does his\
+  \ clang even against a mere rabbit\", \"Hey, Cosette was not in this part of the\
+  \ story!\", \"Ops, everybody dead again! Well, how boring...\"]\n\n/--\ninfo: '2'\n\
+  -/\n#guard_msgs in\n#eval berserk_rater [\"Farnese unable to shut the fuck up\"\
+  , \"awful CG dogs assaulting everybody\", \"Gatsu clanging the pig apostle!\"]\n\
+  \n/--\ninfo: 'bestest episode ever'\n-/\n#guard_msgs in\n#eval berserk_rater [\"\
+  Holy chain knights being dicks\", \"Serpico almost getting clanged by Gatsu, but\
+  \ without losing his composure\", \"lame CG\", \"Luka getting kicked\", \"Gatsu\
+  \ going clang against the angels\", \"Gatsu clanging vs Mozgus, big time!\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

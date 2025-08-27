@@ -1,0 +1,36 @@
+"vc-description": "Given the array queries of positive integers between 1 and m, you\
+  \ have to process all queries[i] (from i=0 to i=queries.length-1) according to the\
+  \ following rules:\n\nIn the beginning, you have the permutation P=[1,2,3,...,m].\n\
+  For the current i, find the position of queries[i] in the permutation P (indexing\
+  \ from 0) and then move this at the beginning of the permutation P. Notice that\
+  \ the position of queries[i] in P is the result for queries[i].\n\nReturn an array\
+  \ containing the result for the given queries.\n \nExample 1:\nInput: queries =\
+  \ [3,1,2,1], m = 5\nOutput: [2,1,2,1] \nExplanation: The queries are processed as\
+  \ follow: \nFor i=0: queries[i]=3, P=[1,2,3,4,5], position of 3 in P is 2, then\
+  \ we move 3 to the beginning of P resulting in P=[3,1,2,4,5]. \nFor i=1: queries[i]=1,\
+  \ P=[3,1,2,4,5], position of 1 in P is 1, then we move 1 to the beginning of P resulting\
+  \ in P=[1,3,2,4,5]. \nFor i=2: queries[i]=2, P=[1,3,2,4,5], position of 2 in P is\
+  \ 2, then we move 2 to the beginning of P resulting in P=[2,1,3,4,5]. \nFor i=3:\
+  \ queries[i]=1, P=[2,1,3,4,5], position of 1 in P is 1, then we move 1 to the beginning\
+  \ of P resulting in P=[1,2,3,4,5]. \nTherefore, the array containing the result\
+  \ is [2,1,2,1].  \n\nExample 2:\nInput: queries = [4,1,2,2], m = 4\nOutput: [3,1,2,0]\n\
+  \nExample 3:\nInput: queries = [7,5,5,8,3], m = 8\nOutput: [6,5,0,7,5]\n\n \nConstraints:\n\
+  \n1 <= m <= 10^3\n1 <= queries.length <= m\n1 <= queries[i] <= m"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def process_queries (queries : List Nat) (m : Nat) : List Nat :=\
+  \ sorry\n\ntheorem result_length_matches_input \n  (queries : List Nat) (m : Nat)\
+  \ (h : m > 0)\n  : List.length (process_queries queries m) = List.length queries\
+  \ := sorry\n"
+"vc-theorems": "theorem results_are_valid_indices\n  (queries : List Nat) (m : Nat)\
+  \ (h : m > 0)\n  : ∀ x ∈ (process_queries queries m), x < m := sorry \n\n\ntheorem\
+  \ empty_input_empty_output\n  (m : Nat) (h : m > 0)\n  : process_queries [] m =\
+  \ [] := sorry\n\n\ntheorem repeated_query_front_position\n  (queries : List Nat)\
+  \ (m : Nat) (h : m > 0) \n  (h1 : queries ≠ [])\n  (h2 : ∀ x ∈ queries, x ≤ m)\n\
+  \  (h3 : List.length queries > 0)\n  (q : Nat)\n  (h4 : q = queries[0]'h3)\n  :\
+  \ ∀ x ∈ (process_queries (queries ++ [q]) m), x ≥ 0 := sorry\n\n\ntheorem single_query_one_returns_zero\n\
+  \  (m : Nat) (h : m > 0)\n  : process_queries [1] m = [0] := sorry\n\n/--\ninfo:\
+  \ expected1\n-/\n#guard_msgs in\n#eval process_queries [3, 1, 2, 1] 5\n\n/--\ninfo:\
+  \ expected2\n-/\n#guard_msgs in\n#eval process_queries [4, 1, 2, 2] 4\n\n/--\ninfo:\
+  \ expected3\n-/\n#guard_msgs in\n#eval process_queries [7, 5, 5, 8, 3] 8\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

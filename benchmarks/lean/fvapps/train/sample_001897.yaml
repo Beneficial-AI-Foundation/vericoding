@@ -1,0 +1,42 @@
+"vc-description": "Design a Skiplist without using any built-in libraries.\nA Skiplist\
+  \ is a data structure that takes O(log(n)) time to add, erase and search. Comparing\
+  \ with treap and red-black tree which has the same function and performance, the\
+  \ code length of Skiplist can be comparatively short and the idea behind Skiplists\
+  \ are just simple linked lists.\nFor example: we have a Skiplist containing [30,40,50,60,70,90]\
+  \ and we want to add 80 and 45 into it. The Skiplist works this way:\n\nArtyom Kalinin\
+  \ [CC BY-SA 3.0], via Wikimedia Commons\nYou can see there are many layers in the\
+  \ Skiplist. Each layer is a sorted linked list. With the help of the top layers,\
+  \ add , erase and search can be faster than O(n). It can be proven that the average\
+  \ time complexity for each operation is O(log(n)) and space complexity is O(n).\n\
+  To be specific, your design should include these functions:\n\nbool search(int target)\
+  \ : Return whether the target exists in the Skiplist or not.\nvoid add(int num): Insert\
+  \ a value into the SkipList. \nbool erase(int num): Remove a value in the Skiplist. If\
+  \ num does not exist in the Skiplist, do nothing and return false. If there exists\
+  \ multiple num values, removing any one of them is fine.\n\nSee more about Skiplist\
+  \ : https://en.wikipedia.org/wiki/Skip_list\nNote that duplicates may exist in the\
+  \ Skiplist, your code needs to handle this situation.\n \nExample:\nSkiplist skiplist\
+  \ = new Skiplist();\n\nskiplist.add(1);\nskiplist.add(2);\nskiplist.add(3);\nskiplist.search(0);\
+  \   // return false.\nskiplist.add(4);\nskiplist.search(1);   // return true.\n\
+  skiplist.erase(0);    // return false, 0 is not in skiplist.\nskiplist.erase(1);\
+  \    // return true.\nskiplist.search(1);   // return false, 1 has already been\
+  \ erased.\n \nConstraints:\n\n0 <= num, target <= 20000\nAt most 50000 calls will\
+  \ be made to search, add, and erase."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Skiplist.new : Skiplist := sorry\n\ndef List.toFinset (l :\
+  \ List Nat) : List Nat := \n  match l with\n  | [] => []\n  | h :: t => if h ∈ t\
+  \ then List.toFinset t else h :: List.toFinset t\n"
+"vc-theorems": "theorem add_search_property (l : List Nat) (h : ∀ x ∈ l, x ≤ 20000)\
+  \ :\n  let sl := Skiplist.new \n  ∀ x ∈ l.toFinset,\n    (List.foldl (λ acc n =>\
+  \ let _ := acc.add n; acc) sl l).search x := sorry\n\n\ntheorem search_missing_property\
+  \ (l : List Nat) (n : Nat) \n    (h₁ : ∀ x ∈ l, x ≤ 20000)\n    (h₂ : n > 20000\
+  \ ∨ n < 0) :\n  let sl := Skiplist.new\n  ¬((List.foldl (λ acc x => let _ := acc.add\
+  \ x; acc) sl l).search n) := sorry\n\n\ntheorem erase_property (l : List Nat) (h\
+  \ : ∀ x ∈ l, x ≤ 20000) :\n  let sl := Skiplist.new\n  let sl' := List.foldl (λ\
+  \ acc x => let _ := acc.add x; acc) sl l\n  ∀ x ∈ l.toFinset,\n    (∀ i < l.count\
+  \ x, sl'.erase x) ∧\n    (¬sl'.erase x) ∧\n    (¬sl'.search x) := sorry\n\n\ntheorem\
+  \ duplicate_property (n : Nat) (r : Nat)\n    (h₁ : n ≤ 20000) \n    (h₂ : 0 < r\
+  \ ∧ r ≤ 100) :\n  let sl := Skiplist.new\n  let sl' := List.foldl (λ acc _ => let\
+  \ _ := acc.add n; acc) sl (List.replicate r ())\n  (∀ i < r, sl'.erase n) ∧ \n \
+  \ (¬sl'.search n) ∧\n  (¬sl'.erase n) := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

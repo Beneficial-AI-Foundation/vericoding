@@ -1,0 +1,21 @@
+"vc-description": "Given a non negative integer number num. For every numbers i in\
+  \ the range 0 ≤ i ≤ num calculate the number of 1's in their binary representation\
+  \ and return them as an array.\n\n\nExample:\nFor num = 5 you should return [0,1,1,2,1,2].\n\
+  \n\nFollow up:\n\nIt is very easy to come up with a solution with run time O(n*sizeof(integer)).\
+  \ But can you do it in linear time O(n) /possibly in a single pass?\nSpace complexity\
+  \ should be O(n).\nCan you do it like a boss? Do it without using any builtin function\
+  \ like __builtin_popcount  in c++ or in any other language.\n\n\n\nCredits:Special\
+  \ thanks to @ syedee  for adding this problem and creating all test cases."
+"vc-preamble": "import Imports.AllImports\n\ndef count_bits (n : Nat) : Array Nat\
+  \ := sorry\n\ndef countOnes (n : Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isPowerOfTwo (n : Nat) : Prop := \n  n > 0 ∧ ∃ k, n = 2^k\n"
+"vc-theorems": "theorem count_bits_length (n : Nat) (h : n ≤ 1000) : \n  (count_bits\
+  \ n).size = n + 1 := sorry\n\n\ntheorem count_bits_value (n : Nat) (h : n ≤ 1000)\
+  \ (i : Nat) (h2 : i ≤ n) \n  (h3 : i < (count_bits n).size) :\n  (count_bits n)[i]'h3\
+  \ = countOnes i := sorry\n\n\ntheorem count_bits_power_of_two (n : Nat) (h : n ≤\
+  \ 1000) (i : Nat) (h2 : i ≤ n)\n  (h3 : i < (count_bits n).size) :\n  i > 0 → isPowerOfTwo\
+  \ i → (count_bits n)[i]'h3 = 1 := sorry\n\n/--\ninfo: [0, 1, 1, 2, 1, 2]\n-/\n#guard_msgs\
+  \ in\n#eval count_bits 5\n\n/--\ninfo: [0]\n-/\n#guard_msgs in\n#eval count_bits\
+  \ 0\n\n/--\ninfo: [0, 1, 1]\n-/\n#guard_msgs in\n#eval count_bits 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,24 @@
+"vc-description": "In this exercise, you will have to create a function named tiyFizzBuzz.\
+  \ This function will take on a string parameter and will return that string with\
+  \ some characters replaced, depending on the value:\n\n- If a letter is a upper\
+  \ case consonants, replace that character with \"Iron\".\n- If a letter is a lower\
+  \ case consonants or a non-alpha character, do nothing to that character\n- If a\
+  \ letter is a upper case vowel, replace that character with \"Iron Yard\".\n- If\
+  \ a letter is a lower case vowel, replace that character with \"Yard\".\n\nReady?"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def tiy_fizz_buzz (s : String) : String := sorry\n\ndef isSubstringOf\
+  \ (needle haystack : String) : Bool := sorry\n"
+"vc-theorems": "theorem output_length_never_shorter (s : String) :\n  (tiy_fizz_buzz\
+  \ s).length ≥ s.length := sorry\n\n\ntheorem preserves_non_letters (s : String)\
+  \ (c : Char) :\n  c ∈ s.data → ¬c.isAlpha → c.toNat < 128 → c ∈ (tiy_fizz_buzz s).data\
+  \ := sorry \n\n\ntheorem uppercase_becomes_iron (s : String) (c : Char) :  \n  c\
+  \ ∈ s.data → c.isUpper → isSubstringOf \"Iron\" (tiy_fizz_buzz s) = true := sorry\n\
+  \n\ntheorem vowels_become_yard (s : String) (c : Char) :\n  c ∈ s.data → c.toLower\
+  \ ∈ ['a', 'e', 'i', 'o', 'u'] → \n  isSubstringOf \"Yard\" (tiy_fizz_buzz s) = true\
+  \ := sorry\n\n/--\ninfo: ' '\n-/\n#guard_msgs in\n#eval tiy_fizz_buzz \" \"\n\n\
+  /--\ninfo: 'Iron'\n-/\n#guard_msgs in\n#eval tiy_fizz_buzz \"H\"\n\n/--\ninfo: 'Iron\
+  \ Yard'\n-/\n#guard_msgs in\n#eval tiy_fizz_buzz \"A\"\n\n/--\ninfo: 'IronYardllYard\
+  \ IronIron YardIronIronIron!'\n-/\n#guard_msgs in\n#eval tiy_fizz_buzz \"Hello WORLD!\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

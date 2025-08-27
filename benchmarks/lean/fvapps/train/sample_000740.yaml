@@ -1,0 +1,32 @@
+"vc-description": "Tara was completing an Algorithms assignment and got stuck on a\
+  \ question. She thought of who can help her, and got reminded of Kabir who has good\
+  \ problem solving skills. The question is:\nGiven N$N$ the number of elements in\
+  \ the sequence A1$A_1$,A2$A_2$ … An$A_n$. Find out the prime factor which occurred\
+  \ maximum number of times among the largest prime factor corresponding to each element.\
+  \ if there are more than one such prime factors print the largest one.\nYou are\
+  \ friends with Kabir, help him to solve the problem for Tara.\n\n-----Input:-----\n\
+  - The first line of the input contains a single integer T$T$ denoting the number\
+  \ of test cases. The description of T test cases follows. \n- First line of each\
+  \ test case contains N$N$, the number of elements in the sequence.\n- Second line\
+  \ contains N space separated elements A1$A_1$,A2$A_2$ … An$A_n$.\n\n-----Output:-----\n\
+  - For each test case, print a single line, the number which occurs maximum number\
+  \ of times from the largest prime factor corresponding to each element.\n\n-----Constraints-----\n\
+  - 1≤T≤10$1 \\leq T \\leq 10$\n- 1≤N≤105$1 \\leq N \\leq 10^5$\n- 2≤A[i]≤105$2 \\\
+  leq A[i] \\leq 10^5$\n\n-----Sample Input:-----\n1\n7\n\n3 2 15 6 8 5 10\n\n-----Sample\
+  \ Output:-----\n5\n\n-----EXPLANATION:-----\nThe largest prime factors of numbers\
+  \ are:\n3 2  5  3  2  5  5 , of which 5 is most frequent."
+"vc-preamble": "import Imports.AllImports\n\ndef is_prime (n : Nat) : Bool := sorry\n\
+  \ndef find_max_prime_factor (nums : List Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_prime_factors_count (nums : List Nat) : List (Nat × Nat)\
+  \ := sorry\n\ntheorem result_is_prime_factor \n  (nums : List Nat) \n  (h1 : ∀ x\
+  \ ∈ nums, x ≥ 2 ∧ x ≤ 10000) \n  (h2 : nums.length > 0) :\n  let result := find_max_prime_factor\
+  \ nums\n  let factors := get_prime_factors_count nums\n  ∃ freq, (result, freq)\
+  \ ∈ factors := sorry\n"
+"vc-theorems": "theorem all_same_prime\n  (nums : List Nat)\n  (h : ∀ x ∈ nums, x\
+  \ = 2)\n  (h2 : nums.length > 0) :\n  find_max_prime_factor nums = 2 := sorry\n\n\
+  /--\ninfo: 5\n-/\n#guard_msgs in\n#eval find_max_prime_factor [3, 2, 15, 6, 8, 5,\
+  \ 10]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_max_prime_factor [4, 8, 12,\
+  \ 15]\n\n/--\ninfo: 11\n-/\n#guard_msgs in\n#eval find_max_prime_factor [3, 5, 7,\
+  \ 11]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

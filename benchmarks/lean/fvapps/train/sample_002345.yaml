@@ -1,0 +1,23 @@
+"vc-description": "Given an integer array nums, find the contiguous subarray (containing\
+  \ at least one number) which has the largest sum and return its sum.\n\nExample:\n\
+  \n\nInput: [-2,1,-3,4,-1,2,1,-5,4],\nOutput: 6\nExplanation: [4,-1,2,1] has the\
+  \ largest sum = 6.\n\n\nFollow up:\n\nIf you have figured out the O(n) solution,\
+  \ try coding another solution using the divide and conquer approach, which is more\
+  \ subtle."
+"vc-preamble": "import Imports.AllImports\n\ndef maxSubArray (nums : List Int) : Int\
+  \ := sorry\n\ndef List.sum (l : List Int) : Int := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.max (l : List Int) : Int := sorry\n\ntheorem maxSubArray_geq_max\
+  \ (nums : List Int) (h: nums ≠ []) :\n  maxSubArray nums ≥ List.max nums := sorry\n"
+"vc-theorems": "theorem maxSubArray_all_positive (nums : List Int) (h1: nums ≠ [])\
+  \ \n  (h2: ∀ x ∈ nums, x > 0) :\n  maxSubArray nums = List.sum nums := sorry\n\n\
+  \ntheorem maxSubArray_geq_elements (nums : List Int) (h: nums ≠ []) :\n  ∀ x ∈ nums,\
+  \ maxSubArray nums ≥ x := sorry\n\n\ntheorem maxSubArray_exists_subarray (nums :\
+  \ List Int) (h: nums ≠ []) :\n  ∃ i j, i ≤ j ∧ j < nums.length ∧ \n    List.sum\
+  \ (List.take (j - i + 1) (List.drop i nums)) = maxSubArray nums := sorry\n\n\ntheorem\
+  \ maxSubArray_binary (nums : List Int) (h1: nums ≠ [])\n  (h2: ∀ x ∈ nums, x ≥ -1\
+  \ ∧ x ≤ 1) :\n  maxSubArray nums = List.max nums ∨ maxSubArray nums > 0 := sorry\n\
+  \n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval maxSubArray #[-2, 1, -3, 4, -1, 2, 1,\
+  \ -5, 4]\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval maxSubArray #[-1]\n\n/--\n\
+  info: 3\n-/\n#guard_msgs in\n#eval maxSubArray #[1, 2, -1, -2, 2, 1, -2, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,77 @@
+"vc-description": "A chess board is normally played with 16 pawns and 16 other pieces,\
+  \ for this kata a variant will be played with only the pawns.  All other pieces\
+  \ will not be on the board.  \nFor information on how pawns move, refer [here](http://www.chesscorner.com/tutorial/basic/pawn/pawn.htm)\n\
+  \  \n  \nWrite a function that can turn a list of pawn moves into a visual representation\
+  \ of the resulting board.  \nA chess move will be represented by a string,\n```\n\
+  \"c3\"\n```\nThis move represents a pawn moving to `c3`.  If it was white to move,\
+  \ the move would represent a pawn from `c2` moving to `c3`.  If it was black to\
+  \ move, a pawn would move from `c4` to `c3`, because black moves in the other direction.\
+  \  \nThe first move in the list and every other move will be for white's pieces.\n\
+  \  \nThe letter represents the column, while the number represents the row of the\
+  \ square where the piece is moving  \n    \nCaptures are represented differently\
+  \ from normal moves:\n\n```\n\"bxc3\"\n```\nrepresents a pawn on the column represented\
+  \ by 'b' (the second column) capturing a pawn on `c3`.\n\nFor the sake of this kata\
+  \ a chess board will be represented by a list like this one:  \n```\n[[\".\",\"\
+  .\",\".\",\".\",\".\",\".\",\".\",\".\"],\n [\"p\",\"p\",\"p\",\"p\",\"p\",\"p\"\
+  ,\"p\",\"p\"],\n [\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"],\n [\".\",\"\
+  .\",\".\",\".\",\".\",\".\",\".\",\".\"],\n [\".\",\".\",\".\",\".\",\".\",\".\"\
+  ,\".\",\".\"],\n [\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"],\n [\"P\",\"\
+  P\",\"P\",\"P\",\"P\",\"P\",\"P\",\"P\"],\n [\".\",\".\",\".\",\".\",\".\",\".\"\
+  ,\".\",\".\"]]\n```\nHere is an example of the board with the squares labeled:\n\
+  ```\n[[\"a8\",\"b8\",\"c8\",\"d8\",\"e8\",\"f8\",\"g8\",\"h8\"],\n [\"a7\",\"b7\"\
+  ,\"c7\",\"d7\",\"e7\",\"f7\",\"g7\",\"h7\"],\n [\"a6\",\"b6\",\"c6\",\"d6\",\"e6\"\
+  ,\"f6\",\"g6\",\"h6\"],\n [\"a5\",\"b5\",\"c5\",\"d5\",\"e5\",\"f5\",\"g5\",\"h5\"\
+  ],\n [\"a4\",\"b4\",\"c4\",\"d4\",\"e4\",\"f4\",\"g4\",\"h4\"],\n [\"a3\",\"b3\"\
+  ,\"c3\",\"d3\",\"e3\",\"f3\",\"g3\",\"h3\"],\n [\"a2\",\"b2\",\"c2\",\"d2\",\"e2\"\
+  ,\"f2\",\"g2\",\"h2\"],\n [\"a1\",\"b1\",\"c1\",\"d1\",\"e1\",\"f1\",\"g1\",\"h1\"\
+  ]]\n```\nWhite pawns are represented by capital `'P'` while black pawns are lowercase\
+  \ `'p'`.  \n  \n      \nA few examples\n```\nIf the list/array of moves is: [\"\
+  c3\"]\n>>>\n[[\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"],\n [\"p\",\"p\",\"\
+  p\",\"p\",\"p\",\"p\",\"p\",\"p\"],\n [\".\",\".\",\".\",\".\",\".\",\".\",\".\"\
+  ,\".\"],\n [\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"],\n [\".\",\".\",\"\
+  .\",\".\",\".\",\".\",\".\",\".\"],\n [\".\",\".\",\"P\",\".\",\".\",\".\",\".\"\
+  ,\".\"],\n [\"P\",\"P\",\".\",\"P\",\"P\",\"P\",\"P\",\"P\"],\n [\".\",\".\",\"\
+  .\",\".\",\".\",\".\",\".\",\".\"]]\n```\nadd a few more moves,\n```\nIf the list/array\
+  \ of moves is: [\"d4\", \"d5\", \"f3\", \"c6\", \"f4\"]\n>>>\n[[\".\",\".\",\".\"\
+  ,\".\",\".\",\".\",\".\",\".\"],\n [\"p\",\"p\",\".\",\".\",\"p\",\"p\",\"p\",\"\
+  p\"],\n [\".\",\".\",\"p\",\".\",\".\",\".\",\".\",\".\"],\n [\".\",\".\",\".\"\
+  ,\"p\",\".\",\".\",\".\",\".\"],\n [\".\",\".\",\".\",\"P\",\".\",\"P\",\".\",\"\
+  .\"],\n [\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"],\n [\"P\",\"P\",\"P\"\
+  ,\".\",\"P\",\".\",\"P\",\"P\"],\n [\".\",\".\",\".\",\".\",\".\",\".\",\".\",\"\
+  .\"]]\n```\nnow to add a capture...\n```\nIf the list/array of moves is: [\"d4\"\
+  , \"d5\", \"f3\", \"c6\", \"f4\", \"c5\", \"dxc5\"]\n>>>\n[[\".\",\".\",\".\",\"\
+  .\",\".\",\".\",\".\",\".\"],\n [\"p\",\"p\",\".\",\".\",\"p\",\"p\",\"p\",\"p\"\
+  ],\n [\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"],\n [\".\",\".\",\"P\",\"\
+  p\",\".\",\".\",\".\",\".\"],\n [\".\",\".\",\".\",\".\",\".\",\"P\",\".\",\".\"\
+  ],\n [\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"],\n [\"P\",\"P\",\"P\",\"\
+  .\",\"P\",\".\",\"P\",\"P\"],\n [\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"\
+  ]]\n```\nIf an invalid move (a move is added that no pawn could perform, a capture\
+  \ where there is no piece, a move to a square where there is already a piece, etc.)\
+  \ is found in the list of moves, return '(move) is invalid'.\n```python\nIf the\
+  \ list/array of moves is: [\"e6\"]\n>>>\n\"e6 is invalid\"\n```\n\n```python\nIf\
+  \ the list/array of moves is: [\"e4\", \"d5\", \"exf5\"]\n>>>\n\"exf5 is invalid\"\
+  \n```\nThe list passed to `pawn_move_tracker / PawnMoveTracker.movePawns` will always\
+  \ be a list of strings in the form (regex pattern): `[a-h][1-8]` or `[a-h]x[a-h][1-8]`.\
+  \  \n\nNotes:\n\n* In the case of a capture, the first lowercase letter will always\
+  \ be adjacent to the second in the alphabet, a move like `axc5` will never be passed.\n\
+  * A pawn can move two spaces on its first move\n* There are no cases with the 'en-passant'\
+  \ rule."
+"vc-preamble": "import Imports.AllImports\n\ndef pawnMoveTracker (moves : List String)\
+  \ : List (List Char) := sorry\n\ntheorem empty_moves_initial_position (moves : List\
+  \ String) :\n  moves = [] →\n  let board := pawnMoveTracker moves\n  (board.length\
+  \ = 8 ∧\n   (∀ row ∈ board, row.length = 8) ∧\n   (∀ i, i < 8 → (board.get! 1).get!\
+  \ i = 'p') ∧\n   (∀ i, i < 8 → (board.get! 6).get! i = 'P')) := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countChar (c : Char) (l : List Char) : Nat :=\n  l.foldl (fun\
+  \ acc x => if x = c then acc + 1 else acc) 0\n"
+"vc-theorems": "theorem valid_moves_invariants (moves : List String) :\n  let board\
+  \ := pawnMoveTracker moves\n  (board.length = 8 ∧\n   (∀ row ∈ board, row.length\
+  \ = 8) ∧\n   let whitePawns := (board.foldl (fun acc row => acc + countChar 'P'\
+  \ row) 0)\n   let blackPawns := (board.foldl (fun acc row => acc + countChar 'p'\
+  \ row) 0)\n   0 ≤ whitePawns ∧ whitePawns ≤ 8 ∧\n   0 ≤ blackPawns ∧ blackPawns\
+  \ ≤ 8) := sorry\n\n\ntheorem valid_first_white_move (file : Char) (rank : Char)\
+  \ :\n  file ∈ ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] →\n  rank = '4' →\n  let\
+  \ move := String.mk [file, rank]\n  let board := pawnMoveTracker [move]\n  ((board.get!\
+  \ 6).get! (file.toNat - 'a'.toNat) = '.' ∧\n   (board.get! 4).get! (file.toNat -\
+  \ 'a'.toNat) = 'P') := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

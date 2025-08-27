@@ -1,0 +1,40 @@
+"vc-description": "Write a function to check whether an input string is a valid IPv4\
+  \ address or IPv6 address or neither.\n\n\n\nIPv4 addresses are canonically represented\
+  \ in dot-decimal notation, which consists of four decimal numbers, each ranging\
+  \ from 0 to 255, separated by dots (\".\"), e.g.,172.16.254.1;\n\n\n\nBesides, leading\
+  \ zeros in the IPv4 is invalid. For example, the address 172.16.254.01 is invalid.\n\
+  \n\n\nIPv6 addresses are represented as eight groups of four hexadecimal digits,\
+  \ each group representing 16 bits. The groups are separated by colons (\":\"). For\
+  \ example, the address 2001:0db8:85a3:0000:0000:8a2e:0370:7334 is a valid one. Also,\
+  \ we could omit some leading zeros among four hexadecimal digits and some low-case\
+  \ characters in the address to upper-case ones, so 2001:db8:85a3:0:0:8A2E:0370:7334\
+  \ is also a valid IPv6 address(Omit leading zeros and using upper cases).\n\n\n\n\
+  \nHowever, we don't replace a consecutive group of zero value with a single empty\
+  \ group using two consecutive colons (::) to pursue simplicity. For example, 2001:0db8:85a3::8A2E:0370:7334\
+  \ is an invalid IPv6 address.\n\n\n\nBesides, extra leading zeros in the IPv6 is\
+  \ also invalid. For example, the address 02001:0db8:85a3:0000:0000:8a2e:0370:7334\
+  \ is invalid.\n\n\n\nNote:\nYou may assume there is no extra space or special characters\
+  \ in the input string.\n\n\nExample 1:\n\nInput: \"172.16.254.1\"\n\nOutput: \"\
+  IPv4\"\n\nExplanation: This is a valid IPv4 address, return \"IPv4\".\n\n\n\n\n\
+  Example 2:\n\nInput: \"2001:0db8:85a3:0:0:8A2E:0370:7334\"\n\nOutput: \"IPv6\"\n\
+  \nExplanation: This is a valid IPv6 address, return \"IPv6\".\n\n\n\nExample 3:\n\
+  \nInput: \"256.256.256.256\"\n\nOutput: \"Neither\"\n\nExplanation: This is neither\
+  \ a IPv4 address nor a IPv6 address."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def validate_ip_address (ip: String) : String := sorry\n\ntheorem\
+  \ valid_ipv4_gives_ipv4_result\n  {ip: String}\n  (h_format: ∃ a b c d: Nat, \n\
+  \    a ≤ 255 ∧ b ≤ 255 ∧ c ≤ 255 ∧ d ≤ 255 ∧\n    ip = s!\"{a}.{b}.{c}.{d}\") :\n\
+  \  validate_ip_address ip = \"IPv4\" := sorry\n"
+"vc-theorems": "theorem neither_when_no_dots_or_colons  \n  {ip: String}\n  (h_no_delim:\
+  \ '.' ∉ ip.data ∧ ':' ∉ ip.data) :\n  validate_ip_address ip = \"Neither\" := sorry\n\
+  \n\ntheorem invalid_ipv4_when_nums_too_large\n  {ip: String}\n  (h_format: ∃ a b\
+  \ c d: Nat,\n    (a > 255 ∨ b > 255 ∨ c > 255 ∨ d > 255) ∧ \n    ip = s!\"{a}.{b}.{c}.{d}\"\
+  ) :\n  validate_ip_address ip = \"Neither\" := sorry\n\n\ntheorem invalid_ipv6_when_parts_too_long\n\
+  \  {ip: String}\n  (h_parts: ∃ parts: List String,\n    parts.length = 8 ∧\n   \
+  \ (∃ p ∈ parts, p.length > 4) ∧\n    ip = String.intercalate \":\" parts) :\n  validate_ip_address\
+  \ ip = \"Neither\" := sorry\n\n/--\ninfo: 'IPv4'\n-/\n#guard_msgs in\n#eval validate_ip_address\
+  \ \"172.16.254.1\"\n\n/--\ninfo: 'IPv6'\n-/\n#guard_msgs in\n#eval validate_ip_address\
+  \ \"2001:0db8:85a3:0:0:8A2E:0370:7334\"\n\n/--\ninfo: 'Neither'\n-/\n#guard_msgs\
+  \ in\n#eval validate_ip_address \"256.256.256.256\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

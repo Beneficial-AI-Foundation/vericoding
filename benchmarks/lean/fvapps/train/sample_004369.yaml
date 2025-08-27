@@ -1,0 +1,22 @@
+"vc-description": "##Task:\nYou have to write a function `add` which takes two binary\
+  \ numbers as strings and returns their sum as a string.\n\n##Note:\n* You are `not\
+  \ allowed to convert binary to decimal & vice versa`.\n* The sum should contain\
+  \ `No leading zeroes`.\n\n##Examples:\n```\nadd('111','10'); => '1001'\nadd('1101','101');\
+  \ => '10010'\nadd('1101','10111') => '100100'\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef add (a b : String) : String := sorry\n\
+  \ndef binary_to_int (s : String) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_valid_binary (s : String) : Bool := sorry\n\ntheorem strips_leading_zeros\
+  \ (binary : String) : \n  let result := add binary \"0\"\n  (result.startsWith \"\
+  0\" → result = \"0\") ∧ \n  binary_to_int result = binary_to_int binary := sorry\n"
+"vc-theorems": "theorem add_commutative (a b : String) :\n  add a b = add b a := sorry\n\
+  \n\ntheorem matches_integer_addition (a b : String) :\n  let result := add a b\n\
+  \  is_valid_binary result ∧\n  binary_to_int result = binary_to_int a + binary_to_int\
+  \ b := sorry\n\n\ntheorem identity (binary : String) :\n  binary_to_int (add binary\
+  \ \"0\") = binary_to_int binary := sorry\n\n\ntheorem empty_strings_zero :\n  add\
+  \ \"\" \"\" = \"0\" := sorry\n\n\ntheorem empty_string_one :\n  add \"\" \"1\" =\
+  \ \"1\" ∧ add \"1\" \"\" = \"1\" := sorry\n\n/--\ninfo: '1001'\n-/\n#guard_msgs\
+  \ in\n#eval add \"111\" \"10\"\n\n/--\ninfo: '10010'\n-/\n#guard_msgs in\n#eval\
+  \ add \"1101\" \"101\"\n\n/--\ninfo: '100100'\n-/\n#guard_msgs in\n#eval add \"\
+  1101\" \"10111\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,22 @@
+"vc-description": "Sort a linked list in O(n log n) time using constant space complexity.\n\
+  \nExample 1:\n\n\nInput: 4->2->1->3\nOutput: 1->2->3->4\n\n\nExample 2:\n\n\nInput:\
+  \ -1->5->3->4->0\nOutput: -1->0->3->4->5"
+"vc-preamble": "import Imports.AllImports\n\ndef arrayToLinkedList : List Int → ListNode\
+  \ := sorry\ndef linkedListToArray : ListNode → List Int := sorry "
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sortList : ListNode → ListNode := sorry\n\ndef isSorted : List\
+  \ Int → Bool\n  | [] => true\n  | [_] => true\n  | x :: y :: rest => x ≤ y && isSorted\
+  \ (y :: rest)\n"
+"vc-theorems": "theorem sort_maintains_elements (arr : List Int) :\n  ∃ perm : List\
+  \ Int, linkedListToArray (sortList (arrayToLinkedList arr)) = perm := sorry\n\n\n\
+  theorem sorted_result (arr : List Int) :\n  let result := linkedListToArray (sortList\
+  \ (arrayToLinkedList arr))\n  isSorted result := sorry\n\n\ntheorem length_preserved\
+  \ (arr : List Int) :\n  (linkedListToArray (sortList (arrayToLinkedList arr))).length\
+  \ = arr.length := sorry\n\n\ntheorem max_min_preserved (arr : List Int) (h : arr\
+  \ ≠ []) :\n  let result := linkedListToArray (sortList (arrayToLinkedList arr))\n\
+  \  let min := result[0]!\n  let max := result[result.length - 1]!\n  (∀ x ∈ arr,\
+  \ min ≤ x) ∧ (∀ x ∈ arr, x ≤ max) := sorry\n\n\ntheorem empty_list :\n  sortList\
+  \ ListNode.nil = ListNode.nil := sorry\n\n/--\ninfo: [1, 2, 3, 4]\n-/\n#guard_msgs\
+  \ in\n#eval linkedListToArray sortList(head1)\n\n/--\ninfo: [-1, 0, 3, 4, 5]\n-/\n\
+  #guard_msgs in\n#eval linkedListToArray sortList(head2)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

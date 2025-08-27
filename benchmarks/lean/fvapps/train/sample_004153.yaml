@@ -1,0 +1,25 @@
+"vc-description": "## Task\nIn this kata you'll be given a string of English digits\
+  \ \"collapsed\" together, like this:\n\n`zeronineoneoneeighttwoseventhreesixfourtwofive`\n\
+  \nYour task is to split the string back to digits:\n\n`zero nine one one eight two\
+  \ seven three six four two five`\n\n## Examples\n```\nthree -> three\neightsix ->\
+  \ eight six\nfivefourseven -> five four seven\nninethreesixthree -> nine three six\
+  \ three\nfivethreefivesixthreenineonesevenoneeight -> five three five six three\
+  \ nine one seven one eight\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef NUMBER_WORDS : List String := [\"\
+  zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"\
+  eight\", \"nine\"]\n\ndef uncollapse (s : String) : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSubstring (pattern : String) (s : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem uncollapse_random_combinations (numbers : List String)\n \
+  \ (h : numbers ≠ [] ∧ ∀ n ∈ numbers, n ∈ NUMBER_WORDS) :\n  uncollapse (String.join\
+  \ numbers) = String.join (List.intersperse \" \" numbers) :=\nsorry\n\n\ntheorem\
+  \ uncollapse_preserves_order (numbers : List String)\n  (h : numbers.length ≥ 2\
+  \ ∧ ∀ n ∈ numbers, n ∈ NUMBER_WORDS) :\n  (uncollapse (String.join numbers)).split\
+  \ (. == ' ') = numbers :=\nsorry\n\n\ntheorem uncollapse_single_number (num : String)\n\
+  \  (h : num ∈ NUMBER_WORDS) :\n  uncollapse num = num :=\nsorry\n\n\ntheorem uncollapse_invalid_input\
+  \ (s : String)\n  (h : ∀ word ∈ NUMBER_WORDS, isSubstring word s = false) :\n  uncollapse\
+  \ s = \"\" :=\nsorry\n\n/--\ninfo: 'three'\n-/\n#guard_msgs in\n#eval uncollapse\
+  \ \"three\"\n\n/--\ninfo: 'eight six'\n-/\n#guard_msgs in\n#eval uncollapse \"eightsix\"\
+  \n\n/--\ninfo: 'five four seven'\n-/\n#guard_msgs in\n#eval uncollapse \"fivefourseven\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,30 @@
+"vc-description": "For years you have been working hard in Santa's factory to manufacture\
+  \ gifts for kids in substandard work environments with no pay. You have finally\
+  \ managed to escape the factory and now you seek revenge. You are planning a heist\
+  \ with the Grinch to steal all the gifts which are locked in a safe. Since you have\
+  \ worked in the factory for so many years, you know how to crack the safe.\nThe\
+  \ passcode for the safe is an integer. This passcode keeps changing everyday, but\
+  \ you know a way to crack it. You will be given two numbers  A  and  B .\nPasscode\
+  \ is the number of  X  such that 0 ≤ X < B and\ngcd(A,B) = gcd(A+X,B).\nNote : gcd(A,B)\
+  \ is the greatest common divisor of A & B.\n\n-----Input-----\nThe first line contains\
+  \ the single integer T (1 ≤ T ≤ 50) — the number of test cases.\nNext T lines contain\
+  \ test cases per line. Each line contains two integers  A  &  B \n( 1 ≤ A < B ≤\
+  \ 1010 )\n\n-----Output-----\nPrint T integers, one for each Test case. For each\
+  \ test case print the appropriate passcode for that day.\n\n-----Sample Input-----\n\
+  3\n4 9\n5 10\n42 9999999967\n\n-----Output-----\n6\n1\n9999999966"
+"vc-preamble": "import Imports.AllImports\n\ndef phi (n : Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_passcode (a m : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem phi_positive (n : Nat) (h : n > 0) : phi n > 0 :=\n  sorry\n\
+  \n\ntheorem phi_upper_bound (n : Nat) : phi n ≤ n :=\n  sorry\n\n\ntheorem phi_one\
+  \ : phi 1 = 1 :=\n  sorry\n\n\ntheorem solve_passcode_positive (a m : Nat) (h₁ :\
+  \ a > 0) (h₂ : m > 0) : \n  solve_passcode a m > 0 :=\n  sorry\n\n\ntheorem solve_passcode_upper_bound\
+  \ (a m : Nat) (h₁ : a > 0) (h₂ : m > 0) :\n  solve_passcode a m ≤ m :=\n  sorry\n\
+  \n\ntheorem solve_passcode_one (a : Nat) (h : a > 0) :\n  solve_passcode a 1 = 1\
+  \ :=\n  sorry\n\n\ntheorem solve_passcode_coprime (a m : Nat) (h₁ : a > 0) (h₂ :\
+  \ m > 0) \n  (h₃ : Nat.gcd a m = 1) :\n  solve_passcode a m = phi m :=\n  sorry\n\
+  \n\ntheorem solve_passcode_gcd (a m : Nat) (h₁ : a > 0) (h₂ : m > 0) :\n  solve_passcode\
+  \ a m = phi (m / Nat.gcd a m) :=\n  sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n\
+  #eval solve_passcode 4 9\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_passcode\
+  \ 5 10\n\n/--\ninfo: 9999999966\n-/\n#guard_msgs in\n#eval solve_passcode 42 9999999967\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

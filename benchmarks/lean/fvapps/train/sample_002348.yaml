@@ -1,0 +1,29 @@
+"vc-description": "Given an array A of integers, return true if and only if it is\
+  \ a valid mountain array.\nRecall that A is a mountain array if and only if:\n\n\
+  A.length >= 3\nThere exists some i with 0 < i < A.length - 1 such that:\n      \
+  \  \nA[0] < A[1] < ... A[i-1] < A[i] \nA[i] > A[i+1] > ... > A[A.length - 1]\n\n\
+  \n\n\n\n \nExample 1:\nInput: [2,1]\nOutput: false\n\n\nExample 2:\nInput: [3,5,5]\n\
+  Output: false\n\n\nExample 3:\nInput: [0,3,2,1]\nOutput: true\n\n\n \nNote:\n\n\
+  0 <= A.length <= 10000\n0 <= A[i] <= 10000"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def valid_mountain_array (arr: List Int) : Bool := sorry\n\ntheorem\
+  \ too_short_array {arr : List Int} \n  (h : arr.length ≤ 2) : \n  valid_mountain_array\
+  \ arr = false := sorry\n"
+"vc-theorems": "theorem flat_array {arr : List Int} {n : Nat}\n  (h1 : arr.length\
+  \ = n)\n  (h2 : n ≥ 3) \n  (h3 : ∀ i j, i < n → j < n → arr.get! i = arr.get! j)\
+  \ :\n  valid_mountain_array arr = false := sorry\n\n\ntheorem strictly_increasing\
+  \ {arr : List Int} {n : Nat}\n  (h1 : arr.length = n)\n  (h2 : n ≥ 3)\n  (h3 : ∀\
+  \ i j, i < j → j < n → arr.get! i < arr.get! j) :\n  valid_mountain_array arr =\
+  \ false := sorry\n\n\ntheorem strictly_decreasing {arr : List Int} {n : Nat}\n \
+  \ (h1 : arr.length = n)\n  (h2 : n ≥ 3)  \n  (h3 : ∀ i j, i < j → j < n → arr.get!\
+  \ i > arr.get! j) :\n  valid_mountain_array arr = false := sorry\n\n\ntheorem valid_mountain\
+  \ {arr : List Int} {n peak_idx : Nat}\n  (h1 : arr.length = n)\n  (h2 : n ≥ 3)\n\
+  \  (h3 : peak_idx = n / 2)\n  (h4 : ∀ i j, i < j → j < peak_idx → arr.get! i < arr.get!\
+  \ j)\n  (h5 : ∀ i j, peak_idx < i → i < j → j < n → arr.get! i > arr.get! j)\n \
+  \ (h6 : ∀ i j, i ≠ j → i < n → j < n → arr.get! i ≠ arr.get! j) :\n  valid_mountain_array\
+  \ arr = true := sorry\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval valid_mountain_array\
+  \ [2, 1]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval valid_mountain_array [3,\
+  \ 5, 5]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval valid_mountain_array [0, 3,\
+  \ 2, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,18 @@
+"vc-description": "Consider an array that has no prime numbers, and none of its elements\
+  \ has any prime digit. It would start with: `[1,4,6,8,9,10,14,16,18,..]`. \n\n`12`\
+  \ and `15` are not in the list because `2` and `5` are primes.\n\nYou will be given\
+  \ an integer `n` and your task will be return the number at that index in the array.\
+  \ \nFor example:\n```\nsolve(0) = 1\nsolve(2) = 6\n``` \n\nMore examples in the\
+  \ test cases.\n\nGood luck!\n\nIf you like Prime Katas, you will enjoy this Kata:\
+  \ [Simple Prime Streaming](https://www.codewars.com/kata/5a908da30025e995880000e3)"
+"vc-preamble": "import Imports.AllImports\n\ndef solve (n : Nat) : Nat := sorry\n\n\
+  def is_composite (n : Nat) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isDigitIn (d : Char) (n : Nat) : Bool := sorry\n\ntheorem solve_positive\
+  \ (n : Nat) : \n  solve n > 0 := sorry\n\n\n\n\n"
+"vc-theorems": "theorem solve_monotonic {n : Nat} (h : n > 0) :\n  solve n > solve\
+  \ (n-1) := sorry\n\n\ntheorem solve_deterministic (n : Nat) :\n  solve n = solve\
+  \ n := sorry\n\n\ntheorem solve_zero :\n  solve 0 = 1 := sorry\n\n/--\ninfo: 1\n\
+  -/\n#guard_msgs in\n#eval solve 0\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval solve\
+  \ 2\n\n/--\ninfo: 44\n-/\n#guard_msgs in\n#eval solve 10\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

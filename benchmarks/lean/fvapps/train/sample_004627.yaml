@@ -1,0 +1,22 @@
+"vc-description": "The objective is to write a method that takes two integer parameters\
+  \ and returns a single integer equal to the number of 1s in the binary representation\
+  \ of the greatest common divisor of the parameters. \n\nTaken from Wikipedia:\n\"\
+  In mathematics, the greatest common divisor (gcd) of two or more integers, when\
+  \ at least one of them is not zero, is the largest positive integer that divides\
+  \ the numbers without a remainder. For example, the GCD of 8 and 12 is 4.\"\n\n\
+  For example: the greatest common divisor of 300 and 45 is 15. The binary representation\
+  \ of 15 is 1111, so the correct output would be 4.\n\nIf both parameters are 0,\
+  \ the method should return 0.\nThe function must be able to handle negative input."
+"vc-preamble": "import Imports.AllImports\n\ndef binary_gcd (x y : Int) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def popCount (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem binary_gcd_matches_gcd (x y : Int) :\n  binary_gcd x y = popCount\
+  \ (Int.gcd x y) :=\n  sorry\n\n\ntheorem binary_gcd_symmetric_same (n : Int) :\n\
+  \  binary_gcd n n = binary_gcd n (-n) :=\n  sorry\n\n\ntheorem binary_gcd_symmetric_zero\
+  \ (n : Int) :\n  binary_gcd n 0 = binary_gcd 0 n :=\n  sorry\n\n\ntheorem binary_gcd_positive_bounds\
+  \ (x y : Int) (hx : x > 0) (hy : y > 0) :\n  let result := binary_gcd x y\n  0 ≤\
+  \ result ∧ result ≤ max x.natAbs.log2 y.natAbs.log2 :=\n  sorry\n\n/--\ninfo: 4\n\
+  -/\n#guard_msgs in\n#eval binary_gcd 300 45\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
+  #eval binary_gcd 0 0\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval binary_gcd -8 12\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

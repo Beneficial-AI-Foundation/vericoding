@@ -1,0 +1,29 @@
+"vc-description": "You're going on a trip with some students and it's up to you to\
+  \ keep track of how much money each Student has. A student is defined like this:\n\
+  \n```python\nclass Student:\n    def __init__(self, name, fives, tens, twenties):\n\
+  \        self.name = name\n        self.fives = fives\n        self.tens = tens\n\
+  \        self.twenties = twenties\n```\n\nAs you can tell, each Student has some\
+  \ fives, tens, and twenties. Your job is to return the name of the student with\
+  \ the most money. If every student has the same amount, then return `\"all\"`.\n\
+  \nNotes:\n* Each student will have a unique name\n* There will always be a clear\
+  \ winner: either one person has the most, or everyone has the same amount\n* If\
+  \ there is only one student, then that student has the most money"
+"vc-preamble": "import Imports.AllImports\n\ndef total_money (s : Student) : Nat :=\n\
+  \  s.fives * 5 + s.tens * 10 + s.twenties * 20\n\n\ndef most_money (students : List\
+  \ Student) : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_max_student (students : List Student) : Student :=\n \
+  \ sorry\n"
+"vc-theorems": "theorem most_money_valid_result {students : List Student} (h : students\
+  \ ≠ []) :\n  let result := most_money students\n  (students.length = 1 → result\
+  \ = (students.head h).name) ∧\n  (students.length > 1 → result = \"all\" ∨ ∃ s ∈\
+  \ students, result = s.name) :=\nsorry\n\n\ntheorem all_equal_returns_all {students\
+  \ : List Student} (h1 : students ≠ []) \n  (h2 : ∀ s ∈ students, total_money s =\
+  \ total_money (students.head h1)) :\n  most_money students = \"all\" :=\nsorry\n\
+  \n\ntheorem highest_total_wins {students : List Student} (h : students ≠ []) :\n\
+  \  let result := most_money students\n  let max_student := find_max_student students\n\
+  \  result ≠ \"all\" → result = max_student.name :=\nsorry\n\n/--\ninfo: 'Phil'\n\
+  -/\n#guard_msgs in\n#eval most_money [phil]\n\n/--\ninfo: 'Phil'\n-/\n#guard_msgs\
+  \ in\n#eval most_money [cameron, geoff, phil]\n\n/--\ninfo: 'all'\n-/\n#guard_msgs\
+  \ in\n#eval most_money [andy, stephen, eric]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

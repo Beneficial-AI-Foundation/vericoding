@@ -1,0 +1,38 @@
+"vc-description": "The \"BerCorp\" company has got n employees. These employees can\
+  \ use m approved official languages for the formal correspondence. The languages\
+  \ are numbered with integers from 1 to m. For each employee we have the list of\
+  \ languages, which he knows. This list could be empty, i. e. an employee may know\
+  \ no official languages. But the employees are willing to learn any number of official\
+  \ languages, as long as the company pays their lessons. A study course in one language\
+  \ for one employee costs 1 berdollar.\n\nFind the minimum sum of money the company\
+  \ needs to spend so as any employee could correspond to any other one (their correspondence\
+  \ can be indirect, i. e. other employees can help out translating).\n\n\n-----Input-----\n\
+  \nThe first line contains two integers n and m (2 ≤ n, m ≤ 100) — the number of\
+  \ employees and the number of languages.\n\nThen n lines follow — each employee's\
+  \ language list. At the beginning of the i-th line is integer k_{i} (0 ≤ k_{i} ≤\
+  \ m) — the number of languages the i-th employee knows. Next, the i-th line contains\
+  \ k_{i} integers — a_{ij} (1 ≤ a_{ij} ≤ m) — the identifiers of languages the i-th\
+  \ employee knows. It is guaranteed that all the identifiers in one list are distinct.\
+  \ Note that an employee may know zero languages.\n\nThe numbers in the lines are\
+  \ separated by single spaces.\n\n\n-----Output-----\n\nPrint a single integer —\
+  \ the minimum amount of money to pay so that in the end every employee could write\
+  \ a letter to every other one (other employees can help out translating).\n\n\n\
+  -----Examples-----\nInput\n5 5\n1 2\n2 2 3\n2 3 4\n2 4 5\n1 5\n\nOutput\n0\n\nInput\n\
+  8 7\n0\n3 1 2 3\n1 1\n2 5 4\n2 6 7\n1 3\n2 7 4\n1 1\n\nOutput\n2\n\nInput\n2 2\n\
+  1 2\n0\n\nOutput\n1\n\n\n\n-----Note-----\n\nIn the second sample the employee 1\
+  \ can learn language 2, and employee 8 can learn language 4.\n\nIn the third sample\
+  \ employee 2 must learn language 2."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_cost_for_communication (n m : Nat) (lang_lists : List (List\
+  \ Nat)) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem all_same_language (n m : Nat) (lang_lists : List (List Nat))\n\
+  \  (h1 : n = 5 ∧ m = 1)\n  (h2 : lang_lists = [[1], [1], [1], [1], [1]]) :\n  min_cost_for_communication\
+  \ n m lang_lists = 0 := sorry\n\n\ntheorem disjoint_groups (n m : Nat) (lang_lists\
+  \ : List (List Nat))\n  (h1 : n = 4 ∧ m = 2) \n  (h2 : lang_lists = [[1], [1], [2],\
+  \ [2]]) :\n  min_cost_for_communication n m lang_lists = 1 := sorry\n\n/--\ninfo:\
+  \ 0\n-/\n#guard_msgs in\n#eval min_cost_for_communication 5 5 [[2], [2, 3], [3,\
+  \ 4], [4, 5], [5]]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_cost_for_communication\
+  \ 8 7 [[], [1, 2, 3], [1], [5, 4], [6, 7], [3], [7, 4], [1]]\n\n/--\ninfo: 1\n-/\n\
+  #guard_msgs in\n#eval min_cost_for_communication 2 2 [[2], []]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

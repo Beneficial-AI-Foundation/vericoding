@@ -1,0 +1,21 @@
+"vc-description": "In this simple exercise, you will create a program that will take\
+  \ two lists of integers, ```a``` and ```b```. Each list will consist of 3 positive\
+  \ integers above 0, representing the dimensions of cuboids ```a``` and ```b```.\
+  \ You must find the difference of the cuboids' volumes regardless of which is bigger.\n\
+  \nFor example, if the parameters passed are ```([2, 2, 3], [5, 4, 1])```, the volume\
+  \ of ```a``` is 12 and the volume of ```b``` is 20. Therefore, the function should\
+  \ return ```8```.\n\nYour function will be tested with pre-made examples as well\
+  \ as random ones.\n\n**If you can, try writing it in one line of code.**"
+"vc-preamble": "import Imports.AllImports\n\ndef find_difference (a b : List Nat)\
+  \ : Nat := sorry\n\ndef list_prod (l : List Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def abs (n : Nat) : Nat := \n  if n ≥ 0 then n else 0\n"
+"vc-theorems": "theorem find_difference_non_negative (a b : List Nat) (h₁ : a ≠ [])\
+  \ (h₂ : b ≠ []) :\n  find_difference a b ≥ 0 := sorry\n\n\ntheorem find_difference_symmetry\
+  \ (a b : List Nat) (h₁ : a ≠ []) (h₂ : b ≠ []) :\n  find_difference a b = find_difference\
+  \ b a := sorry\n\n\n\n\ntheorem find_difference_identity (a : List Nat) (h : a ≠\
+  \ []) :\n  find_difference a a = 0 := sorry\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n\
+  #eval find_difference [2, 2, 3] [5, 4, 1]\n\n/--\ninfo: 14\n-/\n#guard_msgs in\n\
+  #eval find_difference [3, 2, 5] [1, 4, 4]\n\n/--\ninfo: 106\n-/\n#guard_msgs in\n\
+  #eval find_difference [9, 7, 2] [5, 2, 2]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

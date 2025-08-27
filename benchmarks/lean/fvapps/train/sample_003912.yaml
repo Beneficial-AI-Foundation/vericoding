@@ -1,0 +1,17 @@
+"vc-description": "You would like to get the 'weight' of a name by getting the sum\
+  \ of the ascii values. However you believe that capital letters should be worth\
+  \ more than mere lowercase letters. Spaces, numbers, or any other character are\
+  \ worth 0.\n\nNormally in ascii\n\n    a has a value of 97\n    A has a value of\
+  \ 65\n    ' ' has a value of 32\n    0 has a value of 48\n\nTo find who has the\
+  \ 'weightier' name you will switch all the values so:\n\n    A will be 97\n    a\
+  \ will be 65\n    ' ' will be 0\n    0 will be 0\n    etc...\n\nFor example Joe\
+  \ will have a weight of 254, instead of 286 using normal ascii values."
+"vc-preamble": "import Imports.AllImports\n\ndef get_weight (s : String) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def swapcase (c : Char) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem get_weight_nonnegative (s : String) :\n  get_weight s ≥ 0\
+  \ :=\n  sorry\n\n/--\ninfo: 254\n-/\n#guard_msgs in\n#eval get_weight \"Joe\"\n\n\
+  /--\ninfo: 1275\n-/\n#guard_msgs in\n#eval get_weight \"George Washington\"\n\n\
+  /--\ninfo: 214\n-/\n#guard_msgs in\n#eval get_weight \"R2D2\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

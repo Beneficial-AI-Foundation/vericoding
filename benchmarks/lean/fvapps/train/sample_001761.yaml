@@ -1,0 +1,39 @@
+"vc-description": "Design a data structure that supports all following operations\
+  \ in average O(1) time.\n\n\n\ninsert(val): Inserts an item val to the set if not\
+  \ already present.\nremove(val): Removes an item val from the set if present.\n\
+  getRandom: Returns a random element from current set of elements. Each element must\
+  \ have the same probability of being returned.\n\n\n\nExample:\n\n// Init an empty\
+  \ set.\nRandomizedSet randomSet = new RandomizedSet();\n\n// Inserts 1 to the set.\
+  \ Returns true as 1 was inserted successfully.\nrandomSet.insert(1);\n\n// Returns\
+  \ false as 2 does not exist in the set.\nrandomSet.remove(2);\n\n// Inserts 2 to\
+  \ the set, returns true. Set now contains [1,2].\nrandomSet.insert(2);\n\n// getRandom\
+  \ should return either 1 or 2 randomly.\nrandomSet.getRandom();\n\n// Removes 1\
+  \ from the set, returns true. Set now contains [2].\nrandomSet.remove(1);\n\n//\
+  \ 2 was already in the set, so return false.\nrandomSet.insert(2);\n\n// Since 2\
+  \ is the only number in the set, getRandom always return 2.\nrandomSet.getRandom();"
+"vc-preamble": "import Imports.AllImports\n\ndef RandomizedSet.insert (rs : RandomizedSet)\
+  \ (x : Int) : Bool :=\n  sorry\n\n\ndef RandomizedSet.remove (rs : RandomizedSet)\
+  \ (x : Int) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def RandomizedSet.getRandom (rs : RandomizedSet) : Int :=\n  sorry\n"
+"vc-theorems": "theorem insert_sequence (nums : List Int) (h : List.Nodup nums) :\n\
+  \  let rs := RandomizedSet.mk [] []\n  let seen := []\n  ∀ x ∈ nums,\n    (RandomizedSet.insert\
+  \ rs x) = !(x ∈ seen) ∧ \n    rs.list.length = rs.dict.length ∧\n    rs.dict.length\
+  \ = seen.length ∧ \n    (∀ (val : Int) (idx : Fin rs.list.length), \n      (val,\
+  \ idx.val) ∈ rs.dict → rs.list.get idx = some val) :=\n  sorry\n\n\ntheorem remove_sequence\
+  \ (nums : List Int) (h1 : List.Nodup nums) (h2 : nums ≠ []) :\n  let rs := RandomizedSet.mk\
+  \ nums (List.map (fun x => (x, 0)) nums)\n  let current := nums \n  ∀ x ∈ nums,\n\
+  \    (RandomizedSet.remove rs x) = (x ∈ current) ∧\n    rs.list.length = rs.dict.length\
+  \ ∧ \n    rs.dict.length = current.length ∧\n    (∀ (val : Int) (idx : Fin rs.list.length),\n\
+  \      (val, idx.val) ∈ rs.dict → rs.list.get idx = some val) :=\n  sorry\n\n\n\
+  theorem get_random_validity (nums : List Int) (h1 : List.Nodup nums) (h2 : nums\
+  \ ≠ []) :\n  let rs := RandomizedSet.mk nums (List.map (fun x => (x, 0)) nums)\n\
+  \  let samples := List.replicate 100 (RandomizedSet.getRandom rs)\n  (∀ s, s ∈ samples\
+  \ → s ∈ nums) ∧\n  (nums.length > 1 → ∃ x y, x ∈ samples ∧ y ∈ samples ∧ x ≠ y)\
+  \ :=\n  sorry\n\n\ntheorem mixed_operations (ops : List (Bool × Int)) :\n  let rs\
+  \ := RandomizedSet.mk [] []\n  let current := []\n  ∀ op ∈ ops, match op with\n\
+  \    | (true, val) => \n      (RandomizedSet.insert rs val) = !(val ∈ current) ∧\n\
+  \      (current ≠ [] → RandomizedSet.getRandom rs ∈ current)\n    | (false, val)\
+  \ =>\n      (RandomizedSet.remove rs val) = (val ∈ current) ∧\n      (current ≠\
+  \ [] → RandomizedSet.getRandom rs ∈ current) :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,28 @@
+"vc-description": "###Instructions\n\nWrite a function that takes a negative or positive\
+  \ integer, which represents the number of minutes before (-) or after (+) Sunday\
+  \ midnight, and returns the current day of the week and the current time in 24hr\
+  \ format ('hh:mm') as a string. \n\n```python\nday_and_time(0)       should return\
+  \ 'Sunday 00:00'\nday_and_time(-3)      should return 'Saturday 23:57'\nday_and_time(45)\
+  \      should return 'Sunday 00:45'\nday_and_time(759)     should return 'Sunday\
+  \ 12:39'\nday_and_time(1236)    should return 'Sunday 20:36'\nday_and_time(1447)\
+  \    should return 'Monday 00:07'\nday_and_time(7832)    should return 'Friday 10:32'\n\
+  day_and_time(18876)   should return 'Saturday 02:36'\nday_and_time(259180)  should\
+  \ return 'Thursday 23:40' \nday_and_time(-349000) should return 'Tuesday 15:20'\n\
+  ```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def day_and_time (mins : Int) : String := sorry\n\n/-- For any\
+  \ integer minutes, the output matches expected day/time format -/"
+"vc-theorems": "theorem day_and_time_valid_format (mins : Int) : \n  let result :=\
+  \ day_and_time mins\n  let parts := result.splitOn \" \"\n  let day := parts[0]!\n\
+  \  let time := parts[1]!\n  let hours_mins := time.splitOn \":\"\n  let hours :=\
+  \ hours_mins[0]!.toInt!\n  let minutes := hours_mins[1]!.toInt!\n  parts.length\
+  \ = 2 ∧ \n  (day = \"Monday\" ∨ day = \"Tuesday\" ∨ day = \"Wednesday\" ∨ \n   day\
+  \ = \"Thursday\" ∨ day = \"Friday\" ∨ day = \"Saturday\" ∨ day = \"Sunday\") ∧\n\
+  \  0 ≤ hours ∧ hours ≤ 23 ∧\n  0 ≤ minutes ∧ minutes ≤ 59 := sorry\n\n/-- Output\
+  \ repeats on weekly cycle -/\n\ntheorem day_and_time_weekly_cycle (mins : Int) :\n\
+  \  day_and_time mins = day_and_time (mins + 7*24*60) := sorry\n\n/--\ninfo: 'Sunday\
+  \ 00:00'\n-/\n#guard_msgs in\n#eval day_and_time 0\n\n/--\ninfo: 'Saturday 23:57'\n\
+  -/\n#guard_msgs in\n#eval day_and_time -3\n\n/--\ninfo: 'Monday 00:07'\n-/\n#guard_msgs\
+  \ in\n#eval day_and_time 1447\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

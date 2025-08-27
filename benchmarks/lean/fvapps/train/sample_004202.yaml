@@ -1,0 +1,33 @@
+"vc-description": "Your task is to calculate logical value of boolean array. Test\
+  \ arrays are one-dimensional and their size is in the range 1-50.\n\nLinks referring\
+  \ to logical operations: [AND](https://en.wikipedia.org/wiki/Logical_conjunction),\
+  \ [OR](https://en.wikipedia.org/wiki/Logical_disjunction) and [XOR](https://en.wikipedia.org/wiki/Exclusive_or).\n\
+  \nYou should begin at the first value, and repeatedly apply the logical operation\
+  \ across the remaining elements in the array sequentially.\n\nFirst Example:\n\n\
+  Input: true, true, false, operator: AND\n\nSteps: true AND true -> true, true AND\
+  \ false -> false\n\nOutput: false\n\nSecond Example:\n\nInput: true, true, false,\
+  \ operator: OR\n\nSteps: true OR true -> true, true OR false -> true\n\nOutput:\
+  \ true\n\nThird Example:\n\nInput: true, true, false, operator: XOR\n\nSteps: true\
+  \ XOR true -> false, false XOR false -> false\n\nOutput: false\n___\n\nInput:\n\n\
+  boolean array, string with operator' s name: 'AND', 'OR', 'XOR'.\n\nOutput:\n\n\
+  calculated boolean"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def logical_calc (lst : List Bool) (op : String) : Bool := sorry\n\
+  \ndef isOdd (n : Nat) : Bool :=\n  n % 2 = 1\n"
+"vc-theorems": "theorem logical_calc_and {lst : List Bool} (h : lst.length > 0) :\n\
+  \  logical_calc lst \"AND\" = lst.all id := sorry\n\n\ntheorem logical_calc_or {lst\
+  \ : List Bool} (h : lst.length > 0) :\n  logical_calc lst \"OR\" = lst.any id :=\
+  \ sorry\n\n\ntheorem logical_calc_xor {lst : List Bool} (h : lst.length > 0) :\n\
+  \  logical_calc lst \"XOR\" = isOdd (lst.filter id).length := sorry\n\n\ntheorem\
+  \ logical_calc_invalid_op {lst : List Bool} (op : String) (h : op ≠ \"AND\" ∧ op\
+  \ ≠ \"OR\" ∧ op ≠ \"XOR\") :\n  logical_calc lst op = false := sorry\n\n\ntheorem\
+  \ logical_calc_associative {lst : List Bool} (op : String)\n    (h1 : lst.length\
+  \ > 1)\n    (h2 : op = \"AND\" ∨ op = \"OR\" ∨ op = \"XOR\") :\n  let mid := lst.length\
+  \ / 2\n  let left := logical_calc (lst.take mid) op\n  let right := logical_calc\
+  \ (lst.drop mid) op\n  logical_calc [left, right] op = logical_calc lst op := sorry\n\
+  \n/--\ninfo: False\n-/\n#guard_msgs in\n#eval logical_calc [True, True, False] \"\
+  AND\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval logical_calc [True, True, False]\
+  \ \"OR\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval logical_calc [True, True,\
+  \ False] \"XOR\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

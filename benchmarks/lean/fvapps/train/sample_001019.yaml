@@ -1,0 +1,44 @@
+"vc-description": "Lira is now very keen on compiler development. :) \nShe knows that\
+  \ one of the most important components of a compiler, is its parser.\nA parser is,\
+  \ in simple terms, a software component that processes text, and checks it's semantic\
+  \ correctness, or, if you prefer, if the text is properly built.\nAs an example,\
+  \ in declaring and initializing an integer, in C/C++, you can't do something like:\n\
+  int = x ;4\nas the semantics of such statement is incorrect, as we all know that\
+  \ the datatype must precede an identifier and only afterwards should come the equal\
+  \ sign and the initialization value, so, the corrected statement should be:\nint\
+  \ x = 4;\nToday, Lira is concerned with an abstract instruction which is composed\
+  \ of the characters \"<\" and \">\" , which she will use on the design of her language,\
+  \ L++ :D.\nShe is using it as an abstraction for generating XML code Tags in an\
+  \ easier fashion and she understood that, for an expression to be valid, a \"<\"\
+  \ symbol must always have a corresponding \">\" character somewhere (not necessary\
+  \ immediately) after it. Moreover, each \">\" symbol should correspond to exactly\
+  \ one \"<\" symbol.\nSo, for instance, the instructions:\n<<>> \n<> \n<><> \nare\
+  \ all valid. While:\n>> \n><>< \nare not.\nGiven some expressions which represent\
+  \ some instructions to be analyzed by Lira's compiler, you should tell the length\
+  \ of the longest prefix of each of these expressions that is valid, or 0 if there's\
+  \ no such a prefix.\n\n-----Input-----\nInput will consist of an integer T denoting\
+  \ the number of test cases to follow.\nThen, T strings follow, each on a single\
+  \ line, representing a possible expression in L++.\n\n-----Output-----\nFor each\
+  \ expression you should output the length of the longest prefix that is valid or\
+  \ 0 if there's no such a prefix. \n\n\n-----Constraints-----\n- 1 ≤ T ≤ 500\n- 1\
+  \ ≤ The length of a single expression ≤ 106\n- The total size all the input expressions\
+  \ is no more than 5*106\n\n-----Example-----\nInput:\n3\n<<>>\n><\n<>>>\nOutput:\n\
+  4\n0\n2"
+"vc-preamble": "import Imports.AllImports\n\ndef longestValidPrefix (s : String) :\
+  \ Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isValid (s : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem result_non_negative (s : String) : \n  longestValidPrefix\
+  \ s ≥ 0 := sorry\n\n\ntheorem result_not_exceed_length (s : String) : \n  longestValidPrefix\
+  \ s ≤ String.length s := sorry\n\n\ntheorem result_is_even (s : String) :\n  longestValidPrefix\
+  \ s % 2 = 0 := sorry\n\n\ntheorem next_char_makes_invalid (s : String) : \n  longestValidPrefix\
+  \ s < String.length s →\n  let withNext := s.take (longestValidPrefix s + 1)\n \
+  \ ¬isValid withNext := sorry\n\n\ntheorem perfect_pairs_full_length (n : Nat) :\
+  \ \n  let s := String.mk (List.append (List.replicate n '<') (List.replicate n '>'))\n\
+  \  longestValidPrefix s = 2 * n := sorry\n\n\ntheorem empty_string_zero : \n  longestValidPrefix\
+  \ \"\" = 0 := sorry\n\n\ntheorem single_right_zero :\n  longestValidPrefix \">\"\
+  \ = 0 := sorry\n\n\ntheorem single_left_zero :\n  longestValidPrefix \"<\" = 0 :=\
+  \ sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval longest_valid_prefix \"<<>>\"\
+  \n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval longest_valid_prefix \"><\"\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval longest_valid_prefix \"<>>>\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

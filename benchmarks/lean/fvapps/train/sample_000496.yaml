@@ -1,0 +1,25 @@
+"vc-description": "Given a sorted array consisting of only integers where every element\
+  \ appears twice except for one element which appears once. Find this single element\
+  \ that appears only once. \n\n\nExample 1:\n\nInput: [1,1,2,3,3,4,4,8,8]\nOutput:\
+  \ 2\n\n\n\nExample 2:\n\nInput: [3,3,7,7,10,11,11]\nOutput: 10\n\n\n\nNote:\nYour\
+  \ solution should run in O(log n) time and O(1) space."
+"vc-preamble": "import Imports.AllImports\n\ndef find_single_element (arr : List Int)\
+  \ : Int :=\n  sorry\n\n\ndef is_valid_input (arr : List Int) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_duplicate (x : Int) : List Int := [x, x]\n\ntheorem find_single_element_sorted\
+  \ {nums : List Int} \n  (h₁ : nums.length ≥ 2)\n  (h₂ : ∀ i, i + 1 < nums.length\
+  \ → nums[i]! ≤ nums[i+1]!)\n  (h₃ : ∀ x ∈ nums, x ≥ -1000 ∧ x ≤ 1000) :\n  let doubles\
+  \ := (nums.take (nums.length - 1)).map list_duplicate |>.join\n  let last := nums[nums.length\
+  \ - 1]!\n  let result := doubles ++ [last]\n  find_single_element result = last\
+  \ := \n  sorry\n"
+"vc-theorems": "theorem find_single_element_position {nums : List Int} \n  (h₁ : nums.length\
+  \ > 0)\n  (h₂ : nums.length ≤ 9)\n  (h₃ : ∀ i, i + 1 < nums.length → nums[i]! ≤\
+  \ nums[i+1]!)\n  (h₄ : ∀ x ∈ nums, x ≥ -1000 ∧ x ≤ 1000)\n  (i : Nat)\n  (h₅ : i\
+  \ < nums.length) :\n  let before := (nums.take i).map list_duplicate |>.join\n \
+  \ let single := [nums[i]'h₅]\n  let after := (nums.drop (i+1)).map list_duplicate\
+  \ |>.join\n  let result := before ++ single ++ after\n  is_valid_input result →\n\
+  \  find_single_element result = nums[i]'h₅ :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval find_single_element [1, 1, 2, 3, 3, 4, 4, 8, 8]\n\n/--\ninfo: 10\n-/\n\
+  #guard_msgs in\n#eval find_single_element [3, 3, 7, 7, 10, 11, 11]\n\n/--\ninfo:\
+  \ 3\n-/\n#guard_msgs in\n#eval find_single_element [1, 1, 2, 2, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

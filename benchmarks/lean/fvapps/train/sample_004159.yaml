@@ -1,0 +1,31 @@
+"vc-description": "In this kata, you will make a function that converts between `camelCase`,\
+  \ `snake_case`, and `kebab-case`.\n\nYou must write a function that changes to a\
+  \ given case. It must be able to handle all three case types:\n\n```python\npy>\
+  \ change_case(\"snakeCase\", \"snake\")\n\"snake_case\"\npy> change_case(\"some-lisp-name\"\
+  , \"camel\")\n\"someLispName\"\npy> change_case(\"map_to_all\", \"kebab\")\n\"map-to-all\"\
+  \npy> change_case(\"doHTMLRequest\", \"kebab\")\n\"do-h-t-m-l-request\"\npy> change_case(\"\
+  invalid-inPut_bad\", \"kebab\")\nNone\npy> change_case(\"valid-input\", \"huh???\"\
+  )\nNone\npy> change_case(\"\", \"camel\")\n\"\"\n```\n\nYour function must deal\
+  \ with invalid input as shown, though it will only be passed strings. Furthermore,\
+  \ all valid identifiers will be lowercase except when necessary, in other words\
+  \ on word boundaries in `camelCase`.\n\n_**(Any translations would be greatly appreciated!)**_"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def change_case (s : String) (target : String) : Option String\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem mixed_formats_returns_none (s : String) :\n  (s.contains '_'\
+  \ && s.contains '-') ∨ \n  (s.contains '_' && s ≠ s.toLower) ∨\n  (s.contains '-'\
+  \ && s ≠ s.toLower) →\n  change_case s \"snake\" = none ∧ \n  change_case s \"kebab\"\
+  \ = none ∧\n  change_case s \"camel\" = none :=\n  sorry\n\n\ntheorem invalid_target_returns_none\
+  \ (s target : String) :\n  target ≠ \"snake\" ∧ target ≠ \"kebab\" ∧ target ≠ \"\
+  camel\" →\n  change_case s target = none :=\n  sorry\n\n\ntheorem single_word_unchanged\
+  \ (s : String) :\n  s.all (fun c => c.isLower) →\n  change_case s \"snake\" = some\
+  \ s ∧\n  change_case s \"kebab\" = some s ∧\n  change_case s \"camel\" = some s\
+  \ :=\n  sorry\n\n\ntheorem empty_string (target : String) :\n  (target = \"snake\"\
+  \ ∨ target = \"kebab\" ∨ target = \"camel\") →\n  change_case \"\" target = some\
+  \ \"\" :=\n  sorry\n\n/--\ninfo: 'snake_case'\n-/\n#guard_msgs in\n#eval change_case\
+  \ \"snakeCase\" \"snake\"\n\n/--\ninfo: 'someLispName'\n-/\n#guard_msgs in\n#eval\
+  \ change_case \"some-lisp-name\" \"camel\"\n\n/--\ninfo: 'map-to-all'\n-/\n#guard_msgs\
+  \ in\n#eval change_case \"map_to_all\" \"kebab\"\n\n/--\ninfo: ''\n-/\n#guard_msgs\
+  \ in\n#eval change_case \"\" \"camel\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

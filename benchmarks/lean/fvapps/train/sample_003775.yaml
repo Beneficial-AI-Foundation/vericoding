@@ -1,0 +1,23 @@
+"vc-description": "You have two arrays in this kata, every array contain only unique\
+  \ elements. Your task is to calculate number of elements in first array which also\
+  \ are in second array."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def match_arrays (arr1 : List α) (arr2 : List α) [DecidableEq α]\
+  \ : Nat :=\nsorry\n"
+"vc-theorems": "theorem match_arrays_range {α : Type} [DecidableEq α] (arr1 arr2 :\
+  \ List α) :\n  0 ≤ match_arrays arr1 arr2 ∧ match_arrays arr1 arr2 ≤ arr1.length\
+  \ :=\nsorry\n\n\ntheorem match_arrays_counts_common {α : Type} [DecidableEq α] (arr1\
+  \ arr2 : List α) :\n  match_arrays arr1 arr2 = (arr1.filter (fun x => arr2.contains\
+  \ x)).length :=\nsorry\n\n\ntheorem match_arrays_order_invariant {α : Type} [DecidableEq\
+  \ α] (arr1 arr2 : List α) :\n  match_arrays arr1 arr2 = match_arrays arr1.reverse\
+  \ arr2.reverse :=\nsorry\n\n\ntheorem match_arrays_empty_right {α : Type} [DecidableEq\
+  \ α] (arr1 : List α) :\n  match_arrays arr1 [] = 0 :=\nsorry\n\n\ntheorem match_arrays_empty_left\
+  \ {α : Type} [DecidableEq α] (arr2 : List α) :\n  match_arrays [] arr2 = 0 :=\n\
+  sorry\n\n\ntheorem match_arrays_self {α : Type} [DecidableEq α] (arr : List α) :\n\
+  \  match_arrays arr arr = arr.length :=\nsorry\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval match_arrays [\"Perl\", \"Closure\", \"JavaScript\"] [\"Go\", \"C++\"\
+  , \"Erlang\"]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval match_arrays [\"Erlang\"\
+  , \"JavaScript\"] [\"Go\", \"C++\", \"Python\"]\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval match_arrays [True, 3, 9, 11, 15] [True, 3, 11]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

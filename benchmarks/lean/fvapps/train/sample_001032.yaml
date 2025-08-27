@@ -1,0 +1,38 @@
+"vc-description": "Chefland is a grid with N$N$ rows and M$M$ columns. Each cell of\
+  \ this grid is either empty or contains a house. The distance between a pair of\
+  \ houses is the Manhattan distance between the cells containing them.\nFor each\
+  \ d$d$ between 1$1$ and N+M−2$N+M-2$ inclusive, Chef wants to calculate the number\
+  \ of unordered pairs of distinct houses with distance equal to d$d$. Please help\
+  \ him!\n\n-----Input-----\n- The first line of the input contains a single integer\
+  \ T$T$ denoting the number of test cases. The description of T$T$ test cases follows.\n\
+  - The first line of each test case contains two space-separated integers N$N$ and\
+  \ M$M$.\n- N$N$ lines follow. For each i$i$ (1≤i≤N$1 \\le i \\le N$), the i$i$-th\
+  \ of these lines contains a binary string with length M$M$; for each j$j$ (1≤j≤M$1\
+  \ \\le j \\le M$), the j$j$-th character of this string is '1' if the cell in the\
+  \ i$i$-th row and j$j$-th column contains a house or '0' if it is empty.\n\n-----Output-----\n\
+  For each test case, print a single line containing N+M−2$N+M-2$ space-separated\
+  \ integers. For each valid i$i$, the i$i$-th integer should denote the number of\
+  \ pairs with distance i$i$.\n\n-----Constraints-----\n- 1≤T≤3$1 \\le T \\le 3$\n\
+  - 2≤N,M≤300$2 \\le N, M \\le 300$\n\n-----Subtasks-----\nSubtask #1 (50 points):\
+  \ N,M≤50$N, M \\le 50$\nSubtask #2 (50 points): original constraints\n\n-----Example\
+  \ Input-----\n1\n3 4\n0011\n0000\n0100\n\n-----Example Output-----\n1 0 1 1 0"
+"vc-preamble": "import Imports.AllImports\n\ndef make_grid (n m : Nat) (house_coords\
+  \ : List (Nat × Nat)) : List String := sorry\n\ndef solve_house_distances (n m :\
+  \ Nat) (grid : List String) : List Nat := sorry\n\n\ndef sum_list : List Nat → Nat\
+  \ \n  | [] => 0\n  | (x::xs) => x + sum_list xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_get (xs : List Nat) (i : Nat) : Option Nat :=\n  match\
+  \ xs, i with\n  | [], _ => none \n  | (x::_), 0 => some x\n  | (_::xs), n+1 => list_get\
+  \ xs n\n"
+"vc-theorems": "theorem house_distances_properties\n  (n m : Nat) (coords : List (Nat\
+  \ × Nat))\n  (h_n : n > 0) (h_m : m > 0)\n  (h_coords : coords.length ≥ 2)\n  (h_valid\
+  \ : ∀ (p : Nat × Nat), p ∈ coords → p.1 < n ∧ p.2 < m)\n  (h_unique : ∀ (p q : Nat\
+  \ × Nat), p ∈ coords → q ∈ coords → p = q ∨ p ≠ q) :\n  let result := solve_house_distances\
+  \ n m (make_grid n m coords);\n  let num_pairs := (coords.length * (coords.length\
+  \ - 1)) / 2;\n  result.length = n + m - 2 ∧ \n  (∀ x ∈ result, x ≥ 0) ∧\n  sum_list\
+  \ result = num_pairs ∧\n  (sum_list result > 0 →\n   ∀ i x, i < result.length →\
+  \ list_get result i = some x → x > 0 → i + 1 ≥ 1) := sorry\n\n\ntheorem minimal_case\n\
+  \  (n m : Nat) \n  (h_n : n ≥ 2) (h_m : m ≥ 2) :\n  let corner_houses := [(0,0),\
+  \ (n-1,m-1)];\n  let result := solve_house_distances n m (make_grid n m corner_houses);\n\
+  \  list_get result (n+m-3) = some 1 ∧\n  sum_list result = 1 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,43 @@
+"vc-description": "Rudolf is on his way to the castle. Before getting into the castle,\
+  \ the security staff asked him a question:\n\nGiven two binary numbers $a$ and $b$\
+  \ of length $n$. How many different ways of swapping two digits in $a$ (only in\
+  \ $a$, not $b$) so that bitwise OR of these two numbers will be changed? In other\
+  \ words, let $c$ be the bitwise OR of $a$ and $b$, you need to find the number of\
+  \ ways of swapping two bits in $a$ so that bitwise OR will not be equal to $c$.\n\
+  \nNote that binary numbers can contain leading zeros so that length of each number\
+  \ is exactly $n$.\n\nBitwise OR is a binary operation. A result is a binary number\
+  \ which contains a one in each digit if there is a one in at least one of the two\
+  \ numbers. For example, $01010_2$ OR $10011_2$ = $11011_2$.\n\nWell, to your surprise,\
+  \ you are not Rudolf, and you don't need to help him$\\ldots$ You are the security\
+  \ staff! Please find the number of ways of swapping two bits in $a$ so that bitwise\
+  \ OR will be changed.\n\n\n-----Input-----\n\nThe first line contains one integer\
+  \ $n$ ($2\\leq n\\leq 10^5$) — the number of bits in each number.\n\nThe second\
+  \ line contains a binary number $a$ of length $n$.\n\nThe third line contains a\
+  \ binary number $b$ of length $n$.\n\n\n-----Output-----\n\nPrint the number of\
+  \ ways to swap two bits in $a$ so that bitwise OR will be changed.\n\n\n-----Examples-----\n\
+  Input\n5\n01011\n11001\n\nOutput\n4\n\nInput\n6\n011000\n010011\n\nOutput\n6\n\n\
+  \n\n-----Note-----\n\nIn the first sample, you can swap bits that have indexes $(1,\
+  \ 4)$, $(2, 3)$, $(3, 4)$, and $(3, 5)$.\n\nIn the second example, you can swap\
+  \ bits that have indexes $(1, 2)$, $(1, 3)$, $(2, 4)$, $(3, 4)$, $(3, 5)$, and $(3,\
+  \ 6)$."
+"vc-preamble": "import Imports.AllImports\n\ndef countValidBitSwaps (n : Nat) (a :\
+  \ String) (b : String) : Nat :=\n  sorry\n\n\ndef stringRepeat (s : String) (n :\
+  \ Nat) : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def makeAlternatingString (n : Nat) (startBit : String) : String\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem countValidBitSwaps_returns_natural (n : Nat) (a : String)\
+  \ (b : String)\n  (h1 : a.length = n) (h2 : b.length = n) :\n  ∃ (m : Nat), countValidBitSwaps\
+  \ n a b = m := by sorry\n\n\ntheorem countValidBitSwaps_nonnegative (n : Nat) (a\
+  \ : String) (b : String)\n  (h1 : a.length = n) (h2 : b.length = n) :\n  countValidBitSwaps\
+  \ n a b ≥ 0 := by sorry\n\n\ntheorem countValidBitSwaps_all_zeros (n : Nat) :\n\
+  \  countValidBitSwaps n (stringRepeat \"0\" n) (stringRepeat \"0\" n) = 0 := by\
+  \ sorry\n\n\ntheorem countValidBitSwaps_all_ones (n : Nat) :\n  countValidBitSwaps\
+  \ n (stringRepeat \"1\" n) (stringRepeat \"1\" n) = 0 := by sorry\n\n\ntheorem countValidBitSwaps_alternating\
+  \ (n : Nat) :\n  let alt1 := makeAlternatingString n \"0\"\n  let alt2 := makeAlternatingString\
+  \ n \"1\"\n  ∃ (m : Nat), countValidBitSwaps n alt1 alt2 = m := by sorry\n\n/--\n\
+  info: 4\n-/\n#guard_msgs in\n#eval count_valid_bit_swaps 5 \"01011\" \"11001\"\n\
+  \n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval count_valid_bit_swaps 6 \"011000\" \"\
+  010011\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval count_valid_bit_swaps 2 \"00\"\
+  \ \"00\"\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

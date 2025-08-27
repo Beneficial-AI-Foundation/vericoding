@@ -1,0 +1,28 @@
+"vc-description": "You are given two strings s and t of the same length. You want\
+  \ to change s to t. Changing the i-th character of s to i-th character of t costs\
+  \ |s[i] - t[i]| that is, the absolute difference between the ASCII values of the\
+  \ characters.\nYou are also given an integer maxCost.\nReturn the maximum length\
+  \ of a substring of s that can be changed to be the same as the corresponding substring\
+  \ of twith a cost less than or equal to maxCost.\nIf there is no substring from s\
+  \ that can be changed to its corresponding substring from t, return 0.\n \nExample\
+  \ 1:\nInput: s = \"abcd\", t = \"bcdf\", maxCost = 3\nOutput: 3\nExplanation: \"\
+  abc\" of s can change to \"bcd\". That costs 3, so the maximum length is 3.\nExample\
+  \ 2:\nInput: s = \"abcd\", t = \"cdef\", maxCost = 3\nOutput: 1\nExplanation: Each\
+  \ character in s costs 2 to change to charactor in t, so the maximum length is 1.\n\
+  \nExample 3:\nInput: s = \"abcd\", t = \"acde\", maxCost = 0\nOutput: 1\nExplanation:\
+  \ You can't make any change, so the maximum length is 1.\n\n \nConstraints:\n\n\
+  1 <= s.length, t.length <= 10^5\n0 <= maxCost <= 10^6\ns and t only contain lower\
+  \ case English letters."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def equal_substring (s t : String) (max_cost : Nat) : Nat := sorry\n\
+  \ntheorem equal_substring_bounds {s t : String} {max_cost : Nat} \n  (h : s.length\
+  \ = t.length) :\n  0 ≤ equal_substring s t max_cost ∧ equal_substring s t max_cost\
+  \ ≤ s.length :=\nsorry\n"
+"vc-theorems": "theorem equal_substring_monotone {s t : String} {max_cost : Nat} \n\
+  \  (h : s.length = t.length) (h_pos : max_cost > 0) :\n  equal_substring s t (max_cost\
+  \ - 1) ≤ equal_substring s t max_cost :=\nsorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval equal_substring \"abcd\" \"bcdf\" 3\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval equal_substring \"abcd\" \"cdef\" 3\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval equal_substring \"abcd\" \"acde\" 0\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

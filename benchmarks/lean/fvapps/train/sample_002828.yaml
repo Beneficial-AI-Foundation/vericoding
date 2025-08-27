@@ -1,0 +1,25 @@
+"vc-description": "Your task is to write function which takes string and list of delimiters\
+  \ as an input and returns list of strings/characters after splitting given string.\n\
+  \nExample:\n```python\nmultiple_split('Hi, how are you?', [' ']) => ['Hi,', 'how',\
+  \ 'are', 'you?']\nmultiple_split('1+2-3', ['+', '-']) => ['1', '2', '3']\n```\n\n\
+  List of delimiters is optional and can be empty, so take that into account.\n\n\
+  Important note: Result cannot contain empty string."
+"vc-preamble": "import Imports.AllImports\n\ndef multiple_split (s : String) (delims\
+  \ : List String) : List String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def containsString (s : String) (sub : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem multiple_split_nonempty_parts\n  (s : String) (delims : List\
+  \ String)\n  : ∀ (x : String), x ∈ multiple_split s delims → x.length > 0\n  :=\
+  \ by sorry\n\n\ntheorem multiple_split_no_delims_in_result\n  (s : String) (delims\
+  \ : List String)\n  : ∀ (x : String) (d : String), \n    x ∈ multiple_split s delims\
+  \ → \n    d ∈ delims → \n    ¬ containsString x d\n  := by sorry\n\n\ntheorem multiple_split_empty_string\n\
+  \  (delims : List String)\n  : multiple_split \"\" delims = []\n  := by sorry\n\n\
+  \ntheorem multiple_split_empty_delims\n  (s : String)\n  : multiple_split s [] =\
+  \ if s = \"\" then [] else [s]\n  := by sorry\n\n\ntheorem multiple_split_single_delim\n\
+  \  (s : String) (delim : String)\n  (h : delim.length > 0)\n  : multiple_split s\
+  \ [delim] = (s.split (· == '.')).filter (fun x => x ≠ \"\") -- placeholder split\n\
+  \  := by sorry\n\n/--\ninfo: ['Hi', 'everybody']\n-/\n#guard_msgs in\n#eval multiple_split\
+  \ \"Hi everybody!\" [\" \", \"!\"]\n\n/--\ninfo: ['1', '2', '3']\n-/\n#guard_msgs\
+  \ in\n#eval multiple_split \"1+2-3\" [\"+\", \"-\"]\n\n/--\ninfo: []\n-/\n#guard_msgs\
+  \ in\n#eval multiple_split \"\" []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

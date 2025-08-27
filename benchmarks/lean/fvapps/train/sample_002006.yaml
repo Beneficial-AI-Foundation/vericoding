@@ -1,0 +1,51 @@
+"vc-description": "You are given a sequence a_1, a_2, ..., a_{n} consisting of different\
+  \ integers. It is required to split this sequence into the maximum number of subsequences\
+  \ such that after sorting integers in each of them in increasing order, the total\
+  \ sequence also will be sorted in increasing order.\n\nSorting integers in a subsequence\
+  \ is a process such that the numbers included in a subsequence are ordered in increasing\
+  \ order, and the numbers which are not included in a subsequence don't change their\
+  \ places.\n\nEvery element of the sequence must appear in exactly one subsequence.\n\
+  \n\n-----Input-----\n\nThe first line of input data contains integer n (1 ≤ n ≤\
+  \ 10^5) — the length of the sequence.\n\nThe second line of input data contains\
+  \ n different integers a_1, a_2, ..., a_{n} ( - 10^9 ≤ a_{i} ≤ 10^9) — the elements\
+  \ of the sequence. It is guaranteed that all elements of the sequence are distinct.\n\
+  \n\n-----Output-----\n\nIn the first line print the maximum number of subsequences\
+  \ k, which the original sequence can be split into while fulfilling the requirements.\n\
+  \nIn the next k lines print the description of subsequences in the following format:\
+  \ the number of elements in subsequence c_{i} (0 < c_{i} ≤ n), then c_{i} integers\
+  \ l_1, l_2, ..., l_{c}_{i} (1 ≤ l_{j} ≤ n) — indices of these elements in the original\
+  \ sequence. \n\nIndices could be printed in any order. Every index from 1 to n must\
+  \ appear in output exactly once.\n\nIf there are several possible answers, print\
+  \ any of them.\n\n\n-----Examples-----\nInput\n6\n3 2 1 6 5 4\n\nOutput\n4\n2 1\
+  \ 3\n1 2\n2 4 6\n1 5\n\nInput\n6\n83 -75 -49 11 37 62\n\nOutput\n1\n6 1 2 3 4 5\
+  \ 6\n\n\n\n-----Note-----\n\nIn the first sample output:\n\nAfter sorting the first\
+  \ subsequence we will get sequence 1 2 3 6 5 4.\n\nSorting the second subsequence\
+  \ changes nothing.\n\nAfter sorting the third subsequence we will get sequence 1 2 3 4 5 6.\n\
+  \nSorting the last subsequence changes nothing."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum (xs : List Nat) : Nat :=\
+  \ \n  sorry\n\n\ndef max_subsequences (n : Nat) (arr : List Int) : List (List Nat)\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_valid_result (n : Nat) (result : List (List Nat)) : Bool\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem max_subsequences_valid {n : Nat} {arr : List Int} \n  (h1\
+  \ : n > 0) \n  (h2 : n = arr.length)\n  (h3 : ∀ x ∈ arr, -1000 ≤ x ∧ x ≤ 1000)\n\
+  \  (h4 : ∀ (i : Fin arr.length) (j : Fin arr.length), i ≠ j → arr[i] ≠ arr[j]) :\n\
+  \  is_valid_result n (max_subsequences n arr) := by\n  sorry\n\n\ntheorem max_subsequences_bounds\
+  \ {n : Nat} {arr : List Int} \n  (h1 : n > 0)\n  (h2 : n = arr.length)\n  (h3 :\
+  \ ∀ x ∈ arr, -1000 ≤ x ∧ x ≤ 1000)\n  (h4 : ∀ (i : Fin arr.length) (j : Fin arr.length),\
+  \ i ≠ j → arr[i] ≠ arr[j]) :\n  let result := max_subsequences n arr\n  1 ≤ result.head!.head!\
+  \ ∧ result.head!.head! ≤ n := by\n  sorry\n\n\ntheorem max_subsequences_sum {n :\
+  \ Nat} {arr : List Int}\n  (h1 : n > 0)\n  (h2 : n = arr.length)\n  (h3 : ∀ x ∈\
+  \ arr, -1000 ≤ x ∧ x ≤ 1000)\n  (h4 : ∀ (i : Fin arr.length) (j : Fin arr.length),\
+  \ i ≠ j → arr[i] ≠ arr[j]) :\n  let result := max_subsequences n arr\n  List.sum\
+  \ (result.tail.map (λ subseq => subseq.head!)) = n := by\n  sorry\n\n\ntheorem max_subsequences_lengths\
+  \ {n : Nat} {arr : List Int}\n  (h1 : n > 0)\n  (h2 : n = arr.length) \n  (h3 :\
+  \ ∀ x ∈ arr, -1000 ≤ x ∧ x ≤ 1000)\n  (h4 : ∀ (i : Fin arr.length) (j : Fin arr.length),\
+  \ i ≠ j → arr[i] ≠ arr[j]) :\n  let result := max_subsequences n arr\n  ∀ subseq\
+  \ ∈ result.tail, subseq.head! ≥ 1 := by\n  sorry\n\n/--\ninfo: list(range(1, n1\
+  \ + 1))\n-/\n#guard_msgs in\n#eval sorted sum([x[1:] for x in result1[1:]], [])\n\
+  \n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval len result2[1]\n\n/--\ninfo: list(range(1,\
+  \ n2 + 1))\n-/\n#guard_msgs in\n#eval sorted result2[1][1:]\n\n/--\ninfo: list(range(1,\
+  \ n3 + 1))\n-/\n#guard_msgs in\n#eval sorted sum([x[1:] for x in result3[1:]], [])\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

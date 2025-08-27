@@ -1,0 +1,19 @@
+"vc-description": "Given an integer n, count the total number of digit 1 appearing\
+  \ in all non-negative integers less than or equal to n.\n\nExample:\n\n\nInput:\
+  \ 13\nOutput: 6 \nExplanation: Digit 1 occurred in the following numbers: 1, 10,\
+  \ 11, 12, 13."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_digit_one (n : Nat) : Nat := sorry\n\ndef count_ones_brute_force\
+  \ (n : Nat) : Nat := sorry\n"
+"vc-theorems": "theorem count_digit_one_matches_brute_force (n : Nat) : \n  count_digit_one\
+  \ n = count_ones_brute_force n := sorry\n\n\ntheorem count_digit_one_boundary_values\
+  \ (n : Nat) (h : n = 0 ∨ n = 1 ∨ n = 9 ∨ n = 10 ∨ n = 11 ∨ n = 99 ∨ n = 100) :\n\
+  \  count_digit_one n = count_ones_brute_force n := sorry\n\n\ntheorem count_digit_one_monotonic\
+  \ (n : Nat) :\n  count_digit_one n ≤ count_digit_one (n + 1) := sorry\n\n\ntheorem\
+  \ count_digit_one_nonnegative (n : Nat) :\n  count_digit_one n ≥ 0 := sorry\n\n\n\
+  theorem count_digit_one_zero :\n  count_digit_one 0 = 0 := sorry\n\n/--\ninfo: expected\n\
+  -/\n#guard_msgs in\n#eval count_digit_one 13\n\n/--\ninfo: expected\n-/\n#guard_msgs\
+  \ in\n#eval count_digit_one 20\n\n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval\
+  \ count_digit_one 100\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

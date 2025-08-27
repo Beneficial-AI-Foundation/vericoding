@@ -1,0 +1,32 @@
+"vc-description": "### Happy Holidays fellow Code Warriors!\n\nNow, Dasher! Now, Dancer!\
+  \ Now, Prancer, and Vixen! On, Comet! On, Cupid! On, Donder and Blitzen! That's\
+  \ the order Santa wanted his reindeer...right? What do you mean he wants them in\
+  \ order by their last names!? Looks like we need your help Code Warrior!\n\n###\
+  \ Sort Santa's Reindeer\n\nWrite a function that accepts a sequence of Reindeer\
+  \ names, and returns a sequence with the Reindeer names sorted by their last names.\n\
+  \n### Notes:\n\n* It's guaranteed that each string is composed of two words\n* In\
+  \ case of two identical last names, keep the original order\n\n### Examples\n\n\
+  For this input:\n\n```\n[\n  \"Dasher Tonoyan\", \n  \"Dancer Moore\", \n  \"Prancer\
+  \ Chua\", \n  \"Vixen Hall\", \n  \"Comet Karavani\",        \n  \"Cupid Foroutan\"\
+  , \n  \"Donder Jonker\", \n  \"Blitzen Claus\"\n]\n```\n\nYou should return this\
+  \ output:\n\n```\n[\n  \"Prancer Chua\",\n  \"Blitzen Claus\",\n  \"Cupid Foroutan\"\
+  , \n  \"Vixen Hall\", \n  \"Donder Jonker\", \n  \"Comet Karavani\",\n  \"Dancer\
+  \ Moore\", \n  \"Dasher Tonoyan\",\n]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def split (s: String) (sep: String) : List String := sorry\n\n\
+  def sort_reindeer (names: List String) : List String := sorry\n"
+"vc-theorems": "theorem sort_reindeer_length_preservation (names: List String) :\n\
+  \  (sort_reindeer names).length = names.length := sorry\n\n\ntheorem sort_reindeer_elements_preserved\
+  \ (names: List String) :\n  ∀ x, x ∈ names ↔ x ∈ sort_reindeer names := sorry\n\n\
+  \ntheorem sort_reindeer_sorted_by_last_name (names: List String) :\n  let result\
+  \ := sort_reindeer names\n  ∀ i, i < result.length - 1 →\n    let curr_last := (split\
+  \ (result[i]!) \" \")[1]!\n    let next_last := (split (result[i+1]!) \" \")[1]!\n\
+  \    curr_last ≤ next_last := sorry\n\n\ntheorem sort_reindeer_idempotent (names:\
+  \ List String) :\n  sort_reindeer (sort_reindeer names) = sort_reindeer names :=\
+  \ sorry\n\n\ntheorem sort_reindeer_empty : \n  sort_reindeer [] = [] := sorry\n\n\
+  /--\ninfo: expected1\n-/\n#guard_msgs in\n#eval sort_reindeer [\"Dasher Tonoyan\"\
+  , \"Dancer Moore\", \"Prancer Chua\"]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n\
+  #eval sort_reindeer []\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval sort_reindeer\
+  \ [\"Kenjiro Mori\", \"Susumu Mori\", \"Akira Mori\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,36 @@
+"vc-description": "# Task\n Sorting is one of the most basic computational devices\
+  \ used in Computer Science. \n \n Given a sequence (length ≤ 1000) of 3 different\
+  \ key values (7, 8, 9), your task is to find the minimum number of exchange operations\
+  \ necessary to make the sequence sorted. \n\n One operation is the switching of\
+  \ 2 key values in the sequence.\n\n# Example\n\n For `sequence = [7, 7, 8, 8, 9,\
+  \ 9]`, the result should be `0`.\n \n It's already a sorted sequence.\n\n For `sequence\
+  \ = [9, 7, 8, 8, 9, 7]`, the result should be `1`.\n \n We can switching `sequence[0]`\
+  \ and `sequence[5]`.\n \n For `sequence = [8, 8, 7, 9, 9, 9, 8, 9, 7]`, the result\
+  \ should be `4`.\n \n We can:\n```\n [8, 8, 7, 9, 9, 9, 8, 9, 7] \n switching sequence[0]\
+  \ and sequence[3]\n --> [9, 8, 7, 8, 9, 9, 8, 9, 7]\n switching sequence[0] and\
+  \ sequence[8]\n --> [7, 8, 7, 8, 9, 9, 8, 9, 9]\n switching sequence[1] and sequence[2]\n\
+  \ --> [7, 7, 8, 8, 9, 9, 8, 9, 9]\n switching sequence[5] and sequence[7]\n -->\
+  \ [7, 7, 8, 8, 8, 9, 9, 9, 9] \n```\nSo `4` is the minimum number of operations\
+  \ for the sequence to become sorted.\n\n# Input/Output\n\n\n - `[input]` integer\
+  \ array `sequence`\n\n  The Sequence.\n\n\n - `[output]` an integer\n\n  the minimum\
+  \ number of operations."
+"vc-preamble": "import Imports.AllImports\n\ndef exchange_sort (sequence : List Int)\
+  \ : Nat :=\n  sorry\n\n\ndef isSorted (l : List Int) : Bool :=\n  match l with\n\
+  \  | [] => true\n  | [_] => true\n  | x :: y :: rest => x ≤ y && isSorted (y ::\
+  \ rest)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count (x : Int) (l : List Int) : Nat :=\n  match l with\n \
+  \ | [] => 0\n  | h :: t => (if h = x then 1 else 0) + count x t\n"
+"vc-theorems": "theorem exchange_sort_nonnegative {sequence : List Int}\n  (h : ∀\
+  \ x ∈ sequence, x ≥ 7 ∧ x ≤ 9) :\n  exchange_sort sequence ≥ 0 := sorry\n\n\ntheorem\
+  \ exchange_sort_zero_when_sorted {sequence : List Int}\n  (h₁ : ∀ x ∈ sequence,\
+  \ x ≥ 7 ∧ x ≤ 9)\n  (h₂ : isSorted sequence = true) :\n  exchange_sort sequence\
+  \ = 0 := sorry\n\n\ntheorem exchange_sort_bounded_by_length {sequence : List Int}\n\
+  \  (h : ∀ x ∈ sequence, x ≥ 7 ∧ x ≤ 9) :\n  exchange_sort sequence ≤ sequence.length\
+  \ := sorry\n\n\ntheorem exchange_sort_preserves_frequency {sequence : List Int}\n\
+  \  (h : ∀ x ∈ sequence, x ≥ 7 ∧ x ≤ 9) :\n  ∀ x, count x sequence = count x (List.mergeSort\
+  \ (· ≤ ·) sequence) := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval exchange_sort\
+  \ [7, 7, 8, 8, 9, 9]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval exchange_sort [9,\
+  \ 7, 8, 8, 9, 7]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval exchange_sort [8, 8,\
+  \ 7, 9, 9, 9, 8, 9, 7]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

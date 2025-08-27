@@ -1,0 +1,30 @@
+"vc-description": "Given a sorted array of numbers, return the summary of its ranges.\n\
+  \n## Examples\n```python\nsummary_ranges([1, 2, 3, 4]) == [\"1->4\"]\nsummary_ranges([1,\
+  \ 1, 1, 1, 1]) == [\"1\"]\nsummary_ranges([0, 1, 2, 5, 6, 9]) == [\"0->2\", \"5->6\"\
+  , \"9\"]\nsummary_ranges([0, 1, 2, 3, 3, 3, 4, 5, 6, 7]) == [\"0->7\"]\nsummary_ranges([0,\
+  \ 1, 2, 3, 3, 3, 4, 4, 5, 6, 7, 7, 9, 9, 10]) == [\"0->7\", \"9->10\"]\nsummary_ranges([-2,\
+  \ 0, 1, 2, 3, 3, 3, 4, 4, 5, 6, 7, 7, 9, 9, 10, 12]) == [\"-2\", \"0->7\", \"9->10\"\
+  , \"12\"]\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef summary_ranges (nums : List Int)\
+  \ : List String := sorry\n\ndef stringContainsArrow (s : String) : Bool :=\n  s.any\
+  \ (· = '-') && s.any (· = '>')\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def stringToRange (s : String) : Option (Int × Int) := \n  if !stringContainsArrow\
+  \ s then none\n  else\n    let parts := s.splitOn \"->\"\n    match parts with\n\
+  \    | [start, stop] => some (start.toInt!, stop.toInt!)\n    | _ => none\n"
+"vc-theorems": "theorem summary_ranges_empty (nums : List Int) :\n  nums = [] → summary_ranges\
+  \ nums = [] := sorry\n\n\ntheorem summary_ranges_singleton (n : Int) :\n  summary_ranges\
+  \ [n] = [toString n] := sorry\n\n\ntheorem summary_ranges_valid_ranges (nums : List\
+  \ Int) (range_str : String) :\n  range_str ∈ summary_ranges nums →\n  match stringContainsArrow\
+  \ range_str with\n  | true => \n      let range := stringToRange range_str\n   \
+  \   match range with\n      | some (start, stop) =>\n          start ≤ stop ∧ \n\
+  \          ∀ x, start ≤ x ∧ x ≤ stop → x ∈ nums\n      | none => True\n  | false\
+  \ => range_str.toInt! ∈ nums := sorry\n\n\ntheorem summary_ranges_consecutive (nums\
+  \ : List Int) :\n  nums ≠ [] →\n  nums.length ≥ 2 →\n  (∀ i, i + 1 < nums.length\
+  \ → nums[i+1]! = nums[i]! + 1) →\n  summary_ranges nums = [s!\"{nums.get! 0}->{nums.get!\
+  \ (nums.length - 1)}\"] := sorry\n\n/--\ninfo: ['1->4']\n-/\n#guard_msgs in\n#eval\
+  \ summary_ranges [1, 2, 3, 4]\n\n/--\ninfo: ['0->2', '5->6', '9']\n-/\n#guard_msgs\
+  \ in\n#eval summary_ranges [0, 1, 2, 5, 6, 9]\n\n/--\ninfo: ['-2', '0->7', '9->10',\
+  \ '12']\n-/\n#guard_msgs in\n#eval summary_ranges [-2, 0, 1, 2, 3, 4, 5, 6, 7, 9,\
+  \ 10, 12]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

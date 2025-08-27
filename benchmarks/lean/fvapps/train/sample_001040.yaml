@@ -1,0 +1,28 @@
+"vc-description": "You are given two integers $N$ and $M$. Find the number of sequences\
+  \ $A_1, A_2, \\ldots, A_N$, where each element is an integer between $1$ and $M$\
+  \ (inclusive) and no three consecutive elements are equal. Since this number could\
+  \ be very large, compute it modulo $10^9+7$.\n\n-----Input-----\n- The first line\
+  \ of the input contains a single integer $T$ denoting the number of test cases.\
+  \ The description of $T$ test cases follows.\n- The first and only line of each\
+  \ test case contains two space-separated integers $N$ and $M$.\n\n-----Output-----\n\
+  For each test case, print a single line containing one integer ― the number of valid\
+  \ sequences modulo $10^9+7$.\n\n-----Constraints-----\n- $1 \\le T \\le 10^5$\n\
+  - $1 \\le N, M \\le 10^{18}$\n\n-----Subtasks-----\nSubtask #1 (50 points):\n- $T\
+  \ \\le 20$\n- $N \\le 10^5$\nSubtask #2 (50 points): original constraints\n\n-----Example\
+  \ Input-----\n2 \n2 2\n3 4\n\n-----Example Output-----\n4\n60"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD : Nat := 1000000007\n\ndef calc_valid_sequences (n m :\
+  \ Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem valid_sequences_in_mod_range (n m : Nat) \n    (h1 : n > 0)\
+  \ (h2 : m > 0) (h3 : n ≤ 100) (h4 : m ≤ 100) : \n  let result := calc_valid_sequences\
+  \ n m\n  0 ≤ result ∧ result < MOD :=\nsorry\n\n\ntheorem length_one_equals_m_mod\
+  \ (m : Nat) (h : m > 0) (h2 : m ≤ 100) :\n  calc_valid_sequences 1 m = m % MOD :=\n\
+  sorry\n\n\ntheorem result_non_negative (n m : Nat) \n    (h1 : n > 0) (h2 : m >\
+  \ 0) (h3 : n ≤ 100) (h4 : m ≤ 100) :\n  calc_valid_sequences n m ≥ 0 :=\nsorry\n\
+  \n\ntheorem longer_sequences_greater_than_m (n m : Nat)\n    (h1 : n > 1) (h2 :\
+  \ m > 1) (h3 : n ≤ 100) (h4 : m ≤ 100) :\n  calc_valid_sequences n m > m :=\nsorry\n\
+  \n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval calc_valid_sequences 2 2\n\n/--\ninfo:\
+  \ 60\n-/\n#guard_msgs in\n#eval calc_valid_sequences 3 4\n\n/--\ninfo: 5\n-/\n#guard_msgs\
+  \ in\n#eval calc_valid_sequences 1 5\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

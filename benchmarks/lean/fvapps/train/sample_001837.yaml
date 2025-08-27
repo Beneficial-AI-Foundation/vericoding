@@ -1,0 +1,33 @@
+"vc-description": "Given a list of airline tickets represented by pairs of departure\
+  \ and arrival airports [from, to], reconstruct the itinerary in order. All of the\
+  \ tickets belong to a man who departs from JFK. Thus, the itinerary must begin with\
+  \ JFK.\n\nNote:\n\n\n       If there are multiple valid itineraries, you should\
+  \ return the itinerary that has the smallest lexical order when read as a single\
+  \ string. For example, the itinerary [\"JFK\", \"LGA\"] has a smaller lexical order\
+  \ than [\"JFK\", \"LGB\"].\n       All airports are represented by three capital\
+  \ letters (IATA code).\n       You may assume all tickets form at least one valid\
+  \ itinerary.\n\n\nExample 1:\n\n\nInput: tickets = [[\"MUC\", \"LHR\"], [\"JFK\"\
+  , \"MUC\"], [\"SFO\", \"SJC\"], [\"LHR\", \"SFO\"]]\nOutput: [\"JFK\", \"MUC\",\
+  \ \"LHR\", \"SFO\", \"SJC\"]\n\n\nExample 2:\n\n\nInput: tickets = [[\"JFK\",\"\
+  SFO\"],[\"JFK\",\"ATL\"],[\"SFO\",\"ATL\"],[\"ATL\",\"JFK\"],[\"ATL\",\"SFO\"]]\n\
+  Output: [\"JFK\",\"ATL\",\"JFK\",\"SFO\",\"ATL\",\"SFO\"]\nExplanation: Another\
+  \ possible reconstruction is [\"JFK\",\"SFO\",\"ATL\",\"JFK\",\"ATL\",\"SFO\"].\
+  \ But it is larger in lexical order.\n\n\nCredits:\nSpecial thanks to @dietpepsi\
+  \ for adding this problem and creating all test cases."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Ticket := String × String\n\ndef findItinerary (tickets: List\
+  \ Ticket) : List String :=\n  sorry\n"
+"vc-theorems": "theorem findItinerary_starts_jfk (tickets: List Ticket) :\n  (findItinerary\
+  \ tickets).head? = some \"JFK\" := sorry\n\n\ntheorem findItinerary_length (tickets:\
+  \ List Ticket) : \n  (findItinerary tickets).length = tickets.length + 1 := sorry\n\
+  \n\ntheorem findItinerary_valid_transitions (tickets: List Ticket) :\n  let result\
+  \ := findItinerary tickets\n  ∀ i, i < result.length - 1 → \n    (result[i]!, result[i+1]!)\
+  \ ∈ tickets := sorry \n\n\ntheorem findItinerary_uses_all_tickets (tickets: List\
+  \ Ticket) :\n  let result := findItinerary tickets\n  let pairs := List.zip (result.take\
+  \ (result.length - 1)) (result.drop 1)\n  pairs = tickets := sorry\n\n/--\ninfo:\
+  \ expected1\n-/\n#guard_msgs in\n#eval findItinerary [[\"MUC\", \"LHR\"], [\"JFK\"\
+  , \"MUC\"], [\"SFO\", \"SJC\"], [\"LHR\", \"SFO\"]]\n\n/--\ninfo: expected2\n-/\n\
+  #guard_msgs in\n#eval findItinerary [[\"JFK\", \"SFO\"], [\"JFK\", \"ATL\"], [\"\
+  SFO\", \"ATL\"], [\"ATL\", \"JFK\"], [\"ATL\", \"SFO\"]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

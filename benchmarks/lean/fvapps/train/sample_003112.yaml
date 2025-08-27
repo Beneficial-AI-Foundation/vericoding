@@ -1,0 +1,37 @@
+"vc-description": "In this Kata, two players, Alice and Bob, are playing a palindrome\
+  \ game. Alice starts with `string1`, Bob starts with `string2`, and the board starts\
+  \ out as an empty string. Alice and Bob take turns; during a turn, a player selects\
+  \ a letter from his or her string, removes it from the string, and appends it to\
+  \ the board; if the board becomes a palindrome (of length >= 2), the player wins.\
+  \ Alice makes the first move. Since Bob has the disadvantage of playing second,\
+  \ then he wins automatically if letters run out or the board is never a palindrome.\
+  \ Note also that each player can see the other player's letters.\n\nThe problem\
+  \ will be presented as `solve(string1,string2)`. Return 1 if Alice wins and 2 it\
+  \ Bob wins.\n\nFor example:\n```Haskell\nsolve(\"abc\",\"baxy\") = 2 -- There is\
+  \ no way for Alice to win. If she starts with 'a', Bob wins by playing 'a'. The\
+  \ same case with 'b'. If Alice starts with 'c', Bob still wins because a palindrome\
+  \ is not possible. Return 2.\nsolve(\"eyfjy\",\"ooigvo\") = 1 -- Alice plays 'y'\
+  \ and whatever Bob plays, Alice wins by playing another 'y'. Return 1.\nsolve(\"\
+  abc\",\"xyz\") = 2 -- No palindrome is possible, so Bob wins; return 2\nsolve(\"\
+  gzyqsczkctutjves\",\"hpaqrfwkdntfwnvgs\") = 1 -- If Alice plays 'g', Bob wins by\
+  \ playing 'g'. Alice must be clever. She starts with 'z'. She knows that since she\
+  \ has two 'z', the win is guaranteed. Note that she also has two 's'. But she cannot\
+  \ play that. Can you see why? \nsolve(\"rmevmtw\",\"uavtyft\") = 1 -- Alice wins\
+  \ by playing 'm'. Can you see why? \n```\nPalindrome lengths should be at least\
+  \ `2` characters. More examples in the test cases. \n\nGood luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef solve (s1 s2 : String) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countChar (s : String) (c : Char) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem solve_returns_valid_output (s1 s2 : String)\n    (h1 : s1.length\
+  \ > 0) (h2 : s2.length > 0) :\n  solve s1 s2 = 1 ∨ solve s1 s2 = 2 :=\n  sorry\n\
+  \n\ntheorem solve_identical_chars (s1 s2 : String)\n    (h1 : s1.length > 0) (h2\
+  \ : s2.length > 0)\n    (h3 : ∀ (c : Char), s1.data.contains c → c = 'a')\n    (h4\
+  \ : ∀ (c : Char), s2.data.contains c → c = 'a') :\n  solve s1 s2 = 2 :=\n  sorry\n\
+  \n\ntheorem solve_with_duplicates (s : String) \n    (h1 : s.length ≥ 2) :\n  (∃\
+  \ (c : Char), s.data.contains c ∧ countChar s c ≥ 2) → solve s \"\" = 1 ∧\n  (∀\
+  \ (c : Char), s.data.contains c → countChar s c < 2) → solve s \"\" = 2 :=\n  sorry\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve \"abc\" \"xyz\"\n\n/--\ninfo: 1\n\
+  -/\n#guard_msgs in\n#eval solve \"eyfjy\" \"ooigv\"\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval solve \"qtkxttl\" \"utvohqk\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

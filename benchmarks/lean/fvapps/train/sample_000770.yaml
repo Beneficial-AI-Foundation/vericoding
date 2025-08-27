@@ -1,0 +1,37 @@
+"vc-description": "Bob has n heap(s) of gravel (initially there are exactly c piece(s)\
+  \ in each). He wants to do m operation(s) with that heaps, each maybe:\n\n- adding\
+  \ pieces of gravel onto the heaps from u to v, exactly k pieces for each,\n- or\
+  \ querying \"how many pieces of gravel are there in the heap p now?\".\n\n-----Request-----\n\
+  Help Bob do operations of the second type.\n\n-----Input-----\n\n- The first line\
+  \ contains the integers n,m,c, respectively.\n- m following lines, each forms:\n\
+  \n- S u v k to describe an operation of the first type.\n- Q p to describe an operation\
+  \ of the second type.\n(Each integer on a same line, or between the characters S,\
+  \ Q and the integers is separated by at least one space character)\n\n-----Output-----\n\
+  For each operation of the second type, output (on a single line) an integer answering\
+  \ to the respective query (follows the respective Input order).\n\n-----Example-----Input:\n\
+  7 5 0\nQ 7\nS 1 7 1\nQ 3\nS 1 3 1\nQ 3\nOutput:\n0\n1\n2\n\n-----Limitations-----\n\
+  - 0<n≤106\n- 0<m≤250 000\n- 0<u≤v≤n\n- 0≤c,k≤109\n- 0<p≤n"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def fenwick_operations (n : Nat) (m : Nat) (c : Int) (ops : List\
+  \ String) : List Int :=\n  sorry\n"
+"vc-theorems": "theorem fenwick_results_length (n : Nat) (m : Nat) (c : Int) (ops\
+  \ : List String) :\n  let results := fenwick_operations n m c ops\n  let num_queries\
+  \ := (ops.filter (fun op => op.startsWith \"Q\")).length\n  results.length = num_queries\
+  \ := sorry\n\n\ntheorem fenwick_results_are_ints (n : Nat) (m : Nat) (c : Int) (ops\
+  \ : List String) :\n  let results := fenwick_operations n m c ops\n  ∀ x ∈ results,\
+  \ x = x := sorry\n\n\ntheorem fenwick_empty_ops (n : Nat) :\n  fenwick_operations\
+  \ n 0 0 [] = [] := sorry\n\n\ntheorem fenwick_input_bounds (n m : Nat) (c : Int)\
+  \ (ops : List String) : \n  (2 ≤ n ∧ n ≤ 100) →\n  (1 ≤ m ∧ m ≤ 20) →\n  (-1000\
+  \ ≤ c ∧ c ≤ 1000) →\n  fenwick_operations n m c ops ≠ [] := sorry\n\n\ntheorem fenwick_valid_query_bounds\
+  \ (pos : Nat) (n : Nat) :\n  1 ≤ pos → pos ≤ n → \n  ∀ (m : Nat) (c : Int) (ops\
+  \ : List String),\n  let results := fenwick_operations n m c ops\n  results ≠ []\
+  \ := sorry\n\n\ntheorem fenwick_valid_update_bounds (u v : Nat) (k : Int) (n : Nat)\
+  \ :\n  1 ≤ u → u ≤ v → v ≤ n →\n  -100 ≤ k → k ≤ 100 →\n  ∀ (m : Nat) (c : Int)\
+  \ (ops : List String),\n  let results := fenwick_operations n m c ops\n  results\
+  \ ≠ [] := sorry\n\n/--\ninfo: [0, 1, 2]\n-/\n#guard_msgs in\n#eval fenwick_operations\
+  \ 7 5 0 [\"Q 7\", \"S 1 7 1\", \"Q 3\", \"S 1 3 1\", \"Q 3\"]\n\n/--\ninfo: [1,\
+  \ 3]\n-/\n#guard_msgs in\n#eval fenwick_operations 3 3 1 [\"Q 1\", \"S 1 2 2\",\
+  \ \"Q 2\"]\n\n/--\ninfo: [2, 3]\n-/\n#guard_msgs in\n#eval fenwick_operations 5\
+  \ 4 0 [\"S 1 3 2\", \"Q 2\", \"S 2 4 1\", \"Q 3\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

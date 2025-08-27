@@ -1,0 +1,31 @@
+"vc-description": "A grid is a perfect starting point for many games (Chess, battleships,\
+  \ Candy Crush!).\n\nMaking a digital chessboard I think is an interesting way of\
+  \ visualising how loops can work together.\n\nYour task is to write a function that\
+  \ takes two integers `rows` and `columns` and returns a chessboard pattern as a\
+  \ two dimensional array.\n\nSo `chessBoard(6,4)` should return an array like this:\n\
+  \n\n    [\n            [\"O\",\"X\",\"O\",\"X\"],\n            [\"X\",\"O\",\"X\"\
+  ,\"O\"],\n            [\"O\",\"X\",\"O\",\"X\"],\n            [\"X\",\"O\",\"X\"\
+  ,\"O\"],\n            [\"O\",\"X\",\"O\",\"X\"],\n            [\"X\",\"O\",\"X\"\
+  ,\"O\"]\n    ]\n\nAnd `chessBoard(3,7)` should return this:\n\n\n    [\n       \
+  \ [\"O\",\"X\",\"O\",\"X\",\"O\",\"X\",\"O\"],\n        [\"X\",\"O\",\"X\",\"O\"\
+  ,\"X\",\"O\",\"X\"],\n        [\"O\",\"X\",\"O\",\"X\",\"O\",\"X\",\"O\"]\n    ]\n\
+  \nThe white spaces should be represented by an: `'O'`\n\nand the black an: `'X'`\n\
+  \nThe first row should always start with a white space `'O'`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def chess_board (rows: Nat) (cols: Nat) : List (List Char) := sorry\n\
+  \ntheorem chess_board_dimensions (rows cols: Nat) \n    (h1: 0 < rows) (h2: 0 <\
+  \ cols) :\n  let board := chess_board rows cols\n  (board.length = rows) ∧ \n  (∀\
+  \ row ∈ board, row.length = cols) := sorry\n"
+"vc-theorems": "theorem chess_board_alternating (rows cols: Nat)\n    (h1: 0 < rows)\
+  \ (h2: 0 < cols) :\n  let board := chess_board rows cols\n  (∀ r < rows, ∀ c < cols,\n\
+  \    -- Each cell is O or X\n    ((board.get! r).get! c = 'O' ∨ (board.get! r).get!\
+  \ c = 'X') ∧\n    -- Horizontally adjacent cells differ\n    (c > 0 → (board.get!\
+  \ r).get! c ≠ (board.get! r).get! (c-1)) ∧\n    -- Vertically adjacent cells differ\
+  \ \n    (r > 0 → (board.get! r).get! c ≠ (board.get! (r-1)).get! c)\n  ) := sorry\n\
+  \n\ntheorem chess_board_square_diagonals (size: Nat) (h: 0 < size) :\n  let board\
+  \ := chess_board size size\n  ∀ i < size, (board.get! i).get! i = (board.get! 0).get!\
+  \ 0 := sorry\n\n/--\ninfo: [['O']]\n-/\n#guard_msgs in\n#eval chess_board 1 1\n\n\
+  /--\ninfo: [['O', 'X'], ['X', 'O']]\n-/\n#guard_msgs in\n#eval chess_board 2 2\n\
+  \n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval chess_board 3 4\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

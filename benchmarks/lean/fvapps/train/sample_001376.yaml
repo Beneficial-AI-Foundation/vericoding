@@ -1,0 +1,45 @@
+"vc-description": "Today, puppy Tuzik is going to a new dog cinema. He has already\
+  \ left his home and just realised that he forgot his dog-collar! This is a real\
+  \ problem because the city is filled with catchers looking for stray dogs.\nA city\
+  \ where Tuzik lives in can be considered as an infinite grid, where each cell has\
+  \ exactly four neighbouring cells: those sharing a common side with the cell. Such\
+  \ a property of the city leads to the fact, that the distance between cells (xA,\
+  \ yA) and (xB, yB) equals |xA - xB| + |yA - yB|.\nInitially, the puppy started at\
+  \ the cell with coordinates (0, 0). There are N dog-catchers located at the cells\
+  \ with the coordinates (xi, yi), where 1 ≤ i ≤ N. Tuzik's path can be described\
+  \ as a string S of M characters, each of which belongs to the set {'D', 'U', 'L',\
+  \ 'R'} (corresponding to it moving down, up, left, and right, respectively). To\
+  \ estimate his level of safety, Tuzik wants to know the sum of the distances from\
+  \ each cell on his path to all the dog-catchers. You don't need to output this sum\
+  \ for the staring cell of the path (i.e. the cell with the coordinates (0, 0)).\n\
+  \n-----Input-----\nThe first line of the input contains two integers N and M.\n\
+  The following N lines contain two integers xi and yi each, describing coordinates\
+  \ of the dog-catchers.\nThe last line of the input contains string S of M characters\
+  \ on the set {'D', 'U', 'L', 'R'}.\n- 'D' - decrease y by 1\n- 'U' - increase y\
+  \ by 1\n- 'L' - decrease x by 1\n- 'R' - increase x by 1\n\n-----Output-----\nOutput\
+  \ M lines: for each cell of the path (except the starting cell), output the required\
+  \ sum of the distances.\n\n-----Constraints-----\n- 1 ≤ N ≤ 3 ✕ 105\n- 1 ≤ M ≤ 3\
+  \ ✕ 105\n- -106 ≤ xi, yi ≤ 106\n\n-----Example-----\nInput:\n2 3\n1 2\n0 1\nRDL\n\
+  \nOutput:\n4\n6\n6\n\n-----Explanation-----\n\nInitially Tuzik stays at cell (0,\
+  \ 0). Let's consider his path:\n\n- Move 'R' to the cell (1, 0). Distance to the\
+  \ catcher (1, 2) equals 2, distance to the catcher (0, 1) equals 2, so the total\
+  \ distance equals 4\n- Move 'D' to the cell (1, -1). Distance to the catcher (1,\
+  \ 2) equals 3, distance to the catcher (0, 1) equals 3, so the total distance equals\
+  \ 6\n- Move 'L' to the cell (0, -1). Distance to the catcher (1, 2) equals 4, distance\
+  \ to the catcher (0, 1) equals 2, so the total distance equals 6"
+"vc-preamble": "import Imports.AllImports\n\ndef abs (n : Int) : Int :=\n  if n ≥\
+  \ 0 then n else -n\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_puppy_path (N M : Nat) (coords : List (Nat × Nat)) (path\
+  \ : List Char) : List Int := \n  sorry\n"
+"vc-theorems": "theorem result_length_matches_path_length {N M : Nat} {coords : List\
+  \ (Nat × Nat)} {path : List Char} :\n  List.length (solve_puppy_path N M coords\
+  \ path) = List.length path := by\n  sorry\n\n\ntheorem result_changes_bounded {N\
+  \ M : Nat} {coords : List (Nat × Nat)} {path : List Char} :\n  ∀ i, i + 1 < List.length\
+  \ (solve_puppy_path N M coords path) → \n    let result := solve_puppy_path N M\
+  \ coords path;\n    abs (result[i]! - result[i+1]!) ≤ 2 * N := by\n  sorry\n\n\n\
+  theorem empty_path {N M : Nat} :\n  solve_puppy_path N M [(0,0)] [] = [] := by\n\
+  \  sorry\n\n/--\ninfo: [4, 6, 6]\n-/\n#guard_msgs in\n#eval solve_puppy_path 2 3\
+  \ [(1, 2), (0, 1)] \"RDL\"\n\n/--\ninfo: [1, 2]\n-/\n#guard_msgs in\n#eval solve_puppy_path\
+  \ 1 2 [(1, 1)] \"RD\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

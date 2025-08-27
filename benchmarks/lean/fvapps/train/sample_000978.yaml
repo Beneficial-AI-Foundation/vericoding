@@ -1,0 +1,56 @@
+"vc-description": "Chef is playing a game on a sequence of $N$ positive integers,\
+  \ say $A_1, A_2, ... A_N$ The game is played as follows.\n- If all the numbers are\
+  \ equal, the game ends.\n- Otherwise\n- Select two numbers which are unequal\n-\
+  \ Subtract the smaller number from the larger number\n- Replace the larger number\
+  \ with the result from above\nChef has already figured out that the game always\
+  \ terminates. He also knows, for a given sequence of integers, the game will always\
+  \ terminate on the same value, no matter how the game is played. Chef wants you\
+  \ to simulate the game for him and tell him if the game terminates on $1$.\nIn fact,\
+  \ there may be many such games. Given a sequence of integers Chef wants to know\
+  \ the number of sub-sequences of the given sequence, for which, playing the above\
+  \ game on the subsuquence will terminate on $1$. A sub-sequence can be obtained\
+  \ from the original sequence by deleting $0$ or more integers from the original\
+  \ sequence. See the explanation section for clarity.\n\n-----Input-----\n- The first\
+  \ line of the input contains an integer $T$, the number of test cases. Then follow\
+  \ the description of $T$ test cases. \n- The first line of each test case contains\
+  \ a single integer $N$, the length of the sequence. \n- The second line contains\
+  \ $N$ positive integers, each separated by a single space.\n\n-----Output-----\n\
+  For each test case, output a single integer - the number of sub-sequences of the\
+  \ original sequence, such that, playing the game on the sub-sequence results in\
+  \ ending the game with all the values equal to $1$.\n\n-----Constraints-----\n-\
+  \ $1 \\le T \\le 100$ \n- $1 \\le N \\le 60$ \n- $1 \\le A_i \\le 10^4$ \n- All\
+  \ $A_i$ will be distinct.\n\n-----Sample Input-----\n3\n4\n2 3 5 7\n4\n3 4 8 16\n\
+  3\n6 10 15\n\n-----Sample Output-----\n11\n7\n1\n\n-----Explanation-----\nTest Case\
+  \ 1: The following $11$ sub-sequences are counted.\n- $\\{ 2, 3 \\}$\n- $\\{ 2,\
+  \ 5 \\}$\n- $\\{ 2, 7 \\}$\n- $\\{ 3, 5 \\}$\n- $\\{ 3, 7 \\}$\n- $\\{ 5, 7 \\}$\n\
+  - $\\{ 2, 3, 5 \\}$\n- $\\{ 2, 3, 7 \\}$\n- $\\{ 2, 5, 7 \\}$\n- $\\{ 3, 5, 7 \\\
+  }$\n- $\\{ 2, 3, 5, 7 \\}$\nTest Case 2: The following $7$ sub-sequences are counted.\n\
+  - $\\{ 3, 4 \\}$\n- $\\{ 3, 8 \\}$\n- $\\{ 3, 16 \\}$\n- $\\{ 3, 4, 8 \\}$\n- $\\\
+  { 3, 4, 16 \\}$\n- $\\{ 3, 8, 16 \\}$\n- $\\{ 3, 4, 8, 16 \\}$\nTest Case 3: There\
+  \ are $8$ subsequences of $\\{ 6, 10, 15 \\}$\n- $\\{\\}$ => The game cannot be\
+  \ played on this sub-sequence\n- $\\{ 6 \\}$ => The game cannot be played on this\
+  \ sub-sequence\n- $\\{ 10 \\}$ => The game cannot be played on this sub-sequence\n\
+  - $\\{ 15 \\}$ => The game cannot be played on this sub-sequence\n- $\\{ 6, 10 \\\
+  }$ => The game cannot end at $\\{ 1, 1 \\}$\n- $\\{ 6, 15 \\}$ => The game cannot\
+  \ end at $\\{ 1, 1 \\}$\n- $\\{ 10, 15 \\}$ => The game cannot end at $\\{ 1, 1\
+  \ \\}$\n- $\\{ 6, 10, 15 \\}$ => The game ends at $\\{ 1, 1, 1 \\}$. Hence this\
+  \ is the only sub-sequence that is counted in the result."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def gcd (a b : Nat) : Nat := sorry\n\ndef count_valid_subsequences\
+  \ (arr : List Nat) : Nat := sorry\n"
+"vc-theorems": "theorem gcd_positive (a b : Nat) (h : b > 0) : \n  gcd a b ≥ 1 :=\
+  \ sorry\n\n\ntheorem gcd_divides (a b : Nat) (h : b > 0) :\n  (a % gcd a b = 0 ∨\
+  \ a = 0) ∧ b % gcd a b = 0 := sorry\n\n\ntheorem gcd_symmetric (a b : Nat) (h :\
+  \ b > 0) :\n  gcd a b = gcd b a ∨ a = 0 := sorry\n\n\ntheorem subsequence_count_nonnegative\
+  \ (arr : List Nat) (h : arr ≠ []) :\n  count_valid_subsequences arr ≥ 0 := sorry\n\
+  \n\ntheorem subsequence_count_upper_bound (arr : List Nat) (h : arr ≠ []) :\n  count_valid_subsequences\
+  \ arr ≤ 2^(arr.length) := sorry\n\n\ntheorem subsequence_count_permutation_invariant\
+  \ (arr arr_perm : List Nat) \n  (h₁ : arr ≠ []) (h₂ : arr_perm.isPerm arr) :\n \
+  \ count_valid_subsequences arr = count_valid_subsequences arr_perm := sorry\n\n\n\
+  theorem all_ones_subsequence_count (arr : List Nat) \n  (h₁ : arr ≠ []) (h₂ : ∀\
+  \ x ∈ arr, x = 1) :\n  count_valid_subsequences arr = 2^(arr.length) - 1 := sorry\n\
+  \n/--\ninfo: 11\n-/\n#guard_msgs in\n#eval count_valid_subsequences [2, 3, 5, 7]\n\
+  \n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval count_valid_subsequences [3, 4, 8, 16]\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_valid_subsequences [6, 10, 15]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

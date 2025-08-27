@@ -1,0 +1,22 @@
+"vc-description": "Write an algorithm to determine if a number is \"happy\".\n\nA\
+  \ happy number is a number defined by the following process: Starting with any positive\
+  \ integer, replace the number by the sum of the squares of its digits, and repeat\
+  \ the process until the number equals 1 (where it will stay), or it loops endlessly\
+  \ in a cycle which does not include 1. Those numbers for which this process ends\
+  \ in 1 are happy numbers.\n\nExample: \n\n\nInput: 19\nOutput: true\nExplanation:\
+  \ \n12 + 92 = 82\n82 + 22 = 68\n62 + 82 = 100\n12 + 02 + 02 = 1"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_happy (n : Nat) : Bool := sorry\n\ntheorem is_happy_returns_bool\
+  \ (n : Nat) : \n  n > 0 → is_happy n = true ∨ is_happy n = false := sorry \n"
+"vc-theorems": "theorem is_happy_terminates (n : Nat) :\n  n > 0 → ∃ (result : Bool),\
+  \ is_happy n = result := sorry\n\n\ntheorem is_happy_known_happy :\n  is_happy 1\
+  \ = true ∧ is_happy 7 = true ∧ is_happy 10 = true ∧ is_happy 13 = true ∧ \n  is_happy\
+  \ 19 = true ∧ is_happy 23 = true ∧ is_happy 28 = true ∧ is_happy 31 = true := sorry\n\
+  \n\ntheorem is_happy_known_unhappy :\n  is_happy 2 = false ∧ is_happy 3 = false\
+  \ ∧ is_happy 4 = false ∧ is_happy 5 = false ∧ \n  is_happy 6 = false ∧ is_happy\
+  \ 8 = false ∧ is_happy 9 = false := sorry\n\n\ntheorem is_happy_deterministic (n\
+  \ m : Nat) :\n  n = m → is_happy n = is_happy m := sorry\n\n/--\ninfo: True\n-/\n\
+  #guard_msgs in\n#eval is_happy 19\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval\
+  \ is_happy 2\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_happy 100\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

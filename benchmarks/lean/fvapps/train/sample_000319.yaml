@@ -1,0 +1,28 @@
+"vc-description": "Given a sequence of n integers a1, a2, ..., an, a 132 pattern is\
+  \ a subsequence ai, aj, ak such\nthat i < j < k and ai < ak < aj. Design an algorithm\
+  \ that takes a list of n numbers as input and checks whether there is a 132 pattern\
+  \ in the list.\n\nNote: n will be less than 15,000.\n\nExample 1:\n\nInput: [1,\
+  \ 2, 3, 4]\n\nOutput: False\n\nExplanation: There is no 132 pattern in the sequence.\n\
+  \n\n\nExample 2:\n\nInput: [3, 1, 4, 2]\n\nOutput: True\n\nExplanation: There is\
+  \ a 132 pattern in the sequence: [1, 4, 2].\n\n\n\nExample 3:\n\nInput: [-1, 3,\
+  \ 2, 0]\n\nOutput: True\n\nExplanation: There are three 132 patterns in the sequence:\
+  \ [-1, 3, 2], [-1, 3, 0] and [-1, 2, 0]."
+"vc-preamble": "import Imports.AllImports\n\ndef find132pattern (nums : List Int)\
+  \ : Bool :=\n  sorry\n\n\ndef has_132_pattern_brute_force (nums : List Int) : Bool\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSorted (nums : List Int) (cmp : Int → Int → Bool) : Bool\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem find132pattern_matches_bruteforce {nums : List Int} :\n  find132pattern\
+  \ nums = has_132_pattern_brute_force nums :=\n  sorry\n\n\ntheorem short_sequences_return_false\
+  \ {nums : List Int} :\n  List.length nums ≤ 2 → find132pattern nums = false :=\n\
+  \  sorry\n\n\ntheorem monotonic_increasing_no_pattern {nums : List Int} :\n  isSorted\
+  \ nums (fun x y => x ≤ y) → find132pattern nums = false :=\n  sorry \n\n\ntheorem\
+  \ monotonic_decreasing_no_pattern {nums : List Int} :\n  isSorted nums (fun x y\
+  \ => x ≥ y) → find132pattern nums = false :=\n  sorry\n\n\ntheorem same_elements_no_pattern\
+  \ {nums : List Int} {x : Int} :\n  nums.length ≥ 3 → nums = List.replicate nums.length\
+  \ x → find132pattern nums = false :=\n  sorry\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval find132pattern [1, 2, 3, 4]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
+  #eval find132pattern [3, 1, 4, 2]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ find132pattern [-1, 3, 2, 0]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

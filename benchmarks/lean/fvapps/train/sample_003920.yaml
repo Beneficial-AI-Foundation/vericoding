@@ -1,0 +1,40 @@
+"vc-description": "# Task\n\nJohn is a programmer. He treasures his time very much.\
+  \ He lives on the `n` floor of a building. Every morning he will go downstairs as\
+  \ quickly as possible to begin his great work today.\n\nThere are two ways he goes\
+  \ downstairs: walking or taking the elevator.\n\nWhen John uses the elevator, he\
+  \ will go through the following steps:\n```\n1. Waiting the elevator from m floor\
+  \ to n floor;\n2. Waiting the elevator open the door and go in;\n3. Waiting the\
+  \ elevator close the door;\n4. Waiting the elevator down to 1 floor;\n5. Waiting\
+  \ the elevator open the door and go out;\n(the time of go in/go out the elevator\
+  \ will be ignored)\n```\n\nGiven the following arguments:\n```\nn: An integer. The\
+  \ floor of John(1-based).\nm: An integer. The floor of the elevator(1-based).\n\
+  speeds: An array of integer. It contains four integer [a,b,c,d]\n        a: The\
+  \ seconds required when the elevator rises or falls 1 floor\n        b: The seconds\
+  \ required when the elevator open the door\n        c: The seconds required when\
+  \ the elevator close the door\n        d: The seconds required when John walks to\
+  \ n-1 floor\n```\n\nPlease help John to calculate the shortest time to go downstairs.\n\
+  \n\n\n\n# Example\n\nFor `n = 5, m = 6 and speeds = [1,2,3,10]`, the output should\
+  \ be `12`.\n\nJohn go downstairs by using the elevator:\n\n`1 + 2 + 3 + 4 + 2 =\
+  \ 12`\n\nFor `n = 1, m = 6 and speeds = [1,2,3,10]`, the output should be `0`.\n\
+  \nJohn is already at 1 floor, so the output is `0`.\n\nFor `n = 5, m = 4 and speeds\
+  \ = [2,3,4,5]`, the output should be `20`.\n\nJohn go downstairs by walking:\n\n\
+  `5 x 4 = 20`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def shortest_time (n m : Nat) (speeds : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem result_non_negative (n m : Nat) (speeds : List Nat) :\n  shortest_time\
+  \ n m speeds ≥ 0 :=\n  sorry\n\n\ntheorem floor_one_is_zero (m : Nat) (speeds :\
+  \ List Nat) :\n  shortest_time 1 m speeds = 0 :=\n  sorry\n\n\n\n\ntheorem elevator_not_worse_than_walking\
+  \ (n m : Nat) (speeds : List Nat) (h: speeds.length > 3) :\n  n > 1 →\n  shortest_time\
+  \ n m speeds ≤ (n-1) * (speeds.get! 3) :=\n  sorry\n\n\ntheorem same_floor_elevator_time\
+  \ (n : Nat) (speeds : List Nat) (h: speeds.length > 3) :\n  n > 1 →\n  shortest_time\
+  \ n n speeds = min \n    (speeds.get! 1 + speeds.get! 2 + (n-1)*speeds.get! 0 +\
+  \ speeds.get! 1) \n    ((n-1)*speeds.get! 3) :=\n  sorry\n\n\ntheorem extreme_walking_speeds\
+  \ (n m : Nat) (speeds : List Nat) (h: speeds.length > 3) :\n  shortest_time n m\
+  \ speeds = min \n    (Nat.sub (max m n) (min m n)*speeds.get! 0 + speeds.get! 1\
+  \ + speeds.get! 2 + (n-1)*speeds.get! 0 + speeds.get! 1) \n    ((n-1)*speeds.get!\
+  \ 3) :=\n  sorry\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval shortest_time 5 6 [1,\
+  \ 2, 3, 10]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval shortest_time 1 6 [1, 2,\
+  \ 3, 10]\n\n/--\ninfo: 20\n-/\n#guard_msgs in\n#eval shortest_time 5 4 [2, 3, 4,\
+  \ 5]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

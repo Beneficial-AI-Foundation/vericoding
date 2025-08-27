@@ -1,0 +1,40 @@
+"vc-description": "Two words rhyme if their last 3 letters are a match. Given N words,\
+  \ print the test case number (of the format Case : num) followed by the rhyming\
+  \ words in separate line adjacent to each other.\n\nThe output can be in anyorder.\n\
+  \n-----Input-----\nFirst line contains the number of test case T\n\nThe next line\
+  \ contains the number of words N\n\nNext N words follow . They’ll contain only alphabets\
+  \ from ‘a’-‘z’.\n\n-----Output-----\nPrint case number (for each test case) of the\
+  \ format Case : num followed by the words that rhyme in a new line.\n\n-----Constraints-----\n\
+  1 <= T <= 5\n\n1 <= N <= 1000\n\n3 <= length of each word <= 1000\n\n-----Example-----\n\
+  Input:\n3\n3\nnope qwerty hope\n5 \nbrain drain request grain nest\n4\nthese words\
+  \ dont rhyme\n\n\nOutput:\nCase : 1\nhope nope\nqwerty\nCase : 2\nbrain drain grain\n\
+  nest request\nCase : 3\nthese\ndont\nwords\nrhyme\n\n\n\n-----Explanation-----\n\
+  Case : 2\n\nbrain drain grain\n\nnest request\n\nCase : 3\n\nthese\n\ndont\n\nwords\n\
+  \nrhyme\nExplanation for case 1: since hope and nope rhyme (suffix “ope” matches),\
+  \ we print them in the same line and qwerty In a new line.\n\nNote that\n\nqwerty\n\
+  \nnope hope\n\nis also correct (the output can be in any order )"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_rhyming_words (test_cases : List (List String)) : List\
+  \ String :=\n  sorry\n"
+"vc-theorems": "theorem result_format_prop {test_cases : List (List String)}\n  (h1\
+  \ : ∀ case ∈ test_cases, case.length > 0)\n  (h2 : test_cases.length > 0) :\n  let\
+  \ result := find_rhyming_words test_cases\n  result.head? = some \"Case : 1\" ∧\
+  \ \n  (result.filter (fun line => line.startsWith \"Case :\")).length = test_cases.length\
+  \ :=\nsorry\n\n\ntheorem words_preserved_prop {test_cases : List (List String)}\
+  \ \n  (h1 : ∀ case ∈ test_cases, case.length > 0)\n  (h2 : test_cases.length > 0)\
+  \ :\n  let result := find_rhyming_words test_cases\n  let input_words := test_cases.join\n\
+  \  let output_words := (result.filter (fun line => ¬line.startsWith \"Case :\")).bind\
+  \ (fun s => (s.split (. = ' ')))\n  List.all input_words (fun w => w ∈ output_words)\
+  \ ∧\n  List.all output_words (fun w => w ∈ input_words) :=\nsorry\n\n\ntheorem rhyming_words_grouped_prop\
+  \ {test_cases : List (List String)}\n  (h1 : ∀ case ∈ test_cases, case.length ≥\
+  \ 2)\n  (h2 : test_cases.length > 0) :\n  let result := find_rhyming_words test_cases\n\
+  \  ∀ line ∈ result, ¬line.startsWith \"Case :\" →\n    let words := line.split (.\
+  \ = ' ')\n    words.length > 1 →\n    let suffix := (words.head?.getD \"\").takeRight\
+  \ 3\n    (∀ w ∈ words, w.takeRight 3 = suffix) ∧\n    ∀ x ∈ words, ∀ y ∈ words,\
+  \ x ≤ y ∨ y ≤ x :=\nsorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval find_rhyming_words\
+  \ [[\"nope\", \"qwerty\", \"hope\"]]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n\
+  #eval find_rhyming_words [[\"brain\", \"drain\", \"request\", \"grain\", \"nest\"\
+  ]]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval find_rhyming_words [[\"these\"\
+  , \"words\", \"dont\", \"rhyme\"]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

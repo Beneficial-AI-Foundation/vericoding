@@ -1,0 +1,38 @@
+"vc-description": "Meliodas and Ban are fighting over chocolates. Meliodas has $X$\
+  \ chocolates, while Ban has $Y$. Whoever has lesser number of chocolates eats as\
+  \ many chocolates as he has from the other's collection. This eatfest war continues\
+  \ till either they have the same number of chocolates, or atleast one of them is\
+  \ left with no chocolates.\n\nCan you help Elizabeth predict the total no of chocolates\
+  \ they'll be left with at the end of their war?\n\n-----Input:-----\n- First line\
+  \ will contain $T$, number of testcases. Then the testcases follow. \n- Each testcase\
+  \ contains of a single line of input, which contains two integers $X, Y$, the no\
+  \ of chocolates Meliodas and Ban have, respectively. \n\n-----Output:-----\nFor\
+  \ each testcase, output in a single line the no of chocolates that remain after\
+  \ Ban and Meliodas stop fighting.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100000$\n\
+  - $0 \\leq X,Y \\leq 10^9$\n\n-----Sample Input:-----\n3\n\n5 3\n\n10 10\n\n4 8\
+  \  \n\n-----Sample Output:-----\n2\n\n20\n\n8  \n\n-----EXPLANATION:-----\nDenoting\
+  \ Meliodas as $M$, Ban as $B$.\nTestcase 1:\n$M$=5, $B$=3\n\nBan eates 3 chocolates\
+  \ of Meliodas.\n$M$=2, $B$=3\n\nMeliodas eats 2 chocolates of Ban.\n$M$=2, $B$=1\n\
+  \nBan eates 1 chocolate of Meliodas.\n$M$=1, $B$=1\n\nSince they have the same no\
+  \ of candies, they stop quarreling.\n\nTotal candies left: 2  \nTestcase 2:\n$M$=10,\
+  \ $B$=10\n\nSince both of them had the same candies to begin with, there was no\
+  \ point in fighting.\n\nTotal candies left: 20  \nTestcase 3:\n$M$=4, $B$=8\n\n\
+  Meliodas eats 4 chocolates of Ban.\n$M$=4, $B$=4\n\nSince they have the same no\
+  \ of candies, they stop quarreling.\n\nTotal candies left: 8"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_remaining_chocolates (m n : Nat) : Nat := sorry\n\
+  \ntheorem remaining_chocolates_positive (m n : Nat) \n    (h1 : m > 0) (h2 : n >\
+  \ 0) :\n    calculate_remaining_chocolates m n > 0 := sorry\n"
+"vc-theorems": "theorem remaining_chocolates_even (m n : Nat) \n    (h1 : m > 0) (h2\
+  \ : n > 0) :\n    calculate_remaining_chocolates m n % 2 = 0 := sorry\n\n\ntheorem\
+  \ remaining_chocolates_upper_bound (m n : Nat) \n    (h1 : m > 0) (h2 : n > 0) :\n\
+  \    calculate_remaining_chocolates m n ≤ 2 * min m n := sorry \n\n\ntheorem remaining_chocolates_divides\
+  \ (m n : Nat)\n    (h1 : m > 0) (h2 : n > 0) :\n    m % ((calculate_remaining_chocolates\
+  \ m n) / 2) = 0 ∧ \n    n % ((calculate_remaining_chocolates m n) / 2) = 0 := sorry\n\
+  \n\ntheorem equal_inputs (x : Nat) (h : x > 0) :\n    calculate_remaining_chocolates\
+  \ x x = 2 * x := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval calculate_remaining_chocolates\
+  \ 5 3\n\n/--\ninfo: 20\n-/\n#guard_msgs in\n#eval calculate_remaining_chocolates\
+  \ 10 10\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval calculate_remaining_chocolates\
+  \ 4 8\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

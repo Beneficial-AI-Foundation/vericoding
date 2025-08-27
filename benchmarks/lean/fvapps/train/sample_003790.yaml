@@ -1,0 +1,25 @@
+"vc-description": "Write a method `alternate_sq_sum()` (JS: `alternateSqSum` ) that\
+  \ takes an array of integers as input and finds the sum of squares of the elements\
+  \ at even positions (*i.e.,* 2nd, 4th, *etc.*) plus the sum of the rest of the elements\
+  \ at odd position.\n\nNOTE:\nThe values at even *position* need to be squared. For\
+  \ a language with zero-based indices, this will occur at oddly-indexed locations.\
+  \ For instance, in Python, the values at indices 1, 3, 5, *etc.* should be squared\
+  \ because these are the second, fourth, and sixth positions in the list.\nFor Example:\n\
+  \n```python\nalternate_sq_sum([11, 12, 13, 14, 15]) #should return 379\n```\n\n\
+  Explanation:\n\nElements at indices 0, 2, 4 are 11, 13, 15 and they are at odd positions\
+  \ as 11 is at position #1, 13 is at position #3 and 15 at #5.\n\nElements at indices\
+  \ 1, 3 are 12 and 14 and they are at even position.\nSo we need to add 11, 13, 15\
+  \ as they are and square of 12 and 14\n\n--> 11 + 13 + 15 + 12^2 + 14^2\n  = 11\
+  \ + 13 + 15 + 144 + 196\n  = 379\n\nFor empty arrays, result should be 0 (zero)\
+  \ (except for Haskell)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def alternate_sq_sum (l : List Int) : Int := sorry\n\ntheorem alternate_sq_sum_empty\
+  \ :\n  alternate_sq_sum [] = 0 := sorry\n"
+"vc-theorems": "theorem alternate_sq_sum_formula (l : List Int) :\n  alternate_sq_sum\
+  \ l = (List.enum l).foldr (fun (i, x) acc => \n    acc + if i % 2 = 1 then x * x\
+  \ else x) 0 := sorry\n\n\n\ntheorem alternate_sq_sum_singleton (x : Int) :\n  alternate_sq_sum\
+  \ [x] = x := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval alternate_sq_sum []\n\
+  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval alternate_sq_sum [-1, 0, -3, 0, -5, 3]\n\
+  \n/--\ninfo: 379\n-/\n#guard_msgs in\n#eval alternate_sq_sum [11, 12, 13, 14, 15]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,36 @@
+"vc-description": "A **pandigital number** is one that has its digits from ```1```\
+  \ to ```9``` occuring only once (they do not have the digit 0).\n\nThe number ```169```,\
+  \ is the first pandigital square, higher than ```100```, having its square root,\
+  \ ```13```, pandigital too.\n\nThe number ```1728``` is the first pandigital cubic,\
+  \ higher than ```1000```, having its cubic root, ```12```, pandigital too.\n\nMake\
+  \ the function ```pow_root_pandigit()```, that receives three arguments:\n\n- a\
+  \ minimum number, ```val```\n\n- the exponent of the n-perfect powers to search,\
+  \ ```n```\n\n- ```k```, maximum amount of terms that we want in the output\n\nThe\
+  \ function should output a 2D-array with an amount of k pairs of numbers(or an array\
+  \ of an only pair if we have this case). Each pair has a nth-perfect power pandigital\
+  \ higher than val with its respective nth-root that is pandigital, too.\n\nThe function\
+  \ should work in this way:\n```python\npow_root_pandigit(val, n, k) = [[root1, pow1],\
+  \ [root2, pow2], ...., [rootk, powk]]\n\"\"\"\nroot1 < root2 <.....< rootk\nval\
+  \ < pow1 < pow2 < ....< powk\nroot1 ^ n = pow1 // root2 ^ n = pow2 //........//\
+  \ rootk ^ n = powk\nall pairs rooti, powi are pandigitals\n\"\"\"\n```\nLet's see\
+  \ some examples:\n```python\npow_root_pandigit(388, 2, 3)== [[23, 529], [24, 576],\
+  \ [25, 625]] # 3 pairs (k = 3)\n```\nFor a different power:\n```python\npow_root_pandigit(1750,\
+  \ 3, 5) == [[13, 2197], [17, 4913], [18, 5832], [19, 6859], [21, 9261]] # 5 pairs\
+  \ (k = 5)\n```\n\nThe output in not inclusive for val.\n```python\npow_root_pandigit(1728,\
+  \ 3, 4) == [[13, 2197], [17, 4913], [18, 5832], [19, 6859]]\n# ∛1728 = 12\n```\n\
+  \nThe result may have less terms than the required:\n```python\npow_root_pandigit(600000000,\
+  \ 2, 5) == [25941, 672935481] # If the result has an only one pair, the output is\
+  \ an array\n```\nFurthermore, if the minimum value, ```val``` is high enough, the\
+  \ result may be an empty list:\n```python\npow_root_pandigit(900000000, 2, 5) ==\
+  \ []\n```\n\nYou may suposse that the input ```val```, ```n``` will be always: \
+  \ ```val > 10``` and ```n > 2```.\n\nEnjoy it!!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def digits (n : Nat) : List Nat := sorry\n\ndef is_pandigital (n\
+  \ : Nat) : Bool := sorry\n"
+"vc-theorems": "theorem is_pandigital_unique_digits (n : Nat) : \n  is_pandigital\
+  \ n = true →\n  ∀ (d₁ d₂ : Nat), d₁ ∈ digits n → d₂ ∈ digits n → (d₁ = d₂) := sorry\n\
+  \n\ntheorem is_pandigital_no_zero (n : Nat) :\n  is_pandigital n = true →\n  0 ∉\
+  \ digits n := sorry\n\n\ntheorem is_pandigital_valid_range (n : Nat) :\n  is_pandigital\
+  \ n = true →\n  ∀ d, d ∈ digits n → 1 ≤ d ∧ d ≤ 9 := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

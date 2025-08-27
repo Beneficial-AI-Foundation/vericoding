@@ -1,0 +1,33 @@
+"vc-description": "Chef has an array A consisting of N integers. He also has an intger\
+  \ K.\nChef wants you to find out number of different arrays he can obtain from array\
+  \ A by applying the following operation exactly K times.\n\n- Pick some element\
+  \ in the array and multiply it by -1\n\nAs answer could be quite large, print it\
+  \ modulo 109 + 7.\n\n-----Input-----\n- The first line of the input contains an\
+  \ integer T denoting the number of test cases. The description of T test cases follows.\n\
+  - The first line of each test case contains two space separated integers N, K as\
+  \ defined above.\n- The second line contains N space-separated integers A1, A2,\
+  \ ..., AN denoting the elements of the array.\n\n-----Output-----\n- For each test\
+  \ case, output a single line containing an integer corresponding to the number of\
+  \ different arrays Chef can get modulo 109 + 7.\n\n-----Constraints-----\n- 1 ≤\
+  \ T ≤ 10\n- 1 ≤ N, K ≤ 105\n- -106 ≤ Ai ≤ 106\n\n-----Subtasks-----\n- Subtask #1\
+  \ (10 points) : N, K ≤ 10\n- Subtask #2 (30 points) : N, K ≤ 100\n- Subtask #3 (60\
+  \ points) : N, K ≤ 105\n\n-----Example-----\nInput:\n3\n1 3\n100\n3 1\n1 2 1\n3\
+  \ 2\n1 2 1\n\nOutput:\n1\n3\n4\n\n-----Explanation-----\nExample case 1.\nChef has\
+  \ only one element and must apply the operation 3 times to it. After applying the\
+  \ operations, he will end up with -100. That is the only array he will get.\n\n\
+  Example case 2.\nChef can apply operation to one of three elements. So, he can obtain\
+  \ three different arrays.\n\nExample case 3.\nNote that other than applying operation\
+  \ to positions (1, 2), (1, 3), (2, 3), Chef can also apply the operation twice on\
+  \ some element and get the original.\n\nIn summary, Chef can get following four\
+  \ arrays.\n\n[1, 2, 1]\n[-1, -2, 1]\n[-1, 2, -1]\n[1, -2, -1]"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_possible_arrays (N: Nat) (K: Nat) (A: List Nat) : Nat\
+  \ := sorry\n\ntheorem single_element_array (N K : Nat) (h1: N > 0) (h2: K > 0) :\n\
+  \  count_possible_arrays 1 K [1] = 1 := sorry\n"
+"vc-theorems": "theorem result_bounds (N K: Nat) (A: List Nat) (h1: N > 0) (h2: K\
+  \ > 0) :\n  count_possible_arrays N K A < 1000000007 ∧ \n  count_possible_arrays\
+  \ N K A ≥ 0 := sorry\n\n\n\n\ntheorem symmetry (N K: Nat) (h1: N > 0) (h2: K > 0)\
+  \ :\n  let A1 := List.replicate N 1\n  let A2 := List.replicate N 2\n  count_possible_arrays\
+  \ N K A1 = count_possible_arrays N K A2 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

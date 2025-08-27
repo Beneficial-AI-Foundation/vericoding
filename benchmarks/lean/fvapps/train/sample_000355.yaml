@@ -1,0 +1,25 @@
+"vc-description": "You are given two jugs with capacities x and y litres. There is\
+  \ an infinite amount of water supply available.\nYou need to determine whether it\
+  \ is possible to measure exactly z litres using these two jugs.\n\nIf z liters of\
+  \ water is measurable, you must have z liters of water contained within one or both\
+  \ buckets by the end.\n\n\nOperations allowed:\n\nFill any of the jugs completely\
+  \ with water.\nEmpty any of the jugs.\nPour water from one jug into another till\
+  \ the other jug is completely full or the first jug itself is empty.\n\n\n\nExample\
+  \ 1: (From the famous \"Die Hard\" example)\n\nInput: x = 3, y = 5, z = 4\nOutput:\
+  \ True\n\n\n\nExample 2:\n\nInput: x = 2, y = 6, z = 5\nOutput: False\n\n\n\nCredits:Special\
+  \ thanks to @vinod23 for adding this problem and creating all test cases."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_measure_water (x y z : Nat) : Bool := sorry\n\ndef gcd\
+  \ (a b : Nat) : Nat := sorry\n"
+"vc-theorems": "theorem measurement_bounds {x y z : Nat} :\n  can_measure_water x\
+  \ y z → z ≤ x + y ∧ z ≥ 0 := sorry\n\n\ntheorem zero_target_always_possible {x y\
+  \ : Nat} :\n  can_measure_water x y 0 = true := sorry\n\n\ntheorem single_jug_measurements\
+  \ {cap : Nat} (h : cap > 0) :\n  can_measure_water cap 0 cap = true ∧\n  can_measure_water\
+  \ cap 0 (cap + 1) = false := sorry\n\n\ntheorem commutative {x y z : Nat} :\n  can_measure_water\
+  \ x y z = can_measure_water y x z := sorry\n\n\ntheorem gcd_property {x y z : Nat}\
+  \ (hx : x > 0) (hy : y > 0) :\n  can_measure_water x y z → z % gcd x y = 0 := sorry\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval can_measure_water 3 5 4\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval can_measure_water 2 6 5\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval can_measure_water 4 6 8\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

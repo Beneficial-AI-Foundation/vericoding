@@ -1,0 +1,52 @@
+"vc-description": "Phoenix loves beautiful arrays. An array is beautiful if all its\
+  \ subarrays of length $k$ have the same sum. A subarray of an array is any sequence\
+  \ of consecutive elements.\n\nPhoenix currently has an array $a$ of length $n$.\
+  \ He wants to insert some number of integers, possibly zero, into his array such\
+  \ that it becomes beautiful. The inserted integers must be between $1$ and $n$ inclusive.\
+  \ Integers may be inserted anywhere (even before the first or after the last element),\
+  \ and he is not trying to minimize the number of inserted integers.\n\n\n-----Input-----\n\
+  \nThe input consists of multiple test cases. The first line contains an integer\
+  \ $t$ ($1 \\le t \\le 50$) — the number of test cases.\n\nThe first line of each\
+  \ test case contains two integers $n$ and $k$ ($1 \\le k \\le n \\le 100$).\n\n\
+  The second line of each test case contains $n$ space-separated integers ($1 \\le\
+  \ a_i \\le n$) — the array that Phoenix currently has. This array may or may not\
+  \ be already beautiful.\n\n\n-----Output-----\n\nFor each test case, if it is impossible\
+  \ to create a beautiful array, print -1. Otherwise, print two lines.\n\nThe first\
+  \ line should contain the length of the beautiful array $m$ ($n \\le m \\le 10^4$).\
+  \ You don't need to minimize $m$.\n\nThe second line should contain $m$ space-separated\
+  \ integers ($1 \\le b_i \\le n$) — a beautiful array that Phoenix can obtain after\
+  \ inserting some, possibly zero, integers into his array $a$. You may print integers\
+  \ that weren't originally in array $a$.\n\nIf there are multiple solutions, print\
+  \ any. It's guaranteed that if we can make array $a$ beautiful, we can always make\
+  \ it with resulting length no more than $10^4$.\n\n\n-----Example-----\nInput\n\
+  4\n4 2\n1 2 2 1\n4 3\n1 2 2 1\n3 2\n1 2 3\n4 4\n4 3 4 2\n\nOutput\n5\n1 2 1 2 1\n\
+  4\n1 2 2 1\n-1\n7\n4 3 2 1 4 3 2\n\n\n-----Note-----\n\nIn the first test case,\
+  \ we can make array $a$ beautiful by inserting the integer $1$ at index $3$ (in\
+  \ between the two existing $2$s). Now, all subarrays of length $k=2$ have the same\
+  \ sum $3$. There exists many other possible solutions, for example:   $2, 1, 2,\
+  \ 1, 2, 1$  $1, 2, 1, 2, 1, 2$ \n\nIn the second test case, the array is already\
+  \ beautiful: all subarrays of length $k=3$ have the same sum $5$.\n\nIn the third\
+  \ test case, it can be shown that we cannot insert numbers to make array $a$ beautiful.\n\
+  \nIn the fourth test case, the array $b$ shown is beautiful and all subarrays of\
+  \ length $k=4$ have the same sum $10$. There exist other solutions also."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_beautiful_array (n k : Nat) (a : List Nat) : List Nat\
+  \ := sorry\n\ndef countDistinct (l : List Nat) : Nat :=\n  (l.foldl (fun acc x =>\
+  \ if x ∈ acc then acc else x::acc) []).length\n"
+"vc-theorems": "theorem beautiful_array_properties \n  (n k : Nat) (a : List Nat)\n\
+  \  (hn : n > 0) (hk : k > 0) (hnk : n ≤ 10) (hk10 : k ≤ 10)\n  (ha_bounds : ∀ x\
+  \ ∈ a, x ≥ 1 ∧ x ≤ 10)\n  (ha_nonempty : a.length > 0)\n  (ha_size : a.length ≤\
+  \ 20) :\n  let result := solve_beautiful_array n k a\n  match result with\n  | []\
+  \ => countDistinct a > k\n  | result => (\n    result.length = n * k ∧\n    (∀ x\
+  \ ∈ a, x ∈ result) ∧\n    countDistinct result ≤ k ∧\n    ∀ i, i < n → \n      result.take\
+  \ k = (result.drop (i*k)).take k\n  )\n  :=\nsorry\n\n\ntheorem edge_case_k_one\n\
+  \  (a : List Nat)\n  (ha_bounds : ∀ x ∈ a, x ≥ 1 ∧ x ≤ 10)\n  (ha_nonempty : a.length\
+  \ > 0)\n  (ha_size : a.length ≤ 20) :\n  let result := solve_beautiful_array 1 1\
+  \ a\n  match result with \n  | [] => countDistinct a > 1\n  | _ => countDistinct\
+  \ a ≤ 1\n  :=\nsorry\n\n\ntheorem edge_case_k_equals_unique\n  (a : List Nat)\n\
+  \  (ha_bounds : ∀ x ∈ a, x ≥ 1 ∧ x ≤ 10)\n  (ha_nonempty : a.length > 0)\n  (ha_size\
+  \ : a.length ≤ 20) :\n  let k := countDistinct a\n  solve_beautiful_array 1 k a\
+  \ ≠ []\n  :=\nsorry\n\n/--\ninfo: n1 * k1\n-/\n#guard_msgs in\n#eval len result1\n\
+  \n/--\ninfo: n3 * k3\n-/\n#guard_msgs in\n#eval len result3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

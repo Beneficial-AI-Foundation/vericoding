@@ -1,0 +1,22 @@
+"vc-description": "This kata requires you to convert minutes (`int`) to hours and\
+  \ minutes in the format `hh:mm` (`string`).\n\nIf the input is `0` or negative value,\
+  \ then you should return `\"00:00\"`\n\n**Hint:** use the modulo operation to solve\
+  \ this challenge. The modulo operation simply returns the remainder after a division.\
+  \ For example the remainder of 5 / 2 is 1, so 5 modulo 2 is 1.\n\n\n## Example\n\
+  \nIf the input is `78`, then you should return `\"01:18\"`, because 78 minutes converts\
+  \ to 1 hour and 18 minutes.\n\n\nGood luck! :D"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def time_convert (minutes : Int) : String := sorry\n\ntheorem time_convert_output_format\
+  \ {minutes : Int}\n  (h1 : -1000 ≤ minutes) (h2 : minutes ≤ 10000) :\n  ∃ pre post\
+  \ : String,\n    (time_convert minutes = pre ++ \":\" ++ post) ∧\n    (∀ c ∈ pre.data,\
+  \ c.isDigit) ∧\n    (∀ c ∈ post.data, c.isDigit) ∧\n    post.length = 2 := sorry\n"
+"vc-theorems": "theorem time_convert_zero_or_negative {minutes : Int}\n  (h1 : -1000\
+  \ ≤ minutes) (h2 : minutes ≤ 0) :\n  time_convert minutes = \"00:00\" := sorry\n\
+  \n\ntheorem time_convert_properties {minutes : Int}\n  (h1 : 1 ≤ minutes) (h2 :\
+  \ minutes ≤ 10000) :\n  ∃ hours mins : Nat,\n    (time_convert minutes = toString\
+  \ hours ++ \":\" ++ toString mins) ∧\n    hours * 60 + mins = minutes ∧\n    mins\
+  \ < 60 := sorry\n\n/--\ninfo: '00:00'\n-/\n#guard_msgs in\n#eval time_convert 0\n\
+  \n/--\ninfo: '01:18'\n-/\n#guard_msgs in\n#eval time_convert 78\n\n/--\ninfo: '16:10'\n\
+  -/\n#guard_msgs in\n#eval time_convert 970\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

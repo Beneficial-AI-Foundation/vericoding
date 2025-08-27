@@ -1,0 +1,49 @@
+"vc-description": "Today is Chef's birthday. His mom decided to surprise him with\
+  \ a truly fantastic gift: his favourite binary string B. But, unfortunately, all\
+  \ the stocks of binary string B have been sold out, and only a binary string A (A\
+  \ ≠ B) is available in the market.\nShe purchases the string A and tries to convert\
+  \ it to string B by applying any of following three operations zero or more times.\n\
+  AND Operation:\nShe will choose a pair of indices i and j such that i != j and perform\
+  \ following sequence of operations.\n\n-  result = Ai & Aj \n-  Ai = result & Ai\
+  \ \n-  Aj = result & Aj \n\nOR Operation:\nShe will choose a pair of indices i and\
+  \ j such that i != j and perform following sequence of operations.\n\n-  result\
+  \ = Ai | Aj \n-  Ai = result | Ai \n-  Aj = result | Aj \n\nXOR Operation:\nShe\
+  \ will choose a pair of indices i and j such that i != j and perform following sequence\
+  \ of operations.\n\n-  result = Ai ^ Aj \n-  Ai = result ^ Ai \n-  Aj = result ^\
+  \ Aj \n\nChef's mom is eagerly waiting to surprise him with his favourite gift and\
+  \ therefore, she wants to convert string A to string B as fast as possible. Can\
+  \ you please help her by telling her the minimum number of operations she will require?\
+  \ If it is impossible to do so, then let Chef's mom know about it.\n\n-----Input-----\n\
+  First line of input contains a single integer T denoting the number of test cases.\
+  \ T test cases follow.\nFirst line of each test case, will contain binary string\
+  \ A.\nSecond line of each test case, will contain binary string B.\n\n-----Output-----\n\
+  For each test case, Print \"Lucky Chef\" (without quotes) in first line and minimum\
+  \ number of operations required to convert string A to sting B in second line if\
+  \ conversion is possible. Print \"Unlucky Chef\" (without quotes) in a new line\
+  \ otherwise.\n\n-----Constraints-----\n- 1 ≤ T ≤ 105\n- 1 ≤ |A| ≤ 106\n- 1 ≤ |B|\
+  \ ≤ 106\n- A != B\n- |A| = |B|\n- sum of |A| over all test cases does not exceed\
+  \ 106\n- sum of |B| over all test cases does not exceed 106\n\n-----Subtasks-----\n\
+  -  Subtask #1 (40 points) : Sum of |A| & |B| over all test cases does not exceed\
+  \ 103\n-  Subtask #2 (60 points) : Sum of |A| & |B| over all test cases does not\
+  \ exceed 106\n\n-----Example-----\nInput\n2\n101\n010\n1111\n1010\nOutput\nLucky\
+  \ Chef\n2\nUnlucky Chef\n\n-----Explanation-----\nExample case 1.\n- Applying XOR\
+  \ operation with indices i = 1 and j = 2. Resulting string will be 011.\n- Then,\
+  \ Applying AND operation with indices i = 1 and j = 3. Resulting string will be\
+  \ 010.\n\nExample case 2.\n- It is impossible to convert string A to string B."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isAllSame (s : String) : Bool := sorry\n\ndef solveBinaryConversion\
+  \ (source target : String) : Bool × Nat := sorry\n"
+"vc-theorems": "theorem all_same_string_impossible (s : String) (h : s.length > 0)\
+  \ :\n  isAllSame s = true →\n  let target := if s.contains '0' then String.mk (List.replicate\
+  \ s.length '1')\n                else String.mk (List.replicate s.length '0')\n\
+  \  let result := solveBinaryConversion s target\n  result.1 = false ∧ result.2 =\
+  \ 0 := sorry\n\n\ntheorem identical_strings_need_no_ops (s : String) (h : s.length\
+  \ > 0) :\n  isAllSame s = false →\n  let result := solveBinaryConversion s s\n \
+  \ result.1 = true ∧ result.2 = 0 := sorry\n\n\ntheorem result_is_maximal_differences\
+  \ (s : String) (h : s.length > 0) :\n  isAllSame s = false →\n  let target := String.mk\
+  \ (s.toList.map (fun c => if c = '0' then '1' else '0'))\n  let zeros_to_ones :=\
+  \ s.toList.filter (· = '0') |>.length\n  let ones_to_zeros := s.toList.filter (·\
+  \ = '1') |>.length\n  let result := solveBinaryConversion s target\n  result.1 =\
+  \ true ∧ result.2 = max zeros_to_ones ones_to_zeros := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

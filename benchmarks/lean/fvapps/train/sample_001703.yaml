@@ -1,0 +1,40 @@
+"vc-description": "### Sudoku Background\n\nSudoku is a game played on a 9x9 grid.\
+  \ The goal of the game is to fill all cells of the grid with digits from 1 to 9,\
+  \ so that each column, each row, and each of the nine 3x3 sub-grids (also known\
+  \ as blocks) contain all of the digits from 1 to 9. \n(More info at: http://en.wikipedia.org/wiki/Sudoku)\n\
+  \n### Sudoku Solution Validator\n\nWrite a function `validSolution`/`ValidateSolution`/`valid_solution()`\
+  \ that accepts a 2D array representing a Sudoku board, and returns true if it is\
+  \ a valid solution, or false otherwise. The cells of the sudoku board may also contain\
+  \ 0's, which will represent empty cells. Boards containing one or more zeroes are\
+  \ considered to be invalid solutions.\n\nThe board is always 9 cells by 9 cells,\
+  \ and every cell only contains integers from 0 to 9.\n \n\n### Examples\n\n```\n\
+  validSolution([\n  [5, 3, 4, 6, 7, 8, 9, 1, 2],\n  [6, 7, 2, 1, 9, 5, 3, 4, 8],\n\
+  \  [1, 9, 8, 3, 4, 2, 5, 6, 7],\n  [8, 5, 9, 7, 6, 1, 4, 2, 3],\n  [4, 2, 6, 8,\
+  \ 5, 3, 7, 9, 1],\n  [7, 1, 3, 9, 2, 4, 8, 5, 6],\n  [9, 6, 1, 5, 3, 7, 2, 8, 4],\n\
+  \  [2, 8, 7, 4, 1, 9, 6, 3, 5],\n  [3, 4, 5, 2, 8, 6, 1, 7, 9]\n]); // => true\n\
+  ```\n\n```\nvalidSolution([\n  [5, 3, 4, 6, 7, 8, 9, 1, 2], \n  [6, 7, 2, 1, 9,\
+  \ 0, 3, 4, 8],\n  [1, 0, 0, 3, 4, 2, 5, 6, 0],\n  [8, 5, 9, 7, 6, 1, 0, 2, 0],\n\
+  \  [4, 2, 6, 8, 5, 3, 7, 9, 1],\n  [7, 1, 3, 9, 2, 4, 8, 5, 6],\n  [9, 0, 1, 5,\
+  \ 3, 7, 2, 1, 4],\n  [2, 8, 7, 4, 1, 9, 6, 3, 5],\n  [3, 0, 0, 4, 8, 1, 1, 7, 9]\n\
+  ]); // => false\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef valid_solution (board : List (List\
+  \ Nat)) : Bool := sorry\n\ndef check_unique_1_to_9 (arr : List Nat) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_box_elements (board : List (List Nat)) (box_i box_j : Nat)\
+  \ : List Nat := sorry \n\ndef get_column (board : List (List Nat)) (j : Nat) : List\
+  \ Nat := sorry\n"
+"vc-theorems": "theorem valid_grid_properties (board : List (List Nat)) :\n  (∀ row\
+  \ ∈ board, check_unique_1_to_9 row) ∧ \n  (∀ j, 0 ≤ j ∧ j < 9 → check_unique_1_to_9\
+  \ (get_column board j)) ∧\n  (∀ i j, 0 ≤ i ∧ i < 3 ∧ 0 ≤ j ∧ j < 3 → \n    check_unique_1_to_9\
+  \ (get_box_elements board (3*i) (3*j)))\n  → valid_solution board := sorry\n\n\n\
+  theorem invalid_numbers (board : List (List Nat)) :\n  (∃ row ∈ board, ∃ x ∈ row,\
+  \ x < 1 ∨ x > 9) →\n  ¬ valid_solution board := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval valid_solution [[5, 3, 4, 6, 7, 8, 9, 1, 2], [6, 7, 2, 1, 9, 5, 3, 4,\
+  \ 8], [1, 9, 8, 3, 4, 2, 5, 6, 7], [8, 5, 9, 7, 6, 1, 4, 2, 3], [4, 2, 6, 8, 5,\
+  \ 3, 7, 9, 1], [7, 1, 3, 9, 2, 4, 8, 5, 6], [9, 6, 1, 5, 3, 7, 2, 8, 4], [2, 8,\
+  \ 7, 4, 1, 9, 6, 3, 5], [3, 4, 5, 2, 8, 6, 1, 7, 9]]\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval valid_solution [[5, 3, 4, 6, 7, 8, 9, 1, 2], [6, 7, 2, 1, 9, 0, 3, 4,\
+  \ 8], [1, 0, 0, 3, 4, 2, 5, 6, 0], [8, 5, 9, 7, 6, 1, 0, 2, 0], [4, 2, 6, 8, 5,\
+  \ 3, 7, 9, 1], [7, 1, 3, 9, 2, 4, 8, 5, 6], [9, 0, 1, 5, 3, 7, 2, 1, 4], [2, 8,\
+  \ 7, 4, 1, 9, 6, 3, 5], [3, 0, 0, 4, 8, 1, 1, 7, 9]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

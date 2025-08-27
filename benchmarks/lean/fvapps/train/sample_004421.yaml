@@ -1,0 +1,19 @@
+"vc-description": "Convert a hash into an array. Nothing more, Nothing less.\n\n```\n\
+  {name: 'Jeremy', age: 24, role: 'Software Engineer'}\n```\nshould be converted into\n\
+  \n```\n[[\"name\", \"Jeremy\"], [\"age\", 24], [\"role\", \"Software Engineer\"\
+  ]]\n```\n\n```if:python,javascript,crystal\n**Note**: The output array should be\
+  \ sorted alphabetically.\n```\n\nGood Luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef convert_hash_to_array (d: List (String\
+  \ × (String ⊕ Int))) : List (String × (String ⊕ Int)) :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def LePair (p1 p2: String × (String ⊕ Int)) : Prop :=\n  p1.1 ≤\
+  \ p2.1\n"
+"vc-theorems": "theorem convert_hash_output_is_sorted (d: List (String × (String ⊕\
+  \ Int))) :\n  let result := convert_hash_to_array d\n  List.Pairwise LePair result\
+  \ ∧ \n  (∀ x ∈ result, ∃ k v, x = (k, v)) ∧\n  result = d :=\nsorry\n\n\ntheorem\
+  \ convert_hash_empty_dict :\n  convert_hash_to_array [] = [] :=\nsorry\n\n/--\n\
+  info: expected1\n-/\n#guard_msgs in\n#eval convert_hash_to_array {\"name\": \"Jeremy\"\
+  }\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval convert_hash_to_array {\"name\"\
+  : \"Jeremy\", \"age\": 24, \"role\": \"Software Engineer\"}\n\n/--\ninfo: expected3\n\
+  -/\n#guard_msgs in\n#eval convert_hash_to_array {}\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

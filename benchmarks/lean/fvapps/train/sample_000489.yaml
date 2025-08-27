@@ -1,0 +1,22 @@
+"vc-description": "Implement a basic calculator to evaluate a simple expression string.\n\
+  \nThe expression string contains only non-negative integers, +, -, *, / operators\
+  \ and empty spaces  . The integer division should truncate toward zero.\n\nExample\
+  \ 1:\n\n\nInput: \"3+2*2\"\nOutput: 7\n\n\nExample 2:\n\n\nInput: \" 3/2 \"\nOutput:\
+  \ 1\n\nExample 3:\n\n\nInput: \" 3+5 / 2 \"\nOutput: 5\n\n\nNote:\n\n\n       You\
+  \ may assume that the given expression is always valid.\n       Do not use the eval\
+  \ built-in library function."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate (s : String) : Option Int := sorry\n\n@[simp] theorem\
+  \ calculate_positive_number (n : Int) \n  (h : 1 ≤ n ∧ n ≤ 100) : \n  calculate\
+  \ (toString n) = some n := sorry\n\n\n"
+"vc-theorems": "theorem calculate_addition (a b : Int)\n  (h₁ : 1 ≤ a ∧ a ≤ 50) (h₂\
+  \ : 1 ≤ b ∧ b ≤ 50) :\n  calculate (toString a ++ \"+\" ++ toString b) = some (a\
+  \ + b) := sorry\n\n\ntheorem calculate_multiplication (a b : Int)\n  (h₁ : 1 ≤ a\
+  \ ∧ a ≤ 50) (h₂ : 1 ≤ b ∧ b ≤ 50) :\n  calculate (toString a ++ \"*\" ++ toString\
+  \ b) = some (a * b) := sorry\n\n\ntheorem calculate_division (a b : Int)\n  (h₁\
+  \ : 1 ≤ a ∧ a ≤ 50) (h₂ : 1 ≤ b ∧ b ≤ 50) :\n  calculate (toString a ++ \"/\" ++\
+  \ toString b) = some (a / b) := sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval\
+  \ calculate \"3+2*2\"\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval calculate \" 3/2\
+  \ \"\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval calculate \" 3+5 / 2 \"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

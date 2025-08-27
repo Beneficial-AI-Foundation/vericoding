@@ -1,0 +1,38 @@
+"vc-description": "Zookeeper is buying a carton of fruit to feed his pet wabbit. The\
+  \ fruits are a sequence of apples and oranges, which is represented by a binary\
+  \ string $s_1s_2\\ldots s_n$ of length $n$. $1$ represents an apple and $0$ represents\
+  \ an orange.\n\nSince wabbit is allergic to eating oranges, Zookeeper would like\
+  \ to find the longest contiguous sequence of apples. Let $f(l,r)$ be the longest\
+  \ contiguous sequence of apples in the substring $s_{l}s_{l+1}\\ldots s_{r}$. \n\
+  \nHelp Zookeeper find $\\sum_{l=1}^{n} \\sum_{r=l}^{n} f(l,r)$, or the sum of $f$\
+  \ across all substrings.\n\n\n-----Input-----\n\nThe first line contains a single\
+  \ integer $n$ $(1 \\leq n \\leq 5 \\cdot 10^5)$.\n\n The next line contains a binary\
+  \ string $s$ of length $n$ $(s_i \\in \\{0,1\\})$ \n\n\n-----Output-----\n\nPrint\
+  \ a single integer: $\\sum_{l=1}^{n} \\sum_{r=l}^{n} f(l,r)$. \n\n\n-----Examples-----\n\
+  Input\n4\n0110\n\nOutput\n12\n\nInput\n7\n1101001\n\nOutput\n30\n\nInput\n12\n011100011100\n\
+  \nOutput\n156\n\n\n\n-----Note-----\n\nIn the first test, there are ten substrings.\
+  \ The list of them (we let $[l,r]$ be the substring $s_l s_{l+1} \\ldots s_r$):\
+  \  $[1,1]$: 0  $[1,2]$: 01  $[1,3]$: 011  $[1,4]$: 0110  $[2,2]$: 1  $[2,3]$: 11\
+  \  $[2,4]$: 110  $[3,3]$: 1  $[3,4]$: 10  $[4,4]$: 0 \n\nThe lengths of the longest\
+  \ contiguous sequence of ones in each of these ten substrings are $0,1,2,2,1,2,2,1,1,0$\
+  \ respectively. Hence, the answer is $0+1+2+2+1+2+2+1+1+0 = 12$."
+"vc-preamble": "import Imports.AllImports\n\ndef SegmentTree.query (tree : SegmentTree)\
+  \ (i j : Nat) : Nat :=\n  sorry\n\n\ndef longest_apple_sequence (n : Nat) (s : List\
+  \ Bool) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_max : List Nat → Nat \n| [] => 0\n| [x] => x\n| (x::xs)\
+  \ => max x (list_max xs)\n"
+"vc-theorems": "theorem query_matches_slice_max {lst : List Nat} {tree : SegmentTree}\
+  \ \n  (h : tree.lst = lst) :\n  ∀ i j, i < j → j ≤ lst.length →\n  tree.query i\
+  \ j = list_max (List.drop i (List.take j lst)) :=\n  sorry\n\n\ntheorem query_whole_list\
+  \ {lst : List Nat} {tree : SegmentTree}\n  (h : tree.lst = lst) :\n  tree.query\
+  \ 0 lst.length = list_max lst :=\n  sorry\n\n\ntheorem query_single_element {lst\
+  \ : List Nat} {tree : SegmentTree}\n  (h : tree.lst = lst) :\n  ∀ (i : Nat) (h :\
+  \ i < lst.length),\n  tree.query i (i+1) = lst[i]'h :=\n  sorry\n\n\ntheorem longest_apple_sequence_non_negative\
+  \ \n  (n : Nat) (s : List Bool) :\n  longest_apple_sequence n s ≥ 0 :=\n  sorry\n\
+  \n\ntheorem all_zeros_gives_zero (n : Nat) (s : List Bool)\n  (h : ∀ x ∈ s, x =\
+  \ false) :\n  longest_apple_sequence n s = 0 :=\n  sorry\n\n/--\ninfo: 12\n-/\n\
+  #guard_msgs in\n#eval longest_apple_sequence 4 \"0110\"\n\n/--\ninfo: 30\n-/\n#guard_msgs\
+  \ in\n#eval longest_apple_sequence 7 \"1101001\"\n\n/--\ninfo: 156\n-/\n#guard_msgs\
+  \ in\n#eval longest_apple_sequence 12 \"011100011100\"\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

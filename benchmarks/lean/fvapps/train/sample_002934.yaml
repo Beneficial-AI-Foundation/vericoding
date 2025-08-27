@@ -1,0 +1,28 @@
+"vc-description": "You will be given a string and you task is to check if it is possible\
+  \ to convert that string into a palindrome by removing a single character. If the\
+  \ string is already a palindrome, return `\"OK\"`. If it is not, and we can convert\
+  \ it to a palindrome by removing one character, then return `\"remove one\"`, otherwise\
+  \ return `\"not possible\"`. The order of the characters should not be changed.\n\
+  \nFor example:\n```Haskell\nsolve(\"abba\") = \"OK\". -- This is a palindrome\n\
+  solve(\"abbaa\") = \"remove one\". -- remove the 'a' at the extreme right. \nsolve(\"\
+  abbaab\") = \"not possible\". \n```\n\nMore examples in the test cases. \n\nGood\
+  \ luck!\n\nIf you like this Kata, please try [Single Character Palindromes II](https://www.codewars.com/kata/5a66ea69e6be38219f000110)"
+"vc-preamble": "import Imports.AllImports\n\ndef solve (s : String) : String := sorry\n\
+  \ndef isPalindrome (s : String) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def canBePalindromeWithOneRemoval (s : String) : Bool := sorry\n\
+  \ndef reverse (s : String) : String := sorry\n"
+"vc-theorems": "theorem solve_result_valid (s : String) :\n  solve s = \"OK\" ∨ solve\
+  \ s = \"remove one\" ∨ solve s = \"not possible\" := sorry\n\n\ntheorem ok_means_palindrome\
+  \ (s : String) :\n  solve s = \"OK\" → isPalindrome s := sorry\n\n\ntheorem remove_one_means_possible_palindrome\
+  \ (s : String) :\n  solve s = \"remove one\" → canBePalindromeWithOneRemoval s :=\
+  \ sorry\n\n\ntheorem not_possible_means_neither (s : String) :\n  solve s = \"not\
+  \ possible\" → ¬isPalindrome s ∧ ¬canBePalindromeWithOneRemoval s := sorry\n\n\n\
+  theorem solve_symmetric (s : String) :\n  solve s = solve (reverse s) := sorry\n\
+  \n\ntheorem single_char_ok (s : String) : \n  s.length = 1 → solve s = \"OK\" :=\
+  \ sorry\n\n\ntheorem two_chars_property (s : String) (h : s.length = 2) :\n  (s.front\
+  \ = s.back → solve s = \"OK\") ∧\n  (s.front ≠ s.back → solve s = \"remove one\"\
+  ) := sorry\n\n/--\ninfo: 'OK'\n-/\n#guard_msgs in\n#eval solve \"abba\"\n\n/--\n\
+  info: 'remove one'\n-/\n#guard_msgs in\n#eval solve \"abbaa\"\n\n/--\ninfo: 'not\
+  \ possible'\n-/\n#guard_msgs in\n#eval solve \"abbaab\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

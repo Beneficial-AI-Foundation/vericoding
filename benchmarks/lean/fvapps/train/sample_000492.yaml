@@ -1,0 +1,26 @@
+"vc-description": "Given a sentence text (A sentence is a string of space-separated\
+  \ words) in the following format:\n\nFirst letter is in upper case.\nEach word in\
+  \ text are separated by a single space.\n\nYour task is to rearrange the words in\
+  \ text such that all words are rearranged in an increasing order of their lengths.\
+  \ If two words have the same length, arrange them in their original order.\nReturn\
+  \ the new text following the format shown above.\n \nExample 1:\nInput: text = \"\
+  Leetcode is cool\"\nOutput: \"Is cool leetcode\"\nExplanation: There are 3 words,\
+  \ \"Leetcode\" of length 8, \"is\" of length 2 and \"cool\" of length 4.\nOutput\
+  \ is ordered by length and the new first word starts with capital letter.\n\nExample\
+  \ 2:\nInput: text = \"Keep calm and code on\"\nOutput: \"On and keep calm code\"\
+  \nExplanation: Output is ordered as follows:\n\"On\" 2 letters.\n\"and\" 3 letters.\n\
+  \"keep\" 4 letters in case of tie order by position in original text.\n\"calm\"\
+  \ 4 letters.\n\"code\" 4 letters.\n\nExample 3:\nInput: text = \"To be or not to\
+  \ be\"\nOutput: \"To be or to be not\"\n\n \nConstraints:\n\ntext begins with a\
+  \ capital letter and then contains lowercase letters and single space between words.\n\
+  1 <= text.length <= 10^5"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def arrange_words (s : String) : String := sorry\n\ntheorem arrange_words_length_order\
+  \ (text : String) (h : text ≠ \"\") :\n  let result := arrange_words text\n  let\
+  \ result_words := (result.toLower.split (· = ' '))\n  ∀ i, i < result_words.length\
+  \ - 1 →\n    result_words[i]!.length ≤ result_words[i+1]!.length := sorry\n"
+"vc-theorems": "theorem arrange_words_preserves_word_count (text : String) (h : text\
+  \ ≠ \"\") :\n  let result := arrange_words text\n  (result.split (· = ' ')).length\
+  \ = (text.split (· = ' ')).length := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

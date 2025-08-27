@@ -1,0 +1,24 @@
+"vc-description": "Given an array of integers nums, find the maximum length of a subarray\
+  \ where the product of all its elements is positive.\nA subarray of an array is\
+  \ a consecutive sequence of zero or more values taken out of that array.\nReturn the\
+  \ maximum length of a subarray with positive product.\n \nExample 1:\nInput: nums\
+  \ = [1,-2,-3,4]\nOutput: 4\nExplanation: The array nums already has a positive product\
+  \ of 24.\n\nExample 2:\nInput: nums = [0,1,-2,-3,-4]\nOutput: 3\nExplanation: The\
+  \ longest subarray with positive product is [1,-2,-3] which has a product of 6.\n\
+  Notice that we cannot include 0 in the subarray since that'll make the product 0\
+  \ which is not positive.\nExample 3:\nInput: nums = [-1,-2,-3,0,1]\nOutput: 2\n\
+  Explanation: The longest subarray with positive product is [-1,-2] or [-2,-3].\n\
+  \nExample 4:\nInput: nums = [-1,2]\nOutput: 1\n\nExample 5:\nInput: nums = [1,2,3,5,-6,4,0,10]\n\
+  Output: 4\n\n \nConstraints:\n\n1 <= nums.length <= 10^5\n-10^9 <= nums[i] <= 10^9"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def getMaxLen (nums : List Int) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem getMaxLen_nonnegative (nums : List Int) : \n  getMaxLen nums\
+  \ ≥ 0 := sorry\n\n\ntheorem getMaxLen_upper_bound (nums : List Int) :\n  getMaxLen\
+  \ nums ≤ nums.length := sorry\n\n\ntheorem getMaxLen_all_zeros {nums : List Int}\
+  \ (h : ∀ x ∈ nums, x = 0) : \n  getMaxLen nums = 0 := sorry\n\n\ntheorem getMaxLen_zeros_only\
+  \ (n : Nat) : \n  getMaxLen (List.replicate n 0) = 0 := sorry\n\n/--\ninfo: 4\n\
+  -/\n#guard_msgs in\n#eval getMaxLen [1, -2, -3, 4]\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval getMaxLen [0, 1, -2, -3, -4]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval\
+  \ getMaxLen [-1, -2, -3, 0, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

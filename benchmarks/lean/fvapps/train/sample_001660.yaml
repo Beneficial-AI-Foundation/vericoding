@@ -1,0 +1,36 @@
+"vc-description": "Write a function that determines whether a string is a valid guess\
+  \ in a Boggle board, as per the rules of Boggle. A Boggle board is a 2D array of\
+  \ individual characters, e.g.:\n```python\n[ [\"I\",\"L\",\"A\",\"W\"],\n  [\"B\"\
+  ,\"N\",\"G\",\"E\"],\n  [\"I\",\"U\",\"A\",\"O\"],\n  [\"A\",\"S\",\"R\",\"L\"]\
+  \ ]\n```\nValid guesses are strings which can be formed by connecting adjacent cells\
+  \ (horizontally, vertically, or diagonally) without re-using any previously used\
+  \ cells.\n\nFor example, in the above board \"BINGO\", \"LINGO\", and \"ILNBIA\"\
+  \ would all be valid guesses, while \"BUNGIE\", \"BINS\", and \"SINUS\" would not.\n\
+  \nYour function should take two arguments (a 2D array and a string) and return true\
+  \ or false depending on whether the string is found in the array as per Boggle rules.\n\
+  \nTest cases will provide various array and string sizes (squared arrays up to 150x150\
+  \ and strings up to 150 uppercase letters). You do not have to check whether the\
+  \ string is a real word or not, only if it's a valid guess."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_word (board : List (List Char)) (word : String) : Bool\
+  \ := sorry\n\ntheorem single_char_findable {board : List (List Char)} (h1 : board.length\
+  \ > 0) \n    (h2 : ∀ (row : List Char), row ∈ board → row.length > 0) \n    (h3\
+  \ : ∀ (row₁ row₂ : List Char), row₁ ∈ board → row₂ ∈ board → row₁.length = row₂.length)\
+  \ :\n  ∀ x y, x < board.length → y < (board.get! 0).length → \n    find_word board\
+  \ ((board.get! x).get! y).toString := sorry\n"
+"vc-theorems": "theorem long_word_not_findable {board : List (List Char)} (h1 : board.length\
+  \ > 0)\n    (h2 : ∀ (row : List Char), row ∈ board → row.length > 0)\n    (h3 :\
+  \ ∀ (row₁ row₂ : List Char), row₁ ∈ board → row₂ ∈ board → row₁.length = row₂.length)\n\
+  \    (word : String) :\n  word.length > board.length * (board.get! 0).length →\n\
+  \    ¬(find_word board word) := sorry\n\n\ntheorem single_cell_board_theorems :\n\
+  \  find_word [['A']] \"A\" ∧\n  ¬(find_word [['A']] \"B\") := sorry\n\n\ntheorem\
+  \ single_row_board_theorems :\n  find_word [['A', 'B']] \"AB\" ∧\n  find_word [['A',\
+  \ 'B']] \"BA\" := sorry\n\n\ntheorem single_column_board_theorems :\n  find_word\
+  \ [['A'], ['B']] \"AB\" ∧\n  find_word [['A'], ['B']] \"BA\" := sorry\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval find_word [[\"I\", \"L\", \"A\", \"W\"], [\"B\"\
+  , \"N\", \"G\", \"E\"], [\"I\", \"U\", \"A\", \"O\"], [\"A\", \"S\", \"R\", \"L\"\
+  ]] \"BINGO\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval find_word board1 \"\
+  BUNGIE\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval find_word board1 \"ILNBIA\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

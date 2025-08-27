@@ -1,0 +1,24 @@
+"vc-description": "Witua is a little student from the University of Lviv. He enjoys\
+  \ studying math. Witua knows a lot of famous mathematicians like Eratosthenes, Pythagoras,\
+  \ Fermat, Diophantus, Furko, Gauss and so on. However, his favorite one is Euler.\
+  \ The only thing Witua likes more than Euler is Euler’s totient function φ. He is\
+  \ exploring the nature of this function. One of the steps of his work is finding\
+  \ φ(i)/i for all 2≤i≤N. He doesn’t need to know every such value, but Witua wonders\
+  \ for what value i, is φ(i)/i the maximum he can get? Help little student to find\
+  \ such i that φ(i)/i is maximum among all the  2≤i≤N.\n\n-----Input-----\nThe first\
+  \ line contains single integer T - the number of test cases. Each of the next T\
+  \ lines contains a single integer N. \n\n-----Output-----\nFor every test case output\
+  \ i such that φ(i)/i is maximum among all i (2≤i≤N) in a separate line.\n\n-----Constrains-----\n\
+  T (1≤T≤500 )\n\nN(2≤N≤10^18)\n\n\n-----Example-----\nInput:\n3\n2\n3\n4\n\nOutput:\n\
+  2\n3\n3\n\nExplanationφ(2)/2=1/2\nφ(3)/3=2/3\nφ(4)/4=2/4"
+"vc-preamble": "import Imports.AllImports\n\ndef sqrt (n : Nat) : Nat :=\n  sorry\n\
+  \n\ndef modular_pow (base exponent modulus : Nat) : Nat :=\n  sorry\n\n\n\n\ndef\
+  \ is_prime (n : Nat) : Bool :=\n  sorry\n\n\n\n\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_max_totient_ratio (n : Nat) : Nat :=\n  sorry\n\n\n"
+"vc-theorems": "theorem find_max_totient_ratio_small_values :\n  find_max_totient_ratio\
+  \ 2 = 2 ∧\n  find_max_totient_ratio 4 = 3 ∧\n  find_max_totient_ratio 10 = 7 :=\n\
+  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_max_totient_ratio 2\n\n/--\n\
+  info: 3\n-/\n#guard_msgs in\n#eval find_max_totient_ratio 3\n\n/--\ninfo: 3\n-/\n\
+  #guard_msgs in\n#eval find_max_totient_ratio 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

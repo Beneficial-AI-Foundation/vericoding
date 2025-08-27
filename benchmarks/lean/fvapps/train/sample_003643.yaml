@@ -1,0 +1,21 @@
+"vc-description": "If this challenge is too easy for you, check out: \nhttps://www.codewars.com/kata/5cc89c182777b00001b3e6a2\n\
+  \n___\n\nUpside-Down Pyramid Addition is the process of taking a list of numbers\
+  \ and consecutively adding them together until you reach one number.\n\nWhen given\
+  \ the numbers `2, 1, 1` the following process occurs:\n```\n 2   1   1\n   3   2\
+  \ \n     5\n```\n\nThis ends in the number `5`.\n\n___\n\n### YOUR TASK\n\nGiven\
+  \ the right side of an Upside-Down Pyramid (Ascending), write a function that will\
+  \ return the original list.\n\n### EXAMPLE\n\n```python\nreverse([5, 2, 1]) == [2,\
+  \ 1, 1]\n```\n\nNOTE: The Upside-Down Pyramid will never be empty and will always\
+  \ consist of positive integers ONLY."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverse (nums : List Int) : List Int := sorry\n\ntheorem reverse_length_preservation\
+  \ {nums : List Int} :\n  (List.length (reverse nums)) = (List.length nums) := sorry\n"
+"vc-theorems": "theorem reverse_nonempty_preservation {nums : List Int} :\n  nums\
+  \ ≠ [] → reverse nums ≠ [] := sorry\n\n\ntheorem reverse_last_element_preservation\
+  \ {nums : List Int} (h : nums ≠ []) :\n  List.getLast nums h = List.getLast (reverse\
+  \ nums) (reverse_nonempty_preservation h) := sorry\n\n/--\ninfo: expected1\n-/\n\
+  #guard_msgs in\n#eval reverse [5, 2, 1]\n\n/--\ninfo: expected2\n-/\n#guard_msgs\
+  \ in\n#eval reverse [84, 42, 21, 10, 2]\n\n/--\ninfo: expected3\n-/\n#guard_msgs\
+  \ in\n#eval reverse [83, 47, 28, 16, 7]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

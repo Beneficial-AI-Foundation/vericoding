@@ -1,0 +1,20 @@
+"vc-description": "Alice plays the following game, loosely based on the card game\
+  \ \"21\".\nAlice starts with 0 points, and draws numbers while she has less than\
+  \ K points.  During each draw, she gains an integer number of points randomly from\
+  \ the range [1, W], where W is an integer.  Each draw is independent and the outcomes\
+  \ have equal probabilities.\nAlice stops drawing numbers when she gets K or more\
+  \ points.  What is the probability that she has N or less points?\nExample 1:\n\
+  Input: N = 10, K = 1, W = 10\nOutput: 1.00000\nExplanation:  Alice gets a single\
+  \ card, then stops.\n\nExample 2:\nInput: N = 6, K = 1, W = 10\nOutput: 0.60000\n\
+  Explanation:  Alice gets a single card, then stops.\nIn 6 out of W = 10 possibilities,\
+  \ she is at or below N = 6 points.\n\nExample 3:\nInput: N = 21, K = 17, W = 10\n\
+  Output: 0.73278\nNote:\n\n0 <= K <= N <= 10000\n1 <= W <= 10000\nAnswers will be\
+  \ accepted as correct if they are within 10^-5 of the correct answer.\nThe judging\
+  \ time limit has been reduced for this question."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def new21Game (N K W : Nat) : Float := sorry\n\ndef approx_equal\
+  \ (a b epsilon : Float) : Bool := sorry\n"
+"vc-theorems": "theorem new21Game_bounds (N K W : Nat) (h : K ≤ N + 1) :\n  let result\
+  \ := new21Game N K W\n  0 ≤ result ∧ result ≤ 1 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

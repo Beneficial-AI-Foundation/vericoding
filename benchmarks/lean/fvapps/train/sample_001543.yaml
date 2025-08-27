@@ -1,0 +1,31 @@
+"vc-description": "Chef is playing a game with two of his friends. In this game, each\
+  \ player chooses an integer between $1$ and $P$ inclusive. Let's denote the integers\
+  \ chosen by Chef, friend 1 and friend 2 by $i$, $j$ and $k$ respectively; then,\
+  \  Chef's score is\n(((Nmodi)modj)modk)modN.(((Nmodi)modj)modk)modN.(((N\\,\\mathrm{mod}\\\
+  ,i)\\,\\mathrm{mod}\\,j)\\,\\mathrm{mod}\\,k)\\,\\mathrm{mod}\\,N\\,.\n\nChef wants\
+  \ to obtain the maximum possible score. Let's denote this maximum score by $M$.\
+  \ Find the number of ways to choose the triple $(i,j,k)$ so that Chef's score is\
+  \ equal to $M$.\n\n-----Input-----\n- The first line of the input contains a single\
+  \ integer $T$ denoting the number of test cases. The description of $T$ test cases\
+  \ follows.\n- The first and only line of each test case contains two space-separated\
+  \ integers $N$ and $P$.\n\n-----Output-----\nFor each test case, print a single\
+  \ line containing one integer — the number of ways to obtain the maximum score.\n\
+  \n-----Constraints-----\n- $1 \\le T \\le 10^6$\n- $1 \\le N \\le P \\le 10^6$\n\
+  \n-----Subtasks-----\nSubtask #1 (10 points):\n- $1 \\le T \\le 100$\n- $1 \\le\
+  \ N \\le P \\le 100$\nSubtask #2 (90 points): original constraints\n\n-----Example\
+  \ Input-----\n2\n4 4\n3 4\n\n-----Example Output-----\n9\n13\n\n-----Explanation-----\n\
+  Example case 1: Chef's maximum possible score is $M = 1$. All possible values of\
+  \ $(i, j, k)$ such that the score is $1$ are\n$(3, 2, 2)$,\n$(3, 2, 3)$,\n$(3, 2,\
+  \ 4)$,\n$(3, 3, 2)$,\n$(3, 3, 3)$,\n$(3, 3, 4)$,\n$(3, 4, 2)$,\n$(3, 4, 3)$,\n$(3,\
+  \ 4, 4)$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solveMaxScore (n: Nat) (p: Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem solveMaxScore_nonnegative (n p : Nat) :\n  n > 0 → p > 0 →\
+  \ solveMaxScore n p ≥ 0 := by\n  sorry\n\n\ntheorem solveMaxScore_equal_inputs (n\
+  \ : Nat) :\n  n > 0 → \n  let d := n % (n/2 + 1)\n  if d = 0 then\n    solveMaxScore\
+  \ n n = n * n * n \n  else \n    solveMaxScore n n = (n-d)*(n-d) + (n-d)*(n-n) +\
+  \ (n-n)*(n-n) := by\n  sorry\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval solve_max_score\
+  \ 4 4\n\n/--\ninfo: 13\n-/\n#guard_msgs in\n#eval solve_max_score 3 4\n\n/--\ninfo:\
+  \ 27\n-/\n#guard_msgs in\n#eval solve_max_score 2 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

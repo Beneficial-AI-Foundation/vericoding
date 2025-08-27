@@ -1,0 +1,32 @@
+"vc-description": "Given a string s1, we may represent it as a binary tree by partitioning\
+  \ it to two non-empty substrings recursively.\n\nBelow is one possible representation\
+  \ of s1 = \"great\":\n\n\n    great\n   /    \\\n  gr    eat\n / \\    /  \\\ng\
+  \   r  e   at\n           / \\\n          a   t\n\n\nTo scramble the string, we\
+  \ may choose any non-leaf node and swap its two children.\n\nFor example, if we\
+  \ choose the node \"gr\" and swap its two children, it produces a scrambled string\
+  \ \"rgeat\".\n\n\n    rgeat\n   /    \\\n  rg    eat\n / \\    /  \\\nr   g  e \
+  \  at\n           / \\\n          a   t\n\n\nWe say that \"rgeat\" is a scrambled\
+  \ string of \"great\".\n\nSimilarly, if we continue to swap the children of nodes\
+  \ \"eat\" and \"at\", it produces a scrambled string \"rgtae\".\n\n\n    rgtae\n\
+  \   /    \\\n  rg    tae\n / \\    /  \\\nr   g  ta  e\n       / \\\n      t   a\n\
+  \n\nWe say that \"rgtae\" is a scrambled string of \"great\".\n\nGiven two strings\
+  \ s1 and s2 of the same length, determine if s2 is a scrambled string of s1.\n\n\
+  Example 1:\n\n\nInput: s1 = \"great\", s2 = \"rgeat\"\nOutput: true\n\n\nExample\
+  \ 2:\n\n\nInput: s1 = \"abcde\", s2 = \"caebd\"\nOutput: false"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isScramble (s1 s2 : String) : Bool := sorry\n\ntheorem equal_strings_are_scramble\
+  \ (s : String) : \n  isScramble s s = true := sorry\n"
+"vc-theorems": "theorem different_lengths_not_scramble (s : String) :\n  isScramble\
+  \ s (s ++ \"a\") = false := sorry\n\n/-- We'll use substring operations instead\
+  \ of direct char manipulation -/\n\ntheorem different_chars_not_scramble (s : String)\
+  \ (h : s.length > 0) :\n  ∀ (s2 : String), s.length = s2.length → (∃ c, s.contains\
+  \ c ≠ s2.contains c) → \n  isScramble s s2 = false := sorry\n\n\ntheorem length_two_strings_scramble\
+  \ (s1 s2 : String) :\n  s1.length = 2 → s2.length = 2 → (∀ c, s1.contains c = s2.contains\
+  \ c) →\n  isScramble s1 s2 = true := sorry\n\n\ntheorem scramble_symmetric (s1 s2\
+  \ : String) :\n  isScramble s1 s2 = isScramble s2 s1 := sorry\n\n\ntheorem empty_strings_are_scramble\
+  \ :\n  isScramble \"\" \"\" = true := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval is_scramble \"great\" \"rgeat\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval is_scramble \"abcde\" \"caebd\"\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval is_scramble \"a\" \"a\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

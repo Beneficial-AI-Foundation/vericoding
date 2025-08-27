@@ -1,0 +1,21 @@
+"vc-description": "Write a function that returns the index of the first occurence\
+  \ of the word \"Wally\".  \"Wally\" must not be part of another word, but it can\
+  \ be directly followed by a punctuation mark.  If no such \"Wally\" exists, return\
+  \ -1.\n\n\nExamples:\n\n\"Wally\" => 0\n\n\"Where's Wally\" => 8\n\n\"Where's Waldo\"\
+  \ => -1\n\n\"DWally Wallyd .Wally\" => -1\n\n\"Hi Wally.\" => 3\n\n\"It's Wally's.\"\
+  \ => 5\n\n\"Wally Wally\" => 0\n\n\"'Wally Wally\" => 7"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def wheres_wally (s : String) : Int := sorry\n\ntheorem valid_wally_matches\
+  \ \n  {p s : String}\n  (h1 : p.isEmpty ∨ p.endsWith \" \")\n  (h2 : s = \"\" ∨\
+  \ s = \".\" ∨ s = \",\" ∨ s = \" \" ∨ s = \"'\") : \n  ∃ pos : Int, pos ≥ 0 ∧ \n\
+  \  pos = wheres_wally (String.append (String.append p \"Wally\") s) := sorry\n"
+"vc-theorems": "theorem invalid_wally_no_match \n  {s : String}\n  (h1 : s.all (fun\
+  \ c => c ≠ 'W') ∨ \n        ∃ (c d : Char), c.isAlpha ∧ d.isAlpha) :\n  wheres_wally\
+  \ s = -1 := sorry\n\n\ntheorem wally_word_boundaries \n  {p s : String} :\n  wheres_wally\
+  \ (String.append (String.append p \"Wall\") s) = -1 ∧ \n  wheres_wally (String.append\
+  \ (String.append p \"Wallys\") s) = -1 := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval wheres_wally \"Wally\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval wheres_wally\
+  \ \"Hi Wally.\"\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval wheres_wally \"Where\"\
+  s Waldo\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

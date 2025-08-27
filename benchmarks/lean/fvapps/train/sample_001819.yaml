@@ -1,0 +1,26 @@
+"vc-description": "In a given 2D binary array A, there are two islands.  (An island\
+  \ is a 4-directionally connected group of 1s not connected to any other 1s.)\nNow,\
+  \ we may change 0s to 1s so as to connect the two islands together to form 1 island.\n\
+  Return the smallest number of 0s that must be flipped.  (It is guaranteed that the\
+  \ answer is at least 1.)\n \nExample 1:\nInput: A = [[0,1],[1,0]]\nOutput: 1\nExample\
+  \ 2:\nInput: A = [[0,1,0],[0,0,0],[0,0,1]]\nOutput: 2\nExample 3:\nInput: A = [[1,1,1,1,1],[1,0,0,0,1],[1,0,1,0,1],[1,0,0,0,1],[1,1,1,1,1]]\n\
+  Output: 1\n\n \nConstraints:\n\n2 <= A.length == A[0].length <= 100\nA[i][j] ==\
+  \ 0 or A[i][j] == 1"
+"vc-preamble": "import Imports.AllImports\n\ndef Grid := List (List Nat)\n\ndef shortest_bridge\
+  \ (grid: Grid) : Nat :=\n  sorry\n\n\ndef is_valid_grid (grid: Grid) : Bool :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def has_two_islands (grid: Grid) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem shortest_bridge_non_negative \n  (grid: Grid) \n  (h1: is_valid_grid\
+  \ grid = true)\n  (h2: has_two_islands grid = true) :\n  shortest_bridge grid ≥\
+  \ 0 :=\nsorry\n\n\ntheorem shortest_bridge_less_than_dimensions\n  (grid: Grid)\n\
+  \  (h1: is_valid_grid grid = true)\n  (h2: has_two_islands grid = true) :\n  shortest_bridge\
+  \ grid < grid.length * (grid.head!).length :=\nsorry\n\n\ntheorem shortest_bridge_assumptions\n\
+  \  (grid: Grid)\n  (h1: is_valid_grid grid = true)\n  (h2: has_two_islands grid\
+  \ = true) :\n  0 ≤ shortest_bridge grid ∧ shortest_bridge grid < grid.length * (grid.head!).length\
+  \ :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval shortest_bridge [[0, 1],\
+  \ [1, 0]]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval shortest_bridge [[0, 1, 0],\
+  \ [0, 0, 0], [0, 0, 1]]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval shortest_bridge\
+  \ [[1, 1, 1, 1, 1], [1, 0, 0, 0, 1], [1, 0, 1, 0, 1], [1, 0, 0, 0, 1], [1, 1, 1,\
+  \ 1, 1]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,35 @@
+"vc-description": "Chef received a permutation $P_1, P_2, \\ldots, P_N$ and also an\
+  \ integer $D$ from his good friend Grux, because Grux was afraid he would forget\
+  \ them somewhere. However, since Grux was just playing with the permutation, it\
+  \ was all shuffled, and Chef only likes sorted permutations, so he decided to sort\
+  \ it by performing some swaps.\nChef wants to use the integer $D$ he just received,\
+  \ so he is only willing to swap two elements of the permutation whenever their absolute\
+  \ difference is exactly $D$. He has limited time, so you should determine the minimum\
+  \ number of swaps he needs to perform to sort the permutation, or tell him that\
+  \ it is impossible to sort it his way.\n\n-----Input-----\n- The first line of the\
+  \ input contains a single integer $T$ denoting the number of test cases. The description\
+  \ of $T$ test cases follows.\n- The first line of each test case contains two space-separated\
+  \ integers $N$ and $D$.\n- The second line contains $N$ space-separated integers\
+  \ $P_1, P_2, \\ldots, P_N$.\n\n-----Output-----\nFor each test case, print a single\
+  \ line containing one integer ― the minimum number of swaps, or $-1$ if it is impossible\
+  \ to sort the permutation.\n\n-----Constraints-----\n- $1 \\le T \\le 20$\n- $1\
+  \ \\le N \\le 200,000$\n- $1 \\le D \\le N$\n- $1 \\le P_i \\le N$ for each valid\
+  \ $i$\n- $P_1, P_2, \\ldots, P_N$ are pairwise distinct\n- the sum of $N$ over all\
+  \ test cases does not exceed $10^6$\n\n-----Subtasks-----\nSubtask #1 (20 points):\
+  \ $D = 1$\nSubtask #2 (30 points):\n- $N \\le 1,000$\n- the sum of $N$ over all\
+  \ test cases does not exceed $10,000$\nSubtask #3 (50 points): original constraints\n\
+  \n-----Example Input-----\n2\n5 2   \n3 4 5 2 1\n5 2    \n4 3 2 1 5  \n\n-----Example\
+  \ Output-----\n3\n-1\n\n-----Explanation-----\nExample case 1: Chef can perform\
+  \ the following swaps in this order:\n- swap the first and fifth element\n- swap\
+  \ the third and fifth element\n- swap the second and fourth element"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_min_swaps (n : Nat) (k : Nat) (arr : List Nat) : Int\
+  \ := sorry\n\n\n\n\n\ntheorem solve_min_swaps_known_cases_1 :\n  solve_min_swaps\
+  \ 5 2 [3, 4, 5, 2, 1] = 3 := sorry\n"
+"vc-theorems": "theorem solve_min_swaps_known_cases_2 :\n  solve_min_swaps 5 2 [4,\
+  \ 3, 2, 1, 5] = -1 := sorry\n\n\ntheorem solve_min_swaps_known_cases_3 :\n  solve_min_swaps\
+  \ 3 3 [3, 2, 1] = -1 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_min_swaps\
+  \ 5 2 [3, 4, 5, 2, 1]\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval solve_min_swaps\
+  \ 5 2 [4, 3, 2, 1, 5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

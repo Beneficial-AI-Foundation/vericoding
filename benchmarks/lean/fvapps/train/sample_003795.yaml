@@ -1,0 +1,18 @@
+"vc-description": "This is now a little serie :)\n\nFunny Dots\n\nYou will get two\
+  \ Integer n (width) and m (height) and your task is to draw following pattern. Each\
+  \ line is seperated with '\\n'.\n\nBoth integers are equal or greater than 1. No\
+  \ need to check for invalid parameters.\n\ne.g.:\n\n\n\n                       \
+  \                   +---+---+---+\n            +---+                         | o\
+  \ | o | o |\ndot(1,1) => | o |          dot(3,2) =>    +---+---+---+           \
+  \ \n            +---+                         | o | o | o |\n                  \
+  \                        +---+---+---+\n\n\n Serie: ASCII Fun\n\nASCII Fun #1: X-Shape\n\
+  ASCII Fun #2: Funny Dots\nASCII Fun #3: Puzzle Tiles\nASCII Fun #4: Build a pyramid"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def dot (n m : Nat) : String := sorry\n\ndef is_valid_grid (s :\
+  \ String) : Bool := sorry\n\n\n"
+"vc-theorems": "theorem dot_correct_dimensions (n m : Nat)\n  (h1 : 0 < n) (h2 : n\
+  \ ≤ 50) (h3 : 0 < m) (h4 : m ≤ 50) :\n  let lines := (dot n m).split (· = '\\n')\n\
+  \  (lines.length = 2 * m + 1) ∧ \n  (∀ line ∈ lines, line.length = 4 * n + 1) :=\
+  \ sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

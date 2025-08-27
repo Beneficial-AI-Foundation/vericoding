@@ -1,0 +1,21 @@
+"vc-description": "Patlu has recently got a new problem based on Pallindromes. A Pallindrome\
+  \ is a number that is same from front and back, example $121$ is pallindrome but\
+  \ $123$ is not . He wants to calculate sum of all $N$ digit number which are Pallindromic\
+  \ in nature and divisible by $9$ and does not contain any zero in their decimal\
+  \ representation. As the answer can be very large so print the sum modulo $10^9\
+  \ + 7$.\n\n-----Input:-----\n- First line of input contain $T$, number of testcases.\
+  \ Then the testcases follow.\n- Each testcase contains single line of input , one\
+  \ integer $N$.\n\n-----Output:-----\n- For each testcase, output in a single line\
+  \ answer having $N$ digits pallindromic string.\n\n-----Constraints-----\n- $1\\\
+  leq T \\leq 100$\n- $1\\leq N \\leq 10^5$\n\n-----Sample Input:-----\n2\n1\n2\n\n\
+  -----Sample Output:-----\n9\n99"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD := (10^9) + 7\n\ndef getsum (n : Nat) : Nat :=\n  sorry\n\
+  \n\n"
+"vc-theorems": "theorem getsum_base_cases :\n  (getsum 1 = 9) ∧ (getsum 2 = 99) :=\n\
+  \  sorry\n\n\ntheorem getsum_positive (n : Nat) (h : n > 0) :\n  getsum n > 0 :=\n\
+  \  sorry\n\n\ntheorem getsum_invalid_input (n : Nat) :\n  n = 0 → getsum n = 0 :=\n\
+  \  sorry\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval getsum 1\n\n/--\ninfo: 99\n\
+  -/\n#guard_msgs in\n#eval getsum 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

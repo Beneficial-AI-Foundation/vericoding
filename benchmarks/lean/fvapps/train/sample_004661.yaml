@@ -1,0 +1,40 @@
+"vc-description": "# Story\n\nOld MacDingle had a farm... \n\n...and on that farm\
+  \ he had\n\n* horses \n* chickens \n* rabbits \n* some apple trees\n* a vegetable\
+  \ patch\n\nEverything is idylic in the MacDingle farmyard **unless somebody leaves\
+  \ the gates open**\n\nDepending which gate was left open then...\n\n* horses might\
+  \ run away\n* horses might eat the apples\n* horses might eat the vegetables\n*\
+  \ chickens might run away\n* rabbits might run away\n* rabbits might eat the vegetables\n\
+  \n# Kata Task\n\nGiven the state of the farm gates in the evening, your code must\
+  \ return what the farm looks like the next morning when daylight reveals what the\
+  \ animals got up to.\n\n# Legend\n\n* ```H``` horse\n* ```C``` chicken\n* ```R```\
+  \ rabbit\n* ```A``` apple tree\n* ```V``` vegetables\n* ```|``` gate (closed), \n\
+  * ```\\``` or ```/``` gate (open)\n* ```.``` everything else\n\n# Example\n\n\n\
+  Before\n```|..HH....\\AAAA\\CC..|AAA/VVV/RRRR|CCC```\n\nAfter\n```|..HH....\\....\\\
+  CC..|AAA/.../RRRR|...```\nBecause:\n\nThe horses ate whatever apples they could\
+  \ get to\nThe rabbits ate the vegetables\nThe chickens ran away\n\n\n\n\n# Notes\n\
+  \n* If the animals can eat things *and* also run away then they do **BOTH** - it\
+  \ is best not to run away when you are hungry!\n* An animal cannot \"go around\"\
+  \ a closed gate...\n* ...but it is possible to run away from the farm and then **RUN\
+  \ BACK** and re-enter though more open gates on the other side!"
+"vc-preamble": "import Imports.AllImports\n\ndef split_on_char (c : Char) (s : List\
+  \ Char) : List (List Char) :=\n  sorry\n\n\ndef any (p : Char → Bool) (s : List\
+  \ Char) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def shut_the_gate (farm : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem output_valid_chars (farm : String) :\n  let result := shut_the_gate\
+  \ farm\n  ∀ c ∈ result.data, c = 'H' ∨ c = 'R' ∨ c = 'C' ∨ c = 'A' ∨ c = 'V' ∨ \n\
+  \                       c = '|' ∨ c = '/' ∨ c = '\\\\' ∨ c = '.' :=\n  sorry\n\n\
+  \ntheorem preserves_gates (farm : String) :\n  let result := shut_the_gate farm\n\
+  \  let gates := farm.data.enum.filter (fun p => p.2 = '|' ∨ p.2 = '/' ∨ p.2 = '\\\
+  \\')\n  let result_gates := result.data.enum.filter (fun p => p.2 = '|' ∨ p.2 =\
+  \ '/' ∨ p.2 = '\\\\')\n  gates = result_gates :=\n  sorry\n\n\ntheorem enclosed_animals_stay\
+  \ (farm : String) :\n  let result := shut_the_gate farm\n  let sections := split_on_char\
+  \ '|' farm.data\n  let result_sections := split_on_char '|' result.data\n  sections.length\
+  \ ≥ 3 →\n  ∀ i, 0 < i ∧ i < sections.length - 1 →\n    (¬ any (fun c => c = '/'\
+  \ ∨ c = '\\\\') sections[i]!) →\n    sections[i]! = result_sections[i]! :=\n  sorry\n\
+  \n\ntheorem idempotent (farm : String) :\n  let first_result := shut_the_gate farm\n\
+  \  shut_the_gate first_result = first_result :=\n  sorry\n\n/--\ninfo: '|H|A|'\n\
+  -/\n#guard_msgs in\n#eval shut_the_gate \"|H|A|\"\n\n/--\ninfo: './.'\n-/\n#guard_msgs\
+  \ in\n#eval shut_the_gate \"H/A\"\n\n/--\ninfo: '|H/.|'\n-/\n#guard_msgs in\n#eval\
+  \ shut_the_gate \"|H/A|\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

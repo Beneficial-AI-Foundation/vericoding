@@ -1,0 +1,49 @@
+"vc-description": "A group of friends (n >= 2) have reunited for a get-together after\
+  \ \na very long time. \n\nThey agree that they will make presentations on holiday\
+  \ destinations \nor expeditions they have been to only if it satisfies **one simple\
+  \ rule**: \n> the holiday/journey being presented must have been visited _only_\
+  \ by the presenter and no one else from the audience.\n\nWrite a program to output\
+  \ the presentation agenda, including the\npresenter and their respective presentation\
+  \ titles. \n\n---\n### EXAMPLES\n\n```python\npresentation_agenda([\n    {'person':\
+  \ 'Abe', 'dest': ['London', 'Dubai']},\n    {'person': 'Bond', 'dest': ['Melbourne',\
+  \ 'Dubai']}\n]) == [{'person': 'Abe', 'dest': ['London']},\n       {'person': 'Bond',\
+  \ 'dest': ['Melbourne']}]\n\npresentation_agenda([\n    {'person': 'Abe', 'dest':\
+  \ ['Dubai']},\n    {'person': 'Brad', 'dest': ['Dubai']}\n]) == []\n\npresentation_agenda([\n\
+  \    {'person': 'Abe', 'dest': ['London', 'Dubai']},\n    {'person': 'Bond', 'dest':\
+  \ ['Melbourne', 'Dubai']},\n    {'person': 'Carrie', 'dest': ['Melbourne']},\n \
+  \   {'person': 'Damu', 'dest': ['Melbourne', 'Dubai', 'Paris']}\n]) == [{'person':\
+  \ 'Abe',  'dest': ['London']},\n       {'person': 'Damu', 'dest': ['Paris']}]\n\n\
+  ```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def presentation_agenda (friend_list : List Person) : List Person\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem presentation_agenda_structure (friend_list : List Person)\
+  \ :\n  let result := presentation_agenda friend_list\n  -- Result destinations should\
+  \ be subset of input destinations \n  ∀ p, p ∈ result → ∀ d, d ∈ p.dest → ∃ p',\
+  \ p' ∈ friend_list ∧ d ∈ p'.dest :=\n  sorry\n\n\ntheorem presentation_agenda_unique_dests\
+  \ (friend_list : List Person) :\n  let result := presentation_agenda friend_list\n\
+  \  -- Each destination appears exactly once in result\n  ∀ d : String, (∃ p, p ∈\
+  \ result ∧ d ∈ p.dest) → \n    ∀ p₁ p₂, p₁ ∈ result → p₂ ∈ result → d ∈ p₁.dest\
+  \ → d ∈ p₂.dest → p₁ = p₂ :=\n  sorry\n\n\ntheorem presentation_agenda_valid_people\
+  \ (friend_list : List Person) :\n  let result := presentation_agenda friend_list\n\
+  \  -- All people in result come from input\n  ∀ p, p ∈ result → ∃ p', p' ∈ friend_list\
+  \ ∧ p.person = p'.person :=\n  sorry\n\n\ntheorem presentation_agenda_nonempty_dests\
+  \ (friend_list : List Person) :\n  let result := presentation_agenda friend_list\n\
+  \  -- Everyone has at least one destination\n  ∀ p, p ∈ result → p.dest.length >\
+  \ 0 :=\n  sorry\n\n\ntheorem presentation_agenda_unique_input_dests (friend_list\
+  \ : List Person) :\n  let result := presentation_agenda friend_list\n  -- Destinations\
+  \ in result appeared exactly once in input\n  ∀ p, p ∈ result → ∀ d, d ∈ p.dest\
+  \ →\n    (friend_list.filter (fun p' => d ∈ p'.dest)).length = 1 :=\n  sorry\n\n\
+  \ntheorem presentation_agenda_shared_empty (friend_list : List Person) (d : String)\
+  \ :\n  friend_list.length ≥ 2 →\n  (∀ p, p ∈ friend_list → p.dest = [d]) →\n  presentation_agenda\
+  \ friend_list = [] :=\n  sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval\
+  \ presentation_agenda [{\"person\": \"Abe\", \"dest\": [\"London\", \"Dubai\"]},\
+  \ {\"person\": \"Bond\", \"dest\": [\"Melbourne\", \"Dubai\"]}]\n\n/--\ninfo: []\n\
+  -/\n#guard_msgs in\n#eval presentation_agenda [{\"person\": \"Abe\", \"dest\": [\"\
+  Dubai\"]}, {\"person\": \"Brad\", \"dest\": [\"Dubai\"]}]\n\n/--\ninfo: expected3\n\
+  -/\n#guard_msgs in\n#eval presentation_agenda [{\"person\": \"Abe\", \"dest\": [\"\
+  London\", \"Dubai\"]}, {\"person\": \"Bond\", \"dest\": [\"Melbourne\", \"Dubai\"\
+  ]}, {\"person\": \"Carrie\", \"dest\": [\"Melbourne\"]}, {\"person\": \"Damu\",\
+  \ \"dest\": [\"Melbourne\", \"Dubai\", \"Paris\"]}]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

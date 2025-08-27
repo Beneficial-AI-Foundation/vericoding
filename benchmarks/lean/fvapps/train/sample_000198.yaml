@@ -1,0 +1,24 @@
+"vc-description": "Let's call any (contiguous) subarray B (of A) a mountain if the\
+  \ following properties hold:\n\nB.length >= 3\nThere exists some 0 < i < B.length\
+  \ - 1 such that B[0] < B[1] < ... B[i-1] < B[i] > B[i+1] > ... > B[B.length - 1]\n\
+  \n(Note that B could be any subarray of A, including the entire array A.)\nGiven\
+  \ an array A of integers, return the length of the longest mountain. \nReturn 0\
+  \ if there is no mountain.\nExample 1:\nInput: [2,1,4,7,3,2,5]\nOutput: 5\nExplanation:\
+  \ The largest mountain is [1,4,7,3,2] which has length 5.\n\nExample 2:\nInput:\
+  \ [2,2,2]\nOutput: 0\nExplanation: There is no mountain.\n\nNote:\n\n0 <= A.length\
+  \ <= 10000\n0 <= A[i] <= 10000\n\nFollow up:\n\nCan you solve it using only one\
+  \ pass?\nCan you solve it in O(1) space?"
+"vc-preamble": "import Imports.AllImports\n\ndef longestMountain (arr : Array Int)\
+  \ : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSorted (arr : Array Int) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem mountain_length_min_or_zero {arr : Array Int} :\n  let result\
+  \ := longestMountain arr\n  result = 0 ∨ result ≥ 3\n  := sorry\n\n\ntheorem mountain_length_bounded\
+  \ {arr : Array Int} :\n  longestMountain arr ≤ arr.size\n  := sorry\n\n\ntheorem\
+  \ flat_sequence_no_mountain {arr : Array Int} :\n  let doubled := arr.concatMap\
+  \ (fun x => #[x, x]) \n  longestMountain doubled = 0\n  := sorry\n\n\n\n\ntheorem\
+  \ single_element_no_mountain {x : Int} :\n  longestMountain #[x] = 0\n  := sorry\n\
+  \n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval longestMountain #[2, 1, 4, 7, 3, 2, 5]\n\
+  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval longestMountain #[2, 2, 2]\n\n/--\ninfo:\
+  \ 9\n-/\n#guard_msgs in\n#eval longestMountain #[1, 2, 3, 4, 5, 4, 3, 2, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

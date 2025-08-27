@@ -1,0 +1,29 @@
+"vc-description": "The n-queens puzzle is the problem of placing n queens on an n×n\
+  \ chessboard such that no two queens attack each other.\n\n\n\nGiven an integer\
+  \ n, return all distinct solutions to the n-queens puzzle.\n\nEach solution contains\
+  \ a distinct board configuration of the n-queens' placement, where 'Q' and '.' both\
+  \ indicate a queen and an empty space respectively.\n\nExample:\n\n\nInput: 4\n\
+  Output: [\n [\".Q..\",  // Solution 1\n  \"...Q\",\n  \"Q...\",\n  \"..Q.\"],\n\n\
+  \ [\"..Q.\",  // Solution 2\n  \"Q...\",\n  \"...Q\",\n  \".Q..\"]\n]\nExplanation:\
+  \ There exist two distinct solutions to the 4-queens puzzle as shown above."
+"vc-preamble": "import Imports.AllImports\n\ndef check (p1 p2: (Nat × Nat)) : Bool\
+  \ := sorry\n\ndef passAll (xs: List (Nat × Nat)) (q: Nat × Nat) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reconstruct (points: List Nat) (n: Nat) : List (List String)\
+  \ := sorry \n\ndef solveNQueens (n: Nat) : List (List (List String)) := sorry\n"
+"vc-theorems": "theorem check_symmetry (p1 p2: (Nat × Nat)) :\n  check p1 p2 = check\
+  \ p2 p1 := sorry\n\n\ntheorem check_self_conflict (p: (Nat × Nat)) : \n  check p\
+  \ p = true := sorry\n\n\ntheorem solutions_valid_size (n: Nat) (h: 0 < n ∧ n ≤ 8)\
+  \ :\n  ∀ board ∈ solveNQueens n,\n    (board.length = n ∧ \n     ∀ row ∈ board,\
+  \ row.length = n ∧\n     List.length (List.join (board.map (λ row => row.filter\
+  \ (· = \"Q\")))) = n) := sorry\n\n\ntheorem queens_dont_conflict (n: Nat) (h: 0\
+  \ < n ∧ n ≤ 8) :\n  ∀ board ∈ solveNQueens n,\n    let queens := (List.range n).filterMap\
+  \ (λ i => \n      let row := board[i]!\n      row.findIdx? (· = \"Q\") |>.map (λ\
+  \ j => (i, j)))\n    ∀ i j, i < queens.length → j < queens.length → i ≠ j →\n  \
+  \    ¬check queens[i]! queens[j]! := sorry\n\n\ntheorem reconstruct_dimensions (n:\
+  \ Nat) :\n  let points := List.range n\n  let board := reconstruct points n\n  board.length\
+  \ = n ∧ ∀ row ∈ board, row.length = n := sorry\n\n\ntheorem handle_nonpositive_size\
+  \ :\n  solveNQueens 0 = [] := sorry\n\n/--\ninfo: [['Q']]\n-/\n#guard_msgs in\n\
+  #eval solveNQueens 1\n\n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval solveNQueens\
+  \ 4\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval solveNQueens 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

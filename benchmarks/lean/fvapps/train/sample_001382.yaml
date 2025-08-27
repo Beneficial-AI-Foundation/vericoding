@@ -1,0 +1,71 @@
+"vc-description": "The Little Elephant loves lucky strings. Everybody knows that the\
+  \ lucky string is a string of digits that contains only the lucky digits 4 and 7.\
+  \ For example, strings \"47\", \"744\", \"4\" are lucky while \"5\", \"17\", \"\
+  467\" are not.\n\nThe Little Elephant has the strings A and B of digits. These strings\
+  \ are of equal lengths, that is |A| = |B|. He wants to get some lucky string from\
+  \ them. For this he performs the following operations. At first he arbitrary reorders\
+  \ digits of A. Then he arbitrary reorders digits of B. After that he creates the\
+  \ string C such that its i-th digit is the maximum between the i-th digit of A and\
+  \ the i-th digit of B. In other words, C[i] = max{A[i], B[i]} for i from 1 to |A|.\
+  \ After that he removes from C all non-lucky digits saving the order of the remaining\
+  \ (lucky) digits. So C now becomes a lucky string. For example, if after reordering\
+  \ A = \"754\" and B = \"873\", then C is at first \"874\" and then it becomes \"\
+  74\".\n\nThe Little Elephant wants the resulting string to be as lucky as possible.\
+  \ The formal definition of this is that the resulting string should be the lexicographically\
+  \ greatest possible string among all the strings that can be obtained from the given\
+  \ strings A and B by the described process.\nNotes\n- |A| denotes the length of\
+  \ the string A.\n- A[i] denotes the i-th digit of the string A. Here we numerate\
+  \ the digits starting from 1. So 1 ≤ i ≤ |A|.\n- The string A is called lexicographically\
+  \ greater than the string B if either there exists some index i such that A[i] >\
+  \ B[i] and for each j < i we have A[j] = B[j], or B is a proper prefix of A, that\
+  \ is, |A| > |B| and first |B| digits of A coincide with the corresponding digits\
+  \ of B.\n\n-----Input-----\n\nThe first line of the input contains a single integer\
+  \ T, the number of test cases. T test cases follow. Each test case consists of two\
+  \ lines. The first line contains the string A. The second line contains the string\
+  \ B.\n\n-----Output-----\n\nFor each test case output a single line containing the\
+  \ answer for the corresponding test case. Note, that the answer can be an empty\
+  \ string. In this case you should print an empty line for the corresponding test\
+  \ case.\n\n-----Constraints-----\n1 ≤ T ≤ 10000\n1 ≤ |A| ≤ 20000\n\n|A| = |B|\n\n\
+  Each character of A and B is a digit.\n\nSum of |A| across all the tests in the\
+  \ input does not exceed 200000.\n\n-----Example-----\nInput:\n4\n4\n7\n435\n479\n\
+  7\n8\n1675475\n9756417\n\nOutput:\n7\n74\n\n777744\n\n-----Explanation-----\nCase\
+  \ 1. In this case the only possible string C we can get is \"7\" and it is the lucky\
+  \ string.\n\nCase 2. If we reorder A and B as A = \"543\" and B = \"749\" the string\
+  \ C will be at first \"749\" and then becomes \"74\". It can be shown that this\
+  \ is the lexicographically greatest string for the given A and B.\n\nCase 3. In\
+  \ this case the only possible string C we can get is \"8\" and it becomes and empty\
+  \ string after removing of non-lucky digits.\n\nCase 4. If we reorder A and B as\
+  \ A = \"7765541\" and B = \"5697714\" the string C will be at first \"7797744\"\
+  \ and then becomes \"777744\". Note that we can construct any lexicographically\
+  \ greater string for the given A and B since we have only four \"sevens\" and two\
+  \ \"fours\" among digits of both strings A and B as well the constructed string\
+  \ \"777744\"."
+"vc-preamble": "import Imports.AllImports\n\ndef get_lucky_string (a b : String) :\
+  \ String := sorry\n\ndef isDigitChar (c : Char) : Bool := \n  '0' ≤ c ∧ c ≤ '9'\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isLuckyChar (c : Char) : Bool :=\n  c = '4' ∨ c = '7'\n"
+"vc-theorems": "theorem lucky_string_only_lucky_chars (a b : String) \n  (h_a : ∀\
+  \ c ∈ a.data, isDigitChar c)\n  (h_b : ∀ c ∈ b.data, isDigitChar c) :\n  ∀ c ∈ (get_lucky_string\
+  \ a b).data, isLuckyChar c := sorry\n\n\ntheorem lucky_string_seven_before_four\
+  \ (a b : String)\n  (h_a : ∀ c ∈ a.data, isDigitChar c)\n  (h_b : ∀ c ∈ b.data,\
+  \ isDigitChar c)\n  (h_has_both : '7' ∈ (get_lucky_string a b).data ∧ '4' ∈ (get_lucky_string\
+  \ a b).data) :\n  ∃ pos_seven pos_four, \n    pos_seven < pos_four ∧\n    (get_lucky_string\
+  \ a b).data.get! pos_seven = '7' ∧\n    (get_lucky_string a b).data.get! pos_four\
+  \ = '4' := sorry\n\n\ntheorem lucky_string_length (a b : String)\n  (h_a : ∀ c ∈\
+  \ a.data, isDigitChar c)\n  (h_b : ∀ c ∈ b.data, isDigitChar c) :\n  (get_lucky_string\
+  \ a b).length ≤ a.length + b.length := sorry\n\n\ntheorem lucky_string_deterministic\
+  \ (a b : String)\n  (h_a : ∀ c ∈ a.data, isDigitChar c)\n  (h_b : ∀ c ∈ b.data,\
+  \ isDigitChar c) :\n  get_lucky_string a b = get_lucky_string a b := sorry\n\n\n\
+  theorem lucky_string_identical_inputs (s : String)\n  (h : ∀ c ∈ s.data, isDigitChar\
+  \ c) :\n  get_lucky_string s s = get_lucky_string s s := sorry\n\n\ntheorem lucky_string_commutative\
+  \ (a b : String)\n  (h_a : ∀ c ∈ a.data, isDigitChar c)\n  (h_b : ∀ c ∈ b.data,\
+  \ isDigitChar c) :\n  get_lucky_string a b = get_lucky_string b a := sorry\n\n\n\
+  theorem lucky_string_preserves_counts (s : String)\n  (h : ∀ c ∈ s.data, isDigitChar\
+  \ c)\n  (h_nonempty : s.length > 0) :\n  let result := get_lucky_string s s\n  let\
+  \ count_4s := (s.data.filter (· = '4')).length\n  let count_7s := (s.data.filter\
+  \ (· = '7')).length\n  (result.data.filter (· = '4')).length ≤ 2 * count_4s ∧\n\
+  \  (result.data.filter (· = '7')).length ≤ 2 * count_7s := sorry\n\n/--\ninfo: '7'\n\
+  -/\n#guard_msgs in\n#eval get_lucky_string \"4\" \"7\"\n\n/--\ninfo: '74'\n-/\n\
+  #guard_msgs in\n#eval get_lucky_string \"435\" \"479\"\n\n/--\ninfo: '777744'\n\
+  -/\n#guard_msgs in\n#eval get_lucky_string \"1675475\" \"9756417\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

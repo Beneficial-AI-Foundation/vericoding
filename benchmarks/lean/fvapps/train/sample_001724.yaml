@@ -1,0 +1,27 @@
+"vc-description": "This is a classic needing (almost) no further introduction.\n\n\
+  Given a N x N chess board, place N queens on it so none can attack another: I.e.\
+  \ no other queens can be found horizontally, vertically or diagonally to the current.\n\
+  \nOn the board below, no further queens can be positioned.\n\n+-+-+\n|Q| |\n+-+-+\n\
+  | | |\n+-+-+\n\nIn this example a queen can be located in position a or position\
+  \ b - but not in both, thereby making (0,0) an invalid first position:\n+-+-+-+\n\
+  |Q| | |\n+-+-+-+\n| | |a|\n+-+-+-+\n| |b| |\n+-+-+-+\n\n\nReturn value must by an\
+  \ array of N x-positions. That is, the y position is given by the index. For following\
+  \ board, expected answer is `[1, 3, 0, 2]`:\n\n+-+-+-+-+\n| |X| | |    x=1, y=0\n\
+  +-+-+-+-+\n| | | |X|    x=3, y=1\n+-+-+-+-+\n|X| | | |    x=0, y=2\n+-+-+-+-+\n\
+  | | |X| |    x=2, y=3\n+-+-+-+-+\n\nOnly one solution per N is expected. If no solution\
+  \ can be found, return an empty array. That is, for a 1 x 1 board, the output is\
+  \ [0].\n\nInput is a value positive number (N>0) and can be quite large, so try\
+  \ to make your solution efficient. See sample tests to check how large `N` can be.\n\
+  \nHave fun :)\n\n----\nNext steps:\n - [N queens puzzle (with one mandatory queen\
+  \ position)](https://www.codewars.com/kata/561bed6a31daa8df7400000e)\n - [N queens\
+  \ problem (with one mandatory queen position) - challenge version](https://www.codewars.com/kata/5985ea20695be6079e000003)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def nQueen (n : Nat) : List Nat := sorry\n\ndef isValidSolution\
+  \ (n : Nat) (queens : List Nat) : Bool := sorry\n\n\n\n\n"
+"vc-theorems": "theorem solution_size (n : Nat) (h : n ≥ 4) :\n  (nQueen n).length\
+  \ = n := sorry\n\n\ntheorem queens_in_bounds (n : Nat) (h : n ≥ 4) :\n  ∀ x ∈ nQueen\
+  \ n, 0 ≤ x ∧ x < n := sorry\n\n/--\ninfo: [0]\n-/\n#guard_msgs in\n#eval nQueen\
+  \ 1\n\n/--\ninfo: [1, 3, 0, 2]\n-/\n#guard_msgs in\n#eval nQueen 4\n\n/--\ninfo:\
+  \ []\n-/\n#guard_msgs in\n#eval nQueen 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

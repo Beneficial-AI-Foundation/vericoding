@@ -1,0 +1,23 @@
+"vc-description": "You will be given a vector of strings. You must sort it alphabetically\
+  \ (case-sensitive, and based on the ASCII values of the chars) and then return the\
+  \ first value.\n\nThe returned value must be a string, and have `\"***\"` between\
+  \ each of its letters.\n\nYou should not remove or add elements from/to the array."
+"vc-preamble": "import Imports.AllImports\n\ndef two_sort (strings : List String)\
+  \ : String := sorry\n\ndef countSubstring (haystack : String) (needle : String)\
+  \ : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def minimum (xs : List String) : String := sorry \n\ndef splitString\
+  \ (s : String) (sep : String) : List String := sorry\n"
+"vc-theorems": "theorem two_sort_separator_count (strings : List String) \n  (h :\
+  \ strings.length > 0) : \n  (countSubstring (two_sort strings) \"***\") = (minimum\
+  \ strings).length - 1 := \n  sorry\n\n\ntheorem two_sort_recovers_min (strings :\
+  \ List String)\n  (h : strings.length > 0) :\n  let result := two_sort strings\n\
+  \  let parts := splitString result \"***\"\n  (String.join parts) = minimum strings\
+  \ :=\n  sorry\n\n/--\ninfo: 'b***i***t***c***o***i***n'\n-/\n#guard_msgs in\n#eval\
+  \ two_sort [\"bitcoin\", \"take\", \"over\", \"the\", \"world\", \"maybe\", \"who\"\
+  , \"knows\", \"perhaps\"]\n\n/--\ninfo: 'a***r***e'\n-/\n#guard_msgs in\n#eval two_sort\
+  \ [\"turns\", \"out\", \"random\", \"test\", \"cases\", \"are\", \"easier\", \"\
+  than\", \"writing\", \"out\", \"basic\", \"ones\"]\n\n/--\ninfo: 'L***e***t***s'\n\
+  -/\n#guard_msgs in\n#eval two_sort [\"Lets\", \"all\", \"go\", \"on\", \"holiday\"\
+  , \"somewhere\", \"very\", \"cold\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

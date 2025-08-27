@@ -1,0 +1,29 @@
+"vc-description": "You will be given two numbers `m,n`. The numbers could span from\
+  \ `0` to `10000`. We can get their product by using binary reduction as show in\
+  \ the table below.\nExample (to understand the table please read the description\
+  \ below it) \n\n\n\n\n\nreal value of m(r)\nm\nn\n(r*n)\n\n\n0\n100\n15\n0\n\n\n\
+  0\n50\n30\n0\n\n\n1\n25\n60\n60\n\n\n0\n12\n120\n0\n\n\n0\n6\n240\n0\n\n\n1\n3\n\
+  480\n480\n\n\n1\n1\n960\n960\n\n\n\nAbove, we are given two numbers `100` and `15`.\
+  \ we keep reducing the bigger number by dividing it by `2` and hold the integer\
+  \ part of the division till it is no more divisible by `2`. Then we assign the real\
+  \ values to these reduced parts of `m`. Any reduced number `[1,m]` has real value\
+  \ of `0` if it is even, and it will have real value of `1` if it is odd. On the\
+  \ other hand the smaller number in this case `n` keeps on doubling itself the same\
+  \ amount of times `m` reduces itself. The idea of this method is to change multiplication\
+  \ of two big number to a sequence of multiplication by `0` or `1` and perform addition\
+  \ to get the final product. You can see that from the last column `(r*n)` above.\
+  \ \nif we sum the last column we get `0+60+0+0+480+960=1500=100*15`\nNow your task\
+  \ for this kata will be to get those non-zero number in the last column in an array\
+  \ and return it sorted in descending order.so for the above example the return will\
+  \ be `[960,480,60]`.\n\n_Beware: _`m,n`_ are not necessarily ordered._"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def bin_mul (m n : Nat) : List Nat := sorry\n\ndef list_sum : List\
+  \ Nat → Nat \n  | [] => 0\n  | (x::xs) => x + list_sum xs\n\n\n"
+"vc-theorems": "theorem bin_mul_elements_natural (m n : Nat) :\n  ∀ x, x ∈ bin_mul\
+  \ m n → x ≥ 0 := sorry\n\n\ntheorem bin_mul_zero_empty (n : Nat) :\n  bin_mul n\
+  \ 0 = [] ∧ bin_mul 0 n = [] := sorry\n\n\ntheorem bin_mul_commutative (m n : Nat)\
+  \ :\n  bin_mul m n = bin_mul n m := sorry\n\n/--\ninfo: [960, 480, 60]\n-/\n#guard_msgs\
+  \ in\n#eval bin_mul 100 15\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval bin_mul 15\
+  \ 0\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval bin_mul 0 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

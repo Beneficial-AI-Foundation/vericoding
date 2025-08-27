@@ -1,0 +1,36 @@
+"vc-description": "Complete the method so that it formats the words into a single\
+  \ comma separated value. The last word should be separated by the word 'and' instead\
+  \ of a comma. The method takes in an array of strings and returns a single formatted\
+  \ string. Empty string values should be ignored. Empty arrays or null/nil values\
+  \ being passed into the method should result in an empty string being returned.\
+  \ \n\n```Python\nformat_words(['ninja', 'samurai', 'ronin']) # should return \"\
+  ninja, samurai and ronin\"\nformat_words(['ninja', '', 'ronin']) # should return\
+  \ \"ninja and ronin\"\nformat_words([]) # should return \"\"\n```\n```Haskell\n\
+  formatWords [\"ninja\", \"samurai\", \"ronin\"] -- should return \"ninja, samurai\
+  \ and ronin\"\nformatWords [\"ninja\", \"\", \"ronin\"] -- should return \"ninja\
+  \ and ronin\"\nformatWords [] -- should return \"\"\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef format_words (words : List String)\
+  \ : String := sorry\n\ndef String.countSubstr (s1 s2 : String) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def substringExists (s1 s2 : String) : Bool := sorry\n\ntheorem\
+  \ format_words_empty_filtered :\n  ∀ (words : List String),\n  (words.filter (fun\
+  \ w => w ≠ \"\")).isEmpty →  \n  format_words words = \"\" := sorry\n"
+"vc-theorems": "theorem format_words_contains_filtered :\n  ∀ (words : List String)\
+  \ (word : String),\n  word ≠ \"\" →\n  word ∈ words →\n  substringExists (format_words\
+  \ words) word = true := sorry\n\n\ntheorem format_words_single_and :\n  ∀ (words\
+  \ : List String),\n  (words.filter (fun w => w ≠ \"\")).length > 1 →\n  substringExists\
+  \ (format_words words) \" and \" = true ∧\n  String.countSubstr (format_words words)\
+  \ \" and \" = 1 := sorry\n\n\ntheorem format_words_no_and :\n  ∀ (words : List String),\n\
+  \  (words.filter (fun w => w ≠ \"\")).length ≤ 1 →\n  substringExists (format_words\
+  \ words) \"and\" = false := sorry\n\n\ntheorem format_words_maintains_order :\n\
+  \  ∀ (words : List String),\n  ¬(words.filter (fun w => w ≠ \"\")).isEmpty →\n \
+  \ let filtered := words.filter (fun w => w ≠ \"\")\n  substringExists (format_words\
+  \ words) filtered.head! ∧\n  substringExists (format_words words) filtered.getLast!\
+  \ ∧\n  format_words words = filtered.head! ∨\n  format_words words = filtered.head!\
+  \ ++ \", \" ++ filtered.getLast! ∨\n  format_words words = filtered.head! ++ \"\
+  \ and \" ++ filtered.getLast! := sorry\n\n/--\ninfo: 'ninja, samurai and ronin'\n\
+  -/\n#guard_msgs in\n#eval format_words [\"ninja\", \"samurai\", \"ronin\"]\n\n/--\n\
+  info: 'ninja'\n-/\n#guard_msgs in\n#eval format_words [\"ninja\"]\n\n/--\ninfo:\
+  \ 'ninja and ronin'\n-/\n#guard_msgs in\n#eval format_words [\"ninja\", \"\", \"\
+  ronin\"]\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval format_words []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,42 @@
+"vc-description": "Let's take an integer number, ``` start``` and let's do the iterative\
+  \ process described below:\n\n- we take its digits and raise each of them to a certain\
+  \ power, ```n```, and add all those values up. (result = ```r1```)\n\n- we repeat\
+  \ the same process with the value ```r1``` and so on, ```k``` times.\n\nLet's do\
+  \ it with ```start = 420, n = 3, k = 5```\n\n```\n420 ---> 72 (= 4³ + 2³ + 0³) --->\
+  \ 351 (= 7³ + 2³) ---> 153 ---> 153 ----> 153\n```\n\nWe can observe that it took\
+  \ ```3``` steps to reach a cyclical pattern ```[153]```(```h = 3```). The length\
+  \ of this cyclical pattern is ```1```, ```patt_len```. The last term of our k operations\
+  \ is 153, ```last_term```\n\nNow, ```start = 420, n = 4, k = 30```\n\n```\n420 --->\
+  \ 272 ---> 2433 ---> 434 ---> 593 ---> 7267 --->\n6114 ---> 1554 ---> 1507 --->\
+  \ 3027 ---> 2498 ---> 10929 --->\n13139 ---> 6725 ---> 4338 ---> 4514 ---> 1138\
+  \ ---> 4179 ---> 9219 ---> \n13139 ---> 6725 ---> 4338 ---> 4514 ---> 1138 --->\
+  \ 4179 ---> 9219 ---> \n13139 ---> 6725 ---> 4338 ---> 4514 ---> 1138 ---> 4179\
+  \ ---> 9219......\n```\n\nIn this example we can observe that the cyclical pattern\
+  \ (```cyc_patt_arr```) is ```[13139, 6725, 4338, 4514, 1138, 4179, 9219]``` with\
+  \ a length of ```7```, (```patt_len = 7```), and it took ```12``` steps (```h =\
+  \ 12```) to reach the cyclical pattern. The last term after doing ```30``` operations\
+  \ is ```1138```\n\nMake the function ```sum_pow_dig_seq()```, that receives the\
+  \ arguments in the order shown below with the corresponding output:\n```python\n\
+  sum_pow_dig_seq(start, n, k) ---> [h, cyc_patt_arr, patt_len, last_term]\n```\n\n\
+  For our given examples, \n```python\nsum_pow_dig_seq(420, 3, 5) == [3, [153], 1,\
+  \ 153]\n\nsum_pow_dig_seq(420, 4, 30) == [12, [13139, 6725, 4338, 4514, 1138, 4179,\
+  \ 9219], 7, 1138]\n```\n\nConstraints for tests:\n```\n500 ≤ start ≤ 8000\n2 ≤ n\
+  \ ≤ 9\n100 * n ≤ k ≤ 200 * n\n```\nDo your best!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum_pow_dig_seq (num exp k : Nat) : Nat × List Nat × Nat ×\
+  \ Nat :=\n  sorry\n"
+"vc-theorems": "theorem sum_pow_dig_seq_result_structure \n  (num exp k : Nat)\n \
+  \ (h1 : num > 0)\n  (h2 : num ≤ 100000)\n  (h3 : exp > 0)\n  (h4 : exp ≤ 5)\n  (h5\
+  \ : k > 0)\n  (h6 : k ≤ 100) :\n  let result := sum_pow_dig_seq num exp k\n  result.1\
+  \ ≥ 0 ∧ \n  result.2.2.1 = result.2.1.length ∧\n  (result.2.1 ≠ [] → \n    (List.elem\
+  \ result.2.2.2 result.2.1 ∧\n     result.1 + result.2.2.1 ≤ k ∧\n     ∀ (x y : Nat),\
+  \ List.elem x result.2.1 → List.elem y result.2.1 → x = y → x = y)) :=\n  sorry\n\
+  \n\ntheorem sum_pow_dig_seq_consistent\n  (num exp : Nat)\n  (h1 : num > 0)\n  (h2\
+  \ : num ≤ 1000)\n  (h3 : exp > 0)\n  (h4 : exp ≤ 3) :\n  let r1 := sum_pow_dig_seq\
+  \ num exp 100\n  let r2 := sum_pow_dig_seq num exp 200\n  r1.2.1 ≠ [] →\n    (r1.2.1\
+  \ = r2.2.1 ∧\n     r1.1 = r2.1 ∧\n     r1.2.2.1 = r2.2.2.1) :=\n  sorry\n\n\ntheorem\
+  \ sum_pow_dig_seq_power_one\n  (num : Nat)\n  (h1 : num > 0)\n  (h2 : num ≤ 1000)\
+  \ :\n  let result := sum_pow_dig_seq num 1 20\n  result.2.1 ≠ [] →\n    ∀ x, List.elem\
+  \ x result.2.1 → x < 10 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

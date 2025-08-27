@@ -1,0 +1,17 @@
+"vc-description": "# Grasshopper - Function syntax debugging\n\nA student was working\
+  \ on a function and made some syntax mistakes while coding. Help them find their\
+  \ mistakes and fix them."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def combine (verb: String) (noun: String) : String := sorry\n\n\
+  theorem combine_concatenation (verb noun: String) : \n  combine verb noun = verb\
+  \ ++ noun := sorry\n"
+"vc-theorems": "theorem combine_length (verb noun: String) : \n  (combine verb noun).length\
+  \ = verb.length + noun.length := sorry \n\n\ntheorem combine_contains_inputs (verb\
+  \ noun: String) \n  (h1: verb.length > 0) (h2: noun.length > 0) :\n  ∃ i₁ i₂, (combine\
+  \ verb noun).data.get? i₁ = some verb.data.head! ∧\n          (combine verb noun).data.get?\
+  \ i₂ = some noun.data.head! := sorry\n\n/--\ninfo: 'take item'\n-/\n#guard_msgs\
+  \ in\n#eval main \"take \" \"item\"\n\n/--\ninfo: 'use sword'\n-/\n#guard_msgs in\n\
+  #eval main \"use \" \"sword\"\n\n/--\ninfo: 'open door'\n-/\n#guard_msgs in\n#eval\
+  \ main \"open \" \"door\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

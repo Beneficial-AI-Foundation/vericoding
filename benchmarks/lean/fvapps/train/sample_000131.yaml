@@ -1,0 +1,24 @@
+"vc-description": "You are given a string containing only 4 kinds of characters 'Q',\
+  \ 'W', 'E' and 'R'.\nA string is said to be balanced if each of its characters appears n/4\
+  \ times where n is the length of the string.\nReturn the minimum length of the substring\
+  \ that can be replaced with any other string of the same length to make the original\
+  \ string s balanced.\nReturn 0 if the string is already balanced.\n \nExample 1:\n\
+  Input: s = \"QWER\"\nOutput: 0\nExplanation: s is already balanced.\nExample 2:\n\
+  Input: s = \"QQWE\"\nOutput: 1\nExplanation: We need to replace a 'Q' to 'R', so\
+  \ that \"RQWE\" (or \"QRWE\") is balanced.\n\nExample 3:\nInput: s = \"QQQW\"\n\
+  Output: 2\nExplanation: We can replace the first \"QQ\" to \"ER\". \n\nExample 4:\n\
+  Input: s = \"QQQQ\"\nOutput: 3\nExplanation: We can replace the last 3 'Q' to make\
+  \ s = \"QWER\".\n\n \nConstraints:\n\n1 <= s.length <= 10^5\ns.length is a multiple\
+  \ of 4\ns contains only 'Q', 'W', 'E' and 'R'."
+"vc-preamble": "import Imports.AllImports\n\ndef balanced_string (s : String) : Int\
+  \ := sorry\n\ndef has_equal_quarters (s : String) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_char (s : String) (c : Char) : Nat := sorry\n\ntheorem\
+  \ invalid_length_returns_negative {s : String} :\n  (s.length % 4 ≠ 0) → balanced_string\
+  \ s = -1 := sorry\n\n\n"
+"vc-theorems": "theorem result_within_bounds {s : String} :\n  balanced_string s ≠\
+  \ -1 →\n  0 ≤ balanced_string s ∧ balanced_string s ≤ s.length := sorry\n\n/--\n\
+  info: 0\n-/\n#guard_msgs in\n#eval balanced_string \"QWER\"\n\n/--\ninfo: 1\n-/\n\
+  #guard_msgs in\n#eval balanced_string \"QQWE\"\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval balanced_string \"QQQW\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

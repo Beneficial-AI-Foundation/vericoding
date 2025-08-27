@@ -1,0 +1,32 @@
+"vc-description": "Let us define two functions f and g on positive integer numbers.\
+  \  $f(n) = \\text{product of non-zero digits of} n$\n\n$g(n) = \\left\\{\\begin{array}{ll}{n}\
+  \ & {\\text{if} n < 10} \\\\{g(f(n))} & {\\text{otherwise}} \\end{array} \\right.$\
+  \ \n\nYou need to process Q queries. In each query, you will be given three integers\
+  \ l, r and k. You need to print the number of integers x between l and r inclusive,\
+  \ such that g(x) = k. \n\n\n-----Input-----\n\nThe first line of the input contains\
+  \ an integer Q (1 ≤ Q ≤ 2 × 10^5) representing the number of queries. \n\nQ lines\
+  \ follow, each of which contains 3 integers l, r and k (1 ≤ l ≤ r ≤ 10^6, 1 ≤ k\
+  \ ≤ 9).\n\n\n-----Output-----\n\nFor each query, print a single line containing\
+  \ the answer for that query.\n\n\n-----Examples-----\nInput\n4\n22 73 9\n45 64 6\n\
+  47 55 7\n2 62 4\n\nOutput\n1\n4\n0\n8\n\nInput\n4\n82 94 6\n56 67 4\n28 59 9\n39\
+  \ 74 4\n\nOutput\n3\n1\n1\n5\n\n\n\n-----Note-----\n\nIn the first example:  g(33)\
+  \ = 9 as g(33) = g(3 × 3) = g(9) = 9  g(47) = g(48) = g(60) = g(61) = 6  There are\
+  \ no such integers between 47 and 55.  g(4) = g(14) = g(22) = g(27) = g(39) = g(40)\
+  \ = g(41) = g(58) = 4"
+"vc-preamble": "import Imports.AllImports\n\ndef getSpecialValue : Nat → Nat := \n\
+  \  fun n => sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countNumbersWithSpecialValue : List (Nat × Nat × Nat) → List\
+  \ Nat := \n  fun queries => sorry\n"
+"vc-theorems": "theorem special_value_counts_correct {l r k : Nat} (h1 : l > 0) (h2\
+  \ : r > l) (h3 : k > 0) (h4 : k ≤ 9) : \n  let count := (countNumbersWithSpecialValue\
+  \ [(l,r,k)]).head!;\n  count = ((List.range (r-l+1)).filter (fun x => getSpecialValue\
+  \ (x + l) = k)).length := by\n  sorry\n\n\ntheorem result_list_length_matches_queries\
+  \ {queries : List (Nat × Nat × Nat)} (h : queries.length > 0) :\n  (countNumbersWithSpecialValue\
+  \ queries).length = queries.length := by\n  sorry\n\n\ntheorem results_are_nonnegative\
+  \ {queries : List (Nat × Nat × Nat)} (h : queries.length > 0) :\n  List.all (countNumbersWithSpecialValue\
+  \ queries) (fun x => x ≥ 0) := by\n  sorry\n\n/--\ninfo: [1, 4, 0, 8]\n-/\n#guard_msgs\
+  \ in\n#eval count_numbers_with_special_value [(22, 73, 9), (45, 64, 6), (47, 55,\
+  \ 7), (2, 62, 4)]\n\n/--\ninfo: [3, 1, 1, 5]\n-/\n#guard_msgs in\n#eval count_numbers_with_special_value\
+  \ [(82, 94, 6), (56, 67, 4), (28, 59, 9), (39, 74, 4)]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

@@ -1,0 +1,25 @@
+"vc-description": "A repetition-free number is one in which each digit $\\{1,2,3,…,9\\\
+  }$ appears at most once and the digit $0$ does not appear. A repetition-free number\
+  \ can have at most nine digits, but may also have fewer than nine digits. Some examples\
+  \ of repetition-free numbers are $9, 32, 489, 98761$ and $983245$.\nYou will be\
+  \ given an integer $N$ with at most nine digits. Your task is to print out the smallest\
+  \ repetition-free number bigger than $N$. For example, for $99$ the answer is $123$,\
+  \ for $881$ the answer is $891$, and for $133$ the answer is $134$.\n\n-----Input:-----\n\
+  A single line with a single integer with at most $9$ digits.\n\n-----Output:-----\n\
+  A single line containing the smallest repetition-free number bigger than the given\
+  \ number. If there is no repetition-free number bigger than the given number, print\
+  \ $0$.\n\n-----Constraints:-----\n- $N$ consists of atmost $9$ digits\n\n-----Sample\
+  \ input-----\n99\n\n-----Sample output-----\n123"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_next_repetition_free (n : Nat) : Nat := sorry\n\ntheorem\
+  \ find_next_repetition_free_properties {n : Nat} (h : n > 0 ∧ n ≤ 10000) :\n  let\
+  \ result := find_next_repetition_free n\n  -- Result is greater than input\n  result\
+  \ > n ∧ \n  -- Result has all distinct digits (no repetitions)\n  ((toString result).data.eraseDups\
+  \ = (toString result).data) := sorry\n"
+"vc-theorems": "theorem find_next_repetition_free_above_max {n : Nat} (h : n ≥ 987654321)\
+  \ :\n  find_next_repetition_free n = 0 := sorry\n\n/--\ninfo: 123\n-/\n#guard_msgs\
+  \ in\n#eval find_next_repetition_free 99\n\n/--\ninfo: 891\n-/\n#guard_msgs in\n\
+  #eval find_next_repetition_free 881\n\n/--\ninfo: 134\n-/\n#guard_msgs in\n#eval\
+  \ find_next_repetition_free 133\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

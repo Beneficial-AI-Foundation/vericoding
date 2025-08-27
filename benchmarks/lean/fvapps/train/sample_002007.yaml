@@ -1,0 +1,41 @@
+"vc-description": "DZY loves planting, and he enjoys solving tree problems.\n\nDZY\
+  \ has a weighted tree (connected undirected graph without cycles) containing n nodes\
+  \ (they are numbered from 1 to n). He defines the function g(x, y) (1 ≤ x, y ≤ n)\
+  \ as the longest edge in the shortest path between nodes x and y. Specially g(z,\
+  \ z) = 0 for every z.\n\nFor every integer sequence p_1, p_2, ..., p_{n} (1 ≤ p_{i}\
+  \ ≤ n), DZY defines f(p) as $\\operatorname{min}_{i = 1}^{n} g(i, p_{i})$. \n\n\
+  DZY wants to find such a sequence p that f(p) has maximum possible value. But there\
+  \ is one more restriction: the element j can appear in p at most x_{j} times.\n\n\
+  Please, find the maximum possible f(p) under the described restrictions.\n\n\n-----Input-----\n\
+  \nThe first line contains an integer n (1 ≤ n ≤ 3000).\n\nEach of the next n - 1\
+  \ lines contains three integers a_{i}, b_{i}, c_{i} (1 ≤ a_{i}, b_{i} ≤ n; 1 ≤ c_{i}\
+  \ ≤ 10000), denoting an edge between a_{i} and b_{i} with length c_{i}. It is guaranteed\
+  \ that these edges form a tree.\n\nEach of the next n lines describes an element\
+  \ of sequence x. The j-th line contains an integer x_{j} (1 ≤ x_{j} ≤ n).\n\n\n\
+  -----Output-----\n\nPrint a single integer representing the answer.\n\n\n-----Examples-----\n\
+  Input\n4\n1 2 1\n2 3 2\n3 4 3\n1\n1\n1\n1\n\nOutput\n2\n\nInput\n4\n1 2 1\n2 3 2\n\
+  3 4 3\n4\n4\n4\n4\n\nOutput\n3\n\n\n\n-----Note-----\n\nIn the first sample, one\
+  \ of the optimal p is [4, 3, 2, 1]."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_max_tree_weight (n : Nat) (edges : List (Nat × Nat × Nat))\
+  \ (use_counts : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem find_max_tree_weight_result_bounds \n  {n : Nat} {edges :\
+  \ List (Nat × Nat × Nat)} {use_counts : List Nat} \n  (h_n : n > 0) (h_edges : edges.length\
+  \ > 0)\n  (h_valid : ∀ (e : Nat × Nat × Nat), e ∈ edges → \n    (e.1 ≤ n ∧ e.2.1\
+  \ ≤ n ∧ e.1 ≠ e.2.1)) :\n  0 ≤ find_max_tree_weight n edges use_counts ∧ \n  find_max_tree_weight\
+  \ n edges use_counts ≤ 10000 :=\n  sorry\n\n\ntheorem find_max_tree_weight_min_case\
+  \ \n  (edges : List (Nat × Nat × Nat)) (use_counts : List Nat)\n  (h_edges : edges\
+  \ = [(1, 2, 1)]) \n  (h_uses : use_counts = [0, 1, 1]) :\n  find_max_tree_weight\
+  \ 2 edges use_counts ≥ 0 :=\n  sorry\n\n\ntheorem find_max_tree_weight_single_edge\n\
+  \  (edges : List (Nat × Nat × Nat)) (use_counts : List Nat)\n  (h_edges : edges\
+  \ = [(1, 2, 5)])\n  (h_uses : use_counts = [0, 1, 1]) :\n  find_max_tree_weight\
+  \ 2 edges use_counts = 5 :=\n  sorry\n\n\ntheorem find_max_tree_weight_multiple_edges\n\
+  \  (edges : List (Nat × Nat × Nat)) (use_counts : List Nat)\n  (h_edges : edges\
+  \ = [(1, 2, 1), (2, 3, 1)])\n  (h_uses : use_counts = [0, 1, 1, 1]) :\n  find_max_tree_weight\
+  \ 3 edges use_counts = 1 :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval\
+  \ find_max_tree_weight 4 [[1, 2, 1], [2, 3, 2], [3, 4, 3]] [0, 1, 1, 1, 1]\n\n/--\n\
+  info: 3\n-/\n#guard_msgs in\n#eval find_max_tree_weight 4 [[1, 2, 1], [2, 3, 2],\
+  \ [3, 4, 3]] [0, 4, 4, 4, 4]\n\n/--\ninfo: 10000\n-/\n#guard_msgs in\n#eval find_max_tree_weight\
+  \ 2 [[1, 2, 10000]] [0, 1, 1]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

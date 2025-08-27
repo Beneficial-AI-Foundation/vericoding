@@ -1,0 +1,29 @@
+"vc-description": "In africa jungle , there were zebra's who liked to spit.\nThere\
+  \ owner watched them for whole day and noted in his sheet where each zebra spitted.\n\
+  Now he's in a confusion and wants to know if in the jungle there are two zebra's\
+  \ which spitted at each other.\nHelp him solve this task.\nIf the zebra is present\
+  \ in position a spits b metres right , he can hit only zebra in position a+b , if\
+  \ such a zebra exists.\n\n-----Input:-----\n- The first line contains integer t(1<=t<100)-\
+  \ amount of zebras in jungle.\n- Each of following t lines contains two integers\
+  \ a(i) and b(i)(-10^4<=x(i)<=10^4,1<|d(i)|<=2.10^4) - records in owner sheet.\n\
+  - a(i) is the position of i-th zebra and b(i) is distance at which the i-th camel\
+  \ spitted.\nPositive values of d(i) correspond to spits right, negative values correspond\
+  \ to spit left.No two zebras may stand in the same position.\n\n-----Output:-----\n\
+  If there are two zebras , which spitted at each other , output YES, otherwise ,\
+  \ output NO.\n\n-----Sample Input:-----\n2\n0 1\n1 -1\n\n-----Sample Output:-----\n\
+  YES"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def canZebrasSpatAtEachOther (positions : List (Int × Int)) : Bool\
+  \ := sorry\n\ntheorem canZebrasSpatAtEachOther_returns_bool \n  (positions : List\
+  \ (Int × Int))\n  (h1 : positions ≠ []) : \n  canZebrasSpatAtEachOther positions\
+  \ = true ∨ \n  canZebrasSpatAtEachOther positions = false := sorry\n"
+"vc-theorems": "theorem reciprocal_spitting\n  {positions : List (Int × Int)}\n  {pos1\
+  \ pos2 dist1 dist2 : Int}\n  (h1 : positions = [(pos1, dist1), (pos2, dist2)])\n\
+  \  (h2 : pos1 ≠ pos2)\n  (h3 : pos1 + dist1 = pos2)\n  (h4 : pos2 + dist2 = pos1)\
+  \ :\n  canZebrasSpatAtEachOther positions = true := sorry\n\n/--\ninfo: True\n-/\n\
+  #guard_msgs in\n#eval can_zebras_spit_at_each_other [[0, 1], [1, -1]]\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval can_zebras_spit_at_each_other [[0, 1], [2, -1]]\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval can_zebras_spit_at_each_other [[0,\
+  \ 2], [1, 1], [2, -2]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

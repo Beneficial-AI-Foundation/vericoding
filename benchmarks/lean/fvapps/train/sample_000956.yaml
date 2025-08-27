@@ -1,0 +1,43 @@
+"vc-description": "This problem is about sequences of positive integers $a_1,a_2,...,a_N$.\
+  \ A subsequence of a sequence is anything obtained by dropping some of the elements.\
+  \ For example, $3,7,11,3$ is a subsequence of $6,3,11,5,7,4,3,11,5,3$ , but $3,3,7$\
+  \ is not a subsequence of $6,3,11,5,7,4,3,11,5,3$ .\nA fully dividing sequence is\
+  \ a sequence $a_1,a_2,...,a_N$ where $a_i$ divides $a_j$ whenever $i < j$. For example,\
+  \ $3,15,60,720$ is a fully dividing sequence.\nGiven a sequence of integers your\
+  \ aim is to find the length of the longest fully dividing subsequence of this sequence.\n\
+  Consider the sequence $2,3,7,8,14,39,145,76,320$\nIt has a fully dividing sequence\
+  \ of length $3$, namely $2,8,320$, but none of length $4$ or greater.\nConsider\
+  \ the sequence $2,11,16,12,36,60,71,17,29,144,288,129,432,993$.\nIt has two fully\
+  \ dividing subsequences of length $5$,\n- $2,11,16,12,36,60,71,17,29,144,288,129,432,993$\
+  \ and\n- $2,11,16,12,36,60,71,17,29,144,288,129,432,993$\nand none of length $6$\
+  \ or greater.\n\n-----Input:-----\nThe first line of input contains a single positive\
+  \ integer $N$ indicating the length of the input sequence. Lines $2,...,N+1$ contain\
+  \ one integer each. The integer on line $i+1$ is $a_i$.\n\n-----Output:-----\nYour\
+  \ output should consist of a single integer indicating the length of the longest\
+  \ fully dividing subsequence of the input sequence.\n\n-----Constraints:-----\n\
+  - $1 \\leq N \\leq 10000$\n- $1 \\leq a_i \\leq 1000000000$\n\n-----Sample input\
+  \ 1:-----\n9\n2 \n3 \n7 \n8 \n14 \n39 \n145 \n76 \n320\n\n-----Sample output 1:-----\n\
+  3\n\n-----Sample input 2:-----\n14\n2\n11 \n16 \n12 \n36 \n60 \n71 \n17 \n29 \n\
+  144 \n288 \n129 \n432 \n993\n\n-----Sample output 2:-----\n5"
+"vc-preamble": "import Imports.AllImports\n\ndef find_longest_dividing_subsequence\
+  \ (nums: List Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def powers_of_two : List Nat :=\n  let rec mk_powers : Nat → List\
+  \ Nat\n    | 0 => []\n    | n+1 => if (2^n ≤ 1000) then (2^n)::(mk_powers n) else\
+  \ mk_powers n\n  mk_powers 10\n"
+"vc-theorems": "theorem length_bounds {nums: List Nat} \n  (h1: ∀ x ∈ nums, 1 ≤ x\
+  \ ∧ x ≤ 1000)\n  (h2: nums.length > 0) :\n  1 ≤ find_longest_dividing_subsequence\
+  \ nums ∧ \n  find_longest_dividing_subsequence nums ≤ nums.length :=\n  sorry\n\n\
+  \ntheorem powers_of_two_sequence :\n  find_longest_dividing_subsequence powers_of_two\
+  \ = powers_of_two.length :=\n  sorry\n\n\ntheorem sorted_divisible_sequence {nums:\
+  \ List Nat}\n  (h1: ∀ x ∈ nums, 1 ≤ x ∧ x ≤ 1000)\n  (h2: nums.length ≥ 2)\n  (h3:\
+  \ ∀ (i: Fin nums.length) (j: Fin nums.length), \n    i.val < j.val → (nums.get j)\
+  \ % (nums.get i) = 0)\n  (h4: ∀ (i: Fin nums.length) (j: Fin nums.length),\n   \
+  \ i.val < j.val → nums.get i ≤ nums.get j) :\n  find_longest_dividing_subsequence\
+  \ nums = nums.length :=\n  sorry\n\n\ntheorem edge_case_singleton :\n  find_longest_dividing_subsequence\
+  \ [1] = 1 :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_longest_dividing_subsequence\
+  \ [2, 3, 7, 8, 14, 39, 145, 76, 320]\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval\
+  \ find_longest_dividing_subsequence [2, 11, 16, 12, 36, 60, 71, 17, 29, 144, 288,\
+  \ 129, 432, 993]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval find_longest_dividing_subsequence\
+  \ [1, 2, 4, 8]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

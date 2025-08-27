@@ -1,0 +1,27 @@
+"vc-description": "Kate constantly finds herself in some kind of a maze. Help her\
+  \ to find a way out!.\n\nFor a given maze and Kate's position find if there is a\
+  \ way out. Your function should return True or False.\n\nEach maze is defined as\
+  \ a list of strings, where each char stays for a single maze \"cell\". ' ' (space)\
+  \ can be stepped on, '#' means wall and 'k' stays for Kate's starting position.\
+  \ Note that the maze may not always be square or even rectangular.\n\nKate can move\
+  \ left, up, right or down only.\n\nThere should be only one Kate in a maze. In any\
+  \ other case you have to throw an exception.\n\n\nExample input\n=============\n\
+  ```\n['# ##',\n '# k#',\n '####']\n```\n\nExample output\n==============\nTrue\n\
+  \nExample input\n=============\n```\n['####'.\n '# k#',\n '####']\n```\n\nExample\
+  \ output\n==============\nFalse"
+"vc-preamble": "import Imports.AllImports\n\ndef isValidMaze (maze : List String)\
+  \ : Bool := sorry\ndef hasExit (maze : List String) : Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isKateAt (maze : List String) (i j : Nat) : Bool := sorry\n\
+  \ntheorem maze_properties (maze : List String) \n  (h1 : isValidMaze maze = true)\n\
+  \  (kateCount : Nat)\n  (h2 : kateCount = 1) :\n  hasExit maze = true ∨ hasExit\
+  \ maze = false := sorry\n"
+"vc-theorems": "theorem invalid_maze_no_kate (maze : List String)\n  (h1 : isValidMaze\
+  \ maze = true)\n  (kateCount : Nat)\n  (h2 : kateCount = 0) :\n  ∃ e, hasExit maze\
+  \ = e → False := sorry\n\n\ntheorem edge_escape (maze : List String)\n  (h1 : isValidMaze\
+  \ maze = true)\n  (kateCount : Nat)\n  (h2 : kateCount = 1)\n  (h3 : ∃ (i j : Nat),\
+  \ \n    (i = 0 ∨ i = maze.length - 1 ∨ j = 0 ∨ j = (maze.get! 0).length - 1) ∧\n\
+  \    isKateAt maze i j = true) :\n  hasExit maze = true := sorry\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval has_exit [\"# ##\", \"# k#\", \"####\"]\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval has_exit [\"####\", \"# k#\", \"####\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

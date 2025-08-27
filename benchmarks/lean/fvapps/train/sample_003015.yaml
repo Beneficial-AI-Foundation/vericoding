@@ -1,0 +1,16 @@
+"vc-description": "### Unfinished Loop - Bug Fixing #1\n\nOh no, Timmy's created an\
+  \ infinite loop! Help Timmy find and fix the bug in his unfinished for loop!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def create_array (n : Nat) : Array Nat := sorry\n\ntheorem create_array_length\
+  \ (n : Nat) :\n  (create_array n).size = n := sorry\n"
+"vc-theorems": "theorem create_array_sequential (n : Nat) (i : Nat) (h : i < n) :\
+  \ \n  have h' : i < (create_array n).size := by rw [create_array_length]; exact\
+  \ h\n  (create_array n)[i]'h' = i + 1 := sorry\n\n\ntheorem create_array_increasing\
+  \ (n : Nat) (i j : Nat) \n  (hi : i < n) (hj : j < n) (h_order : i < j) :\n  have\
+  \ hi' : i < (create_array n).size := by rw [create_array_length]; exact hi\n  have\
+  \ hj' : j < (create_array n).size := by rw [create_array_length]; exact hj\n  (create_array\
+  \ n)[i]'hi' < (create_array n)[j]'hj' := sorry\n\n/--\ninfo: [1]\n-/\n#guard_msgs\
+  \ in\n#eval create_array 1\n\n/--\ninfo: [1, 2, 3]\n-/\n#guard_msgs in\n#eval create_array\
+  \ 3\n\n/--\ninfo: [1, 2, 3, 4, 5]\n-/\n#guard_msgs in\n#eval create_array 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

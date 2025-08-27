@@ -1,0 +1,43 @@
+"vc-description": "A tennis tournament is about to take place with $N$ players participating\
+  \ in it.\nEvery player plays with every other player exactly once and there are\
+  \ no ties. That is, every match has a winner and a loser. \nWith Naman's birthday\
+  \ approaching, he wants to make sure that each player wins the same number of matches\
+  \ so that nobody gets disheartened.  \nYour task is to determine if such a scenario\
+  \ can take place and if yes find one such scenario.\n\n-----Input:-----\n- First\
+  \ line will contain $T$, number of testcases. Then the testcases follow. \n- Each\
+  \ testcase contains of a single integer $N$ denoting number of players.\n\n-----Output:-----\n\
+  - If it's impossible for everyone to win the same number of matches, print \"NO\"\
+  \ (without quotes).\n- Otherwise print \"YES\" (without quotes) and then print $N$\
+  \ lines , each line should consist of a string containing only 0s and 1s and should\
+  \ be of size $N$. \n- If the jth character in the ith line is 1 then it means in\
+  \ the match between $i$ and $j$ , $i$ wins. \n- You will get a WA if the output\
+  \ does not correspond to a valid tournament, or if the constraints are not satisfied.\n\
+  - You will get also WA verdict if any 2 lines have contradicting results or if a\
+  \ player beats himself.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n- $2\
+  \ \\leq N \\leq 100$\n\n-----Subtasks-----\n- 10 points : $2 \\leq N \\leq 6$\n\
+  - 90 points :  Original Constraints. \n\n-----Sample Input:-----\n2\n3\n2\n\n-----Sample\
+  \ Output:-----\nYES\n010\n001\n100\nNO\n\n-----Explanation:-----\nOne such scenario\
+  \ for $N$ = $3$ is when player $1$ beats player $2$, player $2$ to beats player\
+  \ $3$ and player $3$ beats player $1$. Here all players win exactly $1$ match."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solveTennisTournament (n : Nat) : List String := sorry\n\n\
+  theorem even_n_returns_no {n : Nat} (h : n > 0) (h2 : n % 2 = 0) :\n  solveTennisTournament\
+  \ n = [\"NO\"] := sorry\n"
+"vc-theorems": "theorem odd_n_first_element {n : Nat} (h : n > 0) (h2 : n % 2 = 1)\
+  \ :\n  (solveTennisTournament n).head? = some \"YES\" := sorry\n\n\ntheorem odd_n_length\
+  \ {n : Nat} (h : n > 0) (h2 : n % 2 = 1) :\n  (solveTennisTournament n).length =\
+  \ n + 1 := sorry\n\n\ntheorem odd_n_inner_row_length {n : Nat} (h : n > 0) (h2 :\
+  \ n % 2 = 1) :\n  ∀ row ∈ (solveTennisTournament n).tail, String.length row = n\
+  \ := sorry\n\n\ntheorem odd_n_valid_chars {n : Nat} (h : n > 0) (h2 : n % 2 = 1)\
+  \ :\n  ∀ row ∈ (solveTennisTournament n).tail, \n  ∀ c ∈ String.toList row, c =\
+  \ '0' ∨ c = '1' := sorry\n\n\ntheorem odd_n_row_ones_count {n : Nat} (h : n > 0)\
+  \ (h2 : n % 2 = 1) :\n  ∀ row ∈ (solveTennisTournament n).tail,\n  let ones := (String.toList\
+  \ row).filter (· = '1')\n  ones.length = (n-1)/2 := sorry\n\n\ntheorem odd_n_col_ones_count\
+  \ {n : Nat} (h : n > 0) (h2 : n % 2 = 1) (j : Nat) (hj : j < n) :\n  let rows :=\
+  \ (solveTennisTournament n).tail\n  let col := rows.map (λ row => String.get! row\
+  \ ⟨j⟩)\n  (col.filter (· = '1')).length = (n-1)/2 := sorry\n\n\ntheorem odd_n_no_self_play\
+  \ {n : Nat} (h : n > 0) (h2 : n % 2 = 1) (i : Nat) (hi : i < n) :\n  let rows :=\
+  \ (solveTennisTournament n).tail\n  let row := rows.get! i\n  String.get! row ⟨i⟩\
+  \ = '0' := sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval len result3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

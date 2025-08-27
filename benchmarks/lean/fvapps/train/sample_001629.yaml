@@ -1,0 +1,38 @@
+"vc-description": "Martha — as a professional problemsetter — proposed a problem for\
+  \ a world-class contest. This is the problem statement:\n\nTomorrow is Nadia's birthday,\
+  \ and Bardia (her brother) is assigned to make the balloons ready!\n\nThere are\
+  \ n balloons (initially empty) that are tied to a straight line on certain positions\
+  \ x_1, x_2, ..., x_{n}. Bardia inflates the balloons from left to right. As a result,\
+  \ i-th balloon gets bigger and bigger until its radius reaches the pressure endurance\
+  \ p_{i} or it touches another previously-inflated balloon. [Image] \n\nWhile Bardia\
+  \ was busy with the balloons, he wondered \"What will be the sum of radius of balloons\
+  \ after all of the balloons are inflated?\". Being a nerdy type of guy, he is now\
+  \ thinking about the problem instead of preparing his sister's birthday. Calculate\
+  \ the answer to Bardia's problem so that Nadia's birthday won't be balloon-less.\n\
+  \nArtha — Martha's student — claimed his solution got accepted. Martha (being his\
+  \ teacher for a long time!) knew he couldn't have solved the problem for real and\
+  \ thus thinks there is something wrong with the testcases. Artha isn't anyhow logical,\
+  \ which means there is no way for Martha to explain the wrong point in his algorithm.\
+  \ So, the only way is to find a testcase to prove him wrong!\n\nArtha's pseudo-code\
+  \ is shown below: [Image] \n\nYou should output a small testcase for the problem\
+  \ such that Artha's algorithm is incorrect. The algorithm's output is considered\
+  \ correct if it differs from the correct value by no more than 1.\n\n\n-----Input-----\n\
+  \nPlease pay attention! No input will be given to your program for this problem.\
+  \ So you do not have to read from the input anything.\n\n\n-----Output-----\n\n\
+  You should output the generated small testcase (which Artha's solution doesn't get\
+  \ it right). It should be in the following format:  First line must contain the\
+  \ only number n (1 ≤ n ≤ 500).  The i-th of the next n lines should contain the\
+  \ description of the i-th balloon — two space-separated integers x_{i}, p_{i} (1\
+  \ ≤ p_{i} ≤ 10^6, 0 ≤ x_1 < x_2 < ... < x_{n} ≤ 10^6). \n\n\n-----Examples-----\n\
+  \n\n-----Note-----\n\nThe testcase depicted in the figure above (just showing how\
+  \ output should be formatted):\n\n4\n\n0 9\n\n6 3\n\n12 7\n\n17 1"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def generate_testcase : (Nat × List (Nat × Nat)) := sorry\n\ntheorem\
+  \ testcase_properties (n : Nat) (balloons : List (Nat × Nat)) \n    (h : (n, balloons)\
+  \ = generate_testcase) : \n    List.length balloons = n ∧ \n    (List.get? balloons\
+  \ 0).map Prod.fst = some 0 ∧\n    List.all balloons (fun p => p.1 ≥ 0 ∧ p.2 > 0)\
+  \ ∧\n    List.Pairwise (fun p1 p2 => p1.1 < p2.1) balloons := sorry"
+"vc-theorems": "/--\ninfo: 4\n-/\n#guard_msgs in\n#eval len b1\n\n/--\ninfo: 302\n\
+  -/\n#guard_msgs in\n#eval len b2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

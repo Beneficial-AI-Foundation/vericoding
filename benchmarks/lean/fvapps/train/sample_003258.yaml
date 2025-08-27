@@ -1,0 +1,26 @@
+"vc-description": "# A wolf in sheep's clothing\n\nWolves have been reintroduced to\
+  \ Great Britain. You are a sheep farmer, and are now plagued by wolves which pretend\
+  \ to be sheep. Fortunately, you are good at spotting them. \n\nWarn the sheep in\
+  \ front of the wolf that it is about to be eaten. Remember that you are standing\
+  \ **at the front of the queue** which is at the end of the array:\n\n```\n[sheep,\
+  \ sheep, sheep, sheep, sheep, wolf, sheep, sheep]      (YOU ARE HERE AT THE FRONT\
+  \ OF THE QUEUE)\n   7      6      5      4      3            2      1\n```\n\nIf\
+  \ the wolf is the closest animal to you, return `\"Pls go away and stop eating my\
+  \ sheep\"`. Otherwise, return `\"Oi! Sheep number N! You are about to be eaten by\
+  \ a wolf!\"` where `N` is the sheep's position in the queue.\n\n**Note:** there\
+  \ will always be exactly one wolf in the array.\n\n## Examples\n\n```python\nwarn_the_sheep([\"\
+  sheep\", \"sheep\", \"sheep\", \"wolf\", \"sheep\"]) == 'Oi! Sheep number 1! You\
+  \ are about to be eaten by a wolf!'\n\nwarn_the_sheep(['sheep', 'sheep', 'wolf'])\
+  \ == 'Pls go away and stop eating my sheep'\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def warn_the_sheep (queue : List String) : String := sorry\n\n\
+  theorem wolf_at_end_gives_warning_message {queue : List String} \n  (h : queue =\
+  \ queue.dropLast ++ [(\"wolf\" : String)]) :\n  warn_the_sheep queue = \"Pls go\
+  \ away and stop eating my sheep\" := sorry\n"
+"vc-theorems": "theorem wolf_with_sheep_after_gives_warning {queue : List String}\n\
+  \  (h1 : ∃ i, queue.get? i = some \"wolf\")\n  (h2 : ∃ n, n > 0 ∧ queue.length =\
+  \ (queue.indexOf \"wolf\" + 1 + n)) :\n  let sheep_after := queue.length - queue.indexOf\
+  \ \"wolf\" - 1\n  warn_the_sheep queue = s!\"Oi! Sheep number {sheep_after}! You\
+  \ are about to be eaten by a wolf!\" := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

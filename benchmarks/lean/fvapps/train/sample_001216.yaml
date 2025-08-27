@@ -1,0 +1,24 @@
+"vc-description": "Vasya likes the number $239$. Therefore, he considers a number\
+  \ pretty if its last digit is $2$, $3$ or $9$. \nVasya wants to watch the numbers\
+  \ between $L$ and $R$ (both inclusive), so he asked you to determine how many pretty\
+  \ numbers are in this range. Can you help him?\n\n-----Input-----\n- The first line\
+  \ of the input contains a single integer $T$ denoting the number of test cases.\
+  \ The description of $T$ test cases follows.\n- The first and only line of each\
+  \ test case contains two space-separated integers $L$ and $R$.\n\n-----Output-----\n\
+  For each test case, print a single line containing one integer — the number of pretty\
+  \ numbers between $L$ and $R$.\n\n-----Constraints-----\n- $1 \\le T \\le 100$\n\
+  - $1 \\le L \\le R \\le 10^5$\n\n-----Subtasks-----\nSubtask #1 (100 points): original\
+  \ constraints\n\n-----Example Input-----\n2\n1 10\n11 33\n\n-----Example Output-----\n\
+  3\n8\n\n-----Explanation-----\nExample case 1: The pretty numbers between $1$ and\
+  \ $10$ are $2$, $3$ and $9$.\nExample case 2: The pretty numbers between $11$ and\
+  \ $33$ are $12$, $13$, $19$, $22$, $23$, $29$, $32$ and $33$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isLastDigitPretty (n : Nat) : Bool := sorry\n\ndef count_pretty_numbers\
+  \ (l r : Nat) : Nat := sorry\n"
+"vc-theorems": "theorem count_pretty_numbers_non_negative (l r : Nat) : \n  count_pretty_numbers\
+  \ l r ≥ 0 := sorry\n\n\ntheorem count_pretty_numbers_bounded (l r : Nat) :\n  count_pretty_numbers\
+  \ l r ≤ (max l r - min l r + 1) := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval\
+  \ count_pretty_numbers 1 10\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval count_pretty_numbers\
+  \ 11 33\n\n/--\ninfo: 30\n-/\n#guard_msgs in\n#eval count_pretty_numbers 1 100\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,35 @@
+"vc-description": "#### Background: \n \n\nA linear regression line has an equation\
+  \ in the form `$Y = a + bX$`, where `$X$` is the explanatory variable and `$Y$`\
+  \ is the dependent variable. The parameter `$b$` represents the *slope* of the line,\
+  \ while `$a$` is called the *intercept* (the value of `$y$` when `$x = 0$`).\n\n\
+  For more details visit the related [wikipedia page](http://en.wikipedia.org/wiki/Simple_linear_regression).\n\
+  \n---\n---\n#### Task:\nThe function that you have to write accepts two list/array,\
+  \ `$x$` and `$y$`,  representing the coordinates of the points to regress (so that,\
+  \ for example, the first point has coordinates (`x[0], y[0]`)).\n\nYour function\
+  \ should return a tuple (in Python) or an array (any other language) of two elements:\
+  \ `a` (intercept) and `b` (slope) in this order.\n\nYou must round your result to\
+  \ the first 4 decimal digits\n\n#### Formula:\n\n   \n\n`$x_i$` and `$y_i$` is `$x$`\
+  \ and `$y$` co-ordinate of `$i$`-th point;  \n`$n$` is length of input.  \n\n`$a\
+  \ =  \\dfrac{\\sum x_i^2\\cdot \\sum y_i - \\sum x_i \\cdot\\sum x_iy_i}{n\\sum\
+  \ x_i^2 - (\\sum x_i)^2}$`\n\n`$b =  \\dfrac{n\\sum x_i y_i - \\sum x_i \\cdot \\\
+  sum y_i}{n\\sum x^2_i - (\\sum x_i)^2}$`\n#### Examples:\n\n```python\nregressionLine([25,30,35,40,45,50],\
+  \ [78,70,65,58,48,42]) == (114.381, -1.4457)\n\nregressionLine([56,42,72,36,63,47,55,49,38,42,68,60],\
+  \ [147,125,160,118,149,128,150,145,115,140,152,155]) == (80.7777, 1.138)\n```\n\
+  ----"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.variance (l : List Int) : Float := sorry\n\ndef regressionLine\
+  \ (x : List Int) (y : List Int) : Float × Float := sorry\n"
+"vc-theorems": "theorem regression_line_outputs_float_pair \n  (x y : List Int) \n\
+  \  (h1 : x.length ≥ 3) \n  (h2 : y.length = x.length)\n  (h3 : (List.variance x)\
+  \ > 0) :\n  let (a, b) := regressionLine x y\n  ∃ (a' b' : Float), a = a' ∧ b =\
+  \ b' := sorry\n\n\ntheorem regression_line_outputs_finite \n  (x y : List Int)\n\
+  \  (h1 : x.length ≥ 3)\n  (h2 : y.length = x.length) \n  (h3 : (List.variance x)\
+  \ > 0) :\n  let (a, b) := regressionLine x y\n  ¬a.isNaN ∧ ¬b.isNaN := sorry\n\n\
+  /--\ninfo: (114.381, -1.4457)\n-/\n#guard_msgs in\n#eval regressionLine [25, 30,\
+  \ 35, 40, 45, 50] [78, 70, 65, 58, 48, 42]\n\n/--\ninfo: (80.7777, 1.138)\n-/\n\
+  #guard_msgs in\n#eval regressionLine [56, 42, 72, 36, 63, 47, 55, 49, 38, 42, 68,\
+  \ 60] [147, 125, 160, 118, 149, 128, 150, 145, 115, 140, 152, 155]\n\n/--\ninfo:\
+  \ (0.514, 0.0028)\n-/\n#guard_msgs in\n#eval regressionLine [0, 10, 20, 30, 40]\
+  \ [0.51, 0.55, 0.57, 0.59, 0.63]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

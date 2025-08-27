@@ -1,0 +1,29 @@
+"vc-description": "Complete the solution so that it strips all text that follows any\
+  \ of a set of comment markers passed in. Any whitespace at the end of the line should\
+  \ also be stripped out. \n\n**Example:**\n\nGiven an input string of:\n```\napples,\
+  \ pears # and bananas\ngrapes\nbananas !apples\n```\n\nThe output expected would\
+  \ be:\n```\napples, pears\ngrapes\nbananas\n```\n\nThe code would be called like\
+  \ so:\n\n```python\nresult = solution(\"apples, pears # and bananas\\ngrapes\\nbananas\
+  \ !apples\", [\"#\", \"!\"])\n# result should == \"apples, pears\\ngrapes\\nbananas\"\
+  \n\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def stripComments (text : String) (markers : List String) : String\
+  \ := sorry\n\ntheorem strip_comments_main_properties (text : String) (markers :\
+  \ List String) :\n  let result := stripComments text markers\n  -- Result length\
+  \ not greater than input\n  (result.length ≤ text.length) ∧\n  -- Empty input cases\n\
+  \  (stripComments \"\" markers = \"\") ∧\n  (stripComments text [] = text) := sorry\n"
+"vc-theorems": "theorem strip_comments_marker_free (text : String) (markers : List\
+  \ String) :\n  let result := stripComments text markers\n  -- No marker remains\
+  \ in result\n  (∀ m ∈ markers, m ≠ \"\" → ∀ i : Nat, \n    match result.data[i]?,\
+  \ m.data[0]? with\n    | some c1, some c2 => c1 ≠ c2\n    | _, _ => true) := sorry\n\
+  \n\ntheorem strip_comments_single_char_markers (text : String) (markers : List String)\
+  \ \n  (h : ∀ m ∈ markers, m.length = 1) :\n  let result := stripComments text markers\n\
+  \  (∀ i : Nat, \n    match result.data[i]?, text.data[i]? with\n    | some c1, some\
+  \ c2 => c1 = c2 ∨ \n        (∃ m ∈ markers, ∃ j < i, \n          text.data[j]? =\
+  \ m.data[0]?)\n    | none, _ => true\n    | _, none => true) := sorry\n\n/--\ninfo:\
+  \ expected1\n-/\n#guard_msgs in\n#eval strip_comments \"apples, pears # and bananas\\\
+  ngrapes\\nbananas !apples\" [\"#\", \"!\"]\n\n/--\ninfo: expected2\n-/\n#guard_msgs\
+  \ in\n#eval strip_comments \"a #b\\nc\\nd $e f g\" [\"#\", \"$\"]\n\n/--\ninfo:\
+  \ expected3\n-/\n#guard_msgs in\n#eval strip_comments \"\" [\"#\", \"!\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

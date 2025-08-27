@@ -1,0 +1,34 @@
+"vc-description": "Your task is to form an integer array nums from an initial array\
+  \ of zeros arr that is the same size as nums.\nReturn the minimum number of function\
+  \ calls to make nums from arr.\nThe answer is guaranteed to fit in a 32-bit signed\
+  \ integer.\n \nExample 1:\nInput: nums = [1,5]\nOutput: 5\nExplanation: Increment\
+  \ by 1 (second element): [0, 0] to get [0, 1] (1 operation).\nDouble all the elements:\
+  \ [0, 1] -> [0, 2] -> [0, 4] (2 operations).\nIncrement by 1 (both elements)  [0,\
+  \ 4] -> [1, 4] -> [1, 5] (2 operations).\nTotal of operations: 1 + 2 + 2 = 5.\n\n\
+  Example 2:\nInput: nums = [2,2]\nOutput: 3\nExplanation: Increment by 1 (both elements)\
+  \ [0, 0] -> [0, 1] -> [1, 1] (2 operations).\nDouble all the elements: [1, 1] ->\
+  \ [2, 2] (1 operation).\nTotal of operations: 2 + 1 = 3.\n\nExample 3:\nInput: nums\
+  \ = [4,2,5]\nOutput: 6\nExplanation: (initial)[0,0,0] -> [1,0,0] -> [1,0,1] -> [2,0,2]\
+  \ -> [2,1,2] -> [4,2,4] -> [4,2,5](nums).\n\nExample 4:\nInput: nums = [3,2,2,4]\n\
+  Output: 7\n\nExample 5:\nInput: nums = [2,4,8,16]\nOutput: 8\n\n \nConstraints:\n\
+  \n1 <= nums.length <= 10^5\n0 <= nums[i] <= 10^9"
+"vc-preamble": "import Imports.AllImports\n\ndef minOperations (nums : List Nat) :\
+  \ Nat := sorry\n\ntheorem minOperations_nonnegative (nums : List Nat) : \n  minOperations\
+  \ nums ≥ 0 := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def maxList : List Nat → Nat \n  | [] => 0\n  | (x::xs) => max\
+  \ x (maxList xs)\n"
+"vc-theorems": "theorem minOperations_at_least_nonzero_count (nums : List Nat) :\n\
+  \  minOperations nums ≥ (nums.filter (λ x => x > 0)).length := sorry\n\n\ntheorem\
+  \ minOperations_at_least_max_bits (nums : List Nat) :\n  nums.length > 0 → nums\
+  \ ≠ [] → \n  minOperations nums ≥ (String.length (toString (maxList nums))).pred\
+  \ := sorry\n\n\ntheorem minOperations_all_zeros (nums : List Nat) :\n  (∀ x ∈ nums,\
+  \ x = 0) → minOperations nums = 0 := sorry\n\n\ntheorem minOperations_nonzero_lower_bound\
+  \ (nums : List Nat) :\n  (∀ x ∈ nums, x > 0) → minOperations nums ≥ nums.length\
+  \ := sorry\n\n\ntheorem minOperations_powers_two_bound (nums : List Nat) (max :\
+  \ Nat) :\n  nums.length > 0 → \n  (∀ x ∈ nums, ∃ n, x = 2^n) →\n  max = maxList\
+  \ nums →\n  minOperations nums ≤ (String.length (toString max)) + nums.length :=\
+  \ sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval minOperations [1, 5]\n\n/--\n\
+  info: 3\n-/\n#guard_msgs in\n#eval minOperations [2, 2]\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval minOperations [4, 2, 5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

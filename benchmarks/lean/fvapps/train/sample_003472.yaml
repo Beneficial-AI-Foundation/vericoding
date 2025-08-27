@@ -1,0 +1,29 @@
+"vc-description": "Consider X as the  aleatory  variable that count the number of\
+  \ letters in a word. Write a function that, give in input an array of words (strings),\
+  \ calculate the  variance  of X.\nMax decimal of the variance : 4.\n\nSome wiki:\
+  \ Variance ,\n Aleatory variable \n\nExample:\n\nConsider \"Hello\" and \"World\"\
+  :\n\nX is { 5 } with P(X = 5) = 1 beacuse the two words has the same length.  \n\
+  So E[X] = 5 x 1 = 5 and the standard formula for variance is E[(X - u)^2] so  1\
+  \ x (5-5)^2 = 0\nor you can calculate with the other formula E[X^2] - E[X]^2 = 5^2\
+  \ x 1 - 5^2 = 0\n\nConsider \"Hi\" and \"World\":\n\nX is { 2, 5 } with P(X = 5)\
+  \ = 1/2 and P(X = 2) = 1/2.  \nSo E[X] = 5 x 1/2 + 2 x 1/2 = 3.5 and the standard\
+  \ formula for variance is E[(X - u)^2] so  1/2 x (2-3.5)^2 + 1/2 x (5 - 3.5)^2 =\
+  \ 2.25\nor you can calculate with the other formula E[X^2] - E[X]^2 = (5^2 x 1/2\
+  \ + 2^2 x 1/2) - 3.5^2 = 2.25"
+"vc-preamble": "import Imports.AllImports\n\ndef pvariance (xs : List String) : Float\
+  \ := sorry\n\n/-- Our variance function -/"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def variance (xs : List String) : Float := sorry\n\n/-- Our variance\
+  \ matches statistics.pvariance -/"
+"vc-theorems": "theorem variance_matches_pvariance (words : List String) (h : words\
+  \ ≠ []) :\n  variance words = pvariance words := sorry\n\n/-- Words of same length\
+  \ have variance 0 -/\n\ntheorem same_length_zero_variance (words : List String)\
+  \ (h1 : words ≠ []) \n  (h2 : ∀ w ∈ words, w.length = 5) : variance words = 0 :=\
+  \ sorry\n\n/-- Variance is always nonnegative -/\n\ntheorem variance_nonnegative\
+  \ (words : List String) (h : words.length ≥ 2) :\n  variance words ≥ 0 := sorry\n\
+  \n/-- Empty list raises error -/\n\ntheorem empty_list_error : \n  variance [] =\
+  \ 0/0 := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval variance [\"Hello\", \"\
+  world\"]\n\n/--\ninfo: 2.25\n-/\n#guard_msgs in\n#eval variance [\"Hi\", \"world\"\
+  ]\n\n/--\ninfo: 7.5556\n-/\n#guard_msgs in\n#eval variance [\"Variance\", \"is\"\
+  , \"not\", \"a\", \"good\", \"stimator\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,26 @@
+"vc-description": "Complete the function `power_of_two`/`powerOfTwo` (or equivalent,\
+  \ depending on your language) that determines if a given non-negative integer is\
+  \ a [power of two](https://en.wikipedia.org/wiki/Power_of_two).  From the corresponding\
+  \ Wikipedia entry:\n\n> *a power of two is a number of the form 2^(n) where **n**\
+  \ is an integer, i.e. the result of exponentiation with number two as the base and\
+  \ integer **n** as the exponent.*\n\nYou may assume the input is always valid.\n\
+  \n## Examples\n\n~~~if-not:nasm\n```python\npower_of_two(1024) ==> True\npower_of_two(4096)\
+  \ ==> True\npower_of_two(333)  ==> False\n```\n~~~\n~~~if:nasm\n```\nmov edi, 0\n\
+  call power_of_two    ; returns false (zero)\nmov edi, 16\ncall power_of_two    ;\
+  \ returns true (non-zero)\nmov edi, 100\ncall power_of_two    ; returns false\n\
+  mov edi, 1024\ncall power_of_two    ; returns true\nmov edi, 20000\ncall power_of_two\
+  \    ; returns false\n```\n~~~\n\nBeware of certain edge cases - for example, `1`\
+  \ is a power of `2` since `2^0 = 1` and `0` is not a power of `2`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def power_of_two (n : Nat) : Bool := sorry\n\ntheorem power_of_two_positive\
+  \ (n : Nat) :\n  power_of_two n = true → n > 0 := sorry\n"
+"vc-theorems": "theorem power_of_two_div_two (n : Nat) :\n  power_of_two n = true\
+  \ →\n  ∃ k, n = 2^k := sorry\n\n\ntheorem power_of_two_single_bit (n : Nat) :\n\
+  \  power_of_two n = true →\n  ∃ k, (n = 2^k ∧ ∀ m, n = 2^m → m = k) := sorry\n\n\
+  \ntheorem power_of_two_bitwise (n : Nat) :\n  n > 0 →\n  power_of_two n = true ↔\
+  \ n &&& (n - 1) = 0 := sorry\n\n\ntheorem power_of_two_zero :\n  power_of_two 0\
+  \ = false := sorry\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval power_of_two 0\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval power_of_two 1\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval power_of_two 536870912\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

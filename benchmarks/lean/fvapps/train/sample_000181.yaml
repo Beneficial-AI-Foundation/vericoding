@@ -1,0 +1,24 @@
+"vc-description": "Given a string text, we are allowed to swap two of the characters\
+  \ in the string. Find the length of the longest substring with repeated characters.\n\
+   \nExample 1:\nInput: text = \"ababa\"\nOutput: 3\nExplanation: We can swap the\
+  \ first 'b' with the last 'a', or the last 'b' with the first 'a'. Then, the longest\
+  \ repeated character substring is \"aaa\", which its length is 3.\n\nExample 2:\n\
+  Input: text = \"aaabaaa\"\nOutput: 6\nExplanation: Swap 'b' with the last 'a' (or\
+  \ the first 'a'), and we get longest repeated character substring \"aaaaaa\", which\
+  \ its length is 6.\n\nExample 3:\nInput: text = \"aaabbaaa\"\nOutput: 4\n\nExample\
+  \ 4:\nInput: text = \"aaaaa\"\nOutput: 5\nExplanation: No need to swap, longest\
+  \ repeated character substring is \"aaaaa\", length is 5.\n\nExample 5:\nInput:\
+  \ text = \"abcdef\"\nOutput: 1\n\n \nConstraints:\n\n1 <= text.length <= 20000\n\
+  text consist of lowercase English characters only."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_repeated_chars_with_swap (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem single_char_string_property (s : String) (h : s.length > 0)\n\
+  \  (h_single : (s.data.eraseDups).length = 1) :\n  max_repeated_chars_with_swap\
+  \ s = s.length :=\n  sorry\n\n\ntheorem result_bounds (s : String) (h : s.length\
+  \ > 0) :\n  1 ≤ max_repeated_chars_with_swap s ∧ max_repeated_chars_with_swap s\
+  \ ≤ s.length :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval max_repeated_chars_with_swap\
+  \ \"ababa\"\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval max_repeated_chars_with_swap\
+  \ \"aaabaaa\"\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval max_repeated_chars_with_swap\
+  \ \"aaabbaaa\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

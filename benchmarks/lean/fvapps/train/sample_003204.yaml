@@ -1,0 +1,27 @@
+"vc-description": "Given two words and a letter, return a single word that's a combination\
+  \ of both words, merged at the point where the given letter first appears in each\
+  \ word. The returned word should have the beginning of the first word and the ending\
+  \ of the second, with the dividing letter in the middle. You can assume both words\
+  \ will contain the dividing letter.\n\n## Examples\n\n```python\nstring_merge(\"\
+  hello\", \"world\", \"l\")      ==>  \"held\"\nstring_merge(\"coding\", \"anywhere\"\
+  , \"n\")  ==>  \"codinywhere\"\nstring_merge(\"jason\", \"samson\", \"s\")     ==>\
+  \  \"jasamson\"\nstring_merge(\"wonderful\", \"people\", \"e\") ==>  \"wondeople\"\
+  \n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def string_merge (s1 s2 : String) (c : Char) : String := sorry\n\
+  \ndef findIndex (s : String) (c : Char) : Option Nat := sorry\n\nstructure StringMergeError\
+  \ where\n  msg : String\n"
+"vc-theorems": "theorem string_merge_valid (s1 s2 : String) (c : Char)\n  (h1 : s1.length\
+  \ > 0)\n  (h2 : s2.length > 0) \n  (h3 : s1.contains c = true)\n  (h4 : s2.contains\
+  \ c = true)\n  (i1 : Nat) (i2 : Nat)\n  (hi1 : findIndex s1 c = some i1)\n  (hi2\
+  \ : findIndex s2 c = some i2) :\n  (string_merge s1 s2 c).take i1 = s1.take i1 ∧\
+  \ \n  (string_merge s1 s2 c).drop i1 = s2.drop i2 ∧\n  (string_merge s1 s2 c).length\
+  \ = i1 + s2.length - i2 := sorry\n\n\ntheorem string_merge_invalid (s1 s2 : String)\
+  \ (c : Char)\n  (h1 : s1.length > 0)\n  (h2 : s2.length > 0)\n  (h3 : ¬s1.contains\
+  \ c ∨ ¬s2.contains c) :\n  ∃ (err : StringMergeError), string_merge s1 s2 c = err.msg\
+  \ := sorry\n\n/--\ninfo: 'held'\n-/\n#guard_msgs in\n#eval string_merge \"hello\"\
+  \ \"world\" \"l\"\n\n/--\ninfo: 'codinywhere'\n-/\n#guard_msgs in\n#eval string_merge\
+  \ \"coding\" \"anywhere\" \"n\"\n\n/--\ninfo: 'wondeople'\n-/\n#guard_msgs in\n\
+  #eval string_merge \"wonderful\" \"people\" \"e\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,25 @@
+"vc-description": "The [half-life](https://en.wikipedia.org/wiki/Half-life) of a radioactive\
+  \ substance is the time it takes (on average) for one-half of its atoms to undergo\
+  \ radioactive decay.\n\n# Task Overview\nGiven the initial quantity of a radioactive\
+  \ substance, the quantity remaining after a given period of time, and the period\
+  \ of time, return the half life of that substance. \n\n# Usage Examples\n\n```if:csharp\n\
+  Documentation:\nKata.HalfLife Method (Double, Double, Int32)\n\nReturns the half-life\
+  \ for a substance given the initial quantity, the remaining quantity, and the elasped\
+  \ time.\n\nSyntax\n\n\npublic\nstatic\ndouble HalfLife(\ndouble quantityInitial,\n\
+  \    double quantityRemaining,\nint time\n    )\n  \n\n\n\nParameters\n\nquantityInitial\n\
+  \nType: System.Double\nThe initial amount of the substance.\n\nquantityRemaining\n\
+  \nType: System.Double\nThe current amount of the substance.\n\ntime\n\nType: System.Int32\n\
+  The amount of time elapsed.\n\nReturn Value\n\nType: System.Double\n  A floating-point\
+  \ number representing the half-life of the substance.\n\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def half_life (n0 : Float) (n : Float) (t : Int) : Float := sorry\n\
+  \ntheorem half_life_positive (n0 : Float) (n : Float) (t : Int)\n  (h1 : n0 > 0)\n\
+  \  (h2 : n > 0)\n  (h3 : n < n0)\n  (h4 : t > 0) :\n  half_life n0 n t > 0 := sorry\n"
+"vc-theorems": "theorem half_life_inverse_equation (n0 : Float) (n : Float) (t : Int)\n\
+  \  (h1 : n0 > 0)\n  (h2 : n > 0) \n  (h3 : n < n0)\n  (h4 : t > 0) :\n  let hl :=\
+  \ half_life n0 n t\n  n = n0 * (Float.pow 0.5 (Float.ofInt t / hl)) := sorry \n\n\
+  \ntheorem half_life_exact_halving (n0 : Float) (num_halvings : Int)\n  (h1 : n0\
+  \ > 0)\n  (h2 : num_halvings > 0) :\n  let n := n0 * (Float.pow 0.5 (Float.ofInt\
+  \ num_halvings))\n  half_life n0 n num_halvings = 1.0 := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

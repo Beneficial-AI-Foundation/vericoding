@@ -1,0 +1,31 @@
+"vc-description": "You are given Name of chef's friend and using chef's new method\
+  \ of calculating value of string , chef have to find the value of all the names.\
+  \ Since chef is busy , he asked you to do the work from him .\nThe method is a function\
+  \ $f(x)$ as follows - \n- \n$f(x)$ = $1$ , if $x$ is a consonent\n- \n$f(x)$ = $0$\
+  \ , if $x$ is a vowel \nYour task is to apply the above function on all the characters\
+  \ in the string $S$ and convert the obtained binary string in decimal number N.\
+  \ Since the number N can be very large, compute it modulo $10^9+7$ .\nInput:\n-\
+  \ First line will contain $T$, number of testcases. Then the testcases follow. \n\
+  - Each test line contains one String $S$ composed of lowercase English alphabet\
+  \ letters. \n\n-----Output:-----\nFor each case, print a single line containing\
+  \ one integer $N$ modulo  $10^9+7$ .\n\n-----Constraints-----\n- $1 \\leq T \\leq\
+  \ 50$\n- $1 \\leq |S| \\leq 10^5$\n\n-----Sample Input:-----\n1\ncodechef\n\n-----Sample\
+  \ Output:-----\n173\n\n-----EXPLANATION:-----\nThe string \"codechef\" will be converted\
+  \ to 10101101 ,using the chef's method function . Which is equal to 173."
+"vc-preamble": "import Imports.AllImports\n\ndef solveBinaryNames (name : String)\
+  \ : Nat :=\n  sorry\n\n\ndef MOD := 1000000007\n\ntheorem binary_names_result_range\n\
+  \  (name : String)\n  (h : ∃ c ∈ name.data, c.isAlpha) :\n  0 ≤ solveBinaryNames\
+  \ name ∧ solveBinaryNames name < MOD :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isVowel (c : Char) : Bool :=\n  match c.toLower with\n  | 'a'\
+  \ | 'e' | 'i' | 'o' | 'u' => true\n  | _ => false\n"
+"vc-theorems": "theorem only_letters_matter\n  (name : String)\n  (h : ∃ c ∈ name.data,\
+  \ c.isAlpha) :\n  solveBinaryNames name = solveBinaryNames (String.mk (name.data.filter\
+  \ Char.isAlpha)) :=\nsorry\n\n\ntheorem all_vowels_zero\n  (name : String)\n  (h₁\
+  \ : name.length > 0)\n  (h₂ : ∀ c ∈ name.data, isVowel c) :\n  solveBinaryNames\
+  \ name = ((2 ^ name.length - 1) % MOD) :=\nsorry\n\n\ntheorem all_consonants_one\n\
+  \  (name : String)\n  (h₁ : name.length > 0)\n  (h₂ : ∀ c ∈ name.data, c.isAlpha\
+  \ ∧ ¬isVowel c) :\n  solveBinaryNames name = ((2 ^ name.length - 1) % MOD) :=\n\
+  sorry\n\n/--\ninfo: 173\n-/\n#guard_msgs in\n#eval solve_binary_names \"codechef\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

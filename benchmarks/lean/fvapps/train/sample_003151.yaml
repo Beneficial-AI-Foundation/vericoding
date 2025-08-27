@@ -1,0 +1,25 @@
+"vc-description": "A strongness of an even number is the number of times we can successively\
+  \ divide by 2 until we reach an odd number starting with an even number n.\n\nFor\
+  \ example, if n = 12, then\n* 12 / 2 = 6\n* 6 / 2 = 3\n\nSo we divided successively\
+  \ 2 times and we reached 3, so the strongness of 12 is `2`.\n\nIf n = 16 then\n\
+  * 16 / 2 = 8\n* 8 / 2 = 4\n* 4 / 2 = 2\n* 2 / 2 = 1\n\nwe divided successively 4\
+  \ times and we reached 1, so the strongness of 16 is `4`\n\n\n# Task\n\nGiven a\
+  \ closed interval `[n, m]`, return the even number that is the strongest in the\
+  \ interval. If multiple solutions exist return the smallest strongest even number.\n\
+  \nNote that programs must run within the allotted server time; a naive solution\
+  \ will probably time out.\n\n\n# Constraints\n```if-not:ruby\n1 <= n < m <= INT_MAX\n\
+  ```\n```if:ruby\n1 <= n < m <= 2^64\n```\n\n\n# Examples\n```\n[1, 2]    -->   2\
+  \  # 1 has strongness 0, 2 has strongness 1\n[5, 10]   -->   8  # 5, 7, 9 have strongness\
+  \ 0; 6, 10 have strongness 1; 8 has strongness 3\n[48, 56]  -->  48"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_power_of_two (n : Nat) : Bool := sorry \n\ndef strongest_even\
+  \ (a b : Nat) : Nat := sorry\n"
+"vc-theorems": "theorem power_of_two_cases (p : Nat) (h : p > 0 ∧ p ≤ 32) : \n  strongest_even\
+  \ (2^p - 1) (2^p + 1) = 2^p := sorry\n\n\ntheorem single_even_number (n : Nat) (h\
+  \ : n > 0) :\n  strongest_even (2*n) (2*n) = 2*n := sorry\n\n\ntheorem small_range_properties\
+  \ (p : Nat) (h : p > 0 ∧ p ≤ 16) :\n  strongest_even (2^p) (2^(p+1)) = 2^(p+1) :=\
+  \ sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval strongest_even 1 2\n\n/--\ninfo:\
+  \ 8\n-/\n#guard_msgs in\n#eval strongest_even 5 10\n\n/--\ninfo: 48\n-/\n#guard_msgs\
+  \ in\n#eval strongest_even 48 56\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

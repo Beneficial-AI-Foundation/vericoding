@@ -1,0 +1,33 @@
+"vc-description": "This kata is inspired on the problem #50 of the Project Euler.\
+  \ \n\nThe prime ``` 41```  is the result of the sum of many consecutive primes.\n\
+  \nIn fact, ``` 2 + 3 + 5 + 7 + 11 + 13 = 41 , (6 addens)   ``` \n\nFurthermore,\
+  \ the prime ``` 41```  is the prime below ``` 100 (val_max)```  that has the longest\
+  \ chain of consecutive prime addens.\n\nThe prime with longest chain of addens for\
+  \ ```val_max = 500``` is ```499``` with ```17``` addens. \n\nIn fact:\n```3+5+7+11+13+17+19+23+29+31+37+41+43+47+53+59+61=\
+  \ 499```\n\nFind the function ```prime_maxlength_chain()```(primeMaxlengthChain()\
+  \ javascript), that receives an argument ```val_max```, the upper limit, all the\
+  \ found primes should be less than ```val_max``` and outputs this found prime.\n\
+  \nLet's see some cases:\n```python\nprime_maxlength_chain(100) == [41]\nprime_maxlength_chain(500)\
+  \ == [499]\n```\nIf we have more than one prime with these features, the function\
+  \ should output an array with the found primes sorted.\n```python\nprime_maxlength_chain(499)\
+  \ == [379, 491]\n```\nRandom Tests for `val_max` (`valMax`)\n```\n100 ≤ val_max\
+  \ ≤ 500.000\n```\nEnjoy it!"
+"vc-preamble": "import Imports.AllImports\n\ndef isPrime (n : Nat) : Bool := sorry\n\
+  \ndef primeMaxLengthChain (n : Nat) : List Nat := sorry\n\n\ndef isSorted (l : List\
+  \ Nat) : Bool :=\n  match l with\n  | [] => true\n  | [_] => true\n  | x :: y ::\
+  \ rest => x ≤ y && isSorted (y :: rest)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def listSum (l : List Nat) : Nat :=\n  List.foldl (·+·) 0 l\n"
+"vc-theorems": "theorem output_list (n : Nat) (h : n ≥ 1) (h2 : n ≤ 1000) : \n  let\
+  \ result := primeMaxLengthChain n\n  isSorted result := sorry\n\n\ntheorem small_inputs\
+  \ (n : Nat) (h : n ≥ 1) (h2 : n ≤ 4) :\n  primeMaxLengthChain n = [] := sorry\n\n\
+  \ntheorem output_are_primes (n : Nat) (h : n ≥ 5) (h2 : n ≤ 1000) :\n  let result\
+  \ := primeMaxLengthChain n\n  ∀ x, x ∈ result → isPrime x ∧ x < n := sorry\n\n\n\
+  theorem results_are_sums_of_consecutive_primes (n : Nat) (h : n ≥ 5) (h2 : n ≤ 1000)\
+  \ :\n  let result := primeMaxLengthChain n\n  ∀ x, x ∈ result → ∃ start length,\n\
+  \    let primes := List.filter isPrime (List.range n)\n    let slice := (primes.drop\
+  \ start).take length\n    length ≥ 2 ∧ \n    listSum slice = x := sorry\n\n/--\n\
+  info: [41]\n-/\n#guard_msgs in\n#eval prime_maxlength_chain 100\n\n/--\ninfo: [197]\n\
+  -/\n#guard_msgs in\n#eval prime_maxlength_chain 200\n\n/--\ninfo: [499]\n-/\n#guard_msgs\
+  \ in\n#eval prime_maxlength_chain 500\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

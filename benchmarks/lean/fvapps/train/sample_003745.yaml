@@ -1,0 +1,24 @@
+"vc-description": "Your friend Rick is trying to send you a message, but he is concerned\
+  \ that it would get intercepted by his partner. He came up with a solution:\n\n\
+  1) Add digits in random places within the message.\n\n2) Split the resulting message\
+  \ in two. He wrote down every second character on one page, and the remaining ones\
+  \ on another. He then dispatched the two messages separately.\n\nWrite a function\
+  \ interweave(s1, s2) that reverses this operation to decode his message!\n\nExample\
+  \ 1: interweave(\"hlo\", \"el\") -> \"hello\"\nExample 2: interweave(\"h3lo\", \"\
+  el4\") -> \"hello\"\n\nRick's a bit peculiar about his formats. He would feel ashamed\
+  \ if he found out his message led to extra white spaces hanging around the edges\
+  \ of his message..."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def interweave (s1 s2 : List Char) : List Char := sorry\n\ntheorem\
+  \ interweave_length_property (s1 s2 : List Char) : \n  List.length (interweave s1\
+  \ s2) ≤ List.length s1 + List.length s2 := sorry \n"
+"vc-theorems": "theorem interweave_empty_strings :\n  interweave [] [] = [] := sorry\n\
+  \n\ntheorem interweave_all_digits :\n  interweave ['1', '2', '3'] ['4', '5', '6']\
+  \ = [] := sorry\n\n\ntheorem interweave_all_spaces :\n  interweave [' '] [' '] =\
+  \ [] := sorry \n\n\ntheorem interweave_basic_case :\n  interweave ['a', 'b', 'c']\
+  \ ['d', 'e', 'f'] = ['a', 'd', 'b', 'e', 'c', 'f'] := sorry\n\n/--\ninfo: ''\n-/\n\
+  #guard_msgs in\n#eval interweave \"\" \"\"\n\n/--\ninfo: 'hello'\n-/\n#guard_msgs\
+  \ in\n#eval interweave \"hlo\" \"el\"\n\n/--\ninfo: 'hello'\n-/\n#guard_msgs in\n\
+  #eval interweave \"h3lo\" \"el4\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

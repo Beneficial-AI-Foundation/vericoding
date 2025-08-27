@@ -1,0 +1,25 @@
+"vc-description": "Assume that you started to store items in progressively expanding\
+  \ square location, like this for the first 9 numbers:\n\n```\n05 04 03\n06 01 02\n\
+  07 08 09\n```\n\nAnd like this for the expanding to include up to the first 25 numbers:\n\
+  \n```\n17 16 15 14 13\n18 05 04 03 12\n19 06 01 02 11\n20 07 08 09 10\n21 22 23\
+  \ 24 25\n```\n\nYou might easily notice that the first - and innermost - layer containes\
+  \ only one number (`01`), the second one  - immediately around it - contains 8 numbers\
+  \ (number in the `02-09` range) and so on.\n\nYour task is to create a function\
+  \ that given a number `n` simply returns the number of layers required to store\
+  \ up to `n` (included).\n\n```python\nlayers(1) == 1\nlayers(5) == 2\nlayers(25)\
+  \ == 3\nlayers(30) == 4\nlayers(50) == 5\n```\n\n**Fair warning:** you will always\
+  \ and only get positive integers, but be ready for bigger numbers in the tests!\n\
+  \nIf you had fun with this, also try some follow up kata: [progressive spiral number\
+  \ branch](https://www.codewars.com/kata/progressive-spiral-number-branch/) and [progressive\
+  \ spiral number distance](https://www.codewars.com/kata/progressive-spiral-number-distance/).\n\
+  \n*[Base idea taken from [here](http://adventofcode.com/2017/day/3)]*"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def layers (n : Nat) : Nat := sorry\n\ntheorem layers_positive\
+  \ (n : Nat) (h : n > 0) : \n  layers n > 0 := sorry\n"
+"vc-theorems": "theorem layer_fits_n (n : Nat) (h : n > 0) :\n  let k := layers n\n\
+  \  (2*k - 1)^2 ≥ n := sorry\n\n\ntheorem prev_layer_too_small (n : Nat) (h : n >\
+  \ 0) (h2 : layers n > 1) :\n  let k := layers n\n  (2*(k-1) - 1)^2 < n := sorry\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval layers 1\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval layers 5\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval layers 25\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

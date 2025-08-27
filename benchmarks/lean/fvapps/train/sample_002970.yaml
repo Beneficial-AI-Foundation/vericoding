@@ -1,0 +1,19 @@
+"vc-description": "Write a method named `getExponent(n,p)` that returns the largest\
+  \ integer exponent `x` such that p^(x) evenly divides `n`. if `p<=1` the method\
+  \ should return `null`/`None` (throw an `ArgumentOutOfRange` exception in C#)."
+"vc-preamble": "import Imports.AllImports\n\ndef get_exponent (n p : Int) : Option\
+  \ Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pow (x y : Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem get_exponent_divides {n p : Int} (h1 : n ≥ 2) (h2 : p ≥ 2)\
+  \ :\n  match get_exponent n p with\n  | none => False \n  | some k => \n    (k =\
+  \ 0 → n % p ≠ 0) ∧\n    (k > 0 → n % (pow p k) = 0 ∧ n % (pow p (k + 1)) ≠ 0)\n\
+  \  := sorry\n\n\ntheorem get_exponent_nonnegative {n p : Int} (h1 : n ≥ 2) (h2 :\
+  \ p ≥ 2) :\n  match get_exponent n p with\n  | none => False\n  | some k => k ≥\
+  \ 0\n  := sorry\n\n\ntheorem get_exponent_invalid_divisor {n p : Int} (h : p ≤ 1)\
+  \ :\n  get_exponent n p = none := sorry\n\n\ntheorem get_exponent_prime_power {n\
+  \ p : Int} (h1 : n ≥ 2) (h2 : p = 2) :\n  get_exponent (n * (pow p 5)) p = Option.some\
+  \ ((get_exponent n p).getD 0 + 5) := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
+  #eval get_exponent 27 3\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval get_exponent\
+  \ 28 2\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval get_exponent 10 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

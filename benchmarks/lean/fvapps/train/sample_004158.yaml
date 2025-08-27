@@ -1,0 +1,22 @@
+"vc-description": "Please write a function that sums a list, but ignores any duplicate\
+  \ items in the list.\n\nFor instance, for the list [3, 4, 3, 6] , the function should\
+  \ return 10."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum_no_duplicates (nums : List Int) : Int :=\nsorry\n"
+"vc-theorems": "theorem sum_no_duplicates_empty :\n  sum_no_duplicates [] = 0 :=\n\
+  sorry\n\n\ntheorem sum_no_duplicates_singles (nums : List Int) :\n  let count :=\
+  \ nums.foldl (fun acc n => \n    match acc.find? (fun p => p.1 = n) with\n    |\
+  \ none => (n, 1) :: acc\n    | some _ => acc.map (fun p => if p.1 = n then (p.1,\
+  \ p.2 + 1) else p)\n    ) []\n  let singles := count.filter (fun p => p.2 = 1)\n\
+  \  sum_no_duplicates nums = singles.foldl (fun acc p => acc + p.1) 0 :=\nsorry \n\
+  \n\ntheorem sum_no_duplicates_none (nums : List Int) :\n  let count := nums.foldl\
+  \ (fun acc n => \n    match acc.find? (fun p => p.1 = n) with\n    | none => (n,\
+  \ 1) :: acc\n    | some _ => acc.map (fun p => if p.1 = n then (p.1, p.2 + 1) else\
+  \ p)\n    ) []\n  count.filter (fun p => p.2 = 1) = [] →\n  sum_no_duplicates nums\
+  \ = 0 :=\nsorry\n\n\ntheorem sum_no_duplicates_all_duplicates (nums : List Int)\
+  \ :\n  nums.length > 1 →\n  sum_no_duplicates (nums ++ nums) = 0 :=\nsorry\n\n/--\n\
+  info: 10\n-/\n#guard_msgs in\n#eval sum_no_duplicates [3, 4, 3, 6]\n\n/--\ninfo:\
+  \ 5\n-/\n#guard_msgs in\n#eval sum_no_duplicates [1, 1, 2, 3]\n\n/--\ninfo: 0\n\
+  -/\n#guard_msgs in\n#eval sum_no_duplicates []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

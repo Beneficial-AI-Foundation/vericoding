@@ -1,0 +1,31 @@
+"vc-description": "Given 2 integers n and start. Your task is return any permutation\
+  \ p of (0,1,2.....,2^n -1) such that :\n\np[0] = start\np[i] and p[i+1] differ by\
+  \ only one bit in their binary representation.\np[0] and p[2^n -1] must also differ\
+  \ by only one bit in their binary representation.\n\n \nExample 1:\nInput: n = 2,\
+  \ start = 3\nOutput: [3,2,0,1]\nExplanation: The binary representation of the permutation\
+  \ is (11,10,00,01). \nAll the adjacent element differ by one bit. Another valid\
+  \ permutation is [3,1,0,2]\n\nExample 2:\nInput: n = 3, start = 2\nOutput: [2,6,7,5,4,0,1,3]\n\
+  Explanation: The binary representation of the permutation is (010,110,111,101,100,000,001,011).\n\
+  \n \nConstraints:\n\n1 <= n <= 16\n0 <= start < 2 ^ n"
+"vc-preamble": "import Imports.AllImports\n\ndef countOnes (n : Nat) : Nat :=\n  sorry\n\
+  \n\ndef circularPermutation (n : Nat) (start : Nat) : List Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def listContains (l : List Nat) (n : Nat) : Prop :=\n  n ∈ l\n"
+"vc-theorems": "theorem circularPermutation_length (n : Nat) (start : Nat) \n  (h\
+  \ : start < 2^n) :\n  (circularPermutation n start).length = 2^n :=\nsorry\n\n\n\
+  theorem circularPermutation_starts_with_start (n : Nat) (start : Nat)\n  (h : start\
+  \ < 2^n) :\n  (circularPermutation n start).head! = start :=\nsorry\n\n\ntheorem\
+  \ circularPermutation_contains_all_numbers (n : Nat) (start : Nat)\n  (h : start\
+  \ < 2^n) (k : Nat) (hk : k < 2^n):\n  listContains (circularPermutation n start)\
+  \ k :=\nsorry\n\n\ntheorem circularPermutation_adjacent_differ_by_one_bit (n : Nat)\
+  \ (start : Nat)\n  (h : start < 2^n) (i : Nat) (h2 : i < (circularPermutation n\
+  \ start).length - 1) :\n  countOnes ((circularPermutation n start)[i]! ^^^ (circularPermutation\
+  \ n start)[i+1]!) = 1 :=\nsorry\n\n\ntheorem circularPermutation_first_last_differ_by_one_bit\
+  \ (n : Nat) (start : Nat)\n  (h : start < 2^n) :\n  countOnes ((circularPermutation\
+  \ n start).head! ^^^ (circularPermutation n start).getLast!) = 1 :=\nsorry\n\n\n\
+  theorem circularPermutation_invalid_start (n : Nat) (start : Nat)\n  (h : start\
+  \ ≥ 2^n) :\n  circularPermutation n start = [] :=\nsorry\n\n/--\ninfo: [3, 2, 0,\
+  \ 1]\n-/\n#guard_msgs in\n#eval circular_permutation 2 3\n\n/--\ninfo: [2, 6, 7,\
+  \ 5, 4, 0, 1, 3]\n-/\n#guard_msgs in\n#eval circular_permutation 3 2\n\n/--\ninfo:\
+  \ [0, 1]\n-/\n#guard_msgs in\n#eval circular_permutation 1 0\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

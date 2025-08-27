@@ -1,0 +1,42 @@
+"vc-description": "There are n cabs in a city numbered from 1 to n. The city has a\
+  \ rule that only one cab can run in the city at a time. Cab picks up the customer\
+  \ and drops him to his destination. Then the cab gets ready to pick next customer.\
+  \ There are m customers in search of cab. First customer will get the taxi first.\
+  \ You have to find the nearest cab for each customer. If two cabs have same distance\
+  \ then the cab with lower number is preferred.\n\nYour task is to find out minimum\
+  \ distant cab for each customer.\n\nInput:\n\nThe first line of the input contains\
+  \ an integer T denoting the number of test cases.\nThe description of T test cases\
+  \ follows.\nThe first line of each test case contains two space-separated integers\
+  \ N and M, denoting the number of cabs and the number of customers.\n\nThe next\
+  \ N lines contain two space-separated integers x[i] and y[i], denoting the initial\
+  \ position of the ith cab.\n\nNext line contains an integer M denoting number of\
+  \ customers.\nThe next M lines contain four space seperated integers sx[i], sy[i],\
+  \ dx[i], dy[i], denoting the current location and the destination of the ith customer.\n\
+  \nOutput:\n\nOutput the nearest cab number for each customer.\n\nConstraints:\n\n\
+  1<=t<=10\n\n1<=n,m<=1000\n\n-10^9<=x[i] , y[i] , sx[i] , sy[i] , dx[i] , dy[i]<=10^9\n\
+  \nExample:\nInput:\n\n1\n\n3 2\n\n1 3\n\n3 2\n\n3 5\n\n2 3 3 4\n\n5 3 4 1\n\nOutput:\n\
+  \n1\n\n1\n\nExplanation:\n\nThe distance of cab1 from customer1 = sqrt((1-2)^2 +\
+  \ (3-3)^2) = 1\n\nThe distance of cab2 from customer1 = sqrt(2)\n\nThe distance\
+  \ of cab3 from customer1 = sqrt(5)\n\nSo output for customer1 is 1\n\nNow location\
+  \ of cab1 is (3,4)\n\nThe distance of cab1 from customer2 = sqrt((3-5)^2 + (4-3)^2)\
+  \ = sqrt(5)\n\nThe distance of cab2 from customer2 = sqrt(5)\n\nThe distance of\
+  \ cab3 from customer2 = sqrt(8)\n\nSo output for customer2 is 1"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_nearest_cabs (n m : Nat) (cabs : List (List Int)) (trips\
+  \ : List (List Int)) : List Nat :=\n  sorry\n\n-- Result length matches number of\
+  \ trips"
+"vc-theorems": "theorem find_nearest_cabs_length {n m : Nat} {cabs : List (List Int)}\
+  \ {trips : List (List Int)} :\n  (∀ c ∈ cabs, List.length c = 2) →\n  (∀ t ∈ trips,\
+  \ List.length t = 4) →\n  List.length (find_nearest_cabs n m cabs trips) = m :=\n\
+  sorry\n\n-- Result values are valid cab indices\n\ntheorem find_nearest_cabs_valid_indices\
+  \ {n m : Nat} {cabs : List (List Int)} {trips : List (List Int)} : \n  (∀ r ∈ find_nearest_cabs\
+  \ n m cabs trips, 1 ≤ r ∧ r ≤ n) :=\nsorry\n\n-- First available cab is chosen when\
+  \ all cabs are equidistant\n\ntheorem find_nearest_cabs_equidistant {n m : Nat}\
+  \ {trips : List (List Int)} :\n  let cabs := List.replicate n [0, 0]\n  let result\
+  \ := find_nearest_cabs n m cabs trips\n  trips ≠ [] →\n  List.head! result = 1 :=\n\
+  sorry\n\n/--\ninfo: [1, 1]\n-/\n#guard_msgs in\n#eval find_nearest_cabs 3 2 [[1,\
+  \ 3], [3, 2], [3, 5]] [[2, 3, 3, 4], [5, 3, 4, 1]]\n\n/--\ninfo: [1]\n-/\n#guard_msgs\
+  \ in\n#eval find_nearest_cabs 1 1 [[0, 0]] [[1, 1, 2, 2]]\n\n/--\ninfo: [1]\n-/\n\
+  #guard_msgs in\n#eval find_nearest_cabs 2 1 [[1, 1], [1, 1]] [[2, 2, 3, 3]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

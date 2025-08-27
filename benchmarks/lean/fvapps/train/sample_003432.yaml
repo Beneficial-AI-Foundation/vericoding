@@ -1,0 +1,21 @@
+"vc-description": "In this kata, we want to discover a small property of numbers.\
+  \ \nWe say that a number is a **dd** number if it contains d occurences of a digit\
+  \ d, (d is in [1,9]).\n\n## Examples\n\n* 664444309 is a **dd** number, as it contains\
+  \ 4 occurences of the number 4\n* 30313, 122 are **dd** numbers as they respectively\
+  \ contain 3 occurences of the number 3, and (1 occurence of the number 1 AND 2 occurences\
+  \ of the number 2)\n* 123109, 0, 56542 are not **dd** numbers\n\n## Task \n\nYour\
+  \ task is to implement a function called `is_dd` (`isDd` in javascript) that takes\
+  \ a **positive** number (type depends on the language) and returns a boolean corresponding\
+  \ to whether the number is a **dd** number or not."
+"vc-preamble": "import Imports.AllImports\n\ndef is_dd (n : Nat) : Bool := sorry \n\
+  \ndef countDigit (n : Nat) (d : Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def digits (n : Nat) : List Nat := sorry \n\ntheorem dd_characterization\
+  \ (n : Nat) :\n  is_dd n = (∃ d : Nat, 1 ≤ d ∧ d ≤ 9 ∧ countDigit n d = d) := sorry\n"
+"vc-theorems": "theorem zero_not_counted (n : Nat) :\n  (∀ d : Nat, d ≠ 0 → countDigit\
+  \ n d ≠ d) → \n  is_dd n = false := sorry\n\n\ntheorem count_digit_bounds (n d :\
+  \ Nat) :\n  countDigit n d ≤ (digits n).length := sorry\n\n/--\ninfo: True\n-/\n\
+  #guard_msgs in\n#eval is_dd 664444309\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ is_dd 122\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_dd 30313\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval is_dd 5023011\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

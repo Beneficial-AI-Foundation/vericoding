@@ -1,0 +1,11 @@
+"vc-description": "Determine the **area** of the largest square that can fit inside\
+  \ a circle with radius *r*."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def area_largest_square (r : Float) : Float := \n  sorry\n\n\n\n\
+  \n"
+"vc-theorems": "theorem area_zero : \n  area_largest_square 0 = 0 :=\nsorry\n\n/--\n\
+  info: 50\n-/\n#guard_msgs in\n#eval area_largest_square 5\n\n/--\ninfo: 98\n-/\n\
+  #guard_msgs in\n#eval area_largest_square 7\n\n/--\ninfo: 5000\n-/\n#guard_msgs\
+  \ in\n#eval area_largest_square 50\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

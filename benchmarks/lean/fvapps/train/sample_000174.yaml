@@ -1,0 +1,27 @@
+"vc-description": "Given a string S and a string T, find the minimum window in S which\
+  \ will contain all the characters in T in complexity O(n).\n\nExample:\n\n\nInput:\
+  \ S = \"ADOBECODEBANC\", T = \"ABC\"\nOutput: \"BANC\"\n\n\nNote:\n\n\n       If\
+  \ there is no such window in S that covers all characters in T, return the empty\
+  \ string \"\".\n       If there is such window, you are guaranteed that there will\
+  \ always be only one unique minimum window in S."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_window (s t : String) : String := sorry\n\ndef verify_contains\
+  \ (window target : String) : Bool := sorry\n"
+"vc-theorems": "theorem min_window_empty_target {s : String} : \n  min_window s \"\
+  \" = \"\" := sorry\n\n\ntheorem min_window_is_substring {s t : String} (h : min_window\
+  \ s t ≠ \"\") :\n  ∃ (i j : Nat), i ≤ j ∧ j ≤ s.length ∧\n  min_window s t = s.extract\
+  \ (String.Pos.mk i) (String.Pos.mk j) := sorry\n\n\ntheorem min_window_contains_target\
+  \ {s t : String} (h : min_window s t ≠ \"\") :\n  verify_contains (min_window s\
+  \ t) t = true := sorry\n\n\ntheorem min_window_is_minimal {s t : String} (h : min_window\
+  \ s t ≠ \"\") :\n  ∀ (i j : Nat), i < j → j ≤ (min_window s t).length →\n    verify_contains\
+  \ ((min_window s t).extract (String.Pos.mk i) (String.Pos.mk j)) t = false := sorry\n\
+  \n\ntheorem min_window_single_char {s t : String} (h1 : t.length = 1) :\n  (∃ (i\
+  \ : Nat), i < s.length ∧ s.get (String.Pos.mk i) = t.get (String.Pos.mk 0)) →\n\
+  \  (min_window s t).length = 1 ∧ min_window s t = t := sorry\n\n\ntheorem min_window_length_bounds\
+  \ {s t : String} :\n  (min_window s t).length ≤ s.length ∧ \n  (min_window s t ≠\
+  \ \"\" → (min_window s t).length ≥ t.data.eraseDups.length) := sorry\n\n/--\ninfo:\
+  \ 'BANC'\n-/\n#guard_msgs in\n#eval min_window \"ADOBECODEBANC\" \"ABC\"\n\n/--\n\
+  info: 'A'\n-/\n#guard_msgs in\n#eval min_window \"AAAA\" \"A\"\n\n/--\ninfo: ''\n\
+  -/\n#guard_msgs in\n#eval min_window \"ABCD\" \"XY\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

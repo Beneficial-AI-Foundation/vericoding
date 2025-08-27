@@ -1,0 +1,40 @@
+"vc-description": "You are given an array of N integers a1, a2, ..., aN and an integer\
+  \ K. Find the number of such unordered pairs {i, j} that \n\n- i ≠ j\n- |ai + aj\
+  \ - K| is minimal possible\n\nOutput  the minimal possible value of |ai + aj - K|\
+  \ (where i ≠ j) and the number of such pairs for the given array and the integer\
+  \ K.\n\n-----Input-----\nThe first line of the input contains an integer T denoting\
+  \ the number of test cases. The description of T test cases follows.\n\nThe first\
+  \ line of each test case consists of two space separated integers - N and K respectively.\n\
+  \nThe second line contains N single space separated integers - a1, a2, ..., aN respectively.\n\
+  \n-----Output-----\nFor each test case, output a single line containing two single\
+  \ space separated integers - the minimal possible value of |ai + aj - K| and the\
+  \ number of unordered pairs {i, j} for which this minimal difference is reached.\n\
+  \n-----Constraints-----\n\n- 1 ≤ T ≤ 50\n- 1 ≤ ai, K ≤ 109\n- N = 2 - 31 point.\n\
+  - 2 ≤ N ≤ 1000 - 69 points.\n\n-----Example-----\nInput:\n1   \n4 9\n4 4 2 6\n\n\
+  Output:\n1 4\n\n-----Explanation:-----\nThe minimal possible absolute difference\
+  \ of 1 can be obtained by taking the pairs of a1 and a2, a1 and a4, a2 and a4, a3\
+  \ and a4."
+"vc-preamble": "import Imports.AllImports\n\ndef solve_min_pairs (n : Nat) (k : Int)\
+  \ (arr : List Int) : Int × Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_pairs_with_diff (arr : List Int) (k : Int) (min_diff\
+  \ : Int) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem solve_min_pairs_nonneg_diff (n : Nat) (k : Int) (arr : List\
+  \ Int)\n  (h1: n ≥ 2) (h2: arr.length = n) :\n  let (min_diff, _) := solve_min_pairs\
+  \ n k arr\n  min_diff ≥ 0 := by\n  sorry\n\n\ntheorem solve_min_pairs_positive_count\
+  \ (n : Nat) (k : Int) (arr : List Int) \n  (h1: n ≥ 2) (h2: arr.length = n) :\n\
+  \  let (_, count) := solve_min_pairs n k arr\n  count > 0 := by\n  sorry\n\n\ntheorem\
+  \ solve_min_pairs_count_accurate (n : Nat) (k : Int) (arr : List Int)\n  (h1: n\
+  \ ≥ 2) (h2: arr.length = n) :\n  let (min_diff, count) := solve_min_pairs n k arr\n\
+  \  count_pairs_with_diff arr k min_diff = count := by\n  sorry\n\n\ntheorem solve_min_pairs_minimal\
+  \ (n : Nat) (k : Int) (arr : List Int)\n  (h1: n ≥ 2) (h2: arr.length = n) :\n \
+  \ let (min_diff, _) := solve_min_pairs n k arr\n  ∀ i j, 0 ≤ i ∧ i < n ∧ j > i ∧\
+  \ j < n →\n    let diff := arr[i]! + arr[j]! - k\n    if diff ≥ 0 then diff ≥ min_diff\
+  \ else -diff ≥ min_diff := by\n  sorry\n\n\ntheorem solve_min_pairs_permutation_invariant\
+  \ (n : Nat) (k : Int) (arr1 arr2 : List Int)\n  (h1: n ≥ 2) (h2: arr1.length = n)\
+  \ (h3: arr2.length = n) \n  (h4: arr2.Perm arr1) :\n  solve_min_pairs n k arr1 =\
+  \ solve_min_pairs n k arr2 := by\n  sorry\n\n/--\ninfo: (1, 4)\n-/\n#guard_msgs\
+  \ in\n#eval solve_min_pairs 4 9 [4, 4, 2, 6]\n\n/--\ninfo: (2, 1)\n-/\n#guard_msgs\
+  \ in\n#eval solve_min_pairs 2 10 [3, 5]\n\n/--\ninfo: (4, 3)\n-/\n#guard_msgs in\n\
+  #eval solve_min_pairs 3 12 [4, 4, 4]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

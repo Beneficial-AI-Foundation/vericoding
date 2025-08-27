@@ -1,0 +1,15 @@
+"vc-description": "Clock shows 'h' hours, 'm' minutes and 's' seconds after midnight.\n\
+  \nYour task is to make 'Past' function which returns time converted to milliseconds.\n\
+  \n## Example:\n\n```python\npast(0, 1, 1) == 61000\n```\n\nInput constraints: `0\
+  \ <= h <= 23`, `0 <= m <= 59`, `0 <= s <= 59`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def past (h: Nat) (m: Nat) (s: Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem past_valid_time {h m s: Nat} \n  (hh: h ≤ 23) (hm: m ≤ 59)\
+  \ (hs: s ≤ 59) : \n  past h m s = (h * 3600 + m * 60 + s) * 1000 \n  ∧ past h m\
+  \ s < 24 * 60 * 60 * 1000 :=\nsorry\n\n\ntheorem past_zero_seconds {h m: Nat}\n\
+  \  (hh: h ≤ 23) (hm: m ≤ 59) :\n  past h m 0 = (h * 3600 + m * 60) * 1000 :=\nsorry\
+  \ \n\n\ntheorem past_midnight :\n  past 0 0 0 = 0 :=\nsorry\n\n/--\ninfo: 61000\n\
+  -/\n#guard_msgs in\n#eval past 0 1 1\n\n/--\ninfo: 3661000\n-/\n#guard_msgs in\n\
+  #eval past 1 1 1\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval past 0 0 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

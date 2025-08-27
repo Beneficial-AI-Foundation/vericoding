@@ -1,0 +1,22 @@
+"vc-description": "Given a non-empty array of non-negative integers nums, the degree\
+  \ of this array is defined as the maximum frequency of any one of its elements.\n\
+  Your task is to find the smallest possible length of a (contiguous) subarray of\
+  \ nums, that has the same degree as nums.\n\nExample 1:\n\nInput: [1, 2, 2, 3, 1]\n\
+  Output: 2\nExplanation: \nThe input array has a degree of 2 because both elements\
+  \ 1 and 2 appear twice.\nOf the subarrays that have the same degree:\n[1, 2, 2,\
+  \ 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]\nThe shortest\
+  \ length is 2. So return 2.\n\n\n\n\nExample 2:\n\nInput: [1,2,2,3,1,4,2]\nOutput:\
+  \ 6\n\n\n\nNote:\nnums.length will be between 1 and 50,000.\nnums[i] will be an\
+  \ integer between 0 and 49,999."
+"vc-preamble": "import Imports.AllImports\n\ndef max_freq (l: List Int) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_shortest_subarray (l : List Int) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem shortest_subarray_bounds {l : List Int} (h: l ≠ []) :\n  1\
+  \ ≤ find_shortest_subarray l ∧ find_shortest_subarray l ≤ l.length :=\n  sorry\n\
+  \n\ntheorem single_element_list {l : List Int} (h: l.length = 1) :\n  find_shortest_subarray\
+  \ l = 1 :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_shortest_subarray\
+  \ [1, 2, 2, 3, 1]\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval find_shortest_subarray\
+  \ [1, 2, 2, 3, 1, 4, 2]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_shortest_subarray\
+  \ [1, 1, 2, 2, 2, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

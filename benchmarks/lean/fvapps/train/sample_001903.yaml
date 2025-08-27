@@ -1,0 +1,37 @@
+"vc-description": "We are stacking blocks to form a pyramid.  Each block has a color\
+  \ which is a one letter string, like `'Z'`.\n\nFor every block of color `C` we place\
+  \ not in the bottom row, we are placing it on top of a left block of color `A` and\
+  \ right block of color `B`.  We are allowed to place the block there only if `(A,\
+  \ B, C)` is an allowed triple.\n\nWe start with a bottom row of bottom, represented\
+  \ as a single string.  We also start with a list of allowed triples allowed.  Each\
+  \ allowed triple is represented as a string of length 3.\n\nReturn true if we can\
+  \ build the pyramid all the way to the top, otherwise false.\n\n\nExample 1:\n\n\
+  Input: bottom = \"XYZ\", allowed = [\"XYD\", \"YZE\", \"DEA\", \"FFF\"]\nOutput:\
+  \ true\nExplanation:\nWe can stack the pyramid like this:\n    A\n   / \\\n  D \
+  \  E\n / \\ / \\\nX   Y   Z\n\nThis works because ('X', 'Y', 'D'), ('Y', 'Z', 'E'),\
+  \ and ('D', 'E', 'A') are allowed triples.\n\n\n\nExample 2:\n\nInput: bottom =\
+  \ \"XXYX\", allowed = [\"XXX\", \"XXY\", \"XYX\", \"XYY\", \"YXZ\"]\nOutput: false\n\
+  Explanation:\nWe can't stack the pyramid to the top.\nNote that there could be allowed\
+  \ triples (A, B, C) and (A, B, D) with C != D.\n\n\n\nNote:\n\nbottom will be a\
+  \ string with length in range [2, 8].\nallowed will have length in range [0, 200].\n\
+  Letters in all strings will be chosen from the set {'A', 'B', 'C', 'D', 'E', 'F',\
+  \ 'G'}."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_build_pyramid (bottom : String) (allowed : List String)\
+  \ : Bool := sorry\n\ntheorem pyramid_single_char_valid \n  (bottom : String) (allowed\
+  \ : List String)\n  (h : bottom.length = 1) : \n  can_build_pyramid bottom allowed\
+  \ = true := sorry\n"
+"vc-theorems": "theorem empty_rules_property\n  (bottom : String) :\n  can_build_pyramid\
+  \ bottom [] = (bottom.length = 1) := sorry\n\n\ntheorem duplicate_rules_irrelevant\n\
+  \  (bottom : String) (allowed : List String) :\n  can_build_pyramid bottom allowed\
+  \ = can_build_pyramid bottom (allowed ++ allowed) := sorry \n\n\ntheorem empty_rules_single_char\n\
+  \  (bottom : String) :\n  can_build_pyramid bottom [] = (bottom.length = 1) := sorry\n\
+  \n\ntheorem known_valid_case1 :\n  can_build_pyramid \"ABC\" [\"ABC\", \"BCD\",\
+  \ \"CDE\"] = true := sorry\n\n\ntheorem known_valid_case2 :\n  can_build_pyramid\
+  \ \"XY\" [\"XYZ\"] = true := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ can_build_pyramid \"XYZ\" [\"XYD\", \"YZE\", \"DEA\", \"FFF\"]\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval can_build_pyramid \"XXYX\" [\"XXX\", \"XXY\", \"XYX\"\
+  , \"XYY\", \"YXZ\"]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval can_build_pyramid\
+  \ \"ABC\" [\"ABC\", \"BCD\", \"CDE\", \"DEF\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

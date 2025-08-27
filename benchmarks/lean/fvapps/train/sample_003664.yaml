@@ -1,0 +1,26 @@
+"vc-description": "```if-not:swift\nCreate a method that takes an array/list as an\
+  \ input, and outputs the index at which the sole odd number is located.\n\nThis\
+  \ method should work with arrays with negative numbers. If there are no odd numbers\
+  \ in the array, then the method should output `-1`.\n```\n```if:swift\nreate a function\
+  \ `oddOne` that takes an `[Int]` as input and outputs the index at which the sole\
+  \ odd number is located.\n\nThis method should work with arrays with negative numbers.\
+  \ If there are no odd numbers in the array, then the method should output `nil`.\n\
+  ```\nExamples:\n```python\nodd_one([2,4,6,7,10]) # => 3\nodd_one([2,16,98,10,13,78])\
+  \ # => 4\nodd_one([4,-8,98,-12,-7,90,100]) # => 4\nodd_one([2,4,6,8]) # => -1\n\
+  ```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def odd_one (arr : List Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem odd_one_returns_valid_index_or_minus_one (arr : List Int)\
+  \ :\n  let result := odd_one arr\n  (result = -1 → ∀ x ∈ arr, x % 2 = 0) ∧ \n  (result\
+  \ ≠ -1 → \n    result ≥ 0 ∧ \n    result < arr.length ∧\n    (let val := arr.get?\
+  \ (result.toNat); match val with\n    | some x => x % 2 = 1 ∨ x % 2 = -1\n    |\
+  \ none => False) ∧\n    ∀ i, i < result → \n      let val := arr.get? (i.toNat);\
+  \ match val with\n      | some x => x % 2 = 0\n      | none => True) :=\n  sorry\n\
+  \n\ntheorem all_even_returns_minus_one (arr : List Int) :\n  (∀ x ∈ arr, x % 2 =\
+  \ 0) → odd_one arr = -1 :=\n  sorry\n\n\ntheorem all_odd_returns_first_index (arr\
+  \ : List Int) :\n  arr ≠ [] →\n  (∀ x ∈ arr, x % 2 = 1) → \n  odd_one arr = 0 :=\n\
+  \  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval odd_one [2, 4, 6, 7, 10]\n\n\
+  /--\ninfo: 4\n-/\n#guard_msgs in\n#eval odd_one [2, 16, 98, 10, 13, 78]\n\n/--\n\
+  info: -1\n-/\n#guard_msgs in\n#eval odd_one [2, 4, 6, 8]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

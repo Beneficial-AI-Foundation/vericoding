@@ -1,0 +1,19 @@
+"vc-description": "Write a function named `repeater()` that takes two arguments (a\
+  \ string and a number), and returns a new string where the input string is repeated\
+  \ that many times.\n\n## Example:\n\nshould return"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def repeater (s : String) (n : Nat) : String := sorry\n\ntheorem\
+  \ repeater_length (s : String) (n : Nat) : \n  (repeater s n).length = s.length\
+  \ * n := sorry\n"
+"vc-theorems": "theorem repeater_eq_concat (s : String) (n : Nat) :\n  repeater s\
+  \ n = String.join (List.replicate n s) := sorry\n\n/-- For any non-empty repeater\
+  \ output, we can verify it consists of the original string repeated -/\n\ntheorem\
+  \ repeater_validity (s : String) (n : Nat) (h : n > 0) :\n  ∀ k : Nat, k < n → String.isPrefixOf\
+  \ s (repeater s n) := sorry\n\n\ntheorem repeater_zero (s : String) :\n  repeater\
+  \ s 0 = \"\" := sorry\n\n\ntheorem repeater_one (s : String) :\n  repeater s 1 =\
+  \ s := sorry\n\n/--\ninfo: 'aaaaa'\n-/\n#guard_msgs in\n#eval repeater \"a\" 5\n\
+  \n/--\ninfo: 'NaNaNaNaNaNaNaNaNaNaNaNaNaNaNaNa'\n-/\n#guard_msgs in\n#eval repeater\
+  \ \"Na\" 16\n\n/--\ninfo: 'Wub Wub Wub Wub Wub Wub '\n-/\n#guard_msgs in\n#eval\
+  \ repeater \"Wub \" 6\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

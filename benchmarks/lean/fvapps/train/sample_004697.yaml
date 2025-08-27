@@ -1,0 +1,34 @@
+"vc-description": "# Story\n\nThose pesky rats have returned and this time they have\
+  \ taken over the Town Square.\n\nThe Pied Piper has been enlisted again to play\
+  \ his magical tune and coax all the rats towards him.\n\nBut some of the rats are\
+  \ deaf and are going the wrong way!\n\n# Kata Task\n\nHow many deaf rats are there?\n\
+  \n## Input Notes\n\n* The Town Square is a rectangle of square paving stones (the\
+  \ Square has 1-15 pavers per side)\n* The Pied Piper is always present\n\n## Output\
+  \ Notes\n* Deaf rats are those that are moving to paving stone **further away**\
+  \ from the Piper than where they are now\n* Use Euclidian distance for your calculations\n\
+  \n## Legend\n\n* `P` = The Pied Piper\n* `←` `↑` `→` `↓` `↖` `↗` `↘` `↙` = Rats\
+  \ going in different directions\n* space = Everything else\n\n\n\n# Examples\n\n\
+  ex1 - has 1 deaf rat\n\n\n↗ P              \n  ↘   ↖\n  ↑              \n↗     \
+  \   \n\n\n---\n\nex2 - has 7 deaf rats\n\n\n    ↗            \nP ↓   ↖ ↑\n    ←\
+  \   ↓\n  ↖ ↙   ↙\n↓ ↓ ↓"
+"vc-preamble": "import Imports.AllImports\n\ndef DIRS := [('←', (0,-1)), ('↑', (-1,0)),\
+  \ ('→', (0,1)), ('↓', (1,0)),\n            ('↖', (-1,-1)), ('↗', (-1,1)), ('↘',\
+  \ (1,1)), ('↙', (1,-1))]\n\ndef count_deaf_rats (town: List String) : Nat :=\n \
+  \ sorry\n\n\ndef listSum : List Nat → Nat \n  | [] => 0\n  | x::xs => x + listSum\
+  \ xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countChar (s: String) (c: Char) : Nat :=\n  s.toList.filter\
+  \ (· == c) |>.length\n"
+"vc-theorems": "theorem valid_output_range (town: List String) \n  (h1: town.length\
+  \ > 0)\n  (h2: listSum (town.map (fun row => countChar row 'P')) = 1)\n  : let total_rats\
+  \ := listSum (town.map (fun row => \n      listSum ((DIRS.map Prod.fst).map (fun\
+  \ c => countChar row c))))\n    let result := count_deaf_rats town\n    0 ≤ result\
+  \ ∧ result ≤ total_rats :=\n  sorry\n\n\ntheorem empty_town :\n  count_deaf_rats\
+  \ [\" P \"] = 0 :=\n  sorry\n  \n\ntheorem simple_case :\n  count_deaf_rats [\"\
+  P →\", \"← ←\"] = 2 :=\n  sorry\n\n\ntheorem all_directions :\n  let dirChars :=\
+  \ DIRS.map Prod.fst\n  let town := [\"P \" ++ String.mk dirChars]\n  let result\
+  \ := count_deaf_rats town\n  0 ≤ result ∧ result ≤ DIRS.length :=\n  sorry\n\n/--\n\
+  info: 1\n-/\n#guard_msgs in\n#eval count_deaf_rats [\"↗ P     \", \"  ↘   ↖\", \"\
+  \  ↑     \", \"↗       \"]\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval count_deaf_rats\
+  \ [\"    ↗    \", \"P ↓   ↖ ↑\", \"    ←   ↓\", \"  ↖ ↙   ↙\", \"↓ ↓ ↓    \"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

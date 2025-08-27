@@ -1,0 +1,25 @@
+"vc-description": "Given an array A of 0s and 1s, we may change up to K values from\
+  \ 0 to 1.\nReturn the length of the longest (contiguous) subarray that contains\
+  \ only 1s. \n \n\nExample 1:\nInput: A = [1,1,1,0,0,0,1,1,1,1,0], K = 2\nOutput:\
+  \ 6\nExplanation: \n[1,1,1,0,0,1,1,1,1,1,1]\nBolded numbers were flipped from 0\
+  \ to 1.  The longest subarray is underlined.\n\nExample 2:\nInput: A = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1],\
+  \ K = 3\nOutput: 10\nExplanation: \n[0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1]\nBolded\
+  \ numbers were flipped from 0 to 1.  The longest subarray is underlined.\n\n \n\
+  Note:\n\n1 <= A.length <= 20000\n0 <= K <= A.length\nA[i] is 0 or 1"
+"vc-preamble": "import Imports.AllImports\n\ndef longestOnes (A : List Nat) (K : Nat)\
+  \ : Nat := sorry\n\ndef isConsecutiveOnes (A : List Nat) (n : Nat) : Prop := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def maxConsecutiveOnes (A : List Nat) : Nat := sorry\n\ntheorem\
+  \ longestOnes_upper_bound (A : List Nat) (K : Nat) : \n  longestOnes A K ≤ A.length\
+  \ := sorry\n"
+"vc-theorems": "theorem longestOnes_min_bound (A : List Nat) (K : Nat) (n : Nat) :\n\
+  \  isConsecutiveOnes A n → n ≤ longestOnes A K := sorry\n\n\ntheorem longestOnes_zero_k\
+  \ (A : List Nat) :\n  longestOnes A 0 = maxConsecutiveOnes A := sorry\n\n\ntheorem\
+  \ longestOnes_large_k (A : List Nat) (K : Nat) :\n  K ≥ A.length → longestOnes A\
+  \ K = A.length := sorry\n\n\ntheorem longestOnes_single_zero (K : Nat) :\n  longestOnes\
+  \ [0] K = min 1 K := sorry\n\n\ntheorem longestOnes_single_one (K : Nat) :\n  longestOnes\
+  \ [1] K = 1 := sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval longestOnes [1,\
+  \ 1, 1, 0, 0, 0, 1, 1, 1, 1, 0] 2\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval longestOnes\
+  \ [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1] 3\n\n/--\ninfo: 4\n\
+  -/\n#guard_msgs in\n#eval longestOnes [1, 1, 1, 1] 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

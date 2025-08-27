@@ -1,0 +1,34 @@
+"vc-description": "Fizza is a cute girl and she wants to be more beautiful.\nSo she\
+  \ approached a magician to increase her beauty magically. But the magician's \n\
+  glasses accidently got locked inside the locker and he forgot the password. Without\n\
+  glasses he can't help her. The password is hidden in N integers i.e. $a[1], a[2],\
+  \ ..... a[N]$ \nwritten on his magical stick.The password is the maximum number\
+  \ of moves Fizza can perform, for any position $i$ such that 1 < = $i$ < = $N$ and\
+  \ integer $X$ is present at $i$-th\nposition. In one move she can perform one of\
+  \ the following operations ->\n$(1)$  If ( $i$ + 1 < = $N$ ) she can go to position\
+  \ ($i$ + 1 ) if integer at ( $i$ + 1 )-th \nposition is equal to $X$.\n$(2)$ if\
+  \ ( $i$ + 2 < = $N$ ) she can go to position ($i$ + 2 ) if integer at ($i$ + 2)-th\
+  \ \nposition is equal to $X$.\nFizza is a bit worried about her beauty so she can't\
+  \ focus on the problem but she asked for \nyour help to find the password.\n\n-----Input:-----\n\
+  - First line will contain $T$, number of testcases. Then the testcases follow. \n\
+  - Each testcase consists of  two lines of input.\n- Input $N$.\n- Input $N$ integers\
+  \ . \n\n-----Output:-----\nFor each testcase, output in a single line Maximum number\
+  \ of moves.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n- $1 \\leq N \\leq\
+  \ 10^5$\n- $1 \\leq a[i] \\leq 2*10^5$\n\n-----Sample Input:-----\n3\n8\n6 3 6 4\
+  \ 5 4 3 6\n9\n5 5 4 5 2 1 3 4 2\n6\n1 2 3 4 5 6\n\n-----Sample Output:-----\n1\n\
+  2\n0\n\n-----EXPLANATION:-----\nIn the first case, integers at position 1 and 3\
+  \ are the same and at alternate positions.\nIn the second case, integers at position\
+  \ 1, 2, 4 follow the conditions."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check (lst : List Int) (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem check_non_negative (lst : List Int) (n : Nat) :\n  check lst\
+  \ n ≥ 0 :=\nsorry\n\n\ntheorem check_empty_or_singleton (lst : List Int) (n : Nat)\
+  \ :\n  n ≤ 1 → check lst n = 0 :=\nsorry\n\n\ntheorem check_unique_elements (lst\
+  \ : List Int) :\n  List.Nodup lst → check lst lst.length = 0 :=\nsorry\n\n\ntheorem\
+  \ check_all_same {n : Nat} {a : Int} :\n  n ≥ 3 → \n  let lst := List.replicate\
+  \ n a\n  check lst n > 0 :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval check\
+  \ [6, 3, 6, 4, 5, 4, 3, 6] len(test1)\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval\
+  \ check [5, 5, 4, 5, 2, 1, 3, 4, 2] len(test2)\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval check [1, 2, 3, 4, 5, 6] len(test3)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,23 @@
+"vc-description": "Consider the string s to be the infinite wraparound string of \"\
+  abcdefghijklmnopqrstuvwxyz\", so s will look like this: \"...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd....\"\
+  .\n\nNow we have another string p. Your job is to find out how many unique non-empty\
+  \ substrings of p are present in s. In particular, your input is the string p and\
+  \ you need to output the number of different non-empty substrings of p in the string\
+  \ s.\n\nNote: p consists of only lowercase English letters and the size of p might\
+  \ be over 10000.\n\nExample 1:\n\nInput: \"a\"\nOutput: 1\n\nExplanation: Only the\
+  \ substring \"a\" of string \"a\" is in the string \x10s.\n\n\n\nExample 2:\n\n\
+  Input: \"cac\"\nOutput: 2\nExplanation: There are two substrings \"a\", \"c\" of\
+  \ string \"cac\" in the string s.\n\n\n\nExample 3:\n\nInput: \"zab\"\nOutput: 6\n\
+  Explanation: There are six substrings \"z\", \"a\", \"b\", \"za\", \"ab\", \"zab\"\
+  \ of string \"zab\" in the string s."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_substrings_in_wraparound (s: String) : Nat := sorry\n\n\
+  theorem output_always_positive (s: String) : \n  find_substrings_in_wraparound s\
+  \ ≥ 0 := sorry\n"
+"vc-theorems": "theorem single_char_min (s: String) :\n  s.length ≥ 1 → find_substrings_in_wraparound\
+  \ s ≥ 1 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_substrings_in_wraparound\
+  \ \"a\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_substrings_in_wraparound\
+  \ \"cac\"\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval find_substrings_in_wraparound\
+  \ \"zab\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,34 @@
+"vc-description": "You are installing a billboard and want it to have the largest\
+  \ height.  The billboard will have two steel supports, one on each side.  Each steel\
+  \ support must be an equal height.\nYou have a collection of rods which can be welded\
+  \ together.  For example, if you have rods of lengths 1, 2, and 3, you can weld\
+  \ them together to make a support of length 6.\nReturn the largest possible height\
+  \ of your billboard installation.  If you cannot support the billboard, return 0.\n\
+   \nExample 1:\nInput: [1,2,3,6]\nOutput: 6\nExplanation: We have two disjoint subsets\
+  \ {1,2,3} and {6}, which have the same sum = 6.\n\n\nExample 2:\nInput: [1,2,3,4,5,6]\n\
+  Output: 10\nExplanation: We have two disjoint subsets {2,3,5} and {4,6}, which have\
+  \ the same sum = 10.\n\n\n\nExample 3:\nInput: [1,2]\nOutput: 0\nExplanation: The\
+  \ billboard cannot be supported, so we return 0.\n\n\n \nNote:\n\n0 <= rods.length\
+  \ <= 20\n1 <= rods[i] <= 1000\nThe sum of rods is at most 5000."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Int → Int \n  | []\
+  \ => 0\n  | x::xs => x + sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.sort (xs : List Int) : List Int := sorry\n\ndef tallestBillboard\
+  \ (rods: List Int) : Int := sorry\n\n/-- The result of tallestBillboard is non-negative\
+  \ -/"
+"vc-theorems": "theorem tallestBillboard_nonneg {rods: List Int}\n  (h: ∀ x ∈ rods,\
+  \ x > 0) : \n  tallestBillboard rods ≥ 0 := sorry\n\n/-- The result cannot exceed\
+  \ half the sum of all rods -/\n\ntheorem tallestBillboard_upper_bound {rods: List\
+  \ Int}\n  (h: ∀ x ∈ rods, x > 0) :\n  2 * tallestBillboard rods ≤ List.sum rods\
+  \ := sorry\n\n/-- The result is invariant under sorting -/\n\ntheorem tallestBillboard_sort_invariant\
+  \ {rods: List Int}\n  (h: ∀ x ∈ rods, x > 0) :\n  tallestBillboard rods = tallestBillboard\
+  \ (List.sort rods) := sorry\n\n/-- Empty input results in 0 -/\n\ntheorem tallestBillboard_empty\
+  \ :\n  tallestBillboard [] = 0 := sorry\n\n/-- Single input results in 0 -/\n\n\
+  theorem tallestBillboard_singleton (x: Int)\n  (h: x > 0) :\n  tallestBillboard\
+  \ [x] = 0 := sorry\n\n/-- For input of length 2, result is input value if equal,\
+  \ 0 otherwise -/\n\ntheorem tallestBillboard_pair (x y: Int)\n  (hx: x > 0) (hy:\
+  \ y > 0) :\n  tallestBillboard [x, y] = (if x = y then x else 0) := sorry\n\n/--\n\
+  info: 6\n-/\n#guard_msgs in\n#eval tallestBillboard [1, 2, 3, 6]\n\n/--\ninfo: 10\n\
+  -/\n#guard_msgs in\n#eval tallestBillboard [1, 2, 3, 4, 5, 6]\n\n/--\ninfo: 0\n\
+  -/\n#guard_msgs in\n#eval tallestBillboard [1, 2]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

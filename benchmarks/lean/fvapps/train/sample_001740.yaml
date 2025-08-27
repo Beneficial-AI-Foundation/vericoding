@@ -1,0 +1,30 @@
+"vc-description": "Implementing the class MajorityChecker, which has the following\
+  \ API:\n\nMajorityChecker(int[] arr) constructs an instance of MajorityChecker with\
+  \ the given array arr;\nint query(int left, int right, int threshold) has arguments such\
+  \ that:\n        \n0 <= left <= right < arr.length representing a subarray of arr;\n\
+  2 * threshold > right - left + 1, ie. the threshold is always a strict majority\
+  \ of the length of the subarray\n\n\n\nEach query(...) returns the element in arr[left],\
+  \ arr[left+1], ..., arr[right] that occurs at least threshold times, or -1 if no\
+  \ such element exists.\n \nExample:\nMajorityChecker majorityChecker = new MajorityChecker([1,1,2,2,1,1]);\n\
+  majorityChecker.query(0,5,4); // returns 1\nmajorityChecker.query(0,3,3); // returns\
+  \ -1\nmajorityChecker.query(2,3,2); // returns 2\n\n \nConstraints:\n\n1 <= arr.length\
+  \ <= 20000\n1 <= arr[i] <= 20000\nFor each query, 0 <= left <= right < len(arr)\n\
+  For each query, 2 * threshold > right - left + 1\nThe number of queries is at most\
+  \ 10000"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MajorityChecker.query (checker : MajorityChecker) (left right\
+  \ threshold : Nat) : Int :=\n  sorry\n"
+"vc-theorems": "theorem queries_within_array_bounds \n  (arr : IntArray) \n  (left\
+  \ right threshold : Nat)\n  (checker : MajorityChecker)\n  (h1 : checker.arr = arr)\n\
+  \  (h2 : left ≤ right)\n  (h3 : right < arr.length)\n  (result : Int)\n  (h4 : result\
+  \ = checker.query left right threshold)\n  (h5 : result ≠ -1) :\n  (List.countP\
+  \ (fun x => x = result) (List.take (right - left + 1) (List.drop left arr))) ≥ threshold\
+  \ := \n  sorry\n\n\ntheorem monotonic_threshold \n  (arr : IntArray)\n  (left right\
+  \ threshold1 threshold2 : Nat) \n  (checker : MajorityChecker)\n  (h1 : checker.arr\
+  \ = arr)\n  (h2 : left ≤ right)\n  (h3 : right < arr.length)\n  (h4 : threshold1\
+  \ ≤ threshold2)\n  (h5 : threshold2 ≤ right - left + 1)\n  (result2 : Int)\n  (h6\
+  \ : result2 = checker.query left right threshold2)\n  (h7 : result2 ≠ -1) :\n  ∃\
+  \ result1, \n    result1 = checker.query left right threshold1 ∧\n    result1 ≠\
+  \ -1 := \n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

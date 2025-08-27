@@ -1,0 +1,32 @@
+"vc-description": "You will be given a two-dimensional array with row consisting values\
+  \ 0 or 1.  \nA move consists of choosing any column or row, and toggling all the\
+  \ 0’s as 1’s and 1’s as 0’s.  \nAfter making the required moves, every row represents\
+  \ a binary number and the score of the matrix will be sum of all the numbers represented\
+  \ as binary numbers in each row.  \nFind the highest possible score.  \n$Example:$\
+  \ \nInput:\n\n0 0 1 1\n\n1 0 1 0\n\n1 1 0 0  \nOutput:\n\n39\nExplanation:\n\nToggled\
+  \ to\n\n1 1 1 1\n\n1 0 0 1\n\n1 1 1 1  \n0b1111 + 0b1001 + 0b1111 = 15 + 9 + 15\
+  \ = 39\n\n-----Input:-----\n- First line will contains $m$, $n$ for the size of\
+  \ the 2-D array. \n- Contains $m$ lines of $n$ space-separated values each. \n\n\
+  -----Output:-----\nSingle integer which is the maximum score obtained by the sum\
+  \ of binary numbers.\n\n-----Constraints-----\n- $1 \\leq m, n \\leq 20$\n- $A[i][j]\
+  \ = 1$ or $0$ \n\n-----Sample Input:-----\n3 4  \n0 0 1 1  \n1 0 1 0  \n1 1 0 0\
+  \  \n\n-----Sample Output:-----\n39"
+"vc-preamble": "import Imports.AllImports\n\ndef matrix_score (m : BinaryMatrix) :\
+  \ Nat :=\n  sorry\n\n-- Define helper function to check if first element of each\
+  \ row is 1"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def allFirstOne (m : BinaryMatrix) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem matrix_score_positive (m : BinaryMatrix) : \n  matrix_score\
+  \ m > 0 := \n  sorry\n\n\ntheorem matrix_score_bounded_above {rows cols : Nat} (m\
+  \ : BinaryMatrix)\n  (h1 : m.length = rows) (h2 : ∀ r, r ∈ m → r.length = cols)\
+  \ :\n  matrix_score m ≤ ((2^cols) - 1) * rows := \n  sorry\n\n\ntheorem matrix_score_bounded_below\
+  \ {rows cols : Nat} (m : BinaryMatrix)\n  (h1 : m.length = rows) (h2 : ∀ r, r ∈\
+  \ m → r.length = cols) :\n  matrix_score m ≥ 2^(cols-1) * rows :=\n  sorry\n\n\n\
+  theorem matrix_score_idempotent (m : BinaryMatrix) :\n  matrix_score m = matrix_score\
+  \ m :=\n  sorry\n\n-- Helper theorem to ensure matrix elements are binary\n\ntheorem\
+  \ matrix_elements_binary (m : BinaryMatrix) :\n  ∀ r ∈ m, ∀ x ∈ r, x = 0 ∨ x = 1\
+  \ :=\n  sorry\n\n/--\ninfo: 39\n-/\n#guard_msgs in\n#eval matrix_score [[0, 0, 1,\
+  \ 1], [1, 0, 1, 0], [1, 1, 0, 0]]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval matrix_score\
+  \ [[0]]\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval matrix_score [[1, 1], [1, 1],\
+  \ [0, 0]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

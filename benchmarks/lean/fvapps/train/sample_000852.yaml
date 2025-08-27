@@ -1,0 +1,34 @@
+"vc-description": "Rachel has some candies and she decided to distribute them among\
+  \ $N$ kids. The ith kid receives $A_i$ candies. The kids are happy iff the difference\
+  \ between the highest and lowest number of candies received is less than $X$.\n\
+  Find out if the children are happy or not.\n\n-----Input:-----\n- First line will\
+  \ contain $T$, number of testcases. Then the testcases follow. \n- The first line\
+  \ contains $N$ and $X$. \n- The second line contains $N$ integers $A_1,A_2,...,A_N$.\
+  \ \n\n-----Output:-----\nFor each test case print either \"YES\"(without quotes)\
+  \ if the kids are happy else \"NO\"(without quotes)\n\n-----Constraints-----\n-\
+  \ $1 \\leq T \\leq 100$\n- $1 \\leq N, X \\leq 10^5$\n- $1 \\leq A_i \\leq 10^5$\n\
+  \n-----Sample Input:-----\n2\n\n5 6\n\n3 5 6 8 1\n\n3 10\n\n5 2 9\n\n-----Sample\
+  \ Output:-----\nNO\n\nYES\n\n-----EXPLANATION:-----\n- Example 1: Difference between\
+  \ maximum and minimum candies received is 8-1=7. 7 is greater than 6, therefore,\
+  \ the kids are not happy."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def areKidsHappy (n : Nat) (x : Nat) (candies : List Nat) : String\
+  \ := sorry\n\ntheorem output_is_yes_or_no {n x : Nat} {candies : List Nat}\n  (h1\
+  \ : n ≥ 2) (h2 : n ≤ 100) \n  (h3 : x ≥ 1) (h4 : x ≤ 1000)\n  (h5 : candies.length\
+  \ ≥ 2) (h6 : candies.length ≤ 100)\n  (h7 : ∀ c ∈ candies, c ≥ 1 ∧ c ≤ 1000) :\n\
+  \  areKidsHappy n x candies = \"YES\" ∨ areKidsHappy n x candies = \"NO\" := sorry\n"
+"vc-theorems": "theorem happy_condition {n x : Nat} {candies : List Nat}\n  (h1 :\
+  \ n ≥ 2) (h2 : n ≤ 100)\n  (h3 : x ≥ 1) (h4 : x ≤ 1000)\n  (h5 : candies.length\
+  \ ≥ 2) (h6 : candies.length ≤ 100)\n  (h7 : ∀ c ∈ candies, c ≥ 1 ∧ c ≤ 1000) :\n\
+  \  (candies.maximum? >>= λ max => candies.minimum? >>= λ min => some (max - min\
+  \ < x)) = some true ↔ \n  areKidsHappy n x candies = \"YES\" := sorry\n\n\ntheorem\
+  \ identical_candies_are_happy {candies : List Nat} {n x : Nat}\n  (h1 : candies.length\
+  \ ≥ 2) (h2 : candies.length ≤ 100)\n  (h3 : ∀ c ∈ candies, c ≥ 1 ∧ c ≤ 1000)\n \
+  \ (h4 : ∀ i : Fin candies.length, ∀ j : Fin candies.length, candies.get i = candies.get\
+  \ j)\n  (h5 : x = 1)\n  (h6 : n = candies.length) :\n  areKidsHappy n x candies\
+  \ = \"YES\" := sorry\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval are_kids_happy\
+  \ 5 6 [3, 5, 6, 8, 1]\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval are_kids_happy\
+  \ 3 10 [5, 2, 9]\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval are_kids_happy 4\
+  \ 5 [1, 2, 3, 4]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

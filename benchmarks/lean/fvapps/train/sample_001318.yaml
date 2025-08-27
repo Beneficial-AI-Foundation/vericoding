@@ -1,0 +1,27 @@
+"vc-description": "Master Shifu is training Po to become The Dragon Warrior and as\
+  \ a final assignment he must obtain maximum deliciousness from dumplings. There\
+  \ are  $N$ plates of dumplings in front of him with deliciousness $A_1, A_2, \\\
+  ldots, A_N$, Po can choose any number of continuous plates of  dumplings. The total\
+  \ deliciousness is the sum of deliciousness of all the  chosen dumplings.\nWhat\
+  \ is the minimum number of plates he must choose so that total deliciousness is\
+  \ maximum possible?\nNote: Po must choose atleast one plate.\n\n-----Input:-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first line of\
+  \ each test case contains a single integer $N$.\n- The second line contains $N$\
+  \ space-separated integers $A_1, A_2, \\ldots, A_N$.\n\n-----Output:-----\nFor each\
+  \ test case, print a single line containing one integer.\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 10$\n- $1 \\le N \\le 2 \\cdot 10^5$\n- $0 \\le A_i \\le 10^9$\n\
+  \n-----Sample Input:-----\n2\n4\n1 2 3 4\n5\n3 2 0 3 0\n\n-----Sample Output:-----\n\
+  4\n4"
+"vc-preamble": "import Imports.AllImports\n\ndef min_plates_max_deliciousness (n :\
+  \ Nat) (arr : List Nat) : Nat :=\n  sorry\n\n\ndef countLeadingZeros (arr : List\
+  \ Nat) : Nat :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countTrailingZeros (arr : List Nat) : Nat :=\nsorry"
+"vc-theorems": "theorem min_plates_result_bounds {n : Nat} {arr : List Nat} \n  (h\
+  \ : arr.length = n) (h2 : n > 0) :\n  let result := min_plates_max_deliciousness\
+  \ n arr\n  1 ≤ result ∧ result ≤ n :=\nsorry\n\n\n\n\n\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval min_plates_max_deliciousness 4 [1, 2, 3, 4]\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval min_plates_max_deliciousness 5 [3, 2, 0, 3, 0]\n\n/--\ninfo: 1\n-/\n\
+  #guard_msgs in\n#eval min_plates_max_deliciousness 3 [0, 0, 0]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

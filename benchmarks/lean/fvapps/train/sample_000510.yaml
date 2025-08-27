@@ -1,0 +1,45 @@
+"vc-description": "Nature photographing may be fun for tourists, but it is one of\
+  \ the most complicated things for photographers. To capture all the facets of a\
+  \ bird, you might need more than one cameras. You recently encountered such a situation.\n\
+  There are $n$ photographers, so there are $n$ cameras in a line on the x-axis. All\
+  \ the cameras are at distinct coordinates. \nYou want to pair up these cameras ($n$\
+  \ is even) in such a way that the sum of angles subtended on the bird by the pair\
+  \ of cameras is maximized. Formally, let A, B be two cameras, and let P be the bird\
+  \ to be captured by these two cameras. The angle will APB. \nNote: All angles are\
+  \ in radians.\n\n-----Input-----\n- The first line of the input contains an integer\
+  \ $T$ denoting the number of test cases. The description of the test cases follows.\n\
+  - The first line of each test case contains an integer $n$.\n- The second line of\
+  \ each test case contains $n$ space-separated integers denoting the $x_i$ coordinates\
+  \ of the cameras.\n- The third line of each test case contains two space-separated\
+  \ integers $P, Q$ denoting the x and y coordinates of the bird respectively.\n\n\
+  -----Output-----\nFor each test case, output your answer in a single line. Your\
+  \ answer would be considered correct if its absolute error is less than or equal\
+  \ to 1e-6 of the actual answer. \n\n-----Constraints-----\n- $1 \\le T \\le 10$\n\
+  - $2 \\le n \\leq  100$\n- $1 \\le x_i \\leq 300$\n- $0 \\le P \\leq 300$\n- $1\
+  \ \\le Q \\leq 300$\n\n-----Example Input-----\n2\n2\n0 1\n0 1\n2\n0 1\n100 1\n\n\
+  -----Example Output-----\n0.785398163397\n0.000100999899\n\n-----Explanation-----\n\
+  Note: $1 \\leq x_i$ is not being satisfied by the sample input, but will be satisfied\
+  \ in the actual test data.\nTestcase 1: There are only 2 cameras, so they have to\
+  \ paired up with each other. And the angle subtended by then is 45 degrees. Converting\
+  \ this to radians gives the output."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_camera_angles (n : Nat) (cameras : List Int) (bird_x\
+  \ bird_y : Int) : Float :=\nsorry\n"
+"vc-theorems": "theorem solve_camera_angles_nonnegative {n : Nat} {cameras : List\
+  \ Int} {bird_x bird_y : Int}\n  (h1 : n ≥ 2) (h2 : n % 2 = 0) :\n  solve_camera_angles\
+  \ n cameras bird_x bird_y ≥ 0 := sorry\n\n\ntheorem solve_camera_angles_reverse_invariant\
+  \ {n : Nat} {cameras : List Int} {bird_x bird_y : Int}\n  (h1 : n ≥ 2) (h2 : n %\
+  \ 2 = 0) :\n  solve_camera_angles n cameras bird_x bird_y = \n  solve_camera_angles\
+  \ n cameras.reverse bird_x bird_y := sorry\n\n\ntheorem solve_camera_angles_scale_invariant\
+  \ {n : Nat} {cameras : List Int} {bird_x bird_y : Int}\n  (h1 : n ≥ 2) (h2 : n %\
+  \ 2 = 0) (scale : Int) (h3 : scale > 0) :\n  solve_camera_angles n cameras bird_x\
+  \ bird_y =\n  solve_camera_angles n (cameras.map (· * scale)) (bird_x * scale) (bird_y\
+  \ * scale) := sorry\n\n\ntheorem solve_camera_angles_translation_invariant {n :\
+  \ Nat} {cameras : List Int} {bird_x bird_y : Int}\n  (h1 : n ≥ 2) (h2 : n % 2 =\
+  \ 0) (offset : Int) :\n  solve_camera_angles n cameras bird_x bird_y =\n  solve_camera_angles\
+  \ n (cameras.map (· + offset)) (bird_x + offset) bird_y := sorry\n\n\ntheorem solve_camera_angles_symmetry\
+  \ {n : Nat}\n  (h1 : n ≥ 2) (h2 : n % 2 = 0) :\n  let cameras := List.range n |>.map\
+  \ Int.ofNat\n  solve_camera_angles n cameras 0 1 =\n  solve_camera_angles n (cameras.map\
+  \ (·* -1)) 0 1 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

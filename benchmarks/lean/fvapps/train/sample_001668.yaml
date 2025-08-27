@@ -1,0 +1,31 @@
+"vc-description": "Your task is to implement a function that calculates an election\
+  \ winner from a list of voter selections using an [Instant Runoff Voting](http://en.wikipedia.org/wiki/Instant-runoff_voting)\
+  \ algorithm. If you haven't heard of IRV, here's a basic overview (slightly altered\
+  \ for this kata):\n\n- Each voter selects several candidates in order of preference.\n\
+  - The votes are tallied from the each voter's first choice.\n- If the first-place\
+  \ candidate has more than half the total votes, they win.\n- Otherwise, find the\
+  \ candidate who got the least votes and remove them from each person's voting list.\n\
+  - In case of a tie for least, remove all of the tying candidates.\n- In case of\
+  \ a complete tie between every candidate, return nil(Ruby)/None(Python)/undefined(JS).\n\
+  - Start over.\n- Continue until somebody has more than half the votes; they are\
+  \ the winner.\n\nYour function will be given a list of voter ballots; each ballot\
+  \ will be a list of candidates (symbols) in descending order of preference. You\
+  \ should return the symbol corresponding to the winning candidate. See the default\
+  \ test for an example!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def runoff (voters : List (List Char)) : Option Char := sorry\n\
+  \nvariable (voters : List (List Char))\n"
+"vc-theorems": "theorem winner_must_be_candidate (voters : List (List Char)) :\n \
+  \ match runoff voters with\n  | none => True \n  | some winner => ∀ voter ∈ voters,\
+  \ winner ∈ voter\n  := sorry\n\n\ntheorem voters_not_empty (voters : List (List\
+  \ Char)) :\n  match runoff voters with\n  | none => True\n  | some _ => voters.length\
+  \ > 0 ∧ ∀ voter ∈ voters, voter.length > 0\n  := sorry\n\n\ntheorem preserves_input\
+  \ (voters : List (List Char)) :\n  let original := voters\n  let _ := runoff voters\n\
+  \  voters = original := sorry\n\n/--\ninfo: 'A'\n-/\n#guard_msgs in\n#eval runoff\
+  \ [[\"A\", \"B\", \"C\"], [\"A\", \"B\", \"C\"], [\"B\", \"C\", \"A\"]]\n\n/--\n\
+  info: None\n-/\n#guard_msgs in\n#eval runoff [[\"A\", \"B\", \"C\"], [\"B\", \"\
+  C\", \"A\"], [\"C\", \"A\", \"B\"]]\n\n/--\ninfo: 'A'\n-/\n#guard_msgs in\n#eval\
+  \ runoff [[\"A\", \"B\", \"C\", \"D\"], [\"A\", \"B\", \"C\", \"D\"], [\"B\", \"\
+  A\", \"C\", \"D\"], [\"C\", \"D\", \"A\", \"B\"]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

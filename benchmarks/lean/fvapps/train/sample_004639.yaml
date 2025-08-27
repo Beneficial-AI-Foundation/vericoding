@@ -1,0 +1,74 @@
+"vc-description": "# Our Setup\n\nAlice and Bob work in an office. When the workload\
+  \ is light and the boss isn't looking, they often play simple word games for fun.\
+  \ This is one of those days!\n\n# This Game\n\nToday Alice and Bob are playing what\
+  \ they like to call _Mutations_, where they take turns trying to \"think up\" a\
+  \ new four-letter word identical to the prior word except for one letter. They just\
+  \ keep on going until their memories fail out.\n\n# Their Words\n\nAlice and Bob\
+  \ have memories of the same size, each able to recall `10` to `2000` different four-letter\
+  \ words. Memory words and initial game word are randomly taken from a list of `4000`\
+  \ (unique, four-letter, lowercased) words, any of which may appear in both memories.\n\
+  \nThe expression to \"think up\" a new word means that for their turn, the player\
+  \ must submit as their response word the first valid, unused word that appears in\
+  \ their memory (by lowest array index), as their memories are ordered from the most\
+  \ \"memorable\" words to the least.\n\n# The Rules\n* a valid response word must\
+  \ contain four different letters\n* `1` letter is replaced while the other `3` stay\
+  \ in position\n* it must be the lowest indexed valid word in their memory\n* this\
+  \ word cannot have already been used during the game\n* the final player to provide\
+  \ a valid word will win the game\n* if 1st player fails 1st turn, 2nd can win with\
+  \ a valid word\n* when both players fail the initial word, there is no winner\n\n\
+  # Your Task\nTo determine the winner!\n\n# Some Examples\n\n`alice = plat,rend,bear,soar,mare,pare,flap,neat,clan,pore`\n\
+  \n`bob   = boar,clap,farm,lend,near,peat,pure,more,plan,soap`\n\n1) In the case\
+  \ of `word = \"send\"` and `first = 0`:\n* Alice responds to `send` with `rend`\n\
+  * Bob   responds to `rend` with `lend`\n* Alice has no valid response to `lend`\n\
+  * Bob   wins the game.\n\n2) In the case of `word = \"flip\"` and `first = 1`:\n\
+  * Bob   has no valid response to `flip`\n* Alice responds to `flip` with `flap`\n\
+  * Alice wins the game.\n\n3) In the case of `word = \"maze\"` and `first = 0`:\n\
+  * Alice responds to `maze` with `mare`\n* Bob   responds to `mare` with `more`\n\
+  * Alice responds to `more` with `pore`\n* Bob   responds to `pore` with `pure`\n\
+  * Alice responds to `pure` with `pare`\n* Bob   has no valid response to `pare`\n\
+  * Alice wins the game.\n\n4) In the case of `word = \"calm\"` and `first = 1`:\n\
+  * Bob   has no valid response to `calm`\n* Alice has no valid response to `calm`\n\
+  * Neither wins the game.\n\n# Input\n\n``` c\nsize_t n                    // number\
+  \ of words (10 <= n <= 2000)\nconst char *const alice[n]; // Alice's memory of four-letter\
+  \ words\nconst char *const bob[n];   // Bob's memory of four-letter words\nconst\
+  \ char* word;           // initial challenge word of the game\nint first;      \
+  \            // whom begins: 0 for Alice, 1 for Bob\n```\n``` python\nalice  # \
+  \ list of words in Alice's memory (10 <= n <= 2000)\nbob    #  list of words in\
+  \ Bob's memory (10 <= n <= 2000)\nword   #  string of the initial challenge word\n\
+  first  #  integer of whom begins: 0 for Alice, 1 for Bob\n```\n``` javascript\n\
+  let alice;  //  array of words in Alice's memory (10 <= n <= 2000)\nlet bob;   \
+  \ //  array of words in Bob's memory (10 <= n <= 2000)\nlet word;   //  string of\
+  \ the initial challenge word\nlet first;  //  integer of whom begins: 0 for Alice,\
+  \ 1 for Bob\n```\n\n# Output\n``` c\nreturn  0  //  if Alice wins\nreturn  1  //\
+  \  if Bob wins\nreturn -1  //  if both fail\n```\n``` python\nreturn  0  #  if Alice\
+  \ wins\nreturn  1  #  if Bob wins\nreturn -1  #  if both fail\n```\n``` javascript\n\
+  return  0  //  if Alice wins\nreturn  1  //  if Bob wins\nreturn -1  //  if both\
+  \ fail\n```\n\n# Enjoy!\n\nIf interested, I also have [this kata](https://www.codewars.com/kata/5cb7baa989b1c50014a53333)\
+  \ as well as [this other kata](https://www.codewars.com/kata/5cab471da732b30018968071)\
+  \ to consider solving."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def mutations (alice : List String) (bob : List String) (word :\
+  \ String) (first : Nat) : Nat := sorry\n\ndef hasOnlyUniqueLetters (s : String)\
+  \ : Bool := sorry\n"
+"vc-theorems": "theorem mutations_result_binary (alice : List String) (bob : List\
+  \ String) (word : String) (first : Nat) :\n  mutations alice bob word first = 0\
+  \ ∨ mutations alice bob word first = 1 := sorry\n\n\ntheorem mutations_no_valid_moves\
+  \ (alice : List String) (bob : List String) (word : String) (first : Nat) :\n  (¬∃\
+  \ w ∈ alice, hasOnlyUniqueLetters w) → \n  (¬∃ w ∈ bob, hasOnlyUniqueLetters w)\
+  \ →\n  mutations alice bob word first ≠ first := sorry\n\n\ntheorem mutations_equal_lists_terminates\
+  \ (alice bob : List String) (h1 : alice.length = bob.length) (h2 : alice.length\
+  \ ≥ 10) :\n  alice ≠ [] →\n  let firstWord := alice[0]\n  mutations alice bob firstWord\
+  \ 0 = 0 ∨ mutations alice bob firstWord 0 = 1 := sorry\n\n\ntheorem mutations_empty_lists\
+  \ (word : String) :\n  mutations [] [] word 0 = 0 ∨ mutations [] [] word 0 = 1 :=\
+  \ sorry\n\n\ntheorem mutations_single_item_lists :\n  mutations [\"pest\"] [\"best\"\
+  ] \"test\" 0 = 0 ∨ mutations [\"pest\"] [\"best\"] \"test\" 0 = 1 := sorry\n\n\n\
+  theorem mutations_same_words :\n  mutations (List.replicate 5 \"test\") (List.replicate\
+  \ 5 \"test\") \"test\" 0 = 0 ∨ \n  mutations (List.replicate 5 \"test\") (List.replicate\
+  \ 5 \"test\") \"test\" 0 = 1 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval\
+  \ mutations [\"plat\", \"rend\", \"bear\", \"soar\", \"mare\", \"pare\", \"flap\"\
+  , \"neat\", \"clan\", \"pore\"] [\"boar\", \"clap\", \"farm\", \"lend\", \"near\"\
+  , \"peat\", \"pure\", \"more\", \"plan\", \"soap\"] \"send\" 0\n\n/--\ninfo: 0\n\
+  -/\n#guard_msgs in\n#eval mutations alice bob \"flip\" 1\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval mutations alice bob \"maze\" 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

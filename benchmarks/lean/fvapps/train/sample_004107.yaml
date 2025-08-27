@@ -1,0 +1,30 @@
+"vc-description": "*This kata is based on [Project Euler Problem #349](https://projecteuler.net/problem=349).\
+  \ You may want to start with solving [this kata](https://www.codewars.com/kata/langtons-ant)\
+  \ first.*\n\n---\n\n[Langton's ant](https://en.wikipedia.org/wiki/Langton%27s_ant)\
+  \ moves on a regular grid of squares that are coloured either black or white.\n\
+  The ant is always oriented in one of the cardinal directions (left, right, up or\
+  \ down) and moves  according to the following rules:\n- if it is on a black square,\
+  \ it flips the colour of the square to white, rotates 90 degrees counterclockwise\
+  \ and moves forward one square.\n- if it is on a white square, it flips the colour\
+  \ of the square to black, rotates 90 degrees clockwise and moves forward one square.\n\
+  \nStarting with a grid that is **entirely white**, how many squares are black after\
+  \ `n` moves of the ant?\n\n**Note:** `n` will go as high as 10^(20)\n\n---\n\n##\
+  \ My other katas\n\nIf you enjoyed this kata then please try [my other katas](https://www.codewars.com/collections/katas-created-by-anter69)!\
+  \ :-)\n\n#### *Translations are welcome!*"
+"vc-preamble": "import Imports.AllImports\n\ndef langtons_ant (n : Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def abs (n : Nat) : Nat :=\n  n\n"
+"vc-theorems": "theorem langtons_ant_non_negative (n : Nat) :\n  langtons_ant n ≥\
+  \ 0 :=\nsorry\n\n\ntheorem langtons_ant_first_moves (n : Nat) :\n  (n = 0 → langtons_ant\
+  \ n = 0) ∧ \n  (n = 1 → langtons_ant n = 1) ∧\n  (n ≥ 2 → langtons_ant n ≤ n) :=\n\
+  sorry\n\n\ntheorem langtons_ant_periodic (n1 n2 : Nat) :\n  n1 ≥ 9977 → n2 ≥ 9977\
+  \ →\n  (n1 - n2) % 104 = 0 →\n  (if langtons_ant n1 ≥ langtons_ant n2 \n   then\
+  \ langtons_ant n1 - langtons_ant n2\n   else langtons_ant n2 - langtons_ant n1)\
+  \ = \n    12 * (if (n1 - 9977) / 104 ≥ (n2 - 9977) / 104\n          then (n1 - 9977)\
+  \ / 104 - (n2 - 9977) / 104\n          else (n2 - 9977) / 104 - (n1 - 9977) / 104)\
+  \ :=\nsorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval langtons_ant 0\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval langtons_ant 1\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval langtons_ant 2\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval langtons_ant 10\n\
+  \n/--\ninfo: 20\n-/\n#guard_msgs in\n#eval langtons_ant 100\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,38 @@
+"vc-description": "Consider the following process. You have a binary string (a string\
+  \ where each character is either 0 or 1) $w$ of length $n$ and an integer $x$. You\
+  \ build a new binary string $s$ consisting of $n$ characters. The $i$-th character\
+  \ of $s$ is chosen as follows:\n\n  if the character $w_{i-x}$ exists and is equal\
+  \ to 1, then $s_i$ is 1 (formally, if $i > x$ and $w_{i-x} = $ 1, then $s_i = $\
+  \ 1);  if the character $w_{i+x}$ exists and is equal to 1, then $s_i$ is 1 (formally,\
+  \ if $i + x \\le n$ and $w_{i+x} = $ 1, then $s_i = $ 1);  if both of the aforementioned\
+  \ conditions are false, then $s_i$ is 0. \n\nYou are given the integer $x$ and the\
+  \ resulting string $s$. Reconstruct the original string $w$.\n\n\n-----Input-----\n\
+  \nThe first line contains one integer $t$ ($1 \\le t \\le 1000$) — the number of\
+  \ test cases.\n\nEach test case consists of two lines. The first line contains the\
+  \ resulting string $s$ ($2 \\le |s| \\le 10^5$, each character of $s$ is either\
+  \ 0 or 1). The second line contains one integer $x$ ($1 \\le x \\le |s| - 1$).\n\
+  \nThe total length of all strings $s$ in the input does not exceed $10^5$.\n\n\n\
+  -----Output-----\n\nFor each test case, print the answer on a separate line as follows:\n\
+  \n  if no string $w$ can produce the string $s$ at the end of the process, print\
+  \ $-1$;  otherwise, print the binary string $w$ consisting of $|s|$ characters.\
+  \ If there are multiple answers, print any of them. \n\n\n-----Example-----\nInput\n\
+  3\n101110\n2\n01\n1\n110\n1\n\nOutput\n111011\n10\n-1"
+"vc-preamble": "import Imports.AllImports\n\ndef length_eq (s₁ s₂ : BinaryString)\
+  \ : Prop := sorry\ndef is_binary (s : BinaryString) : Prop := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def matches_at_index (s₁ s₂ : BinaryString) (x i : Nat) : Prop\
+  \ := sorry\n\ndef solve_binary_string (s : BinaryString) (x : Nat) : Option BinaryString\
+  \ :=\nsorry\n\n/-- Result is either None or has same structure/length as input -/"
+"vc-theorems": "theorem length_preservation (s : BinaryString) (x : Nat) : \n  match\
+  \ solve_binary_string s x with\n  | none => True \n  | some result => length_eq\
+  \ s result\n:= sorry\n\n/-- Result only contains valid binary digits -/\n\ntheorem\
+  \ output_chars_valid (s : BinaryString) (x : Nat) :\n  match solve_binary_string\
+  \ s x with\n  | none => True\n  | some result => is_binary result\n:= sorry\n\n\
+  /-- Main correctness theorem capturing all validity conditions -/\n\ntheorem valid_solution\
+  \ (s : BinaryString) (x : Nat) :\n  match solve_binary_string s x with\n  | none\
+  \ => True\n  | some result => \n      length_eq s result ∧ \n      is_binary result\
+  \ ∧ \n      (∀ i, matches_at_index s result x i)\n:= sorry\n\n/--\ninfo: '111011'\n\
+  -/\n#guard_msgs in\n#eval solve_binary_string \"101110\" 2\n\n/--\ninfo: '10'\n\
+  -/\n#guard_msgs in\n#eval solve_binary_string \"01\" 1\n\n/--\ninfo: '-1'\n-/\n\
+  #guard_msgs in\n#eval solve_binary_string \"110\" 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

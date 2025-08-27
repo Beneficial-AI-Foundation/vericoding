@@ -1,0 +1,27 @@
+"vc-description": "Given an integer, if the length of it's digits is a perfect square,\
+  \ return a square block of sqroot(length) * sqroot(length). If not, simply return\
+  \ \"Not a perfect square!\".\n\nExamples:\n\n1212 returns:\n\n>1212  \n\nNote: 4\
+  \ digits so 2 squared (2x2 perfect square). 2 digits on each line.\n\n123123123\
+  \ returns: \n>123123123\n\nNote: 9 digits so 3 squared (3x3 perfect square). 3 digits\
+  \ on each line."
+"vc-preamble": "import Imports.AllImports\n\ndef squareIt (n : Nat) : String := sorry\n\
+  \ndef isPerfectSquare (n : Nat) : Bool := sorry\n\n\ndef hasEqualRows (s : String)\
+  \ : Bool := sorry\n\ndef isqrt (n : Nat) : Nat := sorry \n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def splitLines (s : String) : List String := \n  String.splitOn\
+  \ s \"\\n\"\n"
+"vc-theorems": "theorem square_it_properties (n : Nat) : \n  n ≤ 10^12 →\n  let digits\
+  \ := toString n\n  if isPerfectSquare (digits.length) then\n    let result := squareIt\
+  \ n\n    result ≠ \"Not a perfect square!\" ∧ \n    hasEqualRows result ∧\n    let\
+  \ sideLength := isqrt (digits.length)\n    (splitLines result).length = sideLength\
+  \ ∧\n    (∀ row ∈ splitLines result, row.length = sideLength) ∧\n    String.join\
+  \ (splitLines result) = digits\n  else\n    squareIt n = \"Not a perfect square!\"\
+  \n  := sorry\n\n\ntheorem square_it_repeating_ones (n : Nat) (k : Nat) :\n  k ≥\
+  \ 1 →\n  k ≤ 4 →\n  n = (10^(k*k) - 1)/9 →  -- represents number with k*k ones\n\
+  \  let result := squareIt n\n  result ≠ \"Not a perfect square!\" ∧\n  let rows\
+  \ := splitLines result\n  ∀ row ∈ rows, match rows.head? with\n                |\
+  \ none => True \n                | some first => row = first\n  := sorry\n\n/--\n\
+  info: '12\\n12'\n-/\n#guard_msgs in\n#eval square_it 1212\n\n/--\ninfo: '123\\n123\\\
+  n123'\n-/\n#guard_msgs in\n#eval square_it 123123123\n\n/--\ninfo: 'Not a perfect\
+  \ square!'\n-/\n#guard_msgs in\n#eval square_it 12345\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

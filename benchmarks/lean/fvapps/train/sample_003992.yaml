@@ -1,0 +1,23 @@
+"vc-description": "You are going to be given a word. Your job will be to make sure\
+  \ that each character in that word has the exact same number of occurrences. You\
+  \ will return `true` if it is valid, or `false` if it is not.\n\nFor example:\n\n\
+  `\"abcabc\"` is a valid word because `'a'` appears twice, `'b'` appears twice, and`'c'`\
+  \ appears twice.  \n`\"abcabcd\"` is **NOT** a valid word because `'a'` appears\
+  \ twice, `'b'` appears twice, `'c'` appears twice, but `'d'` only appears once!\
+  \  \n`\"123abc!\"` is a valid word because all of the characters only appear once\
+  \ in the word.\n\nFor this kata, capitals are considered the same as lowercase letters.\
+  \ Therefore: `'A' == 'a'` .\n\n#Input \nA string (no spaces) containing `[a-z],[A-Z],[0-9]`\
+  \ and common symbols. The length will be `0 < string < 100`.\n\n#Output\n`true`\
+  \ if the word is a valid word, or `false` if the word is not valid."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def validate_word (s : String) : Bool := sorry\n\ntheorem permutations_invariant\
+  \ (s₁ s₂ : String) : \n  Perm s₁.toList s₂.toList → validate_word s₁ = validate_word\
+  \ s₂ := sorry\n"
+"vc-theorems": "theorem repeat_string_equiv (s : String) (n : Nat) :\n  n > 0 → validate_word\
+  \ (String.join (List.replicate n s)) = validate_word s := sorry \n\n\ntheorem single_char_string_valid\
+  \ (c : Char) (n : Nat) :\n  n > 0 → validate_word (String.mk (List.replicate n c))\
+  \ = true := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval validate_word \"\
+  abcabc\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval validate_word \"AbcCBa\"\n\
+  \n/--\ninfo: False\n-/\n#guard_msgs in\n#eval validate_word \"abcabcd\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

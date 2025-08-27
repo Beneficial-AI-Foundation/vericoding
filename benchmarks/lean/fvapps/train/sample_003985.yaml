@@ -1,0 +1,31 @@
+"vc-description": "A palindrome is a word, phrase, number, or other sequence of characters\
+  \ which reads the same backward as forward. Examples of numerical palindromes are:\
+  \ \n\n2332\n110011\n54322345\n\nFor a given number ```num```, return its closest\
+  \ numerical palindrome which can either be smaller or larger than ```num```. If\
+  \ there are 2 possible values, the larger value should be returned. If ```num```\
+  \ is a numerical palindrome itself, return it. \n\nFor this kata, single digit numbers\
+  \ will NOT be considered numerical palindromes. \n\nAlso, you know the drill - be\
+  \ sure to return \"Not valid\" if the input is not an integer or is less than 0.\n\
+  \n```\npalindrome(8) => 11\npalindrome(281) => 282 \npalindrome(1029) => 1001\n\
+  palindrome(1221) => 1221\npalindrome(\"1221\") => \"Not valid\"\n\n```\n\n```Haskell\n\
+  In Haskell the function should return a Maybe Int with Nothing for cases where the\
+  \ argument is less than zero.\n```\nOther Kata in this Series:\nNumerical Palindrome\
+  \ #1\nNumerical Palindrome #1.5\nNumerical Palindrome #2\nNumerical Palindrome #3\n\
+  Numerical Palindrome #3.5\nNumerical Palindrome #4\nNumerical Palindrome #5"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def findNearestPalindrome (n : Int) : String := sorry\n\ndef isPalindrome\
+  \ (n : String) : Bool := sorry\n"
+"vc-theorems": "theorem finds_valid_palindrome (n : Int) \n  (h : 0 ≤ n ∧ n ≤ 10000)\
+  \ \n  (h2 : findNearestPalindrome n ≠ \"Not valid\") :\n  isPalindrome (findNearestPalindrome\
+  \ n) := sorry\n\n\ntheorem negative_returns_not_valid (n : Int)\n  (h : n < 0) :\
+  \ \n  findNearestPalindrome n = \"Not valid\" := sorry\n\n\ntheorem single_digit_returns_eleven\
+  \ (n : Int)\n  (h : 0 ≤ n ∧ n ≤ 9) :\n  findNearestPalindrome n = \"11\" := sorry\n\
+  \n\ntheorem palindrome_returns_self (n : Int)\n  (h1 : 10 ≤ n ∧ n ≤ 10000)\n  (h2\
+  \ : isPalindrome (toString n)) :\n  findNearestPalindrome n = toString n := sorry\n\
+  \n/--\ninfo: 11\n-/\n#guard_msgs in\n#eval find_nearest_palindrome 8\n\n/--\ninfo:\
+  \ 282\n-/\n#guard_msgs in\n#eval find_nearest_palindrome 281\n\n/--\ninfo: 1001\n\
+  -/\n#guard_msgs in\n#eval find_nearest_palindrome 1029\n\n/--\ninfo: 1221\n-/\n\
+  #guard_msgs in\n#eval find_nearest_palindrome 1221\n\n/--\ninfo: 'Not valid'\n-/\n\
+  #guard_msgs in\n#eval find_nearest_palindrome \"1221\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

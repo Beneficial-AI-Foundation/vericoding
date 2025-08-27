@@ -1,0 +1,32 @@
+"vc-description": "In English and programming, groups can be made using symbols such\
+  \ as `()` and `{}` that change meaning. However, these groups must be closed in\
+  \ the correct order to maintain correct syntax.\n\nYour job in this kata will be\
+  \ to make a program that checks a string for correct grouping. For instance, the\
+  \ following groups are done correctly:\n\n```\n({})\n[[]()]\n[{()}]\n```\n\nThe\
+  \ next are done incorrectly:\n```\n{(})\n([]\n[])\n```\n\nA correct string cannot\
+  \ close groups in the wrong order, open a group but fail to close it, or close a\
+  \ group before it is opened.\n\nYour function will take an input string that may\
+  \ contain any of the symbols `()`, `{}` or `[]` to create groups.\n\nIt should return\
+  \ `True` if the string is empty or otherwise grouped correctly, or `False` if it\
+  \ is grouped incorrectly."
+"vc-preamble": "import Imports.AllImports\n\ndef group_check (s : String) : Bool :=\
+  \ sorry\n\ndef isOpening (c : Char) : Bool := sorry\n\ndef isClosing (c : Char)\
+  \ : Bool := sorry\ndef matching (o c : Char) : Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countOpening (s : String) : Nat := sorry\ndef countClosing\
+  \ (s : String) : Nat := sorry\n"
+"vc-theorems": "theorem empty_string_valid :\n  group_check \"\" = true := sorry\n\
+  \n\ntheorem simple_pair_valid (o c : Char) :\n  isOpening o → matching o c →\n \
+  \ group_check (String.mk [o, c]) = true := sorry\n\n\ntheorem valid_brackets_equal_counts\
+  \ {s : String} :\n  group_check s = true →\n  countOpening s = countClosing s :=\
+  \ sorry\n\n\ntheorem only_opening_invalid {s : String} :\n  s ≠ \"\" →\n  (∀ c ∈\
+  \ s.data, isOpening c) →\n  group_check s = false := sorry\n\n\ntheorem only_closing_invalid\
+  \ {s : String} :\n  s ≠ \"\" →\n  (∀ c ∈ s.data, isClosing c) →\n  group_check s\
+  \ = false := sorry\n\n\ntheorem nested_brackets_valid {opens : List Char} :\n  opens\
+  \ ≠ [] →\n  (∀ c ∈ opens, isOpening c) →\n  let closes := (opens.map (λ o => match\
+  \ o with\n    | '(' => ')'\n    | '{' => '}'\n    | '[' => ']'\n    | _ => ' ')).reverse\n\
+  \  group_check (String.mk (opens ++ closes)) = true := sorry\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval group_check \"({})\"\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval group_check \"[[]()]\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval\
+  \ group_check \"{(})\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,26 @@
+"vc-description": "Create a function `longer` that accepts a string and sorts the\
+  \ words in it based on their respective lengths in an ascending order. If there\
+  \ are two words of the same lengths, sort them alphabetically. Look at the examples\
+  \ below for more details.\n\n```python\nlonger(\"Another Green World\") => Green\
+  \ World Another\nlonger(\"Darkness on the edge of Town\") => of on the Town edge\
+  \ Darkness\nlonger(\"Have you ever Seen the Rain\") => the you Have Rain Seen ever\n\
+  ```\n\nAssume that only only Alphabets will be entered as the input.\nUppercase\
+  \ characters have priority over lowercase characters. That is,\n```python\nlonger(\"\
+  hello Hello\") => Hello hello\n```\n\nDon't forget to rate this kata and leave your\
+  \ feedback!! \nThanks"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def longer (s : String) : String := sorry\n\ninstance : LE (Nat\
+  \ × String) where\n  le := fun a b => a.1 < b.1 ∨ (a.1 = b.1 ∧ a.2 ≤ b.2)\n"
+"vc-theorems": "theorem longer_sorted_property {s : String} {result : String} (h :\
+  \ result = longer s) \n  (h_nonempty : s ≠ \"\") :\n  let words := result.split\
+  \ (· = ' ')\n  ∀ i, i + 1 < words.length → \n    (words[i]!.length, words[i]!) ≤\
+  \ (words[i+1]!.length, words[i+1]!)\n  := sorry\n\n\ntheorem longer_preserves_unique_words\
+  \ {s : String} {result : String} \n  (h : result = longer s) :\n  let input_words\
+  \ := s.split (· = ' ')\n  let output_words := result.split (· = ' ')\n  ∀ w, w ∈\
+  \ input_words ↔ w ∈ output_words\n  := sorry\n\n/--\ninfo: 'Green World Another'\n\
+  -/\n#guard_msgs in\n#eval longer \"Another Green World\"\n\n/--\ninfo: 'of on the\
+  \ Town edge Darkness'\n-/\n#guard_msgs in\n#eval longer \"Darkness on the edge of\
+  \ Town\"\n\n/--\ninfo: 'Hello hello'\n-/\n#guard_msgs in\n#eval longer \"hello Hello\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

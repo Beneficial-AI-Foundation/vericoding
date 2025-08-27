@@ -1,0 +1,36 @@
+"vc-description": "Kostya likes the number 4 much. Of course! This number has such\
+  \ a lot of properties, like:\n\n- Four is the smallest composite number;\n- It is\
+  \ also the smallest Smith number;\n- The smallest non-cyclic group has four elements;\n\
+  - Four is the maximal degree of the equation that can be solved in radicals;\n-\
+  \ There is four-color theorem that states that any map can be colored in no more\
+  \ than four colors in such a way that no two adjacent regions are colored in the\
+  \ same color;\n- Lagrange's four-square theorem states that every positive integer\
+  \ can be written as the sum of at most four square numbers;\n- Four is the maximum\
+  \ number of dimensions of a real division algebra;\n- In bases 6 and 12, 4 is a\
+  \ 1-automorphic number;\n- And there are a lot more cool stuff about this number!\n\
+  \nImpressed by the power of this number, Kostya has begun to look for occurrences\
+  \ of four anywhere. He has a list of T integers, for each of them he wants to calculate\
+  \ the number of occurrences of the digit 4 in the decimal representation. He is\
+  \ too busy now, so please help him.\n\n-----Input-----\nThe first line of input\
+  \ consists of a single integer T, denoting the number of integers in Kostya's list.\n\
+  Then, there are T lines, each of them contain a single integer from the list.\n\n\
+  -----Output-----\nOutput T lines. Each of these lines should contain the number\
+  \ of occurences of the digit 4 in the respective integer from Kostya's list.\n\n\
+  -----Constraints-----\n- 1 ≤ T ≤ 105\n- (Subtask 1): 0 ≤ Numbers from the list \
+  \ ≤ 9 - 33 points.\n- (Subtask 2): 0 ≤ Numbers from the list  ≤ 109 - 67 points.\n\
+  \n-----Example-----\nInput:\n5\n447474\n228\n6664\n40\n81\n\nOutput:\n4\n0\n1\n\
+  1\n0"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_fours (nums : List Nat) : List Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_fours_length {nums : List Nat} :\n  List.length (count_fours\
+  \ nums) = List.length nums :=\n  sorry\n\n\ntheorem count_fours_nonnegative {nums\
+  \ : List Nat} :\n  ∀ n ∈ count_fours nums, n ≥ 0 :=\n  sorry\n\n\ntheorem count_fours_matches_digit\
+  \ {nums : List Nat} (i : Nat) (h : i < nums.length) :\n  have h' : i < (count_fours\
+  \ nums).length := by\n    rw [count_fours_length]\n    exact h\n  (count_fours nums)[i]'h'\
+  \ = ((toString (nums[i]'h)).toList.filter (· = '4')).length :=\n  sorry\n\n\ntheorem\
+  \ count_fours_empty :\n  count_fours [] = [] :=\n  sorry\n\n/--\ninfo: expected1\n\
+  -/\n#guard_msgs in\n#eval count_fours [447474, 228, 6664, 40, 81]\n\n/--\ninfo:\
+  \ expected2\n-/\n#guard_msgs in\n#eval count_fours [4444, 1234, 5678]\n\n/--\ninfo:\
+  \ expected3\n-/\n#guard_msgs in\n#eval count_fours [0, 4, 44, 444]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

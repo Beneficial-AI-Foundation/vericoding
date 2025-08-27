@@ -1,0 +1,19 @@
+"vc-description": "Given an integer k, return the minimum number of Fibonacci numbers\
+  \ whose sum is equal to k. The same Fibonacci number can be used multiple times.\n\
+  The Fibonacci numbers are defined as:\n\nF1 = 1\nF2 = 1\nFn = Fn-1 + Fn-2 for n\
+  \ > 2.\n\nIt is guaranteed that for the given constraints we can always find such\
+  \ Fibonacci numbers that sum up to k.\n \nExample 1:\nInput: k = 7\nOutput: 2 \n\
+  Explanation: The Fibonacci numbers are: 1, 1, 2, 3, 5, 8, 13, ... \nFor k = 7 we\
+  \ can use 2 + 5 = 7.\nExample 2:\nInput: k = 10\nOutput: 2 \nExplanation: For k\
+  \ = 10 we can use 2 + 8 = 10.\n\nExample 3:\nInput: k = 19\nOutput: 3 \nExplanation:\
+  \ For k = 19 we can use 1 + 5 + 13 = 19.\n\n \nConstraints:\n\n1 <= k <= 10^9"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_min_fibonacci_numbers (k : Nat) : Nat := sorry\n\ndef\
+  \ phi : Float := (1 + Float.sqrt 5) / 2\n\n\n"
+"vc-theorems": "theorem find_min_fibonacci_bounded (k : Nat) (h : k > 0) : \n  find_min_fibonacci_numbers\
+  \ k ≤ k := sorry\n\n\ntheorem find_min_fibonacci_log_bound (k : Nat) (h : k > 0)\
+  \ :\n  find_min_fibonacci_numbers k ≤ 2 * (Nat.log2 k + 1) := sorry\n\n\ntheorem\
+  \ find_min_fibonacci_small_numbers (k : Nat) (h1 : k > 0) (h2 : k ≤ 10) :\n  find_min_fibonacci_numbers\
+  \ k ≤ 3 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

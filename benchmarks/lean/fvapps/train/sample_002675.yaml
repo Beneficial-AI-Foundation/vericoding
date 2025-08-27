@@ -1,0 +1,24 @@
+"vc-description": "##Task:\n\nYou have to write a function **pattern** which creates\
+  \ the following pattern upto n number of rows. \n\n* If the Argument is 0 or a Negative\
+  \ Integer then it should return \"\" i.e. empty string.\n\n* If any odd number is\
+  \ passed as argument then the pattern should last upto the largest even number which\
+  \ is smaller than the passed odd number.\n\n* If the argument is 1 then also it\
+  \ should return \"\".\n\n##Examples:\n\npattern(8):\n\n    22\n    4444\n    666666\n\
+  \    88888888\n    \npattern(5):\n \n    22\n    4444\n\n\n\n```Note: There are\
+  \ no spaces in the pattern```\n\n```Hint: Use \\n in string to jump to next line```"
+"vc-preamble": "import Imports.AllImports\n\ndef pattern (n : Int) : String := sorry\n\
+  \ndef String.lines (s : String) : List String := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def toString (n : Int) : Char := sorry\n\ntheorem non_positive_returns_empty\n\
+  \  (n : Int)\n  (h : n ≤ 0) :\n  pattern n = \"\" := sorry\n"
+"vc-theorems": "theorem output_format_empty\n  (n : Int)\n  (h : n = 1) :\n  pattern\
+  \ n = \"\" := sorry\n\n\ntheorem output_format_content\n  (n : Int) \n  (h1 : n\
+  \ > 1)\n  (h2 : n ≤ 100)\n  (i : Nat)\n  (h3 : i > 0)\n  (h4 : i ≤ n/2) :\n  (pattern\
+  \ n).lines.get! (i-1) = String.mk (List.replicate (2*i) (toString (2*i))) := sorry\n\
+  \n\ntheorem odd_even_equivalence\n  (n : Int)\n  (h1 : n > 1)\n  (h2 : n ≤ 100)\n\
+  \  (h3 : n % 2 = 1) :\n  pattern n = pattern (n-1) := sorry\n\n\ntheorem line_count\n\
+  \  (n : Int)\n  (h1 : n > 1)\n  (h2 : n ≤ 100) :\n  (pattern n).lines.length = n/2\
+  \ := sorry\n\n/--\ninfo: '22\\n4444'\n-/\n#guard_msgs in\n#eval pattern 4\n\n/--\n\
+  info: ''\n-/\n#guard_msgs in\n#eval pattern 0\n\n/--\ninfo: '22\\n4444'\n-/\n#guard_msgs\
+  \ in\n#eval pattern 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

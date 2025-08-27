@@ -1,0 +1,21 @@
+"vc-description": "Given two integers `a` and `b`, which can be positive or negative,\
+  \ find the sum of all the numbers between including them too and return it. If the\
+  \ two numbers are equal return `a` or `b`.\n\n**Note:** `a` and `b` are not ordered!\n\
+  \n## Examples\n\n```python\nget_sum(1, 0) == 1   // 1 + 0 = 1\nget_sum(1, 2) ==\
+  \ 3   // 1 + 2 = 3\nget_sum(0, 1) == 1   // 0 + 1 = 1\nget_sum(1, 1) == 1   // 1\
+  \ Since both are same\nget_sum(-1, 0) == -1 // -1 + 0 = -1\nget_sum(-1, 2) == 2\
+  \  // -1 + 0 + 1 + 2 = 2\n```\n```C\nget_sum(1, 0) == 1   // 1 + 0 = 1\nget_sum(1,\
+  \ 2) == 3   // 1 + 2 = 3\nget_sum(0, 1) == 1   // 0 + 1 = 1\nget_sum(1, 1) == 1\
+  \   // 1 Since both are same\nget_sum(-1, 0) == -1 // -1 + 0 = -1\nget_sum(-1, 2)\
+  \ == 2  // -1 + 0 + 1 + 2 = 2\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef abs (n : Int) : Int :=\n  if n ≥\
+  \ 0 then n else -n\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_sum (a b : Int) : Int := sorry\n\ntheorem get_sum_commutative\
+  \ (a b : Int) : \n  get_sum a b = get_sum b a := sorry\n"
+"vc-theorems": "theorem get_sum_same_number (n : Int) :\n  get_sum n n = n := sorry\n\
+  \n\ntheorem get_sum_consecutive (a b : Int) :\n  a ≠ b → get_sum a b = ((a + b)\
+  \ / 2) * (abs (b - a) + 1) := sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval get_sum\
+  \ 1 3\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval get_sum -1 2\n\n/--\ninfo: 5\n\
+  -/\n#guard_msgs in\n#eval get_sum 5 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

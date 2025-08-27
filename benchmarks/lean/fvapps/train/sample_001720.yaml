@@ -1,0 +1,64 @@
+"vc-description": "A \"graph\" consists of \"nodes\", also known as \"vertices\".\
+  \ Nodes may or may not be connected with one another. \nIn our definition below\
+  \ the node \"A0\" is connected with the node \"A3\", but \"A0\" is not connected\
+  \ with \"A1\".\n\nThe connecting line between two nodes is called an edge. If the\
+  \ edges between the nodes are undirected, \nthe graph is called an undirected graph.\
+  \ A weighted graph is a graph in which a number (the weight) is assigned to each\
+  \ edge.\nA graph is acyclic if it has no loop.\n\nA graph can be represented as\
+  \ a dictionary:\n\n\n`graph = {'A0': [('A3', 1), ('A5', 4)], \n 'A1': [('A2', 2)],\
+  \ \n 'A2': [('A1', 1), ('A2', 2), ('A3', 1), ('A4', 1)],\n 'A3': [('A0', 1), ('A2',\
+  \ 1)], \n 'A4': [('A2', 1), ('A4', 1)], \n 'A5': [('A3', 3)]\n}`\n\nHere the nodes\
+  \ are A0...A5; following each nodes is the edges list of linked nodes with their\
+  \ weight.\nA0 is linked to A3 with a weight of 1 and to A5 with weight 4. A dictionary\
+  \ is not ordered but the list\nof linked nodes is sorted. So: \n\n`'A0': [('A3',\
+  \ 1), ('A5', 4)]`is correct but `'A0': [('A5', 4), ('A3', 1)]`is not.\n\nThe edges\
+  \ E of a graph G induce a binary relation that is called the adjacency relation\
+  \ of G.\nOne can associate an adjacency matrix:\n\n`M = \n[[0, 0, 0, 1, 0, 4], \n\
+  \ [0, 0, 2, 0, 0, 0], \n [0, 1, 2, 1, 1, 0], \n [1, 0, 1, 0, 0, 0], \n [0, 0, 1,\
+  \ 0, 1, 0], \n [0, 0, 0, 3, 0, 0]]`\n\nLet us imagine that lines are numbered from\
+  \ A0 to A5 and the same for columns.\nThe first line correspond to A0 and we can\
+  \ see that A0 is connected to A3 with weight 1, A0 is also connected to A5 with\
+  \ weight 4.\n\nAnother way is to use an adjacency list: An adjacency list representation\
+  \ for a graph \nassociates each vertex in the graph with the collection of its neighboring\
+  \ edges:\n\n`L = [['A0', [('A3', 1), ('A5', 4)]], \n     ['A1', [('A2', 2)]], \n\
+  \     ['A2', [('A1', 1), ('A2', 2), ('A3', 1), ('A4', 1)]], \n     ['A3', [('A0',\
+  \ 1), ('A2', 1)]], \n     ['A4', [('A2', 1), ('A4', 1)]], \n     ['A5', [('A3',\
+  \ 3)]]] `\n\nL is sorted in order A0 to A5 and each sublist is sorted as in a graph\
+  \ dictionary.\n\nIn the kata nodes will be numbered from A0 to A(n-1) for a graph\
+  \ with n nodes. \nThe task is to go from each represention to each other one\nand\
+  \ at last to find *all* paths from a node to another node.\n\nBelow is a skeleton\
+  \ for our class `Graph`.\n\nclass Graph():\n \n    def __init__(self, vertices_num):\n\
+  \        # number of nodes (an integer)\n        self.v = vertices_num\n       \
+  \ # (maybe not useful here) : list of nodes from \"A0\", \"A1\" ... to \"A index\
+  \ (vertices_num - 1)\"\n        self.nodes = None\n\n    # from adjacency matrix\
+  \ to dictionary\n    def adjmat_2_graph(self, adjm):\n        \n    # from dictionary\
+  \ to adjacency matrix\n    def graph_2_mat(self, graph):\n    \n    # from dictionary\
+  \ to adjacency list    \n    def graph_2_list(self, graph):\n        \n    # from\
+  \ adjacency list to dictionary\n    def list_2_graph(self, lst):\n        \n   \
+  \ # from adjacency matrix to adjacency list    \n    def mat_2_list(self, mat):\n\
+  \     \n    # from adjacency list to adjacency matrix\n    def list_2_mat(self,\
+  \ lst):\n        \n    # find all paths from node start_vertex to node end_vertex\n\
+  \    def find_all_paths(self, graph, start_vertex, end_vertex):\n\n# Examples: \n\
+  - see: graph, M, L above.\n- finding all paths:\n\n`dct = {'A3': [('A0', 1), ('A2',\
+  \ 1)], 'A0': [('A3', 1), ('A2', 1)], 'A4': [('A2', 1)], 'A1': [('A2', 1)], 'A2':\
+  \ [('A1', 1), ('A2', 1), ('A3', 1), ('A4', 1)]}`\n\n`g = Graph(5)`\n\n`g.find_all_paths(dct,\
+  \ \"A0\", \"A4\") return l = ['A0-A2-A4', 'A0-A3-A2-A4']`\n\nNote that ['A0-A2-A4',\
+  \ 'A0-A3-A2-A4'] is sorted (hint: sorted(sorted(l, key=str), key=len))\n\nTranslators\
+  \ and critics are welcome."
+"vc-preamble": "import Imports.AllImports\n\ndef Graph.adjmat_2_graph {n : Nat} (g\
+  \ : Graph n) (mat : List (List Nat)) : List (String × List (String × Nat)) := sorry\
+  \ \ndef Graph.graph_2_list {n : Nat} (g : Graph n) (graph : List (String × List\
+  \ (String × Nat))) : List (Nat × Nat × Nat) := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Graph.list_2_graph {n : Nat} (g : Graph n) (lst : List (Nat\
+  \ × Nat × Nat)) : List (String × List (String × Nat)) := sorry\n\ntheorem graph_initialization\
+  \ (size : Nat) (h : size > 0) : \n  ∃ g : Graph size, true \n  := sorry\n"
+"vc-theorems": "theorem adjmat_graph_properties {size : Nat} (h : size > 0) (mat :\
+  \ List (List Nat)) :\n  ∀ g : Graph size,\n  let graph := Graph.adjmat_2_graph g\
+  \ mat\n  (∀ k ∈ graph, String.startsWith (k.fst) \"A\") ∧ \n  graph.length = size\n\
+  \  := sorry\n\n\ntheorem list_conversion_properties {size : Nat} (h : size > 0)\
+  \ (graph : List (String × List (String × Nat))) :\n  ∀ g : Graph size,\n  let lst\
+  \ := Graph.graph_2_list g graph\n  let result := Graph.list_2_graph g lst\n  (∀\
+  \ k ∈ result, String.startsWith (k.fst) \"A\") ∧ \n  (∀ v ∈ result, v.snd.all (λ\
+  \ x => true))\n  := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

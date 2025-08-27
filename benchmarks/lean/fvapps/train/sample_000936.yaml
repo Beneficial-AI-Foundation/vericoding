@@ -1,0 +1,43 @@
+"vc-description": "Cyael is a teacher at a very famous school in Byteland and she\
+  \ is known by her students for being very polite to them and also to encourage them\
+  \ to get good marks on their tests.\nThen, if they get good marks she will reward\
+  \ them with candies :) However, she knows they are all very good at Mathematics,\
+  \ so she decided to split the candies evenly to all the students she considers worth\
+  \ of receiving them, so they don't fight with each other. \nShe has a bag which\
+  \ initially contains N candies and she intends to split the candies evenly to K\
+  \ students. To do this she will proceed as follows: while she has more than K candies\
+  \ she will give exactly 1 candy to each student until she has less than K candies.\
+  \ On this situation, as she can't split candies equally among all students she will\
+  \ keep the remaining candies to herself.\nYour job is to tell how many candies will\
+  \ each student and the teacher\nreceive after the splitting is performed.\n\n-----Input-----\n\
+  The first line of the input contains an integer T denoting the number of test cases.\
+  \ The description of T test cases follows.\nEach test case will consist of 2 space\
+  \ separated integers, N and K denoting the number of candies and the number of students\
+  \ as described above.\n\n-----Output-----\nFor each test case, output a single line\
+  \ containing two space separated integers, the first one being the number of candies\
+  \ each student will get, followed by the number of candies the teacher will get.\n\
+  \n-----Constraints-----\n-  T<=100 in each test file \n- 0 <= N,K <= 233 - 1 \n\n\
+  -----Example-----Input:\n2\n10 2\n100 3\n\nOutput:\n5 0\n33 1\n\n-----Explanation-----\n\
+  For the first test case, all students can get an equal number of candies and teacher\
+  \ receives no candies at all \nFor the second test case, teacher can give 33 candies\
+  \ to each student and keep 1 candy to herselfUpdate:\nThere may be multiple whitespaces\
+  \ before, after or between the numbers in input."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_candy_distribution (n k : Nat) : Nat × Nat := sorry\n\
+  \ntheorem candy_distribution_non_negative (n k : Nat) :\n  let (candies_per_student,\
+  \ remaining) := solve_candy_distribution n k\n  candies_per_student ≥ 0 ∧ remaining\
+  \ ≥ 0 := sorry\n"
+"vc-theorems": "theorem remaining_less_than_students {n k : Nat} (h : k > 0) :\n \
+  \ let (candies_per_student, remaining) := solve_candy_distribution n k\n  remaining\
+  \ < k := sorry\n\n\ntheorem total_candies_preserved {n k : Nat} (h : k > 0) :\n\
+  \  let (candies_per_student, remaining) := solve_candy_distribution n k\n  n = candies_per_student\
+  \ * k + remaining := sorry\n\n\ntheorem zero_students_case (n : Nat) :\n  let (candies_per_student,\
+  \ remaining) := solve_candy_distribution n 0\n  candies_per_student = 0 ∧ remaining\
+  \ = n := sorry\n\n\ntheorem perfect_division (n k : Nat) (h : k > 0) :\n  let (candies_per_student,\
+  \ remaining) := solve_candy_distribution (n * k) k\n  candies_per_student = n ∧\
+  \ remaining = 0 := sorry\n\n/--\ninfo: (5, 0)\n-/\n#guard_msgs in\n#eval solve_candy_distribution\
+  \ 10 2\n\n/--\ninfo: (33, 1)\n-/\n#guard_msgs in\n#eval solve_candy_distribution\
+  \ 100 3\n\n/--\ninfo: (0, 7)\n-/\n#guard_msgs in\n#eval solve_candy_distribution\
+  \ 7 0\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

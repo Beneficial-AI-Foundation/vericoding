@@ -1,0 +1,65 @@
+"vc-description": "In genetics a reading frame is a way to divide a sequence of nucleotides\
+  \ (DNA bases) into a set of consecutive non-overlapping triplets (also called codon).\
+  \ Each of this triplets is translated into an amino-acid during a translation process\
+  \ to create proteins.\n\nIn a single strand of DNA you find 3 Reading frames, for\
+  \ example the following sequence:\n```\nAGGTGACACCGCAAGCCTTATATTAGC\n```\nwill be\
+  \ decompose in:\n```\nFrame 1: AGG·TGA·CAC·CGC·AAG·CCT·TAT·ATT·AGC\nFrame 2: A·GGT·GAC·ACC·GCA·AGC·CTT·ATA·TTA·GC\n\
+  Frame 3: AG·GTG·ACA·CCG·CAA·GCC·TTA·TAT·TAG·C\n```\nIn a double strand DNA you find\
+  \ 3 more Reading frames base on the reverse complement-strand, given the previous\
+  \ DNA sequence, in the reverse complement ( A-->T, G-->C, T-->A, C-->G).\nDue to\
+  \ the splicing of DNA strands and the fixed reading direction of a nucleotide strand,\
+  \ the reverse complement gets read from right to left\n\n```\n                 \
+  \       AGGTGACACCGCAAGCCTTATATTAGC\nReverse complement:     TCCACTGTGGCGTTCGGAATATAATCG\
+  \  \nreversed reverse frame: GCTAATATAAGGCTTGCGGTGTCACCT\n```\n\nYou have:\n```\n\
+  Reverse Frame 1: GCT AAT ATA AGG CTT GCG GTG TCA CCT\nreverse Frame 2: G CTA ATA\
+  \ TAA GGC TTG CGG TGT CAC CT\nreverse Frame 3: GC TAA TAT AAG GCT TGC GGT GTC ACC\
+  \ T\n```\n\nYou can find more information about the Open Reading frame in wikipedia\
+  \ just [here] (https://en.wikipedia.org/wiki/Reading_frame)\n\nGiven the [standard\
+  \ table of genetic code](http://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi#SG1):\n\
+  \n```\n    AAs  = FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG\n\
+  \  Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n \
+  \ Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n  Base3\
+  \  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n```\n \n\
+  The tri-nucleotide TTT = F, TTC = F, TTA = L...\n\nSo our 6 frames will be translate\
+  \ as:\n\n```\nFrame 1: AGG·TGA·CAC·CGC·AAG·CCT·TAT·ATT·AGC\n          R   *   H\
+  \   R   K   P   Y   I   S\n         \nFrame 2: A·GGT·GAC·ACC·GCA·AGC·CTT·ATA·TTA·GC\n\
+  \             G  D   T   A   S   L   I   L  \n            \nFrame 3: AG·GTG·ACA·CCG·CAA·GCC·TTA·TAT·TAG·C\n\
+  \             V   T   P   Q   A   L   Y   *\n            \nReverse Frame 1: GCT\
+  \ AAT ATA AGG CTT GCG GTG TCA CCT\n                  A   N   I   R   L   A   V \
+  \  S   P\n\nReverse Frame 2: G CTA ATA TAA GGC TTG CGG TGT CAC CT\n            \
+  \        L   I   *   G   L   R   C   H\n\nReverse Frame 3: GC TAA TAT AAG GCT TGC\
+  \ GGT GTC ACC T\n                     *   Y   K   A   C   G   V   T\n          \
+  \  \n```\n\nIn this kata you should create a function that translates DNA on all\
+  \ 6 frames, this function takes 2 arguments.\nThe first one is the DNA sequence\
+  \ the second one is an array of frame number for example if we want to translate\
+  \ in Frame 1 and Reverse 1 this array will be [1,-1]. Valid frames are 1, 2, 3 and\
+  \ -1, -2, -3.\n\nThe translation hash is available for you under a translation hash\
+  \ `$codons` [Ruby] or `codon` [other languages] (for example to access value of\
+  \ 'TTT' you should  call $codons['TTT'] => 'F').\n\nThe function should return an\
+  \ array with all translation asked for, by default the function do the translation\
+  \ on all 6 frames."
+"vc-preamble": "import Imports.AllImports\n\ndef DNA := String\ndef Protein := String\n\
+  \ninstance : Inhabited Protein where\n  default := \"\"\n\n\ndef validate_frame\
+  \ (f : Frame) : Bool :=\n  match f with\n  | Frame.mk n => n ≠ 0\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def translate_with_frame : DNA → List Frame → List Protein := sorry\n\
+  def isValidAminoAcid (c : Char) : Bool := sorry\n"
+"vc-theorems": "theorem translate_length_matches_frames (dna : DNA) (frames : List\
+  \ Frame) :\n  frames.all validate_frame →\n  (translate_with_frame dna frames).length\
+  \ = frames.length := sorry\n\n\ntheorem translate_produces_valid_strings (dna :\
+  \ DNA) (frames : List Frame) :\n  frames.all validate_frame →\n  (translate_with_frame\
+  \ dna frames).all (fun x => true) := sorry\n\n\ntheorem empty_dna_gives_empty_proteins\
+  \ (frames : List Frame) :\n  frames.all validate_frame →\n  (translate_with_frame\
+  \ \"\" frames).all String.isEmpty := sorry\n\n\ntheorem valid_amino_acids_only (dna\
+  \ : DNA) (frames : List Frame) :\n  frames.all validate_frame →\n  (translate_with_frame\
+  \ dna frames).all (fun protein => \n    protein.data.all isValidAminoAcid) := sorry\n\
+  \ndef default_frames : List Frame := \n  [Frame.mk 1, Frame.mk 2, Frame.mk 3, Frame.mk\
+  \ (-1), Frame.mk (-2), Frame.mk (-3)]\n\n\ntheorem default_frames_gives_six (dna\
+  \ : DNA) :\n  (translate_with_frame dna default_frames).length = 6 := sorry\n\n\n\
+  theorem complementary_frames_equal_length (dna : DNA) :\n  dna.length ≥ 3 →\n  let\
+  \ result := translate_with_frame dna [Frame.mk 1, Frame.mk (-1)]\n  result[0]!.length\
+  \ = result[1]!.length := sorry\n\n/--\ninfo: ['K']\n-/\n#guard_msgs in\n#eval translate_with_frame\
+  \ \"AAA\" [1]\n\n/--\ninfo: ['K']\n-/\n#guard_msgs in\n#eval translate_with_frame\
+  \ \"AAAA\" [2]\n\n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval translate_with_frame\
+  \ \"AGGTGACACCGCAAGCCTTATATTAGC\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

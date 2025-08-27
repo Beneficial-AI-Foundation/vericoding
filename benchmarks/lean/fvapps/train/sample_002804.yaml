@@ -1,0 +1,24 @@
+"vc-description": "**This Kata is intended as a small challenge for my students**\n\
+  \nAll Star Code Challenge #29\n\nYour friend Nhoj has dislexia, but can easily read\
+  \ messages if the words are written backwards.  \nCreate a function called `reverseSentence()/reverse_sentence()`\
+  \ that accepts a string argument. The function returns a string of the same length\
+  \ with each word reversed, but still in their original order.\n\n```python\nreverse_sentence(\"\
+  Hello !Nhoj Want to have lunch?\") # \"olleH johN! tnaW ot evah ?hcnul\"\n```\n\
+  Note:  \nA \"word\" should be considered a string split by a space character, \"\
+  \ \"\nLetter capitalization should be maintained."
+"vc-preamble": "import Imports.AllImports\n\ndef String.reverse (s : String) : String\
+  \ := sorry\n\ndef split (s : String) (sep : String) : List String := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverse_sentence (s : String) : String := sorry\n\ntheorem\
+  \ word_count_preserved (words : List String) :\n  let sentence := \" \".intercalate\
+  \ words\n  let reversed := reverse_sentence sentence\n  (split sentence \" \").length\
+  \ = (split reversed \" \").length :=\nsorry\n"
+"vc-theorems": "theorem empty_string :\n  reverse_sentence \"\" = \"\" :=\nsorry\n\
+  \n\ntheorem each_word_reversed (s : String) :\n  let original_words := split s \"\
+  \ \"\n  let result_words := split (reverse_sentence s) \" \"\n  ∀ i, i < original_words.length\
+  \ →\n    result_words[i]! = String.reverse original_words[i]! :=\nsorry\n\n/--\n\
+  info: expected1\n-/\n#guard_msgs in\n#eval reverse_sentence \"Hello !Nhoj Want to\
+  \ have lunch?\"\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval reverse_sentence\
+  \ \"CodeWars rules!\"\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval reverse_sentence\
+  \ \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

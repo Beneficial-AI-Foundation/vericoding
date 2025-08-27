@@ -1,0 +1,24 @@
+"vc-description": "Given a string S, return the \"reversed\" string where all characters\
+  \ that are not a letter stay in the same place, and all letters reverse their positions.\n\
+   \n\n\n\n\n\n\n\n\n\nExample 1:\nInput: \"ab-cd\"\nOutput: \"dc-ba\"\n\n\nExample\
+  \ 2:\nInput: \"a-bC-dEf-ghIj\"\nOutput: \"j-Ih-gfE-dCba\"\n\n\nExample 3:\nInput:\
+  \ \"Test1ng-Leet=code-Q!\"\nOutput: \"Qedo1ct-eeLg=ntse-T!\"\n\n \n\nNote:\n\nS.length\
+  \ <= 100\n33 <= S[i].ASCIIcode <= 122 \nS doesn't contain \\ or \""
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isAlpha (c : Char) : Bool := sorry\ndef reverseOnlyLetters\
+  \ (s : String) : String := sorry\n"
+"vc-theorems": "theorem length_preservation (s : String) :\n  (reverseOnlyLetters\
+  \ s).length = s.length := sorry\n\n\ntheorem non_letters_unchanged (s : String)\
+  \ (i : String.Pos) :\n  ¬(isAlpha (s.get i)) → (reverseOnlyLetters s).get i = s.get\
+  \ i := sorry\n\n\ntheorem letter_count_preserved (s : String) :\n  (s.data.filter\
+  \ isAlpha).length = ((reverseOnlyLetters s).data.filter isAlpha).length := sorry\n\
+  \n\ntheorem double_reverse_identity (s : String) :\n  reverseOnlyLetters (reverseOnlyLetters\
+  \ s) = s := sorry\n\n\ntheorem all_letters_simple_reverse (s : String) :\n  (∀ c\
+  \ ∈ s.data, isAlpha c) → reverseOnlyLetters s = String.mk s.data.reverse := sorry\n\
+  \n\ntheorem no_letters_unchanged (s : String) :\n  (∀ c ∈ s.data, ¬(isAlpha c))\
+  \ → reverseOnlyLetters s = s := sorry\n\n/--\ninfo: 'dc-ba'\n-/\n#guard_msgs in\n\
+  #eval reverse_only_letters \"ab-cd\"\n\n/--\ninfo: 'j-Ih-gfE-dCba'\n-/\n#guard_msgs\
+  \ in\n#eval reverse_only_letters \"a-bC-dEf-ghIj\"\n\n/--\ninfo: 'Qedo1ct-eeLg=ntse-T!'\n\
+  -/\n#guard_msgs in\n#eval reverse_only_letters \"Test1ng-Leet=code-Q!\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

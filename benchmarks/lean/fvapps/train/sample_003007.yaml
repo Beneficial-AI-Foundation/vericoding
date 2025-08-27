@@ -1,0 +1,20 @@
+"vc-description": "Finish the solution so that it takes an input `n` (integer) and\
+  \ returns a string that is the decimal representation of the number grouped by commas\
+  \ after every 3 digits.\n\nAssume: `0 <= n < 2147483647`\n\n## Examples\n\n```\n\
+  \       1  ->           \"1\"\n      10  ->          \"10\"\n     100  ->      \
+  \   \"100\"\n    1000  ->       \"1,000\"\n   10000  ->      \"10,000\"\n  100000\
+  \  ->     \"100,000\"\n 1000000  ->   \"1,000,000\"\n35235235  ->  \"35,235,235\"\
+  \n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def group_by_commas (n : Nat) : String := sorry\n\ntheorem group_by_commas_only_digits_and_commas\
+  \ (n : Nat) : \n  ∀ c, c ∈ (group_by_commas n).data → \n    c = ',' ∨ c.isDigit\
+  \ := sorry\n"
+"vc-theorems": "theorem group_by_commas_preserves_value (n : Nat) :\n  (group_by_commas\
+  \ n).replace \",\" \"\" = n.repr := sorry\n\n\ntheorem group_by_commas_groups_size\
+  \ {n : Nat} {s : List String} :\n  s = (group_by_commas n).split (· = ',') →\n \
+  \ s ≠ [] →\n  (∀ g ∈ s.tail, g.length = 3) ∧\n  1 ≤ s.head!.length ∧ \n  s.head!.length\
+  \ ≤ 3 := sorry\n\n/--\ninfo: '1,234'\n-/\n#guard_msgs in\n#eval group_by_commas\
+  \ 1234\n\n/--\ninfo: '1,234,567'\n-/\n#guard_msgs in\n#eval group_by_commas 1234567\n\
+  \n/--\ninfo: '123,456,789'\n-/\n#guard_msgs in\n#eval group_by_commas 123456789\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

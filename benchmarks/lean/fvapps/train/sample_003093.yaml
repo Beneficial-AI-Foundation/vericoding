@@ -1,0 +1,18 @@
+"vc-description": "~~~if-not:ruby,python\nReturn `1` when *any* odd bit of `x` equals\
+  \ 1; `0` otherwise.\n~~~\n~~~if:ruby,python\nReturn `true` when *any* odd bit of\
+  \ `x` equals 1; `false` otherwise.\n~~~\n\nAssume that:\n* `x` is an unsigned, 32-bit\
+  \ integer;\n* the bits are zero-indexed (the least significant bit is position 0)\n\
+  \n\n## Examples\n\n```\n  2  -->  1 (true) because at least one odd bit is 1 (2\
+  \ = 0b10)\n  5  -->  0 (false) because none of the odd bits are 1 (5 = 0b101)\n\
+  170  -->  1 (true) because all of the odd bits are 1 (170 = 0b10101010)\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def any_odd (n : Nat) : Bool := sorry\n\ndef pattern := 0xAAAAAAAAAAAAAAAA\n"
+"vc-theorems": "theorem any_odd_manual_calc {x : Nat} : \n  any_odd x = true ↔ ∃ i,\
+  \ x >>> (2*i + 1) &&& 1 = 1 := sorry \n\n\ntheorem any_odd_pattern {x : Nat} :\n\
+  \  any_odd x = true ↔ (x &&& pattern) ≠ 0 := sorry\n\n\ntheorem any_odd_zero :\n\
+  \  any_odd 0 = false := sorry\n\n\ntheorem any_odd_agreement {x : Nat} :\n  any_odd\
+  \ x = (x &&& pattern ≠ 0) := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ any_odd 2\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval any_odd 5\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval any_odd 170\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,29 @@
+"vc-description": "Given a sentence that consists of some words separated by a single\
+  \ space, and a searchWord.\nYou have to check if searchWord is a prefix of any word\
+  \ in sentence.\nReturn the index of the word in sentence where searchWord is a prefix\
+  \ of this word (1-indexed).\nIf searchWord is a prefix of more than one word, return\
+  \ the index of the first word (minimum index). If there is no such word return -1.\n\
+  A prefix of a string S is any leading contiguous substring of S.\n \nExample 1:\n\
+  Input: sentence = \"i love eating burger\", searchWord = \"burg\"\nOutput: 4\nExplanation:\
+  \ \"burg\" is prefix of \"burger\" which is the 4th word in the sentence.\n\nExample\
+  \ 2:\nInput: sentence = \"this problem is an easy problem\", searchWord = \"pro\"\
+  \nOutput: 2\nExplanation: \"pro\" is prefix of \"problem\" which is the 2nd and\
+  \ the 6th word in the sentence, but we return 2 as it's the minimal index.\n\nExample\
+  \ 3:\nInput: sentence = \"i am tired\", searchWord = \"you\"\nOutput: -1\nExplanation:\
+  \ \"you\" is not a prefix of any word in the sentence.\n\nExample 4:\nInput: sentence\
+  \ = \"i use triple pillow\", searchWord = \"pill\"\nOutput: 4\n\nExample 5:\nInput:\
+  \ sentence = \"hello from the other side\", searchWord = \"they\"\nOutput: -1\n\n\
+   \nConstraints:\n\n1 <= sentence.length <= 100\n1 <= searchWord.length <= 10\nsentence\
+  \ consists of lowercase English letters and spaces.\nsearchWord consists of lowercase\
+  \ English letters."
+"vc-preamble": "import Imports.AllImports\n\ndef is_prefix_of_word (sentence search\
+  \ : String) : Int :=\n  sorry\n\n\ndef startsWith (s₁ s₂ : String) : Bool :=\n \
+  \ sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def words (s : String) : List String :=\n  sorry\n\n\n\n\n\n\n"
+"vc-theorems": "theorem empty_search_property {sentence : String} :\n  is_prefix_of_word\
+  \ sentence \"\" = 1 :=\n  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval is_prefix_of_word\
+  \ \"i love eating burger\" \"burg\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval is_prefix_of_word\
+  \ \"this problem is an easy problem\" \"pro\"\n\n/--\ninfo: -1\n-/\n#guard_msgs\
+  \ in\n#eval is_prefix_of_word \"i am tired\" \"you\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

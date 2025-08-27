@@ -1,0 +1,28 @@
+"vc-description": "A sequence is usually a set or an array of numbers that has a strict\
+  \ way for moving from the nth term to the (n+1)th term.\nIf ``f(n) = f(n-1) + c``\
+  \ where ``c`` is a constant value, then ``f`` is an arithmetic sequence.\nAn example\
+  \ would be (where the first term is 0 and the constant is 1) is [0, 1, 2, 3, 4,\
+  \ 5, ... and so on] )\nElse if (pun) ``f(n) = f(n-1) * c`` where ``c`` is a constant\
+  \ value, then ``f`` is a geometric sequence.\nExample where the first term is 2\
+  \ and  the constant is 2 will be [2, 4, 8, 16, 32, 64, ... to infinity ... ]\nThere\
+  \ are some sequences that aren't arithmetic nor are they geometric.\nHere is a link\
+  \ to feed your brain : Sequence !\n\n\nYou're going to write a function that's going\
+  \ to return the value in the nth index of an arithmetic sequence.(That is, adding\
+  \ a constant to move to the next element in the \"set\").\n\nThe function's name\
+  \ is `nthterm`/`Nthterm`, it takes three inputs `first`,`n`,`c` where:\n\n  - ``first``\
+  \ is the first value in the 0 INDEX.\n  - ``n`` is the index of the value we want.\n\
+  \  - ``c`` is the constant added between the terms.\n\nRemember that `first` is\
+  \ in the index ``0`` .. just saying ..."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def nthterm (first n c : Int) : Int := sorry\n\ntheorem nthterm_first_term\
+  \ \n  (first c : Int) : nthterm first 0 c = first := sorry\n"
+"vc-theorems": "theorem nthterm_consecutive_diff \n  (first n c : Int) (h : n ≥ 0)\
+  \ : \n  nthterm first (n + 1) c - nthterm first n c = c := sorry\n\n\ntheorem nthterm_linear\
+  \ \n  (first n c : Int) (h : n ≥ 0) :\n  nthterm first n c = first + n * c := sorry\n\
+  \n\ntheorem nthterm_additive \n  (first n1 n2 c : Int) (h1 : n1 ≥ 0) (h2 : n2 ≥\
+  \ 0) :\n  nthterm first (n1 + n2) c = nthterm (nthterm first n1 c) n2 c := sorry\n\
+  \n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval nthterm 1 2 3\n\n/--\ninfo: 8\n-/\n#guard_msgs\
+  \ in\n#eval nthterm 2 3 2\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval nthterm 0 4\
+  \ 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

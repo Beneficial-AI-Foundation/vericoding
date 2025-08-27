@@ -1,0 +1,20 @@
+"vc-description": "```if-not:julia,racket\nWrite a function that returns the total\
+  \ surface area and volume of a box as an array: `[area, volume]`\n```\n```if:julia\n\
+  Write a function that returns the total surface area and volume of a box as a tuple:\
+  \ `(area, volume)`\n```\n```if:racket\nWrite a function that returns the total surface\
+  \ area and volume of a box as a list: `'(area, volume)`\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_size (w h d : Nat) : Nat × Nat := sorry\n\ntheorem get_size_volume\
+  \ (w h d : Nat) :\n  (get_size w h d).2 = w * h * d := sorry\n"
+"vc-theorems": "theorem get_size_surface_area (w h d : Nat) :\n  (get_size w h d).1\
+  \ = 2 * (w*h + h*d + w*d) := sorry\n  \n\ntheorem get_size_surface_area_positive\
+  \ (w h d : Nat) (h1: w > 0) (h2: h > 0) (h3: d > 0) :\n  (get_size w h d).1 > 0\
+  \ := sorry\n  \n\ntheorem get_size_volume_positive (w h d : Nat) (h1: w > 0) (h2:\
+  \ h > 0) (h3: d > 0) :\n  (get_size w h d).2 > 0 := sorry\n  \n\ntheorem get_size_surface_area_greater_than_faces\
+  \ (w h d : Nat) (h1: w > 0) (h2: h > 0) (h3: d > 0) :\n  (get_size w h d).1 > w*h\
+  \ ∧ \n  (get_size w h d).1 > h*d ∧\n  (get_size w h d).1 > w*d := sorry\n\n/--\n\
+  info: [88, 48]\n-/\n#guard_msgs in\n#eval get_size 4 2 6\n\n/--\ninfo: [6, 1]\n\
+  -/\n#guard_msgs in\n#eval get_size 1 1 1\n\n/--\ninfo: [600, 1000]\n-/\n#guard_msgs\
+  \ in\n#eval get_size 10 10 10\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

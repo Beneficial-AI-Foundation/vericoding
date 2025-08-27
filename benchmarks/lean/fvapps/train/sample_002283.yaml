@@ -1,0 +1,41 @@
+"vc-description": "You are given a bracket sequence $s$ of length $n$, where $n$ is\
+  \ even (divisible by two). The string $s$ consists of $\\frac{n}{2}$ opening brackets\
+  \ '(' and $\\frac{n}{2}$ closing brackets ')'.\n\nIn one move, you can choose exactly\
+  \ one bracket and move it to the beginning of the string or to the end of the string\
+  \ (i.e. you choose some index $i$, remove the $i$-th character of $s$ and insert\
+  \ it before or after all remaining characters of $s$).\n\nYour task is to find the\
+  \ minimum number of moves required to obtain regular bracket sequence from $s$.\
+  \ It can be proved that the answer always exists under the given constraints.\n\n\
+  Recall what the regular bracket sequence is:\n\n  \"()\" is regular bracket sequence;\
+  \  if $s$ is regular bracket sequence then \"(\" + $s$ + \")\" is regular bracket\
+  \ sequence;  if $s$ and $t$ are regular bracket sequences then $s$ + $t$ is regular\
+  \ bracket sequence. \n\nFor example, \"()()\", \"(())()\", \"(())\" and \"()\" are\
+  \ regular bracket sequences, but \")(\", \"()(\" and \")))\" are not.\n\nYou have\
+  \ to answer $t$ independent test cases.\n\n\n-----Input-----\n\nThe first line of\
+  \ the input contains one integer $t$ ($1 \\le t \\le 2000$) — the number of test\
+  \ cases. Then $t$ test cases follow.\n\nThe first line of the test case contains\
+  \ one integer $n$ ($2 \\le n \\le 50$) — the length of $s$. It is guaranteed that\
+  \ $n$ is even. The second line of the test case containg the string $s$ consisting\
+  \ of $\\frac{n}{2}$ opening and $\\frac{n}{2}$ closing brackets.\n\n\n-----Output-----\n\
+  \nFor each test case, print the answer — the minimum number of moves required to\
+  \ obtain regular bracket sequence from $s$. It can be proved that the answer always\
+  \ exists under the given constraints.\n\n\n-----Example-----\nInput\n4\n2\n)(\n\
+  4\n()()\n8\n())()()(\n10\n)))((((())\n\nOutput\n1\n0\n1\n3\n\n\n\n-----Note-----\n\
+  \nIn the first test case of the example, it is sufficient to move the first bracket\
+  \ to the end of the string.\n\nIn the third test case of the example, it is sufficient\
+  \ to move the last bracket to the beginning of the string.\n\nIn the fourth test\
+  \ case of the example, we can choose last three openning brackets, move them to\
+  \ the beginning of the string and obtain \"((()))(())\"."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_brackets (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem solve_brackets_non_negative (s : String) :\n  solve_brackets\
+  \ s ≥ 0 := sorry\n\n\ntheorem solve_brackets_empty :\n  solve_brackets \"\" = 0\
+  \ := sorry\n\n\ntheorem solve_brackets_balanced :\n  solve_brackets \"()\" = 0 :=\
+  \ sorry\n\n\ntheorem solve_brackets_single_close :\n  solve_brackets \")\" = 1 :=\
+  \ sorry\n\n\n\ndef repeat_char (c : Char) (n : Nat) : String :=\n  sorry\n\n/--\n\
+  info: 1\n-/\n#guard_msgs in\n#eval solve_brackets \")(\"\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval solve_brackets \"()()\"\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve_brackets\
+  \ \"())()()(\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_brackets \")))((((())\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

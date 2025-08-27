@@ -1,0 +1,37 @@
+"vc-description": "## Task\n\nCreate a RomanNumerals class that can convert a roman\
+  \ numeral to and from an integer value.  It should follow the API demonstrated in\
+  \ the examples below. Multiple roman numeral values will be tested for each helper\
+  \ method. \n\nModern Roman numerals are written by expressing each digit separately\
+  \ starting with the left most digit and skipping any digit with a value of zero.\
+  \ In Roman numerals 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting in MCMXC.\
+  \ 2008 is written as 2000=MM, 8=VIII; or MMVIII. 1666 uses each Roman symbol in\
+  \ descending order: MDCLXVI.\n\n## Examples\n\n```python\nRomanNumerals.to_roman(1000)\
+  \ # should return 'M'\nRomanNumerals.from_roman('M') # should return 1000\n```\n\
+  \n## Help\n\n| Symbol | Value |\n|----------------|\n| I          | 1     |\n| V\
+  \          | 5     |\n| X          | 10    |\n| L          | 50    |\n| C      \
+  \    | 100   |\n| D          | 500   |\n| M          | 1000  |"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def to_roman (n : Nat) : String := sorry\ndef from_roman (s : String)\
+  \ : Nat := sorry\n"
+"vc-theorems": "theorem roundtrip_roman_numerals (n : Nat) \n  (h : 1 ≤ n ∧ n ≤ 3999)\
+  \ : \n  from_roman (to_roman n) = n := sorry\n\n\ntheorem valid_roman_characters\
+  \ (n : Nat)\n  (h : 1 ≤ n ∧ n ≤ 3999) :\n  ∀ c, String.contains (to_roman n) c →\
+  \ \n    c = 'I' ∨ c = 'V' ∨ c = 'X' ∨ c = 'L' ∨ c = 'C' ∨ c = 'D' ∨ c = 'M' := sorry\n\
+  \n\ntheorem no_invalid_subtractions (n : Nat)\n  (h : 1 ≤ n ∧ n ≤ 3999) :\n  ¬ String.endsWith\
+  \ (to_roman n) \"IL\" ∧\n  ¬ String.endsWith (to_roman n) \"IC\" ∧\n  ¬ String.endsWith\
+  \ (to_roman n) \"ID\" ∧\n  ¬ String.endsWith (to_roman n) \"IM\" ∧\n  ¬ String.endsWith\
+  \ (to_roman n) \"XD\" ∧\n  ¬ String.endsWith (to_roman n) \"XM\" ∧\n  ¬ String.endsWith\
+  \ (to_roman n) \"VX\" ∧\n  ¬ String.endsWith (to_roman n) \"VL\" ∧\n  ¬ String.endsWith\
+  \ (to_roman n) \"VC\" ∧\n  ¬ String.endsWith (to_roman n) \"VD\" ∧\n  ¬ String.endsWith\
+  \ (to_roman n) \"VM\" ∧\n  ¬ String.endsWith (to_roman n) \"LC\" ∧\n  ¬ String.endsWith\
+  \ (to_roman n) \"LD\" ∧\n  ¬ String.endsWith (to_roman n) \"LM\" ∧\n  ¬ String.endsWith\
+  \ (to_roman n) \"DM\" := sorry\n\n\ntheorem max_consecutive_chars (n : Nat)\n  (h\
+  \ : 1 ≤ n ∧ n ≤ 3999) :\n  ¬ String.endsWith (to_roman n) \"IIII\" ∧\n  ¬ String.endsWith\
+  \ (to_roman n) \"VVVV\" ∧\n  ¬ String.endsWith (to_roman n) \"XXXX\" ∧\n  ¬ String.endsWith\
+  \ (to_roman n) \"LLLL\" ∧\n  ¬ String.endsWith (to_roman n) \"CCCC\" ∧\n  ¬ String.endsWith\
+  \ (to_roman n) \"DDDD\" ∧\n  ¬ String.endsWith (to_roman n) \"MMMM\" := sorry\n\n\
+  \ntheorem from_roman_valid_output (s : String)\n  (h : ∀ c, String.contains s c\
+  \ → \n    c = 'I' ∨ c = 'V' ∨ c = 'X' ∨ c = 'L' ∨ c = 'C' ∨ c = 'D' ∨ c = 'M') :\n\
+  \  1 ≤ from_roman s ∧ from_roman s ≤ 3999 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

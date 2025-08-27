@@ -1,0 +1,18 @@
+"vc-description": "Create a function that checks if a number `n` is divisible by two\
+  \ numbers `x` **AND** `y`. All inputs are positive, non-zero digits.\n\n```JS\n\
+  Examples:\n1) n =   3, x = 1, y = 3 =>  true because   3 is divisible by 1 and 3\n\
+  2) n =  12, x = 2, y = 6 =>  true because  12 is divisible by 2 and 6\n3) n = 100,\
+  \ x = 5, y = 3 => false because 100 is not divisible by 3\n4) n =  12, x = 7, y\
+  \ = 5 => false because  12 is neither divisible by 7 nor 5\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_divisible (n x y : Int) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem is_divisible_implies_individual_divisibility \n  {n x y :\
+  \ Int} (h : x ≠ 0) (h' : y ≠ 0) :\n  is_divisible n x y → n % x = 0 ∧ n % y = 0\
+  \ :=\n  sorry\n\n\ntheorem divisible_by_x_implies_divisible_with_one \n  {n x :\
+  \ Int} (h : x ≠ 0) :\n  n % x = 0 → is_divisible n x 1 ∧ is_divisible n 1 x :=\n\
+  \  sorry\n\n\ntheorem non_zero_divisible_by_self \n  {n : Int} (h : n ≠ 0) :\n \
+  \ is_divisible n n 1 ∧ is_divisible n 1 n :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval is_divisible 12 3 4\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_divisible\
+  \ 100 5 3\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_divisible 17 1 17\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,31 @@
+"vc-description": "There are N workers.  The i-th worker has a quality[i] and a minimum\
+  \ wage expectation wage[i].\nNow we want to hire exactly K workers to form a paid\
+  \ group.  When hiring a group of K workers, we must pay them according to the following\
+  \ rules:\n\nEvery worker in the paid group should be paid in the ratio of their\
+  \ quality compared to other workers in the paid group.\nEvery worker in the paid\
+  \ group must be paid at least their minimum wage expectation.\n\nReturn the least\
+  \ amount of money needed to form a paid group satisfying the above conditions.\n\
+   \n\n\n\nExample 1:\nInput: quality = [10,20,5], wage = [70,50,30], K = 2\nOutput:\
+  \ 105.00000\nExplanation: We pay 70 to 0-th worker and 35 to 2-th worker.\n\n\n\
+  Example 2:\nInput: quality = [3,1,10,10,1], wage = [4,8,2,2,7], K = 3\nOutput: 30.66667\n\
+  Explanation: We pay 4 to 0-th worker, 13.33333 to 2-th and 3-th workers seperately.\
+  \ \n\n \nNote:\n\n1 <= K <= N <= 10000, where N = quality.length = wage.length\n\
+  1 <= quality[i] <= 10000\n1 <= wage[i] <= 10000\nAnswers within 10^-5 of the correct\
+  \ answer will be considered correct."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_cost_to_hire_workers (quality wage : List Int) (k : Int)\
+  \ : Float :=\n  sorry\n"
+"vc-theorems": "theorem min_cost_to_hire_workers_positive\n  {n : Nat}\n  {quality\
+  \ wage : List Int}\n  {k : Int}\n  (hq : quality.length = n)\n  (hw : wage.length\
+  \ = n)\n  (hk : 1 ≤ k ∧ k ≤ n)\n  (hqpos : ∀ x ∈ quality, 1 ≤ x ∧ x ≤ 100)  \n \
+  \ (hwpos : ∀ x ∈ wage, 1 ≤ x ∧ x ≤ 1000) :\n  min_cost_to_hire_workers quality wage\
+  \ k > 0 := sorry\n\n\ntheorem min_cost_to_hire_workers_finite\n  {n : Nat} \n  {quality\
+  \ wage : List Int}\n  {k : Int}\n  (hq : quality.length = n)\n  (hw : wage.length\
+  \ = n) \n  (hk : 1 ≤ k ∧ k ≤ n)\n  (hqpos : ∀ x ∈ quality, 1 ≤ x ∧ x ≤ 100)\n  (hwpos\
+  \ : ∀ x ∈ wage, 1 ≤ x ∧ x ≤ 1000) :\n  Float.isFinite (min_cost_to_hire_workers\
+  \ quality wage k) := sorry\n\n\ntheorem min_cost_to_hire_workers_unit_cost\n  (k\
+  \ : Int)\n  (hk : k = 1 ∨ k = 2) :\n  min_cost_to_hire_workers [1, 1] [1, 1] k =\
+  \ Float.ofInt k := sorry\n\n\ntheorem min_cost_to_hire_workers_equal_ratio :\n \
+  \ Float.abs (min_cost_to_hire_workers [1, 2, 3] [2, 4, 6] 2 - 6) < 1e-5 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

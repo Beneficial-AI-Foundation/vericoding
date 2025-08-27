@@ -1,0 +1,43 @@
+"vc-description": "Chef and his girlfriend are going to have a promenade. They are\
+  \ walking along the straight road which consists of segments placed one by one.\
+  \ Before walking Chef and his girlfriend stay at the beginning of the first segment,\
+  \ they want to achieve the end of the last segment. \nThere are few problems: \n\
+  \n-  At the beginning Chef should choose constant integer - the velocity of mooving.\
+  \ It can't be changed inside one segment. \n-  The velocity should be decreased\
+  \ by at least 1 after achieving the end of some segment. \n-  There is exactly one\
+  \ shop on each segment. Each shop has an attractiveness. If it's attractiveness\
+  \ is W and Chef and his girlfriend move with velocity V then if V < W girlfriend\
+  \ will run away into the shop and the promenade will become ruined. \n\nChef doesn't\
+  \ want to lose her girl in such a way, but he is an old one, so you should find\
+  \ the minimal possible velocity at the first segment to satisfy all conditions.\n\
+  \n\n-----Input-----\n- The first line of the input contains an integer T denoting\
+  \ the number of test cases. The description of T test cases follows.\n- The first\
+  \ line of each test case contains a single integer N denoting the number of segments.\
+  \ The second line contains N space-separated integers W1, W2, ..., WN denoting the\
+  \ attractiveness of shops. \n\n-----Output-----\n- For each test case, output a\
+  \ single line containing the minimal possible velocity at the beginning.\n\n-----Constraints-----\n\
+  - 1 ≤ T ≤ 10\n- 1 ≤ N ≤ 10^5\n- 1 ≤ Wi ≤ 10^6\n\n-----Example-----\nInput:\n\n2\n\
+  5\n6 5 4 3 2\n5\n3 4 3 1 1\n\nOutput:\n\n6\n5\n\n-----Explanation-----\nExample\
+  \ case 1. \nIf we choose velocity 6, on the first step we have 6 >= 6 everything\
+  \ is OK, then we should decrease the velocity to 5 and on the 2nd segment we'll\
+  \ receive 5 >= 5, again OK, and so on. \nExample case 2. \nIf we choose velocity\
+  \ 4, the promanade will be ruined on the 2nd step (we sould decrease our velocity,\
+  \ so the maximal possible will be 3 which is less than 4)."
+"vc-preamble": "import Imports.AllImports\n\ndef find_min_velocity (n : Nat) (shops\
+  \ : List Nat) : Nat := sorry\n\ndef max_list (l : List Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def enumerate_add (shops : List Nat) : List Nat :=\n  let range\
+  \ := List.range shops.length\n  List.map (fun i => shops[i]! + i) range\n"
+"vc-theorems": "theorem min_velocity_greater_than_max_attractiveness (n : Nat) (shops\
+  \ : List Nat) \n  (h : shops.length > 0) : \n  find_min_velocity n shops ≥ max_list\
+  \ shops := sorry\n\n\ntheorem min_velocity_accounts_for_position (n : Nat) (shops\
+  \ : List Nat) (pos : Nat)\n  (h1 : pos < shops.length) (h2 : shops.length > 0) :\n\
+  \  find_min_velocity n shops ≥ shops[pos]! + pos := sorry\n\n\ntheorem min_velocity_allows_decreasing_speeds\
+  \ (n : Nat) (shops : List Nat)\n  (h : shops.length ≥ 2) :\n  ∀ i : Nat, i < shops.length\
+  \ → \n  find_min_velocity n shops - i ≥ shops[i]! := sorry\n\n\ntheorem min_velocity_is_optimal\
+  \ (n : Nat) (shops : List Nat)\n  (h : shops.length > 0) :\n  find_min_velocity\
+  \ n shops = max_list (enumerate_add shops) := sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval find_min_velocity 5 [6, 5, 4, 3, 2]\n\n/--\ninfo: 5\n-/\n#guard_msgs\
+  \ in\n#eval find_min_velocity 5 [3, 4, 3, 1, 1]\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval find_min_velocity 3 [4, 2, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

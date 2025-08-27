@@ -1,0 +1,25 @@
+"vc-description": "Given the root of a tree, you are asked to find the most frequent\
+  \ subtree sum. The subtree sum of a node is defined as the sum of all the node values\
+  \ formed by the subtree rooted at that node (including the node itself). So what\
+  \ is the most frequent subtree sum value? If there is a tie, return all the values\
+  \ with the highest frequency in any order.\n\n\nExamples 1\nInput:\n\n  5\n /  \\\
+  \n2   -3\n\nreturn [2, -3, 4], since all the values happen only once, return all\
+  \ of them in any order.\n\n\nExamples 2\nInput:\n\n  5\n /  \\\n2   -5\n\nreturn\
+  \ [2], since 2 happens twice, however -5 only occur once.\n\n\nNote:\nYou may assume\
+  \ the sum of values in any subtree is in the range of 32-bit signed integer."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def make_tree (values : List Int) : TreeNode := sorry\n\ndef find_frequent_tree_sum\
+  \ (root : TreeNode) : List Int := sorry\n"
+"vc-theorems": "theorem find_frequent_sum_properties \n  (values : List Int) \n  (result\
+  \ := find_frequent_tree_sum (make_tree values)) : \n  -- Empty tree returns empty\
+  \ list\n  (values = [] → result = []) ∧\n  -- Result is list of integers (satisfied\
+  \ by type system)\n  -- All frequencies are equal\n  (result ≠ [] → \n    ∀ x y,\
+  \ x ∈ result → y ∈ result → \n    (List.count x result) = (List.count y result))\n\
+  \  := sorry\n\n\ntheorem single_node_tree_property\n  (value : Int)\n  (root :=\
+  \ TreeNode.node value TreeNode.none TreeNode.none) :\n  find_frequent_tree_sum root\
+  \ = [value] := sorry\n\n\ntheorem empty_tree_property :\n  find_frequent_tree_sum\
+  \ TreeNode.none = [] := sorry\n\n/--\ninfo: [2]\n-/\n#guard_msgs in\n#eval find_frequent_tree_sum\
+  \ TreeNode(5)\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval find_frequent_tree_sum\
+  \ None\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,29 @@
+"vc-description": "Converting a normal (12-hour) time like \"8:30 am\" or \"8:30 pm\"\
+  \ to 24-hour time (like \"0830\" or \"2030\") sounds easy enough, right?  Well,\
+  \ let's see if you can do it!\n\nYou will have to define a function named \"to24hourtime\"\
+  , and you will be given an hour (always in the range of 1 to 12, inclusive), a minute\
+  \ (always in the range of 0 to 59, inclusive), and a period (either \"am\" or \"\
+  pm\") as input.\n\nYour task is to return a four-digit string that encodes that\
+  \ time in 24-hour time."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def strToNat (s : String) : Nat := sorry\n\ndef to24hourtime (hour\
+  \ : Nat) (minute : Nat) (period : String) : String := sorry\n"
+"vc-theorems": "theorem to24hourtime_format {hour : Nat} {minute : Nat} {period :\
+  \ String}\n  (h1 : 1 ≤ hour ∧ hour ≤ 12) \n  (h2 : minute ≤ 59)\n  (h3 : period\
+  \ = \"am\" ∨ period = \"pm\") :\n  let result := to24hourtime hour minute period\n\
+  \  -- Result is 4 digits\n  (result.length = 4) ∧ \n  -- Hours in bounds\n  (strToNat\
+  \ (result.take 2) ≤ 23) ∧\n  -- Minutes in bounds  \n  (strToNat (result.drop 2)\
+  \ ≤ 59) ∧\n  -- AM case\n  ((period = \"am\" → \n    if hour = 12 \n    then strToNat\
+  \ (result.take 2) = 0\n    else strToNat (result.take 2) = hour) ∧\n  -- PM case\n\
+  \   (period = \"pm\" →\n    if hour = 12\n    then strToNat (result.take 2) = 12\
+  \ \n    else strToNat (result.take 2) = hour + 12)) ∧\n  -- Minutes preserved\n\
+  \  (strToNat (result.drop 2) = minute) := sorry\n\n\ntheorem am_pm_difference {hour\
+  \ : Nat} {minute : Nat}\n  (h1 : 1 ≤ hour ∧ hour ≤ 12)\n  (h2 : minute ≤ 59) :\n\
+  \  let am_time := strToNat (to24hourtime hour minute \"am\")\n  let pm_time := strToNat\
+  \ (to24hourtime hour minute \"pm\")\n  if hour = 12\n  then pm_time - am_time =\
+  \ 1200\n  else pm_time - am_time = 1200 ∨ am_time - pm_time = 1200 := sorry\n\n\
+  /--\ninfo: '0000'\n-/\n#guard_msgs in\n#eval to24hourtime 12 0 \"am\"\n\n/--\ninfo:\
+  \ '0830'\n-/\n#guard_msgs in\n#eval to24hourtime 8 30 \"am\"\n\n/--\ninfo: '2030'\n\
+  -/\n#guard_msgs in\n#eval to24hourtime 8 30 \"pm\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

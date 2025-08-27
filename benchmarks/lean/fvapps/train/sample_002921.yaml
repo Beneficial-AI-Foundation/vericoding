@@ -1,0 +1,51 @@
+"vc-description": "### Task\n Each day a plant is growing by `upSpeed` meters. Each\
+  \ night that plant's height decreases by `downSpeed` meters due to the lack of sun\
+  \ heat. Initially, plant is 0 meters tall. We plant the seed at the beginning of\
+  \ a day. We want to know when the height of the plant will reach a certain level.\n\
+  \n### Example\n\n For `upSpeed = 100, downSpeed = 10 and desiredHeight = 910`, the\
+  \ output should be `10`.\n \n ```\n After day 1 --> 100\n After night 1 --> 90\n\
+  \ After day 2 --> 190\n After night 2 --> 180\n After day 3 --> 280\n After night\
+  \ 3 --> 270\n After day 4 --> 370\n After night 4 --> 360\n After day 5 --> 460\n\
+  \ After night 5 --> 450\n After day 6 --> 550\n After night 6 --> 540\n After day\
+  \ 7 --> 640\n After night 7 --> 630\n After day 8 --> 730\n After night 8 --> 720\n\
+  \ After day 9 --> 820\n After night 9 --> 810\n After day 10 --> 910 \n ```\n \n\
+  \ For `upSpeed = 10, downSpeed = 9 and desiredHeight = 4`, the output should be\
+  \ `1`.\n \n Because the plant reach to the desired height at day 1(10 meters).\n\
+  \ \n ```\n After day 1 --> 10\n ```\n\n### Input/Output\n\n```if-not:sql\n - `[input]`\
+  \ integer `upSpeed`\n\n    A positive integer representing the daily growth.\n\n\
+  \    Constraints: `5 ≤ upSpeed ≤ 100.`\n\n\n - `[input]` integer `downSpeed`\n\n\
+  \    A positive integer representing the nightly decline.\n\n    Constraints: `2\
+  \ ≤ downSpeed < upSpeed.`\n\n\n - `[input]` integer `desiredHeight`\n\n    A positive\
+  \ integer representing the threshold.\n\n    Constraints: `4 ≤ desiredHeight ≤ 1000.`\n\
+  \n - `[output]` an integer\n\n    The number of days that it will take for the plant\
+  \ to reach/pass desiredHeight (including the last day in the total count).\n```\n\
+  ```if:sql\n## Input\n\n~~~\n-----------------------------------------\n|     Table\
+  \     |    Column      | Type |\n|---------------+----------------+------|\n| growing_plant\
+  \ | down_speed     | int  |\n|               | up_speed       | int  |\n|      \
+  \         | desired_height | int  |\n-----------------------------------------\n\
+  ~~~\n\n### Columns\n* `up_speed`: A positive integer representing the daily growth.\
+  \ Constraints: `5 ≤ up_speed ≤ 100.`\n* `down_speed`: A positive integer representing\
+  \ the nightly decline. Constraints: `2 ≤ down_speed < up_speed.`\n* `desired_height`:\
+  \ A positive integer representing the threshold. Constraints: `4 ≤ desired_height\
+  \ ≤ 1000.`\n\n## Output\n\n~~~\n-------------------\n|  Column  | Type |\n|----------+------|\n\
+  | id       | int  |\n| num_days | int  |\n-------------------\n~~~\n\n`num_days`\
+  \ is the number of days that it will take for the plant to reach/pass desiredHeight\
+  \ (including the last day in the total count).\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def growing_plant (up_speed : Int) (down_speed : Int) (desired_height\
+  \ : Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem growing_plant_result_positive\n  (up_speed : Int) (down_diff\
+  \ : Int) (desired_height : Int)\n  (h1 : up_speed > 0) (h2 : up_speed ≤ 1000)\n\
+  \  (h3 : down_diff ≥ 0) (h4 : down_diff ≤ 999)\n  (h5 : desired_height > 0) (h6\
+  \ : desired_height ≤ 10000) :\n  let down_speed := max 0 (up_speed - down_diff -\
+  \ 1)\n  growing_plant up_speed down_speed desired_height ≥ 1 :=\nsorry\n\n\n\n\n\
+  theorem growing_plant_meets_height\n  (up_speed : Int) (down_diff : Int) (desired_height\
+  \ : Int)\n  (h1 : up_speed > 0) (h2 : up_speed ≤ 1000)\n  (h3 : down_diff ≥ 0) (h4\
+  \ : down_diff ≤ 999)\n  (h5 : desired_height > 0) (h6 : desired_height ≤ 10000)\
+  \ :\n  let down_speed := max 0 (up_speed - down_diff - 1)\n  let result := growing_plant\
+  \ up_speed down_speed desired_height\n  up_speed * result - down_speed * (result\
+  \ - 1) ≥ desired_height :=\nsorry\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval growing_plant\
+  \ 100 10 910\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval growing_plant 10 9 4\n\n\
+  /--\ninfo: 2\n-/\n#guard_msgs in\n#eval growing_plant 5 2 6\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

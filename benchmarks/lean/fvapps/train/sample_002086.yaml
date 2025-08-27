@@ -1,0 +1,50 @@
+"vc-description": "Polycarp plans to conduct a load testing of its new project Fakebook.\
+  \ He already agreed with his friends that at certain points in time they will send\
+  \ requests to Fakebook. The load testing will last n minutes and in the i-th minute\
+  \ friends will send a_{i} requests.\n\nPolycarp plans to test Fakebook under a special\
+  \ kind of load. In case the information about Fakebook gets into the mass media,\
+  \ Polycarp hopes for a monotone increase of the load, followed by a monotone decrease\
+  \ of the interest to the service. Polycarp wants to test this form of load.\n\n\
+  Your task is to determine how many requests Polycarp must add so that before some\
+  \ moment the load on the server strictly increases and after that moment strictly\
+  \ decreases. Both the increasing part and the decreasing part can be empty (i. e.\
+  \ absent). The decrease should immediately follow the increase. In particular, the\
+  \ load with two equal neigbouring values is unacceptable.\n\nFor example, if the\
+  \ load is described with one of the arrays [1, 2, 8, 4, 3], [1, 3, 5] or [10], then\
+  \ such load satisfies Polycarp (in each of the cases there is an increasing part,\
+  \ immediately followed with a decreasing part). If the load is described with one\
+  \ of the arrays [1, 2, 2, 1], [2, 1, 2] or [10, 10], then such load does not satisfy\
+  \ Polycarp.\n\nHelp Polycarp to make the minimum number of additional requests,\
+  \ so that the resulting load satisfies Polycarp. He can make any number of additional\
+  \ requests at any minute from 1 to n.\n\n\n-----Input-----\n\nThe first line contains\
+  \ a single integer n (1 ≤ n ≤ 100 000) — the duration of the load testing.\n\nThe\
+  \ second line contains n integers a_1, a_2, ..., a_{n} (1 ≤ a_{i} ≤ 10^9), where\
+  \ a_{i} is the number of requests from friends in the i-th minute of the load testing.\n\
+  \n\n-----Output-----\n\nPrint the minimum number of additional requests from Polycarp\
+  \ that would make the load strictly increasing in the beginning and then strictly\
+  \ decreasing afterwards.\n\n\n-----Examples-----\nInput\n5\n1 4 3 2 5\n\nOutput\n\
+  6\n\nInput\n5\n1 2 2 2 1\n\nOutput\n1\n\nInput\n7\n10 20 40 50 70 90 30\n\nOutput\n\
+  0\n\n\n\n-----Note-----\n\nIn the first example Polycarp must make two additional\
+  \ requests in the third minute and four additional requests in the fourth minute.\
+  \ So the resulting load will look like: [1, 4, 5, 6, 5]. In total, Polycarp will\
+  \ make 6 additional requests.\n\nIn the second example it is enough to make one\
+  \ additional request in the third minute, so the answer is 1.\n\nIn the third example\
+  \ the load already satisfies all conditions described in the statement, so the answer\
+  \ is 0."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_requests_to_add (n : Nat) (arr : List Nat) : Nat :=\nsorry\n"
+"vc-theorems": "theorem single_element_no_changes (n : Nat) (h : n > 0) :\n  min_requests_to_add\
+  \ 1 [n] = 0 :=\nsorry\n\n\ntheorem sorted_array_no_changes {n : Nat} {arr : List\
+  \ Nat} \n  (h1 : arr.length = n)\n  (h2 : n ≥ 2)\n  (h3 : ∀ i j, i < j → j < arr.length\
+  \ → arr[i]! < arr[j]!) :\n  min_requests_to_add n arr = 0 :=\nsorry\n\n\ntheorem\
+  \ result_non_negative {n : Nat} {arr : List Nat}\n  (h1 : arr.length = n)\n  (h2\
+  \ : n ≥ 2) :\n  min_requests_to_add n arr ≥ 0 :=\nsorry\n\n\ntheorem array_length_matches_n\
+  \ {n : Nat} {arr : List Nat}\n  (h : arr.length = n) :\n  min_requests_to_add n\
+  \ arr = min_requests_to_add (arr.length) arr :=\nsorry\n\n\ntheorem array_length_error\
+  \ {n : Nat} {arr : List Nat}\n  (h : arr.length < n) :\n  min_requests_to_add n\
+  \ arr = min_requests_to_add arr.length arr :=\nsorry\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval min_requests_to_add 5 [1, 4, 3, 2, 5]\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval min_requests_to_add 5 [1, 2, 2, 2, 1]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval min_requests_to_add 7 [10, 20, 40, 50, 70, 90, 30]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

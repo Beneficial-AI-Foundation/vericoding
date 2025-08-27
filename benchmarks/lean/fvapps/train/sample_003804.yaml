@@ -1,0 +1,27 @@
+"vc-description": "# Task\nGiven some sticks by an array `V` of positive integers,\
+  \ where V[i] represents the length of the sticks, find the number of ways we can\
+  \ choose three of them to form a triangle.\n\n# Example\n\n For `V = [2, 3, 7, 4]`,\
+  \ the result should be `1`.\n\n There is only `(2, 3, 4)` can form a triangle.\n\
+  \ \n For `V = [5, 6, 7, 8]`, the result should be `4`.\n \n `(5, 6, 7), (5, 6, 8),\
+  \ (5, 7, 8), (6, 7, 8)` \n\n# Input/Output\n\n\n - `[input]` integer array `V`\n\
+  \n stick lengths\n \n `3 <= V.length <= 100`\n \n `0 < V[i] <=100`\n\n\n - `[output]`\
+  \ an integer\n\n number of ways we can choose 3 sticks to form a triangle."
+"vc-preamble": "import Imports.AllImports\n\ndef choose (n : Nat) (k : Nat) : Nat\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def counting_triangles (sticks : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem triangle_count_properties {sticks : List Nat} \n  (h1 : sticks.length\
+  \ ≥ 3)\n  (h2 : ∀ x ∈ sticks, x > 0 ∧ x ≤ 1000) :\n  let result := counting_triangles\
+  \ sticks\n  result ≥ 0 ∧ result ≤ choose sticks.length 3 :=\n  sorry\n\n\ntheorem\
+  \ same_lengths_make_triangles {n : Nat} (h : n > 0) :\n  counting_triangles [n,\
+  \ n, n] = 1 :=\n  sorry\n\n\ntheorem triangle_inequality {sticks : List Nat}\n \
+  \ (h1 : sticks.length ≥ 3) \n  (h2 : ∀ x ∈ sticks, x > 0 ∧ x ≤ 1000) :\n  ∃ a b\
+  \ c, (a ∈ sticks ∧ b ∈ sticks ∧ c ∈ sticks) ∧ \n           (a + b > c → counting_triangles\
+  \ sticks > 0) :=\n  sorry\n\n\ntheorem order_invariance {sticks sticksSorted : List\
+  \ Nat}\n  (h1 : sticks.length ≥ 3)\n  (h2 : ∀ x ∈ sticks, x > 0 ∧ x ≤ 100)\n  (h3\
+  \ : ∀ x, (x ∈ sticks ↔ x ∈ sticksSorted)) :\n  counting_triangles sticks = counting_triangles\
+  \ sticksSorted :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval counting_triangles\
+  \ [2, 3, 7, 4]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval counting_triangles [5,\
+  \ 6, 7, 8]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval counting_triangles [2, 2,\
+  \ 2, 2]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

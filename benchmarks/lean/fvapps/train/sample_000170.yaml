@@ -1,0 +1,30 @@
+"vc-description": "Given an array of integers arr of even length n and an integer\
+  \ k.\nWe want to divide the array into exactly n / 2 pairs such that the sum of\
+  \ each pair is divisible by k.\nReturn True If you can find a way to do that or\
+  \ False otherwise.\n \nExample 1:\nInput: arr = [1,2,3,4,5,10,6,7,8,9], k = 5\n\
+  Output: true\nExplanation: Pairs are (1,9),(2,8),(3,7),(4,6) and (5,10).\n\nExample\
+  \ 2:\nInput: arr = [1,2,3,4,5,6], k = 7\nOutput: true\nExplanation: Pairs are (1,6),(2,5)\
+  \ and(3,4).\n\nExample 3:\nInput: arr = [1,2,3,4,5,6], k = 10\nOutput: false\nExplanation:\
+  \ You can try all possible pairs to see that there is no way to divide arr into\
+  \ 3 pairs each with sum divisible by 10.\n\nExample 4:\nInput: arr = [-10,10], k\
+  \ = 2\nOutput: true\n\nExample 5:\nInput: arr = [-1,1,-2,2,-3,3,-4,4], k = 3\nOutput:\
+  \ true\n\n \nConstraints:\n\narr.length == n\n1 <= n <= 10^5\nn is even.\n-10^9\
+  \ <= arr[i] <= 10^9\n1 <= k <= 10^5"
+"vc-preamble": "import Imports.AllImports\n\ndef can_arrange (arr : List Int) (k :\
+  \ Nat) : Bool := sorry\n\ndef Even (n : Nat) : Prop := ∃ k, n = 2 * k\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countOdds (xs : List Int) : Nat :=\n  xs.foldl (fun acc x =>\
+  \ if x % 2 = 1 then acc + 1 else acc) 0\n"
+"vc-theorems": "theorem can_arrange_result_type (arr : List Int) (k : Nat) :\n  can_arrange\
+  \ arr k = true ∨ can_arrange arr k = false := sorry\n\n\ntheorem can_arrange_even_length\
+  \ {arr : List Int} {k : Nat} :\n  can_arrange arr k = true → List.length arr % 2\
+  \ = 0 := sorry\n\n\ntheorem can_arrange_k_one {arr : List Int} :\n  can_arrange\
+  \ arr 1 = true ↔ List.length arr % 2 = 0 := sorry\n\n\ntheorem can_arrange_k_two\
+  \ {arr : List Int} :\n  can_arrange arr 2 = true →\n  Even (countOdds arr) := sorry\n\
+  \n\ntheorem can_arrange_empty {k : Nat} :\n  can_arrange [] k = true := sorry\n\n\
+  \ntheorem can_arrange_singleton {x : Int} {k : Nat} :\n  can_arrange [x] k = false\
+  \ := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval can_arrange [1, 2, 3, 4,\
+  \ 5, 10, 6, 7, 8, 9] 5\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval can_arrange\
+  \ [1, 2, 3, 4, 5, 6] 10\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval can_arrange\
+  \ [-1, 1, -2, 2, -3, 3, -4, 4] 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

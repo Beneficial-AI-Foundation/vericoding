@@ -1,0 +1,11 @@
+"vc-description": "This kata is about multiplying a given number by eight if it is\
+  \ an even number and by nine otherwise."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def simple_multiplication (n : Int) : Int := sorry\n\ntheorem simple_multiplication_even\
+  \ (n : Int) \n  (h : n % 2 = 0) : \n  simple_multiplication n = n * 8 := sorry\n"
+"vc-theorems": "theorem simple_multiplication_odd (n : Int)\n  (h : n % 2 = 1) :\n\
+  \  simple_multiplication n = n * 9 := sorry\n\n/--\ninfo: 16\n-/\n#guard_msgs in\n\
+  #eval simple_multiplication 2\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval simple_multiplication\
+  \ 1\n\n/--\ninfo: 64\n-/\n#guard_msgs in\n#eval simple_multiplication 8\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

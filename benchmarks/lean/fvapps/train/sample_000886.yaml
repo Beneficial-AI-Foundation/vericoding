@@ -1,0 +1,34 @@
+"vc-description": "The Golomb sequence $G_1, G_2, \\ldots$ is a non-decreasing integer\
+  \ sequence such that for each positive integer $n$, $G_n$ is the number of occurrences\
+  \ of $n$ in this sequence. The first few elements of $G$ are $[1, 2, 2, 3, 3, 4,\
+  \ 4, 4, 5, \\ldots]$. Do you know the recurrence relation for the Golomb sequence?\
+  \ It is $G_1 = 1$ and $G_{n+1} = 1+G_{n+1-G_{G_n}}$ for each $n \\ge 1$. A self-describing\
+  \ sequence, isn't it?\nMr. Strange wants to learn CP, so he asked Chef, who is one\
+  \ of the best competitive programmers in the world, to teach him. Chef decided to\
+  \ test his ability by giving him the following task.\nFind the sum of squares of\
+  \ the $L$-th through $R$-th term of the Golomb sequence, i.e. $S = \\sum_{i=L}^R\
+  \ G_i^2$. Since the sum can be quite large, compute it modulo $10^9+7$.\nCan you\
+  \ help Mr. Strange carry out this task given to him by his teacher?\n\n-----Input-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first and only\
+  \ line of each test case contains two space-separated integers $L$ and $R$.\n\n\
+  -----Output-----\nFor each test case, print a single line containing one integer\
+  \ $S$ modulo $10^9+7$.\n\n-----Constraints-----\n- $1 \\le T \\le 10^5$\n- $1 \\\
+  le L \\le R \\le 10^{10}$\n\n-----Subtasks-----\nSubtask #1 (50 points):\n- $T \\\
+  le 10^2$\n- $R \\le 10^9$\nSubtask #2 (50 points): original constraints\n\n-----Example\
+  \ Input-----\n3\n1 5\n2 4\n100 100\n\n-----Example Output-----\n27\n17\n441\n\n\
+  -----Explanation-----\nExample case 1: $1^2 + 2^2 + 2^2 + 3^2 + 3^2 = 27$\nExample\
+  \ case 2: $2^2 + 2^2 + 3^2 = 17$\nExample case 3: $21^2 = 441$"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_golomb_squares (L R : Nat) : Nat := sorry\n\ndef MOD\
+  \ := 1000000007\n"
+"vc-theorems": "theorem golomb_result_within_modulo_bounds {L R : Nat} (h : L ≤ R)\
+  \ :\n  solve_golomb_squares L R < MOD := sorry\n\n\ntheorem golomb_single_element_consistency\
+  \ {n : Nat} :\n  solve_golomb_squares n n = solve_golomb_squares n n := sorry\n\n\
+  \ntheorem golomb_range_additivity {n : Nat} :\n  (solve_golomb_squares 1 (n+1) -\
+  \ solve_golomb_squares 1 n) % MOD = \n    solve_golomb_squares (n+1) (n+1) := sorry\n\
+  \n/--\ninfo: 27\n-/\n#guard_msgs in\n#eval solve_golomb_squares 1 5\n\n/--\ninfo:\
+  \ 17\n-/\n#guard_msgs in\n#eval solve_golomb_squares 2 4\n\n/--\ninfo: 441\n-/\n\
+  #guard_msgs in\n#eval solve_golomb_squares 100 100\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

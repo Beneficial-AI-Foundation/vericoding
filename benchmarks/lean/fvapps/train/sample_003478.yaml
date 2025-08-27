@@ -1,0 +1,20 @@
+"vc-description": "You are given two positive integers `a` and `b` (`a < b <= 20000`).\
+  \ Complete the function which returns a list of all those numbers in the interval\
+  \ `[a, b)` whose digits are made up of prime numbers (`2, 3, 5, 7`) but which are\
+  \ not primes themselves.\n\n\nBe careful about your timing!\n\n\nGood luck :)"
+"vc-preamble": "import Imports.AllImports\n\ndef is_prime (n : Nat) : Bool := sorry\n\
+  \ndef all_dig_prime (n : Nat) : Bool := sorry \n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def not_primes (start finish : Nat) : List Nat := sorry\n\ndef\
+  \ List.sorted (l : List Nat) : Prop := \n  ∀ i j, i < j → j < l.length → \n  match\
+  \ l.get? i, l.get? j with\n  | some x, some y => x ≤ y\n  | _, _ => true\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n"
+"vc-theorems": "theorem not_primes_empty_for_equal_bounds (n : Nat) :\n  not_primes\
+  \ n n = [] := sorry\n\n\ntheorem not_primes_empty_for_invalid_range (start finish\
+  \ : Nat)\n  (h : finish < start) :\n  not_primes start finish = [] := sorry\n\n\
+  /--\ninfo: [22, 25, 27, 32, 33, 35, 52, 55, 57, 72, 75]\n-/\n#guard_msgs in\n#eval\
+  \ not_primes 2 77\n\n/--\ninfo: [522, 525, 527, 532, 533, 535, 537, 552, 553, 555,\
+  \ 572, 573, 575]\n-/\n#guard_msgs in\n#eval not_primes 500 600\n\n/--\ninfo: [2722,\
+  \ 2723, 2725, 2727, 2732, 2733, 2735, 2737]\n-/\n#guard_msgs in\n#eval not_primes\
+  \ 2700 2750\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

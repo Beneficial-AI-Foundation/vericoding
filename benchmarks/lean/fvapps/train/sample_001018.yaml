@@ -1,0 +1,33 @@
+"vc-description": "-----\nARRAY AND DISTINCT ELEMENTS\n-----\n\nChef is multitalented\
+  \ but he mistakenly took part in 2 contest which will take place\nat the same time.\
+  \ So while chef is busy at one cooking contest, he wants you to\ntake part in coding\
+  \ contest. Chef wants u to solve this program for him.\n\n\t\n\nYou have been given\
+  \ an array of size n. You have to calculate a subarray of size k\nwith maximum sum\
+  \ having distinct elements same as original array.\n\n\t\t\n\t\t\n\n-----Input Format-----\n\
+  \nFirst line contains no. of test cases. Second line contains n and k. Third line\n\
+  contains array of n integers.\n\n\n-----Output-----\n\nPrint maximum possible sum\
+  \ as stated in question\n\n\t\t\n\t\t\n\n-----Example Text Case-----\nInput:\n\n\
+  1\n10 6\n8 8 3 5 3 8 5 7 7 7\n\nOutput:\n37\n\n\t\t"
+"vc-preamble": "import Imports.AllImports\n\ndef sum (l : List Nat) : Nat :=\n  l.foldl\
+  \ (· + ·) 0\n\n\ndef find_max_distinct_subarray_sum (n k : Nat) (arr : List Nat)\
+  \ : Int :=\n  sorry\n\n\ndef allEqual (l : List Nat) : Prop :=\n  ∀ x y, x ∈ l →\
+  \ y ∈ l → x = y\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def uniqueCount (l : List Nat) : Nat :=\n  (l.eraseDups).length\n"
+"vc-theorems": "theorem max_distinct_subarray_sum_within_bounds \n  {n k : Nat} {arr\
+  \ : List Nat} (h1 : k ≤ n) (h2 : n = arr.length) \n  (h3 : ∀ x, x ∈ arr → 1 ≤ x\
+  \ ∧ x ≤ 100) :\n  let result := find_max_distinct_subarray_sum n k arr\n  result\
+  \ = -1 ∨ \n  result ≤ (List.range (n - k + 1)).foldl (fun acc i => \n    max acc\
+  \ (sum ((arr.take (i + k)).drop i))) 0 := \n  sorry\n\n\ntheorem identical_elements_sum_first_k\n\
+  \  {n k : Nat} {arr : List Nat} \n  (h1 : k ≤ n) (h2 : n = arr.length)\n  (h3 :\
+  \ allEqual arr) (h4 : ∀ x, x ∈ arr → x > 0) :\n  find_max_distinct_subarray_sum\
+  \ n k arr = sum (arr.take k) :=\n  sorry \n\n\ntheorem distinct_count_consistent\n\
+  \  {n k : Nat} {arr : List Nat} \n  (h1 : k ≤ n) (h2 : n = arr.length) :\n  let\
+  \ result := find_max_distinct_subarray_sum n k arr\n  result = -1 ∨\n  ∀ i, i +\
+  \ k ≤ n →\n    sum ((arr.take (i + k)).drop i) = result →\n    uniqueCount ((arr.take\
+  \ (i + k)).drop i) = uniqueCount arr :=\n  sorry\n\n/--\ninfo: 37\n-/\n#guard_msgs\
+  \ in\n#eval find_max_distinct_subarray_sum 10 6 [8, 8, 3, 5, 3, 8, 5, 7, 7, 7]\n\
+  \n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval find_max_distinct_subarray_sum 5 3 [1,\
+  \ 2, 1, 2, 3]\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval find_max_distinct_subarray_sum\
+  \ 4 2 [5, 5, 5, 5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,27 @@
+"vc-description": "Return the century of the input year. The input will always be\
+  \ a 4 digit string, so there is no need for validation. \n\n### Examples\n```\n\"\
+  1999\" --> \"20th\"\n\"2011\" --> \"21st\"\n\"2154\" --> \"22nd\"\n\"2259\" -->\
+  \ \"23rd\"\n\"1124\" --> \"12th\"\n\"2000\" --> \"20th\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def what_century (year : String) : String := sorry\n\ntheorem what_century_valid_suffix\
+  \ {year : String} \n  (h : year.length = 4 ∧ (∀ c ∈ year.data, '0' ≤ c ∧ c ≤ '9'))\
+  \ : \n  let result := what_century year\n  (result.endsWith \"st\" ∨ result.endsWith\
+  \ \"nd\" ∨ result.endsWith \"rd\" ∨ result.endsWith \"th\") := sorry\n"
+"vc-theorems": "theorem what_century_positive {year : String}\n  (h : year.length\
+  \ = 4 ∧ (∀ c ∈ year.data, '0' ≤ c ∧ c ≤ '9')) :\n  let result := what_century year\n\
+  \  let century_num := (result.dropRight 2).toNat!\n  century_num > 0 := sorry\n\n\
+  \ntheorem what_century_calculation {year : String}\n  (h : year.length = 4 ∧ (∀\
+  \ c ∈ year.data, '0' ≤ c ∧ c ≤ '9')) :\n  let year_num := year.toNat!\n  let expected_century\
+  \ := (year_num - 1) / 100 + 1\n  let result := what_century year\n  let century_num\
+  \ := (result.dropRight 2).toNat!\n  century_num = expected_century := sorry\n\n\n\
+  theorem what_century_suffix_rules {year : String}\n  (h : year.length = 4 ∧ (∀ c\
+  \ ∈ year.data, '0' ≤ c ∧ c ≤ '9')) :\n  let result := what_century year\n  let century_num\
+  \ := (result.dropRight 2).toNat!\n  (century_num < 20 → result.endsWith \"th\")\
+  \ ∧\n  (century_num ≥ 20 → \n    match century_num % 10 with\n    | 1 => result.endsWith\
+  \ \"st\"\n    | 2 => result.endsWith \"nd\"\n    | 3 => result.endsWith \"rd\"\n\
+  \    | _ => result.endsWith \"th\"\n  ) := sorry\n\n/--\ninfo: '20th'\n-/\n#guard_msgs\
+  \ in\n#eval what_century \"1999\"\n\n/--\ninfo: '21st'\n-/\n#guard_msgs in\n#eval\
+  \ what_century \"2011\"\n\n/--\ninfo: '20th'\n-/\n#guard_msgs in\n#eval what_century\
+  \ \"2000\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,27 @@
+"vc-description": "You have to create a function,named `insertMissingLetters`, that\
+  \ takes in a `string` and outputs the same string processed in a particular way.\n\
+  \nThe function should insert **only after the first occurrence** of each character\
+  \ of the input string, all the **alphabet letters** that:\n\n-**are NOT** in the\
+  \ original string  \n-**come after** the letter of the string you are processing\
+  \  \n\nEach added letter should be in `uppercase`, the letters of the original string\
+  \ will always be in `lowercase`.\n\n\nExample:  \n\n\n`input`: \"holly\"  \n\n`missing\
+  \ letters`: \"a,b,c,d,e,f,g,i,j,k,m,n,p,q,r,s,t,u,v,w,x,z\"  \n\n`output`: \"hIJKMNPQRSTUVWXZoPQRSTUVWXZlMNPQRSTUVWXZlyZ\"\
+  \  \n\n\nYou don't need to validate input, the input string will always contain\
+  \ a certain amount of lowercase letters  (min 1 / max 50)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def insert_missing_letters (s : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem result_includes_input (s : String) (c : Char) :\n  c ∈ s.data\
+  \ → c ∈ (insert_missing_letters s).data :=\n  sorry\n\n\ntheorem length_preserves_or_increases\
+  \ (s : String) :\n  (insert_missing_letters s).length ≥ s.length :=\n  sorry\n\n\
+  \ntheorem result_only_contains_letters (s : String) (c : Char) :\n  c ∈ (insert_missing_letters\
+  \ s).data → c.isAlpha :=\n  sorry\n\n\ntheorem case_pattern (s : String) (i : String.Pos)\
+  \ (c : Char) :\n  c = (insert_missing_letters s).get i →\n    (∃ j : String.Pos,\
+  \ j ≤ i ∧ c.toLower = s.get j → c.isLower) ∧\n    (¬∃ j : String.Pos, j ≤ i ∧ c.toLower\
+  \ = s.get j → c.isUpper) :=\n  sorry\n\n\ntheorem single_letter_z : \n  insert_missing_letters\
+  \ \"z\" = \"z\" :=\n  sorry\n\n\ntheorem single_letter_a :\n  insert_missing_letters\
+  \ \"a\" = \"aBCDEFGHIJKLMNOPQRSTUVWXYZ\" :=\n  sorry\n\n/--\ninfo: 'hIJKMNPQRSTUVWXYZeFGIJKMNPQRSTUVWXYZlMNPQRSTUVWXYZloPQRSTUVWXYZ'\n\
+  -/\n#guard_msgs in\n#eval insert_missing_letters \"hello\"\n\n/--\ninfo: 'pQRSTUVWYZiJKLMNOQRSTUVWYZxYZxaBCDEFGHJKLMNOQRSTUVWYZ'\n\
+  -/\n#guard_msgs in\n#eval insert_missing_letters \"pixxa\"\n\n/--\ninfo: 'z'\n-/\n\
+  #guard_msgs in\n#eval insert_missing_letters \"z\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

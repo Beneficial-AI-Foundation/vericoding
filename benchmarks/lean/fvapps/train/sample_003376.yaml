@@ -1,0 +1,43 @@
+"vc-description": "You are a skier (marked below by the `X`). You have made it to\
+  \ the Olympics! Well done.\n\n```\n\\_\\_\\_X\\_\n\\*\\*\\*\\*\\*\\\n\\*\\*\\*\\\
+  *\\*\\*\\\n\\*\\*\\*\\*\\*\\*\\*\\\n\\*\\*\\*\\*\\*\\*\\*\\*\\\n\\*\\*\\*\\*\\*\\\
+  *\\*\\*\\*\\\\.\\_\\_\\_\\_/\n```\n\nYour job in this kata is to calculate the maximum\
+  \ speed you will achieve during your downhill run. The speed is dictated by the\
+  \ height of the mountain. Each element of the array is a layer of the mountain as\
+  \ indicated by the diagram above (and further below). So for this example the mountain\
+  \ has a height of 5 (5 rows of stars). `Speed` is `mountain height * 1.5`.\n\nThe\
+  \ jump length is calculated by `(mountain height * speed * 9) / 10`. Jump length\
+  \ should be rounded to 2 decimal places.\n\nYou must return the length of the resulting\
+  \ jump as a string in the following format:\n\n* when less than 10 m: `\"X metres:\
+  \ He's crap!\"`\n* between 10 and 25 m: `\"X metres: He's ok!\"`\n* between 25 and\
+  \ 50 m: `\"X metres: He's flying!\"`\n* when more than 50 m: `\"X metres: Gold!!\"\
+  `\n\nSo in the example case above, the right answer would be `\"33.75 metres: He's\
+  \ flying!\"`\n\nSadly, it takes a lot of time to make arrays look like mountains,\
+  \ so the tests wont all look so nice. To give an example, the above mountain would\
+  \ look as follows in most cases:\n\n```\n[*****, ******, *******, ********, *********]\n\
+  ```\nNot as much fun, eh?\n\n*p.s. if you think \"metre\" is incorrect, please [read\
+  \ this](https://en.wikipedia.org/wiki/Metre#Spelling)*"
+"vc-preamble": "import Imports.AllImports\n\ndef ski_jump (mountain: List String)\
+  \ : String := sorry\n\ndef isValidMessage (msg: String) : Bool :=\n  msg = \"He's\
+  \ crap!\" || msg = \"He's ok!\" || msg = \"He's flying!\" || msg = \"Gold!!\"\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def stringToFloat (s: String) : Float := sorry -- helper function\n\
+  \ntheorem ski_jump_output_format {mountain : List String} (h : mountain.length >\
+  \ 0) :\n  let result := ski_jump mountain\n  let parts := result.splitOn \" metres:\
+  \ \"\n  parts.length = 2 ∧ \n  (let number := parts[0]!\n   let message := parts[1]!\n\
+  \   stringToFloat number ≥ 0 ∧\n   isValidMessage message) :=\nsorry\n"
+"vc-theorems": "theorem jump_length_proportional_to_height {mountain : List String}\
+  \ (h : mountain.length > 0) :\n  let result := ski_jump mountain\n  let jumpLength\
+  \ := stringToFloat (result.splitOn \" metres: \")[0]!\n  jumpLength = Float.ofNat\
+  \ mountain.length * (Float.ofNat mountain.length * 1.5) * 0.9 :=\nsorry\n\n\ntheorem\
+  \ message_thresholds {mountain : List String} (h : mountain.length > 0) :\n  let\
+  \ result := ski_jump mountain\n  let length := stringToFloat (result.splitOn \"\
+  \ metres: \")[0]!\n  let message := (result.splitOn \"metres: \")[1]!\n  (length\
+  \ < 10 → message = \"He's crap!\") ∧\n  (length ≥ 10 ∧ length < 25 → message = \"\
+  He's ok!\") ∧\n  (length ≥ 25 ∧ length < 50 → message = \"He's flying!\") ∧\n  (length\
+  \ ≥ 50 → message = \"Gold!!\") :=\nsorry\n\n/--\ninfo: \"1.35 metres: He's crap!\"\
+  \n-/\n#guard_msgs in\n#eval ski_jump [\"*\"]\n\n/--\ninfo: \"12.15 metres: He's\
+  \ ok!\"\n-/\n#guard_msgs in\n#eval ski_jump [\"*\", \"**\", \"***\"]\n\n/--\ninfo:\
+  \ \"48.60 metres: He's flying!\"\n-/\n#guard_msgs in\n#eval ski_jump [\"*\", \"\
+  **\", \"***\", \"****\", \"*****\", \"******\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

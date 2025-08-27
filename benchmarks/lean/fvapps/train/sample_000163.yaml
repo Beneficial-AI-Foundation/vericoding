@@ -1,0 +1,19 @@
+"vc-description": "Given 3 positives numbers a, b and c. Return the minimum flips\
+  \ required in some bits of a and b to make ( a OR b == c ). (bitwise OR operation).\n\
+  Flip operation consists of change any single bit 1 to 0 or change the bit 0 to 1 in\
+  \ their binary representation.\n \nExample 1:\n\nInput: a = 2, b = 6, c = 5\nOutput:\
+  \ 3\nExplanation: After flips a = 1 , b = 4 , c = 5 such that (a OR b == c)\nExample\
+  \ 2:\nInput: a = 4, b = 2, c = 7\nOutput: 1\n\nExample 3:\nInput: a = 1, b = 2,\
+  \ c = 3\nOutput: 0\n\n \nConstraints:\n\n1 <= a <= 10^9\n1 <= b <= 10^9\n1 <= c <=\
+  \ 10^9"
+"vc-preamble": "import Imports.AllImports\n\ndef min_flips (a b c : Nat) : Nat :=\
+  \ sorry\n\ndef count_ones (n : Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def bitwise_or (a b : Nat) : Nat := sorry\n\ntheorem min_flips_non_negative\
+  \ (a b c : Nat) :\n  min_flips a b c ≥ 0 := sorry\n\n\n"
+"vc-theorems": "theorem min_flips_identity_left (c : Nat) :\n  min_flips c 0 c = 0\
+  \ := sorry\n\n\ntheorem min_flips_identity_right (c : Nat) :\n  min_flips 0 c c\
+  \ = 0 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval min_flips 2 6 5\n\n/--\n\
+  info: 1\n-/\n#guard_msgs in\n#eval min_flips 4 2 7\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval min_flips 1 2 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

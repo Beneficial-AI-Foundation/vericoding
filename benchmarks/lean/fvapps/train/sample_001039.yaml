@@ -1,0 +1,28 @@
+"vc-description": "Problem description.\nWinston and Royce love sharing memes with\
+  \ each other. They express the amount of seconds they laughed ar a meme as the number\
+  \ of ‘XD’ subsequences in their messages. Being optimization freaks, they wanted\
+  \ to find the string with minimum possible length and having exactly the given number\
+  \ of ‘XD’ subsequences.\n\n-----Input-----\n- The first line of the input contains\
+  \ an integer T denoting the number of test cases.\n- Next T lines contains a single\
+  \ integer N, the no of seconds laughed.\n\n-----Output-----\n- \nFor each input,\
+  \ print the corresponding string having minimum length. If there are multiple possible\
+  \ answers, print any.\n\n-----Constraints-----\n- 1 ≤ T ≤ 1000\n- 1 ≤ N ≤ 109\n\
+  - 1 ≤ Sum of length of output over all testcases ≤ 5*105\n\n-----Example-----\n\
+  Input:\n1\n9\n\nOutput:\nXXXDDD\n\n-----Explanation-----\nSome of the possible strings\
+  \ are - XXDDDXD,XXXDDD,XDXXXDD,XDXDXDD etc. Of these, XXXDDD is the smallest."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_length_xd_sequence (n : Nat) : String := sorry\n\ntheorem\
+  \ min_length_xd_sequence_only_contains_x_d (n : Nat) :\n  let result := min_length_xd_sequence\
+  \ n\n  ∀ c ∈ result.data, c = 'X' ∨ c = 'D' := sorry\n"
+"vc-theorems": "theorem min_length_xd_sequence_has_n_subsequences (n : Nat) :\n  let\
+  \ result := min_length_xd_sequence n\n  let x_count := (result.data.filter (· =\
+  \ 'X')).length\n  let d_count := (result.data.filter (· = 'D')).length\n  x_count\
+  \ * d_count = n := sorry\n\n\ntheorem min_length_xd_sequence_min_length (n : Nat)\
+  \ : \n  let result := min_length_xd_sequence n\n  result.length ≥ 2 ∧\n  ∀ (shorter\
+  \ : String), shorter.length = result.length - 1 →\n  let x_shorter := (shorter.data.filter\
+  \ (· = 'X')).length\n  let d_shorter := (shorter.data.filter (· = 'D')).length\n\
+  \  x_shorter * d_shorter < n := sorry\n\n/--\ninfo: 'XXXDDD'\n-/\n#guard_msgs in\n\
+  #eval min_length_xd_sequence 9\n\n/--\ninfo: 'XXDD'\n-/\n#guard_msgs in\n#eval min_length_xd_sequence\
+  \ 4\n\n/--\ninfo: 'XD'\n-/\n#guard_msgs in\n#eval min_length_xd_sequence 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

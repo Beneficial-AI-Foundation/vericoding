@@ -1,0 +1,44 @@
+"vc-description": "A group of N golfers wants to play in groups of G players for D\
+  \ days in such a way that no golfer plays more than once with any other golfer.\
+  \ For example, for N=20, G=4, D=5, the solution at Wolfram MathWorld is\n\n```\n\
+  \ Mon:   ABCD    EFGH    IJKL    MNOP    QRST\n Tue:   AEIM    BJOQ    CHNT    DGLS\
+  \    FKPR\n Wed:   AGKO    BIPT    CFMS    DHJR    ELNQ\n Thu:   AHLP    BKNS  \
+  \  CEOR    DFIQ    GJMT\n Fri:   AFJN    BLMR    CGPQ    DEKT    HIOS\n```\n\nWrite\
+  \ a function that validates a proposed solution, a list of list of strings, as being\
+  \ a solution to the social golfer problem. Each character represents a golfer, and\
+  \ each string is a group of players. Rows represent days. The solution above would\
+  \ be encoded as:\n\n```\n [\n  ['ABCD', 'EFGH', 'IJKL', 'MNOP', 'QRST'],\n  ['AEIM',\
+  \ 'BJOQ', 'CHNT', 'DGLS', 'FKPR'],\n  ['AGKO', 'BIPT', 'CFMS', 'DHJR', 'ELNQ'],\n\
+  \  ['AHLP', 'BKNS', 'CEOR', 'DFIQ', 'GJMT'],\n  ['AFJN', 'BLMR', 'CGPQ', 'DEKT',\
+  \ 'HIOS']\n ]\n```\n\nYou need to make sure (1) that each golfer plays exactly once\
+  \ every day, (2) that the number and size of the groups is the same every day, and\
+  \ (3) that each player plays with every other player *at most* once.\n\nSo although\
+  \ each player must play every day, there can be particular pairs of players that\
+  \ never play together.\n\nIt is not necessary to consider the case where the number\
+  \ of golfers is zero; no tests will check for that. If you do wish to consider that\
+  \ case, note that you should accept as valid all possible solutions for zero golfers,\
+  \ who (vacuously) can indeed play in an unlimited number of groups of zero."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def valid (schedule : List (List (List Char))) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem empty_or_valid_structure\n  (schedule : List (List (List Char)))\
+  \ :\n  (schedule = [] ∨ (∃ day ∈ schedule, day = [])) → valid schedule ∧\n  valid\
+  \ schedule →\n    (∀ day ∈ schedule,\n      (∀ day' ∈ schedule, day.length = day'.length)\
+  \ ∧\n      (∀ group ∈ day, ∀ group' ∈ day, group.length = group'.length)) :=\n \
+  \ sorry\n\n\ntheorem single_day_valid\n  (schedule : List (List (List Char))) :\n\
+  \  schedule.length = 1 →\n  valid schedule →\n  ∀ day ∈ schedule,\n    let golfers\
+  \ := List.join day\n    ∀ golfer ∈ golfers,\n      List.length (List.filter (List.elem\
+  \ golfer) day) = 1 :=\n  sorry\n\n\ntheorem multi_day_valid\n  (schedule : List\
+  \ (List (List Char))) :\n  schedule.length > 1 →\n  valid schedule →\n  let golfers\
+  \ := List.join (List.head! schedule)\n  (∀ day ∈ schedule, List.join day = golfers)\
+  \ ∧\n  (∀ g1 ∈ golfers,\n   ∀ g2 ∈ golfers,\n   g1 ≠ g2 →\n   ∀ day1 ∈ schedule,\n\
+  \   ∀ group1 ∈ day1,\n   group1.contains g1 ∧ group1.contains g2 →\n   ∀ day2 ∈\
+  \ schedule,\n   ∀ group2 ∈ day2,\n   day1 ≠ day2 →\n   ¬(group2.contains g1 ∧ group2.contains\
+  \ g2)) :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval valid [[\"ABCD\"\
+  , \"EFGH\", \"IJKL\", \"MNOP\", \"QRST\"], [\"AEIM\", \"BJOQ\", \"CHNT\", \"DGLS\"\
+  , \"FKPR\"], [\"AGKO\", \"BIPT\", \"CFMS\", \"DHJR\", \"ELNQ\"], [\"AHLP\", \"BKNS\"\
+  , \"CEOR\", \"DFIQ\", \"GJMT\"], [\"AFJN\", \"BLMR\", \"CGPQ\", \"DEKT\", \"HIOS\"\
+  ]]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval valid [[\"AB\", \"AC\"]]\n\n/--\n\
+  info: False\n-/\n#guard_msgs in\n#eval valid [[\"AB\", \"CD\"], [\"AB\", \"CD\"\
+  ]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

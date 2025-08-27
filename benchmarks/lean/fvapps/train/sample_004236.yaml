@@ -1,0 +1,18 @@
+"vc-description": "A Narcissistic Number is a number of length n in which the sum\
+  \ of its digits to the power of n is equal to the original number. If this seems\
+  \ confusing, refer to the example below.\n\nEx: 153, where n = 3 (number of digits\
+  \ in 153)\n1^(3) + 5^(3) + 3^(3) = 153\n\nWrite a method is_narcissistic(i) (in\
+  \ Haskell: isNarcissistic :: Integer -> Bool) which returns whether or not i is\
+  \ a Narcissistic Number."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_narcissistic : Nat → Bool := sorry\n\ndef poweredDigitsSum\
+  \ : Nat → Nat := sorry\n"
+"vc-theorems": "theorem single_digit_narcissistic {n : Nat} (h : n < 10) : \n  is_narcissistic\
+  \ n = true := sorry\n\n\ntheorem narcissistic_sum_property {n : Nat} (h : is_narcissistic\
+  \ n = true) :\n  poweredDigitsSum n = n := sorry\n\n\ntheorem non_narcissistic_sum_property\
+  \ {n : Nat} (h : is_narcissistic n = false) :\n  poweredDigitsSum n ≠ n := sorry\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_narcissistic 153\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval is_narcissistic 370\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval is_narcissistic 407\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

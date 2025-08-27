@@ -1,0 +1,32 @@
+"vc-description": "This kata is about singly \nlinked list.  A linked list is an ordered\
+  \ set of data elements, each containing a link to its successor (and sometimes its\
+  \ predecessor, known as a double linked list).  You are you to implement an algorithm\
+  \ to find the kth to last element.\n\nFor example given a linked list of:\na ->\
+  \ b -> c -> d\n\nif k is the number one then d should be returned\nif k is the number\
+  \ two then c should be returned\nif k is the number three then b should be returned\n\
+  if k is the number four then a should be returned\nif k exceeds the size of the\
+  \ list then None returned\n\n\n\nSpecial Note --> Node classes contain two fields;\
+  \ data and next.\nAnd to access the head of the list, use head. e.g. linked_list.head"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def search_k_from_end {α : Type} (l : LinkedList α) (k : Nat) :\
+  \ Option α :=\n  sorry\n"
+"vc-theorems": "theorem search_k_from_end_empty (α : Type) (k : Nat) :\n  k > 0 →\
+  \ search_k_from_end (@LinkedList.mk α []) k = none := \n  sorry\n\n\ntheorem search_k_from_end_too_large\
+  \ (α : Type) (l : LinkedList α) (k len : Nat) (vals : List α) :\n  k > len → l.vals\
+  \ = vals → len = vals.length → search_k_from_end l k = none :=\n  sorry\n\n\ntheorem\
+  \ search_k_from_end_valid (α : Type) (l : LinkedList α) (k len : Nat) (vals : List\
+  \ α) :\n  k ≤ len → k > 0 → l.vals = vals → len = vals.length → \n  ∃ (x : α), x\
+  \ ∈ vals ∧ search_k_from_end l k = some x :=\n  sorry\n\n\ntheorem search_k_from_end_single_element\
+  \ (α : Type) (x : α) :\n  search_k_from_end (@LinkedList.mk α [x]) 1 = some x :=\n\
+  \  sorry\n\n\ntheorem search_k_from_end_single_element_too_large (α : Type) (x :\
+  \ α) :\n  search_k_from_end (@LinkedList.mk α [x]) 2 = none :=\n  sorry\n\n/--\n\
+  info: 'd'\n-/\n#guard_msgs in\n#eval search_k_from_end LinkedList() 1\n\n/--\ninfo:\
+  \ 'c'\n-/\n#guard_msgs in\n#eval search_k_from_end ll 2\n\n/--\ninfo: 'b'\n-/\n\
+  #guard_msgs in\n#eval search_k_from_end ll 3\n\n/--\ninfo: 'a'\n-/\n#guard_msgs\
+  \ in\n#eval search_k_from_end ll 4\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval\
+  \ search_k_from_end ll 5\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval search_k_from_end\
+  \ LinkedList() 1\n\n/--\ninfo: 'x'\n-/\n#guard_msgs in\n#eval search_k_from_end\
+  \ LinkedList() 1\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval search_k_from_end\
+  \ ll3 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

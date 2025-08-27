@@ -1,0 +1,33 @@
+"vc-description": "Decompose a number `num` into an array (tuple in Haskell, array\
+  \ of arrays `long[][]` in C# or Java) of the form `[[k1,k2,k3...], r]`,  `([k1,k2,k3...],\
+  \ r)` in Haskell, `[[k1,k2,k3...], [r]]` in C# or Java) such that:\n\n1. each kn\
+  \ is more than one\n2. eack kn is maximized (first maximizing for 2 then 3 then\
+  \ 4 and so on)\n3. and 2^(k1) + 3^(k2) + 4^(k3) + ... + n^(kn-1) + r = num\n\n\n\
+  ##Examples\n```\n# when there are no `k` more than 1:\n\n3 \n\n[[], 3] = \n\n3\n\
+  \n# when the remainder is zero:\n\n8330475\n\n[[22, 13, 10, 8, 7, 6, 6, 5, 5, 5,\
+  \ 4, 4, 4, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2], 0] = \n\n2 ^ 22 + 3 ^ 13 + 4 ^ 10 + 5\
+  \ ^ 8 + 6 ^ 7 + 7 ^ 6 + 8 ^ 6 + 9 ^ 5 + 10 ^ 5 + 11 ^ 5 + 12 ^ 4 + 13 ^ 4 + 14 ^\
+  \ 4 + 15 ^ 3 + 16 ^ 3 + 17 ^ 3 + 18 ^ 3 + 19 ^ 3 + 20 ^ 3 + 21 ^ 2 + 22 ^ 2 + 23\
+  \ ^ 2 + 24 ^ 2 + 0 = 8330475\n\n# when there is both `k` and a remainder:\n\n26\
+  \ \n\n[[4, 2], 1] = \n\n2 ^ 4 + 3 ^ 2 + 1 = 26\n\n# when there is neither `k` nor\
+  \ a remainder:\n\n0\n\n[[], 0] = \n\n0\n```\n\nAs allways any feedback would be\
+  \ much appreciated"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def decompose : Int → List Nat × Int := sorry\n\n/-- Decompose\
+  \ function's list result contains only numbers greater than 1 -/"
+"vc-theorems": "theorem decompose_result_gt_one (n : Int) :\n  let (result, _) :=\
+  \ decompose n\n  ∀ k ∈ result, k > 1 := sorry\n\n/-- Decompose function's remainder\
+  \ is non-negative -/\n\ntheorem decompose_remainder_nonneg (n : Int) :\n  let (_,\
+  \ remainder) := decompose n\n  remainder ≥ 0 := sorry\n\n/-- The decomposition recomposes\
+  \ back to the original number -/\n\ntheorem decompose_recompose (n : Int) :\n  let\
+  \ (result, remainder) := decompose n\n  let recomposed := remainder + (List.foldl\
+  \ (fun acc (i, k) => acc + (i + 2)^k) 0 \n    (List.zip (List.range result.length)\
+  \ result))\n  recomposed = n := sorry\n\n/-- Negative inputs return empty list and\
+  \ same number as remainder -/\n\ntheorem decompose_negative (n : Int) :\n  n < 0\
+  \ →\n  decompose n = ([], n) := sorry\n\n/-- Small inputs (0,1) return empty list\
+  \ and same number -/\n\ntheorem decompose_small_inputs (n : Int) :\n  n = 0 ∨ n\
+  \ = 1 →\n  decompose n = ([], n) := sorry\n\n/--\ninfo: [[], 3]\n-/\n#guard_msgs\
+  \ in\n#eval decompose 3\n\n/--\ninfo: [[4, 2], 1]\n-/\n#guard_msgs in\n#eval decompose\
+  \ 26\n\n/--\ninfo: [[], 0]\n-/\n#guard_msgs in\n#eval decompose 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

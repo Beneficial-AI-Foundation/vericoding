@@ -1,0 +1,44 @@
+"vc-description": "You are provided with the marks of entire class in Data structures\
+  \ exam out of 100. You need to calculate the number of students having backlog (passing\
+  \ marks is >=31) and the average of the class. But this average is not a normal\
+  \ average, for this average marks of students having backlog are not considered\
+  \ but they will be considered in number of students. Also print the index of topper’s\
+  \ marks and print the difference of everyone’s marks with respect to the topper.\
+  \ \nIn first line print the number of students having backlog and average of the\
+  \ class. In second line print indices of all the toppers(in case of more than 1\
+  \ topper print index of all toppers in reverse order). Next N lines print the difference\
+  \ of everyone’s marks with respect to topper(s).\nNote- if all students have backlog\
+  \ than average will be 0.\nINPUT\nThe first line of the input contains an integer\
+  \ T denoting the number of test cases.\nNext line contains N denoting the no of\
+  \ students in the class.\nThe line contains N space seprated integers A1,A2,A3….AN\
+  \ denoting the marks of each student in exam.\nOUTPUT\nFirst line contains the number\
+  \ of students having backlog and the special average of marks as described above.\
+  \ Average must have 2 decimal places.\nNext line contains the indices of all the\
+  \ toppers in given array in reverse order.\nNext N lines contain the difference\
+  \ of every student’s marks with respect to toppers.\nConstraints\n1<= T <= 100\n\
+  1<= N <= 30\n0<= Ai<= 100\nExample\nInput\n1\n9\n56 42 94 25 74 99 27 52 83\nOutput\n\
+  2 55.55\n5 \n43\n57\n5\n74\n25\n0\n72\n47\n16"
+"vc-preamble": "import Imports.AllImports\n\ndef sum (l: List Nat) : Nat :=\n  l.foldl\
+  \ (· + ·) 0\n\n\ndef natToFloat (n : Nat) : Float :=\n  Float.ofNat n\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_class_stats (marks: List Nat) : Nat × Float × List\
+  \ Nat × List Nat :=\n  sorry\n"
+"vc-theorems": "theorem calculate_class_stats_backlog_matches_failing_count \n  (marks:\
+  \ List Nat) (h: marks.length > 0) (h2: ∀ x ∈ marks, x ≤ 100) :\n  let (backlog,\
+  \ _, _, _) := calculate_class_stats marks\n  backlog = (marks.filter (· < 31)).length\
+  \ := sorry\n\n\ntheorem calculate_class_stats_average_matches_passing_average\n\
+  \  (marks: List Nat) (h: marks.length > 0) (h2: ∀ x ∈ marks, x ≤ 100) :\n  let (_,\
+  \ avg, _, _) := calculate_class_stats marks\n  let passing := marks.filter (· ≥\
+  \ 31)\n  passing.isEmpty → avg = 0 ∧\n  ¬passing.isEmpty → avg = natToFloat (sum\
+  \ passing) / natToFloat marks.length := sorry\n\n\ntheorem calculate_class_stats_toppers_correct\n\
+  \  (marks: List Nat) (h: marks.length > 0) (h2: ∀ x ∈ marks, x ≤ 100) :\n  let (_,\
+  \ _, toppers, _) := calculate_class_stats marks\n  let maxMark := marks.maximum?.getD\
+  \ 0\n  toppers = (List.range marks.length).filter (fun i => \n    marks.get! i =\
+  \ maxMark) := sorry\n\n\ntheorem calculate_class_stats_diffs_correct\n  (marks:\
+  \ List Nat) (h: marks.length > 0) (h2: ∀ x ∈ marks, x ≤ 100) :\n  let (_, _, _,\
+  \ diffs) := calculate_class_stats marks\n  let maxMark := marks.maximum?.getD 0\n\
+  \  diffs = marks.map (fun x => maxMark - x) := sorry\n\n\ntheorem calculate_class_stats_diffs_length\n\
+  \  (marks: List Nat) (h: marks.length > 0) (h2: ∀ x ∈ marks, x ≤ 100) :\n  let (_,\
+  \ _, _, diffs) := calculate_class_stats marks\n  diffs.length = marks.length :=\
+  \ sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

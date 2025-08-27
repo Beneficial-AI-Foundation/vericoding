@@ -1,0 +1,47 @@
+"vc-description": "We have a tree with N vertices. The vertices are numbered 1, 2,\
+  \ ..., N. The i-th (1 ≦ i ≦ N - 1) edge connects the two vertices A_i and B_i.\n\
+  Takahashi wrote integers into K of the vertices. Specifically, for each 1 ≦ j ≦\
+  \ K, he wrote the integer P_j into vertex V_j. The remaining vertices are left empty.\
+  \ After that, he got tired and fell asleep.\nThen, Aoki appeared. He is trying to\
+  \ surprise Takahashi by writing integers into all empty vertices so that the following\
+  \ condition is satisfied:\n - Condition: For any two vertices directly connected\
+  \ by an edge, the integers written into these vertices differ by exactly 1.\nDetermine\
+  \ if it is possible to write integers into all empty vertices so that the condition\
+  \ is satisfied. If the answer is positive, find one specific way to satisfy the\
+  \ condition.\n\n-----Constraints-----\n - 1 ≦ N ≦ 10^5\n - 1 ≦ K ≦ N\n - 1 ≦ A_i,\
+  \ B_i ≦ N (1 ≦ i ≦ N - 1)\n - 1 ≦ V_j ≦ N (1 ≦ j ≦ K) (21:18, a mistake in this\
+  \ constraint was corrected)\n - 0 ≦ P_j ≦ 10^5 (1 ≦ j ≦ K)\n - The given graph is\
+  \ a tree.\n - All v_j are distinct.\n\n-----Input-----\nThe input is given from\
+  \ Standard Input in the following format:\nN\nA_1 B_1\nA_2 B_2\n:\nA_{N-1} B_{N-1}\n\
+  K\nV_1 P_1\nV_2 P_2\n:\nV_K P_K\n\n-----Output-----\nIf it is possible to write\
+  \ integers into all empty vertices so that the condition is satisfied, print Yes.\
+  \ Otherwise, print No.\nIf it is possible to satisfy the condition, print N lines\
+  \ in addition. The v-th (1 ≦ v ≦ N) of these N lines should contain the integer\
+  \ that should be written into vertex v. If there are multiple ways to satisfy the\
+  \ condition, any of those is accepted.\n\n-----Sample Input-----\n5\n1 2\n3 1\n\
+  4 3\n3 5\n2\n2 6\n5 7\n\n-----Sample Output-----\nYes\n5\n6\n6\n5\n7\n\nThe figure\
+  \ below shows the tree when Takahashi fell asleep. For each vertex, the integer\
+  \ written beside it represents the index of the vertex, and the integer written\
+  \ into the vertex is the integer written by Takahashi.\nAoki can, for example, satisfy\
+  \ the condition by writing integers into the remaining vertices as follows:\nThis\
+  \ corresponds to Sample Output 1. Note that other outputs that satisfy the condition\
+  \ will also be accepted, such as:\nYes\n7\n6\n8\n7\n7\n"
+"vc-preamble": "import Imports.AllImports\n\ndef solve_tree_labeling (N : Nat) (edges\
+  \ : List (Nat × Nat)) (K : Nat) \n    (labels : List (Nat × Int)) : Option (List\
+  \ Int) :=\n  sorry\n\n\ndef valid_solution (g : Graph) (labels : List (Nat × Int))\
+  \ (result : List Int) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def abs (x : Int) : Int :=\n  if x < 0 then -x else x\n"
+"vc-theorems": "theorem line_graph_solution_valid {N K : Nat} {base : Int}\n    (h1\
+  \ : K ≤ N) (h2 : 0 < N) : \n    let edges := List.range (N-1) |>.map (fun i => (i+1,\
+  \ i+2))\n    let labels := List.range K |>.map (fun i => (i+1, base - ↑i))\n   \
+  \ match solve_tree_labeling N edges K labels with\n    | none => ∀ i j, i < K →\
+  \ j < K → \n        abs (↑(labels.get! i).1 - ↑(labels.get! j).1) = 1 → \n     \
+  \   abs ((labels.get! i).2 - (labels.get! j).2) ≠ 1\n    | some result => valid_solution\
+  \ ⟨N, edges⟩ labels result = true\n    := sorry\n\n\ntheorem star_graph_solution_exists\
+  \ {N : Nat} {center : Int}\n    (h : 2 < N) :\n    let edges := List.range (N-1)\
+  \ |>.map (fun i => (1, i+2))\n    let labels := [(1, center)]\n    (solve_tree_labeling\
+  \ N edges 1 labels).isSome ∧\n    match solve_tree_labeling N edges 1 labels with\n\
+  \    | none => False  \n    | some result => valid_solution ⟨N, edges⟩ labels result\
+  \ = true\n    := sorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

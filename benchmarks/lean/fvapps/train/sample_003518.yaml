@@ -1,0 +1,19 @@
+"vc-description": "Write function heron which calculates the area of a triangle with\
+  \ sides a, b, and c.\n\nHeron's formula: sqrt (s \\* (s - a) \\* (s - b) \\* (s\
+  \ - c)), where s = (a + b + c) / 2.\nOutput should have 2 digits precision."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def heron (a b c : Float) : Float := sorry\n\ntheorem heron_positive\
+  \ (a b c : Float)\n  (h1 : a > 0) (h2 : b > 0) (h3 : c > 0)\n  (h4 : a + b > c)\
+  \ (h5 : b + c > a) (h6 : a + c > b) :\n  heron a b c > 0 := sorry\n"
+"vc-theorems": "theorem heron_matches_formula (a b c : Float)\n  (h1 : a > 0) (h2\
+  \ : b > 0) (h3 : c > 0)\n  (h4 : a + b > c) (h5 : b + c > a) (h6 : a + c > b) :\n\
+  \  let s := (a + b + c) / 2\n  heron a b c = Float.sqrt (s * (s - a) * (s - b) *\
+  \ (s - c)) := sorry\n\n\ntheorem heron_symmetric (a b c : Float)\n  (h1 : a > 0)\
+  \ (h2 : b > 0) (h3 : c > 0)  \n  (h4 : a + b > c) (h5 : b + c > a) (h6 : a + c >\
+  \ b) :\n  heron a b c = heron a c b ∧ \n  heron a b c = heron b a c := sorry\n\n\
+  \ntheorem heron_equilateral (side : Float)\n  (h : side > 0) :\n  heron side side\
+  \ side = (side * side * Float.sqrt 3) / 4 := sorry\n\n/--\ninfo: 6.0\n-/\n#guard_msgs\
+  \ in\n#eval heron 3 4 5\n\n/--\ninfo: 24.0\n-/\n#guard_msgs in\n#eval heron 6 8\
+  \ 10\n\n/--\ninfo: 10.83\n-/\n#guard_msgs in\n#eval heron 5 5 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

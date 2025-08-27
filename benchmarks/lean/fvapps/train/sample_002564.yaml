@@ -1,0 +1,18 @@
+"vc-description": "Complete the solution so that the function will break up camel\
+  \ casing, using a space between words.\n\n### Example \n\n```\nsolution(\"camelCasing\"\
+  )  ==  \"camel Casing\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solution (s : String) : String := sorry\n\ntheorem uppercase_preceded_by_space\
+  \ (s : String) (pos : String.Pos) :\n  pos < s.endPos →\n  (s.get pos).isUpper →\n\
+  \  let res := solution s\n  ∃ resPos : String.Pos, \n    res.get resPos = s.get\
+  \ pos ∧ \n    (∃ prevPos : String.Pos, \n      prevPos < resPos ∧\n      res.get\
+  \ prevPos = ' ') := sorry\n"
+"vc-theorems": "theorem length_difference_equals_uppercase_count (s : String) :\n\
+  \  (solution s).length = s.length + (s.data.filter Char.isUpper).length := sorry\n\
+  \n\ntheorem lowercase_unchanged (s : String) :\n  s.data.all (fun c => !c.isUpper)\
+  \ →\n  solution s = s := sorry\n\n/--\ninfo: 'hello World'\n-/\n#guard_msgs in\n\
+  #eval solution \"helloWorld\"\n\n/--\ninfo: 'camel Case'\n-/\n#guard_msgs in\n#eval\
+  \ solution \"camelCase\"\n\n/--\ninfo: 'break Camel Case'\n-/\n#guard_msgs in\n\
+  #eval solution \"breakCamelCase\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

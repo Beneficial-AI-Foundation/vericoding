@@ -1,0 +1,17 @@
+"vc-description": "Define a function that removes duplicates from an array of numbers\
+  \ and returns it as a result.\n\nThe order of the sequence has to stay the same."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def distinct {α} [BEq α] (xs : List α) : List α :=\n  sorry\n"
+"vc-theorems": "theorem distinct_uniqueness {α} [BEq α] (xs : List α) :\n  let result\
+  \ := distinct xs\n  ∀ a b, a ∈ result → b ∈ result → a = b → \n  List.findIdx (·\
+  \ == a) result = List.findIdx (· == b) result := by sorry\n\n\ntheorem distinct_preserves_order\
+  \ {α} [BEq α] (xs : List α) :\n  let result := distinct xs\n  ∀ (i j : Fin (List.length\
+  \ result)), i.val < j.val →\n  let a := result[i]\n  let b := result[j]\n  List.findIdx\
+  \ (· == a) xs < List.findIdx (· == b) xs := by sorry\n\n\ntheorem distinct_maintains_membership\
+  \ {α} [BEq α] (xs : List α) :\n  ∀ x, x ∈ distinct xs ↔ x ∈ xs := by sorry\n\n\n\
+  theorem distinct_length {α} [BEq α] (xs : List α) :\n  List.length (distinct xs)\
+  \ ≤ List.length xs := by sorry\n\n/--\ninfo: [1]\n-/\n#guard_msgs in\n#eval distinct\
+  \ [1]\n\n/--\ninfo: [1, 2]\n-/\n#guard_msgs in\n#eval distinct [1, 2]\n\n/--\ninfo:\
+  \ [1, 2, 3, 4, 5]\n-/\n#guard_msgs in\n#eval distinct [1, 1, 1, 2, 3, 4, 5]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

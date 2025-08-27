@@ -1,0 +1,27 @@
+"vc-description": "Given two sequences pushed and popped with distinct values, return\
+  \ true if and only if this could have been the result of a sequence of push and\
+  \ pop operations on an initially empty stack.\n \n\nExample 1:\nInput: pushed =\
+  \ [1,2,3,4,5], popped = [4,5,3,2,1]\nOutput: true\nExplanation: We might do the\
+  \ following sequence:\npush(1), push(2), push(3), push(4), pop() -> 4,\npush(5),\
+  \ pop() -> 5, pop() -> 3, pop() -> 2, pop() -> 1\n\n\nExample 2:\nInput: pushed\
+  \ = [1,2,3,4,5], popped = [4,3,5,1,2]\nOutput: false\nExplanation: 1 cannot be popped\
+  \ before 2.\n\n\n\n \nConstraints:\n\n0 <= pushed.length == popped.length <= 1000\n\
+  0 <= pushed[i], popped[i] < 1000\npushed is a permutation of popped.\npushed and\
+  \ popped have distinct values."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.toMultiset : List α → List α := id\n\ndef validate_stack_sequences\
+  \ (pushed : List Int) (popped : List Int) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem identical_sequences_valid {nums : List Int} (h : nums.length\
+  \ > 0) :\n  validate_stack_sequences nums nums = true :=\nsorry\n\n\ntheorem reverse_sequences_valid\
+  \ {nums : List Int} (h : nums.length > 0) :\n  validate_stack_sequences nums nums.reverse\
+  \ = true :=\nsorry\n\n\ntheorem permutations_have_consistent_length {nums popped\
+  \ : List Int} (h : nums.length > 0) :\n  validate_stack_sequences nums popped =\
+  \ (nums.length = popped.length) :=\nsorry\n\n\ntheorem shuffled_sequence_properties\
+  \ {nums popped : List Int} (h : nums.length > 0) :\n  validate_stack_sequences nums\
+  \ popped = true →\n  nums.toMultiset = popped.toMultiset :=\nsorry\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval validate_stack_sequences [1, 2, 3, 4, 5] [4, 5,\
+  \ 3, 2, 1]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval validate_stack_sequences\
+  \ [1, 2, 3, 4, 5] [4, 3, 5, 1, 2]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ validate_stack_sequences [1, 2, 3] [1, 2, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,58 @@
+"vc-description": "### **[Mahjong Series](/collections/mahjong)**\n\n**Mahjong** is\
+  \ based on draw-and-discard card games that were popular in 18th and 19th century\
+  \ China and some are still popular today.\n\nIn each deck, there are three different\
+  \ suits numbered `1` to `9`, which are called **Simple tiles**. To simplify the\
+  \ problem, we talk about only one suit of *simple tiles* in this kata (and that's\
+  \ what the term **Pure Hand** means). Note that there are **EXACTLY** 4 identical\
+  \ copies of each kind of tiles in a deck.\n\nIn each of Mahjong games, each of the\
+  \ 4 players around the table has 13 tiles. They take turns drawing a tile from the\
+  \ tile walls and then discarding one of the tiles from their hands. One wins the\
+  \ game if that player holds a combination of tiles as defined below:\n\nA regular\
+  \ winning hand consists of 4 *Melds* and 1 *Pair*. Each *meld* of tiles can be 3\
+  \ identical or consecutive tiles of a suit, *e.g.* `222` or `456`.\n\n\n\n![t2](https://upload.wikimedia.org/wikipedia/commons/6/61/MJt2.png)\n\
+  ![t2](https://upload.wikimedia.org/wikipedia/commons/6/61/MJt2.png)\n![t2](https://upload.wikimedia.org/wikipedia/commons/6/61/MJt2.png)\n\
+  \n\n![t4](https://upload.wikimedia.org/wikipedia/commons/7/72/MJt4.png)\n![t5](https://upload.wikimedia.org/wikipedia/commons/5/5c/MJt5.png)\n\
+  ![t6](https://upload.wikimedia.org/wikipedia/commons/7/72/MJt6.png)\n\n\nNow let's\
+  \ consider a hand of `1113335557779`.\n\n\n\n![t1](https://upload.wikimedia.org/wikipedia/commons/4/4a/MJt1.png)![t1](https://upload.wikimedia.org/wikipedia/commons/4/4a/MJt1.png)![t1](https://upload.wikimedia.org/wikipedia/commons/4/4a/MJt1.png)![t3](https://upload.wikimedia.org/wikipedia/commons/a/a4/MJt3.png)![t3](https://upload.wikimedia.org/wikipedia/commons/a/a4/MJt3.png)![t3](https://upload.wikimedia.org/wikipedia/commons/a/a4/MJt3.png)![t5](https://upload.wikimedia.org/wikipedia/commons/5/5c/MJt5.png)![t5](https://upload.wikimedia.org/wikipedia/commons/5/5c/MJt5.png)![t5](https://upload.wikimedia.org/wikipedia/commons/5/5c/MJt5.png)![t7](https://upload.wikimedia.org/wikipedia/commons/6/6f/MJt7.png)![t7](https://upload.wikimedia.org/wikipedia/commons/6/6f/MJt7.png)![t7](https://upload.wikimedia.org/wikipedia/commons/6/6f/MJt7.png)![t9](https://upload.wikimedia.org/wikipedia/commons/a/a1/MJt9.png)\n\
+  \n\nIn this hand, there are already 4 *melds* (each of 3 identical tiles), leaving\
+  \ a `9` alone. So we need another `9` to form a *pair*.\n\n\n\n\n![t1](https://upload.wikimedia.org/wikipedia/commons/4/4a/MJt1.png)![t1](https://upload.wikimedia.org/wikipedia/commons/4/4a/MJt1.png)![t1](https://upload.wikimedia.org/wikipedia/commons/4/4a/MJt1.png)\n\
+  \n\n![t3](https://upload.wikimedia.org/wikipedia/commons/a/a4/MJt3.png)![t3](https://upload.wikimedia.org/wikipedia/commons/a/a4/MJt3.png)![t3](https://upload.wikimedia.org/wikipedia/commons/a/a4/MJt3.png)\n\
+  \n\n![t5](https://upload.wikimedia.org/wikipedia/commons/5/5c/MJt5.png)![t5](https://upload.wikimedia.org/wikipedia/commons/5/5c/MJt5.png)![t5](https://upload.wikimedia.org/wikipedia/commons/5/5c/MJt5.png)\n\
+  \n\n![t7](https://upload.wikimedia.org/wikipedia/commons/6/6f/MJt7.png)![t7](https://upload.wikimedia.org/wikipedia/commons/6/6f/MJt7.png)![t7](https://upload.wikimedia.org/wikipedia/commons/6/6f/MJt7.png)\n\
+  \n\n![t9](https://upload.wikimedia.org/wikipedia/commons/a/a1/MJt9.png)![t9](https://upload.wikimedia.org/wikipedia/commons/a/a1/MJt9.png)\n\
+  \n\nAdditionally, there is another option. Regardless of the 3 *melds* ahead (`111`,\
+  \ `333`, `555`), drawing an `8` produces `77789`, which gives a *pair* of `7`'s\
+  \ and a *meld* (`789`). Therefore, the required tiles to win with `1113335557779`\
+  \ are `8` and `9`.\n\n\n\n\n![t1](https://upload.wikimedia.org/wikipedia/commons/4/4a/MJt1.png)![t1](https://upload.wikimedia.org/wikipedia/commons/4/4a/MJt1.png)![t1](https://upload.wikimedia.org/wikipedia/commons/4/4a/MJt1.png)\n\
+  \n\n![t3](https://upload.wikimedia.org/wikipedia/commons/a/a4/MJt3.png)![t3](https://upload.wikimedia.org/wikipedia/commons/a/a4/MJt3.png)![t3](https://upload.wikimedia.org/wikipedia/commons/a/a4/MJt3.png)\n\
+  \n\n![t5](https://upload.wikimedia.org/wikipedia/commons/5/5c/MJt5.png)![t5](https://upload.wikimedia.org/wikipedia/commons/5/5c/MJt5.png)![t5](https://upload.wikimedia.org/wikipedia/commons/5/5c/MJt5.png)\n\
+  \n\n![t7](https://upload.wikimedia.org/wikipedia/commons/6/6f/MJt7.png)![t7](https://upload.wikimedia.org/wikipedia/commons/6/6f/MJt7.png)\n\
+  \n\n![t7](https://upload.wikimedia.org/wikipedia/commons/6/6f/MJt7.png)![t8](https://upload.wikimedia.org/wikipedia/commons/1/18/MJt8.png)![t9](https://upload.wikimedia.org/wikipedia/commons/a/a1/MJt9.png)\n\
+  \n\nNow Sakura wonders which tiles will form a hand with 13 tiles of the same suit\
+  \ (**Pure Hand**). Can you help her?\n\n### **Task**\nComplete a function to work\
+  \ out all the optional tiles to form a regular winning hand with the given tiles.\n\
+  \n- **Input**\n  - A string of 13 non-zero digits in non-decreasing order, denoting\
+  \ different tiles of a suit.\n\n\n- **Output**\n  - A string of unique non-zero\
+  \ digits in ascending order.\n\n### **Examples**\n\n```\n\"1335556789999\" => \"\
+  \"\n  (None of the tiles in a deck makes up a winning hand)\n\"1113335557779\" =>\
+  \ \"89\"\n  (\"8\" => \"111 333 555 77 789\",\n   \"9\" => \"111 333 555 777 99\"\
+  )\n\"1223334455678\" => \"258\"\n  (\"2\" => \"123 22 345 345 678\",\n   \"5\" =>\
+  \ \"123 234 345 55 678\",\n   \"8\" => \"123 234 345 678 88\")\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solution (s : String) : String := sorry \n\ntheorem solution_empty_result\
+  \ : \n  solution \"1335556789999\" = \"\" := sorry\n"
+"vc-theorems": "theorem solution_multiple_valid_tiles_1 : \n  solution \"1113335557779\"\
+  \ = \"89\" := sorry\n\n\ntheorem solution_multiple_valid_tiles_2 :\n  solution \"\
+  1223334455678\" = \"258\" := sorry\n\n\ntheorem solution_returns_valid_chars (input\
+  \ : String) :\n  ∀ (s : String), s ∈ [\"1113335557779\", \"1335556789999\", \"1223334455678\"\
+  ] →\n  ∀ c, c ∈ (solution s).data → c ∈ ['1','2','3','4','5','6','7','8','9'] :=\
+  \ sorry\n\n\ntheorem solution_returns_distinct_chars (s : String) :\n  s ∈ [\"1113335557779\"\
+  , \"1335556789999\", \"1223334455678\"] →\n  List.Nodup (solution s).data := sorry\n\
+  \n\ntheorem solution_respects_tile_limit (s : String) :\n  s ∈ [\"1113335557779\"\
+  , \"1335556789999\", \"1223334455678\"] →\n  ∀ t, t ∈ (solution s).data → \n  ((s.data.filter\
+  \ (· = t)).length + 1 ≤ 4) := sorry\n\n/--\ninfo: '89'\n-/\n#guard_msgs in\n#eval\
+  \ solution \"1113335557779\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval solution\
+  \ \"1335556789999\"\n\n/--\ninfo: '258'\n-/\n#guard_msgs in\n#eval solution \"1223334455678\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

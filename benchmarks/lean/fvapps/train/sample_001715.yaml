@@ -1,0 +1,34 @@
+"vc-description": "A pixmap shall be turned from black to white, turning all pixels\
+  \ to white in the process.  But for optical reasons this shall *not* happen linearly,\
+  \ starting at the top and continuing line by line to the bottom:\n\n```python\n\
+  for y in range(height):\n  for x in range(width):\n     setBit(x, y)\n```\n\nInstead\
+  \ it shall be done by a systematic dithering routine which selects the coordinates\
+  \ on which pixels are to be set in a precise pattern so that the geometrical distance\
+  \ between two consecutive pixels is large and a specific optical effect results.\n\
+  \nThe following diagrams show the order of the coordinates the algorithm shall produce:\n\
+  \n2×2:\n```\n1 3\n4 2\n```\n4×4:\n```\n 1  9  3 11\n13  5 15  7\n 4 12  2 10\n16\
+  \  8 14  6\n```\n8×8:\n```\n 1  33   9  41   3  35  11  43 \n49  17  57  25  51\
+  \  19  59  27 \n13  45   5  37  15  47   7  39 \n61  29  53  21  63  31  55  23\
+  \ \n 4  36  12  44   2  34  10  42 \n52  20  60  28  50  18  58  26 \n16  48   8\
+  \  40  14  46   6  38 \n64  32  56  24  62  30  54  22 \n```\nThe pattern continues\
+  \ like that for each square pixmap with a width and height of a power of two (16,\
+  \ 32, 64, …).\n\nBut the width and the height of the pixmap can be arbitrary positive\
+  \ numbers.  If the pixmap's width and/or height are not a power of two, the coordinates\
+  \ the algorithm  would produce outside of the pixmap are skipped:\n\n3×3:\n```\n\
+  1 6 3\n8 5 9\n4 7 2   \n```\n6×5:\n```\n 1 16  6 21  3 18\n25 10 28 13 26 11\n 8\
+  \ 23  5 20  9 24\n29 14 27 12 30 15\n 4 19  7 22  2 17\n```\nWrite an algorithm\
+  \ which produces the coordinates of the dithering for a given width and height.\n\
+  \nTo pass the Python test cases, write a *generator* ```dithering()``` which yields\
+  \ coordinate tuples:\n```python\ng = dithering(6, 5)\nfor i in range(7):\n  print\
+  \ g.next()\n```\nWill print:\n```\n(0, 0)\n(4, 4)\n(4, 0)\n(0, 4)\n(2, 2)\n(2, 0)\n\
+  (2, 4)\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_all_points (n : Nat) : List (Nat × Nat) := sorry\n\ninstance\
+  \ : LE (Nat × Nat) where\n  le := λ a b => a.1 < b.1 ∨ (a.1 = b.1 ∧ a.2 ≤ b.2)\n\
+  \n\n"
+"vc-theorems": "theorem no_duplicates {n : Nat} (h : n > 0) :\n  let points := find_all_points\
+  \ n\n  List.Nodup points := sorry\n\n\n\n\n\n\n\n\n\n\ntheorem grid_size_one :\n\
+  \  find_all_points 1 = [(0,0)] := sorry\n\n\ntheorem grid_size_two :\n  find_all_points\
+  \ 2 = [(0,0), (0,1), (1,0), (1,1)] := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

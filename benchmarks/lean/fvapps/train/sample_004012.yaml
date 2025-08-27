@@ -1,0 +1,32 @@
+"vc-description": "In Math, an improper fraction is a fraction where the numerator\
+  \ (the top number) is greater than or equal to the denominator (the bottom number)\
+  \ For example: ```5/3``` (five third).\n\nA mixed numeral is a whole number and\
+  \ a fraction combined into one \"mixed\" number. For example: ```1 1/2``` (one and\
+  \ a half) is a mixed numeral.\n\n## Task\n\nWrite a function `convertToMixedNumeral`\
+  \ to convert the improper fraction into a mixed numeral.\n\nThe input will be given\
+  \ as a ```string``` (e.g. ```'4/3'```).\n\nThe output should be a ```string```,\
+  \ with a space in between the whole number and the fraction (e.g. ```'1 1/3'```).\
+  \  You do not need to reduce the result to its simplest form.\n\nFor the purpose\
+  \ of this exercise, there will be no ```0```, ```empty string``` or ```null``` input\
+  \ value. However, the input can be:\n\n- a negative fraction\n- a fraction that\
+  \ does not require conversion\n- a fraction that can be converted into a whole number\n\
+  \n## Example"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def convert_to_mixed_numeral (fraction : String) : MixedNumeral\
+  \ := sorry\n\nstructure MixedNumeral where\n  whole : Int\n  numer : Nat\n  denom\
+  \ : Nat\n  deriving Repr\n"
+"vc-theorems": "theorem mixed_numeral_format \n  (n d : Int)\n  (h1 : d > 0)\n  (result\
+  \ : MixedNumeral) \n  (h2 : result = convert_to_mixed_numeral (\"{n}/{d}\")) :\n\
+  \  (result.numer = 0 ∧ result.denom = 1 ∧ result.whole = n / d) ∨ \n  (result.whole\
+  \ = 0 ∧ result.numer = n.natAbs ∧ result.denom = d.natAbs) ∨\n  (0 < result.numer\
+  \ ∧ \n   result.numer < result.denom ∧\n   result.whole * result.denom + result.numer\
+  \ * (if result.whole ≥ 0 then 1 else -1) = n ∧\n   result.denom = d.natAbs) := sorry\n\
+  \n\ntheorem value_equivalence\n  (n d : Int)\n  (h1 : d > 0)\n  (result : MixedNumeral)\n\
+  \  (h2 : result = convert_to_mixed_numeral (\"{n}/{d}\")) : \n  n / d = result.whole\
+  \ + result.numer / result.denom * (if result.whole ≥ 0 then 1 else -1) := sorry\n\
+  \n/--\ninfo: '1 2/3'\n-/\n#guard_msgs in\n#eval convert_to_mixed_numeral \"5/3\"\
+  \n\n/--\ninfo: '24 2/3'\n-/\n#guard_msgs in\n#eval convert_to_mixed_numeral \"74/3\"\
+  \n\n/--\ninfo: '-23 1/2'\n-/\n#guard_msgs in\n#eval convert_to_mixed_numeral \"\
+  -47/2\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

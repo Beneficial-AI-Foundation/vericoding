@@ -1,0 +1,35 @@
+"vc-description": "Chandler has a list of non zero positive integers with him. He\
+  \ made a very interesting observation about the list. He noticed that the number\
+  \ of unique integers in an array of size $N$ is in the range $L$ to $R$ (both inclusive)\
+  \ and every element was either 1 or an even number x, in which case x/2 was also\
+  \ definitely present in the array. \nChandler has misplaced the list of integers\
+  \ but he wants to impress Monica with his problem solving skills by finding out\
+  \ the minimum and maximum possible sum of all elements of the list of integers.\n\
+  Can you also help him solve the problem so that he can win over Monica?\n\n-----Input:-----\n\
+  - First line will contain $T$, the number of testcases. \n- The first line of each\
+  \ test case contains integers $N$, $L$, and $R$. \n\n-----Output:-----\nFor each\
+  \ test case print 2 space-separated integers, the minimum and the maximum possible\
+  \ sum of N elements based on the above facts.\n\n-----Constraints-----\n- $1 \\\
+  leq T \\leq 100$\n- $1 \\leq N \\leq 1000$\n- $1 \\leq L \\leq R \\leq min(N,20)$\n\
+  \n-----Sample Input:-----\n2\n\n4 2 2\n\n5 1 5\n\n-----Sample Output:-----\n5 7\n\
+  \n5 31\n\n-----EXPLANATION:-----\n- \nExample 1: For an array of size 4, with minimum\
+  \ 2 unique integers and maximum 2 unique integers, the possible arrays are (1,1,1,2),\
+  \ (1,1,2,2), (1,2,2,2)\nOut of these, the minimum possible sum of elements is 5(1+1+1+2)\
+  \ and maximum possible sum is 7(1+2+2+2)\n- \nExample 2: For an array of size 5,\
+  \ with minimum 1 unique integer and maximum 5 unique integers, minimum possible\
+  \ sum of elements is 5(1+1+1+1+1) and maximum possible sum is 31(1+2+4+8+16)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_array_sum (n l h : Nat) : Nat × Nat :=\n  sorry\n"
+"vc-theorems": "theorem sum_bounds {n l h : Nat} (hn : n > 0) (hl : l > 0) (hlh :\
+  \ h ≥ l) (hhn : h ≤ n) :\n  let (min_sum, max_sum) := solve_array_sum n l h\n  min_sum\
+  \ ≤ max_sum ∧ min_sum > 0 ∧ max_sum > 0\n  := sorry\n\n\ntheorem min_max_constraints\
+  \ {n l h : Nat} (hn : n > 0) (hl : l > 0) (hlh : h ≥ l) (hhn : h ≤ n) :\n  let (min_sum,\
+  \ max_sum) := solve_array_sum n l h\n  min_sum ≥ n ∧ max_sum ≤ 2^h * n\n  := sorry\n\
+  \n\ntheorem boundary_case {n l : Nat} (hn : n > 0) (hl : l > 0) (hln : l ≤ n) :\n\
+  \  let (min_sum, max_sum) := solve_array_sum n l l\n  let (alt_min, alt_max) :=\
+  \ solve_array_sum n l (l+1)\n  alt_max - alt_min ≥ max_sum - min_sum\n  := sorry\n\
+  \n/--\ninfo: (5, 7)\n-/\n#guard_msgs in\n#eval solve_array_sum 4 2 2\n\n/--\ninfo:\
+  \ (5, 31)\n-/\n#guard_msgs in\n#eval solve_array_sum 5 1 5\n\n/--\ninfo: (3, 7)\n\
+  -/\n#guard_msgs in\n#eval solve_array_sum 3 1 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

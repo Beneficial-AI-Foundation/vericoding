@@ -1,0 +1,30 @@
+"vc-description": "# Task\n\nGiven a binary number, we are about to do some operations\
+  \ on the number. Two types of operations can be here:\n\n* ['I', i, j] : Which means\
+  \ invert the bit from i to j (inclusive).\n\n* ['Q', i] : Answer whether the i'th\
+  \ bit is 0 or 1.\n\nThe MSB (most significant bit) is the first bit (i.e. i = `1`).\
+  \ The binary number can contain leading zeroes.\n\n## Example\n```python\nbinary_simulation(\"\
+  0011001100\", [['I', 1, 10], ['I', 2, 7], ['Q', 2], ['Q', 1], ['Q', 7], ['Q', 5]])\
+  \ === [ '0', '1', '1', '0' ];\nbinary_simulation(\"1011110111\", [['I', 1, 10],\
+  \ ['I', 2, 7], ['Q', 2], ['Q', 1], ['Q', 7], ['Q', 5]]) === [ '0', '0', '0', '1'\
+  \ ];\nbinary_simulation(\"1011110111\", [['I', 1, 10], ['I', 2, 7]]) === [];\nbinary_simulation(\"\
+  0000000000\", [['I', 1, 10], ['Q', 2]]) ===  ['1'];\n```\n## Note\n* All inputs\
+  \ are valid.\n* Please optimize your algorithm to avoid time out."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def binary_simulation (s : String) (ops : List (List Nat)) : List\
+  \ Char := sorry\n\ndef simple_simulate (s : String) (ops : List (List Nat)) : List\
+  \ Char := sorry\n"
+"vc-theorems": "theorem binary_simulation_matches_reference (s : String) (ops : List\
+  \ (List Nat)) :\n  binary_simulation s ops = simple_simulate s ops := sorry\n\n\n\
+  theorem queries_only_match_original (s : String) (queries : List (List Nat)) \n\
+  \  (h : ∀ q ∈ queries, q.head! = 2 → q.length = 2) :\n  binary_simulation s queries\
+  \ = simple_simulate s queries := sorry\n\n\ntheorem double_inversion_cancels (s\
+  \ : String) :\n  let i := 1\n  let j := s.length \n  let ops := [[0, i, j], [0,\
+  \ i, j], [1, 1]]\n  binary_simulation s ops = [s.get 0] := sorry\n\n/--\ninfo: ['0',\
+  \ '1', '1', '0']\n-/\n#guard_msgs in\n#eval binary_simulation \"0011001100\" [[\"\
+  I\", 1, 10], [\"I\", 2, 7], [\"Q\", 2], [\"Q\", 1], [\"Q\", 7], [\"Q\", 5]]\n\n\
+  /--\ninfo: ['0', '0', '0', '1']\n-/\n#guard_msgs in\n#eval binary_simulation \"\
+  1011110111\" [[\"I\", 1, 10], [\"I\", 2, 7], [\"Q\", 2], [\"Q\", 1], [\"Q\", 7],\
+  \ [\"Q\", 5]]\n\n/--\ninfo: ['1']\n-/\n#guard_msgs in\n#eval binary_simulation \"\
+  0000000000\" [[\"I\", 1, 10], [\"Q\", 2]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

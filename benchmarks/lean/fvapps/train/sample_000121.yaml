@@ -1,0 +1,26 @@
+"vc-description": "Your music player contains N different songs and she wants to listen\
+  \ to L (not necessarily different) songs during your trip.  You create a playlist\
+  \ so that:\n\nEvery song is played at least once\nA song can only be played again\
+  \ only if K other songs have been played\n\nReturn the number of possible playlists. \
+  \ As the answer can be very large, return it modulo 10^9 + 7.\n \n\n\n\nExample\
+  \ 1:\nInput: N = 3, L = 3, K = 1\nOutput: 6\nExplanation: There are 6 possible playlists.\
+  \ [1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1].\n\n\nExample\
+  \ 2:\nInput: N = 2, L = 3, K = 0\nOutput: 6\nExplanation: There are 6 possible playlists.\
+  \ [1, 1, 2], [1, 2, 1], [2, 1, 1], [2, 2, 1], [2, 1, 2], [1, 2, 2]\n\n\nExample\
+  \ 3:\nInput: N = 2, L = 3, K = 1\nOutput: 2\nExplanation: There are 2 possible playlists.\
+  \ [1, 2, 1], [2, 1, 2]\n\n\n\n \nNote:\n\n0 <= K < N <= L <= 100"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def num_music_playlists (N L K : Nat) : Nat := sorry\n\ntheorem\
+  \ playlists_bounds (N L K : Nat) \n  (h1: N > 0) \n  (h2: L ≥ N) \n  (h3: K < N)\
+  \ :\n  let result := num_music_playlists N L K\n  0 ≤ result ∧ result < (10^9 +\
+  \ 7) := sorry\n"
+"vc-theorems": "theorem playlists_k_eq_n_minus_one (N L K : Nat)\n  (h1: N > 0)\n\
+  \  (h2: L ≥ N)\n  (h3: K = N - 1) :\n  num_music_playlists N L K > 0 := sorry\n\n\
+  \ntheorem playlists_trivial_cases_one_song :\n  num_music_playlists 1 1 0 = 1 :=\
+  \ sorry\n\n\ntheorem playlists_impossible_cases_one :\n  num_music_playlists 1 2\
+  \ 1 = 0 := sorry \n\n\ntheorem playlists_impossible_cases_two :\n  num_music_playlists\
+  \ 2 4 2 = 0 := sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval num_music_playlists\
+  \ 3 3 1\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval num_music_playlists 2 3 0\n\n\
+  /--\ninfo: 2\n-/\n#guard_msgs in\n#eval num_music_playlists 2 3 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,23 @@
+"vc-description": "The number 81 has a special property, a certain power of the sum\
+  \ of its digits is equal to 81 (nine squared). Eighty one (81), is the first number\
+  \ in having this property (not considering numbers of one digit). \nThe next one,\
+  \ is 512.\nLet's see both cases with the details\n\n8 + 1 = 9 and 9^(2) = 81\n\n\
+  512 = 5 + 1 + 2 = 8 and 8^(3) = 512\n\nWe need to make a function, ```power_sumDigTerm()```,\
+  \ that receives a number ```n``` and may output the ```n-th term``` of this sequence\
+  \ of numbers.\nThe cases we presented above means that\n\npower_sumDigTerm(1) ==\
+  \ 81\n\npower_sumDigTerm(2) == 512\n\n\nHappy coding!"
+"vc-preamble": "import Imports.AllImports\n\ndef toDigits (n : Nat) : List Nat :=\n\
+  \  if n < 10 then [n]\n  else (n % 10) :: toDigits (n / 10)\n\n\ndef sum_list :\
+  \ List Nat → Nat \n  | [] => 0\n  | (h :: t) => h + sum_list t\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def power_sumDigTerm : Nat → Nat := sorry\n\n-- Property that the\
+  \ sequence is strictly increasing"
+"vc-theorems": "theorem power_sumDigTerm_increasing {n : Nat} : \n  n > 0 → power_sumDigTerm\
+  \ n < power_sumDigTerm (n + 1) := sorry\n\n-- Property that each term is a perfect\
+  \ power with base equal to the sum of its digits\n\ntheorem power_sumDigTerm_perfect_power\
+  \ {n : Nat} (h : n > 0) :\n  ∃ base power : Nat, \n    base ≥ 2 ∧ \n    power ≥\
+  \ 2 ∧ \n    power_sumDigTerm n = base ^ power ∧\n    base = sum_list (toDigits (power_sumDigTerm\
+  \ n)) := sorry\n\n/--\ninfo: 81\n-/\n#guard_msgs in\n#eval power_sumDigTerm 1\n\n\
+  /--\ninfo: 512\n-/\n#guard_msgs in\n#eval power_sumDigTerm 2\n\n/--\ninfo: 2401\n\
+  -/\n#guard_msgs in\n#eval power_sumDigTerm 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,22 @@
+"vc-description": "### Longest Palindrome\n\nFind the length of the longest substring\
+  \ in the given string `s` that is the same in reverse.        \n\nAs an example,\
+  \ if the input was “I like racecars that go fast”, the substring (`racecar`) length\
+  \ would be `7`. \n\nIf the length of the input string is `0`, the return value must\
+  \ be `0`. \n\n### Example:\n```\n\"a\" -> 1 \n\"aab\" -> 2  \n\"abcde\" -> 1\n\"\
+  zzbaabcd\" -> 4\n\"\" -> 0\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def longest_palindrome (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem length_bounds (s : String) :\n  0 ≤ longest_palindrome s ∧\
+  \ longest_palindrome s ≤ s.length :=\n  sorry\n\n\ntheorem empty_string :\n  longest_palindrome\
+  \ \"\" = 0 :=\n  sorry\n\n\ntheorem min_length_nonempty (s : String) :\n  s ≠ \"\
+  \" → longest_palindrome s ≥ 1 :=\n  sorry\n\n\ntheorem repeated_chars_min_length\
+  \ (c : Char) :\n  longest_palindrome (String.mk [c, c]) ≥ 2 :=\n  sorry\n\n\ntheorem\
+  \ palindrome_parity (s : String) :\n  longest_palindrome s % 2 = 0 ∨ longest_palindrome\
+  \ s % 2 = 1 :=\n  sorry\n\n\ntheorem case_sensitivity_lower (s : String) :\n  longest_palindrome\
+  \ s.toLower ≥ longest_palindrome s :=\n  sorry\n\n\ntheorem case_sensitivity_upper\
+  \ (s : String) :\n  longest_palindrome s.toUpper ≥ longest_palindrome s :=\n  sorry\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval longest_palindrome \"aab\"\n\n/--\ninfo:\
+  \ 7\n-/\n#guard_msgs in\n#eval longest_palindrome \"I like racecars that go fast\"\
+  \n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval longest_palindrome \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

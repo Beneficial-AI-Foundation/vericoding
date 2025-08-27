@@ -1,0 +1,33 @@
+"vc-description": "Humpy, the little elephant, has his birthday coming up. He invited\
+  \ all his cousins but doesn’t know how many of them are really coming as some of\
+  \ them are having exams coming up. He will only get to know how many of them are\
+  \ coming on the day of his birthday.\n\nHe ordered sugarcane for his party, of length\
+  \ L.\n\nHumpy’s mom decided that she will be dividing the sugarcane among Humty\
+  \ and his friends in a way such that they get the sugarcane in ratio of their ages.\n\
+  \nYour task is to determine whether it is possible to serve sugarcane to everyone\
+  \ as integral multiples of their ages.\n\n-----INPUT-----\nFirst line of input contains\
+  \ an integer N, denoting the number of test cases.\n\nThen N test cases follow.\n\
+  \nThe first line of each test case contains three integers K, L and E. K denoting\
+  \ the number of friends coming; L denoting the length of the sugarcane and E denoting\
+  \ the age of the little elephant. Next line has  K  space separated integers denoting\
+  \ the age of friends who came to the party.\n\n-----OUTPUT-----\n\nFor each test\
+  \ case, output “YES” (without quotes) if everyone gets their part as integral multiples\
+  \ of their ages; otherwise output “NO”(without quotes).\n\n-----CONSTRAINTS-----\n\
+  \n- 1 <= T<=30\n- 1 <= K<=1000\n- 1 <= L<=1000000\n- 1 <= E<=100000\n- 1 <= Age\
+  \ of Cousins<=100000\n\n-----Example-----\nInput:\n2\n4 10 2\n2 2 3 1\n4 12 3\n\
+  6 5 7 3\n\nOutput:\nYES \nNO"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_serve_sugarcane (k l e : Nat) (ages : List Nat) : Bool\
+  \ := \n  sorry\n"
+"vc-theorems": "theorem can_serve_sugarcane_result_is_bool (k l e : Nat) (ages : List\
+  \ Nat) :\n  can_serve_sugarcane k l e ages = true ∨ can_serve_sugarcane k l e ages\
+  \ = false :=\n  sorry\n\n\ntheorem can_serve_sugarcane_true_implies_divisible (k\
+  \ l e : Nat) (ages : List Nat) :\n  can_serve_sugarcane k l e ages = true → \n \
+  \ ∃ m, l = m * (e + ages.foldl (· + ·) 0) :=\n  sorry\n\n\ntheorem can_serve_sugarcane_known_divisible\
+  \ (k e : Nat) (ages : List Nat) (multiplier : Nat) :\n  multiplier > 0 →\n  let\
+  \ total := e + ages.foldl (· + ·) 0\n  can_serve_sugarcane k (total * multiplier)\
+  \ e ages = true :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval can_serve_sugarcane\
+  \ 4 10 2 [2, 2, 3, 1]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval can_serve_sugarcane\
+  \ 4 12 3 [6, 5, 7, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

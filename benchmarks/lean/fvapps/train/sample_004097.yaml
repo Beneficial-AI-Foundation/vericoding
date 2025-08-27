@@ -1,0 +1,34 @@
+"vc-description": "You are the Dungeon Master for a public DnD game at your local\
+  \ comic shop and recently you've had some trouble keeping your players' info neat\
+  \ and organized so you've decided to write a bit of code to help keep them sorted!\n\
+  \nThe goal of this code is to create an array of objects that stores a player's\
+  \ name and contact number from a given string.\n\nThe method should return an empty\
+  \ array if the argument passed is an empty string or `nil`/`None`/`null`.\n\n##\
+  \ Examples\n\n```ruby \nplayer_manager(\"John Doe, 8167238327, Jane Doe, 8163723827\"\
+  ) returns [{player: \"John Doe\", contact: 8167238327}, {player: \"Jane Doe\", contact:\
+  \ 8163723827}]\nplayer_manager(nil) returns []\nplayer_manager(\"\") returns []\n\
+  ```\n```python\nplayer_manager(\"John Doe, 8167238327, Jane Doe, 8163723827\") returns\
+  \ [{\"player\": \"John Doe\", \"contact\": 8167238327}, {\"player\": \"Jane Doe\"\
+  , \"contact\": 8163723827}]\nplayer_manager(None) returns []\nplayer_manager(\"\"\
+  )   returns []\n```\n```\nplayerManager(\"John Doe, 8167238327, Jane Doe, 8163723827\"\
+  ) returns [{player: \"John Doe\", contact: 8167238327}, {player: \"Jane Doe\", contact:\
+  \ 8163723827}]\nplayerManager(null) returns []\nplayerManager(\"\")   returns []\n\
+  ```\n\nHave at thee!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def player_manager (players : String) : List (String × Nat) :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem player_manager_returns_list (players: String) :\n  ∀ l : List\
+  \ (String × Nat), player_manager players = l := by\n  sorry\n\n\ntheorem player_manager_valid_structure\
+  \ (players: String) (result: List (String × Nat)) :\n  result = player_manager players\
+  \ →\n  ∀ item : String × Nat, item ∈ result →\n  ∃ player: String, ∃ contact: Nat,\n\
+  \    item = (player, contact) := by\n  sorry\n\n\ntheorem player_manager_result_count\
+  \ (players: String) :\n  players ≠ \"\" →\n  ∃ valid_pairs : List (String × Nat),\n\
+  \  List.length (player_manager players) = List.length valid_pairs := by\n  sorry\n\
+  \n\ntheorem player_manager_empty_input :\n  player_manager \"\" = [] ∧\n  player_manager\
+  \ \" \" = [] ∧ \n  player_manager \"\\n\" = [] ∧\n  player_manager \"\\t\" = []\
+  \ := by\n  sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval player_manager\
+  \ \"John Doe, 8167238327, Jane Doe, 8163723827\"\n\n/--\ninfo: []\n-/\n#guard_msgs\
+  \ in\n#eval player_manager \"\"\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval player_manager\
+  \ None\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,40 @@
+"vc-description": "Spring is interesting season of year. Chef is thinking about different\
+  \ things, but last time he thinks about interesting game - \"Strange Matrix\". \n\
+  Chef has a matrix that consists of n rows, each contains m elements. Initially,\
+  \ the element aij of matrix equals j. (1 ≤ i ≤ n, 1 ≤ j ≤ m). \nThen p times some\
+  \ element aij is increased by 1. \nThen Chef needs to calculate the following: \n\
+  \n- For each row he tries to move from the last element (with number m) to the first\
+  \ one (with the number 1). \n- While staying in aij Chef can only move to aij -\
+  \ 1 only if aij - 1 ≤ aij. \n- The cost of such a movement is aij - aij - 1.\n-\
+  \ Otherwise Chef can't move and lose (in this row).\n- If Chef can move from the\
+  \ last element of the row to the first one, then the answer is the total cost of\
+  \ all the movements. \n- If Chef can't move from the last element of the row to\
+  \ the first one, then the answer is -1. \n\nHelp Chef to find answers for all the\
+  \ rows after P commands of increasing. \n\n-----Input-----\n\n- The first line contains\
+  \ three integers n, m and p denoting the number of rows, the number of elements\
+  \ a single row and the number of increasing commands. \n- Each of next p lines contains\
+  \ two integers i and j denoting that the element aij  is increased by one. \n\n\
+  -----Output-----\n- For each row in a single line print the answer after the P increasing\
+  \ commands.\n\n-----Constraints-----\n- 1 ≤ n, m, p ≤ 10 ^ 5\n- 1 ≤ i ≤ n\n- 1 ≤\
+  \ j ≤ m\n\n-----Example-----\nInput:\n4 4 6\n2 2\n3 2 \n3 2 \n4 3\n4 4\n4 3\n\n\
+  Output:\n3\n3\n-1\n4\n\n\n-----Explanation-----\n\nHere is the whole matrix after\
+  \ P commands:\n1 2 3 4\n1 3 3 4\n1 4 3 4\n1 2 5 5\n\nExplanations to the answer:\
+  \ \n- The first line is without changes: 4-3=1, 3-2=1, 2-1=1. answer = 3. \n- The\
+  \ second line: 4-3=1, 3-3=0, 3-1=2. The answer is 3. \n- The third line: 4-3=1,\
+  \ 3-4=-1, Chef can't move to the first number here. Therefore, the answer is -1.\
+  \ \n- The fourth line: 5-5=0, 5-2=3, 2-1=1. The answer is 4."
+"vc-preamble": "import Imports.AllImports\n\ndef Command := Nat × Nat\n\n/-- Given\
+  \ commands are valid if they are within matrix bounds n×m -/\n\ndef valid_commands\
+  \ : Nat → Nat → List Command → Bool\n  | n, m, cmds => cmds.all fun c => c.1 ≤ n\
+  \ && c.2 ≤ m\n\n/-- Solve strange matrix takes dimensions n,m and list of commands,\
+  \ returns list of sums -/"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_strange_matrix (n m k : Nat) (cmds : List Command) :\
+  \ List Int :=\n  sorry\n\n\n"
+"vc-theorems": "theorem single_column\n  (n : Nat)\n  (h : n > 0) :\n  let result\
+  \ := solve_strange_matrix n 1 0 []\n  -- All entries are 0 for single column\n \
+  \ ∀ i : Nat, i < n → result.get! i = 0 :=\nsorry\n\n\ntheorem single_row\n  (m :\
+  \ Nat)\n  (h : m > 0) :\n  let result := solve_strange_matrix 1 m 0 []\n  -- Single\
+  \ row has length 1\n  result.length = 1 ∧\n  -- Result is m-1\n  result.get! 0 =\
+  \ m - 1 :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,75 @@
+"vc-description": "# 'Magic' recursion call depth number\n\nThis Kata was designed\
+  \ as a Fork to the one from donaldsebleung Roboscript series with a reference to:\n\
+  \nhttps://www.codewars.com/collections/roboscript\n\nIt is not more than an extension\
+  \ of Roboscript infinite \"single-\" mutual recursion handling to a \"multiple-\"\
+  \ case.\n\nOne can suppose that you have a machine that works through a specific\
+  \ language. It uses the script, which consists of 3 major commands:\n\n - `F` -\
+  \ Move forward by 1 step in the direction that it is currently pointing.\n\n - `L`\
+  \ - Turn \"left\" (i.e. rotate 90 degrees anticlockwise).\n\n - `R` - Turn \"right\"\
+  \ (i.e. rotate 90 degrees clockwise).\n\nThe number n afterwards enforces the command\
+  \ to execute n times.\n\nTo improve its efficiency machine language is enriched\
+  \ by patterns that are containers to pack and unpack the script.\n\nThe basic syntax\
+  \ for defining a pattern is as follows:\n\n`pnq`\n\nWhere:\n\n - `p` is a \"keyword\"\
+  \ that declares the beginning of a pattern definition \n\n - `n` is a non-negative\
+  \ integer, which acts as a unique identifier for the pattern (pay attention, it\
+  \ may contain several digits).\n\n - `` is a valid RoboScript code (without the\
+  \ angled brackets)\n\n - `q` is a \"keyword\" that marks the end of a pattern definition\
+  \ \n\nFor example, if you want to define `F2LF2` as a pattern and reuse it later:\n\
+  \n```\np333F2LF2q\n```\n\nTo invoke a pattern, a capital `P` followed by the pattern\
+  \ identifier `(n)` is used:\n\n```\nP333\n```\n\nIt doesn't matter whether the invocation\
+  \ of the pattern or the pattern definition comes first. Pattern definitions should\
+  \ always be parsed first.\n\n```\nP333p333P11F2LF2qP333p11FR5Lq\n```\n\n\n\n# ___Infinite\
+  \ recursion___\n\nAs we don't want a robot to be damaged or damaging someone else\
+  \ by becoming uncontrolable when stuck in an infinite loop, it's good to considere\
+  \ this possibility in the programs and to build a compiler that can detect such\
+  \ potential troubles before they actually happen.\n\n* ### Single pattern recursion\
+  \ infinite loop\n\nThis is the simplest case, that occurs when the pattern is invoked\
+  \ inside its definition:\n\n    p333P333qP333 => depth = 1: P333 -> (P333)\n\n\n\
+  * ### Single mutual recursion infinite loop\n\nOccurs when a pattern calls to unpack\
+  \ the mutual one, which contains a callback to the first:\n\n    p1P2qp2P1qP2  =>\
+  \ depth = 2: P2 -> P1 -> (P2)\n\n\n* ### Multiple mutual recursion infinite loop\n\
+  \nOccurs within the combo set of mutual callbacks without termination: \n\n    p1P2qp2P3qp3P1qP3\
+  \ => depth = 3: P3 -> P1 -> P2 -> (P3)\n\n* ### No infinite recursion: terminating\
+  \ branch\n\nThis happens when the program can finish without encountering an infinite\
+  \ loop. Meaning the depth will be considered 0. Some examples below:\n\n    P4p4FLRq\
+  \      => depth = 0\n    p1P2qp2R5qP1  => depth = 0\n    p1P2qp2P1q    => depth\
+  \ = 0 (no call)\n\n\n\n\n\n# Task\n\n\nYour interpreter should be able to analyse\
+  \ infinite recursion profiles in the input program, including multi-mutual cases.\n\
+  \nThough, rather than to analyse only the first encountered infinite loop and get\
+  \ stuck in it like the robot would be, your code will have continue deeper in the\
+  \ calls to find the depth of any infinite recursion or terminating call. Then it\
+  \ should return the minimal and the maximal depths encountered, as an array `[min,\
+  \ max]`.\n\n\n### About the exploration of the different possible branches of the\
+  \ program:\n\n* Consider only patterns that are to be executed:\n\n```\np1P1q  \
+  \               => should return [0, 0], there is no execution\np1P2P3qp2P1qp3P1q\
+  \     => similarly [0, 0]\np1P1qP1               => returns [1, 1]\n```\n\n* All\
+  \ patterns need to be executed, strictly left to right. Meaning that you may encounter\
+  \ several branches:\n\n```\np1P2P3qp2P1qp3P1qP3   => should return [2, 3]\n\nP3\
+  \ -> P1 -> P2 -> (P1)    depth = 3 (max)\n        \\-> (P3)          depth = 2 (min)\n\
+  ```\n\n\n\n# Input\n\n* A valid RoboScript program, as string.\n* Nested definitions\
+  \ of patterns, such as `p1...p2***q...q` will not be tested, even if that could\
+  \ be of interest as a Roboscript improvement.\n* All patterns will have a unique\
+  \ identifier.\n* Since the program is valid, you won't encounter calls to undefined\
+  \ pattern either.\n\n\n# Output\n\n* An array `[min, max]`, giving what are the\
+  \ minimal and the maximal recursion depths encountered.\n\n### Examples\n```\np1F2RF2LqP1\
+  \         =>  should return [0, 0], no infinite recursion detected\n\np1F2RP1F2LqP1\
+  \       =>  should return [1, 1], infinite recursion detection case\n\nP2p1P2qp2P1q\
+  \        =>  should return [2, 2], single mutual infinite recursion case\n\np1P2qP3p2P3qp3P1q\
+  \   =>  should return [3, 3], twice mutual infinite recursion case\n\np1P2P1qp2P3qp3P1qP1\
+  \ =>  should return [1, 3], mixed infinite recursion case\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def magic_call_depth_number (p : Program) : List Nat := sorry\n\
+  \ntheorem magic_returns_valid_range (p : Program) :\n  let result := magic_call_depth_number\
+  \ p\n  result.length = 2 ∧ \n  result.head! ≤ result.get! 1 ∧\n  ∀ x ∈ result, x\
+  \ ≥ 0\n  := sorry\n"
+"vc-theorems": "theorem single_proc_depth_zero (c : Char) : \n  magic_call_depth_number\
+  \ (Program.proc c Program.end) = [0, 0] := sorry\n\n\ntheorem depth_bounded_by_unique_procs\
+  \ (p : Program) :\n  let result := magic_call_depth_number p\n  let proc_count :=\
+  \ sorry -- Helper function to count unique procedures\n  result.get! 1 ≤ proc_count\
+  \ := sorry\n\n\ntheorem empty_program : \n  magic_call_depth_number Program.empty\
+  \ = [0, 0] := sorry\n\n/--\ninfo: [0, 0]\n-/\n#guard_msgs in\n#eval magic_call_depth_number\
+  \ \"p0F2LF2RqP0\"\n\n/--\ninfo: [2, 3]\n-/\n#guard_msgs in\n#eval magic_call_depth_number\
+  \ \"p1P2P3qp2P1qp3P1qP3\"\n\n/--\ninfo: [4, 4]\n-/\n#guard_msgs in\n#eval magic_call_depth_number\
+  \ \"p1P2qp2P3qp3P4qP4p4P1q\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

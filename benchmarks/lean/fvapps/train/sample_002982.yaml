@@ -1,0 +1,24 @@
+"vc-description": "- Kids drink toddy.\n- Teens drink coke.\n- Young adults drink\
+  \ beer.\n- Adults drink whisky.\n\nMake a function that receive age, and return\
+  \ what they drink.\n\n**Rules:**\n\n- Children under 14 old.\n- Teens under 18 old.\n\
+  - Young under 21 old.\n- Adults have 21 or more.\n\n**Examples:**\n\n```python\n\
+  people_with_age_drink(13) == \"drink toddy\"\npeople_with_age_drink(17) == \"drink\
+  \ coke\"\npeople_with_age_drink(18) == \"drink beer\"\npeople_with_age_drink(20)\
+  \ == \"drink beer\"\npeople_with_age_drink(30) == \"drink whisky\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def people_with_age_drink (age : Int) : String := sorry\n\ntheorem\
+  \ kids_drink_toddy\n  {age : Int}\n  (h : age ≤ 13) :\n  people_with_age_drink age\
+  \ = \"drink toddy\" := sorry\n"
+"vc-theorems": "theorem teens_drink_coke\n  {age : Int}\n  (h1 : age ≥ 14)\n  (h2\
+  \ : age ≤ 17) :\n  people_with_age_drink age = \"drink coke\" := sorry\n\n\ntheorem\
+  \ young_adults_drink_beer\n  {age : Int}\n  (h1 : age ≥ 18)\n  (h2 : age ≤ 20) :\n\
+  \  people_with_age_drink age = \"drink beer\" := sorry\n\n\ntheorem adults_drink_whisky\n\
+  \  {age : Int}\n  (h : age ≥ 21) :\n  people_with_age_drink age = \"drink whisky\"\
+  \ := sorry\n\n/--\ninfo: 'drink toddy'\n-/\n#guard_msgs in\n#eval people_with_age_drink\
+  \ 13\n\n/--\ninfo: 'drink coke'\n-/\n#guard_msgs in\n#eval people_with_age_drink\
+  \ 17\n\n/--\ninfo: 'drink beer'\n-/\n#guard_msgs in\n#eval people_with_age_drink\
+  \ 18\n\n/--\ninfo: 'drink beer'\n-/\n#guard_msgs in\n#eval people_with_age_drink\
+  \ 20\n\n/--\ninfo: 'drink whisky'\n-/\n#guard_msgs in\n#eval people_with_age_drink\
+  \ 21\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

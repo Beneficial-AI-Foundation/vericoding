@@ -1,0 +1,20 @@
+"vc-description": "# Task\nN lamps are placed in a line, some are switched on and\
+  \ some are off. What is the smallest number of lamps that need to be switched so\
+  \ that on and off lamps will alternate with each other? \n\nYou are given an array\
+  \ `a` of zeros and ones - `1` mean switched-on lamp and `0` means switched-off.\n\
+  \nYour task is to find the smallest number of lamps that need to be switched.\n\n\
+  # Example\n\nFor `a = [1, 0, 0, 1, 1, 1, 0]`, the result should be `3`.\n```\na\
+  \     --> 1 0 0 1 1 1 0\nswith --> 0 1     0\nbecame--> 0 1 0 1 0 1 0 ```\n\n# Input/Output\n\
+  \n\n- `[input]` integer array `a`\n\narray of zeros and ones - initial lamp setup,\
+  \ 1 mean switched-on lamp and 0 means switched-off.\n\n`2 < a.length <= 1000`\n\n\
+  \n- `[output]` an integer\n\nminimum number of switches."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def lamps (a: List Nat) : Nat := sorry\n\ntheorem lamps_result_bounded\
+  \ (a: List Nat) : \n  lamps a ≤ a.length ∧ 0 ≤ lamps a := sorry\n\n\n"
+"vc-theorems": "theorem lamps_alternating_sequence (a: List Nat) (h: a.length > 0)\
+  \ :\n  lamps ((List.range a.length).map (fun i => i % 2)) = 0 := sorry\n\n/--\n\
+  info: 3\n-/\n#guard_msgs in\n#eval lamps [1, 0, 0, 1, 1, 1, 0]\n\n/--\ninfo: 0\n\
+  -/\n#guard_msgs in\n#eval lamps [1, 0, 1]\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n\
+  #eval lamps [1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,17 @@
+"vc-description": "Write a function that takes a list of at least four elements as\
+  \ an argument and returns a list of the middle two or three elements in reverse\
+  \ order."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverseMiddle {α : Type} (xs : List α) : List α := sorry\n\n\
+  theorem length_reverseMiddle {α : Type} (xs : List α) \n  (h : xs.length ≥ 4) :\n\
+  \  (reverseMiddle xs).length = xs.length - 2 * ((xs.length)/2 - 1) :=\nsorry\n"
+"vc-theorems": "theorem elements_from_middle {α : Type} (xs : List α) \n  (h : xs.length\
+  \ ≥ 4) :\n  ∃ start : Nat,\n    start = xs.length/2 - 1 ∧ \n    reverseMiddle xs\
+  \ = (xs.drop start).take (xs.length - 2*start) :=  \nsorry\n\n\ntheorem is_reversed_middle\
+  \ {α : Type} (xs : List α)\n  (h : xs.length ≥ 4) :\n  let start := xs.length/2\
+  \ - 1\n  let middle := (xs.drop start).take (xs.length - 2*start)\n  reverseMiddle\
+  \ xs = middle.reverse :=\nsorry\n\n/--\ninfo: [100, 3]\n-/\n#guard_msgs in\n#eval\
+  \ reverse_middle [4, 3, 100, 1]\n\n/--\ninfo: [{}, 'string', False]\n-/\n#guard_msgs\
+  \ in\n#eval reverse_middle [1, False, \"string\", {}, 7.43]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

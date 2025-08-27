@@ -1,0 +1,60 @@
+"vc-description": "Salmon loves to be a tidy person. One day, when he looked at the\
+  \ mess that he made after playing with his rubber ducks, he felt awful. Now he wants\
+  \ to clean up his mess, by placing his ducks into boxes.\nEach rubber duck has a\
+  \ color. There are a total of $N+1$ colors, numbered from $0$ to $N$. Salmon wants\
+  \ to place his $N*K$ ducks into $N$ boxes, each of which can fit $K$ ducks. Each\
+  \ duck should be placed inside a box.\nSalmon is very particular when it comes to\
+  \ how many colors he can place in each box. Since Salmon doesn't like lots of colors\
+  \ mixing together he only wants to have a maximum of $2$ distinct colors per box.\n\
+  Please help Salmon achieve this goal!\n\nIt can be shown that there will always\
+  \ be at least one valid solution under given constraints.\n\nIf there are multiple\
+  \ correct solutions, you may output any one of them.   \n\n-----Input:-----\n- The\
+  \ first line contains an integer $T$, denoting the number of testcases. $T$ testcases\
+  \ will follow, each containing two lines.   \n- The first line of each testcase\
+  \ contains two space-separated integers $N$ and $K$.   \n- The second line of each\
+  \ testcase contains $N+1$  space-separated integers. The $i+1$-th integer denotes\
+  \ the number of ducks with color-$i$ where $0 \\leq i \\leq N$\n\n-----Output:-----\n\
+  - Output $N$ lines for each testcase. \n- The $i$-th line of a testcase should contain\
+  \ $4$ space-separated integers $c1, m1, c2, m2$ respectively which denotes that\
+  \ that are $m1$ ducks of color-$c1$ and $m2$ ducks of color-$c2$ inside the $i$-th\
+  \ box where $0 \\leq m1,m2 \\leq K$ and $0 \\leq c1,c2 \\leq N$. \n- Note that even\
+  \ if you have only one color to put inside the $i$-th box, you should still output\
+  \ $4$ space-separated integers and keep either $m1$ or $m2$ as $0$. And $0 \\leq\
+  \ c1,c2 \\leq N$.\n- The output should be valid and should satisfy Salmon's goal.\n\
+  \n-----Constraints-----\n- $T=10$\n- $2 \\leq N \\leq 10^5$ \n- $2 \\leq K \\leq\
+  \ 10^5$ \n- Total ducks for each test case is exactly $N*K$\n- There can be a color\
+  \ with $0$ ducks\n\n-----Subtasks-----\n- Subtask 1 [20 points]: $2 \\leq N \\leq\
+  \ 10$, $K=2$ \n- Subtask 2 [30 points]: $N=2$, $K=5$\n- Subtask 3 [50 points]: original\
+  \ constraints\n\n-----Sample Input:-----\n1\n2 4\n3 4 1\n\n-----Sample Output:-----\n\
+  2 1 1 3\n1 1 0 3\n\n-----Explanation:-----\n- In the given testcase, Salmon has\
+  \ $N=2$ boxes, each of size $K=4$ and there are total $N*K=8$ ducks.   \n- The first\
+  \ box is filled with $1$ duck of color-$2$ and $3$ ducks of color-$1$ and the second\
+  \ box is filled with $1$ duck of color-$1$ and $3$ ducks of color-$0$.   \n- Each\
+  \ duck is inside a box and each box has at most two distinct colors. Also each box\
+  \ contains exactly $K=4$ ducks."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_duck_boxes (N K : Nat) (colors : List Nat) : List Box\
+  \ := sorry\n\ndef validate_solution (N K : Nat) (colors : List Nat) (result : List\
+  \ Box) : Prop := sorry\n\n-- Main correctness theorems\n"
+"vc-theorems": "theorem box_count_correct (N K : Nat) (colors : List Nat) :\n  (List.length\
+  \ colors = N + 1) →\n  (List.foldr (· + ·) 0 colors ≥ N * K) →\n  List.length (solve_duck_boxes\
+  \ N K colors) = N := sorry\n\n\ntheorem box_content_valid (N K : Nat) (colors :\
+  \ List Nat) (box : Box) :\n  (List.length colors = N + 1) →\n  (List.foldr (· +\
+  \ ·) 0 colors ≥ N * K) →\n  box ∈ solve_duck_boxes N K colors →\n  box.count1 +\
+  \ box.count2 = K := sorry\n\n\ntheorem box_colors_distinct (N K : Nat) (colors :\
+  \ List Nat) (box : Box) :\n  (List.length colors = N + 1) →\n  (List.foldr (· +\
+  \ ·) 0 colors ≥ N * K) →\n  box ∈ solve_duck_boxes N K colors →\n  box.color1 ≠\
+  \ box.color2 := sorry\n\n\ntheorem box_colors_valid_range (N K : Nat) (colors :\
+  \ List Nat) (box : Box) :\n  (List.length colors = N + 1) →\n  (List.foldr (· +\
+  \ ·) 0 colors ≥ N * K) →\n  box ∈ solve_duck_boxes N K colors →\n  box.color1 ≤\
+  \ N ∧ box.color2 ≤ N := sorry\n\n\ntheorem color_usage_within_limits (N K : Nat)\
+  \ (colors : List Nat) (i : Nat) :\n  (List.length colors = N + 1) →\n  (List.foldr\
+  \ (· + ·) 0 colors ≥ N * K) →\n  i ≤ N →\n  (List.foldl (fun acc box => acc + \n\
+  \    (if box.color1 = i then box.count1 else 0) +\n    (if box.color2 = i then box.count2\
+  \ else 0)\n  ) 0 (solve_duck_boxes N K colors)) ≤ List.get! colors i := sorry\n\n\
+  -- Minimal input theorem\n\ntheorem minimal_input_valid (N K : Nat) :\n  N > 0 →\n\
+  \  K > 0 →\n  let colors := N*K :: List.replicate N 0\n  validate_solution N K colors\
+  \ (solve_duck_boxes N K colors) := sorry\n\n/--\ninfo: N2\n-/\n#guard_msgs in\n\
+  #eval len solve_duck_boxes(N2, K2, colors2)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

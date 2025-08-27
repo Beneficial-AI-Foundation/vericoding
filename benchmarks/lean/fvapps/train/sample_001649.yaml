@@ -1,0 +1,79 @@
+"vc-description": "# Overview\n\nThe goal here is to solve a puzzle (the \"pieces\
+  \ of paper\" kind of puzzle). You will receive different pieces of that puzzle as\
+  \ input, and you will have to find in what order you have to rearrange them so that\
+  \ the \"picture\" of the puzzle is complete.\n\n\n\n## Puzzle pieces\n\nAll the\
+  \ pieces of the puzzle will be represented in the following way:\n\n* 4 numbers,\
+  \ grouped in 2 tuples, which are representing the \"picture\" on the piece. Every\
+  \ piece has a 2x2 size.\n* 1 id number. All id numbers are unique in a puzzle, but\
+  \ their value may be random.\n* Note that all numbers will be non-negative integers\
+  \ (except for outer border \"picture\" numbers in C#)\n\nFor example, \n       \
+  \         \n    ((1, 2), (3, 4), 1) \n     Puzzle piece id ^  \n\nis equivalent\
+  \ the the following square piece of puzzle, having the id number `1`:\n\n    +---+\n\
+  \    |1 2|\n    |3 4|\n    +---+\n\nIf the piece is on a border or is a corner,\
+  \ some numbers will be replaced with `None` (`-1` in C#):\n```python\n((None, None),\
+  \ (1, 2), 10)       -->   upper border\n((9, None), (None, None), 11)   -->   bottom\
+  \ right corner\n```\n\n \n\nNote that you cannot flip or rotate the pieces (_would\
+  \ you like to change the picture!?_)\n\n\n\n## Solving the puzzle\n\n* You'll get\
+  \ an array of pieces as well as the size of the puzzle (width and height).  \n*\
+  \ Two pieces can be assembled if they share the same pattern on the border where\
+  \ they are in contact (see example below).\n* Puzzle pieces being unique, you'll\
+  \ never encounter two different pieces that could be assembled with the same third\
+  \ one. So to say: borders are unique.\n* Once you found the proper arrangment for\
+  \ all the pieces, return the solved puzzle as a list of tuples (height * width)\
+  \ of the id number of the piece at its correct position. (For C#, return the solved\
+  \ puzzle as a 2-dimensional array of integers.)\n\n## Example:\n\nInputs:\n\n```python\n\
+  width, height = 3,3\npieces = [ ((None, 5), (None, None), 3), \n           ((17,\
+  \ None), (None, None), 9),\n           ((None, 4), (None, 5), 8),\n           ((4,\
+  \ 11), (5, 17), 5),\n           ((11, None), (17, None), 2),   \n           ((None,\
+  \ None), (None, 4), 7),\n           ((5, 17), (None, None), 1), \n           ((None,\
+  \ None), (11, None), 4),\n           ((None, None), (4, 11), 6) ]`\n```\n\nIn this\
+  \ case, the expected output would be:\n\n```python\nexpected = [(7, 6, 4), (8, 5,\
+  \ 2), (3, 1, 9)]\n```\n\n... the solved puzzle looking like this:\n\n```python\n\
+  \         Puzzle Solved:                     Related id numbers:\n -----------------------------\
+  \                  7    6    4\n|None None|None None|None None|                \
+  \ \n|None   4 | 4    11 | 11  None|                 8    5    2\n|-----------------------------|\n\
+  |None   4 | 4    11 | 11  None|                 3    1    9\n|None   5 | 5    17\
+  \ | 17  None|\n|-----------------------------| \n|None   5 | 5    17 | 17  None|\
+  \ \n|None None|None None|None None|\n -----------------------------\n```\n\n###\
+  \ Notes:\n\n* Be careful about performances, you'll have to handle rather big puzzles.\n\
+  * Width and height will be between 2 and 100 (inclusive)\n* The puzzle may be rectangular\
+  \ too"
+"vc-preamble": "import Imports.AllImports\n\ndef getMatchingPieces (pieces: List Piece)\
+  \ : Piece → Bool := sorry\ndef checkFit (p1 p2: Piece) (dir: String) : Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def puzzleSolver (pieces: List Piece) (width height: Nat) : Option\
+  \ (List (List Nat)) := sorry\n\ntheorem getMatchingPieces_preserves_length (pieces:\
+  \ List Piece):\n  pieces.length = (pieces.filter (getMatchingPieces pieces)).length\
+  \ := sorry\n"
+"vc-theorems": "theorem getMatchingPieces_contains_all_ids (pieces: List Piece) (p:\
+  \ Piece):\n  p ∈ pieces → p ∈ (pieces.filter (getMatchingPieces pieces)) := sorry\n\
+  \n\ntheorem checkFit_returns_bool (p1 p2: Piece) (dir: String):\n  checkFit p1 p2\
+  \ dir = true ∨ checkFit p1 p2 dir = false := sorry\n\n\ntheorem checkFit_right (p1\
+  \ p2: Piece):\n  checkFit p1 p2 \"right\" = (p1.right + p2.left = 0) := sorry\n\n\
+  \ntheorem checkFit_down (p1 p2: Piece): \n  checkFit p1 p2 \"down\" = (p1.down +\
+  \ p2.up = 0) := sorry\n\n\ntheorem checkFit_invalid (p1 p2: Piece) (dir: String):\n\
+  \  dir ≠ \"right\" → dir ≠ \"down\" → checkFit p1 p2 dir = false := sorry\n\n\n\
+  theorem puzzleSolver_result_dimensions {pieces: List Piece} {width height: Nat}\n\
+  \  (result: Option (List (List Nat))):\n  result = puzzleSolver pieces width height\
+  \ →\n  result.isSome → \n  match result with\n  | none => True\n  | some grid =>\
+  \ grid.length = height ∧ grid.all (fun row => row.length = width)\n  := sorry\n\n\
+  \ntheorem puzzleSolver_uses_valid_pieces {pieces: List Piece} {width height: Nat}\n\
+  \  (result: Option (List (List Nat))):\n  result = puzzleSolver pieces width height\
+  \ →\n  result.isSome →\n  match result with\n  | none => True  \n  | some grid =>\
+  \ ∀ id ∈ grid.join, ∃ p ∈ pieces, p.id = id\n  := sorry\n\n\ntheorem puzzleSolver_pieces_fit\
+  \ {pieces: List Piece} {width height: Nat}\n  (result: Option (List (List Nat))):\n\
+  \  result = puzzleSolver pieces width height →\n  result.isSome →\n  match result\
+  \ with\n  | none => True\n  | some grid =>\n    ∀ y x: Nat, y < height → x < width\
+  \ →\n    if x > 0 ∧ grid[y]?.isSome ∧ Option.isSome (grid[y]? >>= (·[x]?)) ∧ Option.isSome\
+  \ (grid[y]? >>= (·[x-1]?))\n    then match grid[y]?, grid[y]? >>= (·[x]?), grid[y]?\
+  \ >>= (·[x-1]?) with\n      | some row, some curr, some prev =>\n        match pieces.find?\
+  \ (·.id = curr), pieces.find? (·.id = prev) with\n        | some currPiece, some\
+  \ prevPiece => checkFit prevPiece currPiece \"right\"\n        | _, _ => false\n\
+  \      | _, _, _ => false\n    else if y > 0 ∧ grid[y]?.isSome ∧ Option.isSome (grid[y]?\
+  \ >>= (·[x]?)) ∧ Option.isSome (grid[y-1]? >>= (·[x]?))\n    then match grid[y]?,\
+  \ grid[y]? >>= (·[x]?), grid[y-1]? >>= (·[x]?) with\n      | some row, some curr,\
+  \ some above =>\n        match pieces.find? (·.id = curr), pieces.find? (·.id =\
+  \ above) with\n        | some currPiece, some abovePiece => checkFit abovePiece\
+  \ currPiece \"down\"\n        | _, _ => false\n      | _, _, _ => false\n    else\
+  \ true\n  := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

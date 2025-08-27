@@ -1,0 +1,23 @@
+"vc-description": "After a hard quarter in the office you decide to get some rest\
+  \ on a vacation. So you will book a flight for you and your girlfriend and try to\
+  \ leave all the mess behind you.\n\nYou will need a rental car in order for you\
+  \ to get around in your vacation. The manager of the car rental makes you some good\
+  \ offers.\n\nEvery day you rent the car costs $40. If you rent the car for 7 or\
+  \ more days, you get $50 off your total. Alternatively, if you rent the car for\
+  \ 3 or more days, you get $20 off your total.\n\nWrite a code that gives out the\
+  \ total amount for different days(d)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def rental_car_cost (days : Int) : Int := sorry\n\ntheorem rental_cost_always_positive\
+  \ {days : Int} (h : days > 0) : \n  rental_car_cost days ≥ 0 := sorry\n"
+"vc-theorems": "theorem rental_base_calculation (days : Int) :\n  (days < 3 → rental_car_cost\
+  \ days = days * 40) ∧\n  (3 ≤ days ∧ days < 7 → rental_car_cost days = days * 40\
+  \ - 20) ∧\n  (days ≥ 7 → rental_car_cost days = days * 40 - 50) := sorry\n\n\ntheorem\
+  \ no_discount_short_rental {days : Int} (h1 : days ≤ 2) (h2 : days > 0) :\n  rental_car_cost\
+  \ days = days * 40 := sorry\n\n\ntheorem long_rental_discount {days : Int} (h :\
+  \ days ≥ 7) :\n  rental_car_cost days = days * 40 - 50 := sorry\n\n\ntheorem medium_rental_discount\
+  \ {days : Int} (h1 : days ≥ 3) (h2 : days ≤ 6) :\n  rental_car_cost days = days\
+  \ * 40 - 20 := sorry\n\n/--\ninfo: 80\n-/\n#guard_msgs in\n#eval rental_car_cost\
+  \ 2\n\n/--\ninfo: 180\n-/\n#guard_msgs in\n#eval rental_car_cost 5\n\n/--\ninfo:\
+  \ 350\n-/\n#guard_msgs in\n#eval rental_car_cost 10\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

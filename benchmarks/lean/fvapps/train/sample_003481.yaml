@@ -1,0 +1,23 @@
+"vc-description": "We define the sequence ```SF``` in the following way in terms of\
+  \ four previous sequences: ```S1```, ```S2```, ```S3``` and ```ST```\n\n\n\nWe are\
+  \ interested in collecting the terms of SF that are multiple of ten.\n\nThe first\
+  \ term multiple of ten of this sequence is  ```60```\n\nMake the function ```find_mult10_SF()```\
+  \ that you introduce the ordinal number of a term multiple of 10 of SF and gives\
+  \ us the value of this term.\n\nLet's see some cases: \n```python\nfind_mult10_SF(1)\
+  \ == 60\n\nfind_mult10_SF(2) == 70080\n\nfind_mult10_SF(3) ==  90700800\n```\n```\
+  \ haskell\nfindMult10SF 1 `shouldBe` 60\nfindMult10SF 2 `shouldBe` 70080\nfindMult10SF\
+  \ 3 `shouldBe` 90700800\n```\nMemoization is advisable to have a more agile code\
+  \ for tests.\n\nYour code will be tested up to the 300-th term, multiple of 10.\n\
+  \nHappy coding!!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_mult10_SF (n : Nat) : Nat := sorry \n\ntheorem find_mult10_SF_is_multiple_of_10\
+  \ (n : Nat) \n  (h : 1 ≤ n ∧ n ≤ 10) : \n  find_mult10_SF n % 10 = 0 := sorry\n"
+"vc-theorems": "theorem find_mult10_SF_strictly_increasing (n : Nat)  \n  (h : 1 <\
+  \ n ∧ n ≤ 10) :\n  find_mult10_SF n > find_mult10_SF (n-1) := sorry\n\n\ntheorem\
+  \ find_mult10_SF_positive (n : Nat)\n  (h : 1 ≤ n ∧ n ≤ 10) :\n  find_mult10_SF\
+  \ n > 0 := sorry\n\n\ntheorem find_mult10_SF_first_value :\n  find_mult10_SF 1 =\
+  \ 60 := sorry\n\n/--\ninfo: 60\n-/\n#guard_msgs in\n#eval find_mult10_SF 1\n\n/--\n\
+  info: 70080\n-/\n#guard_msgs in\n#eval find_mult10_SF 2\n\n/--\ninfo: 90700800\n\
+  -/\n#guard_msgs in\n#eval find_mult10_SF 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

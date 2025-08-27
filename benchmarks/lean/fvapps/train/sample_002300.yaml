@@ -1,0 +1,27 @@
+"vc-description": "Given a string S of lowercase letters, a duplicate removal consists\
+  \ of choosing two adjacent and equal letters, and removing them.\nWe repeatedly\
+  \ make duplicate removals on S until we no longer can.\nReturn the final string\
+  \ after all such duplicate removals have been made.  It is guaranteed the answer\
+  \ is unique.\n \nExample 1:\nInput: \"abbaca\"\nOutput: \"ca\"\nExplanation: \n\
+  For example, in \"abbaca\" we could remove \"bb\" since the letters are adjacent\
+  \ and equal, and this is the only possible move.  The result of this move is that\
+  \ the string is \"aaca\", of which only \"aa\" is possible, so the final string\
+  \ is \"ca\".\n\n \nNote:\n\n1 <= S.length <= 20000\nS consists only of English lowercase\
+  \ letters."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def remove_duplicates (s : String) : String := sorry\n\ntheorem\
+  \ result_is_subsequence (s : String) : \n  let result := remove_duplicates s\n \
+  \ ∃ indices : List String.Pos, \n    (∀ (i j : Fin indices.length), i.val < j.val\
+  \ → indices[i.val]! < indices[j.val]!) ∧ \n    indices.map (String.get s) = result.data\
+  \ := sorry \n"
+"vc-theorems": "theorem all_same_char_gives_empty_or_single (c : Char) (s : String)\
+  \ :\n  (∀ i : String.Pos, s.get i = c) →\n  remove_duplicates s = \"\" ∨ remove_duplicates\
+  \ s = String.mk [c] := sorry\n\n\ntheorem repeated_application_stable (s : String)\
+  \ :\n  remove_duplicates (remove_duplicates s) = remove_duplicates s := sorry\n\n\
+  \ntheorem empty_string :\n  remove_duplicates \"\" = \"\" := sorry\n\n\ntheorem\
+  \ non_letters_unchanged (s : String) :\n  (∀ c ∈ s.data, ¬ c.isAlpha) →\n  remove_duplicates\
+  \ s = s := sorry\n\n/--\ninfo: 'ca'\n-/\n#guard_msgs in\n#eval remove_duplicates\
+  \ \"abbaca\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval remove_duplicates \"aaaaaa\"\
+  \n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval remove_duplicates \"abba\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

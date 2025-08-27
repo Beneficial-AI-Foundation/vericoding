@@ -1,0 +1,28 @@
+"vc-description": "## Task:\nYou have to write a function `pattern` which returns\
+  \ the following Pattern(See Pattern & Examples) upto `n` number of rows. \n\n* Note:`Returning`\
+  \ the pattern is not the same as `Printing` the pattern.\n\n#### Rules/Note:\n*\
+  \ If `n < 1` then it should return \"\" i.e. empty string.\n* There are `no whitespaces`\
+  \ in the pattern.\n\n### Pattern: \n\n    1\n    22\n    333\n    ....\n    .....\n\
+  \    nnnnnn\n    \n### Examples:\n\n+ pattern(5):\n\n      1\n      22\n      333\n\
+  \      4444\n      55555\n      \n* pattern(11):  \n\n      1\n      22\n      333\n\
+  \      4444\n      55555\n      666666\n      7777777\n      88888888\n      999999999\n\
+  \      10101010101010101010\n      1111111111111111111111\n\n```if-not:cfml\n* Hint:\
+  \ Use \\n in string to jump to next line\n```\n```if:cfml\n* Hint: Use Chr(10) in\
+  \ string to jump to next line\n```\n[List of all my katas]('http://www.codewars.com/users/curious_db97/authored')"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pattern (n : Int) : String := sorry\n\ndef String.replicate\
+  \ (n : Nat) (s : String) : String := sorry\n"
+"vc-theorems": "theorem pattern_positive (n : Int) (h : 1 ≤ n ∧ n ≤ 100) : \n  let\
+  \ lines := (pattern n).split (· == '\\n')\n  (lines.length = n) ∧ \n  ∀ i : Nat,\
+  \ i < n → \n    lines[i]! = String.replicate (i+1) (toString (i+1)) := sorry\n\n\
+  \ntheorem pattern_non_positive (n : Int) (h : n ≤ 0) :\n  pattern n = \"\" := sorry\n\
+  \n\ntheorem pattern_output_structure : \n  let lines := (pattern 5).split (· ==\
+  \ '\\n')\n  (∀ line ∈ lines, line.all Char.isDigit) ∧ \n  (∀ line ∈ lines, line.length\
+  \ > 0 → \n    ∀ c ∈ line.data, c = line.get! 0) ∧\n  (∀ i : Nat, i < lines.length\
+  \ → \n    let line := lines[i]!\n    String.toNat! (toString (line.get! 0)) = line.length)\
+  \ := sorry\n\n/--\ninfo: '1'\n-/\n#guard_msgs in\n#eval pattern 1\n\n/--\ninfo:\
+  \ '1\\n22'\n-/\n#guard_msgs in\n#eval pattern 2\n\n/--\ninfo: '1\\n22\\n333\\n4444\\\
+  n55555'\n-/\n#guard_msgs in\n#eval pattern 5\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n\
+  #eval pattern 0\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval pattern -1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

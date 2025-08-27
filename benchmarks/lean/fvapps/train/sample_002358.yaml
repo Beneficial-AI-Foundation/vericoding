@@ -1,0 +1,33 @@
+"vc-description": "Given a string s containing only lower case English letters and\
+  \ the '?' character, convert all the '?' characters into lower case letters such\
+  \ that the final string does not contain any consecutive repeating characters. You\
+  \ cannot modify the non '?' characters.\nIt is guaranteed that there are no consecutive\
+  \ repeating characters in the given string except for '?'.\nReturn the final string\
+  \ after all the conversions (possibly zero) have been made. If there is more than\
+  \ one solution, return any of them. It can be shown that an answer is always possible\
+  \ with the given constraints.\n \nExample 1:\nInput: s = \"?zs\"\nOutput: \"azs\"\
+  \nExplanation: There are 25 solutions for this problem. From \"azs\" to \"yzs\"\
+  , all are valid. Only \"z\" is an invalid modification as the string will consist\
+  \ of consecutive repeating characters in \"zzs\".\nExample 2:\nInput: s = \"ubv?w\"\
+  \nOutput: \"ubvaw\"\nExplanation: There are 24 solutions for this problem. Only\
+  \ \"v\" and \"w\" are invalid modifications as the strings will consist of consecutive\
+  \ repeating characters in \"ubvvw\" and \"ubvww\".\n\nExample 3:\nInput: s = \"\
+  j?qg??b\"\nOutput: \"jaqgacb\"\n\nExample 4:\nInput: s = \"??yw?ipkj?\"\nOutput:\
+  \ \"acywaipkja\"\n\n \nConstraints:\n\n1 <= s.length <= 100\ns contains only lower\
+  \ case English letters and '?'."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def modify_string (s : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem modify_string_empty : \n  modify_string \"\" = \"\" := sorry\
+  \ \n\n\ntheorem modify_string_no_question_marks {s : String} \n  (h : ∀ c ∈ s.data,\
+  \ 'a' ≤ c ∧ c ≤ 'z') :\n  modify_string s = s := sorry\n\n\ntheorem modify_string_length\
+  \ {s : String} :\n  (modify_string s).length = s.length := sorry\n\n\ntheorem modify_string_lowercase\
+  \ {s : String} :\n  ∀ c ∈ (modify_string s).data, 'a' ≤ c ∧ c ≤ 'z' := sorry\n\n\
+  \ntheorem modify_string_no_adjacent_same {s : String} :\n  ∀ i, i + 1 < (modify_string\
+  \ s).length → \n    (modify_string s).data[i]! ≠ (modify_string s).data[i+1]! :=\
+  \ sorry\n\n\ntheorem modify_string_preserves_non_question {s : String} {i : Nat}\
+  \ :\n  i < s.length →\n  s.data[i]! ≠ '?' → \n  (modify_string s).data[i]! = s.data[i]!\
+  \ := sorry\n\n/--\ninfo: 'azs'\n-/\n#guard_msgs in\n#eval modify_string \"?zs\"\n\
+  \n/--\ninfo: len('j?qg??b')\n-/\n#guard_msgs in\n#eval len modify_string(\"j?qg??b\"\
+  )\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

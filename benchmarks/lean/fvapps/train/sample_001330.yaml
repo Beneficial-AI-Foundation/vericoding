@@ -1,0 +1,23 @@
+"vc-description": "The chef was searching for his pen in the garage but he found his\
+  \ old machine with a display and some numbers on it. If some numbers entered then\
+  \ some different output occurs on the display. Chef wants to crack the algorithm\
+  \ that the machine is following.\nExample to identify the pattern :\nInput     \
+  \                       Output\n9                                   36\n5      \
+  \                             10\n1                                    0\n2    \
+  \                                1\n\n-----Input:-----\n- First-line will contain\
+  \ $T$, the number of test cases. Then the test cases follow. \n- Each test case\
+  \ contains a single line of input, $N$. \n\n-----Output:-----\nFor each test case,\
+  \ output in a single line answer as displayed on the screen.\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 10^6$\n- $1 \\leq N \\leq 10^6$\n\n-----Sample Input:-----\n\
+  1\n7\n\n-----Sample Output:-----\n21"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem solve_non_negative (n : Nat) (h : n ≥ 1) : \n  solve n ≥ 0\
+  \ := \n  sorry\n\n\ntheorem solve_formula (n : Nat) (h : n ≥ 1) :\n  solve n = ((n-1)*n)/2\
+  \ :=\n  sorry\n\n\ntheorem solve_monotonic (n : Nat) (h : n ≥ 2) :\n  solve n >\
+  \ solve (n-1) :=\n  sorry\n\n\ntheorem solve_base_case_one : \n  solve 1 = 0 :=\n\
+  \  sorry\n\n\ntheorem solve_base_case_two :\n  solve 2 = 1 :=\n  sorry\n\n/--\n\
+  info: 21\n-/\n#guard_msgs in\n#eval solve 7\n\n/--\ninfo: 36\n-/\n#guard_msgs in\n\
+  #eval solve 9\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval solve 5\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

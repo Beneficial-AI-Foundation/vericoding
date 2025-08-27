@@ -1,0 +1,27 @@
+"vc-description": "Gru wants to distribute $N$ bananas to $K$ minions on his birthday.\n\
+  Gru does not like to just give everyone the same number of bananas, so instead,\
+  \ he wants to distribute bananas in such a way that each minion gets a $distinct$\
+  \ amount of bananas. That is, no two minions should get the same number of bananas.\n\
+  Gru also loves $gcd$. The higher the $gcd$, the happier Gru and the minions get.\
+  \ So help Gru in distributing the bananas in such a way that each Minion gets a\
+  \ distinct amount of bananas and gcd of this distribution is highest possible. Output\
+  \ this maximum gcd. If such a distribution is not possible output $-1$.\nNote: You\
+  \ have to distribute $all$ $N$ bananas. \n\n-----Input:-----\n- First line will\
+  \ contain $T$, number of testcases. Then the testcases follow. \n- Each testcase\
+  \ consists of a single line of input, which has two integers: $N, K$. \n\n-----Output:-----\n\
+  For each testcase, output in a single line the maximum gcd or -1.\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 100$\n- $1 \\leq N, K \\leq 10^9$\n\n-----Sample Input:-----\n\
+  1\n6 3\n\n-----Sample Output:-----\n1\n\n-----EXPLANATION:-----\nThe only possible\
+  \ distribution is $[1, 2, 3]$. So the answer is 1."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_max_gcd (n k : Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem find_max_gcd_divides_n {n k : Int} (hn : n > 0) (hk : k >\
+  \ 0)\n    (h : (k * (k + 1)) / 2 ≤ n) (hres : find_max_gcd n k ≠ -1) :\n  n % (find_max_gcd\
+  \ n k) = 0 :=\n  sorry\n\n\ntheorem find_max_gcd_positive {n k : Int} (hn : n >\
+  \ 0) (hk : k > 0) \n    (h : (k * (k + 1)) / 2 ≤ n) (hres : find_max_gcd n k ≠ -1)\
+  \ :\n  find_max_gcd n k > 0 :=\n  sorry\n\n\ntheorem find_max_gcd_invalid_n {n k\
+  \ : Int} (hn : n ≤ 0) (hk : k > 0) :\n  find_max_gcd n k = -1 :=\n  sorry\n\n\n\
+  theorem find_max_gcd_dist_condition {n k : Int} (hn : n > 0) (hk : k > 0) \n   \
+  \ (hres : find_max_gcd n k ≠ -1) :\n  (k * (k + 1)) / 2 ≤ n :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

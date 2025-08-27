@@ -1,0 +1,31 @@
+"vc-description": "Given an array of scores that are non-negative integers. Player\
+  \ 1 picks one of the numbers from either end of the array followed by the player\
+  \ 2 and then player 1 and so on. Each time a player picks a number, that number\
+  \ will not be available for the next player. This continues until all the scores\
+  \ have been chosen. The player with the maximum score wins. \n\nGiven an array of\
+  \ scores, predict whether player 1 is the winner. You can assume each player plays\
+  \ to maximize his score. \n\nExample 1:\n\nInput: [1, 5, 2]\nOutput: False\nExplanation:\
+  \ Initially, player 1 can choose between 1 and 2. If he chooses 2 (or 1), then player\
+  \ 2 can choose from 1 (or 2) and 5. If player 2 chooses 5, then player 1 will be\
+  \ left with 1 (or 2). So, final score of player 1 is 1 + 2 = 3, and player 2 is\
+  \ 5. Hence, player 1 will never be the winner and you need to return False.\n\n\n\
+  \nExample 2:\n\nInput: [1, 5, 233, 7]\nOutput: True\nExplanation: Player 1 first\
+  \ chooses 1. Then player 2 have to choose between 5 and 7. No matter which number\
+  \ player 2 choose, player 1 can choose 233.Finally, player 1 has more score (234)\
+  \ than player 2 (12), so you need to return True representing player1 can win.\n\
+  \n\n\nNote:\n\n1 \nAny scores in the given array are non-negative integers and will\
+  \ not exceed 10,000,000.\nIf the scores of both players are equal, then player 1\
+  \ is still the winner."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def predict_the_winner (nums : List Int) : Bool := sorry\n\ntheorem\
+  \ empty_or_even_length_wins (nums : List Int) : \n  (nums = []) ∨ (nums.length %\
+  \ 2 = 0) → predict_the_winner nums = true := sorry\n"
+"vc-theorems": "theorem equal_elements_wins (nums : List Int) (h1 : nums.length ≥\
+  \ 2) \n  (h2 : ∀ x ∈ nums, x = nums[0]!) : predict_the_winner nums = true := sorry\n\
+  \n\ntheorem reversed_same_result (nums : List Int) (h : nums ≠ []) :\n  predict_the_winner\
+  \ nums = predict_the_winner nums.reverse := sorry\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval predict_the_winner [1, 5, 2]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
+  #eval predict_the_winner [1, 5, 233, 7]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
+  #eval predict_the_winner []\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

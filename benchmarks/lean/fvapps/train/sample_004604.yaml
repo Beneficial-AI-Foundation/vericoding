@@ -1,0 +1,30 @@
+"vc-description": "Write a function that takes a piece of text in the form of a string\
+  \ and returns the letter frequency count for the text. This count excludes numbers,\
+  \ spaces and all punctuation marks. Upper and lower case versions of a character\
+  \ are equivalent and the result should all be in lowercase.\n\nThe function should\
+  \ return a list of tuples (in Python and Haskell) or arrays (in other languages)\
+  \ sorted by the most frequent letters first. The Rust implementation should return\
+  \ an ordered BTreeMap.\nLetters with the same frequency are ordered alphabetically.\n\
+  For example:\n\n```python\n  letter_frequency('aaAabb dddDD hhcc')\n```  \n```C++\n\
+  \  letter_frequency(\"aaAabb dddDD hhcc\")\n```\n\nwill return\n\n```python\n  [('d',5),\
+  \ ('a',4), ('b',2), ('c',2), ('h',2)]\n```  \n```C++\n  std::vector>{{'d',5}, {'a',4},\
+  \ {'b',2}, {'c',2}, {'h',2}}\n```\n\nLetter frequency analysis is often used to\
+  \ analyse simple substitution cipher texts like those created by the Caesar cipher."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isAlpha (c : Char) : Bool := sorry\n\ndef letterFrequency (s\
+  \ : String) : List (Char × Nat) := sorry\n"
+"vc-theorems": "theorem letterFrequency_output_structure \n  (s : String) :\n  let\
+  \ result := letterFrequency s\n  ∀ pair, pair ∈ result → \n    isAlpha pair.fst\
+  \ ∧ \n    pair.snd > 0 := sorry\n\n\ntheorem letterFrequency_ordering \n  (s : String)\
+  \ :\n  let result := letterFrequency s  \n  result ≠ [] →\n  ∀ (i : Fin result.length)\
+  \ (j : Fin result.length),\n    i.val < j.val →\n    ((result.get i).snd > (result.get\
+  \ j).snd ∨ \n    ((result.get i).snd = (result.get j).snd ∧ \n     (result.get i).fst\
+  \ < (result.get j).fst)) := sorry\n\n\ntheorem letterFrequency_total_count\n  (s\
+  \ : String) :\n  let result := letterFrequency s\n  List.foldl (λ acc pair => acc\
+  \ + pair.snd) 0 result = \n  List.length (s.data.filter isAlpha) := sorry\n\n/--\n\
+  info: expected1\n-/\n#guard_msgs in\n#eval letter_frequency \"aaAabb dddDD hhcc\"\
+  \n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval letter_frequency \"Hello! 123\
+  \ World.\"\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval letter_frequency \"\
+  \"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

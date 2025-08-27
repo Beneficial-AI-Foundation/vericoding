@@ -1,0 +1,49 @@
+"vc-description": "A printer – who still uses moveable type – is preparing to print\
+  \ a set of pages for a book. These pages are to be numbered, as usual. The printer\
+  \ needs to know how many instances of each decimal digit will be required to set\
+  \ up the page numbers in the section of the book to be printed.\n\nFor example,\
+  \ if pages 10, 11, 12, 13, 14 and 15 are to be printed, computing the number of\
+  \ digits is relatively simple: just look at the page numbers that will appear, and\
+  \ count the number of times each digit appears. The digit 0 appears only once, the\
+  \ digit 1 appears 7 times, the digits 2, 3, 4 and 5 each appear once, and 6, 7,\
+  \ 8 and 9 don’t appear at all.\n\nYour task in this problem is to provide the printer\
+  \ with the appropriate counts of the digits. You will be given the numbers of the\
+  \ two pages that identify the section of the book to be printed. You may safely\
+  \ assume that all pages in that section are to be numbered, that no leading zeroes\
+  \ will be printed, that page numbers are positive, and that no page will have more\
+  \ than three digits in its page number.\n\n-----Input-----\n\nThere will be multiple\
+  \ cases to consider. The input for each case has two integers, A and B, each of\
+  \ which is guaranteed to be positive. These identify the pages to be printed. That\
+  \ is, each integer P between A and B, including A and B, is to be printed. A single\
+  \ zero will follow the input for the last case.\n\n-----Output-----\n\nFor each\
+  \ input case, display the case number (1, 2, …) and the number of occurrences of\
+  \ each decimal digit 0 through 9 in the specified range of page numbers. Display\
+  \ your results in the format shown in the examples below.\n\n-----Example-----\n\
+  Input:\n\n10 15\n912 912\n900 999\n0\n\nOutput:\n\nCase 1: 0:1 1:7 2:1 3:1 4:1 5:1\
+  \ 6:0 7:0 8:0 9:0\nCase 2: 0:0 1:1 2:1 3:0 4:0 5:0 6:0 7:0 8:0 9:1\nCase 3: 0:20\
+  \ 1:20 2:20 3:20 4:20 5:20 6:20 7:20 8:20 9:120"
+"vc-preamble": "import Imports.AllImports\n\ndef countDigits (a b : Nat) : String\
+  \ := sorry\n\ndef sumList : List Nat → Nat \n  | [] => 0\n  | x::xs => x + sumList\
+  \ xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSorted : List String → Bool\n  | [] => true\n  | [_] => true\n\
+  \  | x::y::rest => x ≤ y && isSorted (y::rest)\n"
+"vc-theorems": "theorem countDigits_format_valid {a b : Nat} (h : a ≤ b) (n : Nat)\
+  \ (h1 : n < 10^4) :\n  let result := countDigits a b\n  let pairs := (result.split\
+  \ (· = ' '))\n  pairs.length = 10 ∧\n  (∀ p ∈ pairs, ∃ d c, (p.split (· = ':'))\
+  \ = [d, c] ∧ \n     d ∈ [\"0\", \"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\"\
+  , \"8\", \"9\"] ∧\n     (∀ ch ∈ c.data, ch.isDigit)) ∧\n  isSorted (pairs.map (fun\
+  \ p => ((p.split (· = ':')).get! 0))) := sorry\n\n\ntheorem countDigits_count_valid\
+  \ {a b : Nat} (h : a ≤ b) :\n  let result := countDigits a b\n  let counts := ((result.split\
+  \ (· = ' ')).map \n    (fun p => String.toNat! ((p.split (· = ':')).get! 1)))\n\
+  \  let digitCount := (List.range (b - a + 1)).map \n    (fun i => (toString (i +\
+  \ a)).length)\n  sumList counts = sumList digitCount := sorry\n\n\ntheorem countDigits_single_num_valid\
+  \ (n : Nat) :\n  let result := countDigits n n\n  let counts := ((result.split (·\
+  \ = ' ')).map \n    (fun p => String.toNat! ((p.split (· = ':')).get! 1)))\n  ∀\
+  \ d : Nat, d < 10 →\n    (counts.get! d) = ((toString n).data.filter \n      (fun\
+  \ c => c = (toString d).data.get! 0)).length := sorry\n\n/--\ninfo: '0:1 1:7 2:1\
+  \ 3:1 4:1 5:1 6:0 7:0 8:0 9:0'\n-/\n#guard_msgs in\n#eval count_digits 10 15\n\n\
+  /--\ninfo: '0:0 1:1 2:1 3:0 4:0 5:0 6:0 7:0 8:0 9:1'\n-/\n#guard_msgs in\n#eval\
+  \ count_digits 912 912\n\n/--\ninfo: '0:20 1:20 2:20 3:20 4:20 5:20 6:20 7:20 8:20\
+  \ 9:120'\n-/\n#guard_msgs in\n#eval count_digits 900 999\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

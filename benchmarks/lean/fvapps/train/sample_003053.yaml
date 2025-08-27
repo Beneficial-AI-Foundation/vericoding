@@ -1,0 +1,26 @@
+"vc-description": "The marketing team is spending way too much time typing in hashtags.\
+  \   \nLet's help them with our own Hashtag Generator!\n\nHere's the deal:\n\n- It\
+  \ must start with a hashtag (`#`).\n- All words must have their first letter capitalized.\n\
+  - If the final result is longer than 140 chars it must return `false`.\n- If the\
+  \ input or the result is an empty string it must return `false`.\n\n\n## Examples\n\
+  \n```\n\" Hello there thanks for trying my Kata\"  =>  \"#HelloThereThanksForTryingMyKata\"\
+  \n\"    Hello     World   \"                  =>  \"#HelloWorld\"\n\"\"        \
+  \                                =>  false\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def generate_hashtag (s : String) : Option String := sorry\n\n\
+  theorem generate_hashtag_basic_cases :\n  generate_hashtag \"hello world\" = some\
+  \ \"#HelloWorld\" ∧\n  generate_hashtag \"   hello     world   \" = some \"#HelloWorld\"\
+  \ ∧\n  generate_hashtag \"\" = none := sorry\n"
+"vc-theorems": "theorem generate_hashtag_length_cases {n : Nat} :\n  (n = 138 → generate_hashtag\
+  \ (String.mk (List.replicate n 'a')) = some (\"#A\" ++ String.mk (List.replicate\
+  \ 137 'a'))) ∧\n  (n = 140 → generate_hashtag (String.mk (List.replicate n 'a'))\
+  \ = none) := sorry\n\n\ntheorem generate_hashtag_capitalization :\n  generate_hashtag\
+  \ \"hello World\" = some \"#HelloWorld\" ∧\n  generate_hashtag \"HELLO WORLD\" =\
+  \ some \"#HelloWorld\" ∧\n  generate_hashtag \"hELLo wORLd\" = some \"#HelloWorld\"\
+  \ := sorry\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval generate_hashtag \"\"\n\
+  \n/--\ninfo: '#HelloWorld'\n-/\n#guard_msgs in\n#eval generate_hashtag \"hello world\"\
+  \n\n/--\ninfo: '#HelloWorld'\n-/\n#guard_msgs in\n#eval generate_hashtag \"   hello\
+  \     world   \"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval generate_hashtag\
+  \ \"x\" * 140\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

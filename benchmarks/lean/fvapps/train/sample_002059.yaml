@@ -1,0 +1,47 @@
+"vc-description": "This is the easier version of the problem. In this version, $1\
+  \ \\le n \\le 10^5$ and $0 \\le a_i \\le 1$. You can hack this problem only if you\
+  \ solve and lock both problems.\n\nChristmas is coming, and our protagonist, Bob,\
+  \ is preparing a spectacular present for his long-time best friend Alice. This year,\
+  \ he decides to prepare $n$ boxes of chocolate, numbered from $1$ to $n$. Initially,\
+  \ the $i$-th box contains $a_i$ chocolate pieces.\n\nSince Bob is a typical nice\
+  \ guy, he will not send Alice $n$ empty boxes. In other words, at least one of $a_1,\
+  \ a_2, \\ldots, a_n$ is positive. Since Alice dislikes coprime sets, she will be\
+  \ happy only if there exists some integer $k > 1$ such that the number of pieces\
+  \ in each box is divisible by $k$. Note that Alice won't mind if there exists some\
+  \ empty boxes. \n\nCharlie, Alice's boyfriend, also is Bob's second best friend,\
+  \ so he decides to help Bob by rearranging the chocolate pieces. In one second,\
+  \ Charlie can pick up a piece in box $i$ and put it into either box $i-1$ or box\
+  \ $i+1$ (if such boxes exist). Of course, he wants to help his friend as quickly\
+  \ as possible. Therefore, he asks you to calculate the minimum number of seconds\
+  \ he would need to make Alice happy.\n\n\n-----Input-----\n\nThe first line contains\
+  \ a single integer $n$ ($1 \\le n \\le 10^5$) — the number of chocolate boxes.\n\
+  \nThe second line contains $n$ integers $a_1, a_2, \\ldots, a_n$ ($0 \\le a_i \\\
+  le 1$) — the number of chocolate pieces in the $i$-th box.\n\nIt is guaranteed that\
+  \ at least one of $a_1, a_2, \\ldots, a_n$ is positive.\n\n\n-----Output-----\n\n\
+  If there is no way for Charlie to make Alice happy, print $-1$.\n\nOtherwise, print\
+  \ a single integer $x$ — the minimum number of seconds for Charlie to help Bob make\
+  \ Alice happy.\n\n\n-----Examples-----\nInput\n3\n1 0 1\n\nOutput\n2\n\nInput\n\
+  1\n1\n\nOutput\n-1"
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum (xs : List Nat) : Nat :=\
+  \ \n  xs.foldl (· + ·) 0\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_christmas_boxes (n: Nat) (boxes: List Nat) : Int :=\n\
+  sorry\n"
+"vc-theorems": "theorem solve_christmas_boxes_result_valid {n: Nat} {boxes: List Nat}\
+  \ :\n  let result := solve_christmas_boxes n boxes \n  result ≥ -1 :=\nsorry\n\n\
+  \ntheorem solve_christmas_boxes_single_one_impossible {n: Nat} {boxes: List Nat}\
+  \ :\n  boxes.length = n →\n  boxes.sum = 1 →\n  solve_christmas_boxes n boxes =\
+  \ -1 :=\nsorry\n\n\ntheorem solve_christmas_boxes_result_positive {n: Nat} {boxes:\
+  \ List Nat} :\n  let result := solve_christmas_boxes n boxes\n  result ≠ -1 → result\
+  \ > 0 :=\nsorry\n\n\ntheorem solve_christmas_boxes_length_matches {n: Nat} {boxes:\
+  \ List Nat} :\n  solve_christmas_boxes n boxes = solve_christmas_boxes n boxes →\n\
+  \  boxes.length = n :=\nsorry\n\n\ntheorem solve_christmas_boxes_valid_values {n:\
+  \ Nat} {boxes: List Nat} :\n  solve_christmas_boxes n boxes = solve_christmas_boxes\
+  \ n boxes →\n  ∀ x ∈ boxes, x = 0 ∨ x = 1 :=\nsorry\n\n\ntheorem solve_christmas_boxes_all_ones\
+  \ {n: Nat} :\n  let boxes := List.replicate n 1\n  solve_christmas_boxes n boxes\
+  \ ≥ -1 :=\nsorry\n\n\ntheorem solve_christmas_boxes_all_zeros {n: Nat} :\n  let\
+  \ boxes := List.replicate n 0\n  solve_christmas_boxes n boxes = -1 :=\nsorry\n\n\
+  /--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve_christmas_boxes 3 [1, 0, 1]\n\n/--\n\
+  info: -1\n-/\n#guard_msgs in\n#eval solve_christmas_boxes 1 [1]\n\n/--\ninfo: 5\n\
+  -/\n#guard_msgs in\n#eval solve_christmas_boxes 6 [1, 1, 0, 0, 0, 1]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

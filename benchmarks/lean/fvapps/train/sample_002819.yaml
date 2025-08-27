@@ -1,0 +1,18 @@
+"vc-description": "Given a string, swap the case for each of the letters.\n\ne.g.\
+  \ CodEwArs --> cODeWaRS\n\n### Examples\n\n```\n\"\"           ->   \"\"\n\"CodeWars\"\
+  \   ->   \"cODEwARS\"\n\"abc\"        ->   \"ABC\"\n\"ABC\"        ->   \"abc\"\n\
+  \"123235\"     ->   \"123235\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def swap (s : String) : String := sorry\n\ndef is_ascii_letter\
+  \ (c : Char) : Bool := sorry\n"
+"vc-theorems": "theorem swap_preserves_non_letters (s : String)\n  (h : ∀ c, c ∈ s.data\
+  \ → ¬is_ascii_letter c) :\n  swap s = s := sorry\n\n\ntheorem swap_changes_ascii_letters\
+  \ (s : String)\n  (h : ∀ c, c ∈ s.data → is_ascii_letter c) :\n  ∀ i : Fin s.length,\n\
+  \  s.get (String.Pos.mk i) ≠ (swap s).get (String.Pos.mk i) := sorry\n\n\ntheorem\
+  \ swap_preserves_length (s : String) :\n  (swap s).length = s.length := sorry\n\n\
+  /--\ninfo: 'hELLOwORLD'\n-/\n#guard_msgs in\n#eval swap \"HelloWorld\"\n\n/--\n\
+  info: 'cODEwARS'\n-/\n#guard_msgs in\n#eval swap \"CodeWars\"\n\n/--\ninfo: 'tHiS\
+  \ Is a L0ng SentENCE'\n-/\n#guard_msgs in\n#eval swap \"ThIs iS A l0NG sENTence\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

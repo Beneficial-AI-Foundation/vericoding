@@ -1,0 +1,30 @@
+"vc-description": "# Largest Rectangle in Background\n\nImagine a photo taken to be\
+  \ used in an advertisement. The background on the left of the motive is whitish\
+  \ and you want to write some text on that background. So you scan the photo with\
+  \ a high resolution scanner and, for each line, count the number of pixels from\
+  \ the left that are sufficiently white and suitable for being written on. Your job\
+  \ is to find the area of the largest text box you can place on those pixels.\n\n\
+  Example:\nIn the figure below, the whitish background pixels of the scanned photo\
+  \ are represented by asterisks.\n\n```\n*********************************\n*********\n\
+  *******\n******\n******\n******\n**************\n**************\n**************\n\
+  ***************\n*********************\n\n``` \n\nIf you count the pixels on each\
+  \ line from the left you get the list (or array, depending on which language you\
+  \ are using) `[33, 9, 7, 6, 6, 6, 14, 14, 14, 15, 21]`. The largest reactangle that\
+  \ you can place on these pixels has an area of 70, and is represented by the dots\
+  \ in the figure below.\n\n```\n*********************************\n*********\n*******\n\
+  ******\n******\n******\n..............\n..............\n..............\n..............*\n\
+  ..............*******\n``` \n\nWrite a function that, given a list of the number\
+  \ whitish pixels on each line in the background, returns the area of the largest\
+  \ rectangle that fits on that background."
+"vc-preamble": "import Imports.AllImports\n\ndef maximum : List Nat → Nat \n  | []\
+  \ => 0\n  | (x::xs) => max x (maximum xs)\n\n\ndef minimum : List Nat → Nat\n  |\
+  \ [] => 0\n  | (x::xs) => min x (minimum xs)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def largest_rect (heights : List Nat) : Nat :=\n  sorry\n\n\n\n\
+  \n\n\n"
+"vc-theorems": "theorem largest_rect_empty :\n  largest_rect [] = 0 :=\n  sorry\n\n\
+  /--\ninfo: 16\n-/\n#guard_msgs in\n#eval largest_rect [3, 5, 12, 4, 10]\n\n/--\n\
+  info: 12\n-/\n#guard_msgs in\n#eval largest_rect [6, 2, 5, 4, 5, 1, 6]\n\n/--\n\
+  info: 70\n-/\n#guard_msgs in\n#eval largest_rect [33, 9, 7, 6, 6, 6, 14, 14, 14,\
+  \ 15, 21]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

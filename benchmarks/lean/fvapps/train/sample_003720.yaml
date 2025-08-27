@@ -1,0 +1,30 @@
+"vc-description": "You've had a baby.\n\nWell done. Nice isn't it? Life destroying...\
+  \ but in a good way.\n\nPart of your new routine is lying awake at night worrying\
+  \ that you've either lost the baby... or that you have more than 1!\n\nGiven a string\
+  \ of words (x), you need to calculate how many babies are in it. To count as a baby\
+  \ you must have all of the letters in baby ('b', 'a', 'b', 'y'). That counts as\
+  \ 1. They do not need to be in order in the string. Upper and lower case letters\
+  \ count.\n\nExamples:\n\nIf there are no babies in the string - you lost the baby!!\
+  \ Return a different value, as shown below:\n\n```if-not:kotlin\n'none here' = \"\
+  Where's the baby?!\"\n'' = \"Where's the baby?!\"\n```\n\n```if:kotlin \n\"none\
+  \ here\" = null\n\"\" = null\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def String.count (s : String) (c : Char) : Nat := sorry\ndef baby_count\
+  \ (s : String) : Int ⊕ String := sorry\n"
+"vc-theorems": "theorem baby_count_result_type (s : String) :\n  match baby_count\
+  \ s with\n  | Sum.inl n => True \n  | Sum.inr str => str = \"Where's the baby?!\"\
+  \n  := sorry\n\n\ntheorem baby_count_matches_formula (s : String) :\n  let lowered\
+  \ := s.toLower\n  let count_a := lowered.count 'a'\n  let count_b := lowered.count\
+  \ 'b' / 2\n  let count_y := lowered.count 'y'\n  let expected := min count_a (min\
+  \ count_b count_y)\n  match baby_count s with\n  | Sum.inl n => n = expected ∧ expected\
+  \ > 0\n  | Sum.inr _ => expected = 0\n  := sorry\n\n\ntheorem baby_count_valid_chars_properties\
+  \ (s : String) :\n  let result := baby_count s\n  match result with\n  | Sum.inl\
+  \ n => \n    n ≥ 0 ∧ \n    s.toLower.count 'a' ≥ n ∧\n    s.toLower.count 'b' /\
+  \ 2 ≥ n ∧ \n    s.toLower.count 'y' ≥ n\n  | Sum.inr _ => True\n  := sorry\n\n\n\
+  theorem baby_count_invalid_chars (s : String) :\n  (∀ c ∈ s.data, c ≠ 'a' ∧ c ≠\
+  \ 'b' ∧ c ≠ 'y') →\n  baby_count s = Sum.inr \"Where's the baby?!\"\n  := sorry\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval baby_count \"baby\"\n\n/--\ninfo: 3\n\
+  -/\n#guard_msgs in\n#eval baby_count \"baby baby baby\"\n\n/--\ninfo: \"Where's\
+  \ the baby?!\"\n-/\n#guard_msgs in\n#eval baby_count \"none here\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

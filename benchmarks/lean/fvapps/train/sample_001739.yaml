@@ -1,0 +1,33 @@
+"vc-description": "Write a class StockSpanner which collects daily price quotes for\
+  \ some stock, and returns the span of that stock's price for the current day.\n\
+  The span of the stock's price today is defined as the maximum number of consecutive\
+  \ days (starting from today and going backwards) for which the price of the stock\
+  \ was less than or equal to today's price.\nFor example, if the price of a stock\
+  \ over the next 7 days were [100, 80, 60, 70, 60, 75, 85], then the stock spans\
+  \ would be [1, 1, 1, 2, 1, 4, 6].\n \n\nExample 1:\nInput: [\"StockSpanner\",\"\
+  next\",\"next\",\"next\",\"next\",\"next\",\"next\",\"next\"], [[],[100],[80],[60],[70],[60],[75],[85]]\n\
+  Output: [null,1,1,1,2,1,4,6]\nExplanation: \nFirst, S = StockSpanner() is initialized.\
+  \  Then:\nS.next(100) is called and returns 1,\nS.next(80) is called and returns\
+  \ 1,\nS.next(60) is called and returns 1,\nS.next(70) is called and returns 2,\n\
+  S.next(60) is called and returns 1,\nS.next(75) is called and returns 4,\nS.next(85)\
+  \ is called and returns 6.\n\nNote that (for example) S.next(75) returned 4, because\
+  \ the last 4 prices\n(including today's price of 75) were less than or equal to\
+  \ today's price.\n\n \nNote:\n\nCalls to StockSpanner.next(int price) will have\
+  \ 1 <= price <= 10^5.\nThere will be at most 10000 calls to StockSpanner.next per\
+  \ test case.\nThere will be at most 150000 calls to StockSpanner.next across all\
+  \ test cases.\nThe total time limit for this problem has been reduced by 75% for C++,\
+  \ and 50% for all other languages."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def StockSpanner.next (self : StockSpanner) (price : Nat) : Nat\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem spanner_spans_positive (prices : List Nat) :\n  let spanner\
+  \ : StockSpanner := default\n  let spans := prices.map (StockSpanner.next spanner)\n\
+  \  ∀ span ∈ spans, span > 0 :=\nsorry\n\n\ntheorem spanner_spans_bounded (prices\
+  \ : List Nat) :\n  let spanner : StockSpanner := default\n  let spans := prices.map\
+  \ (StockSpanner.next spanner)\n  ∀ (i : Nat), i < spans.length → spans[i]! ≤ i +\
+  \ 1 :=\nsorry\n\n\ntheorem spanner_repeated_prices (n : Nat) (price : Nat) :\n \
+  \ let spanner : StockSpanner := default\n  let prices := List.replicate n price\n\
+  \  let spans := prices.map (StockSpanner.next spanner)\n  ∀ (i : Nat), i < spans.length\
+  \ → spans[i]! = i + 1 :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

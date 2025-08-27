@@ -1,0 +1,27 @@
+"vc-description": "# Task\n Given array of integers, for each position i, search among\
+  \ the previous positions for the last (from the left) position that contains a smaller\
+  \ value. Store this value at position i in the answer. If no such value can be found,\
+  \ store `-1` instead.\n\n# Example\n\n For `items = [3, 5, 2, 4, 5]`, the output\
+  \ should be `[-1, 3, -1, 2, 4]`.\n\n# Input/Output\n\n\n - `[input]` integer array\
+  \ `arr`\n\n   Non-empty array of positive integers.\n\n   Constraints: `3 ≤ arr.length\
+  \ ≤ 1000, 1 ≤ arr[i] ≤ 1000.`\n\n\n - `[output]` an integer array\n\n   Array containing\
+  \ answer values computed as described above."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def array_previous_less (arr : List Int) : List Int :=\n  sorry\n"
+"vc-theorems": "theorem array_previous_less_length (arr : List Int) (h : arr ≠ [])\
+  \ :\n  (array_previous_less arr).length = arr.length :=\n  sorry\n\n\ntheorem array_previous_less_values\
+  \ (arr : List Int) (h : arr ≠ []) (i : Nat) (hi : i < arr.length) :\n  let result\
+  \ := array_previous_less arr\n  if result[i]! ≠ -1 then\n    (∃ j, j < i ∧ arr[j]!\
+  \ = result[i]! ∧ arr[j]! < arr[i]! ∧\n      ∀ k, j < k → k < i → arr[k]! ≥ arr[i]!)\n\
+  \  else True :=\n  sorry\n\n\ntheorem array_previous_less_negative_ones (arr : List\
+  \ Int) (h : arr ≠ []) (i : Nat) (hi : i < arr.length) :\n  let result := array_previous_less\
+  \ arr\n  if result[i]! = -1 then\n    ∀ j, j < i → arr[j]! ≥ arr[i]!\n  else True\
+  \ :=\n  sorry\n\n\ntheorem array_previous_less_strictly_decreasing (arr : List Int)\
+  \ (h : arr ≠ []) \n  (h_positive : ∀ x ∈ arr, x > 0)\n  (h_decreasing : ∀ i j, i\
+  \ < j → j < arr.length → arr[i]! > arr[j]!) :\n  array_previous_less arr = List.replicate\
+  \ arr.length (-1) :=\n  sorry\n\n/--\ninfo: [-1, 3, -1, 2, 4]\n-/\n#guard_msgs in\n\
+  #eval array_previous_less [3, 5, 2, 4, 5]\n\n/--\ninfo: [-1, -1, -1, 1, 3, 4, 4,\
+  \ 1]\n-/\n#guard_msgs in\n#eval array_previous_less [2, 2, 1, 3, 4, 5, 5, 3]\n\n\
+  /--\ninfo: [-1, -1, -1]\n-/\n#guard_msgs in\n#eval array_previous_less [3, 2, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

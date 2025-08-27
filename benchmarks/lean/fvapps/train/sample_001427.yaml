@@ -1,0 +1,47 @@
+"vc-description": "You are participating in a contest which has $11$ problems (numbered\
+  \ $1$ through $11$). The first eight problems (i.e. problems $1, 2, \\ldots, 8$)\
+  \ are scorable, while the last three problems ($9$, $10$ and $11$) are non-scorable\
+  \ ― this means that any submissions you make on any of these problems do not affect\
+  \ your total score.\nYour total score is the sum of your best scores for all scorable\
+  \ problems. That is, for each scorable problem, you look at the scores of all submissions\
+  \ you made on that problem and take the maximum of these scores (or $0$ if you didn't\
+  \ make any submissions on that problem); the total score is the sum of the maximum\
+  \ scores you took.\nYou know the results of all submissions you made. Calculate\
+  \ your total score.\n\n-----Input-----\n- The first line of the input contains a\
+  \ single integer $T$ denoting the number of test cases. The description of $T$ test\
+  \ cases follows.\n- The first line of each test case contains a single integer $N$\
+  \ denoting the number of submissions you made.\n- $N$ lines follow. For each $i$\
+  \ ($1 \\le i \\le N$), the $i$-th of these lines contains two space-separated integers\
+  \ $p_i$ and $s_i$, denoting that your $i$-th submission was on problem $p_i$ and\
+  \ it received a score $s_i$.\n\n-----Output-----\nFor each test case, print a single\
+  \ line containing one integer ― your total score.\n\n-----Constraints-----\n- $1\
+  \ \\le T \\le 10$\n- $1 \\le N \\le 1,000$\n- $1 \\le p_i \\le 11$ for each valid\
+  \ $i$\n- $0 \\le s_i \\le 100$ for each valid $i$\n\n-----Subtasks-----\nSubtask\
+  \ #1 (15 points): all submissions are on the same problem, i.e. $p_1 = p_2 = \\\
+  ldots = p_N$\nSubtask #2 (15 points): there is at most one submission made on each\
+  \ problem, i.e. $p_i \\neq p_j$ for each valid $i, j$ ($i \\neq j$)\nSubtask #3\
+  \ (70 points): original constraints\n\n-----Example Input-----\n2\n5\n2 45\n9 100\n\
+  8 0\n2 15\n8 90\n1\n11 1\n\n-----Example Output-----\n135\n0\n\n-----Explanation-----\n\
+  Example case 1: The scorable problems with at least one submission are problems\
+  \ $2$ and $8$. For problem $2$, there are two submissions and the maximum score\
+  \ among them is $45$. For problem $8$, there are also two submissions and the maximum\
+  \ score is $90$. Hence, the total score is $45 + 90 = 135$.\nExample case 2: No\
+  \ scorable problem is attempted, so the total score is $0$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Submission := Nat × Nat\n\ndef get_total_score (submissions\
+  \ : List Submission) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem total_score_nonnegative\n  (submissions: List Submission)\
+  \ :\n  get_total_score submissions ≥ 0 :=\nsorry\n\n\ntheorem total_score_bounded\n\
+  \  (submissions: List Submission) :\n  get_total_score submissions ≤ 800 :=\nsorry\n\
+  \n\ntheorem total_score_idempotent\n  (submissions: List Submission) :\n  get_total_score\
+  \ submissions = get_total_score (submissions ++ submissions) :=\nsorry\n\n\ntheorem\
+  \ total_score_only_first_eight\n  (submissions: List Submission) :\n  get_total_score\
+  \ submissions = \n  get_total_score (submissions.filter (fun s => s.fst ≤ 8)) :=\n\
+  sorry\n\n\ntheorem high_problem_numbers_zero\n  (submissions: List Submission)\n\
+  \  (h: ∀ s ∈ submissions, s.fst ≥ 9) :\n  get_total_score submissions = 0 :=\nsorry\n\
+  \n/--\ninfo: 135\n-/\n#guard_msgs in\n#eval get_total_score [(2, 45), (9, 100),\
+  \ (8, 0), (2, 15), (8, 90)]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval get_total_score\
+  \ [(11, 1)]\n\n/--\ninfo: 260\n-/\n#guard_msgs in\n#eval get_total_score [(1, 50),\
+  \ (2, 60), (3, 70), (8, 80)]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

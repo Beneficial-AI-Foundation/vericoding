@@ -1,0 +1,21 @@
+"vc-description": "Write a function called \"filterEvenLengthWords\".\n\nGiven an\
+  \ array of strings, \"filterEvenLengthWords\" returns an array containing only the\
+  \ elements of the given array whose length is an even number.\n\nvar output = filterEvenLengthWords(['word',\
+  \ 'words', 'word', 'words']);\n\nconsole.log(output); // --> ['word', 'word']"
+"vc-preamble": "import Imports.AllImports\n\ndef evenLength (s : String) : Bool :=\n\
+  \  s.length % 2 = 0\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def filterEvenLengthWords (words : List String) : List String :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem output_elements_have_even_length (words : List String) :\n\
+  \  ∀ w ∈ filterEvenLengthWords words, evenLength w :=\nsorry\n\n\ntheorem output_is_subset_of_input\
+  \ (words : List String) :\n  ∀ w ∈ filterEvenLengthWords words, w ∈ words :=\nsorry\n\
+  \n\ntheorem all_even_length_words_included (words : List String) :\n  ∀ w ∈ words,\
+  \ evenLength w → w ∈ filterEvenLengthWords words :=\nsorry\n\n\ntheorem maintains_order\
+  \ (words : List String) :\n  filterEvenLengthWords words = words.filter evenLength\
+  \ :=\nsorry\n\n/--\ninfo: ['word', 'word']\n-/\n#guard_msgs in\n#eval filter_even_length_words\
+  \ [\"word\", \"words\", \"word\", \"words\"]\n\n/--\ninfo: []\n-/\n#guard_msgs in\n\
+  #eval filter_even_length_words [\"Hello\", \"World\"]\n\n/--\ninfo: ['Four']\n-/\n\
+  #guard_msgs in\n#eval filter_even_length_words [\"One\", \"Two\", \"Three\", \"\
+  Four\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

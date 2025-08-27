@@ -1,0 +1,31 @@
+"vc-description": "Mr. Pr and Ms. Ad are at $a$ and $b$ respectively on an infinite\
+  \ number line. Mr. Pr wants to meet Ms. Ad.\nMr. Pr can choose to move  $c$ or $d$\
+  \ units in 1 second. If Mr. Pr moves $c$ units then Ms. Ad will move $d$ units and\
+  \ vice versa. (Both of them always moved in positive x-direction)\nYou have to determine\
+  \ if Mr. Pr can meet with Ms. Ad after some integral amount of time, given that\
+  \ Mr. Pr chooses optimally. Note that meeting after a fractional amount of time\
+  \ does not count.\n\n-----Input:-----\n- First line will contain $T$, number of\
+  \ testcases. Then the testcases follow. \n- Each testcase contains four space separated\
+  \ integers, $a$, $b$, $c$, and $d$.\n\n-----Output:-----\n- For each test case,\
+  \ output a single line containing \"YES\" if Mr. Pr meets with Ms. Ad, otherwise\
+  \ \"NO\".\n\n-----Constraints-----\n- $1 \\leq T \\leq 10^5$\n- $1 \\leq a,b,c,d\
+  \ \\leq 10^9$\n\n-----Sample Input:-----\n2\n3 4 1 2\n10 20 3 7\n\n-----Sample Output:-----\n\
+  YES\nNO\n\n-----Explanation:-----\nIn the first test case, Mr. Pr will move 2 units\
+  \ in the first second and Ms. Ad moves 1 unit simultaneously and they meet. \nIn\
+  \ the second test case, it is impossible to meet (fractional time is not allowed)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_meet (pos1 pos2 speed1 speed2 : Int) : String :=\n  sorry\n"
+"vc-theorems": "theorem same_positions_always_meets (pos : Int) :\n  can_meet pos\
+  \ pos speed1 speed2 = \"YES\" := by sorry\n\n\ntheorem same_speeds_never_meets (pos1\
+  \ pos2 speed : Int) :\n  pos1 ≠ pos2 → can_meet pos1 pos2 speed speed = \"NO\" :=\
+  \ by sorry\n\n\ntheorem meeting_requires_divisible_difference \n  (pos1 pos2 speed1\
+  \ speed2 : Int)\n  (h1 : speed1 ≠ speed2)\n  (h2 : (pos1 - pos2).natAbs % (speed1\
+  \ - speed2).natAbs = 0) :\n  can_meet pos1 pos2 speed1 speed2 = \"YES\" := by sorry\n\
+  \n\ntheorem meeting_impossible_if_not_divisible\n  (pos1 pos2 speed1 speed2 : Int)\n\
+  \  (h1 : speed1 ≠ speed2) \n  (h2 : (pos1 - pos2).natAbs % (speed1 - speed2).natAbs\
+  \ ≠ 0) :\n  can_meet pos1 pos2 speed1 speed2 = \"NO\" := by sorry\n\n/--\ninfo:\
+  \ 'YES'\n-/\n#guard_msgs in\n#eval can_meet 3 4 1 2\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs\
+  \ in\n#eval can_meet 10 20 3 7\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval can_meet\
+  \ 5 5 2 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

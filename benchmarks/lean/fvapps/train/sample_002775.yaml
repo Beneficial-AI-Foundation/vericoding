@@ -1,0 +1,32 @@
+"vc-description": "# The Problem\n\nDan, president of a Large company could use your\
+  \ help. He wants to implement a system that will switch all his devices into offline\
+  \ mode depending on his meeting schedule. When he's at a meeting and somebody texts\
+  \ him, he wants to send an automatic message informing that he's currently unavailable\
+  \ and the time when he's going to be back.\n\n# What To Do\n\nYour task is to write\
+  \ a helper function `checkAvailability` that will take 2 arguments:\n\n* schedule,\
+  \ which is going to be a nested array with Dan's schedule for a given day. Inside\
+  \ arrays will consist of 2 elements - start and finish time of a given appointment,\n\
+  \n* *currentTime* - is a string with specific time in hh:mm 24-h format for which\
+  \ the function will check availability based on the schedule.\n  * If no appointments\
+  \ are scheduled for `currentTime`, the function should return `true`. If there are\
+  \ no appointments for the day, the output should also be `true`\n  *  If Dan is\
+  \ in the middle of an appointment at `currentTime`, the function should return a\
+  \ string with the time he's going to be available.\n  \n  \n# Examples\n`checkAvailability([[\"\
+  09:30\", \"10:15\"], [\"12:20\", \"15:50\"]], \"11:00\");`\nshould return `true`\n\
+  \n`checkAvailability([[\"09:30\", \"10:15\"], [\"12:20\", \"15:50\"]], \"10:00\"\
+  );`\nshould return `\"10:15\"`\n\nIf the time passed as input is *equal to the end\
+  \ time of a meeting*, function should also return `true`.\n`checkAvailability([[\"\
+  09:30\", \"10:15\"], [\"12:20\", \"15:50\"]], \"15:50\");`\nshould return `true`\n\
+  \n*You can expect valid input for this kata*"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_availability (schedule : List (String × String)) (time\
+  \ : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem empty_schedule_always_available\n  (h : Nat) (m : Nat)\n \
+  \ (h_valid : h ≤ 23) (m_valid : m ≤ 59)\n  (time := s!\"{h}:{m}\") :\n  check_availability\
+  \ [] time = true := by\n  sorry\n\n/--\ninfo: '10:15'\n-/\n#guard_msgs in\n#eval\
+  \ check_availability [[\"09:30\", \"10:15\"], [\"12:20\", \"15:50\"]] \"10:00\"\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval check_availability [[\"09:30\", \"\
+  10:15\"], [\"12:20\", \"15:50\"]] \"11:00\"\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval check_availability [] \"10:15\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

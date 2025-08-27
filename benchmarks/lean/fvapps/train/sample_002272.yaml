@@ -1,0 +1,31 @@
+"vc-description": "Find the minimum area of a square land on which you can place two\
+  \ identical rectangular $a \\times b$ houses. The sides of the houses should be\
+  \ parallel to the sides of the desired square land.\n\nFormally,   You are given\
+  \ two identical rectangles with side lengths $a$ and $b$ ($1 \\le a, b \\le 100$) —\
+  \ positive integers (you are given just the sizes, but not their positions).  Find\
+  \ the square of the minimum area that contains both given rectangles. Rectangles\
+  \ can be rotated (both or just one), moved, but the sides of the rectangles should\
+  \ be parallel to the sides of the desired square. \n\nTwo rectangles can touch each\
+  \ other (side or corner), but cannot intersect. Rectangles can also touch the sides\
+  \ of the square but must be completely inside it. You can rotate the rectangles.\
+  \ Take a look at the examples for a better understanding.\n\n [Image] The picture\
+  \ shows a square that contains red and green rectangles. \n\n\n-----Input-----\n\
+  \nThe first line contains an integer $t$ ($1 \\le t \\le 10\\,000$) —the number\
+  \ of test cases in the input. Then $t$ test cases follow.\n\nEach test case is a\
+  \ line containing two integers $a$, $b$ ($1 \\le a, b \\le 100$) — side lengths\
+  \ of the rectangles.\n\n\n-----Output-----\n\nPrint $t$ answers to the test cases.\
+  \ Each answer must be a single integer — minimal area of square land, that contains\
+  \ two rectangles with dimensions $a \\times b$.\n\n\n-----Example-----\nInput\n\
+  8\n3 2\n4 2\n1 1\n3 1\n4 7\n1 3\n7 4\n100 100\n\nOutput\n16\n16\n4\n9\n64\n9\n64\n\
+  40000\n\n\n\n-----Note-----\n\nBelow are the answers for the first two test cases:\
+  \  [Image]   [Image]"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_square_area (a b : Nat) : Nat := sorry\n\ndef sqrt (n :\
+  \ Nat) : Nat := sorry\n\n\n\n\n\n\n"
+"vc-theorems": "theorem min_square_area_commutative (a b : Nat) (h : a > 0 ∧ b > 0)\
+  \ :\n  min_square_area a b = min_square_area b a := sorry\n\n/--\ninfo: 16\n-/\n\
+  #guard_msgs in\n#eval min_square_area 3 2\n\n/--\ninfo: 16\n-/\n#guard_msgs in\n\
+  #eval min_square_area 4 2\n\n/--\ninfo: 40000\n-/\n#guard_msgs in\n#eval min_square_area\
+  \ 100 100\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

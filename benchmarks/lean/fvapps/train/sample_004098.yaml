@@ -1,0 +1,50 @@
+"vc-description": "Chuck has lost count of how many asses he has kicked...\n\nChuck\
+  \ stopped counting at 100,000 because he prefers to kick things in the face instead\
+  \ of counting. That's just who he is.\n\nTo stop having to count like a mere mortal\
+  \ chuck developed his own special code using the hairs on his beard. You do not\
+  \ need to know the details of how it works, you simply need to know that the format\
+  \ is as follows: 'A8A8A8A8A8.-A%8.88.'\n\nIn Chuck's code, 'A' can be any capital\
+  \ letter and '8' can be any number 0-9 and any %, - or . symbols must not be changed.\n\
+  \nYour task, to stop Chuck beating your ass with his little finger, is to use regex\
+  \ to verify if the number is a genuine Chuck score. If not it's probably some crap\
+  \ made up by his nemesis Bruce Lee. Return true if the provided count passes, and\
+  \ false if it does not.  \n\n```Javascript\nExample:\n     'A8A8A8A8A8.-A%8.88.'\
+  \ <- don't forget final full stop :D\\n\nTests:\n     'A2B8T1Q9W4.-F%5.34.' == true;\n\
+  \     'a2B8T1Q9W4.-F%5.34.' == false; (small letter)\n     'A2B8T1Q9W4.-F%5.3B.'\
+  \ == false; (last char should be number) \n     'A2B8T1Q9W4.£F&5.34.' == false;\
+  \ (symbol changed from - and %)\n ```\n\nThe pattern only needs to appear within\
+  \ the text. The full input can be longer, i.e. the pattern can be surrounded by\
+  \ other characters... Chuck loves to be surrounded!\n\nReady, steady, VERIFY!!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def body_count (s : String) : Bool := sorry\n\n/-- Any string matching\
+  \ the pattern [A-Z][0-9] repeated 5 times, followed by\n    .-[A-Z]%[0-9].[0-9][0-9].\
+  \ should return true -/"
+"vc-theorems": "theorem valid_code_returns_true {code : String} \n  (h : ∃ (a₁ a₂\
+  \ a₃ a₄ a₅ : Char) (n₁ n₂ n₃ n₄ n₅ : Nat) (last_letter : Char) \n        (last_num\
+  \ dec₁ dec₂ : Nat),\n    'A' ≤ a₁ ∧ a₁ ≤ 'Z' ∧\n    'A' ≤ a₂ ∧ a₂ ≤ 'Z' ∧ \n   \
+  \ 'A' ≤ a₃ ∧ a₃ ≤ 'Z' ∧\n    'A' ≤ a₄ ∧ a₄ ≤ 'Z' ∧\n    'A' ≤ a₅ ∧ a₅ ≤ 'Z' ∧\n\
+  \    'A' ≤ last_letter ∧ last_letter ≤ 'Z' ∧\n    n₁ ≤ 9 ∧ n₂ ≤ 9 ∧ n₃ ≤ 9 ∧ n₄\
+  \ ≤ 9 ∧ n₅ ≤ 9 ∧\n    last_num ≤ 9 ∧\n    dec₁ ≤ 9 ∧ dec₂ ≤ 9 ∧\n    code = String.mk\
+  \ [a₁, Char.ofNat (n₁ + 48),\n                     a₂, Char.ofNat (n₂ + 48),\n \
+  \                    a₃, Char.ofNat (n₃ + 48),\n                     a₄, Char.ofNat\
+  \ (n₄ + 48),\n                     a₅, Char.ofNat (n₅ + 48),\n                 \
+  \    '.', '-', last_letter, '%', \n                     Char.ofNat (last_num + 48),\
+  \ '.',\n                     Char.ofNat (dec₁ + 48), Char.ofNat (dec₂ + 48), '.'])\
+  \ :\n  body_count code = true := sorry\n\n/-- Any string not matching the pattern\
+  \ should return false -/\n\ntheorem invalid_code_returns_false {s : String}\n  (h\
+  \ : ¬∃ (a₁ a₂ a₃ a₄ a₅ : Char) (n₁ n₂ n₃ n₄ n₅ : Nat) (last_letter : Char)\n   \
+  \     (last_num dec₁ dec₂ : Nat),\n    'A' ≤ a₁ ∧ a₁ ≤ 'Z' ∧\n    'A' ≤ a₂ ∧ a₂\
+  \ ≤ 'Z' ∧ \n    'A' ≤ a₃ ∧ a₃ ≤ 'Z' ∧\n    'A' ≤ a₄ ∧ a₄ ≤ 'Z' ∧\n    'A' ≤ a₅ ∧\
+  \ a₅ ≤ 'Z' ∧\n    'A' ≤ last_letter ∧ last_letter ≤ 'Z' ∧\n    n₁ ≤ 9 ∧ n₂ ≤ 9 ∧\
+  \ n₃ ≤ 9 ∧ n₄ ≤ 9 ∧ n₅ ≤ 9 ∧\n    last_num ≤ 9 ∧\n    dec₁ ≤ 9 ∧ dec₂ ≤ 9 ∧\n  \
+  \  s = String.mk [a₁, Char.ofNat (n₁ + 48),\n                  a₂, Char.ofNat (n₂\
+  \ + 48),\n                  a₃, Char.ofNat (n₃ + 48),\n                  a₄, Char.ofNat\
+  \ (n₄ + 48),\n                  a₅, Char.ofNat (n₅ + 48),\n                  '.',\
+  \ '-', last_letter, '%', \n                  Char.ofNat (last_num + 48), '.',\n\
+  \                  Char.ofNat (dec₁ + 48), Char.ofNat (dec₂ + 48), '.']) :\n  body_count\
+  \ s = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval body_count \"\
+  A6C2E5Z9A4.-F%8.08.\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval body_count \"\
+  PP P6A6T5F5S3.-Z%1.11.hgr\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval body_count\
+  \ \"b4A1D1I8B4.-E%8.76.\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

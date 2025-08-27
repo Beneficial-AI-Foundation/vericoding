@@ -1,0 +1,63 @@
+"vc-description": "Every Friday Chef and his N - 1 friends go for a party. At these\
+  \ parties, they play board games. This Friday, they are playing a game named \"\
+  Boats! Boats! Boats!\". In this game players have to transport cookies between Venice\
+  \ and Constantinople. Each player has a personal storage. The players are numbered\
+  \ from 1 to N, Chef is numbered 1. Rules for determining a winner are very difficult,\
+  \ therefore Chef asks you to write a program, which will determine who is a winner.\
+  \ \n\nThere are 6 types of cookies. For each cookie in the storage player gets 1\
+  \ point. Also player gets additional points if he packs his cookies in some boxes\
+  \ as follows: \n\n- A box containing 4 different types of cookies fetches 1 additional\
+  \ point.\n- A box containing 5 different types of cookies fetches 2 additional points.\n\
+  - A box containing 6 different types of cookies fetches 4 additional points.\n\n\
+  Obviously a cookie can be put into a single box.\n\nFor each player, you know the\
+  \ number of cookies in his storage (denoted by c[i]), also the types of cookies\
+  \ in the storage given denoted by type[i][j].\n\nYour task is to determine the winner\
+  \ of this game. Output \"tie\" if there are two or more players with same maximum\
+  \ score, \"chef\" if only Chef has a maximum score, winner's index in all other\
+  \ cases.\n\n-----Input-----\n\nThe first line of input contains a single integer\
+  \ T denoting the number of test cases. This will be followed by T test cases.\n\
+  The first line of each test case contains an integer N denoting the number of players.\n\
+  The second line of each test case contains an integer c[i] denoting the number of\
+  \ cookies in the i-th storage, followed by c[i] space-separated integers type[i][j]\
+  \ which denote the type if j-th cookie in the storage i-th.\n\n-----Output-----\n\
+  For each test case, output a single line containing the answer as specified in the\
+  \ statement.\n\n-----Constraints and Subtasks-----Subtask #1 : (20 points)  \n\n\
+  - 1 ≤ T ≤ 10 \n- 1 ≤  N  ≤ 100  \n- 1 ≤  c[i]  ≤  100  \n- 1 ≤  type[i][j]  ≤  3\
+  \   \nSubtask #2 : (80 points)  \n\n- 1 ≤ T ≤ 10 \n- 1 ≤  N  ≤ 100  \n- 1 ≤  c[i]\
+  \  ≤  100  \n- 1 ≤  type[i][j]  ≤  6  \n\n-----Example-----\nInput:\n3\n2\n6 1 2\
+  \ 3 4 5 6\n9 3 3 3 4 4 4 5 5 5\n2\n5 2 3 4 5 6\n7 1 1 2 2 3 3 4\n3\n4 1 1 2 3\n\
+  4 1 2 2 3\n4 1 2 3 3\nOutput:\nchef\n2\ntie\n\n-----Explanation-----\nExample case\
+  \ 1.\nChef has total 6 cookie, so he gets 6 points for that. Also, he can put all\
+  \ his cookies (as they are all distinct) in a bag of size 6. It will fetch him additional\
+  \ 4 points. So, Chef's total points will be 10.\nThe second player has 9 cookies,\
+  \ he gets 9 points for that. Other than this, he can't create a bag with either\
+  \ 4, 5 or 6 distinct cookies. So, his final score is 9.\n10 > 9 - Chef wins.\nExample\
+  \ case 2.\nChef has 5 + 2 (a bag with 5 different cookies) = 7.\nThe second player\
+  \ has 7 + 1(a bag with 4 different cookies) = 8.\n7 < 8 - the second player wins.\n\
+  Example case 3.\nEvery player has 4 cookies and can't create any bag of sweets.\
+  \ So, it's a tie."
+"vc-preamble": "import Imports.AllImports\n\ndef cookieStorageStr (num : Nat) (types\
+  \ : List Nat) : String := sorry\n\ndef determineWinner (n : Nat) (storages : List\
+  \ String) : String := sorry\n\nstructure ScoreData where\n  score: Nat\n  uniqueTypes:\
+  \ Nat\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculateScore (cookies : List Nat) : Nat :=\n  let score :=\
+  \ cookies.head!\n  let types := cookies.tail!.eraseDups\n  let numTypes := types.length\n\
+  \  match numTypes with\n  | n => if n ≥ 6 then score + 4\n         else if n ≥ 5\
+  \ then score + 2\n         else if n ≥ 4 then score + 1\n         else score\n"
+"vc-theorems": "theorem winner_validity (n : Nat) (storages : List String) :\n  let\
+  \ result := determineWinner n storages\n  (result = \"tie\" ∨ result = \"chef\"\
+  \ ∨ result.toNat? ≠ none) ∧ \n  (result.toNat?.isSome → 1 ≤ result.toNat! ∧ result.toNat!\
+  \ ≤ n) := sorry\n\n\ntheorem winner_has_highest_score (n : Nat) (storages : List\
+  \ String) :\n  let result := determineWinner n storages\n  let scores := storages.map\
+  \ (λ s => \n    let cookies := (s.split (· = ' ')).map String.toNat!\n    calculateScore\
+  \ cookies)\n  let maxScore := scores.maximum?\n  match result with \n  | \"tie\"\
+  \ => maxScore.isSome ∧ (scores.filter (· = maxScore!)).length ≥ 2 \n  | \"chef\"\
+  \ => maxScore.isSome ∧ scores.head! = maxScore! ∧ \n              (scores.filter\
+  \ (· = maxScore!)).length = 1\n  | _ => maxScore.isSome ∧ \n         scores[result.toNat!\
+  \ - 1]! = maxScore! ∧\n         (scores.filter (· = maxScore!)).length = 1 := sorry\n\
+  \n/--\ninfo: 'chef'\n-/\n#guard_msgs in\n#eval determine_winner 2 [\"6 1 2 3 4 5\
+  \ 6\", \"9 3 3 3 4 4 4 5 5 5\"]\n\n/--\ninfo: '2'\n-/\n#guard_msgs in\n#eval determine_winner\
+  \ 2 [\"5 2 3 4 5 6\", \"7 1 1 2 2 3 3 4\"]\n\n/--\ninfo: 'tie'\n-/\n#guard_msgs\
+  \ in\n#eval determine_winner 3 [\"4 1 1 2 3\", \"4 1 2 2 3\", \"4 1 2 3 3\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

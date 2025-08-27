@@ -1,0 +1,19 @@
+"vc-description": "Create a function that takes a number and finds the factors of\
+  \ it, listing them in **descending** order in an **array**.\n\nIf the parameter\
+  \ is not an integer or less than 1, return `-1`. In C# return an empty array.\n\n\
+  For Example:\n`factors(54)` should return `[54, 27, 18, 9, 6, 3, 2, 1]`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def factors : Int → List Int \n  := sorry\n\nvariable (result :\
+  \ List Int)\n"
+"vc-theorems": "theorem factors_positive_int (x : Int) (h : x > 0) : \n  let result\
+  \ := factors x\n  (∀ f ∈ result, x % f = 0) ∧\n  result.head? = some x ∧\n  result.getLast?\
+  \ = some 1 :=\n  sorry\n\n\ntheorem factors_non_positive (x : Int) (h : x ≤ 0) :\n\
+  \  factors x = [-1] :=\n  sorry\n\n\ntheorem factors_float (x : Float) :\n  factors\
+  \ 0 = [-1] :=\n  sorry\n\n\ntheorem factors_invalid_type (x : String) :\n  factors\
+  \ 0 = [-1] :=\n  sorry\n\n/--\ninfo: [54, 27, 18, 9, 6, 3, 2, 1]\n-/\n#guard_msgs\
+  \ in\n#eval factors 54\n\n/--\ninfo: [49, 7, 1]\n-/\n#guard_msgs in\n#eval factors\
+  \ 49\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval factors -4\n\n/--\ninfo: [1]\n\
+  -/\n#guard_msgs in\n#eval factors 1\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval\
+  \ factors 4.5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

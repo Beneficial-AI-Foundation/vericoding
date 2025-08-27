@@ -1,0 +1,40 @@
+"vc-description": "Mance Rayder, the King-Beyond-the-Wall, has always wanted to lead\
+  \ the largest army the North has ever seen against the NIght’s Watch. For this humungous\
+  \ feat he has banded the waring tribes, the Giants, Thenns and Wildings, together\
+  \ by going to great extents. But the King is facing with an issue he always saw\
+  \ it coming.\nThe huge army is divided into smaller divisions and each division\
+  \ can be of the type $G, T$ or $W$ standing for Giants, Thenns and Wildings respectively.\
+  \ Mance doesn’t want two divisions of the same type standing together as he fears\
+  \ it might lead to a mutiny or an unorganised charge or retreat. \nFor a given numbers\
+  \ of $G, T$ and $W$, find whether an army can be organised in accordance to the\
+  \ rules set by Mance. Not to forget that Mance has to include all the divisions\
+  \ in his battle formation in order to stand a chance against the Wall’s defences.\n\
+  \n-----Input:-----\n- First line will contain $N$, the number of test cases.\n-\
+  \ Each of the next $N$ lines will contain three integers $G$, $T$ and $W$ - the\
+  \ number of Giant, Thenn and Wildling divisions respectively.\n\n-----Output:-----\n\
+  For each testcase, output in a single line $Yes$ if a battle formation is possible\
+  \ or $No$ otherwise.\n\n-----Constraints-----\n- $1 \\leq N \\leq 100$\n- $1 \\\
+  leq G,T,W \\leq 10^9$\n\n-----Sample Input:-----\n1\n1 2 1\n\n-----Sample Output:-----\n\
+  Yes\n\n-----Explanation:-----\nThe first case can be formed as : $ TGWT $. Hence\
+  \ the answer is $ Yes $."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def can_form_army (g t w : Nat) : String := sorry\n\ndef sorted_list\
+  \ (a b c : Nat) : List Nat :=\n  let list := [a, b, c]\n  if a ≤ b then\n    if\
+  \ b ≤ c then [a, b, c]\n    else if a ≤ c then [a, c, b]\n    else [c, a, b]\n \
+  \ else if a ≤ c then [b, a, c]\n  else if b ≤ c then [b, c, a]\n  else [c, b, a]\n"
+"vc-theorems": "theorem can_form_army_valid_output (g t w : Nat) :\n  can_form_army\
+  \ g t w = \"Yes\" ∨ can_form_army g t w = \"No\" := sorry\n\n\ntheorem can_form_army_commutative_1\
+  \ (g t w : Nat) :\n  can_form_army g t w = can_form_army t g w := sorry\n  \n\n\
+  theorem can_form_army_commutative_2 (g t w : Nat) :\n  can_form_army g t w = can_form_army\
+  \ w t g := sorry\n\n\ntheorem can_form_army_equal_positive (n : Nat) (h : n > 0)\
+  \ :\n  can_form_army n n n = \"Yes\" := sorry\n\n\ntheorem can_form_army_sum_criterion\
+  \ {g t w : Nat} :\n  let nums := sorted_list g t w\n  (nums[0]! + nums[1]! ≥ nums[2]!)\
+  \ → can_form_army g t w = \"Yes\" := sorry\n\n\ntheorem can_form_army_sum_criterion_converse\
+  \ {g t w : Nat} :\n  let nums := sorted_list g t w\n  can_form_army g t w = \"Yes\"\
+  \ → (nums[0]! + nums[1]! ≥ nums[2]!) := sorry\n\n\ntheorem can_form_army_boundary_1\
+  \ : \n  can_form_army 1 1 1 = \"Yes\" := sorry\n\n\ntheorem can_form_army_boundary_2\
+  \ :\n  can_form_army 100 100 100 = \"Yes\" := sorry\n\n/--\ninfo: 'Yes'\n-/\n#guard_msgs\
+  \ in\n#eval can_form_army 1 2 1\n\n/--\ninfo: 'No'\n-/\n#guard_msgs in\n#eval can_form_army\
+  \ 1 1 3\n\n/--\ninfo: 'Yes'\n-/\n#guard_msgs in\n#eval can_form_army 2 2 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

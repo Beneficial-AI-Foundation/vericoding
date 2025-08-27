@@ -1,0 +1,28 @@
+"vc-description": "The chef was chatting with his friend who was a mathematician.\n\
+  Chef said \"Hi !\".\n\nHis friend replied that '!' is the symbol of factorial.\n\
+  \nChef had never heard about it and he asked more about it. Then his friend taught\
+  \ him how to calculate the factorial of a number.\n\nChef loved that But as always\
+  \ he got tired after calculating a few values and asked you to do it for him.\n\n\
+  -----Input-----\nN : Number of inputs\nthen N lines with input T\n\nN<10\n\nT<=200\n\
+  \n-----Output-----\nThe result for the corresponding value of T\n\n-----Example-----\n\
+  Input:\n3\n5\n4\n6\n\nOutput:\n120\n24\n720"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def factorial_lookup (nums : List String) : List String := sorry\n\
+  \ndef String.toNat (s : String) : Nat := sorry\n"
+"vc-theorems": "theorem factorial_lookup_length (nums : List String) (h : nums.length\
+  \ > 0) :\n  (factorial_lookup nums).length = nums.length - 1 := sorry\n\n\ntheorem\
+  \ factorial_lookup_output_type (nums : List String) (h : nums.length > 0) : \n \
+  \ ∀ r ∈ factorial_lookup nums, (∀ c ∈ r.data, c.isDigit) := sorry\n\n\ntheorem factorial_lookup_monotonic\
+  \ (nums : List String) (h : nums.length > 0) :\n  ∀ i < (factorial_lookup nums).length\
+  \ - 1,\n    String.toNat (nums[i+1]!) < String.toNat (nums[i+2]!) → \n    String.toNat\
+  \ ((factorial_lookup nums)[i]!) < String.toNat ((factorial_lookup nums)[i+1]!) :=\
+  \ sorry\n\n\ntheorem factorial_lookup_zero (nums : List String) \n  (h₁ : nums.length\
+  \ > 0)\n  (h₂ : ∀ n ∈ nums, n = \"0\") :\n  ∀ r ∈ factorial_lookup nums, r = \"\
+  1\" := sorry\n\n\ntheorem factorial_lookup_one (nums : List String)\n  (h₁ : nums.length\
+  \ > 0) \n  (h₂ : ∀ n ∈ nums, n = \"1\") :\n  ∀ r ∈ factorial_lookup nums, r = \"\
+  1\" := sorry\n\n/--\ninfo: ['120', '24', '720']\n-/\n#guard_msgs in\n#eval factorial_lookup\
+  \ [\"3\", \"5\", \"4\", \"6\"]\n\n/--\ninfo: ['6', '24']\n-/\n#guard_msgs in\n#eval\
+  \ factorial_lookup [\"2\", \"3\", \"4\"]\n\n/--\ninfo: ['120']\n-/\n#guard_msgs\
+  \ in\n#eval factorial_lookup [\"1\", \"5\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

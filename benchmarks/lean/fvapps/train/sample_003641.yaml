@@ -1,0 +1,25 @@
+"vc-description": "Your friend Cody has to sell a lot of jam, so he applied a good\
+  \ 25% discount to all his merchandise.\n\nTrouble is that he mixed all the prices\
+  \ (initial and discounted), so now he needs your cool coding skills to filter out\
+  \ only the discounted prices.\n\nFor example, consider this inputs:\n```\n\"15 20\
+  \ 60 75 80 100\"\n\"9 9 12 12 12 15 16 20\"\n```\nThey should output:\n```\n\"15\
+  \ 60 75\"\n\"9 9 12 15\"\n```\nEvery input will always have all the prices in pairs\
+  \ (initial and discounted) sorted from smaller to bigger.\n\nYou might have noticed\
+  \ that the second sample input can be tricky already; also, try to have an eye for\
+  \ performances, as huge inputs could be tested too.\n\n***Final Note:*** kata blatantly\
+  \ taken from [this problem](https://code.google.com/codejam/contest/8274486/dashboard)\
+  \ (and still not getting why they created a separated Code Jam for ladies, as I\
+  \ find it rather discriminating...), this kata was created inspired by two of the\
+  \ talented girls I am coaching thanks to [codebar](https://codebar.io/) :)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_discounted (s : String) : String := sorry\n\ntheorem empty_and_whitespace\n\
+  \  (s : String) (h : s.trim = \"\") :\n  find_discounted s = \"\" := sorry\n"
+"vc-theorems": "theorem specific_case_1 :\n  find_discounted \"15 20 60 75 80 100\"\
+  \ = \"15 60 75\" := sorry\n\n\ntheorem specific_case_2 :\n  find_discounted \"9\
+  \ 9 12 12 12 15 16 20\" = \"9 9 12 15\" := sorry\n\n\ntheorem specific_case_3 :\n\
+  \  find_discounted \"0 0\" = \"0\" := sorry\n\n/--\ninfo: '15 60 75'\n-/\n#guard_msgs\
+  \ in\n#eval find_discounted \"15 20 60 75 80 100\"\n\n/--\ninfo: '9 9 12 15'\n-/\n\
+  #guard_msgs in\n#eval find_discounted \"9 9 12 12 12 15 16 20\"\n\n/--\ninfo: '0'\n\
+  -/\n#guard_msgs in\n#eval find_discounted \"0 0\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

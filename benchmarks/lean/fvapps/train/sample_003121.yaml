@@ -1,0 +1,34 @@
+"vc-description": "Your aged grandfather is tragically optimistic about Team GB's\
+  \ chances in the upcoming World Cup, and has enlisted you to help him make [Union\
+  \ Jack](https://en.wikipedia.org/wiki/Union_Jack) flags to decorate his house with.\
+  \ \n\n## Instructions\n* Write a function which takes as a parameter a number which\
+  \ represents the dimensions of the flag. The flags will always be square, so the\
+  \ number 9 means you should make a flag measuring 9x9.\n* It should return a *string*\
+  \ of the flag, with _'X' for the red/white lines and '-' for the blue background_.\
+  \ It should include newline characters so that it's not all on one line.\n* For\
+  \ the sake of symmetry, treat odd and even numbers differently: odd number flags\
+  \ should have a central cross that is *only one 'X' thick*. Even number flags should\
+  \ have a central cross that is *two 'X's thick* (see examples below).\n\n## Other\
+  \ points\n* The smallest flag you can make without it looking silly is 7x7. If you\
+  \ get a number smaller than 7, simply _make the flag 7x7_.\n* If you get a decimal,\
+  \ round it _UP to the next whole number_, e.g. 12.45 would mean making a flag that\
+  \ is 13x13.\n* If you get something that's not a number at all, *return false*.\n\
+  \nTranslations and comments (and upvotes) welcome! \n\n![alt](http://i.imgur.com/1612YR3.jpg?1)\n\
+  \n## Examples:\n```python\nunion_jack(9) # (9 is odd, so the central cross is 1'X'\
+  \ thick)\n\"X---X---X\n-X--X--X-\n--X-X-X--\n---XXX---\nXXXXXXXXX\n---XXX---\n--X-X-X--\n\
+  -X--X--X-\nX---X---X\"\n\nunion_jack(10) # (10 is even, so the central cross is\
+  \ 2 'X's thick)\n'X---XX---X\n-X--XX--X-\n--X-XX-X--\n---XXXX---\nXXXXXXXXXX\nXXXXXXXXXX\n\
+  ---XXXX---\n--X-XX-X--\n-X--XX--X-\nX---XX---X\n\nunion_jack(1) # (the smallest\
+  \ possible flag is 7x7)\n\"X--X--X\n-X-X-X-\n--XXX--\nXXXXXXX\n--XXX--\n-X-X-X-\n\
+  X--X--X\"\n\nunion_jack('string') #return false.\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def union_jack (n : α) : String := sorry\n\ntheorem size_properties\
+  \ {n : Nat} (h : n ≥ 7) :\n  let result := union_jack n\n  let lines := result.splitOn\
+  \ \"\\n\"\n  (lines.length = max 7 n) ∧ \n  (∀ line ∈ lines, line.length = max 7\
+  \ n) ∧\n  (∀ line ∈ lines, ∀ c ∈ line.data, c = 'X' ∨ c = '-') := sorry\n\n\n\n\n"
+"vc-theorems": "theorem symmetry_properties {n : Nat} (h : n = 7 ∨ n = 8) :\n  let\
+  \ result := union_jack n\n  let lines := result.splitOn \"\\n\"\n  (∀ i < lines.length,\n\
+  \    lines[i]! = String.mk (List.reverse lines[i]!.data) ∧ \n    lines[i]! = lines[lines.length\
+  \ - 1 - i]!) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

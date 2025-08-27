@@ -1,0 +1,37 @@
+"vc-description": "Chuck Norris just created a universe. He has already started the\
+  \ space-time continuum. Now he needs to fill the universe with matter and antimatter\
+  \ for the avatar cycle to start.\nHe created $N$ distinct pairs of elementary matter\
+  \ and their corresponding antimatter particles. Annihilations happen only when a\
+  \ matter particle is placed adjacent to its corresponding antimatter particle and\
+  \ not when it is placed adjacent to any other matter or antimatter particle. Thus\
+  \ for every distinct particle of matter in the universe there exist one and only\
+  \ one antimatter particle that can cause its annihilation.\nChuck Norris wants to\
+  \ arrange all the particles in a 2-D circular pattern such that a matter particle\
+  \ is placed adjacent only to antimatter particles and vice versa. In how many distinct\
+  \ ways can he arrange them, regardless of the orientation of the arrangement, such\
+  \ that total annihilation of ALL particles doesn't take place i.e., $at least$ $one$\
+  \ pair remain unannihilated after he arranges them in a circular pattern.\nSince\
+  \ the total number of distinct ways can be very large, print the result modulo $1000000007$.\n\
+  \n-----Input:-----\n- First line has single integer $T$, i.e., the number of test\
+  \ cases\n- The first and only line of each test case has a single integer $N$ i.e.,\
+  \ number of distinct pairs of matter-antimatter particles.\n\n-----Output:-----\n\
+  - For of each test case print a single line, i.e., total number of distinct ways.\n\
+  \n-----Constraints :-----\n- $1 \\leq T \\leq 1000$\n- $0 \\leq N \\leq 10^7$\n\n\
+  -----Subtasks-----\n- \nSubtask 1 : 10 pts\n- $1 \\leq T \\leq 100$\n- $0 \\leq\
+  \ N \\leq 100$ \n- \nSubtask 2 : 90 pts\n- Original Constraints\n\n-----Sample input\
+  \ :-----\n1\n3\n\n-----Sample output :-----\n8\n\n-----Explanation:-----\nFor 3\
+  \ pairs of elementary matter and their corresponding  antimatter particles, Chuck\
+  \ Norris can arrange them in 8 ways such that at least one pair of matter antimatter\
+  \ particles survive annihilation."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def arrange_particles (n : Nat) : Nat := sorry\n\n\n\ntheorem arrange_particles_base_cases\
+  \ :\n  arrange_particles 0 = 1 ∧ arrange_particles 1 = 1 := sorry\n\n\n"
+"vc-theorems": "theorem arrange_particles_known_values :\n  arrange_particles 0 =\
+  \ 1 ∧ \n  arrange_particles 1 = 1 ∧\n  arrange_particles 2 = 2 ∧\n  arrange_particles\
+  \ 3 = 4 ∧\n  arrange_particles 4 = 6 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n\
+  #eval arrange_particles 0\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval arrange_particles\
+  \ 1\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval arrange_particles 2\n\n/--\ninfo:\
+  \ 4\n-/\n#guard_msgs in\n#eval arrange_particles 3\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval arrange_particles 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,24 @@
+"vc-description": "The vowel substrings in the word `codewarriors` are `o,e,a,io`.\
+  \ The longest of these has a length of 2. Given a lowercase string that has alphabetic\
+  \ characters only (both vowels and consonants) and no spaces, return the length\
+  \ of the longest vowel substring.\nVowels are any of `aeiou`. \n\n\n```if:csharp\n\
+  Documentation:\nKata.Solve Method (String)\n\nReturns the length of the greatest\
+  \ continuous vowel substring in a string.\n\nSyntax\n\n\npublic\nstatic\nint Solve(\n\
+  string str\n    )\n  \n\n\nParameters\n\nstr\n\nType: System.String\nThe string\
+  \ to be processed.\n\nReturn Value\n\nType: System.Int32\n  The length of the greatest\
+  \ continuous vowel substring in str, or 0 if str contains no vowels.\n\n\nExceptions\n\
+  \n\n\nException\nCondition\n\nArgumentNullException\nstr is null.\n\n\n\n\n```\n\
+  \n\nGood luck!\n\nIf you like substring Katas, please try:\n\n[Non-even substrings](https://www.codewars.com/kata/59da47fa27ee00a8b90000b4)\n\
+  \n[Vowel-consonant lexicon](https://www.codewars.com/kata/59cf8bed1a68b75ffb000026)"
+"vc-preamble": "import Imports.AllImports\n\ndef vowel (c : Char) : Bool :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (s : String) : Nat :=\nsorry\n"
+"vc-theorems": "theorem solve_all_vowels (s : String) \n  (h₁ : s.length > 0)\n  (h₂\
+  \ : ∀ c ∈ s.data, vowel c = true) :\n  solve s = s.length :=\nsorry\n\n\ntheorem\
+  \ solve_interspersed\n  (vowels : List String)\n  (consonants : List String)\n \
+  \ (h₁ : vowels.length > 0) \n  (h₂ : ∀ s ∈ vowels, s.length > 0)\n  (h₃ : ∀ s ∈\
+  \ vowels, ∀ c ∈ s.data, vowel c = true)\n  (h₄ : ∀ s ∈ consonants, ∀ c ∈ s.data,\
+  \ vowel c = false) :\n  let combined := List.zip vowels consonants\n  let s := String.join\
+  \ (combined.map (fun p => p.1 ++ p.2))\n  solve s ≥ (List.foldl (fun acc x => max\
+  \ acc x.length) 0 vowels) :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

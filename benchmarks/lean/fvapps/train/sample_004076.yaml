@@ -1,0 +1,16 @@
+"vc-description": "In this Kata, you will count the number of times the first string\
+  \ occurs in the second. \n\n```Haskell\nsolve(\"zaz\",\"zazapulz\") = 4 because\
+  \ they are ZAZapulz, ZAzapulZ, ZazApulZ, zaZApulZ\n```\n\nMore examples in test\
+  \ cases. \n\nGood luck!\n\nPlease also try [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (pattern text : String) : Nat := sorry\n\ntheorem pattern_in_text\
+  \ : ∀ (pattern : String) (extra : String), \n  pattern.length > 0 → solve pattern\
+  \ (pattern ++ extra) ≥ 1 := sorry\n"
+"vc-theorems": "theorem single_char_pattern : ∀ (c : Char) (text : String),\n  solve\
+  \ (String.mk [c]) text = (text.data.filter (· = c)).length := sorry\n\n\ntheorem\
+  \ empty_text : ∀ (pattern : String),\n  pattern.length > 1 → solve pattern \"\"\
+  \ = 0 := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve \"zaz\" \"zazapulz\"\
+  \n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve \"rat\" \"ratatoulie\"\n\n/--\n\
+  info: 7\n-/\n#guard_msgs in\n#eval solve \"kata\" \"katakatak\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

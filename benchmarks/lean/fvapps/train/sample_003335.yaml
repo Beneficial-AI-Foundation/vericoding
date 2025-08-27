@@ -1,0 +1,32 @@
+"vc-description": "# Introduction \n\nThe ragbaby cipher is a substitution cipher\
+  \ that encodes/decodes a text using a keyed alphabet and their position in the plaintext\
+  \ word they are a part of.\n\nTo encrypt the text `This is an example.` with the\
+  \ key `cipher`, first construct a keyed alphabet:\n```\nc       i       p      \
+  \ h       e       r       a       b       d       f       g       j       k    \
+  \   l       m       n       o       q       s       t       u       v       w  \
+  \     x       y       z\n```\n\nThen, number the letters in the text as follows:\n\
+  ```\nT       h       i       s               i       s               a       n \
+  \              e       x       a       m       p       l       e       .\n1    \
+  \   2       3       4               1       2               1       2          \
+  \     1       2       3       4       5       6       7        \n```\n\nTo obtain\
+  \ the encoded text, replace each character of the word with the letter in the keyed\
+  \ alphabet the corresponding number of places to the right of it (wrapping if necessary).\
+  \ \nNon-alphabetic characters are preserved to mark word boundaries.\n\nOur ciphertext\
+  \ is then `Urew pu bq rzfsbtj.`\n\n# Task\n\nWirate functions `encode` and `decode`\
+  \ which accept 2 parameters:\n- `text` - string - a text to encode/decode\n- `key`\
+  \ -  string - a key\n\n# Notes\n\n- handle lower and upper case in `text` string\n\
+  - `key` consists of only lowercase characters"
+"vc-preamble": "import Imports.AllImports\n\ndef isValidKey (k : String) : Bool :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def encode (text key : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem encode_preserves_non_letters (text key : String) :\n  isValidKey\
+  \ key → ∀ i, ¬(text.get! i).isAlpha → \n  (encode text key).get! i = text.get! i\
+  \ :=\n  sorry\n\n\ntheorem encode_preserves_case (text key : String) :\n  isValidKey\
+  \ key → ∀ i, \n  let c := text.get! i\n  let e := (encode text key).get! i\n  c.isAlpha\
+  \ → (c.isUpper = e.isUpper) :=\n  sorry\n\n\ntheorem encode_duplicate_key_chars\
+  \ (text key : String) :\n  isValidKey key → \n  encode text key = encode text (String.mk\
+  \ (key.data.eraseDups)) :=\n  sorry\n\n/--\ninfo: 'ihrbfj'\n-/\n#guard_msgs in\n\
+  #eval encode \"cipher\" \"cipher\"\n\n/--\ninfo: 'ihrbfj'\n-/\n#guard_msgs in\n\
+  #eval encode \"cipher\" \"cccciiiiippphheeeeerrrrr\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,35 @@
+"vc-description": "Return all non-negative integers of length n such that the absolute\
+  \ difference between every two consecutive digits is k.\nNote that every number\
+  \ in the answer must not have leading zeros except for the number 0 itself. For\
+  \ example, 01 has one leading zero and is invalid, but 0 is valid.\nYou may return\
+  \ the answer in any order.\n \nExample 1:\nInput: n = 3, k = 7\nOutput: [181,292,707,818,929]\n\
+  Explanation: Note that 070 is not a valid number, because it has leading zeroes.\n\
+  \nExample 2:\nInput: n = 2, k = 1\nOutput: [10,12,21,23,32,34,43,45,54,56,65,67,76,78,87,89,98]\n\
+  \nExample 3:\nInput: n = 2, k = 0\nOutput: [11,22,33,44,55,66,77,88,99]\n\nExample\
+  \ 4:\nInput: n = 2, k = 1\nOutput: [10,12,21,23,32,34,43,45,54,56,65,67,76,78,87,89,98]\n\
+  \nExample 5:\nInput: n = 2, k = 2\nOutput: [13,20,24,31,35,42,46,53,57,64,68,75,79,86,97]\n\
+  \n \nConstraints:\n\n2 <= n <= 9\n0 <= k <= 9"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def nums_same_consec_diff (n k : Nat) : List Nat := sorry\n\ndef\
+  \ absDiff (a b : Nat) : Nat :=\n  if a ≥ b then a - b else b - a\n"
+"vc-theorems": "theorem single_digit_case (n : Nat) (h : 1 ≤ n ∧ n ≤ 9) :\n  let result\
+  \ := nums_same_consec_diff 1 n\n  List.length result = 10 ∧ \n  (∀ x ∈ result, 0\
+  \ ≤ x ∧ x ≤ 9) ∧\n  result = List.range 10 := sorry\n\n\ntheorem result_properties\
+  \ (n k : Nat) (h1 : 2 ≤ n ∧ n ≤ 9) (h2 : k ≤ 9) :\n  let result := nums_same_consec_diff\
+  \ n k\n  let str_len := fun x => String.length (toString x)\n  let first_digit :=\
+  \ fun x => (toString x).data.get! 0\n  let digit_at := fun x i => ((toString x).data.get!\
+  \ i).toNat\n  (∀ x ∈ result, str_len x = n) ∧\n  (∀ x ∈ result, first_digit x ≠\
+  \ '0') ∧\n  (∀ x ∈ result, ∀ i < n-1, \n    absDiff (digit_at x i) (digit_at x (i+1))\
+  \ = k) := sorry\n\n\ntheorem zero_difference (n : Nat) (h : 2 ≤ n ∧ n ≤ 9) :\n \
+  \ let result := nums_same_consec_diff n 0\n  (∀ x ∈ result, List.length ((toString\
+  \ x).data.eraseDups) = 1) ∧\n  List.length result = 9 := sorry\n\n\ntheorem max_difference\
+  \ (n : Nat) (h : 2 ≤ n ∧ n ≤ 9) :\n  let result := nums_same_consec_diff n 9\n \
+  \ let digit_at := fun x i => ((toString x).data.get! i).toNat\n  ∀ x ∈ result, ∀\
+  \ i < n-1,\n    absDiff (digit_at x i) (digit_at x (i+1)) = 9 := sorry\n\n/--\n\
+  info: [181, 292, 707, 818, 929]\n-/\n#guard_msgs in\n#eval nums_same_consec_diff\
+  \ 3 7\n\n/--\ninfo: [10, 12, 21, 23, 32, 34, 43, 45, 54, 56, 65, 67, 76, 78, 87,\
+  \ 89, 98]\n-/\n#guard_msgs in\n#eval nums_same_consec_diff 2 1\n\n/--\ninfo: [11,\
+  \ 22, 33, 44, 55, 66, 77, 88, 99]\n-/\n#guard_msgs in\n#eval nums_same_consec_diff\
+  \ 2 0\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

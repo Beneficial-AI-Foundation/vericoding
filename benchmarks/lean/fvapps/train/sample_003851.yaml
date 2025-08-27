@@ -1,0 +1,38 @@
+"vc-description": "Consider the sequence `a(1) = 7, a(n) = a(n-1) + gcd(n, a(n-1))\
+  \ for n >= 2`: \n\n`7, 8, 9, 10, 15, 18, 19, 20, 21, 22, 33, 36, 37, 38, 39, 40,\
+  \ 41, 42, 43, 44, 45, 46, 69, 72, 73...`.\n\nLet us take the differences between\
+  \ successive elements of the sequence and\nget a second sequence `g: 1, 1, 1, 5,\
+  \ 3, 1, 1, 1, 1, 11, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 23, 3, 1...`.\n\nFor the sake\
+  \ of uniformity of the lengths of sequences **we add** a `1` at the head of g:\n\
+  \n`g: 1, 1, 1, 1, 5, 3, 1, 1, 1, 1, 11, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 23, 3,\
+  \ 1...`\n\nRemoving the 1s gives a third sequence:\n`p: 5, 3, 11, 3, 23, 3...`\n\
+  where you can see prime numbers.\n\n#Task:\nWrite functions:\n```\n1: an(n) with\
+  \ parameter n: returns the first n terms of the series a(n) (not tested)\n\n2: gn(n)\
+  \ with parameter n: returns the first n terms of the series g(n) (not tested)\n\n\
+  3: countOnes(n) with parameter n: returns the number of 1 in g(n) \n    (don't forget\
+  \ to add a `1` at the head) # (tested)\n    \n4: p(n) with parameter n: returns\
+  \ an array of n unique prime numbers (not tested)\n\n5: maxp(n) with parameter n:\
+  \ returns the biggest prime number of the sequence pn(n) # (tested)\n\n6: anOver(n)\
+  \ with parameter n: returns an array (n terms) of the a(i)/i for every i such g(i)\
+  \ != 1 (not tested but interesting result)\n\n7: anOverAverage(n) with parameter\
+  \ n: returns as an *integer* the average of anOver(n)  (tested)\n```\n\n#Note:\n\
+  You can write directly functions `3:`, `5:` and `7:`. There is no need to write\
+  \ functions `1:`, `2:`, `4:` `6:`\nexcept out of pure curiosity."
+"vc-preamble": "import Imports.AllImports\n\ndef count_ones (n : Nat) : Nat :=\n \
+  \ sorry\n\n\ndef max_pn (n : Nat) : Nat :=\n  sorry\n\n\ndef an_over (n : Nat) :\
+  \ List Float :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def an_over_average (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_ones_bounds {n : Nat} (h : n > 0) : \n  count_ones n\
+  \ ≤ n ∧ count_ones n ≥ 0 := by sorry\n\n\ntheorem count_ones_nat {n : Nat} (h :\
+  \ n > 0) :\n  count_ones n ≥ 0 := by sorry\n\n\ntheorem max_pn_gt_one {n : Nat}\
+  \ (h : n > 0) :\n  max_pn n > 1 := by sorry\n\n\ntheorem max_pn_nat {n : Nat} (h\
+  \ : n > 0) :\n  max_pn n ≥ 0 := by sorry\n\n\ntheorem an_over_length {n : Nat} (h\
+  \ : n > 0) :\n  (an_over n).length = n := by sorry\n\n\ntheorem an_over_all_positive\
+  \ {n : Nat} (h : n > 0) :\n  ∀ x ∈ an_over n, x > 0 := by sorry\n\n\ntheorem an_over_average_positive\
+  \ {n : Nat} (h : n > 0) :\n  an_over_average n > 0 := by sorry\n\n\ntheorem an_over_average_nat\
+  \ {n : Nat} (h : n > 0) :\n  an_over_average n ≥ 0 := by sorry\n\n/--\ninfo: 1\n\
+  -/\n#guard_msgs in\n#eval count_ones 1\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval\
+  \ count_ones 5\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval max_pn 1\n\n/--\ninfo:\
+  \ 3\n-/\n#guard_msgs in\n#eval an_over_average 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

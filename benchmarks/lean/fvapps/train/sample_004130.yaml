@@ -1,0 +1,47 @@
+"vc-description": "## Euler's Method\n\nWe want to calculate the shape of an unknown\
+  \ curve which starts at a given point \nwith a given slope. This curve satisfies\
+  \ an ordinary differential equation (ODE):\n\n```math\n\\frac{dy}{dx} = f(x, y);\\\
+  \\\ny(x_0) = y_0\n```\n\nThe starting point `$ A_0 (x_0, y_0) $` is known as well\
+  \ as the slope to the curve \nat `$ A_0 $` and then the tangent line at `$ A_0 $`\
+  \ .\n\nTake a small step along that tangent line up to a point `$ A_1 $`. Along\
+  \ this small step, \nthe slope does not change too much, so `$ A_1 $` will be close\
+  \ to the curve. \nIf we suppose that `$ A_1 $` is close enough to the curve, the\
+  \ same reasoning \nas for the point `$ A_1 $` above can be used for other points.\
+  \ \nAfter several steps, a polygonal curve `$ A_0, A_1, ..., A_n $` is computed.\
+  \ \nThe error between the two curves will be small if the step is small.\n\nWe define\
+  \ points `$ A_0, A_1, A_2, ..., A_n $`\nwhose x-coordinates are `$ x_0, x_1, ...,\
+  \ x_n $`\nand y-coordinates are such that `$ y_{k+1} = y_k + f(x_k, y_k) \\times\
+  \ h $` \nwhere `$ h $` is the common step. If `$ T $` is the length `$ x_n - x_0\
+  \ $` we have `$ h = T/n $`.\n\n## Task\n\nFor this kata we will focus on the following\
+  \ differential equation:\n\n```math\n\\frac{dy}{dx} = 2 - e^{-4x} - 2y; \\\\\nA_0\
+  \ = (0,1)\n```\nwith `$ x ∈ [0, 1] $`. We will then take a uniform partition of\
+  \ the region of `$ x $` between `$ 0 $` and `$ 1 $` and split it into `$ n $` +\
+  \ 1 sections. `$ n $` will be the input to the function `ex_euler(n)` and since\
+  \ `$ T $` is always 1, `$ h = 1/n $`.\n\nWe know that an exact solution is\n```math\n\
+  y = 1 + 0.5e^{-4x} - 0.5e^{-2x}.\n```\nFor each `$ x_k $` we are able to calculate\
+  \ the `$ y_k $` as well as the values `$ z_k $` of the exact solution.\n\nOur task\
+  \ is, for a given number `$ n $` of steps, to return the mean (*truncated* to 6\
+  \ decimal places)\nof the relative errors between the `$ y_k $` (our aproximation)\
+  \ and the `$ z_k $` (the exact solution). \nFor that we can use:\n\nerror in `$\
+  \ A_k = abs(y_k - z_k) / z_k $` and then the mean is sum(errors in `$ A_k $`)/ (`$\
+  \ n $` + 1)\n\n## Examples\n\n```python\nex_euler(10) should return: 0.026314 (truncated\
+  \ from 0.026314433214799246)\nwith\nY = [1.0,0.9..., 0.85..., 0.83..., 0.83...,\
+  \ 0.85..., 0.86..., 0.88..., 0.90..., 0.91..., 0.93...]\nZ = [1.0, 0.9..., 0.88...,\
+  \ 0.87..., 0.87..., 0.88..., 0.89..., 0.90..., 0.91..., 0.93..., 0.94...]\nRelative\
+  \ errors = [0.0, 0.02..., 0.04..., 0.04..., 0.04..., 0.03..., 0.03..., 0.02...,\
+  \ 0.01..., 0.01..., 0.01...]\n```\n`ex_euler(17)` should return: `0.015193 (truncated\
+  \ from 0.015193336263370796)`.\nAs expected, as `$ n $` increases, our error reduces.\n\
+  ### Links and graphs\n\nWiki article\n\n![alternative text](http://i.imgur.com/vjK7edl.png)\n\
+  \nBelow comparison between approximation (red curve) and exact solution(blue curve)\
+  \ for n=100:\n![alternative text](http://i.imgur.com/KufSkYEm.png)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def ex_euler (n : Int) : Float := sorry\n\ntheorem ex_euler_output_range\
+  \ (n : Nat) (h : n > 0) : \n  let result := ex_euler n\n  0 ≤ result ∧ result ≤\
+  \ 1 := sorry\n"
+"vc-theorems": "theorem ex_euler_decreases (n : Nat) (h : n ≥ 2) :\n  let error1 :=\
+  \ ex_euler n\n  let error2 := ex_euler (2 * n)\n  error2 ≤ 1.5 * error1 := sorry\n\
+  \n\ntheorem ex_euler_precision (n : Nat) (h : n > 0) :\n  let result := ex_euler\
+  \ n\n  result = Float.floor (result * 1e6) / 1e6 := sorry\n\n\ntheorem ex_euler_invalid\
+  \ :\n  ∀ n : Int, n ≤ 0 → ex_euler n = 0 := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

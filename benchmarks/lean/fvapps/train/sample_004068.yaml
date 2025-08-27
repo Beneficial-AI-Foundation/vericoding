@@ -1,0 +1,19 @@
+"vc-description": "# Introduction\n\nThe first century spans from the **year 1** *up\
+  \ to* and **including the year 100**, **The second** - *from the year 101 up to\
+  \ and including the year 200*, etc.\n\n# Task : \nGiven a year, return the century\
+  \ it is in."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def century (year : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem century_positive (year : Nat) (h : year > 0) :\n  century\
+  \ year > 0 :=\nsorry\n\n\ntheorem century_lower_bound (year : Nat) (h : year > 0)\
+  \ :\n  (century year) * 100 - 99 ≤ year :=\nsorry\n\n\ntheorem century_upper_bound\
+  \ (year : Nat) (h : year > 0) :\n  (century year) * 100 ≥ year :=\nsorry\n\n\ntheorem\
+  \ first_century (year : Nat) (h1 : year > 0) (h2 : year < 100) :\n  century year\
+  \ = 1 :=\nsorry\n\n\ntheorem century_boundaries_100 :\n  century 100 = 1 :=\nsorry\n\
+  \n\ntheorem century_boundaries_101 :\n  century 101 = 2 :=\nsorry\n\n\ntheorem century_boundaries_200\
+  \ :\n  century 200 = 2 :=\nsorry\n\n\ntheorem century_boundaries_201 :\n  century\
+  \ 201 = 3 :=\nsorry\n\n/--\ninfo: 18\n-/\n#guard_msgs in\n#eval century 1705\n\n\
+  /--\ninfo: 19\n-/\n#guard_msgs in\n#eval century 1900\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval century 89\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,16 @@
+"vc-description": "When provided with a number between 0-9, return it in words.\n\n\
+  Input :: 1\n\nOutput :: \"One\".\n\nIf your language supports it, try using a switch\
+  \ statement."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def switch_it_up (n : Nat) : String := sorry\n\ntheorem switch_it_up_valid_format\
+  \ {n : Nat} (h : n < 10) :\n  let result := switch_it_up n\n  -- First character\
+  \ is uppercase\n  result.length > 0 ∧\n  Char.isUpper (result.front) ∧ \n  -- Rest\
+  \ are lowercase\n  ∀ i : String.Pos, i.1 > 0 → Char.isLower (result.get i) := sorry\n"
+"vc-theorems": "theorem switch_it_up_consistent {n : Nat} (h : n < 10) :\n  switch_it_up\
+  \ n = switch_it_up n := sorry\n\n\ntheorem switch_it_up_injective {n1 n2 : Nat}\
+  \ (h1 : n1 < 10) (h2 : n2 < 10) :\n  n1 ≠ n2 → switch_it_up n1 ≠ switch_it_up n2\
+  \ := sorry\n\n/--\ninfo: 'Zero'\n-/\n#guard_msgs in\n#eval switch_it_up 0\n\n/--\n\
+  info: 'Five'\n-/\n#guard_msgs in\n#eval switch_it_up 5\n\n/--\ninfo: 'Nine'\n-/\n\
+  #guard_msgs in\n#eval switch_it_up 9\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

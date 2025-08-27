@@ -1,0 +1,38 @@
+"vc-description": "For a vector $\\vec{v} = (x, y)$, define $|v| = \\sqrt{x^2 + y^2}$.\n\
+  \nAllen had a bit too much to drink at the bar, which is at the origin. There are\
+  \ $n$ vectors $\\vec{v_1}, \\vec{v_2}, \\cdots, \\vec{v_n}$. Allen will make $n$\
+  \ moves. As Allen's sense of direction is impaired, during the $i$-th move he will\
+  \ either move in the direction $\\vec{v_i}$ or $-\\vec{v_i}$. In other words, if\
+  \ his position is currently $p = (x, y)$, he will either move to $p + \\vec{v_i}$\
+  \ or $p - \\vec{v_i}$.\n\nAllen doesn't want to wander too far from home (which\
+  \ happens to also be the bar). You need to help him figure out a sequence of moves\
+  \ (a sequence of signs for the vectors) such that his final position $p$ satisfies\
+  \ $|p| \\le 1.5 \\cdot 10^6$ so that he can stay safe.\n\n\n-----Input-----\n\n\
+  The first line contains a single integer $n$ ($1 \\le n \\le 10^5$) — the number\
+  \ of moves.\n\nEach of the following lines contains two space-separated integers\
+  \ $x_i$ and $y_i$, meaning that $\\vec{v_i} = (x_i, y_i)$. We have that $|v_i| \\\
+  le 10^6$ for all $i$.\n\n\n-----Output-----\n\nOutput a single line containing $n$\
+  \ integers $c_1, c_2, \\cdots, c_n$, each of which is either $1$ or $-1$. Your solution\
+  \ is correct if the value of $p = \\sum_{i = 1}^n c_i \\vec{v_i}$, satisfies $|p|\
+  \ \\le 1.5 \\cdot 10^6$.\n\nIt can be shown that a solution always exists under\
+  \ the given constraints.\n\n\n-----Examples-----\nInput\n3\n999999 0\n0 999999\n\
+  999999 0\n\nOutput\n1 1 -1 \n\nInput\n1\n-824590 246031\n\nOutput\n1 \n\nInput\n\
+  8\n-67761 603277\n640586 -396671\n46147 -122580\n569609 -2112\n400 914208\n131792\
+  \ 309779\n-850150 -486293\n5272 721899\n\nOutput\n1 1 1 1 1 1 1 -1"
+"vc-preamble": "import Imports.AllImports\n\ndef find_path (n : Nat) (vectors : List\
+  \ (Int × Int)) : List Int :=\n  sorry\n\n\ndef compute_final_position (vectors :\
+  \ List (Int × Int)) (path : List Int) : Int × Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def verify_path_length (x : Int) (y : Int) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem find_path_correct_length {n : Nat} {vectors : List (Int ×\
+  \ Int)} :\n  let path := find_path n vectors\n  n = vectors.length → path.length\
+  \ = n :=\n  sorry\n\n\ntheorem find_path_valid_elements {n : Nat} {vectors : List\
+  \ (Int × Int)} :\n  let path := find_path n vectors\n  n = vectors.length → ∀ x\
+  \ ∈ path, x = 1 ∨ x = -1 :=\n  sorry\n\n\ntheorem find_path_bounded_result {n :\
+  \ Nat} {vectors : List (Int × Int)} :\n  let path := find_path n vectors\n  let\
+  \ final_pos := compute_final_position vectors path\n  n = vectors.length →\n  verify_path_length\
+  \ final_pos.1 final_pos.2 = true :=\n  sorry\n\n\ntheorem single_vector_axis_bounded\
+  \ {n : Nat} :\n  n > 0 → n ≤ 50 →\n  let vectors := List.replicate n (1000000, 0)\n\
+  \  let path := find_path n vectors\n  let final_pos := compute_final_position vectors\
+  \ path\n  verify_path_length final_pos.1 final_pos.2 = true :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

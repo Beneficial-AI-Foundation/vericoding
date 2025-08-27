@@ -1,0 +1,29 @@
+"vc-description": "You've made it through the moat and up the steps of knowledge.\
+  \ You've won the temples games and now you're hunting for treasure in the final\
+  \ temple run. There's good news and bad news. You've found the treasure but you've\
+  \ triggered a nasty trap. You'll surely perish in the temple chamber.\n\nWith your\
+  \ last movements, you've decided to draw an \"X\" marks the spot for the next archeologist.\n\
+  \nGiven an odd number, n, draw an X for the next crew. Follow the example below.\n\
+  \n`\n`\nIf n = 1 return 'X\\n' and if you're given an even number or invalid input,\
+  \ return '?'.\n\nThe output should be a string with no spaces after the final X\
+  \ on each line, but a \\n to indicate a new line.\n\n\nCheck out my other 80's Kids\
+  \ Katas:\n\n\n80's Kids #1: How Many Licks Does It Take\n80's Kids #2: Help Alf\
+  \ Find His Spaceship\n80's Kids #3: Punky Brewster's Socks\n80's Kids #4: Legends\
+  \ of the Hidden Temple\n80's Kids #5: You Can't Do That on Television\n80's Kids\
+  \ #6: Rock 'Em, Sock 'Em Robots\n80's Kids #7: She's a Small Wonder\n80's Kids #8:\
+  \ The Secret World of Alex Mack\n80's Kids #9: Down in Fraggle Rock \n80's Kids\
+  \ #10: Captain Planet"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def mark_spot (input : α) : String :=\n  sorry\n"
+"vc-theorems": "theorem mark_spot_invalid_types {α : Type} (x : α) : \n  mark_spot\
+  \ x = \"?\" :=\nsorry\n\n\ntheorem mark_spot_odd_numbers {n : Nat} (h1 : n ≥ 1)\
+  \ (h2 : n ≤ 99) (h3 : n % 2 = 1) :\n  let result := mark_spot n\n  -- Result is\
+  \ not \"?\"\n  result ≠ \"?\" ∧ \n  -- Can split into n lines \n  (let lines :=\
+  \ (result.trim.splitOn \"\\n\")\n   lines.length = n ∧\n  -- Each line contains\
+  \ X\n   (∀ line ∈ lines, line.contains 'X') ∧\n  -- All lines except middle have\
+  \ 2 Xs\n   (∀ i < lines.length, \n      if i = n / 2 \n      then ∃ j : Fin (lines.get!\
+  \ i).length, (lines.get! i).data.get j = 'X'\n      else ∃ j k : Fin (lines.get!\
+  \ i).length, j ≠ k ∧\n           (lines.get! i).data.get j = 'X' ∧ \n          \
+  \ (lines.get! i).data.get k = 'X')) :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

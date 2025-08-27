@@ -1,0 +1,24 @@
+"vc-description": "In an infinite array with two rows, the numbers in the top row\
+  \ are denoted\n\n`. . . , A[−2], A[−1], A[0], A[1], A[2], . . .`\n\nand the numbers\
+  \ in the bottom row are denoted\n\n`. . . , B[−2], B[−1], B[0], B[1], B[2], . .\
+  \ .`\n\nFor each integer `k`, the entry `A[k]` is directly above\nthe entry `B[k]`\
+  \ in the array, as shown:\n\n\n...|A[-2]|A[-1]|A[0]|A[1]|A[2]|...\n...|B[-2]|B[-1]|B[0]|B[1]|B[2]|...\n\
+  \n\n\nFor each integer `k`, `A[k]` is the average of the entry to its left, the\
+  \ entry to its right,\nand the entry below it; similarly, each entry `B[k]` is the\
+  \ average of the entry to its\nleft, the entry to its right, and the entry above\
+  \ it.\n\n\nGiven `A[0], A[1], A[2] and A[3]`, determine the value of `A[n]`. (Where\
+  \ range of n is -1000 Inputs and Outputs in BigInt!** \n\nAdapted from 2018 Euclid\
+  \ Mathematics Contest.\nhttps://www.cemc.uwaterloo.ca/contests/past_contests/2018/2018EuclidContest.pdf"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_a (lst : List Int) (n : Int) : Int := sorry\n\ndef reverse\
+  \ (lst : List Int) : List Int := sorry\n\n\n"
+"vc-theorems": "theorem find_a_first_four {lst : List Int} (n : Int)\n  (h1 : lst.length\
+  \ = 4)\n  (h2 : 0 ≤ n)\n  (h3 : n < 4) :\n  find_a lst n = lst.get ⟨n.toNat, sorry⟩\
+  \ := sorry\n\n\n\n\ntheorem find_a_recurrence {lst : List Int} (n : Int)\n  (h1\
+  \ : lst.length = 4)\n  (h2 : n ≥ 4) :\n  find_a lst n = \n    6 * find_a lst (n-1)\
+  \ - \n    10 * find_a lst (n-2) + \n    6 * find_a lst (n-3) - \n    find_a lst\
+  \ (n-4) := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_a [1, 2, 3, 4]\
+  \ 2\n\n/--\ninfo: 200\n-/\n#guard_msgs in\n#eval find_a [38, 200, -18, 45] 1\n\n\
+  /--\ninfo: 20\n-/\n#guard_msgs in\n#eval find_a [1, 0, 0, 1] 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

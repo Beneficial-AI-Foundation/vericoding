@@ -1,0 +1,33 @@
+"vc-description": "Find the length between 2 co-ordinates.  The co-ordinates are made\
+  \ of integers between -20 and 20 and will be given in the form of a 2D array:\n\n\
+  (0,0) and (5,-7) would be [ [ 0 , 0 ] , [ 5, -7 ] ]\n\nThe function must return\
+  \ the answer rounded to 2 decimal places in the form of a string.\n\n```python\n\
+  length_of_line([[0, 0], [5, -7]]) => \"8.60\"\n```\n\nIf the 2 given co-ordinates\
+  \ are the same, the returned length should be \"0.00\""
+"vc-preamble": "import Imports.AllImports\n\ndef length_of_line (coords : List (List\
+  \ Int)) : String := sorry\n\ndef string_to_float (s : String) : Float := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def int_to_float (i : Int) : Float := sorry\n\ntheorem length_matches_pythagorean\
+  \ \n  (coords : List (List Int))\n  (x1 y1 x2 y2 : Int)\n  (h1 : coords.length =\
+  \ 2)\n  (h2 : coords[0]!.length = 2)\n  (h3 : coords[1]!.length = 2)\n  (h4 : coords[0]![0]!\
+  \ = x1)\n  (h5 : coords[0]![1]! = y1) \n  (h6 : coords[1]![0]! = x2)\n  (h7 : coords[1]![1]!\
+  \ = y2) :\n  let result := string_to_float (length_of_line coords)\n  let expected\
+  \ := Float.sqrt (int_to_float ((x2 - x1) ^ 2 + (y2 - y1) ^ 2))\n  Float.abs (result\
+  \ - expected) < 0.01 := sorry\n"
+"vc-theorems": "theorem length_commutative\n  (coords : List (List Int))\n  (h1 :\
+  \ coords.length = 2)\n  (h2 : coords[0]!.length = 2)\n  (h3 : coords[1]!.length\
+  \ = 2) :\n  length_of_line coords = length_of_line [coords[1]!, coords[0]!] := sorry\n\
+  \n\ntheorem same_point_zero\n  (coords : List (List Int))\n  (h1 : coords.length\
+  \ = 2)\n  (h2 : coords[0]!.length = 2) :\n  length_of_line [coords[0]!, coords[0]!]\
+  \ = \"0.00\" := sorry\n\n\ntheorem triangle_inequality\n  (coords : List (List Int))\n\
+  \  (x1 y1 x2 y2 : Int)\n  (h1 : coords.length = 2)\n  (h2 : coords[0]!.length =\
+  \ 2)\n  (h3 : coords[1]!.length = 2)\n  (h4 : coords[0]![0]! = x1)\n  (h5 : coords[0]![1]!\
+  \ = y1)\n  (h6 : coords[1]![0]! = x2)\n  (h7 : coords[1]![1]! = y2) :\n  let mx\
+  \ := (x1 + x2) / 2\n  let my := (y1 + y2) / 2\n  let midpoint := [mx, my]\n  let\
+  \ result := string_to_float (length_of_line coords)\n  let via_mid := string_to_float\
+  \ (length_of_line [coords[0]!, midpoint]) + \n                 string_to_float (length_of_line\
+  \ [midpoint, coords[1]!])\n  result ≤ via_mid + 0.01 := sorry\n\n/--\ninfo: '1.41'\n\
+  -/\n#guard_msgs in\n#eval length_of_line [[0, 0], [1, 1]]\n\n/--\ninfo: '0.00'\n\
+  -/\n#guard_msgs in\n#eval length_of_line [[0, 0], [0, 0]]\n\n/--\ninfo: '13.04'\n\
+  -/\n#guard_msgs in\n#eval length_of_line [[-3, 4], [10, 5]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

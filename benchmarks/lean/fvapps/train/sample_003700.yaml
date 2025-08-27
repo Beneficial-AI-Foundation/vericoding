@@ -1,0 +1,19 @@
+"vc-description": "If we list all the natural numbers below 10 that are multiples\
+  \ of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.\n\nFinish the\
+  \ solution so that it returns the sum of all the multiples of 3 or 5 **below** the\
+  \ number passed in. \n\n> Note: If the number is a multiple of **both** 3 and 5,\
+  \ only count it *once*.\n> Also, if a number is negative, return 0(for languages\
+  \ that do have them)\n  \n###### *Courtesy of projecteuler.net*"
+"vc-preamble": "import Imports.AllImports\n\ndef solution (n : Int) : Int := sorry\n\
+  \ntheorem solution_nonnegative (n : Int) : \n  solution n ≥ 0 ∧ (n ≤ 0 → solution\
+  \ n = 0) := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sumMultiples (n : Nat) : Int :=\n  (List.range n).map Int.ofNat\n\
+  \  |>.filter (fun x => x % 3 = 0 ∨ x % 5 = 0)\n  |>.foldl (· + ·) 0\n"
+"vc-theorems": "theorem multiples_property {n : Nat} : \n  0 < n →\n  solution (Int.ofNat\
+  \ n) = sumMultiples n := sorry\n\n\ntheorem result_smaller_than_input_squared {n\
+  \ : Int} :\n  n > 0 → solution n < n * n := sorry\n\n\ntheorem negative_inputs :\n\
+  \  ∀ n : Int, n < 0 → solution n = 0 := sorry\n\n/--\ninfo: 23\n-/\n#guard_msgs\
+  \ in\n#eval solution 10\n\n/--\ninfo: 78\n-/\n#guard_msgs in\n#eval solution 20\n\
+  \n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval solution 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

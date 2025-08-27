@@ -1,0 +1,39 @@
+"vc-description": "=====Function Descriptions=====\ncollections.deque()\nA deque is\
+  \ a double-ended queue. It can be used to add or remove elements from both ends.\n\
+  \nDeques support thread safe, memory efficient appends and pops from either side\
+  \ of the deque with approximately the same O(1) performance in either direction.\n\
+  \nExample\nCode\n>>> from collections import deque\n>>> d = deque()\n>>> d.append(1)\n\
+  >>> print d\ndeque([1])\n>>> d.appendleft(2)\n>>> print d\ndeque([2, 1])\n>>> d.clear()\n\
+  >>> print d\ndeque([])\n>>> d.extend('1')\n>>> print d\ndeque(['1'])\n>>> d.extendleft('234')\n\
+  >>> print d\ndeque(['4', '3', '2', '1'])\n>>> d.count('1')\n1\n>>> d.pop()\n'1'\n\
+  >>> print d\ndeque(['4', '3', '2'])\n>>> d.popleft()\n'4'\n>>> print d\ndeque(['3',\
+  \ '2'])\n>>> d.extend('7896')\n>>> print d\ndeque(['3', '2', '7', '8', '9', '6'])\n\
+  >>> d.remove('2')\n>>> print d\ndeque(['3', '7', '8', '9', '6'])\n>>> d.reverse()\n\
+  >>> print d\ndeque(['6', '9', '8', '7', '3'])\n>>> d.rotate(3)\n>>> print d\ndeque(['8',\
+  \ '7', '3', '6', '9'])\n\n=====Problem Statement=====\nPerform append, pop, popleft\
+  \ and appendleft methods on an empty deque d.\n\n=====Input Format=====\nThe first\
+  \ line contains an integer N, the number of operations.\nThe next N lines contains\
+  \ the space separated names of methods and their values.\n\n=====Constraints=====\n\
+  0<N≤100\n\n=====Output Format=====\nPrint the space separated elements of deque\
+  \ d."
+"vc-preamble": "import Imports.AllImports\n\ndef Operation := String × Int\ndef DequeOp\
+  \ := List Operation\n\n\ndef splitString (s : String) : List String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def process_deque_operations (ops : List String) : String :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem append_only_operations_preserves_length \n  (ops : List String)\n\
+  \  (h1 : ∀ op ∈ ops, (splitString op).get! 0 = \"append\" ∨ (splitString op).get!\
+  \ 0 = \"appendleft\") :\n  (splitString (process_deque_operations ops)).length =\
+  \ ops.length :=\n  sorry\n\n\ntheorem append_only_operations_preserves_elements\n\
+  \  (ops : List String)\n  (h1 : ∀ op ∈ ops, (splitString op).get! 0 = \"append\"\
+  \ ∨ (splitString op).get! 0 = \"appendleft\") :\n  ∃ perm : List String → List String,\
+  \ \n    perm (ops.map (λ op => (splitString op).get! 1)) = \n    splitString (process_deque_operations\
+  \ ops) :=\n  sorry\n\n\ntheorem append_maintains_order\n  (ops : List String)\n\
+  \  (h1 : ∀ op ∈ ops, (splitString op).get! 0 = \"append\") :\n  (splitString (process_deque_operations\
+  \ ops)) =\n  ops.map (λ op => (splitString op).get! 1) :=\n  sorry\n\n/--\ninfo:\
+  \ '1 2'\n-/\n#guard_msgs in\n#eval process_deque_operations [\"append 1\", \"append\
+  \ 2\", \"append 3\", \"appendleft 4\", \"pop\", \"popleft\"]\n\n/--\ninfo: '10 15'\n\
+  -/\n#guard_msgs in\n#eval process_deque_operations [\"append 5\", \"appendleft 10\"\
+  , \"pop\", \"append 15\"]\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval process_deque_operations\
+  \ [\"append 1\", \"appendleft 2\", \"popleft\", \"pop\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

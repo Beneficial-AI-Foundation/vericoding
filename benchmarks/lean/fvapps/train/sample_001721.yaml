@@ -1,0 +1,35 @@
+"vc-description": "### Please also check out other katas in [Domino Tiling series](https://www.codewars.com/collections/5d19554d13dba80026a74ff5)!\n\
+  \n---\n\n# Task\n\nA domino is a rectangular block with `2` units wide and `1` unit\
+  \ high. A domino can be placed on a grid in two ways: horizontal or vertical.\n\n\
+  ```\n## or #\n      #\n```\n\nYou have infinitely many dominoes, and you want to\
+  \ fill a board that is `N` units wide and `3` units high:\n\n```\n<---   N   --->\n\
+  ###############\n###############\n###############\n```\n\nThe task is to find **the\
+  \ number of ways** you can fill the given grid with dominoes.\n\n# The Twist\n\n\
+  But you quickly realize that the answer is zero for any odd `N`, because (obviously)\
+  \ you can't cover odd number of cells with dominoes! So you decide to introduce\
+  \ one **unit block** (1 unit wide and 1 unit high) to cover the final gap when needed\
+  \ (you don't need this block when `N` is even).\n\nThe following shows some possible\
+  \ tilings for `N = 5`. Note that, unlike my previous Kata, the numbers do not represent\
+  \ the colors (they are just for convenience). Also note that the unit block (marked\
+  \ as 'X') can be placed **anywhere on the board**, making the answers for odd numbers\
+  \ way higher than even ones.\n\n```\n11255   1122X   14456\n3X267   33447   13356\n\
+  34467   55667   22X77\n```\n\nSince the answer will be very large, please give your\
+  \ answer **modulo 12345787**.\n\n# Examples\n\n```python\n# Even input\nthree_by_n(2)\
+  \ == 3\nthree_by_n(4) == 11\nthree_by_n(10) == 571\nthree_by_n(20) == 413403\n\n\
+  # Odd input (the numbers grow much faster than even inputs)\nthree_by_n(1) == 2\n\
+  three_by_n(3) == 18\nthree_by_n(5) == 106\nthree_by_n(11) == 11542\nthree_by_n(21)\
+  \ == 3287999\n\n# You must handle big values\nthree_by_n(9999) == 6311027\nthree_by_n(10000)\
+  \ == 12003229\n```\n\n# Constraints\n\n`1 <= N <= 10000`\n\nAll inputs are valid\
+  \ integers."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def three_by_n (n : Nat) : Nat := sorry\n\ntheorem three_by_n_output_bounds\
+  \ (n : Nat) (h : n > 0) : \n  three_by_n n < 12345787 := sorry\n"
+"vc-theorems": "theorem three_by_n_monotonic (n : Nat) (h : n > 0) (h2 : n ≤ 100)\
+  \ :\n  three_by_n n ≤ three_by_n (n + 1) ∨ \n  three_by_n (n + 1) % 12345787 < three_by_n\
+  \ n := sorry\n\n\ntheorem three_by_n_base_cases :\n  three_by_n 1 = 2 ∧ three_by_n\
+  \ 2 = 3 := sorry\n\n\ntheorem three_by_n_mod (n : Nat) (h : n > 0) :\n  three_by_n\
+  \ n = three_by_n n % 12345787 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval\
+  \ three_by_n 2\n\n/--\ninfo: 11\n-/\n#guard_msgs in\n#eval three_by_n 4\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval three_by_n 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

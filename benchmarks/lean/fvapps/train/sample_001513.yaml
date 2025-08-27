@@ -1,0 +1,39 @@
+"vc-description": "Dio Brando has set  a goal for himself of becoming the richest\
+  \ and the most powerful being on earth.To achieve his goals he will do anything\
+  \ using either manipulation,seduction or plain violence.\nOnly one guy stands between\
+  \ his goal of conquering earth ,named Jotaro Kujo aka JoJo .Now Dio has a stand\
+  \ (visual manifestation of life energy  i.e, special power )  “Za Warudo” ,which\
+  \ can stop time itself but needs to chant few words to activate the time stopping\
+  \ ability of the stand.There is a code hidden inside the words and if you can decipher\
+  \ the code then Dio loses his power.\nIn order to stop Dio ,Jotaro asks your help\
+  \ to decipher the code since he can’t do so while fighting Dio at the same time.\n\
+  You will be given a string as input and you have to find the shortest substring\
+  \ which contains all the characters of itself and then make a number based on the\
+  \ alphabetical ordering of the characters.\nFor example : “bbbacdaddb”\nshortest\
+  \ substring will be “bacd” and based on the alphabetical ordering\nthe answer is\
+  \ 2134\n\n-----NOTE:-----\nA substring is a contiguous subsegment of a string. For\
+  \ example, \"acab\" is a substring of \"abacaba\" (it starts in position 3 and ends\
+  \ in position 6), but \"aa\" or \"d\" aren't substrings of this string. So the substring\
+  \ of the string s from position l to position r is\n\nS[l;r]=SlSl+1…Sr.\n\n-----Input\
+  \ :-----\nThe first line contains $T$,number of test cases.\nThe second line contains\
+  \ a string $S$.\n\n-----Output:-----\nFor each test cases ,output the number you\
+  \ can get from the shortest string \n\n-----Constraints:-----\n$1 \\leq t \\leq\
+  \ 100$\n$1 \\leq |S| \\leq 10^6$\n\n-----Test Cases:-----\n\n-----Sample Input:-----\n\
+  6\n\nabcdfgh\n\nurdrdrav\n\njojojojoj\n\nbbbbaaa\n\ncddfsccs\n\ntttttttttttt   \n\
+  \n-----Sample Output:-----\n1234678\n\n2118418418122\n\n1015\n\n21\n\n46193\n\n\
+  20\n\n-----Explanation:-----\nTest case 1: abcdfgh is the shortest substring containing\
+  \ all char of itself and the number is 1234678"
+"vc-preamble": "import Imports.AllImports\n\ndef isSubstring (sub : String) (orig\
+  \ : String) : Bool := sorry\ndef hasAllChars (sub : String) (orig : String) : Bool\
+  \ := sorry "
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def substr (s : String) (i j : Nat) : String := sorry\n\ndef findSubString\
+  \ (s : String) : String := sorry\n"
+"vc-theorems": "theorem find_sub_string_is_substring \n  (s : String) (h : s.length\
+  \ > 0) :\n  isSubstring (findSubString s) s := sorry\n\n\ntheorem find_sub_string_has_all_chars\n\
+  \  (s : String) (h : s.length > 0) :\n  hasAllChars (findSubString s) s := sorry\n\
+  \n\ntheorem find_sub_string_is_minimal\n  (s : String) (h : s.length > 0)\n  (i\
+  \ j : Nat) (h1 : i < s.length) (h2 : j ≤ s.length) (h3 : i < j) :\n  let sub :=\
+  \ substr s i j\n  let result := findSubString s\n  sub.length < result.length →\
+  \ ¬(hasAllChars sub s) := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

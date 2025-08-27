@@ -1,0 +1,35 @@
+"vc-description": "Do you know Professor Saeed? He is the algorithms professor at\
+  \ Damascus University. Yesterday, he gave his students hard homework (he is known\
+  \ for being so evil) - for a given binary string $S$, they should compute the sum\
+  \ of $F(S, L, R)$ over all pairs of integers $(L, R)$ ($1 \\le L \\le R \\le |S|$),\
+  \ where the function $F(S, L, R)$ is defined as follows:\n- Create a string $U$:\
+  \ first, set $U = S$, and for each $i$ ($L \\le i \\le R$), flip the $i$-th character\
+  \ of $U$ (change '1' to '0' or '0' to '1').\n- Then, $F(S, L, R)$ is the number\
+  \ of valid pairs $(i, i + 1)$ such that $U_i = U_{i+1}$.\nAs usual, Professor Saeed\
+  \ will give more points to efficient solutions. Please help the students solve this\
+  \ homework.\n\n-----Input-----\n- The first line of the input contains a single\
+  \ integer $T$ denoting the number of test cases. The description of $T$ test cases\
+  \ follows.\n- The first and only line of each test case contains a single string\
+  \ $S$.\n\n-----Output-----\nFor each test case, print a single line containing one\
+  \ integer $\\sum_{1 \\le L \\le R \\le |S|} F(S, L, R)$.\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 100$\n- $1 \\le |S| \\le 3 \\cdot 10^6$\n- the sum of $|S|$ over\
+  \ all test cases does not exceed $6 \\cdot 10^6$\n\n-----Subtasks-----\nSubtask\
+  \ #1 (50 points):\n- $1 \\le |S| \\le 300$\n- the sum of $|S|$ over all test cases\
+  \ does not exceed $600$\nSubtask #2 (50 points): original constraints\n\n-----Example\
+  \ Input-----\n1\n001\n\n-----Example Output-----\n6\n\n-----Explanation-----\nExample\
+  \ case 1:\n- $L = 1, R = 1$: $U$ is \"101\", $F = 0$\n- $L = 2, R = 2$: $U$ is \"\
+  011\", $F = 1$\n- $L = 3, R = 3$: $U$ is \"000\", $F = 2$\n- $L = 1, R = 2$: $U$\
+  \ is \"111\", $F = 2$\n- $L = 2, R = 3$: $U$ is \"010\", $F = 0$\n- $L = 1, R =\
+  \ 3$: $U$ is \"110\", $F = 1$"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_binary_string_flips : BinaryString → Nat\n  | _ => sorry\n"
+"vc-theorems": "theorem single_char_string_has_no_pairs (b : Bool) : \n  solve_binary_string_flips\
+  \ (BinaryString.cons b BinaryString.empty) = 0 := by\n  sorry\n\n\ntheorem output_is_nonnegative\
+  \ (s : BinaryString) : \n  solve_binary_string_flips s ≥ 0 := by\n  sorry\n\n\n\
+  theorem empty_string_returns_zero :\n  solve_binary_string_flips BinaryString.empty\
+  \ = 0 := by\n  sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval solve_binary_string_flips\
+  \ \"001\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval solve_binary_string_flips \"\
+  0\"\n\n/--\ninfo: 18\n-/\n#guard_msgs in\n#eval solve_binary_string_flips \"1111\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

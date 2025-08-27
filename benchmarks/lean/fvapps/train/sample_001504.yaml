@@ -1,0 +1,52 @@
+"vc-description": "Scheme? - Too loudly said. Just a new idea. Now Chef is expanding\
+  \ his business. He wants to make some new restaurants in the big city of Lviv. To\
+  \ make his business competitive he should interest customers. Now he knows how.\
+  \ But don't tell anyone -  it is a secret plan. Chef knows four national Ukrainian\
+  \ dishes - salo, borsch, varenyky and galushky. It is too few, of course, but enough\
+  \ for the beginning. Every day in his restaurant will be a dish of the day among\
+  \ these four ones. And dishes of the consecutive days must be different. To make\
+  \ the scheme more refined the dish of the first day and the dish of the last day\
+  \ must be different too. Now he wants his assistant to make schedule for some period.\
+  \ Chef suspects that there is more than one possible schedule. Hence he wants his\
+  \ assistant to prepare all possible plans so that he can choose the best one among\
+  \ them. He asks you for help. At first tell him how many such schedules exist. Since\
+  \ the answer can be large output it modulo 109 + 7, that is, you need to output\
+  \ the remainder of division of the actual answer by 109 + 7.\n\n-----Input-----\n\
+  \nThe first line of the input contains an integer T, the number of test cases. Each\
+  \ of the following T lines contains a single integer N denoting the number of days\
+  \ for which the schedule should be made.\n\n-----Output-----\n\nFor each test case\
+  \ output a single integer in a separate line, the answer for the corresponding test\
+  \ case.\n\n-----Constraints-----1 ≤ T ≤ 100\n2 ≤ N ≤ 109\n\n-----Example-----\n\
+  Input:\n3\n2\n3\n5\n\nOutput:\n12\n24\n240\n\n-----Explanation-----\nCase 1. For\
+  \ N = 2 days we have the following 12 schedules:\nFirst day Second day  salo   borsch\
+  \    salo   varenyky    salo   galushky    borsch   salo    borsch   varenyky  \
+  \  borsch   galushky    varenyky   salo    varenyky   borsch    varenyky   galushky\
+  \    galushky   salo    galushky   borsch    galushky   varenyky  \n\nCase 2. For\
+  \ N = 3 we have the following 24 schedules:\nFirst daySecond dayThird day  salo\
+  \   borsch   varenyky    salo   borsch   galushky    salo   varenyky   borsch  \
+  \  salo   varenyky   galushky    salo   galushky   borsch    salo   galushky   varenyky\
+  \    borsch   salo   varenyky    borsch   salo   galushky    borsch   varenyky \
+  \  salo    borsch   varenyky   galushky    borsch   galushky   salo    borsch  \
+  \ galushky   varenyky    varenyky   salo   borsch    varenyky   salo   galushky\
+  \    varenyky   borsch   salo    varenyky   borsch   galushky    varenyky   galushky\
+  \   salo    varenyky   galushky   borsch    galushky   salo   borsch    galushky\
+  \   salo   varenyky    galushky   borsch   salo    galushky   borsch   varenyky\
+  \    galushky   varenyky   salo    galushky   varenyky   borsch  \n\nCase 3. Don't\
+  \ be afraid. This time we will not provide you with a table of 240 schedules. The\
+  \ only thing we want to mention here is that apart from the previous two cases schedules\
+  \ for other values of N can have equal dishes (and even must have for N > 4). For\
+  \ example the schedule (salo, borsch, salo, borsch) is a correct schedule for N\
+  \ = 4 while the schedule (varenyky, salo, galushky, verynky, salo) is a correct\
+  \ schedule for N = 5."
+"vc-preamble": "import Imports.AllImports\n\ndef MOD := 1000000007\n\ndef calculate_possible_schedules\
+  \ (n : Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pow (base n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem calculate_possible_schedules_mod_bounds (n : Nat) :\n  0 ≤\
+  \ calculate_possible_schedules n ∧ calculate_possible_schedules n < MOD :=\n  sorry\n\
+  \n\ntheorem calculate_possible_schedules_odd_even_match (n : Nat) :\n  calculate_possible_schedules\
+  \ n = \n    if n % 2 = 0 \n    then ((pow 3 n) + 3) % MOD\n    else ((pow 3 n) -\
+  \ 3) % MOD :=\n  sorry\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval calculate_possible_schedules\
+  \ 2\n\n/--\ninfo: 24\n-/\n#guard_msgs in\n#eval calculate_possible_schedules 3\n\
+  \n/--\ninfo: 240\n-/\n#guard_msgs in\n#eval calculate_possible_schedules 5\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

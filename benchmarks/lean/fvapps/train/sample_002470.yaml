@@ -1,0 +1,36 @@
+"vc-description": "=====Problem Statement=====\nKevin and Stuart want to play the\
+  \ 'The Minion Game'.\n\nGame Rules\n\nBoth players are given the same string, S.\n\
+  Both players have to make substrings using the letters of the string S.\nStuart\
+  \ has to make words starting with consonants.\nKevin has to make words starting\
+  \ with vowels.\nThe game ends when both players have made all possible substrings.\n\
+  \nScoring\nA player gets +1 point for each occurrence of the substring in the string\
+  \ S.\n\n=====Example=====\nString S = BANANA\nKevin's vowel beginning word = ANA\n\
+  Here, ANA occurs twice in BANANA. Hence, Kevin will get 2 Points.\n\nYour task is\
+  \ to determine the winner of the game and their score.\n\n=====Input Format=====\n\
+  A single line of input containing the string S.\nNote: The string S will contain\
+  \ only uppercase letters: [A-Z].\n\n=====Constraints=====\n0 < len(S) < 10^6\n\n\
+  =====Output Format=====\nPrint one line: the name of the winner and their score\
+  \ separated by a space.\nIf the game is a draw, print Draw."
+"vc-preamble": "import Imports.AllImports\n\ndef minion_game (s : String) : String\
+  \ := sorry \n\ndef is_vowel (c : Char) : Bool := \n  c == 'A' || c == 'E' || c ==\
+  \ 'I' || c == 'O' || c == 'U'\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def score_from_result (result : String) : Nat :=\n  if result ==\
+  \ \"Draw\" then 0\n  else String.toNat! (result.splitOn \" \" |>.get! 1)\n"
+"vc-theorems": "theorem minion_game_result_format (s : String) (h : s.all (fun c =>\
+  \ c.isUpper)) :\n  let result := minion_game s\n  result.startsWith \"Kevin \" ∨\
+  \ result.startsWith \"Stuart \" ∨ result = \"Draw\" := sorry\n\n\ntheorem minion_game_score_bounds\
+  \ (s : String) (h : s.all (fun c => c.isUpper)) :\n  let result := minion_game s\n\
+  \  let score := score_from_result result\n  result ≠ \"Draw\" →\n  score > 0 ∧ score\
+  \ ≤ (s.length * (s.length + 1)) / 2 := sorry\n\n\ntheorem minion_game_scores_sum\
+  \ (s : String) (h : s.all (fun c => c.isUpper)) :\n  let result := minion_game s\n\
+  \  let total := (s.length * (s.length + 1)) / 2\n  result ≠ \"Draw\" →\n  score_from_result\
+  \ result + (total - score_from_result result) = total := sorry\n\n\ntheorem minion_game_all_vowels\
+  \ (s : String) \n  (h₁ : s.length > 0)\n  (h₂ : s.all (fun c => is_vowel c)) :\n\
+  \  (minion_game s).startsWith \"Kevin \" := sorry\n\n\ntheorem minion_game_all_consonants\
+  \ (s : String)\n  (h₁ : s.length > 0) \n  (h₂ : s.all (fun c => c.isUpper ∧ !is_vowel\
+  \ c)) :\n  (minion_game s).startsWith \"Stuart \" := sorry\n\n/--\ninfo: 'Stuart\
+  \ 12'\n-/\n#guard_msgs in\n#eval minion_game \"BANANA\"\n\n/--\ninfo: 'Stuart 6'\n\
+  -/\n#guard_msgs in\n#eval minion_game \"MINE\"\n\n/--\ninfo: 'Kevin 3'\n-/\n#guard_msgs\
+  \ in\n#eval minion_game \"AE\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

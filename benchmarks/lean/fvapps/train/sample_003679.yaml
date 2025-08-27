@@ -1,0 +1,28 @@
+"vc-description": "#Sorting on planet Twisted-3-7\n\nThere is a planet... in a galaxy\
+  \ far far away. It is exactly like our planet, but it has one difference:\n#The\
+  \ values of the digits 3 and 7 are twisted.\nOur 3 means 7 on the planet Twisted-3-7.\
+  \ And 7 means 3.\n\nYour task is to create a method, that can sort an array the\
+  \ way it would be sorted on Twisted-3-7.\n\n7 Examples from a friend from Twisted-3-7:\n\
+  ```\n[1,2,3,4,5,6,7,8,9] -> [1,2,7,4,5,6,3,8,9]\n[12,13,14] -> [12,14,13]\n[9,2,4,7,3]\
+  \ -> [2,7,4,3,9]\n```\n\nThere is no need for a precheck. The array will always\
+  \ be not null and will always contain at least one number.\n\nYou should not modify\
+  \ the input array!\n\nHave fun coding it and please don't forget to vote and rank\
+  \ this kata! :-) \n\nI have also created other katas. Take a look if you enjoyed\
+  \ this kata!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sort_twisted37 (arr : List Int) : List Int := sorry\n\ndef\
+  \ twist37 (n : Int) : Int := sorry\n"
+"vc-theorems": "theorem sort_twisted37_invariants {arr : List Int} :\n  let result\
+  \ := sort_twisted37 arr\n  (List.length result = List.length arr) ∧ \n  (∀ x, x\
+  \ ∈ result ↔ x ∈ arr) ∧\n  (∀ i j, i < j → j < result.length → \n    let i' : Fin\
+  \ result.length := ⟨i, by sorry⟩\n    let j' : Fin result.length := ⟨j, by sorry⟩\n\
+  \    twist37 (result.get i') ≤ twist37 (result.get j')) :=\nsorry\n\n\ntheorem sort_twisted37_no_changes\
+  \ {arr : List Int} \n  (h : ∀ x ∈ arr, ¬ (toString x).contains '3' ∧ ¬ (toString\
+  \ x).contains '7') :\n  sort_twisted37 arr = arr :=\nsorry\n\n\ntheorem sort_twisted37_idempotent\
+  \ {arr : List Int} :\n  sort_twisted37 (sort_twisted37 arr) = sort_twisted37 arr\
+  \ :=\nsorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval sort_twisted37 [1,\
+  \ 2, 3, 4, 5, 6, 7, 8, 9]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval sort_twisted37\
+  \ [12, 13, 14]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval sort_twisted37\
+  \ [9, 2, 4, 7, 3]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

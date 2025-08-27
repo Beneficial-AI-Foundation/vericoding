@@ -1,0 +1,74 @@
+"vc-description": "We need a function that may receive a list  of an unknown amount\
+  \ of points in the same plane, having each of them, cartesian coordinates of the\
+  \ form (x, y) and may find the biggest triangle (the one with the largest area)\
+  \ formed by all of the possible combinations of groups of three points of that given\
+  \ list.\nOf course, we will have some combinations of three points that does not\
+  \ form a triangle, because the three points are aligned.\nThe function find_biggTriang(listOfPoints),\
+  \ will output a list with the following data in the order presented bellow:\n```python\n\
+  [(1), (2), (3), (4), 5]\n\n(1) - Number of points received (You may assume that\
+  \ you will not receive duplicates)\n\n(2) - Maximum possible amount of triangles\
+  \ that can be formed with the amount of received \n      points (number in data\
+  \ (1) above). It should be expressed as an integer, (no L for long type \n     \
+  \ variables)\n\n(3) - Real Number of triangles that can be formed with the given\
+  \ points. (The function should have a \n      counter for all the cases of three\
+  \ points aligned). It should be expressedas as an integer.\n\n(4) - The triangles\
+  \ that have maximum area in a sorted list. \n      If there are two triangles with\
+  \ the biggest area, the result will be presented in this way:\n      [[[xA1, yA1],\
+  \ [xB1, yB1], [xC1, yC1]], [[xA2, yA2], [xB2, yB2], [xC2, yC2]]]\n      But if we\
+  \ have only one triangle with max. area, there is no need of a spare level of braces,\
+  \ \n      so it will be as follows: [[xA1, yA1], [xB1, yB1], [xC1, yC1]]\n\n(5)\
+  \ - The value of max. area (absolute value) that was found as a float. As we did\
+  \ not define the \n      units of length for the coordinates, the units for the\
+  \ area will be ignored.\n\n```\n\nIt would be useful to apply the expression for\
+  \ the area of a triangle with vertices A, B, and C, is equal to the half of the\
+  \ determinant of the matrix, using the respective coordinates as follows:\n\n```python\n\
+  \n                               | xA    yA    1|\nArea Triangle(A, B, C) = 1/2\
+  \ . | xB    yB    1|\n                               | xC    yC    1|\n\n```\nThe\
+  \ negative sign for the area should be ignored for the purpose of the exercise,\
+  \ and we will consider the absolute value for all cases.\n\nSee how to calculate\
+  \ the determinant of a matrix 3 x 3, rule of Sarrus.\nhttps://en.wikipedia.org/wiki/Rule_of_Sarrus\n\
+  \nUsing this expression, it would be easy to detect the cases when three points\
+  \ are aligned.\n\nLet's see some simple cases.\n```python\nlistOfPoints1 = [(0,\
+  \ 1), (7, 3), (9, 0), (7, 10), (2, 9), (10, 7), (2, 8), (9, 8), (4, 4), (2, 10),\
+  \ (10, 1), (0, 4), (4, 3), (10, 0), (0, 3), (3, 4), (1, 1), (7, 2), (4, 0)] (19\
+  \ points received)\n\nfind_biggTriang(listOfPoints1) --------> [19, 969, 953, [[0,\
+  \ 1], [7, 10], [10, 0]], 48.5]\n\n/// Combinations (19, 3) = 969 (We do not have\
+  \ repeated points)\n   953 real cases for triangles because the function detected\
+  \ 16 cases when three points are       \n   aligned.\n   The function found one\
+  \ triangle [[0, 1], [7, 10], [10, 0]] with its area equals to 49.5///\n\nlistOfPoints2\
+  \ = [(7, 4), (0, 0), (9, 10), (5, 0), (8, 1), (7, 6), (9, 3), (2, 4), (6, 3), (5,\
+  \ 6), (3, 6), (10, 0), (9, 7), (3, 10), (10, 2)] (15 points received)\n\nfind_biggTriang(listOfPoints2)\
+  \ --------> [15, 455, 446, [[[0, 0], [9, 10], [10, 0]], [[0, 0], [10, 0], [3, 10]]],\
+  \ 50.0]\n\n/// Combinations(15, 3) = 455 but there were only 446 real triangles\n\
+  \   We found two triangles: [[0, 0], [9, 10], [10, 0]] and [[0, 0], [10, 0], [3,\
+  \ 10]] (both in a \n   sorted list. Both triangles have an area of 50.0///\n```\n\
+  Your code will be tested with lists created randomly up to 70 points.\n\nHave a\
+  \ nice moment and enjoy it!!"
+"vc-preamble": "import Imports.AllImports\n\ndef Point := (Int × Int)\ndef Triangle\
+  \ := (Point × Point × Point)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def area (t : Triangle) : Float := sorry\ndef find_biggTriang (pts\
+  \ : List Point) : (Nat × Nat × Nat × List Triangle × Float) := sorry\n"
+"vc-theorems": "theorem find_biggTriang_result_length \n  (pts : List Point) : \n\
+  \  let result := find_biggTriang pts\n  List.length [result.1, result.2.1, result.2.2.1,\
+  \ result.2.2.2.1.length, 1] = 5 := sorry\n\n\ntheorem find_biggTriang_point_count\
+  \ \n  (pts : List Point) :\n  let result := find_biggTriang pts\n  result.1 = pts.length\
+  \ := sorry\n\n\ntheorem find_biggTriang_triangle_count\n  (pts : List Point) :\n\
+  \  let result := find_biggTriang pts\n  let n := pts.length\n  result.2.1 = n *\
+  \ (n-1) * (n-2) / 6 := sorry\n\n\ntheorem find_biggTriang_nonzero_area_count\n \
+  \ (pts : List Point) :\n  let result := find_biggTriang pts \n  0 ≤ result.2.2.1\
+  \ ∧ result.2.2.1 ≤ result.2.1 := sorry\n\n\ntheorem find_biggTriang_max_area_nonneg\n\
+  \  (pts : List Point) :\n  let result := find_biggTriang pts\n  result.2.2.2.2 ≥\
+  \ 0 := sorry\n\n\ntheorem area_cyclic_permutation\n  (p1 p2 p3 : Point) :\n  let\
+  \ t1 := (p1, p2, p3)\n  let t2 := (p2, p3, p1) \n  let t3 := (p3, p1, p2)\n  (area\
+  \ t1 - area t2).abs < 1e-10 ∧ (area t2 - area t3).abs < 1e-10 := sorry\n\n/--\n\
+  info: [19, 969, 953, [[0, 1], [7, 10], [10, 0]], 48.5]\n-/\n#guard_msgs in\n#eval\
+  \ find_biggTriang [(0, 1), (7, 3), (9, 0), (7, 10), (2, 9), (10, 7), (2, 8), (9,\
+  \ 8), (4, 4), (2, 10), (10, 1), (0, 4), (4, 3), (10, 0), (0, 3), (3, 4), (1, 1),\
+  \ (7, 2), (4, 0)]\n\n/--\ninfo: [15, 455, 446, [[[0, 0], [9, 10], [10, 0]], [[0,\
+  \ 0], [10, 0], [3, 10]]], 50.0]\n-/\n#guard_msgs in\n#eval find_biggTriang [(7,\
+  \ 4), (0, 0), (9, 10), (5, 0), (8, 1), (7, 6), (9, 3), (2, 4), (6, 3), (5, 6), (3,\
+  \ 6), (10, 0), (9, 7), (3, 10), (10, 2)]\n\n/--\ninfo: [3, 1, 1, [[0, 0], [3, 0],\
+  \ [0, 4]], 6.0]\n-/\n#guard_msgs in\n#eval find_biggTriang [(0, 0), (3, 0), (0,\
+  \ 4)]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

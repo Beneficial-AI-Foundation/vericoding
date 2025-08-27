@@ -1,0 +1,35 @@
+"vc-description": "# Definition \n\nA number is a **_Special Number_** *if it’s digits\
+  \ only consist 0, 1, 2, 3, 4 or 5*\n\n**_Given_** a number *determine if it special\
+  \ number or not* .  \n\n\n\n# Warm-up (Highly recommended)\n\n# [Playing With Numbers\
+  \ Series](https://www.codewars.com/collections/playing-with-numbers)\n___\n\n# Notes\
+  \ \n\n* **_The number_** passed will be **_positive_** (N > 0) .\n\n* All **single-digit\
+  \ numbers** with in the interval **_[0:5]_** are considered as **_special number_**.\
+  \ \n___\n\n# Input >> Output Examples\n\n```\nspecialNumber(2) ==> return \"Special!!\"\
+  \n```\n## Explanation: \n\nIt's **_a single-digit number_** within the interval\
+  \ **_[0:5]_** . \n\n```\nspecialNumber(9) ==> return \"NOT!!\"\n```\n## Explanation:\n\
+  \nAlthough, it's a single-digit number but **_Outside the interval [0:5]_** .\n\n\
+  ```\nspecialNumber(23) ==> return \"Special!!\"\n```\n## Explanation: \n\nAll **_the\
+  \ number's digits_** formed from the interval **_[0:5]_** digits .\n\n```\nspecialNumber(39)\
+  \ ==> return \"NOT!!\"\n```\n## Explanation: \n\nAlthough, *there is a digit (3)\
+  \ Within the interval* **_But_** **_the second digit is not (Must be ALL The Number's\
+  \ Digits )_** .\n\n```\nspecialNumber(59) ==> return \"NOT!!\"\n```\n## Explanation:\
+  \  \n\nAlthough, *there is a digit (5) Within the interval* **_But_** **_the second\
+  \ digit is not (Must be ALL The Number's Digits )_** .\n\n```\nspecialNumber(513)\
+  \ ==> return \"Special!!\"\n```\n___\n```\nspecialNumber(709) ==> return \"NOT!!\"\
+  \n```\n___\n\n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\
+  \          \n\n### ALL translation are welcomed\n\n## Enjoy Learning !!\n# Zizou"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def digits (n : Nat) : List Nat := sorry \n\ndef special_number\
+  \ (n : Nat) : String := sorry\n"
+"vc-theorems": "theorem special_number_output_valid (n : Nat) :\n  special_number\
+  \ n = \"Special!!\" ∨ special_number n = \"NOT!!\" := sorry\n\n\ntheorem special_number_iff_digits_le_five\
+  \ (n : Nat) :\n  (∀ d, d ∈ digits n → d ≤ 5) ↔ special_number n = \"Special!!\"\
+  \ := sorry\n\n\ntheorem special_number_when_digits_le_five (n : Nat) :\n  (∀ d,\
+  \ d ∈ digits n → d ≤ 5) → special_number n = \"Special!!\" := sorry\n\n\ntheorem\
+  \ non_special_number_when_digit_gt_five (n : Nat) :\n  (∃ d, d ∈ digits n ∧ d >\
+  \ 5) → special_number n = \"NOT!!\" := sorry\n\n/--\ninfo: 'Special!!'\n-/\n#guard_msgs\
+  \ in\n#eval special_number 2\n\n/--\ninfo: 'Special!!'\n-/\n#guard_msgs in\n#eval\
+  \ special_number 23\n\n/--\ninfo: 'NOT!!'\n-/\n#guard_msgs in\n#eval special_number\
+  \ 79\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

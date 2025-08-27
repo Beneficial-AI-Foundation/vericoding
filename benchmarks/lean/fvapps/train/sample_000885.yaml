@@ -1,0 +1,57 @@
+"vc-description": "Recently, Chef got obsessed with piano. He is a just a rookie in\
+  \ this stuff and can not move his fingers from one key to other fast enough. He\
+  \ discovered that the best way to train finger speed is to play scales.\n\nThere\
+  \ are different kinds of scales which are divided on the basis of their interval\
+  \ patterns. For instance, major scale is defined by pattern T-T-S-T-T-T-S, where\
+  \ ‘T’ stands for a whole tone whereas ‘S’ stands for a semitone. Two semitones make\
+  \ one tone. To understand how they are being played, please refer to the below image\
+  \ of piano’s octave – two consecutive keys differ by one semitone.\n\nIf we start\
+  \ playing from first key (note C), then we’ll play all white keys in a row (notes\
+  \ C-D-E-F-G-A-B-C – as you can see C and D differ for a tone as in pattern, and\
+  \ E and F differ for a semitone).\n\nThis pattern could be played some number of\
+  \ times (in cycle).\n\n\nEach time Chef takes some type of a scale and plays using\
+  \ some number of octaves. Sometimes Chef can make up some scales, so please don’t\
+  \ blame him if you find some scale that does not exist in real world.\n\nFormally,\
+  \ you have a set of 12 keys (i.e. one octave) and you have N such sets in a row.\
+  \ So in total, you have 12*N keys. You also have a pattern that consists of letters\
+  \ 'T' and 'S', where 'T' means move forward for two keys (from key x to key x +\
+  \ 2, and 'S' means move forward for one key (from key x to key x + 1).\n\nNow, you\
+  \ can start playing from any of the 12*N keys. In one play, you can repeat the pattern\
+  \ as many times as you want, but you cannot go outside the keyboard.\n\nRepeating\
+  \ pattern means that if, for example, you have pattern STTST, you can play STTST\
+  \ as well as STTSTSTTST, as well as STTSTSTTSTSTTST, as well as any number of repeating.\
+  \ For this pattern, if you choose to repeat it once, if you start at some key x,\
+  \ you'll press keys: x (letter 'S')-> x + 1 (letter 'T')-> x + 3 (letter 'T')->\
+  \ x + 5 (letter 'S') -> x + 6 (letter 'T')-> x + 8. Also 1 ≤ x, x + 8 ≤ 12*N so\
+  \ as to avoid going off the keyboard.\n\nYou are asked to calculate number of different\
+  \ plays that can be performed. Two plays differ if and only if they start at different\
+  \ keys or patterns are repeated different number of times.\n\n-----Input-----\n\
+  The first line of the input contains an integer T denoting the number of test cases.\
+  \ The description of T test cases follows.\n\nFirst line of each test case contains\
+  \ scale’s pattern – string s consisting of letters ‘T’ and ‘S’ only.\n\nSecond line\
+  \ contains one integer N – number of octaves he’ll be using.\n\n-----Output-----\n\
+  For each test case output a single number in a line corresponding to number of different\
+  \ scales he’ll play. \n\n-----Constraints-----\n- 1 ≤ T ≤ 105\n- 1 ≤ |S| ≤ 100\n\
+  - 1 ≤ n ≤ 7\n\n-----Subtasks-----\nSubtask 1: T < 10 4, N = 1 \nSubtask 2: No additional\
+  \ constraints.\n\n-----Example-----\nInput:\n2 \nTTTT\n1\nTTSTTTS\n3\n\nOutput:\n\
+  4\n36\n\n-----Explanation-----\nExample case 1. In the first case there is only\
+  \ one octave and Chef can play scale (not in cycle each time) starting with notes\
+  \ C, C#, D, D# - four together."
+"vc-preamble": "import Imports.AllImports\n\ndef Scale := String\ndef C : Scale :=\
+  \ \"C\"\n\ndef TS : Scale := \"TS\"\n\ninstance : DecidableEq Scale := \n  fun x\
+  \ y => match x, y with\n  | s1, s2 => String.decEq s1 s2\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_scale_plays (scale_type : Scale) (octaves : Nat)\
+  \ : Nat :=\n  sorry\n"
+"vc-theorems": "theorem calculate_scale_plays_positive \n  (scale_type : Scale)\n\
+  \  (octaves : Nat)\n  (h1 : scale_type = C ∨ scale_type = TS)\n  (h2 : octaves ≥\
+  \ 1)\n  (h3 : octaves ≤ 100) :\n  calculate_scale_plays scale_type octaves > 0 :=\n\
+  sorry\n\n\ntheorem calculate_scale_plays_formula \n  (scale_type : Scale)\n  (octaves\
+  \ : Nat)\n  (h1 : scale_type = C ∨ scale_type = TS)\n  (h2 : octaves ≥ 1)\n  (h3\
+  \ : octaves ≤ 100) :\n  calculate_scale_plays scale_type octaves = \n    (if scale_type\
+  \ = C then 7 else 11) * octaves - 1 :=\nsorry\n\n\ntheorem calculate_scale_plays_invalid\n\
+  \  (scale_type : Scale)\n  (octaves : Nat)  \n  (h : scale_type ≠ C ∧ scale_type\
+  \ ≠ TS) :\n  ¬∃ (result : Nat), calculate_scale_plays scale_type octaves = result\
+  \ :=\nsorry\n\n/--\ninfo: 13\n-/\n#guard_msgs in\n#eval calculate_scale_plays \"\
+  C\" 2\n\n/--\ninfo: 21\n-/\n#guard_msgs in\n#eval calculate_scale_plays \"TS\" 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

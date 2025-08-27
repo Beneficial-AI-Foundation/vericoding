@@ -1,0 +1,25 @@
+"vc-description": "Implement a function which behaves like the 'uniq -c' command in\
+  \ UNIX. \n\nIt takes as input a sequence and returns a sequence in which all duplicate\
+  \ elements following each other have been reduced to one instance together with\
+  \ the number of times a duplicate elements occurred in the original array.\n\nExample:\n\
+  \n```python\n['a','a','b','b','c','a','b','c'] --> [('a',2),('b',2),('c',1),('a',1),('b',1),('c',1)]\n\
+  ```"
+"vc-preamble": "import Imports.AllImports\n\ndef uniq_c {α : Type u} (xs : List α)\
+  \ : List (α × Nat) :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum (xs : List Nat) : Nat :=\n  match xs with\n  | [] => 0\n\
+  \  | h :: t => h + sum t\n"
+"vc-theorems": "theorem uniq_c_length_invariants {α : Type u} (xs : List α) :\n  let\
+  \ result := uniq_c xs\n  (∀ p ∈ result, (Prod.snd p) > 0) ∧ \n  sum (result.map\
+  \ Prod.snd) = xs.length :=\nsorry\n\n\ntheorem uniq_c_groups_consecutive {α : Type\
+  \ u} [BEq α] (xs : List α) :\n  let result := uniq_c xs\n  let indices := List.range\
+  \ xs.length\n  ∀ (i j : Nat), i < xs.length → j < xs.length →\n    ∀ p ∈ result,\n\
+  \      (i < j) → \n      (j - i < Prod.snd p) →\n      xs[i]? = some (Prod.fst p)\
+  \ →\n      xs[j]? = some (Prod.fst p) :=\nsorry\n\n\ntheorem uniq_c_single_element\
+  \ {α : Type u} [BEq α] (x : α) (n : Nat) :\n  uniq_c (List.replicate n x) = [(x,\
+  \ n)] :=\nsorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval uniq_c [\"a\"\
+  , \"a\", \"b\", \"b\", \"c\", \"a\", \"b\", \"c\"]\n\n/--\ninfo: expected2\n-/\n\
+  #guard_msgs in\n#eval uniq_c [\"a\", \"a\", \"a\", \"b\", \"b\", \"b\", \"c\", \"\
+  c\", \"c\"]\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval uniq_c [None, \"\
+  a\", \"a\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

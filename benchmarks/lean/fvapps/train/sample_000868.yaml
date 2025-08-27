@@ -1,0 +1,36 @@
+"vc-description": "Given an array of size N$N$ and two integers K$K$ and S$S$, the\
+  \ special sum of a subarray is defined as follows:\n\n(Sum of all elements of the\
+  \ subarray) * (K$K$ - p$p$ * S$S$)\n\nWhere p$p$ = number of distinct prime factors\
+  \ of “product of all elements of the subarray”.\n\nFind the maximum special sum\
+  \ by considering all non-empty subarrays of the given array.\n\n-----Input-----\n\
+  - First line contains 3 integers N$N$, K$K$ and S$S$.     \n- Second line contains\
+  \ N$N$ integers, the elements of the array.  \n\n-----Output-----\nOutput a single\
+  \ integer. The maximum special sum considering all non-empty subarrays of the array.\n\
+  \n-----Constraints:-----\n- 1≤N,K,S≤105$ 1 \\leq N, K, S \\leq 10^5 $ \n- 0≤K/S≤20$\
+  \ 0 \\leq K / S \\leq 20 $ \n- 1<$ 1 < $ Any element of array <105$ < 10^5 $\n\n\
+  -----Sample Input-----\n4 10 2\n\n14 2 7 15\n\n-----Sample Output-----\n138\n\n\
+  -----Sample Explanation-----\nConsider the subarray {14, 2, 7}\n\nTotal number of\
+  \ distinct prime factors in it is 2 (2 and 7).\n\nTherefore, value of special sum\
+  \ is (14 + 2 + 7) * (10 - 2 * 2) = 138.\n\nThis is the subarray with the maximum\
+  \ special sum."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def fac (n : Nat) : List Nat := sorry\n\ndef max_special_sum (n\
+  \ k s : Nat) (arr : List Nat) : Nat := sorry\n"
+"vc-theorems": "theorem fac_product (n : Nat) (h : n ≥ 2) :\n  let factors := fac\
+  \ n\n  factors.foldl (· * ·) 1 = n := sorry\n\n\ntheorem fac_all_prime (n : Nat)\
+  \ (h : n ≥ 2) :\n  let factors := fac n\n  ∀ p ∈ factors,\n    ∀ i : Nat, 2 ≤ i\
+  \ → i < p → ¬(p % i = 0) := sorry\n\n\ntheorem fac_ascending (n : Nat) (h : n ≥\
+  \ 2) :\n  let factors := fac n \n  ∀ i j, i < j → i < factors.length → j < factors.length\
+  \ →\n    factors.get! i ≤ factors.get! j := sorry\n\n\ntheorem max_special_sum_exists\
+  \ (n k s : Nat) (arr : List Nat) (h₁ : n > 0) (h₂ : k > 0) (h₃ : s > 0) :\n  ∃ i\
+  \ j : Nat, i ≤ j ∧ j < arr.length ∧\n  let subarray := arr.take (j+1) |>.drop i\n\
+  \  let curr_sum := subarray.foldl (· + ·) 0\n  let prod := subarray.foldl (· * ·)\
+  \ 1\n  let prime_factors := (fac prod).eraseDups\n  max_special_sum n k s arr =\
+  \ curr_sum * (k - prime_factors.length * s) := sorry\n\n\ntheorem max_special_sum_single\
+  \ (k s : Nat) (h₁ : k > 0) (h₂ : s > 0) :\n  let arr := [2]\n  max_special_sum 1\
+  \ k s arr = 2 * (k - (fac 2).eraseDups.length * s) := sorry\n\n/--\ninfo: 138\n\
+  -/\n#guard_msgs in\n#eval max_special_sum 4 10 2 [14, 2, 7, 15]\n\n/--\ninfo: 27\n\
+  -/\n#guard_msgs in\n#eval max_special_sum 3 5 1 [2, 3, 4]\n\n/--\ninfo: 45\n-/\n\
+  #guard_msgs in\n#eval max_special_sum 2 8 3 [6, 9]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

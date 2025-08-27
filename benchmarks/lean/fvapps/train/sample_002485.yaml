@@ -1,0 +1,21 @@
+"vc-description": "=====Example=====\nIn Python, a string can be split on a delimiter.\n\
+  \nExample:\n>>> a = \"this is a string\"\n>>> a = a.split(\" \") # a is converted\
+  \ to a list of strings. \n>>> print a\n['this', 'is', 'a', 'string']\n\nJoining\
+  \ a string is simple:\n\n>>> a = \"-\".join(a)\n>>> print a\nthis-is-a-string \n\
+  \n=====Problem Statement=====\nYou are given a string. Split the string on a \"\
+  \ \" (space) delimiter and join using a - hyphen.\n\n=====Input Format=====\nThe\
+  \ first line contains a string consisting of space separated words.\n\n=====Output\
+  \ Format=====\n Print the formatted string as explained above."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def hyphenJoin (s : String) : String := sorry\n\ntheorem hyphen_join_word_count\
+  \ {words : List String} \n  (h1 : ∀ w ∈ words, w.length > 0) \n  (h2 : words.length\
+  \ > 0) :\n  let input := String.join (List.intersperse \" \" words)\n  let result\
+  \ := hyphenJoin input\n  (result.splitOn \"-\").length = words.length ∧ \n  (result.splitOn\
+  \ \"-\") = words := \nsorry\n"
+"vc-theorems": "theorem hyphen_join_whitespace_empty (s : String)\n  (h : ∀ c ∈ s.data,\
+  \ c.isWhitespace) :\n  hyphenJoin s = \"\" :=\nsorry\n\n\ntheorem hyphen_join_basic_properties\
+  \ (s : String) \n  (h : s.length > 0) :\n  let result := hyphenJoin s\n  (¬ ∃ c\
+  \ ∈ result.data, c = ' ') ∧ \n  (s.trim ≠ \"\" → ((∃ c ∈ result.data, c = '-') ∨\
+  \ (s.splitOn \" \").length = 1)) :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

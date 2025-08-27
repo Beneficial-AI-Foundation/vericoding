@@ -1,0 +1,60 @@
+"vc-description": "# Task\n\n Your task is to create a `Funnel` data structure. It\
+  \ consists of three basic methods: `fill()`, `drip()` and `toString()/to_s/__str__`.\
+  \ Its maximum capacity is 15 data.\n \n Data should be arranged in an inverted triangle,\
+  \ like this:\n ```\n \\1 2 3 4 5/\n  \\7 8 9 0/\n   \\4 5 6/\n    \\2 3/\n     \\\
+  1/\n ```\n The string method should return a multi-line string to display current\
+  \ funnel data arrangement:\n   ```python\n funnel = Funnel()\n print(funnel)\n \
+  \ \\         /\n   \\       /\n    \\     /\n     \\   /\n      \\ /\n```\n\n The\
+  \ method `fill()` should accept one or more arguments to fill in the funnel:\n\n\
+  \  ```python\n funnel = Funnel()\n funnel.fill(1)\n print (funnel)\n  \\       \
+  \  /\n   \\       /\n    \\     /\n     \\   /\n      \\1/\n funnel.fill(2)\n print\
+  \ (funnel)\n  \\         /\n   \\       /\n    \\     /\n     \\2  /\n      \\1/\n\
+  \ funnel.fill(3)\n print (funnel)\n  \\         /\n   \\       /\n    \\     /\n\
+  \     \\2 3/\n      \\1/\n funnel.fill(4,5)\n print (funnel)\n  \\         /\n \
+  \  \\       /\n    \\4 5  /\n     \\2 3/\n      \\1/\n funnel.fill(6,7,8,9)\n print(funnel)\n\
+  \  \\         /\n   \\7 8 9  /\n    \\4 5 6/\n     \\2 3/\n      \\1/\n ```\n  In\
+  \ each row, `fill()` always fill data from left to right.\n \n The method `drip()`\
+  \ should drip the bottom value out of funnel and returns this value:\n   ```python\n\
+  \ (continue the example above)\n v = funnel.drip()\n print(v)\n 1\n print(funnel)\n\
+  \  \\         /\n   \\  8 9  /\n    \\7 5 6/\n     \\4 3/\n      \\2/\n ```\n  \n\
+  As you can see, the bottom 1 was dripping out. The number above it will fill it's\
+  \ place. The rules to fill are: Select one of the two numbers above it, which bear\
+  \ the \"weight\" of relatively large. In other words, there are more numbers on\
+  \ this number. Is this a bit hard to understand? Please see the following:\n \n\
+  ```\n In the example above, before the execution of drip(), funnel is:\n  \\   \
+  \      /\n   \\7 8 9  /\n    \\4 5 6/\n     \\2 3/\n      \\1/\n ```\n * After drip(),\
+  \ 1 will be dripped out. \n * We should choose a number between 2 and 3 to fill\
+  \ the place of 1.\n * 2 has 5 numbers on it(4,5,7,8,9). 3 has 4 numbers on it(5,6,8,9)\n\
+  \ * So we choose 2 to fill the place of 1\n * And now, the place of 2 is empty.\
+  \ \n * We also need choose a number between 4 and 5 to fill the place of 2.\n *\
+  \ 4 has 2 numbers on it(7,8). 5 has 2 numbers on it too(8,9)\n * There are same\
+  \ \"weight\" on 4 and 5, \n * In this case, we choose the number on the left\n *\
+  \ So we choose 4 to fill the place of 2\n * And then choose 7 to fill the place\
+  \ of 4\n \nLet us continue to `drip()`:\n \n   ```python\n funnel.drip()\n print(funnel)\n\
+  \  \\         /\n   \\    9  /\n    \\7 8 6/\n     \\5 3/\n      \\4/\n \n funnel.drip()\n\
+  \ print(funnel)\n  \\         /\n   \\       /\n    \\7 9 6/\n     \\8 3/\n    \
+  \  \\5/\n \n funnel.drip()\n print(funnel)\n  \\         /\n   \\       /\n    \\\
+  \  9 6/\n     \\7 3/\n      \\8/\n \n funnel.drip()\n print(funnel)\n  \\      \
+  \   /\n   \\       /\n    \\    6/\n     \\7 9/\n      \\3/\n \n funnel.drip()\n\
+  \ print(funnel)\n  \\         /\n   \\       /\n    \\     /\n     \\7 6/\n    \
+  \  \\9/\n \n funnel.drip()\n print(funnel)\n  \\         /\n   \\       /\n    \\\
+  \     /\n     \\  6/\n      \\7/\n \n funnel.drip()\n print(funnel)\n  \\      \
+  \   /\n   \\       /\n    \\     /\n     \\   /\n      \\6/\n \n funnel.drip()\n\
+  \ print(funnel)\n  \\         /\n   \\       /\n    \\     /\n     \\   /\n    \
+  \  \\ /\n ```\n  \n When the funnel is empty, drip() will return `null/nil/None`\n\
+  \n   \n Another edge case is: When funnel is full, fill() will not change the funnel.\n\
+  \ \n A bit complex..."
+"vc-preamble": "import Imports.AllImports\n\ndef solve_single_digit_addition (n :\
+  \ Nat) : Nat := sorry\n\ntheorem result_is_single_digit (n : Nat) :\n  solve_single_digit_addition\
+  \ n ≤ 9 := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def compute_running_sum : Nat → Nat \n  | x => if x < 10 then x\
+  \ \n         else compute_running_sum (solve_single_digit_addition x)\ntermination_by\
+  \ x => x\ndecreasing_by simp_wf; sorry\n"
+"vc-theorems": "theorem result_equals_sum_of_digits (n : Nat) :\n  let result := solve_single_digit_addition\
+  \ n\n  let digit_sum := solve_single_digit_addition result\n  result = digit_sum\
+  \ := sorry\n\n\ntheorem idempotent (n : Nat) :\n  let first_result := solve_single_digit_addition\
+  \ n\n  let second_result := solve_single_digit_addition first_result\n  first_result\
+  \ = second_result := sorry\n\n\ntheorem equals_recursive_digit_sum (n : Nat) :\n\
+  \  solve_single_digit_addition n = compute_running_sum n := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

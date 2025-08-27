@@ -1,0 +1,33 @@
+"vc-description": "=====Function Descriptions=====\nre.findall()\n\nThe expression\
+  \ re.findall() returns all the non-overlapping matches of patterns in a string as\
+  \ a list of strings.\nCode\n\n>>> import re\n>>> re.findall(r'\\w','http://www.hackerrank.com/')\n\
+  ['h', 't', 't', 'p', 'w', 'w', 'w', 'h', 'a', 'c', 'k', 'e', 'r', 'r', 'a', 'n',\
+  \ 'k', 'c', 'o', 'm']\n\nre.finditer()\n\nThe expression re.finditer() returns an\
+  \ iterator yielding MatchObject instances over all non-overlapping matches for the\
+  \ re pattern in the string.\nCode\n\n>>> import re\n>>> re.finditer(r'\\w','http://www.hackerrank.com/')\n\
+  <callable-iterator object at 0x0266C790>\n>>> map(lambda x: x.group(),re.finditer(r'\\\
+  w','http://www.hackerrank.com/'))\n['h', 't', 't', 'p', 'w', 'w', 'w', 'h', 'a',\
+  \ 'c', 'k', 'e', 'r', 'r', 'a', 'n', 'k', 'c', 'o', 'm']\n\n=====Problem Statement=====\n\
+  You are given a string S. It consists of alphanumeric characters, spaces and symbols(+,-).\n\
+  Your task is to find all the substrings of S that contains 2 or more vowels.\nAlso,\
+  \ these substrings must lie in between 2 consonants and should contain vowels only.\n\
+  \nNote :\nVowels are defined as: AEIOU and aeiou.\nConsonants are defined as: QWRTYPSDFGHJKLZXCVBNM\
+  \ and qwrtypsdfghjklzxcvbnm.\n\n=====Input Format=====\nA single line of input containing\
+  \ string S.\n\n=====Constraints=====\n0<len(S)<100\n\n=====Output Format=====\n\
+  Print the matched substrings in their order of occurrence on separate lines.\nIf\
+  \ no match is found, print -1."
+"vc-preamble": "import Imports.AllImports\n\ndef isVowel (c : Char) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_vowel_substrings (s : String) : List String :=\n  sorry\n"
+"vc-theorems": "theorem find_vowel_substrings_valid_input {s : String} \n  (h : ∃\
+  \ pre mid post : String, \n    (∀ c, c ∈ pre.data → !isVowel c) ∧ \n    (∀ c, c\
+  \ ∈ mid.data → isVowel c) ∧ \n    (∀ c, c ∈ post.data → !isVowel c) ∧\n    mid.length\
+  \ ≥ 2 ∧\n    s = pre ++ mid ++ post) :\n  ∃ result : List String,\n    find_vowel_substrings\
+  \ s = result ∧ \n    result ≠ [\"-1\"] ∧\n    ∀ substr ∈ result,\n      substr.length\
+  \ ≥ 2 ∧ \n      ∀ c, c ∈ substr.data → isVowel c :=\nsorry\n\n\ntheorem find_vowel_substrings_invalid_input\
+  \ {s : String}\n  (h : ∀ c, c ∈ s.data → !isVowel c) :\n  find_vowel_substrings\
+  \ s = [\"-1\"] :=\nsorry\n\n\ntheorem find_vowel_substrings_general {s : String}\
+  \ :\n  let result := find_vowel_substrings s\n  result = [\"-1\"] ∨\n  (∀ substr\
+  \ ∈ result,\n    substr.length ≥ 2 ∧\n    ∀ c, c ∈ substr.data → isVowel c) :=\n\
+  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

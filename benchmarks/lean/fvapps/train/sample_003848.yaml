@@ -1,0 +1,53 @@
+"vc-description": "### Task:\n\nYou have to write a function `pattern` which returns\
+  \ the following Pattern(See Examples) upto (2n-1) rows, where n is parameter.\n\n\
+  * Note:`Returning` the pattern is not the same as `Printing` the pattern.\n\n####\
+  \ Parameters:\n    \n    pattern(        n        );\n                    ^    \
+  \                 \n                    |                     \n             Term\
+  \ upto which   \n           Basic Pattern(this)     \n                should be\
+  \         \n                 created            \n                             \
+  \     \n                                \n#### Rules/Note:\n* If `n < 1` then it\
+  \ should return \"\" i.e. empty string.\n* `The length of each line is same`, and\
+  \ is equal to the length of longest line in the pattern i.e (2n-1).\n* Range of\
+  \ Parameters (for the sake of CW Compiler) :\n  + `n ∈ (-∞,100]`\n\n### Examples:\n\
+  \n* pattern(5):\n\n        1       1\n         2     2 \n          3   3  \n   \
+  \        4 4   \n            5    \n           4 4   \n          3   3  \n     \
+  \    2     2 \n        1       1\n       \n        \n* pattern(10):\n\n        1\
+  \                 1\n         2               2 \n          3             3  \n\
+  \           4           4   \n            5         5    \n             6      \
+  \ 6     \n              7     7      \n               8   8       \n           \
+  \     9 9        \n                 0         \n                9 9        \n  \
+  \             8   8       \n              7     7      \n             6       6\
+  \     \n            5         5    \n           4           4   \n          3  \
+  \           3  \n         2               2 \n        1                 1\n    \n\
+  * pattern(15):\n\n        1                           1\n         2            \
+  \             2 \n          3                       3  \n           4          \
+  \           4   \n            5                   5    \n             6        \
+  \         6     \n              7               7      \n               8      \
+  \       8       \n                9           9        \n                 0    \
+  \     0         \n                  1       1          \n                   2  \
+  \   2           \n                    3   3            \n                     4\
+  \ 4             \n                      5              \n                     4\
+  \ 4             \n                    3   3            \n                   2  \
+  \   2           \n                  1       1          \n                 0    \
+  \     0         \n                9           9        \n               8      \
+  \       8       \n              7               7      \n             6        \
+  \         6     \n            5                   5    \n           4          \
+  \           4   \n          3                       3  \n         2            \
+  \             2 \n        1                           1\n    \n[List of all my katas](\"\
+  http://www.codewars.com/users/curious_db97/authored\")"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pattern (n : Int) : String := sorry\n\ntheorem pattern_non_positive_returns_empty\
+  \ (n : Int) (h : n ≤ 0) :\n  pattern n = \"\" := sorry\n"
+"vc-theorems": "theorem pattern_returns_string (n : Int) :\n  ∃ s : String, pattern\
+  \ n = s := sorry\n\n\ntheorem pattern_valid_properties {n : Int} (h : n > 0) :\n\
+  \  let result := pattern n\n  let lines := String.splitOn result \"\\n\"\n  -- Number\
+  \ of lines is 2n - 1\n  lines.length = (2 * n - 1).toNat ∧\n  -- Each line is palindrome\n\
+  \  (∀ line ∈ lines, line.data = line.data.reverse) ∧ \n  -- All lines have same\
+  \ length\n  (∀ line ∈ lines, line.length = lines[0]!.length) ∧\n  -- All digits\
+  \ are 0-9\n  (∀ c ∈ result.data, c.isDigit → (c.toNat - '0'.toNat) ≤ 9) ∧\n  --\
+  \ Top half equals reversed bottom half\n  (lines.take n.toNat = (lines.drop (n-1).toNat).reverse)\n\
+  \  := sorry\n\n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval pattern 3\n\n/--\n\
+  info: ''\n-/\n#guard_msgs in\n#eval pattern 0\n\n/--\ninfo: expected\n-/\n#guard_msgs\
+  \ in\n#eval pattern 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

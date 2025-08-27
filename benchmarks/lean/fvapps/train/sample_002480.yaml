@@ -1,0 +1,34 @@
+"vc-description": "=====Function Descriptions=====\nitertools.permutations(iterable[,\
+  \ r])\n\nThis tool returns successive rlength permutations of elements in an iterable.\n\
+  If r is not specified or is None, then r defaults to the length of the iterable,\
+  \ and all possible full length permutations are generated.\nPermutations are printed\
+  \ in a lexicographic sorted order. So, if the input iterable is sorted, the permutation\
+  \ tuples will be produced in a sorted order.\n\nSample Code\n>>> from itertools\
+  \ import permutations\n>>> print permutations(['1','2','3'])\n<itertools.permutations\
+  \ object at 0x02A45210>\n>>> \n>>> print list(permutations(['1','2','3']))\n[('1',\
+  \ '2', '3'), ('1', '3', '2'), ('2', '1', '3'), ('2', '3', '1'), ('3', '1', '2'),\
+  \ ('3', '2', '1')]\n>>> \n>>> print list(permutations(['1','2','3'],2))\n[('1',\
+  \ '2'), ('1', '3'), ('2', '1'), ('2', '3'), ('3', '1'), ('3', '2')]\n>>>\n>>> print\
+  \ list(permutations('abc',3))\n[('a', 'b', 'c'), ('a', 'c', 'b'), ('b', 'a', 'c'),\
+  \ ('b', 'c', 'a'), ('c', 'a', 'b'), ('c', 'b', 'a')]\n\n=====Problem Statement=====\n\
+  You are given a string S.\nYour task is to print all possible permutations of size\
+  \ k of the string in lexicographic sorted order.\n\n=====Input Format=====\nA single\
+  \ line containing the space separated string S and the integer value k.\n\n=====Output\
+  \ Format=====\nPrint the permutations of the string S on separate lines."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_permutations (input: String) (k: Nat) : String := sorry\
+  \ \n\ntheorem permutation_length {s: String} {k: Nat} {h: k ≤ String.length s}:\n\
+  \  let perms := get_permutations s k\n  ∀ perm ∈ perms.splitOn \"\\n\", String.length\
+  \ perm = k := sorry\n"
+"vc-theorems": "theorem permutation_chars {s: String} {k: Nat} {h: k ≤ String.length\
+  \ s}:\n  let perms := get_permutations s k\n  let s_chars := s.toList\n  ∀ perm\
+  \ ∈ perms.splitOn \"\\n\", ∀ c ∈ perm.toList, c ∈ s_chars := sorry\n\n\ntheorem\
+  \ permutation_sorted {s: String} {k: Nat} {h: k ≤ String.length s}:\n  let perms\
+  \ := get_permutations s k\n  let perm_list := perms.splitOn \"\\n\"\n  ∀ i j: Nat,\
+  \ i < j → j < perm_list.length → \n    perm_list.get ⟨i, by sorry⟩ ≤ perm_list.get\
+  \ ⟨j, by sorry⟩ := sorry\n\n\ntheorem single_char_permutation {s: String} {h: String.length\
+  \ s = 1}:\n  get_permutations s 1 = s := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs\
+  \ in\n#eval get_permutations \"HACK 2\" 2\n\n/--\ninfo: expected2\n-/\n#guard_msgs\
+  \ in\n#eval get_permutations \"ABC 2\" 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

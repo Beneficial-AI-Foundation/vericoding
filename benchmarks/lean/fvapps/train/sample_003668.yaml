@@ -1,0 +1,25 @@
+"vc-description": "# Task\n\nJohn is playing a RPG game. The initial attack value\
+  \ of the player is `x`. The player will face a crowd of monsters. Each monster has\
+  \ different defense value.\n\nIf the monster's defense value is less than or equal\
+  \ to the player's attack value, the player can easily defeat the monster, and the\
+  \ player's attack value will increase. The amount increased is equal to the monster's\
+  \ defense value.\n\nIf the monster's defense value is greater than the player's\
+  \ attack value, the player can still defeat monsters, but the player's attack value\
+  \ can only be increased little, equal to the `greatest common divisor` of the monster's\
+  \ defense value and the player's current attack value. \n\nThe defense values for\
+  \ all monsters are provided by `monsterList/monster_list`. The player will fight\
+  \ with the monsters from left to right.\n\nPlease help John calculate the player's\
+  \ final attack value.\n\n\n# Example\n\nFor `x = 50, monsterList=[50,105,200]`,\
+  \ the output should be `110`.\n\nThe attack value increased: `50 --> 100 --> 105\
+  \ --> 110`\n\nFor `x = 20, monsterList=[30,20,15,40,100]`, the output should be\
+  \ `205`.\n\nThe attack value increased: \n\n`20 --> 30 --> 50 --> 65 --> 105 -->\
+  \ 205`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def gcd (a b : Nat) : Nat := sorry\n\ndef final_attack_value (x\
+  \ : Nat) (monster_list : List Nat) : Nat := sorry\n\n\n\n\n"
+"vc-theorems": "theorem final_attack_value_empty {x : Nat} (hx : x > 0) :\n    final_attack_value\
+  \ x [] = x := sorry\n\n/--\ninfo: 110\n-/\n#guard_msgs in\n#eval final_attack_value\
+  \ 50 [50, 105, 200]\n\n/--\ninfo: 205\n-/\n#guard_msgs in\n#eval final_attack_value\
+  \ 20 [30, 20, 15, 40, 100]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,55 @@
+"vc-description": "### Background\nIn classical cryptography, the Hill cipher is a\
+  \ polygraphic substitution cipher based on linear algebra. It was invented by Lester\
+  \ S. Hill in 1929.\n\n\n\n### Task\n\n\nThis cipher involves a text key which has\
+  \ to be turned into a matrix and text which needs to be encoded. The text key can\
+  \ be of any perfect square length but for the sake of this kata we will focus on\
+  \ keys of length 4 forming a 2x2 matrix.\n\nTo encrypt a message using the hill\
+  \ cipher, first of all you need to convert the text key into a key matrix. To do\
+  \ that you will convert the key row wise into a 2x2 matrix. Then you will substitute\
+  \ the letters with their respective positions on the alphabet: A=0, B=1,C=2 and\
+  \ so on till Z=25. So for example if we get the key text as ```cats```, the key\
+  \ matrix will be:\n    \n    [[ 2  0]\n     [19 18]]\n     \nNow the next step is\
+  \ to break the text into pairs of two and convert those pairs into 2x1 matrices.\
+  \ If your text has an odd number of letters then just add a Z next to your last\
+  \ letter. Now again convert those letters into their respective position in the\
+  \ alphabet as above. So for example the text ```Hi``` would be converted into:\n\
+  \n    [[7]\n     [8]]\n     \nNow we need to [multiply](https://www.mathsisfun.com/algebra/matrix-multiplying.html)\
+  \ the key matrix by the text matrix to get our encrypted matrix and then find out\
+  \ the encrypted matrix [modulo](https://en.wikipedia.org/wiki/Modulo_operation)\
+  \ 26:\n\n    [[ 2  0]  *  [[7]  =  [[14]   =  [[14]  mod 26\n     [19 18]]     [8]]\
+  \     [277]]     [17]]\n     \nFor the final step we just find out the letters at\
+  \ the alphabet position of 14 and 17 which are ```O``` and ```R```. So ```OR```\
+  \ is our encrypted message for the message ```Hi```\n\n\nIn this kata you will be\
+  \ given a function named ```encrypt``` with the parameters ```text``` and ```key```\
+  \ and you have to return the encrypted message in all uppercase letters\n\n``` python\n\
+  encrypt('','azyb') → ''\nencrypt('Hi','cats') → 'OR'\nencrypt('This is a good day','bbaa')\
+  \ → 'AAAAAAGACAGAYA'\n```\n\nNote:\n- The text to encrypt will contain characters\
+  \ other than the alphabets, its your job to clean them before converting text to\
+  \ matrices. Spaces also need to be removed\n- The text may contain both uppercase\
+  \ and lowercase alphabets. Its your job to standardize them, the encrypted text\
+  \ however should be returned in uppercase letters.\n- The key will always contain\
+  \ 4 lowercase alphabet."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def encrypt (text: String) (key: String) : String := sorry\n\n\
+  theorem single_letter_padded {key: String} \n  (h1: key.length = 4) \n  (h2: ∀ c\
+  \ ∈ key.data, c.isLower) : \n  ∀ text: String, text = \"A\" → (encrypt text key).length\
+  \ = 2 := sorry\n"
+"vc-theorems": "theorem encrypt_output_is_uppercase_alpha {key: String}\n  (h1: key.length\
+  \ = 4)\n  (h2: ∀ c ∈ key.data, c.isLower) :\n  ∀ text: String, \n  ∀ c ∈ (encrypt\
+  \ text key).data,\n  c.isUpper ∧ c.isAlpha := sorry\n\n\ntheorem encrypt_output_length_is_even\
+  \ {key: String}\n  (h1: key.length = 4)\n  (h2: ∀ c ∈ key.data, c.isLower) :\n \
+  \ ∀ text: String,\n  (encrypt text key).length > 0 →\n  (encrypt text key).length\
+  \ % 2 = 0 := sorry\n\n\ntheorem encrypt_preserves_alpha_count {key: String}\n  (h1:\
+  \ key.length = 4)\n  (h2: ∀ c ∈ key.data, c.isLower) :\n  ∀ text: String,\n  let\
+  \ alpha_count := (text.data.filter Char.isAlpha).length\n  if alpha_count % 2 =\
+  \ 1 \n  then (encrypt text key).length = alpha_count + 1\n  else (encrypt text key).length\
+  \ = alpha_count := sorry\n\n\ntheorem empty_string_encrypt {key: String}\n  (h:\
+  \ key = \"hill\") :\n  encrypt \"\" key = \"\" := sorry\n\n\ntheorem non_alpha_stripped\
+  \ {key: String}\n  (h1: key.length = 4)\n  (h2: ∀ c ∈ key.data, c.isLower) :\n \
+  \ ∀ text: String,\n  (∀ c ∈ text.data, c.isDigit ∨ c = ' ' ∨ c = '.' ∨ c = ',' ∨\
+  \ c = '!' ∨ c = '?') →\n  encrypt text key = \"\" := sorry\n\n/--\ninfo: ''\n-/\n\
+  #guard_msgs in\n#eval encrypt \"\" \"azyb\"\n\n/--\ninfo: 'DRJIMN'\n-/\n#guard_msgs\
+  \ in\n#eval encrypt \"hello\" \"hill\"\n\n/--\ninfo: 'AAAAAAGACAGAYA'\n-/\n#guard_msgs\
+  \ in\n#eval encrypt \"This is a good day\" \"bbaa\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

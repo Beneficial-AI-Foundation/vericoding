@@ -1,0 +1,31 @@
+"vc-description": ".task {\n  background: #fff;\n  color: #333;\n  padding: 25px;\n\
+  \  box-sizing: border-box;\n  font-family: Comfortaa, sans-serif !important;\n \
+  \ position: relative;\n}\n.task code, .task_code {\n  display: inline-block;\n \
+  \ padding: 0;\n  border-radius: 2px;\n  margin: 0;\n  position: relative;\n  top:\
+  \ 6px;\n  background: bisque;\n  border: 1px solid #f9d2a4;\n  padding: 3px;\n \
+  \ line-height: 1em;\n}\n.task_code {\n  top: -1px;\n}\n.task_header {\n  color:\
+  \ #333 !important;\n  margin-top: 0;\n  font-size: 30px !important;\n}\n.task_inner\
+  \ {\n  box-shadow: 0 2px 11px -3px rgba(0,0,0,.6);\n  padding: 20px;\n  border-radius:\
+  \ 3px;\n}\n.task_devil {\n  float: right;\n  margin-left: 15px;\n  shape-outside:\
+  \ circle(150px);\n}\n.task_devil img {\n  max-width: 150px;\n}\n.task_part-header\
+  \ { \n  font-size: 20px !important;\n  font-weight: 800;\n  color: #333;\n  padding:\
+  \ 20px 0 10px;\n}\n.task_part-header:first-of-type {\n  padding-top: 0;\n}\n.task_list\
+  \ {\n  padding: 0;\n  margin: 10px 0;\n  padding-left: 30px;\n}\n.task_list ul {\n\
+  \  padding: 0;\n  margin: 0;\n}\n.font-effect-canvas-print { color: black; }\n\n\
+  \nDevil's Sequence\n\nProblem\n\n\n\n    Robodevil likes to do some mathematics\
+  \ between rehearsals of his orchestra. Today he invented devilish sequence No. 1729:\n\
+  \    \n\nx0 = 0,\nx1 = 1,\nxn = (xn - 1 + xn - 2) / 2.\n\n\n    For example, x10\
+  \ = 0.666015625. Robodevil became interested at once how many `sixes` there were\
+  \ at the beginning of an arbitrary xn. In 6 nanoseconds, he had a formula. Can you\
+  \ do the same?\n    Input\n    You are given an integer n; `2 ≤ n ≤ 100000`.\n \
+  \   Output\n    Output the number of sixes at the beginning of xn in decimal notation.\n\
+  \    Example\n\n\n\nInput\nOutput\n\n\n10\n3"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_sixes (n : Nat) : Nat := sorry\n\ntheorem count_sixes_non_negative\
+  \ (n : Nat) (h : n > 0) :\n  count_sixes n ≥ 0 := sorry\n"
+"vc-theorems": "theorem count_sixes_monotonic (n : Nat) (h : n > 1) :\n  count_sixes\
+  \ n ≥ count_sixes (n-1) := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_sixes\
+  \ 10\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval count_sixes 2\n\n/--\ninfo: 30\n\
+  -/\n#guard_msgs in\n#eval count_sixes 100\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

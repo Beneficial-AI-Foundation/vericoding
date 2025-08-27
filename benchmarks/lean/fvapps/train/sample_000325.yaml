@@ -1,0 +1,33 @@
+"vc-description": "Given a string s and an array of integers cost where cost[i] is\
+  \ the cost of deleting the ith character in s.\nReturn the minimum cost of deletions\
+  \ such that there are no two identical letters next to each other.\nNotice that\
+  \ you will delete the chosen characters at the same time, in other words, after\
+  \ deleting a character, the costs of deleting other characters will not change.\n\
+   \nExample 1:\nInput: s = \"abaac\", cost = [1,2,3,4,5]\nOutput: 3\nExplanation:\
+  \ Delete the letter \"a\" with cost 3 to get \"abac\" (String without two identical\
+  \ letters next to each other).\n\nExample 2:\nInput: s = \"abc\", cost = [1,2,3]\n\
+  Output: 0\nExplanation: You don't need to delete any character because there are\
+  \ no identical letters next to each other.\n\nExample 3:\nInput: s = \"aabaa\",\
+  \ cost = [1,2,3,4,1]\nOutput: 2\nExplanation: Delete the first and the last character,\
+  \ getting the string (\"aba\").\n\n \nConstraints:\n\ns.length == cost.length\n\
+  1 <= s.length, cost.length <= 10^5\n1 <= cost[i] <= 10^4\ns contains only lowercase\
+  \ English letters."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat \n  | []\
+  \ => 0\n  | x::xs => x + sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_cost (s : String) (cost : List Nat) : Nat := sorry\n\n\
+  def is_valid_result (s : String) (cost : List Nat) (result : Nat) : Bool := sorry\n"
+"vc-theorems": "theorem min_cost_properties {s : String} {cost : List Nat} \n  (h\
+  \ : cost.length = s.length) :\n  let result := min_cost s cost\n  (result ≥ 0) ∧\
+  \ \n  (result ≤ List.sum cost) ∧\n  (is_valid_result s cost result = true) :=\n\
+  sorry\n\n\ntheorem same_chars_cost {s : String} {cost : List Nat}\n  (h1 : cost.length\
+  \ = s.length)\n  (h2 : ∀ (i j : String.Pos), s.get i = s.get j)\n  (h3 : ∀ (i :\
+  \ Fin cost.length), cost.get i = i.val + 1) :\n  min_cost s cost = List.sum (cost.take\
+  \ (cost.length - 1)) :=\nsorry\n\n\ntheorem unique_chars_zero_cost {s : String}\
+  \ {cost : List Nat}\n  (h1 : cost.length = s.length) \n  (h2 : ∀ (i j : String.Pos),\
+  \ i ≠ j → s.get i ≠ s.get j)\n  (h3 : ∀ (i : Fin cost.length), cost.get i = i.val\
+  \ + 1) :\n  min_cost s cost = 0 :=\nsorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
+  #eval min_cost \"abaac\" [1, 2, 3, 4, 5]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ min_cost \"abc\" [1, 2, 3]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_cost\
+  \ \"aabaa\" [1, 2, 3, 4, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

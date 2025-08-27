@@ -1,0 +1,27 @@
+"vc-description": "Given the root of a binary tree, find the maximum value V for which\
+  \ there exists different nodes A and B where V = |A.val - B.val| and A is an ancestor\
+  \ of B.\n(A node A is an ancestor of B if either: any child of A is equal to B,\
+  \ or any child of A is an ancestor of B.)\n \nExample 1:\n\nInput: [8,3,10,1,6,null,14,null,null,4,7,13]\n\
+  Output: 7\nExplanation: \nWe have various ancestor-node differences, some of which\
+  \ are given below :\n|8 - 3| = 5\n|3 - 7| = 4\n|8 - 1| = 7\n|10 - 13| = 3\nAmong\
+  \ all possible differences, the maximum value of 7 is obtained by |8 - 1| = 7.\n\
+  \n \nNote:\n\nThe number of nodes in the tree is between 2 and 5000.\nEach node\
+  \ will have value between 0 and 100000."
+"vc-preamble": "import Imports.AllImports\n\ndef maxAncestorDiff : Option TreeNode\
+  \ → Int\n  | none => 0\n  | some _ => sorry\n\npartial def getAllValues : Option\
+  \ TreeNode → List Int\n  | none => []\n  | some (TreeNode.mk v l r) => v :: (getAllValues\
+  \ l ++ getAllValues r)\n\n\ndef listMaximum (l : List Int) : Int :=\n  match l with\n\
+  \  | [] => 0\n  | x::xs => List.foldl max x xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def listMinimum (l : List Int) : Int :=\n  match l with\n  | []\
+  \ => 0\n  | x::xs => List.foldl min x xs\n"
+"vc-theorems": "theorem maxAncestorDiff_nonnegative (tree : Option TreeNode) :\n \
+  \ maxAncestorDiff tree ≥ 0 := sorry\n\n\ntheorem maxAncestorDiff_single_node (v\
+  \ : Int) :\n  maxAncestorDiff (some (TreeNode.mk v none none)) = 0 := sorry\n\n\n\
+  theorem maxAncestorDiff_empty_tree :\n  maxAncestorDiff none = 0 := sorry\n\n\n\
+  theorem maxAncestorDiff_bounded (tree : Option TreeNode) :\n  tree ≠ none →\n  maxAncestorDiff\
+  \ tree ≤ (listMaximum (getAllValues tree) - listMinimum (getAllValues tree)) :=\
+  \ sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval maxAncestorDiff TreeNode(8)\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval maxAncestorDiff TreeNode(1)\n\n/--\ninfo:\
+  \ 4\n-/\n#guard_msgs in\n#eval maxAncestorDiff TreeNode(2)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

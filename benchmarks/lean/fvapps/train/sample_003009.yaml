@@ -1,0 +1,26 @@
+"vc-description": "# Task\n Suppose there are `n` people standing in a circle and\
+  \ they are numbered 1 through n in order. \n \n Person 1 starts off with a sword\
+  \ and kills person 2. He then passes the sword to the next person still standing,\
+  \ in this case person 3. Person 3 then uses the sword to kill person 4, and passes\
+  \ it to person 5. This pattern continues around and around the circle until just\
+  \ one person remains.\n\n What is the number of this person? \n\n# Example: \n\n\
+  \ For `n = 5`, the result should be `3`.\n```\n1 kills 2, passes to 3.\n3 kills\
+  \ 4, passes to 5.\n5 kills 1, passes to 3.\n3 kills 5 and wins.```\n\n# Input/Output\n\
+  \n\n - `[input]` integer `n`\n\n  The number of people. 1 through n standing in\
+  \ a circle.\n  \n  `1 <= n <= 1e9`\n  \n  \n - `[output]` an integer\n\n  The index\
+  \ of the last person standing."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def circle_slash (n : Nat) : Nat :=\n  sorry\n\n/-\n  Main property\
+  \ theorems\n-/"
+"vc-theorems": "theorem circle_slash_range (n : Nat) (h : n > 0) :\n  1 ≤ circle_slash\
+  \ n ∧ circle_slash n ≤ n :=\n  sorry\n\n\ntheorem circle_slash_odd_unless_power_of_two\
+  \ (n : Nat) (h : n > 0) \n  (h_not_power_2 : ¬∃k, n = 2^k) :\n  circle_slash n %\
+  \ 2 = 1 :=\n  sorry\n\n\ntheorem circle_slash_power_of_two (k : Nat) :\n  circle_slash\
+  \ (2^k) = 1 :=\n  sorry\n\n/-\n  Pattern theorems\n-/\n\ntheorem circle_slash_binary_pattern\
+  \ (n : Nat) (h : n > 1) :\n  -- For n > 1, removing leading '1' from binary representation\
+  \ and appending '1'\n  circle_slash n = (n % (2^(Nat.log2 n))) * 2 + 1 :=\n  sorry\n\
+  \n\ntheorem circle_slash_one :\n  circle_slash 1 = 1 :=\n  sorry\n\n/--\ninfo: 3\n\
+  -/\n#guard_msgs in\n#eval circle_slash 5\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval\
+  \ circle_slash 11\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval circle_slash 16\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

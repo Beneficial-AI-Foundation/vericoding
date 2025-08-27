@@ -1,0 +1,26 @@
+"vc-description": "In some ranking people collects points. The challenge is sort by\
+  \ points and calulate position for every person. But remember if two or more persons\
+  \ have same number of points, they should have same position number and sorted by\
+  \ name (name is unique).\n\nFor example:\nInput structure:\n\nOutput should be:"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def ranking (players : List Player) : List Player :=\n  sorry\n"
+"vc-theorems": "theorem ranking_length_preservation (players : List Player) :\n  (ranking\
+  \ players).length = players.length :=\n  sorry\n\n\ntheorem ranking_min_position\
+  \ (players : List Player) :\n  players ≠ [] → \n  (List.map Player.position (ranking\
+  \ players)).head! > 0 ∧\n  (List.map Player.position (ranking players)).head! ≤\
+  \ 1 :=\n  sorry\n\n\ntheorem ranking_equal_points_equal_position (players : List\
+  \ Player) :\n  ∀ i : Nat, i + 1 < (ranking players).length →\n    let result :=\
+  \ ranking players\n    (result[i]!.points = result[i+1]!.points) →\n    (result[i]!.position\
+  \ = result[i+1]!.position) :=\n  sorry\n\n\ntheorem ranking_points_position_relation\
+  \ (players : List Player) :\n  ∀ i : Nat, i + 1 < (ranking players).length →\n \
+  \   let result := ranking players\n    (result[i]!.points > result[i+1]!.points)\
+  \ →\n    (result[i]!.position < result[i+1]!.position) :=\n  sorry\n\n\ntheorem\
+  \ ranking_points_descending (players : List Player) :\n  ∀ i : Nat, i + 1 < (ranking\
+  \ players).length →\n    let result := ranking players\n    result[i]!.points ≥\
+  \ result[i+1]!.points :=\n  sorry\n\n\ntheorem ranking_names_ascending_same_points\
+  \ (players : List Player) :\n  ∀ i : Nat, i + 1 < (ranking players).length →\n \
+  \   let result := ranking players\n    result[i]!.points = result[i+1]!.points →\n\
+  \    result[i]!.name ≤ result[i+1]!.name :=\n  sorry\n\n/--\ninfo: []\n-/\n#guard_msgs\
+  \ in\n#eval ranking []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

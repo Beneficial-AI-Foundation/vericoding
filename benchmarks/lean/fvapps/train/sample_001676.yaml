@@ -1,0 +1,40 @@
+"vc-description": "This calculator takes values that could be written in a browsers\
+  \ route path as a single string. It then returns the result as a number (or an error\
+  \ message).\n\nRoute paths use the '/' symbol so this can't be in our calculator.\
+  \ Instead we are using the '$' symbol as our divide operator.\n\nYou will be passed\
+  \ a string of any length containing numbers and operators:\n\n* '+' = add      \
+  \  \n* '-' = subtract  \n* '*' = multiply \n* '$' = divide   \n\nYour task is to\
+  \ break the string down and calculate the expression using this order of operations.\
+  \ (division => multiplication => subtraction => addition)\n\nIf you are given an\
+  \ invalid input (i.e. any character except `.0123456789+-*$`) you should return\
+  \ the error message:`'400: Bad request'`\n\n### Remember:\n\n1. Operations are infinite\n\
+  2. Order of operations is imperitive\n3. No `eval` or equivalent functions\n\n**Examples:**\n\
+  ```python\ncalculate('1+1')     => '2'\ncalculate('10$2')    => '5'\ncalculate('1.5*3')\
+  \   => '4.5'\n\ncalculate('5+5+5+5') => '20'\n\ncalculate('1000$2.5$5+5-5+6$6')\
+  \ =>'81'\n\ncalculate('10-9p')   =>  '400: Bad request'\n```\n\n### Further Notes\
+  \ - Parameters outside of this challenge:\n\n- Brackets e.g. 10*(1+2)\n- Square\
+  \ root, log, % or any other operators\n- Unary minus (10*-1)\n- Bad mathematical\
+  \ input (10**$10 or 5+5$)\n- You may have to deal with floats\n\nIf enjoy this and\
+  \ want something harder please see http://www.codewars.com/kata/evaluate-mathematical-expression/\
+  \ for making a much more complicated calculator. This is a good kata leading up\
+  \ to that."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate (expr : String) : String := sorry\n\ntheorem basic_operations\
+  \ \n  (x y : Float) (op : Char) \n  (h1 : 0.1 ≤ x ∧ x ≤ 100)\n  (h2 : 0.1 ≤ y ∧\
+  \ y ≤ 100) \n  (h3 : op = '+' ∨ op = '-' ∨ op = '*' ∨ op = '$') :\n  let expr :=\
+  \ toString x ++ toString op ++ toString y\n  let result := calculate expr\n  match\
+  \ op with\n  | '+' => result = toString (x + y)\n  | '-' => result = toString (x\
+  \ - y) \n  | '*' => result = toString (x * y)\n  | '$' => result = toString (x /\
+  \ y)\n  | _ => False\n  := sorry\n"
+"vc-theorems": "theorem invalid_chars\n  (s : String)\n  (h : ∀ c ∈ s.data, c ∉ ['0',\
+  \ '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '$', '.']) :\n  calculate\
+  \ (String.append \"1\" (String.append s \"1\")) = \"400: Bad request\" := sorry\n\
+  \n\ntheorem simple_cases :\n  calculate \"0\" = \"0.0\" ∧\n  calculate \"1.5*2\"\
+  \ = \"3.0\" ∧\n  calculate \"10+5\" = \"15.0\" ∧\n  calculate \"10-5\" = \"5.0\"\
+  \ := sorry\n\n/--\ninfo: '2.0'\n-/\n#guard_msgs in\n#eval calculate \"1+1\"\n\n\
+  /--\ninfo: '5.0'\n-/\n#guard_msgs in\n#eval calculate \"10$2\"\n\n/--\ninfo: '4.5'\n\
+  -/\n#guard_msgs in\n#eval calculate \"1.5*3\"\n\n/--\ninfo: '81.0'\n-/\n#guard_msgs\
+  \ in\n#eval calculate \"1000$2.5$5+5-5+6$6\"\n\n/--\ninfo: '400: Bad request'\n\
+  -/\n#guard_msgs in\n#eval calculate \"10-9p\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

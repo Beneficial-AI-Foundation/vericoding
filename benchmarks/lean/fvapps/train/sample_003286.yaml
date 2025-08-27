@@ -1,0 +1,31 @@
+"vc-description": "Introduction to Disjunctions\nIn logic and mathematics, a disjunction\
+  \ is an operation on 2 or more propositions.  A disjunction is true if and only\
+  \ if 1 or more of its operands is true.  In programming, we typically denote a disjunction\
+  \ using \"||\", but in logic we typically use \"v\".\nExample of disjunction:\n\
+  p = 1 > 2 = false\nq = 2 < 3 = true\ntherefore p v q is true\nIn a programming language,\
+  \ we might write this as:\nvar p = 1 > 2;        // false\nvar q = 2 < 3;      \
+  \  // true\nvar result = p || q;  // true\nThe above example demonstrates an inclusive\
+  \ disjunction (meaning it includes cases where both operands are true). Disjunctions\
+  \ can also be exlusive. An exclusive disjunction is typically represented by \"\
+  ⊻\" and is true if and only if both operands have opposite values.\np = 1 < 2 =\
+  \ true\nq = 2 < 3 = true\ntherefore p ⊻ q is false\nThis can become confusing when\
+  \ dealing with more than 2 operands.\nr = 3 < 4 = true\np ⊻ q ⊻ r = ???\nWe handle\
+  \ these situations by evaluating the expression from left to right.\np ⊻ q = false\n\
+  (p ⊻ q) ⊻ r = true\nDirections:\nFor this kata, your task is to implement a function\
+  \ that performs a disjunction operation on 2 or more propositions.\n\nShould take\
+  \ a boolean array as its first parameter and a single boolean as its second parameter,\
+  \ which, if true, should indicate that the disjunction should be exclusive as opposed\
+  \ to inclusive.\nShould return true or false."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def disjunction (operands: List Bool) (exclusive: Bool) : Bool\
+  \ := sorry\n\ntheorem disjunction_inclusive_or\n  {operands: List Bool}\n  (h: operands\
+  \ ≠ [])\n  : disjunction operands false = List.any operands id := sorry\n"
+"vc-theorems": "theorem disjunction_exclusive_or\n  {operands: List Bool}\n  (h: operands\
+  \ ≠ [])\n  : disjunction operands true = ((List.countP (· = true) operands).mod\
+  \ 2 = 1) := sorry \n\n\ntheorem disjunction_empty_error\n  : ¬∃ (b: Bool), ∃ (res:\
+  \ Bool), disjunction [] b = res := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
+  #eval disjunction [False, True, False] False\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval disjunction [False, True, True, True] True\n\n/--\ninfo: False\n-/\n\
+  #guard_msgs in\n#eval disjunction [True, True, True, True] True\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

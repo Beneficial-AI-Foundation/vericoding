@@ -1,0 +1,24 @@
+"vc-description": "The chef is trying to decode some pattern problems, Chef wants\
+  \ your help to code it. Chef has one number K to form a new pattern. Help the chef\
+  \ to code this pattern problem.\n\n-----Input:-----\n- First-line will contain $T$,\
+  \ the number of test cases. Then the test cases follow. \n- Each test case contains\
+  \ a single line of input, one integer $K$. \n\n-----Output:-----\nFor each test\
+  \ case, output as the pattern.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n\
+  - $1 \\leq K \\leq 100$\n\n-----Sample Input:-----\n4\n1\n2\n3\n4\n\n-----Sample\
+  \ Output:-----\n1 \n1 01 \n11 001 \n1 01 11 \n001 101 011 \n111 0001 1001 \n1 01\
+  \ 11 001 \n101 011 111 0001 \n1001 0101 1101 0011 \n1011 0111 1111 00001 \n\n-----EXPLANATION:-----\n\
+  No need, else pattern can be decode easily."
+"vc-preamble": "import Imports.AllImports\n\ndef generate_pattern (k: Nat) : List\
+  \ (List String) := sorry\n\ntheorem pattern_dimensions {k: Nat} (h: k > 0) :\n \
+  \ let pattern := generate_pattern k\n  List.length pattern = k ∧ \n  pattern.all\
+  \ (fun row => List.length row = k) := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_binary_string (s: String) : Bool := sorry\n\ndef binary_to_nat\
+  \ (s: String) : Nat := sorry\n"
+"vc-theorems": "theorem pattern_elements {k: Nat} (h: k > 0) :\n  let pattern := generate_pattern\
+  \ k\n  pattern.all (fun row => \n    row.all (fun elem => \n      is_binary_string\
+  \ elem ∧ binary_to_nat elem > 0\n    )\n  ) := sorry\n\n\ntheorem pattern_sequence\
+  \ {k: Nat} (h: k > 0) :\n  let pattern := generate_pattern k\n  let flattened :=\
+  \ List.join pattern\n  let nums := List.range (k * k) |>.map (· + 1)\n  flattened.map\
+  \ binary_to_nat = nums := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

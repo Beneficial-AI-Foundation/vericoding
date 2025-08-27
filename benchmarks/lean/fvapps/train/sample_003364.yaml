@@ -1,0 +1,32 @@
+"vc-description": "The town sheriff dislikes odd numbers and wants all odd numbered\
+  \ families out of town! In town crowds can form and individuals are often mixed\
+  \ with other people and families. However you can distinguish the family they belong\
+  \ to by the number on the shirts they wear. As the sheriff's assistant it's your\
+  \ job to find all the odd numbered families and remove them from the town!\n~~~if-not:cpp\n\
+  Challenge: You are given a list of numbers. The numbers each repeat a certain number\
+  \ of times. Remove all numbers that repeat an odd number of times while keeping\
+  \ everything else the same.\n~~~\n~~~if:cpp\nChallenge: You are given a vector of\
+  \ numbers. The numbers each repeat a certain number of times. Remove all numbers\
+  \ that repeat an odd number of times while keeping everything else the same.\n~~~\n\
+  ```python\nodd_ones_out([1, 2, 3, 1, 3, 3]) = [1, 1]\n```\nIn the above example:\n\
+  - the number 1 appears twice\n- the number 2 appears once\n- the number 3 appears\
+  \ three times\n\n`2` and `3` both appear an odd number of times, so they are removed\
+  \ from the list. The final result is: `[1,1]`\n\nHere are more examples:\n```python\n\
+  odd_ones_out([1, 1, 2, 2, 3, 3, 3]) = [1, 1, 2, 2]\nodd_ones_out([26, 23, 24, 17,\
+  \ 23, 24, 23, 26]) = [26, 24, 24, 26]\nodd_ones_out([1, 2, 3]) = []\nodd_ones_out([1])\
+  \ = []\n```\n\nAre you up to the challenge?"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def odd_ones_out (xs : List Int) : List Int := sorry\n\ntheorem\
+  \ odd_ones_out_preserves_pairs {xs : List Int} (h : xs ≠ []) :\n  odd_ones_out xs\
+  \ = xs.filter (fun x => (xs.count x) % 2 = 0) := sorry\n"
+"vc-theorems": "theorem odd_ones_out_elements_from_input {xs : List Int} (h : xs ≠\
+  \ []) :\n  ∀ x ∈ odd_ones_out xs, x ∈ xs := sorry \n\n\ntheorem odd_ones_out_even_counts\
+  \ {xs : List Int} (h : xs ≠ []) :\n  ∀ x ∈ odd_ones_out xs, (odd_ones_out xs).count\
+  \ x % 2 = 0 := sorry\n\n\ntheorem odd_ones_out_maintains_order {xs : List Int} (h\
+  \ : xs ≠ []) : \n  odd_ones_out xs = xs.filter (fun x => xs.count x % 2 = 0) :=\
+  \ sorry\n\n/--\ninfo: [1, 1]\n-/\n#guard_msgs in\n#eval odd_ones_out [1, 2, 3, 1,\
+  \ 3, 3]\n\n/--\ninfo: [75, 68, 75, 68]\n-/\n#guard_msgs in\n#eval odd_ones_out [75,\
+  \ 68, 75, 47, 68]\n\n/--\ninfo: [100, 100, 100, 100]\n-/\n#guard_msgs in\n#eval\
+  \ odd_ones_out [100, 100, 5, 5, 100, 50, 68, 50, 68, 50, 68, 5, 100]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

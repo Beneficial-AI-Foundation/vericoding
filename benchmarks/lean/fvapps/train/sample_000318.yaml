@@ -1,0 +1,21 @@
+"vc-description": "Given a string, find the length of the longest substring without\
+  \ repeating characters.\n\nExamples:\n\nGiven \"abcabcbb\", the answer is \"abc\"\
+  , which the length is 3.\n\nGiven \"bbbbb\", the answer is \"b\", with the length\
+  \ of 1.\n\nGiven \"pwwkew\", the answer is \"wke\", with the length of 3. Note that\
+  \ the answer must be a substring, \"pwke\" is a subsequence and not a substring."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def lengthOfLongestSubstring (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem length_bounds (s : String) :\n  0 ≤ lengthOfLongestSubstring\
+  \ s ∧ lengthOfLongestSubstring s ≤ s.length := by\n  sorry\n\n\ntheorem single_char_string\
+  \ (s : String) (h : s.data.eraseDups.length = 1) :\n  lengthOfLongestSubstring s\
+  \ = 1 := by\n  sorry\n\n\ntheorem empty_and_single (s : String) :\n  (s = \"\")\
+  \ → lengthOfLongestSubstring s = 0 ∧\n  (s.length = 1) → lengthOfLongestSubstring\
+  \ s = 1 := by\n  sorry\n\n\ntheorem unique_chars (s : String) :\n  s.data.eraseDups.length\
+  \ = s.length →\n  lengthOfLongestSubstring s = s.length := by\n  sorry\n\n\ntheorem\
+  \ concat_size (s₁ s₂ : String) :\n  lengthOfLongestSubstring (s₁ ++ s₂) ≥ \n   \
+  \ max (lengthOfLongestSubstring s₁) (lengthOfLongestSubstring s₂) := by\n  sorry\n\
+  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval lengthOfLongestSubstring \"abcabcbb\"\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval lengthOfLongestSubstring \"bbbbb\"\n\n\
+  /--\ninfo: 3\n-/\n#guard_msgs in\n#eval lengthOfLongestSubstring \"pwwkew\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

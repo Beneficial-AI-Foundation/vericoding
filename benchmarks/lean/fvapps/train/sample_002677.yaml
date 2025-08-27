@@ -1,0 +1,19 @@
+"vc-description": "Triangular number is the amount of points that can fill equilateral\
+  \ triangle. \n\nExample: the number 6 is a triangular number because all sides of\
+  \ a triangle has the same amount of points.\n\n```\nHint!\nT(n) = n * (n + 1) /\
+  \ 2,\nn - is the size of one side.\nT(n) - is the triangular number.\n```\n\nGiven\
+  \ a number 'T' from interval [1; 2147483646], find if it is triangular number or\
+  \ not."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isTriangular (n : Nat) : Bool := sorry\n\ntheorem isTriangular_output_bool\
+  \ (n : Nat) : \n  isTriangular n = true ∨ isTriangular n = false := sorry\n"
+"vc-theorems": "theorem isTriangular_formula (n : Nat) :\n  isTriangular n = true\
+  \ → ∃ x : Nat, n = x * (x + 1) / 2 := sorry\n\n\ntheorem isTriangular_known_values\
+  \ : \n  isTriangular 0 = true ∧ \n  isTriangular 1 = true ∧ \n  isTriangular 3 =\
+  \ true ∧ \n  isTriangular 6 = true ∧ \n  isTriangular 10 = true ∧\n  isTriangular\
+  \ 15 = true ∧\n  isTriangular 21 = true ∧\n  isTriangular 28 = true ∧\n  isTriangular\
+  \ 36 = true ∧\n  isTriangular 45 = true := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval is_triangular 1\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_triangular\
+  \ 6\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_triangular 7\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

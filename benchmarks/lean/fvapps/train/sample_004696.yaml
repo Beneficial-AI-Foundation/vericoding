@@ -1,0 +1,48 @@
+"vc-description": "In this kata, your task is to implement what I call **Iterative\
+  \ Rotation Cipher (IRC)**. To complete the task, you will create an object with\
+  \ two methods, `encode` and `decode`. (For non-JavaScript versions, you only need\
+  \ to write the two functions without the enclosing dict)\n\nInput\nThe encode method\
+  \ will receive two arguments — a positive integer n and a string value.\nThe decode\
+  \ method will receive one argument — a string value.\nOutput\nEach method will return\
+  \ a string value.\nHow It Works\nEncoding and decoding are done by performing a\
+  \ series of character and substring rotations on a string input.\nEncoding: The\
+  \ number of rotations is determined by the value of n. The sequence of rotations\
+  \ is applied in the following order:\n Step 1: remove all spaces in the string (but\
+  \ remember their positions)\n Step 2: shift the order of characters in the new string\
+  \ to the right by n characters\n Step 3: put the spaces back in their original positions\n\
+   Step 4: shift the characters of each substring (separated by one or more consecutive\
+  \ spaces) to the right by n\n\nRepeat this process until it has been completed n\
+  \ times in total.\nThe value n is then prepended to the resulting string with a\
+  \ space.\nDecoding: Decoding simply reverses the encoding process.\nTest Example\n\
+  \n```python\nquote = 'If you wish to make an apple pie from scratch, you must first\
+  \ invent the universe.'\nsolution = '10 hu fmo a,ys vi utie mr snehn rni tvte .ysushou\
+  \ teI fwea pmapi apfrok rei tnocsclet'\nIterativeRotationCipher['encode'](10,quote)\
+  \ == solution; //True\n\n'''Step-by-step breakdown:\nStep 1 — remove all spaces:\n\
+  'Ifyouwishtomakeanapplepiefromscratch,youmustfirstinventtheuniverse.'\n\nStep 2\
+  \ — shift the order of string characters to the right by 10:\n'euniverse.Ifyouwishtomakeanapplepiefromscratch,youmustfirstinventth'\n\
+  \nStep 3 — place the spaces back in their original positions:\n'eu niv erse .I fyou\
+  \ wi shtom ake anap plepiefr oms crat ch,yo umustf irs tinventth'\n\nStep 4 — shift\
+  \ the order of characters for each space-separated substring to the right by 10:\n\
+  'eu vni seer .I oufy wi shtom eak apan frplepie som atcr ch,yo ustfum sir htinventt'\n\
+  \nRepeat the steps 9 more times before returning the string with '10 ' prepended.\n\
+  '''\n```\n\nTechnical Details\n\n- Input will always be valid.\n- The characters\
+  \ used in the strings include any combination of alphanumeric characters, the space\
+  \ character, the newline character, and any of the following: `_!@#$%^&()[]{}+-*/=\"\
+  '<>,.?:;`.\n\nIf you enjoyed this kata, be sure to check out [my other katas](https://www.codewars.com/users/docgunthrop/authored)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def encode (n : Nat) (s : String) : String := sorry\ndef decode\
+  \ (s : String) : String := sorry\n\n/- For any number n and text, decoding after\
+  \ encoding returns original text -/"
+"vc-theorems": "theorem encode_decode_roundtrip (n : Nat) (text : String) :\n  decode\
+  \ (encode n text) = text := sorry \n\n/- The first word of encoded text equals the\
+  \ input number n as string -/  \n\ntheorem encode_starts_with_n (n : Nat) (text\
+  \ : String) : \n  List.get! (String.splitOn (encode n text) \" \") 0 = toString\
+  \ n := sorry\n\n/- Empty string cases -/\n\ntheorem empty_string_case1 : decode\
+  \ (encode 5 \"\") = \"\" := sorry\ntheorem empty_string_case2 : encode 0 \"\" =\
+  \ \"0 \" := sorry\n\n/--\ninfo: solution\n-/\n#guard_msgs in\n#eval encode 10 \"\
+  If you wish to make an apple pie from scratch, you must first invent the universe.\"\
+  \n\n/--\ninfo: quote\n-/\n#guard_msgs in\n#eval decode encode(10, quote)\n\n/--\n\
+  info: test2\n-/\n#guard_msgs in\n#eval decode encode(3, test2)\n\n/--\ninfo: test3\n\
+  -/\n#guard_msgs in\n#eval decode encode(5, test3)\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

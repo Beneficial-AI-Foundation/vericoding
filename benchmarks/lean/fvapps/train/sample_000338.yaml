@@ -1,0 +1,25 @@
+"vc-description": "Given two strings s1 and s2, write a function to return true if\
+  \ s2 contains the permutation of s1. In other words, one of the first string's permutations\
+  \ is the substring of the second string.\n\nExample 1:\n\nInput:s1 = \"ab\" s2 =\
+  \ \"eidbaooo\"\nOutput:True\nExplanation: s2 contains one permutation of s1 (\"\
+  ba\").\n\n\n\nExample 2:\n\nInput:s1= \"ab\" s2 = \"eidboaoo\"\nOutput: False\n\n\
+  \n\nNote:\n\nThe input strings only contain lower case letters.\nThe length of both\
+  \ given strings is in range [1, 10,000]."
+"vc-preamble": "import Imports.AllImports\n\ndef contains_permutation (s1 s2 : String)\
+  \ : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def IsPermutation (s1 s2 : String) : Prop :=\n  sorry\n"
+"vc-theorems": "theorem contains_permutation_empty_string {s : String} :\n  contains_permutation\
+  \ \"\" s = true :=\nsorry\n\n\ntheorem contains_permutation_shorter_string {s1 s2\
+  \ : String} :\n  s2.length < s1.length → contains_permutation s1 s2 = false :=\n\
+  sorry\n\n\ntheorem contains_permutation_self {s : String} :\n  contains_permutation\
+  \ s s = true :=\nsorry \n\n\ntheorem contains_permutation_concat {s : String} :\n\
+  \  contains_permutation s (s ++ s) = true :=\nsorry\n\n\ntheorem contains_permutation_permutation_invariant\
+  \ {s1 s2 s1_perm : String} :\n  IsPermutation s1 s1_perm →\n  contains_permutation\
+  \ s1 s2 = contains_permutation s1_perm s2 :=\nsorry\n\n\ntheorem contains_permutation_single_char\
+  \ {c : Char} {s : String} :\n  contains_permutation (String.mk [c]) s = String.contains\
+  \ s c :=\nsorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval contains_permutation\
+  \ \"ab\" \"eidbaooo\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval contains_permutation\
+  \ \"ab\" \"eidboaoo\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval contains_permutation\
+  \ \"hello\" \"ooolleoabceh\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,20 @@
+"vc-description": "Once upon a time, a king and a few of his soldiers were  caught\
+  \ by an enemy king in a war. \n\nHe puts them in a circle. The first man in the\
+  \ circle has to kill the second man, the third man has to kill the fourth, fifth\
+  \ man to kill the sixth and so on. When the circle is completed, the remaining people\
+  \ have to form a circle and the process has to repeat. The last man standing will\
+  \ be set free.\n\nIf the king has to be set free, which position must he take? For\
+  \ any given N number of people, write a program to find the position that the king\
+  \ has to take.\n\n-----Input-----\nAny positive integer in the range 1 to 10000.\n\
+  \n-----Output-----\nA positive integer indicating safest position\n\n-----Example-----\n\
+  Input:\n9\n\nOutput:\n3"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_safest_position (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem safest_position_in_range (n : Nat) (h : n > 0) :\n  let pos\
+  \ := find_safest_position n\n  1 ≤ pos ∧ pos ≤ n :=\nsorry\n\n\ntheorem safest_position_consistent\
+  \ (n : Nat) :\n  find_safest_position n = find_safest_position n :=\nsorry\n\n/--\n\
+  info: 3\n-/\n#guard_msgs in\n#eval find_safest_position 9\n\n/--\ninfo: 3\n-/\n\
+  #guard_msgs in\n#eval find_safest_position 5\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n\
+  #eval find_safest_position 7\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

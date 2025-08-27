@@ -1,0 +1,31 @@
+"vc-description": "We are given a list schedule of employees, which represents the\
+  \ working time for each employee.\n\nEach employee has a list of non-overlapping\
+  \ Intervals, and these intervals are in sorted order.\n\nReturn the list of finite\
+  \ intervals representing common, positive-length free time for all employees, also\
+  \ in sorted order.\n\n\nExample 1:\n\nInput: schedule = [[[1,2],[5,6]],[[1,3]],[[4,10]]]\n\
+  Output: [[3,4]]\nExplanation:\nThere are a total of three employees, and all common\n\
+  free time intervals would be [-inf, 1], [3, 4], [10, inf].\nWe discard any intervals\
+  \ that contain inf as they aren't finite.\n\n\nExample 2:\n\nInput: schedule = [[[1,3],[6,7]],[[2,4]],[[2,5],[9,12]]]\n\
+  Output: [[5,6],[7,9]]\n\n\n\n\n(Even though we are representing Intervals in the\
+  \ form [x, y], the objects inside are Intervals, not lists or arrays.  For example,\
+  \ schedule[0][0].start = 1, schedule[0][0].end = 2, and schedule[0][0][0] is not\
+  \ defined.)\n\nAlso, we wouldn't include intervals like [5, 5] in our answer, as\
+  \ they have zero length.\n\n\nNote:\nschedule and schedule[i] are lists with lengths\
+  \ in range [1, 50].\n0 ."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def employeeFreeTime (schedule : List (List Interval)) : List Interval\
+  \ :=\n  sorry\n\nvariable (schedule : List (List Interval))\nvariable (result :\
+  \ List Interval := employeeFreeTime schedule)\nvariable (allIntervals : List Interval\
+  \ := schedule.join)\n"
+"vc-theorems": "theorem free_time_sorted : \n  ∀ i : Nat, i + 1 < result.length →\
+  \ \n  (result[i]!).finish < (result[i+1]!).start :=\n  sorry\n\n\ntheorem no_overlap_with_work\
+  \ :\n  ∀ free work : Interval, \n  free ∈ result → work ∈ allIntervals → \n  ¬(free.start\
+  \ < work.finish ∧ work.start < free.finish) :=\n  sorry\n\n\ntheorem valid_interval_bounds\
+  \ :\n  ∀ i : Interval, i ∈ result → i.start < i.finish :=\n  sorry\n \n\ntheorem\
+  \ continuous_work_valid_bounds (raw_times : List (List Int)) :\n  let schedule :=\
+  \ raw_times.map (λ times => times.map (λ t => { start := t, finish := t+1 }))\n\
+  \  let result := employeeFreeTime schedule\n  ∀ i : Interval, i ∈ result → i.start\
+  \ < i.finish :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval len employeeFreeTime(schedule1)\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval len employeeFreeTime(schedule2)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

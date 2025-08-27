@@ -1,0 +1,36 @@
+"vc-description": "Zonal Computing Olympiad 2014, 30 Nov 2013\n\nIn IPL 2025, the\
+  \ amount that each player is paid varies from match to match.  The match fee depends\
+  \ on the quality of opposition, the venue etc.\n\nThe match fees for each match\
+  \ in the new season have been announced in advance.  Each team has to enforce a\
+  \ mandatory rotation policy so that no player ever plays three matches in a row\
+  \ during the season.\n\nNikhil is the captain and chooses the team for each match.\
+  \ He wants to allocate a playing schedule for himself to maximize his earnings through\
+  \ match fees during the season.  \n\n-----Input format-----\nLine 1: A single integer\
+  \ N, the number of games in the IPL season.\nLine 2: N non-negative integers, where\
+  \ the integer in\nposition i represents the fee for match i.\n\n-----Output format-----\n\
+  The output consists of a single non-negative integer, the\nmaximum amount of money\
+  \ that Nikhil can earn during this IPL\nseason. \n\n-----Sample Input 1-----\n5\
+  \ \n10 3 5 7 3 \n\n-----Sample Output 1-----\n23\n\n(Explanation: 10+3+7+3)\n\n\
+  -----Sample Input 2-----\n8\n3 2 3 2 3 5 1 3\n\n-----Sample Output 2-----\n17\n\n\
+  (Explanation: 3+3+3+5+3)\n\n-----Test data-----\nThere is only one subtask worth\
+  \ 100 marks.  In all inputs:\n\n• 1 ≤ N ≤ 2×105\n• The fee for each match is between\
+  \ 0 and 104, inclusive.\n\n-----Live evaluation data-----\nThere are 12 test inputs\
+  \ on the server during the exam."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat\n  | []\
+  \ => 0\n  | x :: xs => x + List.sum xs\n\n\ndef List.maximum' : List Nat → Nat\n\
+  \  | [] => 0\n  | [x] => x\n  | x :: xs => max x (List.maximum' xs)\n\n/- Main function\
+  \ -/"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_max_earnings (n : Nat) (fees : List Nat) : Nat :=\n\
+  \  sorry\n\n/- Theorems -/"
+"vc-theorems": "theorem calculate_max_earnings_bounded (n : Nat) (fees : List Nat)\
+  \ :\n  n > 0 → fees.length = n → calculate_max_earnings n fees ≤ fees.sum :=\n \
+  \ sorry\n\n\ntheorem calculate_max_earnings_nonnegative (n : Nat) (fees : List Nat)\
+  \ :\n  n > 0 → fees.length = n → calculate_max_earnings n fees ≥ 0 :=\n  sorry\n\
+  \n\n\n\n\n\ntheorem calculate_max_earnings_returns_number (n : Nat) (fees : List\
+  \ Nat) :\n  n > 0 → fees.length = n → calculate_max_earnings n fees = calculate_max_earnings\
+  \ n fees :=\n  sorry\n\n/--\ninfo: 23\n-/\n#guard_msgs in\n#eval calculate_max_earnings\
+  \ 5 [10, 3, 5, 7, 3]\n\n/--\ninfo: 17\n-/\n#guard_msgs in\n#eval calculate_max_earnings\
+  \ 8 [3, 2, 3, 2, 3, 5, 1, 3]\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval calculate_max_earnings\
+  \ 3 [1, 2, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,24 @@
+"vc-description": "Complete the function that takes a string as an input, and return\
+  \ a list of all the unpaired characters (i.e. they show up an odd number of times\
+  \ in the string), in the order they were encountered as an array. \n\nIn case of\
+  \ multiple appearances to choose from, take the last occurence of the unpaired character.\n\
+  \n**Notes:**\n* A wide range of characters is used, and some of them may not render\
+  \ properly in your browser.\n* Your solution should be linear in terms of string\
+  \ length to pass the last test.\n\n\n## Examples\n\n```\n\"Hello World\"   --> \
+  \ [\"H\", \"e\", \" \", \"W\", \"r\", \"l\", \"d\"]\n\"Codewars\"      -->  [\"\
+  C\", \"o\", \"d\", \"e\", \"w\", \"a\", \"r\", \"s\"]\n\"woowee\"        -->  []\n\
+  \"wwoooowweeee\"  -->  []\n\"racecar\"       -->  [\"e\"]\n\"Mamma\"         -->\
+  \  [\"M\"]\n\"Mama\"          -->  [\"M\", \"m\"]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def odd_one_out (s : String) : List Char := sorry\n\ntheorem odd_one_out_output_valid\
+  \ (s : String) :\n  let result := odd_one_out s\n  -- All elements are characters\
+  \ from input string\n  (∀ c ∈ result, c ∈ s.data) ∧\n  -- Each character appears\
+  \ odd times in original\n  (∀ c ∈ result, (s.data.count c) % 2 = 1) ∧\n  -- No duplicates\n\
+  \  result.Nodup := by sorry\n"
+"vc-theorems": "theorem odd_one_out_nonempty (s : String) (h : s ≠ \"\") :\n  let\
+  \ result := odd_one_out s\n  (∃ c ∈ s.data, (s.data.count c) % 2 = 1) →\n  result\
+  \ ≠ [] := by sorry\n\n\ntheorem odd_one_out_complete (s : String) :\n  let result\
+  \ := odd_one_out s\n  result.length = (s.data.filter (fun c => (s.data.count c)\
+  \ % 2 = 1)).length := by sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

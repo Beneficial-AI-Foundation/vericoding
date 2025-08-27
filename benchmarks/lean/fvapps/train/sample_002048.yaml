@@ -1,0 +1,35 @@
+"vc-description": "While discussing a proper problem A for a Codeforces Round, Kostya\
+  \ created a cyclic array of positive integers $a_1, a_2, \\ldots, a_n$. Since the\
+  \ talk was long and not promising, Kostya created a new cyclic array $b_1, b_2,\
+  \ \\ldots, b_{n}$ so that $b_i = (a_i \\mod a_{i + 1})$, where we take $a_{n+1}\
+  \ = a_1$. Here $mod$ is the modulo operation. When the talk became interesting,\
+  \ Kostya completely forgot how array $a$ had looked like. Suddenly, he thought that\
+  \ restoring array $a$ from array $b$ would be an interesting problem (unfortunately,\
+  \ not A).\n\n\n-----Input-----\n\nThe first line contains a single integer $n$ ($2\
+  \ \\le n \\le 140582$) — the length of the array $a$.\n\nThe second line contains\
+  \ $n$ integers $b_1, b_2, \\ldots, b_{n}$ ($0 \\le b_i \\le 187126$).\n\n\n-----Output-----\n\
+  \nIf it is possible to restore some array $a$ of length $n$ so that $b_i = a_i \\\
+  mod a_{(i \\mod n) + 1}$ holds for all $i = 1, 2, \\ldots, n$, print «YES» in the\
+  \ first line and the integers $a_1, a_2, \\ldots, a_n$ in the second line. All $a_i$\
+  \ should satisfy $1 \\le a_i \\le 10^{18}$. We can show that if an answer exists,\
+  \ then an answer with such constraint exists as well.\n\nIt it impossible to restore\
+  \ any valid $a$, print «NO» in one line.\n\nYou can print each letter in any case\
+  \ (upper or lower).\n\n\n-----Examples-----\nInput\n4\n1 3 1 0\n\nOutput\nYES\n\
+  1 3 5 2\n\nInput\n2\n4 4\n\nOutput\nNO\n\n\n\n-----Note-----\n\nIn the first example:\
+  \  $1 \\mod 3 = 1$  $3 \\mod 5 = 3$  $5 \\mod 2 = 1$  $2 \\mod 1 = 0$"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_cyclic_array (n : Nat) (b : List Nat) : String × List\
+  \ Nat := sorry\n\ntheorem solve_cyclic_array_properties {n : Nat} {b : List Nat}\
+  \ \n  (h1: n ≥ 2) (h2: n = b.length) (h3: ∀ x ∈ b, x ≤ 100) :\n  let (status, arr)\
+  \ := solve_cyclic_array n b\n  if status = \"YES\" then\n    (arr.length = n ∧ \n\
+  \     (∀ i < n, arr[i]! % arr[(i+1)%n]! = b[i]!) ∧\n     (∀ x ∈ arr, x > 0))\n \
+  \ else true := sorry\n"
+"vc-theorems": "theorem solve_cyclic_array_zeros (n : Nat) (h1: n ≥ 2) (h2: n ≤ 10)\
+  \ :\n  let b := List.replicate n 0\n  let (status, arr) := solve_cyclic_array n\
+  \ b\n  status = \"YES\" ∧ arr = List.replicate n 1 := sorry\n\n\ntheorem solve_cyclic_array_constant\
+  \ (n : Nat) (val : Nat)\n  (h1: n ≥ 2) (h2: n ≤ 10) (h3: val ≥ 1) (h4: val ≤ 100)\
+  \ :\n  let b := List.replicate n val  \n  let (status, arr) := solve_cyclic_array\
+  \ n b\n  status = \"NO\" ∧ arr = [] := sorry\n\n/--\ninfo: n\n-/\n#guard_msgs in\n\
+  #eval len arr\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

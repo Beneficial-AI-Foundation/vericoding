@@ -1,0 +1,21 @@
+"vc-description": "Write a function that removes every lone 9 that is inbetween 7s.\n\
+  \n```python\nseven_ate9('79712312') => '7712312'\nseven_ate9('79797') => '777'\n\
+  ```\n\nInput: String\nOutput: String"
+"vc-preamble": "import Imports.AllImports\n\ndef seven_ate9 (s : String) : String\
+  \ :=\n  sorry\n\n\ndef countSubstr (s : String) (sub : String) : Nat :=\n  sorry\n\
+  \n\ndef containsSubstr (s : String) (sub : String) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def iterativeReplace (s : String) (n : Nat) : String :=\n  match\
+  \ n with\n  | 0 => s\n  | n + 1 => \n    if containsSubstr s \"797\" \n    then\
+  \ iterativeReplace (s.replace \"797\" \"77\") n\n    else s\n"
+"vc-theorems": "theorem output_is_string {s : String} :\n  s.all (fun c => c.isDigit)\
+  \ → \n  (seven_ate9 s).all (fun c => c.isDigit) :=\nsorry\n\n\ntheorem output_length_correct\
+  \ {s : String} :\n  s.all (fun c => c.isDigit) →\n  (seven_ate9 s).length = s.length\
+  \ - (countSubstr s \"797\") :=\nsorry \n\n\ntheorem no_797_in_result {s : String}\
+  \ :\n  s.all (fun c => c.isDigit) →\n  ¬(containsSubstr (seven_ate9 s) \"797\")\
+  \ := \nsorry\n\n\ntheorem only_797_modified {s : String} :\n  s.all (fun c => c.isDigit)\
+  \ →\n  seven_ate9 s = iterativeReplace s s.length :=\nsorry\n\n/--\ninfo: '7712312'\n\
+  -/\n#guard_msgs in\n#eval seven_ate9 \"79712312\"\n\n/--\ninfo: '777'\n-/\n#guard_msgs\
+  \ in\n#eval seven_ate9 \"79797\"\n\n/--\ninfo: '7777'\n-/\n#guard_msgs in\n#eval\
+  \ seven_ate9 \"7979797\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

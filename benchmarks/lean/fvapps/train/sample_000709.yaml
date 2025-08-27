@@ -1,0 +1,20 @@
+"vc-description": "Given a square matrix of size N×N, calculate the absolute difference\
+  \ between the sums of its diagonals. \n\n-----Input-----\nThe first line contains\
+  \ a single integer N. The next N lines denote the matrix's rows, with each line\
+  \ containing N space-separated integers describing the columns.\n\n-----Output-----\n\
+  Print the absolute difference between the two sums of the matrix's diagonals as\
+  \ a single integer.\n\n-----Constraints-----\n1<=N<=10\n\n-----Example-----\nInput:\n\
+  3\n11 2 4\n4 5 6\n10 8 -12\n\nOutput:\n15\n\n-----Explanation-----\nThe primary\
+  \ diagonal is: \n11\n5\n-12\nSum across the primary diagonal: 11 + 5 - 12 = 4\n\
+  The secondary diagonal is:\n4\n5\n10\nSum across the secondary diagonal: 4 + 5 +\
+  \ 10 = 19 \nDifference: |4 - 19| = 15"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def diagonal_difference (matrix : List (List Int)) : Int := sorry\n\
+  \ndef is_square_matrix (matrix : List (List Int)) : Bool := sorry\n\n\n"
+"vc-theorems": "theorem diagonal_difference_single_element\n  (x : Int) :\n  diagonal_difference\
+  \ [[x]] = 0 := sorry\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval diagonal_difference\
+  \ [[11, 2, 4], [4, 5, 6], [10, 8, -12]]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ diagonal_difference [[1, 2], [3, 4]]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ diagonal_difference [[5]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

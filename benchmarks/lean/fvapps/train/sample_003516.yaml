@@ -1,0 +1,16 @@
+"vc-description": "The pizza store wants to know how long each order will take. They\
+  \ know:\n\n- Prepping a pizza takes 3 mins\n- Cook a pizza takes 10 mins\n- Every\
+  \ salad takes 3 mins to make\n- Every appetizer takes 5 mins to make\n- There are\
+  \ 2 pizza ovens\n- 5 pizzas can fit in a oven\n- Prepping for a pizza must be done\
+  \ before it can be put in the oven\n- There are two pizza chefs and one chef for\
+  \ appitizers and salads combined\n- The two pizza chefs can work on the same pizza\n\
+  \nWrite a function, order, which will tell the company how much time the order will\
+  \ take.\n\nSee example tests for details."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def order (pizzas salads appetizers : Nat) : Nat := sorry\n\ndef\
+  \ ceil (n : Nat) (d : Nat) : Nat := sorry\n"
+"vc-theorems": "theorem order_non_negative (pizzas salads appetizers : Nat) : \n \
+  \ order pizzas salads appetizers ≥ 0 := sorry\n\n\n\n\n\n\n\n\ntheorem adding_pizzas_increases_time\
+  \ (pizzas : Nat) :\n  order (pizzas + 1) 0 0 ≥ order pizzas 0 0 := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

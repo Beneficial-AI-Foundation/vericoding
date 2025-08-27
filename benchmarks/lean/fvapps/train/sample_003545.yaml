@@ -1,0 +1,37 @@
+"vc-description": "# The die is cast!\n\nYour task in this kata is to write a \"dice\
+  \ roller\" that interprets a subset of [dice notation](http://en.wikipedia.org/wiki/Dice_notation).\n\
+  \n# Description\n\nIn most role-playing games, die rolls required by the system\
+  \ are given in the form `AdX`. `A` and `X` are variables, separated by the letter\
+  \ **d**, which stands for *die* or *dice*.\n\n - `A` is the number of dice to be\
+  \ rolled (usually omitted if 1).\n - `X` is the number of faces of each die.\n\n\
+  Here are some examples of input:\n\n# Modifiers\n\nAs an addition to the above rules\
+  \ the input may also contain modifiers in the form `+N` or `-N` where `N` is an\
+  \ integer.\n\nHere are some examples of input containing modifiers:\n\n*Modifiers\
+  \ must be applied **after** all dice has been summed up.*\n\n# Output\n\nYour function\
+  \ must support two types of output depending on the second argument; *verbose* and\
+  \ *summed*.\n\n## Summed output\nIf the verbose flag isn't set your function should\
+  \ sum up all the dice and modifiers and return the result as an integer.\n\n## Verbose\
+  \ output\nWith the verbose flag your function should return an object/hash containing\
+  \ an array (`dice`) with all the dice rolls, and a integer (`modifier`) containing\
+  \ the sum of the modifiers which defaults to zero.\n\nExample of verbose output:\n\
+  \n# Invalid input\nHere are some examples of invalid inputs:\n\n# Additional information\n\
+  \n - Your solution should ignore all whitespace.\n - `roll` should return `false`\
+  \ for invalid input."
+"vc-preamble": "import Imports.AllImports\n\ndef isInt (n : Nat) : Bool := sorry\n\
+  def isDiceList (l : List Nat) : Bool := sorry\n\ndef isValidDiceDesc : String →\
+  \ Bool := sorry\ndef extractSides : String → Option Nat := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def roll (desc : String) (verbose : Bool := false) : Bool ⊕ (List\
+  \ Nat × Int) := sorry\n\ntheorem valid_roll_structure {desc : String} {result :\
+  \ List Nat × Int}\n  (h : roll desc true = Sum.inr result) :\n  ∃ (dice : List Nat)\
+  \ (modifier : Int), result = (dice, modifier) ∧ \n  ∀ d ∈ dice, isInt d := sorry\n"
+"vc-theorems": "theorem invalid_roll {desc : String} (h : ¬isValidDiceDesc desc) :\
+  \ \n  roll desc false = Sum.inl false := sorry\n\n\ntheorem non_string_input {α\
+  \ : Type} {x : α} [ToString α] : \n  roll (toString x) false = Sum.inl false :=\
+  \ sorry\n\n\ntheorem roll_range_properties {desc : String} {result : List Nat ×\
+  \ Int} {sides : Nat} \n  (h₁ : roll desc true = Sum.inr result)\n  (h₂ : extractSides\
+  \ desc = some sides) :\n  ∀ die ∈ result.1, 1 ≤ die ∧ die ≤ sides := sorry\n\n/--\n\
+  info: False\n-/\n#guard_msgs in\n#eval roll \"\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval roll {}\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval roll \"abc\"\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval len result1[\"dice\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

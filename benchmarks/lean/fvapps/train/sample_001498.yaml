@@ -1,0 +1,84 @@
+"vc-description": "The GoC Timber Mafia is notorious for its deforestation\nactivities\
+  \ in the forests near Siruseri. These activities have\nincreased multifold after\
+  \ the death of the bandit who used to\nlord over these jungles.  Having lost the\
+  \ battle to prevent the\nMafia from illegally felling the teak trees in this forest,\
+  \ the\ngovernment of Siruseri came up with a novel idea.  Why not\nlegalise the\
+  \ deforestation activity and at least make some money\nin the process? So the Government\
+  \ decided to lease out parts of\nthe forest to the Timber Mafia.\nMost of the teak\
+  \ trees in the forests of Siruseri were planted\nduring the colonial times, after\
+  \ the native trees had been cut.\nLike everything European, the forest is very regular\
+  \ and\norderly. It is rectangular in shape and the trees are arranged in\nuniformly\
+  \ spaced rows and coloumns.\nSince the trees differ in height and girth, the timber\
+  \ value\ndiffers from tree to tree.  The forest department has collected\ndata on\
+  \ each tree and knows the volume of wood (in cubic feet)\navailable in each tree\
+  \ in the forest.\nThe forest department maintains this information in the form of\n\
+  an $M \\times N$ array of integers, where the\n$(i, j)$th entry is the volume, in\
+  \ cubic feet, of the\n$i^{th}$ tree on the $i^{th}$ row (or, equivalently, the\n\
+  $i^{th}$ tree on the $i^{th}$ column).  We assume that\nour rows are numbered top\
+  \ to bottom and the columns are numbered\nfrom left to right.  For example, such\
+  \ an array could look like\n\nThis array tells us that  the volume of the tree at\
+  \ position $(3,4)$ is $15$\ncubic feet and so on.\nAny rectangular piece of land\
+  \ with trees at each corner can be\nleased out.  In order to fix the lease price\
+  \ for any rectangular\nplot of the forest the forest department needs to know the\
+  \ amount\nof wood available inside the plot.\nA rectangular plot is described by\
+  \ the positions of the trees in\nits top left corner and the bottom right corner.\
+  \ For example the\npositions $(2,2)$ and $(3,4)$ describes the following part\n\
+  rectangular part of the above forest.\n\nThe total amount of wood available in this\
+  \ rectangular plot is $76$\ncubic feet.  Similarly $(4,2)$ and $(4,2)$ describes\
+  \ the rectangle\nwith just one tree and its volume is $20$ cubic feet.\nYour task\
+  \ is to write a program that helps the forest department\nto compute the total volume\
+  \ of the trees insides any specfied\nrectangular plot.\n\n-----Input:-----\n- The\
+  \ first line of the input contains two integers $M$ and $N$ indicating the number\
+  \ of rows and columns of trees in the forest. \n- The following $M$ lines have $N$\
+  \ integers each. The $j^{th}$ integer on line $i+1$ denotes the volume (in cubic\
+  \ feet) of the $j^{th}$  tree on the $i^{th}$  row. \n- Line $M+2$ contains a single\
+  \ integer $C$ indicating the number of rectangles for which the total volume is\
+  \ to be computed. \n- Each of the following $C$ lines (line $M+2+1 ... M+2+C$) contain\
+  \ four integers $x_1, y_1, x_2$ and $y_2$ (with $x_1 \\leq x_2$ and $y_1 \\leq y_2$)\
+  \ and describes a rectangle. The rectangle has its top left corner at the tree in\
+  \ position $(x_1,y_1)$ and its bottom right corner at the tree at position $(x_2,y_2)$.\n\
+  \n-----Output:-----\nYour output must contain $C$ lines with one integer on each\
+  \ line. Line $i$ must contain the total volume of wood in the rectangle described\
+  \ on line $M+2+i$ in the input.\n\n-----Constraints-----\n- In $30 \\%$ of inputs,\
+  \ $1 \\leq C \\leq 100$.\n- In all inputs, $2 \\leq N, M \\leq 1000$ and $1 \\leq\
+  \ C \\leq 1000000$\n- $0 \\leq$ volume of wood in each tree $\\leq 1000$\n- $1 \\\
+  leq x_1 \\leq x_2 \\leq M$\n- $1 \\leq y_1 \\leq y_2 \\leq N$\n\n-----Sample Input-----\n\
+  4 4 \n3 4 15 23 \n14 20 12 9\n3 8 12 15\n12 20 7 5\n2\n2 2 3 4 \n4 2 4 2\n\n-----Sample\
+  \ Output-----\n76\n20"
+"vc-preamble": "import Imports.AllImports\n\ndef sumList (xs : List Nat) : Nat :=\n\
+  \  match xs with\n  | [] => 0\n  | h :: t => h + sumList t\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calc_forest_volume (rows cols : Nat) (grid : List (List Nat))\
+  \ (rectangles : List (List Nat)) : List Nat := sorry\n\ntheorem grid_volumes_sum\
+  \ (rows cols : Nat) (grid : List (List Nat)) (h : rows > 0 ∧ cols > 0) :\n  let\
+  \ normalized_grid := \n    let truncated := grid.take rows\n    let padded := truncated.map\
+  \ (fun row => (row.take cols).append (List.replicate (cols - row.length) 0))\n \
+  \   padded ++ List.replicate (rows - padded.length) (List.replicate cols 0)\n  \n\
+  \  let rect := [[1,1,rows,cols]]\n  let result := calc_forest_volume rows cols normalized_grid\
+  \ rect\n  \n  result.length > 0 ∧ \n  result[0]! = (normalized_grid.map sumList\
+  \ |> sumList) := sorry \n"
+"vc-theorems": "theorem rectangle_volumes (rows cols : Nat) (grid : List (List Nat))\
+  \ (rectangles : List (List Nat)) \n    (h : rows > 0 ∧ cols > 0) :\n  let normalized_grid\
+  \ := \n    let truncated := grid.take rows  \n    let padded := truncated.map (fun\
+  \ row => (row.take cols).append (List.replicate (cols - row.length) 0))\n    padded\
+  \ ++ List.replicate (rows - padded.length) (List.replicate cols 0)\n    \n  let\
+  \ valid_rects := rectangles.filter (fun r => \n    r.length = 4 ∧ \n    r.all (fun\
+  \ x => x > 0) ∧\n    r[0]! ≤ r[2]! ∧ r[1]! ≤ r[3]! ∧\n    r[2]! ≤ rows ∧ r[3]! ≤\
+  \ cols)\n    \n  let result := calc_forest_volume rows cols normalized_grid valid_rects\n\
+  \n  ∀ (i : Nat) (h_valid : i < valid_rects.length),\n    have h_length : valid_rects[i]!.length\
+  \ = 4 := sorry\n    have h_bounds : valid_rects[i]![0]! > 0 ∧ valid_rects[i]![1]!\
+  \ > 0 ∧ \n                   valid_rects[i]![2]! ≤ rows ∧ valid_rects[i]![3]! ≤\
+  \ cols := sorry\n\n    let subrect := normalized_grid.take (valid_rects[i]![2]!\
+  \ - valid_rects[i]![0]! + 1)\n                                      |>.drop (valid_rects[i]![0]!\
+  \ - 1)\n                                      |>.map (fun row => row.take (valid_rects[i]![3]!\
+  \ - valid_rects[i]![1]! + 1)\n                                                 \
+  \         |>.drop (valid_rects[i]![1]! - 1))\n    result[i]! = (subrect.map sumList\
+  \ |> sumList) := sorry\n\n\ntheorem single_cell_volumes (rows cols : Nat) (grid\
+  \ : List (List Nat)) (h : rows > 0 ∧ cols > 0) :\n  let normalized_grid := \n  \
+  \  let truncated := grid.take rows\n    let padded := truncated.map (fun row =>\
+  \ (row.take cols).append (List.replicate (cols - row.length) 0))\n    padded ++\
+  \ List.replicate (rows - padded.length) (List.replicate cols 0)\n  \n  ∀ (i : Nat)\
+  \ (h_i : i < rows), ∀ (j : Nat) (h_j : j < cols),\n    let rect := [[i+1, j+1, i+1,\
+  \ j+1]]\n    let result := calc_forest_volume rows cols normalized_grid rect\n \
+  \   result.length > 0 ∧\n    result[0]! = normalized_grid[i]![j]! := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

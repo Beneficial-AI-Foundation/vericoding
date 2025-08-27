@@ -1,0 +1,38 @@
+"vc-description": "Chef is playing with an expression which consists of integer operands\
+  \ and the following binary\nBitwise operators -  AND, OR and XOR. He is trying to\
+  \ figure out that what could be the Maximum possible answer of the expression, given\
+  \ that he can perform the operation in any order i.e not necessarily follow the\
+  \ rule of Precedence of operators while evaluating the expression.\nAfter some time\
+  \ of consistent work Chef starts feeling exhausted and wants you to automate this\
+  \ process for him. Can you help him out?\nThe expression has Bitwise operators in\
+  \ symbol format:\n- &  stands for AND \n- |   stands for OR\n- ^   stands for XOR\n\
+  NOTE : It is guaranteed that the expression will always be valid, also each OPERATOR\
+  \ will always be preceded and succeeded by an OPERAND.\n\n-----Input:-----\n- The\
+  \ first line of input contains a single integer $T$ denoting the number of test\
+  \ cases.\n- The only line of input for each test case is a $string$ which is the\
+  \ Chef's expression to evaluate.\n\n-----Output:-----\nFor each test case print\
+  \ a single integer i.e the maximum possible value of Chef's expression.\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 100$.\n- The number of OPERATORS in the expression will be atleast\
+  \ 1 and atmost 10.\n- Each OPERAND may range from 0 to $10^9$.\n\n-----Subtasks-----\n\
+  - 10 points : The number of OPERATORS in the expression will be atmost 5.\n- 20\
+  \ points : The number of OPERATORS in the expression will be atmost 8.\n- 70 points\
+  \ : Original constraints.\n\n-----Sample Input:-----\n2\n3^40|10^2\n\n92^95|56&2&3\n\
+  \n-----Sample Output:-----\n43\n\n95\n\n-----EXPLANATION:-----CASE 2 :\n- If we\
+  \ first compute (56 & 2), the expression becomes 92^95|0&3, since (56 & 2) yields\
+  \ $0$.\n- Now on computing (95 | 0), the expression becomes 92^95&3.\n- Further\
+  \ on computing (95 & 3), the expression becomes 92^3.\n- Finally (92 ^ 3) yields\
+  \ 95, which is the maximum value of the expression."
+"vc-preamble": "import Imports.AllImports\n\ndef value (a b : Nat) (op : String) :\
+  \ Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_expression (expr : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem value_commutativity {a b : Nat} {op : String} (h : op = \"\
+  &\" ∨ op = \"|\") :\n  value a b op = value b a op := by\n  sorry\n\n\ntheorem value_nonnegativity\
+  \ {a b : Nat} {op : String} (h : op = \"&\" ∨ op = \"|\" ∨ op = \"^\") :\n  value\
+  \ a b op ≥ 0 := by\n  sorry\n\n\ntheorem solve_expr_type {expr : String} : \n  ∃\
+  \ (n : Nat), solve_expression expr = n := by\n  sorry\n\n\ntheorem solve_expr_nonneg\
+  \ {expr : String} :\n  solve_expression expr ≥ 0 := by\n  sorry\n\n/--\ninfo: 43\n\
+  -/\n#guard_msgs in\n#eval solve_expression \"3^40|10^2\"\n\n/--\ninfo: 95\n-/\n\
+  #guard_msgs in\n#eval solve_expression \"92^95|56&2&3\"\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval solve_expression \"1&2|3\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

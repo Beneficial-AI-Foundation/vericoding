@@ -1,0 +1,30 @@
+"vc-description": "Create a function that takes a number as an argument and returns\
+  \ a grade based on that number.\n\nScore                                    | Grade\n\
+  -----------------------------------------|-----\nAnything greater than 1 or less\
+  \ than 0.6 | \"F\"\n0.9 or greater                           | \"A\"\n0.8 or greater\
+  \                           | \"B\"\n0.7 or greater                           |\
+  \ \"C\"\n0.6 or greater                           | \"D\"\n\nExamples:\n```\ngrader(0)\
+  \   should be \"F\"\ngrader(1.1) should be \"F\"\ngrader(0.9) should be \"A\"\n\
+  grader(0.8) should be \"B\"\ngrader(0.7) should be \"C\"\ngrader(0.6) should be\
+  \ \"D\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def grader (score : Float) : String := sorry\n\ntheorem grader_A\
+  \ {score : Float} (h : score ≥ 0.9 ∧ score ≤ 1.0) : \n  grader score = \"A\" :=\
+  \ sorry\n"
+"vc-theorems": "theorem grader_B {score : Float} (h : score ≥ 0.8 ∧ score < 0.9) :\
+  \ \n  grader score = \"B\" := sorry\n\n\ntheorem grader_C {score : Float} (h : score\
+  \ ≥ 0.7 ∧ score < 0.8) :\n  grader score = \"C\" := sorry\n\n\ntheorem grader_D\
+  \ {score : Float} (h : score ≥ 0.6 ∧ score < 0.7) :\n  grader score = \"D\" := sorry\n\
+  \n\ntheorem grader_F {score : Float} (h : score < 0.6 ∨ score > 1.0) :\n  grader\
+  \ score = \"F\" := sorry\n\n\ntheorem grader_returns_valid_grade (score : Float)\
+  \ :\n  grader score ∈ [\"A\", \"B\", \"C\", \"D\", \"F\"] := sorry\n\n/--\ninfo:\
+  \ 'A'\n-/\n#guard_msgs in\n#eval grader 0.95\n\n/--\ninfo: 'B'\n-/\n#guard_msgs\
+  \ in\n#eval grader 0.85\n\n/--\ninfo: 'C'\n-/\n#guard_msgs in\n#eval grader 0.75\n\
+  \n/--\ninfo: 'D'\n-/\n#guard_msgs in\n#eval grader 0.65\n\n/--\ninfo: 'A'\n-/\n\
+  #guard_msgs in\n#eval grader 1.0\n\n/--\ninfo: 'F'\n-/\n#guard_msgs in\n#eval grader\
+  \ 0.0\n\n/--\ninfo: 'F'\n-/\n#guard_msgs in\n#eval grader 1.1\n\n/--\ninfo: 'A'\n\
+  -/\n#guard_msgs in\n#eval grader 0.9\n\n/--\ninfo: 'B'\n-/\n#guard_msgs in\n#eval\
+  \ grader 0.8\n\n/--\ninfo: 'C'\n-/\n#guard_msgs in\n#eval grader 0.7\n\n/--\ninfo:\
+  \ 'D'\n-/\n#guard_msgs in\n#eval grader 0.6\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

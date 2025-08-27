@@ -1,0 +1,48 @@
+"vc-description": "A function $f : R \\rightarrow R$ is called Lipschitz continuous\
+  \ if there is a real constant K such that the inequality |f(x) - f(y)| ≤ K·|x -\
+  \ y| holds for all $x, y \\in R$. We'll deal with a more... discrete version of\
+  \ this term.\n\nFor an array $h [ 1 . . n ]$, we define it's Lipschitz constant\
+  \ $L(h)$ as follows:  if n < 2, $L(h) = 0$  if n ≥ 2, $L(h) = \\operatorname{max}\
+  \ [ \\frac{|h [ j ] - h [ i ]|}{j - i} ]$ over all 1 ≤ i < j ≤ n \n\nIn other words,\
+  \ $L = L(h)$ is the smallest non-negative integer such that |h[i] - h[j]| ≤ L·|i\
+  \ - j| holds for all 1 ≤ i, j ≤ n.\n\nYou are given an array [Image] of size n and\
+  \ q queries of the form [l, r]. For each query, consider the subarray $s = a [ l\
+  \ . . r ]$; determine the sum of Lipschitz constants of all subarrays of $S$.\n\n\
+  \n-----Input-----\n\nThe first line of the input contains two space-separated integers\
+  \ n and q (2 ≤ n ≤ 100 000 and 1 ≤ q ≤ 100) — the number of elements in array [Image]\
+  \ and the number of queries respectively.\n\nThe second line contains n space-separated\
+  \ integers $a [ 1 . . n ]$ ($0 \\leq a [ i ] \\leq 10^{8}$).\n\nThe following q\
+  \ lines describe queries. The i-th of those lines contains two space-separated integers\
+  \ l_{i} and r_{i} (1 ≤ l_{i} < r_{i} ≤ n).\n\n\n-----Output-----\n\nPrint the answers\
+  \ to all queries in the order in which they are given in the input. For the i-th\
+  \ query, print one line containing a single integer — the sum of Lipschitz constants\
+  \ of all subarrays of [Image].\n\n\n-----Examples-----\nInput\n10 4\n1 5 2 9 1 3\
+  \ 4 2 1 7\n2 4\n3 8\n7 10\n1 9\n\nOutput\n17\n82\n23\n210\n\nInput\n7 6\n5 7 7 4\
+  \ 6 6 2\n1 2\n2 3\n2 6\n1 7\n4 7\n3 5\n\nOutput\n2\n0\n22\n59\n16\n8\n\n\n\n-----Note-----\n\
+  \nIn the first query of the first sample, the Lipschitz constants of subarrays of\
+  \ $[ 5,2,9 ]$ with length at least 2 are:  $L([ 5,2 ]) = 3$  $L([ 2,9 ]) = 7$  $L([\
+  \ 5,2,9 ]) = 7$ \n\nThe answer to the query is their sum."
+"vc-preamble": "import Imports.AllImports\n\ndef compute_lipschitz_sums (arr : List\
+  \ Nat) (queries : List (Nat × Nat)) : List Nat :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sort (l : List Nat) : List Nat :=\nsorry\n"
+"vc-theorems": "theorem array_properties {arr : List Nat} (h: arr.length ≥ 2)\n  (hb:\
+  \ ∀ x, x ∈ arr → x ≤ 10^8) :\n  let result := compute_lipschitz_sums arr [(1, arr.length)]\n\
+  \  result.length = 1 ∧ \n  ∀ x, x ∈ result → x ≥ 0 :=\nsorry\n\n\ntheorem constant_array_sums\
+  \ {arr : List Nat} {queries : List (Nat × Nat)}\n  (h: arr.length ≥ 2)\n  (hconst:\
+  \ ∀ (i j : Fin arr.length), arr[i] = arr[j])\n  (hq: ∀ p, p ∈ queries → p.1 ≤ p.2\
+  \ ∧ p.2 ≤ arr.length) :\n  ∀ x, x ∈ compute_lipschitz_sums arr queries → x = 0 :=\n\
+  sorry\n\n\ntheorem query_bounds_valid {arr : List Nat} {queries : List (Nat × Nat)}\n\
+  \  (h: arr.length ≥ 2)\n  (hq: ∀ p, p ∈ queries → p.1 ≤ p.2 ∧ p.2 ≤ arr.length)\
+  \ :\n  let results := compute_lipschitz_sums arr queries\n  results.length = queries.length\
+  \ :=\nsorry\n\n\ntheorem monotonic_increasing_minimal {arr : List Nat} \n  (h: arr.length\
+  \ ≥ 2)\n  (hb: ∀ x, x ∈ arr → x ≤ 10) :\n  let sorted := sort arr\n  let orig_sum\
+  \ := (compute_lipschitz_sums arr [(1, arr.length)]).head!\n  let sorted_sum := (compute_lipschitz_sums\
+  \ sorted [(1, arr.length)]).head!\n  sorted_sum ≤ orig_sum :=\nsorry\n\n/--\ninfo:\
+  \ [17, 82, 23, 210]\n-/\n#guard_msgs in\n#eval compute_lipschitz_sums [1, 5, 2,\
+  \ 9, 1, 3, 4, 2, 1, 7] [(2, 4), (3, 8), (7, 10), (1, 9)]\n\n/--\ninfo: [2, 0, 22,\
+  \ 59, 16, 8]\n-/\n#guard_msgs in\n#eval compute_lipschitz_sums [5, 7, 7, 4, 6, 6,\
+  \ 2] [(1, 2), (2, 3), (2, 6), (1, 7), (4, 7), (3, 5)]\n\n/--\ninfo: [100000000,\
+  \ 100000000]\n-/\n#guard_msgs in\n#eval compute_lipschitz_sums [100000000, 0] [(1,\
+  \ 2), (1, 2)]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

@@ -1,0 +1,36 @@
+"vc-description": "# Task\n\nChristmas is coming, and your task is to build a custom\
+  \ Christmas tree with the specified characters and the specified height.\n\n# Inputs:\n\
+  - `chars`: the specified characters. \n- `n`: the specified height. A positive integer\
+  \ greater than 2.\n\n# Output:\n- A multiline string. Each line is separated by\
+  \ `\\n`. A tree contains two parts: leaves and trunks. \n\nThe leaves should be\
+  \ `n` rows. The first row fill in 1 char, the second row fill in 3 chars, and so\
+  \ on. A single space will be added between two adjust chars, and some of the necessary\
+  \ spaces will be added to the left side, to keep the shape of the tree. No space\
+  \ need to be added to the right side.\n\nThe trunk should be at least 1 unit height,\
+  \ it depends on the value of the `n`. The minimum value of n is 3, and the height\
+  \ of the tree trunk is 1 unit height. If `n` increased by 3, and the tree trunk\
+  \ increased by 1 unit. For example, when n is 3,4 or 5, trunk should be 1 row; when\
+  \ n is 6,7 or 8, trunk should be 2 row; and so on.\n\nStill not understand the task?\
+  \ Look at the following example ;-)\n\n# Examples\n\nFor `chars = \"*@o\" and n\
+  \ = 3`,the output should be:\n```\n  *\n @ o\n* @ o\n  |\n```\n\nFor `chars = \"\
+  *@o\" and n = 6`,the output should be:\n```\n     *\n    @ o\n   * @ o\n  * @ o\
+  \ *\n @ o * @ o\n* @ o * @ o\n     |\n     |\n```\n\nFor `chars = \"1234\" and n\
+  \ = 6`,the output should be:\n```\n     1\n    2 3\n   4 1 2\n  3 4 1 2\n 3 4 1\
+  \ 2 3\n4 1 2 3 4 1\n     |\n     |\n```\n\nFor `chars = \"123456789\" and n = 3`,the\
+  \ output should be:\n```\n  1\n 2 3\n4 5 6\n  |\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef custom_christmas_tree (chars: String)\
+  \ (n: Nat) : String := sorry\n\ndef splitLines (s: String) : List String := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def stringLength (s: String) : Nat := sorry\ndef stringTrim (s:\
+  \ String) : String := sorry\n"
+"vc-theorems": "theorem tree_structure_width (chars: String) (n: Nat) :\n  let tree\
+  \ := custom_christmas_tree chars n\n  ∀ line ∈ splitLines tree, stringLength line\
+  \ ≤ 2 * n := sorry\n\n\ntheorem trunk_structure (chars: String) (n: Nat) :\n  let\
+  \ tree := custom_christmas_tree chars n\n  let trunk_lines := (splitLines tree).drop\
+  \ n\n  (∀ line ∈ trunk_lines, stringTrim line = \"|\") ∧ \n  trunk_lines.length\
+  \ = (n-1) / 3 + 1 := sorry\n\n\ntheorem total_height (chars: String) (n: Nat) :\n\
+  \  let tree := custom_christmas_tree chars n\n  (splitLines tree).length = n + ((n-1)\
+  \ / 3 + 1) := sorry\n\n\ntheorem tree_part_nonempty (chars: String) (n: Nat) :\n\
+  \  let tree := custom_christmas_tree chars n\n  let tree_part := (splitLines tree).take\
+  \ n\n  ∀ line ∈ tree_part, stringTrim line ≠ \"\" := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

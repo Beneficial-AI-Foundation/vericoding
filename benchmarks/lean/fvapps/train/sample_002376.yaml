@@ -1,0 +1,30 @@
+"vc-description": "The Leetcode file system keeps a log each time some user performs\
+  \ a change folder operation.\nThe operations are described below:\n\n\"../\" : Move\
+  \ to the parent folder of the current folder. (If you are already in the main folder,\
+  \ remain in the same folder).\n\"./\" : Remain in the same folder.\n\"x/\" : Move\
+  \ to the child folder named x (This folder is guaranteed to always exist).\n\nYou\
+  \ are given a list of strings logs where logs[i] is the operation performed by the\
+  \ user at the ith step.\nThe file system starts in the main folder, then the operations\
+  \ in logs are performed.\nReturn the minimum number of operations needed to go back\
+  \ to the main folder after the change folder operations.\n \nExample 1:\n\nInput:\
+  \ logs = [\"d1/\",\"d2/\",\"../\",\"d21/\",\"./\"]\nOutput: 2\nExplanation: Use\
+  \ this change folder operation \"../\" 2 times and go back to the main folder.\n\
+  \nExample 2:\n\nInput: logs = [\"d1/\",\"d2/\",\"./\",\"d3/\",\"../\",\"d31/\"]\n\
+  Output: 3\n\nExample 3:\nInput: logs = [\"d1/\",\"../\",\"../\",\"../\"]\nOutput:\
+  \ 0\n\n \nConstraints:\n\n1 <= logs.length <= 103\n2 <= logs[i].length <= 10\nlogs[i]\
+  \ contains lowercase English letters, digits, '.', and '/'.\nlogs[i] follows the\
+  \ format described in the statement.\nFolder names consist of lowercase English\
+  \ letters and digits."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_operations (logs : List String) : Nat := sorry\n\ntheorem\
+  \ depth_never_negative (logs : List String) : \n  min_operations logs ≥ 0 := sorry\n"
+"vc-theorems": "theorem up_directory_at_root (logs : List String) :\n  min_operations\
+  \ (\"../\" :: logs) = min_operations logs := sorry\n\n\ntheorem current_directory_neutral\
+  \ (logs : List String) :\n  min_operations logs = min_operations (logs ++ [\"./\"\
+  ])  := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_operations [\"d1/\"\
+  , \"d2/\", \"../\", \"d21/\", \"./\"]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval\
+  \ min_operations [\"d1/\", \"d2/\", \"./\", \"d3/\", \"../\", \"d31/\"]\n\n/--\n\
+  info: 0\n-/\n#guard_msgs in\n#eval min_operations [\"d1/\", \"../\", \"../\", \"\
+  ../\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

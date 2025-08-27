@@ -1,0 +1,29 @@
+"vc-description": "This kata explores writing an AI for a two player, turn based game\
+  \ called *NIM*.\n\nThe Board\n--------------\n\nThe board starts out with several\
+  \ piles of straw.  Each pile has a random number of straws.\n\n```\nPile 0: ||||\n\
+  \nPile 1: ||\n\nPile 2: |||||\n\nPile 3: |\n\nPile 4: ||||||\n\n...or more concisely:\
+  \ [4,2,5,1,6]\n```\n\nThe Rules\n--------------\n\n- The players take turns picking\
+  \ a pile, and removing any number of straws from the pile they pick\n- A player\
+  \ must pick at least one straw\n- If a player picks the last straw, she wins!\n\n\
+  The Task\n------------\n\nIn this kata, you have to write an AI to play the straw\
+  \ picking game.\n\nYou have to encode an AI in a function `choose_move` (or `chooseMove`,\
+  \ or `choose-move`) that takes a board, represented as a list of positive integers,\
+  \ and returns\n\n```python\n(pile_index, number_of_straws)\n```\n\nWhich refers\
+  \ to an index of a pile on the board, and some none-zero number of straws to draw\
+  \ from that pile.\n\nThe test suite is written so that your AI is expected to play\
+  \ 50 games and win every game it plays."
+"vc-preamble": "import Imports.AllImports\n\ndef choose_move (gameState : List Nat)\
+  \ : Nat × Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def nimSum (xs : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem choose_move_valid {gameState : List Nat} (h : gameState ≠\
+  \ []) :\n  let move := choose_move gameState\n  let (pileIdx, straws) := move\n\
+  \  pileIdx < gameState.length ∧ \n  0 < straws ∧\n  straws ≤ gameState[pileIdx]!\
+  \ :=\nsorry\n\n\ntheorem winning_move_reduces_nim_sum {gameState : List Nat} (h\
+  \ : gameState ≠ []) :\n  let move := choose_move gameState\n  let (pileIdx, straws)\
+  \ := move\n  let initialNimSum := nimSum gameState\n  let newState := gameState.set\
+  \ pileIdx (gameState[pileIdx]! - straws)\n  let newNimSum := nimSum newState\n \
+  \ initialNimSum > 0 → newNimSum < initialNimSum :=\nsorry\n\n\ntheorem modify_nonempty_pile\
+  \ {gameState : List Nat} (h : gameState ≠ []) :\n  let move := choose_move gameState\n\
+  \  let (pileIdx, straws) := move\n  gameState[pileIdx]! > 0 :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

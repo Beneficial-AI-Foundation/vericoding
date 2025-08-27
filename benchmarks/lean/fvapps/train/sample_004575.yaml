@@ -1,0 +1,43 @@
+"vc-description": "# Description\nYou are required to implement a function `find_nth_occurrence`\
+  \ that returns the index of the nth occurrence of a substring within a string (considering\
+  \ that those substring could overlap each others). If there are less than n occurrences\
+  \ of the substring, return -1.\n\n# Example\n```python\nstring = \"This is an example.\
+  \ Return the nth occurrence of example in this example string.\"\nfind_nth_occurrence(\"\
+  example\", string, 1) == 11\nfind_nth_occurrence(\"example\", string, 2) == 49\n\
+  find_nth_occurrence(\"example\", string, 3) == 65\nfind_nth_occurrence(\"example\"\
+  , string, 4) == -1\n```\n\nMultiple occurrences of a substring are allowed to overlap,\
+  \ e.g.\n```python\nfind_nth_occurrence(\"TestTest\", \"TestTestTestTest\", 1) ==\
+  \ 0\nfind_nth_occurrence(\"TestTest\", \"TestTestTestTest\", 2) == 4\nfind_nth_occurrence(\"\
+  TestTest\", \"TestTestTestTest\", 3) == 8\nfind_nth_occurrence(\"TestTest\", \"\
+  TestTestTestTest\", 4) == -1\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_nth_occurrence (substring : String) (string : String)\
+  \ (occurrence : Nat) : Int := sorry\n\ntheorem find_nth_occurrence_result_valid\
+  \ {string substring : String} {occurrence : Nat}\n    (h : substring.length > 0)\
+  \ :\n  let result := find_nth_occurrence substring string occurrence\n  result =\
+  \ -1 ∨ (0 ≤ result ∧ result < string.length) := sorry\n"
+"vc-theorems": "theorem find_nth_occurrence_substring_exists {string substring : String}\
+  \ {occurrence : Nat}\n    (h : substring.length > 0)\n    (h2 : find_nth_occurrence\
+  \ substring string occurrence ≠ -1) :\n  let result := find_nth_occurrence substring\
+  \ string occurrence\n  ∃ (pos : String.Pos), \n    pos.byteIdx = result.toNat ∧\
+  \ \n    string.extract pos (String.Pos.mk (result.toNat + substring.length)) = substring\
+  \ := sorry\n\n\ntheorem find_nth_occurrence_earlier_exist {string substring : String}\
+  \ {occurrence : Nat}\n    (h : substring.length > 0)\n    (h2 : find_nth_occurrence\
+  \ substring string occurrence ≠ -1) :\n  ∀ i, 1 ≤ i → i < occurrence → \n    let\
+  \ prev := find_nth_occurrence substring string i\n    prev ≠ -1 ∧ prev < find_nth_occurrence\
+  \ substring string occurrence := sorry\n\n\ntheorem occurrence_ordering {string\
+  \ substring : String}\n    (h : substring.length > 0) :\n  let second := find_nth_occurrence\
+  \ substring string 2\n  second ≠ -1 →\n    let first := find_nth_occurrence substring\
+  \ string 1\n    first ≠ -1 ∧ first < second := sorry\n\n/--\ninfo: 11\n-/\n#guard_msgs\
+  \ in\n#eval find_nth_occurrence \"example\" \"This is an example. Return the nth\
+  \ occurrence of example in this example string.\" 1\n\n/--\ninfo: 49\n-/\n#guard_msgs\
+  \ in\n#eval find_nth_occurrence \"example\" test_str 2\n\n/--\ninfo: 65\n-/\n#guard_msgs\
+  \ in\n#eval find_nth_occurrence \"example\" test_str 3\n\n/--\ninfo: -1\n-/\n#guard_msgs\
+  \ in\n#eval find_nth_occurrence \"example\" test_str 4\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval find_nth_occurrence \"TestTest\" \"TestTestTestTest\" 1\n\n/--\ninfo:\
+  \ 4\n-/\n#guard_msgs in\n#eval find_nth_occurrence \"TestTest\" test_str2 2\n\n\
+  /--\ninfo: 8\n-/\n#guard_msgs in\n#eval find_nth_occurrence \"TestTest\" test_str2\
+  \ 3\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval find_nth_occurrence \"TestTest\"\
+  \ test_str2 4\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

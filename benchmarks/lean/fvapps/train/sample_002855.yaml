@@ -1,0 +1,21 @@
+"vc-description": "```if:python\nCreate a function `args_count`, that returns the\
+  \ count of passed arguments\n```\n```if:kotlin\nCreate a function `argsCount`, that\
+  \ returns the count of passed arguments\n```\n```if:ruby\nCreate a method `args_count`,\
+  \ that returns the count of passed arguments\n```\n```if:julia\nCreate a method\
+  \ `argscount`, that returns the count of passed arguments\n```\n```python\nargs_count(1,\
+  \ 2, 3) -> 3\nargs_count(1, 2, 3, 10) -> 4\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def argsCount {α : Type} (args : List α) : Nat := sorry\n\ntheorem\
+  \ argsCount_equals_list_length {α : Type} (args : List α) : \n  argsCount args =\
+  \ args.length := by sorry\n"
+"vc-theorems": "theorem argsCount_with_mixed_types {α β : Type} (args : List (Sum\
+  \ α β)) :\n  argsCount args = args.length := by sorry\n\n\ntheorem argsCount_with_kwargs\
+  \ (map : List (String × Nat)) :\n  argsCount map = map.length := by sorry\n\n\n\
+  theorem argsCount_mixed_total {α : Type} (args : List α) (kwargs : List (String\
+  \ × α)) :\n  argsCount args + argsCount kwargs = args.length + kwargs.length :=\
+  \ by sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval args_count 1\n\n/--\ninfo:\
+  \ 3\n-/\n#guard_msgs in\n#eval args_count 1 2 3\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval args_count \n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval args_count 1\
+  \ 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

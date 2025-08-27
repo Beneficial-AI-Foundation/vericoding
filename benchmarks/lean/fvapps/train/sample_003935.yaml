@@ -1,0 +1,25 @@
+"vc-description": "You are asked to write a simple cypher that rotates every character\
+  \ (in range [a-zA-Z], special chars will be ignored by the cipher) by 13 chars.\
+  \ As an addition to the original ROT13 cipher, this cypher will also cypher numerical\
+  \ digits ([0-9]) with 5 chars.\n\nExample:\n\n    \"The quick brown fox jumps over\
+  \ the 2 lazy dogs\"\n\nwill be cyphered to:\n\n    \"Gur dhvpx oebja sbk whzcf bire\
+  \ gur 7 ynml qbtf\"\n\nYour task is to write a ROT13.5 (ROT135) method that accepts\
+  \ a string and encrypts it.\nDecrypting is performed by using the same method, but\
+  \ by passing the encrypted string again.\n\nNote: when an empty string is passed,\
+  \ the result is also empty.\n\nWhen passing your succesful algorithm, some random\
+  \ tests will also be applied. Have fun!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def ROT135 (s : String) : String := sorry\n\ntheorem length_preserved\
+  \ (s : String) :\n  (ROT135 s).length = s.length := by sorry\n"
+"vc-theorems": "theorem reversible (s : String) :\n  ROT135 (ROT135 s) = s := by sorry\n\
+  \n\ntheorem letter_shifted_13 (c : Char) (h : c.isAlpha) :\n  let result := ROT135\
+  \ c.toString\n  (result.get! 0).isUpper = c.isUpper ∧\n  result.get! 0 ≠ c ∧\n \
+  \ (result.get! 0).isAlpha := by sorry\n\n\ntheorem digit_shifted_5 (d : Char) (h\
+  \ : d.isDigit) :\n  let result := ROT135 d.toString\n  (result.get! 0).isDigit ∧\n\
+  \  result.get! 0 ≠ d := by sorry\n\n\ntheorem other_chars_unchanged (c : Char) (h₁\
+  \ : ¬c.isAlpha) (h₂ : ¬c.isDigit) :\n  ROT135 c.toString = c.toString := by sorry\n\
+  \n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval ROT135 \"The quick brown fox jumps\
+  \ over the 2 lazy dogs\"\n\n/--\ninfo: test1\n-/\n#guard_msgs in\n#eval ROT135 expected1\n\
+  \n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval ROT135 \"1234567890\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,36 @@
+"vc-description": "To make Yalalovichik even more satisfied and happy, Jafar decided\
+  \ to invent Yalalovichik strings. A string is called a Yalalovichik string if the\
+  \ set of all of its distinct non-empty substrings is equal to the set of all of\
+  \ its distinct non-empty subsequences. \nYou are given a string S$S$. You need to\
+  \ find the number of its distinct non-empty substrings which are Yalalovichik strings.\n\
+  Note: A string A$A$ is called a subsequence of a string B$B$ if A$A$ can be formed\
+  \ by erasing some characters (possibly none) from B$B$. A string A$A$ is called\
+  \ a substring of a string B$B$ if it can be formed by erasing some characters (possibly\
+  \ none) from the beginning of B$B$ and some (possibly none) from the end of B$B$.\
+  \ Two substrings or subsequences are considered different if they are different\
+  \ strings.\n\n-----Input-----\n- The first line of the input contains a single integer\
+  \ T$T$ denoting the number of test cases. The description of T$T$ test cases follows.\n\
+  - The first line of each test case contains a single integer N=|S|$N = |S|$.\n-\
+  \ The second line contains the string S$S$.\n\n-----Output-----\nFor each test case,\
+  \ print a single line containing one integer — the number of distinct Yalalovichik\
+  \ substrings of S$S$.\n\n-----Constraints-----\n- 1≤T≤100$1 \\le T \\le 100$\n-\
+  \ 1≤N≤106$1 \\le N \\le 10^6$\n- the sum of N$N$ over all test cases does not exceed\
+  \ 2⋅106$2 \\cdot 10^6$\n- S$S$ contains only lowercase English letters\n\n-----Example\
+  \ Input-----\n1\n3\nxxx\n\n-----Example Output-----\n3\n\n-----Explanation-----\n\
+  Example case 1: The distinct Yalalovichik substrings are \"x\", \"xx\" and \"xxx\"\
+  ."
+"vc-preamble": "import Imports.AllImports\n\ndef count_yalalovichik_substrings (s:\
+  \ String) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def longest_run (s: String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_always_nonnegative (s: String) (h: s.length > 0):\n\
+  \  count_yalalovichik_substrings s ≥ 0 :=\n  sorry\n\n\n\n\ntheorem single_char_count\
+  \ (c: Char):\n  count_yalalovichik_substrings (String.singleton c) = 1 :=\n  sorry\n\
+  \n\ntheorem repeated_single_char (n: Nat) (h: n > 0):\n  let s := String.join (List.replicate\
+  \ n \"a\")\n  count_yalalovichik_substrings s = n :=\n  sorry\n\n\ntheorem alternating_chars\
+  \ (n: Nat) (h: n > 0):\n  let s := String.join (List.replicate n \"ab\")\n  count_yalalovichik_substrings\
+  \ s = 2 :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_yalalovichik_substrings\
+  \ \"xxx\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_yalalovichik_substrings\
+  \ \"aa\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_yalalovichik_substrings\
+  \ \"aaa\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

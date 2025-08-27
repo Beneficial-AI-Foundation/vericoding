@@ -1,0 +1,25 @@
+"vc-description": "The chef is trying to decode some pattern problems, Chef wants\
+  \ your help to code it. Chef has one number K to form a new pattern. Help the chef\
+  \ to code this pattern problem.\n\n-----Input:-----\n- First-line will contain $T$,\
+  \ the number of test cases. Then the test cases follow. \n- Each test case contains\
+  \ a single line of input, one integer $K$. \n\n-----Output:-----\nFor each test\
+  \ case, output as the pattern.\n\n-----Constraints-----\n- $1 \\leq T \\leq 100$\n\
+  - $1 \\leq K \\leq 100$\n\n-----Sample Input:-----\n4\n1\n2\n3\n4\n\n-----Sample\
+  \ Output:-----\n1\n10\n10\n101\n101\n101\n1010\n1010\n1010\n1010\n\n-----EXPLANATION:-----\n\
+  No need, else pattern can be decode easily."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def generate_pattern (k : Nat) : List String := sorry\n\ntheorem\
+  \ pattern_length (k : Nat) (h: k > 0) :\n  (generate_pattern k).length = k := sorry\n"
+"vc-theorems": "theorem pattern_identical_rows (k : Nat) (h: k > 0) :\n  ∀ i j, i\
+  \ < (generate_pattern k).length → j < (generate_pattern k).length →\n  ((generate_pattern\
+  \ k).get ⟨i, by sorry⟩) = ((generate_pattern k).get ⟨j, by sorry⟩) := sorry\n\n\n\
+  theorem row_length (k : Nat) (h: k > 0) :\n  ∀ row ∈ generate_pattern k, row.length\
+  \ = k := sorry\n\n\ntheorem alternating_digits (k : Nat) (h: k > 0) :\n  ∀ i, i\
+  \ + 1 < k → \n  let pattern := (generate_pattern k).head!\n  (pattern.data.get ⟨i,\
+  \ by sorry⟩) ≠ (pattern.data.get ⟨i + 1, by sorry⟩) := sorry\n\n\ntheorem first_digit_one\
+  \ (k : Nat) (h: k > 0) :\n  let pattern := (generate_pattern k).head!\n  (pattern.data.get\
+  \ ⟨0, by sorry⟩) = '1' := sorry\n\n/--\ninfo: ['1']\n-/\n#guard_msgs in\n#eval generate_pattern\
+  \ 1\n\n/--\ninfo: ['10', '10']\n-/\n#guard_msgs in\n#eval generate_pattern 2\n\n\
+  /--\ninfo: ['101', '101', '101']\n-/\n#guard_msgs in\n#eval generate_pattern 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

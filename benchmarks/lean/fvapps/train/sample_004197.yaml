@@ -1,0 +1,30 @@
+"vc-description": "In this kata you're expected to sort an array of 32-bit integers\
+  \ in ascending order of the number of **on** bits they have.\n\nE.g Given the array\
+  \ **[7, 6, 15, 8]**\n\n- 7 has **3 on** bits  (000...0**111**)\n- 6 has **2 on**\
+  \ bits  (000...00**11**)\n- 15 has **4 on** bits (000...**1111**)\n- 8 has **1 on**\
+  \ bit   (000...**1**000)\n\nSo the array in sorted order would be **[8, 6, 7, 15]**.\n\
+  \nIn cases where two numbers have the same number of bits, compare their real values\
+  \ instead.\n\nE.g between 10 **(...1010)** and 12 **(...1100)**, they both have\
+  \ the same number of **on** bits '**2**' but the integer 10 is less than 12 so it\
+  \ comes first in sorted order.\n\nYour task is to write the function `sortBybit()`\
+  \ that takes an array of integers and sort them as described above.\n\n```if-not:haskell\n\
+  Note: Your function should modify the input rather than creating a new array.\n\
+  ```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countBits (n : Nat) : Nat := sorry\ndef sort_by_bit (arr :\
+  \ List Nat) : List Nat := sorry\n"
+"vc-theorems": "theorem sort_by_bit_preserves_length (arr : List Nat) :\n  arr.length\
+  \ > 0 → (sort_by_bit arr).length = arr.length := sorry\n\n\ntheorem sort_by_bit_maintains_order\
+  \ (arr : List Nat) (i : Nat) (h1 : arr.length > 0) \n  (h2 : i < (sort_by_bit arr).length\
+  \ - 1) : \n  let result := sort_by_bit arr\n  let elem₁ := result.getD i 0\n  let\
+  \ elem₂ := result.getD (i+1) 0\n  countBits elem₁ < countBits elem₂ ∨\n  (countBits\
+  \ elem₁ = countBits elem₂ ∧ elem₁ ≤ elem₂) := sorry\n\n\ntheorem sort_by_bit_idempotent\
+  \ (arr : List Nat) :\n  sort_by_bit (sort_by_bit arr) = sort_by_bit arr := sorry\n\
+  \n\ntheorem sort_by_bit_edge_cases :\n  sort_by_bit [0] = [0] ∧\n  sort_by_bit [1,\
+  \ 1] = [1, 1] ∧ \n  sort_by_bit [2^32 - 1] = [2^32 - 1] := sorry\n\n/--\ninfo: [8,\
+  \ 6, 7, 15]\n-/\n#guard_msgs in\n#eval sort_by_bit [7, 6, 15, 8]\n\n/--\ninfo: [1,\
+  \ 8, 3, 3, 5, 6, 9, 7]\n-/\n#guard_msgs in\n#eval sort_by_bit [3, 8, 3, 6, 5, 7,\
+  \ 9, 1]\n\n/--\ninfo: [0, 2, 2, 4, 8, 8, 3, 5, 5, 6, 9, 7, 56]\n-/\n#guard_msgs\
+  \ in\n#eval sort_by_bit [9, 4, 5, 3, 5, 7, 2, 56, 8, 2, 6, 8, 0]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

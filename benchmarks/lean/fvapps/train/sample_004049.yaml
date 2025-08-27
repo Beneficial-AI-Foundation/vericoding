@@ -1,0 +1,17 @@
+"vc-description": "Jenny has written a function that returns a greeting for a user.\
+  \ However, she's in love with Johnny, and would like to greet him slightly different.\
+  \ She added a special case to her function, but she made a mistake.\n\nCan you help\
+  \ her?"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def greet (name : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem greet_special_case (name : String) :\n  name = \"Johnny\"\
+  \ → greet name = \"Hello, my love!\" :=\n  sorry\n\n\ntheorem greet_general_case\
+  \ (name : String) :\n  name ≠ \"Johnny\" → greet name = \"Hello, \" ++ name ++ \"\
+  !\" :=\n  sorry\n\n\ntheorem greet_starts_with_hello (name : String) :\n  String.startsWith\
+  \ (greet name) \"Hello\" = true :=\n  sorry\n\n\ntheorem greet_ends_with_exclamation\
+  \ (name : String) :\n  String.endsWith (greet name) \"!\" = true :=\n  sorry\n\n\
+  /--\ninfo: 'Hello, James!'\n-/\n#guard_msgs in\n#eval greet \"James\"\n\n/--\ninfo:\
+  \ 'Hello, Jane!'\n-/\n#guard_msgs in\n#eval greet \"Jane\"\n\n/--\ninfo: 'Hello,\
+  \ my love!'\n-/\n#guard_msgs in\n#eval greet \"Johnny\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

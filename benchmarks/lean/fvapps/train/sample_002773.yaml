@@ -1,0 +1,16 @@
+"vc-description": "This will probably be a little series :)\n\nX-Shape\n\nYou will\
+  \ get an odd Integer n (>= 3) and your task is to draw a X. Each line is separated\
+  \ with '\\n'.\n\nUse the following characters:  ■ □\n\nFor Ruby, Crystal and PHP:\
+  \   whitespace and o \n\ne.g.:\n\n\n\n                                     ■□□□■\n\
+  \            ■□■                      □■□■□\n  x(3) =>   □■□              x(5)=>\
+  \  □□■□□\n            ■□■                      □■□■□\n                         \
+  \            ■□□□■\n\n\n Series: ASCII Fun\n\nASCII Fun #1: X-Shape\nASCII Fun #2:\
+  \ Funny Dots\nASCII Fun #3: Puzzle Tiles\nASCII Fun #4: Build a pyramid"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def x (n: Nat): String := sorry\n\ndef nthChar (s: String) (i:\
+  \ Nat) : Char :=\n  s.get ⟨i⟩\n"
+"vc-theorems": "theorem x_correct_dimensions {n: Nat} (h: n > 0): \n  let lines :=\
+  \ (x n).split (· = '\\n')\n  lines.length = n ∧ \n  lines.all (fun line => line.length\
+  \ = n) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

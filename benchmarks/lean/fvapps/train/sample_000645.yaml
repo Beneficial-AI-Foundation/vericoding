@@ -1,0 +1,33 @@
+"vc-description": "This year $p$ footballers and $q$ cricketers have been invited\
+  \ to participate in IPL (Indian Programming League) as guests. You have to accommodate\
+  \ them in $r$ rooms such that-\n- No room may remain empty.\n- A room may contain\
+  \ either only footballers or only cricketers, not both.\n- No cricketers are allowed\
+  \ to stay alone in a room.\nFind the number of ways to place the players. Note though,\
+  \ that all the rooms are identical. But each of the cricketers and footballers are\
+  \ unique. \nSince the number of ways can be very large, print the answer modulo\
+  \ $998,244,353$.\n\n-----Input-----\n- The first line of the input contains a single\
+  \ integer $T$ denoting the number of test cases. The description of $T$ test cases\
+  \ follows.\n- The first and only line of each test case contains three space-separated\
+  \ integers $p$, $q$ and $r$ denoting the number of footballers, cricketers and rooms.\n\
+  \n-----Output-----\nFor each test case, output the number of ways to place the players\
+  \ modulo $998,244,353$.\n\n-----Constraints-----\n- $1 \\le T \\le 100$\n- $1 \\\
+  le p, q, r \\le 100$\n\n-----Example Input-----\n4\n2 1 4\n2 4 4\n2 5 4\n2 8 4\n\
+  \n-----Example Output-----\n0\n3\n10\n609\n\n-----Explanation-----\nExample case\
+  \ 2: Three possible ways are:\n- {Footballer 1}, {Footballer 2}, {Cricketer 1, Cricketer\
+  \ 2}, {Cricketer 3, Cricketer 4}\n- {Footballer 1}, {Footballer 2}, {Cricketer 1,\
+  \ Cricketer 3}, {Cricketer 2, Cricketer 4}\n- {Footballer 1}, {Footballer 2}, {Cricketer\
+  \ 1, Cricketer 4}, {Cricketer 2, Cricketer 3}    \nPlease note that the rooms are\
+  \ identical."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD : Nat := 998244353\n\ndef solve_ipl_rooms (p q r : Nat)\
+  \ : Nat :=\n  sorry\n"
+"vc-theorems": "theorem output_in_valid_range (p q r : Nat) (h1 : p > 0) (h2 : q >\
+  \ 0) (h3 : r > 0) :\n  let result := solve_ipl_rooms p q r\n  0 ≤ result ∧ result\
+  \ < MOD :=\nsorry\n\n\ntheorem empty_when_insufficient_rooms (p q r : Nat) (h1 :\
+  \ p > 0) (h2 : q > 0) (h3 : r > 0) :\n  p + q/2 < r → solve_ipl_rooms p q r = 0\
+  \ :=\nsorry\n\n\ntheorem symmetric_case (n : Nat) (h : n > 0) :\n  solve_ipl_rooms\
+  \ n n 1 = solve_ipl_rooms n n 1 :=\nsorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
+  #eval solve_ipl_rooms 2 1 4\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_ipl_rooms\
+  \ 2 4 4\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval solve_ipl_rooms 2 5 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

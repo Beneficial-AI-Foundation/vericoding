@@ -1,0 +1,23 @@
+"vc-description": "In this Kata, you will be given an array of unique elements, and\
+  \ your task is to rerrange the values so that the first max value is followed by\
+  \ the first minimum, followed by second max value then second min value, etc. \n\
+  \nFor example:\nThe first max is `15` and the first min is `7`. The second max is\
+  \ `12` and the second min is `10` and so on. \n\nMore examples in the test cases.\
+  \ \n\nGood luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef solve (arr : List Int) : List Int\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_max (l : List Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem solve_maintains_elements {arr : List Int} (h : arr ≠ []) :\n\
+  \  let result := solve arr\n  result.length = arr.length ∧ \n  ∀ x, (result.count\
+  \ x = arr.count x) :=\n  sorry\n\n\ntheorem solve_alternates_high_low {arr : List\
+  \ Int} (h : arr.length ≥ 2) :\n  let result := solve arr\n  ∀ i, i + 1 < result.length\
+  \ → i % 2 = 0 → \n  (result.get ⟨i, sorry⟩) ≥ (result.get ⟨i+1, sorry⟩) :=\n  sorry\n\
+  \n\ntheorem solve_first_element_is_max {arr : List Int} (h : arr ≠ []) :\n  let\
+  \ result := solve arr\n  ∀ i, i < result.length → \n  (result.get ⟨0, sorry⟩) ≥\
+  \ (result.get ⟨i, sorry⟩) :=\n  sorry\n\n\ntheorem solve_empty_and_single {arr :\
+  \ List Int} :\n  arr.length ≤ 1 → solve arr = arr :=\n  sorry\n\n/--\ninfo: expected1\n\
+  -/\n#guard_msgs in\n#eval solve [15, 11, 10, 7, 12]\n\n/--\ninfo: expected2\n-/\n\
+  #guard_msgs in\n#eval solve [91, 75, 86, 14, 82]\n\n/--\ninfo: expected3\n-/\n#guard_msgs\
+  \ in\n#eval solve [1, 6, 9, 4, 3, 7, 8, 2]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

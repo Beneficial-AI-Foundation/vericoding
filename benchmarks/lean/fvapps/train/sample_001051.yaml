@@ -1,0 +1,61 @@
+"vc-description": "-----Problem-----\n\n\t\t\tOnce THANMAY met PK who is from a different\
+  \ planet visiting earth. THANMAY was very fascinate to learn PK's language. The\
+  \ language contains only lowercase English letters and is based on a simple logic\
+  \ that only certain characters can follow a particular character.\n\n\n\t\t\tNow\
+  \ he is interested in calculating the number of possible words of length L and ending\
+  \ at a particular character C. Help THANMAY to calculate this value. \n\n-----Input-----\n\
+  \n\t\t\tThe input begins with 26 lines, each containing 26 space-separated integers.\
+  \ The integers can be either 0 or 1. The jth integer at ith line depicts whether\
+  \ jth English alphabet can follow ith English alphabet or not.\n\n\n\t\t\t Next\
+  \ line contains an integer T. T is the number of queries.\n\n\t\t\t Next T lines\
+  \ contains a character C and an integer L.\n\n-----Output-----\n\n\t\t\tFor each\
+  \ query output the count of words of length L ending with the character C. Answer\
+  \ to each query must be followed by newline character.\n\n\n\t\t\tThe answer may\
+  \ be very large so print it modulo 1000000007.\n\n-----Constraints-----\n- \n\t\t\
+  \t\t\t1 ≤ T ≤ 100\n- \nC is lowercase English alphabet.\n\n- \n\t\t\t\t\t2 ≤ L ≤\
+  \ 10000000\n\t\t\n\n-----Sample Input-----\n0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+  \ 0 0 0 0 0 0 0 0\n\n1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 1\
+  \ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+  \ 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\
+  \n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0\
+  \ 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+  \ 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0\
+  \ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+  \ 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0\
+  \ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+  \ 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n\
+  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0\
+  \ 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+  \ 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0\
+  \ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+  \ 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0\
+  \ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+  \ 0 0 0 0 0 0 0 0 0\n\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n0\
+  \ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n\n2\n\nc 3\n\nb 2\n\n-----Sample\
+  \ Output-----\n1\n\n2\n\n-----Explanation-----\n\n\t\t\tFor query 1, Words of length\
+  \ 3 are: aba, acb, bab, bac, cba. The only word ending with 'c' is bac.\n\t\t p\
+  \ { text-align:justify }"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Matrix := List (List Nat)\n\ndef count_words (matrix : Matrix)\
+  \ (end_char : Char) (length : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_words_non_negative (matrix : Matrix) (end_char : Char)\
+  \ (length : Nat) :\n  count_words matrix end_char length ≥ 0 :=\nsorry\n\n\ntheorem\
+  \ count_words_less_than_modulo (matrix : Matrix) (end_char : Char) (length : Nat)\
+  \ :\n  count_words matrix end_char length < (10^9 + 7) :=\nsorry\n\n\ntheorem empty_graph_no_words\
+  \ (end_char : Char) (length : Nat) :\n  let empty_matrix := List.replicate 26 (List.replicate\
+  \ 26 0)\n  count_words empty_matrix end_char length = 0 :=\nsorry\n\n\ntheorem simple_path_one_word_length_three\
+  \ :\n  let simple_matrix := List.replicate 26 (List.replicate 26 0)\n  let m1 :=\
+  \ simple_matrix -- TODO: Add 1 at position [0][1]\n  let m2 := m1 -- TODO: Add 1\
+  \ at position [1][2]\n  count_words m2 'c' 3 = 1 :=\nsorry\n\n\ntheorem simple_path_one_word_length_two\
+  \ :\n  let simple_matrix := List.replicate 26 (List.replicate 26 0)\n  let m1 :=\
+  \ simple_matrix -- TODO: Add 1 at position [0][1]\n  let m2 := m1 -- TODO: Add 1\
+  \ at position [1][2]\n  count_words m2 'b' 2 = 1 :=\nsorry\n\n/--\ninfo: 1\n-/\n\
+  #guard_msgs in\n#eval count_words [[0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\
+  \ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\
+  \ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\
+  \ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]] + [[0] * 26 for _ in range(23)] \"c\" 3\n\n\
+  /--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_words test_matrix \"b\" 2\n\n/--\n\
+  info: 1\n-/\n#guard_msgs in\n#eval count_words [[0] * 26 for _ in range(26)] \"\
+  a\" 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

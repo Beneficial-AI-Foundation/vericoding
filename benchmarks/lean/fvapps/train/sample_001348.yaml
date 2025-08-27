@@ -1,0 +1,40 @@
+"vc-description": "Recently, Chef found a new formula for computing powers of a sequence:\n\
+  - You are given two sequences $A_1, A_2, \\ldots, A_N$ and $(l_1, r_1), (l_2, r_2),\
+  \ \\ldots, (l_N, r_N)$.\n- The $1$-st power of the sequence $A$ is $A^1 = A$.\n\
+  - For each $k > 1$, the $k$-th power of the sequence $A$ (denoted by $A^k$) is a\
+  \ sequence with length $N$ such that for each valid $i$, the $i$-th element of this\
+  \ sequence is (Ak)i=(Ak−1)li⊕(Ak−1)li+1⊕…⊕(Ak−1)ri−1⊕(Ak−1)ri.(Ak)i=(Ak−1)li⊕(Ak−1)li+1⊕…⊕(Ak−1)ri−1⊕(Ak−1)ri.(A^k)_i\
+  \ = (A^{k-1})_{l_i} \\oplus (A^{k-1})_{l_i+1} \\oplus \\ldots \\oplus (A^{k-1})_{r_i-1}\
+  \ \\oplus (A^{k-1})_{r_i} \\,.\nAfter discovering this new formula, Chef tried to\
+  \ find $A^K$, but he felt that it is very time consuming. Therefore, Chef wants\
+  \ you to do it. Can you find the $K$-th power of $A$ for Chef?\n\n-----Input-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first line of\
+  \ each test case contains two space-separated integers $N$ and $K$.\n- The second\
+  \ line contains $N$ space-separated integers $A_1, A_2, \\ldots, A_N$.\n- $N$ lines\
+  \ follow. For each valid $i$, the $i$-th of these lines contains two space-separated\
+  \ integers $l_i$ and $r_i$.\n\n-----Output-----\nFor each test case, print a single\
+  \ line containing $N$ space-separated integers $(A^K)_1, (A^K)_2, \\ldots, (A^K)_N$.\n\
+  \n-----Constraints-----\n- $1 \\le T \\le 3$\n- $1 \\le N \\le 500$\n- $1 \\le K\
+  \ \\le 5 \\cdot 10^7$\n- $1 \\le A_i \\le 10^{18}$ for each valid $i$\n- $1 \\le\
+  \ l_i \\le r_i \\le N$ for each valid $i$\n\n-----Subtasks-----\nSubtask #1 (50\
+  \ points):\n- $T = 1$\n- $N \\le 100$\nSubtask #2 (50 points): original constraints\n\
+  \n-----Sample Input-----\n1\n3 2\n1 2 3\n1 2\n2 3\n1 3\n\n-----Example Ouput-----\n\
+  3 1 0\n\n-----Explanation-----\nExample case 1:\n- $(A^2)_1 = A_1 \\oplus A_2 =\
+  \ 1 \\oplus 2 = 3$\n- $(A^2)_2 = A_2 \\oplus A_3 = 2 \\oplus 3 = 1$\n- $(A^2)_3\
+  \ = A_1 \\oplus A_2 \\oplus A_3 =1 \\oplus 2 \\oplus 3 = 0$"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_matrix_power (n : Nat) (k : Nat) (a : List Int) (l r\
+  \ : List Int) : List Int :=\n  sorry\n"
+"vc-theorems": "theorem identity_power {n : Nat} {a : List Int} {l r : List Int} (h1\
+  \ : n > 0)\n  (h2 : n ≤ a.length) (h3 : l.length = n) (h4 : r.length = n)\n  (h5\
+  \ : ∀ i, i < n → l.get! i = i) (h6 : ∀ i, i < n → r.get! i = i + 1) :\n  solve_matrix_power\
+  \ n 1 a l r = a := sorry\n\n\ntheorem powers_composition (n k1 k2 : Nat) (a l r\
+  \ : List Int) \n  (h1 : n = 3) (h2 : a = [1,2,3]) (h3 : l = [0,0,0]) (h4 : r = [3,3,3])\
+  \ :\n  solve_matrix_power n (k1 + k2) a l r = \n    solve_matrix_power n k2 (solve_matrix_power\
+  \ n k1 a l r) l r := sorry\n\n\ntheorem diagonal_idempotence (n k : Nat) (a l r\
+  \ : List Int)\n  (h1 : n > 0) (h2 : k > 0)\n  (h3 : l.length = n) (h4 : r.length\
+  \ = n)\n  (h5 : ∀ i, i < n → l.get! i = i) (h6 : ∀ i, i < n → r.get! i = i + 1)\
+  \ :\n  solve_matrix_power n k a l r = solve_matrix_power n 1 a l r := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

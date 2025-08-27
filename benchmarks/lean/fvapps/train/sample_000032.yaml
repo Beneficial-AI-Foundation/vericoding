@@ -1,0 +1,32 @@
+"vc-description": "Lately, Mr. Chanek frequently plays the game Arena of Greed. As\
+  \ the name implies, the game's goal is to find the greediest of them all, who will\
+  \ then be crowned king of Compfestnesia.\n\nThe game is played by two people taking\
+  \ turns, where Mr. Chanek takes the first turn. Initially, there is a treasure chest\
+  \ containing $N$ gold coins. The game ends if there are no more gold coins in the\
+  \ chest. In each turn, the players can make one of the following moves:  Take one\
+  \ gold coin from the chest.  Take half of the gold coins on the chest. This move\
+  \ is only available if the number of coins in the chest is even. \n\nBoth players\
+  \ will try to maximize the number of coins they have. Mr. Chanek asks your help\
+  \ to find the maximum number of coins he can get at the end of the game if both\
+  \ he and the opponent plays optimally.\n\n\n-----Input-----\n\nThe first line contains\
+  \ a single integer $T$ $(1 \\le T \\le 10^5)$ denotes the number of test cases.\n\
+  \nThe next $T$ lines each contain a single integer $N$ $(1 \\le N \\le 10^{18})$.\n\
+  \n\n-----Output-----\n\n$T$ lines, each line is the answer requested by Mr. Chanek.\n\
+  \n\n-----Example-----\nInput\n2\n5\n6\n\nOutput\n2\n4\n\n\n\n-----Note-----\n\n\
+  For the first case, the game is as follows:   Mr. Chanek takes one coin.  The opponent\
+  \ takes two coins.  Mr. Chanek takes one coin.  The opponent takes one coin. \n\n\
+  For the second case, the game is as follows:   Mr. Chanek takes three coins.  The\
+  \ opponent takes one coin.  Mr. Chanek takes one coin.  The opponent takes one coin."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_arena_of_greed (n: Nat) : Nat := sorry\n\ndef is_pow2\
+  \ (n: Nat) : Bool := sorry\n"
+"vc-theorems": "theorem solve_arena_output_range (n: Nat) (h: n > 0): \n  let result\
+  \ := solve_arena_of_greed n\n  0 ≤ result ∧ result ≤ n := sorry\n\n\ntheorem solve_arena_deterministic\
+  \ (n: Nat) (h: n > 0):\n  solve_arena_of_greed n = solve_arena_of_greed n := sorry\n\
+  \n\n\n\ntheorem solve_arena_upper_bound (n: Nat) (h: n > 0):\n  solve_arena_of_greed\
+  \ n ≤ (n + 1)/2 + n/2 := sorry\n\n\ntheorem solve_arena_base_cases:\n  solve_arena_of_greed\
+  \ 1 = 1 ∧ solve_arena_of_greed 2 = 1 := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval solve_arena_of_greed 5\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve_arena_of_greed\
+  \ 6\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval solve_arena_of_greed 8\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

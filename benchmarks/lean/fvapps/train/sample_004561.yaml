@@ -1,0 +1,27 @@
+"vc-description": "Task:\nThis kata requires you to write an object that receives\
+  \ a file path \nand does operations on it.\nNOTE FOR PYTHON USERS: You cannot use\
+  \ modules os.path, glob, and re\nThe purpose of this kata is to use string parsing,\
+  \ so you're not supposed to import external libraries. I could only enforce this\
+  \ in python.\nTesting:\n\nPython:\n```python\n>>> master = FileMaster('/Users/person1/Pictures/house.png')\n\
+  >>> master.extension()\n'png'\n>>> master.filename()\n'house'\n>>> master.dirpath()\n\
+  '/Users/person1/Pictures/'\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef FileMaster.extension (fm: FileMaster)\
+  \ : String :=\n  sorry\n\n\ndef FileMaster.filename (fm: FileMaster) : String :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def FileMaster.dirpath (fm: FileMaster) : String :=\n  sorry\n"
+"vc-theorems": "theorem filemaster_extension_matches_input (dirpath name ext : String)\
+  \ :\n  let filepath := dirpath ++ name ++ \".\" ++ ext\n  let fm := FileMaster.mk\
+  \ filepath\n  FileMaster.extension fm = ext :=\nsorry\n\n\ntheorem filemaster_filename_matches_input\
+  \ (dirpath name ext : String) :\n  let filepath := dirpath ++ name ++ \".\" ++ ext\n\
+  \  let fm := FileMaster.mk filepath\n  FileMaster.filename fm = name :=\nsorry\n\
+  \n\ntheorem filemaster_dirpath_matches_input (dirpath name ext : String) :\n  let\
+  \ filepath := dirpath ++ name ++ \".\" ++ ext\n  let fm := FileMaster.mk filepath\n\
+  \  FileMaster.dirpath fm = dirpath :=\nsorry\n\n\ntheorem filemaster_house_png_example\
+  \ :\n  let fm := FileMaster.mk \"/Users/person1/Pictures/house.png\"\n  FileMaster.extension\
+  \ fm = \"png\" ∧ \n  FileMaster.filename fm = \"house\" ∧\n  FileMaster.dirpath\
+  \ fm = \"/Users/person1/Pictures/\" :=\nsorry\n\n\ntheorem filemaster_index_html_example\
+  \ :\n  let fm := FileMaster.mk \"/var/www/index.html\"\n  FileMaster.extension fm\
+  \ = \"html\" ∧\n  FileMaster.filename fm = \"index\" ∧ \n  FileMaster.dirpath fm\
+  \ = \"/var/www/\" :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

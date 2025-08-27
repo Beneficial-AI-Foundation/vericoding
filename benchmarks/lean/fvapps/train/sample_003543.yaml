@@ -1,0 +1,24 @@
+"vc-description": "A Madhav array has the following property:\n\n```a[0] = a[1] +\
+  \ a[2] = a[3] + a[4] + a[5] = a[6] + a[7] + a[8] + a[9] = ...```\n\nComplete the\
+  \ function/method that returns `true` if the given array is a Madhav array, otherwise\
+  \ it returns `false`.\n\n*Edge cases: An array of length* `0` *or* `1` *should not\
+  \ be considered a Madhav array as there is nothing to compare.*"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_valid_madhav_length (n : Nat) : Bool := sorry\n\ndef is_madhav_array\
+  \ (arr : List Int) : Bool := sorry \n"
+"vc-theorems": "theorem single_element_array_is_false (x : Int) :\n  is_madhav_array\
+  \ [x] = false := sorry\n\n\ntheorem invalid_length_arrays_are_false (arr : List\
+  \ Int) :\n  ¬ is_valid_madhav_length arr.length →\n  is_madhav_array arr = false\
+  \ := sorry\n\n\ntheorem valid_madhav_arrays (k : Nat) (h : k ≥ 2) :\n  let total_len\
+  \ := k * (k + 1) / 2\n  let zeros := List.replicate (k * (k + 1) / 2 - k) 0\n  let\
+  \ ks := List.replicate k k\n  let arr := zeros.map Int.ofNat ++ ks.map Int.ofNat\n\
+  \  is_madhav_array arr = true := sorry\n\n\ntheorem invalid_madhav_arrays_different_sums\
+  \ (k : Nat) (h : k ≥ 2) :\n  let make_arr : Nat → List Int := λ i => \n    if i\
+  \ = 0 then [Int.ofNat (k + i)]\n    else List.replicate i (Int.ofNat 0) ++ [Int.ofNat\
+  \ (k + i)]\n  let arr := List.join (List.map make_arr (List.range k))\n  is_madhav_array\
+  \ arr = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_madhav_array\
+  \ [6, 2, 4, 2, 2, 2, 1, 5, 0, 0]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval\
+  \ is_madhav_array [5, 2, 4, 1, 0, 3]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval\
+  \ is_madhav_array [1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

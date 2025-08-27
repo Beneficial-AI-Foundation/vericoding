@@ -1,0 +1,24 @@
+"vc-description": "Complete the function that calculates the derivative of a polynomial.\
+  \ A polynomial is an expression like: 3x^(4) - 2x^(2) + x - 10\n\n### How to calculate\
+  \ the derivative:\n\n* Take the exponent and multiply it with the coefficient\n\
+  * Reduce the exponent by 1\n\nFor example: 3x^(4) --> (4*3)x^((4-1)) = 12x^(3)\n\
+  \n### Good to know:\n\n* The derivative of a constant is 0 (e.g. 100 --> 0)\n* Anything\
+  \ to the 0th exponent equals 1 (e.g. x^(0) = 1)\n* The derivative of the sum of\
+  \ two function is the sum of the derivatives\n\nNotes:\n* The exponentiation is\
+  \ marked with \"^\"\n* Exponents are always integers and >= 0\n* Exponents are written\
+  \ only if > 1\n* There are no spaces around the operators\n* Leading \"+\" signs\
+  \ are omitted\n\nSee the examples below.\n\n## Examples\n```python\nderivative(\"\
+  -100\")      = \"0\"\nderivative(\"4x+1\")      = \"4\"      # = 4x^0 + 0\nderivative(\"\
+  -x^2+3x+4\") = \"-2x+3\"  # = -2x^1 + 3x^0 + 0\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def derivative (s : String) : String := sorry\n\ntheorem derivative_constant\
+  \ (n : Nat) (h : n > 0 ∧ n ≤ 100) : \n  derivative s!\"${n}x\" = s!\"${n}\" := sorry\n"
+"vc-theorems": "theorem derivative_power_rule (n : Nat) (h : n > 0 ∧ n ≤ 10) :\n \
+  \ derivative s!\"x^${n}\" = \n    if n > 2 then s!\"${n}x^${n-1}\"\n    else if\
+  \ n = 2 then s!\"${n}x\"\n    else \"1\" := sorry\n\n\ntheorem derivative_linearity\
+  \ (s : String) :\n  ∃ result : String, derivative s = result ∧ result.length > 0\
+  \ := sorry\n\n/--\ninfo: '4'\n-/\n#guard_msgs in\n#eval derivative \"4x+1\"\n\n\
+  /--\ninfo: '-2x+3'\n-/\n#guard_msgs in\n#eval derivative \"-x^2+3x+4\"\n\n/--\n\
+  info: '2x+2'\n-/\n#guard_msgs in\n#eval derivative \"x^2+2x+1\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

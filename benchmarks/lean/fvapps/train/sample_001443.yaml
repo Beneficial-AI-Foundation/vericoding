@@ -1,0 +1,48 @@
+"vc-description": "Chef has a nice complete binary tree in his garden. Complete means\
+  \ that each node has exactly two sons, so the tree is infinite. Yesterday he had\
+  \ enumerated the nodes of the tree in such a way: \n- Let's call the nodes' level\
+  \ a number of nodes that occur on the way to this node from the root, including\
+  \ this node. This way, only the root has the level equal to 1, while only its two\
+  \ sons has the level equal to 2.\n- Then, let's take all the nodes with the odd\
+  \ level and enumerate them with consecutive odd numbers, starting from the smallest\
+  \ levels and the leftmost nodes, going to the rightmost nodes and the highest levels.\n\
+  - Then, let's take all the nodes with the even level and enumerate them with consecutive\
+  \ even numbers, starting from the smallest levels and the leftmost nodes, going\
+  \ to the rightmost nodes and the highest levels.\n- For the better understanding\
+  \ there is an example: \n1\n/           \\\n2                   4\n/   \\      \
+  \          /       \\\n3       5           7        9\n/ \\      /  \\         \
+  \ /  \\       /  \\\n6  8 10 12      14 16   18 20 \n\nHere you can see the visualization\
+  \ of the process. For example, in odd levels, the root was enumerated first, then,\
+  \ there were enumerated roots' left sons' sons and roots' right sons' sons.\nYou\
+  \ are given the string of symbols, let's call it S. Each symbol is either l or r.\
+  \ Naturally, this sequence denotes some path from the root, where l means going\
+  \ to the left son and r means going to the right son.\nPlease, help Chef to determine\
+  \ the number of the last node in this path.\n\n-----Input-----\nThe first line contains\
+  \ single integer T number of test cases.\nEach of next T lines contain a string\
+  \ S consisting only of the symbols l and r.\n\n-----Output-----\nPer each line output\
+  \ the number of the last node in the path, described by S, modulo 109+7.\n\n-----Constraints-----\n\
+  - 1 ≤ |T| ≤ 5\n- 1 ≤ |S| ≤ 10^5\n- Remember that the tree is infinite, so each path\
+  \ described by appropriate S is a correct one.\n\n-----Example-----\nInput:\n4\n\
+  lrl\nrll\nr\nlllr\nOutput:\n10\n14\n4\n13\n\n-----Explanation-----\nSee the example\
+  \ in the statement for better understanding the samples."
+"vc-preamble": "import Imports.AllImports\n\ndef find_path_number : String → Nat \n\
+  \  | s => sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD : Nat := 1000000007\n\ndef mkString (c : String) (n : Nat)\
+  \ : String :=\n  sorry\n"
+"vc-theorems": "theorem find_path_number_positive (s : String) : \n  find_path_number\
+  \ s > 0 := by sorry\n\n\ntheorem find_path_number_within_bounds (s : String) :\n\
+  \  find_path_number s < MOD := by sorry  \n\n\ntheorem find_path_number_empty :\n\
+  \  find_path_number \"\" = 1 := by sorry\n\n\ntheorem find_path_number_single_char\
+  \ :\n  find_path_number \"l\" = 2 ∧ find_path_number \"r\" = 4 := by sorry\n\n\n\
+  theorem find_path_number_concat_bounds (s : String) :\n  find_path_number (s ++\
+  \ s) < MOD := by sorry\n\n\ntheorem find_path_number_lr_distinct (n : Nat) (h :\
+  \ n > 0) (h2 : n ≤ 100) :\n  find_path_number (mkString \"l\" n) ≠ \n  find_path_number\
+  \ (mkString \"r\" n) := by sorry\n\n\ntheorem find_path_number_modulo (s : String)\
+  \ :\n  find_path_number s = find_path_number s % MOD := by sorry\n\n\ntheorem find_path_number_concat_distinct\
+  \ (s1 s2 : String) \n  (h1 : s1 ≠ \"\") (h2 : s2 ≠ \"\") :\n  find_path_number (s1\
+  \ ++ s2) ≠ find_path_number s1 ∧\n  find_path_number (s1 ++ s2) ≠ find_path_number\
+  \ s2 := by sorry\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval find_path_number \"\
+  lrl\"\n\n/--\ninfo: 14\n-/\n#guard_msgs in\n#eval find_path_number \"rll\"\n\n/--\n\
+  info: 4\n-/\n#guard_msgs in\n#eval find_path_number \"r\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

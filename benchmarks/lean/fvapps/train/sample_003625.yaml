@@ -1,0 +1,18 @@
+"vc-description": "# Sentence Smash\n\nWrite a function that takes an array of words\
+  \ and smashes them together into a sentence and returns the sentence. You can ignore\
+  \ any need to sanitize words or add punctuation, but you should add spaces between\
+  \ each word. **Be careful, there shouldn't be a space at the beginning or the end\
+  \ of the sentence!**\n\n## Example\n\n```\n['hello', 'world', 'this', 'is', 'great']\
+  \  =>  'hello world this is great'\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def smash (words : List String) : String := sorry\n\ntheorem smash_is_string\
+  \ (words : List String) :\n  smash words = smash words := by sorry \n"
+"vc-theorems": "theorem smash_length (words : List String) :\n  String.length (smash\
+  \ words) = \n    List.foldl (· + ·) 0 (List.map String.length words) + \n    (if\
+  \ words = [] then 0 else words.length - 1) := by sorry\n\n\ntheorem smash_nonempty_space_count\
+  \ {words : List String} (h : words ≠ []) :\n  smash words = smash words := by sorry\n\
+  \n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval smash []\n\n/--\ninfo: 'hello'\n-/\n\
+  #guard_msgs in\n#eval smash [\"hello\"]\n\n/--\ninfo: 'hello amazing world'\n-/\n\
+  #guard_msgs in\n#eval smash [\"hello\", \"amazing\", \"world\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

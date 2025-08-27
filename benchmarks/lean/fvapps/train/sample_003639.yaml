@@ -1,0 +1,25 @@
+"vc-description": "Take 2 strings `s1` and `s2` including only letters from `a`to\
+  \ `z`.\nReturn a new **sorted** string, the longest possible, containing distinct\
+  \ letters,\n- each taken only once - coming from s1 or s2.\n\n# Examples:\n```\n\
+  a = \"xyaabbbccccdefww\"\nb = \"xxxxyyyyabklmopq\"\nlongest(a, b) -> \"abcdefklmopqwxy\"\
+  \n\na = \"abcdefghijklmnopqrstuvwxyz\"\nlongest(a, a) -> \"abcdefghijklmnopqrstuvwxyz\"\
+  \n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def longest (s1 s2 : List Char) : List Char :=\n  sorry\n"
+"vc-theorems": "theorem longest_unique_chars {s1 s2 : List Char} :\n  let result :=\
+  \ longest s1 s2\n  ∀ x ∈ result, ∀ y ∈ result, x = y → result.indexOf x = result.indexOf\
+  \ y :=\n  sorry\n\n\ntheorem longest_sorted {s1 s2 : List Char} :\n  let result\
+  \ := longest s1 s2\n  ∀ i j, i < j → j < result.length → result[i]! ≤ result[j]!\
+  \ :=\n  sorry\n\n\ntheorem longest_chars_from_inputs {s1 s2 : List Char} :\n  let\
+  \ result := longest s1 s2\n  ∀ c ∈ result, c ∈ s1 ++ s2 :=\n  sorry\n\n\ntheorem\
+  \ longest_contains_all_unique_inputs {s1 s2 : List Char} :\n  let result := longest\
+  \ s1 s2\n  ∀ c ∈ s1 ++ s2, c ∈ result :=\n  sorry\n\n\ntheorem longest_identity\
+  \ {s : List Char} :\n  longest s s = longest s [] ∧ longest s [] = longest [] s\
+  \ :=\n  sorry\n\n\ntheorem longest_commutative {s1 s2 : List Char} :\n  longest\
+  \ s1 s2 = longest s2 s1 :=\n  sorry\n\n/--\ninfo: 'abcdefklmopqwxy'\n-/\n#guard_msgs\
+  \ in\n#eval longest \"xyaabbbccccdefww\" \"xxxxyyyyabklmopq\"\n\n/--\ninfo: 'aehrsty'\n\
+  -/\n#guard_msgs in\n#eval longest \"aretheyhere\" \"yestheyarehere\"\n\n/--\ninfo:\
+  \ 'adefghklmnorstu'\n-/\n#guard_msgs in\n#eval longest \"lordsofthefallen\" \"gamekult\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

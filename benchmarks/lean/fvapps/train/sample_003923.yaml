@@ -1,0 +1,19 @@
+"vc-description": "# Task\nA cake is sliced with `n` straight lines. Your task is\
+  \ to calculate the maximum number of pieces the cake can have.\n\n# Example\n\n\
+  \ For `n = 0`, the output should be `1`.\n \n For `n = 1`, the output should be\
+  \ `2`.\n \n For `n = 2`, the output should be `4`.\n \n For `n = 3`, the output\
+  \ should be `7`.\n \n See the following image to understand it:\n \n ![](https://cdn2.scratch.mit.edu/get_image/project/92275349_500x400.png?v=1450672809.79)\n\
+  \n# Input/Output\n\n\n - `[input]` integer `n`\n\n  `0 ≤ n ≤ 10000`\n\n\n - `[output]`\
+  \ an integer\n\n  The maximum number of pieces the sliced cake can have."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def cake_slice (n : Nat) : Nat := sorry\n\ntheorem cake_slice_positive\
+  \ (n : Nat) :\n  cake_slice n > 0 := sorry\n"
+"vc-theorems": "theorem cake_slice_grows (n : Nat) :\n  cake_slice n ≥ n + 1 := sorry\
+  \ \n\n\ntheorem cake_slice_formula (n : Nat) :\n  cake_slice n = (n * n + n + 2)\
+  \ / 2 := sorry\n\n\ntheorem cake_slice_bounded_growth (n : Nat) (h : n > 0) :\n\
+  \  cake_slice n ≤ cake_slice (n-1) + n := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval cake_slice 0\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval cake_slice 1\n\
+  \n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval cake_slice 2\n\n/--\ninfo: 7\n-/\n#guard_msgs\
+  \ in\n#eval cake_slice 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

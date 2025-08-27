@@ -1,0 +1,27 @@
+"vc-description": "Chef played an interesting game yesterday. This game is played\
+  \ with two variables $X$ and $Y$; initially, $X = Y = 0$. Chef may make an arbitrary\
+  \ number of moves (including zero). In each move, he must perform the following\
+  \ process:\n- Choose any positive integer $P$ such that $P \\cdot P > Y$.\n- Change\
+  \ $X$ to $P$.\n- Add $P \\cdot P$ to $Y$.\nUnfortunately, Chef has a bad memory\
+  \ and he has forgotten the moves he made. He only remembers the value of $X$ after\
+  \ the game finished; let's denote it by $X_f$. Can you tell him the maximum possible\
+  \ number of moves he could have made in the game?\n\n-----Input-----\n- The first\
+  \ line of the input contains a single integer $T$ denoting the number of test cases.\
+  \ The description of $T$ test cases follows.\n- The first and only line of each\
+  \ test case contains a single integer $X_f$.\n\n-----Output-----\nFor each test\
+  \ case, print a single line containing one integer — the maximum number of moves\
+  \ Chef could have made.\n\n-----Constraints-----\n- $1 \\le T \\le 10^5$\n- $1 \\\
+  le X_f \\le 10^9$\n\n-----Example Input-----\n3\n3\n8\n9\n\n-----Example Output-----\n\
+  3\n5\n6\n\n-----Explanation-----\nExample case 2: One possible sequence of values\
+  \ of $X$ is $0 \\rightarrow 1 \\rightarrow 2 \\rightarrow 3 \\rightarrow 5 \\rightarrow\
+  \ 8$."
+"vc-preamble": "import Imports.AllImports\n\ndef calc_max_moves (n : Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isqrt (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem calc_max_moves_non_negative (x : Nat) :\n  calc_max_moves\
+  \ x ≥ 0 :=\n  sorry\n\n\ntheorem calc_max_moves_monotonic (x : Nat) :\n  x > 0 →\
+  \ calc_max_moves x ≥ calc_max_moves (x-1) :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval calc_max_moves 3\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval calc_max_moves\
+  \ 8\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval calc_max_moves 9\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

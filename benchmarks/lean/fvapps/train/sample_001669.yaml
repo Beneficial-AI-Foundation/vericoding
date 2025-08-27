@@ -1,0 +1,68 @@
+"vc-description": "For a new 3D game that will be released, a team of programmers\
+  \ needs an easy function. (Then it will be processed as a method in a Class, forget\
+  \ this concept for Ruby)\n\nWe have an sphere with center O, having in the space\
+  \ the coordinates `[α, β, γ]` and radius `r`  and a list of points, `points_list`,\
+  \ each one with coordinates `[x, y, z]`. Select the biggest triangle (or triangles)\
+  \ that has (have) all its (their) 3 vertice(s) as interior points of the sphere\
+  \ (not even in the sphere contour). You should consider that a point P is interior\
+  \ if its distance to center O, d, is such that:\n\n\nd < r\n\nand \n\n(d - r) /\
+  \ r| > 10^(-10)\n\n\nLet's see the situation with the following points in the image\
+  \ posted below:\n```python\nA = [1,2,-4]; B = [-3, 2, 4]; C = [7, 8, -4]; D = [2,\
+  \ 3, 5]; E = [-2, -1, 1]\n```\n\nThe sphere has the following features:\n```\nO\
+  \ = [1, 2, -2] (Center of the sphere)\nradius = 8\n```\n\n\n\nAs C is the only exterior\
+  \ point of the sphere, the possible triangles that have their vertices interior\
+  \ to the sphere are: \n\n```\nABD, ABE, ADE, BDE\n```\n\nLet's see which is the\
+  \ biggest one:\n\n```python\nTriangle    Triangle with its points         Area\n\
+  ABD        [[1,2,-4],[-3,2,4],[2,3,5]]    22.44994432064\nABE        [[1,2,-4],[-3,2,4],[-2,-1,1]]\
+  \  13.56465996625\nADE        [[1,2,-4],[2,3,5],[-2,-1,1]]   22.62741699796 <----\
+  \ biggest triangle\nBDE        [[-3,2,4],[2,3,5],[-2,-1,1]]   11.31370849898\n```\n\
+  \nOur function ```biggest_triang_int()``` (javascript: ```biggestTriangInt()```should\
+  \ output for this case:\n\n```python\npoints_list = [[1,2,-4], [-3, 2, 4], [7, 8,\
+  \ -4], [2, 3, 5], [-2, -1, 1]]\nsphere_center = [1, 2, -2]\nradius = 8\nbiggest_triang_int(points_list,\
+  \ sphere_center, radius) == [4, 22.62741699796,  [[1,2,-4],[2,3,5],[-2,-1,1]]]\n\
+  ```\n\nThat means that with the given points list we may generate 4 triangles with\
+  \ all their vertices as interior points of the sphere, the biggest triangle has\
+  \ an area of 22.62741699796 (the units does not matter and the values for the area\
+  \ should not be rounded) and finally, there is only one triangle with this maximum\
+  \ value.\nEvery triangle should be output having the same order of its vertices\
+  \ than in the given list of points. B = [-3,2,4], comes before than D =[2,3,5] and\
+  \ the last one E = [-2,-1,1]\nIf in the result we have only one triangle, the function\
+  \ should output a list of three points.\n\nLet'see the next case:\n\n```python\n\
+  points_list = [[1,2,-4], [-3, 2, 4], [7, 8, -4], [2, 3, 5], [-2, -1, 1],\n     \
+  \         [3, 2, 6], [1, 4, 0], [-4, -5, -6], [4, 5, 6], [-2, -3, -5],\n       \
+  \       [-1, -2, 4], [-3, -2, -6], [-1, -4, 0], [2, 1, -1]]\nsphere_center = [0,\
+  \ 0, 0]\nradius = 8\nbiggest_triang_int(points_list, sphere_center, radius) == [165,\
+  \ 33.645207682521445, [[[1, 2, -4], [3, 2, 6], [-1, -4, 0]], [[1, 4, 0], [-1, -2,\
+  \ 4], [-3, -2, -6]]]]\n```\n\nNow there are a total of 165 triangles with their\
+  \ vertices in the sphere, the biggest triangle has an area of 33.645207682521445\
+  \ but we have two triangles with this area value. The vertices of each triangle\
+  \ respect the order of the points list as we expressed before but the additional\
+  \ detail is that the triangles are sorted by the values of the coordinates of their\
+  \ points. Let's compare the coordinates of the first point\n\n```\nFirst point \
+  \  x  y  z\nTriangle1     1  2 -4  <--- this triangle is first in the result\nTriangle2\
+  \     1  4  0\n              |  |\n              |  y1 < y2 (2, 4)\n           \
+  \   |\n              x1 = x2     (1 = 1)\n```\n\nIn the case that all the given\
+  \ points are exterior to the sphere the function should output the empty list.\n\
+  \nThe points in the list are all valid and each one occurs once.\n\nRemember that\
+  \ if three points are collinear do not form a triangle. For practical purposes you\
+  \ may consider that if the area of a triangle is lower than 10^(-8), the points\
+  \ are aligned.\n\nEnjoy it!"
+"vc-preamble": "import Imports.AllImports\n\ndef Points := List Point\n\nstructure\
+  \ Triangle where\n  points : List Point\n  valid : points.length = 3\n\nstructure\
+  \ Result where\n  numTriangles : Option Int\n  area : Option Float  \n  triangles\
+  \ : Option (List Triangle)\n\n\ndef biggest_triang_int (points : Points) (center\
+  \ : Point) (radius : Int) : Result :=\n  sorry\n\n\ndef norme (p : Point) : Float\
+  \ :=\n  sorry\n\n\ndef vectorize (p1 p2 : Point) : Point := \n  sorry\n\n\ndef isInCircle\
+  \ (p : Point) (center : Point) (radius : Int) : Bool :=\n  sorry\n\n\ndef crossProd\
+  \ (v1 v2 : Point) : Point :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def origin : Point := {\n  coords := [0,0,0]\n  valid := by simp\n\
+  }\n"
+"vc-theorems": "theorem output_structure \n  (points : Points) \n  (center : Point)\
+  \ \n  (radius : Int)\n  (h1 : points.length ≥ 3)\n  (h4 : radius > 0) :\n  let result\
+  \ := biggest_triang_int points center radius\n  (result.numTriangles.isSome → \n\
+  \   result.area.isSome ∧\n   result.triangles.isSome) :=\nsorry\n\n\ntheorem empty_small_inputs\n\
+  \  (points : Points)\n  (h1 : points.length < 3) :\n  let result := biggest_triang_int\
+  \ points origin 10\n  result.numTriangles = none ∧\n  result.area = none ∧\n  result.triangles\
+  \ = none :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

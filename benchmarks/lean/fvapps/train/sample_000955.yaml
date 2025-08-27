@@ -1,0 +1,28 @@
+"vc-description": "Given an array $A$ of size $N$ , count number of pairs of index\
+  \ $i,j$ such that $A_i$ is even, $A_j$ is odd and $i < j$\n\n-----Input-----\n-\
+  \ The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases.   \n- The first line of each test case contains integer $N$.  \
+  \  \n- The second line of each test case contains $N$ space separated integers $A_i$.\
+  \ \n\n-----Output-----\nFor each test case, print a single line containing an integer\
+  \ denoting number of pairs.\n\n-----Constraints-----\n- $1 \\le T \\le 100$\n- $2\
+  \ \\le N \\le 10^5$ \n- $1 \\le A_i \\le 10^9$\n- Sum of $N$ over all test cases\
+  \ doesn't exceed $10^6 $ \n\n-----Subtasks-----\nSubtask #1 (30 points):\n- $2 \\\
+  le N \\le 100$ \nSubtask #2 (70 points): original constraints\n\n-----Example Input-----\n\
+  2\n4\n1 2 1 3\n5\n5 4 1 2 3\n\n-----Example Output-----\n2\n3\n\n-----Explanation-----\n\
+  Example case 1:$(A_2,A_3)$ and $(A_2,A_4)$ . \nExample case 2:$(A_2,A_3)$ , $(A_2,A_5)$\
+  \ and $(A_4,A_5)$  ."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_even_odd_pairs (xs : List Nat) : Nat := sorry\n\ntheorem\
+  \ count_even_odd_pairs_empty :\n  count_even_odd_pairs [] = 0 := sorry\n"
+"vc-theorems": "theorem count_even_odd_pairs_all_even :\n  count_even_odd_pairs [2,4,6,1]\
+  \ = 3 := sorry\n\n\ntheorem count_even_odd_pairs_mixed1 :\n  count_even_odd_pairs\
+  \ [1,2,1,3] = 2 := sorry\n\n\ntheorem count_even_odd_pairs_mixed2 :\n  count_even_odd_pairs\
+  \ [5,4,1,2,3] = 3 := sorry\n\n\ntheorem count_even_odd_pairs_only_even :\n  count_even_odd_pairs\
+  \ [2,4,6,8] = 0 := sorry\n\n\ntheorem count_even_odd_pairs_only_odd :\n  count_even_odd_pairs\
+  \ [1,3,5,7] = 0 := sorry\n\n\ntheorem count_even_odd_pairs_alternating :\n  count_even_odd_pairs\
+  \ [2,1,4,3,6,5] = 6 := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_even_odd_pairs\
+  \ [1, 2, 1, 3]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_even_odd_pairs [5,\
+  \ 4, 1, 2, 3]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_even_odd_pairs [2,\
+  \ 4, 6, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

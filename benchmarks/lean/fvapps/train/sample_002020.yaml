@@ -1,0 +1,43 @@
+"vc-description": "Lesha plays the recently published new version of the legendary\
+  \ game hacknet. In this version character skill mechanism was introduced. Now, each\
+  \ player character has exactly n skills. Each skill is represented by a non-negative\
+  \ integer a_{i} — the current skill level. All skills have the same maximum level\
+  \ A.\n\nAlong with the skills, global ranking of all players was added. Players\
+  \ are ranked according to the so-called Force. The Force of a player is the sum\
+  \ of the following values:  The number of skills that a character has perfected\
+  \ (i.e., such that a_{i} = A), multiplied by coefficient c_{f}. The minimum skill\
+  \ level among all skills (min a_{i}), multiplied by coefficient c_{m}. \n\nNow Lesha\
+  \ has m hacknetian currency units, which he is willing to spend. Each currency unit\
+  \ can increase the current level of any skill by 1 (if it's not equal to A yet).\
+  \ Help him spend his money in order to achieve the maximum possible value of the\
+  \ Force.\n\n\n-----Input-----\n\nThe first line of the input contains five space-separated\
+  \ integers n, A, c_{f}, c_{m} and m (1 ≤ n ≤ 100 000, 1 ≤ A ≤ 10^9, 0 ≤ c_{f}, c_{m}\
+  \ ≤ 1000, 0 ≤ m ≤ 10^15).\n\nThe second line contains exactly n integers a_{i} (0\
+  \ ≤ a_{i} ≤ A), separated by spaces, — the current levels of skills.\n\n\n-----Output-----\n\
+  \nOn the first line print the maximum value of the Force that the character can\
+  \ achieve using no more than m currency units.\n\nOn the second line print n integers\
+  \ a'_{i} (a_{i} ≤ a'_{i} ≤ A), skill levels which one must achieve in order to reach\
+  \ the specified value of the Force, while using no more than m currency units. Numbers\
+  \ should be separated by spaces.\n\n\n-----Examples-----\nInput\n3 5 10 1 5\n1 3\
+  \ 1\n\nOutput\n12\n2 5 2 \n\nInput\n3 5 10 1 339\n1 3 1\n\nOutput\n35\n5 5 5 \n\n\
+  \n\n-----Note-----\n\nIn the first test the optimal strategy is to increase the\
+  \ second skill to its maximum, and increase the two others by 1.\n\nIn the second\
+  \ test one should increase all skills to maximum."
+"vc-preamble": "import Imports.AllImports\n\ndef solve_hacknet (n A cf cm m : Nat)\
+  \ (skills : List Nat) : Nat × List Nat :=\n  sorry\n\n\ndef list_count {α} [BEq\
+  \ α] (p : α → Bool) (l : List α) : Nat :=\n  match l with\n  | [] => 0\n  | x::xs\
+  \ => (if p x then 1 else 0) + list_count p xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_sum (l : List Nat) : Nat :=\n  match l with\n  | [] =>\
+  \ 0\n  | x::xs => x + list_sum xs\n"
+"vc-theorems": "theorem solution_invariants {n A cf cm m : Nat} {skills ans : List\
+  \ Nat} {max_level : Nat}\n  (h : solve_hacknet n A cf cm m skills = (max_level,\
+  \ ans)) :\n  (ans.length = n) ∧ \n  (∀ x ∈ ans, x ≤ A) ∧\n  (list_sum (List.map\
+  \ (λ i => max 0 ((ans.get! i) - (skills.get! i))) \n    (List.range n)) ≤ m) ∧\n\
+  \  (max_level = cf * (list_count (λ x => x == A) ans) + cm * (List.foldl min A ans))\
+  \ := \n  sorry\n\n\ntheorem zero_money {n A cf : Nat} {skills : List Nat} \n  (h\
+  \ : skills.length = n) :\n  solve_hacknet n A cf 1 0 skills = (0, skills) := \n\
+  \  sorry\n\n\ntheorem infinite_money {n A : Nat} {skills : List Nat}\n  (h : skills.length\
+  \ = n) :\n  solve_hacknet n A 1 1 (Nat.max A 0) skills = \n    (n + A, List.replicate\
+  \ n A) :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

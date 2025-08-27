@@ -1,0 +1,24 @@
+"vc-description": "Write a function taking in a string like `WOW this is REALLY  \
+  \        amazing` and returning `Wow this is really amazing`. String should be capitalized\
+  \ and properly spaced. Using `re` and `string` is not allowed.\n\nExamples:\n\n\
+  ```python\nfilter_words('HELLO CAN YOU HEAR ME') #=> Hello can you hear me\nfilter_words('now\
+  \ THIS is REALLY interesting') #=> Now this is really interesting\nfilter_words('THAT\
+  \ was EXTRAORDINARY!') #=> That was extraordinary!\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def filter_words (s : String) : String := sorry\n\ntheorem filter_words_first_char_upper\
+  \ {s : String} (h : filter_words s ≠ \"\") :\n  (filter_words s).length > 0 := sorry\n"
+"vc-theorems": "theorem filter_words_rest_lowercase {s : String} (h : (filter_words\
+  \ s).length > 1) :\n  ∀ (i : String.Pos), (filter_words s).get i = (filter_words\
+  \ s).get i := sorry\n\n\ntheorem filter_words_no_double_spaces (s : String) :\n\
+  \  ¬ (filter_words s).contains ' ' := sorry\n\n\ntheorem filter_words_no_leading_trailing_spaces\
+  \ (s : String) :\n  filter_words s = (filter_words s).trim := sorry\n\n\ntheorem\
+  \ filter_words_preserves_word_count (s : String) :\n  (filter_words s).split (·\
+  \ = ' ') = s.split (· = ' ') := sorry \n\n\ntheorem filter_words_empty_produces_empty\
+  \ (s : String) \n  (h : s = \"\" ∨ s = \" \" ∨ s = \"  \") : filter_words s = \"\
+  \" := sorry\n\n/--\ninfo: 'Hello world!'\n-/\n#guard_msgs in\n#eval filter_words\
+  \ \"HELLO world!\"\n\n/--\ninfo: 'This will not pass'\n-/\n#guard_msgs in\n#eval\
+  \ filter_words \"This    will    not    pass \"\n\n/--\ninfo: 'Now this is a very\
+  \ exciting test!'\n-/\n#guard_msgs in\n#eval filter_words \"NOW THIS is a VERY EXCITING\
+  \ test!\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

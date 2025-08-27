@@ -1,0 +1,26 @@
+"vc-description": "Given the coordinates of four points in 2D space, return whether\
+  \ the four points could construct a square.\n\nThe coordinate (x,y) of a point is\
+  \ represented by an integer array with two integers.\n\nExample:\n\nInput: p1 =\
+  \ [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,1]\nOutput: True\n\n\n\n Note: \n\nAll\
+  \ the input integers are in the range [-10000, 10000].\nA valid square has four\
+  \ equal sides with positive length and four equal angles (90-degree angles).\nInput\
+  \ points have no order."
+"vc-preamble": "import Imports.AllImports\n\ndef distance (p1 p2 : Point) : Int :=\n\
+  \  (p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def validSquare (p1 p2 p3 p4 : Point) : Bool :=\n  sorry\n\n--\
+  \ If validSquare returns true, then fundamental properties of a square hold"
+"vc-theorems": "theorem valid_square_properties (p1 p2 p3 p4 : Point) :\n  validSquare\
+  \ p1 p2 p3 p4 = true →\n  ∃ side diag : Int,\n    -- All sides have equal length\n\
+  \    (distance p1 p2 = side ∧\n     distance p2 p3 = side ∧\n     distance p3 p4\
+  \ = side ∧\n     distance p4 p1 = side) ∧\n    -- Both diagonals have equal length\n\
+  \    (distance p1 p3 = diag ∧\n     distance p2 p4 = diag) ∧\n    -- Diagonals are\
+  \ longer than sides\n    diag > side ∧\n    -- Side length is positive\n    side\
+  \ > 0 :=\n  sorry\n\n-- Four identical points cannot form a valid square\n\ntheorem\
+  \ degenerate_case (p : Point) :\n  validSquare p p p p = false :=\n  sorry\n\n--\
+  \ Unit square is valid\n\ntheorem unit_square_valid :\n  validSquare ⟨0,0⟩ ⟨1,0⟩\
+  \ ⟨1,1⟩ ⟨0,1⟩ = true :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval validSquare\
+  \ [0, 0] [1, 1] [1, 0] [0, 1]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval validSquare\
+  \ [0, 0] [2, 0] [2, 1] [0, 1]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval validSquare\
+  \ [0, 0] [0, 0] [0, 0] [0, 0]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

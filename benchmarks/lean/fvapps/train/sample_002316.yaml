@@ -1,0 +1,19 @@
+"vc-description": "Given a non-empty array of integers, every element appears twice\
+  \ except for one. Find that single one.\n\nNote:\n\nYour algorithm should have a\
+  \ linear runtime complexity. Could you implement it without using extra memory?\n\
+  \nExample 1:\n\n\nInput: [2,2,1]\nOutput: 1\n\n\nExample 2:\n\n\nInput: [4,1,2,1,2]\n\
+  Output: 4"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_single_number (nums: List Int) : Int := sorry\n\ntheorem\
+  \ find_single_number_pairs_plus_single (single: Int) (pairs: List Int) :\n  find_single_number\
+  \ (pairs ++ pairs ++ [single]) = single := sorry\n"
+"vc-theorems": "theorem find_single_number_single_element (x: Int) :\n  find_single_number\
+  \ [x] = x := sorry\n\n\ntheorem find_single_number_input_parity (nums: List Int)\
+  \ (h: nums ≠ []) :\n  let nums_with_pairs := nums ++ (List.take (nums.length - 1)\
+  \ nums)\n  List.length nums_with_pairs % 2 = 1 ∧ \n  find_single_number nums_with_pairs\
+  \ = List.get! nums (nums.length - 1) := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n\
+  #eval find_single_number [2, 2, 1]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval find_single_number\
+  \ [4, 1, 2, 1, 2]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_single_number\
+  \ [1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

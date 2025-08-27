@@ -1,0 +1,31 @@
+"vc-description": "It's the most hotly anticipated game of the school year - Gryffindor\
+  \ vs Slytherin! Write a function which returns the winning team. \n\nYou will be\
+  \ given two arrays with two values. \n\nThe first given value is the number of points\
+  \ scored by the team's Chasers and the second a string with a 'yes' or 'no' value\
+  \ if the team caught the golden snitch!\n\nThe team who catches the snitch wins\
+  \ their team an extra 150 points - but doesn't always win them the game.\n\nIf the\
+  \ score is a tie return \"It's a draw!\"\"\n\n** The game only ends when someone\
+  \ catches the golden snitch, so one array will always include 'yes' or 'no.' Points\
+  \ scored by Chasers can be any positive integer."
+"vc-preamble": "import Imports.AllImports\n\ndef calculateScore (initialScore: Nat)\
+  \ (snitch: SnitchResult) : Nat :=\n  match snitch with\n  | SnitchResult.Yes =>\
+  \ initialScore + 150\n  | SnitchResult.No => initialScore\n  "
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def gameWinners (gryffindor: Nat × SnitchResult) (slytherin: Nat\
+  \ × SnitchResult) : String :=\n  sorry\n"
+"vc-theorems": "theorem game_winners_valid_output (g s: Nat × SnitchResult) : \n \
+  \ let result := gameWinners g s\n  result = \"Gryffindor wins!\" ∨ result = \"Slytherin\
+  \ wins!\" ∨ result = \"It's a draw!\" := by\n  sorry\n\n\ntheorem game_winners_correct_result\
+  \ (g s: Nat × SnitchResult) :\n  let g_score := calculateScore g.1 g.2\n  let s_score\
+  \ := calculateScore s.1 s.2\n  let result := gameWinners g s\n  (result = \"Gryffindor\
+  \ wins!\" ↔ g_score > s_score) ∧\n  (result = \"Slytherin wins!\" ↔ s_score > g_score)\
+  \ ∧\n  (result = \"It's a draw!\" ↔ g_score = s_score) := by\n  sorry\n\n\ntheorem\
+  \ equal_scores_no_snitch (score: Nat) :\n  gameWinners (score, SnitchResult.No)\
+  \ (score, SnitchResult.No) = \"It's a draw!\" := by\n  sorry\n\n\ntheorem only_one_snitch_possible\
+  \ (score: Nat) :\n  gameWinners (score, SnitchResult.Yes) (score, SnitchResult.Yes)\
+  \ = \"It's a draw!\" := by\n  sorry\n\n/--\ninfo: 'Gryffindor wins!'\n-/\n#guard_msgs\
+  \ in\n#eval game_winners [100, \"yes\"] [100, \"no\"]\n\n/--\ninfo: 'Slytherin wins!'\n\
+  -/\n#guard_msgs in\n#eval game_winners [350, \"no\"] [250, \"yes\"]\n\n/--\ninfo:\
+  \ \"It's a draw!\"\n-/\n#guard_msgs in\n#eval game_winners [100, \"yes\"] [250,\
+  \ \"no\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

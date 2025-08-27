@@ -1,0 +1,39 @@
+"vc-description": "You are given an array with $N$ integers: $A[1], A[2], \\ldots,\
+  \ A[N]$ (where $N$ is even). You are allowed to permute the elements however you\
+  \ want. Say, after permuting the elements, you end up with the array $A'[1], A'[2],\
+  \ \\ldots, A'[N]$. Your goal is to maximize the following sum:\n|A′[1]−A′[2]| +\
+  \ |A′[3]−A′[4]| + ... + |A′[N−1]−A′[N]||A′[1]−A′[2]| + |A′[3]−A′[4]| + ... + |A′[N−1]−A′[N]|\n\
+  |A'[1] - A'[2]| \\ + \\ |A'[3] - A'[4]| \\ + \\ ... \\ + \\ |A'[N - 1] - A'[N]|\n\
+  \nHere, $|x|$ denotes the absolute value of $x$.\nYou have to print the maximum\
+  \ sum achievable.\n\n-----Input-----\n- The first line contains $T$, the number\
+  \ of test cases.\n- Each test case starts with an integer $N$ in the first line.\n\
+  - The second line of each test case contains $N$ space separated integers, denoting\
+  \ the values of array $A$.\n\n-----Output-----\nFor each test case, output the maximum\
+  \ sum achievable in a new line.\n\n-----Constraints-----\n- $1 \\le T \\le 10^5$\n\
+  - $1 \\le N \\le 10^5$\n- $N$ is even\n- $|A[i]| \\le 10^9$\n- Sum of $N$ over all\
+  \ test cases $\\le 2 * 10^5$\n\n-----Example Input 1-----\n1\n4\n1 -3 2 -3\n\n-----Example\
+  \ Output 1-----\n9\n\n-----Explanation 1-----\nThe original array is {$1, -3, 2,\
+  \ -3$}. Suppose you permute it and get the array {$2, 1, -3, -3$}. Then the corresponding\
+  \ sum would be $|2 - 1| \\ + \\ |-3 - (-3)| = 1 + 0 = 1$.\nBut suppose you permute\
+  \ it differently and get the array {$-3, 2, 1, -3$}. Then the corresponding sum\
+  \ would be $|-3 - 2| \\ + \\ |1 - (-3)| = 5 + 4 = 9$. You can check that you cannot\
+  \ do any better, and hence the answer is 9."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_abs_sum_pairs (n : Nat) (arr : List Int) : Int :=\n  sorry\n\
+  \n-- Length of input array is even and at least 2"
+"vc-theorems": "theorem max_abs_sum_pairs_input_valid (n : Nat) (arr : List Int) :\n\
+  \  n ≥ 2 → n % 2 = 0 → arr.length = n := by\n  sorry\n\n\ntheorem max_abs_sum_pairs_non_negative\
+  \ (n : Nat) (arr : List Int) :\n  max_abs_sum_pairs n arr ≥ 0 := by \n  sorry\n\n\
+  \ntheorem max_abs_sum_pairs_preserves_length (n : Nat) (arr : List Int) :\n  arr.length\
+  \ = n := by\n  sorry\n\n\ntheorem max_abs_sum_pairs_same_elements (n : Nat) (arr\
+  \ : List Int) :\n  List.length arr = n := by\n  sorry\n\n\ntheorem max_abs_sum_pairs_bounded\
+  \ (n : Nat) (arr : List Int) (bound : Int) : \n  (∀ x ∈ arr, -1000 ≤ x ∧ x ≤ 1000)\
+  \ →\n  max_abs_sum_pairs n arr ≤ bound := by\n  sorry\n\n\ntheorem max_abs_sum_pairs_achieves_maximum\
+  \ (n : Nat) (arr : List Int) (max : Int) :\n  max_abs_sum_pairs n arr = max := by\n\
+  \  sorry\n\n\ntheorem max_abs_sum_pairs_zero_array (n : Nat) :\n  n ≥ 2 → n % 2\
+  \ = 0 →\n  max_abs_sum_pairs n (List.replicate n 0) = 0 := by\n  sorry\n\n/--\n\
+  info: 9\n-/\n#guard_msgs in\n#eval max_abs_sum_pairs 4 [1, -3, 2, -3]\n\n/--\ninfo:\
+  \ 10\n-/\n#guard_msgs in\n#eval max_abs_sum_pairs 2 [5, -5]\n\n/--\ninfo: 12\n-/\n\
+  #guard_msgs in\n#eval max_abs_sum_pairs 6 [1, 2, 3, -1, -2, -3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

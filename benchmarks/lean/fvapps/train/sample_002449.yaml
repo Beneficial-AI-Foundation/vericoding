@@ -1,0 +1,28 @@
+"vc-description": "=====Problem Statement=====\nYou are asked to ensure that the first\
+  \ and last names of people begin with a capital letter in their passports. For example,\
+  \ alison heck should be capitalised correctly as Alison Heck. \n\nalison heck =>\
+  \ Alison Heck\n\nGiven a full name, your task is to capitalize the name appropriately.\n\
+  \n=====Input Format=====\nA single line of input containing the full name, S.\n\n\
+  =====Constraints=====\n0<len(S)<1000\nThe string consists of alphanumeric characters\
+  \ and spaces.\n\nNote: in a word only the first character is capitalized. Example\
+  \ 12abc when capitalized remains 12abc.\n\n=====Output Format=====\nPrint the capitalized\
+  \ string, S."
+"vc-preamble": "import Imports.AllImports\n\ndef toString (s : List Char) : String\
+  \ := sorry\ndef capitalize_name (s : String) : String := sorry\n\ndef splitOn (s\
+  \ : String) (p : Char → Bool) : List String := sorry\ndef front (s : String) : Char\
+  \ := sorry\n\ndef drop (s : String) (n : Nat) : String := sorry\ndef isAlpha (c\
+  \ : Char) : Bool := sorry\n\ndef isUpper (c : Char) : Bool := sorry\ndef toLower\
+  \ (s : String) : String := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def length (s : String) : Nat := sorry\n\ntheorem capitalize_name_preserves_word_count\
+  \ (s : String) :\n  (splitOn (capitalize_name s) (fun x => x = ' ')).length = \n\
+  \  (splitOn s (fun x => x = ' ')).length := sorry\n"
+"vc-theorems": "theorem words_start_with_uppercase (s : String) (word : String) :\n\
+  \  word ∈ splitOn (capitalize_name s) (fun x => x = ' ') →\n  word.length > 0 →\n\
+  \  isAlpha (word.front) →\n  isUpper (word.front) ∧ word.drop 1 = toLower (word.drop\
+  \ 1) := sorry\n\n\ntheorem whitespace_only_preserves_length (s : String) :\n  (∀\
+  \ c ∈ s.data, c = ' ') →\n  (splitOn (capitalize_name s) (fun x => x = ' ')).length\
+  \ = \n  (splitOn s (fun x => x = ' ')).length := sorry\n\n\ntheorem non_alpha_preserved\
+  \ (s : String) :\n  (∀ c ∈ s.data, !isAlpha c) → \n  s.length > 0 →\n  capitalize_name\
+  \ s = s := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

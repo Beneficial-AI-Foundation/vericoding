@@ -1,0 +1,17 @@
+"vc-description": "Create a function that returns the average of an array of numbers\
+  \ (\"scores\"), rounded to the nearest whole number. You are not allowed to use\
+  \ any loops (including for, for/in, while, and do/while loops)."
+"vc-preamble": "import Imports.AllImports\n\ndef average (l : List Int) : Int :=\n\
+  \  sorry\n\n\ndef list_min (l : List Int) : Int :=\n  sorry\n\n\ndef list_max (l\
+  \ : List Int) : Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_sum (l : List Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem average_in_range (l : List Int) (h : l ≠ []) :\n  let result\
+  \ := average l\n  let min_val := list_min l\n  let max_val := list_max l\n  min_val\
+  \ ≤ result ∧ result ≤ max_val := by\n  sorry\n\n\ntheorem average_close_to_mean\
+  \ (l : List Int) (h : l ≠ []) :\n  let result := average l\n  let mean := (list_sum\
+  \ l) / (List.length l)\n  (result - mean) < 1 ∧ (mean - result) < 1 := by\n  sorry\n\
+  \n\ntheorem average_shift (l : List Int) (shift : Int) (h : l ≠ []) :\n  average\
+  \ (List.map (· + shift) l) = average l + shift := by\n  sorry\n\n\ntheorem average_empty\
+  \ :\n  average [] = 0 ∧ False := by\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

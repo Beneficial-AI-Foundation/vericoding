@@ -1,0 +1,36 @@
+"vc-description": "We like parsed SQL or PL/SQL blocks...\n\nYou need to write function\
+  \ that return list of literals indices from source block, excluding \"in\" comments,\
+  \ OR return empty list if no literals found.\n\ninput:\nsome fragment of sql or\
+  \ pl/sql code\n\noutput:\nlist of literals indices [(start, end), ...] OR empty\
+  \ list\n\nSample:\n```\nget_textliterals(\"'this' is sample\") -> [(0,6)]\nget_textliterals(\"\
+  'this' is sample 'too'\") -> [(0, 6), (15, 20)]\n```\n\nText literal: any text between\
+  \ single quotes\nSample:\n```\n  s := 'i am literal'\n```\nSingle-line comment:\
+  \ any text started with \"--\" \nSample:\n```\n  a := 1;\n  -- this is single-line\
+  \ comment\n```\nMulty-line comment: any text between /* */\n```\n  a := 1;\n  /*\n\
+  \  this is long multy-line comment\n  */\n```\n\nNote: \n1) handle single quote\
+  \ inside literal\n```\n  s := 'we can use quote '' in literal'\n```  \n2) multy-line\
+  \ literal\n```\n s := '\n this is literal too\n ';\n```\n3) skip literal inside\
+  \ comment\n```\ns := 'test'; --when comment started - this is not 'literal'\n```\n\
+  4) any unclosed literal should be closed with last symbol of the source fragment\n\
+  ```\ns := 'test\n```\nThere is one literal in this code: \"'test\""
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_textliterals (code : String) : List (Nat × Nat) := sorry\n\
+  \n/-- Valid result format ensures result is list of natural number pairs -/"
+"vc-theorems": "theorem valid_result_format (code : String) :\n  ∀ result : List (Nat\
+  \ × Nat), result = get_textliterals code → \n  ∀ p ∈ result, ∃ (s e : Nat), p =\
+  \ (s, e) := sorry\n\n/-- All ranges in result are valid positions within code length\
+  \ -/\n\ntheorem valid_ranges (code : String) :\n  ∀ p ∈ get_textliterals code, \n\
+  \  let (s, e) := p\n  s < e ∧ e ≤ code.length := sorry\n\n/-- All result ranges\
+  \ start and end with single quotes -/\n\ntheorem valid_quotes (code : String) :\n\
+  \  ∀ p ∈ get_textliterals code,\n  let (s, e) := p\n  s < code.length ∧ e ≤ code.length\
+  \ →\n  code.data[s]! = '\\'' ∧ \n  code.data[e - 1]! = '\\'' := sorry\n\n/-- Result\
+  \ ranges are non-overlapping and ordered -/\n\ntheorem non_overlapping (code : String)\
+  \ :\n  ∀ i, i < (get_textliterals code).length - 1 →\n  let ranges := get_textliterals\
+  \ code\n  let p₁ := ranges[i]!\n  let p₂ := ranges[i+1]!\n  p₁.2 ≤ p₂.1 := sorry\n\
+  \n/-- Result ranges do not contain SQL comments -/\n\ntheorem no_comments (code\
+  \ : String) :\n  ∀ p ∈ get_textliterals code,\n  let (s, e) := p\n  s < code.length\
+  \ ∧ e ≤ code.length →\n  ¬ (∃ i, i ≥ s ∧ i + 1 < e ∧\n    ((code.data[i]! = '/'\
+  \ ∧ code.data[i+1]! = '*') ∨\n     (code.data[i]! = '*' ∧ code.data[i+1]! = '/')\
+  \ ∨\n     (code.data[i]! = '-' ∧ code.data[i+1]! = '-'))) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,20 @@
+"vc-description": "Complete the function that takes 3 numbers `x, y and k` (where\
+  \ `x ≤ y`), and returns the number of integers within the range `[x..y]` (both ends\
+  \ included) that are divisible by `k`.\n\nMore scientifically:  `{ i : x ≤ i ≤ y,\
+  \ i mod k = 0 }`\n\n\n## Example\n\nGiven ```x = 6, y = 11, k = 2``` the function\
+  \ should return `3`, because there are three numbers divisible by `2` between `6`\
+  \ and `11`: `6, 8, 10`\n\n- **Note**: The test cases are very large. You will need\
+  \ a O(log n) solution or better to pass. (A constant time solution is possible.)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def divisible_count (x : Nat) (y : Nat) (k : Nat) : Nat :=\n  sorry\n\
+  \n\n"
+"vc-theorems": "theorem divisible_count_zero_width (x k : Nat) (h : k > 0) :\n  divisible_count\
+  \ x (x-1) k = 0 :=\n  sorry\n\n\ntheorem divisible_count_step (x y k : Nat) (h :\
+  \ k > 0) (h2 : (y + 1) % k = 0) :\n  divisible_count x (y + k) k = divisible_count\
+  \ x y k + 1 :=\n  sorry\n\n\ntheorem divisible_count_periodic (x k : Nat) (h : k\
+  \ > 0) :\n  divisible_count x (x + k - 1) k = divisible_count (x + k) (x + 2*k -\
+  \ 1) k :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval divisible_count 6\
+  \ 11 2\n\n/--\ninfo: 20\n-/\n#guard_msgs in\n#eval divisible_count 11 345 17\n\n\
+  /--\ninfo: 1\n-/\n#guard_msgs in\n#eval divisible_count 0 1 7\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

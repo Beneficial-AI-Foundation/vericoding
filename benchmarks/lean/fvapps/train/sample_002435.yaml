@@ -1,0 +1,30 @@
+"vc-description": "Given a list of strings words representing an English Dictionary,\
+  \ find the longest word in words that can be built one character at a time by other\
+  \ words in words.  If there is more than one possible answer, return the longest\
+  \ word with the smallest lexicographical order.  If there is no answer, return the\
+  \ empty string.\n\nExample 1:\n\nInput: \nwords = [\"w\",\"wo\",\"wor\",\"worl\"\
+  , \"world\"]\nOutput: \"world\"\nExplanation: \nThe word \"world\" can be built\
+  \ one character at a time by \"w\", \"wo\", \"wor\", and \"worl\".\n\n\n\nExample\
+  \ 2:\n\nInput: \nwords = [\"a\", \"banana\", \"app\", \"appl\", \"ap\", \"apply\"\
+  , \"apple\"]\nOutput: \"apple\"\nExplanation: \nBoth \"apply\" and \"apple\" can\
+  \ be built from other words in the dictionary. However, \"apple\" is lexicographically\
+  \ smaller than \"apply\".\n\n\n\nNote:\nAll the strings in the input will only contain\
+  \ lowercase letters.\nThe length of words will be in the range [1, 1000].\nThe length\
+  \ of words[i] will be in the range [1, 30]."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def lengthLex (s₁ s₂ : String) : Bool := sorry\n\ndef longest_word\
+  \ (words : List String) : String := sorry\n"
+"vc-theorems": "theorem longest_word_prefixes_exist (words : List String) \n  (h :\
+  \ words ≠ []) : \n  let result := longest_word words\n  ∀ i, 1 ≤ i → i < result.length\
+  \ → \n  ∃ w ∈ words, result.take i = w :=\nsorry\n\n\ntheorem longest_word_is_maximal\
+  \ (words : List String)\n  (h : words ≠ []) :\n  let result := longest_word words\n\
+  \  ∀ word ∈ words,\n    (word.length > result.length → \n      ∃ i, 1 ≤ i ∧ i <\
+  \ word.length ∧ \n      (∀ w ∈ words, word.take i ≠ w)) ∧\n    (word.length = result.length\
+  \ ∧ lengthLex word result → \n      ∃ i, 1 ≤ i ∧ i < word.length ∧\n      (∀ w ∈\
+  \ words, word.take i ≠ w)) :=\nsorry\n\n/--\ninfo: 'world'\n-/\n#guard_msgs in\n\
+  #eval longest_word [\"w\", \"wo\", \"wor\", \"worl\", \"world\"]\n\n/--\ninfo: 'apple'\n\
+  -/\n#guard_msgs in\n#eval longest_word [\"a\", \"banana\", \"app\", \"appl\", \"\
+  ap\", \"apply\", \"apple\"]\n\n/--\ninfo: 'a'\n-/\n#guard_msgs in\n#eval longest_word\
+  \ [\"a\", \"b\", \"c\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,24 @@
+"vc-description": "Chef has recently been playing a lot of chess in preparation for\
+  \ the ICCT (International Chef Chess Tournament).\nSince putting in long hours is\
+  \ not an easy task, Chef's mind wanders elsewhere. He starts counting the number\
+  \ of squares with odd side length on his chessboard..\nHowever, Chef is not satisfied.\
+  \ He wants to know the number of squares of odd side length on a generic $N*N$ chessboard.\n\
+  \n-----Input:-----\n- The first line will contain a single integer $T$, the number\
+  \ of test cases.\n- The next $T$ lines will have a single integer $N$, the size\
+  \ of the chess board.\n\n-----Output:-----\nFor each test case, print a integer\
+  \ denoting the number of squares with odd length.\n\n-----Constraints-----\n- $1\
+  \ \\leq T \\leq 100$\n- $1 \\leq N \\leq 1000$\n\n-----Sample Input:-----\n2\n3\n\
+  8\n\n-----Sample Output:-----\n10\n120"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_odd_squares (n : Int) : Int := sorry\n\ntheorem count_odd_squares_positive\
+  \ (n : Int) : \n  n > 0 → count_odd_squares n > 0 := sorry\n"
+"vc-theorems": "theorem count_odd_squares_odd_numbers (n : Int) (hn : n > 0) :\n \
+  \ n % 2 = 1 → count_odd_squares n = Nat.sum (List.filter (fun i => i % 2 = 1) (List.range\
+  \ (n.toNat))) := sorry\n\n\ntheorem count_odd_squares_monotonic (n : Int) :\n  n\
+  \ > 1 → count_odd_squares n > count_odd_squares (n-1) := sorry\n\n\ntheorem count_odd_squares_nonpositive\
+  \ (n : Int) :\n  n ≤ 0 → count_odd_squares n = 0 := sorry\n\n/--\ninfo: 10\n-/\n\
+  #guard_msgs in\n#eval count_odd_squares 3\n\n/--\ninfo: 120\n-/\n#guard_msgs in\n\
+  #eval count_odd_squares 8\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_odd_squares\
+  \ 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

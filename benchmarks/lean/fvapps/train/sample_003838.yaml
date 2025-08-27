@@ -1,0 +1,21 @@
+"vc-description": "Your team is writing a fancy new text editor and you've been tasked\
+  \ with implementing the line numbering.\n\nWrite a function which takes a list of\
+  \ strings and returns each line prepended by the correct number.\n\nThe numbering\
+  \ starts at 1. The format is `n: string`. Notice the colon and space in between.\n\
+  \n**Examples:**\n\n```python\nnumber([]) # => []\nnumber([\"a\", \"b\", \"c\"])\
+  \ # => [\"1: a\", \"2: b\", \"3: c\"]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def number (lines : List String) : List String := sorry \n\ntheorem\
+  \ number_same_length (lines : List String) :\n  (number lines).length = lines.length\
+  \ := sorry\n"
+"vc-theorems": "theorem number_format_get {lines : List String} {i : Nat} (h : i <\
+  \ lines.length) :\n  (number lines).get ⟨i, by {\n    rw [number_same_length]\n\
+  \    exact h\n  }⟩ = s!\"{i+1}: {lines.get ⟨i, h⟩}\" := sorry\n\n\ntheorem number_handles_all_strings\
+  \ {lines : List String} :\n  number lines = List.map (fun i => s!\"{i+1}: {lines.get\
+  \ ⟨i, by sorry⟩}\") \n    (List.range lines.length) := sorry\n\n\ntheorem number_empty_input\
+  \ :\n  number [] = [] := sorry\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval number\
+  \ []\n\n/--\ninfo: ['1: a', '2: b', '3: c']\n-/\n#guard_msgs in\n#eval number [\"\
+  a\", \"b\", \"c\"]\n\n/--\ninfo: ['1: ', '2: ', '3: ']\n-/\n#guard_msgs in\n#eval\
+  \ number [\"\", \"\", \"\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,23 @@
+"vc-description": "Implement a function called makeAcronym that returns the first\
+  \ letters of each word in a passed in string.\n\nMake sure the letters returned\
+  \ are uppercase.\n\nIf the value passed in is not a string return 'Not a string'.\n\
+  \nIf the value passed in is a string which contains characters other than spaces\
+  \ and alphabet letters, return 'Not letters'.\n\nIf the string is empty, just return\
+  \ the string itself: \"\".\n\n**EXAMPLES:**\n```\n'Hello codewarrior' -> 'HC'\n\n\
+  'a42' -> 'Not letters'\n\n42 -> 'Not a string'\n\n[2,12] -> 'Not a string'\n\n{name:\
+  \ 'Abraham'} -> 'Not a string'\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def make_acronym (s : String) : String := sorry\n\ntheorem empty_string_returns_empty\
+  \ :\n  make_acronym \"\" = \"\" := sorry\n"
+"vc-theorems": "theorem non_letter_strings_returns_not_letters (s : String) :\n  (∃\
+  \ c ∈ s.data, ¬c.isAlpha ∧ ¬c.isWhitespace) →\n  make_acronym s = \"Not letters\"\
+  \ := sorry\n\n\ntheorem valid_input_produces_uppercase_first_letters (words : List\
+  \ String) : \n  (words.length > 0) →\n  (∀ w ∈ words, w.length > 0 ∧ (∀ c ∈ w.data,\
+  \ c.isAlpha)) →\n  make_acronym (\" \".intercalate words) = \n    String.mk (words.map\
+  \ (λ w => w.data.head!.toUpper)) := sorry\n\n/--\ninfo: 'MAS'\n-/\n#guard_msgs in\n\
+  #eval make_acronym \"My aunt sally\"\n\n/--\ninfo: 'Not a string'\n-/\n#guard_msgs\
+  \ in\n#eval make_acronym [1, 2, 3]\n\n/--\ninfo: 'Not letters'\n-/\n#guard_msgs\
+  \ in\n#eval make_acronym \"a42\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval make_acronym\
+  \ \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

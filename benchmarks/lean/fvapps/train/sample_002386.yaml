@@ -1,0 +1,24 @@
+"vc-description": "Say you have an array for which the ith element is the price of\
+  \ a given stock on day i.\n\nDesign an algorithm to find the maximum profit. You\
+  \ may complete as many transactions as you like (i.e., buy one and sell one share\
+  \ of the stock multiple times).\n\nNote: You may not engage in multiple transactions\
+  \ at the same time (i.e., you must sell the stock before you buy again).\n\nExample\
+  \ 1:\n\n\nInput: [7,1,5,3,6,4]\nOutput: 7\nExplanation: Buy on day 2 (price = 1)\
+  \ and sell on day 3 (price = 5), profit = 5-1 = 4.\n             Then buy on day\
+  \ 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.\n\n\nExample 2:\n\
+  \n\nInput: [1,2,3,4,5]\nOutput: 4\nExplanation: Buy on day 1 (price = 1) and sell\
+  \ on day 5 (price = 5), profit = 5-1 = 4.\n             Note that you cannot buy\
+  \ on day 1, buy on day 2 and sell them later, as you are\n             engaging\
+  \ multiple transactions at the same time. You must sell before buying again.\n\n\
+  \nExample 3:\n\n\nInput: [7,6,4,3,1]\nOutput: 0\nExplanation: In this case, no transaction\
+  \ is done, i.e. max profit = 0."
+"vc-preamble": "import Imports.AllImports\n\ndef maxProfit (prices: List Nat) : Nat\
+  \ :=\n  sorry\n\n\n\n\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def maxPairwiseDiff (prices: List Nat) : Nat :=\n  match prices\
+  \ with\n  | [] => 0\n  | x::xs => match xs with\n    | [] => 0\n    | _ => sorry"
+"vc-theorems": "theorem maxprofit_bounds_pair (a b: Nat) :\n  maxProfit [a, b] = max\
+  \ 0 (b - a) :=\n  sorry\n\n\n\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval maxProfit\
+  \ [7, 1, 5, 3, 6, 4]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval maxProfit [1, 2,\
+  \ 3, 4, 5]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval maxProfit [7, 6, 4, 3, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

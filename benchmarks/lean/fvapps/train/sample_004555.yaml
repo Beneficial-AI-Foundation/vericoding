@@ -1,0 +1,18 @@
+"vc-description": "Description:\n\n#Task:\n\nWrite a function that returns true if\
+  \ the number is a \"Very Even\" number.\n\nIf a number is a single digit, then it\
+  \ is simply \"Very Even\" if it itself is even.\n\nIf it has 2 or more digits, it\
+  \ is \"Very Even\" if the sum of it's digits is \"Very Even\".\n\n\n#Examples:\n\
+  ```\ninput(88) => returns false -> 8 + 8 = 16 -> 1 + 6 = 7 => 7 is odd \n\ninput(222)\
+  \ => returns true\n\ninput(5) => returns false\n\ninput(841) => returns true ->\
+  \ 8 + 4 + 1 = 13 -> 1 + 3 => 4 is even\n```\n\nNote: The numbers will always be\
+  \ 0 or positive integers!"
+"vc-preamble": "import Imports.AllImports\n\ndef is_very_even_number (n : Nat) : Bool\
+  \ := sorry\n\ndef digitSum (n : Nat) : Nat := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def singleDigitSum (n : Nat) : Nat := sorry\n\ntheorem very_even_single_digit\
+  \ (n : Nat) :\n  n < 10 → is_very_even_number n = (n % 2 = 0) := sorry\n"
+"vc-theorems": "theorem very_even_digit_sum (n : Nat) :\n  is_very_even_number n =\
+  \ (singleDigitSum n % 2 = 0) := sorry\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
+  #eval is_very_even_number 88\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_very_even_number\
+  \ 222\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_very_even_number 841\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,20 @@
+"vc-description": "Given two numbers, hour and minutes. Return the smaller angle (in\
+  \ degrees) formed between the hour and the minute hand.\n \nExample 1:\n\nInput:\
+  \ hour = 12, minutes = 30\nOutput: 165\n\nExample 2:\n\nInput: hour = 3, minutes\
+  \ = 30\nOutput: 75\n\nExample 3:\n\nInput: hour = 3, minutes = 15\nOutput: 7.5\n\
+  \nExample 4:\nInput: hour = 4, minutes = 50\nOutput: 155\n\nExample 5:\nInput: hour\
+  \ = 12, minutes = 0\nOutput: 0\n\n \nConstraints:\n\n1 <= hour <= 12\n0 <= minutes\
+  \ <= 59\nAnswers within 10^-5 of the actual value will be accepted as correct."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def angle_between_hands (hour : Nat) (minutes : Nat) : Float :=\
+  \ sorry \n\ntheorem angle_between_hands_returns_valid_angle \n  (hour : Nat) (minutes\
+  \ : Nat)\n  (h1 : 1 ≤ hour ∧ hour ≤ 12) \n  (h2 : minutes ≤ 59) :\n  0 ≤ angle_between_hands\
+  \ hour minutes ∧ \n  angle_between_hands hour minutes ≤ 180 := sorry\n"
+"vc-theorems": "theorem angle_calculation_periodic\n  (hour : Nat) (minutes : Nat)\n\
+  \  (h1 : 1 ≤ hour ∧ hour ≤ 12)\n  (h2 : minutes ≤ 59) :\n  (angle_between_hands\
+  \ hour minutes - \n   angle_between_hands (if hour ≠ 12 then hour else 12) minutes)\
+  \ < 0.00001 := sorry\n\n\ntheorem angle_is_minimal\n  (hour : Nat) (minutes : Nat)\
+  \ \n  (h1 : 1 ≤ hour ∧ hour ≤ 12)\n  (h2 : minutes ≤ 59) :\n  angle_between_hands\
+  \ hour minutes ≤ 180 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

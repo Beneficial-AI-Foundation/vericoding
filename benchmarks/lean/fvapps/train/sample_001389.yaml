@@ -1,0 +1,34 @@
+"vc-description": "You are given an array $A$ of $N$ positive and pairwise distinct\
+  \ integers. \nYou can permute the elements in any way you want. \nThe cost of an\
+  \ ordering $(A_1, A_2, \\ldots, A_N)$ is defined as $ (((A_1 \\bmod A_2) \\bmod\
+  \ A_3)......) \\bmod A_N$ where $X \\bmod Y$ means the remainder when $X$ is divided\
+  \ by $Y$. \nYou need to find the maximum cost which can be attained through any\
+  \ possible ordering of the elements.\n\n-----Input:-----\n- The first line contains\
+  \ $T$ denoting the number of test cases.\n- The first line of each testcase contains\
+  \ a single integer $N$. \n- The second line of each testcase contains $N$ space-separated\
+  \ integers, the elements of $A$. \n\n-----Output:-----\n- For each testcase, output\
+  \ the maximum possible cost in a new line. \n\n-----Constraints-----\n- $1 \\leq\
+  \ T \\leq 5*10^5$\n- $2 \\leq N \\leq 5*10^5$\n- $1 \\leq A_i  \\leq 10^9$\n- Sum\
+  \ of $N$ over all testcases is less than or equal to $10^6$\n- All elements in a\
+  \ single testcase are distinct.\n\n-----Subtasks-----\n- 100 points : Original constraints.\n\
+  \n-----Sample Input:-----\n1\n2\n7 12\n\n-----Sample Output:-----\n7\n\n-----Explanation:-----\n\
+  The two possible ways to order the elements are [7, 12] and [12, 7]. In the first\
+  \ case, the cost is $7 \\bmod 12 = 7$ and in the second case the cost is $12 \\\
+  bmod 7 = 5$. Clearly the answer is 7."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_max_cost (n : Nat) (arr : List Int) : Int := sorry\n\n\
+  theorem find_max_cost_is_min {n : Nat} {arr : List Int}\n  (h1 : n = arr.length)\n\
+  \  (h2 : n > 0)\n  (h3 : ∀ x ∈ arr, x > 0)\n  (h4 : ∀ x ∈ arr, x ≤ 1000) :\n  ∀\
+  \ y ∈ arr, find_max_cost n arr ≤ y := sorry\n"
+"vc-theorems": "theorem find_max_cost_in_list {n : Nat} {arr : List Int}\n  (h1 :\
+  \ n = arr.length)\n  (h2 : n > 0)\n  (h3 : ∀ x ∈ arr, x > 0) :\n  find_max_cost\
+  \ n arr ∈ arr := sorry\n\n\ntheorem find_max_cost_order_invariant {n : Nat} {arr₁\
+  \ arr₂ arr₃ : List Int}\n  (h1 : n = arr₁.length)\n  (h2 : n = arr₂.length)\n  (h3\
+  \ : n = arr₃.length)\n  (h4 : n > 1)\n  (h5 : ∀ x ∈ arr₁, x > 0)\n  (h6 : arr₂.toArray\
+  \ = arr₁.toArray)\n  (h7 : arr₃.toArray = arr₁.toArray) :\n  find_max_cost n arr₁\
+  \ = find_max_cost n arr₂ ∧ \n  find_max_cost n arr₂ = find_max_cost n arr₃ := sorry\n\
+  \n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval find_max_cost 2 #[7, 12]\n\n/--\ninfo:\
+  \ 5\n-/\n#guard_msgs in\n#eval find_max_cost 3 #[5, 8, 10]\n\n/--\ninfo: 3\n-/\n\
+  #guard_msgs in\n#eval find_max_cost 4 #[3, 7, 11, 15]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

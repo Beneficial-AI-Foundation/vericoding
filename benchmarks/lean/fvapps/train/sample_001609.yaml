@@ -1,0 +1,39 @@
+"vc-description": "Finally the clowns of Synapse have decided to take their site online.\
+  \ The convener of the clowns has heard from somewhere that knowing URI's is very\
+  \ important for their website, so kindly help him with this task.\n\nUniform Resource\
+  \ Identifiers (or URIs) are strings like\nhttp://synapse.daiict.ac.in/codemutants/,\
+  \ mailto:clown_convener@synapse.daiict.ac.in,\nftp://10.100.93.93/night_halters,\
+  \ or even just output.txt that are\nused to identify a resource, usually on the\
+  \ Internet or a local computer.\nCertain characters are reserved within URIs, and\
+  \ if a reserved character is\npart of an identifier then it must be percent-encoded\
+  \ by\nreplacing it with a percent sign followed by two hexadecimal digits\nrepresenting\
+  \ the ASCII code of the character. A table of seven reserved\ncharacters and their\
+  \ encodings is shown below. Your job is to write a\nprogram that can percent-encode\
+  \ a string of characters.CharacterEncoding\" \" (space)%20\"!\" (exclamation point)%21\"\
+  $\" (dollar sign)%24\"%\" (percent sign)%25\"(\" (left parenthesis)%28\")\" (right\
+  \ parenthesis)%29\"*\" (asterisk)%2a\nInput: The input consists of one or more strings,\
+  \ each\n1–79 characters long and on a line by itself, followed by a line\ncontaining\
+  \ only \"#\" that signals the end of the input. The character \"#\" is\nused only\
+  \ as an end-of-input marker and will not appear anywhere else in the\ninput. A string\
+  \ may contain spaces, but not at the beginning or end of the\nstring, and there\
+  \ will never be two or more consecutive spaces.\nOutput: For each input string,\
+  \ replace every occurrence of a\nreserved character in the table above by its percent-encoding,\
+  \ exactly as\nshown, and output the resulting string on a line by itself. Note that\
+  \ the\npercent-encoding for an asterisk is %2a (with a lowercase \"a\") rather than\n\
+  %2A (with an uppercase \"A\").\n\n-----Example-----\nInput:\nHappy Joy Joy!\nhttp://synapse.daiict.ac.in/\n\
+  plain_vanilla\n(**)\n?\nthe 7% solution\n#\n\nOutput:\nHappy%20Joy%20Joy%21\nhttp://synapse.daiict.ac.in/\n\
+  plain_vanilla\n%28%2a%2a%29\n?\nthe%207%25%20solution"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def encode_uri : List String → List String := sorry\n\ndef encodings\
+  \ : List (String × String) := [\n  (\" \", \"%20\"),\n  (\"!\", \"%21\"), \n  (\"\
+  $\", \"%24\"),\n  (\"%\", \"%25\"),\n  (\"(\", \"%28\"),\n  (\")\", \"%29\"),\n\
+  \  (\"*\", \"%2a\")\n]\n"
+"vc-theorems": "theorem encode_uri_properties (strings : List String) (h : strings\
+  \ ≠ []) :\n  let result := encode_uri (strings ++ [\"#\"]);\n  (∀ s ∈ result, s.data\
+  \ ≠ []) ∧ \n  (result.length ≤ strings.length) ∧\n  (∀ encoded ∈ result, ∃ orig\
+  \ ∈ strings,\n    (List.foldl (fun acc (p : String × String) => \n      acc.replace\
+  \ p.snd p.fst) encoded encodings) = orig) :=\nsorry\n\n\ntheorem encode_uri_terminates\
+  \ (strings : List String) \n  (h : ∀ s ∈ strings, s.data ≠ []) :\n  encode_uri (strings\
+  \ ++ [\"#\"] ++ strings) = \n  encode_uri (strings ++ [\"#\"]) :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

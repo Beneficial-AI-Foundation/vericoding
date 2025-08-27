@@ -1,0 +1,40 @@
+"vc-description": "# Background\n\n\nMy TV remote control has arrow buttons and an\
+  \ `OK` button.\n\nI can use these to move a \"cursor\" on a logical screen keyboard\
+  \ to type words...\n\n# Keyboard\n\nThe screen \"keyboard\" layout looks like this\n\
+  \n\n  #tvkb {\n    width : 400px;\n    border: 5px solid gray; border-collapse:\
+  \ collapse;\n  }\n  #tvkb td {\n    color : orange;\n    background-color : black;\n\
+  \    text-align : center;\n    border: 3px solid gray; border-collapse: collapse;\n\
+  \  }\n\n\nabcde123\nfghij456\nklmno789\npqrst.@0\nuvwxyz_/\naASP\n\n\n\n* `aA` is\
+  \ the SHIFT key. Pressing this key toggles alpha characters between UPPERCASE and\
+  \ lowercase\n* `SP` is the space character\n* The other blank keys in the bottom\
+  \ row have no function\n\n# Kata task\n\nHow many button presses on my remote are\
+  \ required to type the given `words`?\n\n## Hint\n\nThis Kata is an extension of\
+  \ the earlier ones in this series. You should complete those first.\n\n## Notes\n\
+  \n* The cursor always starts on the letter `a` (top left)\n* The alpha characters\
+  \ are initially lowercase (as shown above)\n* Remember to also press `OK` to \"\
+  accept\" each letter\n* Take the shortest route from one letter to the next\n* The\
+  \ cursor wraps, so as it moves off one edge it will reappear on the opposite edge\n\
+  * Although the blank keys have no function, you may navigate through them if you\
+  \ want to\n* Spaces may occur anywhere in the `words` string\n* Do not press the\
+  \ SHIFT key until you need to. For example, with the word `e.Z`, the SHIFT change\
+  \ happens **after** the `.` is pressed (not before)\n \n# Example\n\nwords = `Code\
+  \ Wars`\n\n* C => `a`-`aA`-OK-`A`-`B`-`C`-OK = 6\n* o => `C`-`B`-`A`-`aA`-OK-`u`-`v`-`w`-`x`-`y`-`t`-`o`-OK\
+  \ = 12\n* d => `o`-`j`-`e`-`d`-OK = 4\n* e => `d`-`e`-OK = 2\n* space => `e`-`d`-`c`-`b`-`SP`-OK\
+  \ = 5\n* W => `SP`-`aA`-OK-`SP`-`V`-`W`-OK = 6\n* a => `W`-`V`-`U`-`aA`-OK-`a`-OK\
+  \ = 6\n* r => `a`-`f`-`k`-`p`-`q`-`r`-OK = 6\n* s => `r`-`s`-OK = 2\n\nAnswer =\
+  \ 6 + 12 + 4 + 2 + 5 + 6 + 6 + 6 + 2 = 49\n\n\n\n*Good Luck!\nDM.*\n\n\n\nSeries\n\
+  * TV Remote\n* TV Remote (shift and space)\n* TV Remote (wrap)\n* TV Remote (symbols)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def tv_remote (s : String) : Nat := sorry\n\ntheorem tv_remote_non_negative\
+  \ (word : String) : \n  tv_remote word ≥ 0 := sorry\n"
+"vc-theorems": "theorem tv_remote_greater_than_length (word : String) : \n  tv_remote\
+  \ word ≥ word.length := sorry \n\n\ntheorem tv_remote_empty_zero : \n  tv_remote\
+  \ \"\" = 0 := sorry\n\n\ntheorem tv_remote_case_sensitive (word : String) : \n \
+  \ (∃ c ∈ word.data, c.isAlpha) → \n  tv_remote (word.map Char.toUpper) ≠ tv_remote\
+  \ (word.map Char.toLower) := sorry\n\n\ntheorem tv_remote_spaces (spaces : String)\
+  \ : \n  (∀ c ∈ spaces.data, c = ' ') → \n  spaces.length > 0 → \n  tv_remote spaces\
+  \ ≥ spaces.length := sorry\n\n/--\ninfo: 49\n-/\n#guard_msgs in\n#eval tv_remote\
+  \ \"Code Wars\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval tv_remote \"\"\n\n/--\n\
+  info: 5\n-/\n#guard_msgs in\n#eval tv_remote \"   \"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

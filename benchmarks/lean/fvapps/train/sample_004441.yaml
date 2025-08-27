@@ -1,0 +1,20 @@
+"vc-description": "# Feynman's squares\nRichard Phillips Feynman was a well-known\
+  \ American physicist and a recipient of the Nobel Prize in Physics. He worked in\
+  \ theoretical physics and pioneered the field of quantum computing.\n\nRecently,\
+  \ an old farmer found some papers and notes that are believed to have belonged to\
+  \ Feynman. Among notes about mesons and electromagnetism, there was a napkin where\
+  \ he wrote a simple puzzle: \"how many different squares are there in a grid of\
+  \ NxN squares?\".\n\nFor example, when N=2, the answer is 5: the 2x2 square itself,\
+  \ plus the four 1x1 squares in its corners:\n\n\n\n# Task\n\nYou have to write a\
+  \ function\n\n```python\ndef count_squares(n):\n```\n\nthat solves Feynman's question\
+  \ in general. The input to your function will always be a positive integer.\n\n\
+  #Examples\n\n```python\ncount_squares(1) =  1\ncount_squares(2) =  5\ncount_squares(3)\
+  \ = 14\n```\n\n(Adapted from the Sphere Online Judge problem SAMER08F by Diego Satoba)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_squares (n : Int) : Int := sorry\n\n\n\n\n\n\n\ntheorem\
+  \ count_squares_zero :\n  count_squares 0 = 0 := sorry"
+"vc-theorems": "/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_squares 1\n\n/--\ninfo:\
+  \ 5\n-/\n#guard_msgs in\n#eval count_squares 2\n\n/--\ninfo: 14\n-/\n#guard_msgs\
+  \ in\n#eval count_squares 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,39 @@
+"vc-description": "What's in a name?\n..Or rather, what's a name in? For us, a particular\
+  \ string is where we are looking for a name.\n\nTask\n\nTest whether or not the\
+  \ string contains all of the letters which spell a given name, in order.\n\nThe\
+  \ format\nA function passing two strings, searching for one (the name) within the\
+  \ other.\n``function nameInStr(str, name){ return true || false }``\n\nExamples\n\
+  \n    nameInStr(\"Across the rivers\", \"chris\") --> true\n                ^  \
+  \    ^  ^^   ^\n                c      h  ri   s\n                \n    Contains\
+  \ all of the letters in \"chris\", in order.\n----------------------------------------------------------\n\
+  \    nameInStr(\"Next to a lake\", \"chris\") --> false\n    \n    Contains none\
+  \ of the letters in \"chris\".\n--------------------------------------------------------------------\n\
+  \    nameInStr(\"Under a sea\", \"chris\") --> false\n                   ^   ^\n\
+  \                   r   s\n                   \n    Contains only some of the letters\
+  \ in \"chris\".\n--------------------------------------------------------------------\n\
+  \    nameInStr(\"A crew that boards the ship\", \"chris\") --> false\n         \
+  \        cr    h              s i\n                 cr                h  s i  \n\
+  \                 c     h      r       s i\n                 ...\n             \
+  \    \n    Contains all of the letters in \"chris\", but not in order.\n--------------------------------------------------------------------\n\
+  \    nameInStr(\"A live son\", \"Allison\") --> false\n               ^ ^^   ^^^\n\
+  \               A li   son\n                 \n    Contains all of the correct letters\
+  \ in \"Allison\", in order, \n    but not enough of all of them (missing an 'l').\n\
+  \    \n\nNote: testing will _not_ be case-sensitive."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def name_in_str (text name : String) : Bool := sorry\n\ntheorem\
+  \ case_insensitivity (text name : String) :\n  name_in_str text name = name_in_str\
+  \ text.toUpper name ∧\n  name_in_str text name = name_in_str text name.toUpper ∧\n\
+  \  name_in_str text name = name_in_str text.toUpper name.toUpper := sorry\n"
+"vc-theorems": "theorem empty_name_true (text : String) :\n  name_in_str text \"\"\
+  \ = true := sorry\n\n\ntheorem empty_string_false (name : String) :\n  name ≠ \"\
+  \" → name_in_str \"\" name = false := sorry\n\n\ntheorem substring_implies_sequence\
+  \ (text name : String) :\n  (∃ i : Nat, text.toLower.data.take i = name.toLower.data)\
+  \ → \n  name_in_str text name = true := sorry\n\n\ntheorem concatenation_property\
+  \ (text1 text2 name : String) :\n  name_in_str text1 name ∨ name_in_str text2 name\
+  \ →\n  name_in_str (text1 ++ text2) name = true := sorry\n\n/--\ninfo: True\n-/\n\
+  #guard_msgs in\n#eval name_in_str \"Across the rivers\" \"chris\"\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval name_in_str \"Next to a lake\" \"chris\"\n\n\
+  /--\ninfo: False\n-/\n#guard_msgs in\n#eval name_in_str \"A crew that boards the\
+  \ ship\" \"chris\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

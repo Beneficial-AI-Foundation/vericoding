@@ -1,0 +1,13 @@
+"vc-description": "Complete the function that takes a non-negative integer `n` as\
+  \ input, and returns a list of all the powers of 2 with the exponent ranging from\
+  \ 0 to `n` (inclusive).\n\n## Examples\n\n```python\nn = 0  ==> [1]        # [2^0]\n\
+  n = 1  ==> [1, 2]     # [2^0, 2^1]\nn = 2  ==> [1, 2, 4]  # [2^0, 2^1, 2^2]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def powers_of_two (n : Nat) : List Nat := sorry\n\ntheorem powers_of_two_length\
+  \ (n : Nat) :\n  (powers_of_two n).length = n + 1 := sorry\n"
+"vc-theorems": "theorem powers_of_two_first_one (n : Nat) :\n  (powers_of_two n).head!\
+  \ = 1 := sorry\n\n/--\ninfo: [1]\n-/\n#guard_msgs in\n#eval powers_of_two 0\n\n\
+  /--\ninfo: [1, 2]\n-/\n#guard_msgs in\n#eval powers_of_two 1\n\n/--\ninfo: [1, 2,\
+  \ 4, 8, 16]\n-/\n#guard_msgs in\n#eval powers_of_two 4\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

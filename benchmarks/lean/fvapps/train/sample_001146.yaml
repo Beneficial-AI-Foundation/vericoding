@@ -1,0 +1,47 @@
+"vc-description": "Taru likes reading. Every month he gets a copy of the magazine\
+  \ \"BIT\". The magazine contains information about the latest advancements in technology.\
+  \  Taru \n\nreads the book at night and writes the page number to which he has read\
+  \ on a piece of paper so that he can continue from there the next day. But sometimes\
+  \ \n\nthe page number is not printed or is so dull that it is unreadable.  To make\
+  \ matters worse Taru's brother who is really naughty tears of some of the pages\
+  \ of \n\nthe Magazine and throws them in the dustbin. He remembers the number of\
+  \ leaves he had torn but he does not remember which page numbers got removed. When\
+  \ Taru \n\nfinds this out he is furious and wants to beat him up. His brother apologizes,\
+  \ and says he won't ever do this again. But Taru did not want to be easy on him\
+  \ \n\nand he says \"I will leave you only if you help me find the answer to this.\
+  \ I will tell you how many pages (Printed sides) were there in the Magazine plus\
+  \ the \n\npages on which the page numbers were not printed. You already know the\
+  \ number of leaves you tore (T). Can you tell me the expected sum of the page numbers\
+  \ \n\nleft in the Magazine?\" Taru's brother replied \"huh!! This is a coding problem\"\
+  . Please help Taru's brother.\n\nNote: The magazine is like a standard book with\
+  \ all odd page numbers in front and the successive even page number on its back.\
+  \ If the book contains 6 pages, \n\nPage number 1 and Page number 2 are front and\
+  \ back respectively. Tearing a leaf removes both the front and back page numbers.\n\
+  \n\n-----Input-----\nThe first line contains the number of test cases t. 3t lines\
+  \ follow. The first line of each test case contains the number of pages (printed\
+  \ sides) in the \n\nbook. The second line's first integer is F, F integers follow\
+  \ which tell us the numbers of the page numbers not printed. The third line contains\
+  \ a single integer telling us the number of leaves Taru's brother tore.\n\n-----Output-----\n\
+  Output one real number correct up to 4 decimal digits which is equal to the expected\
+  \ sum of the page numbers left in the book.\n\n-----Constraints-----\n\nNumber of\
+  \ printed Sides<=2000. All other values abide by the number of printed sides.\n\n\
+  -----Example-----\nInput:\n2\n10\n2 1 2\n2\n10\n1 8\n0\n\nOutput:\n31.2000\n47.0000"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_expected_sum (num_pages : Nat) (unprinted : List\
+  \ Nat) (num_torn : Nat) : Float := sorry\n\ntheorem identity_property_one :\n  calculate_expected_sum\
+  \ 1 [] 0 = 1 := sorry\n"
+"vc-theorems": "theorem identity_property_two :\n  calculate_expected_sum 2 [] 0 =\
+  \ 3 := sorry\n\n\ntheorem result_non_negative (num_pages : Nat) (unprinted : List\
+  \ Nat) (num_torn : Nat)\n  (h1 : ∀ p ∈ unprinted, p ≤ num_pages)\n  (h2 : num_torn\
+  \ ≤ (num_pages + 1) / 2) :\n  calculate_expected_sum num_pages unprinted num_torn\
+  \ ≥ 0 := sorry\n\n\ntheorem result_upper_bound (num_pages : Nat) (unprinted : List\
+  \ Nat) (num_torn : Nat)\n  (h1 : ∀ p ∈ unprinted, p ≤ num_pages)\n  (h2 : num_torn\
+  \ ≤ (num_pages + 1) / 2) :\n  calculate_expected_sum num_pages unprinted num_torn\
+  \ ≤ Float.ofNat (num_pages * (num_pages + 1) / 2) := sorry\n\n\ntheorem no_modifications\
+  \ (num_pages : Nat) :\n  Float.abs (calculate_expected_sum num_pages [] 0 - Float.ofNat\
+  \ (num_pages * (num_pages + 1) / 2)) < 0.0001 := sorry\n\n\ntheorem unprinted_reduces_sum\
+  \ (num_pages : Nat) (unprinted : List Nat)\n  (h1 : ∀ p ∈ unprinted, p ≤ num_pages)\n\
+  \  (h2 : unprinted ≠ []) :\n  calculate_expected_sum num_pages unprinted 0 ≤ calculate_expected_sum\
+  \ num_pages [] 0 := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

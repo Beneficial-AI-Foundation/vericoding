@@ -1,0 +1,21 @@
+"vc-description": "Initially, there is a Robot at position (0, 0). Given a sequence\
+  \ of its moves, judge if this robot makes a circle, which means it moves back to\
+  \ the original place. \n\n\n\nThe move sequence is represented by a string. And\
+  \ each move is represent by a character. The valid robot moves are R (Right), L\
+  \ (Left), U (Up) and D (down). The output should be true or false representing whether\
+  \ the robot makes a circle.\n\n\nExample 1:\n\nInput: \"UD\"\nOutput: true\n\n\n\
+  \nExample 2:\n\nInput: \"LL\"\nOutput: false"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def judge_circle (s : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem judge_circle_duplicate (moves : String) :\n  judge_circle\
+  \ (moves ++ moves) = judge_circle moves :=\nsorry\n\n\ntheorem judge_circle_empty\
+  \ :\n  judge_circle \"\" = true :=\nsorry\n\n\ntheorem judge_circle_permutation\
+  \ (moves1 moves2 : String) :\n  -- Assuming moves2 is a permutation of moves1\n\
+  \  judge_circle moves1 = judge_circle moves2 :=\nsorry\n\n\ntheorem judge_circle_balanced\
+  \ (n : Nat) (s : String) :\n  -- Assuming s consists of n U's, n D's, n L's, and\
+  \ n R's in some order\n  (s.length = 4 * n) → judge_circle s = true :=\nsorry\n\n\
+  /--\ninfo: True\n-/\n#guard_msgs in\n#eval judge_circle \"UD\"\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval judge_circle \"LL\"\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval judge_circle \"URDL\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

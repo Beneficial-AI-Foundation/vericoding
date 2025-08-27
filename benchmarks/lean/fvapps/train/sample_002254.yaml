@@ -1,0 +1,48 @@
+"vc-description": "There are $n$ athletes in front of you. Athletes are numbered from\
+  \ $1$ to $n$ from left to right. You know the strength of each athlete — the athlete\
+  \ number $i$ has the strength $s_i$.\n\nYou want to split all athletes into two\
+  \ teams. Each team must have at least one athlete, and each athlete must be exactly\
+  \ in one team.\n\nYou want the strongest athlete from the first team to differ as\
+  \ little as possible from the weakest athlete from the second team. Formally, you\
+  \ want to split the athletes into two teams $A$ and $B$ so that the value $|\\max(A)\
+  \ - \\min(B)|$ is as small as possible, where $\\max(A)$ is the maximum strength\
+  \ of an athlete from team $A$, and $\\min(B)$ is the minimum strength of an athlete\
+  \ from team $B$.\n\nFor example, if $n=5$ and the strength of the athletes is $s=[3,\
+  \ 1, 2, 6, 4]$, then one of the possible split into teams is:   first team: $A =\
+  \ [1, 2, 4]$,  second team: $B = [3, 6]$. \n\nIn this case, the value $|\\max(A)\
+  \ - \\min(B)|$ will be equal to $|4-3|=1$. This example illustrates one of the ways\
+  \ of optimal split into two teams.\n\nPrint the minimum value $|\\max(A) - \\min(B)|$.\n\
+  \n\n-----Input-----\n\nThe first line contains an integer $t$ ($1 \\le t \\le 1000$) —\
+  \ the number of test cases in the input. Then $t$ test cases follow.\n\nEach test\
+  \ case consists of two lines. \n\nThe first line contains positive integer $n$ ($2\
+  \ \\le n \\le 50$) — number of athletes. \n\nThe second line contains $n$ positive\
+  \ integers $s_1, s_2, \\ldots, s_n$ ($1 \\le s_i \\le 1000$), where $s_i$ — is the\
+  \ strength of the $i$-th athlete. Please note that $s$ values may not be distinct.\n\
+  \n\n-----Output-----\n\nFor each test case print one integer — the minimum value\
+  \ of $|\\max(A) - \\min(B)|$ with the optimal split of all athletes into two teams.\
+  \ Each of the athletes must be a member of exactly one of the two teams.\n\n\n-----Example-----\n\
+  Input\n5\n5\n3 1 2 6 4\n6\n2 1 3 2 4 3\n4\n7 9 3 1\n2\n1 1000\n3\n100 150 200\n\n\
+  Output\n1\n0\n2\n999\n50\n\n\n\n-----Note-----\n\nThe first test case was explained\
+  \ in the statement. In the second test case, one of the optimal splits is $A=[2,\
+  \ 1]$, $B=[3, 2, 4, 3]$, so the answer is $|2-2|=0$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_min_team_diff (n : Nat) (strengths : List Int) : Int\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem min_team_diff_non_negative (n : Nat) (strengths : List Int)\n\
+  \  (h1 : n ≥ 2)\n  (h2 : strengths.length ≥ n) :\n  solve_min_team_diff n strengths\
+  \ ≥ 0 :=\nsorry\n\n\ntheorem min_team_diff_upper_bound (n : Nat) (strengths : List\
+  \ Int)\n  (h1 : n ≥ 2)\n  (h2 : strengths.length ≥ n) :\n  solve_min_team_diff n\
+  \ strengths ≤ (List.maximum? strengths).getD 0 - (List.minimum? strengths).getD\
+  \ 0 :=\nsorry\n\n\ntheorem min_team_diff_is_minimum (n : Nat) (strengths : List\
+  \ Int)\n  (h1 : n ≥ 2)  \n  (h2 : strengths.length ≥ n) :\n  ∃ min_diff : Int,\n\
+  \    solve_min_team_diff n strengths = min_diff ∧\n    ∀ (x y : Int), x ∈ strengths\
+  \ → y ∈ strengths → x ≤ y → min_diff ≤ y - x :=\nsorry\n\n\ntheorem min_team_diff_two_elements\
+  \ (a b : Int) :\n  solve_min_team_diff 2 [a, b] = Int.natAbs (b - a) :=\nsorry\n\
+  \n\ntheorem min_team_diff_identical {x : Int} {n : Nat} (lst : List Int)\n  (h1\
+  \ : n ≥ 2)\n  (h2 : lst.length = n)\n  (h3 : ∀ (i : Fin lst.length), lst.get i =\
+  \ x) :\n  solve_min_team_diff n lst = 0 :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval solve_min_team_diff 5 [3, 1, 2, 6, 4]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval solve_min_team_diff 6 [2, 1, 3, 2, 4, 3]\n\n/--\ninfo: 999\n-/\n#guard_msgs\
+  \ in\n#eval solve_min_team_diff 2 [1, 1000]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

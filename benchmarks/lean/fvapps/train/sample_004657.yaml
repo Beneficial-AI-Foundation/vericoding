@@ -1,0 +1,15 @@
+"vc-description": "Write a function `reverse` which reverses a list (or in clojure's\
+  \ case, any list-like data structure)\n\n(the dedicated builtin(s) functionalities\
+  \ are deactivated)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverse {α : Type} : List α → List α := sorry\n\ntheorem reverse_length_preserves\
+  \ {α : Type} (lst : List α) : \n  (reverse lst).length = lst.length := sorry\n"
+"vc-theorems": "theorem reverse_involutive {α : Type} (lst : List α) : \n  reverse\
+  \ (reverse lst) = lst := sorry\n\n\ntheorem reverse_empty {α : Type} : \n  reverse\
+  \ ([] : List α) = [] := sorry\n\n\ntheorem reverse_eq_manual {α : Type} (lst : List\
+  \ α) :\n  ∃ manual_reverse : List α → List α, \n    reverse lst = manual_reverse\
+  \ lst := sorry\n\n/--\ninfo: [5, 4, 3, 2, 1]\n-/\n#guard_msgs in\n#eval reverse\
+  \ [1, 2, 3, 4, 5]\n\n/--\ninfo: ['c', 'b', 'a']\n-/\n#guard_msgs in\n#eval reverse\
+  \ [\"a\", \"b\", \"c\"]\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval reverse []\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

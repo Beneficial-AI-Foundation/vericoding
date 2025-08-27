@@ -1,0 +1,19 @@
+"vc-description": "Write a function named sumDigits which takes a number as input\
+  \ and returns the sum of the absolute value of each of the number's decimal digits.\
+  \  For example:\n\n```python\n  sum_digits(10)  # Returns 1\n  sum_digits(99)  #\
+  \ Returns 18\n  sum_digits(-32) # Returns 5\n```\n\nLet's assume that all numbers\
+  \ in the input will be integer values."
+"vc-preamble": "import Imports.AllImports\n\ndef sum_digits (n : Int) : Int :=\n \
+  \ sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum_of_digits_string (n : Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem sum_digits_nonnegative (x : Int) :\n  sum_digits x ≥ 0 :=\n\
+  \  sorry\n\n\ntheorem sum_digits_symmetric (x : Int) :\n  sum_digits x = sum_digits\
+  \ (-x) :=\n  sorry\n\n\ntheorem sum_digits_less_than_input (x : Int) (h : x.natAbs\
+  \ > 9) :\n  sum_digits x < x.natAbs :=\n  sorry\n\n\ntheorem sum_digits_single_digit\
+  \ (x : Int) \n  (h : 0 ≤ x.natAbs ∧ x.natAbs ≤ 9) :\n  sum_digits x = x.natAbs :=\n\
+  \  sorry\n\n\ntheorem sum_digits_matches_string_sum (x : Int) :\n  x ≥ 0 → sum_digits\
+  \ x = sum_of_digits_string x :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval\
+  \ sum_digits 10\n\n/--\ninfo: 18\n-/\n#guard_msgs in\n#eval sum_digits 99\n\n/--\n\
+  info: 5\n-/\n#guard_msgs in\n#eval sum_digits -32\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,48 @@
+"vc-description": "Your task is to Combine two Strings. But consider the rule...\n\
+  \nBy the way you don't have to check errors or incorrect input values, everything\
+  \ is ok without bad tricks, only two input strings and as result one output string;-)...\n\
+  \nAnd here's the rule:  \nInput Strings `a` and `b`: For every character in string\
+  \ `a` swap the casing of every occurrence of the same character in string `b`. Then\
+  \ do the same casing swap with the inputs reversed. Return a single string consisting\
+  \ of the changed version of `a` followed by the changed version of `b`. A char of\
+  \ `a` is in `b` regardless if it's in upper or lower case - see the testcases too.\
+  \  \nI think that's all;-)...\n\nSome easy examples:\n\n````\nInput: \"abc\" and\
+  \ \"cde\"      => Output: \"abCCde\" \nInput: \"ab\" and \"aba\"       => Output:\
+  \ \"aBABA\"\nInput: \"abab\" and \"bababa\"  => Output: \"ABABbababa\"\n````\n\n\
+  Once again for the last example - description from `KenKamau`, see discourse;-):\n\
+  \na) swap the case of characters in string `b` for every occurrence of that character\
+  \ in string `a`  \nchar `'a'` occurs twice in string `a`, so we swap all `'a'` in\
+  \ string `b` twice. This means we start with `\"bababa\"` then `\"bAbAbA\"` => `\"\
+  bababa\"`  \nchar `'b'` occurs twice in string `a` and so string `b` moves as follows:\
+  \ start with `\"bababa\"` then `\"BaBaBa\"` => `\"bababa\"`\n\nb) then, swap the\
+  \ case of characters in string `a` for every occurrence in string `b`  \nchar `'a'`\
+  \ occurs `3` times in string `b`. So string `a` swaps cases as follows: start with\
+  \ `\"abab\"` then => `\"AbAb\"` => `\"abab\"` => `\"AbAb\"`  \nchar `'b'` occurs\
+  \ `3` times in string `b`. So string `a` swaps as follow: start with `\"AbAb\"`\
+  \ then => `\"ABAB\"` => `\"AbAb\"` => `\"ABAB\"`.\n\nc) merge new strings `a` and\
+  \ `b`  \nreturn `\"ABABbababa\"`\n\nThere are some static tests at the beginning\
+  \ and many random tests if you submit your solution.\n\nHope you have fun:-)!"
+"vc-preamble": "import Imports.AllImports\n\ndef String.lower : String → String :=\n\
+  \  fun _ => sorry\n\n\ndef String.swapcase : String → String :=\n  fun _ => sorry\n\
+  \n\ndef Char.swapcase : Char → Char :=\n  fun _ => sorry\n\n\ndef String.count (s₁\
+  \ s₂ : String) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def work_on_strings (s₁ s₂ : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem work_on_strings_length (a b : String) :\n  (work_on_strings\
+  \ a b).length = a.length + b.length :=\nsorry\n\n\ntheorem work_on_strings_substring_lengths\
+  \ (a b : String) :\n  let result := work_on_strings a b\n  (result.take a.length).length\
+  \ = a.length ∧ \n  (result.drop a.length).length = b.length :=\nsorry\n\n\ntheorem\
+  \ work_on_strings_case_swap_first (a b : String) (i : String.Pos) :\n  let result\
+  \ := work_on_strings a b\n  let base := result.get i\n  (b.lower.count (toString\
+  \ base).lower) % 2 = 1 → \n  result = result.set i (base.swapcase) :=\nsorry\n\n\
+  \ntheorem work_on_strings_case_swap_second (a b : String) (i : String.Pos) :\n \
+  \ let result := work_on_strings a b\n  let base := result.get i\n  (a.lower.count\
+  \ (toString base).lower) % 2 = 1 → \n  result = result.set i (base.swapcase) :=\n\
+  sorry\n\n\ntheorem work_on_strings_empty (s : String) :\n  work_on_strings \"\"\
+  \ s = s ∧\n  work_on_strings s \"\" = s ∧\n  work_on_strings \"\" \"\" = \"\" :=\n\
+  sorry\n\n\ntheorem work_on_strings_idempotent (s : String) :\n  let result := work_on_strings\
+  \ s s\n  work_on_strings s s = result :=\nsorry\n\n/--\ninfo: 'abCCde'\n-/\n#guard_msgs\
+  \ in\n#eval work_on_strings \"abc\" \"cde\"\n\n/--\ninfo: 'ABABbababa'\n-/\n#guard_msgs\
+  \ in\n#eval work_on_strings \"abab\" \"bababa\"\n\n/--\ninfo: 'abcDEfgDEFGg'\n-/\n\
+  #guard_msgs in\n#eval work_on_strings \"abcdeFg\" \"defgG\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

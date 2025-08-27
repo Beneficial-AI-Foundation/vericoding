@@ -1,0 +1,27 @@
+"vc-description": "Don Drumphet lives in a nice neighborhood, but one of his neighbors\
+  \ has started to let his house go.  Don Drumphet wants to build a wall between his\
+  \ house and his neighbor’s, and is trying to get the neighborhood association to\
+  \ pay for it.  He begins to solicit his neighbors to petition to get the association\
+  \ to build the wall.  Unfortunately for Don Drumphet, he cannot read very well,\
+  \ has a very limited attention span, and can only remember two letters from each\
+  \ of his neighbors’ names.  As he collects signatures, he insists that his neighbors\
+  \ keep truncating their names until two letters remain, and he can finally read\
+  \ them.\n\nYour code will show Full name of the neighbor and the truncated version\
+  \ of the name as an array. If the number of the characters in name is less than\
+  \ or equal to two, it will return an array containing only the name as is\""
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def who_is_paying (name : String) : List String := sorry\n\ntheorem\
+  \ who_is_paying_result_properties (name : String) :\n  let result := who_is_paying\
+  \ name\n  -- Result has first element equal to full name\n  result.head! = name\
+  \ ∧ \n  -- Result length is either 1 or 2\n  (result.length = 1 ∨ result.length\
+  \ = 2) ∧\n  -- For strings > 2 chars, length is 2 and second element is first 2\
+  \ chars\n  (name.length > 2 → \n    result.length = 2 ∧ \n    result.get! 1 = name.take\
+  \ 2) ∧\n  -- For strings ≤ 2 chars, length is 1\n  (name.length ≤ 2 → result.length\
+  \ = 1) := sorry\n"
+"vc-theorems": "theorem who_is_paying_long_strings (name : String) (h : name.length\
+  \ ≥ 3) :\n  let result := who_is_paying name\n  result.length = 2 ∧ \n  result.get!\
+  \ 1 = name.take 2 := sorry\n\n\ntheorem who_is_paying_short_strings (name : String)\
+  \ (h : name.length ≤ 2) :\n  let result := who_is_paying name\n  result.length =\
+  \ 1 ∧\n  result.head! = name := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,17 @@
+"vc-description": "Let be `n` an integer prime with `10` e.g. `7`. \n\n`1/7 = 0.142857\
+  \ 142857 142857 ...`.\n\nWe see that the decimal part has a cycle: `142857`. The\
+  \ length of this cycle is `6`. In the same way:\n\n`1/11 = 0.09 09 09 ...`. Cycle\
+  \ length is `2`.\n\n# Task\n\nGiven an integer n (n > 1), the function cycle(n)\
+  \ returns the length of the cycle if n and 10 are coprimes, otherwise returns -1.\n\
+  \n# Examples:\n```\ncycle(5) = -1\ncycle(13) = 6 -> 0.076923 076923 0769\ncycle(21)\
+  \ = 6 -> 0.047619 047619 0476\ncycle(27) = 3 -> 0.037 037 037 037 0370\ncycle(33)\
+  \ = 2 -> 0.03 03 03 03 03 03 03 03\ncycle(37) = 3 -> 0.027 027 027 027 027 0\ncycle(94)\
+  \ = -1 \n\ncycle(22) = -1 since 1/22 ~ 0.0 45 45 45 45 ...\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def cycle (n : Nat) : Int := sorry\n\ntheorem cycle_invalid_input\
+  \ (n : Nat)\n  (h : n % 2 = 0 ∨ n % 5 = 0) : cycle n = -1 := sorry"
+"vc-theorems": "/--\ninfo: 2\n-/\n#guard_msgs in\n#eval cycle 33\n\n/--\ninfo: -1\n\
+  -/\n#guard_msgs in\n#eval cycle 94\n\n/--\ninfo: 98\n-/\n#guard_msgs in\n#eval cycle\
+  \ 197\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

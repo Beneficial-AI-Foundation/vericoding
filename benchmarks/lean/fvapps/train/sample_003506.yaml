@@ -1,0 +1,41 @@
+"vc-description": "In this simple assignment you are given a number and have to make\
+  \ it negative. But maybe the number is already negative?\n\n**Example:**\n``` c\n\
+  makeNegative(1); // return -1\nmakeNegative(-5); // return -5\nmakeNegative(0);\
+  \ // return 0\n```\n``` cfml\nmakeNegative(1); // return -1\nmakeNegative(-5); //\
+  \ return -5\nmakeNegative(0); // return 0\n```\n``` csharp\nKata.MakeNegative(1);\
+  \ // return -1\nKata.MakeNegative(-5); // return -5\nKata.MakeNegative(0); // return\
+  \ 0\n```\n``` java\nKata.makeNegative(1); // return -1\nKata.makeNegative(-5); //\
+  \ return -5\nKata.makeNegative(0); // return 0\n```\n``` python\nmake_negative(1);\
+  \  # return -1\nmake_negative(-5); # return -5\nmake_negative(0);  # return 0\n\
+  ```\n``` javascript\nmakeNegative(1); // return -1\nmakeNegative(-5); // return\
+  \ -5\nmakeNegative(0); // return 0\nmakeNegative(0.12); // return -0.12\n```\n```\
+  \ typescript\nmakeNegative(1); // return -1\nmakeNegative(-5); // return -5\nmakeNegative(0);\
+  \ // return 0\n```\n``` cpp\nmakeNegative(1); // return -1\nmakeNegative(-5); //\
+  \ return -5\nmakeNegative(0); // return 0\n```\n``` haskell\nmakeNegative    1 --\
+  \ return -1\nmakeNegative (-5) -- return -5\nmakeNegative    0 -- return 0\nmakeNegative\
+  \ 0.12 -- return -0.12\n```\n``` ruby\nmakeNegative(1); # return -1\nmakeNegative(-5);\
+  \ # return -5\nmakeNegative(0); # return 0\n```\n``` coffeescript\nmakeNegative\
+  \ 1    # return -1\nmakeNegative -5   # return -5\nmakeNegative 0    # return 0\n\
+  ```\n``` elixir\nmake_negative 1    # return -1\nmake_negative -5   # return -5\n\
+  make_negative 0    # return 0\n```\n``` go\nMakeNegative(1)    # return -1\nMakeNegative(-5)\
+  \   # return -5\nMakeNegative(0)    # return 0\n```\n``` julia\nKata.makeNegative(1)\
+  \  # return -1\nKata.makeNegative(-5) # return -5\nKata.makeNegative(0)  # return\
+  \ 0\n```\n``` kotlin\nKata().makeNegative(1)  // return -1\nKata().makeNegative(-5)\
+  \ // return -5\nKata().makeNegative(0)  // return 0\n```\n``` asm\nmake_negative(1);\
+  \    // return -1\nmake_negative(-5);   // return -5\nmake_negative(0);    // return\
+  \ 0\n```\n``` groovy\nKata.makeNegative(1)    // return -1\nKata.makeNegative(-5)\
+  \   // return -5\nKata.makeNegative(0)    // return 0\n```\n``` php\nmakeNegative(1)\
+  \    // return -1\nmakeNegative(-5)   // return -5\nmakeNegative(0)    // return\
+  \ 0\nmakeNegative(0.12) // return -0.12\n```\n```racket\n(make-negative 1)    ;\
+  \ -1\n(make-negative -5)   ; -5\n(make-negative 0)    ; 0\n(make-negative 0.12)\
+  \ ; -0.12\n```\n\n**Notes:**\n\n- The number can be negative already, in which case\
+  \ no change is required.\n- Zero (0) is not checked for any specific sign. Negative\
+  \ zeros make no mathematical sense."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def abs (n : Int) : Int := sorry\n\ndef make_negative (n : Int)\
+  \ : Int := sorry\n"
+"vc-theorems": "theorem make_negative_is_nonpositive (n : Int) : \n  make_negative\
+  \ n ≤ 0 := sorry\n\n\n\n\n\n\ntheorem make_negative_idempotent (n : Int) (h : n\
+  \ ≤ 0) :\n  make_negative (make_negative n) = make_negative n := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,40 @@
+"vc-description": "Algorithmic predicament - Bug Fixing #9\n\nOh no! Timmy's algorithim\
+  \ has gone wrong! help Timmy fix his algorithim! \n\nTask\nYour task is to fix timmy's\
+  \ algorithim so it returns the group name with the highest total age. \n\nYou will\
+  \ receive two groups of `people` objects, with two properties `name` and `age`.\
+  \ The name property is a string and the age property is a number.  \nYour goal is\
+  \ to make the total the age of all people having the same name through both groups\
+  \ and return the name of the one with the highest age. If two names have the same\
+  \ total age return the first alphabetical name."
+"vc-preamble": "import Imports.AllImports\n\ndef highest_age (persons1 persons2 :\
+  \ List Person) : Option String := sorry\n\ntheorem highest_age_empty_lists : \n\
+  \  highest_age [] [] = none := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def total_age_for_name (persons : List Person) (name : String)\
+  \ : Nat :=\n  (persons.filter (fun p => p.name = name)).foldl (fun acc p => acc\
+  \ + p.age) 0\n"
+"vc-theorems": "theorem highest_age_in_input (persons1 persons2 : List Person) (result\
+  \ : String) :\n  highest_age persons1 persons2 = some result →\n  ∃ p, p ∈ persons1\
+  \ ++ persons2 ∧ p.name = result := sorry\n\n\ntheorem highest_age_has_max_total\
+  \ (persons1 persons2 : List Person) (result : String) :\n  highest_age persons1\
+  \ persons2 = some result →\n  ∀ p ∈ persons1 ++ persons2,\n    total_age_for_name\
+  \ (persons1 ++ persons2) p.name ≤ \n    total_age_for_name (persons1 ++ persons2)\
+  \ result := sorry\n\n\ntheorem highest_age_lexicographically_first (persons1 persons2\
+  \ : List Person) (result : String) :\n  highest_age persons1 persons2 = some result\
+  \ →\n  let persons := persons1 ++ persons2\n  ∀ p ∈ persons,\n    (total_age_for_name\
+  \ persons p.name = total_age_for_name persons result → result ≤ p.name) := sorry\n\
+  \n\ntheorem highest_age_deterministic (persons1 persons2 : List Person) :\n  highest_age\
+  \ persons1 persons2 = highest_age persons1 persons2 := sorry\n  \n\ntheorem highest_age_order_independent\
+  \ (persons1 persons2 p1 p2 : List Person) :\n  persons1.length = p1.length →\n \
+  \ persons2.length = p2.length →\n  (∀ p, p ∈ persons1 ↔ p ∈ p1) →\n  (∀ p, p ∈ persons2\
+  \ ↔ p ∈ p2) →\n  highest_age persons1 persons2 = highest_age p1 p2 := sorry\n\n\
+  /--\ninfo: 'alice'\n-/\n#guard_msgs in\n#eval highest_age [{\"name\": \"kay\", \"\
+  age\": 1}, {\"name\": \"john\", \"age\": 13}, {\"name\": \"kay\", \"age\": 76}]\
+  \ [{\"name\": \"john\", \"age\": 1}, {\"name\": \"alice\", \"age\": 77}]\n\n/--\n\
+  info: 'kay'\n-/\n#guard_msgs in\n#eval highest_age [{\"name\": \"kay\", \"age\"\
+  : 1}, {\"name\": \"john\", \"age\": 13}, {\"name\": \"kay\", \"age\": 76}] [{\"\
+  name\": \"john\", \"age\": 1}, {\"name\": \"alice\", \"age\": 76}]\n\n/--\ninfo:\
+  \ 'kay'\n-/\n#guard_msgs in\n#eval highest_age [{\"name\": \"kay\", \"age\": 2},\
+  \ {\"name\": \"john\", \"age\": 130}, {\"name\": \"kay\", \"age\": 130}] [{\"name\"\
+  : \"john\", \"age\": 1}, {\"name\": \"alice\", \"age\": 76}]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

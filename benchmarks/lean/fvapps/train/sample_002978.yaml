@@ -1,0 +1,19 @@
+"vc-description": "Write a function\n```python\nalternate_sort(l)\n```\nthat combines\
+  \ the elements of an array by sorting the elements ascending by their **absolute\
+  \ value** and outputs negative and non-negative integers alternatingly (starting\
+  \ with the negative value, if any).\n\nE.g.\n```python\nalternate_sort([5, -42,\
+  \ 2, -3, -4, 8, -9,]) == [-3, 2, -4, 5, -9, 8, -42]\nalternate_sort([5, -42, 2,\
+  \ -3, -4, 8, 9]) == [-3, 2, -4, 5, -42, 8, 9]\nalternate_sort([5, 2, -3, -4, 8,\
+  \ -9]) == [-3, 2, -4, 5, -9, 8]\nalternate_sort([5, 2, 9, 3, 8, 4]) == [2, 3, 4,\
+  \ 5, 8, 9]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def alternate_sort (lst : List Int) : List Int := sorry\n\ntheorem\
+  \ alternate_sort_maintains_elements (lst : List Int) :\n  List.length (alternate_sort\
+  \ lst) = List.length lst ∧\n  ∀ x, List.count x (alternate_sort lst) = List.count\
+  \ x lst := sorry"
+"vc-theorems": "/--\ninfo: [-3, 2, -4, 5, -9, 8, -42]\n-/\n#guard_msgs in\n#eval alternate_sort\
+  \ [5, -42, 2, -3, -4, 8, -9]\n\n/--\ninfo: [2, 3, 4, 5, 8, 9]\n-/\n#guard_msgs in\n\
+  #eval alternate_sort [5, 2, 9, 3, 8, 4]\n\n/--\ninfo: [-2, 0, -5, 3, -8, 4, -9]\n\
+  -/\n#guard_msgs in\n#eval alternate_sort [-5, -2, 3, 4, -8, 0, -9]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

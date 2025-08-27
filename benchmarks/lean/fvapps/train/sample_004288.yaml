@@ -1,0 +1,15 @@
+"vc-description": "In this Kata, you will be given an integer `n` and your task will\
+  \ be to return `the largest integer that is <= n and has the highest digit sum`.\n\
+  \nFor example:\n```\nsolve(100) = 99. Digit Sum for 99 = 9 + 9 = 18. No other number\
+  \ <= 100 has a higher digit sum.\nsolve(10) = 9\nsolve(48) = 48. Note that 39 is\
+  \ also an option, but 48 is larger.\n```\n\nInput range is `0 < n < 1e11`\n\nMore\
+  \ examples in the test cases.\n\nGood luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef solve (n : Nat) : Nat :=\n  sorry\n\
+  \n\ndef sumOfDigits (n : Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isPowerOfTen (n : Nat) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem solve_result_bounded (n : Nat) (h : n > 0) : \n  let result\
+  \ := solve n\n  result ≥ 0 ∧ result ≤ n :=\nsorry\n\n/--\ninfo: 99\n-/\n#guard_msgs\
+  \ in\n#eval solve 100\n\n/--\ninfo: 48\n-/\n#guard_msgs in\n#eval solve 48\n\n/--\n\
+  info: 999\n-/\n#guard_msgs in\n#eval solve 1000\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

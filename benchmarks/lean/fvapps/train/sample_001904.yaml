@@ -1,0 +1,39 @@
+"vc-description": "Consider a directed graph, with nodes labelled 0, 1, ..., n-1. \
+  \ In this graph, each edge is either red or blue, and there could be self-edges\
+  \ or parallel edges.\nEach [i, j] in red_edges denotes a red directed edge from\
+  \ node i to node j.  Similarly, each [i, j] in blue_edges denotes a blue directed\
+  \ edge from node i to node j.\nReturn an array answer of length n, where each answer[X] is the\
+  \ length of the shortest path from node 0 to node X such that the edge colors alternate\
+  \ along the path (or -1 if such a path doesn't exist).\n \nExample 1:\nInput: n\
+  \ = 3, red_edges = [[0,1],[1,2]], blue_edges = []\nOutput: [0,1,-1]\nExample 2:\n\
+  Input: n = 3, red_edges = [[0,1]], blue_edges = [[2,1]]\nOutput: [0,1,-1]\nExample\
+  \ 3:\nInput: n = 3, red_edges = [[1,0]], blue_edges = [[2,1]]\nOutput: [0,-1,-1]\n\
+  Example 4:\nInput: n = 3, red_edges = [[0,1]], blue_edges = [[1,2]]\nOutput: [0,1,2]\n\
+  Example 5:\nInput: n = 3, red_edges = [[0,1],[0,2]], blue_edges = [[1,0]]\nOutput:\
+  \ [0,1,1]\n\n \nConstraints:\n\n1 <= n <= 100\nred_edges.length <= 400\nblue_edges.length\
+  \ <= 400\nred_edges[i].length == blue_edges[i].length == 2\n0 <= red_edges[i][j],\
+  \ blue_edges[i][j] < n"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def shortestAlternatingPaths (n : Nat) (redEdges blueEdges : List\
+  \ Edge) : List Int :=\n  sorry\n"
+"vc-theorems": "theorem empty_path_valid (n : Nat) (edges : List Edge) \n  (h1 : n\
+  \ > 0) (h2 : ∀ e ∈ edges, e.from_ < n ∧ e.to_ < n) :\n  let result := shortestAlternatingPaths\
+  \ n edges []\n  -- Result length matches n\n  List.length result = n\n  -- First\
+  \ element is 0\n  ∧ List.get! result 0 = 0 \n  -- All elements are -1 or valid length\
+  \ < 2n\n  ∧ ∀ x ∈ result, x ≥ -1 ∧ (x = -1 ∨ x < 2 * n) :=\nsorry\n\n\ntheorem alternating_path_valid\
+  \ (n : Nat) (redEdges blueEdges : List Edge)\n  (h1 : n > 0)\n  (h2 : ∀ e ∈ redEdges,\
+  \ e.from_ < n ∧ e.to_ < n)\n  (h3 : ∀ e ∈ blueEdges, e.from_ < n ∧ e.to_ < n) :\n\
+  \  let result := shortestAlternatingPaths n redEdges blueEdges\n  -- Result length\
+  \ matches n\n  List.length result = n\n  -- First element is 0\n  ∧ List.get! result\
+  \ 0 = 0\n  -- All elements are -1 or valid length < 2n \n  ∧ ∀ x ∈ result, x ≥ -1\
+  \ ∧ (x = -1 ∨ x < 2 * n) :=\nsorry\n\n\ntheorem no_edges (n : Nat) (h : n > 0) :\n\
+  \  let result := shortestAlternatingPaths n ([] : List Edge) ([] : List Edge)\n\
+  \  List.get! result 0 = 0\n  ∧ ∀ i, i > 0 → i < n → List.get! result i = -1 := \n\
+  sorry\n\n\ntheorem self_loops :\n  let n := 3\n  let result := shortestAlternatingPaths\
+  \ n \n    [⟨0, 0⟩] [⟨0, 0⟩]\n  List.get! result 0 = 0 :=\nsorry\n\n/--\ninfo: [0,\
+  \ 1, -1]\n-/\n#guard_msgs in\n#eval shortest_alternating_paths 3 [[0, 1], [1, 2]]\
+  \ []\n\n/--\ninfo: [0, 1, 2]\n-/\n#guard_msgs in\n#eval shortest_alternating_paths\
+  \ 3 [[0, 1]] [[1, 2]]\n\n/--\ninfo: [0, 1, 1]\n-/\n#guard_msgs in\n#eval shortest_alternating_paths\
+  \ 3 [[0, 1], [0, 2]] [[1, 0]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

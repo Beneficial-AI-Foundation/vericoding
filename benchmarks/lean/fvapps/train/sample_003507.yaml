@@ -1,0 +1,26 @@
+"vc-description": "Much cooler than your run-of-the-mill Fibonacci numbers, the Triple\
+  \ Shiftian are so defined: `T[n] = 4 * T[n-1] - 5 * T[n-2] + 3 * T[n-3]`.\n\nYou\
+  \ are asked to create a function which accept a base with the first 3 numbers and\
+  \ then returns the nth element.\n```python\ntriple_shiftian([1,1,1],25) == 1219856746\n\
+  triple_shiftian([1,2,3],25) == 2052198929\ntriple_shiftian([6,7,2],25) == -2575238999\n\
+  triple_shiftian([3,2,1],35) == 23471258855679\ntriple_shiftian([1,9,2],2) ==  2\n\
+  ```\n*Note: this is meant to be an interview quiz, so the description is scarce\
+  \ in detail on purpose*\n\nSpecial thanks to the [first person I met in person here\
+  \ in London just because of CW](http://www.codewars.com/users/webtechalex) and that\
+  \ assisted me during the creation of this kata ;)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def tripleShiftian (T : List Int) (n : Nat) : Int := sorry\n\n\
+  theorem tripleShiftian_first_three_elements {T : List Int} (h : T.length = 3) (i\
+  \ : Nat) (h' : i < 3) : \n  tripleShiftian T i = T.get ⟨i, by sorry⟩ := sorry\n"
+"vc-theorems": "theorem tripleShiftian_recurrence {T : List Int} (h : T.length = 3)\
+  \ (n : Nat) (h' : n ≥ 3) :\n  tripleShiftian T n = \n    4 * tripleShiftian T (n-1)\
+  \ - \n    5 * tripleShiftian T (n-2) + \n    3 * tripleShiftian T (n-3) := sorry\n\
+  \nstructure Matrix (m n : Nat) where\n  data : Array (Array Int)\n\n\ntheorem tripleShiftian_matrix_formula\
+  \ {T : List Int} (h : T.length = 3) (n : Nat) :\n  ∃ A : Matrix 3 3,\n  ∃ x₀ : Matrix\
+  \ 3 1,\n    tripleShiftian T n = \n      if n < 3 \n      then T.get ⟨n, by sorry⟩\
+  \  \n      else sorry := sorry\n\n/--\ninfo: 1219856746\n-/\n#guard_msgs in\n#eval\
+  \ triple_shiftian #[1, 1, 1] 25\n\n/--\ninfo: 2052198929\n-/\n#guard_msgs in\n#eval\
+  \ triple_shiftian #[1, 2, 3] 25\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval triple_shiftian\
+  \ #[6, 7, 2] 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

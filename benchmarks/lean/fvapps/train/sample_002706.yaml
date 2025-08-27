@@ -1,0 +1,26 @@
+"vc-description": "Write a program that prints a chessboard with N rows and M columns\
+  \ with the following rules:\nThe top left cell must be an asterisk (*)\nAny cell\
+  \ touching (left, right, up or down) a cell with an asterisk must be a dot (.)\n\
+  Any cell touching (left, right, up or down) a cell with a dot must be an asterisk.\n\
+  \nA chessboard of 8 rows and 8 columns printed using these rules would be:\n```\n\
+  *.*.*.*.\n.*.*.*.*\n*.*.*.*.\n.*.*.*.*\n*.*.*.*.\n.*.*.*.*\n*.*.*.*.\n.*.*.*.*\n\
+  ```\nInput\n\nA single line with two integers N and M separated by space. The number\
+  \ N will represent the number of rows and M the number of columns.\n\nOutput\n\n\
+  Return N lines each containing M characters with the chessboard pattern.\nEmpty\
+  \ string if N, M or both are 0.\n\n\nFrom: 2016 AIPO National Finals\nhttp://aipo.computing.dcu.ie/2016-aipo-national-finals-problems"
+"vc-preamble": "import Imports.AllImports\n\ndef chessboard (n: Nat) (m: Nat) : String\
+  \ := sorry\n\ndef String.lines (s: String) : List String := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def String.characterAt (s: String) (i: Nat) : Char := sorry\n\n\
+  theorem chessboard_empty_for_zero_dims {n m: Nat} :\n  (n = 0 ∨ m = 0) → chessboard\
+  \ n m = \"\" := sorry\n"
+"vc-theorems": "theorem chessboard_dimensions {n m: Nat} (h1 : n ≠ 0) (h2 : m ≠ 0)\
+  \ :\n  let lines := (chessboard n m).lines\n  lines.length = n ∧ \n  ∀ l ∈ lines,\
+  \ l.length = m := sorry\n\n\ntheorem chessboard_alternating_pattern {n m : Nat}\
+  \ (h1 : n > 0) (h2 : m > 0) :\n  let lines := (chessboard n m).lines\n  ∀ i j, i\
+  \ < n → j < m →\n    let line := lines[i]'(by sorry)\n    let char := line.characterAt\
+  \ j\n    ((i + j) % 2 = 0 → char = '*') ∧\n    ((i + j) % 2 ≠ 0 → char = '.') :=\
+  \ sorry\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval chessboard 0 0\n\n/--\ninfo:\
+  \ '*.\\n.*'\n-/\n#guard_msgs in\n#eval chessboard 2 2\n\n/--\ninfo: expected\n-/\n\
+  #guard_msgs in\n#eval chessboard 8 8\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

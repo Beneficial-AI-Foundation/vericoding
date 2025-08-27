@@ -1,0 +1,31 @@
+"vc-description": "You'll be given a list of two strings, and each will contain exactly\
+  \ one colon (`\":\"`) in the middle (but not at beginning or end). The length of\
+  \ the strings, before and after the colon, are random.\n\nYour job is to return\
+  \ a list of two strings (in the same order as the original list), but with the characters\
+  \ after each colon swapped.\n\n\n## Examples\n```\n[\"abc:123\", \"cde:456\"]  -->\
+  \  [\"abc:456\", \"cde:123\"]\n[\"a:12345\", \"777:xyz\"]  -->  [\"a:xyz\", \"777:12345\"\
+  ]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def tail_swap (strings : List String) : List String := sorry\n\n\
+  theorem tail_swap_length (strings : List String)\n  (h1 : strings.length = 2) :\n\
+  \  (tail_swap strings).length = 2 := sorry\n"
+"vc-theorems": "theorem tail_swap_preserves_string_type (strings : List String)\n\
+  \  (h1 : strings.length = 2)\n  (h2 : ∀ s ∈ strings, s.contains ':') :\n  ∀ s ∈\
+  \ tail_swap strings, s.contains ':' := sorry\n\n\ntheorem tail_swap_preserves_heads\
+  \ (strings : List String)\n  (h1 : strings.length = 2)\n  (h2 : ∀ s ∈ strings, s.contains\
+  \ ':')\n  (h3 : 0 < (tail_swap strings).length)\n  (h4 : 1 < (tail_swap strings).length)\n\
+  \  (h5 : 0 < strings.length)\n  (h6 : 1 < strings.length) :\n  ((tail_swap strings).get!\
+  \ 0).splitOn \":\" = (strings.get! 0).splitOn \":\" ∧ \n  ((tail_swap strings).get!\
+  \ 1).splitOn \":\" = (strings.get! 1).splitOn \":\" := sorry\n\n\ntheorem tail_swap_swaps_tails\
+  \ (strings : List String)\n  (h1 : strings.length = 2)\n  (h2 : ∀ s ∈ strings, s.contains\
+  \ ':')\n  (h3 : 0 < (tail_swap strings).length)\n  (h4 : 1 < (tail_swap strings).length)\n\
+  \  (h5 : 0 < strings.length)\n  (h6 : 1 < strings.length) :\n  List.get! (((tail_swap\
+  \ strings).get! 0).splitOn \":\") 1 = List.get! ((strings.get! 1).splitOn \":\"\
+  ) 1 ∧\n  List.get! (((tail_swap strings).get! 1).splitOn \":\") 1 = List.get! ((strings.get!\
+  \ 0).splitOn \":\") 1 := sorry\n\n\ntheorem tail_swap_involution (s1 s2 : String)\n\
+  \  (h1 : s1.contains ':')\n  (h2 : s2.contains ':') :\n  tail_swap (tail_swap [s1,\
+  \ s2]) = [s1, s2] := sorry\n\n/--\ninfo: ['abc:456', 'cde:123']\n-/\n#guard_msgs\
+  \ in\n#eval tail_swap [\"abc:123\", \"cde:456\"]\n\n/--\ninfo: ['a:xyz', '777:12345']\n\
+  -/\n#guard_msgs in\n#eval tail_swap [\"a:12345\", \"777:xyz\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

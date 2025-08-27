@@ -1,0 +1,31 @@
+"vc-description": "Let's define a function countUniqueChars(s) that returns the number\
+  \ of unique characters on s, for example if s = \"LEETCODE\" then \"L\", \"T\",\"\
+  C\",\"O\",\"D\" are the unique characters since they appear only once in s, therefore countUniqueChars(s)\
+  \ = 5.\n\nOn this problem given a string s we need to return the sum of countUniqueChars(t) where\
+  \ t is a substring of s. Notice that some substrings can be repeated so on this\
+  \ case you have to count the repeated ones too.\nSince the answer can be very large,\
+  \ return the answer modulo 10 ^ 9 + 7.\n \nExample 1:\nInput: s = \"ABC\"\nOutput:\
+  \ 10\nExplanation: All possible substrings are: \"A\",\"B\",\"C\",\"AB\",\"BC\"\
+  \ and \"ABC\".\nEvey substring is composed with only unique letters.\nSum of lengths\
+  \ of all substring is 1 + 1 + 1 + 2 + 2 + 3 = 10\n\nExample 2:\nInput: s = \"ABA\"\
+  \nOutput: 8\nExplanation: The same as example 1, except countUniqueChars(\"ABA\"\
+  ) = 1.\n\nExample 3:\nInput: s = \"LEETCODE\"\nOutput: 92\n\n \nConstraints:\n\n\
+  0 <= s.length <= 10^4\ns contain upper-case English letters only."
+"vc-preamble": "import Imports.AllImports\n\ndef unique_letter_string (s : String)\
+  \ : Nat := sorry\n\ntheorem unique_letter_string_positive (s : String) (h : s.length\
+  \ > 0) :\n  unique_letter_string s > 0 := sorry\n\n\ndef string_reverse (s : String)\
+  \ : String := sorry\n\ntheorem unique_letter_string_reverse_invariant (s : String)\
+  \ (h : s.length > 0) :\n  unique_letter_string s = unique_letter_string (string_reverse\
+  \ s) := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def string_append_char (s : String) (c : Char) : String := sorry\n\
+  \ntheorem unique_letter_string_monotone (s : String) (h : s.length > 0) \n  (h1\
+  \ : 0 < s.length) : \n  unique_letter_string (string_append_char s (s.get 0)) >\
+  \ unique_letter_string s := sorry"
+"vc-theorems": "theorem unique_letter_string_bounded (s : String) (h : s.length >\
+  \ 0) :\n  unique_letter_string s < 1000000007 := sorry\n\n\ntheorem unique_letter_string_single_char\
+  \ (s : String) (h : s.length = 1) :\n  unique_letter_string s = 1 := sorry\n\n\n\
+  /--\ninfo: 10\n-/\n#guard_msgs in\n#eval unique_letter_string \"ABC\"\n\n/--\ninfo:\
+  \ 8\n-/\n#guard_msgs in\n#eval unique_letter_string \"ABA\"\n\n/--\ninfo: 92\n-/\n\
+  #guard_msgs in\n#eval unique_letter_string \"LEETCODE\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

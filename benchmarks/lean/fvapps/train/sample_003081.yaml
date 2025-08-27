@@ -1,0 +1,32 @@
+"vc-description": "# Task\nGiven an integer array `arr`. Your task is to remove one\
+  \ element, maximize the product of elements. \n\nThe result is the element which\
+  \ should be removed. If more than one valid results exist, return the smallest one.\n\
+  \n\n# Input/Output\n\n\n`[input]` integer array `arr`\n\nnon-empty unsorted integer\
+  \ array. It contains positive integer, negative integer or zero.\n\n`3 ≤ arr.length\
+  \ ≤ 15`\n\n`-10 ≤ arr[i] ≤ 10`\n\n`[output]` an integer\n\nThe element that should\
+  \ be removed.\n\n# Example\n\nFor `arr = [1, 2, 3]`, the output should be `1`.\n\
+  \nFor `arr = [-1, 2, -3]`, the output should be `2`.\n\nFor `arr = [-1, -2, -3]`,\
+  \ the output should be `-1`.\n\nFor `arr = [-1, -2, -3, -4]`, the output should\
+  \ be `-4`."
+"vc-preamble": "import Imports.AllImports\n\ndef minimum (l : List Int) : Option Int\
+  \ := sorry\ndef maximum (l : List Int) : Option Int := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def maximum_product (arr : List Int) : Int := sorry\n\ntheorem\
+  \ maximum_product_in_array (arr : List Int) (h : arr ≠ []) :\n  ∃ x ∈ arr, maximum_product\
+  \ arr = x := sorry\n"
+"vc-theorems": "theorem maximum_product_even_negatives (arr : List Int) (h : arr ≠\
+  \ []) \n  (h_even : (arr.filter (λ x => x < 0)).length % 2 = 0) :\n  let pos :=\
+  \ arr.filter (λ x => x ≥ 0)\n  let neg := arr.filter (λ x => x < 0)\n  pos ≠ []\
+  \ → (∃ m, minimum pos = some m ∧ maximum_product arr = m) ∨\n  pos = [] → (∃ m,\
+  \ minimum neg = some m ∧ maximum_product arr = m) := sorry\n\n\ntheorem maximum_product_odd_negatives\
+  \ (arr : List Int) (h : arr ≠ []) \n  (h_odd : (arr.filter (λ x => x < 0)).length\
+  \ % 2 = 1) :\n  let neg := arr.filter (λ x => x < 0)\n  (¬ arr.contains 0 → (∃ m,\
+  \ maximum neg = some m ∧ maximum_product arr = m)) ∧\n  (arr.contains 0 → (∃ m,\
+  \ minimum neg = some m ∧ maximum_product arr = m)) := sorry\n\n\ntheorem maximum_product_multiple_zeros\
+  \ (arr : List Int) (h : arr ≠ [])\n  (h_zeros : (arr.filter (λ x => x = 0)).length\
+  \ > 1) :\n  ∃ m, minimum arr = some m ∧ maximum_product arr = m := sorry\n\n\ntheorem\
+  \ maximum_product_single_element (x : Int) :\n  maximum_product [x] = x := sorry\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval maximum_product [1, 2, 3]\n\n/--\ninfo:\
+  \ 2\n-/\n#guard_msgs in\n#eval maximum_product [-1, 2, -3]\n\n/--\ninfo: -1\n-/\n\
+  #guard_msgs in\n#eval maximum_product [-1, -2, -3]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

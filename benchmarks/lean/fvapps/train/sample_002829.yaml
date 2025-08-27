@@ -1,0 +1,27 @@
+"vc-description": "# Task\n Given an array of 2^(k) integers (for some integer `k`),\
+  \ perform the following operations until the array contains only one element:\n\
+  ```\nOn the 1st, 3rd, 5th, etc. \niterations (1-based) replace each pair of consecutive\
+  \ elements with their sum;\nOn the 2nd, 4th, 6th, etc. \niterations replace each\
+  \ pair of consecutive elements with their product.\n```\nAfter the algorithm has\
+  \ finished, there will be a single element left in the array. Return that element.\n\
+  \n# Example\n\n For inputArray = [1, 2, 3, 4, 5, 6, 7, 8], the output should be\
+  \ 186.\n\n We have `[1, 2, 3, 4, 5, 6, 7, 8] -> [3, 7, 11, 15] -> [21, 165] -> [186]`,\
+  \ so the answer is 186.\n\n# Input/Output\n\n - `[input]` integer array `arr`\n\n\
+  \   Constraints: 2^(1) ≤ arr.length ≤ 2^(5), -9 ≤ arr[i] ≤ 99.\n\n - `[output]`\
+  \ an integer"
+"vc-preamble": "import Imports.AllImports\n\ndef isPowerOfTwo (n : Nat) : Bool :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def arrayConversion (arr : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem array_conversion_power_of_two_length\n  {n : Nat} {arr : List\
+  \ Nat}\n  (h1 : n ≥ 1) (h2 : n ≤ 5)\n  (h3 : arr.length = 2^n) :\n  isPowerOfTwo\
+  \ arr.length = true ∧ \n  arrayConversion arr ≥ 0 :=\nsorry\n\n\ntheorem array_conversion_deterministic\
+  \ \n  {arr : List Nat} \n  (h : isPowerOfTwo arr.length = true) :\n  arrayConversion\
+  \ arr = arrayConversion arr :=\nsorry\n\n\ntheorem array_conversion_monotonic\n\
+  \  {arr : List Nat} {i : Nat}\n  (h1 : isPowerOfTwo arr.length = true)\n  (h2 :\
+  \ i < arr.length) :\n  let arr' := arr.set i (arr[i] + 1)\n  arrayConversion arr'\
+  \ ≥ arrayConversion arr :=\nsorry\n\n/--\ninfo: 186\n-/\n#guard_msgs in\n#eval array_conversion\
+  \ [1, 2, 3, 4, 5, 6, 7, 8]\n\n/--\ninfo: 64\n-/\n#guard_msgs in\n#eval array_conversion\
+  \ [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]\n\n/--\ninfo: 60\n-/\n#guard_msgs\
+  \ in\n#eval array_conversion [3, 3, 5, 5]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

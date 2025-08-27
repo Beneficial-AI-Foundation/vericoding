@@ -1,0 +1,25 @@
+"vc-description": "Implement a data structure supporting the following operations:\n\
+  \n\n\nInc(Key) - Inserts a new key  with value 1. Or increments an existing key\
+  \ by 1. Key is guaranteed to be a non-empty string.\nDec(Key) - If Key's value is\
+  \ 1, remove it from the data structure. Otherwise decrements an existing key by\
+  \ 1. If the key does not exist, this function does nothing. Key is guaranteed to\
+  \ be a non-empty string.\nGetMaxKey() - Returns one of the keys with maximal value.\
+  \ If no element exists, return an empty string \"\".\nGetMinKey() - Returns one\
+  \ of the keys with minimal value. If no element exists, return an empty string \"\
+  \".\n\n\n\n\nChallenge: Perform all these in O(1) time complexity."
+"vc-preamble": "import Imports.AllImports\n\ndef AllOne.inc (a : AllOne) (key : String)\
+  \ : Unit := sorry\ndef AllOne.dec (a : AllOne) (key : String) : Unit := sorry\n\n\
+  def AllOne.getMaxKey (a : AllOne) : String := sorry\ndef AllOne.getMinKey (a : AllOne)\
+  \ : String := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countMap (keys : List String) : String → Nat\n  | s => List.length\
+  \ (List.filter (· = s) keys)\n"
+"vc-theorems": "theorem increment_maintains_order (keys : List String) (a : AllOne)\
+  \ (h : keys ≠ []) :\n  (∀ k ∈ keys, \n    let counts := countMap keys\n    let maxCount\
+  \ := List.foldl (fun acc k => max acc (counts k)) 0 keys\n    let maxKeys := List.filter\
+  \ (fun k => counts k = maxCount) keys\n    let minCount := List.foldl (fun acc k\
+  \ => min acc (counts k)) (maxCount + 1) keys\n    let minKeys := List.filter (fun\
+  \ k => counts k = minCount) keys\n    a.getMaxKey ∈ maxKeys ∧ a.getMinKey ∈ minKeys)\
+  \ := sorry\n\n\ntheorem empty_after_decrement (keys : List String) (a : AllOne)\
+  \ (h : keys ≠ []) :\n  a.getMaxKey = \"\" ∧ a.getMinKey = \"\" := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

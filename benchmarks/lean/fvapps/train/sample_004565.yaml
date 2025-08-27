@@ -1,0 +1,35 @@
+"vc-description": "```\n------------------------------------------------------------------\n\
+  \ we are programmed just to do anything you want us to\n          w e  a r e  t\
+  \ h e  r o b o t s\n                         \n\n-----------------------------------------------------------[\
+  \ d[(0)(0)]b]\n```\nTask.....\nYou will receieve an array of strings\nsuch as \n\
+  ```\na = [\"We're functioning automatik d[(0)(0)]b\",\"And we are dancing mechanik\
+  \ d[(0)(0)]b\"]\n```\nCount the robots represented by d[(0)(0)]b\n\nUnless of course\
+  \ the factory replaced a part on the robot.....\n```\nd[(0)(0)]b could look a little\
+  \ different depending on the supplier maybe like this \n\nd[(0)(0)]B or d[(0)(0}]B\
+  \ \n```\nIt's pretty random actually but with a global supply chain it's hard to\
+  \ control which part you get. Most of the parts are made global except the ones\
+  \ made in the factory which do not change.\n\n```\nd[(0)(0)]B \n\nIn all robots\
+  \ the eyes do not change.\n\nd[(0)(0)]B \n\n...0..0...\n   ^  ^            \n  \
+  \ |  | \n\nThe rest of the body can change at random.\n\nlegs any in => abcdefghijklmnopqrstuvwxyz\n\
+  ...0..0... \n^        ^             \n|        |\n\nbody any in => |};&#[]/><()*\n\
+  \n\n...0..0... \n ^^ ^^ ^^            \n || || ||           \n\n\n```\nThere may\
+  \ be cases where a part is totally missing and of course a robot cannot function\
+  \ at all without a part or where the factory put a valid part in the wrong place\
+  \ and it's again not a valid robot.\n\nreturn an array of strings with a count of\
+  \ each of the following tasks.\n\nCase insensitve count of robots in string with\
+  \ \"automatik\" or \"mechanik\". Strings do not contain both \"automatik and \"\
+  mechanik\". \n\nReturn an array with the count like below \n\n```\na[0] = automatik\
+  \ count\na[1] = mechanik count\n\n[\"1 robots functioning automatik\", \"1 robots\
+  \ dancing mechanik\"]\n\n```\nto pay tribute...respect :)\n\nhttps://en.wikipedia.org/wiki/The_Robots\n\
+  \nSongwriters: HUETTER, RALF / SCHNEIDER-ESLEBEN, FLORIAN / BARTOS, KARL"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_robots (strings : List String) : List String := sorry\n\
+  \ndef String.containsSubstr (s : String) (substr : String) : Bool := sorry\n"
+"vc-theorems": "theorem count_robots_output_format (strings : List String) :\n  let\
+  \ result := count_robots strings\n  result.length = 2 ∧ \n  result[0]!.endsWith\
+  \ \"robots functioning automatik\" ∧\n  result[1]!.endsWith \"robots dancing mechanik\"\
+  \ ∧\n  (∀ r ∈ result, (r.splitOn \" \")[0]?.isSome) :=\nsorry\n\n\ntheorem count_robots_invalid_input\
+  \ (strings : List String) :\n  count_robots strings = [\"0 robots functioning automatik\"\
+  , \"0 robots dancing mechanik\"] :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

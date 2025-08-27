@@ -1,0 +1,24 @@
+"vc-description": "In this kata, you have to define a function named **func** that\
+  \ will take a list as input.\n\nYou must try and guess the pattern how we get the\
+  \ output number and return list - **[output number,binary representation,octal representation,hexadecimal\
+  \ representation]**, but **you must convert that specific number without built-in\
+  \ : bin,oct and hex functions.**\n\nExamples : \n\n```python\nfunc([12,13,6,3,6,45,123])\
+  \ returns - [29,'11101','35','1d']\n\nfunc([1,9,23,43,65,31,63,99]) returns - [41,'101001','51','29']\n\
+  \nfunc([2,4,6,8,10,12,14,16,18,19]) returns - [10,'1010','12','a']\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef func (numbers : List Nat) : List\
+  \ (Nat ⊕ String) := sorry\n\ndef toBinary (n : Nat) : String := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def toOctal (n : Nat) : String := sorry\ndef toHex (n : Nat) :\
+  \ String := sorry\n"
+"vc-theorems": "theorem conversion_properties {numbers : List Nat} (h : numbers.length\
+  \ > 0) :\n  let result := func numbers\n  let expected_n := numbers.foldl (· + ·)\
+  \ 0 / numbers.length\n  List.get! result 0 = .inl expected_n ∧ \n  List.get! result\
+  \ 1 = .inr (toBinary expected_n) ∧\n  List.get! result 2 = .inr (toOctal expected_n)\
+  \ ∧\n  List.get! result 3 = .inr (toHex expected_n) := sorry\n\n\ntheorem length_properties\
+  \ {numbers : List Nat} (h : numbers.length > 0) :\n  let result := func numbers\n\
+  \  result.length = 4 ∧\n  (match List.get! result 0 with | .inl _ => true | .inr\
+  \ _ => false) ∧\n  (∀ i, i > 0 → i < 4 → match List.get! result i with | .inl _\
+  \ => false | .inr _ => true) := sorry\n\n\ntheorem zero_case {numbers : List Nat}\
+  \ (h : numbers.length > 0) \n    (h' : ∀ x ∈ numbers, x = 0) :\n  func numbers =\
+  \ [.inl 0, .inr \"0\", .inr \"0\", .inr \"0\"] := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

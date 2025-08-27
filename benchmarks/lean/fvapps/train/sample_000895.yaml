@@ -1,0 +1,37 @@
+"vc-description": "Doctor Kunj installed new software on cyborg Shresth.\nThis software\
+  \ introduced Shresth to range minimum queries.\nCyborg Shresth thought of T$T$ different\
+  \ problems in each of which you will be given\nan array A$A$ of length N$N$ and\
+  \ an array B$B$ of length M$M$. In each of these problems, you have to calculate:\n\
+  ∑mi=1∑mj=irangeMin(B[i],B[j])$\\sum_{i=1}^m \\sum_{j=i}^m rangeMin(B[i],B[j])$\n\
+  Where rangeMin(i,j)$rangeMin(i,j)$ returns the minimum element in the range of indices\
+  \ i$i$ to j$j$ (both included) in array A$A$.\nIt is given that array B$B$ consists\
+  \ of pairwise distinct elements and is in ascending order.\n\n-----Input Format:-----\n\
+  - First line will contain T$T$, the number of different problems Cyborg Shresth\
+  \ thought of.\n- Each problem's input data will be given in three different lines.\
+  \ \n- The first line will contain N$N$ and M$M$, the length of array A$A$ and B$B$\
+  \ respectively. \n- The second line will contain N$N$ space separated positive integers,\
+  \ which form the array A$A$. - \n- The third line will contain M$M$ space separated\
+  \ positive integers, which form the array B$B$.\n\n-----Output Format:-----\n- For\
+  \ each different problem, print on a new line the answer to the problem, i.e. the\
+  \ value of ∑mi=1∑mj=irangeMin(B[i],B[j])$\\sum_{i=1}^m \\sum_{j=i}^m rangeMin(B[i],B[j])$\
+  \ .\n\n-----Constraints:-----\n- 1≤T≤105$1 \\leq T \\leq {10}^5$\n- 1≤N≤105$1 \\\
+  leq N \\leq {10}^5$\n- 1≤M≤105$1 \\leq M \\leq {10}^5$\n- 1≤A[i]≤109$1 \\leq A[i]\
+  \ \\leq 10^9$\n- 1≤B[i]≤N$1 \\leq B[i] \\leq N$\nIt is guaranteed that the sum of\
+  \ N$N$ over all test cases does not exceed 106${10}^6$ .\n\n-----Sample Input:-----\n\
+  1\n7 3\n10 3 7 9 1 19 2\n1 4 6\n\n-----Sample Output:-----\n43\n\n-----Explanation:-----\n\
+  For the given array A$A$, we have to calculate rangeMin(1,1)+rangeMin(1,4)+rangeMin(1,6)+rangeMin(4,4)+rangeMin(4,6)+rangeMin(6,6)$rangeMin(1,1)\
+  \ + rangeMin(1,4) + rangeMin(1,6) + rangeMin(4,4) + rangeMin(4,6) + rangeMin(6,6)\
+  \ $.\nThis is equal to 10+3+1+9+1+19=43$10 + 3 + 1 + 9 + 1 +19 = 43$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def add_numbers_between_strings (n1 n2 : Int) (use_floor_division\
+  \ : Bool) : Int :=\n  sorry\n\n-- Property: Regular addition when use_floor_division\
+  \ is false"
+"vc-theorems": "theorem add_numbers_reg_addition {n1 n2 : Int} : \n  add_numbers_between_strings\
+  \ n1 n2 false = n1 + n2 := \n  sorry\n\n-- Property: Floor division when use_floor_division\
+  \ is true and n2 ≠ 0\n\ntheorem add_numbers_floor_div {n1 n2 : Int} (h : n2 ≠ 0)\
+  \ :\n  add_numbers_between_strings n1 n2 true = n1 / n2 :=\n  sorry\n\n-- Property:\
+  \ Division by zero results in failure\n\ntheorem add_numbers_div_zero_fails {n1\
+  \ : Int} :\n  ¬∃ (result : Int), add_numbers_between_strings n1 0 true = result\
+  \ :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,46 @@
+"vc-description": "Chef recently opened a big e-commerce website where her recipes\
+  \ can be bought online. It's Chef's birthday month and so she has decided to organize\
+  \ a big sale in which grand discounts will be provided.\nIn this sale, suppose a\
+  \ recipe should have a discount of x percent and its original price (before the\
+  \ sale) is p. Statistics says that when people see a discount offered over a product,\
+  \ they are more likely to buy it. Therefore, Chef decides to first increase the\
+  \ price of this recipe by x% (from p) and then offer a discount of x% to people.\n\
+  Chef has a total of N types of recipes. For each i (1 ≤ i ≤ N), the number of recipes\
+  \ of this type available for sale is quantityi, the unit price (of one recipe of\
+  \ this type, before the x% increase) is pricei and the discount offered on each\
+  \ recipe of this type (the value of x) is discounti.\nPlease help Chef find the\
+  \ total loss incurred due to this sale, if all the recipes are sold out.\n\n-----Input-----\n\
+  - The first line of the input contains a single integer T denoting the number of\
+  \ test cases. The description of T test cases follows.\n- The first line of each\
+  \ test case contains a single integer N denoting the number of recipe types.\n-\
+  \ N lines follow. The i-th of these lines contains three space-separated integers\
+  \ pricei, quantityi and discounti describing the i-th recipe type.\n\n-----Output-----\n\
+  For each test case, print a single line containing one real number — the total amount\
+  \ of money lost. Your answer will be considered correct if it has an absolute error\
+  \ less than 10-2.\n\n-----Constraints-----\n- 1 ≤ T ≤ 10\n- 1 ≤ N ≤ 105\n- 1 ≤ pricei,\
+  \ quantityi ≤ 100 for each valid i\n- 0 ≤ discounti ≤ 100 for each valid i\n\n-----Subtasks-----\n\
+  Subtask #1 (30 points): 1 ≤ N ≤ 100\nSubtask #2 (70 points): original constraints\n\
+  \n-----Example-----\nInput:\n\n2\n2\n100 5 10\n100 1 50\n3\n10 10 0\n79 79 79\n\
+  100 1 100\n\nOutput:\n\n30.000000000\n3995.0081000\n\n-----Explanation-----\nExample\
+  \ case 1: There are two recipes.\nThere are 5 recipes of the first type, each of\
+  \ them has a price of 100 and there is a 10% discount provided on it. Therefore,\
+  \ Chef first increases the price of each recipe by 10%, from 100 to 110. After that,\
+  \ she decreases the price by 10%, which makes the final price 99. The amount of\
+  \ money lost for each unit is 1, thus losing 5 for recipes of the first type.\n\
+  There is only one recipe of the second type, with price 100 and a 50% discount.\
+  \ Therefore, Chef increases the price of the recipe by 50% from 100 to 150 and after\
+  \ that, she decreases its price by 50% to make its final price 75. She loses 25\
+  \ for this recipe.\nOverall, the amount of money Chef loses is 30."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Recipe := (Nat × Nat × Nat)\ndef calculateLoss (recipes : List\
+  \ Recipe) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem loss_is_nonnegative (recipes : List Recipe) :\n  calculateLoss\
+  \ recipes ≥ 0 :=\n  sorry\n\n\ntheorem loss_is_zero_no_discount (recipes : List\
+  \ Recipe) :\n  (∀ r ∈ recipes, r.2.2 = 0) →\n  calculateLoss recipes = 0 :=\n  sorry\n\
+  \n\ntheorem loss_scales_with_quantity (recipes : List Recipe) :\n  let doubled :=\
+  \ recipes.map (fun r => (r.1, r.2.1 * 2, r.2.2))\n  calculateLoss doubled = 2 *\
+  \ calculateLoss recipes :=\n  sorry\n\n\ntheorem max_loss_at_full_discount (recipes\
+  \ : List Recipe) :\n  (∀ r ∈ recipes, r.2.2 = 100) →\n  calculateLoss recipes =\
+  \ recipes.foldr (fun r acc => r.1 * r.2.1 + acc) 0 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

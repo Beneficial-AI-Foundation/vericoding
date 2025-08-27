@@ -1,0 +1,37 @@
+"vc-description": "2021 was approaching and the world was about to end. So 2 gods\
+  \ Saurabhx and Saurabhy (from Celesta) created the Cyberverse. But this time disappointed\
+  \ with humans both the gods decided not to have humans in this world. So they created\
+  \ a world of cyborgs. A world without humans. Isn’t it interesting? So let us dive\
+  \ into the cyberverse and have a look at their problems.\nThere are $N$ kid cyborgs\
+  \ with Chief Cyborg '100gods' and he has $K$ weapons with him. He wants to distribute\
+  \ those $K$ weapons among $N$ kid cyborgs. Since all the kid cyborgs are very good\
+  \ friends, so they set a rule among themselves for taking those weapons. The rule\
+  \ states that the difference between kid cyborg having the maximum weapons and the\
+  \ kid cyborg having minimum weapons should be less than or equal to $1$.\n\nFind\
+  \ the value of the minimum number of weapons a kid cyborg can have when all the\
+  \ $K$ weapons are distributed among them.\n\n-----Input:-----\n- The first line\
+  \ contains an integer $T$, denoting the number of test cases.\n- Each of the next\
+  \ $T$ lines will contain two space-separated integers denoting $N$ and $K$ respectively.\n\
+  \n-----Output:-----\n- For each test case ,output a single line containing an integer\
+  \ $X$ denoting the minimum number of weapons a kid cyborg can have in that test\
+  \ case.  \n\n-----Constraints:-----\n- $1 \\leq T \\leq 10^5$\n- $1 \\leq N \\leq\
+  \ 10^5$\n- $1 \\leq K \\leq 10^9$\n\n-----Sample Input:-----\n1\n5 8\n\n-----Expected\
+  \ Output:-----\n1\n\n-----Explanation-----\n- There are $5$ kids and $8$ weapons.\
+  \  \n- Hence we will distribute the weapons such that $3$ kids have $2$ weapons\
+  \ each and the remaining $2$ kids have $1$ weapon each.  \n- Hence the minimum number\
+  \ of weapons a kid cyborg has is $1$. (  That is, $min(1,2)$ = $1$ )"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_min_weapons (n k : Nat) : Nat :=\nsorry\n"
+"vc-theorems": "theorem min_weapons_div (n k : Nat) (h : n > 0) :\n  calculate_min_weapons\
+  \ n k = k / n :=\nsorry\n\n\ntheorem min_weapons_nonneg (n k : Nat) (h : n > 0)\
+  \ :\n  calculate_min_weapons n k ≥ 0 :=\nsorry\n\n\ntheorem min_weapons_times_n_le\
+  \ (n k : Nat) (h : n > 0) :\n  (calculate_min_weapons n k) * n ≤ k :=\nsorry\n\n\
+  \ntheorem min_weapons_plus_one_gt (n k : Nat) (h : n > 0) (h2 : k % n ≠ 0) :\n \
+  \ (calculate_min_weapons n k + 1) * n > k :=\nsorry\n\n\ntheorem min_weapons_zero\
+  \ (n : Nat) (h : n > 0) :\n  calculate_min_weapons n 0 = 0 :=\nsorry\n\n\ntheorem\
+  \ min_weapons_zero_n (k : Nat) :\n  calculate_min_weapons 0 k = 0 ∨ calculate_min_weapons\
+  \ 0 k = undefined :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval calculate_min_weapons\
+  \ 5 8\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval calculate_min_weapons 3 7\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval calculate_min_weapons 10 25\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

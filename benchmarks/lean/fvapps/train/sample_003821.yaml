@@ -1,0 +1,45 @@
+"vc-description": "# A History Lesson\n\nThe Pony Express was a mail service operating\
+  \ in the US in 1859-60.\n\n\n\n\n\nIt reduced the time for messages to travel between\
+  \ the Atlantic and Pacific coasts to about 10 days, before it was made obsolete\
+  \ by the transcontinental telegraph.\n\n# How it worked\n\nThere were a number of\
+  \ *stations*, where:\n\n\n* The rider switched to a fresh horse and carried on,\
+  \ or\n\n* The mail bag was handed over to the next rider\n\n\n# Kata Task\n\n\n\
+  `stations` is a list/array of distances (miles) from one station to the next along\
+  \ the Pony Express route.\n\nImplement the `riders` method/function, to return how\
+  \ many riders are necessary to get the mail from one end to the other.\n\n##  Missing\
+  \ rider\n\nIn this version of the Kata a rider may go missing. In practice, this\
+  \ could be for a number of reasons - a lame horse, an accidental fall, foul play...\
+  \ \n\nAfter some time, the rider's absence would be noticed at the **next** station,\
+  \ so the next designated rider from there would have to back-track the mail route\
+  \ to look for his missing colleague. The missing rider is then safely escorted back\
+  \ to the station he last came from, and the mail bags are handed to his rescuer\
+  \ (or another substitute rider if necessary). \n\n`stationX` is the number (2..N)\
+  \ of the station where the rider's absence was noticed.\n\n# Notes\n\n* Each rider\
+  \ travels as far as he can, but never more than 100 miles.\n\n# Example\n\nGIven\n\
+  \n* `stations = [43, 23, 40, 13]`\n\n* `stationX = 4`\n\nSo\n\n`S1` ...  ... 43\
+  \ ...  ... `S2` ...  ... 23 ...  ... `S3` ...  ... 40 ...  ... `S4` ...  ... 13\
+  \ ...  ... `S5`\n\n* Rider 1 gets as far as Station S3\n* Rider 2 (at station S3)\
+  \ takes mail bags from Rider 1\n* Rider 2 never arrives at station S4\n* Rider 3\
+  \ goes back to find what happened to Rider 2\n* Rider 2 and Rider 3 return together\
+  \ back to Station S3\n* Rider 3 takes mail bags from Rider 2\n* Rider 3 completes\
+  \ the journey to Station S5\n\n**Answer:** \n3 riders\n\n\n\n\n*Good Luck.\nDM.*\n\
+  \n---\n\nSee also\n* The Pony Express\n* The Pony Express (missing rider)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def riders (stations: List Nat) (lost: Nat) : Nat := sorry\n\n\
+  theorem riders_at_least_one {stations: List Nat} {lost: Nat}\n  (h1: stations.length\
+  \ ≥ 2)\n  (h2: 1 < lost)\n  (h3: lost ≤ stations.length)\n  (h4: ∀ x ∈ stations,\
+  \ x ≥ 1 ∧ x ≤ 100) :\n  riders stations lost ≥ 1 := sorry\n"
+"vc-theorems": "theorem riders_at_least_two {stations: List Nat} {lost: Nat}\n  (h1:\
+  \ stations.length ≥ 2)\n  (h2: 1 < lost)\n  (h3: lost ≤ stations.length)\n  (h4:\
+  \ ∀ x ∈ stations, x ≥ 1 ∧ x ≤ 100) :\n  riders stations lost ≥ 2 := sorry\n\n\n\
+  theorem riders_meets_minimum {stations: List Nat} {lost: Nat}\n  (h1: stations.length\
+  \ ≥ 2)\n  (h2: 1 < lost)\n  (h3: lost ≤ stations.length)\n  (h4: ∀ x ∈ stations,\
+  \ x ≥ 1 ∧ x ≤ 100) :\n  let modified := (stations.take (lost-1)) ++ (stations.drop\
+  \ (lost-1))\n  let min_riders := modified.foldr\n    (fun d (acc : Nat × Nat) =>\n\
+  \      let (total, riders) := acc\n      let new_total := total + d\n      if new_total\
+  \ > 100 then (d, riders + 1)\n      else (new_total, riders)) (0, 1)\n  riders stations\
+  \ lost ≥ min_riders.2 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval riders\
+  \ [43, 23, 40, 13] 4\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval riders [18, 15]\
+  \ 2\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval riders [50, 50] 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

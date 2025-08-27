@@ -1,0 +1,47 @@
+"vc-description": "Teacher Sungjae wanted to hold a programming competition for his\
+  \ students where every participant need to be included into  team. The participants\
+  \ submitted their team names before the deadline. After the competition ran for\
+  \ half an hour, (It is assured that each registered team will submit absolutely\
+  \ once within half an hour) Sungjae mistakenly pressed a button that changed the\
+  \ order of the registered team names. Now in the submission list, order of the characters\
+  \ in the team's name doesn't matter. That means $abc$, $acb$, $bac$, $bca$, $cab$,\
+  \ $cba$ refers to the same team. The competition ran for two hours and then ended.\
+  \ Sungjae now counting each of the team's score and wants to print the registered\
+  \ team names and score. The scoreboard should be ordered based on scores in decreasing\
+  \ order and if two teams have same score, Sangjae would follow lexicographical order.\n\
+  $N$.$B$. frequency of each character's in a registered team's name will not match\
+  \ with another team. \nThat means two teams named $xoxo$ and $oxox$ is not possible.\
+  \ Because both of them have the same frequency of each of the characters (two 'o'\
+  \ and two 'x'). Similarly $abb$ and $bab$ is not possible (because both of them\
+  \ have one 'a' and two 'b').\nIt is ensured that only possible test cases will be\
+  \ given.\n\n-----Input:-----Input:\n- \nFirst line will contain $T$, number of testcases.\
+  \ Then the testcases follow. \n- \nThe first line of each test case contains two\
+  \ integers , $N$ and $R$ - total number of submissions and the number of submissions\
+  \ within first half an hour. \n- \nThen $R$  lines follow: the i'th line contains\
+  \ a string $ti$, registered names of the teams and an integer $pi$, points they\
+  \ got on that submission.\n- \nThen $N-R$  lines follow: the i-th line contains\
+  \ a string $ti$- the i-th team's name (in any order) in lowercase letter only and\
+  \ $pi$ -points they got on that submission.\n\n-----Output:-----Output:\nFor each\
+  \ testcase,print the scoreboard.\nThat means print the teams name and their point\
+  \ according to their score in decreasing order and if some of them have same score,print\
+  \ the teams name in lexicographical order\n\n-----Constraints-----Constraints\n\
+  - $1 \\leq T \\leq 10$\n- $1 \\leq R \\leq N \\leq 1000$\n- $1 \\leq ti \\leq 1000$\n\
+  - $1 \\leq pi \\leq 10^6$\nSum of points ($pi$) of a team will not cross $10^9$.\n\
+  \n-----Sample Input:-----Sample Input:\n1\n10 5\namigoes  1\nbannermen 1\nmonarchy\
+  \ 4\noutliers 5\niniciador 10\naegimos 2\niiiacdnor 1\neilorstu 1\ngimosae 3\nmnachroy\
+  \ 7\n\n-----Sample Output:-----Sample Output:\niniciador 11\nmonarchy 11\namigoes\
+  \ 6\noutliers 6\nbannermen 1\n\n-----Explanation:-----Explanation:\n\n$It$ $is$\
+  \ $assured$ $that$ $each$ $team$ $will$ $submit$ $once$ $within$ $first$ $half$\
+  \ $an$ $hour$.That means -                                          \n\nthat kind\
+  \ of submissions isn't possible within first half an hour.\nDataset can be huge.\
+  \ Use faster I/O method."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_scoreboard (n : Nat) (k : Nat) (submissions : List (String\
+  \ × Nat)) : List String := sorry\n\n\n\ntheorem scoreboard_points_descending\n \
+  \ {n : Nat} {k : Nat} {submissions : List (String × Nat)}\n  (h : 0 < n) :\n  let\
+  \ result := get_scoreboard n k submissions\n  let points := result.map (λ e => (e.splitOn\
+  \ \" \").getLast!.toNat!)\n  ∀ i j, i < j → j < points.length → points[i]! ≥ points[j]!\
+  \ := sorry"
+"vc-theorems": ""
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

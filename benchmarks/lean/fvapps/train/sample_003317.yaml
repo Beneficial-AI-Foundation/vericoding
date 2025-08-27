@@ -1,0 +1,25 @@
+"vc-description": "In this kata you will be given a sequence of the dimensions of\
+  \ rectangles ( sequence with width and length ) and circles ( radius - just a number\
+  \ ).  \nYour task is to return a new sequence of dimensions, sorted ascending by\
+  \ area.\n\nFor example,\n\n```python\nseq = [ (4.23, 6.43), 1.23, 3.444, (1.342,\
+  \ 3.212) ] # [ rectangle, circle, circle, rectangle ]\nsort_by_area(seq) => [ (\
+  \ 1.342, 3.212 ), 1.23, ( 4.23, 6.43 ), 3.444 ]\n```\n\nThis kata inspired by [Sort\
+  \ rectangles and circles by area](https://www.codewars.com/kata/sort-rectangles-and-circles-by-area/)."
+"vc-preamble": "import Imports.AllImports\n\ndef get_area (x : AreaElement) : Nat\
+  \ :=\n  match x with\n  | .circle r => 314159 * r * r / 100000  -- π approximation\
+  \ times r^2\n  | .rect (w, h) => w * h\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sort_by_area (seq : List AreaElement) : List AreaElement :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem sort_by_area_preserves_length {seq : List AreaElement} :\n\
+  \  (sort_by_area seq).length = seq.length :=\n  sorry\n\n\ntheorem sort_by_area_preserves_elements\
+  \ {seq : List AreaElement} (x : AreaElement) :\n  (seq.count x) = ((sort_by_area\
+  \ seq).count x) :=\n  sorry\n\n\ntheorem sort_by_area_ascending {seq : List AreaElement}\
+  \ :\n  ∀ i j, i < j → j < (sort_by_area seq).length →\n    let sorted := sort_by_area\
+  \ seq\n    ∀ (hi : i < sorted.length) (hj : j < sorted.length),\n    get_area (sorted.get\
+  \ ⟨i, hi⟩) ≤ get_area (sorted.get ⟨j, hj⟩) :=\n  sorry\n\n\ntheorem sort_by_area_empty\
+  \ :\n  sort_by_area [] = [] :=\n  sorry\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval\
+  \ sort_by_area []\n\n/--\ninfo: expected\n-/\n#guard_msgs in\n#eval sort_by_area\
+  \ [(4.23, 6.43), 1.23, 3.444, (1.342, 3.212)]\n\n/--\ninfo: expected2\n-/\n#guard_msgs\
+  \ in\n#eval sort_by_area [1.0, 2.0, 3.0]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

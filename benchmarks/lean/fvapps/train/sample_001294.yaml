@@ -1,0 +1,37 @@
+"vc-description": "You are given a sequence $A_1, A_2, \\ldots, A_N$. You should select\
+  \ a (not necessarily contiguous) subsequence of $A$ and reverse it. In other words,\
+  \ if you select a subsequence $A_{i_1}, A_{i_2}, \\ldots, A_{i_K}$ ($1 \\le i_1\
+  \ < \\ldots < i_K \\le N$), then for each valid $j$, the $i_j$-th element of the\
+  \ resulting sequence is equal to the $i_{K+1-j}$-th element of the original sequence;\
+  \ all other elements are the same as in the original sequence.\nIn the resulting\
+  \ sequence, you want to calculate the maximum sum of a contiguous subsequence (possibly\
+  \ an empty sequence, with sum $0$). Find its maximum possible value and a subsequence\
+  \ which you should select in order to obtain this maximum value. If there are multiple\
+  \ solutions, you may find any one of them.\n\n-----Input-----\n- The first line\
+  \ of the input contains a single integer $T$ denoting the number of test cases.\
+  \ The description of $T$ test cases follows.\n- The first line of each test case\
+  \ contains a single integer $N$.\n- The second line contains $N$ space-separated\
+  \ integers $A_1, A_2, \\ldots, A_N$.\n\n-----Output-----\nFor each test case, print\
+  \ two lines.\n- The first of these lines should contain a single integer ― the maximum\
+  \ possible sum of a contiguous subsequence.\n- The second line should contain an\
+  \ integer $K$ followed by a space and $K$ space-separated integers $i_1, i_2, \\\
+  ldots, i_K$.\n\n-----Constraints-----\n- $1 \\le T \\le 2,000$\n- $2 \\le N \\le\
+  \ 10^5$\n- $|A_i| \\le 10^9$ for each valid $i$\n- the sum of $N$ over all test\
+  \ cases does not exceed $2 \\cdot 10^6$\n\n-----Example Input-----\n2\n5\n-4 2 -4\
+  \ 3 -5\n3\n-3 -2 -1\n\n-----Example Output-----\n5\n2 2 3\n0\n0"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_max_subseq_sum (n : Nat) (arr : List Int) : Int × Nat\
+  \ × List Nat := sorry\n\ntheorem output_format_types {n : Nat} {arr : List Int}\
+  \ (h : arr.length > 0) :\n  let (sum_val, k, indices) := solve_max_subseq_sum n\
+  \ arr\n  indices.all (fun i => i ≥ 0) := sorry\n"
+"vc-theorems": "theorem all_negative_returns_zeros {n : Nat} {arr : List Int} \n \
+  \ (h₁ : arr.length > 0)\n  (h₂ : ∀ x ∈ arr, x < 0) :\n  let (sum_val, k, indices)\
+  \ := solve_max_subseq_sum n arr\n  sum_val = 0 ∧ k = 0 ∧ indices = [] := sorry\n\
+  \n\ntheorem indices_in_bounds {n : Nat} {arr : List Int} (h : arr.length > 0) :\n\
+  \  let (_, _, indices) := solve_max_subseq_sum n arr\n  (∀ i ∈ indices, 0 ≤ i ∧\
+  \ i < n) ∧ \n  indices.Nodup := sorry \n\n\ntheorem return_sum_matches_indices {n\
+  \ : Nat} {arr : List Int} (h : arr.length > 0) :\n  let (sum_val, k, indices) :=\
+  \ solve_max_subseq_sum n arr\n  (indices ≠ [] → k = indices.length) ∧\n  (indices\
+  \ = [] → sum_val = 0 ∧ k = 0) := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

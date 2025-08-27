@@ -1,0 +1,46 @@
+"vc-description": "Nitika was once reading a history book and wanted to analyze it.\
+  \ So she asked her brother to create a list of names of the various famous personalities\
+  \ in the book. Her brother gave Nitika the list. Nitika was furious when she saw\
+  \ the list. The names of the people were not properly formatted. She doesn't like\
+  \ this and would like to properly format it.\nA name can have at most three parts:\
+  \ first name, middle name and last name. It will have at least one part. The last\
+  \ name is always present. The rules of formatting a name are very simple:\n\n- Only\
+  \ the first letter of each part of the name should be capital.\n- All the parts\
+  \ of the name except the last part should be represented by only two characters.\
+  \ The first character should be the first letter of the part and should be capitalized.\
+  \ The second character should be \".\".\n\nLet us look at some examples of formatting\
+  \ according to these rules:\n- gandhi -> Gandhi\n\n- mahatma gandhI -> M. Gandhi\
+  \ \n- Mohndas KaramChand ganDhi -> M. K. Gandhi \n\n-----Input-----\nThe first line\
+  \ of the input contains an integer T denoting the number of test cases.\nThe only\
+  \ line of each test case contains the space separated parts of the name.\n\n-----Output-----\n\
+  For each case, output the properly formatted name.\n\n-----Constraints-----\n- 1\
+  \ ≤ T ≤ 100\n- 2 ≤ Length of each part of the name ≤ 10\n- Each part of the name\
+  \ contains the letters from lower and upper case English alphabets (i.e. from 'a'\
+  \ to 'z', or 'A' to 'Z')\n\n-----Subtasks-----\nSubtask #1 (40 points)\n- There\
+  \ is exactly one part in the name.\n\nSubtask #2 (60 points)\n- Original constraints.\n\
+  \n-----Example-----\nInput:\n3\ngandhi\nmahatma gandhI\nMohndas KaramChand gandhi\n\
+  \nOutput:\nGandhi \nM. Gandhi \nM. K. Gandhi \n\n-----Explanation-----\nThe examples\
+  \ are already explained in the problem statement."
+"vc-preamble": "import Imports.AllImports\n\ndef isValidNamePart (s: String) : Bool\
+  \ :=\n  sorry\n\n\ndef formatName (input: List String) : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def formatNameStr (input: String) : String :=\n  sorry\n"
+"vc-theorems": "theorem format_name_list_properties {parts: List String} \n  (h: ∃\
+  \ p ∈ parts, isValidNamePart p = true) :\n  let result := formatName parts\n  let\
+  \ resultParts := result.split (· = ' ')\n  -- Result is a string\n  result.length\
+  \ ≥ 0 ∧  \n  -- Last part is capitalized original\n  resultParts.getLast! = (parts.getLast!).capitalize\
+  \ ∧\n  -- Other parts are initials\n  (parts.length > 1 → \n    ∀ i < parts.length\
+  \ - 1,\n    resultParts[i]! = s!\"{(parts[i]!).get 0}.\") :=\n  sorry\n\n\ntheorem\
+  \ format_name_string_properties {input: String}\n  (h: ∃ c ∈ input.data, c.isAlpha)\
+  \ :\n  let validParts := (input.split (· = ' ')).filter isValidNamePart\n  let result\
+  \ := formatNameStr input\n  let resultParts := result.split (· = ' ')\n  (validParts.length\
+  \ > 0) →\n  -- Result is a string\n  result.length ≥ 0 ∧\n  -- Parts lengths match\n\
+  \  resultParts.length = validParts.length ∧\n  -- Initials format\n  (validParts.length\
+  \ > 1 →\n    ∀ i < validParts.length - 1,\n    (resultParts[i]!).endsWith \".\"\
+  \ ∧\n    (resultParts[i]!).length = 2) ∧\n  -- Last name is starts with uppercase\n\
+  \  (resultParts.getLast!).get 0 ≥ 'A' ∧ \n  (resultParts.getLast!).get 0 ≤ 'Z' :=\n\
+  \  sorry\n\n/--\ninfo: 'Gandhi'\n-/\n#guard_msgs in\n#eval format_name \"gandhi\"\
+  \n\n/--\ninfo: 'M. Gandhi'\n-/\n#guard_msgs in\n#eval format_name \"mahatma gandhI\"\
+  \n\n/--\ninfo: 'M. K. Gandhi'\n-/\n#guard_msgs in\n#eval format_name \"Mohndas KaramChand\
+  \ gandhi\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

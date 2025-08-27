@@ -1,0 +1,85 @@
+"vc-description": "# RoboScript #2 - Implement the RS1 Specification\n\n## Disclaimer\n\
+  \nThe story presented in this Kata Series is purely fictional; any resemblance to\
+  \ actual programming languages, products, organisations or people should be treated\
+  \ as purely coincidental.\n\n## About this Kata Series\n\nThis Kata Series is based\
+  \ on a fictional story about a computer scientist and engineer who owns a firm that\
+  \ sells a toy robot called MyRobot which can interpret its own (esoteric) programming\
+  \ language called RoboScript.  Naturally, this Kata Series deals with the software\
+  \ side of things (I'm afraid Codewars cannot test your ability to build a physical\
+  \ robot!).\n\n## Story\n\nNow that you've built your own code editor for RoboScript\
+  \ with appropriate syntax highlighting to make it look like serious code, it's time\
+  \ to properly implement RoboScript so that our MyRobots can execute any RoboScript\
+  \ provided and move according to the will of our customers.  Since this is the first\
+  \ version of RoboScript, let's call our specification RS1 (like how the newest specification\
+  \ for JavaScript is called ES6 :p)\n\n## Task\n\nWrite an interpreter for RS1 called\
+  \ `execute()` which accepts 1 required argument `code`, the RS1 program to be executed.\
+  \  The interpreter should return a string representation of the smallest 2D grid\
+  \ containing the full path that the MyRobot has walked on (explained in more detail\
+  \ later).\n\nInitially, the robot starts at the middle of a 1x1 grid.  Everywhere\
+  \ the robot walks it will leave a path `\"*\"`.  If the robot has not been at a\
+  \ particular point on the grid then that point will be represented by a whitespace\
+  \ character `\" \"`.  So if the RS1 program passed in to `execute()` is empty, then:\n\
+  \n```\n\"\"  -->  \"*\"\n```\n\nThe robot understands 3 major commands:\n\n- `F`\
+  \ - Move forward by 1 step in the direction that it is currently pointing.  Initially,\
+  \ the robot faces to the right.\n- `L` - Turn \"left\" (i.e. **rotate** 90 degrees\
+  \ **anticlockwise**)\n- `R` - Turn \"right\" (i.e. **rotate** 90 degrees **clockwise**)\n\
+  \nAs the robot moves forward, if there is not enough space in the grid, the grid\
+  \ should expand accordingly. So:\n\n```\n\"FFFFF\"  -->  \"******\"\n```\n\nAs you\
+  \ will notice, 5 `F` commands in a row should cause your interpreter to return a\
+  \ string containing 6 `\"*\"`s in a row.  This is because initially, your robot\
+  \ is standing at the middle of the 1x1 grid facing right.  It leaves a mark on the\
+  \ spot it is standing on, hence the first `\"*\"`.  Upon the first command, the\
+  \ robot moves 1 unit to the right.  Since the 1x1 grid is not large enough, your\
+  \ interpreter should expand the grid 1 unit to the right.  The robot then leaves\
+  \ a mark on its newly arrived destination hence the second `\"*\"`.  As this process\
+  \ is repeated 4 more times, the grid expands 4 more units to the right and the robot\
+  \ keeps leaving a mark on its newly arrived destination so by the time the entire\
+  \ program is executed, 6 \"squares\" have been marked `\"*\"` from left to right.\n\
+  \nEach row in your grid must be separated from the next by a CRLF (`\\r\\n`).  Let's\
+  \ look at another example:\n\n```\n\"FFFFFLFFFFFLFFFFFLFFFFFL\"  -->  \"******\\\
+  r\\n*    *\\r\\n*    *\\r\\n*    *\\r\\n*    *\\r\\n******\"\n```\n\nSo the grid\
+  \ will look like this:\n```\n******\n*    *\n*    *\n*    *\n*    *\n******\n```\n\
+  \nThe robot moves 5 units to the right, then turns left, then moves 5 units upwards,\
+  \ then turns left again, then moves 5 units to the left, then turns left again and\
+  \ moves 5 units downwards, returning to the starting point before turning left one\
+  \ final time.  Note that the marks do **not** disappear no matter how many times\
+  \ the robot steps on them, e.g. the starting point is still marked `\"*\"` despite\
+  \ the robot having stepped on it twice (initially and on the last step).\n\nAnother\
+  \ example:\n\n```\n\"LFFFFFRFFFRFFFRFFFFFFF\"  -->  \"    ****\\r\\n    *  *\\r\\\
+  n    *  *\\r\\n********\\r\\n    *   \\r\\n    *   \"\n```\nSo the grid will look\
+  \ like this:\n```\n    ****\n    *  *\n    *  *\n********\n    *\n    *\n```\n\n\
+  Initially the robot turns left to face upwards, then moves upwards 5 squares, then\
+  \ turns right and moves 3 squares, then turns right again (to face downwards) and\
+  \ move 3 squares, then finally turns right again and moves 7 squares.\n\nSince you've\
+  \ realised that it is probably quite inefficient to repeat certain commands over\
+  \ and over again by repeating the characters (especially the `F` command - what\
+  \ if you want to move forwards 20 steps?), you decide to allow a shorthand notation\
+  \ in the RS1 specification which allows your customers to postfix a non-negative\
+  \ integer onto a command to specify how many times an instruction is to be executed:\n\
+  \n- `Fn` - Execute the `F` command `n` times (NOTE: `n` *may* be more than 1 digit\
+  \ long!)\n- `Ln` - Execute `L` n times\n- `Rn` - Execute `R` n times\n\nSo the example\
+  \ directly above can also be written as:\n\n```\n\"LF5RF3RF3RF7\"\n```\n\nThese\
+  \ 5 example test cases have been included for you :)\n\n## Kata in this Series\n\
+  \n1. [RoboScript #1 - Implement Syntax Highlighting](https://www.codewars.com/kata/roboscript-number-1-implement-syntax-highlighting)\n\
+  2. **RoboScript #2 - Implement the RS1 Specification**\n3. [RoboScript #3 - Implement\
+  \ the RS2 Specification](https://www.codewars.com/kata/58738d518ec3b4bf95000192)\n\
+  4. [RoboScript #4 - RS3 Patterns to the Rescue](https://www.codewars.com/kata/594b898169c1d644f900002e)\n\
+  5. [RoboScript #5 - The Final Obstacle (Implement RSU)](https://www.codewars.com/kata/5a12755832b8b956a9000133)"
+"vc-preamble": "import Imports.AllImports\n\ndef execute (cmd : String) : String :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isValidOutput (result : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem output_format_valid (cmd : String) :\n  isValidOutput (execute\
+  \ cmd) := by\n  sorry\n\n\ntheorem empty_input_yields_asterisk (cmd : String) :\n\
+  \  cmd = \"\" → execute cmd = \"*\" := by\n  sorry\n\n\ntheorem rotation_only_yields_single_point\
+  \ (cmd : String)\n  (h : ∀ c ∈ cmd.data, c = 'R') :\n  execute cmd = \"*\" := by\n\
+  \  sorry\n\n\ntheorem result_contains_origin (cmd : String) :\n  let result := execute\
+  \ cmd\n  result ≠ \"*\" →\n  ∃ line, line ∈ result.splitOn \"\\r\\n\" ∧ ('*' ∈ line.data)\
+  \ := by\n  sorry\n\n\ntheorem straight_line_is_continuous (cmd : String)\n  (h :\
+  \ ∀ c ∈ cmd.data, c = 'F') :\n  let result := execute cmd\n  (result.data.filter\
+  \ (· = '*')).length = cmd.length + 1 := by\n  sorry\n\n/--\ninfo: '*'\n-/\n#guard_msgs\
+  \ in\n#eval execute \"\"\n\n/--\ninfo: '******'\n-/\n#guard_msgs in\n#eval execute\
+  \ \"FFFFF\"\n\n/--\ninfo: '    ****\\r\\n    *  *\\r\\n    *  *\\r\\n********\\\
+  r\\n    *   \\r\\n    *   '\n-/\n#guard_msgs in\n#eval execute \"LFFFFFRFFFRFFFRFFFFFFF\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

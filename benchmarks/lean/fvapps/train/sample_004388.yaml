@@ -1,0 +1,35 @@
+"vc-description": "# Task\n Pac-Man got lucky today! Due to minor performance issue\
+  \ all his enemies have frozen. Too bad Pac-Man is not brave enough to face them\
+  \ right now, so he doesn't want any enemy to see him. \n \n Given a gamefield of\
+  \ size `N` x `N`, Pac-Man's position(`PM`) and his enemies' positions(`enemies`),\
+  \ your task is to count the number of coins he can collect without being seen.\n\
+  \n An enemy can see a Pac-Man if they are standing on the same row or column. \n\
+  \ \n It is guaranteed that no enemy can see Pac-Man on the starting position. There\
+  \ is a coin on each empty square (i.e. where there is no Pac-Man or enemy).\n\n\
+  # Example\n\n For `N = 4, PM = [3, 0], enemies = [[1, 2]]`, the result should be\
+  \ `3`.\n```\nLet O represent coins, P - Pac-Man and E - enemy.\nOOOO\nOOEO\nOOOO\n\
+  POOO```\nPac-Man cannot cross row 1 and column 2. \n\n He can only collect coins\
+  \ from points `(2, 0), (2, 1) and (3, 1)`, like this:\n ```\nx is the points that\
+  \ Pac-Man can collect the coins.\nOOOO\nOOEO\nxxOO\nPxOO\n ```\n\n# Input/Output\n\
+  \n\n - `[input]` integer `N`\n\n  The field size.\n\n\n - `[input]` integer array\
+  \ `PM`\n\n  Pac-Man's position (pair of integers)\n\n\n - `[input]` 2D integer array\
+  \ `enemies`\n\n  Enemies' positions (array of pairs)\n\n\n - `[output]` an integer\n\
+  \n  Number of coins Pac-Man can collect.\n  \n  \n# More PacMan Katas\n\n - [Play\
+  \ PacMan: Devour all](https://www.codewars.com/kata/575c29d5fcee86cb8b000136)\n\n\
+  \ - [Play PacMan 2: The way home](https://www.codewars.com/kata/575ed46e23891f67d90000d8)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pac_man (size : Nat) (pacman : List Nat) (enemies : List (List\
+  \ Nat)) : Int :=\nsorry\n\n/-- Theorem ensuring result is an integer bounded by\
+  \ board size -/"
+"vc-theorems": "theorem pac_man_result_bounds \n  (size : Nat) \n  (px py : Nat) \n\
+  \  (enemies : List (List Nat))\n  (h : size ≥ 2) :\n  let normalizedPx := px % size\n\
+  \  let normalizedPy := py % size\n  let result := pac_man size [normalizedPx, normalizedPy]\
+  \ enemies\n  result ≥ -1 ∧ result ≤ size * size - 1 :=\nsorry\n\n/-- Theorem for\
+  \ specific cases -/\n\ntheorem pac_man_specific_cases :\n  /- Empty board -/\n \
+  \ pac_man 3 [0, 0] [] = 8 ∧ \n  /- Single enemy -/\n  pac_man 4 [3, 0] [[1, 2]]\
+  \ = 3 ∧ \n  /- Multiple enemies -/\n  pac_man 2 [0, 0] [[0, 1], [1, 0], [1, 1]]\
+  \ = 0 :=\nsorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval pac_man 4 [3, 0] [[1,\
+  \ 2]]\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval pac_man 3 [0, 0] []\n\n/--\ninfo:\
+  \ 19\n-/\n#guard_msgs in\n#eval pac_man 8 [1, 1] [[5, 4]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,30 @@
+"vc-description": "Given a sorted positive integer array nums and an integer n, add/patch\
+  \ elements to the array such that any number in range [1, n] inclusive can be formed\
+  \ by the sum of some elements in the array. Return the minimum number of patches\
+  \ required.\n\nExample 1:\n\n\nInput: nums = [1,3], n = 6\nOutput: 1 \nExplanation:\n\
+  Combinations of nums are [1], [3], [1,3], which form possible sums of: 1, 3, 4.\n\
+  Now if we add/patch 2 to nums, the combinations are: [1], [2], [3], [1,3], [2,3],\
+  \ [1,2,3].\nPossible sums are 1, 2, 3, 4, 5, 6, which now covers the range [1, 6].\n\
+  So we only need 1 patch.\n\nExample 2:\n\n\nInput: nums = [1,5,10], n = 20\nOutput:\
+  \ 2\nExplanation: The two patches can be [2, 4].\n\n\nExample 3:\n\n\nInput: nums\
+  \ = [1,2,2], n = 5\nOutput: 0"
+"vc-preamble": "import Imports.AllImports\n\ndef min_patches (nums : List Nat) (n\
+  \ : Nat) : Nat :=\n  sorry\n\n-- Define sorted property "
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSorted (as : List Nat) : Prop :=\n  ∀ i j, i < j → j < as.length\
+  \ → as[i]! ≤ as[j]!\n\n-- All results are natural numbers and input list remains\
+  \ sorted"
+"vc-theorems": "theorem min_patches_basic_properties {nums : List Nat} {n : Nat} \n\
+  \  (h : isSorted nums) :\n  let result := min_patches nums n\n  Nat.zero ≤ result\
+  \ ∧ isSorted nums := by\n  sorry\n\n-- Empty list produces positive result\n\ntheorem\
+  \ min_patches_empty_list {n : Nat} :\n  let result := min_patches [] n\n  0 < result\
+  \ := by\n  sorry\n\n-- Result is non-negative for small n\n\ntheorem min_patches_small_n\
+  \ {nums : List Nat} (n : Nat)\n  (h₁ : isSorted nums)\n  (h₂ : nums ≠ [])\n  (h₃\
+  \ : ∀ x ∈ nums, n < x) :\n  0 ≤ min_patches nums n := by\n  sorry\n\n-- Specific\
+  \ cases\n\ntheorem min_patches_minimal_cases_1 :\n  min_patches [1] 1 = 0 := by\n\
+  \  sorry\n\n\ntheorem min_patches_minimal_cases_2 :\n  min_patches [2] 1 = 1 :=\
+  \ by\n  sorry\n\n\ntheorem min_patches_minimal_cases_3 :\n  min_patches [1,2] 2\
+  \ = 0 := by\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval min_patches [1,\
+  \ 3] 6\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_patches [1, 5, 10] 20\n\n\
+  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval min_patches [1, 2, 2] 5\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

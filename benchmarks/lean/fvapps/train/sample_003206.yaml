@@ -1,0 +1,28 @@
+"vc-description": "You certainly can tell which is the larger number between 2^(10)\
+  \ and 2^(15).\n\nBut what about, say, 2^(10) and 3^(10)? You know this one too.\n\
+  \nThings tend to get a bit more complicated with **both** different bases and exponents:\
+  \ which is larger between 3^(9) and 5^(6)?\n\nWell, by now you have surely guessed\
+  \ that you have to build a function to compare powers, returning -1 if the first\
+  \ member is larger, 0 if they are equal, 1 otherwise; powers to compare will be\
+  \ provided in the `[base, exponent]` format:\n```python\ncompare_powers([2,10],[2,15])==1\n\
+  compare_powers([2,10],[3,10])==1\ncompare_powers([2,10],[2,10])==0\ncompare_powers([3,9],[5,6])==-1\n\
+  compare_powers([7,7],[5,8])==-1\n```\n```if:nasm\nint compare_powers(const int n1[2],\
+  \ const int n2[2])\n```\nOnly positive integers will be tested, incluing bigger\
+  \ numbers - you are warned now, so be diligent try to implement an efficient solution\
+  \ not to drain too much on CW resources ;)!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def PowerPair := List Nat \n\ndef compare_powers (p1 p2 : PowerPair)\
+  \ : Int :=\n  sorry\n"
+"vc-theorems": "theorem compare_powers_valid_result (n1 n2 : PowerPair) : \n  let\
+  \ r := compare_powers n1 n2\n  r = -1 ∨ r = 0 ∨ r = 1 :=\nsorry\n\n\ntheorem compare_powers_reflexive\
+  \ (n : PowerPair) :\n  compare_powers n n = 0 :=\nsorry\n\n\ntheorem compare_powers_antisymmetric\
+  \ (n1 n2 : PowerPair) :\n  compare_powers n1 n2 = -(compare_powers n2 n1) :=\nsorry\n\
+  \n\ntheorem compare_powers_transitive_positive (x y z : PowerPair) : \n  compare_powers\
+  \ x y = 1 → compare_powers y z = 1 → compare_powers x z = 1 :=\nsorry\n\n\ntheorem\
+  \ compare_powers_transitive_negative (x y z : PowerPair) :\n  compare_powers x y\
+  \ = -1 → compare_powers y z = -1 → compare_powers x z = -1 :=\nsorry\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval compare_powers [2, 10] [2, 15]\n\n/--\ninfo: -1\n\
+  -/\n#guard_msgs in\n#eval compare_powers [3, 9] [5, 6]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval compare_powers [2, 10] [2, 10]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

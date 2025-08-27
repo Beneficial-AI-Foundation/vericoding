@@ -1,0 +1,24 @@
+"vc-description": "Some new animals have arrived at the zoo. The zoo keeper is concerned\
+  \ that perhaps the animals do not have the right tails. To help her, you must correct\
+  \ the broken function to make sure that the second argument (tail), is the same\
+  \ as the last letter of the first argument (body) - otherwise the tail wouldn't\
+  \ fit!\n\nIf the tail is right return true, else return false.\n\nThe arguments\
+  \ will always be strings, and normal letters."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def correctTail (body tail : String) : Bool := sorry\n\ntheorem\
+  \ correct_tail_when_ends_with (body tail : String) \n  (h : String.endsWith body\
+  \ tail = true) : \n  correctTail body tail = true := sorry\n"
+"vc-theorems": "theorem correct_tail_when_not_ends_with (body tail : String)\n  (h\
+  \ : String.endsWith body tail = false) :\n  correctTail body tail = false := sorry\n\
+  \n\ntheorem correct_tail_single_char (body tail : String)\n  (h : tail.length =\
+  \ 1) :\n  correctTail body tail = (body.back = tail.front) := sorry\n\n\ntheorem\
+  \ correct_tail_reflexive (text : String) :\n  correctTail text text = true := sorry\n\
+  \n\ntheorem correct_tail_empty_strings : \n  correctTail \"\" \"\" = true := sorry\n\
+  \n\ntheorem correct_tail_empty_tail (x : String) :\n  correctTail x \"\" = true\
+  \ := sorry\n\n\ntheorem correct_tail_empty_body (x : String) :\n  correctTail \"\
+  \" x = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval correct_tail\
+  \ \"Fox\" \"x\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval correct_tail \"Rhino\"\
+  \ \"o\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval correct_tail \"Badger\" \"\
+  s\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,22 @@
+"vc-description": "Blob is a computer science student. He recently got an internship\
+  \ from Chef's enterprise. Along with the programming he has various other skills\
+  \ too like graphic designing, digital marketing and social media management. Looking\
+  \ at his skills Chef has provided him different tasks A[1…N] which have their own\
+  \ scores. Blog wants to maximize the  value of the expression A[d]-A[c]+A[b]-A[a]\
+  \ such that d>c>b>a.\n\nCan you help him in this?\n\n-----Input:-----\n- The first\
+  \ line contain the integer N\n- The second line contains N space separated integers\
+  \ representing A[1], A[2] … A[N]\n\n-----Output:-----\nThe maximum score that is\
+  \ possible\n\n-----Constraints-----\n- $4 \\leq N \\leq 10^4$\n- $0 \\leq A[i] \\\
+  leq 10^5$\n\n-----Sample Input:-----\n6\n\n3 9 10 1 30 40\n\n-----Sample Output:-----\n\
+  46"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def maxval (arr : List Int) : Int := sorry\n\ntheorem maxval_finite\
+  \ (arr : List Int) (h : arr.length ≥ 4) :\n  ∃ n : Int, maxval arr = n := by sorry\n"
+"vc-theorems": "theorem maxval_same_elements (arr : List Int) (h1 : arr.length ≥ 4)\
+  \ \n    (h2 : ∀ (x : Int), x ∈ arr → x = arr.getD 0 0) :\n  maxval arr = 0 := by\
+  \ sorry\n\n\ntheorem maxval_bounded (arr : List Int) (h : arr.length ≥ 4) :\n  let\
+  \ maxVal := arr.getD 0 0 \n  let minVal := arr.getD 0 0\n  let maxPossible := 2\
+  \ * max (maxVal - minVal) (maxVal + minVal)\n  maxval arr ≤ maxPossible ∧ maxval\
+  \ arr ≥ -maxPossible := by sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

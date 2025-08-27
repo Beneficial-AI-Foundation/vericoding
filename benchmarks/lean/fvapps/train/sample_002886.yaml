@@ -1,0 +1,18 @@
+"vc-description": "# Task\n Consider the following algorithm for constructing 26 strings\
+  \ S(1) .. S(26):\n```\nS(1) = \"a\";\nFor i in [2, 3, ..., 26]:\nS(i) = S(i - 1)\
+  \ + character(i) + S(i - 1).```\n\n For example:\n```\nS(1) = \"a\"\nS(2) = S(1)\
+  \ + \"b\" + S(1) = \"a\" + \"b\" + \"a\" = \"aba\"\nS(3) = S(2) + \"c\" + S(2) =\
+  \ \"aba\" + \"c\" +\"aba\" = \"abacaba\"\n...\nS(26) = S(25) + \"z\" + S(25)```\n\
+  Finally, we got a long string S(26). Your task is to find the `k`th symbol (indexing\
+  \ from 1) in the string S(26). All strings consist of lowercase letters only.\n\n\
+  # Input / Output\n\n\n - `[input]` integer `k`\n\n  1 ≤ k < 2^(26)\n\n\n - `[output]`\
+  \ a string(char in C#)\n\n  the `k`th symbol of S(26)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def abacaba (n : Nat) : Char := sorry\n\ntheorem abacaba_is_lowercase\
+  \ (n : Nat) : \n  let result := abacaba n\n  97 ≤ result.toNat ∧ result.toNat ≤\
+  \ 122 := sorry"
+"vc-theorems": "/--\ninfo: 'a'\n-/\n#guard_msgs in\n#eval abacaba 1\n\n/--\ninfo:\
+  \ 'c'\n-/\n#guard_msgs in\n#eval abacaba 4\n\n/--\ninfo: 'e'\n-/\n#guard_msgs in\n\
+  #eval abacaba 16\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

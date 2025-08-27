@@ -1,0 +1,23 @@
+"vc-description": "You are required to create a simple calculator that returns the\
+  \ result of addition, subtraction, multiplication or division of two numbers.\n\n\
+  Your function will accept three arguments:\nThe first and second argument should\
+  \ be numbers.\nThe third argument should represent a sign indicating the operation\
+  \ to perform on these two numbers.\n```if-not:csharp\nif the variables are not numbers\
+  \ or the sign does not belong to the list above a message \"unknown value\" must\
+  \ be returned.\n```\n```if:csharp\nIf the sign is not a valid sign, throw an ArgumentException.\n\
+  ```\n\n# Example:\n\n```python\ncalculator(1, 2, '+') => 3\ncalculator(1, 2, '$')\
+  \ # result will be \"unknown value\"\n```\n\nGood luck!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculator (x : Float) (y : Float) (op : String) : Float ⊕\
+  \ String := sorry \n\ntheorem calculator_valid_inputs (x y : Float) (op : String)\
+  \ :\n  (op = \"+\" ∨ op = \"-\" ∨ op = \"*\" ∨ op = \"/\") →\n  (op ≠ \"/\" ∨ y\
+  \ ≠ 0) →\n  ∃ (result : Float), calculator x y op = Sum.inl result := sorry\n"
+"vc-theorems": "theorem calculator_division_by_zero (x y : Float) (op : String) :\n\
+  \  op = \"/\" ∧ y = 0 →\n  calculator x y op = Sum.inr \"unknown value\" := sorry\n\
+  \n\ntheorem calculator_invalid_operator (x y : Float) (op : String) :\n  (op ≠ \"\
+  +\" ∧ op ≠ \"-\" ∧ op ≠ \"*\" ∧ op ≠ \"/\") →\n  calculator x y op = Sum.inr \"\
+  unknown value\" := sorry\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval calculator 6\
+  \ 2 \"+\"\n\n/--\ninfo: 25\n-/\n#guard_msgs in\n#eval calculator 5 5 \"*\"\n\n/--\n\
+  info: 'unknown value'\n-/\n#guard_msgs in\n#eval calculator 6 2 \"&\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,28 @@
+"vc-description": "Given an integer array nums and an integer k, return the maximum\
+  \ sum of a non-empty subsequence of that array such that for every two consecutive\
+  \ integers in the subsequence, nums[i] and nums[j], where i < j, the condition j\
+  \ - i <= k is satisfied.\nA subsequence of an array is obtained by deleting some\
+  \ number of elements (can be zero) from the array, leaving the remaining elements\
+  \ in their original order.\n \nExample 1:\nInput: nums = [10,2,-10,5,20], k = 2\n\
+  Output: 37\nExplanation: The subsequence is [10, 2, 5, 20].\n\nExample 2:\nInput:\
+  \ nums = [-1,-2,-3], k = 1\nOutput: -1\nExplanation: The subsequence must be non-empty,\
+  \ so we choose the largest number.\n\nExample 3:\nInput: nums = [10,-2,-10,-5,20],\
+  \ k = 2\nOutput: 23\nExplanation: The subsequence is [10, -2, -5, 20].\n\n \nConstraints:\n\
+  \n1 <= k <= nums.length <= 10^5\n-10^4 <= nums[i] <= 10^4"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def constrained_max_subset_sum (nums : List Int) (k : Nat) : Int\
+  \ := sorry\n\ntheorem constrained_max_subset_sum_ge_max_single (nums : List Int)\
+  \ (k : Nat) \n    (h : nums ≠ []) (hk : k > 0) :\n    ∀ x ∈ nums, constrained_max_subset_sum\
+  \ nums k ≥ x := sorry\n"
+"vc-theorems": "theorem constrained_max_subset_sum_all_negative (nums : List Int)\
+  \ (k : Nat)\n    (h : nums ≠ []) (hk : k > 0) (h_neg : ∀ x ∈ nums, x < 0) :\n  \
+  \  ∃ x ∈ nums, constrained_max_subset_sum nums k = x := sorry\n\n\ntheorem constrained_max_subset_sum_independence\
+  \ (nums : List Int) (k : Nat)\n    (h : nums.length > k + 1) (hk : k > 0) :\n  \
+  \  let nums_modified := (nums.take (k+1)).append (List.replicate (nums.length -\
+  \ k - 1) (-1000))\n    constrained_max_subset_sum (nums.take (k+1)) k = constrained_max_subset_sum\
+  \ nums_modified k := sorry\n\n/--\ninfo: 37\n-/\n#guard_msgs in\n#eval constrained_max_subset_sum\
+  \ [10, 2, -10, 5, 20] 2\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval constrained_max_subset_sum\
+  \ [-1, -2, -3] 1\n\n/--\ninfo: 23\n-/\n#guard_msgs in\n#eval constrained_max_subset_sum\
+  \ [10, -2, -10, -5, 20] 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

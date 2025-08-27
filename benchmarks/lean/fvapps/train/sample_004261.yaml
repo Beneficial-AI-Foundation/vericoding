@@ -1,0 +1,35 @@
+"vc-description": "I've got a crazy mental illness.\nI dislike numbers a lot. But\
+  \ it's a little complicated:\nThe number I'm afraid of depends on which day of the\
+  \ week it is...\nThis is a concrete description of my mental illness:\n\nMonday\
+  \     --> 12\n\nTuesday    --> numbers greater than 95\n\nWednesday  --> 34\n\n\
+  Thursday   --> 0\n\nFriday     --> numbers divisible by 2\n\nSaturday   --> 56\n\
+  \nSunday     --> 666 or -666\n\n\nWrite a function which takes a string (day of\
+  \ the week) and an integer (number to be tested) so it tells the doctor if I'm afraid\
+  \ or not. (return a boolean)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Day := String\ndef am_I_afraid (day : Day) (num : Int) : Bool\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem am_I_afraid_type_is_bool (day : Day) (num : Int) :\n  ∀ result,\
+  \ result = am_I_afraid day num → result = true ∨ result = false :=\n  sorry\n\n\n\
+  theorem am_I_afraid_monday (num : Int) :\n  am_I_afraid \"Monday\" num = (num =\
+  \ 12) :=\n  sorry\n\n\ntheorem am_I_afraid_tuesday (num : Int) :\n  am_I_afraid\
+  \ \"Tuesday\" num = (num > 95) :=\n  sorry\n\n\ntheorem am_I_afraid_wednesday (num\
+  \ : Int) :\n  am_I_afraid \"Wednesday\" num = (num = 34) :=\n  sorry\n\n\ntheorem\
+  \ am_I_afraid_thursday (num : Int) :\n  am_I_afraid \"Thursday\" num = (num = 0)\
+  \ :=\n  sorry\n\n\ntheorem am_I_afraid_friday (num : Int) :\n  am_I_afraid \"Friday\"\
+  \ num = (num % 2 = 0) :=\n  sorry\n\n\ntheorem am_I_afraid_saturday (num : Int)\
+  \ :\n  am_I_afraid \"Saturday\" num = (num = 56) :=\n  sorry\n\n\ntheorem am_I_afraid_sunday\
+  \ (num : Int) :\n  am_I_afraid \"Sunday\" num = (num = 666 ∨ num = -666) :=\n  sorry\n\
+  \n\ntheorem am_I_afraid_monday_boundary :\n  am_I_afraid \"Monday\" 12 = true ∧\n\
+  \  am_I_afraid \"Monday\" 11 = false :=\n  sorry\n\n\ntheorem am_I_afraid_tuesday_boundary\
+  \ :\n  am_I_afraid \"Tuesday\" 96 = true ∧\n  am_I_afraid \"Tuesday\" 95 = false\
+  \ :=\n  sorry\n\n\ntheorem am_I_afraid_friday_boundary :\n  am_I_afraid \"Friday\"\
+  \ 0 = true ∧\n  am_I_afraid \"Friday\" 1 = false :=\n  sorry\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval am_I_afraid \"Monday\" 12\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval am_I_afraid \"Monday\" 13\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ am_I_afraid \"Friday\" 4\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval am_I_afraid\
+  \ \"Friday\" 5\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval am_I_afraid \"Sunday\"\
+  \ 666\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval am_I_afraid \"Sunday\" -666\n\
+  \n/--\ninfo: False\n-/\n#guard_msgs in\n#eval am_I_afraid \"Sunday\" 55\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

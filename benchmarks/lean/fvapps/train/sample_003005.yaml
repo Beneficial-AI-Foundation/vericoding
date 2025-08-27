@@ -1,0 +1,27 @@
+"vc-description": "Compare two strings by comparing the sum of their values (ASCII\
+  \ character code).\n\n* For comparing treat all letters as UpperCase\n* `null/NULL/Nil/None`\
+  \ should be treated as empty strings\n* If the string contains other characters\
+  \ than letters, treat the whole string as it would be empty\n\nYour method should\
+  \ return `true`, if the strings are equal and `false` if they are not equal.\n\n\
+  ## Examples:\n```\n\"AD\", \"BC\"  -> equal\n\"AD\", \"DD\"  -> not equal\n\"gf\"\
+  , \"FG\"  -> equal\n\"zz1\", \"\"   -> equal (both are considered empty)\n\"ZzZz\"\
+  , \"ffPFF\" -> equal\n\"kl\", \"lz\"  -> not equal\nnull, \"\"    -> equal\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def compare (s1 s2 : String) : Bool := sorry\n\n/--\nThe comparison\
+  \ of strings is case-insensitive.\nIn other words, comparing lowercase versions\
+  \ equals comparing uppercase versions.\n-/"
+"vc-theorems": "theorem compare_case_insensitive (s1 s2 : String) : \n  MyCompare.compare\
+  \ s1.toLower s2.toLower = MyCompare.compare s1.toUpper s2.toUpper := sorry\n\n/--\n\
+  The comparison is reflexive: a string equals itself.\n-/\n\ntheorem compare_reflexive\
+  \ (s : String) :\n  MyCompare.compare s s = true := sorry\n\n/--\nThe comparison\
+  \ is symmetric: order of comparison doesn't matter.\n-/\n\ntheorem compare_symmetric\
+  \ (s1 s2 : String) :\n  MyCompare.compare s1 s2 = MyCompare.compare s2 s1 := sorry\n\
+  \n/--\nInvalid inputs compared with valid strings return false, but equal invalid\
+  \ inputs return true.\n-/\n\ntheorem compare_invalid_input (s : String) (h : ¬s.all\
+  \ Char.isAlpha) :\n  MyCompare.compare s \"abc\" = false ∧ \n  MyCompare.compare\
+  \ \"abc\" s = false ∧ \n  MyCompare.compare s s = true := sorry\n\nend MyCompare\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval compare \"AD\" \"BC\"\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval compare \"AD\" \"DD\"\n\n/--\ninfo: True\n-/\n\
+  #guard_msgs in\n#eval compare \"gf\" \"FG\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

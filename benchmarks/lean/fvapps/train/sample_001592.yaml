@@ -1,0 +1,35 @@
+"vc-description": "We want to generate all the numbers of three digits where:\n\n\
+  - the sum of their digits is equal to 10.\n\n- their digits are in increasing order\
+  \ (the numbers may have two or more equal contiguous digits)\n\nThe numbers that\
+  \ fulfill the two above constraints are: ```118, 127, 136, 145, 226, 235, 244, 334```\n\
+  \nMake a function that receives two arguments:\n\n- the sum of digits value \n\n\
+  - the desired number of digits for the numbers\n\nThe function should output an\
+  \ array with three values: \\[1,2,3\\]\n\n1 - the total number of possible numbers\n\
+  \n2 - the minimum number\n\n3 - the maximum number\n\nThe example given above should\
+  \ be:\n\n```python\nfind_all(10, 3) == [8, 118, 334]\n```\n\nIf we have only one\
+  \ possible number as a solution, it should output a result like the one below:\n\
+  \n```python\nfind_all(27, 3) == [1, 999, 999]\n```\n\nIf there are no possible numbers,\
+  \ the function should output the empty array.\n\n```python\nfind_all(84, 4) == []\n\
+  ```\n\nThe number of solutions climbs up when the number of digits increases.\n\n\
+  ```python\nfind_all(35, 6) == [123, 116999, 566666]\n```\n\nFeatures of the random\
+  \ tests:\n\n* Number of tests: `112`\n* Sum of digits value between `20` and `65`\n\
+  * Amount of digits between `2` and `17`"
+"vc-preamble": "import Imports.AllImports\n\ndef sumDigits (n : Nat) : Nat := sorry\n\
+  \ndef isAscending (n : Nat) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def numDigits (n : Nat) : Nat := sorry\n\ndef find_all (sumDig\
+  \ digs : Nat) : Option (Nat × Nat × Nat) := sorry\n"
+"vc-theorems": "theorem empty_for_impossible_sums (sumDig digs : Nat) :\n  (sumDig\
+  \ > 9 * digs ∨ sumDig < digs) → find_all sumDig digs = none := sorry\n\n\ntheorem\
+  \ valid_output_format {sumDig digs : Nat} (res : Nat × Nat × Nat) :\n  find_all\
+  \ sumDig digs = some res →\n  let (count, first, last) := res\n  count > 0 ∧\n \
+  \ numDigits first = digs ∧\n  numDigits last = digs ∧ \n  first ≤ last := sorry\n\
+  \n\ntheorem solutions_have_correct_sum {sumDig digs : Nat} (res : Nat × Nat × Nat)\
+  \ :\n  find_all sumDig digs = some res →\n  let (_, first, last) := res\n  sumDigits\
+  \ first = sumDig ∧\n  sumDigits last = sumDig := sorry\n\n\ntheorem solutions_are_ascending\
+  \ {sumDig digs : Nat} (res : Nat × Nat × Nat) :\n  find_all sumDig digs = some res\
+  \ →\n  let (_, first, last) := res\n  isAscending first ∧\n  isAscending last :=\
+  \ sorry\n\n/--\ninfo: [8, 118, 334]\n-/\n#guard_msgs in\n#eval find_all 10 3\n\n\
+  /--\ninfo: [1, 999, 999]\n-/\n#guard_msgs in\n#eval find_all 27 3\n\n/--\ninfo:\
+  \ []\n-/\n#guard_msgs in\n#eval find_all 84 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

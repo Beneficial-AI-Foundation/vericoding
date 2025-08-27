@@ -1,0 +1,40 @@
+"vc-description": "My friend John and I are members of the \"Fat to Fit Club (FFC)\"\
+  . John is worried because\neach month a list with the weights of members is published\
+  \ and each month he is the last on the list\nwhich means he is the heaviest. \n\n\
+  I am the one who establishes the list so I told him:\n\"Don't worry any more, I\
+  \ will modify the order of the list\".\nIt was decided to attribute a \"weight\"\
+  \ to numbers. The weight of a number will be from now on\nthe sum of its digits.\
+  \ \n\nFor example `99` will have \"weight\" `18`, `100` will have \"weight\"\n`1`\
+  \ so in the list `100` will come before `99`.\nGiven a string with the weights of\
+  \ FFC members in normal order can you give this string ordered by \"weights\" of\
+  \ these numbers?\n\n# Example:\n\n`\"56 65 74 100 99 68 86 180 90\"` ordered by\
+  \ numbers weights becomes: \n`\"100 180 90 56 65 74 68 86 99\"`\n\nWhen two numbers\
+  \ have the same \"weight\", let us class them as if they were strings (alphabetical\
+  \ ordering) and not numbers:\n`100` is before `180` because its \"weight\" (1) is\
+  \ less than the one of `180` (9)\nand `180` is before `90` since, having the same\
+  \ \"weight\" (9),  it comes before as a *string*.\n\nAll numbers in the list are\
+  \ positive numbers and the list can be empty.\n\n# Notes\n\n- it may happen that\
+  \ the input string have leading, trailing whitespaces and more than a unique whitespace\
+  \ between two consecutive numbers\n- Don't modify the input\n- For C: The result\
+  \ is freed."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calcWeight (s : String) : Nat := sorry \n\ndef orderWeight\
+  \ (s : String) : String := sorry\n"
+"vc-theorems": "theorem empty_input_gives_empty_output : orderWeight \"\" = \"\" :=\
+  \ sorry\n\ntheorem output_has_same_elements (s : String) :\n  s ≠ \"\" → \n  let\
+  \ input := s.split (· = ' ') |>.toArray\n  let output := (orderWeight s).split (·\
+  \ = ' ') |>.toArray\n  input.qsort (· ≤ ·) = output.qsort (· ≤ ·) := sorry\n\n\n\
+  theorem weights_are_ordered (s : String) (i : Nat) :\n  s ≠ \"\" →\n  let result\
+  \ := (orderWeight s).split (· = ' ')\n  i + 1 < result.length →\n  let w1 := calcWeight\
+  \ (result.get! i)\n  let w2 := calcWeight (result.get! (i+1))\n  w1 ≤ w2 := sorry\n\
+  \n\ntheorem equal_weights_ordered_lexicographically (s : String) (i : Nat) :\n \
+  \ s ≠ \"\" →\n  let result := (orderWeight s).split (· = ' ')\n  i + 1 < result.length\
+  \ →\n  let w1 := calcWeight (result.get! i)\n  let w2 := calcWeight (result.get!\
+  \ (i+1))\n  w1 = w2 → result.get! i ≤ result.get! (i+1) := sorry\n\n\ntheorem output_contains_only_digits\
+  \ (s : String) :\n  s ≠ \"\" →\n  let result := orderWeight s\n  ∀ c ∈ result.data,\
+  \ c.isDigit ∨ c = ' ' := sorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval\
+  \ order_weight \"103 123 4444 99 2000\"\n\n/--\ninfo: expected2\n-/\n#guard_msgs\
+  \ in\n#eval order_weight \"56 65 74 100 99 68 86 180 90\"\n\n/--\ninfo: expected3\n\
+  -/\n#guard_msgs in\n#eval order_weight \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

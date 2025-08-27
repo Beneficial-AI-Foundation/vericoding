@@ -1,0 +1,47 @@
+"vc-description": "This is an easy version of the problem. In this version, all numbers\
+  \ in the given array are distinct and the constraints on $n$ are less than in the\
+  \ hard version of the problem.\n\nYou are given an array $a$ of $n$ integers (there\
+  \ are no equals elements in the array). You can perform the following operations\
+  \ on array elements:  choose any index $i$ ($1 \\le i \\le n$) and move the element\
+  \ $a[i]$ to the begin of the array;  choose any index $i$ ($1 \\le i \\le n$) and\
+  \ move the element $a[i]$ to the end of the array. \n\nFor example, if $n = 5$,\
+  \ $a = [4, 7, 2, 3, 9]$, then the following sequence of operations can be performed:\
+  \   after performing the operation of the first type to the second element, the\
+  \ array $a$ will become $[7, 4, 2, 3, 9]$;  after performing the operation of the\
+  \ second type to the second element, the array $a$ will become $[7, 2, 3, 9, 4]$.\
+  \ \n\nYou can perform operations of any type any number of times in any order.\n\
+  \nFind the minimum total number of operations of the first and second type that\
+  \ will make the $a$ array sorted in non-decreasing order. In other words, what is\
+  \ the minimum number of operations that must be performed so the array satisfies\
+  \ the inequalities $a[1] \\le a[2] \\le \\ldots \\le a[n]$.\n\n\n-----Input-----\n\
+  \nThe first line contains a single integer $t$ ($1 \\le t \\le 100$) — the number\
+  \ of test cases in the test. Then $t$ test cases follow.\n\nEach test case starts\
+  \ with a line containing an integer $n$ ($1 \\le n \\le 3000$) — length of the array\
+  \ $a$.\n\nThen follow $n$ integers $a_1, a_2, \\ldots, a_n$ ($0 \\le a_i \\le 10^9$) —\
+  \ an array that needs to be sorted by the given operations. All numbers in the given\
+  \ array are distinct.\n\nThe sum of $n$ for all test cases in one test does not\
+  \ exceed $3000$.\n\n\n-----Output-----\n\nFor each test case output one integer —\
+  \ the minimum total number of operations of the first and second type, which will\
+  \ make the array sorted in non-decreasing order.\n\n\n-----Example-----\nInput\n\
+  4\n5\n4 7 2 3 9\n5\n3 5 8 1 7\n5\n1 4 5 7 12\n4\n0 2 1 3\n\nOutput\n2\n2\n0\n2\n\
+  \n\n\n-----Note-----\n\nIn the first test case, you first need to move 3, and then\
+  \ 2 to the beginning of the array. Therefore, the desired sequence of operations:\
+  \ $[4, 7, 2, 3, 9] \\rightarrow [3, 4, 7, 2, 9] \\rightarrow [2, 3, 4, 7, 9]$.\n\
+  \nIn the second test case, you need to move the 1 to the beginning of the array,\
+  \ and the 8 — to the end. Therefore, the desired sequence of operations: $[3, 5,\
+  \ 8, 1, 7] \\rightarrow [1, 3, 5, 8, 7] \\rightarrow [1, 3, 5, 7, 8]$.\n\nIn the\
+  \ third test case, the array is already sorted."
+"vc-preamble": "import Imports.AllImports\n\ndef minimum_operations (arr : List Int)\
+  \ : Nat :=\n  sorry\n\n\ndef isSorted (arr : List Int) : Prop :=\n  ∀ i j, i < j\
+  \ → j < arr.length → arr[i]! ≤ arr[j]!\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isStrictlySorted (arr : List Int) : Prop :=\n  ∀ i j, i < j\
+  \ → j < arr.length → arr[i]! < arr[j]!\n"
+"vc-theorems": "theorem output_bounds (arr : List Int) (h : arr ≠ []) :\n  0 ≤ minimum_operations\
+  \ arr ∧ minimum_operations arr ≤ arr.length :=\n  sorry \n\n\ntheorem sorted_unique_needs_zero\
+  \ {arr : List Int} (h1 : arr ≠ []) \n  (h2 : isStrictlySorted arr) :\n  minimum_operations\
+  \ arr = 0 :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval minimum_operations\
+  \ [4, 7, 2, 3, 9]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval minimum_operations\
+  \ [3, 5, 8, 1, 7]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval minimum_operations\
+  \ [1, 4, 5, 7, 12]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

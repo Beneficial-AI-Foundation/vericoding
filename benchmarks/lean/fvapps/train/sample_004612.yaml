@@ -1,0 +1,35 @@
+"vc-description": "When we have a 2x2 square matrix we may have up to 24 different\
+  \ ones changing the positions of the elements.\n\nWe show some of them\n```\na \
+  \ b   a  b    a  c    a  c   a  d    a  d    b  a    b  a\nc  d   d  c    d  b \
+  \   b  d   b  c    c  b    c  d    d  c\n```\nYou may think to generate the remaining\
+  \ ones until completing the set of 24 matrices.\n\nGiven a certain matrix of numbers,\
+  \ that may be repeated or not, calculate the total number of possible matrices that\
+  \ may be generated, changing the position of the elements.\n\nE.g:\nCase one\n```\n\
+  A = [[1,2,3],\n     [3,4,5]]   #a 2x3 rectangle matrix with number 3 twice\n```\
+  \     \ngenerates a set of ```360``` different matrices\n\nCase two\n```\nA = [[1,1,1],\
+  \ \n     [2,2,3], \n     [3,3,3]]\n```\ngenerates a set of ```1260``` different\
+  \ matrices.\n\nCase three\n```\nA = [[1,2,3],\n     [4,5,6],\n     [7,8,9]]\n```\
+  \     \ngenerates a set of ```362880``` different matrices\n\nThis kata is not meant\
+  \ to apply a brute force algorithm to try to count the total amount of marices.\n\
+  \nFeatures of The Random Tests\n``` \nnumber of tests = 100\n2 ≤ m ≤ 9\n2 ≤ n ≤\
+  \ 9\n``` \nEnjoy it!\n\nAvailable only in Python 2, Javascript and Ruby by the moment."
+"vc-preamble": "import Imports.AllImports\n\ndef count_perms (matrix: List (List Nat))\
+  \ : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def factorial (n: Nat) : Nat :=\n  match n with\n  | 0 => 1\n \
+  \ | n + 1 => (n + 1) * factorial n\n"
+"vc-theorems": "theorem count_perms_single_element :\n  count_perms [[1]] = 1 := by\
+  \ sorry\n\n\ntheorem count_perms_dimensions_preserved {m n: Nat} (matrix: List (List\
+  \ Nat))\n  (h1: matrix.length = m)\n  (h2: ∀ row ∈ matrix, row.length = n) :\n \
+  \ let result := count_perms matrix\n  -- Result is a natural number\n  0 < result\
+  \ ∧ \n  -- Result is bounded by factorial of total elements\n  result ≤ factorial\
+  \ (m * n) := by sorry\n\n\ntheorem count_perms_all_same {m n: Nat}\n  (h1: 0 < m)\
+  \ (h2: 0 < n) :\n  let matrix := List.replicate m (List.replicate n 1)\n  count_perms\
+  \ matrix = 1 := by sorry\n\n\ntheorem count_perms_all_different {m n: Nat}\n  (h1:\
+  \ 0 < m) (h2: 0 < n) :\n  let matrix := List.map (fun i => \n    List.map (fun j\
+  \ => i * n + j + 1) (List.range n)\n  ) (List.range m)\n  count_perms matrix = factorial\
+  \ (m * n) := by sorry\n\n/--\ninfo: 360\n-/\n#guard_msgs in\n#eval count_perms [[1,\
+  \ 2, 3], [3, 4, 5]]\n\n/--\ninfo: 1260\n-/\n#guard_msgs in\n#eval count_perms [[1,\
+  \ 1, 1], [2, 2, 3], [3, 3, 3]]\n\n/--\ninfo: 362880\n-/\n#guard_msgs in\n#eval count_perms\
+  \ [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

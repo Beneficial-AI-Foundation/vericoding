@@ -1,0 +1,20 @@
+"vc-description": "Given a string as input, move all of its vowels to the end of the\
+  \ string, in the same order as they were before.\n\nVowels are (in this kata): `a,\
+  \ e, i, o, u`\n\nNote: all provided input strings are lowercase.\n\n## Examples\n\
+  ```python\n\"day\"    ==>  \"dya\"\n\"apple\"  ==>  \"pplae\"\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef move_vowels (s : String) : String\
+  \ := sorry\n\ndef is_vowel (c : Char) : Bool :=\n  c = 'a' || c = 'e' || c = 'i'\
+  \ || c = 'o' || c = 'u'\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_chars (s : String) : Nat := s.length\n\ntheorem move_vowels_length_preserved\
+  \ (s : String) :\n  count_chars (move_vowels s) = count_chars s := sorry\n"
+"vc-theorems": "theorem move_vowels_preserves_characters (s : String) :\n  (s.data\
+  \ : List Char) = ((move_vowels s).data : List Char) := sorry\n\n\ntheorem move_vowels_splits_correctly\
+  \ (s : String) :\n  let result := move_vowels s\n  ∃ i : Nat, i ≤ result.length\
+  \ ∧\n    (∀ j : String.Pos, j.1 < i → ¬is_vowel (result.get j)) ∧\n    (∀ j : String.Pos,\
+  \ i ≤ j.1 ∧ j.1 < result.length → is_vowel (result.get j)) := sorry\n\n\ntheorem\
+  \ move_vowels_empty :\n  move_vowels \"\" = \"\" := sorry\n\n/--\ninfo: 'dya'\n\
+  -/\n#guard_msgs in\n#eval move_vowels \"day\"\n\n/--\ninfo: 'pplae'\n-/\n#guard_msgs\
+  \ in\n#eval move_vowels \"apple\"\n\n/--\ninfo: 'pceae'\n-/\n#guard_msgs in\n#eval\
+  \ move_vowels \"peace\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

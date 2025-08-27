@@ -1,0 +1,33 @@
+"vc-description": "If you have completed the Tribonacci sequence kata, you would know\
+  \ by now that mister Fibonacci has at least a bigger brother. If not, give it a\
+  \ quick look to get how things work.\n\nWell, time to expand the family a little\
+  \ more: think of a Quadribonacci starting with a signature of 4 elements and each\
+  \ following element is the sum of the 4 previous, a Pentabonacci (well *Cinquebonacci*\
+  \ would probably sound a bit more italian, but it would also sound really awful)\
+  \ with a signature of 5 elements and each following element is the sum of the 5\
+  \ previous, and so on.\n\nWell, guess what? You have to build a Xbonacci function\
+  \ that takes a **signature** of X elements *- and remember each next element is\
+  \ the sum of the last X elements -* and returns the first **n** elements of the\
+  \ so seeded sequence.\n\n```\nxbonacci {1,1,1,1} 10 = {1,1,1,1,4,7,13,25,49,94}\n\
+  xbonacci {0,0,0,0,1} 10 = {0,0,0,0,1,1,2,4,8,16}\nxbonacci {1,0,0,0,0,0,1} 10 =\
+  \ {1,0,0,0,0,0,1,2,3,6}\nxbonacci {1,1} produces the Fibonacci sequence\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def xbonacci (signature : List Int) (n : Nat) : List Int :=\n \
+  \ sorry\n"
+"vc-theorems": "theorem xbonacci_length (signature : List Int) (n : Nat) :\n  (xbonacci\
+  \ signature n).length = n :=\n  sorry\n\n\ntheorem xbonacci_prefix (signature :\
+  \ List Int) (n : Nat) :\n  let x := signature.length\n  let prefix_len := min n\
+  \ x\n  (xbonacci signature n).take prefix_len = signature.take n :=\n  sorry\n\n\
+  \ntheorem xbonacci_sum_rule (signature : List Int) (n : Nat) (i : Nat) \n    (h1\
+  \ : n > signature.length) (h2 : i ≥ signature.length) (h3 : i < n) :\n  ((xbonacci\
+  \ signature n).get ⟨i, by {\n    rw [xbonacci_length]\n    exact h3\n  }⟩) = \n\
+  \  (((xbonacci signature n).drop (i-signature.length)).take signature.length).foldl\
+  \ (· + ·) 0 :=\n  sorry\n\n\ntheorem xbonacci_zero_length (signature : List Int)\
+  \ :\n  xbonacci signature 0 = [] :=\n  sorry\n\n\ntheorem xbonacci_nonnegative (signature\
+  \ : List Int) (n : Nat) :\n  signature.all (· ≥ 0) →\n  (xbonacci signature n).all\
+  \ (· ≥ 0) :=\n  sorry\n\n/--\ninfo: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]\n-/\n#guard_msgs\
+  \ in\n#eval xbonacci [0, 1] 10\n\n/--\ninfo: [0, 0, 0, 0, 1, 1, 2, 4, 8, 16]\n-/\n\
+  #guard_msgs in\n#eval xbonacci [0, 0, 0, 0, 1] 10\n\n/--\ninfo: []\n-/\n#guard_msgs\
+  \ in\n#eval xbonacci [1, 2, 3] 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

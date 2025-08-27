@@ -1,0 +1,43 @@
+"vc-description": "Mr. Krabs loves money. He enters a bank and sees that there are\
+  \ n rooms arranged in a row. The only rooms with doors are the two rooms on either\
+  \ corner. Initially, all the rooms are locked (including the corner ones). To enter\
+  \ a room, it must be unlocked with a key.\nMr. Krabs is able to steal k keys from\
+  \ the sleeping night guard. Each key can be used to unlock only one room. To reach\
+  \ one of the inner rooms, he has to unlock an adjacent room first.\nEg: If there\
+  \ are 5 rooms labelled: 1 2 3 4 5\nOnly Rooms 1 and 5 can be accessed initially.\
+  \ To unlock room 2, either room 1 or room 3 must be unlocked. Similarly to unlock\
+  \ Room 4, he must unlock room 5 or room 3 first.\nEach room has some money in it.\
+  \ The money present in room i is given by A[i]. Using the k keys, calculate what\
+  \ is the maximum possible amount of money obtainable.\n\n-----Input:-----\n- First\
+  \ line will contain n,  number of rooms.\n- Second line will contain space separated\
+  \ integers, denoting A[i], money present in each room.\n- Third line will contain\
+  \ an integer, k, the number of keys available.\n\n-----Output:-----\nMaximum money\
+  \ obtained.\n\n-----Constraints-----\n- 1 <= Number of Rooms <= 10^5\n- 1 <= A[i]\
+  \ <= 10^4\n- 1 <= k <= Number of Rooms\n\n-----Subtasks-----\n- 40 points : 1 <=\
+  \ Number of Rooms <= 100\n- 60 points : Number of Rooms > 100\n\n-----Sample Input:-----\n\
+  7\n1 2 3 4 5 6 1\n3\n\n-----Sample Output:-----\n12\n\n-----Explanation:-----\n\
+  For the first step, Mr. Krabs can only unlock the room at the left corner or the\
+  \ right corner. If he unlocks the room in the right corner, he obtains 1 dollar.\
+  \ He can then go on to unlock the second last room and gain 6 dollars, for a total\
+  \ of 7 dollars. Finally he can unlock the third last room and get 5 dollars, for\
+  \ a total of 12 dollars. \nThis is the maximum amount of money he can get with only\
+  \ 3 keys."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_money_stolen (n : Nat) (money : List Int) (k : Nat) : Int\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem max_money_stolen_nonnegative \n  {n : Nat} {money : List Int}\
+  \ {k : Nat}\n  (h1 : k > 0)\n  (h2 : k ≤ n)\n  (h3 : money.length = n)\n  (h4 :\
+  \ ∀ x ∈ money, x ≥ 0) :\n  max_money_stolen n money k ≥ 0 :=\n  sorry\n\n\ntheorem\
+  \ max_money_stolen_upper_bound\n  {n : Nat} {money : List Int} {k : Nat}\n  (h1\
+  \ : k > 0)\n  (h2 : k ≤ n)\n  (h3 : money.length = n)\n  (h4 : ∃ maxVal : Int, ∀\
+  \ x ∈ money, x ≤ maxVal) :\n  let maxVal := Classical.choose h4\n  max_money_stolen\
+  \ n money k ≤ k * maxVal :=\n  sorry\n\n\ntheorem max_money_stolen_fails_k_zero\n\
+  \  {n : Nat} {money : List Int}\n  (h : money.length = n) :\n  ¬∃ x, max_money_stolen\
+  \ n money 0 = x :=\n  sorry\n\n\ntheorem max_money_stolen_fails_k_negative\n  {n\
+  \ : Nat} {money : List Int} {k : Int}\n  (h1 : money.length = n)\n  (h2 : k < 0)\
+  \ :\n  ¬∃ x, max_money_stolen n money (Int.toNat k) = x :=\n  sorry\n\n/--\ninfo:\
+  \ 12\n-/\n#guard_msgs in\n#eval max_money_stolen 7 [1, 2, 3, 4, 5, 6, 1] 3\n\n/--\n\
+  info: 5\n-/\n#guard_msgs in\n#eval max_money_stolen 1 [5] 1\n\n/--\ninfo: 6\n-/\n\
+  #guard_msgs in\n#eval max_money_stolen 3 [1, 2, 3] 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

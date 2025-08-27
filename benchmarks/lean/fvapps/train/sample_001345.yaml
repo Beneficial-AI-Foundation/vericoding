@@ -1,0 +1,48 @@
+"vc-description": "Mysterious Chefland… Recently, Chef realised that Discuss, the\
+  \ educational system of Chefland, is out of date. Therefore, he is trying to find\
+  \ ways to update the infrastructure in the country. One possible way is to move\
+  \ all materials from Discuss to Discourse.\nChef will have access to Discourse if\
+  \ his knowledge and power become exactly equal to $N$ and $M$ respectively. Initially,\
+  \ he has power $1$ and knowledge $1$.\nChef can perform actions of the following\
+  \ types to improve his skills:\n- solve a problem — increase his knowledge by $X$\n\
+  - do a push-up — increase his power by $Y$\n- install ShareChat to keep in touch\
+  \ with friends — increase both knowledge and power by $1$\nChef can only install\
+  \ ShareChat at most once. The remaining actions may be performed any number of times\
+  \ and the actions may be performed in any order.\nHelp Chef find out whether it\
+  \ is possible to move from Discuss to Discourse.\n\n-----Input-----\n- The first\
+  \ line of the input contains a single integer $T$ denoting the number of test cases.\
+  \ The description of $T$ test cases follows.\n- The first and only line of each\
+  \ test case contains four space-separated integers $N$, $M$, $X$ and $Y$.\n\n-----Output-----\n\
+  For each test case, print a single line containing the string \"Chefirnemo\" if\
+  \ it is possible to reach the required knowledge and power or \"Pofik\" if it is\
+  \ impossible.\n\n-----Constraints-----\n- $1 \\le T \\le 1,000$\n- $1 \\le N, M,\
+  \ X, Y \\le 10^9$\n\n-----Subtasks-----\nSubtask #1 (30 points): $1 \\le N, M, X,\
+  \ Y \\le 100$\nSubtask #2 (70 points): original constraints\n\n-----Example Input-----\n\
+  5\n2 2 1 2\n11 10 5 9\n11 11 5 9\n12 11 5 9\n1 2 1 100\n\n-----Example Output-----\n\
+  Chefirnemo\nChefirnemo\nPofik\nChefirnemo\nPofik\n\n-----Explanation-----\nExample\
+  \ case 2: We add $Y=9$ once to the power to get power $10$. We add $X=5$ twice to\
+  \ the knowledge to get knowledge $11$.\nExample case 3: We can see that it is impossible\
+  \ to reach power $M=11$ no matter which or how many operations we do. Note that\
+  \ the ShareChat operation will increase both knowledge and power by $1$, and hence\
+  \ it will still be impossible to attain the given values of knowledge and power\
+  \ at the same time.\nExample case 4: We can reach knowledge $11$ and power $10$\
+  \ like in example case 2, the only difference is that we also use the ShareChat\
+  \ operation to increase both by $1$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_chefirnemo (n m x y : Nat) : String := sorry\n\n@[simp]\
+  \ theorem solve_chefirnemo_valid_output \n  (n m x y : Nat)\n  (h1 : 0 < n) (h2\
+  \ : n ≤ 1000)\n  (h3 : 0 < m) (h4 : m ≤ 1000) \n  (h5 : 0 < x) (h6 : x ≤ 1000)\n\
+  \  (h7 : 0 < y) (h8 : y ≤ 1000) :\n  solve_chefirnemo n m x y = \"Chefirnemo\" ∨\
+  \ \n  solve_chefirnemo n m x y = \"Pofik\" := sorry\n"
+"vc-theorems": "theorem solve_chefirnemo_identical_inputs\n  (n x : Nat)\n  (h1 :\
+  \ 0 < n) (h2 : n ≤ 1000)\n  (h3 : 0 < x) (h4 : x ≤ 1000) :\n  solve_chefirnemo n\
+  \ n x x = solve_chefirnemo n n x x := sorry\n\n\ntheorem solve_chefirnemo_divisibility\n\
+  \  (n m x y : Nat)\n  (h1 : 1 < n) (h2 : n ≤ 1000)\n  (h3 : 1 < m) (h4 : m ≤ 1000)\n\
+  \  (h5 : 0 < x) (h6 : x ≤ 1000)\n  (h7 : 0 < y) (h8 : y ≤ 1000)\n  (h9 : (n-1) %\
+  \ x = 0)\n  (h10 : (m-1) % y = 0) :\n  solve_chefirnemo n m x y = \"Chefirnemo\"\
+  \ := sorry\n\n/--\ninfo: 'Chefirnemo'\n-/\n#guard_msgs in\n#eval solve_chefirnemo\
+  \ 2 2 1 2\n\n/--\ninfo: 'Chefirnemo'\n-/\n#guard_msgs in\n#eval solve_chefirnemo\
+  \ 11 10 5 9\n\n/--\ninfo: 'Pofik'\n-/\n#guard_msgs in\n#eval solve_chefirnemo 11\
+  \ 11 5 9\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

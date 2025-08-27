@@ -1,0 +1,52 @@
+"vc-description": "Imagine the following situations:\n\n- A truck loading cargo\n\
+  - A shopper on a budget\n- A thief stealing from a house using a large bag\n- A\
+  \ child eating candy very quickly\n\nAll of these are examples of ***The Knapsack\
+  \ Problem***, where there are more things that you ***want*** to take with you than\
+  \ you ***can*** take with you.\n\nThe Problem\n===\n\nGiven a container with a certain\
+  \ capacity and an assortment of discrete items with various sizes and values (and\
+  \ an infinite supply of each item), determine the combination of items that fits\
+  \ within the container and maximizes the value of the collection.\n\nHowever, **DO\
+  \ NOT** attempt to solve the problem **EXACTLY!** (we will do that in Part 2)\n\n\
+  \nThe Simplification\n===\n\nBecause the optimal collection of items is **MUCH**\
+  \ more difficult to determine than a nearly-optimal collection, this kata will only\
+  \ focus on one specific nearly-optimal solution: the greedy solution. The greedy\
+  \ solution is that which always adds an item to the collection if it has the highest\
+  \ value-to-size ratio.\n\nFor example, if a \"greedy thief\" with a 10-Liter knapsack\
+  \ sees two types of items\n\n- a 6-Liter item worth $9 (1.5 $/L)\n\n- a 5-Liter\
+  \ item worth $5 (1.0 $/L)\n\nthe thief will take 1 of the 6-Liter items instead\
+  \ of 2 of the 5-Liter items. Although this means the thief will only profit $9 instead\
+  \ of $10, the decision algorithm is much simpler. Maybe the thief is bad at math.\n\
+  \nNow, go be bad at math!\n\n\nThe Kata\n===\n\nWrite the function `knapsack` that\
+  \ takes two parameters, `capacity` and `items`, and returns a list of quantities.\n\
+  \n`capacity` will be a positive number\n\n`items` will be an array of arrays of\
+  \ positive numbers that gives the items' sizes and values in the form [[size 1,\
+  \ value 1], [size 2, value 2], ...]\n\n`knapsack` will return an array of integers\
+  \ that specifies the quantity of each item to take according to the greedy solution\
+  \ (the order of the quantities must match the order of `items`)"
+"vc-preamble": "import Imports.AllImports\n\ndef knapsack (capacity : Nat) (items\
+  \ : List (Nat × Nat)) : List Nat :=\n  sorry\n\n\ndef sumList (xs : List Nat) :\
+  \ Nat :=\n  match xs with\n  | [] => 0\n  | h :: t => h + sumList t\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def zipWithIndex {α : Type} (l : List α) : List (Nat × α) :=\n\
+  \  let rec aux (i : Nat) (xs : List α) : List (Nat × α) :=\n    match xs with\n\
+  \    | [] => []\n    | h :: t => (i, h) :: aux (i+1) t\n  aux 0 l\n"
+"vc-theorems": "theorem knapsack_result_length_matches_input\n    (capacity : Nat)\
+  \ (items : List (Nat × Nat)) :\n    (knapsack capacity items).length = items.length\
+  \ :=\n  sorry\n\n\ntheorem knapsack_result_nonnegative\n    (capacity : Nat) (items\
+  \ : List (Nat × Nat)) :\n    ∀ x ∈ knapsack capacity items, x ≥ 0 :=\n  sorry\n\n\
+  \ntheorem knapsack_total_size_within_capacity \n    (capacity : Nat) (items : List\
+  \ (Nat × Nat)) :\n    let result := knapsack capacity items\n    let sizes := List.map\
+  \ (fun p => (items[p.1]!).1 * p.2) (zipWithIndex result)\n    sumList sizes ≤ capacity\
+  \ :=\n  sorry\n\n\ntheorem knapsack_optimal_ratio\n    (capacity : Nat) (items :\
+  \ List (Nat × Nat)) (i : Nat) :\n    i < items.length →\n    let result := knapsack\
+  \ capacity items\n    let sizes := List.map (fun p => (items[p.1]!).1 * p.2) (zipWithIndex\
+  \ result)\n    let total_size := sumList sizes\n    let ratio := items[i]!.2 / items[i]!.1\n\
+  \    items[i]!.1 + total_size ≤ capacity →\n    ∀ j < items.length,\n      items[j]!.2\
+  \ / items[j]!.1 = 0 ∨ items[j]!.2 / items[j]!.1 < ratio :=\n  sorry\n\n\ntheorem\
+  \ knapsack_zero_capacity\n    (items : List (Nat × Nat)) :\n    knapsack 0 items\
+  \ = List.replicate items.length 0 :=\n  sorry\n\n\ntheorem knapsack_empty_items\n\
+  \    (capacity : Nat) :\n    knapsack capacity [] = [] :=\n  sorry\n\n/--\ninfo:\
+  \ [1, 0]\n-/\n#guard_msgs in\n#eval knapsack 10 [[6, 9], [5, 5]]\n\n/--\ninfo: [5,\
+  \ 0, 0]\n-/\n#guard_msgs in\n#eval knapsack 10 [[2, 3], [3, 4], [4, 5]]\n\n/--\n\
+  info: [0, 0]\n-/\n#guard_msgs in\n#eval knapsack 5 [[10, 2], [12, 4]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

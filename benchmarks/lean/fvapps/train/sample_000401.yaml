@@ -1,0 +1,32 @@
+"vc-description": "Given a non-empty string s and a dictionary wordDict containing\
+  \ a list of non-empty words, determine if s can be segmented into a space-separated\
+  \ sequence of one or more dictionary words.\n\nNote:\n\n\n       The same word in\
+  \ the dictionary may be reused multiple times in the segmentation.\n       You may\
+  \ assume the dictionary does not contain duplicate words.\n\n\nExample 1:\n\n\n\
+  Input: s = \"leetcode\", wordDict = [\"leet\", \"code\"]\nOutput: true\nExplanation:\
+  \ Return true because \"leetcode\" can be segmented as \"leet code\".\n\n\nExample\
+  \ 2:\n\n\nInput: s = \"applepenapple\", wordDict = [\"apple\", \"pen\"]\nOutput:\
+  \ true\nExplanation: Return true because \"applepenapple\" can be segmented as \"\
+  apple pen apple\".\n             Note that you are allowed to reuse a dictionary\
+  \ word.\n\n\nExample 3:\n\n\nInput: s = \"catsandog\", wordDict = [\"cats\", \"\
+  dog\", \"sand\", \"and\", \"cat\"]\nOutput: false"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def word_break (s : String) (dict : List String) : Bool := sorry\n\
+  \ndef join_words (words : List String) : String := sorry\n"
+"vc-theorems": "theorem word_break_valid_combination \n  (word_dict : List String)\
+  \ (h1 : word_dict.length > 0) :\n  word_break (join_words (word_dict.take 5)) word_dict\
+  \ = true := sorry\n\n\ntheorem word_break_empty_string\n  (s : String) (word_dict\
+  \ : List String) (h1 : word_dict.length > 0) :\n  word_break \"\" word_dict = true\
+  \ := sorry\n  \n\ntheorem word_break_empty_dict\n  (s : String) (h1 : s.length >\
+  \ 0) :\n  word_break s [] = false := sorry\n\n\ntheorem word_break_single_chars\n\
+  \  (word_dict : List String) (h1 : word_dict.length > 0) :\n  let first_chars :=\
+  \ word_dict.map (fun w => w.take 1)\n  word_break (String.join first_chars) first_chars\
+  \ = true := sorry\n\n\ntheorem word_break_prefix_property\n  (s : String) (word_dict\
+  \ : List String) (h1 : word_dict.length > 0) :\n  word_break s word_dict = true\
+  \ →\n  ∀ w ∈ word_dict, s.startsWith w → word_break w word_dict = true := sorry\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval word_break \"leetcode\" [\"leet\",\
+  \ \"code\"]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval word_break \"applepenapple\"\
+  \ [\"apple\", \"pen\"]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval word_break\
+  \ \"catsandog\" [\"cats\", \"dog\", \"sand\", \"and\", \"cat\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

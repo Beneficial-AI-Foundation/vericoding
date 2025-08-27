@@ -1,0 +1,28 @@
+"vc-description": "There are 3n piles of coins of varying size, you and your friends\
+  \ will take piles of coins as follows:\n\nIn each step, you will choose any 3 piles\
+  \ of coins (not necessarily consecutive).\nOf your choice, Alice will pick the pile\
+  \ with the maximum number of coins.\nYou will pick the next pile with maximum number\
+  \ of coins.\nYour friend Bob will pick the last pile.\nRepeat until there are no\
+  \ more piles of coins.\n\nGiven an array of integers piles where piles[i] is the\
+  \ number of coins in the ith pile.\nReturn the maximum number of coins which you\
+  \ can have.\n \nExample 1:\nInput: piles = [2,4,1,2,7,8]\nOutput: 9\nExplanation:\
+  \ Choose the triplet (2, 7, 8), Alice Pick the pile with 8 coins, you the pile with\
+  \ 7 coins and Bob the last one.\nChoose the triplet (1, 2, 4), Alice Pick the pile\
+  \ with 4 coins, you the pile with 2 coins and Bob the last one.\nThe maximum number\
+  \ of coins which you can have are: 7 + 2 = 9.\nOn the other hand if we choose this\
+  \ arrangement (1, 2, 8), (2, 4, 7) you only get 2 + 4 = 6 coins which is not optimal.\n\
+  \nExample 2:\nInput: piles = [2,4,5]\nOutput: 4\n\nExample 3:\nInput: piles = [9,8,7,6,5,1,2,3,4]\n\
+  Output: 18\n\n \nConstraints:\n\n3 <= piles.length <= 10^5\npiles.length % 3 ==\
+  \ 0\n1 <= piles[i] <= 10^4"
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum (l : List Nat) : Nat :=\n\
+  \  l.foldl (· + ·) 0\n  \n\ndef List.sort (l : List Nat) : List Nat :=\n  sorry\n\
+  \  \n\ndef List.perm (l1 l2 : List Nat) : Prop :=\n  sorry\n\n\ndef List.takeNth\
+  \ (l : List Nat) (n : Nat) : List Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def maxCoins (piles : List Nat) : Nat :=\n  sorry\n\n\n\n\n\n\n\
+  \n\n"
+"vc-theorems": "theorem maxcoins_minimal :\n  maxCoins [1,1,1] = 1 :=\nsorry\n\n/--\n\
+  info: 9\n-/\n#guard_msgs in\n#eval maxCoins [2, 4, 1, 2, 7, 8]\n\n/--\ninfo: 4\n\
+  -/\n#guard_msgs in\n#eval maxCoins [2, 4, 5]\n\n/--\ninfo: 18\n-/\n#guard_msgs in\n\
+  #eval maxCoins [9, 8, 7, 6, 5, 1, 2, 3, 4]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

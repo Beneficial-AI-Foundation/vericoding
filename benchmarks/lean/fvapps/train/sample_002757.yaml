@@ -1,0 +1,16 @@
+"vc-description": "Given an integer `n` return `\"odd\"` if the number of its divisors\
+  \ is odd. Otherwise return `\"even\"`.\n\n**Note**: big inputs will be tested.\n\
+  \n## Examples:\n\nAll prime numbers have exactly two divisors (hence `\"even\"`).\n\
+  \nFor `n = 12` the divisors are `[1, 2, 3, 4, 6, 12]` – `\"even\"`.\n\nFor `n =\
+  \ 4` the divisors are `[1, 2, 4]` – `\"odd\"`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def oddity (n : Nat) : String := sorry\n\ntheorem oddity_returns_valid_value\
+  \ (n : Nat) (h : n > 0) :\n  oddity n = \"odd\" ∨ oddity n = \"even\" := sorry\n"
+"vc-theorems": "theorem oddity_perfect_square_iff_odd (n : Nat) (h : n > 0) :\n  (∃\
+  \ k, n = k * k) ↔ oddity n = \"odd\" := sorry\n\n\ntheorem oddity_one :\n  oddity\
+  \ 1 = \"odd\" := sorry\n\n\ntheorem oddity_two :\n  oddity 2 = \"even\" := sorry\n\
+  \n\ntheorem oddity_four :\n  oddity 4 = \"odd\" := sorry\n\n/--\ninfo: 'odd'\n-/\n\
+  #guard_msgs in\n#eval oddity 1\n\n/--\ninfo: 'odd'\n-/\n#guard_msgs in\n#eval oddity\
+  \ 16\n\n/--\ninfo: 'even'\n-/\n#guard_msgs in\n#eval oddity 27\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

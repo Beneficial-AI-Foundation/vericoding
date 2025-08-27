@@ -1,0 +1,50 @@
+"vc-description": "Chef has bought N robots to transport cakes for a large community\
+  \ wedding. He has assigned unique indices, from 1 to N, to each of them. How it\
+  \ will happen?\nChef arranges the N robots in a row, in the (increasing) order of\
+  \ their indices. Then, he chooses the first M robots and moves them to the end of\
+  \ the queue. Now, Chef goes to the robot at the first position in the row and hands\
+  \ it one cake. He then notes this robot's index (say k) in his notebook, and goes\
+  \ to the kth position in the row. If the robot at this position does not have a\
+  \ cake, he give him one cake, notes his index in his notebook, and continues the\
+  \ same process. If a robot visited by Chef already has a cake with it, then he stops\
+  \ moving and the cake assignment process is stopped.\nChef will be satisfied if\
+  \ all robots have a cake in the end. In order to prepare the kitchen staff for Chef's\
+  \ wrath (or happiness :) ), you must find out if he will be satisfied or not? If\
+  \ not, you have to find out how much robots have a cake, so that the kitchen staff\
+  \ can prepare themselves accordingly.\n\n-----Input-----\n- The first line of input\
+  \ contains a single integer T denoting the number of test cases.\n- The single line\
+  \ of each test cases contains two space separated integers N and M.\n\n-----Output-----\n\
+  For each of the T test cases, output a single line:\n\n- If all N robots have a\
+  \ cake, output \"Yes\" (without quotes).\n- Otherwise, output \"No\" (without quotes)\
+  \ followed by a space and the number of robots which have a cake.\n\n-----Constraints\
+  \ and Subtasks-----\n- 1 ≤ T ≤ 10\n- 0 ≤ M < NSubtask 1: 25 points\n- 1 ≤ N ≤ 10^5Subtask\
+  \ 3: 75 points\n- 1 ≤ N ≤ 10^9\n\n-----Example-----\nInput:\n3\n2 0\n2 1\n4 2\n\n\
+  Output:\nNo 1\nYes\nNo 2\n\n-----Explanation-----\nIn test case 1, we have two robots\
+  \ indexed 1 and 2. They are arranged as (1 2). Chef goes to the first robot, gives\
+  \ him a cake, and moves to position 1. In the next step, he sees that robot at this\
+  \ position already has a has cake. So Chef stops moving, and our answer is \"No\
+  \ 1\".\nIn test case 2, we again have two robots indexed 1 and 2. Initially, they\
+  \ are arranged as (1 2). Then, Chef moves robot#1 to the end of the row, and thus\
+  \ the arrangement becomes (2 1). Chef goes to the robot at the first position, which\
+  \ is robot#2. Chef hands him a cake, and moves to position 2. Then, he hands a cake\
+  \ to robot#1 at position 2, and moves back to the first position. Since, robot#2\
+  \ at the first position already ahs a cake, Chef stops moving. All N robots have\
+  \ cakes, so Chef is satisfied, and our answer is \"Yes\".\nIn the 3rd test case,\
+  \ we have the following arrangement of robots: (3 4 1 2). Only robots with indices\
+  \ 3 and 1 will get cakes. So our answer is \"No 2\"."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_robot_cake_distribution (n : Nat) (m : Nat) : String\
+  \ := sorry\n\ntheorem robot_cake_distribution_bounds (n m : Nat)\n  (h1 : 2 ≤ n)\n\
+  \  (h2 : n ≤ 100)\n  (h3 : m < n) :\n  let result := solve_robot_cake_distribution\
+  \ n m\n  (result = \"Yes\" ∨ ∃ count, result = s!\"No {count}\" ∧ 1 ≤ count ∧ count\
+  \ < n) := sorry\n"
+"vc-theorems": "theorem robot_cake_zero_shift (n : Nat)\n  (h1 : 2 ≤ n)\n  (h2 : n\
+  \ ≤ 100) :\n  solve_robot_cake_distribution n 0 = \"No 1\" := sorry\n\n\ntheorem\
+  \ robot_cake_count_validity (n m : Nat)\n  (h1 : 2 ≤ n)\n  (h2 : n ≤ 100)\n  (h3\
+  \ : m < n) :\n  let result := solve_robot_cake_distribution n m\n  (result = \"\
+  Yes\" ∨ ∃ count, result = s!\"No {count}\" ∧ 0 < count ∧ count < n) := sorry\n\n\
+  /--\ninfo: 'No 1'\n-/\n#guard_msgs in\n#eval solve_robot_cake_distribution 2 0\n\
+  \n/--\ninfo: 'Yes'\n-/\n#guard_msgs in\n#eval solve_robot_cake_distribution 2 1\n\
+  \n/--\ninfo: 'No 2'\n-/\n#guard_msgs in\n#eval solve_robot_cake_distribution 4 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

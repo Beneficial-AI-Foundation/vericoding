@@ -1,0 +1,37 @@
+"vc-description": "The function sigma 1, σ1 in mathematics, is known as the one that\
+  \ gives the sum of the divisors of an integer number.\n\nFor example for the number\
+  \ 10,\n```python\nσ1(10) = 18 # because the divisors of 10 are: 1, 2, 5, 10\n\n\
+  σ1(10) = 1 + 2 + 5 + 10 = 18\n```\nYou can see the graph of this important function\
+  \ up to 250:\n\n\n\nThe number 528 and its reversed, 825 have equal value for the\
+  \ function σ1.\n```python\nσ1(528) = σ1(825)\n\ndivisors of 528 are: 1, 2, 3, 4,\
+  \ 6, 8, 11, 12, 16, 22, 24, 33, 44, 48, 66, 88, 132, 176, 264 and 528\n\nthe sum\
+  \ of the divisors of 528 is 1488\n\ndivisors of 825 are: 1, 3, 5, 11, 15, 25, 33,\
+  \ 55, 75, 165, 275 and 825\n\nthe sum of the divisors of 825 is 1488\n```\nIn fact\
+  \ 528 is the smallest non palindromic integer that has this property.\n\nWe need\
+  \ a function, ```equal_sigma1()```, that may collect all the positive integers that\
+  \ fulfill the property described above.\n\nThe function receives an upper limit,\
+  \ ```nMax```, will output the total sum of these numbers and its reversed while\
+  \ are less or equal nMax.\n\nLet's see some cases:\n```python\nequal_sigma1(100)\
+  \ = 0 # There are no numbers.\n\nequal_sigma1(1000) = 1353 # 528 and its revesed\
+  \ 825 were found, 528 +  825 = 1353\n\nequal_sigma1(2000) = 4565 # There are four\
+  \ numbers_: 528 + 825 + 1561 + 1651 = 4565\n\nequal_sigma1(1600) = 2914 # Now we\
+  \ have three numbers: 528 + 825 + 1561 = 2914\n\nequal_sigma1(1561) = 2914\n```\n\
+  The palindromic numbers (like 88, 808, 929), numbers that are equal to its reversed\
+  \ should be discarded.\n\nHappy coding!!\n\n(For more information about the general\
+  \ sigma function see at: https://en.wikipedia.org/wiki/Divisor_function)"
+"vc-preamble": "import Imports.AllImports\n\ndef sum_divisors (n: Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def equal_sigma1 (nmax: Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem sum_divisors_positive (n: Nat) (h: n ≥ 1) : \n  let result\
+  \ := sum_divisors n\n  result ≥ 1 ∧ result ≥ n :=\nsorry\n\n\ntheorem equal_sigma1_properties\
+  \ (nmax: Nat) (h: nmax ≥ 1) :\n  let result := equal_sigma1 nmax\n  result ≥ 0 ∧\
+  \ (nmax < 528 → result = 0) :=\nsorry\n\n\ntheorem sum_divisors_multiplication_property\
+  \ (n: Nat) (h: n ≥ 1) :\n  ∀ k : Nat,\n  let divisors := (List.range n).filterMap\
+  \ (fun i => \n    if n % (i+1) = 0 then some (i+1) else none)\n  k * k = n →\n \
+  \ sum_divisors n ≤ 2 * n :=\nsorry\n\n\ntheorem equal_sigma1_symmetry (nmax: Nat)\
+  \ :\n  let result := equal_sigma1 nmax\n  ∀ n, n ≥ 528 → n ≤ nmax →\n  n = 528 ∨\
+  \ n = 1561 :=\nsorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval equal_sigma1 100\n\
+  \n/--\ninfo: 1353\n-/\n#guard_msgs in\n#eval equal_sigma1 1000\n\n/--\ninfo: 4565\n\
+  -/\n#guard_msgs in\n#eval equal_sigma1 2000\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

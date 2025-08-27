@@ -1,0 +1,17 @@
+"vc-description": "You take your son to the forest to see the monkeys. You know that\
+  \ there are a certain number there (n), but your son is too young to just appreciate\
+  \ the full number, he has to start counting them from 1.\n\nAs a good parent, you\
+  \ will sit and count with him. Given the number (n), populate an array with all\
+  \ numbers up to and including that number, but excluding zero.\n\nFor example:\n\
+  ```python\nmonkeyCount(10) # --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nmonkeyCount(1)\
+  \ # --> [1]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def monkey_count (n : Nat) : List Nat := sorry\n\ntheorem monkey_count_length\
+  \ {n : Nat} (h : n > 0) : \n  (monkey_count n).length = n := sorry\n"
+"vc-theorems": "theorem monkey_count_first {n : Nat} (h : n > 0) :\n  (monkey_count\
+  \ n).head! = 1 := sorry \n\n\ntheorem monkey_count_last {n : Nat} (h : n > 0) :\n\
+  \  (monkey_count n).getLast! = n := sorry\n\n/--\ninfo: [1, 2, 3, 4, 5]\n-/\n#guard_msgs\
+  \ in\n#eval monkey_count 5\n\n/--\ninfo: [1]\n-/\n#guard_msgs in\n#eval monkey_count\
+  \ 1\n\n/--\ninfo: [1, 2, 3]\n-/\n#guard_msgs in\n#eval monkey_count 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

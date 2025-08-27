@@ -1,0 +1,28 @@
+"vc-description": "## Task\n\nYour challenge is to write a function named `getSlope`/`get_slope`/`GetSlope`\
+  \ that calculates the slope of the line through two points.\n\n## Input\n\n```if:javascript,python\n\
+  Each point that the function takes in is an array 2 elements long. The first number\
+  \ is the x coordinate and the second number is the y coordinate.\nIf the line through\
+  \ the two points is vertical or if the same point is given twice, the function should\
+  \ return `null`/`None`.\n```\n\n```if:csharp\n`GetSlope` will take in two Point\
+  \ objects. If the line through the two points is vertical, or the two points are\
+  \ the same, return `null`.\n\nThe Point object:\n\n~~~\npublic class Point : System.Object\n\
+  {\n  public double X;\n  public double Y;\n  \n  public Point(double x, double y)\n\
+  \  {\n    this.X = x;\n    this.Y = y;\n  }\n  \n  public override string ToString()\n\
+  \  {\n    return $\"({this.X}, {this.Y})\";\n  }\n  \n  public override bool Equals(object\
+  \ point)\n  {\n    // Typechecking\n    if (point == null || point.GetType() !=\
+  \ this.GetType())\n    {\n      return false;\n    }\n    \n    return this.ToString()\
+  \ == point.ToString();\n  }\n}\n~~~\n\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Point := Float × Float\n\ndef get_slope : Point → Point → Option\
+  \ Float := sorry\n"
+"vc-theorems": "theorem slope_same_direction {p1 p2 : Point} :\n  get_slope p1 p2\
+  \ = get_slope p2 p1 := sorry\n\n\ntheorem slope_formula {p1 p2 : Point} (h : p1.1\
+  \ ≠ p2.1) :\n  match get_slope p1 p2 with\n  | some s => (s - (p2.2 - p1.2)/(p2.1\
+  \ - p1.1)).abs < 1e-10\n  | none => False := sorry\n\n\ntheorem slope_same_point\
+  \ {p : Point} :\n  get_slope p p = none := sorry\n\n\ntheorem slope_vertical {p1\
+  \ p2 : Point} :\n  p1.1 = p2.1 → get_slope p1 p2 = none := sorry\n\n/--\ninfo: 1\n\
+  -/\n#guard_msgs in\n#eval get_slope [1, 1] [2, 2]\n\n/--\ninfo: None\n-/\n#guard_msgs\
+  \ in\n#eval get_slope [1, 1] [1, 2]\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval\
+  \ get_slope [11, 1] [1, 11]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

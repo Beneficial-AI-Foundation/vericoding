@@ -1,0 +1,38 @@
+"vc-description": "Hey CodeWarrior,\n\nwe've got a lot to code today!\n\nI hope you\
+  \ know the basic string manipulation methods, because this kata will be all about\
+  \ them.\n\nHere we go...\n\n## Background\n\nWe've got a very long string, containing\
+  \ a bunch of User IDs. This string is a listing, which seperates each user ID with\
+  \ a comma and a whitespace (\"' \"). Sometimes there are more than only one whitespace.\
+  \ Keep this in mind! Futhermore, some user Ids are written only in lowercase, others\
+  \ are mixed lowercase and uppercase characters. Each user ID starts with the same\
+  \ 3 letter \"uid\", e.g. \"uid345edj\". But that's not all! Some stupid student\
+  \ edited the string and added some hashtags (#). User IDs containing hashtags are\
+  \ invalid, so these hashtags should be removed!\n\n## Task\n\n1.  Remove all hashtags\n\
+  2.  Remove the leading \"uid\" from each user ID\n3.  Return an array of strings\
+  \ --> split the string\n4.  Each user ID should be written in only lowercase characters\n\
+  5.  Remove leading and trailing whitespaces\n\n---\n\n## Note\n\nEven if this kata\
+  \ can be solved by using Regex or Linq, please try to find a solution by using only\
+  \ C#'s string class.\n\nSome references for C#:\n\n- [Microsoft MDSN: Trim](https://msdn.microsoft.com/de-de/library/t97s7bs3%28v=vs.110%29.aspx)\n\
+  - [Microsoft MSDN: Split](https://msdn.microsoft.com/de-de/library/tabh47cf%28v=vs.110%29.aspx)\n\
+  - [Microsoft MSDN: ToLower](https://msdn.microsoft.com/en-us/library/system.string.tolower%28v=vs.110%29.aspx)\n\
+  - [Microsoft MSDN: Replace](https://msdn.microsoft.com/de-de/library/fk49wtc1%28v=vs.110%29.aspx)\n\
+  - [Microsoft MSDN: Substring](https://msdn.microsoft.com/de-de/library/aka44szs%28v=vs.110%29.aspx)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_users_ids (s : String) : List String := sorry\n\ntheorem\
+  \ get_users_ids_is_list (s : String) :\n  ∃ (l : List String), get_users_ids s =\
+  \ l :=\nsorry\n"
+"vc-theorems": "theorem get_users_ids_elements_are_strings (s : String) (x : String)\
+  \ :\n  x ∈ get_users_ids s → x.length ≥ 0 :=\nsorry\n\n\ntheorem get_users_ids_length\
+  \ (s : String) :\n  List.length (get_users_ids s) = List.length (s.split (· == ','))\
+  \ :=\nsorry\n\n\ntheorem get_users_ids_no_uid_prefix (s : String) (x : String) :\n\
+  \  x ∈ get_users_ids s → ∃ i j k, \n    i ≠ j ∧ j ≠ k ∧ i ≠ k ∧\n    (¬(x.toLower.get?\
+  \ i = some 'u' ∧\n       x.toLower.get? j = some 'i' ∧\n       x.toLower.get? k\
+  \ = some 'd')) :=\nsorry\n\n\ntheorem get_users_ids_lowercase (s : String) (x :\
+  \ String) :\n  x ∈ get_users_ids s → x = x.toLower :=\nsorry \n\n\ntheorem get_users_ids_no_hash\
+  \ (s : String) (x : String) :\n  x ∈ get_users_ids s → ∀ i, x.get? i ≠ some '#'\
+  \ :=\nsorry\n\n/--\ninfo: ['12345']\n-/\n#guard_msgs in\n#eval get_users_ids \"\
+  uid12345\"\n\n/--\ninfo: ['doublehashtag']\n-/\n#guard_msgs in\n#eval get_users_ids\
+  \ \"uid##doublehashtag\"\n\n/--\ninfo: ['12 ab', '', 'mixedchars']\n-/\n#guard_msgs\
+  \ in\n#eval get_users_ids \"uid12 ab, uid#, uidMiXeDcHaRs\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

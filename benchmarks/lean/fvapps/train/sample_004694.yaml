@@ -1,0 +1,25 @@
+"vc-description": "The function must return the sequence of titles that match the\
+  \ string passed as an argument. \n\n```if:javascript\nTITLES is a preloaded sequence\
+  \ of strings. \n```\n\n```python\ntitles = ['Rocky 1', 'Rocky 2', 'My Little Poney']\n\
+  search(titles, 'ock') --> ['Rocky 1', 'Rocky 2']\n```\n\nBut the function return\
+  \ some weird result and skip some of the matching results.\n\nDoes the function\
+  \ have special movie taste? \n\nLet's figure out !"
+"vc-preamble": "import Imports.AllImports\n\ndef search (titles : List String) (term\
+  \ : String) : List String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def containsInsensitive (s₁ s₂ : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem search_case_insensitive (titles : List String) (term : String)\
+  \ :\n  ∀ t ∈ search titles term, containsInsensitive t term = true := by\n  sorry\n\
+  \n\ntheorem search_returns_subset (titles : List String) (term : String) :\n  ∀\
+  \ t ∈ search titles term, t ∈ titles := by\n  sorry\n  \n\ntheorem search_order_preserved\
+  \ (titles : List String) (term : String) :\n  let result := search titles term\n\
+  \  ∀ i j, i < j → i < result.length → j < result.length → \n    (titles.indexOf\
+  \ (result[i]!) < titles.indexOf (result[j]!)) := by\n  sorry\n  \n\ntheorem search_empty_term\
+  \ (titles : List String) :\n  search titles \"\" = titles := by\n  sorry\n  \n\n\
+  theorem search_empty_titles (term : String) :\n  search [] term = [] := by\n  sorry\n\
+  \n/--\ninfo: ['Rocky 1', 'Rocky 2']\n-/\n#guard_msgs in\n#eval search [\"Rocky 1\"\
+  , \"Rocky 2\", \"My Little Poney\"] \"ock\"\n\n/--\ninfo: ['ROCK star', 'rock bottom',\
+  \ 'ROCKY']\n-/\n#guard_msgs in\n#eval search [\"ROCK star\", \"rock bottom\", \"\
+  ROCKY\"] \"rOcK\"\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval search [\"Star Wars\"\
+  , \"The Matrix\", \"Inception\"] \"rock\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

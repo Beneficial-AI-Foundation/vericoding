@@ -1,0 +1,30 @@
+"vc-description": "Given two arrays of integers nums1 and nums2, return the number\
+  \ of triplets formed (type 1 and type 2) under the following rules:\n\nType 1: Triplet\
+  \ (i, j, k) if nums1[i]2 == nums2[j] * nums2[k] where 0 <= i < nums1.length and\
+  \ 0 <= j < k < nums2.length.\nType 2: Triplet (i, j, k) if nums2[i]2 == nums1[j]\
+  \ * nums1[k] where 0 <= i < nums2.length and 0 <= j < k < nums1.length.\n\n \nExample\
+  \ 1:\nInput: nums1 = [7,4], nums2 = [5,2,8,9]\nOutput: 1\nExplanation: Type 1: (1,1,2),\
+  \ nums1[1]^2 = nums2[1] * nums2[2]. (4^2 = 2 * 8). \n\nExample 2:\nInput: nums1\
+  \ = [1,1], nums2 = [1,1,1]\nOutput: 9\nExplanation: All Triplets are valid, because\
+  \ 1^2 = 1 * 1.\nType 1: (0,0,1), (0,0,2), (0,1,2), (1,0,1), (1,0,2), (1,1,2).  nums1[i]^2\
+  \ = nums2[j] * nums2[k].\nType 2: (0,0,1), (1,0,1), (2,0,1). nums2[i]^2 = nums1[j]\
+  \ * nums1[k].\n\nExample 3:\nInput: nums1 = [7,7,8,3], nums2 = [1,2,9,7]\nOutput:\
+  \ 2\nExplanation: There are 2 valid triplets.\nType 1: (3,0,2).  nums1[3]^2 = nums2[0]\
+  \ * nums2[2].\nType 2: (3,0,1).  nums2[3]^2 = nums1[0] * nums1[1].\n\nExample 4:\n\
+  Input: nums1 = [4,7,9,11,23], nums2 = [3,5,1024,12,18]\nOutput: 0\nExplanation:\
+  \ There are no valid triplets.\n\n \nConstraints:\n\n1 <= nums1.length, nums2.length\
+  \ <= 1000\n1 <= nums1[i], nums2[i] <= 10^5"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def num_triplets (nums1 : List Nat) (nums2 : List Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem num_triplets_nonnegative (nums1 nums2 : List Nat) : \n  num_triplets\
+  \ nums1 nums2 ≥ 0 :=\n  sorry\n\n\ntheorem num_triplets_symmetric (nums1 nums2 :\
+  \ List Nat) :\n  num_triplets nums1 nums2 = num_triplets nums2 nums1 :=\n  sorry\n\
+  \n\ntheorem num_triplets_empty_first (nums2 : List Nat) :\n  num_triplets [] nums2\
+  \ = 0 :=\n  sorry\n\n\ntheorem num_triplets_empty_second (nums1 : List Nat) :\n\
+  \  num_triplets nums1 [] = 0 :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval\
+  \ num_triplets [7, 4] [5, 2, 8, 9]\n\n/--\ninfo: 9\n-/\n#guard_msgs in\n#eval num_triplets\
+  \ [1, 1] [1, 1, 1]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval num_triplets [7, 7,\
+  \ 8, 3] [1, 2, 9, 7]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

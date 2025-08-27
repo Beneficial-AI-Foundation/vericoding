@@ -1,0 +1,37 @@
+"vc-description": "Supermarket Dilemma\nChef is going to local supermarket but there\
+  \ appears a problem with chef as he is confused about which Supermarket he can choose\
+  \ to go as he is not able to decide whether he can park his car in that particular\
+  \ supermarket’s parking lot or not! There are N parking slots in each supermarket\
+  \ which are marked from 1,2,3,4…N.\nChef will go to that supermarket in which he\
+  \ gets to know that there is exactly 1 empty parking slot having number K that exactly\
+  \ divides the total number of slots (N) available in that supermarket.\nThe 1st\
+  \ and Nth parking slots are always occupied by the staff of every supermarket. Rest\
+  \ parking slots are empty as Chef is arriving early morning to the supermarket.\n\
+  Now Chef needs your help in determining whether he can park his car in a supermarket\
+  \ or not!\nInput\nThe first line contains the single integer N showing how many\
+  \ supermarkets are there for the chef to choose.\nThe next N lines contain a number\
+  \ ‘ai’ which represents the total parking slots available in ith supermarket.\n\
+  Output\nYou need to output \"YES\" (without the quotes), if a supermarket can be\
+  \ reached by Chef, and \"NO\" (without the quotes), if it can't.\nConstraints\n\
+  1<=N<=10^5\n1<=ai<=10^12\nSample Input :\n2\n4\n5\nSample Output :\nYES\nNO"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_supermarket (slots : List Nat) : List String := sorry\n\
+  def check (n : Nat) : Nat := sorry\n"
+"vc-theorems": "theorem solve_supermarket_correct_length (slots : List Nat) \n  (h\
+  \ : slots.length ≥ 1 ∧ slots.length ≤ 100) \n  (h2 : ∀ x ∈ slots, x ≤ 1000) : \n\
+  \  let result := solve_supermarket slots \n  (result.length = slots.length) ∧ \n\
+  \  (∀ x ∈ result, x = \"YES\" ∨ x = \"NO\") := sorry\n\n\ntheorem solve_supermarket_single_slot\
+  \ (slot : Nat) (h : slot ≤ 1000) :\n  let result := solve_supermarket [slot]\n \
+  \ (slot < 3 → result = [\"NO\"]) ∧ \n  (∃ n : Nat, n * n = slot → \n    (check n\
+  \ = 1 → result = [\"YES\"]) ∧\n    (check n ≠ 1 → result = [\"NO\"])) ∧\n  ((¬ ∃\
+  \ n : Nat, n * n = slot) → result = [\"NO\"]) := sorry\n\n\ntheorem solve_supermarket_perfect_squares\
+  \ \n  (primes : List Nat := [2, 3, 5, 7, 11, 13]) :\n  let squares := primes.map\
+  \ (λ p => p * p)\n  solve_supermarket squares = List.replicate squares.length \"\
+  YES\" := sorry\n\n\ntheorem solve_supermarket_non_perfect_squares\n  (non_squares\
+  \ : List Nat := [5, 6, 7, 8, 10, 11, 12, 13, 14, 15]) :\n  solve_supermarket non_squares\
+  \ = List.replicate non_squares.length \"NO\" := sorry\n\n/--\ninfo: ['YES', 'NO']\n\
+  -/\n#guard_msgs in\n#eval solve_supermarket [4, 5]\n\n/--\ninfo: ['YES']\n-/\n#guard_msgs\
+  \ in\n#eval solve_supermarket [9]\n\n/--\ninfo: ['NO', 'NO', 'NO']\n-/\n#guard_msgs\
+  \ in\n#eval solve_supermarket [6, 8, 10]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

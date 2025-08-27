@@ -1,0 +1,33 @@
+"vc-description": "# Task\n\nWrite a function that accepts `msg` string and returns\
+  \ local tops of string from the highest to the lowest.  \nThe string's tops are\
+  \ from displaying the string in the below way:\n\n```      \n                  \
+  \                                    3 \n                              p       \
+  \              2   4\n            g               o   q                 1\n  b \
+  \      f   h           n       r             z \na   c   e       i       m     \
+  \     s          y\n      d           j   l             t       x\n            \
+  \        k                 u   w \n                                        v\n\n\
+  \n```\nThe next top is always 1 character higher than the previous one. \nFor the\
+  \ above example, the solution for the `abcdefghijklmnopqrstuvwxyz1234` input string\
+  \ is `3pgb`.\n\n- When the `msg` string is empty, return an empty string.\n- The\
+  \ input strings may be very long. Make sure your solution has good performance.\n\
+  \nCheck the test cases for more samples.\n\n# **Note** for C++\n\nDo not post an\
+  \ issue in my solution without checking if your returned string doesn't have some\
+  \ invisible characters. You read most probably outside of `msg` string."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def tops (s : String) : String := sorry\n\n-- Empty string returns\
+  \ empty string"
+"vc-theorems": "theorem tops_empty_string :\n  tops \"\" = \"\" := by sorry\n\n--\
+  \ Single char string returns empty string\n\ntheorem tops_single_char (c : Char)\
+  \ :\n  tops (String.mk [c]) = \"\" := by sorry\n\n-- Output chars are subset of\
+  \ input chars\n\ntheorem tops_chars_in_input {s : String} {c : Char} :\n  c ∈ (tops\
+  \ s).data → c ∈ s.data := by sorry\n\n-- Simple version of output length follows\
+  \ pattern\n\ntheorem tops_output_length {s : String} (h : s.length > 0) :\n  ∃ n,\
+  \ (tops s).length = n ∧ n ≥ 0 := by sorry\n\n-- Simple version of output order\n\
+  \ntheorem tops_output_order {s : String} (h : s.length ≥ 10) :\n  ∃ chars : List\
+  \ Char, \n    tops s = String.mk chars ∧\n    ∀ c ∈ chars, c ∈ s.data := by sorry\n\
+  \n-- Output is deterministic\n\ntheorem tops_deterministic {s : String} :\n  tops\
+  \ s = tops s := by sorry\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval tops \"\"\n\
+  \n/--\ninfo: '2'\n-/\n#guard_msgs in\n#eval tops \"12\"\n\n/--\ninfo: '3pgb'\n-/\n\
+  #guard_msgs in\n#eval tops \"abcdefghijklmnopqrstuvwxyz12345\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

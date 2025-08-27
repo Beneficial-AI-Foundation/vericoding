@@ -1,0 +1,21 @@
+"vc-description": "Given a mixed array of number and string representations of integers,\
+  \ add up the string integers and subtract this from the total of the non-string\
+  \ integers. \n\nReturn as a number."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum (l : List Int) : Int :=\
+  \ \n  l.foldl (· + ·) 0\n\n\ndef div_con (lst : List Item) : Int := sorry\n\ndef\
+  \ string_is_numeric (s : String) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def string_to_int (s : String) : Int := sorry\n\ntheorem div_con_main_property\
+  \ (lst : List Item)\n  (h : ∀ s, s ∈ lst → match s with | Item.Str s => string_is_numeric\
+  \ s | _ => true) :\n  div_con lst = \n    (lst.filterMap (fun x => match x with\n\
+  \      | Item.Int n => some n\n      | _ => none)).sum -\n    (lst.filterMap (fun\
+  \ x => match x with\n      | Item.Str s => if string_is_numeric s then some (string_to_int\
+  \ s) else none\n      | _ => none)).sum := sorry\n"
+"vc-theorems": "theorem div_con_all_ints (lst : List Int) :\n  div_con (lst.map Item.Int)\
+  \ = lst.sum := sorry\n\n\ntheorem div_con_all_strings (lst : List String)\n  (h\
+  \ : ∀ s, s ∈ lst → string_is_numeric s) :\n  div_con (lst.map Item.Str) = -(lst.map\
+  \ string_to_int).sum := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval div_con\
+  \ [9, 3, \"7\", \"3\"]\n\n/--\ninfo: 14\n-/\n#guard_msgs in\n#eval div_con [\"5\"\
+  , \"0\", 9, 3, 2, 1, \"9\", 6, 7]\n\n/--\ninfo: 13\n-/\n#guard_msgs in\n#eval div_con\
+  \ [\"3\", 6, 6, 0, \"5\", 8, 5, \"6\", 2, \"0\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

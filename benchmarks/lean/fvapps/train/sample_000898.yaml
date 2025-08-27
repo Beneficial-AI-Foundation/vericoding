@@ -1,0 +1,36 @@
+"vc-description": "Given an empty array A of infinite length and a positive integer\
+  \ K you have to process \nQ queries of type:    \n- ! l r x: Fill the value x in\
+  \ all the empty places in the array from index l to r  (both inclusive).\n- ? l\
+  \ r: Print the number of prime factors of K which is also a prime factor of at least\
+  \ one number in A[l], A[l + 1], A[l + 2], … A[r].   \n\n-----Input-----\n- The first\
+  \ line contains two space separated integers K and Q respectively.\n- Then Q lines\
+  \ follow:\n- Each of the $i^{th}$ line contains one of the above two types of queries.\n\
+  \n-----Output-----\nFor each query of the second type, print in a new line the answer\
+  \ to that query. i.e. number of prime factors of K which is also a prime factor\
+  \ of at least one number in A[l], A[l + 1], A[l + 2], … A[r].   \n\n-----Constraints-----\n\
+  - $1 \\leq K, x \\leq 10^9$\n- $ 1 \\leq l \\leq r \\leq 10^5$\n- $ 1 \\leq Q \\\
+  leq 10^5$ \n\n-----Sample Input-----\n20 5\n\n? 1 5\n\n! 3 5 4\n\n? 1 5\n\n! 1 4\
+  \ 15\n\n? 1 5   \n\n-----Sample Output-----\n0\n\n1\n\n2   \n\n-----EXPLANATION-----\n\
+  Initially, all the places in the array are empty. i.e _ _ _ _ _\n\nAfter first update\
+  \ the array looks like: _ _ 4 4 4\n\nIn the range [1, 5] the only factor of 20 which\
+  \ is also a prime factor of at least one number in _ _ 4 4 4  is 2.\n\nAfter the\
+  \ second update the array looks like: 15 15 4 4 4\n\nIn the range [1, 5] the prime\
+  \ factors of 20 i.e. 5 is a prime factor of 15, 15 and 2 is the prime factor of\
+  \ 4, 4, 4."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_prime_array_queries (k : Nat) (queries : List String)\
+  \ : List Nat := sorry\n\ntheorem query_results_bounds \n  (k : Nat) \n  (queries\
+  \ : List String) \n  (h1 : 2 ≤ k)\n  (h2 : k ≤ 1000)\n  (h3 : queries.length > 0)\n\
+  \  (h4 : queries.length ≤ 10) :\n  let result := solve_prime_array_queries k queries\n\
+  \  let read_queries := (queries.filter (fun q => q.get! 0 = '?')).length\n  ∀ count\
+  \ ∈ result,\n    read_queries = result.length ∧\n    count ≥ 0 ∧ \n    count ≤ 10\
+  \ := -- simplified bound since k ≤ 1000\nsorry\n"
+"vc-theorems": "theorem empty_queries_result\n  (k : Nat)\n  (h1 : 2 ≤ k)\n  (h2 :\
+  \ k ≤ 1000) :\n  solve_prime_array_queries k [] = [] :=\nsorry\n\n\ntheorem non_overlapping_ranges\n\
+  \  (k : Nat)\n  (l r : Nat)\n  (h1 : 2 ≤ k)\n  (h2 : k ≤ 1000)\n  (h3 : 1 ≤ l)\n\
+  \  (h4 : l ≤ 50)\n  (h5 : 51 ≤ r)\n  (h6 : r ≤ 100) :\n  let q1 := \"! 1 \" ++ toString\
+  \ l ++ \" 2\"\n  let q2 := \"! \" ++ toString r ++ \" 100 3\"\n  let q3 := \"? \"\
+  \ ++ toString (l+1) ++ \" \" ++ toString (r-1)\n  solve_prime_array_queries k [q1,\
+  \ q2, q3] = [0] :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

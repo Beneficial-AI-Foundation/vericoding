@@ -1,0 +1,42 @@
+"vc-description": "Minion Chef likes to eat bananas a lot. There are N piles of bananas\
+  \ in front of Chef; for each i (1 ≤ i ≤ N), the i-th pile contains Ai bananas.\n\
+  Chef's mother wants her to eat the bananas and be healthy. She has gone to the office\
+  \ right now and will come back in H hours. Chef would like to make sure that she\
+  \ can finish eating all bananas by that time.\nSuppose Chef has an eating speed\
+  \ of K bananas per hour. Each hour, she will choose some pile of bananas. If this\
+  \ pile contains at least K bananas, then she will eat K bananas from it. Otherwise,\
+  \ she will simply eat the whole pile (and won't eat any more bananas during this\
+  \ hour).\nChef likes to eat slowly, but still wants to finish eating all the bananas\
+  \ on time. Therefore, she would like to choose the minimum K such that she is able\
+  \ to eat all the bananas in H hours. Help Chef find that value of K.\n\n-----Input-----\n\
+  - The first line of the input contains a single integer T denoting the number of\
+  \ test cases. The description of T test cases follows.\n- The first line of each\
+  \ test case contains two space-separated integers N and H denoting the number of\
+  \ piles and the number of hours after which Chef's mom will come home.\n- The second\
+  \ line contains N space-separated integers A1, A2, ..., AN.\n\n-----Output-----\n\
+  For each test case, print a single line containing one integer — the minimum possible\
+  \ value of K.\n\n-----Constraints-----\n- 1 ≤ T ≤ 10\n- 1 ≤ N ≤ 105\n- N ≤ H ≤ 109\n\
+  - 1 ≤ Ai ≤ 109 for each valid i\n\n-----Subtasks-----\nSubtask #1 (30 points):\n\
+  - 1 ≤ N ≤ 100\n- Ai ≤ 103 for each valid i\n\nSubtask #2 (70 points): original constraints\n\
+  \n-----Example-----\nInput:\n\n3\n3 3\n1 2 3\n3 4\n1 2 3\n4 5\n4 3 2 7\n\nOutput:\n\
+  \n3\n2\n4\n\n-----Explanation-----\nExample case 1: With a speed of K = 3 bananas\
+  \ per hour, Chef can finish eating all the bananas in 3 hours. It's the minimum\
+  \ possible speed with which she can eat all the bananas in 3 hours. With a speed\
+  \ of 2 bananas per hour, she would take at least 4 hours and with a speed of 1 banana\
+  \ per hour, she would take at least 6 hours."
+"vc-preamble": "import Imports.AllImports\n\ndef min_banana_speed (pile_count : Nat)\
+  \ (hours : Nat) (piles : List Nat) : Nat :=\n  sorry\n\n\ndef list_maximum (l :\
+  \ List Nat) : Nat :=\n  match l with\n  | [] => 0\n  | x::xs => List.foldl max x\
+  \ xs\n\n\ndef list_sum (l : List Nat) : Nat :=\n  match l with\n  | [] => 0\n  |\
+  \ x::xs => x + list_sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def nat_ceil_div (a b : Nat) : Nat :=\n  (a + b - 1) / b\n\n\n\n\
+  \n"
+"vc-theorems": "theorem edge_cases_singleton_one :\n  min_banana_speed 1 1 [1] = 1\
+  \ :=\n  sorry\n\n\ntheorem edge_cases_singleton_hundred :\n  min_banana_speed 1\
+  \ 1 [100] = 100 :=\n  sorry\n\n\ntheorem edge_cases_two_ones :\n  min_banana_speed\
+  \ 2 2 [1, 1] = 1 :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval min_banana_speed\
+  \ 3 3 [1, 2, 3]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_banana_speed 3 4\
+  \ [1, 2, 3]\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval min_banana_speed 4 5 [4,\
+  \ 3, 2, 7]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

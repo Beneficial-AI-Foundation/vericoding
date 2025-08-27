@@ -1,0 +1,25 @@
+"vc-description": "# Task\n Changu and Mangu are great buddies. Once they found an\
+  \ infinite paper which had 1,2,3,4,5,6,7,8,......... till infinity, written on it.\n\
+  \n Both of them did not like the sequence and started deleting some numbers in the\
+  \ following way.\n ```\nFirst they deleted every 2nd number.\nSo remaining numbers\
+  \ on the paper: 1,3,5,7,9,11..........till infinity.\nThen they deleted every 3rd\
+  \ number.\nSo remaining numbers on the paper: 1,3,7,9,13,15..........till infinity..\n\
+  Then they deleted every 4th number.\nSo remaining numbers on the paper: 1,3,7,13,15..........till\
+  \ infinity.```\nThen kept on doing this (deleting every 5th, then every 6th ...)\
+  \ untill they got old and died.\n\n It is obvious that some of the numbers will\
+  \ never get deleted(E.g. 1,3,7,13..) and hence are know to us as survivor numbers.\n\
+  \n Given a number `n`, check whether its a survivor number or not.\n\n# Input/Output\n\
+  \n\n - `[input]` integer `n`\n\n  `0 < n <= 10^8`\n\n \n - `[output]` a boolean\
+  \ value\n\n  `true` if the number is a survivor else `false`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def survivor (n : Nat) : Bool := sorry\n\n-- Basic properties"
+"vc-theorems": "theorem survivor_returns_bool (n : Nat) : \n  survivor n = true ∨\
+  \ survivor n = false := by sorry\n\n-- Properties about n = 1\n\ntheorem one_is_survivor\
+  \ : \n  survivor 1 = true := by sorry\n\n-- Consistency property\n\ntheorem survivor_is_consistent\
+  \ (n : Nat) :\n  survivor n = survivor n := by sorry\n\n-- At least one survivor\
+  \ property\n\ntheorem exists_survivor_up_to_n (n : Nat) :\n  n > 0 → ∃ k : Nat,\
+  \ k ≤ n ∧ k > 0 ∧ survivor k = true := by sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval survivor 1\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval survivor 5\n\
+  \n/--\ninfo: True\n-/\n#guard_msgs in\n#eval survivor 13\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

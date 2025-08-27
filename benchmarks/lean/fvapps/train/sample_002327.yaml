@@ -1,0 +1,33 @@
+"vc-description": "Implement strStr().\n\nReturn the index of the first occurrence\
+  \ of needle in haystack, or -1 if needle is not part of haystack.\n\nExample 1:\n\
+  \n\nInput: haystack = \"hello\", needle = \"ll\"\nOutput: 2\n\n\nExample 2:\n\n\n\
+  Input: haystack = \"aaaaa\", needle = \"bba\"\nOutput: -1\n\n\nClarification:\n\n\
+  What should we return when needle is an empty string? This is a great question to\
+  \ ask during an interview.\n\nFor the purpose of this problem, we will return 0\
+  \ when needle is an empty string. This is consistent to C's strstr() and Java's indexOf()."
+"vc-preamble": "import Imports.AllImports\n\ndef find_str (haystack : String) (needle\
+  \ : String) : Int :=\n  sorry\n\n\ndef containsString (haystack needle : String)\
+  \ : Bool :=\n  sorry\n\n\ndef stringSlice (s : String) (start : Int) (last : Int)\
+  \ : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def stringRepeat (s : String) (n : Nat) : String :=\n  sorry\n"
+"vc-theorems": "theorem empty_needle_returns_zero {haystack : String} :\n  find_str\
+  \ haystack \"\" = 0 := by sorry\n\n\ntheorem empty_haystack_nonempty_needle_returns_minus_one\
+  \ {needle : String} (h : needle ≠ \"\") :\n  find_str \"\" needle = -1 := by sorry\n\
+  \n\ntheorem needle_not_found_returns_minus_one {haystack needle : String} \n  (h\
+  \ : containsString haystack needle = false) :\n  find_str haystack needle = -1 :=\
+  \ by sorry\n\n\ntheorem result_is_valid_index {haystack needle : String} \n  (h1\
+  \ : needle ≠ \"\") (h2 : containsString haystack needle = true) :\n  let r := find_str\
+  \ haystack needle;\n  0 ≤ r ∧ r < String.length haystack := by sorry\n\n\ntheorem\
+  \ result_points_to_needle {haystack needle : String}\n  (h1 : needle ≠ \"\") (h2\
+  \ : containsString haystack needle = true) :\n  let r := find_str haystack needle;\n\
+  \  (stringSlice haystack r (r + String.length needle)) = needle := by sorry\n\n\n\
+  theorem no_earlier_occurrence {haystack needle : String}\n  (h1 : needle ≠ \"\"\
+  ) (h2 : containsString haystack needle = true) :\n  let r := find_str haystack needle;\n\
+  \  containsString (stringSlice haystack 0 r) needle = false := by sorry\n\n\ntheorem\
+  \ repeated_needle_returns_zero {s : String} {n : Nat}\n  (h1 : s ≠ \"\") (h2 : n\
+  \ > 0) :\n  find_str (stringRepeat s n) s = 0 := by sorry\n\n/--\ninfo: 2\n-/\n\
+  #guard_msgs in\n#eval find_str \"hello\" \"ll\"\n\n/--\ninfo: -1\n-/\n#guard_msgs\
+  \ in\n#eval find_str \"aaaaa\" \"bba\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ find_str \"\" \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

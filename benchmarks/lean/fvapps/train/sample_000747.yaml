@@ -1,0 +1,27 @@
+"vc-description": "Chef has an array of N natural numbers. Cheffina challenges the\
+  \ chef to choose the two numbers from the array and following the condition as the\
+  \ area of the rectangle formed from the two numbers is maximum. Cheffina also asks\
+  \ the chef to choose two numbers different from the previous two to form the rectangle\
+  \ with a minimum area.\n\n-----Input:-----\n- First-line will contain $T$, the number\
+  \ of test cases. Then the test cases follow. \n- Each test case contains a single\
+  \ line of input, $N$.\n- N space-separated natural numbers. \n\n-----Output:-----\n\
+  For each test case, output in one line answers maximum and minimum area of a rectangle.\n\
+  \n-----Constraints-----\n- $1 \\leq T \\leq 10$\n- $4 \\leq N \\leq 10^5$\n- $1\
+  \ \\leq arr[i] \\leq 10^6$\n\n-----Sample Input:-----\n1\n5\n4 2 1 5 3\n\n-----Sample\
+  \ Output:-----\n20 2"
+"vc-preamble": "import Imports.AllImports\n\ndef find_rectangle_areas (n : Nat) (numbers\
+  \ : List Nat) : Nat × Nat := sorry\n\n\n\ntheorem find_rectangle_areas_ordering\n\
+  \  (numbers : List Nat)\n  (h : numbers.length ≥ 2) :\n  let (max_area, min_area)\
+  \ := find_rectangle_areas numbers.length numbers\n  max_area ≥ min_area :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def maximumTwoProduct (l : List Nat) : Nat := sorry\ndef minimumTwoProduct\
+  \ (l : List Nat) : Nat := sorry\n\n\n"
+"vc-theorems": "theorem find_rectangle_areas_minimal\n  (numbers : List Nat)\n  (h\
+  \ : numbers = [1, 1]) :\n  find_rectangle_areas 2 numbers = (1, 1) :=\nsorry\n\n\
+  \ntheorem find_rectangle_areas_preserves_input\n  (numbers : List Nat)\n  (h : numbers.length\
+  \ ≥ 2) :\n  let original := numbers\n  let _ := find_rectangle_areas numbers.length\
+  \ numbers\n  numbers = original :=\nsorry\n\n/--\ninfo: (20, 2)\n-/\n#guard_msgs\
+  \ in\n#eval find_rectangle_areas 5 [4, 2, 1, 5, 3]\n\n/--\ninfo: (12, 2)\n-/\n#guard_msgs\
+  \ in\n#eval find_rectangle_areas 4 [1, 2, 3, 4]\n\n/--\ninfo: (30, 2)\n-/\n#guard_msgs\
+  \ in\n#eval find_rectangle_areas 6 [5, 4, 3, 2, 1, 6]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

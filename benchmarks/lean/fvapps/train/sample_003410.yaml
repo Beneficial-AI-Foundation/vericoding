@@ -1,0 +1,56 @@
+"vc-description": "# Task\n\nDetermine the client's membership level based on the\
+  \ invested `amount` of money and the given thresholds for membership levels.\n\n\
+  There are four membership levels (from highest to lowest): `Platinum, Gold, Silver,\
+  \ Bronze`\n\nThe minimum investment is the threshold limit for `Bronze` membership.\
+  \ If the given amount is less than the `Bronze` treshold limit return `Not a member`.\n\
+  \nA client belongs to a membership level when his invested amount is greater than\
+  \ or equal the level's threshold amount.\n\n# Examples:\n```\n|--------+----------+------+--------+--------+--------------+------------------|\n\
+  | Amount | Platinum | Gold | Silver | Bronze | Result       | Explanations     |\n\
+  |--------+----------+------+--------+--------+--------------+------------------|\n\
+  |   7000 |    10000 | 8000 |   6000 |   4000 | Silver       | Amount >= Silver |\n\
+  |   3000 |    10000 | 8000 |   6000 |   5000 | Not a member | Amount < Bronze  |\n\
+  |   8000 |    12000 | 8000 |   7000 |   5000 | Gold         | Amount >= Gold   |\n\
+  |--------+----------+------+--------+--------+--------------+------------------|\n\
+  ```\n\n# Restrictions\n\n1. The first line of your code has to be `def membership(amount,\
+  \ platinum, gold, silver, bronze):`\n2. Your code except for the firt line mustn't\
+  \ contain the words `platinum, gold, silver, bronze` or they reversed forms (e.g.\
+  \ `dlog`) or any string which contains these words or they reversed forms. (The\
+  \ check is **case-insensitive**.)\n3. Must not contain: `+, %, {, }`.\n\n# Disclaimer\n\
+  \nThis kata is about creativity not proper coding style. Your colleagues/boss won't\
+  \ like you if you make production code like this. :)\n\n#### Don't forget to rate\
+  \ the kata after you finish it. :)\n\nHappy coding!\n\nsuic"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def membership (amount platinum gold silver bronze : Nat) : String\
+  \ := sorry \n\ntheorem membership_result_valid (amount platinum gold silver bronze\
+  \ : Nat)\n  (h_thresholds : platinum > gold ∧ gold > silver ∧ silver > bronze) :\n\
+  \  membership amount platinum gold silver bronze = \"Platinum\" ∨ \n  membership\
+  \ amount platinum gold silver bronze = \"Gold\" ∨\n  membership amount platinum\
+  \ gold silver bronze = \"Silver\" ∨ \n  membership amount platinum gold silver bronze\
+  \ = \"Bronze\" ∨\n  membership amount platinum gold silver bronze = \"Not a member\"\
+  \ := sorry\n"
+"vc-theorems": "theorem membership_platinum (amount platinum gold silver bronze :\
+  \ Nat)\n  (h_thresholds : platinum > gold ∧ gold > silver ∧ silver > bronze)\n \
+  \ (h_amount : amount ≥ platinum) :\n  membership amount platinum gold silver bronze\
+  \ = \"Platinum\" := sorry\n\n\ntheorem membership_gold (amount platinum gold silver\
+  \ bronze : Nat)\n  (h_thresholds : platinum > gold ∧ gold > silver ∧ silver > bronze)\n\
+  \  (h_amount : amount ≥ gold ∧ amount < platinum) :\n  membership amount platinum\
+  \ gold silver bronze = \"Gold\" := sorry\n\n\ntheorem membership_silver (amount\
+  \ platinum gold silver bronze : Nat)\n  (h_thresholds : platinum > gold ∧ gold >\
+  \ silver ∧ silver > bronze)\n  (h_amount : amount ≥ silver ∧ amount < gold) :\n\
+  \  membership amount platinum gold silver bronze = \"Silver\" := sorry\n\n\ntheorem\
+  \ membership_bronze (amount platinum gold silver bronze : Nat)\n  (h_thresholds\
+  \ : platinum > gold ∧ gold > silver ∧ silver > bronze)\n  (h_amount : amount ≥ bronze\
+  \ ∧ amount < silver) :\n  membership amount platinum gold silver bronze = \"Bronze\"\
+  \ := sorry\n\n\ntheorem membership_none (amount platinum gold silver bronze : Nat)\n\
+  \  (h_thresholds : platinum > gold ∧ gold > silver ∧ silver > bronze)\n  (h_amount\
+  \ : amount < bronze) :\n  membership amount platinum gold silver bronze = \"Not\
+  \ a member\" := sorry\n\n\ntheorem threshold_ordering (platinum gold silver bronze\
+  \ : Nat)\n  (h_platinum : platinum ≥ 1000000) (h_platinum_max : platinum ≤ 10000000)\n\
+  \  (h_gold : gold ≥ 100000) (h_silver : silver ≥ 10000) (h_bronze : bronze ≥ 1000)\
+  \ :\n  platinum > gold ∧ gold > silver ∧ silver > bronze := sorry\n\n/--\ninfo:\
+  \ 'Gold'\n-/\n#guard_msgs in\n#eval membership 100000 1000000 100000 10000 1000\n\
+  \n/--\ninfo: 'Bronze'\n-/\n#guard_msgs in\n#eval membership 1001 1000000 100000\
+  \ 10000 1000\n\n/--\ninfo: 'Not a member'\n-/\n#guard_msgs in\n#eval membership\
+  \ 998 1000000 100000 10000 1000\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

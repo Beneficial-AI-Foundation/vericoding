@@ -1,0 +1,24 @@
+"vc-description": "Find the nth digit of the infinite integer sequence 1, 2, 3, 4,\
+  \ 5, 6, 7, 8, 9, 10, 11, ... \n\nNote:\nn is positive and will fit within the range\
+  \ of a 32-bit signed integer (n < 231).\n\n\nExample 1:\n\nInput:\n3\n\nOutput:\n\
+  3\n\n\n\nExample 2:\n\nInput:\n11\n\nOutput:\n0\n\nExplanation:\nThe 11th digit\
+  \ of the sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ... is a 0, which is part of\
+  \ the number 10."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_nth_digit (n : Nat) : Nat := sorry\n\ntheorem find_nth_digit_in_range\
+  \ (n : Nat) (h : n > 0) :\n  let result := find_nth_digit n\n  0 ≤ result ∧ result\
+  \ ≤ 9 := sorry\n"
+"vc-theorems": "theorem first_nine_digits_identity (n : Nat) (h1 : n > 0) (h2 : n\
+  \ ≤ 9) :\n  find_nth_digit n = n := sorry\n\n\ntheorem digit_boundaries_valid_10\
+  \ (offset : Nat) (h : offset ≤ 9) :\n  let n := 10 + offset\n  let result := find_nth_digit\
+  \ n\n  0 ≤ result ∧ result ≤ 9 := sorry\n\n\ntheorem digit_boundaries_valid_100\
+  \ (offset : Nat) (h : offset ≤ 9) : \n  let n := 100 + offset\n  let result := find_nth_digit\
+  \ n\n  0 ≤ result ∧ result ≤ 9 := sorry\n\n\ntheorem digit_boundaries_valid_1000\
+  \ (offset : Nat) (h : offset ≤ 9) :\n  let n := 1000 + offset\n  let result := find_nth_digit\
+  \ n\n  0 ≤ result ∧ result ≤ 9 := sorry\n\n\ntheorem find_nth_digit_deterministic\
+  \ (n : Nat) (h : n > 0) :\n  find_nth_digit n = find_nth_digit n := sorry\n\n/--\n\
+  info: 3\n-/\n#guard_msgs in\n#eval find_nth_digit 3\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval find_nth_digit 11\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_nth_digit\
+  \ 1000\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

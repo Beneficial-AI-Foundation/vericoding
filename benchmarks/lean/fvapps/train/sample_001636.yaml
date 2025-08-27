@@ -1,0 +1,25 @@
+"vc-description": "Professor Chambouliard hast just discovered a new type of magnet\
+  \ material. He put particles of this material in a box made of small boxes arranged\
+  \ \nin K rows and N columns as a kind of **2D matrix** `K x N` where `K` and `N`\
+  \ are postive integers.\nHe thinks that his calculations show that the force exerted\
+  \ by the particle in the small box `(k, n)` is:\n\n\n\n\n\n\nThe total force exerted\
+  \ by the first row with `k = 1` is:\n\n\n\n\n\n\nWe can go on with `k = 2` and then\
+  \ `k = 3` etc ... and consider:\n\n\n\n\n\n\n## Task: \nTo help Professor Chambouliard\
+  \ can we calculate the function `doubles` that will take as parameter `maxk` and\
+  \ `maxn` such that `doubles(maxk, maxn) = S(maxk, maxn)`?\nExperiences seems to\
+  \ show that this could be something around `0.7` when `maxk` and `maxn` are big\
+  \ enough.\n\n### Examples:\n```\ndoubles(1, 3)  => 0.4236111111111111\ndoubles(1,\
+  \ 10) => 0.5580321939764581\ndoubles(10, 100) => 0.6832948559787737\n```\n\n###\
+  \ Notes: \n- In `u(1, N)` the dot is the *multiplication operator*.\n- Don't truncate\
+  \ or round: \nHave a look in \"RUN EXAMPLES\" at \"assertFuzzyEquals\".\n\n- [link\
+  \ to symbol Sigma](https://en.wikipedia.org/wiki/Summation)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def doubles (k n : Nat) : Float := sorry\n\ntheorem doubles_positive_bounded\
+  \ {k n : Nat} (hk : k > 0) (hn : n > 0) : \n  doubles k n > 0 ∧ doubles k n < 1\
+  \ := sorry\n"
+"vc-theorems": "theorem doubles_increases_with_n {k n₁ n₂ : Nat} (hk : k > 0) (hn\
+  \ : n₁ < n₂) :\n  doubles k n₁ < doubles k n₂ := sorry \n\n\ntheorem doubles_convergence\
+  \ {n : Nat} (hn : n > 0) :\n  ∀ i : Nat, i + 1 < n → \n    doubles 1 (i + 2) - doubles\
+  \ 1 (i + 1) < doubles 1 (i + 1) - doubles 1 i := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

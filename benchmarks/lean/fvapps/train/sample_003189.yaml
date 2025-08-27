@@ -1,0 +1,32 @@
+"vc-description": "# Kata Task\n\nGiven a list of random integers, return the Three\
+  \ Amigos.\n\nThese are 3 numbers that live next to each other in the list, and who\
+  \ have the **most** in common with each other by these rules:\n* lowest statistical\
+  \ range\n* same parity\n\n# Notes\n\n* The list will contain at least 3 numbers\n\
+  * If there is more than one answer then return the first one found (reading the\
+  \ list left to right)\n* If there is no answer (e.g. no 3 adjacent numbers with\
+  \ same parity) then return an empty list.\n\n# Examples\n\n* ex1\n * Input = ```[1,\
+  \ 2, 34, 2, 1, 5, 3, 5, 7, 234, 2, 1]```\n * Result = ```[5,3,5]```\n \n\n* ex2\n\
+  \ * Input = ```[2, 4, 6, 8, 10, 2, 2, 2, 1, 1, 1, 5, 3]```\n * Result = ```[2,2,2]```\n\
+  \ \n\n* ex3\n * Input = ```[2, 4, 5, 3, 6, 3, 1, 56, 7, 6, 3, 12]```\n * Result\
+  \ = ```[]```"
+"vc-preamble": "import Imports.AllImports\n\ndef threeAmigos (nums : List Int) : List\
+  \ Int := sorry\n\ntheorem threeAmigos_valid_size {nums : List Int} :\n  let result\
+  \ := threeAmigos nums\n  List.length result = 0 ∨ List.length result = 3 := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_max (l : List Int) : Int := sorry\ndef list_min (l : List\
+  \ Int) : Int := sorry\n"
+"vc-theorems": "theorem threeAmigos_consecutive {nums : List Int} (h : 3 ≤ List.length\
+  \ nums) :\n  let result := threeAmigos nums\n  result = [] ∨ ∃ i, i + 2 < List.length\
+  \ nums ∧ \n    result = [nums[i]!, nums[i+1]!, nums[i+2]!] := sorry\n\n\ntheorem\
+  \ threeAmigos_same_parity {nums : List Int} (h : 3 ≤ List.length nums) :\n  let\
+  \ result := threeAmigos nums\n  result = [] ∨ (∀ x ∈ result, x % 2 = result[0]!\
+  \ % 2) := sorry\n\n\ntheorem threeAmigos_minimal_range {nums : List Int} (h : 3\
+  \ ≤ List.length nums) :\n  let result := threeAmigos nums\n  result = [] ∨\n  (∀\
+  \ i, i + 2 < List.length nums →\n    (∀ j, j ∈ [nums[i]!, nums[i+1]!, nums[i+2]!]\
+  \ → j % 2 = nums[i]! % 2) →\n    (list_max result - list_min result) ≤ (nums[i+2]!\
+  \ - nums[i]!)) := sorry\n\n/--\ninfo: [5, 3, 5]\n-/\n#guard_msgs in\n#eval three_amigos\
+  \ [1, 2, 34, 2, 1, 5, 3, 5, 7, 234, 2, 1]\n\n/--\ninfo: [2, 2, 2]\n-/\n#guard_msgs\
+  \ in\n#eval three_amigos [2, 4, 6, 8, 10, 2, 2, 2, 1, 1, 1, 5, 3]\n\n/--\ninfo:\
+  \ []\n-/\n#guard_msgs in\n#eval three_amigos [2, 4, 5, 3, 6, 3, 1, 56, 7, 6, 3,\
+  \ 12]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

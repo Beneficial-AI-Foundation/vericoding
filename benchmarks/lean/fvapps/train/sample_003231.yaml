@@ -1,0 +1,25 @@
+"vc-description": "Given an `array` of digital numbers, return a new array of length\
+  \ `number` containing the last even numbers from the original array (in the same\
+  \ order). The original array will be not empty and will contain at least \"number\"\
+  \ even numbers.\n\nFor example:\n```\n([1, 2, 3, 4, 5, 6, 7, 8, 9], 3) => [4, 6,\
+  \ 8]\n([-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26], 2) => [-8, 26]\n([6, -25, 3,\
+  \ 7, 5, 5, 7, -3, 23], 1) => [6]\n\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def evenNumbers (arr : List Int) (n : Nat) : List Int := sorry\n\
+  \ntheorem evenNumbers_len_leq_min (arr : List Int) (n : Nat) : \n  let result :=\
+  \ evenNumbers arr n\n  let numEven := (arr.filter (fun x => x % 2 = 0)).length\n\
+  \  result.length ≤ min n numEven := sorry\n"
+"vc-theorems": "theorem evenNumbers_all_even (arr : List Int) (n : Nat) :\n  let result\
+  \ := evenNumbers arr n\n  ∀ x ∈ result, x % 2 = 0 := sorry\n\n\ntheorem evenNumbers_subset\
+  \ (arr : List Int) (n : Nat) :\n  let result := evenNumbers arr n\n  ∀ x ∈ result,\
+  \ x ∈ arr := sorry\n\n\ntheorem evenNumbers_preserves_order (arr : List Int) (n\
+  \ : Nat) :\n  let result := evenNumbers arr n\n  let evenNums := arr.filter (fun\
+  \ x => x % 2 = 0)\n  result = evenNums.drop (evenNums.length - result.length) :=\
+  \ sorry\n\n\ntheorem evenNumbers_large_n (arr : List Int) :\n  let n := arr.length\
+  \ + 1\n  let result := evenNumbers arr n\n  result = arr.filter (fun x => x % 2\
+  \ = 0) := sorry\n\n/--\ninfo: [4, 6, 8]\n-/\n#guard_msgs in\n#eval even_numbers\
+  \ [1, 2, 3, 4, 5, 6, 7, 8, 9] 3\n\n/--\ninfo: [-8, 26]\n-/\n#guard_msgs in\n#eval\
+  \ even_numbers [-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26] 2\n\n/--\ninfo: [6]\n\
+  -/\n#guard_msgs in\n#eval even_numbers [6, -25, 3, 7, 5, 5, 7, -3, 23] 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

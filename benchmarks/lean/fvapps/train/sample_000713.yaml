@@ -1,0 +1,46 @@
+"vc-description": "Alice and Bob are walking on an infinite straight street. Initially,\
+  \ both are at the position $X=0$ and they start walking in the direction of increasing\
+  \ $X$. After $N$ seconds, they stop. Let's denote Alice's speed and Bob's speed\
+  \ during the $i$-th of these seconds by $A_i$ and $B_i$ respectively.\nSometimes,\
+  \ Alice and Bob walk together, i.e. with the same speed side by side. Let's define\
+  \ the weird distance as the total distance they walk this way. Find this weird distance.\n\
+  \n-----Input-----\n- The first line of the input contains a single integer $T$ denoting\
+  \ the number of test cases. The description of $T$ test cases follows.\n- The first\
+  \ line of each test case contains a single integer $N$.\n- The second line contains\
+  \ $N$ space-separated integers $A_1, A_2, \\ldots, A_N$.\n- The third line contains\
+  \ $N$ space-separated integers $B_1, B_2, \\ldots, B_N$.\n\n-----Output-----\nFor\
+  \ each test case, print a single line containing one integer ― the total weird distance.\
+  \ It can be proved that this distance is an integer.\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 20$\n- $1 \\le N \\le 10^5$\n- $1 \\le A_i \\le 10^5$ for each\
+  \ valid $i$\n- $1 \\le B_i \\le 10^5$ for each valid $i$\n- the sum of $N$ over\
+  \ all test cases does not exceed $10^6$\n\n-----Subtasks-----\nSubtask #1 (30 points):\
+  \ $1 \\le N \\le 1,000$\nSubtask #2 (70 points): original constraints\n\n-----Example\
+  \ Input-----\n3\n4\n1 3 3 4\n1 2 4 4\n2\n2 3\n3 2\n2\n3 3\n3 3\n\n-----Example Output-----\n\
+  5\n0\n6\n\n-----Explanation-----\nExample case 1:\n- Alice and Bob walk side by\
+  \ side during the first second, from $X=0$ to $X=1$.\n- Then, Alice starts walking\
+  \ faster than Bob, so they do not walk side by side during second $2$. At the end\
+  \ of second $2$, Alice is at $X=4$, while Bob is at $X=3$.\n- During the next second,\
+  \ they again do not walk side by side, but Bob walks faster, so they both end up\
+  \ at $X=7$.\n- During the last second, they both walk side by side and the distance\
+  \ they walk is $4$.\n- Alice and Bob walk side by side during the $1$-st and $4$-th\
+  \ second and the total weird distance they travel is $1+4=5$.\nExample case 2:\n\
+  - First, Alice walks with speed $2$ and Bob walks with speed $3$, so they do not\
+  \ walk side by side. Alice ends up at $X=2$, while Bob ends up at $X=3$ at the end\
+  \ of the $1$-st second.\n- Then, Alice walks with speed $3$ and Bob walks with speed\
+  \ $2$, so they do not walk side by side either.\n- Although Alice and Bob both end\
+  \ up at $X=5$ at the end of the $2$-nd second, the weird distance is $0$.\nExample\
+  \ case 3: We can see that Alice and Bob always walk together, so the weird distance\
+  \ is $3+3=6$."
+"vc-preamble": "import Imports.AllImports\n\ndef List.padRight (default : α) (n :\
+  \ Nat) (xs : List α) : List α :=\n  sorry\n\n\ndef find_weird_distance (n : Nat)\
+  \ (alice_speeds : List Nat) (bob_speeds : List Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def running_sum_equal (alice_speeds bob_speeds : List Nat) : Nat\
+  \ :=\n  sorry\n\n\n\n\n"
+"vc-theorems": "theorem identical_speeds_sum_to_length\n  (n : Nat)\n  (h1 : n > 0)\n\
+  \  (h2 : n ≤ 100) :\n  find_weird_distance n (List.replicate n 1) (List.replicate\
+  \ n 1) = n := sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval find_weird_distance\
+  \ 4 [1, 3, 3, 4] [1, 2, 4, 4]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval find_weird_distance\
+  \ 2 [2, 3] [3, 2]\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval find_weird_distance\
+  \ 2 [3, 3] [3, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

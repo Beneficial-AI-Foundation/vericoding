@@ -1,0 +1,34 @@
+"vc-description": "Scheduling is how the processor decides which jobs (processes)\
+  \ get to use the processor and for how long. This can cause a lot of problems. Like\
+  \ a really long process taking the entire CPU and freezing all the other processes.\
+  \ One solution is Round-Robin, which today you will be implementing.\n\nRound-Robin\
+  \ works by queuing jobs in a First In First Out fashion, but the processes are only\
+  \ given a short slice of time. If a processes is not finished in that time slice,\
+  \ it yields the proccessor and goes to the back of the queue.\n\nFor this Kata you\
+  \ will be implementing the \n```python\n  def roundRobin(jobs, slice, index):\n\
+  ```\n\nIt takes in:\n\n    1. \"jobs\" a non-empty positive integer array. It represents\
+  \ the queue and clock-cycles(cc) remaining till the job[i] is finished.\n\n    2.\
+  \ \"slice\" a positive integer. It is the amount of clock-cycles that each job is\
+  \ given till the job yields to the next job in the queue.\n\n    3. \"index\" a\
+  \ positive integer. Which is the index of the job we're interested in.\n\nroundRobin\
+  \ returns:\n\n    1. the number of cc till the job at index is finished.\n\nHere's\
+  \ an example:\n```\nroundRobin([10,20,1], 5, 0) \nat 0cc [10,20,1] jobs[0] starts\n\
+  after 5cc [5,20,1] jobs[0] yields, jobs[1] starts\nafter 10cc [5,15,1] jobs[1] yields,\
+  \ jobs[2] starts\nafter 11cc [5,15,0] jobs[2] finishes, jobs[0] starts\nafter 16cc\
+  \ [0,15,0] jobs[0] finishes\n```\n\nso:\n```\nroundRobin([10,20,1], 5, 0) == 16\n\
+  ```\n\n**You can assume that the processor can switch jobs between cc so it does\
+  \ not add to the total time."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def roundRobin (jobs : List Nat) (slice : Nat) (target : Nat) :\
+  \ Nat := sorry\n\ndef List.sum : List Nat → Nat\n  | [] => 0\n  | x :: xs => x +\
+  \ List.sum xs\n"
+"vc-theorems": "theorem roundRobin_lower_bound {jobs : List Nat} {slice : Nat} (h\
+  \ : jobs.length > 0) :\n  roundRobin jobs slice 0 ≥ jobs.get! 0 := by sorry\n\n\n\
+  theorem roundRobin_upper_bound {jobs : List Nat} {slice : Nat} (h : jobs.length\
+  \ > 0) :\n  roundRobin jobs slice 0 ≤ List.sum jobs := by sorry\n\n\ntheorem roundRobin_single_job\
+  \ {job : Nat} {slice : Nat} :\n  roundRobin [job] slice 0 = job := by sorry\n\n\
+  /--\ninfo: 10\n-/\n#guard_msgs in\n#eval roundRobin [10] 4 0\n\n/--\ninfo: 15\n\
+  -/\n#guard_msgs in\n#eval roundRobin [10, 20] 5 0\n\n/--\ninfo: 11\n-/\n#guard_msgs\
+  \ in\n#eval roundRobin [10, 20, 1, 2, 3] 5 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

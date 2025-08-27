@@ -1,0 +1,35 @@
+"vc-description": "This is the second part of a two-part challenge. See [part I](https://www.codewars.com/kata/587387d169b6fddc16000002)\
+  \ if you haven't done so already.\nThe problem is the same, only with longer lists\
+  \ and larger values.\n\nImagine you have a number of jobs to execute. Your workers\
+  \ are not permanently connected to your network, so you have to distribute all your\
+  \ jobs in the beginning. Luckily, you know exactly how long each job is going to\
+  \ take. \n\nLet \n```\nx = [2,3,4,6,8,2]\n```\nbe the amount of time each of your\
+  \ jobs is going to take.\n\nYour task is to write a function ```splitlist(x)```,\
+  \ that will return two lists ```a``` and ```b```, such that ```abs(sum(a)-sum(b))```\
+  \ is minimised.\n\nOne possible solution to this example would be \n```\na=[2, 4,\
+  \ 6]\nb=[3, 8, 2]\n```\nwith  ```abs(sum(a)-sum(b)) == 1```.\n\nThe order of the\
+  \ elements is not tested, just make sure that you minimise ```abs(sum(a)-sum(b))```\
+  \ and that ```sorted(a+b)==sorted(x)```.\n\nYou may assume that ```len(x)<=40```\
+  \ and ```0<=x[i]<=1000```."
+"vc-preamble": "import Imports.AllImports\n\ndef abs (x : Int) : Int :=\n  if x <\
+  \ 0 then -x else x\n\n\ndef listSum : List Int → Int \n  | [] => 0\n  | x::xs =>\
+  \ x + listSum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def splitlist (nums : List Int) : Option (List Int × List Int)\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem splitlist_length (nums : List Int) :\n  match splitlist nums\
+  \ with\n  | none => true\n  | some (a, b) => List.length a + List.length b = List.length\
+  \ nums\n  := by sorry\n\n\ntheorem splitlist_elements (nums : List Int) :\n  match\
+  \ splitlist nums with\n  | none => true\n  | some (a, b) => ∀ x : Int, \n    ((x\
+  \ ∈ a ∨ x ∈ b) ↔ x ∈ nums)\n  := by sorry\n\n\ntheorem splitlist_minimal_difference\
+  \ (nums : List Int) :\n  match splitlist nums with\n  | none => true\n  | some (a,\
+  \ b) => ∀ split : List Int × List Int,\n    (∀ x, (x ∈ split.1 ∨ x ∈ split.2) ↔\
+  \ x ∈ nums) →\n    abs (listSum a - listSum b) ≤ abs (listSum split.1 - listSum\
+  \ split.2)\n  := by sorry\n\n\ntheorem splitlist_equal_elements (nums : List Int)\n\
+  \  (h_even : nums.length % 2 = 0)\n  (h_equal : ∀ x ∈ nums, ∀ y ∈ nums, x = y) :\n\
+  \  match splitlist nums with\n  | none => true\n  | some (a, b) => listSum a = listSum\
+  \ b\n  := by sorry\n\n/--\ninfo: sorted(test1)\n-/\n#guard_msgs in\n#eval sorted\
+  \ a + b\n\n/--\ninfo: sorted(test2)\n-/\n#guard_msgs in\n#eval sorted a + b\n\n\
+  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval abs sum(a) - sum(b)\n\n/--\ninfo: sorted(test3)\n\
+  -/\n#guard_msgs in\n#eval sorted a + b\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

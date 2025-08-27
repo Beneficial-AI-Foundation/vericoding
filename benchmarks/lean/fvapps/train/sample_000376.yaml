@@ -1,0 +1,24 @@
+"vc-description": "Given an integer n, your task is to count how many strings of length\
+  \ n can be formed under the following rules:\n\nEach character is a lower case vowel ('a',\
+  \ 'e', 'i', 'o', 'u')\nEach vowel 'a' may only be followed by an 'e'.\nEach vowel 'e'\
+  \ may only be followed by an 'a' or an 'i'.\nEach vowel 'i' may not be followed\
+  \ by another 'i'.\nEach vowel 'o' may only be followed by an 'i' or a 'u'.\nEach\
+  \ vowel 'u' may only be followed by an 'a'.\n\nSince the answer may be too large, return\
+  \ it modulo 10^9 + 7.\n \nExample 1:\nInput: n = 1\nOutput: 5\nExplanation: All\
+  \ possible strings are: \"a\", \"e\", \"i\" , \"o\" and \"u\".\n\nExample 2:\nInput:\
+  \ n = 2\nOutput: 10\nExplanation: All possible strings are: \"ae\", \"ea\", \"ei\"\
+  , \"ia\", \"ie\", \"io\", \"iu\", \"oi\", \"ou\" and \"ua\".\n\nExample 3: \nInput:\
+  \ n = 5\nOutput: 68\n \nConstraints:\n\n1 <= n <= 2 * 10^4"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_vowel_permutation (n : Nat) : Nat := sorry\n\ntheorem\
+  \ count_vowel_permutation_positive (n : Nat) (h : n > 0): \n  count_vowel_permutation\
+  \ n > 0 := sorry\n"
+"vc-theorems": "theorem count_vowel_permutation_bounded (n : Nat) (h : n > 0):\n \
+  \ count_vowel_permutation n < 1000000007 := sorry\n\n\ntheorem count_vowel_permutation_base_one\
+  \ :\n  count_vowel_permutation 1 = 5 := sorry\n\n\ntheorem count_vowel_permutation_base_two\
+  \ :\n  count_vowel_permutation 2 = 10 := sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs\
+  \ in\n#eval count_vowel_permutation 1\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval\
+  \ count_vowel_permutation 2\n\n/--\ninfo: 68\n-/\n#guard_msgs in\n#eval count_vowel_permutation\
+  \ 5\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

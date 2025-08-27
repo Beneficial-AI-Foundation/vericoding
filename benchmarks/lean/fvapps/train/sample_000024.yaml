@@ -1,0 +1,20 @@
+"vc-description": "Try guessing the statement from this picture:  $3$ \n\nYou are\
+  \ given a non-negative integer $d$. You have to find two non-negative real numbers\
+  \ $a$ and $b$ such that $a + b = d$ and $a \\cdot b = d$.\n\n\n-----Input-----\n\
+  \nThe first line contains $t$ ($1 \\le t \\le 10^3$) — the number of test cases.\n\
+  \nEach test case contains one integer $d$ $(0 \\le d \\le 10^3)$.\n\n\n-----Output-----\n\
+  \nFor each test print one line.\n\nIf there is an answer for the $i$-th test, print\
+  \ \"Y\", and then the numbers $a$ and $b$.\n\nIf there is no answer for the $i$-th\
+  \ test, print \"N\".\n\nYour answer will be considered correct if $|(a + b) - a\
+  \ \\cdot b| \\le 10^{-6}$ and $|(a + b) - d| \\le 10^{-6}$.\n\n\n-----Example-----\n\
+  Input\n7\n69\n0\n1\n4\n5\n999\n1000\n\nOutput\nY 67.985071301 1.014928699\nY 0.000000000\
+  \ 0.000000000\nN\nY 2.000000000 2.000000000\nY 3.618033989 1.381966011\nY 997.998996990\
+  \ 1.001003010\nY 998.998997995 1.001002005"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def intToFloat : Int → Float := sorry\n\ndef solve_equation (d\
+  \ : Int) : Bool × Float × Float := sorry\n\n\n\n\n"
+"vc-theorems": "theorem large_inputs_succeed (d : Int) : d ≥ 5 → d ≤ 1000 → (solve_equation\
+  \ d).1 = true := sorry\n\ntheorem non_positive_inputs_succeed (d : Int) : d ≤ 0\
+  \ → d ≥ -1000 → (solve_equation d).1 = true := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

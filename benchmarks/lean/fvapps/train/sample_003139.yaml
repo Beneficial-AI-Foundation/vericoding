@@ -1,0 +1,30 @@
+"vc-description": "# Task\n Define crossover operation over two equal-length strings\
+  \ A and B as follows:\n\n the result of that operation is a string of the same length\
+  \ as the input strings result[i] is chosen at random between A[i] and B[i]. \n \n\
+  \ Given array of strings `arr` and a string result, find for how many pairs of strings\
+  \ from `arr` the result of the crossover operation over them may be equal to result.\n\
+  \n Note that (A, B) and (B, A) are the same pair. Also note that the pair cannot\
+  \ include the same element of the array twice (however, if there are two equal elements\
+  \ in the array, they can form a pair).\n\n# Example\n\n For `arr = [\"abc\", \"\
+  aaa\", \"aba\", \"bab\"]` and `result = \"bbb\"`, the output should be `2`.\n\n\
+  \ ```\n\"abc\" and \"bab\" can crossover to \"bbb\"\n\"aba\" and \"bab\" can crossover\
+  \ to \"bbb\"\n```\n# Input/Output\n\n\n - `[input]` string array `arr`\n\n   A non-empty\
+  \ array of equal-length strings.\n\n   Constraints: `2 ≤ arr.length ≤ 10, 1 ≤ arr[i].length\
+  \ ≤ 10.`\n\n\n - `[input]` string `result`\n\n   A string of the same length as\
+  \ each of the arr elements.\n\n   Constraints: `result.length = arr[i].length.`\n\
+  \n\n - `[output]` an integer"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def strings_crossover (arr : List String) (result : String) : Nat\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem strings_crossover_non_negative (arr : List String) (result\
+  \ : String) :\n  strings_crossover arr result ≥ 0 :=\nsorry\n\n\ntheorem strings_crossover_max_pairs\
+  \ (arr : List String) (result : String) : \n  strings_crossover arr result ≤ (arr.length\
+  \ * (arr.length - 1)) / 2 :=\nsorry\n\n\n\n\ntheorem strings_crossover_length_mismatch\
+  \ (arr : List String) (result : String) :\n  (arr.head?.map String.length ≠ some\
+  \ result.length) →\n  strings_crossover arr result = 0 :=\nsorry\n\n/--\ninfo: 2\n\
+  -/\n#guard_msgs in\n#eval strings_crossover [\"abc\", \"aaa\", \"aba\", \"bab\"\
+  ] \"bbb\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval strings_crossover [\"aacccc\"\
+  , \"bbcccc\"] \"abdddd\"\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval strings_crossover\
+  \ [\"a\", \"b\", \"c\", \"d\", \"e\"] \"c\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

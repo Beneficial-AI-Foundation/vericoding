@@ -1,0 +1,27 @@
+"vc-description": "The citizens of Codeland read each word from right to left, meaning\
+  \ that lexicographical comparison works differently in their language. Namely, string\
+  \ ```a``` is lexicographically smaller than string ```b``` if either: ```a``` is\
+  \ a suffix of ```b``` (in common sense, i.e. ```b``` ends with a substring equal\
+  \ to ```a```); or their last ```k``` characters are the same but the ```(k + 1)th```\
+  \ character from the right in string ```a``` is smaller than the same character\
+  \ in string ```b```.\n\nGiven an array of words in Codeland language, sort them\
+  \ lexicographically according to Codeland's unique rules.\n\nFor ```words = [\"\
+  nigeb\", \"ta\", \"eht\", \"gninnigeb\"]```, the output should be\n```unusualLexOrder(words)\
+  \ = [\"ta\", \"nigeb\", \"gninnigeb\", \"eht\"]```.\n\nIn particular, ```\"ta\"\
+  \ < \"nigeb\"``` because ```'a' < 'b'``` and ```\"nigeb\" < \"gninnigeb\"``` because\
+  \ the former word is a suffix of the latter.\n\nS: codefights.com"
+"vc-preamble": "import Imports.AllImports\n\ndef unusual_lex_order (words: List String)\
+  \ : List String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverse (s: String) : String :=\n  sorry\n"
+"vc-theorems": "theorem output_length_matches_input (words: List String) (h: words.length\
+  \ > 0) :\n  (unusual_lex_order words).length = words.length :=\n  sorry\n\n\ntheorem\
+  \ output_contains_same_elements (words: List String) (h: words.length > 0) :\n \
+  \ ∀ x, (x ∈ unusual_lex_order words ↔ x ∈ words) :=\n  sorry\n\n\ntheorem reverse_sorted_by_reversed_strings\
+  \ (words: List String) (h: words.length > 0) :\n  ∀ (i: Nat) (h': i + 1 < (unusual_lex_order\
+  \ words).length),\n    let result := unusual_lex_order words\n    Option.isSome\
+  \ (result[i]?) ∧ Option.isSome (result[i+1]?) → \n    reverse (Option.get! result[i]?)\
+  \ ≤ reverse (Option.get! result[i+1]?) :=\n  sorry\n\n\ntheorem idempotent (words:\
+  \ List String) (h: words.length > 0) :\n  unusual_lex_order (unusual_lex_order words)\
+  \ = unusual_lex_order words :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

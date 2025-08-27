@@ -1,0 +1,42 @@
+"vc-description": "# Toggling Grid\nYou are given a grid (2d array) of 0/1's. All\
+  \ 1's represents a solved puzzle. Your job is to come up with a sequence of toggle\
+  \ moves that will solve a scrambled grid.\n\nSolved:\n\n```\n[ [1, 1, 1],\n  [1,\
+  \ 1, 1],\n  [1, 1, 1] ]\n``` \n\n\"0\" (first row) toggle:\n```\n[ [0, 0, 0],\n\
+  \  [1, 1, 1],\n  [1, 1, 1] ]\n```\n\nthen \"3\" (first column) toggle:\n```\n[ [1,\
+  \ 0, 0],\n  [0, 1, 1],\n  [0, 1, 1] ]\n```\n\nThe numbers in quotes are codes for\
+  \ the row/column, and will be explained.\n\n## Your task: findSolution()\nYour task\
+  \ is to write a function, `findSolution()` (or `find_solution()`), which takes as\
+  \ input a 2d array, and returns an array of \"steps\" that represent a sequence\
+  \ of toggles to solve the puzzle.\n\nFor example:\n\n```python\nsolution = find_solution(puzzle)\n\
+  print(solution);\n> [0, 3]\n```\nNote that, in the above example, `[1, 2, 4, 5]`\
+  \ is also a valid solution! Any solution will pass the tests.\n\nThe solution is\
+  \ tested like this, for each number in the solution:\n\n```python\nif n < puzzle.size:\n\
+  \  toggleRow(n)\nelse:\n  toggleCol(n - puzzle.size)\n```\nTo elaborate, possible\
+  \ n's for a 3x3 puzzle:\n\n- Row numbers = (0    --> size - 1)\n- Cols numbers =\
+  \ (size --> size * 2 - 1)\n\n### Example of \"2\" toggle:\n\n### Example of \"4\"\
+  \ toggle:\n\n## More examples:\n\n```python\npuzzle = [\n  [ 0, 1, 0 ],\n  [ 1,\
+  \ 0, 1 ],\n  [ 1, 0, 1 ]\n];\nsolution = find_solution(puzzle)\nprint(solution);\n\
+  > [0, 4]\n```\nlet's try some bigger puzzles:\n\n```python\npuzzle = [\n  [ 1, 0,\
+  \ 1, 0, 0 ],\n  [ 0, 1, 0, 1, 1 ],\n  [ 0, 1, 0, 1, 1 ],\n  [ 0, 1, 0, 1, 1 ],\n\
+  \  [ 1, 0, 1, 0, 0 ]\n];\nsolution = find_solution(puzzle)\nprint(solution);\n>\
+  \ [ 0, 5, 4, 7 ]\n```\n\n```python\npuzzle = [\n  [ 1, 1, 1, 0, 1, 1, 1 ],\n  [\
+  \ 1, 1, 1, 0, 1, 1, 1 ],\n  [ 1, 1, 1, 0, 1, 1, 1 ],\n  [ 0, 0, 0, 1, 0, 0, 0 ],\n\
+  \  [ 1, 1, 1, 0, 1, 1, 1 ],\n  [ 1, 1, 1, 0, 1, 1, 1 ],\n  [ 1, 1, 1, 0, 1, 1, 1\
+  \ ]\n];\nsolution = find_solution(puzzle)\nprint(solution);\n> [ 3, 10 ]\n```\n\n\
+  There are randomized tests with puzzles of up to 100x100 in size. Have fun!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_solution : List (List Nat) → List Nat := sorry\n\n-- Row\
+  \ toggles come before column toggles"
+"vc-theorems": "theorem solution_toggles_ordering (h : puzzle.length > 0) :\n  let\
+  \ solution := find_solution puzzle\n  let n := puzzle.length \n  let row_toggles\
+  \ := solution.filter (· < n)\n  let col_toggles := solution.filter (· ≥ n)\n  solution.length\
+  \ > 0 → \n  (row_toggles.isEmpty → true) ∧ \n  (col_toggles.isEmpty → true) ∧\n\
+  \  (¬row_toggles.isEmpty ∧ ¬col_toggles.isEmpty → \n    (row_toggles.maximum?.getD\
+  \ 0) < (col_toggles.minimum?.getD (2*n))) :=\nsorry\n\n-- All 1s need no moves\n\
+  \ntheorem all_ones_needs_no_moves (h : n > 0) :\n  let all_ones := List.replicate\
+  \ n (List.replicate n 1)\n  find_solution all_ones = [] :=\nsorry\n\n-- All 0s need\
+  \ all columns toggled\n\ntheorem all_zeros_needs_all_cols (h : n > 0) :\n  let all_zeros\
+  \ := List.replicate n (List.replicate n 0)\n  let solution := find_solution all_zeros\n\
+  \  let expected := List.range n |>.map (· + n)\n  solution = expected :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

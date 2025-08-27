@@ -1,0 +1,33 @@
+"vc-description": "Given a string num representing the digits of a very large integer\
+  \ and an integer k.\nYou are allowed to swap any two adjacent digits of the integer\
+  \ at most k times.\nReturn the minimum integer you can obtain also as a string.\n\
+   \nExample 1:\n\nInput: num = \"4321\", k = 4\nOutput: \"1342\"\nExplanation: The\
+  \ steps to obtain the minimum integer from 4321 with 4 adjacent swaps are shown.\n\
+  \nExample 2:\nInput: num = \"100\", k = 1\nOutput: \"010\"\nExplanation: It's ok\
+  \ for the output to have leading zeros, but the input is guaranteed not to have\
+  \ any leading zeros.\n\nExample 3:\nInput: num = \"36789\", k = 1000\nOutput: \"\
+  36789\"\nExplanation: We can keep the number without any swaps.\n\nExample 4:\n\
+  Input: num = \"22\", k = 22\nOutput: \"22\"\n\nExample 5:\nInput: num = \"9438957234785635408\"\
+  , k = 23\nOutput: \"0345989723478563548\"\n\n \nConstraints:\n\n1 <= num.length\
+  \ <= 30000\nnum contains digits only and doesn't have leading zeros.\n1 <= k <=\
+  \ 10^9"
+"vc-preamble": "import Imports.AllImports\n\ndef minInteger (num : String) (k : Nat)\
+  \ : String :=\n  sorry\n\n\ndef stringToList (s : String) : List Char := s.data\n\
+  \ndef listToString (l : List Char) : String := String.mk l\n\n\ndef charListOrdered\
+  \ (l₁ l₂ : List Char) : Bool :=\n  match l₁, l₂ with\n  | [], [] => true\n  | x::xs,\
+  \ y::ys => if x.val < y.val then true\n                    else if x.val = y.val\
+  \ then charListOrdered xs ys\n                    else false\n  | _, _ => false\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countChar (c : Char) (s : String) : Nat :=\n  s.data.foldl\
+  \ (fun acc x => if x = c then acc + 1 else acc) 0\n"
+"vc-theorems": "theorem minInteger_length (num : String) (k : Nat) :\n  (minInteger\
+  \ num k).length = num.length := sorry\n\n\ntheorem minInteger_leq_input (num : String)\
+  \ (k : Nat) :\n  minInteger num k ≤ num := sorry\n\n\ntheorem minInteger_zero_k\
+  \ (num : String) :\n  minInteger num 0 = num := sorry\n\n\ntheorem minInteger_monotonic\
+  \ (num : String) (k₁ k₂ : Nat) :\n  k₁ ≤ k₂ → minInteger num k₂ ≤ minInteger num\
+  \ k₁ := sorry\n\n\ntheorem minInteger_char_count (num : String) (k : Nat) (c : Char)\
+  \ :\n  countChar c (minInteger num k) = countChar c num := sorry\n\n/--\ninfo: '1342'\n\
+  -/\n#guard_msgs in\n#eval minInteger \"4321\" 4\n\n/--\ninfo: '010'\n-/\n#guard_msgs\
+  \ in\n#eval minInteger \"100\" 1\n\n/--\ninfo: '36789'\n-/\n#guard_msgs in\n#eval\
+  \ minInteger \"36789\" 1000\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

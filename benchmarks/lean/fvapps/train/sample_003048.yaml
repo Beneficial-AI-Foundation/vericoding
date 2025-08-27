@@ -1,0 +1,21 @@
+"vc-description": "Complete the solution so that it reverses all of the words within\
+  \ the string passed in. \n\nExample:\n\n```python\nreverseWords(\"The greatest victory\
+  \ is that which requires no battle\")\n// should return \"battle no requires which\
+  \ that is victory greatest The\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverseWords (s : String) : String := sorry\n\ntheorem reverseWords_roundtrip\
+  \ (word_list : List String) (h : word_list.length > 0) :\n  let sentence := String.intercalate\
+  \ \" \" word_list\n  reverseWords (reverseWords sentence) = sentence := sorry\n"
+"vc-theorems": "theorem reverseWords_preserves_word_count (word_list : List String)\
+  \ \n  (h1 : word_list.length ≥ 2) (h2 : word_list.length ≤ 10) :\n  let sentence\
+  \ := String.intercalate \" \" word_list\n  let reversed := reverseWords sentence\n\
+  \  (sentence.split (· = ' ')).length = (reversed.split (· = ' ')).length := sorry\n\
+  \n\ntheorem reverseWords_empty_string :\n  reverseWords \"\" = \"\" := sorry\n\n\
+  \ntheorem reverseWords_multiple_spaces :\n  reverseWords \"a  b  c\" = \"c  b  a\"\
+  \ := sorry\n\n/--\ninfo: 'world! hello'\n-/\n#guard_msgs in\n#eval reverseWords\
+  \ \"hello world!\"\n\n/--\ninfo: 'battle no requires which that is victory greatest\
+  \ The'\n-/\n#guard_msgs in\n#eval reverseWords \"The greatest victory is that which\
+  \ requires no battle\"\n\n/--\ninfo: 'abc'\n-/\n#guard_msgs in\n#eval reverseWords\
+  \ \"abc\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,58 @@
+"vc-description": "Let's define the niceness of a sequence of positive integers X1,X2,…,XN$X_1,\
+  \ X_2, \\dots, X_N$ as the sum of greatest common divisors of all pairs of its elements,\
+  \ i.e.\nN∑i=1N∑j=i+1gcd(Xi,Xj).∑i=1N∑j=i+1Ngcd(Xi,Xj).\\sum_{i=1}^N \\sum_{j=i+1}^N\
+  \ \\mathrm{gcd}(X_i, X_j)\\;.\nFor example, the niceness of the sequence [1,2,2]$[1,\
+  \ 2, 2]$ is gcd(1,2)+gcd(1,2)+gcd(2,2)=4$gcd(1, 2) + gcd(1, 2) + gcd(2, 2) = 4$.\n\
+  You are given a sequence A1,A2,…,AN$A_1, A_2, \\dots, A_N$; each of its elements\
+  \ is either a positive integer or missing.\nConsider all possible ways to replace\
+  \ each missing element of A$A$ by a positive integer (not necessarily the same for\
+  \ each element) such that the sum of all elements is equal to S$S$. Your task is\
+  \ to find the total niceness of all resulting sequences, i.e. compute the niceness\
+  \ of each possible resulting sequence and sum up all these values. Since the answer\
+  \ may be very large, compute it modulo 109+7$10^9 + 7$.\n\n-----Input-----\n- The\
+  \ first line of the input contains a single integer T$T$ denoting the number of\
+  \ test cases. The description of T$T$ test cases follows.\n- The first line of each\
+  \ test case contains two space-separated integers N$N$ and S$S$. \n- The second\
+  \ line contains N$N$ space-separated integers A1,A2,…,AN$A_1, A_2, \\dots, A_N$.\
+  \ Missing elements in this sequence are denoted by −1$-1$.\n\n-----Output-----\n\
+  For each test case, print a single line containing one integer — the total niceness\
+  \ modulo 109+7$10^9 + 7$.\n\n-----Constraints-----\n- 1≤T≤20$1 \\le T \\le 20$\n\
+  - 1≤N,S≤50$1 \\le N, S \\le 50$\n- 1≤Ai≤50$1 \\le A_i \\le 50$ or Ai=−1$A_i = -1$\
+  \ for each valid i$i$\n\n-----Subtasks-----\nSubtask #1 (30 points):\n- 1≤N,S≤18$1\
+  \ \\le N, S \\le 18$\n- 1≤Ai≤18$1 \\le A_i \\le 18$ or Ai=−1$A_i = -1$ for each\
+  \ valid i$i$\nSubtask #2 (70 points): original constraints\n\n-----Example Input-----\n\
+  3\n3 3\n1 1 -1\n4 8\n1 -1 -1 3\n3 10\n-1 -1 -1\n\n-----Example Output-----\n3\n\
+  23\n150\n\n-----Explanation-----\nExample case 1: There is only one possible way\
+  \ to fill in the missing element; the resulting sequence is [1,1,1]$[1, 1, 1]$.\
+  \ Its niceness is 3$3$.\nExample case 2: There is only three possible ways to fill\
+  \ in the missing elements; the resulting sequences are [1,1,3,3]$[1, 1, 3, 3]$,\
+  \ [1,3,1,3]$[1, 3, 1, 3]$, and [1,2,2,3]$[1, 2, 2, 3]$. The sum of their niceness\
+  \ is 8+8+7=23$8 + 8 + 7 = 23$."
+"vc-preamble": "import Imports.AllImports\n\ndef calc_total_niceness (n : Nat) (target_sum\
+  \ : Nat) (nums : List Int) : Nat :=\nsorry\n\n\ndef gcd (a b : Nat) : Nat :=\nsorry\n\
+  \n\ndef list_sum (xs : List Int) : Int :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_sum_nat (xs : List Nat) : Nat :=\nsorry\n"
+"vc-theorems": "theorem result_within_mod (n : Nat) (target_sum : Nat) (nums : List\
+  \ Int)\n  (h1 : 1 ≤ n ∧ n ≤ 50)\n  (h2 : 1 ≤ target_sum ∧ target_sum ≤ 1000)\n \
+  \ (h3 : ∀ x ∈ nums, -1 ≤ x ∧ x ≤ 1000)\n  (h4 : 1 ≤ nums.length ∧ nums.length ≤\
+  \ 50) :\n  let result := calc_total_niceness n target_sum nums\n  0 ≤ result ∧ result\
+  \ < 10^9 + 7 :=\nsorry\n\n\ntheorem zero_sum_no_missing (n : Nat) (h : 1 ≤ n ∧ n\
+  \ ≤ 50) :\n  let ones := List.replicate n 1\n  let expected := list_sum_nat ((List.range\
+  \ n).bind (fun i =>\n    (List.range (n - i - 1)).map (fun j =>\n      gcd 1 1\n\
+  \    )))\n  calc_total_niceness n n ones = expected % (10^9 + 7) :=\nsorry\n\n\n\
+  theorem impossible_cases (n : Nat) (target_sum : Nat) (nums : List Int)\n  (h1 :\
+  \ 1 ≤ n ∧ n ≤ 50)\n  (h2 : 1 ≤ target_sum ∧ target_sum ≤ 1000)\n  (h3 : ∀ x ∈ nums,\
+  \ 1 ≤ x ∧ x ≤ 1000) :\n  (list_sum nums ≠ target_sum → calc_total_niceness nums.length\
+  \ target_sum nums = 0) ∧\n  (let nums_with_missing := nums ++ [-1]\n   target_sum\
+  \ < list_sum (nums_with_missing.filter (· ≠ -1)) →\n   calc_total_niceness nums_with_missing.length\
+  \ target_sum nums_with_missing = 0) :=\nsorry\n\n\ntheorem order_invariance (n :\
+  \ Nat) (target_sum : Nat) (nums : List Int)\n  (h1 : 1 ≤ n ∧ n ≤ 10)\n  (h2 : 1\
+  \ ≤ target_sum ∧ target_sum ≤ 20)\n  (h3 : ∀ x ∈ nums, -1 ≤ x ∧ x ≤ 10)\n  (h4 :\
+  \ 1 ≤ nums.length ∧ nums.length ≤ 10) :\n  ∀ perm : List Int,\n  List.Perm nums\
+  \ perm →\n  calc_total_niceness nums.length target_sum nums = \n  calc_total_niceness\
+  \ perm.length target_sum perm :=\nsorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval\
+  \ calc_total_niceness 3 3 [1, 1, -1]\n\n/--\ninfo: 23\n-/\n#guard_msgs in\n#eval\
+  \ calc_total_niceness 4 8 [1, -1, -1, 3]\n\n/--\ninfo: 150\n-/\n#guard_msgs in\n\
+  #eval calc_total_niceness 3 10 [-1, -1, -1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

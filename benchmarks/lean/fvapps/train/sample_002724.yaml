@@ -1,0 +1,49 @@
+"vc-description": "```if:python \nNote: Python may currently have some performance\
+  \ issues. If you find them, please let me know and provide suggestions to improve\
+  \ the Python version! It's my weakest language... any help is much appreciated :)\n\
+  ```\n\nArtlessly stolen and adapted from Hackerrank.\n\nKara Danvers is new to CodeWars,\
+  \ and eager to climb up in the ranks. We want to determine Kara's rank as she progresses\
+  \ up the leaderboard. \n\nThis kata uses Dense Ranking, so any identical scores\
+  \ count as the same rank (e.g, a scoreboard of `[100, 97, 97, 90, 82, 80, 72, 72,\
+  \ 60]` corresponds with rankings of `[1, 2, 2, 3, 4, 5, 6, 6, 7]`\n\nYou are given\
+  \ an array, `scores`, of leaderboard scores, descending, and another array, `kara`,\
+  \ representing Kara's Codewars score over time, ascending. Your function should\
+  \ return an array with each item corresponding to the rank of Kara's current score\
+  \ on the leaderboard.\n\n**Note:** This kata's performance requirements are significantly\
+  \ steeper than the Hackerrank version. Some arrays will contain millions of elements;\
+  \ optimize your code so you don't time out. If you're timing out before 200 tests\
+  \ are completed, you've likely got the wrong code complexity. If you're timing out\
+  \ around 274 tests (there are 278), you likely need to make some tweaks to how you're\
+  \ handling the arrays.\n\nExamples:\n\n(For the uninitiated, Kara Danvers is Supergirl.\
+  \ This is important, because Kara thinks and moves so fast that she can complete\
+  \ a kata within microseconds. Naturally, latency being what it is, she's already\
+  \ opened many kata across many, many tabs, and solves them one by one on a special\
+  \ keyboard so she doesn't have to wait hundreds of milliseconds in between solving\
+  \ them. As a result, the only person's rank changing on the leaderboard is Kara's,\
+  \ so we don't have to worry about shifting values of other codewarriors. Thanks,\
+  \ Supergirl.)\n\nGood luck! Please upvote if you enjoyed it :)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def leaderboard_climb (scores: List Nat) (kara: List Nat) : List\
+  \ (List Nat) := sorry \n\ntheorem leaderboard_climb_rank_count \n  (scores: List\
+  \ Nat) (kara: List Nat) (h: scores.length > 0) (h2: kara.length > 0) :\n  let result\
+  \ := leaderboard_climb scores kara\n  result.length = 1 ∧ \n  result.head!.length\
+  \ = kara.length := sorry\n"
+"vc-theorems": "theorem leaderboard_climb_ranks_positive\n  (scores: List Nat) (kara:\
+  \ List Nat) (h: scores.length > 0) (h2: kara.length > 0) :\n  let result := leaderboard_climb\
+  \ scores kara\n  ∀ x ∈ result.head!, x > 0 := sorry\n\n\ntheorem leaderboard_climb_max_rank\n\
+  \  (scores: List Nat) (kara: List Nat) (h: scores.length > 0) (h2: kara.length >\
+  \ 0) :\n  let result := leaderboard_climb scores kara\n  let unique_scores := List.eraseDups\
+  \ scores\n  let max_rank := unique_scores.length + 1\n  ∀ x ∈ result.head!, x ≤\
+  \ max_rank := sorry\n\n\ntheorem leaderboard_climb_monotonic\n  (scores: List Nat)\
+  \ (kara: List Nat) (h: scores.length > 0) (h2: kara.length > 0) :\n  let result\
+  \ := leaderboard_climb scores kara\n  ∀ i < kara.length - 1,\n    kara[i]! ≤ kara[i+1]!\
+  \ → result.head![i]! ≥ result.head![i+1]! := sorry\n\n\ntheorem leaderboard_climb_duplicate_invariant\n\
+  \  (scores: List Nat) (kara: List Nat) (h: scores.length > 0) (h2: kara.length >\
+  \ 0) :\n  leaderboard_climb scores kara = leaderboard_climb (scores ++ scores) kara\
+  \ := sorry\n\n/--\ninfo: [[4, 3, 1]]\n-/\n#guard_msgs in\n#eval leaderboard_climb\
+  \ [100, 90, 90, 80] [70, 80, 105]\n\n/--\ninfo: [[4, 4, 2, 1]]\n-/\n#guard_msgs\
+  \ in\n#eval leaderboard_climb [982, 490, 339, 180] [180, 250, 721, 2500]\n\n/--\n\
+  info: [[4, 4, 1, 1]]\n-/\n#guard_msgs in\n#eval leaderboard_climb [1079, 490, 339,\
+  \ 180] [180, 250, 1200, 1980]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

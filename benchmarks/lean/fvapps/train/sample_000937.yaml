@@ -1,0 +1,45 @@
+"vc-description": "There are N hills in a row numbered 1 through N from left to right.\
+  \ Each hill has a height; for each valid i, the height of the i-th hill is Hi. Chef\
+  \ is initially on the leftmost hill (hill number 1). He can make an arbitrary number\
+  \ of jumps (including zero) as long as the following conditions are satisfied:\n\
+  \n- Chef can only jump from each hill to the next hill, i.e. from the i-th hill,\
+  \ he can jump to the i+1-th hill (if it exists).\n- It's always possible to jump\
+  \ to a hill with the same height as the current hill.\n- It's possible to jump to\
+  \ a taller hill if it's higher than the current hill by no more than U.\n- It's\
+  \ possible to jump to a lower hill if it's lower than the current hill by no more\
+  \ than D.\n- Chef can use a parachute and jump to a lower hill regardless of its\
+  \ height (as long as it's lower than the current hill). This jump can only be performed\
+  \ at most once.\n\nChef would like to move as far right as possible. Determine the\
+  \ index of the rightmost hill Chef can reach.\n\n-----Input-----\n- The first line\
+  \ of the input contains a single integer T denoting the number of test cases. The\
+  \ description of T test cases follows.\n- The first line of each test case contains\
+  \ three space-separated integers N, U and D.\n- The second line contains N space-separated\
+  \ integers H1, H2, ..., HN.\n\n-----Output-----\nFor each test case, print a single\
+  \ line containing one integer — the index of the rightmost reachable hill.\n\n-----Constraints-----\n\
+  - 1 ≤ T ≤ 100\n- 1 ≤ N ≤ 100\n- 1 ≤ U, D ≤ 1,000,000\n- 1 ≤ Hi ≤ 1,000,000 for each\
+  \ valid i\n\n-----Subtasks-----\nSubtask #1 (100 points): original constraints\n\
+  \n-----Example-----\nInput:\n\n3\n5 3 2\n2 5 2 6 3\n5 2 3\n4 4 4 4 4\n5 2 7\n1 4\
+  \ 3 2 1\n\nOutput:\n\n3\n5\n1\n\n-----Explanation-----\nExample case 1: Chef can\
+  \ jump to second hill because it's higher by no more than U=3 than first hill, to\
+  \ jump to third hill Chef has to use parachute \nbecause it's lower than second\
+  \ hill by 3 which is more than D=2, Chef can't jump to fourth hill because it's\
+  \ higher than third hill by 4 which is more than U=3\nExample case 2: All hills\
+  \ are of the same height, so chef can reach the last hill with no problems.\nExample\
+  \ case 3: Chef can't jump to second hill because it's too high for him"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def findRightmostHill (n : Nat) (u : Nat) (d : Nat) (h : List Nat)\
+  \ : Nat :=\n  sorry\n"
+"vc-theorems": "theorem result_bounds {n u d : Nat} {h : List Nat} (h_nonempty : h\
+  \ ≠ []) :\n  let result := findRightmostHill n u d h\n  1 ≤ result ∧ result ≤ h.length\
+  \ :=\nsorry\n\n\ntheorem flat_terrain_full_traverse {n u d : Nat} {h : List Nat}\
+  \ \n  (h_len : h.length > 1)\n  (h_flat : ∀ (i : Fin (h.length - 1)), h[i] = h[i.val\
+  \ + 1]) :\n  findRightmostHill n u d h = h.length :=\nsorry\n\n\ntheorem impossible_first_step\
+  \ {n u d : Nat} {h : List Nat}\n  (h_len : h.length > 1)\n  (h_first_impossible\
+  \ : ∃ (i₁ i₀ : Fin h.length), \n    h[i₁] - h[i₀] > u ∧ h[i₀] - h[i₁] > d) :\n \
+  \ findRightmostHill n u d h = 1 :=\nsorry\n\n\ntheorem single_element_result {n\
+  \ u d : Nat} :\n  findRightmostHill n u d [n] = 1 :=\nsorry\n\n/--\ninfo: 3\n-/\n\
+  #guard_msgs in\n#eval find_rightmost_hill 5 3 2 [2, 5, 2, 6, 3]\n\n/--\ninfo: 5\n\
+  -/\n#guard_msgs in\n#eval find_rightmost_hill 5 2 3 [4, 4, 4, 4, 4]\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval find_rightmost_hill 5 2 7 [1, 4, 3, 2, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

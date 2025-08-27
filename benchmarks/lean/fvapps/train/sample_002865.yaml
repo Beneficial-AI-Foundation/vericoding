@@ -1,0 +1,17 @@
+"vc-description": "# Task\n Given an integer `n`, find the maximal number you can\
+  \ obtain by deleting exactly one digit of the given number.\n\n# Example\n\n For\
+  \ `n = 152`, the output should be `52`;\n \n For `n = 1001`, the output should be\
+  \ `101`.\n \n# Input/Output\n\n\n - `[input]` integer `n`\n\n    Constraints: `10\
+  \ ≤ n ≤ 1000000.`\n\n\n - `[output]` an integer"
+"vc-preamble": "import Imports.AllImports\n\ndef delete_digit (n : Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def stringToNat (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem delete_digit_length (n : Nat) (h : n ≥ 10) : \n  (toString\
+  \ (delete_digit n)).length = (toString n).length - 1 :=\n  sorry\n\n\ntheorem delete_digit_smaller\
+  \ (n : Nat) (h : n ≥ 10) :\n  delete_digit n < n :=\n  sorry\n\n\ntheorem delete_digit_natural\
+  \ (n : Nat) (h : n ≥ 10) :\n  delete_digit n ≥ 0 :=\n  sorry\n\n/--\ninfo: 52\n\
+  -/\n#guard_msgs in\n#eval delete_digit 152\n\n/--\ninfo: 101\n-/\n#guard_msgs in\n\
+  #eval delete_digit 1001\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval delete_digit\
+  \ 10\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,30 @@
+"vc-description": "Your task is to sort a given string. Each word in the string will\
+  \ contain a single number. This number is the position the word should have in the\
+  \ result.\n\nNote: Numbers can be from 1 to 9. So 1 will be the first word (not\
+  \ 0).\n\nIf the input string is empty, return an empty string.\nThe words in the\
+  \ input String will only contain valid consecutive numbers.\n\n\n## Examples\n\n\
+  ```\n\"is2 Thi1s T4est 3a\"  -->  \"Thi1s is2 3a T4est\"\n\"4of Fo1r pe6ople g3ood\
+  \ th5e the2\"  -->  \"Fo1r the2 g3ood 4of th5e pe6ople\"\n\"\"  -->  \"\"\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef order (sentence : String) : String\
+  \ :=\n  sorry\n\n\ndef splitString (s : String) (sep : Char) : List String :=\n\
+  \  sorry\n\n\ndef findNumber (s : String) : Option Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSorted (as : List Nat) : Prop :=\n  ∀ i j, i < j → j < as.length\
+  \ → as[i]! ≤ as[j]!\n"
+"vc-theorems": "theorem order_preserves_empty_string :\n  order \"\" = \"\" :=\nsorry\
+  \ \n\n\ntheorem order_sorts_by_numbers {sentence : String} {words : List String}\
+  \ : \n  words = splitString sentence ' ' →\n  let resultWords := splitString (order\
+  \ sentence) ' '\n  let numbers := resultWords.filterMap findNumber\n  isSorted numbers\
+  \ :=\nsorry\n\n\ntheorem order_preserves_words {sentence : String} {words : List\
+  \ String} :\n  words = splitString sentence ' ' →\n  let resultWords := splitString\
+  \ (order sentence) ' '\n  words.eraseDups = resultWords.eraseDups ∧ \n  words.length\
+  \ = resultWords.length :=\nsorry\n\n\ntheorem order_all_properties {sentence : String}\
+  \ {words : List String} :\n  words = splitString sentence ' ' →\n  (sentence = \"\
+  \" → order sentence = \"\") ∧\n  let resultWords := splitString (order sentence)\
+  \ ' '\n  let numbers := resultWords.filterMap findNumber\n  isSorted numbers ∧\n\
+  \  words.eraseDups = resultWords.eraseDups ∧\n  words.length = resultWords.length\
+  \ :=\nsorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval order \"is2 Thi1s\
+  \ T4est 3a\"\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval order \"4of Fo1r\
+  \ pe6ople g3ood th5e the2\"\n\n/--\ninfo: expected3\n-/\n#guard_msgs in\n#eval order\
+  \ \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

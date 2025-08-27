@@ -1,0 +1,28 @@
+"vc-description": "Given a binary array nums, you should delete one element from it.\n\
+  Return the size of the longest non-empty subarray containing only 1's in the resulting\
+  \ array.\nReturn 0 if there is no such subarray.\n \nExample 1:\nInput: nums = [1,1,0,1]\n\
+  Output: 3\nExplanation: After deleting the number in position 2, [1,1,1] contains\
+  \ 3 numbers with value of 1's.\nExample 2:\nInput: nums = [0,1,1,1,0,1,1,0,1]\n\
+  Output: 5\nExplanation: After deleting the number in position 4, [0,1,1,1,1,1,0,1]\
+  \ longest subarray with value of 1's is [1,1,1,1,1].\nExample 3:\nInput: nums =\
+  \ [1,1,1]\nOutput: 2\nExplanation: You must delete one element.\nExample 4:\nInput:\
+  \ nums = [1,1,0,0,1,1,1,0,1]\nOutput: 4\n\nExample 5:\nInput: nums = [0,0,0]\nOutput:\
+  \ 0\n\n \nConstraints:\n\n1 <= nums.length <= 10^5\nnums[i] is either 0 or 1."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def longest_subarray_ones_after_delete (nums: List Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem longest_subarray_basic_properties {nums : List Nat}\n  (h:\
+  \ ∀ x, x ∈ nums → x ≤ 1) : \n  let result := longest_subarray_ones_after_delete\
+  \ nums\n  -- Result non-negative\n  result ≥ 0 ∧ \n  -- Result not exceeding input\
+  \ length\n  result ≤ nums.length :=\nsorry\n\n\ntheorem longest_subarray_all_ones\
+  \ {nums : List Nat}\n  (h1: nums.length > 0)\n  (h2: ∀ x, x ∈ nums → x = 1) :\n\
+  \  longest_subarray_ones_after_delete nums = nums.length - 1 :=\nsorry\n\n\ntheorem\
+  \ longest_subarray_concatenation {arr1 arr2 : List Nat}\n  (h: ∀ x, (x ∈ arr1 ∨\
+  \ x ∈ arr2) → x ≤ 1) :\n  let result := longest_subarray_ones_after_delete (arr1\
+  \ ++ arr2)\n  result ≥ longest_subarray_ones_after_delete arr1 ∧\n  result ≥ longest_subarray_ones_after_delete\
+  \ arr2 :=\nsorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval longest_subarray_ones_after_delete\
+  \ [1, 1, 0, 1]\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval longest_subarray_ones_after_delete\
+  \ [0, 1, 1, 1, 0, 1, 1, 0, 1]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval longest_subarray_ones_after_delete\
+  \ [1, 1, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

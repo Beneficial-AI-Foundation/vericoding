@@ -1,0 +1,20 @@
+"vc-description": "# Task:\nGiven a list of numbers, determine whether the sum of\
+  \ its elements is odd or even.\n\nGive your answer as a string matching `\"odd\"\
+  ` or `\"even\"`.\n\nIf the input array is empty consider it as: `[0]` (array with\
+  \ a zero).\n\n## Example:\n\n```\nodd_or_even([0])          ==  \"even\"\nodd_or_even([0,\
+  \ 1, 4])    ==  \"odd\"\nodd_or_even([0, -1, -5])  ==  \"even\"\n```\n\nHave fun!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def odd_or_even (nums : List Int) : String :=\n  sorry\n"
+"vc-theorems": "theorem odd_or_even_result_valid (nums : List Int) :\n  (odd_or_even\
+  \ nums = \"odd\") ∨ (odd_or_even nums = \"even\") :=\n  sorry\n\n\ntheorem odd_or_even_matches_sum\
+  \ (nums : List Int) :\n  odd_or_even nums = (if (nums.foldl (· + ·) 0) % 2 = 0 then\
+  \ \"even\" else \"odd\") :=\n  sorry\n\n\ntheorem empty_equals_zero :\n  odd_or_even\
+  \ [] = odd_or_even [0] := \n  sorry\n\n\ntheorem odd_or_even_concatenation (nums1\
+  \ nums2 : List Int) \n  (h1 : nums1 ≠ []) (h2 : nums2 ≠ []) :\n  odd_or_even (nums1\
+  \ ++ nums2) = \n    if odd_or_even nums1 = odd_or_even nums2 \n    then \"even\"\
+  \ \n    else \"odd\" :=\n  sorry\n\n/--\ninfo: 'odd'\n-/\n#guard_msgs in\n#eval\
+  \ odd_or_even [0, 1, 2]\n\n/--\ninfo: 'even'\n-/\n#guard_msgs in\n#eval odd_or_even\
+  \ [0, 1, 3]\n\n/--\ninfo: 'even'\n-/\n#guard_msgs in\n#eval odd_or_even [1023, 1,\
+  \ 2]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,16 @@
+"vc-description": "You were given a string of integer temperature values. Create a\
+  \ function `lowest_temp(t)` and return the lowest value or `None/null/Nothing` if\
+  \ the string is empty."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def lowest_temp (s : String) : Option Int := sorry \n\ntheorem\
+  \ lowest_temp_empty: lowest_temp \"\" = none := sorry\n"
+"vc-theorems": "theorem lowest_temp_single (n : Int) (h : -100 ≤ n ∧ n ≤ 100) :\n\
+  \  lowest_temp (toString n) = some n := sorry\n\n\ntheorem lowest_temp_properties\
+  \ (s : String) :\n  match lowest_temp s with\n  | none => s = \"\"\n  | some result\
+  \ =>\n    ∃ nums : List Int,\n      (∀ n ∈ nums, -100 ≤ n ∧ n ≤ 100) ∧\n      result\
+  \ = nums.minimum?.get! ∧\n      nums ≠ []\n  := sorry\n\n/--\ninfo: None\n-/\n#guard_msgs\
+  \ in\n#eval lowest_temp \"\"\n\n/--\ninfo: -8\n-/\n#guard_msgs in\n#eval lowest_temp\
+  \ \"-1 50 -4 20 22 -7 0 10 -8\"\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval lowest_temp\
+  \ \"5\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

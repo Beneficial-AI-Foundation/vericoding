@@ -1,0 +1,53 @@
+"vc-description": "You are given a dataset consisting of $N$ items. Each item is a\
+  \ pair of a word and a boolean denoting whether the given word is a spam word or\
+  \ not.\nWe want to use this dataset for training our latest machine learning model.\
+  \ Thus we want to choose some subset of this dataset as training dataset. We want\
+  \ to make sure that there are no contradictions in our training set, i.e. there\
+  \ shouldn't be a word included in the training set that's marked both as spam and\
+  \ not-spam. For example item {\"fck\", 1}, and item {\"fck, 0\"} can't be present\
+  \ in the training set, because first item says the word \"fck\" is a spam, whereas\
+  \ the second item says it is not, which is a contradiction.\nYour task is to select\
+  \ the maximum number of items in the training set.\nNote that same pair of {word,\
+  \ bool} can appear multiple times in input. The training set can also contain the\
+  \ same pair multiple times.\n\n-----Input-----\n- First line will contain $T$, number\
+  \ of test cases. Then the test cases follow.\n- The first line of each test case\
+  \ contains a single integer $N$.\n- $N$ lines follow. For each valid $i$, the $i$-th\
+  \ of these lines contains a string $w_i$, followed by a space and an integer(boolean)\
+  \ $s_i$, denoting the $i$-th item.\n\n-----Output-----\nFor each test case, output\
+  \ an integer corresponding to the maximum number of items that can be included in\
+  \ the training set in a single line.\n\n-----Constraints-----\n- $1 \\le T \\le\
+  \ 10$\n- $1 \\le N \\le 25,000$\n- $1 \\le |w_i| \\le 5$ for each valid $i$\n- $0\
+  \ \\le s_i \\le 1$ for each valid $i$\n- $w_1, w_2, \\ldots, w_N$ contain only lowercase\
+  \ English letters\n\n-----Example Input-----\n3\n3\nabc 0\nabc 1\nefg 1\n7\nfck\
+  \ 1\nfck 0\nfck 1\nbody 0\nbody 0\nbody 0\nram 0\n5\nvv 1\nvv 0\nvv 0\nvv 1\nvv\
+  \ 1\n\n-----Example Output-----\n2\n6\n3\n\n-----Explanation-----\nExample case\
+  \ 1: You can include either of the first and the second item, but not both. The\
+  \ third item can also be taken. This way the training set can contain at the very\
+  \ max 2 items.\nExample case 2: You can include all the items except the second\
+  \ item in the training set."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def make_word_label (word : String) (label : String) : String :=\
+  \ sorry\n\ndef solve_spam_dataset (cases : List (List String)) : List Nat := sorry\n"
+"vc-theorems": "theorem case_counts_match_n (ns : List Nat) :\n  ns.all (λ n => n\
+  \ > 0 ∧ n ≤ 10) →\n  let cases := ns.map (λ n => (toString n) :: List.replicate\
+  \ n (make_word_label \"word\" \"0\")) \n  let results := solve_spam_dataset cases\n\
+  \  results.length = cases.length := sorry \n\n\ntheorem arbitrary_words_and_labels\
+  \ \n  (test_data : List (Nat × List String × List String)) :\n  test_data.all (λ\
+  \ (n, words, labels) => \n    n > 0 ∧ n ≤ 10 ∧ \n    words.length > 0 ∧ words.length\
+  \ ≤ 5 ∧\n    labels.all (λ l => l = \"0\" ∨ l = \"1\") ∧\n    labels.length > 0\
+  \ ∧ labels.length ≤ 5) →\n  let cases := test_data.map (λ (n, words, labels) =>\n\
+  \    (toString n) :: (List.zip words labels).map (λ (w,l) => make_word_label w l))\n\
+  \  let results := solve_spam_dataset cases\n  results.length = cases.length ∧\n\
+  \  results.all (λ x => x ≥ 0) := sorry\n\n\ntheorem single_word_multiple_labels\n\
+  \  (test_data : List (Nat × String × List String)) :\n  test_data.all (λ (n, word,\
+  \ labels) =>\n    n > 0 ∧ n ≤ 10 ∧\n    word.length > 0 ∧\n    labels.all (λ l =>\
+  \ l = \"0\" ∨ l = \"1\") ∧ \n    labels.length > 0 ∧ labels.length ≤ 10) →\n  let\
+  \ cases := test_data.map (λ (n, word, labels) =>\n    (toString n) :: labels.map\
+  \ (λ l => make_word_label word l))\n  let results := solve_spam_dataset cases\n\
+  \  results.length = cases.length ∧\n  (List.zipWith (λ result (n, _, labels) =>\
+  \ result ≤ labels.length) results test_data).all id := sorry\n\n/--\ninfo: [2]\n\
+  -/\n#guard_msgs in\n#eval solve_spam_dataset [test1]\n\n/--\ninfo: [6]\n-/\n#guard_msgs\
+  \ in\n#eval solve_spam_dataset [test2]\n\n/--\ninfo: [3]\n-/\n#guard_msgs in\n#eval\
+  \ solve_spam_dataset [test3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

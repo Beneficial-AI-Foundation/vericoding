@@ -1,0 +1,31 @@
+"vc-description": "Congratulations !!! You have successfully completed the heist by\
+  \ looting all the gifts in Santa's locker. Now it's time to decide who gets to take\
+  \ all the gifts, you or the Grinch, there will be no splitting. So you and Grinch\
+  \ decide to play a game.\nTo start the game, an Integer N will be given. The game\
+  \ is played in turns and for each turn, the player can make any one of the following\
+  \ moves:\n- Divide N by any of it's odd divisors greater than 1.\n- Subtract 1 from\
+  \ N if N is greater than 1.\nDivisor of a number includes the number itself.\nThe\
+  \ player who is unable to make a move loses the game.\nSince you are the mastermind\
+  \ of the heist, you get to play the first move.\n\n-----Input-----\nThe first line\
+  \ contains a single integer T (1 ≤ T ≤ 100) — the number of test cases. The description\
+  \ of the test cases follows.\nThe only line of each test case contains a single\
+  \ integer — N (1 ≤ N ≤ 109).\n\n-----Output-----\nFor each test case, print \" Me\"\
+  \ if you win, and \" Grinch\" if otherwise (without quotes).\n\n-----Sample Input-----\n\
+  7\n1\n2\n3\n4\n5\n6\n12\n\n-----Sample Output-----\nGrinch\nMe\nMe\nGrinch\nMe\n\
+  Grinch\nMe"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_winner (n : Nat) : String := sorry\n\ntheorem find_winner_valid_values\
+  \ (n : Nat) : \n  n > 0 → (find_winner n = \"Me\" ∨ find_winner n = \"Grinch\")\
+  \ := sorry\n"
+"vc-theorems": "theorem find_winner_powers_of_two_one :\n  find_winner 2 = \"Me\"\
+  \ := sorry\n\n\ntheorem find_winner_powers_of_two (n : Nat) :\n  n > 1 → find_winner\
+  \ (2^n) = \"Grinch\" := sorry\n\n\ntheorem find_winner_one :\n  find_winner 1 =\
+  \ \"Grinch\" := sorry\n\n\ntheorem find_winner_odd_numbers (n : Nat) :\n  n > 1\
+  \ → n % 2 = 1 → find_winner n = \"Me\" := sorry\n\n\ntheorem find_winner_known_cases_four\
+  \ :\n  find_winner 4 = \"Grinch\" := sorry\n\n\ntheorem find_winner_known_cases_six\
+  \ :\n  find_winner 6 = \"Grinch\" := sorry\n\n\ntheorem find_winner_known_cases_twelve\
+  \ :\n  find_winner 12 = \"Me\" := sorry\n\n\ntheorem find_winner_known_cases_sixteen\
+  \ :\n  find_winner 16 = \"Grinch\" := sorry\n\n/--\ninfo: expected1[i]\n-/\n#guard_msgs\
+  \ in\n#eval find_winner test1[i]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

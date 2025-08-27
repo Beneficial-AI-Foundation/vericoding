@@ -1,0 +1,18 @@
+"vc-description": "Write a function that rearranges an integer into its largest possible\
+  \ value. \n\n```python\nsuper_size(123456) # 654321\nsuper_size(105)    # 510\n\
+  super_size(12)     # 21\n```\n``` haskell\nsuperSize 123456 `shouldBe` 654321\n\
+  superSize    105 `shouldBe`    510\nsuperSize     12 `shouldBe`     21\n```\n\n\
+  If the argument passed through is single digit or is already the maximum possible\
+  \ integer, your function should simply return it."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def super_size (n : Nat) : Nat := sorry\n\ntheorem super_size_same_digits\
+  \ {n : Nat} : \n  (toString n).data = (toString (super_size n)).data := sorry\n"
+"vc-theorems": "theorem super_size_greater_or_equal {n : Nat} :\n  super_size n ≥\
+  \ n := sorry\n\n\ntheorem super_size_idempotent {n : Nat} :\n  super_size (super_size\
+  \ n) = super_size n := sorry\n\n\ntheorem super_size_same_length {n : Nat} :\n \
+  \ (toString n).length = (toString (super_size n)).length := sorry\n\n/--\ninfo:\
+  \ 654321\n-/\n#guard_msgs in\n#eval super_size 123456\n\n/--\ninfo: 510\n-/\n#guard_msgs\
+  \ in\n#eval super_size 105\n\n/--\ninfo: 21\n-/\n#guard_msgs in\n#eval super_size\
+  \ 12\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,25 @@
+"vc-description": "Calculus class...is awesome! But you are a programmer with no time\
+  \ for mindless repetition. Your teacher spent a whole day covering differentiation\
+  \ of polynomials, and by the time the bell rang, you had already conjured up a program\
+  \ to automate the process.\n\nYou realize that a polynomial of degree n\n\nanx^(n)\
+  \ + an-1x^(n-1) + ... + a0\n\ncan be represented as an array of coefficients\n\n\
+  [an, an-1, ...,  a0]\n\nFor example, we would represent\n\n5x^(2) + 2x + 1 as [5,2,1]\n\
+  \n3x^(2) + 1 as [3,0,1]\n\nx^(4) as [1,0,0,0,0]\n\nx as [1, 0]\n\n1 as [1]\n\nYour\
+  \ function will take a coefficient array as an argument and return a **new array**\
+  \ representing the coefficients of the derivative.\n\n```python\npoly1 = [1, 1]\
+  \ # x + 1\ndiff(poly1) == [1] # 1\n\npoly2 = [1, 1, 1] # x^2 + x + 1\ndiff(poly2)\
+  \ == [2, 1] # 2x + 1\ndiff(diff(poly2)) == [2] # 2\n\npoly3 = [2, 1, 0, 0] # 2x^3\
+  \ + x^2\ndiff(poly3) == [6, 2, 0] # 6x^2 + 2x\n```\nNote: your function will always\
+  \ return a new array which has one less element than the argument (unless the argument\
+  \ is [], in which case [] is returned)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def diff (p : List Int) : List Int := sorry\n\ntheorem diff_length\
+  \ (p : List Int) :\n  (diff p).length = max 0 (p.length - 1) := sorry\n"
+"vc-theorems": "theorem diff_constant (p : List Int) :\n  p.length = 1 → diff p =\
+  \ [] := sorry\n\n\ntheorem diff_linear (p : List Int) :\n  p.length = 2 → diff p\
+  \ = [p.get! 0] := sorry\n\n\ntheorem double_diff_quadratic (p : List Int) :\n  p.length\
+  \ = 3 → diff (diff p) = [2 * p.get! 0] := sorry\n\n/--\ninfo: []\n-/\n#guard_msgs\
+  \ in\n#eval diff []\n\n/--\ninfo: [1]\n-/\n#guard_msgs in\n#eval diff [1, 1]\n\n\
+  /--\ninfo: [6, 2, 0]\n-/\n#guard_msgs in\n#eval diff [2, 1, 0, 0]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

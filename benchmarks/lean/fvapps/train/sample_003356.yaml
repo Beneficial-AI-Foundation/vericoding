@@ -1,0 +1,16 @@
+"vc-description": "In this Kata we are passing a number (n) into a function. \n\n\
+  Your code will determine if the number passed is even (or not). \n\nThe function\
+  \ needs to return either a true or false. \n\nNumbers may be positive or negative,\
+  \ integers or floats.\n\nFloats are considered UNeven for this kata."
+"vc-preamble": "import Imports.AllImports\n\ndef isEven (x : Int) : Bool :=\n  sorry\n\
+  \n\ndef isFloat (x : Float) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isEvenFloat (x : Float) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem even_plus_two (x : Int) :\n  isEven x = isEven (x + 2) :=\n\
+  sorry\n\n\ntheorem even_plus_one_diff (x : Int) :\n  isEven x ≠ isEven (x + 1) :=\n\
+  sorry\n\n\ntheorem times_two_even (x : Int) :\n  isEven (x * 2) = true :=\nsorry\n\
+  \n\ntheorem non_integer_float_not_even (x : Float) :\n  ¬isFloat x → isEvenFloat\
+  \ x = false :=\nsorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_even 2\n\n\
+  /--\ninfo: False\n-/\n#guard_msgs in\n#eval is_even 1\n\n/--\ninfo: False\n-/\n\
+  #guard_msgs in\n#eval is_even 0.5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

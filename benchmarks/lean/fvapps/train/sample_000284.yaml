@@ -1,0 +1,24 @@
+"vc-description": "Given an array of integers arr. Return the number of sub-arrays\
+  \ with odd sum.\nAs the answer may grow large, the answer must be computed modulo 10^9\
+  \ + 7.\n \nExample 1:\nInput: arr = [1,3,5]\nOutput: 4\nExplanation: All sub-arrays\
+  \ are [[1],[1,3],[1,3,5],[3],[3,5],[5]]\nAll sub-arrays sum are [1,4,9,3,8,5].\n\
+  Odd sums are [1,9,3,5] so the answer is 4.\n\nExample 2:\nInput: arr = [2,4,6]\n\
+  Output: 0\nExplanation: All sub-arrays are [[2],[2,4],[2,4,6],[4],[4,6],[6]]\nAll\
+  \ sub-arrays sum are [2,6,12,4,10,6].\nAll sub-arrays have even sum and the answer\
+  \ is 0.\n\nExample 3:\nInput: arr = [1,2,3,4,5,6,7]\nOutput: 16\n\nExample 4:\n\
+  Input: arr = [100,100,99,99]\nOutput: 4\n\nExample 5:\nInput: arr = [7]\nOutput:\
+  \ 1\n\n \nConstraints:\n\n1 <= arr.length <= 10^5\n1 <= arr[i] <= 100"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def numOfSubarrays (arr : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem numsub_bound (arr : List Nat) (h : arr.length > 0) :\n  numOfSubarrays\
+  \ arr < 10^9 + 7 ∧ numOfSubarrays arr ≥ 0 :=\n  sorry\n\n\ntheorem all_even_zero\
+  \ (arr : List Nat) (h : arr.length > 0) :\n  numOfSubarrays (arr.map (· * 2)) =\
+  \ 0 :=\n  sorry\n\n\ntheorem parity_equivalent (arr : List Nat) (h : arr.length\
+  \ > 0) :\n  numOfSubarrays arr = numOfSubarrays (arr.map (· % 2)) :=\n  sorry\n\n\
+  \ntheorem reverse_invariant (arr : List Nat) (h : arr.length > 0) :\n  numOfSubarrays\
+  \ arr = numOfSubarrays arr.reverse :=\n  sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval numOfSubarrays [1, 3, 5]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ numOfSubarrays [2, 4, 6]\n\n/--\ninfo: 16\n-/\n#guard_msgs in\n#eval numOfSubarrays\
+  \ [1, 2, 3, 4, 5, 6, 7]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

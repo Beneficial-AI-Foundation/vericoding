@@ -1,0 +1,20 @@
+"vc-description": "# Task\nLet's define a `parameter` of number `n` as the least common\
+  \ multiple (LCM) of the sum of its digits and their product.\n\nCalculate the parameter\
+  \ of the given number `n`.\n\n# Input/Output\n\n`[input]` integer `n`\n\n A positive\
+  \ integer. It is guaranteed that no zero appears in `n`.\n\n`[output]` an integer\n\
+  \n The parameter of the given number.\n\n# Example\n\nFor `n = 22`, the output should\
+  \ be `4`.\n\nBoth the sum and the product of digits equal 4, and LCM(4, 4) = 4.\n\
+  \nFor `n = 1234`, the output should be `120`.\n\n`1+2+3+4=10` and `1*2*3*4=24`,\
+  \ LCM(10,24)=120"
+"vc-preamble": "import Imports.AllImports\n\ndef parameter (n : Nat) : Nat := sorry\n\
+  \ndef digits (n : Nat) : List Nat := sorry\n\n\ndef fromDigits (ds : List Nat) :\
+  \ Nat := sorry\n\ndef listSum (xs : List Nat) : Nat := \n  match xs with\n  | []\
+  \ => 0\n  | x :: xs => x + listSum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def listProd (xs : List Nat) : Nat :=\n  match xs with\n  | []\
+  \ => 1\n  | x :: xs => x * listProd xs\n\n\n\n\n"
+"vc-theorems": "theorem parameter_single_digit (d : Nat)\n  (h : d > 0) \n  (h2 :\
+  \ d ≤ 9) :\n  parameter d = d := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval\
+  \ parameter 22\n\n/--\ninfo: 120\n-/\n#guard_msgs in\n#eval parameter 1234\n\n/--\n\
+  info: 378\n-/\n#guard_msgs in\n#eval parameter 239\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

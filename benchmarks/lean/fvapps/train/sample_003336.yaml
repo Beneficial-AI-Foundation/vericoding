@@ -1,0 +1,31 @@
+"vc-description": "Your colleagues have been good enough(?) to buy you a birthday\
+  \ gift. Even though it is your birthday and not theirs, they have decided to play\
+  \ pass the parcel with it so that everyone has an even chance of winning. There\
+  \ are multiple presents, and you will receive one, but not all are nice... One even\
+  \ explodes and covers you in soil... strange office. To make up for this one present\
+  \ is a dog! Happy days! (do not buy dogs as presents, and if you do, never wrap\
+  \ them).\n\nDepending on the number of passes in the game (y), and the present you\
+  \ unwrap (x), return as follows:\n\nx == goodpresent --> return x with num of passes\
+  \ added to each charCode (turn to charCode, add y to each, turn back)\nx == crap\
+  \ || x == empty --> return string sorted alphabetically\nx == bang --> return string\
+  \ turned to char codes, each code reduced by number of passes and summed to a single\
+  \ figure\nx == badpresent --> return 'Take this back!'\nx == dog, return 'pass out\
+  \ from excitement y times' (where y is the value given for y)."
+"vc-preamble": "import Imports.AllImports\n\ndef present (x : String) (y : Int) :\
+  \ String := sorry\n\ntheorem present_goodpresent_length (y : Int) : \n  String.length\
+  \ (present \"goodpresent\" y) = String.length \"goodpresent\" := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isValidInput (x : String) : Bool :=\n  x = \"goodpresent\"\
+  \ ∨ x = \"crap\" ∨ x = \"empty\" ∨ x = \"bang\" ∨ x = \"badpresent\" ∨ x = \"dog\"\
+  \n"
+"vc-theorems": "theorem present_crap_fixed (y : Int) :\n  present \"crap\" y = \"\
+  acpr\" := sorry\n\n\ntheorem present_empty_fixed (y : Int) :\n  present \"empty\"\
+  \ y = \"empty\" := sorry\n\n\ntheorem present_badpresent_fixed (y : Int) :\n  present\
+  \ \"badpresent\" y = \"Take this back!\" := sorry\n\n\ntheorem present_dog_contains_number\
+  \ (y : Int) :\n  ∃ s : String, s = toString y ∧ present \"dog\" y = s := sorry\n\
+  \n\ntheorem present_invalid_input (x : String) (h : ¬isValidInput x) :\n  ∃ err,\
+  \ present x 0 = err := sorry\n\n/--\ninfo: 'Take this back!'\n-/\n#guard_msgs in\n\
+  #eval present \"badpresent\" 3\n\n/--\ninfo: 'pxxmy{n|nw}'\n-/\n#guard_msgs in\n\
+  #eval present \"goodpresent\" 9\n\n/--\ninfo: 'pass out from excitement 23 times'\n\
+  -/\n#guard_msgs in\n#eval present \"dog\" 23\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

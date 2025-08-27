@@ -1,0 +1,25 @@
+"vc-description": "Implement a function which behaves like the uniq command in UNIX.\n\
+  \nIt takes as input a sequence and returns a sequence in which all duplicate elements\
+  \ following each other have been reduced to one instance.\n\nExample:\n\n```\n[\"\
+  a\", \"a\", \"b\", \"b\", \"c\", \"a\", \"b\", \"c\"]  =>  [\"a\", \"b\", \"c\"\
+  , \"a\", \"b\", \"c\"]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def uniq {α} [BEq α] (lst : List α) : List α :=\n  sorry\n"
+"vc-theorems": "theorem uniq_no_consecutive_duplicates {α} [BEq α] (lst : List α)\
+  \ :\n  let result := uniq lst\n  ∀ i, i < result.length - 1 → result[i]? ≠ result[i+1]?\
+  \ :=\nsorry\n\n\ntheorem uniq_elements_from_original {α} [BEq α] (lst : List α)\
+  \ :\n  ∀ x ∈ uniq lst, x ∈ lst :=\nsorry\n\n\ntheorem uniq_length_le_input {α} [BEq\
+  \ α] (lst : List α) :\n  (uniq lst).length ≤ lst.length :=\nsorry\n\n\ntheorem uniq_preserves_first_occurrence\
+  \ {α} [BEq α] [DecidableEq α] (lst : List α) :\n  ∀ val ∈ uniq lst,\n  lst.findIdx?\
+  \ (fun x => decide (x = val)) = lst.findIdx? (fun x => decide (x = val)) :=\nsorry\n\
+  \n\ntheorem uniq_all_none [BEq α] (lst : List (Option α)) (h : lst.length > 0) (h2\
+  \ : ∀ x ∈ lst, x = none) :\n  (uniq lst).length = 1 :=\nsorry\n\n\ntheorem uniq_all_identical\
+  \ {α} [BEq α] (lst : List α) (x : α) (h : lst.length > 0) (h2 : ∀ y ∈ lst, y = x)\
+  \ :\n  (uniq lst).length = 1 :=\nsorry\n\n/--\ninfo: ['a', 'b', 'c', 'a', 'b', 'c']\n\
+  -/\n#guard_msgs in\n#eval uniq [\"a\", \"a\", \"b\", \"b\", \"c\", \"a\", \"b\"\
+  , \"c\", \"c\"]\n\n/--\ninfo: ['a', 'b', 'c']\n-/\n#guard_msgs in\n#eval uniq [\"\
+  a\", \"a\", \"a\", \"b\", \"b\", \"b\", \"c\", \"c\", \"c\"]\n\n/--\ninfo: []\n\
+  -/\n#guard_msgs in\n#eval uniq []\n\n/--\ninfo: [None, 'a']\n-/\n#guard_msgs in\n\
+  #eval uniq [None, \"a\", \"a\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

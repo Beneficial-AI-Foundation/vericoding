@@ -1,0 +1,41 @@
+"vc-description": "One day, Chef found a cube which has each of its sides painted\
+  \ in some color out of black, blue, red, green, yellow and orange.\nNow he asks\
+  \ you to check if he can choose three sides such that they are pairwise adjacent\
+  \ and painted in the same color.\n\n-----Input-----\n- The first line of the input\
+  \ contains an integer T denoting the number of test cases.\n- A single line of each\
+  \ test case contains six words denoting the colors of painted sides in the order:\
+  \ front, back, left, right, top and bottom, respectively.\n\n-----Output-----\n\
+  For each test case, output a single line containing the word \"YES\" or \"NO\" (without\
+  \ quotes) corresponding to the answer of the problem.\n\n-----Constraints-----\n\
+  - 1 ≤ T ≤  50000 \n- Each color will be from the list {\"black\", \"blue\", \"red\"\
+  , \"green\", \"yellow\", \"orange\"}\n\n-----Subtasks-----\nSubtask 1: (25 points)\n\
+  - 1 ≤ T ≤  12000 \n- For each test case there will be at most three different colors\n\
+  \nSubtask 2: (75 points)\n- Original constraints\n\n-----Example-----\nInput:\n\
+  2\nblue yellow green orange black green\ngreen yellow green orange black green\n\
+  \nOutput:\nNO\nYES\n\n-----Explanation-----\n\nExample case 1.\nThere are no three\
+  \ sides with the same color.\n\nExample case 2.\nIn this test case, the front, bottom\
+  \ and left sides are green (see picture)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_cube_sides {α : Type} [DecidableEq α] (colors : List\
+  \ α) : String := sorry\n\ntheorem check_cube_sides_returns_valid_result {α : Type}\
+  \ [DecidableEq α] [Inhabited α]\n  (colors : List α) (h : colors.length = 6) :\n\
+  \  check_cube_sides colors = \"YES\" ∨ check_cube_sides colors = \"NO\" := sorry\n"
+"vc-theorems": "theorem check_cube_sides_yes_has_adjacent_set {α : Type} [DecidableEq\
+  \ α] [Inhabited α]\n  (colors : List α) (h : colors.length = 6) :\n  check_cube_sides\
+  \ colors = \"YES\" →\n  ∃ i j k, i ≠ j ∧ j ≠ k ∧ i ≠ k ∧ \n          i < colors.length\
+  \ ∧ j < colors.length ∧ k < colors.length ∧\n          colors[i]! = colors[j]! ∧\
+  \ colors[j]! = colors[k]! := sorry\n\n\ntheorem check_cube_sides_no_has_no_adjacent_set\
+  \ {α : Type} [DecidableEq α] [Inhabited α]\n  (colors : List α) (h : colors.length\
+  \ = 6) :\n  check_cube_sides colors = \"NO\" →\n  ∀ i j k, i ≠ j → j ≠ k → i ≠ k\
+  \ →\n          i < colors.length → j < colors.length → k < colors.length →\n   \
+  \       ¬(colors[i]! = colors[j]! ∧ colors[j]! = colors[k]!) := sorry\n\n\ntheorem\
+  \ all_same_color_returns_yes {α : Type} [DecidableEq α] [Inhabited α]\n  (colors\
+  \ : List α) (h : colors.length = 6)\n  (h_same : ∀ i j, i < colors.length → j <\
+  \ colors.length → colors[i]! = colors[j]!) :\n  check_cube_sides colors = \"YES\"\
+  \ := sorry\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval check_cube_sides \"blue\
+  \ yellow green orange black green\".split()\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs\
+  \ in\n#eval check_cube_sides \"green yellow green orange black green\".split()\n\
+  \n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval check_cube_sides \"red red red blue\
+  \ yellow orange\".split()\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,41 @@
+"vc-description": "Write a function that accepts two square (`NxN`) matrices (two\
+  \ dimensional arrays), and returns the product of the two. Only square matrices\
+  \ will be given.\n\nHow to multiply two square matrices: \n\nWe are given two matrices,\
+  \ A and B, of size 2x2 (note: tests are not limited to 2x2). Matrix C, the solution,\
+  \ will be equal to the product of A and B. To fill in cell `[0][0]` of matrix C,\
+  \ you need to compute: `A[0][0] * B[0][0] + A[0][1] * B[1][0]`.\n\nMore general:\
+  \ To fill in cell `[n][m]` of matrix C, you need to first multiply the elements\
+  \ in the nth row of matrix A by the elements in the mth column of matrix B, then\
+  \ take the sum of all those products. This will give you the value for cell `[m][n]`\
+  \ in matrix C. \n\n## Example\n```\n  A         B          C\n|1 2|  x  |3 2|  =\
+  \  | 5 4|\n|3 2|     |1 1|     |11 8|\n```\n\nDetailed calculation:\n```\nC[0][0]\
+  \ = A[0][0] * B[0][0] + A[0][1] * B[1][0] = 1*3 + 2*1 =  5\nC[0][1] = A[0][0] *\
+  \ B[0][1] + A[0][1] * B[1][1] = 1*2 + 2*1 =  4\nC[1][0] = A[1][0] * B[0][0] + A[1][1]\
+  \ * B[1][0] = 3*3 + 2*1 = 11\nC[1][1] = A[1][0] * B[0][1] + A[1][1] * B[1][1] =\
+  \ 3*2 + 2*1 =  8\n```\nLink to Wikipedia explaining matrix multiplication (look\
+  \ at the square matrix example): \nhttp://en.wikipedia.org/wiki/Matrix_multiplication\n\
+  \nA more visual explanation of matrix multiplication: http://matrixmultiplication.xyz\n\
+  \n~~~if:c\n**Note:** In **C**, the dimensions of both square matrices `n` will be\
+  \ passed into your function.  However, since the dimensions of your returned \"\
+  matrix\" is expected to be the same as that of the inputs, you will not need to\
+  \ keep track of the dimensions of your matrix in another variable.\n~~~"
+"vc-preamble": "import Imports.AllImports\n\ndef matrix_mult {n : Nat} (A B : Matrix\
+  \ Int n) : Matrix Int n where\n  data := sorry\n  dim_rows := sorry\n  dim_cols\
+  \ := sorry\n\n\ndef numpy_matmul {n : Nat} (A B : Matrix Int n) : Matrix Int n where\n\
+  \  data := sorry\n  dim_rows := sorry\n  dim_cols := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def identity_matrix (n : Nat) : Matrix Int n where\n  data := sorry\n\
+  \  dim_rows := sorry\n  dim_cols := sorry\n"
+"vc-theorems": "theorem matrix_mult_matches_numpy {n : Nat} (A B : Matrix Int n) :\n\
+  \  matrix_mult A B = numpy_matmul A B := by sorry\n\n\ntheorem matrix_mult_identity\
+  \ {n : Nat} (A : Matrix Int n) :\n  matrix_mult A (identity_matrix n) = A := by\
+  \ sorry\n\n\ntheorem matrix_mult_associative {n : Nat} (A B C : Matrix Int n) :\n\
+  \  matrix_mult (matrix_mult A B) C = matrix_mult A (matrix_mult B C) := by sorry\n\
+  \n\ntheorem matrix_mult_dimensions {n : Nat} (A B : Matrix Int n) :\n  let C :=\
+  \ matrix_mult A B\n  C.data.size = n ∧ ∀ i < n, (C.data.get! i).size = n := by sorry\n\
+  \n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval matrix_mult #[[1, 2], [3, 2]]\
+  \ #[[3, 2], [1, 1]]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval matrix_mult\
+  \ #[[9, 7], [0, 1]] #[[1, 1], [4, 12]]\n\n/--\ninfo: expected3\n-/\n#guard_msgs\
+  \ in\n#eval matrix_mult #[[1, 2, 3], [3, 2, 1], [2, 1, 3]] #[[4, 5, 6], [6, 5, 4],\
+  \ [4, 6, 5]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

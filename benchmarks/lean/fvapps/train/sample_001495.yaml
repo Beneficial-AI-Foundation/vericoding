@@ -1,0 +1,30 @@
+"vc-description": "The Fibonacci sequence is defined as F(n) = F(n-1) + F(n-2). You\
+  \ have developed two sequences of numbers. The first sequence that uses the bitwise\
+  \ XOR operation instead of the addition method is called the Xoronacci number. It\
+  \ is described as follows:\nX(n) = X(n-1) XOR X(n-2)\nThe second sequence that uses\
+  \ the bitwise XNOR operation instead of the addition method is called the XNoronacci\
+  \ number. It is described as follows:\nE(n) = E(n-1) XNOR E(n-2)\nThe first and\
+  \ second numbers of the sequence are as follows:\nX(1) = E(1) = a\nX(2) = E(2) =\
+  \ b\nYour task is to determine the value of max(X(n),E(n)), where n is the n th\
+  \ term of the Xoronacci and XNoronacci sequence.\n\n-----Input:-----\nThe first\
+  \ line consists of a single integer T denoting the number of test cases.\nThe first\
+  \ and the only line of each test case consists of three space separated integers\
+  \ a, b and n.\n\n-----Output:-----\nFor each test case print a single integer max(X(n),E(n)).\n\
+  \n-----Constraints-----\n- $1 \\leq T \\leq 1000$\n- $2 \\leq a,b,n \\leq 1000000000000$\n\
+  \n-----Sample Input:-----\n1\n3 4 2 \n\n-----Sample Output:-----\n4\n\n-----EXPLANATION:-----\n\
+  Xoronacci Sequence : 3 4 7 …….\nXNoronacci Sequence : 3 4 0 …….\nHere n = 2. Hence\
+  \ max(X(2),E(2)) = 4"
+"vc-preamble": "import Imports.AllImports\n\ndef solve_sequence (a b n : Nat) : Nat\
+  \ := sorry\n\ndef bitXor (a b : Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def bitNot (a : Nat) : Nat := sorry\n\ndef bitLength (n : Nat)\
+  \ : Nat := sorry\n"
+"vc-theorems": "theorem solve_sequence_nonnegative (a b n : Nat) :\n  n > 0 → n ≤\
+  \ 3 → solve_sequence a b n ≥ 0 := sorry\n\n\ntheorem solve_sequence_first (a b :\
+  \ Nat) :\n  solve_sequence a b 1 = a := sorry\n  \n\ntheorem solve_sequence_second\
+  \ (a b : Nat) :\n  solve_sequence a b 2 = b := sorry\n\n\n\n\n\n\ntheorem solve_sequence_symmetric\
+  \ (a b : Nat) :\n  solve_sequence a b 3 = solve_sequence b a 3 := sorry\n\n/--\n\
+  info: 4\n-/\n#guard_msgs in\n#eval solve_sequence 3 4 2\n\n/--\ninfo: 7\n-/\n#guard_msgs\
+  \ in\n#eval solve_sequence 3 4 3\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval solve_sequence\
+  \ 10 12 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

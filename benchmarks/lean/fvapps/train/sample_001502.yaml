@@ -1,0 +1,46 @@
+"vc-description": "Chef usually likes to play cricket, but now, he is bored of playing\
+  \ it too much, so he is trying new games with strings. Chef's friend Dustin gave\
+  \ him binary strings $S$ and $R$, each with length $N$, and told him to make them\
+  \ identical. However, unlike Dustin, Chef does not have any superpower and Dustin\
+  \ lets Chef perform only operations of one type: choose any pair of integers $(i,\
+  \ j)$ such that $1 \\le i, j \\le N$ and swap the $i$-th and $j$-th character of\
+  \ $S$. He may perform any number of operations (including zero).\nFor Chef, this\
+  \ is much harder than cricket and he is asking for your help. Tell him whether it\
+  \ is possible to change the string $S$ to the target string $R$ only using operations\
+  \ of the given type.\n\n-----Input-----\n- The first line of the input contains\
+  \ a single integer $T$ denoting the number of test cases. The description of $T$\
+  \ test cases follows.\n- The first line of each test case contains a single integer\
+  \ $N$.\n- The second line contains a binary string $S$.\n- The third line contains\
+  \ a binary string $R$.\n\n-----Output-----\nFor each test case, print a single line\
+  \ containing the string \"YES\" if it is possible to change $S$ to $R$ or \"NO\"\
+  \ if it is impossible (without quotes).\n\n-----Constraints-----\n- $1 \\le T \\\
+  le 400$\n- $1 \\le N \\le 100$\n- $|S| = |R| = N$\n- $S$ and $R$ will consist of\
+  \ only '1' and '0'\n\n-----Example Input-----\n2\n5\n11000\n01001\n3\n110\n001\n\
+  \n-----Example Output-----\nYES\nNO\n\n-----Explanation-----\nExample case 1: Chef\
+  \ can perform one operation with $(i, j) = (1, 5)$. Then, $S$ will be \"01001\"\
+  , which is equal to $R$.\nExample case 2: There is no sequence of operations which\
+  \ would make $S$ equal to $R$."
+"vc-preamble": "import Imports.AllImports\n\ndef can_transform_string (s r : String)\
+  \ : String := sorry\n\ndef count_ones (s : String) : Nat := \n  s.data.filter (·\
+  \ = '1') |>.length\n\n\ndef extract (s : String) (n : Nat) : String :=\n  String.mk\
+  \ (s.data.take n)\n\n\ndef create_string (c : Char) (n : Nat) : String :=\n  String.mk\
+  \ (List.replicate n c)\n  "
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_extract (s r : String) : String × String :=\n  let n :=\
+  \ min s.length r.length\n  (extract s n, extract r n)\n"
+"vc-theorems": "theorem transform_result_valid {s r : String} : \n  let (s', r') :=\
+  \ min_extract s r\n  can_transform_string s' r' = \"YES\" ∨ can_transform_string\
+  \ s' r' = \"NO\" := sorry\n\n\ntheorem transform_based_on_ones_count {s r : String}\
+  \ :\n  let (s', r') := min_extract s r\n  (count_ones s' = count_ones r' → can_transform_string\
+  \ s' r' = \"YES\") ∧\n  (count_ones s' ≠ count_ones r' → can_transform_string s'\
+  \ r' = \"NO\") := sorry\n\n\ntheorem identity_transformation (s : String) :\n  can_transform_string\
+  \ s s = \"YES\" := sorry\n\n\ntheorem all_zeros_transform {s : String} (h : s.length\
+  \ > 0) :\n  let zeros := create_string '0' s.length\n  can_transform_string zeros\
+  \ s = if s = zeros then \"YES\" else \"NO\" := sorry\n\n\ntheorem all_ones_transform\
+  \ {s : String} (h : s.length > 0) :\n  let ones := create_string '1' s.length\n\
+  \  can_transform_string ones s = if s = ones then \"YES\" else \"NO\" := sorry\n\
+  \n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval can_transform_string \"11000\" \"\
+  01001\"\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval can_transform_string \"110\"\
+  \ \"001\"\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval can_transform_string \"\
+  1100\" \"0011\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

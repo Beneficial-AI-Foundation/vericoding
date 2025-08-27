@@ -1,0 +1,32 @@
+"vc-description": "-----Coal Company -----\n\nThe Tunisian Coal Mining company uses\
+  \ a train to ferry out coal blocks from its coal mines. The train has N containers\
+  \ numbered from 1 to N which need to\n\nbe filled with blocks of coal. Assume there\
+  \ are infinite coal blocks. The containers are arranged in increasing order of capacity,\
+  \ and the ith container\n\nhas capacity i. Every container has a specific loading\
+  \ cost ci. The workers fill the containers in rounds. In every round, they choose\
+  \ a subset of\n\ncontainers and load them with coal blocks. This subset should be\
+  \ such that each subsequent container chosen in a round should be more spacious\
+  \ than the\n\nprevious one. Also, the difference in loading cost of consecutive\
+  \ containers should be at least K.\n\n\n\nWhat is the least number of rounds in\
+  \ which all containers can be filled?\n\n\n\n-----\nInput\n-----\n\nThe first line\
+  \ contains the number of test cases T. T test cases follow.\n\nEach case contains\
+  \ an integer N and K on the first line, followed by integers c1,...,cn on the second\
+  \ line.\n\n\n\n1 <= T <= 100\n\n1 <= N <= 300\n\n1 <= ci <= 1000\n\n1 <= K <= 1000\n\
+  \n\n\n-----\nOutput\n-----\n\nOutput T lines, one for each test case, containing\
+  \ the minimum number of rounds in which all containers could be filled.\n\n-----\n\
+  Example\n-----\n\nInput:\n\n2\n\n3 2\n\n5 4 7\n\n5 1\n\n5 3 4 5 6\n\n\n\nOutput:\n\
+  \n2\n\n1\n\n\n\n\n\n\n\nExplanation:\n\nFor the first example, workers can fill\
+  \ the containers of cost 5 and 7 in the first round and the container with cost\
+  \ 4 in the next round. Note that the\n\ncontainers with cost 5 and 4 cannot be filled\
+  \ consecutively because the loading costs should differ by at least K (which is\
+  \ 2). Also, the containers cannot\n\nbe filled in order 5, 7, 4 in one round because\
+  \ the containers filled in a round should be in increasing capacity."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_coal_containers (n k : Nat) (costs : List Nat) : Nat\
+  \ :=\nsorry\n\n\n\n\n"
+"vc-theorems": "theorem solve_coal_containers_single_element\n  (n : Nat) (h : n >\
+  \ 0) :\n  solve_coal_containers 1 n [0] = 1 :=\nsorry\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval solve_coal_containers 3 2 [5, 4, 7]\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval solve_coal_containers 5 1 [5, 3, 4, 5, 6]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

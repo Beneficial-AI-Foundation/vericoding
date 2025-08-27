@@ -1,0 +1,20 @@
+"vc-description": "You are given a string of numbers between 0-9. Find the average\
+  \ of these numbers and return it as a floored whole number (ie: no decimal places)\
+  \ written out as a string. Eg:\n\n\"zero nine five two\" -> \"four\"\n\nIf the string\
+  \ is empty or includes a number greater than 9, return \"n/a\""
+"vc-preamble": "import Imports.AllImports\n\ndef numToWord (n : Nat) : String := sorry\
+  \ \ndef wordToNum (s : String) : Option Nat := sorry\n\ndef average_string (s :\
+  \ String) : String := sorry\n\ndef numWordsList := [\"zero\", \"one\", \"two\",\
+  \ \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"]\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sum (l : List Nat) : Nat := l.foldl (· + ·) 0\n\ntheorem average_string_valid_nums\
+  \ (words : List String) \n  (h : ∀ w ∈ words, w ∈ numWordsList) (h2 : words ≠ [])\
+  \ :\n  let nums := words.filterMap wordToNum\n  let avg := sum nums / nums.length\n\
+  \  average_string (String.intercalate \" \" words) = numToWord avg := sorry\n"
+"vc-theorems": "theorem average_string_empty :\n  average_string \"\" = \"n/a\" :=\
+  \ sorry\n\n\ntheorem average_string_invalid (s : String) \n  (h : ∃ w ∈ s.split\
+  \ (· = ' '), w ∉ numWordsList) :\n  average_string s = \"n/a\" := sorry\n\n/--\n\
+  info: 'four'\n-/\n#guard_msgs in\n#eval average_string \"zero nine five two\"\n\n\
+  /--\ninfo: 'three'\n-/\n#guard_msgs in\n#eval average_string \"four six two three\"\
+  \n\n/--\ninfo: 'n/a'\n-/\n#guard_msgs in\n#eval average_string \"\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

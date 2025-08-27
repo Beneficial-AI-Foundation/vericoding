@@ -1,0 +1,47 @@
+"vc-description": "In Chefland, types of ingredients are represented by integers and\
+  \ recipes are represented by sequences of ingredients that are used when cooking.\
+  \ One day, Chef found a recipe represented by a sequence $A_1, A_2, \\ldots, A_N$\
+  \ at his front door and he is wondering if this recipe was prepared by him.\nChef\
+  \ is a very picky person. He uses one ingredient jar for each type of ingredient\
+  \ and when he stops using a jar, he does not want to use it again later while preparing\
+  \ the same recipe, so ingredients of each type (which is used in his recipe) always\
+  \ appear as a contiguous subsequence. Chef is innovative, too, so he makes sure\
+  \ that in each of his recipes, the quantity of each ingredient (i.e. the number\
+  \ of occurrences of this type of ingredient) is unique ― distinct from the quantities\
+  \ of all other ingredients.\nDetermine whether Chef could have prepared the given\
+  \ recipe.\n\n-----Input-----\n- The first line of the input contains a single integer\
+  \ $T$ denoting the number of test cases. The description of $T$ test cases follows.\n\
+  - The first line of each test case contains a single integer $N$.\n- The second\
+  \ line contains $N$ space-separated integers $A_1, A_2, \\ldots, A_N$.\n\n-----Output-----\n\
+  For each test case, print a single line containing the string \"YES\" if the recipe\
+  \ could have been prepared by Chef or \"NO\" otherwise (without quotes).\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 100$\n- $1 \\le N \\le 10^3$\n- $1 \\le A_i \\le 10^3$ for each\
+  \ valid $i$\n\n-----Example Input-----\n3\n6\n1 1 4 2 2 2\n8\n1 1 4 3 4 7 7 7\n\
+  8\n1 7 7 3 3 4 4 4\n\n-----Example Output-----\nYES\nNO\nNO\n\n-----Explanation-----\n\
+  Example case 1: For each ingredient type, its ingredient jar is used only once and\
+  \ the quantities of all ingredients are pairwise distinct. Hence, this recipe could\
+  \ have been prepared by Chef. \nExample case 2: The jar of ingredient $4$ is used\
+  \ twice in the recipe, so it was not prepared by Chef."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_recipe_valid (n : Nat) (lst : List Nat) : String := sorry\n\
+  \ntheorem recipe_validation_output_is_yes_or_no (n : Nat) (lst : List Nat) :\n \
+  \ let result := check_recipe_valid n lst\n  result = \"YES\" ∨ result = \"NO\" :=\
+  \ sorry\n  \n-- For recipes marked valid:"
+"vc-theorems": "theorem valid_recipe_elements_appear_contiguously (n : Nat) (lst :\
+  \ List Nat) :\n  let result := check_recipe_valid n lst\n  result = \"YES\" →\n\
+  \  ∀ i j k : Nat, \n    i < j ∧ j < k ∧ k < lst.length →\n    lst[i]! = lst[k]!\
+  \ → \n    lst[i]! = lst[j]! := sorry\n\n\ntheorem valid_recipe_frequencies_unique\
+  \ (n : Nat) (lst : List Nat) :\n  let result := check_recipe_valid n lst\n  result\
+  \ = \"YES\" →\n  ∀ x y : Nat,\n    x ∈ lst → y ∈ lst →\n    x ≠ y →\n    (lst.filter\
+  \ (λ i => i = x)).length ≠ (lst.filter (λ i => i = y)).length := sorry\n\n\ntheorem\
+  \ single_ingredient_recipe_always_valid (n : Nat) (x : Nat) :\n  let lst := List.replicate\
+  \ n x\n  check_recipe_valid n lst = \"YES\" := sorry\n\n\ntheorem discontinuous_ingredient_invalid\
+  \ (n : Nat) (lst : List Nat) (x : Nat) :\n  lst.length ≥ 2 →\n  x ∈ lst →\n  let\
+  \ discontinuous := lst ++ [x]\n  (∀ i j : Nat, i < j → j < lst.length → lst[i]!\
+  \ = lst[j]! → i + 1 = j) →\n  check_recipe_valid (lst.length + 1) discontinuous\
+  \ = \"NO\" := sorry\n\n/--\ninfo: 'YES'\n-/\n#guard_msgs in\n#eval check_recipe_valid\
+  \ 6 [1, 1, 4, 2, 2, 2]\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval check_recipe_valid\
+  \ 8 [1, 1, 4, 3, 4, 7, 7, 7]\n\n/--\ninfo: 'NO'\n-/\n#guard_msgs in\n#eval check_recipe_valid\
+  \ 8 [1, 7, 7, 3, 3, 4, 4, 4]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,25 @@
+"vc-description": "Passer ratings are the generally accepted standard for evaluating\
+  \ NFL quarterbacks.\nI knew a rating of 100 is pretty good, but never knew what\
+  \ makes up the rating.\nSo out of curiosity I took a look at the wikipedia page\
+  \ and had an idea or my first kata: https://en.wikipedia.org/wiki/Passer_rating\n\
+  \n## Formula\n\nThere are four parts to the NFL formula:\n```python\nA = ((Completions\
+  \ / Attempts) - .3) * 5\nB = ((Yards / Attempts) - 3) * .25\nC = (Touchdowns / Attempt)\
+  \ * 20\nD = 2.375 - ((Interceptions / Attempts) * 25)\n```\nHowever, if the result\
+  \ of any calculation is greater than `2.375`, it is set to `2.375`. If the result\
+  \ is a negative number, it is set to zero.\n\nFinally the passer rating is: `((A\
+  \ + B + C + D) / 6) * 100`\n\nReturn the rating rounded to the nearest tenth.\n\n\
+  ## Example\n\nLast year Tom Brady had 432 attempts, 3554 yards, 291 completions,\
+  \ 28 touchdowns, and 2 interceptions.\nHis passer rating was 112.2\n\nHappy coding!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def passer_rating (att yds comp td ints : Nat) : Float :=\n  sorry\n"
+"vc-theorems": "theorem passer_rating_bounds (att yds comp td ints : Nat) (h : att\
+  \ > 0) :\n  let rating := passer_rating att yds comp td ints\n  0 ≤ rating ∧ rating\
+  \ ≤ 158.3 := sorry\n\n\ntheorem completions_less_than_attempts (att yds comp td\
+  \ ints : Nat) :\n  comp ≤ att → passer_rating att yds comp td ints = passer_rating\
+  \ att yds comp td ints := sorry\n\n\ntheorem terrible_rating_conditions (att : Nat)\
+  \ (h : att > 0) :\n  let rating := passer_rating att 0 0 0 att\n  rating < 10 :=\
+  \ sorry\n\n/--\ninfo: 112.2\n-/\n#guard_msgs in\n#eval passer_rating 432 3554 291\
+  \ 28 2\n\n/--\ninfo: 158.3\n-/\n#guard_msgs in\n#eval passer_rating 5 76 4 1 0\n\
+  \n/--\ninfo: 39.6\n-/\n#guard_msgs in\n#eval passer_rating 48 192 19 2 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

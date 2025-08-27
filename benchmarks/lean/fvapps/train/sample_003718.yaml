@@ -1,0 +1,20 @@
+"vc-description": "Your goal is to implement the method **meanVsMedian** which accepts\
+  \ an *odd-length* array of integers and returns one of the following:\n\n* 'mean'\
+  \ - in case **mean** value is **larger than** median value\n* 'median' - in case\
+  \ **median** value is **larger than** mean value\n* 'same' - in case both mean and\
+  \ median share the **same value**\n\nReminder: [Median](https://en.wikipedia.org/wiki/Median)\n\
+  \nArray will always be valid (odd-length >= 3)"
+"vc-preamble": "import Imports.AllImports\n\ndef mean_vs_median (l : List Int) : String\
+  \ := sorry\n\ndef statistical_mean (l : List Int) : Float := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def statistical_median (l : List Int) : Float := sorry\n\ntheorem\
+  \ mean_vs_median_matches_statistics (l : List Int) (h : l ≠ []) :\n  let mean :=\
+  \ statistical_mean l\n  let median := statistical_median l\n  mean_vs_median l =\
+  \ (if mean > median then \"mean\" \n                     else if median > mean then\
+  \ \"median\"\n                     else \"same\") := sorry\n"
+"vc-theorems": "theorem identical_numbers_return_same (l : List Int) (h1 : l ≠ [])\
+  \ \n  (h2 : ∀ x ∈ l, x = 1) :\n  mean_vs_median l = \"same\" := sorry\n\n/--\ninfo:\
+  \ 'same'\n-/\n#guard_msgs in\n#eval mean_vs_median [1, 1, 1]\n\n/--\ninfo: 'mean'\n\
+  -/\n#guard_msgs in\n#eval mean_vs_median [1, 2, 37]\n\n/--\ninfo: 'median'\n-/\n\
+  #guard_msgs in\n#eval mean_vs_median [7, 14, -70]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

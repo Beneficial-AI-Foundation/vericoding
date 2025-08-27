@@ -1,0 +1,38 @@
+"vc-description": "Consider a game, wherein the player has to guess a target word.\
+  \ All the player knows is the length of the target word.\n\nTo help them in their\
+  \ goal, the game will accept guesses, and return the number of letters that are\
+  \ in the correct position.\n\nWrite a method that, given the correct word and the\
+  \ player's guess, returns this number.\n\nFor example, here's a possible thought\
+  \ process for someone trying to guess the word \"dog\":\n\n```cs\nCountCorrectCharacters(\"\
+  dog\", \"car\"); //0 (No letters are in the correct position)\nCountCorrectCharacters(\"\
+  dog\", \"god\"); //1 (\"o\")\nCountCorrectCharacters(\"dog\", \"cog\"); //2 (\"\
+  o\" and \"g\")\nCountCorrectCharacters(\"dog\", \"cod\"); //1 (\"o\")\nCountCorrectCharacters(\"\
+  dog\", \"bog\"); //2 (\"o\" and \"g\")\nCountCorrectCharacters(\"dog\", \"dog\"\
+  ); //3 (Correct!)\n```\n```python\ncount_correct_characters(\"dog\", \"car\"); #0\
+  \ (No letters are in the correct position)\ncount_correct_characters(\"dog\", \"\
+  god\"); #1 (\"o\")\ncount_correct_characters(\"dog\", \"cog\"); #2 (\"o\" and \"\
+  g\")\ncount_correct_characters(\"dog\", \"cod\"); #1 (\"o\")\ncount_correct_characters(\"\
+  dog\", \"bog\"); #2 (\"o\" and \"g\")\ncount_correct_characters(\"dog\", \"dog\"\
+  ); #3 (Correct!)\n```\n\nThe caller should ensure that the guessed word is always\
+  \ the same length as the correct word, but since it could cause problems if this\
+  \ were not the case, you need to check for this eventuality:\n\n```cs\n//Throw an\
+  \ InvalidOperationException if the two parameters are of different lengths.\n```\n\
+  ```python\n#Raise an exception if the two parameters are of different lengths.\n\
+  ```\n\nYou may assume, however, that the two parameters will always be in the same\
+  \ case."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_correct_characters (s1 s2 : String) : Nat := \n  sorry\n"
+"vc-theorems": "theorem different_length_strings_raise_error {s1 s2 : String} : \n\
+  \  s1.length ≠ s2.length → count_correct_characters s1 s2 = 0 := \n  sorry\n\n\n\
+  theorem identical_strings_return_length {s : String} :\n  count_correct_characters\
+  \ s s = s.length := \n  sorry\n\n\ntheorem result_cannot_exceed_length {s1 s2 :\
+  \ String} :\n  s1.length = s2.length → count_correct_characters s1 s2 ≤ s1.length\
+  \ :=\n  sorry\n\n\ntheorem result_is_symmetric {s1 s2 : String} :\n  s1.length =\
+  \ s2.length → count_correct_characters s1 s2 = count_correct_characters s2 s1 :=\n\
+  \  sorry\n\n\ntheorem result_is_nonnegative {s1 s2 : String} :\n  s1.length = s2.length\
+  \ → count_correct_characters s1 s2 ≥ 0 := \n  sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval count_correct_characters \"dog\" \"car\"\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval count_correct_characters \"dog\" \"cog\"\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval count_correct_characters \"dog\" \"dog\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

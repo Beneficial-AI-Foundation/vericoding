@@ -1,0 +1,47 @@
+"vc-description": "Let us begin with an example:\n\nA man has a rather old car being\
+  \ worth $2000. \nHe saw a secondhand car being worth $8000. He wants to keep his\
+  \ old car until he can buy the secondhand one.\n\nHe thinks he can save $1000 each\
+  \ month but the prices of his old \ncar and of the new one decrease of 1.5 percent\
+  \ per month.\nFurthermore this percent of loss increases of `0.5` percent \nat the\
+  \ end of every two months.\nOur man finds it difficult to make all these calculations.\n\
+  \n**Can you help him?**\n\nHow many months will it take him to save up enough money\
+  \ to buy the car he wants, and how much money will he have left over?\n\n**Parameters\
+  \ and return of function:**\n```\nparameter (positive int or float, guaranteed)\
+  \ startPriceOld (Old car price)\nparameter (positive int or float, guaranteed) startPriceNew\
+  \ (New car price)\nparameter (positive int or float, guaranteed) savingperMonth\
+  \ \nparameter (positive float or int, guaranteed) percentLossByMonth\n\nnbMonths(2000,\
+  \ 8000, 1000, 1.5) should return [6, 766] or (6, 766)\n```\n###  Detail of the above\
+  \ example:\n```\nend month 1: percentLoss 1.5 available -4910.0\nend month 2: percentLoss\
+  \ 2.0 available -3791.7999...\nend month 3: percentLoss 2.0 available -2675.964\n\
+  end month 4: percentLoss 2.5 available -1534.06489...\nend month 5: percentLoss\
+  \ 2.5 available -395.71327...\nend month 6: percentLoss 3.0 available 766.158120825...\n\
+  return [6, 766] or (6, 766)\n\n```\n\nwhere `6` is the number of months at **the\
+  \ end of which** he can buy the new car and `766` is the nearest integer to `766.158...`\
+  \ (rounding `766.158` gives `766`).\n\n**Note:** \n\nSelling, buying and saving\
+  \ are normally done at end of month.\nCalculations are processed at the end of each\
+  \ considered month\nbut if, by chance from the start, the value of the old car is\
+  \ bigger than the value of the new one or equal there is no saving to be made, no\
+  \ need to wait so he can at the beginning of the month buy the new car:\n```\nnbMonths(12000,\
+  \ 8000, 1000, 1.5) should return [0, 4000]\nnbMonths(8000, 8000, 1000, 1.5) should\
+  \ return [0, 0]\n```\n\nWe don't take care of a deposit of savings in a bank:-)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def nbMonths (oldCarPrice : Int) (newCarPrice : Int) (saving :\
+  \ Int) (loss : Float) : Int × Float :=\n  sorry\n"
+"vc-theorems": "theorem nb_months_non_negative (oldCarPrice newCarPrice saving : Int)\
+  \ (loss : Float)\n  (h1 : oldCarPrice > 0) (h2 : newCarPrice > 0) (h3 : saving >\
+  \ 0) (h4 : loss > 0) :\n  let (months, _) := nbMonths oldCarPrice newCarPrice saving\
+  \ loss\n  months ≥ 0 := sorry\n\n\ntheorem nb_months_zero_when_old_more_expensive\
+  \ (oldCarPrice newCarPrice saving : Int) (loss : Float)\n  (h1 : oldCarPrice ≥ newCarPrice)\
+  \ (h2 : oldCarPrice > 0) (h3 : newCarPrice > 0) \n  (h4 : saving > 0) (h5 : loss\
+  \ > 0) :\n  let (months, _) := nbMonths oldCarPrice newCarPrice saving loss\n  months\
+  \ = 0 := sorry\n\n\ntheorem nb_months_budget_sufficient (oldCarPrice newCarPrice\
+  \ saving : Int) (loss : Float)\n  (h1 : oldCarPrice > 0) (h2 : newCarPrice > 0)\
+  \ (h3 : saving > 0) (h4 : loss > 0) :\n  let (months, _) := nbMonths oldCarPrice\
+  \ newCarPrice saving loss\n  let final_old_price := Float.ofInt oldCarPrice * ((100\
+  \ - loss - Float.ofInt months/2 * 0.5)/100)\n  let final_new_price := Float.ofInt\
+  \ newCarPrice * ((100 - loss - Float.ofInt months/2 * 0.5)/100)\n  final_old_price\
+  \ + Float.ofInt (saving * months) ≥ final_new_price := sorry\n\n\ntheorem nb_months_same_price_zero\
+  \ (price saving : Int) (loss : Float)\n  (h1 : price > 0) (h2 : saving > 0) (h3\
+  \ : loss > 0) :\n  nbMonths price price saving loss = (0, 0) := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

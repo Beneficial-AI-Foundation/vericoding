@@ -1,0 +1,43 @@
+"vc-description": "## Task\n\nGiven `n` representing the number of floors build a\
+  \ beautiful multi-million dollar mansions like the ones in the example below:\n\n\
+  ```\n     /\\\n    /  \\\n   /    \\\n  /______\\  number of floors 3\n  |     \
+  \ |\n  |      |\n  |______|\n\n     /\\\n    /  \\\n   /____\\\n   |    |   2 floors\n\
+  \   |____|\n\n     /\\\n    /__\\    1 floor\n    |__|\n```\n\n**Note:** whitespace\
+  \ should be preserved on both sides of the roof. Number of floors will go up to\
+  \ 30. There will be no tests with invalid input.\n\nIf you manage to complete it,\
+  \ you can try a harder version [here](https://www.codewars.com/kata/58360d112fb0ba255300008b).\n\
+  \nGood luck!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def my_crib (n : Nat) : String := sorry\n\ndef splitLines (s :\
+  \ String) : List String :=\n  s.splitOn \"\\n\"\n"
+"vc-theorems": "theorem crib_line_count (n : Nat) (h : 0 < n) :\n  (splitLines (my_crib\
+  \ n)).length = 2 * n + 1 := sorry\n\n\ntheorem crib_roof_chars (n : Nat) (h : 0\
+  \ < n) (i : Nat) (h2 : i < n) \n    (h3 : i < (splitLines (my_crib n)).length) :\n\
+  \  let lines := splitLines (my_crib n)\n  let line := lines[i]'h3\n  line.trim.data.get?\
+  \ 0 = some '/' ∧ \n  line.trim.data.getLast? = some '\\\\' := sorry\n\n\ntheorem\
+  \ crib_ceiling_chars (n : Nat) (h : 0 < n) \n    (h2 : n < (splitLines (my_crib\
+  \ n)).length) :\n  let lines := splitLines (my_crib n)\n  let line := lines[n]'h2\n\
+  \  line.data.get? 0 = some '/' ∧ \n  line.data.getLast? = some '\\\\' := sorry\n\
+  \n\ntheorem crib_wall_chars (n : Nat) (h : 0 < n) (i : Nat) \n    (h2 : n + 1 ≤\
+  \ i) (h3 : i < 2*n)\n    (h4 : i < (splitLines (my_crib n)).length) :\n  let lines\
+  \ := splitLines (my_crib n)\n  let line := lines[i]'h4\n  line.data.get? 0 = some\
+  \ '|' ∧ \n  line.data.getLast? = some '|' := sorry\n\n\ntheorem crib_floor_chars\
+  \ (n : Nat) (h : 0 < n)\n    (h2 : 2*n < (splitLines (my_crib n)).length) :\n  let\
+  \ lines := splitLines (my_crib n)\n  let line := lines[2*n]'h2\n  line.data.get?\
+  \ 0 = some '|' ∧ \n  line.data.getLast? = some '|' := sorry\n\n\ntheorem crib_line_widths\
+  \ (n : Nat) (h : 0 < n)\n    (i j : Nat) (hi : i < (splitLines (my_crib n)).length)\
+  \ \n    (hj : j < (splitLines (my_crib n)).length) :\n  let lines := splitLines\
+  \ (my_crib n)\n  (lines[i]'hi).data.length = (lines[j]'hj).data.length ∧\n  (lines[i]'hi).data.length\
+  \ = 2*n + 2 := sorry\n\n\ntheorem crib_underscore_count (n : Nat) (h : 0 < n)\n\
+  \    (h2 : n < (splitLines (my_crib n)).length)\n    (h3 : 2*n < (splitLines (my_crib\
+  \ n)).length) :\n  let lines := splitLines (my_crib n)\n  let ceiling := lines[n]'h2\n\
+  \  let floor := lines[2*n]'h3\n  (List.filter (· = '_') ceiling.data).length = 2*n\
+  \ ∧\n  (List.filter (· = '_') floor.data).length = 2*n := sorry\n\n\ntheorem crib_symmetry\
+  \ (n : Nat) (h : 0 < n) \n    (i : Nat) (h2 : i < (splitLines (my_crib n)).length)\
+  \ :\n  let lines := splitLines (my_crib n)\n  let line := lines[i]'h2\n  ∃ s : List\
+  \ Char,\n    s = line.data ∧\n    s = (s.reverse.map (fun c => \n      if c = '\\\
+  \\' then '/' \n      else if c = '/' then '\\\\'\n      else c)) := sorry\n\n/--\n\
+  info: test1\n-/\n#guard_msgs in\n#eval my_crib 1\n\n/--\ninfo: test2\n-/\n#guard_msgs\
+  \ in\n#eval my_crib 2\n\n/--\ninfo: test3\n-/\n#guard_msgs in\n#eval my_crib 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

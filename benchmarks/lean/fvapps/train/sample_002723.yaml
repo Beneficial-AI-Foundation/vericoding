@@ -1,0 +1,15 @@
+"vc-description": "For a given 2D vector described by cartesian coordinates of its\
+  \ initial point and terminal point in the following format:\n\n```python\n[[x1,\
+  \ y1], [x2, y2]]\n```\n\nYour function must return this vector's length represented\
+  \ as a floating point number.\n\nError must be within 1e-7.\n\nCoordinates can be\
+  \ integers or floating point numbers."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def vectorLength (p1 p2 : Point) : Float := \n  sorry\n"
+"vc-theorems": "theorem vectorLength_nonnegative (p1 p2 : Point) :\n  vectorLength\
+  \ p1 p2 ≥ 0 := by\n  sorry\n\n\ntheorem vectorLength_symmetric (p1 p2 : Point) :\n\
+  \  vectorLength p1 p2 = vectorLength p2 p1 := by\n  sorry\n\n\ntheorem vectorLength_same_point\
+  \ (p : Point) :\n  vectorLength p p = 0 := by\n  sorry\n\n\ntheorem vectorLength_triangle_inequality\
+  \ (a b c : Point) :\n  vectorLength a c ≤ vectorLength a b + vectorLength b c :=\
+  \ by\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

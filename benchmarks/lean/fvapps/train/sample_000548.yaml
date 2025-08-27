@@ -1,0 +1,52 @@
+"vc-description": "The land of Programmers Army is surrounded by many islands. A unique\
+  \ number is associated with each island. The king of the islands is a very generous\
+  \ person, he donates a certain amount of gold coins to travelers for visiting each\
+  \ island that they visited to.\nNow, you are appointed as a traveler, who will travel\
+  \ to all these(or some) islands as many times as the Army wants, and you will collect\
+  \ gold coins from the king of the island.\nIn each trip, you will be asked to give\
+  \ the total sum of gold coins you have collected.\n\n-----Input:-----\n- The first\
+  \ line of the input contains a single integer $T$. $T$ denoting the number of test\
+  \ cases. The description of $T$ test cases is as follows.\n- The next line of the\
+  \ input contains a single integer $N$. $N$ denotes the total number of Islands.\n\
+  - The next line of the input contains $N$ space-separated integers $A1, A2, A3...An$\
+  \ where $ith$ number denotes the maximum number of coins that the king of $ith$\
+  \ island can donate.\n- Next line contains a single integer $Q$. $Q$ denotes the\
+  \ total number of times traveler have to go for the trip.\n- Next $Q$ lines contains,\
+  \ two space-separated integers $Q1,Q2$ denoting the start and end number of islands,\
+  \ i.e. traveler will start the trip from $Q1th$ island and will go till $Q2th$ island,\
+  \ in each trip.\nNote: islands are numbered from $1$ to $N$.\n\n-----Output:-----\n\
+  - For each trip print the total number of gold coins, traveler will collect(each\
+  \ on a new line).\n\n-----Constraints:-----\n- $1 \\leq T \\leq 100$\n- $1 \\leq\
+  \ N \\leq 10^4$\n- $1 \\leq A1, A2, A3...An \\leq 10^5$\n- $1 \\leq Q \\leq 10^3$\n\
+  - $1 \\leq Q1,Q2 \\leq N$\n\n-----Sample Input:-----\n1\n4\n10 2 5 50\n2\n1 3\n\
+  2 4\n\n-----Sample Output:-----\n17\n57\n\n-----Explanation:-----\n- \nIn 1st Trip,\
+  \ traveler will go from 1st Island to 3rd Island, hence the total number of coins\
+  \ traveler can collect is 10+2+5 = 17\n- \nIn 2 d Trip, traveler will go from 2nd\
+  \ Island to 4th Island, hence the total number of coins traveler can collect is\
+  \ 2+5+50 = 57"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.sum (l : List Nat) : Nat := l.foldl (·+·) 0\n\ndef solveIslandRewards\
+  \ (N : Nat) (coins : List Nat) (queries : List (Nat × Nat)) : List Nat := sorry\n"
+"vc-theorems": "theorem island_rewards_result_length \n  (N : Nat) (coins : List Nat)\
+  \ (queries : List (Nat × Nat))  \n  (h1 : N > 0) (h2 : coins.length = N)\n  (h3\
+  \ : ∀ q ∈ queries, q.1 ≤ N ∧ q.2 ≤ N) :\n  (solveIslandRewards N coins queries).length\
+  \ = queries.length := sorry\n\n\ntheorem island_rewards_sum_correct\n  (N : Nat)\
+  \ (coins : List Nat) (queries : List (Nat × Nat))\n  (h1 : N > 0) (h2 : coins.length\
+  \ = N)\n  (h3 : ∀ q ∈ queries, q.1 ≤ N ∧ q.2 ≤ N)\n  (h4 : ∀ c ∈ coins, c ≥ 0)\n\
+  \  (i : Nat) (hi : i < queries.length) :\n  let q := queries.get ⟨i, hi⟩\n  let\
+  \ result := (solveIslandRewards N coins queries).get ⟨i, by rw [island_rewards_result_length\
+  \ N coins queries h1 h2 h3]; exact hi⟩\n  result = List.sum ((coins.take q.2).drop\
+  \ (q.1 - 1)) := sorry\n\n\ntheorem island_rewards_non_negative\n  (N : Nat) (coins\
+  \ : List Nat) (queries : List (Nat × Nat))\n  (h1 : N > 0) (h2 : coins.length =\
+  \ N)\n  (h3 : ∀ q ∈ queries, q.1 ≤ N ∧ q.2 ≤ N)\n  (h4 : ∀ c ∈ coins, c ≥ 0) :\n\
+  \  ∀ r ∈ solveIslandRewards N coins queries, r ≥ 0 := sorry\n\n\ntheorem island_rewards_empty_range\n\
+  \  (N : Nat) (coins : List Nat) (queries : List (Nat × Nat))\n  (h1 : N > 0) (h2\
+  \ : coins.length = N)\n  (h3 : ∀ q ∈ queries, q.1 ≤ N ∧ q.2 ≤ N)\n  (i : Nat) (hi\
+  \ : i < queries.length) :\n  let q := queries.get ⟨i, hi⟩\n  q.1 > q.2 → (solveIslandRewards\
+  \ N coins queries).get ⟨i, by rw [island_rewards_result_length N coins queries h1\
+  \ h2 h3]; exact hi⟩ = 0 := sorry\n\n\ntheorem island_rewards_deterministic\n  (N\
+  \ : Nat) (coins : List Nat) (queries : List (Nat × Nat))\n  (h1 : N > 0) (h2 : coins.length\
+  \ = N)\n  (h3 : ∀ q ∈ queries, q.1 ≤ N ∧ q.2 ≤ N) :\n  solveIslandRewards N coins\
+  \ queries = solveIslandRewards N coins queries := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

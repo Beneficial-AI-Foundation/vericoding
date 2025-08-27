@@ -1,0 +1,17 @@
+"vc-description": "Find the smallest prime palindrome greater than or equal to N.\n\
+  Recall that a number is prime if it's only divisors are 1 and itself, and it is\
+  \ greater than 1. \nFor example, 2,3,5,7,11 and 13 are primes.\nRecall that a number\
+  \ is a palindrome if it reads the same from left to right as it does from right\
+  \ to left. \nFor example, 12321 is a palindrome.\n \n\nExample 1:\nInput: 6\nOutput:\
+  \ 7\n\n\nExample 2:\nInput: 8\nOutput: 11\n\n\nExample 3:\nInput: 13\nOutput: 101\n\
+  \n\n\n \nNote:\n\n1 <= N <= 10^8\nThe answer is guaranteed to exist and be less\
+  \ than 2 * 10^8."
+"vc-preamble": "import Imports.AllImports\n\ndef primePalindrome (n : Nat) : Nat :=\n\
+  \  sorry\n\n\ndef isPalindrome (n : Nat) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isPrime (n : Nat) : Bool :=\n  sorry\n\n\n\n\n"
+"vc-theorems": "theorem primePalindrome_geq_input\n  (n : Nat)\n  (h1 : n ≥ 2)\n \
+  \ (h2 : n ≤ 19990) :\n  primePalindrome n ≥ n :=\nsorry\n\n/--\ninfo: 7\n-/\n#guard_msgs\
+  \ in\n#eval primePalindrome 6\n\n/--\ninfo: 11\n-/\n#guard_msgs in\n#eval primePalindrome\
+  \ 8\n\n/--\ninfo: 101\n-/\n#guard_msgs in\n#eval primePalindrome 13\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

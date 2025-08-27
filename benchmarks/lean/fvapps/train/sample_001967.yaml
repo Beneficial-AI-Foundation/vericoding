@@ -1,0 +1,39 @@
+"vc-description": "Each New Year Timofey and his friends cut down a tree of n vertices\
+  \ and bring it home. After that they paint all the n its vertices, so that the i-th\
+  \ vertex gets color c_{i}.\n\nNow it's time for Timofey birthday, and his mother\
+  \ asked him to remove the tree. Timofey removes the tree in the following way: he\
+  \ takes some vertex in hands, while all the other vertices move down so that the\
+  \ tree becomes rooted at the chosen vertex. After that Timofey brings the tree to\
+  \ a trash can.\n\nTimofey doesn't like it when many colors are mixing together.\
+  \ A subtree annoys him if there are vertices of different color in it. Timofey wants\
+  \ to find a vertex which he should take in hands so that there are no subtrees that\
+  \ annoy him. He doesn't consider the whole tree as a subtree since he can't see\
+  \ the color of the root vertex.\n\nA subtree of some vertex is a subgraph containing\
+  \ that vertex and all its descendants.\n\nYour task is to determine if there is\
+  \ a vertex, taking which in hands Timofey wouldn't be annoyed.\n\n\n-----Input-----\n\
+  \nThe first line contains single integer n (2 ≤ n ≤ 10^5) — the number of vertices\
+  \ in the tree.\n\nEach of the next n - 1 lines contains two integers u and v (1\
+  \ ≤ u, v ≤ n, u ≠ v), denoting there is an edge between vertices u and v. It is\
+  \ guaranteed that the given graph is a tree.\n\nThe next line contains n integers\
+  \ c_1, c_2, ..., c_{n} (1 ≤ c_{i} ≤ 10^5), denoting the colors of the vertices.\n\
+  \n\n-----Output-----\n\nPrint \"NO\" in a single line, if Timofey can't take the\
+  \ tree in such a way that it doesn't annoy him.\n\nOtherwise print \"YES\" in the\
+  \ first line. In the second line print the index of the vertex which Timofey should\
+  \ take in hands. If there are multiple answers, print any of them.\n\n\n-----Examples-----\n\
+  Input\n4\n1 2\n2 3\n3 4\n1 2 1 1\n\nOutput\nYES\n2\nInput\n3\n1 2\n2 3\n1 2 3\n\n\
+  Output\nYES\n2\nInput\n4\n1 2\n2 3\n3 4\n1 2 1 2\n\nOutput\nNO"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_tree_colors (n : Nat) (edges : List (Nat × Nat)) (colors\
+  \ : List Nat) : Int :=\nsorry\n"
+"vc-theorems": "theorem solve_tree_colors_result_range {n : Nat} {edges : List (Nat\
+  \ × Nat)} {colors : List Nat} \n  (h : solve_tree_colors n edges colors ≠ -1) :\n\
+  \  1 ≤ solve_tree_colors n edges colors ∧ solve_tree_colors n edges colors ≤ n :=\n\
+  sorry\n\n\ntheorem solve_tree_colors_same_color {n : Nat} {edges : List (Nat × Nat)}\
+  \ {colors : List Nat}\n  (h : ∀ i j, i < colors.length → j < colors.length → colors[i]!\
+  \ = colors[j]!) :\n  solve_tree_colors n edges colors = 1 :=\nsorry\n\n\ntheorem\
+  \ solve_tree_colors_line_graph_same_color {n : Nat} {colors : List Nat}\n  (hn :\
+  \ 2 ≤ n)\n  (hc : colors.length = n)\n  (h_same : ∀ i j, i < colors.length → j <\
+  \ colors.length → colors[i]! = colors[j]!) :\n  solve_tree_colors n (List.range\
+  \ (n-1) |>.map (fun i => (i+1, i+2))) colors = 1 :=\nsorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

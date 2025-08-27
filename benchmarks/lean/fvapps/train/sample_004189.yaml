@@ -1,0 +1,33 @@
+"vc-description": "Every number may be factored in prime factors.\n\nFor example,\
+  \ the number 18 may be factored by its prime factors ``` 2 ``` and ```3```\n```\n\
+  18 = 2 . 3 . 3 = 2 . 3²\n```\nThe sum of the prime factors of 18 is  ```2 + 3 +\
+  \ 3 = 8```\n\nBut some numbers like 70 are divisible by the sum of its prime factors:\n\
+  ```\n70 = 2 . 5 . 7 # sum of prime factors = 2 + 5 + 7 = 14\nand 70 is a multiple\
+  \ of 14\n```\nOf course that primes would fulfill this property, but is obvious,\
+  \ because the prime decomposition of a number, is the number itself and every number\
+  \ is divisible by iself. That is why we will discard every prime number in the results\n\
+  \nWe are interested in collect the integer positive numbers (non primes) that have\
+  \ this property in a certain range ```[a, b]``` (inclusive).\n\nMake the function\
+  \ ```mult_primefactor_sum()```, that receives the values ```a```, ```b``` as limits\
+  \ of the range ```[a, b]``` and ```a < b``` and outputs the sorted list of these\
+  \ numbers.\n\nLet's see some cases:\n```python\nmult_primefactor_sum(10, 100) ==\
+  \ [16, 27, 30, 60, 70, 72, 84] \n\nmult_primefactor_sum(1, 60) == [1, 4, 16, 27,\
+  \ 30, 60]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def factorize_add (n : Nat) : Nat := sorry \n\ndef mult_primefactor_sum\
+  \ (a b : Nat) : List Nat := sorry\n"
+"vc-theorems": "theorem factorize_add_le (n : Nat) (h : n > 0) : \n  factorize_add\
+  \ n ≤ n := sorry\n\n\ntheorem factorize_add_pos (n : Nat) (h : n > 0) :\n  factorize_add\
+  \ n > 0 := sorry\n\n\ntheorem mult_primefactor_sum_in_range (a b x : Nat) (h : x\
+  \ ∈ mult_primefactor_sum a b) :\n  min a b ≤ x ∧ x ≤ max a b := sorry\n\n\ntheorem\
+  \ mult_primefactor_sum_ordered (a b i j : Nat) \n  (h1 : i < j) (h2 : j < (mult_primefactor_sum\
+  \ a b).length) :\n  (mult_primefactor_sum a b)[i] < (mult_primefactor_sum a b)[j]\
+  \ := sorry\n\n\ntheorem mult_primefactor_sum_divisible (a b x : Nat) \n  (h : x\
+  \ ∈ mult_primefactor_sum a b) :\n  x % factorize_add x = 0 := sorry\n\n\ntheorem\
+  \ mult_primefactor_sum_not_equal (a b x : Nat)\n  (h : x ∈ mult_primefactor_sum\
+  \ a b) :\n  factorize_add x ≠ x := sorry\n\n/--\ninfo: [16, 27, 30, 60, 70, 72,\
+  \ 84]\n-/\n#guard_msgs in\n#eval mult_primefactor_sum 10 100\n\n/--\ninfo: [84,\
+  \ 105, 150]\n-/\n#guard_msgs in\n#eval mult_primefactor_sum 80 150\n\n/--\ninfo:\
+  \ [105, 150, 180]\n-/\n#guard_msgs in\n#eval mult_primefactor_sum 90 200\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

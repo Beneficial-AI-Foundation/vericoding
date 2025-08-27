@@ -1,0 +1,31 @@
+"vc-description": "Given a string S and a string T, count the number of distinct subsequences\
+  \ of S which equals T.\n\nA subsequence of a string is a new string which is formed\
+  \ from the original string by deleting some (can be none) of the characters without\
+  \ disturbing the relative positions of the remaining characters. (ie, \"ACE\" is\
+  \ a subsequence of \"ABCDE\" while \"AEC\" is not).\n\nExample 1:\n\n\nInput: S\
+  \ = \"rabbbit\", T = \"rabbit\"\nOutput: 3\nExplanation:\n\nAs shown below, there\
+  \ are 3 ways you can generate \"rabbit\" from S.\n(The caret symbol ^ means the\
+  \ chosen letters)\n\nrabbbit\n^^^^ ^^\nrabbbit\n^^ ^^^^\nrabbbit\n^^^ ^^^\n\n\n\
+  Example 2:\n\n\nInput: S = \"babgbag\", T = \"bag\"\nOutput: 5\nExplanation:\n\n\
+  As shown below, there are 5 ways you can generate \"bag\" from S.\n(The caret symbol\
+  \ ^ means the chosen letters)\n\nbabgbag\n^^ ^\nbabgbag\n^^    ^\nbabgbag\n^   \
+  \ ^^\nbabgbag\n  ^  ^^\nbabgbag\n    ^^^"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_distinct_subsequences (s t : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_distinct_subsequences_nonnegative (s t : String) :\n\
+  \  count_distinct_subsequences s t ≥ 0 :=\n  sorry\n\n\ntheorem empty_pattern_count\
+  \ (s : String) :\n  count_distinct_subsequences s \"\" = 1 :=\n  sorry\n\n\ntheorem\
+  \ empty_string_count (t : String) (h : t ≠ \"\") :\n  count_distinct_subsequences\
+  \ \"\" t = 0 :=\n  sorry\n\n\ntheorem self_pattern_count (t : String) :\n  count_distinct_subsequences\
+  \ t t = 1 :=\n  sorry\n\n\ntheorem filtered_chars_count (s t : String) :\n  let\
+  \ filtered_s := s.toList.filter (fun c => t.toList.contains c)\n  count_distinct_subsequences\
+  \ s t = count_distinct_subsequences (String.mk filtered_s) t :=\n  sorry\n\n\ntheorem\
+  \ shorter_string_zero_count (s t : String) :\n  s.length < t.length → count_distinct_subsequences\
+  \ s t = 0 :=\n  sorry\n\n\ntheorem concatenation_self_count (s₁ s₂ : String) :\n\
+  \  let t := s₁ ++ s₂\n  count_distinct_subsequences t t = 1 :=\n  sorry\n\n/--\n\
+  info: 3\n-/\n#guard_msgs in\n#eval count_distinct_subsequences \"rabbbit\" \"rabbit\"\
+  \n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval count_distinct_subsequences \"babgbag\"\
+  \ \"bag\"\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_distinct_subsequences\
+  \ \"abc\" \"abc\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

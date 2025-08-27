@@ -1,0 +1,47 @@
+"vc-description": "Tanish is the president of the chemistry club at his school. He\
+  \ considers everyone who doesn't like chemistry as his enemy. After years of research,\
+  \ he has invented a lethal poison, which he named success. Now Tanish plans to kill\
+  \ all his enemies with his success. Success is extremely deadly and is untraceable\
+  \ in small concentrations.\nTanish has $\\text{N}$ flasks lying on the shelf of\
+  \ his lab. All of these flasks contain the same volume of poison solution. The concentration\
+  \ of poison in the $\\text{ith}$ flask is $\\mathbf{a_i}$. In one move - Tanish\
+  \ picks up any two flasks, pours half of the contents of each of these flasks into\
+  \ a third initially empty flask, discards the two flasks and places the third flask\
+  \ (which now has the same volume of solution as all other flasks) on the shelf.\
+  \ He performs N-1 such moves to end up with only one flask of poison on the shelf.\
+  \ He wishes to perform these moves such that the concentration of poison in this\
+  \ flask is the minimum possible. What is the minimum concentration of poison that\
+  \ he can achieve?\n\n-----Input-----\nFirst line of the input contains a single\
+  \ integer $\\text{T}$ - the number of test cases. \nFor each test case,\nThe first\
+  \ line contains a single integer $\\text{N}$, the number of bottles. \nThe second\
+  \ line contains N space-separated integers, the concentrations. \n\n-----Output-----\n\
+  For each test case, print one line containing the lowest final concentration. The\
+  \ output will be accepted if the absolute error is $\\leq 10^{-6}$.\n\n-----Constraints-----\n\
+  $1 \\leq \\text{T} \\leq 10$\n$2 \\leq \\text{N} \\leq 10^4$\n$0 \\leq \\mathbf{a_i}\
+  \ \\leq 10^9$\n\n-----Sample Input-----\n2\n2\n9 3\n3\n3 2 9\n\n-----Sample Output-----\n\
+  6.00000000\n4.00000000\n\n-----Explanation-----\nIn test 1, Tanish mixes flasks\
+  \ 1 and 2. In test 2, he first mixes flasks 1 and 3 to get a flask of concentration\
+  \ 6 and then mixes this flask with flask 2 to get a flask of poison concentration\
+  \ 4.    \n\n-----Note-----\nThe concentration is given in the unit ppb i.e. parts\
+  \ per billion.\n1 gram poison in $10^9$ ml solution is 1 ppb.\nConcentration in\
+  \ ppb = (Number of grams of poison / Volume of solution in ml) x $10^9$"
+"vc-preamble": "import Imports.AllImports\n\ndef minimum (l : List Nat) : Nat :=\n\
+  \  match l with\n  | [] => 0\n  | x::xs => (xs.foldl min x)\n\n\ndef maximum (l\
+  \ : List Nat) : Nat :=\n  match l with\n  | [] => 0\n  | x::xs => (xs.foldl max\
+  \ x)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_poison_concentration (n : Nat) (concentrations : List Nat)\
+  \ : Nat :=\n  sorry\n"
+"vc-theorems": "theorem min_poison_concentration_bounds\n  (n : Nat)\n  (concentrations\
+  \ : List Nat)\n  (h : 1 ≤ n)\n  (h' : n ≤ concentrations.length)\n  : min_poison_concentration\
+  \ n concentrations ≥ minimum concentrations ∧\n    min_poison_concentration n concentrations\
+  \ ≤ maximum concentrations := by\n  sorry\n\n\ntheorem min_poison_concentration_deterministic\n\
+  \  (n : Nat)\n  (concentrations : List Nat)\n  (h : 1 ≤ n)\n  (h' : n ≤ concentrations.length)\n\
+  \  : min_poison_concentration n concentrations = min_poison_concentration n concentrations\
+  \ := by\n  sorry\n\n\ntheorem min_poison_concentration_orderless\n  (n : Nat)\n\
+  \  (concentrations : List Nat)\n  (h : 1 ≤ n)\n  (h' : n ≤ concentrations.length)\n\
+  \  : min_poison_concentration n concentrations = min_poison_concentration n concentrations.reverse\
+  \ := by\n  sorry\n\n\ntheorem single_concentration_is_max\n  (concentrations : List\
+  \ Nat)\n  (h : 0 < concentrations.length)\n  : min_poison_concentration 1 concentrations\
+  \ = maximum concentrations := by\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

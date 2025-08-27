@@ -1,0 +1,37 @@
+"vc-description": "You are given a non-empty string s consisting of lowercase English\
+  \ letters. You have to pick exactly one non-empty substring of s and shift all its\
+  \ letters 'z' $\\rightarrow$ 'y' $\\rightarrow$ 'x' $\\rightarrow \\ldots \\rightarrow$\
+  \ 'b' $\\rightarrow$ 'a' $\\rightarrow$ 'z'. In other words, each character is replaced\
+  \ with the previous character of English alphabet and 'a' is replaced with 'z'.\n\
+  \nWhat is the lexicographically minimum string that can be obtained from s by performing\
+  \ this shift exactly once?\n\n\n-----Input-----\n\nThe only line of the input contains\
+  \ the string s (1 ≤ |s| ≤ 100 000) consisting of lowercase English letters.\n\n\n\
+  -----Output-----\n\nPrint the lexicographically minimum string that can be obtained\
+  \ from s by shifting letters of exactly one non-empty substring.\n\n\n-----Examples-----\n\
+  Input\ncodeforces\n\nOutput\nbncdenqbdr\n\nInput\nabacaba\n\nOutput\naaacaba\n\n\
+  \n\n-----Note-----\n\nString s is lexicographically smaller than some other string\
+  \ t of the same length if there exists some 1 ≤ i ≤ |s|, such that s_1 = t_1, s_2\
+  \ = t_2, ..., s_{i} - 1 = t_{i} - 1, and s_{i} < t_{i}."
+"vc-preamble": "import Imports.AllImports\n\ndef isLower (c : Char) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_min_string_after_shift (s : List Char) : List Char :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem output_length_matches_input\n  (s : List Char)\n  (h : ∀ c\
+  \ ∈ s, isLower c) :\n  (get_min_string_after_shift s).length = s.length :=\nsorry\n\
+  \n\ntheorem output_has_valid_chars\n  (s : List Char) \n  (h : ∀ c ∈ s, isLower\
+  \ c) :\n  ∀ c ∈ get_min_string_after_shift s, isLower c :=\nsorry\n\n\ntheorem output_changes_at_most_one_segment\n\
+  \  (s : List Char)\n  (h : ∀ c ∈ s, isLower c) :\n  let result := get_min_string_after_shift\
+  \ s\n  let diff_positions := List.range s.length |>.filter (fun i => s.get! i ≠\
+  \ result.get! i)\n  diff_positions.length > 0 →\n  (diff_positions.maximum?.getD\
+  \ 0) - (diff_positions.minimum?.getD 0) + 1 = diff_positions.length :=\nsorry\n\n\
+  \ntheorem all_a_string\n  (s : List Char)\n  (h : ∀ c ∈ s, c = 'a')\n  (h' : s.length\
+  \ > 0) :\n  get_min_string_after_shift s = (List.replicate (s.length - 1) 'a') ++\
+  \ ['z'] :=\nsorry\n\n\ntheorem shifted_chars_decrease\n  (s : List Char)\n  (h :\
+  \ ∀ c ∈ s, isLower c) :\n  let result := get_min_string_after_shift s\n  let diff_positions\
+  \ := List.range s.length |>.filter (fun i => s.get! i ≠ result.get! i)\n  ∀ i ∈\
+  \ diff_positions,\n    (s.get! i = 'a' → result.get! i = 'z') ∧\n    (s.get! i ≠\
+  \ 'a' → (result.get! i).toNat = (s.get! i).toNat - 1) :=\nsorry\n\n/--\ninfo: 'bncdenqbdr'\n\
+  -/\n#guard_msgs in\n#eval get_min_string_after_shift \"codeforces\"\n\n/--\ninfo:\
+  \ 'aaacaba'\n-/\n#guard_msgs in\n#eval get_min_string_after_shift \"abacaba\"\n\n\
+  /--\ninfo: 'z'\n-/\n#guard_msgs in\n#eval get_min_string_after_shift \"a\"\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

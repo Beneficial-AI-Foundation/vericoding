@@ -1,0 +1,33 @@
+"vc-description": "You need to create a function that will validate if given parameters\
+  \ are valid geographical coordinates.\n\nValid coordinates look like the following:\
+  \ __\"23.32353342, -32.543534534\"__.\nThe return value should be either __true__\
+  \ or __false__.\n\nLatitude (which is first float) can be between 0 and 90, positive\
+  \ or negative.\nLongitude (which is second float) can be between 0 and 180, positive\
+  \ or negative.\n\nCoordinates can only contain digits, or one of the following symbols\
+  \ (including space after comma) __ -, . __\n\nThere should be no space between the\
+  \ minus \"-\" sign and the digit after it.\n\nHere are some valid coordinates:\n\
+  \n* -23, 25\n* 24.53525235, 23.45235\n* 04, -23.234235\n* 43.91343345, 143\n* 4,\
+  \ -3\n\nAnd some invalid ones:\n\n* 23.234, - 23.4234\n* 2342.43536, 34.324236\n\
+  * N23.43345, E32.6457\n* 99.234, 12.324\n* 6.325624, 43.34345.345\n* 0, 1,2\n* 0.342q0832,\
+  \ 1.2324"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_valid_coordinates (s : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem no_comma_invalid (s: String) : \n  ¬s.contains ',' → is_valid_coordinates\
+  \ s = false :=\nsorry\n\n\ntheorem non_string_types_invalid {α : Type} (x : α) [ToString\
+  \ α] :\n  is_valid_coordinates (toString x) = false :=\nsorry\n\n\ntheorem out_of_range_latitude_invalid\
+  \ (n : Float) :\n  (n < -90 ∨ n > 90) →\n  is_valid_coordinates (toString n ++ \"\
+  , 0\") = false :=\nsorry\n\n\ntheorem alpha_chars_invalid (s : String) :\n  (∃ c\
+  \ ∈ s.data, c.isAlpha) →\n  is_valid_coordinates (\"0, \" ++ s) = false :=\nsorry\n\
+  \n\ntheorem space_after_minus_invalid :\n  is_valid_coordinates \"23.234, - 23.4234\"\
+  \ = false :=\nsorry\n\n\ntheorem multiple_decimals_invalid :\n  is_valid_coordinates\
+  \ \"23.2.34, 23.4234\" = false :=\nsorry\n\n\ntheorem scientific_notation_invalid\
+  \ :\n  is_valid_coordinates \"23e4, 45\" = false :=\nsorry\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval is_valid_coordinates \"4, -3\"\n\n/--\ninfo: True\n-/\n\
+  #guard_msgs in\n#eval is_valid_coordinates \"-23, 25\"\n\n/--\ninfo: True\n-/\n\
+  #guard_msgs in\n#eval is_valid_coordinates \"24.53525235, 23.45235\"\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval is_valid_coordinates \"23.234, - 23.4234\"\n\n\
+  /--\ninfo: False\n-/\n#guard_msgs in\n#eval is_valid_coordinates \"99.234, 12.324\"\
+  \n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_valid_coordinates \"0.342q0832,\
+  \ 1.2324\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

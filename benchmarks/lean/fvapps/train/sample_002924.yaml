@@ -1,0 +1,23 @@
+"vc-description": "##Task:\n\nYou have to write a function **pattern** which creates\
+  \ the following pattern upto n number of rows. *If the Argument is 0 or a Negative\
+  \ Integer then it should return \"\" i.e. empty string.*\n   \n##Examples:\n\npattern(4):\n\
+  \n    1234\n    234\n    34\n    4\n    \npattern(6):\n \n    123456\n    23456\n\
+  \    3456\n    456\n    56\n    6\n\n\n\n```Note: There are no blank spaces```\n\
+  \n```Hint: Use \\n in string to jump to next line```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pattern (n : Int) : String := sorry\n\ntheorem pattern_non_positive\
+  \ (n : Int) (h : n ≤ 0) : pattern n = \"\" := sorry\n"
+"vc-theorems": "theorem pattern_lines_count (n : Int) (h : 1 ≤ n ∧ n ≤ 9) :\n  let\
+  \ lines := (pattern n).splitOn \"\\n\"\n  lines.length = n.toNat := sorry\n\n\n\
+  theorem pattern_line_content (n : Int) (i : Nat) (h1 : 1 ≤ n ∧ n ≤ 9) (h2 : 0 ≤\
+  \ i ∧ i < n) :\n  let lines := (pattern n).splitOn \"\\n\"\n  let line := lines[i]'(by\
+  \ sorry)\n  let nums := line.data.map (λ c => c.toNat - '0'.toNat)\n  nums = List.range'\
+  \ (i + 1) (n.toNat + 1) := sorry\n\n\ntheorem pattern_no_extra_whitespace (n : Int)\
+  \ (h : 1 ≤ n ∧ n ≤ 9) :\n  let result := pattern n\n  let lines := result.splitOn\
+  \ \"\\n\"\n  ¬result.startsWith \"\\n\" ∧ \n  ¬result.endsWith \"\\n\" ∧\n  ∀ line\
+  \ ∈ lines, ¬(line.data.contains ' ' ∧ line.data.contains ' ') := sorry\n\n/--\n\
+  info: '12\\n2'\n-/\n#guard_msgs in\n#eval pattern 2\n\n/--\ninfo: '1234\\n234\\\
+  n34\\n4'\n-/\n#guard_msgs in\n#eval pattern 4\n\n/--\ninfo: ''\n-/\n#guard_msgs\
+  \ in\n#eval pattern 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

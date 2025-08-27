@@ -1,0 +1,20 @@
+"vc-description": "Given an integer array sorted in non-decreasing order, there is\
+  \ exactly one integer in the array that occurs more than 25% of the time.\nReturn\
+  \ that integer.\n \nExample 1:\nInput: arr = [1,2,2,6,6,6,6,7,10]\nOutput: 6\n\n\
+   \nConstraints:\n\n1 <= arr.length <= 10^4\n0 <= arr[i] <= 10^5"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_special_integer (nums : List Int) : Int :=\nsorry\n"
+"vc-theorems": "theorem special_int_exists (nums : List Int) (h : nums ≠ []) :\n \
+  \ let result := find_special_integer nums\n  let count := (nums.filter (· = result)).length\
+  \ \n  count ≥ nums.length / 4 ∨ result = nums.getLast h := by\nsorry\n\n\ntheorem\
+  \ result_in_array (nums : List Int) (h : nums ≠ []) :\n  let result := find_special_integer\
+  \ nums\n  result ∈ nums := by\nsorry\n\n\ntheorem all_same_number (nums : List Int)\
+  \ (h1 : nums.length ≥ 4) \n    (h2 : ∀ x ∈ nums, x = nums[0]) :\n  find_special_integer\
+  \ nums = nums[0] := by\nsorry\n\n\ntheorem binary_array (nums : List Int) (h1 :\
+  \ nums.length ≥ 2)\n    (h2 : ∀ x ∈ nums, x = 0 ∨ x = 1) :\n  let result := find_special_integer\
+  \ nums\n  result = 0 ∨ result = 1 := by\nsorry\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval find_special_integer [1, 2, 2, 6, 6, 6, 6, 7, 10]\n\n/--\ninfo: 1\n\
+  -/\n#guard_msgs in\n#eval find_special_integer [1, 1, 1, 2, 3]\n\n/--\ninfo: 1\n\
+  -/\n#guard_msgs in\n#eval find_special_integer [1, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

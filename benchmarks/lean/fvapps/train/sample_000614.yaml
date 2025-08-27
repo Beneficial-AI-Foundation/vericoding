@@ -1,0 +1,30 @@
+"vc-description": "Well known investigative reporter Kim \"Sherlock'' Bumjun needs\
+  \ your help! Today, his mission is to sabotage the operations of the evil JSA. If\
+  \ the JSA is allowed to succeed, they will use the combined power of the WQS binary\
+  \ search and the UFDS to take over the world!\nBut Kim doesn't know where the base\
+  \ is located. He knows that the base is on the highest peak of the Himalayan Mountains.\
+  \ He also knows the heights of each of the $N$ mountains. Can you help Kim find\
+  \ the height of the mountain where the base is located? \n\n-----Input:-----\n-\
+  \ First line will contain $T$, number of testcases. Then the testcases follow. \
+  \   \n- The first line in each testcase contains one integer, $N$.    \n- The following\
+  \ $N$ lines of each test case each contain one integer: the height of a new mountain.\n\
+  \n-----Output:-----\nFor each testcase, output one line with one integer: the height\
+  \ of the tallest mountain for that test case.\n\n-----Constraints-----\n- $1 \\\
+  leq T \\leq 10$\n- $1 \\leq N \\leq 100000$\n- $0 \\leq$ height of each mountain\
+  \ $\\leq 10^9$\n\n-----Subtasks:-----\n- 100 points: No additional constraints.\n\
+  \n-----Sample Input:-----\n1\n5\n4\n7\n6\n3\n1\n\n-----Sample Output:-----\n7"
+"vc-preamble": "import Imports.AllImports\n\ndef find_tallest_mountain (n : Nat) (heights\
+  \ : List Nat) : Nat :=\nsorry\n\n\ndef list_max (l : List Nat) : Nat :=\nmatch l\
+  \ with\n| [] => 0\n| h::t => List.foldl Nat.max h t\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_min (l : List Nat) : Nat :=\nmatch l with\n| [] => 0\n\
+  | h::t => List.foldl Nat.min h t\n\n\n\n\n"
+"vc-theorems": "theorem find_tallest_in_list {n : Nat} {heights : List Nat} (h : heights\
+  \ ≠ []) :\n  find_tallest_mountain n heights ∈ heights\n  := sorry\n\n\ntheorem\
+  \ length_preserved {n : Nat} {heights : List Nat} :\n  heights.length = n →\n  heights.length\
+  \ = n\n  := sorry\n\n\ntheorem single_mountain_height {height : Nat} :\n  find_tallest_mountain\
+  \ 1 [height] = height\n  := sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval find_tallest_mountain\
+  \ 5 [4, 7, 6, 3, 1]\n\n/--\ninfo: 30\n-/\n#guard_msgs in\n#eval find_tallest_mountain\
+  \ 3 [10, 20, 30]\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval find_tallest_mountain\
+  \ 1 [5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

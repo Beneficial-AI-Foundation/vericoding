@@ -1,0 +1,14 @@
+"vc-description": "I'm new to coding and now I want to get the sum of two arrays...actually\
+  \ the sum of all their elements. I'll appreciate for your help.\n\nP.S. Each array\
+  \ includes only integer numbers. Output is a number too."
+"vc-preamble": "import Imports.AllImports\n\ndef sum : List Int → Int \n  | [] =>\
+  \ 0\n  | x::xs => x + sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def array_plus_array (arr1 arr2 : List Int) : Int := sorry\n\n\n\
+  \n\n\ntheorem array_plus_array_associative (a b c : List Int) :\n  array_plus_array\
+  \ (a ++ b) c = array_plus_array a (b ++ c) := sorry"
+"vc-theorems": "/--\ninfo: 21\n-/\n#guard_msgs in\n#eval array_plus_array [1, 2, 3]\
+  \ [4, 5, 6]\n\n/--\ninfo: -21\n-/\n#guard_msgs in\n#eval array_plus_array [-1, -2,\
+  \ -3] [-4, -5, -6]\n\n/--\ninfo: 2100\n-/\n#guard_msgs in\n#eval array_plus_array\
+  \ [100, 200, 300] [400, 500, 600]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

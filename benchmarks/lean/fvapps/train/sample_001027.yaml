@@ -1,0 +1,33 @@
+"vc-description": "You have an array A of size N containing only positive numbers.\
+  \ You have to output the maximum possible value of A[i]%A[j] where 1<=i,j<=N. \n\
+  \n-----Input-----\nThe first line of each test case contains a single integer N\
+  \ denoting the size of the array. The next N lines contains integers A1, A2, ...,\
+  \ AN denoting the numbers\n\n-----Output-----\nOutput a single integer answering\
+  \ what is asked in the problem.\n\n-----Subtask 1 (20 points)-----\n- 1 ≤ N ≤ 5000\n\
+  - 1 ≤ A[i] ≤ 2*(10^9)\n\n-----Subtask 2 (80 points)-----\n- 1 ≤ N ≤ 1000000\n- 1\
+  \ ≤ A[i] ≤ 2*(10^9)\n\n-----Example-----\nInput:\n2\n1\n2\n\nOutput:\n1\n\n-----Explanation-----\n\
+  There will be four values, A[0]%A[0] = 0, A[0]%A[1]=1, A[1]%A[0]=0, A[1]%A[1]=0,\
+  \ and hence the output will be the maximum among them all, that is 1."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_max_modulo (arr : List Nat) : Nat := sorry \n\n@[simp]\
+  \ def max_list (l : List Nat) : Nat := sorry \n"
+"vc-theorems": "theorem find_max_modulo_non_negative (arr : List Nat) (h : arr.length\
+  \ > 0) :\n  find_max_modulo arr ≥ 0 := sorry\n\n\ntheorem find_max_modulo_bounded_by_max\
+  \ (arr : List Nat) (h : arr.length > 0) :\n  find_max_modulo arr ≤ max_list arr\
+  \ := sorry\n\n\ntheorem find_max_modulo_is_maximal (arr : List Nat) (h : arr.length\
+  \ > 0) :\n  let max_val := max_list arr\n  let others := arr.filter (· ≠ max_val)\n\
+  \  let second_max := if others.length > 0 then max_list others else 0\n  let candidates\
+  \ := (arr.filter (· ≠ 0)).map (max_val % ·) ++ [second_max % max_val]\n  find_max_modulo\
+  \ arr = max_list candidates := sorry\n\n\ntheorem find_max_modulo_duplicate_invariant\
+  \ (arr : List Nat) (h : arr.length > 0) :\n  find_max_modulo arr = find_max_modulo\
+  \ (arr ++ arr) := sorry\n\n\ntheorem find_max_modulo_ordering_invariant {arr₁ arr₂\
+  \ : List Nat} \n  (h₁ : arr₁.length > 0) (h₂ : arr₁.length = arr₂.length) \n  (h₃\
+  \ : ∀ x, x ∈ arr₁ ↔ x ∈ arr₂) :\n  find_max_modulo arr₁ = find_max_modulo arr₂ :=\
+  \ sorry\n\n\ntheorem find_max_modulo_empty_error :\n  ∀ (arr : List Nat), arr.length\
+  \ = 0 → find_max_modulo arr = 0 := sorry\n\n\ntheorem find_max_modulo_zero_error\
+  \ (arr : List Nat) :\n  arr = [0] → find_max_modulo arr = 0 := sorry\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval find_max_modulo [1, 2]\n\n/--\ninfo: 5\n-/\n#guard_msgs\
+  \ in\n#eval find_max_modulo [5, 2, 7, 3]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ find_max_modulo [100]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

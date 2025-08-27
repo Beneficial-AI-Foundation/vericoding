@@ -1,0 +1,31 @@
+"vc-description": "=====Function Descriptions=====\ninner\n\nThe inner tool returns\
+  \ the inner product of two arrays.\n\nimport numpy\n\nA = numpy.array([0, 1])\n\
+  B = numpy.array([3, 4])\n\nprint numpy.inner(A, B)     #Output : 4\n\nouter\n\n\
+  The outer tool returns the outer product of two arrays.\n\nimport numpy\n\nA = numpy.array([0,\
+  \ 1])\nB = numpy.array([3, 4])\n\nprint numpy.outer(A, B)     #Output : [[0 0]\n\
+  \                            #          [3 4]]\n\n=====Problem Statement=====\n\
+  You are given two arrays: A and B.\nYour task is to compute their inner and outer\
+  \ product.\n\n=====Input Format=====\nThe first line contains the space separated\
+  \ elements of array A.\nThe second line contains the space separated elements of\
+  \ array B.\n\n=====Output Format=====\nFirst, print the inner product.\nSecond,\
+  \ print the outer product."
+"vc-preamble": "import Imports.AllImports\n\ndef inner_product (v1 v2 : Vec Int) :\
+  \ Int := sorry \n\ndef outer_product (v1 v2 : Vec Int) : Vec (Vec Int) := sorry\n\
+  \n\ndef vec_length {α : Type} (v : Vec α) : Nat :=\n  match v with\n  | Vec.nil\
+  \ => 0\n  | Vec.cons _ rest => 1 + vec_length rest\n\n\ndef vec_sum_squares (v :\
+  \ Vec Int) : Int := sorry\n\ndef vec_transpose (m : Vec (Vec Int)) : Vec (Vec Int)\
+  \ := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def vec_zip_with {α β γ : Type} (f : α → β → γ) : Vec α → Vec β\
+  \ → Vec γ := sorry\n\ndef vec_elem_prod (v1 v2 : Vec Int) : Int := sorry\n\n-- Inner\
+  \ product equals element-wise product sum"
+"vc-theorems": "theorem inner_product_equals_elemprod {v1 v2 : Vec Int} (h : vec_length\
+  \ v1 = vec_length v2) :\n  inner_product v1 v2 = vec_elem_prod v1 v2 :=\nsorry\n\
+  \n-- Shape of outer product\n\ntheorem outer_product_dimensions {v1 v2 : Vec Int}\
+  \ :\n  vec_length (outer_product v1 v2) = vec_length v1 :=\nsorry\n\n-- Inner product\
+  \ with self equals sum of squares \n\ntheorem inner_product_self {v : Vec Int} :\n\
+  \  inner_product v v = vec_sum_squares v :=\nsorry\n\n-- Outer product transpose\
+  \ property\n\ntheorem outer_product_transpose_prop {v1 v2 : Vec Int} (h : vec_length\
+  \ v1 = vec_length v2) :\n  outer_product v1 v2 = vec_transpose (outer_product v2\
+  \ v1) :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

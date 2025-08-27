@@ -1,0 +1,26 @@
+"vc-description": "You have managed to intercept an important message and you are\
+  \ trying to read it.\n\nYou realise that the message has been encoded and can be\
+  \ decoded by switching each letter with a corresponding letter.\n\nYou also notice\
+  \ that each letter is paired with the letter that it coincides with when the alphabet\
+  \ is reversed.\n\nFor example: \"a\" is encoded with \"z\", \"b\" with \"y\", \"\
+  c\" with \"x\", etc\n\nYou read the first sentence:\n```\n\"r slkv mlylwb wvxlwvh\
+  \ gsrh nvhhztv\"\n```\n\nAfter a few minutes you manage to decode it:\n```\n\"i\
+  \ hope nobody decodes this message\"\n```\nCreate a function that will instantly\
+  \ decode any of these messages\n\nYou can assume no punctuation or capitals, only\
+  \ lower case letters, but remember spaces!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def decode (s : String) : String := sorry\n\ntheorem decode_involution\
+  \ {s : String} (h : ∀ c ∈ s.data, c.isLower) : \n  decode (decode s) = s := sorry\n"
+"vc-theorems": "theorem decode_length_preservation {s : String} (h : ∀ c ∈ s.data,\
+  \ c.isLower) :\n  (decode s).length = s.length := sorry\n\n\ntheorem decode_preserves_spaces\
+  \ {s : String} \n  (h : ∀ c ∈ s.data, c.isLower ∨ c = ' ') :\n  s.data.countP (fun\
+  \ c => c = ' ') = (decode s).data.countP (fun c => c = ' ') := sorry\n\n\ntheorem\
+  \ decode_with_spacing {s : String} (n : Nat)\n  (h : ∀ c ∈ s.data, c.isLower) :\n\
+  \  let spaced := String.mk (List.replicate n ' ' ++ s.data ++ List.replicate n '\
+  \ ')\n  (decode spaced).length = spaced.length ∧ \n  (decode spaced).trim = decode\
+  \ s := sorry\n\n/--\ninfo: 'hi'\n-/\n#guard_msgs in\n#eval decode \"sr\"\n\n/--\n\
+  info: 'hello'\n-/\n#guard_msgs in\n#eval decode \"svool\"\n\n/--\ninfo: 'i hope\
+  \ nobody decodes this message'\n-/\n#guard_msgs in\n#eval decode \"r slkv mlylwb\
+  \ wvxlwvh gsrh nvhhztv\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

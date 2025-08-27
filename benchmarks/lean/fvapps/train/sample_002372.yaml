@@ -1,0 +1,23 @@
+"vc-description": "Given an array nums of integers, return how many of them contain\
+  \ an even number of digits.\n \nExample 1:\nInput: nums = [12,345,2,6,7896]\nOutput:\
+  \ 2\nExplanation: \n12 contains 2 digits (even number of digits). \n345 contains\
+  \ 3 digits (odd number of digits). \n2 contains 1 digit (odd number of digits). \n\
+  6 contains 1 digit (odd number of digits). \n7896 contains 4 digits (even number\
+  \ of digits). \nTherefore only 12 and 7896 contain an even number of digits.\n\n\
+  Example 2:\nInput: nums = [555,901,482,1771]\nOutput: 1 \nExplanation: \nOnly 1771\
+  \ contains an even number of digits.\n\n \nConstraints:\n\n1 <= nums.length <= 500\n\
+  1 <= nums[i] <= 10^5"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_numbers_with_even_digits (nums: List Nat) : Nat := sorry\n\
+  \ndef count_digits (n: Nat) : Nat := sorry\n"
+"vc-theorems": "theorem find_numbers_bounds {nums: List Nat} : \n  find_numbers_with_even_digits\
+  \ nums ≤ nums.length := sorry\n\n\ntheorem find_numbers_nonneg {nums: List Nat}\
+  \ :\n  find_numbers_with_even_digits nums ≥ 0 := sorry\n\n\n\n\n\n\ntheorem list_concatenation\
+  \ {nums₁ nums₂: List Nat} :\n  find_numbers_with_even_digits (nums₁ ++ nums₂) =\
+  \ \n  find_numbers_with_even_digits nums₁ + find_numbers_with_even_digits nums₂\
+  \ := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_numbers_with_even_digits\
+  \ [12, 345, 2, 6, 7896]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_numbers_with_even_digits\
+  \ [555, 901, 482, 1771]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_numbers_with_even_digits\
+  \ [1, 22, 333, 4444]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

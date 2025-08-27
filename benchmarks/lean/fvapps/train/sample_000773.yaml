@@ -1,0 +1,27 @@
+"vc-description": "As lockdown is going on so no is allowed to go outside , so Chef\
+  \ has come with an innovative idea for food home delivery using drone.  But there\
+  \ is an issue with it , the drone can move forward or backward a fix number of steps\
+  \ $x$ . \nAll the houses and chef restaurant are all in a straight line . Homes\
+  \ which need delivery are located at $H[i]$ and chef is located at $y$ coordinate\
+  \ . \nIf Drone is at a location $R$, then it can move to $R-x$ or $R+x$ . \nHelp\
+  \ chef find maximum value of $x$ to complete all the deliveries as he is busy managing\
+  \ the orders.\n\n-----Input:-----\n- First line will contain $n$ and $R$, number\
+  \ of houses that need delivery and the correct coordinate of chef (Drone).\n- Second\
+  \ line contains $n$ integers , the coordinate of all homes that need delivery. \n\
+  \n-----Output:-----\n- The maximum value of $x$ , so that drone delivers to all\
+  \ houses.\n\n-----Constraints-----\n- $1 \\leq n \\leq 1000$\n- $1 \\leq R \\leq\
+  \ 10^9$\n- $1 \\leq hi \\leq 10^9$\n- $1 \\leq x  \\leq 10^9$\n\n-----Sample Input:-----\n\
+  3 1\n3 5 11\n\n-----Sample Output:-----\n2\n\n-----EXPLANATION:-----\nChef's drone\
+  \ is at 1 initially and he needs to visit 3,5,11 , so optimal solution will be (maximum\
+  \ value of x ) equal to 2."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_drone_step (n : Nat) (R : Int) (H : List Int) : Nat :=\n\
+  \  sorry\n\nvariable (n : Nat) (R : Int) (H : List Int)\n"
+"vc-theorems": "theorem max_drone_step_positive :\n  n > 0 → H.length = n → max_drone_step\
+  \ n R H > 0 :=\n  sorry\n\n\ntheorem max_drone_step_divides_distances : \n  n >\
+  \ 0 → H.length = n →\n  ∀ h, h ∈ H → (h - R).natAbs % (max_drone_step n R H) = 0\
+  \ :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval max_drone_step 3 1 [3,\
+  \ 5, 11]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval max_drone_step 2 4 [2, 8]\n\n\
+  /--\ninfo: 2\n-/\n#guard_msgs in\n#eval max_drone_step 4 5 [1, 3, 7, 9]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,22 @@
+"vc-description": "Write a function, `persistence`, that takes in a positive parameter\
+  \ `num` and returns its multiplicative persistence, which is the number of times\
+  \ you must multiply the digits in `num` until you reach a single digit.\n\nFor example:\n\
+  \n```python\n persistence(39) => 3  # Because 3*9 = 27, 2*7 = 14, 1*4=4\n      \
+  \                 # and 4 has only one digit.\n                 \n persistence(999)\
+  \ => 4 # Because 9*9*9 = 729, 7*2*9 = 126,\n                       # 1*2*6 = 12,\
+  \ and finally 1*2 = 2.\n                  \n persistence(4) => 0   # Because 4 is\
+  \ already a one-digit number.\n```\n```python\n persistence(39) # returns 3, because\
+  \ 3*9=27, 2*7=14, 1*4=4\n                 # and 4 has only one digit\n         \
+  \         \n persistence(999) # returns 4, because 9*9*9=729, 7*2*9=126,\n     \
+  \             # 1*2*6=12, and finally 1*2=2\n\n persistence(4) # returns 0, because\
+  \ 4 is already a one-digit number\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def persistence (n : Nat) : Nat := sorry\n\ndef multiplyDigits\
+  \ (n : Nat) : Nat := sorry\n"
+"vc-theorems": "theorem persistence_non_negative (n : Nat) : persistence n ≥ 0 :=\
+  \ sorry\n\ntheorem persistence_single_digit (n : Nat) : n < 10 → persistence n =\
+  \ 0 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval persistence 39\n\n/--\n\
+  info: 0\n-/\n#guard_msgs in\n#eval persistence 4\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval persistence 999\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

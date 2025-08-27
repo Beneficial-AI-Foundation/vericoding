@@ -1,0 +1,33 @@
+"vc-description": "## Task\n\n**_Given_** *an array of integers* , **_Find_** **_the\
+  \ maximum product_** *obtained from multiplying 2 adjacent numbers in the array*.\n\
+  ____\n\n# Notes\n\n* **_Array/list_** size is *at least 2*.\n\n* **_Array/list_**\
+  \ numbers could be a *mixture of positives, negatives also zeroes* .\n___\n\n# Input\
+  \ >> Output Examples\n```\nadjacentElementsProduct([1, 2, 3]); ==> return 6\n```\n\
+  \n## **_Explanation_**:\n\n* **_The maximum product_** *obtained from multiplying*\
+  \ ` 2 * 3 = 6 `, and **_they're adjacent numbers in the array_**.\n___\n```\nadjacentElementsProduct([9,\
+  \ 5, 10, 2, 24, -1, -48]); ==> return 50\n```\n## **_Explanation_**:\n**_Max product_**\
+  \ obtained *from multiplying*   ``` 5 * 10  =  50  ```.\n___\n```\nadjacentElementsProduct([-23,\
+  \ 4, -5, 99, -27, 329, -2, 7, -921])  ==>  return -14\n```\n\n## **_Explanation_**:\n\
+  \n* **_The maximum product_** *obtained from multiplying* ` -2 * 7 = -14 `, and\
+  \ **_they're adjacent numbers in the array_**.\n___\n___\n___\n\n# [Playing with\
+  \ Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\n\
+  # [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
+  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
+  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def adjacentElementProduct (arr : List Int) : Int :=\n  sorry\n"
+"vc-theorems": "theorem adjacent_product_is_product_of_adjacent_elements {arr : List\
+  \ Int} \n  (h : arr.length ≥ 2) :\n  ∃ (i : Nat), i + 1 < arr.length ∧ adjacentElementProduct\
+  \ arr = arr[i]! * arr[i+1]! :=\n  sorry\n\n\ntheorem adjacent_product_is_maximum\
+  \ {arr : List Int} \n  (h : arr.length ≥ 2) :\n  ∀ (i : Nat), i + 1 < arr.length\
+  \ → \n    adjacentElementProduct arr ≥ arr[i]! * arr[i+1]! :=\n  sorry\n\n\ntheorem\
+  \ adjacent_product_commutative {arr : List Int}\n  (h : arr.length ≥ 2) :\n  adjacentElementProduct\
+  \ arr = adjacentElementProduct arr.reverse :=\n  sorry\n\n\ntheorem adjacent_product_error_empty\
+  \ :\n  ¬∃ (result : Int), adjacentElementProduct [] = result :=\n  sorry\n\n\ntheorem\
+  \ adjacent_product_error_singleton (x : Int) :\n  ¬∃ (result : Int), adjacentElementProduct\
+  \ [x] = result :=\n  sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval adjacent_element_product\
+  \ [1, 2, 3]\n\n/--\ninfo: 50\n-/\n#guard_msgs in\n#eval adjacent_element_product\
+  \ [9, 5, 10, 2, 24, -1, -48]\n\n/--\ninfo: -14\n-/\n#guard_msgs in\n#eval adjacent_element_product\
+  \ [-23, 4, -5, 99, -27, 329, -2, 7, -921]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

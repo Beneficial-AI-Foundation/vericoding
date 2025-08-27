@@ -1,0 +1,20 @@
+"vc-description": "In mathematics, the factorial of integer 'n' is written as 'n!'.\n\
+  It is equal to the product of n and every integer preceding it.\nFor example: **5!\
+  \ = 1 x 2 x 3 x 4 x 5 = 120**\n\nYour mission is simple: write a function that takes\
+  \ an integer 'n' and returns 'n!'.\n\nYou are guaranteed an integer argument. For\
+  \ any values outside the positive range, return `null`, `nil` or `None` .\n\n**Note:**\
+  \ 0! is always equal to 1. Negative values should return null; \n\nFor more on Factorials\
+  \ : http://en.wikipedia.org/wiki/Factorial"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def factorial (n : Int) : Option Int :=\n  sorry\n"
+"vc-theorems": "theorem factorial_nonnegative {n : Int} (h : n ≥ 0) (h2 : n ≤ 10)\
+  \ : \n  match factorial n with\n  | some x => x > 0\n  | none => False :=\n  sorry\n\
+  \n\ntheorem factorial_divides {n : Int} (h : n > 0) (h2 : n ≤ 10) :\n  match factorial\
+  \ n with\n  | some x => x % n = 0 ∧ x / n = (factorial (n-1)).get!\n  | none =>\
+  \ False :=\n  sorry\n  \n\ntheorem factorial_negative {n : Int} (h : n < 0) :\n\
+  \  factorial n = none :=\n  sorry\n\n\ntheorem factorial_zero :\n  factorial 0 =\
+  \ some 1 :=\n  sorry\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval factorial -1\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval factorial 0\n\n/--\ninfo: 120\n-/\n#guard_msgs\
+  \ in\n#eval factorial 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

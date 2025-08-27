@@ -1,0 +1,49 @@
+"vc-description": "A Little Elephant from the Zoo of Lviv likes lucky strings, i.e.,\
+  \ the strings that consist only of the lucky digits 4 and 7.\nThe Little Elephant\
+  \ calls some string T of the length M balanced if there exists at least one integer\
+  \ X (1 ≤ X ≤ M) such that the number of digits 4 in the substring T[1, X - 1] is\
+  \ equal to the number of digits 7 in the substring T[X, M]. For example, the string\
+  \ S = 7477447 is balanced since S[1, 4] = 7477 has 1 digit 4 and S[5, 7] = 447 has\
+  \ 1 digit 7. On the other hand, one can verify that the string S = 7 is not balanced.\n\
+  The Little Elephant has the string S of the length N. He wants to know the number\
+  \ of such pairs of integers (L; R) that 1 ≤ L ≤ R ≤ N and the substring S[L, R]\
+  \  is balanced. Help him to find this number.\nNotes.\n\nLet S be some lucky string.\
+  \ Then\n\n- |S| denotes the length of the string S;\n\n- S[i] (1 ≤ i ≤ |S|) denotes\
+  \ the ith character of S (the numeration of characters starts from 1);\n\n-  S[L,\
+  \ R] (1 ≤ L ≤ R ≤ |S|) denotes the string with the following sequence of characters:\
+  \ S[L], S[L + 1], ..., S[R], and is called a substring of S. For L > R we mean by\
+  \ S[L, R] an empty string.\n\n-----Input-----\nThe first line of the input file\
+  \ contains a single integer T, the number of test cases. Each of the following T\
+  \ lines contains one string, the string S for the corresponding test case. The input\
+  \ file does not contain any whitespaces.\n\n-----Output-----\nFor each test case\
+  \ output a single line containing the answer for this test case.\n\n-----Constraints-----\n\
+  1 ≤ T ≤ 10\n\n1 ≤ |S| ≤ 100000\n\nS consists only of the lucky digits 4 and 7.\n\
+  \n\n-----Example-----\nInput:\n4\n47\n74\n477\n4747477\n\nOutput:\n2\n2\n3\n23\n\
+  \n-----Explanation-----\n\nIn the first test case balance substrings are S[1, 1]\
+  \ = 4 and S[1, 2] = 47.\nIn the second test case balance substrings are S[2, 2]\
+  \ = 4 and S[1, 2] = 74.\nUnfortunately, we can't provide you with the explanations\
+  \ of the third and the fourth test cases. You should figure it out by yourself.\
+  \ Please, don't ask about this in comments."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_balanced_substrings (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem result_bounds (s : String) : \n  s.all (fun c => c = '4' ||\
+  \ c = '7') → \n  let n := s.length\n  let total := n * (n + 1) / 2\n  0 ≤ count_balanced_substrings\
+  \ s ∧ count_balanced_substrings s ≤ total :=\n  sorry\n\n\ntheorem all_fours (s\
+  \ : String) :\n  s.all (fun c => c = '4') →\n  let n := s.length\n  count_balanced_substrings\
+  \ s = n * (n + 1) / 2 :=\n  sorry\n\n\ntheorem single_char_substrings (s : String)\
+  \ :\n  s.length > 0 →\n  s.all (fun c => c = '4' || c = '7') →\n  count_balanced_substrings\
+  \ s ≥ (s.toList.filter (· = '4')).length :=\n  sorry\n\n\ntheorem empty_and_single\
+  \ (s : String) :\n  s.all (fun c => c = '4' || c = '7') →\n  (s.length = 0 → count_balanced_substrings\
+  \ s = 0) ∧\n  (s.length = 1 → count_balanced_substrings s = if s = \"4\" then 1\
+  \ else 0) :=\n  sorry\n\n\ntheorem consecutive_sevens_reduce (s : String) :\n  s.all\
+  \ (fun c => c = '4' || c = '7') →\n  let n := s.length\n  let total := n * (n +\
+  \ 1) / 2\n  let consecutive_reduction := \n    s.toList.foldl\n      (fun (acc,\
+  \ consec) c => \n        if c = '7' \n        then (acc + consec + 1, consec + 1)\n\
+  \        else (acc, 0))\n      (0, 0)\n  count_balanced_substrings s = total - consecutive_reduction.1\
+  \ :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_balanced_substrings\
+  \ \"47\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval count_balanced_substrings \"\
+  74\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_balanced_substrings \"477\"\
+  \n\n/--\ninfo: 23\n-/\n#guard_msgs in\n#eval count_balanced_substrings \"4747477\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

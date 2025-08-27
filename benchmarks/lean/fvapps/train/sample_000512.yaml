@@ -1,0 +1,21 @@
+"vc-description": "You are given three numbers $a$, $b$, $c$ . Write a program to\
+  \ determine the largest number that is less than or equal to $c$ and leaves a remainder\
+  \ $b$ when divided by $a$.\n\n-----Input:-----\n- First line will contain $T$, number\
+  \ of testcases. Then the testcases follow.\n- Each testcase contains a single line\
+  \ of input, having three integers $a$, $b$, $c$.\n\n-----Output:-----\n- For each\
+  \ testcase, output in a single line the largest number less than or equal to $c$.\n\
+  \n-----Constraints:-----\n- $1 \\leq T  \\leq 100000$\n- $0 \\leq b < a < c \\leq$\
+  \ $10$^18\n\n-----Sample Input:-----\n1\n7 2 10\n\n-----Sample Output:-----\n9"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_remainder (a b c : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem solve_remainder_bounded\n  (a b c : Nat)\n  (h1 : a > 0)\n\
+  \  (h2 : b < a)\n  (h3 : c > 0) :\n  solve_remainder a b c ≤ c :=\nsorry\n\n\ntheorem\
+  \ solve_remainder_mod\n  (a b c : Nat)\n  (h1 : a > 0)\n  (h2 : b < a)\n  (h3 :\
+  \ c > 0) :\n  solve_remainder a b c % a = b :=\nsorry\n\n\ntheorem solve_remainder_largest\n\
+  \  (a b c : Nat)\n  (h1 : a > 0)\n  (h2 : b < a)\n  (h3 : c > 0) :\n  let next :=\
+  \ solve_remainder a b c + a\n  next > c ∨ next % a ≠ b :=\nsorry\n\n/--\ninfo: 9\n\
+  -/\n#guard_msgs in\n#eval solve_remainder 7 2 10\n\n/--\ninfo: 8\n-/\n#guard_msgs\
+  \ in\n#eval solve_remainder 5 3 12\n\n/--\ninfo: 95\n-/\n#guard_msgs in\n#eval solve_remainder\
+  \ 10 5 100\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

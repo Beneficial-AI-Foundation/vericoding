@@ -1,0 +1,19 @@
+"vc-description": "Your task is to return how many times a string contains a given\
+  \ character.\n\n\nThe function takes a string(inputS) as a paremeter and a char(charS)\
+  \ which is the character that you will have to find and count.\n\nFor example, if\
+  \ you get an input string \"Hello world\" and the character to find is \"o\", return\
+  \ 2."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def string_counter (s : String) (c : Char) : Nat := sorry\n\ntheorem\
+  \ string_counter_equals_manual_sum (s : String) (c : Char) :\n  string_counter s\
+  \ c = (s.data.filter (· = c)).length := sorry\n"
+"vc-theorems": "theorem string_counter_empty (c : Char) : \n  string_counter \"\"\
+  \ c = 0 := sorry \n\n\ntheorem string_counter_repeated (c : Char) (n : Nat) :\n\
+  \  string_counter (String.mk (List.replicate n c)) c = n := sorry\n\n\ntheorem string_counter_nonnegative\
+  \ (s : String) (c : Char) :\n  string_counter s c ≥ 0 := sorry\n\n\ntheorem string_counter_absent_char\
+  \ (s : String) (c : Char) :\n  s.data.all (· ≠ c) → string_counter s c = 0 := sorry\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval string_counter \"Hello world\" \"o\"\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval string_counter \"testing\" \"t\"\n\n/--\n\
+  info: 0\n-/\n#guard_msgs in\n#eval string_counter \"aaa\" \"b\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

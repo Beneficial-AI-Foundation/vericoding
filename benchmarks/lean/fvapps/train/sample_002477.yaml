@@ -1,0 +1,24 @@
+"vc-description": "=====Function Descriptions=====\nOne of the built-in functions\
+  \ of Python is divmod, which takes two arguments a and b and returns a tuple containing\
+  \ the quotient of first and then the remainder.\n\n=====Problem Statement=====\n\
+  For example:\n>>> print divmod(177,10)\n(17, 7)\n\nHere, the integer division is\
+  \ 177/10 => 17 and the modulo operator is 177%10 => 7.\n\nTask\nRead in two integers,\
+  \ a and b, and print three lines.\nThe first line is the integer division a//b (While\
+  \ using Python2 remember to import division from __future__).\nThe second line is\
+  \ the result of the modulo operator: a%b.\nThe third line prints the divmod of a\
+  \ and b.\n\n=====Input Format=====\nThe first line contains the first integer, a,\
+  \ and the second line contains the second integer, b.\n\n=====Output Format=====\n\
+  Print the result as described above."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def process_divmod (a b : Int) : Option (Int × Int × (Int × Int))\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem process_divmod_structure (a b : Int) (h : b ≠ 0) :\n  ∃ q\
+  \ r t, process_divmod a b = some (q, r, t) := \n  sorry\n\n\ntheorem process_divmod_tuple_match\
+  \ (a b : Int) (h : b ≠ 0) :\n  ∀ q r t, process_divmod a b = some (q, r, t) → t\
+  \ = (q, r) :=\n  sorry\n\n\ntheorem process_divmod_quotient (a b : Int) (h : b ≠\
+  \ 0) :\n  ∀ q r t, process_divmod a b = some (q, r, t) → q = a / b :=\n  sorry\n\
+  \n\ntheorem process_divmod_remainder (a b : Int) (h : b ≠ 0) :\n  ∀ q r t, process_divmod\
+  \ a b = some (q, r, t) → r = a % b :=\n  sorry\n\n\ntheorem process_divmod_zero\
+  \ (a : Int) :\n  process_divmod a 0 = none :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

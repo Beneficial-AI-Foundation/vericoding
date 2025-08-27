@@ -1,0 +1,30 @@
+"vc-description": "# Fourier transformations are hard. Fouriest transformations are\
+  \ harder.\n\nThis Kata is based on the SMBC Comic on fourier transformations.\n\n\
+  A fourier transformation on a number is one that converts the number to a base in\
+  \ which it has more `4`s ( `10` in base `6` is `14`, which has `1` four as opposed\
+  \ to none, hence, fourier in base `6` ).\n\nA number's fouriest transformation converts\
+  \ it to the base in which it has the most `4`s.  \nFor example: `35353` is the fouriest\
+  \ in base `6`: `431401`.\n\nThis kata requires you to create a method `fouriest`\
+  \ that takes a number and makes it the fouriest, telling us in which base this happened,\
+  \ as follows:\n\n```python\nfouriest(number) -> \"{number} is the fouriest ({fouriest_representation})\
+  \ in base {base}\"\n```\n\n## Important notes\n\n* For this kata we don't care about\
+  \ digits greater than `9` ( only `0` to `9` ), so we will represent all digits greater\
+  \ than `9` as `'x'`: `10` in base `11` is `'x'`, `119` in base `20` is `'5x'`, `118`\
+  \ in base `20` is also `'5x'`\n\n* When a number has several fouriest representations,\
+  \ we want the one with the LOWEST base\n\n```if:haskell,javascript\n* Numbers below\
+  \ `9` will not be tested\n```\n\n```if:javascript\n* A `BigNumber` library has been\
+  \ provided; documentation is [here](https://mikemcl.github.io/bignumber.js/)\n```\n\
+  \n## Examples\n\n```python\n\"30 is the fouriest (42) in base 7\"\n\"15 is the fouriest\
+  \ (14) in base 11\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def transform (num : Nat) (base : Nat) : List (Nat ⊕ String) :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem transform_valid_digits {n : Nat} {b : Nat} (h1 : n ≥ 1) (h2\
+  \ : 2 ≤ b) (h3 : b ≤ 12) :\n  let result := transform n b\n  ∀ x ∈ result, \n  \
+  \  (∃ d : Nat, x = Sum.inl d ∧ d < 10) ∨ \n    (∃ s : String, x = Sum.inr s ∧ s\
+  \ = \"x\") :=\n  sorry\n\n\ntheorem transform_digit_range {n : Nat} {b : Nat} (h1\
+  \ : n ≥ 1) (h2 : 2 ≤ b) (h3 : b ≤ 12) :\n  let result := transform n b\n  ∀ x ∈\
+  \ result, \n    match x with\n    | Sum.inl d => d < 10\n    | Sum.inr s => s =\
+  \ \"x\"\n  :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

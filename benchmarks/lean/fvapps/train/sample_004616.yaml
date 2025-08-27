@@ -1,0 +1,17 @@
+"vc-description": "Get the next prime number!\n\nYou will get a number`n` (>= 0) and\
+  \ your task is to find the next prime number. \n\nMake sure to optimize your code:\
+  \ there will numbers tested up to about `10^12`.\n\n## Examples\n\n```\n5   => \
+  \ 7\n12  =>  13\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_prime : Int → Bool := sorry\ndef next_prime : Int → Int\
+  \ := sorry\n"
+"vc-theorems": "theorem next_prime_larger (n : Int) :\n  next_prime n > n := sorry\n\
+  \n\ntheorem next_prime_is_prime (n : Int) : \n  is_prime (next_prime n) = true :=\
+  \ sorry\n\n\ntheorem no_primes_between (n : Int) :\n  ∀ x, n < x → x < next_prime\
+  \ n → is_prime x = false := sorry\n\n\ntheorem prime_returns_self {n : Int} (h :\
+  \ n ≥ 2) (h2 : is_prime n = true) : \n  next_prime (n - 1) = n := sorry\n\n/--\n\
+  info: 7\n-/\n#guard_msgs in\n#eval next_prime 5\n\n/--\ninfo: 13\n-/\n#guard_msgs\
+  \ in\n#eval next_prime 12\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval next_prime\
+  \ 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,39 @@
+"vc-description": "You are given a set $S$ and $Q$ queries. Initially, $S$ is empty.\
+  \ In each query:\n- You are given a positive integer $X$.\n- You should insert $X$\
+  \ into $S$.\n- For each $y \\in S$ before this query such that $y \\neq X$, you\
+  \ should also insert $y \\oplus X$ into $S$ ($\\oplus$ denotes the XOR operation).\n\
+  - Then, you should find two values $E$ and $O$: the number of elements of $S$ with\
+  \ an even number of $1$-s and with an odd number of $1$-s in the binary representation,\
+  \ respectively.\nNote that a set cannot have duplicate elements, so if you try to\
+  \ insert into $S$ an element that is already present in $S$, then nothing happens.\n\
+  \n-----Input-----\n- The first line of the input contains a single integer $T$ denoting\
+  \ the number of test cases. The description of $T$ test cases follows.\n- The first\
+  \ line of each test case contains a single integer $Q$.\n- Each of the next $Q$\
+  \ lines contains a single integer $X$ describing a query.\n\n-----Output-----\n\
+  For each query, print a single line containing two space-separated integers $E$\
+  \ and $O$.\n\n-----Constraints-----\n- $1 \\le T \\le 5$\n- $1 \\le Q, X \\le 10^5$\n\
+  \n-----Subtasks-----\nSubtask #1 (30 points):\n- $1 \\le Q \\le 1,000$\n- $1 \\\
+  le X \\le 128$\nSubtask #2 (70 points): original constraints\n\n-----Example Input-----\n\
+  1\n3\n4\n2\n7\n\n-----Example Output-----\n0 1\n1 2\n3 4\n\n-----Explanation-----\n\
+  Example case 1:\n- Initially, the set is empty: $S = \\{\\}$.\n- After the first\
+  \ query, $S = \\{4\\}$, so there is only one element with an odd number of $1$-s\
+  \ in the binary representation (\"100\").\n- After the second query, $S = \\{4,2,6\\\
+  }$, there is one element with an even number of $1$-s in the binary representation\
+  \ ($6$ is \"110\") and the other two elements have an odd number of $1$-s.\n- After\
+  \ the third query, $S = \\{4,2,6,7,3,5,1\\}$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_binary_set (nums : List Nat) : List (Nat × Nat) := sorry\n\
+  \ntheorem single_number_output (x : Nat) :\n  let result := solve_binary_set [x]\n\
+  \  List.length result = 1 ∧ \n  result.all (fun p => p.1 ≥ 0 ∧ p.2 ≥ 0) ∧\n  match\
+  \ result.head? with\n  | some (e, o) => e + o = 1\n  | none => False\n  := sorry\n"
+"vc-theorems": "theorem sequence_properties {nums : List Nat} (h : nums.length > 0)\
+  \ :\n  let result := solve_binary_set nums\n  List.length result = nums.length ∧\n\
+  \  result.all (fun p => p.1 ≥ 0 ∧ p.2 ≥ 0) ∧\n  ∀ i, i < result.length → \n    match\
+  \ result.get? i with\n    | some (e, o) => \n      let set_size := e + o\n     \
+  \ set_size > 0\n    | none => False\n  := sorry\n\n\ntheorem monotonic_counts {nums\
+  \ : List Nat} (h : nums.length > 0) :\n  let result := solve_binary_set nums\n \
+  \ let totals := result.map (fun p => p.1 + p.2)\n  ∀ i, i < totals.length - 1 →\n\
+  \    match totals.get? i, totals.get? (i+1) with\n    | some t1, some t2 => t1 ≤\
+  \ t2\n    | _, _ => True\n  := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

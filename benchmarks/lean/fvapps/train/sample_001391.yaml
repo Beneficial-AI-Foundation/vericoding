@@ -1,0 +1,26 @@
+"vc-description": "Chef is baking a cake.\n\nWhile baking, in each minute the size\
+  \ of cake doubles as compared to its previous size.\n\nIn this cake, baking of cake\
+  \ is directly proportional to its size.\nYou are given $a$, the total time taken(in\
+  \ minutes) to bake the whole cake.\n\nLet cake be half baked at $k^{th}$ minute.\
+  \         \nYour task is to find the value of $k+2$.\n\n-----Input:-----\n- The\
+  \ first line of the input contains a single integer $T$ denoting the number of test\
+  \ cases. The description of T test cases follows.               \n- The first and\
+  \ only line of each test case contains a single integer $a$.\n\n-----Output:-----\n\
+  For each testcase , print one line, the value of $k+2$.\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 8 $\n- $2 \\leq a \\leq 10^{128}$\n\n-----Sample Input:-----\n\
+  1\n\n2\n\n-----Sample Output:-----\n3\n\n-----Explaination-----\nTime was 1 min\
+  \ when cake was half baked by chef so answer is 1+2=3"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_cake_baking (time_taken : Int) : Int := sorry\n\ntheorem\
+  \ solve_cake_baking_positive {time_taken : Int} (h : time_taken > 0) :\n  solve_cake_baking\
+  \ time_taken > 0 := sorry\n"
+"vc-theorems": "theorem solve_cake_baking_formula {time_taken : Int} :\n  solve_cake_baking\
+  \ time_taken = time_taken/2 + 2 := sorry\n\n\ntheorem solve_cake_baking_greater_than_half\
+  \ {time_taken : Int} (h : time_taken > 0) :\n  solve_cake_baking time_taken > time_taken/2\
+  \ := sorry\n\n\ntheorem solve_cake_baking_specific_cases :\n  solve_cake_baking\
+  \ 2 = 3 ∧ \n  solve_cake_baking 4 = 4 ∧ \n  solve_cake_baking 10 = 7 := sorry\n\n\
+  /--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_cake_baking 2\n\n/--\ninfo: 4\n-/\n\
+  #guard_msgs in\n#eval solve_cake_baking 4\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n\
+  #eval solve_cake_baking 10\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

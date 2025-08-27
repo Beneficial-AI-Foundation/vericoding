@@ -1,0 +1,36 @@
+"vc-description": "# Definition\n\n**_Jumping number_** is the number that *All adjacent\
+  \ digits in it differ by 1*.\n\n____\n\n# Task\n\n**_Given_** a number, **_Find\
+  \ if it is Jumping or not_** . \n____\n\n# Warm-up (Highly recommended)\n\n# [Playing\
+  \ With Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
+  ___\n\n# Notes \n\n* **_Number_** *passed is always*  **_Positive_** .\n\n* **_Return_**\
+  \ *the result as* **_String_** . \n\n* **_The difference between_** *‘9’ and ‘0’*\
+  \ is **_not considered as 1_** . \n\n* **_All single digit numbers_** are considered\
+  \ as **_Jumping numbers_**. \n___\n\n# Input >> Output Examples\n\n```\njumpingNumber(9)\
+  \ ==> return \"Jumping!!\"\n```\n## **_Explanation_**:\n\n* It's  **_single-digit\
+  \ number_** \n___\n\n```\njumpingNumber(79) ==> return \"Not!!\"\n```\n\n## **_Explanation_**:\n\
+  \n* *Adjacent digits* **_don't differ by 1_**\n___\n\n```\njumpingNumber(23) ==>\
+  \ return \"Jumping!!\"\n```\n\n## **_Explanation_**:\n\n* *Adjacent digits* **_differ\
+  \ by 1_**\n___\n\n```\njumpingNumber(556847) ==> return \"Not!!\"\n```\n\n## **_Explanation_**:\n\
+  \n* *Adjacent digits* **_don't differ by 1_**\n___\n\n```\njumpingNumber(4343456)\
+  \ ==> return \"Jumping!!\"\n```\n\n## **_Explanation_**:\n\n* *Adjacent digits*\
+  \ **_differ by 1_**\n___\n\n```\njumpingNumber(89098) ==> return \"Not!!\"\n```\n\
+  \n## **_Explanation_**:\n\n* *Adjacent digits* **_don't differ by 1_**\n___\n\n\
+  ```\njumpingNumber(32) ==> return \"Jumping!!\"\n```\n\n## **_Explanation_**:\n\n\
+  * *Adjacent digits* **_differ by 1_**\n___\n___\n___\n\n# [Playing with Numbers\
+  \ Series](https://www.codewars.com/collections/playing-with-numbers)\n\n# [Playing\
+  \ With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
+  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
+  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def jumping_number (n : Nat) : String := sorry\n\ntheorem single_digit_jumping\
+  \ (n : Nat) (h : n ≤ 9) : \n  jumping_number n = \"Jumping!!\" := sorry\n"
+"vc-theorems": "theorem result_is_valid (n : Nat) :\n  jumping_number n = \"Jumping!!\"\
+  \ ∨ jumping_number n = \"Not!!\" := sorry\n\n\ntheorem consecutive_ascending_jumping\
+  \ :\n  jumping_number 1234 = \"Jumping!!\" := sorry\n\n\ntheorem consecutive_descending_jumping\
+  \ :\n  jumping_number 4321 = \"Jumping!!\" := sorry\n\n\ntheorem two_digit_consecutive_jumping\
+  \ :\n  jumping_number 12 = \"Jumping!!\" := sorry\n\n/--\ninfo: 'Jumping!!'\n-/\n\
+  #guard_msgs in\n#eval jumping_number 9\n\n/--\ninfo: 'Jumping!!'\n-/\n#guard_msgs\
+  \ in\n#eval jumping_number 23\n\n/--\ninfo: 'Not!!'\n-/\n#guard_msgs in\n#eval jumping_number\
+  \ 79\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

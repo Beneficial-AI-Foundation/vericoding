@@ -1,0 +1,25 @@
+"vc-description": "It's been a tough week at work and you are stuggling to get out\
+  \ of bed in the morning.\n\nWhile waiting at the bus stop you realise that if you\
+  \ could time your arrival to the nearest minute you could get valuable extra minutes\
+  \ in bed.\n\nThere is a bus that goes to your office every 15 minute, the first\
+  \ bus is at `06:00`, and the last bus is at `00:00`.\n\nGiven that it takes 5 minutes\
+  \ to walk from your front door to the bus stop, implement a function that when given\
+  \ the curent time will tell you much time is left, before you must leave to catch\
+  \ the next bus.\n\n## Examples\n\n```\n\"05:00\"  =>  55\n\"10:00\"  =>  10\n\"\
+  12:10\"  =>  0\n\"12:11\"  =>  14\n```\n\n### Notes\n\n1. Return the number of minutes\
+  \ till the next bus\n2. Input will be formatted as `HH:MM` (24-hour clock)\n3. The\
+  \ input time might be after the buses have stopped running, i.e. after `00:00`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def busTimer (t : Time) : Nat := sorry\n\ntheorem bus_timer_range_bounds\
+  \ (t : Time) :\n  0 ≤ busTimer t ∧ busTimer t ≤ 600 := sorry\n"
+"vc-theorems": "theorem exact_hours_normal_hours (t : Time)\n  (h : 6 ≤ t.hours ∧\
+  \ t.hours < 23) (m : t.minutes = 0) :\n  busTimer t ≤ 10 := sorry\n\n\ntheorem normal_schedule\
+  \ (t : Time)\n  (h : 6 ≤ t.hours ∧ t.hours ≤ 22) :\n  busTimer t ≤ 10 := sorry\n\
+  \n\ntheorem early_morning_bound (t : Time)\n  (h : t.hours ≤ 5) (m : t.minutes =\
+  \ 30) :\n  busTimer t ≥ (5 - t.hours) * 60 - 35 := sorry\n\n\ntheorem specific_late_night_values\
+  \ (t : Time) :\n  (t.hours = 23 ∧ t.minutes = 56 → busTimer t = 359) ∧\n  (t.hours\
+  \ = 23 ∧ t.minutes = 59 → busTimer t = 356) := sorry\n\n/--\ninfo: 10\n-/\n#guard_msgs\
+  \ in\n#eval bus_timer \"10:00\"\n\n/--\ninfo: 45\n-/\n#guard_msgs in\n#eval bus_timer\
+  \ \"05:10\"\n\n/--\ninfo: 358\n-/\n#guard_msgs in\n#eval bus_timer \"23:57\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

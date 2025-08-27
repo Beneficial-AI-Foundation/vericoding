@@ -1,0 +1,19 @@
+"vc-description": "Sandu, a teacher in Chefland introduced his students to a new sequence\
+  \ i.e.\n0,1,0,1,2,0,1,2,3,0,1,2,3,4........\nThe Sequence starts from 0 and increases\
+  \ by one till $i$(initially i equals to 1), then repeat itself with $i$ changed\
+  \ to $i+1$\nStudents being curious about the sequence asks the Nth element of the\
+  \ sequence. Help Sandu to answer the Students\n\n-----Input:-----\n- The first-line\
+  \ will contain $T$, the number of test cases. Then the test case follows. \n- Each\
+  \ test case contains a single numbers N.\n\n-----Output:-----\nPrint the Nth element\
+  \ of the sequence\n\n-----Constraints-----\n- $1 \\leq T \\leq 1000$\n- $1 \\leq\
+  \ N  \\leq 10^{18}$\n\n-----Sample Input:-----\n5\n8\n9\n20\n32\n109\n\n-----Sample\
+  \ Output:-----\n2\n3\n5\n4\n4"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_nth_sequence_element (n : Nat) : Nat := sorry\n\n/- Theorems\
+  \ -/\n"
+"vc-theorems": "theorem output_less_than_input {n : Nat} (h : n > 0) : \n  find_nth_sequence_element\
+  \ n < n := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval find_nth_sequence_element\
+  \ 8\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_nth_sequence_element 9\n\n/--\n\
+  info: 5\n-/\n#guard_msgs in\n#eval find_nth_sequence_element 20\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

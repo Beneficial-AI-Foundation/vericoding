@@ -1,0 +1,37 @@
+"vc-description": "We all love the future president (or Führer or duce or sōtō as\
+  \ he could find them more fitting) donald trump, but we might fear that some of\
+  \ his many fans like John Miller or John Barron are not making him justice, sounding\
+  \ too much like their (and our as well, of course!) hero and thus risking to compromise\
+  \ him.\n\nFor this reason we need to create a function to detect the original and\
+  \ unique rythm of our beloved leader, typically having a lot of extra vowels, all\
+  \ ready to fight the estabilishment.\n\nThe index is calculated based on how many\
+  \ vowels are repeated more than once in a row and dividing them by the total number\
+  \ of vowels a petty enemy of America would use.\n\nFor example:\n```python\ntrump_detector(\"\
+  I will build a huge wall\")==0 #definitely not our trump: 0 on the trump score\n\
+  trump_detector(\"HUUUUUGEEEE WAAAAAALL\")==4 #4 extra \"U\", 3 extra \"E\" and 5\
+  \ extra \"A\" on 3 different vowel groups: 12/3 make for a trumpy trumping score\
+  \ of 4: not bad at all!\ntrump_detector(\"listen migrants: IIII KIIIDD YOOOUUU NOOOOOOTTT\"\
+  )==1.56 #14 extra vowels on 9 base ones\n```\n**Notes:** vowels are only the ones\
+  \ in the patriotic group of \"aeiou\": \"y\" should go back to Greece if she thinks\
+  \ she can have the same rights of true American vowels; there is always going to\
+  \ be at least a vowel, as silence is the option of coward Kenyan/terrorist presidents\
+  \ and their friends.\n\nRound each result by two decimal digits: there is no place\
+  \ for small fry in Trump's America.\n\n*Special thanks for [Izabela](https://www.codewars.com/users/ijelonek)\
+  \ for support and proof-reading.*"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def trump_detector (s : String) : Float := sorry\n\ntheorem trump_detector_returns_float\
+  \ (text : String) : \n  let result := trump_detector text\n  result ≥ 0 ∨ result\
+  \ < 0 := sorry\n"
+"vc-theorems": "theorem trump_detector_all_vowels (text : String) :\n  (∀ c ∈ text.data,\
+  \ c ∈ ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']) →\n  trump_detector text\
+  \ ≥ 0 := sorry\n\n\ntheorem trump_detector_no_vowels (text : String) :\n  (∀ c ∈\
+  \ text.data, c ∉ ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']) →\n  text.length\
+  \ > 0 →\n  trump_detector text = 0 := sorry\n\n\ntheorem trump_detector_rounding\
+  \ (text : String) :\n  let result := trump_detector text\n  Float.abs (result -\
+  \ result) < 1e-10 := sorry\n\n\ntheorem trump_detector_empty :\n  trump_detector\
+  \ \"\" = 0 := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval trump_detector \"\
+  I will build a huge wall\"\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval trump_detector\
+  \ \"HUUUUUGEEEE WAAAAAALL\"\n\n/--\ninfo: 1.56\n-/\n#guard_msgs in\n#eval trump_detector\
+  \ \"listen migrants: IIII KIIIDD YOOOUUU NOOOOOOTTT\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

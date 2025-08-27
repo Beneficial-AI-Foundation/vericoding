@@ -1,0 +1,30 @@
+"vc-description": "Mary wrote a recipe book and is about to publish it, but because\
+  \ of a new European law, she needs to update and include all measures in grams.\n\
+  \nGiven all the measures in tablespoon (`tbsp`) and in teaspoon (`tsp`), considering\
+  \ `1 tbsp = 15g` and `1 tsp = 5g`, append to the end of the measurement the biggest\
+  \ equivalent integer (rounding up).\n\n## Examples\n\n```\n\"2 tbsp of butter\"\
+  \    -->  \"2 tbsp (30g) of butter\"\n\n\"1/2 tbsp of oregano\" -->  \"1/2 tbsp\
+  \ (8g) of oregano\"\n\n\"1/2 tsp of salt\"     -->  \"1/2 tbsp (3g) of salt\"\n\n\
+  \"Add to the mixing bowl and coat well with 1 tbsp of olive oil & 1/2 tbsp of dried\
+  \ dill\" -->\n\"Add to the mixing bowl and coat well with 1 tbsp (15g) of olive\
+  \ oil & 1/2 tbsp (8g) of dried dill\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def convert_recipe (s : String) : String := sorry\n\ndef String.containsStr\
+  \ (s₁ s₂ : String) : Bool := sorry\n"
+"vc-theorems": "theorem conversion_maintains_original_measurement \n  (measurement\
+  \ : String) \n  (unit : String)\n  (ingredient : String)\n  (h1 : unit = \"tbsp\"\
+  \ ∨ unit = \"tsp\") :\n  let recipe := measurement ++ \" \" ++ unit ++ \" \" ++\
+  \ ingredient;\n  let result := convert_recipe recipe;\n  result.startsWith (measurement\
+  \ ++ \" \" ++ unit) := sorry\n\n\ntheorem conversion_includes_grams\n  (measurement\
+  \ : String)\n  (unit : String) \n  (ingredient : String)\n  (h1 : unit = \"tbsp\"\
+  \ ∨ unit = \"tsp\") :\n  let recipe := measurement ++ \" \" ++ unit ++ \" \" ++\
+  \ ingredient;\n  let result := convert_recipe recipe;\n  result.containsStr \"g)\"\
+  \ := sorry\n\n\ntheorem conversion_uses_correct_factor\n  (measurement : String)\n\
+  \  (unit : String)\n  (ingredient : String)\n  (h1 : unit = \"tbsp\" ∨ unit = \"\
+  tsp\") :\n  let recipe := measurement ++ \" \" ++ unit ++ \" \" ++ ingredient;\n\
+  \  let result := convert_recipe recipe;\n  let weight := if unit = \"tbsp\" then\
+  \ 15 else 5;\n  result.containsStr s!\"({weight}g)\" := sorry\n\n\ntheorem no_measurements_unchanged\n\
+  \  (text : String)\n  (h1 : ¬text.containsStr \"tbsp\")\n  (h2 : ¬text.containsStr\
+  \ \"tsp\") :\n  convert_recipe text = text := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

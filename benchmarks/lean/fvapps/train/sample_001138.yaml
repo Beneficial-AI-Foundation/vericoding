@@ -1,0 +1,25 @@
+"vc-description": "Chef has N subordinates. In order to complete a very important\
+  \ order he will choose exactly K of them. He can't choose less than K since it will\
+  \ be not enough to complete the order in time. On the other hand if he chooses more\
+  \ than K subordinates he can't control them during the operation. Help him to find\
+  \ the number of ways he can choose the team to complete this very important order.\n\
+  \n-----Input-----\nThe first line contains a single positive integer T <= 100, the\
+  \ number of test cases. T test cases follow. The only line of each test case contains\
+  \ two integers N and K, where 0 <= N, K < 2^64. It is guaranteed that the answer\
+  \ will be less than 2^64.\n\n-----Output-----\nFor each test case, output a single\
+  \ line containing the number of ways to choose the required team.\n\n-----Example-----\n\
+  Input:\n3\n2 1\n3 3\n10 5\n\nOutput:\n2\n1\n252"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def choose_team (n k : Nat) : Nat := sorry\n\ntheorem non_negative\
+  \ (n k : Nat) : 0 ≤ choose_team n k := by sorry\n"
+"vc-theorems": "theorem k_greater_than_n (n k : Nat) : k > n → choose_team n k = 0\
+  \ := by sorry\n\ntheorem k_equals_0_or_n (n k : Nat) : n > 0 ∧ (k = 0 ∨ k = n) →\
+  \ choose_team n k = 1 := by sorry\n\n\ntheorem symmetry (n k : Nat) : k ≤ n → choose_team\
+  \ n k = choose_team n (n-k) := by sorry\n\ntheorem pascal_triangle (n k : Nat) :\
+  \ \n  n > 0 ∧ k > 0 ∧ k < n → \n  choose_team n k = choose_team (n-1) (k-1) + choose_team\
+  \ (n-1) k := by sorry\n\n\ntheorem ones_property (n : Nat) : \n  n > 0 → choose_team\
+  \ n 0 = 1 ∧ choose_team n n = 1 := by sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval choose_team 2 1\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval choose_team 3 3\n\
+  \n/--\ninfo: 252\n-/\n#guard_msgs in\n#eval choose_team 10 5\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,34 @@
+"vc-description": "# Task\n\nYour task is to sort the characters in a string according\
+  \ to the following rules:\n```\n- Rule1: English alphabets are arranged from A to\
+  \ Z, case insensitive.\n  ie. \"Type\" --> \"epTy\"\n- Rule2: If the uppercase and\
+  \ lowercase of an English alphabet exist\n  at the same time, they are arranged\
+  \ in the order of oringal input.\n  ie. \"BabA\" --> \"aABb\"\n- Rule3: non English\
+  \ alphabet remain in their original position.\n  ie. \"By?e\" --> \"Be?y\"\n```\n\
+  \n# Input/Output\n\n\n`[input]` string `s`\n\nA non empty string contains any characters(English\
+  \ alphabets or non English alphabets).\n\n`[output]` a string\n\nA sorted string\
+  \ according to the rules above.\n\n# Example\n\n\nFor `s = \"cba\"`, the output\
+  \ should be `\"abc\"`.\n\nFor `s = \"Cba\"`, the output should be `\"abC\"`.\n\n\
+  For `s = \"cCBbAa\"`, the output should be `\"AaBbcC\"`.\n\nFor `s = \"c b a\"`,\
+  \ the output should be `\"a b c\"`.\n\nFor `s = \"-c--b--a-\"`, the output should\
+  \ be `\"-a--b--c-\"`.\n\nFor `s = \"Codewars\"`, the output should be `\"aCdeorsw\"\
+  `."
+"vc-preamble": "import Imports.AllImports\n\ndef sortString (s : String) : String\
+  \ := sorry\n\ndef isAlpha (c : Char) : Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isUpper (c : Char) : Bool := sorry\ndef isLower (c : Char)\
+  \ : Bool := sorry\n"
+"vc-theorems": "theorem sort_string_preserves_length (s : String) :\n  (sortString\
+  \ s).length = s.length := sorry\n\n\ntheorem sort_string_preserves_non_alpha (s\
+  \ : String) (i : String.Pos) :\n  ¬(isAlpha (s.get i)) →\n  (sortString s).get i\
+  \ = s.get i := sorry\n\n\ntheorem sort_string_sorts_alpha (s : String) :\n  let\
+  \ result := sortString s\n  let alphaChars := result.data.filter isAlpha\n  ∀ i\
+  \ j, i < j → j < alphaChars.length →\n    (alphaChars.get ⟨i, by sorry⟩).toLower\
+  \ ≤ (alphaChars.get ⟨j, by sorry⟩).toLower := sorry\n\n\ntheorem sort_string_preserves_case_counts\
+  \ (s : String) :\n  let result := sortString s\n  (result.data.filter isUpper).length\
+  \ = (s.data.filter isUpper).length ∧\n  (result.data.filter isLower).length = (s.data.filter\
+  \ isLower).length := sorry\n\n\ntheorem sort_string_idempotent (s : String) :\n\
+  \  sortString (sortString s) = sortString s := sorry\n\n/--\ninfo: 'abc'\n-/\n#guard_msgs\
+  \ in\n#eval sort_string \"cba\"\n\n/--\ninfo: 'abC'\n-/\n#guard_msgs in\n#eval sort_string\
+  \ \"Cba\"\n\n/--\ninfo: 'a b c'\n-/\n#guard_msgs in\n#eval sort_string \"c b a\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

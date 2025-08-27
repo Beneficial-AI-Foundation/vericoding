@@ -1,0 +1,18 @@
+"vc-description": "In the following 6 digit number:\n\n```\n283910\n```\n\n`91` is\
+  \ the greatest sequence of 2 consecutive digits.\n\nIn the following 10 digit number:\n\
+  ```\n1234567890\n```\n\n`67890` is the greatest sequence of 5 consecutive digits.\n\
+  \nComplete the solution so that it returns the greatest sequence of five consecutive\
+  \ digits found within the number given. The number will be passed in as a string\
+  \ of only digits. It should return a five digit integer. The number passed may be\
+  \ as large as 1000 digits. \n\n*Adapted from ProjectEuler.net*"
+"vc-preamble": "import Imports.AllImports\n\ndef find_largest_sequence (s : String)\
+  \ : Nat :=\n  sorry\n\n\ndef isSubstring (sub str : String) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def substring (s : String) (start len : Nat) : String :=\n  sorry\n\
+  \n\n"
+"vc-theorems": "theorem short_strings (s : String) :\n  s.length < 5 → find_largest_sequence\
+  \ s = 0 :=\nsorry\n\n/--\ninfo: 98765\n-/\n#guard_msgs in\n#eval find_largest_sequence\
+  \ \"1234567898765\"\n\n/--\ninfo: 67890\n-/\n#guard_msgs in\n#eval find_largest_sequence\
+  \ \"1234567890\"\n\n/--\ninfo: 12345\n-/\n#guard_msgs in\n#eval find_largest_sequence\
+  \ \"12345\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

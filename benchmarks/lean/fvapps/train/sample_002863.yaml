@@ -1,0 +1,29 @@
+"vc-description": "# Task\n You have some people who are betting money, and they all\
+  \ start with the same amount of money (this number>0). \n\n Find out if the given\
+  \ end-state of amounts is possible after the betting is over and money is redistributed.\n\
+  \n# Input/Output\n\n\n - `[input]` integer array arr\n\n  the proposed end-state\
+  \ showing final amounts for each player\n\n\n - `[output]` a boolean value\n\n \
+  \ `true` if this is a possible end-state and `false` otherwise\n  \n# Examples\n\
+  \n\n- For `arr = [0, 56, 100]`, the output should be `true`.\n\nThree players start\
+  \ with the same amount of money 52.\n\nAt the end of game, player 1 lose `52`, player2\
+  \ win `4`, and  player3 win `48`.\n\n\n- For `arr = [0, 0, 0]`, the output should\
+  \ be `false`.\n\nPlayers should start with a positive number of of money.\n\n- For\
+  \ `arr = [11]`, the output should be `true`.\n\nOne player always keep his money\
+  \ at the end of game.\n\n\n- For `arr = [100, 100, 100, 90, 1, 0, 0]`, the output\
+  \ should be `false`.\n\nThese players can not start with the same amount of money."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum (xs : List Int) : Int :=\
+  \ \n  xs.foldl (· + ·) 0\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def learn_charitable_game (arr : List Int) : Bool := sorry\n\n\
+  theorem single_element_validity {n : Int} :\n  learn_charitable_game [n] = (n >\
+  \ 0) := sorry\n"
+"vc-theorems": "theorem non_positive_sum_invalid {arr : List Int} (h : arr.sum ≤ 0)\
+  \ :\n  learn_charitable_game arr = false := sorry\n\n\ntheorem divisible_sum_valid\
+  \ {arr : List Int} (h₁ : arr.sum > 0) :\n  learn_charitable_game arr = (arr.sum\
+  \ % arr.length == 0) := sorry\n\n\ntheorem all_zeros_invalid {arr : List Int} \n\
+  \  (h₁ : arr.length ≥ 2)\n  (h₂ : ∀ x ∈ arr, x = 0) :\n  learn_charitable_game arr\
+  \ = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval learn_charitable_game\
+  \ [0, 56, 100]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval learn_charitable_game\
+  \ [0, 0, 0]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval learn_charitable_game\
+  \ [11]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

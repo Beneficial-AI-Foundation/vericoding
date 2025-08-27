@@ -1,0 +1,17 @@
+"vc-description": "=====Problem Statement=====\nGiven the participants' score sheet\
+  \ for your University Sports Day, you are required to find the runner-up score.\
+  \ You are given n scores. Store them in a list and find the score of the runner-up.\n\
+  \n=====Input Format=====\nThe first line contains n. The second line contains an\
+  \ array A[] of n integers each separated by a space.\n\n=====Constraints=====\n\
+  2≤n≤10\n-100≤A[i]≤ 100\n\n=====Output Format=====\nPrint the runner-up score."
+"vc-preamble": "import Imports.AllImports\n\ndef find_runner_up_score (scores: List\
+  \ Int) : Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def all_lt (x : Int) (l : List Int) : Prop := \n  ∀ y, y ∈ l →\
+  \ y < x\n\n\n\n\n\n\n"
+"vc-theorems": "theorem duplicate_max_case :\n  find_runner_up_score [1, 2, 2] = 1\
+  \ :=\nsorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval find_runner_up_score [2,\
+  \ 3, 6, 6, 5]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_runner_up_score [2,\
+  \ 2, 3, 4, 4]\n\n/--\ninfo: 50\n-/\n#guard_msgs in\n#eval find_runner_up_score [-100,\
+  \ 0, 50, 100, 100]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

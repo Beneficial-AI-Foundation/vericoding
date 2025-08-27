@@ -1,0 +1,27 @@
+"vc-description": "Cengiz recently learned Fibonacci numbers and now he is studying\
+  \ different algorithms to find them. After getting bored of reading them, he came\
+  \ with his own new type of numbers that he named XORinacci numbers. He defined them\
+  \ as follows:   $f(0) = a$;  $f(1) = b$;  $f(n) = f(n-1) \\oplus f(n-2)$ when $n\
+  \ > 1$, where $\\oplus$ denotes the bitwise XOR operation. \n\nYou are given three\
+  \ integers $a$, $b$, and $n$, calculate $f(n)$.\n\nYou have to answer for $T$ independent\
+  \ test cases.\n\n\n-----Input-----\n\nThe input contains one or more independent\
+  \ test cases.\n\nThe first line of input contains a single integer $T$ ($1 \\le\
+  \ T \\le 10^3$), the number of test cases.\n\nEach of the $T$ following lines contains\
+  \ three space-separated integers $a$, $b$, and $n$ ($0 \\le a, b, n \\le 10^9$)\
+  \ respectively.\n\n\n-----Output-----\n\nFor each test case, output $f(n)$.\n\n\n\
+  -----Example-----\nInput\n3\n3 4 2\n4 5 0\n325 265 1231232\n\nOutput\n7\n4\n76\n\
+  \n\n\n-----Note-----\n\nIn the first example, $f(2) = f(0) \\oplus f(1) = 3 \\oplus\
+  \ 4 = 7$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_xorinacci (a b n : Nat) : Nat := sorry\n\ntheorem xorinacci_cycle\
+  \ (a b n : Nat) :\n  solve_xorinacci a b n = solve_xorinacci a b (n + 3) := sorry\n"
+"vc-theorems": "theorem xorinacci_initial_zero (a b : Nat) :\n  solve_xorinacci a\
+  \ b 0 = a := sorry\n\n\ntheorem xorinacci_initial_one (a b : Nat) :\n  solve_xorinacci\
+  \ a b 1 = b := sorry\n\n\ntheorem xorinacci_xor_commutative (a b : Nat) :\n  solve_xorinacci\
+  \ a b 2 = solve_xorinacci b a 2 := sorry\n\n\ntheorem xorinacci_xor_with_zero (x\
+  \ : Nat) :\n  solve_xorinacci x 0 2 = x := sorry\n\n\ntheorem xorinacci_zero_xor\
+  \ (x : Nat) :\n  solve_xorinacci 0 x 2 = x := sorry\n\n/--\ninfo: 7\n-/\n#guard_msgs\
+  \ in\n#eval solve_xorinacci 3 4 2\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve_xorinacci\
+  \ 4 5 0\n\n/--\ninfo: 76\n-/\n#guard_msgs in\n#eval solve_xorinacci 325 265 1231232\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded_and_plausible"

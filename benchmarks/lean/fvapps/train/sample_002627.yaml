@@ -1,0 +1,57 @@
+"vc-description": "How many licks does it take to get to the tootsie roll center of\
+  \ a tootsie pop?\n\nA group of engineering students from Purdue University reported\
+  \ that its licking machine, modeled after a human tongue, took an average of 364\
+  \ licks to get to the center of a Tootsie Pop. Twenty of the group's volunteers\
+  \ assumed the licking challenge-unassisted by machinery-and averaged 252 licks each\
+  \ to the center.\n\nYour task, if you choose to accept it, is to write a function\
+  \ that will return the number of licks it took to get to the tootsie roll center\
+  \ of a tootsie pop, given some environmental variables.\n\nEveryone knows it's harder\
+  \ to lick a tootsie pop in cold weather but it's easier if the sun is out. You will\
+  \ be given an object of environmental conditions for each trial paired with a value\
+  \ that will increase or decrease the number of licks. The environmental conditions\
+  \ all apply to the same trial.\n\nAssuming that it would normally take 252 licks\
+  \ to get to the tootsie roll center of a tootsie pop, return the new total of licks\
+  \ along with the condition that proved to be most challenging (causing the most\
+  \ added licks) in that trial.\n\nExample:\n```\ntotalLicks({ \"freezing temps\"\
+  : 10, \"clear skies\": -2 });\n```\nShould return:\n```\n\"It took 260 licks to\
+  \ get to the tootsie roll center of a tootsie pop. The toughest challenge was freezing\
+  \ temps.\"\n```\nOther cases:\nIf there are no challenges, the toughest challenge\
+  \ sentence should be omitted. If there are multiple challenges with the highest\
+  \ toughest amount, the first one presented will be the toughest.\nIf an environment\
+  \ variable is present, it will be either a positive or negative integer. No need\
+  \ to validate.\n\n\nCheck out my other 80's Kids Katas:\n\n\n80's Kids #1: How Many\
+  \ Licks Does It Take\n80's Kids #2: Help Alf Find His Spaceship\n80's Kids #3: Punky\
+  \ Brewster's Socks\n80's Kids #4: Legends of the Hidden Temple\n80's Kids #5: You\
+  \ Can't Do That on Television\n80's Kids #6: Rock 'Em, Sock 'Em Robots\n80's Kids\
+  \ #7: She's a Small Wonder\n80's Kids #8: The Secret World of Alex Mack\n80's Kids\
+  \ #9: Down in Fraggle Rock \n80's Kids #10: Captain Planet"
+"vc-preamble": "import Imports.AllImports\n\ndef String.containsSubstr (s : String)\
+  \ (sub : String) : Bool := sorry\n\ndef List.sum (xs : List Int) : Int := \n  match\
+  \ xs with\n  | [] => 0\n  | x :: rest => x + rest.sum\n\nstructure Environment where\n\
+  \  modifiers : List (String × Int)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def total_licks (env : Environment) : String := sorry\n\ntheorem\
+  \ total_licks_base_text (env : Environment) :\n  let result := total_licks env\n\
+  \  (result.startsWith \"It took\") ∧ \n  (result.containsSubstr \" licks to get\
+  \ to the tootsie roll center of a tootsie pop\") :=\nsorry\n"
+"vc-theorems": "theorem total_licks_contains_sum (env : Environment) :\n  let expected\
+  \ := 252 + (env.modifiers.map Prod.snd).sum\n  let result := total_licks env\n \
+  \ result.containsSubstr (toString expected) :=\nsorry\n\n\ntheorem total_licks_toughest_challenge\
+  \ (env : Environment) :\n  let maxVal := (env.modifiers.map Prod.snd).maximum?.getD\
+  \ 0\n  let result := total_licks env\n  if maxVal > 0 then\n    (result.containsSubstr\
+  \ \"The toughest challenge was\") ∧\n    (env.modifiers.find? (fun p => p.2 = maxVal)).map\
+  \ (fun p => result.containsSubstr p.1) = some true\n  else\n    ¬(result.containsSubstr\
+  \ \"The toughest challenge was\") :=\nsorry\n\n\ntheorem total_licks_no_positive_challenges\
+  \ \n  (env : Environment)\n  (h : ∀ p ∈ env.modifiers, p.2 ≤ 0) :\n  ¬((total_licks\
+  \ env).containsSubstr \"The toughest challenge was\") :=\nsorry\n\n\ntheorem total_licks_always_has_toughest_challenge\n\
+  \  (env : Environment)\n  (h1 : env.modifiers.length > 0)\n  (h2 : ∀ p ∈ env.modifiers,\
+  \ p.2 > 0) :\n  (total_licks env).containsSubstr \"The toughest challenge was\"\
+  \ :=\nsorry\n\n/--\ninfo: 'It took 260 licks to get to the tootsie roll center of\
+  \ a tootsie pop. The toughest challenge was freezing temps.'\n-/\n#guard_msgs in\n\
+  #eval total_licks {\"freezing temps\": 10, \"clear skies\": -2}\n\n/--\ninfo: 'It\
+  \ took 245 licks to get to the tootsie roll center of a tootsie pop.'\n-/\n#guard_msgs\
+  \ in\n#eval total_licks {\"happiness\": -5, \"clear skies\": -2}\n\n/--\ninfo: 'It\
+  \ took 512 licks to get to the tootsie roll center of a tootsie pop. The toughest\
+  \ challenge was evil wizards.'\n-/\n#guard_msgs in\n#eval total_licks {\"dragons\"\
+  : 100, \"evil wizards\": 110, \"trolls\": 50}\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

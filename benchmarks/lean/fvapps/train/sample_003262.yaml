@@ -1,0 +1,38 @@
+"vc-description": "# Introduction\n\nThere is a war and nobody knows - the alphabet\
+  \ war!  \nThere are two groups of hostile letters. The tension between left side\
+  \ letters and right side letters was too high and the war began. The letters called\
+  \ airstrike to help them in war - dashes and dots are spreaded everywhere on the\
+  \ battlefield.\n\n# Task\n\nWrite a function that accepts `fight` string consists\
+  \ of only small letters and `*` which means a bomb drop place. Return who wins the\
+  \ fight after bombs are exploded. When the left side wins return `Left side wins!`,\
+  \ when the right side wins return `Right side wins!`, in other case return `Let's\
+  \ fight again!`.\n\nThe left side letters and their power:\n```\n w - 4\n p - 3\
+  \ \n b - 2\n s - 1\n```\nThe right side letters and their power:\n```\n m - 4\n\
+  \ q - 3 \n d - 2\n z - 1\n```\nThe other letters don't have power and are only victims.\
+  \  \nThe `*` bombs kills the adjacent letters ( i.e. `aa*aa` => `a___a`, `**aa**`\
+  \ => `______` );\n\n# Example\n\n# Alphabet war Collection\n\n\n\nAlphavet war \n\
+  \n\nAlphabet war - airstrike - letters massacre\n\n\nAlphabet wars - reinforces\
+  \ massacre\n\n\nAlphabet wars - nuclear strike\n\n\nAlphabet war - Wo lo loooooo\
+  \ priests join the war"
+"vc-preamble": "import Imports.AllImports\n\ndef Result := String\nderiving Repr,\
+  \ BEq\n\n\ndef alphabet_war (s : String) : Result := sorry\n\ndef alphabet_war_valid_result\
+  \ (s : String) : \n  let result := alphabet_war s\n  result = \"Left side wins!\"\
+  \ ∨ result = \"Right side wins!\" ∨ result = \"Let's fight again!\" := sorry\n\n\
+  \ndef only_left_letters_never_right (s : String) :\n  (∀ c ∈ s.data, c ∈ ['w', 'p',\
+  \ 'b', 's']) →\n  s.length > 0 →\n  alphabet_war s ≠ \"Right side wins!\" := sorry\n\
+  \n\ndef only_right_letters_never_left (s : String) :\n  (∀ c ∈ s.data, c ∈ ['m',\
+  \ 'q', 'd', 'z']) →\n  s.length > 0 →\n  alphabet_war s ≠ \"Left side wins!\" :=\
+  \ sorry\n\n\ndef only_bombs_is_draw (s : String) :\n  (∀ c ∈ s.data, c = '*') →\n\
+  \  s.length > 0 →\n  alphabet_war s = \"Let's fight again!\" := sorry\n\n\ndef adjacent_bomb_nullifies\
+  \ (c : Char) :\n  c ∈ ['w', 'p', 'b', 's', 'm', 'q', 'd', 'z'] →\n  alphabet_war\
+  \ (String.mk ['*', c]) = \"Let's fight again!\" ∧\n  alphabet_war (String.mk [c,\
+  \ '*']) = \"Let's fight again!\" := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def repeated_string_same_winner (s : String) :\n  (∀ c ∈ s.data,\
+  \ c ∈ ['w', 'p', 'b', 's', 'm', 'q', 'd', 'z']) →\n  s.length > 0 →\n  alphabet_war\
+  \ s = alphabet_war (s ++ s) := sorry"
+"vc-theorems": "/--\ninfo: 'Right side wins!'\n-/\n#guard_msgs in\n#eval alphabet_war\
+  \ \"z\"\n\n/--\ninfo: \"Let's fight again!\"\n-/\n#guard_msgs in\n#eval alphabet_war\
+  \ \"z*dq*mw*pb*s\"\n\n/--\ninfo: 'Left side wins!'\n-/\n#guard_msgs in\n#eval alphabet_war\
+  \ \"sz**z**zs\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

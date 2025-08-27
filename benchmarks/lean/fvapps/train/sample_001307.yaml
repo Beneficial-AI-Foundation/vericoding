@@ -1,0 +1,37 @@
+"vc-description": "You have a tree consisting of n vertices. You want to color each\
+  \ vertex of the tree in one of the k colors such that for any pair of vertices having\
+  \ same color, all the vertices belonging to the path joining them should also have\
+  \ same color. In other words, for any two vertices u, v with same color, all the\
+  \ vertices in the path joining them should also have color same as that of the u\
+  \ (or same as v, as u and v have same color). \n\nFind out possible number of ways\
+  \ in which you can color the tree satisfying the above property. As the answer could\
+  \ be large, print your answer modulo 109 + 7.\n\n-----Input-----\nThe first line\
+  \ of the input contains an integer T denoting the number of test cases. The description\
+  \ of T test cases follows.\nFor each test case, first line contains two space separated\
+  \ integers n, k denoting number of vertices in the tree and total number of colors,\
+  \ respectively\nEach of the next n - 1 lines contain two space separated integers\
+  \ ui, vi, denoting that there is an edge between vertices ui and vi in the tree.\n\
+  \n-----Output-----\nFor each test case, output a single line corresponding to number\
+  \ of ways of coloring the tree.\n\n-----Constraints-----\n- 1 ≤ T ≤ 50\n- 1 ≤ n,\
+  \ k ≤ 50\n- 1 ≤ ui, vi ≤ n\n- ui ≠ vi\n\n-----Example-----\nInput\n3\n3 2\n1 2\n\
+  2 3\n3 1\n1 2\n2 3\n4 3\n1 2\n2 3\n2 4\n\nOutput:\n6\n1\n39\n\n-----Explanation-----\n\
+  In the first example, You can color the vertices in the following 6 ways - {1, 1,\
+  \ 1}, {2, 2, 2}, {1, 2, 2}, {1, 1, 2}, {2, 1, 1}, {2, 2, 1}. Note that you can't\
+  \ color the tree in {1, 2, 1} as the vertices in the path connecting vertex 1 and\
+  \ 3, (i.e. 1, 2, 3) don't have same color. You can see that the color of 2nd vertex\
+  \ is not same as that of 1st and 3rd.\nIn the second example, Only possible coloring\
+  \ you can do is to color all the vertices with color 1."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (n k : Nat) (edges : List (Nat × Nat)) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem solve_result_bounds {n k : Nat} {edges : List (Nat × Nat)}\n\
+  \  (hn : n > 0) (hk : k > 0) (he : edges.length > 0) :\n  let result := solve n\
+  \ k edges\n  0 ≤ result ∧ result < 1000000007 :=\nsorry\n\n\ntheorem solve_small_values\
+  \ {n k : Nat} {edges : List (Nat × Nat)}\n  (hn : 0 < n ∧ n ≤ 10) (hk : 0 < k ∧\
+  \ k ≤ 10) :\n  let result := solve n k edges\n  result ≥ 0 ∧ result ≤ k^n :=\nsorry\n\
+  \n\ntheorem solve_base_cases_nonzero {n k : Nat} {edges : List (Nat × Nat)}\n  (h1\
+  \ : (n = 1 ∧ k = 1) ∨ (n = 2 ∧ k = 1) ∨ (n = 2 ∧ k = 2)) :\n  solve n k edges >\
+  \ 0 :=\nsorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval solve 3 2 [[1, 2], [2,\
+  \ 3]]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve 3 1 [[1, 2], [2, 3]]\n\n\
+  /--\ninfo: 39\n-/\n#guard_msgs in\n#eval solve 4 3 [[1, 2], [2, 3], [2, 4]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

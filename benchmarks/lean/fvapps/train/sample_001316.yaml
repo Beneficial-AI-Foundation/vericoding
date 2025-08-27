@@ -1,0 +1,44 @@
+"vc-description": "Chef has $N$ points (numbered $1$ through $N$) in a 2D Cartesian\
+  \ coordinate system. For each valid $i$, the $i$-th point is $(x_i, y_i)$. He also\
+  \ has a fixed integer $c$ and he may perform operations of the following type: choose\
+  \ a point $(x_i, y_i)$ and move it to $(x_i + c, y_i + c)$ or $(x_i - c, y_i - c)$.\n\
+  Now, Chef wants to set up one or more checkpoints (points in the same coordinate\
+  \ system) and perform zero or more operations in such a way that after they are\
+  \ performed, each of his (moved) $N$ points is located at one of the checkpoints.\n\
+  Chef's primary objective is to minimise the number of checkpoints. Among all options\
+  \ with this minimum number of checkpoints, he wants to choose one which minimises\
+  \ the number of operations he needs to perform.\nCan you help Chef find the minimum\
+  \ number of required checkpoints and the minimum number of operations he needs to\
+  \ perform to move all $N$ points to these checkpoints?\n\n-----Input-----\n- The\
+  \ first line of the input contains a single integer $T$ denoting the number of test\
+  \ cases. The description of $T$ test cases follows.\n- The first line of each test\
+  \ case contains two space-separated integers $N$ and $c$.\n- $N$ lines follow. For\
+  \ each valid $i$, the $i$-th of these lines contains two space-separated integers\
+  \ $x_i$ and $y_i$.\n\n-----Output-----\nFor each test case, print a single line\
+  \ containing two integers ― the minimum number of checkpoints and the minimum number\
+  \ of moves.\n\n-----Constraints-----\n- $1 \\le T \\le 5$\n- $1 \\le N \\le 5 \\\
+  cdot 10^5$\n- $|x_i|, |y_i| \\le 10^9$ for each valid $i$\n- $0 < c \\le 10^9$\n\
+  - the sum of $N$ over all test cases does not exceed $5 \\cdot 10^5$\n\n-----Example\
+  \ Input-----\n1\n3 1\n1 1\n1 0\n3 2\n\n-----Example Output-----\n2 2\n\n-----Explanation-----\n\
+  Example case 1: One optimal solution is to set up checkpoints at coordinates $(1,\
+  \ 1)$ and $(1, 0)$. Since the points $(1, 1)$ and $(1, 0)$ are already located at\
+  \ checkpoints, Chef can just move the point $(3, 2)$ to the checkpoint $(1, 0)$\
+  \ in two moves: $(3, 2) \\rightarrow (2, 1) \\rightarrow (1, 0)$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Point := Int × Int\n\ndef solve_checkpoints (n : Int) (c :\
+  \ Int) (points : List Point) : Int × Int :=\n  sorry\n"
+"vc-theorems": "theorem solve_checkpoints_output_type {n c : Int} {points : List Point}\
+  \ :\n  (solve_checkpoints n c points).1 ≥ 0 ∧ (solve_checkpoints n c points).2 ≥\
+  \ 0 := sorry\n\n\ntheorem solve_checkpoints_groups_bounded {n c : Int} {points :\
+  \ List Point} \n  (hn : n > 0) (hc : c > 0) :\n  (solve_checkpoints n c points).1\
+  \ ≤ points.length := sorry\n\n\ntheorem solve_checkpoints_moves_nonneg {n c : Int}\
+  \ {points : List Point}\n  (hn : n > 0) (hc : c > 0) :\n  (solve_checkpoints n c\
+  \ points).2 ≥ 0 := sorry\n\n\ntheorem solve_checkpoints_identical_points {n c x\
+  \ y : Int} {count : Nat}\n  (hn : n > 0) (hc : c > 0) (hcount : count > 0) :\n \
+  \ let points := List.replicate count (x, y)\n  solve_checkpoints n c points = (1,\
+  \ 0) := sorry\n\n\ntheorem solve_checkpoints_empty {n c : Int}\n  (hn : n > 0) (hc\
+  \ : c > 0) :\n  solve_checkpoints n c [] = (0, 0) := sorry\n\n/--\ninfo: (2, 2)\n\
+  -/\n#guard_msgs in\n#eval solve_checkpoints 3 1 [(1, 1), (1, 0), (3, 2)]\n\n/--\n\
+  info: (1, 2)\n-/\n#guard_msgs in\n#eval solve_checkpoints 2 1 [(0, 0), (2, 2)]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

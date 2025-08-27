@@ -1,0 +1,28 @@
+"vc-description": "**Introduction**\n Little Petya very much likes sequences. However,\
+  \ recently he received a sequence as a gift from his mother.\n Petya didn't like\
+  \ it at all! He decided to make a single replacement. After this replacement, Petya\
+  \ would like to the sequence in increasing order.\n He asks himself: What is the\
+  \ lowest possible value I could have got after making the replacement and sorting\
+  \ the sequence?\n\n**About the replacement**\n Choose exactly one element from the\
+  \ sequence and replace it with another integer > 0. You are **not allowed** to replace\
+  \ a number with itself, or to change no number at all.\n\n**Task**\n Find the lowest\
+  \ possible sequence after performing a valid replacement, and sorting the sequence.\n\
+  \n**Input:**\n Input contains sequence with `N` integers. All elements of the sequence\
+  \ > 0. The sequence will never be empty.\n\n**Output:**\n Return sequence with `N`\
+  \ integers — which includes the lowest possible values of each sequence element,\
+  \ after the single replacement and sorting has been performed.\n\n**Examples**:\n\
+  ```\n([1,2,3,4,5])  =>  [1,1,2,3,4]\n([4,2,1,3,5])  =>  [1,1,2,3,4]\n([2,3,4,5,6])\
+  \  =>  [1,2,3,4,5]\n([2,2,2])      =>  [1,2,2]\n([42])         =>  [1]\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef sort_number (l : List Int) : List\
+  \ Int := sorry\n\ntheorem sort_number_length {l : List Int} (h : l ≠ []) : \n  (sort_number\
+  \ l).length = l.length := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSorted (l : List Int) : Prop :=\n  ∀ i j, i < j → j < l.length\
+  \ → l[i]! ≤ l[j]!\n\n\n\n\n"
+"vc-theorems": "theorem sort_number_first {l : List Int} (h : l ≠ []) :\n  (sort_number\
+  \ l).head! = 1 := sorry\n\n\ntheorem sort_number_deterministic {l : List Int} (h\
+  \ : l ≠ []) :\n  sort_number l = sort_number l := sorry\n\n/--\ninfo: [1, 1, 2,\
+  \ 3, 4]\n-/\n#guard_msgs in\n#eval sort_number [1, 2, 3, 4, 5]\n\n/--\ninfo: [1,\
+  \ 2, 2]\n-/\n#guard_msgs in\n#eval sort_number [2, 2, 2]\n\n/--\ninfo: [1]\n-/\n\
+  #guard_msgs in\n#eval sort_number [42]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,22 @@
+"vc-description": "In this Kata you need to write the method SharedBits that returns\
+  \ true if 2 integers share at least two '1' bits. For simplicity assume that all\
+  \ numbers are positive\n\nFor example\nint seven = 7;    //0111\nint ten = 10; \
+  \    //1010\nint fifteen = 15; //1111\nSharedBits(seven, ten);     //false\nSharedBits(seven,\
+  \ fifteen); //true\nSharedBits(ten, fifteen);   //true\n\n- seven and ten share\
+  \ only a single '1' (at index 3)\n- seven and fifteen share 3 bits (at indexes 1,\
+  \ 2, and 3)\n- ten and fifteen  share 2 bits (at indexes 0 and 2)\n\nHint: you can\
+  \ do this with just string manipulation, but binary operators will make your life\
+  \ much easier."
+"vc-preamble": "import Imports.AllImports\n\ndef countOnes (n : Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def shared_bits (a b : Nat) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem shared_bits_symmetric\n  {a b : Nat} : shared_bits a b = shared_bits\
+  \ b a := by\n  sorry\n\n\ntheorem shared_bits_self\n  {x : Nat} : shared_bits x\
+  \ x = (countOnes x > 1) := by\n  sorry\n\n\ntheorem shared_bits_and\n  {a b : Nat}\
+  \ : shared_bits a b = (countOnes (a &&& b) > 1) := by\n  sorry\n\n\ntheorem shared_bits_single_bit\n\
+  \  {x : Nat} (h : x ≤ 1) : shared_bits x x = false := by\n  sorry\n\n\ntheorem shared_bits_powers_two\n\
+  \  {p1 p2 : Nat} (h1 : ∃ k1, p1 = 2^k1) (h2 : ∃ k2, p2 = 2^k2) :\n  shared_bits\
+  \ p1 p2 = false := by\n  sorry\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval shared_bits\
+  \ 1 2\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval shared_bits 7 10\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval shared_bits 7 15\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

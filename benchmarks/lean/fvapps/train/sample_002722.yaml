@@ -1,0 +1,24 @@
+"vc-description": "Two strings ```a``` and b are called isomorphic if there is a one\
+  \ to one mapping possible for every character of ```a``` to every character of ```b```.\
+  \ And all occurrences of every character in ```a``` map to same character in ```b```.\n\
+  \n## Task\n\nIn this kata you will create a function that return ```True``` if two\
+  \ given strings are isomorphic to each other, and ```False``` otherwise. Remember\
+  \ that order is important.\n\nYour solution must be able to handle words with more\
+  \ than 10 characters.\n\n## Example\nTrue:\n```\nCBAABC DEFFED\nXXX YYY\nRAMBUNCTIOUSLY\
+  \ THERMODYNAMICS\n```\n\nFalse:\n```\nAB CC\nXXY XYY\nABAB CD\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isomorph (s1 s2 : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem string_isomorphic_to_itself {s : String} (h : s.length > 0)\
+  \ :\n  isomorph s s = true :=\nsorry\n\n\ntheorem different_length_strings_not_isomorphic\
+  \ {s1 s2 : String} \n  (h1 : s1.length > 0) (h2 : s2.length > 0) (h3 : s1.length\
+  \ ≠ s2.length) :\n  isomorph s1 s2 = false :=\nsorry\n\n\ntheorem symmetrical_property\
+  \ {s1 : String} (h : s1.length > 0) :\n  ∀ s2, isomorph s1 s2 = isomorph s2 s1 :=\n\
+  sorry\n\n\ntheorem preserves_pattern {s mapped : String} (h1 : s.length > 0) (h2\
+  \ : s.length ≤ 100) :\n  mapped.length = s.length →\n  (∀ (i j : Fin s.length),\
+  \ s.data[i]! = s.data[j]! ↔ mapped.data[i]! = mapped.data[j]!) →\n  isomorph s mapped\
+  \ = true :=\nsorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval isomorph \"ESTATE\"\
+  \ \"DUELED\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval isomorph \"AB\" \"CC\"\
+  \n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval isomorph \"RAMBUNCTIOUSLY\" \"THERMODYNAMICS\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,33 @@
+"vc-description": "You are given a square matrix $M$ with $N$ rows (numbered $1$ through\
+  \ $N$) and $N$ columns (numbered $1$ through $N$). Initially, all the elements of\
+  \ this matrix are equal to $A$. The matrix is broken down in $N$ steps (numbered\
+  \ $1$ through $N$); note that during this process, some elements of the matrix are\
+  \ simply marked as removed, but all elements are still indexed in the same way as\
+  \ in the original matrix. For each valid $i$, the $i$-th step consists of the following:\n\
+  - Elements $M_{1, N-i+1}, M_{2, N-i+1}, \\ldots, M_{i-1, N-i+1}$ are removed.\n\
+  - Elements $M_{i, N-i+1}, M_{i, N-i+2}, \\ldots, M_{i, N}$ are removed.\n- Let's\
+  \ denote the product of all $2i-1$ elements removed in this step by $p_i$. Each\
+  \ of the remaining elements of the matrix (those which have not been removed yet)\
+  \ is multiplied by $p_i$.\nFind the sum $p_1 + p_2 + p_3 + \\ldots + p_N$. Since\
+  \ this number could be very large, compute it modulo $10^9+7$.\n\n-----Input-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first and only\
+  \ line of each test case contains two space-separated integers $N$ and $A$.\n\n\
+  -----Output-----\nFor each test case, print a single line containing one integer\
+  \ ― the sum of products at each step modulo $10^9+7$.\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 250$\n- $1 \\le N \\le 10^5$\n- $0 \\le A \\le 10^9$\n- the sum\
+  \ of $N$ over all test cases does not exceed $10^5$\n\n-----Example Input-----\n\
+  1\n3 2\n\n-----Example Output-----\n511620149\n\n-----Explanation-----\nExample\
+  \ case 1:"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_matrix_product (n : Nat) (a : Nat) : Nat :=\nsorry\n"
+"vc-theorems": "theorem solve_matrix_product_bounds (n : Nat) (a : Nat) :\n  n ≥ 1\
+  \ → 0 ≤ solve_matrix_product n a ∧ solve_matrix_product n a < 10^9+7 :=\nsorry\n\
+  \n\ntheorem solve_matrix_product_zero (n : Nat) :\n  n ≥ 1 → solve_matrix_product\
+  \ n 0 = 0 := \nsorry\n\n\ntheorem solve_matrix_product_single_step (a : Nat) :\n\
+  \  solve_matrix_product 1 a = a % (10^9+7) :=\nsorry\n\n/--\ninfo: 511620149\n-/\n\
+  #guard_msgs in\n#eval solve_matrix_product 3 2\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval solve_matrix_product 1 2\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ solve_matrix_product 5 0\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

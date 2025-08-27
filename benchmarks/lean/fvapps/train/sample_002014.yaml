@@ -1,0 +1,26 @@
+"vc-description": "Sherlock has a new girlfriend (so unlike him!). Valentine's day\
+  \ is coming and he wants to gift her some jewelry.\n\nHe bought n pieces of jewelry.\
+  \ The i-th piece has price equal to i + 1, that is, the prices of the jewelry are\
+  \ 2, 3, 4, ... n + 1.\n\nWatson gave Sherlock a challenge to color these jewelry\
+  \ pieces such that two pieces don't have the same color if the price of one piece\
+  \ is a prime divisor of the price of the other piece. Also, Watson asked him to\
+  \ minimize the number of different colors used.\n\nHelp Sherlock complete this trivial\
+  \ task.\n\n\n-----Input-----\n\nThe only line contains single integer n (1 ≤ n ≤\
+  \ 100000) — the number of jewelry pieces.\n\n\n-----Output-----\n\nThe first line\
+  \ of output should contain a single integer k, the minimum number of colors that\
+  \ can be used to color the pieces of jewelry with the given constraints.\n\nThe\
+  \ next line should consist of n space-separated integers (between 1 and k) that\
+  \ specify the color of each piece in the order of increasing price.\n\nIf there\
+  \ are multiple ways to color the pieces using k colors, you can output any of them.\n\
+  \n\n-----Examples-----\nInput\n3\n\nOutput\n2\n1 1 2 \nInput\n4\n\nOutput\n2\n2\
+  \ 1 1 2\n\n\n\n-----Note-----\n\nIn the first input, the colors for first, second\
+  \ and third pieces of jewelry having respective prices 2, 3 and 4 are 1, 1 and 2\
+  \ respectively.\n\nIn this case, as 2 is a prime divisor of 4, colors of jewelry\
+  \ having prices 2 and 4 must be distinct."
+"vc-preamble": "import Imports.AllImports\n\ndef is_prime (n : Nat) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def color_jewelry (n : Nat) : Nat × List Nat :=\n  sorry\n\n\n"
+"vc-theorems": "theorem k_bounds (n : Nat) (h : n ≥ 1) :\n  let (k, colors) := color_jewelry\
+  \ n  \n  k = 1 ∨ k = 2 :=\n  sorry\n\n\n\n\n\n\ntheorem large_n_coloring (n : Nat)\
+  \ (h1 : n > 2) :\n  let (k, colors) := color_jewelry n\n  k = 2 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,23 @@
+"vc-description": "A [perfect power](https://en.wikipedia.org/wiki/Perfect_power)\
+  \ is a classification of positive integers:\n\n> In mathematics, a **perfect power**\
+  \ is a positive integer that can be expressed as an integer power of another positive\
+  \ integer. More formally, n is a perfect power if there exist natural numbers m\
+  \ > 1, and k > 1 such that m^(k) = n.\n\nYour task is to check wheter a given integer\
+  \ is a perfect power. If it is a perfect power, return a pair `m` and `k` with m^(k)\
+  \ = n as a proof. Otherwise return `Nothing`, `Nil`, `null`, `NULL`, `None` or your\
+  \ language's equivalent.\n\n**Note:** For a perfect power, there might be several\
+  \ pairs. For example `81 = 3^4 = 9^2`, so `(3,4)` and `(9,2)` are valid solutions.\
+  \ However, the tests take care of this, so if a number is a perfect power, return\
+  \ any pair that proves it.\n\n### Examples\n```python\nisPP(4) => [2,2]\nisPP(9)\
+  \ => [3,2]\nisPP(5) => None\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isPP (n : Nat) : Option (Nat × Nat) :=\n  sorry\n"
+"vc-theorems": "theorem isPP_properties {n : Nat} (h : n > 0) :\n  match isPP n with\n\
+  \  | none => \n    ∀ b e, b ≥ 2 → e ≥ 2 → b ^ e ≠ n\n  | some (b, e) =>\n    b ≥\
+  \ 2 ∧ e ≥ 2 ∧ b ^ e = n\n  := sorry\n\n\ntheorem isPP_perfect_powers {base exp :\
+  \ Nat} \n  (hbase : base ≥ 2) (hexp : exp ≥ 2) :\n  ∃ b e, \n    isPP (base ^ exp)\
+  \ = some (b, e) ∧\n    b ^ e = base ^ exp\n  := sorry\n\n/--\ninfo: [2, 2]\n-/\n\
+  #guard_msgs in\n#eval isPP 4\n\n/--\ninfo: [3, 2]\n-/\n#guard_msgs in\n#eval isPP\
+  \ 9\n\n/--\ninfo: None\n-/\n#guard_msgs in\n#eval isPP 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

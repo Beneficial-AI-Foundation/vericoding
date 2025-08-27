@@ -1,0 +1,28 @@
+"vc-description": "Implement `String#ipv4_address?`, which should return true if given\
+  \ object is an IPv4 address - four numbers (0-255) separated by dots.\n\nIt should\
+  \ only accept addresses in canonical representation, so no leading `0`s, spaces\
+  \ etc."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def ipv4_address (s : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem valid_ip_addresses (a b c d : Nat) \n  (h₁ : a ≤ 255) (h₂\
+  \ : b ≤ 255) (h₃ : c ≤ 255) (h₄ : d ≤ 255) :\n  ipv4_address (s!\"{a}.{b}.{c}.{d}\"\
+  ) = true :=\nsorry\n\n\ntheorem rejects_large_numbers (n : Nat) (h : n ≥ 256) :\n\
+  \  ipv4_address (s!\"127.0.0.{n}\") = false :=\nsorry\n\n\ntheorem rejects_invalid_characters\
+  \ (s : String) \n  (h : ∃ c ∈ s.toList, ¬c.isDigit ∧ c ≠ '.') :\n  ipv4_address\
+  \ s = false :=\nsorry\n\n\ntheorem rejects_wrong_segment_count (n : Nat) \n  (h₁\
+  \ : n > 0) (h₂ : n ≠ 4) :\n  ipv4_address (String.intercalate \".\" (List.replicate\
+  \ n \"0\")) = false :=\nsorry\n\n\ntheorem rejects_leading_zeros (n : Nat) \n  (h\
+  \ : 1 ≤ n ∧ n ≤ 99) :\n  ipv4_address (s!\"127.0.0.{String.mk (List.replicate (3\
+  \ - String.length (toString n)) '0' ++ String.toList (toString n))}\") = false :=\n\
+  sorry\n\n\ntheorem rejects_whitespace (s : String) \n  (h : s.length > 0) :\n  ipv4_address\
+  \ (s!\"127.0.0.1{s}\") = false :=\nsorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
+  #eval ipv4_address \"127.0.0.1\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval ipv4_address\
+  \ \"0.0.0.0\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval ipv4_address \"255.255.255.255\"\
+  \n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval ipv4_address \"\"\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval ipv4_address \"10.256.30.40\"\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval ipv4_address \"10.20.030.40\"\n\n/--\ninfo: False\n-/\n\
+  #guard_msgs in\n#eval ipv4_address \"127.0.0.1 \"\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval ipv4_address \" 127.0.0.1\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
+  #eval ipv4_address \"127..0.1\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

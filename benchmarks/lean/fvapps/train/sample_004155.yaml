@@ -1,0 +1,19 @@
+"vc-description": "# Task\nGiven two integers `a` and `b`, return the sum of the numerator\
+  \ and the denominator of the reduced fraction `a/b`.\n\n# Example\n\nFor `a = 2,\
+  \ b = 4`, the result should be `3`\n\nSince `2/4 = 1/2 => 1 + 2 = 3`.\n\nFor `a\
+  \ = 10, b = 100`, the result should be `11`\n\nSince `10/100 = 1/10 => 1 + 10 =\
+  \ 11`.\n\nFor `a = 5, b = 5`, the result should be `2`\n\nSince `5/5 = 1/1 => 1\
+  \ + 1 = 2`.\n\n# Input/Output\n\n\n- `[input]` integer `a`\n\nThe numerator, `1\
+  \ ≤ a ≤ 2000`.\n\n\n- `[input]` integer `b`\n\nThe denominator, `1 ≤ b ≤ 2000`.\n\
+  \n\n- `[output]` an integer\n\nThe sum of the numerator and the denominator of the\
+  \ reduces fraction."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def gcd (a b : Nat) : Nat := sorry\n\ndef fraction (a b : Nat)\
+  \ : Nat := sorry\n"
+"vc-theorems": "theorem fraction_output_lower_bound {a b : Nat} (ha : a > 0) (hb :\
+  \ b > 0) :\n  fraction a b ≥ 2 := sorry\n\n\n\n\ntheorem fraction_identity_cases\
+  \ {n : Nat} (hn : n > 0) :\n  fraction n n = 2 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval fraction 2 4\n\n/--\ninfo: 11\n-/\n#guard_msgs in\n#eval fraction 10\
+  \ 100\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval fraction 5 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

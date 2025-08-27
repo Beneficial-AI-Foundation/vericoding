@@ -1,0 +1,23 @@
+"vc-description": "Given an integer n and an integer start.\nDefine an array nums\
+  \ where nums[i] = start + 2*i (0-indexed) and n == nums.length.\nReturn the bitwise XOR of\
+  \ all elements of nums.\n \nExample 1:\nInput: n = 5, start = 0\nOutput: 8\nExplanation:\
+  \ Array nums is equal to [0, 2, 4, 6, 8] where (0 ^ 2 ^ 4 ^ 6 ^ 8) = 8.\nWhere \"\
+  ^\" corresponds to bitwise XOR operator.\n\nExample 2:\nInput: n = 4, start = 3\n\
+  Output: 8\nExplanation: Array nums is equal to [3, 5, 7, 9] where (3 ^ 5 ^ 7 ^ 9)\
+  \ = 8.\nExample 3:\nInput: n = 1, start = 7\nOutput: 7\n\nExample 4:\nInput: n =\
+  \ 10, start = 5\nOutput: 2\n\n \nConstraints:\n\n1 <= n <= 1000\n0 <= start <= 1000\n\
+  n == nums.length"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def xorOperation (n: Nat) (start: Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem xorOperation_non_negative (n: Nat) (start: Nat) : \n  xorOperation\
+  \ n start ≥ 0 := \n  sorry\n\n\ntheorem xorOperation_zero (start: Nat) :\n  xorOperation\
+  \ 0 start = 0 :=\n  sorry\n\n\ntheorem xorOperation_one (start: Nat) :\n  xorOperation\
+  \ 1 start = start :=\n  sorry\n\n\ntheorem xorOperation_deterministic (n: Nat) (start:\
+  \ Nat) :\n  xorOperation n start = xorOperation n start :=\n  sorry\n\n\ntheorem\
+  \ xorOperation_edge_case_zero :\n  xorOperation 0 100 = 0 :=\n  sorry\n\n\ntheorem\
+  \ xorOperation_edge_case_one :\n  xorOperation 1 5 = 5 :=\n  sorry\n\n/--\ninfo:\
+  \ 8\n-/\n#guard_msgs in\n#eval xor_operation 5 0\n\n/--\ninfo: 8\n-/\n#guard_msgs\
+  \ in\n#eval xor_operation 4 3\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval xor_operation\
+  \ 1 7\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

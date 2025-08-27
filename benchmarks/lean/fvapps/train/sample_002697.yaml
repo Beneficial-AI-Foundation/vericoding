@@ -1,0 +1,21 @@
+"vc-description": "Consider a sequence made up of the consecutive prime numbers. This\
+  \ infinite sequence would start with: \n```python\n\"2357111317192329313741434753596167717379...\"\
+  \n```\n\nYou will be given two numbers: `a` and `b`, and your task will be to return\
+  \ `b` elements starting from index `a` in this sequence.\n```\nFor example:\nsolve(10,5)\
+  \ == `19232` Because these are 5 elements from index 10 in the sequence.\n```\n\n\
+  Tests go up to about index `20000`.\n\nMore examples in test cases. Good luck!\n\
+  \nPlease also try [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (start offset : Nat) : String := sorry \n\ntheorem solve_single_char_len\
+  \ :\n  ∀ (start offset : Nat), offset = 1 → String.length (solve start offset) =\
+  \ 1 := sorry\n"
+"vc-theorems": "theorem solve_start_slice :\n  solve 0 3 = \"235\" := sorry\n\n\n\
+  theorem solve_middle_slice :\n  solve 10 5 = \"19232\" := sorry\n\n\ntheorem solve_longer_slice_len\
+  \ :\n  ∀ (start offset : Nat), offset = 10 → start = 100 → String.length (solve\
+  \ start offset) = 10 := sorry\n\n\ntheorem solve_result_properties :\n  ∀ (start\
+  \ offset : Nat), start = 50 ∧ offset = 20 → \n    let result := solve start offset\n\
+  \    (∀ c ∈ result.data, '0' ≤ c ∧ c ≤ '9') ∧ (result.length > 0) := sorry\n\n/--\n\
+  info: '57'\n-/\n#guard_msgs in\n#eval solve 2 2\n\n/--\ninfo: '19232'\n-/\n#guard_msgs\
+  \ in\n#eval solve 10 5\n\n/--\ninfo: '192'\n-/\n#guard_msgs in\n#eval solve 10 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

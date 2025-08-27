@@ -1,0 +1,17 @@
+"vc-description": "In this exercise, a string is passed to a method and a new string\
+  \ has to be returned with the first character of each word in the string.\n\nFor\
+  \ example:\n\n```\n\"This Is A Test\" ==> \"TIAT\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def make_string (s : String) : List Char := sorry\n\nvariable (words\
+  \ : List String)\nvariable (spaces : String)\n"
+"vc-theorems": "theorem make_string_words_property (h : ∀ w ∈ words, w.length > 0)\
+  \ :\n  let sentence := String.join (List.intersperse \" \" words)\n  let result\
+  \ := make_string sentence\n  result.length = words.length ∧\n  ∀ i, i < words.length\
+  \ → \n    result.get ⟨i, sorry⟩ = (words.get ⟨i, sorry⟩).data.head! := sorry\n\n\
+  \ntheorem make_string_only_spaces (h : ∀ c ∈ spaces.data, c = ' ') :\n  make_string\
+  \ spaces = [] := sorry\n\n/--\ninfo: 'sexy'\n-/\n#guard_msgs in\n#eval make_string\
+  \ \"sees eyes xray yoat\"\n\n/--\ninfo: 'bean'\n-/\n#guard_msgs in\n#eval make_string\
+  \ \"brown eyes are nice\"\n\n/--\ninfo: 'cavn'\n-/\n#guard_msgs in\n#eval make_string\
+  \ \"cars are very nice\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,28 @@
+"vc-description": "There are two lists of different length. The first one consists\
+  \ of keys, the second one consists of values. Write a function ```createDict(keys,\
+  \ values)``` that returns a dictionary created from keys and values. If there are\
+  \ not enough values, the rest of keys should have a ```None``` value. If there not\
+  \ enough keys, just ignore the rest of values.\n\nExample 1:\n```python\nkeys =\
+  \ ['a', 'b', 'c', 'd']\nvalues = [1, 2, 3]\ncreateDict(keys, values) # returns {'a':\
+  \ 1, 'b': 2, 'c': 3, 'd': None}\n```\n\nExample 2:\n```python\nkeys = ['a', 'b',\
+  \ 'c']\nvalues = [1, 2, 3, 4]\ncreateDict(keys, values) # returns {'a': 1, 'b':\
+  \ 2, 'c': 3}\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def createDict : List String → List Int → List (String × (Option\
+  \ Int)) \n  | _, _ => sorry\n"
+"vc-theorems": "theorem createDict_length (keys : List String) (values : List Int)\
+  \ :\n  List.length (createDict keys values) = List.length keys := sorry\n\n\ntheorem\
+  \ createDict_elements (keys : List String) (values : List Int) :\n  (∀ (i : Nat),\
+  \ i < keys.length →\n    match createDict keys values with\n    | (k, v) :: _ =>\
+  \ \n      if h : i < values.length then\n        v = some (values.get ⟨i, h⟩)\n\
+  \      else\n        v = none\n    | _ => True) := sorry\n\n\ntheorem createDict_null_elements\
+  \ (keys : List String) (values : List Int) \n  (h₁: 1 ≤ keys.length) (h₂: values.length\
+  \ = 0) :\n  ∃ (x : Option Int), x = none ∧ x ∈ (createDict keys values).map Prod.snd\
+  \ := sorry\n\n\ntheorem createDict_all_ints (keys : List String) (values : List\
+  \ Int)\n  (h₁: keys.length ≤ 3) (h₂: 4 ≤ values.length) :\n  ∀ x ∈ (createDict keys\
+  \ values).map Prod.snd, ∃ (n : Int), x = some n := sorry\n\n/--\ninfo: {}\n-/\n\
+  #guard_msgs in\n#eval createDict [] []\n\n/--\ninfo: {'a': 1, 'b': None, 'c': None}\n\
+  -/\n#guard_msgs in\n#eval createDict [\"a\", \"b\", \"c\"] [1]\n\n/--\ninfo: {'a':\
+  \ 1, 'b': 2}\n-/\n#guard_msgs in\n#eval createDict [\"a\", \"b\"] [1, 2, 3, 4]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

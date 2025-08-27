@@ -1,0 +1,66 @@
+"vc-description": "Mathison and Chef are playing a new teleportation game. This game\
+  \ is played on a $R \\times C$ board where each cell $(i, j)$ contains some value\
+  \ $V_{i, j}$. The purpose of this game is to collect a number of values by teleporting\
+  \ from one cell to another. A teleportation can be performed using a tel-pair.\n\
+  A player is given $N$ tel-pairs. Each tel-pair can be used at most once and a player\
+  \ can use them in any order they like. Suppose a player is at cell $(a, b)$ and\
+  \ the tel-pair is $(dx, dy)$. Then, the player can reach in one teleportation any\
+  \ cell $(c, d)$ from $(a, b)$ such that $|a − c| = dx$ and $|b − d| = dy$.\nIt is\
+  \ Mathison’s turn next in the game to make a sequence of moves. He would like to\
+  \ know what is the highest value of a path of length at most $N+1$ that starts in\
+  \ $(Sx, Sy)$ and uses some (possibly none) of the tel-pairs given. The length of\
+  \ a path is equal to the number of cells in the path. The value of a path is equal\
+  \ to the sum of $V_{i, j}$ over all cells in the path.\n\n-----Input-----\n- The\
+  \ first line contains a single integer, $T$, the number of tests.\n- Each test starts\
+  \ with three integers, $R$, $C$, and $N$, representing the number of rows, columns,\
+  \ and tel-pairs.\n- The next line contains two integers, $Sx$, and $Sy$, representing\
+  \ the coordinates of the starting cell.\n- The next two lines will contain the description\
+  \ of the tel-pairs, each containing $N$ space separated integers. The first will\
+  \ contain the $x$-component of each tel-pair, the second one will contain the y-component\
+  \ of each tel-pair.\n- Finally, there will be $R$ lines, each containing $C$ space-separated\
+  \ integers, the description of the board.\n\n-----Output-----\nThe output file will\
+  \ contain $T$ lines. Each line will contain the answer (i.e. the highest value of\
+  \ a path) to the corresponding test.\n\n-----Constraints and notes-----\n- $1 \\\
+  leq T \\leq 100$\n- $1 \\leq R, C \\leq 1000$\n- $1 \\leq N \\leq 9$\n- $0 \\leq\
+  \ Sx < R$\n- $0 \\leq Sy < C$\n- $0 \\leq dx \\leq R$\n- $0 \\leq dy \\leq C$\n\
+  - $1 \\leq V_{i, j} \\leq 10^6$\n- You are allowed to visit a cell multiple times\
+  \ in a path, and the value for the cell must be added each time you visit it. \n\
+  \n-----Subtaks-----\nSubtask #1 (15 points):\n- $1 \\leq T \\leq 100$\n- $1 \\leq\
+  \ R, C \\leq 10$\n- $1 \\leq N \\leq 4$\nSubtask #2 (25 points):\n- $1 \\leq T \\\
+  leq 25$\n- $1 \\leq R, C \\leq 100$\n- $1 \\leq N \\leq 8$\nSubtask #3 (30 points):\n\
+  - $1 \\leq T \\leq 5$\n- $1 \\leq R, C \\leq 1000$\n- $1 \\leq N \\leq 8$\nSubtask\
+  \ #4 (30 points):\n- $1 \\leq T \\leq 5$\n- $1 \\leq R, C \\leq 1000$\n- $1 \\leq\
+  \ N \\leq 9$\n\n-----Example Input-----\n3\n5 5 2\n2 2\n1 2\n2 1\n10 11 62 14 15\n\
+  57 23 34 75 21\n17 12 14 11 53\n84 61 24 85 22\n43 89 14 15 43\n3 3 2\n0 0\n1 1\n\
+  1 1\n9 8 7\n5 6 4\n1 3 2\n2 2 1\n1 1\n2\n2\n5 6\n8 3\n\n-----Example Output-----\n\
+  188\n24\n3\n\n-----Explanation-----\nTest Case 1:\nMathison starts at $(2, 2)$.\n\
+  Mathison has two tel-pairs $(2, 1)$ and $(1, 2)$.\nThe following path (i.e. bolded\
+  \ numbers) generates the maximum value: $(2, 2)$ → $(4, 1)$ → $(3, 3)$\nTest Case\
+  \ 2:\nMathison starts at $(0, 0)$.\nMathison has two tel-pairs $(1, 1)$ and $(1,\
+  \ 1)$.\nThe following path (i.e. bolded numbers) generates the maximum value: $(0,\
+  \ 0)$ → $(1, 1)$ → $(0, 0)$\nTest Case 3:\nMathison starts at $(1, 1)$.\nMathison\
+  \ has one tel-pair, $(2, 2)$.\nHe can't use the tel-pair so the answer is $3$ (the\
+  \ value of the starting cell)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_teleport_game (R C N Sx Sy : Nat) (tel_pairs : List (Nat\
+  \ × Nat)) (board : List (List Int)) : Int := sorry\n\ntheorem solve_teleport_game_includes_start_value\
+  \ (R C N Sx Sy : Nat) (tel_pairs : List (Nat × Nat)) (board : List (List Int)) \n\
+  \  (h1 : Sx < board.length) (h2 : Sy < (board[Sx].length)) :\n  solve_teleport_game\
+  \ R C N Sx Sy tel_pairs board ≥ board[Sx][Sy] := sorry\n"
+"vc-theorems": "theorem solve_teleport_game_empty_teleports (R C : Nat) (h1 : R >\
+  \ 0) (h2 : C > 0) :\n  solve_teleport_game R C 0 0 0 [] (List.replicate R (List.replicate\
+  \ C 1)) = 1 := sorry\n\n\ntheorem solve_teleport_game_single_cell (val : Int) :\n\
+  \  solve_teleport_game 1 1 0 0 0 [] [[val]] = val := sorry\n  \n\ntheorem solve_teleport_game_symmetric_teleport\
+  \ (val : Int) :\n  let board := [[val, val], [val, val]]\n  let tel_pairs := [(1,\
+  \ 1)]\n  let results := [\n    solve_teleport_game 2 2 1 0 0 tel_pairs board,\n\
+  \    solve_teleport_game 2 2 1 0 1 tel_pairs board,\n    solve_teleport_game 2 2\
+  \ 1 1 0 tel_pairs board,\n    solve_teleport_game 2 2 1 1 1 tel_pairs board\n  ]\n\
+  \  ∀ x y, x ∈ results → y ∈ results → x = y := sorry\n\n/--\ninfo: 188\n-/\n#guard_msgs\
+  \ in\n#eval solve_teleport_game 5 5 2 2 2 list(zip(tx, ty)) [[10, 11, 62, 14, 15],\
+  \ [57, 23, 34, 75, 21], [17, 12, 14, 11, 53], [84, 61, 24, 85, 22], [43, 89, 14,\
+  \ 15, 43]]\n\n/--\ninfo: 24\n-/\n#guard_msgs in\n#eval solve_teleport_game 3 3 2\
+  \ 0 0 list(zip(tx, ty)) [[9, 8, 7], [5, 6, 4], [1, 3, 2]]\n\n/--\ninfo: 3\n-/\n\
+  #guard_msgs in\n#eval solve_teleport_game 2 2 1 1 1 list(zip(tx, ty)) [[5, 6], [8,\
+  \ 3]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

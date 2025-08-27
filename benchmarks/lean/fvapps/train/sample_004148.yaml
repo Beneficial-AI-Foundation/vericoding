@@ -1,0 +1,19 @@
+"vc-description": "The function is not returning the correct values. Can you figure\
+  \ out why?\n\n```python\nget_planet_name(3) # should return 'Earth'\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef validPlanets : Int → Option String\n\
+  | 1 => some \"Mercury\"\n| 2 => some \"Venus\"\n| 3 => some \"Earth\"\n| 4 => some\
+  \ \"Mars\"\n| 5 => some \"Jupiter\"\n| 6 => some \"Saturn\"\n| 7 => some \"Uranus\"\
+  \n| 8 => some \"Neptune\"\n| _ => none\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def getPlanetName (id: Int) : Option String := sorry\n\ntheorem\
+  \ get_planet_name_matches_valid : ∀ (id : Int),\n  getPlanetName id = validPlanets\
+  \ id := by sorry\n"
+"vc-theorems": "theorem invalid_ids_return_none : ∀ (id : Int),\n  (id < 1 ∨ id >\
+  \ 8) → getPlanetName id = none := by sorry\n\n\ntheorem valid_ids_return_some :\
+  \ ∀ (id : Int),\n  (1 ≤ id ∧ id ≤ 8) → (∃ (name : String), getPlanetName id = some\
+  \ name) := by sorry\n\n\ntheorem valid_ids_match_planets : ∀ (id : Int),\n  (1 ≤\
+  \ id ∧ id ≤ 8) → getPlanetName id = validPlanets id := by sorry\n\n/--\ninfo: 'Venus'\n\
+  -/\n#guard_msgs in\n#eval get_planet_name 2\n\n/--\ninfo: 'Jupiter'\n-/\n#guard_msgs\
+  \ in\n#eval get_planet_name 5\n\n/--\ninfo: 'Earth'\n-/\n#guard_msgs in\n#eval get_planet_name\
+  \ 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

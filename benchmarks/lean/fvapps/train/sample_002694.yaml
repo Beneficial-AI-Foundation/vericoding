@@ -1,0 +1,33 @@
+"vc-description": "# Task\n\nYou are given an array `a` of positive integers a. You\
+  \ may choose some integer `X` and update `a` several times, where to update means\
+  \ to perform the following operations:\n```\npick a contiguous subarray of length\
+  \ not greater than the given k;\nreplace all elements in the picked subarray with\
+  \ the chosen X.\n```\nWhat is the minimum number of updates required to make all\
+  \ the elements of the array the same?\n\n# Example\n\nFor `a = [1, 2, 2, 1, 2, 1,\
+  \ 2, 2, 2, 1, 1, 1] and k = 2`, the output should be `4`.\n\nHere's how a will look\
+  \ like after each update:\n```\n[1, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1] ->\n[1, 1,\
+  \ 1, 1, 2, 1, 2, 2, 2, 1, 1, 1] ->\n[1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1] ->\n[1,\
+  \ 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1] ->\n[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]\n```\n\
+  \n\n# Input/Output\n\n\n - `[input]` integer array `a`\n\n  An array of positive\
+  \ integers.\n\n  Constraints:\n  \n  `10 ≤ a.length ≤ 50,`\n  \n  `1 ≤ a[i] ≤ 10.`\n\
+  \  \n\n - `[input]` integer `k`\n\n  A positive integer, the maximum length of a\
+  \ subarray.\n\n  Constraints: `2 ≤ k ≤ 9.`\n\n\n - `[output]` an integer\n\n  The\
+  \ minimum number of updates."
+"vc-preamble": "import Imports.AllImports\n\ndef countOccurrences (arr : List Nat)\
+  \ (x : Nat) : Nat :=\n  (arr.filter (· == x)).length\n\n\ndef getMode (arr : List\
+  \ Nat) : Nat :=\n  match arr with\n  | [] => 0\n  | x::xs => (arr.foldl \n    (fun\
+  \ acc y => if countOccurrences arr y > countOccurrences arr acc then y else acc)\
+  \ \n    x)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def arrayEqualization (arr : List Nat) (k : Nat) : Nat := sorry\n\
+  \ntheorem equals_one_theorem (arr : List Nat) (h1 : arr.length > 0)\n    (h2 : ∀\
+  \ x ∈ arr, x ≥ 1 ∧ x ≤ 3) : \n  arrayEqualization arr 1 = (arr.filter (· ≠ getMode\
+  \ arr)).length := sorry\n"
+"vc-theorems": "theorem identical_elements_theorem (arr : List Nat) (k : Nat)\n  \
+  \  (h1 : arr.length > 0)\n    (h2 : k ≥ 1)\n    (h3 : k ≤ 10)\n    (h4 : ∀ x ∈ arr,\
+  \ x = 1) :\n  arrayEqualization arr k = 0 := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval array_equalization [1, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1] 2\n\n/--\ninfo:\
+  \ 2\n-/\n#guard_msgs in\n#eval array_equalization [5, 2, 3, 5, 2, 2, 3, 5, 1, 2,\
+  \ 5, 1, 2, 5, 3] 7\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval array_equalization\
+  \ [1, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1] 9\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

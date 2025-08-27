@@ -1,0 +1,26 @@
+"vc-description": "# Pythagorean Triples\n\nA Pythagorean triplet is a set of three\
+  \ numbers a, b, and c where `a^2 + b^2 = c^2`. In this Kata, you will be tasked\
+  \ with finding the Pythagorean triplets whose product is equal to `n`, the given\
+  \ argument to the function `pythagorean_triplet`.\n\n## Your task\n\nIn this Kata,\
+  \ you will be tasked with finding the Pythagorean triplets whose product is equal\
+  \ to `n`, the given argument to the function, where `0 < n < 10000000`\n\n\n## Examples\n\
+  \nOne such triple is `3, 4, 5`. For this challenge, you would be given the value\
+  \ `60` as the argument to your function, and then it would return the Pythagorean\
+  \ triplet in an array `[3, 4, 5]` which is returned in increasing order. `3^2 +\
+  \ 4^2 = 5^2` since `9 + 16 = 25` and then their product (`3 * 4 * 5`) is `60`.\n\
+  \n\nMore examples:\n\n| **argument** | **returns** |\n| ---------|---------|\n|\
+  \ 60       | [3, 4, 5] |\n| 780      | [5, 12, 13] |\n| 2040     | [8, 15, 17] |"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def pythagoreanTriplet (n : Nat) : Option (Nat × Nat × Nat) :=\n\
+  \  sorry\n\n-- For inputs n ≥ 60, if a triplet exists, it satisfies required properties"
+"vc-theorems": "theorem triplet_properties {n : Nat} (h : n ≥ 60) \n    (res : pythagoreanTriplet\
+  \ n = some (a, b, c)) :\n    0 < a ∧ a < b ∧ b < c ∧\n    a * a + b * b = c * c\
+  \ ∧\n    a * b * c = n :=\n  sorry\n\n-- No valid triplets exist for inputs < 60\n\
+  \ntheorem no_small_triplets {n : Nat} (h : n < 60) :\n    pythagoreanTriplet n =\
+  \ none :=\n  sorry\n\n-- The smallest valid input (60) produces triplet (3,4,5)\n\
+  \ntheorem minimum_triplet :\n    pythagoreanTriplet 60 = some (3, 4, 5) :=\n  sorry\n\
+  \n/--\ninfo: [3, 4, 5]\n-/\n#guard_msgs in\n#eval pythagorean_triplet 60\n\n/--\n\
+  info: [5, 12, 13]\n-/\n#guard_msgs in\n#eval pythagorean_triplet 780\n\n/--\ninfo:\
+  \ [8, 15, 17]\n-/\n#guard_msgs in\n#eval pythagorean_triplet 2040\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

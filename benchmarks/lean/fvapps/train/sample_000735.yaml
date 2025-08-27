@@ -1,0 +1,20 @@
+"vc-description": "Chef has a number N, Cheffina challenges the chef to check the\
+  \ divisibility of all the permutation of N by 2. If any of the permutations is divisible\
+  \ by 2 then print 1 else print 0.\n\n-----Input:-----\n- First-line will contain\
+  \ $T$, the number of test cases. Then the test cases follow. \n- Each test case\
+  \ contains a single line of input, $N$. \n\n-----Output:-----\nFor each test case,\
+  \ output in a single line answer 1 or 0.\n\n-----Constraints-----\n- $1 \\leq T\
+  \ \\leq 10^6$\n- $1 \\leq N \\leq 10^6$\n\n-----Sample Input:-----\n2\n19\n385\n\
+  \n-----Sample Output:-----\n0\n1"
+"vc-preamble": "import Imports.AllImports\n\ndef digits (n : Nat) : List Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_divisible_permutations (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem check_divisible_permutations_valid_output (n : Nat) :\n  n\
+  \ > 0 → check_divisible_permutations n = 0 ∨ check_divisible_permutations n = 1\
+  \ := \n  sorry\n\n\n\n\n\n\ntheorem check_divisible_permutations_single_digits :\n\
+  \  check_divisible_permutations 1 = 0 ∧ check_divisible_permutations 2 = 1 :=\n\
+  \  sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval check_divisible_permutations\
+  \ 19\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval check_divisible_permutations 385\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval check_divisible_permutations 246\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

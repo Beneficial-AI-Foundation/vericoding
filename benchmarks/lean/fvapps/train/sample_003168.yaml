@@ -1,0 +1,30 @@
+"vc-description": "## Task\nYou need to implement two functions, `xor` and `or`, that\
+  \ replicate the behaviour of their respective operators:\n\n- `xor` = Takes 2 values\
+  \ and returns `true` if, and only if, one of them is truthy.\n- `or` = Takes 2 values\
+  \ and returns `true` if either one of them is truthy.\n\nWhen doing so, **you cannot\
+  \ use the or operator: `||`**.\n\n# Input\n- Not all input will be booleans - there\
+  \ will be truthy and falsey values [the latter including also empty strings and\
+  \ empty arrays]\n- There will always be 2 values provided\n\n## Examples\n- `xor(true,\
+  \ true)` should return `false`\n- `xor(false, true)` should return `true`\n- `or(true,\
+  \ false)` should return `true`\n- `or(false, false)` should return `false`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def func_or (a b : Bool) : Bool := sorry\ndef func_xor (a b : Bool)\
+  \ : Bool := sorry\n"
+"vc-theorems": "theorem or_basic (a b : Bool) : \n  func_or a b = (a || b) := sorry\n\
+  \n\ntheorem or_commutative (a b : Bool) : \n  func_or a b = func_or b a := sorry\n\
+  \n\ntheorem or_identity_true (b : Bool) :\n  func_or true b = true := sorry\n\n\n\
+  theorem or_identity_false (b : Bool) :\n  func_or false b = b := sorry\n\n\ntheorem\
+  \ xor_basic (a b : Bool) : \n  func_xor a b = (a != b) := sorry\n\n\ntheorem xor_commutative\
+  \ (a b : Bool) :\n  func_xor a b = func_xor b a := sorry\n\n\ntheorem xor_same (a\
+  \ : Bool) :\n  ¬(func_xor a a) := sorry\n\n\ntheorem xor_double (a b : Bool) :\n\
+  \  func_xor (func_xor a b) b = a := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
+  #eval func_or True True\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval func_or True\
+  \ False\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval func_or False False\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval func_or 0 11\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval func_or None []\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval func_xor\
+  \ True True\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval func_xor True False\n\n\
+  /--\ninfo: False\n-/\n#guard_msgs in\n#eval func_xor False False\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval func_xor 1 \"\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
+  #eval func_xor [] None\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,55 @@
+"vc-description": "There are $M$ levels for a building numbered from $1$ to $M$ from\
+  \ top to bottom, each level having $N$ parking spots numbered from $1$ to $N$ from\
+  \ left to right. Some spots might have a car while other may be empty, the information\
+  \ of which is given in form of two dimensional character array $C$ ($C_{i, j}$ denote\
+  \ parking spot at $j$-th position on $i$-th level).\nThere is a thief who wants\
+  \ to unlock all the cars. Now, he is skilled such that for the first time, he can\
+  \ directly reach in any parking spot in no time. Basically he can reach the first\
+  \ car to be stolen in 0 time.\nNow, he can move within the parking lot only in following\
+  \ manner, each taking 1 unit of time:\n- Move down a level. That is, if current\
+  \ position is $(i, j)$, then he reaches $(i+1, j)$\n- If current position is $(i,\
+  \ j)$ and if\n- $i$ is odd, then he can move from $(i, j)$ to $(i, j+1)$\n- $i$\
+  \ is even, then he can move from $(i, j)$ to $(i, j-1)$\nNote that he wants to unlock\
+  \ the cars in minimum time and the car is unlocked as soon as the thief reaches\
+  \ that parking spot.If the parking lot is empty, then the time taken is considered\
+  \ to be 0.  \nFind the minimum time when all the cars would be unlocked. Note that\
+  \ once all cars are unlocked, the thief can escape instantly, so this time does\
+  \ not count.\n\n-----Input :-----\n- The first line of input contains a single integer\
+  \ $T$ (number of test cases).\n- First liine of each test case contains $M$ and\
+  \ $N$(number of levels and spots per each level)  \n- Next $M$ line contains $N$\
+  \ space separated characters $C_{i, 1}, C_{i, 2} \\ldots C_{i, N}$  where $(1\\\
+  leq i\\leq M)$ and $C_{i, j}$ is either $'P'$ or $'N'$ (without quotes).\nIf the\
+  \ spot contains $'P'$, then a car is parked there. else, it’s not parked.\n\n-----Output\
+  \ :-----\nFor each test case print a single integer, the minimum time in which thief\
+  \ can unlock all cars.\n\n-----Constraints :-----\n- $1\\leq T \\leq100.$ \n- $1\\\
+  leq M,N \\leq300$ \n\n-----Subtasks :-----\n- \nSubtask 1 (20 points): $1\\leq M\
+  \ \\leq2.$ \n- \nSubtask 2 (80 points): Original Constraints\n\n-----Sample Input\
+  \ :-----\n2\n4 5\nN P N N P\nN N P N N\nN P N N N\nP N N N N\n3 3\nN P P\nP P P\
+  \ \nP P N\n\n-----Sample Output :-----\n10\n6\n\n-----Explanation:-----\nIn the\
+  \ first case, He will select the spot $(1,2)$ and the path he takes will be $(1,2)→(1,3)→(1,4)→(1,5)→(2,5)→(2,4)→(2,3)→(2,2)→(3,2)→(4,2)→(4,1)$\n\
+  \nSo, he takes 10 steps to unlock all the cars.\nIn the second case, He will select\
+  \ the spot $(1,2)$ and the path he takes will be $(1,2)→(1,3)→(2,3)→(2,2)→(2,1)→(3,1)→(3,2)$.\n\
+  So, he takes 6 steps."
+"vc-preamble": "import Imports.AllImports\n\ndef solve_parking_thief (m n : Nat) (grid\
+  \ : List (List Char)) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def updateList {α} (xs : List α) (i : Nat) (v : α) : List α :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem empty_grid_zero (m n : Nat) (h1 : m > 0) (h2 : n > 0) :\n\
+  \  let grid := List.replicate m (List.replicate n 'N')\n  solve_parking_thief m\
+  \ n grid = 0 := by\n  sorry\n\n\ntheorem single_row_min_distance (m n : Nat) (p_positions\
+  \ : List Nat) \n  (h1 : m > 0) (h2 : n > 0) (h3 : ∀ p ∈ p_positions, p < n) :\n\
+  \  let grid := List.replicate m (List.replicate n 'N')\n  let grid_with_p := updateList\
+  \ grid 0 \n    (p_positions.foldl (fun row p => updateList row p 'P') (List.replicate\
+  \ n 'N'))\n  p_positions ≠ [] →\n  solve_parking_thief m n grid_with_p ≥ \n    (List.maximum?\
+  \ p_positions).getD 0 - (List.minimum? p_positions).getD 0 := by\n  sorry\n\n\n\
+  theorem single_row_no_p_zero (m n : Nat) (h1 : m > 0) (h2 : n > 0) :\n  let grid\
+  \ := List.replicate m (List.replicate n 'N')\n  solve_parking_thief m n grid = 0\
+  \ := by\n  sorry\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval solve_parking_thief\
+  \ 4 5 [[\"N\", \"P\", \"N\", \"N\", \"P\"], [\"N\", \"N\", \"P\", \"N\", \"N\"],\
+  \ [\"N\", \"P\", \"N\", \"N\", \"N\"], [\"P\", \"N\", \"N\", \"N\", \"N\"]]\n\n\
+  /--\ninfo: 6\n-/\n#guard_msgs in\n#eval solve_parking_thief 3 3 [[\"N\", \"P\",\
+  \ \"P\"], [\"P\", \"P\", \"P\"], [\"P\", \"P\", \"N\"]]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval solve_parking_thief 2 3 [[\"N\", \"N\", \"N\"], [\"N\", \"N\", \"N\"\
+  ]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

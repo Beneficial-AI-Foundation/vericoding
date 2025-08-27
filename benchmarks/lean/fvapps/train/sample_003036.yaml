@@ -1,0 +1,25 @@
+"vc-description": "Write a function that checks the braces status in a string, and\
+  \ return `True` if all braces are properly closed, or `False` otherwise. Available\
+  \ types of brackets: `()`, `[]`, `{}`.\n\n**Please note, you need to write this\
+  \ function without using regex!**\n\n## Examples\n```python\n'([[some](){text}here]...)'\
+  \  =>  True\n'{([])}'                     =>  True\n'()[]{}()'                 \
+  \  =>  True\n'(...[]...{(..())}[abc]())'  =>  True\n'1239(df){'                \
+  \  =>  False\n'[()])'                      =>  False\n')12[x]34('              \
+  \    =>  False\n```\nDon't forget to rate this kata! Thanks :)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def braces_status (s : String) : Bool := sorry\n\ndef count (c\
+  \ : Char) (s : String) : Nat := sorry\n"
+"vc-theorems": "theorem braces_status_balanced (s : String) :\n  braces_status s =\
+  \ true →\n  count '(' s = count ')' s ∧ \n  count '[' s = count ']' s ∧\n  count\
+  \ '{' s = count '}' s := sorry\n\n\ntheorem only_opening_braces (s : String) :\n\
+  \  (∀ c, c ∈ s.data → c ∈ ['(', '[', '{']) →\n  (s ≠ \"\" → braces_status s = false)\
+  \ := sorry\n\n\ntheorem only_closing_braces (s : String) :\n  (∀ c, c ∈ s.data →\
+  \ c ∈ [')', ']', '}']) →\n  (s ≠ \"\" → braces_status s = false) := sorry\n\n\n\
+  theorem empty_string_balanced :\n  braces_status \"\" = true := sorry\n\n\ntheorem\
+  \ non_bracket_chars (s : String) :\n  (∀ c, c ∈ s.data → c ∉ ['(', ')', '[', ']',\
+  \ '{', '}']) →\n  braces_status s = true := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval braces_status \"[()]\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval\
+  \ braces_status \"([)]\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval braces_status\
+  \ \"()[]{}()\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

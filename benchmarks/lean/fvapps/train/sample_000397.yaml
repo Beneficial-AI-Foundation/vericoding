@@ -1,0 +1,19 @@
+"vc-description": "Given a balanced parentheses string S, compute the score of the\
+  \ string based on the following rule:\n\n() has score 1\nAB has score A + B, where\
+  \ A and B are balanced parentheses strings.\n(A) has score 2 * A, where A is a balanced\
+  \ parentheses string.\n\n \n\nExample 1:\nInput: \"()\"\nOutput: 1\n\n\nExample\
+  \ 2:\nInput: \"(())\"\nOutput: 2\n\n\nExample 3:\nInput: \"()()\"\nOutput: 2\n\n\
+  \nExample 4:\nInput: \"(()(()))\"\nOutput: 6\n\n \nNote:\n\nS is a balanced parentheses\
+  \ string, containing only ( and ).\n2 <= S.length <= 50"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def score_parentheses (s : ParenString) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem nested_pairs_score {n : Nat} (h : 0 < n) (h2 : n ≤ 10) :\n\
+  \  let s : ParenString := ⟨\"(())\"⟩\n  score_parentheses s = 2^(n-1) :=\n  sorry\n\
+  \n\ntheorem sequential_nested_score {depths : List Nat}\n  (h1 : ∀ x ∈ depths, 0\
+  \ < x ∧ x ≤ 3)\n  (h2 : depths.length ≥ 1)\n  (h3 : depths.length ≤ 5) :\n  let\
+  \ s : ParenString := ⟨\"(())(())\"⟩\n  score_parentheses s = depths.foldl (fun acc\
+  \ d => acc + 2^(d-1)) 0 :=\n  sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval score_parentheses\
+  \ \"()\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval score_parentheses \"(())\"\n\
+  \n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval score_parentheses \"(()(()))\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

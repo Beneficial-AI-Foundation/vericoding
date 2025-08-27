@@ -1,0 +1,31 @@
+"vc-description": "An axis-aligned rectangle is represented as a list [x1, y1, x2,\
+  \ y2], where (x1, y1) is the coordinate of its bottom-left corner, and (x2, y2)\
+  \ is the coordinate of its top-right corner. Its top and bottom edges are parallel\
+  \ to the X-axis, and its left and right edges are parallel to the Y-axis.\nTwo rectangles\
+  \ overlap if the area of their intersection is positive. To be clear, two rectangles\
+  \ that only touch at the corner or edges do not overlap.\nGiven two axis-aligned\
+  \ rectangles rec1 and rec2, return true if they overlap, otherwise return false.\n\
+   \nExample 1:\nInput: rec1 = [0,0,2,2], rec2 = [1,1,3,3]\nOutput: true\nExample\
+  \ 2:\nInput: rec1 = [0,0,1,1], rec2 = [1,0,2,1]\nOutput: false\nExample 3:\nInput:\
+  \ rec1 = [0,0,1,1], rec2 = [2,2,3,3]\nOutput: false\n\n \nConstraints:\n\nrect1.length\
+  \ == 4\nrect2.length == 4\n-109 <= rec1[i], rec2[i] <= 109\nrec1[0] <= rec1[2] and\
+  \ rec1[1] <= rec1[3]\nrec2[0] <= rec2[2] and rec2[1] <= rec2[3]"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_rectangles_overlap (r1 r2 : Rectangle) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem overlap_symmetric {r1 r2 : Rectangle} :\n  is_rectangles_overlap\
+  \ r1 r2 = is_rectangles_overlap r2 r1 := by\n  sorry\n\n\ntheorem self_overlap {r\
+  \ : Rectangle} :\n  is_rectangles_overlap r r = true := by\n  sorry\n\n\ntheorem\
+  \ far_apart_no_overlap {r1 : Rectangle} {w h : Int}\n  (hw : w > 0) (hh : h > 0)\
+  \ :\n  let r2 := Rectangle.mk (r1.x2 + 1) (r1.y2 + 1) (r1.x2 + 2) (r1.y2 + 2)\n\
+  \  is_rectangles_overlap r1 r2 = false := by\n  sorry\n\n\ntheorem touching_right_no_overlap\
+  \ {x y w h : Int}\n  (hw : w > 0) (hh : h > 0) : \n  let r1 := Rectangle.mk x y\
+  \ (x + w) (y + h)\n  let r2 := Rectangle.mk (x + w) y (x + w + 1) (y + h)\n  is_rectangles_overlap\
+  \ r1 r2 = false := by\n  sorry\n\n\ntheorem touching_top_no_overlap {x y w h : Int}\n\
+  \  (hw : w > 0) (hh : h > 0) :\n  let r1 := Rectangle.mk x y (x + w) (y + h)\n \
+  \ let r2 := Rectangle.mk x (y + h) (x + w) (y + h + 1)\n  is_rectangles_overlap\
+  \ r1 r2 = false := by\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_rectangles_overlap\
+  \ [0, 0, 2, 2] [1, 1, 3, 3]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_rectangles_overlap\
+  \ [0, 0, 1, 1] [1, 0, 2, 1]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval is_rectangles_overlap\
+  \ [0, 0, 1, 1] [2, 2, 3, 3]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

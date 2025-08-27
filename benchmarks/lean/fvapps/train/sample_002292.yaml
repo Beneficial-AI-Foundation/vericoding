@@ -1,0 +1,18 @@
+"vc-description": "We define the Perfect Number is a positive integer that is equal\
+  \ to the sum of all its positive divisors except itself. \n\nNow, given an integer\
+  \ n, write a function that returns true when it is a perfect number and false when\
+  \ it is not.\n\n\nExample:\n\nInput: 28\nOutput: True\nExplanation: 28 = 1 + 2 +\
+  \ 4 + 7 + 14\n\n\n\nNote:\nThe input number n will not exceed 100,000,000. (1e8)"
+"vc-preamble": "import Imports.AllImports\n\ndef check_perfect_number (n : Int) :\
+  \ Bool :=\n  sorry\n\n\ndef perfect_numbers : List Int := [6, 28, 496, 8128, 33550336,\
+  \ 8589869056]\n\ntheorem known_perfect_numbers (n : Int) (h : n ∈ perfect_numbers)\
+  \ :\n  check_perfect_number n = true :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def small_perfect_numbers : List Int := [6, 28, 496, 8128]\n\n\
+  theorem most_numbers_not_perfect {n : Int} (h₁ : n ≥ 1) (h₂ : n ≤ 1000000)\n  (h₃\
+  \ : n ∉ small_perfect_numbers) :\n  check_perfect_number n = false :=\n  sorry"
+"vc-theorems": "theorem non_positive_not_perfect {n : Int} (h : n ≤ 0) : \n  check_perfect_number\
+  \ n = false :=\n  sorry\n\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval check_perfect_number\
+  \ 28\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval check_perfect_number 12\n\n\
+  /--\ninfo: False\n-/\n#guard_msgs in\n#eval check_perfect_number 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

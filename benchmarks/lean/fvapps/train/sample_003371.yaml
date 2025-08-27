@@ -1,0 +1,25 @@
+"vc-description": "Given the number n, return a string which shows the minimum number\
+  \ of moves to complete the tower of Hanoi consisting of n layers.\nTower of Hanoi\
+  \ : https://en.wikipedia.org/wiki/Tower_of_Hanoi\n\nExample - 2 layered Tower of\
+  \ Hanoi \n\nInput: n=2\n\nStart\n[[2, 1], [], []]\n\nGoal\n[[], [], [2, 1]]\n\n\
+  Expected Output : '[[2, 1], [], []]\\n[[2], [1], []]\\n[[], [1], [2]]\\n[[], [],\
+  \ [2, 1]]'"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def hanoi_array (n : Nat) : String :=\n  sorry\n\n-- A valid tower\
+  \ has elements in strictly decreasing order"
+"vc-theorems": "theorem tower_ordering {n : Nat} (tower : List Nat) : \n  tower.length\
+  \ ≥ 2 → ∀ i, i + 1 < tower.length → \n  tower.get! i > tower.get! (i+1) :=\n  sorry\n\
+  \n-- Each state has exactly 3 towers\n\ntheorem three_towers {n : Nat} (state :\
+  \ List (List Nat)) :\n  state.length = 3 :=\n  sorry\n\n-- All numbers from 1 to\
+  \ n appear exactly once across all towers\n\ntheorem numbers_complete {n : Nat}\
+  \ (state : List (List Nat)) :\n  (∀ x ∈ state.join, x ≤ n) ∧\n  ∀ k, k ≤ n → k >\
+  \ 0 → k ∈ state.join :=\n  sorry\n\n-- There are exactly 2^n states in the solution\n\
+  \ntheorem states_count {n : Nat} (states : List (List (List Nat))) :\n  states.length\
+  \ = 2^n :=\n  sorry\n\n-- Initial state has all discs on first pole\n\ntheorem initial_state\
+  \ {n : Nat} (states : List (List (List Nat))) :\n  states.head!.get! 0 = List.range'\
+  \ n n ∧\n  states.head!.get! 1 = [] ∧ \n  states.head!.get! 2 = [] :=\n  sorry\n\
+  \n-- Final state has all discs on last pole\n\ntheorem final_state {n : Nat} (states\
+  \ : List (List (List Nat))) :\n  states.getLast!.get! 0 = [] ∧\n  states.getLast!.get!\
+  \ 1 = [] ∧\n  states.getLast!.get! 2 = List.range' n n :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,30 @@
+"vc-description": "A number is simply made up of digits.  \nThe number 1256 is made\
+  \ up of the digits 1, 2, 5, and 6.  \nFor 1256 there are 24 distinct permutations\
+  \ of the digits:  \n1256, 1265, 1625, 1652, 1562, 1526, 2156, 2165, 2615, 2651,\
+  \ 2561, 2516,   \n5126, 5162, 5216, 5261, 5621, 5612, 6125, 6152, 6251, 6215, 6521,\
+  \ 6512.\n  \nYour goal is to write a program that takes a number, n, and returns\
+  \ the average value of all distinct permutations of the digits in n.  Your answer\
+  \ should be rounded to the nearest integer. For the example above the return value\
+  \ would be 3889. * \n  \n  n will never be negative\n  \nA few examples:\n```python\n\
+  permutation_average(2)\nreturn 2\n\npermutation_average(25)\n>>> 25 + 52 = 77\n\
+  >>> 77 / 2 = 38.5\nreturn 39 *\n\npermutation_average(20)\n>>> 20 + 02 = 22\n>>>\
+  \ 22 / 2 = 11\nreturn 11\n\npermutation_average(737)\n>>> 737 + 377 + 773 = 1887\n\
+  >>> 1887 / 3 = 629\nreturn 629\n\n```\n\nNote: Your program should be able to handle\
+  \ numbers up to 6 digits long\n~~~if:python\n\\* Python version 3 and above uses\
+  \ Banker Rounding so the expected values for those tests would be 3888 and 38 respectively\n\
+  ~~~\n~~~if-not:python\n\\* ignore these marks, they're for Python only\n~~~"
+"vc-preamble": "import Imports.AllImports\n\ndef permutation_average (n : Int) : Int\
+  \ := \n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def permutation_average_str (s : String) : Int := \n  sorry\n"
+"vc-theorems": "theorem permutation_average_returns_integer (n : Int) \n  (h : 0 ≤\
+  \ n ∧ n ≤ 999) : \n  ∃ i : Int, permutation_average n = i := by\n  sorry\n\n\ntheorem\
+  \ string_int_equivalent (n : Int) \n  (h : 0 ≤ n ∧ n ≤ 999) :\n  permutation_average\
+  \ n = permutation_average_str (toString n) := by\n  sorry\n\n\ntheorem leading_zeros_valid\
+  \ (n : Int)\n  (h : 0 ≤ n ∧ n ≤ 99) :\n  ∃ i : Int, permutation_average_str (\"\
+  0\" ++ toString n) = i := by\n  sorry \n\n\ntheorem result_within_bounds (n : Int)\n\
+  \  (h : 10 ≤ n ∧ n ≤ 999) :\n  permutation_average n ≥ 0 ∧ permutation_average n\
+  \ ≤ n := by\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval permutation_average\
+  \ 2\n\n/--\ninfo: 38\n-/\n#guard_msgs in\n#eval permutation_average 25\n\n/--\n\
+  info: 629\n-/\n#guard_msgs in\n#eval permutation_average 737\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,21 @@
+"vc-description": "=====Function Descriptions=====\nThe NumPy (Numeric Python) package\
+  \ helps us manipulate large arrays and matrices of numeric data.\n\nTo use the NumPy\
+  \ module, we need to import it using:\n\nimport numpy\n\nArrays\n\nA NumPy array\
+  \ is a grid of values. They are similar to lists, except that every element of an\
+  \ array must be the same type.\n\nimport numpy\n\na = numpy.array([1,2,3,4,5])\n\
+  print a[1]          #2\n\nb = numpy.array([1,2,3,4,5],float)\nprint b[1]       \
+  \   #2.0\n\nIn the above example, numpy.array() is used to convert a list into a\
+  \ NumPy array. The second argument (float) can be used to set the type of array\
+  \ elements.\n\n=====Problem Statement=====\nYou are given a space separated list\
+  \ of numbers.\nYour task is to print a reversed NumPy array with the element type\
+  \ float.\n\n=====Input Format=====\nA single line of input containing space separated\
+  \ numbers.\n\n=====Output Format=====\nPrint the reverse NumPy array with type float."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverse_float_array (s : String) : List Float := sorry\n\n\
+  theorem reverse_basic {s : String} (h: s = \"1 2 3\") : \n  reverse_float_array\
+  \ s = [3.0, 2.0, 1.0] := sorry\n"
+"vc-theorems": "theorem reverse_negative {s : String} (h: s = \"-1.5 2.5 -3.5\") :\n\
+  \  reverse_float_array s = [-3.5, 2.5, -1.5] := sorry\n\n\ntheorem reverse_single\
+  \ {s : String} (h: s = \"42\") :\n  reverse_float_array s = [42.0] := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

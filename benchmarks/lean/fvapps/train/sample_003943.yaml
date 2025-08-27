@@ -1,0 +1,23 @@
+"vc-description": "Write a function that checks if all the letters in the second string\
+  \ are present in the first one at least once, regardless of how many times they\
+  \ appear:\n\n```\n[\"ab\", \"aaa\"]    =>  true\n[\"trances\", \"nectar\"]    =>\
+  \  true\n[\"compadres\", \"DRAPES\"]  =>  true\n[\"parses\", \"parsecs\"]    =>\
+  \  false\n```\n\nFunction should not be case sensitive, as indicated in example\
+  \ #2. Note: both strings are presented as a **single argument** in the form of an\
+  \ array."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def letter_check (input : List String) : Bool := sorry\n\ntheorem\
+  \ letter_check_empty_second_string \n  (s₁ : String) : \n  letter_check [s₁, \"\"\
+  ] = true := sorry\n"
+"vc-theorems": "theorem letter_check_identical_strings\n  (s : String) :\n  letter_check\
+  \ [s, s] = true := sorry\n\n\ntheorem letter_check_case_insensitive\n  (s₁ s₂ :\
+  \ String) :\n  letter_check [s₁, s₂] = letter_check [s₁.toUpper, s₂.toLower] :=\
+  \ sorry\n\n\ntheorem letter_check_true_implies_chars_exist\n  (s₁ s₂ : String) :\n\
+  \  letter_check [s₁, s₂] = true →\n  ∀ c ∈ s₂.data, c.toLower ∈ (s₁.map Char.toLower).data\
+  \ := sorry\n\n\ntheorem letter_check_self_subset\n  (s : String) :\n  letter_check\
+  \ [s, s] = true := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval letter_check\
+  \ [\"ab\", \"aaa\"]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval letter_check [\"\
+  trances\", \"nectar\"]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval letter_check\
+  \ [\"parses\", \"parsecs\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

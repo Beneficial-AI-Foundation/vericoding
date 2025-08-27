@@ -1,0 +1,25 @@
+"vc-description": "Given preorder and inorder traversal of a tree, construct the binary\
+  \ tree.\n\nNote:\nYou may assume that duplicates do not exist in the tree.\n\nFor\
+  \ example, given\n\n\npreorder = [3,9,20,15,7]\ninorder = [9,3,15,20,7]\n\nReturn\
+  \ the following binary tree:\n\n\n    3\n   / \\\n  9  20\n    /  \\\n   15   7"
+"vc-preamble": "import Imports.AllImports\n\ndef buildTree (preorder : List Int) (inorder\
+  \ : List Int) : Option TreeNode :=\n  sorry\n\n\ndef inorder_traversal (tree : Option\
+  \ TreeNode) : List Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def preorder_traversal (tree : Option TreeNode) : List Int :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem buildTree_reconstructs_traversals {size : Nat} (preorder inorder\
+  \ : List Int) :\n  (preorder.length = size) →\n  (inorder.length = size) →\n  size\
+  \ > 0 →\n  let tree := buildTree preorder inorder\n  inorder_traversal tree = inorder\
+  \ ∧ \n  preorder_traversal tree = preorder :=\nsorry\n\n\ntheorem empty_input_gives_none\
+  \ :\n  buildTree [] [] = none :=\nsorry\n\n\ntheorem single_node_preserves_value\
+  \ (x : Int) :\n  let tree := buildTree [x] [x]\n  match tree with\n  | some (TreeNode.node\
+  \ val left right) => val = x ∧ left = none ∧ right = none \n  | none => False\n\
+  :=\nsorry\n\n/--\ninfo: inorder1\n-/\n#guard_msgs in\n#eval inorder_traversal buildTree(preorder1,\
+  \ inorder1)\n\n/--\ninfo: preorder1\n-/\n#guard_msgs in\n#eval preorder_traversal\
+  \ result1\n\n/--\ninfo: inorder2\n-/\n#guard_msgs in\n#eval inorder_traversal buildTree(preorder2,\
+  \ inorder2)\n\n/--\ninfo: preorder2\n-/\n#guard_msgs in\n#eval preorder_traversal\
+  \ result2\n\n/--\ninfo: inorder3\n-/\n#guard_msgs in\n#eval inorder_traversal buildTree(preorder3,\
+  \ inorder3)\n\n/--\ninfo: preorder3\n-/\n#guard_msgs in\n#eval preorder_traversal\
+  \ result3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

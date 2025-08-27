@@ -1,0 +1,53 @@
+"vc-description": "A wildlife study involving ducks is taking place in North America.\
+  \ Researchers are visiting some wetlands in a certain area taking a survey of what\
+  \ they see. The researchers will submit reports that need to be processed by your\
+  \ function.\n\n\n## Input\n\nThe input for your function will be an array with a\
+  \ list of common duck names along with the counts made by the researchers. The names\
+  \ and counts are separated by spaces in one array element. The number of spaces\
+  \ between the name and the count could vary; but, there will always be at least\
+  \ one. A name may be repeated because a report may be a combination of surveys from\
+  \ different locations.\n\nAn example of an input array would be:\n```\n[\"Redhead\
+  \ 3\", \"Gadwall 1\", \"Smew 4\", \"Greater Scaup 10\", \"Redhead 3\", \"Gadwall\
+  \ 9\", \"Greater Scaup 15\", \"Common Eider 6\"]\n```\n\n## Processing\n\nYour function\
+  \ should change the names of the ducks to a six-letter code according to given rules\
+  \ (see below). The six-letter code should be in upper case. The counts should be\
+  \ summed for a species if it is repeated.\n\n\n## Output\n\nThe final data to be\
+  \ returned from your function should be an array sorted by the species codes and\
+  \ the total counts as integers. The codes and the counts should be individual elements.\n\
+  \nAn example of an array to be returned (based on the example input array above)\
+  \ would be:\n```\n[\"COMEID\", 6, \"GADWAL\", 10, \"GRESCA\", 25, \"REDHEA\", 6,\
+  \ \"SMEW\", 4]\n```\nThe codes are strings in upper case and the totaled counts\
+  \ are integers.\n\n\n### Special Note\n\nIf someone has `\"Labrador Duck\"` in their\
+  \ list, the whole list should be thrown out as this species has been determined\
+  \ to be extinct. The person who submitted the list is obviously unreliable. Their\
+  \ lists will not be included in the final data. In such cases, return an array with\
+  \ a single string element in it: `\"Disqualified data\"`\n\n\nRules for converting\
+  \ a common name to a six-letter code:\n\n* Hyphens should be considered as spaces.\n\
+  * If a name has only one word, use the first six letters of the name. If that name\
+  \ has less than six letters, use what is there.\n* If a name has two words, take\
+  \ the first three letters of each word.\n* If a name has three words, take the first\
+  \ two letters of each word.\n* If a name has four words, take the first letters\
+  \ from the first two words, and the first two letters from the last two words."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def createReport (names : List String) : List (String ⊕ Nat) :=\n\
+  \  sorry\n"
+"vc-theorems": "theorem report_structure {names : List String} \n  (h : createReport\
+  \ names ≠ [Sum.inl \"Disqualified data\"]) :\n  let result := createReport names;\n\
+  \  -- Result is a list\n  (List.length result % 2 = 0)  \n  -- Every even index\
+  \ is String, odd index is Nat > 0\n  ∧ (∀ i, i < List.length result → \n      i\
+  \ % 2 = 0 → (∃ s : String, result.get! i = Sum.inl s)\n      ∧ i % 2 = 1 → (∃ n\
+  \ : Nat, result.get! i = Sum.inr n ∧ n > 0)) :=\nsorry\n\n\ntheorem sorted_codes\
+  \ {names : List String} \n  (h : createReport names ≠ [Sum.inl \"Disqualified data\"\
+  ]) :\n  let strings := List.filterMap (fun x => match x with \n    | Sum.inl s =>\
+  \ some s\n    | _ => none) (createReport names);\n  List.Pairwise (fun x y => x\
+  \ ≤ y) strings :=\nsorry\n\n\ntheorem labrador_disqualification {names : List String}\
+  \ \n  (h : ∃ entry ∈ names, entry = \"Labrador Duck 1\") :\n  createReport names\
+  \ = [Sum.inl \"Disqualified data\"] :=\nsorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs\
+  \ in\n#eval create_report [\"Redhead 3\", \"Gadwall 1\", \"Smew 4\", \"Greater Scaup\
+  \ 10\", \"Redhead 3\", \"Gadwall 9\", \"Greater Scaup 15\", \"Common Eider 6\"]\n\
+  \n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval create_report [\"Redhead 5\",\
+  \ \"Labrador Duck 9\", \"Blue-Winged Teal 25\"]\n\n/--\ninfo: expected3\n-/\n#guard_msgs\
+  \ in\n#eval create_report [\"Canvasback 10\", \"Mallard 150\", \"American Wigeon\
+  \ 45\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

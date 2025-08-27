@@ -1,0 +1,27 @@
+"vc-description": "Let N be a positive even number.\nWe have a permutation of (1,\
+  \ 2, ..., N), p = (p_1, p_2, ..., p_N).\nSnuke is constructing another permutation\
+  \ of (1, 2, ..., N), q, following the procedure below.\nFirst, let q be an empty\
+  \ sequence.\nThen, perform the following operation until p becomes empty:\n - Select\
+  \ two adjacent elements in p, and call them x and y in order. Remove x and y from\
+  \ p (reducing the length of p by 2), and insert x and y, preserving the original\
+  \ order, at the beginning of q.\nWhen p becomes empty, q will be a permutation of\
+  \ (1, 2, ..., N).\nFind the lexicographically smallest permutation that can be obtained\
+  \ as q.\n\n-----Constraints-----\n - N is an even number.\n - 2 ≤ N ≤ 2 × 10^5\n\
+  \ - p is a permutation of (1, 2, ..., N).\n\n-----Input-----\nInput is given from\
+  \ Standard Input in the following format:\nN\np_1 p_2 ... p_N\n\n-----Output-----\n\
+  Print the lexicographically smallest permutation, with spaces in between.\n\n-----Sample\
+  \ Input-----\n4\n3 2 4 1\n\n-----Sample Output-----\n3 1 2 4\n\nThe solution above\
+  \ is obtained as follows:pq(3, 2, 4, 1)()↓↓(3, 1)(2, 4)↓↓()(3, 1, 2, 4)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_smallest_permutation (n : Nat) (p : List Nat) : List Nat\
+  \ :=\nsorry\n"
+"vc-theorems": "theorem test_small_cases_1 :\n  find_smallest_permutation 4 [3,2,4,1]\
+  \ = [3,1,2,4] :=\nsorry\n\n\ntheorem test_small_cases_2 :\n  find_smallest_permutation\
+  \ 2 [1,2] = [1,2] :=\nsorry\n\n\ntheorem test_small_cases_3 :\n  find_smallest_permutation\
+  \ 8 [4,6,3,2,8,5,7,1] = [3,1,2,7,4,6,8,5] :=\nsorry\n\n/--\ninfo: [3, 1, 2, 4]\n\
+  -/\n#guard_msgs in\n#eval find_smallest_permutation 4 [3, 2, 4, 1]\n\n/--\ninfo:\
+  \ [1, 2]\n-/\n#guard_msgs in\n#eval find_smallest_permutation 2 [1, 2]\n\n/--\n\
+  info: [3, 1, 2, 7, 4, 6, 8, 5]\n-/\n#guard_msgs in\n#eval find_smallest_permutation\
+  \ 8 [4, 6, 3, 2, 8, 5, 7, 1]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

@@ -1,0 +1,28 @@
+"vc-description": "Given an integer n, you must transform it into 0 using the following\
+  \ operations any number of times:\n\nChange the rightmost (0th) bit in the binary\
+  \ representation of n.\nChange the ith bit in the binary representation of n if\
+  \ the (i-1)th bit is set to 1 and the (i-2)th through 0th bits are set to 0.\n\n\
+  Return the minimum number of operations to transform n into 0.\n \nExample 1:\n\
+  Input: n = 0\nOutput: 0\n\nExample 2:\nInput: n = 3\nOutput: 2\nExplanation: The\
+  \ binary representation of 3 is \"11\".\n\"11\" -> \"01\" with the 2nd operation\
+  \ since the 0th bit is 1.\n\"01\" -> \"00\" with the 1st operation.\n\nExample 3:\n\
+  Input: n = 6\nOutput: 4\nExplanation: The binary representation of 6 is \"110\"\
+  .\n\"110\" -> \"010\" with the 2nd operation since the 1st bit is 1 and 0th through\
+  \ 0th bits are 0.\n\"010\" -> \"011\" with the 1st operation.\n\"011\" -> \"001\"\
+  \ with the 2nd operation since the 0th bit is 1.\n\"001\" -> \"000\" with the 1st\
+  \ operation.\n\nExample 4:\nInput: n = 9\nOutput: 14\n\nExample 5:\nInput: n = 333\n\
+  Output: 393\n\n \nConstraints:\n\n0 <= n <= 109"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def minimum_one_bit_operations (n: Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem minimum_one_bit_operations_valid_range (n: Nat) (h: n < 2^32)\
+  \ : \n  let result := minimum_one_bit_operations n\n  0 ≤ result ∧ result < 2^32\
+  \ :=\n  sorry\n\n\ntheorem minimum_one_bit_operations_known_cases :\n  minimum_one_bit_operations\
+  \ 0 = 0 ∧ \n  minimum_one_bit_operations 1 = 1 ∧\n  minimum_one_bit_operations 2\
+  \ = 3 ∧\n  minimum_one_bit_operations 3 = 2 ∧\n  minimum_one_bit_operations 4 =\
+  \ 7 ∧\n  minimum_one_bit_operations 6 = 4 :=\n  sorry\n\n\ntheorem minimum_one_bit_operations_deterministic\
+  \ (n: Nat) (h: n < 2^16) :\n  minimum_one_bit_operations n = minimum_one_bit_operations\
+  \ n :=\n  sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval minimum_one_bit_operations\
+  \ 0\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval minimum_one_bit_operations 3\n\n\
+  /--\ninfo: 4\n-/\n#guard_msgs in\n#eval minimum_one_bit_operations 6\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

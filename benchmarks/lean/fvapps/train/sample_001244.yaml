@@ -1,0 +1,43 @@
+"vc-description": "Chef Shifu wanted to celebrate the success of his new restaurant\
+  \ with all his employees. He was willing to host a party and he had decided the\
+  \ location of the party as well. However, Chef Shifu was a shy person and wanted\
+  \ to communicate with the least possible employees to inform them about the party,\
+  \ and that these employees could inform their friends.\n\nNote that an employee\
+  \ could only inform his/her immediate friends about the party, not his/her friends’\
+  \ friends.\n\nChef Shifu has a list of all the friendships among his employees.\
+  \ Help him find the minimum number of employees he should inform, so that every\
+  \ employee knows about the celebration party.\n\n-----Input-----\nFirst line contains\
+  \ a single integer T - the total number of testcases.\n\nT testcases follow. For\
+  \ each testcase:\n\nThe first line contains 2 space-separated integers N and M -\
+  \ the total number of employees working under Chef Shifu and the number of friendship\
+  \ relations.\n\nM lines follow - each line contains 2 space-separated integers u\
+  \ and v, indicating that employee u is a friend of employee v and vice-versa.\n\n\
+  The employees are numbered from 1 to N, and each employee is assigned a distinct\
+  \ integer.\n\n\n\n-----Output-----\nFor each testcase, print the minimum number\
+  \ of employees to be informed on a new line.\n\n-----Constraints-----\nSubtask 1:\
+  \ 5 points\n\n1 ≤ T ≤ 5\n\n1 ≤ N ≤ 4\n\n0 ≤ M ≤ N*(N-1)/2\n\n\n\nSubtask 2: 35 points\n\
+  \n1 ≤ T ≤ 5\n\n1 ≤ N ≤ 15\n\n0 ≤ M ≤ N*(N-1)/2\n\n\n\nSubtask 3: 60 points\n\n1\
+  \ ≤ T ≤ 5\n\n1 ≤ N ≤ 20\n\n0 ≤ M ≤ N*(N-1)/2\n\n\n-----Example-----\nInput\n2\n\
+  3 3\n1 2\n2 3\n1 3\n4 3\n1 2\n2 3\n3 4\n\nOutput\n1\n2\n\nExplanation\n\nIn testcase\
+  \ 1, since every employee is a friend of every other employee, we just need to select\
+  \ 1 employee.\nIn testcase 2, selecting employees 2 and 4 would ensure that all\
+  \ 4 employees are represented.\n\nSimilarly, selecting employees 1 and 3 would also\
+  \ ensure that all 4 employees are selected.\n\nIn both cases, we must select 2 employees\
+  \ in the best case."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_employees_to_inform (n : Nat) (pairs : List (Nat × Nat))\
+  \ : Nat := sorry\n\n\n\n\n\ntheorem line_formation (n : Nat) (h : 2 ≤ n) \n  (pairs\
+  \ : List (Nat × Nat))\n  (h_pairs : pairs = List.map (fun i => (i, i+1)) (List.range\
+  \ (n-1))) :\n  min_employees_to_inform n pairs ≤ (n + 1) / 2 := sorry\n"
+"vc-theorems": "theorem star_formation (n : Nat) (h : 2 ≤ n)\n  (pairs : List (Nat\
+  \ × Nat))\n  (h_pairs : pairs = List.map (fun i => (1, i+2)) (List.range (n-1)))\
+  \ :\n  min_employees_to_inform n pairs = 1 := sorry\n\n\ntheorem fully_connected\
+  \ (n : Nat) (h : 3 ≤ n)\n  (pairs : List (Nat × Nat))\n  (h_pairs : pairs = List.join\
+  \ (List.map \n    (fun i => List.map (fun j => (i,j)) (List.range' (i+1) (n+1)))\
+  \ \n    (List.range' 1 n))) :\n  min_employees_to_inform n pairs = 1 := sorry\n\n\
+  /--\ninfo: 1\n-/\n#guard_msgs in\n#eval min_employees_to_inform 3 [(1, 2), (2, 3),\
+  \ (1, 3)]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_employees_to_inform 4 [(1,\
+  \ 2), (2, 3), (3, 4)]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval min_employees_to_inform\
+  \ 4 [(1, 2), (1, 3), (1, 4)]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

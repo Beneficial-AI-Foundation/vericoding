@@ -1,0 +1,18 @@
+"vc-description": "Given a column title as appear in an Excel sheet, return its corresponding\
+  \ column number.\n\nFor example:\n\n\n    A -> 1\n    B -> 2\n    C -> 3\n    ...\n\
+  \    Z -> 26\n    AA -> 27\n    AB -> 28 \n    ...\n\n\nExample 1:\n\n\nInput: \"\
+  A\"\nOutput: 1\n\n\nExample 2:\n\n\nInput: \"AB\"\nOutput: 28\n\n\nExample 3:\n\n\
+  \nInput: \"ZY\"\nOutput: 701"
+"vc-preamble": "import Imports.AllImports\n\ndef title_to_number (s : String) : Nat\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def number_to_title (n : Nat) : String :=\n  sorry\n"
+"vc-theorems": "theorem title_to_number_positive (title : String) :\n  title_to_number\
+  \ title > 0 := by\n  sorry\n\n\ntheorem title_to_number_monotone (title : String)\
+  \ :\n  (title.length > 1) → \n  title_to_number title > title_to_number (String.dropRight\
+  \ title 1) := by\n  sorry\n\n\ntheorem title_to_number_roundtrip (n : Nat) :\n \
+  \ n > 0 → n ≤ 2^20 →\n  title_to_number (number_to_title n) = n := by\n  sorry\n\
+  \n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval title_to_number \"A\"\n\n/--\ninfo: 28\n\
+  -/\n#guard_msgs in\n#eval title_to_number \"AB\"\n\n/--\ninfo: 701\n-/\n#guard_msgs\
+  \ in\n#eval title_to_number \"ZY\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

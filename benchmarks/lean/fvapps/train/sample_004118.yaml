@@ -1,0 +1,50 @@
+"vc-description": "Some languages like Chinese, Japanese, and Thai do not have spaces\
+  \ between words. However, most natural languages processing tasks like part-of-speech\
+  \ tagging require texts that have segmented words. A simple and reasonably effective\
+  \ algorithm to segment a sentence into its component words is called \"MaxMatch\"\
+  .\n\n## MaxMatch\nMaxMatch starts at the first character of a sentence and tries\
+  \ to find the longest valid word starting from that character. If no word is found,\
+  \ the first character is deemed the longest \"word\", regardless of its validity.\
+  \ In order to find the rest of the words, MaxMatch is then recursively invoked on\
+  \ all of the remaining characters until no characters remain. A list of all of the\
+  \ words that were found is returned.\n\nSo for the string `\"happyday\"`, `\"happy\"\
+  ` is found because `\"happyday\"` is not a valid word, nor is `\"happyda\"`, nor\
+  \ `\"happyd\"`. Then, MaxMatch is called on `\"day\"`, and `\"day\"` is found. The\
+  \ output is the list `[\"happy\", \"day\"]` in that order.\n\n## The Challenge\n\
+  \n```if:javascript\nWrite `maxMatch`, which takes an alphanumeric, spaceless, lowercased\
+  \ `String` as input and returns an `Array` of all the words found, in the order\
+  \ they were found.\n**All valid words are in the** `Set` `VALID_WORDS`, which only\
+  \ contains around 500 English words.\n```\n```if:haskell\nWrite `maxMatch`, which\
+  \ takes an alphanumeric, spaceless, lowercased `String` as input and returns a `[String]`\
+  \ of all the words found, in the order they were found. All valid words are in the\
+  \ `[String]` `validWords`, which only contains around 500 English words.\n```\n\
+  ```if:java\nWrite `maxMatch`, which takes an alphanumeric, spaceless, lowercased\
+  \ `String` as input and returns a `List` of `String`s which are all the words found,\
+  \ in the order they were found. All valid words are in the `Set` `Preloaded.VALID_WORDS`,\
+  \ , which only contains around 500 English words.\n```\n```if:python\nWrite `max_match`,\
+  \ which takes an alphanumeric, spaceless, lowercased `String` as input and returns\
+  \ a `List` of `String`s of all the words found, in the order they were found. **All\
+  \ valid words are in the** `Set` `VALID_WORDS`, which only contains around 500 English\
+  \ words.\n```\n```if:ruby\nWrite `max_match`, which takes an alphanumeric, spaceless,\
+  \ lowercased `String` as input and returns an `Array` of `String`s of all the words\
+  \ found, in the order they were found. All valid words are in the `Array` `VALID_WORDS`,\
+  \ which only contains around 500 English words.\n```\n```if:kotlin\nWrite `maxMatch`,\
+  \ which takes an alphanumeric, spaceless, lowercased `String` as input and returns\
+  \ a `List` of `String`s which are all the words found, in the order they were found.\
+  \ All valid words are in the `Set` `VALID_WORDS`, which only contains around 500\
+  \ English words.\n```\n**Note:** This algorithm is simple and operates better on\
+  \ Chinese text, so accept the fact that some words will be segmented wrongly.\n\n\
+  Happy coding :)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_match (s : String) : List String :=\nsorry\n"
+"vc-theorems": "theorem max_match_empty (s : String) :\n  s = \"\" → max_match s =\
+  \ [] :=\nsorry\n\n\ntheorem max_match_happy_path1 (s : String) :\n  s = \"happyday\"\
+  \ → max_match s = [\"happy\", \"day\"] :=\nsorry\n\n\ntheorem max_match_happy_path2\
+  \ (s : String) :\n  s = \"thecatsat\" → max_match s = [\"the\", \"cat\", \"sat\"\
+  ] :=\nsorry\n\n\ntheorem max_match_edge_case (s : String) :\n  s = \"onthemat\"\
+  \ → max_match s = [\"on\", \"the\", \"mat\"] :=\nsorry\n\n/--\ninfo: []\n-/\n#guard_msgs\
+  \ in\n#eval max_match \"\"\n\n/--\ninfo: ['happy', 'day']\n-/\n#guard_msgs in\n\
+  #eval max_match \"happyday\"\n\n/--\ninfo: ['the', 'cat', 'sat']\n-/\n#guard_msgs\
+  \ in\n#eval max_match \"thecatsat\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

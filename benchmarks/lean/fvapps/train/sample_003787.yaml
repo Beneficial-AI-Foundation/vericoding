@@ -1,0 +1,24 @@
+"vc-description": "Given an array, return the difference between the count of even\
+  \ numbers and the count of odd numbers. `0` will be considered an even number. \n\
+  \n```\nFor example:\nsolve([0,1,2,3]) = 0 because there are two even numbers and\
+  \ two odd numbers. Even - Odd = 2 - 2 = 0.  \n```\n\nLet's now add two letters to\
+  \ the last example: \n```\nsolve([0,1,2,3,'a','b']) = 0. Again, Even - Odd = 2 -\
+  \ 2 = 0. Ignore letters. \n```\n\nThe input will be an array of lowercase letters\
+  \ and numbers only. \n\nIn some languages (Haskell, C++, and others), input will\
+  \ be an array of strings:\n\n```\nsolve [\"0\",\"1\",\"2\",\"3\",\"a\",\"b\"] =\
+  \ 0 \n```\n\nGood luck!\n\nIf you like this Kata, please try: \n\n[Longest vowel\
+  \ chain](https://www.codewars.com/kata/59c5f4e9d751df43cf000035)\n\n[Word values](https://www.codewars.com/kata/598d91785d4ce3ec4f000018)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (arr : List (Sum Int String)) : Int := sorry\n\ntheorem\
+  \ solve_matches_even_odd_difference (arr : List (Sum Int String)) :\n  solve arr\
+  \ = \n    (List.filter (fun x => match x with\n      | Sum.inl n => n % 2 = 0\n\
+  \      | Sum.inr _ => false) arr).length -\n    (List.filter (fun x => match x with\n\
+  \      | Sum.inl n => n % 2 = 1\n      | Sum.inr _ => false) arr).length :=\nsorry\n"
+"vc-theorems": "theorem solve_all_strings (arr : List String) :\n  solve (arr.map\
+  \ Sum.inr) = 0 :=\nsorry\n\n\ntheorem solve_bounded_by_length (arr : List Int) :\n\
+  \  -arr.length ≤ solve (arr.map Sum.inl) ∧ \n  solve (arr.map Sum.inl) ≤ arr.length\
+  \ :=\nsorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval solve [0, 1, 2, 3]\n\n/--\n\
+  info: 0\n-/\n#guard_msgs in\n#eval solve [0, 1, 2, 3, \"a\", \"b\"]\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval solve [13, 6, 8, 15, 4, 8, 13]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

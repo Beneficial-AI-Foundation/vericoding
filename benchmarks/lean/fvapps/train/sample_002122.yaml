@@ -1,0 +1,67 @@
+"vc-description": "Serge came to the school dining room and discovered that there\
+  \ is a big queue here. There are $m$ pupils in the queue. He's not sure now if he\
+  \ wants to wait until the queue will clear, so he wants to know which dish he will\
+  \ receive if he does. As Serge is very tired, he asks you to compute it instead\
+  \ of him.\n\nInitially there are $n$ dishes with costs $a_1, a_2, \\ldots, a_n$.\
+  \ As you already know, there are the queue of $m$ pupils who have $b_1, \\ldots,\
+  \ b_m$ togrogs respectively (pupils are enumerated by queue order, i.e the first\
+  \ pupil in the queue has $b_1$ togrogs and the last one has $b_m$ togrogs)\n\nPupils\
+  \ think that the most expensive dish is the most delicious one, so every pupil just\
+  \ buys the most expensive dish for which he has money (every dish has a single copy,\
+  \ so when a pupil has bought it nobody can buy it later), and if a pupil doesn't\
+  \ have money for any dish, he just leaves the queue (so brutal capitalism...)\n\n\
+  But money isn't a problem at all for Serge, so Serge is buying the most expensive\
+  \ dish if there is at least one remaining.\n\nMoreover, Serge's school has a very\
+  \ unstable economic situation and the costs of some dishes or number of togrogs\
+  \ of some pupils can change. More formally, you must process $q$ queries:\n\n  change\
+  \ $a_i$ to $x$. It means that the price of the $i$-th dish becomes $x$ togrogs.\
+  \  change $b_i$ to $x$. It means that the $i$-th pupil in the queue has $x$ togrogs\
+  \ now. \n\nNobody leaves the queue during those queries because a saleswoman is\
+  \ late.\n\nAfter every query, you must tell Serge price of the dish which he will\
+  \ buy if he has waited until the queue is clear, or $-1$ if there are no dishes\
+  \ at this point, according to rules described above.\n\n\n-----Input-----\n\nThe\
+  \ first line contains integers $n$ and $m$ ($1 \\leq n, m \\leq 300\\ 000$) — number\
+  \ of dishes and pupils respectively. The second line contains $n$ integers $a_1,\
+  \ a_2, \\ldots, a_n$ ($1 \\leq a_i \\leq 10^{6}$) — elements of array $a$. The third\
+  \ line contains $m$ integers $b_1, b_2, \\ldots, b_{m}$ ($1 \\leq b_i \\leq 10^{6}$) —\
+  \ elements of array $b$. The fourth line conatins integer $q$ ($1 \\leq q \\leq\
+  \ 300\\ 000$) — number of queries.\n\nEach of the following $q$ lines contains as\
+  \ follows:   if a query changes price of some dish, it contains $1$, and two integers\
+  \ $i$ and $x$ ($1 \\leq i \\leq n$, $1 \\leq x \\leq 10^{6}$), what means $a_i$\
+  \ becomes $x$.  if a query changes number of togrogs of some pupil, it contains\
+  \ $2$, and two integers $i$ and $x$ ($1 \\leq i \\leq m$, $1 \\leq x \\leq 10^{6}$),\
+  \ what means $b_i$ becomes $x$. \n\n\n-----Output-----\n\nFor each of $q$ queries\
+  \ prints the answer as the statement describes, the answer of the $i$-th query in\
+  \ the $i$-th line (the price of the dish which Serge will buy or $-1$ if nothing\
+  \ remains)\n\n\n-----Examples-----\nInput\n1 1\n1\n1\n1\n1 1 100\n\nOutput\n100\n\
+  \nInput\n1 1\n1\n1\n1\n2 1 100\n\nOutput\n-1\n\nInput\n4 6\n1 8 2 4\n3 3 6 1 5 2\n\
+  3\n1 1 1\n2 5 10\n1 1 6\n\nOutput\n8\n-1\n4\n\n\n\n-----Note-----\n\nIn the first\
+  \ sample after the first query, there is one dish with price $100$ togrogs and one\
+  \ pupil with one togrog, so Serge will buy the dish with price $100$ togrogs.\n\n\
+  In the second sample after the first query, there is one dish with price one togrog\
+  \ and one pupil with $100$ togrogs, so Serge will get nothing.\n\nIn the third sample\
+  \ after the first query, nobody can buy the dish with price $8$, so Serge will take\
+  \ it. After the second query, all dishes will be bought, after the third one the\
+  \ third and fifth pupils will by the first and the second dishes respectively and\
+  \ nobody will by the fourth one."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (n m : Nat) (dishes : List Nat) (pupils : List Nat) (queries\
+  \ : List (Nat × Nat × Nat)) : List Int :=\nsorry\n"
+"vc-theorems": "theorem solve_output_is_list_of_ints (n m : Nat) (dishes : List Nat)\
+  \ (pupils : List Nat) \n    (queries : List (Nat × Nat × Nat)) :\n  let result :=\
+  \ solve n m dishes pupils queries\n  ∀ x ∈ result, ∃ i : Int, x = i :=\nsorry\n\n\
+  \ntheorem solve_output_length_matches_queries (n m : Nat) (dishes : List Nat) (pupils\
+  \ : List Nat)\n    (queries : List (Nat × Nat × Nat)) :\n  let result := solve n\
+  \ m dishes pupils queries\n  result.length = queries.length :=\nsorry\n\n\ntheorem\
+  \ solve_output_elements_geq_neg_one (n m : Nat) (dishes : List Nat) (pupils : List\
+  \ Nat)\n    (queries : List (Nat × Nat × Nat)) :\n  let result := solve n m dishes\
+  \ pupils queries\n  ∀ x ∈ result, x ≥ -1 :=\nsorry\n\n\ntheorem solve_valid_for_dimensions\
+  \ (n m : Nat) :\n  n > 0 → m > 0 → n ≤ 10 → m ≤ 10 →\n  let dishes := List.range\
+  \ n\n  let pupils := List.range m\n  let queries := List.map (fun i => (1, min n\
+  \ (i+1), i+1)) (List.range 3)\n  (solve n m dishes pupils queries).length > 0 :=\n\
+  sorry\n\n/--\ninfo: [100]\n-/\n#guard_msgs in\n#eval solve 1 1 [1] [1] [(1, 1, 100)]\n\
+  \n/--\ninfo: [-1]\n-/\n#guard_msgs in\n#eval solve 1 1 [1] [1] [(2, 1, 100)]\n\n\
+  /--\ninfo: [8, -1, 4]\n-/\n#guard_msgs in\n#eval solve 4 6 [1, 8, 2, 4] [3, 3, 6,\
+  \ 1, 5, 2] [(1, 1, 1), (2, 5, 10), (1, 1, 6)]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

@@ -1,0 +1,22 @@
+"vc-description": "In this Kata, you will sort elements in an array by decreasing\
+  \ frequency of elements. If two elements have the same frequency, sort them by increasing\
+  \ value. \n\n\nMore examples in test cases. \n\nGood luck!\n\nPlease also try [Simple\
+  \ time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)"
+"vc-preamble": "import Imports.AllImports\n\ndef solve (arr : List Int) : List Int\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def List.isPermutationOf (l1 l2 : List Int) : Prop :=\n  ∀ x, (l1.filter\
+  \ (· = x)).length = (l2.filter (· = x)).length\n"
+"vc-theorems": "theorem solve_output_length {arr : List Int} (h : arr ≠ []) :\n  (solve\
+  \ arr).length = arr.length :=\nsorry\n\n\ntheorem solve_contains_same_elements {arr\
+  \ : List Int} (h : arr ≠ []) :\n  (solve arr).isPermutationOf arr :=\nsorry\n\n\n\
+  theorem solve_maintains_frequency_order {arr : List Int} (h : arr ≠ []) :\n  let\
+  \ freq := fun x => (arr.filter (· = x)).length\n  ∀ i, i + 1 < (solve arr).length\
+  \ →\n    let curr := (solve arr).get! i\n    let next := (solve arr).get! (i+1)\n\
+  \    freq curr > freq next ∨ \n    (freq curr = freq next ∧ curr ≤ next) :=\nsorry\n\
+  \n\ntheorem solve_idempotent {arr : List Int} (h : arr ≠ []) :\n  solve (solve arr)\
+  \ = solve arr :=\nsorry\n\n/--\ninfo: expected1\n-/\n#guard_msgs in\n#eval solve\
+  \ [2, 3, 5, 3, 7, 9, 5, 3, 7]\n\n/--\ninfo: expected2\n-/\n#guard_msgs in\n#eval\
+  \ solve [1, 2, 3, 0, 5, 0, 1, 6, 8, 8, 6, 9, 1]\n\n/--\ninfo: expected3\n-/\n#guard_msgs\
+  \ in\n#eval solve [5, 9, 6, 9, 6, 5, 9, 9, 4, 4]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

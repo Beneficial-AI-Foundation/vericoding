@@ -1,0 +1,36 @@
+"vc-description": "=====Problem Statement=====\nYou are given a function f(X) = X^2.\
+  \ You are also given K lists. The ith list consists of N_i elements.\n\nYou have\
+  \ to pick one element from each list so that the value from the equation below is\
+  \ maximized:\nS = (f(X_1) + f(X_2) + ... + f(X_k))%M\nX_i denotes the element picked\
+  \ from the ith list. Find the maximized value S_max obtained.\n% denotes the modulo\
+  \ operator.\nNote that you need to take exactly one element from each list, not\
+  \ necessarily the largest element. You add the squares of the chosen elements and\
+  \ perform the modulo operation. The maximum value that you can obtain, will be the\
+  \ answer to the problem.\n\n=====Input Format=====\nThe first line contains 2 space\
+  \ separated integers K and M.\nThe next K lines each contains an integer N_i, denoting\
+  \ the number of elements in the ith list, followed by space separated integers denoting\
+  \ the elements in the list. \n\n=====Constraints=====\n1≤K≤7\n1≤M≤1000\n1≤N_i≤7\n\
+  1≤Magnitude of elements in list≤10^9\n\n=====Output Format=====\nOutput a single\
+  \ integer denoting the value S_max."
+"vc-preamble": "import Imports.AllImports\n\ndef List.product : List (List α) → List\
+  \ (List α)\n  | [] => [[]]\n  | (h :: t) => sorry\n\n\ndef sum [Add α] (l : List\
+  \ α) : α :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_max_modular_sum (m : Nat) (lists : List (List Int)) :\
+  \ Nat :=\n  sorry\n"
+"vc-theorems": "theorem find_max_modular_sum_bounds (m : Nat) (lists : List (List\
+  \ Int)) \n    (h1 : m > 0) (h2 : lists ≠ []) \n    (h3 : ∀ l ∈ lists, l ≠ []) :\
+  \ \n  let result := find_max_modular_sum m lists\n  0 ≤ result ∧ result < m := by\n\
+  \  sorry\n\n\ntheorem find_max_modular_sum_matches_some_combo (m : Nat) (lists :\
+  \ List (List Int))\n    (h1 : m > 0) (h2 : lists ≠ []) \n    (h3 : ∀ l ∈ lists,\
+  \ l ≠ []) :\n  let result := find_max_modular_sum m lists\n  ∃ combo ∈ List.product\
+  \ lists,\n    sum (combo.map (λ x => x * x)) % m = result := by\n  sorry\n\n\ntheorem\
+  \ find_max_modular_sum_mod_one (lists : List (List Int))\n    (h1 : lists ≠ [])\n\
+  \    (h2 : ∀ l ∈ lists, l ≠ []) :\n  find_max_modular_sum 1 lists = 0 := by\n  sorry\n\
+  \n\ntheorem find_max_modular_sum_zeros (m : Nat) (lists : List (List Int))\n   \
+  \ (h1 : m > 1)\n    (h2 : lists ≠ [])\n    (h3 : ∀ l ∈ lists, l ≠ [])\n    (h4 :\
+  \ ∀ l ∈ lists, ∀ x ∈ l, x = 0) :\n  find_max_modular_sum m lists = 0 := by\n  sorry\n\
+  \n/--\ninfo: 206\n-/\n#guard_msgs in\n#eval find_max_modular_sum 1000 [[5, 4], [7,\
+  \ 8, 9], [5, 7, 8, 9, 10]]\n\n/--\ninfo: 20\n-/\n#guard_msgs in\n#eval find_max_modular_sum\
+  \ 100 [[1, 2], [3, 4]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,20 @@
+"vc-description": "Make a program that filters a list of strings and returns a list\
+  \ with only your friends name in it.\n\nIf a name has exactly 4 letters in it, you\
+  \ can be sure that it has to be a friend of yours! Otherwise, you can be sure he's\
+  \ not...\n\nEx: Input = [\"Ryan\", \"Kieran\", \"Jason\", \"Yous\"], Output = [\"\
+  Ryan\", \"Yous\"]\n\ni.e.\n\nNote: keep the original order of the names in the output."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def friend (names: List String) : List String := sorry\n\ntheorem\
+  \ friend_property (names: List String) :\n  let result := friend names\n  (∀ n ∈\
+  \ result, String.length n = 4) ∧ \n  (∀ n ∈ result, n ∈ names) ∧\n  (∀ n ∈ names,\
+  \ String.length n = 4 → n ∈ result) := by\n  sorry\n"
+"vc-theorems": "theorem friend_preserves_order (names: List String) :\n  friend names\
+  \ = names.filter (fun n => String.length n = 4) := by\n  sorry\n\n\ntheorem friend_handles_empty_strings\
+  \ (names: List String) :\n  let result := friend names\n  (∀ n ∈ result, String.length\
+  \ n = 4) ∧\n  (∀ n ∈ result, n ∈ names) := by\n  sorry\n\n/--\ninfo: ['Ryan', 'Mark']\n\
+  -/\n#guard_msgs in\n#eval friend [\"Ryan\", \"Kieran\", \"Mark\"]\n\n/--\ninfo:\
+  \ ['Ryan']\n-/\n#guard_msgs in\n#eval friend [\"Ryan\", \"Jimmy\", \"123\", \"4\"\
+  , \"Cool Man\"]\n\n/--\ninfo: ['Love', 'Your', 'Face']\n-/\n#guard_msgs in\n#eval\
+  \ friend [\"Love\", \"Your\", \"Face\", \"1\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

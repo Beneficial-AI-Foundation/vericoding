@@ -1,0 +1,49 @@
+"vc-description": "We have the integer `9457`. \n\nWe distribute its digits in two\
+  \ buckets having the following possible distributions (we put the generated numbers\
+  \ as strings and we add the corresponding formed integers for each partition):\n\
+  ```\n- one bucket with one digit and the other with three digits \n[['9'], ['4','5','7']]\
+  \ --> ['9','457'] --> 9 + 457 = 466\n[['9','5','7'], ['4']] --> ['957','4'] -->\
+  \ 957 + 4 = 961\n[['9','4','7'], ['5']] --> ['947','5'] --> 947 + 5 = 952\n[['9','4','5'],\
+  \ ['7']] --> ['945','7'] --> 945 + 7 = 952\n\n- two buckets with 2 digits each:\n\
+  [['9','4'], ['5','7']] --> ['94','57'] --> 94 + 57 = 151\n[['9','5'], ['4','7']]\
+  \ --> ['95','47'] --> 95 + 47 = 142\n[['9','7'], ['4','5']] --> ['97','45'] -->\
+  \ 97 + 45 = 142\n```\n\nNow we distribute the digits of that integer in three buckets,\
+  \ and we do the same presentation as above:\n```\none bucket of two digits and two\
+  \ buckets with one digit each:\n[['9'], ['4'], ['5','7']] --> ['9','4','57'] -->\
+  \ 9 + 4 + 57 = 70\n[['9','4'], ['5'], ['7']] --> ['94','5','7'] --> 94 + 5 + 7 =\
+  \ 106\n[['9'], ['4', '5'], ['7']] --> ['9','45','7'] --> 9 + 45 + 7 = 61\n[['9'],\
+  \ ['5'], ['4','7']] --> ['9','5','47'] --> 9 + 5 + 47 = 61\n[['9','5'], ['4'], ['7']]\
+  \ --> ['95','4','7'] --> 95 + 4 + 7 = 106\n[['9','7'], ['4'], ['5']] --> ['97','4','5']\
+  \ --> 97 + 4 + 5 = 106\n```\nFinally we distribute the digits in the maximum possible\
+  \ amount of buckets for this integer, four buckets, with an unique distribution:\n\
+  ```\nOne digit in each bucket.\n[['9'], ['4'], ['5'], ['7']] --> ['9','4','5','7']\
+  \ --> 9 + 4 + 5 + 7 = 25\n```\nIn the distribution we can observe the following\
+  \ aspects:\n\n- the order of the buckets does not matter\n\n- the order of the digits\
+  \ in each bucket matters; the available digits have the same order than in the original\
+  \ number.\n\n- the amount of buckets varies from two up to the amount of digits\n\
+  \nThe function, `f =` `bucket_digit_distributions_total_sum`, gives for each integer,\
+  \ the result of the big sum of the total addition of generated numbers for each\
+  \ distribution of digits.\n```python\nbucket_digit_distributions_total_sum(9457)\
+  \ === 4301 # 466 + 961 + 952 + 952 + 151 + 142 + 142 + 70 + 106 + 61 + 61 + 106\
+  \ + 106 + 25 = 4301\n```\nIt is interesting to see the value of this function for\
+  \ a number that has one or more zeroes as digits, for example:\n```python\nbucket_digit_distributions_total_sum(10001)\
+  \ === 5466\n```\nGiven an integer `n`, with its corresponding value of the above\
+  \ function, `f(n)`, and another integer `z`, find the closest and higher integer\
+  \ to n, `nf`, such `f(nf) > f(n) + z`.\n\nExample:\n```python\nfind(10001,100) ===\
+  \ 10003\nfind(30000, 1000) === 30046\n``` \nFeatures of the random tests:\n```\n\
+  100 <= n <= 1500000\n50 <= z <= 6000\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find (n : Nat) (z : Nat) : Nat := sorry\n\ndef bucket_digit_distributions_total_sum\
+  \ (n : Nat) : Int := sorry\n"
+"vc-theorems": "theorem find_result_larger_than_input (n : Nat) (z : Nat) (h1 : n\
+  \ > 0) (h2 : n ≤ 10000) (h3 : z ≤ 1000) :\n  find n z > n := sorry\n\n\ntheorem\
+  \ find_is_minimal_solution (n : Nat) (z : Nat) (h1 : n > 0) (h2 : n ≤ 10000) (h3\
+  \ : z ≤ 1000) :\n  let result := find n z\n  bucket_digit_distributions_total_sum\
+  \ (result - 1) ≤ bucket_digit_distributions_total_sum n + z ∧\n  bucket_digit_distributions_total_sum\
+  \ result > bucket_digit_distributions_total_sum n + z := sorry\n\n\ntheorem bucket_digit_distributions_properties\
+  \ (n : Nat) (h1 : n > 0) (h2 : n ≤ 10000) :\n  bucket_digit_distributions_total_sum\
+  \ n ≥ -n := sorry\n\n/--\ninfo: 888\n-/\n#guard_msgs in\n#eval find 500 200\n\n\
+  /--\ninfo: 10003\n-/\n#guard_msgs in\n#eval find 10001 100\n\n/--\ninfo: 30046\n\
+  -/\n#guard_msgs in\n#eval find 30000 1000\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

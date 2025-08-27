@@ -1,0 +1,34 @@
+"vc-description": "=====Function Descriptions=====\nIn Python, a string of text can\
+  \ be aligned left, right and center.\n\n.ljust(width)\n\nThis method returns a left\
+  \ aligned string of length width.\n\n>>> width = 20\n>>> print 'HackerRank'.ljust(width,'-')\n\
+  HackerRank----------  \n\n.center(width)\n\nThis method returns a centered string\
+  \ of length width.\n\n>>> width = 20\n>>> print 'HackerRank'.center(width,'-')\n\
+  -----HackerRank-----\n\n.rjust(width)\n\nThis method returns a right aligned string\
+  \ of length width.\n\n>>> width = 20\n>>> print 'HackerRank'.rjust(width,'-')\n\
+  ----------HackerRank\n\n=====Problem Statement=====\nYou are given a partial code\
+  \ that is used for generating the HackerRank Logo of variable thickness.\nYour task\
+  \ is to replace the blank (______) with rjust, ljust or center.\n\n=====Input Format=====\n\
+  A single line containing the thickness value for the logo.\n\n=====Constraints=====\n\
+  The thickness must be an odd number.\n0 < thickness < 50\n\n=====Output Format=====\n\
+  Output the desired logo."
+"vc-preamble": "import Imports.AllImports\n\ndef generateLogo (thickness : Nat) :\
+  \ String := sorry\n\ndef countChar (s : String) (c : Char) : Nat :=\n  s.data.filter\
+  \ (· = c) |>.length\n\n\ndef splitLines (s : String) : List String :=\n  s.splitOn\
+  \ \"\\n\"\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def makeHString (n : Nat) : String :=\n  String.mk (List.replicate\
+  \ n 'H')\n"
+"vc-theorems": "theorem logo_lines_count (thickness : Nat) (h : thickness > 0) :\n\
+  \  let result := generateLogo thickness\n  let lines := splitLines result\n  lines.length\
+  \ = thickness + (thickness + 1) + ((thickness + 1)/2) + (thickness + 1) + thickness\
+  \ :=\nsorry\n\n\ntheorem logo_valid_chars (thickness : Nat) (h : thickness > 0)\
+  \ :\n  let result := generateLogo thickness\n  let lines := splitLines result\n\
+  \  ∀ line ∈ lines, ∀ c ∈ line.data, c = 'H' ∨ c = ' ' :=\nsorry\n\n\ntheorem logo_first_last_line_H_count\
+  \ (thickness : Nat) (h : thickness > 0) :\n  let result := generateLogo thickness\n\
+  \  let lines := splitLines result\n  (countChar lines[0]! 'H' = 1) ∧\n  (countChar\
+  \ lines[lines.length - 1]! 'H' = 1) :=\nsorry\n\n\ntheorem logo_middle_section_solid\
+  \ (thickness : Nat) (h : thickness > 0) :\n  let result := generateLogo thickness\n\
+  \  let lines := splitLines result\n  let middleStart := thickness + (thickness +\
+  \ 1)\n  let middleSection := lines.drop middleStart |>.take ((thickness + 1)/2)\n\
+  \  ∀ line ∈ middleSection, ∀ i ∈ line.data.take (5 * thickness), i = 'H' :=\nsorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,18 @@
+"vc-description": "Write a function that replaces 'two', 'too' and 'to' with the number\
+  \ '2'. Even if the sound is found mid word (like in octopus) or not in lowercase\
+  \ grandma still thinks that should be replaced with a 2. Bless her.\n\n```text\n\
+  'I love to text' becomes 'I love 2 text'\n'see you tomorrow' becomes 'see you 2morrow'\n\
+  'look at that octopus' becomes 'look at that oc2pus'\n```\n\nNote that 'too' should\
+  \ become '2', not '2o'"
+"vc-preamble": "import Imports.AllImports\n\ndef textin (s : String) : String :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def containsSubstr (s : String) (sub : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem result_is_string (s : String) :\n  textin s = textin s\n \
+  \ := by sorry\n\n\ntheorem output_length_leq_input (s : String) : \n  (textin s).length\
+  \ ≤ s.length \n  := by sorry\n\n\ntheorem no_target_words (s : String) :\n  ¬containsSubstr\
+  \ (String.toLower (textin s)) \"two\" ∧\n  ¬containsSubstr (String.toLower (textin\
+  \ s)) \"too\" ∧\n  ¬containsSubstr (String.toLower (textin s)) \"to\"\n  := by sorry\n\
+  \n\ntheorem idempotent (s : String) :\n  textin (textin s) = textin s \n  := by\
+  \ sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

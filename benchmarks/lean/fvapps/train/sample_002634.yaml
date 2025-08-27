@@ -1,0 +1,38 @@
+"vc-description": "DNA sequencing data can be stored in many different formats. In\
+  \ this Kata, we will be looking at SAM formatting. It is a plain text file where\
+  \ every line (excluding the first header lines) contains data about a \"read\" from\
+  \ whatever sample the file comes from. Rather than focusing on the whole read, we\
+  \ will take two pieces of information: the cigar string and the nucleotide sequence.\n\
+  \nThe cigar string is composed of numbers and flags. It represents how the read\
+  \ aligns to what is known as a reference genome. A reference genome is an accepted\
+  \ standard for mapping the DNA. \n\nThe nucleotide sequence shows us what bases\
+  \ actually make up that section of DNA. They can be represented with the letters\
+  \ A, T, C, or G.\n\nExample Read: ('36M', 'ACTCTTCTTGCGAAAGTTCGGTTAGTAAAGGGGATG')\n\
+  \nThe M in the above cigar string stands for \"match\", and the 36 stands for the\
+  \ length of the nucleotide sequence. Since all 36 bases are given the 'M' distinction,\
+  \ we know they all matched the reference.\n\nExample Read: ('20M10S',  'ACTCTTCTTGCGAAAGTTCGGTTAGTAAAG')\n\
+  \nIn the above cigar string, only 20 have the \"M\" distinction, but the length\
+  \ of the actual string of nucleotides is 30. Therefore we know that read did not\
+  \ match the reference. (Don't worry about what the other letters mean. That will\
+  \ be covered in a later kata.)\n\nYour job for this kata is to create a function\
+  \ that determines whether a cigar string fully matches the reference and accounts\
+  \ for all bases. If it does fully match, return True. If the numbers in the string\
+  \ do not match the full length of the string, return 'Invalid cigar'. If it does\
+  \ not fully match, return False.\n\n*Note for C++: Return True, False, or Invalid\
+  \ cigar as strings*"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def is_matched : List String → String ⊕ Bool\n  | _ => sorry\n"
+"vc-theorems": "theorem is_matched_output_type (cigar seq : String) :\n  match is_matched\
+  \ [cigar, seq] with\n  | Sum.inl _ => True \n  | Sum.inr b => b = true ∨ b = false\n\
+  \  := sorry\n\n\ntheorem exact_match_works (n : Nat) (seq : String) :\n  seq.length\
+  \ = n →\n  is_matched [s!\"{n}M\", seq] = Sum.inr true\n  := sorry\n\n\ntheorem\
+  \ invalid_length_implies_error (cigar seq : String) :\n  let totalOps := sorry --\
+  \ Sum of numbers in cigar string\n  seq.length ≠ totalOps →\n  ¬cigar.endsWith \"\
+  M\" →\n  is_matched [cigar, seq] = Sum.inl \"Invalid cigar\"\n  := sorry\n\n\ntheorem\
+  \ single_M_matches_exact (seq : String) :\n  is_matched [s!\"{seq.length}M\", seq]\
+  \ = Sum.inr true\n  := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval is_matched\
+  \ [\"36M\", \"CATAATACTTTACCTACTCTCAACAAATGCGGGAGA\"]\n\n/--\ninfo: 'Invalid cigar'\n\
+  -/\n#guard_msgs in\n#eval is_matched [\"10M6H\", \"GAGCGAGTGCGCCTTAC\"]\n\n/--\n\
+  info: False\n-/\n#guard_msgs in\n#eval is_matched [\"12S\", \"TGTTTCTCCAAG\"]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

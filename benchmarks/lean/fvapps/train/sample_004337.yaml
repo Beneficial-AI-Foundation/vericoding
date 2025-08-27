@@ -1,0 +1,21 @@
+"vc-description": "Take debugging to a whole new level:\n\nGiven a string, remove\
+  \ every *single* bug.\n\nThis means you must remove all instances of the word 'bug'\
+  \ from within a given string, *unless* the word is plural ('bugs').\n\nFor example,\
+  \ given 'obugobugobuoobugsoo', you should return 'ooobuoobugsoo'.\n\nAnother example:\
+  \ given 'obbugugo', you should return 'obugo'.\n\nNote that all characters will\
+  \ be lowercase.\n\nHappy squishing!"
+"vc-preamble": "import Imports.AllImports\n\ndef debug (s : String) : String := sorry\n\
+  \ndef String.containsSubstr (s str : String) : Bool := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def String.countOccurrences (s str : String) : Nat := sorry\n\n\
+  theorem debug_basic_properties (s : String) : \n  let result := debug s\n  (¬ result.containsSubstr\
+  \ \"bug\" ∨ result.containsSubstr \"bugs\") ∧ \n  result.length ≤ s.length ∧\n \
+  \ result = s.replace \"bug\" \"\" :=\nsorry\n"
+"vc-theorems": "theorem debug_preserves_bugs (s : String) (h : ∀ c ∈ s.data, c = 'b'\
+  \ ∨ c = 'u' ∨ c = 'g' ∨ c = 's') :\n  (debug s).countOccurrences \"bugs\" = s.countOccurrences\
+  \ \"bugs\" :=\nsorry\n\n\ntheorem debug_idempotent (s : String) :\n  debug (debug\
+  \ s) = debug s :=\nsorry\n\n/--\ninfo: 'ooobuoobugsoo'\n-/\n#guard_msgs in\n#eval\
+  \ debug \"obugobugobuoobugsoo\"\n\n/--\ninfo: 'bugs gy'\n-/\n#guard_msgs in\n#eval\
+  \ debug \"bugs buggy\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval debug \"bugbugbugbug\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

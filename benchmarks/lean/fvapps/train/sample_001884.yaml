@@ -1,0 +1,32 @@
+"vc-description": "Given a string S of digits, such as S = \"123456579\", we can split\
+  \ it into a Fibonacci-like sequence [123, 456, 579].\nFormally, a Fibonacci-like\
+  \ sequence is a list F of non-negative integers such that:\n\n0 <= F[i] <= 2^31\
+  \ - 1, (that is, each integer fits a 32-bit signed integer type);\nF.length >= 3;\n\
+  and F[i] + F[i+1] = F[i+2] for all 0 <= i < F.length - 2.\n\nAlso, note that when\
+  \ splitting the string into pieces, each piece must not have extra leading zeroes,\
+  \ except if the piece is the number 0 itself.\nReturn any Fibonacci-like sequence\
+  \ split from S, or return [] if it cannot be done.\nExample 1:\nInput: \"123456579\"\
+  \nOutput: [123,456,579]\n\nExample 2:\nInput: \"11235813\"\nOutput: [1,1,2,3,5,8,13]\n\
+  \nExample 3:\nInput: \"112358130\"\nOutput: []\nExplanation: The task is impossible.\n\
+  \nExample 4:\nInput: \"0123\"\nOutput: []\nExplanation: Leading zeroes are not allowed,\
+  \ so \"01\", \"2\", \"3\" is not valid.\n\nExample 5:\nInput: \"1101111\"\nOutput:\
+  \ [110, 1, 111]\nExplanation: The output [11, 0, 11, 11] would also be accepted.\n\
+  \nNote: \n\n1 <= S.length <= 200\nS contains only digits."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": ""
+"vc-theorems": "theorem valid_fibonacci_sequences \n  (nums: List Nat)\n  (h1: nums.length\
+  \ ≥ 3)\n  (h2: nums.length ≤ 10) \n  (h3: ∀ n ∈ nums, isValidInt n)\n  (h4: isFibonacciSequence\
+  \ nums) :\n  let s := sequenceToString nums\n  let result := splitFibonacci s\n\
+  \  (result.length ≥ 3 ∧ \n   isFibonacciSequence result ∧\n   sequenceToString result\
+  \ = s ∧\n   ∀ x ∈ result, isValidInt x) :=\n  sorry\n\n\ntheorem arbitrary_strings\n\
+  \  (s: String)\n  (h1: s.length ≥ 1)\n  (h2: s.length ≤ 20)\n  (h3: ∀ c ∈ s.data,\
+  \ c.isDigit) :\n  let result := splitFibonacci s\n  (result = [] ∨ \n   (result.length\
+  \ ≥ 3 ∧\n    isFibonacciSequence result ∧\n    sequenceToString result = s ∧\n \
+  \   ∀ x ∈ result, isValidInt x)) :=\n  sorry\n\n\ntheorem single_digits\n  (d: Nat)\n\
+  \  (h1: d ≥ 1)\n  (h2: d ≤ 9) :\n  splitFibonacci (toString d) = [] :=\n  sorry\n\
+  \n/--\ninfo: [123, 456, 579]\n-/\n#guard_msgs in\n#eval split_fibonacci \"123456579\"\
+  \n\n/--\ninfo: [1, 1, 2, 3, 5, 8, 13]\n-/\n#guard_msgs in\n#eval split_fibonacci\
+  \ \"11235813\"\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval split_fibonacci \"112358130\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

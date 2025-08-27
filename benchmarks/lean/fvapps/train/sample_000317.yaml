@@ -1,0 +1,27 @@
+"vc-description": "The string \"PAYPALISHIRING\" is written in a zigzag pattern on\
+  \ a given number of rows like this: (you may want to display this pattern in a fixed\
+  \ font for better legibility)\n\n\nP   A   H   N\nA P L S I I G\nY   I   R\n\n\n\
+  And then read line by line: \"PAHNAPLSIIGYIR\"\n\nWrite the code that will take\
+  \ a string and make this conversion given a number of rows:\n\n\nstring convert(string\
+  \ s, int numRows);\n\nExample 1:\n\n\nInput: s = \"PAYPALISHIRING\", numRows = 3\n\
+  Output: \"PAHNAPLSIIGYIR\"\n\n\nExample 2:\n\n\nInput: s = \"PAYPALISHIRING\", numRows\
+  \ = 4\nOutput: \"PINALSIGYAHRPI\"\nExplanation:\n\nP     I    N\nA   L S  I G\n\
+  Y A   H R\nP     I"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def convert_zigzag (s : String) (numRows : Nat) : String :=\n \
+  \ sorry\n"
+"vc-theorems": "theorem zigzag_properties {s : String} {numRows : Nat} \n  (h1 : s.length\
+  \ > 0) (h2 : numRows > 0) (h2a : numRows ≤ 100) :\n  let result := convert_zigzag\
+  \ s numRows\n  (result.length = s.length) :=\nsorry\n\n\ntheorem single_row_is_identity\
+  \ {s : String} (h : s.length > 0) :\n  convert_zigzag s 1 = s :=\nsorry\n\n\ntheorem\
+  \ first_char_pattern {s : String} {numRows : Nat}\n  (h1 : s.length ≥ numRows) (h2\
+  \ : numRows > 1) (h3 : numRows ≤ 100) :\n  let result := convert_zigzag s numRows\n\
+  \  result.get 0 = s.get 0 :=\nsorry\n\n\ntheorem empty_string_identity {s : String}\
+  \ {n : Nat}\n  (h1 : s.length = 0) (h2 : n > 0) (h3 : n < 4) :\n  convert_zigzag\
+  \ s n = s :=\nsorry\n\n\ntheorem single_char_identity {s : String} {n : Nat}\n \
+  \ (h1 : s.length = 1) (h2 : n > 0) (h3 : n < 4) :\n  convert_zigzag s n = s := \n\
+  sorry\n\n/--\ninfo: 'PAHNAPLSIIGYIR'\n-/\n#guard_msgs in\n#eval convert_zigzag \"\
+  PAYPALISHIRING\" 3\n\n/--\ninfo: 'PINALSIGYAHRPI'\n-/\n#guard_msgs in\n#eval convert_zigzag\
+  \ s1 4\n\n/--\ninfo: 'AB'\n-/\n#guard_msgs in\n#eval convert_zigzag \"AB\" 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

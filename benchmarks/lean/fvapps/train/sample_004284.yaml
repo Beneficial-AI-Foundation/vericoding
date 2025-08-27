@@ -1,0 +1,37 @@
+"vc-description": "# Task \n\n**_Given_**   *a number* , **_Return_**  **_The Maximum\
+  \ number _**  *could be formed from the digits of the number given* . \n___\n# Notes\n\
+  \n* **_Only Natural numbers_** *passed to the function , numbers Contain digits\
+  \ [0:9] inclusive*\n\n* **_Digit Duplications_** *could occur* , So also **_consider\
+  \ it when forming the Largest_**\n\n____\n# Input >> Output Examples:\n\n```\nmaxNumber\
+  \ (213) ==> return (321)\n```\n## **_Explanation_**:\n\nAs `321` is **_The Maximum\
+  \ number _**  *could be formed from the digits of the number   **_213_*** . \n___\n\
+  \n```\nmaxNumber (7389) ==> return (9873)\n```\n## **_Explanation_**:\n\nAs `9873`\
+  \ is **_The Maximum number _**  *could be formed from the digits of the number \
+  \ **_7389_*** . \n___\n\n```\nmaxNumber (63729) ==> return (97632)\n```\n## **_Explanation_**:\n\
+  \nAs `97632` is **_The Maximum number _**  *could be formed from the digits of the\
+  \ number  **_63729_*** . \n___\n\n```\nmaxNumber (566797) ==> return (977665)\n\
+  ```\n## **_Explanation_**:\n\nAs `977665` is **_The Maximum number _**  *could be\
+  \ formed from the digits of the number  **_566797_*** .\n\n**_Note_** : **_Digit\
+  \ duplications are considered when forming the largest_** . \n___\n\n```\nmaxNumber\
+  \ (17693284) ==> return (98764321)\n```\n## **_Explanation_**:\n \nAs `98764321`\
+  \ is **_The Maximum number _**  *could be formed from the digits of the number \
+  \ **_17693284_*** .\n___\n___\n___\n\n# [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
+  \n# [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
+  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
+  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_number (n : Nat) : Nat := sorry\n\ntheorem max_number_type\
+  \ (n : Nat) : Nat.succ (max_number n) > 0 := sorry\n"
+"vc-theorems": "theorem max_number_digit_count (n : Nat) : \n  String.length (toString\
+  \ (max_number n)) = String.length (toString n) := sorry\n\n\ntheorem max_number_same_digits\
+  \ (n : Nat) :\n  (toString (max_number n)).data = (toString n).data := sorry\n\n\
+  \ntheorem max_number_geq_input (n : Nat) : \n  max_number n ≥ n := sorry\n\n\ntheorem\
+  \ max_number_digits_descending (n : Nat) (i : String.Pos) : \n  i.1 + 1 < String.length\
+  \ (toString (max_number n)) →\n  (toString (max_number n)).get i ≥ (toString (max_number\
+  \ n)).get ⟨i.1 + 1⟩ := sorry\n\n\ntheorem max_number_idempotent (n : Nat) :\n  max_number\
+  \ (max_number n) = max_number n := sorry\n\n\ntheorem max_number_deterministic (n\
+  \ : Nat) :\n  max_number n = max_number n := sorry\n\n/--\ninfo: 321\n-/\n#guard_msgs\
+  \ in\n#eval max_number 213\n\n/--\ninfo: 9873\n-/\n#guard_msgs in\n#eval max_number\
+  \ 7389\n\n/--\ninfo: 977665\n-/\n#guard_msgs in\n#eval max_number 566797\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

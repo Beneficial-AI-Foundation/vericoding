@@ -1,0 +1,19 @@
+"vc-description": "_This kata is based on [Project Euler Problem 546](https://projecteuler.net/problem=546)_\n\
+  \n# Objective\n\nGiven the recursive sequence \n\nfk(n) =\n\n\n∑\n\ni\n=\n0\n\n\n\
+  n\n\n\n\nfk(floor(i / k)) where fk(0) = 1\n\nDefine a function `f` that takes arguments\
+  \ `k` and `n` and returns the nth term in the sequence fk\n\n## Examples\n\n`f(2,\
+  \ 3)` = f2(3) = 6\n\n`f(2, 200)` = f2(200) = 7389572\n\n`f(7, 500)` = f7(500) =\
+  \ 74845\n\n`f(1000, 0)` = f1000(0) = 1\n\n\n**Note:** \nNo error checking is needed,\
+  \ `k` ranges from 2 to 100 and `n` ranges between 0 and 500000 (mostly small and\
+  \ medium values with a few large ones)\n\n\nAs always any feedback would be much\
+  \ appreciated"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def f (k n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem f_is_positive (k n : Nat) (h : k ≥ 2) :\n  f k n > 0 :=\n\
+  \  sorry\n\n\ntheorem f_initial_terms (k n : Nat) (h1 : k ≥ 2) (h2 : n < k) : \n\
+  \  f k n = n + 1 :=\n  sorry\n\n\ntheorem f_base_case (k : Nat) (h : k > 0) :\n\
+  \  f k 0 = 1 :=\n  sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval f 2 3\n\n/--\n\
+  info: 74845\n-/\n#guard_msgs in\n#eval f 7 500\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval f 100 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,40 @@
+"vc-description": "N hotels are located on a straight line. The coordinate of the\
+  \ i-th hotel (1 \\leq i \\leq N) is x_i.\nTak the traveler has the following two\
+  \ personal principles:\n - He never travels a distance of more than L in a single\
+  \ day.\n - He never sleeps in the open. That is, he must stay at a hotel at the\
+  \ end of a day.\nYou are given Q queries. The j-th (1 \\leq j \\leq Q) query is\
+  \ described by two distinct integers a_j and b_j.\nFor each query, find the minimum\
+  \ number of days that Tak needs to travel from the a_j-th hotel to the b_j-th hotel\
+  \ following his principles.\nIt is guaranteed that he can always travel from the\
+  \ a_j-th hotel to the b_j-th hotel, in any given input.\n\n-----Constraints-----\n\
+  \ - 2 \\leq N \\leq 10^5\n - 1 \\leq L \\leq 10^9\n - 1 \\leq Q \\leq 10^5\n - 1\
+  \ \\leq x_i < x_2 < ... < x_N \\leq 10^9\n - x_{i+1} - x_i \\leq L\n - 1 \\leq a_j,b_j\
+  \ \\leq N\n - a_j \\neq b_j\n - N,\\,L,\\,Q,\\,x_i,\\,a_j,\\,b_j are integers.\n\
+  \n-----Partial Score-----\n - 200 points will be awarded for passing the test set\
+  \ satisfying N \\leq 10^3 and Q \\leq 10^3.\n\n-----Input-----\nThe input is given\
+  \ from Standard Input in the following format:\nN\nx_1 x_2 ... x_N\nL\nQ\na_1 b_1\n\
+  a_2 b_2\n:\na_Q b_Q\n\n-----Output-----\nPrint Q lines.\nThe j-th line (1 \\leq\
+  \ j \\leq Q) should contain the minimum number of days that Tak needs to travel\
+  \ from the a_j-th hotel to the b_j-th hotel.\n\n-----Sample Input-----\n9\n1 3 6\
+  \ 13 15 18 19 29 31\n10\n4\n1 8\n7 3\n6 7\n8 5\n\n-----Sample Output-----\n4\n2\n\
+  1\n2\n\nFor the 1-st query, he can travel from the 1-st hotel to the 8-th hotel\
+  \ in 4 days, as follows:\n - Day 1: Travel from the 1-st hotel to the 2-nd hotel.\
+  \ The distance traveled is 2.\n - Day 2: Travel from the 2-nd hotel to the 4-th\
+  \ hotel. The distance traveled is 10.\n - Day 3: Travel from the 4-th hotel to the\
+  \ 7-th hotel. The distance traveled is 6.\n - Day 4: Travel from the 7-th hotel\
+  \ to the 8-th hotel. The distance traveled is 10."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_hotel_path (hotels : List Nat) (L : Nat) (queries : List\
+  \ (Nat × Nat)) : List Nat :=\n  sorry\n"
+"vc-theorems": "theorem hotel_path_basic_test (h : hotels = [1, 3, 6]) (l : L = 3)\
+  \ :\n  solve_hotel_path hotels L [(1, 3)] = [2] :=\n  sorry\n\n\ntheorem hotel_path_symmetric\
+  \ (h : hotels = [1, 3, 6]) (l : L = 3) :\n  solve_hotel_path hotels L [(1, 3)] =\
+  \ solve_hotel_path hotels L [(3, 1)] :=\n  sorry\n\n\ntheorem hotel_path_self (h\
+  \ : hotels = [1, 3, 6]) (l : L = 3) :\n  solve_hotel_path hotels L [(1, 1)] = [0]\
+  \ :=\n  sorry\n\n\ntheorem hotel_path_output_positive (h : hotels = [1, 3, 6, 10])\
+  \ (l : L = 4) :\n  let result := solve_hotel_path hotels L [(1, 4), (2, 3)]\n  ∀\
+  \ x ∈ result, x ≥ 0 :=\n  sorry\n\n\ntheorem hotel_path_output_length (h : hotels\
+  \ = [1, 3, 6, 10]) (l : L = 4) :\n  let result := solve_hotel_path hotels L [(1,\
+  \ 4), (2, 3)]\n  result.length = 2 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded_and_plausible"

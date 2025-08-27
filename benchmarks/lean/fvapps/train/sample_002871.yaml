@@ -1,0 +1,20 @@
+"vc-description": "**This Kata is intended as a small challenge for my students**\n\
+  \nAll Star Code Challenge #18\n\nCreate a function called that accepts 2 string\
+  \ arguments and returns an integer of the count of occurrences the 2nd argument\
+  \ is found in the first one.\n\nIf no occurrences can be found, a count of 0 should\
+  \ be returned.\n\nNotes:\n* The first argument can be an empty string  \n* The second\
+  \ string argument will always be of length 1"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def strCount (s : String) (letter : Char) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem strCount_nonnegative (s : String) (letter : Char) :\n  strCount\
+  \ s letter ≥ 0 :=\nsorry\n\n\ntheorem strCount_upper_bound (s : String) (letter\
+  \ : Char) :\n  strCount s letter ≤ s.length :=\nsorry\n\n\ntheorem strCount_matches_actual\
+  \ (s : String) (letter : Char) :\n  strCount s letter = (s.data.filter (· = letter)).length\
+  \ :=\nsorry\n\n\ntheorem strCount_empty (letter : Char) :\n  strCount \"\" letter\
+  \ = 0 :=\nsorry\n\n\ntheorem strCount_all_same (s : String) (letter : Char) :\n\
+  \  s.length > 0 → (∀ c ∈ s.data, c = letter) → strCount s letter = s.length :=\n\
+  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval str_count \"hello\" \"l\"\n\n/--\n\
+  info: 5\n-/\n#guard_msgs in\n#eval str_count \"ggggg\" \"g\"\n\n/--\ninfo: 2\n-/\n\
+  #guard_msgs in\n#eval str_count \"hello world\" \"o\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

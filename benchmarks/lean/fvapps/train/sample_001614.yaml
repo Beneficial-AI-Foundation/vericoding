@@ -1,0 +1,35 @@
+"vc-description": "You are given a set of points in the 2D plane. You start at the\
+  \ point with the least X and greatest Y value, and end at the point with the greatest\
+  \ X and least Y value. The rule for movement is that you can not move to a point\
+  \ with a lesser X value as compared to the X value of the point you are on. Also\
+  \ for points having the same X value, you need to visit the point with the greatest\
+  \ Y value before visiting the next point with the same X value. So, if there are\
+  \ 2 points: (0,4 and 4,0) we would start with (0,4) - i.e. least X takes precedence\
+  \ over greatest Y. You need to visit every point in the plane.\n\n-----Input-----\n\
+  You will be given an integer t(1<=t<=20) representing the number of test cases.\
+  \ A new line follows; after which the t test cases are given. Each test case starts\
+  \ with a blank line followed by an integer n(2<=n<=100000), which represents the\
+  \ number of points to follow. This is followed by a new line. Then follow the n\
+  \ points, each being a pair of integers separated by a single space; followed by\
+  \ a new line. The X and Y coordinates of each point will be between 0 and 10000\
+  \ both inclusive.\n\n-----Output-----\nFor each test case, print the total distance\
+  \ traveled by you from start to finish; keeping in mind the rules mentioned above,\
+  \ correct to 2 decimal places. The result for each test case must be on a new line.\n\
+  \n-----Example-----\nInput:\n3\n\n2\n0 0\n0 1\n\n3\n0 0\n1 1\n2 2\n\n4\n0 0\n1 10\n\
+  1 5\n2 2\n\nOutput:\n1.00\n2.83\n18.21\n\nFor the third test case above, the following\
+  \ is the path you must take:\n0,0 -> 1,10  \n1,10 -> 1,5\n1,5 -> 2,2\n= 18.21"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculatePathDistance (p : Path) : Nat := sorry\n\ntheorem\
+  \ pathDistance_nonnegative (p : Path) :\n  calculatePathDistance p ≥ 0 := sorry\n"
+"vc-theorems": "theorem pathDistance_exceeds_y_diff (p : Path) (x : Nat) (yVals :\
+  \ List Nat) :\n  yVals = (p.filter (fun pt => pt.1 == x)).map Prod.snd →\n  yVals\
+  \ ≠ [] →\n  calculatePathDistance p ≥ 0 := sorry\n\n\ntheorem pathDistance_exceeds_x_span\
+  \ (p : Path) :\n  p.length > 1 →\n  let xVals := p.map Prod.fst\n  calculatePathDistance\
+  \ p ≥ 0 := sorry\n\n\ntheorem pathDistance_monotonic_right (p : Path) (newX newY\
+  \ : Nat) :\n  p ≠ [] →\n  newX > 0 →\n  calculatePathDistance (p ++ [(newX, newY)])\
+  \ ≥ calculatePathDistance p := sorry\n\n\ntheorem pathDistance_triangle_inequality\
+  \ (paths : List Path) :\n  paths ≠ [] →\n  let combinedPath := List.join paths\n\
+  \  ∀ path ∈ paths, calculatePathDistance combinedPath ≥ calculatePathDistance path\
+  \ := sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

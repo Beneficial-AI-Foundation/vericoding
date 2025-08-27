@@ -1,0 +1,42 @@
+"vc-description": "Ada is playing pawn chess with Suzumo.\nPawn chess is played on\
+  \ a long board with N$N$ squares in one row. Initially, some of the squares contain\
+  \ pawns.\nNote that the colours of the squares and pawns do not matter in this game,\
+  \ but otherwise, the standard chess rules apply:\n- no two pawns can occupy the\
+  \ same square at the same time\n- a pawn cannot jump over another pawn (they are\
+  \ no knights!), i.e. if there is a pawn at square i$i$, then it can only be moved\
+  \ to square i−2$i-2$ if squares i−1$i-1$ and i−2$i-2$ are empty\n- pawns cannot\
+  \ move outside of the board (outs are forbidden)\nThe players alternate turns; as\
+  \ usual, Ada plays first. In each turn, the current player must choose a pawn and\
+  \ move it either one or two squares to the left of its current position. The player\
+  \ that cannot make a move loses.\nCan Ada always beat Suzumo? Remember that Ada\
+  \ is a chess grandmaster, so she always plays optimally.\n\n-----Input-----\n- The\
+  \ first line of the input contains a single integer T$T$ denoting the number of\
+  \ test cases. The description of T$T$ test cases follows.\n- The first and only\
+  \ line of each test case contains a single string S$S$ with length N$N$ describing\
+  \ the initial board from left to right. An empty square and a square containing\
+  \ a pawn are denoted by the characters '.' and 'P' respectively.\n\n-----Output-----\n\
+  For each test case, print a single line containing the string \"Yes\" if Ada wins\
+  \ the game or \"No\" otherwise (without quotes).\n\n-----Constraints-----\n- 1≤T≤500$1\
+  \ \\le T \\le 500$\n- 2≤N≤128$2 \\le N \\le 128$\n- S$S$ contains only characters\
+  \ '.' and 'P'\n\n-----Example Input-----\n1\n..P.P\n\n-----Example Output-----\n\
+  Yes\n\n-----Explanation-----\nExample case 1: Ada can move the first pawn two squares\
+  \ to the left; the board after this move looks like\nP...P\n\nand now, Suzumo can\
+  \ only move the second pawn. If he moves it one square to the left, Ada will move\
+  \ it two squares to the left on her next move, and if he moves it two squares to\
+  \ the left, Ada will move it one square to the left, so the board after Ada's next\
+  \ move will look like\nPP...\n\nand Suzumo cannot make any move here."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def make_valid_board (pawn_positions : List Nat) (length : Nat)\
+  \ : String := sorry\ndef can_ada_win (board : String) : String := sorry\n"
+"vc-theorems": "theorem result_is_valid (board : String) : \n  can_ada_win board =\
+  \ \"Yes\" ∨ can_ada_win board = \"No\" := sorry\n\n\ntheorem adjacent_pawns_lose\
+  \ (n : Nat) : \n  n ≥ 2 → can_ada_win (String.mk (List.replicate (n-2) '.' ++ ['P',\
+  \ 'P'])) = \"No\" := sorry\n\n\ntheorem empty_board_loses_3 :\n  can_ada_win \"\
+  ...\" = \"No\" := sorry\n\n\ntheorem empty_board_loses_1 :\n  can_ada_win \".\"\
+  \ = \"No\" := sorry\n\n\ntheorem empty_board_loses (n : Nat) (h : n > 0) :\n  can_ada_win\
+  \ (String.mk (List.replicate n '.')) = \"No\" := sorry\n\n/--\ninfo: 'Yes'\n-/\n\
+  #guard_msgs in\n#eval can_ada_win \"..P.P\"\n\n/--\ninfo: 'No'\n-/\n#guard_msgs\
+  \ in\n#eval can_ada_win \".PP\"\n\n/--\ninfo: 'Yes'\n-/\n#guard_msgs in\n#eval can_ada_win\
+  \ \".P.P\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

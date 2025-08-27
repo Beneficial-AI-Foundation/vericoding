@@ -1,0 +1,35 @@
+"vc-description": "Most of this problem is by the original author of [the harder kata](https://www.codewars.com/kata/556206664efbe6376700005c),\
+  \ I just made it simpler.\n\nI read a book recently, titled \"Things to Make and\
+  \ Do in the Fourth Dimension\" by comedian and mathematician Matt Parker ( [Youtube](https://www.youtube.com/user/standupmaths)\
+  \ ), and in the first chapter of the book Matt talks about problems he likes to\
+  \ solve in his head to take his mind off the fact that he is in his dentist's chair,\
+  \ we've all been there!\n\nThe problem he talks about relates to polydivisible numbers,\
+  \ and I thought a kata should be written on the subject as it's quite interesting.\
+  \ (Well it's interesting to me, so there!)\n\n### Polydivisib... huh what?\n\nSo\
+  \ what are they?\n\nA polydivisible number is divisible in an unusual way. The first\
+  \ digit is cleanly divisible by `1`, the first two digits are cleanly divisible\
+  \ by `2`, the first three by `3`, and so on.\n\n### Examples\n\nLet's take the number\
+  \ `1232` as an example.\n```\n1     / 1 = 1     // Works\n12    / 2 = 6     // Works\n\
+  123   / 3 = 41    // Works\n1232  / 4 = 308   // Works\n```\n`1232` is a polydivisible\
+  \ number.\n\n\nHowever, let's take the number `123220` and see what happens.\n```\n\
+  \ 1      /1 = 1    // Works\n 12     /2 = 6    // Works\n 123    /3 = 41   // Works\n\
+  \ 1232   /4 = 308  // Works\n 12322  /5 = 2464.4         // Doesn't work\n 123220\
+  \ /6 = 220536.333...  // Doesn't work\n```\n`123220` is not polydivisible.\n\n###\
+  \ Your job: check if a number is polydivisible or not.\n\nReturn `true` if it is,\
+  \ and `false` if it isn't.\n\nNote: All inputs will be valid numbers between `0`\
+  \ and `2^53-1 (9,007,199,254,740,991)` (inclusive).   \nNote: All single digit numbers\
+  \ (including `0`) are trivially polydivisible.\nNote: Except for `0`, no numbers\
+  \ will start with `0`."
+"vc-preamble": "import Imports.AllImports\n\ndef polydivisible (n : Nat) : Bool :=\
+  \ sorry\n\ndef digits (n : Nat) : List Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def take_prefix (n : Nat) (len : Nat) : Nat := sorry\n\ntheorem\
+  \ polydivisible_characterization {n : Nat} :\n  polydivisible n ↔ \n  (∀ i : Nat,\
+  \ i > 0 ∧ i ≤ (digits n).length → \n    take_prefix n i % i = 0) := sorry\n\ntheorem\
+  \ single_digit_polydivisible {n : Nat} :\n  n > 0 ∧ n < 10 → polydivisible n :=\
+  \ sorry\n"
+"vc-theorems": "theorem polydivisible_positive {n : Int} :\n  n ≤ 0 → polydivisible\
+  \ n.toNat = false := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval polydivisible\
+  \ 1232\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval polydivisible 123220\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval polydivisible 987654\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

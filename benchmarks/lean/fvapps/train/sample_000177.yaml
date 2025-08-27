@@ -1,0 +1,52 @@
+"vc-description": "A car travels from a starting position to a destination which is\
+  \ target miles east of the starting position.\nAlong the way, there are gas stations. \
+  \ Each station[i] represents a gas station that is station[i][0] miles east of the\
+  \ starting position, and has station[i][1] liters of gas.\nThe car starts with an\
+  \ infinite tank of gas, which initially has startFuel liters of fuel in it.  It\
+  \ uses 1 liter of gas per 1 mile that it drives.\nWhen the car reaches a gas station,\
+  \ it may stop and refuel, transferring all the gas from the station into the car.\n\
+  What is the least number of refueling stops the car must make in order to reach\
+  \ its destination?  If it cannot reach the destination, return -1.\nNote that if\
+  \ the car reaches a gas station with 0 fuel left, the car can still refuel there. \
+  \ If the car reaches the destination with 0 fuel left, it is still considered to\
+  \ have arrived.\n \n\nExample 1:\nInput: target = 1, startFuel = 1, stations = []\n\
+  Output: 0\nExplanation: We can reach the target without refueling.\n\n\nExample\
+  \ 2:\nInput: target = 100, startFuel = 1, stations = [[10,100]]\nOutput: -1\nExplanation:\
+  \ We can't reach the target (or even the first gas station).\n\n\nExample 3:\nInput:\
+  \ target = 100, startFuel = 10, stations = [[10,60],[20,30],[30,30],[60,40]]\nOutput:\
+  \ 2\nExplanation: \nWe start with 10 liters of fuel.\nWe drive to position 10, expending\
+  \ 10 liters of fuel.  We refuel from 0 liters to 60 liters of gas.\nThen, we drive\
+  \ from position 10 to position 60 (expending 50 liters of fuel),\nand refuel from\
+  \ 10 liters to 50 liters of gas.  We then drive to and reach the target.\nWe made\
+  \ 2 refueling stops along the way, so we return 2.\n\n \nNote:\n\n1 <= target, startFuel,\
+  \ stations[i][1] <= 10^9\n0 <= stations.length <= 500\n0 < stations[0][0] < stations[1][0]\
+  \ < ... < stations[stations.length-1][0] < target"
+"vc-preamble": "import Imports.AllImports\n\ndef min_refuel_stops (target : Nat) (start_fuel\
+  \ : Nat) (stations : List (Nat × Nat)) : Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_sum (l : List Nat) : Nat :=\n  match l with\n  | [] =>\
+  \ 0\n  | x :: xs => x + list_sum xs\n"
+"vc-theorems": "theorem min_refuel_stops_result_valid (target : Nat) (start_fuel :\
+  \ Nat) \n    (stations : List (Nat × Nat)) :\n  let result := min_refuel_stops target\
+  \ start_fuel stations\n  result ≥ -1 := sorry\n\n\ntheorem min_refuel_stops_sufficient_start_fuel\
+  \ (target : Nat) (start_fuel : Nat)\n    (stations : List (Nat × Nat)) :\n  start_fuel\
+  \ ≥ target →\n  min_refuel_stops target start_fuel stations = 0 := sorry\n\n\ntheorem\
+  \ min_refuel_stops_impossible (target : Nat) (start_fuel : Nat)\n    (stations :\
+  \ List (Nat × Nat)) :\n  let total_fuel := start_fuel + list_sum (stations.map Prod.snd)\n\
+  \  total_fuel < target →\n  min_refuel_stops target start_fuel stations = -1 :=\
+  \ sorry\n\n\ntheorem min_refuel_stops_stations_ordered (target : Nat) (start_fuel\
+  \ : Nat)\n    (stations : List (Nat × Nat)) :\n  stations.length > 0 →\n  ∀ i :\
+  \ Nat, i < stations.length - 1 →\n  (stations.get! i).1 ≤ (stations.get! (i+1)).1\
+  \ := sorry\n\n\ntheorem min_refuel_stops_bound (target : Nat) (start_fuel : Nat)\n\
+  \    (stations : List (Nat × Nat)) :\n  let result := min_refuel_stops target start_fuel\
+  \ stations\n  result ≠ -1 →\n  result ≤ stations.length := sorry\n\n\ntheorem min_refuel_stops_empty_stations_sufficient\
+  \ (start_fuel target : Nat) :\n  target ≤ start_fuel →\n  min_refuel_stops target\
+  \ start_fuel [] = 0 := sorry\n\n\ntheorem min_refuel_stops_empty_stations_insufficient\
+  \ (start_fuel target : Nat) :\n  start_fuel < target →\n  min_refuel_stops target\
+  \ start_fuel [] = -1 := sorry\n\n\ntheorem min_refuel_stops_zero_start_fuel (target\
+  \ : Nat) (stations : List (Nat × Nat)) :\n  min_refuel_stops target 0 stations =\
+  \ -1 := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval min_refuel_stops 1 1 []\n\
+  \n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval min_refuel_stops 100 1 [[10, 100]]\n\n\
+  /--\ninfo: 2\n-/\n#guard_msgs in\n#eval min_refuel_stops 100 10 [[10, 60], [20,\
+  \ 30], [30, 30], [60, 40]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

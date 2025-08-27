@@ -1,0 +1,25 @@
+"vc-description": "**Steps**\n1. Square the numbers that are greater than zero.\n\
+  2. Multiply by 3 every third number.\n3. Multiply by -1 every fifth number.\n4.\
+  \ Return the sum of the sequence.\n\n**Example**   \n`{ -2, -1, 0, 1, 2 }` returns\
+  \ `-6`\n```\n1. { -2, -1, 0, 1 * 1, 2 * 2 }\n2. { -2, -1, 0 * 3, 1, 4 }\n3. { -2,\
+  \ -1, 0, 1, -1 * 4 }\n4. -6\n```\n\nP.S.: The sequence consists only of integers.\
+  \ And try not to use \"for\", \"while\" or \"loop\" statements."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": ""
+"vc-theorems": "theorem operation_type_nonempty {sequence : List Int} (h : sequence\
+  \ ≠ []) :\n  ∃ (result : Int), operation sequence = result :=\n  sorry\n\n\ntheorem\
+  \ operation_empty_case :\n  operation [] = 0 :=\n  operation_empty operation\n\n\
+  \ntheorem operation_type_bounded_length {sequence : List Int} (h : sequence.length\
+  \ ≤ 100) :\n  ∃ (result : Int), operation sequence = result :=\n  sorry\n\n\ntheorem\
+  \ operation_type_repeated (x : Int) (length : Nat) (h : 0 < length ∧ length ≤ 10)\
+  \ :\n  ∃ (result : Int), operation (List.replicate length x) = result :=\n  sorry\n\
+  \n\ntheorem operation_type_alternating_signs {sequence : List Int} (h : sequence\
+  \ ≠ []) :\n  ∃ (result : Int), operation sequence = result :=\n  sorry\n\n\ntheorem\
+  \ operation_type_small_ints {sequence : List Int}\n    (h1 : sequence ≠ [])\n  \
+  \  (h2 : sequence.length ≤ 10)\n    (h3 : ∀ x ∈ sequence, -100 ≤ x ∧ x ≤ 100) :\n\
+  \  ∃ (result : Int), operation sequence = result :=\n  sorry\n\n/--\ninfo: -6\n\
+  -/\n#guard_msgs in\n#eval calc [-2, -1, 0, 1, 2]\n\n/--\ninfo: 31\n-/\n#guard_msgs\
+  \ in\n#eval calc [0, 2, 1, -6, -3, 3]\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval\
+  \ calc [1, 1, 1, 1, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

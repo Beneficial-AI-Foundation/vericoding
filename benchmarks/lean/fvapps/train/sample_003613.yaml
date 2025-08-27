@@ -1,0 +1,30 @@
+"vc-description": "# Task\n In a black and white image we can use `1` instead of black\
+  \ pixels and `0` instead of white pixels. \n \n For compression image file we can\
+  \ reserve pixels by consecutive pixels who have the same color. \n \n Your task\
+  \ is to determine how much of black and white pixels is in each row sorted by place\
+  \ of those.\n \n# Example:\n\n For `height=2,width=100 and compressed=[40,120,40,0]`\n\
+  \n The result should be `[[40,60],[0,60,40,0]]`\n \n Sum of compressed array always\
+  \ divisible by width and height of image.\n \n Pixels available is in Compressed\
+  \ array in this order:\n \n `[Black,White,Black,White,Black,White,...]`\n \n ![](http://s3.picofile.com/file/8194350650/Compressed_Image_1_.png)\n\
+  \n For `height=2,width=100 and compressed=[0, 180, 20, 0]`\n\n The result should\
+  \ be `[[0,100],[0,80,20,0]]`\n\n ![](http://s6.picofile.com/file/8194348868/Compressed_Image.png)\n\
+  \n\n# Input/Output\n\n\n- `[input]` integer `height`\n\n  Height of image\n\n\n\
+  - `[input]` integer `width`\n\n  Width of image\n\n\n- `[input]` integer array `compressed`\n\
+  \n  Consecutive pixels\n\n\n- `[output]` 2D integer array\n\n The black and white\
+  \ pixels in each row."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def black_and_white (height : Nat) (width : Nat) (input : List\
+  \ Nat) : List (List Nat) := sorry\n\n-- Basic cases"
+"vc-theorems": "theorem basic_case1 : \n  black_and_white 2 100 [40, 120, 40, 0] =\
+  \ [[40, 60], [0, 60, 40, 0]] := sorry\n\n\ntheorem basic_case2 :\n  black_and_white\
+  \ 2 100 [0, 180, 20, 0] = [[0, 100], [0, 80, 20, 0]] := sorry\n\n-- Structural properties\n\
+  \ntheorem result_height (h w : Nat) (input : List Nat) :\n  h > 0 → w > 0 → h ≤\
+  \ 10 → w ≤ 100 →\n  List.length (black_and_white h w [w]) = h := sorry\n\n\ntheorem\
+  \ row_length_even (h w : Nat) (input : List Nat) (row : List Nat) :\n  h > 0 → w\
+  \ > 0 → h ≤ 10 → w ≤ 100 →\n  row ∈ black_and_white h w [w] →\n  ∃ k, List.length\
+  \ row = 2 * k := sorry\n\n\ntheorem values_nonnegative (h w : Nat) (input : List\
+  \ Nat) (row : List Nat) (x : Nat) :\n  h > 0 → w > 0 → h ≤ 10 → w ≤ 100 →\n  row\
+  \ ∈ black_and_white h w [w] →\n  x ∈ row →\n  x ≥ 0 := sorry\n\n-- Single row case\n\
+  \ntheorem single_row :\n  black_and_white 1 10 [10] = [[10, 0]] := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

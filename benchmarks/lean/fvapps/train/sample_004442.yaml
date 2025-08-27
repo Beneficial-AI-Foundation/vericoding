@@ -1,0 +1,33 @@
+"vc-description": "# Task\n John loves encryption. He can encrypt any string by the\
+  \ following algorithm:\n```\ntake the first and the last letters of the word;\n\
+  replace the letters between them with their number;\nreplace this number with the\
+  \ sum of it digits \n          until a single digit is obtained.```\nGiven two strings(`s1`\
+  \ and `s2`), return `true` if their encryption is the same, or `false` otherwise.\n\
+  \n# Example\n\n For `s1 = \"EbnhGfjklmjhgz\" and s2 = \"Eabcz\"`, the result should\
+  \ be `true`.\n ```\n \"EbnhGfjklmjhgz\" --> \"E12z\" --> \"E3z\"\n \"Eabcz\" -->\
+  \ \"E3z\"\n Their encryption is the same.```\n \n# Input/Output\n\n\n - `[input]`\
+  \ string `s1`\n\n  The first string to be encrypted.\n  \n  `s1.length >= 3`\n \n\
+  \ \n - `[input]` string `s2`\n\n  The second string to be encrypted.\n\n  `s2.length\
+  \ >= 3`\n  \n  \n - `[output]` a boolean value\n\n `true` if encryption is the same,\
+  \ `false` otherwise."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def same_encryption (s1 s2 : String) : Bool := sorry\n\ntheorem\
+  \ same_encryption_reflexive \n  (s : String) \n  (h : s.length > 0) : \n  same_encryption\
+  \ s s = true := sorry\n"
+"vc-theorems": "theorem same_encryption_symmetric\n  (s1 s2 : String)\n  (h1 : s1.length\
+  \ > 0)\n  (h2 : s2.length > 0) :\n  same_encryption s1 s2 = same_encryption s2 s1\
+  \ := sorry\n\n\ntheorem same_encryption_transitive\n  (s1 s2 s3 : String)\n  (h1\
+  \ : s1.length > 0)\n  (h2 : s2.length > 0)\n  (h3 : s3.length > 0)\n  (h4 : same_encryption\
+  \ s1 s2 = true)\n  (h5 : same_encryption s2 s3 = true) :\n  same_encryption s1 s3\
+  \ = true := sorry\n\n\ntheorem same_encryption_first_last_only\n  (s1 s2 : String)\n\
+  \  (h1 : s1.length > 1)\n  (h2 : s2.length > 1) :\n  let test_s1 := String.mk [s1.front]\
+  \ ++ String.mk (List.replicate (s1.length - 2) 'x') ++ String.mk [s1.back]\n  let\
+  \ test_s2 := String.mk [s2.front] ++ String.mk (List.replicate (s2.length - 2) 'y')\
+  \ ++ String.mk [s2.back]\n  same_encryption s1 s2 = same_encryption test_s1 test_s2\
+  \ := sorry\n\n\ntheorem same_encryption_empty_raises \n  (h : same_encryption \"\
+  \" \"\" = true ∨ same_encryption \"\" \"\" = false) :\n  False := sorry\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval same_encryption \"abc\" \"abc\"\n\n/--\ninfo:\
+  \ False\n-/\n#guard_msgs in\n#eval same_encryption \"abc\" \"abd\"\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval same_encryption \"fKhjuytrdfcdc\" \"flJc\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

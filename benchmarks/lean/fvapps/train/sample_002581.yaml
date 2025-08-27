@@ -1,0 +1,38 @@
+"vc-description": "There are just some things you can't do on television. In this\
+  \ case, you've just come back from having a \"delicious\" Barth burger and you're\
+  \ set to give an interview. The Barth burger has made you queezy, and you've forgotten\
+  \ some of the import rules of the \"You Can't Do That on Television\" set.\n\nIf\
+  \ you say any of the following words a large bucket of \"water\" will be dumped\
+  \ on you:\n\"water\", \"wet\", \"wash\"\nThis is true for any form of those words,\
+  \ like \"washing\", \"watered\", etc.\n\nIf you say any of the following phrases\
+  \ you will be doused in \"slime\":\n\"I don't know\", \"slime\"\n\nIf you say both\
+  \ in one sentence, a combination of water and slime, \"sludge\", will be dumped\
+  \ on you.\n\nWrite a function, bucketOf(str), that takes a string and determines\
+  \ what will be dumped on your head. If you haven't said anything you shouldn't have,\
+  \ the bucket should be filled with \"air\". The words should be tested regardless\
+  \ of case.\n\nExamples:\n\n\nCheck out my other 80's Kids Katas:\n\n\n80's Kids\
+  \ #1: How Many Licks Does It Take\n80's Kids #2: Help Alf Find His Spaceship\n80's\
+  \ Kids #3: Punky Brewster's Socks\n80's Kids #4: Legends of the Hidden Temple\n\
+  80's Kids #5: You Can't Do That on Television\n80's Kids #6: Rock 'Em, Sock 'Em\
+  \ Robots\n80's Kids #7: She's a Small Wonder\n80's Kids #8: The Secret World of\
+  \ Alex Mack\n80's Kids #9: Down in Fraggle Rock \n80's Kids #10: Captain Planet"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def bucket_of (s : String) : String := sorry\n\ntheorem bucket_always_returns_valid_value\
+  \ (s : String) :\n  bucket_of s = \"water\" ∨ bucket_of s = \"slime\" ∨ bucket_of\
+  \ s = \"sludge\" ∨ bucket_of s = \"air\" := sorry\n"
+"vc-theorems": "theorem water_patterns_are_water (water_word : String) : \n  (water_word\
+  \ = \"water\" ∨ water_word = \"wet\" ∨ water_word = \"wash\") →\n  bucket_of water_word\
+  \ = \"water\" ∧ bucket_of water_word.toUpper = \"water\" := sorry\n\n\ntheorem slime_patterns_are_slime\
+  \ :\n  bucket_of \"I don't know\" = \"slime\" ∧ bucket_of \"slime\" = \"slime\"\
+  \ := sorry\n\n\ntheorem water_and_slime_make_sludge (water_word slime_word : String)\
+  \ :\n  (water_word = \"water\" ∨ water_word = \"wet\" ∨ water_word = \"wash\") →\n\
+  \  (slime_word = \"slime\" ∨ slime_word = \"I don't know\") →\n  bucket_of (water_word\
+  \ ++ \" \" ++ slime_word) = \"sludge\" ∧ \n  bucket_of (slime_word ++ \" \" ++ water_word)\
+  \ = \"sludge\" := sorry\n\n\ntheorem default_is_air (s : String) :\n  s ≠ \"water\"\
+  \ →\n  s ≠ \"wet\" →\n  s ≠ \"wash\" →\n  s ≠ \"slime\" →\n  s ≠ \"I don't know\"\
+  \ →\n  bucket_of s = \"air\" := sorry\n\n/--\ninfo: 'water'\n-/\n#guard_msgs in\n\
+  #eval bucket_of \"water\"\n\n/--\ninfo: 'sludge'\n-/\n#guard_msgs in\n#eval bucket_of\
+  \ \"slime water\"\n\n/--\ninfo: 'air'\n-/\n#guard_msgs in\n#eval bucket_of \"just\
+  \ saying something\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

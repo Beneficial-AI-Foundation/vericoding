@@ -1,0 +1,39 @@
+"vc-description": "Alice likes prime numbers. According to Alice, only those strings\
+  \ are nice whose sum of character values at a prime position is prime. She has a\
+  \ string $S$. Now, she has to count the number of nice strings which come before\
+  \ string $S$( including $S$) in the dictionary and are of the same length as $S$.\
+  \ \nStrings are zero-indexed from left to right.\nTo find the character value she\
+  \ uses the mapping {'a': 0, 'b':1, 'c':2 ……. 'y': 24, 'z':25} .\nFor example, for\
+  \ string $abcde$ Characters at prime positions are $'c'$ and $'d'$. c + d = 2 +\
+  \ 3 = 5. Since, 5 is a prime number, the string is $nice$.\nSince there could be\
+  \ many nice strings print the answer modulo $10^{9}+7$.\n\n-----Input:-----\n- First\
+  \ line will contain $T$, number of testcases. Then the testcases follow. \n- Each\
+  \ testcase contains of a single line of input, the string $S$. \n\n-----Output:-----\n\
+  For each testcase, output in a single line number of nice strings modulo $10^{9}+7$.\n\
+  \n-----Constraints-----\n- $1 \\leq T \\leq 10$\n- $2 \\leq |S| \\leq 10^2$\nString\
+  \ $S$ contains only lowercase letters.\n\n-----Sample Input:-----\n1\nabc\n\n-----Sample\
+  \ Output:-----\n10"
+"vc-preamble": "import Imports.AllImports\n\ndef is_nice (s: List Char) : Bool :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_nice_strings (s: List Char) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_nice_strings_non_negative (s: List Char) :\n  count_nice_strings\
+  \ s ≥ 0 :=\n  sorry\n\n\ntheorem count_nice_strings_upper_bound (s: List Char) :\n\
+  \  count_nice_strings s ≤ (s.length * (s.length + 1)) / 2 :=\n  sorry\n\n\ntheorem\
+  \ empty_string_has_zero_nice (s: List Char) :\n  s.length = 0 → count_nice_strings\
+  \ s = 0 :=\n  sorry\n\n\ntheorem is_nice_min_length (s: List Char) :\n  is_nice\
+  \ s → s.length ≥ 2 :=\n  sorry\n\n\ntheorem small_strings_not_nice (s: List Char)\
+  \ :\n  s.length ≤ 1 → ¬(is_nice s) :=\n  sorry\n\n\ntheorem nice_string_conditions\
+  \ (s: List Char) (i: Nat) :\n  is_nice s →\n  (∀ i, i < s.length → s.get! 0 = s.get!\
+  \ i) ∨\n  (∀ i, i > 0 → i < s.length → Char.toNat (s.get! i) > Char.toNat (s.get!\
+  \ (i-1))) ∨\n  (∀ i, i > 0 → i < s.length → Char.toNat (s.get! i) < Char.toNat (s.get!\
+  \ (i-1))) :=\n  sorry\n\n\ntheorem nice_string_has_nice_count (s: List Char) :\n\
+  \  s.length ≥ 2 →\n  is_nice s →\n  count_nice_strings s ≥ 1 :=\n  sorry\n\n\ntheorem\
+  \ count_matches_actual_nice (s: List Char) :\n  count_nice_strings s = \n    (List.foldl\
+  \ (fun acc i => \n      acc + List.foldl (fun inner_acc j =>\n        if is_nice\
+  \ (List.take (j + 1) (List.drop i s)) \n        then inner_acc + 1 \n        else\
+  \ inner_acc) \n      0 (List.range (s.length - i)))\n    0 (List.range s.length))\
+  \ :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_nice_strings \"aaa\"\
+  \n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_nice_strings \"abc\"\n\n/--\n\
+  info: 3\n-/\n#guard_msgs in\n#eval count_nice_strings \"abbc\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,27 @@
+"vc-description": "Chef has a strip of length $N$ units and he wants to tile it using\
+  \ $4$ kind of tiles\n\n-A Red tile of $2$ unit length\n\n-A Red tile of $1$ unit\
+  \ length\n\n-A Blue tile of $2$ unit length\n\n-A Blue tile of $1$ unit length \
+  \  \nChef is having an infinite supply of each of these tiles. He wants to find\
+  \ out the number of ways in which he can tile the strip. Help him find this number.\n\
+  Since this number can be large, output your answer modulo 1000000007 ($10^9 + 7$).\n\
+  \n-----Input:-----\n- First line will contain $T$, number of testcases. Then the\
+  \ testcases follow. \n- Each testcase contains of a single line of input, an integer\
+  \ $N$. \n\n-----Output:-----\nFor each testcase, output in a single line your answer\
+  \ modulo 1000000007.\n\n-----Constraints-----\n- $1 \\leq T \\leq 1000$\n- $2 \\\
+  leq N \\leq 10^{18}$\n\n-----Sample Input:-----\n1\n2\n\n-----Sample Output:-----\n\
+  6\n\n-----EXPLANATION:-----\n\nIt can be seen that for a strip of length $2$, there\
+  \ are $6$ possible configurations.     \n$NOTE : $ 2 tiles of 1 unit length are\
+  \ different from 1 tile of 2 unit length."
+"vc-preamble": "import Imports.AllImports\n\ndef solve_tile_count (n : Nat) : Nat\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def MOD := 1000000007\n\ntheorem result_non_negative_and_bounded\
+  \ (n : Nat) :\n  let result := solve_tile_count n\n  0 ≤ result ∧ result < MOD :=\
+  \ by\n  sorry\n"
+"vc-theorems": "theorem modulo_consistency (n : Nat) :\n  solve_tile_count n = solve_tile_count\
+  \ n % MOD := by\n  sorry\n\n\ntheorem base_cases_correct :\n  solve_tile_count 0\
+  \ = 1 ∧\n  solve_tile_count 1 = 2 ∧ \n  solve_tile_count 2 = 6 ∧\n  solve_tile_count\
+  \ 3 = 16 ∧\n  solve_tile_count 4 = 42 := by\n  sorry\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval solve_tile_count 2\n\n/--\ninfo: 16\n-/\n#guard_msgs in\n#eval solve_tile_count\
+  \ 3\n\n/--\ninfo: 42\n-/\n#guard_msgs in\n#eval solve_tile_count 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

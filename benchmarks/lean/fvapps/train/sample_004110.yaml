@@ -1,0 +1,30 @@
+"vc-description": "What is an anagram? Well, two words are anagrams of each other\
+  \ if they both contain the same letters. For example:\n\n```\n'abba' & 'baab' ==\
+  \ true\n\n'abba' & 'bbaa' == true\n\n'abba' & 'abbba' == false\n\n'abba' & 'abca'\
+  \ == false\n```\n\nWrite a function that will find all the anagrams of a word from\
+  \ a list. You will be given two inputs a word and an array with words. You should\
+  \ return an array of all the anagrams or an empty array if there are none. For example:\n\
+  \nanagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']) => ['aabb', 'bbaa']\n\nanagrams('racer',\
+  \ ['crazer', 'carer', 'racar', 'caers', 'racer']) => ['carer', 'racer']\n\nanagrams('laser',\
+  \ ['lazing', 'lazy',  'lacer']) => []"
+"vc-preamble": "import Imports.AllImports\n\ndef anagrams (word : String) (words :\
+  \ List String) : List String := sorry\n\ndef sameLetters (word1 word2 : String)\
+  \ : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverseString (s : String) : String := sorry\n\ntheorem anagram_properties\
+  \ (word : String) (words : List String) :\n  let result := anagrams word words\n\
+  \  -- Result is subset of input\n  (∀ w ∈ result, w ∈ words) ∧ \n  -- Each result\
+  \ same length as input\n  (∀ w ∈ result, String.length w = String.length word) ∧\n\
+  \  -- Each result has same letters\n  (∀ w ∈ result, sameLetters w word) ∧\n  --\
+  \ Contains all valid anagrams\n  (∀ w ∈ words, sameLetters w word → w ∈ result)\
+  \ := sorry\n"
+"vc-theorems": "theorem empty_list (word : String) :\n  anagrams word [] = [] := sorry\n\
+  \n\ntheorem same_word (word : String) :\n  anagrams word [word] = [word] := sorry\
+  \ \n\n\ntheorem reversed_word (word : String) :\n  let reversed := reverseString\
+  \ word\n  anagrams word [reversed] = [reversed] := sorry\n\n/--\ninfo: ['aabb',\
+  \ 'bbaa']\n-/\n#guard_msgs in\n#eval anagrams \"abba\" [\"aabb\", \"abcd\", \"bbaa\"\
+  , \"dada\"]\n\n/--\ninfo: ['carer', 'racer']\n-/\n#guard_msgs in\n#eval anagrams\
+  \ \"racer\" [\"crazer\", \"carer\", \"racar\", \"caers\", \"racer\"]\n\n/--\ninfo:\
+  \ []\n-/\n#guard_msgs in\n#eval anagrams \"laser\" [\"lazing\", \"lazy\", \"lacer\"\
+  ]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

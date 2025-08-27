@@ -1,0 +1,28 @@
+"vc-description": "You have 4 cards each containing a number from 1 to 9.  You need\
+  \ to judge whether they could operated through *, /, +, -, (, ) to get the value\
+  \ of 24.\n\n\nExample 1:\n\nInput: [4, 1, 8, 7]\nOutput: True\nExplanation: (8-4)\
+  \ * (7-1) = 24\n\n\n\nExample 2:\n\nInput: [1, 2, 1, 2]\nOutput: False\n\n\n\nNote:\n\
+  \nThe division operator / represents real division, not integer division.  For example,\
+  \ 4 / (1 - 2/3) = 12.\nEvery operation done is between two numbers.  In particular,\
+  \ we cannot use - as a unary operator.  For example, with [1, 1, 1, 1] as input,\
+  \ the expression -1 - 1 - 1 - 1 is not allowed.\nYou cannot concatenate numbers\
+  \ together.  For example, if the input is [1, 2, 1, 2], we cannot write this as\
+  \ 12 + 12."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def judge_point24 (nums : List Nat) : Bool := sorry\n\ntheorem\
+  \ judge_point24_returns_bool (nums : List Nat) (h : nums.length = 4) \n  (h₂ : ∀\
+  \ n ∈ nums, 1 ≤ n ∧ n ≤ 9) : \n  (judge_point24 nums = true) ∨ (judge_point24 nums\
+  \ = false) := sorry\n"
+"vc-theorems": "theorem judge_point24_permutation_invariant (nums₁ nums₂ : List Nat)\
+  \ \n  (h : nums₁.length = 4) (h₂ : nums₂.length = 4)\n  (h₃ : ∀ n ∈ nums₁, 1 ≤ n\
+  \ ∧ n ≤ 9) (h₄ : ∀ n ∈ nums₂, 1 ≤ n ∧ n ≤ 9)\n  (h₅ : ∀ x, x ∈ nums₁ ↔ x ∈ nums₂)\
+  \ :\n  judge_point24 nums₁ = judge_point24 nums₂ := sorry\n\n\ntheorem judge_point24_all_ones_impossible\
+  \ (nums : List Nat) \n  (h : nums.length = 4) (h₂ : ∀ n ∈ nums, n ≤ 1) :\n  judge_point24\
+  \ nums = false := sorry\n\n\ntheorem judge_point24_with_24_and_ones (nums : List\
+  \ Nat)\n  (h : nums.length = 4) (h₂ : 24 ∈ nums) \n  (h₃ : (nums.filter (· = 1)).length\
+  \ = 3) :\n  judge_point24 nums = true := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval judge_point24 [4, 1, 8, 7]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n\
+  #eval judge_point24 [1, 2, 1, 2]\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval judge_point24\
+  \ [3, 3, 8, 8]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

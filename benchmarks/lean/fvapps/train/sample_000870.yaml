@@ -1,0 +1,43 @@
+"vc-description": "Zonal Computing Olympiad 2012, 26 Nov 2011\n\nIt's dinner time\
+  \ in Castle Camelot, and the fearsome Knights of the Round Table are clamouring\
+  \ for dessert. You, the chef, are in a soup.  There are N knights, including King\
+  \ Arthur, each with a different preference for dessert, but you cannot afford to\
+  \ make desserts for all of them.\n\nYou are given the cost of manufacturing each\
+  \ Knight's preferred dessert–since it is a round table, the list starts with the\
+  \ cost of King Arthur's dessert, and goes counter-clockwise.\n\nYou decide to pick\
+  \ the cheapest desserts to make, such that for every pair of adjacent Knights, at\
+  \ least one gets his dessert. This will ensure that the Knights do not protest.<p>A\
+  \ strange feature of the Knights is that they will not complain about not getting\
+  \ dessert unless they get support from both their neighbours.  So, you decide to\
+  \ pick the cheapest desserts to make, such that for every pair of adjacent Knights,\
+  \ at least one gets his dessert.</p>\n\nWhat is the minimum cost of tonight's dinner,\
+  \ given this condition?\n\nFor instance, suppose there are 5 Knights and their desserts\
+  \ cost 1, 2, 1, 2 and 2.  In this case, the minimum cost is 4, which you can achieve\
+  \ by feeding the first, third and fourth (or fifth) Knights.  \n\n-----Input format-----\n\
+  There are 2 lines of input.  The first line contains a single integer N, the number\
+  \ of seats at the table. The next line contains N space separated integers, each\
+  \ being the cost of the dessert of a Knight, listed in counterclockwise order around\
+  \ the table, starting with King Arthur.\n\n-----Output format-----\nThe output should\
+  \ be a single line containing a single integer, the minimum possible cost for you,\
+  \ the chef.\n\n-----Testdata-----\nEach Knight's dessert costs strictly more than\
+  \ 0 and strictly less than 1000.  You may assume that 1 ≤ N ≤ 106.  In 30% of the\
+  \ test cases, 1 ≤ N ≤ 103.\n\n- Subtask 1 (30 marks)\n- Subtask 2 (70 marks)\n\n\
+  -----Sample Input-----\n5\n1 2 1 2 2\n\n-----Sample Output-----\n4"
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat \n| []\
+  \ => 0\n| x::xs => x + List.sum xs\n\n\ndef List.minimum : List Nat → Option Nat\n\
+  | [] => none\n| [x] => some x\n| x::xs => match List.minimum xs with\n  | none =>\
+  \ some x\n  | some m => some (min x m)\n\n\ndef min_dessert_cost (n : Nat) (costs\
+  \ : List Nat) : Nat := sorry\n\n\n\n\n\n\n\n\n\ntheorem min_dessert_cost_uniform\
+  \ (n : Nat)\n  (h1 : n ≥ 3) :\n  min_dessert_cost n (List.replicate n 1) = (n +\
+  \ 1) / 2 := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def alternating_sums (costs : List Nat) : Nat × Nat :=\n  let rec\
+  \ helper (xs : List Nat) (isEven : Bool) : Nat × Nat :=\n    match xs with\n   \
+  \ | [] => (0, 0)\n    | x::xs => \n      let (evens, odds) := helper xs (!isEven)\n\
+  \      if isEven then (evens + x, odds)\n      else (evens, odds + x)\n  helper\
+  \ costs true"
+"vc-theorems": "/--\ninfo: 4\n-/\n#guard_msgs in\n#eval min_dessert_cost 5 [1, 2,\
+  \ 1, 2, 2]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval min_dessert_cost 3 [1, 2,\
+  \ 3]\n\n/--\ninfo: 20\n-/\n#guard_msgs in\n#eval min_dessert_cost 4 [5, 10, 15,\
+  \ 20]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

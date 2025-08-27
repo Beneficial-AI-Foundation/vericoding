@@ -1,0 +1,39 @@
+"vc-description": "Today is Chef's birthday. His mom has surprised him with truly\
+  \ fruity gifts: 2 fruit baskets. The first basket contains N apples, and the second\
+  \ one contains M oranges. Chef likes apples and oranges very much but he likes them\
+  \ equally, and therefore, wants to have the minimum possible difference between\
+  \ the number of apples and oranges he has. To do so, he can purchase 1 apple or\
+  \ 1 orange by paying exactly 1 gold coin (that's some expensive fruit, eh?). Chef\
+  \ can purchase fruits at most K times (as he has only K gold coins in his pocket)\
+  \ to make the difference the minimum possible.\nOur little Chef is busy in celebrating\
+  \ his birthday to the fullest, and therefore, he has handed this job to his best\
+  \ friend — you. Can you help him by finding the minimum possible difference he can\
+  \ achieve between the number of apples and orange he owns?\n\n-----Input-----\n\
+  The first line of input contains a single integer T denoting the number of test\
+  \ cases. The first and only line of each test case contains 3 space separated integers\
+  \ — N, M and K — denoting the number of apples, number of oranges, and number of\
+  \ gold coins our little Chef has.\n\n-----Output-----\nFor each test case, output\
+  \ the minimum possible difference between the number of apples and oranges that\
+  \ Chef can achieve.\n\n-----Constraints-----\n- 1 ≤ T ≤ 100\n- 1 ≤ N, M, K ≤ 100\n\
+  \n-----Example-----Input\n3\n3 4 1\n5 2 1\n3 4 3\n\nOutput\n0\n2\n0\n\n-----Explanation-----\n\
+  - Test 1: Chef will buy 1 apple by paying 1 gold coin and will have equal number\
+  \ of apples and oranges. \n- Test 2: Chef will buy 1 orange by paying 1 gold coin\
+  \ and will have 5 apples and 3 oranges."
+"vc-preamble": "import Imports.AllImports\n\ndef abs (n : Int) : Int :=\n  if n ≥\
+  \ 0 then n else -n\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_fruit_diff (apples oranges gold : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem min_fruit_diff_nonnegative (apples oranges gold : Nat) :\n\
+  \  min_fruit_diff apples oranges gold ≥ 0 :=\n  sorry\n\n\ntheorem min_fruit_diff_bounded\
+  \ (apples oranges gold : Nat) : \n  min_fruit_diff apples oranges gold ≤ (if apples\
+  \ ≥ oranges then apples - oranges else oranges - apples) :=\n  sorry\n\n\ntheorem\
+  \ min_fruit_diff_with_enough_gold (apples oranges gold : Nat) :\n  gold ≥ (if apples\
+  \ ≥ oranges then apples - oranges else oranges - apples) → \n  min_fruit_diff apples\
+  \ oranges gold ≤ 1 :=\n  sorry\n\n\ntheorem min_fruit_diff_equal_fruits (fruit gold\
+  \ : Nat) :\n  min_fruit_diff fruit fruit gold = 0 :=\n  sorry\n\n\ntheorem min_fruit_diff_no_gold\
+  \ (apples oranges : Nat) :\n  min_fruit_diff apples oranges 0 = (if apples ≥ oranges\
+  \ then apples - oranges else oranges - apples) :=\n  sorry\n\n/--\ninfo: 0\n-/\n\
+  #guard_msgs in\n#eval min_fruit_diff 3 4 1\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval min_fruit_diff 5 2 1\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval min_fruit_diff\
+  \ 3 4 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

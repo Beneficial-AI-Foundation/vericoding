@@ -1,0 +1,25 @@
+"vc-description": "When Serezha was three years old, he was given a set of cards with\
+  \ letters for his birthday. They were arranged into words in the way which formed\
+  \ the boy's mother favorite number in binary notation. Serezha started playing with\
+  \ them immediately and shuffled them because he wasn't yet able to read. His father\
+  \ decided to rearrange them. Help him restore the original number, on condition\
+  \ that it was the maximum possible one. \n\n\n-----Input-----\n\nThe first line\
+  \ contains a single integer $n$ ($1 \\leqslant n \\leqslant 10^5$) — the length\
+  \ of the string. The second line contains a string consisting of English lowercase\
+  \ letters: 'z', 'e', 'r', 'o' and 'n'.\n\nIt is guaranteed that it is possible to\
+  \ rearrange the letters in such a way that they form a sequence of words, each being\
+  \ either \"zero\" which corresponds to the digit $0$ or \"one\" which corresponds\
+  \ to the digit $1$.\n\n\n-----Output-----\n\nPrint the maximum possible number in\
+  \ binary notation. Print binary digits separated by a space. The leading zeroes\
+  \ are allowed.\n\n\n-----Examples-----\nInput\n4\nezor\n\nOutput\n0 \n\nInput\n\
+  10\nnznooeeoer\n\nOutput\n1 1 0 \n\n\n\n-----Note-----\n\nIn the first example,\
+  \ the correct initial ordering is \"zero\".\n\nIn the second example, the correct\
+  \ initial ordering is \"oneonezero\"."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_binary_arrangement (s : String) : List Nat :=\n  sorry\n\
+  \n\n\n\n\n\n"
+"vc-theorems": "theorem binary_arrangement_valid_elements {num_ones num_zeros : Nat}\n\
+  \  (input := String.mk (List.replicate num_ones 'n' ++ List.replicate num_zeros\
+  \ 'z')) :\n  ∀ x ∈ solve_binary_arrangement input, x = 0 ∨ x = 1 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded_and_plausible"

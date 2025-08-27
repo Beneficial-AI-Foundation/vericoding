@@ -1,0 +1,49 @@
+"vc-description": "Once upon a time, a CodeWarrior, after reading a [discussion on\
+  \ what can be the plural](http://www.codewars.com/kata/plural/discuss/javascript),\
+  \ took a look at [this page](http://en.wikipedia.org/wiki/Grammatical_number#Types_of_number\n\
+  ) and discovered that **more than 1** \"kind of plural\" may exist. \n\nFor example\
+  \ [Sursurunga Language](http://en.wikipedia.org/wiki/Sursurunga_language) distinguishes\
+  \ 5 types of numbers: **singular** (1 thing), **dual** (2 things), '**trial**' or\
+  \ '**lesser paucal**' (3 or 4), '**greater paucal**' (more than 4) and **plural**\
+  \ (many).\n\nIn this kata, you'll have to handle only four types of numbers:\n\n\
+  - **singular**: 0 or 1 thing\n- **dual**: 2 things\n- **paucal**: 3 to 9 things\n\
+  - **plural**: more than 9 things\n\nTo add some flavor the **number-marker** will\
+  \ not be added in same places:\n\n- **singular**, no marker : `1 cat`\n- **dual**,\
+  \ prefixed \"`bu`\" : `2 cats -> 2 bucat`\n- **paucal**, suffixed \"`zo`\" : `4\
+  \ cats -> 4 catzo`\n- **plural**, \"circumfixed `ga`\" : `100 cats -> 100 gacatga`\n\
+  \nAs you all (\"hawk eyes\") have seen, the final `s` of english plural **disappears**.\n\
+  \n( btw these markers, of course, have absolutely nothing to do with true sursurunga\
+  \ language, we're just talking about \"**pig**-sursurunga\" with **pig** as **pig**\
+  \ in \"**pig latin**\" )\n\n## Your Job . . .\n. . . if you accept it, will be to\
+  \ write a `sursurungal` function which get a `string` as argument and returns this\
+  \ string with words in it eventually converted to their \"pig-sursurunga number\
+  \ type\".\n\nIf a `number` ( *ie* 1 or more digit ) + a `space` + a `word` ( letters\
+  \ ) are found then the word should be converted.\n\n**Each** group of `number+space+word`\
+  \ found in the string should be evaluated.\n\n### Examples :\n\nYou may assume at\
+  \ least 1 `number+space+word` group will be provided.\n\n**Beware** `s` of english\
+  \ plural should be removed, not ending `s` of some singular words ( *eg* \"kiss\"\
+  \ )\n\nGood luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef sursurungal (s : String) : String\
+  \ := sorry\ndef containsDigit (s : String) (d : Nat) : Prop := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def containsWordAfterNumber (s : String) (n : Nat) (w : String)\
+  \ : Prop := sorry\n\n-- Numbers remain unchanged in output"
+"vc-theorems": "theorem sursurungal_preserves_numbers {s : String} :\n  ∀ n : Nat,\
+  \ containsDigit s n → containsDigit (sursurungal s) n :=\nsorry\n\n-- Word transformation\
+  \ rules for different numbers\n\ntheorem word_transformation_rules {s : String}\
+  \ (n : Nat) (w : String) :\n  containsWordAfterNumber (sursurungal s) n w →\n  match\
+  \ n with\n  | 1 => ¬(w.startsWith \"bu\") ∧ ¬(w.startsWith \"ga\") ∧ ¬(w.endsWith\
+  \ \"zo\") \n  | 2 => w.startsWith \"bu\" ∧ ¬(w.startsWith \"ga\") ∧ ¬(w.endsWith\
+  \ \"zo\")\n  | n => if n ≤ 9 \n        then ¬(w.startsWith \"bu\") ∧ ¬(w.startsWith\
+  \ \"ga\") ∧ w.endsWith \"zo\"\n        else w.startsWith \"ga\" ∧ w.endsWith \"\
+  ga\" ∧ ¬(w.endsWith \"zo\") :=\nsorry\n\n-- Text without number-word pairs remains\
+  \ unchanged  \n\ntheorem unchanged_text_without_numbers (s : String) :\n  (∀ n :\
+  \ Nat, ¬containsDigit s n) →\n  sursurungal s = s :=\nsorry\n\n/--\ninfo: '1 tomato'\n\
+  -/\n#guard_msgs in\n#eval sursurungal \"1 tomato\"\n\n/--\ninfo: '2 bubanana'\n\
+  -/\n#guard_msgs in\n#eval sursurungal \"2 bananas\"\n\n/--\ninfo: '3 bananazo'\n\
+  -/\n#guard_msgs in\n#eval sursurungal \"3 bananas\"\n\n/--\ninfo: '10 gabananaga'\n\
+  -/\n#guard_msgs in\n#eval sursurungal \"10 bananas\"\n\n/--\ninfo: '6 birdzo with\
+  \ 2 buwing each'\n-/\n#guard_msgs in\n#eval sursurungal \"6 birds with 2 wings each\"\
+  \n\n/--\ninfo: '\\n3 pigzo\\nmet 1 wolf\\n2 buday ago'\n-/\n#guard_msgs in\n#eval\
+  \ sursurungal \"\\n3 pigs\\nmet 1 wolf\\n2 days ago\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

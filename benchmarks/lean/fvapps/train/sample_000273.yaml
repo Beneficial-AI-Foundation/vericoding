@@ -1,0 +1,26 @@
+"vc-description": "You are given a string s containing lowercase letters and an integer\
+  \ k. You need to :\n\nFirst, change some characters of s to other lowercase English\
+  \ letters.\nThen divide s into k non-empty disjoint substrings such that each substring\
+  \ is palindrome.\n\nReturn the minimal number of characters that you need to change to\
+  \ divide the string.\n \nExample 1:\nInput: s = \"abc\", k = 2\nOutput: 1\nExplanation: You\
+  \ can split the string into \"ab\" and \"c\", and change 1 character in \"ab\" to\
+  \ make it palindrome.\n\nExample 2:\nInput: s = \"aabbc\", k = 3\nOutput: 0\nExplanation: You\
+  \ can split the string into \"aa\", \"bb\" and \"c\", all of them are palindrome.\n\
+  Example 3:\nInput: s = \"leetcode\", k = 8\nOutput: 0\n\n \nConstraints:\n\n1 <=\
+  \ k <= s.length <= 100.\ns only contains lowercase English letters."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def palindrome_partition (s : String) (k : Nat) : Nat := sorry\n\
+  \ntheorem palindrome_partition_non_negative \n  (s : String) (k : Nat) (h: k > 0)\
+  \ (h2: k ≤ s.length) :\n  palindrome_partition s k ≥ 0 := sorry\n"
+"vc-theorems": "theorem palindrome_partition_full_length\n  (s : String) (h: s.length\
+  \ > 0) :\n  palindrome_partition s s.length = 0 := sorry\n\n\ntheorem palindrome_partition_bounded\n\
+  \  (s : String) (k : Nat) (h: k > 0) (h2: k ≤ s.length) :\n  palindrome_partition\
+  \ s k ≤ s.length := sorry\n\n\ntheorem palindrome_partition_single \n  (s : String)\
+  \ (h: s.length > 0) :\n  palindrome_partition s 1 = palindrome_partition s 1 :=\
+  \ sorry\n\n\ntheorem palindrome_partition_individual_chars\n  (s : String) (h: s.length\
+  \ > 0) :\n  palindrome_partition s s.length = 0 := sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval palindrome_partition \"abc\" 2\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
+  #eval palindrome_partition \"aabbc\" 3\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval\
+  \ palindrome_partition \"leetcode\" 8\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

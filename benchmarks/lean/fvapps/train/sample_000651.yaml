@@ -1,0 +1,28 @@
+"vc-description": "Sereja has an array A of N positive integers : A[1], A[2], A[3],\
+  \ ... , A[N]. \n\nIn a single operation on the array, he performs the following\
+  \ two steps :  \n\n- Pick two indices i, j s.t. A[i] > A[j]\n- A[i] -= A[j]\n\n\
+  Sereja can apply these operations any number of times (possibly zero), such that\
+  \ the sum of resulting elements of the array is as small as possible.\n\nHelp Sereja\
+  \ find this minimum sum.\n\n-----Input-----\n\nFirst line of input contains an integer\
+  \ T - the number of test cases. T test cases follow.\n\nFirst line of each test\
+  \ case contains the integer N. The next line contains N integers — A[1], A[2], A[3],\
+  \ ... , A[N].\n\n-----Output-----\nFor each test case, output a single line with\
+  \ the answer.\n\n-----Constraints-----\n- 1 ≤ T ≤ 10\n- 1 ≤ N ≤ 105\n- 1 ≤ A[i]\
+  \ ≤ 109\n\n-----Example-----\nInput:\n2\n1\n1\n3\n2 4 6\n\nOutput:\n1\n6\n\n-----Explanation-----\n\
+  Example case 2. In this case, one possible way in which Sereja can perform the operations\
+  \ could be as follows. \n\n-  Pick i = 2, j = 1. A[2] -= A[1]. Now the resulting\
+  \ array would be [2, 2, 6].\n-  Pick i = 3, j = 2. A[3] -= A[2]. Now the resulting\
+  \ array would be [2, 2, 4].\n-  Pick i = 3, j = 2. A[3] -= A[2]. Now the resulting\
+  \ array would be [2, 2, 2]. \n\nAs the resulting array is [2 2 2], so the sum is\
+  \ 6."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_minimum_array_sum (arr : List Nat) : Nat := sorry\n\n\
+  def gcd (a b : Nat) : Nat := sorry\n"
+"vc-theorems": "theorem single_element_minimum_sum {x : Nat} (h : x > 0) : \n  find_minimum_array_sum\
+  \ [x] = x := sorry\n\n\n\n\n\n\n\n\ntheorem same_number {n : Nat} {x : Nat} (h :\
+  \ n ≥ 2) (h₁ : x > 0) :\n  find_minimum_array_sum (List.replicate n x) = n * x :=\
+  \ sorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval find_minimum_array_sum [1]\n\n\
+  /--\ninfo: 6\n-/\n#guard_msgs in\n#eval find_minimum_array_sum [2, 4, 6]\n\n/--\n\
+  info: 12\n-/\n#guard_msgs in\n#eval find_minimum_array_sum [3, 6, 9, 12]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

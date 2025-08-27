@@ -1,0 +1,31 @@
+"vc-description": "Chef had a sequence of positive integers with length $N + K$. He\
+  \ managed to calculate the arithmetic average of all elements of this sequence (let's\
+  \ denote it by $V$), but then, his little brother deleted $K$ elements from it.\
+  \ All deleted elements had the same value.\nChef still knows the remaining $N$ elements\
+  \ — a sequence $A_1, A_2, \\ldots, A_N$. Help him with restoring the original sequence\
+  \ by finding the value of the deleted elements or deciding that there is some mistake\
+  \ and the described scenario is impossible.\nNote that the if it is possible for\
+  \ the deleted elements to have the same value, then it can be proven that it is\
+  \ unique. Also note that this value must be a positive integer.\n\n-----Input-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first line of\
+  \ each test case contains three space-separated integers $N$, $K$ and $V$.\n- The\
+  \ second line contains $N$ space-separated integers $A_1, A_2, \\ldots, A_N$.\n\n\
+  -----Output-----\nFor each test case, print a single line containing one integer\
+  \ — the value of the deleted elements, or $-1$ if there is a mistake.\n\n-----Constraints-----\n\
+  - $1 \\le T \\le 100$\n- $1 \\le N, K \\le 100$\n- $1 \\le V \\le 10^5$\n- $1 \\\
+  le A_i \\le 10^5$ for each valid $i$\n\n-----Subtasks-----\nSubtask #1 (100 points):\
+  \ original constraints\n\n-----Example Input-----\n3\n3 3 4\n2 7 3\n3 1 4\n7 6 5\n\
+  3 3 4\n2 8 3\n\n-----Example Output-----\n4\n-1\n-1"
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat \n  | []\
+  \ => 0\n  | x::xs => x + sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_deleted_value (n k v : Nat) (arr : List Nat) : Int :=\n\
+  sorry\n"
+"vc-theorems": "theorem find_deleted_value_output_valid {n k v : Nat} {arr : List\
+  \ Nat} :\n  let result := find_deleted_value n k v arr\n  result = -1 ∨ result >\
+  \ 0 :=\nsorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval find_deleted_value 3 3\
+  \ 4 [2, 7, 3]\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval find_deleted_value 3 1\
+  \ 4 [7, 6, 5]\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval find_deleted_value 3 3\
+  \ 4 [2, 8, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

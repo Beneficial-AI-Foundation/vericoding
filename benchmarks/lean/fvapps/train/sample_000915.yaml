@@ -1,0 +1,50 @@
+"vc-description": "You are given $N$ integers in an array: $A[1], A[2], \\ldots, A[N]$.\
+  \ You also have another integer $L$.\nConsider a sequence of indices ($i_1, i_2,\
+  \ \\ldots, i_k$). Note that a particular index can occur multiple times in the sequence,\
+  \ and there is no order in which these indices have to occur. ($i_1, i_2, \\ldots,\
+  \ i_k$) is a sequence of size $k$. It is said to be an $Interesting$ sequence, if\
+  \ $A[i_1] \\ge A[i_2] \\ge \\ldots \\ge A[i_k]$.\nThe $Cost$ of an Interesting sequence\
+  \ ($i_1, i_2, \\ldots, i_k$), is defined to be the minimum absolute difference between\
+  \ any two adjacent indices. In other words, the Cost is $min \\{ |i_2 - i_1|, |i_3\
+  \ - i_2|, \\ldots, |i_k - i_{k-1}| \\}$.\nYour job is to consider the Costs of all\
+  \ the Interesting sequences of size $L$ associated with the given array, and output\
+  \ the maximum Cost. Note that you can show that there is always at least one Interesting\
+  \ sequence for the given constraints.\n\n-----Input-----\n- The first line contains\
+  \ a single integer, $T$, which is the number of testcases. The description of each\
+  \ testcase follows.\n- The first line of each testcase contains two space separated\
+  \ integers: $N$ and $L$.\n- The second line of each testcase contains $N$ space\
+  \ separated integers: $A[1], A[2], \\ldots, A[N]$.\n\n-----Output-----\n- For each\
+  \ testcase, output the answer in a new line.\n\n-----Constraints-----\n- $1 \\leq\
+  \ T \\leq 3$\n- $1 \\leq A[i] \\leq 10^9$\n- $2 \\leq L \\leq 10^9$\n\n-----Subtasks-----\n\
+  - Subtask 1: 7 points\n- It is guaranteed that $A[1] > A[2] > \\ldots > A[N]$\n\
+  - Note that the above condition implies that all elements are distinct.\n- $1 \\\
+  leq N \\leq 500$\n- Subtask 2: 7 points\n- It is guaranteed that $A[1] \\ge A[2]\
+  \ \\ge \\ldots \\ge A[N]$\n- $1 \\leq N \\leq 500$\n- Subtask 3: 14 points\n- It\
+  \ is guaranteed that all elements are distinct.\n- $1 \\leq N \\leq 500$\n- Subtask\
+  \ 4: 14 points\n- $1 \\leq N \\leq 500$\n- Subtask 5: 25 points\n- It is guaranteed\
+  \ that all elements are distinct.\n- $1 \\leq N \\leq 3000$\n- Subtask 6: 33 points\n\
+  - $1 \\leq N \\leq 3000$\n\n-----Sample Input-----\n1\n6 3\n2 4 1 12 3 5\n\n-----Sample\
+  \ Output-----\n3\n\n-----Explanation-----\nWe are looking for Interesting sequences\
+  \ of length 3. Some of them are:\n- (4, 2, 3): This is Interesting because $A[4]\
+  \ \\ge A[2] \\ge A[3]$. Its cost is $min \\{ |2-4|, |3-2|\\} = 1$.\n- (5, 1, 1):\
+  \ Cost is 0.\n- (2, 2, 2): Cost is 0.\n- (6, 1, 3): Cost is 2.\n- (6, 2, 5): Cost\
+  \ is 3.\nThere are other Interesting Sequences of length 3 as well. But if you list\
+  \ them all out, you'll see that the maximum Cost is 3. Hence the answer is 3."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_interesting_sequence (n : Nat) (l : Nat) (arr : List\
+  \ Nat) : Nat := sorry\n\ntheorem sequence_properties {n : Nat} {l : Nat} {arr :\
+  \ List Nat} \n  (hn : n > 0) (hl : l > 0) (harr : arr.length = n) (hbound : ∀ x\
+  \ ∈ arr, x > 0 ∧ x ≤ 100) :\n  let result := solve_interesting_sequence n l arr;\n\
+  \  -- Result is non-negative\n  result ≥ 0  \n  -- Result is bounded by array length\n\
+  \  ∧ result ≤ n\n  -- Result is at least the max distance between duplicates\n \
+  \ ∧ ∀ (x : Nat) (pos₁ pos₂ : Nat),\n    let indices : List (Nat × Nat) := List.enumFrom\
+  \ 1 arr;\n    let positions := List.filterMap (fun p => if p.2 = x then some p.1\
+  \ else none) indices;\n    pos₁ ∈ positions →\n    pos₂ ∈ positions →\n    pos₁\
+  \ ≠ pos₂ →\n    result ≥ (max pos₁ pos₂ - min pos₁ pos₂) := by sorry\n"
+"vc-theorems": "theorem base_case : solve_interesting_sequence 1 1 [5] = 0 := by sorry\n\
+  \n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_interesting_sequence 6 3 [2, 4,\
+  \ 1, 12, 3, 5]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_interesting_sequence\
+  \ 4 2 [5, 5, 5, 5]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve_interesting_sequence\
+  \ 5 3 [1, 2, 3, 4, 5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,27 @@
+"vc-description": "Implement the [Polybius square cipher](http://en.wikipedia.org/wiki/Polybius_square).\n\
+  \nReplace every letter with a two digit number. The first digit is the row number,\
+  \ and the second digit is the column number of following square. Letters `'I'` and\
+  \ `'J'` are both 24 in this cipher:\n\n\ntable#polybius-square {width: 100px;}\n\
+  table#polybius-square td {background-color: #2f2f2f;}\ntable#polybius-square th\
+  \ {background-color: #3f3f3f;}\n\n\n12345\n1ABCDE\n2FGHI/JK\n3LMNOP\n4QRSTU\n5VWXYZ\n\
+  \n\nInput will be valid (only spaces and uppercase letters from A to Z), so no need\
+  \ to validate them.\n\n## Examples\n\n```python\npolybius('A')  # \"11\"\npolybius('IJ')\
+  \ # \"2424\"\npolybius('CODEWARS') # \"1334141552114243\"\npolybius('POLYBIUS SQUARE\
+  \ CIPHER') # \"3534315412244543 434145114215 132435231542\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def polybius : String → String :=\n  sorry\n"
+"vc-theorems": "theorem polybius_output_format (text : String) : \n  (text.data.all\
+  \ (fun c => c.isUpper ∨ c = ' ')) →\n  (text.length = (polybius text).length) ∧\n\
+  \  (polybius text).data.all (fun c => c ∈ ['1', '2', '3', '4', '5', ' ']) :=\n \
+  \ sorry\n\n\ntheorem polybius_case_insensitive (text : String) :\n  polybius text.toUpper\
+  \ = polybius text.toLower :=\n  sorry\n\n\ntheorem polybius_spaces (text : String)\
+  \ :\n  text.data.all (fun c => c = ' ') → polybius text = text :=\n  sorry\n\n\n\
+  theorem polybius_consistency (text : String) :\n  polybius text = polybius text\
+  \ :=\n  sorry\n\n\ntheorem polybius_concatenation (text1 text2 : String) :\n  polybius\
+  \ (text1 ++ text2) = polybius text1 ++ polybius text2 :=\n  sorry\n\n/--\ninfo:\
+  \ '3534315412244543'\n-/\n#guard_msgs in\n#eval polybius \"POLYBIUS\"\n\n/--\ninfo:\
+  \ '1334141552114243'\n-/\n#guard_msgs in\n#eval polybius \"CODEWARS\"\n\n/--\ninfo:\
+  \ '3534315412244543 434145114215 132435231542'\n-/\n#guard_msgs in\n#eval polybius\
+  \ \"POLYBIUS SQUARE CIPHER\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

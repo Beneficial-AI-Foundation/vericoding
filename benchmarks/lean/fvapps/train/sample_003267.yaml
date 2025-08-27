@@ -1,0 +1,19 @@
+"vc-description": "It's the academic year's end, fateful moment of your school report.\n\
+  The averages must be calculated. All the students come to you and entreat you to\
+  \ calculate their average for them.\nEasy ! You just need to write a script.\n\n\
+  Return the average of the given array rounded **down** to its nearest integer.\n\
+  \nThe array will never be empty."
+"vc-preamble": "import Imports.AllImports\n\ndef get_average (marks: List Nat) : Nat\
+  \ := sorry\n\ndef list_maximum (l: List Nat) : Nat := sorry "
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_minimum (l: List Nat) : Nat := sorry\ndef list_sum (l:\
+  \ List Nat) : Nat := sorry\n"
+"vc-theorems": "theorem average_in_bounds {marks: List Nat} (h: marks ≠ []) : \n \
+  \ let avg := get_average marks\n  avg ≤ list_maximum marks ∧ avg ≥ list_minimum\
+  \ marks := sorry\n\n\ntheorem average_equals_div_sum {marks: List Nat} (h: marks\
+  \ ≠ []) :\n  get_average marks = list_sum marks / marks.length := sorry\n\n\ntheorem\
+  \ empty_list_error : \n  get_average [] = get_average [] → False := sorry\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval get_average [2, 2, 2, 2]\n\n/--\ninfo: 25\n-/\n\
+  #guard_msgs in\n#eval get_average [1, 5, 87, 45, 8, 8]\n\n/--\ninfo: 11\n-/\n#guard_msgs\
+  \ in\n#eval get_average [2, 5, 13, 20, 16, 16, 10]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

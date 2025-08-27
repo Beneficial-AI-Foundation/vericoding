@@ -1,0 +1,34 @@
+"vc-description": "=====Problem Statement=====\nThe re.sub() tool (sub stands for\
+  \ substitution) evaluates a pattern and, for each valid match, it calls a method\
+  \ (or lambda).\nThe method is called for all matches and can be used to modify strings\
+  \ in different ways.\nThe re.sub() method returns the modified string as an output.\n\
+  \nLearn more about re.sub().\n\nTransformation of Strings\nCode\n\nimport re\n\n\
+  #Squaring numbers\ndef square(match):\n    number = int(match.group(0))\n    return\
+  \ str(number**2)\n\nprint re.sub(r\"\\d+\", square, \"1 2 3 4 5 6 7 8 9\")\n\nOutput\n\
+  \n1 4 9 16 25 36 49 64 81\n\n\nReplacements in Strings\n\nCode\n\nimport re\n\n\
+  html = \"\"\"\n<head>\n<title>HTML</title>\n</head>\n<object type=\"application/x-flash\"\
+  \ \n  data=\"your-file.swf\" \n  width=\"0\" height=\"0\">\n  <!-- <param name=\"\
+  movie\"  value=\"your-file.swf\" /> -->\n  <param name=\"quality\" value=\"high\"\
+  />\n</object>\n\"\"\"\n\nprint re.sub(\"(<!--.*?-->)\", \"\", html) #remove comment\n\
+  \nOutput\n\n<head>\n<title>HTML</title>\n</head>\n<object type=\"application/x-flash\"\
+  \ \n  data=\"your-file.swf\" \n  width=\"0\" height=\"0\">\n\n  <param name=\"quality\"\
+  \ value=\"high\"/>\n</object>\n\n=====Problem Statement=====\nYou are given a text\
+  \ of N lines. The text contains && and || symbols.\nYour task is to modify those\
+  \ symbols to the following:\n&& → and\n|| → or\n\nBoth && and || should have a space\
+  \ \" \" on both sides.\n\n=====Input Format=====\nThe first line contains the integer,\
+  \ N.\nThe next N lines each contain a line of the text.\n\n=====Constraints=====\n\
+  0<N<100\nNeither && nor || occur in the start or end of each line. \n\n=====Output\
+  \ Format=====\nOutput the modified text."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def modify_operators (lines : List String) : String := sorry\n\n\
+  theorem preserves_string_without_operators {lines : List String} \n  (h : lines\
+  \ ≠ []) \n  (h2 : ∀ l ∈ lines, ¬ l.data.contains '&' ∧ ¬ l.data.contains '|') :\n\
+  \  modify_operators lines = String.join lines := sorry\n"
+"vc-theorems": "theorem converts_all_operators {lines : List String}\n  (h : lines\
+  \ ≠ [])\n  (h2 : ∀ l ∈ lines, ∃ s1 s2 : String, l = s1 ++ \" && \" ++ s2 ∨ l = s1\
+  \ ++ \" || \" ++ s2) :\n  ¬ (modify_operators lines).data.contains '&' ∧\n  ¬ (modify_operators\
+  \ lines).data.contains '|' := sorry\n\n\ntheorem idempotent (lines : List String)\
+  \ (h : lines ≠ []) :\n  let first := modify_operators lines\n  let second := modify_operators\
+  \ (first.splitOn \"\\n\")\n  first = second := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

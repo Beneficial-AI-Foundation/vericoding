@@ -1,0 +1,21 @@
+"vc-description": "Basic regex tasks. Write a function that takes in a numeric code\
+  \ of any length. The function should check if the code begins with 1, 2, or 3 and\
+  \ return `true` if so. Return `false` otherwise. \n\nYou can assume the input will\
+  \ always be a number."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def validate_code {α} (x : α) : Bool :=\nsorry\n"
+"vc-theorems": "theorem validate_code_ints (code : Int) :\n  validate_code code =\
+  \ String.startsWith (toString code) \"123\" :=\nsorry\n\n\ntheorem validate_code_strings\
+  \ (code : String) :\n  validate_code code = String.startsWith code \"123\" :=\n\
+  sorry\n\n\ntheorem validate_code_string_numbers (code : String) :\n  validate_code\
+  \ code = String.startsWith code \"123\" :=\nsorry\n\n\ntheorem validate_code_empty\
+  \ :\n  validate_code \"\" = false :=\nsorry\n\n\ntheorem validate_code_none (α :\
+  \ Type) :\n  validate_code (none : Option α) = false :=\nsorry\n\n\ntheorem validate_code_true\
+  \ :\n  validate_code true = false :=\nsorry \n\n\ntheorem validate_code_false :\n\
+  \  validate_code false = false :=\nsorry\n\n\ntheorem validate_code_float (f : Float)\
+  \ :\n  validate_code f = String.startsWith (toString f) \"123\" :=\nsorry\n\n/--\n\
+  info: True\n-/\n#guard_msgs in\n#eval validate_code 123\n\n/--\ninfo: False\n-/\n\
+  #guard_msgs in\n#eval validate_code 8\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ validate_code 321\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

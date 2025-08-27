@@ -1,0 +1,23 @@
+"vc-description": "In this Kata you are to implement a function that parses a string\
+  \ which is composed from tokens of the form 'n1-n2,n3,n4-n5:n6' where 'nX' is a\
+  \ positive integer. Each token represent a different range:\n\n'n1-n2' represents\
+  \ the range n1 to n2 (inclusive in both ends).\n'n3' represents the single integer\
+  \ n3.\n'n4-n5:n6' represents the range n4 to n5 (inclusive in both ends) but only\
+  \ includes every other n6 integer.\n\nNotes:\n1. The input string doesn't not have\
+  \ to include all the token types.\n2. All integers are assumed to be positive.\n\
+  3. Tokens may be separated by `','`, `', '` or ` , `.\n\nSome examples:\n\n'1-10,14,\
+  \ 20-25:2' -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14, 20, 22, 24]\n\n'5-10' -> [5, 6,\
+  \ 7, 8, 9, 10]\n\n'2' -> [2]\n\nThe output should be a list of integers."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def range_parser (s: String) : List Nat :=\n  sorry\n"
+"vc-theorems": "theorem range_parser_correct₁ :\n  range_parser \"1-10,14,20-25:2\"\
+  \ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14, 20, 22, 24] :=\n  sorry\n\n\ntheorem range_parser_correct₂\
+  \ :\n  range_parser \"5-10\" = [5, 6, 7, 8, 9, 10] :=\n  sorry\n\n\ntheorem range_parser_correct₃\
+  \ :\n  range_parser \"2\" = [2] :=\n  sorry\n\n\ntheorem range_parser_invalid_special_char₁\
+  \ :\n  ∀ s: String,\n  s.length = 1 →\n  s = \" \" ∨ s = \",\" ∨ s = \":\" ∨ s =\
+  \ \"-\" →\n  ¬∃ (lst : List Nat), range_parser s = lst :=\n  sorry\n\n/--\ninfo:\
+  \ expected1\n-/\n#guard_msgs in\n#eval range_parser \"1-10,14, 20-25:2\"\n\n/--\n\
+  info: expected2\n-/\n#guard_msgs in\n#eval range_parser \"5-10\"\n\n/--\ninfo: expected3\n\
+  -/\n#guard_msgs in\n#eval range_parser \"2\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

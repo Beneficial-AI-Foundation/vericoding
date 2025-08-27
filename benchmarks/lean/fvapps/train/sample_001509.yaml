@@ -1,0 +1,31 @@
+"vc-description": "Sergey recently learned about country codes - two letter strings,\
+  \ denoting countries. For example, BY stands for Belarus and IN stands for India.\
+  \ Mesmerized by this new discovery, Sergey now looks for country codes everywhere!\n\
+  Sergey has recently found a string S consisting of uppercase Latin letters. He wants\
+  \ to find the number of different country codes that appear in S as contiguous substrings.\
+  \ For the purpose of this problem, consider that every 2-letter uppercase string\
+  \ is a valid country code.\n\n-----Input-----\nThe first line of input contains\
+  \ an integer T denoting the number of test cases. The description of T test cases\
+  \ follows.\nThe first and only line of each test case contains a string S, consisting\
+  \ of uppercase Latin letters.\n\n-----Output-----\nFor each test case, output a\
+  \ single line containing the number of different country codes appearing in the\
+  \ given string.\n\n-----Constraints-----\n\n- 1 ≤ T ≤ 100\n- Subtask 1 (35 points):\
+  \ 2 ≤ |S| ≤ 3\n- Subtask 2 (65 points): 2 ≤ |S| ≤ 104\n\n-----Example-----\nInput:2\n\
+  INBY\nBYBY\n\nOutput:3\n2\n\n-----Explanation-----\nExample case 1. The codes are\
+  \ IN, NB and BY.\nExample case 2. The codes are BY and YB."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_country_codes (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_country_codes_non_negative (s : String) :\n  count_country_codes\
+  \ s ≥ 0 := sorry\n\n\ntheorem count_country_codes_bounded_by_substrings (s : String)\
+  \ :\n  count_country_codes s ≤ s.length - 1 := sorry\n\n\ntheorem count_country_codes_bounded_by_unique_pairs\
+  \ (s : String) :\n  let unique_chars := (s.toList.eraseDups).length\n  count_country_codes\
+  \ s ≤ unique_chars * unique_chars := sorry\n\n\ntheorem count_country_codes_repeated_char\
+  \ (c : Char) (n : Nat) :\n  n ≥ 2 →\n  count_country_codes (String.mk (List.replicate\
+  \ n c)) = 1 := sorry\n\n\ntheorem count_country_codes_empty :\n  count_country_codes\
+  \ \"\" = 0 := sorry\n\n\ntheorem count_country_codes_single_char :\n  ∀ c : Char,\
+  \ count_country_codes (String.mk [c]) = 0 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval count_country_codes \"INBY\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval\
+  \ count_country_codes \"BYBY\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_country_codes\
+  \ \"ABCD\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

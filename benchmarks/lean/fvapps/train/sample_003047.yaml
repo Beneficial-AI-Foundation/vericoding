@@ -1,0 +1,23 @@
+"vc-description": "Write a function that takes as its parameters *one or more numbers\
+  \ which are the diameters of circles.* \n\nThe function should return the *total\
+  \ area of all the circles*, rounded to the nearest integer in a string that says\
+  \ \"We have this much circle: xyz\". \n\nYou don't know how many circles you will\
+  \ be given, but you can assume it will be at least one.\n\nSo: \n```python\nsum_circles(2)\
+  \ == \"We have this much circle: 3\"\nsum_circles(2, 3, 4) == \"We have this much\
+  \ circle: 23\"\n```\n\nTranslations and comments (and upvotes!) welcome!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def listOfNumsInBounds (start : Nat) (end_ : Nat) : List Nat :=\
+  \ sorry\n\ntheorem listOfNumsInBounds_length (start : Nat) (end_ : Nat) :\n  (listOfNumsInBounds\
+  \ start end_).length = end_ - start + 1 := sorry \n"
+"vc-theorems": "theorem listOfNumsInBounds_starts_with_start (start : Nat) (end_ :\
+  \ Nat) :\n  start ≤ end_ →\n  (listOfNumsInBounds start end_).head! = start := sorry\n\
+  \n\ntheorem listOfNumsInBounds_within_bounds (start : Nat) (end_ : Nat) (n : Nat)\
+  \ :\n  start ≤ end_ →\n  n ∈ (listOfNumsInBounds start end_) →\n  start ≤ n ∧ n\
+  \ ≤ end_ := sorry\n\n\ntheorem listOfNumsInBounds_all_included (start : Nat) (end_\
+  \ : Nat) (n : Nat) :\n  start ≤ end_ →\n  start ≤ n →\n  n ≤ end_ →\n  n ∈ (listOfNumsInBounds\
+  \ start end_) := sorry\n\n/--\ninfo: 'We have this much circle: 3'\n-/\n#guard_msgs\
+  \ in\n#eval sum_circles 2\n\n/--\ninfo: 'We have this much circle: 23'\n-/\n#guard_msgs\
+  \ in\n#eval sum_circles 2 3 4\n\n/--\ninfo: 'We have this much circle: 2040'\n-/\n\
+  #guard_msgs in\n#eval sum_circles 48 7 8 9 10\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

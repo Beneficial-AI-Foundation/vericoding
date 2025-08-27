@@ -1,0 +1,26 @@
+"vc-description": "Let's denote as $\\text{popcount}(x)$ the number of bits set ('1'\
+  \ bits) in the binary representation of the non-negative integer x.\n\nYou are given\
+  \ multiple queries consisting of pairs of integers l and r. For each query, find\
+  \ the x, such that l ≤ x ≤ r, and $\\text{popcount}(x)$ is maximum possible. If\
+  \ there are multiple such numbers find the smallest of them.\n\n\n-----Input-----\n\
+  \nThe first line contains integer n — the number of queries (1 ≤ n ≤ 10000).\n\n\
+  Each of the following n lines contain two integers l_{i}, r_{i} — the arguments\
+  \ for the corresponding query (0 ≤ l_{i} ≤ r_{i} ≤ 10^18).\n\n\n-----Output-----\n\
+  \nFor each query print the answer in a separate line.\n\n\n-----Examples-----\n\
+  Input\n3\n1 2\n2 4\n1 10\n\nOutput\n1\n3\n7\n\n\n\n-----Note-----\n\nThe binary\
+  \ representations of numbers from 1 to 10 are listed below:\n\n1_10 = 1_2\n\n2_10\
+  \ = 10_2\n\n3_10 = 11_2\n\n4_10 = 100_2\n\n5_10 = 101_2\n\n6_10 = 110_2\n\n7_10\
+  \ = 111_2\n\n8_10 = 1000_2\n\n9_10 = 1001_2\n\n10_10 = 1010_2"
+"vc-preamble": "import Imports.AllImports\n\ndef get_max_popcount (l r : Nat) : Nat\
+  \ :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def popcount (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem output_in_range (l r : Nat) :\n  let ordered_l := min l r\n\
+  \  let ordered_r := max l r\n  let result := get_max_popcount ordered_l ordered_r\n\
+  \  ordered_l ≤ result ∧ result ≤ ordered_r :=\nsorry\n\n\ntheorem same_number (x\
+  \ : Nat) :\n  get_max_popcount x x = x :=\nsorry\n\n\ntheorem consecutive_numbers\
+  \ (x : Nat) :\n  popcount (get_max_popcount x (x + 1)) ≥ popcount x :=\nsorry\n\n\
+  /--\ninfo: 1\n-/\n#guard_msgs in\n#eval get_max_popcount 1 2\n\n/--\ninfo: 3\n-/\n\
+  #guard_msgs in\n#eval get_max_popcount 2 4\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n\
+  #eval get_max_popcount 1 10\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

@@ -1,0 +1,63 @@
+"vc-description": "Oleg the bank client and Igor the analyst are arguing again. This\
+  \ time, they want to pick a gift as a present for their friend, ZS the coder. After\
+  \ a long thought, they decided that their friend loves to eat carrots the most and\
+  \ thus they want to pick the best carrot as their present.\n\nThere are n carrots\
+  \ arranged in a line. The i-th carrot from the left has juiciness a_{i}. Oleg thinks\
+  \ ZS loves juicy carrots whereas Igor thinks that he hates juicy carrots. Thus,\
+  \ Oleg would like to maximize the juiciness of the carrot they choose while Igor\
+  \ would like to minimize the juiciness of the carrot they choose.\n\nTo settle this\
+  \ issue, they decided to play a game again. Oleg and Igor take turns to play the\
+  \ game. In each turn, a player can choose a carrot from either end of the line,\
+  \ and eat it. The game ends when only one carrot remains. Oleg moves first. The\
+  \ last remaining carrot will be the carrot that they will give their friend, ZS.\n\
+  \nOleg is a sneaky bank client. When Igor goes to a restroom, he performs k moves\
+  \ before the start of the game. Each move is the same as above (eat a carrot from\
+  \ either end of the line). After Igor returns, they start the game with Oleg still\
+  \ going first. \n\nOleg wonders: for each k such that 0 ≤ k ≤ n - 1, what is the\
+  \ juiciness of the carrot they will give to ZS if he makes k extra moves beforehand\
+  \ and both players play optimally?\n\n\n-----Input-----\n\nThe first line of input\
+  \ contains a single integer n (1 ≤ n ≤ 3·10^5) — the total number of carrots.\n\n\
+  The next line contains n space-separated integers a_1, a_2, ..., a_{n} (1 ≤ a_{i}\
+  \ ≤ 10^9). Here a_{i} denotes the juiciness of the i-th carrot from the left of\
+  \ the line.\n\n\n-----Output-----\n\nOutput n space-separated integers x_0, x_1,\
+  \ ..., x_{n} - 1. Here, x_{i} denotes the juiciness of the carrot the friends will\
+  \ present to ZS if k = i.\n\n\n-----Examples-----\nInput\n4\n1 2 3 5\n\nOutput\n\
+  3 3 5 5\n\nInput\n5\n1000000000 1000000000 1000000000 1000000000 1\n\nOutput\n1000000000\
+  \ 1000000000 1000000000 1000000000 1000000000\n\n\n\n-----Note-----\n\nFor the first\
+  \ example, \n\nWhen k = 0, one possible optimal game is as follows: Oleg eats the\
+  \ carrot with juiciness 1. Igor eats the carrot with juiciness 5. Oleg eats the\
+  \ carrot with juiciness 2. The remaining carrot has juiciness 3.\n\nWhen k = 1,\
+  \ one possible optimal play is as follows: Oleg eats the carrot with juiciness 1\
+  \ beforehand. Oleg eats the carrot with juiciness 2. Igor eats the carrot with juiciness\
+  \ 5. The remaining carrot has juiciness 3.\n\nWhen k = 2, one possible optimal play\
+  \ is as follows: Oleg eats the carrot with juiciness 1 beforehand. Oleg eats the\
+  \ carrot with juiciness 2 beforehand. Oleg eats the carrot with juiciness 3. The\
+  \ remaining carrot has juiciness 5.\n\nWhen k = 3, one possible optimal play is\
+  \ as follows: Oleg eats the carrot with juiciness 1 beforehand. Oleg eats the carrot\
+  \ with juiciness 2 beforehand. Oleg eats the carrot with juiciness 3 beforehand.\
+  \ The remaining carrot has juiciness 5.\n\nThus, the answer is 3, 3, 5, 5.\n\nFor\
+  \ the second sample, Oleg can always eat the carrot with juiciness 1 since he always\
+  \ moves first. So, the remaining carrot will always have juiciness 1000000000."
+"vc-preamble": "import Imports.AllImports\n\ndef solve_carrot_game (n : Nat) (A :\
+  \ List Nat) : List Nat := sorry\n\nabbrev min' (a b : Nat) : Nat := if a ≤ b then\
+  \ a else b\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_maximum (l : List Nat) : Nat :=\nmatch l with\n| [] =>\
+  \ 0\n| x::xs => List.foldl Nat.max x xs\n"
+"vc-theorems": "theorem carrot_game_output_length {n : Nat} {A : List Nat} \n  (h\
+  \ : A.length > 0) (h2 : A.length = n) :\n  (solve_carrot_game n A).length = n :=\
+  \ sorry\n\n\ntheorem carrot_game_max_preserved {n : Nat} {A : List Nat} \n  (h :\
+  \ A.length > 0) (h2 : A.length = n) :\n  list_maximum (solve_carrot_game n A) =\
+  \ list_maximum A := sorry\n\n\ntheorem carrot_game_elements_valid {n : Nat} {A :\
+  \ List Nat} \n  (h : A.length > 0) (h2 : A.length = n) :\n  ∀ x ∈ (solve_carrot_game\
+  \ n A), \n    x ∈ A ∨ ∃ (i : Fin (A.length - 1)), \n      x = min' (A[i]) (A[i.val\
+  \ + 1]) := sorry\n\n\ntheorem carrot_game_identical_elements {n : Nat} {A : List\
+  \ Nat} \n  (h : A.length > 0) (h2 : A.length = n)\n  (h3 : ∀ x ∈ A, x = 5) :\n \
+  \ ∀ x ∈ (solve_carrot_game n A), x = 5 := sorry\n\n\ntheorem carrot_game_last_element_is_max\
+  \ {n : Nat} {A : List Nat}\n  (h : A.length > 0) (h2 : A.length = n) :\n  List.getLast!\
+  \ (solve_carrot_game n A) = list_maximum A := sorry\n\n/--\ninfo: [3, 3, 5, 5]\n\
+  -/\n#guard_msgs in\n#eval solve_carrot_game 4 [1, 2, 3, 5]\n\n/--\ninfo: expected2\n\
+  -/\n#guard_msgs in\n#eval solve_carrot_game 5 [1000000000, 1000000000, 1000000000,\
+  \ 1000000000, 1]\n\n/--\ninfo: [2, 8, 8]\n-/\n#guard_msgs in\n#eval solve_carrot_game\
+  \ 3 [2, 8, 2]\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"

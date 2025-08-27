@@ -1,0 +1,25 @@
+"vc-description": "You have invented a time-machine which has taken you back to ancient\
+  \ Rome. Caeser is impressed with your programming skills and has appointed you to\
+  \ be the new information security officer.\n\nCaeser has ordered you to write a\
+  \ Caeser cipher to prevent Asterix and Obelix from reading his emails.\n\nA Caeser\
+  \ cipher shifts the letters in a message by the value dictated by the encryption\
+  \ key. Since Caeser's emails are very important, he wants all encryptions to have\
+  \ upper-case output, for example:\n\nIf key = 3\n\"hello\" -> KHOOR\nIf key = 7\n\
+  \"hello\" -> OLSSV\n\nInput will consist of the message to be encrypted and the\
+  \ encryption key."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def caeser (message : String) (key : Int) : String := sorry\n\n\
+  theorem caeser_preserves_length \n  (message : String) (key : Int) :\n  (caeser\
+  \ message key).length = message.length := sorry\n"
+"vc-theorems": "theorem caeser_preserves_non_alpha\n  (message : String) (key : Int)\n\
+  \  (c1 c2 : Char)\n  (h1 : ¬(c1.isAlpha)) :\n  c1 = c2 := sorry\n\n\ntheorem caeser_result_uppercase\n\
+  \  (message : String) (key : Int) \n  (c : Char)\n  (h1 : c.isAlpha) :\n  c.isUpper\
+  \ = true := sorry\n\n\ntheorem caeser_26_is_identity\n  (message : String) :\n \
+  \ caeser message 26 = caeser message 0 := sorry\n\n\ntheorem caeser_zero_uppercases\n\
+  \  (message : String) :\n  caeser message 0 = \n    String.map (fun c => if c.isAlpha\
+  \ then c.toUpper else c) message := sorry\n\n/--\ninfo: 'THIS IS A MESSAGE'\n-/\n\
+  #guard_msgs in\n#eval caeser \"This is a message\" 0\n\n/--\ninfo: 'OZG SJW QGM?'\n\
+  -/\n#guard_msgs in\n#eval caeser \"who are you?\" 18\n\n/--\ninfo: 'ORWJU XWN'\n\
+  -/\n#guard_msgs in\n#eval caeser \"final one\" 9\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

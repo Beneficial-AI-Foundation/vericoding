@@ -1,0 +1,22 @@
+"vc-description": "Given an array of positive integers arr, calculate the sum of all\
+  \ possible odd-length subarrays.\nA subarray is a contiguous subsequence of the\
+  \ array.\nReturn the sum of all odd-length subarrays of arr.\n \nExample 1:\nInput:\
+  \ arr = [1,4,2,5,3]\nOutput: 58\nExplanation: The odd-length subarrays of arr and\
+  \ their sums are:\n[1] = 1\n[4] = 4\n[2] = 2\n[5] = 5\n[3] = 3\n[1,4,2] = 7\n[4,2,5]\
+  \ = 11\n[2,5,3] = 10\n[1,4,2,5,3] = 15\nIf we add all these together we get 1 +\
+  \ 4 + 2 + 5 + 3 + 7 + 11 + 10 + 15 = 58\nExample 2:\nInput: arr = [1,2]\nOutput:\
+  \ 3\nExplanation: There are only 2 subarrays of odd length, [1] and [2]. Their sum\
+  \ is 3.\nExample 3:\nInput: arr = [10,11,12]\nOutput: 66\n\n \nConstraints:\n\n\
+  1 <= arr.length <= 100\n1 <= arr[i] <= 1000"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sumOddLengthSubarrays (arr : List Int) : Int := sorry\n\ndef\
+  \ manualSum (arr : List Int) : Int := sorry \n"
+"vc-theorems": "theorem single_element_arr_eq_result (x : Int) : \n  sumOddLengthSubarrays\
+  \ [x] = x := sorry\n\n\ntheorem result_eq_manual_sum (arr : List Int) :\n  sumOddLengthSubarrays\
+  \ arr = manualSum arr := sorry\n\n\ntheorem positive_input_positive_output (arr\
+  \ : List Int) :\n  (∀ x ∈ arr, x > 0) → sumOddLengthSubarrays arr > 0 := sorry\n\
+  \n/--\ninfo: 58\n-/\n#guard_msgs in\n#eval sum_odd_length_subarrays [1, 4, 2, 5,\
+  \ 3]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval sum_odd_length_subarrays [1, 2]\n\
+  \n/--\ninfo: 66\n-/\n#guard_msgs in\n#eval sum_odd_length_subarrays [10, 11, 12]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

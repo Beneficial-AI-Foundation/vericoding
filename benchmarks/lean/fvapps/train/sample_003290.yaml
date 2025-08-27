@@ -1,0 +1,20 @@
+"vc-description": "Create a function that will return ```true``` if the input is in\
+  \ the following date time format ```01-09-2016 01:20``` and ```false``` if it is\
+  \ not.\n\nThis Kata has been inspired by the Regular Expressions chapter from the\
+  \ book Eloquent JavaScript."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def date_checker (s : String) : Bool := sorry\n\ndef format_date\
+  \ (d m y h min : Nat) : String := \n  toString d ++ \"-\" ++ toString m ++ \"-\"\
+  \ ++ toString y ++ \" \" ++ toString h ++ \":\" ++ toString min\n"
+"vc-theorems": "theorem valid_date_format (d m y h min : Nat)  \n  (hd : d ≥ 1 ∧ d\
+  \ ≤ 31) \n  (hm : m ≥ 1 ∧ m ≤ 12)\n  (hy : y ≤ 9999)\n  (hh : h ≤ 23)\n  (hmin :\
+  \ min ≤ 59) :\n  date_checker (format_date d m y h min) = true := sorry\n\n\ntheorem\
+  \ invalid_date_format (s : String)  \n  (h : s.length ≠ 16 ∨ ¬(∃ d m y h min : Nat,\n\
+  \    (d ≥ 1 ∧ d ≤ 31) ∧\n    (m ≥ 1 ∧ m ≤ 12) ∧\n    (y ≤ 9999) ∧\n    (h ≤ 23)\
+  \ ∧\n    (min ≤ 59) ∧\n    s = format_date d m y h min)) :\n  date_checker s = false\
+  \ := sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval date_checker \"01-09-2016\
+  \ 01:20\"\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval date_checker \"01-09-2016\
+  \ 01;20\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval date_checker \"14-10-1066\
+  \ 12:00\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

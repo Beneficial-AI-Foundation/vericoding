@@ -1,0 +1,41 @@
+"vc-description": "Given an array of words and a width maxWidth, format the text such\
+  \ that each line has exactly maxWidth characters and is fully (left and right) justified.\n\
+  \nYou should pack your words in a greedy approach; that is, pack as many words as\
+  \ you can in each line. Pad extra spaces ' ' when necessary so that each line has\
+  \ exactly maxWidth characters.\n\nExtra spaces between words should be distributed\
+  \ as evenly as possible. If the number of spaces on a line do not divide evenly\
+  \ between words, the empty slots on the left will be assigned more spaces than the\
+  \ slots on the right.\n\nFor the last line of text, it should be left justified\
+  \ and no extra space is inserted between words.\n\nNote:\n\n\n       A word is defined\
+  \ as a character sequence consisting of non-space characters only.\n       Each\
+  \ word's length is guaranteed to be greater than 0 and not exceed maxWidth.\n  \
+  \     The input array words contains at least one word.\n\n\nExample 1:\n\n\nInput:\n\
+  words = [\"This\", \"is\", \"an\", \"example\", \"of\", \"text\", \"justification.\"\
+  ]\nmaxWidth = 16\nOutput:\n[\n   \"This    is    an\",\n   \"example  of text\"\
+  ,\n   \"justification.  \"\n]\n\n\nExample 2:\n\n\nInput:\nwords = [\"What\",\"\
+  must\",\"be\",\"acknowledgment\",\"shall\",\"be\"]\nmaxWidth = 16\nOutput:\n[\n\
+    \"What   must   be\",\n  \"acknowledgment  \",\n  \"shall be        \"\n]\nExplanation:\
+  \ Note that the last line is \"shall be    \" instead of \"shall     be\",\n   \
+  \          because the last line must be left-justified instead of fully-justified.\n\
+  \             Note that the second line is also left-justified becase it contains\
+  \ only one word.\n\n\nExample 3:\n\n\nInput:\nwords = [\"Science\",\"is\",\"what\"\
+  ,\"we\",\"understand\",\"well\",\"enough\",\"to\",\"explain\",\n         \"to\"\
+  ,\"a\",\"computer.\",\"Art\",\"is\",\"everything\",\"else\",\"we\",\"do\"]\nmaxWidth\
+  \ = 20\nOutput:\n[\n  \"Science  is  what we\",\n  \"understand      well\",\n \
+  \ \"enough to explain to\",\n  \"a  computer.  Art is\",\n  \"everything  else  we\"\
+  ,\n  \"do                  \"\n]"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def justifyText (words : List String) (maxWidth : Nat) : List String\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem justify_text_width_correct\n  (words : List String)\n  (maxWidth\
+  \ : Nat)\n  (h1 : maxWidth ≥ 5)\n  (h2 : maxWidth ≤ 100)\n  (result : List String\
+  \ := justifyText words maxWidth)\n  : ∀ line ∈ result, String.length line = maxWidth\
+  \ :=\nsorry\n\n\ntheorem justify_text_min_lines\n  (words : List String)\n  (maxWidth\
+  \ : Nat)\n  (h1 : maxWidth ≥ 5) \n  (h2 : maxWidth ≤ 100)\n  (h3 : words ≠ [])\n\
+  \  (totalChars : Nat := (words.filter (fun w => String.length w ≤ maxWidth)).foldr\
+  \ (fun s acc => String.length s + acc) 0)\n  (h4 : totalChars > 0)\n  (result :\
+  \ List String := justifyText words maxWidth)\n  : result.length ≥ totalChars / maxWidth\
+  \ :=\nsorry\n\n\ntheorem justify_text_empty_input\n  (maxWidth : Nat)\n  (h1 : maxWidth\
+  \ ≥ 5)\n  (h2 : maxWidth ≤ 100)\n  : justifyText [] maxWidth = [] :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

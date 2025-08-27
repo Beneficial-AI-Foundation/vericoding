@@ -1,0 +1,29 @@
+"vc-description": "One suggestion to build a satisfactory password is to start with\
+  \ a memorable phrase or sentence and make a password by extracting the first letter\
+  \ of each word. \n\nEven better is to replace some of those letters with numbers\
+  \ (e.g., the letter `O` can be replaced with the number `0`):\n\n* instead of including\
+  \ `i` or `I` put the number `1` in the password;\n* instead of including `o` or\
+  \ `O` put the number `0` in the password;\n* instead of including `s` or `S` put\
+  \ the number `5` in the password.\n\n\n## Examples:\n```\n\"Give me liberty or give\
+  \ me death\"  --> \"Gml0gmd\"\n\"Keep Calm and Carry On\"            --> \"KCaC0\"\
+  \n```"
+"vc-preamble": "import Imports.AllImports\n\ndef SWAP : Char → Char\n  | 'a' => '@'\n\
+  \  | 'i' => '1'\n  | 'e' => '3'\n  | 'o' => '0'\n  | c => c\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def make_password (phrase : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem password_length_matches_words (words : List String) :\n  (make_password\
+  \ (String.intercalate \" \" words)).length = words.length :=\n  sorry\n\n\ntheorem\
+  \ first_letters_property (words : List String) (h : ∀ w ∈ words, w.length > 0) :\n\
+  \  let pass := make_password (String.intercalate \" \" words)\n  ∀ i < pass.length,\
+  \ ∀ j < words.length, i = j →\n    pass.data[i]! = SWAP (words[j]!.data[0]!) :=\n\
+  \  sorry\n\n\ntheorem empty_words_filtered (phrase : String) :\n  let clean := String.intercalate\
+  \ \" \" (phrase.split (· = ' ') |>.filter (·.length > 0))\n  make_password phrase\
+  \ = make_password clean :=\n  sorry\n\n\ntheorem swap_chars_applied (words : List\
+  \ String) (h : ∀ w ∈ words, w.length > 0) :\n  let pass := make_password (String.intercalate\
+  \ \" \" words)\n  ∀ i < pass.length, ∀ j < words.length, i = j →\n    let firstChar\
+  \ := words[j]!.data[0]!\n    firstChar ∈ ['a', 'i', 'e', 'o'] →\n    pass.data[i]!\
+  \ = SWAP firstChar :=\n  sorry\n\n/--\ninfo: 'Gml0gmd'\n-/\n#guard_msgs in\n#eval\
+  \ make_password \"Give me liberty or give me death\"\n\n/--\ninfo: 'KCaC0'\n-/\n\
+  #guard_msgs in\n#eval make_password \"Keep Calm and Carry On\"\n\n/--\ninfo: '505'\n\
+  -/\n#guard_msgs in\n#eval make_password \"Save Our Souls\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,29 @@
+"vc-description": "We've got a message from the **Librarian**. As usual there're many\
+  \ `o` and `k` in it and, as all codewarriors don't know \"Ook\" language we need\
+  \ that you translate this message.\n\n**tip** : it seems traditional \"Hello World!\"\
+  \ would look like :\n`Ok, Ook, Ooo?  Okk, Ook, Ok?  Okk, Okk, Oo?  Okk, Okk, Oo?\
+  \  Okk, Okkkk?  Ok, Ooooo?  Ok, Ok, Okkk?  Okk, Okkkk?  Okkk, Ook, O?  Okk, Okk,\
+  \ Oo?  Okk, Ook, Oo?  Ook, Ooook!`\n\nYour task is to implement a function `okkOokOo(okkOookk)`,\
+  \ that would take the `okkOookk` message as input and return a decoded human-readable\
+  \ string.\n\n*eg*:\n```python\nokkOokOo('Ok, Ook, Ooo!')  # -> 'H'\nokkOokOo('Ok,\
+  \ Ook, Ooo?  Okk, Ook, Ok?  Okk, Okk, Oo?  Okk, Okk, Oo?  Okk, Okkkk!')  # -> 'Hello'\n\
+  okkOokOo('Ok, Ok, Okkk?  Okk, Okkkk?  Okkk, Ook, O?  Okk, Okk, Oo?  Okk, Ook, Oo?\
+  \  Ook, Ooook!')  # -> 'World!'\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def okkOokOo (s : String) : String :=\n  sorry\n\n/-- The function\
+  \ correctly encodes basic ASCII characters -/"
+"vc-theorems": "theorem basic_ascii_encoding (input : String) :\n  okkOokOo \"Ok,\
+  \ Ook, Ooo!\" = \"H\" :=\nsorry\n\n/-- The function handles multiple characters\
+  \ correctly -/\n\ntheorem multiple_char_encoding :\n  okkOokOo \"Ok, Ook, Ooo?Okk,\
+  \ Ook, Ok\" = \"He\" :=\nsorry\n\n/-- The length of output matches the number of\
+  \ separators plus one -/\n\ntheorem length_matches_separators :\n  String.length\
+  \ (okkOokOo \"Ok, Ook, Ooo?Okk, Ook, Ok\") = 2 :=\nsorry\n\n/-- The output only\
+  \ contains printable ASCII characters -/\n\ntheorem output_is_printable_ascii (s\
+  \ : String) (c : Char) :\n  c ∈ (okkOokOo s).data →\n  32 ≤ c.toNat ∧ c.toNat ≤\
+  \ 126 :=\nsorry\n\n/--\ninfo: 'H'\n-/\n#guard_msgs in\n#eval okkOokOo \"Ok, Ook,\
+  \ Ooo!\"\n\n/--\ninfo: 'Hello'\n-/\n#guard_msgs in\n#eval okkOokOo \"Ok, Ook, Ooo?\
+  \  Okk, Ook, Ok?  Okk, Okk, Oo?  Okk, Okk, Oo?  Okk, Okkkk!\"\n\n/--\ninfo: 'World!'\n\
+  -/\n#guard_msgs in\n#eval okkOokOo \"Ok, Ok, Okkk?  Okk, Okkkk?  Okkk, Ook, O? \
+  \ Okk, Okk, Oo?  Okk, Ook, Oo?  Ook, Ooook!\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

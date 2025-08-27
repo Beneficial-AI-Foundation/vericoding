@@ -1,0 +1,23 @@
+"vc-description": "Consider the following $4 \\times 4$ pattern:\n1  2  4  7\n3  5\
+  \  8 11\n6  9 12 14\n10 13 15 16\n\nYou are given an integer $N$. Print the $N \\\
+  times N$ pattern of the same kind (containing integers $1$ through $N^2$).\n\n-----Input-----\n\
+  - The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first and only\
+  \ line of each test case contains a single integer $N$.\n\n-----Output-----\nFor\
+  \ each test case, print $N$ lines; each of them should contain $N$ space-separated\
+  \ integers.\n\n-----Constraints-----\n- $1 \\le T \\le 10$\n- $1 \\le N \\le 100$\n\
+  \n-----Subtasks-----\nSubtask #1 (100 points): Original constraints\n\n-----Example\
+  \ Input-----\n1\n4\n\n-----Example Output-----\n1 2 4 7\n3 5 8 11\n6 9 12 14\n10\
+  \ 13 15 16\n\n-----Explanation-----"
+"vc-preamble": "import Imports.AllImports\n\ndef generate_pattern (n : Nat) : List\
+  \ (List Nat) :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sumRange (a b : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem triangle_numbers (n : Nat) (h : n > 0) :\n  let pattern :=\
+  \ generate_pattern n\n  ∀ i, i < n → (pattern.get! i).get! 0 = sumRange 1 (i+2)\
+  \ :=\n  sorry\n\n\ntheorem pattern_differences (n : Nat) (h : n > 0) :\n  let pattern\
+  \ := generate_pattern n\n  ∀ i j, i < n → j + 1 < (pattern.get! i).length →\n  \
+  \  let row := pattern.get! i\n    let diff := row.get! (j+1) - row.get! j\n    if\
+  \ j + i + 1 < n\n      then diff = j + i + 1 \n      else diff = 2*n - (j + i +\
+  \ 1) - 1 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

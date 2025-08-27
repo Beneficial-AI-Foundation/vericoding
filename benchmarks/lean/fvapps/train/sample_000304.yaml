@@ -1,0 +1,27 @@
+"vc-description": "Return the length of the shortest, non-empty, contiguous subarray\
+  \ of A with sum at least K.\nIf there is no non-empty subarray with sum at least\
+  \ K, return -1.\n \n\n\n\nExample 1:\nInput: A = [1], K = 1\nOutput: 1\n\n\nExample\
+  \ 2:\nInput: A = [1,2], K = 4\nOutput: -1\n\n\nExample 3:\nInput: A = [2,-1,2],\
+  \ K = 3\nOutput: 3\n\n \nNote:\n\n1 <= A.length <= 50000\n-10 ^ 5 <= A[i] <= 10\
+  \ ^ 5\n1 <= K <= 10 ^ 9"
+"vc-preamble": "import Imports.AllImports\n\ndef shortestSubarray (arr : List Int)\
+  \ (k : Int) : Int :=\n  sorry\n\n\ndef sumList (l : List Int) : Int :=\n  l.foldl\
+  \ (· + ·) 0\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def toNat (i : Int) : Nat :=\n  if i ≤ 0 then 0 else i.natAbs\n"
+"vc-theorems": "theorem impossible_cases (k : Int) : \n  shortestSubarray [] k = -1\
+  \ ∧ \n  shortestSubarray [0] k = -1 ∧ \n  shortestSubarray [0,0] k = -1 :=\nsorry\n\
+  \n\ntheorem positive_only (arr : List Int) (k : Int) (h1 : ∀ x ∈ arr, 0 < x) (h2\
+  \ : 0 < k) :\n  let result := shortestSubarray arr k\n  if result = -1 then\n  \
+  \  ∀ start len : Nat, start + len ≤ arr.length → \n      sumList ((arr.take (start\
+  \ + len)).drop start) < k\n  else\n    (∃ start : Nat, start + (toNat result) ≤\
+  \ arr.length ∧ \n      sumList ((arr.take (start + (toNat result))).drop start)\
+  \ ≥ k) ∧\n    (∀ len : Nat, len < (toNat result) → ∀ start : Nat, start + len ≤\
+  \ arr.length →\n      sumList ((arr.take (start + len)).drop start) < k) :=\nsorry\n\
+  \n\ntheorem result_bounds (arr : List Int) (k : Int) (h1 : 0 < k) (h2 : ¬arr.isEmpty)\
+  \ :\n  let result := shortestSubarray arr k\n  if result = -1 then True\n  else\
+  \ 1 ≤ result ∧ result ≤ arr.length :=\nsorry\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n\
+  #eval shortestSubarray [1] 1\n\n/--\ninfo: -1\n-/\n#guard_msgs in\n#eval shortestSubarray\
+  \ [1, 2] 4\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval shortestSubarray [2, -1, 2]\
+  \ 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

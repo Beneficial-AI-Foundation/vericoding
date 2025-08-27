@@ -1,0 +1,28 @@
+"vc-description": "Scientists working internationally use metric units almost exclusively.\
+  \ Unless that is, they wish to crash multimillion dollars worth of equipment on\
+  \ Mars.\n\nYour task is to write a simple function that takes a number of meters,\
+  \ and outputs it using metric prefixes.\n\nIn practice, meters are only measured\
+  \ in \"mm\" (thousandths of a meter), \"cm\" (hundredths of a meter), \"m\" (meters)\
+  \ and \"km\" (kilometers, or clicks for the US military).\n\nFor this exercise we\
+  \ just want units bigger than a meter, from meters up to yottameters, excluding\
+  \ decameters and hectometers.\n\nAll values passed in will be positive integers.\n\
+  e.g.\n\n```python\nmeters(5);\n// returns \"5m\"\n\nmeters(51500);\n// returns \"\
+  51.5km\"\n\nmeters(5000000);\n// returns \"5Mm\"\n```\n\nSee http://en.wikipedia.org/wiki/SI_prefix\
+  \ for a full list of prefixes"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def meters (n : Nat) : String := sorry\n\ndef Valid_Suffix : List\
+  \ String := [\"m\", \"km\", \"Mm\", \"Gm\", \"Tm\", \"Pm\", \"Em\", \"Zm\", \"Ym\"\
+  ]\n"
+"vc-theorems": "theorem meters_ends_with_m_suffix (n : Nat) :\n  n ≤ 10^24 → ∃ suffix\
+  \ ∈ Valid_Suffix, (meters n).endsWith suffix :=\nsorry\n\n\ntheorem meters_starts_with_digit\
+  \ (n : Nat) :\n  n ≤ 10^24 → (meters n).get! 0 ∈ ['0','1','2','3','4','5','6','7','8','9']\
+  \ := \nsorry\n\n\ntheorem meters_numeric_part_less_than_1000 (n : Nat) :\n  n ≤\
+  \ 10^24 → ∃ x : Float, x < 1000 := \nsorry\n\n\ntheorem meters_small_values (n :\
+  \ Nat) :\n  1 ≤ n ∧ n ≤ 999 → meters n = s!\"{n}m\" :=\nsorry\n\n\ntheorem meters_kilo_range\
+  \ (n : Nat) :\n  1000 ≤ n ∧ n ≤ 999999 → \n  (meters n).endsWith \"km\" ∧ \n  ∃\
+  \ x : Float, 1 ≤ x ∧ x < 1000 :=\nsorry\n\n\ntheorem meters_special_values :\n \
+  \ meters 1000 = \"1km\" ∧ \n  meters 1000000 = \"1Mm\" :=\nsorry\n\n/--\ninfo: '5m'\n\
+  -/\n#guard_msgs in\n#eval meters 5\n\n/--\ninfo: '51.5km'\n-/\n#guard_msgs in\n\
+  #eval meters 51500\n\n/--\ninfo: '5Mm'\n-/\n#guard_msgs in\n#eval meters 5000000\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

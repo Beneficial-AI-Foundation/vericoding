@@ -1,0 +1,27 @@
+"vc-description": "# Task\n You are given a string `s`. Let's call its substring a\
+  \ group, if all letters in it are adjacent and the same(such as `\"aa\",\"bbb\"\
+  ,\"cccc\"`..). Let's call the substiring with 2 or more adjacent group a big group(such\
+  \ as `\"aabb\",\"bbccc\"`...).\n \n Your task is to count the number of `big groups`\
+  \ in the given string.\n\n# Example\n\n For `s = \"ccccoodeffffiiighhhhhhhhhhttttttts\"\
+  `, the result should be `3`.\n ```\nThe groups are \"cccc\", \"oo\", \"ffff\", \"\
+  iii\", \"hhhhhhhhhh\", \"ttttttt\"\nThe big groups are \"ccccoo\", \"ffffiii\",\
+  \ \"hhhhhhhhhhttttttt\", \n3 substrings altogether.```\n\n For `s = \"gztxxxxxggggggggggggsssssssbbbbbeeeeeeehhhmmmmmmmitttttttlllllhkppppp\"\
+  `, the result should be `2`.\n ```\nThe big groups are :\n\"xxxxxggggggggggggsssssssbbbbbeeeeeeehhhmmmmmmm\"\
+  \nand \n\"tttttttlllll\" ```\n\n For `s = \"soooooldieeeeeer\"`, the result should\
+  \ be `0`.\n \n There is no `big group` exist.\n \n# Input/Output\n\n\n - `[input]`\
+  \ string `s`\n\n  A string of lowercase Latin letters.\n\n\n - `[output]` an integer\n\
+  \n  The number of big groups."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_big_groups (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem count_big_groups_nonnegative (s : String) :\n  count_big_groups\
+  \ s ≥ 0 :=\n  sorry\n\n\ntheorem single_chars_give_zero (s : String) :\n  List.Nodup\
+  \ s.data → count_big_groups s = 0 :=\n  sorry  \n\n\ntheorem single_repeat_gives_zero\
+  \ (s : String) (c : Char) :\n  s.data = List.replicate s.length c → count_big_groups\
+  \ s = 0 :=\n  sorry\n\n\ntheorem short_strings_give_zero (s : String) :\n  s.length\
+  \ ≤ 3 → count_big_groups s = 0 :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
+  #eval count_big_groups \"ccccoodeffffiiighhhhhhhhhhttttttts\"\n\n/--\ninfo: 0\n\
+  -/\n#guard_msgs in\n#eval count_big_groups \"soooooldieeeeeer\"\n\n/--\ninfo: 2\n\
+  -/\n#guard_msgs in\n#eval count_big_groups \"gztxxxxxggggggggggggsssssssbbbbbeeeeeeehhhmmmmmmmitttttttlllllhkppppp\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

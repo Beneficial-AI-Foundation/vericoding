@@ -1,0 +1,28 @@
+"vc-description": "Everyday we go to different places to get our things done. Those\
+  \ places can be represented by specific location points `[ [, ], ... ]` on a map.\
+  \ I will be giving you an array of arrays that contain coordinates of the different\
+  \ places I had been on a particular day. Your task will be to find `peripheries\
+  \ (outermost edges)` of the bounding box that contains all the points. The response\
+  \ should only contain `Northwest and Southeast` points as follows: `{ \"nw\": [,\
+  \ ], \"se\": [ , ] }`. You are adviced to draw the points on a 2D plan to visualize:\n\
+  \n```\n                         N\n                         ^\n    p(nw)  ______________|________________\n\
+  \          |              |                |\n          |              | all other\
+  \      |   \n          |              |  points        |\n          |          \
+  \    |                |\n     ----------------------------------------> E      \
+  \    \n          |              |                |\n          |  all other   | \
+  \               |\n          |  points      |                |\n          |______________|________________|\n\
+  \                         |                  p(se)\n```"
+"vc-preamble": "import Imports.AllImports\n\ndef box (coords : List (Float × Float))\
+  \ : Box :=\n  sorry\n\n\ndef minList (l : List Float) : Float :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def maxList (l : List Float) : Float :=\n  sorry\n"
+"vc-theorems": "theorem box_bounds (coords : List (Float × Float)) (h : coords.length\
+  \ > 0) :\n  let b := box coords\n  let lats := coords.map (·.1)\n  let longs :=\
+  \ coords.map (·.2)\n  b.nw.lat ≥ minList lats ∧ \n  b.nw.lat ≤ maxList lats ∧\n\
+  \  b.nw.long ≥ minList longs ∧\n  b.nw.long ≤ maxList longs ∧\n  b.se.lat ≥ minList\
+  \ lats ∧\n  b.se.lat ≤ maxList lats ∧\n  b.se.long ≥ minList longs ∧\n  b.se.long\
+  \ ≤ maxList longs ∧\n  b.nw.lat ≥ b.se.lat ∧\n  b.se.long ≥ b.nw.long :=\n  sorry\n\
+  \n\ntheorem single_point (coord : Float × Float) :\n  let b := box [coord]\n  b.nw.lat\
+  \ = coord.1 ∧\n  b.nw.long = coord.2 ∧\n  b.se.lat = coord.1 ∧\n  b.se.long = coord.2\
+  \ :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

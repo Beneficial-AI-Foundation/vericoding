@@ -1,0 +1,32 @@
+"vc-description": "Uh oh, Someone at the office has dropped all these sequences on\
+  \ the floor and forgotten to label them with their correct bases. \n\nWe have to\
+  \ fix this before the boss gets back or we're all going to be fired!\n\nThis is\
+  \ what your years of coding have been leading up to, now is your time to shine!\n\
+  \n## Task\n\nYou will have to create a function which takes in a sequence of numbers\
+  \ in **random order** and you will have to return the correct base of those numbers.\n\
+  \nThe base is the number of unique digits. For example, a base 10 number can have\
+  \ 10 unique digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 and a base 2 number (Binary) can\
+  \ have 2 unique digits: 0 and 1.\n\n### Constraints\n\nThe sequence will always\
+  \ be 10 numbers long and we know that the base is going to be between 2 and 10 inclusive\
+  \ so no need to worry about any letters. When sorted, the sequence is made up of\
+  \ consecutive numbers.\n\n### Examples\n\n```\n[ \"1\", \"2\", \"3\", \"4\", \"\
+  5\", \"6\", \"7\", \"8\", \"9\", \"10\" ]     -->  10\n[ \"1\", \"2\", \"3\", \"\
+  4\", \"5\", \"6\", \"10\", \"11\", \"12\", \"13\" ]  -->   7\n```\n\n**Good luck!**"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def base_finder (nums : List String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem base_detection {base : Nat} (h1 : 2 ≤ base) (h2 : base ≤ 10)\
+  \ :\n  let numbers := List.map toString (List.range base)\n  base_finder numbers\
+  \ = base :=\nsorry\n\n\ntheorem base_repeating_digits {base : Nat} (h1 : 2 ≤ base)\
+  \ (h2 : base ≤ 10) :\n  let numbers := List.map (fun x => toString x ++ toString\
+  \ x) (List.range base)\n  base_finder numbers = base :=\nsorry\n\n\ntheorem base_varying_lengths\
+  \ {base : Nat} (h1 : 2 ≤ base) (h2 : base ≤ 10) :\n  let numbers := List.map (fun\
+  \ i => String.mk (List.replicate (i+1) '0')) (List.range base)\n  base_finder numbers\
+  \ = 1 := \nsorry\n\n\ntheorem base_empty_sequence :\n  base_finder [] = 0 :=\nsorry\n\
+  \n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval base_finder [\"0\", \"1\", \"2\", \"\
+  3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\"]\n\n/--\ninfo: 7\n-/\n#guard_msgs\
+  \ in\n#eval base_finder [\"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"10\", \"11\"\
+  , \"12\", \"13\"]\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval base_finder [\"301\"\
+  , \"302\", \"303\", \"304\", \"305\", \"310\", \"311\", \"312\", \"313\", \"314\"\
+  ]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

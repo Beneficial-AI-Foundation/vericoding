@@ -1,0 +1,28 @@
+"vc-description": "Write function `makeParts` or `make_parts` (depending on your language)\
+  \ that will take an array as argument and the size of the chunk.\n\nExample: if\
+  \ an array of size 123 is given and chunk size is 10 there will be 13 parts, 12\
+  \ of size 10 and 1 of size 3."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def makeParts {α : Type u} (lst : List α) (chunkSize : Nat) : List\
+  \ (List α) :=\n  sorry\n"
+"vc-theorems": "theorem makeParts_chunk_size_property {α : Type u} (lst : List α)\
+  \ (chunkSize : Nat) \n  (h : chunkSize > 0) :\n  ∀ i, i < (makeParts lst chunkSize).length\
+  \ - 1 → \n  ((makeParts lst chunkSize)[i]'(by sorry)).length = chunkSize := \n \
+  \ sorry\n\n\ntheorem makeParts_last_chunk_size {α : Type u} (lst : List α) (chunkSize\
+  \ : Nat)\n  (h1 : chunkSize > 0) (h2 : (makeParts lst chunkSize).length > 0) :\n\
+  \  let parts := makeParts lst chunkSize\n  (parts[parts.length - 1]'(by sorry)).length\
+  \ ≤ chunkSize :=\n  sorry\n\n\ntheorem makeParts_preserves_elements {α : Type u}\
+  \ (lst : List α) (chunkSize : Nat)\n  (h : chunkSize > 0) :\n  (makeParts lst chunkSize).join\
+  \ = lst :=\n  sorry\n\n\ntheorem makeParts_chunk_count {α : Type u} (lst : List\
+  \ α) (chunkSize : Nat)\n  (h : chunkSize > 0) :\n  (makeParts lst chunkSize).length\
+  \ = (lst.length + chunkSize - 1) / chunkSize :=\n  sorry\n\n\ntheorem makeParts_chunk_size_one\
+  \ {α : Type u} (lst : List α) :\n  makeParts lst 1 = lst.map (·::List.nil) :=\n\
+  \  sorry\n\n\ntheorem makeParts_full_list {α : Type u} (lst : List α) (h : lst.length\
+  \ > 0) :\n  makeParts lst lst.length = [lst] :=\n  sorry\n\n\ntheorem makeParts_empty_list\
+  \ {α : Type u} (n : Nat) (h : n > 0) :\n  makeParts ([] : List α) n = [] :=\n  sorry\n\
+  \n/--\ninfo: [[1, 2], [3, 4], [5, 6]]\n-/\n#guard_msgs in\n#eval make_parts [1,\
+  \ 2, 3, 4, 5, 6] 2\n\n/--\ninfo: [[1, 2], [3, 4], [5]]\n-/\n#guard_msgs in\n#eval\
+  \ make_parts [1, 2, 3, 4, 5] 2\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval make_parts\
+  \ [] 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

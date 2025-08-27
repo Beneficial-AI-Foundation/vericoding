@@ -1,0 +1,19 @@
+"vc-description": "Given any number of boolean flags function should return true if\
+  \ and only if one of them is true while others are false. If function is called\
+  \ without arguments it should return false.\n\n```python\n  only_one() == False\n\
+  \  only_one(True, False, False) == True\n  only_one(True, False, False, True) ==\
+  \ False\n  only_one(False, False, False, False) == False  \n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def only_one (bs : List Bool) : Bool := sorry\n\ndef count_true\
+  \ : List Bool → Nat\n  | [] => 0\n  | true :: rest => 1 + count_true rest \n  |\
+  \ false :: rest => count_true rest\n"
+"vc-theorems": "theorem only_one_empty : \n  only_one [] = false :=\nsorry\n\n\ntheorem\
+  \ only_one_exactly_one_true (bs : List Bool) : \n  (count_true bs = 1) → only_one\
+  \ bs = true :=\nsorry\n\n\ntheorem only_one_wrong_count (bs : List Bool) :\n  (count_true\
+  \ bs ≠ 1) → only_one bs = false := \nsorry\n\n\ntheorem only_one_main (bs : List\
+  \ Bool) :\n  only_one bs = (count_true bs = 1) :=\nsorry\n\n/--\ninfo: False\n-/\n\
+  #guard_msgs in\n#eval only_one \n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval only_one\
+  \ True False False\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval only_one True\
+  \ False False True\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,23 @@
+"vc-description": "The Tower of Hanoi problem involves 3 towers.  A number of rings\
+  \ decreasing in size are placed on one tower.  All rings must then be moved to another\
+  \ tower, but at no point can a larger ring be placed on a smaller ring.\n\nYour\
+  \ task:  Given a number of rings, return the MINIMUM number of moves needed to move\
+  \ all the rings from one tower to another.\n\nReference: Tower of Hanoi, Courtesy\
+  \ of Coolmath Games\n\nNB:  This problem may seem very complex, but in reality there\
+  \ is an amazingly simple formula to calculate the minimum number.  Just Learn how\
+  \ to solve the problem via the above link (if you are not familiar with it), and\
+  \ then think hard.  Your solution should be in no way extraordinarily long and complex.\
+  \  The Kata ranking is for figuring out the solution, but the coding skills required\
+  \ are minimal."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def tower_of_hanoi (n : Nat) : Nat := sorry\n\ntheorem tower_power_of_two\
+  \ (n : Nat) : \n  tower_of_hanoi n = 2^n - 1 := sorry\n"
+"vc-theorems": "theorem tower_positive (n : Nat) : \n  n > 0 → tower_of_hanoi n >\
+  \ 0 := sorry\n\n\ntheorem tower_more_than_double (n : Nat) :\n  n > 0 → tower_of_hanoi\
+  \ n > 2 * tower_of_hanoi (n-1) := sorry\n\n\ntheorem tower_base_zero :\n  tower_of_hanoi\
+  \ 0 = 0 := sorry\n\n\ntheorem tower_base_one :\n  tower_of_hanoi 1 = 1 := sorry\n\
+  \n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval tower_of_hanoi 4\n\n/--\ninfo: 31\n-/\n\
+  #guard_msgs in\n#eval tower_of_hanoi 5\n\n/--\ninfo: 1023\n-/\n#guard_msgs in\n\
+  #eval tower_of_hanoi 10\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

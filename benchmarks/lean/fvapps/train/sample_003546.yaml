@@ -1,0 +1,18 @@
+"vc-description": "You will get an array of numbers. \n\nEvery preceding number is\
+  \ smaller than the one following it.\n\nSome numbers will be missing, for instance:\n\
+  ```\n[-3,-2,1,5] //missing numbers are: -1,0,2,3,4\n```\nYour task is to return\
+  \ an array of those missing numbers:\n```\n[-1,0,2,3,4]\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_missing_numbers (arr : List Int) : List Int := sorry\n\
+  \ntheorem empty_or_single_returns_empty (arr : List Int) : \n  arr.length ≤ 1 →\
+  \ find_missing_numbers arr = [] := sorry\n"
+"vc-theorems": "theorem no_originals_in_result {arr : List Int} (h : arr.Nodup) :\n\
+  \  ∀ x ∈ find_missing_numbers arr, x ∉ arr := sorry\n  \n\ntheorem result_is_sorted\
+  \ (arr : List Int) :\n  ∀ i j, i < j → \n  i < (find_missing_numbers arr).length\
+  \ →\n  j < (find_missing_numbers arr).length →\n  (find_missing_numbers arr)[i]!\
+  \ ≤ (find_missing_numbers arr)[j]! := sorry\n\n/--\ninfo: [-1, 0, 2, 3]\n-/\n#guard_msgs\
+  \ in\n#eval find_missing_numbers [-3, -2, 1, 4]\n\n/--\ninfo: []\n-/\n#guard_msgs\
+  \ in\n#eval find_missing_numbers [-1, 0, 1, 2, 3, 4]\n\n/--\ninfo: [-3, -2, -1,\
+  \ 0, 1, 2, 3]\n-/\n#guard_msgs in\n#eval find_missing_numbers [-4, 4]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

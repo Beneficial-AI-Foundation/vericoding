@@ -1,0 +1,32 @@
+"vc-description": "=====Problem Statement=====\nA newly opened multinational brand\
+  \ has decided to base their company logo on the three most common characters in\
+  \ the company name. They are now trying out various combinations of company names\
+  \ and logos based on this condition. Given a string s, which is the company name\
+  \ in lowercase letters, your task is to find the top three most common characters\
+  \ in the string.\nPrint the three most common characters along with their occurrence\
+  \ count.\nSort in descending order of occurrence count.\nIf the occurrence count\
+  \ is the same, sort the characters in alphabetical order.\n\nFor example, according\
+  \ to the conditions described above, GOOGLE would have it's logo with the letters\
+  \ G, O, E. \n\n=====Input Format=====\nA single line of input containing the string\
+  \ S.\n\n=====Constraints=====\n3≤len(S)≤10^4"
+"vc-preamble": "import Imports.AllImports\n\ndef get_top_three_chars (s : String)\
+  \ : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def String.count (s : String) (c : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem get_top_three_chars_valid_format (s : String)\n  (h : s.length\
+  \ > 0)\n  (h2 : ∀ c ∈ s.data, c.isLower) :\n  let result := get_top_three_chars\
+  \ s;\n  let lines := result.splitOn \"\\n\";\n  1 ≤ lines.length ∧ lines.length\
+  \ ≤ 3 ∧\n  (∀ line ∈ lines, ∃ (char : String) (count : Nat),\n    line = s!\"{char}\
+  \ {count}\" ∧\n    char.length = 1 ∧\n    s.count char = count) ∧\n  (∀ i < lines.length\
+  \ - 1,\n    let parts1 := (lines.get! i).splitOn \" \";\n    let parts2 := (lines.get!\
+  \ (i+1)).splitOn \" \";\n    (parts1.get! 1).toNat! ≥ (parts2.get! 1).toNat!) ∧\n\
+  \  (let chars := lines.map (λ l => (l.splitOn \" \").get! 0);\n   chars.eraseDups\
+  \ = chars) :=\n  sorry\n\n\ntheorem get_top_three_chars_alphabetical_tiebreak (s\
+  \ : String)\n  (h : s.length ≥ 2)\n  (h2 : ∀ c ∈ s.data, c = 'a' ∨ c = 'b') :\n\
+  \  let result := get_top_three_chars s;\n  let lines := result.splitOn \"\\n\";\n\
+  \  ∀ i < lines.length - 1,\n    let parts1 := (lines.get! i).splitOn \" \";\n  \
+  \  let parts2 := (lines.get! (i+1)).splitOn \" \";\n    let count1 := (parts1.get!\
+  \ 1).toNat!;\n    let count2 := (parts2.get! 1).toNat!;\n    let char1 := parts1.get!\
+  \ 0;\n    let char2 := parts2.get! 0;\n    count1 = count2 → char1 > char2 :=\n\
+  \  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

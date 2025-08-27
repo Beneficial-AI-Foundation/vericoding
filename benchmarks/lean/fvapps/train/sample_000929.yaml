@@ -1,0 +1,31 @@
+"vc-description": "Tired of the overpopulated world, Miu - The introverted cat visits\
+  \ a new continent in search for a new house.  \nThere are $N$ houses lying on the\
+  \ X-axis.\n\nTheir positions are given by $X$$i$ , where $i$ refers to the $i$th\
+  \ house. ( $1 <= i <= N$ )\n\nEach of these positions are pairwise distinct \nMiu\
+  \ is supposed to choose one of these houses for herself.\n\nMiu defines a term -\
+  \ The Distance of Peace,  as the minimum distance from her house to any other house.\
+  \  \nMiu wonders what is maximum Distance of Peace she can obtain. Can you help\
+  \ her?\n\n-----Input:-----\n- The first line of the input consists of a single integer\
+  \ $T$, denoting the number of test cases  \n- The first line of each test case consists\
+  \ of a single integer $N$ \n- The second line of each test case consists of $N$\
+  \ space-separated integers\n$X$$1$ $X$$2$ $X$$3$ … $X$$N$\n\n-----Output:-----\n\
+  - For each test case print the answer in a single line, the maximum Distance of\
+  \ Peace Miu can obtain\n\n-----Constraints-----\n- 1 <= $T$ <= 100  \n- 2 <= $N$\
+  \ <= 105 \n- -109 <= $X$$i$ <= 109 \n- Sum of $N$ over all test cases does not exceed\
+  \ 106 \n\n-----Subtasks-----\nSubtask #1 (30 points): \n- $N$ <= 103 \nSubtask #2\
+  \ (70 points): \n- Original Constraints\n\n-----Sample Input:-----\n2\n\n6\n\n7\
+  \ -1 2 13 -5 15\n\n4\n\n6 10 3 12  \n\n-----Sample Output:-----\n5\n\n3  \n\n-----EXPLANATION:-----\n\
+  Test Case 1:\n\nThe $1$st house has the maximum Distance of Peace, which is from\
+  \ the $3$rd house:\n$| 7 - 2 | = 5$\n\nHence, the answer is $5$"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_max_peace_distance (houses : List Int) : Int := sorry\n\
+  \ntheorem peace_distance_nonnegative (houses : List Int) \n  (h : houses.length\
+  \ ≥ 2) :\n  find_max_peace_distance houses ≥ 0 := sorry\n"
+"vc-theorems": "theorem peace_distance_upper_bound (houses : List Int)\n  (h : houses.length\
+  \ ≥ 2) :\n  find_max_peace_distance houses ≤ (List.maximum? houses).getD 0 - (List.minimum?\
+  \ houses).getD 0 := sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval find_max_peace_distance\
+  \ [7, -1, 2, 13, -5, 15]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval find_max_peace_distance\
+  \ [6, 10, 3, 12]\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval find_max_peace_distance\
+  \ [-5, 0, 10]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

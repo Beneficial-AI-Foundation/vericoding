@@ -1,0 +1,30 @@
+"vc-description": "A password is considered strong if below conditions are all met:\n\
+  \n\n It has at least 6 characters and at most 20 characters. \n It must contain\
+  \ at least one lowercase letter, at least one uppercase letter, and at least one\
+  \ digit. \n It must NOT contain three repeating characters in a row (\"...aaa...\"\
+  \ is weak, but \"...aa...a...\" is strong, assuming other conditions are met). \n\
+  \n\nWrite a function strongPasswordChecker(s), that takes a string s as input, and\
+  \ return the MINIMUM change required to make s a strong password. If s is already\
+  \ strong, return 0.\n\nInsertion, deletion or replace of any one character are all\
+  \ considered as one change."
+"vc-preamble": "import Imports.AllImports\n\ndef isLower (c : Char) : Bool :=\n  sorry\n\
+  \n\ndef isUpper (c : Char) : Bool :=\n  sorry\n\n\ndef isDigit (c : Char) : Bool\
+  \ :=\n  sorry\n\n\ndef hasThreeRepeated (s : String) : Bool :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def strongPasswordChecker (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem output_non_negative (s : String) :\n  strongPasswordChecker\
+  \ s ≥ 0 :=\n  sorry\n\n\ntheorem valid_password_needs_no_changes (s : String) :\n\
+  \  (s.length ≥ 6 ∧ s.length ≤ 20 ∧\n   s.any isLower ∧\n   s.any isUpper ∧\n   s.any\
+  \ isDigit ∧\n   ¬hasThreeRepeated s) →\n  strongPasswordChecker s = 0 :=\n  sorry\n\
+  \n\ntheorem short_password_minimum_changes (s : String) :\n  s.length < 6 →\n  strongPasswordChecker\
+  \ s ≥ 6 - s.length :=\n  sorry\n\n\ntheorem long_password_minimum_changes (s : String)\
+  \ :\n  s.length > 20 →\n  strongPasswordChecker s ≥ s.length - 20 :=\n  sorry\n\n\
+  \ntheorem missing_categories_minimum_changes (s : String) :\n  let missing := (if\
+  \ s.any isLower then 0 else 1) +\n                 (if s.any isUpper then 0 else\
+  \ 1) +\n                 (if s.any isDigit then 0 else 1)\n  strongPasswordChecker\
+  \ s ≥ missing :=\n  sorry\n\n\ntheorem repeated_chars_minimum_changes (s : String)\
+  \ :\n  (∀ c : Char, c ∈ s.data → c = 'a') →\n  s.length ≥ 3 →\n  strongPasswordChecker\
+  \ s ≥ s.length / 3 :=\n  sorry\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval strongPasswordChecker\
+  \ \"a\"\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval strongPasswordChecker \"aA1\"\
+  \n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval strongPasswordChecker \"1337C0d3\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,38 @@
+"vc-description": "When you were little, your mother used to make the most delicious\
+  \ cookies, which you could not resist. So, every now and then, when your mother\
+  \ didn't see you, you sneaked into the kitchen, climbed onto a stool to reach the\
+  \ cookie jar, and stole a cookie or two. However, sometimes while doing this, you\
+  \ would hear foot steps approaching, so you quickly jumped down from the stool and,\
+  \ when your mother entered the kitchen, you pretended as if nothing had happened\
+  \ (whistle, whistle innocently). However, your mother knew. How did she know? You\
+  \ forgot to put the lid back on the cookie jar! Oh, no!\n\nGrowing older (and still\
+  \ not able to resist your mother's cookies), you deviced a contraption that would\
+  \ automatically put the lid back on the cookie jar, _no matter what would happen_.\n\
+  \nThe class `CookieJar` is provided: \n```Python\nclass CookieJar(object):\n\n \
+  \   def __init__(self):\n        self._is_open = False\n\n    def take(self):\n\
+  \        if not self._is_open:\n            raise ValueError(\"Cookie jar is closed\"\
+  )\n        return \"Cookie\"\n\n    def open_jar(self):\n        self._is_open =\
+  \ True\n\n    def close_jar(self):\n        self._is_open = False\n\n    def is_open(self):\n\
+  \        return self._is_open\n```\nYour task is to implement the 'contraption'\
+  \ `SelfClosing` (class, method, whatever; it's your choice) such that, given an\
+  \ instance`cookie_jar` of `CookieJar`, you may call:\n\n```Python\nwith SelfClosing(cookie_jar)\
+  \ as jar:\n    cookie = jar.take()\n```\nafter which, `cookie_jar.is_open() == False`,\
+  \ _no matter what_.\n\nDo not alter the provided code. (Tests will be performed\
+  \ with a code that differs slightly from the one provided, so modifying it is to\
+  \ no avail.)\n\nEnjoy!"
+"vc-preamble": "import Imports.AllImports\n\ndef CookieJar.is_open : CookieJar → Bool\
+  \ \n  | _ => sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def CookieJar.take (jar : CookieJar) : String :=\n  sorry\n\nstructure\
+  \ SelfClosing (jar : CookieJar) where\n  mk :: \n"
+"vc-theorems": "theorem cookie_jar_initial_state (jar : CookieJar) : \n  jar.is_open\
+  \ = false := sorry \n\n\ntheorem context_manager_always_closes (jar : CookieJar)\
+  \ (e : Exception) :\n  ¬jar.is_open := sorry\n\n\ntheorem nested_context_managers\
+  \ (jar : CookieJar) \n  (ctx1 ctx2 : SelfClosing jar) :\n  jar.is_open ∧\n  (jar.is_open\
+  \ ∧ ¬jar.is_open) ∧\n  ¬jar.is_open := sorry\n\n\ntheorem multiple_operations {α\
+  \ : Type} (ops : List α) (jar : CookieJar) \n  (h : ops.length > 0) :\n  ∀ op ∈\
+  \ ops,\n    jar.take = \"Cookie\" ∧ \n    jar.is_open ∧\n    ¬jar.is_open := sorry\n\
+  \n\ntheorem nested_depth (n : Nat) (jar : CookieJar) (h : n > 0 ∧ n ≤ 100) :\n \
+  \ jar.is_open ∧\n  jar.take = \"Cookie\" ∧ \n  jar.is_open ∧\n  ¬jar.is_open :=\
+  \ sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

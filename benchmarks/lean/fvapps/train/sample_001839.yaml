@@ -1,0 +1,45 @@
+"vc-description": "Create a timebased key-value store class TimeMap, that supports\
+  \ two operations.\n1. set(string key, string value, int timestamp)\n\nStores the\
+  \ key and value, along with the given timestamp.\n\n2. get(string key, int timestamp)\n\
+  \nReturns a value such that set(key, value, timestamp_prev) was called previously,\
+  \ with timestamp_prev <= timestamp.\nIf there are multiple such values, it returns\
+  \ the one with the largest timestamp_prev.\nIf there are no values, it returns the\
+  \ empty string (\"\").\n\n \n\nExample 1:\nInput: inputs = [\"TimeMap\",\"set\"\
+  ,\"get\",\"get\",\"set\",\"get\",\"get\"], inputs = [[],[\"foo\",\"bar\",1],[\"\
+  foo\",1],[\"foo\",3],[\"foo\",\"bar2\",4],[\"foo\",4],[\"foo\",5]]\nOutput: [null,null,\"\
+  bar\",\"bar\",null,\"bar2\",\"bar2\"]\nExplanation:   \nTimeMap kv;   \nkv.set(\"\
+  foo\", \"bar\", 1); // store the key \"foo\" and value \"bar\" along with timestamp\
+  \ = 1   \nkv.get(\"foo\", 1);  // output \"bar\"   \nkv.get(\"foo\", 3); // output\
+  \ \"bar\" since there is no value corresponding to foo at timestamp 3 and timestamp\
+  \ 2, then the only value is at timestamp 1 ie \"bar\"   \nkv.set(\"foo\", \"bar2\"\
+  , 4);   \nkv.get(\"foo\", 4); // output \"bar2\"   \nkv.get(\"foo\", 5); //output\
+  \ \"bar2\"   \n\n\n\nExample 2:\nInput: inputs = [\"TimeMap\",\"set\",\"set\",\"\
+  get\",\"get\",\"get\",\"get\",\"get\"], inputs = [[],[\"love\",\"high\",10],[\"\
+  love\",\"low\",20],[\"love\",5],[\"love\",10],[\"love\",15],[\"love\",20],[\"love\"\
+  ,25]]\nOutput: [null,null,null,\"\",\"high\",\"high\",\"low\",\"low\"]\n\n\n\n \n\
+  Note:\n\nAll key/value strings are lowercase.\nAll key/value strings have length\
+  \ in the range [1, 100]\nThe timestamps for all TimeMap.set operations are strictly\
+  \ increasing.\n1 <= timestamp <= 10^7\nTimeMap.set and TimeMap.get functions will\
+  \ be called a total of 120000 times (combined) per test case."
+"vc-preamble": "import Imports.AllImports\n\ndef TimeMap.set (tm : TimeMap) (key :\
+  \ String) (value : String) (timestamp : Nat) : TimeMap :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def TimeMap.get (tm : TimeMap) (key : String) (timestamp : Nat)\
+  \ : String :=\n  sorry\n"
+"vc-theorems": "theorem set_then_get_returns_same_value \n  (key : String) (value\
+  \ : String) (timestamp : Nat) :\n  ∀ tm : TimeMap,\n  TimeMap.get (TimeMap.set tm\
+  \ key value timestamp) key timestamp = value :=\nsorry\n\n\ntheorem multiple_values_preserved_order\n\
+  \  (key : String) (value1 value2 : String) (ts1 ts2 : Nat) :\n  ts1 ≠ ts2 →\n  let\
+  \ first_ts := min ts1 ts2\n  let second_ts := max ts1 ts2\n  let first_val := if\
+  \ ts1 < ts2 then value1 else value2\n  let second_val := if ts1 < ts2 then value2\
+  \ else value1\n  ∀ tm : TimeMap,\n  let tm' := TimeMap.set tm key first_val first_ts\n\
+  \  let tm'' := TimeMap.set tm' key second_val second_ts\n  (TimeMap.get tm'' key\
+  \ first_ts = first_val) ∧\n  (TimeMap.get tm'' key second_ts = second_val) :=\n\
+  sorry\n\n\ntheorem timestamp_boundaries\n  (key : String) (value : String) (timestamp\
+  \ query_time : Nat) :\n  ∀ tm : TimeMap,\n  let tm' := TimeMap.set tm key value\
+  \ timestamp\n  (query_time < timestamp → \n    TimeMap.get tm' key query_time =\
+  \ \"\" ∨ \n    TimeMap.get tm' key query_time = value) ∧\n  (query_time ≥ timestamp\
+  \ →\n    TimeMap.get tm' key query_time = value) :=\nsorry\n\n\ntheorem nonexistent_key\n\
+  \  (key : String) (timestamp : Nat) :\n  ∀ tm : TimeMap,\n  TimeMap.get tm key timestamp\
+  \ = \"\" :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

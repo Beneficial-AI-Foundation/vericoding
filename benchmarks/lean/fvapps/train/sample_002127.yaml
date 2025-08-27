@@ -1,0 +1,23 @@
+"vc-description": "For strings s and t, we will say that s and t are prefix-free when\
+  \ neither is a prefix of the other.\nLet L be a positive integer. A set of strings\
+  \ S is a good string set when the following conditions hold true:\n - Each string\
+  \ in S has a length between 1 and L (inclusive) and consists of the characters 0\
+  \ and 1.\n - Any two distinct strings in S are prefix-free.\nWe have a good string\
+  \ set S = \\{ s_1, s_2, ..., s_N \\}. Alice and Bob will play a game against each\
+  \ other. They will alternately perform the following operation, starting from Alice:\n\
+  \ - Add a new string to S. After addition, S must still be a good string set.\n\
+  The first player who becomes unable to perform the operation loses the game. Determine\
+  \ the winner of the game when both players play optimally.\n\n-----Constraints-----\n\
+  \ - 1 \\leq N \\leq 10^5\n - 1 \\leq L \\leq 10^{18}\n - s_1, s_2, ..., s_N are\
+  \ all distinct.\n - { s_1, s_2, ..., s_N } is a good string set.\n - |s_1| + |s_2|\
+  \ + ... + |s_N| \\leq 10^5\n\n-----Input-----\nInput is given from Standard Input\
+  \ in the following format:\nN L\ns_1\ns_2\n:\ns_N\n\n-----Output-----\nIf Alice\
+  \ will win, print Alice; if Bob will win, print Bob.\n\n-----Sample Input-----\n\
+  2 2\n00\n01\n\n-----Sample Output-----\nAlice\n\nIf Alice adds 1, Bob will be unable\
+  \ to add a new string."
+"vc-preamble": "import Imports.AllImports\n\ndef solve_prefix_free_game (g : PrefixFreeGame)\
+  \ : Result :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def grundy (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem grundy_positive (n : Nat) : \n  0 < grundy n :=\nsorry"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded_and_plausible"

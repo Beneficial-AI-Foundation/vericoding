@@ -1,0 +1,35 @@
+"vc-description": "A happy string is a string that:\n\nconsists only of letters of\
+  \ the set ['a', 'b', 'c'].\ns[i] != s[i + 1] for all values of i from 1 to s.length\
+  \ - 1 (string is 1-indexed).\n\nFor example, strings \"abc\", \"ac\", \"b\" and\
+  \ \"abcbabcbcb\" are all happy strings and strings \"aa\", \"baa\" and \"ababbc\"\
+  \ are not happy strings.\nGiven two integers n and k, consider a list of all happy\
+  \ strings of length n sorted in lexicographical order.\nReturn the kth string of\
+  \ this list or return an empty string if there are less than k happy strings of\
+  \ length n.\n \nExample 1:\nInput: n = 1, k = 3\nOutput: \"c\"\nExplanation: The\
+  \ list [\"a\", \"b\", \"c\"] contains all happy strings of length 1. The third string\
+  \ is \"c\".\n\nExample 2:\nInput: n = 1, k = 4\nOutput: \"\"\nExplanation: There\
+  \ are only 3 happy strings of length 1.\n\nExample 3:\nInput: n = 3, k = 9\nOutput:\
+  \ \"cab\"\nExplanation: There are 12 different happy string of length 3 [\"aba\"\
+  , \"abc\", \"aca\", \"acb\", \"bab\", \"bac\", \"bca\", \"bcb\", \"cab\", \"cac\"\
+  , \"cba\", \"cbc\"]. You will find the 9th string = \"cab\"\n\nExample 4:\nInput:\
+  \ n = 2, k = 7\nOutput: \"\"\n\nExample 5:\nInput: n = 10, k = 100\nOutput: \"abacbabacb\"\
+  \n\n \nConstraints:\n\n1 <= n <= 10\n1 <= k <= 100"
+"vc-preamble": "import Imports.AllImports\n\ndef get_happy_string (n k : Nat) : String\
+  \ :=\n  sorry\n\n\ndef all_chars_abc (s : String) : Bool :=\n  sorry\n\n\ndef no_adjacent_same\
+  \ (s : String) : Bool := \n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def starts_with_a (s : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem happy_string_properties (n k : Nat) \n  (h1 : 0 < n) (h2 :\
+  \ n ≤ 10) (h3 : 0 < k) (h4 : k ≤ 1000) :\n  let s := get_happy_string n k\n  let\
+  \ max_possible := 3 * 2^(n-1)\n  -- Length property\n  (s.length = n ∨ s.length\
+  \ = 0) ∧ \n  -- Character set property\n  all_chars_abc s ∧\n  -- Adjacent character\
+  \ property\n  (s.length > 1 → no_adjacent_same s) ∧ \n  -- Empty string property\n\
+  \  ((k > max_possible → s.length = 0) ∧\n   (k ≤ max_possible → s.length = n)) :=\n\
+  \  sorry\n\n\ntheorem n1_special_case (k : Nat)\n  (h1 : 0 < k) (h2 : k ≤ 10) :\n\
+  \  let s := get_happy_string 1 k\n  (k ≤ 3 → (s = \"a\" ∨ s = \"b\" ∨ s = \"c\"\
+  )) ∧\n  (k > 3 → s = \"\") :=\n  sorry\n\n\ntheorem k1_special_case (n : Nat)\n\
+  \  (h1 : 0 < n) (h2 : n ≤ 5) :\n  let s := get_happy_string n 1\n  s.length = n\
+  \ ∧ \n  starts_with_a s :=\n  sorry\n\n/--\ninfo: 'c'\n-/\n#guard_msgs in\n#eval\
+  \ get_happy_string 1 3\n\n/--\ninfo: 'cab'\n-/\n#guard_msgs in\n#eval get_happy_string\
+  \ 3 9\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval get_happy_string 1 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

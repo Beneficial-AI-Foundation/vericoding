@@ -1,0 +1,19 @@
+"vc-description": "# Task\n\nFind the integer from `a` to `b` (included) with the\
+  \ greatest number of divisors. For example:\n\n```\ndivNum(15, 30)   ==> 24\ndivNum(1,\
+  \ 2)     ==> 2\ndivNum(0, 0)     ==> 0\ndivNum(52, 156)  ==> 120\n```\n\nIf there\
+  \ are several numbers that have the same (maximum) number of divisors, the smallest\
+  \ among them should be returned. Return the string `\"Error\"` if `a > b`."
+"vc-preamble": "import Imports.AllImports\n\ndef countDivisors (n : Nat) : Nat :=\n\
+  \  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def divNum (a b : Nat) : Option Nat := \n  sorry \n"
+"vc-theorems": "theorem divNum_invalid_range {a b : Nat} (h : a > b) : \n  divNum\
+  \ a b = none := \n  sorry\n\n\ntheorem divNum_result_in_range {a b : Nat} (h : a\
+  \ ≤ b) (result : Nat) :\n  divNum a b = some result → a ≤ result ∧ result ≤ b :=\n\
+  \  sorry  \n\n\ntheorem divNum_max_divisors {a b result : Nat} (h : a ≤ b) :\n \
+  \ divNum a b = some result →\n  ∀ x, a ≤ x ∧ x ≤ b → countDivisors x ≤ countDivisors\
+  \ result :=\n  sorry\n\n\ntheorem divNum_equal_inputs (x : Nat) :\n  divNum x x\
+  \ = some x :=\n  sorry\n\n/--\ninfo: 24\n-/\n#guard_msgs in\n#eval div_num 15 30\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval div_num 1 2\n\n/--\ninfo: 'Error'\n-/\n\
+  #guard_msgs in\n#eval div_num 159 4\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

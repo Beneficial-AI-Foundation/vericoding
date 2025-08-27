@@ -1,0 +1,28 @@
+"vc-description": "# Task\n You are a magician. You're going to perform a trick.\n\
+  \n You have `b` black marbles and `w` white marbles in your magic hat, and an infinite\
+  \ supply of black and white marbles that you can pull out of nowhere. \n \n You\
+  \ ask your audience to repeatedly remove a pair of marbles from your hat and, for\
+  \ each pair removed, you add one marble to the hat according to the following rule\
+  \ until there is only 1 marble left. \n\n If the marbles of the pair that is removed\
+  \ are of the same color, you add a white marble to the hat. Otherwise, if one is\
+  \ black and one is white, you add a black marble.\n \n Given the initial number\
+  \ of black and white marbles in your hat, your trick is to predict the color of\
+  \ the last marble.\n \n Note: A magician may confuse your eyes, but not your mind\
+  \ ;-)\n\n# Input/Output\n\n\n - `[input]` integer `b`\n\n  Initial number of black\
+  \ marbles in the hat. \n  \n  `1 <= b <= 10^9`\n\n\n - `[input]` integer `w`\n\n\
+  \  Initial number of white marbles in the hat. \n  \n  `1 <= w <= 10^9`\n\n\n -\
+  \ `[output]` a string\n\n  `\"Black\"` or `\"White\"` if you can safely predict\
+  \ the color of the last marble. If not, return `\"Unsure\"`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def not_so_random (b w : Nat) : Color :=\n  sorry\n"
+"vc-theorems": "theorem output_is_valid (b w : Nat) :\n  not_so_random b w = Color.Black\
+  \ ∨ not_so_random b w = Color.White :=\n  sorry\n\n\ntheorem odd_black_returns_black\
+  \ (b w : Nat) :\n  b % 2 = 1 → not_so_random b w = Color.Black :=\n  sorry\n\n\n\
+  theorem even_black_returns_white (b w : Nat) :\n  b % 2 = 0 → not_so_random b w\
+  \ = Color.White :=\n  sorry\n\n\ntheorem white_count_irrelevant (b w₁ w₂ : Nat)\
+  \ :\n  not_so_random b w₁ = not_so_random b w₂ :=\n  sorry\n\n/--\ninfo: 'Black'\n\
+  -/\n#guard_msgs in\n#eval not_so_random 1 1\n\n/--\ninfo: 'White'\n-/\n#guard_msgs\
+  \ in\n#eval not_so_random 2 1\n\n/--\ninfo: 'Black'\n-/\n#guard_msgs in\n#eval not_so_random\
+  \ 11111 22222\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

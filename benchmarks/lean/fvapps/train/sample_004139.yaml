@@ -1,0 +1,24 @@
+"vc-description": "#It's show time!\nArchers have gathered from all around the world\
+  \ to participate in the Arrow Function Faire. But the faire will only start if there\
+  \ are archers signed and if they all have enough arrows in their quivers - at least\
+  \ 5 is the requirement! Are all the archers ready?\n\n#Reference\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions\n\
+  \n#Argument\n`archers` is an array of integers, in which each element corresponds\
+  \ to the number of arrows each archer has.\n\n#Return\nYour function must return\
+  \ `true` if the requirements are met or `false` otherwise.\n\n#Examples\n`archersReady([1,\
+  \ 2, 3, 4, 5, 6, 7, 8])` returns `false` because there are archers with not enough\
+  \ arrows.\n\n`archersReady([5, 6, 7, 8])` returns `true`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def archers_ready (archers : List Int) : Bool := sorry\n\ntheorem\
+  \ empty_list_false : \n  ∀ (archers : List Int), archers = [] → archers_ready archers\
+  \ = false := sorry\n"
+"vc-theorems": "theorem all_above_five_true :\n  ∀ (archers : List Int), \n    archers\
+  \ ≠ [] → \n    (∀ x ∈ archers, x ≥ 5) → \n    archers_ready archers = true := sorry\n\
+  \n\ntheorem any_below_five_false :\n  ∀ (archers : List Int),\n    archers ≠ []\
+  \ →\n    (∀ x ∈ archers, x ≤ 4) →\n    archers_ready archers = false := sorry\n\n\
+  \ntheorem any_below_five_makes_false :\n  ∀ (archers : List Int),\n    (∃ x ∈ archers,\
+  \ x < 5) →\n    archers_ready archers = false := sorry\n\n/--\ninfo: False\n-/\n\
+  #guard_msgs in\n#eval archers_ready []\n\n/--\ninfo: True\n-/\n#guard_msgs in\n\
+  #eval archers_ready [5, 6, 7, 8]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval\
+  \ archers_ready [1, 2, 3, 4, 5, 6, 7, 8]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

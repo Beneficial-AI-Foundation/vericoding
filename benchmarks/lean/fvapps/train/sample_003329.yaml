@@ -1,0 +1,18 @@
+"vc-description": "## Task\n\nGiven a positive integer `n`, calculate the following\
+  \ sum: \n\n```\nn + n/2 + n/4 + n/8 + ...\n``` \n\nAll elements of the sum are the\
+  \ results of integer division.\n\n## Example\n\n```\n25  =>  25 + 12 + 6 + 3 + 1\
+  \ = 47\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def halving_sum (n : Nat) : Nat := sorry\n\n/-- For any positive\
+  \ n, halving_sum(n) is at least n -/"
+"vc-theorems": "theorem halving_sum_lower_bound (n : Nat) (h : n > 0) : \n  halving_sum\
+  \ n ≥ n := sorry\n\n/-- For any positive n, halving_sum(n) is less than 2*n -/\n\
+  \ntheorem halving_sum_upper_bound (n : Nat) (h : n > 0) :\n  halving_sum n < 2*n\
+  \ := sorry\n\n/-- For powers of 2, halving_sum(n) equals 2*n - 1 -/\n\ntheorem halving_sum_power_of_two\
+  \ (n : Nat) (h : n > 0) \n  (h_pow : ∃ k, n = 2^k) :\n  halving_sum n = 2*n - 1\
+  \ := sorry\n\n/-- Base cases for n=1 and n=2 -/\n\ntheorem halving_sum_base_cases\
+  \ :\n  (halving_sum 1 = 1) ∧ (halving_sum 2 = 3) := sorry\n\n/--\ninfo: 47\n-/\n\
+  #guard_msgs in\n#eval halving_sum 25\n\n/--\ninfo: 247\n-/\n#guard_msgs in\n#eval\
+  \ halving_sum 127\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval halving_sum 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

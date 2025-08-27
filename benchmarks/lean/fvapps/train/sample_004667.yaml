@@ -1,0 +1,30 @@
+"vc-description": "# Task\n A boy is walking a long way from school to his home. To\
+  \ make the walk more fun he decides to add up all the numbers of the houses that\
+  \ he passes by during his walk. Unfortunately, not all of the houses have numbers\
+  \ written on them, and on top of that the boy is regularly taking turns to change\
+  \ streets, so the numbers don't appear to him in any particular order.\n\n At some\
+  \ point during the walk the boy encounters a house with number `0` written on it,\
+  \ which surprises him so much that he stops adding numbers to his total right after\
+  \ seeing that house.\n\n For the given sequence of houses determine the sum that\
+  \ the boy will get. It is guaranteed that there will always be at least one 0 house\
+  \ on the path.\n\n# Example\n\n For `inputArray = [5, 1, 2, 3, 0, 1, 5, 0, 2]`,\
+  \ the output should be `11`.\n\n The answer was obtained as `5 + 1 + 2 + 3 = 11`.\n\
+  \n# Input/Output\n\n\n - `[input]` integer array `inputArray`\n\n    Constraints:\
+  \ `5 ≤ inputArray.length ≤ 50, 0 ≤ inputArray[i] ≤ 10.`\n\n\n - `[output]` an integer"
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum : List Nat → Nat \n  | []\
+  \ => 0\n  | (x :: xs) => x + sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def house_numbers_sum (nums : List Nat) : Nat := sorry\n\ntheorem\
+  \ house_numbers_sum_non_negative {nums : List Nat} (h : 0 ∈ nums) :\n  house_numbers_sum\
+  \ nums ≥ 0 := sorry\n\n\n"
+"vc-theorems": "theorem house_numbers_sum_ignore_after_zero {nums modified : List\
+  \ Nat} \n  (h : 0 ∈ nums)\n  (h2 : modified.take (nums.indexOf 0 + 1) = nums.take\
+  \ (nums.indexOf 0 + 1)) :\n  house_numbers_sum modified = house_numbers_sum nums\
+  \ := sorry\n\n\ntheorem house_numbers_sum_ones (n : Nat) :\n  house_numbers_sum\
+  \ (List.replicate n 1 ++ [0]) = n := sorry\n\n\ntheorem house_numbers_sum_zero :\n\
+  \  house_numbers_sum [0] = 0 := sorry\n\n\ntheorem house_numbers_sum_zero_prefix\
+  \ :\n  house_numbers_sum [0, 1, 2, 3] = 0 := sorry\n\n/--\ninfo: 11\n-/\n#guard_msgs\
+  \ in\n#eval house_numbers_sum [5, 1, 2, 3, 0, 1, 5, 0, 2]\n\n/--\ninfo: 0\n-/\n\
+  #guard_msgs in\n#eval house_numbers_sum [0, 1, 2, 3]\n\n/--\ninfo: 13\n-/\n#guard_msgs\
+  \ in\n#eval house_numbers_sum [4, 2, 1, 6, 0, 3, 2]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

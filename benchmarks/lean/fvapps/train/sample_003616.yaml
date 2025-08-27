@@ -1,0 +1,36 @@
+"vc-description": "Cara is applying for several different jobs.\nThe online application\
+  \ forms ask her to respond within a specific character count.\nCara needs to check\
+  \ that her answers fit into the character limit.\n\nAnnoyingly, some application\
+  \ forms count spaces as a character, and some don't.\n\nYour challenge: \n\nWrite\
+  \ Cara a function `charCheck()` with the arguments:\n\n- `\"text\"`: a string containing\
+  \ Cara's answer for the question\n- `\"max\"`: a number equal to the maximum number\
+  \ of characters allowed in the answer\n- `\"spaces\"`: a boolean which is `True`\
+  \ if spaces are included in the character count and `False` if they are not\n\n\
+  The function `charCheck()` should return an array: `[True, \"Answer\"]` , where\
+  \ `\"Answer\"` is equal to the original text, if Cara's answer is short enough.\n\
+  \nIf her answer `\"text\"` is too long, return an array: `[False, \"Answer\"]`.\
+  \ \nThe second element should be the original `\"text\"` string truncated to the\
+  \ length of the limit.\n\nWhen the `\"spaces\"` argument is `False`, you should\
+  \ remove the spaces from the `\"Answer\"`.\n\nFor example:\n\n- `charCheck(\"Cara\
+  \ Hertz\", 10, True)` should return `[ True, \"Cara Hertz\" ]`\n- `charCheck(\"\
+  Cara Hertz\", 9, False)` should return `[ True, \"CaraHertz\" ]`\n- `charCheck(\"\
+  Cara Hertz\", 5, True)` should return `[ False, \"Cara \" ]`\n- `charCheck(\"Cara\
+  \ Hertz\", 5, False)` should return `[ False, \"CaraH\" ]`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def charCheck (text : String) (max_len : Nat) (spaces : Bool) :\
+  \ Bool × String := sorry\n\ntheorem charCheck_return_type \n  (text : String) (max_len\
+  \ : Nat) (spaces : Bool) :\n  let result := charCheck text max_len spaces\n  result.1\
+  \ = true ∨ result.1 = false ∧ result.2.length ≤ max_len := sorry\n"
+"vc-theorems": "theorem charCheck_with_spaces \n  (text : String) (max_len : Nat)\
+  \ :\n  let result := charCheck text max_len true \n  result.2 = text.take max_len\
+  \ ∧ result.1 = (text.length ≤ max_len) := sorry\n\n\ntheorem charCheck_without_spaces\n\
+  \  (text : String) (max_len : Nat) :\n  let result := charCheck text max_len false\n\
+  \  let text_no_spaces := text.replace \" \" \"\"\n  result.2 = text_no_spaces.take\
+  \ max_len ∧ \n  result.1 = (text_no_spaces.length ≤ max_len) := sorry\n\n\ntheorem\
+  \ charCheck_empty_max\n  (text : String) :\n  let result := charCheck text 0 true\n\
+  \  result.1 = (text.length = 0) ∧\n  result.2 = \"\" := sorry\n\n\ntheorem charCheck_spaces_consistency\n\
+  \  (text : String) :\n  let result_with_spaces := charCheck text text.length true\n\
+  \  let result_no_spaces := charCheck text text.length false\n  result_with_spaces.2.replace\
+  \ \" \" \"\" = result_no_spaces.2 := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

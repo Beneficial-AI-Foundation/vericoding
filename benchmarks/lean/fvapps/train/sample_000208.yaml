@@ -1,0 +1,21 @@
+"vc-description": "Given an array of unique integers, each integer is strictly greater\
+  \ than 1.\nWe make a binary tree using these integers and each number may be used\
+  \ for any number of times.\nEach non-leaf node's value should be equal to the product\
+  \ of the values of it's children.\nHow many binary trees can we make?  Return the\
+  \ answer modulo 10 ** 9 + 7.\nExample 1:\nInput: A = [2, 4]\nOutput: 3\nExplanation:\
+  \ We can make these trees: [2], [4], [4, 2, 2]\nExample 2:\nInput: A = [2, 4, 5,\
+  \ 10]\nOutput: 7\nExplanation: We can make these trees: [2], [4], [5], [10], [4,\
+  \ 2, 2], [10, 2, 5], [10, 5, 2].\n \nNote:\n\n1 <= A.length <= 1000.\n2 <= A[i] <= 10\
+  \ ^ 9."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def numFactoredBinaryTrees (arr : Array Nat) : Nat := sorry\n\n\
+  \n\n\n\n\n\n\n\ntheorem numFactoredBinaryTrees_single_element\n  (n : Nat)\n  (h\
+  \ : n = 2) :\n  numFactoredBinaryTrees #[n] = 1 := sorry\n"
+"vc-theorems": "theorem numFactoredBinaryTrees_prime_numbers :\n  numFactoredBinaryTrees\
+  \ #[2, 3, 5, 7] = 4 := sorry\n\n\ntheorem numFactoredBinaryTrees_perfect_squares\
+  \ :\n  numFactoredBinaryTrees #[2, 4] > 2 := sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs\
+  \ in\n#eval numFactoredBinaryTrees #[2, 4]\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n\
+  #eval numFactoredBinaryTrees #[2, 4, 5, 10]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n\
+  #eval numFactoredBinaryTrees #[2, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,35 @@
+"vc-description": "Complete the solution. It should try to retrieve the value of the\
+  \ array at the index provided. If the index is out of the array's max bounds then\
+  \ it should return the default value instead. \n\nExample:\n```Haskell\nsolution\
+  \ [1..3] 1 1000 `shouldBe` 2\nsolution [1..5] (10) 1000 `shouldBe` 1000\n-- negative\
+  \ values work as long as they are not out of the length bounds\nsolution [1..3]\
+  \ (-1) 1000 `shouldBe` 3\nsolution [1..3] (-5) 1000 `shouldBe` 1000\nsolution [1..3]\
+  \ (-3) 1000 `shouldBe` 1\nsolution [1..5] (-3) 1000 `shouldBe` 3\n-- for Haskell\
+  \ default value will always be a (random) number, not a character.\n```\n\n```python\n\
+  data = ['a', 'b', 'c']\nsolution(data, 1, 'd') # should == 'b'\nsolution(data, 5,\
+  \ 'd') # should == 'd'\n\n# negative values work as long as they aren't out of the\
+  \ length bounds\nsolution(data, -1, 'd') # should == 'c'\nsolution(data, -5, 'd')\
+  \ # should == 'd'\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solution {α : Type} [Inhabited α] (items : List α) (index :\
+  \ Int) (default : α) : α := sorry\n\ntheorem solution_in_bounds {α : Type} [Inhabited\
+  \ α] (items : List α) (index : Int) (default : α) :\n  (0 ≤ index ∧ index < items.length)\
+  \ → \n  solution items index default = items.get! index.toNat := sorry\n"
+"vc-theorems": "theorem solution_negative_in_bounds {α : Type} [Inhabited α] (items\
+  \ : List α) (index : Int) (default : α) :\n  (-items.length ≤ index ∧ index < 0)\
+  \ → \n  solution items index default = items.get! (items.length + index.toNat) :=\
+  \ sorry\n\n\ntheorem solution_out_of_bounds {α : Type} [Inhabited α] (items : List\
+  \ α) (index : Int) (default : α) :\n  (index < -items.length ∨ index ≥ items.length)\
+  \ → \n  solution items index default = default := sorry\n\n\ntheorem empty_list\
+  \ {α : Type} [Inhabited α] (default : α) :\n  ∀ (index : Int), solution ([] : List\
+  \ α) index default = default := sorry\n\n\ntheorem list_bounds {α : Type} [Inhabited\
+  \ α] (items : List α) (default : α) \n  (h : items ≠ []) :\n  solution items items.length\
+  \ default = default ∧\n  solution items (-items.length - 1) default = default ∧\n\
+  \  solution items (items.length - 1) default = items.getLast h ∧\n  solution items\
+  \ (-items.length) default = items.head! := sorry\n\n/--\ninfo: 'b'\n-/\n#guard_msgs\
+  \ in\n#eval solution [\"a\", \"b\", \"c\"] 1 \"d\"\n\n/--\ninfo: 'd'\n-/\n#guard_msgs\
+  \ in\n#eval solution [\"a\", \"b\", \"c\"] 5 \"d\"\n\n/--\ninfo: 'c'\n-/\n#guard_msgs\
+  \ in\n#eval solution [\"a\", \"b\", \"c\"] -1 \"d\"\n\n/--\ninfo: 'd'\n-/\n#guard_msgs\
+  \ in\n#eval solution [\"a\", \"b\", \"c\"] -5 \"d\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

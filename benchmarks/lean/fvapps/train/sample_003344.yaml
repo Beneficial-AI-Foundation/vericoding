@@ -1,0 +1,23 @@
+"vc-description": "Deoxyribonucleic acid, DNA is the primary information storage molecule\
+  \ in biological systems. It is composed of four nucleic acid bases Guanine ('G'),\
+  \ Cytosine ('C'), Adenine ('A'), and Thymine ('T'). \n\nRibonucleic acid, RNA, is\
+  \ the primary messenger molecule in cells. RNA differs slightly from DNA its chemical\
+  \ structure and contains no Thymine. In RNA Thymine is replaced by another nucleic\
+  \ acid Uracil ('U').\n\nCreate a function which translates a given DNA string into\
+  \ RNA.\n\nFor example:\n\n```\n\"GCAT\"  =>  \"GCAU\"\n```\n\nThe input string can\
+  \ be of arbitrary length - in particular, it may be empty.  All input is guaranteed\
+  \ to be valid, i.e. each input string will only ever consist of `'G'`, `'C'`, `'A'`\
+  \ and/or `'T'`."
+"vc-preamble": "import Imports.AllImports\n\ndef DNA := String\ndef RNA := String\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def dna_to_rna (dna: DNA) : RNA := sorry\n\ntheorem length_preserved\
+  \ (dna: DNA) :\n  (dna_to_rna dna).length = dna.length := sorry\n"
+"vc-theorems": "theorem only_t_replaced (dna: DNA) (i: String.Pos) :\n  let rna :=\
+  \ dna_to_rna dna\n  if dna.get i = 'T' then \n    rna.get i = 'U'\n  else\n    rna.get\
+  \ i = dna.get i := sorry\n\n\ntheorem valid_rna_chars (dna: DNA) (i: String.Pos)\
+  \ :\n  (dna_to_rna dna).get i ∈ ['G', 'C', 'U', 'A'] := sorry\n\n\ntheorem idempotent\
+  \ (rna: RNA) (h: ∀ i: String.Pos, rna.get i ∈ ['G','C','U']) :\n  dna_to_rna rna\
+  \ = rna := sorry\n\n/--\ninfo: 'GCAU'\n-/\n#guard_msgs in\n#eval dna_to_rna \"GCAT\"\
+  \n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval dna_to_rna \"\"\n\n/--\ninfo: 'GACCGCCGCC'\n\
+  -/\n#guard_msgs in\n#eval dna_to_rna \"GACCGCCGCC\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

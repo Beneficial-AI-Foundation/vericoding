@@ -1,0 +1,24 @@
+"vc-description": "An integral:\n  \n\n\ncan be approximated by the so-called Simpson’s\
+  \ rule:\n\n\n\n\nHere `h = (b-a)/n`, `n` being an even integer and `a <= b`. \n\n\
+  We want to try Simpson's rule with the function f:\n\n\n\nThe task is to write a\
+  \ function called `simpson` with parameter `n` which returns the value of the integral\
+  \ of f on the interval `[0, pi]` (pi being 3.14159265359...).\n## Notes:\n- Don't\
+  \ round or truncate your results. See in \"RUN EXAMPLES\" the function `assertFuzzyEquals`\
+  \ or `testing`.\n- `n` will always be even.\n\n- We know that the exact value of\
+  \ the integral of f on the given interval is `2`.\n\nYou can see: \nabout rectangle\
+  \ method and trapezoidal rule."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def simpson (n : Nat) : Float := sorry\n\ndef Even (n : Nat) :\
+  \ Prop := ∃ k, n = 2 * k\n\n-- Property: Result should converge to 2.0 for increasing\
+  \ n"
+"vc-theorems": "theorem simpson_convergence {n : Nat} (h : n ≥ 10) : \n  (simpson\
+  \ n - 2).abs ≤ 0.001 := sorry\n\n-- Property: Even n should give more accurate results\
+  \ than n-1 \n\ntheorem even_more_accurate {n : Nat} (h1 : n ≥ 20) (h2 : Even n)\
+  \ :\n  (simpson n - 2).abs ≤ (simpson (n-1) - 2).abs := sorry\n\n-- Property: Larger\
+  \ n should give more accurate results\n\ntheorem accuracy_improves {n : Nat} (h\
+  \ : n ≥ 10) :\n  (simpson (2*n) - 2).abs ≤ (simpson n - 2).abs := sorry\n\n-- Property:\
+  \ Result should be positive\n\ntheorem positive_result {n : Nat} (h : n ≥ 10) :\n\
+  \  simpson n > 0 := sorry\n\n-- Property: Small n should still give reasonable results\n\
+  \ntheorem small_n_reasonable :\n  1.9 ≤ simpson 10 ∧ simpson 10 ≤ 2.1 := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

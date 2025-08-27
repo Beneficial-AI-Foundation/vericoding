@@ -1,0 +1,24 @@
+"vc-description": "Given a positive integer, check whether it has alternating bits:\
+  \ namely, if two adjacent bits will always have different values.\n\nExample 1:\n\
+  \nInput: 5\nOutput: True\nExplanation:\nThe binary representation of 5 is: 101\n\
+  \n\n\nExample 2:\n\nInput: 7\nOutput: False\nExplanation:\nThe binary representation\
+  \ of 7 is: 111.\n\n\n\nExample 3:\n\nInput: 11\nOutput: False\nExplanation:\nThe\
+  \ binary representation of 11 is: 1011.\n\n\n\nExample 4:\n\nInput: 10\nOutput:\
+  \ True\nExplanation:\nThe binary representation of 10 is: 1010."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def has_alternating_bits (n : Nat) : Bool := sorry\n\ndef binary_to_list\
+  \ (n : Nat) : List Bool := sorry\n"
+"vc-theorems": "theorem alternating_bits_adjacent_different (n : Nat) :\n  has_alternating_bits\
+  \ n = true →\n  ∀ bits, bits = binary_to_list n →\n  ∀ i h₁ h₂, i < bits.length\
+  \ - 1 →\n  bits[i]'h₁ ≠ bits[i+1]'h₂ := sorry\n\n\ntheorem alternating_bits_balanced_ones_zeros\
+  \ (n : Nat) :\n  has_alternating_bits n = true →\n  ∀ bits, bits = binary_to_list\
+  \ n →\n  let ones := bits.filter id |>.length;\n  let zeros := bits.filter not |>.length;\n\
+  \  ones ≤ zeros + 1 ∧ zeros ≤ ones + 1 := sorry\n\n\ntheorem power_of_two_not_alternating\
+  \ (n : Nat) :\n  n > 1 →\n  n &&& (n-1) = 0 → \n  has_alternating_bits n = false\
+  \ := sorry\n\n\ntheorem alternating_bits_consistent (n : Nat) :\n  let result :=\
+  \ has_alternating_bits n\n  has_alternating_bits n = result := sorry\n\n/--\ninfo:\
+  \ True\n-/\n#guard_msgs in\n#eval has_alternating_bits 5\n\n/--\ninfo: False\n-/\n\
+  #guard_msgs in\n#eval has_alternating_bits 7\n\n/--\ninfo: True\n-/\n#guard_msgs\
+  \ in\n#eval has_alternating_bits 10\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

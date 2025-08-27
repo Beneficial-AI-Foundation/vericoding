@@ -1,0 +1,34 @@
+"vc-description": "=====Function Descriptions=====\nitertools.combinations_with_replacement(iterable,\
+  \ r)\nThis tool returns\n\nlength subsequences of elements from the input iterable\
+  \ allowing individual elements to be repeated more than once.\n\nCombinations are\
+  \ emitted in lexicographic sorted order. So, if the input iterable is sorted, the\
+  \ combination tuples will be produced in sorted order.\n\nSample Code\n\n>>> from\
+  \ itertools import combinations_with_replacement\n>>> \n>>> print list(combinations_with_replacement('12345',2))\n\
+  [('1', '1'), ('1', '2'), ('1', '3'), ('1', '4'), ('1', '5'), ('2', '2'), ('2', '3'),\
+  \ ('2', '4'), ('2', '5'), ('3', '3'), ('3', '4'), ('3', '5'), ('4', '4'), ('4',\
+  \ '5'), ('5', '5')]\n>>> \n>>> A = [1,1,3,3,3]\n>>> print list(combinations(A,2))\n\
+  [(1, 1), (1, 3), (1, 3), (1, 3), (1, 3), (1, 3), (1, 3), (3, 3), (3, 3), (3, 3)]\n\
+  \n=====Problem Statement=====\nYou are given a string S.\nYour task is to print\
+  \ all possible size k replacement combinations of the string in lexicographic sorted\
+  \ order.\n\n=====Input Format=====\nA single line containing the string S and integer\
+  \ value k separated by a space.\n\n=====Constraints=====\n0<k≤len(S)\nThe string\
+  \ contains only UPPERCASE characters.\n\n=====Output Format=====\nPrint the combinations\
+  \ with their replacements of string S on separate lines."
+"vc-preamble": "import Imports.AllImports\n\ndef get_combinations_with_replacement\
+  \ (s : String) (k : Nat) : String := sorry\n\ndef is_sorted (s : String) : Bool\
+  \ := sorry\n\n\ndef all_chars_from (s : String) (chars : String) : Bool := sorry\n\
+  \ndef all_length (s : String) (k : Nat) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def no_duplicates (s : String) : Bool := sorry\n\ntheorem get_combinations_sorted\
+  \ (s : String) (k : Nat) : \n  is_sorted (get_combinations_with_replacement s k)\
+  \ = true := sorry\n"
+"vc-theorems": "theorem get_combinations_length (s : String) (k : Nat) :\n  all_length\
+  \ (get_combinations_with_replacement s k) k = true := sorry\n\n\ntheorem get_combinations_chars\
+  \ (s : String) (k : Nat) :\n  all_chars_from (get_combinations_with_replacement\
+  \ s k) s = true := sorry\n\n\ntheorem get_combinations_unique (s : String) (k :\
+  \ Nat) :\n  no_duplicates (get_combinations_with_replacement s k) = true := sorry\n\
+  \n\ntheorem get_combinations_example1 :\n  get_combinations_with_replacement \"\
+  HACK\" 2 = \"AA\\nAC\\nAH\\nAK\\nCC\\nCH\\nCK\\nHH\\nHK\\nKK\" := sorry\n\n\ntheorem\
+  \ get_combinations_example2 :\n  get_combinations_with_replacement \"XYZ\" 2 = \"\
+  XX\\nXY\\nXZ\\nYY\\nYZ\\nZZ\" := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

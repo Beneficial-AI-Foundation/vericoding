@@ -1,0 +1,26 @@
+"vc-description": "Similarly to the [previous kata](https://www.codewars.com/kata/string-subpattern-recognition-i/),\
+  \ you will need to return a boolean value if the base string can be expressed as\
+  \ the repetition of one subpattern.\n\nThis time there are two small changes:\n\n\
+  * if a subpattern has been used, it will be repeated at least twice, meaning the\
+  \ subpattern has to be shorter than the original string;\n* the strings you will\
+  \ be given might or might not be created repeating a given subpattern, then shuffling\
+  \ the result.\n\nFor example:\n\n```python\nhas_subpattern(\"a\") == False #no repeated\
+  \ shorter sub-pattern, just one character\nhas_subpattern(\"aaaa\") == True #just\
+  \ one character repeated\nhas_subpattern(\"abcd\") == False #no repetitions\nhas_subpattern(\"\
+  babababababababa\") == True #repeated \"ba\"\nhas_subpattern(\"bbabbaaabbaaaabb\"\
+  ) == True #same as above, just shuffled\n```\nStrings will never be empty and can\
+  \ be composed of any character (just consider upper- and lowercase letters as different\
+  \ entities) and can be pretty long (keep an eye on performances!).\n\nIf you liked\
+  \ it, go for either the [previous kata](https://www.codewars.com/kata/string-subpattern-recognition-i/)\
+  \ or the [next kata](https://www.codewars.com/kata/string-subpattern-recognition-iii/)\
+  \ of the series!"
+"vc-preamble": "import Imports.AllImports\n\ndef has_subpattern (s : String) : Bool\
+  \ :=\n  sorry\n\n\ndef gcd (a b : Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reduce (f : Nat → Nat → Nat) (xs : List Nat) : Nat :=\n  sorry"
+"vc-theorems": "theorem single_char_string_property (s : String) :\n  (s.length >\
+  \ 1 ∧ s.data.eraseDups.length = 1) → has_subpattern s\n  ∧ \n  (s.length = 1) →\
+  \ ¬has_subpattern s :=\n  sorry\n\n\ntheorem repeat_property (s : String) :\n  s.length\
+  \ ≥ 2 →\n  has_subpattern s → \n  has_subpattern (s ++ s) ∧ has_subpattern (s ++\
+  \ s ++ s) :=\n  sorry\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

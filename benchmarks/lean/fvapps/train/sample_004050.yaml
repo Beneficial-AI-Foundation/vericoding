@@ -1,0 +1,24 @@
+"vc-description": "You're re-designing a blog and the blog's posts have the following\
+  \ format for showing the date and time a post was made: \n\n*Weekday* *Month* *Day*,\
+  \ *time*\ne.g., \nFriday May 2, 7pm\n\nYou're running out of screen real estate,\
+  \ and on some pages you want to display a shorter format, *Weekday* *Month* *Day*\
+  \ that omits the time.\n\nWrite a function, shortenToDate, that takes the Website\
+  \ date/time in its original string format, and returns the shortened format.\n\n\
+  Assume shortenToDate's input will always be a string, e.g. \"Friday May 2, 7pm\"\
+  . Assume shortenToDate's output will be the shortened string, e.g., \"Friday May\
+  \ 2\"."
+"vc-preamble": "import Imports.AllImports\n\ndef StringMatches (pattern str : String)\
+  \ : Bool :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def shorten_to_date (s : String) : String :=\nsorry\n"
+"vc-theorems": "theorem shorten_to_date_property (dateString : String) :\n  (dateString.contains\
+  \ ',' : Bool) ∧ \n  (StringMatches \"[A-Za-z]+ [A-Za-z]+ \\\\d+, \\\\d+(?:am|pm)\"\
+  \ dateString) →\n  let result := shorten_to_date dateString\n  ¬(result.contains\
+  \ ',' : Bool) ∧\n  result = (dateString.splitOn \",\").get! 0 ∧ \n  result.length\
+  \ < dateString.length :=\nsorry\n\n\ntheorem shorten_to_date_requires_comma (s :\
+  \ String) :\n  ¬((s.contains ',' : Bool) ∧ (s.splitOn \",\").length = 2) →\n  False\
+  \ :=\nsorry\n\n/--\ninfo: 'Friday May 2'\n-/\n#guard_msgs in\n#eval shorten_to_date\
+  \ \"Friday May 2, 7pm\"\n\n/--\ninfo: 'Tuesday January 29'\n-/\n#guard_msgs in\n\
+  #eval shorten_to_date \"Tuesday January 29, 10pm\"\n\n/--\ninfo: 'Wed September\
+  \ 1'\n-/\n#guard_msgs in\n#eval shorten_to_date \"Wed September 1, 3am\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

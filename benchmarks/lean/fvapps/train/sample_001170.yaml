@@ -1,0 +1,31 @@
+"vc-description": "The chef is having one string of English lower case alphabets only.\
+  \ The chef wants to remove all \"abc\" special pairs where a,b,c are occurring consecutively.\
+  \ After removing the pair, create a new string and again remove \"abc\" special\
+  \ pair from a newly formed string. Repeate the process until no such pair remains\
+  \ in a string.\n\n-----Input:-----\n- First line will contain $T$, number of testcases.\
+  \ Then the testcases follow. \n- Each testcase contains of a single line of input,\
+  \ $String$. \n\n-----Output:-----\nFor each testcase, output in a single line answer,\
+  \ new String with no \"abc\" special pair.\n\n-----Constraints:-----\n$T \\leq 2\
+  \ $\n$1 \\leq String length \\leq 1000 $\n\n-----Sample Input:-----\n2\naabcc\n\
+  bababccc\n\n-----Sample Output:-----\nac\nbc\n\n-----EXPLANATION:-----\nFor 1) after\
+  \ removing \"abc\" at middle we get a new string as ac.\nFor 2) string = bababccc\n\
+  newString1 = babcc  // After removing middle \"abc\"\nnewString2 = bc   //After\
+  \ removing \"abc\""
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def remove_abc_pairs : String → String := sorry\n\ndef containsSubstr\
+  \ (s : String) (substr : String) : Bool := sorry\n"
+"vc-theorems": "theorem no_abc_in_result (s : String) : \n  ¬(containsSubstr (remove_abc_pairs\
+  \ s) \"abc\") := sorry\n\n\ntheorem idempotent (s : String) : \n  remove_abc_pairs\
+  \ (remove_abc_pairs s) = remove_abc_pairs s := sorry\n\n\ntheorem length_decreases\
+  \ (s : String) :\n  (remove_abc_pairs s).length ≤ s.length := sorry\n  \n\ntheorem\
+  \ preserves_non_abc (s : String) : \n  ¬(containsSubstr s \"abc\") → remove_abc_pairs\
+  \ s = s := sorry\n\n\ntheorem remaining_chars_unchanged (s : String) :\n  ∃ n :\
+  \ Nat, remove_abc_pairs s = \n    let rec remove_all (s' : String) (fuel : Nat)\
+  \ : String :=\n      match fuel with\n      | 0 => s'\n      | fuel'+1 => \n   \
+  \     if containsSubstr s' \"abc\" \n        then remove_all (s'.replace \"abc\"\
+  \ \"\") fuel'\n        else s'\n    remove_all s n := sorry\n\n/--\ninfo: 'ac'\n\
+  -/\n#guard_msgs in\n#eval remove_abc_pairs \"aabcc\"\n\n/--\ninfo: 'bc'\n-/\n#guard_msgs\
+  \ in\n#eval remove_abc_pairs \"bababccc\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n\
+  #eval remove_abc_pairs \"abcabcabc\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

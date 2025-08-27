@@ -1,0 +1,58 @@
+"vc-description": "Limak is a little polar bear.\nHe is playing a video game and he\
+  \ needs your help.\nThere is a row with N cells, each either empty or occupied by\
+  \ a soldier, denoted by '0' and '1' respectively.\nThe goal of the game is to move\
+  \ all soldiers to the right (they should occupy some number of rightmost cells).\n\
+  The only possible command is choosing a soldier and telling him to move to the right\
+  \ as far as possible.\nChoosing a soldier takes 1 second, and a soldier moves with\
+  \ the speed of a cell per second.\nThe soldier stops immediately if he is in the\
+  \ last cell of the row or the next cell is already occupied.\nLimak isn't allowed\
+  \ to choose a soldier that can't move at all (the chosen soldier must move at least\
+  \ one cell to the right).\nLimak enjoys this game very much and wants to play as\
+  \ long as possible.\nIn particular, he doesn't start a new command while the previously\
+  \ chosen soldier moves.\nCan you tell him, how many seconds he can play at most?\n\
+  \n-----Input-----\nThe first line of the input contains an integer T denoting the\
+  \ number of test cases. The description of T test cases follows.\n\nThe only line\
+  \ of each test case contains a string S describing the row with N cells.\nEach character\
+  \ is either '0' or '1', denoting an empty cell or a cell with a soldier respectively.\n\
+  \n-----Output-----\nFor each test case, output a single line containing one integer\
+  \ — the maximum possible number of seconds Limak will play the game.\n\n-----Constraints-----\n\
+  - 1 ≤ T ≤ 5\n- 1 ≤ N ≤ 105 (N denotes the length of the string S)\n\n-----Subtasks-----\n\
+  - Subtask #1 (25 points): 1 ≤ N ≤ 10\n- Subtask #2 (25 points): 1 ≤ N ≤ 2000\n-\
+  \ Subtask #3 (50 points): Original constraints.\n\n-----Example-----\nInput:\n4\n\
+  10100\n1100001\n000000000111\n001110100011010\n\nOutput:\n8\n10\n0\n48\n\n-----Explanation-----\n\
+  Test case 1.\nThe initial string is 10100.\nThere are N = 5 cells.\nThere is one\
+  \ soldier in the first cell, and one soldier in the third cell.\nThe following scenario\
+  \ maximizes the total time:\n- Limak chooses the soldier in the first cell.\nThis\
+  \ soldier can move only one cell to the right.\nIt takes 1 second to choose a soldier\
+  \ and 1 second for a soldier to move to the next cell (2 seconds in total).\nThe\
+  \ string is 01100 now.\n- Limak has only one choice.\nHe must choose the soldier\
+  \ in the third cell because the other soldier can't move at all (the soldier in\
+  \ the second cell can't move to the right because the next cell is already occupied).\n\
+  Choosing a soldier takes 1 second.\nThe chosen soldier moves from the third cell\
+  \ to the fifth cell, which takes 2 seconds.\nThis operation takes 1 + 2 = 3 seconds\
+  \ in total.\nThe string is 01001 now.\n- Limak has only one choice again.\nSince\
+  \ the soldier in the last row can't move further to the right, the soldier in the\
+  \ second cell must be chosen.\nHe will move 2 cells to the right.\nThis operation\
+  \ takes 1 + 2 = 3 seconds in total.\nThe string become 00011 and the game is over.\n\
+  The total time is 2 + 3 + 3 = 8.\nTest case 2.\nThe initial string is 1100001.\n\
+  There is only one possible scenario:\n- 1100001 is changed to 1000011 in 5 seconds\
+  \ (1 second to choose a soldier and 4 seconds for the soldier to move 4 cells to\
+  \ the right).\n- 1000011 is changed to 0000111 in 5 seconds.\n\nThe total time is\
+  \ 5 + 5 = 10 seconds.\nTest case 3.\nThe game is over immediately because all soldiers\
+  \ occupy rightmost cells already.\nThe answer is 0."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_moving_soldiers (s : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem empty_string :\n  solve_moving_soldiers \"\" = 0 :=\nsorry\n\
+  \n\ntheorem all_zeros (n : Nat) :\n  solve_moving_soldiers (String.mk (List.replicate\
+  \ n '0')) = 0 :=\nsorry\n\n\ntheorem all_ones (n : Nat) :\n  solve_moving_soldiers\
+  \ (String.mk (List.replicate n '1')) = 0 :=\nsorry\n\n\ntheorem trailing_ones_invariant\
+  \ (s₁ s₂ : String) :\n  s₂ = s₁ ++ String.mk (List.replicate 3 '1') →\n  solve_moving_soldiers\
+  \ s₁ = solve_moving_soldiers s₂ :=\nsorry\n\n\ntheorem result_nonnegative (s : String)\
+  \ :\n  solve_moving_soldiers s ≥ 0 :=\nsorry\n\n\ntheorem no_movement_needed (s\
+  \ : String) :\n  (s.toList.filter (· = '1')).length = 0 ∨\n  (s.toList.dropWhile\
+  \ (· = '1')).isEmpty →\n  solve_moving_soldiers s = 0 :=\nsorry\n\n/--\ninfo: 8\n\
+  -/\n#guard_msgs in\n#eval solve_moving_soldiers \"10100\"\n\n/--\ninfo: 10\n-/\n\
+  #guard_msgs in\n#eval solve_moving_soldiers \"1100001\"\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval solve_moving_soldiers \"000000000111\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

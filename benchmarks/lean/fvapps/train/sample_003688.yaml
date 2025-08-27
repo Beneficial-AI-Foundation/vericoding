@@ -1,0 +1,46 @@
+"vc-description": "# RegExp Fun #1 - When I miss few days of gym\n\n## Disclaimer\n\
+  \nThe background story of this Kata is 100% fiction.  Any resemblance to real people\
+  \ or real events is **nothing more than a coincidence** and should be regarded as\
+  \ such.\n\n## Background Story\n\nYou are a person who loves to go to the gym everyday\
+  \ with the squad of people that you've known since early childhood.  However, you\
+  \ recently contracted a sickness that forced you to stay at home for over a week.\
+  \  As you see your body getting weaker and weaker every day and as you see your\
+  \ biceps and triceps disappearing, you can't help but lay in bed and cry.  You're\
+  \ usually an optimistic person but this time negative thoughts come to your head\
+  \ ... \n\n![When I miss few days of gym](https://pics.onsizzle.com/Instagram-faf8c9.png)\n\
+  \n\n## Task\n\nAs can be seen from the funny image above (or am I the only person\
+  \ to find the picture above hilarious?) there is lots of slang.  Your task is to\
+  \ define a function ```gymSlang``` which accepts a string argument and does the\
+  \ following:\n\n1. Replace *all* instances of ```\"probably\"``` to ```\"prolly\"\
+  ```\n2. Replace *all* instances of ```\"i am\"``` to ```\"i'm\"```\n3. Replace *all*\
+  \ instances of ```\"instagram\"``` to ```\"insta\"```\n4. Replace *all* instances\
+  \ of ```\"do not\"``` to ```\"don't\"```\n5. Replace *all* instances of ```\"going\
+  \ to\"``` to ```\"gonna\"```\n6. Replace *all* instances of ```\"combination\"```\
+  \ to ```\"combo\"```\n\nYour replacement regexes **should be case-sensitive**, only\
+  \ replacing the words above with slang if the detected pattern is in **lowercase**.\
+  \  However, please note that apart from 100% lowercase matches, you will **also\
+  \ have to replace matches that are correctly capitalized** (e.g. ```\"Probably\"\
+  \ => \"Prolly\"``` or ```\"Instagram\" => \"Insta\"```).\n\nFinally, your code will\
+  \ be tested to make sure that you have used **RegExp** replace in your code.\n\n\
+  Enjoy :D"
+"vc-preamble": "import Imports.AllImports\n\ndef String.findSubstr? (pattern : String)\
+  \ (s : String) : Option String.Pos := \n  sorry \n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def gym_slang (s : String) : String :=\n  sorry\n"
+"vc-theorems": "theorem gym_slang_length (s : String) :\n  String.length (gym_slang\
+  \ s) ≤ String.length s :=\n  sorry\n\n\ntheorem gym_slang_case_preserving_prob (s\
+  \ : String) :\n  (String.findSubstr? \"Probably\" s).isSome → (String.findSubstr?\
+  \ \"Prolly\" (gym_slang s)).isSome :=\n  sorry\n\n\ntheorem gym_slang_case_preserving_prob_lower\
+  \ (s : String) :  \n  (String.findSubstr? \"probably\" s).isSome → (String.findSubstr?\
+  \ \"prolly\" (gym_slang s)).isSome :=\n  sorry\n\n\ntheorem gym_slang_all_transformations\
+  \ (s : String) : \n  let sLower := s.toLower\n  let resultLower := (gym_slang s).toLower\n\
+  \  (Option.isSome (String.findSubstr? \"probably\" sLower) ↔ Option.isSome (String.findSubstr?\
+  \ \"prolly\" resultLower)) ∧\n  (Option.isSome (String.findSubstr? \"combination\"\
+  \ sLower) ↔ Option.isSome (String.findSubstr? \"combo\" resultLower)) :=\n  sorry\n\
+  \n\ntheorem gym_slang_identity (s : String) :\n  (Option.isNone (String.findSubstr?\
+  \ \"probably\" s.toLower)) →\n  (Option.isNone (String.findSubstr? \"i am\" s.toLower))\
+  \ →\n  (Option.isNone (String.findSubstr? \"instagram\" s.toLower)) →\n  (Option.isNone\
+  \ (String.findSubstr? \"do not\" s.toLower)) →\n  (Option.isNone (String.findSubstr?\
+  \ \"going to\" s.toLower)) →\n  (Option.isNone (String.findSubstr? \"combination\"\
+  \ s.toLower)) →\n  gym_slang s = s :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,35 @@
+"vc-description": "As you know America’s Presidential Elections are about to take\
+  \ place and the most popular leader of the Republican party Donald Trump is famous\
+  \ for throwing allegations against anyone he meets.\n\nHe goes to a rally and meets\
+  \ n people which he wants to offend. For each person i he can choose an integer\
+  \ between 1 to max[i].\n\nHe wants to decide in how many ways he can offend all\
+  \ these persons (N) given the condition that all numbers chosen by him for each\
+  \ person are distinct.\nSo he needs your help to find out the number of ways in\
+  \ which he can do that. If no solution is possible print 0\n\n-----Input-----\n\
+  The first line of the input contains an integer T (1<=T<=100) denoting the number\
+  \ of test cases. The description of T test cases follows.\n\nThe first line of each\
+  \ test case contains a single integer N denoting the number of people Trump wants\
+  \ to offend. The second line contains N space-separated integers maxnumber[0], maxnumber[1],\
+  \ ..., maxnumber[n-1] denoting the maxnumber that trump can choose for each person.\
+  \ \n\n-----Output-----\nFor each test case, output a single line containing the\
+  \ number of ways Trump can assign numbers to the people, modulo 1,000,000,007. If\
+  \ it's impossible to assign distinct integers to the people, print 0\n\n-----Constraints-----\n\
+  - 1 ≤ T ≤ 100\n- 1 ≤ N ≤ 50\n- 1 ≤ Maxnumber[i] ≤ 3000\n\n-----Example-----\nInput:\n\
+  3\n1\n4\n2\n10 5\n4\n2 3 1 3\n\nOutput:\n4\n45\n0\n\n\n-----Explanation-----\nIn\
+  \ case 1, He can choose any number from 1 to 4\n\nIn case 2,Out of the total 50\
+  \ combination he can not take (1,1) ,(2,2) , (3,3) ,(4,4) or (5,5)."
+"vc-preamble": "import Imports.AllImports\n\ndef MOD := 1000000007\n\ndef calculate_offense_ways\
+  \ (n : Nat) (numbers : List Nat) : Nat :=\nsorry\n\n\ndef isSorted (l : List Nat)\
+  \ : Bool :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def natLeBool (a b : Nat) : Bool :=\n  if a ≤ b then true else\
+  \ false\n"
+"vc-theorems": "theorem result_range {n : Nat} {numbers : List Nat} :\n  let result\
+  \ := calculate_offense_ways n numbers\n  0 ≤ result ∧ result < MOD :=\nsorry\n\n\
+  \n\n\ntheorem single_number {x : Nat} :\n  x > 0 →\n  calculate_offense_ways 1 [x]\
+  \ = x :=\nsorry\n\n\n\n\ntheorem impossible_combinations_zero : \n  calculate_offense_ways\
+  \ 2 [1, 1] = 0 ∧\n  calculate_offense_ways 3 [2, 2, 2] = 0 :=\nsorry\n\n/--\ninfo:\
+  \ 4\n-/\n#guard_msgs in\n#eval calculate_offense_ways 1 [4]\n\n/--\ninfo: 45\n-/\n\
+  #guard_msgs in\n#eval calculate_offense_ways 2 [10, 5]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval calculate_offense_ways 4 [2, 3, 1, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

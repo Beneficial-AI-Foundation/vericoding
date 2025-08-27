@@ -1,0 +1,26 @@
+"vc-description": "You are given a positive integer $N$. Consider the sequence $S\
+  \ = (1, 2, \\ldots, N)$. You should choose two elements of this sequence and swap\
+  \ them.\nA swap is nice if there is an integer $M$ ($1 \\le M < N$) such that the\
+  \ sum of the first $M$ elements of the resulting sequence is equal to the sum of\
+  \ its last $N-M$ elements. Find the number of nice swaps.\n\n-----Input-----\n-\
+  \ The first line of the input contains a single integer $T$ denoting the number\
+  \ of test cases. The description of $T$ test cases follows.\n- The first and only\
+  \ line of each test case contains a single integer $N$.\n\n-----Output-----\nFor\
+  \ each test case, print a single line containing one integer ― the number of nice\
+  \ swaps.\n\n-----Constraints-----\n- $1 \\le T \\le 10^6$\n- $1 \\le N \\le 10^9$\n\
+  \n-----Subtasks-----\nSubtask #1 (10 points):\n- $T \\le 10$\n- $N \\le 10^3$\n\
+  Subtask #2 (30 points):\n- $T \\le 10$\n- $N \\le 10^6$\nSubtask #3 (60 points):\
+  \ original constraints\n\n-----Example Input-----\n5\n1\n2\n3\n4\n7\n\n-----Example\
+  \ Output-----\n0\n0\n2\n2\n3"
+"vc-preamble": "import Imports.AllImports\n\ndef canSplitEvenly (n : Nat) : Bool :=\n\
+  \  sorry\n\n\ndef countPossibleSwaps (n : Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solveSwaps (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem solve_swaps_returns_valid_count (n : Nat) (h : n > 0) :\n\
+  \  let result := solveSwaps n\n  result ≥ 0 ∧ result ≤ countPossibleSwaps n ∧\n\
+  \  (¬canSplitEvenly n → result = 0) :=\n  sorry\n\n\ntheorem solve_swaps_small_sequences\
+  \ (n : Nat) (h1 : n > 0) (h2 : n ≤ 2) :\n  solveSwaps n = 0 :=\n  sorry\n\n/--\n\
+  info: 0\n-/\n#guard_msgs in\n#eval solve_swaps 1\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval solve_swaps 2\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_swaps\
+  \ 7\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

@@ -1,0 +1,29 @@
+"vc-description": "You are given an $array$ of size $N$ and an integer $K$ ( $N >\
+  \ 1 , K > 0$ ).\nEach element in the array can be incremented by $K$ or decremented\
+  \ by $K$ $at$ $most$ $once$.\nSo there will be  $3^n$ possible combinations of final\
+  \ array. (As there are 3 options for every element).\n\nOut of these combinations,\
+  \ you have to select a combination, in which the $absolute$ difference between the\
+  \ largest and the smallest element is $maximum$.\nYou have to print the $maximum$\
+  \ $absolute$ $difference$.\n\n-----Input:-----\n- First line will contain $T$, number\
+  \ of testcases. Then the testcases follow. \n- Each testcase contains of a two lines\
+  \ of input\n- First line contains two integers $N, K$. \n- Second line contains\
+  \ $N$ space separated integers.\n\n-----Output:-----\nFor each testcase, output\
+  \ the maximum absolute difference that can be achieved on a new line.\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 10$\n- $2 \\leq N \\leq 1000$\n- $1 \\leq K , arr[i]  \\leq 10000$\n\
+  $NOTE$:  Large  input files, Use of fastio is recommended.\n\n-----Sample Input:-----\n\
+  2\n\n4 3\n\n4 2 5 1\n\n3 5\n\n2 5 3\n\n-----Sample Output:-----\n10\n\n13"
+"vc-preamble": "import Imports.AllImports\n\ndef find_max_diff (N : Nat) (K : Nat)\
+  \ (arr : List Int) : Int :=\nsorry\n\n\ndef list_max (arr : List Int) : Int :=\n\
+  sorry\n\n\ndef list_min (arr : List Int) : Int :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def list_sort (arr : List Int) : List Int :=\nsorry\n"
+"vc-theorems": "theorem find_max_diff_non_negative (N : Nat) (K : Nat) (arr : List\
+  \ Int) \n    (h : arr.length > 0) : \n  find_max_diff N K arr ≥ 0 :=\nsorry\n\n\n\
+  \n\n\n\n\n\ntheorem find_max_diff_reverse_invariant (N : Nat) (K : Nat) (arr : List\
+  \ Int)\n    (h : arr.length > 0) :\n  find_max_diff N K arr = find_max_diff N K\
+  \ arr.reverse :=\nsorry\n\n\ntheorem find_max_diff_single_element (N : Nat) (K :\
+  \ Nat) (arr : List Int)\n    (h : arr.length = 1) :\n  find_max_diff N K arr = 2\
+  \ * K :=\nsorry\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval find_max_diff 4 3 [4,\
+  \ 2, 5, 1]\n\n/--\ninfo: 13\n-/\n#guard_msgs in\n#eval find_max_diff 3 5 [2, 5,\
+  \ 3]\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval find_max_diff 2 2 [1, 3]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,47 @@
+"vc-description": "This is a hard version of the problem. In this version, the given\
+  \ array can contain equal elements and the constraints on $n$ are greater than in\
+  \ the easy version of the problem.\n\nYou are given an array $a$ of $n$ integers\
+  \ (the given array can contain equal elements). You can perform the following operations\
+  \ on array elements:  choose any index $i$ ($1 \\le i \\le n$) and move the element\
+  \ $a[i]$ to the begin of the array;  choose any index $i$ ($1 \\le i \\le n$) and\
+  \ move the element $a[i]$ to the end of the array. \n\nFor example, if $n = 5$,\
+  \ $a = [4, 7, 2, 2, 9]$, then the following sequence of operations can be performed:\
+  \   after performing the operation of the first type to the second element, the\
+  \ array $a$ will become $[7, 4, 2, 2, 9]$;  after performing the operation of the\
+  \ second type to the second element, the array $a$ will become $[7, 2, 2, 9, 4]$.\
+  \ \n\nYou can perform operations of any type any number of times in any order.\n\
+  \nFind the minimum total number of operations of the first and second type that\
+  \ will make the $a$ array sorted in non-decreasing order. In other words, what is\
+  \ the minimum number of operations must be performed so the array satisfies the\
+  \ inequalities $a[1] \\le a[2] \\le \\ldots \\le a[n]$.\n\n\n-----Input-----\n\n\
+  The first line contains a single integer $t$ ($1 \\le t \\le 10^4$) — the number\
+  \ of test cases in the test. Then $t$ test cases follow.\n\nEach test case starts\
+  \ with a line containing an integer $n$ ($1 \\le n \\le 2 \\cdot 10^5$) — the size\
+  \ of the array $a$.\n\nThen follow $n$ integers $a_1, a_2, \\ldots, a_n$ ($0 \\\
+  le a_i \\le 10^9$) — an array that needs to be sorted by the given operations. The\
+  \ given array can contain equal elements.\n\nThe sum of $n$ for all test cases in\
+  \ one test does not exceed $2 \\cdot 10^5$.\n\n\n-----Output-----\n\nFor each test\
+  \ case output one integer — the minimum total number of operations of the first\
+  \ and second type, which will make the array sorted in non-decreasing order.\n\n\
+  \n-----Example-----\nInput\n9\n5\n4 7 2 2 9\n5\n3 5 8 1 7\n5\n1 2 2 4 5\n2\n0 1\n\
+  3\n0 1 0\n4\n0 1 0 0\n4\n0 1 0 1\n4\n0 1 0 2\n20\n16 15 1 10 0 14 0 10 3 9 2 5 4\
+  \ 5 17 9 10 20 0 9\n\nOutput\n2\n2\n0\n0\n1\n1\n1\n1\n16\n\n\n\n-----Note-----\n\
+  \nIn the first test case, you first need to move two 2, to the beginning of the\
+  \ array. Therefore, the desired sequence of operations: $[4, 7, 2, 2, 9] \\rightarrow\
+  \ [2, 4, 7, 2, 9] \\rightarrow [2, 2, 4, 7, 9]$.\n\nIn the second test case, you\
+  \ need to move the 1 to the beginning of the array, and the 8 — to the end. Therefore,\
+  \ the desired sequence of operations: $[3, 5, 8, 1, 7] \\rightarrow [1, 3, 5, 8,\
+  \ 7] \\rightarrow [1, 3, 5, 7, 8]$.\n\nIn the third test case, the array is already\
+  \ sorted."
+"vc-preamble": "import Imports.AllImports\n\ndef min_ops_to_sort {α : Type u} [Ord\
+  \ α] (arr : List α) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def isSorted {α : Type u} [Ord α] [LE α] (xs : List α) : Prop :=\n\
+  \  match xs with\n  | [] => True\n  | [_] => True\n  | x :: y :: rest => x ≤ y ∧\
+  \ isSorted (y :: rest)\n\n\n\n\n"
+"vc-theorems": "theorem translation_invariant (arr : List Int) (k : Int) :\n  min_ops_to_sort\
+  \ arr = min_ops_to_sort (arr.map (fun x => x + k)) :=\nsorry\n\n/--\ninfo: 2\n-/\n\
+  #guard_msgs in\n#eval min_ops_to_sort [4, 7, 2, 2, 9]\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval min_ops_to_sort [3, 5, 8, 1, 7]\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n\
+  #eval min_ops_to_sort [1, 2, 2, 4, 5]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,25 @@
+"vc-description": "You are given an array that of arbitrary depth that needs to be\
+  \ nearly flattened into a 2 dimensional array. The given array's depth is also non-uniform,\
+  \ so some parts may be deeper than others.\n\nAll of lowest level arrays (most deeply\
+  \ nested) will contain only integers and none of the higher level arrays will contain\
+  \ anything but other arrays. All arrays given will be at least 2 dimensional. All\
+  \ lowest level arrays will contain at least one element.\n\nYour solution should\
+  \ be an array containing all of the lowest level arrays and only these. The sub-arrays\
+  \ should be ordered by the smallest element within each, so `[1,2]` should preceed\
+  \ `[3,4,5]`. Note: integers will not be repeated.\n\nFor example:\n\nIf you receive\
+  \ `[[[1,2,3],[4,5]],[6,7]]`, your answer should be `[[1,2,3],[4,5],[6,7]]`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def near_flatten (arr: List (List (List Int))) : List (List Int)\
+  \ := sorry\n\ndef list_min (l: List Int) : Int :=\n  match l with\n  | [] => 0\n\
+  \  | x::xs => xs.foldl min x\n"
+"vc-theorems": "theorem near_flatten_keeps_list_structure (arr: List (List (List Int)))\
+  \ : \n  let result := near_flatten arr\n  -- Result is a list of lists of integers\n\
+  \  ∀ x ∈ result, x.all (fun i => true)\n  := sorry\n\n\ntheorem near_flatten_sorted\
+  \ (arr: List (List (List Int))) :\n  let result := near_flatten arr\n  ∀ i, i +\
+  \ 1 < result.length →\n    list_min (result.get ⟨i, by sorry⟩) ≤ list_min (result.get\
+  \ ⟨i+1, by sorry⟩)\n  := sorry\n\n/--\ninfo: [[1]]\n-/\n#guard_msgs in\n#eval near_flatten\
+  \ [[[1]]]\n\n/--\ninfo: [[1, 2, 3], [4, 5, 6]]\n-/\n#guard_msgs in\n#eval near_flatten\
+  \ [[[1, 2, 3], [4, 5, 6]]]\n\n/--\ninfo: [[1, 2, 3], [4, 5], [6], [7, 8]]\n-/\n\
+  #guard_msgs in\n#eval near_flatten [[[1, 2, 3], [[4, 5], [[6], [7, 8]]]]]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

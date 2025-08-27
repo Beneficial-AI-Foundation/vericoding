@@ -1,0 +1,33 @@
+"vc-description": "Consider a number X on which K Mag-Inc operations are to be performed.\
+  \ In a Mag-Inc operation, the number X undergoes an increment of A/B times of X\
+  \ where A and B are two integers.\n\nThere is a numerator and a denominator array\
+  \ of size K which contain the ith values of A and B. After K Mag-Inc operations,\
+  \ the number X turns to M.\n\nNow your job is to find what percentage of M is to\
+  \ be decremented from M if it has to be converted back to X. Let this percentage\
+  \ be denoted by Z.\n\nPrint the integral part of Z.\n\n-----Input:-----\n\nFirst\
+  \ line contains an integer T denoting the number of test cases.\n\nFirst line of\
+  \ every test case contains two space separated integers X and K.\n\nThe second and\
+  \ third line of every test case will contain K space separated integers \n\ndenoting\
+  \ the Numerator and Denominator array.\n\n-----Output:-----\n\nFor each test case,\
+  \ print the required result in a single line.\n\n-----Constraints:-----\n1 ≤ T ≤\
+  \ 100\n1 ≤ K, A, B ≤ 40000\n1≤X≤10^100\n\n-----Example:-----Input:\n2\n100 1\n1\
+  \ \n4\n100 2\n1 1\n2 3Output:\n20\n50\n\n-----Explanation:-----\n\nCase 2: 100 undergoes\
+  \ an increment of (1/2)*100. Therefore M = 100 + 50.\n\nNow M = 150.\n\nNow again,\
+  \ \n\nM undergoes an increment of (1/3)*150. Therefore, M = 150 + 50. \n\nNow as\
+  \ we want to revert back M = 200 to X i.e. 100, we need to decrement it by a value\
+  \ \n\nof 100 and we know that 100 is 50% of 200.\n\nHence, we print 50."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_magnification_percentage (x : Float) (k : Nat) (nums\
+  \ : List Nat) (denoms : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem result_between_zero_and_hundred\n  (x : Float) (k : Nat) (nums\
+  \ denoms : List Nat)\n  (hx : x > 0)\n  (hk : k > 0) \n  (hnums : nums.length =\
+  \ k)\n  (hdenoms : denoms.length = k)\n  (hall_pos : ∀ n ∈ nums ++ denoms, n > 0)\
+  \ :\n  let result := calculate_magnification_percentage x k nums denoms\n  0 ≤ result\
+  \ ∧ result ≤ 100 :=\nsorry\n\n\ntheorem result_scale_invariant\n  (x : Float) (k\
+  \ : Nat) (nums denoms : List Nat)\n  (hx : x > 0)\n  (hk : k > 0)\n  (hnums : nums.length\
+  \ = k)\n  (hdenoms : denoms.length = k)\n  (hall_pos : ∀ n ∈ nums ++ denoms, n >\
+  \ 0) :\n  let result₁ := calculate_magnification_percentage x k nums denoms\n  let\
+  \ result₂ := calculate_magnification_percentage (2 * x) k nums denoms\n  if result₁\
+  \ ≥ result₂ then result₁ - result₂ ≤ 1 else result₂ - result₁ ≤ 1 :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

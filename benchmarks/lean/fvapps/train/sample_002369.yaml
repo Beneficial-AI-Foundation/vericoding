@@ -1,0 +1,16 @@
+"vc-description": "Given two non-negative integers low and high. Return the count\
+  \ of odd numbers between low and high (inclusive).\n \nExample 1:\nInput: low =\
+  \ 3, high = 7\nOutput: 3\nExplanation: The odd numbers between 3 and 7 are [3,5,7].\n\
+  Example 2:\nInput: low = 8, high = 10\nOutput: 1\nExplanation: The odd numbers between\
+  \ 8 and 10 are [9].\n \nConstraints:\n\n0 <= low <= high <= 10^9"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_odds (low high : Int) : Nat :=\n  sorry\n\n\n"
+"vc-theorems": "theorem count_odds_correct (low high : Int) (h : high ≥ low) (h2 :\
+  \ high - low < 1000) :\n  count_odds low high = ((List.range (Int.toNat (high -\
+  \ low + 1))).filter (fun n => (Int.ofNat n + low) % 2 ≠ 0)).length :=\n  sorry\n\
+  \n\ntheorem count_odds_single_number (n : Int) :\n  count_odds n n = if n % 2 =\
+  \ 0 then 0 else 1 :=\n  sorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval count_odds\
+  \ 3 7\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval count_odds 8 10\n\n/--\ninfo: 3\n\
+  -/\n#guard_msgs in\n#eval count_odds 0 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

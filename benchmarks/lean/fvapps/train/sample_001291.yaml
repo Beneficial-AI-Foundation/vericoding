@@ -1,0 +1,33 @@
+"vc-description": "The $String$ Family gave birth to a new $Tripartite$ $trio$ $sisters$\
+  \ and named them $Hema$, $Rekha$ and $Sushma$. Hema and Rekha are very fond of parties\
+  \ whereas Sushma hates them. One day Hema and Rekha asked their parents to buy them\
+  \ candies to distribute to people in their birthday party. (Remember Hema, Rekha\
+  \ and Sushma were born on the same day). But Sushma was uninterested in the party\
+  \ and only wanted candies for herself.\nYou will be given a list $P$ of possible\
+  \ number of candidates coming to the party. Were $P[i]$ denotes the count of people\
+  \ coming in the i th possibility. In each case every person should get maximum possible\
+  \ equal number of candies  such that after distributing the candies, there are always\
+  \ $R$ candies remaining for Sushma. You have to calculate the minimum number of\
+  \ candies required to buy so that, in any possible situation of the given array,\
+  \ each person coming to party gets equal number of candies (at least 1 and maximum\
+  \ possible out of total) and there are always $R$ candies remaining for Sushma.\n\
+  \n-----Input:-----\n- First line will contain $T$, number of testcases. Then the\
+  \ testcases follow. \n- First line of each test case contain  $N$, number of possible\
+  \ count of people coming to party\n- Next line contain $N$ spaced integers denoting\
+  \ the count of people \n- Next line contain $R$ the number of candies always remaining\
+  \ after maximum equal distribution\n\n-----Output:-----\nFor each testcase, output\
+  \ in a single line answer, the minimum number of candies required to buy.\n\n-----Constraints-----\n\
+  - $1 \\leq T \\leq 100$\n- $1 \\leq N \\leq 10^4$\n- $1 \\leq P[i] \\leq 41$\n-\
+  \ $0 \\leq R < min(P[i])$\n\n-----Sample Input:-----\n1\n2\n2 3\n1\n\n-----Sample\
+  \ Output:-----\n7"
+"vc-preamble": "import Imports.AllImports\n\ndef min_candies_for_party (people_counts:\
+  \ List Nat) (remainder: Nat) : Nat := sorry\n\ndef gcd (a b : Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def lcm (a b : Nat) : Nat := Nat.div (a * b) (gcd a b)\n\n\n\n\
+  theorem remainder_divides_result (people_counts: List Nat) (remainder: Nat) (count:\
+  \ Nat)\n  (h: count ∈ people_counts) (h2: count > 0) :\n  count ∣ (min_candies_for_party\
+  \ people_counts remainder - remainder) := sorry"
+"vc-theorems": "/--\ninfo: 7\n-/\n#guard_msgs in\n#eval min_candies_for_party [2,\
+  \ 3] 1\n\n/--\ninfo: 13\n-/\n#guard_msgs in\n#eval min_candies_for_party [2, 4,\
+  \ 6] 1\n\n/--\ninfo: 7\n-/\n#guard_msgs in\n#eval min_candies_for_party [5] 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

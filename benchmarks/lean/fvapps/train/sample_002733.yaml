@@ -1,0 +1,29 @@
+"vc-description": "Challenge:\nGiven two null-terminated strings in the arguments\
+  \ \"string\" and \"prefix\", determine if \"string\" starts with the \"prefix\"\
+  \ string. Return 1 (or any other \"truthy\" value) if true, 0 if false.\n\nExample:\n\
+  ```\nstartsWith(\"hello world!\", \"hello\"); // should return 1.\nstartsWith(\"\
+  hello world!\", \"HELLO\"); // should return 0.\nstartsWith(\"nowai\", \"nowaisir\"\
+  ); // should return 0.\n```\n\nAddendum:\nFor this problem, an empty \"prefix\"\
+  \ string should always return 1 (true) for any value of \"string\".\n\nIf the length\
+  \ of the \"prefix\" string is greater than the length of the \"string\", return\
+  \ 0.\n\nThe check should be case-sensitive, i.e. startsWith(\"hello\", \"HE\") should\
+  \ return 0, whereas startsWith(\"hello\", \"he\") should return 1.\n\nThe length\
+  \ of the \"string\" as well as the \"prefix\" can be defined by the formula: 0 <=\
+  \ length < +Infinity\n\nNo characters should be ignored and/or omitted during the\
+  \ test, e.g. whitespace characters should not be ignored."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def startsWith (s : String) (pre : String) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem starts_with_matches_python (s pre : String) :\n  startsWith\
+  \ s pre = String.startsWith s pre :=\n  sorry\n\n\ntheorem empty_prefix_true (s\
+  \ : String) :\n  startsWith s \"\" = true :=\n  sorry\n\n\ntheorem long_prefix_false\
+  \ (s pre : String) :\n  pre.length > s.length → startsWith s pre = false :=\n  sorry\n\
+  \n\ntheorem self_prefix (s : String) :\n  startsWith s s = true :=\n  sorry\n\n\n\
+  theorem prefix_matches_slice (s pre : String) :\n  startsWith s pre = (if pre.length\
+  \ = 0 then true else s.take pre.length = pre) :=\n  sorry\n\n/--\ninfo: True\n-/\n\
+  #guard_msgs in\n#eval starts_with \"hello world!\" \"hello\"\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval starts_with \"hello world!\" \"HELLO\"\n\n/--\ninfo: False\n\
+  -/\n#guard_msgs in\n#eval starts_with \"nowai\" \"nowaisir\"\n\n/--\ninfo: True\n\
+  -/\n#guard_msgs in\n#eval starts_with \"abc\" \"\"\n\n/--\ninfo: False\n-/\n#guard_msgs\
+  \ in\n#eval starts_with \"\" \"abc\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

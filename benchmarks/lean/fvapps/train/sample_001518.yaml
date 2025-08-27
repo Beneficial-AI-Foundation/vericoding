@@ -1,0 +1,48 @@
+"vc-description": "You like tracking airplane flights a lot. Specifically, you maintain\
+  \ history of an airplane’s flight at several instants and record them in your notebook.\
+  \ Today, you have recorded N such records h1, h2, ..., hN, denoting the heights\
+  \ of some airplane at several instants. These records mean that airplane was first\
+  \ flying on height h1, then started changing its height to h2, then from h2 to h3\
+  \ and so on. The airplanes are usually on cruise control while descending or ascending,\
+  \ so \nyou can assume that plane will smoothly increase/decrease its height from\
+  \ hi to hi + 1 with a constant speed. You can see that during this period, the airplane\
+  \ will cover all possible heights in the range [min(hi, hi+1), max(hi, hi+1)] (both\
+  \ inclusive). It is easy to see that the plane will be at all possible heights in\
+  \ the range exactly a single instant of time during this ascend/descend.\n\nYou\
+  \ are interested in finding the maximum integer K such that the plane was at some\
+  \ height exactly K times during the flight.\n\n-----Input-----\nThere is a single\
+  \ test case.\nFirst line of the input contains an integer N denoting the number\
+  \ of records of heights of the plane.\nSecond line contains N space separated integers\
+  \ denoting h1, h2, ..., hN.\n\n-----Output-----\nOutput a single maximum integer\
+  \ K in one line, such that the plane was at some height exactly K times during the\
+  \ flight.\n\n-----Constraints-----\n- hi ≠ hi+1\n\n-----Subtasks-----\nSubtask #1:\
+  \ (30 points)\n- 1 ≤ N ≤ 1000\n- 1 ≤ hi ≤ 1000\n\nSubtask #2: (70 points)\n- 1 ≤\
+  \ N ≤ 105\n- 1 ≤ hi ≤ 109\n\n-----Example-----\nInput:\n5\n1 2 3 2 3\n\nOutput:\n\
+  3\n\n-----Explanation-----\n\nThe flight can be draw as:\n\n3  /\\/\n2 /\n1\n\n\
+  There are infinitely many heights at which the plane was 3 times during the flight,\
+  \ for example 2.5, 2.1. Notice that the plane was only 2 times at height 2. Moreover,\
+  \ there are no height at which the plane was more than 3 times, so the answer is\
+  \ 3."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_max_height_visits (n : Nat) (heights : List Nat) : Nat\
+  \ :=\nsorry\n"
+"vc-theorems": "theorem find_max_height_visits_bounds {n : Nat} {heights : List Nat}\
+  \ \n  (h1 : heights.length = n) (h2 : n > 0) :\n  let result := find_max_height_visits\
+  \ n heights\n  1 ≤ result ∧ result ≤ n :=\nsorry\n\n\ntheorem find_max_height_visits_max_frequency\
+  \ {n : Nat} {heights : List Nat} \n  (h : heights.length = n) :\n  find_max_height_visits\
+  \ n heights = \n    List.foldl (fun acc x => max acc (List.count x heights)) 0 heights\
+  \ :=\nsorry\n\n\ntheorem find_max_height_visits_identical {n : Nat} {heights : List\
+  \ Nat} {h : Nat}\n  (h1 : heights.length = n)\n  (h2 : ∀ x ∈ heights, x = h) :\n\
+  \  find_max_height_visits n heights = n :=\nsorry\n\n\ntheorem find_max_height_visits_order_invariant\
+  \ {n : Nat} {heights : List Nat}\n  (h : heights.length = n) :\n  find_max_height_visits\
+  \ n heights = find_max_height_visits n (List.reverse heights) :=\nsorry\n\n\ntheorem\
+  \ find_max_height_visits_monotone {n : Nat} {heights : List Nat}\n  (h : heights.length\
+  \ = n) :\n  let result := find_max_height_visits n heights\n  let max_freq_height\
+  \ := List.foldl \n    (fun acc x => if List.count x heights > List.count acc heights\
+  \ then x else acc) \n    (List.head! heights) \n    heights\n  find_max_height_visits\
+  \ (n + 1) (heights ++ [max_freq_height]) ≥ result :=\nsorry\n\n/--\ninfo: 3\n-/\n\
+  #guard_msgs in\n#eval find_max_height_visits 5 [2, 2, 1, 2, 4]\n\n/--\ninfo: 2\n\
+  -/\n#guard_msgs in\n#eval find_max_height_visits n2 heights2\n\n/--\ninfo: 5\n-/\n\
+  #guard_msgs in\n#eval find_max_height_visits n3 heights3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

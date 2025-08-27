@@ -1,0 +1,52 @@
+"vc-description": "Perhaps it would be convenient to solve first ```Probabilities\
+  \ for Sums in Rolling Cubic Dice``` see at: http://www.codewars.com/kata/probabilities-for-sums-in-rolling-cubic-dice\n\
+  \nSuppose that we roll dice that we never used, a tetrahedral die that has only\
+  \ 4 sides(values 1 to 4), or perhaps better the dodecahedral one with 12 sides and\
+  \ 12 values (from 1 to 12), or look! an icosahedral die with 20 sides and 20 values\
+  \ (from 1 to 20).\n\nLet's roll dice of same type and try to see the distribution\
+  \ of the probability for all the possible sum values.\n\nSuppose that we roll 3\
+  \ tetrahedral dice:\n```\nSum   Prob    Amount of hits           Combinations\n\
+  3   0.015625     1             {1,1,1}\n4   0.046875     3             {1,2,1},{2,1,1},{1,1,2}\n\
+  5   0.09375      6             {3,1,1},{1,1,3},{1,2,2},{1,3,1},{2,2,1},{2,1,2}\n\
+  6   0.15625     10             {2,2,2},{1,3,2},{3,2,1},{1,4,1},{2,1,3},{1,1,4},{4,1,1},{3,1,2},{1,2,3},{2,3,1}\n\
+  7   0.1875      12             {2,3,2},{1,2,4},{2,1,4},{1,4,2},{3,2,2}, {4,2,1},{3,3,1},{3,1,3},{2,2,3},{4,1,2},{2,4,1},{1,3,3}\n\
+  8   0.1875      12             {2,3,3},{3,3,2},{2,2,4},{4,3,1},{2,4,2},{4,1,3},{4,2,2},{3,4,1},{1,3,4},{3,2,3},{3,1,4},{1,4,3}\n\
+  9   0.15625     10             {3,3,3},{4,4,1},{2,4,3},{4,2,3},{4,3,2},{1,4,4},{4,1,4},{3,4,2},{2,3,4},{3,2,4}\n\
+  10  0.09375      6             {3,4,3},{4,4,2},{3,3,4},{4,2,4},(2,4,4),{4,3,3}\n\
+  11  0.046875     3             {4,3,4},{3,4,4},{4,4,3}\n12  0.015625     1     \
+  \        {4,4,4}\ntot: 1.0000\n```\nNote that the total sum of all the probabilities\
+  \ for each end has to be ```1.0000```\n\nThe register of hits per each sum value\
+  \ will be as follows:\n```\n[[3, 1], [4, 3], [5, 6], [6, 10], [7, 12], [8, 12],\
+  \ [9, 10], [10, 6], [11, 3], [12, 1]]\n```\nCreate the function ```reg_sum_hits()```\
+  \ that receive two arguments:\n\n- number of dice, ```n```\n- number of sides of\
+  \ the die, ```s```\n\nThe function will output a list of pairs with the sum value\
+  \ and the corresponding hits for it.\n\nFor the example given above:\n```python\n\
+  reg_sum_hits(3, 4) == [[3, 1], [4, 3], [5, 6], [6, 10], [7, 12], [8, 12], [9, 10],\
+  \ [10, 6], [11, 3], [12, 1]]\n```\nYou will find more examples in the Example Test\
+  \ Cases.\n\nAssumption: If the die has n sides, the values of it are from ```1```\
+  \ to ```n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reg_sum_hits (dices : Nat) (sides : Nat) : List (Nat × Nat)\
+  \ := sorry \n\ntheorem reg_sum_hits_valid_results (dices sides : Nat) \n  (h1 :\
+  \ dices > 0) (h2 : sides > 1) (h3 : sides ≤ 10) :\n  let result := reg_sum_hits\
+  \ dices sides\n  (∀ x, x ∈ result → \n    (x.1 ≥ dices ∧ x.1 ≤ dices * sides) ∧\
+  \ \n    x.2 > 0) := sorry\n"
+"vc-theorems": "theorem reg_sum_hits_consecutive_sums (dices sides : Nat)\n  (h1 :\
+  \ dices > 0) (h2 : sides > 1) (h3 : sides ≤ 10) :\n  let result := reg_sum_hits\
+  \ dices sides\n  let sums := List.map Prod.fst result\n  ∀ i, i < sums.length -\
+  \ 1 →\n    List.get! sums (i+1) = List.get! sums i + 1 := sorry\n\n\ntheorem reg_sum_hits_symmetric_probs\
+  \ (dices sides : Nat)\n  (h1 : dices > 0) (h2 : sides > 1) (h3 : sides ≤ 10) :\n\
+  \  let result := reg_sum_hits dices sides\n  let probs := List.map Prod.snd result\n\
+  \  probs = List.reverse probs := sorry\n\n\ntheorem reg_sum_hits_single_die (sides\
+  \ : Nat)\n  (h1 : sides > 1) (h2 : sides ≤ 10) :\n  let result := reg_sum_hits 1\
+  \ sides\n  (List.length result = sides) ∧\n  (∀ x, x ∈ result → Prod.snd x = 1)\
+  \ ∧\n  (List.map Prod.fst result = List.map (· + 1) (List.range sides)) := sorry\n\
+  \n/--\ninfo: [[3, 1], [4, 3], [5, 6], [6, 10], [7, 12], [8, 12], [9, 10], [10, 6],\
+  \ [11, 3], [12, 1]]\n-/\n#guard_msgs in\n#eval reg_sum_hits 3 4\n\n/--\ninfo: [[3,\
+  \ 1], [4, 3], [5, 6], [6, 10], [7, 15], [8, 21], [9, 25], [10, 27], [11, 27], [12,\
+  \ 25], [13, 21], [14, 15], [15, 10], [16, 6], [17, 3], [18, 1]]\n-/\n#guard_msgs\
+  \ in\n#eval reg_sum_hits 3 6\n\n/--\ninfo: [[4, 1], [5, 4], [6, 10], [7, 20], [8,\
+  \ 31], [9, 40], [10, 44], [11, 40], [12, 31], [13, 20], [14, 10], [15, 4], [16,\
+  \ 1]]\n-/\n#guard_msgs in\n#eval reg_sum_hits 4 4\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

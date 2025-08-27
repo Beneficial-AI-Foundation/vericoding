@@ -1,0 +1,30 @@
+"vc-description": "The number ```89``` is the first positive integer that has a particular,\
+  \ curious property:\n\nThe square of ```89``` is ```7921```; ```89² = 7921```\n\n\
+  The reverse of ```7921``` is ```1297```, and ```1297``` is a prime number.\n\nThe\
+  \ cube of ```89``` is ```704969```; ```89³ = 704969```\n\nThe reverse of ```704969```\
+  \ is ```969407```, and ```969407``` is a prime number.\n\nThe first four terms of\
+  \ this sequence having this special property are:\n```\nn-th term      term value\n\
+  \    1               89 \n    2              271\n    3              325\n    4\
+  \              328\n```\n\nCreate a function ```sq_cub_rev_prime()```, that receives\
+  \ the ordinal number of the sequence and outputs its correspoding value.\n\nUse\
+  \ the above table to show how the function should work:\n```python \nsq_cub_rev_prime(1)\
+  \ == 89 \nsq_cub_rev_prime(2) == 271\nsq_cub_rev_prime(3) == 325\nsq_cub_rev_prime(4)\
+  \ == 328\n```\nYour code will be tested up to the 250th term\n\nThis is not a registered\
+  \ sequence of OESIS, so if you are one of the first ten people that solve this kata,\
+  \ you may have the privilege to register the sequence at https://oeis.org, with\
+  \ your name. If you do so, please, mention in your biography that you are a Codewarrior.\n\
+  \nMemoize your results to pass the tests.\n\nEnjoy it!"
+"vc-preamble": "import Imports.AllImports\n\ndef is_prime (n : Int) : Bool := sorry\n\
+  def reverse_num (n : Int) : Int := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sq_cub_rev_prime (n : Int) : Int := sorry\n\ntheorem is_prime_basic_cases\
+  \ : \n  ¬is_prime 1 ∧ is_prime 2 ∧ ¬is_prime 4 ∧ is_prime 5 := sorry\n"
+"vc-theorems": "theorem is_prime_nonpositive (n : Int) :\n  n ≤ 0 → ¬is_prime n :=\
+  \ sorry\n\n\ntheorem is_prime_no_small_divisors {n : Int} (h1 : 2 ≤ n) (h2 : n ≤\
+  \ 1000) :\n  is_prime n → ∀ i : Int, 2 ≤ i ∧ i * i ≤ n → ¬(i ∣ n) := sorry\n\n\n\
+  theorem sq_cub_rev_prime_properties (n : Int) (h : 1 ≤ n ∧ n ≤ 39) :\n  sq_cub_rev_prime\
+  \ n > 0 ∧ \n  sq_cub_rev_prime n = sq_cub_rev_prime n := sorry\n\n/--\ninfo: 89\n\
+  -/\n#guard_msgs in\n#eval sq_cub_rev_prime 1\n\n/--\ninfo: 271\n-/\n#guard_msgs\
+  \ in\n#eval sq_cub_rev_prime 2\n\n/--\ninfo: 325\n-/\n#guard_msgs in\n#eval sq_cub_rev_prime\
+  \ 3\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

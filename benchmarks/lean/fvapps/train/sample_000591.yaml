@@ -1,0 +1,36 @@
+"vc-description": "Abhi Ram analyses london stock exchange and invests in a software\
+  \ company C-.gate . He wants to sell his shares after 5 weeks.\n\nGiven the investment\
+  \  m, increase or decrease of share prices of 5 weeks(+/- pi) , help him to calculate\
+  \ his net profit or loss percentage(n%) of his investment to establish his own company\
+  \ KMC.\n\n-----Input:-----\n\n- The first line contains an integer T which denotes\
+  \ the number of test cases.\n- Each test case comprises of two lines: the first\
+  \ line contains the integer m which denotes the amount invested.\n\nThe second line\
+  \ consists of five space separated integers(p1, p2, p3, p4, p5) each preceeded by\
+  \ + (increase) or - (decrease) which give the percentage of change in share prices\
+  \ over 5 weeks.\n.\n\n-----Output:-----\nThe output contains a single number n which\
+  \ gives the percentage of profit or loss preceeded by + (profit) or - (loss).\n\n\
+  -----Constraints:-----\n- 1 ≤ T ≤ 100\n- 1 ≤ m ≤ 105\n- -100 ≤ pi ≤ 100\n\n-----Example:-----\n\
+  Input:\n2\n10000\n+5 -3 -2 +10 +15\n6256250\n-24 +22 +4 -16 +20\n\nOutput:\n+26.2634\n\
+  -2.79977"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def calculate_profit_loss (investment : Nat) (changes : List Int)\
+  \ : String :=\n  sorry\n"
+"vc-theorems": "theorem calculate_profit_loss_format \n  (investment : Nat) \n  (changes\
+  \ : List Int)\n  (h1 : 1 ≤ investment ∧ investment ≤ 10^7)\n  (h2 : changes.length\
+  \ ≥ 1 ∧ changes.length ≤ 100) \n  (h3 : ∀ x ∈ changes, -99 ≤ x ∧ x ≤ 99) :\n  let\
+  \ result := calculate_profit_loss investment changes\n  (result.get 0 = '+' ∨ result.get\
+  \ 0 = '-' ∨ result = \"0\") :=\n  sorry\n\n\ntheorem calculate_profit_loss_precision\n\
+  \  (investment : Nat)\n  (changes : List Int) \n  (h1 : 1 ≤ investment ∧ investment\
+  \ ≤ 10^7)\n  (h2 : changes.length ≥ 1 ∧ changes.length ≤ 100)\n  (h3 : ∀ x ∈ changes,\
+  \ -99 ≤ x ∧ x ≤ 99)\n  (h4 : calculate_profit_loss investment changes ≠ \"0\") :\n\
+  \  let result := calculate_profit_loss investment changes\n  String.length result\
+  \ ≤ 6 :=\n  sorry\n\n\ntheorem zero_changes_result\n  (investment : Nat)\n  (changes\
+  \ : List Int)\n  (h1 : 1 ≤ investment ∧ investment ≤ 10^7) \n  (h2 : changes.length\
+  \ ≥ 1 ∧ changes.length ≤ 100)\n  (h3 : ∀ x ∈ changes, x = 0) :\n  calculate_profit_loss\
+  \ investment changes = \"0\" :=\n  sorry\n\n\ntheorem single_change_calculation\n\
+  \  (investment : Nat)\n  (change : Int)\n  (h1 : 1 ≤ investment ∧ investment ≤ 10^7)\n\
+  \  (h2 : -99 ≤ change ∧ change ≤ 99) :\n  let result := calculate_profit_loss investment\
+  \ [change]\n  let resultNum := String.toInt! result\n  (resultNum - change).natAbs\
+  \ ≤ 1 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

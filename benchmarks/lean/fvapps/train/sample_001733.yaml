@@ -1,0 +1,47 @@
+"vc-description": "There are n people, each person has a unique id between 0 and n-1.\
+  \ Given the arrays watchedVideos and friends, where watchedVideos[i] and friends[i]\
+  \ contain the list of watched videos and the list of friends respectively for the\
+  \ person with id = i.\nLevel 1 of videos are all watched videos by your friends,\
+  \ level 2 of videos are all watched videos by the friends of your friends and so\
+  \ on. In general, the level k of videos are all watched videos by people with the\
+  \ shortest path exactly equal to k with you. Given your id and the level of videos,\
+  \ return the list of videos ordered by their frequencies (increasing). For videos\
+  \ with the same frequency order them alphabetically from least to greatest. \n \n\
+  Example 1:\n\nInput: watchedVideos = [[\"A\",\"B\"],[\"C\"],[\"B\",\"C\"],[\"D\"\
+  ]], friends = [[1,2],[0,3],[0,3],[1,2]], id = 0, level = 1\nOutput: [\"B\",\"C\"\
+  ] \nExplanation: \nYou have id = 0 (green color in the figure) and your friends\
+  \ are (yellow color in the figure):\nPerson with id = 1 -> watchedVideos = [\"C\"\
+  ] \nPerson with id = 2 -> watchedVideos = [\"B\",\"C\"] \nThe frequencies of watchedVideos\
+  \ by your friends are: \nB -> 1 \nC -> 2\n\nExample 2:\n\nInput: watchedVideos =\
+  \ [[\"A\",\"B\"],[\"C\"],[\"B\",\"C\"],[\"D\"]], friends = [[1,2],[0,3],[0,3],[1,2]],\
+  \ id = 0, level = 2\nOutput: [\"D\"]\nExplanation: \nYou have id = 0 (green color\
+  \ in the figure) and the only friend of your friends is the person with id = 3 (yellow\
+  \ color in the figure).\n\n \nConstraints:\n\nn == watchedVideos.length == friends.length\n\
+  2 <= n <= 100\n1 <= watchedVideos[i].length <= 100\n1 <= watchedVideos[i][j].length\
+  \ <= 8\n0 <= friends[i].length < n\n0 <= friends[i][j] < n\n0 <= id < n\n1 <= level\
+  \ < n\nif friends[i] contains j, then friends[j] contains i"
+"vc-preamble": "import Imports.AllImports\n\ndef PersonId := Nat\ndef Video := String\n\
+  \ndef WatchedVideos := List (List Video)\ndef Friends := List (List PersonId)\n\n\
+  instance : Inhabited PersonId where\n  default := Nat.zero\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def watched_videos_by_friends (watchedVideos : WatchedVideos) \n\
+  \  (friends : Friends) (id : PersonId) (level : Nat) : List Video := sorry\n"
+"vc-theorems": "theorem watched_videos_by_friends_result_subset_all_videos \n  (watchedVideos\
+  \ : WatchedVideos) (friends : Friends) \n  (id : PersonId) (level : Nat) :\n  let\
+  \ result := watched_videos_by_friends watchedVideos friends id level\n  let allVideos\
+  \ := List.join watchedVideos\n  ∀ v, v ∈ result → v ∈ allVideos := sorry\n\n\ntheorem\
+  \ friends_lists_symmetric\n  (friends : Friends) (i j : Nat) (h1 : i < friends.length)\
+  \ (h2 : j < friends.length)\n  (h3 : j ∈ List.get! friends i) :\n  i ∈ List.get!\
+  \ friends j := sorry\n\n\ntheorem friends_lists_ascending\n  (friends : Friends)\
+  \ (i : Nat) (h : i < friends.length) (x y : Nat) :\n  x ∈ List.get! friends i →\
+  \ y ∈ List.get! friends i → x ≤ y ∨ y ≤ x := sorry\n\n\ntheorem friends_lists_unique\n\
+  \  (friends : Friends) (i : Nat) (h : i < friends.length) :\n  List.Nodup (List.get!\
+  \ friends i) := sorry\n\n\ntheorem friends_not_self_referential\n  (friends : Friends)\
+  \ (i : Nat) (h : i < friends.length) :\n  i ∉ List.get! friends i := sorry\n\n/--\n\
+  info: ['B', 'C']\n-/\n#guard_msgs in\n#eval watched_videos_by_friends [[\"A\", \"\
+  B\"], [\"C\"], [\"B\", \"C\"], [\"D\"]] [[1, 2], [0, 3], [0, 3], [1, 2]] 0 1\n\n\
+  /--\ninfo: ['D']\n-/\n#guard_msgs in\n#eval watched_videos_by_friends videos1 friends1\
+  \ 0 2\n\n/--\ninfo: ['B', 'C']\n-/\n#guard_msgs in\n#eval watched_videos_by_friends\
+  \ [[\"A\"], [\"B\"], [\"C\"], [\"A\", \"B\"]] [[1, 2], [0, 3], [0, 3], [1, 2]] 0\
+  \ 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

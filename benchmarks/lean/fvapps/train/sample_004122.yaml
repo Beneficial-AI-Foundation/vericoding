@@ -1,0 +1,31 @@
+"vc-description": "# Task\n Call two arms equally strong if the heaviest weights they\
+  \ each are able to lift are equal.\n\n Call two people equally strong if their strongest\
+  \ arms are equally strong (the strongest arm can be both the right and the left),\
+  \ and so are their weakest arms.\n\n Given your and your friend's arms' lifting\
+  \ capabilities find out if you two are equally strong.\n\n# Example\n\n For `yourLeft\
+  \ = 10, yourRight = 15, friendsLeft = 15 and friendsRight = 10`, the output should\
+  \ be `true`;\n \n For `yourLeft = 15, yourRight = 10, friendsLeft = 15 and friendsRight\
+  \ = 10`, the output should be `true`;\n \n For `yourLeft = 15, yourRight = 10, friendsLeft\
+  \ = 15 and friendsRight = 9,` the output should be `false`.\n \n# Input/Output\n\
+  \n\n - `[input]` integer `yourLeft`\n\n    A non-negative integer representing the\
+  \ heaviest weight you can lift with your left arm.\n    \n\n - `[input]` integer\
+  \ `yourRight`\n\n    A non-negative integer representing the heaviest weight you\
+  \ can lift with your right arm.\n\n\n - `[input]` integer `friendsLeft`\n\n    A\
+  \ non-negative integer representing the heaviest weight your friend can lift with\
+  \ his or her left arm.\n\n\n - `[input]` integer `friendsRight`\n\n    A non-negative\
+  \ integer representing the heaviest weight your friend can lift with his or her\
+  \ right arm.\n\n\n - `[output]` a boolean value"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def are_equally_strong (your_left right friends_left friends_right\
+  \ : Int) : Bool := sorry\n\n-- Symmetry property"
+"vc-theorems": "theorem are_equally_strong_symmetric \n  (your_left your_right friends_left\
+  \ friends_right : Int) :\n  are_equally_strong your_left your_right friends_left\
+  \ friends_right =\n  are_equally_strong your_right your_left friends_left friends_right\
+  \ ∧\n  are_equally_strong your_left your_right friends_right friends_left := sorry\n\
+  \n-- Reflexivity property \n\ntheorem are_equally_strong_reflexive (left right :\
+  \ Int) :\n  are_equally_strong left right left right = true := sorry\n\n-- Transitivity\
+  \ property\n\ntheorem are_equally_strong_transitive (a1 a2 b1 b2 : Int) :\n  are_equally_strong\
+  \ a1 a2 b1 b2 → are_equally_strong b1 b2 b1 b2 →\n  are_equally_strong a1 a2 b1\
+  \ b2 := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

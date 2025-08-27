@@ -1,0 +1,16 @@
+"vc-description": "Every natural number, ```n```, may have a prime factorization like:\n\
+  \n\n\nWe define the **geometric derivative of n**, as a number with the following\
+  \ value:\n\n\n\nFor example: calculate the value of ```n*``` for ```n = 24500```.\n\
+  ```\n24500 = 2²5³7²\nn* = (2*2) * (3*5²) * (2*7) = 4200\n```\nMake a function, ```f```\
+  \ that can perform this calculation\n```\nf(n) ----> n*\n```\nEvery prime number\
+  \ will have ```n* = 1```.\n\nEvery number that does not have an exponent ```ki```,\
+  \ higher than 1, will give a ```n* = 1```, too\n\n```python\nf(24500) == 4200\n\n\
+  f(997) == 1\n```\nDo your best!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def f (n : Nat) : Nat := sorry\n\ndef isPrime (n : Nat) : Bool\
+  \ := sorry\n"
+"vc-theorems": "theorem f_always_positive (n : Nat) (h : n > 0) : \n  f n > 0 := sorry\n\
+  \n/--\ninfo: 4200\n-/\n#guard_msgs in\n#eval f 24500\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval f 997\n\n/--\ninfo: 10\n-/\n#guard_msgs in\n#eval f 25\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

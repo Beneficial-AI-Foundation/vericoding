@@ -1,0 +1,54 @@
+"vc-description": "You are playing euchre and you want to know the new score after\
+  \ finishing a hand. There are two teams and each hand consists of 5 tricks. The\
+  \ team who wins the majority of the tricks will win points but the number of points\
+  \ varies. To determine the number of points, you must know which team called trump,\
+  \ how many tricks each team won, and if anyone went alone. Scoring is as follows:\n\
+  \nFor the team that called trump:\n\n- if they win 2 or less tricks -> other team\
+  \ wins 2 points\n\n- if they win 3 or 4 tricks -> 1 point\n\n- if they don't go\
+  \ alone and win 5 tricks -> 2 points\n\n- if they go alone and win 5 tricks -> 4\
+  \ points\n\nOnly the team who called trump can go alone and you will notice that\
+  \ it only increases your points if you win all 5 tricks.\n\n\nYour job is to create\
+  \ a method to calculate the new score. When reading the arguments, team 1 is represented\
+  \ by 1 and team 2 is represented by 2. All scores will be stored with this order:\
+  \ { team1, team2 }."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def update_score (score: List Int) (trump: Int) (alone: Bool) (tricks:\
+  \ List Int) : List Int := sorry\n\ntheorem update_score_preserves_length \n  (score:\
+  \ List Int) (trump: Int) (alone: Bool) (tricks: List Int)\n  (h1: trump ≥ 1) (h2:\
+  \ trump ≤ 2) \n  (h3: score.length = 2)\n  (h4: tricks.length = 5)\n  (h5: ∀ t ∈\
+  \ tricks, t ≥ 1 ∧ t ≤ 2) :\n  (update_score score trump alone tricks).length = score.length\
+  \ := sorry\n"
+"vc-theorems": "theorem update_score_changes_one_team\n  (score: List Int) (trump:\
+  \ Int) (alone: Bool) (tricks: List Int)\n  (h1: trump ≥ 1) (h2: trump ≤ 2)\n  (h3:\
+  \ score.length = 2)\n  (h4: tricks.length = 5)\n  (h5: ∀ t ∈ tricks, t ≥ 1 ∧ t ≤\
+  \ 2) :\n  let result := update_score score trump alone tricks\n  let changed :=\
+  \ (List.zip score result).filter (λ p => p.1 ≠ p.2) |>.length\n  changed ≤ 1 :=\
+  \ sorry\n\n\ntheorem update_score_only_increases\n  (score: List Int) (trump: Int)\
+  \ (alone: Bool) (tricks: List Int)\n  (h1: trump ≥ 1) (h2: trump ≤ 2)\n  (h3: score.length\
+  \ = 2)\n  (h4: tricks.length = 5)\n  (h5: ∀ t ∈ tricks, t ≥ 1 ∧ t ≤ 2) :\n  let\
+  \ result := update_score score trump alone tricks\n  let pairs := List.zip score\
+  \ result\n  ∀ p ∈ pairs, p.2 ≥ p.1 := sorry\n\n\ntheorem update_score_valid_increments\n\
+  \  (score: List Int) (trump: Int) (alone: Bool) (tricks: List Int)\n  (h1: trump\
+  \ ≥ 1) (h2: trump ≤ 2)\n  (h3: score.length = 2)\n  (h4: tricks.length = 5)\n  (h5:\
+  \ ∀ t ∈ tricks, t ≥ 1 ∧ t ≤ 2) :\n  let result := update_score score trump alone\
+  \ tricks\n  let diffs := (List.zip score result).map (λ p => p.2 - p.1)\n  ∀ d ∈\
+  \ diffs, d = 0 ∨ d = 1 ∨ d = 2 ∨ d = 4 := sorry\n\n\ntheorem update_score_alone_bonus\n\
+  \  (score: List Int) (trump: Int) (alone: Bool) (tricks: List Int)\n  (h1: trump\
+  \ ≥ 1) (h2: trump ≤ 2)\n  (h3: score.length = 2)\n  (h4: tricks.length = 5)\n  (h5:\
+  \ ∀ t ∈ tricks, t ≥ 1 ∧ t ≤ 2) :\n  let result := update_score score trump alone\
+  \ tricks\n  let trump_tricks := tricks.filter (λ t => t = trump) |>.length\n  alone\
+  \ ∧ trump_tricks = 5 →\n  let diffs := (List.zip score result).map (λ p => p.2 -\
+  \ p.1)\n  let max_diff := diffs.foldl max 0\n  max_diff = 2 ∨ max_diff = 4 := sorry\n\
+  \n\ntheorem update_score_failed_contract\n  (score: List Int) (trump: Int) (alone:\
+  \ Bool) (tricks: List Int)\n  (h1: trump ≥ 1) (h2: trump ≤ 2)\n  (h3: score.length\
+  \ = 2)\n  (h4: tricks.length = 5)\n  (h5: ∀ t ∈ tricks, t ≥ 1 ∧ t ≤ 2) :\n  let\
+  \ result := update_score score trump alone tricks\n  let trump_tricks := tricks.filter\
+  \ (λ t => t = trump) |>.length\n  trump_tricks ≤ 2 →\n  let winning_team := 3 -\
+  \ trump\n  ∃ (i : Fin score.length), result.get ⟨i.1, by\n    have h := update_score_preserves_length\
+  \ score trump alone tricks h1 h2 h3 h4 h5\n    rw [h]\n    exact i.2⟩ > score.get\
+  \ i := sorry\n\n/--\ninfo: [2, 8]\n-/\n#guard_msgs in\n#eval update_score [0, 8]\
+  \ 1 False [1, 1, 1, 1, 1]\n\n/--\ninfo: [6, 8]\n-/\n#guard_msgs in\n#eval update_score\
+  \ [2, 8] 1 True [1, 1, 1, 1, 1]\n\n/--\ninfo: [9, 2]\n-/\n#guard_msgs in\n#eval\
+  \ update_score [7, 2] 2 False [1, 2, 2, 1, 1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

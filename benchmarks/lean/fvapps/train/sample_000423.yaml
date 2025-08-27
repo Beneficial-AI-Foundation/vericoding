@@ -1,0 +1,28 @@
+"vc-description": "Given an array of integers arr and two integers k and threshold.\n\
+  Return the number of sub-arrays of size k and average greater than or equal to threshold.\n\
+   \nExample 1:\nInput: arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4\nOutput: 3\n\
+  Explanation: Sub-arrays [2,5,5],[5,5,5] and [5,5,8] have averages 4, 5 and 6 respectively.\
+  \ All other sub-arrays of size 3 have averages less than 4 (the threshold).\n\n\
+  Example 2:\nInput: arr = [1,1,1,1,1], k = 1, threshold = 0\nOutput: 5\n\nExample\
+  \ 3:\nInput: arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 5\nOutput: 6\n\
+  Explanation: The first 6 sub-arrays of size 3 have averages greater than 5. Note\
+  \ that averages are not integers.\n\nExample 4:\nInput: arr = [7,7,7,7,7,7,7], k\
+  \ = 7, threshold = 7\nOutput: 1\n\nExample 5:\nInput: arr = [4,4,4,4], k = 4, threshold\
+  \ = 1\nOutput: 1\n\n \nConstraints:\n\n1 <= arr.length <= 10^5\n1 <= arr[i] <= 10^4\n\
+  1 <= k <= arr.length\n0 <= threshold <= 10^4"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def num_of_subarrays (arr : List Int) (k : Nat) (threshold : Int)\
+  \ : Nat :=\nsorry\n"
+"vc-theorems": "theorem non_negative_result (arr : List Int) (k : Nat) (threshold\
+  \ : Int) :\n  num_of_subarrays arr k threshold ≥ 0 :=\nsorry\n\n\ntheorem empty_result_if_smaller\
+  \ (arr : List Int) (k : Nat) (threshold : Int) :\n  arr.length < k → num_of_subarrays\
+  \ arr k threshold = 0 :=\nsorry\n\n\ntheorem result_bounded_by_possible_subarrays\
+  \ (arr : List Int) (k : Nat) (threshold : Int) :\n  arr.length ≥ k → num_of_subarrays\
+  \ arr k threshold ≤ arr.length - k + 1 :=\nsorry\n\n\ntheorem k_equals_one_case\
+  \ (arr : List Int) (threshold : Int) :\n  num_of_subarrays arr 1 threshold = (arr.filter\
+  \ (fun x => x ≥ threshold)).length :=\nsorry\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
+  #eval num_of_subarrays [2, 2, 2, 2, 5, 5, 5, 8] 3 4\n\n/--\ninfo: 5\n-/\n#guard_msgs\
+  \ in\n#eval num_of_subarrays [1, 1, 1, 1, 1] 1 0\n\n/--\ninfo: 6\n-/\n#guard_msgs\
+  \ in\n#eval num_of_subarrays [11, 13, 17, 23, 29, 31, 7, 5, 2, 3] 3 5\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

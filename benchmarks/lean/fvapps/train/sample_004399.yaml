@@ -1,0 +1,41 @@
+"vc-description": "# Definition\n\nA **number** is called **_Automorphic number_**\
+  \ if and only if *its square ends in the same digits as the number itself*.\n___\n\
+  \n# Task\n\n**_Given_** a **number** *determine if it Automorphic or not* .\n___\n\
+  \n# Warm-up (Highly recommended)\n\n# [Playing With Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
+  ___\n\n# Notes \n\n* The **_number_** passed to the function is **_positive_** \n\
+  \n* **_Single-digit_** numbers are considered **_Automorphic number_**.\n___\n#\
+  \ Input >> Output Examples \n\n```\nautoMorphic (25) -->> return \"Automorphic\"\
+  \ \n```\n## **_Explanation_**:\n\n* `25` squared is `625` , **_Ends with the same\
+  \ number's digits which are 25_** .\n___\n```\nautoMorphic (13) -->> return \"Not!!\"\
+  \n```\n## **_Explanation_**:\n\n* `13` squared is `169` , **_Not ending with the\
+  \ same number's digits which are 69_** .\n___ \n```\nautoMorphic (76) -->> return\
+  \ \"Automorphic\"\n```\n## **_Explanation_**:\n\n* `76` squared is `5776` , **_Ends\
+  \ with the same number's digits which are 76_** .\n___\n```\nautoMorphic (225) -->>\
+  \ return \"Not!!\"\n```\n## **_Explanation_**:\n\n* `225` squared is `50625` , **_Not\
+  \ ending with the same number's digits which are 225_** .\n___ \n```\nautoMorphic\
+  \ (625) -->> return \"Automorphic\"\n```\n## **_Explanation_**:\n\n* `625` squared\
+  \ is `390625` , **_Ends with the same number's digits which are 625_** .\n___ \n\
+  ```\nautoMorphic (1) -->> return \"Automorphic\"\n```\n## **_Explanation_**:\n\n\
+  * `1` squared is `1` , **_Ends with the same number's digits which are 1_** .\n\
+  ___\n```\nautoMorphic (6) -->> return \"Automorphic\"\n```\n## **_Explanation_**:\n\
+  \n* `6` squared is `36` , **_Ends with the same number's digits which are 6_** \n\
+  ___\n___\n\n# [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)\n\
+  \n# [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)\n\
+  \n# [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)\n\
+  ___\n\n## ALL translations are welcomed\n\n## Enjoy Learning !!\n# Zizou"
+"vc-preamble": "import Imports.AllImports\n\ndef automorphic (n : Nat) : String :=\
+  \ \n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def length (s : String) : Nat := s.data.length\ndef endsWith (s1\
+  \ s2 : String) : Bool := sorry\n"
+"vc-theorems": "theorem automorphic_returns_valid_string (n : Nat) : \n  automorphic\
+  \ n = \"Automorphic\" ∨ automorphic n = \"Not!!\" := \n  sorry\n\n\ntheorem automorphic_definition\
+  \ (n : Nat) :\n  automorphic n = \"Automorphic\" ↔ endsWith (ToString.toString (n\
+  \ * n)) (ToString.toString n) = true := \n  sorry\n\n\ntheorem automorphic_zero_property\
+  \ (n : Nat) :\n  n = 0 → automorphic n = \"Automorphic\" :=\n  sorry\n\n\ntheorem\
+  \ automorphic_length_property (n : Nat) :\n  n > 0 → \n  automorphic n = \"Automorphic\"\
+  \ →\n  length (ToString.toString (n * n)) ≥ length (ToString.toString n) :=\n  sorry\n\
+  \n/--\ninfo: 'Automorphic'\n-/\n#guard_msgs in\n#eval automorphic 6\n\n/--\ninfo:\
+  \ 'Automorphic'\n-/\n#guard_msgs in\n#eval automorphic 25\n\n/--\ninfo: 'Not!!'\n\
+  -/\n#guard_msgs in\n#eval automorphic 53\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

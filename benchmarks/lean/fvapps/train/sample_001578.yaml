@@ -1,0 +1,22 @@
+"vc-description": "A product-sum number is a natural number N which can be expressed\
+  \ as both the product and the sum of the same set of numbers.\n\nN = a1 × a2 × ...\
+  \ × ak = a1 + a2 + ... + ak\n\nFor example, 6 = 1 × 2 × 3 = 1 + 2 + 3.\n\nFor a\
+  \ given set of size, k, we shall call the smallest N with this property a minimal\
+  \ product-sum number. The minimal product-sum numbers for sets of size, k = 2, 3,\
+  \ 4, 5, and 6 are as follows.\n```\nk=2: 4 = 2 × 2 = 2 + 2\nk=3: 6 = 1 × 2 × 3 =\
+  \ 1 + 2 + 3\nk=4: 8 = 1 × 1 × 2 × 4 = 1 + 1 + 2 + 4\nk=5: 8 = 1 × 1 × 2 × 2 × 2\
+  \ = 1 + 1 + 2 + 2 + 2\nk=6: 12 = 1 × 1 × 1 × 1 × 2 × 6 = 1 + 1 + 1 + 1 + 2 + 6\n\
+  ```\n\nHence for 2 ≤ k ≤ 6, the sum of all the minimal product-sum numbers is 4+6+8+12\
+  \ = 30; note that 8 is only counted once in the sum.\n\nYour task is to write an\
+  \ algorithm to compute the sum of all minimal product-sum numbers where 2 ≤ k ≤\
+  \ n.\n\nCourtesy of ProjectEuler.net"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def productsum (n: Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem productsum_basic_cases :\n  productsum 2 = 4 ∧ productsum\
+  \ 3 = 10 ∧ productsum 4 = 18 :=\n  sorry\n\n\ntheorem productsum_positive (n: Nat)\
+  \ (h: n ≥ 2) :\n  productsum n > 0 :=\n  sorry\n\n\ntheorem productsum_increases\
+  \ (n: Nat) (h: n ≥ 2) :\n  productsum (n + 1) > productsum n :=\n  sorry\n\n/--\n\
+  info: 10\n-/\n#guard_msgs in\n#eval productsum 3\n\n/--\ninfo: 30\n-/\n#guard_msgs\
+  \ in\n#eval productsum 6\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval productsum 2\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

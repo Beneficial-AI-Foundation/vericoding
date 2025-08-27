@@ -1,0 +1,39 @@
+"vc-description": "Given a 2D grid consists of 0s (land) and 1s (water).  An island\
+  \ is a maximal 4-directionally connected group of 0s and a closed island is an island\
+  \ totally (all left, top, right, bottom) surrounded by 1s.\nReturn the number of\
+  \ closed islands.\n \nExample 1:\n\nInput: grid = [[1,1,1,1,1,1,1,0],[1,0,0,0,0,1,1,0],[1,0,1,0,1,1,1,0],[1,0,0,0,0,1,0,1],[1,1,1,1,1,1,1,0]]\n\
+  Output: 2\nExplanation: \nIslands in gray are closed because they are completely\
+  \ surrounded by water (group of 1s).\nExample 2:\n\nInput: grid = [[0,0,1,0,0],[0,1,0,1,0],[0,1,1,1,0]]\n\
+  Output: 1\n\nExample 3:\nInput: grid = [[1,1,1,1,1,1,1],\n               [1,0,0,0,0,0,1],\n\
+                 [1,0,1,1,1,0,1],\n               [1,0,1,0,1,0,1],\n             \
+  \  [1,0,1,1,1,0,1],\n               [1,0,0,0,0,0,1],\n               [1,1,1,1,1,1,1]]\n\
+  Output: 2\n\n \nConstraints:\n\n1 <= grid.length, grid[0].length <= 100\n0 <= grid[i][j]\
+  \ <=1"
+"vc-preamble": "import Imports.AllImports\n\ndef Grid := List (List Nat)\n\ndef closed_island\
+  \ (grid : Grid) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def listSum (l: List Nat) : Nat :=\n  match l with\n  | [] => 0\n\
+  \  | x::xs => x + listSum xs\n"
+"vc-theorems": "theorem closed_island_non_negative (grid: Grid) : \n  closed_island\
+  \ grid ≥ 0 :=\n  sorry\n\n\ntheorem closed_island_less_than_zeros (grid: Grid) :\n\
+  \  let countZeros (row: List Nat) := List.length (List.filter (λ x => x = 0) row)\n\
+  \  closed_island grid ≤ listSum (List.map countZeros grid) :=\n  sorry\n\n\ntheorem\
+  \ closed_island_small_grid (grid: Grid) (h1: grid.length < 3 ∨ (List.head! grid).length\
+  \ < 3) :\n  closed_island grid = 0 :=\n  sorry\n\n\ntheorem closed_island_all_ones\
+  \ (grid: Grid) \n  (h: ∀ row, List.elem row grid → ∀ x, List.elem x row → x = 1)\
+  \ :\n  closed_island grid = 0 :=\n  sorry\n\n\ntheorem closed_island_all_zeros (grid:\
+  \ Grid)\n  (h: ∀ row, List.elem row grid → ∀ x, List.elem x row → x = 0) :\n  closed_island\
+  \ grid = 0 :=\n  sorry\n\n\ntheorem closed_island_simple_case_3x3 (grid: Grid)\n\
+  \  (h1: grid = [[1,1,1], [1,0,1], [1,1,1]]) :\n  closed_island grid = 1 :=\n  sorry\n\
+  \n\ntheorem closed_island_simple_case_4x4 (grid: Grid)\n  (h1: grid = [[1,1,1,1],\
+  \ [1,0,0,1], [1,0,0,1], [1,1,1,1]]) :\n  closed_island grid = 1 :=\n  sorry\n\n\n\
+  theorem closed_island_mutates_to_ones (grid: Grid)\n  (h1: grid = [[1,1,1], [1,0,1],\
+  \ [1,1,1]]) :\n  let _ := closed_island grid\n  ∀ row, List.elem row grid → ∀ x,\
+  \ List.elem x row → x = 1 :=\n  sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval\
+  \ closed_island [[1, 1, 1, 1, 1, 1, 1, 0], [1, 0, 0, 0, 0, 1, 1, 0], [1, 0, 1, 0,\
+  \ 1, 1, 1, 0], [1, 0, 0, 0, 0, 1, 0, 1], [1, 1, 1, 1, 1, 1, 1, 0]]\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval closed_island [[0, 0, 1, 0, 0], [0, 1, 0, 1, 0],\
+  \ [0, 1, 1, 1, 0]]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval closed_island [[1,\
+  \ 1, 1, 1, 1, 1, 1], [1, 0, 0, 0, 0, 0, 1], [1, 0, 1, 1, 1, 0, 1], [1, 0, 1, 0,\
+  \ 1, 0, 1], [1, 0, 1, 1, 1, 0, 1], [1, 0, 0, 0, 0, 0, 1], [1, 1, 1, 1, 1, 1, 1]]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

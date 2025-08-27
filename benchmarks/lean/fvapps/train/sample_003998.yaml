@@ -1,0 +1,35 @@
+"vc-description": "If the first day of the month is a Friday, it is likely that the\
+  \ month will have an `Extended Weekend`. That is, it could have five Fridays, five\
+  \ Saturdays and five Sundays. \n\nIn this Kata, you will be given a start year and\
+  \ an end year. Your task will be to find months that have extended weekends and\
+  \ return:\n```\n- The first and last month in the range that has an extended weekend\n\
+  - The number of months that have extended weekends in the range, inclusive of start\
+  \ year and end year.\n```\n\nFor example:\n```python\nsolve(2016,2020) = (\"Jan\"\
+  ,\"May\",5). #The months are: Jan 2016, Jul 2016, Dec 2017, Mar 2019, May 2020\n\
+  ```\n\nMore examples in test cases. Good luck!\n\nIf you found this Kata easy, please\
+  \ try [myjinxin2015](https://www.codewars.com/users/myjinxin2015) challenge version\
+  \ [here](https://www.codewars.com/kata/extended-weekends-challenge-edition)"
+"vc-preamble": "import Imports.AllImports\n\ndef monthAbbr : Month → String\n| Month.Jan\
+  \ => \"Jan\"\n| Month.Feb => \"Feb\" \n| Month.Mar => \"Mar\"\n| Month.Apr => \"\
+  Apr\"\n| Month.May => \"May\"\n| Month.Jun => \"Jun\"\n| Month.Jul => \"Jul\"\n\
+  | Month.Aug => \"Aug\"\n| Month.Sep => \"Sep\"\n| Month.Oct => \"Oct\"\n| Month.Nov\
+  \ => \"Nov\"\n| Month.Dec => \"Dec\"\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (startYear endYear : Nat) : String × String × Nat :=\n\
+  sorry\n\n-- Theorems based on property tests"
+"vc-theorems": "theorem solve_result_type (startYear endYear : Nat) : \n  let result\
+  \ := solve startYear endYear\n  result.1 = result.1 ∧ result.2.1 = result.2.1 ∧\
+  \ result.2.2 > 0 :=\nsorry \n\n\ntheorem solve_valid_months (startYear endYear :\
+  \ Nat) :\n  let result := solve startYear endYear\n  let months31 := [Month.Jan,\
+  \ Month.Mar, Month.May, Month.Jul, Month.Aug, Month.Oct, Month.Dec]\n  result.1\
+  \ ∈ months31.map monthAbbr ∧ \n  result.2.1 ∈ months31.map monthAbbr :=\nsorry\n\
+  \n\ntheorem solve_count_bounds (startYear endYear : Nat) (h : endYear ≥ startYear)\
+  \ :\n  let result := solve startYear endYear \n  let yearDiff := endYear - startYear\
+  \ + 1\n  let maxPossible := yearDiff * 7\n  0 < result.2.2 ∧ result.2.2 ≤ maxPossible\
+  \ :=\nsorry\n\n\ntheorem solve_guaranteed_solution (startYear endYear : Nat) \n\
+  \  (h1 : startYear ≥ 1800) (h2 : endYear ≤ 2500) (h3 : endYear ≥ startYear + 10)\
+  \ :\n  let result := solve startYear endYear\n  result.2.2 > 0 :=\nsorry\n\n/--\n\
+  info: ('Jan', 'May', 5)\n-/\n#guard_msgs in\n#eval solve 2016 2020\n\n/--\ninfo:\
+  \ ('Mar', 'Dec', 51)\n-/\n#guard_msgs in\n#eval solve 1900 1950\n\n/--\ninfo: ('Aug',\
+  \ 'Oct', 702)\n-/\n#guard_msgs in\n#eval solve 1800 2500\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

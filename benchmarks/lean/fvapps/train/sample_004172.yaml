@@ -1,0 +1,23 @@
+"vc-description": "In this Kata, we will check if a string contains consecutive letters\
+  \ as they appear in the English alphabet and if each letter occurs only once. \n\
+  \n```Haskell\nRules are: (1) the letters are adjacent in the English alphabet, and\
+  \ (2) each letter occurs only once.\n\nFor example: \nsolve(\"abc\") = True, because\
+  \ it contains a,b,c\nsolve(\"abd\") = False, because a, b, d are not consecutive/adjacent\
+  \ in the alphabet, and c is missing.\nsolve(\"dabc\") = True, because it contains\
+  \ a, b, c, d\nsolve(\"abbc\") = False, because b does not occur once.\nsolve(\"\
+  v\") = True\n```\nAll inputs will be lowercase letters. \n\nMore examples in test\
+  \ cases. Good luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef solve (s : String) : Bool :=\n  sorry\n\
+  \n\ndef eraseDuplicates (xs : List α) : List α :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sortList (xs : List α) : List α :=\n  sorry\n"
+"vc-theorems": "theorem solve_valid_string_properties (s : String) :\n  solve s →\
+  \ \n  (s.length : Nat) = (eraseDuplicates s.toList).length ∧ \n  sortList (s.toList.map\
+  \ Char.toLower) = s.toList := by\n  sorry\n\n\ntheorem solve_invalid_chars (s :\
+  \ String) :\n  s.toList.all (λ c => ¬c.isLower) →\n  ¬(solve s) := by\n  sorry\n\
+  \n\ntheorem solve_duplicates (s : String) :\n  s.length > 0 →\n  ¬(solve (s ++ s))\
+  \ := by\n  sorry\n\n\ntheorem solve_empty :\n  ¬(solve \"\") := by\n  sorry\n\n\
+  /--\ninfo: True\n-/\n#guard_msgs in\n#eval solve \"abc\"\n\n/--\ninfo: False\n-/\n\
+  #guard_msgs in\n#eval solve \"abd\"\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval\
+  \ solve \"dabc\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,25 @@
+"vc-description": "Given a palindromic string palindrome, replace exactly one character\
+  \ by any lowercase English letter so that the string becomes the lexicographically\
+  \ smallest possible string that isn't a palindrome.\nAfter doing so, return the\
+  \ final string.  If there is no way to do so, return the empty string.\n \nExample\
+  \ 1:\nInput: palindrome = \"abccba\"\nOutput: \"aaccba\"\n\nExample 2:\nInput: palindrome\
+  \ = \"a\"\nOutput: \"\"\n\n \nConstraints:\n\n1 <= palindrome.length <= 1000\npalindrome consists\
+  \ of only lowercase English letters."
+"vc-preamble": "import Imports.AllImports\n\ndef break_palindrome (s : String) : String\
+  \ := sorry \n\ndef is_palindrome (s : String) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def strRepeat (c : Char) (n : Nat) : String := sorry\n\ntheorem\
+  \ single_char_palindrome (n : Nat) (h : n = 1) :\n  break_palindrome (strRepeat\
+  \ 'a' n) = \"\" := sorry\n"
+"vc-theorems": "theorem all_a_string_breaks_to_b (s : String) (h₁ : s.length ≥ 2)\
+  \ (h₂ : ∀ c ∈ s.data, c = 'a') :\n  break_palindrome s = (s.dropRight 1).push 'b'\
+  \ := sorry\n\n\ntheorem break_gives_different_string (s : String) (h₁ : s.length\
+  \ ≥ 2) (h₂ : is_palindrome s = true) :\n  break_palindrome s ≠ s := sorry\n\n\n\
+  theorem break_gives_non_palindrome (s : String) (h₁ : s.length ≥ 2) (h₂ : is_palindrome\
+  \ s = true) :\n  is_palindrome (break_palindrome s) = false := sorry\n\n\ntheorem\
+  \ break_preserves_length (s : String) (h₁ : s.length ≥ 2) (h₂ : is_palindrome s\
+  \ = true) :\n  (break_palindrome s).length = s.length := sorry\n\n/--\ninfo: 'aaccba'\n\
+  -/\n#guard_msgs in\n#eval break_palindrome \"abccba\"\n\n/--\ninfo: ''\n-/\n#guard_msgs\
+  \ in\n#eval break_palindrome \"a\"\n\n/--\ninfo: 'ab'\n-/\n#guard_msgs in\n#eval\
+  \ break_palindrome \"aa\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

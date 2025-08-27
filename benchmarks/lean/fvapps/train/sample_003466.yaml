@@ -1,0 +1,28 @@
+"vc-description": "# Task\n\nWrite a function that accepts `msg` string and returns\
+  \ local tops of string from the highest to the lowest.  \nThe string's tops are\
+  \ from displaying the string in the below way:\n\n```\n\n                      \
+  \                   7891012\n                             TUWvXY      6     3\n\
+  \                   ABCDE     S    Z      5\n           lmno    z   F     R    1\
+  \      4\n     abc   k  p    v   G     Q    2      3\n.34..9 d...j  q....x   H.....P\
+  \    3......2\n125678 efghi  rstuwy   IJKLMNO    45678901\n\n```\nThe next top is\
+  \ always 1 character higher than the previous one. \nFor the above example, the\
+  \ solution for the `123456789abcdefghijklmnopqrstuwyxvzABCDEFGHIJKLMNOPQRSTUWvXYZ123456789012345678910123`\
+  \ input string is `7891012TUWvXYABCDElmnoabc34`. \n\n- When the `msg` string is\
+  \ empty, return an empty string.\n- The input strings may be very long. Make sure\
+  \ your solution has good performance.\n- The (.)dots on the sample dispaly of string\
+  \ are only there to help you to understand the pattern  \n\nCheck the test cases\
+  \ for more samples.\n\n# Series\n\n- [String tops](https://www.codewars.com/kata/59b7571bbf10a48c75000070)\n\
+  - [Square string tops](https://www.codewars.com/kata/5aa3e2b0373c2e4b420009af)"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def tops (s : String) : String := sorry \n\ntheorem tops_empty_or_short_strings\
+  \ (s : String) :\n  (s = \"\") → (tops s = \"\") ∧ \n  (s.length ≤ 2) → (tops s\
+  \ = \"\") ∧\n  (tops s).length ≤ s.length := by sorry\n"
+"vc-theorems": "theorem tops_result_pattern (s : String) :\n  s.length ≥ 10 →\n  (∀\
+  \ c, c ∈ (tops s).data.take 2 → c ∈ s.data) ∧ \n  (∀ c, c ∈ ((tops s).data.drop\
+  \ 2).take 3 → c ∈ s.data) ∧\n  (∀ c, c ∈ ((tops s).data.drop 5).take 4 → c ∈ s.data)\
+  \ := by sorry\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval tops \"\"\n\n/--\ninfo:\
+  \ 'cd'\n-/\n#guard_msgs in\n#eval tops \"abcde\"\n\n/--\ninfo: 'TUABCDElmnoabc34'\n\
+  -/\n#guard_msgs in\n#eval tops \"123456789abcdefghijklmnopqrstuwyxvzABCDEFGHIJKLMNOPQRSTU\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

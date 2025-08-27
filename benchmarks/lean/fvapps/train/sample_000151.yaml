@@ -1,0 +1,29 @@
+"vc-description": "Remember the story of Little Match Girl? By now, you know exactly\
+  \ what matchsticks the little match girl has, please find out a way you can make\
+  \ one square by using up all those matchsticks. You should not break any stick,\
+  \ but you can link them up, and each matchstick must be used exactly one time.\n\
+  \n Your input will be several matchsticks the girl has, represented with their stick\
+  \ length. Your output will either be true or false, to represent whether you could\
+  \ make one square using all the matchsticks the little match girl has.\n\nExample\
+  \ 1:\n\nInput: [1,1,2,2,2]\nOutput: true\n\nExplanation: You can form a square with\
+  \ length 2, one side of the square came two sticks with length 1.\n\n\n\nExample\
+  \ 2:\n\nInput: [3,3,3,3,4]\nOutput: false\n\nExplanation: You cannot find a way\
+  \ to form a square with all the matchsticks.\n\n\n\nNote:\n\nThe length sum of the\
+  \ given matchsticks is in the range of 0 to 10^9.\nThe length of the given matchstick\
+  \ array will not exceed 15."
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum (l: List Nat) : Nat :=\n\
+  \  match l with\n  | [] => 0\n  | x::xs => x + List.sum xs\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def makesquare (nums: List Nat) : Bool :=\n  sorry\n"
+"vc-theorems": "theorem makesquare_min_length \n  (nums: List Nat) (h: nums.length\
+  \ < 4) : \n  makesquare nums = false := \n  sorry\n\n\ntheorem makesquare_sum_not_div_four\n\
+  \  (nums: List Nat) (h: (List.sum nums % 4) ≠ 0) :\n  makesquare nums = false :=\
+  \ \n  sorry\n\n\ntheorem makesquare_element_too_large \n  (nums: List Nat) (h: ∃\
+  \ x ∈ nums, x > List.sum nums / 4) :\n  makesquare nums = false :=\n  sorry\n\n\n\
+  theorem makesquare_equal_elements \n  (n: Nat) (nums: List Nat) \n  (h1: nums.length\
+  \ % 4 = 0)\n  (h2: ∀ x ∈ nums, x = n) :\n  makesquare nums = true :=\n  sorry \n\
+  \n\ntheorem makesquare_identical_elements\n  (n: Nat) :\n  makesquare [n,n,n,n]\
+  \ = true :=\n  sorry\n\n/--\ninfo: True\n-/\n#guard_msgs in\n#eval makesquare [1,\
+  \ 1, 2, 2, 2]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval makesquare [3, 3, 3,\
+  \ 3, 4]\n\n/--\ninfo: False\n-/\n#guard_msgs in\n#eval makesquare [1, 2, 3, 4, 5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

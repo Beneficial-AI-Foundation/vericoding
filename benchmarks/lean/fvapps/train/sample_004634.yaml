@@ -1,0 +1,33 @@
+"vc-description": "# Task\n When a candle finishes burning it leaves a leftover. makeNew\
+  \ leftovers can be combined to make a new candle, which, when burning down, will\
+  \ in turn leave another leftover.\n\n You have candlesNumber candles in your possession.\
+  \ What's the total number of candles you can burn, assuming that you create new\
+  \ candles as soon as you have enough leftovers?\n\n# Example\n\n For candlesNumber\
+  \ = 5 and makeNew = 2, the output should be `9`.\n\n Here is what you can do to\
+  \ burn 9 candles:\n```\nburn 5 candles, obtain 5 leftovers;\ncreate 2 more candles,\
+  \ using 4 leftovers (1 leftover remains);\nburn 2 candles, end up with 3 leftovers;\n\
+  create another candle using 2 leftovers (1 leftover remains);\nburn the created\
+  \ candle, which gives another leftover (2 leftovers in total);\ncreate a candle\
+  \ from the remaining leftovers;\nburn the last candle.\nThus, you can burn 5 + 2\
+  \ + 1 + 1 = 9 candles, which is the answer.\n```\n\n# Input/Output\n\n\n - `[input]`\
+  \ integer `candlesNumber`\n\n    The number of candles you have in your possession.\n\
+  \n    Constraints: 1 ≤ candlesNumber ≤ 50.\n    \n\n - `[input]` integer `makeNew`\n\
+  \n    The number of leftovers that you can use up to create a new candle.\n\n  \
+  \  Constraints: 2 ≤ makeNew ≤ 5.\n    \n\n - `[output]` an integer"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def candles (initialCandles : Nat) (makeNew : Nat) : Nat := sorry\n\
+  \ntheorem candles_at_least_initial (initialCandles : Nat) (makeNew : Nat)\n  (h1\
+  \ : initialCandles ≥ 1) (h2 : makeNew ≥ 2) :\n  candles initialCandles makeNew ≥\
+  \ initialCandles := by sorry\n\n/- The candles_is_nat theorem is not needed since\
+  \ the return type is already Nat -/\n"
+"vc-theorems": "theorem candles_upper_bound (initialCandles : Nat) (makeNew : Nat)\n\
+  \  (h1 : initialCandles ≥ 1) (h2 : makeNew ≥ 2) :\n  candles initialCandles makeNew\
+  \ ≤ initialCandles + (initialCandles - 1) / (makeNew - 1) := by sorry\n\n\ntheorem\
+  \ candles_make_new_2 (initialCandles : Nat)\n  (h : initialCandles ≥ 1) :\n  candles\
+  \ initialCandles 2 = initialCandles * 2 - 1 := by sorry\n\n\ntheorem candles_edge_case_min\
+  \ :\n  candles 1 2 = 1 := by sorry\n\n\ntheorem candles_no_new_possible (n m : Nat)\n\
+  \  (h1 : n ≥ 1) (h2 : m > n) :\n  candles n m = n := by sorry\n\n/--\ninfo: 9\n\
+  -/\n#guard_msgs in\n#eval candles 5 2\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval\
+  \ candles 1 2\n\n/--\ninfo: 11\n-/\n#guard_msgs in\n#eval candles 8 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

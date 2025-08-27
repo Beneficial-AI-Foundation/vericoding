@@ -1,0 +1,22 @@
+"vc-description": "Complete the function so that it returns the number of seconds\
+  \ that have elapsed between the start and end times given.  \n\n##### Tips:\n- The\
+  \ start/end times are given as Date (JS/CoffeeScript), DateTime (C#), Time (Nim),\
+  \ datetime(Python) and Time (Ruby) instances.  \n- The start time will always be\
+  \ before the end time."
+"vc-preamble": "import Imports.AllImports\n\ndef DateTime := Nat -- simplified representation\n\
+  def TimeDelta := Nat -- simplified representation\n\ninstance : Add DateTime where\n\
+  \  add := Nat.add\n\ninstance : HAdd DateTime TimeDelta DateTime where\n  hAdd :=\
+  \ Nat.add\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def elapsedSeconds (s e : DateTime) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem elapsedSeconds_nonnegative\n  (s : DateTime)\n  (e : DateTime)\n\
+  \  (d : TimeDelta)\n  (h : e = s + d) :\n  elapsedSeconds s e ≥ 0 :=\n  sorry\n\n\
+  \ntheorem elapsedSeconds_matches_delta\n  (s : DateTime)\n  (e : DateTime) \n  (d\
+  \ : TimeDelta)\n  (h : e = s + d) :\n  elapsedSeconds s e = d :=\n  sorry\n\n\n\
+  theorem elapsedSeconds_identity\n  (dt : DateTime) :\n  elapsedSeconds dt dt = 0\
+  \ :=\n  sorry\n\n/--\ninfo: 3600\n-/\n#guard_msgs in\n#eval elapsed_seconds datetime(2020,\
+  \ 1, 1, 0, 0, 0) datetime(2020, 1, 1, 1, 0, 0)\n\n/--\ninfo: 60\n-/\n#guard_msgs\
+  \ in\n#eval elapsed_seconds datetime(2020, 1, 1, 0, 0, 0) datetime(2020, 1, 1, 0,\
+  \ 1, 0)\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval elapsed_seconds datetime(2020,\
+  \ 1, 1, 0, 0, 0) datetime(2020, 1, 1, 0, 0, 1)\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

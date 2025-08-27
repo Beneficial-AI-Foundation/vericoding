@@ -1,0 +1,30 @@
+"vc-description": "Introduction \n\nThe GADERYPOLUKI is a simple substitution cypher\
+  \ used in scouting to encrypt messages. The encryption is based on short, easy to\
+  \ remember key. The key is written as paired letters, which are in the cipher simple\
+  \ replacement.\n\nThe most frequently used key is \"GA-DE-RY-PO-LU-KI\".\n\n```\n\
+  \ G => A\n g => a\n a => g\n A => G\n D => E\n  etc.\n```\n\nThe letters, which\
+  \ are not on the list of substitutes, stays in the encrypted text without changes.\n\
+  \nOther keys often used by Scouts:\n\n```\nPO-LI-TY-KA-RE-NU\nKA-CE-MI-NU-TO-WY\n\
+  KO-NI-EC-MA-TU-RY\nZA-RE-WY-BU-HO-KI\nBA-WO-LE-TY-KI-JU\nRE-GU-LA-MI-NO-WY\n```\n\
+  \nTask\n\nYour task is to help scouts to encrypt and decrypt thier messages.\nWrite\
+  \ the `Encode` and `Decode` functions. \n\nInput/Output\n\nThe function should have\
+  \ two parameters. \nThe `message` input string consists of lowercase and uperrcase\
+  \ characters and whitespace character.\nThe `key` input string consists of only\
+  \ lowercase characters.\nThe substitution has to be case-sensitive. \n\nExample\n\
+  \n \n # GADERYPOLUKI collection\n\n\n\nGADERYPOLUKI cypher vol 1\n\n\nGADERYPOLUKI\
+  \ cypher vol 2\n\n\nGADERYPOLUKI cypher vol 3 - Missing Key\n\n\nGADERYPOLUKI cypher\
+  \ vol 4 - Missing key madness"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def encode (message : String) (key : String) : String := sorry\n\
+  def decode (message : String) (key : String) : String := sorry\n"
+"vc-theorems": "theorem non_key_chars_unchanged (message : String) (key : String)\
+  \ (i : String.Pos) :\n  let key_chars := (key.toLower ++ key.toUpper).toList.toArray\n\
+  \  ¬(key_chars.contains (message.get i)) →\n  (encode message key).get i = message.get\
+  \ i := sorry\n\n\ntheorem consistent_encoding (message key : String) :\n  encode\
+  \ message key = encode message key := sorry\n\n/--\ninfo: 'Gug hgs g cgt'\n-/\n\
+  #guard_msgs in\n#eval encode \"Ala has a cat\" \"gaderypoluki\"\n\n/--\ninfo: 'Dkucr\
+  \ pu yhr ykbir'\n-/\n#guard_msgs in\n#eval encode \"Dance on the table\" \"politykarenu\"\
+  \n\n/--\ninfo: 'GBCE'\n-/\n#guard_msgs in\n#eval encode \"ABCD\" \"gaderypoluki\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

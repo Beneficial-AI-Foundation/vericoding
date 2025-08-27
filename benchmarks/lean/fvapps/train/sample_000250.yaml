@@ -1,0 +1,20 @@
+"vc-description": "Given a non-negative integer n, count all numbers with unique digits,\
+  \ x, where 0 ≤ x < 10n.\n\n\n    Example:\nGiven n = 2, return 91. (The answer should\
+  \ be the total numbers in the range of 0 ≤ x < 100, excluding [11,22,33,44,55,66,77,88,99])\n\
+  \n\nCredits:Special thanks to @memoryless for adding this problem and creating all\
+  \ test cases."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countNumbersWithUniqueDigits (n : Nat) : Nat := sorry\n\ntheorem\
+  \ countNumbersWithUniqueDigits_positive (n : Nat) :\n  countNumbersWithUniqueDigits\
+  \ n > 0 := sorry\n"
+"vc-theorems": "theorem countNumbersWithUniqueDigits_monotonic (n : Nat) :\n  n >\
+  \ 0 → countNumbersWithUniqueDigits n ≥ countNumbersWithUniqueDigits (n-1) := sorry\n\
+  \n\ntheorem countNumbersWithUniqueDigits_plateau (n : Nat) :\n  n ≥ 10 → countNumbersWithUniqueDigits\
+  \ n = countNumbersWithUniqueDigits 10 := sorry\n\n\ntheorem countNumbersWithUniqueDigits_zero\
+  \ :\n  countNumbersWithUniqueDigits 0 = 1 := sorry\n\n\ntheorem countNumbersWithUniqueDigits_one\
+  \ :\n  countNumbersWithUniqueDigits 1 = 10 := sorry\n\n/--\ninfo: 91\n-/\n#guard_msgs\
+  \ in\n#eval count_numbers_with_unique_digits 2\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval count_numbers_with_unique_digits 0\n\n/--\ninfo: 10\n-/\n#guard_msgs\
+  \ in\n#eval count_numbers_with_unique_digits 1\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

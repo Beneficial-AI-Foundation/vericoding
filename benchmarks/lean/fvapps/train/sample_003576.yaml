@@ -1,0 +1,66 @@
+"vc-description": "~~~if-not:java\nYou have to code a function **getAllPrimeFactors**\
+  \ wich take an integer as parameter and return an array containing its prime decomposition\
+  \ by ascending factors, if a factors appears multiple time in the decomposition\
+  \ it should appear as many time in the array. \n\nexemple: `getAllPrimeFactors(100)`\
+  \ returns `[2,2,5,5]` in this order. \n\nThis decomposition may not be the most\
+  \ practical. \n\nYou should also write **getUniquePrimeFactorsWithCount**, a function\
+  \ which will return an array containing two arrays: one with prime numbers appearing\
+  \ in the decomposition and the other containing their respective power. \n\nexemple:\
+  \ `getUniquePrimeFactorsWithCount(100)` returns `[[2,5],[2,2]]`\n\nYou should also\
+  \ write **getUniquePrimeFactorsWithProducts** an array containing the prime factors\
+  \ to their respective powers. \n\nexemple: `getUniquePrimeFactorsWithProducts(100)`\
+  \ returns `[4,25]`\n~~~\n~~~if:java\nYou have to code a function **getAllPrimeFactors**\
+  \ wich take an integer as parameter and return an array containing its prime decomposition\
+  \ by ascending factors, if a factors appears multiple time in the decomposition\
+  \ it should appear as many time in the array. \n\nexemple: `getAllPrimeFactors(100)`\
+  \ returns `[2,2,5,5]` in this order. \n\nThis decomposition may not be the most\
+  \ practical. \n\nYou should also write **getUniquePrimeFactorsWithCount**, a function\
+  \ which will return an array containing two arrays: one with prime numbers appearing\
+  \ in the decomposition and the other containing their respective power. \n\nexemple:\
+  \ `getUniquePrimeFactorsWithCount(100)` returns `[[2,5],[2,2]]`\n\nYou should also\
+  \ write **getPrimeFactorPotencies** an array containing the prime factors to their\
+  \ respective powers. \n\nexemple: `getPrimeFactorPotencies(100)` returns `[4,25]`\n\
+  ~~~\n\nErrors, if:\n\n* `n` is not a number\n* `n` not an integer \n* `n` is negative\
+  \ or 0 \n\nThe three functions should respectively return `[]`,  `[[],[]]` and `[]`.\
+  \ \n\nEdge cases: \n\n* if `n=0`, the function should respectively return `[]`,\
+  \ `[[],[]]` and  `[]`.\n* if `n=1`, the function should respectively return `[1]`,\
+  \ `[[1],[1]]`, `[1]`.\n* if `n=2`, the function should respectively return `[2]`,\
+  \ `[[2],[1]]`, `[2]`.\n\nThe result for `n=2` is normal. The result for `n=1` is\
+  \ arbitrary and has been chosen to return a usefull result. The result for `n=0`\
+  \ is also arbitrary \nbut can not be chosen to be both usefull and intuitive. (`[[0],[0]]`\
+  \ would be meaningfull but wont work for general use of decomposition, `[[0],[1]]`\
+  \ would work but is not intuitive.)"
+"vc-preamble": "import Imports.AllImports\n\ndef getAllPrimeFactors (n : Int) : List\
+  \ Int := sorry\ndef getUniquePrimeFactorsWithCount (n : Int) : List (List Int) :=\
+  \ sorry "
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def getUniquePrimeFactorsWithProducts (n : Int) : List Int := sorry\n\
+  \ntheorem prime_factors_product_equals_input {n : Int} (h : 0 ≤ n) :\n  let factors\
+  \ := getAllPrimeFactors n\n  factors ≠ [] → factors.foldl (·*·) 1 = n := sorry\n"
+"vc-theorems": "theorem prime_factors_are_ordered {n : Int} (h : 0 ≤ n) :\n  let factors\
+  \ := getAllPrimeFactors n\n  factors.length > 1 → \n  ∀ i : Fin (factors.length\
+  \ - 1), factors[i] ≤ factors[i.val + 1] := sorry\n\n\ntheorem negative_inputs {n\
+  \ : Int} (h : n < 0) :\n  getAllPrimeFactors n = [] ∧\n  getUniquePrimeFactorsWithCount\
+  \ n = [[], []] ∧\n  getUniquePrimeFactorsWithProducts n = [] := sorry\n\n\ntheorem\
+  \ count_matches_occurrences {n : Int} (h : 0 ≤ n) :\n  let factors := getAllPrimeFactors\
+  \ n\n  let uniqueWithCount := getUniquePrimeFactorsWithCount n\n  factors ≠ [] →\n\
+  \  ∀ (p c : Int),\n  List.zip uniqueWithCount[0]! uniqueWithCount[1]! |>.contains\
+  \ (p, c) →\n  (factors.filter (·= p)).length = c := sorry\n\n\ntheorem products_match_prime_power\
+  \ {n : Int} (h : 0 ≤ n) :\n  let uniqueWithCount := getUniquePrimeFactorsWithCount\
+  \ n\n  let products := getUniquePrimeFactorsWithProducts n\n  uniqueWithCount[0]!\
+  \ ≠ [] →\n  products.length = uniqueWithCount[0]!.length ∧\n  ∀ (p c prod : Int),\n\
+  \  List.zip (List.zip uniqueWithCount[0]! uniqueWithCount[1]!) products |>.contains\
+  \ ((p, c), prod) →\n  prod = p * c := sorry\n\n\ntheorem edge_cases :\n  getAllPrimeFactors\
+  \ 0 = [] ∧\n  getUniquePrimeFactorsWithCount 0 = [[], []] ∧\n  getUniquePrimeFactorsWithProducts\
+  \ 0 = [] ∧\n  getAllPrimeFactors 1 = [1] ∧\n  getUniquePrimeFactorsWithCount 1 =\
+  \ [[1], [1]] ∧\n  getUniquePrimeFactorsWithProducts 1 = [1] := sorry\n\n/--\ninfo:\
+  \ [2, 2, 5, 5]\n-/\n#guard_msgs in\n#eval getAllPrimeFactors 100\n\n/--\ninfo: []\n\
+  -/\n#guard_msgs in\n#eval getAllPrimeFactors 0\n\n/--\ninfo: [1]\n-/\n#guard_msgs\
+  \ in\n#eval getAllPrimeFactors 1\n\n/--\ninfo: [[2, 5], [2, 2]]\n-/\n#guard_msgs\
+  \ in\n#eval getUniquePrimeFactorsWithCount 100\n\n/--\ninfo: [[], []]\n-/\n#guard_msgs\
+  \ in\n#eval getUniquePrimeFactorsWithCount 0\n\n/--\ninfo: [[1], [1]]\n-/\n#guard_msgs\
+  \ in\n#eval getUniquePrimeFactorsWithCount 1\n\n/--\ninfo: [4, 25]\n-/\n#guard_msgs\
+  \ in\n#eval getUniquePrimeFactorsWithProducts 100\n\n/--\ninfo: []\n-/\n#guard_msgs\
+  \ in\n#eval getUniquePrimeFactorsWithProducts 0\n\n/--\ninfo: [1]\n-/\n#guard_msgs\
+  \ in\n#eval getUniquePrimeFactorsWithProducts 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

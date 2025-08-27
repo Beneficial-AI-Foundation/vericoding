@@ -1,0 +1,25 @@
+"vc-description": "This is the simple version of [Fastest Code : Equal to 24](http://www.codewars.com/kata/574e890e296e412a0400149c).\
+  \ \n\n## Task\n\nA game I played when I was young: Draw 4 cards from playing cards,\
+  \ use ```+ - * / and ()``` to make the final results equal to 24.\n\nYou will coding\
+  \ in function ```equalTo24```. Function accept 4 parameters ```a b c d```(4 cards),\
+  \ value range is 1-13.\n\nThe result is a string such as ```\"2*2*2*3\"``` ,```(4+2)*(5-1)```;\
+  \ If it is not possible to calculate the 24, please return \"It's not possible!\"\
+  \n\nAll four cards are to be used, only use three or two cards are incorrect; Use\
+  \ a card twice or more is incorrect too.\n\nYou just need to return one correct\
+  \ solution, don't need to find out all the possibilities.\n\n## Examples"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def equal_to_24 (a b c d : Int) : String := sorry\n\ndef isValidResult\
+  \ (result : String) : Bool := sorry\n"
+"vc-theorems": "theorem equal_to_24_valid_output \n  (a b c d : Int) \n  (h1 : 1 ≤\
+  \ a ∧ a ≤ 13) \n  (h2 : 1 ≤ b ∧ b ≤ 13)\n  (h3 : 1 ≤ c ∧ c ≤ 13)\n  (h4 : 1 ≤ d\
+  \ ∧ d ≤ 13) :\n  isValidResult (equal_to_24 a b c d) := sorry\n\n\ntheorem equal_numbers_valid_output\n\
+  \  (n : Int)\n  (h : 1 ≤ n ∧ n ≤ 100) :\n  isValidResult (equal_to_24 n n n n) :=\
+  \ sorry\n\n\ntheorem impossible_cases_zero :\n  equal_to_24 0 0 0 0 = \"It's not\
+  \ possible!\" := sorry\n\n\ntheorem impossible_cases_negative :\n  equal_to_24 (-1)\
+  \ (-1) (-1) (-1) = \"It's not possible!\" := sorry\n\n\ntheorem impossible_cases_large\
+  \ :\n  equal_to_24 1000 1000 1000 1000 = \"It's not possible!\" := sorry\n\n\ntheorem\
+  \ division_by_zero :\n  isValidResult (equal_to_24 0 1 2 3) := sorry\n\n/--\ninfo:\
+  \ 24\n-/\n#guard_msgs in\n#eval eval equal_to_24(7, 7, 4, 1)\n\n/--\ninfo: 24\n\
+  -/\n#guard_msgs in\n#eval eval equal_to_24(4, 1, 8, 7)\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

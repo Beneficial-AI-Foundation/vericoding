@@ -1,0 +1,22 @@
+"vc-description": "# Task\n Consider a `bishop`, a `knight` and a `rook` on an `n\
+  \ × m` chessboard. They are said to form a `triangle` if each piece attacks exactly\
+  \ one other piece and is attacked by exactly one piece. \n \n Calculate the number\
+  \ of ways to choose positions of the pieces to form a triangle.\n\n Note that the\
+  \ bishop attacks pieces sharing the common diagonal with it; the rook attacks in\
+  \ horizontal and vertical directions; and, finally, the knight attacks squares which\
+  \ are two squares horizontally and one square vertically, or two squares vertically\
+  \ and one square horizontally away from its position.\n\n ![](https://codefightsuserpics.s3.amazonaws.com/tasks/chessTriangle/img/moves.png?_tm=1473934712872)\n\
+  \n# Example\n\n For `n = 2 and m = 3`, the output should be `8`.\n\n ![](https://codefightsuserpics.s3.amazonaws.com/tasks/chessTriangle/img/combinations.png?_tm=1473934713038)\n\
+  \n# Input/Output\n\n\n- `[input]` integer `n`\n\n    Constraints: `1 ≤ n ≤ 40.`\n\
+  \n\n - `[input]` integer `m`\n\n    Constraints: `1 ≤ m ≤ 40, 3 ≤ n x m`.\n\n\n\
+  \ - `[output]` an integer"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def chess_triangle (n m : Int) : Int := sorry\n\ntheorem zero_dimensions\
+  \ :\n  chess_triangle 0 1 = 0 ∧ \n  chess_triangle 1 0 = 0 ∧ \n  chess_triangle\
+  \ 0 0 = 0 := sorry\n\n\n\n\n\n\n\n\n"
+"vc-theorems": "theorem tiny_boards :\n  ∀ n m, n < 2 → m < 2 → chess_triangle n m\
+  \ = 0 := sorry\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n#eval chess_triangle 2 3\n\n\
+  /--\ninfo: 48\n-/\n#guard_msgs in\n#eval chess_triangle 3 3\n\n/--\ninfo: 40\n-/\n\
+  #guard_msgs in\n#eval chess_triangle 5 2\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

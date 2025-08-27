@@ -1,0 +1,20 @@
+"vc-description": "## Task\n\nImplement a function which finds the numbers less than\
+  \ `2`, and the indices of numbers greater than `1` in the given sequence, and returns\
+  \ them as a pair of sequences. \n\nReturn a nested array or a tuple depending on\
+  \ the language:\n\n* The first sequence being only the `1`s and `0`s from the original\
+  \ sequence. \n* The second sequence being the indexes of the elements greater than\
+  \ `1` in the original sequence.  \n\n## Examples\n\n```python\n[ 0, 1, 2, 1, 5,\
+  \ 6, 2, 1, 1, 0 ] => ( [ 0, 1, 1, 1, 1, 0 ], [ 2, 4, 5, 6 ] )\n```\n\nPlease upvote\
+  \ and enjoy!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def binary_cleaner (seq : List Int) : List Int × List Nat := sorry\n\
+  \n\n\n\n\n\n\ntheorem binary_cleaner_properties (seq : List Int) :\n  let result\
+  \ := binary_cleaner seq\n  (∀ x ∈ result.1, x < 2) ∧\n  (∀ i ∈ result.2, i < seq.length)\
+  \ ∧\n  (List.all result.2 fun i => seq.get! i ≥ 2) ∧\n  result.1.length + result.2.length\
+  \ = seq.length := sorry"
+"vc-theorems": "/--\ninfo: ([0, 1, 1, 0, 1, 1], [2, 5])\n-/\n#guard_msgs in\n#eval\
+  \ binary_cleaner [0, 1, 2, 1, 0, 2, 1, 1]\n\n/--\ninfo: ([0, 1, 1, 0], [3])\n-/\n\
+  #guard_msgs in\n#eval binary_cleaner [0, 1, 1, 2, 0]\n\n/--\ninfo: ([1], [])\n-/\n\
+  #guard_msgs in\n#eval binary_cleaner [1]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

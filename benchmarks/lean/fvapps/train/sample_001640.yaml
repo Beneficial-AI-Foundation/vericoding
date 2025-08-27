@@ -1,0 +1,47 @@
+"vc-description": "Introduction\nBrainfuck is one of the most well-known esoteric\
+  \ programming languages. But it can be hard to understand any code longer that 5\
+  \ characters. In this kata you have to solve that problem.\n\nDescription\n\nIn\
+  \ this kata you have to write a function which will do 3 tasks:\n\nOptimize the\
+  \ given Brainfuck code.\nCheck it for mistakes.\nTranslate the given Brainfuck programming\
+  \ code into C programming code.\n\n\nMore formally about each of the tasks:\n\n\n\
+  \nYour function has to remove from the source code all useless command sequences\
+  \ such as: '+-', '<>', '[]'. Also it must erase all characters except +-<>,.[].\n\
+  Example:\n\"++--+.\" -> \"+.\"\n\"[][+++]\" -> \"[+++]\"\n\"<>><\" -> \"\"\n\n\n\
+  If the source code contains unpaired braces, your function should return \"Error!\"\
+  \ string.\n\n\nYour function must generate a string of the C programming code as\
+  \ follows:\n\n\n\n\nSequences of the X commands + or - must be replaced by \\*p\
+  \ += X;\\n or \\*p -= X;\\n.\nExample:\n\"++++++++++\" -> \"\\*p += 10;\\n\"\n\"\
+  ------\" -> \"\\*p -= 6;\\n\"\n\n\n\nSequences of the Y commands > or < must be\
+  \ replaced by p += Y;\\n or p -= Y;\\n.\nExample:\n\">>>>>>>>>>\" -> \"p += 10;\\\
+  n\"\n\"<<<<<<\" -> \"p -= 6;\\n\"\n\n\n\n. command must be replaced by putchar(\\\
+  *p);\\n.\nExample:\n\"..\" -> \"putchar(\\*p);\\nputchar(\\*p);\\n\"\n\n\n\n, command\
+  \ must be replaced by \\*p = getchar();\\n.\nExample:\n\",\" -> \"\\*p = getchar();\\\
+  n\"\n\n\n\n[ command must be replaced by if (\\*p) do {\\n. ] command must be replaced\
+  \ by } while (\\*p);\\n.\nExample:\n\"[>>]\" ->\nif (\\*p) do {\\n\n  p += 2;\\\
+  n\n} while (\\*p);\\n\n\n\n\nEach command in the code block must be shifted 2 spaces\
+  \ to the right accordingly to the previous code block.\nExample:\n\"[>>[<<]]\" ->\n\
+  if (\\*p) do {\\n\n  p += 2;\\n\n  if (\\*p) do {\\n\n    p -= 2;\\n\n  } while\
+  \ (\\*p);\\n\n} while (\\*p);\\n\n\n\n\n\n\nExamples\n\nInput:\n+++++[>++++.<-]\n\
+  Output:\n*p += 5;\nif (*p) do {\n  p += 1;\n  *p += 4;\n  putchar(*p);\n  p -= 1;\n\
+  \  *p -= 1;\n} while (*p);"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def brainfuck_to_c (s : String) : String := sorry\n\ndef is_balanced\
+  \ (s : String) : Bool := sorry\n"
+"vc-theorems": "theorem comments_removed (s : String) :\n  let s' := s.replace \"\
+  [\" \"\"\n  let s'' := s'.replace \"]\" \"\"\n  let s''' := s''.replace \"+\" \"\
+  \"\n  let s'''' := s'''.replace \"-\" \"\"\n  let s''''' := s''''.replace \".\"\
+  \ \"\"\n  let s'''''' := s'''''.replace \",\" \"\"\n  let s''''''' := s''''''.replace\
+  \ \"<\" \"\"\n  let s'''''''' := s'''''''.replace \">\" \"\"\n  brainfuck_to_c s''''''''\
+  \ = \"\" := sorry\n\n\ntheorem redundant_patterns_removed (patterns : List String)\
+  \ :\n  (∀ p ∈ patterns, p = \"<>\" ∨ p = \"><\" ∨ p = \"+-\" ∨ p = \"-+\" ∨ p =\
+  \ \"[]\") →\n  brainfuck_to_c (String.join patterns) = \"\" := sorry\n\n\ntheorem\
+  \ unbalanced_brackets (s : String) :\n  (∀ c ∈ s.data, c = '[' ∨ c = ']') →\n  ¬(is_balanced\
+  \ s) →\n  brainfuck_to_c s = \"Error!\" := sorry\n\n\ntheorem output_format (s :\
+  \ String) :\n  let result := brainfuck_to_c s\n  result ≠ \"Error!\" →\n  ∀ line\
+  \ ∈ result.splitOn \"\\n\",\n    (line.trimRight.endsWith \";\" ∨\n     line.trimRight.endsWith\
+  \ \"{\" ∨\n     line.trimRight.endsWith \"}\") ∧\n    (line.length - (line.trim).length)\
+  \ % 2 = 0 := sorry\n\n/--\ninfo: test1_output\n-/\n#guard_msgs in\n#eval brainfuck_to_c\
+  \ \"+++++[>++++.<-]\"\n\n/--\ninfo: 'Error!'\n-/\n#guard_msgs in\n#eval brainfuck_to_c\
+  \ \"[[]\"\n\n/--\ninfo: ''\n-/\n#guard_msgs in\n#eval brainfuck_to_c \"+-><[]\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

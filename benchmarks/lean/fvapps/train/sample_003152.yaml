@@ -1,0 +1,22 @@
+"vc-description": "Inspired by the development team at Vooza, write the function `howManyLightsabersDoYouOwn`/`how_many_light_sabers_do_you_own`\
+  \ that \n\n* accepts the name of a programmer, and\n* returns the number of lightsabers\
+  \ owned by that person.\n\nThe only person who owns lightsabers is Zach, by the\
+  \ way. He owns 18, which is an awesome number of lightsabers. Anyone else owns 0.\n\
+  \n```if:coffeescript,javascript,php,python,ruby,typescript\n**Note**: your function\
+  \ should have a default parameter.\n```\n\n```c#\nKata.HowManyLightsabersDoYouOwn(\"\
+  Adam\") == 0\nKata.HowManyLightsabersDoYouOwn(\"Zach\") == 18\n```\n```python\n\
+  how_many_light_sabers_do_you_own('Zach') == 18\nhow_many_light_sabers_do_you_own('Adam')\
+  \ == 0\nhow_many_light_sabers_do_you_own()       == 0\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def how_many_light_sabers_do_you_own : Option String → Nat\n| none\
+  \ => sorry\n| some s => sorry\n"
+"vc-theorems": "theorem light_sabers_default_zero (name : String) :\n  name ≠ \"Zach\"\
+  \ → how_many_light_sabers_do_you_own (some name) = 0 := by sorry\n\n\ntheorem zach_has_18\
+  \ :\n  how_many_light_sabers_do_you_own (some \"Zach\") = 18 := by sorry \n\n\n\
+  theorem empty_name_zero :\n  how_many_light_sabers_do_you_own none = 0 := by sorry\n\
+  \n/--\ninfo: 18\n-/\n#guard_msgs in\n#eval how_many_light_sabers_do_you_own \"Zach\"\
+  \n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval how_many_light_sabers_do_you_own \n\n\
+  /--\ninfo: 0\n-/\n#guard_msgs in\n#eval how_many_light_sabers_do_you_own \"Adam\"\
+  \n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

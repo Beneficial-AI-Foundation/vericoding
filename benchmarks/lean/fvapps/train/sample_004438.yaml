@@ -1,0 +1,23 @@
+"vc-description": "You're a buyer/seller and your buisness is at stake... You ___need___\
+  \ to make profit... Or at least, you need to lose the least amount of money!  \n\
+  Knowing a list of prices for buy/sell operations, you need to pick two of them.\
+  \ Buy/sell market is evolving across time and the list represent this evolution.\
+  \ First, you need to buy one item, then sell it later. Find the best profit you\
+  \ can do.\n\n### Example:\n\nGiven an array of prices `[3, 10, 8, 4]`, the best\
+  \ profit you could make would be `7` because you buy at `3` first, then sell at\
+  \ `10`.\n\n# Input:\n\nA list of prices (integers), of length 2 or more.\n\n# Output:\n\
+  \nThe result of the best buy/sell operation, as an integer.\n\n\n\n### Note:\nBe\
+  \ aware you'll face lists with several thousands of elements, so think about performance."
+"vc-preamble": "import Imports.AllImports\n\ndef max_profit (prices : List Nat) :\
+  \ Int := sorry\n\ndef maximum (l : List Nat) : Nat := sorry"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def minimum (l : List Nat) : Nat := sorry\n\ntheorem max_profit_bounds\
+  \ {prices : List Nat} (h : prices.length ≥ 2) : \n  max_profit prices ≤ (maximum\
+  \ prices) - (minimum prices) := sorry\n"
+"vc-theorems": "theorem ascending_max_profit {prices : List Nat} (h : prices.length\
+  \ ≥ 2) \n  (ascending : ∀ (i : Nat), i + 1 < prices.length → prices[i]! ≤ prices[i\
+  \ + 1]!) :\n  max_profit prices = prices.getLast! - prices.head! := sorry\n\n/--\n\
+  info: 6\n-/\n#guard_msgs in\n#eval max_profit [10, 7, 5, 8, 11, 9]\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval max_profit [3, 4]\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval max_profit [9, 9]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

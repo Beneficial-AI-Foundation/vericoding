@@ -1,0 +1,36 @@
+"vc-description": "Teddy and Tracy like to play a game based on strings. The game\
+  \ is as follows. Initially, Tracy writes a long random string on a whiteboard. Then,\
+  \ each player starting with Teddy makes turn alternately. Each turn, the player\
+  \ must erase a contiguous substring that exists in the dictionary. The dictionary\
+  \ consists of N words.\nOf course, the player that can't erase any substring in\
+  \ his turn loses the game, and the other player is declared the winner.\nNote that\
+  \ after a substring R is erased, the remaining substring becomes separated, i.e.\
+  \ they cannot erase a word that occurs partially to the left of R and partially\
+  \ to the right of R.\n\nDetermine the winner of the game, assuming that both players\
+  \ play optimally.\n\n-----Input-----\nThe first line contains a single integer T,\
+  \ the number of test cases. T test cases follow. The first line of each testcase\
+  \ contains a string S, the string Tracy writes on the whiteboard. The next line\
+  \ contains a single integer N. N lines follow. The i-th line contains a single string\
+  \ wi, the i-th word in the dictionary.\n\n-----Output-----\nFor each test case,\
+  \ output a single line containing the name of the winner of the game.\n\n-----Example-----\n\
+  Input:\n3\ncodechef\n2\ncode\nchef\nfoo\n1\nbar\nmississippi\n4\nssissi\nmippi\n\
+  mi\nppi\n\nOutput:\nTracy\nTracy\nTeddy\n\n-----Constraints-----\n- 1 <= T <= 5\n\
+  - 1 <= N <= 30\n- 1 <= |S| <= 30\n- 1 <= |wi| <= 30\n- S and wi contain only characters\
+  \ 'a'-'z'"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_string_game (s : String) (dict : List String) : String\
+  \ :=\nsorry\n"
+"vc-theorems": "theorem valid_output (s : String) (dict : List String) :\n  let result\
+  \ := solve_string_game s dict\n  result = \"Teddy\" ∨ result = \"Tracy\" :=\nsorry\n\
+  \n\ntheorem empty_dict_tracy (s : String) :\n  solve_string_game s [] = \"Tracy\"\
+  \ :=\nsorry\n\n\ntheorem full_string_valid (s : String) :\n  let result := solve_string_game\
+  \ s [s]\n  result = \"Teddy\" ∨ result = \"Tracy\" :=\nsorry\n\n\ntheorem single_char_valid\
+  \ :\n  let result := solve_string_game \"a\" [\"a\"]\n  result = \"Teddy\" ∨ result\
+  \ = \"Tracy\" :=\nsorry\n\n\ntheorem dict_order_invariant : \n  solve_string_game\
+  \ \"abcd\" [\"ab\", \"cd\"] = solve_string_game \"abcd\" [\"cd\", \"ab\"] :=\nsorry\n\
+  \n/--\ninfo: 'Tracy'\n-/\n#guard_msgs in\n#eval solve_string_game \"codechef\" [\"\
+  code\", \"chef\"]\n\n/--\ninfo: 'Tracy'\n-/\n#guard_msgs in\n#eval solve_string_game\
+  \ \"foo\" [\"bar\"]\n\n/--\ninfo: 'Teddy'\n-/\n#guard_msgs in\n#eval solve_string_game\
+  \ \"mississippi\" [\"ssissi\", \"mippi\", \"mi\", \"ppi\"]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,26 @@
+"vc-description": "Write a function getMean that takes as parameters an array (arr)\
+  \ and 2 integers (x and y). The function should return the mean between the mean\
+  \ of the the first x elements of the array and the mean of the last y elements of\
+  \ the array.\n\nThe mean should be computed if both x and y have values higher than\
+  \ 1 but less or equal to the array's length. Otherwise the function should return\
+  \ -1.\n\ngetMean([1,3,2,4], 2, 3) should return 2.5 because: the mean of the the\
+  \ first 2 elements of the array is (1+3)/2=2 and the mean of the last 3 elements\
+  \ of the array is (4+2+3)/3=3 so the mean of those 2 means is (2+3)/2=2.5.\n\ngetMean([1,3,2,4],\
+  \ 1, 2) should return -1 because x is not higher than 1.\n\ngetMean([1,3,2,4], 2,\
+  \ 8) should return -1 because 8 is higher than the array's length."
+"vc-preamble": "import Imports.AllImports\n\ndef Array.getSum (arr : Array Int) (n\
+  \ : Nat) : Int :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def Array.getMean (arr : Array Int) (x y : Int) : Float :=\n  sorry\n"
+"vc-theorems": "theorem invalid_x_returns_negative_one {arr : Array Int} {x y : Int}\
+  \ :\n  arr.size > 0 → x ≤ 0 → Array.getMean arr x y = -1 :=\n  sorry\n\n\ntheorem\
+  \ invalid_y_returns_negative_one {arr : Array Int} {x y : Int} :\n  arr.size > 0\
+  \ → y ≤ 0 → Array.getMean arr x y = -1 :=\n  sorry\n\n\ntheorem indices_larger_than_array\
+  \ {arr : Array Int} {x y : Int} :\n  x > arr.size ∨ y > arr.size →\n  Array.getMean\
+  \ arr x y = -1 :=\n  sorry\n\n\ntheorem mean_properties {arr : Array Int} {x y :\
+  \ Int} :\n  arr.size ≥ 2 →\n  1 < x ∧ x ≤ arr.size →\n  1 < y ∧ y ≤ arr.size →\n\
+  \  let firstMean := Float.ofInt (Array.getSum arr x.toNat) / Float.ofInt x;\n  let\
+  \ secondMean := Float.ofInt (Array.getSum (arr.extract (arr.size - y.toNat) arr.size)\
+  \ y.toNat) / Float.ofInt y;\n  let expected := (firstMean + secondMean) / 2;\n \
+  \ (Array.getMean arr x y - expected).abs < 1e-10 :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

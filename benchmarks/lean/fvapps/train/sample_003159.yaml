@@ -1,0 +1,22 @@
+"vc-description": "# Task\n You are given a car odometer which displays the miles\
+  \ traveled as an integer. \n \n The odometer has a defect, however: it proceeds\
+  \ from digit `3` to digit `5` always skipping the digit `4`. This defect shows up\
+  \ in all positions (ones, tens, hundreds, etc). \n \n For example, if the odometer\
+  \ displays `15339` and the car travels another mile, the odometer changes to `15350`\
+  \ (instead of `15340`).\n\n Your task is to calculate the real distance, according\
+  \ The number the odometer shows.\n\n# Example\n\n For `n = 13` the output should\
+  \ be `12`(4 skiped).\n \n For `n = 15` the output should be `13`(4 and 14 skiped).\n\
+  \ \n For `n = 2003` the output should be `1461`.\n\n# Input/Output\n\n\n - `[input]`\
+  \ integer `n`\n\n  The number the odometer shows.\n  \n  `1 <= n <= 999999999`\n\
+  \n\n - `[output]` an integer\n\n  The real distance."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def faulty_odometer (n : Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem odometer_never_negative (n : Nat) : \n  faulty_odometer n\
+  \ ≥ 0 :=\nsorry\n\n\ntheorem odometer_always_smaller (n : Nat) :\n  faulty_odometer\
+  \ n ≤ n :=\nsorry\n\n\ntheorem odometer_consistent (n : Nat) :\n  faulty_odometer\
+  \ n = faulty_odometer n :=\nsorry\n\n\ntheorem odometer_zero :\n  faulty_odometer\
+  \ 0 = 0 :=\nsorry\n\n/--\ninfo: 12\n-/\n#guard_msgs in\n#eval faulty_odometer 13\n\
+  \n/--\ninfo: 13\n-/\n#guard_msgs in\n#eval faulty_odometer 15\n\n/--\ninfo: 1462\n\
+  -/\n#guard_msgs in\n#eval faulty_odometer 2005\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

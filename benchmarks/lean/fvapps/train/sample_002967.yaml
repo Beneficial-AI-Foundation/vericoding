@@ -1,0 +1,24 @@
+"vc-description": "In this Kata, you will be given an array of integers whose elements\
+  \ have both a negative and a positive value, except for one integer that is either\
+  \ only negative or only positive. Your task will be to find that integer. \n\nExamples:\n\
+  \n`[1, -1, 2, -2, 3] => 3`\n\n`3` has no matching negative appearance\n\n`[-3, 1,\
+  \ 2, 3, -1, -4, -2] => -4`\n\n`-4` has no matching positive appearance\n\n`[1, -1,\
+  \ 2, -2, 3, 3] => 3`\n\n(the only-positive or only-negative integer may appear more\
+  \ than once)\n\nGood luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef solve (arr : List Int) : Int := sorry\n\
+  \ndef getUnique (arr : List Int) : List Int :=\n  arr.foldl (fun acc x => if acc.contains\
+  \ x then acc else x::acc) []\n\n\ndef sumList (l : List Int) : Int :=\n  match l\
+  \ with\n  | [] => 0\n  | x :: xs => x + sumList xs\n\n\n\n\ndef filterPositive (l\
+  \ : List Int) : List Int :=\n  l.filter (fun x => x > 0)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def filterNegative (l : List Int) : List Int :=\n  l.filter (fun\
+  \ x => x < 0)"
+"vc-theorems": "theorem solve_invariant_under_duplication : ∀ (arr : List Int),\n\
+  \  arr ≠ [] → solve (arr ++ arr) = solve arr := sorry\n\n\ntheorem solve_positive_result_implies_positive_element\
+  \ : ∀ (arr : List Int),\n  arr ≠ [] → solve arr > 0 → ∃ x ∈ arr, x > 0 := sorry\n\
+  \n\ntheorem solve_negative_result_implies_negative_element : ∀ (arr : List Int),\n\
+  \  arr ≠ [] → solve arr < 0 → ∃ x ∈ arr, x < 0 := sorry\n\n\n/--\ninfo: 3\n-/\n\
+  #guard_msgs in\n#eval solve [1, -1, 2, -2, 3]\n\n/--\ninfo: -4\n-/\n#guard_msgs\
+  \ in\n#eval solve [-3, 1, 2, 3, -1, -4, -2]\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n\
+  #eval solve [1, -1, 2, -2, 3, 3]\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

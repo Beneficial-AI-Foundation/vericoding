@@ -1,0 +1,21 @@
+"vc-description": "Create a function that takes a string and an integer (`n`).\n\n\
+  The function should return a string that repeats the input string `n` number of\
+  \ times.\n\nIf anything other than a string is passed in you should return `\"Not\
+  \ a string\"`\n\n\n## Example\n\n```\n\"Hi\", 2 --> \"HiHi\"\n1234, 5 --> \"Not\
+  \ a string\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def repeat_it (s : String) (n : Nat) : String := sorry\n\ntheorem\
+  \ repeat_it_length (s : String) (n : Nat) : \n  (repeat_it s n).length = s.length\
+  \ * n := sorry\n"
+"vc-theorems": "theorem repeat_it_equals_repeat (s : String) (n : Nat) :\n  repeat_it\
+  \ s n = String.join (List.replicate n s) := sorry\n\n\ntheorem repeat_it_empty_string\
+  \ (n : Nat) :\n  repeat_it \"\" n = \"\" := sorry\n\n\ntheorem repeat_it_non_string_int\
+  \ (x : Int) (n : Nat) :\n  repeat_it (toString x) n = \"Not a string\" := sorry\n\
+  \n\ntheorem repeat_it_non_string_float (x : Float) (n : Nat) :\n  repeat_it (toString\
+  \ x) n = \"Not a string\" := sorry\n\n\ntheorem repeat_it_non_string_list {α : Type}\
+  \ [ToString α] (xs : List α) (n : Nat) :\n  repeat_it (toString xs) n = \"Not a\
+  \ string\" := sorry\n\n/--\ninfo: '***'\n-/\n#guard_msgs in\n#eval repeat_it \"\
+  *\" 3\n\n/--\ninfo: 'Not a string'\n-/\n#guard_msgs in\n#eval repeat_it 24 3\n\n\
+  /--\ninfo: ''\n-/\n#guard_msgs in\n#eval repeat_it \"Hello\" 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

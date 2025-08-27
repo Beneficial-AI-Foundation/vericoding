@@ -1,0 +1,26 @@
+"vc-description": "Consider the following array:\n\n```\n[1, 12, 123, 1234, 12345,\
+  \ 123456, 1234567, 12345678, 123456789, 12345678910, 1234567891011...]\n```\n\n\
+  If we join these blocks of numbers, we come up with an infinite sequence which starts\
+  \ with `112123123412345123456...`. The list is infinite.\n\nYou will be given an\
+  \ number (`n`) and your task will be to return the element at that index in the\
+  \ sequence, where `1 ≤ n ≤ 10^18`. Assume the indexes start with `1`, not `0`. \
+  \ For example:\n\n```\nsolve(1) = 1, because the first character in the sequence\
+  \ is 1. There is no index 0. \nsolve(2) = 1, because the second character is also\
+  \ 1.\nsolve(3) = 2, because the third character is 2.\n```\n\nMore examples in the\
+  \ test cases. Good luck!"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (n : Nat) : Nat := sorry\n\n/-- For any natural number\
+  \ n, solve returns a single digit (0-9) -/"
+"vc-theorems": "theorem solve_returns_single_digit (n : Nat) :\n  solve n ≤ 9 := sorry\n\
+  \n/-- solve is idempotent: calling it twice gives same result as once -/\n\ntheorem\
+  \ solve_idempotent (n : Nat) :\n  solve n = solve (solve n) := sorry\n\n/-- solve\
+  \ returns single digit for boundary values -/\n\ntheorem solve_boundaries_single_digit\
+  \ :\n  solve 1 ≤ 9 ∧ \n  solve (10^9) ≤ 9 ∧\n  solve (10^18) ≤ 9 := sorry\n\n/--\n\
+  info: 1\n-/\n#guard_msgs in\n#eval solve 1\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n\
+  #eval solve 2\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve 3\n\n/--\ninfo: 1\n\
+  -/\n#guard_msgs in\n#eval solve 100\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval solve\
+  \ 55\n\n/--\ninfo: 6\n-/\n#guard_msgs in\n#eval solve 123456\n\n/--\ninfo: 4\n-/\n\
+  #guard_msgs in\n#eval solve 999999999999999999\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval solve 1000000000000000000\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

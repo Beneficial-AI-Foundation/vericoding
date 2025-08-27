@@ -1,0 +1,22 @@
+"vc-description": "As the title suggests, this is the hard-core version of  another\
+  \ neat kata.\n\nThe task is simple to explain: simply sum all the numbers from the\
+  \ first parameter being the beginning to the second parameter being the upper limit\
+  \ (possibly included), going in steps expressed by the third parameter:\n\n```python\n\
+  sequence_sum(2, 2, 2) # 2\nsequence_sum(2, 6, 2) # 12 (= 2 + 4 + 6)\nsequence_sum(1,\
+  \ 5, 1) # (= 1 + 2 + 3 + 4 + 5)\nsequence_sum(1, 5, 3) # 5 (= 1 + 4)\n```\n\nIf\
+  \ it is an impossible sequence (with the beginning being larger the end and a positive\
+  \ step or the other way around), just return `0`. See the provided test cases for\
+  \ further examples :)\n\n**Note:** differing from the other base kata, much larger\
+  \ ranges are going to be tested, so you should hope to get your algo optimized and\
+  \ to avoid brute-forcing your way through the solution."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sequence_sum (a b step : Int) : Int :=\n  sorry\n\n\n\n\n"
+"vc-theorems": "theorem sequence_sum_equal_bounds {a step : Int}\n  (h_step_nonzero\
+  \ : step ≠ 0) : \n  sequence_sum a a step = a :=\n  sorry\n\n\ntheorem sequence_sum_positive_monotone\
+  \ {a step : Int}\n  (h_a_pos : a > 0)\n  (h_step_pos : step > 0)\n  (b : Int)\n\
+  \  (h_b : b = a + step * 3) :\n  sequence_sum a b step ≥ a :=\n  sorry\n\n/--\n\
+  info: 12\n-/\n#guard_msgs in\n#eval sequence_sum 2 6 2\n\n/--\ninfo: 15\n-/\n#guard_msgs\
+  \ in\n#eval sequence_sum 1 5 1\n\n/--\ninfo: 5\n-/\n#guard_msgs in\n#eval sequence_sum\
+  \ 1 5 3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

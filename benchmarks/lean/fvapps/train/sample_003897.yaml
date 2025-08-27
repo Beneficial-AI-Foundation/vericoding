@@ -1,0 +1,28 @@
+"vc-description": "Given a name, turn that name into a perfect square matrix (nested\
+  \ array with the amount of arrays equivalent to the length of each array). \n\n\
+  You will need to add periods (`.`) to the end of the name if necessary, to turn\
+  \ it into a matrix. \n\nIf the name has a length of 0, return `\"name must be at\
+  \ least one letter\"`\n\n## Examples\n\n\"Bill\" ==> [ [\"B\", \"i\"],\n       \
+  \      [\"l\", \"l\"] ]\n\n\"Frank\" ==> [ [\"F\", \"r\", \"a\"],\n            \
+  \  [\"n\", \"k\", \".\"],\n              [\".\", \".\", \".\"] ]"
+"vc-preamble": "import Imports.AllImports\n\ndef matrixfy (s : String) : String ⊕\
+  \ (List (List Char)) := sorry \n\ntheorem matrixfy_empty_input (s : String) : \n\
+  \  s.length = 0 → matrixfy s = Sum.inl \"name must be at least one letter\" := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def getSideLength (n : Nat) : Nat :=\n  let sqrt := Float.sqrt\
+  \ (Float.ofNat n)\n  let ceil := Float.ceil sqrt\n  ceil.toUInt64.toNat\n"
+"vc-theorems": "theorem matrixfy_square_matrix (s : String) :\n  s.length > 0 → \n\
+  \  match matrixfy s with\n  | Sum.inr matrix => ∃ n, matrix.length = n ∧ matrix.all\
+  \ (fun row => row.length = n) \n  | _ => False\n  := sorry\n\n\ntheorem matrixfy_size\
+  \ (s : String) :\n  s.length > 0 →\n  match matrixfy s with\n  | Sum.inr matrix\
+  \ => matrix.length = getSideLength s.length\n  | _ => False\n  := sorry\n\n\ntheorem\
+  \ matrixfy_preserves_string (s : String) :\n  s.length > 0 →\n  match matrixfy s\
+  \ with\n  | Sum.inr matrix => \n    let flattened := matrix.join.asString\n    flattened.take\
+  \ s.length = s ∧\n    (flattened.drop s.length).all (· = '.')\n  | _ => False\n\
+  \  := sorry\n\n\ntheorem matrixfy_single_chars (s : String) :\n  s.length > 0 →\n\
+  \  match matrixfy s with\n  | Sum.inr matrix => matrix.all (fun row => row.all (fun\
+  \ _ => true))\n  | _ => False\n  := sorry\n\n/--\ninfo: 'name must be at least one\
+  \ letter'\n-/\n#guard_msgs in\n#eval matrixfy \"\"\n\n/--\ninfo: [['G']]\n-/\n#guard_msgs\
+  \ in\n#eval matrixfy \"G\"\n\n/--\ninfo: [['F', 'r', 'a'], ['n', 'k', '.'], ['.',\
+  \ '.', '.']]\n-/\n#guard_msgs in\n#eval matrixfy \"Frank\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

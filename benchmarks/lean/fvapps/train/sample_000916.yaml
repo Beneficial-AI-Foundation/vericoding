@@ -1,0 +1,27 @@
+"vc-description": "Tejas has invited the Clash Team for a Dinner Party. He places\
+  \ V empty plates (numbered from 1 to V inclusive) in a straight line on a table.\
+  \ He has prepared 2 kinds of Delicious Dishes named dish A and dish B.\n\nHe has\
+  \ exactly V servings of Dish A and W servings of dish B. \n\nNow he wants to serve\
+  \ the dishes in such a way that if theith plate has serving of Dish A then (i-1)th\
+  \ plate should not have serving of Dish B. Assuming all the Dishes are identical\
+  \ find number of ways Tejas can serve the Clash Team.\n\n-----Input-----\n- The\
+  \ first line of the input contains an integer T denoting the number of test cases\
+  \ . The description of T testcases follow.\n\n- The first line of each test case\
+  \ contains two space seperated integers V W .\n\n-----Output-----\nFor each test\
+  \ case, output the number of ways Tejas can serve the Clash Team.\n\n\n-----Constraints-----\n\
+  \n- 1 ≤ T ≤ 100\n- 1 ≤ V ≤ 1000\n- 1 ≤ W ≤ 1000\n\n-----Example-----\nInput:\n\n\
+  1\n\n3 3 \n\nOutput:\n4\n\n\n\n-----Explanation-----\n\nIn the above example the\
+  \ 4 ways are:\n\nAAA\n\nAAB\n\nABB\n\nBBB"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_dish_distribution (v w : Nat) : Nat := sorry\n\ntheorem\
+  \ dish_distribution_lower_bound (v w : Nat) :\n  solve_dish_distribution v w ≥ 1\
+  \ := sorry\n"
+"vc-theorems": "theorem dish_distribution_upper_bound (v w : Nat) :\n  solve_dish_distribution\
+  \ v w ≤ min v w + 1 := sorry\n\n\ntheorem dish_distribution_equals_min_plus_one\
+  \ (v w : Nat) :\n  solve_dish_distribution v w = min v w + 1 := sorry\n\n\ntheorem\
+  \ dish_distribution_symmetry (v w : Nat) :\n  solve_dish_distribution v w = solve_dish_distribution\
+  \ w v := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve_dish_distribution\
+  \ 3 3\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval solve_dish_distribution 5 3\n\n\
+  /--\ninfo: 3\n-/\n#guard_msgs in\n#eval solve_dish_distribution 2 4\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

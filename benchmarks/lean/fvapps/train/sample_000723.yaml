@@ -1,0 +1,39 @@
+"vc-description": "Rakesh has built a model rocket and wants to test how stable it\
+  \ is. He usually uses a magic box which runs some tests on the rocket and tells\
+  \ if it is stable or not, but his friend broke it by trying to find out how stable\
+  \ he is (very delicate magic indeed). The box only gives a polynomial equation now\
+  \ which can help Rakesh find the stability (a failsafe by the manufacturers). \n\
+  \nRakesh reads the manual for the magic box and understands that in order to determine\
+  \ stability, he needs to take every other term and put them in two rows. Eg. If\
+  \ the polynomial is:\n10 x^4 + 12 x^3 + 4 x^2 + 5 x + 3, the first two rows will\
+  \ be: \n\nRow 1: 10       4       3\n\nRow 2: 12       5       0\n\nFor all other\
+  \ rows, the nth element of the rth row is found recursively by multiplying the 1st\
+  \ element of the (r-1)th row and (n+1)th element of the (r-2)th row and subtracting\
+  \ it with 1st element of the (r-2)th row multiplied by (n+1)th element of the (r-1)th\
+  \ row.\n\nSo Row 3 will be (12 * 4 - 10 * 5)   (12 * 3 - 10 * 0)\n\nRow 3: -2  \
+  \         36      0\n\nRow 4: -442        0       0\n\nRow 5: -15912    0      \
+  \ 0\n\nThere will not be any row six (number of rows = maximum power of x + 1)\n\
+  \nThe rocket is stable if there are no sign changes in the first column. \n\nIf\
+  \ all the elements of the rth row are 0, replace the nth element of the rth row\
+  \ by the nth element of the (r-1)th row multiplied by (maximum power of x + 4 -\
+  \ r - 2n).\n\nIf the first element of any row is 0 and some of the other elements\
+  \ are non zero, the rocket is unstable.\n\nCan you help Rakesh check if his rocket\
+  \ is stable?\n\nInput Format:\n\n1. First row with number of test cases (T).\n\n\
+  2. Next T rows with the coefficients of the polynomials for each case (10 12 4 5\
+  \ 3 for the case above).\n\nOutput Format:\n\n1. \"1\" if stable (without \"\")\n\
+  \n2. \"0\" if unstable (without \"\")\n\nSample Input: \n\n1\n\n10 12 4 5 3\n\n\
+  Sample Output:\n\n0"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_rocket_stability (coeff : List Int) : Nat := sorry\n\n\
+  theorem check_rocket_binary (coeff : List Int) : \n  check_rocket_stability coeff\
+  \ = 0 ∨ check_rocket_stability coeff = 1 := sorry\n"
+"vc-theorems": "theorem zeros_stable (zeros : List Int) :\n  zeros.all (λ x => x =\
+  \ 0) → check_rocket_stability zeros = 1 := sorry\n\n\ntheorem single_coeff_stable\
+  \ (coeff : List Int) :\n  coeff.length = 1 → check_rocket_stability coeff = 1 :=\
+  \ sorry\n\n\ntheorem copy_safety (coeff : List Int) :\n  check_rocket_stability\
+  \ coeff = 0 ∨ check_rocket_stability coeff = 1 := sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval check_rocket_stability [10, 12, 4, 5, 3]\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval check_rocket_stability [0, 0, 0]\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n\
+  #eval check_rocket_stability [5]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

@@ -1,0 +1,40 @@
+"vc-description": "Let x be a string of length at least 1.\nWe will call x a good\
+  \ string, if for any string y and any integer k (k \\geq 2), the string obtained\
+  \ by concatenating k copies of y is different from x.\nFor example, a, bbc and cdcdc\
+  \ are good strings, while aa, bbbb and cdcdcd are not.\nLet w be a string of length\
+  \ at least 1.\nFor a sequence F=(\\,f_1,\\,f_2,\\,...,\\,f_m) consisting of m elements,\n\
+  we will call F a good representation of w, if the following conditions are both\
+  \ satisfied:\n - For any i \\, (1 \\leq i \\leq m), f_i is a good string.\n - The\
+  \ string obtained by concatenating f_1,\\,f_2,\\,...,\\,f_m in this order, is w.\n\
+  For example, when w=aabb, there are five good representations of w:\n - (aabb)\n\
+  \ - (a,abb)\n - (aab,b)\n - (a,ab,b)\n - (a,a,b,b)\nAmong the good representations\
+  \ of w, the ones with the smallest number of elements are called the best representations\
+  \ of w.\nFor example, there are only one best representation of w=aabb: (aabb).\n\
+  You are given a string w. Find the following:\n - the number of elements of a best\
+  \ representation of w\n - the number of the best representations of w, modulo 1000000007\
+  \ \\, (=10^9+7)\n(It is guaranteed that a good representation of w always exists.)\n\
+  \n-----Constraints-----\n - 1 \\leq |w| \\leq 500000 \\, (=5 \\times 10^5)\n - w\
+  \ consists of lowercase letters (a-z).\n\n-----Partial Score-----\n - 400 points\
+  \ will be awarded for passing the test set satisfying 1 \\leq |w| \\leq 4000.\n\n\
+  -----Input-----\nThe input is given from Standard Input in the following format:\n\
+  w\n\n-----Output-----\nPrint 2 lines.\n - In the first line, print the number of\
+  \ elements of a best representation of w.\n - In the second line, print the number\
+  \ of the best representations of w, modulo 1000000007.\n\n-----Sample Input-----\n\
+  aab\n\n-----Sample Output-----\n1\n1\n"
+"vc-preamble": "import Imports.AllImports\n\ndef solve_good_substrings : String →\
+  \ Nat × Nat :=\n  fun _ => sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def reverseString : String → String :=\n  fun _ => sorry\n\n#check\
+  \ solve_good_substrings\n"
+"vc-theorems": "theorem solve_good_substrings_result_structure \n    {s : String}\
+  \ \n    (h : s.length > 0) :\n    let result := solve_good_substrings s\n    result.1\
+  \ > 0 ∧ result.2 > 0 :=\n  sorry\n\n\ntheorem solve_good_substrings_first_element_values\n\
+  \    {s : String}\n    (h : s.length > 0) :\n    let result := solve_good_substrings\
+  \ s\n    result.1 = 1 ∨ result.1 = 2 ∨ result.1 = s.length :=\n  sorry\n\n\n\n\n\
+  theorem solve_good_substrings_count_bound\n    {s : String}\n    (h : s.length >\
+  \ 0) :\n    let result := solve_good_substrings s\n    result.2 ≤ s.length - 1 ∨\
+  \ result.2 = 1 :=\n  sorry\n\n/--\ninfo: (1, 1)\n-/\n#guard_msgs in\n#eval solve_good_substrings\
+  \ \"aab\"\n\n/--\ninfo: (2, 3)\n-/\n#guard_msgs in\n#eval solve_good_substrings\
+  \ \"bcbc\"\n\n/--\ninfo: (3, 1)\n-/\n#guard_msgs in\n#eval solve_good_substrings\
+  \ \"ddd\"\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded_and_plausible"

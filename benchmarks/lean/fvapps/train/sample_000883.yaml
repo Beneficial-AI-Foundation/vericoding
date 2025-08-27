@@ -1,0 +1,30 @@
+"vc-description": "Chef belongs to a very rich family which owns many gold mines.\
+  \ Today, he brought N gold coins and decided to form a triangle using these coins.\
+  \ Isn't it strange?\nChef has a unusual way of forming a triangle using gold coins,\
+  \ which is described as follows:\n- He puts 1 coin in the 1st row.\n- then puts\
+  \ 2 coins in the 2nd row.\n- then puts 3 coins in the 3rd row.\n-  and so on as\
+  \ shown in the given figure.\nChef is interested in forming a triangle with maximum\
+  \ possible height using at most N coins. Can you tell him the maximum possible height\
+  \ of the triangle?\n\n-----Input-----\nThe first line of input contains a single\
+  \ integer T denoting the number of test cases. \nThe first and the only line of\
+  \ each test case contains an integer N denoting the number of gold coins Chef has.\n\
+  \n-----Output-----\nFor each test case, output a single line containing an integer\
+  \ corresponding to the maximum possible height of the triangle that Chef can get.\n\
+  \n-----Constraints-----\n- 1 ≤ T ≤ 100\n- 1 ≤ N ≤ 109\n\n-----Subtasks-----\n- Subtask\
+  \ 1 (48 points) : 1 ≤ N ≤ 105\n- Subtask 2 (52 points) : 1 ≤ N ≤ 109\n\n-----Example-----\n\
+  Input3\n3\n5\n7\n\nOutput2\n2\n3\n\n-----Explanation-----\n- Test 1: Chef can't\
+  \ form a triangle with height > 2 as it requires atleast 6 gold coins.\n- Test 2:\
+  \ Chef can't form a triangle with height > 2 as it requires atleast 6 gold coins.\n\
+  - Test 3: Chef can't form a triangle with height > 3 as it requires atleast 10 gold\
+  \ coins."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def max_triangle_height (n : Nat) : Nat := sorry\n\ntheorem max_triangle_height_non_negative\
+  \ (n : Nat) :\n  max_triangle_height n ≥ 0 := sorry\n"
+"vc-theorems": "theorem max_triangle_height_triangular (n : Nat) :\n  (max_triangle_height\
+  \ n * (max_triangle_height n + 1)) / 2 ≤ n := sorry\n\n\ntheorem max_triangle_height_optimal\
+  \ (n : Nat) :\n  let h := max_triangle_height n\n  ((h + 1) * (h + 2)) / 2 > n ∨\
+  \ h = n := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval max_triangle_height\
+  \ 3\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval max_triangle_height 5\n\n/--\ninfo:\
+  \ 3\n-/\n#guard_msgs in\n#eval max_triangle_height 7\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

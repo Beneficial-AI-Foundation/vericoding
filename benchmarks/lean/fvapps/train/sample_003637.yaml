@@ -1,0 +1,11 @@
+"vc-description": "Find the total sum of internal angles (in degrees) in an n-sided\
+  \ simple polygon. N will be greater than 2."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def angle (n : Nat) : Nat := sorry\n\ntheorem angle_monotonic_increasing\
+  \ {n : Nat} (h : n ≥ 3) :\n  angle n > angle (n-1) := sorry\n"
+"vc-theorems": "theorem angle_properties {n : Nat} (h : n ≥ 3) :\n  angle n % 180\
+  \ = 0 ∧ angle n ≥ 180 := sorry\n\n/--\ninfo: 180\n-/\n#guard_msgs in\n#eval angle\
+  \ 3\n\n/--\ninfo: 360\n-/\n#guard_msgs in\n#eval angle 4\n\n/--\ninfo: 540\n-/\n\
+  #guard_msgs in\n#eval angle 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

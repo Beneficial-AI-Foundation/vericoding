@@ -1,0 +1,26 @@
+"vc-description": "Your task is to write an update for a lottery machine. Its current\
+  \ version produces a sequence of random letters and integers (passed as a string\
+  \ to the function). Your code must filter out all letters and return **unique**\
+  \ integers as a string, in their order of first appearance. If there are no integers\
+  \ in the string return `\"One more run!\"`\n\n## Examples\n\n```\n\"hPrBKWDH8yc6Lt5NQZWQ\"\
+  \  -->  \"865\"\n\"ynMAisVpHEqpqHBqTrwH\"  -->  \"One more run!\"\n\"555\"     \
+  \              -->  \"5\"\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def lottery (s : String) : String := sorry\n\ndef dedup (list :\
+  \ List α) [BEq α] : List α := list.foldl (fun acc x => if acc.contains x then acc\
+  \ else acc ++ [x]) []\n"
+"vc-theorems": "theorem lottery_result_format (s : String) : \n    let result := lottery\
+  \ s\n    (result = \"One more run!\" ∨ result.all Char.isDigit) := by sorry\n\n\n\
+  theorem lottery_preserves_digit_order (s : String) : \n    let result := lottery\
+  \ s\n    result ≠ \"One more run!\" →\n    let input_digits := s.toList.filter Char.isDigit\n\
+  \    result.toList = dedup input_digits := by sorry\n\n\ntheorem lottery_no_duplicates\
+  \ (s : String) :\n    let result := lottery s  \n    result ≠ \"One more run!\"\
+  \ →\n    result.toList.length = (dedup result.toList).length := by sorry\n\n\ntheorem\
+  \ lottery_all_digits_input (s : String) :\n    s.all Char.isDigit → s.length > 0\
+  \ →\n    let result := lottery s\n    result.all Char.isDigit ∧ \n    result.toList.length\
+  \ = (dedup result.toList).length := by sorry\n\n/--\ninfo: '805'\n-/\n#guard_msgs\
+  \ in\n#eval lottery \"wQ8Hy0y5m5oshQPeRCkG\"\n\n/--\ninfo: 'One more run!'\n-/\n\
+  #guard_msgs in\n#eval lottery \"ffaQtaRFKeGIIBIcSJtg\"\n\n/--\ninfo: '5'\n-/\n#guard_msgs\
+  \ in\n#eval lottery \"555\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

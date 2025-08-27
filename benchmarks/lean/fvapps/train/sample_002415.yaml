@@ -1,0 +1,18 @@
+"vc-description": "You have a total of n coins that you want to form in a staircase\
+  \ shape, where every k-th row must have exactly k coins.\n \nGiven n, find the total\
+  \ number of full staircase rows that can be formed.\n\nn is a non-negative integer\
+  \ and fits within the range of a 32-bit signed integer.\n\nExample 1:\n\nn = 5\n\
+  \nThe coins can form the following rows:\n¤\n¤ ¤\n¤ ¤\n\nBecause the 3rd row is\
+  \ incomplete, we return 2.\n\n\n\nExample 2:\n\nn = 8\n\nThe coins can form the\
+  \ following rows:\n¤\n¤ ¤\n¤ ¤ ¤\n¤ ¤\n\nBecause the 4th row is incomplete, we return\
+  \ 3."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def arrangeCoins (n: Nat) : Nat := sorry\n\ntheorem arrange_coins_valid_input\
+  \ (n: Nat) (h: n ≥ 1) :\n  let result := arrangeCoins n\n  result ≥ 1 ∧ \n  result\
+  \ * (result + 1) / 2 ≤ n ∧\n  (result + 1) * (result + 2) / 2 > n := sorry\n"
+"vc-theorems": "theorem arrange_coins_monotonic (n: Nat) (h: n ≥ 1) :\n  arrangeCoins\
+  \ (n + 1) ≥ arrangeCoins n := sorry\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval arrange_coins\
+  \ 5\n\n/--\ninfo: 3\n-/\n#guard_msgs in\n#eval arrange_coins 8\n\n/--\ninfo: 1\n\
+  -/\n#guard_msgs in\n#eval arrange_coins 1\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,17 @@
+"vc-description": "Oh no! Ghosts have reportedly swarmed the city. It's your job to\
+  \ get rid of them and save the day!\n\nIn this kata, strings represent buildings\
+  \ while whitespaces within those strings represent ghosts.\n\nSo what are you waiting\
+  \ for? Return the building(string) without any ghosts(whitespaces)!\n\nExample:\n\
+  \nShould return:\n\nIf the building contains no ghosts, return the string:"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def ghostbusters (s : String) : String := sorry\n\ntheorem ghostbusters_with_spaces\
+  \ (s : String) (h : String.contains s ' ') :\n  ghostbusters s = s.replace \" \"\
+  \ \"\" := sorry\n"
+"vc-theorems": "theorem ghostbusters_without_spaces (s : String) (h : ¬String.contains\
+  \ s ' ') :\n  ghostbusters s = \"You just wanted my autograph didn't you?\" := sorry\n\
+  \n/--\ninfo: 'Factory'\n-/\n#guard_msgs in\n#eval ghostbusters \"Factor y\"\n\n\
+  /--\ninfo: 'Office'\n-/\n#guard_msgs in\n#eval ghostbusters \"O  f fi ce\"\n\n/--\n\
+  info: \"You just wanted my autograph didn't you?\"\n-/\n#guard_msgs in\n#eval ghostbusters\
+  \ \"BusStation\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

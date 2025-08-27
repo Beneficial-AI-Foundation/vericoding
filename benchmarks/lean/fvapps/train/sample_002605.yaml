@@ -1,0 +1,38 @@
+"vc-description": "An Ironman Triathlon is one of a series of long-distance triathlon\
+  \ races organized by the World Triathlon Corporaion (WTC).\nIt consists of a 2.4-mile\
+  \ swim, a 112-mile bicycle ride and a marathon (26.2-mile) (run, raced in that order\
+  \ and without a break. It hurts... trust me.\n\nYour task is to take a distance\
+  \ that an athlete is through the race, and return one of the following:\n\nIf the\
+  \ distance is zero, return `'Starting Line... Good Luck!'`.\n\nIf the athlete will\
+  \ be swimming, return an object with `'Swim'` as the key, and the remaining race\
+  \ distance as the value.\n\nIf the athlete will be riding their bike, return an\
+  \ object with `'Bike'` as the key, and the remaining race distance as the value.\n\
+  \nIf the athlete will be running, and has more than 10 miles to go, return an object\
+  \ with `'Run'` as the key, and the remaining race distance as the value.\n\nIf the\
+  \ athlete has 10 miles or less to go, return return an object with `'Run'` as the\
+  \ key, and `'Nearly there!'` as the value.\n\nFinally, if the athlete has completed\
+  \ te distance, return `\"You're done! Stop running!\"`.\n\nAll distance should be\
+  \ calculated to two decimal places."
+"vc-preamble": "import Imports.AllImports\n\ndef SWIM_DIST : Float := 2.4\ndef BIKE_DIST\
+  \ : Float := 112\n\ndef RUN_DIST : Float := 26.2\ndef TOTAL_DIST : Float := SWIM_DIST\
+  \ + BIKE_DIST + RUN_DIST\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def i_tri (distance : Float) : String ⊕ (String × String) := sorry\n\
+  \ntheorem i_tri_result_type (distance : Float) :\n  match i_tri distance with\n\
+  \  | Sum.inl _ => True\n  | Sum.inr _ => True := sorry \n"
+"vc-theorems": "theorem i_tri_at_start :\n  i_tri 0 = Sum.inl \"Starting Line... Good\
+  \ Luck!\" := sorry\n\n\ntheorem i_tri_at_finish (distance : Float) :\n  distance\
+  \ ≥ TOTAL_DIST →\n  i_tri distance = Sum.inl \"You're done! Stop running!\" := sorry\n\
+  \n\ntheorem i_tri_swim_phase (distance : Float) :\n  0 < distance → distance < SWIM_DIST\
+  \ → \n  ∃ msg, i_tri distance = Sum.inr (\"Swim\", msg) := sorry\n\n\ntheorem i_tri_bike_phase\
+  \ (distance : Float) :\n  SWIM_DIST ≤ distance → distance < SWIM_DIST + BIKE_DIST\
+  \ →\n  ∃ msg, i_tri distance = Sum.inr (\"Bike\", msg) := sorry\n\n\ntheorem i_tri_run_phase_normal\
+  \ (distance : Float) :\n  SWIM_DIST + BIKE_DIST ≤ distance → distance < TOTAL_DIST\
+  \ - 10 →\n  ∃ msg, i_tri distance = Sum.inr (\"Run\", msg) ∧ msg.endsWith \" to\
+  \ go!\" := sorry\n\n\ntheorem i_tri_run_phase_near_end (distance : Float) :\n  TOTAL_DIST\
+  \ - 10 ≤ distance → distance < TOTAL_DIST →\n  i_tri distance = Sum.inr (\"Run\"\
+  , \"Nearly there!\") := sorry\n\n/--\ninfo: {'Bike': '104.60 to go!'}\n-/\n#guard_msgs\
+  \ in\n#eval i_tri 36\n\n/--\ninfo: {'Swim': '138.60 to go!'}\n-/\n#guard_msgs in\n\
+  #eval i_tri 2\n\n/--\ninfo: \"You're done! Stop running!\"\n-/\n#guard_msgs in\n\
+  #eval i_tri 151\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

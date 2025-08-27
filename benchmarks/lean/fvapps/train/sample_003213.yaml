@@ -1,0 +1,21 @@
+"vc-description": "Americans are odd people: in their buildings, the first floor is\
+  \ actually the ground floor and there is no 13th floor (due to superstition).\n\n\
+  Write a function that given a floor in the american system returns the floor in\
+  \ the european system.\n\nWith the 1st floor being replaced by the ground floor\
+  \ and the 13th floor being removed, the numbers move down to take their place. In\
+  \ case of above 13, they move down by two because there are two omitted numbers\
+  \ below them.\n\nBasements (negatives) stay the same as the universal level.\n\n\
+  [More information here](https://en.wikipedia.org/wiki/Storey#European_scheme)\n\n\
+  ## Examples\n\n```\n1  =>  0 \n0  =>  0\n5  =>  4\n15  =>  13\n-3  =>  -3\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_real_floor (n : Int) : Int := sorry\n\ntheorem negative_and_zero_floors_unchanged\n\
+  \  {floor : Int}\n  (h : floor ≤ 0) :\n  get_real_floor floor = floor := sorry\n"
+"vc-theorems": "theorem floors_below_13_decreased_by_one\n  {floor : Int}\n  (h1 :\
+  \ floor > 0)\n  (h2 : floor < 13) :\n  get_real_floor floor = floor - 1 := sorry\n\
+  \n\ntheorem floors_above_12_decreased_by_two\n  {floor : Int}\n  (h : floor ≥ 13)\
+  \ :\n  get_real_floor floor = floor - 2 := sorry\n\n\ntheorem floor_13_maps_to_11\
+  \ :\n  get_real_floor 13 = 11 := sorry\n\n/--\ninfo: 4\n-/\n#guard_msgs in\n#eval\
+  \ get_real_floor 5\n\n/--\ninfo: 13\n-/\n#guard_msgs in\n#eval get_real_floor 15\n\
+  \n/--\ninfo: -3\n-/\n#guard_msgs in\n#eval get_real_floor -3\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

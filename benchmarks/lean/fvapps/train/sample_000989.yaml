@@ -1,0 +1,44 @@
+"vc-description": "Vanja and Miksi have already finished everything for this year\
+  \ at their university, so they decided to spend their free time playing a game with\
+  \ a binary sequence $A_1, A_2, \\dots, A_N$ (i.e. a sequence containing only integers\
+  \ $0$ and $1$).\nAt the beginning of the game, Vanja and Miksi write down the expression\
+  \ $* A_1 * A_2 * A_3 * \\ldots * A_N$ (note below that each $*$ is a placeholder\
+  \ and does not denote multiplication).\nThe players take turns alternately, starting\
+  \ with Vanja. The game lasts $N$ turns. In each turn, the current player must replace\
+  \ the first (leftmost) remaining $*$ by the sign $+$ or $-$ (or, equivalently, by\
+  \ the operation of addition or subtraction).\nAfter the last turn, the boys calculate\
+  \ the resulting value $V$ of the expression. If $|V| \\ge K$, the winner is Vanja;\
+  \ otherwise, the winner is Miksi.\nPlease predict the winner of the game if both\
+  \ players play optimally. \n\n-----Input-----\n- The first line of the input contains\
+  \ a single integer $T$ denoting the number of test cases. The description of $T$\
+  \ test cases follows.\n- The first line of each test case contains two space-separated\
+  \ integers $N$ and $K$.\n- The second line contains $N$ space-separated integers\
+  \ $A_1, A_2, \\dots, A_N$.\n\n-----Output-----\nFor each test case, print a single\
+  \ line containing one integer — $1$ if Vanja (the first player) is the winner or\
+  \ $2$ if Miksi (the second player) is the winner.\n\n-----Constraints-----\n- $1\
+  \ \\le T \\le 50$\n- $1 \\le N \\le 3 \\cdot 10^4$\n- $0 \\le K \\le 3 \\cdot 10^4$\n\
+  - $0 \\le A_i \\le 1$ for each valid $i$\n\n-----Example Input-----\n2\n2 1\n1 0\n\
+  3 5\n0 1 0\n\n-----Example Output-----\n1\n2\n\n-----Explanation-----\nExample case\
+  \ 1: $K = 1$, so if Vanja replaces the first $*$ by $+$, the value of the final\
+  \ expression will be $V = 1$; then, $K \\le |V|$, so the winner is Vanja.\nExample\
+  \ case 2: $K = 5$, but the absolute value of the final expression cannot be greater\
+  \ than $1$. The winner is Miksi."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve (n k : Nat) (arr : List Nat) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem solve_output_is_valid\n  (n k : Nat)\n  (arr : List Nat)\n\
+  \  (h1 : n > 0)\n  (h2 : k > 0)\n  (h3 : n ≤ 10)\n  (h4 : k ≤ 10)\n  (h5 : arr.length\
+  \ = n)\n  (h6 : ∀ x ∈ arr, x ≤ 10) :\n  solve n k arr = 1 ∨ solve n k arr = 2 :=\n\
+  sorry\n\n\ntheorem solve_is_deterministic\n  (n k : Nat)\n  (arr : List Nat)\n \
+  \ (h1 : n > 0)\n  (h2 : k > 0)\n  (h3 : n ≤ 10)\n  (h4 : k ≤ 10)\n  (h5 : arr.length\
+  \ = n)\n  (h6 : ∀ x ∈ arr, x ≥ 0) :\n  solve n k arr = solve n k arr :=\nsorry\n\
+  \n\ntheorem solve_impossible_to_win_with_k_too_large\n  (n : Nat)\n  (arr : List\
+  \ Nat)\n  (h1 : n > 0)\n  (h2 : n ≤ 10)\n  (h3 : arr.length = n)\n  (h4 : ∀ x ∈\
+  \ arr, x ≥ 0) :\n  let k := (arr.foldl (· + ·) 0) + 1\n  solve n k arr = 2 :=\n\
+  sorry\n\n\ntheorem solve_always_wins_with_k_zero\n  (n : Nat)\n  (arr : List Nat)\n\
+  \  (h1 : n > 0)\n  (h2 : n ≤ 10)\n  (h3 : arr.length = n)\n  (h4 : ∀ x ∈ arr, x\
+  \ ≥ 0)\n  (h5 : ∃ x ∈ arr, x > 0) :\n  solve n 0 arr = 1 :=\nsorry\n\n/--\ninfo:\
+  \ 1\n-/\n#guard_msgs in\n#eval solve 2 1 [1, 0]\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval solve 3 5 [0, 1, 0]\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval solve\
+  \ 4 2 [1, 1, 0, 1]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

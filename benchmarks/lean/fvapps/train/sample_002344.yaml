@@ -1,0 +1,27 @@
+"vc-description": "Given an integer, write an algorithm to convert it to hexadecimal.\
+  \ For negative integer, two’s complement method is used.\n\n\nNote:\n\nAll letters\
+  \ in hexadecimal (a-f) must be in lowercase.\nThe hexadecimal string must not contain\
+  \ extra leading 0s. If the number is zero, it is represented by a single zero character\
+  \ '0'; otherwise, the first character in the hexadecimal string will not be the\
+  \ zero character.\nThe given number is guaranteed to fit within the range of a 32-bit\
+  \ signed integer.\nYou must not use any method provided by the library which converts/formats\
+  \ the number to hex directly.\n\n\n\nExample 1:\n\nInput:\n26\n\nOutput:\n\"1a\"\
+  \n\n\n\nExample 2:\n\nInput:\n-1\n\nOutput:\n\"ffffffff\""
+"vc-preamble": "import Imports.AllImports\n\ndef to_hex (n : Int) : String := sorry\n\
+  \n/-- Helper function to convert hex string to number (just for theorem statements)\
+  \ -/"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def hexToNat (s : String) : Nat := sorry\n\ntheorem to_hex_positive_integers\
+  \ (n : Nat) (h : n < 2^32) : \n  let result := to_hex n\n  (hexToNat result = n)\
+  \ ∧ \n  (result.length ≤ 8) ∧\n  (∀ c ∈ result.data, c ∈ ['0', '1', '2', '3', '4',\
+  \ '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']) := \nsorry\n"
+"vc-theorems": "theorem to_hex_negative_integers (n : Int) (h1 : -(2^31) ≤ n) (h2\
+  \ : n < 0) :\n  let result := to_hex n\n  (result.length = 8) ∧\n  (∀ c ∈ result.data,\
+  \ c ∈ ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e',\
+  \ 'f']) ∧\n  (let value := hexToNat result\n   if value ≥ 2^31 then\n     value\
+  \ - 2^32 = n\n   else\n     value = n) :=\nsorry\n\n\ntheorem to_hex_zero :\n  to_hex\
+  \ 0 = \"0\" := sorry\n\n\ntheorem to_hex_length (n : Int) :\n  let result := to_hex\
+  \ n\n  1 ≤ result.length ∧ result.length ≤ 8 := sorry\n\n/--\ninfo: '1a'\n-/\n#guard_msgs\
+  \ in\n#eval to_hex 26\n\n/--\ninfo: 'ffffffff'\n-/\n#guard_msgs in\n#eval to_hex\
+  \ -1\n\n/--\ninfo: '0'\n-/\n#guard_msgs in\n#eval to_hex 0\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

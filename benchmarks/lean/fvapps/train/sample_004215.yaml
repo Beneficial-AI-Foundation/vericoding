@@ -1,0 +1,25 @@
+"vc-description": "# Task\n Consider a string of lowercase Latin letters and space\
+  \ characters (\" \"). \n \n First, rearrange the letters in each word `alphabetically`.\
+  \ \n \n And then rearrange the words in ascending order of the sum of their characters'\
+  \ `ASCII` values. \n \n If two or more words have the same `ASCII` value, rearrange\
+  \ them by their length in ascending order; If their length still equals to each\
+  \ other, rearrange them `alphabetically`.\n \n Finally, return the result.\n\n#\
+  \ Example\n\n For `s = \"batman is bruce wayne\"`, the result should be `\"is bceru\
+  \ aenwy aamntb\"`.\n``` \nAfter rearranging the letters the string turns into\n\"\
+  aamntb is bceru aenwy\".\nThe ASCII values of each word are: [627, 220, 529, 548].\n\
+  After sorting the words the following string is obtained:\n\"is bceru aenwy aamntb\"\
+  \ (with ASCII values of [220, 529, 548, 627]).```\n\n For `s = \"peter parker is\
+  \ spiderman\"`, the result should be `\"is eeprt aekprr adeimnprs\"`\n\n `(ASCII\
+  \ values: [220, 554, 645, 963])`\n\n# Input/Output\n\n\n - `[input]` string `s`\n\
+  \n  A string of lowercase words. Each word is separated by exactly one space character.\n\
+  \n\n - `[output]` a string"
+"vc-preamble": "import Imports.AllImports\n\ndef revamp (s : String) : String := sorry\n\
+  \ndef sumChars (s : String) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def sortString (s : String) : String := sorry\n\n\n\ntheorem output_has_same_word_count\
+  \ (s : String) :\n  (String.split (revamp s) (· = ' ')).length = (String.split s\
+  \ (· = ' ')).length := sorry \n\n\n"
+"vc-theorems": "theorem words_internally_sorted (s : String) :\n  let result := String.split\
+  \ (revamp s) (· = ' ')\n  ∀ word, word ∈ result → \n    word = sortString word :=\
+  \ sorry\n\n\n\n\ntheorem empty_string :\n  revamp \"\" = \"\" := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

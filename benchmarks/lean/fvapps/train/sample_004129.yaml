@@ -1,0 +1,21 @@
+"vc-description": "The Padovan sequence is the sequence of integers `P(n)` defined\
+  \ by the initial values\n\n`P(0)=P(1)=P(2)=1`\n\nand the recurrence relation\n\n\
+  `P(n)=P(n-2)+P(n-3)`\n\nThe first few values of `P(n)` are\n\n`1, 1, 1, 2, 2, 3,\
+  \ 4, 5, 7, 9, 12, 16, 21, 28, 37, 49, 65, 86, 114, 151, 200, 265, ...`\n\n### Task\
+  \ \n\nThe task is to write a method that returns i-th Padovan number\n\n```python\n\
+  > padovan(0) == 1\n> padovan(1) == 1\n> padovan(2) == 1\n> padovan(n) = padovan(n-2)\
+  \ + padovan(n-3)\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def padovan (n : Nat) : Nat := sorry\n\ntheorem padovan_positive\
+  \ (n : Nat) : \n  padovan n > 0 := sorry \n"
+"vc-theorems": "theorem padovan_first_three : \n  (padovan 0 = 1) ∧ (padovan 1 = 1)\
+  \ ∧ (padovan 2 = 1) := sorry\n\n\ntheorem padovan_recurrence (n : Nat) :\n  padovan\
+  \ (n + 3) = padovan n + padovan (n + 1) := sorry\n\n\ntheorem padovan_monotonic\
+  \ (n : Nat) :\n  n > 0 → padovan n ≥ padovan (n - 1) := sorry\n\n/--\ninfo: 1\n\
+  -/\n#guard_msgs in\n#eval padovan 0\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval padovan\
+  \ 1\n\n/--\ninfo: 1\n-/\n#guard_msgs in\n#eval padovan 2\n\n/--\ninfo: 2\n-/\n#guard_msgs\
+  \ in\n#eval padovan 3\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval padovan 4\n\n/--\n\
+  info: 12\n-/\n#guard_msgs in\n#eval padovan 10\n\n/--\ninfo: 1177482265857\n-/\n\
+  #guard_msgs in\n#eval padovan 100\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

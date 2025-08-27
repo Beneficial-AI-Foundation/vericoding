@@ -1,0 +1,17 @@
+"vc-description": "Imagine a triangle of numbers which follows this pattern:\n\n *\
+  \ Starting with the number \"1\", \"1\" is positioned at the top of the triangle.\
+  \ As this is the 1st row, it can only support a single number.\n * The 2nd row can\
+  \ support the next 2 numbers: \"2\" and \"3\"\n * Likewise, the 3rd row, can only\
+  \ support the next 3 numbers: \"4\", \"5\", \"6\"\n * And so on; this pattern continues.\n\
+  \n```\n    1\n   2 3\n  4 5 6\n 7 8 9 10\n...\n```\n\nGiven N, return the sum of\
+  \ all numbers on the Nth Row:\n\n1 <= N <= 10,000"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def cumulative_triangle (n : Nat) : Nat := sorry\n\ntheorem cumulative_triangle_positive\
+  \ (n : Nat) (h : n > 0) :\n  cumulative_triangle n > 0 := sorry\n\n\n"
+"vc-theorems": "theorem cumulative_triangle_strictly_increasing (n : Nat) (h : n >\
+  \ 1) :\n  cumulative_triangle n > cumulative_triangle (n - 1) := sorry\n\n/--\n\
+  info: 1\n-/\n#guard_msgs in\n#eval cumulative_triangle 1\n\n/--\ninfo: 5\n-/\n#guard_msgs\
+  \ in\n#eval cumulative_triangle 2\n\n/--\ninfo: 15\n-/\n#guard_msgs in\n#eval cumulative_triangle\
+  \ 3\n\n/--\ninfo: 34\n-/\n#guard_msgs in\n#eval cumulative_triangle 4\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,24 @@
+"vc-description": "You should write a function that takes a string and a positive\
+  \ integer `n`, splits the string into parts of length `n` and returns them in an\
+  \ array. It is ok for the last element to have less than `n` characters.\n\nIf `n`\
+  \ is not a valid size (`> 0`) (or is absent), you should return an empty array.\n\
+  \nIf `n` is greater than the length of the string, you should return an array with\
+  \ the only element being the same string.\n\nExamples:\n\n```python\nstring_chunk('codewars',\
+  \ 2) # ['co', 'de', 'wa', 'rs']\nstring_chunk('thiskataeasy', 4) # ['this', 'kata',\
+  \ 'easy']\nstring_chunk('hello world', 3) # ['hel', 'lo ', 'wor', 'ld']\nstring_chunk('sunny\
+  \ day', 0) # []\n```"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def string_chunk (s : String) (n : Nat) : List String := sorry\n\
+  \ntheorem string_chunk_length_property (s : String) (n : Nat) (h : n > 0) :\n  s.length\
+  \ > 0 → String.length (String.join (string_chunk s n)) = String.length s := sorry\n"
+"vc-theorems": "theorem string_chunk_size_property (s : String) (n : Nat) (h : n >\
+  \ 0) :\n  let chunks := string_chunk s n\n  chunks.length > 0 →\n  (∀ chunk ∈ chunks,\
+  \ chunk.length ≤ n) ∧\n  (∀ chunk ∈ chunks.dropLast, chunk.length = n) := sorry\n\
+  \n\ntheorem string_chunk_invalid_n (s : String) (n : Nat) :\n  n = 0 → string_chunk\
+  \ s n = [] := sorry\n\n\ntheorem string_chunk_reconstructs_original (s : String)\
+  \ (n : Nat) (h : n > 0) :\n  String.join (string_chunk s n) = s := sorry\n\n/--\n\
+  info: ['co', 'de', 'wa', 'rs']\n-/\n#guard_msgs in\n#eval string_chunk \"codewars\"\
+  \ 2\n\n/--\ninfo: []\n-/\n#guard_msgs in\n#eval string_chunk \"hello\" 0\n\n/--\n\
+  info: ['hi']\n-/\n#guard_msgs in\n#eval string_chunk \"hi\" 5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

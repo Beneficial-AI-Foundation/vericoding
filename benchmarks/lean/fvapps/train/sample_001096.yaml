@@ -1,0 +1,43 @@
+"vc-description": "Shivam is working on electric circuits. He requires some connecting\
+  \ wires. He needs to make a total of N connections and he has mentioned his wire\
+  \ length requirements for each connection in an integer sequence A. For buying wires,\
+  \ he need to decide the length of each wire piece, and he’ll get as many wire pieces\
+  \ of the chosen length each at unit cost (cost 1 per piece) but he can't get wires\
+  \ of different lengths. Also, he can't cut wire pieces to make new pieces of different\
+  \ (smaller) length(s).\nBut he can connect any number of wires together to form\
+  \ a new single wire piece whose length is the sum of lengths of the wires connected.\
+  \ So, Shivam needs to choose an integer length for buying wires. Shivam hates to\
+  \ waste anything, and he hates it even more if that thing is money.\nShivam is weak\
+  \ in mathematics and is asking you to help him in this situation. Help him decide\
+  \ the length of wires and total number of wires so as to minimize the total expenditure.\n\
+  Note: You cannot make a connection which requires a wire piece of length X with\
+  \ a wire piece of length Y if X≠Y.\nInput:\n·        The first line of the input\
+  \ contains T = Number of Test cases\n·        The first line of each test case contains\
+  \ an integer N\n·        The second line contains N space separated integers A1,\
+  \ A2, …., AN.\nOutput:\nFor each test case print a single line containing two space\
+  \ separated integers, length of each wire and the corresponding minimum cost.\n\
+  Constraints:\n·       1 <= T <= 10\n·       1 <= N <= 10^5\n·        1 <= Ai <=\
+  \ 10^5, for each valid i\nSample Input:\n1\n3\n2 4 8\nSample Output:\n2 7"
+"vc-preamble": "import Imports.AllImports\n\ndef List.sum (xs : List Nat) : Nat :=\n\
+  \  match xs with\n  | [] => 0\n  | x :: xs => x + xs.sum\n\n\ndef gcd (a b : Nat)\
+  \ : Nat :=\n  sorry\n\n\ndef gcd_list (nums : List Nat) : Nat :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def min_wire_cost (n : Nat) (wire_lengths : List Nat) : Nat × Nat\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem min_wire_cost_divides_all (n : Nat) (wire_lengths : List Nat)\n\
+  \  (h : wire_lengths.length > 0) (h2 : ∀ x ∈ wire_lengths, x > 0) :\n  let (result_len,\
+  \ _) := min_wire_cost n wire_lengths\n  ∀ w ∈ wire_lengths, w % result_len = 0 :=\n\
+  sorry \n\n\ntheorem min_wire_cost_gcd (n : Nat) (wire_lengths : List Nat)  \n  (h\
+  \ : wire_lengths.length > 0) (h2 : ∀ x ∈ wire_lengths, x > 0) :\n  let (result_len,\
+  \ _) := min_wire_cost n wire_lengths\n  result_len = gcd_list wire_lengths :=\n\
+  sorry\n\n\ntheorem min_wire_cost_preserves_sum (n : Nat) (wire_lengths : List Nat)\n\
+  \  (h : wire_lengths.length > 0) (h2 : ∀ x ∈ wire_lengths, x > 0) :\n  let (result_len,\
+  \ result_pieces) := min_wire_cost n wire_lengths\n  result_len * result_pieces =\
+  \ wire_lengths.sum :=\nsorry\n\n\ntheorem min_wire_cost_even_output (n : Nat) (wire_lengths\
+  \ : List Nat)\n  (h : wire_lengths.length > 0) (h2 : ∀ x ∈ wire_lengths, x > 0)\n\
+  \  (h3 : ∀ x ∈ wire_lengths, x % 2 = 0) :\n  let (result_len, _) := min_wire_cost\
+  \ n wire_lengths\n  result_len % 2 = 0 :=\nsorry\n\n\ntheorem min_wire_cost_positive\
+  \ (n : Nat) (wire_lengths : List Nat)\n  (h : wire_lengths.length > 0) (h2 : ∀ x\
+  \ ∈ wire_lengths, x > 0) :\n  let (result_len, result_pieces) := min_wire_cost n\
+  \ wire_lengths\n  result_len > 0 ∧ result_pieces > 0 :=\nsorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded"

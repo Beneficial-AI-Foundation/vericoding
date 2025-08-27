@@ -1,0 +1,14 @@
+"vc-description": "Count the number of segments in a string, where a segment is defined\
+  \ to be a contiguous sequence of non-space characters.\n\nPlease note that the string\
+  \ does not contain any non-printable characters.\n\nExample:\n\nInput: \"Hello,\
+  \ my name is John\"\nOutput: 5"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_segments (s : String) : Nat := sorry\n\n\n\ntheorem count_segments_empty\
+  \ :\n  count_segments \"\" = 0 := sorry\n"
+"vc-theorems": "theorem count_segments_basic_cases :\n  count_segments \"Hello world\"\
+  \ = 2 ∧\n  count_segments \"   spaces   around   \" = 2 := sorry\n\n/--\ninfo: 5\n\
+  -/\n#guard_msgs in\n#eval count_segments \"Hello, my name is John\"\n\n/--\ninfo:\
+  \ 0\n-/\n#guard_msgs in\n#eval count_segments \"\"\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval count_segments \"Hello\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

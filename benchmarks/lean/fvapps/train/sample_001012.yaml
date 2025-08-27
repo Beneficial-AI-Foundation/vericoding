@@ -1,0 +1,31 @@
+"vc-description": "Forgotten languages (also known as extinct languages) are languages\
+  \ that are no longer in use. Such languages were, probably, widely used before and\
+  \ no one could have ever imagined that they will become extinct at some point. Unfortunately,\
+  \ that is what happened to them. On the happy side of things, a language may be\
+  \ dead, but some of its words may continue to be used in other languages.\n\nUsing\
+  \ something called as the Internet, you have acquired a dictionary of N words of\
+  \ a forgotten language. Meanwhile, you also know K phrases used in modern languages.\
+  \ For each of the words of the forgotten language, your task is to determine whether\
+  \ the word is still in use in any of these K modern phrases or not.\n\n-----Input-----\n\
+  \nThe first line of the input contains an integer T denoting the number of test\
+  \ cases. The description of T test cases follows.\n\nThe first line of a test case\
+  \ description contains two space separated positive integers N and K.\n\nThe second\
+  \ line of the description contains N strings denoting a dictionary of the forgotten\
+  \ language.\n\nEach of the next K lines of the description starts with one positive\
+  \ integer L denoting the number of words in the corresponding phrase in modern languages.\
+  \ The integer is followed by L strings (not necessarily distinct) denoting the phrase.\n\
+  \n-----Output-----\n\nFor each test case, output a single line containing N tokens\
+  \ (space-separated): if the ith word of the dictionary exists in at least one phrase\
+  \ in modern languages, then you should output YES as the ith token, otherwise NO.\n\
+  \n-----Constraints-----\n- 1 ≤ T ≤ 20\n- 1 ≤ N ≤ 100\n- 1 ≤ K, L ≤ 50\n- 1 ≤ length\
+  \ of any string in the input ≤ 5\n\n-----Example-----\nInput:\n2\n3 2\npiygu ezyfo\
+  \ rzotm\n1 piygu\n6 tefwz tefwz piygu ezyfo tefwz piygu\n4 1\nkssdy tjzhy ljzym\
+  \ kegqz\n4 kegqz kegqz kegqz vxvyj\n\nOutput:\nYES YES NO \nNO NO NO YES"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def check_forgotten_words (dictionary : List String) (phrases :\
+  \ List (List String)) : String :=\n  sorry\n\n\n\n\n"
+"vc-theorems": "theorem check_repeated_word {word : String} {count : Nat} (h : count\
+  \ > 0) :\n  let dictionary := [word]\n  let phrases := List.replicate count [\"\
+  1\", word] \n  check_forgotten_words dictionary phrases = \"YES\" :=\n  sorry"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: guarded_and_plausible"

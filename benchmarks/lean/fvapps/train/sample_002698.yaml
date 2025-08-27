@@ -1,0 +1,30 @@
+"vc-description": "Cheesy Cheeseman just got a new monitor! He is happy with it, but\
+  \ he just discovered that his old desktop wallpaper no longer fits. He wants to\
+  \ find a new wallpaper, but does not know which size wallpaper he should be looking\
+  \ for, and alas, he just threw out the new monitor's box. Luckily he remembers the\
+  \ width and the aspect ratio of the monitor from when Bob Mortimer sold it to him.\
+  \ Can you help Cheesy out?\n# The Challenge\n\nGiven an integer `width` and a string\
+  \ `ratio` written as `WIDTH:HEIGHT`, output the screen dimensions as a string written\
+  \ as `WIDTHxHEIGHT`."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_screen_height (width : Nat) (ratio : String) : String\
+  \ := sorry\n\ntheorem find_screen_height_format (width : Nat) (ratio : String)\n\
+  \  (h : width > 0)\n  (h2 : ∃ a b, ratio = s!\"{a}:{b}\" ∧ a > 0 ∧ b > 0) :\n  ∃\
+  \ w h : Nat, find_screen_height width ratio = s!\"{w}x{h}\" := sorry\n"
+"vc-theorems": "theorem find_screen_height_width_matches (width : Nat) (ratio : String)\n\
+  \  (h : width > 0)\n  (h2 : ∃ a b, ratio = s!\"{a}:{b}\" ∧ a > 0 ∧ b > 0) :\n  let\
+  \ result := find_screen_height width ratio\n  let w := result.splitOn \"x\" |>.head!\n\
+  \  w.toNat? = some width := sorry\n\n\ntheorem find_screen_height_positive (width\
+  \ : Nat) (ratio : String)\n  (h : width > 0) \n  (h2 : ∃ a b, ratio = s!\"{a}:{b}\"\
+  \ ∧ a > 0 ∧ b > 0) :\n  let result := find_screen_height width ratio\n  let h :=\
+  \ result.splitOn \"x\" |>.getLast!\n  (h.toNat?).isSome ∧ (h.toNat?).get! > 0 :=\
+  \ sorry\n\n\ntheorem find_screen_height_ratio_valid (width : Nat) (ratio : String)\n\
+  \  (h : width > 0)\n  (h2 : ∃ a b, ratio = s!\"{a}:{b}\" ∧ a > 0 ∧ b > 0) :\n  let\
+  \ result := find_screen_height width ratio\n  let h := (result.splitOn \"x\" |>.getLast!).toNat?.get!\n\
+  \  let a := (ratio.splitOn \":\" |>.head!).toNat?.get!\n  let b := (ratio.splitOn\
+  \ \":\" |>.getLast!).toNat?.get!\n  h = width / a * b := sorry\n\n/--\ninfo: '1024x768'\n\
+  -/\n#guard_msgs in\n#eval find_screen_height 1024 \"4:3\"\n\n/--\ninfo: '1280x720'\n\
+  -/\n#guard_msgs in\n#eval find_screen_height 1280 \"16:9\"\n\n/--\ninfo: '3840x1080'\n\
+  -/\n#guard_msgs in\n#eval find_screen_height 3840 \"32:9\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

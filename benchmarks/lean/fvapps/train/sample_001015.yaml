@@ -1,0 +1,41 @@
+"vc-description": "Bears love candies and games involving eating them. Limak and Bob\
+  \ play the following game. Limak eats 1 candy, then Bob eats 2 candies, then Limak\
+  \ eats 3 candies, then Bob eats 4 candies, and so on. Once someone can't eat what\
+  \ he is supposed to eat, he loses.\nLimak can eat at most A candies in total (otherwise\
+  \ he would become sick), while Bob can eat at most B candies in total.\nWho will\
+  \ win the game?\nPrint \"Limak\" or \"Bob\" accordingly.\n\n-----Input-----\nThe\
+  \ first line of the input contains an integer T denoting the number of test cases.\
+  \ The description of T test cases follows.\nThe only line of each test case contains\
+  \ two integers A and B denoting the maximum possible number of candies Limak can\
+  \ eat and the maximum possible number of candies Bob can eat respectively.\n\n-----Output-----\n\
+  For each test case, output a single line containing one string — the name of the\
+  \ winner (\"Limak\" or \"Bob\" without the quotes).\n\n-----Constraints-----\n-\
+  \ 1 ≤ T ≤ 1000\n- 1 ≤ A, B ≤ 1000\n\n-----Example-----\nInput:\n10\n3 2\n4 2\n1\
+  \ 1\n1 2\n1 3\n9 3\n9 11\n9 12\n9 1000\n8 11\n\nOutput:\nBob\nLimak\nLimak\nBob\n\
+  Bob\nLimak\nLimak\nBob\nBob\nBob\n\n-----Explanation-----\nTest case 1. We have\
+  \ A = 3 and B = 2. Limak eats 1 candy first, and then Bob eats 2 candies. Then Limak\
+  \ is supposed to eat 3 candies but that would mean 1 + 3 = 4 candies in total. It's\
+  \ impossible because he can eat at most A candies, so he loses. Bob wins, and so\
+  \ we print \"Bob\".\nTest case 2. Now we have A = 4 and B = 2. Limak eats 1 candy\
+  \ first, and then Bob eats 2 candies, then Limak eats 3 candies (he has 1 + 3 =\
+  \ 4 candies in total, which is allowed because it doesn't exceed A). Now Bob should\
+  \ eat 4 candies but he can't eat even a single one (he already ate 2 candies). Bob\
+  \ loses and Limak is the winner.\nTest case 8. We have A = 9 and B = 12. The game\
+  \ looks as follows:\n- Limak eats 1 candy.\n- Bob eats 2 candies.\n- Limak eats\
+  \ 3 candies (4 in total).\n- Bob eats 4 candies (6 in total).\n- Limak eats 5 candies\
+  \ (9 in total).\n- Bob eats 6 candies (12 in total).\n- Limak is supposed to eat\
+  \ 7 candies but he can't — that would exceed A. Bob wins."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def determine_candy_game_winner (limak_max : Nat) (bob_max : Nat)\
+  \ : String := sorry\n\ntheorem candy_game_returns_valid_winner (limak_max bob_max\
+  \ : Nat) \n  (h1 : limak_max > 0) (h2 : bob_max > 0) (h3 : limak_max ≤ 1000) (h4\
+  \ : bob_max ≤ 1000) :\n  determine_candy_game_winner limak_max bob_max = \"Limak\"\
+  \ ∨ \n  determine_candy_game_winner limak_max bob_max = \"Bob\" := \n  sorry\n"
+"vc-theorems": "theorem limak_much_larger_valid_winner (n : Nat)\n  (h1 : n > 0) (h2\
+  \ : n ≤ 100) :\n  determine_candy_game_winner (n * 10) n = \"Limak\" ∨\n  determine_candy_game_winner\
+  \ (n * 10) n = \"Bob\" :=\n  sorry\n\n/--\ninfo: 'Bob'\n-/\n#guard_msgs in\n#eval\
+  \ determine_candy_game_winner 3 2\n\n/--\ninfo: 'Limak'\n-/\n#guard_msgs in\n#eval\
+  \ determine_candy_game_winner 4 2\n\n/--\ninfo: 'Bob'\n-/\n#guard_msgs in\n#eval\
+  \ determine_candy_game_winner 9 12\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

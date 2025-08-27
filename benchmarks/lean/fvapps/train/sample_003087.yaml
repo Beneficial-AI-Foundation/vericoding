@@ -1,0 +1,30 @@
+"vc-description": "In music, if you double (or halve) the pitch of any note you will\
+  \ get to the same note again.\n\n\"Concert A\" is fixed at 440 Hz, and every other\
+  \ note is defined based on that. 880 Hz is also an A, as is 1760 Hz, as is 220 Hz.\n\
+  \nThere are 12 notes in Western music: A, A#, B, C, C#, D, D#, E, F, F#, G, G#.\
+  \ You are given a preloaded dictionary with these 12 notes and one of the pitches\
+  \ that creates that note (starting at Concert A).\n\nNow, given a pitch (in Hz),\
+  \ return the corresponding note. (All inputs will be valid notes).\n\nFor reference,\
+  \ the notes dictionary looks like this:\n\n```python\nnotes_dictionary = {\n   \
+  \ 440: \"A\",\n    466.16: \"A#\",\n    493.88: \"B\",\n    523.25: \"C\",\n   \
+  \ 554.37: \"C#\", \n    587.33: \"D\", \n    622.25: \"D#\", \n    659.25: \"E\"\
+  , \n    698.46: \"F\", \n    739.99: \"F#\", \n    783.99: \"G\", \n    830.61:\
+  \ \"G#\"\n}\n```\n\nMusicians: all pitches based on equal tempermanent, taken from\
+  \ [here](http://pages.mtu.edu/~suits/notefreqs.html)."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def get_note (freq : Float) : String := sorry\n\ndef NOTES : List\
+  \ (Float × String) := [\n  (440, \"A\"),\n  (466.16, \"A#\"), \n  (493.88, \"B\"\
+  ),\n  (523.25, \"C\"),\n  (554.37, \"C#\"), \n  (587.33, \"D\"),\n  (622.25, \"\
+  D#\"),\n  (659.25, \"E\"), \n  (698.46, \"F\"),\n  (739.99, \"F#\"),\n  (783.99,\
+  \ \"G\"),\n  (830.61, \"G#\")\n]\n"
+"vc-theorems": "theorem base_frequencies (freq : Float) (note : String) :\n  (freq,\
+  \ note) ∈ NOTES → get_note freq = note := sorry\n\n\ntheorem frequency_multipliers\
+  \ (freq : Float) (note : String) (mult : Float) :\n  (freq, note) ∈ NOTES →\n  (mult\
+  \ = 0.5 ∨ mult = 2 ∨ mult = 4) →\n  get_note (freq * mult) = note := sorry\n\n/--\n\
+  info: 'A'\n-/\n#guard_msgs in\n#eval get_note 440\n\n/--\ninfo: 'A'\n-/\n#guard_msgs\
+  \ in\n#eval get_note 220\n\n/--\ninfo: 'A'\n-/\n#guard_msgs in\n#eval get_note 880\n\
+  \n/--\ninfo: 'C'\n-/\n#guard_msgs in\n#eval get_note 523.25\n\n/--\ninfo: 'C'\n\
+  -/\n#guard_msgs in\n#eval get_note 261.625\n\n/--\ninfo: 'C'\n-/\n#guard_msgs in\n\
+  #eval get_note 1046.5\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: unguarded"

@@ -1,0 +1,51 @@
+"vc-description": "Chef has a sequence $A_1, A_2, \\ldots, A_N$; each element of this\
+  \ sequence is either $0$ or $1$. Appy gave him a string $S$ with length $Q$ describing\
+  \ a sequence of queries. There are two types of queries:\n- '!': right-shift the\
+  \ sequence $A$, i.e. replace $A$ by another sequence $B_1, B_2, \\ldots, B_N$ satisfying\
+  \ $B_{i+1} = A_i$ for each valid $i$ and $B_1 = A_N$\n- '?': find the length of\
+  \ the longest contiguous subsequence of $A$ with length $\\le K$ such that each\
+  \ element of this subsequence is equal to $1$\nAnswer all queries of the second\
+  \ type.\n\n-----Input-----\n- The first line of the input contains three space-separated\
+  \ integers $N$, $Q$ and $K$.\n- The second line contains $N$ space-separated integers\
+  \ $A_1, A_2, \\ldots, A_N$.\n- The third line contains a string with length $Q$\
+  \ describing queries. Each character of this string is either '?', denoting a query\
+  \ of the second type, or '!', denoting a query of the first type.\n\n-----Output-----\n\
+  For each query of the second type, print a single line containing one integer —\
+  \ the length of the longest required subsequence.\n\n-----Constraints-----\n- $1\
+  \ \\le K \\le N \\le 10^5$\n- $1 \\le Q \\le 3 \\cdot 10^5$\n- $0 \\le A_i \\le\
+  \ 1$ for each valid $i$\n- $S$ contains only characters '?' and '!'\n\n-----Subtasks-----\n\
+  Subtask #1 (30 points):\n- $1 \\le N \\le 10^3$\n- $1 \\le Q \\le 3 \\cdot 10^3$\n\
+  Subtask #2 (70 points): original constraints \n\n-----Example Input-----\n5 5 3\n\
+  1 1 0 1 1\n?!?!?    \n\n-----Example Output-----\n2\n3\n3\n\n-----Explanation-----\n\
+  - In the first query, there are two longest contiguous subsequences containing only\
+  \ $1$-s: $A_1, A_2$ and $A_4, A_5$. Each has length $2$.\n- After the second query,\
+  \ the sequence $A$ is $[1, 1, 1, 0, 1]$.\n- In the third query, the longest contiguous\
+  \ subsequence containing only $1$-s is $A_1, A_2, A_3$.\n- After the fourth query,\
+  \ $A = [1, 1, 1, 1, 0]$.\n- In the fifth query, the longest contiguous subsequence\
+  \ containing only $1$-s is $A_1, A_2, A_3, A_4$ with length $4$. However, we only\
+  \ want subsequences with lengths $\\le K$. One of the longest such subsequences\
+  \ is $A_2, A_3, A_4$, with length $3$."
+"vc-preamble": "import Imports.AllImports\n\ndef longest_contiguous_subsequence (N\
+  \ Q K : Nat) (A : List Nat) (S : String) : List Nat :=\nsorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def count_max_consecutive_ones (A : List Nat) : Nat :=\nsorry\n"
+"vc-theorems": "theorem result_length_matches_question_marks {N Q K : Nat} {A : List\
+  \ Nat} {S : String} \n  (h1 : N > 0) (h2 : Q > 0) (h3 : K > 0) \n  (h4 : ∀ x ∈ A,\
+  \ x ≤ 1) :\n  (longest_contiguous_subsequence N Q K A S).length = \n    (S.data.filter\
+  \ (. = '?')).length := \nsorry\n\n\ntheorem results_bounded_by_k {N Q K : Nat} {A\
+  \ : List Nat} {S : String}\n  (h1 : N > 0) (h2 : Q > 0) (h3 : K > 0)\n  (h4 : ∀\
+  \ x ∈ A, x ≤ 1) :\n  ∀ x ∈ (longest_contiguous_subsequence N Q K A S), x ≤ K :=\n\
+  sorry\n\n\ntheorem results_non_negative {N Q K : Nat} {A : List Nat} {S : String}\n\
+  \  (h1 : N > 0) (h2 : Q > 0) (h3 : K > 0)\n  (h4 : ∀ x ∈ A, x ≤ 1) :\n  ∀ x ∈ (longest_contiguous_subsequence\
+  \ N Q K A S), x ≥ 0 :=\nsorry\n\n\ntheorem zero_array_gives_zero_result {N Q K :\
+  \ Nat} {A : List Nat} {S : String}\n  (h1 : N > 0) (h2 : Q > 0) (h3 : K > 0)\n \
+  \ (h4 : ∀ x ∈ A, x = 0) :\n  ∀ x ∈ (longest_contiguous_subsequence N Q K A S), x\
+  \ = 0 :=\nsorry\n\n\ntheorem single_question_mark_result {N K : Nat} {A : List Nat}\n\
+  \  (h1 : N > 0) (h2 : K > 0)\n  (h3 : ∀ x ∈ A, x ≤ 1)\n  (h4 : (longest_contiguous_subsequence\
+  \ N 1 K A \"?\").length > 0) :\n  (longest_contiguous_subsequence N 1 K A \"?\"\
+  )[0]! = min (count_max_consecutive_ones A) K :=\nsorry\n\n/--\ninfo: [2, 3, 3]\n\
+  -/\n#guard_msgs in\n#eval longest_contiguous_subsequence 5 5 3 [1, 1, 0, 1, 1] \"\
+  ?!?!?\"\n\n/--\ninfo: [1, 1, 1]\n-/\n#guard_msgs in\n#eval longest_contiguous_subsequence\
+  \ 3 3 2 [1, 0, 1] \"???\"\n\n/--\ninfo: [4, 4]\n-/\n#guard_msgs in\n#eval longest_contiguous_subsequence\
+  \ 4 2 4 [1, 1, 1, 1] \"??\"\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

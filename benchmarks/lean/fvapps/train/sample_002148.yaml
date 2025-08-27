@@ -1,0 +1,39 @@
+"vc-description": "Oleg's favorite subjects are History and Math, and his favorite\
+  \ branch of mathematics is division.\n\nTo improve his division skills, Oleg came\
+  \ up with $t$ pairs of integers $p_i$ and $q_i$ and for each pair decided to find\
+  \ the greatest integer $x_i$, such that:   $p_i$ is divisible by $x_i$;  $x_i$ is\
+  \ not divisible by $q_i$.  Oleg is really good at division and managed to find all\
+  \ the answers quickly, how about you?\n\n\n-----Input-----\n\nThe first line contains\
+  \ an integer $t$ ($1 \\le t \\le 50$) — the number of pairs.\n\nEach of the following\
+  \ $t$ lines contains two integers $p_i$ and $q_i$ ($1 \\le p_i \\le 10^{18}$; $2\
+  \ \\le q_i \\le 10^{9}$) — the $i$-th pair of integers.\n\n\n-----Output-----\n\n\
+  Print $t$ integers: the $i$-th integer is the largest $x_i$ such that $p_i$ is divisible\
+  \ by $x_i$, but $x_i$ is not divisible by $q_i$.\n\nOne can show that there is always\
+  \ at least one value of $x_i$ satisfying the divisibility conditions for the given\
+  \ constraints.\n\n\n-----Example-----\nInput\n3\n10 4\n12 6\n179 822\n\nOutput\n\
+  10\n4\n179\n\n\n\n-----Note-----\n\nFor the first pair, where $p_1 = 10$ and $q_1\
+  \ = 4$, the answer is $x_1 = 10$, since it is the greatest divisor of $10$ and $10$\
+  \ is not divisible by $4$.\n\nFor the second pair, where $p_2 = 12$ and $q_2 = 6$,\
+  \ note that   $12$ is not a valid $x_2$, since $12$ is divisible by $q_2 = 6$; \
+  \ $6$ is not valid $x_2$ as well: $6$ is also divisible by $q_2 = 6$.  The next\
+  \ available divisor of $p_2 = 12$ is $4$, which is the answer, since $4$ is not\
+  \ divisible by $6$."
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def solve_division_pairs (p q : Nat) : Nat :=\nsorry\n"
+"vc-theorems": "theorem division_pairs_divides (p q result : Nat) \n  (h1 : result\
+  \ = solve_division_pairs p q) :\n  p % result = 0 := by\nsorry\n\n\ntheorem division_pairs_le_p\
+  \ (p q result : Nat)\n  (h1 : result = solve_division_pairs p q) :\n  result ≤ p\
+  \ := by\nsorry\n\n\ntheorem division_pairs_indivisible (p q result : Nat) \n  (h1\
+  \ : result = solve_division_pairs p q)\n  (h2 : p % q ≠ 0) : \n  result = p := by\n\
+  sorry\n\n\ntheorem division_pairs_positive (p q result : Nat)\n  (h1 : result =\
+  \ solve_division_pairs p q)\n  (h2 : p > 0)\n  (h3 : q > 0) :\n  result > 0 := by\n\
+  sorry\n\n\ntheorem division_pairs_identical (p : Nat)\n  (h1 : p % 2 = 0)\n  (h2\
+  \ : p > 0) :\n  solve_division_pairs p p = p / 2 := by\nsorry\n\n/--\ninfo: 10\n\
+  -/\n#guard_msgs in\n#eval solve_division_pairs 10 4\n\n/--\ninfo: 4\n-/\n#guard_msgs\
+  \ in\n#eval solve_division_pairs 12 6\n\n/--\ninfo: 179\n-/\n#guard_msgs in\n#eval\
+  \ solve_division_pairs 179 822\n\n/--\ninfo: 1048576\n-/\n#guard_msgs in\n#eval\
+  \ solve_division_pairs 42034266112 80174\n\n/--\ninfo: 114141144\n-/\n#guard_msgs\
+  \ in\n#eval solve_division_pairs 228282288 228282288\n\n/--\ninfo: 1\n-/\n#guard_msgs\
+  \ in\n#eval solve_division_pairs 1 323\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: guarded"

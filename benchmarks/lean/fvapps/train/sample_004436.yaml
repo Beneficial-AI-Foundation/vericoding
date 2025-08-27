@@ -1,0 +1,42 @@
+"vc-description": "`This kata is the first of the ADFGX Ciphers, the harder version\
+  \ can be found `here.\n\nThe ADFGX Cipher is a pretty well-known Cryptographic tool,\
+  \ and is essentially a modified Polybius Square.\n\nRather than having numbers as\
+  \ coordinates on the table, it has the letters:\n\n `A, D, F, G, X`\n\nAlso, because\
+  \ this is the first step, and to help simplify things, you won't have to worry about\
+  \ a key, or the corresponding columnar transposition. In this kata ;)\n\nAll you\
+  \ have to do is encrypt and decrypt a string into `ADFGX` format.\n\n`adfgx_encrypt()\
+  \ and adfgx_decrypt()` will be passed a string, `plaintext` and `ciphertext` respectively,\
+  \ and an adfgx`square`, for which will guide the operations. \n\nNow for some examples\
+  \ to clear confusion:\n\n```python\nadfgx_encrypt(\"helloworld\", \"bchigklnmoqprstuvwxyzadef\"\
+  )\n\n    A D F G X\n   \nA   b c h i g\nD   k l n m o     \nF   q p r s t  -> square\
+  \ (PLEASE NOTE, j SHOULD BE TREATED AS i)  \nG   u v w x y  \nX   z a d e f\n\n\"\
+  helloworld\"   -> plaintext\n\nEVALUATES TO:\n\n      F  \n          -> \"AF\"\n\
+  A     h\n--------------\n          G \n               -> \"XG\"  \nX         e \n\
+  \nAND SO FORTH...\n\n#Results in:\n\nadfgx_encrypt(\"helloworld\", \"bchigklnmoqprstuvwxyzadef\"\
+  ) \n==\n\"AFXGDDDDDXGFDXFFDDXF\"\n```\nNow decryption:\n```python\nadfgx_decrypt(\"\
+  FGXGADGDXGFXAXXGFGFGAADGXG\", \"aczlmuqngoipvstkrwfxhdbey) \n\n    A D F G X\n\n\
+  A   a c z l m\nD   u q n g o     \nF   i p v s t  -> square (PLEASE NOTE, j SHOULD\
+  \ BE TREATED AS i)  \nG   k r w f x  \nX   h d b e y\n\n\"FGXGADGDXGFXAXXGFGFGAADGXG\"\
+  \   -> ciphertext\n\n\"FG\" == \"s\"\n\"XG\" == \"e\"\n\nAND SO ON:\n\nadfgx_decrypt(\"\
+  FGXGADGDXGFXAXXGFGFGAADGXG\", \"aczlmuqngoipvstkrwfxhdbey) \n==\n\"secretmessage\"\
+  \n```\nPLEASE NOTE: ALL INPUT WILL BE VALID, NO NEED TO ERROR CHECK :D\n\nWhat are\
+  \ you waiting for?!\nGo create `adfgx_encrypt() and adfgx_decrypt()`!\n\nGood Luck!"
+"vc-preamble": "import Imports.AllImports\n\ndef adfgx_encrypt (plaintext : String)\
+  \ (square : String) : String :=\n  sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def adfgx_decrypt (ciphertext : String) (square : String) : String\
+  \ :=\n  sorry\n"
+"vc-theorems": "theorem encrypt_decrypt_roundtrip \n  {plaintext square : String}\
+  \ \n  (h1 : plaintext.data.all (fun c => 'a' ≤ c ∧ c ≤ 'z')) \n  (h2 : square.length\
+  \ = 25)\n  (h3 : '0' ∉ square.data) :\n  adfgx_decrypt (adfgx_encrypt plaintext\
+  \ square) square = plaintext := by\n  sorry\n\n\ntheorem encrypt_format \n  {plaintext\
+  \ square : String}\n  (h1 : plaintext.data.all (fun c => 'a' ≤ c ∧ c ≤ 'z'))\n \
+  \ (h2 : square.length = 25) :\n  (adfgx_encrypt plaintext square).data.all (fun\
+  \ c => c ∈ ['A', 'D', 'F', 'G', 'X']) ∧ \n  (adfgx_encrypt plaintext square).length\
+  \ % 2 = 0 := by\n  sorry\n\n\ntheorem substitution_consistency\n  (h : square =\
+  \ \"bchigklnmoqprstuvwxyzadef\") \n  (h2 : plaintext = \"test\") :\n  let encrypted\
+  \ := adfgx_encrypt plaintext square\n  let firstT := encrypted.take 2\n  let secondT\
+  \ := encrypted.extract (String.Pos.mk 6) (String.Pos.mk 8)\n  firstT = secondT :=\
+  \ by\n  sorry\n\n\ntheorem i_j_equivalence\n  (h : square = \"bchigklnmoqprstuvwxyzadef\"\
+  ) :\n  adfgx_encrypt \"i\" square = adfgx_encrypt \"j\" square := by\n  sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

@@ -1,0 +1,32 @@
+"vc-description": "Given an array A of integers, a ramp is a tuple (i, j) for which\
+  \ i < j and A[i] <= A[j].  The width of such a ramp is j - i.\nFind the maximum\
+  \ width of a ramp in A.  If one doesn't exist, return 0.\n \nExample 1:\nInput:\
+  \ [6,0,8,2,1,5]\nOutput: 4\nExplanation: \nThe maximum width ramp is achieved at\
+  \ (i, j) = (1, 5): A[1] = 0 and A[5] = 5.\n\n\nExample 2:\nInput: [9,8,1,0,1,9,4,0,4,1]\n\
+  Output: 7\nExplanation: \nThe maximum width ramp is achieved at (i, j) = (2, 9):\
+  \ A[2] = 1 and A[9] = 1.\n\n\n\n\n \nNote:\n\n2 <= A.length <= 50000\n0 <= A[i]\
+  \ <= 50000"
+"vc-preamble": "import Imports.AllImports\n\ndef max_width_ramp (nums : List Int)\
+  \ : Nat :=\n  sorry\n\n\ndef isSorted (l : List Int) : Bool :=\n  match l with\n\
+  \  | [] => true \n  | [_] => true\n  | x::y::rest => x ≤ y && isSorted (y::rest)\n\
+  \n\ndef isStrictlyDecreasing (l : List Int) : Bool :=\n  match l with\n  | [] =>\
+  \ true\n  | [_] => true\n  | x::y::rest => x > y && isStrictlyDecreasing (y::rest)\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def hasNoDups (l : List Int) : Bool :=\n  match l with\n  | []\
+  \ => true\n  | x::xs => !(xs.contains x) && hasNoDups xs\n"
+"vc-theorems": "theorem max_width_ramp_non_negative (nums : List Int) :\n  max_width_ramp\
+  \ nums ≥ 0 := \n  sorry\n\n\ntheorem max_width_ramp_upper_bound (nums : List Int)\
+  \ :\n  max_width_ramp nums ≤ max 0 (nums.length - 1) :=\n  sorry \n\n\ntheorem max_width_ramp_small_lists\
+  \ (nums : List Int) :\n  nums.length ≤ 1 → max_width_ramp nums = 0 :=\n  sorry\n\
+  \n\ntheorem max_width_ramp_valid_ramp_exists (nums : List Int) (h : max_width_ramp\
+  \ nums > 0) :\n  ∃ i j, ∃ (hi : i < nums.length) (hj : j < nums.length),\n     \
+  \    i < j ∧ j - i ≥ max_width_ramp nums ∧ \n         (nums.get ⟨i, hi⟩) ≤ (nums.get\
+  \ ⟨j, hj⟩) :=\n  sorry\n\n\ntheorem max_width_ramp_monotonic_increasing (nums :\
+  \ List Int) :\n  nums.length > 1 →\n  isSorted nums = true →\n  max_width_ramp nums\
+  \ = nums.length - 1 :=\n  sorry\n\n\ntheorem max_width_ramp_strictly_decreasing\
+  \ (nums : List Int) :\n  nums.length > 0 →\n  isStrictlyDecreasing nums = true →\n\
+  \  hasNoDups nums = true →\n  max_width_ramp nums = 0 :=\n  sorry\n\n/--\ninfo:\
+  \ 4\n-/\n#guard_msgs in\n#eval max_width_ramp [6, 0, 8, 2, 1, 5]\n\n/--\ninfo: 7\n\
+  -/\n#guard_msgs in\n#eval max_width_ramp [9, 8, 1, 0, 1, 9, 4, 0, 4, 1]\n\n/--\n\
+  info: 0\n-/\n#guard_msgs in\n#eval max_width_ramp [1, 0]\n"
+"vc-postamble": "-- Apps difficulty: interview\n-- Assurance level: unguarded"

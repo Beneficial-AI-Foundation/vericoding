@@ -1,0 +1,26 @@
+"vc-description": "### Count the number of Duplicates\n\nWrite a function that will\
+  \ return the count of **distinct case-insensitive** alphabetic characters and numeric\
+  \ digits that occur more than \nonce in the input string. \nThe input string can\
+  \ be assumed to contain only alphabets (both uppercase and lowercase) and numeric\
+  \ digits.\n\n\n### Example\n\"abcde\" -> 0             `# no characters repeats\
+  \ more than once`  \n\"aabbcde\" -> 2           `# 'a' and 'b'`  \n\"aabBcde\" ->\
+  \ 2           ``# 'a' occurs twice and 'b' twice (`b` and `B`)``  \n\"indivisibility\"\
+  \ -> 1    `# 'i' occurs six times`  \n\"Indivisibilities\" -> 2  `# 'i' occurs seven\
+  \ times and 's' occurs twice`  \n\"aA11\" -> 2              `# 'a' and '1'`  \n\"\
+  ABBA\" -> 2              `# 'A' and 'B' each occur twice`"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def duplicateCount (text : String) : Nat :=\n  sorry\n"
+"vc-theorems": "theorem duplicateCount_nonnegative (text : String) : \n  duplicateCount\
+  \ text ≥ 0 := by\n  sorry\n\n\ntheorem duplicateCount_less_than_half_length (text\
+  \ : String) : \n  duplicateCount text ≤ text.length / 2 := by\n  sorry\n\n\ntheorem\
+  \ duplicateCount_empty_and_unique (text : String) :\n  -- Empty string has no duplicates\n\
+  \  duplicateCount \"\" = 0 ∧ \n  -- String with only unique chars has no duplicates\n\
+  \  (∀ s : String, (∀ c₁ c₂, c₁ ∈ s.data → c₂ ∈ s.data → c₁ = c₂) → duplicateCount\
+  \ s = 0) := by\n  sorry\n\n\ntheorem duplicateCount_repeated_char (c : Char) :\n\
+  \  duplicateCount (String.mk [c, c]) = 1 := by\n  sorry\n\n/--\ninfo: 0\n-/\n#guard_msgs\
+  \ in\n#eval duplicate_count \"\"\n\n/--\ninfo: 0\n-/\n#guard_msgs in\n#eval duplicate_count\
+  \ \"abcde\"\n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval duplicate_count \"aabbcde\"\
+  \n\n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval duplicate_count \"aabBcde\"\n\n/--\n\
+  info: 2\n-/\n#guard_msgs in\n#eval duplicate_count \"Indivisibilities\"\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

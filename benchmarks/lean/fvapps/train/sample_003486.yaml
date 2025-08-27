@@ -1,0 +1,37 @@
+"vc-description": "In number theory, Euler's totient is an arithmetic function, introduced\
+  \ in 1763 by Euler, that counts the positive integers less than or equal to `n`\
+  \ that are relatively prime to `n`. Thus, if `n` is a positive integer, then `φ(n)`,\
+  \ notation introduced by Gauss in 1801, is the number of positive integers `k ≤\
+  \ n` for which `gcd(n, k) = 1`.  \nThe totient function is important in number theory,\
+  \ mainly because it gives the order of the multiplicative group of integers modulo\
+  \ `n`. The totient function also plays a key role in the definition of the RSA encryption\
+  \ system.\n\nFor example `let n = 9`.  \nThen `gcd(9, 3) = gcd(9, 6) = 3` and `gcd(9,\
+  \ 9) = 9`.  \nThe other six numbers in the range `1 ≤ k ≤ 9` i.e. `1, 2, 4, 5, 7,\
+  \ 8` are relatively prime to `9`.  \nTherefore, `φ(9) = 6`.  \nAs another example,\
+  \ `φ(1) = 1` since `gcd(1, 1) = 1`.\n\nThere are generally two approaches to this\
+  \ function:\n\n* Iteratively counting the numbers `k ≤ n` such that `gcd(n,k) =\
+  \ 1`.\n\n* Using the Euler product formula.  \n  This is an explicit formula for\
+  \ calculating `φ(n)` depending on the prime divisor of `n`:  \n  `φ(n) = n * Product\
+  \ (1 - 1/p)` where the product is taken over the primes `p ≤ n` that divide `n`.\
+  \  \n  For example: `φ(36) = 36 * (1 - 1/2) * (1 - 1/3) = 36 * 1/2 * 2/3 = 12`.\
+  \  \n  This second method seems more complex and not likely to be faster, but in\
+  \ practice we will often look for `φ(n)` with `n` prime. It correctly gives `φ(n)\
+  \ = n - 1` if `n` is prime. \n\nYou have to code the Euler totient function, that\
+  \ takes an integer `1 ≤ n` as input and returns `φ(n)`.\n\n```if:javascript\nYou\
+  \ do have to check if `n` is a number, is an integer and that `1 ≤ n`; if that is\
+  \ not the case, the function should return `0`.\n```\n\n```if:python\nYou do have\
+  \ to check if `n` is a number, is an integer and that `1 ≤ n`; if that is not the\
+  \ case, the function should return `0`.\n```\n\n```if:racket\n`n` is always a positive\
+  \ integer.\n```\n\nInput range: `1 ≤ n ≤ 1e10`"
+"vc-preamble": "import Imports.AllImports\n\ndef totient (n : Int) : Int := sorry\n\
+  \ndef gcd (a b : Int) : Int := sorry\n\n\ndef isPrime (n : Int) : Bool := sorry\n\
+  \ndef isInt (n : Int) : Bool := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def countCoprimes (n : Int) : Int := sorry\n\ntheorem totient_matches_coprime_count\
+  \ (n : Int) (h : n > 0) :\n  totient n = countCoprimes n := sorry\n"
+"vc-theorems": "theorem totient_invalid_inputs (n : Int) (h : n ≤ 0) :\n  totient\
+  \ n = 0 := sorry\n\n\ntheorem totient_multiplicative (n₁ n₂ : Int) (h₁ : gcd n₁\
+  \ n₂ = 1) (h₂ : n₁ > 0) (h₃ : n₂ > 0) :\n  totient (n₁ * n₂) = totient n₁ * totient\
+  \ n₂ := sorry\n\n\ntheorem totient_prime (p : Int) (h₁ : p > 1) (h₂ : isPrime p)\
+  \ :\n  totient p = p - 1 := sorry"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded"

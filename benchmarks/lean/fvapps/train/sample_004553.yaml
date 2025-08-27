@@ -1,0 +1,15 @@
+"vc-description": "Among the ruins of an ancient city a group of archaeologists found\
+  \ a mysterious function with lots of HOLES in it called ```getNum(n)``` (or `get_num(n)`\
+  \ in ruby, python, or r). They tried to call it with some arguments. And finally\
+  \ they got this journal:\nThe archaeologists were totally stuck with this challenge.\
+  \ They were all in desperation but then.... came YOU the SUPER-AWESOME programmer.\
+  \ Will you be able to understand the mystery of this function and rewrite it?"
+"vc-preamble": "import Imports.AllImports\n\ndef get_num (n : Nat) : Nat := sorry\n\
+  \ndef countDigits (n : Nat) : Nat := sorry\n"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def natToString (n : Nat) : String := sorry\n\n\n\n\n\n\n\ntheorem\
+  \ get_num_zero : get_num 0 = 1 := sorry"
+"vc-theorems": "/--\ninfo: 0\n-/\n#guard_msgs in\n#eval get_num 123\n\n/--\ninfo:\
+  \ 4\n-/\n#guard_msgs in\n#eval get_num 6609\n\n/--\ninfo: 8\n-/\n#guard_msgs in\n\
+  #eval get_num 8888\n"
+"vc-postamble": "-- Apps difficulty: introductory\n-- Assurance level: guarded_and_plausible"

@@ -1,0 +1,25 @@
+"vc-description": "Jzzhu has picked n apples from his big apple tree. All the apples\
+  \ are numbered from 1 to n. Now he wants to sell them to an apple store. \n\nJzzhu\
+  \ will pack his apples into groups and then sell them. Each group must contain two\
+  \ apples, and the greatest common divisor of numbers of the apples in each group\
+  \ must be greater than 1. Of course, each apple can be part of at most one group.\n\
+  \nJzzhu wonders how to get the maximum possible number of groups. Can you help him?\n\
+  \n\n-----Input-----\n\nA single integer n (1 ≤ n ≤ 10^5), the number of the apples.\n\
+  \n\n-----Output-----\n\nThe first line must contain a single integer m, representing\
+  \ the maximum number of groups he can get. Each of the next m lines must contain\
+  \ two integers — the numbers of apples in the current group.\n\nIf there are several\
+  \ optimal answers you can print any of them.\n\n\n-----Examples-----\nInput\n6\n\
+  \nOutput\n2\n6 3\n2 4\n\nInput\n9\n\nOutput\n3\n9 3\n2 4\n6 8\n\nInput\n2\n\nOutput\n\
+  0"
+"vc-preamble": "import Imports.AllImports"
+"vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>"
+"vc-definitions": "def find_max_pairs (n: Nat) : List (Nat × Nat) := sorry\n\ntheorem\
+  \ find_max_pairs_range {n: Nat} (h: n ≥ 2) :\n  let result := find_max_pairs n\n\
+  \  let flat_nums := result.bind (λ p => [p.1, p.2])\n  ∀ x ∈ flat_nums, 1 ≤ x ∧\
+  \ x ≤ n := \nsorry\n"
+"vc-theorems": "theorem find_max_pairs_unique {n: Nat} (h: n ≥ 2) :\n  let result\
+  \ := find_max_pairs n\n  let flat_nums := result.bind (λ p => [p.1, p.2])\n  ∀ x\
+  \ ∈ flat_nums, ∀ y ∈ flat_nums, x ≠ y → \n    flat_nums.indexOf x ≠ flat_nums.indexOf\
+  \ y :=\nsorry\n\n/--\ninfo: expected_groups\n-/\n#guard_msgs in\n#eval len find_max_pairs(n)\n\
+  \n/--\ninfo: 2\n-/\n#guard_msgs in\n#eval len pair\n"
+"vc-postamble": "-- Apps difficulty: competition\n-- Assurance level: unguarded"
