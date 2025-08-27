@@ -2,17 +2,18 @@
 
 from __future__ import annotations
 
-import hashlib
 import os
 import time
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+
 try:
     import wandb  # type: ignore
 except Exception:  # pragma: no cover - wandb might be unavailable in tests
     wandb = None  # type: ignore
+
 
 
 def enabled() -> bool:
@@ -84,17 +85,17 @@ def init_wandb_run(config, no_wandb: bool = False) -> Optional["wandb.Run"]:
 
 
 def create_iteration_table() -> Optional["wandb.Table"]:
-    """Create a table to track all verification iterations."""
+    """Create a table to track verification iterations for a single file."""
     if not enabled():
         return None
     try:
         return wandb.Table(
             columns=[
                 "file_path",
-                "iteration", 
+                "iteration",
                 "success",
                 "vc_spec",
-                "vc_code", 
+                "vc_code",
                 "verifier_message",
                 "timestamp",
             ]
@@ -112,7 +113,7 @@ def add_iteration_row(
     vc_code: str,
     verifier_message: str = "",
 ) -> None:
-    """Add a row to the iteration tracking table."""
+    """Add a row to a per-file iteration table."""
     if table is None:
         return
     try:
@@ -120,8 +121,8 @@ def add_iteration_row(
             file_path,
             iteration,
             success,
-            vc_spec[:1000],  # Truncate for table display
-            vc_code[:1000],  # Truncate for table display  
+            vc_spec[:1000],
+            vc_code[:1000],
             verifier_message[:500] if verifier_message else ("Success" if success else "Unknown error"),
             time.time(),
         )
@@ -177,7 +178,6 @@ def log_artifact(artifact: Optional["wandb.Artifact"]) -> None:
         pass
 
 
-
 def log_iteration(
     file_path: str,
     iteration: int, 
@@ -186,10 +186,9 @@ def log_iteration(
     code_output_path: str,
     error_msg: str = "",
     is_final: bool = False,
-    iteration_table: Optional["wandb.Table"] = None,
     artifact: Optional["wandb.Artifact"] = None,
 ) -> None:
-    """Complete logging for a verification iteration - metrics, table, and files."""
+    """Log metrics and files for a verification iteration."""
     if not enabled():
         return
     
@@ -218,18 +217,6 @@ def log_iteration(
         
         log(metrics)
         
-        # 2. Add row to iteration table
-        if iteration_table is not None:
-            add_iteration_row(
-                iteration_table,
-                file_path,
-                iteration,
-                success,
-                yaml_dict.get("vc-spec", ""),
-                yaml_dict.get("vc-code", ""),
-                error_msg
-            )
-        
         # 3. Add files to artifact (only on final iteration)
         if is_final and artifact is not None and Path(code_output_path).exists():
             add_files_to_artifact(artifact, [
@@ -240,23 +227,116 @@ def log_iteration(
         pass
 
 
+
+def _create_failure_analysis_table(failed_results):
+    """Create enhanced failure analysis table and log to wandb."""
+    if not enabled() or not failed_results:
+        return
+        
+    try:
+        # Categorize errors
+        error_categories = {}
+        failure_table = wandb.Table(columns=[
+            "file", "error_category", "error_snippet", 
+            "iterations_attempted", "full_error", "timestamp"
+        ])
+        
+        for result in failed_results:
+            error_msg = result.error or "Unknown error"
+            
+            # Simple error categorization
+            category = "unknown"
+            if "timeout" in error_msg.lower():
+                category = "timeout"
+            elif "compilation" in error_msg.lower() or "syntax" in error_msg.lower():
+                category = "compilation"
+            elif "verification" in error_msg.lower() or "prove" in error_msg.lower():
+                category = "verification"
+            elif "api" in error_msg.lower() or "rate limit" in error_msg.lower():
+                category = "api_error"
+            elif "memory" in error_msg.lower() or "resource" in error_msg.lower():
+                category = "resource"
+            
+            # Count error categories
+            error_categories[category] = error_categories.get(category, 0) + 1
+            
+            # Determine iterations attempted
+            iterations_attempted = len(result.iterations) if result.iterations else 1
+            
+            # Add to failure table
+            file_name = Path(result.spec_yaml_file).name
+            failure_table.add_data(
+                file_name,
+                category,
+                error_msg[:200],  # Snippet for table display
+                iterations_attempted,
+                error_msg[:1000],  # More detail but still truncated
+                time.time()
+            )
+        
+        # Log error category counts
+        for category, count in error_categories.items():
+            wandb.run.summary[f"error_category/{category}"] = count
+        
+        # Log failure table
+        log({"failure_analysis": failure_table})
+        
+    except Exception:
+        # Don't let table creation break the main flow
+        pass
+
+
+
+
+
 def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after_upload: bool = False):
     """Finalize wandb run with summary metrics and artifact upload."""
     if not wandb_run:
         return
         
     try:
-        # Calculate statistics
+        # Calculate basic statistics
         successful = [r for r in results if r.success]
         failed = [r for r in results if not r.success]
         
-        # Log final summary metrics
+        # Calculate iteration statistics
+        all_iterations = []
+        total_llm_calls = 0
+        
+        for result in results:
+            iterations_for_file = len(result.iterations) if result.iterations else 1
+            all_iterations.append(iterations_for_file)
+            total_llm_calls += iterations_for_file
+        
+        # Calculate timing statistics
+        avg_time_per_file = processing_time / len(results) if results else 0
+        
+        # Basic summary metrics
         wandb.run.summary["total_files"] = len(results)
         wandb.run.summary["successful_files"] = len(successful)
         wandb.run.summary["failed_files"] = len(failed)
-
         wandb.run.summary["success_rate"] = len(successful) / len(results) if results else 0
+        
+        # Timing metrics
         wandb.run.summary["duration_seconds"] = processing_time
+        wandb.run.summary["avg_time_per_file"] = avg_time_per_file
+        
+        # Iteration statistics
+        if all_iterations:
+            wandb.run.summary["avg_iterations"] = sum(all_iterations) / len(all_iterations)
+            wandb.run.summary["min_iterations"] = min(all_iterations)
+            wandb.run.summary["max_iterations"] = max(all_iterations)
+            wandb.run.summary["total_llm_calls"] = total_llm_calls
+        
+        # Configuration context
+        wandb.run.summary["language"] = config.language
+        wandb.run.summary["llm_provider"] = config.llm_provider
+        wandb.run.summary["llm_model"] = config.llm_model or "default"
+        wandb.run.summary["max_iterations_config"] = config.max_iterations
+        wandb.run.summary["max_workers"] = config.max_workers
+        
+        # Create enhanced failure analysis table
+        _create_failure_analysis_table(failed)
         
         # Upload generated files as artifacts
         print("\n📤 Uploading generated files to wandb...")
@@ -289,6 +369,3 @@ def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after
         print(f"\n✅ Wandb run completed: {wandb_run.url}")
     except Exception as e:
         print(f"⚠️  Error logging to wandb: {e}")
-
-
-
