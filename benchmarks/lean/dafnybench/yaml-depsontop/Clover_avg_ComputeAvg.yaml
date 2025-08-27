@@ -1,0 +1,32 @@
+vc-description: |-
+  Compute the average of two integers.
+Computes the integer average (floor division) of two integers.
+Specification from Dafny:
+- result = (a + b) / 2 (integer division)
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def computeAvg :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for computeAvg
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem computeAvg_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Avg.lean

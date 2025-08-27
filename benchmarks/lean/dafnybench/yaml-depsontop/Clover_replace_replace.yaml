@@ -1,0 +1,32 @@
+vc-description: |-
+  Replace: Replace elements in an array based on a threshold.
+Modifies the array in-place, replacing all elements greater than k with -1.
+Elements less than or equal to k remain unchanged.
+The array is modified in-place.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def replace :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for replace
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem replace_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Replace.lean

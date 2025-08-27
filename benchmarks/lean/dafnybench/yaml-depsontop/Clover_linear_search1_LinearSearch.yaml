@@ -1,0 +1,33 @@
+vc-description: |-
+  linearSearch: Search for an element in an array using linear search.
+Scans the array from left to right looking for the element e.
+Returns the index of the first occurrence of e, or the array length if e is not found.
+This variant returns array.size when the element is not found, making it
+easy to check if the search was successful by comparing with array.size.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def linearSearch :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for linearSearch
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem linearSearch_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/LinearSearch1.lean

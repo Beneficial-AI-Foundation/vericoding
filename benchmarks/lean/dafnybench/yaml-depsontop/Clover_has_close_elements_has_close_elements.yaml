@@ -1,0 +1,32 @@
+vc-description: |-
+  hasCloseElements: Check if any two distinct elements in a sequence are closer than a threshold.
+Given a sequence of real numbers and a threshold, determines whether there exist
+two distinct elements whose absolute difference is less than the threshold.
+This is useful for detecting near-duplicates or checking spacing requirements.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def hasCloseElements :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for hasCloseElements
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem hasCloseElements_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/HasCloseElements.lean

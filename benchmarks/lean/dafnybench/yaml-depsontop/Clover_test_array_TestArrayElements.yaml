@@ -1,0 +1,35 @@
+vc-description: |-
+  TestArrayElements: Set a specific array element to 60.
+Takes an array and an index j, and sets the element at position j to 60.
+The array is modified in place, with all other elements unchanged.
+Requires: 0 ≤ j < a.size
+Modifies the array so that:
+- a[j] becomes 60
+- All other elements remain unchanged
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def testArrayElements :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for testArrayElements
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem testArrayElements_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/TestArray.lean

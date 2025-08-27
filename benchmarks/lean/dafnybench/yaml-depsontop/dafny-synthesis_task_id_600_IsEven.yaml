@@ -1,0 +1,31 @@
+vc-description: |-
+  computeIsEven: Determine if an integer is even.
+Returns true if and only if the input integer is divisible by 2.
+This is a simple predicate that checks the parity of an integer.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def computeIsEven :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for computeIsEven
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem computeIsEven_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/IsEven.lean

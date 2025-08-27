@@ -1,0 +1,31 @@
+vc-description: |-
+  Triple: Multiply an integer by 3.
+Takes an integer x and returns 3 * x.
+Returns the tripled value.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def triple :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for triple
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem triple_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Triple.lean

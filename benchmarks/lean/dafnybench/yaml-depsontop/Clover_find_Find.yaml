@@ -1,0 +1,32 @@
+vc-description: |-
+  Find: Search for a key in an array and return its index.
+Searches for the first occurrence of a key in an array and returns its index.
+Returns -1 if the key is not found in the array.
+This implements a linear search algorithm.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def find :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for find
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem find_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Find.lean

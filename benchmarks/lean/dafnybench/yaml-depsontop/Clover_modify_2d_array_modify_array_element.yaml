@@ -1,0 +1,32 @@
+vc-description: |-
+  modify_array_element: Modify a single element in a 2D array.
+Given a 2D array and indices, sets the value at the specified position.
+The function modifies the array in-place.
+Example: modify_array_element([[1,2],[3,4]], 0, 1, 5) changes array to [[1,5],[3,4]]
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def modifyArrayElement :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for modifyArrayElement
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem modifyArrayElement_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Modify2DArray.lean

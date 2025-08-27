@@ -1,0 +1,32 @@
+vc-description: |-
+  Check if all characters in a string are digits.
+Returns true if all characters in the string are decimal digits (0-9).
+Specification from Dafny:
+- result = true iff for all indices i in the string, s[i] is a digit
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def allDigits :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for allDigits
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem allDigits_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/AllDigits.lean

@@ -1,0 +1,35 @@
+vc-description: |-
+  Check if a sequence of operations causes the balance to go below zero.
+Given a sequence of operations (deposits/withdrawals), computes the running
+balance starting from 0 and returns whether the balance ever goes negative.
+Specification from Dafny:
+- s[0] = 0 (initial balance)
+- s[i+1] = s[i] + operations[i] (running sum)
+- result = true iff there exists an i where s[i] < 0
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def belowZero :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for belowZero
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem belowZero_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/BelowZero.lean

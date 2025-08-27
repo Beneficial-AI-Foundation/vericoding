@@ -1,0 +1,32 @@
+vc-description: |-
+  Match: Check if a string matches a pattern with '?' wildcards.
+Given two strings of equal length, checks if they match where '?' in the pattern
+can match any character in the string.
+Example: Match("hello", "h?llo") = true
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def matchPattern :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for matchPattern
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem matchPattern_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Match.lean

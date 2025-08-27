@@ -1,0 +1,35 @@
+vc-description: |-
+  onlineMax: Find the position of the first element after index x that is greater
+than the maximum of elements before x.
+Given an array and an index x, finds the maximum element in the range [0, x),
+then returns the index of the first element in [x, array.length) that exceeds
+this maximum. If no such element exists, returns array.length - 1.
+Example: onlineMax([3, 1, 4, 1, 5], 2) returns (m=3, p=2) since max of [3,1] is 3
+and element at index 2 (which is 4) is the first that exceeds 3.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def onlineMax :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for onlineMax
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem onlineMax_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/OnlineMax.lean

@@ -1,0 +1,31 @@
+vc-description: |-
+  ConvertMapKey: Transform a map by applying an injective function to all keys.
+Given a map from natural numbers to booleans and an injective function on naturals,
+creates a new map where each key k is replaced by f(k), preserving the values.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def convertMapKey :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for convertMapKey
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem convertMapKey_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/ConvertMapKey.lean

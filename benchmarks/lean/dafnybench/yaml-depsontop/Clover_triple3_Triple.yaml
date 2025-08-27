@@ -1,0 +1,32 @@
+vc-description: |-
+  Triple3: Multiply an integer by 3 (variant 3).
+Takes an integer x and returns 3 * x.
+This is variant 3 of the triple specification.
+Returns the tripled value.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def triple3 :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for triple3
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem triple3_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Triple3.lean

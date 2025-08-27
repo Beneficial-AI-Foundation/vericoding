@@ -1,0 +1,29 @@
+vc-description: |-
+  Recursive function to compute sum of integers from 0 to n
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def sumInts :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for sumInts
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem sumIntsLoop_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/SumIntsLoop.lean

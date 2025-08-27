@@ -1,0 +1,29 @@
+vc-description: |-
+  The three colors of the Dutch flag
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def below :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for below
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem dutchFlag_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/DutchFlag.lean

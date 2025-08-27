@@ -1,0 +1,32 @@
+vc-description: |-
+  Triple2: Multiply an integer by 3 (variant 2).
+Takes an integer x and returns 3 * x.
+This is variant 2 of the triple specification.
+Returns the tripled value.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def triple2 :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for triple2
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem triple2_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Triple2.lean

@@ -1,0 +1,29 @@
+vc-description: |-
+  Predicate to check if an array is sorted
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def Sorted :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for Sorted
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem mergeSort_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/MergeSort.lean

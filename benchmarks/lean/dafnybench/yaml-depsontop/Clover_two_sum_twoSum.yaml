@@ -1,0 +1,32 @@
+vc-description: |-
+  Two Sum Problem: Given an array of integers and a target value,
+find two indices such that the elements at those indices sum to the target.
+This is based on the LeetCode problem:
+https://leetcode.com/problems/two-sum/
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def twoSum :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for twoSum
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem twoSum_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/TwoSum.lean

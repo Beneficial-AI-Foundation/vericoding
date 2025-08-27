@@ -1,0 +1,32 @@
+vc-description: |-
+  SwapArithmetic: Swap two integer values.
+Takes two integers X and Y and returns them swapped,
+so that the first output is Y and the second output is X.
+Returns a pair with the values swapped.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def swapArithmetic :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for swapArithmetic
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem swapArithmetic_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/SwapArithmetic.lean

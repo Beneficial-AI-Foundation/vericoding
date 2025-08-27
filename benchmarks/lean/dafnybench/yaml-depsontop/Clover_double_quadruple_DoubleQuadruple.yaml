@@ -1,0 +1,30 @@
+vc-description: |-
+  DoubleQuadruple: Calculate double and quadruple of an integer.
+Returns a pair (a, b) where a is twice the input and b is four times the input.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def doubleQuadruple :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for doubleQuadruple
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem doubleQuadruple_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/DoubleQuadruple.lean

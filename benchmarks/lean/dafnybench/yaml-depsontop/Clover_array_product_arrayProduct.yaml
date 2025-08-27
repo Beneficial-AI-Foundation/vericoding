@@ -1,0 +1,34 @@
+vc-description: |-
+  Element-wise product of two arrays.
+Computes the element-wise product of two arrays of the same length.
+Specification from Dafny:
+- Requires: a.length = b.length
+- result.length = a.length
+- For all i, result[i] = a[i] * b[i]
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def arrayProduct :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for arrayProduct
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem arrayProduct_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/ArrayProduct.lean

@@ -1,0 +1,31 @@
+vc-description: |-
+  minArray: Find the minimum element in a non-empty array.
+Given a non-empty array of integers, returns the minimum value.
+Example: minArray([3, 1, 4, 1, 5]) = 1
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def minArray :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for minArray
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem minArray_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/MinArray.lean

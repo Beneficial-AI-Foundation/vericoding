@@ -1,0 +1,34 @@
+vc-description: |-
+  SwapBitvectors: Swap two 8-bit bitvector values.
+Takes two 8-bit bitvectors X and Y and returns them swapped,
+so that the first output is Y and the second output is X.
+Note: Lean doesn't have built-in bitvectors like Dafny's bv8,
+so we use UInt8 which is the closest equivalent.
+Returns a pair with the values swapped.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def swapBitvectors :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for swapBitvectors
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem swapBitvectors_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/SwapBitvector.lean

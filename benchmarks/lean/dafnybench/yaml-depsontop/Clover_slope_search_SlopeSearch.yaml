@@ -1,0 +1,29 @@
+vc-description: |-
+  A 2D array type for representing matrices
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def Array2D :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for Array2D
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem slopeSearch_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/SlopeSearch.lean

@@ -1,0 +1,33 @@
+vc-description: |-
+  SwapSimultaneous: Swap two integer values simultaneously.
+Takes two integers X and Y and returns them swapped,
+so that the first output is Y and the second output is X.
+This variant emphasizes simultaneous assignment semantics.
+Returns a pair with the values swapped.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def swapSimultaneous :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for swapSimultaneous
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem swapSimultaneous_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/SwapSimultaneous.lean

@@ -1,0 +1,33 @@
+vc-description: |-
+  linearSearch2: Search for an element that is guaranteed to exist in the array.
+This variant of linear search has a precondition that the element exists
+in the array, so it always returns a valid index.
+This is useful when you know the element is present and want to avoid
+handling the "not found" case.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def linearSearch2 :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for linearSearch2
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem linearSearch2_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/LinearSearch2.lean

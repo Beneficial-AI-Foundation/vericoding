@@ -1,0 +1,33 @@
+vc-description: |-
+  Concatenate two arrays.
+Creates a new array by concatenating arrays a and b.
+Specification from Dafny:
+- result.length = a.length + b.length
+- Elements from a appear first, followed by elements from b
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def arrayConcat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for arrayConcat
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem arrayConcat_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/ArrayConcat.lean

@@ -1,0 +1,31 @@
+vc-description: |-
+  CountLessThan: Count how many elements in a set are less than a threshold.
+Returns the number of elements in the set that are strictly less than
+the given threshold value.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def countLessThan :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for countLessThan
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem countLessThan_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/CountLessThan.lean

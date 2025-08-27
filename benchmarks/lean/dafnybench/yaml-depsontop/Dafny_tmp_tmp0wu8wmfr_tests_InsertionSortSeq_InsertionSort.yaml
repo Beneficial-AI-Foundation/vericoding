@@ -1,0 +1,29 @@
+vc-description: |-
+  Predicate to check if an array is sorted in non-decreasing order
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def isSorted :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for isSorted
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem insertionSort_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/InsertionSortSeq.lean

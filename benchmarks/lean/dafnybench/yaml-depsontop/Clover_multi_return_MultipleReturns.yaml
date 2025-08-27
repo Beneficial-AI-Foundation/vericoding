@@ -1,0 +1,31 @@
+vc-description: |-
+  MultipleReturns: Compute sum and difference of two integers.
+Given two integers x and y, returns both their sum (x+y) and difference (x-y).
+Example: MultipleReturns(5, 3) = (8, 2)
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def multipleReturns :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for multipleReturns
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem multipleReturns_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/MultiReturn.lean

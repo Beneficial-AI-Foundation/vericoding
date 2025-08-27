@@ -1,0 +1,29 @@
+vc-description: |-
+  Recursive definition of Fibonacci numbers
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def fibonacci :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for fibonacci
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem fibonacciIterative_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Fibonacci.lean

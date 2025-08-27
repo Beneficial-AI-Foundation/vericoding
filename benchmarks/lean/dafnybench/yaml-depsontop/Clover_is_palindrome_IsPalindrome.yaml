@@ -1,0 +1,35 @@
+vc-description: |-
+  isPalindrome: Check if a sequence of characters is a palindrome.
+A palindrome reads the same forwards and backwards. This function
+checks if a given sequence of characters has this property.
+Examples:
+- "racecar" is a palindrome
+- "hello" is not a palindrome
+- "" (empty string) is a palindrome
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def isPalindrome :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for isPalindrome
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem isPalindrome_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/IsPalindrome.lean

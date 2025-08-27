@@ -1,0 +1,32 @@
+vc-description: |-
+  Reverse: Reverse an array in-place.
+Modifies the input array so that elements appear in reverse order.
+The first element becomes the last, the second becomes second-to-last, etc.
+The array is modified in-place.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def reverse :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for reverse
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem reverse_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Reverse.lean

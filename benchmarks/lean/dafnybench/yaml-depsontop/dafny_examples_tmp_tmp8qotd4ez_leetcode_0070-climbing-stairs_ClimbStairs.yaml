@@ -1,0 +1,29 @@
+vc-description: |-
+  The mathematical function defining the number of ways to climb n stairs
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def stairs :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for stairs
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem climbStairs_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/ClimbingStairs.lean

@@ -1,0 +1,32 @@
+vc-description: |-
+  Quotient: Integer division with remainder.
+Given two natural numbers x and y (with y ≠ 0), computes the quotient q
+and remainder r such that x = q * y + r and 0 ≤ r < y.
+Example: Quotient(17, 5) = (r=2, q=3) because 17 = 3 * 5 + 2
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def quotient :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for quotient
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem quotient_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Quotient.lean

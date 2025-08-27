@@ -1,0 +1,32 @@
+vc-description: |-
+  SelectionSort: Sort an array using the selection sort algorithm.
+Modifies the array in-place to arrange elements in ascending order.
+Preserves all elements (same multiset before and after).
+The array is sorted in-place.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def selectionSort :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for selectionSort
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem selectionSort_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/SelectionSort.lean

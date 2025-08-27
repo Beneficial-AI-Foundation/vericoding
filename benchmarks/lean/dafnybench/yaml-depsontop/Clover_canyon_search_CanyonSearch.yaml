@@ -1,0 +1,31 @@
+vc-description: |-
+  CanyonSearch: Find the minimum absolute difference between elements of two sorted arrays.
+Given two non-empty sorted arrays, finds the minimum absolute difference
+between any element from the first array and any element from the second array.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def canyonSearch :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for canyonSearch
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem canyonSearch_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/CanyonSearch.lean

@@ -1,0 +1,36 @@
+vc-description: |-
+  FindEvenNumbers: Extract all even numbers from an array.
+Given an array of integers, returns a new array containing only the even numbers
+from the input array, preserving their relative order.
+The specification ensures:
+- All even numbers from the input are included in the result
+- No numbers not in the input appear in the result
+- All numbers in the result are even
+- The relative order of even numbers is preserved
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-signature: |-
+  def findEvenNumbers :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+  -- TODO: Provide implementation for findEvenNumbers
+  -- </vc-implementation>
+
+vc-condition: |-
+  theorem findEvenNumbers_spec :=
+
+vc-proof: |-
+  -- <vc-proof>
+  by
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/EvenList.lean
