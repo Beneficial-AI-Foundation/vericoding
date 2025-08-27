@@ -1,0 +1,40 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  /**
+   * Remove odd numbers from an array of numbers
+   **/
+  
+  spec fn is_even(n: int) -> bool {
+      n % 2 == 0
+  }
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  fn remove_odd_numbers(arr: &[i32]) -> (even_list: Vec<i32>)
+      ensures
+          // All numbers in the output are even and exist in the input 
+          forall|i: int| 0 <= i < even_list.len() ==> is_even(even_list[i] as int) && arr@.contains(even_list[i]),
+          // All even numbers in the input are in the output
+          forall|i: int| 0 <= i < arr.len() && is_even(arr[i] as int) ==> even_list@.contains(arr[i])
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {
+      assume(false);
+      Vec::new()
+  }
+  // </vc-code>
+
+vc-postamble: |-
+  fn main() {
+  }
+  
+  }
