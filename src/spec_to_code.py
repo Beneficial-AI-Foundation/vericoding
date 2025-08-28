@@ -226,9 +226,17 @@ def setup_configuration(args) -> ProcessingConfig:
         meaningful_part = Path(input_path.name)
 
     # Create output directory structure
-    output_dir = str(
-        src_base / f"code_from_spec_on_{timestamp}" / args.language / meaningful_part
-    )
+    # For Lean, put files under lean/ directory so lake can find them
+    if args.language == "lean":
+        # Use project root lean/ directory for Lean files
+        project_root = src_base.parent if src_base.name == "src" else src_base
+        output_dir = str(
+            project_root / "lean" / "Generated" / f"Run_{timestamp}" / meaningful_part
+        )
+    else:
+        output_dir = str(
+            src_base / f"code_from_spec_on_{timestamp}" / args.language / meaningful_part
+        )
     summary_file = str(Path(output_dir) / "summary.txt")
 
     Path(output_dir).mkdir(parents=True, exist_ok=True)
