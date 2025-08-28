@@ -1,0 +1,24 @@
+vc-description: |-
+  DoubleArrayElements: Double each element in an array in-place.
+Modifies the input array by multiplying each element by 2.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  -- def doubleArrayElements :=
+  -- theorem doubleArrayElements_spec :=
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/DoubleArrayElements.lean

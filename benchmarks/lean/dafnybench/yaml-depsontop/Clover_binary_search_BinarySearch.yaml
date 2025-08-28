@@ -1,0 +1,26 @@
+vc-description: |-
+  Predicate to check if an array is sorted in non-decreasing order.
+This version explicitly states that every element is less than or equal
+to all later elements, which is stronger than just checking adjacent pairs
+but equivalent in meaning.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  -- def isSorted :=
+  -- theorem binSearch_spec :=
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/BinarySearch2.lean

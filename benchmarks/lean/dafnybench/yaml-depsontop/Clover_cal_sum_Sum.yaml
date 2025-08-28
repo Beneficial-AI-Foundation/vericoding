@@ -1,0 +1,24 @@
+vc-description: |-
+  Sum: Calculate the sum of integers from 0 to N.
+Computes the sum 0 + 1 + 2 + ... + N using the formula N * (N + 1) / 2.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  -- def sum :=
+  -- theorem sum_spec :=
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/CalSum.lean

@@ -1,0 +1,31 @@
+vc-description: |-
+  insert: Insert a portion of one array into another array at a specified position.
+Modifies the 'line' array by inserting 'p' characters from 'nl' starting at position 'at'.
+The insertion shifts existing characters to make room.
+Parameters:
+- line: The target array to modify
+- l: The current length of content in line
+- nl: The source array containing characters to insert
+- p: The number of characters to insert from nl
+- pos: The position in line where insertion should occur
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  -- def insert :=
+  -- theorem insert_spec :=
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/Insert.lean

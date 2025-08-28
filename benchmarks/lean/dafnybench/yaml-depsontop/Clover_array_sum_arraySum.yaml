@@ -1,0 +1,28 @@
+vc-description: |-
+  Element-wise sum of two arrays.
+Computes the element-wise sum of two arrays of the same length.
+Specification from Dafny:
+- Requires: a.length = b.length
+- result.length = a.length
+- For all i, result[i] = a[i] + b[i]
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  -- def arraySum :=
+  -- theorem arraySum_spec :=
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/ArraySum.lean

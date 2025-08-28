@@ -1,0 +1,25 @@
+vc-description: |-
+  Copy: Copy a portion of one array into another array.
+Copies `len` elements from `src` starting at index `sStart`
+into `dest` starting at index `dStart`, returning a new array.
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  -- def copy :=
+  -- theorem copy_spec :=
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/CopyPart.lean

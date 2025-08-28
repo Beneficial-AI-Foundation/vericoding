@@ -1,0 +1,30 @@
+vc-description: |-
+  squareRoot: Compute the integer square root of a natural number.
+Returns the largest natural number r such that r² ≤ N.
+This is the floor of the real square root of N.
+For example:
+- squareRoot 4 = 2
+- squareRoot 5 = 2
+- squareRoot 8 = 2
+- squareRoot 9 = 3
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  -- def squareRoot :=
+  -- theorem squareRoot_spec :=
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/IntegerSquareRoot.lean

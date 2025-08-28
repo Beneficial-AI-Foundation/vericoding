@@ -1,0 +1,30 @@
+vc-description: |-
+  swap: Swap two elements in an array.
+Takes an array and two indices i and j, and swaps the elements
+at those positions. The array is modified in place.
+Requires: 0 ≤ i < arr.size and 0 ≤ j < arr.size
+Modifies the array so that:
+- arr[i] becomes the old value of arr[j]
+- arr[j] becomes the old value of arr[i]
+- All other elements remain unchanged
+
+vc-preamble: |-
+  
+
+vc-helpers: |-
+  // <vc-helpers>
+  // </vc-helpers>
+
+vc-spec: |-
+  // <vc-spec>
+  -- def swap :=
+  -- theorem swap_spec :=
+  // </vc-spec>
+
+vc-code: |-
+  // <vc-code>
+  {- Lean implementation and proof go here -}
+  // </vc-code>
+
+vc-postamble: |-
+  -- Source: /Users/alokbeniwal/vericoding/lean/DafnyBenchSpecs/SwapInArray.lean
