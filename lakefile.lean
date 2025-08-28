@@ -6,11 +6,12 @@ require mathlib from git
 
 package Vericoding where
   version := v!"0.1.0"
+  -- Disable missingDocs noise for now; too many undocumented funcs
   leanOptions := #[
     ⟨`pp.unicode.fun, true⟩,
     ⟨`autoImplicit, true⟩,
     ⟨`relaxedAutoImplicit, false⟩,
-    ⟨`linter.missingDocs, true⟩
+    ⟨`linter.missingDocs, false⟩
   ]
   releaseRepo := "https://github.com/Beneficial-AI-Foundation/vericoding"
   buildArchive := "Vericoding-{OS}-{ARCH}.tar.gz"
