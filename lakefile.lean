@@ -51,3 +51,8 @@ lean_exe vericoding where
   root := `Main
   srcDir := "lean"
   supportInterpreter := true
+
+@[default_target]
+lean_lib Clever where
+  globs := #[.andSubmodules `Benchmarks.Clever]
+  srcDir := "lean"
